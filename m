@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2566C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 17:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31A60C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 19:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mydfQSL9BaaZFPXXt+XTmv1PkbfTDQEdKfXTbNg3olk=; b=BYEXU7HrH7OcKb
-	/ZsnGZEbVJoUc8Xc4TRohFPn7KhUwTMZWcA9HVVxtd2JgOcsfphPPU6nedS6yODtDtD5xbYScdkL5
-	N/dXK9SYM8d+8i9/Y7WgkBXLcxD6JHWzFh58kC2a8f2KwSky1EpoIJls0NYzxVb/nWdt8Zm/yDLSy
-	u24GskkBnLyfM9iDSN8Jb93xkRMzjX4EAyVsbC+YsWTkmZc1VgaChMuclsw8yUOsQmQPIZlq+VDlB
-	se36YJqIz/5xxiar+O50gFEC7i47W/ZMywIAui5PAalyg0EdZQoWjI3+W2CKPC7hk53u2nKFMmFTZ
-	UjoYmX9GmvUdxuefYC2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cZXh49slhyHoViIcf372KCai+7mxUZBSkE7TR9db6v0=; b=H6Tn+H8kBBZqI2
+	LY6HqWAX813HrH/anCkhqQg41Z+6mG0CTQfOdvgUJTXGlFhRjRDIkObzCTC6o9EqH7RpfzbBdIN+4
+	/Bj1N7gRChnV3Ku3njNdBpExIB3x0i/MtFHHOeIxoDME/TxVzxJUQfyERyc7q2CgrKar40innIy3L
+	8Q1mIpEtenqVnOiItpwaWgq9wzyFYDMmI+WnC6w2wCvnV6a9Sly3kqkIp5jD/4M8U5mcEE8nf0snT
+	nUgAVV1KnSRZ5b5SrxjEKgoViOSVRxXKLEUA8Gu6v/+6EuJuJ+qRivhZgeQCMaEADhdSoNCBtejJZ
+	ECKCvIJhO3ZRNNTTkafA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olD2C-004a8P-Sj; Wed, 19 Oct 2022 17:39:16 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1olF9r-004xCS-Jl; Wed, 19 Oct 2022 19:55:19 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olD22-004a6v-Cr; Wed, 19 Oct 2022 17:39:07 +0000
-Received: by mail-ej1-x632.google.com with SMTP id fy4so41651380ejc.5;
-        Wed, 19 Oct 2022 10:39:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZSg9wcbNbcSOzspwRfzUTkVyTxhvEyAzYbLBRttaf6c=;
-        b=ZiBfOirqBI2qE4AiRDRnuhq1ob5CIfxeotj1301D57aJfCNREHqXeIQwvVp9IA9Y1Z
-         VVvW4ZXNqJ5Y/vpWF98UbLmz5DhIyi14Apizp1Zlr9+JF9bT/nQqnyn3e6hNI4rcaF3U
-         5RZpeMajMDB2QUin4L2NaiUzethvwDdEuT8yRq2rA8z6DT3MwE/hJsiKp6Q37x+wg2yr
-         fsBK2FFVFOT252oMIV0TZFFYBSyjbG17Z73UUVlpO6H/jw7sbbAhZOmFqTSw3veZNuIO
-         q8EIkpcYvoNW1gN4tyenhNFraY5ojzG7dAPYu0P/OqlPkzNfuqOL6AqTqxrJT5PtTWbs
-         2QXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZSg9wcbNbcSOzspwRfzUTkVyTxhvEyAzYbLBRttaf6c=;
-        b=i/Fy9NR53SKVvpgNTJ0YIUUvRzz8n91t8hyppayRzwYpEF4A81FjbHkthImbeh72J1
-         MZFhURiIOTStbTDAfsfrrj6TS3qfno13nngjm/ZOQ920gBxWDFThzD2jWJtntY657V6w
-         Yy5zpASThFKeV3n0CAn2zIC1amROokglrotuxG713xTkD7U8y1eIhAMATR3EI/DODPm3
-         vC0zaQiINwnSQpF8Mk8uKaNBfWPZ0MOBCOEXo2/O4SqUVcV/pYi0TAHJtSgaSpvwb++j
-         1OoPjdSgvv0P3I8JqYIHIRpUj+EdyvNVO8XejFFF0a2ERqvho6MtXZxgVy5KZXZuc+UN
-         eMlg==
-X-Gm-Message-State: ACrzQf0OG5Hq7nhgC3yLnsccNRgD62vbtiEu/JB9hWSVqhizBS1bdBl8
-	E2vdpU31mBzjWwK9l+HlvM507r+C/ik=
-X-Google-Smtp-Source: AMsMyM6aAlkq7HSlsQwfhnYhFYnY0TG4ZY4rvi90moQGO1x5RG+zkv2DRiNziDFlFUNhxqhMx/Cn7A==
-X-Received: by 2002:a17:907:b07:b0:78d:ce2b:1999 with SMTP id h7-20020a1709070b0700b0078dce2b1999mr8022259ejl.267.1666201142104;
-        Wed, 19 Oct 2022 10:39:02 -0700 (PDT)
-Received: from [192.168.2.4] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id f11-20020a170906738b00b0073dc8d0eabesm9411681ejl.15.2022.10.19.10.39.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Oct 2022 10:39:01 -0700 (PDT)
-Message-ID: <21c35744-eee0-ae31-dc54-3e7e1334ae08@gmail.com>
-Date: Wed, 19 Oct 2022 19:39:00 +0200
+	id 1olF9c-004x9m-G9; Wed, 19 Oct 2022 19:55:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id CF940B825E2;
+	Wed, 19 Oct 2022 19:55:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59AABC433D6;
+	Wed, 19 Oct 2022 19:55:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666209301;
+	bh=rWNcMUcG9DDNLMyAn9aOc5PTGDK+JqC/MOVV6hh0TP0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=AS1bySSuzt+v9qgP9nV4W0vcNULhVRnV+aVK+fHcxSdO2qnAx0mHBUYS/2UMN/l+c
+	 ZB2ih7HSz9gX2L92v/AYZq0T4faa4J6z1Hccthvtt722q+PTH8wTXhMxeUL9qAOt5W
+	 eDe95lTcW9FsELfdPte8ZT1T5vONtwIfP1tZwLHT/30JarfrKyUEDlC4hXNITGj9M0
+	 WKENOhumsKWpgDPNZHyJi2NZyX9jivbIIOP6qahufWn7y4aTMzdJWprc+ZT39jE29V
+	 ujZ9lax01KINQ3L8m5mI/lNZolvX4OQ8j8W/zr6NwQNXox1MDBKXPtqjBcoGFgtgss
+	 Vm8j7doGKP3qg==
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Tom Joseph <tjoseph@cadence.com>,
+	Rob Herring <robh@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>,
+	Roy Zang <roy.zang@nxp.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Toan Le <toan@os.amperecomputing.com>,
+	Joyce Ooi <joyce.ooi@intel.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	bcm-kernel-feedback-list@broadcom.com,
+	linux-omap@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-tegra@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH] PCI: Remove unnecessary of_irq.h includes
+Date: Wed, 19 Oct 2022 14:54:51 -0500
+Message-Id: <20221019195452.37606-1-helgaas@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH] arm: dts: rockchip: add crypto node for RK322x
-To: =?UTF-8?Q?Michele_Zuccal=c3=a0?= <ardutu@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, Alex Bee <knaerzche@gmail.com>,
- Corentin Labbe <clabbe@baylibre.com>
-References: <Y1AqBnPSyu7PpiwP@deskilmich.example.net>
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <Y1AqBnPSyu7PpiwP@deskilmich.example.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_103906_458402_088427BD 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20221019_125504_887514_A8C83C09 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,39 +94,207 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QWRkZWQgQ2M6IGNsYWJiZUBiYXlsaWJyZS5jb20KCk9uIDEwLzE5LzIyIDE4OjQ3LCBNaWNoZWxl
-IFp1Y2NhbMOgIHdyb3RlOgo+IFRoZSBjcnlwdG9ncmFwaGljIGhhcmR3YXJlIG9mIHRoZSByazMy
-MnggaXMgY29tcGF0aWJsZSB3aXRoIHRoZSBvbmUgcHJlc2VudCBpbiB0aGUgcmszMjg4Lgo+IAo+
-IEFkZCB0aGUgcmVzcGVjdGl2ZSBub2RlIHRvIHRoZSBkZXZpY2UgdHJlZS4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBBbGV4IEJlZSA8a25hZXJ6Y2hlQGdtYWlsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBN
-aWNoZWxlIFp1Y2NhbMOgIDxhcmR1dHVAZ21haWwuY29tPgo+IC0tLQo+ICBhcmNoL2FybS9ib290
-L2R0cy9yazMyMnguZHRzaSB8IDExICsrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMSBp
-bnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzIyeC5k
-dHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjJ4LmR0c2kKPiBpbmRleCBmZmMxNmQ2YjkuLmIz
-ODFmYzJhMCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyMnguZHRzaQo+ICsr
-KyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzIyeC5kdHNpCj4gQEAgLTEzMiw2ICsxMzIsMTcgQEAg
-ZGlzcGxheV9zdWJzeXN0ZW06IGRpc3BsYXktc3Vic3lzdGVtIHsKPiAgCQlwb3J0cyA9IDwmdm9w
-X291dD47Cj4gIAl9Owo+ICAKPiArCWNyeXB0bzogY3J5cHRvQDEwMGEwMDAwIHsKCj4gKwkJY29t
-cGF0aWJsZSA9ICJyb2NrY2hpcCxyazMyODgtY3J5cHRvIjsKCkhpLAoKQ29tcGF0aWJsZSBzdHJp
-bmdzIG11c3QgU29DIG9yaWVudGF0ZWQuCgpTb21ldGhpbmcgbGlrZToKY29tcGF0aWJsZSA9ICJy
-b2NrY2hpcCxyazMyMjgtY3J5cHRvIiwgInJvY2tjaGlwLHJrMzI4OC1jcnlwdG8iOwoKVGhpcyBz
-dHJpbmcgbXVzdCBiZSBhZGQgdG8gWUFNTCBkb2N1bWVudDoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
-cmcvbGludXgtcm9ja2NoaXAvMjAyMjA5MjcwNzU1MTEuMzE0Nzg0Ny0yNS1jbGFiYmVAYmF5bGli
-cmUuY29tLwoKVGhlIHN0YXR1cyBvZiB0aGF0IHNlcmllIGlzIHVua25vd24gdG8gbWUuCk5vdCBz
-dXJlIGJ5IHdobyBvciB3aGVuIHRoYXQgaXMgZ29pbmcgdG8gYmUgbWVyZ2VkLgoKSm9oYW4KCj4g
-KwkJcmVnID0gPDB4MTAwYTAwMDAgMHg0MDAwPjsKPiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkg
-MzAgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gKwkJY2xvY2tzID0gPCZjcnUgSENMS19NX0NSWVBU
-Tz4sIDwmY3J1IEhDTEtfU19DUllQVE8+LAo+ICsJCQkgPCZjcnUgU0NMS19DUllQVE8+LCA8JmNy
-dSBBQ0xLX0RNQUM+Owo+ICsJCWNsb2NrLW5hbWVzID0gImFjbGsiLCAiaGNsayIsICJzY2xrIiwg
-ImFwYl9wY2xrIjsKPiArCQlyZXNldHMgPSA8JmNydSBTUlNUX0NSWVBUTz47Cj4gKwkJcmVzZXQt
-bmFtZXMgPSAiY3J5cHRvLXJzdCI7Cj4gKwl9Owo+ICsKPiAgCWkyczE6IGkyczFAMTAwYjAwMDAg
-ewo+ICAJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMjI4LWkycyIsICJyb2NrY2hpcCxyazMw
-NjYtaTJzIjsKPiAgCQlyZWcgPSA8MHgxMDBiMDAwMCAweDQwMDA+OwoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Bjorn Helgaas <bhelgaas@google.com>
+
+Many host controller drivers #include <linux/of_irq.h> even though they
+don't need it.  Remove the unnecessary #includes.
+
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+---
+ drivers/pci/controller/cadence/pci-j721e.c   | 1 -
+ drivers/pci/controller/dwc/pci-layerscape.c  | 1 -
+ drivers/pci/controller/dwc/pcie-armada8k.c   | 1 -
+ drivers/pci/controller/dwc/pcie-tegra194.c   | 1 -
+ drivers/pci/controller/pci-v3-semi.c         | 1 -
+ drivers/pci/controller/pci-xgene-msi.c       | 1 -
+ drivers/pci/controller/pci-xgene.c           | 1 -
+ drivers/pci/controller/pcie-altera-msi.c     | 1 -
+ drivers/pci/controller/pcie-iproc-platform.c | 1 -
+ drivers/pci/controller/pcie-iproc.c          | 1 -
+ drivers/pci/controller/pcie-microchip-host.c | 1 -
+ drivers/pci/controller/pcie-rockchip-host.c  | 1 -
+ drivers/pci/controller/pcie-xilinx-cpm.c     | 1 -
+ drivers/pci/controller/pcie-xilinx-nwl.c     | 1 -
+ 14 files changed, 14 deletions(-)
+
+diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
+index a82f845cc4b5..cc83a8925ce0 100644
+--- a/drivers/pci/controller/cadence/pci-j721e.c
++++ b/drivers/pci/controller/cadence/pci-j721e.c
+@@ -15,7 +15,6 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+-#include <linux/of_irq.h>
+ #include <linux/pci.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+diff --git a/drivers/pci/controller/dwc/pci-layerscape.c b/drivers/pci/controller/dwc/pci-layerscape.c
+index 879b8692f96a..ed5fb492fe08 100644
+--- a/drivers/pci/controller/dwc/pci-layerscape.c
++++ b/drivers/pci/controller/dwc/pci-layerscape.c
+@@ -13,7 +13,6 @@
+ #include <linux/init.h>
+ #include <linux/of_pci.h>
+ #include <linux/of_platform.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_address.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/dwc/pcie-armada8k.c b/drivers/pci/controller/dwc/pcie-armada8k.c
+index dc469ef8e99b..5c999e15c357 100644
+--- a/drivers/pci/controller/dwc/pcie-armada8k.c
++++ b/drivers/pci/controller/dwc/pcie-armada8k.c
+@@ -21,7 +21,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/resource.h>
+ #include <linux/of_pci.h>
+-#include <linux/of_irq.h>
+ 
+ #include "pcie-designware.h"
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
+index 1b6b437823d2..02d78a12b6e7 100644
+--- a/drivers/pci/controller/dwc/pcie-tegra194.c
++++ b/drivers/pci/controller/dwc/pcie-tegra194.c
+@@ -21,7 +21,6 @@
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/phy/phy.h>
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index 154a5398633c..784fcf35599c 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -22,7 +22,6 @@
+ #include <linux/kernel.h>
+ #include <linux/of_address.h>
+ #include <linux/of_device.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
+index bfa259781b69..5efc6e56559f 100644
+--- a/drivers/pci/controller/pci-xgene-msi.c
++++ b/drivers/pci/controller/pci-xgene-msi.c
+@@ -10,7 +10,6 @@
+ #include <linux/interrupt.h>
+ #include <linux/module.h>
+ #include <linux/msi.h>
+-#include <linux/of_irq.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index 549d3bd6d1c2..887b4941ff32 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -14,7 +14,6 @@
+ #include <linux/init.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/pci-acpi.h>
+diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
+index 7b1d3ebc34ec..89110b879d5f 100644
+--- a/drivers/pci/controller/pcie-altera-msi.c
++++ b/drivers/pci/controller/pcie-altera-msi.c
+@@ -13,7 +13,6 @@
+ #include <linux/module.h>
+ #include <linux/msi.h>
+ #include <linux/of_address.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 538115246c79..4142a73e611d 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -12,7 +12,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/of_address.h>
+ #include <linux/of_pci.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
+ 
+diff --git a/drivers/pci/controller/pcie-iproc.c b/drivers/pci/controller/pcie-iproc.c
+index 2519201b0e51..83029bdfd884 100644
+--- a/drivers/pci/controller/pcie-iproc.c
++++ b/drivers/pci/controller/pcie-iproc.c
+@@ -18,7 +18,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/of_address.h>
+ #include <linux/of_pci.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
+ 
+diff --git a/drivers/pci/controller/pcie-microchip-host.c b/drivers/pci/controller/pcie-microchip-host.c
+index 7263d175b5ad..937a79bcfddc 100644
+--- a/drivers/pci/controller/pcie-microchip-host.c
++++ b/drivers/pci/controller/pcie-microchip-host.c
+@@ -12,7 +12,6 @@
+ #include <linux/module.h>
+ #include <linux/msi.h>
+ #include <linux/of_address.h>
+-#include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci-ecam.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 7352b5ff8d35..c96c0f454570 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -28,7 +28,6 @@
+ #include <linux/of_device.h>
+ #include <linux/of_pci.h>
+ #include <linux/of_platform.h>
+-#include <linux/of_irq.h>
+ #include <linux/pci.h>
+ #include <linux/pci_ids.h>
+ #include <linux/phy/phy.h>
+diff --git a/drivers/pci/controller/pcie-xilinx-cpm.c b/drivers/pci/controller/pcie-xilinx-cpm.c
+index e4ab48041eb6..4a787a941674 100644
+--- a/drivers/pci/controller/pcie-xilinx-cpm.c
++++ b/drivers/pci/controller/pcie-xilinx-cpm.c
+@@ -16,7 +16,6 @@
+ #include <linux/of_address.h>
+ #include <linux/of_pci.h>
+ #include <linux/of_platform.h>
+-#include <linux/of_irq.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/pci-ecam.h>
+diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+index 40d070e54ad2..f0271b6c6f8d 100644
+--- a/drivers/pci/controller/pcie-xilinx-nwl.c
++++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+@@ -17,7 +17,6 @@
+ #include <linux/of_address.h>
+ #include <linux/of_pci.h>
+ #include <linux/of_platform.h>
+-#include <linux/of_irq.h>
+ #include <linux/pci.h>
+ #include <linux/pci-ecam.h>
+ #include <linux/platform_device.h>
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
