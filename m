@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9660C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 00:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9188BC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 00:05:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GqgdMw3hNUvdoYaXra6J77DIEsF92jEjoFrOMt26RsY=; b=eqPKeQIXES11dZ
-	T5HBwHicwtsElYf0zZkZ51eHu/juYqzNzCfr9rFF0NoUFbMBjRXW40iErfZnllEa/Z3eNO7wPWjQO
-	gwhm3npJ0j3qxVHj2yK0H41FS77ZZ27e+FcQlxoKyi85a94jw96MzEQaObNRHbZymfYKkjuQapBTb
-	oQL5iIl06j2W9WpClpxxsTg8tPLmWno+peyJgE7ecGJsLt1AHuEjxoHcB1Dh2XAHkq93kRDRGpA02
-	X8VbesWgrxkZ+nfDtroPlzdTa/xYP46wza5VakEDQhAMJyC7RuqwPSvdCSXKnDnuOXDDcQvTEyrQR
-	7JUtr7e77cTPRMpHFuLA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N8m5fSS0DA/8smYuM9AzVCju9n4qEmEV5Od4IlNl0S0=; b=OPIDUKzUCSGVNr
+	7J3m94J2JMZ1psMnAfZbGxo4KysMruglUyf7Vn4ekfmvN7vddfat4zA5i4YpHekpqIKYc+Cz/Nb95
+	cq9w24rhnJHAEu8kxW2DVxJCwJBYIMk6AP4nXuchaxdPdIWXz7Fr0r6oRySbhh9dJSHcksndyq+GT
+	GW6N04we2jAPL4NdiODIqHVi21M9+2zGSPzvtO9NazR4uegjhBppkgy0RlOHQPaSRvF3QS9BXI3Fl
+	hQKhfz4OG3U7rp+5jtIbHdXuvC422Bf0Ye+0lHUcoCz0GQNE43Jt/RGLvHAp+n3YgTBuvQWe68ORy
+	xodkZA4BhqmSA/5qQpng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olJ2v-006xa7-6f; Thu, 20 Oct 2022 00:04:25 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1olJ3a-007182-Mi; Thu, 20 Oct 2022 00:05:06 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olJ2s-006x2g-Fi
-	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 00:04:23 +0000
-Received: by mail-pg1-x536.google.com with SMTP id bh13so17710170pgb.4
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
+	id 1olJ2v-006xSG-1D
+	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 00:04:26 +0000
+Received: by mail-pf1-x431.google.com with SMTP id i3so18718657pfk.9
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Oct 2022 17:04:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=sTMXfwPxByKhRbLMaBxfNCc3mPRoF7RiiHgqUtdhFi8=;
-        b=NzPUtom58NR34m2Vw7sS73ERU30rhe3RyOvvFRL8c790qf5KuZz3KvN69al/nH052u
-         65SRaYt/WHp0PKjIXDaLYCni7KlNbgouTs8KNf5Fy7byqei7PQ3KRgBHVXjhzqsdhzY0
-         or9yFqOg4L7gMu66IIQ9eWmxSPJ7xk7vRk2RQ=
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JFEAuRVxYze/rS1o+HmtzgS2VnFodVUCCckeeNQBPJo=;
+        b=Qaz4H1KwKV2rEH1XylJDVh+Jyd+kjjCT40sHv0yltr24IPXS3A7bCxHahuIbL/aKxK
+         HQymcu6lvjyUm4M3opQtknDcwkb3CpXipIAuZsVPTT02+205ImH7Ygnwl0k1o1zk3Lfe
+         PIFtNfZeI46Af+097eiyWVE6XVf79YgCLePDI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sTMXfwPxByKhRbLMaBxfNCc3mPRoF7RiiHgqUtdhFi8=;
-        b=5W4rvc78w94hKrvysWXMu1NaOD18F3sWkwmiPvUCSstjllW6xSKYy0Ausz4xbrziZJ
-         env71q6aw1Aa3MCnkUZxu1Nfr3Eobbeit61s2o+4g8E2+RP+e6y8ipMTuOUcR+pa6sfx
-         5RvNj1ivDnbzJjie0G5vnqFt6d1SEhbn56477qH6CucKTw0+CTc8PnzJPwsK626jR9LG
-         x0MIYjsDIcl9Z14BlmhWWFnrY5QfWhZY5T79PXEXIz+yT2iPYCIBXu6cOiBHd6QLByHo
-         ttovZGDfc12FeFabCrtDgaYk8+YH0s5cAtHgl/PbQWlKF8NZ1rtr/BuCer4hMxpddpfq
-         Q2Rg==
-X-Gm-Message-State: ACrzQf2GgwqAaTbuk7bGwX+lwwasxquCjGbVzVAQpu+5oRRVqmIlVC69
-	JtmQGjVPxOrI7pYvSN7KS84/3Q==
-X-Google-Smtp-Source: AMsMyM664xBzQRRznQW+wpuvkN2DiM8TEUvDJZUSO7BbmhIQUEq/kvX65aGrSxbs3usLThugxlDXJA==
-X-Received: by 2002:a63:4283:0:b0:457:dced:8ba3 with SMTP id p125-20020a634283000000b00457dced8ba3mr9328251pga.220.1666224261493;
-        Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=JFEAuRVxYze/rS1o+HmtzgS2VnFodVUCCckeeNQBPJo=;
+        b=L8TAurMiK7MzLciIGBgMjhzxsjNvqgr5ZNgrXGCDOOHtDq6VvJafQI9atQ6sICkJdm
+         1fQZgu0LZCXCkPRd5VCRkpJLU8pOPk5BNww8iiYKNecVJPokpD2vLaQ633QYEjYDLMz9
+         2d+mfLnSP0ZfhH+kxTakfa12M04Fj0HsMJgW9AtA4x0/+gulhv8TsPAk45WzdvDlGibi
+         KznUmwzJux0lu+4322+yua3/uiZYs/wxRbO0vvHQkdndUEUlBILmKCnPdojxLgwrG7DO
+         9lBpIyBvNZNtN/PxR7At8zcV5d8G7OAV9vvA76qaCxaA2vUTrkqoCJF45rKW9TI7zl8d
+         fRbA==
+X-Gm-Message-State: ACrzQf37wTXK4dz3fPJ+eCsmuN5dm+xMBwzjNEaTAo6Idcdo2wptELsq
+	g5nNtf3xOC2mCYDCBtDAaPxQTQ==
+X-Google-Smtp-Source: AMsMyM4/WuzkNI/KO9rd2JcSdJmmamHNIYsZ7bctseAbBQ/6EBWhOKRYCFsmPMPJl382wA/rvveujQ==
+X-Received: by 2002:a63:4426:0:b0:464:4e1d:80e3 with SMTP id r38-20020a634426000000b004644e1d80e3mr9460506pga.106.1666224263585;
+        Wed, 19 Oct 2022 17:04:23 -0700 (PDT)
 Received: from localhost ([2620:15c:9d:2:57b7:1f0e:44d1:f252])
-        by smtp.gmail.com with UTF8SMTPSA id lb13-20020a17090b4a4d00b0020a825fc912sm459119pjb.45.2022.10.19.17.04.20
+        by smtp.gmail.com with UTF8SMTPSA id b11-20020a17090a6acb00b00200a85fa777sm541885pjm.1.2022.10.19.17.04.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
+        Wed, 19 Oct 2022 17:04:23 -0700 (PDT)
 From: Brian Norris <briannorris@chromium.org>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
 Cc: dri-devel@lists.freedesktop.org,
@@ -67,14 +68,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	Helen Koike <helen.koike@collabora.com>,
 	Brian Norris <briannorris@chromium.org>,
 	stable@vger.kernel.org
-Subject: [PATCH 1/2] drm/rockchip: dsi: Clean up 'usage_mode' when failing to attach
-Date: Wed, 19 Oct 2022 17:03:48 -0700
-Message-Id: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
+Subject: [PATCH 2/2] drm/rockchip: dsi: Force synchronous probe
+Date: Wed, 19 Oct 2022 17:03:49 -0700
+Message-Id: <20221019170255.2.I6b985b0ca372b7e35c6d9ea970b24bcb262d4fc1@changeid>
 X-Mailer: git-send-email 2.38.0.413.g74048e4d9e-goog
+In-Reply-To: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
+References: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_170422_592233_2F358977 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20221019_170425_111555_47CF75EA 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,64 +94,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If we fail to attach the first time (especially: EPROBE_DEFER), we fail
-to clean up 'usage_mode', and thus will fail to attach on any subsequent
-attempts, with "dsi controller already in use".
+We can't safely probe a dual-DSI display asynchronously
+(driver_async_probe='*' or driver_async_probe='dw-mipi-dsi-rockchip'
+cmdline), because dw_mipi_dsi_rockchip_find_second() pokes one DSI
+device's drvdata from the other device without any locking.
 
-Re-set to DW_DSI_USAGE_IDLE on attach failure.
+Request synchronous probe, at least until this driver learns some
+appropriate locking for dual-DSI initialization.
 
-This is especially common to hit when enabling asynchronous probe on a
-duel-DSI system (such as RK3399 Gru/Scarlet), such that we're more
-likely to fail dw_mipi_dsi_rockchip_find_second() the first time.
-
-Fixes: 71f68fe7f121 ("drm/rockchip: dsi: add ability to work as a phy instead of full dsi")
 Cc: <stable@vger.kernel.org>
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
 
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index bf6948125b84..d222c6811207 100644
+index d222c6811207..528ddce144e5 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1051,23 +1051,31 @@ static int dw_mipi_dsi_rockchip_host_attach(void *priv_data,
- 	if (ret) {
- 		DRM_DEV_ERROR(dsi->dev, "Failed to register component: %d\n",
- 					ret);
--		return ret;
-+		goto out;
- 	}
- 
- 	second = dw_mipi_dsi_rockchip_find_second(dsi);
--	if (IS_ERR(second))
--		return PTR_ERR(second);
-+	if (IS_ERR(second)) {
-+		ret = PTR_ERR(second);
-+		goto out;
-+	}
- 	if (second) {
- 		ret = component_add(second, &dw_mipi_dsi_rockchip_ops);
- 		if (ret) {
- 			DRM_DEV_ERROR(second,
- 				      "Failed to register component: %d\n",
- 				      ret);
--			return ret;
-+			goto out;
- 		}
- 	}
- 
- 	return 0;
-+
-+out:
-+	mutex_lock(&dsi->usage_mutex);
-+	dsi->usage_mode = DW_DSI_USAGE_IDLE;
-+	mutex_unlock(&dsi->usage_mutex);
-+	return ret;
- }
- 
- static int dw_mipi_dsi_rockchip_host_detach(void *priv_data,
+@@ -1689,5 +1689,11 @@ struct platform_driver dw_mipi_dsi_rockchip_driver = {
+ 		.of_match_table = dw_mipi_dsi_rockchip_dt_ids,
+ 		.pm	= &dw_mipi_dsi_rockchip_pm_ops,
+ 		.name	= "dw-mipi-dsi-rockchip",
++		/*
++		 * For dual-DSI display, one DSI pokes at the other DSI's
++		 * drvdata in dw_mipi_dsi_rockchip_find_second(). This is not
++		 * safe for asynchronous probe.
++		 */
++		.probe_type = PROBE_FORCE_SYNCHRONOUS,
+ 	},
+ };
 -- 
 2.38.0.413.g74048e4d9e-goog
 
