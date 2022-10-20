@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA305C4167D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 20:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E370C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 20:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SIps/QOFjGSkyyoSI4FPKcf0dRPhtf2qG67TQj5U60A=; b=dYFPcnNLgi4GKM
-	KfPwXhU3SQRTcHwIuhZFxsDtVlnjcne81daFKxVfp9agVAcGsNgA3dhbwPWWbIfVvFLOq+esOu77w
-	mnYBNq6Pm4wccy915TXt7OTp7R8mm4R7uoYbBR9wanfJIYE0Fw/PGi9JN6kYMVvKD8fs0SzKAulO+
-	vmZ+PiD9rM3rwbwEFBjr6Dfb3Q9vjwqWEhhRivrxNFiibLG4+SEbDKBzJp6HWw0yGP+iKY0aXUyN9
-	otrjnnEEBT3L022szn2SvOeykGQRQLhOBQUEk2ZvqQQl1RnHFhJh9w8GsuKbxj+tZ9IT6MXL4zY0T
-	e0OGlVwvinUpoKQ9KGpw==;
+	List-Owner; bh=4Cw9vvfr7lkezC06P+/oPmuUHbqdf6cM/m/0Tj2iiQM=; b=LcRqJm1jBzdJZd
+	B7rcMonvpnPCJm8R0Po9k5z4U9Cb/klZMlR9jJF3c6kuLIeWoIFWFaxx4xICeg0WfcdKGrGRBn6hZ
+	MXGKW8QZbsnMgf9+xLbOQylZfujBIUGaKWvzzaQoCU8qFZN5F/gE7PM51np8ZkkeQ1N++IHkdl+8U
+	2uoJAALPy8KiJcxhLCzPFohIX/mxieUd7lc+t05HJivACIW2ObSaWfzSaybKNZpEJ4olgJidvfmVY
+	fdwZviBaahbRbCT8uGqjFe8DthsyODWBBrdPydd5mTghTYCvRCDnch0CcGojEv1HSnrYWUCoIrmxO
+	KleuAgikoFJ+Qc4sdVEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olcNd-001kSo-5M; Thu, 20 Oct 2022 20:43:05 +0000
+	id 1olcNq-001keq-E4; Thu, 20 Oct 2022 20:43:18 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olcNY-001kNM-Ap
-	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 20:43:03 +0000
+	id 1olcNd-001kS0-1p
+	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 20:43:11 +0000
 Received: from jupiter.universe (dyndsl-091-096-059-009.ewe-ip-backbone.de [91.96.59.9])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9AFB8660250A;
-	Thu, 20 Oct 2022 21:42:54 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8582F6602546;
+	Thu, 20 Oct 2022 21:42:57 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666298574;
-	bh=UP5o/tvjF82X745/6YwLJBWyLQY3SW00yYxIUB5+Do8=;
+	s=mail; t=1666298577;
+	bh=qVTGlAGgZr4fufwzZkp4UXAnvbMnji+gxVYYjY6CaTA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lyOVSWyKlZo3CKhTdjNO4jIL6KMkKJhWK2bhpQLW15YPV5+wGEJpJ3d5R0BP76Ihe
-	 /WNrklAWhUrXxJV44uwj3sX3KNEHYXXUmmgaH4FmqKtJnHML4tcg7ObEAT8uICLwvP
-	 5a4AdXNTGFC8v/GGinsYweRC7mm9F2s3zInQqZetU0d0xrz8qrWx9cjif3bOfZOxwp
-	 qwI5Wi/ySVgqfYEEA9Bhi1knzOepvxpekeZ2vofyGQc9WemQub/2LJGk4B20HMy6aW
-	 9i1EAnPDEXyTIo3PKWNWeJ7BhhEt0U/VhLZolFVrrSchlLeLpVzs5obXSrFiGPM5lC
-	 sUOmgmKeUpj2g==
+	b=FFNNkO1qEQt3+RN+NmW23bxokXkjZu3Dp6+q9mXuP4shBmwsqRLoy78jqbKNHzvIN
+	 dC+jtf1cuPFy4bGURQwQEsUBAhOcJdb4B1w1T4+yRvQtlxBJI8kHxe+gDNEwwho/2S
+	 ZsI05P0psNKS4DbZfIYkCxNnTWIkcBZBx4qiRmb21/P2sO0SHUB2QoXVWoVBmHnjbT
+	 LwMlLGAG8W33lcMIMDy+bhQ6GH5I7g8VcGavs1bUZP6IZlSE7O14YtKiCjraYWcA77
+	 luqdWIKLaxuU30c56C4Kn7BZPLExXorzLQ8WuZgfx0VmnIXtca2RvrqX1Dn4QQpIlt
+	 NqZRD0N4r3HnA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 52567480897; Thu, 20 Oct 2022 22:42:52 +0200 (CEST)
+	id 6BB0E4808A2; Thu, 20 Oct 2022 22:42:52 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -60,17 +60,19 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv4 02/13] regulator: rk808: reduce 'struct rk808' usage
-Date: Thu, 20 Oct 2022 22:42:40 +0200
-Message-Id: <20221020204251.108565-3-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	shengfei Xu <xsf@rock-chips.com>,
+	Matti Vaittinen <mazziesaccount@gmail.com>
+Subject: [PATCHv4 13/13] regulator: rk808: add rk806 support
+Date: Thu, 20 Oct 2022 22:42:51 +0200
+Message-Id: <20221020204251.108565-14-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221020204251.108565-1-sebastian.reichel@collabora.com>
 References: <20221020204251.108565-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_134300_543903_76CEEB2C 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20221020_134305_429743_C1E1B38A 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,83 +89,479 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reduce usage of 'struct rk808' (driver data of the parent MFD), so
-that only the chip variant field is still being accessed directly.
-This allows restructuring the MFD driver to support SPI based
-PMICs.
+Add rk806 support to the existing rk808 regulator
+driver.
 
-Acked-by: Mark Brown <broonie@kernel.org>
+This has been implemented using shengfei Xu's rk806
+specific driver from the vendor tree as reference.
+
+Co-Developed-by: shengfei Xu <xsf@rock-chips.com>
+Signed-off-by: shengfei Xu <xsf@rock-chips.com>
+Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/regulator/rk808-regulator.c | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ drivers/regulator/rk808-regulator.c | 383 ++++++++++++++++++++++++++++
+ 1 file changed, 383 insertions(+)
 
 diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 127dc2e2e690..ce9c64cadeba 100644
+index fa9fc1aa1ae3..3d534d411104 100644
 --- a/drivers/regulator/rk808-regulator.c
 +++ b/drivers/regulator/rk808-regulator.c
-@@ -14,7 +14,6 @@
+@@ -3,9 +3,11 @@
+  * Regulator driver for Rockchip RK805/RK808/RK818
+  *
+  * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+  *
+  * Author: Chris Zhong <zyw@rock-chips.com>
+  * Author: Zhang Qing <zhangqing@rock-chips.com>
++ * Author: Xu Shengfei <xsf@rock-chips.com>
+  *
+  * Copyright (C) 2016 PHYTEC Messtechnik GmbH
+  *
+@@ -39,6 +41,13 @@
+ #define RK818_LDO3_ON_VSEL_MASK		0xf
+ #define RK818_BOOST_ON_VSEL_MASK	0xe0
  
- #include <linux/delay.h>
- #include <linux/gpio.h>
--#include <linux/i2c.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/of_gpio.h>
-@@ -1286,19 +1285,23 @@ static int rk808_regulator_dt_parse_pdata(struct device *dev,
- static int rk808_regulator_probe(struct platform_device *pdev)
- {
- 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
--	struct i2c_client *client = rk808->i2c;
- 	struct regulator_config config = {};
- 	struct regulator_dev *rk808_rdev;
- 	struct rk808_regulator_data *pdata;
- 	const struct regulator_desc *regulators;
-+	struct regmap *regmap;
- 	int ret, i, nregulators;
- 
-+	regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!regmap)
-+		return -ENODEV;
++#define RK806_DCDC_SLP_REG_OFFSET	0x0A
++#define RK806_NLDO_SLP_REG_OFFSET	0x05
++#define RK806_PLDO_SLP_REG_OFFSET	0x06
 +
- 	pdata = devm_kzalloc(&pdev->dev, sizeof(*pdata), GFP_KERNEL);
- 	if (!pdata)
- 		return -ENOMEM;
++#define RK806_BUCK_SEL_CNT		0xff
++#define RK806_LDO_SEL_CNT		0xff
++
+ /* Ramp rate definitions for buck1 / buck2 only */
+ #define RK808_RAMP_RATE_OFFSET		3
+ #define RK808_RAMP_RATE_MASK		(3 << RK808_RAMP_RATE_OFFSET)
+@@ -117,6 +126,34 @@
+ 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
+ 	_vmask, _ereg, _emask, 0, 0, _etime, &rk805_reg_ops)
  
--	ret = rk808_regulator_dt_parse_pdata(&pdev->dev, &client->dev,
--					     rk808->regmap, pdata);
-+	ret = rk808_regulator_dt_parse_pdata(&pdev->dev, pdev->dev.parent,
-+					     regmap, pdata);
- 	if (ret < 0)
- 		return ret;
++#define RK806_REGULATOR(_name, _supply_name, _id, _ops,\
++			_n_voltages, _vr, _er, _lr, ctrl_bit,\
++			_rr, _rm, _rt)\
++[_id] = {\
++		.name = _name,\
++		.supply_name = _supply_name,\
++		.of_match = of_match_ptr(_name),\
++		.regulators_node = of_match_ptr("regulators"),\
++		.id = _id,\
++		.ops = &_ops,\
++		.type = REGULATOR_VOLTAGE,\
++		.n_voltages = _n_voltages,\
++		.linear_ranges = _lr,\
++		.n_linear_ranges = ARRAY_SIZE(_lr),\
++		.vsel_reg = _vr,\
++		.vsel_mask = 0xff,\
++		.enable_reg = _er,\
++		.enable_mask = ENABLE_MASK(ctrl_bit),\
++		.enable_val = ENABLE_MASK(ctrl_bit),\
++		.disable_val = DISABLE_VAL(ctrl_bit),\
++		.of_map_mode = rk8xx_regulator_of_map_mode,\
++		.ramp_reg = _rr,\
++		.ramp_mask = _rm,\
++		.ramp_delay_table = _rt, \
++		.n_ramp_values = ARRAY_SIZE(_rt), \
++		.owner = THIS_MODULE,\
++	}
++
+ #define RK8XX_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
+ 	_vmask, _ereg, _emask, _etime)					\
+ 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
+@@ -153,6 +190,17 @@
+ 	RKXX_DESC_SWITCH_COM(_id, _match, _supply, _ereg, _emask,	\
+ 	0, 0, &rk808_switch_ops)
  
-@@ -1326,21 +1329,22 @@ static int rk808_regulator_probe(struct platform_device *pdev)
- 		nregulators = RK818_NUM_REGULATORS;
++struct rk8xx_register_bit {
++	u8 reg;
++	u8 bit;
++};
++
++#define RK8XX_REG_BIT(_reg, _bit)					\
++	{								\
++		.reg = _reg,						\
++		.bit = BIT(_bit),						\
++	}
++
+ struct rk808_regulator_data {
+ 	struct gpio_desc *dvs_gpio[2];
+ };
+@@ -216,6 +264,133 @@ static const unsigned int rk817_buck1_4_ramp_table[] = {
+ 	3000, 6300, 12500, 25000
+ };
+ 
++static int rk806_set_mode_dcdc(struct regulator_dev *rdev, unsigned int mode)
++{
++	int rid = rdev_get_id(rdev);
++	int ctr_bit, reg;
++
++	reg = RK806_POWER_FPWM_EN0 + rid / 8;
++	ctr_bit = rid % 8;
++
++	switch (mode) {
++	case REGULATOR_MODE_FAST:
++		return regmap_update_bits(rdev->regmap, reg,
++					  PWM_MODE_MSK << ctr_bit,
++					  FPWM_MODE << ctr_bit);
++	case REGULATOR_MODE_NORMAL:
++		return regmap_update_bits(rdev->regmap, reg,
++					  PWM_MODE_MSK << ctr_bit,
++					  AUTO_PWM_MODE << ctr_bit);
++	default:
++		dev_err(rdev_get_dev(rdev), "mode unsupported: %u\n", mode);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static unsigned int rk806_get_mode_dcdc(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
++	int ctr_bit, reg;
++	unsigned int val;
++	int err;
++
++	reg = RK806_POWER_FPWM_EN0 + rid / 8;
++	ctr_bit = rid % 8;
++
++	err = regmap_read(rdev->regmap, reg, &val);
++	if (err)
++		return err;
++
++	if ((val >> ctr_bit) & FPWM_MODE)
++		return REGULATOR_MODE_FAST;
++	else
++		return REGULATOR_MODE_NORMAL;
++}
++
++static const struct rk8xx_register_bit rk806_dcdc_rate2[] = {
++	RK8XX_REG_BIT(0xEB, 0),
++	RK8XX_REG_BIT(0xEB, 1),
++	RK8XX_REG_BIT(0xEB, 2),
++	RK8XX_REG_BIT(0xEB, 3),
++	RK8XX_REG_BIT(0xEB, 4),
++	RK8XX_REG_BIT(0xEB, 5),
++	RK8XX_REG_BIT(0xEB, 6),
++	RK8XX_REG_BIT(0xEB, 7),
++	RK8XX_REG_BIT(0xEA, 0),
++	RK8XX_REG_BIT(0xEA, 1),
++};
++
++static const unsigned int rk806_ramp_delay_table_dcdc[] = {
++	50000, 25000, 12500, 6250, 3125, 1560, 961, 390
++};
++
++static int rk806_set_ramp_delay_dcdc(struct regulator_dev *rdev, int ramp_delay)
++{
++	int rid = rdev_get_id(rdev);
++	int regval, ramp_value, ret;
++
++	ret = regulator_find_closest_bigger(ramp_delay, rdev->desc->ramp_delay_table,
++					    rdev->desc->n_ramp_values, &ramp_value);
++	if (ret) {
++		dev_warn(rdev_get_dev(rdev),
++			 "Can't set ramp-delay %u, setting %u\n", ramp_delay,
++			 rdev->desc->ramp_delay_table[ramp_value]);
++	}
++
++	regval = ramp_value << (ffs(rdev->desc->ramp_mask) - 1);
++
++	ret = regmap_update_bits(rdev->regmap, rdev->desc->ramp_reg,
++				 rdev->desc->ramp_mask, regval);
++	if (ret)
++		return ret;
++
++	/*
++	 * The above is effectively a copy of regulator_set_ramp_delay_regmap(),
++	 * but that only stores the lower 2 bits for rk806 DCDC ramp. The MSB must
++	 * be stored in a separate register, so this open codes the implementation
++	 * to have access to the ramp_value.
++	 */
++
++	regval = (ramp_value >> 2) & 0x1 ? rk806_dcdc_rate2[rid].bit : 0;
++	return regmap_update_bits(rdev->regmap, rk806_dcdc_rate2[rid].reg,
++				  rk806_dcdc_rate2[rid].bit,
++				  regval);
++}
++
++static const unsigned int rk806_ramp_delay_table_ldo[] = {
++	100000, 50000, 25000, 12500, 6280, 3120, 1900, 780
++};
++
++static int rk806_set_suspend_voltage_range(struct regulator_dev *rdev, int reg_offset, int uv)
++{
++	int sel = regulator_map_voltage_linear_range(rdev, uv, uv);
++	unsigned int reg;
++
++	if (sel < 0)
++		return -EINVAL;
++
++	reg = rdev->desc->vsel_reg + reg_offset;
++
++	return regmap_update_bits(rdev->regmap, reg, rdev->desc->vsel_mask, sel);
++}
++
++static int rk806_set_suspend_voltage_range_dcdc(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_DCDC_SLP_REG_OFFSET, uv);
++}
++
++static int rk806_set_suspend_voltage_range_nldo(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_NLDO_SLP_REG_OFFSET, uv);
++}
++
++static int rk806_set_suspend_voltage_range_pldo(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_PLDO_SLP_REG_OFFSET, uv);
++}
++
+ static int rk808_buck1_2_get_voltage_sel_regmap(struct regulator_dev *rdev)
+ {
+ 	struct rk808_regulator_data *pdata = rdev_get_drvdata(rdev);
+@@ -393,6 +568,45 @@ static int rk805_set_suspend_disable(struct regulator_dev *rdev)
+ 				  0);
+ }
+ 
++static const struct rk8xx_register_bit rk806_suspend_bits[] = {
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 0),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 5),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 6),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 7),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 6),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 7),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 0),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 5),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 0),
++};
++
++static int rk806_set_suspend_enable(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
++	return regmap_update_bits(rdev->regmap, rk806_suspend_bits[rid].reg,
++				  rk806_suspend_bits[rid].bit,
++				  rk806_suspend_bits[rid].bit);
++}
++
++static int rk806_set_suspend_disable(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
++	return regmap_update_bits(rdev->regmap, rk806_suspend_bits[rid].reg,
++				  rk806_suspend_bits[rid].bit, 0);
++}
++
+ static int rk808_set_suspend_enable(struct regulator_dev *rdev)
+ {
+ 	unsigned int reg;
+@@ -561,6 +775,64 @@ static const struct regulator_ops rk805_switch_ops = {
+ 	.set_suspend_disable    = rk805_set_suspend_disable,
+ };
+ 
++static const struct regulator_ops rk806_ops_dcdc = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
++	.set_mode		= rk806_set_mode_dcdc,
++	.get_mode		= rk806_get_mode_dcdc,
++
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= rk8xx_is_enabled_wmsk_regmap,
++
++	.set_suspend_mode	= rk806_set_mode_dcdc,
++	.set_ramp_delay		= rk806_set_ramp_delay_dcdc,
++
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_dcdc,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
++
++static const struct regulator_ops rk806_ops_nldo = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
++
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
++
++	.set_ramp_delay		= regulator_set_ramp_delay_regmap,
++
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_nldo,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
++
++static const struct regulator_ops rk806_ops_pldo = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
++
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
++
++	.set_ramp_delay		= regulator_set_ramp_delay_regmap,
++
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_pldo,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
++
+ static const struct regulator_ops rk808_buck1_2_ops = {
+ 	.list_voltage		= regulator_list_voltage_linear,
+ 	.map_voltage		= regulator_map_voltage_linear,
+@@ -743,6 +1015,112 @@ static const struct regulator_desc rk805_reg[] = {
+ 		BIT(2), 400),
+ };
+ 
++static const struct linear_range rk806_buck_voltage_ranges[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 160, 6250), /* 500mV ~ 1500mV */
++	REGULATOR_LINEAR_RANGE(1500000, 161, 237, 25000), /* 1500mV ~ 3400mV */
++	REGULATOR_LINEAR_RANGE(3400000, 238, 255, 0),
++};
++
++static const struct linear_range rk806_ldo_voltage_ranges[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 232, 12500), /* 500mV ~ 3400mV */
++	REGULATOR_LINEAR_RANGE(3400000, 233, 255, 0), /* 500mV ~ 3400mV */
++};
++
++static const struct regulator_desc rk806_reg[] = {
++	RK806_REGULATOR("dcdc-reg1", "vcc1", RK806_ID_DCDC1, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK1_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK1_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg2", "vcc2", RK806_ID_DCDC2, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK2_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK2_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg3", "vcc3", RK806_ID_DCDC3, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK3_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 2,
++			RK806_BUCK3_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg4", "vcc4", RK806_ID_DCDC4, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK4_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 3,
++			RK806_BUCK4_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++
++	RK806_REGULATOR("dcdc-reg5", "vcc5", RK806_ID_DCDC5, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK5_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK5_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg6", "vcc6", RK806_ID_DCDC6, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK6_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK6_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg7", "vcc7", RK806_ID_DCDC7, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK7_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 2,
++			RK806_BUCK7_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg8", "vcc8", RK806_ID_DCDC8, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK8_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 3,
++			RK806_BUCK8_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++
++	RK806_REGULATOR("dcdc-reg9", "vcc9", RK806_ID_DCDC9, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK9_ON_VSEL,
++			RK806_POWER_EN2, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK9_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg10", "vcc10", RK806_ID_DCDC10, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK10_ON_VSEL,
++			RK806_POWER_EN2, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK10_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++
++	RK806_REGULATOR("nldo-reg1", "vcc13", RK806_ID_NLDO1, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO1_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg2", "vcc13", RK806_ID_NLDO2, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO2_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg3", "vcc13", RK806_ID_NLDO3, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO3_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg4", "vcc14", RK806_ID_NLDO4, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO4_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 3,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++
++	RK806_REGULATOR("nldo-reg5", "vcc14", RK806_ID_NLDO5, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO5_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++
++	RK806_REGULATOR("pldo-reg1", "vcc11", RK806_ID_PLDO1, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO1_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg2", "vcc11", RK806_ID_PLDO2, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO2_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg3", "vcc11", RK806_ID_PLDO3, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO3_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 3,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++
++	RK806_REGULATOR("pldo-reg4", "vcc12", RK806_ID_PLDO4, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO4_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg5", "vcc12", RK806_ID_PLDO5, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO5_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++
++	RK806_REGULATOR("pldo-reg6", "vcca", RK806_ID_PLDO6, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO6_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++};
++
++
+ static const struct regulator_desc rk808_reg[] = {
+ 	{
+ 		.name = "DCDC_REG1",
+@@ -1312,6 +1690,10 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+ 		regulators = rk805_reg;
+ 		nregulators = RK805_NUM_REGULATORS;
  		break;
- 	default:
--		dev_err(&client->dev, "unsupported RK8XX ID %lu\n",
-+		dev_err(&pdev->dev, "unsupported RK8XX ID %lu\n",
- 			rk808->variant);
- 		return -EINVAL;
- 	}
- 
--	config.dev = &client->dev;
-+	config.dev = &pdev->dev;
-+	config.dev->of_node = pdev->dev.parent->of_node;
- 	config.driver_data = pdata;
--	config.regmap = rk808->regmap;
-+	config.regmap = regmap;
- 
- 	/* Instantiate the regulators */
- 	for (i = 0; i < nregulators; i++) {
- 		rk808_rdev = devm_regulator_register(&pdev->dev,
- 						     &regulators[i], &config);
- 		if (IS_ERR(rk808_rdev)) {
--			dev_err(&client->dev,
-+			dev_err(&pdev->dev,
- 				"failed to register %d regulator\n", i);
- 			return PTR_ERR(rk808_rdev);
- 		}
++	case RK806_ID:
++		regulators = rk806_reg;
++		nregulators = ARRAY_SIZE(rk806_reg);
++		break;
+ 	case RK808_ID:
+ 		regulators = rk808_reg;
+ 		nregulators = RK808_NUM_REGULATORS;
+@@ -1365,5 +1747,6 @@ MODULE_AUTHOR("Tony xie <tony.xie@rock-chips.com>");
+ MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
+ MODULE_AUTHOR("Zhang Qing <zhangqing@rock-chips.com>");
+ MODULE_AUTHOR("Wadim Egorov <w.egorov@phytec.de>");
++MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
+ MODULE_LICENSE("GPL");
+ MODULE_ALIAS("platform:rk808-regulator");
 -- 
 2.35.1
 
