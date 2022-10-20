@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9188BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 00:05:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5AAC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 07:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N8m5fSS0DA/8smYuM9AzVCju9n4qEmEV5Od4IlNl0S0=; b=OPIDUKzUCSGVNr
-	7J3m94J2JMZ1psMnAfZbGxo4KysMruglUyf7Vn4ekfmvN7vddfat4zA5i4YpHekpqIKYc+Cz/Nb95
-	cq9w24rhnJHAEu8kxW2DVxJCwJBYIMk6AP4nXuchaxdPdIWXz7Fr0r6oRySbhh9dJSHcksndyq+GT
-	GW6N04we2jAPL4NdiODIqHVi21M9+2zGSPzvtO9NazR4uegjhBppkgy0RlOHQPaSRvF3QS9BXI3Fl
-	hQKhfz4OG3U7rp+5jtIbHdXuvC422Bf0Ye+0lHUcoCz0GQNE43Jt/RGLvHAp+n3YgTBuvQWe68ORy
-	xodkZA4BhqmSA/5qQpng==;
+	List-Owner; bh=AXQyVOuysRb5OPqSgpkvwQ7hKGGChJZBdzDZKLO74Xk=; b=lJZDaPMa+lXKz/
+	JFoWtbsVMMHNzc+zSOIuDPMLfUrvQznFarw9kfkuFN3saXvwDT1AfWmdFfLkfe5qM5cxVFryBk6OW
+	jherleoZw7DIXK9W4GtpUDz5hN+JLUZgdHKtosydyX6WZyrkSZcTekopXIkBOhjR7BLgt4kiP20D+
+	gjfFmXLQFNuzV8itGC3TkE+7rlKlWksWFfkIKr4Mmvf/IATYo5iTszqegUOXhclpIalWepRQN3Uxh
+	T3P1HxknFAG10ij//u4W0sHbq1yf5prQll8RQwTQoNjZbh6RMq/pi0v8Z1joc3GtfFrFRMEGCfs2J
+	HLMqW305QlY0fDIroS7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olJ3a-007182-Mi; Thu, 20 Oct 2022 00:05:06 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1olPiD-00BVer-Bs; Thu, 20 Oct 2022 07:11:29 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olJ2v-006xSG-1D
-	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 00:04:26 +0000
-Received: by mail-pf1-x431.google.com with SMTP id i3so18718657pfk.9
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Oct 2022 17:04:24 -0700 (PDT)
+	id 1olPhw-00BVJ1-Uk; Thu, 20 Oct 2022 07:11:14 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id pq16so19002371pjb.2;
+        Thu, 20 Oct 2022 00:11:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JFEAuRVxYze/rS1o+HmtzgS2VnFodVUCCckeeNQBPJo=;
-        b=Qaz4H1KwKV2rEH1XylJDVh+Jyd+kjjCT40sHv0yltr24IPXS3A7bCxHahuIbL/aKxK
-         HQymcu6lvjyUm4M3opQtknDcwkb3CpXipIAuZsVPTT02+205ImH7Ygnwl0k1o1zk3Lfe
-         PIFtNfZeI46Af+097eiyWVE6XVf79YgCLePDI=
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=o14aKBVXRwo9Env9/Sdjz6GykHBkWTcEWRdqq6tPKjw=;
+        b=LXu0cxLTaH4YvrhSyqJ25Pjhinotg2sT2I/mhB9ONXgrCqAGbJMOqP38QqVMV59SOB
+         IyfUKWIZgbInxANeUrX98dq4YnyNAH+WmhatIos+FNS3h8K3jxexoUBMlBNzlTm7w8jR
+         OsJJwbSyIm2m+Tfm1KYySNrslclmCXJvvXmWbr1GKb8e9byDmW5Ri5VjFrqBIee0SafF
+         QPEqYgQhMWDyNpCK6Z5YkgxAYL61ID7zatCqaKYFnEf6+TdLhuNGoEIJd4WEnQvd+S0a
+         bDK/xcRJxnbSs3OcHTvBYpFEIA3yIP6OuyE4sZV5nojcc9gZAYSA7WhcH+X4o4+MDZYP
+         rWeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JFEAuRVxYze/rS1o+HmtzgS2VnFodVUCCckeeNQBPJo=;
-        b=L8TAurMiK7MzLciIGBgMjhzxsjNvqgr5ZNgrXGCDOOHtDq6VvJafQI9atQ6sICkJdm
-         1fQZgu0LZCXCkPRd5VCRkpJLU8pOPk5BNww8iiYKNecVJPokpD2vLaQ633QYEjYDLMz9
-         2d+mfLnSP0ZfhH+kxTakfa12M04Fj0HsMJgW9AtA4x0/+gulhv8TsPAk45WzdvDlGibi
-         KznUmwzJux0lu+4322+yua3/uiZYs/wxRbO0vvHQkdndUEUlBILmKCnPdojxLgwrG7DO
-         9lBpIyBvNZNtN/PxR7At8zcV5d8G7OAV9vvA76qaCxaA2vUTrkqoCJF45rKW9TI7zl8d
-         fRbA==
-X-Gm-Message-State: ACrzQf37wTXK4dz3fPJ+eCsmuN5dm+xMBwzjNEaTAo6Idcdo2wptELsq
-	g5nNtf3xOC2mCYDCBtDAaPxQTQ==
-X-Google-Smtp-Source: AMsMyM4/WuzkNI/KO9rd2JcSdJmmamHNIYsZ7bctseAbBQ/6EBWhOKRYCFsmPMPJl382wA/rvveujQ==
-X-Received: by 2002:a63:4426:0:b0:464:4e1d:80e3 with SMTP id r38-20020a634426000000b004644e1d80e3mr9460506pga.106.1666224263585;
-        Wed, 19 Oct 2022 17:04:23 -0700 (PDT)
-Received: from localhost ([2620:15c:9d:2:57b7:1f0e:44d1:f252])
-        by smtp.gmail.com with UTF8SMTPSA id b11-20020a17090a6acb00b00200a85fa777sm541885pjm.1.2022.10.19.17.04.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Oct 2022 17:04:23 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
-	Helen Koike <helen.koike@collabora.com>,
-	Brian Norris <briannorris@chromium.org>,
-	stable@vger.kernel.org
-Subject: [PATCH 2/2] drm/rockchip: dsi: Force synchronous probe
-Date: Wed, 19 Oct 2022 17:03:49 -0700
-Message-Id: <20221019170255.2.I6b985b0ca372b7e35c6d9ea970b24bcb262d4fc1@changeid>
-X-Mailer: git-send-email 2.38.0.413.g74048e4d9e-goog
-In-Reply-To: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
-References: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=o14aKBVXRwo9Env9/Sdjz6GykHBkWTcEWRdqq6tPKjw=;
+        b=jaSu3pnad5set+StYLyDh2jHqiQfvVAWR7foe7CAWc890ZW96+KL4UBhl/Q8mmJ+pa
+         NiqHNqbUyAOaXrNum43axRRK5dt9Jwvd5YcZKD0f/Tp+4aI3yN67lM+IzKlgszOxK7Yl
+         kcgOydHGtzTmGeXUPOzNdH/0djfB15fI7gZE+eEzf+p9umizMFMu+PzyGAJYHjDfuTPM
+         TpRcxzZ3xlWUeYgDDjvmk1X2joOZxhpIdLNPyKyHt2cUgnhOi2FpImxdKdOgNpca+yGp
+         U4T28U1VGy6Zpy5Toy/vN2PaXp2WyfnUFxA5FXnU8yhk+g/whavQm88elMKu+PSBAfgw
+         PqGg==
+X-Gm-Message-State: ACrzQf0csNtgQ/MCs9bGWiX+zglOMYRri8xWwz//vAW+pmwNZBhW+7yr
+	VNU1A2z3MOmjXhmSarLIRQ3OMx+V1lg7vlEu1iU=
+X-Google-Smtp-Source: AMsMyM564QHcPQumcMpoCcLSCXb0tZVcVZEecVLlEHQuuO3Z4ZYlxS6JdMXJ7jn/Z4LxXpWAo/Y5Ecv1zqMAND2/0XY=
+X-Received: by 2002:a17:902:ea06:b0:185:3d64:8d55 with SMTP id
+ s6-20020a170902ea0600b001853d648d55mr12429271plg.7.1666249869972; Thu, 20 Oct
+ 2022 00:11:09 -0700 (PDT)
 MIME-Version: 1.0
+References: <Y1AqBnPSyu7PpiwP@deskilmich.example.net> <21c35744-eee0-ae31-dc54-3e7e1334ae08@gmail.com>
+In-Reply-To: <21c35744-eee0-ae31-dc54-3e7e1334ae08@gmail.com>
+From: ilmich <ardutu@gmail.com>
+Date: Thu, 20 Oct 2022 09:10:44 +0200
+Message-ID: <CAK1Nf77W=_7xnDfEjKr=N9Ot0WSgzchEJqJ5_PXOMcvfiQKd8Q@mail.gmail.com>
+Subject: Re: [PATCH] arm: dts: rockchip: add crypto node for RK322x
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	Alex Bee <knaerzche@gmail.com>, Corentin Labbe <clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_170425_111555_47CF75EA 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20221020_001113_053737_FCAD5BAB 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +86,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We can't safely probe a dual-DSI display asynchronously
-(driver_async_probe='*' or driver_async_probe='dw-mipi-dsi-rockchip'
-cmdline), because dw_mipi_dsi_rockchip_find_second() pokes one DSI
-device's drvdata from the other device without any locking.
+> Hi,
 
-Request synchronous probe, at least until this driver learns some
-appropriate locking for dual-DSI initialization.
+Hi Johan,
 
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
+>
+> Compatible strings must SoC orientated.
+>
+> Something like:
+> compatible = "rockchip,rk3228-crypto", "rockchip,rk3288-crypto";
+>
+> This string must be add to YAML document:
+> https://lore.kernel.org/linux-rockchip/20220927075511.3147847-25-clabbe@baylibre.com/
+>
+> The status of that serie is unknown to me.
+> Not sure by who or when that is going to be merged.
+>
+> Johan
 
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+thanks for the feedback, this is my first kernel patch.
+Maybe at this point it is worth trying to combine the two jobs !?
+Or do I still have to modify my patch asking only to add the string in
+the yaml !?
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index d222c6811207..528ddce144e5 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1689,5 +1689,11 @@ struct platform_driver dw_mipi_dsi_rockchip_driver = {
- 		.of_match_table = dw_mipi_dsi_rockchip_dt_ids,
- 		.pm	= &dw_mipi_dsi_rockchip_pm_ops,
- 		.name	= "dw-mipi-dsi-rockchip",
-+		/*
-+		 * For dual-DSI display, one DSI pokes at the other DSI's
-+		 * drvdata in dw_mipi_dsi_rockchip_find_second(). This is not
-+		 * safe for asynchronous probe.
-+		 */
-+		.probe_type = PROBE_FORCE_SYNCHRONOUS,
- 	},
- };
--- 
-2.38.0.413.g74048e4d9e-goog
-
+Thank you
 
 _______________________________________________
 Linux-rockchip mailing list
