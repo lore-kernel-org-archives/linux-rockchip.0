@@ -4,43 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B1DC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 12:17:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BEBC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 12:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PWUygPQeohHV0ixXxjEb3sE3q73r4F+SdwiCiHKzHJ0=; b=pTOHUJe5i8vQwW
-	ZrQyEEo3os6ZMEFgIoIUuTPZ2eQoCptBbcBy7uIGXq0j/OYzpns3EyWcCCNS2AwE8atq8czWOc1VV
-	F+qrIEt61gs6wtjmCMoVigKNK6yF/aXNAQz04ZUevgh8JhVTCTrIQ4x3aptq1J2vSRJhPgQaqqTzg
-	karf3O4082um9PaMD2vhoDmu6yjUJbBoZ+8zdPGy4C0AHBCrB0nPKrDDE1M3xqxeHPR/LGf7ilKIR
-	YdAE/HaX+ZQlQ7UcC5MFXkn9nDwAq3jDc//TFZMQP0+0rN9EagMOU9cq//ztddR6kjzNxdlNTgag4
-	vvPBa6xjQnjA8hdIZaRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WI0s7xD9xfvPwaEehKwwBar58y2eoh/UOcDgtNkRYE4=; b=Q5/07OH6dn21wlH+5nY/4MRDkc
+	dB4iQCuRVMjKMHyhg9uCbrDrJW10ts8sdRVwv7ChmM3hLxwFawcijSHVP4Yv5E48jnFgiFXvfoX0k
+	mYgJ7WqptSwbCvs7ZFwsqx6hty4Ar9hYiiMDN7iiJz7OWRR/NcjUomz7EGtBv7ZxiT9jNb/m6IiYp
+	OIeVLpoPOQGNiIe3F/kXTFN81yn5QMYJbz5paX+RWLGP/vzFKY7/Qbf8dc6ae2qcDqQiaannBXJK9
+	7zONxC8MD2mgFCxD+VkWkERX0PBUEheHC1pv8CuVI8YoYal9/TJ4zbVS7yqbhgbNtYJbMOX6Z0An9
+	4HYVyAgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUTq-00Edy7-4f; Thu, 20 Oct 2022 12:16:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1olUiO-00EolS-MW; Thu, 20 Oct 2022 12:32:00 +0000
+Received: from mail-dm6nam10on2061.outbound.protection.outlook.com ([40.107.93.61] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olTf0-00E2iI-FQ; Thu, 20 Oct 2022 11:24:28 +0000
-Received: from p57b7734d.dip0.t-ipconnect.de ([87.183.115.77] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1olTev-00062S-61; Thu, 20 Oct 2022 13:24:21 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Michele =?ISO-8859-1?Q?Zuccal=E0?= <ardutu@gmail.com>
-Cc: Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Alex Bee <knaerzche@gmail.com>, Corentin Labbe <clabbe@baylibre.com>
-Subject: Re: [PATCH] arm: dts: rockchip: add crypto node for RK322x
-Date: Thu, 20 Oct 2022 13:24:20 +0200
-Message-ID: <5768534.MhkbZ0Pkbq@phil>
-In-Reply-To: <CAK1Nf75B-4wzM3pafaOVHCD9WugT3YPjphbEq25-WLRGh3Jhbw@mail.gmail.com>
-References: <Y1AqBnPSyu7PpiwP@deskilmich.example.net> <9009700.CDJkKcVGEf@phil> <CAK1Nf75B-4wzM3pafaOVHCD9WugT3YPjphbEq25-WLRGh3Jhbw@mail.gmail.com>
+	id 1olU5L-00EHcb-Fe; Thu, 20 Oct 2022 11:51:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eZGgRa3kdGSuCZRm+Hv4TjScY2SIvPHeWTGnviJGzfM7wLx+OVUHPdlhHOXQ1DuZrIMk9wSurTH+m5Jk5y9by2wfpSLowaS9ADSG0IlqTrGrZqf9gkwBqJ5IeAWknwaNaEVxArsqbiZAwhwipP/e1hdfbXMhR2+Ha3crfw5f1zP7wiWX23tx9AfSfg64vgM7IKtfOgyBgkLfhwu1btCayvtujR/pZ/tR0Mu/0n+F2u3UaBTu999vcMA8iQ2NBvuMm4eiRmRMvnMrHFl1koz3dMel9Jye6zhZquUMubYH//BaA9iEgntTdMvezAu1V3a3AlNx3e5ze15RxGQhQGudAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BkjpM06ND/1tPS8vCFaUA1j7bWQXJk3S6+Ma6y4+cfY=;
+ b=l8qbIUvirfxoM99SNeSfKNWvMb3dFtEv1yFv9HfbKP/Kb/MjjJAwfGOgu80xJ0NZF4XOXMrvUv/bi9H+ObYYX/N6ASiTlDCDhsG0DHQsOOGBKZ7FV4TNK12ykqA0gM4G8GLgqh41RN1pddJV/0s/Tq5CtykrPl/iRMJ3BZ+VXO06K5DbCIL2ImHFJiblER6bcwScDIHvSBWvZhFCCLCm7tmefa+1QKmhr5G5/X39vjIBoxZOnEG800ukSD3WDZNg5tX7pOvD6nc9bSGA0Kohtlj34nROReglIFe8eMVJdiIz4A2Wrj6t5uCaa4tdJxWXFmP4CEyiUPHrfKFGvRcZyQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BkjpM06ND/1tPS8vCFaUA1j7bWQXJk3S6+Ma6y4+cfY=;
+ b=dsyeXoJNcHCjbzP4ZNAVYLXgu0pe8A+opYJYBFnk84JO9MhqSCoYaye+ObyrUo5CQTs87GSP0PNtSul5zL+fMn9m80yN9Mxs51/cR8XcXWLhiAc+tZwEOi1ysx62cUnD0AtYywf/MQYRwvuRQuJ9Nz9gX0iMj99ArryPoQtcey8=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com (2603:10b6:408:43::13)
+ by MW4PR12MB6898.namprd12.prod.outlook.com (2603:10b6:303:207::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.29; Thu, 20 Oct
+ 2022 11:51:34 +0000
+Received: from BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::805b:58b6:1f27:d644]) by BN8PR12MB3587.namprd12.prod.outlook.com
+ ([fe80::805b:58b6:1f27:d644%6]) with mapi id 15.20.5723.034; Thu, 20 Oct 2022
+ 11:51:31 +0000
+Message-ID: <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
+Date: Thu, 20 Oct 2022 13:48:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 01/21] drm/amdgpu: Don't set struct drm_driver.lastclose
+Content-Language: en-US
+To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
+ airlied@gmail.com, sam@ravnborg.org, javierm@redhat.com, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com
+Cc: linux-hyperv@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ nouveau@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ xen-devel@lists.xenproject.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ spice-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ freedreno@lists.freedesktop.org
+References: <20221020103755.24058-1-tzimmermann@suse.de>
+ <20221020103755.24058-2-tzimmermann@suse.de>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+In-Reply-To: <20221020103755.24058-2-tzimmermann@suse.de>
+X-ClientProxiedBy: AM5PR1001CA0013.EURPRD10.PROD.OUTLOOK.COM
+ (2603:10a6:206:2::26) To BN8PR12MB3587.namprd12.prod.outlook.com
+ (2603:10b6:408:43::13)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8PR12MB3587:EE_|MW4PR12MB6898:EE_
+X-MS-Office365-Filtering-Correlation-Id: 34bb9327-0e2d-47ac-fb3c-08dab2916e16
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	djglQBEcOzQigVniLbe7Uf01Ze6y6L18CCWR2e3mm2E9AzSJ1dwV+R9sPDPXx1A0eWzcwN9YUwpJcH5t5lDYt8a2S3OOz4ouFnAvkOiZmwqnMV9iuwXW25FJ9kjsfDbwGJkT7TgyjGnN44KeQQjy4ZrJeyk/f0GIiIHR9a9IjFOhNx/Z1RfFqa0I/bhvNXRgm2zjwB7e01lEEn80TTf1cKy8g8hCCFE2XpfDIpG+0VwA3xQbDrCnNvu5FvJgW8iY6Vi4W5OSKweYsYGNp4n6gr6A0nKoez9CLbTESEbneiGYKRkE7a4biikyvj8Os0QTiSYK8AS5LUYhj7chpPGfZLuIYwy9CuJQTbs84z/GXy+7/1SzfhsrNnpgo0895gXIwmQt0rDnk7/jcw/6z8MsUC6Wohh4Tw1h7nvtCD+VKTbRR4Q2N3uRzI3fNHsn20o0DadkRUci7fmPE519U9990lvL3F7E/UmaWxTYjJffWnyuqRRK1+ble/q7/zQn37U3/ntUtHzCoJPUFWVQCNni+b+cNvUTis5Ko9VhihiorGXCPuberCeKqVHTN6dALg8D3TMOxJjAXyAxnFC9NmEb+9cpJ+n8JXn0MG+hlQYb5G9KtPOE73WJ/iLT3UkJehD07nkhzgdEx/e/DQegQMNTt52NXTPFUJRXTDl4Nswuq2u0jWPyF9pPEoLfSdAz1J2VKUnnvQTxlrYPx8i0GVW6DfSVsJX1ai9iEyELVV/jTK86xzG+FMW1Pqn5bj5xMFNxd8FRB78bF/t4oQZan14UkaO5EKNcXz1LE+k5omCyxfI=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN8PR12MB3587.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(39860400002)(136003)(346002)(396003)(376002)(451199015)(6512007)(26005)(6666004)(478600001)(83380400001)(186003)(7416002)(6506007)(5660300002)(2616005)(66556008)(316002)(41300700001)(4326008)(66946007)(6486002)(8936002)(66476007)(8676002)(31696002)(86362001)(36756003)(38100700002)(2906002)(31686004)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?NGR3cjIySk43T2JMVlU0NnRNVWdGcUFnNElKV3FWSlVncC8waUlFRlBPamls?=
+ =?utf-8?B?ckxnR1V4Y2JUYWhsZGFNemdrSXBYOUhlNldFZTZ1Q3NDOWtCelpQVkRwQkE5?=
+ =?utf-8?B?NDRTc2N3T3VydE1ma2pyaEdrcFZmZW1iVTlsY2ZYMXZuQ0FBYkF6aUFhZ3VI?=
+ =?utf-8?B?OE9JbFFXeDhVSTdsblY3cWdUUUh4TmorTFpPRm11eVFwYzgwU2J3UGpTUjdz?=
+ =?utf-8?B?TFdVSndhVDQxRVdxbVcrczA4YnpHWHZROHVncnJVckkyZHc4Q0tqM2V4VlBo?=
+ =?utf-8?B?Yk5WSFcxQVdEUzhXRm1TUHgyUnhZcnArZG5XQ2gyNFZYSzFlN3lBdmRUUEpk?=
+ =?utf-8?B?SkdmR29HNnNHWk9iWW0xUjZaWlltL1hmZE9NaVRKU2NSeUNkSkU3dGozbHFV?=
+ =?utf-8?B?alR4d3QrZnROOG5QU1p2dHNvbkozdWUvdjB5QThwZitmTi9lZEVnRm1Ra2hC?=
+ =?utf-8?B?anZETzJnUDRwQUtjSWMrQ3lFWjhjcTRzOHlPcVhndUF1OTBrYWt3V0JrYTBo?=
+ =?utf-8?B?d0ErU0xnWlpmbWJKcm94VEg2YVlmRnB0OFIvMkgxTEpvd05sbVhKRGkzL3JO?=
+ =?utf-8?B?Q1BEUWpsSVdXUnBTVkhYYjVmcllDdGhudjFjYkJ1OHFnTnE0MFprUzFGaFJt?=
+ =?utf-8?B?YTRWUUVCQ0NQczRjRjFjblRBTDdFZ3RoaXo1Yy9LS09MTGJIR1NLd0FmUTNS?=
+ =?utf-8?B?aFdXTXgyU0dTTVcrcGQ4NVhhUHNqZnNmWUUzbWlPdW00Y3ZyWUF1eE5sc1Nq?=
+ =?utf-8?B?ek50Q0pveXpxNmRIRWkwS3dhb3lmZFhJcHk0YnJPMU1DTXRMS05WWXlFdHpz?=
+ =?utf-8?B?RlZXRDA5c0x0Skt4SkEwZmUxWFZoZ205WUJsc2NVbXkvZFA0bDNQQmNvRFh6?=
+ =?utf-8?B?dmhwNzBFVDlXZ0puQ0I5Mi9Wb1V2QStybzVXSkJPUjErZ0hLbG02L2hnZDVx?=
+ =?utf-8?B?Tmt1TzVtbW5mM21Pb0hRSTl4Z2hUdEhBMzRTQTYzY1FNeGV3TWxtZXZzYTJN?=
+ =?utf-8?B?cnFEQkdUMWE1bGM2QzVPK3JoQWZLejNnc2pGYjhaZm5YQ2lrelhGei94djNo?=
+ =?utf-8?B?SkxCRDIzSUw1S21ZdXAzUW8zK25JTWd0OU1IbXZoZEg5QlFPWFhUZHpraDZn?=
+ =?utf-8?B?Q1ZNUG0vNm9jeEVSTTVKUTVQYzlvNDFnMklrK3ljZy9PcDA2cXhCSW14Z3Fl?=
+ =?utf-8?B?aE80WGxDb1o4NTBmV28wVXhzRGJRV0hoQk1pUnUzQ2U0VlFTZk9ZMlBaajBu?=
+ =?utf-8?B?T0wrV3U4VE16cW50VWE5M2YzdVJYRnFTMVllR0htK0RjTE1qNlR2TDhJa2N4?=
+ =?utf-8?B?aExYaGx1RDROOFRWdlAwWEFjYzIvM1VDNkRVWElESjZ2WUV6QVNjVW1nL2Uv?=
+ =?utf-8?B?SWhuVDExdzJKbnZPUkh0RHdlMnJGdFp3eUt4eitOckxyZXIwUEhEb0I0alBE?=
+ =?utf-8?B?TFQ3OUUwb21tWFVSZ2pFUDVMMkUxSlFEY0hoUkhJcXJIRTM4ZXJMRWRlVm5V?=
+ =?utf-8?B?d3FjTExlWm1lWHlpQjNpUW1Mc3p0SkRXK1l0QnFDRTZxZ2xpcXNQNjVvb1Q4?=
+ =?utf-8?B?SWtvTDhuU3pFcHZoQVVvUGp6d1RXOXZoT3pEbFBIcDZtYXNWaWNMMWMySStt?=
+ =?utf-8?B?NkhmRXU4ZFk4Mm5XWkJKZ2UvWmI4ZTMyVmQ3NTZYbFFzRnVjazllbm1wWFRz?=
+ =?utf-8?B?TVRSempBYzlXNThpcVBXQWY3QTYvSVVwMEw5dXRoUGIwd2lJSm9YMStnYTQr?=
+ =?utf-8?B?UUZYNnM2YzdlQ095d1ozZUk2ZXZqTXlsTERQZVN1aXp4QURrZEhQYnlCYUZl?=
+ =?utf-8?B?cjVNZWZ6N3hjbGF2ZXFxUFBOay8vWndOTXFIZFZVWUZUM3prQWNMM1Z5NFFN?=
+ =?utf-8?B?M09uczcvS3R6dVZzVEdzbGpMNWxvTWdMbTRVVUUwZFVUL3lGQU90V0kyRU52?=
+ =?utf-8?B?L2U5OUVzclpiYk05OHVFL29YSC9COTgvZzV2cDRFTnczOXFkUEQrRVdINmV4?=
+ =?utf-8?B?NUw1T3RjODJlVEE5Q2k2VUNaYXJWSEF6THFMK1VHQzMwTEZicy8vaXZFYTNB?=
+ =?utf-8?B?RWRJc3pGMjRzM3BiOURCZVQ2c3NwN0o1OTdxYVplS3pmakdpaUk1TXc1bUZs?=
+ =?utf-8?Q?81xaw8csJVBvRA3mTABTFHhlz?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 34bb9327-0e2d-47ac-fb3c-08dab2916e16
+X-MS-Exchange-CrossTenant-AuthSource: BN8PR12MB3587.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2022 11:51:31.6004
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5OeVYNFFTSt7GCUp4ykoNFJm7pu1DjoecANWmf//HoEVyDQ3WU2UDqJkXgyXYuB7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6898
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_042426_564149_BA1D37BF 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20221020_045140_905087_AB81C892 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -52,66 +148,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michele,
+Am 20.10.22 um 12:37 schrieb Thomas Zimmermann:
+> Don't set struct drm_driver.lastclose. It's used to restore the
+> fbdev console. But as amdgpu uses generic fbdev emulation, the
+> console is being restored by the DRM client helpers already. See
+> the call to drm_client_dev_restore() in drm_lastclose().
 
-Am Donnerstag, 20. Oktober 2022, 13:13:10 CEST schrieb Michele Zuccal=E0:
-> > no worries, we'll get you through it :-)
-> >
-> =
+???
 
-> thank you
-> =
+The commit message doesn't match what the patch is doing. You are 
+removing output_poll_changed instead of lastclose here.
 
-> >
-> > actually you want to go the following route:
-> >
-> > (1) pick up
-> > - https://lore.kernel.org/all/20220927075511.3147847-25-clabbe@baylibre=
-.com/
-> > - https://lore.kernel.org/all/20220927075511.3147847-26-clabbe@baylibre=
-.com/
-> > as a base to work on
-> >
-> > (2) create a patch to add your compatible.
-> > I _think_ after that, the compatible block should looks
-> > something like:
-> >
-> >   compatible:
-> >     oneOf:
-> >       - const: rockchip,rk3288-crypto
-> >       - const: rockchip,rk3328-crypto
-> >       - const: rockchip,rk3399-crypto
-> >       - items:
-> >           - const: rockchip,rk3228-crypto
-> >           - const: rockchip,rk3288-crypto
-> >
-> > to handle the new dual element compatible.
-> >         make dt_binding_check
-> > should tell you about a wrong format.
-> >
-> > (3) modify your dts patch to use the two compatibles
-> > (4) export patches by
-> >         git format-patch -2 --cover-letter
-> > and mention in the cover-letter the dependency on the
-> > yaml conversion.
-> =
+Did something got mixed up?
 
-> very clear. But excuse the stupid question, this way it becomes a new pat=
-chset
-> and not the v2 of this patch, right?! Will this patch be automatically
-> ignored ?!
+Cheers,
+Christian.
 
-The new patchset still should become v2, as it still addresses
-your overall goal of adding crypto support for the rk3228.
-
-
-Heiko
-
+>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>   drivers/gpu/drm/amd/amdgpu/amdgpu_display.c       | 1 -
+>   drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 2 --
+>   2 files changed, 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+> index 23998f727c7f9..fb7186c5ade2a 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+> @@ -1224,7 +1224,6 @@ amdgpu_display_user_framebuffer_create(struct drm_device *dev,
+>   
+>   const struct drm_mode_config_funcs amdgpu_mode_funcs = {
+>   	.fb_create = amdgpu_display_user_framebuffer_create,
+> -	.output_poll_changed = drm_fb_helper_output_poll_changed,
+>   };
+>   
+>   static const struct drm_prop_enum_list amdgpu_underscan_enum_list[] =
+> diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> index f6a9e8fdd87d6..e9a28a5363b9a 100644
+> --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> @@ -82,7 +82,6 @@
+>   #include <drm/drm_atomic_uapi.h>
+>   #include <drm/drm_atomic_helper.h>
+>   #include <drm/drm_blend.h>
+> -#include <drm/drm_fb_helper.h>
+>   #include <drm/drm_fourcc.h>
+>   #include <drm/drm_edid.h>
+>   #include <drm/drm_vblank.h>
+> @@ -2810,7 +2809,6 @@ const struct amdgpu_ip_block_version dm_ip_block =
+>   static const struct drm_mode_config_funcs amdgpu_dm_mode_funcs = {
+>   	.fb_create = amdgpu_display_user_framebuffer_create,
+>   	.get_format_info = amd_get_format_info,
+> -	.output_poll_changed = drm_fb_helper_output_poll_changed,
+>   	.atomic_check = amdgpu_dm_atomic_check,
+>   	.atomic_commit = drm_atomic_helper_commit,
+>   };
 
 
 _______________________________________________
