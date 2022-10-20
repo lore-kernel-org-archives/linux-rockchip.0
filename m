@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57765C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 21:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9660C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 00:04:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5l0FL5W6JNXOANf7G6rfbbLZmKxfmIiASMKqijCx3DE=; b=PmsgqeM3TqsVc4
-	KPzViVcLrmvG9BK8iVnyfcDLEC33dxC8SmA40rrDZxo1kYmRbb7v/P8+w56I8lzxyFgRHKcmyvEky
-	tZh0mxt0zJII2FcuFhHdwS/8r9Ak2mGnBNCWhbNqMjpkJxbqJYjrlcqS2/ixBseYgjPX+SJCN93NG
-	fm42dHKkX7M1DDwAZfhP1Q1j5a741cuD5svpH4VlfsXjCYvX1/FsFLkDPXS73ryNlYFHDMozFqzq0
-	13tk7175kQzAWNre3IoftltQRvda1VOurnBKaB6C9YTGwoEGIlBtoMSEgYykg6bcdCQfWb4I2C5YX
-	Mo/VCf889Ki9gxwlJ7AA==;
+	List-Owner; bh=GqgdMw3hNUvdoYaXra6J77DIEsF92jEjoFrOMt26RsY=; b=eqPKeQIXES11dZ
+	T5HBwHicwtsElYf0zZkZ51eHu/juYqzNzCfr9rFF0NoUFbMBjRXW40iErfZnllEa/Z3eNO7wPWjQO
+	gwhm3npJ0j3qxVHj2yK0H41FS77ZZ27e+FcQlxoKyi85a94jw96MzEQaObNRHbZymfYKkjuQapBTb
+	oQL5iIl06j2W9WpClpxxsTg8tPLmWno+peyJgE7ecGJsLt1AHuEjxoHcB1Dh2XAHkq93kRDRGpA02
+	X8VbesWgrxkZ+nfDtroPlzdTa/xYP46wza5VakEDQhAMJyC7RuqwPSvdCSXKnDnuOXDDcQvTEyrQR
+	7JUtr7e77cTPRMpHFuLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olGif-005Hfe-Kg; Wed, 19 Oct 2022 21:35:21 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1olJ2v-006xa7-6f; Thu, 20 Oct 2022 00:04:25 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olGiR-005Hcc-Pq; Wed, 19 Oct 2022 21:35:12 +0000
-Received: by mail-ed1-x535.google.com with SMTP id e18so27156959edj.3;
-        Wed, 19 Oct 2022 14:35:06 -0700 (PDT)
+	id 1olJ2s-006x2g-Fi
+	for linux-rockchip@lists.infradead.org; Thu, 20 Oct 2022 00:04:23 +0000
+Received: by mail-pg1-x536.google.com with SMTP id bh13so17710170pgb.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yiqpubSSRjqi+xo3Zt6mRBDg4WQe+McsHWUueSRR8rc=;
-        b=ZVPAHbECm9m1eYbMBBh9dm9FZ/PRwITiBRs6KLA8kM4fWSiN6WK8hRCLJA3OYDEkrm
-         ajNYPk9TcK/15qfelg34GMb1JG5u6n68n4/ipxOk0IqHwLoTULy3Wxv/iqWvsR0oBjjn
-         9ynUYvg6TuCuclTLiQ3uctoTFs6UQkUCRuz4qMOV0dMPouTfTaYNqDq+Jywr4gFmAg8x
-         dfFIODgyW5KcsvbZyrGeFA9B5ZgfmmxKwD4UQXIZL0owjwst7MYYXyPsbjGMVo8k61DI
-         P1ZBdj9Zn38YNki9eyU0x1HVKadKQdTzYQYQtAyyPzIJlQJmxBpnHRk5qChQ8D1jwO0z
-         aQVA==
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=sTMXfwPxByKhRbLMaBxfNCc3mPRoF7RiiHgqUtdhFi8=;
+        b=NzPUtom58NR34m2Vw7sS73ERU30rhe3RyOvvFRL8c790qf5KuZz3KvN69al/nH052u
+         65SRaYt/WHp0PKjIXDaLYCni7KlNbgouTs8KNf5Fy7byqei7PQ3KRgBHVXjhzqsdhzY0
+         or9yFqOg4L7gMu66IIQ9eWmxSPJ7xk7vRk2RQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=yiqpubSSRjqi+xo3Zt6mRBDg4WQe+McsHWUueSRR8rc=;
-        b=CCTC8tM6+O4TDAt6MdGQC5NFcS0VKF61VZWsG0N+y7yqFulP7UYpOpcynzT/TjvbAd
-         r60H0jjbUCneQP+Jk1UqCMvgiVy/xEcRYHN3k2lvwxlthWsmeXT+vu4SFKgGNd2r0Q4M
-         vmcocNuxROqhFEik9ct3DoBZs7Zjxk6qYoh0KG4luGTOmye5ZKxxZdw5gpu0WZR5VBv5
-         1UAw2jJ5d6bKFcZzZ4E2iXhki3dBIP8X4+eYIIARxdJh0EVAS8o5miEUkc3TGjr9NxCk
-         Eh2khf95YcJlNlvYgUd1yhpsRnUNqZPJZkxSFxWqAhvSVis0FyBynFkCWOML93Zosjvb
-         iVyg==
-X-Gm-Message-State: ACrzQf0eOII7l/62iLovLZb9BeXY/oXb0HHBXUTgFz0lnuD5hvkT47Nl
-	wkkl0SXD0E8xvkj3Dyubvns=
-X-Google-Smtp-Source: AMsMyM5p5Q+y3GHvQ1uQlf0tVyPoWXJvSJ0/bWAEhhHlK32H8om8vlPlJ0nMYGLQnHUtl0k07WGQmQ==
-X-Received: by 2002:a05:6402:360d:b0:459:5f40:5b0a with SMTP id el13-20020a056402360d00b004595f405b0amr9017951edb.168.1666215305362;
-        Wed, 19 Oct 2022 14:35:05 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id bs15-20020a170906d1cf00b0077958ddaec6sm9232118ejb.186.2022.10.19.14.35.04
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sTMXfwPxByKhRbLMaBxfNCc3mPRoF7RiiHgqUtdhFi8=;
+        b=5W4rvc78w94hKrvysWXMu1NaOD18F3sWkwmiPvUCSstjllW6xSKYy0Ausz4xbrziZJ
+         env71q6aw1Aa3MCnkUZxu1Nfr3Eobbeit61s2o+4g8E2+RP+e6y8ipMTuOUcR+pa6sfx
+         5RvNj1ivDnbzJjie0G5vnqFt6d1SEhbn56477qH6CucKTw0+CTc8PnzJPwsK626jR9LG
+         x0MIYjsDIcl9Z14BlmhWWFnrY5QfWhZY5T79PXEXIz+yT2iPYCIBXu6cOiBHd6QLByHo
+         ttovZGDfc12FeFabCrtDgaYk8+YH0s5cAtHgl/PbQWlKF8NZ1rtr/BuCer4hMxpddpfq
+         Q2Rg==
+X-Gm-Message-State: ACrzQf2GgwqAaTbuk7bGwX+lwwasxquCjGbVzVAQpu+5oRRVqmIlVC69
+	JtmQGjVPxOrI7pYvSN7KS84/3Q==
+X-Google-Smtp-Source: AMsMyM664xBzQRRznQW+wpuvkN2DiM8TEUvDJZUSO7BbmhIQUEq/kvX65aGrSxbs3usLThugxlDXJA==
+X-Received: by 2002:a63:4283:0:b0:457:dced:8ba3 with SMTP id p125-20020a634283000000b00457dced8ba3mr9328251pga.220.1666224261493;
+        Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
+Received: from localhost ([2620:15c:9d:2:57b7:1f0e:44d1:f252])
+        by smtp.gmail.com with UTF8SMTPSA id lb13-20020a17090b4a4d00b0020a825fc912sm459119pjb.45.2022.10.19.17.04.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Oct 2022 14:35:04 -0700 (PDT)
-Message-ID: <ebe91504-c5df-99e4-635f-832218584051@gmail.com>
-Date: Wed, 19 Oct 2022 23:35:03 +0200
+        Wed, 19 Oct 2022 17:04:21 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+	Helen Koike <helen.koike@collabora.com>,
+	Brian Norris <briannorris@chromium.org>,
+	stable@vger.kernel.org
+Subject: [PATCH 1/2] drm/rockchip: dsi: Clean up 'usage_mode' when failing to attach
+Date: Wed, 19 Oct 2022 17:03:48 -0700
+Message-Id: <20221019170255.1.Ia68dfb27b835d31d22bfe23812baf366ee1c6eac@changeid>
+X-Mailer: git-send-email 2.38.0.413.g74048e4d9e-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1] drm: rockchip: remove rockchip_drm_framebuffer_init()
- function
-To: john@metanate.com
-Cc: heiko@sntech.de, hjc@rock-chips.com, airlied@gmail.com, daniel@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_143507_876543_FFF79E2E 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20221019_170422_592233_2F358977 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,97 +91,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The function rockchip_drm_framebuffer_init() was in use
-in the rockchip_drm_fbdev.c file, but that is now replaced
-by a generic fbdev setup. Reduce the image size by
-removing the rockchip_drm_framebuffer_init() and sub function
-rockchip_fb_alloc() and cleanup the rockchip_drm_fb.h header file.
+If we fail to attach the first time (especially: EPROBE_DEFER), we fail
+to clean up 'usage_mode', and thus will fail to attach on any subsequent
+attempts, with "dsi controller already in use".
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Re-set to DW_DSI_USAGE_IDLE on attach failure.
+
+This is especially common to hit when enabling asynchronous probe on a
+duel-DSI system (such as RK3399 Gru/Scarlet), such that we're more
+likely to fail dw_mipi_dsi_rockchip_find_second() the first time.
+
+Fixes: 71f68fe7f121 ("drm/rockchip: dsi: add ability to work as a phy instead of full dsi")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 43 ----------------------
- drivers/gpu/drm/rockchip/rockchip_drm_fb.h |  6 ---
- 2 files changed, 49 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index 092bf863110b..409eaa1bf092 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -25,35 +25,6 @@ static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
- 	.dirty	       = drm_atomic_helper_dirtyfb,
- };
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index bf6948125b84..d222c6811207 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -1051,23 +1051,31 @@ static int dw_mipi_dsi_rockchip_host_attach(void *priv_data,
+ 	if (ret) {
+ 		DRM_DEV_ERROR(dsi->dev, "Failed to register component: %d\n",
+ 					ret);
+-		return ret;
++		goto out;
+ 	}
  
--static struct drm_framebuffer *
--rockchip_fb_alloc(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cmd,
--		  struct drm_gem_object **obj, unsigned int num_planes)
--{
--	struct drm_framebuffer *fb;
--	int ret;
--	int i;
--
--	fb = kzalloc(sizeof(*fb), GFP_KERNEL);
--	if (!fb)
--		return ERR_PTR(-ENOMEM);
--
--	drm_helper_mode_fill_fb_struct(dev, fb, mode_cmd);
--
--	for (i = 0; i < num_planes; i++)
--		fb->obj[i] = obj[i];
--
--	ret = drm_framebuffer_init(dev, fb, &rockchip_drm_fb_funcs);
--	if (ret) {
--		DRM_DEV_ERROR(dev->dev,
--			      "Failed to initialize framebuffer: %d\n",
--			      ret);
--		kfree(fb);
--		return ERR_PTR(ret);
--	}
--
--	return fb;
--}
--
- static const struct drm_mode_config_helper_funcs rockchip_mode_config_helpers = {
- 	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
- };
-@@ -106,20 +77,6 @@ static const struct drm_mode_config_funcs rockchip_drm_mode_config_funcs = {
- 	.atomic_commit = drm_atomic_helper_commit,
- };
+ 	second = dw_mipi_dsi_rockchip_find_second(dsi);
+-	if (IS_ERR(second))
+-		return PTR_ERR(second);
++	if (IS_ERR(second)) {
++		ret = PTR_ERR(second);
++		goto out;
++	}
+ 	if (second) {
+ 		ret = component_add(second, &dw_mipi_dsi_rockchip_ops);
+ 		if (ret) {
+ 			DRM_DEV_ERROR(second,
+ 				      "Failed to register component: %d\n",
+ 				      ret);
+-			return ret;
++			goto out;
+ 		}
+ 	}
  
--struct drm_framebuffer *
--rockchip_drm_framebuffer_init(struct drm_device *dev,
--			      const struct drm_mode_fb_cmd2 *mode_cmd,
--			      struct drm_gem_object *obj)
--{
--	struct drm_framebuffer *fb;
--
--	fb = rockchip_fb_alloc(dev, mode_cmd, &obj, 1);
--	if (IS_ERR(fb))
--		return ERR_CAST(fb);
--
--	return fb;
--}
--
- void rockchip_drm_mode_config_init(struct drm_device *dev)
- {
- 	dev->mode_config.min_width = 0;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.h b/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
-index 1a696521096d..bae4e079dfb1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.h
-@@ -7,11 +7,5 @@
- #ifndef _ROCKCHIP_DRM_FB_H
- #define _ROCKCHIP_DRM_FB_H
+ 	return 0;
++
++out:
++	mutex_lock(&dsi->usage_mutex);
++	dsi->usage_mode = DW_DSI_USAGE_IDLE;
++	mutex_unlock(&dsi->usage_mutex);
++	return ret;
+ }
  
--struct drm_framebuffer *
--rockchip_drm_framebuffer_init(struct drm_device *dev,
--			      const struct drm_mode_fb_cmd2 *mode_cmd,
--			      struct drm_gem_object *obj);
--void rockchip_drm_framebuffer_fini(struct drm_framebuffer *fb);
--
- void rockchip_drm_mode_config_init(struct drm_device *dev);
- #endif /* _ROCKCHIP_DRM_FB_H */
+ static int dw_mipi_dsi_rockchip_host_detach(void *priv_data,
 -- 
-2.20.1
+2.38.0.413.g74048e4d9e-goog
 
 
 _______________________________________________
