@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 856CAC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 11:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C42C43217
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 11:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bGQcJmtLRwWMGAqmuzITqAU8WTmi2Me6SDCJ8edsoFo=; b=hm4+wKnbzYwMmO
-	MuKx3s81duKoWTjm8MRWa6IrxzDnUgDaEqgLE4T9TZEIqkWMVkZdV1Tz/6BWlbq1ONMVYLR80044b
-	kiqM+CsS0kLXqY027R8vvT5hapUn0e+pVStgnEZVG/3rdWGhsjx+yLtbo9oiJEeow4S5quVfD8WrO
-	RcebNYRrsxeDanOi1RdePmf1HEIZUY+7t/ScTLAW/OfQf35sGYmenExliV9SPoWjCd0x8QP4pdW+L
-	V0v0wYyKTibH1dC+L4AiSNHyVAcy+ITc9TgRP7MblTa630als0gkiHpcg6IxZ6S1De1SZ1zvTlEAA
-	dkBLKmh7BnvF00HTT5oQ==;
+	List-Owner; bh=CzH7vtyjxAKDC/xbiQ/7vURSK5nn3PUGztDij6m9DoY=; b=ptASJrHdgA1Pmb
+	KT4wv1BPoNaR16jKgabWAx9Ge0VeZQS75mt2xR6TSETu62keaTQ0hS8WpRR8kT1BfH3DdtLi1aZNa
+	liZFKlUSiKNz5xotdqBheyk1CMtZP0OMOfBsMkm5k03zfC9LUk86WkQQmZZS3A8gnGsLoSvY3u0CF
+	EF+5kQe4dG3qRM0U66U/hTswb2khInTPDLKTfZc4dh1k3zGHdkr04DWBD8sPHSpcGsSTtS73HsENi
+	/RgN394Wf2wAyhm+synqxEAbdUhKQDaWWNRntr0qvYI0QQbGPN0E//l7XClG6Y1paFobFLBd0l9bH
+	Q3WcmWqZZDNvF2hLSPTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olU72-00EJIP-1w; Thu, 20 Oct 2022 11:53:24 +0000
-Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
+	id 1olU6t-00EJ8Q-4o; Thu, 20 Oct 2022 11:53:15 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olSwD-00Dee4-Vk; Thu, 20 Oct 2022 10:38:18 +0000
+	id 1olSwD-00Dedz-Rq; Thu, 20 Oct 2022 10:38:14 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 6426222B4D;
-	Thu, 20 Oct 2022 10:38:06 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 6BF8322B4A;
+	Thu, 20 Oct 2022 10:38:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1666262286; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1666262285; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mIcpJgbeqPNRftPv7Q4iDJZ6HW36+TLeNbJLj/Rhtmc=;
-	b=N/8J0ZK8TlQrP5MuDUFT352ZqaEtcH54y/j5pTXt7N3TgI2w7bd+xrImKYdts233ORrkL5
-	96bET5hbW0jJYocJOqg4OzXHlCJPGxknEB/FVdDBHax7Y/eSp5Z4DXiaSbNfQsUqhKhOdj
-	J2Jx0pUIYCEZPKgNcvZIeR4EGI3eKRI=
+	bh=W2hXo1ZXw+fT7jNTQpjjai6MaQuUlFJ3x4yHM5t/NT8=;
+	b=mXMxC8OO+HZ8qhzaLE8AfebgTyxZZ9tZZWp4b7x0BMlwJ5x9pus13/9bOEqPMw/ehUZ5Gm
+	NMWe1CLs7URfQKXJhFUMtaH9TNDwSCHSAXQngN6KK8AbjJnlteXfw2iY4Wy+qxQ++vc+C3
+	i2Xl+bGq47RvpsltfuDrJ24ofhw8TZw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1666262286;
+	s=susede2_ed25519; t=1666262285;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mIcpJgbeqPNRftPv7Q4iDJZ6HW36+TLeNbJLj/Rhtmc=;
-	b=R0s5ULDxkJmC55xxZ8WO3j2KQleS938cWUVKLDjw3qyEeAZZSyml7D/dHNB+DzxT2LycZH
-	zPCX9qzygK8x75DQ==
+	bh=W2hXo1ZXw+fT7jNTQpjjai6MaQuUlFJ3x4yHM5t/NT8=;
+	b=qUQDcrgRCPnFyYcZ51L8SJ9jf3CSuZOp6Fc/Q31scIHuqQyNIFoSnsX5swYKn3WKiqCoB1
+	s+8FMBlX9/Tru7AQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id DF56E13B72;
-	Thu, 20 Oct 2022 10:38:05 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id EDB6013B72;
+	Thu, 20 Oct 2022 10:38:04 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id gCa6NQ0lUWPPYwAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Thu, 20 Oct 2022 10:38:05 +0000
+	id kIkbOQwlUWPPYwAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Thu, 20 Oct 2022 10:38:04 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch,
 	airlied@gmail.com,
@@ -88,16 +88,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-tegra@vger.kernel.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 18/21] drm/fb_helper: Minimize damage-helper overhead
-Date: Thu, 20 Oct 2022 12:37:52 +0200
-Message-Id: <20221020103755.24058-19-tzimmermann@suse.de>
+Subject: [PATCH 16/21] drm/fb-helper: Call fb_sync in I/O functions
+Date: Thu, 20 Oct 2022 12:37:50 +0200
+Message-Id: <20221020103755.24058-17-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221020103755.24058-1-tzimmermann@suse.de>
 References: <20221020103755.24058-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_033810_288407_DA01E041 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20221020_033810_098673_61D74EAA 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,225 +114,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Pull the test for fb_dirty into the caller to avoid extra work
-if no callback has been set. In this case no damage handling is
-required and no damage area needs to be computed. Print a warning
-if the damage worker runs without getting an fb_dirty callback.
+Call struct fb_ops.fb_sync in drm_fbdev_{read,write}() to mimic the
+behavior of fbdev. Fbdev implementations of fb_read and fb_write in
+struct fb_ops invoke fb_sync to synchronize with outstanding operations
+before I/O. Doing the same in DRM implementations will allow us to use
+them throughout DRM drivers.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/drm_fb_helper.c | 90 ++++++++++++++++++++++-----------
- 1 file changed, 60 insertions(+), 30 deletions(-)
+ drivers/gpu/drm/drm_fb_helper.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
-index 836523aef6a27..fbc5c5445fdb0 100644
+index f6d22cc4cd876..379e0d2f67198 100644
 --- a/drivers/gpu/drm/drm_fb_helper.c
 +++ b/drivers/gpu/drm/drm_fb_helper.c
-@@ -449,12 +449,13 @@ static int drm_fb_helper_damage_blit(struct drm_fb_helper *fb_helper,
- static void drm_fb_helper_damage_work(struct work_struct *work)
- {
- 	struct drm_fb_helper *helper = container_of(work, struct drm_fb_helper, damage_work);
-+	struct drm_device *dev = helper->dev;
- 	struct drm_clip_rect *clip = &helper->damage_clip;
- 	struct drm_clip_rect clip_copy;
- 	unsigned long flags;
- 	int ret;
+@@ -2246,6 +2246,9 @@ static ssize_t drm_fbdev_fb_read(struct fb_info *info, char __user *buf,
+ 	if (total_size - count < pos)
+ 		count = total_size - pos;
  
--	if (!helper->funcs->fb_dirty)
-+	if (drm_WARN_ON_ONCE(dev, !helper->funcs->fb_dirty))
- 		return;
- 
- 	spin_lock_irqsave(&helper->damage_lock, flags);
-@@ -659,16 +660,12 @@ void drm_fb_helper_fini(struct drm_fb_helper *fb_helper)
- }
- EXPORT_SYMBOL(drm_fb_helper_fini);
- 
--static void drm_fb_helper_damage(struct fb_info *info, u32 x, u32 y,
-+static void drm_fb_helper_damage(struct drm_fb_helper *helper, u32 x, u32 y,
- 				 u32 width, u32 height)
- {
--	struct drm_fb_helper *helper = info->par;
- 	struct drm_clip_rect *clip = &helper->damage_clip;
- 	unsigned long flags;
- 
--	if (!helper->funcs->fb_dirty)
--		return;
--
- 	spin_lock_irqsave(&helper->damage_lock, flags);
- 	clip->x1 = min_t(u32, clip->x1, x);
- 	clip->y1 = min_t(u32, clip->y1, y);
-@@ -718,6 +715,7 @@ static void drm_fb_helper_memory_range_to_clip(struct fb_info *info, off_t off,
-  */
- void drm_fb_helper_deferred_io(struct fb_info *info, struct list_head *pagereflist)
- {
-+	struct drm_fb_helper *helper = info->par;
- 	unsigned long start, end, min_off, max_off;
- 	struct fb_deferred_io_pageref *pageref;
- 	struct drm_rect damage_area;
-@@ -733,17 +731,19 @@ void drm_fb_helper_deferred_io(struct fb_info *info, struct list_head *pagerefli
- 	if (min_off >= max_off)
- 		return;
- 
--	/*
--	 * As we can only track pages, we might reach beyond the end
--	 * of the screen and account for non-existing scanlines. Hence,
--	 * keep the covered memory area within the screen buffer.
--	 */
--	max_off = min(max_off, info->screen_size);
-+	if (helper->funcs->fb_dirty) {
-+		/*
-+		 * As we can only track pages, we might reach beyond the end
-+		 * of the screen and account for non-existing scanlines. Hence,
-+		 * keep the covered memory area within the screen buffer.
-+		 */
-+		max_off = min(max_off, info->screen_size);
- 
--	drm_fb_helper_memory_range_to_clip(info, min_off, max_off - min_off, &damage_area);
--	drm_fb_helper_damage(info, damage_area.x1, damage_area.y1,
--			     drm_rect_width(&damage_area),
--			     drm_rect_height(&damage_area));
-+		drm_fb_helper_memory_range_to_clip(info, min_off, max_off - min_off, &damage_area);
-+		drm_fb_helper_damage(helper, damage_area.x1, damage_area.y1,
-+				     drm_rect_width(&damage_area),
-+				     drm_rect_height(&damage_area));
-+	}
- }
- EXPORT_SYMBOL(drm_fb_helper_deferred_io);
- 
-@@ -877,6 +877,7 @@ static ssize_t drm_fb_helper_write_screen_buffer(struct fb_info *info, const cha
- ssize_t drm_fb_helper_sys_write(struct fb_info *info, const char __user *buf,
- 				size_t count, loff_t *ppos)
- {
-+	struct drm_fb_helper *helper = info->par;
- 	loff_t pos = *ppos;
- 	ssize_t ret;
- 	struct drm_rect damage_area;
-@@ -885,10 +886,12 @@ ssize_t drm_fb_helper_sys_write(struct fb_info *info, const char __user *buf,
- 	if (ret <= 0)
- 		return ret;
- 
--	drm_fb_helper_memory_range_to_clip(info, pos, ret, &damage_area);
--	drm_fb_helper_damage(info, damage_area.x1, damage_area.y1,
--			     drm_rect_width(&damage_area),
--			     drm_rect_height(&damage_area));
-+	if (helper->funcs->fb_dirty) {
-+		drm_fb_helper_memory_range_to_clip(info, pos, ret, &damage_area);
-+		drm_fb_helper_damage(helper, damage_area.x1, damage_area.y1,
-+				     drm_rect_width(&damage_area),
-+				     drm_rect_height(&damage_area));
-+	}
- 
- 	return ret;
- }
-@@ -904,8 +907,12 @@ EXPORT_SYMBOL(drm_fb_helper_sys_write);
- void drm_fb_helper_sys_fillrect(struct fb_info *info,
- 				const struct fb_fillrect *rect)
- {
-+	struct drm_fb_helper *helper = info->par;
++	if (info->fbops->fb_sync)
++		info->fbops->fb_sync(info);
 +
- 	sys_fillrect(info, rect);
--	drm_fb_helper_damage(info, rect->dx, rect->dy, rect->width, rect->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, rect->dx, rect->dy, rect->width, rect->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_sys_fillrect);
+ 	if (drm_fbdev_use_iomem(info))
+ 		ret = fb_read_screen_base(info, buf, count, pos);
+ 	else
+@@ -2327,6 +2330,9 @@ static ssize_t drm_fbdev_fb_write(struct fb_info *info, const char __user *buf,
+ 		count = total_size - pos;
+ 	}
  
-@@ -919,8 +926,12 @@ EXPORT_SYMBOL(drm_fb_helper_sys_fillrect);
- void drm_fb_helper_sys_copyarea(struct fb_info *info,
- 				const struct fb_copyarea *area)
- {
-+	struct drm_fb_helper *helper = info->par;
++	if (info->fbops->fb_sync)
++		info->fbops->fb_sync(info);
 +
- 	sys_copyarea(info, area);
--	drm_fb_helper_damage(info, area->dx, area->dy, area->width, area->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, area->dx, area->dy, area->width, area->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_sys_copyarea);
- 
-@@ -934,8 +945,12 @@ EXPORT_SYMBOL(drm_fb_helper_sys_copyarea);
- void drm_fb_helper_sys_imageblit(struct fb_info *info,
- 				 const struct fb_image *image)
- {
-+	struct drm_fb_helper *helper = info->par;
-+
- 	sys_imageblit(info, image);
--	drm_fb_helper_damage(info, image->dx, image->dy, image->width, image->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, image->dx, image->dy, image->width, image->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_sys_imageblit);
- 
-@@ -1035,6 +1050,7 @@ static ssize_t fb_write_screen_base(struct fb_info *info, const char __user *buf
- ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const char __user *buf,
- 				size_t count, loff_t *ppos)
- {
-+	struct drm_fb_helper *helper = info->par;
- 	loff_t pos = *ppos;
- 	ssize_t ret;
- 	struct drm_rect damage_area;
-@@ -1043,10 +1059,12 @@ ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const char __user *buf,
- 	if (ret <= 0)
- 		return ret;
- 
--	drm_fb_helper_memory_range_to_clip(info, pos, ret, &damage_area);
--	drm_fb_helper_damage(info, damage_area.x1, damage_area.y1,
--			     drm_rect_width(&damage_area),
--			     drm_rect_height(&damage_area));
-+	if (helper->funcs->fb_dirty) {
-+		drm_fb_helper_memory_range_to_clip(info, pos, ret, &damage_area);
-+		drm_fb_helper_damage(helper, damage_area.x1, damage_area.y1,
-+				     drm_rect_width(&damage_area),
-+				     drm_rect_height(&damage_area));
-+	}
- 
- 	return ret;
- }
-@@ -1062,8 +1080,12 @@ EXPORT_SYMBOL(drm_fb_helper_cfb_write);
- void drm_fb_helper_cfb_fillrect(struct fb_info *info,
- 				const struct fb_fillrect *rect)
- {
-+	struct drm_fb_helper *helper = info->par;
-+
- 	cfb_fillrect(info, rect);
--	drm_fb_helper_damage(info, rect->dx, rect->dy, rect->width, rect->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, rect->dx, rect->dy, rect->width, rect->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_cfb_fillrect);
- 
-@@ -1077,8 +1099,12 @@ EXPORT_SYMBOL(drm_fb_helper_cfb_fillrect);
- void drm_fb_helper_cfb_copyarea(struct fb_info *info,
- 				const struct fb_copyarea *area)
- {
-+	struct drm_fb_helper *helper = info->par;
-+
- 	cfb_copyarea(info, area);
--	drm_fb_helper_damage(info, area->dx, area->dy, area->width, area->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, area->dx, area->dy, area->width, area->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_cfb_copyarea);
- 
-@@ -1092,8 +1118,12 @@ EXPORT_SYMBOL(drm_fb_helper_cfb_copyarea);
- void drm_fb_helper_cfb_imageblit(struct fb_info *info,
- 				 const struct fb_image *image)
- {
-+	struct drm_fb_helper *helper = info->par;
-+
- 	cfb_imageblit(info, image);
--	drm_fb_helper_damage(info, image->dx, image->dy, image->width, image->height);
-+
-+	if (helper->funcs->fb_dirty)
-+		drm_fb_helper_damage(helper, image->dx, image->dy, image->width, image->height);
- }
- EXPORT_SYMBOL(drm_fb_helper_cfb_imageblit);
- 
+ 	/*
+ 	 * Copy to framebuffer even if we already logged an error. Emulates
+ 	 * the behavior of the original fbdev implementation.
 -- 
 2.38.0
 
