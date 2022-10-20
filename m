@@ -4,97 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1CF1C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 11:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF3AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Oct 2022 12:11:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=5ydLXv/qSk4X2k9yi/3IQ3WEGcPG5LZR2xonN+s6fRI=; b=BReHWRmkAe9ZYkJAnQzXdZO7le
-	1jmyyHgOwRRlH4tpooPhcjJIc3p1npUPTuOLMStffFJp9vGO1v58qT/Rcve8Hhlxd3MfwGnTh4WhT
-	0sPnAaVHVI3WVaV8NyMFPAKVNUbp4pD4oI8E+qn1lmtcb1jM3teh8QKVWepfRj0jCFFfxKDBqv09Z
-	3rMo7gFt/KfILMWWYgcNkMseEobi/972eKrZTvNFsiJYa1zje+jfbiSOIeEpbthfeauCRu/vdyxwR
-	3Aq5XOCrG+hVvF3WlHt9VpMtEEAK+NzURnqx1gpTn5BNSAS+md+rIbKG2ni0kxktHY+BsSumtb3Df
-	t3NUR4/g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ffkoB0jzJKnsfB4GR8J7wV4XDFscOyqoY1bRGkihpqo=; b=luVwGcKo5BTcDP
+	lIIFCYGhozjddIG23/xfbHT09N/UfysWQp15au/WiuV63UFx+YKwbkCDcoVyy1kLXaWj2EssSGdFn
+	U0HjVnBp5VkX68A6XoLArwT4ls5o1elSzVA02TWnFDrMI+tRUG4HsGTCzulw9AZUHWYVq/5eo+ynh
+	PJr2hxLEOZlIlL5h3neGn3etcquHDgEYZHeLvh67IexfgJ+wJs0F5wz5fRvucNdWz7Vjd8z9gLIgF
+	dbSwpyUAp/XCMwt+SPF/dUeM2FPZIxD4xDCiKsXK7fA+BLlSQc3c+mZXoMJaO/YVu1N+1dTcgTgY1
+	TG1u6Ihk+Pp9NCLCjfFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUBn-00EOP1-Cz; Thu, 20 Oct 2022 11:58:19 +0000
-Received: from mx01.omp.ru ([90.154.21.10])
+	id 1olUOU-00EZQy-5J; Thu, 20 Oct 2022 12:11:26 +0000
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olTDW-00DqKI-NM; Thu, 20 Oct 2022 10:56:04 +0000
-Received: from [192.168.1.103] (31.173.87.29) by msexch01.omp.ru (10.188.4.12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.986.14; Thu, 20 Oct
- 2022 13:55:44 +0300
-Subject: Re: [PATCH 03/21] drm/ingenic: Don't set struct drm_driver.lastclose
-To: Thomas Zimmermann <tzimmermann@suse.de>, <daniel@ffwll.ch>,
-	<airlied@gmail.com>, <sam@ravnborg.org>, <javierm@redhat.com>,
-	<mripard@kernel.org>, <maarten.lankhorst@linux.intel.com>
-CC: <dri-devel@lists.freedesktop.org>, <amd-gfx@lists.freedesktop.org>,
-	<linux-aspeed@lists.ozlabs.org>, <linux-arm-kernel@lists.infradead.org>,
-	<etnaviv@lists.freedesktop.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-hyperv@vger.kernel.org>, <intel-gfx@lists.freedesktop.org>,
-	<linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<freedreno@lists.freedesktop.org>, <nouveau@lists.freedesktop.org>,
-	<virtualization@lists.linux-foundation.org>,
-	<spice-devel@lists.freedesktop.org>, <linux-renesas-soc@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <xen-devel@lists.xenproject.org>
-References: <20221020103755.24058-1-tzimmermann@suse.de>
- <20221020103755.24058-4-tzimmermann@suse.de>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <013ea55b-3d51-c89c-eff8-b8d355ded352@omp.ru>
-Date: Thu, 20 Oct 2022 13:55:44 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+	id 1olTUi-00Dx9B-JT; Thu, 20 Oct 2022 11:13:52 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id j8so1868710qvo.6;
+        Thu, 20 Oct 2022 04:13:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=RxhhqW9JKRj5MjXW/jzEJqVqePNXtFqQf3mTMtmQZF0=;
+        b=LE8QP3ziYOhbahNN6Srlo9VcdqQMB1YVT0KCSfs/iHUhOcliGz42AC9wG8YnxfYIEb
+         lIw0Wi+FR7eOI/nKc1jlUvj9gR7wnrirJT5xLm7XqxSmYcB9/VW0m+foAzNDWx1xcwRs
+         KnbncNaRL/2mZMUhRU1XoYVC5n0hsB1qY1eDXqmt0ZIBFTnpJLbtqdf+OPAOmldgKlEs
+         Hz245KAEKIi3LHYqquTepBX9QIk/JQQUNA3/jJIDu8GouY86WN07n1Tz3FvEEVOcCPXy
+         PeXk5/PPPnW5MWHtxBFdJ7Zq4CDrbWEeQFv+3Z38eUcrsmpSlZHMkUDs3tZj9B+02NtR
+         OouA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RxhhqW9JKRj5MjXW/jzEJqVqePNXtFqQf3mTMtmQZF0=;
+        b=z3kYYsgoTkBpLM9zu84T6mnKI0Vod2iT08tfIWx55Ebl0M+VtckYZZQkNMR+zZduke
+         SuPS0mG1jSHH7jApKuUh1JLlyD8MGLnK1Dn/631qOLuo4ICHz8uElRMMdIj6b0+ORfNp
+         PkzwyacAb2Kb6i5SzSFYLE5Ia7VOCe9RUl4brcHYC8zbR6U3ZeEmhHcGb57E/wNhXIFf
+         oRNG3mq/ERihWo6KqyaKCksX33pirVW8qfKXSlW97L2ST6OZsi9W0Ae0FKxpAlraK0/a
+         mznYdtbfpaRmoc9aggC/g6JEx0iFPaOEYUV0n6IYJuJse42PBDoxJ4pLUYIF/jdYtmng
+         Ov5Q==
+X-Gm-Message-State: ACrzQf1CIldiFHBwyolPC5AxpwrXwkT8CBtPE1RvrfjYExPZT03+7GvX
+	C1fXYuxmgu+DUaotsI7eXIPkbURQXnnTcRGj1LOz73xP9ooOjw==
+X-Google-Smtp-Source: AMsMyM7623m7f8/X4BmFn/9QBoivUohxCpY9FoUuJ166Lu0mWaqJuWfug6DaDR4S62S0tSLKsXHA8VkGyAjYV+YONU8=
+X-Received: by 2002:aa7:8504:0:b0:563:1ae2:6dc0 with SMTP id
+ v4-20020aa78504000000b005631ae26dc0mr13457624pfn.48.1666264415497; Thu, 20
+ Oct 2022 04:13:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20221020103755.24058-4-tzimmermann@suse.de>
-Content-Language: en-US
-X-Originating-IP: [31.173.87.29]
-X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
- (10.188.4.12)
-X-KSE-ServerInfo: msexch01.omp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 5.9.20, Database issued on: 10/20/2022 10:25:24
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 59
-X-KSE-AntiSpam-Info: Lua profiles 173210 [Oct 20 2022]
-X-KSE-AntiSpam-Info: Version: 5.9.20.0
-X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
-X-KSE-AntiSpam-Info: LuaCore: 502 502 69dee8ef46717dd3cb3eeb129cb7cc8dab9e30f6
-X-KSE-AntiSpam-Info: {rep_avail}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: {relay has no DNS name}
-X-KSE-AntiSpam-Info: {SMTP from is not routable}
-X-KSE-AntiSpam-Info: {Found in DNSBL: 31.173.87.29 in (user)
- b.barracudacentral.org}
-X-KSE-AntiSpam-Info: 	omp.ru:7.1.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
-X-KSE-AntiSpam-Info: ApMailHostAddress: 31.173.87.29
-X-KSE-AntiSpam-Info: {DNS response errors}
-X-KSE-AntiSpam-Info: Rate: 59
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
- smtp.mailfrom=omp.ru;dkim=none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Heuristic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 10/20/2022 10:32:00
-X-KSE-AttachmentFiltering-Interceptor-Info: protection disabled
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 10/20/2022 7:12:00 AM
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
+References: <Y1AqBnPSyu7PpiwP@deskilmich.example.net> <21c35744-eee0-ae31-dc54-3e7e1334ae08@gmail.com>
+ <CAK1Nf77W=_7xnDfEjKr=N9Ot0WSgzchEJqJ5_PXOMcvfiQKd8Q@mail.gmail.com> <9009700.CDJkKcVGEf@phil>
+In-Reply-To: <9009700.CDJkKcVGEf@phil>
+From: =?UTF-8?Q?Michele_Zuccal=C3=A0?= <ardutu@gmail.com>
+Date: Thu, 20 Oct 2022 13:13:10 +0200
+Message-ID: <CAK1Nf75B-4wzM3pafaOVHCD9WugT3YPjphbEq25-WLRGh3Jhbw@mail.gmail.com>
+Subject: Re: [PATCH] arm: dts: rockchip: add crypto node for RK322x
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	Alex Bee <knaerzche@gmail.com>, Corentin Labbe <clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_035602_830548_607CC869 
-X-CRM114-Status: UNSURE (   7.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_041348_725156_7664EA76 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,23 +87,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello!
+Hi Heiko,
 
-On 10/20/22 1:37 PM, Thomas Zimmermann wrote:
+>
+> no worries, we'll get you through it :-)
+>
 
-> Don't set struct drm_mode_config.output_poll_changed. It's used to
-> inform the fbdev console about conncetor changes. But as ingenic
+thank you
 
-   Connector. :-)
+>
+> actually you want to go the following route:
+>
+> (1) pick up
+> - https://lore.kernel.org/all/20220927075511.3147847-25-clabbe@baylibre.com/
+> - https://lore.kernel.org/all/20220927075511.3147847-26-clabbe@baylibre.com/
+> as a base to work on
+>
+> (2) create a patch to add your compatible.
+> I _think_ after that, the compatible block should looks
+> something like:
+>
+>   compatible:
+>     oneOf:
+>       - const: rockchip,rk3288-crypto
+>       - const: rockchip,rk3328-crypto
+>       - const: rockchip,rk3399-crypto
+>       - items:
+>           - const: rockchip,rk3228-crypto
+>           - const: rockchip,rk3288-crypto
+>
+> to handle the new dual element compatible.
+>         make dt_binding_check
+> should tell you about a wrong format.
+>
+> (3) modify your dts patch to use the two compatibles
+> (4) export patches by
+>         git format-patch -2 --cover-letter
+> and mention in the cover-letter the dependency on the
+> yaml conversion.
 
-> uses generic fbdev emulation, the console is being informed by the
-> DRM client helpers already. See the calls to drm_client_dev_hotplug()
-> in drm_probe_helper.c.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-[...]
+very clear. But excuse the stupid question, this way it becomes a new patchset
+and not the v2 of this patch, right?! Will this patch be automatically
+ignored ?!
 
-MBR, Sergey
+Michele
 
 _______________________________________________
 Linux-rockchip mailing list
