@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03169C04A95
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Oct 2022 16:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F263C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Oct 2022 16:08:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1jhca9TKni60msxPeUTaYO6SLff4gMwwNjB05SbDNhA=; b=Qr0IgyXnIcPE/U
-	QLovrpj+CScll9Ls+du36ulpUYpnE6U/i/608nIAvzDYTtYLkWUejttFd0IAsDhvofi2Md0MBuCAd
-	79auWIIf42GMFGwbZDb0L29R5haKSDl0hBh7dZBDT1czHHy7/zYpT+KE2xBjwBvDteJcEWtEIDNA+
-	75Va2nXcvkmMDphmxocyapsQWDZO2s2Jbul5B5B6O5Xg6V5pji1XZTPO9GNUXn30XL553SsgmrZtb
-	hvi08ilIjpdR1lkoS+0Zbb5lE7xRkAv870MCKV/unQbpDTEhff8+nb3HfaNUK5UeQF7mwRWnoUAge
-	iazV7Wny9HBgmGrY8cxw==;
+	List-Owner; bh=Ki7wal6L+Cx6is0h2g9Ww1x4Ul0twH1XfGUFYDubO/I=; b=YZxX47Evpw27fu
+	qQscOp18lImLqDC2iLFODS4so0FT+44DZS6pp4bNWn3d+QAe53yI70CoV1NJAWkQk8rprjx2z9gBy
+	1Ys2UnbuaRIwYqUMnfT+1aQZrVYg/IxkNvyZQr8n0djcU11ayCbfhrQDkFNzyEiRyWZRGVZQu35Ii
+	EzddHXMhgeXol3vL1EVrmpy1F6e3nmTyJaXA+5fVe18cn8k6aqtVur1brqsqhoacYnhPOmbIwiheg
+	jrGSdDcgkhZJuld7rO97HSUtOHvYxh1Vg8NfWek7u2Q6/t4nL6gPTuGD+CrO/vMcaIWV9gJMKW3oK
+	N4YmvkNv11sNunUqcJvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omH1L-00DBOd-0o; Sat, 22 Oct 2022 16:06:47 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1omH33-00DBfQ-8v; Sat, 22 Oct 2022 16:08:33 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omH1I-00DBOE-Fk
-	for linux-rockchip@lists.infradead.org; Sat, 22 Oct 2022 16:06:45 +0000
-Received: by mail-qt1-x836.google.com with SMTP id c23so3408544qtw.8
-        for <linux-rockchip@lists.infradead.org>; Sat, 22 Oct 2022 09:06:43 -0700 (PDT)
+	id 1omH2t-00DBbt-Jn
+	for linux-rockchip@lists.infradead.org; Sat, 22 Oct 2022 16:08:24 +0000
+Received: by mail-qk1-x729.google.com with SMTP id o2so3813982qkk.10
+        for <linux-rockchip@lists.infradead.org>; Sat, 22 Oct 2022 09:08:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=nzT+VEmkUStYx/oFKUyBVeLL6CJC5Ebv5tGgGJ3EThk=;
-        b=Rd1hH2t7awphQ+KCcp28rqZhH0W/+YoolhPWBzFlzaVzem1NtFymXj9IbmcfKrtxOE
-         mwluJy+ONLIEOOcEUVz1AsVeeUW81r2nLNrSZo2PTZKuA70eC6DU7ZtWFVCvQaN0n2EJ
-         XNawpYjH23MoC/f/ID18S7MILGG2aRc3N+Ln0ZdChio7g1VfWZV3i1493pydGFb7Ut91
-         j76UklR5tmvzbORApFcZj2pfhhCWBoSlDrcYkHj8kmJAjm5MuyA/IS0CHVaU15KekWV5
-         EM87cLIapgiTHD4InSBhCrine1p64V7/4jWqpAGOwpoj3u7sGi5KiQ+dnnR1DgL4KGVp
-         abgA==
+        bh=I0p+oQ1M6EtK8DgXQshbn1CCbBGt5UFmRE78AD8DMrg=;
+        b=zEqU40yYAUOWyZaERGuu6yjDI4xmGEdbi/Wb/xDI6FvU37BiGbL9jIZXrhTFVWGGOg
+         cLeAaR/nm5/WY55ki7Tw+PpSagbJrK/GmkVJ0EbDMUr9424gEqoTcE+QSTexfmbZ+Sol
+         sV5EQDF02LUFNdDfSpdDEWsAHY8YzeYoMn+MUlD0hA07nnCVNLOz1HARHb9mrsyZ6kdI
+         24PqY4rSzEB9ELjhuYI+2K/ybKnE+4zxkLwT2X5l37XlBNP7ulr0/DvjsKHsojRNrtJf
+         oxPLOviZi4aG+e9XwpMbhv2ASRpFwSZyNl84g0a+bWARQZDnTF+fMYojK5USLydY9pTD
+         wNYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nzT+VEmkUStYx/oFKUyBVeLL6CJC5Ebv5tGgGJ3EThk=;
-        b=hAzOPSbFgYxWzQFxxMQW2fmwRJmrV61uPcmWty8mlx/G+l1s6RcCXOH3rUp1ZSqKXn
-         UnylmGxnEKxmWMhgySG3cFe3Rj1an3M2BSObGSlxvPZ9XIbvNuTJHYcAHv28Y9ubuAf7
-         Yvk9CkkprIhMq+hqX0HB6Uc9B01wau86AK/Z2j5ISLc12t2K8YjF3kJ4epm1KdjmKF1z
-         K7m5Cyf13lad5Nm5ygPjFhDJQN9gFt3lWMDKUhMqn4kLYjhb5oWKi4otdyLViaLX4PgI
-         dWVFai8yZ7pSUUPsCQOaso0s/Fsk9Bn7d3VXDZ28KkSaAsTc5RVBeANb02LA4DotOQjl
-         FYrw==
-X-Gm-Message-State: ACrzQf3yni68OTg78Q/5xWJ07razCdabCwEcyHhQ7iZDnhOS/3ZaMAUg
-	Y6of325rhF0wkDIND9sQVeDZ8Q==
-X-Google-Smtp-Source: AMsMyM4ZO0osqdPxtj3efWReeGdbuhf5GKNX407YtHct5K3PumdbLfs8ZZUzCHhQOMpPIkHQE1x2jg==
-X-Received: by 2002:ac8:5b44:0:b0:39c:d6ad:cce6 with SMTP id n4-20020ac85b44000000b0039cd6adcce6mr20939846qtw.113.1666454803298;
-        Sat, 22 Oct 2022 09:06:43 -0700 (PDT)
+        bh=I0p+oQ1M6EtK8DgXQshbn1CCbBGt5UFmRE78AD8DMrg=;
+        b=aCBcNcrZZIEvLS19zO0Yw740HXQ4ViGmAeyxEE06QX8BNjhhYsvtQzpMjF9lATBU4b
+         NVMsYQeqrwLwxOJAYMihQKarURz/7gUoeAX6G96GvlvqW8+nl8gGZdz8vFMA05ctuRIW
+         Ux9Ysj9dqDtBdSCBQIah0Lrzy53Z8YF+JCwlytnWl3r769z2HOYwOiLhEPEGD9XmeTOd
+         CgsIHddKGiT7PBr+pCPIOd60+XwPXQv+LASkKNfEYWnulCbkhIVeLXby0hgGmEKHS4V/
+         YPcuz5h0GCCCo2XQRqixodagpdgh6qRIqVdpjuLr9FN0exSur/mookpl+6RwKfTZsf/L
+         /Akg==
+X-Gm-Message-State: ACrzQf0XJZ3WK8MSRRzqNTzqlltURfyeffl+ZP6EHy4aeUJJDDtxUL3/
+	UBh8MHmIdNaF05Xi+guVEq15fQ==
+X-Google-Smtp-Source: AMsMyM4wonpIqSs3FDigKQsP5RS3n1Fzgc4+kxV5kTBF2fzG12lV+S2xEv85AamamAuM5KCSbhFXCQ==
+X-Received: by 2002:a05:620a:2443:b0:6ee:b1f0:3798 with SMTP id h3-20020a05620a244300b006eeb1f03798mr17010684qkn.444.1666454900546;
+        Sat, 22 Oct 2022 09:08:20 -0700 (PDT)
 Received: from [10.203.8.70] ([205.153.95.177])
-        by smtp.gmail.com with ESMTPSA id bm34-20020a05620a19a200b006ce1bfbd603sm11410372qkb.124.2022.10.22.09.06.41
+        by smtp.gmail.com with ESMTPSA id l12-20020a05620a28cc00b006ecf030ef15sm11704035qkp.65.2022.10.22.09.08.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 22 Oct 2022 09:06:42 -0700 (PDT)
-Message-ID: <df256d16-e0c6-4e9a-9579-f7d9d1436670@linaro.org>
-Date: Sat, 22 Oct 2022 12:06:40 -0400
+        Sat, 22 Oct 2022 09:08:19 -0700 (PDT)
+Message-ID: <5726693b-367c-8070-c296-710c2e828151@linaro.org>
+Date: Sat, 22 Oct 2022 12:08:18 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.0
-Subject: Re: [PATCH 1/1] dt-bindings: mmc: sdhci-of-dwcmhsc: Add reset support
+Subject: Re: [PATCH 1/1] dt-bindings: power: rockchip: Increase pm_qos number
 Content-Language: en-US
 To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Jisheng Zhang <jszhang@kernel.org>, linux-mmc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@collabora.com
-References: <20221021171654.87071-1-sebastian.reichel@collabora.com>
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com
+References: <20221021171405.86509-1-sebastian.reichel@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221021171654.87071-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20221021171405.86509-1-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221022_090644_558644_A0F80884 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20221022_090823_659435_6EE330D2 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,41 +95,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/10/2022 13:16, Sebastian Reichel wrote:
-> Properly describe reset related properties in the binding.
+On 21/10/2022 13:14, Sebastian Reichel wrote:
+> On RK3588 some power domains require multiple qos blocks to be
+> saved. The maximum required number for RK3588 is 8 (for VDPU).
 > 
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  .../devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml  | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+>  .../devicetree/bindings/power/rockchip,power-controller.yaml    | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
-> index 71f8e726d641..162c1a4abf3c 100644
-> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
-> @@ -45,6 +45,18 @@ properties:
->        - const: block
->        - const: timer
->  
-> +  resets:
-> +    minItems: 5
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> index 0d5e999a58f1..cf0f2946fea1 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> @@ -134,7 +134,7 @@ $defs:
+>        pm_qos:
+>          $ref: /schemas/types.yaml#/definitions/phandle-array
+>          items:
+> -          maxItems: 1
+> +          maxItems: 8
 
-No need for minItems, drop.
+Does not look like you tested the DTS against bindings. Please run `make
+dtbs_check` (see Documentation/devicetree/bindings/writing-schema.rst
+for instructions).
 
-> +    maxItems: 5
-> +
-> +  reset-names:
-> +    items:
-> +      - const: core
-> +      - const: bus
-> +      - const: axi
-> +      - const: block
-> +      - const: timer
-> +
+You now require minItems 8. It's not what your commit msg is saying. You
+miss here minItems: 1.
 
-The reset names have exactly the same names as clocks. Are these
-responsible for some blocks on the device? Seems so... but I want to be
-sure it wasn't copy-paste :)
+>          description: |
+>            A number of phandles to qos blocks which need to be saved and restored
+>            while power domain switches state.
 
 Best regards,
 Krzysztof
