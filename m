@@ -4,74 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07ACC3A59D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Oct 2022 08:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81CA7C04A95
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Oct 2022 11:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ymuplX1bAQ6k5wsWG3VNPpD7deYXiXrzcI5yfLbzBO8=; b=HKLA7T9VgBlIZB
-	W+repzqbBQXeYDlkmawpEzuhQDURrj973X1N4ulVi1zru5Koe9m1267DKzMIyhpVLO4Dkx00KrJwr
-	23nrsgzVtPSQiSr8OHL5F1m2fGE98Q8XOW+JzYQ0zRoPgNlpRSfZL+KmWoHlTnjMjLvaWAeBfY+CP
-	NtpnEPrGMbedhSR+cWnSXx4YEt6RZFLOzzxSHdcg0pc8uEkVBFUGJrThWo/T8ZK8Y+8c4MbPzQ0xi
-	P8DuXt3bzMPB44njSrqGTLaui8Kqv/H2I4xNMck1FetVvWFVWrsZg96/kkOUFh4FCC9LN2bf/Kvif
-	0Kp1m5QMq9sUWzNM4McQ==;
+	List-Owner; bh=YzZ2CKdZwnbZrgo36QMM7hAE1x7tqGq12BO1k07oVZA=; b=q8QzMXV8v97WVq
+	/XcJrxYuJ1fhjH7zJT2KtMZbE4hLJejGk6tLCruVKgMq4blancWLXsC61jvaU/ul8R4udPn226FeN
+	MJgEtr+mHErXeaqGFxYNGSZaysxKyZTkZd6uLaRBKHRv2YMb4QnqSg1Cmg0JLUm2H5iJnOLW07287
+	SgdldRfPp37jG9lsTGb565U2SfHMpqoThSh8q3kWnB+y0e1iGPy+fw1hnGSKChbbQDtc9yGN2liW4
+	K0V1T2kGopf9UpJTcrdSr4KcvCw9eIdqUZ5AZ/iA4DA8pvHahWYH/lugL2goO37drMKW/xnlWF9we
+	Yj7miEDeEjMW8sT6V5/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omA6a-00BoXC-Qg; Sat, 22 Oct 2022 08:43:44 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1omCQY-00CLbZ-JD; Sat, 22 Oct 2022 11:12:30 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omA6X-00BoV0-SJ
-	for linux-rockchip@lists.infradead.org; Sat, 22 Oct 2022 08:43:43 +0000
-Received: by mail-wm1-x332.google.com with SMTP id bh7-20020a05600c3d0700b003c6fb3b2052so3527037wmb.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 22 Oct 2022 01:43:37 -0700 (PDT)
+	id 1omCQV-00CLai-9j
+	for linux-rockchip@lists.infradead.org; Sat, 22 Oct 2022 11:12:28 +0000
+Received: by mail-ed1-x529.google.com with SMTP id r14so14766337edc.7
+        for <linux-rockchip@lists.infradead.org>; Sat, 22 Oct 2022 04:12:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KVRMuzLJw/J1q+giNaX6Vc02ZR+eG+PVzdJvDk7ri7g=;
-        b=ZxMUG3F20OU/VbNFfTRFkR0htlYhlqL1zzJUabbwqf1IKnbuZ68Pemjy1BdsIpaZDV
-         GLkgrFLTULtfVu5Q8kclQOXw17hLgTGV3gevfd2nzN+9fRE4U2MYhBU2R5mgzeKEIqvA
-         wMReSgMPW/QBUUqZ8JnDwKnoRNxIB2ENAGMImfDEu75B/VKiRc/1yCjgtiwBYXNP/m8J
-         Ay9Lqe51yYY/RtbvuqjnZZnQnvFhWXhjo5stl6ETqtuojRKa9gGk8xOvmKrYe/lxupWU
-         Rme4zzPCpGWT0MglTnlVc6G2w/gXIydy/0aNaMNu3r2Oko3cdiLxfSfeXAq2zxuEfifU
-         t2NQ==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XkHBPe8kKp/EBO1kgCVV44yINTVx9+9WMF/ZWQU88KM=;
+        b=hrLNxiuD7rGcoYoDFEG4FYJ/zZHCXK1tR2mH+JEjkDCh6yA6QjUPp6hoaTbZGI5xwI
+         S0wosoyTQLKJZteniGi1EOiIC27IGNkYXTMMocUfW5VMrtxE6dN2ItO5DXXhvN+8j9gS
+         H5urh1Mh8cAZU6X0H7Qk0CFxWioOf6qULmay65o9qqInJjxwFtI0329CssSoNf7bvXdv
+         DGSy76oaDRXXtkJwyDKOdxWyVIXAOFDJVOdPJ22X1EPpoTGyOKXh1e3dV1UNWIv8Av3y
+         9bfLKPDbpgWhV2bwmi+1h8ozn/pGs6jcFMH+3dRFmi3u3yI4CgmQ3FpOjrQCXg9ARbEA
+         1ilA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KVRMuzLJw/J1q+giNaX6Vc02ZR+eG+PVzdJvDk7ri7g=;
-        b=2xVYcmCoO8+gAXyaA/c7GYENKZKbdzPa8dX0pBq7FP7XpAuyPLsdDmaTsWJapE1dzk
-         zojlfxR93hTOvjuIt2EAhS9XZp6POF1Xx6vEwn64OgnYL5wUqcdBqG4L+C6nMKqb1zjh
-         By98Rvaty+JEbqn6Lu7FZZzJrcaWhHOikWSs/3STXZaiJII6Xyzl/C6ehxKYMFZs76zE
-         ZLQ0YpFO0LcrqSljg/C60ajfxaobv5/o8kJZ8PgYpcPDpq/6wRlT1+Mxo8jMpj0TQlwV
-         sVuOZEwSc8k708TnZ/NFhOoCK/rPgPYAEY6/fI0u5JU1J34zgIRLcUOJDD5fF1RtkfSp
-         PhHQ==
-X-Gm-Message-State: ACrzQf1LNoGkwR0Yl+eVMWGWii7HuqZlhZz/vgl5lofKlMFgVIqrTN4Z
-	zUwSe0L+GUVfN0AfYP38+VQ=
-X-Google-Smtp-Source: AMsMyM4+B+7jjZDBaC4RwhOwV7c/q6Pqs7CJkx1DDSq+dch+osei83kqJUXz5QLDfo5Jy/tQLwGGJg==
-X-Received: by 2002:a05:600c:358f:b0:3c6:da94:66f9 with SMTP id p15-20020a05600c358f00b003c6da9466f9mr15417984wmq.142.1666428216369;
-        Sat, 22 Oct 2022 01:43:36 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id k16-20020a5d5190000000b00236488f62d6sm5566864wrv.79.2022.10.22.01.43.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Oct 2022 01:43:35 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, kernel@collabora.com, Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] thermal: rockchip: Support RK3588 SoC in the thermal driver
-Date: Sat, 22 Oct 2022 10:43:31 +0200
-Message-ID: <7276280.TLKafQO6qx@archbook>
-In-Reply-To: <2aafa6cc-a7de-0b7a-571f-04593ad53787@linaro.org>
-References: <20221021174721.92468-1-sebastian.reichel@collabora.com> <20221021174721.92468-2-sebastian.reichel@collabora.com> <2aafa6cc-a7de-0b7a-571f-04593ad53787@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XkHBPe8kKp/EBO1kgCVV44yINTVx9+9WMF/ZWQU88KM=;
+        b=PUU3mCv0tbAEy8bf8rO2lGfpnIZJktIsP3NprjchafIquKB7OEt4zm+Y84c0Cc2Gef
+         qNHRivva530IzRHlibfyZNsajzdKf/dJDMtbgR2h27JWuiaB6xhMqzijDGoJdl0PgK31
+         r0wY5q0LRz/wlOWAV0AlYCPxs/tGGqbsUdN9hylxwE8/TXR4BOj4mGEQbkXCGAO/9zfa
+         RYU9IKuF+TSV5csAyKU3PRLfR9tuZ6jXXlx3oXFf1Gw7m50SCN2rtV+KV5yXlmFgt7Gi
+         rWVuqhNIkvLs+nIfurYOW2YJTvrdNRG7xrb8VFe2T3YA5iUJyKDqBUEkqDnb7YYnOvK0
+         5Kbw==
+X-Gm-Message-State: ACrzQf2rpgxOjfqIif+o1YgGNJnrGFdEdJZ/gKXdWFj21Iam0YS5mvKk
+	m7a9qiND+Q1QIAGdNkfJ+DRHdQ==
+X-Google-Smtp-Source: AMsMyM5sbHVdjq9chPJBv2v73OaTQ6ZtNtFRPn38AtlSsWcq8cx5eu0OlB4Dk1p4BQXHMJFueZyYOg==
+X-Received: by 2002:a05:6402:1911:b0:45c:be41:a879 with SMTP id e17-20020a056402191100b0045cbe41a879mr21645066edz.322.1666437144931;
+        Sat, 22 Oct 2022 04:12:24 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:25b:e73e:85eb:ae6e? ([2a05:6e02:1041:c10:25b:e73e:85eb:ae6e])
+        by smtp.googlemail.com with ESMTPSA id hp21-20020a1709073e1500b0079800b8173asm3338667ejc.158.2022.10.22.04.12.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 22 Oct 2022 04:12:24 -0700 (PDT)
+Message-ID: <2b0fe8c2-674a-3b44-16aa-d3008b1271c3@linaro.org>
+Date: Sat, 22 Oct 2022 13:12:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 1/2] thermal: rockchip: Support RK3588 SoC in the thermal
+ driver
+Content-Language: en-US
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-rockchip@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>,
+ kernel@collabora.com
+References: <20221021174721.92468-1-sebastian.reichel@collabora.com>
+ <20221021174721.92468-2-sebastian.reichel@collabora.com>
+ <2aafa6cc-a7de-0b7a-571f-04593ad53787@linaro.org>
+ <7276280.TLKafQO6qx@archbook>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <7276280.TLKafQO6qx@archbook>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221022_014341_949355_E43663A6 
-X-CRM114-Status: GOOD (  26.87  )
+X-CRM114-CacheID: sfid-20221022_041227_397670_D39F191C 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,119 +98,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Freitag, 21. Oktober 2022 21:59:56 CEST Daniel Lezcano wrote:
-> On 21/10/2022 19:47, Sebastian Reichel wrote:
-> > From: Finley Xiao <finley.xiao@rock-chips.com>
-> > 
-> > The RK3588 SoC has seven channels TS-ADC(TOP, BIG_CORE0, BIG_CORE1,
-> > LITTEL_CORE, CENTER, GPU, and NPU).
-> 
-> Is possible to give a more elaborate description of those sensors?
-> 
-> What is TOP and CENTER ?
-> 
-> There are 4 Bigs on this platform but two sensors ?
-
-As far as I know, the four big cores in the SoC are arranged in two
-clusters of two cores each, so one temperature sensor for each
-cluster. As far as I can tell each CPU in a cluster shares its voltage
-with its partner CPU core in its cluster.
-
-If you have access to the TRM, it contains the following line in
-part 1 on page 1372:
-
-	Support to 7 channel TS-ADC (near chip center, A76_0/1, A76_2/3,
-	DSU and A55_0/1/2/3, PD_CENTER, NPU, GPU)
-
-I assume one of "TOP" and "CENTER" is "near chip center", the other is
-PD_CENTER, whatever that means (PD = power domain maybe?)
-
-I agree these could be named more descriptively.
-
-> 
-> 
-> > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> > [rebase, squash fixes]
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >   drivers/thermal/rockchip_thermal.c | 182 ++++++++++++++++++++++++++++-
-> >   1 file changed, 179 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> > index 819e059cde71..82f475a6448f 100644
-> > --- a/drivers/thermal/rockchip_thermal.c
-> > +++ b/drivers/thermal/rockchip_thermal.c
-> > @@ -61,10 +61,9 @@ enum adc_sort_mode {
-> >   #include "thermal_hwmon.h"
-> >   
-> >   /**
-> > - * The max sensors is two in rockchip SoCs.
-> > - * Two sensors: CPU and GPU sensor.
-> > + * The max sensors is seven in rockchip SoCs.
-> >    */
-> > -#define SOC_MAX_SENSORS	2
-> > +#define SOC_MAX_SENSORS	7
-> 
-> You may get rid of this and replace the sensors array to an dyn 
-> allocation based on chn_num
-> 
-> [ ... ]
-> 
-> > +static const struct rockchip_tsadc_chip rk3588_tsadc_data = {
-> > +	/* top, big_core0, big_core1, little_core, center, gpu, npu */
-> > +	.chn_id = {0, 1, 2, 3, 4, 5, 6},
-> 
-> You may want to revisit that. Actually, chn_id is not useful and can be 
-> removed everywhere as there is no hole. Otherwise a bit mask could be 
-> used. By removing it, SENSOR_CPU and SENSOR_GPU can be removed too.
-> 
-> > +	.chn_num = 7, /* seven channels for tsadc
-> > +	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-> > +	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-> > +	.tshut_temp = 95000,
-> > +	.initialize = rk_tsadcv8_initialize,
-> > +	.irq_ack = rk_tsadcv4_irq_ack,
-> > +	.control = rk_tsadcv4_control,
-> > +	.get_temp = rk_tsadcv4_get_temp,
-> > +	.set_alarm_temp = rk_tsadcv3_alarm_temp,
-> > +	.set_tshut_temp = rk_tsadcv3_tshut_temp,
-> > +	.set_tshut_mode = rk_tsadcv3_tshut_mode,
-> > +	.table = {
-> > +		.id = rk3588_code_table,
-> > +		.length = ARRAY_SIZE(rk3588_code_table),
-> > +		.data_mask = TSADCV4_DATA_MASK,
-> > +		.mode = ADC_INCREMENT,
-> > +	},
-> > +};
-> > +
-> >   static const struct of_device_id of_rockchip_thermal_match[] = {
-> >   	{	.compatible = "rockchip,px30-tsadc",
-> >   		.data = (void *)&px30_tsadc_data,
-> > @@ -1180,6 +1352,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
-> >   		.compatible = "rockchip,rk3568-tsadc",
-> >   		.data = (void *)&rk3568_tsadc_data,
-> >   	},
-> > +	{
-> > +		.compatible = "rockchip,rk3588-tsadc",
-> > +		.data = (void *)&rk3588_tsadc_data,
-> > +	},
-> >   	{ /* end */ },
-> >   };
-> >   MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
-> 
-> 
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjIvMTAvMjAyMiAxMDo0MywgTmljb2xhcyBGcmF0dGFyb2xpIHdyb3RlOgoKWyAuLi4gXQoK
+Pj4gV2hhdCBpcyBUT1AgYW5kIENFTlRFUiA/Cj4+Cj4+IFRoZXJlIGFyZSA0IEJpZ3Mgb24gdGhp
+cyBwbGF0Zm9ybSBidXQgdHdvIHNlbnNvcnMgPwo+IAo+IEFzIGZhciBhcyBJIGtub3csIHRoZSBm
+b3VyIGJpZyBjb3JlcyBpbiB0aGUgU29DIGFyZSBhcnJhbmdlZCBpbiB0d28KPiBjbHVzdGVycyBv
+ZiB0d28gY29yZXMgZWFjaCwgc28gb25lIHRlbXBlcmF0dXJlIHNlbnNvciBmb3IgZWFjaAo+IGNs
+dXN0ZXIuIEFzIGZhciBhcyBJIGNhbiB0ZWxsIGVhY2ggQ1BVIGluIGEgY2x1c3RlciBzaGFyZXMg
+aXRzIHZvbHRhZ2UKPiB3aXRoIGl0cyBwYXJ0bmVyIENQVSBjb3JlIGluIGl0cyBjbHVzdGVyLgoK
+T2ssIEkgZm91bmQgc29tZSBtb3JlIGRldGFpbHMgb24gdGhlIGRhdGFzaGVldCwgcGFnZSA3LTgu
+CgpTbyBpdCBpcyBhIGJpZyAiQ2x1c3RlciIgd2l0aCB0aGUgNCBCaWcgY29yZXMuIFRoZXkgc2hh
+cmUgdGhlIHNhbWUgY2FjaGUuCgpUaGVyZSBpcyBvbmUgcG93ZXIgZG9tYWluIHBlciBjb3JlIChj
+cHVpZGxlKQoKVGhlcmUgYXJlIHR3byBwZXJmb3JtYW5jZSBkb21haW5zIChjcHVmcmVxIHggMikK
+ClNvIGl0IG1ha2VzIHNlbnNlIHRvIGhhdmUgb25lIHNlbnNvciBwZXIgcGVyZm9ybWFuY2UgZG9t
+YWluIHRvIG1pdGlnYXRlIAp0aGUgdGVtcGVyYXR1cmUuCgo+IElmIHlvdSBoYXZlIGFjY2VzcyB0
+byB0aGUgVFJNLCBpdCBjb250YWlucyB0aGUgZm9sbG93aW5nIGxpbmUgaW4KPiBwYXJ0IDEgb24g
+cGFnZSAxMzcyOgoKVW5mb3J0dW5hdGVseSBubywgSSBkb24ndCBoYXZlIGFjY2VzcyB0byB0aGUg
+VFJNLiBCdXQgSSdsbCBiZSBoYXBweSBpZiBJIApjYW4gOykKCj4gCVN1cHBvcnQgdG8gNyBjaGFu
+bmVsIFRTLUFEQyAobmVhciBjaGlwIGNlbnRlciwgQTc2XzAvMSwgQTc2XzIvMywKPiAJRFNVIGFu
+ZCBBNTVfMC8xLzIvMywgUERfQ0VOVEVSLCBOUFUsIEdQVSkKPiAKPiBJIGFzc3VtZSBvbmUgb2Yg
+IlRPUCIgYW5kICJDRU5URVIiIGlzICJuZWFyIGNoaXAgY2VudGVyIiwgdGhlIG90aGVyIGlzCj4g
+UERfQ0VOVEVSLCB3aGF0ZXZlciB0aGF0IG1lYW5zIChQRCA9IHBvd2VyIGRvbWFpbiBtYXliZT8p
+CgpZZXMgY2VydGFpbmx5LgoKSSB0YWtlIHRoZSBvcHBvcnR1bml0eSB0byBsZXQgeW91IGtub3cg
+dGhlcmUgaXMgYSBuZXcgdG9vbCBpbiB0aGUgbGludXggCnRvb2xzIGRpcmVjdG9yeSBjYWxsZWQg
+J3RoZXJtb21ldGVyJy4gWW91IGNhbiBjYXB0dXJlIHRoZSB0ZW1wZXJhdHVyZSAKYW5kIHVzZSB0
+aGUgZGF0YSB0byBjcmVhdGUgZ3JhcGhpY3MuCgo+IEkgYWdyZWUgdGhlc2UgY291bGQgYmUgbmFt
+ZWQgbW9yZSBkZXNjcmlwdGl2ZWx5Lgo+IAoKCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+
+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93
+IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29r
+IHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3
+dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
