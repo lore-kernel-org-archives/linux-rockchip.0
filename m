@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC3A0FA3740
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Oct 2022 11:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4C3C38A2D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Oct 2022 11:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ePrzSPjgJfdFc12k4d9xQ/eFJQVsnlvM1Bdl0w99LEM=; b=V+TV4NQ1k0qwUy
-	+GxULpf+8il5k0BCSsDIpbGY8ZKClsXS+rjV5U7dRoC5uiHLmfDCXvfblUignVR/gvf6CisEFBFIp
-	3IfSmYhaI3aUo7wJmK8viSkODjrqzH1ZpncIgb3ZXZ0qoMsNVafP1+lEjfZux7+VqciZAo62Uvx9t
-	7MrH7v2Fz+OEORn6jg5pmTEBRsXnf2ZT0k/Yg3lpPGUYtNHFV5GHQsJpC6fNheOVSnk81Kz6o7YVc
-	NNSwGeGqXA2UuSkwfdvXjIy1iURDLofwA3P3xtlUtQ7E2wvAznaBA8wwG+93z8IncCb1m2rzxNMYA
-	WGhIC/eoLemGIje8YyCw==;
+	List-Owner; bh=k5GJBH7DChuqDK4YT3+ohsNGvIyqMYK9Ip1tGsmK4x4=; b=Odwd2JB5ddcB6y
+	T3f4ujAU2GjB6oCdMSDfrd4m6mMXf0CpBDOSiBPt/JGuvyMMypv1atYId5TsAES/v70H1rFi+yKgy
+	pk9jrnw6zL8mu1HpM+mQAr2dNQ0JYCGowrU2CvXr6CCDUdwKAmLEYzey1vHHbEUeRnpNGprHs7hob
+	H2gEd0y9WHehQ/kNjc/eb2DVhId+wHDCIsx0y2YICtdhRdb5gGn/v8PAnUitRgINoYLdfoZ9lDBxd
+	8+OSAYrU8cnkPxRFWQKmH2a0E+z17/H1qnrSWRlXAeehXLPv733gKl/F5a5HuZ/s+/5FYbtTXB8Mz
+	Lt/YJsnuO+WAZM/ofnsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvgA-0013m8-Vc; Mon, 24 Oct 2022 11:31:39 +0000
-Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
+	id 1omvgI-0013q9-Oc; Mon, 24 Oct 2022 11:31:46 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvUx-000xXe-Kn; Mon, 24 Oct 2022 11:20:06 +0000
+	id 1omvUx-000xXO-HL; Mon, 24 Oct 2022 11:20:06 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 3791B21DE4;
-	Mon, 24 Oct 2022 11:20:01 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id BBF0821E2C;
+	Mon, 24 Oct 2022 11:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1666610401; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1666610400; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=pDwG/2ZvVtedihuD7tm996Em6sMhLiO4FmD57P041QM=;
-	b=mdwZe4oCDl9UJvnRtuXrem4SfiiFBuEbsVuBcem6XZzeWKEvLFgh++5J+F0kFPZh2OwF2c
-	8rR6QVpJvrZjvNSwkyboHHN0mwwyZ2/JI1FZUdMFbe0+p5YrXMyI6It+57tRSs7sXcQ/Ma
-	OZ806Nd+ViS++4+DGE9xm8GZLyhfO7g=
+	bh=EW5TY2zOig0VQgLGZt6zu4ywOY5c8c72AcSCo9faV+M=;
+	b=sRgtI48QF7bf+VIYrcVz0Tw2w1Cf8T/YWUiNtrjtyHZUpvRuMN53cEj5mPfHgvdecNrUsM
+	XQJoc72PMyO1t5Ia3kDiDm6v98mDXtwRhGNaOBH5KLVHVN9EeHFvLMqP2ay5IW6B2p/0Dh
+	+o+yXXiXkBougCJ6OpNC/5SS59yRycc=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1666610401;
+	s=susede2_ed25519; t=1666610400;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=pDwG/2ZvVtedihuD7tm996Em6sMhLiO4FmD57P041QM=;
-	b=hxqccXaIzzUM0Q2daluFxMAfY0DJqTJ1PLIzkvZNd4Zm8xifYKdsxU+9OAw1FxBxz2U0YP
-	1XAP5XUT21C9REAA==
+	bh=EW5TY2zOig0VQgLGZt6zu4ywOY5c8c72AcSCo9faV+M=;
+	b=1eeELNAaTvtHN8xWSr5qUVKL25eVbFE3UWSwQnH4k+xW0211/wycpGLvV95zp8WdPO22+D
+	qw7fQN+V4hnY6/CA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id C109713A98;
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4F7B213357;
 	Mon, 24 Oct 2022 11:20:00 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 8PxcLuB0VmOYMgAAMHmgww
+	id CCeqEuB0VmOYMgAAMHmgww
 	(envelope-from <tzimmermann@suse.de>); Mon, 24 Oct 2022 11:20:00 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch,
@@ -88,16 +88,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-tegra@vger.kernel.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v2 05/21] drm/imx/dcss: Don't set struct drm_driver.output_poll_changed
-Date: Mon, 24 Oct 2022 13:19:37 +0200
-Message-Id: <20221024111953.24307-6-tzimmermann@suse.de>
+Subject: [PATCH v2 04/21] drm/amdgpu: Don't set struct drm_driver.output_poll_changed
+Date: Mon, 24 Oct 2022 13:19:36 +0200
+Message-Id: <20221024111953.24307-5-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221024111953.24307-1-tzimmermann@suse.de>
 References: <20221024111953.24307-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_042003_928090_048259DB 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20221024_042003_812643_33173655 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,7 +115,7 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Don't set struct drm_driver.output_poll_changed. It's used to restore
-the fbdev console. But as DCSS uses generic fbdev emulation, the
+the fbdev console. But as amdgpu uses generic fbdev emulation, the
 console is being restored by the DRM client helpers already. See the
 functions drm_kms_helper_hotplug_event() and
 drm_kms_helper_connector_hotplug_event() in drm_probe_helper.c.
@@ -125,19 +125,40 @@ v2:
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/imx/dcss/dcss-kms.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c       | 1 -
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 2 --
+ 2 files changed, 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/imx/dcss/dcss-kms.c b/drivers/gpu/drm/imx/dcss/dcss-kms.c
-index b4f82ebca5325..1defd6a40f11d 100644
---- a/drivers/gpu/drm/imx/dcss/dcss-kms.c
-+++ b/drivers/gpu/drm/imx/dcss/dcss-kms.c
-@@ -21,7 +21,6 @@ DEFINE_DRM_GEM_DMA_FOPS(dcss_cma_fops);
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+index 1a06b8d724f39..dd6f9ae6fbe9f 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+@@ -1214,7 +1214,6 @@ amdgpu_display_user_framebuffer_create(struct drm_device *dev,
  
- static const struct drm_mode_config_funcs dcss_drm_mode_config_funcs = {
- 	.fb_create = drm_gem_fb_create,
+ const struct drm_mode_config_funcs amdgpu_mode_funcs = {
+ 	.fb_create = amdgpu_display_user_framebuffer_create,
 -	.output_poll_changed = drm_fb_helper_output_poll_changed,
- 	.atomic_check = drm_atomic_helper_check,
+ };
+ 
+ static const struct drm_prop_enum_list amdgpu_underscan_enum_list[] =
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 0db2a88cd4d7b..528b8be516ff6 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -82,7 +82,6 @@
+ #include <drm/drm_atomic_uapi.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_blend.h>
+-#include <drm/drm_fb_helper.h>
+ #include <drm/drm_fourcc.h>
+ #include <drm/drm_edid.h>
+ #include <drm/drm_vblank.h>
+@@ -2810,7 +2809,6 @@ const struct amdgpu_ip_block_version dm_ip_block =
+ static const struct drm_mode_config_funcs amdgpu_dm_mode_funcs = {
+ 	.fb_create = amdgpu_display_user_framebuffer_create,
+ 	.get_format_info = amd_get_format_info,
+-	.output_poll_changed = drm_fb_helper_output_poll_changed,
+ 	.atomic_check = amdgpu_dm_atomic_check,
  	.atomic_commit = drm_atomic_helper_commit,
  };
 -- 
