@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D223FA373E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Oct 2022 18:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F0DDC38A2D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Oct 2022 18:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VcmKrioLTH3yQazSyUr1ckC5gcNh7NpdwoJU18yvwtQ=; b=LJ4WA+rucvo7Vd
-	IGz4Bsv+7Fg6W7gQMAQv/RgP0d5RqrUw31w1qPrOABKxZn44PnPVOYoaWNKCGuEI1Ga4lbzOkZlHp
-	xHmKDcunqYXgaGx9Wf7MZH7ZOmm5c7I8BAnZZ/FVF0Zes91lAepLPM3Bf3ycBVWxAtaUoJj6zUL5J
-	ujnj2Kzs3VfhCPQIh0jBVYGOdo2tbXAlIuvubDMXBHtZxm6I2jZNwxFaPPXGSoGGtNLcsIcKth3dR
-	H9Z5Dx/k8aB6NjC+FeLilJpqprchRBaATDZTJ41VuK1JX0a+q3IPBlgXvtAedKYQxnz1KJ5MJI47z
-	pwa96vhvP66lNDH7MZCA==;
+	List-Owner; bh=Nyy9O4IHOZlUPmld7DQV60ll9vvwp7cRXhGx1mu0IiY=; b=bj1s16OLZGntix
+	HAB9+trHzlaICkuqwCzktPFZXA4KW4DXyGtf/GMuivqDcEdk6wci6gcnWJn2EXuCtT0n1L7uhk2zp
+	SMxsaB+lYDV/de4qV1xDDvreTpA3jQh10p8UkWPCdK7YICTvatOQOAIm5I4aXE2HC1ImIKZg0KmgG
+	lREoQkrdxFTlzUQVDsLuQap4DLcaqkP1jae6Vka7RaQ9Pt0BVGEQ9hMdnluvf9F/lkPEWFIu9BQiL
+	VI72vsG74XteWtNfXwx11FF1bV19I/LkunQbqAKRPRylTSN6muY6QaCSYpgfRAQpmh2H7AuVu6Jil
+	qG9zg2xlzw3yZrWsCHpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onP2q-006jA0-3Q; Tue, 25 Oct 2022 18:53:00 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1onP2q-006jAL-Od; Tue, 25 Oct 2022 18:53:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onP1r-006ihs-Sd; Tue, 25 Oct 2022 18:52:02 +0000
+	id 1onP1s-006iiO-1s; Tue, 25 Oct 2022 18:52:02 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 91E9DB80D56;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9B75561AFA;
+	Tue, 25 Oct 2022 18:51:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C17F5C433C1;
 	Tue, 25 Oct 2022 18:51:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0986C433D6;
-	Tue, 25 Oct 2022 18:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666723917;
-	bh=F248mcLTvmzVsBq/X1m/ocM22o9h6YtGlwDEshOxlPY=;
+	s=k20201202; t=1666723919;
+	bh=+ozRyG+/L/xs5vMkn+C6G9WKJtfh+Y8vy5sNTnvobgc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Rw8vTMAJJn48s4bvfO6Bdgr2bmmMcPtUVeGHnWLqabdStTnd84O2cNJCdnah3qblM
-	 WWpP5rdddCb3KLJ1CK0CWJ4PaKwIDvaQgNg1S+Azmg5MP9wmEha2ab7BpGjTiswfK8
-	 F+H6+jHCPFq534N8LGUozPZtN0VoOnG6QKwu9ibleMESoVzSlKmEQOgCOLDTM2sgMO
-	 emwtLiDmnnlDhNnhup24CEx2x/RqPl04Vwjx/3TBkx1VOAlMqlofAQF+/sCnKf7jFk
-	 IShCcyXKF18kUnbyvkOmFVv+Zpofd3m/ZPKx7+Q4Z2A2dDvxY5oDryockcgW7lUc+B
-	 UuXJ+QAYliQFQ==
+	b=lHtBkObVoFVrLhYC4gn/QUV/dtIAEoOoq4OtZJADIfcNZSGavoUdIulRDBjIYK5mF
+	 M4clRpNMn5kFEGJzbJ1v2PJaDb15VBpRbsZiWI1S2TI+da31fCdE38Dp1Y5DTj4NGI
+	 qX6xYH/+23SWUNH5d5CfpnmRSSrIlQFbHp9ld4rA1H+4vocz1pDNKPlqAHo8y+Ly2G
+	 fEuad0uRxrKE8HcLhnlgbO7mqi8fhBxs8IOHbL5OTl2ImQy6hPuMitRwEQgQP3EdDS
+	 0bFaPSElzGcQaOFqkUEE8LeFg4xz1tW+UjTwyvGySZ1NZvBq1xglPK5vDJ+mup3ud1
+	 ZFyKQGMIWVH7w==
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>
 Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -74,16 +74,16 @@ Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-riscv@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v2 2/4] PCI: microchip: Include <linux/irqdomain.h> explicitly
-Date: Tue, 25 Oct 2022 13:51:45 -0500
-Message-Id: <20221025185147.665365-3-helgaas@kernel.org>
+Subject: [PATCH v2 3/4] PCI: mvebu: Include <linux/irqdomain.h> explicitly
+Date: Tue, 25 Oct 2022 13:51:46 -0500
+Message-Id: <20221025185147.665365-4-helgaas@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221025185147.665365-1-helgaas@kernel.org>
 References: <20221025185147.665365-1-helgaas@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_115200_088703_E1DFAB07 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20221025_115200_155569_3A86FC0A 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,31 +102,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bjorn Helgaas <bhelgaas@google.com>
 
-pcie-microchip-host.c uses irq_domain_add_linear() and related interfaces,
-so it needs <linux/irqdomain.h> but doesn't include it directly; it relies
-on the fact that <linux/of_irq.h> includes it.
+pci-mvebu.c uses irq_domain_add_linear() and related interfaces but relies
+on <linux/irqdomain.h> but doesn't include it directly; it relies on the
+fact that <linux/of_irq.h> includes it.
 
-But pcie-microchip-host.c *doesn't* need <linux/of_irq.h> itself.  Include
-<linux/irqdomain.h> directly to remove this implicit dependency so a future
-patch can drop <linux/of_irq.h>.
+Include <linux/irqdomain.h> directly to remove this implicit dependency.
 
 Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 ---
- drivers/pci/controller/pcie-microchip-host.c | 1 +
+ drivers/pci/controller/pci-mvebu.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/controller/pcie-microchip-host.c b/drivers/pci/controller/pcie-microchip-host.c
-index 7263d175b5ad..57b2a62f52c8 100644
---- a/drivers/pci/controller/pcie-microchip-host.c
-+++ b/drivers/pci/controller/pcie-microchip-host.c
-@@ -9,6 +9,7 @@
- 
- #include <linux/clk.h>
- #include <linux/irqchip/chained_irq.h>
+diff --git a/drivers/pci/controller/pci-mvebu.c b/drivers/pci/controller/pci-mvebu.c
+index 1ced73726a26..73db99035c2b 100644
+--- a/drivers/pci/controller/pci-mvebu.c
++++ b/drivers/pci/controller/pci-mvebu.c
+@@ -13,6 +13,7 @@
+ #include <linux/delay.h>
+ #include <linux/gpio.h>
+ #include <linux/init.h>
 +#include <linux/irqdomain.h>
- #include <linux/module.h>
- #include <linux/msi.h>
- #include <linux/of_address.h>
+ #include <linux/mbus.h>
+ #include <linux/slab.h>
+ #include <linux/platform_device.h>
 -- 
 2.25.1
 
