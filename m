@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EAB4C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Oct 2022 07:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FEBC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Oct 2022 09:57:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t7YCI0LJuBgpqffJZiCTQmzKvqda4F69wK+a5njvSOI=; b=KvFt37Up1GtA3m
-	YljT7iWQSb7zOsIx9FKetWccmYsjTwBchw+qkFNAgpsiUJHPhSYJ4QWOUNJwxFx9IriCk6oJJpesM
-	dVVZgh8SnKxr+K25weJ5iQRpcasokKeQTjGflIAXOxBfj3PkE1kS5avUhb06fxjm8hzyPBO7Npn6m
-	fI8DdFIR5Wb1TjfVfjWzE5ugqd0/+2R8Zu9LA2WREl/w1mhjzuDNXeP9s1V0V+1iAoVIx3j95Plc4
-	THgIWeZzvnicZdCZSgueNxJO9KeKBHPr8Tbm1B59kY4VdTc5sYDANCzC8NiOGnVHlSsiF1MUhR6ZE
-	WvWrCKoyhFIkf3zKxT7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:
+	Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0DXgKOQO9CwZfN1UQ4Kz+YEMYe7o0r6aZAwNR6xRLMY=; b=Hp/KegqFqTqhWd
+	dNimmZzJRj43QpGSnB7AuisPpU7lMtS1rckSOI74B1h3ZG775EDPacwE72P13nbHq7/ocfdIZKs2a
+	E3WEmBaqVwQ7hL/dZDcqpYSp3z+jJYqV4tN5OpwM2wzmyTn29pW2t5fHrTNg3GsD5SEIZqTN+8A9C
+	fupexi5B0X4MBFC+DBR/c4vlseuyEJQtOyyr9nBFh5XBDDrtlyp6x7Wo604lGlKp2D2Q4cQ6djW7n
+	bMpL9uLTNSkdD5PS9FqrB2jL1KAxuhCYXP8GajeocZJ6nvIU21N7cBfWlOsHpE9qgJzyITAZDKwhb
+	pm3jfTh9fl2umUmcaJvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onb2m-008Plq-DV; Wed, 26 Oct 2022 07:41:44 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1ondAG-008saj-Hk; Wed, 26 Oct 2022 09:57:36 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onb2i-008PjE-FV
-	for linux-rockchip@lists.infradead.org; Wed, 26 Oct 2022 07:41:43 +0000
-Received: by mail-wr1-x430.google.com with SMTP id y16so14452205wrt.12
-        for <linux-rockchip@lists.infradead.org>; Wed, 26 Oct 2022 00:41:37 -0700 (PDT)
+	id 1ondAD-008saC-85
+	for linux-rockchip@lists.infradead.org; Wed, 26 Oct 2022 09:57:34 +0000
+Received: by mail-wm1-x330.google.com with SMTP id bg9-20020a05600c3c8900b003bf249616b0so1141378wmb.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 26 Oct 2022 02:57:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=qX+c/eqfKIRmSzQ2TAxdY0LKUbRjF3m5mcG02oMGx8Q=;
-        b=EGnZTiW4mN/u1L+KFftDWxXLRHrI00+AmvAaQQQ1bURMf22zv1OHtlPR/H7SUlo1xJ
-         fTLksIEiBVk/vYtUiqhHH+WeQMz81sDDpni+g1os3iml+wBrTaKNtPzeQ2gi9kupiQXT
-         iz7ggqhUEm8RugKYJkKqp+ZxE3PnQPjCAKtlF1m1brJaP3z5MqAuxVPc0vPN7sSxpbsg
-         anaIGMEx4eOGC7OC8w5Jhy264e2k+OotLo1DqfjJEhvn5EhZWLsI3Kv3iik8lHFDUNrG
-         il8K4Mejef+FYzG1mGYubXfdTuAIloBpBQv3eUuIaoVWb4faCOB6LwD+KrRuFx0eGNNO
-         vyrQ==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:subject:from:reply-to:cc:to:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3MaK4RKyYEjcTN5zHOlQRn1w7uiJa/5jdk5dAd9yul4=;
+        b=nIZGE645UWRZLVNsQQ1FvnCsj6LkhFXCPoVElJOGb+g/r4s3eLIvA4vagtVY5WSYgR
+         OQVQ5TWKpgUrIO83XLNG3p0CipbD4gd1LIoZIzNGmJy6NiA6xcejVaxg6EkWTUn0QxRz
+         irC/pfWickM0vFsa66AflF4JRu94eEhmoZYL+mmVTHKmEvZuoh/qdvogGi38cq7boof0
+         RcYz3p9/XPzWbsYeJ6NV8UF0DxXQsebdCqwF+Gtk3BF9UtzDft7YxNHyQMYKw+IbdDI5
+         EOyAiG/psQN1od7Mb/mRAbQ9Cp/pZMgZJQ0JzPQFv0/CAj7v1Jt+HzzhZRLemkFssSwr
+         4zXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qX+c/eqfKIRmSzQ2TAxdY0LKUbRjF3m5mcG02oMGx8Q=;
-        b=MdSvxWWm9Y22r+S4jvRyDlEkwQCyT2gRbBntug6fJfwEVAtP7idt6tethPBkpVHasF
-         ilFqf6jjSAUaYP3rsF5yyh5jSF6OtwBmxVT07c9+cCGD5jXS/OUh2XTFwCTYS3Fb0120
-         4AOt2GHMWIn1/CB1BYZ04W/102tjDs39OmTKdAT0gLHyUzEPhrVX18ZP8+xZs2tFitnW
-         vAxA99fFjZEQUjyUIl4khjhKW/OlGusMdgiupAfo8dLuOcxGL+Icuv6IZ0CqWreXKfHa
-         yqf82K8cJWwnbItfnZD3s9EyE/S9+stkbyOUYbEZYtnvtz/PKhwKHpT+X2UW5cVS/JAJ
-         uxZQ==
-X-Gm-Message-State: ACrzQf1wgc0nslQjGCEd3PR+JhB32lKYy+B+/EwjLQcqKXia9ZtOBvcK
-	TqsPhRhOxLehDOrnZ0DpHtASvA==
-X-Google-Smtp-Source: AMsMyM5S7b7nFZ2PlRcs8UPcZE5oWqjrYPqMzqX/eLf5/1gT4eLBzzOdYfUXPmu8eE/ZrDy9n/VKEg==
-X-Received: by 2002:a5d:46c1:0:b0:236:6a2f:9e53 with SMTP id g1-20020a5d46c1000000b002366a2f9e53mr12098440wrs.256.1666770096085;
-        Wed, 26 Oct 2022 00:41:36 -0700 (PDT)
-Received: from Red ([2a01:cb1d:3d5:a100:4a02:2aff:fe07:1efc])
-        by smtp.googlemail.com with ESMTPSA id bd14-20020a05600c1f0e00b003b492753826sm1054980wmb.43.2022.10.26.00.41.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Oct 2022 00:41:35 -0700 (PDT)
-Date: Wed, 26 Oct 2022 09:41:30 +0200
-From: Corentin LABBE <clabbe@baylibre.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	herbert@gondor.apana.org.au
-Cc: ardb@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	mturquette@baylibre.com, robh+dt@kernel.org, sboyd@kernel.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v10 00/33] crypto: rockchip: permit to pass self-tests
-Message-ID: <Y1jkqiYjXT30/hk5@Red>
-References: <20220927075511.3147847-1-clabbe@baylibre.com>
- <Y1KctXMZ1+c5uQqd@Red>
- <4780296.31r3eYUQgx@diego>
+        h=content-transfer-encoding:subject:from:reply-to:cc:to:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=3MaK4RKyYEjcTN5zHOlQRn1w7uiJa/5jdk5dAd9yul4=;
+        b=MALrPkcZVpLydkQEVRxmwm7YO5PRnr2ADBipXvuWmu0zkR4LvqVrMv+oiObmCVzzcV
+         AUm3RonyyjNSOA+JvyWdNJCT9PYNmIlgofskMui0ZAc650ajSxXC12PNBbG1g26BUugY
+         lFFyg6xaA3QyPInGA3jT628KU9m0NzUe5YYHysEwqKoeHieYA4MYabfJPSDJf8Y4hFYu
+         aqKHbIna3xG1onY0hMfRz9Yb/uVcbJHtsQWJb4XBgAiuPyfH6WhcjJsPHRHqDkhkesa5
+         ZcQdUj8WGolBe2lwEAXxm3Rw2pFKjRtMChaMRSXooI2oo3fNWWx77Ztx0fLd8cQObFNz
+         HQYQ==
+X-Gm-Message-State: ACrzQf0Y0bWjhLWHKldI+l/3VW6c9Y4dxC5GheyJFOHhzD1n0CVFW2sX
+	EjjQaFejlL3oXiywkWWeUaFbO57ImkA=
+X-Google-Smtp-Source: AMsMyM54OMn97lzt00kb9zMzrsRi0jdXfCCI1DsxpRXhtpzOgMX/E7Ll/KLkvE+3RmQadzmL/rDIWA==
+X-Received: by 2002:a05:600c:3d10:b0:3c6:e1fb:b336 with SMTP id bh16-20020a05600c3d1000b003c6e1fbb336mr1828287wmb.9.1666778246830;
+        Wed, 26 Oct 2022 02:57:26 -0700 (PDT)
+Received: from [192.168.1.42] (mail.eskon.cz. [213.155.251.67])
+        by smtp.gmail.com with ESMTPSA id d11-20020a056000114b00b00231893bfdc7sm4857933wrx.2.2022.10.26.02.57.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 26 Oct 2022 02:57:26 -0700 (PDT)
+Message-ID: <49af22c1-d7c5-0b44-550c-eaaa9aa52c89@gmail.com>
+Date: Wed, 26 Oct 2022 11:56:11 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4780296.31r3eYUQgx@diego>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+To: linux-rockchip@lists.infradead.org
+Cc: macromorgan@hotmail.com, michael.riesch@wolfvision.net, heiko@sntech.de
+From: =?UTF-8?Q?Daniel_Br=c3=a1t?= <danek.brat@gmail.com>
+Subject: rk3568: dsi: panel has shifted image
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_004140_762416_E8EAD13D 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20221026_025733_314253_9EFEC8DA 
+X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,56 +84,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: danek.brat@gmail.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Fri, Oct 21, 2022 at 07:09:53PM +0200, Heiko St=FCbner a =E9crit :
-> Am Freitag, 21. Oktober 2022, 15:20:53 CEST schrieb Corentin LABBE:
-> > Le Tue, Sep 27, 2022 at 07:54:38AM +0000, Corentin Labbe a =E9crit :
-> > > Hello
-> > > =
+Hello,
+I am experimenting with the official Raspberry Pi 7" DSI touch screen on
+Radxa rock 3A v1.3. Using upstream kernel 6.1-rc2, I managed to get the 
+screen
+to turn on and display picture, but the image is shifted to the left 
+with the
+overflow displayed on the right side. Plus a bit of the right side is 
+not used
+at all (black). The image is also kinda "shimmering", like it was constantly
+scrolling vertically.
 
-> > > The rockchip crypto driver is broken and do not pass self-tests.
-> > > This serie's goal is to permit to become usable and pass self-tests.
-> > > =
+Unused black stripe on the right: https://imgur.com/IzHSwsq
+Shift of the image and shimmer: https://imgur.com/7Fdd6AX
 
-> > > This whole serie is tested on a rk3328-rock64, rk3288-miqi and
-> > > rk3399-khadas-edge-v with selftests (with CONFIG_CRYPTO_MANAGER_EXTRA=
-_TESTS=3Dy)
-> > > =
+I remember seeing some mentiones of shifted image in the initial rk3568 dsi
+support patches, but dont know if it is related.
 
-> > > Regards
-> > > =
+My kernel config: https://pastebin.com/rvQ7grqd
+My device tree: https://pastebin.com/7Hv1Cmuv
+Bootlog: https://pastebin.com/fHipufFA
 
-> > =
-
-> > Hello
-> > =
-
-> > Gentle ping since it is a month since this serie was sent and no commen=
-t was made (except some reviewed-by).
-> > So I think it is ready to be merged, probably thought the crypto tree.
-> =
-
-> ideally everything _except_ patches
->  26 +27+28
-> would go through the crypto tree.
-> =
-
-> So if possible I'd like to pick up those (clock + arm64-dts patches)
-> after the crypto people are satisfied with the driver changes.
-> =
-
-
-Hello
-
-I agree with this way.
-
-Herbert any thought ?
-
-Regards
+Best regards,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
