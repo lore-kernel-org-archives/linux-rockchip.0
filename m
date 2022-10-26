@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04AAC38A2D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Oct 2022 12:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BE4C38A2D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Oct 2022 13:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nnAnucIbymdfPwJduhILF2Ajdwtm5dVM9wzeUiMQTXo=; b=cKbU5g5hYY+2yk
-	aJeLgC3MifIlNfwnYoE+qwQ4+SnDRfriozmij44mSx+3sL3cKTLy/oHK40Id1cBIM9mkYR/YhQDl1
-	r2aHptQp6c0VHUb3j4/vhYr28K8I8NWdKffjW0S5qF2W6fKDHNH9NAqjaAwXXZkwZV+Ykx0qhFHkh
-	eWpuzeBYz8RB6Qcm7RGrEKFcnoPwd60pSJ7yUWcnB4NeVPViAjW81J4o1gGTC1YoQK5Hi6u3b1AiK
-	nIY6TPSGjdrIuxRSLSKUxxnFjSuiYp3L7rpYFkQ4sro7oX8GJbcgi3upSRaIknsxFyE8Dj7/WfoSp
-	F8ULgikpU3y1EQMLZDLw==;
+	List-Owner; bh=psgAeJcNqTir6pul4a0A81/kYfPvCGZAk5eBsOfXPZY=; b=Y+MjS3jm2L/wSL
+	IF5yl/9PmcRyA77tsMsAj+F0ACudGUdYSHB88HU25aEjePV6uLJ/WI3K9lPP/G+uPU2HQaFDKGiDU
+	vL77GYYaiwsDLZUWFLF97qF1vgz2q0UEOuO4iQLujFx/LnKkmCjkG8YWqggAl9E1bHM4N1PYn/MQA
+	wLsukcHoe7HRL1V8p58QE8X7r9jcqf97WyFTIm2JQudgyC91PimxNTqNbi0EUWuzl8pHZnqrNExrJ
+	bGnd0dA5Fd7WDliW9CzU7CxARqPpXCon9i2BKZf78gSvJgmavg3KDD8tgslsX1f/q66bnxr1suh5V
+	tnxzzOG5A0LXhMX0OGqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onfZ5-009Av6-8V; Wed, 26 Oct 2022 12:31:23 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ongEh-009QYW-H3; Wed, 26 Oct 2022 13:14:23 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onfYs-009Art-74; Wed, 26 Oct 2022 12:31:12 +0000
-Received: from [192.168.2.190] (109-252-112-196.nat.spd-mgts.ru [109.252.112.196])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A160F660283C;
-	Wed, 26 Oct 2022 13:31:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666787465;
-	bh=cVeQ921nr1AcNBVj1P6cg8IcXyv7Hv4rrSLvF9n0vLk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SJWsV0ogx4gukVqrHHNKVgKYZ0kQz8qF4ZbwVQbXmfCAcWW4X8jM2jbdSIC6O+ROD
-	 mlrhJWseWDEdiODY58uwsEURti2LqQwah7CejmrvhqIDfSJt/tIR1Cnr0f3IUM+G55
-	 QRpxyefWC1CNP6ov7hkqLEMDJXITcPtUtJIoJ0DWwY/Kn9O2PqLXOft56F+tpwa5Fj
-	 i1TExjR1seBKD05WzlfypAdVrIKgqz9+cbe8v5VNIG6T/ulg8qYxU5a/nLOYhlY4ey
-	 HRJkDF0H5nFUjK5uXNE7oWp4/VdZkAGoPWtxCR8LVla4tW9PUTM7jdP4pf0IMwFpss
-	 XHXynQR2p0ORA==
-Message-ID: <c3c49aec-f307-3679-55a8-eb2c33fb84aa@collabora.com>
-Date: Wed, 26 Oct 2022 15:31:01 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
+	id 1ongEZ-009QN6-2g; Wed, 26 Oct 2022 13:14:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description; bh=hVlTEDNXqc/fdmdheJRXcBghemReuWQuEg72Ug1yjCQ=; b=w3hIo
+	exZgL3mE1EU8J0QZCFZNzGgmAd71kq7c212s3cOAdKD8+tZiGPsFE6mss3OeQR5/Uskrv1benxejF
+	pBbY4CleScuxjuKMp53MaE8jpI4TNnwx0xbL0q0mFS+mLpqbTVBLfkR61L5NRVCubvbp1hZ+JDsb4
+	W8DypmVA8cWH+TKpr+g5cs0t79owvqcvK0+ly12gX2X8ZZfBvt5YrUe+J8TJN/60VY1r6N+vcwUh/
+	ljCbL/Ks4N+TH8g/yWDp3ZlVtnlgQZLpYK7eP6WK76ijUlRW6M5PmzmI4UZ3icuQ8KSJhQkRTSbZS
+	+fBzphM6n/OH5uZhpqNty1IjV2CtQ==;
+Received: from dougal.metanate.com ([192.168.88.1] helo=donbot)
+	by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <john@metanate.com>)
+	id 1ongDr-0007Dc-Mv;
+	Wed, 26 Oct 2022 14:13:33 +0100
+Date: Wed, 26 Oct 2022 14:13:32 +0100
+From: John Keeping <john@metanate.com>
+To: Aurelien Jarno <aurelien@aurel32.net>
+Cc: linux-kernel@vger.kernel.org,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	"open list:DRM DRIVERS FOR ROCKCHIP" <dri-devel@lists.freedesktop.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>
 Subject: Re: [PATCH] drm/rockchip: dw_hdmi: filter regulator -EPROBE_DEFER
  error messages
-Content-Language: en-US
-To: Aurelien Jarno <aurelien@aurel32.net>, linux-kernel@vger.kernel.org
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sascha Hauer <s.hauer@pengutronix.de>,
- "open list:DRM DRIVERS FOR ROCKCHIP" <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Message-ID: <Y1kyfAMbt6yFFlJ6@donbot>
 References: <20220926203752.5430-1-aurelien@aurel32.net>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20220926203752.5430-1-aurelien@aurel32.net>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_053110_578046_7F95DEED 
-X-CRM114-Status: GOOD (  18.36  )
+X-CRM114-CacheID: sfid-20221026_061415_150495_158634C9 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,7 +76,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/26/22 23:37, Aurelien Jarno wrote:
+On Mon, Sep 26, 2022 at 10:37:52PM +0200, Aurelien Jarno wrote:
 > When the avdd-0v9 or avdd-1v8 supply are not yet available, EPROBE_DEFER
 > is returned by rockchip_hdmi_parse_dt(). This causes the following error
 > message to be printed multiple times:
@@ -106,19 +103,11 @@ On 9/26/22 23:37, Aurelien Jarno wrote:
 > -		DRM_DEV_ERROR(hdmi->dev, "Unable to parse OF data\n");
 > +		if (ret != -EPROBE_DEFER)
 > +			DRM_DEV_ERROR(hdmi->dev, "Unable to parse OF data\n");
->  		return ret;
->  	}
->  
 
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Can we use dev_err_probe() here?
 
-Nit: all the DRM_DEV_ERROR() usage in this function is inappropriate to
-me. These errors should be converted to dev_err_probe(), IMO.
-
--- 
-Best regards,
-Dmitry
-
+There's no DRM-specific variant, but that is already widely used across
+the DRM subsystem.
 
 _______________________________________________
 Linux-rockchip mailing list
