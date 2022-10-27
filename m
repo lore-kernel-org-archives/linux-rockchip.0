@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7932DECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 16:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC2B0ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 17:54:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RgZxue5crS0E6k7RZTRLi3t4odw2G7Me17KvP0yN/y8=; b=3dXc7m1Ea9NJaa
-	Y9wEr0FErJiua6Q9EvXQsda/CAX6LsV44JWvAyCpEl2VGK7GJ6SFmZTdwF+Kc3Lv1en/gso5s4iBU
-	iuLZqy1DH43cq5Ki/iMDaaluNlL0vFjhK2MbF8IqUsMpopBHtCC62ls6hyuygx+ZvDmAAO+L72lls
-	KUi/L02sP9UmR6MxHt0991wnzF7bCwoxt0/h/r8Mxd0IYwWx5jwGHZC31uUdzV8CV4qkjblEZ3PHP
-	GHBU1S4GJ/0JSqXTF//QfHBHX+YrqTMz/ll9Pvah+XYSjoXFONIn71lkJEdvaXGzl85xlDtoM/wm3
-	dUrldftO+cJ/0ZG0X/oA==;
+	List-Owner; bh=6f2m4ol3p/+bEcTri73NefEczT8R5l/p+mtBjF/Ujxs=; b=DUeBD0JzOaRovw
+	3jHQPoGHg19BYuzAWhBAazHKlp2uY0//B7LWXbWfhwzD1QxnJfpvF2SFXdiOdJWvmDzw4gikMCYOY
+	5YjMEFflOtAz8dvwV/HYJKKGSiWO6O4HkjQBEN3SEJi42M8SiMgtQnNfhoWFv6/rxDe5seKMFGCq0
+	YpGu/we7Znnq3h0Het42CgKWsqK6ndFvBpFpj6fhZmIs7JNCtNlgdG86vaZ2tjGN1RJ8JLx8YBCbl
+	HMRO+327eBR9TGDVNF6Ltb8ZJUYaqXgIv/YcXquhIksGVR1b3VEG2gS9bON4EztX79Znt9R47vB0/
+	X9LVhTSXkokn+hxTnzpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo5JH-00E9QA-7U; Thu, 27 Oct 2022 16:00:47 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1oo74b-00EPHV-A4; Thu, 27 Oct 2022 17:53:45 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo5Ix-00E9GO-He; Thu, 27 Oct 2022 16:00:29 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id s24so3301878ljs.11;
-        Thu, 27 Oct 2022 09:00:26 -0700 (PDT)
+	id 1oo74M-00EPEr-P4; Thu, 27 Oct 2022 17:53:32 +0000
+Received: by mail-ej1-x632.google.com with SMTP id sc25so6800133ejc.12;
+        Thu, 27 Oct 2022 10:53:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2Q+FhdFfWXCodxANna05rQkLf68c4F7yR8oJG26j/8I=;
-        b=PGhAtJg71umuNe9hEDkN5++IWfnmk90PX9PuHKnYfJDitaKwi+XWXt1BYwOnouqeQe
-         MLjN8Vaze98KOrxnWYSiJCJBepFyDI3fdtZ+udiIzikucdrQ5qUmUu0o7qE1YIG+ndAn
-         7p1F0m8d75SnJfpHtJwSjaHlbMJSEcqZq3Hhy9uKGT11fp8FzH8NL+WMxSQutGN0thUy
-         eY5S8irzdDq21hifbgPF1r7UjvYaMTuUnFG3WKaYIagd1WTNJ7OGdIh8ni/st2UEaIS6
-         2RWfUfOcB5/PyK4rEbHde9A5llS2KvSzpUAuU2KaJ93pcveQm+7BbNIFpkn/L2OyPojI
-         sVgw==
+        bh=Te6fDSLj/TBuvVXZMqUMxKDlKF/5a5kAYU4EMoUuQxc=;
+        b=U/nPCjlVL2xeGbSWNYKEN0FEUD4Pc14/Z17r9bOZI9CenYfpYSry8RO1hQOmSuZQQg
+         hTCI6ZGh2dXkMFwzb/Ub9WccR0s8h2n19u8+0EkyBt9CsgajeDOnNe1u9AzKl/Qz2R/Y
+         XN+i3aDLKg/jKLNFltXuUWdbLD3BOmK+1gRAJat7+XsxDmoBcSb2nU3GTrJ4gRoMO152
+         Z0TvMPEs7FELcUrP5TXnYIxw9eKpAaomy3OkfxwIey5P82d31EJtyS4D1TS4biQLWr9M
+         ilL6zhM9Wcc0zxztTxXEPdw3h1QvSW98aL+iLY6aIG9n5c0aPkHCIeiNuq4aGyjTHvlJ
+         sn/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2Q+FhdFfWXCodxANna05rQkLf68c4F7yR8oJG26j/8I=;
-        b=IThKAQgbGxLiH1tqpgwoaNGEsV6Yr8MYUYGkdDM93xUkHf9pOLy7NPMLkbodaXc8PE
-         YheByJtLOQHwPN4o+Tvid0bvhAiv0P31j66OnYCKZPmMfZMUkTIm3qP6RV4cdIP9iA8O
-         LGQ6Zgr20+e7AMffadZwoc/J+H8JzSv5g8wV0ZqDiuZDEWcJuRsBJ88u+LpKPEM7uVWN
-         ENwVxGTCD6nuUKLk3ME84pgRzUL0E5LyuWVYK7IU7mHILg56Sbb0dlO0YgQwsIFBkz4I
-         1MTIYAVSeCoy3QJd7C4phvwzrMv7wG2q7whtFAmqqRG3ZaMDgZaiCAPlJnINYqBPplL9
-         WG+w==
-X-Gm-Message-State: ACrzQf2LL+pKytEhCCs6JrVp5xbJWdD1W/gxbyXjLMSnGnETHwoQcNYd
-	qE81Y3nNhBAwVKigfYSg/SxR68cXlg8=
-X-Google-Smtp-Source: AMsMyM4ha8qSxDMf4y7djfvLJtt8clxvlapNvWVxOlVc0diAa5i9x+gJDUkbUa+ez2Mup3R/WhFL3w==
-X-Received: by 2002:a05:6402:5483:b0:45c:1336:6d9b with SMTP id fg3-20020a056402548300b0045c13366d9bmr46426634edb.100.1666886404555;
-        Thu, 27 Oct 2022 09:00:04 -0700 (PDT)
+        bh=Te6fDSLj/TBuvVXZMqUMxKDlKF/5a5kAYU4EMoUuQxc=;
+        b=pRQ9ptoUiaKn9HnrTXLfUquV7fEH04uVyZdoz//C8TikLDMRqwcRZ5sTpwrAtkMxN6
+         Yvq0lggXaelShFJue1JjVekK6Qog5xMe01NIfaoRTSNkZbF4543yN6uWxTdoufFuwDc9
+         04SGppkYh/uNAe9moNwO4OQPIvXghKAgZVXlw7ulxFah0ERM+XUsdSzB0bqzkmPFyThC
+         5RZR3gYgErJa+ZXBPD7uRPwB/U8/JxFLt6lAI60xhxJJS1jyodouUxmK72a+0mPJ52dy
+         ehQEX4baKiPOhImrb+FKtCo4lshyenKyyrLNKqufo9m0wEf/92eIuELjzZwcRZ5Z3ZU1
+         VclQ==
+X-Gm-Message-State: ACrzQf3TQwYF381BEBpbSH2fwniedT84iLwaeRiV9omPTetGQ3UUhHRr
+	58REUmL/iOH+VQkYpZIHBTQ=
+X-Google-Smtp-Source: AMsMyM4FqBH+p8YuqMG/vutEJ71E3+yKsmXow2Thqk422xq8Z76kd7ciUNtkVMJCAexUoSRsQ/WeQA==
+X-Received: by 2002:a17:907:97d5:b0:7ac:5f72:6c1a with SMTP id js21-20020a17090797d500b007ac5f726c1amr13606352ejc.126.1666893205055;
+        Thu, 27 Oct 2022 10:53:25 -0700 (PDT)
 Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id f1-20020a05640214c100b004623028c594sm1214536edx.49.2022.10.27.09.00.03
+        by smtp.gmail.com with ESMTPSA id p10-20020a056402500a00b004615e1bbaf4sm1322908eda.87.2022.10.27.10.53.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Oct 2022 09:00:04 -0700 (PDT)
-Message-ID: <f5e8193b-8671-6b9d-2290-cea1962848c4@gmail.com>
-Date: Thu, 27 Oct 2022 18:00:02 +0200
+        Thu, 27 Oct 2022 10:53:24 -0700 (PDT)
+Message-ID: <2dc46681-894d-4521-bfa7-3e9209691e0a@gmail.com>
+Date: Thu, 27 Oct 2022 19:53:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
-Subject: Re: [PATCH v1 1/3] dt-bindings: rtc: convert haoyu,hym8563.txt to
- yaml
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, heiko@sntech.de
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- a.zummo@towertech.it, alexandre.belloni@bootlin.com,
- linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
+Subject: Re: [PATCH v1 3/4] ARM: dts: rockchip: add rk3128.dtsi
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ kever.yang@rock-chips.com, heiko@sntech.de
+Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, zhangqing@rock-chips.com,
+ hjc@rock-chips.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ daniel.lezcano@linaro.org, tglx@linutronix.de, arnd@arndb.de,
+ olof@lixom.net, soc@kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
-References: <f7127f87-05fd-5e20-eb2d-a3fd04674229@gmail.com>
- <2a09aec9-96c3-0ea9-a2b5-4a04c9982bb5@linaro.org>
-Content-Language: en-US
+References: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
+ <674b875a-0dfa-eff2-5018-eafed851707f@gmail.com>
+ <f45a4dcb-12e6-9a72-dbb3-7ec198ff2b1d@linaro.org>
 From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <2a09aec9-96c3-0ea9-a2b5-4a04c9982bb5@linaro.org>
+In-Reply-To: <f45a4dcb-12e6-9a72-dbb3-7ec198ff2b1d@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_090027_658771_036D62ED 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221027_105330_871291_6062E235 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,32 +98,378 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof, Kever, Heiko and others,
 
+On 10/27/22 16:58, Krzysztof Kozlowski wrote:
+> On 26/10/2022 20:53, Johan Jonker wrote:
+>> Add basic rk3128 support.
+>>
+> 
+> Thank you for your patch. There is something to discuss/improve.
 
-On 10/27/22 17:00, Krzysztof Kozlowski wrote:
-> On 26/10/2022 18:58, Johan Jonker wrote:
->> Convert haoyu,hym8563.txt to yaml.
->>
->> Changed:
->>   Add clock-frequency property
->>
->> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
->> ---
->>  .../devicetree/bindings/rtc/haoyu,hym8563.txt | 30 ----------
->>  .../bindings/rtc/haoyu,hym8563.yaml           | 60 +++++++++++++++++++
+Thank you for your review.
+
+Some more questions/comments below.
+
+> 
+>> +#include <dt-bindings/clock/rk3128-cru.h>
+>> +#include <dt-bindings/gpio/gpio.h>
+>> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+>> +#include <dt-bindings/interrupt-controller/irq.h>
+>> +#include <dt-bindings/pinctrl/rockchip.h>
+>> +
+>> +/ {
+>> +	compatible = "rockchip,rk3128";
+>> +	interrupt-parent = <&gic>;
+>> +	#address-cells = <1>;
+>> +	#size-cells = <1>;
+>> +
+>> +	aliases {
+>> +		gpio0 = &gpio0;
+>> +		gpio1 = &gpio1;
+>> +		gpio2 = &gpio2;
+>> +		gpio3 = &gpio3;
+
+Is gpio OK here?
+
+>> +		i2c0 = &i2c0;
+>> +		i2c1 = &i2c1;
+>> +		i2c2 = &i2c2;
+>> +		i2c3 = &i2c3;
+>> +		spi0 = &spi0;
+>> +		serial0 = &uart0;
+>> +		serial1 = &uart1;
+>> +		serial2 = &uart2;
+> 
+> Bus aliases are board specific and represent what is actually available
+> on headers/pins etc. These do not belong to SoC DTSI.
+
+I just follow current Rockchip DT common practice.
+
+Do we need to change all Rockchip boards?
+Would like to hear from Heiko what's the plan here?
+Syncing to U-boot is already a mess...
+
+So far only instructions/changes and discussion about mmc nodes.
+
+Can Rockchip specific rules be publicized in a central place? 
+
+===
+mmc aliases on reg order, availability and without number gap.
+===
+
+Heiko's sort rules:
+
+compatible
+reg
+interrupts
+[alphabetical]
+status [if needed]
+
+===
+My incomplete list:
+
+For nodes:
+If exists on top: model, compatible and chosen.
+Sort things without reg alphabetical first,
+then sort the rest by reg address.
+
+Inside nodes:
+If exists on top: compatible, reg and interrupts.
+In alphabetical order the required properties.
+Then in alphabetical order the other properties.
+And as last things that start with '#' in alphabetical order.
+Add status below all other properties for soc internal components with
+any board-specifics.
+Keep an empty line between properties and nodes.
+
+Exceptions:
+Sort pinctrl-0 above pinctrl-names, so it stays in line with clock-names
+and dma-names.
+Sort simple-audio-card,name above other simple-audio-card properties.
+Sort regulator-name above other regulator properties.
+Sort regulator-min-microvolt above regulator-max-microvolt.
+
+> 
+>> +	};
+>> +
+>> +	arm-pmu {
+>> +		compatible = "arm,cortex-a7-pmu";
+>> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>,
+>> +			     <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>,
+>> +			     <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>,
+>> +			     <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
+>> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
+>> +	};
+>> +
+>> +	cpus {
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>> +
+>> +		cpu0: cpu@f00 {
+>> +			device_type = "cpu";
+>> +			compatible = "arm,cortex-a7";
+>> +			reg = <0xf00>;
+>> +			clock-latency = <40000>;
+>> +			clocks = <&cru ARMCLK>;
+
+>> +			operating-points = <
+>> +				/* KHz    uV */
+>> +				 816000 1000000
+>> +			>;
+> 
+> Why not operating-points-v2?
+
+rk3128 doesn't have a tsadc.
+As long as this thermal stuff is not implemented with drivers and regulators I would prefer to keep it basic in the DT for now.
+Just keep things simple for now till someone with hardware can fix that.
+
+https://github.com/rockchip-linux/kernel/blob/develop-4.4/arch/arm/boot/dts/rk312x.dtsi#L315
+
+	tsadc: tsadc {
+		compatible = "rockchip,rk3126-tsadc-virtual";
+		nvmem-cells = <&cpu_leakage>;
+		nvmem-cell-names = "cpu_leakage";
+		#thermal-sensor-cells = <1>;
+		status = "disabled";
+	};
+> 
+>> +			#cooling-cells = <2>; /* min followed by max */
+>> +		};
+>> +
+>> +		cpu1: cpu@f01 {
+>> +			device_type = "cpu";
+>> +			compatible = "arm,cortex-a7";
+>> +			reg = <0xf01>;
+>> +		};
+>> +
+>> +		cpu2: cpu@f02 {
+>> +			device_type = "cpu";
+>> +			compatible = "arm,cortex-a7";
+>> +			reg = <0xf02>;
+>> +		};
+>> +
+>> +		cpu3: cpu@f03 {
+>> +			device_type = "cpu";
+>> +			compatible = "arm,cortex-a7";
+>> +			reg = <0xf03>;
+>> +		};
+>> +	};
+>> +
+>> +	timer {
+
+>> +		compatible = "arm,armv7-timer";
+
+Original 2 interrupts:
+
+>> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+>> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+
+Could someone help here with the correct interrupts properties?
+
+This was later changed to 4 interrupts:
+
+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+See:
+arm: dts: enable arm arch virtual timer for rk312x
+https://github.com/rockchip-linux/kernel/commit/405105146fd8a25ef3c9c46d18895ad243a6db2d
+
+===
+
+How to calculate the number?
+Please advise? Thanks!
+
+From rk3128 TRM show only 3 interrupts: ????
+PPI
+27 VIRTUAL TIMER High level
+29 SECURE PHYSICAL TIMER High level
+30 NON-SECURE PHY TIMER High level
+
+>> +		arm,cpu-registers-not-fw-configured;
+>> +		clock-frequency = <24000000>;
+>> +	};
+>> +
+>> +	xin24m: oscillator {
+>> +		compatible = "fixed-clock";
+>> +		clock-frequency = <24000000>;
+>> +		clock-output-names = "xin24m";
+>> +		#clock-cells = <0>;
+>> +	};
+>> +
+>> +	pmu: syscon@100a0000 {
+>> +		compatible = "rockchip,rk3128-pmu", "syscon", "simple-mfd";
+>> +		reg = <0x100a0000 0x1000>;
+>> +	};
+>> +
+>> +	gic: interrupt-controller@10139000 {
+>> +		compatible = "arm,cortex-a7-gic";
+>> +		reg = <0x10139000 0x1000>,
+>> +		      <0x1013a000 0x1000>,
+>> +		      <0x1013c000 0x2000>,
+>> +		      <0x1013e000 0x2000>;
+>> +		interrupts = <GIC_PPI 9 0xf04>;
+
+How can this number be 9 if the lowest PPI IRQ ID is:
+
+27 VIRTUAL TIMER High level
+
+Can someone help here? Thanks!
+
 > 
 
-> https://lore.kernel.org/all/20221024165549.74574-7-sebastian.reichel@collabora.com/
+> f04 looks like a mask, so use standard defines for it.
 
-Ooops, didn't see that one...
-Needed it for the rk3128-evb board to pass without notifications.
+OK
+Will check which defines ends up with 0xf04. 
+interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>; ??
 
-Johan
+> 
+>> +		interrupt-controller;
+>> +		#interrupt-cells = <3>;
+>> +		#address-cells = <0>;
+>> +	};
+>> +
+>> +	usb_otg: usb@10180000 {
+>> +		compatible = "rockchip,rk3128-usb", "rockchip,rk3066-usb", "snps,dwc2";
+>> +		reg = <0x10180000 0x40000>;
+>> +		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru HCLK_OTG>;
+>> +		clock-names = "otg";
+>> +		dr_mode = "otg";
+>> +		phys = <&usb2phy_otg>;
+>> +		phy-names = "usb2-phy";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	usb_host_ehci: usb@101c0000 {
+>> +		compatible = "generic-ehci";
+>> +		reg = <0x101c0000 0x20000>;
+>> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+>> +		phys = <&usb2phy_host>;
+>> +		phy-names = "usb";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	usb_host_ohci: usb@101e0000 {
+>> +		compatible = "generic-ohci";
+>> +		reg = <0x101e0000 0x20000>;
+>> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+>> +		phys = <&usb2phy_host>;
+>> +		phy-names = "usb";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	sdmmc: mmc@10214000 {
+>> +		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
+>> +		reg = <0x10214000 0x4000>;
+>> +		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
+>> +			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+>> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>> +		dmas = <&pdma 10>;
+>> +		dma-names = "rx-tx";
+>> +		fifo-depth = <256>;
+>> +		max-frequency = <150000000>;
+>> +		resets = <&cru SRST_SDMMC>;
+>> +		reset-names = "reset";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	sdio: mmc@10218000 {
+>> +		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
+>> +		reg = <0x10218000 0x4000>;
+>> +		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
+>> +			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
+>> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>> +		dmas = <&pdma 11>;
+>> +		dma-names = "rx-tx";
+>> +		fifo-depth = <256>;
+>> +		max-frequency = <150000000>;
+>> +		resets = <&cru SRST_SDIO>;
+>> +		reset-names = "reset";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	emmc: mmc@1021c000 {
+>> +		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
+>> +		reg = <0x1021c000 0x4000>;
+>> +		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+>> +			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+>> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>> +		dmas = <&pdma 12>;
+>> +		dma-names = "rx-tx";
+>> +		fifo-depth = <256>;
+>> +		max-frequency = <150000000>;
+>> +		resets = <&cru SRST_EMMC>;
+>> +		reset-names = "reset";
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	nfc: nand-controller@10500000 {
+>> +		compatible = "rockchip,rk3128-nfc", "rockchip,rk2928-nfc";
+>> +		reg = <0x10500000 0x4000>;
+>> +		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
+>> +		clock-names = "ahb", "nfc";
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_cs0
+>> +			     &flash_dqs &flash_rdn &flash_rdy &flash_wrn>;
+>> +		status = "disabled";
+>> +	};
+>> +
+>> +	cru: clock-controller@20000000 {
+>> +		compatible = "rockchip,rk3128-cru";
+>> +		reg = <0x20000000 0x1000>;
+>> +		clocks = <&xin24m>;
+>> +		clock-names = "xin24m";
+>> +		rockchip,grf = <&grf>;
+>> +		#clock-cells = <1>;
+>> +		#reset-cells = <1>;
+>> +		assigned-clocks = <&cru PLL_GPLL>;
+>> +		assigned-clock-rates = <594000000>;
+>> +	};
+>> +
+>> +	grf: syscon@20008000 {
+>> +		compatible = "rockchip,rk3128-grf", "syscon", "simple-mfd";
+>> +		reg = <0x20008000 0x1000>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <1>;
+>> +
+>> +		usb2phy: usb2phy@17c {
+> 
 
+> Node names should be generic.
+> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+You are absolutely correct. Except for Rockchip usb2phy nodes ....
+#phy-cells is located in a sub node, so we keep as it is... ;)
+
+dt-bindings: phy: rename phy nodename in phy-rockchip-inno-usb2.yaml 
+https://lore.kernel.org/all/20210601164800.7670-2-jbx6244@gmail.com/
+
+> 
+>> +			compatible = "rockchip,rk3128-usb2phy";
+>> +			reg = <0x017c 0x0c>;
+>> +			clocks = <&cru SCLK_OTGPHY0>;
+>> +			clock-names = "phyclk";
+>> +			clock-output-names = "usb480m_phy";
+>> +			#clock-cells = <0>;
+>> +			status = "disabled";
+>> +
+> 
 > 
 > Best regards,
 > Krzysztof
 > 
+
+Kind regards,
+
+Johan Jonker
 
 _______________________________________________
 Linux-rockchip mailing list
