@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FBFC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 00:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21A9EC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 00:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QpJD9s8UaaH2BwLvtADem/MGX86bwHGVqcxsCxLx2fk=; b=O2ePn8KjKuY+tg
-	FEKFidzaocYVUiTUy0XcPFxZ9ZETWqk8DzkYeZqL7uc6OtJzFxiypJwv2md5uDuoLiK0B22TexVnq
-	JL/48rje9n4yaj9oEsggaq4k8WRDlVsx8gJ77COnIniJIWZYs+DJJ8u0YCOPAHKDf64SqCvQ6lau5
-	Vx4fVMfuFItbkJjBTVXMTFMomSfy5Fqg5V33KzXJMAwCmysyxwx575tG1Q4gI3ifqMWm6S05NStHp
-	F7CRCjOrgoQBlLEHe0852QP2nGC6PUTl8v9fa/WzymQpAMjzIZhwGx1JgS+9xkbhHwYASRgfXvSnV
-	0T1iHFcwstv1tBpgRNAA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aJAWi1IpCgYtF1K/DoyJ5//8FedisJrY7WbEA/3C6d4=; b=CgU78Py3FjigOU
+	M8EWvvpwKrirWofrQTLrwgLyumPQas6h63i0KxmkTIAwHAqbVcOg4pnSLcFwhpAX7ppoL1S3CiMdn
+	6J6Fo06Kx8cUwPh5Rf2s5ndFvY/yGAUstAV1v6lQ2qeVuGguDc/cGJnC6SqW8Za767YcIwfb7esx7
+	MUCOTwyD4+QKPDF3HathWjHIvVEwxRQIFxxT3tsFhiauRzSkEcXZsmUUHwB8NWcsJ0ZfSF0Pi+niI
+	x1pN64u/8FiNLNrAaXgYoCfn3aIerG1popoNEGAaNiB1ZngNULOlcNBRNwGSkvIahK9oU3EbPGswL
+	ydXCL4fvZZ2GZ4hyRPxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onr6g-00BOKJ-1X; Thu, 27 Oct 2022 00:50:50 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1onr88-00BOWZ-Va; Thu, 27 Oct 2022 00:52:21 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onr6Q-00BOIs-22; Thu, 27 Oct 2022 00:50:35 +0000
-Received: by mail-lj1-x231.google.com with SMTP id o4so5876ljp.8;
-        Wed, 26 Oct 2022 17:50:31 -0700 (PDT)
+	id 1onr7k-00BOSH-MA; Thu, 27 Oct 2022 00:51:57 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id fy4so289104ejc.5;
+        Wed, 26 Oct 2022 17:51:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jt3MIRMKXjXJnnd81rELlMmSLDWwlHxTIiZ16VJwbbw=;
-        b=ldaVpeXnNCizOC81BoRZpy0h3vlJqWMvSMySEkRZ8RTWUhzLCXCG2mzZUhcQyWzYAp
-         +53PxdCtY+eC7j7sDd8eOPmBzNwH0Z5YDD9VlcE4HVmlDhAoo5lBwtbsCbkITU9ciGZ7
-         /RD97MuWjjKSnr3CJ9AEcU8efAWzwCWCLCfSxfDQI5lY0BkxBkq1TwEIhp0noV3G9Nka
-         f5CE8BMYF0vCYxm4Srcts/Tc9B5IGgfk5SdaqiXMPrH57jqggQHoY+XA7Mk4z8qHNb0E
-         z6ki+TvbuRhUjzcIFGcm0airNcaT5p4t8p7EpHEK2aj47IScVThsAu+BYehnss9igfcH
-         rSWg==
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=zKQQQwNdmP0I/7sbEgciKRJH80dN4WVefIoocRKiN3s=;
+        b=UxmhUtWDYn/Ae6ytp6eFL+jck/3SwSMRCNKSTifMbbyR3oX9qwJCmtQ/PUcfWiLcp3
+         l00zgYXE+C16PItqTNArXlv2jbXvYzk2LDX8aeKZgP64K+H5t9xb+CPWLCE9qNZ4nLvu
+         yi0mfrtoI/WKUh01I1UMoxsOrW8A4tt86uRtGOim8VxCwRrcRj70bCydOewQvh0yRVH1
+         Vtdmz3BZ1mr1XDpYQ2eBW30Ut1eLE6BF8ABZukZn7fHVBpcnnQ9ILQXIYrFqH4roK9Iq
+         2qgJVdyYCFaGPc3AmlaANX+/aRGrgfaTdoLcD4eMwRXg4uFmikTok4HkphdvWDCfwm7l
+         +YWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=jt3MIRMKXjXJnnd81rELlMmSLDWwlHxTIiZ16VJwbbw=;
-        b=APoQKumRvX9HfXN2emRccYmxjxHb6nLh+t4UzzH5w/jDiWQxk+LU1/MUyJ0U6YVTOS
-         v1iHpf2dNvt1deyS8yPvPqcsCPuABcogt8PKavIF1U2uZIborwIM9qvZwURR8rrMajwR
-         CTErUxeLqVr4R1aPyzB1pgwLJXDDLoOa9ECXgUZXQs1fFin5SOV7tH/AOL7sRrqYYbr8
-         WD+UfGj/pwlNfYd/Pqh6ynqLbDF/PF1BNxMMP8np4Zil+Kv+EXUUzaPC+MqMj0mVZNv8
-         2FcMuzRRCBQHTpEzJDsFFsCZ5+rISolRWk0YMZevg4yNaNdjoZAU5q2fvkgYOMhtVh5o
-         uvJw==
-X-Gm-Message-State: ACrzQf0vLNSAMHXiS+o/4vDBB6zpncUkIEvvJqjyEam+iObnp1YdBh2h
-	jLqTHhomJP636MkeaQphUz4LNNsLH20=
-X-Google-Smtp-Source: AMsMyM4UN8PRjyzxfcCMWbPkvysSgG57BxsgajhoMihbcJPaMRC9bTJ77a01K1tO4L3Qm2mElKka7w==
-X-Received: by 2002:a17:907:6e9e:b0:78c:5533:4158 with SMTP id sh30-20020a1709076e9e00b0078c55334158mr37883433ejc.417.1666831819650;
-        Wed, 26 Oct 2022 17:50:19 -0700 (PDT)
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zKQQQwNdmP0I/7sbEgciKRJH80dN4WVefIoocRKiN3s=;
+        b=f+HycwfzNixOcqERNerBJ61mYR0l5QADfqfnAtrrcFx2TC9NaqBNk1jw4lOdmrEjW9
+         106skuxfke6p48sAwH1x/73OlyIgyxNihPJu22iqirLaUeoB+OIx71L8YF7XgjuokB/F
+         7SiWTEg65qIgsqEw7mDDS5zQWQ2W6sEoGmJNhvz+egz/BF+hdmJfjSSWiCNuS91Xxuv0
+         B1JIqmm/SLBxR3rhG8I1mA3h9WUE6WtUNuU4KAHAG2pu6nHIF4eTkVb+DlFWo1IAgyjc
+         pjHq/TwQfcD2LFz4q2gIL0rbYNy4jrY20GHd4CxEORPZ28ZXs9zt07UXIbrumlEHHvor
+         amrg==
+X-Gm-Message-State: ACrzQf3K9Qo04YmjjVG4CQIcjPJdZ2D66iNht4pcmtlkb+AyWaEpSTXV
+	xufh/+RIOlx0f4Zdk+rvgjA=
+X-Google-Smtp-Source: AMsMyM6BPmm4tam1hIVqE5W6S7kMh5eIMq81+FlGsJXakTWmualZq8N+pHVhJ18p5o7fy2DyAl3kLw==
+X-Received: by 2002:a17:906:9bca:b0:78d:bc5a:9137 with SMTP id de10-20020a1709069bca00b0078dbc5a9137mr41992336ejc.25.1666831913177;
+        Wed, 26 Oct 2022 17:51:53 -0700 (PDT)
 Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id n3-20020a170906724300b007a7f9b6318asm3632975ejk.50.2022.10.26.17.50.18
+        by smtp.gmail.com with ESMTPSA id bt20-20020a0564020a5400b004614fd33789sm60029edb.18.2022.10.26.17.51.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Oct 2022 17:50:19 -0700 (PDT)
-Message-ID: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
-Date: Thu, 27 Oct 2022 02:50:17 +0200
+        Wed, 26 Oct 2022 17:51:52 -0700 (PDT)
+Message-ID: <16afe467-7b9e-6e99-ca27-7eefce50a066@gmail.com>
+Date: Thu, 27 Oct 2022 02:51:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 0/4] Add basic Rockchip rk3128 DT support
+Subject: [PATCH v1 1/4] dt-bindings: arm: rockchip: Add Rockchip RK3128
+ Evaluation board
 To: kever.yang@rock-chips.com, heiko@sntech.de
 Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, zhangqing@rock-chips.com,
  hjc@rock-chips.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
@@ -73,10 +74,13 @@ Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, zhangqing@rock-chips.com,
  olof@lixom.net, soc@kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
+References: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
 Content-Language: en-US
+In-Reply-To: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_175034_153068_535D8ABC 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20221026_175156_752987_132A140A 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,89 +97,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add basic Rockchip rk3128 DT support.
+Add Rockchip RK3128 Evaluation board.
 
-Features:
-  Quad-core ARM Cortex-A7MP Core processor
-  Clock & reset unit
-  Power management unit
-  Interrupt controller
-  DMAC
-  6x 64 bits Timers
-  4x PWMs
-  1x 32 bits watchdog
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Internal memory:
-  Internal BootRom
-  Internal SRAM 8KB
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 72bf2fbfe..e81d9d1ef 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -662,6 +662,11 @@ properties:
+           - const: rockchip,rk3036-evb
+           - const: rockchip,rk3036
 
-External memory:
-  Dynamic Memory Interface (DDR3/DDR3L/LPDDR2)
-  Nand Flash Interface
-  eMMC Interface
-  SD/MMC Interface
-
-Connectivity:
-  SDIO interface
-  SPI Controller
-  3x UART controller
-  4x I2C controllers
-  4x groups of GPIO (GPIO0~GPIO3), 32 GPIOs per group
-  USB Host2.0
-  USB OTG2.0
-
-===
-
-The Linux kernel has added a rk3128 clock driver in the past,
-but the DT is still missing.
-
-In U-boot the rk3128 DT doesn't conform the latest bindings
-and also the pin definition don't match the TRM.
-
-On request from the U-boot maintainers I submit a basic rk3128 DT.
-https://lore.kernel.org/u-boot/258c2dbf-436d-5935-83f5-a2dbb8cf62d7@rock-chips.com/
-
-Based on:
-https://source.denx.de/u-boot/u-boot/-/blob/master/arch/arm/dts/rk3128.dtsi
-https://github.com/rockchip-linux/kernel/blob/develop-4.4/arch/arm/boot/dts/rk312x.dtsi
-
-rk3128 TRM:
-https://rockchip.fr/RK312X%20TRM/
-
-rk3128 datasheet:
-https://rockchip.fr/RK3128%20datasheet%20V1.2.pdf
-
-===
-
-NOT TESTED WITH HARDWARE
-NO THERMAL PROTECTION
-
-===
-
-Request:
-  Review of nodes and pin definitions.
-
-  Help with testing on hardware.
-
-  Help with correct "arm,armv7-timer" properties.
-
-===
-
-Johan Jonker (4):
-  dt-bindings: arm: rockchip: Add Rockchip RK3128 Evaluation board
-  dt-bindings: timer: rockchip: add rockchip,rk3128-timer
-  ARM: dts: rockchip: add rk3128.dtsi
-  ARM: dts: rockchip: add rk3128-evb.dts
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../bindings/timer/rockchip,rk-timer.yaml     |   1 +
- arch/arm/boot/dts/Makefile                    |   1 +
- arch/arm/boot/dts/rk3128-evb.dts              | 105 ++
- arch/arm/boot/dts/rk3128.dtsi                 | 930 ++++++++++++++++++
- 5 files changed, 1042 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3128-evb.dts
- create mode 100644 arch/arm/boot/dts/rk3128.dtsi
-
++      - description: Rockchip RK3128 Evaluation board
++        items:
++          - const: rockchip,rk3128-evb
++          - const: rockchip,rk3128
++
+       - description: Rockchip RK3228 Evaluation board
+         items:
+           - const: rockchip,rk3228-evb
 --
 2.20.1
 
