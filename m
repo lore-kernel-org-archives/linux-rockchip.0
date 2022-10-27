@@ -4,81 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F2BC38A2D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 00:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6118DC67871
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 08:02:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5UM2LzvVj3K+n561DzDZEcHu1Ac5rKs7X04y7M17gOY=; b=YSokaMoEPKwszj
-	s3PAKiP+1P8HnV3WlCCFKmwtLStsbiEJagXFXB9NPQx8aKRyZX2UUysR+fJWbSziE9NtT1qrcrmfH
-	P6L7DBiv9fbuB60200PiLM4wRFw450IgG/GVOFGPOnxNTKlmBzaPamlvx8zO34dpO1cDECmsmKTKC
-	z4FUecH4wq9enSchvcVnqDo2S183/QBTQp8DlWViMlcoVJbGlDL6jnKov6NueqIr/juy1pZmKK8OZ
-	bt7oSVtj1FJOk9jBnMJV5yCRfpIiX4HYuLmfdLe8/qdM6uJ9nfILa9ZT3ouzMoRON2ZGaLqMriUvA
-	WqgNkF7gL+WYKpG8KKew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1VMnDUk4dxEgfvN2Mr97nCK2oO7l7iKqd0IbXbv491Y=; b=R6nc1+V9dPF/uS
+	ZbFmZ6crA2Hp4FHGFTIjnj3o8niJpZRCJQeGUu7Br2kR8nmKI0o5NLXneEwuqyR0A2hP2Tdx5n0/f
+	wSINDnsoLIVNGnEacHM4WlIb1mJUn8Snc1ODkYateGUZZlTXwouX1UNjH3Tdw0EfhM+cCN6zU0U6C
+	ORGFX2dOhmoLRYEe+LQwfDke1lePuree3AaBcZw0yHB2mODJoVNceUDwPHKuwRJdGm6/hNEwduKKE
+	GcLMDNimlV9jifJiDYxPgGXFaA1RbaJKHHLdZu092eOfMmdT/67+fzx2wj6mqqwrjQ6LvK6TaCcBp
+	KNK0bIg/Sy7jhAgcSzDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onrAt-00BPXD-UJ; Thu, 27 Oct 2022 00:55:11 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1onxqY-00CHi6-1C; Thu, 27 Oct 2022 08:02:38 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onrAR-00BPRE-Mc; Thu, 27 Oct 2022 00:54:45 +0000
-Received: by mail-ed1-x530.google.com with SMTP id r14so176912edc.7;
-        Wed, 26 Oct 2022 17:54:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=agUfJhSL/7u/2Vjm1nnugKSFMcqrJl4gZcmjxoIEl1g=;
-        b=c1yDcrGA3P2wThetdZ/lu4NMgMjfBlMmWFOYec18OiEEEQCYvaOX2qKRMIgbYJK0Nc
-         /uvA3XBy6kFS5rdNPZduV6FnIdNqcMpxTHwXyZ8+1byL10cm1co2Khhh9qJkOZqDU6iL
-         hgO29pBqwHO/Dfb0vlueW8pBcIU5yFSce9CJpLBD4yF3/O7qOfyozUK5Asw6wF+DTlPk
-         SROTe2tzLGfR5WRYaK5ywCxje21+Z20zhtXDBrMBCtnRlayfpbr8XGIFIGeOo5DxziAQ
-         9Ig51gp59OfNdabyzvXMvNNCcK/9fXtJNWX/Q9Y/RGlotg4hJeeS0kV2b+ZfN5NJ7+sK
-         UVRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=agUfJhSL/7u/2Vjm1nnugKSFMcqrJl4gZcmjxoIEl1g=;
-        b=I/lNkedAwalpYoArnAWa0MRGDUNyNB0jfw+tAJQJTjeLGiN+5tHnD3BWqnnrO/NZda
-         jM6ADMHs91FoIJpcp0owTXoABykM5sNNHoXe4UK9HWQy+wrYkMFapycTYN1uU4zW6a5K
-         1NrS6I8D3LipuKkX14HtY6Bi52syjcFrWx4l2qphlh2PTX7pX/4msAGtYiM+KPa3QWPo
-         TPEYplQAV9I2uWcheDelLVKNvudk70SID74FQP9eAYFD1g56hwEHagaUHPpcNJbEd29S
-         72CjQfCVHFXuC4kZLk/g62kXPIWztbkmk+e7TktLO1bBhk7bsuJ3190B0GjIAN9w6BCU
-         Tfaw==
-X-Gm-Message-State: ACrzQf2fSZoTecvq4v0GP9lkPjE3FnXKyBJcUjtgG6Nuw7rBsVTOaUzR
-	UwDkdNRUIJIORfe5ZKSHW3U=
-X-Google-Smtp-Source: AMsMyM6aIB8iArlp/yXdLbkVlfyR5S2chCIX7ypP3AB53UZCrMN6kr/dhBXe3qlkTlhGWpT++ItiBA==
-X-Received: by 2002:a05:6402:2546:b0:45d:8bff:7afc with SMTP id l6-20020a056402254600b0045d8bff7afcmr42631340edb.302.1666832082497;
-        Wed, 26 Oct 2022 17:54:42 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id kw3-20020a170907770300b007ad2da5668csm2286040ejc.112.2022.10.26.17.54.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Oct 2022 17:54:42 -0700 (PDT)
-Message-ID: <e0679728-7a15-50e1-8a5e-847db1528726@gmail.com>
-Date: Thu, 27 Oct 2022 02:54:41 +0200
+	id 1onxqU-00CHfR-Tg
+	for linux-rockchip@lists.infradead.org; Thu, 27 Oct 2022 08:02:36 +0000
+Received: from localhost.localdomain (user-5-173-210-98.play-internet.pl [5.173.210.98])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7FBF466028B1;
+	Thu, 27 Oct 2022 09:02:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666857752;
+	bh=KWD1Fnlb9uRjgL3h0/EH8ZSvpkejRsdIerwN16+4xyE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=hpcvyo9e+8lsYMSceyD60mQKXwsMF65yh2Nq0ulnRnw3oyIOFWBkwIsax5oRwfuNz
+	 WdG3fQhxW+omST83kFGoOzcZfD+aDyx788BWBe6QWFATfnHsBzv2JgxvFV7bBiKM50
+	 IS3ETPPgA+FE+T/AdmRDXT087QgGrygR7AaCASJxz28Ix+i7Vp7iZ8j4PsBoVUNWl+
+	 kfQN5ssQGNEVKJ5ViSfsLpZFgTaT9qUzj4iK9lY04YXKkYTbTzTY6tMwKuJgHHFzxG
+	 UqXjunbN9a+He7rjlM38pjLqt0DYePPqhs0D+l3nz6LZc9OB9UDOdkSfqZ2wLTphNX
+	 F3kRKxptrjQjA==
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+To: linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Ezequiel Garcia <ezequiel@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH] media: rkvdec: Add required padding
+Date: Thu, 27 Oct 2022 10:02:17 +0200
+Message-Id: <20221027080217.6290-1-andrzej.p@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 4/4] ARM: dts: rockchip: add rk3128-evb.dts
-To: kever.yang@rock-chips.com, heiko@sntech.de
-Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, zhangqing@rock-chips.com,
- hjc@rock-chips.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- daniel.lezcano@linaro.org, tglx@linutronix.de, arnd@arndb.de,
- olof@lixom.net, soc@kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
-Content-Language: en-US
-In-Reply-To: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_175443_770671_A734763C 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20221027_010235_127891_46DE56AE 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,140 +75,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rk3128-evb.dts
+The addresses of two elements of the segmap[][] member are passed to the
+hardware which expects 128-bit aligned addresses. However, without this
+patch offsetof(struct rkvdec_vp9_priv_tbl, segmap[0]) is an odd number
+(2421) but the hardware just ignores the 5 least significant bits of the
+address. As a result, the hardware writes the segmentation map to incorrect
+locations.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Inserting 11 bytes of padding corrects this situation by making the said
+addresses divisible by 16 (i.e. aligned on a 128-bit boundary).
+
+Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- arch/arm/boot/dts/Makefile       |   1 +
- arch/arm/boot/dts/rk3128-evb.dts | 105 +++++++++++++++++++++++++++++++
- 2 files changed, 106 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3128-evb.dts
+ drivers/staging/media/rkvdec/rkvdec-vp9.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 68ac9b360..0f26539d2 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1127,6 +1127,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3066a-marsboard.dtb \
- 	rk3066a-mk808.dtb \
- 	rk3066a-rayeager.dtb \
-+	rk3128-evb.dtb \
- 	rk3188-bqedison2qc.dtb \
- 	rk3188-px3-evb.dtb \
- 	rk3188-radxarock.dtb \
-diff --git a/arch/arm/boot/dts/rk3128-evb.dts b/arch/arm/boot/dts/rk3128-evb.dts
-new file mode 100644
-index 000000000..6ad4549d5
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3128-evb.dts
-@@ -0,0 +1,105 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * (C) Copyright 2017 Rockchip Electronics Co., Ltd
-+ */
-+
-+/dts-v1/;
-+
-+#include "rk3128.dtsi"
-+
-+/ {
-+	model = "Rockchip RK3128 Evaluation board";
-+	compatible = "rockchip,rk3128-evb", "rockchip,rk3128";
-+
-+	aliases {
-+		mmc0 = &emmc;
-+	};
-+
-+	chosen {
-+		stdout-path = &uart2;
-+	};
-+
-+	memory@60000000 {
-+		device_type = "memory";
-+		reg = <0x60000000 0x40000000>;
-+	};
-+
-+	vcc5v0_otg: vcc5v0-otg-drv {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_otg";
-+		gpio = <&gpio0 26 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&otg_vbus_drv>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vcc5v0_host: vcc5v0-host-drv {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_host";
-+		gpio = <&gpio2 23 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&host_vbus_drv>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-always-on;
-+	};
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "xin32k";
-+	};
-+};
-+
-+&usb2phy {
-+	status = "okay";
-+};
-+
-+&usb2phy_host {
-+	status = "okay";
-+};
-+
-+&usb2phy_otg {
-+	status = "okay";
-+};
-+
-+&usb_host_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host_ohci {
-+	status = "okay";
-+};
-+
-+&usb_otg {
-+	vbus-supply = <&vcc5v0_otg>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	usb_otg {
-+		otg_vbus_drv: otg-vbus-drv {
-+			rockchip,pins = <0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb_host {
-+		host_vbus_drv: host-vbus-drv {
-+			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
---
-2.20.1
+diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
+index d8c1c0db15c7..cfae99b40ccb 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-vp9.c
++++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
+@@ -84,6 +84,8 @@ struct rkvdec_vp9_probs {
+ 		struct rkvdec_vp9_inter_frame_probs inter;
+ 		struct rkvdec_vp9_intra_only_frame_probs intra_only;
+ 	};
++	/* 128 bit alignment */
++	u8 padding1[11];
+ };
+ 
+ /* Data structure describing auxiliary buffer format. */
+@@ -1006,6 +1008,7 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
+ 
+ 	ctx->priv = vp9_ctx;
+ 
++	BUILD_BUG_ON(sizeof(priv_tbl->probs) % 16); /* ensure probs size is 128-bit aligned */
+ 	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+ 				      &vp9_ctx->priv_tbl.dma, GFP_KERNEL);
+ 	if (!priv_tbl) {
+-- 
+2.25.1
 
 
 _______________________________________________
