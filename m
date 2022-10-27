@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E23EEFA3742
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 15:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33EE8FA3740
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Oct 2022 15:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ROPInjO3WMuPrI56zWJviaMu22kcXS6l2MZ8XWjkgSM=; b=IXxqoKKJLRB3Qz
-	a5w6gyXkrnzXh3uqydE5KVidY4l2guVYEutycn+mcZtc8VbhiBvDslTgTkFlA56mmfzL551NyinAw
-	IGJPppKUjUfkqiQFd9hxOl0bQWNGX52bNFESntAY3RwbKe2YfMHMfxoorGAWOhcD82V7i/7zg3e9i
-	rnQeF4nNwxbs8jOOpPKcqqJEzJ8kOr13Demvq8ghcxwUNaZ5OUsz+kYt3IJ7hulvutGolI/t0t15v
-	3SjJUcZcUFyWCWU/LKeN+UXKdPonucZAzcTcKg3xc6v1sW/v/dP6ebwujk5anHaS5TPVgb2397YN/
-	2wjp36kq/ShaSFYad7oQ==;
+	List-Owner; bh=yRX7jHf6uHgs0GAb4mBRxVIRem40TFLzBEEjHzSbOcg=; b=hSB0zj2+zAA8Mv
+	JEWEZHya9bRkT6tYb+ODT44ct77Xw2UrCChKTorOjbUB0Ufj5eI8A5I1wpM9/DgDp0O7X22NVvAEm
+	dgdMjpe8NwCaVnP9mRMIwVPmdkVMcPQqq+xQesJXOi3h+qDv/XIQca8mh62g94ll7jscnFaL22taP
+	uQqS3MGOp35hg+Fv6wbtQbMWxvaXq1fyqqlk/QUbEhl2ykq1qdrK6BOqprg2+d4Nakn8gXmNHHjek
+	V9azhEV+iGnq7OpooqIlf24aZ/GnMcUT54apwmfSlcmwejB3GU+ItAePIH40lAUEIBqISUlKTSdQY
+	tycdEYKkXLuXDdtEkIZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo4MN-00DvvD-5v; Thu, 27 Oct 2022 14:59:55 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1oo4N8-00DwNQ-QI; Thu, 27 Oct 2022 15:00:42 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo4Lx-00Dvlg-L0
-	for linux-rockchip@lists.infradead.org; Thu, 27 Oct 2022 14:59:33 +0000
-Received: by mail-qk1-x731.google.com with SMTP id o2so1081649qkk.10
-        for <linux-rockchip@lists.infradead.org>; Thu, 27 Oct 2022 07:59:28 -0700 (PDT)
+	id 1oo4Mi-00Dw50-5T
+	for linux-rockchip@lists.infradead.org; Thu, 27 Oct 2022 15:00:17 +0000
+Received: by mail-qk1-x730.google.com with SMTP id l9so1080994qkk.11
+        for <linux-rockchip@lists.infradead.org>; Thu, 27 Oct 2022 08:00:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=FsQVftKSeBAc1FbMNJ35HF2pgqCq1gNRi3OVMUbJA30=;
-        b=H6mjRFz9bKTBGET0cIaEajnv1a9/LQ6ojXq8xpg3JdPEvWTzteKUm8ggA8TNOTqip+
-         NvTeAzaBYcGBmNclHrqexy/c1jDbht/2LK76s9cCVKJTrsq/M26MpH9SAr/q6TsvYXE4
-         B1BeD1A/JBohH2FvRqeoX/kHniSnk8Uh9IfFhX3TRMhlgLl4sfTUClUsm5UkOG8YvJwZ
-         FZGFvkoc2UsuK7bE2kqg0nfSaf5X41YxRtpPobxCVRNRO9Qbi4ERufAfJoXOzqnymK0p
-         ADQR2T0jn9jOmvfNDb5d48CO/MCJY9hWj7RfTuJproiTSGoXLBQAOebTIzkVMFwyn4ic
-         Ra0A==
+        bh=EmShqsgjReuSlQ39YbD/kmka875yPOjELnt/kPrlVCU=;
+        b=Z48pJJ47oTLq8C2Vx3cKEumhdQ6iM4gOlUrK8dIDkDeTO14ftEvPo06sR3x/kpRUr+
+         jzYqKKpp5DOl9NjjkpzL4wI4T4spuqKBNdxQnH9BTxf9KMkx8WVwiswrhWJsWOSLllai
+         3yVhi77oClci8RQCCreVzg/bABGMqpGdELUgII8I971onXiWl56vnlDv0fq914OByYY+
+         9H8JJFt8+amwGnSPGxkI+VKiRfFLVeV5p9VGl1cVkBv9oG9KvL6ArfyVkBmKzA3BcFjM
+         DG/9OAjUGQ0vhxyO9RO2trk4GTzzcxU2ZQMGo2LPDxI2z04igXalS2Aopu3/zC5epkba
+         J8Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FsQVftKSeBAc1FbMNJ35HF2pgqCq1gNRi3OVMUbJA30=;
-        b=PPJ02yzqU044zJIK/mQNJU+mN++4ORiEcKh/fZrjtfGJ2Q/TQGENL7AbvpbdNGlX6x
-         lBDBQqVCsqrDWfBpNEcSPp3tIeDkfZXz2VAApmoGaMtow2WahZLpZySC+LOep4SItWT0
-         HywfqJDJcOwGj/wZ6y5nbTAaCSWXHnu3shS52p+JP7uiew649m4NgaAna9rVk7LEuJiN
-         FkC2xU5iDZ+dZmL5rM2wq2yjz3OUhcYNzPE8Mc7cVClfJogbKrCDEBrrn9jYmbRmINvV
-         6voc1LME37pk2MEkC0ZHu02ryjissGAcZGq1cdsYYsCRzq+FN/ke+OUgMDZ7/2tBkZR9
-         9KNg==
-X-Gm-Message-State: ACrzQf0qAgKyI6RuW0Fp5TZzTQvcrRwgp6+Qd+om9bYSXc80FJ2DqrFI
-	zLLzPGS/NPXlZ4Sg+DO6GMV7pw==
-X-Google-Smtp-Source: AMsMyM55HGtvEs91o/AnOm1jyLgdQjFebhs2S+lDBlp0J8R+GXQThXx6GckPGpFjWXZu/LjC33Chow==
-X-Received: by 2002:a05:620a:45ac:b0:6f8:7c0c:20f with SMTP id bp44-20020a05620a45ac00b006f87c0c020fmr8425800qkb.270.1666882767987;
-        Thu, 27 Oct 2022 07:59:27 -0700 (PDT)
+        bh=EmShqsgjReuSlQ39YbD/kmka875yPOjELnt/kPrlVCU=;
+        b=yzwm4Penr8Gx+4Pa8uxA4rwuQe5hHpzRIgfAw07Q4qXQjpsyGVYsO6q249Xi8KwwGy
+         YdN6n6NC60FoOI6iEvT+alA8oIniO+tO77nDRjuh5bF9nLzGb6f6iAxdUYPmLXTnkRjW
+         i8un9sUmbUP1AYHkvOPtOpPCqFBL1pfjvmpQkJZv963FUpGXBm08/iDc8Jaq3QQEq8uL
+         2R0bxS8BotUQD8rxeUfYW9iqbXR/RJSRnVpqbIBzIf9wd4hXYTkDR8L64T3dpC02A1KB
+         KamdmVDHov8Y42uWCXDzK4fePybWKa+jCv7U2MUvnpgbCmVQZmJfObSyX4usN8pff6RF
+         xEcw==
+X-Gm-Message-State: ACrzQf0CCHDWiRsTlyQkahig00wyyc+bkEl87cBJb4yqfy022LNwvQNr
+	VXefUMvcIJtlj0j98nsHJvxFvw==
+X-Google-Smtp-Source: AMsMyM6wb7umR/R2rOX8AUcsRn7/fxrKV4r3sUFfTg81TBymC2MmGlahWia9RE9wrnaKeN+womk7aw==
+X-Received: by 2002:a05:620a:4548:b0:6ee:deba:2795 with SMTP id u8-20020a05620a454800b006eedeba2795mr35412612qkp.621.1666882813995;
+        Thu, 27 Oct 2022 08:00:13 -0700 (PDT)
 Received: from [192.168.1.11] ([64.57.193.93])
-        by smtp.gmail.com with ESMTPSA id j4-20020a05620a410400b006cfc01b4461sm1091819qko.118.2022.10.27.07.59.26
+        by smtp.gmail.com with ESMTPSA id bs15-20020a05620a470f00b006ec09d7d357sm1134232qkb.47.2022.10.27.08.00.12
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Oct 2022 07:59:27 -0700 (PDT)
-Message-ID: <35ed0b8f-04f1-d544-a0d8-19d12e7c0ef8@linaro.org>
-Date: Thu, 27 Oct 2022 10:59:25 -0400
+        Thu, 27 Oct 2022 08:00:13 -0700 (PDT)
+Message-ID: <2a09aec9-96c3-0ea9-a2b5-4a04c9982bb5@linaro.org>
+Date: Thu, 27 Oct 2022 11:00:12 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.0
-Subject: Re: [PATCH v1 4/4] ARM: dts: rockchip: add rk3128-evb.dts
+Subject: Re: [PATCH v1 1/3] dt-bindings: rtc: convert haoyu,hym8563.txt to
+ yaml
 Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com,
- heiko@sntech.de
-Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, zhangqing@rock-chips.com,
- hjc@rock-chips.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- daniel.lezcano@linaro.org, tglx@linutronix.de, arnd@arndb.de,
- olof@lixom.net, soc@kernel.org, devicetree@vger.kernel.org,
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ a.zummo@towertech.it, alexandre.belloni@bootlin.com,
+ linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
-References: <da1252eb-85e9-bdb8-0542-207173523523@gmail.com>
- <e0679728-7a15-50e1-8a5e-847db1528726@gmail.com>
+References: <f7127f87-05fd-5e20-eb2d-a3fd04674229@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <e0679728-7a15-50e1-8a5e-847db1528726@gmail.com>
+In-Reply-To: <f7127f87-05fd-5e20-eb2d-a3fd04674229@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_075929_735114_A525D376 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20221027_080016_251737_1995869C 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,151 +97,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/10/2022 20:54, Johan Jonker wrote:
-> Add rk3128-evb.dts
+On 26/10/2022 18:58, Johan Jonker wrote:
+> Convert haoyu,hym8563.txt to yaml.
+> 
+> Changed:
+>   Add clock-frequency property
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  arch/arm/boot/dts/Makefile       |   1 +
->  arch/arm/boot/dts/rk3128-evb.dts | 105 +++++++++++++++++++++++++++++++
->  2 files changed, 106 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk3128-evb.dts
-> 
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 68ac9b360..0f26539d2 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -1127,6 +1127,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->  	rk3066a-marsboard.dtb \
->  	rk3066a-mk808.dtb \
->  	rk3066a-rayeager.dtb \
-> +	rk3128-evb.dtb \
->  	rk3188-bqedison2qc.dtb \
->  	rk3188-px3-evb.dtb \
->  	rk3188-radxarock.dtb \
-> diff --git a/arch/arm/boot/dts/rk3128-evb.dts b/arch/arm/boot/dts/rk3128-evb.dts
-> new file mode 100644
-> index 000000000..6ad4549d5
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk3128-evb.dts
-> @@ -0,0 +1,105 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * (C) Copyright 2017 Rockchip Electronics Co., Ltd
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "rk3128.dtsi"
-> +
-> +/ {
-> +	model = "Rockchip RK3128 Evaluation board";
-> +	compatible = "rockchip,rk3128-evb", "rockchip,rk3128";
-> +
-> +	aliases {
-> +		mmc0 = &emmc;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = &uart2;
-> +	};
-> +
-> +	memory@60000000 {
-> +		device_type = "memory";
-> +		reg = <0x60000000 0x40000000>;
-> +	};
-> +
-> +	vcc5v0_otg: vcc5v0-otg-drv {
+>  .../devicetree/bindings/rtc/haoyu,hym8563.txt | 30 ----------
+>  .../bindings/rtc/haoyu,hym8563.yaml           | 60 +++++++++++++++++++
 
-Generic node names, so at least regulator prefix or suffix.
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_otg";
-> +		gpio = <&gpio0 26 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&otg_vbus_drv>;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +	};
-> +
-> +	vcc5v0_host: vcc5v0-host-drv {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_host";
-> +		gpio = <&gpio2 23 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&host_vbus_drv>;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		regulator-always-on;
-> +	};
-> +};
-> +
-> +&emmc {
-> +	bus-width = <8>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	hym8563: rtc@51 {
-> +		compatible = "haoyu,hym8563";
-> +		reg = <0x51>;
-> +		#clock-cells = <0>;
-> +		clock-frequency = <32768>;
-> +		clock-output-names = "xin32k";
-> +	};
-> +};
-> +
-> +&usb2phy {
-> +	status = "okay";
-> +};
-> +
-> +&usb2phy_host {
-> +	status = "okay";
-> +};
-> +
-> +&usb2phy_otg {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host_ohci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_otg {
-> +	vbus-supply = <&vcc5v0_otg>;
-> +	status = "okay";
-> +};
-> +
-> +&pinctrl {
-> +	usb_otg {
-
-No underscores in node names
-
-> +		otg_vbus_drv: otg-vbus-drv {
-> +			rockchip,pins = <0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	usb_host {
-
-Ditto
-
-> +		host_vbus_drv: host-vbus-drv {
-> +			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> --
-> 2.20.1
-> 
+https://lore.kernel.org/all/20221024165549.74574-7-sebastian.reichel@collabora.com/
 
 Best regards,
 Krzysztof
