@@ -4,85 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66608FA373D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 02:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ACD6ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 05:02:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FQ34PhLijI+pNihfxeec8/MIzf+tPdX8WREtcSfptLk=; b=xgSgdZylQ475Pu
-	u3ch8w3rqGHlkTBtXgEiUI0y/CPMf39uJWwG8jFUAvFhJJNCZWckVVDghNX6lwI8rMObl22Dg+6nH
-	+Kzl1W2D192hC/CC7f4wvAAJ6J1cmSatfi/LEqMAuRtggia/wpLJrZdBeturTHu5xBYT5OPcQnZSO
-	Re2UiTnTF+lEJ4OR2HXRnREYE8C0+83RdtoPTaCLf5C6S06v4iQisMVeO+SLXdHWqH+CyxYuLgcSL
-	UyUsMkWZv/FYukpcnB0S7T3Jj4RW0JYEHzPAjDknArYGeF68q1aHq/N6znzJGlSZeJyiM5JAUJNmn
-	15nGUTYiXF6eUlkLgysA==;
+	List-Owner; bh=RaXgaNnrqPvKPkesZNmBBfWlQ5PcErUNwQuem3wrJ6Y=; b=4pqrfDCxHejGXj
+	0znO3LeQseSKjh+u2MEN69imHIU4hJB1xSLMnFOCciPGoNtqb4bMC2YtNoqBrLOd8KM7MuDEw/ru/
+	/5iV/Oz7D3MGW41D1CIRcZR95+w/sbCMKTdnfnLWhaUp8sZocupbyHnhQ4bE7wZJUwZ7kBm2u+WeT
+	Y9tdtqMkY2xD8bjb2Z02XNy4iMF5WiVe7AoQKIti2tGG4YguUT7pFR5+Un4cLt3KV+0sbnDiTEzBd
+	1ZwZgxE/sq8xTsdjxO9FI30eaIeEoHdV3q8mVBJGZTPabXw/iJHly3Zl4nlINDjIjmjzpZ3v9ic8k
+	yu7O/IZl0GeDK24AV1ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooElS-00FSaf-OS; Fri, 28 Oct 2022 02:06:30 +0000
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	id 1ooHVZ-00FkzQ-9v; Fri, 28 Oct 2022 05:02:17 +0000
+Received: from helcar.hmeau.com ([216.24.177.18] helo=formenos.hmeau.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooElI-00FSYr-D5
-	for linux-rockchip@lists.infradead.org; Fri, 28 Oct 2022 02:06:21 +0000
-Received: by mail-qt1-x832.google.com with SMTP id a24so2713613qto.10
-        for <linux-rockchip@lists.infradead.org>; Thu, 27 Oct 2022 19:06:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=q1LMLjq5zpfIikLtv+miyJRP8UZATL8cTTo41bIU76g=;
-        b=lH2F9fMGOBO7pc9d2vdcuEK19wvkTVdrsrj78FtX8hzwFEzXpDpJ5jzGrSOJFLMIHk
-         Met1S0879lRdxrRo76LzKGeYmxvH+VOOLokQ0pxNqgDaw3u/j/aRGLboIxbf2KAzedkk
-         th7y6QGpuKBKe3Hku5QoTBIemJorNktf1HTscs7lfyFWnsktePPxS8SSmHBHQuUo8m4t
-         2xGERDBg0OMY5RbW410viCwicg4/GB+mG06R+8gixowT5bfwFh10dxAoLjc3CtCpjYTW
-         v1t1j7zBlkAgXACVj9P8NcKKLzZQzmYFSYjxnW7MLXiwe2CMOBHcOGcYQ2ALfWGTQ8kG
-         v/Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=q1LMLjq5zpfIikLtv+miyJRP8UZATL8cTTo41bIU76g=;
-        b=m//OlRucckucpTSRjw/DVHIrDdKYD9XxAVZi1PLzi4AfP3J/Cyq8YSkQ4G2lltdtLj
-         X8wb2biyxC85HMg83LJwovYpEFrl0ElXxdMW5OgA4MW6vEME/J8UTJbIR96fu5YH4RzL
-         d9/Nsk+i/yDDWsGwl3EByVAHzvt3yiZsbcLJiSWWvneR3jfZaIQRW5BxS7y6rvbLpvkc
-         G+SuHWXa4Xd61ZeYdJuHUOr6W72Ax2jzadU5q0MfMjDRL4aHjg64hJ1Cl6dGoP/nNI50
-         /1yoY+fwrnnjvjUhFtqyGfG0ohYMNfdmL+0/T4BihS+gi7lRvRjuA8DxqDT/ZSWVVuEx
-         NUIw==
-X-Gm-Message-State: ACrzQf0z3db+ms71uhSAXDRIpwIt8qBdlDhtY0zNPtOXY2eI0/PZUsFK
-	BTwxYB6hYdNc2j8ApVw2wqT7mA==
-X-Google-Smtp-Source: AMsMyM4+JeXMGKJpNzhYtik1KMxwYxLCVnhkikb9ZUBnzm5aaGM9Cn7gp+7FSY+I73K5aQwb6iIguw==
-X-Received: by 2002:ac8:7c46:0:b0:39c:fa92:a27a with SMTP id o6-20020ac87c46000000b0039cfa92a27amr42324109qtv.61.1666922776986;
-        Thu, 27 Oct 2022 19:06:16 -0700 (PDT)
-Received: from [192.168.1.11] ([64.57.193.93])
-        by smtp.gmail.com with ESMTPSA id g23-20020ac84b77000000b003a4efd59754sm1741747qts.12.2022.10.27.19.06.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Oct 2022 19:06:16 -0700 (PDT)
-Message-ID: <2c3ac59f-fc9e-a1eb-3778-a553ee833de2@linaro.org>
-Date: Thu, 27 Oct 2022 22:06:14 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
+	id 1ooHVN-00Fkxy-QY; Fri, 28 Oct 2022 05:02:08 +0000
+Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
+	by formenos.hmeau.com with smtp (Exim 4.94.2 #2 (Debian))
+	id 1ooHUR-007UuU-3C; Fri, 28 Oct 2022 13:01:44 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Fri, 28 Oct 2022 13:01:43 +0800
+Date: Fri, 28 Oct 2022 13:01:43 +0800
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: heiko@sntech.de, ardb@kernel.org, davem@davemloft.net,
+	krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
+	robh+dt@kernel.org, sboyd@kernel.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v10 00/33] crypto: rockchip: permit to pass self-tests
-Content-Language: en-US
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Corentin LABBE <clabbe@baylibre.com>,
- Herbert Xu <herbert@gondor.apana.org.au>
-Cc: ardb@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- mturquette@baylibre.com, robh+dt@kernel.org, sboyd@kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Message-ID: <Y1tiN9GSMrudUG6d@gondor.apana.org.au>
 References: <20220927075511.3147847-1-clabbe@baylibre.com>
- <Y1jkqiYjXT30/hk5@Red> <Y1kGdWyYPtcgQPtd@gondor.apana.org.au>
- <6031281.lOV4Wx5bFT@diego>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <6031281.lOV4Wx5bFT@diego>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220927075511.3147847-1-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_190620_447617_0C84A4CD 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20221027_220205_883840_8B7EFD5B 
+X-CRM114-Status: GOOD (  23.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,25 +57,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjYvMTAvMjAyMiAwNjoyNSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkgSGVyYmVydCwK
-PiAKPiBBbSBNaXR0d29jaCwgMjYuIE9rdG9iZXIgMjAyMiwgMTI6MDU6NDEgQ0VTVCBzY2hyaWVi
-IEhlcmJlcnQgWHU6Cj4+IE9uIFdlZCwgT2N0IDI2LCAyMDIyIGF0IDA5OjQxOjMwQU0gKzAyMDAs
-IENvcmVudGluIExBQkJFIHdyb3RlOgo+Pj4KPj4+IEhlcmJlcnQgYW55IHRob3VnaHQgPwo+Pgo+
-PiBQbGVhc2UgbGV0IG1lIGtub3cgZXhhY3RseSB3aGljaCBwYXRjaGVzIHlvdSB3YW50IG1lIHRv
-IGFwcGx5Lgo+IAo+IGl0IHdvdWxkIGJlIGdyZWF0IGlmIHlvdSBjb3VsZCBhcHBseToKPiAtIHBh
-dGNoZXMgMDEgLSAyNQo+IC0gcGF0Y2hlcyAyOSAtIDMzCj4gCj4gVGhleSBhbGwgc3RhcnQgd2l0
-aCBlaXRoZXIKPiAJImNyeXB0bzogcm9ja2NoaXA6IC4uLiIKPiBvcgo+IAkiZHQtYmluZGluZ3M6
-IGNyeXB0bzogLi4uIgoKVGhlIHNlcmllcyBwcm9iYWJseSBzaG91bGQgYmUgc3BsaXQgaW4gc3Vj
-aCBjYXNlICh3aXRoIGxpbmtzIHRvIGxvcmUpLApvdGhlcndpc2UgaXQgY3JlYXRlcyBpbXByZXNz
-aW9uIG9mIHNvbWUgZGVwZW5kZW5jaWVzLiBCaW5kaW5ncyBhcmUgaW4KdGhlIG1pZGRsZSwgRFRT
-IGFzIHdlbGwgKHdoaWNoIGlzIHVzdWFsbHkgc2lnbiBvZiBBQkkgYnJlYWspLgoKVGhlIGNsayBj
-aGFuZ2UgYXQgdGhlIGVuZCBhbHNvIGRvZXMgbm90IGhlbHAuCgpCZXN0IHJlZ2FyZHMsCktyenlz
-enRvZgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On Tue, Sep 27, 2022 at 07:54:38AM +0000, Corentin Labbe wrote:
+> Hello
+> 
+> The rockchip crypto driver is broken and do not pass self-tests.
+> This serie's goal is to permit to become usable and pass self-tests.
+> 
+> This whole serie is tested on a rk3328-rock64, rk3288-miqi and
+> rk3399-khadas-edge-v with selftests (with CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y)
+> 
+> Regards
+> 
+> Changes since v1:
+> - select CRYPTO_ENGINE
+> - forgot to free fallbacks TFMs
+> - fixed kernel test robots warning
+> - add the PM patch
+> 
+> Changes since v2:
+> - Added DMA clock back to 3288 since it dont work without it
+> - fallback needed to select CBC and ECB configs
+> - Added support for rk3399
+> - Added more patch (style, read_poll_timeout)
+> 
+> Changes since v3:
+> - full rewrite of support for RK3399
+> - splited dt-binding patch in two
+> 
+> Changes since v4:
+> - Another full rewrite of support for RK3399
+> - Fixed dt-binding from Krzysztof Kozlowski's comments
+> - Use readl_poll_timeout() instead of read_poll_timeout()
+> - Rewrite the fallback SG tests
+> 
+> Changes since v5:
+> - fixed errors in DT binding patch
+> 
+> Change since v6:
+> - remove quotes around const values in dt-bindings
+> 
+> Changes since v7:
+> - added lot of reviewed/tested by
+> - In patch 14: keep initial reset pulse.
+> 
+> Changes since v8:
+> - Removed some useless min/maxitems from dt-binding as reported by dt_binding_check
+> 
+> Change since v9:
+> - removed redundant rst_ from reset-names
+> - reworked patch #25 commit message
+> 
+> Corentin Labbe (33):
+>   crypto: rockchip: use dev_err for error message about interrupt
+>   crypto: rockchip: do not use uninitialized variable
+>   crypto: rockchip: do not do custom power management
+>   crypto: rockchip: fix privete/private typo
+>   crypto: rockchip: do not store mode globally
+>   crypto: rockchip: add fallback for cipher
+>   crypto: rockchip: add fallback for ahash
+>   crypto: rockchip: better handle cipher key
+>   crypto: rockchip: remove non-aligned handling
+>   crypto: rockchip: rework by using crypto_engine
+>   crypto: rockchip: rewrite type
+>   crypto: rockchip: add debugfs
+>   crypto: rockchip: introduce PM
+>   crypto: rockchip: handle reset also in PM
+>   crypto: rockchip: use clk_bulk to simplify clock management
+>   crypto: rockchip: add myself as maintainer
+>   crypto: rockchip: use read_poll_timeout
+>   crypto: rockchip: fix style issue
+>   crypto: rockchip: add support for rk3328
+>   crypto: rockchip: rename ablk functions to cipher
+>   crypto: rockchip: rework rk_handle_req function
+>   crypto: rockchip: use a rk_crypto_info variable instead of lot of
+>     indirection
+>   crypto: rockchip: use the rk_crypto_info given as parameter
+>   dt-bindings: crypto: convert rockchip-crypto to YAML
+>   dt-bindings: crypto: rockchip: add new compatible
+>   clk: rk3399: use proper crypto0 name
+>   arm64: dts: rockchip: add rk3328 crypto node
+>   arm64: dts: rockchip: rk3399: add crypto node
+>   crypto: rockchip: store crypto_info in request context
+>   crypto: rockchip: Check for clocks numbers and their frequencies
+>   crypto: rockchip: rk_ahash_reg_init use crypto_info from parameter
+>   crypto: rockchip: permit to have more than one reset
+>   crypto: rockchip: Add support for RK3399
+> 
+>  .../crypto/rockchip,rk3288-crypto.yaml        | 127 ++++
+>  .../bindings/crypto/rockchip-crypto.txt       |  28 -
+>  MAINTAINERS                                   |   7 +
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |  11 +
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  20 +
+>  drivers/crypto/Kconfig                        |  15 +
+>  drivers/crypto/rockchip/rk3288_crypto.c       | 506 ++++++++--------
+>  drivers/crypto/rockchip/rk3288_crypto.h       | 107 ++--
+>  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 267 +++++----
+>  .../crypto/rockchip/rk3288_crypto_skcipher.c  | 543 ++++++++++--------
+>  include/dt-bindings/clock/rk3399-cru.h        |   6 +-
+>  11 files changed, 949 insertions(+), 688 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+> 
+> -- 
+> 2.35.1
+
+Patches 1-25,29-33 applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
