@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59BB2ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 18:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EB1EC38A02
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 18:41:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N5RlYh5P5BDX5Lk6xd0CyICXhI5RPM+YqGsOsuxe3iY=; b=YP7e9tfTUt8W/b
-	xxMVy6l/lwIC1Q1oOqH/cvbFvc/wTvI76eIQxNJVdea+QbB8gjFHJiCZHb3Km+aHwV7cnU0mgYC39
-	V4By5u4AVR5uVDOHG5WekmS8fG9B+AYOi4Bk9Qpb2Uknrk8nHu2umzaagJNcYw61ZZjeapOMxWw9k
-	ljtCJCXWi5DmeMlH0MBVofJCl0UMzEWjDEVRMpDFE/mFIzXAj4y0WjD08TPTHvgrdiKVu0FF5W6JZ
-	YlxtFJD0QbAnSeisugUgIJzi5qntwb/Nr26IRronIOJdhHBktwzywSB8W/pFxVWiFNUl06Mv5a0RL
-	IDVYOUXU45CoTEgFXDBQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=A0tYXB/IYqe7CrEgRnTe487cS5A+HfuVeBtaf2BIGec=; b=1Zz3tdezTWiEj6
+	fpsu2DjpQkC9jYBYhbUdYePVJPeZMQD8R2A7RYHg8d50yUBfPrNSFR5ITQueKzTSXMogmv8GAXMPF
+	i4ZoYgol+/FtUVN6MBxqY64+h99SnIwM5rwtdbDKy12MZ7mTZYifRs5DpoXJ02L53RNCNP85oMZDi
+	vOygc3Y7k5RV7La1biOgXpCzFTqEDaW3/C0+263xNL0aX9X5gVtpfJfDsD7qxBzdGUICPDfaXnHGX
+	4KSIddnzdmw0yDIW8ZSSmy9u3gfVyq5kDgq4GWDzrvrjFVN4mS7wO30mJsKZgFXBAvAMARp+DqSuB
+	+CyBWXMd0aYKTk6QAnXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooUHu-001fyx-JA; Fri, 28 Oct 2022 18:41:02 +0000
+	id 1ooUHx-001g0M-FL; Fri, 28 Oct 2022 18:41:05 +0000
 Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooUHs-001fwG-OO
-	for linux-rockchip@lists.infradead.org; Fri, 28 Oct 2022 18:41:01 +0000
-Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-13b23e29e36so7226324fac.8
-        for <linux-rockchip@lists.infradead.org>; Fri, 28 Oct 2022 11:40:56 -0700 (PDT)
+	id 1ooUHs-001fw9-Nx
+	for linux-rockchip@lists.infradead.org; Fri, 28 Oct 2022 18:41:03 +0000
+Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-13c2cfd1126so7220636fac.10
+        for <linux-rockchip@lists.infradead.org>; Fri, 28 Oct 2022 11:40:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bpyIZVffuIxdOIfYvVswAUCJsvme+Kcw8Gat2LDzQEI=;
-        b=Rg6HASonaiUryrYoyr+r4a6e1c7UDoxxLuTp/qZwATQOApibHardEl0dQtNY5YJjpM
-         8WUW5e8MWLHIrgzyJOJOrSUmPxEhk7s5A+a6bRCCJW96A0DbSUbhC4dTuWd+VQ+OwbN7
-         AuClE1+DL9NXpsoR1obzNwzbiWadGh8l9rpR8PyTAlCUVbjfuDgA76xZJ4LlhZNn+Ifa
-         tAO1Fh2VoIwjyyBYounPwVgS9AAUdi5fHE/4rWLaEQWyhRQfk1BvJux22DaZpK+a31bA
-         LMwZK0HNtaZjHbjG/PkwV7Xj4/YrFlw556ufHwLE2cRAxZWwnS0YW5zrx+OWWkF5OTWj
-         FrdA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=31+stykkUZ4/Nnbkeu0GbJDIFpFhChj+cNfEHMQOYCI=;
+        b=Idd1MDTAQXdraD4CVDaNCxXX85ZFyWnwiww0KNHkeBlmfRLmFIYEyhB791eiLjMqaj
+         HbokQrbWhDnjcy60gXfrpXzXGpuQKP6CbVts9A+gBQO9nPUTIq3fI9Py4D1CBOAY44k/
+         Q8r5C1t7SNvEC3K74pVIfg+pmhdx0GYPeD4sdQcH/XJCt96pILsi/N8av7sarDd3eAEe
+         qj+ebLLVuUMPutQ+OPnHd/v1OhQcl+JalC4XsSliZJSgZcUHoebzm/H4y5ONU14oepuD
+         Wlz33VrqyphQxd3ZJHdHdPTiXDSlw6C9K40AKHPMj9lRUu9zBZL+raOAxach6nwkQVn/
+         LOzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bpyIZVffuIxdOIfYvVswAUCJsvme+Kcw8Gat2LDzQEI=;
-        b=Z8HVSbhiSPZmPnPbvHZzvFhN3RCW/TaSmXyuVpgBBpdHQcyglRj2fALCD/xMKWg4yH
-         82B3GveI7GOsAcjH2ozZDaBwbeznXF65PD95O0uqtf9mhxHsJIi6gC6KgSa23VWldz8p
-         fJj0wUMydyv/v/JubaVyH0Rf+P8Ezo0hJHHw/ZlVxANwG6Lr4VRyBaVBZDQ5fQK6UrkM
-         wkRz1TBwBuMSC6OncaeHLt4Mm8Kk7Kc1EtFa81F+fBH0Bw3CCiUGHWYSnh9FA194/cbG
-         c7EzBxvyZ3xZS79l+p/QuI9j3w9e81wIab9sXnWYgB7a6TEOmdtncg03ZLtQdA5XhW9j
-         wswQ==
-X-Gm-Message-State: ACrzQf2ORV9eceygHIaHHiMk93gqx6Fzh9Zcc9Qqh1EwISPsfBdNwRxM
-	q/k6PY322OlMXKi/g3RgkI0=
-X-Google-Smtp-Source: AMsMyM5SLy6kx00jwdnaLVHITsi9r1R7pxjdOG7cRPBFAbthoZStMOySAcBo5wg8n8/45qNvqBjV2Q==
-X-Received: by 2002:a05:6871:54e:b0:13b:29b7:e4be with SMTP id t14-20020a056871054e00b0013b29b7e4bemr351350oal.176.1666982455729;
-        Fri, 28 Oct 2022 11:40:55 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=31+stykkUZ4/Nnbkeu0GbJDIFpFhChj+cNfEHMQOYCI=;
+        b=OT6RdAOWX8tBJr2vO160f6I80oAoC53nlGXwlWlKXTzH78vygo0B+vamuXtmIp4XUU
+         560rkrNBxgaJdH+qrbKuurXy81tIE5ktcwMfV/jOLAmPiKvmk3oPmXmbvwEjvFHWHsbM
+         Xa6epuk9kA4uxQ6foDkxTG1HXtwZsvS9XUHvJzcvyYOPECitsmN5IT+Gnky8EGFX8aOH
+         JaoV7zX3IjHk4luVeqZt8y0xNNnrQJ3e5n92Po4ITt/raFRxr/rqKacMc6Vmqy6ojgbI
+         GBxTOXx+GMklaEge4Jc3doqnBR+sfUjxGmcdZzqNQxIQPBq9ly6BTrdxKLL4/fkAG24L
+         Y/TQ==
+X-Gm-Message-State: ACrzQf05vZVG+i2OqegAVLCzK/FbBsBvYhhLqRp+HNatGVZggmtXJ+5w
+	pfGJdqlhNC05eHSRQytEAxLKLr4Pavc=
+X-Google-Smtp-Source: AMsMyM4sCvcEQtsJXPR4XpFx0rkgWJka0bNRN0TI2IpQmRBNrZvKyL1vAch33hThmUqp34xleoxe3A==
+X-Received: by 2002:a05:6870:968c:b0:13b:cb3c:67b9 with SMTP id o12-20020a056870968c00b0013bcb3c67b9mr341778oaq.250.1666982454595;
+        Fri, 28 Oct 2022 11:40:54 -0700 (PDT)
 Received: from wintermute.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id z7-20020a056830290700b0066c34486aa7sm575288otu.73.2022.10.28.11.40.54
+        by smtp.gmail.com with ESMTPSA id z7-20020a056830290700b0066c34486aa7sm575288otu.73.2022.10.28.11.40.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Oct 2022 11:40:55 -0700 (PDT)
+        Fri, 28 Oct 2022 11:40:53 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: devicetree@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -71,17 +70,14 @@ Cc: linux-rockchip@lists.infradead.org,
 	frattaroli.nicolas@gmail.com,
 	jagan@amarulasolutions.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/4] dt-bindings: arm: rockchip: Add Anbernic RG353V and RG353VS
-Date: Fri, 28 Oct 2022 13:40:42 -0500
-Message-Id: <20221028184045.13113-2-macroalpha82@gmail.com>
+Subject: [PATCH 0/4] Add Anbernic RG353V and RG353VS
+Date: Fri, 28 Oct 2022 13:40:41 -0500
+Message-Id: <20221028184045.13113-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221028184045.13113-1-macroalpha82@gmail.com>
-References: <20221028184045.13113-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_114100_814757_5A946E29 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221028_114100_814704_5ECCBA5B 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,34 +96,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add entry for the Anbernic RG353V and RG353VS handheld devices.
+Add support for the Anbernic RG353V and RG353VS handheld gaming
+consoles. These devices are extremely similar to the existing
+Anbernic RG353P.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Add support for the battery of the existing RG353P and RG503 too
+as part of this change, as to keep things compact we must first split
+the 353p devicetree into attributes common to all 353 devices and
+attributes that only exist for the 353P, 353V, and 353VS devices
+(which includes a different battery in the V and VS).
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index c6c69a4e3777..29a1a30e0606 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -35,6 +35,16 @@ properties:
-           - const: anbernic,rg353p
-           - const: rockchip,rk3566
- 
-+      - description: Anbernic RG353V
-+        items:
-+          - const: anbernic,rg353v
-+          - const: rockchip,rk3566
-+
-+      - description: Anbernic RG353VS
-+        items:
-+          - const: anbernic,rg353vs
-+          - const: rockchip,rk3566
-+
-       - description: Anbernic RG503
-         items:
-           - const: anbernic,rg503
+Lastly, add poll-interval to the parent tree so that it affects all
+existing Anbernic RGxx3 devices.
+
+Chris Morgan (4):
+  dt-bindings: arm: rockchip: Add Anbernic RG353V and RG353VS
+  arm64: dts: rockchip: add Anbernic RG353V and RG353VS
+  arm64: dts: rockchip: add rk817 chg to RG353P and RG503
+  arm64: dts: rockchip: add poll-interval to RGxx3 devices
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  10 ++
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3566-anbernic-rg353p.dts   | 109 +++++++++++------
+ .../dts/rockchip/rk3566-anbernic-rg353v.dts   | 114 ++++++++++++++++++
+ .../dts/rockchip/rk3566-anbernic-rg353vs.dts  |  87 +++++++++++++
+ .../dts/rockchip/rk3566-anbernic-rg353x.dtsi  |  60 +++++++++
+ .../dts/rockchip/rk3566-anbernic-rg503.dts    |  79 ++++++++++++
+ .../dts/rockchip/rk3566-anbernic-rgxx3.dtsi   |  47 +-------
+ 8 files changed, 424 insertions(+), 84 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353x.dtsi
+
 -- 
 2.25.1
 
