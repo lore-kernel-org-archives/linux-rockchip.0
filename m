@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4AB4FA3742
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 18:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59BB2ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Oct 2022 18:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ayyga+XiSLTvIdAjDcm6cNHDZ3Mp8mkcphqWeH38n/A=; b=NslbmshWeW7s/S
-	HjZHYVuAUZ4z/iUzpI+tGtierZDJObMvkeNmw+1Bxql+wnVo6P59ehNSNByRObftNtiDqXqbixZS8
-	sH4yLR6Sbs7W7xVDl4RCAnp/Ene0/gwPthbTaBWHZ6UqziYXP5SwuVmsTm4puvdS8GBTOgdhQlcMr
-	Jcru1TN0nhpRqwL6oTkJi32KX9qmiU4y2sSc36cCdbQJ4ICvx3IhWLIkA2z/rYf+jW24JWHUKa3Id
-	GK3wlvYs37B2mRrYqfHxAgg1gton+BvjQXuKz/C0UUuwXb0exeYAuQsaM7Z5fAux6YKSc8YM/k00m
-	DDT73ufHqXhBKgqbnscg==;
+	List-Owner; bh=N5RlYh5P5BDX5Lk6xd0CyICXhI5RPM+YqGsOsuxe3iY=; b=YP7e9tfTUt8W/b
+	xxMVy6l/lwIC1Q1oOqH/cvbFvc/wTvI76eIQxNJVdea+QbB8gjFHJiCZHb3Km+aHwV7cnU0mgYC39
+	V4By5u4AVR5uVDOHG5WekmS8fG9B+AYOi4Bk9Qpb2Uknrk8nHu2umzaagJNcYw61ZZjeapOMxWw9k
+	ljtCJCXWi5DmeMlH0MBVofJCl0UMzEWjDEVRMpDFE/mFIzXAj4y0WjD08TPTHvgrdiKVu0FF5W6JZ
+	YlxtFJD0QbAnSeisugUgIJzi5qntwb/Nr26IRronIOJdhHBktwzywSB8W/pFxVWiFNUl06Mv5a0RL
+	IDVYOUXU45CoTEgFXDBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooUHx-001g0W-Ps; Fri, 28 Oct 2022 18:41:05 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1ooUHu-001fyx-JA; Fri, 28 Oct 2022 18:41:02 +0000
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooUHt-001fwz-Pa
-	for linux-rockchip@lists.infradead.org; Fri, 28 Oct 2022 18:41:03 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-13c569e5ff5so6855964fac.6
-        for <linux-rockchip@lists.infradead.org>; Fri, 28 Oct 2022 11:40:58 -0700 (PDT)
+	id 1ooUHs-001fwG-OO
+	for linux-rockchip@lists.infradead.org; Fri, 28 Oct 2022 18:41:01 +0000
+Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-13b23e29e36so7226324fac.8
+        for <linux-rockchip@lists.infradead.org>; Fri, 28 Oct 2022 11:40:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4ynt6JT69HA02Oq8WM7F4kqQBK5tLRg6dL8O0dxxMqc=;
-        b=Pkxqg5BTmAVShE5+autPmavgdFYq6sH3gqtICfzT0mN6bJR+ty/vuMl3uFmwHMKo9p
-         HxesyXUXBX7PAjdTJjoQME0bpqDjP7Nd5aH3U916XVNT4eAwgCPjs7ZShnS9nbuACiuZ
-         KAzbXeLo911fjY4jWF9NQqzULD6s73f+P6fB0wUNRKWun+9B+yngWCLqRXI0L0uxwMC/
-         L8EaT4F6iPo5S8ySdgbOuUwu+HNKi+fGkpICDRSlGD0CBETdTJK+el4YUjWox7TvIJ/s
-         VPOR8rSNjLJbnZYh4UZxFarAv2fPP8K3GETpoAStdDLzEs+jbeuc79rwGCIRQyk0GRJI
-         PqUQ==
+        bh=bpyIZVffuIxdOIfYvVswAUCJsvme+Kcw8Gat2LDzQEI=;
+        b=Rg6HASonaiUryrYoyr+r4a6e1c7UDoxxLuTp/qZwATQOApibHardEl0dQtNY5YJjpM
+         8WUW5e8MWLHIrgzyJOJOrSUmPxEhk7s5A+a6bRCCJW96A0DbSUbhC4dTuWd+VQ+OwbN7
+         AuClE1+DL9NXpsoR1obzNwzbiWadGh8l9rpR8PyTAlCUVbjfuDgA76xZJ4LlhZNn+Ifa
+         tAO1Fh2VoIwjyyBYounPwVgS9AAUdi5fHE/4rWLaEQWyhRQfk1BvJux22DaZpK+a31bA
+         LMwZK0HNtaZjHbjG/PkwV7Xj4/YrFlw556ufHwLE2cRAxZWwnS0YW5zrx+OWWkF5OTWj
+         FrdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4ynt6JT69HA02Oq8WM7F4kqQBK5tLRg6dL8O0dxxMqc=;
-        b=TXvOkCYTmiGYaKwized8Y01i+yVrJakY5CibA/qEzai9L0Re65V0+KKgVguLLB9G6N
-         8HzXhF+cdhUlOYQKRnG9KocgvoRVVKR2I8Mju/6tRJqQ+GFpGY/S+oKLmJlqZna+8Mpk
-         ziSKWrMY2hUT3KTZb64YE/0MltPE3M/kMcP7yIebgD9iQc/6QqJRtjAf9ioWD2+SES/M
-         0lpVHbAubyQMMVKIQmU8KgFrI74xLLTsHlwns0tiIrJCxzpOAD36K4TwtQNCdqyUShie
-         Ls4QvNEUHycjfOdTxzR8bcd5+DGeEp69jevhDYtWujP9XkS5TGP6sTg95R6jibhCoXkz
-         uVQw==
-X-Gm-Message-State: ACrzQf3NM/mnMeuB09F9dROaG8rsuyhAbXmVRRrlO7dqa1gTapjN+lR/
-	VbzpB0OoIwjTV/qaCKxd7njRRJHzjhM=
-X-Google-Smtp-Source: AMsMyM7F+br2pqNe1GmsfyUORiHlcDIJZu1fQJXHoowqOaPfw/dZ2FJlY96pJhMt2R8m5hOOY3HUZQ==
-X-Received: by 2002:a05:6870:a449:b0:13c:7d1c:5116 with SMTP id n9-20020a056870a44900b0013c7d1c5116mr325067oal.27.1666982458410;
-        Fri, 28 Oct 2022 11:40:58 -0700 (PDT)
+        bh=bpyIZVffuIxdOIfYvVswAUCJsvme+Kcw8Gat2LDzQEI=;
+        b=Z8HVSbhiSPZmPnPbvHZzvFhN3RCW/TaSmXyuVpgBBpdHQcyglRj2fALCD/xMKWg4yH
+         82B3GveI7GOsAcjH2ozZDaBwbeznXF65PD95O0uqtf9mhxHsJIi6gC6KgSa23VWldz8p
+         fJj0wUMydyv/v/JubaVyH0Rf+P8Ezo0hJHHw/ZlVxANwG6Lr4VRyBaVBZDQ5fQK6UrkM
+         wkRz1TBwBuMSC6OncaeHLt4Mm8Kk7Kc1EtFa81F+fBH0Bw3CCiUGHWYSnh9FA194/cbG
+         c7EzBxvyZ3xZS79l+p/QuI9j3w9e81wIab9sXnWYgB7a6TEOmdtncg03ZLtQdA5XhW9j
+         wswQ==
+X-Gm-Message-State: ACrzQf2ORV9eceygHIaHHiMk93gqx6Fzh9Zcc9Qqh1EwISPsfBdNwRxM
+	q/k6PY322OlMXKi/g3RgkI0=
+X-Google-Smtp-Source: AMsMyM5SLy6kx00jwdnaLVHITsi9r1R7pxjdOG7cRPBFAbthoZStMOySAcBo5wg8n8/45qNvqBjV2Q==
+X-Received: by 2002:a05:6871:54e:b0:13b:29b7:e4be with SMTP id t14-20020a056871054e00b0013b29b7e4bemr351350oal.176.1666982455729;
+        Fri, 28 Oct 2022 11:40:55 -0700 (PDT)
 Received: from wintermute.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id z7-20020a056830290700b0066c34486aa7sm575288otu.73.2022.10.28.11.40.57
+        by smtp.gmail.com with ESMTPSA id z7-20020a056830290700b0066c34486aa7sm575288otu.73.2022.10.28.11.40.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Oct 2022 11:40:57 -0700 (PDT)
+        Fri, 28 Oct 2022 11:40:55 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: devicetree@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -71,16 +71,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	frattaroli.nicolas@gmail.com,
 	jagan@amarulasolutions.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 3/4] arm64: dts: rockchip: add rk817 chg to RG353P and RG503
-Date: Fri, 28 Oct 2022 13:40:44 -0500
-Message-Id: <20221028184045.13113-4-macroalpha82@gmail.com>
+Subject: [PATCH 1/4] dt-bindings: arm: rockchip: Add Anbernic RG353V and RG353VS
+Date: Fri, 28 Oct 2022 13:40:42 -0500
+Message-Id: <20221028184045.13113-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221028184045.13113-1-macroalpha82@gmail.com>
 References: <20221028184045.13113-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_114101_849809_327DD905 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20221028_114100_814757_5A946E29 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,105 +100,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the internal battery and charger for the Anbernic
-RG353P and RG503. Battery values are taken from the BSP Kernel
-device tree.
+Add entry for the Anbernic RG353V and RG353VS handheld devices.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../dts/rockchip/rk3566-anbernic-rg353p.dts   | 28 +++++++++++++++++++
- .../dts/rockchip/rk3566-anbernic-rg503.dts    | 28 +++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-index 80716b2ebd29..63cff402f3a8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-@@ -18,6 +18,25 @@ aliases {
- 		mmc3 = &sdmmc2;
- 	};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index c6c69a4e3777..29a1a30e0606 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -35,6 +35,16 @@ properties:
+           - const: anbernic,rg353p
+           - const: rockchip,rk3566
  
-+	battery: battery {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3472000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <117000>;
-+		voltage-max-design-microvolt = <4172000>;
-+		voltage-min-design-microvolt = <3400000>;
++      - description: Anbernic RG353V
++        items:
++          - const: anbernic,rg353v
++          - const: rockchip,rk3566
 +
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =  <4172000 100>, <4054000 95>, <3984000 90>, <3926000 85>,
-+					<3874000 80>, <3826000 75>, <3783000 70>, <3746000 65>,
-+					<3714000 60>, <3683000 55>, <3650000 50>, <3628000 45>,
-+					<3612000 40>, <3600000 35>, <3587000 30>, <3571000 25>,
-+					<3552000 20>, <3525000 15>, <3492000 10>, <3446000 5>,
-+					<3400000 0>;
-+	};
++      - description: Anbernic RG353VS
++        items:
++          - const: anbernic,rg353vs
++          - const: rockchip,rk3566
 +
- 	/* Channels reversed for both headphones and speakers. */
- 	sound {
- 		compatible = "simple-audio-card";
-@@ -87,6 +106,15 @@ spk_amp_enable_h: spk-amp-enable-h {
- 	};
- };
- 
-+&rk817 {
-+	rk817_charger: charger {
-+		monitored-battery = <&battery>;
-+		rockchip,resistor-sense-micro-ohms = <10000>;
-+		rockchip,sleep-enter-current-microamp = <300000>;
-+		rockchip,sleep-filter-current-microamp = <100000>;
-+	};
-+};
-+
- &sdhci {
- 	pinctrl-0 = <&emmc_bus8>, <&emmc_clk>, <&emmc_cmd>, <&emmc_datastrobe>, <&emmc_rstnout>;
- 	pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-index c56c290f0d87..5dafcc86296b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-@@ -17,6 +17,25 @@ aliases {
- 		mmc2 = &sdmmc2;
- 	};
- 
-+	battery: battery {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3472000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <117000>;
-+		voltage-max-design-microvolt = <4172000>;
-+		voltage-min-design-microvolt = <3400000>;
-+
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =	<4172000 100>, <4054000 95>, <3984000 90>, <3926000 85>,
-+					<3874000 80>, <3826000 75>, <3783000 70>, <3746000 65>,
-+					<3714000 60>, <3683000 55>, <3650000 50>, <3628000 45>,
-+					<3612000 40>, <3600000 35>, <3587000 30>, <3571000 25>,
-+					<3552000 20>, <3525000 15>, <3492000 10>, <3446000 5>,
-+					<3400000 0>;
-+	};
-+
- 	gpio_spi: spi {
- 		compatible = "spi-gpio";
- 		pinctrl-names = "default";
-@@ -136,3 +155,12 @@ spi_pins: spi-pins {
- 		};
- 	};
- };
-+
-+&rk817 {
-+	rk817_charger: charger {
-+		monitored-battery = <&battery>;
-+		rockchip,resistor-sense-micro-ohms = <10000>;
-+		rockchip,sleep-enter-current-microamp = <300000>;
-+		rockchip,sleep-filter-current-microamp = <100000>;
-+	};
-+};
+       - description: Anbernic RG503
+         items:
+           - const: anbernic,rg503
 -- 
 2.25.1
 
