@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A440C38A02
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Oct 2022 22:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40B2FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Oct 2022 22:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kJ1rBiYVCIZylDUgfr2bjeS0dd20RD8Sl0jVKOoesHU=; b=TBU14OR6rL70BA
-	H38Y0b4ooFg9bmXq7kJh95WloFYexZeF/3fkdc38TvTMXa8N+GhWg2m5Use3pMR02/usjAzJL2/B9
-	nvwWJqlVL87zcPoP0+QEpCCmMRQdnKGNa8/+K8UWWxjzV+CEHuBftNeTtnjfV58rR7yh1ir7SeodN
-	q2x3agKOKvfFOZ5HvUezQJRFh0NOzPgIznyhQy6eLBU7TUUzzolNXyuty/IqGoXshJVharskKc8jm
-	Zuh8peNdeT0wT5704RcDdp4MG1Xj5xUdKonohermnDawi9cK/uuQfp1Wwf5xH2REFR8eEKjveQLCk
-	2dwdCxnhb+f0eQTUWHGw==;
+	List-Owner; bh=V8b8E9oTCU0XarjXQE4d1Jw4QnQxBA81rLugfFZod6M=; b=yB+mP8jLRYQmPh
+	OP5vQYM5sbpJ8NSPhYMYdxO3VPWi50oVODLUO3lleQ+fQXWSyc+8Y3IF7NUea2M5vN6Z3XRgr1rvz
+	Zn/s50TC0vM5sgyXdjyD91r9SBkdRanhSIRLjpTYIKlNrwQ3ofh5l7R80whSyaW6GvvGnI6HKeKdv
+	zU6ZooU9kQYiDPqcogT6qXRSp71lSIFVzZLT1pRoqeP2SXcoAO8dqJ05+8HnH4jd3HcPKBwxPAu0g
+	B5oUzaDVDeD7qGHZeHDVcT52n00kVoCz5g+8OVltegqBRsOzn/r48k5w2cqSGZ6Q1A01DMFfZbvTw
+	QQ2q06y25kOR+rNzh5gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oou18-009pTM-Sz; Sat, 29 Oct 2022 22:09:26 +0000
+	id 1oou18-009pSt-Ey; Sat, 29 Oct 2022 22:09:26 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oou0c-009p1G-Q4; Sat, 29 Oct 2022 22:08:55 +0000
+	id 1oou0c-009p0u-0a; Sat, 29 Oct 2022 22:08:55 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oou0W-0008NZ-QN; Sun, 30 Oct 2022 00:08:48 +0200
+	id 1oou0W-0008NZ-Gj; Sun, 30 Oct 2022 00:08:48 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Yuan Can <yuancan@huawei.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>,
+	dri-devel@lists.freedesktop.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	airlied@linux.ie,
+	Sandy Huang <hjc@rock-chips.com>,
 	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	hjc@rock-chips.com
-Subject: Re: [PATCH] drm/rockchip: use pm_runtime_resume_and_get() instead of pm_runtime_get_sync()
-Date: Sun, 30 Oct 2022 00:08:45 +0200
-Message-Id: <166708118164.1656095.10960493289173279957.b4-ty@sntech.de>
+	kernel@pengutronix.de,
+	linux-rockchip@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH] drm/rockchip: vop2: Register Esmart0-win0 as primary plane
+Date: Sun, 30 Oct 2022 00:08:44 +0200
+Message-Id: <166708118164.1656095.9357091352577403281.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220615062644.96837-1-yuancan@huawei.com>
-References: <20220615062644.96837-1-yuancan@huawei.com>
+In-Reply-To: <20220926081643.304759-1-s.hauer@pengutronix.de>
+References: <20220926081643.304759-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221029_150854_863119_0B20D14C 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221029_150854_067378_DF19D1F4 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,19 +65,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jun 2022 06:26:44 +0000, Yuan Can wrote:
-> Replace pm_runtime_get_sync() with pm_runtime_resume_and_get() to avoid
-> device usage counter leak.
+On Mon, 26 Sep 2022 10:16:43 +0200, Sascha Hauer wrote:
+> Esmart0-win0 could serve as primary plane, so mark it as such. On
+> RK3568 this window will never be used as primary plane, because the
+> three windows at the beginning of the rk3568_vop_win_data[] array
+> will be used. On RK3566 however, two of the windows at the beginning
+> of the rk3568_vop_win_data[] array cannot not be used due to hardware
+> limitations, so without this patch we end up with CRTCs without primary
+> planes when multiple VPs are active.
 > 
-> 
+> [...]
 
 Applied, thanks!
 
-[1/1] drm/rockchip: use pm_runtime_resume_and_get() instead of pm_runtime_get_sync()
-      commit: e3558747ebe15306e6d0b75bd6d211436be4a7d5
-
-I've dropped the lvds part and used the separate patch from your
-Huawei-collegue Zhang Qilong
+[1/1] drm/rockchip: vop2: Register Esmart0-win0 as primary plane
+      commit: de4a4c8f64021b02aaa8ab21a82fe1f11a17b975
 
 Best regards,
 -- 
