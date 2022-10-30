@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D19E5C38A02
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Oct 2022 20:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD170C38A02
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Oct 2022 20:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ggyvIRvosfAMT4QpCghCmZclhfn8kwyGZoWyw5LhGe0=; b=1/rkzw2PGOxJwj
-	lIK0xJxdniSLIcvzDBntRay/sDXTn7MXMwtaH0n07korjIVzKCgZignYT79y06lLuy4lJyIgpkA21
-	aBVNvT3AiHtc5vyroYdTKj7deKh8/cM3PwQoO7mij2d8e+7wniopNZE51KGbqTgwmDnRDOXxRX/4e
-	wZMNNyGbGZuHTMAtJZGJzSaVUp/aR7fp9+TSyaGhr3TW5dGZBSihnM0UQclZ6kdu0/spdSsJ6pAqa
-	pWCdjlyuCKlxZ75WbF/RKGAF/7OtdIyF6xSgd7bhoxRsRj1p/2rH2++TkvKtKcYG38u0q5vQp/2U8
-	Q+oSU9EYj0xmen3Ss3sw==;
+	List-Owner; bh=fb6il3AvuocBV94Uez9SdUXkIM0POYQG3A+dsxVp4cc=; b=2Zpv24UhPo2kVO
+	Nlv1HBdWYArgKohXyYHaqifrFeEJTIvNObR5jru3ZcfuBLvck1C1PYJ+1SSliQV360sfgW71lRedV
+	GMapcpLz1aaQ4vklqV7qBZPvFgOF8ZD/0CRwM4nmEWQydVVVPkkojKnJFRGbZozbG+QR0FEALwqmm
+	HpqAIaKQsnabhCGj0/9JW6vvHxgkvEVVNwehzYR+uWaqSg8elj6Y+YXW1edMsqfP6eTD4Qpfu1M4J
+	5p56UauRjH/F1xHOXbVtRbt/eUsQFpiiemIg3ewjkHI6SaBvShqV3M0/Sf5f9KGB2gfhY5Ia4iZAT
+	jzq5/RUh57Cmml4VlmMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opEwj-002sP5-8L; Sun, 30 Oct 2022 20:30:17 +0000
+	id 1opEwt-002sXB-Fb; Sun, 30 Oct 2022 20:30:27 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opEwO-002sF5-Ub; Sun, 30 Oct 2022 20:29:58 +0000
+	id 1opEwP-002sFR-LZ; Sun, 30 Oct 2022 20:29:59 +0000
 Received: from [185.156.123.69] (helo=phil.sntech)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1opEwJ-0005lw-5m; Sun, 30 Oct 2022 21:29:51 +0100
+	id 1opEwL-0005lw-Ha; Sun, 30 Oct 2022 21:29:53 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: fix ir-receiver node names
-Date: Sun, 30 Oct 2022 21:29:44 +0100
-Message-Id: <166716177914.1683006.17777067125104187141.b4-ty@sntech.de>
+Subject: Re: [PATCH v1] ARM: dts: rockchip: rk3188: fix lcdc1-rgb24 node name
+Date: Sun, 30 Oct 2022 21:29:45 +0100
+Message-Id: <166716177915.1683006.8839115651590119733.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <ea5af279-f44c-afea-023d-bb37f5a0d58d@gmail.com>
-References: <ea5af279-f44c-afea-023d-bb37f5a0d58d@gmail.com>
+In-Reply-To: <7b9c0a6f-626b-07e8-ae74-7e0f08b8d241@gmail.com>
+References: <7b9c0a6f-626b-07e8-ae74-7e0f08b8d241@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221030_132956_998896_345644DE 
-X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-CacheID: sfid-20221030_132957_716071_F83BEDB8 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,18 +65,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Oct 2022 10:58:22 +0200, Johan Jonker wrote:
-> Fix ir-receiver node names on Rockchip boards,
-> so that they match with regex: '^ir(-receiver)?(@[a-f0-9]+)?$'
+On Thu, 27 Oct 2022 01:31:37 +0200, Johan Jonker wrote:
+> The lcdc1-rgb24 node name is out of line with the rest
+> of the rk3188 lcdc1 node, so fix it.
 > 
 > 
 
 Applied, thanks!
 
-[1/2] ARM: dts: rockchip: fix ir-receiver node names
-      commit: dd847fe34cdf1e89afed1af24986359f13082bfb
-[2/2] arm64: dts: rockchip: fix ir-receiver node names
-      commit: de0d04b9780a23eb928aedfb6f981285f78d58e5
+[1/1] ARM: dts: rockchip: rk3188: fix lcdc1-rgb24 node name
+      commit: 11871e20bcb23c00966e785a124fb72bc8340af4
 
 Best regards,
 -- 
