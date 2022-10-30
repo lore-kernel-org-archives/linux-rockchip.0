@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDDDC38A02
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Oct 2022 20:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC46C38A02
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Oct 2022 20:08:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oyC2pNTxNWZRU1yZlnDqS8rvyyActl5yTMAMxB9aLmY=; b=woVnrvEBynR8WO
-	knVN8Jlo4EhbjEQPynxdiZI8CforpW0HsgIQTdlmYNIqVF8PQHpoUTO4dd/ZrwwU8hEfBclC2tyFi
-	fA4viffVkZVdt6cYJWVV1JCl5pmgtCDrPzyJVmHBHVo5zy0ygr+8eUfrUNUDilWMdk/B/ebtKVUv2
-	V7+lfXvSpvaVBYMAHMHPmPiM3Tq8BI064ARJHApy/ZL4L3WDcRAxsLUTZ1es4OcHHmawoP7djwZjW
-	dW5pDn6pRccbKI0yDxZSOKPfIVgWsebrVc4bvLGy8qeYA1O8/2lxuzJoQZGg9rT+P+mvbWwUMAbh9
-	PjkutjqsMgVr5NnaAb0Q==;
+	List-Owner; bh=2jxVi5yHMbHyzAWAzsbtERfB5QVUEwvWkgH054nffF0=; b=PwBtoX1yL2fgfZ
+	DQDkklxCY9GzcCwGmG19Dq2cGCMCOcfVK0S3gccFjvG2qK1F2h/G6n2XoSZdqw4ZHzenIsL9//qie
+	lI6jdtcPnPpOLvcXzQUCc/a9nWd0ddLgMHNQ3ti0SJpG8E2BTRXltfQDH/SFlj81+kMlZi/UIsWKm
+	WLD0N9JsKzFX9HsZ/cyC4Xhe2u/Hgi6keQgfnYf20nzpHVwDk6BEdPyzfMHgAPwQcXulT2KFPq9hi
+	K6FH8XHF+acudtw2nAlO6PLUrg54eX2NY4eKnFWenNUTiWKb5NVVCQUBlqPS6JujqCxJnHjTXxs84
+	tfA7VBFUklIs91JZZbRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opEbi-002gZh-Un; Sun, 30 Oct 2022 20:08:34 +0000
+	id 1opEbj-002ga7-8c; Sun, 30 Oct 2022 20:08:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opEbb-002gSV-Co; Sun, 30 Oct 2022 20:08:28 +0000
+	id 1opEbc-002gTK-DI
+	for linux-rockchip@lists.infradead.org; Sun, 30 Oct 2022 20:08:29 +0000
 Received: from [185.156.123.69] (helo=phil.sntech)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1opEbX-0005ci-6p; Sun, 30 Oct 2022 21:08:23 +0100
+	id 1opEbV-0005ci-IQ; Sun, 30 Oct 2022 21:08:21 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>
+To: devicetree@vger.kernel.org,
+	Chris Morgan <macroalpha82@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-rtc@vger.kernel.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	linux-amlogic@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	robh+dt@kernel.org,
+	pgwipeout@gmail.com,
 	linux-rockchip@lists.infradead.org,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	kernel@collabora.com,
-	linux-kernel@vger.kernel.org,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: (subset) [PATCHv2 0/6] Convert HYM8563 RTC binding to YAML
-Date: Sun, 30 Oct 2022 21:08:17 +0100
-Message-Id: <166716040330.1678541.8752121289367549859.b4-ty@sntech.de>
+	Chris Morgan <macromorgan@hotmail.com>,
+	jagan@amarulasolutions.com,
+	frattaroli.nicolas@gmail.com,
+	krzysztof.kozlowski+dt@linaro.org,
+	michael.riesch@wolfvision.net
+Subject: Re: [PATCH 0/4] Add Anbernic RG353V and RG353VS
+Date: Sun, 30 Oct 2022 21:08:15 +0100
+Message-Id: <166716040323.1678541.11778892065439320693.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221024165549.74574-1-sebastian.reichel@collabora.com>
-References: <20221024165549.74574-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20221028184045.13113-1-macroalpha82@gmail.com>
+References: <20221028184045.13113-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221030_130827_455440_CF4F0774 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221030_130828_470059_7DD55088 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,28 +68,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 24 Oct 2022 18:55:43 +0200, Sebastian Reichel wrote:
-> This converts HYM8563 binding to YAML and fixes
-> the existing DTs.
+On Fri, 28 Oct 2022 13:40:41 -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Changes since PATCHv1:
->  * https://lore.kernel.org/all/20221021170605.85163-1-sebastian.reichel@collabora.com/
->  * Added patches fixing the existing devicetrees (Rob Herring)
->  * Dual licensed the binding (Krzysztof Kozlowski)
->  * Added maxItems for clock-output-names (Krzysztof Kozlowski)
+> Add support for the Anbernic RG353V and RG353VS handheld gaming
+> consoles. These devices are extremely similar to the existing
+> Anbernic RG353P.
+> 
+> Add support for the battery of the existing RG353P and RG503 too
+> as part of this change, as to keep things compact we must first split
+> the 353p devicetree into attributes common to all 353 devices and
+> attributes that only exist for the 353P, 353V, and 353VS devices
+> (which includes a different battery in the V and VS).
 > 
 > [...]
 
 Applied, thanks!
 
-[1/6] arm64: dts: rockchip: fix node name for hym8563 rtc
-      commit: 67a9aeef44e42b1ac2becf5e61eae0880f48d9db
-[2/6] arm64: dts: rockchip: remove clock-frequency from rtc
-      commit: 2af5bbe32f50d196dd680478a889d12429b3e8cf
-[3/6] arm: dts: rockchip: fix node name for hym8563 rtc
-      commit: 17b57beafccb4569accbfc8c11390744cf59c021
-[4/6] arm: dts: rockchip: remove clock-frequency from rtc
-      commit: 6122f3be70d90a1b2a1188d8910256fc218376a9
+[1/4] dt-bindings: arm: rockchip: Add Anbernic RG353V and RG353VS
+      commit: e1cc1e712d85c10ad47a083186c222210dab5b23
+[2/4] arm64: dts: rockchip: add Anbernic RG353V and RG353VS
+      commit: 1e141cf127262150d053ed3f80d0d3c42de11c43
+[3/4] arm64: dts: rockchip: add rk817 chg to RG353P and RG503
+      commit: 22a91b7614132ce0651d0ddd6e0bcee119370840
+[4/4] arm64: dts: rockchip: add poll-interval to RGxx3 devices
+      commit: 60bd5ee7c8a855a7917fe41771b0e297912a7626
 
 Best regards,
 -- 
