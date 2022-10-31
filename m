@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9776BFA3741
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 15:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD30FA3743
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 15:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ctpQKN0QN3vkDJtDIg5vcy05uJTo3Cyti2W0H8Oadac=; b=1MR230EeOo398P
-	R6kZ+HwXDCqUqfDHWKdRhFHWrPlvZL7SQ4BIcTwQjohzaWIlR4aYLeCmBqmlUgagXiiKBuIlKOstj
-	yGoFYeUABkQnGCQ8dJxC4o4NKdlUIxJWoyAkZtEmNHgrpeLTjDM1iWB3tGUmzK2lNjuHGlAiTytol
-	1OLrToTQE/Zk5jnESUuh8l5DSfRl59IaFeW8F8RgR7QTySgGG1MJFFUtOuLgxkxYWaHcJUUZeAapG
-	rHauauAlMaIGJKwf401JOb3fOk17c1MZnFLdzpaa0muzWcsrmH/5L0guM1UOtEPBDPPI4ASsSkf6/
-	Sxblcsx/InHqwTtFmi4Q==;
+	List-Owner; bh=Ajg9mhCSMkdGzb27rhcxhWAojNyRJ7he47r6hT1suLI=; b=ZDr/447ZW+7rgr
+	Hl8WpBZgShZzed/hUgMni7kVFFj9EzHJrgkg2ew2hT/1xDpisFdCMpg2g03CQiwVtPZ+An9scMbwY
+	uswx/1Fdv4le2HyvjUD9Mdp5nnVw444hTIytrT3RkkP0hVxh336PMN4rKN36RranrtiPRTSAw6Ga3
+	prYnaymkyeDyFr505StP2WaBhbTp5G7/c17dIWSZSGTyC2gVGUTmimFpZCgCqg7MG5RdlGk9n8V88
+	lJD7YBICbubIZJy4XQpDm8iCxS6MwowRdyyb4bIE/m8LsFweJkkBKCcNzq1wdJz6HSxBU7FKU+w6A
+	ZKhJZm7zdwWS+AWvD48A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWuh-00CgI2-AP; Mon, 31 Oct 2022 15:41:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1opWvj-00Cgwe-BM; Mon, 31 Oct 2022 15:42:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWtR-00Cffa-Go; Mon, 31 Oct 2022 15:40:07 +0000
+	id 1opWtT-00Cfgp-Fw; Mon, 31 Oct 2022 15:40:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9CAFA612E7;
-	Mon, 31 Oct 2022 15:40:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACD48C433D6;
-	Mon, 31 Oct 2022 15:40:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D7AF4612E4;
+	Mon, 31 Oct 2022 15:40:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89B1FC43141;
+	Mon, 31 Oct 2022 15:40:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667230804;
-	bh=Ry1yPEx/VrNVXc5mpZkvv9i5ZTht3Zoh5muiCVNjxzA=;
+	s=k20201202; t=1667230805;
+	bh=d2qwTVjIOLKmzm2jp8sYlOBb+EYG7A7QejDW//F0bVw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oy/IOnLMkbQ7kxnquoU/2edARkafOXHPiIJq2OqrpQkGiZgvJexhCdpjG37prwLLg
-	 NDs1zg8tIRJwDr4H2monx6M6P8WUjH2T7eQqaJdK09Xcd2VfnZuWzcImqEgbPl1epE
-	 wtcqpp0KKL8gbtORGYeoBMBfhHw3ZZyLXzvEEPVY8v8P1GgOvMBS+UX3sP9ySSwaLm
-	 NsOrv2PW/Mhv9f+24QK03QLBoS7u+WNhKL9A5ps0SHLGjArc22j4hUnA4LCWzgwVhf
-	 yKkEneeNNyULguuHRvrB6p0UvlVwEimpyZJT6DK5dETWRXrdNtSTaeacaQ/l6qRItH
-	 2vzfLen3Rxu9g==
+	b=Xx6ewcqT8jUXOJmJKlk1a/DS5oUrpS9k0H8XxYkycnfRz8fZSVPkuLBscXAB6uZg8
+	 COdRhuwSrkmb8zeVOEMlaypMNnmwUDmU6YRlvwNthETWisXBy7kX/ho+YYwTFDG6By
+	 klqgObmuRyn0Whg0qtZEvlTetbtwEXLN2RjoSduTg1ztMtxgTac5FIytRQY8iaAyrO
+	 sr44zA32UrGTNx52JUtpzrzYsm6g8Si2Tpn9MbVxC7DSvVwyY2VuC2/QGk0DQzSdVi
+	 GbIMiHBI7VYixt1UzYD8L9MX7/zn4TXWByLI5sPpKRoVF7iGkuyAgY0pDH9ciKX+HG
+	 npICMhPsu3P9w==
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>
 Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -74,16 +74,16 @@ Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-riscv@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v3 2/5] PCI: microchip: Include <linux/irqdomain.h> explicitly
-Date: Mon, 31 Oct 2022 10:39:51 -0500
-Message-Id: <20221031153954.1163623-3-helgaas@kernel.org>
+Subject: [PATCH v3 3/5] PCI: mvebu: Include <linux/irqdomain.h> explicitly
+Date: Mon, 31 Oct 2022 10:39:52 -0500
+Message-Id: <20221031153954.1163623-4-helgaas@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221031153954.1163623-1-helgaas@kernel.org>
 References: <20221031153954.1163623-1-helgaas@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_084005_628503_22953B9E 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20221031_084007_627875_3E189623 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,32 +102,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bjorn Helgaas <bhelgaas@google.com>
 
-pcie-microchip-host.c uses irq_domain_add_linear() and related interfaces,
-so it needs <linux/irqdomain.h> but doesn't include it directly; it relies
-on the fact that <linux/of_irq.h> includes it.
+pci-mvebu.c uses irq_domain_add_linear() and related interfaces but relies
+on <linux/irqdomain.h> but doesn't include it directly; it relies on the
+fact that <linux/of_irq.h> includes it.
 
-But pcie-microchip-host.c *doesn't* need <linux/of_irq.h> itself.  Include
-<linux/irqdomain.h> directly to remove this implicit dependency so a future
-patch can drop <linux/of_irq.h>.
+Include <linux/irqdomain.h> directly to remove this implicit dependency.
 
 Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 ---
- drivers/pci/controller/pcie-microchip-host.c | 1 +
+ drivers/pci/controller/pci-mvebu.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/controller/pcie-microchip-host.c b/drivers/pci/controller/pcie-microchip-host.c
-index 7263d175b5ad..57b2a62f52c8 100644
---- a/drivers/pci/controller/pcie-microchip-host.c
-+++ b/drivers/pci/controller/pcie-microchip-host.c
-@@ -9,6 +9,7 @@
- 
- #include <linux/clk.h>
- #include <linux/irqchip/chained_irq.h>
+diff --git a/drivers/pci/controller/pci-mvebu.c b/drivers/pci/controller/pci-mvebu.c
+index 1ced73726a26..73db99035c2b 100644
+--- a/drivers/pci/controller/pci-mvebu.c
++++ b/drivers/pci/controller/pci-mvebu.c
+@@ -13,6 +13,7 @@
+ #include <linux/delay.h>
+ #include <linux/gpio.h>
+ #include <linux/init.h>
 +#include <linux/irqdomain.h>
- #include <linux/module.h>
- #include <linux/msi.h>
- #include <linux/of_address.h>
+ #include <linux/mbus.h>
+ #include <linux/slab.h>
+ #include <linux/platform_device.h>
 -- 
 2.25.1
 
