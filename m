@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 199D0FA3742
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 12:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ABF7FA3740
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 12:00:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bncajgpGLy3loiI04+dLhuwvVlp8YJvSu2HIYw52vD8=; b=0Ra4C9bHxyW5JK
-	lKO0Irq/dAFmFcvMg6KZCgVW/UkZSo5hppQcD9QoCkP0H9aPuhhkqT+Q7UUfNb7CM1wnnWjvXyC3u
-	S8dKdkiBi1X5U2qC+wABJulQlvdfbQJIu+xq3yngqzb0ER2VNQVUriyxBYFoZfBEqQfbOHpywJC2f
-	F0Ahh/IExw6d+gzpBWndOxcjtiZI0WzjpdvDdOUvqEnHPA9000jhr9wliUibFYP/fwJU2xh8eL0Tk
-	cHs+fda9MDfkwwqo+0L02HakOWZUCZm203KcPXVR/Dg4BVqFdXHjsPS5/KRIH6Bys9454BiTFHigm
-	LzqXO7hjT6pEo1m/rv4Q==;
+	List-Owner; bh=9a9ZWKlIJ/FZzJB+X1g2SOCHF6RbnFIp/0W39WNeFeE=; b=nfyrA5PPaWnyzD
+	D9Kfa3+T6504KcIGRrUEDHBswL8DTHb7ADR33rqi5TC12rgdkvbqyI7OEeWP80OuM8jVk1dATtmNI
+	nx/K6ohdYSe9rITEgnDQzCosbaxgbHmb6t//oXwDCMCww6UPaa0xSH8toqqhfabv1JXNN+Kic81qy
+	1tP6zIZ41sqnebPHZg/YsZ06DqOvFvUzvc/AnP5rGMIMxV+lpanERV6R16hsnpO+jRF45pHgWamXm
+	5yasONKhdXiFpXfwo/tXj85CyX00LZdJHfmTtRZp+NuK5cO+Q0mykRJ7XW7A/5mYMhTEh4rbgO2uj
+	PnX70sc9CXPnmqxqqPgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opTT8-00BVY9-Er; Mon, 31 Oct 2022 12:00:42 +0000
+	id 1opTT5-00BVWZ-En; Mon, 31 Oct 2022 12:00:39 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opTSt-00BVQb-6X
-	for linux-rockchip@lists.infradead.org; Mon, 31 Oct 2022 12:00:28 +0000
+	id 1opTSr-00BVPd-FM
+	for linux-rockchip@lists.infradead.org; Mon, 31 Oct 2022 12:00:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667217626;
+	s=mimecast20190719; t=1667217624;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HRPxwW2zKPepuA8PR9mUAwCAVRj8pp1PiT5CedYG760=;
-	b=A81TQWzRANSt9UBXkN6GWZECwAj2+GPLXn6gdwd5irFl8gEo3FGTWQ0tGgzwhMkxQ2lwHk
-	9EJ9dIXq62KH3h5oOwgKZ83yltwQfjYnOnaHOR1ePZXUP1C+hxUKtaADOJgdSnV4tlZcO1
-	vZWbNYGFj0c0lpX1hv6hD75EP2wEoSM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=NYUZwRg+lRYohe3+hrEekpmCQsb4LiBLuZ4BzJljYVc=;
+	b=VaH9J0/QiN2/JezPArWmLVSPUUYQw0GQAw8zLFwtOnNsFSgEg/QRLlS0XQfO3Yz/peKC5Z
+	xmWCXWOmrj2gwls0NkmEbbp+NwnOefs5TO3wpt3+DncJUzOQYd408SujgSTwxycg0TNS/h
+	AkPSDR1hENKdZkXFQ00njz64KdFaTRc=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-610-ht9-zqDiOLKiKJCXjVTzwQ-1; Mon, 31 Oct 2022 08:00:25 -0400
-X-MC-Unique: ht9-zqDiOLKiKJCXjVTzwQ-1
-Received: by mail-wm1-f70.google.com with SMTP id d13-20020a05600c34cd00b003ce1f62ac5aso8253937wmq.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Oct 2022 05:00:24 -0700 (PDT)
+ us-mta-608-w9H_scJ0O9i8LfaP4qrjzw-1; Mon, 31 Oct 2022 07:58:52 -0400
+X-MC-Unique: w9H_scJ0O9i8LfaP4qrjzw-1
+Received: by mail-wm1-f69.google.com with SMTP id i7-20020a1c3b07000000b003c5e6b44ebaso3360286wma.9
+        for <linux-rockchip@lists.infradead.org>; Mon, 31 Oct 2022 04:58:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HRPxwW2zKPepuA8PR9mUAwCAVRj8pp1PiT5CedYG760=;
-        b=5p7vNrq5mD/E+mQXhCrp7o9YijpWTCpniKUnUFvKb0UKySJD+AeZ/XxxKJh1P4fC1w
-         5bz+UaV6q6JnUnAFrMrEA8uBplc+WnZSScOJdVXRKOBMEzRXjSOY/H8EQfaQ0isEFU2r
-         5e11chOot69jgtzO1GFV/7zgnnqeDgZSMiZFePtiv4+fA1XCHgT6OkQpojAsBby7xk18
-         3lYr3iXlHWt73phIzQkTEJ8ZGe5uSAnc27afIjeZ8HhQidWGZVeMShl6QjnKFI+ZKj6N
-         d1+BupZIh4Tw6VkcRl1AGACzP8NEslwhduLxCROeF2x2/HNBY3hqrnVpXWQvZjTbpsZ1
-         IOkw==
-X-Gm-Message-State: ACrzQf0JWdhW15WDyL7xENwGTCt1WLhmTMesBNgEsurq3bpT2dQQSVJ6
-	H9g68IfZQR0XcPBYVS6QTRvAXXLWRd9hoZI7/BsscAll4mKZ9x2LHc2JHcYoLx8DaT7aX4wg1aX
-	/HyYS2NPe48yI3WACVhcvLuQH6vgZq4Kt
-X-Received: by 2002:a5d:560e:0:b0:236:c325:4858 with SMTP id l14-20020a5d560e000000b00236c3254858mr4606563wrv.259.1667217623935;
-        Mon, 31 Oct 2022 05:00:23 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7SGo+SId6me5X0r4rljOgpSC8TPNcKC+21wfNb2F4dclcZs6G1cIUREq2tk/ot5/dgyLJVEQ==
-X-Received: by 2002:a5d:560e:0:b0:236:c325:4858 with SMTP id l14-20020a5d560e000000b00236c3254858mr4606520wrv.259.1667217623655;
-        Mon, 31 Oct 2022 05:00:23 -0700 (PDT)
+        bh=NYUZwRg+lRYohe3+hrEekpmCQsb4LiBLuZ4BzJljYVc=;
+        b=jks9lyUE1NC51JnVF6RAxuNe+0MhxBRLpLRjuRi9CLGl0aMSstpDW3P2nN9R8F0C9n
+         dIi4i/SgvtBDL3HuiS8CDyKa6eL6++HuC8fPp5DAr8n87xf1NksUVGG0bznIwUwlaW0d
+         UXcHg7TGig4uXM3qKLzYqEUifyVgoUyYyiWw0gxUz2tFtxZNhdcsuJ8CZDY21tBpHWte
+         LPkjMVlAbQHUjG336cESkO6bdbGdjzC9kSb2B2HDcIxBhOHnq9qjj0J2fFh4rdjz48U+
+         y6jXAFvmOcROgwaCAaIuDRfIJdQL26GaYvVsUmcUME0SfXMeVlluiDbGyk93dXFeRF2Z
+         gN/Q==
+X-Gm-Message-State: ACrzQf1oo9R2Q4Oiiyx0/FM2rFA6v65nk2dCNOj+n2SF1ECI/F5Q/kz+
+	mfMrtS+Z0UsAXA8SXbldeb8EXGtcE0HSFJHWJyaX3rInm9EHE8DBhl81/B+fTMDSFNdYSPYPElS
+	YrKmcv6YLAmHfPZIU9j4qt67aMZ7nCfb8
+X-Received: by 2002:adf:ee46:0:b0:236:57e4:60d9 with SMTP id w6-20020adfee46000000b0023657e460d9mr7712421wro.208.1667217531297;
+        Mon, 31 Oct 2022 04:58:51 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5NlG/EcNgth7sygR/Y2wmF3YkVg5o1INpxQYpcg5X49eIhA0omsq50HY00GhqtS98H3T4hUQ==
+X-Received: by 2002:adf:ee46:0:b0:236:57e4:60d9 with SMTP id w6-20020adfee46000000b0023657e460d9mr7712386wro.208.1667217531117;
+        Mon, 31 Oct 2022 04:58:51 -0700 (PDT)
 Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id bi19-20020a05600c3d9300b003c6c1686b10sm5388458wmb.7.2022.10.31.05.00.21
+        by smtp.gmail.com with ESMTPSA id cc14-20020a5d5c0e000000b00228d67db06esm7103664wrb.21.2022.10.31.04.58.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Oct 2022 05:00:23 -0700 (PDT)
-Message-ID: <2e2e3915-a7b2-d030-2ffd-117b12deedb2@redhat.com>
-Date: Mon, 31 Oct 2022 13:00:21 +0100
+        Mon, 31 Oct 2022 04:58:50 -0700 (PDT)
+Message-ID: <365e1467-7dc2-42b4-b985-53323741dea8@redhat.com>
+Date: Mon, 31 Oct 2022 12:58:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 03/21] drm/vboxvideo: Don't set struct
+Subject: Re: [PATCH v2 01/21] drm/komeda: Don't set struct
  drm_driver.lastclose
 To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
  airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
@@ -89,14 +89,14 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
 References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-4-tzimmermann@suse.de>
+ <20221024111953.24307-2-tzimmermann@suse.de>
 From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221024111953.24307-4-tzimmermann@suse.de>
+In-Reply-To: <20221024111953.24307-2-tzimmermann@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_050027_343653_F90BDC0E 
+X-CRM114-CacheID: sfid-20221031_050025_602325_1C9454C4 
 X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -117,7 +117,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On 10/24/22 13:19, Thomas Zimmermann wrote:
 > Don't set struct drm_driver.lastclose. It's used to restore the
-> fbdev console. But as vboxvideo uses generic fbdev emulation, the
+> fbdev console. But as komeda uses generic fbdev emulation, the
 > console is being restored by the DRM client helpers already. See
 > the call to drm_client_dev_restore() in drm_lastclose().
 > 
