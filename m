@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE22FA3740
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 12:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F2FDC38A02
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Oct 2022 12:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=29YRFa4q51qdPpTOjXfFHyXVvBIZikQgqzc0rPqG/RM=; b=M5+3TocrOnHh05
-	ip6VOcQ+pwIn8sXGaD9YZgbNwPvLllt50BBj/IX3wFyGTCjKOQ+cFGGzPOuMG+EhmqcK9IFHKvQv3
-	//BipS0y3TbvRXTu0+s4eyWc7eSLXXn+FDLq9K2RYKMgvrcdnjWKFkeIVT6NOGoawZtMWt5UPK077
-	8yMwVRA7fa3AY133y0m6WWL5pKtcXs4OClUOco1NB0v2GgXirZoOYsPUzUPOnr1Adgis9CGDWd4Hf
-	YGFbt2Eez5tOBHfkR/FW41SXov47b/TnfEEGhWQl6VjwPOOd54BLenCTVaQSVL36TPTy64lpc75q5
-	NG+7QQDmFcsCRZSVe+YA==;
+	List-Owner; bh=Qc+lF9JtI8bGLZCnADyt9np5c4BdxJylMqChDY6HmpM=; b=wD4W2YFo3iejIc
+	sOkQPvxynX3qLRbNstWk+sOx+Vu/faYHXBHfTy215QtfuVGIRT+CedoDmsEPvTMy8lP8L1h1427wp
+	npEd4o7P4FBcmX8poDqXU+1z23v4/KxPiAjIwrWTxNilGAgZxNn04L2R8rdgkTpVAh2cPD7bfeCr2
+	KuwSu+t1oNMXvJByCeMJuThnreoEV2wBRdwu1uTiX37Ug8lO0Vd+Wn3Ogz68oQb5bQ+r7fEc8yV3V
+	8Aed9JRkJpWoXA1vuKxefdLHiKCVhQpBLPpfEF3TOKPIl06dO7rtMp7HVcUlMuCP/pfKNxFIhCGAK
+	UezCqwofdwq/g7CEt5/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opTiQ-00BZSJ-4X; Mon, 31 Oct 2022 12:16:30 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1opTjP-00Ba7n-0S; Mon, 31 Oct 2022 12:17:31 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opTiE-00BZPJ-VN
-	for linux-rockchip@lists.infradead.org; Mon, 31 Oct 2022 12:16:21 +0000
+	id 1opTj8-00BZuy-TL
+	for linux-rockchip@lists.infradead.org; Mon, 31 Oct 2022 12:17:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667218577;
+	s=mimecast20190719; t=1667218634;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=WlC4H0gmckJZ8E/tDGtmzwjQN3hfnWY+OkvhUHpUiTc=;
-	b=SzxIp3KH1MJqCBUG1OdZLDtnmNr9ze9qCNca0D8W7lQRRd7ZxIpp/bc+uAAaPM2RO0+6dP
-	gKIwcXSPzSp6YmttVdvmmB32i8J1A4MuFA+0Vaz6QSGVxi4OOhikTdPAddVDg4EK0Msryg
-	sHj/vUsp15Qd6j9vD3TLgzuO/uTAz80=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=Z23uByta1RO7RusYzzGag4IvKSimSY8jEax7dgozF+A=;
+	b=Wki74xth3H3FhtyZk5sw0JKwEJrGPqm+zyACffzefkZHAiSGgT4iGn63PZb3kPY9UMKBON
+	z7+WMtfvUSSscZoRXf0zOb1J5bll/lSFE4Q+QQwK7Xg/OPoxGkK5j7c6gQaqgQKrstfh9F
+	vTkdl9DNydx66Sx+fMIogrHWEdJwAmM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-163-Gz2NPrJnMFSboSA5UfwXXQ-1; Mon, 31 Oct 2022 08:16:16 -0400
-X-MC-Unique: Gz2NPrJnMFSboSA5UfwXXQ-1
-Received: by mail-wm1-f69.google.com with SMTP id p9-20020a1c7409000000b003cf670dad6eso679807wmc.7
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Oct 2022 05:16:16 -0700 (PDT)
+ us-mta-208-iCoWOwXhMqGyl0wSIj0Jyg-1; Mon, 31 Oct 2022 08:17:10 -0400
+X-MC-Unique: iCoWOwXhMqGyl0wSIj0Jyg-1
+Received: by mail-wr1-f70.google.com with SMTP id s11-20020adfbc0b000000b0023659af24a8so3007735wrg.14
+        for <linux-rockchip@lists.infradead.org>; Mon, 31 Oct 2022 05:17:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WlC4H0gmckJZ8E/tDGtmzwjQN3hfnWY+OkvhUHpUiTc=;
-        b=Xnsag5ZvBppwH/q/ScF60GlSuPK7U7N5OZ8P1yUC9bHnNfwaFDLm3tYpKTDcPEunf4
-         jJUHdpL90P30VkxPsghp09RUR0LWixTYzqTTqF8W/5RXLjkbjCVXclPxDUfw1t1d/LSm
-         5RTToYVFRc/SYzgcclW+BiTPZsZlpnvh1ElE817A1I+yVXRlK3yeSr0PxTp2fQSTqCu1
-         veGxbvNXlu2bpNezuOOUumeMfSRsmBfJeBb3tGuftXMqJwxosIg2ridYB51X24M11npa
-         4HINPjfpYzmXkUhcF5Vdbm61cg65O0pZ+qQAgDrF446mKaHigUfa5Ur+Q6KBsnH8g53f
-         bn2g==
-X-Gm-Message-State: ACrzQf1aTkA2OKOa70tPse5a7aG/lPEYTLu6l0h30f6iPZ//OZtNmyFF
-	roaJdT3hKg4jKKnxQc1kAvic1q9NAGpFndV4g2v/UnRBZTbjf+myv1SzL3e/DYIwKqv9LYRxGqi
-	T7+IdJYCYdZl0o+2x5xYwheY3mslbyIWC
-X-Received: by 2002:a05:600c:1c0d:b0:3cf:5fd2:1fd1 with SMTP id j13-20020a05600c1c0d00b003cf5fd21fd1mr10268845wms.8.1667218575313;
-        Mon, 31 Oct 2022 05:16:15 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7vtgF5OcVzyyhJbAVQv0UtjhNq0IgAK2jPkGsnoYeZKQ/ZE7IsMKsB/emo+io4u+dLlmSgSQ==
-X-Received: by 2002:a05:600c:1c0d:b0:3cf:5fd2:1fd1 with SMTP id j13-20020a05600c1c0d00b003cf5fd21fd1mr10268814wms.8.1667218575124;
-        Mon, 31 Oct 2022 05:16:15 -0700 (PDT)
+        bh=Z23uByta1RO7RusYzzGag4IvKSimSY8jEax7dgozF+A=;
+        b=GnzPVnk+IFl4GQ+n73WGpsSPwyemwmorrH+PNGNPDS4+b88aBsxLQLbQCoo3ZDnQlV
+         Xjbx+9oG1/EU4OM3O/OZhpmkpQqKQS++BDLwZ0GBENLZQY5C9FqTWzkhyqRn6uwo0793
+         4SzSMozsK95u0sBmuF0jSzgrtMhf3RvyL6CQbZ8N1zbx2dH7s1JzxpWtKNHoTAT6cFeQ
+         HE7HXdbR7bS22xY/NgTaLysJaOmaCrbTg+lk4nO3wH/fGqipuazQMEAHXV8R2gkoilY1
+         Qi+dM5GcGx+QvoDCM9lBUrYV/Kr7rEq6NRm1Kdn6jEHdxvBdJpbPUiZARnhwMnuccpk2
+         UiTw==
+X-Gm-Message-State: ACrzQf23U2VCgopdC5OZHKrEXtEEBw8JE+C1EoMVhWKipf6lEHmwOPS5
+	whh9bpKKVtDpgY6uFB6EywP4v+EzGclh7ZcHEfkS5gj2bU9EeGKTSGx+4TIaur56SxBLnCbbaKX
+	ThKP5f6LogFtg34ZgFoJjdgY+dpweCdQD
+X-Received: by 2002:a5d:6da2:0:b0:236:7916:a9b2 with SMTP id u2-20020a5d6da2000000b002367916a9b2mr7921517wrs.393.1667218629384;
+        Mon, 31 Oct 2022 05:17:09 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM67BGVEVFx5kckaS0oDiow+E3wYJXdivRHIvOOROl9hHnAsaKyVcMk8ZYE1a2HK4LSTJkXvEg==
+X-Received: by 2002:a5d:6da2:0:b0:236:7916:a9b2 with SMTP id u2-20020a5d6da2000000b002367916a9b2mr7921473wrs.393.1667218629159;
+        Mon, 31 Oct 2022 05:17:09 -0700 (PDT)
 Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id d2-20020a05600c34c200b003b3365b38f9sm7118010wmq.10.2022.10.31.05.16.13
+        by smtp.gmail.com with ESMTPSA id cc6-20020a5d5c06000000b002364835caacsm7133274wrb.112.2022.10.31.05.17.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Oct 2022 05:16:14 -0700 (PDT)
-Message-ID: <8423bcd3-84f6-b6c9-914a-c70166e20482@redhat.com>
-Date: Mon, 31 Oct 2022 13:16:13 +0100
+        Mon, 31 Oct 2022 05:17:08 -0700 (PDT)
+Message-ID: <efe0c7bd-0b14-b829-cc41-fda316952a51@redhat.com>
+Date: Mon, 31 Oct 2022 13:17:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 05/21] drm/imx/dcss: Don't set struct
+Subject: Re: [PATCH v2 06/21] drm/ingenic: Don't set struct
  drm_driver.output_poll_changed
 To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
  airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
@@ -89,15 +89,15 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
 References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-6-tzimmermann@suse.de>
+ <20221024111953.24307-7-tzimmermann@suse.de>
 From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221024111953.24307-6-tzimmermann@suse.de>
+In-Reply-To: <20221024111953.24307-7-tzimmermann@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_051619_112514_3A06EB2F 
-X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-CacheID: sfid-20221031_051715_035836_D8DF29E1 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,13 +117,13 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On 10/24/22 13:19, Thomas Zimmermann wrote:
 > Don't set struct drm_driver.output_poll_changed. It's used to restore
-> the fbdev console. But as DCSS uses generic fbdev emulation, the
+> the fbdev console. But as ingenic uses generic fbdev emulation, the
 > console is being restored by the DRM client helpers already. See the
 > functions drm_kms_helper_hotplug_event() and
 > drm_kms_helper_connector_hotplug_event() in drm_probe_helper.c.
 > 
 > v2:
-> 	* fix commit description (Christian)
+> 	* fix commit description (Christian, Sergey)
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > ---
