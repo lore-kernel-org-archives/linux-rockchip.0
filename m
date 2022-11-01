@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9601C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 11:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3615DFA373D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 11:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sGNKOEw9mPoGDn+CKagEL+lLCk6HxJwEXClMvkltRFw=; b=N53pfTAp+v/8eF
-	PFXiGSSnodHb4mF1xyDjT8DutE8bhGFgfvp6yuptKuDXw9qNQfV926auMefeNU+6xObiMU3mJeeFH
-	/Izxm4lsfrXTLl2QMgISGqNp1tkTc5DMKW0JiPWzFv12dHpyP9x/iEKIV1S2P98qhEpOzEPKIhamD
-	0GCw34X7Xka97VBQAMmyhxdR+24fqTxSi+0KIsnf9jIDKA2WfQ8ztlihpyi89ynVGEe2q3ZK8jSXs
-	s0n4EtBXCg6vxygg6SVTLiMP18J6f0Pga9yt0KxwOS+MQiyaYtRnt6OYQWu+3yM24OY0x0Gat+zG2
-	FQI+mM9apCG8YWYJKdWA==;
+	List-Owner; bh=1hEPomqnFWVVuz+bXd5UWjm8owiIDEHNu3ArAt1Bdc0=; b=B3HJOj7wPaWUNM
+	r4fg/K0jL7yyvvVwd2evxyLYPoyUx189UJH0hIgyhJizqVKYW0TCeO1vSpnn9k7vUTKBppiZg0rJ+
+	FTKWlkb0kALPWdsWL03R3XY0TOrr1iJ5F3AXZNRH4xgIJ72qcJzrgjwibMuDO3UaFg1uqfKBf0ker
+	w35cHG/3bN0NjfKVH87871LugXCOZ7fOEnJaWntiN0ZUfyB2Zg+ghj2Qse2fH+rPNhuIQf4F1+HuO
+	QPSJBGV7PCpWUkwsxuLnbUioaLLcED7haHo3CuH5zUonsbga89VK49r0RLc45TvEA8kyXoc55TPUg
+	xstDNIw1zUsG/bGOWc6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppUt-004dQH-Ti; Tue, 01 Nov 2022 11:32:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oppVd-004dop-54; Tue, 01 Nov 2022 11:32:45 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppSQ-004bly-BX; Tue, 01 Nov 2022 11:29:28 +0000
+	id 1oppST-004boj-Kt; Tue, 01 Nov 2022 11:29:31 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E8352615D4;
+	by ams.source.kernel.org (Postfix) with ESMTPS id 31F5CB81C9C;
+	Tue,  1 Nov 2022 11:29:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5AEAC433D6;
 	Tue,  1 Nov 2022 11:29:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5269EC433C1;
-	Tue,  1 Nov 2022 11:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667302165;
-	bh=/fc3IxWnlL9ryUX+Xrm9lW41E1+fW8R8qfEU7/6uRn8=;
+	s=k20201202; t=1667302166;
+	bh=CmSRNfBV86EsQV9BETmdAkbeneeSLp94EZfRDV42lKU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pcSZq6dSXHqatwBFbCe6NUIYSuetreI0jsxcuUJqd2E04S8Dq+iHWcVwZJcv/hAqo
-	 WnnkY2ZYbAi0Ms0wQG4MsEQojIwN93cAiDjf55JbL7zml7nP88GoMJX3APcYh89Mzk
-	 /wTmVNwMxJiZlFLyy9O6rHXo8mrK40Kx8GpVcy+xom6rMvKXZ2nwS28GWnXpdDnHft
-	 GW2SLvg5629E5XpY2wIECQwFr73dxYxy/rEQddJSYzjCYtgSypF5ER53K6j/4orkiC
-	 X6hfWfZm6soJhbr+oMx9yx5XQd+o0wtMKRo30/zePVNGZ4XAy+Z4pij7aP6a3lqhpz
-	 D6tPJCPorq68g==
+	b=F1D5z5E8G7SSrzEFyWUloZ81k+SODXUKWJT+vxSetplN1MCsEosI1eG716Skw4dv+
+	 PYGeD/JDbqKtKSSpSPQ4Wrr3RzRjVzYzoZdWZMRIqeS+lX9oMcoRnhioeWAsooPqkt
+	 cNdf2toDnPMWZTRW15qNymMsl07KvgbrcpvBYSMEhYPFDAzhpP91cEIB9saVPfLh33
+	 Zk9bvfbdxwt138ZVnahy13HNPoX8FdEOTnGhDEl2qzJRmlwJTquAUgmOtQHOJnnxtg
+	 ze1NbJBsxc41iCkm9D7hck7BOeZMpQSOHDEN4AYNEaqbUSdgl9PDklpCKAXM0qaoDg
+	 1XhP8rNEZRolQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
@@ -52,9 +53,9 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 03/19] media: rkisp1: Use correct macro for gradient registers
-Date: Tue,  1 Nov 2022 07:29:03 -0400
-Message-Id: <20221101112919.799868-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 04/19] media: rkisp1: Zero v4l2_subdev_format fields in when validating links
+Date: Tue,  1 Nov 2022 07:29:04 -0400
+Message-Id: <20221101112919.799868-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221101112919.799868-1-sashal@kernel.org>
 References: <20221101112919.799868-1-sashal@kernel.org>
@@ -62,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_042926_506150_0CF77D0D 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20221101_042929_873254_BB04FB35 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,61 +83,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-[ Upstream commit 4c3501f13e8e60f6e7e7308c77ac4404e1007c18 ]
+[ Upstream commit c53e3a049f35978a150526671587fd46b1ae7ca1 ]
 
-The rkisp1_lsc_config() function incorrectly uses the
-RKISP1_CIF_ISP_LSC_SECT_SIZE() macro for the gradient registers. Replace
-it with the correct macro, and rename it from
-RKISP1_CIF_ISP_LSC_GRAD_SIZE() to RKISP1_CIF_ISP_LSC_SECT_GRAD() as the
-corresponding registers store the gradients for each sector, not a size.
-This doesn't cause any functional change as the two macros are defined
-identically (the size and gradient registers store fields in the same
-number of bits at the same positions).
+The local sd_fmt variable in rkisp1_capture_link_validate() has
+uninitialized fields, which causes random failures when calling the
+subdev .get_fmt() operation. Fix it by initializing the variable when
+declaring it, which zeros all other fields.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 4 ++--
- drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index 8461e88c1288..e0e7d0b4ea04 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -275,7 +275,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
- 			     RKISP1_CIF_ISP_LSC_XSIZE_01 + i * 4);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 41988eb0ec0a..0f980f68058c 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1270,11 +1270,12 @@ static int rkisp1_capture_link_validate(struct media_link *link)
+ 	struct rkisp1_capture *cap = video_get_drvdata(vdev);
+ 	const struct rkisp1_capture_fmt_cfg *fmt =
+ 		rkisp1_find_fmt_cfg(cap, cap->pix.fmt.pixelformat);
+-	struct v4l2_subdev_format sd_fmt;
++	struct v4l2_subdev_format sd_fmt = {
++		.which = V4L2_SUBDEV_FORMAT_ACTIVE,
++		.pad = link->source->index,
++	};
+ 	int ret;
  
- 		/* program x grad tables */
--		data = RKISP1_CIF_ISP_LSC_SECT_SIZE(arg->x_grad_tbl[i * 2],
-+		data = RKISP1_CIF_ISP_LSC_SECT_GRAD(arg->x_grad_tbl[i * 2],
- 						    arg->x_grad_tbl[i * 2 + 1]);
- 		rkisp1_write(params->rkisp1, data,
- 			     RKISP1_CIF_ISP_LSC_XGRAD_01 + i * 4);
-@@ -287,7 +287,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
- 			     RKISP1_CIF_ISP_LSC_YSIZE_01 + i * 4);
- 
- 		/* program y grad tables */
--		data = RKISP1_CIF_ISP_LSC_SECT_SIZE(arg->y_grad_tbl[i * 2],
-+		data = RKISP1_CIF_ISP_LSC_SECT_GRAD(arg->y_grad_tbl[i * 2],
- 						    arg->y_grad_tbl[i * 2 + 1]);
- 		rkisp1_write(params->rkisp1, data,
- 			     RKISP1_CIF_ISP_LSC_YGRAD_01 + i * 4);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-index fa33080f51db..f584ccfe0286 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-@@ -480,7 +480,7 @@
- 	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 12))
- #define RKISP1_CIF_ISP_LSC_SECT_SIZE(v0, v1)      \
- 	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 16))
--#define RKISP1_CIF_ISP_LSC_GRAD_SIZE(v0, v1)      \
-+#define RKISP1_CIF_ISP_LSC_SECT_GRAD(v0, v1)      \
- 	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 16))
- 
- /* LSC: ISP_LSC_TABLE_SEL */
+-	sd_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
+-	sd_fmt.pad = link->source->index;
+ 	ret = v4l2_subdev_call(sd, pad, get_fmt, NULL, &sd_fmt);
+ 	if (ret)
+ 		return ret;
 -- 
 2.35.1
 
