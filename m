@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E8ACFA3743
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 11:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80DEBFA3745
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 11:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d4cQE/UcUjNcrSqeu5PLMyLNd4KYiePwMBKXD9fwQ24=; b=QjtwD/VWghP+BS
-	6M3WEYtl01jXcFBP4BMZ8RdKAxDYTuwRHzeAJUBW8mgOOB9nkUECC02UBbrtTAKeX1usk/1lWayg5
-	YuLmMBvr515WmJQi6BsmBVm4oOQHJEgnLDbK6q6BajK9NcM9VTG+REFkyQk7j52o1pDUiWyIchY4O
-	+idn7CrOdqOL6ZS/3cbDzX7g5AENIvTXmr3pXEWNN0JKql/tpLorKu9pn5ZYckg3fdC3n9IJghQx2
-	KKS6u94zysog6TSwNsWPQfi4tgkx8ivhUG169QPfaQvCDkyz5IHpFAV/7fZhxQHcyj2XRr8NVP4fJ
-	ZtQQmZQXBtPD2QOO1c8A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SIQg+WBC6VA9eFNDoodblRZW4U/mKgH6hrs/VvCVw74=; b=i6LeeepJGSIC53
+	BnvnlqthWS6M5xq/ZNEgckjSvD2ZUVmNRSIJkUSal5SyRoPDb/MrdrzitEX4FGNqkl3J8yOtPF7ph
+	S+umBLQD1faSvH1WL0S0jYpwpESfyVmt/1JiAkTtdAtAh14JGlSQYL05YjzuK1WwPhvO3YKOFPFI6
+	2Qa4Ij+/GjL1m99VbwURrJRcK5qI6gOLfhwvJXFGiXtXWpGxrM0eqyNpwbnuzsJ2mpaFQj4qGrt5B
+	gxwRFqugmn44wgmPvT/+RZ14mCxrU/hBa4yNTpxGHBQbQpk1sjnhhiA4fVmmQz2cIdk2JEQG+vicg
+	wnDkZSQ14WCPOg18JFOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppS0-004bPW-Qo; Tue, 01 Nov 2022 11:29:00 +0000
+	id 1oppU6-004cre-Sh; Tue, 01 Nov 2022 11:31:10 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppQx-004ag3-ML
-	for linux-rockchip@lists.infradead.org; Tue, 01 Nov 2022 11:27:57 +0000
+	id 1oppSN-004bjl-QX; Tue, 01 Nov 2022 11:29:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 42A58615E2;
-	Tue,  1 Nov 2022 11:27:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B69A4C433D7;
-	Tue,  1 Nov 2022 11:27:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 51465615C9;
+	Tue,  1 Nov 2022 11:29:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B7C1C433D7;
+	Tue,  1 Nov 2022 11:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667302075;
-	bh=b+tOwlQfc42Ncz47RnuqxCIhFUSWfgZuPWXMdk9EOzI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=K8x6Te07yn+54I5W0CN7L52abTQvozAySpzSqJWCCyrbdx9hSkS3WsCNFX40WRBHj
-	 oNGgvsM/sanzknXwr0/ndG6RQzc+eHi/PcR/wc1ZrTEQrDbgTw1gcscrNl7PzHxsEB
-	 a0iS2FTngGkEfLNW3NGUrgXTJ0DMH1fz2PQUS9OdUr+cFAW7YIfc1JxeW80XfykH8u
-	 GzHw2kra/efqXtS8Ab1vKP2fxtiffjS6wgvZ38fArJ3XF/gUvhAT9csnMWXJTaEkdX
-	 SwJE2kLfV0FbI21/Nd1diYDw4KlIXHVj/SvNzdBOcd6TKfCuTH8DBT7kyF40x1MLRR
-	 6uRFCXcTyY6rQ==
+	s=k20201202; t=1667302162;
+	bh=Vmo3ZHg1pN7KwuHV1CJhSuXf8BQVVmcDqJbW4/gHbJg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=j+T/niV3QDtRdccCSwCxbIMAL3hyiS9Du2qjYKzOQ6SrGhNw0C9CKg7NkVrl0QjVf
+	 Kv8YANndLMWoIEAl/vp3rfDqyoNt3gVxGOwH1OfRNBn/sqHqYbSERabsxISB0QyaG/
+	 9y5AtPyQ593PQOht9Ggw6XC0hFBE6N980MFr25DZXTFLg7LjknUr9kxtnbSko2m8PF
+	 rqkwlyxNuYnQLuxKzZmNeW7MYfLLQmYQhRMx/QpiHpq4CeZx7/LacG8RKun0chnF8/
+	 dvLnpQ15ujW++RpexFuPKe/N/xwyjMCxvcE6EE9ar8ftfoT+LCkQvNQe+Uo0ZjLghm
+	 auS2qnp0UsQzA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
+	heiko@sntech.de,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev
-Subject: [PATCH AUTOSEL 6.0 13/34] media: hantro: HEVC: Fix chroma offset computation
-Date: Tue,  1 Nov 2022 07:27:05 -0400
-Message-Id: <20221101112726.799368-13-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.15 01/19] media: rkisp1: Don't pass the quantization to rkisp1_csm_config()
+Date: Tue,  1 Nov 2022 07:29:01 -0400
+Message-Id: <20221101112919.799868-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221101112726.799368-1-sashal@kernel.org>
-References: <20221101112726.799368-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_042755_787692_17E0889F 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20221101_042923_943137_B5AE7BB3 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +79,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-[ Upstream commit f64853ad7f964b3bf7c1d63b27ca7ef972797a1c ]
+[ Upstream commit 711d91497e203b058cf0a08c0f7d41c04efbde76 ]
 
-The chroma offset depends of the bitstream depth.
-Make sure that ctx->bit_depth is used to compute it.
+The rkisp1_csm_config() function takes a pointer to the rkisp1_params
+structure which contains the quantization value. There's no need to pass
+it separately to the function. Drop it from the function parameters.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index 233ecd863d5f..a917079a6ed3 100644
---- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -12,7 +12,7 @@
- 
- static size_t hantro_hevc_chroma_offset(struct hantro_ctx *ctx)
- {
--	return ctx->dst_fmt.width * ctx->dst_fmt.height;
-+	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+index 8fa5b0abf1f9..8461e88c1288 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+@@ -751,7 +751,7 @@ static void rkisp1_ie_enable(struct rkisp1_params *params, bool en)
+ 	}
  }
  
- static size_t hantro_hevc_motion_vectors_offset(struct hantro_ctx *ctx)
+-static void rkisp1_csm_config(struct rkisp1_params *params, bool full_range)
++static void rkisp1_csm_config(struct rkisp1_params *params)
+ {
+ 	static const u16 full_range_coeff[] = {
+ 		0x0026, 0x004b, 0x000f,
+@@ -765,7 +765,7 @@ static void rkisp1_csm_config(struct rkisp1_params *params, bool full_range)
+ 	};
+ 	unsigned int i;
+ 
+-	if (full_range) {
++	if (params->quantization == V4L2_QUANTIZATION_FULL_RANGE) {
+ 		for (i = 0; i < ARRAY_SIZE(full_range_coeff); i++)
+ 			rkisp1_write(params->rkisp1, full_range_coeff[i],
+ 				     RKISP1_CIF_ISP_CC_COEFF_0 + i * 4);
+@@ -1235,11 +1235,7 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
+ 	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP,
+ 			      rkisp1_hst_params_default_config.mode);
+ 
+-	/* set the  range */
+-	if (params->quantization == V4L2_QUANTIZATION_FULL_RANGE)
+-		rkisp1_csm_config(params, true);
+-	else
+-		rkisp1_csm_config(params, false);
++	rkisp1_csm_config(params);
+ 
+ 	spin_lock_irq(&params->config_lock);
+ 
 -- 
 2.35.1
 
