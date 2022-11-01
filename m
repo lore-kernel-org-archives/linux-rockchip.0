@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3615DFA373D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 11:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12FDC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Nov 2022 17:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1hEPomqnFWVVuz+bXd5UWjm8owiIDEHNu3ArAt1Bdc0=; b=B3HJOj7wPaWUNM
-	r4fg/K0jL7yyvvVwd2evxyLYPoyUx189UJH0hIgyhJizqVKYW0TCeO1vSpnn9k7vUTKBppiZg0rJ+
-	FTKWlkb0kALPWdsWL03R3XY0TOrr1iJ5F3AXZNRH4xgIJ72qcJzrgjwibMuDO3UaFg1uqfKBf0ker
-	w35cHG/3bN0NjfKVH87871LugXCOZ7fOEnJaWntiN0ZUfyB2Zg+ghj2Qse2fH+rPNhuIQf4F1+HuO
-	QPSJBGV7PCpWUkwsxuLnbUioaLLcED7haHo3CuH5zUonsbga89VK49r0RLc45TvEA8kyXoc55TPUg
-	xstDNIw1zUsG/bGOWc6Q==;
+	List-Owner; bh=+hxxcTBYOoamfpC35SxC+9szFQrpOwMKYQt/c6men0M=; b=u8ASPmiDp3BdeY
+	09XthrxyDWGzcKXcsqtZA80/8m7vX0CyHdAeeAtZF97aeVCrDZo/VRUizvLGtQa/Nxfsukj5ZEUJ0
+	KGnUT3VVK8s+5wCIZucmK2LKta+tP/YjeXkFKrMgJfA+Fph9nYU7dDnVnis8PrJFnaO7M4h8EO0Zg
+	G+ruv4E4TLBqI0BVaod4OPbmo39S7EF54pJOh61hGUyEtt5OVONRH2lCWDNW68oxH9phbXQhKwUbm
+	zLuylt5fLWRfSdb/VMH0vXutERrXRpA4ZZzZUy+cEFk75ybDMwr34DG7B6PC8pUr1sGLqLacViuXK
+	HvXgMSnnSBRsvupb0ouQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppVd-004dop-54; Tue, 01 Nov 2022 11:32:45 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1opv1C-006GLT-CQ; Tue, 01 Nov 2022 17:25:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oppST-004boj-Kt; Tue, 01 Nov 2022 11:29:31 +0000
+	id 1opv12-006GH6-I6; Tue, 01 Nov 2022 17:25:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 31F5CB81C9C;
-	Tue,  1 Nov 2022 11:29:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5AEAC433D6;
-	Tue,  1 Nov 2022 11:29:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 83CBB616BE;
+	Tue,  1 Nov 2022 17:25:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6921C433B5;
+	Tue,  1 Nov 2022 17:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667302166;
-	bh=CmSRNfBV86EsQV9BETmdAkbeneeSLp94EZfRDV42lKU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F1D5z5E8G7SSrzEFyWUloZ81k+SODXUKWJT+vxSetplN1MCsEosI1eG716Skw4dv+
-	 PYGeD/JDbqKtKSSpSPQ4Wrr3RzRjVzYzoZdWZMRIqeS+lX9oMcoRnhioeWAsooPqkt
-	 cNdf2toDnPMWZTRW15qNymMsl07KvgbrcpvBYSMEhYPFDAzhpP91cEIB9saVPfLh33
-	 Zk9bvfbdxwt138ZVnahy13HNPoX8FdEOTnGhDEl2qzJRmlwJTquAUgmOtQHOJnnxtg
-	 ze1NbJBsxc41iCkm9D7hck7BOeZMpQSOHDEN4AYNEaqbUSdgl9PDklpCKAXM0qaoDg
-	 1XhP8rNEZRolQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	heiko@sntech.de,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 04/19] media: rkisp1: Zero v4l2_subdev_format fields in when validating links
-Date: Tue,  1 Nov 2022 07:29:04 -0400
-Message-Id: <20221101112919.799868-4-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221101112919.799868-1-sashal@kernel.org>
-References: <20221101112919.799868-1-sashal@kernel.org>
+	s=k20201202; t=1667323530;
+	bh=8+n4wVebR2DVuEojd5dP66y68blMgawXTlygiHM3C3U=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=rqOvYUINww1OL9aIVCml6YmBOqIBtEMoIYgtttINotNKlQwLbfpRMK5NCZUpv0X5S
+	 Of5f/TrHzuY6kZy6oT4fTWsRrcV30bBT03hOYusflJqIBvwiEwoNXV+F7bj+vVYjP+
+	 ERdbTXfa01pjQ7F40gygClpdyWyyUi9lDDCnUk3ck2PHKH+6Q+tYs60fyYj5oy+ge5
+	 iVQhfstCW2Le1c642M2KDmdOokqdQRCZehRkEIRATR8fg5RPUoDaRwYHqtxYWmvPnz
+	 xlbH5P+kxecwZ8WrsegM/RmEVIW/5UY9syiYAbaPZ2GGGIFAywgjPGQRwoyfHegdE0
+	 3848hpMImO8Rw==
+Received: by mail-lj1-f177.google.com with SMTP id l8so10966883ljh.13;
+        Tue, 01 Nov 2022 10:25:30 -0700 (PDT)
+X-Gm-Message-State: ACrzQf0GNduP84h0mTkdgsvdA3HY2iqEkSCZsEnEAlKMcLQLvnFo4kcr
+	TUzKoEurQz710GOEZQJxNdAbDxQ51+uufi0KXA==
+X-Google-Smtp-Source: AMsMyM76Gx3gpIDmB0YWloxakt3kNIrl0ft6hshAFByvsLqfn6Hp/4L00+ft8BqwrQoWEk8oeG8xE59btzfpwteVooE=
+X-Received: by 2002:a2e:b16b:0:b0:277:3946:7611 with SMTP id
+ a11-20020a2eb16b000000b0027739467611mr8104831ljm.392.1667323528960; Tue, 01
+ Nov 2022 10:25:28 -0700 (PDT)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+References: <20221028231309.565451-1-krzysztof.kozlowski@linaro.org>
+ <Y1+MNL+fCfreAqMh@google.com> <20221031192658.GA3286587-robh@kernel.org> <Y2D0As4ezi/031lL@google.com>
+In-Reply-To: <Y2D0As4ezi/031lL@google.com>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 1 Nov 2022 12:25:19 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqJUx2FtpYWSkx3cOFcywSux7P2sPpvbVmaryMdo1+xA_Q@mail.gmail.com>
+Message-ID: <CAL_JsqJUx2FtpYWSkx3cOFcywSux7P2sPpvbVmaryMdo1+xA_Q@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: mfd: Expect specific type for monitored-battery
+To: Lee Jones <lee@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Dmitry Osipenko <digetx@gmail.com>, Chris Zhong <zyw@rock-chips.com>, 
+	Zhang Qing <zhangqing@rock-chips.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_042929_873254_BB04FB35 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20221101_102532_653764_7CDE1D76 
+X-CRM114-Status: GOOD (  20.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +84,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+On Tue, Nov 1, 2022 at 5:25 AM Lee Jones <lee@kernel.org> wrote:
+>
+> On Mon, 31 Oct 2022, Rob Herring wrote:
+>
+> > On Mon, Oct 31, 2022 at 08:49:56AM +0000, Lee Jones wrote:
+> > > On Fri, 28 Oct 2022, Krzysztof Kozlowski wrote:
+> > >
+> > > > Core schema does not define type of monitored-battery, so the schemas
+> > > > are expected to reference proper type.
+> > > >
+> > > > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > > > ---
+> > > >  Documentation/devicetree/bindings/mfd/ene-kb930.yaml      | 4 +++-
+> > > >  Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml | 1 +
+> > > >  2 files changed, 4 insertions(+), 1 deletion(-)
+> > >
+> > > Applied, thanks.
+> >
+> > NAK. Please drop or revert.
+>
+> Dropping is not a problem.
+>
+> Would you mind providing some context?
 
-[ Upstream commit c53e3a049f35978a150526671587fd46b1ae7ca1 ]
+I did elsewhere in the series, but simply we don't want to define a
+type for a property multiple times. It should be defined once
+somewhere common.
 
-The local sd_fmt variable in rkisp1_capture_link_validate() has
-uninitialized fields, which causes random failures when calling the
-subdev .get_fmt() operation. Fix it by initializing the variable when
-declaring it, which zeros all other fields.
-
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 41988eb0ec0a..0f980f68058c 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1270,11 +1270,12 @@ static int rkisp1_capture_link_validate(struct media_link *link)
- 	struct rkisp1_capture *cap = video_get_drvdata(vdev);
- 	const struct rkisp1_capture_fmt_cfg *fmt =
- 		rkisp1_find_fmt_cfg(cap, cap->pix.fmt.pixelformat);
--	struct v4l2_subdev_format sd_fmt;
-+	struct v4l2_subdev_format sd_fmt = {
-+		.which = V4L2_SUBDEV_FORMAT_ACTIVE,
-+		.pad = link->source->index,
-+	};
- 	int ret;
- 
--	sd_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
--	sd_fmt.pad = link->source->index;
- 	ret = v4l2_subdev_call(sd, pad, get_fmt, NULL, &sd_fmt);
- 	if (ret)
- 		return ret;
--- 
-2.35.1
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
