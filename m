@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 913A5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 09:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC969C43217
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 09:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=USGLM1NSTLpTkbfu0FAST/NARUcxDcqnOzMgikEZogs=; b=uE7bUDI+Hc37Qd
-	gQwLmr8NvQILw/ak/aXwe5WtFMWT0MdDmfKFxI43jKJB19cAZhTlDYDiKNlmQpEJBqqq028TjU8Eu
-	ifYAqtzHZeMuyh1eUIeQ0tfSn0n5ksegrGxXlzgPaaF5T4rJAUNR53PNIQ/OC5uDOyZHHVQkI8wdK
-	tHtz4WJ/LLynTWHNEr65XvPNXlMU/bMUcWcP0x8c8qlPAIxabRaxiyTocKLLzSySx4WBBR4MbRyco
-	2uAcJradC8LD7CW1J+vt6+yRdm6hkXlyUNVE4DXv+IRS/GHs8FaSzr/n/Riizs8mpN8PkAOm6aTTH
-	1F3LKgfArnDANcMVtJlg==;
+	List-Owner; bh=zxn6ZQ24ZnE489VwjSUeJ5tZ0a4Dr6jTDfrsKOEPrnU=; b=lwQBlR4kjIC++X
+	j9mtyJsY5ojBhGYxnNXRRLqnrHzdESau5ChothIHamZ7ovLvgo7FThL9KkMYFk9a19H8AzjnftUS2
+	fb1ha5oyVOA7U6wBjp2ogEC/OGDse/62bHazgubgJ4YUkxoMt750gkI27MY3bOibrwHnr3udG0uTT
+	3Sh1pe9YlBJA2i1St0Xy2kF8t+cE+5bkfS7KU8c9oeKT1HFQbilwBpDGaRk2wJLsTEUdyCLbQulKu
+	jaF13ar2iVhNtMfgLgZX8FF2KnBfy23RC2mK4E48MjxPY9Hgp6+m0M0tOcY+hdTHlDo1FXai+lw3j
+	X8Jl/pLAhKakL7a6Bhcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqADs-00AJo1-5i; Wed, 02 Nov 2022 09:39:48 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1oqAEV-00AKFU-09; Wed, 02 Nov 2022 09:40:27 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqADZ-00AJeY-Oy
-	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 09:39:32 +0000
+	id 1oqAEO-00AKB8-ON
+	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 09:40:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667381968;
+	s=mimecast20190719; t=1667382019;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=RgeOXsRJ+XKaYoOYvxoyhBylXQrWD/HUrGfmQUHOZZs=;
-	b=GMyX23M7aSNGVk82b+SS7It6CTJk/lQ9QoLZb9G3GYWekXX3VxOsAJVSu7ooUEr4DTltcb
-	QBjTHqWzOXxUVb6VYtMzNUbr20bi2FhXiLrJSfo076/gQdN8zQvLvWce+OT0c/d0DcdHaG
-	gdlrxhAn/5YwbQH37x36RDrY0Izpm+4=
+	bh=BsLrquRWckXT1s1aby8jZXWvTG60TzDOu2w8x1+2PdY=;
+	b=eEAnBVkZJbwzOPCO+Ba00Yn0YLXfCYE/kW0GIiTKFGtZptXm2xdCv81hCkTt6G0W0+ckN1
+	J3PQXDl4JZhhShU3rM6gg6Y9waiTMUIagw1GBGYxxmc2wXNu80JqKkN2IjYPSz5ToaFAtc
+	JLhaW78yBy/xS+nq1+oPvVRgjM4PvtA=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-532-YAxtlPr5MFySe0c4HTVgTA-1; Wed, 02 Nov 2022 05:39:25 -0400
-X-MC-Unique: YAxtlPr5MFySe0c4HTVgTA-1
-Received: by mail-wm1-f69.google.com with SMTP id 1-20020a05600c028100b003cf7833293cso845590wmk.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 02:39:25 -0700 (PDT)
+ us-mta-313-F_BzDVPXNjezFL-zbU2dug-1; Wed, 02 Nov 2022 05:40:18 -0400
+X-MC-Unique: F_BzDVPXNjezFL-zbU2dug-1
+Received: by mail-wm1-f69.google.com with SMTP id i128-20020a1c3b86000000b003cf4ff1b917so7734838wma.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 02:40:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RgeOXsRJ+XKaYoOYvxoyhBylXQrWD/HUrGfmQUHOZZs=;
-        b=qFCfjKAjnxG//MJQQaH1xrAVWZxCT9Y7Nzi5/1xc47cAUbFPjfXnbqGQ8fslPrZWot
-         4/Ir2+XW9ShxKT0u2PNkQEHVtIx9qMLo6DfPqI2kWSuuj5cXE5jc/MfNuHJLbptPdU9D
-         TRDmzRb7E7HnkZ/QT+fcg0swt0KzcbTlDNrOVu3lT5tL0QsbMt12VqQloQ+LkGy47swf
-         dnR9eRO7kKk3lZD2SYFBSzi66z1e5YmMOy189aCPuXFHKzO62RKW8Em2RGINkW0yUgQr
-         HKUbgR2gN8yp39/3kvJ5AlgAdRihDXkUwvzZ0Q3O0fsLLUCGFS9lNblPxT7uv7dbeFIz
-         1OFQ==
-X-Gm-Message-State: ACrzQf1f4YOLqQXdq4YtHLS/9dsG1c93npU4NPlm0rymvR1cShKPW7Ot
-	tvCb3FHthTlJmPjzEWC63oXVa1yPFUDB7rvBb1FlTSoidCaNn/uDsXpI8b75siSSUHkg0aeuEdj
-	NJ4hCdeBB1L47r6N3eIJKCLTGeEScHcfT
-X-Received: by 2002:a5d:40d1:0:b0:236:786d:611e with SMTP id b17-20020a5d40d1000000b00236786d611emr14871545wrq.355.1667381964721;
-        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4/k2KHrjikPXyIbTE3cWGjPi0EsRobUeOg55XAJjnO250x+w4Sp4JFFeS1nRK3GUJGY3QPnQ==
-X-Received: by 2002:a5d:40d1:0:b0:236:786d:611e with SMTP id b17-20020a5d40d1000000b00236786d611emr14871522wrq.355.1667381964509;
-        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
+        bh=BsLrquRWckXT1s1aby8jZXWvTG60TzDOu2w8x1+2PdY=;
+        b=Hc6JlzvVxLdv3J1hPFFlwCLfttcVT/fTPzx51ZQH2/NcnVpeewfiwrmMlkbHHAvMxz
+         9EosCsaLdE5oOOou5SQ2EyLAdT93OZwC70Lr4j5k5SxMSxJygSqxN7WRNxds8HcXafSR
+         I9kxOM3RQJ284HNGSaImFqHq9IWZeT2EJpIF2Pryc2/IQ2CdY12nJR9s+g/0oz+7tAig
+         DC8OjrM5DzTY1Hq4WUkz+DlhnJ8Zk5yuFfQK33aZe4RmNCvMRAPqZ/R7C0ojmx5M84qp
+         +l9tVZY1FlHIvalRRZTIWy2fjYc+423yJ9IGiw4Hho0V2wdPi5uHiKsSN03tZo2pUZ+C
+         ZOfQ==
+X-Gm-Message-State: ACrzQf0yazUUKReYmeP2e0Rz2pt5VSwxnoqXuILdNYGapSglVSUB2iaV
+	nf9eoIy4SypMESg7Po/wMe2MEsprCkEhr5SPI0k8nybAzFD9Rm7njnZ0rSzEeYaMn6/Fyef+C03
+	G59jtUmcehaysKcYIGPRMRwu/mgH1j5uh
+X-Received: by 2002:adf:ba8f:0:b0:22c:def3:1179 with SMTP id p15-20020adfba8f000000b0022cdef31179mr14547812wrg.571.1667382017691;
+        Wed, 02 Nov 2022 02:40:17 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5M29YlmTkXAEgNYduNYpaEq18eaSYaR/je5Gn7y2xNrovwH6Pttvb6rYpMLmmOPDm/qr+vag==
+X-Received: by 2002:adf:ba8f:0:b0:22c:def3:1179 with SMTP id p15-20020adfba8f000000b0022cdef31179mr14547781wrg.571.1667382017447;
+        Wed, 02 Nov 2022 02:40:17 -0700 (PDT)
 Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id dn12-20020a05600c654c00b003cf537ec2efsm1653185wmb.36.2022.11.02.02.39.22
+        by smtp.gmail.com with ESMTPSA id j20-20020a05600c191400b003b47e8a5d22sm1924445wmq.23.2022.11.02.02.40.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
-Message-ID: <23b6c3ca-828a-5376-ae80-0b04202e190b@redhat.com>
-Date: Wed, 2 Nov 2022 10:39:22 +0100
+        Wed, 02 Nov 2022 02:40:16 -0700 (PDT)
+Message-ID: <7ac0da2c-0a43-4c02-4199-f48a50347171@redhat.com>
+Date: Wed, 2 Nov 2022 10:40:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 18/21] drm/fb_helper: Minimize damage-helper overhead
+Subject: Re: [PATCH v2 19/21] drm/fb-helper: Always initialize generic fbdev
+ emulation
 To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
  airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
  maarten.lankhorst@linux.intel.com
@@ -88,15 +89,16 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
 References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-19-tzimmermann@suse.de>
+ <20221024111953.24307-20-tzimmermann@suse.de>
 From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221024111953.24307-19-tzimmermann@suse.de>
+In-Reply-To: <20221024111953.24307-20-tzimmermann@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_023929_926724_5F4A0F10 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20221102_024020_892471_963855F6 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,33 +116,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 10/24/22 13:19, Thomas Zimmermann wrote:
-> Pull the test for fb_dirty into the caller to avoid extra work
-> if no callback has been set. In this case no damage handling is
-> required and no damage area needs to be computed. Print a warning
-> if the damage worker runs without getting an fb_dirty callback.
+> Initialize the generic fbdev emulation even if it has been disabled
+> on the kernel command line. The hotplug and mode initialization will
+> fail accordingly.
+> 
+> The kernel parameter can still be changed at runtime and the emulation
+> will initialize after hotplugging the connector.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > ---
 
 Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
-
-But I've a trivial comment below:
-
->  drivers/gpu/drm/drm_fb_helper.c | 90 ++++++++++++++++++++++-----------
->  1 file changed, 60 insertions(+), 30 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
-> index 836523aef6a27..fbc5c5445fdb0 100644
-> --- a/drivers/gpu/drm/drm_fb_helper.c
-> +++ b/drivers/gpu/drm/drm_fb_helper.c
-> @@ -449,12 +449,13 @@ static int drm_fb_helper_damage_blit(struct drm_fb_helper *fb_helper,
->  static void drm_fb_helper_damage_work(struct work_struct *work)
->  {
->  	struct drm_fb_helper *helper = container_of(work, struct drm_fb_helper, damage_work);
-> +	struct drm_device *dev = helper->dev;
-
-You removed this in patch #15, maybe just leaving it in that patch if you
-plan to use it again here?
 
 -- 
 Best regards,
