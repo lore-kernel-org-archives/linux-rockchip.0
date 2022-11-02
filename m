@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BC5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 12:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE2CC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 12:47:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v4DG16bokjS5bQQNLYIFzHJ3xWxO7nVsmQt7HVuu7u0=; b=OsaOvU/ixrnRjq
-	vubE7ofKoNdU0uMMfZsU8otInvOXLiVLfBjGe0LMlNvX2n8D2RX8oTBGi6zQAAUIDA0zg83/Hfms/
-	rwKswxz4cKT3cMgn3COJ4YJgdg+tiunIdku3N3T1EN5aHXmQ2cu+ILTFNJ81SL4J28fhyyTMFVXbW
-	EYkcxqnusp9VVkzA1hYC+4QtUM+gw+EdSRYnw58ZVx4DHN4GSpIo60VkgTtyujGWH4PhgTpCU7DNg
-	F5xVV7JW/5szrUw5+BUhdk7AjoKZAuNeVxL/fPzVxmK8w07sncKYsbjFO7VqdPFBhyIl+3nsgIRf+
-	AE6/Gtttua4z9SizIrEA==;
+	List-Owner; bh=1FsAFwKRfsc/qT6EBjqnJFeCFuBzM2STmjivTGodkwM=; b=w6MNUP/fRapQID
+	VGNnJdg39IViPvMzxY7eseioynOias+jhUdqwiOs5qb3cjJ4NCVdUlxPedj/4goUjyNt9Fmc71H5Y
+	N41m+Pgu0oI2b9bUhV2hTPj5GIMWJtYzAwCFRUK6+GckZdAvdB1qXcasY2FwuSLlfpHoR0AuufCjc
+	fQNSC4udseGc3PCzcOQCNNjrNAXnZfFK7VpYEWvKcODSZQrePLp8EfzRXqalmJtna/AU0Ux/dhl6h
+	HXAEciT4CUgke5GwvAb5i5nNOtQwevGvPUDbZ4cRDv5x42PtY3v0r2auf/JropHd/2+qUAkaUY+6V
+	+Iiea2objJC5oXAM4mhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqD94-00B3BD-D6; Wed, 02 Nov 2022 12:47:02 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1oqD9i-00B3a2-5p; Wed, 02 Nov 2022 12:47:42 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqD8l-00B2wl-EE
-	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 12:46:44 +0000
-Received: by mail-pg1-x532.google.com with SMTP id s196so16155689pgs.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 05:46:40 -0700 (PDT)
+	id 1oqD90-00B2rN-7W
+	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 12:46:59 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d24so16471518pls.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 05:46:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=C2JvjMqQ1T7iB6M7WJyLMMcTpJZI3Dgx1XMVy2FW2+s=;
-        b=LHYEkP6/KqAkLzdExh8Dm18iD0YkeqKkY4hGgvg+S1N012xERhw+XQfymKgEInmdWH
-         77RtuWRZwHTgOoJuyNYli0PWio1paHvmc1mnzAqxxtKnkCLP/hwMR3BF1N+8jIfaTxU/
-         +0+RuGYpOkJuNpIFKWP7dpwXdaMJy+I7KDHcQPW0IQZKb4motDfFD7ZjzBKLeIvqgx8v
-         GKktzF+yRCnjX1gNIwWYE95Juzjt/HxDMosQQ788vXGX5yWppex77DHw72DlqG0IU4cM
-         jABHsaHdXQ/7Pz2pl8P8TKSBwlWYoYdRQBfMwHqcOOUQrp1uBzzbJZPLgFBPY8Q5vtyL
-         F1wQ==
+        bh=04A00wmc7ivq5c1HcZPDC2rBPvZBIFpcYtF6WjKRwqg=;
+        b=5UyTJ6YySGqRc9UCiI+lvZh2KPPejSwVur4skyYw6Dowp5jJLy51KrGnJ2aXM9rxYz
+         t9UzUd7NnQEWrP1O5cV6J4PPDNbqrLXXZG/FmJWrC8+ZIhbbT701B2R1j5NwWa/njRq7
+         kR8W7Rq+5fuE7k2Dkq1rqzwCA3ys/h6gQQzsizfudffP0LKSE6Z5UaI10w9XnB7dMlws
+         UoWvArKtEWAvtqtyJ7pJES6r+HajCV9gHNdkUyOjDlq628PXAXos5dhppx0ODgaU35j/
+         93uR7JSuCvpqf5DYThfNkNZstvwsfDyUhJnju7C17w0dnWfX/zuBvNBgkAuX+gqTXn3n
+         HBwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=C2JvjMqQ1T7iB6M7WJyLMMcTpJZI3Dgx1XMVy2FW2+s=;
-        b=ti0/XvjqJFpko9W5DYeS0fgjsjtGdiCw0n7RwG2C8vlNZjZ1J5ybNO55+x5zNpp1D2
-         DceJFuaWaVdlL5ZClQJMPe34lCXiZHv3EvaDOcO9xhGrdA6pzfhIsmfMbUgOvVkRowhj
-         V+LEsbVNUZepzBfK1GUaZGx4r0km7Sp8SQL/jx1TfkvwkkHMEATcq2D8qpxQLzFqkEXq
-         frwxKScttIyMsqS0hL9ttYvA8yMXbiM7bxSG6afZlmKmXa/wAYspXiAlZHH9uZeGYYCd
-         Akv0Q3NsWa1lKTfl16lH8sIDDPs6ONbsl9uCYaMcG6H9MbGAEgpZsPnBPTKdEl2lFl8B
-         by9g==
-X-Gm-Message-State: ACrzQf2vbu0rkvTNdLf9IZV2Wt9gjAXQmUFnEidB1hNA+k24MiN+LKyb
-	XfHEtSyJ9rT7gHZobV//CVGcqQ==
-X-Google-Smtp-Source: AMsMyM6RKg2jakUjZMbwj8Con6lsmVohWwDGkRZ1xaeaOOok0VVkEksIWCWbK/iKCVC783Mdux02eg==
-X-Received: by 2002:a63:e348:0:b0:46f:25cc:d554 with SMTP id o8-20020a63e348000000b0046f25ccd554mr22075489pgj.598.1667393200420;
-        Wed, 02 Nov 2022 05:46:40 -0700 (PDT)
+        bh=04A00wmc7ivq5c1HcZPDC2rBPvZBIFpcYtF6WjKRwqg=;
+        b=1FuYe6s9HjLDiap4WP4WysekUQ+l3JlrlNz12WGpnSz9Sf0whYERctWRDbhcWxsAgE
+         vdL04bckASt03KIZnkctqUkRUJqieJDc1As34ApgtTkjJ9YptG4xA5qJ9iVoKqft7+Ml
+         KVDJkuaLKhfnHQRwD6mb/f3akmO2FkLosJuq/I7i+TowHT8AMo18/D8Yk381Irht7T0L
+         5amUlX+BmqRGbaj70K/h53mmg/R7bL+OKeDOmpTcTn1eyxwwu7kCSt2i7E0TW2IjeOM5
+         IBlcxkwI2LsPvqDfJ9reoyscC4qM8R8+TmioCYTIHOq7opqHJ3ouu8ke1WqqFj2+tmHS
+         6+zw==
+X-Gm-Message-State: ACrzQf37jhdJNlCkHmnY89CZDV5iAALauuBjFkEgvZhQO4A2ne+XY/+D
+	j3vdj3v/JUIPSTw9n0B2+GyNTA==
+X-Google-Smtp-Source: AMsMyM6+hxj1asTrKWMS4QSnSpR+achyLNm5DhZ+F4u9ixal1cweAWmCJVIEy41U3WzMm8YvX2ePFw==
+X-Received: by 2002:a17:90b:1b50:b0:213:c304:1d2f with SMTP id nv16-20020a17090b1b5000b00213c3041d2fmr20774685pjb.64.1667393217762;
+        Wed, 02 Nov 2022 05:46:57 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a809:aeff:563:9036:6729])
-        by smtp.gmail.com with ESMTPSA id g31-20020a63565f000000b00460fbe0d75esm7549533pgm.31.2022.11.02.05.46.36
+        by smtp.gmail.com with ESMTPSA id g31-20020a63565f000000b00460fbe0d75esm7549533pgm.31.2022.11.02.05.46.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Nov 2022 05:46:40 -0700 (PDT)
+        Wed, 02 Nov 2022 05:46:57 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -68,16 +68,16 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v6 4/6] dt-bindings: arm: rockchip: Add Edgeble Neural Compute Module 2
-Date: Wed,  2 Nov 2022 18:16:05 +0530
-Message-Id: <20221102124607.297083-4-jagan@edgeble.ai>
+Subject: [PATCH v6 6/6] ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2) IO
+Date: Wed,  2 Nov 2022 18:16:07 +0530
+Message-Id: <20221102124607.297083-6-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221102124607.297083-1-jagan@edgeble.ai>
 References: <20221102124607.297083-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_054643_496748_7093EE02 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20221102_054658_301569_0C61C9F2 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,42 +94,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Neural Compute Module 2(Neu2) is a 96boards SoM-CB compute module
-based on Rockchip RV1126 from Edgeble AI.
+Neural Compute Module 2(Neu2) IO board is an industrial form factor
+evaluation board from Edgeble AI.
 
-Edgeble Neural Compute Module 2(Neu2) IO board is an industrial
-form factor evaluation board from Edgeble AI.
+General features:
+- microSD slot
+- MIPI DSI connector
+- 2x USB Host
+- 1x USB OTG
+- Ethernet
+- mini PCIe
+- Onboard PoE
+- RS485, RS232, CAN
+- Micro Phone array
+- Speaker
+- RTC battery slot
+- 40-pin expansion
 
 Neu2 needs to mount on top of this IO board in order to create complete
 Edgeble Neural Compute Module 2(Neu2) IO platform.
 
-Add dt-bindings for it.
+Add support for it.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v6:
-- updated SOM and Carrier name
+- update the carrier name.
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm/boot/dts/Makefile                   |  1 +
+ arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts | 38 ++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 244c42eaae8c..26fdd205a899 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -85,6 +85,12 @@ properties:
-           - const: chipspark,rayeager-px2
-           - const: rockchip,rk3066a
- 
-+      - description: Edgeble Neural Compute Module 2(Neu2) SoM based boards
-+        items:
-+          - const: edgeble,neural-compute-module-2-io   # Edgeble Neural Compute Module 2 IO Board
-+          - const: edgeble,neural-compute-module-2      # Edgeble Neural Compute Module 2 SoM
-+          - const: rockchip,rv1126
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index e48cfbc4e8e4..40cc34bd4945 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -1122,6 +1122,7 @@ dtb-$(CONFIG_ARCH_RENESAS) += \
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rv1108-elgin-r1.dtb \
+ 	rv1108-evb.dtb \
++	rv1126-edgeble-neu2-io.dtb \
+ 	rk3036-evb.dtb \
+ 	rk3036-kylin.dtb \
+ 	rk3066a-bqcurie2.dtb \
+diff --git a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+new file mode 100644
+index 000000000000..ae1cf344239b
+--- /dev/null
++++ b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+@@ -0,0 +1,38 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 Rockchip Electronics Co., Ltd.
++ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
++ */
 +
-       - description: Elgin RV1108 R1
-         items:
-           - const: elgin,rv1108-r1
++/dts-v1/;
++#include "rv1126.dtsi"
++#include "rv1126-edgeble-neu2.dtsi"
++
++/ {
++	model = "Edgeble Neu2 IO Board";
++	compatible = "edgeble,neural-compute-module-2-io",
++		     "edgeble,neural-compute-module-2", "rockchip,rv1126";
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	card-detect-delay = <200>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_bus4 &sdmmc0_det>;
++	rockchip,default-sample-phase = <90>;
++	sd-uhs-sdr12;
++	sd-uhs-sdr25;
++	sd-uhs-sdr104;
++	vqmmc-supply = <&vccio_sd>;
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
 -- 
 2.25.1
 
