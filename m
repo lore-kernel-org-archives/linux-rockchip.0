@@ -4,102 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B495C43217
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 10:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0790BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 11:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CeHszdMq7EdECTdEjKZP4wYYf+zo5TRO0XHsC87kGO0=; b=V5kHJipBnkEZo4
-	L3T/Q/1J2YaCNCMrmqxBpo+LDOZgrB/k5f7bMZIbPsYql7WMlaEQ/kLXyp6YJSnXM0ORr+xufOWzw
-	ImMXWmsMsSxCK41yipm/LtR+zFY/u0oPDXFmrZToMP50gVE9m0E8AYwd7cWmiHcpgUlTFj0pzkE5H
-	M0CRHA4h5tG99igxhdb+oFhTbBuOvlTjs9hDotLwMCVj5ZQuv9jxHDvO07s4YDO5yYXoQme4aMbSc
-	sjSNuqCx84dp8YFm4tQqjunWHilNJsQvwhIn6bLlOYS8AjdGF+VJ/Rz3mxeK7IMAHUe3jfX686Q55
-	IV4eM1owQMlyq0FUw6pA==;
+	List-Owner; bh=3Uj/oixcS8Vg1a53VPCLofoRSr9S9IJi14C0vn4gfdc=; b=oB9At1VprWgV8i
+	tXbQSzYq2TYQidnFy9Q7YuT74XdIMg1I60RRWIZ0ZiAtSRzjKlQchBNRNaF72+mCHTOJeKV7IDJJF
+	HcvNlGDeBGzD6nCiiJwGfGxIsG9kKGqOdZU4A+02PW9jnkHIt18BL/9EsxtW4vpyq5FxF+pDlnxuU
+	RB8WMuMnskmob3HRmzV7Q0DY7WgQKJaUAdhEc0VgXGPjyLx2+wmvDbzE24sBelQ6ulkap9UM8yHgE
+	g1emCVgK029+1X76+x7wHZ5+6wFmIqj0fpGDqXvKSU0ZuXtM5on4l2NHzBIXys+DTfGt7e9yzszIz
+	/cnZxu95Uythev2yhCfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqBGl-00AZyP-9r; Wed, 02 Nov 2022 10:46:51 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1oqC4G-00AmlO-Sx; Wed, 02 Nov 2022 11:38:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqBGi-00AZw3-6p
-	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 10:46:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667386007;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iUJvEUx8gtjx3iaw6xY22YZZMkx+Fxj3A7QQSAUB80Y=;
-	b=IdsGxcpc/b9eri3/F2vdOUh/cr0GJaUlcfrvfXm5M1ivFv5rIhWx6/D/pKE538YSPP5rTI
-	dnD7I+fjmyuhuvWBoCiKKCvwlRz6YgWk+A/vS3qXmahAei/2tst2AFgeuCYRtXXo0TJL7L
-	IuJ/qqE+hcToYJ3azmb4wt9N7PXsAw8=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-125-ni4Q6xn2NDGZGEKrI-VMNQ-1; Wed, 02 Nov 2022 06:46:46 -0400
-X-MC-Unique: ni4Q6xn2NDGZGEKrI-VMNQ-1
-Received: by mail-wm1-f72.google.com with SMTP id r187-20020a1c44c4000000b003c41e9ae97dso915017wma.6
-        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 03:46:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iUJvEUx8gtjx3iaw6xY22YZZMkx+Fxj3A7QQSAUB80Y=;
-        b=LMqSg9VqheZoJRYMYkYB6g4G30DeuAmMAFqniOKblhokAUYnysNaLv9CcI/4croXMU
-         vUOubV/qulHU4HdMI0UKHpawJjHT373HEVaPfVIeTKd9kq2/VSMnZpcBu/7/+dtwqLOq
-         zOFWC2/LUTis+C0oMeegP1dLOhBLzzdwQ87TNm6BCOLl+B2IOc/m1Z0Ps1a62AEajtml
-         DZTWgvej1xA+ysfr/voEqDqStknSrihMvQzPx5P2xfSAqoTe+Q3cx5rUUYybWTyhE/ZA
-         65naKKqtib7Kdh7QqFJqj+4ZZinyWV5jJt6IC2mOGrHbp57OQdVWPd1DoqdJtuuwB4Km
-         FcEQ==
-X-Gm-Message-State: ACrzQf0cjvsLj6efsokUg+Jqcep25HtdIjt01hVyG1tQeLvWg/zeDwkn
-	nlC3Nb8CnM/SvNUbjPJBQX8oKmcBz5DfX2QPkS/bMkRSz9Rh1/u0bg/zpKbahWOUI952Uyqsszf
-	ykAXqqS4N3lo6y6On1BMSsY6o4gkEzIBe
-X-Received: by 2002:a05:600c:3556:b0:3ca:771d:701a with SMTP id i22-20020a05600c355600b003ca771d701amr14652034wmq.61.1667386004949;
-        Wed, 02 Nov 2022 03:46:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5jzv0egtLEIAVaxEN/tayyZgqvKvq+1qzahuWoTfzpPIfJE04AyAO6MvJnCllXJsp0I0J18w==
-X-Received: by 2002:a05:600c:3556:b0:3ca:771d:701a with SMTP id i22-20020a05600c355600b003ca771d701amr14651998wmq.61.1667386004691;
-        Wed, 02 Nov 2022 03:46:44 -0700 (PDT)
-Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id c18-20020a05600c0a5200b003b3365b38f9sm1701531wmq.10.2022.11.02.03.46.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 03:46:44 -0700 (PDT)
-Message-ID: <5abf94d6-9a48-525e-c562-605529c5793a@redhat.com>
-Date: Wed, 2 Nov 2022 11:46:42 +0100
+	id 1oqC46-00Amil-BE; Wed, 02 Nov 2022 11:37:51 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F0B0561902;
+	Wed,  2 Nov 2022 11:37:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FEA9C433C1;
+	Wed,  2 Nov 2022 11:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667389068;
+	bh=xIxMAiXF+JLgxByB3rSWOKdiFANqw7ABTjZNkKTK0GE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=STR5j3Syvq3KxkvdTPJ9msz/mG2Cf12VmYPzf6HSUrBrVN4T2PArCH913G5i0noJB
+	 Ht/u99IWzgdDp+8MDfDi7c0WTT0nTb616vfFVRVtx5MJBA8UOnM3E/P491Ar+jRyrB
+	 bo3JeG6mYAurrXvCyafudLPc8qkcMCxRErUtApoyN6iG6C/HoyEhj5BP2XqxNg82Me
+	 BOAsN4nk1sbOaa+pEGyE/zb5mDWGIojSsSbiMLnIU8wlLL0OuVERbCrcKYjt/BBSDu
+	 p5F5TviRu+MyiARR9VOeWR2xbd0dMQFWeq1DuH8Rp468nfb8gqjx8T7ddKLxX1P6ej
+	 Vzcxr8TqakodQ==
+Date: Wed, 2 Nov 2022 11:37:41 +0000
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: mfd: Expect specific type for
+ monitored-battery
+Message-ID: <Y2JWhTcEvNxIwSB6@google.com>
+References: <20221028231309.565451-1-krzysztof.kozlowski@linaro.org>
+ <Y1+MNL+fCfreAqMh@google.com>
+ <20221031192658.GA3286587-robh@kernel.org>
+ <Y2D0As4ezi/031lL@google.com>
+ <CAL_JsqJUx2FtpYWSkx3cOFcywSux7P2sPpvbVmaryMdo1+xA_Q@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v2 17/21] drm/fb-helper: Perform all fbdev I/O with the
- same implementation
-To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
- airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com
-Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
- etnaviv@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
- linux-hyperv@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
-References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-18-tzimmermann@suse.de>
- <3ab32fc3-f2aa-1b42-fd87-557482ab56d5@redhat.com>
- <0ca70b76-c24a-4fdb-cf0d-2647d37379df@suse.de>
-From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <0ca70b76-c24a-4fdb-cf0d-2647d37379df@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAL_JsqJUx2FtpYWSkx3cOFcywSux7P2sPpvbVmaryMdo1+xA_Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_034648_419145_99422D70 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20221102_043750_466007_8C5985F6 
+X-CRM114-Status: GOOD (  22.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,61 +77,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/2/22 11:33, Thomas Zimmermann wrote:
-
-[...]
-
->>
->>> +static ssize_t __drm_fb_helper_write(struct fb_info *info, const char __user *buf, size_t count,
->>> +				     loff_t *ppos, drm_fb_helper_write_screen write_screen)
->>> +{
->>
->> [...]
->>
->>> +	/*
->>> +	 * Copy to framebuffer even if we already logged an error. Emulates
->>> +	 * the behavior of the original fbdev implementation.
->>> +	 */
->>> +	ret = write_screen(info, buf, count, pos);
->>> +	if (ret < 0)
->>> +		return ret; /* return last error, if any */
->>> +	else if (!ret)
->>> +		return err; /* return previous error, if any */
->>> +
->>> +	*ppos += ret;
->>> +
->>
->> Should *ppos be incremented even if the previous error is returned?
-> 
-> Yes. It emulates the original fbdev code at [1]. Further down in that 
-> function, the position is being updated even if an error occured. We 
-> only return the initial error if no bytes got written.
-> 
-> It could happen that some userspace program hits to error, but still 
-> relies on the output and position being updated. IIRC I even added 
-> validation of this behavior to the IGT fbdev tests.  I agree that this 
-> is somewhat bogus behavior, but changing it would change long-standing 
-> userspace semantics.
->
-
-Thanks for the explanation, feel free then to also add to this patch:
-
-Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
-
--- 
-Best regards,
-
-Javier Martinez Canillas
-Core Platforms
-Red Hat
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCAwMSBOb3YgMjAyMiwgUm9iIEhlcnJpbmcgd3JvdGU6Cgo+IE9uIFR1ZSwgTm92IDEs
+IDIwMjIgYXQgNToyNSBBTSBMZWUgSm9uZXMgPGxlZUBrZXJuZWwub3JnPiB3cm90ZToKPiA+Cj4g
+PiBPbiBNb24sIDMxIE9jdCAyMDIyLCBSb2IgSGVycmluZyB3cm90ZToKPiA+Cj4gPiA+IE9uIE1v
+biwgT2N0IDMxLCAyMDIyIGF0IDA4OjQ5OjU2QU0gKzAwMDAsIExlZSBKb25lcyB3cm90ZToKPiA+
+ID4gPiBPbiBGcmksIDI4IE9jdCAyMDIyLCBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOgo+ID4g
+PiA+Cj4gPiA+ID4gPiBDb3JlIHNjaGVtYSBkb2VzIG5vdCBkZWZpbmUgdHlwZSBvZiBtb25pdG9y
+ZWQtYmF0dGVyeSwgc28gdGhlIHNjaGVtYXMKPiA+ID4gPiA+IGFyZSBleHBlY3RlZCB0byByZWZl
+cmVuY2UgcHJvcGVyIHR5cGUuCj4gPiA+ID4gPgo+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogS3J6
+eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraUBsaW5hcm8ub3JnPgo+ID4gPiA+
+ID4gLS0tCj4gPiA+ID4gPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9l
+bmUta2I5MzAueWFtbCAgICAgIHwgNCArKystCj4gPiA+ID4gPiAgRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL21mZC9yb2NrY2hpcCxyazgxNy55YW1sIHwgMSArCj4gPiA+ID4gPiAg
+MiBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+ID4gPgo+
+ID4gPiA+IEFwcGxpZWQsIHRoYW5rcy4KPiA+ID4KPiA+ID4gTkFLLiBQbGVhc2UgZHJvcCBvciBy
+ZXZlcnQuCj4gPgo+ID4gRHJvcHBpbmcgaXMgbm90IGEgcHJvYmxlbS4KPiA+Cj4gPiBXb3VsZCB5
+b3UgbWluZCBwcm92aWRpbmcgc29tZSBjb250ZXh0Pwo+IAo+IEkgZGlkIGVsc2V3aGVyZSBpbiB0
+aGUgc2VyaWVzLCBidXQgc2ltcGx5IHdlIGRvbid0IHdhbnQgdG8gZGVmaW5lIGEKPiB0eXBlIGZv
+ciBhIHByb3BlcnR5IG11bHRpcGxlIHRpbWVzLiBJdCBzaG91bGQgYmUgZGVmaW5lZCBvbmNlCj4g
+c29tZXdoZXJlIGNvbW1vbi4KCkFDSywgdGhhbmtzLgoKRHJvcHBlZC4KCi0tIApMZWUgSm9uZXMg
+W+adjueQvOaWr10KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
