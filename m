@@ -4,124 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916B8C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 06:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C724C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Nov 2022 09:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FMzxIG7ELjRFxORL3Yrv9vIIOdGPy025zbOPk3oe0PE=; b=VyBI3RYsRqptNx
-	Ql8nkjxsRuKVfcVNIbBJ7fs7Wo5L29G6iEwsx/QGbF6Q9awdfMr/X4C3TVmI8PD6MskQvJYRcO4J7
-	5pckOmi1hmz76COjJ3d2Fndw97P8uTqGfSTpQEYO2/WcRrxnT1y6iRKkwQ34oHdU8Y3bqkrayV1VH
-	DedwAXuT5RGLxgUy8a3+7xU5DYkBco4M1vv8VymFBtN784mKX615Yd0W0YhPG2q0ZQyeMSAXtwep3
-	X2BhjTfEFTDEulTQRPJz/pudXjCEPTr7Np/vjPYVBYMK8ZMP2VwU0hGJQzNrIY/BKpZezUc+D8CDw
-	cPADfDYy3wcAUBJSfiJQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HHOpN6iBAD4x/597fJJFTQt99ABMpvMs3PGBc2/U48I=; b=xzFH0ML+CgqMcg
+	YQwdMNelBYSvR/xlGRjg4ce4Qgld0glMY/MxYq6PKmTjvJALwHIlobxNtaE9b2j01abyD/A0Kelee
+	FXRotmuK7E6F7/rTov2UgCspuyZ/Sh3ReLXNKWxDnj4jDqb054iszn9VPcoWLfPZ2DPvt35nEbCOn
+	T3BrZRGJtju44EPbzPXv1GW1CVIYZwqhcZCcaLwe/9LIkL4kWRlp4zk/CVA0yQ5UWOVHZXQRBPHVd
+	10/6XJPwbTWamhRf0xlg2tjpZFJH3M9R7bOeKTth9trhGjPBz/AVeVdLB1YHFofFh9KyJ4UIMwfb/
+	4ku4tmz3R7t8wcph58gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq7MT-008TSK-BF; Wed, 02 Nov 2022 06:36:29 +0000
-Received: from mail-vi1eur05on2089.outbound.protection.outlook.com ([40.107.21.89] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1oq9fb-009NOn-2t; Wed, 02 Nov 2022 09:04:23 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq7MH-008TQZ-VL; Wed, 02 Nov 2022 06:36:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LNTLeIQqt5bc9kUEM4ri2frMiYVDeKUv+SNEQeWz4LFK7uzWVHmSFoCnZ0ovNUkLEwoj9kwPxxGmeaTtG1cY7HsWnQewFQp0Kbm8HGzjqb4P+iOsoBOHBE+b0kc03jvBOvWp5Dnk1iIhGd/P+4wXmz30V5pHptl2b1dqbKW0lOIKaGwoFvcfS1A88yPlNIT/b2yRreWb4PDvxyyIVXshBAucNzajYVlc8R/5kR+mFvQmFN+k12GT1+nYBOpOVqzr3aeI4Rc3sNpi/y4cJZ0/rfiIc11in2yqUPWHnSkcSocrJev9ro5FcyuheKUdR1cJYYE4wx//gol9z8NWWNPQ5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=++80gqbVUTcBqH4xW79UJARVRVB585J1tmdHb+KsZzg=;
- b=ZizmY3uDKwAfpG73SP4fQ+OGHmqzmmHDkisvHkgq1h0dP6hZ4nB7zLAZfUD0H3c6wgpvL/ZdGPyxMjxr71RAOtFFjssZFKxJLkhgtj3Das5es60V07hQWv2Vc1EsrRTshWiW54peqS65OeGqUFg4um3jwe9n59DEuDWzk60/oZCGKIQH9m8CMLbH1MxFl6yd3YnRCr7pWPSP00oyJvyTJ7iWsO94EqC31+X/NC60QzrTR60TLsUzXNnD3DtKZXMhdV43M/KGVzuoBx2YJwoJ6+jsk+ifzy+o7RbjUm9MhRLmVgnQySpPYgFoIODEOBofDs5/NPNLEwC4tm+Uw/A7/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=++80gqbVUTcBqH4xW79UJARVRVB585J1tmdHb+KsZzg=;
- b=rwT7Ql2G4H2C1/Oj6m3mPak7v+tKFGUHc5WGznuf6KE7TJb2D8voFVXciHipzcmg7BRGSjeu5GaW1yvoJiyFl0ipR4NtoXV/a3Q5R90niW65wikjzkMhhJaYxkbQXPWSjj7ajG6Zd3hwD5mUu9B3fpj2zRCsQfMkdbFzy5U6kb0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by AM0PR08MB5459.eurprd08.prod.outlook.com (2603:10a6:208:186::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.21; Wed, 2 Nov
- 2022 06:36:06 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::3643:6226:28c:e637]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::3643:6226:28c:e637%2]) with mapi id 15.20.5769.019; Wed, 2 Nov 2022
- 06:36:05 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH] iommu/rockchip: fix permission bits in page table entries v2
-Date: Wed,  2 Nov 2022 07:35:53 +0100
-Message-Id: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-X-ClientProxiedBy: ZR0P278CA0004.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:16::14) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1oq9fN-009NB8-00
+	for linux-rockchip@lists.infradead.org; Wed, 02 Nov 2022 09:04:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1667379843;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XBlp2DOijU5hXQ9AriUwp9vEVLgfxcCQxHX+sSZSvOs=;
+	b=cU6CaU/T3cRlN3WmIu3UEc7d6/fczr3AsteLEeSis2kQhSs1jBTSH6BOdcbi98+L1CS4Ff
+	dKMMJcQ9Qorjv5Px2oNHPiQBogLkzL3IpXhZQ2qdQ7DSS4cLXg+T1b+/c8PHb2DjBMo67F
+	JpmKjCMX4nYr+UYWvXcW7BFgqEGjVdg=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-237-lnLglQneOLa1VMcBzKjSuw-1; Wed, 02 Nov 2022 05:04:01 -0400
+X-MC-Unique: lnLglQneOLa1VMcBzKjSuw-1
+Received: by mail-wr1-f71.google.com with SMTP id r22-20020adfa156000000b0023660e969ddso4581701wrr.19
+        for <linux-rockchip@lists.infradead.org>; Wed, 02 Nov 2022 02:04:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XBlp2DOijU5hXQ9AriUwp9vEVLgfxcCQxHX+sSZSvOs=;
+        b=ilnGnCq1R91TZajbtjHbrp7jSIdSkhZzFbQ1BRQrYgRnYyZofhd13Z43vpQYc+Buwi
+         K+R1gConchP5e6Ob5ISZ37DRfEWIHrPjL8p2DAfuYfsN5L0FQ/9mFteHsq3WWk1CWRgr
+         ugEqoaCzdC36amvPfRQ+dA1ZBpBgdA1LjVOjRNkB6NjtD0GOzhDuE/8YA+kJCw+PLE30
+         mH8F7EewBFEieVzrY7+R8u17jvtVHdEv8e733Qlx7qS1vCIU2hKdmEWNZIZmbFkfjuKJ
+         AErBPHZLC/gnCHNtuQiWuzmTJvixP2Y+VAAfuuZ8PNWB3oIbFYXnrXGh4AZ6dSW9IBHl
+         HepQ==
+X-Gm-Message-State: ACrzQf3CW/9U2ZaQBUL36f1iRtM5cVyP45jz7iQnacAGIwrO/DitkB3v
+	cw9m5DDnnERv+riGycJg0irmU8Fs+jwVas/NEJQvMzP7e4Mbm15NNXhJmpZPbOixh8vmpPSxgkk
+	b4NDBei3SzO3Gg1lLDPbRHQZMMrfXwQ2Q
+X-Received: by 2002:a7b:c409:0:b0:3cf:4c81:8936 with SMTP id k9-20020a7bc409000000b003cf4c818936mr24380812wmi.38.1667379840253;
+        Wed, 02 Nov 2022 02:04:00 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM72ckpdUoZR+NwXtu1sv2+7NmgS+YMIWWHB7QdeKnWTKduGDRl7tg4bkpenTZv0mX1kFf34kw==
+X-Received: by 2002:a7b:c409:0:b0:3cf:4c81:8936 with SMTP id k9-20020a7bc409000000b003cf4c818936mr24380784wmi.38.1667379840046;
+        Wed, 02 Nov 2022 02:04:00 -0700 (PDT)
+Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
+        by smtp.gmail.com with ESMTPSA id b13-20020a5d550d000000b002366b17ca8bsm14083933wrv.108.2022.11.02.02.03.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 02 Nov 2022 02:03:59 -0700 (PDT)
+Message-ID: <87284e5e-859e-3b1c-7142-28d4fa7a7939@redhat.com>
+Date: Wed, 2 Nov 2022 10:03:57 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AM0PR08MB5459:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1cb72067-b268-4473-eebf-08dabc9c84e7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	au1DiVCuVkexk3Nq7hc/egyl4eGg3QoODZsUEs5XQ5eOrfndd6h4QI0Z920s+slAYAHqOMRaYfHbbYcKEdZqrcYCQGk/OA+aCRXPSmClxlEhDjlF4nNe6YBeLoGy3+/md+3Zq/NHWR8cYXWSSA/3Wd1ipPn3y9tJJQPpq/aIhhG9MQcLLqpye+LB4oyvRwwP5WTZP6bznOSd0LASKUhKarEJ4KWW2MwYfAFhSgLpkfdXP+DnayG8l9ZIabG3dqyLvkXB8QtCU/XL56ueGd+tAzaMmN6BYubt8AM9CEuhGy0BPuyYN63Lfqvo7BWp43vM9oAiWUkRILBngVtv44XNbDKvfbJDI6ppzdG2FEzX6I8oXH+WtTCbUe1S0I0jC9nL7OATtkcsU1gjKfclxVv7TP7ct9iWfhP2HSWOaN8n27CKNo3cHCrNTyTTzRfzrLK3cuoWTmVyT1HYxWdOhk3qJvANWRI8t+tAlSqvcBhNMzT+sKXzlFlrmkGTfXHil2R+CXlZF2cBBmLXpe1r2aFobX6rRE78yhHWGfmXgdWVjVIW9Lcvg5C0Y+jbixCHywrHgoUVNCEhSb7EcoLBoJTfoztgofsv3hFfNQlXibCsy1itYJjz+P4zbVn9pCl7mZIGEqkkLkZwS0V7bVKAdO7hEUNFA6ba8QGaAGwsDlKP/kRB39Dd9f964OcHSi9gWUKFjscRZtwJNsJvdcWlEEU/XNAsow+WLDRlrh2sl1DARec=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(366004)(376002)(39840400004)(136003)(396003)(451199015)(478600001)(966005)(6486002)(186003)(2906002)(1076003)(2616005)(44832011)(6506007)(4326008)(6666004)(107886003)(54906003)(36756003)(316002)(8676002)(66476007)(52116002)(83380400001)(38100700002)(66946007)(66556008)(5660300002)(7416002)(8936002)(6512007)(86362001)(41300700001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?gRJsmnxn+SeF8rkDgqsXQW2pA7WRslPlFsyoQSFsG45M1vK9QYGUYNlf1AEe?=
- =?us-ascii?Q?XNgKvvSIGrFv3obXTQKCxmyxqHjeK22Scmw0c3sFM+ORv/ELSL/KbuSQd+WA?=
- =?us-ascii?Q?M9Q8va7+1YMyfJj5I4cT8ntB6QeQ2EpKzmhlw3iRMwS2jVMI7LiM4BtAAtSw?=
- =?us-ascii?Q?gf4Po5LtQAKonw8hp7/NdM5rapWptBfXkUa2mJoKcnGIu3z72uNUSAvI3p2p?=
- =?us-ascii?Q?NuU4UfIDLI4UW7uQ7d4at2VNTM2K8bgjinr+bo8Wjh3Idq9lYADiNt5rrdwy?=
- =?us-ascii?Q?1WsIfGZCEEPIKjWJqhUjHAXUVgGm08Hn7N3/1cpZXiDqurhi6B2ODijlW6r8?=
- =?us-ascii?Q?w9NwmzkRjZJxK+vvwhGcYB7hynEU0rYPolZ7RnWSVa2aWcnf0CdE9Bu7EAkk?=
- =?us-ascii?Q?N2mk6N46zH3fJBtJ1p6Vr0ku2OEHC3/IgNfbACZyQZvE+BEOPdedGeJuxCH1?=
- =?us-ascii?Q?7NO/X7LiKqGaXb+4wbdi0Pq5PqHVTHRz4ZB258v358YSI+Novobr5X3yjAms?=
- =?us-ascii?Q?mE8qS5XHxZXqYFBNZUTwz1xM2xq5ihwYwVfX28wnrB5sIEdZKLNhCGuv/jum?=
- =?us-ascii?Q?VT46xeOX6aH4LWM5rohdTBSATIBD9uMFZG42Flw0SgoU2ZepsjrOVEoCPyly?=
- =?us-ascii?Q?BLtbpe1e32bJK5YpvFMBbcv1mUKbCY8quCrE4bMwD1cLFUaRCjfTPjLo1BS3?=
- =?us-ascii?Q?T5n6+7NKEhf+56DwvxLXoMp0sZmUmtyv8/oZX+fvHZTu29tcSNl6XAk8byhP?=
- =?us-ascii?Q?kjDax3jQugCmJlfAzXWso+O276y+BO+kipiwC8EQfcpFVvjfbmdrfAtXzUiv?=
- =?us-ascii?Q?ywFBk9Zh5SHqllreZm/Ww0dlofn5QwesE2Aug9KdpZGyobi0VTrPsN1bPuoF?=
- =?us-ascii?Q?IOunPcnB7GUk3ytet0QxNjijfAWOd+0t7e8tBiJKIRoz9BRqv2OY9w4QBQ2X?=
- =?us-ascii?Q?xFIn1UFnj7xEfn182VqUSyNXVwidmyNqtaCLeTBeiaVOwu7nTsChxVHRHkWd?=
- =?us-ascii?Q?13ax6dp1jJSBiJDiHGdwycWFCpzmRhv3wWj5iamRQ4ohqbcir0aqJCbXGDTF?=
- =?us-ascii?Q?7FwOJK8jnUGrBH/A+ZTj7OmM97lYP4LQcvmsSAbGmpR+LPg9a800dwPU4hgz?=
- =?us-ascii?Q?6UwkafxikMC5rUZ6PhXUv4pBRH6YrpMVev1zFb2xhWryX1Pdc8SxwpBmb0+y?=
- =?us-ascii?Q?M6KJMFuCmhodjBpnk4TCUt8/T/ihCqqACDpF0YlMIk7LO4w+9n5Xvpd0LpwC?=
- =?us-ascii?Q?gEYWQVer5Fqg3ohvpQoUrj21ZsJrXY03g/swi/cz4m5lMftrE84BAn1NyQs1?=
- =?us-ascii?Q?NTrY4OY77EHgBICK/b6v2m4Exk4kfaw5t++Btj4PLdlsp8/R66xBEmcGOpxW?=
- =?us-ascii?Q?U2gTbiKFWj66zCIwidFkNRHPdyQgIkNKRvlOe3n97mU44ssrAXamDY3QafM3?=
- =?us-ascii?Q?XVqfV0U0u+joWDSJ1+l5oxX3+0lvnplYNvAcUjNYhTYS3iewj0gCgpn21QwS?=
- =?us-ascii?Q?oCgHDdJAtnN08d/ckxHML4ackzSc4QP8dN6dJbINvPWsS3CnaFm62rSYH34n?=
- =?us-ascii?Q?yJ9hUSrOSsIcVQ+12b7I2rtm8d1ZvUvYLg36KI9ID20oBMX2j/iNHSSs7lei?=
- =?us-ascii?Q?wemcP5jVvCfq6XegOjdRCQ4AuE9OYJ796EuL9Z4EI8csPWu/4VRJN/NTMGnR?=
- =?us-ascii?Q?Q75HYA=3D=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1cb72067-b268-4473-eebf-08dabc9c84e7
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Nov 2022 06:36:05.8308
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wikYqcQw9xFy8XtF4b6yiyueizbFy+HUc3haRF2QDqiei+R+4+HSm8lyhnaecQhWlM8xUGGU1/ERtJ/aSxK5Uyna37cCuUVLKSzki0X/xss=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR08MB5459
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v2 15/21] drm/fb-helper: Disconnect damage worker from
+ update logic
+To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
+ airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com
+Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+ etnaviv@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
+References: <20221024111953.24307-1-tzimmermann@suse.de>
+ <20221024111953.24307-16-tzimmermann@suse.de>
+From: Javier Martinez Canillas <javierm@redhat.com>
+In-Reply-To: <20221024111953.24307-16-tzimmermann@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_233618_040066_522485BC 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20221102_020409_174358_46D23E41 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,50 +114,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As pointed out in the corresponding downstream fix [0], the permission bits
-of the page table entries are compatible between v1 and v2 of the IOMMU.
-This is in contrast to the current mainline code that incorrectly assumes
-that the read and write permission bits are switched. Fix the permission
-bits by reusing the v1 bit defines.
+On 10/24/22 13:19, Thomas Zimmermann wrote:
+> The fbdev helpers implement a damage worker that forwards fbdev
+> updates to the DRM driver. The worker's update logic depends on
+> the generic fbdev emulation. Separate the two via function pointer.
+> 
+> The generic fbdev emulation sets struct drm_fb_helper_funcs.fb_dirty,
+> a new callback that hides the update logic from the damage worker.
+> It's not possible to use the generic logic with other fbdev emulation,
+> because it contains additional code for the shadow buffering that
+> the generic emulation employs.
+> 
+> DRM drivers with internal fbdev emulation can set fb_dirty to their
+> own implementation if they require damage handling; although no such
+> drivers currently exist.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
 
-[0] https://github.com/rockchip-linux/kernel/commit/e3bc123a2260145e34b57454da3db0edd117eb8e
+[...]
 
-Fixes: c55356c534aa ("iommu: rockchip: Add support for iommu v2")
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
----
- drivers/iommu/rockchip-iommu.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+>  static void drm_fb_helper_damage_work(struct work_struct *work)
+>  {
+> -	struct drm_fb_helper *helper = container_of(work, struct drm_fb_helper,
+> -						    damage_work);
+> -	struct drm_device *dev = helper->dev;
+> +	struct drm_fb_helper *helper = container_of(work, struct drm_fb_helper, damage_work);
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index a3fc59b814ab..a68eadd64f38 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -280,19 +280,17 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
-  *  11:9 - Page address bit 34:32
-  *   8:4 - Page address bit 39:35
-  *     3 - Security
-- *     2 - Readable
-- *     1 - Writable
-+ *     2 - Writable
-+ *     1 - Readable
-  *     0 - 1 if Page @ Page address is valid
-  */
--#define RK_PTE_PAGE_READABLE_V2      BIT(2)
--#define RK_PTE_PAGE_WRITABLE_V2      BIT(1)
- 
- static u32 rk_mk_pte_v2(phys_addr_t page, int prot)
- {
- 	u32 flags = 0;
- 
--	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE_V2 : 0;
--	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE_V2 : 0;
-+	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE : 0;
-+	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE : 0;
- 
- 	return rk_mk_dte_v2(page) | flags;
- }
+This line is an unrelated code style change. But I guess it's OK.
+
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
+
 -- 
-2.30.2
+Best regards,
+
+Javier Martinez Canillas
+Core Platforms
+Red Hat
 
 
 _______________________________________________
