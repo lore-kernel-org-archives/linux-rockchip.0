@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADB0C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 15:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95FBEC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 15:23:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X9JhiB+WQHagLiHNhmwF+5beQKWWOZsAPALSrLzXxLg=; b=ZnaE/Z/hZ0Sa3j
-	wCk3omA1BSd2XoWJz//Xd7O2qpHXoXUZzk7M3jWYsD5NHOZX+7QrxRQoagj4qCoNTRNqDQPB9FMNW
-	1CZiLBoyTWy6+sooLnZArN6YJgVRxb2MwqJsyevsOngk4wN06QjTG7ywJN6biPsyW/3QxRbPOiHP0
-	EMwp5u35ZuvHhygurH3Mwq9fISS7ngZ/o8MttqpAHGd9Y53bNYgyY/b3DtFVEtf0l7hUxc8HLFWGE
-	3Pzks3gO7CHRNSDIcdJFM3OxLmuOHhbM0XZKdP+MpAYkRwFIuRlyELagtqco7hzJE+CRwFbND/2WV
-	6vdXD4W6xSdgmcTjI55Q==;
+	List-Owner; bh=x0xy6Qz/3TmZ/UZaH6D4eNUk6RNjvC4Ty5cKVDoLihY=; b=X11tTaLcd+bbKs
+	NxWZmnB0GFkVul8XOiBBV3bgZ2BSQXyil7E7Vs2fjUamO9CPdbxFT8TNBY7T5Fmz15EWQ8e+wHYdL
+	OBW5r67UARc6fDj9AfHaPaMxiqHy6I2deYIiQhVhzk7tk5UYXWSNqmxtYVfTSoYkq2xEwwuL0+c5I
+	wTK6vnCKnwNbEdgOVaugRntQeXGBldu7dvS6zwRpeH0d10Ptxbu+B8cc3iNb9ZveLMaaSVFs0bwoo
+	zzUcvL4ekZ3fupQj4G2shpk4y19+rbuU//CZsfkni3yYieUu+wdg7idmblWnQ2eOVpE63cW3V5wGo
+	Wilr/VtEuDPZpN0BVC+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqc3B-000KXH-4u; Thu, 03 Nov 2022 15:22:37 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1oqc4G-000LAR-8x; Thu, 03 Nov 2022 15:23:44 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbvw-000GDU-Hq; Thu, 03 Nov 2022 15:15:15 +0000
+	id 1oqbvw-000GDW-Js; Thu, 03 Nov 2022 15:15:15 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id D1F3C21E06;
-	Thu,  3 Nov 2022 15:14:59 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 8E52421DEF;
+	Thu,  3 Nov 2022 15:14:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1667488499; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1667488494; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UVBxH0SCO//07QUQ6EK/LfA90pQs6KDqJ9dD5J474xM=;
-	b=yvt0gOxB2lenOEStb/UiJX1DHn3g2kKsI7mtE4SGpNQSAhB7lYBWctzlz1reFVQJV5Q7Dr
-	9KtiNP07UesIRoJkQ20OBX+QffIA0guywKHcw8bFrTEd942EgwbZfJYBXbqYb3+CHu7FpM
-	9uqeHjGX+09FJKRvQbcgI46xl268Eu8=
+	bh=EkoY2CiiAEHjZ/OYnuapD4MfGy2oyIAq4b5o8EaQT3s=;
+	b=lR4Tb56okc+sFQIRKH0CzelfQbheRV7Qr0iaco7WcMuBYnmsh9gZSKNhKuDUtXJOo9XKcw
+	b2B8BHsarB4u1uw4Xb4kGw+hdo7OMM/z3AhsxcsQPEkF2paFEOjMBEX/QgauRWn8PyUMsh
+	R5pD0wtwcpSLiMHxZmfhQ1sni3ZMMFY=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1667488499;
+	s=susede2_ed25519; t=1667488494;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UVBxH0SCO//07QUQ6EK/LfA90pQs6KDqJ9dD5J474xM=;
-	b=JgfauNgkk7JwnVqiJlezA/GaUozyirPiPZWwmsrpZSHazdzqxSROAFO3R1veLQkMRJ/Bf/
-	B6Qfs11b1jHuJuBQ==
+	bh=EkoY2CiiAEHjZ/OYnuapD4MfGy2oyIAq4b5o8EaQT3s=;
+	b=/u2ehk8wsr8fqjo0X1DYqzXBCnnMezfxNTs00QEevNrbWKXPRo3uIzQb8Ja7nosLrLjOfi
+	F3NmzSzNp2xT9LAg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 55B7F13ADB;
-	Thu,  3 Nov 2022 15:14:59 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1C74013AAF;
+	Thu,  3 Nov 2022 15:14:54 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id OMwZFPPaY2PBGgAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Thu, 03 Nov 2022 15:14:59 +0000
+	id cIscBu7aY2PBGgAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Thu, 03 Nov 2022 15:14:54 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch,
 	airlied@gmail.com,
@@ -80,16 +80,17 @@ Cc: "linux-hyperv@vger.kernel.orglinux-hyperv"@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
 	linux-renesas-soc@vger.kernel.org, freedreno@lists.freedesktop.org,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v3 19/23] drm/fb-helper: Always initialize generic fbdev emulation
-Date: Thu,  3 Nov 2022 16:14:42 +0100
-Message-Id: <20221103151446.2638-20-tzimmermann@suse.de>
+Subject: [PATCH v3 10/23] drm/tve200: Include <linux/of.h>
+Date: Thu,  3 Nov 2022 16:14:33 +0100
+Message-Id: <20221103151446.2638-11-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221103151446.2638-1-tzimmermann@suse.de>
 References: <20221103151446.2638-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_081508_791408_A535D2BA 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20221103_081509_047226_F8A826FB 
+X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,45 +107,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Initialize the generic fbdev emulation even if it has been disabled
-on the kernel command line. The hotplug and mode initialization will
-fail accordingly.
-
-The kernel parameter can still be changed at runtime and the emulation
-will initialize after hotplugging the connector.
+Include <linux/of.h> for of_match_ptr().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
 ---
- drivers/gpu/drm/drm_fb_helper.c | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/gpu/drm/tve200/tve200_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
-index 3dfda1e3830b3..95f389433c4a6 100644
---- a/drivers/gpu/drm/drm_fb_helper.c
-+++ b/drivers/gpu/drm/drm_fb_helper.c
-@@ -526,11 +526,6 @@ int drm_fb_helper_init(struct drm_device *dev,
- {
- 	int ret;
- 
--	if (!drm_fbdev_emulation) {
--		dev->fb_helper = fb_helper;
--		return 0;
--	}
--
- 	/*
- 	 * If this is not the generic fbdev client, initialize a drm_client
- 	 * without callbacks so we can use the modesets.
-@@ -2716,9 +2711,6 @@ void drm_fbdev_generic_setup(struct drm_device *dev,
- 	drm_WARN(dev, !dev->registered, "Device has not been registered.\n");
- 	drm_WARN(dev, dev->fb_helper, "fb_helper is already set!\n");
- 
--	if (!drm_fbdev_emulation)
--		return;
--
- 	fb_helper = kzalloc(sizeof(*fb_helper), GFP_KERNEL);
- 	if (!fb_helper) {
- 		drm_err(dev, "Failed to allocate fb_helper\n");
+diff --git a/drivers/gpu/drm/tve200/tve200_drv.c b/drivers/gpu/drm/tve200/tve200_drv.c
+index 04db72e3fa9c2..611785e097576 100644
+--- a/drivers/gpu/drm/tve200/tve200_drv.c
++++ b/drivers/gpu/drm/tve200/tve200_drv.c
+@@ -32,6 +32,7 @@
+ #include <linux/irq.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/shmem_fs.h>
+ #include <linux/slab.h>
 -- 
 2.38.0
 
