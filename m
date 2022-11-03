@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C677C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 15:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 882BAC43219
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 15:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9YutJUTtE/QoQuyCK9OoJVOmarum+Wldsnu7pF/cT2Y=; b=W6+gVg7D6O2pe9
-	zNSKb+p81Fww/Z/nWxN6WH6uCJZVO7inVtH9J4uCTkXNQhppqPbSgcQiHc7AzP8p0MA4NUTDSjFp6
-	zBJ0Vkoa0M3go75oXIphnkoMo4+ZIa44xi4lSZz4jKELMTj8GulQb8JCw7oHRrbgG5UjLxwBKrfAi
-	wPdt8Yi7MLzvt0Ze2Ls4SqSEMBbr203CwrLxcMim806L5CS0c6OGVBEO1Qnrqfw7UsoaIMuzz91mc
-	Y1nD+QJg2N2G6dZOvmfzPt9cFsgV+BmT3nJVkMf1uFRTGyHdh0FFfPaNe5Hcf9T8wMaPMTYnPqr9L
-	0EinE2K+CbaVH3W76UkA==;
+	List-Owner; bh=6EN//7pCxmTASmXYRJZ1PAXwynm3L86O05tGrVvc9I8=; b=ZG8cQRnRz4hhYr
+	g4txXD2DUKh9dfoWex0M7vEDnEr/IH8pN4a0bDh+2OshUOpvtsuA2U/vAXBkZSua/3eBdTdGyRsiE
+	bHWHa3IzBFxGVmYPMNA1qG9Oet24jJ5It66w9WgpZEpf8kj+rxpO1SWsl17ZHM+G7w+B6chh0gz5C
+	lqmC94vShf+lezn23luu05c062sFMPHYP4aafWubigGJ9O0nT+HH+dAVPhddLJr1XE57YG1N1dzpc
+	tFlT+U5koRa1Btu+wUFCWyNt+OJqqwIHWtUldl0oaznExx4mbU7AxrihOIHtGko3KQOk9bEsmdbvg
+	k40CBUO4O7FD3s2CcfyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbh2-000Bbw-Vc; Thu, 03 Nov 2022 14:59:44 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbgm-000BYl-9f; Thu, 03 Nov 2022 14:59:29 +0000
-Received: from 8bytes.org (p5b00664c.dip0.t-ipconnect.de [91.0.102.76])
+	id 1oqbwz-000Gro-GQ; Thu, 03 Nov 2022 15:16:13 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oqbvt-000G9M-HJ; Thu, 03 Nov 2022 15:15:07 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id D14EA260033;
-	Thu,  3 Nov 2022 15:59:26 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1667487567;
-	bh=HTUsTy233yIiWp1C/zye7Xevk8uy5uBNvs5YyKtRlG8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vgU5PXg7bRQqqMVptuQYq7DSJ2v4CNm2bjBLUi2vPE1EtDSFc5eSR5BsvYGnr233D
-	 T1ajeSHHA/rZGPXI0lEh0RiQ3uyNETgw7obyVgskGbrk2lPkU4XIp7xx/TkPyD9PLt
-	 c2AeARe2Cj8iJNdaXae4dTfOXEc16b6ND03m7xEdWWQ60EGaF1NHEihnu1nFLJ+lVG
-	 Uxqp9laxJUJ5YIApjFc1l55WhdkqaHqfUUqwQN8L1jSplQWmBbrW7U5jxD6Wulkfh6
-	 7dSEBqrq+szAgQDbURXddZIh2t7i7MpVcYOIMpg0Wr6yGV1S/SMCOuaRDVG4xy5tW7
-	 EnQBWG71lZTKQ==
-Date: Thu, 3 Nov 2022 15:59:25 +0100
-From: Joerg Roedel <joro@8bytes.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Simon Xue <xxm@rock-chips.com>
-Subject: Re: [PATCH] iommu/rockchip: fix permission bits in page table
- entries v2
-Message-ID: <Y2PXTfk4Et7r5/QD@8bytes.org>
-References: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 38AE621DD6;
+	Thu,  3 Nov 2022 15:14:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1667488492; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=g32cPPyLiHLtpD0q75pbEdOkYrw534GYboHCIoW0rMs=;
+	b=QQ0hGHL3lhq/lGKYmDP6NEUgfd53Y1VFgCWOLFm9U/8/eUbskpw4bwjHTgVqXafKVcIP9F
+	JIZtFqTcK+TpYG2kLbIBM3Y1jfy4SyVFn5J8iGczNOSSrCBF+KjaW8d6k4HjhFluVQea6q
+	/LLAbxDt0kknL2ARPDnwKRz220jQgXw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1667488492;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=g32cPPyLiHLtpD0q75pbEdOkYrw534GYboHCIoW0rMs=;
+	b=9P5ZPHB1OPm/aHZvD/wVzAtGZ8Phyk9xHD8qj4269kUc2NReoGQ2aYUZxcXmsInJVbUxVh
+	vLNFy1vjcWGI5eDA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B7AE613ADB;
+	Thu,  3 Nov 2022 15:14:51 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id KOLnK+vaY2PBGgAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Thu, 03 Nov 2022 15:14:51 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	javierm@redhat.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com
+Cc: "linux-hyperv@vger.kernel.orglinux-hyperv"@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org, nouveau@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-samsung-soc@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org, xen-devel@lists.xenproject.org,
+	linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	spice-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v3 05/23] drm/imx/dcss: Don't set struct drm_driver.output_poll_changed
+Date: Thu,  3 Nov 2022 16:14:28 +0100
+Message-Id: <20221103151446.2638-6-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.38.0
+In-Reply-To: <20221103151446.2638-1-tzimmermann@suse.de>
+References: <20221103151446.2638-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_075928_584523_A324406D 
-X-CRM114-Status: UNSURE (   9.21  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,11 +103,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 02, 2022 at 07:35:53AM +0100, Michael Riesch wrote:
->  drivers/iommu/rockchip-iommu.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
+Don't set struct drm_driver.output_poll_changed. It's used to restore
+the fbdev console. But as DCSS uses generic fbdev emulation, the
+console is being restored by the DRM client helpers already. See the
+functions drm_kms_helper_hotplug_event() and
+drm_kms_helper_connector_hotplug_event() in drm_probe_helper.c.
 
-Applied, thanks.
+v2:
+	* fix commit description (Christian)
+
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
+---
+ drivers/gpu/drm/imx/dcss/dcss-kms.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/imx/dcss/dcss-kms.c b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+index b4f82ebca5325..1defd6a40f11d 100644
+--- a/drivers/gpu/drm/imx/dcss/dcss-kms.c
++++ b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+@@ -21,7 +21,6 @@ DEFINE_DRM_GEM_DMA_FOPS(dcss_cma_fops);
+ 
+ static const struct drm_mode_config_funcs dcss_drm_mode_config_funcs = {
+ 	.fb_create = drm_gem_fb_create,
+-	.output_poll_changed = drm_fb_helper_output_poll_changed,
+ 	.atomic_check = drm_atomic_helper_check,
+ 	.atomic_commit = drm_atomic_helper_commit,
+ };
+-- 
+2.38.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
