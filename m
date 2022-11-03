@@ -4,63 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 740BAC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 14:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93975C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 14:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=i2I0tIu9LtUvXZ4awY+KZtAoILpTYWfhWOroamD6KKQ=; b=PCJEpldLee1ERY
-	/FLog36OLAUdD3dRkAX1MaU6p6mqGLMzv+IFApDn3icTxYAjYXznePW3qppxFWS/SDOLRCTYZgTYq
-	fE/0VI3EY3q1q98ZLSCLupwXSuZlDMyFXlG/meWEWv8jRL5ZXMiBmakJtqc+ZwPHdlP1Z6jSpjoH4
-	n8afpObgZtZ4XLJk5WPa6PdxG6TJxy4xAbjNbXQTpXC5iWZKz2NeYERJ3FLWESvQI9NScl0LRfPnt
-	MdNdfkaZ4IZIdiRjiH7CloEqBKqmF/CA7cMUkoQZa+y7EmA9HyXyZKYhZI4JoaQHw6+KYN+cwyK71
-	X/m5wpTTtzuATqQWD0TQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YHz+7qkNlpGtCgf65YcDuFo69CG3S0nssJ4Srxo/nSs=; b=Wv/j4SJHSYdxst
+	W+lm597xxTU9PoaUh0LzbUMHQkzvrcVdhSQ6AMAKlx5DLvJglZvdEDunhh3DfwScAvJCvJiBV0K4P
+	E16KBkbp7NF3ttcjKpM/8WfcXKGRp89V1RyLbe6tXTTx2lIUC5XC29K64ZyTLQ110XidNi0zKYpQ4
+	HHtRULbNn+3Oh/0xiTGksIaypw96I6x+OkZM24rNvJpCESeqyjcNY4cueJtRD1luwk9fBKi/GKjgQ
+	MtUK3uCsaO5GWVF82Qbqs7vDni1gLp0FjsaSu/TKhPAbaeftxD0VWNRUtYXtz6wcILrEN0GUyyqds
+	v+KbhAe7K0wWa6auKHWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbSX-0008Xw-RT; Thu, 03 Nov 2022 14:44:45 +0000
-Received: from relay11.mail.gandi.net ([2001:4b98:dc4:8::231])
+	id 1oqbZy-0009zT-KH; Thu, 03 Nov 2022 14:52:26 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbSL-0008Ud-Tw; Thu, 03 Nov 2022 14:44:36 +0000
-Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id D516B10000E;
-	Thu,  3 Nov 2022 14:44:06 +0000 (UTC)
-From: Quentin Schulz <foss+kernel@0leil.net>
-To: hadess@hadess.net,
-	hdegoede@redhat.com,
-	dmitry.torokhov@gmail.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	linux-imx@nxp.com,
-	wens@csie.org,
-	jernej.skrabec@gmail.com,
-	samuel@sholland.org,
-	agross@kernel.org,
-	andersson@kernel.org,
-	konrad.dybcio@somainline.org,
-	heiko@sntech.de
-Cc: linux-input@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: [RFC PATCH 0/7] fix reset line polarity for Goodix touchscreen controllers
-Date: Thu,  3 Nov 2022 15:43:45 +0100
-Message-Id: <20221103-upstream-goodix-reset-v1-0-87b49ae589f1@theobroma-systems.com>
-X-Mailer: git-send-email 2.38.1
+	id 1oqbZm-0009tB-7B; Thu, 03 Nov 2022 14:52:16 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oqbZd-0006qR-Fy; Thu, 03 Nov 2022 15:52:05 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Simon Xue <xxm@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH] iommu/rockchip: fix permission bits in page table entries v2
+Date: Thu, 03 Nov 2022 15:52:04 +0100
+Message-ID: <4780234.31r3eYUQgx@diego>
+In-Reply-To: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
+References: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_074434_312620_D614E116 
-X-CRM114-Status: GOOD (  19.54  )
+X-CRM114-CacheID: sfid-20221103_075214_299065_A0D2F012 
+X-CRM114-Status: GOOD (  21.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +57,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Goodix touchscreen controller has a reset line active low. It happens to
-also be used to configure its i2c address at runtime. If the reset line is
-incorrectly asserted, the address will be wrongly configured. This cost me a few
-hours yesterday, trying to figure out why the touchscreen wouldn't work.
+Am Mittwoch, 2. November 2022, 07:35:53 CET schrieb Michael Riesch:
+> As pointed out in the corresponding downstream fix [0], the permission bits
+> of the page table entries are compatible between v1 and v2 of the IOMMU.
+> This is in contrast to the current mainline code that incorrectly assumes
+> that the read and write permission bits are switched. Fix the permission
+> bits by reusing the v1 bit defines.
+> 
+> [0] https://github.com/rockchip-linux/kernel/commit/e3bc123a2260145e34b57454da3db0edd117eb8e
+> 
+> Fixes: c55356c534aa ("iommu: rockchip: Add support for iommu v2")
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 
-The driver is "asserting" this reset GPIO by setting its output to 0, probably
-to reflect the physical state of the line. However, this relies on the fact that
-the Device Tree node setting the reset line polarity to active high, which is
-incorrect since the reset is active low in hardware.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-To fix this inconsistency, the polarity is inverted to not confuse the user
-about the reset line polarity.
+> ---
+>  drivers/iommu/rockchip-iommu.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index a3fc59b814ab..a68eadd64f38 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -280,19 +280,17 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
+>   *  11:9 - Page address bit 34:32
+>   *   8:4 - Page address bit 39:35
+>   *     3 - Security
+> - *     2 - Readable
+> - *     1 - Writable
+> + *     2 - Writable
+> + *     1 - Readable
+>   *     0 - 1 if Page @ Page address is valid
+>   */
+> -#define RK_PTE_PAGE_READABLE_V2      BIT(2)
+> -#define RK_PTE_PAGE_WRITABLE_V2      BIT(1)
+>  
+>  static u32 rk_mk_pte_v2(phys_addr_t page, int prot)
+>  {
+>  	u32 flags = 0;
+>  
+> -	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE_V2 : 0;
+> -	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE_V2 : 0;
+> +	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE : 0;
+> +	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE : 0;
+>  
+>  	return rk_mk_dte_v2(page) | flags;
+>  }
+> 
 
-This is marked as RFC because it breaks DT compatibility and also the Google
-CoachZ device is the only one with an active low polarity for the reset GPIO
-in DT, so not sure if it is a typo or its state is actually inverted (so GPIO
-active high to drive the reset line low). Changing it anyways since the polarity
-is changed in the driver so it needs to be changed in DT too.
 
-I'm all ears if there's a better way to handle this. We could document this in
-the DT binding but this kinda breaks the promise we make that the DT is not
-bound to the driver implementation.
 
-Thanks,
-Quentin
 
-To: Bastien Nocera <hadess@hadess.net>
-To: Hans de Goede <hdegoede@redhat.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-To: Shawn Guo <shawnguo@kernel.org>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-To: Pengutronix Kernel Team <kernel@pengutronix.de>
-To: Fabio Estevam <festevam@gmail.com>
-To: NXP Linux Team <linux-imx@nxp.com>
-To: Chen-Yu Tsai <wens@csie.org>
-To: Jernej Skrabec <jernej.skrabec@gmail.com>
-To: Samuel Holland <samuel@sholland.org>
-To: Andy Gross <agross@kernel.org>
-To: Bjorn Andersson <andersson@kernel.org>
-To: Konrad Dybcio <konrad.dybcio@somainline.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-input@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-sunxi@lists.linux.dev
-Cc: linux-arm-msm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-
----
-Quentin Schulz (7):
-      Input: goodix - fix reset polarity
-      ARM: dts: imx: fix touchscreen reset GPIO polarity
-      ARM: dts: sunxi: fix touchscreen reset GPIO polarity
-      arm64: dts: allwinner: fix touchscreen reset GPIO polarity
-      arm64: dts: imx: fix touchscreen reset GPIO polarity
-      arm64: dts: qcom: fix touchscreen reset GPIO polarity
-      arm64: dts: rockchip: fix touchscreen reset GPIO polarity
-
- arch/arm/boot/dts/imx6q-kp.dtsi                                  | 2 +-
- arch/arm/boot/dts/imx6ul-kontron-bl-43.dts                       | 2 +-
- arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts                   | 2 +-
- arch/arm64/boot/dts/allwinner/sun50i-a64-amarula-relic.dts       | 2 +-
- arch/arm64/boot/dts/allwinner/sun50i-a64-oceanic-5205-5inmfd.dts | 2 +-
- arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi          | 2 +-
- arch/arm64/boot/dts/allwinner/sun50i-a64-pinetab.dts             | 2 +-
- arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts                  | 2 +-
- arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts          | 2 +-
- arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts                  | 2 +-
- arch/arm64/boot/dts/qcom/sc7180-trogdor-coachz.dtsi              | 2 +-
- arch/arm64/boot/dts/qcom/sc7180-trogdor-homestar.dtsi            | 2 +-
- arch/arm64/boot/dts/qcom/sc7180-trogdor-mrbland.dtsi             | 2 +-
- arch/arm64/boot/dts/rockchip/px30-evb.dts                        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi               | 2 +-
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts                 | 2 +-
- drivers/input/touchscreen/goodix.c                               | 4 ++--
- 17 files changed, 18 insertions(+), 18 deletions(-)
----
-base-commit: 8e5423e991e8cd0988d0c4a3f4ac4ca1af7d148a
-change-id: 20221103-upstream-goodix-reset-aa1c65994f57
-
-Best regards,
--- 
-Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
 _______________________________________________
 Linux-rockchip mailing list
