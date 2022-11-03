@@ -4,43 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93975C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 14:52:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C677C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Nov 2022 15:00:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YHz+7qkNlpGtCgf65YcDuFo69CG3S0nssJ4Srxo/nSs=; b=Wv/j4SJHSYdxst
-	W+lm597xxTU9PoaUh0LzbUMHQkzvrcVdhSQ6AMAKlx5DLvJglZvdEDunhh3DfwScAvJCvJiBV0K4P
-	E16KBkbp7NF3ttcjKpM/8WfcXKGRp89V1RyLbe6tXTTx2lIUC5XC29K64ZyTLQ110XidNi0zKYpQ4
-	HHtRULbNn+3Oh/0xiTGksIaypw96I6x+OkZM24rNvJpCESeqyjcNY4cueJtRD1luwk9fBKi/GKjgQ
-	MtUK3uCsaO5GWVF82Qbqs7vDni1gLp0FjsaSu/TKhPAbaeftxD0VWNRUtYXtz6wcILrEN0GUyyqds
-	v+KbhAe7K0wWa6auKHWA==;
+	List-Owner; bh=9YutJUTtE/QoQuyCK9OoJVOmarum+Wldsnu7pF/cT2Y=; b=W6+gVg7D6O2pe9
+	zNSKb+p81Fww/Z/nWxN6WH6uCJZVO7inVtH9J4uCTkXNQhppqPbSgcQiHc7AzP8p0MA4NUTDSjFp6
+	zBJ0Vkoa0M3go75oXIphnkoMo4+ZIa44xi4lSZz4jKELMTj8GulQb8JCw7oHRrbgG5UjLxwBKrfAi
+	wPdt8Yi7MLzvt0Ze2Ls4SqSEMBbr203CwrLxcMim806L5CS0c6OGVBEO1Qnrqfw7UsoaIMuzz91mc
+	Y1nD+QJg2N2G6dZOvmfzPt9cFsgV+BmT3nJVkMf1uFRTGyHdh0FFfPaNe5Hcf9T8wMaPMTYnPqr9L
+	0EinE2K+CbaVH3W76UkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbZy-0009zT-KH; Thu, 03 Nov 2022 14:52:26 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqbZm-0009tB-7B; Thu, 03 Nov 2022 14:52:16 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oqbZd-0006qR-Fy; Thu, 03 Nov 2022 15:52:05 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Simon Xue <xxm@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH] iommu/rockchip: fix permission bits in page table entries v2
-Date: Thu, 03 Nov 2022 15:52:04 +0100
-Message-ID: <4780234.31r3eYUQgx@diego>
-In-Reply-To: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
+	id 1oqbh2-000Bbw-Vc; Thu, 03 Nov 2022 14:59:44 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oqbgm-000BYl-9f; Thu, 03 Nov 2022 14:59:29 +0000
+Received: from 8bytes.org (p5b00664c.dip0.t-ipconnect.de [91.0.102.76])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id D14EA260033;
+	Thu,  3 Nov 2022 15:59:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1667487567;
+	bh=HTUsTy233yIiWp1C/zye7Xevk8uy5uBNvs5YyKtRlG8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=vgU5PXg7bRQqqMVptuQYq7DSJ2v4CNm2bjBLUi2vPE1EtDSFc5eSR5BsvYGnr233D
+	 T1ajeSHHA/rZGPXI0lEh0RiQ3uyNETgw7obyVgskGbrk2lPkU4XIp7xx/TkPyD9PLt
+	 c2AeARe2Cj8iJNdaXae4dTfOXEc16b6ND03m7xEdWWQ60EGaF1NHEihnu1nFLJ+lVG
+	 Uxqp9laxJUJ5YIApjFc1l55WhdkqaHqfUUqwQN8L1jSplQWmBbrW7U5jxD6Wulkfh6
+	 7dSEBqrq+szAgQDbURXddZIh2t7i7MpVcYOIMpg0Wr6yGV1S/SMCOuaRDVG4xy5tW7
+	 EnQBWG71lZTKQ==
+Date: Thu, 3 Nov 2022 15:59:25 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Simon Xue <xxm@rock-chips.com>
+Subject: Re: [PATCH] iommu/rockchip: fix permission bits in page table
+ entries v2
+Message-ID: <Y2PXTfk4Et7r5/QD@8bytes.org>
 References: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20221102063553.2464161-1-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_075214_299065_A0D2F012 
-X-CRM114-Status: GOOD (  21.62  )
+X-CRM114-CacheID: sfid-20221103_075928_584523_A324406D 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,57 +76,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 2. November 2022, 07:35:53 CET schrieb Michael Riesch:
-> As pointed out in the corresponding downstream fix [0], the permission bits
-> of the page table entries are compatible between v1 and v2 of the IOMMU.
-> This is in contrast to the current mainline code that incorrectly assumes
-> that the read and write permission bits are switched. Fix the permission
-> bits by reusing the v1 bit defines.
-> 
-> [0] https://github.com/rockchip-linux/kernel/commit/e3bc123a2260145e34b57454da3db0edd117eb8e
-> 
-> Fixes: c55356c534aa ("iommu: rockchip: Add support for iommu v2")
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-> ---
+On Wed, Nov 02, 2022 at 07:35:53AM +0100, Michael Riesch wrote:
 >  drivers/iommu/rockchip-iommu.c | 10 ++++------
 >  1 file changed, 4 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index a3fc59b814ab..a68eadd64f38 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -280,19 +280,17 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
->   *  11:9 - Page address bit 34:32
->   *   8:4 - Page address bit 39:35
->   *     3 - Security
-> - *     2 - Readable
-> - *     1 - Writable
-> + *     2 - Writable
-> + *     1 - Readable
->   *     0 - 1 if Page @ Page address is valid
->   */
-> -#define RK_PTE_PAGE_READABLE_V2      BIT(2)
-> -#define RK_PTE_PAGE_WRITABLE_V2      BIT(1)
->  
->  static u32 rk_mk_pte_v2(phys_addr_t page, int prot)
->  {
->  	u32 flags = 0;
->  
-> -	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE_V2 : 0;
-> -	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE_V2 : 0;
-> +	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE : 0;
-> +	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE : 0;
->  
->  	return rk_mk_dte_v2(page) | flags;
->  }
-> 
 
-
-
-
+Applied, thanks.
 
 _______________________________________________
 Linux-rockchip mailing list
