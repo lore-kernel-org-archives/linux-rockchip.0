@@ -4,63 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073E6C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Nov 2022 10:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C62C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Nov 2022 20:21:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BgHLFTRLrMr3l5t9akrzGvd1VtUyU2riP801FuPMELc=; b=zTJI2oKWqUt6UB
-	OxQNZV4u3Z0t85khqK+P9x/qZZX79yKm07ayaA73OAN27rkps640GDcmPPePFjnVWcPo81g33Y43n
-	yljuANZgXlME5j4+y+Gnl9g5jXCLbKSM/AYycZbzF85uUO/cHgM7sc+yuEHxXJT+qjZ13hRDiJmyX
-	mHrnIz4+PM0JemwSgyNKLox/QzoqpixVAjKKFfdF0g791A0ls0o6Xx45w21UB2/qkH+CmddKHeo7j
-	lj23n7ZJpLqoq+qcNxaQs6unmROI5rHDWB+DrleDBUSBAL7OJ0vRvyFMbc8aIYHF0/pO+n8gAJxz0
-	rRSQ6V1Auy9jchQk6BKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yRDv4rVRz0BA+2fKAvawVxhe8bR8CfarVvnM2T3NjEw=; b=yx6who9xDmCx6zw1KNZcQsY0zv
+	1/Vnrf9S6JxsuWWqZqdQdD6XDOXX/eYvST9rRZZZUFwrY0tGmQR3SA/rDpLxjqIp91l36kGKhrF7G
+	VLZvrXV2Rwf7Vkz87LkkuBY1JH52OnF6pxpCPU7rzOCz3G8NafMh2FwZtlLXSx8hwUPkMtfIOfpB8
+	46v52xovsemxBOsWFjUmTOHMvTVAa3vfPcRYzVitWF8L9FYBw5H1ycfXplaVystYWTinjBvYwRcB1
+	0OVXybeNDEbLeYl6v5ZDNNVaRb0nIcMH4zQUAtBNtB0Hzqt81AZlKAW5U962THHxVomevbly6mtJN
+	MULLvTKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orFyg-006IPm-E0; Sat, 05 Nov 2022 10:00:38 +0000
-Received: from mail-m973.mail.163.com ([123.126.97.3])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orFyc-006INx-5a; Sat, 05 Nov 2022 10:00:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=tK+33
-	NlWH9bD88K0izUWWDJh8zF6qT4atkStbpG2gE0=; b=MQXArN5UHdqsiYWYrQH+5
-	ffnf6Eby7qRJ9jXYB3NGq/bwsyHOaUhEBn45VU3ODNHHbIzjFXmubkkzNCuPRNVT
-	gtdWPiBaTyn+lhXZ3Vg4G2WsmB1zebRo6pW5u05wrYzrNzW95TN/OZNLeHvXAwos
-	strV9ND7F5uSn2XwZfSWbg=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by smtp3 (Coremail) with SMTP id G9xpCgC3W5UtNGZj7qD6qg--.49356S2;
-	Sat, 05 Nov 2022 18:00:18 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de,
-	linux-rockchip@lists.infradead.org
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	pgwipeout@gmail.com,
-	robh+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	id 1orPf8-007DEL-Rv; Sat, 05 Nov 2022 20:21:06 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1orPex-007DC7-PL; Sat, 05 Nov 2022 20:20:57 +0000
+Received: from mercury (unknown [185.209.196.162])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3E2FC6602366;
+	Sat,  5 Nov 2022 20:20:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667679651;
+	bh=mN8RRJhsexrMmxXRD/OzjLCD+e45Cf3A7xewzxMAk7g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nv146gyy87JZaKTwIPg8oDriZSgQJQenM6vsHMddgUvVjiSGRwV/aKmaGjx2qJcUi
+	 C8etKDyd2rnoHpVcQXTVpN/gTJd9+Y4IIn8FAtd8zGj3TAHDHYsJoXk0BKrQqPUHoo
+	 0/NSU+poYDHh7iQwskYKWSTf7fxhhaofeDllWnbZUUng+bff3LxWFpgie6jYnUDpTj
+	 RlknxyhGBRcHPDWWx7kL7MPh9JSXllx1vAjcqBEFjZT93Z0H+nxAtUQPV0BDyohYdf
+	 G1qznt7Vq8zvei0IlHP4qTCX60eTdZC0+lIBR5YqJ5XpMe5mkaoo3QrA1imtd4kjVy
+	 FaMAkc5v/WlsA==
+Received: by mercury (Postfix, from userid 1000)
+	id 6AE111062C1F; Sat,  5 Nov 2022 21:20:49 +0100 (CET)
+Date: Sat, 5 Nov 2022 21:20:49 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	Markus Laine <markus.laine@fi.rohmeurope.com>,
+	Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
+	Chris Zhong <zyw@rock-chips.com>, "Andrew F. Davis" <afd@ti.com>,
+	Artur Rojek <contact@artur-rojek.eu>, linux-kernel@vger.kernel.org,
+	Mikko Mutanen <mikko.mutanen@fi.rohmeurope.com>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Andy Yan <andyshrk@163.com>,
-	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add dts for rockchip rk3566 box demo board
-Date: Sat,  5 Nov 2022 18:00:12 +0800
-Message-Id: <20221105100012.958252-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221105095935.958144-1-andyshrk@163.com>
-References: <20221105095935.958144-1-andyshrk@163.com>
+	Dmitry Osipenko <digetx@gmail.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Purism Kernel Team <kernel@puri.sm>,
+	Orson Zhai <orsonzhai@gmail.com>, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: power: supply: define
+ monitored-battery in common place
+Message-ID: <20221105202049.2m2mbn3n4mhx7ppt@mercury.elektranox.org>
+References: <20221102184501.109148-1-krzysztof.kozlowski@linaro.org>
+ <166759887101.2893866.8476609318769745646.robh@kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: G9xpCgC3W5UtNGZj7qD6qg--.49356S2
-X-Coremail-Antispam: 1Uf129KBjvAXoW3uFykXw1rWw1DCryxCF1fCrg_yoW8JryrAo
-	ZFvFWF9w4SgF4rGr1ktFWDCw1xWr4kGanakF4jkFy3Wr4rJa9xtrsIkayYgF17Kr4jkryk
-	Z3WfXFy5Aw1Iy3s5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RAHUqUUUUU
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiTBKwXmI0WTuZcwAAsu
+In-Reply-To: <166759887101.2893866.8476609318769745646.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221105_030034_801302_2165CC4F 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20221105_132056_071491_815D60E5 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,570 +88,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0884819067187883835=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a rk3566 tv box  evaluation demo board.
 
-Specification:
-- Rockchip RK3566
-- DDR4 4GB
-- TF sd scard slot
-- eMMC
-- AP6398S for WiFi + BT
-- Gigabit ethernet
-- HDMI out
-- USB HOST 2.0 x 2
-- USB 3.0 x 1
-- USB OTG 2.0  x 1
-- 12V DC Power supply
+--===============0884819067187883835==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="b4bt64bo4i7jwi3n"
+Content-Disposition: inline
 
-Signed-off-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Signed-off-by: Andy Yan <andyshrk@163.com>
 
----
+--b4bt64bo4i7jwi3n
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes in v2:
-- add regulotor prefix
-- Fix the underscores in node names
-- remove some blank lines
-- remove unnecessary status
+Hi,
 
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3566-box-demo.dts     | 505 ++++++++++++++++++
- 2 files changed, 506 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+On Fri, Nov 04, 2022 at 04:54:31PM -0500, Rob Herring wrote:
+> On Wed, 02 Nov 2022 14:44:59 -0400, Krzysztof Kozlowski wrote:
+> > Define the type of monitored-battery in power-supply.yaml common schema.
+> > Reference the schema where applicable to enforce the above in bindings
+> > which have monitored-battery property.
+> >=20
+> > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> >=20
+> > ---
+> >=20
+> > Changes since v1:
+> > 1. Re-work the patch - define the type in power-supply.yaml.
+> > ---
+> >  Documentation/devicetree/bindings/mfd/ene-kb930.yaml        | 6 +++---
+> >  Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml   | 2 ++
+> >  Documentation/devicetree/bindings/power/supply/bq27xxx.yaml | 2 --
+> >  .../devicetree/bindings/power/supply/ingenic,battery.yaml   | 4 ++--
+> >  .../devicetree/bindings/power/supply/power-supply.yaml      | 6 ++++++
+> >  .../devicetree/bindings/power/supply/rohm,bd99954.yaml      | 1 +
+> >  .../devicetree/bindings/power/supply/sc2731-charger.yaml    | 1 -
+> >  7 files changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 50942086490d..832613143030 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -72,6 +72,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-box-demo.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-new file mode 100644
-index 000000000000..c1fa39a569dc
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-@@ -0,0 +1,505 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/*
-+ * Author: Piotr Oniszczuk piotr.oniszczuk@gmail.com
-+ * Based on Quartz64 DT by: Peter Geis pgwipeout@gmail.com
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
-+#include "rk3566.dtsi"
-+
-+/ {
-+	model = "Rockchip RK3566 BOX DEMO Board";
-+	compatible = "rockchip,rk3566-box-demo", "rockchip,rk3566";
-+
-+	aliases {
-+		ethernet0 = &gmac1;
-+		mmc0 = &sdmmc0;
-+		mmc1 = &sdmmc1;
-+		mmc2 = &sdhci;
-+	};
-+
-+	chosen: chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac1_clkin: external-gmac1-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac1_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_out_con>;
-+			};
-+		};
-+	};
-+
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio4 RK_PC3 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&ir_int>;
-+		linux,rc-map-name = "rc-beelink-gs1";
-+		status = "okay";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		led_work: led-0 {
-+			gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
-+			function = LED_FUNCTION_HEARTBEAT;
-+			color = <LED_COLOR_ID_BLUE>;
-+			linux,default-trigger = "heartbeat";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&led_work_en>;
-+		};
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		status = "okay";
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&pmucru CLK_RTC_32K>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h &wifi_32k>;
-+		reset-gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	spdif_dit: spdif-dit {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
-+	};
-+
-+	spdif_sound: spdif-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&spdif_dit>;
-+		};
-+	};
-+
-+	vcc12v0_dcin: regulator-vcc12v0-dcin {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v0_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v0_dcin>;
-+	};
-+
-+	vcc3v3_sys: regulator-vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc12v0_dcin>;
-+	};
-+
-+	vcc_3v3: regulator-vcc-3v3 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_3v3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vcc5v0_usb_host: regulator-vcc5v0-usb-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb_host_en>;
-+		regulator-name = "vcc5v0_usb_host";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb2_otg: regulator-vcc5v0-usb2-otg {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb2_otg_en>;
-+		regulator-name = "vcc5v0_usb_otg";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcca_1v8: regulator-vcca-1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcca_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vdda_0v9: regulator-vdda-0v9 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdda_0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vdd_fixed: regulator-vdd-fixed {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_fixed";
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_cpu: regulator-vdd-cpu {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		regulator-name = "vdd_cpu";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1200000>;
-+		regulator-init-microvolt = <950000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-settling-time-up-us = <250>;
-+		pwm-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_logic: regulator-vdd-logic {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 1>;
-+		regulator-name = "vdd_logic";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1100000>;
-+		regulator-init-microvolt = <950000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-settling-time-up-us = <250>;
-+		pwm-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&combphy1 {
-+	status = "okay";
-+};
-+
-+&combphy2 {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&gmac1 {
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-+	assigned-clock-parents =  <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1m1_miim
-+		    &gmac1m1_tx_bus2
-+		    &gmac1m1_rx_bus2
-+		    &gmac1m1_rgmii_clk
-+		    &gmac1m1_rgmii_bus
-+		    &gmac1m1_clkinout>;
-+	snps,reset-gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	/* Reset time is 20ms, 100ms for rtl8211f */
-+	snps,reset-delays-us = <0 20000 100000>;
-+
-+	tx_delay = <0x4f>;
-+	rx_delay = <0x2d>;
-+	phy-handle = <&rgmii_phy1>;
-+	status = "okay";
-+};
-+
-+&mdio1 {
-+	rgmii_phy1: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+	};
-+};
-+
-+&hdmi {
-+	assigned-clocks = <&cru CLK_HDMI_CEC>;
-+	assigned-clock-rates = <32768>;
-+	avdd-0v9-supply = <&vdda_0v9>;
-+	avdd-1v8-supply = <&vcca_1v8>;
-+	status = "okay";
-+};
-+
-+&hdmi_in {
-+	hdmi_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi>;
-+	};
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&gpu {
-+	status = "okay";
-+};
-+
-+&i2s0_8ch {
-+	status = "okay";
-+};
-+
-+&i2s1_8ch {
-+	rockchip,trcm-sync-tx-only;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	bt {
-+		bt_enable_h: bt-enable-h {
-+			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_host_wake_l: bt-host-wake-l {
-+			rockchip,pins = <2 RK_PC0 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		bt_wake_l: bt-wake-l {
-+			rockchip,pins = <2 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wifi_32k: wifi-32k {
-+			rockchip,pins = <0 RK_PB0 2 &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		vcc5v0_usb_host_en: vcc5v0_usb_host_en {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vcc5v0_usb2_otg_en: vcc5v0_usb2_otg_en {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+	};
-+
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	led {
-+		led_work_en: led_work_en {
-+			rockchip,pins = <0 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs200-1_8v;
-+	non-removable;
-+	status = "okay";
-+};
-+
-+&sdmmc0 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
-+	vmmc-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&sdmmc1 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcca_1v8>;
-+	status = "okay";
-+};
-+
-+&spdif {
-+	status = "okay";
-+};
-+
-+&spi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi1m1_cs0 &spi1m1_pins>;
-+};
-+
-+&tsadc {
-+	/* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-mode = <1>;
-+	/* tshut polarity 0:LOW 1:HIGH */
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&uart1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn>;
-+	status = "okay";
-+	uart-has-rtscts;
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&pmucru CLK_RTC_32K>;
-+		clock-names = "ext_clock";
-+		device-wake-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		host-wake-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-+		vbat-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcca_1v8>;
-+	};
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&vop {
-+	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-+	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi_in_vp0>;
-+	};
-+};
-+
-+&vpu {
-+	status = "okay";
-+};
-+
-+&vdpu_mmu {
-+	status = "okay";
-+};
-+
-+&usb2phy0_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy0_otg {
-+	vbus-supply = <&vcc5v0_usb2_otg>;
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy1_otg {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy1 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_xhci {
-+	status = "okay";
-+};
--- 
-2.34.1
+Thanks, queued.
 
+-- Sebastian
+
+--b4bt64bo4i7jwi3n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmNmxZoACgkQ2O7X88g7
++prHnBAAoPZTWzrs6l6hUkEYVyqFlmO+8R2RwkF+0vpSS/vXtrs6KFN0L3im5zh3
+zj7BN0D9SJHSwYtl7bbJCAizZ9dzwLS8EFZq+6gKoh8wRQ+Y4WJCVeUhCwUMFzGI
+7rHzct8qpnjxkjwGCjb9Oip3dP2CE6YAad0QurUb/5xKQMZJhevi8xy19bURb9NS
+fqyuwHP4B41pVl/nosS8ssEyeiF6Wg0ypsXi+0nyiKHVHw/8ZOzSAM60crPVdFpi
+XGxv06qabil3Y9TmwxDHdSwKBzi37PK8QtMK2KvSQRb/lwVDw+ZsVuWQrOCoDYLI
+r/Rwy1YZmrQYYvcAMKaSZyQ0oTz9uv7SgIvfa+Yp/i/dCno9Z4NNgKh/ao84AHSk
+rPEQkaxHc6kNZ94H3dGBVaEW/kW+opU1IRk6ozA879KRPd8d4XWhakpigJ195jgd
+vzvOdmTTaW6sU1wiOeKSzTKUaCUFTTrVjO7F+ahqZtxTWv3rukR0vswbubPV2ors
+TaGUZtPJo1TM4yk12IOtXJcBKp1W/HFEGqOHvSI71fmF3zYguoht067emWduslH/
+1r4CvY2LI+oRMm6FR0yNx6GmPXhXRkmqh5tbV2zDaAlJ4/wYI2YaVumrYkjFEQWu
+zMMcrlBhLsDm/sPnMNirjWaBfUhm6e5i/IWzAsM9+vtBgtYkwQc=
+=d/iP
+-----END PGP SIGNATURE-----
+
+--b4bt64bo4i7jwi3n--
+
+
+--===============0884819067187883835==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0884819067187883835==--
+
