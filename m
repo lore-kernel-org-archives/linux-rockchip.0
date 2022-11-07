@@ -4,55 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA54AC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Nov 2022 13:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F857C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Nov 2022 14:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0jacp1Ve7EDjj//rnBZgKGhR88Lw+DNIHVLyz54Orb8=; b=WLij+MScGXrRaI
-	++22zTFCz3gO73jGyMzKXqnxZzo8G8i7HLWK0XsBksi3kjbbSgBhmK0hglsfyRGqb+9w2vTLKjyUM
-	mLR5XloP2FlWqZ/3QTuiTZMKagv4FlDyU9bsiq1IaMY4pFkaTFDHy+egvxrhH78x/ep/Wb9K95X/P
-	DnlCrxyviooXbcfkwqzIdT3xSMAQ8m6ni/pbQicChCBtt6b8bmm5E4VfUduogXfnRqGa9WhLpJZ6n
-	dE/lMZO9oZe5sJHvcp4Yk6dpCJaEzhqK41yHSWoJBD7asjNCmqx/KZsaCziJaC8QGJqxhBJWsDj+t
-	iv+0WKhRiFLbkbK5XlYQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IsL/s1kEXcX05z4eeyrYuV8OrZ6RlemZ8iSfmNtFjTk=; b=sC6p5YtVJ6BRta
+	DVlVuuYBLNB9nkID/mu1ERkvCnAEJzkOCaj0gGTkqT3JYHZiQyui5HvNG573XkG7LexUU/3g10Juq
+	p97YOXc+9FDnNiWBLym/Ae9O6G3MiGkVAcPNOdmrtmNHkh1EQl3qfuZEc2qrk6rH29WKX2ebUz+Z5
+	FZi+EK8sIYy0j/BZu9H6rA5ybKBOETbizfF+2RgXIbNVKCI8hUecNvN3/jihyLZ3S81BmI30MoDT8
+	opqwuUUCjalDFW6IADH6vcBtysRxim0DV+kVm62tT120pcAO8B4UXYplUBQHI/oMXyFpjAgJElNQO
+	qm+j0wHNCYgWa3GRnjYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os1lc-00EdRR-8I; Mon, 07 Nov 2022 13:02:20 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1os3V6-00FPAe-Ag; Mon, 07 Nov 2022 14:53:24 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os1lP-00EdKP-WD; Mon, 07 Nov 2022 13:02:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1667826120; bh=Z5HZQ0FJ5zop6RxxhYVUF6pwXoF1Wmv4094FaI/3RFs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=n8Q020NDFCcVdsopFtB8ts4Gk0wCoh5ew+3NXPQL6DBMcHNBJz8cYvtO4pGdraY8x
-	 KRiHiA89QGcLSSNvckYb2RwEmDEa6NwaKMNvBHTOqiLptjOrwZRBiFrlP8itzXuzS8
-	 pmwwV2vKj5YyWNyzSKJZY9tklB8a2fXP6EVLwBLE=
-From: Ondrej Jirman <megi@xff.cz>
-To: linux-rockchip@lists.infradead.org
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v3] arm64: dts: rockchip: rk356x: Fix PCIe register map and ranges
-Date: Mon,  7 Nov 2022 14:01:56 +0100
-Message-Id: <20221107130157.1425882-1-megi@xff.cz>
+	id 1os3Gc-00FHq3-1J
+	for linux-rockchip@lists.infradead.org; Mon, 07 Nov 2022 14:38:27 +0000
+Received: by mail-ej1-x635.google.com with SMTP id bj12so30566511ejb.13
+        for <linux-rockchip@lists.infradead.org>; Mon, 07 Nov 2022 06:38:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=1m3WexH3gXC/W93bwft/1e2FdQuh2bz86DBo3IQGDFA=;
+        b=nxt1innCOUnItJ/vSC+ZnoISLb3/4mNbDHY1tcDU12La8mVlS/4nwaGXgUAf2HKjkJ
+         dmvmu8PrmCBoPoWIJY3Pq+RTcR7Hhxdw3MGuHmMCTE+WRJ0hvHBxaIb0Mm3XDRZT1EfZ
+         i8+b/5FA+VNsDeAiASZmK9JY4BvKzw/fv+FQKtleYjn38uQVIYF4EvFvbZ7k4508G1pH
+         7s7XcC0TVXgQh9KwmZGjqLA2IOzrzHg1rAiRvVEYqUUmvyqz4FAbtqwpFgh12dGdQ9Mj
+         E4bLe96XeHpvQccNB9RtYzTsOhYLbRBBS21qCn0Ijo+xCPHojPcpcJv26/GzqkKQSC9x
+         ZrjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1m3WexH3gXC/W93bwft/1e2FdQuh2bz86DBo3IQGDFA=;
+        b=AzPtc75sb7n1VUH3B+m3wOJrOgmvnIMtxboGLYrmwrYgEbo8cySnS36LPr2St5ZSQv
+         tIKLg6lxWi0ndmWQvxK9O1yWdF2Fl010edtEHIm8jIJ87e0/n5ii0p2NEvUEu51a7069
+         n4KGMHPZhuKRbAZANHXipKrdhtlHkvr/+Z+K2hAJkPNv62N8PHFzIJ1nzgK7uSjnRGfl
+         ADYx8SaDz1783AXiYXNOgo641c1NAHl0H22voBiWD72UAWhgSDKk+P6tE1Q386BiK4iR
+         pjqq2Awx6W6/uzR63edQD4WTHLkQTuCSFtC3VnbNLDThtxX+sE3aOkzN9TgAVZ+nArUt
+         ZWCQ==
+X-Gm-Message-State: ACrzQf1M+URBWIA0JEYAH3empdRJYqPvW+pLUnjeLliqdqE8p6jxDZQB
+	KjVVZyaw8bCdI3lK4yNAWqhl5advXYu9E+mAjksb+Q==
+X-Google-Smtp-Source: AMsMyM6+xtL8+Yj7c1bt1AQJ6bqIcZFaL33G19BOfGXBGRhC9sazlQqdgMff+YbzEMnfzPenUeDbPgvidKxKz3dQW10=
+X-Received: by 2002:a17:907:c1e:b0:7ae:31a0:571e with SMTP id
+ ga30-20020a1709070c1e00b007ae31a0571emr16628108ejc.690.1667831901503; Mon, 07
+ Nov 2022 06:38:21 -0800 (PST)
 MIME-Version: 1.0
+References: <20221017-upstream-px30-cif-clkoutm1-v1-0-4ea1389237f7@theobroma-systems.com>
+In-Reply-To: <20221017-upstream-px30-cif-clkoutm1-v1-0-4ea1389237f7@theobroma-systems.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 7 Nov 2022 15:38:10 +0100
+Message-ID: <CACRpkdZQ45ocGsZ372apH1gTG3ORofPwn2bZtJjDT-=nkWzgUg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: list all pins in a possible mux route
+ for PX30
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: heiko@sntech.de, david.wu@rock-chips.com, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_050208_536022_2DF3EEA2 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20221107_063826_207086_0B235A3A 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,73 +88,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I have two Realtek PCIe wifi cards connected over the 4 port PCIe bridge
-to Quartz64-A. The cards fail to work, when nvme SSD is connected at the
-same time to the bridge. Without nvme connected, cards work fine. The
-issue seems to be related to mixed use of devices which make use of I/O
-ranges and memory ranges.
+On Tue, Oct 18, 2022 at 2:17 PM Quentin Schulz <foss+kernel@0leil.net> wrote:
 
-This patch changes I/O, MEM and config mappings so that these use the
-32bit outbound address space at  0xf4000000, and 64bit MEM range uses
-the whole 0x3_0000_0000 outbound address range.
+> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+>
+> The mux routes are incomplete for the PX30. This was discovered because
+> we had a HW design using cif-clkoutm1 with the correct pinmux in the
+> Device Tree but the clock would still not work.
+>
+> There are actually two muxing required: the pin muxing (performed by the
+> usual Device Tree pinctrl nodes) and the "function" muxing (m0 vs m1;
+> performed by the mux routing inside the driver). The pin muxing was
+> correct but the function muxing was not.
+>
+> This adds the missing pins and their configuration for the mux routes
+> that are already specified in the driver.
+>
+> Note that there are some "conflicts": it is possible *in Device Tree* to
+> (attempt to) mux the pins for e.g. clkoutm1 and clkinm0 at the same time
+> but this is actually not possible in hardware (because both share the
+> same bit for the function muxing). Since it is an impossible hardware
+> design, it is not deemed necessary to prevent the user from attempting
+> to "misconfigure" the pins/functions.
+>
+> Fixes: 87065ca9b8e5 ("pinctrl: rockchip: Add pinctrl support for PX30")
+> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-These values were suggested by pgwipeout:
+Patch applied.
 
-  https://lore.kernel.org/lkml/875ygbsrf3.fsf@bloch.sibelius.xs4all.nl/T/#m84b5f6992cc26dffe0d3783c0d8c9c86e5e10c10
-
-This is identical to how BSP does the mappings.
-
-This change to the regs/ranges makes the issue go away and both nvme and
-wifi cards work when connected at the same time to the bridge. I tested
-the nvme with large amount of reads/writes, both behind the PCIe bridge
-and when directly connected to Quartz64-A board.
-
-Signed-off-by: Ondrej Jirman <megi@xff.cz>
----
-v3:
-- changed ranges to the ones suggested by pgwipeout
-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 164708f1eb67..726c948ccbf0 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -951,7 +951,8 @@ pcie2x1: pcie@fe260000 {
- 		compatible = "rockchip,rk3568-pcie";
- 		reg = <0x3 0xc0000000 0x0 0x00400000>,
- 		      <0x0 0xfe260000 0x0 0x00010000>,
--		      <0x3 0x3f000000 0x0 0x01000000>;
-+		      <0x0 0xf4000000 0x0 0x00100000>;
-+
- 		reg-names = "dbi", "apb", "config";
- 		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
-@@ -973,15 +974,17 @@ pcie2x1: pcie@fe260000 {
- 				<0 0 0 4 &pcie_intc 3>;
- 		linux,pci-domain = <0>;
- 		num-ib-windows = <6>;
--		num-ob-windows = <2>;
-+		num-ob-windows = <8>;
- 		max-link-speed = <2>;
- 		msi-map = <0x0 &gic 0x0 0x1000>;
- 		num-lanes = <1>;
- 		phys = <&combphy2 PHY_TYPE_PCIE>;
- 		phy-names = "pcie-phy";
- 		power-domains = <&power RK3568_PD_PIPE>;
--		ranges = <0x01000000 0x0 0x3ef00000 0x3 0x3ef00000 0x0 0x00100000
--			  0x02000000 0x0 0x00000000 0x3 0x00000000 0x0 0x3ef00000>;
-+		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-+			<0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x01e00000>,
-+			<0x03000000 0x0 0x40000000 0x3 0x00000000 0x0 0x40000000>;
-+
- 		resets = <&cru SRST_PCIE20_POWERUP>;
- 		reset-names = "pipe";
- 		#address-cells = <3>;
--- 
-2.38.1
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
