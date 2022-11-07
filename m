@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F857C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Nov 2022 14:53:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A4CC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Nov 2022 17:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsL/s1kEXcX05z4eeyrYuV8OrZ6RlemZ8iSfmNtFjTk=; b=sC6p5YtVJ6BRta
-	DVlVuuYBLNB9nkID/mu1ERkvCnAEJzkOCaj0gGTkqT3JYHZiQyui5HvNG573XkG7LexUU/3g10Juq
-	p97YOXc+9FDnNiWBLym/Ae9O6G3MiGkVAcPNOdmrtmNHkh1EQl3qfuZEc2qrk6rH29WKX2ebUz+Z5
-	FZi+EK8sIYy0j/BZu9H6rA5ybKBOETbizfF+2RgXIbNVKCI8hUecNvN3/jihyLZ3S81BmI30MoDT8
-	opqwuUUCjalDFW6IADH6vcBtysRxim0DV+kVm62tT120pcAO8B4UXYplUBQHI/oMXyFpjAgJElNQO
-	qm+j0wHNCYgWa3GRnjYA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MS7fJgQK3wrWmEV+nQ0UwOCBeYKCGMLCk3FhFw1OzpY=; b=RaGyvZbnNpTe6l
+	DlJ8ZK3mceKDdfCN21rZG6Le802DscEPRYLaYkMHiCnSI1U5rlghwN39rrFsm1mpkAymYULieeGHQ
+	+dPLhRgT6V6ob5Y8jhZJ8xlJ+t1kK37EjPB1FHlQOmBJIlT9wGmbwqgBjaX6DrmJGeTLzE6Z597zS
+	LGAdlPlkW07mI/tDoF+1J5BUxmBlM3Ku/IhRYi0usD8aCOLtBMhJ+z7vk12clyF8nByQ4LNEDGcYt
+	atJI1SCSyVBtFzs4RkcaTlEWRZsXhDsN6x9FSe4/1jGi90VilDKCXuRSDtbS5R/MoAhouxdiE8Q8w
+	4QPREuiCBDmnZPFNP2uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3V6-00FPAe-Ag; Mon, 07 Nov 2022 14:53:24 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1os5zx-00GiUJ-Ul; Mon, 07 Nov 2022 17:33:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3Gc-00FHq3-1J
-	for linux-rockchip@lists.infradead.org; Mon, 07 Nov 2022 14:38:27 +0000
-Received: by mail-ej1-x635.google.com with SMTP id bj12so30566511ejb.13
-        for <linux-rockchip@lists.infradead.org>; Mon, 07 Nov 2022 06:38:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1m3WexH3gXC/W93bwft/1e2FdQuh2bz86DBo3IQGDFA=;
-        b=nxt1innCOUnItJ/vSC+ZnoISLb3/4mNbDHY1tcDU12La8mVlS/4nwaGXgUAf2HKjkJ
-         dmvmu8PrmCBoPoWIJY3Pq+RTcR7Hhxdw3MGuHmMCTE+WRJ0hvHBxaIb0Mm3XDRZT1EfZ
-         i8+b/5FA+VNsDeAiASZmK9JY4BvKzw/fv+FQKtleYjn38uQVIYF4EvFvbZ7k4508G1pH
-         7s7XcC0TVXgQh9KwmZGjqLA2IOzrzHg1rAiRvVEYqUUmvyqz4FAbtqwpFgh12dGdQ9Mj
-         E4bLe96XeHpvQccNB9RtYzTsOhYLbRBBS21qCn0Ijo+xCPHojPcpcJv26/GzqkKQSC9x
-         ZrjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1m3WexH3gXC/W93bwft/1e2FdQuh2bz86DBo3IQGDFA=;
-        b=AzPtc75sb7n1VUH3B+m3wOJrOgmvnIMtxboGLYrmwrYgEbo8cySnS36LPr2St5ZSQv
-         tIKLg6lxWi0ndmWQvxK9O1yWdF2Fl010edtEHIm8jIJ87e0/n5ii0p2NEvUEu51a7069
-         n4KGMHPZhuKRbAZANHXipKrdhtlHkvr/+Z+K2hAJkPNv62N8PHFzIJ1nzgK7uSjnRGfl
-         ADYx8SaDz1783AXiYXNOgo641c1NAHl0H22voBiWD72UAWhgSDKk+P6tE1Q386BiK4iR
-         pjqq2Awx6W6/uzR63edQD4WTHLkQTuCSFtC3VnbNLDThtxX+sE3aOkzN9TgAVZ+nArUt
-         ZWCQ==
-X-Gm-Message-State: ACrzQf1M+URBWIA0JEYAH3empdRJYqPvW+pLUnjeLliqdqE8p6jxDZQB
-	KjVVZyaw8bCdI3lK4yNAWqhl5advXYu9E+mAjksb+Q==
-X-Google-Smtp-Source: AMsMyM6+xtL8+Yj7c1bt1AQJ6bqIcZFaL33G19BOfGXBGRhC9sazlQqdgMff+YbzEMnfzPenUeDbPgvidKxKz3dQW10=
-X-Received: by 2002:a17:907:c1e:b0:7ae:31a0:571e with SMTP id
- ga30-20020a1709070c1e00b007ae31a0571emr16628108ejc.690.1667831901503; Mon, 07
- Nov 2022 06:38:21 -0800 (PST)
+	id 1os5zt-00GiPn-Tq
+	for linux-rockchip@lists.infradead.org; Mon, 07 Nov 2022 17:33:24 +0000
+Received: from jupiter.universe (dyndsl-091-096-035-235.ewe-ip-backbone.de [91.96.35.235])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B647166023A6;
+	Mon,  7 Nov 2022 17:33:13 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667842393;
+	bh=I5nGG6JUHVwZMZBXP5eZJMglpJE+L4055H0JxM8aqmQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=DK/qrYG9emNCkBmFd7xouyl498094nEf54CsaYY7LZNAOnKxDLckx+AHlcCzlGEYo
+	 GHJ9MPQJ534/Eb5+NUZD0Yg54P5gSWLaiBxDCVffYfHR/YhWXCwri4LVoQ/d11bcnL
+	 R97c8TMX6HYqFR8/MkUu05qR8iLByGByVBssdM13kDHmRJnKT8cdTNOHM5Hj+ZfRgf
+	 /LRcZtfa/k8Y9QX3aEaAw6vUQAZik1dyORpuP06dTAiNufFWSZgNIJgqcYtjZTWX+P
+	 sKFNtIVzoFHAPTQIrRSvk3AzPMzbHUeubYzrLZZERFGNWF5UV0RLUFj7a9y/+Sykdb
+	 1UbxE5b/hUbVg==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id D15B148011F; Mon,  7 Nov 2022 18:33:11 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Jisheng Zhang <jszhang@kernel.org>,
+	linux-mmc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv2 1/1] dt-bindings: mmc: sdhci-of-dwcmhsc: Add reset support
+Date: Mon,  7 Nov 2022 18:33:10 +0100
+Message-Id: <20221107173310.60503-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20221017-upstream-px30-cif-clkoutm1-v1-0-4ea1389237f7@theobroma-systems.com>
-In-Reply-To: <20221017-upstream-px30-cif-clkoutm1-v1-0-4ea1389237f7@theobroma-systems.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 7 Nov 2022 15:38:10 +0100
-Message-ID: <CACRpkdZQ45ocGsZ372apH1gTG3ORofPwn2bZtJjDT-=nkWzgUg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: rockchip: list all pins in a possible mux route
- for PX30
-To: Quentin Schulz <foss+kernel@0leil.net>
-Cc: heiko@sntech.de, david.wu@rock-chips.com, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_063826_207086_0B235A3A 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20221107_093322_115344_19F092EB 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +79,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 18, 2022 at 2:17 PM Quentin Schulz <foss+kernel@0leil.net> wrote:
+Properly describe reset related properties in the binding.
 
-> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
->
-> The mux routes are incomplete for the PX30. This was discovered because
-> we had a HW design using cif-clkoutm1 with the correct pinmux in the
-> Device Tree but the clock would still not work.
->
-> There are actually two muxing required: the pin muxing (performed by the
-> usual Device Tree pinctrl nodes) and the "function" muxing (m0 vs m1;
-> performed by the mux routing inside the driver). The pin muxing was
-> correct but the function muxing was not.
->
-> This adds the missing pins and their configuration for the mux routes
-> that are already specified in the driver.
->
-> Note that there are some "conflicts": it is possible *in Device Tree* to
-> (attempt to) mux the pins for e.g. clkoutm1 and clkinm0 at the same time
-> but this is actually not possible in hardware (because both share the
-> same bit for the function muxing). Since it is an impossible hardware
-> design, it is not deemed necessary to prevent the user from attempting
-> to "misconfigure" the pins/functions.
->
-> Fixes: 87065ca9b8e5 ("pinctrl: rockchip: Add pinctrl support for PX30")
-> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20221021171654.87071-1-sebastian.reichel@collabora.com/
+ * dropped minItems (Krzysztof Kozlowski)
+ * reset-names are not copy pasted and intentionally the same as
+   the clock-names. DT looks like this:
 
-Patch applied.
+   clocks = <&cru CCLK_EMMC>, <&cru HCLK_EMMC>,
+            <&cru ACLK_EMMC>, <&cru BCLK_EMMC>,
+            <&cru TMCLK_EMMC>;
+   clock-names = "core", "bus", "axi", "block", "timer";
+   resets = <&cru SRST_C_EMMC>, <&cru SRST_H_EMMC>,
+            <&cru SRST_A_EMMC>, <&cru SRST_B_EMMC>,
+            <&cru SRST_T_EMMC>;
+   reset-names = "core", "bus", "axi", "block", "timer";
+---
+ .../devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml   | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Yours,
-Linus Walleij
+diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+index 71f8e726d641..51ba44cad842 100644
+--- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
++++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+@@ -45,6 +45,17 @@ properties:
+       - const: block
+       - const: timer
+ 
++  resets:
++    maxItems: 5
++
++  reset-names:
++    items:
++      - const: core
++      - const: bus
++      - const: axi
++      - const: block
++      - const: timer
++
+   rockchip,txclk-tapnum:
+     description: Specify the number of delay for tx sampling.
+     $ref: /schemas/types.yaml#/definitions/uint8
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
