@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52C28C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Nov 2022 04:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05EA0C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Nov 2022 17:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W6Ss/eP8bR5YynQ8cYQFkZrak2KECgoB9Uf0Vlvp4RU=; b=DZl0VF8VGGx0Jp
-	yHPekdigbkiGZG+/Ciic+FKVEkmhdZp97Z3+xNWuARVAD7g9lcNZOEuue4/JTOusF0PuaHRswdKqd
-	N3e/XaIP9UodgWZlbSBLz6H6K3Wyyy5kAHVaCoLJMpF3H2YBq1E5WwcIsevCbpo8UyqLRaJFAkBnp
-	Am+fApL9yFSWRHs2kysYwjVVTB3DNvo6GE2j/+rDqSbfUsbbU4fak6RtppNH1GXNn/+ICY6ewZ62c
-	BH9qp2hIn0FAEGOMmdOYsfYtRGaMG/Y7T/9+NoPKU4oTp5FQIgAfHfpRTEaAD+li5FD3zpo/YahTC
-	b/F64n26+WYB3ocWe+hg==;
+	List-Owner; bh=DsFp09DnbKRASNYypYijWFRo87N/YBFAYSZEyua4hUc=; b=aqc0lhyggH0qnn
+	BgeYmVvL4JijNExJ2LTowhRKQ6fuEYdHxbQyjLi07zWUoWNn9MtQ34Eld3oFGuW/lVX0DdIw4BgG5
+	k14NP/N+wl/fOhpSn8VgLQod9wgaV7lmzmBxM6pfS1Z7jNZmxvH8eT0xLRm1sezUILdidf0AbmGyx
+	PuoTeutw5KyJOWxL4n08omtPypoEuxCnDLldpcn7vrF628enkXkFeNVgPHEnvwr4bNvu306yLQZeX
+	wkItFjFkVU+Y9JIInq/KNIjQDtWC2LNMSbCJ9IJ1RHAVIvnMptL+jJt+esraJPEA1Q7Ki6LE62i68
+	DeF0pxqQwbzrMOSZXXTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osG42-002cFk-OZ; Tue, 08 Nov 2022 04:18:18 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1osSBw-006z8r-Na; Tue, 08 Nov 2022 17:15:16 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osG18-002ae8-SM
-	for linux-rockchip@lists.infradead.org; Tue, 08 Nov 2022 04:15:21 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 64so12359428pgc.5
-        for <linux-rockchip@lists.infradead.org>; Mon, 07 Nov 2022 20:15:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TYyNTGIwXr/GE3idzYmzpH2DtKCuhncte1jYNZp9aAc=;
-        b=OAgv1jX6xzIECtZXDJMubwEYPjmOTnnJhBukpuLkJaed7E1GWrna9MWzcipU/aKDFd
-         dWR2T54wiv6YlJmA1VuIdVcz4WJ7gnYY1fLPsAFC4Slpp2k7DkLWTszL9jEOIs+IoFwv
-         7nARqDQil+0fEpPac9JzR8K/IFVnC1Dh0RrlKmzI8p4o5Ee7ftrcAHSzFYtCKKYyVSmx
-         4O0CntLKneKNVJOU7A7d07pkt6CZD+8w8tw2Brppqhd2EUkRx3SdRqqX1RX5Cqj/eqOa
-         AEEzWqu/H1VDqCuIA6rGnAERpnSCm545MtrG8vKSDufZG1j0xaWFW9oqZmgHrX3wV+Tt
-         aHbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TYyNTGIwXr/GE3idzYmzpH2DtKCuhncte1jYNZp9aAc=;
-        b=5Imp3FjFz1Sygkl6L+9B5eeW4RWLQvzIkMWx/gL9OO9FsMCISe7eLBOA8/bpou+fBq
-         J5jYWGqlA3JLjY5X83+nw5Ka/YxF6TeVWTqq2ujFMP0hotSlKz1HEqYhtCQB2DxePZZE
-         Lm41vlfS0I+zDyHSBD4mNxKfl9t1nngImEMv1GbE0RaVf9UJkMVyY7Mgbmna0San27eQ
-         UerNdKZfSrOWP9geusOGQEeT9jg//iOXP/oKiUoBIvLSwNmJchbAGtqq+F7XnYyJLhf2
-         cXSArkL393eueneOKikzbJIV7BE8VSz6EJqpEIeAsWXOV93uFtQFBOuaVelvj9ZVriUo
-         wL+g==
-X-Gm-Message-State: ACrzQf1zEAtvsherTx6nL1zKWtn1oy7A+oojiWEZeAyGnOHnJD1ll42W
-	t99SrvQ6cSz+zi4T9JKzTNPu6Q==
-X-Google-Smtp-Source: AMsMyM6Xjnc2MFXNPjQNxB4+JepsOpRNFHKjnNYWo28X1Agifr4p7e+WBqh5KMeLQE8UzAFkBP72UA==
-X-Received: by 2002:a65:6702:0:b0:470:15c5:4363 with SMTP id u2-20020a656702000000b0047015c54363mr24853682pgf.546.1667880917243;
-        Mon, 07 Nov 2022 20:15:17 -0800 (PST)
-Received: from localhost.localdomain ([2405:201:c00a:a809:63d1:2564:ea55:4e97])
-        by smtp.gmail.com with ESMTPSA id e5-20020a170902b78500b00186ac812ab0sm5799783pls.83.2022.11.07.20.15.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Nov 2022 20:15:17 -0800 (PST)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org,
+	id 1osSBr-006z5f-HG
+	for linux-rockchip@lists.infradead.org; Tue, 08 Nov 2022 17:15:14 +0000
+Received: from jupiter.universe (dyndsl-095-033-156-208.ewe-ip-backbone.de [95.33.156.208])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F6C366029A2;
+	Tue,  8 Nov 2022 17:15:07 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667927707;
+	bh=ABsQlzYN9vlF8teFAzW39D9CY03kvfFVG9pZHBiMW6s=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=n76/6slnNLMXaqmABfuZqec08b/NrKCdipCLrLNc8kTLBUrZm2M//SeeVQ65ih2fJ
+	 90rCWyWCVbXXuL/ocDxIqWUSNtrDArbH5uCVTjqYtx+aVanjD5QR/nw4KJEfAGWKd0
+	 7bx/OSByGAv63CEANMNUDyVDkcrX9wabmkxHb0JbLKI63nCY4vdOZX3tNk/5d9USbJ
+	 fNcuJ3pGyMY0r16wUkA2ffUJNQ1HFZh6blH3C9AEBrTuhiWfKEcnG/sbWnWk8iXqSO
+	 P0OhoBlQ0muAkIzxL68A262MMRmZkdhfbRssCAwx7qtyk3GC6jZ7bMs1HuccGdSuVV
+	 cooG0g2a6Mjhg==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 1896C480087; Tue,  8 Nov 2022 18:15:05 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Johan Jonker <jbx6244@gmail.com>,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v7 10/10] ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2) IO
-Date: Tue,  8 Nov 2022 09:44:00 +0530
-Message-Id: <20221108041400.157052-11-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221108041400.157052-1-jagan@edgeble.ai>
-References: <20221108041400.157052-1-jagan@edgeble.ai>
+	linux-kernel@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: Add rk3588-evb1 board
+Date: Tue,  8 Nov 2022 18:14:59 +0100
+Message-Id: <20221108171500.99599-5-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221108171500.99599-1-sebastian.reichel@collabora.com>
+References: <20221108171500.99599-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_201518_961593_F783331F 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20221108_091511_860503_DF940EDB 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,98 +82,213 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Neural Compute Module 2(Neu2) IO board is an industrial form factor
-evaluation board from Edgeble AI.
+From: Kever Yang <kever.yang@rock-chips.com>
 
-General features:
-- microSD slot
-- MIPI DSI connector
-- 2x USB Host
-- 1x USB OTG
-- Ethernet
-- mini PCIe
-- Onboard PoE
-- RS485, RS232, CAN
-- Micro Phone array
-- Speaker
-- RTC battery slot
-- 40-pin expansion
+Add board file for the RK3588 evaluation board. While the hardware
+offers plenty of peripherals and connectivity this basic implementation
+just handles things required to successfully boot Linux from eMMC,
+connect via UART or Ethernet.
 
-Neu2 needs to mount on top of this IO board in order to create complete
-Edgeble Neural Compute Module 2(Neu2) IO platform.
-
-Add support for it.
-
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+[rebase, update commit message, use EVB1 for SoC bringup]
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-Changes for v7:
-- none
-Changes for v6:
-- update the carrier name.
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 156 ++++++++++++++++++
+ 3 files changed, 162 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 
- arch/arm/boot/dts/Makefile                   |  1 +
- arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts | 38 ++++++++++++++++++++
- 2 files changed, 39 insertions(+)
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index e48cfbc4e8e4..40cc34bd4945 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1122,6 +1122,7 @@ dtb-$(CONFIG_ARCH_RENESAS) += \
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rv1108-elgin-r1.dtb \
- 	rv1108-evb.dtb \
-+	rv1126-edgeble-neu2-io.dtb \
- 	rk3036-evb.dtb \
- 	rk3036-kylin.dtb \
- 	rk3066a-bqcurie2.dtb \
-diff --git a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index c6c69a4e3777..4230881371fa 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -739,6 +739,11 @@ properties:
+           - const: rockchip,rk3568-bpi-r2pro
+           - const: rockchip,rk3568
+ 
++      - description: Rockchip RK3588 Evaluation board
++        items:
++          - const: rockchip,rk3588-evb1-v10
++          - const: rockchip,rk3588
++
+ additionalProperties: true
+ 
+ ...
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 8c15593c0ca4..12ed53de11eb 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -72,3 +72,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 new file mode 100644
-index 000000000000..ae1cf344239b
+index 000000000000..a9b8e0ed1125
 --- /dev/null
-+++ b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-@@ -0,0 +1,38 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -0,0 +1,156 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * Copyright (c) 2020 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++ *
 + */
 +
 +/dts-v1/;
-+#include "rv1126.dtsi"
-+#include "rv1126-edgeble-neu2.dtsi"
++
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/gpio/gpio.h>
++#include "rk3588.dtsi"
 +
 +/ {
-+	model = "Edgeble Neu2 IO Board";
-+	compatible = "edgeble,neural-compute-module-2-io",
-+		     "edgeble,neural-compute-module-2", "rockchip,rv1126";
++	model = "Rockchip RK3588 EVB1 V10 Board";
++	compatible = "rockchip,rk3588-evb1-v10", "rockchip,rk3588";
 +
 +	chosen {
 +		stdout-path = "serial2:1500000n8";
 +	};
++
++	vcc12v_dcin: vcc12v-dcin {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc12v_dcin";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc12v_dcin>;
++	};
++
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <
++			  0  20  20  21  21  22  22  23
++			 23  24  24  25  25  26  26  27
++			 27  28  28  29  29  30  30  31
++			 31  32  32  33  33  34  34  35
++			 35  36  36  37  37  38  38  39
++			 40  41  42  43  44  45  46  47
++			 48  49  50  51  52  53  54  55
++			 56  57  58  59  60  61  62  63
++			 64  65  66  67  68  69  70  71
++			 72  73  74  75  76  77  78  79
++			 80  81  82  83  84  85  86  87
++			 88  89  90  91  92  93  94  95
++			 96  97  98  99 100 101 102 103
++			104 105 106 107 108 109 110 111
++			112 113 114 115 116 117 118 119
++			120 121 122 123 124 125 126 127
++			128 129 130 131 132 133 134 135
++			136 137 138 139 140 141 142 143
++			144 145 146 147 148 149 150 151
++			152 153 154 155 156 157 158 159
++			160 161 162 163 164 165 166 167
++			168 169 170 171 172 173 174 175
++			176 177 178 179 180 181 182 183
++			184 185 186 187 188 189 190 191
++			192 193 194 195 196 197 198 199
++			200 201 202 203 204 205 206 207
++			208 209 210 211 212 213 214 215
++			216 217 218 219 220 221 222 223
++			224 225 226 227 228 229 230 231
++			232 233 234 235 236 237 238 239
++			240 241 242 243 244 245 246 247
++			248 249 250 251 252 253 254 255
++		>;
++		default-brightness-level = <200>;
++
++		pwms = <&pwm2 0 25000 0>;
++		power-supply = <&vcc12v_dcin>;
++	};
 +};
 +
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	card-detect-delay = <200>;
++&gmac0 {
++	phy-mode = "rgmii-rxid";
++	clock_in_out = "output";
++
++	snps,reset-gpio = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 20ms, 100ms for rtl8211f */
++	snps,reset-delays-us = <0 20000 100000>;
++
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_bus4 &sdmmc0_det>;
-+	rockchip,default-sample-phase = <90>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vccio_sd>;
++	pinctrl-0 = <&gmac0_miim
++		     &gmac0_tx_bus2
++		     &gmac0_rx_bus2
++		     &gmac0_rgmii_clk
++		     &gmac0_rgmii_bus>;
++
++	tx_delay = <0x43>;
++	rx_delay = <0x00>;
++
++	phy-handle = <&rgmii_phy>;
++	status = "okay";
++};
++
++&mdio0 {
++	rgmii_phy: phy@1 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0x1>;
++		#phy-cells = <0>;
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
 +	status = "okay";
 +};
 +
 +&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
++
++&i2c2 {
++	status = "okay";
++
++	hym8563: rtc@51 {
++		compatible = "haoyu,hym8563";
++		reg = <0x51>;
++		#clock-cells = <0>;
++		clock-output-names = "hym8563";
++		pinctrl-names = "default";
++		pinctrl-0 = <&hym8563_int>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
++		wakeup-source;
++	};
++};
++
++&pinctrl {
++	hym8563 {
++		hym8563_int: hym8563-int {
++			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&pwm2 {
 +	status = "okay";
 +};
 -- 
-2.25.1
+2.35.1
 
 
 _______________________________________________
