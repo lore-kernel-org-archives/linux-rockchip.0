@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AF74C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Nov 2022 18:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3061EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Nov 2022 20:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oyn9K3BYehtzqzsnm9MtsLennTX0Gq1TMLu/jGeK/Ms=; b=4sj4vPhSo2Ja/6
-	gAiFE2vM6J2KXYfGSq2QGa4PQIjnB8uf3Gwg6NMSjyBNyVed3xR6YquL6zIYfY43mue6azlW7W7AK
-	h4R1EGd1rvCPzb60/QkQwXQdXmN28UzAWqeVLaPvJ3YFnZfaod7/UojCquVQXg4Jc5LUh1vIZshvk
-	31JzQrbqQ6BBYQo8O0d99sT017yBGA6y5olSgsophUwHzs4V1pEglHQC2bu+7ym4goW7rRbN/W1pu
-	hiSwqeUKnwN86trMzL/N80VZ/T4Pfd5K0PmBPGkZ4XIxCRh0CUxkOENOU8hCLwIm5kTwAlGW4LLqX
-	Po/qZRsfMV3XQ03udoCA==;
+	List-Owner; bh=WXVNGRNI+a9sLAPJ0OMMR8+qzWF3vMgGZ+sLAwkBk10=; b=cjJpU9H9JLcGCK
+	Zw1upZYumJvu0bGbHHAGojxJUDD90jyllBICEkD8EbT0za7uj/g/5SfcqINYqfNQrfp+WE3u3bx3u
+	e4xCZv29qCfzaJWVf3xkfaycRSfIqnuRwBot+kAG9wr7ATUvQJ0zim5Lej2UDjX59WMYq+Azt82fL
+	EhY5G2KSb6K7y5FERNvvT1OU9WWHwiU4n9v4LB4P4dbmTydWyXakxO+0JPq8NcTjAnWuE/Qd0whli
+	5udttjxD9Fo+sUDuOm/6qy0hUcWfV8hh6x1I4mqN8TqlupFsxdLRba4mciDkZGHziWqVI9/3Xm8F4
+	fBP9GJDCb6sAo0mxfPFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osT7G-007OSM-5f; Tue, 08 Nov 2022 18:14:30 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1osV2B-0089pM-Gl; Tue, 08 Nov 2022 20:17:23 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osT6L-007NxA-KE
-	for linux-rockchip@lists.infradead.org; Tue, 08 Nov 2022 18:13:36 +0000
-Received: by mail-lf1-x130.google.com with SMTP id g12so22352237lfh.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 08 Nov 2022 10:13:31 -0800 (PST)
+	id 1osV20-0089nl-GO; Tue, 08 Nov 2022 20:17:13 +0000
+Received: by mail-ej1-x629.google.com with SMTP id kt23so41480999ejc.7;
+        Tue, 08 Nov 2022 12:17:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=HbRy3Yn8zVIZMpnViCKLzdpGPVd73KtafUDM0aTDS/o=;
-        b=XRPzAuFK8UDVqtzd6xneMNHNxOpFkeuZF8TeJ6/2tO1pAlFuW6Hnddef+UE5EZsDxR
-         +tOuD/jgdBHMhYW+nqLTI+L0v7eIdxrEoeqOPqmuBjcyVzI/+jbgWrjNwHya2S79Cvf7
-         gO92uhoM5XeMe5b0VF63OmvWB/R6mhQ9D9JHKZf+Q+HXzxhapVuyYsB/YLfOvmycpplp
-         BrbxodIfCB3wyxGll5w34MUr++JswmjhzH9ILOHieAXMRo9ILQ3rDBUSuwIt4EllIaG+
-         INSMKw8cilt3UasjJP3HzIHoGy0qgk7GD8PAe8cWxrDxKABCDiHTG4m2SYjEqGEaJkQw
-         7iOQ==
+        bh=ivwUB3TxkpDuXJp908hzufuq7Rzh5RQ7MUC0v+GMgWk=;
+        b=ilv6qw5K1ifcsexTZ+5hx382QXZdLdSlBhVtcaH7Qe3E84M0uMSWBdwNB2nYEXmSW7
+         0YAeOOJZdLhmbvzZzZvew+PH+KtijX0/omqMH4g8tAY0HDk5ar9TRoWJTNKYyS2LH9Ya
+         3eOHzyid1l/sUWMSIVW4QHAdPBBD5ZnroImqonAhzJa0ZS4q+2ZH+pb1x7M/5YpuIiFQ
+         sFg0BmVJ0w6EknYt1OEMbZossX0YDRvnwRU8lF/wtz2cfiJjAKWnr2QZ/2g7enCN2OV+
+         7HMNgOv0xNKCUbhpWU4/aOSUpETPwmw9BvzWgetAqDGbb49bImyNsQmAT1J9BRcHOves
+         leAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HbRy3Yn8zVIZMpnViCKLzdpGPVd73KtafUDM0aTDS/o=;
-        b=tt8XRE8F6oTNoDVmCSlKIN3oh43isamCQllYhlJ4rQnhmz8FmdmpcfZ2AA+y071TeW
-         kgtHENUayPCw8y7+d8fUCD48mhV+amIvGZyvpYpIPZ4xEZMbf6OCN2qqb9MyTXJYRrXg
-         Kzvl+XTtNfs3Dj1asw47L1ixwdzltsJb7DdcEHMpsyoYGtoOyYTOUW5XzvvdcOgNw60U
-         cOYoltbVAegb2fRnrZDtVgfBnKvhD9aTj11tn4Flk2nkzWuECdtqo1llZCYH2Uo9VKHQ
-         6kkZq5u5/GB7scxO6sEYILLn6Wmpo1pMaxhKFPJkK9nAV1n9hJAFLyN+6atnMUmNoPOo
-         VM4g==
-X-Gm-Message-State: ACrzQf1MoIxMGU7sSJ0eOo+qpmAOd11Ze4AuwMFyhMVvFtWjt+E88Nox
-	2vkFx0xwUIMIxOXP0PhAh4zSwQ==
-X-Google-Smtp-Source: AMsMyM5WEfVa3N0n9y2WWZhW7PbtyhtoV6F6Bcn3Fp7VEJ4rOKVkNBpcv0lO4QNFZIqAyD/V1XssWw==
-X-Received: by 2002:a05:6512:3b10:b0:4a4:74c5:de39 with SMTP id f16-20020a0565123b1000b004a474c5de39mr19092399lfv.626.1667931209772;
-        Tue, 08 Nov 2022 10:13:29 -0800 (PST)
-Received: from [192.168.0.20] (088156142199.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.199])
-        by smtp.gmail.com with ESMTPSA id f10-20020a05651232ca00b004a4754c5db5sm1861383lfg.244.2022.11.08.10.13.28
+        bh=ivwUB3TxkpDuXJp908hzufuq7Rzh5RQ7MUC0v+GMgWk=;
+        b=0/YOzlIJlqua1riOhEf2NgW7hVwQUrzk14CFGITMZGbLd3+zWDN6XwaBlDI3TNFVTE
+         it4y/hVRSDDF+lq/tZ1Yl2/o1fj5a+M1DZhmiCME4gP8IF+VU6rVcPTOS5Ky0yQXc7Cx
+         VmWiWl/9zC1qNc958AIVixDfDPuHXt/7hboD+SkiQALrTISHWvtebTIcn3qBg1ZQUzdz
+         m/dok2fHvCJgx0EYqobm6RasDuHsrUSFfP1ys6NXEH2tq9KqjOF1pfGS9ek4aDUv5qWr
+         9SrMpmYyDrwqoo/97DMMiq7DdwQx6LeEHng6vNeTNfIYPaIYZ8vMWIciyhDaBbjaKuYG
+         b8aA==
+X-Gm-Message-State: ACrzQf3t8kWzubXrS5JyddQMiKM7wFxPRkFjMdNZ8fTZzrlBlzHKQ6XJ
+	k1542Am+3BHvZOdlmPGiND7uo7oDyPw=
+X-Google-Smtp-Source: AMsMyM5XME2aLqGdEtthfDbkl7Nt0teZhhJw2xyRcPdmpepms+XKEWqHLMMUNzZ7r12DpZfATHUYSw==
+X-Received: by 2002:a17:907:8a1c:b0:7ae:1e64:aa5 with SMTP id sc28-20020a1709078a1c00b007ae1e640aa5mr27831925ejc.119.1667938628275;
+        Tue, 08 Nov 2022 12:17:08 -0800 (PST)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id et19-20020a170907295300b0078df26efb7dsm4969959ejc.107.2022.11.08.12.17.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Nov 2022 10:13:28 -0800 (PST)
-Message-ID: <429df965-bd4a-afa4-e66c-6907677fbf8c@linaro.org>
-Date: Tue, 8 Nov 2022 19:13:28 +0100
+        Tue, 08 Nov 2022 12:17:07 -0800 (PST)
+Message-ID: <137ac777-9ab4-3b3b-6155-99d77cfab30b@gmail.com>
+Date: Tue, 8 Nov 2022 21:17:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
+ Thunderbird/102.3.0
 Subject: Re: [PATCH v7 06/10] ARM: dts: rockchip: Add Rockchip RV1126 SoC
-Content-Language: en-US
 To: Jagan Teki <jagan@edgeble.ai>, Heiko Stuebner <heiko@sntech.de>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>,
- Jon Lin <jon.lin@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>
+ devicetree@vger.kernel.org, Jon Lin <jon.lin@rock-chips.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>
 References: <20221108041400.157052-1-jagan@edgeble.ai>
  <20221108041400.157052-7-jagan@edgeble.ai>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@gmail.com>
 In-Reply-To: <20221108041400.157052-7-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_101333_759396_7931F9BC 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20221108_121712_577556_C128D6B0 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,7 +95,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/11/2022 05:13, Jagan Teki wrote:
+Hi Jagan, Heiko,
+
+Have a look at some comment below.
+
+Johan
+
+On 11/8/22 05:13, Jagan Teki wrote:
 > RV1126 is a high-performance vision processor SoC for IPC/CVR,
 > especially for AI related application.
 > 
@@ -156,68 +161,93 @@ On 08/11/2022 05:13, Jagan Teki wrote:
 > +
 > +	compatible = "rockchip,rv1126";
 > +
-> +	interrupt-parent = <&gic>;
-> +
-> +	aliases {
-> +		i2c0 = &i2c0;
-> +		serial0 = &uart0;
-> +		serial1 = &uart1;
-> +		serial2 = &uart2;
-> +		serial3 = &uart3;
-> +		serial4 = &uart4;
-> +		serial5 = &uart5;
 
-These are not properties of a SoC but board. They depend on the
-particular routing on the board... unless this SoC is an exception from
-all others?
+[..]
 
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-
-(...)
-
-> +
-> +	uart5: serial@ff5a0000 {
+> +	uart0: serial@ff560000 {
 > +		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-> +		reg = <0xff5a0000 0x100>;
-> +		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg = <0xff560000 0x100>;
+> +		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
 > +		clock-frequency = <24000000>;
-> +		clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
-> +		dmas = <&dmac 15>, <&dmac 14>;
+> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
 > +		clock-names = "baudclk", "apb_pclk";
+
+> +		dmas = <&dmac 5>, <&dmac 4>;
+
+		dma-names = "tx", "rx";
+
+DT describes hardware.
+Maybe add some dma-names ?
+
+===
+
+4 UART0 RX High level
+5 UART0 TX High level
+
+6 UART1 RX High level
+7 UART1 TX High level
+
+8 UART2 RX High level
+9 UART2 TX High level
+
+10 UART3 RX High level
+11 UART3 TX High level
+
+12 UART4 RX High level
+13 UART4 TX High level
+
+14 UART5 RX High level
+15 UART5 TX High level
+
 > +		pinctrl-names = "default";
-> +		pinctrl-0 = <&uart5m0_xfer>;
+> +		pinctrl-0 = <&uart0_xfer>;
 > +		reg-shift = <2>;
 > +		reg-io-width = <4>;
 > +		status = "disabled";
 > +	};
+
+
+[..]
+
+
 > +
-> +	saradc: saradc@ff5e0000 {
+> +	timer: timer@ff660000 {
 
-Node names should be generic, so adc.
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+timer0: timer@ff660000 {
 
-> +		compatible = "rockchip,rv1126-saradc", "rockchip,rk3399-saradc";
-> +		reg = <0xff5e0000 0x100>;
-> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-> +		#io-channel-cells = <1>;
-> +		clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
-> +		clock-names = "saradc", "apb_pclk";
-> +		resets = <&cru SRST_SARADC_P>;
-> +		reset-names = "saradc-apb";
-> +		status = "disabled";
+This is the first of 6 timers. Change label.
+
+> +		compatible = "rockchip,rv1126-timer", "rockchip,rk3288-timer";
+> +		reg = <0xff660000 0x20>;
+> +		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru PCLK_TIMER>, <&cru CLK_TIMER0>;
+> +		clock-names = "pclk", "timer";
 > +	};
-> +
 
+Add possible more timer nodes ?
 
+rv1126 TRM page 727:
+descending Timers(Timer0~4)
 
+incremental Timers(Timer5 and STimer0~1)
 
-Best regards,
-Krzysztof
+===
+
+Question for Heiko:
+Do we need a different compatible string for Timer5 ?
+
+ "rockchip,rv1126-timer-inc" ??
+
+===
+
+SPI irq addr 56-32=24
+
+56 timer0_int High level
+57 timer1_int High level
+58 timer2_int High level
+59 timer3_int High level
+60 timer4_int High level
+61 timer5_int High level
 
 
 _______________________________________________
