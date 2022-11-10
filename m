@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD5FC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Nov 2022 19:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F4FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Nov 2022 20:45:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3FhgGJ0VjjGMqpRoUdfd8OAGG/KrSIEucJ/7MZV6+x4=; b=Jasj+iAAae50g9
-	/VfhKk1OzJnXQ0cpIv/b5OuGD1uvSlgND68oR3eQDmhDTUIyJkUqgpLq7HZNjjvpyqaAfxuoKT3yN
-	I2zoydWPPxywKZTWllRSFmGA1FrCaa5Qsvw00lyU8/ZhlyaUmIy2db3dpm3BdO0wKu1dwvtfVb+l9
-	8InRiNrWSlAEGSlvvFqDSrCvA7kj+TbfHp0TaZ9Tx/rfogwPYEYObmPP/8o6+S9WD6vFcpPdu/WcO
-	3MFay5P8VEocECn9QXqJEH3txSo1garcDcm0gXx2pKDPpL0bxdtuiH8zCy8hPv11rrJc6oRgP5Knb
-	WWwu+qDOyv7LSagC+Q/Q==;
+	List-Owner; bh=p16s+V/ha6/IOHJvdpza8a40dvaWgySTp3dfs1QNsrQ=; b=LjmFV+stA0tHfL
+	ROgw7d8+nz9vf6rzoMblIyoco/qXm/nCvw60/aKk+kzc23C6SEzFqcD+Z55vHBjvCiAycZltdVId0
+	kru3jIFJ1/vQPGggL0XvBoOfp61lqUk3MT8pLGq3jbnA2mte3DXEzCepGImGfR2me9u75rMWPoINB
+	pGGjV4Pu7R1yQZSNWI2wFGRcxl/5T70Fc3Jd/zkCpDhQw0p+sXLELJceiBW5cDR7lodTlzXiPdMWx
+	kqY25X2GAmcuFOVrlXWQ0hc8uA5BtLFP107DfJKOu7Qg9PaaVOTg6XHMxcRHlw3io5lmVdtlLdwda
+	s3JLdBO1I7IN/jVV0DfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otDaN-008zAu-Ga; Thu, 10 Nov 2022 19:51:39 +0000
-Received: from mail-oo1-f47.google.com ([209.85.161.47])
+	id 1otEPs-009qIr-Qh; Thu, 10 Nov 2022 20:44:52 +0000
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otDaA-008ys9-Fy; Thu, 10 Nov 2022 19:51:27 +0000
-Received: by mail-oo1-f47.google.com with SMTP id g15-20020a4a894f000000b0047f8e899623so396367ooi.5;
-        Thu, 10 Nov 2022 11:51:25 -0800 (PST)
+	id 1otEPp-009qBF-Ga; Thu, 10 Nov 2022 20:44:51 +0000
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-13d9a3bb27aso3427708fac.11;
+        Thu, 10 Nov 2022 12:44:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NHDl1k+IjjiluFcAgubPN6Bxc9jMrBAyPXl0OSR6rYM=;
-        b=3rJF3qCoEy0xkMNZ6hbjQ7TYD5j9ttbaJRmhMDwWnbUCMgEIL6vPW7NZ0VtWaRnPpY
-         fJndI42FEcGJcsPCO8R0w7OtjEhUTdK02C45hxLL/75Wk7dS53smlrBlENts5wCfSfbQ
-         QEAVklJdNkY0WejUvwpFtEAmtZypCRHmYnBZuwL1pu+Fh9CrbiKoKCFucKKLfLOGJEQB
-         EfkOJ7/s4STbuufeHvCQiC+WtLPBp4oQ/a3kd2osf+0ZlqHvzKoB4l/yVNye/PNPvSkF
-         A8/+W33vLDJrxetDlIGPhq09Y4w2Fmy9Cm27kJG/JUQyZWIhEpWdVduJ0sFkb7+8TaIH
-         QxEA==
-X-Gm-Message-State: ACrzQf1/AxJjX0a5JQeALRt9krtyG/WbieW+mJZ8/xBeJ6nzBfVFcaqa
-	Njy8p8/vyV99cvdZpy+70g==
-X-Google-Smtp-Source: AMsMyM42TMLEWT5X00LepXMJ6bck7ezJKFStYZUnzpZw+gjBVLGQJz6I7y6kxftZhYYaUO3TCmuiiQ==
-X-Received: by 2002:a4a:d129:0:b0:49e:1b6a:3c57 with SMTP id n9-20020a4ad129000000b0049e1b6a3c57mr1706373oor.32.1668109884380;
-        Thu, 10 Nov 2022 11:51:24 -0800 (PST)
+        bh=hsW1HDNshVttkwkuGzHmpzw/XnbOwGpgVSFS5MIeojQ=;
+        b=R7t1iIvH8o1zYXJdU3OSu5TpBwQiJl1hGhp6AIH6H3wjNYRHc6ejJGHekvisrwbuxE
+         S0bO9J43KkY/vivuSZUHSn2GUi2XOJ1+c1sHNTd8bumQenRFBO18RaG+6SO8mqO8H/wx
+         shpIK/AbsMfedI6Z3weeiKTxGFHGbWWg2ujgim/Ihl44/WYsnvM11ep/oeOn9m6MjCFM
+         uORi/5pnF3z4PVyhIod/lQSiH7E+jxnO3DSiJwHhQ54OtI4VlIijX61PwahtvGXR/zqV
+         5N5A1zuyOAR9YeD32mwFSvM6rsZv4aFqUL7QdhGtWg1HPcLkrDvZ5R1IHVyMxWl7M7Pf
+         Jbfg==
+X-Gm-Message-State: ACrzQf1gFwtlkzdVPwS1i8+7TLNqIJq1PB/oiMffOnLy2FsjYTZUhhp4
+	vdWvOtyKXOiJmXmKC6dChg==
+X-Google-Smtp-Source: AMsMyM5TGywRwwE/SqXxLN37u/ecN915xrp2f621fb20QUaBuUJvazW4/0mHQr1PJsZ7Y96ZiZrCyQ==
+X-Received: by 2002:a05:6870:970b:b0:13a:eee0:b499 with SMTP id n11-20020a056870970b00b0013aeee0b499mr2178583oaq.83.1668113087944;
+        Thu, 10 Nov 2022 12:44:47 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id t25-20020a4adbd9000000b0049427725e62sm132430oou.19.2022.11.10.11.51.23
+        by smtp.gmail.com with ESMTPSA id f11-20020a05680814cb00b003509cc4ad4esm169517oiw.39.2022.11.10.12.44.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Nov 2022 11:51:23 -0800 (PST)
-Received: (nullmailer pid 884033 invoked by uid 1000);
-	Thu, 10 Nov 2022 19:51:25 -0000
-Date: Thu, 10 Nov 2022 13:51:25 -0600
+        Thu, 10 Nov 2022 12:44:47 -0800 (PST)
+Received: (nullmailer pid 954460 invoked by uid 1000);
+	Thu, 10 Nov 2022 20:44:49 -0000
+Date: Thu, 10 Nov 2022 14:44:49 -0600
 From: Rob Herring <robh@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: linux-arm-kernel@lists.infradead.org, heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, pgwipeout@gmail.com, devicetree@vger.kernel.org, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: rockchip: Add Rockchip rk3566 box
- demo board
-Message-ID: <166810988279.883926.4699648145983985104.robh@kernel.org>
-References: <20221105095935.958144-1-andyshrk@163.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCHv2 1/1] dt-bindings: power: rockchip: Increase pm_qos
+ number
+Message-ID: <20221110204449.GA948154-robh@kernel.org>
+References: <20221107180231.73663-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221105095935.958144-1-andyshrk@163.com>
+In-Reply-To: <20221107180231.73663-1-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_115126_583107_4C7D2077 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20221110_124449_574658_AD0B1FAF 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +79,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 05 Nov 2022 17:59:35 +0800, Andy Yan wrote:
-> Add device tree binding for Rockchip rk3566 box demo board.
+On Mon, Nov 07, 2022 at 07:02:31PM +0100, Sebastian Reichel wrote:
+> On RK3588 some power domains require multiple qos blocks to be
+> saved. The maximum required number for RK3588 is 8 (for VDPU).
 > 
-> Signed-off-by: Andy Yan <andyshrk@163.com>
-> 
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
+> Changes since PATCHv1:
+>  * https://lore.kernel.org/all/20221021171405.86509-1-sebastian.reichel@collabora.com/
+>  * add minItems: 1
+>  * add Ack from Heiko
+> ---
+>  .../devicetree/bindings/power/rockchip,power-controller.yaml   | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> Changes in v2:
-> - Move it before rk3568 evb
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> index 0d5e999a58f1..dc877416e1fd 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> @@ -134,7 +134,8 @@ $defs:
+>        pm_qos:
+>          $ref: /schemas/types.yaml#/definitions/phandle-array
 
-Acked-by: Rob Herring <robh@kernel.org>
+phandle-array is really a matrix of N entries of phandle+args. This 
+should have worked as-is as N is not set here. Maybe somewhere else? Or 
+could be a tooling bug. If you do want to define 1-8 entries of phandles 
+with no args, that would be:
+
+minItems: 1
+maxItems: 8
+items:
+  maxItems: 1
+
+
+>          items:
+> -          maxItems: 1
+> +          minItems: 1
+> +          maxItems: 8
+>          description: |
+>            A number of phandles to qos blocks which need to be saved and restored
+>            while power domain switches state.
+> -- 
+> 2.35.1
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
