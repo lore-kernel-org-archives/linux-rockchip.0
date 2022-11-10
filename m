@@ -4,80 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A568CC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Nov 2022 16:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3187CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Nov 2022 17:24:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M8OSHIOCT7lMqNdNe+uzJarDkHA0Jhc0PH8fLNIUXwk=; b=gvr6B+Molb2m47
-	ECPMA9P3vSxLhaW+gdV7rCm/FaNLCUu3kY/ngyWhuzHRTedTGQSvu4yVM2DLsnrlDKzYt+30UpqSE
-	i8bGdd5AdFqHOY9dsQd8H31BH5xY49wiNQjIn1NksRtpY8K98mW1GK8byQ9r7NAfBXPmdGkxJBkx5
-	mDF+G/Sq3eMrV20nnHbgrjSrbCjG1aks6rn3FmuLYrwHp+LjDtZhiFGfltSX8EeOmZ+o3MpCldTc+
-	6NPygy4M2B1L7RCl0G4oc6AVE85ZPo7nXP6/RlClTnMbFV6KFG8KfI9LJBmfKgdDkC5+mAHoAmQ0b
-	R6BeQN5e2Iy8256iotKw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZX2w0hFekJNsAIz/xFqkgmR3bYAVQ7uoPrhj4tnzGLE=; b=iRJYzSUM3tibCG
+	rVFaWD8hz9TZxbx95eDrYBENUK3hueereVJa9XiV+68ciiNxMsnOJ7kZT9K7iQbaUTXoVbfsCJwXd
+	iDjCfR7XDvj8/bXSO9IXgyo2NXvvdJ/ExzZa+YZmbt1+TVRW0EizKuO9GTfotKJYNGyd13FUz8zRs
+	tcfcTagAbnFo2bi91nXWzOInXUwe5e/q40xGPlO0jpfzWyQm6v/pJtjWI8oQUS0nsfDOBR7fuE46B
+	xJ9bI+fgHtV/22pE+WsEMyLeVldkXiD7uZyel3Ia9FO094weKAKv7J/yrsIuh+EUev4amHoflqwdx
+	6gCNG4F2b2ik719d4zRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otAbJ-007ErZ-BB; Thu, 10 Nov 2022 16:40:25 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1otBIB-007bwi-R6; Thu, 10 Nov 2022 17:24:43 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otAa4-007DyN-RQ; Thu, 10 Nov 2022 16:39:10 +0000
-Received: by mail-wm1-x335.google.com with SMTP id v124-20020a1cac82000000b003cf7a4ea2caso3836314wme.5;
-        Thu, 10 Nov 2022 08:39:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CEuLsZijDHIURQmlzbVFcv2ePl7fzXP5XewpwaGNPfE=;
-        b=q8Ednjpo9n4TB285iTt/y7Cr9qrUvZrfph6i5UnrSFU1JBMkI8ZZ62kTmvTdzGCA5o
-         KUnQLtCliqx1pKKF/IFta57PlH5bqgf7Ci41DxCYvxDbQIsAe48epCExiISbbCpPhYtN
-         nTMaYpeDKaXFrKT+kcaU4iGUh1u8XZ6lfyRB7T32aN/cNvQ2307zKg84gZ6EmzXBop9X
-         9JuD0VxRA+TrU2/3/9LrU4Fj5+77VoYPUfKqSEXRuE9kM/nJOR3JyIK/apsir0rVrEJ0
-         Nia7yc1wdO0G7Hc2rV9Y7kOooFVjKYxtCEwnRp4ImCPkbZSf0/9OKE/QFkRWM1Eez4qS
-         qTnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CEuLsZijDHIURQmlzbVFcv2ePl7fzXP5XewpwaGNPfE=;
-        b=OTq8fgk/JyC9WV6vHhoacgMfXkpPRUlflKEMoe1ZpjK0qDF9O9wS0O6uL2Txw69JXY
-         eVZ6BCDoOO4Yb9iEcpbA3v48gBf92NDdVXf2TlAysRglr/58tOWSw9svIpHCIaLlzTh5
-         SFADB0O+2R4tuqjTR8Jb/UQ5jNIBdlgRoyoZVWmdBs5LokSVUfDaUtsSo9Tj5mrgDnMd
-         BiurVEnbB60njwJEf66WC3Itj1RzJqmSo0HOmDqtl6YOHn2jUBbk9oDVPj0ZvfFY8r+R
-         4+jY+megwfhc+iLZXG7gtraD0evSbiMpUe2q58JgiZT+0FD+j1fmA8h6YcK3WOPDc6Ow
-         gyIA==
-X-Gm-Message-State: ACrzQf2lGvo3ehIvSJGtyRu+SnLQfPnRSfPfNsFZZXA684ptzb1lNTXo
-	dpDMmjv01HA0ESaMn/nQcVk=
-X-Google-Smtp-Source: AMsMyM4vbGUsEHG0NKAE1xRIufXiEPYkN4XR+5oplPtvpQud17nl4IG9F6CmaQ8t+Feh+F01nsHssw==
-X-Received: by 2002:a05:600c:21c9:b0:3cf:7833:2940 with SMTP id x9-20020a05600c21c900b003cf78332940mr36973681wmj.35.1668098346718;
-        Thu, 10 Nov 2022 08:39:06 -0800 (PST)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id f24-20020a1cc918000000b003b4935f04a4sm128730wmb.5.2022.11.10.08.39.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Nov 2022 08:39:06 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	devicetree@vger.kernel.org,
+	id 1otBHz-007bqs-JF; Thu, 10 Nov 2022 17:24:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=metanate.com; s=stronger; h=Content-Transfer-Encoding:Message-Id:Date:
+	Subject:Cc:To:From:Content-Type:Reply-To:Content-ID:Content-Description:
+	In-Reply-To:References; bh=YqIoRq3Z6BinSF+viJeXIC76+f26dp/HQr/mPgW3vTw=; b=LK
+	CqEWu3FRBbkDn2746+8mSjzoEBQ197JuGr3ZYKf/zPj4JnAEf05qHggOGhwXGyEZOGS6wyY0Io6Xj
+	5oqJ4/MENCCMU6JTcJBf+PGxl+CO9nqv98YHkANkcEeWMnhEFSnrekXjnN1wyWiNYddI1ETGxC4o0
+	hRVOBBaQXGisXEPJI/Zmy2cOwm8TzhkPz3AqN1RhbPRrT5VNyvlHY7TvkukPf2/8C43nvSWP2vXWC
+	3gWITrczDK7AfvQREU0zwgDEir32zOzTZ6jcRPmdEZyF4nWgK0ZYlFm2HnJyiLnqkOFfJuHq1dSyC
+	vWohxZABHm6LfYXAzxUkfdRwrifzaFsg==;
+Received: from [81.174.171.191] (helo=donbot.metanate.com)
+	by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <john@metanate.com>)
+	id 1otBHn-0000C1-NK;
+	Thu, 10 Nov 2022 17:24:20 +0000
+From: John Keeping <john@metanate.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: John Keeping <john@metanate.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] arm64: dts: rockchip: Enable PCIe 2 on SOQuartz CM4IO
-Date: Thu, 10 Nov 2022 17:38:45 +0100
-Message-Id: <20221110163845.42309-5-frattaroli.nicolas@gmail.com>
+Subject: [PATCH] drm/rockchip: avoid duplicate mappings for IOMMU devices
+Date: Thu, 10 Nov 2022 17:24:14 +0000
+Message-Id: <20221110172415.2853420-1-john@metanate.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221110163845.42309-1-frattaroli.nicolas@gmail.com>
-References: <20221110163845.42309-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_083908_938255_C989534D 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20221110_092431_653691_86294F7F 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,74 +74,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch enables the PCIe2 on the CM4IO board when paired with
-a SOQuartz CM4 System-on-Module board. combphy2 also needs to be
-enabled in this case to make the PHY work for this.
+If a buffer is allocated with alloc_kmap, then it is vmap'd on creation
+and there is no reason to map it again in rockchip_gem_prime_vmap() when
+the existing mapping can be used.
 
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Signed-off-by: John Keeping <john@metanate.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi    | 12 ++++++++++++
- 2 files changed, 22 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-index e00568a6be5c..4cf60be267ed 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-@@ -30,6 +30,11 @@ vcc_5v: vcc-5v-regulator {
- 	};
- };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index 6edb7c52cb3d..c9507d27f0ba 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -519,8 +519,14 @@ int rockchip_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
+ 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
  
-+/* phy for pcie */
-+&combphy2 {
-+	status = "okay";
-+};
+ 	if (rk_obj->pages) {
+-		void *vaddr = vmap(rk_obj->pages, rk_obj->num_pages, VM_MAP,
+-				  pgprot_writecombine(PAGE_KERNEL));
++		void *vaddr;
 +
- &gmac1 {
- 	status = "okay";
- };
-@@ -105,6 +110,11 @@ &led_work {
- 	status = "okay";
- };
++		if (rk_obj->kvaddr)
++			vaddr = rk_obj->kvaddr;
++		else
++			vaddr = vmap(rk_obj->pages, rk_obj->num_pages, VM_MAP,
++				     pgprot_writecombine(PAGE_KERNEL));
++
+ 		if (!vaddr)
+ 			return -ENOMEM;
+ 		iosys_map_set_vaddr(map, vaddr);
+@@ -540,7 +546,8 @@ void rockchip_gem_prime_vunmap(struct drm_gem_object *obj,
+ 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
  
-+&pcie2x1 {
-+	vpcie3v3-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
- &rgmii_phy1 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-index 1b975822effa..294354e95336 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-@@ -487,6 +487,12 @@ rgmii_phy1: ethernet-phy@0 {
- 	};
- };
+ 	if (rk_obj->pages) {
+-		vunmap(map->vaddr);
++		if (map->vaddr != rk_obj->kvaddr)
++			vunmap(map->vaddr);
+ 		return;
+ 	}
  
-+&pcie2x1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset_h>;
-+	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-+};
-+
- &pinctrl {
- 	bt {
- 		bt_enable_h: bt-enable-h {
-@@ -512,6 +518,12 @@ diy_led_enable_h: diy-led-enable-h {
- 		};
- 	};
- 
-+	pcie {
-+		pcie_reset_h: pcie-reset-h {
-+			rockchip,pins = <1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
 -- 
 2.38.1
 
