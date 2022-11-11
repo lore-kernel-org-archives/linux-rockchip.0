@@ -4,135 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2797CC433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Nov 2022 11:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F9BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Nov 2022 12:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=ClsFAwBzVzMD0xllGDQ4qu2iHBpeyw38TUgSDcKL/ng=; b=VAZ1bFHJLXEFqyRavMRBw8zcZY
-	svl9etH6TMGjGwHBgvChAM2NW9dhyyitPgDLwXmz1WVowxT4p/Usa9QXWaO43Ty8CpX8ACx3u/1PW
-	ouSI2F//uPh/vusQQIXAC9/qm9k6Ft7m8PwSZffQtXMq09IxuVBtP8jTfKxQVjTEaCMpk400UQHm+
-	eicq8JzGkB7azXwy0NTSwG+z7Xqa8KHSJCLiHOw9hMQQGUR00WarE7BQPKBZavg7G1kqn2oO/mmN4
-	tQXF1hRkVzlLZwRimnWcSJv6og88BRv1hngS/0A5psP1E3wxXvBf/F1rIhMYKreWmb7+YWvg1bvyE
-	9+4sgqTw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8fabkRSVjnh1syPyF9dJ7FS+MhEgrMg/SSZkJ26OPHM=; b=cAFbVrkInYcE2N
+	QH5nrr+NwPe+knHXNitZkAM0sjUopCcRPcYuQGrk8DZtil7tcUkLeJy2N224/plXnJKRCt1ugl1fX
+	9FUvFmuPhl62h+9XOwjz7/GmuR8xxo2ID4SVKg2kxxLTBTZjkqb5/t9H3773EqfySToH2KJ3LmNHD
+	Ecrbsr+eXPW2EaqefpzRAWLv7/og43IWzh/9Md0LcWYRgxKm9oy79Uq2UKw2aKVczYUE5G5lthKVU
+	wJYQ5cJ+uJnz3X8pd88Q1QIO9Mn24ZtF+aP/ihDZn/jp1tvUUN+wB5lOC3HnPghEJWtCI97VBg8Bi
+	kO0C2z40ddoRCRGm/aKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSgj-00FSyo-3j; Fri, 11 Nov 2022 11:59:13 +0000
-Received: from mail-eopbgr80087.outbound.protection.outlook.com ([40.107.8.87] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1otTaK-00Fiep-7g; Fri, 11 Nov 2022 12:56:40 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSgW-00FSqQ-AA; Fri, 11 Nov 2022 11:59:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LShDTN+eU5aakB0oxG1F2UABVYnun/NgSMTJFpNzRrraVuf97noGn2qN9Q7VJECSq37B4APeSBLiQCnQpNmqPPwvLycZ/ICAYZ+yUbn+oj4ZNvTC1nBqVvIiNxd0TBtPsPi1/LKPQynhmP5To6WUdwWgoseunG7tpChBW9MGvKeC5BgyXvrEYtM79S4rQCE2DsIjMOrgpLzyJPMO4ViVoCaPAHJ88ll7jxtyLXMwsVpbH4DRNygIkn2k0Tva8R5OjhMPr9l5xuXPSZVNxSGECCs2DiR+6N+ENLEqjS0ct1aOwofyOb0YbyeG2DXzkQtB75QerF3i8ojeRPWRgDBq6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uFUauZq1VokH0R4eU74z2zOi2AsxHPClNAg/3exCaAk=;
- b=GeaAl6u5oB28X8tAiP+6w1zvIFGH0UA5D1SDSmxGukaUsnv1tSxkZHimmnfbn1/eOHZnRnsOGiFTqpvSYn/32EGDrIos6a9QNdb75yugoI0UOTowSdzCQ9MD8MFvUOoocMpMMjXT1AhMc04wgq7BP0HRdq6FLKkxQSARP/rD2GaD03tPMSJ3DTXT/kKEFkbxXCI+G09hZYbVDoBygzu97q7zdCtPEx6F6E/5RsWAaeh5sMyTQVLhX/mD6zybVZ/hwcTYXfggtMTI4nfPzzs4c2SWT4scOlksgFPA/AZXq/q80QcsdECXtHvkNntd3p4qtd5s/RPv1/FFX8CHC95TvQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uFUauZq1VokH0R4eU74z2zOi2AsxHPClNAg/3exCaAk=;
- b=uWXKIS7zLQOno1GlLzgyMhb8aZ/rDHZ7+XexkQACqpg8kOZX0yREGhOpzvmz5NfI/JDK5ED7CJghvcBNQ/fUTkEZb15UgDJRj+J0vzlh7KNUltWuX9vu5/RX9AEY6tCZt+tFbrkewa3VJ92++JxJT/7gZsEn7tReTPYZ1EWYAK4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by PA4PR08MB7386.eurprd08.prod.outlook.com (2603:10a6:102:2a1::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5813.13; Fri, 11 Nov
- 2022 11:58:55 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::3643:6226:28c:e637]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::3643:6226:28c:e637%2]) with mapi id 15.20.5813.011; Fri, 11 Nov 2022
- 11:58:55 +0000
-Message-ID: <42fd2eda-f25c-44c6-1f1c-80653b04bdd1@wolfvision.net>
-Date: Fri, 11 Nov 2022 12:58:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [linux-next-v1 3/3] arm64: dts: rockchip: Fix ethernet reset node
- Rock 3A sbc
-Content-Language: en-US
-To: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221111094238.1640-1-linux.amoon@gmail.com>
- <20221111094238.1640-3-linux.amoon@gmail.com>
-From: Michael Riesch <michael.riesch@wolfvision.net>
-Organization: WolfVision GmbH
-In-Reply-To: <20221111094238.1640-3-linux.amoon@gmail.com>
-X-ClientProxiedBy: VE1PR08CA0006.eurprd08.prod.outlook.com
- (2603:10a6:803:104::19) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1otTa9-00FibN-V8; Fri, 11 Nov 2022 12:56:31 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5so2909587wmo.1;
+        Fri, 11 Nov 2022 04:56:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=vyUckvB1E1DdFJmN9a9qviosI8tjiRPV3QG4ylvcz1U=;
+        b=mw9Akph2xNeOdpTjd2rDtMRdjoLLP/nzxfzfat2AfIG4tPDlnmgtT/2qRvIN0p0WzE
+         vrW9O3a4DowHuZ5nEIbOqlCk/i50f7hWkaZbfbUqZugYORqa4CtS11A9EU1ONjFoxh67
+         p/b9vEsDFLDWbZQeAmCoRmv8fGKRgNSJ/LL65Y8nDgba+ou9k4p2XJ8N9LHfXzFnNBX0
+         72rZlYWX69pAKa46gjlrJup42EqGHgFbEY4KxFEVuPnJK1xIjp0lmTgiflhfGMrPY/YF
+         7XuOTPvqTDYms83SBy3weDarjJC6bPkqVo98xC+v3WsHTFZ3MAqrXj6zNdf02NwnLthy
+         y6wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vyUckvB1E1DdFJmN9a9qviosI8tjiRPV3QG4ylvcz1U=;
+        b=A4lnpB9g5TU9LoADP2AX3Sq7rhx1VH77r/9aLD0xebIF6ZinKqB6nIaMfIal7K6owY
+         1HnDGG7ODGPLvcrofIcleMTcPJ3mnauaUKlCsmSML05X/rgWnMdFWR6MXQjtzDQeQwKS
+         A81iht3gq+4THOrPUAXuaUnmsSYB7rUui3KQCny3dVEQEgyG5PTRLEEgwHOr1hMvZhMw
+         fGWH0XyPTX/Qeus4iaNwwyTjPiWDXftKiWNCkP8X1pw65b80/InJpLAbvx1Ru7wUBTNl
+         zcQDvWR4fVCKugAYFBS4/jgdDQMmDk81pVnaM5iQttxjO6eRomJ9BrkOYhUYphNGphGD
+         ZIhQ==
+X-Gm-Message-State: ANoB5pmXEBiAJRxMdM8b0n4G22ozCkWqF2mLbNZXQ/L+HD4BcAeF//FB
+	m8DUxHIu8rHICbQkLiOiWdf+4Yr30EeJ//qFTfKwHQNgiKY=
+X-Google-Smtp-Source: AA0mqf5PJPJws3SLJ/BrDAqA7EJGHCdFeg4hTpN9hat+xfw9gfeRro1AljHI0t3KH3u0vSgtu5UqW8eKHH5dQIN/Hjk=
+X-Received: by 2002:a05:600c:3496:b0:3cf:cfea:904c with SMTP id
+ a22-20020a05600c349600b003cfcfea904cmr1189758wmq.33.1668171385285; Fri, 11
+ Nov 2022 04:56:25 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|PA4PR08MB7386:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2080f7d4-aff5-4061-610a-08dac3dc1bf0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	k5OOzjKLc0NEl2zJ4PMIa4TdKY9vv9+IIZf5bY3EPmJ8RnE/TeyAuXybK++78361sJ17vJqrOLSBCNcvyebEd0XNTVJRbGumL+n7m3mIfauChkpQrwT74oinLbam3MmiHTN9ip/SRTlSFjWuWfqwaADhk7ET1pRaSxivAJ/F0gtUUkQlmyiXNLH2q/9IAiesiCAtDpmfRMVRgFsYX12JCsSZ1ruwmbSkWG3AnYXovhJuXSKYn3m7b9FWoP58P+KAxKajxwKtO0v6SWY8FNiVeLQtxhXVL+FthuEwxXPAxhuApaKA0Z9o7DfblHWq3GJrC+KiP8aiZXpNohgPMcyOiAfmLwyVjYgrYiCmQz/riBfBEUt7sV97kzucudFdKRR7bNBPiOqFm9Heam9OtGYNk3Qt/6jtgeZA0AvyisimccVqkZ73RqutldGLDtd3Jnm2AJuW1yZ1fb8gy5+eXRp65dWOrR8Ekk2PM9Uwto/+2BFUFwY6qLP6Z50yK4N5sELSwAeNy3VGTcXK/nkLpwRj5hdA7rRfH9SLnltwDYinw18WH6T9J/ozjVQwN+wL0+SRAvcuAj7ZQGi8R06UGnMtNN3ebo1bF+EYd7T9NyCnz0jcuh3xQpK32nXEBBkBO7GerDRbryXTsutvu9ZrSmm4ZbNCuMHxD1tAbI4HMcHszw5M4hByEx2XdRM+bNunrC22bAuDd72Lle3fRTHODSs8Jn1xIr8tsD1EoE5fIKdndqAu4ItRKOCWhkeVZkgUVypbyfEPmdDdWvocYUhmr5PxTiD0sesfaUCoZ95FQZ+H1QFhC0DSGmD7fu7wR2jV2fJG
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39840400004)(396003)(346002)(366004)(136003)(376002)(451199015)(31686004)(36756003)(86362001)(31696002)(38100700002)(38350700002)(5660300002)(8936002)(44832011)(2906002)(2616005)(6512007)(110136005)(186003)(83380400001)(26005)(316002)(66476007)(41300700001)(66556008)(8676002)(66946007)(4326008)(52116002)(6486002)(6666004)(53546011)(36916002)(478600001)(6506007)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?c05WTm9DNWVINDcvazdLcDZXUjllODlsS2h1cEtYSUdMakg3YWZYbEh3TFBC?=
- =?utf-8?B?WS9nYVRwclRTSnJ3K0NrNUlYS3Z6dFZsUTZDdFpTVHFuS21NVE55dzk4ZW5l?=
- =?utf-8?B?L29HaEdxWDM3TjFOeGJseXQ5TGZSYkhON1M0d0Z4aGFOVCt6YTBCaTdZalVL?=
- =?utf-8?B?MGxPWVJRdEZlU3pIOEVxVHUyK01tY3RZZFFINDB5NGVKVnJFMGo1MHVHTFNn?=
- =?utf-8?B?R09PRjU5bjNrNzhiNGk4ZmdiUEJPUzF6ZmtocDhBRkpCcHVhNHU0Q2RDT2du?=
- =?utf-8?B?RzZYOUVXYUlRdlRMVzlqa2V5ZHdTeVdlNU5aQ0YySXBtcHhNY3dDblJDRXFK?=
- =?utf-8?B?aVAyRVhGallXb2pPQlV0UktvMnkvMDVtNEh0Z0x5cGxWc25BaGxLa3I3Nmtu?=
- =?utf-8?B?bmZjSW9hODJKYVBORGRCNHhPQVlvL0l6R280OWUzb2JoN2NYUWI1ZXErQ0s5?=
- =?utf-8?B?TDBLYW5CV25Tb0UyWW15SDNMNWgrdmNZd0htVW5UWGlsYzRabXU0UDhKNHZV?=
- =?utf-8?B?SkQxaWRBeW9GcndWWktlRVVXTjI5ZEtLeEg3QUJZVlpjSUhFM3krbWduKzRs?=
- =?utf-8?B?NHUvbGZxcW0xcWRhcHhmRnhra0FxNFFtbHdWbGh1NzBscUV3NENWdVgwM3h6?=
- =?utf-8?B?U1c3WGN1MGZrb0hIRGxOMlVVMzU3a3ZEbUJNaU4wbVFTalRZQWY1NG5qUE04?=
- =?utf-8?B?OUdtZE4xdWNyZWtYTFRQN2R5L0cwTGFHWHpVaWNCWWZyZ1Q4SFZNTjVmdnpz?=
- =?utf-8?B?TTFFYi8vaHdFSmswSXJWRU5xSjA5YktYcG1SN1d5bWRUblFYWmxPbi8xQ0xz?=
- =?utf-8?B?OEVFNEFyVm4rY3lIOGJyT29ZVUZTbGE1WUNlb3p6R1Bsb2Z6VUVWaWFQTkxV?=
- =?utf-8?B?a3dXTmJDaVFiOVZwWUZiNk1nMEZhZmFkWmc5V1pxekU1UFJ3TEY1QWxpTkZF?=
- =?utf-8?B?a3dFMHhObDZXL3lCcGh5QkNQSE9uVXBQWXVERHh6cEluam5QWEhUcDlPZTgy?=
- =?utf-8?B?czhrcmtkb0E0ZlV6a2p6dGFjYjNKbE11WTV4ZlVuYTZkNUluL2FkL0ZFdnlo?=
- =?utf-8?B?RitXZFdKL04rU2ZXOUQrMDZFR3pBaEVrc3hzN3RvVHNiYVZ2RU5mcDJYbjJk?=
- =?utf-8?B?ZlhoVUp5QitlY3ZQSFUxS2ZGZkFDM3k2d2g1aXVVKzNQWllZNG81dmZXR0tF?=
- =?utf-8?B?OUhXSFo4TTFGNm5nSm9EUUU4Nmhmc0RIVXdtbHpsblF4RVdjb09EbUxKVWc4?=
- =?utf-8?B?cWxZTTJzN1FGemQxZk45V21WWEtpYmhBMnZYOFF3bzVMK0lCdm5qdDUrWjFO?=
- =?utf-8?B?Z05neUxnRXlSOXRNYzdYQjFzaUxHVCtOTEJBNFpPUW9nTGM4aXpuQW1JN0x6?=
- =?utf-8?B?M20wbEMrVUNkTU9kckJsUkdnNHBIOHVvWlNRMEpDWEdvLzhCSFlHcUFMdlBK?=
- =?utf-8?B?bTdIZkVUdUNDdjRpc3NvbVlyeGhPUEx1bkt4cEpPK1I0NExlNXl5dlMyZzFQ?=
- =?utf-8?B?MWMvekJTSW1oYSt5enFjU25MWU81MjgxSzlNMFRQek5GUDd1RG1SMWFIWUt6?=
- =?utf-8?B?bjNpd01kcXpLYm92dUVKV0JicmNUNndoMnFiZlVsYlcwLy9rWndnRkwzdDJz?=
- =?utf-8?B?N0ZpTnhhbTdJV3hyRW1xcUdpbGFFL3I4UXdJNGZTT3RiRWlNeDJiNFQ2Qlhp?=
- =?utf-8?B?S0pJaXdaTDkzSGx6VXF1anZEalgyNFg3UzVLem5vdTBlRGd3emlUNmNUek5B?=
- =?utf-8?B?ZVU4TWt1b2piVHVBWVdSNnF5T1Jka2xrT3ZnL1VIQ1BHS0d0WWNDSUV2T0Qw?=
- =?utf-8?B?NnhYQmxkanc5R2NNbDl6cmdVUE03a2taT3VISXYwT2g2VlA3bjNHZ2ZaU043?=
- =?utf-8?B?c09YbVBQaTIvUk40ZTdWM0VsaEJhSHArV05yb3hpY2UzcmxKWXo2ekdxQ1NV?=
- =?utf-8?B?Z1FJTUw3eWxQSVNhbFRSUTFSSDJYZjlEUGFHdDdFTFl5QURYSElZSnREZWda?=
- =?utf-8?B?bXgrOGZiOFRiUytnU0xWaW1VUW1keUdkUnpSaXJzRndMMVMxTzdqYklGUnRz?=
- =?utf-8?B?dm9rS0NRYUpNc0J6RTNuNGhpVTdMaWJwbW0xSUFPaHB1c1BmVGhQK1BCMkVj?=
- =?utf-8?B?VFRqYXZwZlJFYm84TmhjYXc3SXJwWnU1TmZQRUN6clJTN2NIQW1LOFNodGhW?=
- =?utf-8?B?ZlE9PQ==?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2080f7d4-aff5-4061-610a-08dac3dc1bf0
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Nov 2022 11:58:55.6399
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0YyTurMZeRdYptQu/JUGdBzBdX+E88fw5vcWzyawh6qUmzqYgjEzjqAoCGCdmV4611hIXhaLiWLKQngCqZFu88Xz6NT73QQJtLme8jeBjgc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR08MB7386
+References: <20221111094238.1640-1-linux.amoon@gmail.com>
+In-Reply-To: <20221111094238.1640-1-linux.amoon@gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 11 Nov 2022 07:56:13 -0500
+Message-ID: <CAMdYzYp2wSrkOEh-v6Wye32TA9imfNF4CrUdKL7q8pOCQU307g@mail.gmail.com>
+Subject: Re: [linux-next-v1 1/3] arm64: dts: rockchip: Fix gmac phy mode to
+ rgmii on Rock 3A sbc
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Chukun Pan <amadeus@jmu.edu.cn>, Michael Riesch <michael.riesch@wolfvision.net>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_035900_399333_488E1D50 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20221111_045630_028195_0C5C6A3E 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,82 +88,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Anand,
+On Fri, Nov 11, 2022 at 4:43 AM Anand Moon <linux.amoon@gmail.com> wrote:
+>
+> On rk356x ethernet phy support reduced media independent interface (RMII)
+> and reduced gigabit media independent interface (RGMII).
+> So set the phy mode to rgmii.
 
-On 11/11/22 10:42, Anand Moon wrote:
-> Add support for snps,reset-gpio reset ethernet gpio pins and
-> drop the mdio reset code.
+The RTL8211 supports rgmii-id just fine, you only need to go to rgmii
+on these boards if you need to tune the delays manually.
 
-But why? Is it preferred that the MAC driver performs the reset? Or what
-does this change fix?
-
+>
 > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 > ---
->  .../boot/dts/rockchip/rk3568-rock-3a.dts      | 19 ++++++++-----------
->  1 file changed, 8 insertions(+), 11 deletions(-)
-> 
+>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index 16fff1ada195..9172cf60b867 100644
+> index ea74ba32fbbd..72e410e3aca8 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -258,6 +258,11 @@ &gmac1 {
->  	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
->  	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
->  	clock_in_out = "input";
-> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	/* Reset time is 20ms, 100ms for rtl8211f */
-> +	snps,reset-delays-us = <0 20000 100000>;
-> +	phy-supply = <&vcc_3v3>;
->  	phy-handle = <&rgmii_phy1>;
->  	phy-mode = "rgmii";
->  	pinctrl-names = "default";
-> @@ -267,6 +272,9 @@ &gmac1m1_rx_bus2
->  		     &gmac1m1_rgmii_clk
->  		     &gmac1m1_clkinout
->  		     &gmac1m1_rgmii_bus>;
-> +
-> +	tx_delay = <0x4f>;
-> +	rx_delay = <0x26>;
+> @@ -253,7 +253,7 @@ &gmac1 {
+>         assigned-clock-rates = <0>, <125000000>;
+>         clock_in_out = "output";
+>         phy-handle = <&rgmii_phy1>;
+> -       phy-mode = "rgmii-id";
+> +       phy-mode = "rgmii";
 
-Ah, here they are. I would say these delays should be added in patch 1/3
-along a comment why the rgmii-id approach does not work.
+You should be setting the delay tuning in this patch as well.
 
->  	status = "okay";
->  };
->  
-> @@ -583,11 +591,6 @@ &mdio1 {
->  	rgmii_phy1: ethernet-phy@0 {
->  		compatible = "ethernet-phy-ieee802.3-c22";
->  		reg = <0x0>;
-> -		pinctrl-names = "default";
-> -		pinctrl-0 = <&eth_phy_rst>;
-> -		reset-assert-us = <20000>;
-> -		reset-deassert-us = <100000>;
-> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
->  	};
->  };
->  
-> @@ -625,12 +628,6 @@ vcc_mipi_en: vcc_mipi_en {
->  		};
->  	};
->  
-> -	ethernet {
-> -		eth_phy_rst: eth_phy_rst {
-> -			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-> -		};
-> -	};
-
-I would assume the pinctrl is still required no matter whether the MAC
-driver or the PHY driver asserts the GPIO reset.
-
-Best regards,
-Michael
-
-> -
->  	hym8563 {
->  		hym8563_int: hym8563-int {
->  			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&gmac1m1_miim
+>                      &gmac1m1_tx_bus2
+> --
+> 2.38.1
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
