@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F9BC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Nov 2022 12:56:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9ABC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Nov 2022 13:03:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8fabkRSVjnh1syPyF9dJ7FS+MhEgrMg/SSZkJ26OPHM=; b=cAFbVrkInYcE2N
-	QH5nrr+NwPe+knHXNitZkAM0sjUopCcRPcYuQGrk8DZtil7tcUkLeJy2N224/plXnJKRCt1ugl1fX
-	9FUvFmuPhl62h+9XOwjz7/GmuR8xxo2ID4SVKg2kxxLTBTZjkqb5/t9H3773EqfySToH2KJ3LmNHD
-	Ecrbsr+eXPW2EaqefpzRAWLv7/og43IWzh/9Md0LcWYRgxKm9oy79Uq2UKw2aKVczYUE5G5lthKVU
-	wJYQ5cJ+uJnz3X8pd88Q1QIO9Mn24ZtF+aP/ihDZn/jp1tvUUN+wB5lOC3HnPghEJWtCI97VBg8Bi
-	kO0C2z40ddoRCRGm/aKg==;
+	List-Owner; bh=zxC8QeLpJY61J3JTbx3o/wzIk8FZpb8WEQsG3nr9qQY=; b=pltb3x2D89r6Y6
+	2HrVfsURntqKG9lehb2lFA/A1Zm42FjOUcdLTXGoq9Hn9duPyjzdMTdVWQwcsEoPjuoug7QpIw28O
+	0QI5iuqDfM8j7Jfi/yIp7L5SnNQOtUoARn6/ltn6nKV8M4WScP+vJjRJn2tksnJCMOBc2YqKd9lef
+	6uDUixk5MrhpZ1bxMnLi2kt0KamM7fYoW5GLBddMSbqsiR6mrTuWQSyM0zYr0VZoxk1JR1EZzgOza
+	YyIYwAwrsIPlWpu/JeQZnjLGICBaO1n1z0x8/NB0tVqDhaGpTdysZNjMw4za/gDBz1cKKNW1JOqIv
+	q1laWmtt3UcU2y+uXyRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTaK-00Fiep-7g; Fri, 11 Nov 2022 12:56:40 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1otTgQ-00FkLy-EN; Fri, 11 Nov 2022 13:02:58 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTa9-00FibN-V8; Fri, 11 Nov 2022 12:56:31 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5so2909587wmo.1;
-        Fri, 11 Nov 2022 04:56:26 -0800 (PST)
+	id 1otTgE-00FkGL-Uo; Fri, 11 Nov 2022 13:02:48 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id z14so6393870wrn.7;
+        Fri, 11 Nov 2022 05:02:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vyUckvB1E1DdFJmN9a9qviosI8tjiRPV3QG4ylvcz1U=;
-        b=mw9Akph2xNeOdpTjd2rDtMRdjoLLP/nzxfzfat2AfIG4tPDlnmgtT/2qRvIN0p0WzE
-         vrW9O3a4DowHuZ5nEIbOqlCk/i50f7hWkaZbfbUqZugYORqa4CtS11A9EU1ONjFoxh67
-         p/b9vEsDFLDWbZQeAmCoRmv8fGKRgNSJ/LL65Y8nDgba+ou9k4p2XJ8N9LHfXzFnNBX0
-         72rZlYWX69pAKa46gjlrJup42EqGHgFbEY4KxFEVuPnJK1xIjp0lmTgiflhfGMrPY/YF
-         7XuOTPvqTDYms83SBy3weDarjJC6bPkqVo98xC+v3WsHTFZ3MAqrXj6zNdf02NwnLthy
-         y6wg==
+        bh=3S2DscFDKOisfe/7QhwL8EOoAAX7HJSuLBDke3HfeGI=;
+        b=fhD2KG3fyrR/elnNcqdC1pKXS0NJAuHip0HJD2eKYXzSE1Hjug6LodObkiKrZB+HJp
+         23IQYKiGuv5CPsn8djSbiMFXcT1SVF40QmTYbZxCeMwGVA6vIRpiHZ5xNT/o1cW5Anc0
+         hSTEFLtVTyYJeXb3A5yqkQa3DSxdOg1f4ZX0MztvcamVPiPe8X8y7V/P7v4+VoVqJ5k9
+         4DMkS6E52wkHxew6H32PaH1TFuFzFl+MJ9keRABz/pK4y690Rs0XA651Ngl7C5RtD8CD
+         QhLuNGjAzjxf6PY/0/mGxq14CNFAo1Bp16v/2sFWby80ZtL06IiFDmUXFWD9+5znzJqp
+         T7DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=vyUckvB1E1DdFJmN9a9qviosI8tjiRPV3QG4ylvcz1U=;
-        b=A4lnpB9g5TU9LoADP2AX3Sq7rhx1VH77r/9aLD0xebIF6ZinKqB6nIaMfIal7K6owY
-         1HnDGG7ODGPLvcrofIcleMTcPJ3mnauaUKlCsmSML05X/rgWnMdFWR6MXQjtzDQeQwKS
-         A81iht3gq+4THOrPUAXuaUnmsSYB7rUui3KQCny3dVEQEgyG5PTRLEEgwHOr1hMvZhMw
-         fGWH0XyPTX/Qeus4iaNwwyTjPiWDXftKiWNCkP8X1pw65b80/InJpLAbvx1Ru7wUBTNl
-         zcQDvWR4fVCKugAYFBS4/jgdDQMmDk81pVnaM5iQttxjO6eRomJ9BrkOYhUYphNGphGD
-         ZIhQ==
-X-Gm-Message-State: ANoB5pmXEBiAJRxMdM8b0n4G22ozCkWqF2mLbNZXQ/L+HD4BcAeF//FB
-	m8DUxHIu8rHICbQkLiOiWdf+4Yr30EeJ//qFTfKwHQNgiKY=
-X-Google-Smtp-Source: AA0mqf5PJPJws3SLJ/BrDAqA7EJGHCdFeg4hTpN9hat+xfw9gfeRro1AljHI0t3KH3u0vSgtu5UqW8eKHH5dQIN/Hjk=
-X-Received: by 2002:a05:600c:3496:b0:3cf:cfea:904c with SMTP id
- a22-20020a05600c349600b003cfcfea904cmr1189758wmq.33.1668171385285; Fri, 11
- Nov 2022 04:56:25 -0800 (PST)
+        bh=3S2DscFDKOisfe/7QhwL8EOoAAX7HJSuLBDke3HfeGI=;
+        b=PgO/dugZRxrwFZ/3x0WRAnKqDyvVegqwbvqB5uirfXHWXDIGgoDBPPp1W+UQ3uQPPv
+         trWrsjvhORh3faWjLfpNmoixZh9+UqTZNMKIBrs+2TEPkIAkb7BEJTanju3PKsMjPiVd
+         OUxJy54IP4pga3vXTU1r9SDAQPLD3uZD6us75AUhZS4unOs5OWT++ocK4n49esxxngGE
+         n9k7cnx4DgQIifMzEpAB/eKbv1j6v8bGWAQ9JtE3LilhmJlQPJX1LrUP6WF8jxcHvfNs
+         l9bFvUdUltd+2tS+Fg94OXGBNWuiFQ1V38g/3UD/RBaOlUkuOuMlsOjVjRgLn19ovAk2
+         ybDg==
+X-Gm-Message-State: ANoB5pnDtcvcIwuUP9lBk+gXUcyuSj0d781qUI80szOu7BgxhDzdFTNI
+	EhNhZkKhsGf/uKWi7TnCZyZVhIoKZfBwNLvVmf2iFEKBfL4=
+X-Google-Smtp-Source: AA0mqf6Ew0qTtY1BpiYUfphPuFQMrP1NABbOdgxC2939enujZC2E1CwJ0kG7bAOdgjb6ijpKQ1/G7I2V/SNaLy9zX/w=
+X-Received: by 2002:adf:fec8:0:b0:228:d897:228 with SMTP id
+ q8-20020adffec8000000b00228d8970228mr1176189wrs.539.1668171763729; Fri, 11
+ Nov 2022 05:02:43 -0800 (PST)
 MIME-Version: 1.0
-References: <20221111094238.1640-1-linux.amoon@gmail.com>
-In-Reply-To: <20221111094238.1640-1-linux.amoon@gmail.com>
+References: <20221111094238.1640-1-linux.amoon@gmail.com> <20221111094238.1640-3-linux.amoon@gmail.com>
+In-Reply-To: <20221111094238.1640-3-linux.amoon@gmail.com>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 11 Nov 2022 07:56:13 -0500
-Message-ID: <CAMdYzYp2wSrkOEh-v6Wye32TA9imfNF4CrUdKL7q8pOCQU307g@mail.gmail.com>
-Subject: Re: [linux-next-v1 1/3] arm64: dts: rockchip: Fix gmac phy mode to
- rgmii on Rock 3A sbc
+Date: Fri, 11 Nov 2022 08:02:31 -0500
+Message-ID: <CAMdYzYpi_9B+riQSMk+cjRLd-b_TTi2rQUD7P5PUg_Fd5dGeMA@mail.gmail.com>
+Subject: Re: [linux-next-v1 3/3] arm64: dts: rockchip: Fix ethernet reset node
+ Rock 3A sbc
 To: Anand Moon <linux.amoon@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -70,8 +70,8 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_045630_028195_0C5C6A3E 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20221111_050247_011755_E37B992D 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +88,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 11, 2022 at 4:43 AM Anand Moon <linux.amoon@gmail.com> wrote:
+On Fri, Nov 11, 2022 at 4:44 AM Anand Moon <linux.amoon@gmail.com> wrote:
 >
-> On rk356x ethernet phy support reduced media independent interface (RMII)
-> and reduced gigabit media independent interface (RGMII).
-> So set the phy mode to rgmii.
+> Add support for snps,reset-gpio reset ethernet gpio pins and
+> drop the mdio reset code.
 
-The RTL8211 supports rgmii-id just fine, you only need to go to rgmii
-on these boards if you need to tune the delays manually.
+Nack, the snps,reset-gpio is depreciated in favor of the mdio-reset
+code. See [0].
 
 >
 > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../boot/dts/rockchip/rk3568-rock-3a.dts      | 19 ++++++++-----------
+>  1 file changed, 8 insertions(+), 11 deletions(-)
 >
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index ea74ba32fbbd..72e410e3aca8 100644
+> index 16fff1ada195..9172cf60b867 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -253,7 +253,7 @@ &gmac1 {
->         assigned-clock-rates = <0>, <125000000>;
->         clock_in_out = "output";
+> @@ -258,6 +258,11 @@ &gmac1 {
+>         assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+>         assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
+>         clock_in_out = "input";
+> +       snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+> +       snps,reset-active-low;
+> +       /* Reset time is 20ms, 100ms for rtl8211f */
+> +       snps,reset-delays-us = <0 20000 100000>;
+> +       phy-supply = <&vcc_3v3>;
+
+The phy supply shouldn't be part of this patch.
+
 >         phy-handle = <&rgmii_phy1>;
-> -       phy-mode = "rgmii-id";
-> +       phy-mode = "rgmii";
-
-You should be setting the delay tuning in this patch as well.
-
+>         phy-mode = "rgmii";
 >         pinctrl-names = "default";
->         pinctrl-0 = <&gmac1m1_miim
->                      &gmac1m1_tx_bus2
+> @@ -267,6 +272,9 @@ &gmac1m1_rx_bus2
+>                      &gmac1m1_rgmii_clk
+>                      &gmac1m1_clkinout
+>                      &gmac1m1_rgmii_bus>;
+> +
+> +       tx_delay = <0x4f>;
+> +       rx_delay = <0x26>;
+
+Delays should move to your rgmii patch. Have you tested these to
+ensure they are in the middle of the functional range for this board?
+
+>         status = "okay";
+>  };
+>
+> @@ -583,11 +591,6 @@ &mdio1 {
+>         rgmii_phy1: ethernet-phy@0 {
+>                 compatible = "ethernet-phy-ieee802.3-c22";
+>                 reg = <0x0>;
+> -               pinctrl-names = "default";
+> -               pinctrl-0 = <&eth_phy_rst>;
+> -               reset-assert-us = <20000>;
+> -               reset-deassert-us = <100000>;
+> -               reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+>         };
+>  };
+>
+> @@ -625,12 +628,6 @@ vcc_mipi_en: vcc_mipi_en {
+>                 };
+>         };
+>
+> -       ethernet {
+> -               eth_phy_rst: eth_phy_rst {
+> -                       rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+> -               };
+> -       };
+> -
+>         hym8563 {
+>                 hym8563_int: hym8563-int {
+>                         rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
 > --
 > 2.38.1
 >
+[0] https://elixir.bootlin.com/linux/v6.1-rc4/source/Documentation/devicetree/bindings/net/snps,dwmac.yaml#L222
 >
 > _______________________________________________
 > Linux-rockchip mailing list
