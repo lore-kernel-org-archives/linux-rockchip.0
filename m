@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC93C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Nov 2022 14:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B33C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Nov 2022 14:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=51LJOz/8XkWRRHhtr8H4NRkPcy+SZvF5YDtW2MjRkO0=; b=IFaNwALzx2ZB1P
-	NcgXh8IKxbqerDX+n7p9EJS85+OxKdSmg9kiObvhxxqEFlCOmIcYyUYCTlvWQRDf+38zcYEano7+S
-	ATzFBffexoMU+26bk3dGtgD6M1y9+2TTFZG1iX1bETGDeYUnVU/nX2XQeziE50wqkL+jyDv2QtGYM
-	QcSj1/7hvaEO/sUvJR4zeepbwtWsreD029433JDpMnlry8MJUWSftOXlU+BxZl6eXBa8G8mpJWfG8
-	D72lYoYkRdkt3+1uUYcTI5cIE+BnDRdM039azW5V0cGw1VLTqaKji/fu6y+lt8cF04MHDBo3Jqc6M
-	b4cnARR+iZCwgccDe4vA==;
+	List-Owner; bh=G8GUozJ5VqsFFXwyK72qwixo6E+cOnA8iyRloiQOh7g=; b=PMFyJsIUzr6lQ8
+	n/pkEjp1Y49knrbZMF5wEPZDrfQWhaV2DjbzHwnw6yC/r0uAqP3oWLWpYSl6Ensd4gtIwqZreu+F8
+	wnec+f2srXdeo0wCgnFcCM4qQq0JO8Ujl3zsq8mStTrLHe4fHcScTUGuhKdR39sz1VMDSzCDK/Rq7
+	Z8zlmG2wKg6dt8zgiMMHLZrvIxsm7TH336eyVRadHGWypQkMKEZaPo/Tlqqwq1rjhRqz4JNgPFgII
+	E++dl1VIDki83oYp+UFZRPNqBVTHCy4niK5gNWWtVKKqEZWNOeSxQM6jo3TZ/YXG7wdJJMuJXO9cz
+	rT/gqveMZ/XMxlgvavXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otrMd-0061Px-CQ; Sat, 12 Nov 2022 14:20:07 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1otrN3-0061sA-CH; Sat, 12 Nov 2022 14:20:33 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otrLd-0060h6-6e; Sat, 12 Nov 2022 14:19:07 +0000
-Received: by mail-ed1-x534.google.com with SMTP id e13so2303965edj.7;
-        Sat, 12 Nov 2022 06:19:05 -0800 (PST)
+	id 1otrLe-0060hZ-Os; Sat, 12 Nov 2022 14:19:12 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id l11so11300655edb.4;
+        Sat, 12 Nov 2022 06:19:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=PFDaqGJ45XvPbPmyYrVRCHPTuzVkjaLszKXtT07fVNg=;
-        b=KOFc8v7rCg+klvjjrpO3YKUbNAsqNMPichlUCPfZl1xAWoMR74Xj0HjbaC6tLjoAiR
-         RSVRIr14SW6hZLCHEbuc3WtVRFqGLT2I6MPYTi+//yP0dy70BTl5sdgBT4ttPqIsKRip
-         HCxiebju41uoIbejMh9R5OrFc7g41Ta+UTyWgD4G5o7X2OWUt2YTTfpQSIr+gs1veSx1
-         Rya2fMjia+4PcV9Ay0Duh7zbNRTnHHIKkmY6McXjQXnYwqYFXQhdmfLMb+b6fRqB0DnV
-         Cbg69OD9nFz3tL6c716seUtd8T8qmB/1IqyQFj5pwoZeW7XCjLcvJg+wXlfTOgqSx9zu
-         ecjg==
+        bh=Cr+7dkLsIQWkssfwSwIW2QDjIIkEwPc25TwB+Qcm5uo=;
+        b=UKsD0x/5BTuv9I4BmyFff3ZscFituJT8FVzMy4P+x8g7Wf2MoY84kUTPR8DxMkOuL1
+         H559lXZ7bzcyr8wmsTE3pMtmipu5Yfk/QjpFTk3QH97fzoy63E3zJoVwM0f8TpxVnTPm
+         Lpi63S8/Sz0jTdVKe0WrNrJWPZvq8IDjRI033hdCCTizDmJv08AFv9gvk9AcdkObd+3u
+         cHNLeRzoW2CFo8Y11wEeY5KzeknnkpeOHTgMUL3YRR7skwQIL5ac/zBMR6/eQ1iGhgGM
+         AP431ZJAhlQeMETgUt95VLv99uuTOtfVllNTBl+HMuk6MEWro6Edy+vJx31PpwjRXq4Z
+         JVjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=PFDaqGJ45XvPbPmyYrVRCHPTuzVkjaLszKXtT07fVNg=;
-        b=D4c7VIFELKeKE8n7O2bB8B+/YL7SLT3NyCgJX3EDmDQwjtM7mpcXV43FBHnyJZXxis
-         Ds2AWLMz7xCVEbSywHCYSqiWNIjZ089tvVHRBOBXpyvb7hBcNIDiIzwtqocbWrlHQlXR
-         dbg/Md9vbEQ0F2bTJb/l0brhiBtxV4n8q5d7BKSNUT8hpZpdC2ncWwEXmv5VNnM8MBe4
-         OdlIyFNVCL6D2jZt5ABXXF7wpLxASp6Qn8b46TbkHsLnqCvMvHDuWSUYiUOXy/7mhU5C
-         daNVUPSGIGHJdlZaXYZVn33J/4RyEldghn9EAT3M7vmra/lpsEiVj8IqF4lUOWoOEPMo
-         9k2g==
-X-Gm-Message-State: ANoB5pkMkEqFFvqvz6BT/vebfFhy4UoqUP26mcVQpBZmK1dA2pFe23Nx
-	QyJtT4p8CksvNUywCHSERtg=
-X-Google-Smtp-Source: AA0mqf4bB8gQS3ToJQ+Sy3+AXgIasU2V7hyiLRWh4o5TBUYtKeZEfQuZDzrGhPfhVol15B/DUIDw3Q==
-X-Received: by 2002:aa7:db85:0:b0:463:f3a:32ce with SMTP id u5-20020aa7db85000000b004630f3a32cemr5488298edt.366.1668262743959;
-        Sat, 12 Nov 2022 06:19:03 -0800 (PST)
+        bh=Cr+7dkLsIQWkssfwSwIW2QDjIIkEwPc25TwB+Qcm5uo=;
+        b=Z0UNmOEjU+ZnNowQN4aJArBXPvAnPKvpVgt0Vo+XxmmZ+l7fuVtENB2ak4CKutveyV
+         sZ02OQ40OuGzRDIz2GDpEThQH2lzZfjGE3M+capyMyBeZLE8L0xoK/ISQskeyOVg+gQm
+         2I/WtNTMVf9g6uvJClvVmpJ3IiQuL4HitxbUjMqbO5jk4+MlQJXQoKQEf9W/jMjPL3rN
+         cxFhZv7lSw8iu+GHDGfOWLSd6tNHcFyPMFmr8y4DgFR0snQ6hG40GvloHBBpZmd/RAvQ
+         PZnFQBsstg6pUGdqag99B6Z5m0NJuWVUXTdrlZSTlggfkx2T+S7CZdxbqzRjx1PSQKmz
+         fWrg==
+X-Gm-Message-State: ANoB5pkDwIZwfpGR+fSyn0af+f6YLIM56wClc0oQABaDS127JyCwZ0oP
+	SlogHMkQQh/1PHoGNvcgzXk=
+X-Google-Smtp-Source: AA0mqf4AoYvIvRXjdP+4QwIcYyifLsaVVmZlBcKGdBmBxZa/s6+zu4hpBWycYBZO2fiqpwcFBdHIcQ==
+X-Received: by 2002:aa7:d793:0:b0:460:d1f6:2917 with SMTP id s19-20020aa7d793000000b00460d1f62917mr5591021edq.207.1668262745128;
+        Sat, 12 Nov 2022 06:19:05 -0800 (PST)
 Received: from localhost.localdomain (83.31.120.236.ipv4.supernova.orange.pl. [83.31.120.236])
-        by smtp.gmail.com with ESMTPSA id g21-20020a50ee15000000b004677b1b1a70sm1050148eds.61.2022.11.12.06.19.03
+        by smtp.gmail.com with ESMTPSA id g21-20020a50ee15000000b004677b1b1a70sm1050148eds.61.2022.11.12.06.19.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Nov 2022 06:19:03 -0800 (PST)
+        Sat, 12 Nov 2022 06:19:04 -0800 (PST)
 From: Maya Matuszczyk <maccraft123mc@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -70,16 +70,16 @@ Cc: =?UTF-8?q?Jo=C3=A3o=20H=20=2E=20Spies?= <jhlspies@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/5] arm64: dts: rockchip: Add Odroid Go Super
-Date: Sat, 12 Nov 2022 15:18:40 +0100
-Message-Id: <20221112141840.516224-5-maccraft123mc@gmail.com>
+Subject: [PATCH 5/5] arm64: dts: rockchip: Add Anbernic RG351M
+Date: Sat, 12 Nov 2022 15:18:41 +0100
+Message-Id: <20221112141840.516224-6-maccraft123mc@gmail.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221112141840.516224-1-maccraft123mc@gmail.com>
 References: <20221112141840.516224-1-maccraft123mc@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_061905_293505_42004D8D 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20221112_061909_403559_3FCC8825 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,35 +96,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This device is another revision of Odroid Go Advance, with added two
-volume buttons, a second analog stick and a bigger screen that isn't yet
-supported in the Mainline Kernel.
+This device is a clone of Odroid Go Advance, with added PWM motor, internal
+gamepad connected on USB instead of just having it be on GPIO + ADC, and
+missing battery shunt resistor.
+
+There's also an LED on GPIO 77(I *guess* PB5 on &gpio2), that is controlled in a weird way:
+
+- It is set to red by setting output value to 1
+- Set to green by setting output value to 0
+- Set to yellow by setting gpio direction to input
+
+I have no idea how to describe that in DTS, without adding a custom
+driver, for now it's just left out.
 
 Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3326-odroid-go3.dts   | 161 ++++++++++++++++++
- 2 files changed, 162 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3326-anbernic-rg351m.dts   | 54 +++++++++++++++++++
+ 2 files changed, 55 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 12446f531d29..142c83d2e5aa 100644
+index 142c83d2e5aa..b379516c15eb 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -9,6 +9,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+@@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351m.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
 new file mode 100644
-index 000000000000..4b6c896d8abd
+index 000000000000..7f4726d4130e
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
-@@ -0,0 +1,161 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
+@@ -0,0 +1,54 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2019 Hardkernel Co., Ltd
@@ -136,80 +145,16 @@ index 000000000000..4b6c896d8abd
 +#include "rk3326-odroid-go.dtsi"
 +
 +/ {
-+	model = "ODROID-GO Super";
-+	compatible = "hardkernel,rk3326-odroid-go3", "rockchip,rk3326";
-+
-+	joystick_mux_controller: mux-controller {
-+		status = "okay";
-+		compatible = "gpio-mux";
-+		pinctrl = <&mux_en_pins>;
-+		#mux-control-cells = <0>;
-+
-+		mux-gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_LOW>,
-+			    <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	joystick_mux: adc-mux {
-+		status = "okay";
-+		compatible = "io-channel-mux";
-+		io-channels = <&saradc 1>;
-+		io-channel-names = "parent";
-+		#io-channel-cells = <1>;
-+
-+		mux-controls = <&joystick_mux_controller>;
-+
-+		channels = "0", "1", "2", "3";
-+	};
-+
-+	analog_sticks: adc-joystick {
-+		compatible = "adc-joystick";
-+		io-channels = <&joystick_mux 0>,
-+			      <&joystick_mux 1>,
-+			      <&joystick_mux 2>,
-+			      <&joystick_mux 3>;
-+		poll-interval = <60>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		axis@0 {
-+			reg = <0>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <180 800>;
-+			linux,code = <ABS_X>;
-+		};
-+
-+		axis@1 {
-+			reg = <1>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <180 800>;
-+			linux,code = <ABS_RX>;
-+		};
-+		axis@2 {
-+			reg = <2>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <180 800>;
-+			linux,code = <ABS_Y>;
-+		};
-+
-+		axis@3 {
-+			reg = <3>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <180 800>;
-+			linux,code = <ABS_RY>;
-+		};
-+	};
++	model = "Anbernic RG351M";
++	compatible = "anbernic,rg351m", "rockchip,rk3326";
 +
 +	battery: battery {
 +		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <4000000>;
++		charge-full-design-microamp-hours = <3450000>;
 +		charge-term-current-microamp = <300000>;
 +		constant-charge-current-max-microamp = <2000000>;
 +		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <180000>;
++		factory-internal-resistance-micro-ohms = <100000>;
 +		voltage-max-design-microvolt = <4100000>;
 +		voltage-min-design-microvolt = <3500000>;
 +
@@ -221,70 +166,27 @@ index 000000000000..4b6c896d8abd
 +					<3649470 20>, <3635260 15>, <3616920 10>, <3592440 5>,
 +					<3574170 0>;
 +	};
++
++	vibrator {
++		compatible = "pwm-vibrator";
++		pwms = <&pwm0 0 1000000 0>;
++		pwm-names = "enable";
++	};
 +};
 +
-+&builtin_gamepad {
-+	button-sw19 {
-+		gpios = <&gpio3 RK_PB1 GPIO_ACTIVE_LOW>;
-+		label = "SELECT";
-+		linux,code = <BTN_SELECT>;
-+	};
-+	/* note that TR2 and TL2 are swapped */
-+	button-sw20 {
-+		gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+		label = "TOP-RIGHT 2";
-+		linux,code = <BTN_TR2>;
-+	};
-+	button-sw21 {
-+		gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
-+		label = "TOP-LEFT 2";
-+		linux,code = <BTN_TL2>;
-+	};
-+	button-sw22 {
-+		gpios = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-+		label = "START";
-+		linux,code = <BTN_START>;
-+	};
-+};
++/delete-node/ &builtin_gamepad;
++/delete-node/ &vcc_host; /* conflicts with pwm vibration motor */
 +
 +&internal_display {
-+	status = "disabled";
++	compatible = "elida,kd35t133";
++};
++
++&pwm0 {
++	status = "okay";
 +};
 +
 +&rk817_charger {
 +	monitored-battery = <&battery>;
-+};
-+
-+&pinctrl {
-+	btns {
-+		btn_pins: btn-pins {
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+	joystick {
-+		mux_en_pins: mux-pins {
-+			rockchip,pins = <3 RK_PB5 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+	};
 +};
 -- 
 2.38.1
