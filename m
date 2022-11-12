@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8503DC4332F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Nov 2022 14:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568A0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Nov 2022 16:04:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=++fQ8p7PDQJM8crXqFABrGPb0sHiLwCyJmkSfjU3g2w=; b=QP92U8ppV2So6j
-	XOd3/Gl3kxArodL/RxxnayR3SeEKDmbiF0av0ne0dlPfOrQdDIIcycOSgLEGKMPx3igZVniqW4X6a
-	jfrk5g2AH975RDeOINCi+OAqOKOodByfSYf4Je+IHqRZS9M7SrsZxGcGQu1gUFJVdRqww6ugf9SdF
-	c7H2uohLuZIPr4SNOmp2ZDYHRDfnl/RcjbmBwh5VHc+wkYPUVDTFzKHke4Sv/lhhYKgEEGuIpFcFO
-	QlReH2mhkI1Rrr3A1Nt2361H9aZ110gbLshbQGiF69G5366wtzbuVVwc2iq1oHz0Laz9UF3EsG1is
-	oIdg+JI8fQkjon85goaw==;
+	List-Owner; bh=Fk6WxTXnvE4zkj7GghC2GBdWtyaFsierF3OPvi+I8dk=; b=4CkEbC6JR8ff6n
+	Tm49F5mLTdbxu5x3+a/iekIts+d/jgR/HaFPkyOZMZoyoUTNLEV5lH58/2qWmh/iUbkFA6sOWcWWY
+	JXl9RxmCksEK5nX9AMJgE8eSXsCFAfaJpv8VZdpHIutOBA8E3n+E+3X3k0sxmaBJmwzWw1cR+8PxI
+	SdgLWEYcqZydOyOLQ40gIKgQULgWUE9x8z3sQ+5vkhs96hW9vl4nuvzvo/RtdxCpktm6QXR0h5X8k
+	GokrKV5DomdlB+LeU9OrtIDgExGSavbfS6RQx8B95Jn86973j4ryAxwrYgkNznN9iM0jY9BarVABv
+	W0m5qLfBzubSGOw9MhxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otrbP-0065p0-Tv; Sat, 12 Nov 2022 14:35:23 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1otszt-006csQ-J8; Sat, 12 Nov 2022 16:04:45 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otraX-0065Pe-UF; Sat, 12 Nov 2022 14:34:37 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id ft34so18433868ejc.12;
-        Sat, 12 Nov 2022 06:34:28 -0800 (PST)
+	id 1otsze-006cjt-K4; Sat, 12 Nov 2022 16:04:31 +0000
+Received: by mail-wm1-x331.google.com with SMTP id o30so4588782wms.2;
+        Sat, 12 Nov 2022 08:04:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=chpLDI1QSiEujTU6BUSwWuhdcchu9pHjD9dEecC+fDc=;
-        b=Z36zkDNXIw39tXfGbxvC3hH5k7QB6qo89v4qXKriZSvt/h71FcN/vNhxbLQqpKWYIl
-         Yi5fBTrIl4kavfqgTpJksDkTuvlTfqBmRh3zT8DXAG8s7bcMcGGojnlfxHQZxPXzSEij
-         XlJX8KR3Vx5PETBwWTRAfvG4jUjIdPOy+eTe+Cy33k7daLC0yKq+Xj82tGpCVjIwONDR
-         zDiYzmIcqN0tdFBDeTkTxkNDIanjcSTQUEfv0/ruI/AIBjdi706V9ETaAOhIpaHJMQPf
-         lP67Tmiih4dNhRAiJDcP3zIXrhrTLfAdMnYsqPl+Yd4x7p4T1JnZpAeT0DmgbkHR4gSQ
-         Hh4Q==
+        bh=6vGKGpKWDMzYcbAUuUDkHFy/CbDqDYWCKkXDWqHYnr4=;
+        b=IYzQLachq1UeQWjOp9MP41sPq/3P3dn1wJO8S2uJtaVvKsv+P2kyhjojqOJFWDXvgV
+         BtcfWQHgRiEWQqayeE55fqM5mnUqNHMrUr+CRVvyWDJPK3maDec7v6B8At7M/7/Mx395
+         giiE9mU2YfW1ZRCVpnpM8qyxTWzQucIluHA1L6UuLy8vxda1s3BSCYCcwD3yQPgiyYaQ
+         E7s0he/Uoxs8RRQylD/qEVbKqXW5DnzxTN8cjLNWoTtP5QnwQpaUI5lsgI12vN+Bev08
+         y8+pvPVRH2xOLTMJZ6ErHdQSW+SBYNhoN8gf8Gas+3JtCdBnvuuH10ky7wza2iZjsAfP
+         KhHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=chpLDI1QSiEujTU6BUSwWuhdcchu9pHjD9dEecC+fDc=;
-        b=dwANM5u5ET9LL8FOjGrX1mstIj3nIfnj4fOhDCT6WTxnW/mUNm4Dm86K40AYMTjmRi
-         xt+DL3sMsJAuAsqjsVCgcUxdHo7VtODVVbAz122ZSJ6xhbBm6AgXixh9BjgPgkh68Lm1
-         vgVLYDcKrHNLq1+Um3gmQv3NufxJuqscU7TEpBeHUfN9cEBuJgpQo6u1eRc8ir5dxgh/
-         8a+Hgju1IwVZI+5oJmP/0cX4yONBhRpudtf8t33GdGpbaVXK6CTc/cvmbJSaw3XKQhuc
-         vMOfUvNmp9yCkdprGXmf+865X8uAYuJU5j2ld8qAyacfp9NN+QEYszvNGYmVarnYOY69
-         vsmg==
-X-Gm-Message-State: ANoB5pnal6QRgUpT/fGDgLj6+LK3WnZ1Nxsv+pz3AoEMN3DBeeVB1iIm
-	omZ4j1J7VeV/c9h6QyX/F+VosNpVoHee4vNu
-X-Google-Smtp-Source: AA0mqf4/Z3ZEI5C+JdfBtf9KnykoTaQmkzAa0DSzuJ0RyyKKNOMrFEf91T4clrl0ZigK34Ae7IH+Xw==
-X-Received: by 2002:a17:907:8dcd:b0:78a:efde:b84a with SMTP id tg13-20020a1709078dcd00b0078aefdeb84amr5271217ejc.744.1668263667241;
-        Sat, 12 Nov 2022 06:34:27 -0800 (PST)
-Received: from localhost.localdomain (83.31.120.236.ipv4.supernova.orange.pl. [83.31.120.236])
-        by smtp.gmail.com with ESMTPSA id l9-20020a1709063d2900b0077a11b79b9bsm1974668ejf.133.2022.11.12.06.34.26
+        bh=6vGKGpKWDMzYcbAUuUDkHFy/CbDqDYWCKkXDWqHYnr4=;
+        b=kDYFGud72F2FRpSkT06JhQSvLWhpT5L+HEiXIMHUPOg0X1UsREplbW1KzsO2gBolUl
+         To9WQYEbyKj+TfMT7MxC2dan09I1oXEvjrstMcTj7utSnKPTdgvSmrpjtWZVXAHL9vwo
+         Ldzl1FyP0IwWVFQ97BO4/wtUu33Hrbd8mcbiWj/GrC2GEKJh/o2GawbiLS7jMmLSsEDC
+         XVdpTQmEpwwSXRwxxXrPInKI/EZ02hcOd621+QpBDyDYjAxKqaS0RSj4AZCBNeZ7pROr
+         78g1ILiSJVdFVaGPOBxysaT9rYbO6+kc5qhV3T6OifbMZqB4GBuqkDG3neL6w1aFT2gt
+         hE2A==
+X-Gm-Message-State: ANoB5plxoyqXGVvX7wDQXVcK4pHy7qLR4mEc5RLEiykCiEM9NhMBNdLn
+	Waiaxlz8/8mg8ubGPQzGdLg=
+X-Google-Smtp-Source: AA0mqf7jKhJFAniMUxTPxswRa0WCU2lg7yLrMCY5yBd8xY2Xj5I1NFyoKqV/c20KSClTFveEa7svBQ==
+X-Received: by 2002:a7b:c003:0:b0:3b4:abda:8b54 with SMTP id c3-20020a7bc003000000b003b4abda8b54mr4290977wmb.82.1668269067876;
+        Sat, 12 Nov 2022 08:04:27 -0800 (PST)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
+        by smtp.gmail.com with ESMTPSA id iv16-20020a05600c549000b003cf87623c16sm14605752wmb.4.2022.11.12.08.04.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Nov 2022 06:34:27 -0800 (PST)
-From: Maya Matuszczyk <maccraft123mc@gmail.com>
-To: linux-rockchip@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
+        Sat, 12 Nov 2022 08:04:26 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>
-Cc: =?UTF-8?q?Jo=C3=A3o=20H=20=2E=20Spies?= <jhlspies@gmail.com>,
-	Chris Morgan <macroalpha82@gmail.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>,
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 3/5] arm64: dts: rockchip: Add Odroid Go Advance Black Edition
-Date: Sat, 12 Nov 2022 15:34:09 +0100
-Message-Id: <20221112143411.517906-4-maccraft123mc@gmail.com>
+Subject: [PATCH v2 1/6] arm64: dts: rockchip: Enable GPU on SOQuartz CM4
+Date: Sat, 12 Nov 2022 17:03:58 +0100
+Message-Id: <20221112160404.70868-2-frattaroli.nicolas@gmail.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221112143411.517906-1-maccraft123mc@gmail.com>
-References: <20221112143411.517906-1-maccraft123mc@gmail.com>
+In-Reply-To: <20221112160404.70868-1-frattaroli.nicolas@gmail.com>
+References: <20221112160404.70868-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_063434_209164_11FF5C8C 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20221112_080430_680523_AEEED71A 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,190 +95,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This device is a minor revision of the origin Odroid Go Advance, with
-added two more buttons and a WiFi card
+This enables the Mali-G52 GPU on the SOQuartz CM4 module.
 
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3326-odroid-go2-v11.dts    | 156 ++++++++++++++++++
- 2 files changed, 157 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 8c15593c0ca4..12446f531d29 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
-new file mode 100644
-index 000000000000..139c898e590e
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
-@@ -0,0 +1,156 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Hardkernel Co., Ltd
-+ * Copyright (c) 2020 Theobroma Systems Design und Consulting GmbH
-+ * Copyright (c) 2022 Maya Matuszczyk <maccraft123mc@gmail.com>
-+ */
-+
-+/dts-v1/;
-+#include "rk3326-odroid-go.dtsi"
-+
-+/ {
-+	model = "ODROID-GO Advance Black Edition";
-+	compatible = "hardkernel,rk3326-odroid-go2-v11", "rockchip,rk3326";
-+
-+	aliases {
-+		mmc1 = &sdio;
-+	};
-+
-+	analog_sticks: adc-joystick {
-+		compatible = "adc-joystick";
-+		io-channels = <&saradc 1>,
-+			      <&saradc 2>;
-+		poll-interval = <60>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		axis@0 {
-+			reg = <0>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <172 772>;
-+			linux,code = <ABS_X>;
-+			};
-+
-+		axis@1 {
-+			reg = <1>;
-+			abs-flat = <10>;
-+			abs-fuzz = <10>;
-+			abs-range = <278 815>;
-+			linux,code = <ABS_Y>;
-+		};
-+	};
-+
-+	battery: battery {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3000000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <180000>;
-+		voltage-max-design-microvolt = <4100000>;
-+		voltage-min-design-microvolt = <3500000>;
-+
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =  <4046950 100>, <4001920 95>, <3967900 90>, <3919950 85>,
-+					<3888450 80>, <3861850 75>, <3831540 70>, <3799130 65>,
-+					<3768190 60>, <3745650 55>, <3726610 50>, <3711630 45>,
-+					<3696720 40>, <3685660 35>, <3674950 30>, <3663050 25>,
-+					<3649470 20>, <3635260 15>, <3616920 10>, <3592440 5>,
-+					<3574170 0>;
-+	};
-+
-+	wifi_pwrseq: wifi-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_pwrseq_pins>;
-+		reset-gpios = <&gpio3 RK_PB1 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&builtin_gamepad {
-+	button-sw20 {
-+		gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+		label = "TOP-LEFT 2";
-+		linux,code = <BTN_TL2>;
-+	};
-+	button-sw21 {
-+		gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
-+		label = "TOP-RIGHT 2";
-+		linux,code = <BTN_TR2>;
-+	};
-+};
-+
-+&internal_display {
-+	compatible = "elida,kd35t133";
-+};
-+
-+&rk817 {
-+	regulators {
-+		vcc_wifi: LDO_REG9 {
-+			regulator-name = "vcc_wifi";
-+			regulator-min-microvolt = <3300000>;
-+			regulator-max-microvolt = <3300000>;
-+
-+			regulator-state-mem {
-+				regulator-on-in-suspend;
-+				regulator-suspend-microvolt = <3300000>;
-+			};
-+		};
-+	};
-+};
-+
-+&rk817_charger {
-+	monitored-battery = <&battery>;
-+};
-+
-+&sdio {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&wifi_pwrseq>;
-+	non-removable;
-+	vmmc-supply = <&vcc_wifi>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+index 5bcd4be32964..6e99f049501c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+@@ -143,6 +143,11 @@ &gmac1m0_clkinout
+ 	status = "disabled";
+ };
+ 
++&gpu {
++	mali-supply = <&vdd_gpu>;
 +	status = "okay";
-+
-+	esp8089: wifi@1 {
-+		compatible = "esp,esp8089";
-+		reg = <1>;
-+	};
 +};
 +
-+&pinctrl {
-+	btns {
-+		btn_pins: btn-pins {
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	wifi {
-+		wifi_pwrseq_pins: wifi-pwrseq-pins {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>,
-+					<3 RK_PB6 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
-+};
+ &i2c0 {
+ 	status = "okay";
+ 
 -- 
 2.38.1
 
