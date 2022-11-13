@@ -4,59 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC24C433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Nov 2022 21:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC87C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Nov 2022 08:48:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6B1Lo5+5pFqZELlv6BQM2F5PVnCdXiG+G3Zoe47l/iw=; b=TJNWXNW+wg+5XH
-	VBz5paTVyfVHizxlgADxQ3s9q/tIsaSyX4aCgnsz85txSah4i94bucGw3E+Fo9lXdY99zQ9RNsYD9
-	BhtqmtYQ2hn6Rj2MYposefyoLSDreltG3Sz3wlWY54yXkXkD9LxfURz6TUq7ErtN8q2cV4cmLB2YG
-	xCXARcIJdBH+TcOa9cWox+AkLpXLaOBQ4zihyQshA5SuNMg+d+RwPYqVjbNv2w+whWVKgBIVe/PXr
-	LtNL77UUgIzEQwWK3aFOA5AlFvj4pbJPUl8TlnS7Vfk7caFCvLwo7NvxXUrdY8BA7ckCIW+kj0kCb
-	t5AUY4K2r7SlBIfXgGcw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CnKUF1Y+b4mYXFLGOO4bpfwgCzsl+GLLUZBzpNhZkCk=; b=i849P/vh4zwlxh
+	K5konJZcsHhwLohPCCtjUTzRy8Hczmn1Mb9+zU06+fR+F1dJgGP9xUmLq0qj+I7OMtGoH2sK/j7Rw
+	Eriln+J3BsJEYJajbr+fpTGJDXvRcp/qBAw0+lKCLWjpo0PbnQ5ojWQdZooRKY5asdOdhbstm06JT
+	/UF8UOBMoJa0mYX10qG5Bltz1Vj4xR3CkUJ3TyNQ5hPi2+pWl7Hg9x0ytX4H7iFnukshzLvrF1Xs8
+	7rNppEh5bIp591tc+/Ma4RnFDSQYnD0sWlu4gH448D5Dm8L2Av8B/Z6Y+tJFxPP6DQ89r7KRfQNUh
+	DyfdLAPyOosq1vuLA9yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otyHa-007wdT-Gz; Sat, 12 Nov 2022 21:43:22 +0000
-Received: from smtp-30.smtpout.orange.fr ([80.12.242.30] helo=smtp.smtpout.orange.fr)
+	id 1ou8fO-00ASq5-UH; Sun, 13 Nov 2022 08:48:38 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otyHP-007wTF-6G
-	for linux-rockchip@lists.infradead.org; Sat, 12 Nov 2022 21:43:14 +0000
-Received: from pop-os.home ([86.243.100.34])
-	by smtp.orange.fr with ESMTPA
-	id tyHJoEBHyu8pltyHKom6SK; Sat, 12 Nov 2022 22:43:07 +0100
-X-ME-Helo: pop-os.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 12 Nov 2022 22:43:07 +0100
-X-ME-IP: 86.243.100.34
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-clk@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] clk: Remove a useless include
-Date: Sat, 12 Nov 2022 22:43:03 +0100
-Message-Id: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.34.1
+	id 1ou8fE-00ASo4-JL; Sun, 13 Nov 2022 08:48:29 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ou8f6-0001bW-7E; Sun, 13 Nov 2022 09:48:20 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, linux-clk@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] clk: Remove a useless include
+Date: Sun, 13 Nov 2022 09:48:19 +0100
+Message-ID: <3166437.e9J7NaK4W3@diego>
+In-Reply-To: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
+References: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_134311_386278_95126A29 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221113_004828_685989_B4667630 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,54 +57,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-<linux/rational.h> is not needed for these drivers. Remove the
-corresponding #include.
+Am Samstag, 12. November 2022, 22:43:03 CET schrieb Christophe JAILLET:
+> <linux/rational.h> is not needed for these drivers. Remove the
+> corresponding #include.
+> 
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
+>  drivers/clk/clk-versaclock5.c | 1 -
+>  drivers/clk/meson/clk-pll.c   | 1 -
+>  drivers/clk/rockchip/clk.c    | 1 -
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/clk/clk-versaclock5.c | 1 -
- drivers/clk/meson/clk-pll.c   | 1 -
- drivers/clk/rockchip/clk.c    | 1 -
- 3 files changed, 3 deletions(-)
+Clock-trees for soc families normally have different sub-maintainers,
+so depending on how we want to merge this, you might need to split
+this into 3 patches.
 
-diff --git a/drivers/clk/clk-versaclock5.c b/drivers/clk/clk-versaclock5.c
-index 88689415aff9..e9737969170e 100644
---- a/drivers/clk/clk-versaclock5.c
-+++ b/drivers/clk/clk-versaclock5.c
-@@ -20,7 +20,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
--#include <linux/rational.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/clk/meson/clk-pll.c b/drivers/clk/meson/clk-pll.c
-index 9e55617bc3b4..4b96e1590224 100644
---- a/drivers/clk/meson/clk-pll.c
-+++ b/drivers/clk/meson/clk-pll.c
-@@ -32,7 +32,6 @@
- #include <linux/io.h>
- #include <linux/math64.h>
- #include <linux/module.h>
--#include <linux/rational.h>
- 
- #include "clk-regmap.h"
- #include "clk-pll.h"
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index e63d4f20b479..398c427b8e81 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -21,7 +21,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/regmap.h>
- #include <linux/reboot.h>
--#include <linux/rational.h>
- 
- #include "../clk-fractional-divider.h"
- #include "clk.h"
--- 
-2.34.1
+But at least for the Rockchip part, I'm also fine with the patch going
+in as a whole, so (for the Rockchip part):
+
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+
+
+Heiko
+
+>  3 files changed, 3 deletions(-)
+> 
+
+[...]
+
+> diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+> index e63d4f20b479..398c427b8e81 100644
+> --- a/drivers/clk/rockchip/clk.c
+> +++ b/drivers/clk/rockchip/clk.c
+> @@ -21,7 +21,6 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/regmap.h>
+>  #include <linux/reboot.h>
+> -#include <linux/rational.h>
+>  
+>  #include "../clk-fractional-divider.h"
+>  #include "clk.h"
+> 
+
+
 
 
 _______________________________________________
