@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA2FC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Nov 2022 08:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74A30C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Nov 2022 08:47:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cmg12yIYAluOxgCEjY/H6nL7EDXFzmbO+CmlU74HD2k=; b=2EJZl01vGXqd/r
-	O2KA25Vg3Z4F+NvqUyeQJSFMiSgOsktUKTAIeCSxzEKud8wGwE8VH1xTHKAZqdIuyUGAl1034I5AV
-	Hxa1RxgQAZvRV3vCr4kYb5UJRaC40ipjXH82jVZ8xNW/HdZIiM1S3LsCJITGsc6UOffuVewUcGQO2
-	kjjH0hmxpDd21mbMQVS0B6olaCuXEUnKTJkNLQkDb1RmcOTK05Iz5kTaJK3fxdSP+hMvdFEfTNdb6
-	1qmCS160Jjld+NKlin2dI0pwRVnqprLHv7sKDR8KPmVcm+Rk+UbkQh1YKSXYYm2ED40z3xy9fcsld
-	0y+9xn/yXQVRCqTnPtgQ==;
+	List-Owner; bh=stz02IxvEX6Vd4zB3WfXrJQJ2udmv5Uam4xngcHrYos=; b=aaALiNcB+IvEO5
+	LRnmgbYmzu9jcIU07gdUEOn9zJnBzoen1ekkDiDKnPvfaQWkDlblYDk/Vt494kNRdkI5WY33WLfah
+	8+SJNuGtsuvUVe7FbG4blrma33NJcek5hDG0Dodt6P2WwBtwbv9gGRAUzEvVASYn2mbrQVDI8qk5s
+	gFKgwJ0HhTkh3Qg2x6b1M3T1S4hvZKsv4RRnz4Zen5ySxgfBW8CZBI+cWBPXmwXmikgNV0yE3Dkm1
+	sHEO97RbIe/6WX3jeRzLUTzMqo/aw1SG4n1OWZSV2nYaFEUZy+QUoU13mnppZYkbFWBuZdA/BkUon
+	ySfcFR6Ued0iTPQm2DHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouV78-00GvZp-EO; Mon, 14 Nov 2022 08:46:46 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1ouV7x-00Gw1z-81; Mon, 14 Nov 2022 08:47:37 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouV6i-00GvMC-Un
-	for linux-rockchip@lists.infradead.org; Mon, 14 Nov 2022 08:46:24 +0000
-Received: by mail-lf1-x130.google.com with SMTP id be13so18144860lfb.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 14 Nov 2022 00:46:19 -0800 (PST)
+	id 1ouV7u-00GvzR-QK
+	for linux-rockchip@lists.infradead.org; Mon, 14 Nov 2022 08:47:36 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id d20so12192105ljc.12
+        for <linux-rockchip@lists.infradead.org>; Mon, 14 Nov 2022 00:47:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ayjb4SbwIOWUmx2oNYBfq/TTYDmZlaBaAub29KPIR70=;
-        b=jt8d7u8QhOnfD+ySzp74OJ8+vcd3RhYSFerY0umLTHkcSE6G0dMluSu4ZdAqV0S//g
-         8uUyVjfm2JFq02MsUxl5U8b7GD5AM4MJPR811q7JmOB6VMDARxKgtbX7H3jjxqdmaiEV
-         vq2HS8HVeiyLIf8AEcVH69Uql4PtpiutAnyPkGCRYbDhdSIlcaSIp9hO5nPJLJgbpQzc
-         KFp3SEFddtm+hYQv+Oud+Nz2OzQIA34vZ9yE5e7Z+ySoYF3ajio4tqzjAfjBinhQuSsM
-         jOi1eOikYOMd85AcsGzsPJtg7J/SQAiJepwz2LPTHZq/qALpOvlwarCuCpKhYf9vBzPB
-         /LRw==
+        bh=k91EaasDqzf3M0hclk+HOgqxB1/9a3hKPkC8Mb7Jsz4=;
+        b=hrReG26IsAMZsEqRhDQsQBx08ryyZf+HwjMn4SKJod+yPvdoVJdQXyFpCfB70I/57l
+         ZaUihBH4gmegaNhtKiGEH8daaMC1xf0V6joWEeK5b6QWrPZG1sLyHU/lPKCu0EdGlq7s
+         PeRvnG9k6ihY8epsSz4SswwkF2x4WEv6F7dR5BjV0jPjc9SvW4CGIEe75Z7fnqLgoP7w
+         vEB0hpFUIWLqliX6vzvrjnrzL8i+D4Q1tszVknzGhZiJVSyKFs50GccKuiAIshySgA+y
+         iKXr88TdSEGo6KFl7GxUtQJUxmCnWIAmihKBvvDvRnCW1ZmKWDI20tC+5C86sS9+DCrU
+         +a/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ayjb4SbwIOWUmx2oNYBfq/TTYDmZlaBaAub29KPIR70=;
-        b=HIOix1Hi9haM5+nXBteoWksTo8427vb4tEvoM3pdt16qOOvGQZNo1xM2kSS4YnQG6F
-         FnFP3b5DsSgFJb6fyI3/Ea8e/M481MkWpqAPqNoBACKiR10lBEzv2u6joJ3T5ylzbuNb
-         MNI6BajbR2KLaNFpkplPNDQgSYhJP1jQ1Zy6H21eNaiAS6Z4+88DtZ1gf552tFxqxQaa
-         HEoNTRz4e0cqEtYrelOTGz2BkZNXXqtnWZSxDXUdo27Jut12tyC796rQwCeDaEBs+8XD
-         e3eWwFHWlQSKNRBxcHA3h/e4mwh21nHfggoKIFnilmZXJcqXydOUjKZ/rQGUNbYqCur7
-         aSVg==
-X-Gm-Message-State: ANoB5pkFjeg+IWpCBcfs0g4mvASP+vh0Zb+PaI9hZhmK9yUm+jE2O+tA
-	1fyEUJKCu4Fa+av+trFF98K0Ug==
-X-Google-Smtp-Source: AA0mqf5iu4twKL2vLty2ny/0PlQaggz76QRXb+ZgRWLdoaOfeh9gho7WQDbfPdtVWoFFt1HI77O9vg==
-X-Received: by 2002:a05:6512:e8e:b0:4a4:2967:78eb with SMTP id bi14-20020a0565120e8e00b004a4296778ebmr3712508lfb.222.1668415578002;
-        Mon, 14 Nov 2022 00:46:18 -0800 (PST)
+        bh=k91EaasDqzf3M0hclk+HOgqxB1/9a3hKPkC8Mb7Jsz4=;
+        b=lfETn0vjPqiteTxTPGOUAOvvALCdPmxxjXgvbmkOiJJDzDA9kuAxSW9kjRQqMWsH6P
+         d1Tpk8T10yCSqK5v6Oe2fdvu1okUOkLnWMNwRObT/7L6+F+1uX1JHGWlFjjcxa0oIsjL
+         gEPHjas1EvBXAu7ZQnxUjAQ9TuIpgIAPROsCNEXKbUjhgVjKiJuRm/hjF59Wvmg18Y0c
+         kpBvJbiVPuGjvaTSBzfqHvtyda5R4g7Uv/rz1FO9oEuNKBS724agY1ZqFKCWQBvzVX+U
+         3fGpkZNOfklPSapBR7nI/LH+AEQJ6DUh/qIU/WFB0UEtNPyLMvzA97QRE5C/bhNt0hiV
+         QwxA==
+X-Gm-Message-State: ANoB5pnUzqZfI/ERxTqlHPKxc9aK5sBGQDsnta7LzSclBBukQ6uCh+NR
+	kSZaWx2w8C76a/zD1sVOa5bBig==
+X-Google-Smtp-Source: AA0mqf7REd8RQNZERPsnfhg0u7qbW4FY+JeeTm1lJQdoB6KrFHIHNxu05lgvKLyciUACCd9BVrOa+w==
+X-Received: by 2002:a2e:9812:0:b0:26d:eaeb:cfb8 with SMTP id a18-20020a2e9812000000b0026deaebcfb8mr3618458ljj.226.1668415653004;
+        Mon, 14 Nov 2022 00:47:33 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id e10-20020a19674a000000b0049311968ca4sm1730841lfj.261.2022.11.14.00.46.16
+        by smtp.gmail.com with ESMTPSA id j6-20020a056512344600b004978e51b691sm1730554lfr.266.2022.11.14.00.47.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Nov 2022 00:46:17 -0800 (PST)
-Message-ID: <de1ff273-acf3-6a2a-6c7f-d97a9bc0a2c3@linaro.org>
-Date: Mon, 14 Nov 2022 09:46:16 +0100
+        Mon, 14 Nov 2022 00:47:32 -0800 (PST)
+Message-ID: <88ab9c26-4727-f3f5-64e6-904e5ec38434@linaro.org>
+Date: Mon, 14 Nov 2022 09:47:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v3 2/5] dt-bindings: arm: rockchip: Add more RK3326
- devices
+Subject: Re: [PATCH v3 4/5] arm64: dts: rockchip: Add Odroid Go Super
 Content-Language: en-US
 To: Maya Matuszczyk <maccraft123mc@gmail.com>,
  linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
@@ -76,13 +75,12 @@ Cc: =?UTF-8?B?Sm/Do28gSCAuIFNwaWVz?= <jhlspies@gmail.com>,
  Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20221112143411.517906-1-maccraft123mc@gmail.com>
- <20221112143411.517906-3-maccraft123mc@gmail.com>
+ <20221112143411.517906-5-maccraft123mc@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221112143411.517906-3-maccraft123mc@gmail.com>
+In-Reply-To: <20221112143411.517906-5-maccraft123mc@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_004621_045921_48D1897C 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221114_004734_890681_F16F9238 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,15 +98,70 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 12/11/2022 15:34, Maya Matuszczyk wrote:
-
-Missing commit msg, which is actually easy to write - you need to list
-devices you are adding.
-
+> This device is another revision of Odroid Go Advance, with added two
+> volume buttons, a second analog stick and a bigger screen that isn't yet
+> supported in the Mainline Kernel.
+> 
 > Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 > ---
->  .../devicetree/bindings/arm/rockchip.yaml         | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3326-odroid-go3.dts   | 161 ++++++++++++++++++
+>  2 files changed, 162 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 12446f531d29..142c83d2e5aa 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -9,6 +9,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+> new file mode 100644
+> index 000000000000..4b6c896d8abd
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+> @@ -0,0 +1,161 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2019 Hardkernel Co., Ltd
+> + * Copyright (c) 2020 Theobroma Systems Design und Consulting GmbH
+> + * Copyright (c) 2022 Maya Matuszczyk <maccraft123mc@gmail.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include "rk3326-odroid-go.dtsi"
+> +
+> +/ {
+> +	model = "ODROID-GO Super";
+> +	compatible = "hardkernel,rk3326-odroid-go3", "rockchip,rk3326";
+> +
+> +	joystick_mux_controller: mux-controller {
+> +		status = "okay";
 
+Why adding status? Also, it's not a first property...
+
+> +		compatible = "gpio-mux";
+> +		pinctrl = <&mux_en_pins>;
+> +		#mux-control-cells = <0>;
+> +
+> +		mux-gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_LOW>,
+> +			    <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+> +	joystick_mux: adc-mux {
+> +		status = "okay";
+
+Why status? Is it a node override?
+
+> +		compatible = "io-channel-mux";
+> +		io-channels = <&saradc 1>;
+> +		io-channel-names = "parent
 
 Best regards,
 Krzysztof
