@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD57C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Nov 2022 07:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0096EC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Nov 2022 08:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZkSRPmO9w6PS7c5vLMmOSdUF1eUleIr6Azhq3CTGRUM=; b=KYadb8ezKU6TXa
-	jhBWgRRvsMBOaaIfMwn/mIQU+2vuiVEyTYQ/po5EbkmeoCsImvrYH9z0YmS7L3sUf3g9E+Fpf7XGa
-	Rrs0jcnKai/TRDgKMn4Yp2kO4ImtHrGOyQJ7QhQJG/K+3CwgSiuKXu9R/OD8uhb/qQQ6Ha5oisci1
-	xhUeNwjTmC5CANMG5umPrtMOCxEjBtxWjyAqNCORLpfIhldgO6a6ityMsKS+9Yg3DIwLm6Ttr7uhD
-	egN1Gw0inlJ723me5OQZziSQG610V5uPtJhUkoQrqVb0l5e96nFgNfajib3IEKKUi/gOkiBB8rig/
-	oVgwLJO6fLDxw1L4fYFA==;
+	List-Owner; bh=DUz87CQksoR9eur2aNcvSt5ViOfrBwjJl5bOBmPJeWA=; b=bJ9NcWiVi+gHLE
+	SCHWFCcKMuLFu4Rd0bFD+pTebKTuICfTb4DUhbAz0YlvEweeyGgizUVGOCC2FWPsgihnoQln0TvNG
+	0359c8wZFco17cFrLpJnQW1XhDTUz4J6MYW7v0JEM1eJbtqLeN2TPPcEB4Y6yujFV5wMMokp1rK6J
+	KuKjks5wcdPy9o6FiA26Bh9pVrF9MOukYbAwN6Jh4h2qQbDckzJI2Jg3/gxwVzz7mg7iplGl5I23r
+	z2/cBHVJnpzU0OeR+QpD/bhJ7M8BE86jv/F8kklna3IEO74oBZlMT8WViKQju7q36ShynREIMFfOK
+	r8vvmdTPH3jWcoDQVy9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouUHr-00Gb5f-Kf; Mon, 14 Nov 2022 07:53:47 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1ouUgE-00GjE8-Ot; Mon, 14 Nov 2022 08:18:58 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouUHR-00GauO-Mo
-	for linux-rockchip@lists.infradead.org; Mon, 14 Nov 2022 07:53:23 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id g12so17998548lfh.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 13 Nov 2022 23:53:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mPteRXuurrYIqWrse9JwxLjzfWbyyHOFXx8cvgeh7xI=;
-        b=RbpQb7sW542HdgS4M2H8DTDHsg3T3PRosLUxU5N5G7BQU4oBb+axXvDmDDLLiVQRYg
-         BTwR98kQW7n6JuXEBKN5cxk1srrQW3yrFmVdslAWHN2zWtwd6zo/7558lfHWTCJ7C9kW
-         JBd1p9HA08p4EJwZIEax9c1/cGR+BNCOOTNUm+tZhoXhUWu/8vJRzsGTe4bzbGUsViWP
-         4yWEsMzdddtTYwR0NdUe/QKHdEVwiRPtzVKqHkwmP3w+/v+tSe8Fs7PjHE+DCqFQYHPc
-         HuEBULhWe/jOd/2gM1HclbjFR8A/kPlPcJ9d+2KSX8wGh32m3xuSPgLy/39gVIpvf+Qg
-         mNYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mPteRXuurrYIqWrse9JwxLjzfWbyyHOFXx8cvgeh7xI=;
-        b=7GhNk4zcw6dPxloIR967F4zJdx9Wi6CSyj4/wAYeRKXVO+ke4dUkVuKAFUUxJr6fcn
-         5Wj2lDnUKWCsCcvZm7iXZQmklGZW5QGPl0RqhGGa1rDJzZwP8QJFb+krR+Ua5y9ybNQa
-         mRJOhxvIKMzbRYOWxeb9RWbzvUj52XCvODrtD02cd/baCEJLXUnAKtyO43990vr8fP60
-         Ay4ZIPVT1/0/GowUIzaJFpO6yCN7ZyWVy1FRZxvI5Ybs6FdsIPgNAx3LzjEvCrKG1LG8
-         e6diTf0nr21VlKzdGVgK/R3ZlcbzZdwgumU+j0TC8QKqoLncLRtrZ0GNn00SZCAijuEe
-         1LKA==
-X-Gm-Message-State: ANoB5pn4Obgfw9hXBP5f0h6YwuMIP/6RarIafllJXQEy4xb0JkTpTAqt
-	R5VZ5jl3CUxP/Woau22BQWuoxQ==
-X-Google-Smtp-Source: AA0mqf4OBoAylXtT0sBiy8jHQ+/GQteJ4T/mfs0zyPgj4RG4qH2mkmcXLXi4oSRxCmQCriiQPyBeAA==
-X-Received: by 2002:a05:6512:308:b0:4aa:8cd:5495 with SMTP id t8-20020a056512030800b004aa08cd5495mr3446242lfp.254.1668412397911;
-        Sun, 13 Nov 2022 23:53:17 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id u3-20020ac25183000000b004ae394b6a6fsm1709573lfi.246.2022.11.13.23.53.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Nov 2022 23:53:17 -0800 (PST)
-Message-ID: <fa9255f1-d083-936f-e402-61873e582882@linaro.org>
-Date: Mon, 14 Nov 2022 08:53:11 +0100
+	id 1ouUg3-00Gj8R-1D; Mon, 14 Nov 2022 08:18:48 +0000
+Received: from booty (unknown [77.244.183.192])
+	(Authenticated sender: luca.ceresoli@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 39AB9FF804;
+	Mon, 14 Nov 2022 08:18:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1668413921;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=X576UZhTAk2kjGWa6Mn1KvO6tfONS5DcXAcdb1drDss=;
+	b=hocuovv9/oJJJ9D5Izl2DfBvqUrHK5qx8Mq+Y45rNa0Oth00wChrNtAI4XBEGW8Vr8JQlZ
+	DRM/NWn/T9cUFsyLmWfriZ4qev88Yy0UAq/Un06b7LEa9T/HwMmCyxkxBGZR6wi1urgLjI
+	pEP3pKkFcyzX+ZY6PFTG8L2LVwU23ZsZWOG52cgoyr/acNvg7SR7gAZdnUnPzY0dao4M76
+	e9wCAOS/melM9YW2q+6T0tESPicC3NLr14zLh+FY/0OoCbLdgJUvbjWqunvA/eGMUJwCIr
+	3HCUsZTLM92gfnqyBUycuaBil52uIJIu7ETd7VbMaYTkdub9JDAUtY9VfWURyg==
+Date: Mon, 14 Nov 2022 09:18:36 +0100
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Jerome Brunet <jbrunet@baylibre.com>
+Cc: Heiko =?UTF-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>, Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] clk: Remove a useless include
+Message-ID: <20221114091836.650b893b@booty>
+In-Reply-To: <1jo7ta3aao.fsf@starbuckisacylon.baylibre.com>
+References: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
+	<3166437.e9J7NaK4W3@diego>
+	<1jo7ta3aao.fsf@starbuckisacylon.baylibre.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 5/6] dt-bindings: arm: rockchip: Add SOQuartz Blade
-Content-Language: en-US
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221112160404.70868-1-frattaroli.nicolas@gmail.com>
- <20221112160404.70868-6-frattaroli.nicolas@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221112160404.70868-6-frattaroli.nicolas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221113_235321_856258_6C10B40A 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20221114_001847_245370_EA1CC9DC 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,38 +74,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/11/2022 17:04, Nicolas Frattaroli wrote:
-
-You miss commit msg.
-
-> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 244c42eaae8c..fc5f14fcd007 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -579,6 +579,7 @@ properties:
->          items:
->            - enum:
->                - pine64,soquartz-cm4io
-> +              - pine64,soquartz-blade
-
-Keep alphabetical order,
-
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSmVyb21lLAoKT24gU3VuLCAxMyBOb3YgMjAyMiAyMDoyOTo0MyArMDEwMApKZXJvbWUg
+QnJ1bmV0IDxqYnJ1bmV0QGJheWxpYnJlLmNvbT4gd3JvdGU6Cgo+IE9uIFN1biAxMyBOb3YgMjAy
+MiBhdCAwOTo0OCwgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4gCj4g
+PiBBbSBTYW1zdGFnLCAxMi4gTm92ZW1iZXIgMjAyMiwgMjI6NDM6MDMgQ0VUIHNjaHJpZWIgQ2hy
+aXN0b3BoZSBKQUlMTEVUOiAgCj4gPj4gPGxpbnV4L3JhdGlvbmFsLmg+IGlzIG5vdCBuZWVkZWQg
+Zm9yIHRoZXNlIGRyaXZlcnMuIFJlbW92ZSB0aGUKPiA+PiBjb3JyZXNwb25kaW5nICNpbmNsdWRl
+Lgo+ID4+IAo+ID4+IFNpZ25lZC1vZmYtYnk6IENocmlzdG9waGUgSkFJTExFVCA8Y2hyaXN0b3Bo
+ZS5qYWlsbGV0QHdhbmFkb28uZnI+Cj4gPj4gLS0tCj4gPj4gIGRyaXZlcnMvY2xrL2Nsay12ZXJz
+YWNsb2NrNS5jIHwgMSAtCj4gPj4gIGRyaXZlcnMvY2xrL21lc29uL2Nsay1wbGwuYyAgIHwgMSAt
+Cj4gPj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5jICAgIHwgMSAtICAKPiA+Cj4gPiBDbG9j
+ay10cmVlcyBmb3Igc29jIGZhbWlsaWVzIG5vcm1hbGx5IGhhdmUgZGlmZmVyZW50IHN1Yi1tYWlu
+dGFpbmVycywKPiA+IHNvIGRlcGVuZGluZyBvbiBob3cgd2Ugd2FudCB0byBtZXJnZSB0aGlzLCB5
+b3UgbWlnaHQgbmVlZCB0byBzcGxpdAo+ID4gdGhpcyBpbnRvIDMgcGF0Y2hlcy4KPiA+Cj4gPiBC
+dXQgYXQgbGVhc3QgZm9yIHRoZSBSb2NrY2hpcCBwYXJ0LCBJJ20gYWxzbyBmaW5lIHdpdGggdGhl
+IHBhdGNoIGdvaW5nCj4gPiBpbiBhcyBhIHdob2xlLCBzbyAoZm9yIHRoZSBSb2NrY2hpcCBwYXJ0
+KToKPiA+Cj4gPiBBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+
+Cj4gPgo+ID4gSGVpa28gIAo+IAo+IFNhbWUgZm9yIHRoZSBBbWxvZ2ljIHBhcnQKPiAKPiBBY2tl
+ZC1ieTogSmVyb21lIEJydW5ldCA8amJydW5ldEBiYXlsaWJyZS5jb20+CgpBbmQgdGhlIHNhbWUg
+Zm9yIFZlcnNhY2xvY2s6CgpSZXZpZXdlZC1ieTogTHVjYSBDZXJlc29saSA8bHVjYS5jZXJlc29s
+aUBib290bGluLmNvbT4KCi0tIApMdWNhIENlcmVzb2xpLCBCb290bGluCkVtYmVkZGVkIExpbnV4
+IGFuZCBLZXJuZWwgZW5naW5lZXJpbmcKaHR0cHM6Ly9ib290bGluLmNvbQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
