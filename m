@@ -4,45 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 505A0C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Nov 2022 11:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D914C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Nov 2022 16:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gUnBoyhoMDC6GpSXnHaBQbFWjigUbHMd55vY2mt2vXc=; b=x3heE3wBIVwhRK
-	kFXERt7eWVv/zvw/Q/ykY2W03pMnRpCcVXQ/29AFp9XgODEoIiUX4+fMMR203T5qe8GlE42xzwHfj
-	urX2oJrJxHOXx35n1GuXvxYAzktvS8FyxtTKGUm3RWqYBgouBJs9B01Xt9mEDi74FzZsQtgzWy0di
-	YO5pD7sH4bZJ5ryzcoM6vGMwfCRwsLax0z6v8xDRc3LKWpgZpfiX8rQzGpjG+OKy4z6sn51cKJhIg
-	L6mWYBVTDJ8nefMfuAGfs3B3sr66E/+OHnkShZYnPTbearYJV8j6rpduSDTyximBrbMTCtF939a+H
-	21F7K+Gbf4HedF+xbMEw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XeBjMu9OE1Sk50dnnGK4ObRnEv3GFV9uUhtd9aulNG8=; b=aa9IdO7qxGAY7I
+	mQRObQvyG6taNQFiAFiwRWbw8hxTIzQ2Z8Hx3SOiq5z1dFc3TbMuv+jmok8ebz3SLWhpGslGjlHpv
+	vTshT2J3j5dp8uPRdI5dR36uhGRa1B6uxNzuKJoABl81y+Oi9u+ax3ZT/v1CGMfhH3kzg9fHm+Yrc
+	6agGFO2ZQS0D/aTUMwBxQYnAoJHQDQ16fqX9A0VvMenHOF1/tRMrLJJYAe8B1yg7M+TGBfU8kVByK
+	R2SzwZE9vEOJ6Z9s/3T2xYorssRRCBOT8m7I16OVoDewWTqVnqAesoWVrqIHbHpqVJrvz+STzjXRs
+	haX563FltXnH+uD11X6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouuAh-00AcUd-7R; Tue, 15 Nov 2022 11:32:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ouych-00Cfut-4N; Tue, 15 Nov 2022 16:17:19 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouuAe-00AcTP-ON
-	for linux-rockchip@lists.infradead.org; Tue, 15 Nov 2022 11:32:05 +0000
-Received: from wf0498.dip.tu-dresden.de ([141.76.181.242] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ouuAZ-0007oF-A1; Tue, 15 Nov 2022 12:31:59 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
-Subject: Re: [PATCH 5/7] thermal: rockchip: Support dynamic sized sensor array
-Date: Tue, 15 Nov 2022 12:31:58 +0100
-Message-ID: <3951400.44csPzL39Z@phil>
-In-Reply-To: <20221031175058.175698-6-sebastian.reichel@collabora.com>
-References: <20221031175058.175698-1-sebastian.reichel@collabora.com> <20221031175058.175698-6-sebastian.reichel@collabora.com>
+	id 1ouycd-00CfoY-9a
+	for linux-rockchip@lists.infradead.org; Tue, 15 Nov 2022 16:17:17 +0000
+Received: from jupiter.universe (dyndsl-095-033-156-109.ewe-ip-backbone.de [95.33.156.109])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8DF9066023A6;
+	Tue, 15 Nov 2022 16:17:09 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1668529029;
+	bh=fKfUXO5zcA7cT/xlG3ZFpWxaafbdeWYxv/sohfNQGLc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Z/PdmmVcq7no8E0y2w3K/1Jdgc0XDqeRqnCScMGKm7YoFo2yHYiMNfe2Utv/oQzyd
+	 WnSoZ73TfZ/1Tawqb2/AK41rPweq1yvIht4fZZOd0xx8+Rx/wwIIM32VDx4ZBYOb0F
+	 KOOJk1YcbmI3mLdKAv5vgGvcdIbyUBx2XCrdpAcjCIIhH/LdBALSx47Nsaa+4Q3H3L
+	 2yr6u2dYRexahwHMK2E/ENTpKO8zMI0TM1EHrkkl3x9Dvw19TJqFTrc/9PNot1K8IX
+	 6esq031dfPRuPR8X2psyzkmgElXp7cPWxMIrxO/FNceHnHGRhYlpnz+Sb/JTe3WCzC
+	 hjMMNfrkaKrgQ==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 5BB11480119; Tue, 15 Nov 2022 17:17:07 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv2 0/5] Initial rk3588 DT
+Date: Tue, 15 Nov 2022 17:16:57 +0100
+Message-Id: <20221115161702.163057-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_033204_814718_10E7B48C 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221115_081715_520255_48582C20 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,16 +78,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 31. Oktober 2022, 18:50:56 CET schrieb Sebastian Reichel:
-> Dynamically allocate the sensors array based on the amount
-> of platform sensors in preparation for rk3588 support, which
-> needs 7 sensors.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Hi,
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+This adds initial rk3588(s) DT including two different board
+devicetrees. All required driver changes have been merged into
+the respective maintainer trees. There is one pending DT binding
+fix:
 
+https://lore.kernel.org/all/20221021172012.87954-1-sebastian.reichel@collabora.com/
 
+Even with that there is still one warning from the DT check:
+
+$ make CHECK_DTBS=y rockchip/rk3588-evb1-v10.dtb rockchip/rk3588s-rock-5a.dtb
+  DTC_CHK arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb
+/home/sre/src/collabora/rode/linux-rockchip-upstream/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb:
+    ethernet@fe1c0000: Unevaluated properties are not allowed ('interrupt-names', 'interrupts', 'mdio',
+    'power-domains', 'reg', 'reset-names', 'resets', 'rx-queues-config', 'snps,axi-config', 'snps,mixed-burst',
+    'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,tso', 'stmmac-axi-config', 'tx-queues-config' were unexpected)
+	From schema: /home/sre/src/collabora/rode/linux-rockchip-upstream/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+
+This is for gmac1. gmac0 has the same properties and there is no warning. Also
+rk3588s (and thus the Rock 5A) has only gmac1 and there is no warning for the
+Rock 5A. It looks like the for some reason the referenced "snps,dwmac.yaml#"
+is only checked for the first node. I think it's a bug in dt-validate.
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20221108171500.99599-1-sebastian.reichel@collabora.com/
+ * Drop Acked-by from Krzysztof
+ * Add 'regulator-' prefix to VCC12V VCC5V0 regulators
+ * Change 'Radxa Rock 5A' to 'Radxa ROCK 5 Model A' in DT binding
+ * Update cover-letter (clock driver and some DT binding fixes got merged)
+
+-- Sebastian
+
+Jianqun Xu (1):
+  arm64: dts: rockchip: Add rk3588 pinctrl data
+
+Kever Yang (2):
+  arm64: dts: rockchip: Add base DT for rk3588 SoC
+  arm64: dts: rockchip: Add rk3588-evb1 board
+
+Sebastian Reichel (2):
+  dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
+  arm64: dts: rockchip: Add rock-5a board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   10 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    2 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  156 +
+ .../boot/dts/rockchip/rk3588-pinctrl.dtsi     |  516 +++
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |   62 +
+ .../boot/dts/rockchip/rk3588s-pinctrl.dtsi    | 3403 +++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   63 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 1678 ++++++++
+ 9 files changed, 5895 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+
+-- 
+2.35.1
 
 
 _______________________________________________
