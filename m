@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 253F3C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Nov 2022 20:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63043C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Nov 2022 20:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LbJjW2eycIvyw4+UFOteLYp67m7ritT9LghvlXBgRnw=; b=hHETPhETTVpMAV
-	jtl9iDG5TiyULGgoNu5l/2LE8FVB6mamLKqYw2kom+hn9lOK6e3T2xgeSu8JLbECnY67+mItJ+VW/
-	36xwS0WgR4fhTIDZ4y2LSu5KN6v5fUjlJWoMxMxFNYKuJyaORO72RzF6v1f0XOmJLdnmrAayUV/fF
-	xzmljTFELA2hXu59uzqqnfLe3rrb3fO1zIl/vI9Vwj6unL30xRKnqUVz6loiLxne1r3CxIgodpk0s
-	Q55IRJMTqaXaJkdgbN8CmUTdvL+ZYwwV3YDmUpEsuh2vcq2QN1v8L+TTeDGDpLHT5ZY37sXFimDO3
-	8Q7DhJy68RZh/DG3r2NQ==;
+	List-Owner; bh=LbJjW2eycIvyw4+UFOteLYp67m7ritT9LghvlXBgRnw=; b=hIPLoI1QR0nDsH
+	tjhwA6p3aCmOyKR3/XYo2KMtOJYaRognTTUm/TAAWK5P419oXEzz3TwtPmlbU2ON4ZCdJLUc9jhh+
+	eVXurbl2X9/Ad6RHkuCvYdJTctyKzPghqeua0bqLSc7OF7F8+Y2hkuBIDU2doioDXmEZ3d/+fpFh/
+	ZDgYvHuFMYpjpFAMJu176dop5LetdgoTLxNRaQ5kqzcneCD7zqwyVTTmAKFWXumkD644fd2tlTaE4
+	r19gwd4UxUEXtYmQOy8lU8baFIgChNAaHiVb8lw/i2SCKnh4dYQDCBLUDqwnx48YF6waaLh64glGi
+	2a8U3EXRiJ44ceflPmvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovOdO-007TvN-S5; Wed, 16 Nov 2022 20:03:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ovOdz-007ULp-OG; Wed, 16 Nov 2022 20:04:23 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovOca-007Tds-Af; Wed, 16 Nov 2022 20:02:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Hlf4RPnys2xlptR6hKKlXQBW5qSMO1/p3GZVaaL5DEk=; b=FN+Sd97riK2aSwUH5qVWSThSvj
-	e+1Fn+6l9/ySWUBqVvbqJZTm/Z6Cvrq4+TqVg0ZYqzrFgn81vWytp0ACoTe9z58BTVYXCvfip0Q1E
-	Joh0QKVBf+7T2yNfcptkzS1BZYxUg0+dXe5YyMQn80CdWie367Z1BUTQpzuSp7wMCE604I9/xWr86
-	GIcw2tqDjU7WyI5UKmzhXqOzqpZw05mTI4PD9gApjYbNPaYjtS963/HcHN30BqBXtBOmwOY8JjihR
-	yW8zWc8YOXsj0yMrnNo7KEXbxXQf8eYHgIZfJiswF6i9YceqcYq+oN+kBAfkkypUUuWCi4xlOPYcB
-	d8s/Nrng==;
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovOcS-001SGq-7Z; Wed, 16 Nov 2022 20:02:54 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 136so17743197pga.1;
-        Wed, 16 Nov 2022 12:02:46 -0800 (PST)
+	id 1ovOcY-007TcV-H0; Wed, 16 Nov 2022 20:02:58 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id g10so92876plo.11;
+        Wed, 16 Nov 2022 12:02:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
         bh=Hlf4RPnys2xlptR6hKKlXQBW5qSMO1/p3GZVaaL5DEk=;
-        b=Q1vmNkgnMV1rfn9shs7EUPv1E8qMY58IiMlv0wjSwmEEfxjXjMTTfXyJEBhBiZo4RV
-         1jqoXycSq7g9T26erjmpPfcESFrKSgB+0GZ9uXRuDnLliTwzcp3CITDb5rLft3pHUUpi
-         Uk/ztpz5RY8cTkGXRuGcM71hNwq5QyUBzol5xPf0dZrny2lfx3BZa6ABxvJWlWOVNpv/
-         XHOslswzR/EJoP37wdNKNz8kCdbb+T/xvt0e+VpK+v0o88GygLfHfFUJ01ijAAnOvSuC
-         2OvmU1Qfgf4o7q2CmJmFZvLTNWSz59rzYkXWJyMLkM4/jBLVp2C4joBXxUv+a2T27LLc
-         EBOQ==
+        b=p1xoRO47ZrZ1DdmzZr9wv/ZEi13KH85MY5IcJaX02FD68/K/cmdmHDvzNED+iQn6fi
+         b/BywVdnyw7bc1gzPutqrwvD8uma5HbPaN9VxphqGCIXb9Oi1B0cCgbkoobNrkjbaYe7
+         nN5k/BCr2axXuXqOWPhfsVw/0ldm+p2Qz+Ni//ONsEcVAAZiGlqV/odH2z4xuqy4gAI1
+         YL67GKHiSw63d4ySeeWwOlXjWAKS8bK1oPHYv3zp2EybFz58fl28AJHD9Xqm8dmpaHLN
+         eW81F2sIX89Df+kGKWG2KvKyO2744SmkuuquwI35IOh8l5MNJx5ETidYVQxKmuVi1cCD
+         AkGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
         bh=Hlf4RPnys2xlptR6hKKlXQBW5qSMO1/p3GZVaaL5DEk=;
-        b=ftaSY0VWOTpPoDycSZI2vwcPey4KWO9xsn9V+36RDdIP8yolwL2hEZSjYfT5mXHF+G
-         EXrJUtEs0TRVGvk2j1blEC2k3unbULcjabGNUX9iRWvLLdPbxZxsm5tNajHd/bTbFXpd
-         fs4A56cCIM5rrMt8qTDZnPxb5+deCY5DbsDTk1NxAavRLGLaoK0Il7n0nOizs979UViw
-         UWoET4oRs8e2mOPCwNJ9RsRPAlOHFXz5mqKlm6hymRDD4NjOOtC474hGj5kPaEX4dlYY
-         T0+wbCj3X6xCLe9kyVUm4YyRL0B1+oWUOnqysxzupEHyLtwbybXkobRQlVRn5SwRAWR5
-         Q1tQ==
-X-Gm-Message-State: ANoB5plebUXBsxg4yOG3nwKdfjmvBm9itzP8+S3J+hz8IL6d6nhMLhAi
-	8+81XqOBzLTqF6VihLzn6F8=
-X-Google-Smtp-Source: AA0mqf6qbEHBcFkhsJEvfxwuN4QewKdZ0Bpri9Q9/YF+J2TGtG47mtLJ3TFInumyyIdAseU3vRyqgQ==
-X-Received: by 2002:a05:6a00:4186:b0:56b:d951:67d2 with SMTP id ca6-20020a056a00418600b0056bd95167d2mr24621348pfb.55.1668628964901;
-        Wed, 16 Nov 2022 12:02:44 -0800 (PST)
+        b=FLMb0ju792C7WseVzzTqXaq4pXqfUD2OQOV6AJa6QdKpbbkd4c983jct+S6EBrbGui
+         3hRgGB08B9Wcezv6j9wAEuwaVapP7SXyUW91Us2nlfsSbkvc2mKgNbniRZ36i/weFodr
+         SRf6BApKPcP6oMNON1ux2P92TKLoqZmkCstOi8oUhNGzcV/ax+jeOPPVVMJmGav1LSVo
+         /uHqa0sT+w6qNdHQWdxH64cScGNPyxx5uKTiVETz6T3eT+RTcgb9knAhq9v6GtFEnC2Y
+         rWvlWctxkrRaupIajcvsMHAv7CY/99+5GNLsRYORutD6EueM4bczqeeC4xa5Nx1UBflV
+         RPjw==
+X-Gm-Message-State: ANoB5pnjDPw4FXzKhQvyU01FlBT05pJmZNTbdoGT9qvelzOh9A3062Ax
+	nIRFF8U0Iw6tA4Al++zXPC4=
+X-Google-Smtp-Source: AA0mqf7C+XsGFEi9GeihjTn5V5WPZwj9QlHhQ6Xr1g1pK9CvcEqH7Zj01PlVmvLBIF1bcTXt+nB5cA==
+X-Received: by 2002:a17:902:e791:b0:186:9870:506a with SMTP id cp17-20020a170902e79100b001869870506amr10439418plb.45.1668628971684;
+        Wed, 16 Nov 2022 12:02:51 -0800 (PST)
 Received: from localhost.localdomain ([103.51.72.182])
-        by smtp.gmail.com with ESMTPSA id s18-20020a170903215200b00186a6b6350esm12423950ple.268.2022.11.16.12.02.41
+        by smtp.gmail.com with ESMTPSA id s18-20020a170903215200b00186a6b6350esm12423950ple.268.2022.11.16.12.02.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Nov 2022 12:02:44 -0800 (PST)
+        Wed, 16 Nov 2022 12:02:51 -0800 (PST)
 From: Anand Moon <linux.amoon@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -85,15 +72,15 @@ Cc: Anand Moon <linux.amoon@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
 Subject: [linux-next-v2 4/5] arm64: dts: rockchip: Add support of interrupt to ethernet node on Rock 3A SBC
-Date: Wed, 16 Nov 2022 20:01:46 +0000
-Message-Id: <20221116200150.4657-5-linux.amoon@gmail.com>
+Date: Wed, 16 Nov 2022 20:01:47 +0000
+Message-Id: <20221116200150.4657-6-linux.amoon@gmail.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221116200150.4657-1-linux.amoon@gmail.com>
 References: <20221116200150.4657-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_200248_488435_30CCCC1C 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20221116_120254_625206_5CF527D8 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
