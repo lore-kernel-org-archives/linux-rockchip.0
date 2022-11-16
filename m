@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6089C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Nov 2022 20:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6121C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Nov 2022 21:10:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UJnIqvrHqZBg/aMkqDrtU8+5fiMCUft47qXKQohsG3U=; b=kuowZST8u7bCcs
-	ZcVnAmqwHMktzFfzT5WpgbG1/jxwCT4DcJNjVjYZ+BEiMJvvCmwLosrymqAbRN2s7pA7jqmuc3BO3
-	0XtNOTSOK56HS6dR8hOKkcgTNUUbs3IggFmlJxL6oJgckD+5itmUt93OEuBvo+NLfhd88Q4Zzpk96
-	MUj0GNDjmfl3obXCuQUFsYNVYOU1k17hI4poEGvPNqnPGNu1aaFIzJfyUS7/CVhx82E4n+yh/NIxY
-	OjCXwIXZv1N1CT2BbOKrlVPhDRPDbPUGMHGGj/seWPDRQNYonTcZ9HAe6GwHEVuUlLEj3bbmlZIwm
-	5i4Cvq9BZqJ3Zfinmp6Q==;
+	List-Owner; bh=gmrw7jwDsL1b0JUxD5dNE7CD4VjYkdq5YQeKgB9zr6s=; b=kV+UCe+PsYNbJE
+	b8W+FQEpT1ByqN+9JJREVvJqA0yh6vrJ5SDL9M6njW8utWSChdJGHbgqxpWzFtHXzc6JxVoITd5xp
+	bHhauEueC9q21NCIMUpANW0GGlh7OomZeCIXA2o0z99nA+lqXl/C47b8f0UDVSVY3fHc+8uoxl9uu
+	6o9cw8XE1qd28lEMDAA2X5k8CUk4R9kWN/ilqYS3TBgPUALgJzghbebj0ZdZlzrbY1omnqTF+XwpW
+	WmOFPOF7nyuZV8E0pzkCHWhf7ORLTOoho3KrB7XXl0e5Uj3BhyeENKBBb3iRhU9h0pwZS0QLkWrwq
+	c5g5CW5bUZNDatsXOPpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovPIx-007rxX-8R; Wed, 16 Nov 2022 20:46:43 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1ovPfS-0083uB-DZ; Wed, 16 Nov 2022 21:09:58 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovPIg-007rsr-D9; Wed, 16 Nov 2022 20:46:27 +0000
-Received: by mail-wr1-x430.google.com with SMTP id h9so32013000wrt.0;
-        Wed, 16 Nov 2022 12:46:25 -0800 (PST)
+	id 1ovPfO-0083tV-Vf
+	for linux-rockchip@lists.infradead.org; Wed, 16 Nov 2022 21:09:56 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id ud5so92792ejc.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 16 Nov 2022 13:09:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=3OB7wrdvxiJFRvhmiue8jC5Fpuj0dFMnx5brAbEwXVA=;
-        b=pUKnaYduYgV1XUs2jZu2mdRajyGhoNshkA/qoMX6esDtu5Kqtpy768+SqB+HO0jnqj
-         L+m6wiKPXyyNfvVQSBgj1W8pAHury2R+0ytWYBC3WD0FLAyTbpcnd3biN7qULdrEpkd+
-         NE9mzT8sSo1tmoyo3p8eO7qwBobD3rJ2PQpkV9qbHQm1rW/eOhy92hhrjlNipEpAld/C
-         IvQ5PSHX7kC1tDc7w81UJEmSmv7Zq5pS95eGZEXx/U4S63fWvB7698yg2Is/1xxCPNb0
-         u3XlN6gC/bAKZr5pE/WZAGeTIzlfcZA/JYZZ4rjkFzWkKKwh47zlIZd5NFLLsVcb6xcP
-         NIUw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8ns1LjN7LDOisfItghrtwfAVBSGRle5+9Se4Swypp1g=;
+        b=M8uEQNFgXgozUQo4QSSqKH8obmhXwRnk0caYpEaYa1iwX6nbAK8kV3ibaRQ6xY24or
+         uQFVF40LwzRx+JbPh42rUtxZ26ROM0dAvHR0AjAD375f+cd+I7caz9QQZK8N+n0wBcZp
+         84vEs3d64vJVTKeJvOmPBcElLYQdmYFaXJSP+jkDk15xJWcennQLTX9sA2hiQfYZFas4
+         YhTdTe91TeZq7nZsXH/nxftykYXMtl/Wik69Sopcx8VFia7ki3kKcHLSlFjHP2oRr2m3
+         AVmGpJJifwFjDtQAOHfkJ3hwzhQi9gxdpMiSKBqu54mUliJ4lVxt5Uzc10+mKtil+TbW
+         A93Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3OB7wrdvxiJFRvhmiue8jC5Fpuj0dFMnx5brAbEwXVA=;
-        b=xtyRqLANxJGyXTnFgdw2XlLhhAAVQXTGs2JPt8kqW9JdA0l8o93RK7nPq4TOEAaxhL
-         nwMQlSBcEmf5hcZhcMJu7OpCj3ep937U+I9Rgvp4Z4lQ7mB1ioRA05YIPcH87ziv8hSH
-         idKpqssZtTbg1zNnSqHIJdfXyaLIRS3n35Xlblo1Or0YsS498S9p1/2zuZ1m0ssjWAuw
-         a3XNBzH3I4NUNexW9RZ7vOCzJeSZ1ceOvY0xtVYFh1anvP/jiIF6gtRmUFe5Sb3tPwUw
-         uJFJRhBG4Y7RjiRXnI+d01NHfMWKd8DJGkfkS3gcvdnKrQzC3Z7iWXQ2eT1LZgs61a5a
-         t6TA==
-X-Gm-Message-State: ANoB5pndx8TWFFJQ7PbiOG//F/Qi0LjHUeNvXbLks8jwFjhuLGGw8AgJ
-	h2t/H/yNNpl79oh+3yf3Esc5DrP62yrwPE8qJ1E=
-X-Google-Smtp-Source: AA0mqf5V8tXQyCU5dBQqIqiDBcoHdqGQFIeI614+qSzsagnrGq2cT8NBNg6JJ8/wb6ovyMf0bPbapdaxs+ObqZxrr+Q=
-X-Received: by 2002:a5d:490a:0:b0:234:ee55:a8a8 with SMTP id
- x10-20020a5d490a000000b00234ee55a8a8mr14595128wrq.689.1668631584012; Wed, 16
- Nov 2022 12:46:24 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8ns1LjN7LDOisfItghrtwfAVBSGRle5+9Se4Swypp1g=;
+        b=38vi0Q93ITUhPyxNTgXV+hPPpvuDvdCSJ2vPb9SuZ3PAcm7HHuZF7yfkjp4IkASbV9
+         s2YWN5diY2jcRyCPRw71CAcEL+U6be6Vv5tdBq/ZrnwTCYMS2iLiEC2h6kJres2qlDIt
+         cK3JXD/ahsxzD4va38BYsgVnl2wi5SrDQozdDEfai9M5YvsYLEUda1O4DsG56lTVdEQ1
+         Dfd630c1y5ysABFWaygfT+a3KZoWzY9isfIZJX/vW3svt8ZQc+zRdwHIlT/toR6Gq1BI
+         NP13++GkptMi+T717IZCAgwoXMcliac3dobFe9gKIkKTUrfSwUKgb9jcs7LOZsHQpE4t
+         +Iyg==
+X-Gm-Message-State: ANoB5pkyp0vITcWxi2th9vkLEmaYl2H3AvnpbetApkBshaZK0G7rrbTh
+	Wye4cCVTFCjywnM2g0vO+yA=
+X-Google-Smtp-Source: AA0mqf4BjVjZFroaSuB8MBzrMoVmm84KlFri1SoXR5d2638IsydqP4mwAwGlZTkxC/i8Conf1OoYpQ==
+X-Received: by 2002:a17:906:6893:b0:7ad:14f8:7583 with SMTP id n19-20020a170906689300b007ad14f87583mr20075501ejr.185.1668632990289;
+        Wed, 16 Nov 2022 13:09:50 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id c2-20020a17090618a200b007ad96726c42sm4786736ejf.91.2022.11.16.13.09.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Nov 2022 13:09:49 -0800 (PST)
+Message-ID: <51383b41-6b02-df0f-797a-5336799fd097@gmail.com>
+Date: Wed, 16 Nov 2022 22:09:48 +0100
 MIME-Version: 1.0
-References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-7-linux.amoon@gmail.com>
-In-Reply-To: <20221116200150.4657-7-linux.amoon@gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 16 Nov 2022 15:46:11 -0500
-Message-ID: <CAMdYzYo_DGiO0UxJEb3xues7Um=X9AgPvz+Xp_YWb9pp9HaScg@mail.gmail.com>
-Subject: Re: [linux-next-v2 5/5] arm64: dts: rockchip: Add missing of
- ethernet-phy-id to reset the phy on Rock 3A SBC
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Chukun Pan <amadeus@jmu.edu.cn>, Michael Riesch <michael.riesch@wolfvision.net>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCHv2 4/5] arm64: dts: rockchip: Add rk3588-evb1 board
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>,
+ kernel@collabora.com
+References: <20221115161702.163057-1-sebastian.reichel@collabora.com>
+ <20221115161702.163057-5-sebastian.reichel@collabora.com>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20221115161702.163057-5-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_124626_486766_EBF13D7F 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20221116_130955_051657_5D782656 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +98,261 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 16, 2022 at 3:02 PM Anand Moon <linux.amoon@gmail.com> wrote:
->
-> Add MDIO description with ethernet-phy-id compatible string
-> which enable calling reset of the phy. The PHY will then be probed,
-> independent of if it can be found on the bus or not,
-> and that probing will enable the GPIO.
->
-> ethernet-phy-id is read from ethenet register dump reg2 and reg3.
->
-> Fix following warning.
-> [   12.323417] rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
-> [   12.324078] rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
-> [   12.324099] rk_gmac-dwmac fe010000.ethernet eth0: __stmmac_open: Cannot attach to PHY (error: -19)
->
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> ---
-> V2: new to the patch series.
->
-> alarm@rock-3a:~$ sudo ethtool -d eth0
-> [sudo] password for alarm:
-> ST GMAC Registers
-> GMAC Registers
-> Reg0  0x08072203
-> Reg1  0x00000000
-> Reg2  0x00000404
-> Reg3  0x00000000
-> Reg4  0x00000002
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index 9f84a23a8789..fe36156a5017 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -585,7 +585,7 @@ &i2s2_2ch {
->
->  &mdio1 {
->         rgmii_phy1: ethernet-phy@0 {
-> -               compatible = "ethernet-phy-ieee802.3-c22";
-> +               compatible = "ethernet-phy-id0000.0404", "ethernet-phy-ieee802.3-c22";
->                 reg = <0x0>;
->                 pinctrl-names = "default";
->                 pinctrl-0 = <&eth_phy_rst>, <&eth_phy_int>;
+Hi,
 
-Have you tried instead moving the reset to the mdio bus? I've had
-success with this, though you'll need to change the reset assert and
-deassert timing handles, they are different for the bus.
+Some more comments.
+Have a look if it's useful...
 
-> --
-> 2.38.1
->
+On 11/15/22 17:17, Sebastian Reichel wrote:
+> From: Kever Yang <kever.yang@rock-chips.com>
+> 
+> Add board file for the RK3588 evaluation board. While the hardware
+> offers plenty of peripherals and connectivity this basic implementation
+> just handles things required to successfully boot Linux from eMMC,
+> connect via UART or Ethernet.
+> 
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> [rebase, update commit message, use EVB1 for SoC bringup]
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 156 ++++++++++++++++++
+>  3 files changed, 162 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index c6c69a4e3777..4230881371fa 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -739,6 +739,11 @@ properties:
+>            - const: rockchip,rk3568-bpi-r2pro
+>            - const: rockchip,rk3568
+>  
+
+> +      - description: Rockchip RK3588 Evaluation board
+
+This list used to be sort on description.
+Since rk3566/rk3568 it's out of order. Heiko?
+
+> +        items:
+> +          - const: rockchip,rk3588-evb1-v10
+> +          - const: rockchip,rk3588
+> +
+>  additionalProperties: true
+>  
+>  ...
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 8c15593c0ca4..12ed53de11eb 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -72,3 +72,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> new file mode 100644
+> index 000000000000..38413517f2eb
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> @@ -0,0 +1,156 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+> + *
+> + */
+> +
+> +/dts-v1/;
+> +
+
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include "rk3588.dtsi"
+
+sort includes
+
+> +
+> +/ {
+> +	model = "Rockchip RK3588 EVB1 V10 Board";
+> +	compatible = "rockchip,rk3588-evb1-v10", "rockchip,rk3588";
+> +
+
+alias for i2c2, uart2, gmac0
+
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	vcc12v_dcin: regulator-vcc12v-dcin {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc12v_dcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
+> +
+> +	vcc5v0_sys: regulator-vcc5v0-sys {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc12v_dcin>;
+> +	};
+> +
+> +	backlight: backlight {
+> +		compatible = "pwm-backlight";
+> +		brightness-levels = <
+> +			  0  20  20  21  21  22  22  23
+> +			 23  24  24  25  25  26  26  27
+> +			 27  28  28  29  29  30  30  31
+> +			 31  32  32  33  33  34  34  35
+> +			 35  36  36  37  37  38  38  39
+> +			 40  41  42  43  44  45  46  47
+> +			 48  49  50  51  52  53  54  55
+> +			 56  57  58  59  60  61  62  63
+> +			 64  65  66  67  68  69  70  71
+> +			 72  73  74  75  76  77  78  79
+> +			 80  81  82  83  84  85  86  87
+> +			 88  89  90  91  92  93  94  95
+> +			 96  97  98  99 100 101 102 103
+> +			104 105 106 107 108 109 110 111
+> +			112 113 114 115 116 117 118 119
+> +			120 121 122 123 124 125 126 127
+> +			128 129 130 131 132 133 134 135
+> +			136 137 138 139 140 141 142 143
+> +			144 145 146 147 148 149 150 151
+> +			152 153 154 155 156 157 158 159
+> +			160 161 162 163 164 165 166 167
+> +			168 169 170 171 172 173 174 175
+> +			176 177 178 179 180 181 182 183
+> +			184 185 186 187 188 189 190 191
+> +			192 193 194 195 196 197 198 199
+> +			200 201 202 203 204 205 206 207
+> +			208 209 210 211 212 213 214 215
+> +			216 217 218 219 220 221 222 223
+> +			224 225 226 227 228 229 230 231
+> +			232 233 234 235 236 237 238 239
+> +			240 241 242 243 244 245 246 247
+> +			248 249 250 251 252 253 254 255
+> +		>;
+> +		default-brightness-level = <200>;
+> +
+> +		pwms = <&pwm2 0 25000 0>;
+> +		power-supply = <&vcc12v_dcin>;
+> +	};
+> +};
+> +
+> +&gmac0 {
+> +	phy-mode = "rgmii-rxid";
+> +	clock_in_out = "output";
+> +
+> +	snps,reset-gpio = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	/* Reset time is 20ms, 100ms for rtl8211f */
+> +	snps,reset-delays-us = <0 20000 100000>;
+> +
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac0_miim
+> +		     &gmac0_tx_bus2
+> +		     &gmac0_rx_bus2
+> +		     &gmac0_rgmii_clk
+> +		     &gmac0_rgmii_bus>;
+> +
+> +	tx_delay = <0x43>;
+> +	rx_delay = <0x00>;
+> +
+> +	phy-handle = <&rgmii_phy>;
+> +	status = "okay";
+> +};
+> +
+> +&mdio0 {
+
+> +	rgmii_phy: phy@1 {
+
+rgmii_phy: ethernet-phy@1 {
+
+From phy-provider.yaml:
+
+properties:
+  $nodename:
+    pattern: "^(|usb-|usb2-|usb3-|pci-|pcie-|sata-)phy(@[0-9a-f,]+)*$"
+
+The phy nodename is used by a phy-handle.
+The parent node is compatible with "snps,dwmac-mdio",
+so change nodename to 'ethernet-phy', for which '#phy-cells'
+is not a required property
+
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+
+> +		#phy-cells = <0>;
+
+remove
+
+Also for rock-5a board.
+
+> +	};
+> +};
+> +
+> +&sdhci {
+> +	bus-width = <8>;
+> +	no-sdio;
+> +	no-sd;
+> +	non-removable;
+> +	max-frequency = <200000000>;
+> +	mmc-hs400-1_8v;
+> +	mmc-hs400-enhanced-strobe;
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	pinctrl-0 = <&uart2m0_xfer>;
+> +	status = "okay";
+> +};
+> +
+
+> +&i2c2 {
+
+sort node name
+
+> +	status = "okay";
+> +
+> +	hym8563: rtc@51 {
+> +		compatible = "haoyu,hym8563";
+> +		reg = <0x51>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "hym8563";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&hym8563_int>;
+> +		interrupt-parent = <&gpio0>;
+> +		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
+> +		wakeup-source;
+> +	};
+> +};
+> +
+
+> +&pinctrl {
+
+sort node name
+
+> +	hym8563 {
+> +		hym8563_int: hym8563-int {
+> +			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+> +};
+> +
+
+> +&pwm2 {
+
+sort node name
+
+> +	status = "okay";
+> +};
 
 _______________________________________________
 Linux-rockchip mailing list
