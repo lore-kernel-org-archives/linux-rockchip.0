@@ -4,59 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3215AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 11:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D74EC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 12:05:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=CCwgpHfyQjkkxBndAkVIaGoQBs8I8dcbpcjdCeg5jKY=; b=bHC
-	ScsO7io4uSYxtMwnFjDU2GjjA7yzaPHAR0vRh5eNe7uSkLV4oQDlDqiMpyxuu3E0VZ40kdQVh1TDB
-	eGBg7MmSnXG4DrnY4WM6580lIiXPvUDIirgkHNdT5sjz90JSvFlgof4dECNe/EOY3C4+P6GjLTcGV
-	CBihQ+RaxNMwi97ocGDtsRif22w/3FwimtZMaJlt+cnoluZZ37G8Cxwe9Hk7ysmBLqLXoCe3zcACO
-	oM4UsVsbIMWC+7UGqkRTsN6ZUgMoTYjBt0oPSWrksOyktx3UIZ/aQuVNEC7l5NMd1drqsXcQJTlAT
-	wHOZ+TnHjgmkh6HfVK2d88n0rHCzCxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7tkcLbksXEUeRD/UVLGcCIRGan38W8F/j0M9Xj5IRqQ=; b=VbXws3Rm7zNmNR
+	Z4TBgyFgLmomHW08DHO0JKakuHeDpuzQr7aPZl7XpDsiLHfaKpkeqw5AEjZou+k+ebDeg1+VTTszn
+	9t+P9nw1Ca2YIRblKD2yUrbEqQ7J9xBKtoAtLxe2jgHq/E62tQL4y3iTVS7WVx7wpEZ/HN96HAIUq
+	eGTSZ1w+bRx7wHs+5psYpC2VKouZyDm0CgtpzgIQMvXYwYfk8vSgdvd6ekF4XXKDkisqfcliRHygL
+	36qPJr8n2WlvS2MBzmJl0xeUvA1kXQVleto8xbB7RJckvCEUVn/NQUtiiAiG5Tdb5zslErj0JukFk
+	x3hKPqkYLSbxkWLoWDgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovd5o-00DENE-MW; Thu, 17 Nov 2022 11:30:04 +0000
-Received: from mxhk.zte.com.cn ([63.216.63.40])
+	id 1ovddv-00Dez2-4T; Thu, 17 Nov 2022 12:05:19 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovd58-00DDw7-Sf; Thu, 17 Nov 2022 11:29:31 +0000
-Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4NCd3d72VGz8RTZG;
-	Thu, 17 Nov 2022 19:29:17 +0800 (CST)
-Received: from xaxapp01.zte.com.cn ([10.88.40.50])
-	by mse-fl2.zte.com.cn with SMTP id 2AHBT8eI075903;
-	Thu, 17 Nov 2022 19:29:08 +0800 (+08)
-	(envelope-from ye.xingchen@zte.com.cn)
-Received: from mapi (xaxapp01[null])
-	by mapi (Zmail) with MAPI id mid31;
-	Thu, 17 Nov 2022 19:29:11 +0800 (CST)
-Date: Thu, 17 Nov 2022 19:29:11 +0800 (CST)
-X-Zmail-TransId: 2af963761b0732122386
-X-Mailer: Zmail v1.0
-Message-ID: <202211171929111293904@zte.com.cn>
-Mime-Version: 1.0
-From: <ye.xingchen@zte.com.cn>
-To: <jassisinghbrar@gmail.com>
-Cc: <heiko@sntech.de>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?B?W1BBVENIIGxpbnV4LW5leHRdIG1haWxib3g6IHJvY2tjaGlwOiBVc2UgZGV2aWNlX2dldF9tYXRjaF9kYXRhKCkgdG8gc2ltcGxpZnkKCiB0aGUgY29kZQ==?=
-X-MAIL: mse-fl2.zte.com.cn 2AHBT8eI075903
-X-Fangmail-Gw-Spam-Type: 0
-X-FangMail-Miltered: at cgslv5.04-192.168.250.137.novalocal with ID 63761B0D.000 by FangMail milter!
-X-FangMail-Envelope: 1668684558/4NCd3d72VGz8RTZG/63761B0D.000/10.5.228.133/[10.5.228.133]/mse-fl2.zte.com.cn/<ye.xingchen@zte.com.cn>
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 63761B0D.000/4NCd3d72VGz8RTZG
+	id 1ovddi-00Ders-Vd; Thu, 17 Nov 2022 12:05:08 +0000
+Received: (Authenticated sender: foss@0leil.net)
+	by mail.gandi.net (Postfix) with ESMTPSA id 98CCB6000F;
+	Thu, 17 Nov 2022 12:04:58 +0000 (UTC)
+From: Quentin Schulz <foss+kernel@0leil.net>
+To: Stephen Boyd <sboyd@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Xing Zheng <zhengxing@rock-chips.com>,
+	Michael Turquette <mturquette@baylibre.com>
+Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	stable@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] clk: rockchip: rk3399: allow clk_cifout to force clk_cifout_src to reparent
+Date: Thu, 17 Nov 2022 13:04:31 +0100
+Message-Id: <20221117-rk3399-cifout-set-rate-parent-v1-0-432548d04081@theobroma-systems.com>
+X-Mailer: git-send-email 2.38.1
+MIME-Version: 1.0
+X-Mailer: b4 0.10.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_032928_186574_1A534615 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221117_040507_211341_F142EB51 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,39 +63,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: ye xingchen <ye.xingchen@zte.com.cn>
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-Directly get the match data with device_get_match_data().
+clk_cifout is derived from clk_cifout_src through an integer divider
+limited to 32. clk_cifout_src is a child of either cpll, gpll or npll
+without any possibility of a divider of any sort. The default clock
+parent is cpll.
 
-Signed-off-by: ye xingchen <ye.xingchen@zte.com.cn>
+Let's allow clk_cifout to ask its parent clk_cifout_src to reparent in
+order to find the real closest possible rate for clk_cifout and not one
+derived from cpll only.
+
+Cc: stable@vger.kernel.org # 4.10+
+Fixes: fd8bc829336a ("clk: rockchip: fix the rk3399 cifout clock")
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
- drivers/mailbox/rockchip-mailbox.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+clk: rockchip: rk3399: allow clk_cifout to force clk_cifout_src to reparent
 
-diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
-index 979acc810f30..e02d3c9e3693 100644
---- a/drivers/mailbox/rockchip-mailbox.c
-+++ b/drivers/mailbox/rockchip-mailbox.c
-@@ -164,7 +164,6 @@ MODULE_DEVICE_TABLE(of, rockchp_mbox_of_match);
- static int rockchip_mbox_probe(struct platform_device *pdev)
- {
- 	struct rockchip_mbox *mb;
--	const struct of_device_id *match;
- 	const struct rockchip_mbox_data *drv_data;
- 	struct resource *res;
- 	int ret, irq, i;
-@@ -172,8 +171,7 @@ static int rockchip_mbox_probe(struct platform_device *pdev)
- 	if (!pdev->dev.of_node)
- 		return -ENODEV;
+This used to be correct before v4.10 but commit fd8bc829336a ("clk: rockchip:
+fix the rk3399 cifout clock") incorrectly removed this ability while reworking
+it.
 
--	match = of_match_node(rockchip_mbox_of_match, pdev->dev.of_node);
--	drv_data = (const struct rockchip_mbox_data *)match->data;
-+	drv_data = (const struct rockchip_mbox_data *) device_get_match_data(&pdev->dev);
+Note: this has been tested on top of v6.0.2 only but no changes were made to
+this driver since. As for older stable releases, the git context seems identical
+and there does not seem to have been any logical change introduced since v4.10
+so it should be pretty safe to apply.
 
- 	mb = devm_kzalloc(&pdev->dev, sizeof(*mb), GFP_KERNEL);
- 	if (!mb)
+To: Michael Turquette <mturquette@baylibre.com>
+To: Stephen Boyd <sboyd@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-clk@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+---
+ drivers/clk/rockchip/clk-rk3399.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 306910a3a0d38..9ebd6c451b3db 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1263,7 +1263,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(56), 6, 2, MFLAGS,
+ 			RK3399_CLKGATE_CON(10), 7, GFLAGS),
+ 
+-	COMPOSITE_NOGATE(SCLK_CIF_OUT, "clk_cifout", mux_clk_cif_p, 0,
++	COMPOSITE_NOGATE(SCLK_CIF_OUT, "clk_cifout", mux_clk_cif_p, CLK_SET_RATE_PARENT,
+ 			 RK3399_CLKSEL_CON(56), 5, 1, MFLAGS, 0, 5, DFLAGS),
+ 
+ 	/* gic */
+
+---
+base-commit: cc675d22e422442f6d230654a55a5fc5682ea018
+change-id: 20221117-rk3399-cifout-set-rate-parent-1fbf0173ef2d
+
+Best regards,
 -- 
-2.25.1
+Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
 _______________________________________________
 Linux-rockchip mailing list
