@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFD9C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 08:45:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4BFC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 08:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TopM1V4KCDpkhKckKW/EBrpeYLNk6bDh95tC8p3P70A=; b=RBB2k2BvXXPEIt
-	mw01D4TEazEyggnUZSHI58J4VAR11agHXmPiEfSob8Y/a5vY1AkxJXRzhXXoUSOjQ/PrO4OpsmS61
-	7S9P6NCbRrvhTjKgcwvLOHXoYkFLUUqmV50l3bTbsyKNPixPJ63tK8G5KVIk7tdismbuISPFHh81M
-	QXaeIxZNDM/+cMJzXgHVdC1R2+oUt7xi2oa2WFmQb0KAznp/1msa2VTAF44ZeVZbV30WjoT2jX/3u
-	4eO2RFF8ziTJd2iY0srGRx1wMQOOFHXK+NWQe53k0qXi/STt4j4NAZWXc/ptviiYd7vxIEBLyYSSa
-	G7tlAM1kXeqFPScIRwkw==;
+	List-Owner; bh=OATgVaBqaZNKmM9aexUIW5O+v6Zlh90w4whV3swNm/w=; b=oldBYnb8yxU8jN
+	RhqrEA4cRP1QZEBerXj4pre7eLvG3QtnLs2OA6zgGuabP6zMOgUXDhs12RPdic39/b71+ma4pdKp9
+	5Fwk3nDFAQNSpNUNZm0nzlNtLsbIHboxPkta3zvmE+HC3IKvRQv5erfyhF/GFfqCTj6LaXmzmR31Q
+	UXdnkMCUTWWkThodfHTekK/Hi4m56QGIwSM0eYtK+1AQcFiLJfevOV8GJLeZqpIxjlNSVODrtNp6o
+	MJeEkWsP6+9aP5+ZTZugWEvHk5oGu23+/3R20ss25a3/8TGXHaUHN8plg1lZgBSojsPZcuT+dCUJQ
+	WFKc8TCH0bAFMT/GozgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovaWO-00BmIP-H4; Thu, 17 Nov 2022 08:45:20 +0000
+	id 1ovaWR-00BmJp-A8; Thu, 17 Nov 2022 08:45:23 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovaTu-00Bkme-86; Thu, 17 Nov 2022 08:42:47 +0000
+	id 1ovaTv-00Bkox-AS; Thu, 17 Nov 2022 08:42:49 +0000
 Received: from pyrite.tail37cf.ts.net (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0EF48E86;
-	Thu, 17 Nov 2022 09:42:33 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 52BF3929;
+	Thu, 17 Nov 2022 09:42:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668674556;
-	bh=FRk1HlQxJCg/bMBCI0emDkc9se4S4LTHyPJceYD/tbs=;
+	s=mail; t=1668674560;
+	bh=6nANnb2tFZVVVLtK7LKX6bWvaoeBArVUuO1Oxpluxjw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TDzTqsj63t6K/a/B4DMs5kSyJXF3EcecH0lSSATrtir5oC+kSwDXVlYcqHjI4vTd4
-	 ilx19LRZ6IgMjw0gucOqzf2J4rMnoJn6biezg75wBvlYQSqHmVDhtfFqBT+7IM1uRP
-	 I2UigdVHCbTciydjJrN4d8k7ALpXqdNQn1+Y/N5M=
+	b=qIqpC4iqosbPtJ42CZ0+8TDCR/xAc5Bg9iIbqjt6rDSt9L0NYTuDgKsbozKFZa1oW
+	 h30+EW4tqG0NkHlE+TIghUNVV57nYgEmQHaV46ua/S+OygY6mN9M03y8OPPk5Lwwap
+	 4w7k9MZriguUkJouFkUB+PD9Kdno9kgbLogvrbLI=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/3] media: rkisp1: Add NV16M and NV61M to output formats
-Date: Thu, 17 Nov 2022 17:42:15 +0900
-Message-Id: <20221117084217.3892680-2-paul.elder@ideasonboard.com>
+	linux-kernel@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: [PATCH v2 2/3] media: rkisp1: Make local immutable array variables static const
+Date: Thu, 17 Nov 2022 17:42:16 +0900
+Message-Id: <20221117084217.3892680-3-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
 References: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_004246_451918_C210241E 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20221117_004247_529588_6A0C4E1F 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,58 +70,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for NV16M and NV61M as output formats. As NV16, NV61, NV12M
-and NV21M are already supported, the infrastructure is already in place
-to support NV16M and NV61M, so it is sufficient to simply add relevant
-entries to the list of output formats.
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+The max_widths and max_heights variables in rkisp1_try_fmt() are
+immutable and don't need to be allocated on the stack every time the
+function is called. Make them static.
+
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index d4540684ea9a..7695ef134908 100644
+index 7695ef134908..91e685fdbbe9 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -110,6 +110,16 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_NV16M,
-+		.uv_swap = 0,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_NV61M,
-+		.uv_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
- 		.uv_swap = 1,
-@@ -237,6 +247,18 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_NV16M,
-+		.uv_swap = 0,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_NV61M,
-+		.uv_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
- 		.uv_swap = 1,
+@@ -1150,13 +1150,17 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+ 			   const struct rkisp1_capture_fmt_cfg **fmt_cfg,
+ 			   const struct v4l2_format_info **fmt_info)
+ {
++	static const unsigned int max_widths[] = {
++		RKISP1_RSZ_MP_SRC_MAX_WIDTH,
++		RKISP1_RSZ_SP_SRC_MAX_WIDTH,
++	};
++	static const unsigned int max_heights[] = {
++		RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
++		RKISP1_RSZ_SP_SRC_MAX_HEIGHT,
++	};
+ 	const struct rkisp1_capture_config *config = cap->config;
+ 	const struct rkisp1_capture_fmt_cfg *fmt;
+ 	const struct v4l2_format_info *info;
+-	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+-					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
+-	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+-					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
+ 
+ 	fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
+ 	if (!fmt) {
 -- 
 2.35.1
 
