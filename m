@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67696C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 08:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D752CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 08:46:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=62by9DEDzlId8WWxCDxHNaAnXTbxHSlek04dkTfq5ns=; b=SbHPm97FbBWihU
-	hYPCX8aLqqmvImSgTVh6hAWk201B78H084ZczlcoYDMWtliecmTKHkmvAIoTlrj+kSjuHYKcem8m/
-	yS9mpPG811PbcZgtDWBHNsmkQgeRt6A/Xt33nTuvbahmeAbQ8eqPbBuBDv8Lx7ECcVslo52wGULvc
-	bvgncKeo7d4Pm8WDGgfSzs0VwpTIbjnHJmA8pp34BHpixPw3wHS/8HKm9TLRDQnPrsZ5tjDUbyOEg
-	sUdWRo5HAX2ZJQ4bRsBBypFGYuYsM8lK6ONe//l/3KfkHxtIrcaspfx14+XGwfPHCkgrrzKszsu1Q
-	bkgiMiQbG0/s8+YtsAZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=An0flJij4ZTXp7fr9lb8utuwM6LFbgIvXSJjmfiXt8E=; b=P1mOGdTKMzM6BR
+	HhZMyrGF7Ww3gaDlsagSHV4sf6rsNLHKNPNNUYBcBWYM/64rlhUFyQkpjLQgVaKkQ6hz2WZ8pd4Gx
+	n7GUjXV1BkHbpvV8aCam+S7nVOPUZdJ2EzJIb1/CmvQsAFcTHKkb6r5AJqTQx1rNXj8zpZxDy5wjm
+	9dceCESKNLUBPEe5vE6nF5IRlOpalCCVDFOTeLTcyJqpPexVuDYj19OAHYHqYzg1XvJa+t5DFux6L
+	Stev2r120VdSmEMF+0P8mxoEmHwcWBlwvBW2oJeZs6/um9iGLM5nYF9lMoEpJEs7nsK2aGpDlGhDX
+	YNGKULJLcCaRzpt4W1qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovaWN-00BmHi-Dg; Thu, 17 Nov 2022 08:45:19 +0000
+	id 1ovaXE-00BmvB-N5; Thu, 17 Nov 2022 08:46:12 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovaTu-00Bkll-CI; Thu, 17 Nov 2022 08:42:47 +0000
+	id 1ovaTy-00BkqQ-8Z; Thu, 17 Nov 2022 08:42:51 +0000
 Received: from pyrite.tail37cf.ts.net (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5E356E0;
-	Thu, 17 Nov 2022 09:42:30 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 92E3A105A;
+	Thu, 17 Nov 2022 09:42:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668674553;
-	bh=GesO4lDOfgoAFgRLJP+AnBfnRtub6PScqO3q3Eoh5Fc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=k/hcRzAK/hevcw2go0xjSnhiKGfFTksQhC6CxeNCTY6wPis8Xz7sqcbvXXGvqDtp2
-	 brFANgU1Mdg9KlXnd8VhYI7wSEg8TJSE1hdBoZZFp1cExQQvKIP/ZlndeVdCr9mE3/
-	 XP8RFoJnXxK5v/de9NQ0C09DgPYftPr3f0mlqDkM=
+	s=mail; t=1668674563;
+	bh=i2asfCX+IMDeAysoWEUZxtuevcn/m7RupGOVGq+pXtQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=jlv+ep3R1ziV8qxaw1h/r1QAhnBwVi+NfM8FGGSVchGYr9WJmR7yJYtwomropQ5eg
+	 +49QNybsChYss3y1Ul4tcElyM/JxogoMJ+EDToDQxxZQm7Pg0J1kHtSETdkFI1Im5L
+	 rYnN3Z2cW5g4gtYnAeXyAcyz+5YrVtyz0ULCpRpQ=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Paul Elder <paul.elder@ideasonboard.com>,
@@ -44,15 +44,16 @@ Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/3] media: rkisp1: Miscellaneous improvements
-Date: Thu, 17 Nov 2022 17:42:14 +0900
-Message-Id: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
+Subject: [PATCH v2 3/3] media: rkisp1: Implement ENUM_FRAMESIZES
+Date: Thu, 17 Nov 2022 17:42:17 +0900
+Message-Id: <20221117084217.3892680-4-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
+References: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_004246_590367_97049443 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221117_004250_460743_A509E66C 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,25 +70,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds small improvements to the rkisp1 driver:
-- Add NV16M and NV61M output
-- Implement ENUM_FRAMESIZES
+Implement VIDIOC_ENUM_FRAMESIZES for the rkisp1 capture devices.
 
-As well as a small code cleanup.
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 30 +++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-These patches have been sent before individually, so really this is a
-resend, which also bunches them together.
-
-Laurent Pinchart (1):
-  media: rkisp1: Make local immutable array variables static const
-
-Paul Elder (2):
-  media: rkisp1: Add NV16M and NV61M to output formats
-  media: rkisp1: Implement ENUM_FRAMESIZES
-
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 64 +++++++++++++++++--
- 1 file changed, 60 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 91e685fdbbe9..03c2922bfbed 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1236,6 +1236,35 @@ static int rkisp1_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
+ 	return -EINVAL;
+ }
+ 
++static int rkisp1_enum_framesizes(struct file *file, void *fh,
++				  struct v4l2_frmsizeenum *fsize)
++{
++	static const unsigned int max_widths[] = {
++		RKISP1_RSZ_MP_SRC_MAX_WIDTH,
++		RKISP1_RSZ_SP_SRC_MAX_WIDTH,
++	};
++	static const unsigned int max_heights[] = {
++		RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
++		RKISP1_RSZ_SP_SRC_MAX_HEIGHT,
++	};
++	struct rkisp1_capture *cap = video_drvdata(file);
++
++	if (fsize->index != 0)
++		return -EINVAL;
++
++	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
++
++	fsize->stepwise.min_width = RKISP1_RSZ_SRC_MIN_WIDTH;
++	fsize->stepwise.max_width = max_widths[cap->id];
++	fsize->stepwise.step_width = 2;
++
++	fsize->stepwise.min_height = RKISP1_RSZ_SRC_MIN_HEIGHT;
++	fsize->stepwise.max_height = max_heights[cap->id];
++	fsize->stepwise.step_height = 2;
++
++	return 0;
++}
++
+ static int rkisp1_s_fmt_vid_cap_mplane(struct file *file,
+ 				       void *priv, struct v4l2_format *f)
+ {
+@@ -1285,6 +1314,7 @@ static const struct v4l2_ioctl_ops rkisp1_v4l2_ioctl_ops = {
+ 	.vidioc_s_fmt_vid_cap_mplane = rkisp1_s_fmt_vid_cap_mplane,
+ 	.vidioc_g_fmt_vid_cap_mplane = rkisp1_g_fmt_vid_cap_mplane,
+ 	.vidioc_enum_fmt_vid_cap = rkisp1_enum_fmt_vid_cap_mplane,
++	.vidioc_enum_framesizes = rkisp1_enum_framesizes,
+ 	.vidioc_querycap = rkisp1_querycap,
+ 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+ 	.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
 -- 
 2.35.1
 
