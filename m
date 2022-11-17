@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403D3C43219
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 22:00:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99541C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 22:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YqdjayBQsmDCHWaPLcreDMCoXUFRXQ+wIqKrBL9CJuU=; b=t+4Ogd7wzuHdYr
-	EtaQvoA+nl2M0WZKYVIKyuNlh4ke8Z3ftZhnTmLssKcwicsHXqqzpyUo3mW0BLRjS5uuNJoliRqiR
-	Mj7wpwwkhQwakqsdTbl0P8S5XrSwzG1a4GBNA7beQXaXc+P2EUlx/1v/e0Nhxn8nFF2nw7Y58WXGU
-	fWDw2ue3RbKx5XSiO6i9SdHnfIcmEV9mWSrj5GGQg35OD7M9jDJ65F2m4bCuvYeF7g+RspsDvV/wk
-	qjWhUVmDwY16HB+4jL/f3eT6djn1oV5uijjiep2fzlnWUsGApyrgzhcDEEgqCq7M4fFHzqUq8RYXi
-	HUf71WzTtX7XVAwPlAew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sXBX0m7te8SNbyywfnb+oUlz2DaxSegNvLcNrSIGP3c=; b=IBVhveBcPyzX8X
+	AkhUwOiiZNFoX2Nz4YRgS+IBQ+z7RacS6Vd4tUem6np5xu8+uqUQDhnkAT32CH7ky1ufoedtKXaDp
+	3Jbij+J9ATF40x4QMLHecr7fvq4jbsnqlBhHtiv1OeIyAkcR3deT6YHZn6ndjwpvuukXF/HlKMhNd
+	DjE2DoShSWMR3xOpHcFjGZMaHG3cVg7iUrYNrQotWQrf37sa1DXt39vYZDjt6rhCMHVOd1fhk7Nba
+	Vx1RBLUrnINcEPzSOtsTruul9++H+Io59Y9AqzXkUJSFDy7+s/bzs9Xns3rgix5qemM0M4UxGBd9w
+	BPxAQlGnnrZtc2HTPkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovmwA-000Acv-5y; Thu, 17 Nov 2022 22:00:46 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1ovmwn-000B1D-79; Thu, 17 Nov 2022 22:01:25 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovmvn-000AIP-4M; Thu, 17 Nov 2022 22:00:26 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id g7so5114439lfv.5;
-        Thu, 17 Nov 2022 14:00:11 -0800 (PST)
+	id 1ovmvn-000AGA-JB
+	for linux-rockchip@lists.infradead.org; Thu, 17 Nov 2022 22:00:28 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id j16so5064591lfe.12
+        for <linux-rockchip@lists.infradead.org>; Thu, 17 Nov 2022 14:00:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eQRlvK77hsvedjqbbgPjARmdvtiGduxanVRX+q1kiBQ=;
-        b=fHP1kl1yM/VTKBFLmy/3ASQg8Q5561DGSp/lxTGjpivW3kYEBJZy1xb0vO+OiYceLo
-         OLW+hZ3BOf5+ucl3BN2P3PCMRRRV1M1f4Ca7d6m2cIL+cpeh4FXEaV8pWn6CQWfKUHCL
-         VFfc9zDjSQdBoUIvNr3eIxj+Frb2OEAPSEUT3xDt+2bzYp9FslYX4GdP5oEiVayT44f9
-         qZgZ/LrY5o2/pUWHj4jUSqkkKupQYqHgVrGpQzIhYNFZwzJ4dfugpDh6dm0gWHN/Ie8c
-         KP/GPYmjR0iLl4OXf/yeZPqbhGTio0wCNz6G4tRJqfz3/sOtmCZAcjA1tDqR+c3/eqxN
-         X+lw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bZaNVz2GgeRHnR3J1ZaQTXh3sT/PaZEs9dXhOpujOco=;
+        b=lIuMg4ClV5N66HZdAHrszvonioPEchHbHge+MFsl21GF6PqNcU4MqGsO6TEhetx6lU
+         YS6mfjYvHEdnnnNZJcvTTgElTa7wIaHaUe1ohwyzL93zfjD9NvMrZ+IBvruekohZYbwu
+         /o01UqpBugdkZH2lj/Wcj0PVLNjKDnbTuyfIIWmslYPMyjbfgxaFdOGNv7V8n8H35eki
+         WnuGujLw3yf3AUVVAXVjvhgiVVNmx3lDAIRyGquGdzwE05eBpvxbGWNDW0cCaN8I0U2S
+         XMkv17gGmXE18T7llU0lvBfr65gXAiXUrsKuwuvfFKAzkUwmeu557Nt1nm58yOErXG11
+         oRRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eQRlvK77hsvedjqbbgPjARmdvtiGduxanVRX+q1kiBQ=;
-        b=NBVVRHLv6SHt8+na8Kd/0pOME1bZ8tA/7E7El7Dad/3TM1Pv/sZuVqdw23Bbixc+Mv
-         mub1ZEmZWzZyKz6cXggC5sxUMOjDc0TRuHvNi7rsqUN4Db9gyZPVLxYFheFzNf5tf0VP
-         at+QlFJfu62SrX2zEjLT/JeXJnZnWRsww4F4BlBVB/19o/h9Km1VTDpPtlaT6d/6EhFL
-         Np310FlCuMDj/p0XsXBFxxnPnS7wxZdO2SZ8H4k7oqSH6WqLr/WM4l6YtCh0kNB5vXsY
-         AM2eDhIu0UPMduyqUAu6N+llXEy4l1xPYNfXlAz8ljgbvVKhqdiTXzxpw72XbgQxs6oT
-         IG8g==
-X-Gm-Message-State: ANoB5pnxwHVvIW8To+ubO79ydFn66YulAth4D8W+wnlIL22ZO/i//t3N
-	6HBxEIQxDqE7ZoZ2eV241XfX/DEU1BHH/w==
-X-Google-Smtp-Source: AA0mqf7T8odImdw+v5OcY4vqRzJJEdUEeu1hbDqGL1SRBcLnBSP/pZJn73vBcjO261JeFV4NblM+Hg==
-X-Received: by 2002:a19:2d5e:0:b0:4b4:a14a:c958 with SMTP id t30-20020a192d5e000000b004b4a14ac958mr1555505lft.579.1668722410350;
-        Thu, 17 Nov 2022 14:00:10 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bZaNVz2GgeRHnR3J1ZaQTXh3sT/PaZEs9dXhOpujOco=;
+        b=FkLvFEQAk71RwHork9rGVB105VBTD60Tvl0fIErxaqV9i5bcoOcTBqpVfG1oS9rufb
+         XTjPFkf6EIQo/+DAybXE/w+5SS72ED8UMZju7WRmIz3rJuHbw510UHddQy8vZhYA1rtk
+         uvKpcsh1s46Akuz0F9Pn+lySVbciHcq7p+wPg3h/Q+nujMrElSFFNeKh0UahQ6Ijxpfb
+         H3bG5DuuKsdj+j8n2MbzVnXDsXjHlJpHMNll/lyT/1iE/tNh6jNg6p62dtElKg/McA7B
+         BZn4aeL3dFPh+J/rIbHh44eJKc+w2cS3bXXtM+1gF1NyfoyUXljoYrKnHsOuhVXgQZac
+         Khfw==
+X-Gm-Message-State: ANoB5pmQLk+eFIVcwn6dA71SV/N/PJlePJJmCy6IFvIKPwoOyWETbtnA
+	UfEp8Z1zgDZr/UVei0E4TZvKbm+TqbM=
+X-Google-Smtp-Source: AA0mqf7vYiMVnwKtS4XMtEwJ+sntXwuwh4zvmdMow0kKUWqFwVpz5ZbDrS/a+kJbnZO1pozMXMpxTw==
+X-Received: by 2002:a05:6512:1184:b0:4af:a588:e8bd with SMTP id g4-20020a056512118400b004afa588e8bdmr1471777lfr.173.1668722404641;
+        Thu, 17 Nov 2022 14:00:04 -0800 (PST)
 Received: from localhost.localdomain (79.191.9.185.ipv4.supernova.orange.pl. [79.191.9.185])
-        by smtp.gmail.com with ESMTPSA id q29-20020ac25a1d000000b00497aa190523sm342985lfn.248.2022.11.17.14.00.09
+        by smtp.gmail.com with ESMTPSA id q29-20020ac25a1d000000b00497aa190523sm342985lfn.248.2022.11.17.14.00.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Nov 2022 14:00:10 -0800 (PST)
+        Thu, 17 Nov 2022 14:00:04 -0800 (PST)
 From: Maya Matuszczyk <maccraft123mc@gmail.com>
-To: linux-rockchip@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: =?UTF-8?q?Jo=C3=A3o=20H=20=2E=20Spies?= <jhlspies@gmail.com>,
+To: linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	=?UTF-8?q?Jo=C3=A3o=20H=20=2E=20Spies?= <jhlspies@gmail.com>,
 	Chris Morgan <macroalpha82@gmail.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: Add Anbernic RG351M
-Date: Thu, 17 Nov 2022 22:59:54 +0100
-Message-Id: <20221117215954.4114202-6-maccraft123mc@gmail.com>
+	Maya Matuszczyk <maccraft123mc@gmail.com>
+Subject: [PATCH v4 0/5] Add more RK3326 gaming handhelds
+Date: Thu, 17 Nov 2022 22:59:49 +0100
+Message-Id: <20221117215954.4114202-1-maccraft123mc@gmail.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221117215954.4114202-1-maccraft123mc@gmail.com>
-References: <20221117215954.4114202-1-maccraft123mc@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_140023_263328_C37A64D4 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20221117_140023_653084_36AAEF49 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,80 +89,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This device is a clone of Odroid Go Advance, with added PWM motor, internal
-gamepad connected on USB instead of just having it be on GPIO + ADC, and
-missing battery shunt resistor.
-Due to missing shunt resistor and lack of a workaroun in rk817_charger
-driver rk817_charger is not enabled in dts.
+This patch series adds Odroid Go Advance, Odroid Go Super(without
+display) and Anbernic RG351M.
 
-There's also an LED on GPIO 77(I *guess* PB5 on &gpio2),
-that is controlled in a weird way:
+RG351P uses almost the same motherboard, and I'm not sure how to handle
+it. RG351P DTS file would look exactly the same, aside name change.
 
-- It is set to red by setting output value to 1
-- Set to green by setting output value to 0
-- Set to yellow by setting gpio direction to input
+--
 
-I have no idea how to describe that in DTS, without adding a custom
-driver, for now it's just left out.
+Changes from V3:
+- Changed go3's volume buttons to not re-use builtin controller dt node
+- Addressed Krzysztof Kozlowski's comments - removed status = "okay"
+  where it's not needed, and added a commit message to patch adding dt
+  bindings.
+- Addressed Chris Morgan's comments - removed battery node from RG351M
+- Added a cover letter even harder
 
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3326-anbernic-rg351m.dts   | 33 +++++++++++++++++++
- 2 files changed, 34 insertions(+)
+Changes from V2:
+- Fixed a typo
+- Added "v3" tag, sorry!
+- Added the cover letter in a way that shouldn't get swallowed by gmail
+  this time
+
+Changes from V1:
+- Addressed Chris Morgan's comments
+- Added RG351M
+- Added RG351M and Odroid Go Super
+
+--
+
+Maya Matuszczyk (5):
+  arm64: dts: rockchip: Move most of Odroid Go Advance DTS into a DTSI
+  dt-bindings: arm: rockchip: Add more RK3326 devices
+  arm64: dts: rockchip: Add Odroid Go Advance Black Edition
+  arm64: dts: rockchip: Add Odroid Go Super
+  arm64: dts: rockchip: Add Anbernic RG351M
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  25 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   3 +
+ .../dts/rockchip/rk3326-anbernic-rg351m.dts   |  33 +
+ .../boot/dts/rockchip/rk3326-odroid-go.dtsi   | 600 +++++++++++++++++
+ .../dts/rockchip/rk3326-odroid-go2-v11.dts    | 156 +++++
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 620 +-----------------
+ .../boot/dts/rockchip/rk3326-odroid-go3.dts   | 185 ++++++
+ 7 files changed, 1011 insertions(+), 611 deletions(-)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 142c83d2e5aa..b379516c15eb 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351m.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
-new file mode 100644
-index 000000000000..61b31688b469
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
-@@ -0,0 +1,33 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Hardkernel Co., Ltd
-+ * Copyright (c) 2020 Theobroma Systems Design und Consulting GmbH
-+ * Copyright (c) 2022 Maya Matuszczyk <maccraft123mc@gmail.com>
-+ */
-+
-+/dts-v1/;
-+#include "rk3326-odroid-go.dtsi"
-+
-+/ {
-+	model = "Anbernic RG351M";
-+	compatible = "anbernic,rg351m", "rockchip,rk3326";
-+
-+	vibrator {
-+		compatible = "pwm-vibrator";
-+		pwms = <&pwm0 0 1000000 0>;
-+		pwm-names = "enable";
-+	};
-+};
-+
-+/delete-node/ &builtin_gamepad;
-+/delete-node/ &vcc_host; /* conflicts with pwm vibration motor */
-+
-+&internal_display {
-+	compatible = "elida,kd35t133";
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+/delete-node/ &rk817_charger;
 -- 
 2.38.1
 
