@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A46EC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 14:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16961C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Nov 2022 14:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KYVhNQXN0QxXHGt07/efn9FHO/3TwPZ/OqyVx2BMp40=; b=4MKaDnzFg3He5P
-	evDFldj8WWeGfwYwKnUcg7XuvyACJ+ak+mjSMsy44I7Z9SDVq/jvSt0Honlz+TVYdFTlEI4yafM6c
-	SexDsOaGS4Ma/7cclnA1tKq4GinQ3SlzD3tg6g51vgXblW5bAoiEDEGWhP2DsLh73kI3LMKGkBrln
-	CG1Dm+sba0XDSsgNfVufSzIeId1e8boQ9QgScIuXYzj15mZk8MOGTB0aXUbR0TT+5O1THkB1USAgv
-	lI+o5kmVQ9XX4sN998VZD3IPJz3jlg365JRnz5xJ8EqDuUEx4wKtOlDIH0cTMA8QbGTr2oQYXS9Kv
-	Tll0q0IntktHEQcHuuGA==;
+	List-Owner; bh=EOza/YfJTlhD+X3nRuf4gjANufL8Riv+0+mjaglFmyc=; b=0JVvcsPz1RmL6J
+	1+lEz5batZ1v2DPl2NZ4Il7g+6fWk+Tb88/2i06e1CS5sWyrd34TUtJTrCNOM9mbfU92CfPxF3iyD
+	Z+S0BZWbpEavpWLE/1bPKkW5yjfmSlTxTiPGKCZUxD13tI1ZNQlhYGJG/+A52aiBX6J4p1MIfVPRq
+	PKzitpUITR1s5tQKwmgbMtCtamU0fuCsztVL9HeyqAcp8G07eqEN2IUI7pRnQTYU/NyX+mZGD8O/W
+	U//tN+AT/gmhrMURkxWjSdPhwv9051C6o92AIEAqcgrCU4spWYKNInecyZ5J6Nyl5UcmvzEpAHVhx
+	3aFHl4sCqY8lCg7Qh/gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovg8Q-00EvMy-Du; Thu, 17 Nov 2022 14:44:58 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1ovgJP-00F1CT-M7; Thu, 17 Nov 2022 14:56:19 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovg83-00EvFE-HB; Thu, 17 Nov 2022 14:44:37 +0000
-Received: by mail-ej1-x636.google.com with SMTP id n21so5541066ejb.9;
-        Thu, 17 Nov 2022 06:44:33 -0800 (PST)
+	id 1ovgJE-00F11W-3R; Thu, 17 Nov 2022 14:56:09 +0000
+Received: by mail-ej1-x629.google.com with SMTP id k2so5728385ejr.2;
+        Thu, 17 Nov 2022 06:56:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=riDO6qHjkXJO4FMqmQwEaErq/K8CVkbFub7re4pItDY=;
-        b=DBPmY9VxDmx8RgOYEwV0YLA7Jp25y31ofjo3bMYX9sqNFWGs6XWlG3dy3pC3DEE4KY
-         OY+t9dvDa5aNDhoH1/A6FXkzdPxkHQrGMSAudIM9vzg2UD2GfZzOE0UOS56dXKeKClmI
-         oHO8dP7I2chYnOSlTCbak2/sQERaqDYp4JD5gGW/h0oOJ4k0t+OHd4X9U3yNAT9iISaA
-         2w6Cus5wH/+ZdOgyVzgT/82NwdHKeP8d4pOa1W9Njy0kS32W1v2dWFRdT8GVsAuqrv+V
-         M1p7BpU6myxNxE3aDuDsvB/BZNYUaqRyXlpTezLtCjfPedgLY2DtNZ0yst4hKGBNA0zU
-         TEpg==
+        bh=IwcBeOeaR1x2IX2rcDUeXOgXDe6Ex8fSz1cnyCozQpY=;
+        b=YSbLyyV7nMqaA8uzhE/7NUar5IU3ldPaqFTGYdhbhpi/i6JENFicWabNE82rh3YcvC
+         /MsEW+riExmXumJl0F33+QZHopBnPiAnfChwq56W09Mqn5Ly7SEcblsrbFPQV7WuizAo
+         QDaqrHBAKGYiHgCnBbzD2rDZyYN25iVBg4cajJ2MW/ZV95uNesh+LY+OzOvUvu2kgGxY
+         dhxPoRPsODjcaaEW4z10TpmHrT9/l+KArlJaC8fWUReXOY9uNSkHWCB0cOpBgN+FEiaW
+         HDk3K67YU7e/8zqqxhbljCrCKWLejAH5IrDRLMkEDs3bbU3YfCqF2u8RjG/bTh7wPJxj
+         Odng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=riDO6qHjkXJO4FMqmQwEaErq/K8CVkbFub7re4pItDY=;
-        b=6ilEErtBgGmg7bw3vty80/y3ef6DsTPyoM2BZ7GE2ZpAC2WNqIuTXv/BqxlBg0pId+
-         quqji4kfIX+GIBbn1c/+XeD/0ZwZLo2YrICkLApvjJiQ4ayKg9eNc71tIU//JHxccugS
-         jOjNCo6nF+kQrj2+7waYwYJ6HAhCSUKPORjFDZuPnH5w5b8849XiqY5KOGpSZPg3KCtH
-         FIcx3QKlApgnReeeOJ7x+9MUt2JspoBWLWo+KVj3I69GN/oQp0LaDs/y2Ep+E0iuzFXB
-         tVqRILpEkXEqJ4z1ht8d8RwIZ1308vqPTC+ouuO0pjC67YOWPOdTHYN5zH+Eg58BZdVg
-         aqJg==
-X-Gm-Message-State: ANoB5plDiarLyLeFK96mUZAdL9HwmQbKaQQOQDdlW0cgu95VR94bMFFl
-	taALAycN5ksSSLeNa9YPOLu0z7IivAeC6+FQAms=
-X-Google-Smtp-Source: AA0mqf6fQirskAJB9bpfHRTGUo+Bl9P6znKCc2Geu4nkxD3mey5czfblEP7G/5waChZSVOk+GS2kakesxO697wGlAds=
+        bh=IwcBeOeaR1x2IX2rcDUeXOgXDe6Ex8fSz1cnyCozQpY=;
+        b=wNodypg3IOGyyjE+ME/uV3grs0A8v0GXBqO3kUdZByZzIyGsi5sHwmBldxtQW4Ci9A
+         gFqbcJVj9JvUmt94Ds6lDiNB8F0EMHl3ws+bUNrVcD28VXnzbcAv0LF443lY+laBNSNJ
+         60XAzB5JyFAYOE6ghSjDyL1yXSaXf9gRVbDGYqnNQxZfGBOL8uO0gpGnEXK22/K8FDyt
+         cFtND9HK0lJFP7PEAc234tEWxdNoj6asJKkRiE7yqNiYCRvKfAYxYZvykp0cOUKldGOA
+         IZoojY9BPWAGmRiTlydnfU7sPyYAglMS/l+L2O8xlBq3T9ANEhtUmSp29sF0N+6VwnwR
+         tNow==
+X-Gm-Message-State: ANoB5pmOgqZPlmVveR8N7GoDZb+TtxbQjKKttgbeibTiWRspUmP4ZX7N
+	vpaP2Pk3y2ZhnxKb3EmL0kSAocpPnizKqdpcr5s=
+X-Google-Smtp-Source: AA0mqf52mP6ZXbFpsqp7GEgOo5nw27q8XKx7vtmAVStFWouVwqYRa/fwXgtfW4+1KV5eCfJecGpJcMybBmTEHTaypHM=
 X-Received: by 2002:a17:906:c18c:b0:7b2:8a6e:c569 with SMTP id
- g12-20020a170906c18c00b007b28a6ec569mr2428029ejz.582.1668696272081; Thu, 17
- Nov 2022 06:44:32 -0800 (PST)
+ g12-20020a170906c18c00b007b28a6ec569mr2464374ejz.582.1668696963090; Thu, 17
+ Nov 2022 06:56:03 -0800 (PST)
 MIME-Version: 1.0
-References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-2-linux.amoon@gmail.com>
- <CAMdYzYrgtzeP2OL2Vw0pDHQuJDhRbUy3X4xq9+XchgTGB9dqpg@mail.gmail.com>
-In-Reply-To: <CAMdYzYrgtzeP2OL2Vw0pDHQuJDhRbUy3X4xq9+XchgTGB9dqpg@mail.gmail.com>
+References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-7-linux.amoon@gmail.com>
+ <CAMdYzYo_DGiO0UxJEb3xues7Um=X9AgPvz+Xp_YWb9pp9HaScg@mail.gmail.com>
+ <CANAwSgQJGH-+aXyUF18kGks4YKfBYvQ4-B7S2m8eaAr=yNS7vQ@mail.gmail.com> <99849c5e-5bd9-386b-99c5-fbc8c8df9656@arm.com>
+In-Reply-To: <99849c5e-5bd9-386b-99c5-fbc8c8df9656@arm.com>
 From: Anand Moon <linux.amoon@gmail.com>
-Date: Thu, 17 Nov 2022 20:14:16 +0530
-Message-ID: <CANAwSgQZ17j_B2T3+Ompkdb2Fjo9dpddKehZXxUo4GTeC6fvZA@mail.gmail.com>
-Subject: Re: [linux-next-v2 1/5] arm64: dts: rockchip: Fix gmac phy mode to
- rgmii on Rock 3A SBC.
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
+Date: Thu, 17 Nov 2022 20:25:47 +0530
+Message-ID: <CANAwSgT7rasp=QYdvukAO-y6NzsOfKsjdy0jAEubvMymmfDqWA@mail.gmail.com>
+Subject: Re: [linux-next-v2 5/5] arm64: dts: rockchip: Add missing of
+ ethernet-phy-id to reset the phy on Rock 3A SBC
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
 	Chukun Pan <amadeus@jmu.edu.cn>, Michael Riesch <michael.riesch@wolfvision.net>, 
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_064435_659413_5588A2C9 
-X-CRM114-Status: GOOD (  27.32  )
+X-CRM114-CacheID: sfid-20221117_065608_168750_1CE6DAED 
+X-CRM114-Status: GOOD (  31.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,95 +90,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter
+Hi Robin
 
-On Thu, 17 Nov 2022 at 02:06, Peter Geis <pgwipeout@gmail.com> wrote:
+On Thu, 17 Nov 2022 at 16:24, Robin Murphy <robin.murphy@arm.com> wrote:
 >
-> On Wed, Nov 16, 2022 at 3:02 PM Anand Moon <linux.amoon@gmail.com> wrote:
+> On 2022-11-17 05:57, Anand Moon wrote:
+> > Hi Peter,
 > >
-> > On rk356x ethernet phy support reduced media independent interface (RMII)
-> > and reduced gigabit media independent interface (RGMII).
-> > So set the phy mode to rgmii to support clock delay, also
-> > add TX and RX delay for phy-mode.
+> > On Thu, 17 Nov 2022 at 02:16, Peter Geis <pgwipeout@gmail.com> wrote:
+> >>
+> >> On Wed, Nov 16, 2022 at 3:02 PM Anand Moon <linux.amoon@gmail.com> wrote:
+> >>>
+> >>> Add MDIO description with ethernet-phy-id compatible string
+> >>> which enable calling reset of the phy. The PHY will then be probed,
+> >>> independent of if it can be found on the bus or not,
+> >>> and that probing will enable the GPIO.
+> >>>
+> >>> ethernet-phy-id is read from ethenet register dump reg2 and reg3.
+> >>>
+> >>> Fix following warning.
+> >>> [   12.323417] rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
+> >>> [   12.324078] rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+> >>> [   12.324099] rk_gmac-dwmac fe010000.ethernet eth0: __stmmac_open: Cannot attach to PHY (error: -19)
+> >>>
+> >>> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> >>> ---
+> >>> V2: new to the patch series.
+> >>>
+> >>> alarm@rock-3a:~$ sudo ethtool -d eth0
+> >>> [sudo] password for alarm:
+> >>> ST GMAC Registers
+> >>> GMAC Registers
+> >>> Reg0  0x08072203
+> >>> Reg1  0x00000000
+> >>> Reg2  0x00000404
+> >>> Reg3  0x00000000
+> >>> Reg4  0x00000002
+> >>> ---
+> >>>   arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
+> >>>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> >>> index 9f84a23a8789..fe36156a5017 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> >>> @@ -585,7 +585,7 @@ &i2s2_2ch {
+> >>>
+> >>>   &mdio1 {
+> >>>          rgmii_phy1: ethernet-phy@0 {
+> >>> -               compatible = "ethernet-phy-ieee802.3-c22";
+> >>> +               compatible = "ethernet-phy-id0000.0404", "ethernet-phy-ieee802.3-c22";
+> >>>                  reg = <0x0>;
+> >>>                  pinctrl-names = "default";
+> >>>                  pinctrl-0 = <&eth_phy_rst>, <&eth_phy_int>;
+> >>
+> >> Have you tried instead moving the reset to the mdio bus? I've had
+> >> success with this, though you'll need to change the reset assert and
+> >> deassert timing handles, they are different for the bus.
+> >>
+> > No can you share some examples?
+> > If you got a better way to solve this issue please let me know.
+> > I will give this a try.
 >
-> Controller based clock delay, the various rgmii-id modes (rgmii-txid
-> and rgmii-rxid are also valid) apply the delays in the phy. They are
-> usually at a fixed amount, but some phys support variable delays.
+> Note that the Rock 3A schematic says the phy is configured for address
+> 1, not 0. From what I remember of adding the MDIO node for NanoiPi4,
+> that didn't work if I got the address wrong, despite the fact that the
+> auto-detection when the MDIO node is omitted claimed to find the same
+> phy on both addresses 0 and 1.
 >
-> You want your commit message to accurately describe the problem, such
-> as "In rgmii-id mode, the phy on the rock-3a is unreliable due to
-> incorrect delays. Switch to rgmii mode in order to handle the delays
-> in the controller."
->
-> >
-> > Fix following warning
-> >
-> > [    7.365215] rk_gmac-dwmac fe010000.ethernet: Can not read property: tx_delay.
-> > [    7.365219] rk_gmac-dwmac fe010000.ethernet: set tx_delay to 0x30
-> > [    7.365224] rk_gmac-dwmac fe010000.ethernet: Can not read property: rx_delay.
-> > [    7.365228] rk_gmac-dwmac fe010000.ethernet: set rx_delay to 0x10
->
-> I've been meaning to make this a dev_debug message, because in the
-> various rgmii-id modes it is feasible for these to be non-existent in
-> the device-tree. In rgmii-id mode these are disabled, no matter what
-> they are set to in the dt.
 
-As per the public datasheet share by Radxa below
-[0] https://dl.radxa.com/rock3/docs/hw/datasheet/RTL8211F-CG-Datasheet.pdf
+Yes, I have tested with these changes still this does not work, with
+out this fix as of now..
 
-This Ethernet controller supports RGMII mode.
+We can check this comment in the below commit id
+70f04e9a3358404367030493dc36718d4495a9a5  ARM: dts: imx6ul-14x14-evk:
+Enable the GPIO expander
 
->
-> >
-> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > ---
-> > V2: Fix commit message and added the RX and TX clock delay.
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 5 ++++-
-> >  1 file changed, 4 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > index ea74ba32fbbd..e1c75532dcee 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > @@ -253,13 +253,16 @@ &gmac1 {
-> >         assigned-clock-rates = <0>, <125000000>;
-> >         clock_in_out = "output";
-> >         phy-handle = <&rgmii_phy1>;
-> > -       phy-mode = "rgmii-id";
-> > +       phy-mode = "rgmii";
-> >         pinctrl-names = "default";
-> >         pinctrl-0 = <&gmac1m1_miim
-> >                      &gmac1m1_tx_bus2
-> >                      &gmac1m1_rx_bus2
-> >                      &gmac1m1_rgmii_clk
-> >                      &gmac1m1_rgmii_bus>;
-> > +
-> > +       tx_delay = <0x4f>;
-> > +       rx_delay = <0x26>;
->
-> These are pretty far off from the default, have you verified the upper
-> and lower bounds for the rock-3a? These should be roughly in the
-> middle of that range.
->
-No I have not tested this way but as per the datasheet, it supports
-
-TXDLY   Add 2ns delay to RXC for RXD latching (via 4.7k-ohm to DVDD_RG)
-RXDLY   Add 2ns delay to RXC for RXD latching (via 4.7k-ohm to DVDD_RG)
-
-I feel I should ignore the above warning and add it below.
-
-rx-internal-delay-ps = <2000>;
-tx-internal-delay-ps = <2000>;
+maybe something is still missing to be configured.
 
 Thanks
 -Anand
-> >         status = "okay";
-> >  };
+
+
+
+
+
+> Robin.
+>
 > >
-> > --
-> > 2.38.1
+> > Thanks
+> > -Anand
+> >>> --
+> >>> 2.38.1
+> >>>
 > >
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
