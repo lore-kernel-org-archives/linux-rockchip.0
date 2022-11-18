@@ -4,75 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A03C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 09:35:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9984C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 09:40:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ib+eXC9j4CnmE1Zm4BNgzznisICO+xd6wnm3pqOA/Rk=; b=nk2A8BJmoJq2mr
-	8Uh2KC8GEjRKXFDu3TDgf4x4ZiGjJu+HB9gIghRbDJg1WYbM9LQvA7V0gl9cSORQDIlVQVjKic1C2
-	6jB/41Ljai2B30Rb8y4nVEyQbkY9hnuk/SKOTMnv3DztHWQoj+tv3bI9YIyKdSbDS7wy2Bi+e647x
-	ezDE4/a9KbjZsHGGkxnbAhbFKirCHNgl818cR3sk0awmd52/sMF6R5BI2O4GGVmQtRnds5bOcxdQb
-	DVddFCUtJE7z3IduoaImsSEk+fR2zfHKMEqRLNkDneyZ6LvmDoGVP+nXpHBg9k20MDc+Ht4vgFHdO
-	IagsS93XfQF36zSSYP2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8n56IzPxqKg9LDFAP486brz9B+VVS+d8NbgRqYXgkgI=; b=UiR4LjPnoUf9Oz
+	Hysg0B0tZydzXmZfVv42NQa5M9MEn2HteSYm+12w+kETIozWT1+y2RZ2JBoszZwOpd6YuD7qdnAQ5
+	HOC4+z9QMuRHrjC9Eh2IfUUTekAxhYu5SemBoRH8r6VaBd4Bk+xdwW08zd4/KqvGAp3bH9eFgxwqY
+	djhCBgV38+Ok8CSn7T4W2oB4ZNzoZ9b2l+ZmtfxRviQOUJAZxssl1ZnqlUEyOq3CcOvKLohfpnOuo
+	T/US+0tUJIeOK6EJYC8QcsJZfbSYFw/Rat4TlqLnBvXGoQpqE9kmnzve5EFElE9N2TULjC3GVBuk/
+	eOe0YSlJxGDaT0Atnvlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxmN-0037cV-KP; Fri, 18 Nov 2022 09:35:23 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1ovxqm-0038l1-Md; Fri, 18 Nov 2022 09:39:56 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxmA-0037W0-5d; Fri, 18 Nov 2022 09:35:11 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id s12so6341811edd.5;
-        Fri, 18 Nov 2022 01:35:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=fYL2lqqcJ/7e1uhSD1iCGZdR4sa0akGcGPNEmZ3Ebs8=;
-        b=K7dvmblKPEYFvoyA1jXzSwVPyVsYLRCvz0SdVOTvVagx9/S+/UKtM22hbUhi3Wt301
-         6mViMS3mjGCF0MOtD4UjlX6Hy2JhXZtf7yz14AAdB1SYxlD1jfqDQTToABg45kR91gee
-         ZkyqKgzmiGEHSiDvTskz+j40cjTXWU81TXKQAwf/RElLLbGc/g31Mil4blhBvu1LpoaU
-         8hebEeDrkbwpiS3mpeX4RrSf7NVfg7M2ierGUVgZxpM9vsK7ncZnyRONJdQI2NCbG1ac
-         tOQgYYCMZ9L2pFCZg22Fo5eQ2i+MydWWET/KqPnAe0vczb77VDHZTQm6WXjgKwRnzdu/
-         UikA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=fYL2lqqcJ/7e1uhSD1iCGZdR4sa0akGcGPNEmZ3Ebs8=;
-        b=Yfa7iad14tE9cbDytvWBKgAniaxG1TWlNFapnttKrz7o2jcdfmiMmUDrNc9+cA+hRv
-         TotOlcDPUN2HlIDci4ED9eHTSK5BRNfKpEqA/BTjKyls4WOORinfCccLQeQNb+YD2kUX
-         oOA72EzFqQEUIA2uiTEBaRMr4xeEwu1hyfIWRfjfUKwmscKrVzzzChcDE5FG7efsInqS
-         8CoANrAHf6I3vYoNfiOguW1bxIAS5kfg5y7/6xHh+JDRNAHj2B+dtnoVrlRI9D6ohzbW
-         z7fRvY0ZSODkbSIoB/MdugVHi7hCyLSfjv64BwovoPdDTDWFwFGbhBK3hWqgoUtdQAIx
-         n0qw==
-X-Gm-Message-State: ANoB5pl6mwyaXebXmafN8ufQDxi3/1KCPfhMLLuxnKOH1tndHvppkObF
-	T9jn64MS1W4W2MiN7Ztcur2c2478oSEuNM5IdwY=
-X-Google-Smtp-Source: AA0mqf6GCwrX18gDBDCF6o6ToPuYobYosdpVjryabNOZJgLVMsl/zCJpx4QbqmYhuhxpW3picNzIlMLTQcbXObBRihw=
-X-Received: by 2002:a05:6402:504:b0:461:5542:6884 with SMTP id
- m4-20020a056402050400b0046155426884mr5256294edv.390.1668764102550; Fri, 18
- Nov 2022 01:35:02 -0800 (PST)
-MIME-Version: 1.0
-References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-2-linux.amoon@gmail.com>
- <bdcd2071-8f56-b829-7e78-3fc9efec09fc@wolfvision.net>
-In-Reply-To: <bdcd2071-8f56-b829-7e78-3fc9efec09fc@wolfvision.net>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Fri, 18 Nov 2022 15:04:46 +0530
-Message-ID: <CANAwSgQkwXb0KE+1856egmUyTx_pmr9hq6nk8-0YoMQJdBoDvQ@mail.gmail.com>
-Subject: Re: [linux-next-v2 1/5] arm64: dts: rockchip: Fix gmac phy mode to
- rgmii on Rock 3A SBC.
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Chukun Pan <amadeus@jmu.edu.cn>, Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	id 1ovxqZ-0038gN-Gh; Fri, 18 Nov 2022 09:39:45 +0000
+Received: from pyrite.tail37cf.ts.net (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 26B4FAF4;
+	Fri, 18 Nov 2022 10:39:37 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1668764381;
+	bh=8759RmpiUD0qDZZy0EBtArWNV2cOPT6xrqlG+fmlROo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FeA6osoqu0n82Tne2fJ/CiBNmJyqNK/nLk+xhu/Z1J3rj36na4gmB+1xjsdkAgKcF
+	 COTXTrSrfp3WfLvsVuSjAvMdqN1U012qbAl+a/QVrH1T9Vq676jPGTcQa5WaoTfmLx
+	 J1xYHTSEq9CiCRzFcp0eb8MO9AMKMbPfSh0buMqI=
+From: Paul Elder <paul.elder@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Helen Koike <helen.koike@collabora.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
+Date: Fri, 18 Nov 2022 18:39:17 +0900
+Message-Id: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_013510_238077_21B0C1CE 
-X-CRM114-Status: GOOD (  20.82  )
+X-CRM114-CacheID: sfid-20221118_013943_726377_FB46E2FC 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +72,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+This series depends on v3 of "dt-bindings: media: Add macros for video
+interface bus types" [1].
 
-On Fri, 18 Nov 2022 at 12:33, Michael Riesch
-<michael.riesch@wolfvision.net> wrote:
->
-> Hi Anand,
->
-> On 11/16/22 21:01, Anand Moon wrote:
-> > On rk356x ethernet phy support reduced media independent interface (RMII)
-> > and reduced gigabit media independent interface (RGMII).
-> > So set the phy mode to rgmii to support clock delay, also
-> > add TX and RX delay for phy-mode.
->
-> Based on this commit message I still don't understand what you are
-> actually trying to fix here. If you encounter network problems/stability
-> issues, please let me know what test triggers the faulty behavior.
-> Please describe the problem you are facing in detail here or in the
-> cover letter.
->
+This series extends the rkisp1 driver to support the ISP found in the
+NXP i.MX8MP SoC.
 
-Ok, Ethernet does not work on my Radxa 3A see boot logs.
+The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
+and in the NXP i.MX8MP have the same origin, and have slightly diverged
+over time as they are now independently developed (afaik) by Rockchip
+and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
+and is close enough to the RK3399 ISP that it can easily be supported by
+the same driver.
 
-[0] https://gist.github.com/moonlinux/bb56c787031226fbb9f69121564e76a2
+The last two patches add support for UYVY output format, which can be
+implemented on the ISP version in the i.MX8MP but not in the one in the
+RK3399.
 
-Please find this updated commit message.
+This version of the series specifically has been tested on a Polyhex
+Debix model A with an imx219 (Raspberry Pi cam v2).
 
-As per the schematic and datasheet PHY mode is RGMII
-Use 2ns clock delay to RXC for RXD and TXC for TXD latching.
+[1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
 
-> > Fix the following warning
-> >
-> > [    7.365215] rk_gmac-dwmac fe010000.ethernet: Can not read property: tx_delay.
-> > [    7.365219] rk_gmac-dwmac fe010000.ethernet: set tx_delay to 0x30
-> > [    7.365224] rk_gmac-dwmac fe010000.ethernet: Can not read property: rx_delay.
-> > [    7.365228] rk_gmac-dwmac fe010000.ethernet: set rx_delay to 0x10
->
-> If the only purpose of this patch is to get rid of this warnings, it may
+Laurent Pinchart (3):
+  dt-bindings: media: rkisp1: Add i.MX8MP ISP example
+  media: rkisp1: Add and use rkisp1_has_feature() macro
+  media: rkisp1: Configure gasket on i.MX8MP
 
-No, the intent is to fix the PHY mode to RGMII and fix the delay.
-[ 7.066357] rk_gmac-dwmac fe010000.ethernet: init for RGMII_ID
+Paul Elder (11):
+  dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+  media: rkisp1: Add match data for i.MX8MP ISP
+  media: rkisp1: Add and set registers for crop for i.MX8MP
+  media: rkisp1: Add and set registers for output size config on i.MX8MP
+  media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
+  media: rkisp1: Shift DMA buffer addresses on i.MX8MP
+  media: rkisp1: Add register definitions for the test pattern generator
+  media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
+  media: rkisp1: Support devices without self path
+  media: rkisp1: Add YC swap capability
+  media: rkisp1: Add UYVY as an output format
 
-> make sense to set them to dev_dbg as Peter pointed out.
->
-Ok, will update this in the next version.
+ .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
+ .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
+ include/uapi/linux/rkisp1-config.h            |   2 +
+ 9 files changed, 509 insertions(+), 40 deletions(-)
 
-> Best regards,
-> Michael
->
-Thanks
--Anand
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
