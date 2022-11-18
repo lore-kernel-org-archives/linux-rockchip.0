@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E994C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 09:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C40C43219
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 09:41:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OTQ8IICsBi3ffTjfjFG0lE1hC4ocMgEJuu5uxLZDKGQ=; b=IV04QtXWkn1P+L
-	1So+1NhzeWfX4xD7ljzj4VJYb6x8nfi8r2lKpI1AVgzKjMIK8n1MndcHxraod+4gdixrQXxJaq6Nw
-	q2u61ILMnAY+xtGpMzU6X7ZGztvWlUD49YhvrDyVPLxqvuw1JB6xQ4fKHsIhdv9l3WU+3FUpP8cLA
-	QGOuaHlFhoRqbn0cIsuc6lf7SMIX70crpskX8hOROrguKP8MabbHLDimEH9tcgJySLDZCp7C30FtU
-	3WABj1tE5dao0E2SVvFzi3Gdw1xj5ONvkAykNccX2HNOczbPprv8tMUsfeKhhlRtpwwMwLTBrOk2D
-	EGz40bVIqapgUEJT/pkQ==;
+	List-Owner; bh=ONbQpdyFHLxY2jP2UZbO151k8Bj4DJsVR7aZT7xjStI=; b=tdzAM7VinXztd4
+	lGSARvn8oqWyXn8hM8WVoVpeFQ9X3osQZuBPXy7oiTnHqwzFKC3rTNcPtaYYmfOe6RBskxUukDRCa
+	0kEdQgCKkqoWUCkK+povLAFrlHMEoqBczv5coW6peP9/Vuh4OwxrlSFlUY0aQfG8vg7rApXJxFazS
+	uzztkzjup2LuodKYDCVyndWxfsEX0znYU3/TZxiqoilugvIcreb031Yt9C9Ms0SZil6bjjJU2jDuG
+	eVWKch+yBp5/EHgCZ2a/XucrBRMI6p7nE8VvZH7QT7s3QwaKkoN3igPC36gWOQIlBRpUyM884ZOMx
+	LUr+1M0OD8IenlIcLWbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxr0-0038tc-JV; Fri, 18 Nov 2022 09:40:10 +0000
+	id 1ovxrY-0039GB-Ut; Fri, 18 Nov 2022 09:40:44 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxqd-0038hN-3z; Fri, 18 Nov 2022 09:39:48 +0000
+	id 1ovxqg-0038it-VV; Fri, 18 Nov 2022 09:39:52 +0000
 Received: from pyrite.tail37cf.ts.net (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 484DDCCA;
-	Fri, 18 Nov 2022 10:39:42 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 61A83AF4;
+	Fri, 18 Nov 2022 10:39:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668764385;
-	bh=TOTYXTs+UIhhVvWl1uhtuGwBpzZxOVAtjbKTkfYO3Pw=;
+	s=mail; t=1668764389;
+	bh=hmyLpab8VmHMSS3/2OG4UYDiDFK/Q8oMtYRnn8VQ7fg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=a96jV84IdDtcOALucQ0RbqRNa/ChdjdaSRhxhNuYrazOsQ2Nhd7bYUH+a7GquBGnh
-	 Uf77vW69Rwwp4qTdWQ3u88WwFQDOMHQ18MiwkpSPYmbd5P8WeXA1JW4WvOz0gR4KjW
-	 AbErqD6t1tc++ToZRvsunqazBkk/sozmkGtVBg/o=
+	b=OFH1LLo5i4J0HJ5cCTgvvqJeLnrXlevbdDgc3REixGzWWxLVBivl7Z/P5j869ghiO
+	 Wvnm97wdehUTHk1oH7sOfSUtszYHMWSh6ZXByrD6LKdgh8U/WXTYAhk3fCNTWu1RUJ
+	 PxRCZjAamHACoqCr3R0kABiAeEvaivPfphp+T5xk=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 01/14] dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-Date: Fri, 18 Nov 2022 18:39:18 +0900
-Message-Id: <20221118093931.1284465-2-paul.elder@ideasonboard.com>
+Subject: [PATCH v3 02/14] dt-bindings: media: rkisp1: Add i.MX8MP ISP example
+Date: Fri, 18 Nov 2022 18:39:19 +0900
+Message-Id: <20221118093931.1284465-3-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
 References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_013947_335590_F6463E6E 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20221118_013951_190309_5A24B624 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +73,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The i.MX8MP ISP is compatbile with the rkisp1 driver. Add it to the list
-of compatible strings. While at it, expand on the description of the
-clocks to make it clear which clock in the i.MX8MP ISP they map to,
-based on the names from the datasheet (which are confusing).
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Add an example to the rockchip-isp1 DT binding that showcases usage of
+the parallel input of the ISP, connected to the CSI-2 receiver internal
+to the i.MX8MP.
+
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ .../bindings/media/rockchip-isp1.yaml         | 72 +++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index b3661d7d4357..95cf945f7ac5 100644
+index 95cf945f7ac5..88d9bc378f79 100644
 --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -16,6 +16,7 @@ description: |
- properties:
-   compatible:
-     enum:
-+      - fsl,imx8mp-isp
-       - rockchip,px30-cif-isp
-       - rockchip,rk3399-cif-isp
- 
-@@ -36,9 +37,9 @@ properties:
-     minItems: 3
-     items:
-       # isp0 and isp1
--      - description: ISP clock
--      - description: ISP AXI clock
--      - description: ISP AHB clock
-+      - description: ISP clock (for imx8mp, clk)
-+      - description: ISP AXI clock (for imx8mp, m_hclk)
-+      - description: ISP AHB clock (for imx8mp, hclk)
-       # only for isp1
-       - description: ISP Pixel clock
- 
+@@ -285,3 +285,75 @@ examples:
+             };
+         };
+     };
++
++  - |
++    #include <dt-bindings/clock/imx8mp-clock.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/media/video-interfaces.h>
++    #include <dt-bindings/power/imx8mp-power.h>
++
++    parent2: parent {
++        #address-cells = <1>;
++        #size-cells = <1>;
++
++        isp@32e10000 {
++            compatible = "fsl,imx8mp-isp";
++            reg = <0x32e10000 0x10000>;
++            interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
++            clocks = <&clk IMX8MP_CLK_MEDIA_ISP_ROOT>,
++                     <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>,
++                     <&clk IMX8MP_CLK_MEDIA_APB_ROOT>;
++            clock-names = "isp", "hclk", "aclk";
++            assigned-clocks = <&clk IMX8MP_CLK_MEDIA_ISP>;
++            assigned-clock-parents = <&clk IMX8MP_SYS_PLL2_500M>;
++            assigned-clock-rates = <500000000>;
++            power-domains = <&media_blk_ctrl IMX8MP_MEDIABLK_PD_ISP>;
++            fsl,blk-ctrl = <&media_blk_ctrl 0>;
++
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                port@1 {
++                    reg = <1>;
++                    isp0_in: endpoint {
++                        bus-type = <MEDIA_BUS_TYPE_PARALLEL>;
++                        remote-endpoint = <&mipi_csi_0_out>;
++                    };
++                };
++            };
++        };
++
++        csi@32e40000 {
++            compatible = "fsl,imx8mp-mipi-csi2", "fsl,imx8mm-mipi-csi2";
++            reg = <0x32e40000 0x10000>;
++            interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
++            clock-frequency = <500000000>;
++            clocks = <&clk IMX8MP_CLK_MEDIA_APB_ROOT>,
++                     <&clk IMX8MP_CLK_MEDIA_CAM1_PIX_ROOT>,
++                     <&clk IMX8MP_CLK_MEDIA_MIPI_PHY1_REF_ROOT>,
++                     <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>;
++            clock-names = "pclk", "wrap", "phy", "axi";
++            assigned-clocks = <&clk IMX8MP_CLK_MEDIA_CAM1_PIX>;
++            assigned-clock-parents = <&clk IMX8MP_SYS_PLL2_1000M>;
++            assigned-clock-rates = <500000000>;
++            power-domains = <&media_blk_ctrl IMX8MP_MEDIABLK_PD_MIPI_CSI2_1>;
++
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                port@0 {
++                    reg = <0>;
++                };
++
++                port@1 {
++                    reg = <1>;
++                    mipi_csi_0_out: endpoint {
++                        remote-endpoint = <&isp0_in>;
++                    };
++                };
++            };
++        };
++    };
++...
 -- 
 2.35.1
 
