@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96676C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 09:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C2F0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Nov 2022 13:02:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=naSsNz/51IL+0rmHm0r4v8/npqU8GnjYp6GyBdYw6Wo=; b=f9fsYeLjZIXj8R
-	ox8+XeX3bk6Gz1qrXebG8v3lbxf2XUitaGBtSOyU4BateILgMhskkqyT+dd5C8z5oW5FbtjhlldZd
-	ppZK6W38/M1temgqTUJzmTxEKeupPcuH8mGZ8/SSbAtwq7vyC1+g9t0ustC3IzUZqkFW8/Rnwvwe/
-	xC7BadVj78IDx4t2luPVZTOUNdlBxwGZNT0NdvEMM79XBkajW6sWJDHRwHFp8jBeXwXkwBoyXxsA4
-	4Ps6RSK34OcGp1mBcrC2/YehmkNv9KyKXftwbBWqmmMcL9iYye/Yr1mftBO4lmTm6KIMpmkReM4JI
-	CJ/P4V5cyYnoIDvzFj/w==;
+	List-Owner; bh=SyZfmoCM7cdWGDJRbO6B3nMcr8EZ/m6//Nk8I9V5I0k=; b=T5Oe800OsGHB7K
+	gQDNYdMLPcNDlUWG4wGzvXalygO2ojNkp+hU+NKmRFJja+JEhLEP8XP55NKt8nT+pa73Vco6Rm27V
+	w9k0lUiJKZR0B6mMWzjt8X4iq7MB7ZU0RybpngljD+7TjkNd/62yapjsnCH4G6pDEcv7dgzABXXRi
+	Jd/e54/HloTxYAxFO2mgTFqsTNPTMf4pdbneXCKLzLCTddTLyj2mvHes/CRFJfqc9Y4/7Al3c7FRf
+	qOGddgPzK6Y4aLfMOFM+C0iWPK/dNVxHWhNW2NfjSCFIxlSULd6zupEmmGlK8ZnvAS2lU2IZ7tnpX
+	haifNnZRsiJM7zOrQCug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxy1-003Cqg-Gg; Fri, 18 Nov 2022 09:47:25 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1ow111-0041Y3-20; Fri, 18 Nov 2022 13:02:43 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovxrU-0039CN-MT; Fri, 18 Nov 2022 09:40:42 +0000
-Received: from pyrite.tail37cf.ts.net (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B79A8CE1;
-	Fri, 18 Nov 2022 10:40:35 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668764439;
-	bh=rsTVUhZ7ZI6UsQMfahLSuxDlhDEF5B7vCEr3t98B15M=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BPWRwwZkjC9FzC+D3DSeZl54u6MeB1z2XeCJFsY2ndTK8H+9+X2beUZESLC/LkFiT
-	 z+G0NshynQOO6YZZQKpi6YgMG51M6YnN9ac94/xCHe3t5dmmnhhra/nsrDBrwxpHDd
-	 SX+nixP1/dIw/u9vGWRhmz7zlsyaaMXsK6+kVFKA=
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 14/14] media: rkisp1: Add UYVY as an output format
-Date: Fri, 18 Nov 2022 18:39:31 +0900
-Message-Id: <20221118093931.1284465-15-paul.elder@ideasonboard.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+	id 1ow10p-0041UR-AO
+	for linux-rockchip@lists.infradead.org; Fri, 18 Nov 2022 13:02:32 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id j4so8164996lfk.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 18 Nov 2022 05:02:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cwwjinAwnI9JP7ipWBIl6FuQzSRiSFJbqcKk9ONdIpQ=;
+        b=obPz4JjmPLeKv2oww2oR7ZLdXYLjLv2XxsQO9UxHebHp3oh+VdB1163aABgipfa3Vh
+         X05N/8dS0AsPadRJwlMwoHwlfnOHow88Me0ghANAoPFkFUDsPAHSM+IJG0G5LEpbM3b5
+         erjJ+lPbNCVqKHnLcXbYODFo2IUJYq35ylTV1HoW56UVYLtxe68oJ+Gz1x27IvRfaohY
+         XYOTQwgZ3rS/gH9z3OJhUUH5Png5T1zWdB2pVmo4GobT+L82BnUn3q/SJjcRpktx/QYO
+         dz0fAUaOjeV9yHuNfe4sm0kqX455N+rGglD3+01u05D1XES/iUlJE3V4ps39SHFQGZL6
+         HTPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cwwjinAwnI9JP7ipWBIl6FuQzSRiSFJbqcKk9ONdIpQ=;
+        b=B+wvZwEdIrb1A2xkBx8Yh9itRn51Zu8iqyDIQwr6PhxqTDuWeZCyRg8Z+lWRSA+rRK
+         WH3RexCcopFQEL8xOlr+aw/rZl3nVXiMMycebviZWrsPb8OYLdMq2xc5gNTwcVZ4OWZg
+         8060BRp55ZtiqC8qR/Ro83graXLKKIVeJ8QTD3Wt6jN7g9YzYj3rklWNvezAReA6v0D8
+         hdrz2wfcqEzvF1hiijEe1TTplglR12XTvlX+iPiJoscVYPugklL9c+jZdf5Yaeg2dQm8
+         wFJlXUTHfoAyFCxwSLkOrz+4cGyGhoB91MfxSggBm6XniRNpkFQ4+QSicr6+X4lhkZnG
+         xqrA==
+X-Gm-Message-State: ANoB5plOVRX0Iz/ZoIdk4mUwHAY1uBuJ+wveeSjUBX1ZWAhq2NgQF1ZT
+	nU7ci1b0L/0yAuMF1JT5jO1cgA==
+X-Google-Smtp-Source: AA0mqf5iRqFuX0lxx+NC9PbVCESfhII3uH8SJo25riWa6ALefKjdFE/nEDLQvFCDKiQ3DjJbBr/hlw==
+X-Received: by 2002:a05:6512:23a8:b0:4a2:4df9:4cad with SMTP id c40-20020a05651223a800b004a24df94cadmr2246808lfv.429.1668776549574;
+        Fri, 18 Nov 2022 05:02:29 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id d5-20020a196b05000000b00499b1873d6dsm648454lfa.269.2022.11.18.05.02.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 18 Nov 2022 05:02:29 -0800 (PST)
+Message-ID: <feb97479-3c1b-9fd8-ffd7-f8e95151d8fe@linaro.org>
+Date: Fri, 18 Nov 2022 14:02:28 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3 01/14] dt-bindings: media: rkisp1: Add i.MX8MP ISP to
+ compatible
+Content-Language: en-US
+To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Helen Koike <helen.koike@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+ <20221118093931.1284465-2-paul.elder@ideasonboard.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221118093931.1284465-2-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_014040_935157_EB44FF30 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20221118_050231_399039_0D53E873 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,94 +100,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for UYVY as an output format. The uv_swap bit in the
-MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
-work for packed YUV formats. Thus, UYVY support is implemented via
-byte-swapping. This method clearly does not work for implementing
-support for YVYU and VYUY.
+On 18/11/2022 10:39, Paul Elder wrote:
+> The i.MX8MP ISP is compatbile with the rkisp1 driver. Add it to the list
+> of compatible strings. While at it, expand on the description of the
+> clocks to make it clear which clock in the i.MX8MP ISP they map to,
+> based on the names from the datasheet (which are confusing).
+> 
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+This is a friendly reminder during the review process.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 29565440b6e7..8a6a5d25a3b8 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -221,6 +227,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -442,6 +455,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-@@ -483,6 +510,20 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
--- 
-2.35.1
+It looks like you received a tag and forgot to add it.
+
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions. However, there's no need to repost patches *only* to add the
+tags. The upstream maintainer will do that for acks received on the
+version they apply.
+
+https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
+
+If a tag was not added on purpose, please state why and what changed.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
