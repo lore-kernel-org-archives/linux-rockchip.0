@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD88DC433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Nov 2022 17:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37146C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Nov 2022 17:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i+JJ4OAcLzf3NJb5Am+xAaxe6VUC5iw+BwQudLS7h98=; b=qy+OyhhxdfUHlN
-	o5b41Xry6hcMe/o/vjLnH+hGupF+TNLRXZ/FJHGyJk4fcry8zG4NpG25m22oR1ggyuOZUY31kuevq
-	QuluU2PfCXIKLmkLtWiRk/p3X8YVUJwe1t1LO5u/C6VbgFAcZY77uREKrO5Cp85I8/HyP27YVg/c9
-	h/cEApzn7e2zM8OYGZLGfdIV6gLKcSlHJK1+ae4gARvBdi5rB9Oq1sjjLyoSxKPbjuFk2+O48tk3G
-	LmtmBw7jncfhoLQq8KlQ7pwtOeNRipAfA7N8r9tuWnI5ftRZKnHAXY16FpWau4EjWBi/eIBUbASMQ
-	/nQTeNRbthQdK9n7ZOqg==;
+	List-Owner; bh=Rchqh0D/N+wypI/W3eBEdp/ZuB8AnFEFKTzKWdHzvug=; b=DzCOD1/aNtOAvo
+	R0CtqjAt6NkidZ/vNJNktA/AiFxM1lPAecznAGoN4PKmbFOh7lfSedJtRzmlf0lV5aF0EAao1cZnz
+	Qt7lw0BIm/ryamP4rcwrS6YWlTsG0aof6MriF19uNNWJlX0qBG07JgLhbiXUf4v/pMPj4nuxDMxwb
+	6nYRp6fNNUSUOUSffwseFBgUAZGnN57/gNDY/+vxK7YB4I0YoBgO8VqWr/ChYQGIka33g0pGVeiiB
+	siAsSj/IxpHS302L56SLdtyFeRLz7d0UssIs3tB8lTrK5VuAGoJjH7S3ZR1L0wqUEyM8VEbVFf+Xr
+	XdxFrq9DJGOjDAS3pXOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owRC7-00FOVC-Ml; Sat, 19 Nov 2022 16:59:55 +0000
+	id 1owRV0-00FWFH-Rl; Sat, 19 Nov 2022 17:19:26 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owRBv-00FOJx-TY; Sat, 19 Nov 2022 16:59:45 +0000
+	id 1owRUo-00FWBb-PD; Sat, 19 Nov 2022 17:19:16 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82AE1749;
-	Sat, 19 Nov 2022 17:59:35 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8CFC5749;
+	Sat, 19 Nov 2022 18:19:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668877175;
-	bh=5XR3sCqqEd6GXsl5hg+C3PS+jEEDwIW3YkQxbvVxj2Y=;
+	s=mail; t=1668878352;
+	bh=VrJTKizOe2YunSUmQn/OwL6ElVv/m3nvCVjBO+OezFI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UCmxTBRSYdoReX60CGoNzW4ohn53YH+q8JSuG6FI5bWL3JB6AP+yYOAm6VcSlPEmH
-	 VAtYy1JjCd/mfEdmIJO68PWEegiqp76oygvo1r4WPK1Sm/5siJ+6eKrmh7YDIJJZVM
-	 6hJ2earUZcyvIcy7IhVMCKC46nyx7QeGY1nngMZc=
-Date: Sat, 19 Nov 2022 18:59:19 +0200
+	b=v2XqIaTDLORxdfkirAQmgwNu3eFhcy073+DUCHQCbo6hPH64HpNewH4QuhDOEzDcS
+	 kkLEehQF6NYqwWmf3wowryQ1sW/mUMXCPmOakwieLXzn7xzxyIz7HlsuKR3WcxVsG/
+	 5bgczrpafW8shlOMOLxa5AK/nVNHoMUl3GiH6R/Y=
+Date: Sat, 19 Nov 2022 19:18:56 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Dafna Hirschfeld <dafna@fastmail.com>
 Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 02/14] dt-bindings: media: rkisp1: Add i.MX8MP ISP
- example
-Message-ID: <Y3kLZ6nQ1VzN+2eu@pendragon.ideasonboard.com>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>
+Subject: Re: [PATCH v3 03/14] media: rkisp1: Add and use rkisp1_has_feature()
+ macro
+Message-ID: <Y3kQAC0g+9Tz/2tc@pendragon.ideasonboard.com>
 References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
- <20221118093931.1284465-3-paul.elder@ideasonboard.com>
- <ca8a6070-3888-8d42-5974-d7c2adc62417@linaro.org>
+ <20221118093931.1284465-4-paul.elder@ideasonboard.com>
+ <20221119110322.4drj7qqtp46vjcnn@guri>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ca8a6070-3888-8d42-5974-d7c2adc62417@linaro.org>
+In-Reply-To: <20221119110322.4drj7qqtp46vjcnn@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221119_085944_131449_8A5E62EB 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20221119_091915_010566_657D99DE 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,32 +69,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKT24gRnJpLCBOb3YgMTgsIDIwMjIgYXQgMDI6MDY6MTRQTSArMDEwMCwg
-S3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPiBPbiAxOC8xMS8yMDIyIDEwOjM5LCBQYXVsIEVs
-ZGVyIHdyb3RlOgo+ID4gRnJvbTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBp
-ZGVhc29uYm9hcmQuY29tPgo+ID4gCj4gPiBBZGQgYW4gZXhhbXBsZSB0byB0aGUgcm9ja2NoaXAt
-aXNwMSBEVCBiaW5kaW5nIHRoYXQgc2hvd2Nhc2VzIHVzYWdlIG9mCj4gPiB0aGUgcGFyYWxsZWwg
-aW5wdXQgb2YgdGhlIElTUCwgY29ubmVjdGVkIHRvIHRoZSBDU0ktMiByZWNlaXZlciBpbnRlcm5h
-bAo+ID4gdG8gdGhlIGkuTVg4TVAuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IExhdXJlbnQgUGlu
-Y2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiAKPiBNaXNzaW5nIFNv
-Qi4KPiAKPiA+IC0tLQo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9yb2NrY2hpcC1pc3AxLnlhbWwg
-ICAgICAgICB8IDcyICsrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgNzIg
-aW5zZXJ0aW9ucygrKQo+ID4gCj4gCj4gSSBkb24ndCBrbm93IHdoYXQgZG8geW91IGRlbW9uc3Ry
-YXRlIHRoZXJlLi4uIHVzYWdlIG9mIGVuZHBvaW50cz8gVGhhdCdzCj4gdGhlIG9ubHkgZGlmZmVy
-ZW5jZS4gU3VjaCB1c2FnZSBpcyB0aGUgc2FtZSBldmVyeXdoZXJlLCBub3RoaW5nIHNwZWNpZmlj
-Cj4gdG8gdGhpcyBleGFtcGxlLiBZb3UgYWxyZWFkeSBoYXZlIHR3byBleGFtcGxlcywgc28gSSBk
-b24ndCB0aGluayB0aGlzCj4gYnJpbmdzIGFueXRoaW5nIG1vcmUuCgpUaGUgaS5NWDhNUCBpcyB0
-aGUgb25seSBTb0MgaW50ZWdyYXRpbmcgdGhpcyBJU1AgKGFuZCBzdXBwb3J0ZWQgaW4KbWFpbmxp
-bmXDoCB0aGF0IGhhcyBhbiBleHRlcm5hbCBDU0ktMiByZWNlaXZlciwgYXMgb3Bwb3NlZCB0byB1
-c2luZyB0aGUKQ1NJLTIgcmVjZWl2ZXIgZnJvbSB0aGUgSVNQLiBUaGlzIHBhdGNoIHRoaXMgc2hv
-d2Nhc2VzIHRoZSBEVAppbnRlZ3JhdGlvbiBmb3IgdGhhdCB1c2UgY2FzZS4gSWYgeW91IHRoaW5r
-IGl0J3Mgbm90IHdvcnRoIGl0LCBJJ20gZmluZQpkcm9wcGluZyBpdC4KCi0tIApSZWdhcmRzLAoK
-TGF1cmVudCBQaW5jaGFydAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Hi Dafna,
+
+On Sat, Nov 19, 2022 at 01:03:22PM +0200, Dafna Hirschfeld wrote:
+> On 18.11.2022 18:39, Paul Elder wrote:
+> > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > 
+> > Simplify feature tests with a macro that shortens lines.
+> > 
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+> > Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+> > ---
+> >  .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
+> >  .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
+> >  2 files changed, 10 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > index a1293c45aae1..fc33c185b99f 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > @@ -111,6 +111,9 @@ enum rkisp1_feature {
+> >  	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
+> >  };
+> > 
+> > +#define rkisp1_has_feature(rkisp1, feature) \
+> > +	((rkisp1)->info->features & RKISP1_FEATURE_##feature)
+> 
+> maybe instead of that string concatination you can remove the
+> 'RKISP1_FEATURE' prefix from the enum
+
+We could, but I'm worried this would create short names subject to
+namespace clashes (such as "MIPI_CSI2" for instance).
+
+> > +
+> >  /*
+> >   * struct rkisp1_info - Model-specific ISP Information
+> >   *
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index f2475c6235ea..e348d8c86861 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  		switch (reg) {
+> >  		case 0:
+> >  			/* MIPI CSI-2 port */
+> > -			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
+> > +			if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+> >  				dev_err(rkisp1->dev,
+> >  					"internal CSI must be available for port 0\n");
+> >  				ret = -EINVAL;
+> > @@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+> >  	unsigned int i;
+> >  	int ret;
+> > 
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+> >  		/* Link the CSI receiver to the ISP. */
+> >  		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
+> >  					    RKISP1_CSI_PAD_SRC,
+> > @@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+> > 
+> >  static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
+> >  {
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+> >  		rkisp1_csi_unregister(rkisp1);
+> >  	rkisp1_params_unregister(rkisp1);
+> >  	rkisp1_stats_unregister(rkisp1);
+> > @@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+> >  	if (ret)
+> >  		goto error;
+> > 
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+> >  		ret = rkisp1_csi_register(rkisp1);
+> >  		if (ret)
+> >  			goto error;
+> > @@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+> >  		goto err_unreg_v4l2_dev;
+> >  	}
+> > 
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+> >  		ret = rkisp1_csi_init(rkisp1);
+> >  		if (ret)
+> >  			goto err_unreg_media_dev;
+> > @@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+> >  err_unreg_entities:
+> >  	rkisp1_entities_unregister(rkisp1);
+> >  err_cleanup_csi:
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+> >  		rkisp1_csi_cleanup(rkisp1);
+> >  err_unreg_media_dev:
+> >  	media_device_unregister(&rkisp1->media_dev);
+> > @@ -630,7 +630,7 @@ static int rkisp1_remove(struct platform_device *pdev)
+> >  	v4l2_async_nf_cleanup(&rkisp1->notifier);
+> > 
+> >  	rkisp1_entities_unregister(rkisp1);
+> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
+> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+> >  		rkisp1_csi_cleanup(rkisp1);
+> >  	rkisp1_debug_cleanup(rkisp1);
+> > 
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
