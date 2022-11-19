@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37146C433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Nov 2022 17:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935C1C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Nov 2022 22:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rchqh0D/N+wypI/W3eBEdp/ZuB8AnFEFKTzKWdHzvug=; b=DzCOD1/aNtOAvo
-	R0CtqjAt6NkidZ/vNJNktA/AiFxM1lPAecznAGoN4PKmbFOh7lfSedJtRzmlf0lV5aF0EAao1cZnz
-	Qt7lw0BIm/ryamP4rcwrS6YWlTsG0aof6MriF19uNNWJlX0qBG07JgLhbiXUf4v/pMPj4nuxDMxwb
-	6nYRp6fNNUSUOUSffwseFBgUAZGnN57/gNDY/+vxK7YB4I0YoBgO8VqWr/ChYQGIka33g0pGVeiiB
-	siAsSj/IxpHS302L56SLdtyFeRLz7d0UssIs3tB8lTrK5VuAGoJjH7S3ZR1L0wqUEyM8VEbVFf+Xr
-	XdxFrq9DJGOjDAS3pXOw==;
+	List-Owner; bh=jLi3f3aPvw8Cvn98qOO7hZWeAbPP2quBySRJGHieLKw=; b=CGH9m+d5oCqADq
+	/toJwTntGrF8pgyvrzHQsNX4wTLeHBMOFxqGtkCvQh8nFL9BB2auAxFGwVr0sP3R9DPff43q9csue
+	3TSpJ+6Q8kavCXfvj+XTtHNPa3b3GouUamCPBs8XVrUCbOUwP/YB6X/5ziqnDqbHFf/MTbYLM8v2R
+	6lNyvK6qzbLHM2XYvv9ijvz0TpWS/15agnFHyWHgKiwRorYiOXaU07OoVF+yNSVK4Lpg3Vn4YKRpF
+	j4V1nOl6nM+vfpa6dOhGn/b3dVeTTc8X3DU5PyhgKVdaP4pr0SnbKRxT3cw4Q80okbTAci/sRg3PD
+	UF2s9V0mXdYp0YGABNLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owRV0-00FWFH-Rl; Sat, 19 Nov 2022 17:19:26 +0000
+	id 1owWK8-00HTbV-Bv; Sat, 19 Nov 2022 22:28:32 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owRUo-00FWBb-PD; Sat, 19 Nov 2022 17:19:16 +0000
+	id 1owWJx-00HTZU-9D; Sat, 19 Nov 2022 22:28:22 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8CFC5749;
-	Sat, 19 Nov 2022 18:19:12 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E8C39749;
+	Sat, 19 Nov 2022 23:28:17 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668878352;
-	bh=VrJTKizOe2YunSUmQn/OwL6ElVv/m3nvCVjBO+OezFI=;
+	s=mail; t=1668896898;
+	bh=5lAZjq/Qa546GFzmky2g0r1fpVjt3znao3kF2DJgorU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=v2XqIaTDLORxdfkirAQmgwNu3eFhcy073+DUCHQCbo6hPH64HpNewH4QuhDOEzDcS
-	 kkLEehQF6NYqwWmf3wowryQ1sW/mUMXCPmOakwieLXzn7xzxyIz7HlsuKR3WcxVsG/
-	 5bgczrpafW8shlOMOLxa5AK/nVNHoMUl3GiH6R/Y=
-Date: Sat, 19 Nov 2022 19:18:56 +0200
+	b=lRbem7e6no7CZC6tGJHSggi+AYgWUb1fjX2iTUOa9dex8S3pEAB7aNk9x4l8XIT8A
+	 +aYh8Dmo2QPwwXErCY5fV6fyY+zEG8eJZ20Z6wl7j8v9oPxOXpRhUe9l7E4nVzz0px
+	 MC45fVXZJWKeiAegECFNe+30kb1xo2fi0JgGXnQs=
+Date: Sun, 20 Nov 2022 00:28:01 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>
 Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>
-Subject: Re: [PATCH v3 03/14] media: rkisp1: Add and use rkisp1_has_feature()
- macro
-Message-ID: <Y3kQAC0g+9Tz/2tc@pendragon.ideasonboard.com>
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
- <20221118093931.1284465-4-paul.elder@ideasonboard.com>
- <20221119110322.4drj7qqtp46vjcnn@guri>
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/3] media: rkisp1: Make local immutable array
+ variables static const
+Message-ID: <Y3lYcRySWnrLKpWe@pendragon.ideasonboard.com>
+References: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
+ <20221117084217.3892680-3-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221119110322.4drj7qqtp46vjcnn@guri>
+In-Reply-To: <20221117084217.3892680-3-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221119_091915_010566_657D99DE 
-X-CRM114-Status: GOOD (  23.02  )
+X-CRM114-CacheID: sfid-20221119_142821_513089_AB4ABE8C 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,108 +71,51 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Dafna,
 
-On Sat, Nov 19, 2022 at 01:03:22PM +0200, Dafna Hirschfeld wrote:
-> On 18.11.2022 18:39, Paul Elder wrote:
-> > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > 
-> > Simplify feature tests with a macro that shortens lines.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-> > ---
-> >  .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
-> >  .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
-> >  2 files changed, 10 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > index a1293c45aae1..fc33c185b99f 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > @@ -111,6 +111,9 @@ enum rkisp1_feature {
-> >  	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
-> >  };
-> > 
-> > +#define rkisp1_has_feature(rkisp1, feature) \
-> > +	((rkisp1)->info->features & RKISP1_FEATURE_##feature)
+Are you fine with this patch, can I include it in my next pull request
+along with the other ones from the series ?
+
+On Thu, Nov 17, 2022 at 05:42:16PM +0900, Paul Elder wrote:
+> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > 
-> maybe instead of that string concatination you can remove the
-> 'RKISP1_FEATURE' prefix from the enum
-
-We could, but I'm worried this would create short names subject to
-namespace clashes (such as "MIPI_CSI2" for instance).
-
-> > +
-> >  /*
-> >   * struct rkisp1_info - Model-specific ISP Information
-> >   *
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > index f2475c6235ea..e348d8c86861 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > @@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> >  		switch (reg) {
-> >  		case 0:
-> >  			/* MIPI CSI-2 port */
-> > -			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
-> > +			if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
-> >  				dev_err(rkisp1->dev,
-> >  					"internal CSI must be available for port 0\n");
-> >  				ret = -EINVAL;
-> > @@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
-> >  	unsigned int i;
-> >  	int ret;
-> > 
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
-> >  		/* Link the CSI receiver to the ISP. */
-> >  		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
-> >  					    RKISP1_CSI_PAD_SRC,
-> > @@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
-> > 
-> >  static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
-> >  {
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
-> >  		rkisp1_csi_unregister(rkisp1);
-> >  	rkisp1_params_unregister(rkisp1);
-> >  	rkisp1_stats_unregister(rkisp1);
-> > @@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
-> >  	if (ret)
-> >  		goto error;
-> > 
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
-> >  		ret = rkisp1_csi_register(rkisp1);
-> >  		if (ret)
-> >  			goto error;
-> > @@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
-> >  		goto err_unreg_v4l2_dev;
-> >  	}
-> > 
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
-> >  		ret = rkisp1_csi_init(rkisp1);
-> >  		if (ret)
-> >  			goto err_unreg_media_dev;
-> > @@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
-> >  err_unreg_entities:
-> >  	rkisp1_entities_unregister(rkisp1);
-> >  err_cleanup_csi:
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
-> >  		rkisp1_csi_cleanup(rkisp1);
-> >  err_unreg_media_dev:
-> >  	media_device_unregister(&rkisp1->media_dev);
-> > @@ -630,7 +630,7 @@ static int rkisp1_remove(struct platform_device *pdev)
-> >  	v4l2_async_nf_cleanup(&rkisp1->notifier);
-> > 
-> >  	rkisp1_entities_unregister(rkisp1);
-> > -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> > +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
-> >  		rkisp1_csi_cleanup(rkisp1);
-> >  	rkisp1_debug_cleanup(rkisp1);
-> > 
+> The max_widths and max_heights variables in rkisp1_try_fmt() are
+> immutable and don't need to be allocated on the stack every time the
+> function is called. Make them static.
+> 
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+> ---
+>  .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index 7695ef134908..91e685fdbbe9 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -1150,13 +1150,17 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+>  			   const struct rkisp1_capture_fmt_cfg **fmt_cfg,
+>  			   const struct v4l2_format_info **fmt_info)
+>  {
+> +	static const unsigned int max_widths[] = {
+> +		RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+> +		RKISP1_RSZ_SP_SRC_MAX_WIDTH,
+> +	};
+> +	static const unsigned int max_heights[] = {
+> +		RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+> +		RKISP1_RSZ_SP_SRC_MAX_HEIGHT,
+> +	};
+>  	const struct rkisp1_capture_config *config = cap->config;
+>  	const struct rkisp1_capture_fmt_cfg *fmt;
+>  	const struct v4l2_format_info *info;
+> -	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+> -					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
+> -	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+> -					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
+>  
+>  	fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
+>  	if (!fmt) {
+> -- 
+> 2.35.1
+> 
 
 -- 
 Regards,
