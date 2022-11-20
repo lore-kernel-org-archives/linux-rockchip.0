@@ -4,55 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935C1C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Nov 2022 22:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB68C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Nov 2022 07:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jLi3f3aPvw8Cvn98qOO7hZWeAbPP2quBySRJGHieLKw=; b=CGH9m+d5oCqADq
-	/toJwTntGrF8pgyvrzHQsNX4wTLeHBMOFxqGtkCvQh8nFL9BB2auAxFGwVr0sP3R9DPff43q9csue
-	3TSpJ+6Q8kavCXfvj+XTtHNPa3b3GouUamCPBs8XVrUCbOUwP/YB6X/5ziqnDqbHFf/MTbYLM8v2R
-	6lNyvK6qzbLHM2XYvv9ijvz0TpWS/15agnFHyWHgKiwRorYiOXaU07OoVF+yNSVK4Lpg3Vn4YKRpF
-	j4V1nOl6nM+vfpa6dOhGn/b3dVeTTc8X3DU5PyhgKVdaP4pr0SnbKRxT3cw4Q80okbTAci/sRg3PD
-	UF2s9V0mXdYp0YGABNLA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aUdNnp6oIWR3rtT+8bTG5tmIkYh4DJLfjrNEkvBJwAg=; b=IzSN41OeDtFjIs
+	yvngclUIIh+LWkBxdVdAYBbTCTfj+AYm14KP71eokKJnVCluLeZfLO5oLyBpNbM282NdNJlCO5PbE
+	Aoclnt66G2Q12/GqrvVbGcrR24w+ngp7BOyjvrYZBnxxauRotVU04tr2auPRhr0zI8zTvmLgg+nrF
+	rjWzFnpZslRarU7MO8P8gUc1fuzihge4qzsGO9grztSpe8ziEs77Eci3UUwmfeLPSLh6EpVJbCkcj
+	FUAZail+tI4GzRQz8j75LALtVK95SXVg1G+f62/ffQpaoZlwcMr38CW7ildpeiHNHVY5furjD3zgZ
+	iYIT3uqLsUdnNa2TK7RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owWK8-00HTbV-Bv; Sat, 19 Nov 2022 22:28:32 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oweZf-002f4t-NX; Sun, 20 Nov 2022 07:17:07 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owWJx-00HTZU-9D; Sat, 19 Nov 2022 22:28:22 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E8C39749;
-	Sat, 19 Nov 2022 23:28:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1668896898;
-	bh=5lAZjq/Qa546GFzmky2g0r1fpVjt3znao3kF2DJgorU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lRbem7e6no7CZC6tGJHSggi+AYgWUb1fjX2iTUOa9dex8S3pEAB7aNk9x4l8XIT8A
-	 +aYh8Dmo2QPwwXErCY5fV6fyY+zEG8eJZ20Z6wl7j8v9oPxOXpRhUe9l7E4nVzz0px
-	 MC45fVXZJWKeiAegECFNe+30kb1xo2fi0JgGXnQs=
-Date: Sun, 20 Nov 2022 00:28:01 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/3] media: rkisp1: Make local immutable array
- variables static const
-Message-ID: <Y3lYcRySWnrLKpWe@pendragon.ideasonboard.com>
-References: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
- <20221117084217.3892680-3-paul.elder@ideasonboard.com>
+	id 1oweZU-002euk-Ew; Sun, 20 Nov 2022 07:16:58 +0000
+Received: from dggpemm500024.china.huawei.com (unknown [172.30.72.53])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4NFMDH2r5vzqSMb;
+	Sun, 20 Nov 2022 15:12:47 +0800 (CST)
+Received: from huawei.com (10.67.175.31) by dggpemm500024.china.huawei.com
+ (7.185.36.203) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Sun, 20 Nov
+ 2022 15:16:39 +0800
+From: GUO Zihua <guozihua@huawei.com>
+To: <vkoul@kernel.org>, <kishon@kernel.org>, <heiko@sntech.de>
+CC: <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <bivvy.bi@rock-chips.com>
+Subject: [PATCH] phy: rockchip: Fix resource leakage in inno_dsidphy_power_on
+Date: Sun, 20 Nov 2022 15:13:30 +0800
+Message-ID: <20221120071330.31154-1-guozihua@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221117084217.3892680-3-paul.elder@ideasonboard.com>
+X-Originating-IP: [10.67.175.31]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemm500024.china.huawei.com (7.185.36.203)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221119_142821_513089_AB4ABE8C 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20221119_231656_689313_828419EE 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,58 +64,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
+inno->pclk_phy and inno->ref_clk is not unprepared in error path.
+pm_runtime should also be put. This patch fix these issues.
 
-Are you fine with this patch, can I include it in my next pull request
-along with the other ones from the series ?
+This resolves smatch warning:
+inno_dsidphy_power_on() warn: 'inno->pclk_phy' from clk_prepare_enable()
+	not released on lines: 607.
 
-On Thu, Nov 17, 2022 at 05:42:16PM +0900, Paul Elder wrote:
-> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> 
-> The max_widths and max_heights variables in rkisp1_try_fmt() are
-> immutable and don't need to be allocated on the stack every time the
-> function is called. Make them static.
-> 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-> ---
->  .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> index 7695ef134908..91e685fdbbe9 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> @@ -1150,13 +1150,17 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
->  			   const struct rkisp1_capture_fmt_cfg **fmt_cfg,
->  			   const struct v4l2_format_info **fmt_info)
->  {
-> +	static const unsigned int max_widths[] = {
-> +		RKISP1_RSZ_MP_SRC_MAX_WIDTH,
-> +		RKISP1_RSZ_SP_SRC_MAX_WIDTH,
-> +	};
-> +	static const unsigned int max_heights[] = {
-> +		RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
-> +		RKISP1_RSZ_SP_SRC_MAX_HEIGHT,
-> +	};
->  	const struct rkisp1_capture_config *config = cap->config;
->  	const struct rkisp1_capture_fmt_cfg *fmt;
->  	const struct v4l2_format_info *info;
-> -	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
-> -					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
-> -	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
-> -					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
->  
->  	fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
->  	if (!fmt) {
-> -- 
-> 2.35.1
-> 
+Fixes: b7535a3bc0ba ("phy/rockchip: Add support for Innosilicon MIPI/LVDS/TTL PHY")
+Fixes: f0684c1a8367 ("phy/rockchip: inno-dsidphy: generalize parameter handling")
+Signed-off-by: GUO Zihua <guozihua@huawei.com>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+index 2c5847faff63..20ba716f5dd0 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+@@ -604,6 +604,9 @@ static int inno_dsidphy_power_on(struct phy *phy)
+ 		inno_dsidphy_lvds_mode_enable(inno);
+ 		break;
+ 	default:
++		pm_runtime_put_sync(inno->dev);
++		clk_disable_unprepare(inno->ref_clk);
++		clk_disable_unprepare(inno->pclk_phy);
+ 		return -EINVAL;
+ 	}
+ 
 -- 
-Regards,
+2.17.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
