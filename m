@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D4ABC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 990D7C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w7hu/Iw4pqTCVX05gKWTg7PAQYGFKaL8jqGPvrKQKCk=; b=2/fXfM2+IzLg9f
-	kCAqXXnooRzZqyVWHaKibixhrIkua5V5Ng7+icQXZkW/+GTGxIz7iCfwsC0EC05NMZKj8QVIdbUC2
-	jkNgam+Lo6w/vvD65qbFrCDQNQwXDqj7rVVMLZ6JQ7IkAgkG51Icy928DK0NPKKU8Woc/AiaTQtQ+
-	tvRNqNZJkOBw7loUAW3cWw3Af83YXHH/dE8CSFYMcpMw7zJFfyZ+hRRaZdd+3NQkxgpK6HA10NnCo
-	5GZaC2nnR7FZ7QWgLGqWHFK3QKlyf9P6rA1gbcUwePiPnfWaoJ8n8jtPC2rPdOnoU+cCwwVOwDQSv
-	Ck9D3ufpEj4/tOkoplyg==;
+	List-Owner; bh=4WbZEn/dm9NLl8hXlSKRbVkMMZvK8MpI95sofpB1MFc=; b=AWro8mH3c595vx
+	iuI/n2Q9lG29O+EjbgNOfC85vKvelVmYsqFu6WPrWbJ9d0wUMZRLdPG6IeefWpt7TaUDyGmsZ8KV7
+	KoIHQ1BhunbuHyQZPW9lOnuQ7jQrxR1nSxwrfb+rL8lJ38HDH/wLbqAMhIJsvSrREuWaiGh/A0p3D
+	INqlMrGkuORVLfVvBg96XzZGSmYBWOjIzYWok+rfjGEi8nHT6xTLxr8JKopaurWL0a+SkJroquHIq
+	l0x3t64qkMGbCFsNoDoDUoGBIoxRpb/mys+miMZR6UMSlphJNmIQ5eVc4i9vcBqvQbXjr28eeNqnK
+	wctLFe4Kzp7NWkAcq2Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxB40-00GZEY-4a; Mon, 21 Nov 2022 17:58:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oxB42-00GZGN-19; Mon, 21 Nov 2022 17:58:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxB3u-00GZ9U-Bb
-	for linux-rockchip@lists.infradead.org; Mon, 21 Nov 2022 17:58:32 +0000
+	id 1oxB3u-00GZ9k-Qg
+	for linux-rockchip@lists.infradead.org; Mon, 21 Nov 2022 17:58:34 +0000
 Received: from jupiter.universe (dyndsl-037-138-187-016.ewe-ip-backbone.de [37.138.187.16])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ADCF06602A8F;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id ACB956602A89;
 	Mon, 21 Nov 2022 17:58:27 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1669053507;
-	bh=71vz1dJK9c6n63dYwAsfDrn+l5+x0pdh8gpbYZj8WaA=;
+	bh=I3fWgGHAS64kddDx7fRntthXyjzxOC513S6za1n3zcI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lXLzBLt5fOdOBotmgEjvdSI+5OSvI3s49e0SxvUT0DXIS4DMhFUmRP5oA8D8Vj3IR
-	 oLE+6aEyybPjWaV8ImqnZSRbf6mPDGeLp1UJSXmR+zVia0px91i8qYZjmva9RQKIUn
-	 8F7eLbpcKRc/9qJymRjCnloYLWi4eczHeBhYeu1tbJwXfCS1JE+nYvTalcmb6+A8Dj
-	 FOzxmO9szoTkb/kgJThZ5+vjZEtvJZ3rnmOhjaZowhwdk0PQ+U/GEZwUDpp4TpENJx
-	 CTVYIO6sHgesQSj/OTn8gSwnd0GjJCcktBEucC3FJIC5zKfV+A9dVRYEyiW9appEA9
-	 YRk0Suzmayq/w==
+	b=dv5cbsU0KkOxBy6EBs4nXB/BNb+bn/fGs/rGkDZ6MqonsCPuUrVPojxqZya4sfd2J
+	 64JVOfIHUVTW4ltslr7I1GLjQA4oM638Mw2Otq/VB37mJ7NVFu9xzQ+W8ln/okeBDm
+	 VGMpYIGDeN0/a5q+k382jIQaX1UhaLrJLr1TWnBhJb799lFd0e5kudJvdLy/+jheQE
+	 sJmHcaKe3/vpYEVTXJsCQYKW0iQb/k7pDKuPicB+duW8QE+94wUeXDJuiCxJU2zx7B
+	 yHD+tPq47li80+jfVO2mPzsx21vLxp89hAES8gKppO7r6Od8n2TFs81aF88cuR1huk
+	 Ak2ODSC/y3jHQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 18E5E48011E; Mon, 21 Nov 2022 18:58:23 +0100 (CET)
+	id 1ACC5480121; Mon, 21 Nov 2022 18:58:23 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -54,19 +54,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>,
 	kernel@collabora.com,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv3 6/9] dt-bindings: arm: rockchip: add Rock 5 Model B
-Date: Mon, 21 Nov 2022 18:58:11 +0100
-Message-Id: <20221121175814.68927-7-sebastian.reichel@collabora.com>
+Subject: [PATCHv3 7/9] arm64: dts: rockchip: Add rk3588-evb1 board
+Date: Mon, 21 Nov 2022 18:58:12 +0100
+Message-Id: <20221121175814.68927-8-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221121175814.68927-1-sebastian.reichel@collabora.com>
 References: <20221121175814.68927-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_095830_578518_2939B081 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221121_095831_186946_FC19693A 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +83,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Christopher Obbard <chris.obbard@collabora.com>
+From: Kever Yang <kever.yang@rock-chips.com>
 
-Add DT binding documentation for the Radxa Rock 5 Model B.
+Add board file for the RK3588 evaluation board. While the hardware
+offers plenty of peripherals and connectivity this basic implementation
+just handles things required to successfully boot Linux from eMMC,
+connect via UART or Ethernet.
 
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+[rebase, update commit message, use EVB1 for SoC bringup]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 159 ++++++++++++++++++
+ 2 files changed, 160 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 70aff0851ae2..49d442afe67f 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -625,6 +625,11 @@ properties:
-           - const: radxa,rock-5a
-           - const: rockchip,rk3588s
- 
-+      - description: Radxa Rock 5 Model B
-+        items:
-+          - const: radxa,rock-5b
-+          - const: rockchip,rk3588
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 8c15593c0ca4..12ed53de11eb 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -72,3 +72,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+new file mode 100644
+index 000000000000..e6c5df2163ba
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -0,0 +1,159 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++ *
++ */
 +
-       - description: Rikomagic MK808 v1
-         items:
-           - const: rikomagic,mk808
++/dts-v1/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include "rk3588.dtsi"
++
++/ {
++	model = "Rockchip RK3588 EVB1 V10 Board";
++	compatible = "rockchip,rk3588-evb1-v10", "rockchip,rk3588";
++
++	aliases {
++		mmc0 = &sdhci;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	vcc12v_dcin: regulator-vcc12v-dcin {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc12v_dcin";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++	};
++
++	vcc5v0_sys: regulator-vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc12v_dcin>;
++	};
++
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <
++			  0  20  20  21  21  22  22  23
++			 23  24  24  25  25  26  26  27
++			 27  28  28  29  29  30  30  31
++			 31  32  32  33  33  34  34  35
++			 35  36  36  37  37  38  38  39
++			 40  41  42  43  44  45  46  47
++			 48  49  50  51  52  53  54  55
++			 56  57  58  59  60  61  62  63
++			 64  65  66  67  68  69  70  71
++			 72  73  74  75  76  77  78  79
++			 80  81  82  83  84  85  86  87
++			 88  89  90  91  92  93  94  95
++			 96  97  98  99 100 101 102 103
++			104 105 106 107 108 109 110 111
++			112 113 114 115 116 117 118 119
++			120 121 122 123 124 125 126 127
++			128 129 130 131 132 133 134 135
++			136 137 138 139 140 141 142 143
++			144 145 146 147 148 149 150 151
++			152 153 154 155 156 157 158 159
++			160 161 162 163 164 165 166 167
++			168 169 170 171 172 173 174 175
++			176 177 178 179 180 181 182 183
++			184 185 186 187 188 189 190 191
++			192 193 194 195 196 197 198 199
++			200 201 202 203 204 205 206 207
++			208 209 210 211 212 213 214 215
++			216 217 218 219 220 221 222 223
++			224 225 226 227 228 229 230 231
++			232 233 234 235 236 237 238 239
++			240 241 242 243 244 245 246 247
++			248 249 250 251 252 253 254 255
++		>;
++		default-brightness-level = <200>;
++
++		pwms = <&pwm2 0 25000 0>;
++		power-supply = <&vcc12v_dcin>;
++	};
++};
++
++&gmac0 {
++	phy-mode = "rgmii-rxid";
++	clock_in_out = "output";
++
++	snps,reset-gpio = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 20ms, 100ms for rtl8211f */
++	snps,reset-delays-us = <0 20000 100000>;
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac0_miim
++		     &gmac0_tx_bus2
++		     &gmac0_rx_bus2
++		     &gmac0_rgmii_clk
++		     &gmac0_rgmii_bus>;
++
++	tx_delay = <0x43>;
++	rx_delay = <0x00>;
++
++	phy-handle = <&rgmii_phy>;
++	status = "okay";
++};
++
++&i2c2 {
++	status = "okay";
++
++	hym8563: rtc@51 {
++		compatible = "haoyu,hym8563";
++		reg = <0x51>;
++		#clock-cells = <0>;
++		clock-output-names = "hym8563";
++		pinctrl-names = "default";
++		pinctrl-0 = <&hym8563_int>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
++		wakeup-source;
++	};
++};
++
++&mdio0 {
++	rgmii_phy: ethernet-phy@1 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0x1>;
++	};
++};
++
++&pinctrl {
++	hym8563 {
++		hym8563_int: hym8563-int {
++			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&pwm2 {
++	status = "okay";
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
 -- 
 2.35.1
 
