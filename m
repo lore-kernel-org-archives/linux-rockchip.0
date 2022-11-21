@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF3FC43219
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBCC0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:58:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZumM87AdzJzAHqzRH8KMqklYp+SroyBuqrHgDEkBcqI=; b=KMG1nm2pxAc0S+
-	4d97O9YseROWtaHzDXQCgMSSNlsx/qfVxiC3nzuj/ZTfrLX3hZE/+NxKQ6tgtG44VzEuJMl65f2D5
-	pAjMYyYmiZ+nWfA8y9gpMLtOGb9mz4mKwGuIXALUA1dxg5E8TQP9swShlr56TG8JWN59QpOzKeiYE
-	Ld1gYw4Kd/po7wnbTLPXz7Bfem9JX2Tm0L5qGXB269yp2un8Onr4qPLmHz+Nvg4CntoAqgIsn9KLt
-	kkTwdj/0hxhAXdgGosCFFxX5OsjI6VQGU1DNgHZQ/dSQOa/efyJFXtZ0oDebqxOhlcHfap0RTmzcg
-	144XKmUSILlbZ6I12Fjg==;
+	List-Owner; bh=YelfiV4BtWnAz9a0BFPx6/THxwtEAAGAragLs0ku5hk=; b=DNRuWaiFmwLQFR
+	iFzLOoXlgVGTDA8Yh4mFchjKkSGMvHmf8ZDTNptlunUVGHu7G1Zgczyx83KkSiWqfVjLq3ZNNvsds
+	umXqhTeWyfCvGsC4SAK8m9d7OQD9OuEZflvnKsNoeF+QOrB1nQEys+twfT4pyxQa8vMFDHWbfcfMT
+	ArKnZ7xXq8nALdAbVSTevnqJdahC1W3/PeipZTpT059kbsDQydWLeLIWJTQdyFmwgkn05HgRtx8gr
+	gHNVbem4nSCzNqk/tFe720ElcIYyaFMjvC656NRjSr2SxybNEDtVdhjKs15VFNpeLYWefbnDQiz8X
+	FoXquf9SCgIOSpzp/drA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxB42-00GZGs-FS; Mon, 21 Nov 2022 17:58:38 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oxB3x-00GZDE-TQ; Mon, 21 Nov 2022 17:58:33 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxB3v-00GZAi-Sn
-	for linux-rockchip@lists.infradead.org; Mon, 21 Nov 2022 17:58:36 +0000
+	id 1oxB3s-00GZ7I-37
+	for linux-rockchip@lists.infradead.org; Mon, 21 Nov 2022 17:58:30 +0000
 Received: from jupiter.universe (dyndsl-037-138-187-016.ewe-ip-backbone.de [37.138.187.16])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C1AED6602AC7;
-	Mon, 21 Nov 2022 17:58:27 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 71F196602A73;
+	Mon, 21 Nov 2022 17:58:25 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669053507;
-	bh=ASKiqbUGK6OeP8tAoM8DA0LQu24xmUO6m/UZrw3PEcI=;
+	s=mail; t=1669053505;
+	bh=BhOzmXV+pjyrO9kOToC4JgQ/3OrwnGhzEgYAPhdFtf4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AbsEYCHcton9DeItmJ8Oj940G+GhuAFmsvTCEAKcKZhk/9iOE4flRD5EcBXenFWiM
-	 ZruYpnHh/2ekrCytRzXg/51WWjpy1uXvnL0cmz2AxXyoMlEWGeLOQ9FVAzMqqE0Gzl
-	 iEKqUC0QjkDCyyVPu+Bbrl+diYt1Oot5T1oP0Qlyt5giJ27C6IwQ8xrzUMERUKt1+o
-	 M1C0t38NWgRks2ug3AS0tJa9uOTjHV/6jXHyvAwHfYgc+rlLDnHEkPyKz+rzvMbPzI
-	 9Fj+Yg/18/qnvdx7FDOd+iKgZD8pM1WQTCDZPEzBhxY6D81aGZJTROkNATFua/PxZH
-	 sN0roKgJBGSvg==
+	b=F/Y8nCZeJ0ZjDeepTj10ZRHA9fd39+76JjUr+99NgqxpolfC5ZYHckD30VJIJTdE5
+	 cTm2MoG2zsipl2ZpMCb2e1xUwWzhohD79ZiZj87DmivzYN/lEQ0J5T7eh7Wt0q7Yuh
+	 whefEnEQYzqkEJIOwUlSDW2RohYyqHJIn+nixWTnA4O6d91kSGwdjhzNHqVItF6U88
+	 uzYhj7jqgdfdqHWhbG5aLSquauz4sXKWGvgl5FD7gjpntDkmUdxY90tyMXT20pVt+m
+	 v0JsRhtFcuYPnCxw8nJn8pQUNUVxv8ntusiByQYsTtPydd0shCZy7NhoAqvFYXPLzK
+	 8yhVmL1SG6nlw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1E897480126; Mon, 21 Nov 2022 18:58:23 +0100 (CET)
+	id 14E47480117; Mon, 21 Nov 2022 18:58:23 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -54,18 +54,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv3 9/9] arm64: dts: rockchip: Add rock-5b board
-Date: Mon, 21 Nov 2022 18:58:14 +0100
-Message-Id: <20221121175814.68927-10-sebastian.reichel@collabora.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv3 4/9] dt-bindings: arm: rockchip: add RK3588 EVB1
+Date: Mon, 21 Nov 2022 18:58:09 +0100
+Message-Id: <20221121175814.68927-5-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221121175814.68927-1-sebastian.reichel@collabora.com>
 References: <20221121175814.68927-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_095832_127700_B5106C60 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20221121_095828_291450_C796AF45 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +83,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Christopher Obbard <chris.obbard@collabora.com>
+Add DT binding documentation for the Rockchip RK3588 EVB1.
 
-Add board file for the RK3588 Rock 5B board. This is a basic
-implementation which just brings up the eMMC and UART which is
-enough to successfully boot Linux.
-
-The ethernet controller is connected via PCIe so support will
-come in a follow-up patch.
-
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 43 +++++++++++++++++++
- 2 files changed, 44 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 31fa55750a0f..b31aa1b0e9e3 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -73,4 +73,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-new file mode 100644
-index 000000000000..2a55659bab41
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -0,0 +1,43 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index c6c69a4e3777..9b7ac0903262 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -704,6 +704,11 @@ properties:
+           - const: rockchip,rk3399-sapphire-excavator
+           - const: rockchip,rk3399
+ 
++      - description: Rockchip RK3588 Evaluation board
++        items:
++          - const: rockchip,rk3588-evb1-v10
++          - const: rockchip,rk3588
 +
-+/dts-v1/;
-+
-+#include "rk3588.dtsi"
-+
-+/ {
-+	model = "Radxa Rock 5B Board";
-+	compatible = "radxa,rock-5b", "rockchip,rk3588";
-+
-+	aliases {
-+		mmc1 = &sdhci;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
+       - description: Rockchip RV1108 Evaluation board
+         items:
+           - const: rockchip,rv1108-evb
 -- 
 2.35.1
 
