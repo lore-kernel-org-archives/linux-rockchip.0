@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A547C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7138BC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 17:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tJ5Pm74XLv0T2ANneIK5zWAo8iTHCeElkLUAx983jSE=; b=VW0emh6XlDi7C6
-	LXlbAY9czqiu4BPbdZQlQzRabT3Lbt9yb/IUpilitQ2kHBcsctG779kXH02XGBsNpxkiCOmujkbhk
-	V8MyNVNn0ICq/oY0CETEa8BGQCkw2ZTq7wXNAL8/jkA9SZ+nON0JNTuT69smD9bV1EZMaiCs8QrJ6
-	vE3+tmJYFu2PHSZiaWH4rqX25HG2ldji3XdQ1reySNHqug+MTnYrAgRpNIkrrE2LN7LI1sPdvmqvu
-	b7kAnBMCPt7bTJlxPI3beJO9dtnvIu6aJJ1UE05xk120bTBT6HcSvbiJvHAUL4EEPNEA8zKPXrSvn
-	K4DJJO/+a6eZkXT9l5IQ==;
+	List-Owner; bh=YF6Oa2k0/gsMH9pU/1Tb2Fxt3gzocFN1Zeskw1PBf1A=; b=DZgy6UN/IrLB07
+	mEyVA7wjCcbzlkWp8UFiOkaz4mMTe/9lG4E9vzL0xZwaa/dU/rWkWvWoTKbx2Lb8iC1xaGsOq/Mfz
+	FGlquZontHvihpmS0u0chXJiB3YgnKt7U56F73DBjGv5VNWhr+SvOqhlGi8U5b3PX3xTRZB5ckjnJ
+	GquV02hhg8khfd35spR0HYumwgN5lB3kpSCqd/K7fb1VPhIydPSFchQXN8S6QK6WpKks29gAB4k9I
+	AbtJ00lDa6URVkQckXA7dX/xTMJ1LUC3J6+0hHbMT/xwBmC6FFB8YdQZ2RjPP0jAVVzCZ3HGKCP07
+	lLPkO39veyNHFvC1VFaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxAaf-00GIwY-6t; Mon, 21 Nov 2022 17:28:17 +0000
+	id 1oxAbV-00GJKq-B6; Mon, 21 Nov 2022 17:29:09 +0000
 Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxAQn-00GENv-Ie; Mon, 21 Nov 2022 17:18:11 +0000
+	id 1oxAQn-00GEJm-II; Mon, 21 Nov 2022 17:18:11 +0000
 Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id DF4356000C;
-	Mon, 21 Nov 2022 17:17:55 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id 4825B60007;
+	Mon, 21 Nov 2022 17:17:50 +0000 (UTC)
 From: Quentin Schulz <foss+kernel@0leil.net>
 To: Shawn Guo <shawnguo@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -53,17 +53,17 @@ Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	devicetree@vger.kernel.org
-Subject: [PATCH RFC v2 3/7] ARM: dts: sunxi: fix touchscreen reset GPIO polarity
-Date: Mon, 21 Nov 2022 18:17:20 +0100
-Message-Id: <20221103-upstream-goodix-reset-v2-3-2c38fb03a300@theobroma-systems.com>
+Subject: [PATCH RFC v2 2/7] ARM: dts: imx: fix touchscreen reset GPIO polarity
+Date: Mon, 21 Nov 2022 18:17:19 +0100
+Message-Id: <20221103-upstream-goodix-reset-v2-2-2c38fb03a300@theobroma-systems.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221103-upstream-goodix-reset-v2-0-2c38fb03a300@theobroma-systems.com>
 References: <20221103-upstream-goodix-reset-v2-0-2c38fb03a300@theobroma-systems.com>
 MIME-Version: 1.0
 X-Mailer: b4 0.10.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_091805_791853_026F64D5 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20221121_091805_784646_E7BE276B 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,20 +87,34 @@ let's fix the polarity in the Device Tree node.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
- arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/imx6q-kp.dtsi            | 2 +-
+ arch/arm/boot/dts/imx6ul-kontron-bl-43.dts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts b/arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts
-index fef02fcbbdf82..8c79ecdb40608 100644
---- a/arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts
-+++ b/arch/arm/boot/dts/sun7i-a20-wexler-tab7200.dts
-@@ -114,7 +114,7 @@ gt911: touchscreen@5d {
- 		interrupt-parent = <&pio>;
- 		interrupts = <7 21 IRQ_TYPE_EDGE_FALLING>; /* EINT21 (PH21) */
- 		irq-gpios = <&pio 7 21 GPIO_ACTIVE_HIGH>; /* INT (PH21) */
--		reset-gpios = <&pio 1 13 GPIO_ACTIVE_HIGH>; /* RST (PB13) */
-+		reset-gpios = <&pio 1 13 GPIO_ACTIVE_LOW>; /* RST (PB13) */
- 		touchscreen-swapped-x-y;
+diff --git a/arch/arm/boot/dts/imx6q-kp.dtsi b/arch/arm/boot/dts/imx6q-kp.dtsi
+index 1ade0bff681d6..dae14aaf803a8 100644
+--- a/arch/arm/boot/dts/imx6q-kp.dtsi
++++ b/arch/arm/boot/dts/imx6q-kp.dtsi
+@@ -188,7 +188,7 @@ touchscreen@5d {
+ 		interrupt-parent = <&gpio1>;
+ 		interrupts = <9 IRQ_TYPE_EDGE_FALLING>;
+ 		irq-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
+-		reset-gpios = <&gpio5 2 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio5 2 GPIO_ACTIVE_LOW>;
+ 	};
+ 
+ 	ds1307: rtc@32 {
+diff --git a/arch/arm/boot/dts/imx6ul-kontron-bl-43.dts b/arch/arm/boot/dts/imx6ul-kontron-bl-43.dts
+index 0c643706a158b..767ef5da76136 100644
+--- a/arch/arm/boot/dts/imx6ul-kontron-bl-43.dts
++++ b/arch/arm/boot/dts/imx6ul-kontron-bl-43.dts
+@@ -29,7 +29,7 @@ touchscreen@5d {
+ 		pinctrl-0 = <&pinctrl_cap_touch>;
+ 		interrupt-parent = <&gpio5>;
+ 		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
+-		reset-gpios = <&gpio5 8 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio5 8 GPIO_ACTIVE_LOW>;
+ 		irq-gpios = <&gpio5 6 GPIO_ACTIVE_HIGH>;
  	};
  };
 
