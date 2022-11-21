@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A50BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 18:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866E6C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 18:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qMaX5f2+lo///iwvSNC4ZZekfR5RoF/zYC986rPUybs=; b=qjgH30Hw5mNyZs
-	/X+gUb+bBbU69wamRDjXXFfSjrQi1ZtVa9Sm6/23G0Zv7GQZ2CchzfGYE2YgHc9A3vOXEUatTXGm4
-	9ul6NiPKJBdcbTJCRpGykUPrZdInpGt11owSHa4/OuKUzkAfdTjUl0IaMNLU3Q/lqm4EUTE0g5uRw
-	2zx5ej0Wce3mX0ZR7bjbIxeud60GRrKgIh1XOSTI8/lC8sbz9VvpsKQtYXVu4fuObzaUEzd2/pMi1
-	/dNDvRLH/f3/4fX/T6zIAIKh1gSKoZH/nO6PxX7X9OqD2OTK2z1dcPOl/sjxN6qSQm3IyIywORasT
-	kSxt4THrRR/KLe7LSlyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SNMWMnuz/aKsxZkIJ07dmY56DP0+4tWf71b4MSaKzjk=; b=ash+Bgn6lclCx1TldHZv8QMLot
+	tX1ZUxmyPKwthWDvdvpqgpK5wFQdZ4bChFKfadjbN+eSHC8UJmef8WE59XNbhhsJsAzs0BNii0+89
+	wWo8zJXyKc0zsMZmOQpSVPEJUG0lWNPgeezBLPSYkDCRi9wXB/3jPr+Pv13dRQH4imMiskfSBdjwT
+	gGlxbXS/LJS9lgRjcyuIFvnJFoaeBOv/3Fxr+vHb6UL8MhcSGJKQRhU8RKu/22H/PYm0aMfK9Iy6W
+	zM03IQqxBUkSbUIs+WZa5rjdCbenjcUfPQOSFr0hf51DFU1TXItIr7E0JipPfS8hJeGui5qY3cMlv
+	ozdRUHBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBNe-00GnTQ-0O; Mon, 21 Nov 2022 18:18:54 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1oxBXI-00GqeY-OB; Mon, 21 Nov 2022 18:28:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBNb-00GnSi-NJ; Mon, 21 Nov 2022 18:18:53 +0000
-Received: by mail-pg1-x531.google.com with SMTP id 130so11888267pgc.5;
-        Mon, 21 Nov 2022 10:18:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=+on0BIC3CWKsQ/zQgT7Zq7kaAAA97DJzG1xxvLCYCd0=;
-        b=Y2s0QwXYrb3JZrFrFOem8gxmiYnaXcD53JwjtTM5LgVmhPSgCom9h6ZoSMmFC8EWVX
-         ydMHZcweTpXZyt2CHQhQ40CDwQNLJs70jFsGZlp9wzZ17FSg0DZtTdWCvNXTJQ43Xc6Z
-         qHp6p6sn1SOzrTC1s+ktxqpx28mB7O3KrQ5t7/2JEMdXCQw/ucP5sYtbUxudMJtvR/2x
-         xvDIz3Y9dTEPRVM2McBBEfPfpnvb2rGw2w0pc2p8DRQwML8/0yk9rvpR6QGB+IOq7plS
-         2krvaNLFAOfEsiW8MP1iLUyRS+OgM4z2RhvigUKReEn3dHZ9JJ4kQHRUsrFeyBp8cD7F
-         NEjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+on0BIC3CWKsQ/zQgT7Zq7kaAAA97DJzG1xxvLCYCd0=;
-        b=1rjZcKbeWpNhqUVsWPohO2Dh9g7yQcgA+3g3hs8rdbz4Ao3Yad+cTvlCK1afW6S4q6
-         /lFazpFB+5u/OuCnqrMGZc8k1yvuLu/1EVMs2QEn1bI0JiRGgyqLYjYoMR/ANm4eL6pr
-         zAITvKfgzljdtImdoBqUEMHn/HjhPjJzl7drNmn68SyTuT0HYlo8/LZJdddadWVkdy01
-         4pzG+EQ5rZkdd3lAzCdjv7xrZ0Vs/h4dcEUQFGNgkDfm4j6V/tlp24lDxqA0MFcbv/bK
-         3a2I2SB33ET6tc8Jj3oDZTk/ga7jVxsVXdB3rlOsA9jRBUKQMmye/ITsLoVJuleIMQgG
-         //Kg==
-X-Gm-Message-State: ANoB5pl7EwLQUCTDRCJZy48VqPw7ePXiDbfeFqdlwm5108liBK9Rrs7K
-	r3tMammErASsR5sGFDwaWzRRpOqyTxXxTajmuyg=
-X-Google-Smtp-Source: AA0mqf7LqN1T/OFto2jVhaNxZ2yGDqc/xRjAOptQIyQmYXhv8nQeAlkd38TMX7ofEDomjM8uh4mAaGxiaYXcFihRecU=
-X-Received: by 2002:a63:2f46:0:b0:477:4a13:f38e with SMTP id
- v67-20020a632f46000000b004774a13f38emr2304423pgv.131.1669054730967; Mon, 21
- Nov 2022 10:18:50 -0800 (PST)
+	id 1oxBX8-00GqbE-7y; Mon, 21 Nov 2022 18:28:43 +0000
+Received: from mercury (dyndsl-037-138-187-016.ewe-ip-backbone.de [37.138.187.16])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E61876602A68;
+	Mon, 21 Nov 2022 18:28:39 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669055320;
+	bh=yKHSiVz87pEjWX8tRrj8awnJJ2ctOTvniVa2luLwPc8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aBbURpt0aZYS6rAWDYE7wQGiYeN4Lu03c5LUJY0ks4+n/8GR4+1jrjOb8cJq99RBa
+	 mZ937sAOUprMJ3djn7us1MIker9lKnFpzTSp6Saa6Ijkpx6IUVIFkxWjQKMl0v5H0g
+	 lCD7tdvl6FJYV6A20YUtQZonCcthnc/UpJMxuyC+jVWrZAtazOBukvyzD7QsJNLkQK
+	 FT/+oXuNOxcWtTu9ypSCdahLg0mTfnldTr190ayEAtt/m/stpKmtvtAkvll2xCu3YX
+	 XDnUKoME4vAYRTL+JNcvi3AGkyrbunraZdaVEEyb56ZUDPf41syrAcjqoTqQTHlf/z
+	 JLph5w/IOAbxA==
+Received: by mercury (Postfix, from userid 1000)
+	id F303E10610F7; Mon, 21 Nov 2022 19:28:36 +0100 (CET)
+Date: Mon, 21 Nov 2022 19:28:36 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Qu Wenruo <wqu@suse.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCHv3 0/9] RK3588 Clock and Reset Support
+Message-ID: <20221121182836.kwkbnonulcwfzbg4@mercury.elektranox.org>
+References: <20221018151407.63395-1-sebastian.reichel@collabora.com>
+ <c119bd9c-0b90-4096-a988-9d0312c3dbcd@suse.com>
 MIME-Version: 1.0
-References: <20221103-upstream-goodix-reset-v2-0-2c38fb03a300@theobroma-systems.com>
- <20221103-upstream-goodix-reset-v2-5-2c38fb03a300@theobroma-systems.com>
-In-Reply-To: <20221103-upstream-goodix-reset-v2-5-2c38fb03a300@theobroma-systems.com>
-From: Fabio Estevam <festevam@gmail.com>
-Date: Mon, 21 Nov 2022 15:18:32 -0300
-Message-ID: <CAOMZO5BzWsHAy7KjZe+KEiXVq-Mfpggqjk0vswuzx7nkups3gA@mail.gmail.com>
-Subject: Re: [PATCH RFC v2 5/7] arm64: dts: imx: fix touchscreen reset GPIO polarity
-To: Quentin Schulz <foss+kernel@0leil.net>, "Angus Ainslie (Purism)" <angus@akkea.ca>, 
-	David Jander <david@protonic.nl>
-Cc: Shawn Guo <shawnguo@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Samuel Holland <samuel@sholland.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@somainline.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Bastien Nocera <hadess@hadess.net>, Chen-Yu Tsai <wens@csie.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Hans de Goede <hdegoede@redhat.com>, 
-	Andy Gross <agross@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	NXP Linux Team <linux-imx@nxp.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, devicetree@vger.kernel.org
+In-Reply-To: <c119bd9c-0b90-4096-a988-9d0312c3dbcd@suse.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_101851_803824_E75008F0 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20221121_102842_520291_4EF71891 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,57 +73,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7539024221426956905=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[Adding Angus and David]
 
-On Mon, Nov 21, 2022 at 3:12 PM Quentin Schulz <foss+kernel@0leil.net> wrote:
->
-> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
->
-> The reset line is active low for the Goodix touchscreen controller so
-> let's fix the polarity in the Device Tree node.
->
-> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> ---
->  arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts         | 2 +-
->  arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts b/arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts
-> index 9fbbbb556c0b3..df7e5ae9698e1 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts
-> +++ b/arch/arm64/boot/dts/freescale/imx8mm-prt8mm.dts
-> @@ -107,7 +107,7 @@ touchscreeen@5d {
->                 interrupt-parent = <&gpio1>;
->                 interrupts = <8 IRQ_TYPE_NONE>;
->                 irq-gpios = <&gpio1 8 GPIO_ACTIVE_HIGH>;
-> -               reset-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
-> +               reset-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
->         };
->
->         temp-sense@70 {
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> index 6445c6b90b5bb..b038300812b1e 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> +++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> @@ -542,7 +542,7 @@ touchscreen@5d {
->                 pinctrl-0 = <&pinctrl_ts>;
->                 interrupt-parent = <&gpio3>;
->                 interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
-> -               reset-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
-> +               reset-gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
->                 irq-gpios = <&gpio3 0 GPIO_ACTIVE_HIGH>;
->                 touchscreen-size-x = <720>;
->                 touchscreen-size-y = <1440>;
->
-> --
-> b4 0.10.1
+--===============7539024221426956905==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="x3rbmtlos2qzegrs"
+Content-Disposition: inline
+
+
+--x3rbmtlos2qzegrs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Qu,
+
+On Mon, Nov 21, 2022 at 04:52:22PM +0800, Qu Wenruo wrote:
+> On 2022/10/18 23:13, Sebastian Reichel wrote:
+> > This has been part of a bigger patchset adding basic rk3588 support.
+> > Since that gets more and more out of hand, I'm now sending patches
+> > for each subsystem as individual patchset.
+>=20
+> Awesome work! Thanks for the work to bring upstream support for RK3588.
+>=20
+> This upstream work is especially important since the vendor kernel has so
+> many weird things and is never properly tested using newer tool chains.
+>=20
+> But considering the support has been split into different patchset, is th=
+ere
+> a git repo that I can fetch all the patches and test it on my Rock5B boar=
+d?
+
+try linux-next + https://lore.kernel.org/all/20221121175814.68927-1-sebasti=
+an.reichel@collabora.com/
+
+It should boot, but that's about it. For Rock 5B there is not even
+ethernet support, since that needs PCIe. Ideally the DT series makes
+it in time for the 6.2 merge window.
+
+Alternatively my working branch (I rebase that!) is available here:
+https://git.kernel.org/pub/scm/linux/kernel/git/sre/linux-misc.git/log/?h=
+=3Drk3588
+It adds PMIC, thermal and cpufrequency support.
+
+-- Sebastian
+
+--x3rbmtlos2qzegrs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmN7wzQACgkQ2O7X88g7
++pq1dRAAohcRYRRBHfxuFqEbA5kMScXOo3hWkFT/Ww2H7pExV91w6J9i58BTLq0o
+6FQjN3d3UKiPJm9uDXiCk6J/hXTOLIKQ4wn8INwNwFqLVr+a9sB+0BZPHHg4BouS
+yjzJ0OurbkTBiruoxTF8+9/Qd2C7PY2DMZwvUfJ9eu2aOV06MvXf63VU9oa616ec
+me+ZnphAtwAPZZl0byRw3uAfb3o9MucT6Ultd6z0Ib3HuoCB9EczXEXxiic22vOS
+G046dm/RcglWYATVUCfpXBphGbSLGRgtlnKLgPZuCgnRkofVNXu81PkgXPROMIYd
+02TuK50k40LhW6lpufBbZTfH0nC8sqxAK6wRkHTKVJ6rFMQ7wc5nK4p92LfbtosO
+NIesBruULe54p6u6YwRoOJP5AA2z+biRRZr3DLBNjH+3HG4O71KmQ3Pu7pbAizpx
+3pwL2rHU50lPDmeuOiHcBRfZFIeyALX/7s63ogtA2+DGqRaABtzSLTLKQxTehY59
+d24cmku0oRp3grK7NbSiGXhHEUYKyi3jYzdVzVfqJiP1PseCjRzQlEtBEZOYVvMR
+OkumsOkbNvbt4iHxY0OZGs6LrzQV8XxtvqAUG8cGDVsTPFTuPWzOOvaCZSBlAgA8
+gt5hj+4B0pw27pPG62S+Yn/FWZfjjp3IKhWsMVw6Z34KBs5CBg8=
+=N3YC
+-----END PGP SIGNATURE-----
+
+--x3rbmtlos2qzegrs--
+
+
+--===============7539024221426956905==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7539024221426956905==--
+
