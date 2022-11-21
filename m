@@ -4,79 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8EFC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 11:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62CF7C4321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Nov 2022 13:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=47al8r/Nhiuounax1GE65ba4kibkgjoIQ/NbAl/Kkt0=; b=lTtTSzKR1lbI4n
-	k0F6J8Bt2YF8SzKXd3szDo3Z87HDFl7Zy/b4V0tCtnRARPiYZvMyr7YLu+9SSgb1hqZhGJ+OjdH6C
-	BJf4xe2zw0l8biOYhJMfXXOIbqSOOUU2FrmNmzzlXXEV4EmlDgDm8rtGxMRjNhucdlJSJTLHHyQof
-	h5GX10wMyaMAUQPQ7tvS2WYW+Wx+7in4CpO7T+CDJ1FRA7ulBSSB8aOBNRLUmeapNJ+TNsL5dZfd7
-	d94tbTOwRQYFP0+rTkYvF2718ceDN7R/FAi7N+PPvENXMs4R3K7kiTxXcaeOZmNc8KAxMAxxGMFvK
-	Ckbh2RQ+KjEFR6Jq81vA==;
+	List-Owner; bh=zn6Gm9np1JdJiWhS8nqsd3sSJW5fAHWTTzZzKwD9QXo=; b=d6LBL1v1ZyTrzd
+	HuyXJJZW16uhy+dZqrU9mqajUxkKfzc87mHJcsZ2A7PZxzLpTbhXZJweqKJUqZHHoaP9G2+RrtoGR
+	rln4xDj+PPRxvqXBgPhxhS/Qi5Icg8dN3hMcsaNlOZ4Fne2cF68S7mbbe3iU2Q+2z3tPeD7mFmr01
+	l+OTTu7lBG8p5mLCK8S4/FOu042SQT1W0I3aUs9gInKSvQZUoyufZGutsTXtKRbpCG4+7bD4ZgdoI
+	gVMnSCoRe8HPVuBbbJTCTsO7Iizoz68ytFPzjS3bqGts5oM+J0h0dTA5zL6M4muFG3h4n9Wv6XgCW
+	U2/B8usfPgwmYV51KkIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox4nZ-00Cs55-2c; Mon, 21 Nov 2022 11:17:13 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1ox7Ci-00E6xr-1M; Mon, 21 Nov 2022 13:51:20 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox4n9-00CrvS-0i
-	for linux-rockchip@lists.infradead.org; Mon, 21 Nov 2022 11:16:49 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id c1so18314624lfi.7
-        for <linux-rockchip@lists.infradead.org>; Mon, 21 Nov 2022 03:16:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lrfG9YCdHt66hbYqu0OShiByN9Q+Ix/FBWGfahZIGTw=;
-        b=xnbCMedvtEU3dsFJUuZuBxNphjIJrx2tlNtlRW2TMqS5/MONSHB7fRdDdxFWJ1gDpl
-         m5o6YkZhUWqu9rutHH5jJfs9LVHB4SUAn/GbmeviiWK3HBkgddAs5HuXVg+qEU8SYinT
-         yUIeYgaK7Tjscr9NpeismG0KbddLgiqsndWqlVVWhTXYhVC4ubWwHkGLZ1LmVlxIkG64
-         Ykuv71VIOllchEaTsO8IxfEXLok/CN+JLWGaZ1ccv+NznR3EjfCc6aRH7PyisBmmqdK8
-         UUF/LKRQ0HIaSRpq6bi11X4Z4FSM5twuSGj5RmZunG4XFm4k5p7vuKSQrWI1zwSvj9zQ
-         WQqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lrfG9YCdHt66hbYqu0OShiByN9Q+Ix/FBWGfahZIGTw=;
-        b=ubEkMOQ0EKXpPpQGK1QSieIDKhYcfsdDpmw7K7S0NP4JRDJ2/K7Hv0VYvIt1HdAShc
-         xWm2KSvc1W1QHlRo1hjnr+5TkW+junDZyFhYbfSBLl2aL9FizMZm6CAo9ulDrZqTMOeM
-         9HTfzRNxK71eXWdpK9ttEKk6qZQhyctxPGjNBsJzaXH2TdrG9zgWl5J16KswQ+oGxhOh
-         TPsteHC234j6N4J0ifX7ZBJtCu9bLzRfev8T7xFXCHFg/A7JqmKF8HLQ+Ibs2643rCZV
-         NywGlDtiQ+1ecB6gDPUUq/2QEjBOSUxCbd7EUr0J1VaLyHx/4oL8S5nDu9psA+6dE0h0
-         0qOA==
-X-Gm-Message-State: ANoB5pnuTYwxMb2RaAbkrBVK/KNKCVgczK9w2sTfM2xsWWZKK+4x8CtD
-	vGEusG+GFAIat/AwMFDbs7LqLg==
-X-Google-Smtp-Source: AA0mqf7XTsi+DRaW0EjX/SWzCsh6OLHKxJQ5nOhQBp07hY+otYz+Pmy3TNDQk343ejimX6B5i8Je2A==
-X-Received: by 2002:ac2:58f6:0:b0:4a2:7692:3a0a with SMTP id v22-20020ac258f6000000b004a276923a0amr5989466lfo.71.1669029403043;
-        Mon, 21 Nov 2022 03:16:43 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id y22-20020a196416000000b004a25bb4494fsm2000785lfb.178.2022.11.21.03.16.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 03:16:42 -0800 (PST)
-Message-ID: <9389201b-22d4-1229-7e26-5f046d18e15f@linaro.org>
-Date: Mon, 21 Nov 2022 12:16:41 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
+	id 1ox7CV-00E6rC-TE; Mon, 21 Nov 2022 13:51:10 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C063525B;
+	Mon, 21 Nov 2022 14:51:01 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1669038662;
+	bh=XcBq95S/ocbQuYtsQHOYDFbxJwIk2fRPU1hrNjPp58I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rGusc9FJWQGoQlouzveeNLYJT1esLk4+2LygTgaSF4PCQOADjMCo/lkh/ekneO5Xj
+	 gITFnM1s4tudLCGSP0mTi93dntA5ng8lK4FgOsFrF/8GWGEu6kONh7IaNn9z6NDyrk
+	 fYpK0ClzjsGO47wyoaxcgV1ixTCj7QtNoBSJO+Qs=
+Date: Mon, 21 Nov 2022 15:50:47 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Helen Koike <helen.koike@collabora.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v3 02/14] dt-bindings: media: rkisp1: Add i.MX8MP ISP
  example
-Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
- Dafna Hirschfeld <dafna@fastmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Message-ID: <Y3uCN59bBwTw6dc9@pendragon.ideasonboard.com>
 References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
  <20221118093931.1284465-3-paul.elder@ideasonboard.com>
  <ca8a6070-3888-8d42-5974-d7c2adc62417@linaro.org>
@@ -85,11 +57,13 @@ References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
  <Y3sIAHqd8Kd/XBB/@pyrite.rasen.tech>
  <50024f2e-4820-ef78-d54d-5bfe53ccac7e@linaro.org>
  <Y3tVKOEfxdZ+Klnh@pendragon.ideasonboard.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <Y3tVKOEfxdZ+Klnh@pendragon.ideasonboard.com>
+ <9389201b-22d4-1229-7e26-5f046d18e15f@linaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <9389201b-22d4-1229-7e26-5f046d18e15f@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_031647_098416_F90BBD00 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20221121_055108_112773_9CD5EDBC 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,48 +80,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2022 11:38, Laurent Pinchart wrote:
-> On Mon, Nov 21, 2022 at 09:04:29AM +0100, Krzysztof Kozlowski wrote:
->> On 21/11/2022 06:09, Paul Elder wrote:
->>> On Sun, Nov 20, 2022 at 11:36:31AM +0100, Krzysztof Kozlowski wrote:
->>>> On 19/11/2022 07:55, Paul Elder wrote:
->>>>> On Fri, Nov 18, 2022 at 02:06:14PM +0100, Krzysztof Kozlowski wrote:
->>>>>> On 18/11/2022 10:39, Paul Elder wrote:
->>>>>>> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>>>>>>
->>>>>>> Add an example to the rockchip-isp1 DT binding that showcases usage of
->>>>>>> the parallel input of the ISP, connected to the CSI-2 receiver internal
->>>>>>> to the i.MX8MP.
->>>>>>>
->>>>>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>>>>>
->>>>>> Missing SoB.
->>>>>
->>>>> I don't quite understand. I see an SoB right there.
->>>>
->>>> Laurent did not sent it. Did you run checkpatch before sending?
->>>
->>> That's why he's on the "From:" in the beginning. checkpatch says it's
->>> fine.
->>
->> Ah, indeed, checkpatch misses that feature (it's part of Greg's
->> verify_signedoff.sh). Anyway, your SoB is missing, as Laurent did not
->> send the patch.
+On Mon, Nov 21, 2022 at 12:16:41PM +0100, Krzysztof Kozlowski wrote:
+> On 21/11/2022 11:38, Laurent Pinchart wrote:
+> > On Mon, Nov 21, 2022 at 09:04:29AM +0100, Krzysztof Kozlowski wrote:
+> >> On 21/11/2022 06:09, Paul Elder wrote:
+> >>> On Sun, Nov 20, 2022 at 11:36:31AM +0100, Krzysztof Kozlowski wrote:
+> >>>> On 19/11/2022 07:55, Paul Elder wrote:
+> >>>>> On Fri, Nov 18, 2022 at 02:06:14PM +0100, Krzysztof Kozlowski wrote:
+> >>>>>> On 18/11/2022 10:39, Paul Elder wrote:
+> >>>>>>> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> >>>>>>>
+> >>>>>>> Add an example to the rockchip-isp1 DT binding that showcases usage of
+> >>>>>>> the parallel input of the ISP, connected to the CSI-2 receiver internal
+> >>>>>>> to the i.MX8MP.
+> >>>>>>>
+> >>>>>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> >>>>>>
+> >>>>>> Missing SoB.
+> >>>>>
+> >>>>> I don't quite understand. I see an SoB right there.
+> >>>>
+> >>>> Laurent did not sent it. Did you run checkpatch before sending?
+> >>>
+> >>> That's why he's on the "From:" in the beginning. checkpatch says it's
+> >>> fine.
+> >>
+> >> Ah, indeed, checkpatch misses that feature (it's part of Greg's
+> >> verify_signedoff.sh). Anyway, your SoB is missing, as Laurent did not
+> >> send the patch.
+> > 
+> > I thought adding an SoB was only required either when making changes or
+> > when pushing commits through git, not when forwarding patches on mailing
+> > lists ?
 > 
-> I thought adding an SoB was only required either when making changes or
-> when pushing commits through git, not when forwarding patches on mailing
-> lists ?
+> Anyone touching the file should signed it off. You cannot send it
+> without touching (e.g. git format-patch).
+> 
+> https://elixir.bootlin.com/linux/v5.19-rc5/source/Documentation/process/submitting-patches.rst#L397
+> 
+> https://elixir.bootlin.com/linux/v5.19-rc5/source/Documentation/process/submitting-patches.rst#L420
 
-Anyone touching the file should signed it off. You cannot send it
-without touching (e.g. git format-patch).
+The second link states
 
-https://elixir.bootlin.com/linux/v5.19-rc5/source/Documentation/process/submitting-patches.rst#L397
+  SoB chains should reflect the **real** route a patch took as it was
+  propagated to the maintainers and ultimately to Linus, with the first
+  SoB entry signalling primary authorship of a single author.
 
-https://elixir.bootlin.com/linux/v5.19-rc5/source/Documentation/process/submitting-patches.rst#L420
+This series will (eventually) be upstreamed by me through a pull request
+to Mauro. Paul's SoB will thus not be needed. Of course you have no way
+to know this when reviewing the series on the list.
 
-Best regards,
-Krzysztof
+Adding a SoB line when taking a patch in a git tree is standard
+practice, but when posting unmodified patches to a mailing list, there's
+more of a grey area. Look at
+https://lore.kernel.org/all/20221024113058.096628238@linuxfoundation.org/
+for instance, posted by Greg, but without his SoB.
 
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
