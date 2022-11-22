@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9636BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 08:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC01C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 08:07:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wBnJHBAFj+SxjaGzh74RGinW2++hD4HRbS/LEhH7Rw4=; b=p6mxvfGATXoTYF
-	cwQxf47Vcn4aI5WrLM4ifSYwkb8eSgVcRbyyJBZysChF44pfekoR4hucQwfvycaJ+PJZzrSlWTr12
-	U6e3RL1FlWC6Tr3odvjIHNBeLVoNPAOxWCPM/1WKcxNZbwF4+eXvc2bPRnw0MMMc0wo3oaUAvIBRB
-	jDZo/Kv4CA/TXptTCeldnGDvgzHjg6hnmvLdmljnZ38bZZ7WtO2NOZ9yYxCenDNaqgK2Go3+HZYxL
-	c7KEUvSTzePA8DiGZtbKI4lWLTaX4loT/PpEVqSJIk4T5kNQG4xj9p2XFiKFRTzZXWD1R1IHSjr6E
-	lqYZ/yW4uBw8ZMPmOPSw==;
+	List-Owner; bh=4dA9F6FXm/LhJb2C6DInMi0v+ZvOvuHo+tpTBny3nm0=; b=U0GpCaWZcecJW2
+	2xDX6lW28ISTCe8YS6zUM0D6rNDZKkNnM25VHEqHSWEXxLoMTJxWZQBoP9cbMA6aXcM6uCwJFGj8H
+	ljfsoF5cVYEzNf1A1/My13rd05jfOi/DakGGxU6Dt4ZXHE3NmwjBnc/yAMVe+RM8NFEkUGolfIoCh
+	GrCvxRleCEN7vtDAj+/4wkEFg1JpH6Kr8uI8JT1tPXMX3YhrwL+pPa/TesEmLqjOodosU5B96cW5X
+	GTUrpz9yM5gqQXtc4NcaWlYfjNrAjRWWonCYWI3HxkK4QnZ2KQP/S/2rL6jSjsqP8KrIZRqcCjfb+
+	5EHCuo+Myypm2UaFpwNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOJn-0064zo-Ff; Tue, 22 Nov 2022 08:07:47 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1oxOJr-006526-3I; Tue, 22 Nov 2022 08:07:51 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOJk-0064tP-Qr
-	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 08:07:46 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id x21so17040944ljg.10
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Nov 2022 00:07:36 -0800 (PST)
+	id 1oxOJo-0064yP-8r
+	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 08:07:49 +0000
+Received: by mail-lf1-x133.google.com with SMTP id bp15so22395795lfb.13
+        for <linux-rockchip@lists.infradead.org>; Tue, 22 Nov 2022 00:07:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=JdIkh5FeSoZ8vG2Py8Ie8AdpYwxDaXFSiRuPe0OKxvM=;
-        b=m5+q7lTyIb8KkrkhnClVZg69k6pi3OIIzeCcggOo/2b7fe+FKVZ5zZQsqTxcFvcrDr
-         4mp1ixyHnqgxYEzNof2EYaVrexjqMLGVz1MfvArmzAZnN9v/1e0s/7VUz13Nbf9fOIeY
-         QcPHA/uf19lhAXXfZVaSPQHngrp9FjhoxyOvaQmwe9RL8hoKZjSXc3c27X6O/AXdaiiW
-         zdjJSJWHNaCBXv9uC48c4IC6Ph0Ew7MYE9pymwLwvDutl8d+z+UN9uy6/PQKdsWui6Ts
-         YbEktCw0J2ukUMbAgaRHlRsMxg8WliXuAvCOCYJEWDEwXeYL7GK+pbGs44v/RVvj/n0O
-         TzgQ==
+        bh=NNBiy73Ky6s4Xq1P4P+snI/nTErvmCWvtpQD99zJ0SI=;
+        b=LHSe+kbTcLpxARwfFEx119iYaivSTRuG5ExvsZoPA6KWncV5+CPvC/HFa+Lou5jn6j
+         42lDSjXqN6awYg8z9RY33lVkQAEbyupLooeinvQ0S/pl2bYkpE3+TpyreVRQO4QxjA5Y
+         wxIz5res3tFXXhx8L3Xay2IVXsVDEcwTLDArQt8myLC7PvhKfNuTZ5yhZSKbbAC8i5xU
+         fiuN+VfKdTZlRnwdLNnk2xwl1fEtEVXBky4JqELq4e7Kl69258h7pW+/lb232fwwGF+p
+         66lUCQc9QSw/BbUrQJocj8+Rks9BUvcpX9AhRv5xffAD+WMYL9GzX+iZPwde8ye0DL0A
+         7eKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JdIkh5FeSoZ8vG2Py8Ie8AdpYwxDaXFSiRuPe0OKxvM=;
-        b=uAUxZikEqjQzHOc5hNk9J7wIS8f1W5MmJ+LNOpRlVNu55yAenefJkWgqP/4zAn+jCn
-         /5o3o4aiF3cu9WBKKgO4nG/ivytsbLuMDuR8tv4BLFmVh45TT8+CP0rXM5NLO0QZuqw+
-         BoiPfl+CSabMZTAejgVxr2pORZiIz70SYw5sx5NSLzP5jUf2aT0ZGEm4VmmFVuUD9tOv
-         yJeQJzhR0Td+fqeLMvya1MkCerAtMl5oaihgSNRLD/0oVuick/ggUtQOd8lGi39fI0Lt
-         Nev9ceb6uuCp/XzGw33Zz63c7E/zSpczpU029STXrLGovt6fcRB1BOID49NTeBFqUVMT
-         edRQ==
-X-Gm-Message-State: ANoB5pnC4pc1bl277ZsYOcRJMNYs2GL8pmJg8cPtEqlD9k6RNLoSp2Ro
-	PQVJmgw2TZZ9rH01rLK8smryYg==
-X-Google-Smtp-Source: AA0mqf44ISQxoEcJpXAmn7cIhtH0mCpcVETxgWhH+HtfH/H9FR/axCBi1Ql68qW6Mti0P4kTAPSdlg==
-X-Received: by 2002:a2e:bd81:0:b0:26f:9736:bd5f with SMTP id o1-20020a2ebd81000000b0026f9736bd5fmr6787783ljq.285.1669104454750;
-        Tue, 22 Nov 2022 00:07:34 -0800 (PST)
+        bh=NNBiy73Ky6s4Xq1P4P+snI/nTErvmCWvtpQD99zJ0SI=;
+        b=eXLYJAHHPGZg5ymopYDsZGsAvJSrE1JgcFsJOW6xBTCTVZ2v4OqPYmoou0tmj66B/8
+         bILp1D80pbxtpCC3M7D41LV24od2McCi9t7AMeJTS7Uj8qAjeOEY5H4gr/uu1OKXffkD
+         ePQhjEPJ6yX3RHeYeWveELy4kSMmTvzF1RBlQT5EpeI2EM+YmVqHZ7WNAHL+pQVeA+UY
+         C+cPDxUwKF0xO+ieuIODr0faxacHlqElegrB6eSLrKPjzlyNnE4GjR4i18Ln6kI5mSus
+         uVo7Rqgjx0yWymPbMSVhsVbqZiiulvtzUa0qytkyNRXFNrMPwH1+1fr0FgPEZqNA+TRN
+         XbYQ==
+X-Gm-Message-State: ANoB5pm/V0MEnAVOku0WDiu+dztpPBX1C42EjikFObN433neK1sdj2hK
+	gYc16GDIyspJmUXNnP5D/j4JAA==
+X-Google-Smtp-Source: AA0mqf5a6fD6w+lRgPB9p3LF4P8bOM7CzHxRgvCuauj2Sm5SdLzl/NlJvFi0H6ciJ8fJVseiyLxwjA==
+X-Received: by 2002:a19:7403:0:b0:494:9f2a:ab31 with SMTP id v3-20020a197403000000b004949f2aab31mr8433513lfe.457.1669104464520;
+        Tue, 22 Nov 2022 00:07:44 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id s15-20020a056512214f00b004a8b9c68735sm2380745lfr.102.2022.11.22.00.07.33
+        by smtp.gmail.com with ESMTPSA id j18-20020a056512345200b004917a30c82bsm105105lfr.153.2022.11.22.00.07.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 00:07:34 -0800 (PST)
-Message-ID: <15374b92-335e-051b-790e-eef39a62b20d@linaro.org>
-Date: Tue, 22 Nov 2022 09:07:32 +0100
+        Tue, 22 Nov 2022 00:07:44 -0800 (PST)
+Message-ID: <0da60261-f056-45bc-dbd5-9867b6d59976@linaro.org>
+Date: Tue, 22 Nov 2022 09:07:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCHv3 4/9] dt-bindings: arm: rockchip: add RK3588 EVB1
+Subject: Re: [PATCHv3 5/9] dt-bindings: arm: rockchip: add Rock 5 Model A
 Content-Language: en-US
 To: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Heiko Stuebner <heiko@sntech.de>
@@ -77,12 +77,12 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com
 References: <20221121175814.68927-1-sebastian.reichel@collabora.com>
- <20221121175814.68927-5-sebastian.reichel@collabora.com>
+ <20221121175814.68927-6-sebastian.reichel@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221121175814.68927-5-sebastian.reichel@collabora.com>
+In-Reply-To: <20221121175814.68927-6-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_000744_988304_4FFA2F50 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20221122_000748_427863_49968E60 
+X-CRM114-Status: UNSURE (   8.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,12 +101,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 21/11/2022 18:58, Sebastian Reichel wrote:
-> Add DT binding documentation for the Rockchip RK3588 EVB1.
+> Add DT binding documentation for the Radxa Rock 5 Model A.
 > 
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
 >  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
 >  1 file changed, 5 insertions(+)
+> 
+
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
