@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D98C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 13:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE342C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 14:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4N+KmMmlvgf2PdN1dN2DaFtw0HNZLyR64313APzde/0=; b=3Fz67ExMIYeHuW
-	EiC4yXNc3Tj1OLPLTlRstMYRhyZnseFWLMhQBVWxCR9+igCwmC06R+T3IasvFXE3K9nVRrB9bx2al
-	75GaEX7n2LG6md6mqoa6GV99or8seM+HSrKX2o5Cuh2C9wCqn3bpj+ZFK+O1NN6BnLiBr3vh/5mTY
-	AToRtm3UHknXPhc9fVXspUjSOM5/i8bn+AgGR92+uks9y2/INRR1Je6WsOhnmnw0HzknPvP/i1psX
-	XTZbB4RQm+61HgyQAgN1OY/hBmqTnayoYKTSjy1wAFBGTyMjYtvSBWjaVlD1FegWOPgCDVWIea/E2
-	+7PKUPKeajWpzTJ4lFRg==;
+	List-Owner; bh=gHFliUp7Qf5E/zzX5ynspqUwAJqT2a6em9U2G85f7sY=; b=1hdwYrjvW0rMca
+	ht+sGsIqF1jWLDOG3AJzgOeCQDwC1BufGoUkjc6Z7KY/Et9rUOnN91OXMwh6s7EZxFZ2WPZ+wRRoH
+	M0Tlcrb+i98bdfGOuj6fUBXK8IcHOrmcmghPwPBs4wtvzojIswzGANr/RzgjXNgr/lqSm2sVNnq+S
+	kCxjzJa/48O2icHdRckbTsjWX1uM8CqWIl8i3IbejIhwu9DCBLPHkkH7egwdBC4tRvZLz6ip9uo+I
+	xrmc5GVc3yhLNiSonYoQOBjh47E3i743BoZge4Z0iA1nondqIyde3h6W3DC2NPayg7H3WamVDk93+
+	fTwRiUwdTocoLNjKhy6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxTKu-009ejG-So; Tue, 22 Nov 2022 13:29:16 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1oxU8H-009ucT-Fq; Tue, 22 Nov 2022 14:20:17 +0000
+Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxTKq-009efz-4O
-	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 13:29:14 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id s5so7510824wru.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Nov 2022 05:29:09 -0800 (PST)
+	id 1oxU83-009uWy-Lt; Tue, 22 Nov 2022 14:20:05 +0000
+Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-141ca09c2fbso17383924fac.6;
+        Tue, 22 Nov 2022 06:19:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=wEZwlBsaNUHpzzIaIKYU5AHosPkhDJnwQiQeyEIzxao=;
-        b=hR4YQdlV1EkXRHumuFyTMUphoGnSOoi+kBYKhoZwncrNATTRb4Aq+D8dU84gikCAjg
-         NJH5I3o17DN36Fu5o0sd5qptScMWUHOddYlLHDb4o3o9tnkrBSxmC8N7hMJRdogxkQ5C
-         NtzV5tAPHOweNoXQbGVy2H49TkRp5XyA/jXXP1y4gmbC3BMzkUBtqkPj9DLPoBDdUuq/
-         tqgPfK1483mmQEIe6eJUmW6XeJ/OlQCgcFO3Sd8361s1aNDohJL+x1lrI/rivrqWawxj
-         0bOjWe9JX0T06VXEqDzilosZb0nr9FUQgQ49TzmVGRRO7XwDBJm/1wBnwobvB496NVYp
-         877Q==
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=olwZKFl2athJn9nMwix536ApeQ4JpegKpzu1195Yuqc=;
+        b=E4E645lRvjqpHR6BM1KSr9GlSJHjaANcQD1JcsXwhCwSMLJYvno5IOd0QP9UxuZylL
+         xwriYhCRZ/pAmoJJ3Ee76dmvoTllOj2GcK3+EC0oxoMw+wleinUeDxyNr0CU4k1dwod0
+         3BOkrhqK4fPdAf85bl+NAnMm25b2P/RZSKF4JcdLVsm/LxI4qlYYYAZIl11iCMlppvvY
+         s6ADax9Hdc6LvubQWZ1ExYwlo0yvPgY+TW+1p6wB9jhVkyPMPo2OFDSvMaSJrq3jddzi
+         7yyDtjk1i1seK0uzIUh20QIF5OtfYwasJty3hKB8W51pM21RDT4dHrs/+WXzxXpxr5VI
+         8GTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wEZwlBsaNUHpzzIaIKYU5AHosPkhDJnwQiQeyEIzxao=;
-        b=yYgYDn+sxzs+7T87ea2O/VAzqI0+dQAaAeGdIvoySvzXvTnZ+9/eTL1SKqF1eMaCag
-         XNCQKzrrvisY7702CgL28hoZ6G8ek6c8IoT45O4LlwwXG140zZEy+njaeladBphRgyL8
-         ThLrkJP/T0KQmLDqvPS5Ea8HeL64ruNT1uMtCjXkrpCKmWQguCyx92j44jxhgOanNHlt
-         QKDwNL613EjoyZpgvjDJz0nIEQ4g65f1v4Qt0kvzQ6ixYzcgMfPsYP7t+uhggfyCKPtb
-         c1SIewKAI5UK7BSGwdAFUmgPL8KLrJyrojiWbFN6ubDzbJq4T/KBwchR7OaGHU+Y/3R5
-         bn/w==
-X-Gm-Message-State: ANoB5pnP6xbvna+UmO5Xvfpr+vzcqJEtMG5+Xv63+gbYcDYivn1okynv
-	Cu1r2OThFwntltDxOpCkGRmFhA==
-X-Google-Smtp-Source: AA0mqf6TJNdia6Nf3lWNpAMXvciXnOpBoF68QQGih3K11l7S5CRfE3Qn1emQkxJlMHXKWTmqnaMjpg==
-X-Received: by 2002:adf:f50d:0:b0:23a:cdf5:3676 with SMTP id q13-20020adff50d000000b0023acdf53676mr15105069wro.336.1669123748006;
-        Tue, 22 Nov 2022 05:29:08 -0800 (PST)
-Received: from Red ([2a01:cb1d:3d5:a100:4a02:2aff:fe07:1efc])
-        by smtp.googlemail.com with ESMTPSA id o2-20020a05600c510200b003cf5ec79bf9sm19435110wms.40.2022.11.22.05.29.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Nov 2022 05:29:07 -0800 (PST)
-Date: Tue, 22 Nov 2022 14:29:03 +0100
-From: Corentin LABBE <clabbe@baylibre.com>
-To: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	"Jason A. Donenfeld" <Jason@zx2c4.com>,
-	linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Lin Jinhan <troy.lin@rock-chips.com>, wevsty <ty@wevs.org>,
-	Heiko Stuebner <heiko@sntech.de>, Lin Huang <hl@rock-chips.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] hw_random: rockchip: import driver from vendor tree
-Message-ID: <Y3zOn5IO1ziJXKUT@Red>
-References: <20220919210025.2376254-1-Jason@zx2c4.com>
- <32f8797a-4b65-69df-ee8e-7891a6b4f1af@arm.com>
- <YzMm4d3sZBHpitm9@aurel32.net>
- <YzNTB+RQK6yITi7/@Red>
- <YzNthZ0MtfwjIqdH@aurel32.net>
- <YzVNBcF7TCDldPwF@Red>
- <87y1sasrf2.fsf@gmail.com>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=olwZKFl2athJn9nMwix536ApeQ4JpegKpzu1195Yuqc=;
+        b=GmiA2Smccoy+jI+DNj+tZNtxp5Lx1PoaPuf/ItgGhDaT3qRG2t8ik12z+jziGrLBXu
+         DjDcykOehBDkxl67Ep86vXOV1YKvlJGQQKHYLuYJfIfE7hJZu5BKidZZnMPQFXWLuFj4
+         MwrzfnZlixFn2ivo3DL//WMxLoNA2WhsZrC5Up2crK0ftQHLNdyyqT9g0oXE1DRYJTku
+         Cfsv0rH3SefzDtTvHDUD340cznuE4pt41TFQZ9/j/PRbkBMCCnVrZ93GnYwf8yjRk2tS
+         jThv8SGV29/66IsEoAEBnoriC+Lxb1XfqTM1Y0efEDVO1t7dN8EiCAb0DVlGUMjkPvjv
+         mB0g==
+X-Gm-Message-State: ANoB5plpH9F6nGZii0/hl5lzre8hELumT2T+kDn7clWDlCu/Pdzl2SXG
+	UmvqUkl4Q/56N4qGONAqrAjJtBZFlIYqNYjcXng=
+X-Google-Smtp-Source: AA0mqf4Tjfo5YsLTERtRVJPp6OcUhHkLMdtZx0ItZ1HKzJH4z9rYUOhVjY6tAzCFhefbIqLBBmHxI4jLk6WR/WdLgPM=
+X-Received: by 2002:a05:6870:1e83:b0:132:7b3:29ac with SMTP id
+ pb3-20020a0568701e8300b0013207b329acmr3235958oab.35.1669126798955; Tue, 22
+ Nov 2022 06:19:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87y1sasrf2.fsf@gmail.com>
+References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-2-linux.amoon@gmail.com>
+ <bdcd2071-8f56-b829-7e78-3fc9efec09fc@wolfvision.net> <CANAwSgQkwXb0KE+1856egmUyTx_pmr9hq6nk8-0YoMQJdBoDvQ@mail.gmail.com>
+ <CAMdYzYp6GPO_mz=ctR7Pgs1iwtNjR0a6_0K492Fy=i55T9DMnQ@mail.gmail.com>
+In-Reply-To: <CAMdYzYp6GPO_mz=ctR7Pgs1iwtNjR0a6_0K492Fy=i55T9DMnQ@mail.gmail.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Tue, 22 Nov 2022 19:49:42 +0530
+Message-ID: <CANAwSgQnSPGQFwtNHBBmxngOxHeUKYVA2pWOfqKMCx85bYGn9g@mail.gmail.com>
+Subject: Re: [linux-next-v2 1/5] arm64: dts: rockchip: Fix gmac phy mode to
+ rgmii on Rock 3A SBC.
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Michael Riesch <michael.riesch@wolfvision.net>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Chukun Pan <amadeus@jmu.edu.cn>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_052912_413971_730E0B8A 
-X-CRM114-Status: GOOD (  32.25  )
+X-CRM114-CacheID: sfid-20221122_062003_806755_8F7E6ECB 
+X-CRM114-Status: GOOD (  34.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,81 +85,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Wed, Nov 16, 2022 at 09:04:07PM +0300, Mikhail Rudenko a =E9crit :
-> =
+Hi Peter / Michael
 
-> On 2022-09-29 at 09:45 +02, LABBE Corentin <clabbe@baylibre.com> wrote:
-> > Le Tue, Sep 27, 2022 at 11:39:17PM +0200, Aurelien Jarno a =E9crit :
-> >> On 2022-09-27 21:46, LABBE Corentin wrote:
-> >> > Le Tue, Sep 27, 2022 at 06:37:53PM +0200, Aurelien Jarno a =E9crit :
-> >> > > On 2022-09-20 10:35, Robin Murphy wrote:
-> >> > > > On 2022-09-19 22:00, Jason A. Donenfeld wrote:
-> >> > > > > The Rockchip driver has long existed out of tree, but not upst=
-ream.
-> >> > > > > There is support for it upstream in u-boot, but not in Linux p=
-roper.
-> >> > > > > This commit imports the GPLv2 driver written by Lin Jinhan, to=
-gether
-> >> > > > > with the DTS and config blobs from Wevsty.
-> >> > > >
-> >> > > > Note that Corentin has a series enabling the full crypto driver =
-for
-> >> > > > RK3328 and RK3399[1], so it would seem more sensible to add TRNG=
- support
-> >> > > > to that. Having confliciting compatibles for the same hardware t=
-hat
-> >> > > > force the user to change their DT to choose one functionality or=
- the
-> >> > > > other isn't good (plus there's also no binding for this one).
-> >> > >
-> >> > > It might make sense for the cryptov1-rng driver (I haven't checked=
-). For
-> >> > > the cryptov2-rng driver, I looked at the RK3568 TRM (I can't find =
-the
-> >> > > RK3588 one), and from what I understand crypto and TRNG are two
-> >> > > different devices, using different address spaces, clock, reset and
-> >> > > interrupts. The vendor kernel uses two different drivers.
-> >> > >
-> >> >
-> >> > I confirm that TRNG is not on the same IP on rk3568, something I did=
-nt remark when doing my V2 driver. (I need to remove rng clock from rk3568 =
-dt).
-> >> > But the rk3588 crypto IP and the TRNG are in the same device.
-> >>
-> >> Ok, thanks for confirming about the rk3568. It seems the only one in t=
-he
-> >> family with separate devices for TRNG and crypto. Does it means we need
-> >> a separate TRNG driver only for it? Or could we handle it the same way
-> >> than for instance rk3588 anyway?
+On Fri, 18 Nov 2022 at 23:43, Peter Geis <pgwipeout@gmail.com> wrote:
+>
+> On Fri, Nov 18, 2022 at 4:35 AM Anand Moon <linux.amoon@gmail.com> wrote:
 > >
-> > I just got now the part 1 of rk3588 TRM which I has missing and it show=
- some conflicting information.
-> > rk3588 seems to have both a dedicated TRNG (TRNG_NS/TRNG_S) with dedica=
-ted address space and a TRNG inside the crypto IP.
-> > But for the moment, the TRNG inside crypto IP seems defective.
-> =
+> > Hi Michael,
+> >
+> > On Fri, 18 Nov 2022 at 12:33, Michael Riesch
+> > <michael.riesch@wolfvision.net> wrote:
+> > >
+> > > Hi Anand,
+> > >
+> > > On 11/16/22 21:01, Anand Moon wrote:
+> > > > On rk356x ethernet phy support reduced media independent interface (RMII)
+> > > > and reduced gigabit media independent interface (RGMII).
+> > > > So set the phy mode to rgmii to support clock delay, also
+> > > > add TX and RX delay for phy-mode.
+> > >
+> > > Based on this commit message I still don't understand what you are
+> > > actually trying to fix here. If you encounter network problems/stability
+> > > issues, please let me know what test triggers the faulty behavior.
+> > > Please describe the problem you are facing in detail here or in the
+> > > cover letter.
+> > >
+> >
+> > Ok, Ethernet does not work on my Radxa 3A see boot logs.
+> >
+> > [0] https://gist.github.com/moonlinux/bb56c787031226fbb9f69121564e76a2
+> >
+> > Please find this updated commit message.
+> >
+> > As per the schematic and datasheet PHY mode is RGMII
+> > Use 2ns clock delay to RXC for RXD and TXC for TXD latching.
+>
+> rgmii-id mode does exactly this in the phy (your realtek chip). By
+> setting the mode to rgmii, you're telling the phy that delays are set
+> elsewhere, either in hardware or in the controller. You're then
+> handling them in the controller. While the delays aren't documented in
+> the TRM, I've long suspected that the defaults of 0x30 and 0x10 equate
+> to the standard 2ns delay. So you're setting the delays much higher
+> than the default means you need to add *more* than the standard 2ns
+> delay for your device to work.
+>
 
-> So what's the ultimate decision? Does anyone work on merging this into
-> the existing crypto driver? I have a use case with an rk3399-based board,
-> where having hardware rng enhances boot times dramatically (at least for
-> some userspaces; see also [1]).
-> =
+TX and RX clock delay might have been updated for
+     ID: 0x30, Synopsys ID: 0x51  DWMAC4/5
 
-> [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D216502
-> =
+As per the schematic [0]
+https://dl.radxa.com/rock3/docs/hw/3a/rock3a_v1.3_sch.pdf
+   Pull-up for additional 2ns delay to RXC for data latching
+   Pull-up for additional 2ns delay to TXC for data latching
 
+As per the datasheet [1]
+https://dl.radxa.com/rock3/docs/hw/datasheet/RTL8211F-CG-Datasheet.pdf
+TXDLY   RGMII            Transmit Clock Timing Control.
+    1: Add 2ns delay to RXC for RXD latching (via 4.7k-ohm to DVDD_RG)
+    0: No delay (via 4.7k-ohm to GND)
+RXDLY RGMII Receive Clock Timing Control.
+    1: Add 2ns delay to RXC for RXD latching (via 4.7k-ohm to DVDD_RG)
+    0: No delay (via 4.7k-ohm to GND)
 
-Hello
+tx_delay and rx_delay might be suitable for old DWMAC
+hence it does not apply to this new Ethernet controller.
+I have tested with remove these from the dts and
+adding the following as this is required for rgmii mode.
+       rx-internal-delay-ps = <2000>;
+       tx-internal-delay-ps = <2000>;
 
-I started to work on adding RNG to rk3288_crypto.
-I need to publish the work on my github and take time to send it for review.
+I don't mind setting the defaults of 0x30 and 0x10 to equate
+to the standard 2ns delay. but it does not have any effect
+on the current ethernet controller.
 
-Regards
+> This is why I've been asking if you have tested these. You need to set
+> each value and find the lowest and highest possible values that work,
+> then take the median value between those two.
+>
+
+Yes, I have tested with and without those values.
+
+Thanks
+-Anand
+> >
+> > > > Fix the following warning
+> > > >
+> > > > [    7.365215] rk_gmac-dwmac fe010000.ethernet: Can not read property: tx_delay.
+> > > > [    7.365219] rk_gmac-dwmac fe010000.ethernet: set tx_delay to 0x30
+> > > > [    7.365224] rk_gmac-dwmac fe010000.ethernet: Can not read property: rx_delay.
+> > > > [    7.365228] rk_gmac-dwmac fe010000.ethernet: set rx_delay to 0x10
+> > >
+> > > If the only purpose of this patch is to get rid of this warnings, it may
+> >
+> > No, the intent is to fix the PHY mode to RGMII and fix the delay.
+> > [ 7.066357] rk_gmac-dwmac fe010000.ethernet: init for RGMII_ID
+> >
+> > > make sense to set them to dev_dbg as Peter pointed out.
+> > >
+> > Ok, will update this in the next version.
+> >
+> > > Best regards,
+> > > Michael
+> > >
+> > Thanks
+> > -Anand
 
 _______________________________________________
 Linux-rockchip mailing list
