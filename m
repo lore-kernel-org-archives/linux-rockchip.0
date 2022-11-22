@@ -4,86 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E023BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 08:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 772DEC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 08:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6hTD1AIwyihHcwwQj+yJPXpzoMuPnRvJO0MlnaOFFlk=; b=MITSBzFgyKcbWd
-	SZ1fDFL0IBz6aJsEGvhjkHg9JwnRh7UV9QFbiE8SYbHnJH2/ENHehtz5EhCYUPqUdnCDoXweIbZeo
-	U8es7G31WAVhteu9uqHvoi7w6nvVAGRbVnz/UOD2+/ZYM+WBDuyTwoUNldSsgN2739b4ukGnaDa0N
-	KNmpx7mf3ZWYtAeummheAbDkLddfb3qaFP8RbyeMxKZuKoM/kRdXXlglYlyd3aZqCVgjQ9RhRM/Nr
-	6ezHlHM1AmQxu0DNyMjetWyZEgLotc6H6TMY+ySVYqQRSDI5jMggMAiwWlp3JB3KbSKGElMIX38aY
-	UT9Vr0kTPFLGQDDjGEDA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YVU3mD2umWDZLJzuRs+DeWjFTsK4JNEyGvLNvCDJ5wo=; b=nUo3+jt+Z2cW2z
+	92KaKPPAhtNboyVp/CLILIr/vlR1eU/B3zalEEg1cvOqcEvRC5bB1B7ZLWeSoAMcTWRBq6Sub/NqU
+	gbjN7MHWxNpSXYmEAodvQ7GBXjMiwpUU/v8+g4bdcNnC7TkgpFkxsSqxQE5HI1asbjeXDuSY/NXps
+	4g3CN1BXjYt9S3Eqwy3GQgwIWuR5pljUnuTkAhFDr048W8VNIdLpY8GEU0kCsN90CcgYwEMyg4YTt
+	r5GNoFzJ58z2a+K6h4iC1Vx1UfsHAZDpPt5I+jLQNDwf2j3FaQpWNPCA5Ye58NO/KN0lH6WQRxJTC
+	xd1uZMVnEjLEWuw0n/tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOKS-0065Ne-4g; Tue, 22 Nov 2022 08:08:28 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1oxOuD-006Rfe-7G; Tue, 22 Nov 2022 08:45:25 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOKQ-0065Ij-7c
-	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 08:08:27 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id h12so17053114ljg.9
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Nov 2022 00:08:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4m37A/talNp70vF+VxLy7ZtvPFBex/6NeMS3n0jrH1c=;
-        b=MJDKF7emETjRP4WxOUeK+8WxHTtIFN9TRN3WN5LZSt+tHwjEe8v77uDnH3dA2vAeHn
-         O3o3nFC9xT+YTQfREbF3Qc62b7n1f0DduhKAh5/dCM0I7GfqgkIXFj+msOG6kJ31/EhL
-         rpxeds0cDmgjMficvEiXs+eructqToNd1kNKxQt+/Cso5I/GT6LXlK6ugCRMzxnjU/KQ
-         gT6OcGlaToVvFA7v6AZdkjnhswDRvyMt/GU3PJLXJrIQr72H+8kT8WqvxXr2LEHa+2LR
-         hpaNu/uX4hUIrrmCQJnFPq7wTvGzGpMwxl1Tn6nsRf0Ir4nI0K2pR2G/ExP8UuaT5Nk/
-         RJjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4m37A/talNp70vF+VxLy7ZtvPFBex/6NeMS3n0jrH1c=;
-        b=76cbQ/xB+/iiLHW+Yr2JJE6MgM+v46XqKhus2n7l7b9w35NmtwOokIyMVb/RqRCXQm
-         +yDyk4emcU5YkSqSNgbcbI6U9KklYKwzy4lfJBUidMlzaexWoKES3+aLTpZQTrAtHqwa
-         6J93BpQuB304caZqruVYKhWEeR1gGW7Nmy9UYdQyE86+qWMgPrd4ViC4PFko4+x8Z42r
-         VIzlOJ/G1XhzkFn+29+BmiEwj2NvvndY+D8Hvnav20T6M6OyB4j0lht7RmCoWDyfXp1y
-         N7AUlSG28E9QYUaE3Tn3XX9LtjoLFMdfMpYKQVbDjdFjrd1CAZkEBEYaPFyyO90Q1zWw
-         8Yjw==
-X-Gm-Message-State: ANoB5plmuEO6nl+vF3VDNszeyb08lYj6Qh0Iqhs5ugMAQQrlPHVea/1r
-	afFjzoQMM6Q2OhDPJKEhBLxBrw==
-X-Google-Smtp-Source: AA0mqf4RQelr2ivp3d2aUuGU6ED6ob6F1q0qEAwy3uK5D9ZUOLJG1rQtMbHRUVpHb6Y2mol6tZrOJQ==
-X-Received: by 2002:a2e:a374:0:b0:279:4e82:9010 with SMTP id i20-20020a2ea374000000b002794e829010mr2823296ljn.295.1669104497279;
-        Tue, 22 Nov 2022 00:08:17 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id g24-20020a0565123b9800b0049464d89e40sm2359967lfv.72.2022.11.22.00.08.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 00:08:16 -0800 (PST)
-Message-ID: <4f8c1ba3-f62b-136a-42da-68406dce5ab0@linaro.org>
-Date: Tue, 22 Nov 2022 09:08:15 +0100
+	id 1oxOu8-006RUL-14
+	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 08:45:22 +0000
+Received: from booty (unknown [77.244.183.192])
+	(Authenticated sender: luca.ceresoli@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 50D58240006;
+	Tue, 22 Nov 2022 08:45:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1669106712;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=8KTZNpqsSlSOm0TQNFE89faSSTTRrpkzJZJeA8w6c+U=;
+	b=m+3+48CGJowCG0cD8VhWsszCfX/ICaBYzq0kBit8pcYf051G/utj3+pRxKJ/T4W6HUBoj5
+	lP+dcCdxM+C+iM1QuwKnf++IcyzX6DWhRxyICuEYmpSOLLEBMHYQe+pvb45Mtkshcb1bje
+	1SwdOOTiGA3q1UuNznZPw/SSTrJlHWq7atz33sHerKHNsw2pnWwhhk7/j5QwhWrDi6r/Sr
+	J/Cz5AQfvfP2D/e81yBh7TUdN1KLOoA45faOdeoL4+AOxr00wqOmUX1FTRheQDgHnX7TlD
+	H4eT51ry+CeHx6RYhIBAcdO4R4MEya+HaaJVIBL88Pm1b2Rh9shOB5EOOSl43Q==
+Date: Tue, 22 Nov 2022 09:45:09 +0100
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org
+Subject: RK3308: ACM serial over USB sporadically not started
+Message-ID: <20221122094509.37f99121@booty>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCHv3 6/9] dt-bindings: arm: rockchip: add Rock 5 Model B
-Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Christopher Obbard <chris.obbard@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20221121175814.68927-1-sebastian.reichel@collabora.com>
- <20221121175814.68927-7-sebastian.reichel@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221121175814.68927-7-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_000826_300399_8A52E788 
-X-CRM114-Status: UNSURE (   6.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221122_004520_400843_5D3362A2 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,19 +67,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2022 18:58, Sebastian Reichel wrote:
-> From: Christopher Obbard <chris.obbard@collabora.com>
-> 
-> Add DT binding documentation for the Radxa Rock 5 Model B.
+Hello,
 
-One binding change per new board is a lot. This should be rather squashed.
+I have set up Serial over USB gadget (ACM CDC) on a RK3308, which works
+fine most times but sporadically (10~20% of the times) does not work,
+failing to set up ttyACM0 on the host side.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Target hardware: Rock Pi S (RK3308).
+Software used on target: Linux v6.1-rc6 (eb7081409f94a9a8608).
+Device tree: rk3308-rock-pi-s.dtb from mainline, unmodified.
 
+Relevant Kconfig options:
 
-Best regards,
-Krzysztof
+CONFIG_USB=y
+CONFIG_USB_EHCI_HCD=y
+CONFIG_USB_EHCI_HCD_PLATFORM=y
+CONFIG_USB_OHCI_HCD=y
+CONFIG_USB_OHCI_HCD_PLATFORM=y
+CONFIG_USB_DWC2=y
+CONFIG_USB_DWC2_PERIPHERAL=y
+CONFIG_USB_DWC2_DEBUG=y
+CONFIG_USB_DWC2_TRACK_MISSED_SOFS=y
+CONFIG_USB_GADGET=y
+CONFIG_USB_GADGET_DEBUG=y
+CONFIG_USB_GADGET_DEBUG_FILES=y
+CONFIG_USB_GADGET_DEBUG_FS=y
+CONFIG_USB_G_SERIAL=y
 
+CONFIG_USB_LIBCOMPOSITE=y
+CONFIG_USB_F_ACM=y
+CONFIG_USB_U_SERIAL=y
+CONFIG_USB_F_SERIAL=y
+CONFIG_USB_F_OBEX=y
+# CONFIG_USB_CONFIGFS is not set
+
+CONFIG_EXTCON=y
+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+CONFIG_PHY_ROCKCHIP_USB=y
+
+Connections:
+- USB-C to USB-C cable connecting PC and target for both USB
+  gadget and target power
+- Ethernet cable
+- UART TX pin (GND not connected, adds booting troubles)
+
+Symptoms
+---------
+
+Here is a snippet of a boot log taken on the target during a boot where
+the ttyACM0 did not appear on the host side:
+
+[    0.582781] udc ff400000.usb: binding gadget driver [g_serial]
+[    0.583497] g_serial gadget.0: adding 'acm'/(____ptrval____) to config 'CDC ACM config'/(____ptrval____)
+[    0.583576] g_serial gadget.0: acm ttyGS0: dual speed IN/ep1in OUT/ep2out NOTIFY/ep3in
+[    0.583632] g_serial gadget.0: Gadget Serial v2.4
+[    0.584086] g_serial gadget.0: g_serial ready
+[    0.588785] dwc2 ff400000.usb: bound driver g_serial
+[    0.589295] dwc2 ff400000.usb: dwc2_hsotg_pullup: is_on: 1 op_state: 3
+[    0.589333] dwc2 ff400000.usb: HS UTMI+ PHY selected
+[    0.589361] dwc2 ff400000.usb: FIFOs reset, timeout at 100
+[    0.589389] dwc2 ff400000.usb: EP0: DIEPCTL0=0x00008000, DOEPCTL0=0x00008000
+[    0.589414] dwc2 ff400000.usb: gsintmsk now 0xd88c3cc4
+[    0.589452] dwc2 ff400000.usb: DCTL=0x00000002
+[    0.589477] dwc2 ff400000.usb: GLPMCFG=0x10601483
+[    0.592499] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup: queueing setup request
+[    0.592523] dwc2 ff400000.usb: ep0: req (____ptrval____): 8@(____ptrval____), noi=0, zero=0, snok=0
+[    0.592565] dwc2 ff400000.usb: dwc2_hsotg_start_req: DxEPCTL=0x80008000, ep 0, dir out
+[    0.592593] dwc2 ff400000.usb: ureq->length:8 ureq->actual:0
+[    0.592618] dwc2 ff400000.usb: dwc2_hsotg_start_req: 1@8/8, 0x00080008 => 0x00000b10
+[    0.592656] dwc2 ff400000.usb: dwc2_hsotg_start_req: 02101000 pad => 0x00000b14
+[    0.592682] dwc2 ff400000.usb: ep0 state:0
+[    0.592704] dwc2 ff400000.usb: dwc2_hsotg_start_req: DxEPCTL=0x80008000
+[    0.592728] dwc2 ff400000.usb: dwc2_hsotg_start_req: DXEPCTL=0x80008000
+[    0.592752] dwc2 ff400000.usb: EP0: DIEPCTL0=0x00008000, DOEPCTL0=0x80008000
+...
+[    0.595866] dwc2 ff400000.usb: dwc2_hsotg_irq: 04008420 00000400 (d88c3cc4) retry 8
+[    0.595895] dwc2 ff400000.usb: GINTSTS_ErlySusp
+[    0.598921] dwc2 ff400000.usb: gintsts=04008820  gintmsk=d88c3cc4
+[    0.601050] dwc2 ff400000.usb: dwc2_handle_usb_suspend_intr: DSTS=0x400003
+[    0.602415] dwc2 ff400000.usb: DSTS.Suspend Status=1 HWCFG4.Power Optimize=1 HWCFG4.Hibernation=0
+[    0.602431] dwc2 ff400000.usb: ignore suspend request before enumeration
+[    0.602445] dwc2 ff400000.usb: dwc2_hsotg_irq: 04008020 00000000 (d88c3cc4) retry 8
+
+...lots of other messages from dwc2 ff400000.usb...
+
+...I also have 4 lines like this one:
+[    7.287006] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup already queued???
+
+[    7.383932] g_serial gadget.0: suspend
+[    7.383950] dwc2 ff400000.usb: dwc2_hsotg_irq: 04048428 00040400 (d88c3cc4) retry 8
+[    7.383968] dwc2 ff400000.usb: dwc2_hsotg_irq: daint=00000009
+[    7.383986] dwc2 ff400000.usb: dwc2_hsotg_epint: ep0(in) DxEPINT=0x00000001
+[    7.384001] dwc2 ff400000.usb: dwc2_hsotg_epint: XferCompl: DxEPCTL=0x00008000, DXEPTSIZ=0018004b
+[    7.384017] dwc2 ff400000.usb: zlp packet sent
+[    7.384031] dwc2 ff400000.usb: complete: ep (____ptrval____) ep0, req (____ptrval____), 0 => (____ptrval____)
+[    7.384055] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup: queueing setup request
+[    7.384072] dwc2 ff400000.usb: ep0: req (____ptrval____): 8@(____ptrval____), noi=0, zero=0, snok=0
+[    7.384090] dwc2 ff400000.usb: dwc2_hsotg_ep_queue: submit request only in active state
+[    7.384104] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup: failed queue (-11)
+[    7.384735] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup: queueing setup request
+[    7.384752] dwc2 ff400000.usb: ep0: req (____ptrval____): 8@(____ptrval____), noi=0, zero=0, snok=0
+[    7.384771] dwc2 ff400000.usb: dwc2_hsotg_ep_queue: submit request only in active state
+[    7.384782] dwc2 ff400000.usb: dwc2_hsotg_enqueue_setup: failed queue (-11)
+[    7.385410] dwc2 ff400000.usb: dwc2_hsotg_epint: ep3(in) DxEPINT=0x00000001
+[    7.385431] dwc2 ff400000.usb: dwc2_hsotg_epint: XferCompl: DxEPCTL=0x018c800a, DXEPTSIZ=0007fff6
+[    7.385450] dwc2 ff400000.usb: dwc2_hsotg_complete_in: adjusting size done 0 => 10
+[    7.385464] dwc2 ff400000.usb: req->length:10 req->actual:10 req->zero:0
+[    7.385480] dwc2 ff400000.usb: complete: ep (____ptrval____) ep3in, req (____ptrval____), 0 => (____ptrval____)
+[    7.385502] dwc2 ff400000.usb: GINTSTS_ErlySusp
+
+After the "failed queue (-11)" message, a comment in the code [0] says
+"Don't think there's much we can do other than watch the driver fail.".
+
+On the host side (Ubuntu 22.04) these are the relevant dmesg lines:
+
+[49258.596766] usb 3-2: new high-speed USB device number 18 using xhci_hcd
+[49263.948940] usb 3-2: unable to read config index 0 descriptor/start: -110
+[49263.948960] usb 3-2: can't read configurations, error -110
+[49264.560806] usb 3-2: new high-speed USB device number 19 using xhci_hcd
+[49264.714301] usb 3-2: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 6.01
+[49264.714320] usb 3-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[49264.714327] usb 3-2: Product: Gadget Serial v2.4
+[49264.714332] usb 3-2: Manufacturer: Linux 6.1.0-rc6 with ff400000.usb
+[49269.837931] usb 3-2: can't set config #2, error -110
+
+I suspect a concurrency issue during initialization, but I don't know
+where to investigate further.
+
+Any clues or hints on how this could be addressed would be very
+appreciated.
+
+I am of course available to provide more info and full logs if that's
+helpful.
+
+[0]
+https://elixir.bootlin.com/linux/v6.1-rc6/source/drivers/usb/dwc2/gadget.c#L2059
+
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
