@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A8AC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 14:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DBCFC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 15:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
+	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SBc70XVANS4u7Dnvl4e6tMRiF64NakiLgofRPwcSrUE=; b=0kVZEZTYw+eIze
-	2Qo96Cr8gM3D8W3uZrwxcWrxWuK6ETOd5kAlhRL70MhE7CwZYM5W7tS6IADfOxfW2fFtv1k3WbrhW
-	aKeFKxkGvq3RQ2sQe1dqICqynt/m4OsKDn8xwgBVxntz3+k3I7upiV+kCWrlxw2scVp4HKeoKMmfs
-	57yUnf6WWm9kSz6cksaHg7GPMIE6jZEGv3NlJwprd9oKAp8NhtHdV5aELir1Q9qVVpix+3u7HnKZN
-	JUzZfL1SX9QGW9YGwAHe2Bg2vcN33Fj41o0oSldTxvzTbm9K/j3MJDpZ366biWkCmy0Yygd2mS5H0
-	1tgB6gTbdj0LSTYY+F+g==;
+	List-Owner; bh=+eFkQnhxUPXsBOlMDyzNSwpbmijmDyiX86eIe4/CgkA=; b=k2aiUAhsPVejKH
+	mTrHLUgYKZkk7PMAJh2Tt24bZ3hldLS9m9KnGJf9hOv8hFWanpn24zG0lufncdboZNatzVieY2D4R
+	EGQbXCCTHavSY4L3i4AqSoboJDTK5M1ThKOrNlaGFs4pXN6ztjsvVKJQjHRUCbzfceabwOWWvlzw3
+	qiJcjbXY7/YtAB+kimRgc1xPKruOsbPl7guQ/lF7cZn2HPVBiSCJ9bPqMDrpsyLtNinvloTCjGLJQ
+	YUqvSWlZylf+fHicB/8AQuhkaIWJYBlRwgbqq6p8A09jWhMQ5wHB/2LdpxZSXx6NqUVHIc7hCMdgQ
+	yEZ4NKAfvgyypXgAiNVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxU9M-009vEl-Gn; Tue, 22 Nov 2022 14:21:24 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1oxUqJ-00ABv9-V6; Tue, 22 Nov 2022 15:05:48 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxU90-009v5u-Ep; Tue, 22 Nov 2022 14:21:04 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-13bd2aea61bso17453584fac.0;
-        Tue, 22 Nov 2022 06:20:59 -0800 (PST)
+	id 1oxUqC-00ABqP-HV
+	for linux-rockchip@lists.infradead.org; Tue, 22 Nov 2022 15:05:45 +0000
+Received: by mail-lf1-x130.google.com with SMTP id be13so23988013lfb.4
+        for <linux-rockchip@lists.infradead.org>; Tue, 22 Nov 2022 07:05:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=SHX+r3o3V3envxmtyDAC/DiXE+gGNoPNrnRmBhYS2YA=;
-        b=bzw6WcmW4gcZyahHz4St8lxqfPCy255jxjxESN3SysXIr3ahVwGGwNgvtfmVtfQu7R
-         aXQnNpnA2TakLL5r4M4WVful2l4efeMrOwp78QWfyudl/8uGxO8SYnBMgbgfotwY8z0+
-         AFgGQF2Xquo/YRPkvjrb9TpOYk4wU0dCTdfXq90kTbT3Gw8fLYZ1j4OJFPWFjBBDlzSZ
-         I5KMuxeGO/t3Ev3FtX4K2mXEigYm87FlxmOH1bcarcQmILnzDi5vIoRUrysVB/Zs97kG
-         Yf18mV4B9rf/6V4SwPNTg6Lfsv0O5kH/VfLLy19giFCkv56y8GxrTr87y9DVbi4cEHvp
-         3PAg==
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+         :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=joRULvf1dWJkA5gWRTFhFCk8AeaMUxC+7TLKjnw2DLE=;
+        b=ER2Fw8emECT/rQge+eiBNkkviWG3kjbWsZCbV4x/Kgaljhp2rzXGAQygNJar3+6u44
+         QevH09MxTl6kJbQ0qPaESjwxa4GjqJr5YoXGhhnbrnofLSwud68+an31l+2EwkoR/nKs
+         Jg/cq7+qg2c1ILnIHDzqchGtMVrSKVGnJqH2FWFWAtbSvYbvhMwEa8bHPst5szIVBUuz
+         E85pH8kn9kRscODxb12XOnTFG+LM/br7nINFu+sS95yQ+OAwa+nmSbUSpQRV2lK1igRp
+         pQYKCnvgr/K31pf+OvF/dh9Xe0hZmw9rDcyEPaxUi6by+xYUymVne6HaWNeGLjtJRNg8
+         JEXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SHX+r3o3V3envxmtyDAC/DiXE+gGNoPNrnRmBhYS2YA=;
-        b=Y3JpHoJWj6tFVOPC820uzaEFZN+EyBhIeWLqynROJblbzgbROvJXnM00vqlffsgWi1
-         E24DKXkJbKIWXvk27bMi3DvsvDuvl0rrE+xfPZX0zg/wELK66zc/V5lBKc3lCG/lTeLJ
-         h7qhTI6DdKDWNNWibCFKQ47UzyZd2Rk2F62hsgL42QED/dqMiBipALLWXGINVjeSZgxV
-         3gqxZkvyGCnK3R2dTyUiu6Cd3gJnxcL2nzYXKLYznRExVASJkikiLVAj3TMEaVypBp6f
-         enj3Rk1U5MO2otJ9uIer5ORSkwrusXs4QbPfUAJHbvry22cW+oroziPfc+lv4tgruXvq
-         4gkA==
-X-Gm-Message-State: ANoB5pkAjTnULaW6VItlMCzC12NKOjzGeNhg59rAANGI7knNz9TTcVcE
-	vuH32De7UpHSTs32IEMrgair8BkvKsijCiCrfblBSNuZ
-X-Google-Smtp-Source: AA0mqf46DIivwj4MjcutixW4t1k+fdnMvhiLdZIyjTe+CkRsiOunapEO2lBlDZ1ZUs6fVv4g65Fmd8S/IgGotj8Oq0o=
-X-Received: by 2002:a05:6871:4407:b0:132:7fa0:41bb with SMTP id
- nd7-20020a056871440700b001327fa041bbmr12920126oab.260.1669126859346; Tue, 22
- Nov 2022 06:20:59 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+         :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=joRULvf1dWJkA5gWRTFhFCk8AeaMUxC+7TLKjnw2DLE=;
+        b=lDSVRMVXbsPR6IQdmIzttXCtBTgvjeX/SLyol+GhRVaEoVepOvSMzwucGQZ5Ja0XnT
+         y0s5wEAAffwgWQLRX8ykauX+azTHGinauPylIsfRv97J1DMWkZh2CO9dw0abaH7GlQAa
+         IjSuwT52gEtcvomseFZOeSb0X/TNAeCeZXdeKsjtSNVaVV7ofTPcMfKMVL1ykM5Z96ho
+         JKfL36D5uoFDR2zidi79xD2xpJaaN+zf/yQpKO3RkSwI4TPBcSB/P6y1AcGB15z7nraT
+         /8Dqf3dNG34d0/ufIhxT6k4Ffq+r959ikLsHWpYi+yE6uqhfUtcTT32RE5IRHn35Hqc6
+         AhBQ==
+X-Gm-Message-State: ANoB5plqU/qROHu3IWW2rqp6EoIbUhFXGuHb9CebIaWHP5IT8Ewu63S/
+	XHrUXOrA0Oc7w5gQ5Hginqyw/RK11kBPkw==
+X-Google-Smtp-Source: AA0mqf5OHYaGctuWCwcgr2ujiVoDrGqiB2RNftQYRObwVAsJZmt9XYndfhnGYv2vqwN8PdQGXddxvA==
+X-Received: by 2002:ac2:4a6a:0:b0:4b1:753b:e66f with SMTP id q10-20020ac24a6a000000b004b1753be66fmr2180872lfp.276.1669129536433;
+        Tue, 22 Nov 2022 07:05:36 -0800 (PST)
+Received: from razdolb (95-31-185-17.broadband.corbina.ru. [95.31.185.17])
+        by smtp.gmail.com with ESMTPSA id o6-20020a05651205c600b0049478cc4eb9sm2499071lfo.230.2022.11.22.07.05.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Nov 2022 07:05:35 -0800 (PST)
+References: <20220919210025.2376254-1-Jason@zx2c4.com>
+ <32f8797a-4b65-69df-ee8e-7891a6b4f1af@arm.com>
+ <YzMm4d3sZBHpitm9@aurel32.net> <YzNTB+RQK6yITi7/@Red>
+ <YzNthZ0MtfwjIqdH@aurel32.net> <YzVNBcF7TCDldPwF@Red>
+ <87y1sasrf2.fsf@gmail.com> <Y3zOn5IO1ziJXKUT@Red>
+User-agent: mu4e 1.9.0; emacs 28.2
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+To: Corentin LABBE <clabbe@baylibre.com>
+Cc: Robin Murphy <robin.murphy@arm.com>, "Jason A. Donenfeld"
+ <Jason@zx2c4.com>, linux-kernel@vger.kernel.org,
+ linux-crypto@vger.kernel.org, Herbert Xu <herbert@gondor.apana.org.au>,
+ Lin Jinhan <troy.lin@rock-chips.com>, wevsty <ty@wevs.org>, Heiko Stuebner
+ <heiko@sntech.de>, Lin Huang <hl@rock-chips.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] hw_random: rockchip: import driver from vendor tree
+Date: Tue, 22 Nov 2022 18:04:00 +0300
+In-reply-to: <Y3zOn5IO1ziJXKUT@Red>
+Message-ID: <877cznni69.fsf@gmail.com>
 MIME-Version: 1.0
-References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-7-linux.amoon@gmail.com>
- <CAMdYzYo_DGiO0UxJEb3xues7Um=X9AgPvz+Xp_YWb9pp9HaScg@mail.gmail.com>
- <CANAwSgQJGH-+aXyUF18kGks4YKfBYvQ4-B7S2m8eaAr=yNS7vQ@mail.gmail.com>
- <99849c5e-5bd9-386b-99c5-fbc8c8df9656@arm.com> <CANAwSgT7rasp=QYdvukAO-y6NzsOfKsjdy0jAEubvMymmfDqWA@mail.gmail.com>
- <CAMdYzYqkHb0_Rwp+fAMwS=-VrNow6yFw1HErz28EGKd6bLzY4A@mail.gmail.com>
-In-Reply-To: <CAMdYzYqkHb0_Rwp+fAMwS=-VrNow6yFw1HErz28EGKd6bLzY4A@mail.gmail.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Tue, 22 Nov 2022 19:50:42 +0530
-Message-ID: <CANAwSgR2h4tcuM2sNZt6QsporLuopkt2nCSHrbnTgT8r9iE3Cg@mail.gmail.com>
-Subject: Re: [linux-next-v2 5/5] arm64: dts: rockchip: Add missing of
- ethernet-phy-id to reset the phy on Rock 3A SBC
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Chukun Pan <amadeus@jmu.edu.cn>, Michael Riesch <michael.riesch@wolfvision.net>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_062102_623016_A6BEBEB5 
-X-CRM114-Status: GOOD (  37.59  )
+X-CRM114-CacheID: sfid-20221122_070540_643003_74D44279 
+X-CRM114-Status: GOOD (  28.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,123 +93,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
-
-On Fri, 18 Nov 2022 at 00:40, Peter Geis <pgwipeout@gmail.com> wrote:
->
-> On Thu, Nov 17, 2022 at 9:56 AM Anand Moon <linux.amoon@gmail.com> wrote:
-> >
-> > Hi Robin
-> >
-> > On Thu, 17 Nov 2022 at 16:24, Robin Murphy <robin.murphy@arm.com> wrote:
-> > >
-> > > On 2022-11-17 05:57, Anand Moon wrote:
-> > > > Hi Peter,
-> > > >
-> > > > On Thu, 17 Nov 2022 at 02:16, Peter Geis <pgwipeout@gmail.com> wrote:
-> > > >>
-> > > >> On Wed, Nov 16, 2022 at 3:02 PM Anand Moon <linux.amoon@gmail.com> wrote:
-> > > >>>
-> > > >>> Add MDIO description with ethernet-phy-id compatible string
-> > > >>> which enable calling reset of the phy. The PHY will then be probed,
-> > > >>> independent of if it can be found on the bus or not,
-> > > >>> and that probing will enable the GPIO.
-> > > >>>
-> > > >>> ethernet-phy-id is read from ethenet register dump reg2 and reg3.
-> > > >>>
-> > > >>> Fix following warning.
-> > > >>> [   12.323417] rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
-> > > >>> [   12.324078] rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
-> > > >>> [   12.324099] rk_gmac-dwmac fe010000.ethernet eth0: __stmmac_open: Cannot attach to PHY (error: -19)
-> > > >>>
-> > > >>> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > > >>> ---
-> > > >>> V2: new to the patch series.
-> > > >>>
-> > > >>> alarm@rock-3a:~$ sudo ethtool -d eth0
-> > > >>> [sudo] password for alarm:
-> > > >>> ST GMAC Registers
-> > > >>> GMAC Registers
-> > > >>> Reg0  0x08072203
-> > > >>> Reg1  0x00000000
-> > > >>> Reg2  0x00000404
-> > > >>> Reg3  0x00000000
-> > > >>> Reg4  0x00000002
-> > > >>> ---
-> > > >>>   arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 2 +-
-> > > >>>   1 file changed, 1 insertion(+), 1 deletion(-)
-> > > >>>
-> > > >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > > >>> index 9f84a23a8789..fe36156a5017 100644
-> > > >>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > > >>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> > > >>> @@ -585,7 +585,7 @@ &i2s2_2ch {
-> > > >>>
-> > > >>>   &mdio1 {
-> > > >>>          rgmii_phy1: ethernet-phy@0 {
-> > > >>> -               compatible = "ethernet-phy-ieee802.3-c22";
-> > > >>> +               compatible = "ethernet-phy-id0000.0404", "ethernet-phy-ieee802.3-c22";
-> > > >>>                  reg = <0x0>;
-> > > >>>                  pinctrl-names = "default";
-> > > >>>                  pinctrl-0 = <&eth_phy_rst>, <&eth_phy_int>;
-> > > >>
-> > > >> Have you tried instead moving the reset to the mdio bus? I've had
-> > > >> success with this, though you'll need to change the reset assert and
-> > > >> deassert timing handles, they are different for the bus.
-> > > >>
-> > > > No can you share some examples?
-> > > > If you got a better way to solve this issue please let me know.
-> > > > I will give this a try.
-> > >
-> > > Note that the Rock 3A schematic says the phy is configured for address
-> > > 1, not 0. From what I remember of adding the MDIO node for NanoiPi4,
-> > > that didn't work if I got the address wrong, despite the fact that the
-> > > auto-detection when the MDIO node is omitted claimed to find the same
-> > > phy on both addresses 0 and 1.
-> > >
->
-> From the net-dev folk, mdio address 0 is a broadcast address. All
-> functional phys we have on the mdio bus should respond to it. The
-> problem I've run into is with the reset on the phy node the reset
-> triggers too late for the dwmac to detect the phy correctly. However
-> moving it to the mdio bus node makes the reset happen at roughly the
-> same time as the depreciated dwmac reset and the phy detects without
-> any weird hacks.
->
-
-This is not a hack, we are already using mdio bus node.
-&gma1 {
-   phy-handle=ethernet-phy
-}
-mdio1 {
-   ethernet-phy {
-   }
-}
-
-Actually, *ethernet-phy-id* is one of the binding properties (see below).
-we can find many examples in the device tree that used this property in
-the linux kernel and u-boot.
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/ethernet-phy.yaml?h=v6.1-rc6#n31
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/ethernet-phy.yaml?h=v6.1-rc6#n211
-
-Please check this phy reset section below.
-
-[2] https://wiki.st.com/stm32mpu/wiki/Ethernet_device_tree_configuration#RMII_with_25MHz_on_ETH_CLK_-28no_PHY_Crystal-29-2C_REF_CLK_from_PHY_-28Reference_clock_-28standard_RMII_clock_name-29_is_provided_by_a_PHY-29
-
-If you have some other input please share I have tried but failed.
-
-Thanks
-
--Anand
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIDIwMjItMTEtMjIgYXQgMTQ6MjkgKzAxLCBDb3JlbnRpbiBMQUJCRSA8Y2xhYmJlQGJheWxp
+YnJlLmNvbT4gd3JvdGU6Cgo+IExlIFdlZCwgTm92IDE2LCAyMDIyIGF0IDA5OjA0OjA3UE0gKzAz
+MDAsIE1pa2hhaWwgUnVkZW5rbyBhIMOpY3JpdCA6Cj4+Cj4+IE9uIDIwMjItMDktMjkgYXQgMDk6
+NDUgKzAyLCBMQUJCRSBDb3JlbnRpbiA8Y2xhYmJlQGJheWxpYnJlLmNvbT4gd3JvdGU6Cj4+ID4g
+TGUgVHVlLCBTZXAgMjcsIDIwMjIgYXQgMTE6Mzk6MTdQTSArMDIwMCwgQXVyZWxpZW4gSmFybm8g
+YSDDqWNyaXQgOgo+PiA+PiBPbiAyMDIyLTA5LTI3IDIxOjQ2LCBMQUJCRSBDb3JlbnRpbiB3cm90
+ZToKPj4gPj4gPiBMZSBUdWUsIFNlcCAyNywgMjAyMiBhdCAwNjozNzo1M1BNICswMjAwLCBBdXJl
+bGllbiBKYXJubyBhIMOpY3JpdCA6Cj4+ID4+ID4gPiBPbiAyMDIyLTA5LTIwIDEwOjM1LCBSb2Jp
+biBNdXJwaHkgd3JvdGU6Cj4+ID4+ID4gPiA+IE9uIDIwMjItMDktMTkgMjI6MDAsIEphc29uIEEu
+IERvbmVuZmVsZCB3cm90ZToKPj4gPj4gPiA+ID4gPiBUaGUgUm9ja2NoaXAgZHJpdmVyIGhhcyBs
+b25nIGV4aXN0ZWQgb3V0IG9mIHRyZWUsIGJ1dCBub3QgdXBzdHJlYW0uCj4+ID4+ID4gPiA+ID4g
+VGhlcmUgaXMgc3VwcG9ydCBmb3IgaXQgdXBzdHJlYW0gaW4gdS1ib290LCBidXQgbm90IGluIExp
+bnV4IHByb3Blci4KPj4gPj4gPiA+ID4gPiBUaGlzIGNvbW1pdCBpbXBvcnRzIHRoZSBHUEx2MiBk
+cml2ZXIgd3JpdHRlbiBieSBMaW4gSmluaGFuLCB0b2dldGhlcgo+PiA+PiA+ID4gPiA+IHdpdGgg
+dGhlIERUUyBhbmQgY29uZmlnIGJsb2JzIGZyb20gV2V2c3R5Lgo+PiA+PiA+ID4gPgo+PiA+PiA+
+ID4gPiBOb3RlIHRoYXQgQ29yZW50aW4gaGFzIGEgc2VyaWVzIGVuYWJsaW5nIHRoZSBmdWxsIGNy
+eXB0byBkcml2ZXIgZm9yCj4+ID4+ID4gPiA+IFJLMzMyOCBhbmQgUkszMzk5WzFdLCBzbyBpdCB3
+b3VsZCBzZWVtIG1vcmUgc2Vuc2libGUgdG8gYWRkIFRSTkcgc3VwcG9ydAo+PiA+PiA+ID4gPiB0
+byB0aGF0LiBIYXZpbmcgY29uZmxpY2l0aW5nIGNvbXBhdGlibGVzIGZvciB0aGUgc2FtZSBoYXJk
+d2FyZSB0aGF0Cj4+ID4+ID4gPiA+IGZvcmNlIHRoZSB1c2VyIHRvIGNoYW5nZSB0aGVpciBEVCB0
+byBjaG9vc2Ugb25lIGZ1bmN0aW9uYWxpdHkgb3IgdGhlCj4+ID4+ID4gPiA+IG90aGVyIGlzbid0
+IGdvb2QgKHBsdXMgdGhlcmUncyBhbHNvIG5vIGJpbmRpbmcgZm9yIHRoaXMgb25lKS4KPj4gPj4g
+PiA+Cj4+ID4+ID4gPiBJdCBtaWdodCBtYWtlIHNlbnNlIGZvciB0aGUgY3J5cHRvdjEtcm5nIGRy
+aXZlciAoSSBoYXZlbid0IGNoZWNrZWQpLiBGb3IKPj4gPj4gPiA+IHRoZSBjcnlwdG92Mi1ybmcg
+ZHJpdmVyLCBJIGxvb2tlZCBhdCB0aGUgUkszNTY4IFRSTSAoSSBjYW4ndCBmaW5kIHRoZQo+PiA+
+PiA+ID4gUkszNTg4IG9uZSksIGFuZCBmcm9tIHdoYXQgSSB1bmRlcnN0YW5kIGNyeXB0byBhbmQg
+VFJORyBhcmUgdHdvCj4+ID4+ID4gPiBkaWZmZXJlbnQgZGV2aWNlcywgdXNpbmcgZGlmZmVyZW50
+IGFkZHJlc3Mgc3BhY2VzLCBjbG9jaywgcmVzZXQgYW5kCj4+ID4+ID4gPiBpbnRlcnJ1cHRzLiBU
+aGUgdmVuZG9yIGtlcm5lbCB1c2VzIHR3byBkaWZmZXJlbnQgZHJpdmVycy4KPj4gPj4gPiA+Cj4+
+ID4+ID4KPj4gPj4gPiBJIGNvbmZpcm0gdGhhdCBUUk5HIGlzIG5vdCBvbiB0aGUgc2FtZSBJUCBv
+biByazM1NjgsIHNvbWV0aGluZyBJIGRpZG50IHJlbWFyayB3aGVuIGRvaW5nIG15IFYyIGRyaXZl
+ci4gKEkgbmVlZCB0byByZW1vdmUgcm5nIGNsb2NrIGZyb20gcmszNTY4IGR0KS4KPj4gPj4gPiBC
+dXQgdGhlIHJrMzU4OCBjcnlwdG8gSVAgYW5kIHRoZSBUUk5HIGFyZSBpbiB0aGUgc2FtZSBkZXZp
+Y2UuCj4+ID4+Cj4+ID4+IE9rLCB0aGFua3MgZm9yIGNvbmZpcm1pbmcgYWJvdXQgdGhlIHJrMzU2
+OC4gSXQgc2VlbXMgdGhlIG9ubHkgb25lIGluIHRoZQo+PiA+PiBmYW1pbHkgd2l0aCBzZXBhcmF0
+ZSBkZXZpY2VzIGZvciBUUk5HIGFuZCBjcnlwdG8uIERvZXMgaXQgbWVhbnMgd2UgbmVlZAo+PiA+
+PiBhIHNlcGFyYXRlIFRSTkcgZHJpdmVyIG9ubHkgZm9yIGl0PyBPciBjb3VsZCB3ZSBoYW5kbGUg
+aXQgdGhlIHNhbWUgd2F5Cj4+ID4+IHRoYW4gZm9yIGluc3RhbmNlIHJrMzU4OCBhbnl3YXk/Cj4+
+ID4KPj4gPiBJIGp1c3QgZ290IG5vdyB0aGUgcGFydCAxIG9mIHJrMzU4OCBUUk0gd2hpY2ggSSBo
+YXMgbWlzc2luZyBhbmQgaXQgc2hvdyBzb21lIGNvbmZsaWN0aW5nIGluZm9ybWF0aW9uLgo+PiA+
+IHJrMzU4OCBzZWVtcyB0byBoYXZlIGJvdGggYSBkZWRpY2F0ZWQgVFJORyAoVFJOR19OUy9UUk5H
+X1MpIHdpdGggZGVkaWNhdGVkIGFkZHJlc3Mgc3BhY2UgYW5kIGEgVFJORyBpbnNpZGUgdGhlIGNy
+eXB0byBJUC4KPj4gPiBCdXQgZm9yIHRoZSBtb21lbnQsIHRoZSBUUk5HIGluc2lkZSBjcnlwdG8g
+SVAgc2VlbXMgZGVmZWN0aXZlLgo+Pgo+PiBTbyB3aGF0J3MgdGhlIHVsdGltYXRlIGRlY2lzaW9u
+PyBEb2VzIGFueW9uZSB3b3JrIG9uIG1lcmdpbmcgdGhpcyBpbnRvCj4+IHRoZSBleGlzdGluZyBj
+cnlwdG8gZHJpdmVyPyBJIGhhdmUgYSB1c2UgY2FzZSB3aXRoIGFuIHJrMzM5OS1iYXNlZCBib2Fy
+ZCwKPj4gd2hlcmUgaGF2aW5nIGhhcmR3YXJlIHJuZyBlbmhhbmNlcyBib290IHRpbWVzIGRyYW1h
+dGljYWxseSAoYXQgbGVhc3QgZm9yCj4+IHNvbWUgdXNlcnNwYWNlczsgc2VlIGFsc28gWzFdKS4K
+Pj4KPj4gWzFdIGh0dHBzOi8vYnVnemlsbGEua2VybmVsLm9yZy9zaG93X2J1Zy5jZ2k/aWQ9MjE2
+NTAyCj4+Cj4KPiBIZWxsbwo+Cj4gSSBzdGFydGVkIHRvIHdvcmsgb24gYWRkaW5nIFJORyB0byBy
+azMyODhfY3J5cHRvLgo+IEkgbmVlZCB0byBwdWJsaXNoIHRoZSB3b3JrIG9uIG15IGdpdGh1YiBh
+bmQgdGFrZSB0aW1lIHRvIHNlbmQgaXQgZm9yIHJldmlldy4KCkdsYWQgdG8gaGVhciB5b3UgYXJl
+IHdvcmtpbmcgb24gdGhpcy4gUGxlYXNlIGNjIG1lIHdoZW4gcG9zdGluZyBwYXRjaGVzIDopCgo+
+Cj4gUmVnYXJkcwoKLS0KQmVzdCByZWdhcmRzLApNaWtoYWlsIFJ1ZGVua28KCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
