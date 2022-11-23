@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA26C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Nov 2022 16:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0720AC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Nov 2022 18:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qWz9s5vDgnnrCXNntnXLZzIlVUOK9e7KJM8rQJ62+Xk=; b=UcgoVYEs9df1hL
-	arbMeUayFElXvy/wSmRfe4YoY0hBA4s8/Jv+LJA0C8Kg7U4KwRTujGWYkOGENMSSTSc5VBipjt9NZ
-	Xp3xsO7a4bCMX4WswGt204Hux6SAdF5zCZYXfcVUX26V3vNSQ+/2un24+17VoYg8Cey0M2Wuj1LHh
-	ld+2Vhcu96514sQ9zydA2tT1a65UvP27BFhWd39Dp+ocsoo/Ye79+WbKi5scWEzCX+Zj2RVxyVzT3
-	1l6UUBXMWsIjBeWhlC6cnMh1C+itct8aDese3+DF7n697fu/zYtMJskFCFF1gl1IwylIY3FOYQIiW
-	U8JyyfIWvTGpWc4+sNPA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+HgtsJ7k9zz/6XEClYdt+h3pGu8ATn6goGvtscmX62o=; b=wDjO/Ge/YnTlaS
+	Dujr69n/KauSeYzbCvl21x30Yt8pC+1LZjJSHzdUCr7znK3VglMTAjhTGFm/frbt/fZ+A35BtRrIf
+	aSvwob8v3MF9uSvdpCI6He7uVZJFj/QE2+7UT6ctA62v+uXv82gJiFOxjGLFeQMPLat6IZwSPHNWs
+	U66F5DlFn3UsS7H/ozZURu9CYMLAcR0yEMbdiWOruiBhgJ08O2lmLUCL0doOCNZr+H0W+y/P8LVvo
+	XziqtsMgfXDZh52fODAB4qxQZTuQi7R8ShQzs+isOjVVUp0AkRLEfmbJeuaBTQUx8fojzEY6BzQuM
+	4Jwo2AxdLGiAt83gAdhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxsis-000tze-Cm; Wed, 23 Nov 2022 16:35:42 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1oxuYz-001f2z-LM; Wed, 23 Nov 2022 18:33:37 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxsip-000txv-8q
-	for linux-rockchip@lists.infradead.org; Wed, 23 Nov 2022 16:35:41 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id z192so21491236yba.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Nov 2022 08:35:37 -0800 (PST)
+	id 1oxuYB-001ehl-HF
+	for linux-rockchip@lists.infradead.org; Wed, 23 Nov 2022 18:32:48 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id a22-20020a17090a6d9600b0021896eb5554so2895422pjk.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Nov 2022 10:32:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=I512k+5HxYN6TIYNRPVdtDxoBAmyY+SrEKRZhcw37Jg=;
-        b=ei9V3ZOElczjruMMx6tL0CNa+yhbaYUOyBh5s103CFRHYUUcOp/G6QhgtfZr6+ZRIu
-         KuF822LhArqBJ2geTG6U0zKIguwA+ZPgGWRz1g1A+sDVVqMZUJS/nxFmeHYssSFP5kk6
-         xnQ6GpDWpGTFSSoPFYbQ3NDZ/8ldGhPQbTV8+zj9mjji8SsA17fbqA64OYAH58X5EsJX
-         YmMoNd8kZYrYppf1mfdVW0BoJiZFdMX/jhxeNRtTDgROU2v80PRu1wDMW9Q+VCITYa/X
-         08GkSlxY36oZC5C1N75HniBZWdWkekjr2JBsjHAfixYGq+WaO5g5F2VmUorrWXuZhSbS
-         CWiQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NZABUQWhI60I9tegrwMWQreaQqUzVwxzH3LtE7y7zkQ=;
+        b=lkOt4Lu9szF0fBQH9eSaea60q5o/jZo6kOC6f+bAmuuX2Q+Eay8K12TKArZ8MYFeYS
+         gGNO3/bdO74AAr6+Ii7pqx2tWMf9gcv7JC+r70pzDaKP00zpjBbyK2Pi6OKqmlyY8J3i
+         Avp7rKuyeJmwHS691ed+esWbq1mt76clUO0Yu4pynb6gaPf/w/q4LWJjQjPeIQSnyXSu
+         m7I0gDLkMJAeSq5/MKxD1jcE9GOq9KZ/H9cE9QZSMll/xFkhOmwYJq0NAWMMHcp3eawg
+         rqNyS3mx6Md9vutg6bvnl1hTJXPS5jnIF1Vkk3ucZtttpfSIXq897qPwyj5FQzSkr/ol
+         bC5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=I512k+5HxYN6TIYNRPVdtDxoBAmyY+SrEKRZhcw37Jg=;
-        b=yxlf5celgVsTbPLWstGzdBE1YFNJexxKMwV3liQb9NZnWZE9rs8QCnPm8PnElmOP4W
-         7LHnUS+hMBVSRXzCCeYCYsLpdtoSYxHqHDIA6k02Ogj9PfPrZcu2gCBRasZN0ScwOHMm
-         +ug8785bJ4eFfpKTqInIGJL38hM3ICqg2WVXo3v83EOn31HTdpFz1/qu8Q4ZTB9a01VM
-         Fezg3GOoxIcgELynVfJlco9IK89C6Pa4KE6yTuZkApOAA320PAK8A55KVXw8CodkMGqz
-         Vme1vZM2U18MuNKe5D1iRCQX9rvg3y4fwxZ328R+mv9H3MzbEMizmeSQqoOfmHPkmr+i
-         V/mA==
-X-Gm-Message-State: ANoB5plZ9y4O2YFR8LMv+7RAL9p6V96GA3f9kSgBKOZ6QGjZvRNxHH65
-	2b1DCvWBtXGxqwk+STrYzN6LNQmNusDf7yivBmBvTA==
-X-Google-Smtp-Source: AA0mqf5pllc0QqC3+Ys8ottc4PMAMxgfQ1Nx8S4Gs9rMEjdsQxuVNXp/uZH68vAUtJ5KB0PdkZtV5nIZQyITvOD8Pxo=
-X-Received: by 2002:a25:aa2f:0:b0:6d6:9455:cb0d with SMTP id
- s44-20020a25aa2f000000b006d69455cb0dmr9232544ybi.539.1669221336842; Wed, 23
- Nov 2022 08:35:36 -0800 (PST)
-MIME-Version: 1.0
-References: <20221108041400.157052-1-jagan@edgeble.ai> <20221108041400.157052-7-jagan@edgeble.ai>
- <429df965-bd4a-afa4-e66c-6907677fbf8c@linaro.org> <CA+VMnFxs06_KvZc5p_rNAep9aJ+t908CUtVcVTBV7c_b1mu+Xg@mail.gmail.com>
- <149c2614-d87a-4406-5552-f444709a6e09@linaro.org>
-In-Reply-To: <149c2614-d87a-4406-5552-f444709a6e09@linaro.org>
+        bh=NZABUQWhI60I9tegrwMWQreaQqUzVwxzH3LtE7y7zkQ=;
+        b=p/qX39ad2J6i7/oOtSlvxFiDqfvtLbORx/7Tli63zBB/2+cnaC8miqH3jbSqSlZWwr
+         QRvbm756Fcw76wc3mOSQMa2F2OxhdBSSOICdEbSP4BAUf6qmXNJ2Oq+tcujUyYLFSmIX
+         hr3qLYCpqcWH+Yfc9Czsa2MiThTfm59bx5X/tw0K7E6JKSEhGiHmavm0CHllMRqHpLC8
+         ZBSYsiR4RJH9Itw0yd2MRRBYTSZWDnj0GqNjemrHAX0yaa3vhtK8CPJKysox9WBwyP4t
+         pmr8xZv8jfZ4tCkdfR3QRQ6UALmazFiJb5UlvJdHD3vtTkrC6e2F3Ex5CBU+YaF5gLNN
+         Dhxw==
+X-Gm-Message-State: ANoB5pngzHZW+ctg9WDKdm/zLkpBAxQIxrDHl5Xk7l6aw5mFNnA8Nq/M
+	8L0zKeg+Lz1QHeja8iOE/Bs3aA==
+X-Google-Smtp-Source: AA0mqf5LpGxAubWk7IgLLkviKV04MNy0SzL43/+yW0xpUAEFwDxUogCqwZCnd7+60YwKY8fvKepVHA==
+X-Received: by 2002:a17:902:f2c5:b0:189:1cc3:802a with SMTP id h5-20020a170902f2c500b001891cc3802amr11595622plc.56.1669228364464;
+        Wed, 23 Nov 2022 10:32:44 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:c00a:a809:a055:fcc4:4677:827])
+        by smtp.gmail.com with ESMTPSA id x3-20020aa79403000000b0056d2317455bsm13006732pfo.7.2022.11.23.10.32.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Nov 2022 10:32:43 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
-Date: Wed, 23 Nov 2022 22:05:25 +0530
-Message-ID: <CA+VMnFybPA=6-LvSDd=7EXk6fo4oY_hNBwCcDURgnFs4DP_hzA@mail.gmail.com>
-Subject: Re: [PATCH v7 06/10] ARM: dts: rockchip: Add Rockchip RV1126 SoC
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	Johan Jonker <jbx6244@gmail.com>, Jon Lin <jon.lin@rock-chips.com>, 
-	Sugar Zhang <sugar.zhang@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Johan Jonker <jbx6244@gmail.com>,
+	Jagan Teki <jagan@edgeble.ai>
+Subject: [PATCH v8 0/8] ARM: Add Rockchip RV1126 support
+Date: Thu, 24 Nov 2022 00:01:16 +0530
+Message-Id: <20221123183124.6911-1-jagan@edgeble.ai>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_083539_503000_78BCBBD9 
-X-CRM114-Status: GOOD (  24.37  )
+X-CRM114-CacheID: sfid-20221123_103247_581956_FA44934A 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,106 +93,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Nov 2022 at 13:25, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 15/11/2022 07:38, Jagan Teki wrote:
-> > On Tue, 8 Nov 2022 at 23:43, Krzysztof Kozlowski
-> > <krzysztof.kozlowski@linaro.org> wrote:
-> >>
-> >> On 08/11/2022 05:13, Jagan Teki wrote:
-> >>> RV1126 is a high-performance vision processor SoC for IPC/CVR,
-> >>> especially for AI related application.
-> >>>
-> >>> It is based on quad-core ARM Cortex-A7 32-bit core which integrates
-> >>> NEON and FPU. There is a 32KB I-cache and 32KB D-cache for each core
-> >>> and 512KB unified L2 cache. It has build-in NPU supports INT8/INT16
-> >>> hybrid operation and computing power is up to 2.0TOPs.
-> >>>
-> >>> This patch add basic core dtsi support.
-> >>>
-> >>> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
-> >>> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> >>> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> >>> ---
-> >>> Changes for v7:
-> >>> - fix dtbs_check
-> >>> - rearrange nodes
-> >>> - remove Edegble in license text
-> >>> Changes for v6:
-> >>> - add psci node
-> >>> Changes for v5:
-> >>> - none
-> >>> Changes for v4:
-> >>> - update i2c0
-> >>> - rebase on -next
-> >>> Changes for v3:
-> >>> - update cru and power file names
-> >>> Changes for v2:
-> >>> - split pinctrl in separate patch
-> >>>
-> >>>  arch/arm/boot/dts/rv1126.dtsi | 438 ++++++++++++++++++++++++++++++++++
-> >>>  1 file changed, 438 insertions(+)
-> >>>  create mode 100644 arch/arm/boot/dts/rv1126.dtsi
-> >>>
-> >>> diff --git a/arch/arm/boot/dts/rv1126.dtsi b/arch/arm/boot/dts/rv1126.dtsi
-> >>> new file mode 100644
-> >>> index 000000000000..a485420551f5
-> >>> --- /dev/null
-> >>> +++ b/arch/arm/boot/dts/rv1126.dtsi
-> >>> @@ -0,0 +1,438 @@
-> >>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> >>> +/*
-> >>> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-> >>> + */
-> >>> +
-> >>> +#include <dt-bindings/clock/rockchip,rv1126-cru.h>
-> >>> +#include <dt-bindings/gpio/gpio.h>
-> >>> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> >>> +#include <dt-bindings/interrupt-controller/irq.h>
-> >>> +#include <dt-bindings/pinctrl/rockchip.h>
-> >>> +#include <dt-bindings/power/rockchip,rv1126-power.h>
-> >>> +#include <dt-bindings/soc/rockchip,boot-mode.h>
-> >>> +
-> >>> +/ {
-> >>> +     #address-cells = <1>;
-> >>> +     #size-cells = <1>;
-> >>> +
-> >>> +     compatible = "rockchip,rv1126";
-> >>> +
-> >>> +     interrupt-parent = <&gic>;
-> >>> +
-> >>> +     aliases {
-> >>> +             i2c0 = &i2c0;
-> >>> +             serial0 = &uart0;
-> >>> +             serial1 = &uart1;
-> >>> +             serial2 = &uart2;
-> >>> +             serial3 = &uart3;
-> >>> +             serial4 = &uart4;
-> >>> +             serial5 = &uart5;
-> >>
-> >> These are not properties of a SoC but board. They depend on the
-> >> particular routing on the board... unless this SoC is an exception from
-> >> all others?
-> >
-> > Was this a new feature to follow, didn't see this before at least
-> > rockchip SoC's.
-> >
->
-> It's not exactly new comment, but rather not always enforced/given.
+This patch series combined the next level dts patches for 
+Rockchip RV1126 support.
 
-It seems like i2c0 and serial aliases are required across SoC instead
-of the specific board. An example of which i2c0 connected via PMIC
-which indeed require aliases to get a probe, which is common across
-SoC.
+Changes for v8:
+- fix rv1126 dtsi
+- remove uart aliases
+- add adc node name
+- add uart dma-names
+- add timer0 node name
+Changes for v7:
+- fix dtbs_check
+- new dt-bindings patches
+- collect Rob Ack
 
-[    1.778941] i2c_dev: i2c /dev entries driver
-[    1.780877] rk3x-i2c ff3f0000.i2c: rk3x-i2c needs i2cX alias
-[    1.781410] rk3x-i2c: probe of ff3f0000.i2c failed with error -22
-[    1.791312] Bluetooth: HCI UART driver ver 2.3
-
-Thanks,
+Any inputs?
 Jagan.
+
+Jagan Teki (8):
+  dt-bindings: arm: rockchip: Add pmu compatible for rv1126
+  dt-bindings: timer: rk-timer: Add rktimer for rv1126
+  ARM: dts: rockchip: Add Rockchip RV1126 pinctrl
+  ARM: dts: rockchip: Add Rockchip RV1126 SoC
+  dt-bindings: vendor-prefixes: Add Edgeble AI Technologies Pvt. Ltd.
+  dt-bindings: arm: rockchip: Add Edgeble Neural Compute Module 2
+  ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2)
+  ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2) IO
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |   2 +
+ .../bindings/timer/rockchip,rk-timer.yaml     |   1 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ MAINTAINERS                                   |   2 +-
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts  |  38 ++
+ arch/arm/boot/dts/rv1126-edgeble-neu2.dtsi    | 338 ++++++++++++++
+ arch/arm/boot/dts/rv1126-pinctrl.dtsi         | 211 +++++++++
+ arch/arm/boot/dts/rv1126.dtsi                 | 438 ++++++++++++++++++
+ 10 files changed, 1038 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+ create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2.dtsi
+ create mode 100644 arch/arm/boot/dts/rv1126-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rv1126.dtsi
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
