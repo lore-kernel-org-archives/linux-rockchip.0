@@ -4,53 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC99C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Nov 2022 22:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E91C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Nov 2022 01:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gzMp4abMfDFqGWjhXgy3ffQTPXUcrb5MSVWy7o7ne4I=; b=Nkafv5TSNjvuJQ
-	AhmIsp/iKM2ozSKZC9xgv2Ah0b8TLoTiZ5RUhZgSpLH51FYo9fgiIu2/MB1MVKFiXqVMpt3UoA7zr
-	b9guLCN0VG/bzJcO24MR1T2q3pPsgiw+BoHcLPwM8ym3PcOoyBYky3Qlf+KGXMr06oaSJqL8CFxzn
-	gpLuQjFUkkH7vTu/oReLgaWavpkpR1eqxxoOnnLY59E/ybMw35p56D8gR0vm7A1XAgWpE+p4lRVIW
-	nYGBK32qj4MrJAMWncQrvmb4eQujqTCckafllke1cvFOT7Epvu3l+YQYR0Z6N5Urrfvs3aA/fa8nw
-	lBE0xQSrMPX9lsHudE6g==;
+	List-Owner; bh=5+G2+xI3fwln/bHmdY4qPYP+KUa7OQCexnEkvnphe8Q=; b=xRJi04cLL1wO7e
+	bQvx9Jx/bjCU243To3PFnQDXcGeyb7juuxvR807kh+6f05wicJpS0Gj7uEy8L4GZiDImfZzCQRxzW
+	Ve8A9yUcEIEb0Ug1ZPraX7EeIRlpnI2Y8jYRwCQbxF+kSMT0l2T1yiT90GSYPor+KzNj7M3KhRsLi
+	1xOCYsH6zTog1v5CIT0wioIxuJycq1SdUgzjd/BKKdiSP+bBlakhaz9tjGnbYb/jOAha53uCAeQEW
+	OK8JYHmq3mARkZv2HeGXTuD+pEffcBDqXZwnUobKl8T5aiAQ1aL9joN+Z4AkKaAyzGpKDly90CBQh
+	Pp0jl8GdkzDPV+nS3FaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxbqy-00C9jJ-Nn; Tue, 22 Nov 2022 22:34:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oxewL-00Cmcu-IT; Wed, 23 Nov 2022 01:52:41 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxbqS-00C9UE-09; Tue, 22 Nov 2022 22:34:25 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oxbqJ-0004DQ-Ji; Tue, 22 Nov 2022 23:34:15 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Anand Moon <linux.amoon@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	devicetree@vger.kernel.org,
-	Peter Geis <pgwipeout@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [linux-next-v2 1/5] arm64: dts: rockchip: Fix gmac phy mode to rgmii on Rock 3A SBC.
-Date: Tue, 22 Nov 2022 23:34:11 +0100
-Message-Id: <166915627083.1689466.10618700392262605965.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221116200150.4657-2-linux.amoon@gmail.com>
-References: <20221116200150.4657-1-linux.amoon@gmail.com> <20221116200150.4657-2-linux.amoon@gmail.com>
+	id 1oxew7-00CmWk-DY; Wed, 23 Nov 2022 01:52:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id BDED1B81DDD;
+	Wed, 23 Nov 2022 01:52:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F839C433D6;
+	Wed, 23 Nov 2022 01:52:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669168344;
+	bh=dTA0Ua0yEjDRaEG6ZxMKIqle9mnBNl2ZpQuwd5Bx88g=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=mCyRDXCG9YB364voD4uLV7TbJ1zVps9MntGPHH4g0extA883uE4AEEcybirjSVbMD
+	 WxKOMzbtow5+8oSIO/ek7EPyZjf/9r9NembrNDsSWiOoHrfUNfvGmdWpFw8Yy30Jbg
+	 3iF1aVcThk3r6Lme3oVP+nzDpckIsLhEUdYt6YiMlwK8pKz+D59lax2WamQ4+6QSFB
+	 rL2FgQlgO9RcoYJ1drnyvlab7ra0sEDuijwS67m8SY0I+U9S02CW4PixRzg8ruY3sO
+	 uT3pXTqEzjaN0dQSEge6Is3l0T/ebPNORfo7KPMqSbs9KFmM8llwBLdPCo8YlQvxkH
+	 WpW1nwnRJj45g==
 MIME-Version: 1.0
+In-Reply-To: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
+References: <12dd5cb49efa7714f8e0389e4c7b3bc829e8a90e.1668289299.git.christophe.jaillet@wanadoo.fr>
+Subject: Re: [PATCH] clk: Remove a useless include
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, linux-clk@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Heiko Stuebner <heiko@sntech.de>, Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Michael Turquette <mturquette@baylibre.com>, Neil Armstrong <neil.armstrong@linaro.org>
+Date: Tue, 22 Nov 2022 17:52:22 -0800
+User-Agent: alot/0.10
+Message-Id: <20221123015224.6F839C433D6@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_143424_058239_677EEA3E 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20221122_175227_655233_71C38707 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,26 +71,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Nov 2022 20:01:43 +0000, Anand Moon wrote:
-> On rk356x ethernet phy support reduced media independent interface (RMII)
-> and reduced gigabit media independent interface (RGMII).
-> So set the phy mode to rgmii to support clock delay, also
-> add TX and RX delay for phy-mode.
+Quoting Christophe JAILLET (2022-11-12 13:43:03)
+> <linux/rational.h> is not needed for these drivers. Remove the
+> corresponding #include.
 > 
-> Fix following warning
-> 
-> [...]
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
 
-Applied, thanks!
-
-[2/5] arm64: dts: rockchip: Add support of external clock to ethernet node on Rock 3A SBC
-      commit: ef9f4b4a50206bedd931f45dd9fd57fd4c1714a6
-[3/5] arm64: dts: rockchip: Add support of regulator for ethernet node on Rock 3A SBC
-      commit: 79aa02ddc682558edb9bd56522ad841759c99201
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Applied to clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
