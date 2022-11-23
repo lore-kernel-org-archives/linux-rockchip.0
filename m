@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0720AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Nov 2022 18:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B7DC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Nov 2022 18:34:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+HgtsJ7k9zz/6XEClYdt+h3pGu8ATn6goGvtscmX62o=; b=wDjO/Ge/YnTlaS
-	Dujr69n/KauSeYzbCvl21x30Yt8pC+1LZjJSHzdUCr7znK3VglMTAjhTGFm/frbt/fZ+A35BtRrIf
-	aSvwob8v3MF9uSvdpCI6He7uVZJFj/QE2+7UT6ctA62v+uXv82gJiFOxjGLFeQMPLat6IZwSPHNWs
-	U66F5DlFn3UsS7H/ozZURu9CYMLAcR0yEMbdiWOruiBhgJ08O2lmLUCL0doOCNZr+H0W+y/P8LVvo
-	XziqtsMgfXDZh52fODAB4qxQZTuQi7R8ShQzs+isOjVVUp0AkRLEfmbJeuaBTQUx8fojzEY6BzQuM
-	4Jwo2AxdLGiAt83gAdhw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fMQjJRV3B+Ut6NoJeouoeqj6bPEaf3m6bRXEPvzxgRE=; b=KGFY2ttk6FHkUQ
+	p4UMmTm+owxb6qFZCVFjI0LqTWTvQWLhuUh9kLD9eq43S/LVUD2Ewmljgdf3WYVjWbqjCiZEqtmjC
+	w+jPqc1qlxeQrHnqgCXPpE7NUX+t+27PQgNAZEdAUxbnQso01bKG04TbgzQn8dx0dwIe78kqO/tlJ
+	JekGS5dc3RCWqupUg8eVTB6sLeIKp4C2W/uG0Kfv5JK3vsFbzepECXhUwnRqrWztbTjOf+AysbXzU
+	Kz+TzWng7Vovf4X+ENg7iowq4mQfDnYr08bwvoTGQMleFDtl5hnE6MBnatVojjciBWKF7thu5g2Pp
+	9uo70eU/pVwHRYSWqoNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxuYz-001f2z-LM; Wed, 23 Nov 2022 18:33:37 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1oxuZz-001fSa-Iq; Wed, 23 Nov 2022 18:34:39 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxuYB-001ehl-HF
-	for linux-rockchip@lists.infradead.org; Wed, 23 Nov 2022 18:32:48 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id a22-20020a17090a6d9600b0021896eb5554so2895422pjk.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Nov 2022 10:32:44 -0800 (PST)
+	id 1oxuYH-001emX-2v
+	for linux-rockchip@lists.infradead.org; Wed, 23 Nov 2022 18:32:54 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id k5so16554889pjo.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Nov 2022 10:32:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NZABUQWhI60I9tegrwMWQreaQqUzVwxzH3LtE7y7zkQ=;
-        b=lkOt4Lu9szF0fBQH9eSaea60q5o/jZo6kOC6f+bAmuuX2Q+Eay8K12TKArZ8MYFeYS
-         gGNO3/bdO74AAr6+Ii7pqx2tWMf9gcv7JC+r70pzDaKP00zpjBbyK2Pi6OKqmlyY8J3i
-         Avp7rKuyeJmwHS691ed+esWbq1mt76clUO0Yu4pynb6gaPf/w/q4LWJjQjPeIQSnyXSu
-         m7I0gDLkMJAeSq5/MKxD1jcE9GOq9KZ/H9cE9QZSMll/xFkhOmwYJq0NAWMMHcp3eawg
-         rqNyS3mx6Md9vutg6bvnl1hTJXPS5jnIF1Vkk3ucZtttpfSIXq897qPwyj5FQzSkr/ol
-         bC5g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QH40xdstEqWGzwJenNT3rCqkfJ9ajN5rIUi4+/Qwboo=;
+        b=JrFdo9zzSZq4vcjaRKG7bUw2d1ykyBu3DmR5uM6AoS+kqrWKKR0uFmlc4c7lXispzd
+         kFkiPLTW3txvogFwPDRXz8P6DOUXh5m0ICVY8h9AN1Iy1OcessiYG1rL+sLgIZOekjTB
+         7D6rtGJ8fVUdxvzJqhK+uAj9Muon9ZZEMU1aNjcspSZAstB4EgbeI5QQy4n9x+oMpinL
+         jwVJBHIlwK2bpelndwekvu8+SplY++A5Ug8+Fl397z12i7M1A7yDdIVzLARJsnL4DOGc
+         rXbv1tYpQnJJddseV4Jxn2l029mg0S1ZnkqEiPk593Z9AUqNtvHXQdTu24TVK3fK747f
+         Yxaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NZABUQWhI60I9tegrwMWQreaQqUzVwxzH3LtE7y7zkQ=;
-        b=p/qX39ad2J6i7/oOtSlvxFiDqfvtLbORx/7Tli63zBB/2+cnaC8miqH3jbSqSlZWwr
-         QRvbm756Fcw76wc3mOSQMa2F2OxhdBSSOICdEbSP4BAUf6qmXNJ2Oq+tcujUyYLFSmIX
-         hr3qLYCpqcWH+Yfc9Czsa2MiThTfm59bx5X/tw0K7E6JKSEhGiHmavm0CHllMRqHpLC8
-         ZBSYsiR4RJH9Itw0yd2MRRBYTSZWDnj0GqNjemrHAX0yaa3vhtK8CPJKysox9WBwyP4t
-         pmr8xZv8jfZ4tCkdfR3QRQ6UALmazFiJb5UlvJdHD3vtTkrC6e2F3Ex5CBU+YaF5gLNN
-         Dhxw==
-X-Gm-Message-State: ANoB5pngzHZW+ctg9WDKdm/zLkpBAxQIxrDHl5Xk7l6aw5mFNnA8Nq/M
-	8L0zKeg+Lz1QHeja8iOE/Bs3aA==
-X-Google-Smtp-Source: AA0mqf5LpGxAubWk7IgLLkviKV04MNy0SzL43/+yW0xpUAEFwDxUogCqwZCnd7+60YwKY8fvKepVHA==
-X-Received: by 2002:a17:902:f2c5:b0:189:1cc3:802a with SMTP id h5-20020a170902f2c500b001891cc3802amr11595622plc.56.1669228364464;
-        Wed, 23 Nov 2022 10:32:44 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=QH40xdstEqWGzwJenNT3rCqkfJ9ajN5rIUi4+/Qwboo=;
+        b=7qx5dhrpqESHuByQ97D+u6+Ki8hR/ZAjC8W7FbmrjMdd83TKqS0pDcb//tQCdwiFud
+         XjffWef+8N+Gt8IacPg7wqB8SecQVLx0tRFZtczPCdr0j8I+fvi9DC/vohj5uTLs1AbG
+         4EGkQ413UGG3EzaiBMa5nQGWeDawHqRYPrDt5pL19Xe4Pp33oOa3/d1jGziY1z8wL7p+
+         0wzaXF+Gb1Rq0gZ6RhzfROVHfRXLM6lxEKeli0LSG7mM4uGfmJ4nWr1l3SfIWe+ndoPw
+         M7ElbgXKeGtuTfVBGU91JNgnkwIlZooIamPxCiQN65bUY0tEM/wg1E/Pnh3Ytpv6r2Vb
+         MbHA==
+X-Gm-Message-State: ANoB5pmQ1LazOKFC3fhZNVEZDB8RM2W/ankX7aeYCseaZxlRX4TAcOtJ
+	S09NFu07utMuBesFqlYZAP9DKg==
+X-Google-Smtp-Source: AA0mqf4pLxcJq9p7xF2+hlaeWUITQBV/rTFCR2so3rNYWpE+TbroSTO+lGHvi5XnoOSkv/PMshemTg==
+X-Received: by 2002:a17:90a:1bc2:b0:218:8bdb:de3f with SMTP id r2-20020a17090a1bc200b002188bdbde3fmr24941981pjr.225.1669228372327;
+        Wed, 23 Nov 2022 10:32:52 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a809:a055:fcc4:4677:827])
-        by smtp.gmail.com with ESMTPSA id x3-20020aa79403000000b0056d2317455bsm13006732pfo.7.2022.11.23.10.32.40
+        by smtp.gmail.com with ESMTPSA id x3-20020aa79403000000b0056d2317455bsm13006732pfo.7.2022.11.23.10.32.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Nov 2022 10:32:43 -0800 (PST)
+        Wed, 23 Nov 2022 10:32:51 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -69,14 +70,17 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
 	devicetree@vger.kernel.org,
 	Johan Jonker <jbx6244@gmail.com>,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v8 0/8] ARM: Add Rockchip RV1126 support
-Date: Thu, 24 Nov 2022 00:01:16 +0530
-Message-Id: <20221123183124.6911-1-jagan@edgeble.ai>
+Subject: [PATCH v8 2/8] dt-bindings: timer: rk-timer: Add rktimer for rv1126
+Date: Thu, 24 Nov 2022 00:01:18 +0530
+Message-Id: <20221123183124.6911-3-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221123183124.6911-1-jagan@edgeble.ai>
+References: <20221123183124.6911-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_103247_581956_FA44934A 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20221123_103253_163199_5FF5C7D9 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,49 +97,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series combined the next level dts patches for 
-Rockchip RV1126 support.
+Add rockchip timer compatible string for rockchip rv1126.
 
+Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+---
 Changes for v8:
-- fix rv1126 dtsi
-- remove uart aliases
-- add adc node name
-- add uart dma-names
-- add timer0 node name
-Changes for v7:
-- fix dtbs_check
-- new dt-bindings patches
-- collect Rob Ack
+- drop cc list
 
-Any inputs?
-Jagan.
+ Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Jagan Teki (8):
-  dt-bindings: arm: rockchip: Add pmu compatible for rv1126
-  dt-bindings: timer: rk-timer: Add rktimer for rv1126
-  ARM: dts: rockchip: Add Rockchip RV1126 pinctrl
-  ARM: dts: rockchip: Add Rockchip RV1126 SoC
-  dt-bindings: vendor-prefixes: Add Edgeble AI Technologies Pvt. Ltd.
-  dt-bindings: arm: rockchip: Add Edgeble Neural Compute Module 2
-  ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2)
-  ARM: dts: rockchip: rv1126: Add Edgeble Neural Compute Module 2(Neu2) IO
-
- .../devicetree/bindings/arm/rockchip.yaml     |   6 +
- .../devicetree/bindings/arm/rockchip/pmu.yaml |   2 +
- .../bindings/timer/rockchip,rk-timer.yaml     |   1 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- MAINTAINERS                                   |   2 +-
- arch/arm/boot/dts/Makefile                    |   1 +
- arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts  |  38 ++
- arch/arm/boot/dts/rv1126-edgeble-neu2.dtsi    | 338 ++++++++++++++
- arch/arm/boot/dts/rv1126-pinctrl.dtsi         | 211 +++++++++
- arch/arm/boot/dts/rv1126.dtsi                 | 438 ++++++++++++++++++
- 10 files changed, 1038 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-neu2.dtsi
- create mode 100644 arch/arm/boot/dts/rv1126-pinctrl.dtsi
- create mode 100644 arch/arm/boot/dts/rv1126.dtsi
-
+diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+index dc3bc1e62fe9..a6221222e948 100644
+--- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
++++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+@@ -17,6 +17,7 @@ properties:
+       - items:
+           - enum:
+               - rockchip,rv1108-timer
++              - rockchip,rv1126-timer
+               - rockchip,rk3036-timer
+               - rockchip,rk3188-timer
+               - rockchip,rk3228-timer
 -- 
 2.25.1
 
