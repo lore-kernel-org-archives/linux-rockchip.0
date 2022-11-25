@@ -4,68 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 831D3C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Nov 2022 19:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A61AC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Nov 2022 21:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6D+Wj4NJSjGNH1EA7y2NW4OaWba+WXFBTAAi8H+MCnM=; b=RyWDmjNFM33bIt+1IMn1B3HFvb
-	+tVWQzLcIExZCgEltctPfogT11o+waXudv/JnVmEB8ixrhgr6kHtmVo6gkskdErKULHclUM6dOvtl
-	ABc6PKLECQt+4Nb8yVNEprKz5n5L7uE2WqlZ4Jhd4uuhWPO3F8JsHK1DO9K6oIGnHWQVBIc0HVqks
-	kyYOCPKtUQKeBuT854+LIESi6tE+ZXWs4PYPMaxJ8AefFpmb6BconDeoHUkTmOWzFlFCfnerHIFEx
-	yzC8e4UfG1OBbhegk/4jFqDNJsDAhCBV0/OphQQ6nE1RQzsUOKsSuCJ+4E6H8t2zfrBowMcQJ3mgg
-	hUHySOhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v+d1Nup6whBV3mysEUwwQ9EpDWvz9o4BoGrSCBof74g=; b=zLr/j/Gr8Q/GBB
+	rpXB44/nrJe5LDlpPvxSHad794OzWUOAcE/giMD3unfpf/vmr7nOrA0Exn5sg1rj79XlWhluy1S5Z
+	IwZhyBaH62QBEcylEON4rlJm7sZxvpqNHWyrf8tSU8mKr/35EOFzh+Cgc/IkCScGwet0Httm1ByTP
+	BuArcshvsBl+qov8bsIhdBDLlahqvDfbfF0vO9BnUCQ2w7ueWe30/GgM7hELZBbfrkPyTxECbjFjV
+	K6KrjY7cWvrbP0yNb00unBLmFHdWbVF52tBZlSnnEqpkavTBXTfKohia9ziYNT6tvwVFCGf7mmcHh
+	3750yi8IjDS+98bVKccA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyeSI-001jyj-50; Fri, 25 Nov 2022 19:33:46 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oygQi-002Hd2-Kc; Fri, 25 Nov 2022 21:40:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyeSF-001jw6-Ac
-	for linux-rockchip@lists.infradead.org; Fri, 25 Nov 2022 19:33:44 +0000
+	id 1oygQX-002Ha4-Ok; Fri, 25 Nov 2022 21:40:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id DC5D9B82A89;
-	Fri, 25 Nov 2022 19:33:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91CF4C433D6;
-	Fri, 25 Nov 2022 19:33:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3107060ECF;
+	Fri, 25 Nov 2022 21:40:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43494C433C1;
+	Fri, 25 Nov 2022 21:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669404818;
-	bh=RVB3BmgfIM7pdYM85+7yjccUQRTSMo0yeGZcTrcEkBg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YiKSxMzXLnMCrch/yOa86tO5zgmwB6DcYXj03TMvByfgpIh6B2hcGo3sNIi0sNJsv
-	 KQq48sgoO5ekFyI1H2FefHNQBLP4QvDUMfhqQX/97BQqYz9wqajSXX52HORXQIezow
-	 e6FgKhWxSXa788LsMeBn72lIkT9r4rR0DRwQdnC7fbrEJN0uteYjb3uFvDc+7cl2Tc
-	 KXQUfT6N/7+UTodtAuYQUIIgs/fogJCJtTP+jNT0KrgA9ZNL6ZWQPTssgMpzdRbLCE
-	 yIJ+aoe+sjvqWyZpZVIje3FQkd2jUbzGcj4+Uo82OP46X3hE7QEt4JueW7pmjJbfYB
-	 +6i2TMExQYD3w==
-Date: Fri, 25 Nov 2022 19:33:32 +0000
+	s=k20201202; t=1669412404;
+	bh=60OYuwERXmeJ082oTHm4vNOnTl4qAPQKBRpMhBKDRrg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=nGITamugCR2YRPeV8yeGPa7FCVN/G1LQAcnkE0xX1oDb80dSSVO4nvB4RaCNHXE/V
+	 YTmyxm6GKwkWIX8Id7rvTSUFXJ9BsgyTZ7YZgPkB24z5m0YoW4tXACGf5StxLGE7Dy
+	 cF5YYi5g9SQ1uPq2PzrNSnDhosH0UxSXRKhLQ36yFHb6Sp5SUmOHHmPw9j9yGNjUW6
+	 V666PpdDk5lOvaAhcwSFq0i236E7+Nx375A7TimVo1GuK6dNS85OEONtV2yPyIWWJb
+	 B6FxMooDqFCL3s3PtlP2jsBP1SMugXeN0WKK+4wnxJEhDiSal8PyFe8zLKpa3XG8xj
+	 nDgWfrj8KVsxg==
 From: Mark Brown <broonie@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Lee Jones <lee@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v4 11/13] regulator: rk808: Use dev_err_probe
-Message-ID: <Y4EYjNOrS6lDnDZK@sirena.org.uk>
-References: <20221020204251.108565-1-sebastian.reichel@collabora.com>
- <20221020204251.108565-12-sebastian.reichel@collabora.com>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Takashi Iwai <tiwai@suse.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>
+In-Reply-To: <20221025124132.399729-1-frattaroli.nicolas@gmail.com>
+References: <20221025124132.399729-1-frattaroli.nicolas@gmail.com>
+Subject: Re: [PATCH 0/4] RK3588 Audio Support
+Message-Id: <166941240197.2098666.9516708665413168178.b4-ty@kernel.org>
+Date: Fri, 25 Nov 2022 21:40:01 +0000
 MIME-Version: 1.0
-In-Reply-To: <20221020204251.108565-12-sebastian.reichel@collabora.com>
-X-Cookie: Revenge is a meal best served cold.
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_113343_542748_0C817736 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20221125_134005_858262_995FC9CC 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,57 +68,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3350203617580832505=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, 25 Oct 2022 14:41:28 +0200, Nicolas Frattaroli wrote:
+> This patchset refactors the Rockchip I2S/TDM driver in order to
+> support the RK3588 SoC, and then adds the necessary compatible
+> string to load the driver for it.
+> 
+> Patch 1 rectifies a problem with the bindings where we were too
+> strict about requiring the rockchip,grf property. Most features
+> of this audio device don't need access to the GRF to function.
+> 
+> [...]
 
---===============3350203617580832505==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="UP7MXguqYcaP8hwk"
-Content-Disposition: inline
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
---UP7MXguqYcaP8hwk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thanks!
 
-On Thu, Oct 20, 2022 at 10:42:49PM +0200, Sebastian Reichel wrote:
-> Print error message for potential EPROBE_DEFER error using
-> dev_err_probe, which captures the reason in
-> /sys/kernel/debug/devices_deferred and otherwise silences
-> the message.
+[1/4] ASoC: dt-bindings: rockchip: i2s-tdm: Make grf property optional
+      commit: 1024a5b29e90a18530588b3f161e81cf3fae7dcf
+[2/4] ASoC: rockchip: i2s_tdm: Make the grf property optional
+      commit: d980004e349049a3fcbffc6096d14896f6a122ed
+[3/4] ASoC: dt-bindings: rockchip: i2s-tdm: Add RK3588 compatible
+      commit: 0643fd3669f5c33bab5b05a813459a2d00a83465
+[4/4] ASoC: rockchip: i2s_tdm: Add support for RK3588
+      commit: c619bd4268ff9895760dab303b4eb15ed3d0f7e9
 
-This doesn't apply against current code, please check and resend.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
---UP7MXguqYcaP8hwk
-Content-Type: application/pgp-signature; name="signature.asc"
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
------BEGIN PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmOBGIsACgkQJNaLcl1U
-h9AS3Af/ZimRMulT/PKXc7g4xcMQKhfESORU7C4dMAr/UyeTa6EaxpaMCLNZ0+kz
-7rVc/Abed6reU2tt/UbFtg+gBB0P2P4YOmgek6iLoF5qL1xx/LkCrFjhv77Y8g+3
-cG66F3ZCIFdy41CkR933jxas+h6s0GAsIxg10yKI8bbaBK+BsvPRoG/6c5vogBZW
-YaMxKDhSYjvkzOPQa3Bb4tneoiTLUDeOVxynPgbekfyz3KCphls/u09fkRsxIUsd
-zZdcR1or0MI3uF01rDUaR/x7st4tFhssX+c+uYu5EG6mqZV+YumPFql6RlsMdmvN
-piaqprywCVIMn2MgykGnYSH/yd0Eiw==
-=WbNx
------END PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
---UP7MXguqYcaP8hwk--
-
-
---===============3350203617580832505==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3350203617580832505==--
-
