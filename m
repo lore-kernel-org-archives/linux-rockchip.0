@@ -4,60 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959A9C43217
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Nov 2022 23:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F79C4167D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Nov 2022 01:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Bd4IFjDoi3ZJnRpEzi8CU/FSMxIPjJWhQ779qf8oL4=; b=iS2Rfz4EzsbDVETs40XxkB7I1W
-	jUxR5rpagTVX82Rvn/XYlpLa4beG73h/mSQYs+u3teAxxFyZltnDLtyxbFzVwN4wEJMM/lta3Mdgc
-	6PTUoQxGEuZuXyUkEMdhGeiObZ54UgYE59wegjVFpt2VYncItuX0+L1OJmmFZXTQ1HI5wx5g/7zCH
-	+rLse7wSaThd5IS105q/SOqeEqLfIU09p9tTE/JlpFcjj9qunZn+OZ7mlJxIug0CH+kNZPcdF33u5
-	nsQD9yLIxiweJ5LQIpeD0LOnIjQNUvzodBeNm9D8tclhtDZ41GpAO/uQdtUKY7UEe0MlT5O7cH0SN
-	8z1x5IvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yrU9ep6B57Ib7ec+vwmrxIOwz3JWAZPnSb38iaDrgRU=; b=aHQwQ1HNjUbT5+
+	Phs8b8kqSF6K5ERndErEFDmhsJ1VRlvwF429gDYIv/cklxrkURidJRvoF5/ne9GDjRzTaFc69/sty
+	LGOiTaWo2LN9JLa1HHzW9TwmGelTBb5ewr8hY8MgBvHyajEs/irkVHX+/pj3McyV8ryvkr0cZWEve
+	eDMpEOKZMrP1f7N0+PdzBu0V77ee+2X4X4Y7C9suCIi9A4Q6iF88SUxdpUaWSu+yDJ1mj8HCEKA4e
+	vrdVkg0gyd6YljrN444JYFjryOVDko0PS/s4KTx/47qAPGLsh8PTQb5v4jfLSQKeFlLHYl6ErAHy3
+	mhrMG8LUS8p8dvpx2WPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyiXi-002zUS-Kd; Fri, 25 Nov 2022 23:55:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oyjmJ-003JRj-Ff; Sat, 26 Nov 2022 01:14:47 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyiV2-002y3u-7k
-	for linux-rockchip@lists.infradead.org; Fri, 25 Nov 2022 23:52:54 +0000
-Received: from mercury (unknown [185.209.196.162])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 384D96602B72;
-	Fri, 25 Nov 2022 23:52:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669420370;
-	bh=tNb/Byxv+XfP3SsenGloDIQ1IxNNx5zlya+c7RliDy4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=URwB0snqpYeWAIz8pJzMN5fkbQmeXKAn0DGdk453QnUgdjjNJLi3cGtTwWAkyYrJq
-	 eX2t3OcfwdRwXdmiXJRyS5EKnsetuljG6liX7vQn03WUVMVrtOFOEb3YWv6WvV9FMk
-	 KAxp3ZVrVzvlbaLNumQ9VK9G3h85LzB+MZbUo0YXTAP+mYOotxl4RmSOIlULb+ZHGj
-	 wZZ1WPRKpj+JOFjhKeMwemkwNceVWS1ogP9+bsrq9l49yGQdZ1Yf4korD84Fw2jB9x
-	 vkuVWDeZdKm0FSOg07TK97GQrJDOt62WpQO6cTu3XVUoQ3FSBwIl5gVmzeDEbA/nOb
-	 gonKKNJPp/t+g==
-Received: by mercury (Postfix, from userid 1000)
-	id 2C92B10613A9; Sat, 26 Nov 2022 00:52:48 +0100 (CET)
-Date: Sat, 26 Nov 2022 00:52:48 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCHv4 03/13] rtc: rk808: reduce 'struct rk808' usage
-Message-ID: <20221125235248.in6g5ynxmjm2zoc5@mercury.elektranox.org>
-References: <20221020204251.108565-1-sebastian.reichel@collabora.com>
- <20221020204251.108565-4-sebastian.reichel@collabora.com>
+	id 1oyjmG-003JNX-Nf
+	for linux-rockchip@lists.infradead.org; Sat, 26 Nov 2022 01:14:46 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-142306beb9aso6896247fac.11
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Nov 2022 17:14:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AOsNWoagzgRZODcbmXOYo+O0l9ki/Luu3MhVCoRxO4I=;
+        b=gz4YAyXMWnkDMoS8FoSujGQTdDxbYNBTRT7Ck/9I64JMuecdiuBroS9+Vac98ZpnDI
+         rQLX01ZyFwT7dKOVKIYdT0D7nh2NOPPe9j9fMwPiqc/GCe8ndkFRA/5cdxvx08qGc6j7
+         suY3SVzryAs0NBrh5fYJPQ+mjt9ucN06Zpi/BMtDhqHHL7s6aVptWySYxV/rWNK3gGP4
+         5BHjx2LR43cFRQpa/kFEdkNsEKWrbOwnRVIuebiSAHmIYkkb8K0tx7Q8tzYTH4cmESs/
+         ZcgSTMLy/sa+9HX8P6m2CW5vwtNTWtDrnjeLFpCI074z/k2OJNU4Lps+vJW/nyFI6gIk
+         OIqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AOsNWoagzgRZODcbmXOYo+O0l9ki/Luu3MhVCoRxO4I=;
+        b=L6gYtT4wcnkTVuPZRABs/i88gPtDD9YTpXtDKpIKMARtEDQCJB6gMc0zK4KiZQ3ZcK
+         7l2DWY/3GXo3QTmr0Ap624CBM7CWTPoJMC+6mv3Yw80RKWxrFwujjuZGEZsH822JbKTV
+         kdMpg7peJ5jyaf0UjejWLFAxZlUDjJ3cC5iuyr2e/okdtjZgk2/CjF7kOiH4EI/5+S1L
+         hk2QmUFbD6uPJAJB6qTQvcC29dM5IuLe0mS0AoI1iKqaReaBDNegx4VsN/IG6mdQG3OM
+         zY8MLeJnzZtslsZFMf7/JwRR3+O+B9pkvMnaV8ICw8VHMMr23jgEZnOnOvae9TDMfDky
+         Sl5w==
+X-Gm-Message-State: ANoB5pkPM4A7ERPA6sjwZQZIYsHH9A1P1FW6Szx+KEi7Ls9dxoYuQ0tj
+	SVi8xcPyOTVLr/OTuaUC07g=
+X-Google-Smtp-Source: AA0mqf5UNLW6ajg22soHrRtX6fbml+/xf79Ypr1Yvrbl/wTGQgPbIsguE1qdaszdxWWzj6KwJYTweg==
+X-Received: by 2002:a05:6870:9f8c:b0:13c:5763:9406 with SMTP id xm12-20020a0568709f8c00b0013c57639406mr14829608oab.200.1669425278820;
+        Fri, 25 Nov 2022 17:14:38 -0800 (PST)
+Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id s191-20020acaa9c8000000b003546fada8f6sm2066177oie.12.2022.11.25.17.14.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Nov 2022 17:14:38 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: add Hynitron cst340 for Anbernic 353 series
+Date: Fri, 25 Nov 2022 19:14:31 -0600
+Message-Id: <20221126011432.22891-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20221020204251.108565-4-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_155252_621474_C4E70CD9 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20221125_171444_789173_FAA40189 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,301 +86,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8471363271547651963=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Chris Morgan <macromorgan@hotmail.com>
 
---===============8471363271547651963==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="swyl53gknpslotjl"
-Content-Disposition: inline
+Add support for the Hynitron cst340 touchscreen driver to the Anbernic
+RG353P and RG353V devices. Note the RG353VS device does not have a
+touchscreen.
 
+https://lore.kernel.org/linux-input/Y1y9e9sgE%2FDck9fB@google.com/
 
---swyl53gknpslotjl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3566-anbernic-rg353p.dts   | 20 +++++++++++++++++++
+ .../dts/rockchip/rk3566-anbernic-rg353v.dts   | 13 ++++++++++++
+ 2 files changed, 33 insertions(+)
 
-Hi Alexandre,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+index 63cff402f3a8..06222dead921 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+@@ -95,6 +95,19 @@ &i2c2 {
+ 	pintctrl-names = "default";
+ 	pinctrl-0 = <&i2c2m1_xfer>;
+ 	status = "okay";
++
++	touch@1a {
++		compatible = "hynitron,cst340";
++		reg = <0x1a>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-0 = <&touch_rst>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
++		touchscreen-size-x = <640>;
++		touchscreen-size-y = <480>;
++		status = "okay";
++	};
+ };
+ 
+ &pinctrl {
+@@ -104,6 +117,13 @@ spk_amp_enable_h: spk-amp-enable-h {
+ 				<4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	touch {
++		touch_rst: touch-rst {
++			rockchip,pins =
++				<4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
+ };
+ 
+ &rk817 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+index 885234a023e1..dc3fc67f5853 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+@@ -82,6 +82,19 @@ &i2c2 {
+ 	pintctrl-names = "default";
+ 	pinctrl-0 = <&i2c2m1_xfer>;
+ 	status = "okay";
++
++	touch@1a {
++		compatible = "hynitron,cst340";
++		reg = <0x1a>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-0 = <&touch_rst>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
++		touchscreen-size-x = <640>;
++		touchscreen-size-y = <480>;
++		status = "okay";
++	};
+ };
+ 
+ &pinctrl {
+-- 
+2.25.1
 
-On Thu, Oct 20, 2022 at 10:42:41PM +0200, Sebastian Reichel wrote:
-> Reduce usage of 'struct rk808' (driver data of the parent MFD), so
-> that only the chip variant field is still being accessed directly.
-> This allows restructuring the MFD driver to support SPI based
-> PMICs.
->=20
-> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
-
-You can take this patch. I don't think it makes sense to send
-another version of this series before the merge window considering
-it involves so many subystems. If the RTC patch is merged now it
-does not need to become part of the immutable branch later :)
-
-Thanks,
-
--- Sebastian
-
->  drivers/rtc/rtc-rk808.c | 47 ++++++++++++++++++-----------------------
->  1 file changed, 20 insertions(+), 27 deletions(-)
->=20
-> diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
-> index e920da8c08da..2d9bcb3ce1e3 100644
-> --- a/drivers/rtc/rtc-rk808.c
-> +++ b/drivers/rtc/rtc-rk808.c
-> @@ -14,7 +14,6 @@
->  #include <linux/bcd.h>
->  #include <linux/mfd/rk808.h>
->  #include <linux/platform_device.h>
-> -#include <linux/i2c.h>
-> =20
->  /* RTC_CTRL_REG bitfields */
->  #define BIT_RTC_CTRL_REG_STOP_RTC_M		BIT(0)
-> @@ -51,7 +50,7 @@ struct rk_rtc_compat_reg {
->  };
-> =20
->  struct rk808_rtc {
-> -	struct rk808 *rk808;
-> +	struct regmap *regmap;
->  	struct rtc_device *rtc;
->  	struct rk_rtc_compat_reg *creg;
->  	int irq;
-> @@ -97,12 +96,11 @@ static void gregorian_to_rockchip(struct rtc_time *tm)
->  static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
->  {
->  	struct rk808_rtc *rk808_rtc =3D dev_get_drvdata(dev);
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	u8 rtc_data[NUM_TIME_REGS];
->  	int ret;
-> =20
->  	/* Force an update of the shadowed registers right now */
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
->  	if (ret) {
-> @@ -116,7 +114,7 @@ static int rk808_rtc_readtime(struct device *dev, str=
-uct rtc_time *tm)
->  	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
->  	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
->  	 */
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
->  				 0);
->  	if (ret) {
-> @@ -124,7 +122,7 @@ static int rk808_rtc_readtime(struct device *dev, str=
-uct rtc_time *tm)
->  		return ret;
->  	}
-> =20
-> -	ret =3D regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
-> +	ret =3D regmap_bulk_read(rk808_rtc->regmap, rk808_rtc->creg->seconds_re=
-g,
->  			       rtc_data, NUM_TIME_REGS);
->  	if (ret) {
->  		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
-> @@ -148,7 +146,6 @@ static int rk808_rtc_readtime(struct device *dev, str=
-uct rtc_time *tm)
->  static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
->  {
->  	struct rk808_rtc *rk808_rtc =3D dev_get_drvdata(dev);
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	u8 rtc_data[NUM_TIME_REGS];
->  	int ret;
-> =20
-> @@ -163,7 +160,7 @@ static int rk808_rtc_set_time(struct device *dev, str=
-uct rtc_time *tm)
->  	rtc_data[6] =3D bin2bcd(tm->tm_wday);
-> =20
->  	/* Stop RTC while updating the RTC registers */
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M);
->  	if (ret) {
-> @@ -171,14 +168,14 @@ static int rk808_rtc_set_time(struct device *dev, s=
-truct rtc_time *tm)
->  		return ret;
->  	}
-> =20
-> -	ret =3D regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
-> +	ret =3D regmap_bulk_write(rk808_rtc->regmap, rk808_rtc->creg->seconds_r=
-eg,
->  				rtc_data, NUM_TIME_REGS);
->  	if (ret) {
->  		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
->  		return ret;
->  	}
->  	/* Start RTC again */
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
->  	if (ret) {
->  		dev_err(dev, "Failed to update RTC control: %d\n", ret);
-> @@ -191,12 +188,11 @@ static int rk808_rtc_set_time(struct device *dev, s=
-truct rtc_time *tm)
->  static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *al=
-rm)
->  {
->  	struct rk808_rtc *rk808_rtc =3D dev_get_drvdata(dev);
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	u8 alrm_data[NUM_ALARM_REGS];
->  	uint32_t int_reg;
->  	int ret;
-> =20
-> -	ret =3D regmap_bulk_read(rk808->regmap,
-> +	ret =3D regmap_bulk_read(rk808_rtc->regmap,
->  			       rk808_rtc->creg->alarm_seconds_reg,
->  			       alrm_data, NUM_ALARM_REGS);
->  	if (ret) {
-> @@ -212,7 +208,7 @@ static int rk808_rtc_readalarm(struct device *dev, st=
-ruct rtc_wkalrm *alrm)
->  	alrm->time.tm_year =3D (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
->  	rockchip_to_gregorian(&alrm->time);
-> =20
-> -	ret =3D regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
-> +	ret =3D regmap_read(rk808_rtc->regmap, rk808_rtc->creg->int_reg, &int_r=
-eg);
->  	if (ret) {
->  		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
->  		return ret;
-> @@ -228,10 +224,9 @@ static int rk808_rtc_readalarm(struct device *dev, s=
-truct rtc_wkalrm *alrm)
-> =20
->  static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
->  {
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	int ret;
-> =20
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
-> =20
->  	return ret;
-> @@ -239,10 +234,9 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk=
-808_rtc)
-> =20
->  static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
->  {
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	int ret;
-> =20
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
-> =20
-> @@ -252,7 +246,6 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk=
-808_rtc)
->  static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alr=
-m)
->  {
->  	struct rk808_rtc *rk808_rtc =3D dev_get_drvdata(dev);
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
->  	u8 alrm_data[NUM_ALARM_REGS];
->  	int ret;
-> =20
-> @@ -272,7 +265,7 @@ static int rk808_rtc_setalarm(struct device *dev, str=
-uct rtc_wkalrm *alrm)
->  	alrm_data[4] =3D bin2bcd(alrm->time.tm_mon + 1);
->  	alrm_data[5] =3D bin2bcd(alrm->time.tm_year - 100);
-> =20
-> -	ret =3D regmap_bulk_write(rk808->regmap,
-> +	ret =3D regmap_bulk_write(rk808_rtc->regmap,
->  				rk808_rtc->creg->alarm_seconds_reg,
->  				alrm_data, NUM_ALARM_REGS);
->  	if (ret) {
-> @@ -313,20 +306,18 @@ static int rk808_rtc_alarm_irq_enable(struct device=
- *dev,
->  static irqreturn_t rk808_alarm_irq(int irq, void *data)
->  {
->  	struct rk808_rtc *rk808_rtc =3D data;
-> -	struct rk808 *rk808 =3D rk808_rtc->rk808;
-> -	struct i2c_client *client =3D rk808->i2c;
->  	int ret;
-> =20
-> -	ret =3D regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
-> +	ret =3D regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
->  			   RTC_STATUS_MASK);
->  	if (ret) {
-> -		dev_err(&client->dev,
-> +		dev_err(&rk808_rtc->rtc->dev,
->  			"%s:Failed to update RTC status: %d\n", __func__, ret);
->  		return ret;
->  	}
-> =20
->  	rtc_update_irq(rk808_rtc->rtc, 1, RTC_IRQF | RTC_AF);
-> -	dev_dbg(&client->dev,
-> +	dev_dbg(&rk808_rtc->rtc->dev,
->  		 "%s:irq=3D%d\n", __func__, irq);
->  	return IRQ_HANDLED;
->  }
-> @@ -404,10 +395,12 @@ static int rk808_rtc_probe(struct platform_device *=
-pdev)
->  		break;
->  	}
->  	platform_set_drvdata(pdev, rk808_rtc);
-> -	rk808_rtc->rk808 =3D rk808;
-> +	rk808_rtc->regmap =3D dev_get_regmap(pdev->dev.parent, NULL);
-> +	if (!rk808_rtc->regmap)
-> +		return -ENODEV;
-> =20
->  	/* start rtc running by default, and use shadowed timer. */
-> -	ret =3D regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-> +	ret =3D regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M |
->  				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
->  				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
-> @@ -417,7 +410,7 @@ static int rk808_rtc_probe(struct platform_device *pd=
-ev)
->  		return ret;
->  	}
-> =20
-> -	ret =3D regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
-> +	ret =3D regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
->  			   RTC_STATUS_MASK);
->  	if (ret) {
->  		dev_err(&pdev->dev,
-> --=20
-> 2.35.1
->=20
-
---swyl53gknpslotjl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmOBVU8ACgkQ2O7X88g7
-+ppxwA/+Lv/unAz8u9jb/2tRuBfZnMgzjlDrcSm/vyVk7ywy1+5yQ3Zq7rHkgEsC
-0ADE+/X8s8j30oSNV/tk+erosqaiKTcoR04pFFuP02h482Z128W0HaEQyudCR17S
-mJroMh4oAFxJ2nyV2hokuTYRAV7cy7x4bOORV95Y44n5JEqraHa2fSlKge3EnBJg
-/iRTSK0yPFm3DVi8p8dLh9Qd+FFOctSzbht4MTIwllva3T9SyxASMmHO9rUyNrCA
-mQEMcumiUI3bDKJH7LPEqkkCZvDnsmFaCkAUagecUSDM3LB5Nj6kTtdOq2sEOd0G
-ijc4jNQHHVAJbWwol5sJ/zzHdVgLsvKROkL2xsCCx7zaeXxgz/mcS0ZhR7x3KNle
-cm1L4gLrb6vbt2OmxVzoqAaN7QmnDorEUaa0/NCj50DpZ+8AuEoaa7YHGYqTlOqI
-StLCzLe/ETsWsuG5169/s12umsI2ITgGastL8zKraXWGOF14FzeHCoizCPOqDr6D
-qGwFRPptMJ9PkHnKjxZF/1upD97bdv4P/6hsJf6qUOoHxf4TXIjBgyOen5QiXwP9
-yPBVnBg7yDWOqw4JMju3HqL2tOBhQqQLOFp6/WH2bNH4GYmkMMsAiea7NBrH2UZL
-oko6ST1mYkjStYatd4OsZqzseN7pVyh7fG07M6agK9l/s314uX0=
-=Thkw
------END PGP SIGNATURE-----
-
---swyl53gknpslotjl--
-
-
---===============8471363271547651963==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8471363271547651963==--
-
