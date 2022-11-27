@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BF08C43217
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Nov 2022 13:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B72C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Nov 2022 13:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qEBiGLv5l7qaXkZIH8bVVvD7joPWPW/ZnCJZGogAtAA=; b=YYLgoY7f0SfdRl
-	o9Vig1j2SnzhcuTNfiib+7SqqWYfNZsePpMnmTqvhRz9CBsO79Qv7qR/wycyzqu6Kvobz/LKZmof+
-	tQJntgvkEfjtQ1cpVpQRRiowjsU7Wy/c9N7mo7B/Pt1j1jQMLW0FCnaQoGpZMlR63nK3AG3n92AZs
-	rfhsLnqWI3ZhO3CijFfQx5XiY5proyF2z/Sk+YRJ+rwzq9JUStIcCKFNTvbAojxM20MKq7tDfqtQI
-	qxjCHLrwIxjrgGzd0QLKsbQgc/6cGiXc4fG0YKvPyA5pMd4zPbxjQJPYT9OQ18N/p7Du4z9LZcnv5
-	Tzy60rxDgm5tBRpQeoBQ==;
+	List-Owner; bh=bObmpNIWg1eG6mjbSkFTZNB/8L1fWfCN+oTizK3PSng=; b=CbHeeOSeSnYeBx
+	ivsoa6ImkLQ5740k5LdLInJwu9otIfb3GGCIgFM9pxLWE8aQjDfujV/kinTwc9HL6deZHTV6l6Ks9
+	YbII6K5nPlTx0ARH/rYpq7QJ+GLF4OR6ssPD2Cc7XgnCyVsLDO/No8ybOl9L7Y5CDS+LHmp9TTrEy
+	kWADzwrEF6YDW1Yrfi3a2CFCFgYiFVolF/ar3sh+ue6RVrEZrjhq5CSB9TulAy8xUjvOzBVCB+WI9
+	wzoGQ6AB18bKcORBD95z/mduhPeNKXmNw+YGf+Napb2Ify9DODMf+/9+jyy1BB32ckdljhDonF+hQ
+	apyacq5Eyqz+K3D+565A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyv9h-006Jmd-Mo; Sat, 26 Nov 2022 13:23:41 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1ozI8M-00BZ2v-On; Sun, 27 Nov 2022 13:55:50 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyv9V-006Jk8-2S
-	for linux-rockchip@lists.infradead.org; Sat, 26 Nov 2022 13:23:40 +0000
-Received: by mail-lj1-x231.google.com with SMTP id a7so8021675ljq.12
-        for <linux-rockchip@lists.infradead.org>; Sat, 26 Nov 2022 05:23:26 -0800 (PST)
+	id 1ozI8J-00BZ1C-Fq
+	for linux-rockchip@lists.infradead.org; Sun, 27 Nov 2022 13:55:49 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id y83so10315643yby.12
+        for <linux-rockchip@lists.infradead.org>; Sun, 27 Nov 2022 05:55:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=n/1roXOdySIxs1dS/N1VkID/IKrNoi7dXAED3KVDP+E=;
-        b=WFpJa/iywGsIj1TGouF0pb+548r06Vjwgcd5EyzUWhr333V4WJ1P7qdra6s5sRINCt
-         +cgeNylffxGiqUiXajyojXWDCDQ76Sm9nTx4BJRiQX0wqKt7UX+O3BT6F20KEZ5YlNCb
-         Xx91Uhwgwvrmfw6V7mi7qZTrhcIPHvQwoLRWWa7YcFNLcyiDgwWcPod1t8ybfqT8vLK7
-         V4eOT7aiSb3A9D10ownYCGBHG5D0jRetqlnWtOMteTwZn8dOqKPEQliiGv3n73dJzfrF
-         C49OoeafhrLgsmZoB7oH1Lh0xoE75lfdjKc6YggvNqZvIzSTBSZTQjJl9jX6IVvCets8
-         35/A==
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=cQgkgCpTm47iZNFmlvpgr7O6Bta34qrOD+35DbgT7Hs=;
+        b=EaVgCDHNZAmj3FTD6fpaoEc9wMNz+9kvB4PAZQy5kNn23SojzQbpEWs6GaOzPvsijh
+         tTQOCRJfocFa5cnpH/2jIZxe9OGwHcHdb0hYDwFn+GlIWQoK7hR3tMAyAGsRSdWJLajN
+         X9PDaVkAdwnzjBDaLf1ThfnXj8008V65cP7HEFG2YwzGyWzwz0G3FZ5OUrq1wpZ1MSFH
+         Ocm89xeMa0a+bGfgWunWvALZAH75mkxk7eFk/Pe05nkqleto7FmfVqQrsx5AZ2tau8Zd
+         YuYoE9UzKWtRVOxGPkVeLmQQqV3E105sA49ENmQxr0CTxXux4TIUQ7UgtAQb173VMtrz
+         JyYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n/1roXOdySIxs1dS/N1VkID/IKrNoi7dXAED3KVDP+E=;
-        b=IZD8rcdy3pWuXXDSxYVhMovCU4gM6eWv+DkAENZAVZ6uQNO2LFxJO2LEcvY+xniaNS
-         BGaYsrE3bJQWhqZvzc4Yo9clOvvQqaeY0Mv9r53jOeOANvBXAzne1bqYLKL3M0ZeE9TK
-         HeDTVZjh+WI0F/LB6JKBNj1+L/uBguX5MuNP73/J8tDWW4mgy8FrxvPjohjjAejYZoSf
-         DaP9BmKTUm2aJHp6m00/c5htWqICRQoI2gEwMhmnhfU1chRZjebR+vZ07fNg+n8KKQTh
-         DAX8wlE3m+2Jd6AYAgYhLUDIK3q2Z5W70V14i/GdqaUoCwod0BleWgt5ZCdsCn8SHyTd
-         zeKw==
-X-Gm-Message-State: ANoB5pkIJvjv2I5s+RM8PXdUq5U5/pNnHrPG4O8UQBEfhYyKOzphjlkB
-	W/YeEs48XZ6ovPVnFXqTknmB8A==
-X-Google-Smtp-Source: AA0mqf5Ootwrl9wuLxNIE5DbCYxf+n8l6mn0DsE3XLw42RQMRT5o+l7A+yTMzswTsc+WvrxTVN8HvA==
-X-Received: by 2002:a2e:be8a:0:b0:26f:c081:9aed with SMTP id a10-20020a2ebe8a000000b0026fc0819aedmr13790332ljr.222.1669469005139;
-        Sat, 26 Nov 2022 05:23:25 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id c3-20020ac25f63000000b004a4754c5db5sm923547lfc.244.2022.11.26.05.23.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 26 Nov 2022 05:23:24 -0800 (PST)
-Message-ID: <1dcd1ac0-6a5f-6973-1ade-5480d81cfcac@linaro.org>
-Date: Sat, 26 Nov 2022 14:23:23 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cQgkgCpTm47iZNFmlvpgr7O6Bta34qrOD+35DbgT7Hs=;
+        b=sdJAB+cuHU+7Rw+m/fA6tHCIA/Gx6ycGh/y49KyRY47I+6GxF9Z9S6OEz9As//41Wo
+         gVOlssnHDJpPCJbBYWq6Y2O+Xw5NNlBpi7bgfgGaizjM8tIzW+/nIiqKiqyX59hyqT+w
+         dxTo8Vxto58p9PazfqpI86nmfbPA43/5STXB7o63eYva9yZ8hVXi0ur5xdQY6px/Eiye
+         esXC7cy7XFv43JK1l5HTvDS+JsqbB+1FlASrBPTuq4MlNmTKt9ejue8zgkLC4LTObBxL
+         wyzF8pddFRcSqc1PC2NJmmf561pyoG70KLkPaenp/YhvHTVEL3TGy+ca+myatm28xA1i
+         EtmA==
+X-Gm-Message-State: ANoB5pm11DLbuvKv4YvEmzAqiEpSM0js+/btNyOAEycmNCxCW5F6HRYm
+	lqW6ClYw11O1O7JqMgI2QU5Dd8VIbCGTPD2jdMeGUg==
+X-Google-Smtp-Source: AA0mqf78JJ01h/v6Znk5k947NIWBr4J7ggr8K9DBEkpFzpkdRkmGt8APOpa5H/tk8spvw1FfR8tFwTPtLwJNNvLkkcI=
+X-Received: by 2002:a25:cb92:0:b0:6f6:2c8c:e8ef with SMTP id
+ b140-20020a25cb92000000b006f62c8ce8efmr1616167ybg.416.1669557344715; Sun, 27
+ Nov 2022 05:55:44 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH] arm64: dts: rockchip: add Hynitron cst340 for Anbernic
- 353 series
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20221126011432.22891-1-macroalpha82@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221126011432.22891-1-macroalpha82@gmail.com>
+References: <20221108041400.157052-1-jagan@edgeble.ai> <20221108041400.157052-7-jagan@edgeble.ai>
+ <429df965-bd4a-afa4-e66c-6907677fbf8c@linaro.org> <CA+VMnFxs06_KvZc5p_rNAep9aJ+t908CUtVcVTBV7c_b1mu+Xg@mail.gmail.com>
+ <149c2614-d87a-4406-5552-f444709a6e09@linaro.org> <CA+VMnFybPA=6-LvSDd=7EXk6fo4oY_hNBwCcDURgnFs4DP_hzA@mail.gmail.com>
+ <1f8eb33b-1979-ec28-e3cf-6e6552959b3a@linaro.org>
+In-Reply-To: <1f8eb33b-1979-ec28-e3cf-6e6552959b3a@linaro.org>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Sun, 27 Nov 2022 19:25:33 +0530
+Message-ID: <CA+VMnFz8czfLKoodnD2VkmoBBV18hSM_O40m+qrxz4qzaZxt3w@mail.gmail.com>
+Subject: Re: [PATCH v7 06/10] ARM: dts: rockchip: Add Rockchip RV1126 SoC
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	Johan Jonker <jbx6244@gmail.com>, Jon Lin <jon.lin@rock-chips.com>, 
+	Sugar Zhang <sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221126_052334_184198_05C3AD0B 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20221127_055547_772107_DD8D954D 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,89 +91,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/11/2022 02:14, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add support for the Hynitron cst340 touchscreen driver to the Anbernic
-> RG353P and RG353V devices. Note the RG353VS device does not have a
-> touchscreen.
-> 
-> https://lore.kernel.org/linux-input/Y1y9e9sgE%2FDck9fB@google.com/
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../dts/rockchip/rk3566-anbernic-rg353p.dts   | 20 +++++++++++++++++++
->  .../dts/rockchip/rk3566-anbernic-rg353v.dts   | 13 ++++++++++++
->  2 files changed, 33 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> index 63cff402f3a8..06222dead921 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> @@ -95,6 +95,19 @@ &i2c2 {
->  	pintctrl-names = "default";
->  	pinctrl-0 = <&i2c2m1_xfer>;
->  	status = "okay";
-> +
-> +	touch@1a {
-> +		compatible = "hynitron,cst340";
-> +		reg = <0x1a>;
-> +		interrupt-parent = <&gpio4>;
-> +		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
-> +		pinctrl-0 = <&touch_rst>;
-> +		pinctrl-names = "default";
-> +		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
-> +		touchscreen-size-x = <640>;
-> +		touchscreen-size-y = <480>;
-> +		status = "okay";
+On Thu, 24 Nov 2022 at 15:06, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> On 23/11/2022 17:35, Jagan Teki wrote:
+>
+> >>>>> +     aliases {
+> >>>>> +             i2c0 = &i2c0;
+> >>>>> +             serial0 = &uart0;
+> >>>>> +             serial1 = &uart1;
+> >>>>> +             serial2 = &uart2;
+> >>>>> +             serial3 = &uart3;
+> >>>>> +             serial4 = &uart4;
+> >>>>> +             serial5 = &uart5;
+> >>>>
+> >>>> These are not properties of a SoC but board. They depend on the
+> >>>> particular routing on the board... unless this SoC is an exception from
+> >>>> all others?
+> >>>
+> >>> Was this a new feature to follow, didn't see this before at least
+> >>> rockchip SoC's.
+> >>>
+> >>
+> >> It's not exactly new comment, but rather not always enforced/given.
+> >
+> > It seems like i2c0 and serial aliases are required across SoC instead
+> > of the specific board. An example of which i2c0 connected via PMIC
+> > which indeed require aliases to get a probe, which is common across
+> > SoC.
+> >
+> > [    1.778941] i2c_dev: i2c /dev entries driver
+> > [    1.780877] rk3x-i2c ff3f0000.i2c: rk3x-i2c needs i2cX alias
+> > [    1.781410] rk3x-i2c: probe of ff3f0000.i2c failed with error -22
+> > [    1.791312] Bluetooth: HCI UART driver ver 2.3
+>
+> I2C driver indeed seems to require them, so then it's fine. That's not
+> the argument for serials though.
 
-Was it disabled anywhere?
+Yes, I dropped serial aliases for the next version.
 
-> +	};
->  };
->  
->  &pinctrl {
-> @@ -104,6 +117,13 @@ spk_amp_enable_h: spk-amp-enable-h {
->  				<4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
->  		};
->  	};
-> +
-> +	touch {
-> +		touch_rst: touch-rst {
-> +			rockchip,pins =
-> +				<4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
->  };
->  
->  &rk817 {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> index 885234a023e1..dc3fc67f5853 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> @@ -82,6 +82,19 @@ &i2c2 {
->  	pintctrl-names = "default";
->  	pinctrl-0 = <&i2c2m1_xfer>;
->  	status = "okay";
-> +
-> +	touch@1a {
-> +		compatible = "hynitron,cst340";
-> +		reg = <0x1a>;
-> +		interrupt-parent = <&gpio4>;
-> +		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
-> +		pinctrl-0 = <&touch_rst>;
-> +		pinctrl-names = "default";
-> +		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
-> +		touchscreen-size-x = <640>;
-> +		touchscreen-size-y = <480>;
-> +		status = "okay";
-
-Same question.
-
-
-Best regards,
-Krzysztof
-
+Jagan,
 
 _______________________________________________
 Linux-rockchip mailing list
