@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A9F4C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339D8C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:12:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jl51lNOcEZ7qGA6AHFwiYCTHh6gQHfYirBAg1QfVa9k=; b=eMBssOIeFATmyG
-	hpnYtoR+8psOf6Pjuh5FBcNg4LmbKlEov1G3NevlCVu4/jmY+4JtKFUrQGy3ylhDMMAnxSS/D5x3x
-	aTyE500w/xdM4Zf+EYhS51/3+ua7Z8uhb0GzilO9CwBtmZ2uMiepRxavk1oKp4YqFha6zic3WbfDr
-	6cwkzDgvMWq9IYpcow0swXRbpxoGaRhNf6FnhurqK5zi+0pSeDP2OHEzNQ0hOd8NXoykoduIQN1Hb
-	ONG4mE4f3iVrKXlEbrb6+Sln2ImnLx1cLm0Vpm1YM/3wh3iPX1996JySuW+A3w7t1kOmBDhzI8ope
-	9gnE9KQ52GtDoPZsigWg==;
+	List-Owner; bh=jwO9pPEWUeDVioIxMcpqwiBJ1UFVAgz/1vn/oUGrBNc=; b=UrtZAvfhvjX4Vr
+	kCrQtl/Ls97Vm6ykKPQDKcYnOaZLSSGznTgY+v8s4SoSABIpJ6n6YiOxClxlBLKRIfWEjaR4Lel8C
+	gAtrCS1OD55fRgVnD7KHcXETmUbpHoJBh9uvkgw5EZ3ilcyUVXhLds52hONzdUZLNd8+ptWNkJQ+Z
+	RIPKXw/FyX/mxClYiHzO7Hay9vc67X7QZLM8zR72lkiMe0kGOBP34sNU7O481tl4e1fDcLTiy1/6N
+	8JSliYMC827VoEBDxde89VeQtUS9wfUVGEOzGcW3IYv8sFzvSh6bpUeTQtfZHkN/qenv+iJNqASQl
+	pr757H2QA6sinKOO084Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozibl-003R64-Q2; Mon, 28 Nov 2022 18:11:57 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ozibn-003R6z-Dw; Mon, 28 Nov 2022 18:11:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozi8v-003ApY-RY; Mon, 28 Nov 2022 17:42:11 +0000
+	id 1ozi8v-003Aq0-Rv; Mon, 28 Nov 2022 17:42:11 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6F973B80D1A;
-	Mon, 28 Nov 2022 17:42:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37BABC433C1;
-	Mon, 28 Nov 2022 17:42:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2B7E7612D0;
+	Mon, 28 Nov 2022 17:42:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CDD8C43470;
+	Mon, 28 Nov 2022 17:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669657327;
-	bh=VE9eGaOfGalF6ro7NC8p74FoM8t7aYm3a2GQr+eHndQ=;
+	s=k20201202; t=1669657328;
+	bh=6j9auAtquAvmbmECLoOInfULo4v98BgNtruY34jf5go=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=n1GR5s1yoK5ybPN2qQUUrFiYde9mn/JGrLmR/KFSloZTIuFCnIjCJdsZV6dyCn3Xn
-	 soalfEY2SrgdjhGHHZiCSOJp1My2ix9CZUcWvhkrk7jDbahSm5kp2PtfMDgK9gGy2L
-	 Le5a5hEaVeJj3lQH6j3d6lNtdmGGMRbEb8O0iIkxeLaIMEHtUqZraBhlBJgORQ9nEf
-	 J4R6JwhrTCNd+RjpW9ME46FaTiG7ongIQgeSBnnCfU+yGYsq8trgH5OmiPW7+5Z2Fi
-	 gQRsusOkypQtmLTx8xG6cfAPTFw0/4nY+VXMyj4hKCCgj7wBpvrWsbZ53UIn8LGCF9
-	 DquOLVur5RInA==
+	b=oBcU7XVSec7PV7YtE8LAPBy7kaXt0u0BNJ589yqwJLCfua6BZnTDeBBZXoEtn+dJs
+	 pqXen76t+0qMsuDMrngdeMGuHOgKnu0jjhS/6ZmH05r1I0k45+E+kfTrXTlHcmQWRt
+	 qMWm2UlDRFNog5wM8jqPs0UXvukM5QHiwnZOoq580SckJ/7GZHZTEaPI0wUGrq8JbZ
+	 vtTPxNlXOkZ+BvDbN3SgctbQ0WeqZTYQjFK5lVHwBlMyg9t/w754Hny1vTj0ew+QbT
+	 bFrmBFfCSY5/i9ut98jAWyIhIT5StobKxLY23typef13oz4mThC5u/O/gU6M5AKwxR
+	 15lD4ztNGfP6Q==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,9 +52,9 @@ Cc: Johan Jonker <jbx6244@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 03/16] ARM: dts: rockchip: fix ir-receiver node names
-Date: Mon, 28 Nov 2022 12:41:46 -0500
-Message-Id: <20221128174201.1442499-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 04/16] ARM: dts: rockchip: rk3188: fix lcdc1-rgb24 node name
+Date: Mon, 28 Nov 2022 12:41:47 -0500
+Message-Id: <20221128174201.1442499-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221128174201.1442499-1-sashal@kernel.org>
 References: <20221128174201.1442499-1-sashal@kernel.org>
@@ -62,8 +62,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_094210_064677_304A2902 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20221128_094209_984340_0CC48EDC 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +82,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit dd847fe34cdf1e89afed1af24986359f13082bfb ]
+[ Upstream commit 11871e20bcb23c00966e785a124fb72bc8340af4 ]
 
-Fix ir-receiver node names on Rockchip boards,
-so that they match with regex: '^ir(-receiver)?(@[a-f0-9]+)?$'
+The lcdc1-rgb24 node name is out of line with the rest
+of the rk3188 lcdc1 node, so fix it.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/ea5af279-f44c-afea-023d-bb37f5a0d58d@gmail.com
+Link: https://lore.kernel.org/r/7b9c0a6f-626b-07e8-ae74-7e0f08b8d241@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3188-radxarock.dts | 2 +-
+ arch/arm/boot/dts/rk3188.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
-index c9a7f5409960..f8e51ca3ee00 100644
---- a/arch/arm/boot/dts/rk3188-radxarock.dts
-+++ b/arch/arm/boot/dts/rk3188-radxarock.dts
-@@ -67,7 +67,7 @@ spdif_out: spdif-out {
- 		#sound-dai-cells = <0>;
- 	};
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index ee8a24a0e3cb..95d558dc163c 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -404,7 +404,7 @@ lcdc1_vsync: lcdc1-vsync {
+ 				rockchip,pins = <2 RK_PD3 1 &pcfg_pull_none>;
+ 			};
  
--	ir_recv: gpio-ir-receiver {
-+	ir_recv: ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
+-			lcdc1_rgb24: ldcd1-rgb24 {
++			lcdc1_rgb24: lcdc1-rgb24 {
+ 				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_none>,
+ 						<2 RK_PA1 1 &pcfg_pull_none>,
+ 						<2 RK_PA2 1 &pcfg_pull_none>,
 -- 
 2.35.1
 
