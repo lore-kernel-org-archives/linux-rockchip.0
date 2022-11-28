@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D019AC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A49C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3OU7QjAN/euRV4eqez6+Hl/GRYL60jyqXBauxRzr9Y4=; b=ltYmqZNregnBsQ
-	zc2izDdBRqtzR/po/OuBQfvCv4EdLlHmAR4b/r4hpD9NTG81ClOrpm1ylwscmEUxpvNLQ4L0Az6fn
-	NakHRbTTog6f75CAVCfVclqO5SEzwHlbTYMvGP2hm9d5EERgubIH6e2I+u2TlMDYybr1SjTt0D9Iv
-	WORPqOavarWtRZoy52xsHHYMEJ+X+z6aot0z9hIUJLxeU8za93jV95qg6eUUrpgRsNRFlsT4Y/84h
-	j6ZdNO1gx7FvybeUUQzui+KGJUr4Gv+c8KdweuWRcBidIlBFyHZxau10Pdp+CklaFSvh7JGGF0Ehc
-	5kq0p4l6AV+3E0u+CA8w==;
+	List-Owner; bh=msals5m0TVH34MP8fgF7Hrbd/61J9vUg4Kl2rBgtZ10=; b=zYS4Tn/NpkIITw
+	c/JD/ZGvj9kfkGtE+66+nRBnEMcXEijZpkE8UX2VntpBnRhDX/8bYK0ogoca1P+veGRfDVxdHkAWI
+	7uVyGukC9oxI6LCSW9+LqGJ/J1/oNEUqHmmNhv8pUPS8II6lUlu77PreJi/hIEnTmsECGRFNB7af7
+	G/ck23wLW0h8sTEssagmBnI4AktdJbLKvvikHxLMI4v3NaNwe+Wh2o/xp1OByOUheI3puC1lRNaa6
+	9pu+MKSxK+szdsCb6d5pUUkMCvxQ1S+p8iyXd6qssrV6Oh0bqa5feX7xmIJ4JYjCjnz2XrJHnmiB6
+	Ib+3doxUqvOty+Zf+lZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozimU-003X8y-17; Mon, 28 Nov 2022 18:23:02 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ozioE-003Y7Q-OT; Mon, 28 Nov 2022 18:24:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oziA2-003BSf-OA; Mon, 28 Nov 2022 17:43:20 +0000
+	id 1oziAC-003BYE-SC; Mon, 28 Nov 2022 17:43:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 73025B80E9C;
-	Mon, 28 Nov 2022 17:43:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37DC3C4347C;
-	Mon, 28 Nov 2022 17:43:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6FCD2612C4;
+	Mon, 28 Nov 2022 17:43:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C884C43470;
+	Mon, 28 Nov 2022 17:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669657396;
-	bh=/oGrLYV9w73kWoPiPHi9riy+YOU1tQ2Cb2dnNSH+7TU=;
+	s=k20201202; t=1669657408;
+	bh=mz3vz6o7JaaQKhVGgMgC8tbJOFZ1haZmzuc36K26sU4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KQ+NELxZ+1Ba3G6qOrkbDSPVAHUgAm3PMDtVsr4qwm+oNv+0eCU09EG0knWR04sT1
-	 S2idUZ1J0JcMUYSXiXyNk2tTcNjo/6lvbF+TW6F0ThrzGMSVHcRTLnaFA/ArIFKSdW
-	 xREaAFc1SOZN+51YWVKphAUAlwo798mcDrcZiW+20i9cnzdavFR9NCfba+KQhyps54
-	 qv4EQd2JnTzH1Q7qTpTWmX5J1AwqWmLMVZYhE7A3NwE42y75dU9RojxerkFuo58nRn
-	 zQ5kG/tAHpIyNhcsI9MPhdYvaHn13j0JltrbBb9EYGT2FOqdxEnolmOuuKeckk59rA
-	 Oc14N89KHtITg==
+	b=prbmVLienj3oKODpc/zdDzwV2GEdmI+6ScR0z6o2Jv/9/zUy/P3fU2iztK6L3/BlZ
+	 GfRxm1j+8LYJy9QE2lV0fDkgjidza6vxTQPEvJMKjrTJePju5fw+AOekLBPl3sVBmR
+	 VsxA5em24rdJOZq2gHB0+28lDzrGdvP6AvIboqygwYxvO+Er1YUbCqJPUyVJwGRq9Z
+	 tHc2qob4EgwDCFx5xU8CCw71SBkJAgR5ys0uosks+Mg2CAx2I6fvlqlJfG+HjROIiH
+	 IKSpjZGTUsOTeOaI3agok/SvzsvF5DwCtVHqRc1MVM2Gz2OVPa23r34qlyIA0BdtqO
+	 wASz5htZU7goQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,18 +52,18 @@ Cc: Johan Jonker <jbx6244@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 5/9] ARM: dts: rockchip: disable arm_global_timer on rk3066 and rk3188
-Date: Mon, 28 Nov 2022 12:42:58 -0500
-Message-Id: <20221128174303.1443008-5-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 2/5] ARM: dts: rockchip: fix ir-receiver node names
+Date: Mon, 28 Nov 2022 12:43:20 -0500
+Message-Id: <20221128174324.1443132-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221128174303.1443008-1-sashal@kernel.org>
-References: <20221128174303.1443008-1-sashal@kernel.org>
+In-Reply-To: <20221128174324.1443132-1-sashal@kernel.org>
+References: <20221128174324.1443132-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_094318_967731_5D978FBF 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20221128_094329_000603_B9CAAFF2 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,60 +82,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit da74858a475782a3f16470907814c8cc5950ad68 ]
+[ Upstream commit dd847fe34cdf1e89afed1af24986359f13082bfb ]
 
-The clock source and the sched_clock provided by the arm_global_timer
-on Rockchip rk3066a/rk3188 are quite unstable because their rates
-depend on the CPU frequency.
-
-Recent changes to the arm_global_timer driver makes it impossible to use.
-
-On the other side, the arm_global_timer has a higher rating than the
-ROCKCHIP_TIMER, it will be selected by default by the time framework
-while we want to use the stable Rockchip clock source.
-
-Keep the arm_global_timer disabled in order to have the
-DW_APB_TIMER (rk3066a) or ROCKCHIP_TIMER (rk3188) selected by default.
+Fix ir-receiver node names on Rockchip boards,
+so that they match with regex: '^ir(-receiver)?(@[a-f0-9]+)?$'
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/f275ca8d-fd0a-26e5-b978-b7f3df815e0a@gmail.com
+Link: https://lore.kernel.org/r/ea5af279-f44c-afea-023d-bb37f5a0d58d@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3188.dtsi | 1 -
- arch/arm/boot/dts/rk3xxx.dtsi | 7 +++++++
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3188-radxarock.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 74eb1dfa2f6c..3689a23a1bca 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -546,7 +546,6 @@ &emac {
- 
- &global_timer {
- 	interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
--	status = "disabled";
- };
- 
- &local_timer {
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index 4aa6f60d6a22..5f9950704f13 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -134,6 +134,13 @@ global_timer: global-timer@1013c200 {
- 		reg = <0x1013c200 0x20>;
- 		interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_EDGE_RISING)>;
- 		clocks = <&cru CORE_PERI>;
-+		status = "disabled";
-+		/* The clock source and the sched_clock provided by the arm_global_timer
-+		 * on Rockchip rk3066a/rk3188 are quite unstable because their rates
-+		 * depend on the CPU frequency.
-+		 * Keep the arm_global_timer disabled in order to have the
-+		 * DW_APB_TIMER (rk3066a) or ROCKCHIP_TIMER (rk3188) selected by default.
-+		 */
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 1da46d138029..54e8e5dca93b 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -104,7 +104,7 @@ spdif_out: spdif-out {
+ 		#sound-dai-cells = <0>;
  	};
  
- 	local_timer: local-timer@1013c600 {
+-	ir_recv: gpio-ir-receiver {
++	ir_recv: ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+ 		gpios = <&gpio0 10 1>;
+ 		pinctrl-names = "default";
 -- 
 2.35.1
 
