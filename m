@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D302C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95285C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 19:06:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ARoUO6rRejRC7BvPCad83S/unAmok7KVQtnk4qWr7j4=; b=KFE33IXCgKdhXW
-	g6qzPIJO9HE5U0msVdxtzwDuHt5YmNPHgu0mAyyu/yGAr8rhvpvhQHHGBTlVpQ0FaT6cMnWgapflg
-	QWqwdRcCKglgV+bom5RkT/HaJJ75wPUY0xxboYgXEpskoc4JE9K6NjBpalK62JhX0OJlSn7zDiMur
-	dJVQFz2znXH1T9UR5Ykg+4ekHl0eQkBRawjLOBqPxvkUv/rFIpXrP3mhyYJZ5qEw2tfekkwAj9Lfy
-	BQp7BzKl0MHUUWzS1YHV7lP+mS5mdg440PgK5BGWRv3LqZqDsfDsYevpnMSuNA6Km/TmSTBO1Rb6g
-	ipr0J24yWDaKUr6WNBeQ==;
+	List-Owner; bh=kB8lgdqwWSAkJyiYcI4H758gOjmkaEcVMIsUm7DghDM=; b=LauL/EIJKDqvP8
+	OjftuNYAOH/ExErJoLazEPcLdzVGQRumGCzaqkp3g2hhJXZTsOrx0YtRfvHYJkN81iabASXZkso+V
+	/ChGAPzUsFHNnCBPf2449MuVOE+FTMfbWpXw/XYhhCLbUfzChDwyht7uljJ8zGlwftddaaUbR4BcX
+	IfGJfH11rD+kekqjaj9FcCNbsm18hyDBgqHKRSONHHDQjPydG3F/kawK7Nga51ildtdzEtOFHaoi6
+	zfQFMmEoO7Kq+45pUxRZeQaCiPnzX75uYt9QZ4KsAsKyGCZb7Cx8VcbU8EScGXgZhaLfqL9VNwuMo
+	0m5UKEzI/B/LoSQ6yygg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjBE-003lDc-PK; Mon, 28 Nov 2022 18:48:36 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1ozjSB-003s1K-S0; Mon, 28 Nov 2022 19:06:07 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjAT-003kl4-Vh; Mon, 28 Nov 2022 18:47:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=4Fpzg/r7Nlj+z1PQflqBj9rgdK6sLYVVCPbweKR8DMg=; b=OI8zH4EE3KjDJsLnBmSVvyHfVg
-	/fwhI9IObx8xNMfW4OWvClHdLFF7l1fKr+uqDf0ALnQMWm9FO6CAKoY6wUPx5+/LZC/bZj2zahfqA
-	XgduWrVdKxQVUKCdsf2VbNWCmtO8Sthd7YW5XF/73ytdrYu21YRNMsk9ducxf7Bb3LWPeKkuP/50L
-	/E9qofunJWdAxkJ9e6zN1VDbXJuCQ8G0fdKzGcr8Q6WIfkvCtWKAdHrx0Yjvg8DsZzkmu8Q23DYWE
-	0YeCifaFtLi80Cn49canEJigheRQ7IV+HUFVGoWpUznax9PYPzrAqm1Xz95GAVZtvCPE9YrfXPupn
-	m/3ak0jQ==;
-Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA2-006BV8-Ii; Mon, 28 Nov 2022 19:47:22 +0100
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA1-008Elo-1x;
-	Mon, 28 Nov 2022 19:47:21 +0100
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Lin Jinhan <troy.lin@rock-chips.com>
-Cc: linux-crypto@vger.kernel.org (open list:HARDWARE RANDOM NUMBER GENERATOR CORE),
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list),
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v2 1/3] dt-bindings: RNG: Add Rockchip RNG bindings
-Date: Mon, 28 Nov 2022 19:47:16 +0100
-Message-Id: <20221128184718.1963353-2-aurelien@aurel32.net>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221128184718.1963353-1-aurelien@aurel32.net>
-References: <20221128184718.1963353-1-aurelien@aurel32.net>
+	id 1ozjS5-003rzA-Rp
+	for linux-rockchip@lists.infradead.org; Mon, 28 Nov 2022 19:06:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7A28FB80CA3;
+	Mon, 28 Nov 2022 19:06:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F2EFC433D6;
+	Mon, 28 Nov 2022 19:05:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669662359;
+	bh=bYrX7p6VXu59IzHLRpXR6E2l0n/Yi7FmtGPA1cHqfAs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=O0MFcLEjqofyJR6Tl+sWupNctU5YJ3s9O8z+oa7x18f5HtRTS3w9oNQKYvF6coPlu
+	 YAD77vsF0A+hvQELCtZFpBQRK1nOSQyhu89kJYlvGEZ2Sf9BFjlUvyHUzZE9sxElNA
+	 VPj6uH8GEviPeq07k+z08/94rp5BQU9j9TKXwS+cXb5vxOYQqR4VCVrDIouxRCyQtw
+	 r/VxCnc3mZmDB3PCSQFD6phwAGP4bmpJXOSDtpD7vHVJzbjUtfpuM45yQNRseG3M88
+	 gVdCpILsU1Aq9QVL5LHsykiQXIn26TMZS6RX/kEDt08TFo4mTwRnKU6k9xp2TBneF2
+	 YYvYpgsl3fwIw==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-kernel@vger.kernel.org, kernel@collabora.com, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>,
+ devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20220909175522.179175-1-sebastian.reichel@collabora.com>
+References: <20220909175522.179175-1-sebastian.reichel@collabora.com>
+Subject: Re: (subset) [PATCHv3 00/14] Introduce RK806 Support
+Message-Id: <166966235607.739089.9217119235765482431.b4-ty@kernel.org>
+Date: Mon, 28 Nov 2022 19:05:56 +0000
 MIME-Version: 1.0
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_104750_525348_92CED7C5 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20221128_110602_065403_DD2A7D39 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,83 +75,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the RNG bindings for the RK3568 SoC from Rockchip
+On Fri, 9 Sep 2022 19:55:08 +0200, Sebastian Reichel wrote:
+> The Rockchip RK3588 Evaluation Boards use SPI connected RK806
+> PMICs. Downstream this is handled by a new driver, but apart
+> from being SPI connected this chip is quite similar to the
+> ther Rockchip PMICs (also RK806 is promoted to also support
+> I2C). Thus this series instead updates RK808.
+> 
+> Changelog since PATCHv2:
+>  * https://lore.kernel.org/all/20220908003107.220143-1-sebastian.reichel@collabora.com/
+>  * Change DT binding to not allow nldo-reg6
+>  * Fix DT binding to check for [np]ldo-reg instead of [np]ldo_reg
+>  * remove rk806_get_voltage_sel_regmap in favour of regulator_get_voltage_sel_regmap
+>  * drop rk806_set_voltage in favour of regulator_set_voltage_sel_regmap
+>  * use regulator_set_ramp_delay_regmap
+>  * drop possibly incorrect printing of chip id register address in case of errors
+> 
+> [...]
 
-Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
----
- .../bindings/rng/rockchip,rk3568-rng.yaml     | 60 +++++++++++++++++++
- 1 file changed, 60 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+Applied to
 
-diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
-new file mode 100644
-index 000000000000..c2f5ef69cf07
---- /dev/null
-+++ b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
-@@ -0,0 +1,60 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/rng/rockchip,rk3568-rng.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip TRNG
-+
-+description: True Random Number Generator for some Rockchip SoCs
-+
-+maintainers:
-+  - Aurelien Jarno <aurelien@aurel32.net>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3568-rng
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: TRNG clock
-+      - description: TRNG AHB clock
-+
-+  clock-names:
-+    items:
-+      - const: trng_clk
-+      - const: trng_hclk
-+
-+  resets:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - resets
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3568-cru.h>
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      rng@fe388000 {
-+        compatible = "rockchip,rk3568-rng";
-+        reg = <0x0 0xfe388000 0x0 0x4000>;
-+        clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
-+        clock-names = "trng_clk", "trng_hclk";
-+        resets = <&cru SRST_TRNG_NS>;
-+      };
-+    };
-+
-+...
--- 
-2.35.1
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
+Thanks!
+
+[11/14] regulator: rk808: Use dev_err_probe
+        commit: f39f8709c217d82aabbf51d8669731137ce09aea
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
