@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABBAC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 19:06:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 808A5C43217
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 23:15:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KaJHfrtfN4fQEF6445O3OVBIcNCcdYovTw9CF0+iqdg=; b=vblkkBuU2sc8cS
-	tbM8UA5d2utsiTurc0v5U8QApqOdqq5XSTDN+ymeYOoSgIhr7OuPJ10hEbysZRBooxJE1msqVmi3Q
-	xrtyWGCTqzkyXg1+UFj2H6B0xRsgJKO0Yqof4Ac0IbkFlIS0c9yljBrGZY/Dc2ULSaIY5KaBGFs7W
-	yvz0wtkYzAO4VV4G/9Noq4RqCZ7QQMPde+PXfxVQ6W1uKA/a/Gw1X8yoci2a359FsNdFSSgKAsl2G
-	auOVjzMdjEoLRgDhrIiPSNZU2R5rJQ5FLZMnOWf4S9Rdsh17YfKgIHv3RQCYoUaUIro8lIk1rLcwZ
-	3pFpFhmWh8rDEJJ21GMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LDnfVWxURZK8qR1agGvJIA+Dk3fgNrbuZRzPrhnTDas=; b=n7e7uHgJ9vLXcf
+	cS4cOETV2cVq0I/HJLpoeXAXORz1s17DO96bpGXxyDz05vgA9HuQg+qUWZdDGlaKqlY8BXnJbrNgG
+	46e3wrO1dCDmQOqzO7xYSTv4iHqF4W6lyTa/qo9Wxvea0R7QI9ldHQVWMoDOPPXQNa534XOt3Z9k+
+	FuoL899Cm+f2HUTc/Dij0sgj5nnykFPRcNw8blzXBeGIJolLfTctrZ6Yw43VNByF1dqCYxfwBtx3D
+	aAFt8woqls69IivRA4jwf4WIDf+BFX7WnHBVVBN4Acwcq2qT6M8bp/4AP7mg71o2nPH1bz69BKiCk
+	1cnedv+PJRYIXrEwngcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjSD-003s2H-8A; Mon, 28 Nov 2022 19:06:09 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oznLh-004jbg-MP; Mon, 28 Nov 2022 23:15:41 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjS7-003rzo-Ml
-	for linux-rockchip@lists.infradead.org; Mon, 28 Nov 2022 19:06:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 329F66137D;
-	Mon, 28 Nov 2022 19:06:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4C98C433D7;
-	Mon, 28 Nov 2022 19:05:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669662362;
-	bh=YuU2ft1vTL8owzTKzsHQya+OxilPcCD6BiamY379m0w=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=kaz2CAvUHoW4mkffkq2TfBYWjsh7NL18BeWfNPrBxjcQNx2pcC4EtUjAQGZrlKxNc
-	 duNYI+2P112Au0Bq7j3v8hps12+U58Tmy/RVzVRBaOMmX+XCWgdnzLNNtJ9vYRXRRS
-	 YzSgoExBRwAEdsUx8Y8Xb0coQeoioIQsSCELdKdtFS+s6i5OYpZyrl2A7Yyljqqqso
-	 lFBP8tU+pwaYi28YUMkEmUIroZb4pL4XTCkQb7JDCCEBf0sD9AQs235nqhn9eTW5B9
-	 s27heIop9/Su0Tsfh8ZrrGfQEDwTxM3cHOMVS6GFRO4cV31CQpQsCkotOGVCywu2ek
-	 qAz1+rPet6ZmA==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-kernel@vger.kernel.org, kernel@collabora.com, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Linus Walleij <linus.walleij@linaro.org>,
- devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Alessandro Zummo <a.zummo@towertech.it>,
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20221020204251.108565-1-sebastian.reichel@collabora.com>
-References: <20221020204251.108565-1-sebastian.reichel@collabora.com>
-Subject: Re: (subset) [PATCHv4 00/13] Introduce RK806 Support
-Message-Id: <166966235945.739089.7387113152934884046.b4-ty@kernel.org>
-Date: Mon, 28 Nov 2022 19:05:59 +0000
+	id 1oznLe-004jal-Lo
+	for linux-rockchip@lists.infradead.org; Mon, 28 Nov 2022 23:15:40 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id n205so13383930oib.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Nov 2022 15:15:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bWNRuALmHlwLd0dRUdqiln4ovyKEQnyJm0QeKTP9aLw=;
+        b=APYByxRI8ZPATkF7/52v9TLTYoiqE1Q6QlisijbujmPQJPwdjDitAFv+sScKTCY3fP
+         Aztb9gIXpjABiZjVXn+p1n8YoNUhKpgnPpiEOEDo/lK6H1vyZVIJp7M+ACcxQxgvop6P
+         DXssE3RKTHuvvlQ4YUlGMbynBpU4tUSwuivrocPeK4hmMPObZlvsRPWP2lhu7m0pAYDg
+         h4gXX0y/txvKAN2fe4tVmB3OwklRrFltElmqtMav9BvKaG+kfw4+7ZXX9ikqbcyzE4Ta
+         F5kkdyKjNuzrTm6JGWY0cnjrQpryhNxE0b6o6td+HT+kWsbe25/6IeIu4pGamqCI4zc3
+         perg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bWNRuALmHlwLd0dRUdqiln4ovyKEQnyJm0QeKTP9aLw=;
+        b=YbU76MeWKDU423nrfBzMOwudRSTqSleCkUbWV4svGuQyAzteTjZ/GQ7T2juLD5hscP
+         jBRw1Pr69W0k/uj+iY2uey1w4Vhd3VuprGkyf1Oe4g+Jl+PEKrnj2CpBN1prsxFqV3m1
+         j6Ve0aM3elOPWMykacPJOATv0Q2RESg53HiE/W6aHyk95DEJTIjdIjnyCsKh0MlLdS5i
+         bpDjbUB0b7Zjg9S82hSixTIjTfOJun9Swa+6tg5WpMAnzdGd2eSjtpHxYETW1aKQTCSX
+         eM0p90GYpc7Md+EVKZNxGthk3J1y4bbgQxbdZoVlDVAyuXWSbVs66TjmXaq9KJcn40rT
+         npeA==
+X-Gm-Message-State: ANoB5pltMa/RCmWhMSNEejNQYX7kywBlujM9JQfcnGOh011tO3BylmQh
+	eDDqISlOqv3AQI5doqxNrW0=
+X-Google-Smtp-Source: AA0mqf7ReI0qcY8TmYUaUiBnsbgDNabFtEzzOXK/7V3nr4Fasxg8TBOM5N895HzMlvSBlze7bhzGjQ==
+X-Received: by 2002:a54:468f:0:b0:35b:872b:edfc with SMTP id k15-20020a54468f000000b0035b872bedfcmr11117477oic.187.1669677334248;
+        Mon, 28 Nov 2022 15:15:34 -0800 (PST)
+Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id i2-20020a056871028200b00136c20b1c59sm6521865oae.43.2022.11.28.15.15.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Nov 2022 15:15:33 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V2] arm64: dts: rockchip: add Hynitron cst340 for Anbernic 353 series
+Date: Mon, 28 Nov 2022 17:15:28 -0600
+Message-Id: <20221128231528.23360-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_110603_834114_6DF2C932 
-X-CRM114-Status: GOOD (  20.26  )
+X-CRM114-CacheID: sfid-20221128_151538_776953_951D71AD 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,62 +91,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 20 Oct 2022 22:42:38 +0200, Sebastian Reichel wrote:
-> The Rockchip RK3588 Evaluation Boards use SPI connected RK806
-> PMICs. Downstream this is handled by a new driver, but apart
-> from being SPI connected this chip is quite similar to the
-> ther Rockchip PMICs (also RK806 is promoted to also support
-> I2C). Thus this series instead updates the RK808 driver(s).
-> 
-> Changelog since PATCHv3:
->  * https://lore.kernel.org/all/20220909175522.179175-1-sebastian.reichel@collabora.com/
->  * Dropped removing REGMAP_I2C dependency from RK817 ASoC driver (applied)
->  * Rename MFD_RK808 to MFD_RK8XX to be consistent. It makes sense to do this now,
->    since the patchset touches all the child drivers anyways.
->  * rebase to v6.1-rc1
->  * collected a couple of Acks
->  * update rk806 DT binding according to DT maintainer feedback
->  * add missing pinmux config to the rk806 DT binding
->  * update rk806_spi_bus_write and rk806_spi_bus_read
->  * replaced some constants with sizeof or defines
->  * used capitalized comments
->  * rename regmap_find_closest_bigger to regulator_find_closest_bigger, not sure
->    why I prefixed it with regmap_ in the first place
->  * use rk8xx_is_enabled_wmsk_regmap instead of regulator_is_enabled_regmap for
->    the switching regulators to correctly report the state
->  * reordered the first few patches grouping the MFD patches together
-> 
-> [...]
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Applied to
+Add support for the Hynitron cst340 touchscreen driver to the Anbernic
+RG353P and RG353V devices. Note the RG353VS device does not have a
+touchscreen.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+https://lore.kernel.org/linux-input/Y1y9e9sgE%2FDck9fB@google.com/
 
-Thanks!
+Changes since V1:
+ - Removed 'status = "okay";', as it was never disabled.
 
-[02/13] regulator: rk808: reduce 'struct rk808' usage
-        commit: 647e57351f8ebc37d8e12cbc0f4bf7471754a0cc
-[11/13] regulator: rk808: Use dev_err_probe
-        commit: f39f8709c217d82aabbf51d8669731137ce09aea
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3566-anbernic-rg353p.dts   | 19 +++++++++++++++++++
+ .../dts/rockchip/rk3566-anbernic-rg353v.dts   | 12 ++++++++++++
+ 2 files changed, 31 insertions(+)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+index 63cff402f3a8..8aa93c646bec 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+@@ -95,6 +95,18 @@ &i2c2 {
+ 	pintctrl-names = "default";
+ 	pinctrl-0 = <&i2c2m1_xfer>;
+ 	status = "okay";
++
++	touch@1a {
++		compatible = "hynitron,cst340";
++		reg = <0x1a>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-0 = <&touch_rst>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
++		touchscreen-size-x = <640>;
++		touchscreen-size-y = <480>;
++	};
+ };
+ 
+ &pinctrl {
+@@ -104,6 +116,13 @@ spk_amp_enable_h: spk-amp-enable-h {
+ 				<4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	touch {
++		touch_rst: touch-rst {
++			rockchip,pins =
++				<4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
+ };
+ 
+ &rk817 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+index 885234a023e1..f49ce29ba597 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+@@ -82,6 +82,18 @@ &i2c2 {
+ 	pintctrl-names = "default";
+ 	pinctrl-0 = <&i2c2m1_xfer>;
+ 	status = "okay";
++
++	touch@1a {
++		compatible = "hynitron,cst340";
++		reg = <0x1a>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-0 = <&touch_rst>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_LOW>;
++		touchscreen-size-x = <640>;
++		touchscreen-size-y = <480>;
++	};
+ };
+ 
+ &pinctrl {
+-- 
+2.25.1
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-rockchip mailing list
