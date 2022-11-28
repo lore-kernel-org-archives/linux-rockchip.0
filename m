@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28A10C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:48:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D302C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GML8lM6YimTBHRrIAjtsJag9Qjp+8+b/wmRYyatC8KI=; b=ZTtYLnsKat8z5O
-	m6fyDtkV16r51zhDKt3c7e3JYnRfB6MWiapyY3fLvacE3DFYHrLS0+ekSWX8cR6Kc5STJQuXJO1Km
-	B4+bxJyXR/Jx/oeSjRvcInwvEGcU+AW4icopsWY4mgjRHAO+8Cs5y1cyK98WvY5+b6TnRYb/lEuPF
-	hHHsgKurLO3nqX4Ttsrfjjl476uPMDLHprHOkytdwAm3vVtOiNoGkwa0Fbk+rHhgDs6hD9aikt/8q
-	0oR2pCSAN333IW0RqKodK51W+CQDRZ3I51YGV107H8q832YdYprbg4PrL/RxVSUCgLbNJWkDd4IHU
-	5fkP3OaDNxYKqEpVhnvA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ARoUO6rRejRC7BvPCad83S/unAmok7KVQtnk4qWr7j4=; b=KFE33IXCgKdhXW
+	g6qzPIJO9HE5U0msVdxtzwDuHt5YmNPHgu0mAyyu/yGAr8rhvpvhQHHGBTlVpQ0FaT6cMnWgapflg
+	QWqwdRcCKglgV+bom5RkT/HaJJ75wPUY0xxboYgXEpskoc4JE9K6NjBpalK62JhX0OJlSn7zDiMur
+	dJVQFz2znXH1T9UR5Ykg+4ekHl0eQkBRawjLOBqPxvkUv/rFIpXrP3mhyYJZ5qEw2tfekkwAj9Lfy
+	BQp7BzKl0MHUUWzS1YHV7lP+mS5mdg440PgK5BGWRv3LqZqDsfDsYevpnMSuNA6Km/TmSTBO1Rb6g
+	ipr0J24yWDaKUr6WNBeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjB2-003l5e-LA; Mon, 28 Nov 2022 18:48:24 +0000
+	id 1ozjBE-003lDc-PK; Mon, 28 Nov 2022 18:48:36 +0000
 Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjAU-003kkn-09; Mon, 28 Nov 2022 18:47:53 +0000
+	id 1ozjAT-003kl4-Vh; Mon, 28 Nov 2022 18:47:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:
-	Subject:Cc:To:From:Content-Type:From:Reply-To:Subject:Content-ID:
-	Content-Description:In-Reply-To:References:X-Debbugs-Cc;
-	bh=2nc6ETieocz1/MF7D4a379nzMdeyEycYLQGwrA8DsAQ=; b=Shn+niV8Dwihi1yTofxwyKMWTu
-	+zIt+swVCw1jCd4qzUK8xUpPMOupBnWuWw1qppfhsrrKQQzf1PFqSJChwmqV9iaRWW6YkmTI8WDA7
-	YQbaZjjCmF0JXrlDBBHlSxQAiZTpGe4D/tL5gy+HfjaMpNECY/aEe9Vp1PyxN5LaDPRZe/Ddde5nP
-	le25Zdm3BNTreQI1LPlbYYhfa8jsFxpYQT1EgdlSyO9ByAY+jy7L83PTHnBK+vvW3sYbLhlPxz2m+
-	sqbPonHFgOSi8/TGjgho9yei9aH22ewVBzFG+va+qSO6d1pMrGFPIEtLnJHfpmqh4+Nqobx/EU7eb
-	xnnrevqw==;
+	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:From:Reply-To:
+	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
+	bh=4Fpzg/r7Nlj+z1PQflqBj9rgdK6sLYVVCPbweKR8DMg=; b=OI8zH4EE3KjDJsLnBmSVvyHfVg
+	/fwhI9IObx8xNMfW4OWvClHdLFF7l1fKr+uqDf0ALnQMWm9FO6CAKoY6wUPx5+/LZC/bZj2zahfqA
+	XgduWrVdKxQVUKCdsf2VbNWCmtO8Sthd7YW5XF/73ytdrYu21YRNMsk9ducxf7Bb3LWPeKkuP/50L
+	/E9qofunJWdAxkJ9e6zN1VDbXJuCQ8G0fdKzGcr8Q6WIfkvCtWKAdHrx0Yjvg8DsZzkmu8Q23DYWE
+	0YeCifaFtLi80Cn49canEJigheRQ7IV+HUFVGoWpUznax9PYPzrAqm1Xz95GAVZtvCPE9YrfXPupn
+	m/3ak0jQ==;
 Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
 	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA2-006BV6-Ih; Mon, 28 Nov 2022 19:47:22 +0100
+	id 1ozjA2-006BV8-Ii; Mon, 28 Nov 2022 19:47:22 +0100
 Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA1-008Ell-1p;
+	id 1ozjA1-008Elo-1x;
 	Mon, 28 Nov 2022 19:47:21 +0100
 From: Aurelien Jarno <aurelien@aurel32.net>
 To: Olivia Mackall <olivia@selenic.com>,
@@ -57,14 +57,16 @@ Cc: linux-crypto@vger.kernel.org (open list:HARDWARE RANDOM NUMBER GENERATOR COR
 	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
 	linux-kernel@vger.kernel.org (open list),
 	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v2 0/3] hwrng: add hwrng support for Rockchip RK3568
-Date: Mon, 28 Nov 2022 19:47:15 +0100
-Message-Id: <20221128184718.1963353-1-aurelien@aurel32.net>
+Subject: [PATCH v2 1/3] dt-bindings: RNG: Add Rockchip RNG bindings
+Date: Mon, 28 Nov 2022 19:47:16 +0100
+Message-Id: <20221128184718.1963353-2-aurelien@aurel32.net>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221128184718.1963353-1-aurelien@aurel32.net>
+References: <20221128184718.1963353-1-aurelien@aurel32.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_104750_498687_46065B03 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20221128_104750_525348_92CED7C5 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +83,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip SoCs used to have a random number generator as part of their
-crypto device, and support for it has to be added to the corresponding
-driver.
+Add the RNG bindings for the RK3568 SoC from Rockchip
 
-However newer Rockchip SoCs like the RK3568 have an independent True
-Random Number Generator device. This patchset adds a driver for it and
-enable it in the device tree.
-
-v1 -> v2:
- * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
-   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
-   - Fix binding title and description
-   - Fix compatible property
-   - Rename clocks and add the corresponding descriptions
-   - Drop reset-names
-   - Add a bus definition with #address-cells and #size-cells to the
-     example.
-
- * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
-   - Do not read the random registers as big endian, looking at the
-     RK3568 TRM this is actually not needed. This fixes a sparse
-     warning.
-
- * Patch 3: unchanged
-
-Aurelien Jarno (3):
-  dt-bindings: RNG: Add Rockchip RNG bindings
-  hwrng: add Rockchip SoC hwrng driver
-  arm64: dts: rockchip: add DT entry for RNG to RK356x
-
- .../bindings/rng/rockchip,rk3568-rng.yaml     |  60 +++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   9 +
- drivers/char/hw_random/Kconfig                |  14 +
- drivers/char/hw_random/Makefile               |   1 +
- drivers/char/hw_random/rockchip-rng.c         | 250 ++++++++++++++++++
- 5 files changed, 334 insertions(+)
+Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+---
+ .../bindings/rng/rockchip,rk3568-rng.yaml     | 60 +++++++++++++++++++
+ 1 file changed, 60 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
- create mode 100644 drivers/char/hw_random/rockchip-rng.c
 
+diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+new file mode 100644
+index 000000000000..c2f5ef69cf07
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+@@ -0,0 +1,60 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/rng/rockchip,rk3568-rng.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip TRNG
++
++description: True Random Number Generator for some Rockchip SoCs
++
++maintainers:
++  - Aurelien Jarno <aurelien@aurel32.net>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-rng
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: TRNG clock
++      - description: TRNG AHB clock
++
++  clock-names:
++    items:
++      - const: trng_clk
++      - const: trng_hclk
++
++  resets:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      rng@fe388000 {
++        compatible = "rockchip,rk3568-rng";
++        reg = <0x0 0xfe388000 0x0 0x4000>;
++        clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
++        clock-names = "trng_clk", "trng_hclk";
++        resets = <&cru SRST_TRNG_NS>;
++      };
++    };
++
++...
 -- 
 2.35.1
 
