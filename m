@@ -4,77 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B72C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Nov 2022 13:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6415C4321E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 06:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bObmpNIWg1eG6mjbSkFTZNB/8L1fWfCN+oTizK3PSng=; b=CbHeeOSeSnYeBx
-	ivsoa6ImkLQ5740k5LdLInJwu9otIfb3GGCIgFM9pxLWE8aQjDfujV/kinTwc9HL6deZHTV6l6Ks9
-	YbII6K5nPlTx0ARH/rYpq7QJ+GLF4OR6ssPD2Cc7XgnCyVsLDO/No8ybOl9L7Y5CDS+LHmp9TTrEy
-	kWADzwrEF6YDW1Yrfi3a2CFCFgYiFVolF/ar3sh+ue6RVrEZrjhq5CSB9TulAy8xUjvOzBVCB+WI9
-	wzoGQ6AB18bKcORBD95z/mduhPeNKXmNw+YGf+Napb2Ify9DODMf+/9+jyy1BB32ckdljhDonF+hQ
-	apyacq5Eyqz+K3D+565A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=BA0m6Fu/raQjASwaTUVi3Cr96m16QaKdsYdjEoEztuU=; b=oFloEDkZuLbykCVew+gx9R8Idb
+	bx9agJvSD++jyJbnqi48SGUA8ifLcCF3K748pXDpFYy3lRKQUVBInwY3aCntSoTJcj4O0UJwyQ8GD
+	IZVFqtZ0ZMb6C53kRKf4HT4kIIt9/2LPwXzgTZ00wChFltARGMryrORPxsb63jExXPaDqUwlULCrS
+	LVr9I+UwDPSqhzM8NLDSrZj/bTPJ/XumU2CpHqGHa1go1SOqunvgi9n/Ey01W0iFcmXATUcYNgZUB
+	+qi6z9cXCqR468828OPPSU/aL14ZDxIkV0fwUYJo7EL+WOmERoE8gh9FqgGcTZRUOwm5g7Kj46F5h
+	nM9iKzrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozI8M-00BZ2v-On; Sun, 27 Nov 2022 13:55:50 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1ozY0b-00Gzj7-Bc; Mon, 28 Nov 2022 06:52:53 +0000
+Received: from mail-db3eur04on0605.outbound.protection.outlook.com ([2a01:111:f400:fe0c::605] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozI8J-00BZ1C-Fq
-	for linux-rockchip@lists.infradead.org; Sun, 27 Nov 2022 13:55:49 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id y83so10315643yby.12
-        for <linux-rockchip@lists.infradead.org>; Sun, 27 Nov 2022 05:55:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cQgkgCpTm47iZNFmlvpgr7O6Bta34qrOD+35DbgT7Hs=;
-        b=EaVgCDHNZAmj3FTD6fpaoEc9wMNz+9kvB4PAZQy5kNn23SojzQbpEWs6GaOzPvsijh
-         tTQOCRJfocFa5cnpH/2jIZxe9OGwHcHdb0hYDwFn+GlIWQoK7hR3tMAyAGsRSdWJLajN
-         X9PDaVkAdwnzjBDaLf1ThfnXj8008V65cP7HEFG2YwzGyWzwz0G3FZ5OUrq1wpZ1MSFH
-         Ocm89xeMa0a+bGfgWunWvALZAH75mkxk7eFk/Pe05nkqleto7FmfVqQrsx5AZ2tau8Zd
-         YuYoE9UzKWtRVOxGPkVeLmQQqV3E105sA49ENmQxr0CTxXux4TIUQ7UgtAQb173VMtrz
-         JyYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cQgkgCpTm47iZNFmlvpgr7O6Bta34qrOD+35DbgT7Hs=;
-        b=sdJAB+cuHU+7Rw+m/fA6tHCIA/Gx6ycGh/y49KyRY47I+6GxF9Z9S6OEz9As//41Wo
-         gVOlssnHDJpPCJbBYWq6Y2O+Xw5NNlBpi7bgfgGaizjM8tIzW+/nIiqKiqyX59hyqT+w
-         dxTo8Vxto58p9PazfqpI86nmfbPA43/5STXB7o63eYva9yZ8hVXi0ur5xdQY6px/Eiye
-         esXC7cy7XFv43JK1l5HTvDS+JsqbB+1FlASrBPTuq4MlNmTKt9ejue8zgkLC4LTObBxL
-         wyzF8pddFRcSqc1PC2NJmmf561pyoG70KLkPaenp/YhvHTVEL3TGy+ca+myatm28xA1i
-         EtmA==
-X-Gm-Message-State: ANoB5pm11DLbuvKv4YvEmzAqiEpSM0js+/btNyOAEycmNCxCW5F6HRYm
-	lqW6ClYw11O1O7JqMgI2QU5Dd8VIbCGTPD2jdMeGUg==
-X-Google-Smtp-Source: AA0mqf78JJ01h/v6Znk5k947NIWBr4J7ggr8K9DBEkpFzpkdRkmGt8APOpa5H/tk8spvw1FfR8tFwTPtLwJNNvLkkcI=
-X-Received: by 2002:a25:cb92:0:b0:6f6:2c8c:e8ef with SMTP id
- b140-20020a25cb92000000b006f62c8ce8efmr1616167ybg.416.1669557344715; Sun, 27
- Nov 2022 05:55:44 -0800 (PST)
+	id 1ozY0Y-00GzdR-S3
+	for linux-rockchip@lists.infradead.org; Mon, 28 Nov 2022 06:52:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=d0BEBYXOypV5ow0VRRCvJbaex9jJLpZ9efXVCO2PW4y0ob8YD0SfddJDUuQrGOogxscgcitzbAQhGPAwuPLTQ4J/CPL9gwou4MW/AZ6D+un3vpQf0m0c+2DelNRiQP65RNoOGZLwiFe3cTTmX/YyzbmQDPHVp62mdDm7RyxRMUkrzYdCoAreumFZxQbW2gm1nz4wHT54VdjuW4g2+pp0IVRJFkEvbPAQZXro6J8B8o9/Q72GTdGhNZMu6e3E2+TSBTd+c2pLex0D8tOms/x7rNMDNLxFnGkJNLF8HX0JH+pzWknTl5DGMTupLc0XpjH5N8C6jhpiWKGXl0MXoGsl/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/LeaUuNIif0a7QqXvpOSXqDJD3RK/W+5O3RV2jm8k54=;
+ b=dz3jvhHdEI9LFqDWNXwRDMNO6TbQmmhKE/Qwgk97LfEcNX1rMEi0KWRlFtk1kFHz6SXL+N6kQBG1G+4ylJDL1APVUx8WCZwV054WXgHkg5JyhhuH3ZwduD2qXvP90cpHpWghaIZKMrQPmWMLAjhaDNKVNHNMRc8okr/rrh8Pzbj3dyTYHlrXes5a2kw8ewrxV5Mz8BgLZ6IKamLdu9krbWLDl0V8Smobvn8CPJwXjerXtnsjo4jLbvs6kzuoJ/ahTYhvs+fMIiT27N/ylLpPEAvmNjr8foI6wd96UT758JQBhZxAai0LWjcGPZp0bMzAWpXB0uKBCAgNIfd/I9sf6w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/LeaUuNIif0a7QqXvpOSXqDJD3RK/W+5O3RV2jm8k54=;
+ b=Di/6V2jbzjqycIhHYF+DH/4oT+qbTxPSGhwo60Ck7cyYMHDxiFPBe7S4Mi3mdt7je6/DI1nVOFSpUoMb8iCptBL0HScm/EO4TbhwmL5o6i5YpNnTvrD2k1xIAM9KcdjmaJN+BtarVo1+S49E8fZGuRqUn1yrOuYPivKBKQ+aCmA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by PA4PR08MB6079.eurprd08.prod.outlook.com (2603:10a6:102:ee::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.8; Mon, 28 Nov
+ 2022 06:52:42 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::3643:6226:28c:e637]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::3643:6226:28c:e637%2]) with mapi id 15.20.5880.008; Mon, 28 Nov 2022
+ 06:52:42 +0000
+Message-ID: <1afb1586-ebd9-6b99-580b-531e8ba7df32@wolfvision.net>
+Date: Mon, 28 Nov 2022 07:52:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCHv4 6/7] arm64: dts: rockchip: Add rock-5a board
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Christopher Obbard <chris.obbard@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20221124144928.35381-1-sebastian.reichel@collabora.com>
+ <20221124144928.35381-7-sebastian.reichel@collabora.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+In-Reply-To: <20221124144928.35381-7-sebastian.reichel@collabora.com>
+X-ClientProxiedBy: ZR0P278CA0032.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:1c::19) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-References: <20221108041400.157052-1-jagan@edgeble.ai> <20221108041400.157052-7-jagan@edgeble.ai>
- <429df965-bd4a-afa4-e66c-6907677fbf8c@linaro.org> <CA+VMnFxs06_KvZc5p_rNAep9aJ+t908CUtVcVTBV7c_b1mu+Xg@mail.gmail.com>
- <149c2614-d87a-4406-5552-f444709a6e09@linaro.org> <CA+VMnFybPA=6-LvSDd=7EXk6fo4oY_hNBwCcDURgnFs4DP_hzA@mail.gmail.com>
- <1f8eb33b-1979-ec28-e3cf-6e6552959b3a@linaro.org>
-In-Reply-To: <1f8eb33b-1979-ec28-e3cf-6e6552959b3a@linaro.org>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Sun, 27 Nov 2022 19:25:33 +0530
-Message-ID: <CA+VMnFz8czfLKoodnD2VkmoBBV18hSM_O40m+qrxz4qzaZxt3w@mail.gmail.com>
-Subject: Re: [PATCH v7 06/10] ARM: dts: rockchip: Add Rockchip RV1126 SoC
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	Johan Jonker <jbx6244@gmail.com>, Jon Lin <jon.lin@rock-chips.com>, 
-	Sugar Zhang <sugar.zhang@rock-chips.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|PA4PR08MB6079:EE_
+X-MS-Office365-Filtering-Correlation-Id: 089ae183-5e17-4867-9464-08dad10d256f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	CdifIzizyq+/D+Ny/Wjl5ESQD7U2oRn6/pJzFWL9QcK0tFctJ+BNLA6U/QURNzrRXnTJiUSyvzyzjaamzZKIEpJ8rBTejXcMKhecsvmcZIDf3BCXXrmQnaFnoWhJFQdnFIAFFQLnTnJshUbvhMSuKOsGgB220B6pOVvvKblTmZ3wl05iTgyBPuD3uR7ajE3ffgpIhujSuF0Bn9OwtIMqejxe6VZ+ThwVBeLbP7vJxdBWb/+LRftZ7BN8bWiMDUFNTCCFprwwp2JBDjGHtTmdSABbW2jmgoCe7sPQs0P4HWF2/qm/hY3gIBB1hZtdJr/QoQsbHH44BnymC/KbIrhjW1tg3jQdarFpx02THyVWvXr6QerSGrjSOhUioIPvdVut9MrMMRhYpAVwqnww6L0IbMTkRXoF03KBgPjnw+T6x3GbippyX9lDssLZ/7n4MvrhpQkOFalT9IfPtdPZ1poGntWkjHeEGfHJezKjQF+OLjIyPPF1iNORp8REMUMkwZW8QeFnMxFHH3zCdoxley4tQnFj0MIqaWUMSNfdVKqCeMNprlWXsrpy0zMR//wYTmdItIARLSpu/Nx6+BsfsxUYWJSEi18p6b5/whPxanz1WIvJgczZnEESEdLeJN+7HjiO4U5MkHZjwwCIR5yB6tAeYzhutx5N/SUtlTDFmW3oijGxCUlSX7kmv8gyjoYxwqVeL7VVLc+6TRcxUAX6wBdq5cMaLJ4+ziT+0tS8qzj1WW4=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(39840400004)(396003)(346002)(366004)(136003)(451199015)(53546011)(36756003)(52116002)(6506007)(6666004)(6512007)(478600001)(6486002)(38100700002)(41300700001)(66556008)(66476007)(8676002)(66946007)(86362001)(31696002)(4326008)(7416002)(54906003)(316002)(44832011)(110136005)(5660300002)(8936002)(186003)(66899015)(2616005)(31686004)(83380400001)(2906002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?dzRGdDM4K1E0VjVtNG5tOU9lUXN5QkJnRkJOWExMa2h5VVJQWlFLdUhkNUxG?=
+ =?utf-8?B?ZEdpNzF0SFFZMGFCQXFVM29KdEdxNVYrcURxRUpyV0lUcEs0Q0lkUTEvUmlu?=
+ =?utf-8?B?ekFYckNJMURjZnRoS0k2M1d3VUFidnpMaE04NUZyMXZQRVlQK2w0KzMya3VV?=
+ =?utf-8?B?aU1FQ0VkSDhhVUdSTUptOHNiYVN2U1JjZW1OL2xHaVU5ZGpRc0FreC9MNVZS?=
+ =?utf-8?B?MFJkQ0tmV01ybDNyYW1jcmd2R2t1OTU5bWJkNnlVdEVIdTZyTEg4TlFOTjIx?=
+ =?utf-8?B?d3FOMkNqdWtqUVNrMEEvVjZxblNmWUpIWXlqWmJrNWowdm9LTHVSUXlodXF3?=
+ =?utf-8?B?NmNESjkxWlZDcmZyQzQ2bFc1T3VVdUtvenRqQ3hjcWtBRGhGYnBvWnluOVFC?=
+ =?utf-8?B?eWZrUEY5UDhVZGwzNE5CbHNOWEFUMXArbWtaZzFxZUt0TGY1K0U3L1RhVzZF?=
+ =?utf-8?B?ZUxsOGdyNnlKTThYNXI2emh0bEtneTFHS1ZZcGFIUXk0cWpxZDZUN1U0K04r?=
+ =?utf-8?B?L1BkWTluKzZZa0lpendYQ2tNbEduLzR3eS9PWHZjYlg4MzQ2b0J4c0pRcWNQ?=
+ =?utf-8?B?WW5qWElQdDl4MWYyeGZGYlNLMElSRkJobjk3ZHgwVFZFQlV0MEhvUTRKSzV2?=
+ =?utf-8?B?cWlnUGI1ejYzN3ZpNld5Ymc5ZytkRXdubjZqa3ZGdnIxM2JqVk1uUkRhSkZJ?=
+ =?utf-8?B?aFkvd2w2bHJxdHRVL3drT1NKU0NVSGYrZ3prb29RSUZZQit0SmU4RFYrNjNG?=
+ =?utf-8?B?QS9JbldsdFZWQm1yN0NaSjZtQVA1V2ZxZ2FWY3l1TnZvK0MxUTEvaGJ3Tnk3?=
+ =?utf-8?B?Ujg2NGZ0Kzk1dWpia1hMcHBncW5jeGpydzEwK3EwVVFnZjk0cEZ6Y3VnQzNy?=
+ =?utf-8?B?aVAvRFZ0eHAya2t5eXdVSm52Y2hrdnRBZGxTV2ZRWEpaT0lWSTBOZmphSG5X?=
+ =?utf-8?B?OStPdTN5d0NLK2JzZGh3Yy93c0szTUVURGp2VXBLZnM4M0NXMEF5WWxSM0hM?=
+ =?utf-8?B?VHErREhiNGFtcGpOWmFOU2haZUhvTnFjb2NVeXZYWFlIbDBmRVBBaENXUTRQ?=
+ =?utf-8?B?QUc0dkZjK1hYditZdlpGejVCTkZYM1BqWnNObzZGYnBwdFJqU2U4c2NMdXdV?=
+ =?utf-8?B?Vm1tWjR6bU02MWEvUys3MHZNSmpnZysxT0tNaHBJclJDVVpIaS9oaEpjR0lJ?=
+ =?utf-8?B?WGVVOXRsT3MvSng0SUlVOG4zRXNMamljaDZkL2hoeEhaVmRGRThhZCtkSHBt?=
+ =?utf-8?B?a1MvRmw3RWZKYTY1UmRnZENkeVJjYThSdTJOMVJyVDRMYjJiSlZ0N2hyTnpz?=
+ =?utf-8?B?MHdSRnp6L0FBWkJTRnRwcWR3TVF1ZVRMUnpYSk1WbTlHYkRTZlR5enlzUVZ5?=
+ =?utf-8?B?UWwvZ3lrVkp5bzVvS29lcnFUZWNnYXpLajk2Q2t5bU45YkE1U2twMHhKQkpN?=
+ =?utf-8?B?ejBTbE1XQVNTZllCRmkwWlg4a0t6dzRGQUd0OW5VVVpxaitld2FxWWVOSGVB?=
+ =?utf-8?B?aHl2Rm9Mak9QaDB2M0d5MlZXWm9HYzJjVWYyUjh1Wk00bWpwWnVXZmN1S1l0?=
+ =?utf-8?B?MTgxSXR4eGVmUmRKMlBjUndydGJmRy9qMGJVcW5aUDZwb2Nxa2xNUjc4Q0Vn?=
+ =?utf-8?B?U2YyTFFjcTZNRVRpTXdvYU9vUjhnVnRvbTRHUENBNW9qcjBKb1ZGOUMrdHRy?=
+ =?utf-8?B?aUQvUFFzUU9tUUNyTWE0Sk8wSDV2THhuZGRJUUZGYVdEVlJIYlMvUVJyaU1h?=
+ =?utf-8?B?RGJLZHZyZVhvNDcxR1ljUzczVE1zVE04aittMGpjT3lxaWRCZ3dnOXc5bWQ3?=
+ =?utf-8?B?ZWFSdlZ0SHo5WW8zUXkvMzRZc3VOR09wNkhPeE9xRjdHdVNua1VKTTFLZDdO?=
+ =?utf-8?B?MFpHZDcybDJRcURjU0hKcXBieFNRN2tycmtnM2hlSTRzdVlaVEJnZUM5VmZw?=
+ =?utf-8?B?a0g2T2J2RVlqL3ZNWmRmc1dHM2xpYjJDbFpvR25uclhXaWVhNWdhbnZyT1NE?=
+ =?utf-8?B?VitTaFpDOTdmSXlCTzBVWFE4RXhPdWxFQis5NklmOUdpODBTdnl4QTN1ZGVQ?=
+ =?utf-8?B?QjJyQkVLVks2N3p2L2hrTUJJVHk5UEtlY1E0WnRJOWlUbVVjamlSWXBqV0FH?=
+ =?utf-8?B?YUlpeE5vN29XcE9wTDRZQTZvMUdhZWpaMGFaS3YyWXFJZm9RZ3BmbHNtNmRJ?=
+ =?utf-8?B?M2hzcDFsTWFnZjhyMHgwdXBPMW5wZldkTzJKQU9laElFNnp5RE9PK2xiYXI3?=
+ =?utf-8?B?V3d1WFMwTTJvb2theFlVVW9HR093PT0=?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 089ae183-5e17-4867-9464-08dad10d256f
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2022 06:52:42.0446
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ktjqUIb5yxM5swgOhM1S7X5r1IJFq4jPo6REN4w5e56M6K4J8NoNeLkupV2Zmq2naLacNxRjR9Q5uYKAqjnmPINIBHKsq8POKhQilbHDpz8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR08MB6079
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_055547_772107_DD8D954D 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20221127_225250_968467_3C27B629 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,46 +152,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Nov 2022 at 15:06, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 23/11/2022 17:35, Jagan Teki wrote:
->
-> >>>>> +     aliases {
-> >>>>> +             i2c0 = &i2c0;
-> >>>>> +             serial0 = &uart0;
-> >>>>> +             serial1 = &uart1;
-> >>>>> +             serial2 = &uart2;
-> >>>>> +             serial3 = &uart3;
-> >>>>> +             serial4 = &uart4;
-> >>>>> +             serial5 = &uart5;
-> >>>>
-> >>>> These are not properties of a SoC but board. They depend on the
-> >>>> particular routing on the board... unless this SoC is an exception from
-> >>>> all others?
-> >>>
-> >>> Was this a new feature to follow, didn't see this before at least
-> >>> rockchip SoC's.
-> >>>
-> >>
-> >> It's not exactly new comment, but rather not always enforced/given.
-> >
-> > It seems like i2c0 and serial aliases are required across SoC instead
-> > of the specific board. An example of which i2c0 connected via PMIC
-> > which indeed require aliases to get a probe, which is common across
-> > SoC.
-> >
-> > [    1.778941] i2c_dev: i2c /dev entries driver
-> > [    1.780877] rk3x-i2c ff3f0000.i2c: rk3x-i2c needs i2cX alias
-> > [    1.781410] rk3x-i2c: probe of ff3f0000.i2c failed with error -22
-> > [    1.791312] Bluetooth: HCI UART driver ver 2.3
->
-> I2C driver indeed seems to require them, so then it's fine. That's not
-> the argument for serials though.
+Hi Sebastian,
 
-Yes, I dropped serial aliases for the next version.
+On 11/24/22 15:49, Sebastian Reichel wrote:
+> Add board file for the RK3588s Rock 5A board. While the hardware
+> offers plenty of peripherals and connectivity this basic implementation
+> just handles things required to access eMMC, UART and Ethernet (i.e.
+> enough to successfully boot Linux).
+> 
+> Tested-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Jagan,
+Isn't your Signed-off-by: tag supposed to come first? (This question
+also holds for patches 1, 2 (your S-o-B before the Reviewed-by) and 4 of
+this series.
+
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+>  .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 63 +++++++++++++++++++
+>  2 files changed, 64 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 12ed53de11eb..31fa55750a0f 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -73,3 +73,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> new file mode 100644
+> index 000000000000..b9d1ade62b4c
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> @@ -0,0 +1,63 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include "rk3588s.dtsi"
+> +
+> +/ {
+> +	model = "Radxa Rock 5A Board";
+> +	compatible = "radxa,rock-5a", "rockchip,rk3588s";
+> +
+> +	aliases {
+> +		mmc1 = &sdhci;
+> +		serial2 = &uart2;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +};
+> +
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii-rxid";
+> +	pinctrl-0 = <&gmac1_miim
+> +		     &gmac1_tx_bus2
+> +		     &gmac1_rx_bus2
+> +		     &gmac1_rgmii_clk
+> +		     &gmac1_rgmii_bus>;
+> +	pinctrl-names = "default";
+> +	rx_delay = <0x3e>;
+
+Documentation says that the MAC should not add an RX delay in the
+"rgmii-rxid" case, but it is specified. Is this really necessary?
+
+> +	tx_delay = <0x3a>;
+> +	status = "okay";
+> +};
+> +
+> +&mdio1 {
+> +	rgmii_phy1: ethernet-phy@1 {
+> +		/* RTL8211F */
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
+> +		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+
+No pinctrl required for this reset pin?
+
+With this addressed:
+
+Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
+
+Thanks and best regards,
+Michael
+
+> +	};
+> +};
+> +
+> +&sdhci {
+> +	bus-width = <8>;
+> +	no-sdio;
+> +	no-sd;
+> +	non-removable;
+> +	max-frequency = <200000000>;
+> +	mmc-hs400-1_8v;
+> +	mmc-hs400-enhanced-strobe;
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	pinctrl-0 = <&uart2m0_xfer>;
+> +	status = "okay";
+> +};
 
 _______________________________________________
 Linux-rockchip mailing list
