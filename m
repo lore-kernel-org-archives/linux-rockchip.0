@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7244FC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 17:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C40C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 17:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wYzIcIaVVcR5v1qRiuMBnvYtAnJ0AGujgrPK11kNaAg=; b=lPq1lQqhybN3E2
-	0K3kWoFcH5vgC41LOErrwrWzlXjBVeVEwgCycsSShVj3e7L/OW92nptvkscEjB6q5WCVS7igO6zsc
-	6jqDHP8z82JrZpyBaLR/TjxkHQ5rw3kQojj9P3XlqL4zeT2ssytvewtw/OUvrbTjgawu1qtVna/V3
-	WrYIMfYjgDllAjBRafRtXKlvzrjYTp5nFPv+D4AkavcqBCkBEDQWFBcc36tdXU787iigvp0hLlfxQ
-	sbG5dsyAkMYEOfLB0t1hZ+A3A2hSL/sfM2KYS1aXR1eWY+fILPbyFfJFeOMX6NCsznq2yOy7TVpMi
-	NImEuY7bxYrzR6JKYhIA==;
+	List-Owner; bh=zkMAjSg05WY1WISLWeJbdZ2lFVpO0JRC3MbM6TW9U0M=; b=wnnxqvfkcsmrs1
+	RcZn8VcXem5V52Ctg6iYhyAfnYe7042r5SerwNJ2GexRX3VDFPo5ZAoZ029hrjO7yw8sm0qQxQ+Fa
+	BDKt5cSGLXKND2gH4wYoFKDWlPa036ewWFD1Av8PxpqjOsta8htnkSuSbN0J/9eH2uLYU5Lkc/Szz
+	/Y9PidH9XbmJfV42foTFb5l5So9B8iJCIc1d03Piuy9MkM3qf9jSVlVuqQYSNKLwUqBy2hJTluPAS
+	gEivai4EUQYJpCniIwfpwtf35f/oY2LgPjuu4PLf3qdU52GDsGvjo2PItmulnqx4HM0vkHRIPRjzH
+	Aa9c61aEnJ20o54eaQKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oziA8-003BW5-1S; Mon, 28 Nov 2022 17:43:24 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oziBB-003C5k-Uf; Mon, 28 Nov 2022 17:44:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozi5C-0038Sw-2R; Mon, 28 Nov 2022 17:38:20 +0000
+	id 1ozi5F-0038WJ-LP; Mon, 28 Nov 2022 17:38:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id ACDBBB80E81;
-	Mon, 28 Nov 2022 17:38:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AB60C433D7;
-	Mon, 28 Nov 2022 17:38:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DC7A7612CF;
+	Mon, 28 Nov 2022 17:38:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C1F3C433C1;
+	Mon, 28 Nov 2022 17:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669657096;
-	bh=NhCnSawSEobZjid9+fA1B/I6eQ/GY3dTQGYeDOQ2MRA=;
+	s=k20201202; t=1669657100;
+	bh=MrcfBMU00PNN/1XsP3BwSi2BpmYNXxD+XJ/jbrqZRu8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Lc6xMI5a7rua4VnTZ/vDC35kQ7AiswltRY9fxjdVKC9uZqRETaQ/o8U2d3lGiSyxs
-	 H3vObxgvEaSUQQqg+deM8jnQB2s9kuhvkTG7sWbFO3lqsLtydydlISBlohPz59emdX
-	 mo7DKJ5GUxsoFl0WWipsL2YUUH8T3iDcXAxj9e2uJ8QYGsH4VthwQmJsaN1I32kQq8
-	 jKBRfFMKbzxT/WT0655yD62pMtYz+oyJ8FD5QmQG3u3qoIBXpNuqlzVUgXBgCpg/c1
-	 LPykERqgOdNHsjYXD8NXRhigdWnGHlnlpHlEh6S+ysMd7rNLy09yGBHTsytFvUqdtZ
-	 wsizWpHkv9/6w==
+	b=sFUj9gRSyKuHMbvMzIHkQYhPqBue53F43hAervVgaOpmW/W0lxq7xxvtLsVJWttA+
+	 ZKairFFYLfPjvBqaUS4RwA7uIyf3CM2Gtykw80s7jYIOuvVPE5Vsr4z0rGydG5glEX
+	 ceFZ79ipeJD+aqI1y4Z5SgTosYNLGwdifudCl3v/Jd40jKQk0WlBcXoF9gxnGQGmx8
+	 LhwGxyJN61lv/eDYyKEwoPuYMA2V2pjVdWyXOf5SOz1WsQnj+jYK/wqAhUPyfgJgIi
+	 6K3xjfeKGE0gN9bVA8SUq0XM58g/1TR0oAmh+X0xGR33E2PH39J2XkDiVMdcK8NkXX
+	 jNU/71n7q7eZQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,15 +49,12 @@ Cc: Johan Jonker <jbx6244@gmail.com>,
 	Sasha Levin <sashal@kernel.org>,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	robin.murphy@arm.com,
-	macromorgan@hotmail.com,
-	samuel@sholland.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.0 09/39] arm64: dts: rockchip: fix adc-keys sub node names
-Date: Mon, 28 Nov 2022 12:35:49 -0500
-Message-Id: <20221128173642.1441232-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.0 11/39] arm64: dts: rockchip: fix ir-receiver node names
+Date: Mon, 28 Nov 2022 12:35:51 -0500
+Message-Id: <20221128173642.1441232-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221128173642.1441232-1-sashal@kernel.org>
 References: <20221128173642.1441232-1-sashal@kernel.org>
@@ -65,8 +62,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_093818_442515_E2D870D6 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20221128_093821_800982_C0CF212A 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,237 +82,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit f2bd2e76d6ea13e12849975adae46145375532a4 ]
+[ Upstream commit de0d04b9780a23eb928aedfb6f981285f78d58e5 ]
 
-Fix adc-keys sub node names on Rockchip boards,
-so that they match with regex: '^button-'
+Fix ir-receiver node names on Rockchip boards,
+so that they match with regex: '^ir(-receiver)?(@[a-f0-9]+)?$'
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/6a6a3603-5540-cacc-2672-c015af1ec684@gmail.com
+Link: https://lore.kernel.org/r/e9764253-8ce8-150b-4820-41f03f845469@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/px30-evb.dts            | 10 +++++-----
- arch/arm64/boot/dts/rockchip/rk3308-evb.dts          | 12 ++++++------
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts    |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts   |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts     |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi      |  2 +-
- .../boot/dts/rockchip/rk3399-sapphire-excavator.dts  |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi    |  2 +-
- 10 files changed, 21 insertions(+), 21 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 848bc39cf86a..4249b42843da 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -30,31 +30,31 @@ adc-keys {
- 		keyup-threshold-microvolt = <1800000>;
- 		poll-interval = <100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+index ea6820902ede..7ea48167747c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+@@ -19,7 +19,7 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
  
--		esc-key {
-+		button-esc {
- 			label = "esc";
- 			linux,code = <KEY_ESC>;
- 			press-threshold-microvolt = <1310000>;
- 		};
- 
--		home-key {
-+		button-home {
- 			label = "home";
- 			linux,code = <KEY_HOME>;
- 			press-threshold-microvolt = <624000>;
- 		};
- 
--		menu-key {
-+		button-menu {
- 			label = "menu";
- 			linux,code = <KEY_MENU>;
- 			press-threshold-microvolt = <987000>;
- 		};
- 
--		vol-down-key {
-+		button-down {
- 			label = "volume down";
- 			linux,code = <KEY_VOLUMEDOWN>;
- 			press-threshold-microvolt = <300000>;
- 		};
- 
--		vol-up-key {
-+		button-up {
- 			label = "volume up";
- 			linux,code = <KEY_VOLUMEUP>;
- 			press-threshold-microvolt = <17000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-index 9fe9b0d11003..184b84fdde07 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-@@ -23,7 +23,7 @@ adc-keys0 {
- 		poll-interval = <100>;
- 		keyup-threshold-microvolt = <1800000>;
- 
--		func-key {
-+		button-func {
- 			linux,code = <KEY_FN>;
- 			label = "function";
- 			press-threshold-microvolt = <18000>;
-@@ -37,31 +37,31 @@ adc-keys1 {
- 		poll-interval = <100>;
- 		keyup-threshold-microvolt = <1800000>;
- 
--		esc-key {
-+		button-esc {
- 			linux,code = <KEY_MICMUTE>;
- 			label = "micmute";
- 			press-threshold-microvolt = <1130000>;
- 		};
- 
--		home-key {
-+		button-home {
- 			linux,code = <KEY_MODE>;
- 			label = "mode";
- 			press-threshold-microvolt = <901000>;
- 		};
- 
--		menu-key {
-+		button-menu {
- 			linux,code = <KEY_PLAY>;
- 			label = "play";
- 			press-threshold-microvolt = <624000>;
- 		};
- 
--		vol-down-key {
-+		button-down {
- 			linux,code = <KEY_VOLUMEDOWN>;
- 			label = "volume down";
- 			press-threshold-microvolt = <300000>;
- 		};
- 
--		vol-up-key {
-+		button-up {
- 			linux,code = <KEY_VOLUMEUP>;
- 			label = "volume up";
- 			press-threshold-microvolt = <18000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-index 43c928ac98f0..1deef53a4c94 100644
---- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -25,7 +25,7 @@ adc-keys {
- 		keyup-threshold-microvolt = <1800000>;
- 		poll-interval = <100>;
- 
--		recovery {
-+		button-recovery {
- 			label = "recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <17000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index 2a332763c35c..9d9297bc5f04 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -123,7 +123,7 @@ adc-keys {
- 		keyup-threshold-microvolt = <1800000>;
- 		poll-interval = <100>;
- 
--		recovery {
-+		button-recovery {
- 			label = "Recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <18000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-index 452728b82e42..3bf8f959e42c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-@@ -39,7 +39,7 @@ adc-keys {
- 		keyup-threshold-microvolt = <1800000>;
- 		poll-interval = <100>;
- 
--		recovery {
-+		button-recovery {
- 			label = "Recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <18000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
-index 72182c58cc46..65cb21837b0c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
-@@ -19,7 +19,7 @@ adc-keys {
- 		keyup-threshold-microvolt = <1500000>;
- 		poll-interval = <100>;
- 
--		recovery {
-+		button-recovery {
- 			label = "Recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <18000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 9e2e246e0bab..dba4d03bfc2b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -52,13 +52,13 @@ button-down {
- 			press-threshold-microvolt = <300000>;
- 		};
- 
--		back {
-+		button-back {
- 			label = "Back";
- 			linux,code = <KEY_BACK>;
- 			press-threshold-microvolt = <985000>;
- 		};
- 
--		menu {
-+		button-menu {
- 			label = "Menu";
- 			linux,code = <KEY_MENU>;
- 			press-threshold-microvolt = <1314000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index acb174d3a8c5..4f3dd107e83e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -41,7 +41,7 @@ adc-keys {
- 		keyup-threshold-microvolt = <1500000>;
- 		poll-interval = <100>;
- 
--		recovery {
-+		button-recovery {
- 			label = "Recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <18000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-index 13927e7d0724..dbec2b7173a0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-@@ -33,13 +33,13 @@ button-down {
- 			press-threshold-microvolt = <300000>;
- 		};
- 
--		back {
-+		button-back {
- 			label = "Back";
- 			linux,code = <KEY_BACK>;
- 			press-threshold-microvolt = <985000>;
- 		};
- 
--		menu {
-+		button-menu {
- 			label = "Menu";
- 			linux,code = <KEY_MENU>;
- 			press-threshold-microvolt = <1314000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-index 0d45868132b9..8d61f824c12d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-@@ -23,7 +23,7 @@ adc-keys {
- 		io-channel-names = "buttons";
- 		keyup-threshold-microvolt = <1750000>;
- 
--		recovery {
-+		button-recovery {
- 			label = "recovery";
- 			linux,code = <KEY_VENDOR>;
- 			press-threshold-microvolt = <0>;
+-	ir_rx {
++	ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+ 		gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
 -- 
 2.35.1
 
