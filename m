@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7085EC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28A10C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XKIFjawG6USNBThd+KG0Y3d75B/SFjbQvNTsHCgkO1Q=; b=Gu4LR2S08A5pww
-	ib51GaNjVgwlq5wAYon6cJ04r9Enek/hznGC4+KtTjlsUvJKYb1LZjqhZCR8yoJgdP8TgvY4Mid84
-	pPbAwpr3fldK9of9vawi9eQIpHox3pTg9VQLeG5pbC9DmRw2C8fB5ZDe2iMkHk5euPXlJZViBqP6p
-	aqLYGWIb8prkIx3SXRbMh5JLsnomOokHmxSzGR9caWNVlHQune6ya06+wC0iw/sCaYsE+fdITOOBT
-	ZwiRco+h3UyLsN30kmmlC4m40I3kzRLRDqiiDlLvHk0xYBUswfv1W02Yu7a2OZoKkDrhRgkiOLiBj
-	ReX3z/Gl74y+4IZb86MQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GML8lM6YimTBHRrIAjtsJag9Qjp+8+b/wmRYyatC8KI=; b=ZTtYLnsKat8z5O
+	m6fyDtkV16r51zhDKt3c7e3JYnRfB6MWiapyY3fLvacE3DFYHrLS0+ekSWX8cR6Kc5STJQuXJO1Km
+	B4+bxJyXR/Jx/oeSjRvcInwvEGcU+AW4icopsWY4mgjRHAO+8Cs5y1cyK98WvY5+b6TnRYb/lEuPF
+	hHHsgKurLO3nqX4Ttsrfjjl476uPMDLHprHOkytdwAm3vVtOiNoGkwa0Fbk+rHhgDs6hD9aikt/8q
+	0oR2pCSAN333IW0RqKodK51W+CQDRZ3I51YGV107H8q832YdYprbg4PrL/RxVSUCgLbNJWkDd4IHU
+	5fkP3OaDNxYKqEpVhnvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjAp-003kxm-Ij; Mon, 28 Nov 2022 18:48:11 +0000
+	id 1ozjB2-003l5e-LA; Mon, 28 Nov 2022 18:48:24 +0000
 Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozjAT-003kl1-S2; Mon, 28 Nov 2022 18:47:52 +0000
+	id 1ozjAU-003kkn-09; Mon, 28 Nov 2022 18:47:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=o+wfmjgwpLygw6FMdf7t1qVwAF7dGrNBrWiv+F+6N3A=; b=thIS/tGDClZYUL+M1ZxA5S/GnG
-	A6SYPdHA9YeztPUS6zQkGFZowo+GaKwuZX50PkJIhFw+ssjFWs1vI9qXDCSwaO6daNNvIz0ZDqbNu
-	jcHitxpH2QF2d6EGOHJ+yys3fHal8E0RMrwEyEskJjuWBml3HISaxMdLEELO3ZyuhFPO/oJidER+a
-	Ri1KgUg7hingJlDo6L4ppAi/fhk7YjozmTeQ1lLNLyKq8+PL2SWtqUQTGk/FnnqN3XsWs2kiYx7ov
-	pROhXt/wQtVyIuPwcEagweiIJzY81navukhC11ykcciX+nwEHwULkHlZHTKK9YFsJDFNw800mRf2z
-	HXvl7TlA==;
+	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:
+	Subject:Cc:To:From:Content-Type:From:Reply-To:Subject:Content-ID:
+	Content-Description:In-Reply-To:References:X-Debbugs-Cc;
+	bh=2nc6ETieocz1/MF7D4a379nzMdeyEycYLQGwrA8DsAQ=; b=Shn+niV8Dwihi1yTofxwyKMWTu
+	+zIt+swVCw1jCd4qzUK8xUpPMOupBnWuWw1qppfhsrrKQQzf1PFqSJChwmqV9iaRWW6YkmTI8WDA7
+	YQbaZjjCmF0JXrlDBBHlSxQAiZTpGe4D/tL5gy+HfjaMpNECY/aEe9Vp1PyxN5LaDPRZe/Ddde5nP
+	le25Zdm3BNTreQI1LPlbYYhfa8jsFxpYQT1EgdlSyO9ByAY+jy7L83PTHnBK+vvW3sYbLhlPxz2m+
+	sqbPonHFgOSi8/TGjgho9yei9aH22ewVBzFG+va+qSO6d1pMrGFPIEtLnJHfpmqh4+Nqobx/EU7eb
+	xnnrevqw==;
 Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
 	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA2-006BV9-J5; Mon, 28 Nov 2022 19:47:22 +0100
+	id 1ozjA2-006BV6-Ih; Mon, 28 Nov 2022 19:47:22 +0100
 Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ozjA1-008Elr-23;
+	id 1ozjA1-008Ell-1p;
 	Mon, 28 Nov 2022 19:47:21 +0100
 From: Aurelien Jarno <aurelien@aurel32.net>
 To: Olivia Mackall <olivia@selenic.com>,
@@ -57,16 +57,14 @@ Cc: linux-crypto@vger.kernel.org (open list:HARDWARE RANDOM NUMBER GENERATOR COR
 	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
 	linux-kernel@vger.kernel.org (open list),
 	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v2 2/3] hwrng: add Rockchip SoC hwrng driver
-Date: Mon, 28 Nov 2022 19:47:17 +0100
-Message-Id: <20221128184718.1963353-3-aurelien@aurel32.net>
+Subject: [PATCH v2 0/3] hwrng: add hwrng support for Rockchip RK3568
+Date: Mon, 28 Nov 2022 19:47:15 +0100
+Message-Id: <20221128184718.1963353-1-aurelien@aurel32.net>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221128184718.1963353-1-aurelien@aurel32.net>
-References: <20221128184718.1963353-1-aurelien@aurel32.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_104750_478531_55BC4C0D 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20221128_104750_498687_46065B03 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,314 +83,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Rockchip SoCs used to have a random number generator as part of their
 crypto device, and support for it has to be added to the corresponding
-driver. However newer Rockchip SoCs like the RK356x have an independent
-True Random Number Generator device. This patch adds a driver for it,
-greatly inspired from the downstream driver.
+driver.
 
-The TRNG device does not seem to have a signal conditionner and the FIPS
-140-2 test returns a lot of failures. They can be reduced by increasing
-RK_RNG_SAMPLE_CNT, in a tradeoff between quality and speed. This value
-has been adjusted to get ~90% of successes and the quality value has
-been set accordingly.
+However newer Rockchip SoCs like the RK3568 have an independent True
+Random Number Generator device. This patchset adds a driver for it and
+enable it in the device tree.
 
-Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
----
- drivers/char/hw_random/Kconfig        |  14 ++
- drivers/char/hw_random/Makefile       |   1 +
- drivers/char/hw_random/rockchip-rng.c | 250 ++++++++++++++++++++++++++
- 3 files changed, 265 insertions(+)
+v1 -> v2:
+ * Patch 1: fix issues reported by Rob Herring and Krzysztof Kozlowski:
+   - Rename rockchip-rng.yaml into rockchip,rk3568-rng.yaml
+   - Fix binding title and description
+   - Fix compatible property
+   - Rename clocks and add the corresponding descriptions
+   - Drop reset-names
+   - Add a bus definition with #address-cells and #size-cells to the
+     example.
+
+ * Patch 2: fix issue reported by kernel test robot <lkp@intel.com>
+   - Do not read the random registers as big endian, looking at the
+     RK3568 TRM this is actually not needed. This fixes a sparse
+     warning.
+
+ * Patch 3: unchanged
+
+Aurelien Jarno (3):
+  dt-bindings: RNG: Add Rockchip RNG bindings
+  hwrng: add Rockchip SoC hwrng driver
+  arm64: dts: rockchip: add DT entry for RNG to RK356x
+
+ .../bindings/rng/rockchip,rk3568-rng.yaml     |  60 +++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   9 +
+ drivers/char/hw_random/Kconfig                |  14 +
+ drivers/char/hw_random/Makefile               |   1 +
+ drivers/char/hw_random/rockchip-rng.c         | 250 ++++++++++++++++++
+ 5 files changed, 334 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
  create mode 100644 drivers/char/hw_random/rockchip-rng.c
 
-diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index 3da8e85f8aae..8e5c88504f72 100644
---- a/drivers/char/hw_random/Kconfig
-+++ b/drivers/char/hw_random/Kconfig
-@@ -549,6 +549,20 @@ config HW_RANDOM_CN10K
- 	 To compile this driver as a module, choose M here.
- 	 The module will be called cn10k_rng. If unsure, say Y.
- 
-+config HW_RANDOM_ROCKCHIP
-+        tristate "Rockchip True Random Number Generator"
-+        depends on HW_RANDOM && (ARCH_ROCKCHIP || COMPILE_TEST)
-+        depends on HAS_IOMEM
-+        default HW_RANDOM
-+        help
-+          This driver provides kernel-side support for the True Random Number
-+          Generator hardware found on some Rockchip SoC like RK3566 or RK3568.
-+
-+          To compile this driver as a module, choose M here: the
-+          module will be called rockchip-rng.
-+
-+          If unsure, say Y.
-+
- endif # HW_RANDOM
- 
- config UML_RANDOM
-diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
-index 3e948cf04476..b7e989535fd6 100644
---- a/drivers/char/hw_random/Makefile
-+++ b/drivers/char/hw_random/Makefile
-@@ -47,3 +47,4 @@ obj-$(CONFIG_HW_RANDOM_XIPHERA) += xiphera-trng.o
- obj-$(CONFIG_HW_RANDOM_ARM_SMCCC_TRNG) += arm_smccc_trng.o
- obj-$(CONFIG_HW_RANDOM_CN10K) += cn10k-rng.o
- obj-$(CONFIG_HW_RANDOM_POLARFIRE_SOC) += mpfs-rng.o
-+obj-$(CONFIG_HW_RANDOM_ROCKCHIP) += rockchip-rng.o
-diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-new file mode 100644
-index 000000000000..18cdd91ad8c3
---- /dev/null
-+++ b/drivers/char/hw_random/rockchip-rng.c
-@@ -0,0 +1,250 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * rockchip-rng.c True Random Number Generator driver for Rockchip SoCs
-+ *
-+ * Copyright (c) 2018, Fuzhou Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2022, Aurelien Jarno
-+ * Authors:
-+ *  Lin Jinhan <troy.lin@rock-chips.com>
-+ *  Aurelien Jarno <aurelien@aurel32.net>
-+ */
-+#include <linux/clk.h>
-+#include <linux/hw_random.h>
-+#include <linux/io.h>
-+#include <linux/iopoll.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/reset.h>
-+#include <linux/slab.h>
-+
-+#define RK_RNG_AUTOSUSPEND_DELAY	100
-+#define RK_RNG_MAX_BYTE			32
-+#define RK_RNG_POLL_PERIOD_US		100
-+#define RK_RNG_POLL_TIMEOUT_US		10000
-+
-+/*
-+ * TRNG collects osc ring output bit every RK_RNG_SAMPLE_CNT time. The value is
-+ * a tradeoff between speed and quality and has been adjusted to get a quality
-+ * of ~900 (~90% of FIPS 140-2 successes).
-+ */
-+#define RK_RNG_SAMPLE_CNT		1000
-+
-+/* TRNG registers from RK3568 TRM-Part2, section 5.4.1 */
-+#define TRNG_RST_CTL			0x0004
-+#define TRNG_RNG_CTL			0x0400
-+#define TRNG_RNG_CTL_LEN_64_BIT		(0x00 << 4)
-+#define TRNG_RNG_CTL_LEN_128_BIT	(0x01 << 4)
-+#define TRNG_RNG_CTL_LEN_192_BIT	(0x02 << 4)
-+#define TRNG_RNG_CTL_LEN_256_BIT	(0x03 << 4)
-+#define TRNG_RNG_CTL_OSC_RING_SPEED_0	(0x00 << 2)
-+#define TRNG_RNG_CTL_OSC_RING_SPEED_1	(0x01 << 2)
-+#define TRNG_RNG_CTL_OSC_RING_SPEED_2	(0x02 << 2)
-+#define TRNG_RNG_CTL_OSC_RING_SPEED_3	(0x03 << 2)
-+#define TRNG_RNG_CTL_ENABLE		BIT(1)
-+#define TRNG_RNG_CTL_START		BIT(0)
-+#define TRNG_RNG_SAMPLE_CNT		0x0404
-+#define TRNG_RNG_DOUT_0			0x0410
-+#define TRNG_RNG_DOUT_1			0x0414
-+#define TRNG_RNG_DOUT_2			0x0418
-+#define TRNG_RNG_DOUT_3			0x041c
-+#define TRNG_RNG_DOUT_4			0x0420
-+#define TRNG_RNG_DOUT_5			0x0424
-+#define TRNG_RNG_DOUT_6			0x0428
-+#define TRNG_RNG_DOUT_7			0x042c
-+
-+struct rk_rng {
-+	struct hwrng rng;
-+	void __iomem *base;
-+	struct reset_control *rst;
-+	int clk_num;
-+	struct clk_bulk_data *clk_bulks;
-+};
-+
-+/* The mask determine the bits that are updated */
-+static void rk_rng_write_ctl(struct rk_rng *rng, u32 val, u32 mask)
-+{
-+	writel_relaxed((mask << 16) | val, rng->base + TRNG_RNG_CTL);
-+}
-+
-+static int rk_rng_init(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	u32 reg;
-+	int ret;
-+
-+	/* start clocks */
-+	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
-+	if (ret < 0) {
-+		dev_err((struct device *) rk_rng->rng.priv,
-+			"Failed to enable clks %d\n", ret);
-+		return ret;
-+	}
-+
-+	/* set the sample period */
-+	writel(RK_RNG_SAMPLE_CNT, rk_rng->base + TRNG_RNG_SAMPLE_CNT);
-+
-+	/* set osc ring speed and enable it */
-+	reg = TRNG_RNG_CTL_LEN_256_BIT |
-+		   TRNG_RNG_CTL_OSC_RING_SPEED_0 |
-+		   TRNG_RNG_CTL_ENABLE;
-+	rk_rng_write_ctl(rk_rng, reg, 0xffff);
-+
-+	return 0;
-+}
-+
-+static void rk_rng_cleanup(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	u32 reg;
-+
-+	/* stop TRNG */
-+	reg = 0;
-+	rk_rng_write_ctl(rk_rng, reg, 0xffff);
-+
-+	/* stop clocks */
-+	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
-+}
-+
-+static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+	u32 reg;
-+	int ret = 0;
-+	int i;
-+
-+	pm_runtime_get_sync((struct device *) rk_rng->rng.priv);
-+
-+	/* Start collecting random data */
-+	reg = TRNG_RNG_CTL_START;
-+	rk_rng_write_ctl(rk_rng, reg, reg);
-+
-+	ret = readl_poll_timeout(rk_rng->base + TRNG_RNG_CTL, reg,
-+				 !(reg & TRNG_RNG_CTL_START),
-+				 RK_RNG_POLL_PERIOD_US,
-+				 RK_RNG_POLL_TIMEOUT_US);
-+	if (ret < 0)
-+		goto out;
-+
-+	/* Read random data stored in the registers */
-+	ret = min_t(size_t, max, RK_RNG_MAX_BYTE);
-+	for (i = 0; i < ret; i += 4) {
-+		*(u32 *)(buf + i) = readl_relaxed(rk_rng->base + TRNG_RNG_DOUT_0 + i);
-+	}
-+
-+out:
-+	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
-+	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
-+
-+	return ret;
-+}
-+
-+static int rk_rng_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rk_rng *rk_rng;
-+	int ret;
-+
-+	rk_rng = devm_kzalloc(dev, sizeof(struct rk_rng), GFP_KERNEL);
-+	if (!rk_rng)
-+		return -ENOMEM;
-+
-+	rk_rng->base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(rk_rng->base))
-+		return PTR_ERR(rk_rng->base);
-+
-+	rk_rng->clk_num = devm_clk_bulk_get_all(dev, &rk_rng->clk_bulks);
-+	if (rk_rng->clk_num < 0)
-+		return dev_err_probe(dev, rk_rng->clk_num,
-+				     "Failed to get clks property\n");
-+
-+	rk_rng->rst = devm_reset_control_array_get(&pdev->dev, false, false);
-+	if (IS_ERR(rk_rng->rst))
-+		return dev_err_probe(dev, PTR_ERR(rk_rng->rst),
-+				     "Failed to get reset property\n");
-+
-+	reset_control_assert(rk_rng->rst);
-+	udelay(2);
-+	reset_control_deassert(rk_rng->rst);
-+
-+	platform_set_drvdata(pdev, rk_rng);
-+
-+	rk_rng->rng.name = dev_driver_string(dev);
-+#ifndef CONFIG_PM
-+	rk_rng->rng.init = rk_rng_init;
-+	rk_rng->rng.cleanup = rk_rng_cleanup;
-+#endif
-+	rk_rng->rng.read = rk_rng_read;
-+	rk_rng->rng.priv = (unsigned long) dev;
-+	rk_rng->rng.quality = 900;
-+
-+	pm_runtime_set_autosuspend_delay(dev, RK_RNG_AUTOSUSPEND_DELAY);
-+	pm_runtime_use_autosuspend(dev);
-+	pm_runtime_enable(dev);
-+
-+	ret = devm_hwrng_register(dev, &rk_rng->rng);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to register Rockchip hwrng\n");
-+
-+	dev_info(&pdev->dev, "Registered Rockchip hwrng\n");
-+
-+	return 0;
-+}
-+
-+static int rk_rng_remove(struct platform_device *pdev)
-+{
-+	pm_runtime_disable(&pdev->dev);
-+
-+	return 0;
-+}
-+
-+#ifdef CONFIG_PM
-+static int rk_rng_runtime_suspend(struct device *dev)
-+{
-+	struct rk_rng *rk_rng = dev_get_drvdata(dev);
-+
-+	rk_rng_cleanup(&rk_rng->rng);
-+
-+	return 0;
-+}
-+
-+static int rk_rng_runtime_resume(struct device *dev)
-+{
-+	struct rk_rng *rk_rng = dev_get_drvdata(dev);
-+
-+	return rk_rng_init(&rk_rng->rng);
-+}
-+#endif
-+
-+static const struct dev_pm_ops rk_rng_pm_ops = {
-+	SET_RUNTIME_PM_OPS(rk_rng_runtime_suspend,
-+				rk_rng_runtime_resume, NULL)
-+	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-+				pm_runtime_force_resume)
-+};
-+
-+static const struct of_device_id rk_rng_dt_match[] = {
-+	{
-+		.compatible = "rockchip,rk3568-rng",
-+	},
-+	{},
-+};
-+
-+MODULE_DEVICE_TABLE(of, rk_rng_dt_match);
-+
-+static struct platform_driver rk_rng_driver = {
-+	.driver	= {
-+		.name	= "rockchip-rng",
-+		.pm	= &rk_rng_pm_ops,
-+		.of_match_table = rk_rng_dt_match,
-+	},
-+	.probe	= rk_rng_probe,
-+	.remove = rk_rng_remove,
-+};
-+
-+module_platform_driver(rk_rng_driver);
-+
-+MODULE_DESCRIPTION("Rockchip True Random Number Generator driver");
-+MODULE_AUTHOR("Lin Jinhan <troy.lin@rock-chips.com>, Aurelien Jarno <aurelien@aurel32.net>");
-+MODULE_LICENSE("GPL v2");
 -- 
 2.35.1
 
