@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C53C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C9BC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Nov 2022 18:15:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vrCELkzGIxJhCbjsLBhqcBWK/+kd9GwXBwU0l9JELrY=; b=bri/DOnlyCDJ1v
-	U5lLm8fFXTtTeA189d8KWSwLkKzczBlxZRG+NfZDYrbCwJYoJEJJNd251D5Ps85sDx/njmiIr1Bu8
-	v69MBmQ3oLJGbRAgI9hzJ40VSrbXc7sgSZFIBoG58tFfzejiv6Xd3b07pa+cu/Z1/ss2AmxZXHQxw
-	/Bqu8QPy+BmDsotXtGX41ZuVaUQudq5vF3FMzFkrKv4OzvmkdjNWN+NeSEfNoE6HjzAa70yMbZw+t
-	qCicR77j9ZugLZ0EounAn6I9s0sfTgaqzx7kEK+KOxrdLq5mILqIgYlbRLsA99PGc+7f0V7pM+Ozr
-	0BfeZNeQa3IWBNbOSy5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=449wOrgcR1vTi7FoRP/y1Ux/5TmfUimiFXOLx6G6eqs=; b=bD1C7E++3KVujh
+	jo4QXB9EG9J5VflkDFfBZRlQk6coPe+zMQFV8GLNNCq1jP/AUbq18zgEiubEksWbduyfP4al7P+b2
+	6kYgk46XPoM+WNzpnz/NkES40PDduHJNCWiU84c434yfMfZ/DsSf++IbbAbo5aW1FiQaBrwfaXs7R
+	vbO4ld49uIo6RzB3vGCiI5/M0Ht1U9hesyHYGUjIQ5AcO9PHgj1+6kHlkZrUpnFt8SeQEDrEHweH9
+	AZicf1yll9mhNwx09JRbj2xJaHkJlmhllmedNbaqLrx36JXJ/NQhWCVGphn2k6btezn4YfRjxO7xf
+	5KkGiNiyist1mRBswrRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oziee-003Skv-Ir; Mon, 28 Nov 2022 18:14:56 +0000
+	id 1ozief-003SlV-PO; Mon, 28 Nov 2022 18:14:57 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozi9Q-003B6V-C2; Mon, 28 Nov 2022 17:42:42 +0000
+	id 1ozi9P-003B5c-Lf; Mon, 28 Nov 2022 17:42:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D99D961302;
-	Mon, 28 Nov 2022 17:42:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE534C4347C;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E097C612ED;
 	Mon, 28 Nov 2022 17:42:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C6DAC433D7;
+	Mon, 28 Nov 2022 17:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669657359;
-	bh=FWzkxTY7Q9yvjljt2+FF9uusIg7dT0lFv4zrCzApXgw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NrqO93FWvVDsu2zEJDSCUIwVE1tE4nOejj0hcDHi75b6fmQ5j0tYpsVQWUrcsDJ73
-	 sJ3EiiORUh+qIVnnB4h4YAzXOIWkyMJpYdHRPL4xSwXO7vwrbH2ux2Rl2Bg4xvUZX8
-	 Pr7hcPKYZRef2IGKr9AoEebmQIpzgjIEGiQXkDcLUJlL7Lu3MduXFNwGm1WS+R00Yz
-	 bW/hOYYvwZVBZp5fkGqqrnIPMjWUZKwWU8wYfEmZpkRnbsfKd/djwY+a35FJS/jWKa
-	 qEZy34bGm/sH/6sR+1uLqGzfDQEVxuBHXMEHO8/cXRp+lKS8GrXId2lmwQ+deguKqb
-	 woah2ZjFsHeiQ==
+	s=k20201202; t=1669657358;
+	bh=6jW1xF0BC5SPa7t7WoUJnbB4EaC9DnfFiLE1eqkPEVA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=SYjMdgxq12ZNHYm6Gb8Bvdy2GmP0wu4aKGSWx9urYgBB1I9PMo2tQokyKo8OSvtTm
+	 IkVzBuIVDpx5eLFnol7gjymJJ8OrOkrnorflO77yFcxA8Mqhbs+QOGvp7dXgNf+9ah
+	 GdZ5RHrEhcTQbPDAhf0KSaJejf2UFtJy2Xl7u6XaTK4Z+cw4Ly21fxCqIWGtN/ljIA
+	 okGZv5ufOpKVc72101U84FNynl/QGAki+4hM6e0qocl8yojOFk0qPGseRR+rhKtPfy
+	 HfnqO4UnRv4UiyZfHfNt9UrhypUlkuOSm/HdQcqR12HbE3rPxsDwjznCTlwms/hxxm
+	 1THisKIr5PcDA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>,
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
 	robh+dt@kernel.org,
@@ -52,18 +52,16 @@ Cc: Johan Jonker <jbx6244@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 02/12] ARM: dts: rockchip: fix ir-receiver node names
-Date: Mon, 28 Nov 2022 12:42:25 -0500
-Message-Id: <20221128174235.1442841-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 01/12] arm: dts: rockchip: fix node name for hym8563 rtc
+Date: Mon, 28 Nov 2022 12:42:24 -0500
+Message-Id: <20221128174235.1442841-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221128174235.1442841-1-sashal@kernel.org>
-References: <20221128174235.1442841-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_094240_507310_41D401DD 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20221128_094239_840048_D4F8F120 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +78,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-[ Upstream commit dd847fe34cdf1e89afed1af24986359f13082bfb ]
+[ Upstream commit 17b57beafccb4569accbfc8c11390744cf59c021 ]
 
-Fix ir-receiver node names on Rockchip boards,
-so that they match with regex: '^ir(-receiver)?(@[a-f0-9]+)?$'
+Fix the node name for hym8563 in all arm rockchip devicetrees.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/ea5af279-f44c-afea-023d-bb37f5a0d58d@gmail.com
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Link: https://lore.kernel.org/r/20221024165549.74574-4-sebastian.reichel@collabora.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3188-radxarock.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3036-evb.dts          | 2 +-
+ arch/arm/boot/dts/rk3288-evb-act8846.dts  | 2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi     | 2 +-
+ arch/arm/boot/dts/rk3288-miqi.dts         | 2 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
-index 4a2890618f6f..720d0136f1ab 100644
---- a/arch/arm/boot/dts/rk3188-radxarock.dts
-+++ b/arch/arm/boot/dts/rk3188-radxarock.dts
-@@ -67,7 +67,7 @@ spdif_out: spdif-out {
- 		#sound-dai-cells = <0>;
+diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
+index 2a7e6624efb9..ea23ba98625e 100644
+--- a/arch/arm/boot/dts/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rk3036-evb.dts
+@@ -31,7 +31,7 @@ phy0: ethernet-phy@0 {
+ &i2c1 {
+ 	status = "okay";
+ 
+-	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+ 		#clock-cells = <0>;
+diff --git a/arch/arm/boot/dts/rk3288-evb-act8846.dts b/arch/arm/boot/dts/rk3288-evb-act8846.dts
+index 6592c809e2a5..ccc07740ee3d 100644
+--- a/arch/arm/boot/dts/rk3288-evb-act8846.dts
++++ b/arch/arm/boot/dts/rk3288-evb-act8846.dts
+@@ -53,7 +53,7 @@ vdd_gpu: syr828@41 {
+ 		vin-supply = <&vcc_sys>;
  	};
  
--	ir_recv: gpio-ir-receiver {
-+	ir_recv: ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
+-	hym8563@51 {
++	rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+ 
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index a6ff7eac4aa8..8970b7ad1a6b 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -233,7 +233,7 @@ vdd_gpu: syr828@41 {
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+-	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+ 		#clock-cells = <0>;
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index 504ab1177aa7..ec7c7bf5ae95 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -146,7 +146,7 @@ vdd_gpu: syr828@41 {
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+-	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+ 		#clock-cells = <0>;
+diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
+index 6a30cadad88a..47dd843ae629 100644
+--- a/arch/arm/boot/dts/rk3288-rock2-square.dts
++++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
+@@ -166,7 +166,7 @@ &hdmi {
+ };
+ 
+ &i2c0 {
+-	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+ 		#clock-cells = <0>;
 -- 
 2.35.1
 
