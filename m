@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A5BFC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 17:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F95C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 17:29:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fz9Ry3AvdA9Oav24NEG3LqccARL9m8S3gu7HPlNmMv0=; b=DmUUbQUt0Y1W34
-	RShyrYgl32SILcRh4m8emPzckgIewrDQLPmORTMDMmnmnOHmJBVAsvzSuvKhKbTxPynpGI+GiiLf6
-	j2TpLMb63pDBDlhufqdXlF8PEAoLjAXCbRsa95yQA1OZzyS4vw2aBHoraPpPrHYcdTSzRqn2IAOCX
-	fusZErRLh7BWzR3TBqmjfjkYto4y+x1pf291OxyZMdUvnzJs4R/hJzkzP1IVEcByZux1biq9ugDq2
-	fk6CNkb28e3uES6lj/ZmNs2akTGj3mabAh3hCjnC6qtCrho/f6fkMZJDP8hbu7lgFyjMgLQ2fD00+
-	M/nwtKjitwW4wlLFet9A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9jAGS1smSQwiKXwL0xFxC3i3+TIbsJ5w7q8nOGjnkXQ=; b=iJWi7NiD9wAfkp
+	724mPLkUHWGhi3q6ZJfOlDyWzTAYnK3SJoJSF6Hh6c0UXM+snxiRQBc8AIGzK9MNpRZWqeGoBPWpN
+	LprG6NxrP8LXnpjEckpLViqVzGCFhnj4HWUphTK6u2Sn5wExscJXf5K3cNDhP3YYGKyFalX7p/YPX
+	0fieU1Jp4vcO8dyiyPKjrvwKToTyW/EyxTquIo0H+9U7nQ0KIoaFmjaadbwk89TqKm8YsuXLax5mR
+	9d8rU4WjC07OacfhvlgSAvxR6Gd6ds7xs259+euGTsrJgFCMCGZeMeGAX0E3cI5Zc5+jVDS54KXke
+	hUUTFR/VJprledHWD1Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p04QC-00AWOt-1H; Tue, 29 Nov 2022 17:29:28 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1p04QC-00AWP0-BW; Tue, 29 Nov 2022 17:29:28 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p04Q7-00AWMf-JI
+	id 1p04Q6-00AWLa-Jr
 	for linux-rockchip@lists.infradead.org; Tue, 29 Nov 2022 17:29:25 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id 94-20020a9d0067000000b0066c8d13a33dso9545327ota.12
-        for <linux-rockchip@lists.infradead.org>; Tue, 29 Nov 2022 09:29:23 -0800 (PST)
+Received: by mail-oi1-x22a.google.com with SMTP id r76so15965218oie.13
+        for <linux-rockchip@lists.infradead.org>; Tue, 29 Nov 2022 09:29:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fnrU/S9jrTo7VMkSItxfe7rQNqEwCFm0vszgPLvFvNM=;
-        b=FMuZUNvNuprAFguviKR51jVrDAzZLGUbDQOtZNexD2xXwNxzNHQ63ay2m4eYEODfYH
-         Vw5VfMDlwMd5w+Kawaujb4SSHVrenwVnHwa+gXBzg8bH7dzpPLP8G13oF4kH2DBS3YOU
-         qRHHKSq2EeSSOmsE7aWaAYUci/uFIW4M4srljDLfJkHLAhULKrjARc0LGDIdhqqFbCPL
-         fvaxcxHqS+6UQkTtkbvA1UaaSxxGpUmPwEeuMEySUI4SIOFUZd4MNvbnuIs187Nca9Ma
-         8rRbLWJ7K048+wtP2BHjMDii4Tqzrl9Wab7XsRtTIQM5fS78iIiY48voYS7+l6IedHJR
-         7Vjg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=f2fUUZn0aoFEsmYmJGpqswKr9XlltrM/1Tq7myxFbEo=;
+        b=pMTFKCWeddhphuFu+2lium0VJo1My+WfoNoG1c3WaRjvANnb1qwB8gUo6mmUVxtgN4
+         nmuTLphHOcxXRWY2rFQlQLk8oSQji9BxR3EQt+/LmDQyVvBahxyS8P/AsRkwAgD2xYTc
+         QCmD8owzu5TI9PG0JAVaFFbbOpMoEFLqTZLCu9LqMgHxjWo24TrSFxGcw7s2Ze2tToZ0
+         /F+K7zScalVtV7e3nVdqxhqJp+OETdKtyeBgnnd8yHdBrO6zGDJN8oyE4WRJW0QFIapN
+         IB3KwNwZnVCFcEb4HB/ZdwHwiN+d6UwPcmDy1WlT27+PlXgmJM1c6/DKvKck026YMCer
+         rLrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=fnrU/S9jrTo7VMkSItxfe7rQNqEwCFm0vszgPLvFvNM=;
-        b=zUfMZcjUFQJ0JEMzKSQVCaiGGZB1NFXvJwFpwZC5nC/R3RBkf0NxMTvebsoL1wxOLP
-         FlPE+vvUEK15GcJ5xs7NVr/Tm0lgWb2E4AEjVMJ+2MAvDi/dIZV7wmaqs3Z9XA0RCPmS
-         TuS8AorNzyzrTuLPs/IXU7qGWJ8iar5tJS4SCso6kHW/+K94UnOdleqhW87T6woXdxJU
-         DDvFtdZtLv+KjDdAuXLf9f4TWB2CiB/4HJs6OvtdIF1lP++dHp3qtymFnKI6P1mfhLDQ
-         QD2EMYpJ8M+SJvPmA/edAlbLUt0/M2BmJE9S0lt9vSpyA5yJ2dc+3RwnRnVsg6b6VN8F
-         3a5A==
-X-Gm-Message-State: ANoB5pnkT/XcrJn6NMkeWHj8ovVk1LEcLVxwYR2JbqE4T2T+nsVrThgr
-	tGBnBUw2wSBucNYDuNjcNh3LGgNCkB0=
-X-Google-Smtp-Source: AA0mqf5HcnIQkAF9BdufN5q1s2cozIdu6aBXSB91VDBMW6tg6Xl5I2gKp8jDb3SVdelMdCKx9aUNcA==
-X-Received: by 2002:a9d:5d04:0:b0:66b:85b7:ac37 with SMTP id b4-20020a9d5d04000000b0066b85b7ac37mr21802163oti.363.1669742962229;
-        Tue, 29 Nov 2022 09:29:22 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=f2fUUZn0aoFEsmYmJGpqswKr9XlltrM/1Tq7myxFbEo=;
+        b=nZIRqkdwbHFnFmWaa1pqn82GwufoNeGmwFdIRwLeJm4Vn6rgidbdbN+FPR24eOTayQ
+         AC0Kv+JDUY0dq2Lsd8l00g6YQZSmnYy9Hty3nIy99X5wvoXPKVVACSP7Yj6XQQ9FQyeC
+         bOYGlIE/vNob0od5rF3tRaQFrCzWnq+uHXubiLFi9xJrfvhQF86m4hegobtqp7KuX7i6
+         uvGsqD/2r0/azjkhOHUCP8GEhiZNMO+ZZUQb6lwbp2J3V28RapP5isEdfr8hglyggMZr
+         Sw5NUDgPAuPQE5W5XTpj7iEPNjcZ5dEI3rPSmgmZO+KF/XNE6oXkiOHlYrwDN1F06s9P
+         k7bg==
+X-Gm-Message-State: ANoB5pkLnDX/bXRA71QXxIfb/d7fWIf/yCw12rOteam7Kqm58fkCw4DV
+	6WNEmoL1hKpQC0iA9Po8b6Or2KMIg0w=
+X-Google-Smtp-Source: AA0mqf74Qj2PRqoyEpMHvimi1mm2R46hlahU4dfBqeInpE4pUhmN0O/bAhzHiHGjLB2Vt8C2X9WomA==
+X-Received: by 2002:a05:6808:7:b0:35b:758e:1cda with SMTP id u7-20020a056808000700b0035b758e1cdamr15320949oic.148.1669742958926;
+        Tue, 29 Nov 2022 09:29:18 -0800 (PST)
 Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id l26-20020a9d709a000000b00661b46cc26bsm6224546otj.9.2022.11.29.09.29.21
+        by smtp.gmail.com with ESMTPSA id l26-20020a9d709a000000b00661b46cc26bsm6224546otj.9.2022.11.29.09.29.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Nov 2022 09:29:21 -0800 (PST)
+        Tue, 29 Nov 2022 09:29:18 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -74,16 +73,14 @@ Cc: devicetree@vger.kernel.org,
 	thierry.reding@gmail.com,
 	linus.walleij@linaro.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V4 3/3] arm64: dts: rockchip: add display to RG503
-Date: Tue, 29 Nov 2022 11:29:12 -0600
-Message-Id: <20221129172912.9576-4-macroalpha82@gmail.com>
+Subject: [PATCH V4 0/3] drm/panel: Add Samsung AMS495QA01 Panel
+Date: Tue, 29 Nov 2022 11:29:09 -0600
+Message-Id: <20221129172912.9576-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221129172912.9576-1-macroalpha82@gmail.com>
-References: <20221129172912.9576-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_092923_675398_A513B8D9 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20221129_092922_697009_3E0ED7C4 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,104 +99,48 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add Samsung AMS495QA01 panel to RG503.
+Add the Samsung AMS495QA01 panel as found on the Anbernic RG503. This
+panel uses DSI to receive video signals, but 3-wire SPI to receive
+command signals.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
----
- .../dts/rockchip/rk3566-anbernic-rg503.dts    | 61 +++++++++++++++++++
- 1 file changed, 61 insertions(+)
+Changes since V3:
+ - Updated documentation to add spi-peripheral-props.yaml per updates
+   made for similar devices. Note that I removed a "Reviewed-by" tag
+   from Rob Herring since this change probably needs to be confirmed.
+ - Added binding for RG503, since this device is now accepted with this
+   request: https://lore.kernel.org/linux-rockchip/166274831283.21181.6861718157177507544.b4-ty@sntech.de/
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-index 5dafcc86296b..23442e38a751 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-@@ -47,6 +47,22 @@ gpio_spi: spi {
- 		mosi-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
- 		cs-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
- 		num-chipselects = <0>;
-+
-+		panel@0 {
-+			compatible = "samsung,ams495qa01";
-+			reg = <0>;
-+			enable-gpios = <&gpio4 RK_PB7 GPIO_ACTIVE_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&lcd_enable>, <&lcd_reset>;
-+			reset-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
-+			vdd-supply = <&vcc3v3_lcd0_n>;
-+
-+			port {
-+				mipi_in_panel: endpoint {
-+					remote-endpoint = <&mipi_out_panel>;
-+				};
-+			};
-+		};
- 	};
- 
- 	/* Channels reversed for both headphones and speakers. */
-@@ -94,6 +110,32 @@ &cru {
- 	assigned-clock-rates = <1200000000>, <200000000>, <500000000>;
- };
- 
-+&dsi_dphy0 {
-+	status = "okay";
-+};
-+
-+&dsi0 {
-+	status = "okay";
-+
-+	ports {
-+		dsi0_in: port@0 {
-+			reg = <0>;
-+
-+			dsi0_in_vp1: endpoint {
-+				remote-endpoint = <&vp1_out_dsi0>;
-+			};
-+		};
-+
-+		dsi0_out: port@1 {
-+			reg = <1>;
-+
-+			mipi_out_panel: endpoint {
-+				remote-endpoint = <&mipi_in_panel>;
-+			};
-+		};
-+	};
-+};
-+
- &gpio_keys_control {
- 	button-a {
- 		gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
-@@ -146,6 +188,18 @@ spk_amp_enable_h: spk-amp-enable-h {
- 		};
- 	};
- 
-+	gpio-lcd {
-+		lcd_enable: lcd-enable {
-+			rockchip,pins =
-+				<4 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		lcd_reset: lcd-reset {
-+			rockchip,pins =
-+				<4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	gpio-spi {
- 		spi_pins: spi-pins {
- 			rockchip,pins =
-@@ -164,3 +218,10 @@ rk817_charger: charger {
- 		rockchip,sleep-filter-current-microamp = <100000>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
-+		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
-+		remote-endpoint = <&dsi0_in_vp1>;
-+	};
-+};
+Changes since V2:
+ - Added 50hz mode at request of userspace devs.
+ - Renamed "dupa" to panel name. Good catch Maya.
+ - Added Maya's Signed-off-by.
+ - Removed check for max backlight, since it is already done by
+   backlight_device_set_brightness.
+ - Fixed minor formatting issues on devicetree binding documentation
+   and added port to provided example.
+
+Changes since V1:
+ - Removed errant reference to backlight in documentation. This is an
+   OLED panel.
+ - Made elvss regulator optional. In my case its hard wired and not
+   controllable.
+ - Added "prepared" enum to track panel status to prevent unbalanced
+   regulator enable/disable.
+
+Chris Morgan (3):
+  dt-bindings: display: panel: Add Samsung AMS495QA01
+  drm/panel: Add Samsung AMS495QA01 MIPI-DSI LCD panel
+  arm64: dts: rockchip: add display to RG503
+
+ .../display/panel/samsung,ams495qa01.yaml     |  57 ++
+ .../dts/rockchip/rk3566-anbernic-rg503.dts    |  61 ++
+ drivers/gpu/drm/panel/Kconfig                 |  10 +
+ drivers/gpu/drm/panel/Makefile                |   1 +
+ .../gpu/drm/panel/panel-samsung-ams495qa01.c  | 547 ++++++++++++++++++
+ 5 files changed, 676 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+ create mode 100644 drivers/gpu/drm/panel/panel-samsung-ams495qa01.c
+
 -- 
 2.25.1
 
