@@ -4,83 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F95C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 17:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A60C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 19:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9jAGS1smSQwiKXwL0xFxC3i3+TIbsJ5w7q8nOGjnkXQ=; b=iJWi7NiD9wAfkp
-	724mPLkUHWGhi3q6ZJfOlDyWzTAYnK3SJoJSF6Hh6c0UXM+snxiRQBc8AIGzK9MNpRZWqeGoBPWpN
-	LprG6NxrP8LXnpjEckpLViqVzGCFhnj4HWUphTK6u2Sn5wExscJXf5K3cNDhP3YYGKyFalX7p/YPX
-	0fieU1Jp4vcO8dyiyPKjrvwKToTyW/EyxTquIo0H+9U7nQ0KIoaFmjaadbwk89TqKm8YsuXLax5mR
-	9d8rU4WjC07OacfhvlgSAvxR6Gd6ds7xs259+euGTsrJgFCMCGZeMeGAX0E3cI5Zc5+jVDS54KXke
-	hUUTFR/VJprledHWD1Bg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C/95jMWjf61M7eZ9626ZLsTIq6BgHgjcqkIlE4rh+Oc=; b=QcPCEW2C07FHuT
+	koO6UJqquaakdXDcJn0wbjNPFFmg75rDu2CLzZ362XXWIC0M/ezL/MuCxGmfMSkzxenzkCGoWaihS
+	piTF25bR4wzOpYS7OK24nW8s/04eDykGJWM9nFL7bmBE0kzFlGJw744Bkorw4leNefcsUwbK3Y9UA
+	vAouX1otAoA73cnhfv1dgaIxEFMvw5ve804poZlhFCRCdZbCxD4cUV0Pxkjhl2Xb6sCdu6vaLjk4t
+	U57ifCVeShRwnzYOaUTVo7PF65nIZiEwa07Lhwm19Kc86AAZCADTiHzF8q7SWTvhaZmvCUGOQgVxz
+	rBVa+QWf6LivNbFIPujA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p04QC-00AWP0-BW; Tue, 29 Nov 2022 17:29:28 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1p0682-00Az5Z-NL; Tue, 29 Nov 2022 19:18:50 +0000
+Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p04Q6-00AWLa-Jr
-	for linux-rockchip@lists.infradead.org; Tue, 29 Nov 2022 17:29:25 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id r76so15965218oie.13
-        for <linux-rockchip@lists.infradead.org>; Tue, 29 Nov 2022 09:29:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=f2fUUZn0aoFEsmYmJGpqswKr9XlltrM/1Tq7myxFbEo=;
-        b=pMTFKCWeddhphuFu+2lium0VJo1My+WfoNoG1c3WaRjvANnb1qwB8gUo6mmUVxtgN4
-         nmuTLphHOcxXRWY2rFQlQLk8oSQji9BxR3EQt+/LmDQyVvBahxyS8P/AsRkwAgD2xYTc
-         QCmD8owzu5TI9PG0JAVaFFbbOpMoEFLqTZLCu9LqMgHxjWo24TrSFxGcw7s2Ze2tToZ0
-         /F+K7zScalVtV7e3nVdqxhqJp+OETdKtyeBgnnd8yHdBrO6zGDJN8oyE4WRJW0QFIapN
-         IB3KwNwZnVCFcEb4HB/ZdwHwiN+d6UwPcmDy1WlT27+PlXgmJM1c6/DKvKck026YMCer
-         rLrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f2fUUZn0aoFEsmYmJGpqswKr9XlltrM/1Tq7myxFbEo=;
-        b=nZIRqkdwbHFnFmWaa1pqn82GwufoNeGmwFdIRwLeJm4Vn6rgidbdbN+FPR24eOTayQ
-         AC0Kv+JDUY0dq2Lsd8l00g6YQZSmnYy9Hty3nIy99X5wvoXPKVVACSP7Yj6XQQ9FQyeC
-         bOYGlIE/vNob0od5rF3tRaQFrCzWnq+uHXubiLFi9xJrfvhQF86m4hegobtqp7KuX7i6
-         uvGsqD/2r0/azjkhOHUCP8GEhiZNMO+ZZUQb6lwbp2J3V28RapP5isEdfr8hglyggMZr
-         Sw5NUDgPAuPQE5W5XTpj7iEPNjcZ5dEI3rPSmgmZO+KF/XNE6oXkiOHlYrwDN1F06s9P
-         k7bg==
-X-Gm-Message-State: ANoB5pkLnDX/bXRA71QXxIfb/d7fWIf/yCw12rOteam7Kqm58fkCw4DV
-	6WNEmoL1hKpQC0iA9Po8b6Or2KMIg0w=
-X-Google-Smtp-Source: AA0mqf74Qj2PRqoyEpMHvimi1mm2R46hlahU4dfBqeInpE4pUhmN0O/bAhzHiHGjLB2Vt8C2X9WomA==
-X-Received: by 2002:a05:6808:7:b0:35b:758e:1cda with SMTP id u7-20020a056808000700b0035b758e1cdamr15320949oic.148.1669742958926;
-        Tue, 29 Nov 2022 09:29:18 -0800 (PST)
-Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id l26-20020a9d709a000000b00661b46cc26bsm6224546otj.9.2022.11.29.09.29.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Nov 2022 09:29:18 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	maccraft123mc@gmail.com,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	daniel@ffwll.ch,
-	airlied@gmail.com,
-	sam@ravnborg.org,
-	thierry.reding@gmail.com,
-	linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V4 0/3] drm/panel: Add Samsung AMS495QA01 Panel
-Date: Tue, 29 Nov 2022 11:29:09 -0600
-Message-Id: <20221129172912.9576-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	id 1p067M-00AysL-FC; Tue, 29 Nov 2022 19:18:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1669749472; h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=G8DuH3BuKovOG4Q7ExNfPyHxexqJONRgTC1VLQg6L9Q=;
+	b=XeDFUB1JkUgh0wnq9Xls3sBZht0UmGP/izWeb/iRwRNzHrS979IvpylbCjC2/q+8aUq3tT
+	EOXMv8WFDy5gjLgrVnvlKo9WSBkpvLWBCb0cWc69f1vAl/XjHyvw2TCphvzX22HwJnUhIf
+	4WmBhw+t+MczTtU+iytYxf4ZzAVrONY=
+From: Paul Cercueil <paul@crapouillou.net>
+To: David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Paul Cercueil <paul@crapouillou.net>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 04/26] drm: rockchip: Define and use generic PM ops
+Date: Tue, 29 Nov 2022 19:17:11 +0000
+Message-Id: <20221129191733.137897-5-paul@crapouillou.net>
+In-Reply-To: <20221129191733.137897-1-paul@crapouillou.net>
+References: <20221129191733.137897-1-paul@crapouillou.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_092922_697009_3E0ED7C4 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20221129_111808_699467_27522CFD 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,60 +64,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add the Samsung AMS495QA01 panel as found on the Anbernic RG503. This
-panel uses DSI to receive video signals, but 3-wire SPI to receive
-command signals.
-
-Changes since V3:
- - Updated documentation to add spi-peripheral-props.yaml per updates
-   made for similar devices. Note that I removed a "Reviewed-by" tag
-   from Rob Herring since this change probably needs to be confirmed.
- - Added binding for RG503, since this device is now accepted with this
-   request: https://lore.kernel.org/linux-rockchip/166274831283.21181.6861718157177507544.b4-ty@sntech.de/
-
-Changes since V2:
- - Added 50hz mode at request of userspace devs.
- - Renamed "dupa" to panel name. Good catch Maya.
- - Added Maya's Signed-off-by.
- - Removed check for max backlight, since it is already done by
-   backlight_device_set_brightness.
- - Fixed minor formatting issues on devicetree binding documentation
-   and added port to provided example.
-
-Changes since V1:
- - Removed errant reference to backlight in documentation. This is an
-   OLED panel.
- - Made elvss regulator optional. In my case its hard wired and not
-   controllable.
- - Added "prepared" enum to track panel status to prevent unbalanced
-   regulator enable/disable.
-
-Chris Morgan (3):
-  dt-bindings: display: panel: Add Samsung AMS495QA01
-  drm/panel: Add Samsung AMS495QA01 MIPI-DSI LCD panel
-  arm64: dts: rockchip: add display to RG503
-
- .../display/panel/samsung,ams495qa01.yaml     |  57 ++
- .../dts/rockchip/rk3566-anbernic-rg503.dts    |  61 ++
- drivers/gpu/drm/panel/Kconfig                 |  10 +
- drivers/gpu/drm/panel/Makefile                |   1 +
- .../gpu/drm/panel/panel-samsung-ams495qa01.c  | 547 ++++++++++++++++++
- 5 files changed, 676 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
- create mode 100644 drivers/gpu/drm/panel/panel-samsung-ams495qa01.c
-
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VXNlIHRoZSBuZXcgREVGSU5FX0RSTV9NT0RFX0NPTkZJR19IRUxQRVJfUE1fT1BTKCkgbWFjcm8g
+dG8gY3JlYXRlIGEKInN0cnVjdCBkZXZfcG1fb3BzIiB0aGF0IGNhbiBiZSB1c2VkIGJ5IHRoaXMg
+ZHJpdmVyLCBpbnN0ZWFkIG9mIHVzaW5nCmN1c3RvbSBQTSBjYWxsYmFja3Mgd2l0aCB0aGUgc2Ft
+ZSBiZWhhdmlvdXIuCgp2MjogVXNlIHRoZSBERUZJTkVfRFJNX01PREVfQ09ORklHX0hFTFBFUl9Q
+TV9PUFMoKSBtYWNybyBpbnN0ZWFkIG9mIGFuCiAgICBleHBvcnRlZCBkZXZfcG1fb3BzLgoKU2ln
+bmVkLW9mZi1ieTogUGF1bCBDZXJjdWVpbCA8cGF1bEBjcmFwb3VpbGxvdS5uZXQ+Ci0tLQpDYzog
+U2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KQ2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhl
+aWtvQHNudGVjaC5kZT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpD
+YzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAyNSArKystLS0tLS0tLS0tLS0tLS0tLS0K
+IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDIyIGRlbGV0aW9ucygtKQoKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmluZGV4IDZlMDc4OGQxNGMx
+MC4uZWMxMTdjNTJjYjI0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZHJ2LmMKQEAgLTIzNiwyNyArMjM2LDYgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZHJp
+dmVyIHJvY2tjaGlwX2RybV9kcml2ZXIgPSB7CiAJLm1pbm9yCT0gRFJJVkVSX01JTk9SLAogfTsK
+IAotI2lmZGVmIENPTkZJR19QTV9TTEVFUAotc3RhdGljIGludCByb2NrY2hpcF9kcm1fc3lzX3N1
+c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQotewotCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBk
+ZXZfZ2V0X2RydmRhdGEoZGV2KTsKLQotCXJldHVybiBkcm1fbW9kZV9jb25maWdfaGVscGVyX3N1
+c3BlbmQoZHJtKTsKLX0KLQotc3RhdGljIGludCByb2NrY2hpcF9kcm1fc3lzX3Jlc3VtZShzdHJ1
+Y3QgZGV2aWNlICpkZXYpCi17Ci0Jc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IGRldl9nZXRfZHJ2
+ZGF0YShkZXYpOwotCi0JcmV0dXJuIGRybV9tb2RlX2NvbmZpZ19oZWxwZXJfcmVzdW1lKGRybSk7
+Ci19Ci0jZW5kaWYKLQotc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIHJvY2tjaGlwX2Ry
+bV9wbV9vcHMgPSB7Ci0JU0VUX1NZU1RFTV9TTEVFUF9QTV9PUFMocm9ja2NoaXBfZHJtX3N5c19z
+dXNwZW5kLAotCQkJCXJvY2tjaGlwX2RybV9zeXNfcmVzdW1lKQotfTsKLQogI2RlZmluZSBNQVhf
+Uk9DS0NISVBfU1VCX0RSSVZFUlMgMTYKIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyICpy
+b2NrY2hpcF9zdWJfZHJpdmVyc1tNQVhfUk9DS0NISVBfU1VCX0RSSVZFUlNdOwogc3RhdGljIGlu
+dCBudW1fcm9ja2NoaXBfc3ViX2RyaXZlcnM7CkBAIC00NzMsNiArNDUyLDggQEAgc3RhdGljIGNv
+bnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgcm9ja2NoaXBfZHJtX2R0X2lkc1tdID0gewogfTsKIE1P
+RFVMRV9ERVZJQ0VfVEFCTEUob2YsIHJvY2tjaGlwX2RybV9kdF9pZHMpOwogCitERUZJTkVfRFJN
+X01PREVfQ09ORklHX0hFTFBFUl9QTV9PUFMocm9ja2NoaXBfcG1fb3BzKTsKKwogc3RhdGljIHN0
+cnVjdCBwbGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX2RyaXZlciA9IHsKIAku
+cHJvYmUgPSByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcHJvYmUsCiAJLnJlbW92ZSA9IHJvY2tjaGlw
+X2RybV9wbGF0Zm9ybV9yZW1vdmUsCkBAIC00ODAsNyArNDYxLDcgQEAgc3RhdGljIHN0cnVjdCBw
+bGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX2RyaXZlciA9IHsKIAkuZHJpdmVy
+ID0gewogCQkubmFtZSA9ICJyb2NrY2hpcC1kcm0iLAogCQkub2ZfbWF0Y2hfdGFibGUgPSByb2Nr
+Y2hpcF9kcm1fZHRfaWRzLAotCQkucG0gPSAmcm9ja2NoaXBfZHJtX3BtX29wcywKKwkJLnBtID0g
+cG1fc2xlZXBfcHRyKCZyb2NrY2hpcF9wbV9vcHMpLAogCX0sCiB9OwogCi0tIAoyLjM1LjEKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
