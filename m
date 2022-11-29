@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98372C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 19:22:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A9D9C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 20:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l0VVwOCnvxjajFpn0GlyypOTGXyvyjeTZnoOAe8D/R4=; b=0lGsUr9Ze6sPl0
-	QLnV6ttDRyUVyL3d2oVaDeWP4JuikGFPvCtS8k+tGY//m5abIEpCIdoI0k3ylYu1MoNBfnSaEvxBd
-	qzgoPXqdHUtMMG4OK9OT/wkh0jgAZ/bqHkYaS8MAwFD9bY/wW1c5BRcJWaqvdWq02bFAkhMmKxE6b
-	iVCbdF/+cl1n486IATUkg1TjIPFeeGlVkQ7GNBDqQ2K/2ZhPWSfJG9ykv6B1VaAn3TUF8dIhT9GcO
-	TioLR9L/TaQII+A6P/3Rf+OV5Q4/KV8HJAQQUVrk2mK5XvSYzVcNszP/TEKH8evvryWaXWI2umYd7
-	uDIRPHmXuP9TAjFJwsUg==;
+	List-Owner; bh=E0ErnszpdU4Esi/3SOJvwvDt/kHP9ahXurBcoLdr4Dg=; b=DMsAflrSPUewGW
+	fjAq2Kw80Mq/gqq3oa8OxRe0dzR7Dl/nWY9Qjjjs2hHKJaaNi9HLjFJCs7Cm6GzGuc3eQVljqDsGS
+	GAHv6l44RlS/GysPqwuk/54FvFFLRpx88xoI/7F97cnP/crdywXROvUExcaGPR7zpNzBjZDURS5lY
+	GW74gJgrKAkmXvF/dL1rOfGeF2yo2rQJodeMl2WADSicEALOo/m8kh6UWvLM6DpJsnVxvY+3dEXQS
+	wrpp3ivKfB71lOUKL7Ld8VrOn2zsQZSYaoDv4DYRcny13hROC53FiGGcSMdTpdSFmKhPirFb+REvi
+	clAfKJaQEBtTt2N830HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p06BC-00B1Rk-SD; Tue, 29 Nov 2022 19:22:06 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1p06mk-00BDTF-Ut; Tue, 29 Nov 2022 20:00:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p069H-00B00o-8k; Tue, 29 Nov 2022 19:20:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1669749597; h=from:from:sender:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H8pAyOlP7Xx5OwjiRIaFlkfD4bNit3L8bl0IUhfSO6I=;
-	b=fBnZhqyRpBU0wllYHNSxdl3O5ZI0Y8RmJc/WgRR3TJiIjMleyPmacJVGAA+C32Hi1UTzUv
-	lLHfzqJToeqJ7N5yMQR4iBDjyYcOhepFOfhsaNDHLtSZC79paUVnsanZbtfQeeMYsmiBNF
-	aSIRdqRZRokfvdL0NWxwQmnhdMCPY1c=
-From: Paul Cercueil <paul@crapouillou.net>
-To: David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Paul Cercueil <paul@crapouillou.net>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 18/26] drm: rockchip: Remove #ifdef guards for PM related functions
-Date: Tue, 29 Nov 2022 19:19:34 +0000
-Message-Id: <20221129191942.138244-5-paul@crapouillou.net>
-In-Reply-To: <20221129191942.138244-1-paul@crapouillou.net>
-References: <20221129191733.137897-1-paul@crapouillou.net>
- <20221129191942.138244-1-paul@crapouillou.net>
+	id 1p06mi-00BDRW-L9
+	for linux-rockchip@lists.infradead.org; Tue, 29 Nov 2022 20:00:53 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3C8E0618C1;
+	Tue, 29 Nov 2022 20:00:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C38FC433D6;
+	Tue, 29 Nov 2022 20:00:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669752050;
+	bh=nsQ6UZTMVS7LxhIx+qo0FTX8OImT7Hswtc/eyiei6i0=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=HGshhsHq2CrvtUiUE9E7ql6ycdfYLuHU30B8aLpOoYSKXsIESDxsMc49AAjrWwmDL
+	 dRtuorbsL1RrggJfa/G82ZD7Kc1H+FRqX3P7mtY4OaHv5aiDeNJqb5b23YzFiN4ne3
+	 eilsUza/kNPYEMIf5Ydy3a8o4Tfwa64O8l81J+jx1MlxYlfit0yFzriLIHA4w1wsxB
+	 NkKDRquw55xROA3meOxUrfRCo4OqXN7BKCo3SonONo3JMtE8eccYM76sHr3OhJO+BS
+	 9la6TD31Lekex+n6zQn+WulfcjxbaIDTNOsi7RUOoBv2ptTeaeYlckSQKuTl30DLGZ
+	 YA043B3i1hKJA==
 MIME-Version: 1.0
+In-Reply-To: <23196966.EfDdHjke4D@phil>
+References: <23196966.EfDdHjke4D@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 6.1 #1
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Tue, 29 Nov 2022 12:00:48 -0800
+User-Agent: alot/0.10
+Message-Id: <20221129200050.9C38FC433D6@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_112007_491370_E5161240 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20221129_120052_767686_BC3F5EA2 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,45 +66,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VXNlIHRoZSBwbV9zbGVlcF9wdHIoKSBtYWNyb3MgdG8gaGFuZGxlIHRoZSAuc3VzcGVuZF9sYXRl
-IC8KLnJlc3VtZV9lYXJseSBjYWxsYmFja3MuCgpUaGlzIG1hY3JvIGFsbG93cyB0aGUgc3VzcGVu
-ZCBhbmQgcmVzdW1lIGZ1bmN0aW9ucyB0byBiZSBhdXRvbWF0aWNhbGx5CmRyb3BwZWQgYnkgdGhl
-IGNvbXBpbGVyIHdoZW4gQ09ORklHX1NVU1BFTkQgaXMgZGlzYWJsZWQsIHdpdGhvdXQgaGF2aW5n
-CnRvIHVzZSAjaWZkZWYgZ3VhcmRzLgoKVGhpcyBoYXMgdGhlIGFkdmFudGFnZSBvZiBhbHdheXMg
-Y29tcGlsaW5nIHRoZXNlIGZ1bmN0aW9ucyBpbiwKaW5kZXBlbmRlbnRseSBvZiBhbnkgS2NvbmZp
-ZyBvcHRpb24uIFRoYW5rcyB0byB0aGF0LCBidWdzIGFuZCBvdGhlcgpyZWdyZXNzaW9ucyBhcmUg
-c3Vic2VxdWVudGx5IGVhc2llciB0byBjYXRjaC4KClNpZ25lZC1vZmYtYnk6IFBhdWwgQ2VyY3Vl
-aWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PgotLS0KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1j
-aGlwcy5jb20+CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBsaW51
-eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAt
-cm9ja2NoaXAuYyB8IDYgKy0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDUg
-ZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
-Z2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAt
-cm9ja2NoaXAuYwppbmRleCBhZDJkM2FlN2U2MjEuLjBkZjBmYTU0MGQ3ZSAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKQEAgLTQyOSw3ICs0
-MjksNiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpwZGV2KQogCXJldHVybiAwOwogfQogCi0jaWZkZWYgQ09ORklHX1BNX1NMRUVQCiBzdGF0
-aWMgaW50IHJvY2tjaGlwX2RwX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQogewogCXN0cnVj
-dCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gZGV2X2dldF9kcnZkYXRhKGRldik7CkBAIC00NDks
-MTMgKzQ0OCwxMCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3Jlc3VtZShzdHJ1Y3QgZGV2aWNl
-ICpkZXYpCiAKIAlyZXR1cm4gYW5hbG9naXhfZHBfcmVzdW1lKGRwLT5hZHApOwogfQotI2VuZGlm
-CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyByb2NrY2hpcF9kcF9wbV9vcHMgPSB7
-Ci0jaWZkZWYgQ09ORklHX1BNX1NMRUVQCiAJLnN1c3BlbmRfbGF0ZSA9IHJvY2tjaGlwX2RwX3N1
-c3BlbmQsCiAJLnJlc3VtZV9lYXJseSA9IHJvY2tjaGlwX2RwX3Jlc3VtZSwKLSNlbmRpZgogfTsK
-IAogc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9kcF9jaGlwX2RhdGEgcmszMzk5X2VkcCA9
-IHsKQEAgLTQ4NCw3ICs0ODAsNyBAQCBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlwX2Rw
-X2RyaXZlciA9IHsKIAkucmVtb3ZlID0gcm9ja2NoaXBfZHBfcmVtb3ZlLAogCS5kcml2ZXIgPSB7
-CiAJCSAgIC5uYW1lID0gInJvY2tjaGlwLWRwIiwKLQkJICAgLnBtID0gJnJvY2tjaGlwX2RwX3Bt
-X29wcywKKwkJICAgLnBtID0gcG1fc2xlZXBfcHRyKCZyb2NrY2hpcF9kcF9wbV9vcHMpLAogCQkg
-ICAub2ZfbWF0Y2hfdGFibGUgPSByb2NrY2hpcF9kcF9kdF9pZHMsCiAJfSwKIH07Ci0tIAoyLjM1
-LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Quoting Heiko Stuebner (2022-11-23 06:01:01)
+> Hi Mike, Stephen,
+> 
+> please find below a pull-request with some Rockchip stuff.
+> 
+> Mainly the support for the clock-controller for the new and shiny rk3588,
+> 
+> Please pull.
+> 
+> Thanks
+> Heiko
+> 
+> The following changes since commit 9abf2313adc1ca1b6180c508c25f22f9395cc780:
+> 
+>   Linux 6.1-rc1 (2022-10-16 15:36:24 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.2-rockchip-clk-1
+> 
+> for you to fetch changes up to 739a6a6bbdb793bd57938cb24aa5a6df89983546:
+> 
+>   clk: rockchip: Fix memory leak in rockchip_clk_register_pll() (2022-11-23 14:51:30 +0100)
+> 
+> ----------------------------------------------------------------
+
+Thanks. Pulled into clk-next
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
