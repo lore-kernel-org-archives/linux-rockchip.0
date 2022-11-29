@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2B7C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 06:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC08EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Nov 2022 07:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RNywBKWEWogj9sexIvX387orvH6ZziLlQe7CuSkEe+A=; b=LVHbsuO4uYnT8n
-	hnsiR7vYg64yDVmfJd6llRs6UCI+7wf34AttZE1RXXxbhOGL6NhOc9rZd8stW5ejdtu2MV1Ost+Wx
-	QgiNn+GCRZ5a6bqibM7iOrdZxERqN3bEJ9Tycm5nXWa0gd1RlvJOe+Wjh0bHL+CgGhPPvKhCM0v3K
-	NeZ35DoiqFSn+wz8wctrDIM72ToyxGHW2De2PeV5y/Yd5cZzdRS8z/i5aAeSzt8uHCy/z0ya9BQ36
-	dFGVBrDSAdygR/lT8sU8QafHh9d0SKA7TFBI/cSVO7pBNSqfRgoVmFQ7w3IJshWPPp2XYAEiz0/lA
-	QCaYEVedktR8KtIncnGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5yWHDqccz5Z9oA+7EM/CuQmp3LF+f24QJTERGIFBYhs=; b=lfnMP00wA7FmTd
+	vDentJpx3BKqoSw4qMWrCWEIWOqyQ0lCCg0I0GUzQeg5pLqwN/5Nsau2z3lXGaTnOWRuKEAxfHBWc
+	I2KqSiOKqx39hEKMmbNS3wNcsO02jLrnEZ8pwDypzz+zfGCZLyocHnZo+qiVqvsZaIfquWrjci45K
+	w6pBa1/f+tLiHYclYZbjbCTITZnzFKsiOoUs/FpSQ2wsQNqqzRVCw2qaqELe4VPIpPi79P+bo1oeu
+	GQ+vxUsgtGKndqkBy8+fayIP8UxXVUR8nlIl6Ya3QHpnEHVHJsCMuLzUNmq3/yU18fl4w6X2wv/Cn
+	ABzHZm0HV0ZXyx8cPLBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozuJB-006g9z-BL; Tue, 29 Nov 2022 06:41:33 +0000
+	id 1ozuhl-006mtR-BM; Tue, 29 Nov 2022 07:06:57 +0000
 Received: from mail-m121145.qiye.163.com ([115.236.121.145])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozuIo-006g4w-Nf; Tue, 29 Nov 2022 06:41:15 +0000
+	id 1ozuhU-006mmP-7h; Tue, 29 Nov 2022 07:06:41 +0000
 Received: from amadeus-VLT-WX0.lan (unknown [112.48.80.27])
-	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 8E9988001BF;
-	Tue, 29 Nov 2022 14:41:00 +0800 (CST)
+	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id D715D80021B;
+	Tue, 29 Nov 2022 15:06:36 +0800 (CST)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
+	Peter Geis <pgwipeout@gmail.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3328: Add Orange Pi R1 Plus
-Date: Tue, 29 Nov 2022 14:40:42 +0800
-Message-Id: <20221129064042.17806-2-amadeus@jmu.edu.cn>
+Subject: [PATCH 1/2] dt-bindings: Add doc for Radxa ROCK Pi E25
+Date: Tue, 29 Nov 2022 15:06:13 +0800
+Message-Id: <20221129070614.19720-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221129064042.17806-1-amadeus@jmu.edu.cn>
-References: <20221129064042.17806-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHUwYVk8YH0pDQh4YSR1DT1UTARMWGhIXJBQOD1
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCSh0eVktNQx1IS0hKGRlPT1UTARMWGhIXJBQOD1
 	lXWRgSC1lBWUpKSVVPQ1VDS1VJTFlXWRYaDxIVHRRZQVlPS0hVSkpLSEpDVUpLS1VLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ORQ6Oio*PD0jHhwMCUMvFRIc
-	PSwwC0NVSlVKTU1CTEtPS01KSExDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	SVVPQ1VDS1VJTFlXWQgBWUFKS0NITjcG
-X-HM-Tid: 0a84c21e0fceb03akuuu8e9988001bf
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Py46TQw4Qz0fLBwiNSwYI0M9
+	KTlPChlVSlVKTU1CTEtOTkJMTU9OVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	SVVPQ1VDS1VJTFlXWQgBWUFJS0tLNwY+
+X-HM-Tid: 0a84c2358145b03akuuud715d80021b
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_224111_072367_F0346C8E 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20221128_230640_429685_71941258 
+X-CRM114-Status: UNSURE (   6.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,411 +69,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Orange Pi R1 Plus is a Rockchip RK3328 based SBC by Xunlong.
-
-This device is similar to the NanoPi R2S, and has a 16MB
-SPI NOR (mx25l12805d). The reset button is changed to
-directly reset the power supply, another detail is that
-both network ports have independent MAC addresses.
+Add devicetree binding documentation for the Radxa ROCK Pi E25.
 
 Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3328-orangepi-r1-plus.dts  | 373 ++++++++++++++++++
- 2 files changed, 374 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 10 ++++++++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 0a76a2ebb5f6..27e00f4f3c86 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -15,6 +15,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
-new file mode 100644
-index 000000000000..daa4da0bd5e4
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
-@@ -0,0 +1,373 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Based on rk3328-nanopi-r2s.dts, which is:
-+ *   Copyright (c) 2020 David Bauer <mail@david-bauer.net>
-+ */
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 88ff4422a8c1..4087ae87f61f 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -625,6 +625,11 @@ properties:
+           - const: radxa,rockpi-e
+           - const: rockchip,rk3328
+ 
++      - description: Radxa ROCK Pi E25
++        items:
++          - const: radxa,rockpi-e25
++          - const: rockchip,rk3568
 +
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "Xunlong Orange Pi R1 Plus";
-+	compatible = "xunlong,orangepi-r1-plus", "rockchip,rk3328";
-+
-+	aliases {
-+		ethernet1 = &rtl8153;
-+		mmc0 = &sdmmc;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac_clk: gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&lan_led_pin>, <&sys_led_pin>, <&wan_led_pin>;
-+		pinctrl-names = "default";
-+
-+		led-0 {
-+			function = LED_FUNCTION_LAN;
-+			color = <LED_COLOR_ID_GREEN>;
-+			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
-+		};
-+
-+		led-1 {
-+			function = LED_FUNCTION_STATUS;
-+			color = <LED_COLOR_ID_RED>;
-+			gpios = <&gpio3 RK_PC5 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+
-+		led-2 {
-+			function = LED_FUNCTION_WAN;
-+			color = <LED_COLOR_ID_GREEN>;
-+			gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
-+
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&sdmmc0m1_pin>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_sd";
-+		regulator-boot-on;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	vcc_sys: vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vdd_5v_lan: vdd-5v-lan {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&lan_vdd_pin>;
-+		pinctrl-names = "default";
-+		regulator-name = "vdd_5v_lan";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&display_subsystem {
-+	status = "disabled";
-+};
-+
-+&gmac2io {
-+	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-+	assigned-clock-parents = <&gmac_clk>, <&gmac_clk>;
-+	clock_in_out = "input";
-+	phy-handle = <&rtl8211e>;
-+	phy-mode = "rgmii";
-+	phy-supply = <&vcc_io>;
-+	pinctrl-0 = <&rgmiim1_pins>;
-+	pinctrl-names = "default";
-+	snps,aal;
-+	rx_delay = <0x18>;
-+	tx_delay = <0x24>;
-+	status = "okay";
-+
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		rtl8211e: ethernet-phy@1 {
-+			reg = <1>;
-+			pinctrl-0 = <&eth_phy_reset_pin>;
-+			pinctrl-names = "default";
-+			reset-assert-us = <10000>;
-+			reset-deassert-us = <50000>;
-+			reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	rk805: pmic@18 {
-+		compatible = "rockchip,rk805";
-+		reg = <0x18>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk805-clkout2";
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+		pinctrl-0 = <&pmic_int_l>;
-+		pinctrl-names = "default";
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vcc_sys>;
-+		vcc2-supply = <&vcc_sys>;
-+		vcc3-supply = <&vcc_sys>;
-+		vcc4-supply = <&vcc_sys>;
-+		vcc5-supply = <&vcc_io>;
-+		vcc6-supply = <&vcc_sys>;
-+
-+		regulators {
-+			vdd_log: DCDC_REG1 {
-+				regulator-name = "vdd_log";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_io: DCDC_REG4 {
-+				regulator-name = "vcc_io";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_18: LDO_REG1 {
-+				regulator-name = "vcc_18";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc18_emmc: LDO_REG2 {
-+				regulator-name = "vcc18_emmc";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_10: LDO_REG3 {
-+				regulator-name = "vdd_10";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&io_domains {
-+	pmuio-supply = <&vcc_io>;
-+	vccio1-supply = <&vcc_io>;
-+	vccio2-supply = <&vcc18_emmc>;
-+	vccio3-supply = <&vcc_io>;
-+	vccio4-supply = <&vcc_io>;
-+	vccio5-supply = <&vcc_io>;
-+	vccio6-supply = <&vcc_io>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	gmac2io {
-+		eth_phy_reset_pin: eth-phy-reset-pin {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	leds {
-+		lan_led_pin: lan-led-pin {
-+			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		sys_led_pin: sys-led-pin {
-+			rockchip,pins = <3 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wan_led_pin: wan-led-pin {
-+			rockchip,pins = <2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	lan {
-+		lan_vdd_pin: lan-vdd-pin {
-+			rockchip,pins = <2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, <&sdmmc0_bus4>;
-+	pinctrl-names = "default";
-+	vmmc-supply = <&vcc_sd>;
-+	status = "okay";
-+};
-+
-+&spi0 {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <50000000>;
-+	};
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usbdrd3 {
-+	dr_mode = "host";
-+	status = "okay";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	/* Second port is for USB 3.0 */
-+	rtl8153: device@2 {
-+		compatible = "usbbda,8153";
-+		reg = <2>;
-+	};
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
+       - description: Radxa ROCK Pi N8
+         items:
+           - const: radxa,rockpi-n8
 -- 
 2.25.1
 
