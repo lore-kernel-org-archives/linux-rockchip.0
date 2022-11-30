@@ -4,103 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC8AFC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Nov 2022 14:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9900C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Nov 2022 15:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7gUPDPTW9sdeikcI+TimUMKEZ5gKLxVE1+gdjOZGPHc=; b=YpY/rfi3lt73pe
-	9pj/uPFqlCj+pZR1weaMkmMpN+vPE2vCsNNW8dqvDWehc2bi2DVogpp7n2CVUNph260UZ9PwQtSQ5
-	bnMiMKCjOowNCadanZw0kz8u5ZmMCeCRCS3zjwpL6jGr8hG0Q7CLr6OlE7Cxcl0iyf9MfymTOs8M0
-	s4Gc4aqIM2i+cyedijReAQp7wEE0MU21XvxfbcvlwQbAccPCETGAoTtjVPpzD6X4C3a+VHMkbBc4j
-	WFXamV8aXZbA1dt62WpHIzakEgxL8yQ6WE2o2+2d3JTqD58cx0umSpDisWzekduWc7WqNtSxEmLPk
-	RNYvjqnuGJigXL0OUN8w==;
+	List-Owner; bh=15A3N5rQABm7kFBmIrwyzvXd8zmAQh96dx223uQbq5U=; b=Hhss6sUsS5TdMZ
+	eayC7k3/jDI7gU4wcW9qR2TCuPErx251mqrQYx46cjgol2iV8rYPw72VC5y+B2MIKYSp2Zu+hrB7r
+	JXd72roMzBwfvc6w/SN9TrYzmrRwcsBVxE1/vEfLREyl2fO22m3VHtVZXK1z4m0fHpQlUL3L1+ZfD
+	MU8VjEqy5q+SjvzTvkwpWxCDyxEC5EtrPRqhsAykkZ0R1AiU2uY58pTEXtD09LSYli4kjFEFfgQDU
+	F9ol6B9n0QhL8mJ/VvQIMTrdLAhmazReBzAiVU1e0WBkl33F3XCDH8RM2/bUo0TtN19sip3y6Cs50
+	OVsCGIYHSW1cnz1hRNWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OQu-00H5OO-GE; Wed, 30 Nov 2022 14:51:32 +0000
-Received: from mail-qv1-f46.google.com ([209.85.219.46])
+	id 1p0Oug-00HMwG-SH; Wed, 30 Nov 2022 15:22:18 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OQp-00H5K9-1k; Wed, 30 Nov 2022 14:51:28 +0000
-Received: by mail-qv1-f46.google.com with SMTP id e18so10717928qvs.1;
-        Wed, 30 Nov 2022 06:51:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rbewHNiIDPrh2vDJAS18QQyUgoqR1U2XFbW+RCOiyVY=;
-        b=bx5mQUAq01GPNrPkPC0BGz4gSQtCGcPvwJOFihbcmNyzsmT450IJLUdJNmUDAx04+V
-         G+7wS1bUGCMbNd7JIWLjHFFyHXjxK1fO9393/2rNx5MH3k+gPLPKBGgFiuvG1fOkXdoG
-         sALE5a99Gdk7jDfUmwiXNCOD1bOoxnZGJQOpWDaNKx9DI3bXHt7GAElbuLgyptmaRVSr
-         F5RE1vtUbY5hkOzzIH+4+077doHKB++XClo2PyTcNEVUw5gKHmCrOI6sVTJFoG79bpKm
-         4kEh2gDS6Ms5uvQacx4WRjGIwVrLjMic6VmAHBw5gR6XDU2o2tvipTJ5Jdv33D+EH+SW
-         7I3Q==
-X-Gm-Message-State: ANoB5plc1XR+JoLqSh1jVh2KZiI2Q2tpn1edojA0IJsizTGYjiRv6blg
-	ZHFlMxORJyol+F+FopUQYJyGB7Yd7kyFGw==
-X-Google-Smtp-Source: AA0mqf7pFM4RRZ1uqEBGDtiBdz0B3ovwyH3NMQJdPKfWAcv0pQz5OUd1mrKuJy0Uz234y/oiP1jWZA==
-X-Received: by 2002:a0c:d646:0:b0:4b1:d133:a4a8 with SMTP id e6-20020a0cd646000000b004b1d133a4a8mr40036136qvj.130.1669819885342;
-        Wed, 30 Nov 2022 06:51:25 -0800 (PST)
-Received: from mail-yb1-f173.google.com (mail-yb1-f173.google.com. [209.85.219.173])
-        by smtp.gmail.com with ESMTPSA id s12-20020a05620a0bcc00b006ee7e223bb8sm1330541qki.39.2022.11.30.06.51.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Nov 2022 06:51:24 -0800 (PST)
-Received: by mail-yb1-f173.google.com with SMTP id v206so5121219ybv.7;
-        Wed, 30 Nov 2022 06:51:23 -0800 (PST)
-X-Received: by 2002:a81:f80f:0:b0:38e:e541:d8ca with SMTP id
- z15-20020a81f80f000000b0038ee541d8camr55824371ywm.283.1669819872327; Wed, 30
- Nov 2022 06:51:12 -0800 (PST)
+	id 1p0OuT-00HMh3-9Z
+	for linux-rockchip@lists.infradead.org; Wed, 30 Nov 2022 15:22:09 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p0OuN-0000AX-07; Wed, 30 Nov 2022 16:21:59 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p0OuL-001Le0-J5; Wed, 30 Nov 2022 16:21:58 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p0OuL-001Vr4-Ld; Wed, 30 Nov 2022 16:21:57 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Conor Dooley <conor.dooley@microchip.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-pwm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 09/11] pwm: rockchip: Propagate errors in .get_state() to the caller
+Date: Wed, 30 Nov 2022 16:21:46 +0100
+Message-Id: <20221130152148.2769768-10-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-References: <20221130141040.32447-1-arinc.unal@arinc9.com> <20221130141040.32447-3-arinc.unal@arinc9.com>
-In-Reply-To: <20221130141040.32447-3-arinc.unal@arinc9.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 30 Nov 2022 15:51:00 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdVBZiWxORfb2hd0hn_En6yFEwm8uJXr553YfB8gv1sOFw@mail.gmail.com>
-Message-ID: <CAMuHMdVBZiWxORfb2hd0hn_En6yFEwm8uJXr553YfB8gv1sOFw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] arm: dts: remove label = "cpu" from DSA dt-binding
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, soc@kernel.org, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, 
-	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
-	Hans Ulli Kroll <ulli.kroll@googlemail.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@somainline.org>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Magnus Damm <magnus.damm@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Stefan Agner <stefan@agner.ch>, Heiko Stuebner <heiko@sntech.de>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, 
-	Tim Harvey <tharvey@gateworks.com>, Peng Fan <peng.fan@nxp.com>, 
-	Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Frank Wunderlich <frank-w@public-files.de>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Oleksij Rempel <linux@rempel-privat.de>, 
-	netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
-	=?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=730; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=pKEsqqELf8pqmyD4QAsi9Xpc86tdi7pQt9Er7E+Nu3o=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBjh3T/bN1g1kVNiJ/v8SIOIucUrMidx7s9Upuf1Iv8 Q3S2XXCJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCY4d0/wAKCRDB/BR4rcrsCVcQB/ 4o6RgFb19BY0wEs5wjZVFmTdgVeuclNrg1zVXaXOSCV6pNPDgj0IHt6CKqbCzd9BJq/yKEo3daI3Wr UhT78i6koC8btpmDDh7thoNUUlSayy1WTaOjxLgsqJ90PKjyG3oAIdIe8Fe3QT3P0mUDQKUUbc2x6M QxXDQpNH5NsetybZts2hi1OraEycQTiEO2Ff9fkUXAzuWBZ3nDp6eXiLN9ChkFuN6Q5M0Ir15DxvzC +iDh4mjN9H3LoLruxRGZt8uBb99fJ1uvv6SZu+5vPPcw8+amktlXtxxFN5NIY/HdvdxbGFUh1js227 sadEba0dTaPgZNjUj2pRzmF4jFBnv6
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_065127_117480_A3D7FC16 
-X-CRM114-Status: GOOD (  19.87  )
+X-CRM114-CacheID: sfid-20221130_072205_404955_67227995 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,28 +76,19 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q0MgY2xlZ2VyCgpPbiBXZWQsIE5vdiAzMCwgMjAyMiBhdCAzOjMzIFBNIEFyxLFuw6cgw5xOQUwg
-PGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4gd3JvdGU6Cj4gVGhpcyBpcyBub3QgdXNlZCBieSB0aGUg
-RFNBIGR0LWJpbmRpbmcsIHNvIHJlbW92ZSBpdCBmcm9tIGFsbCBkZXZpY2V0cmVlcy4KPgo+IFNp
-Z25lZC1vZmYtYnk6IEFyxLFuw6cgw5xOQUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4KCj4gIGFy
-Y2gvYXJtL2Jvb3QvZHRzL3I5YTA2ZzAzMi5kdHNpICAgICAgICAgICAgICAgICAgICAgICAgICB8
-IDEgLQoKQWNrZWQtYnk6IEdlZXJ0IFV5dHRlcmhvZXZlbiA8Z2VlcnQrcmVuZXNhc0BnbGlkZXIu
-YmU+Cgo+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3I5YTA2ZzAzMi5kdHNpCj4gKysrIGIvYXJj
-aC9hcm0vYm9vdC9kdHMvcjlhMDZnMDMyLmR0c2kKPiBAQCAtNDAxLDcgKzQwMSw2IEBAIHN3aXRj
-aF9wb3J0MzogcG9ydEAzIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN3aXRj
-aF9wb3J0NDogcG9ydEA0IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgcmVnID0gPDQ+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBl
-dGhlcm5ldCA9IDwmZ21hYzI+Owo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBsYWJlbCA9ICJjcHUiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBwaHktbW9kZSA9ICJpbnRlcm5hbCI7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGZpeGVkLWxpbmsgewoKR3J7b2V0amUsZWV0aW5nfXMsCgogICAg
-ICAgICAgICAgICAgICAgICAgICBHZWVydAoKLS0KR2VlcnQgVXl0dGVyaG9ldmVuIC0tIFRoZXJl
-J3MgbG90cyBvZiBMaW51eCBiZXlvbmQgaWEzMiAtLSBnZWVydEBsaW51eC1tNjhrLm9yZwoKSW4g
-cGVyc29uYWwgY29udmVyc2F0aW9ucyB3aXRoIHRlY2huaWNhbCBwZW9wbGUsIEkgY2FsbCBteXNl
-bGYgYSBoYWNrZXIuIEJ1dAp3aGVuIEknbSB0YWxraW5nIHRvIGpvdXJuYWxpc3RzIEkganVzdCBz
-YXkgInByb2dyYW1tZXIiIG9yIHNvbWV0aGluZyBsaWtlIHRoYXQuCiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgLS0gTGludXMgVG9ydmFsZHMKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+LmdldF9zdGF0ZSgpIGNhbiByZXR1cm4gYW4gZXJyb3IgaW5kaWNhdGlvbi4gTWFrZSB1c2Ugb2Yg
+aXQgdG8gcHJvcGFnYXRlCmZhaWxpbmcgaGFyZHdhcmUgYWNjZXNzZXMuCgpTaWduZWQtb2ZmLWJ5
+OiBVd2UgS2xlaW5lLUvDtm5pZyA8dS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlPgotLS0K
+IGRyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jIHwgNCArKy0tCiAxIGZpbGUgY2hhbmdlZCwgMiBp
+bnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcHdtL3B3
+bS1yb2NrY2hpcC5jIGIvZHJpdmVycy9wd20vcHdtLXJvY2tjaGlwLmMKaW5kZXggM2VjN2QxNzU2
+OTAzLi43ZjA4NGViMzQwOTIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5j
+CisrKyBiL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jCkBAIC03MCwxMSArNzAsMTEgQEAgc3Rh
+dGljIGludCByb2NrY2hpcF9wd21fZ2V0X3N0YXRlKHN0cnVjdCBwd21fY2hpcCAqY2hpcCwKIAog
+CXJldCA9IGNsa19lbmFibGUocGMtPnBjbGspOwogCWlmIChyZXQpCi0JCXJldHVybiAwOworCQly
+ZXR1cm4gcmV0OwogCiAJcmV0ID0gY2xrX2VuYWJsZShwYy0+Y2xrKTsKIAlpZiAocmV0KQotCQly
+ZXR1cm4gMDsKKwkJcmV0dXJuIHJldDsKIAogCWNsa19yYXRlID0gY2xrX2dldF9yYXRlKHBjLT5j
+bGspOwogCi0tIAoyLjM4LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
