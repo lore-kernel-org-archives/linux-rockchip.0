@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7B6C43217
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Dec 2022 13:17:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2C8C43217
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Dec 2022 13:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ywYJLmNGV+lXqEmJWcbgaik8uS8FCQWPmRFBinnziHY=; b=niIV+JjVw3ld2DcCQklgCj9QUy
-	Ek1iQQoi+UIYdi5XFBfx05KYOMeG40yyv8RpQol2UxzSxPWEdD3W8bWKRP9O1xLeOwWNPxZa1zjwH
-	dNdZThmorYMJv3Bp7zqRpSVPFHbqtPK8uUuyqsesr/8GCI8G7GP8SYnSSPmFViQqj1GViCwbU6610
-	HF3sFdE9NLT0xztQWMhaO9Iwl6rtNoV82eeSHLGCNmbNBM1qjzhXrXu/YKTdLQun00XBMWH7e8Ibw
-	jq7qeHnWIs56MfuwHIt8J3mo2DJMrPnCx3YGGD7mQ1fzwHIlu3ujiMXSPeRPjG5I1MF6XcN86tgk7
-	Oz7P9deA==;
+	bh=MEQdtTap8QMgZuQsXJEbIbGij3pazSnsQUBAzMffOA0=; b=Se5u50gek1xskLWUBMLKDt/u3O
+	rNDXDDDx09UIlPBw/XxIE5wfaOYsvr5ewx9uh3UwdFvBGoFYu897/qQqK396ORcU4KAI2tGazFsnc
+	H+0QCnsB0kkYrNtg9rISL0ZvfAPv+v1mnkZQ8ClKfWjRZPo0C31K/rhNEBu9/Ri8P3A+iB4wHzeXk
+	Qao/YL+U3TFNRb5YUyYXfLfRnJ9X66QtTghFrDa47Ovcu0cF4R0LskvsSiXD/LVzO0whDLx4MfRe0
+	8VpRz0Fjn16yWkznoetWCjH1UMEPvulXIQRmD89ichSjF+0C+2U1XrG20vjy3w/G/7XWzLHZvl9+X
+	Wizq2GgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0jR4-007eE5-34; Thu, 01 Dec 2022 13:17:06 +0000
+	id 1p0jTs-007eyT-Q8; Thu, 01 Dec 2022 13:20:00 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0jR1-007eCI-O1
-	for linux-rockchip@lists.infradead.org; Thu, 01 Dec 2022 13:17:05 +0000
+	id 1p0jTc-007etR-MA
+	for linux-rockchip@lists.infradead.org; Thu, 01 Dec 2022 13:19:46 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1p0jQF-0005k0-SY; Thu, 01 Dec 2022 14:16:15 +0100
+	id 1p0jT6-0005zw-Lz; Thu, 01 Dec 2022 14:19:12 +0100
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1p0jQ4-001aku-EN; Thu, 01 Dec 2022 14:16:05 +0100
+	id 1p0jT1-001alJ-Sp; Thu, 01 Dec 2022 14:19:08 +0100
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1p0jQ4-001nfp-Ga; Thu, 01 Dec 2022 14:16:04 +0100
-Date: Thu, 1 Dec 2022 14:16:04 +0100
+	id 1p0jT1-001ng9-TI; Thu, 01 Dec 2022 14:19:07 +0100
+Date: Thu, 1 Dec 2022 14:19:07 +0100
 From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andre Przywara <andre.przywara@arm.com>
+To: Conor Dooley <conor.dooley@microchip.com>
 Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	dri-devel@lists.freedesktop.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Conor Dooley <conor.dooley@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Thierry Reding <thierry.reding@gmail.com>,
 	Satya Priya <quic_c_skakit@quicinc.com>,
 	Pavel Machek <pavel@ucw.cz>, Guenter Roeck <groeck@chromium.org>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
 	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
 	Fabio Estevam <festevam@gmail.com>, linux-riscv@lists.infradead.org,
 	linux-leds@vger.kernel.org, Jerome Brunet <jbrunet@baylibre.com>,
@@ -71,6 +71,7 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
 	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
 	Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Steven Rostedt <rostedt@goodmis.org>,
 	Stephen Boyd <swboyd@chromium.org>, linux-gpio@vger.kernel.org,
 	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
 	linux-mediatek@lists.infradead.org,
@@ -83,28 +84,27 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	linux-arm-kernel@lists.infradead.org,
 	Scott Branden <sbranden@broadcom.com>,
 	Bjorn Andersson <andersson@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Douglas Anderson <dianders@chromium.org>,
 	Michael Walle <michael@walle.cc>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
 	Chunyan Zhang <zhang.lyra@gmail.com>,
 	Shawn Guo <shawnguo@kernel.org>,
 	Claudiu Beznea <claudiu.beznea@microchip.com>
-Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an error
- code
-Message-ID: <20221201131604.beq4l22d42tjy6dm@pengutronix.de>
+Subject: Re: [PATCH v2 00/11] pwm: Allow .get_state to fail
+Message-ID: <20221201131907.bmrenldnua7uaeab@pengutronix.de>
 References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
- <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
- <20221201102252.52ace284@donnerap.cambridge.arm.com>
+ <Y4iL9xf5bJM5pyeR@wendy>
 MIME-Version: 1.0
-In-Reply-To: <20221201102252.52ace284@donnerap.cambridge.arm.com>
+In-Reply-To: <Y4iL9xf5bJM5pyeR@wendy>
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_051703_790694_8085FE34 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20221201_051944_730659_AA3CCD41 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,34 +116,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8269118235029995640=="
+Content-Type: multipart/mixed; boundary="===============0576522624549299762=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8269118235029995640==
+--===============0576522624549299762==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ohce74rjo6dhumlo"
+	protocol="application/pgp-signature"; boundary="twdnam2bj5te67tc"
 Content-Disposition: inline
 
 
---ohce74rjo6dhumlo
+--twdnam2bj5te67tc
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hello Andre,
+Hello Conor,
 
-On Thu, Dec 01, 2022 at 10:22:52AM +0000, Andre Przywara wrote:
-> Just one comment: I don't see a sunxi specific patch later in the series,
-> though it seems we have at least one error error exit (see prescaler =3D=
-=3D 0
-> above). Plus potentially another exit if clk_get_rate() (at the very
-> beginning) fails.
-> Shall I send a patch for that?
+On Thu, Dec 01, 2022 at 11:11:51AM +0000, Conor Dooley wrote:
+> TL;DR, I quite like the ability to return an error and not mislead the
+> caller.
 
-That would we very welcome. I mentioned that shortly in the cover
-letter, I wasn't entirely sure how to handle that prescaler =3D 0 case.
+Is this an Ack?
 
 Best regards
 Uwe
@@ -152,25 +147,25 @@ Uwe
 Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
 Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
---ohce74rjo6dhumlo
+--twdnam2bj5te67tc
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmOIqREACgkQwfwUeK3K
-7Anj8wf/RTNhxYSv59Ka1mlJPxXTgymtejOcjGY7Mbrq9aaYBt0Hmzz6T20Siom0
-QSRZvBBJxLeC6sMsbo0Fz9qdDLt4Y9eWczlHASjdcke40fNWNcUpjo7GqJ8hMfD9
-/aBk/LIrTHuSJDWkLiUxCXgg/mPhVdSfgltE3xCWRU/+rQxWvEnKjFCDDnQvwGlJ
-XDzUeAMWwhWAOAeq69ypA0qbVXlCnpA7rRbuNpgviLuXPg8B8sCx+fEPtsGCAwh1
-W/lWgOdahAH40o8lldqWf0S/1Bb95qmDKjx/yI1gsCQpycDwDEgQeueUPRTMz912
-rL27K8cypWE75vkt7PMvSDMIkNan0w==
-=aHcT
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmOIqcgACgkQwfwUeK3K
+7Am3+gf9HQlrVI1DS5daIvtH5ajPj10gQCf7wUVcwdDqDzHuJW7mEQVvG1vEEaVC
+1sZxg13cFekIRhMzVMDj6JMG7MCuBqT0KWFDrstMLC2g7ot2+xZ6iJXXJL/3AQSm
+pf/UiOQYYN7VXn0Wpf8L2FkfFuTglAuZE6bLdE2t1/+pQnp9oR81aoPWJgZ8vhax
+WOkQYiH16UpgLNbhu7dV4133nkA6dfsSG+DrZjPy9vDdjCyDXUpxPnldpcHu+KCh
+zRNQ9gX0bYT60vQejp9169VriwhcHhts0uT6AnSYVw/MzYrwx/pJu9bdq+iq86Uc
+bMsdCWzzY9XerANJF7JdTMcJrfah8w==
+=luMq
 -----END PGP SIGNATURE-----
 
---ohce74rjo6dhumlo--
+--twdnam2bj5te67tc--
 
 
---===============8269118235029995640==
+--===============0576522624549299762==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,5 +176,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8269118235029995640==--
+--===============0576522624549299762==--
 
