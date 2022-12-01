@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62CF4C47088
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Dec 2022 10:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911A4C43217
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Dec 2022 11:12:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rHIAplJn9wNaTL1y21XDTTZRjN9CPdumIcVAx4dWXyA=; b=mUccN1JDUolxfg
-	eAfWWqUWjH8PiX3ORzQS3lTGowp3bm/Nz5qR0ISqHJtqk2vO4JawgfFdzkYd52mBE9OVV2r6brNeP
-	40rvZrQB511DT0bT2k8IXAZqeSGhwheg9Rwfm5sajTAalhfApHiwk9dYUph5p/WTVHQAQj4eLizTU
-	OxJ18u/O2gcbOFGVYg5uFAizz0iUSoDijejOv4fA5bdZ8f3PNXDj/JWgiKP0SNQjiqT65dtjVt1e3
-	eFwFNPtxG5JGpM5fA1454CJliC69y4VEpDHmUAzXNv47rb5N3HSgwtUcoMbCY7fni+O8Ry6TpfNEW
-	u2UmBtPblHfx8qDvk2/Q==;
+	List-Owner; bh=ObVLHa04eej3Z2IJT8OIVLva+mqIW6Wz5H/8vUJCrTk=; b=LwHeW8DDgtYoXk
+	N9L5TCmT0FdsHzrY93FQ6OJulzNyW5CYyyx+PRE3oI4sqxff3pNWnOS5wWkrZIdIktUMC2YQtDn8Y
+	1l9O6arZD1JfxfUnIimnMIGPL1KjJdfNcbGuzWbqCQg5cyMiHe2+BmTSkxHc/BCCYGhyNIWSppqKl
+	gu5NH5GueKHPN/jxgT4pCdlKkkJoWE5NhweCIX76Z8D+cXT7FVBDCTM7w4O2+97TSps7QPv/GCmFt
+	yacX8XJU+GjlAKRBVUXlYUIPI5/tvZSWsdjGuaapJGvGuqyEHZDMTtbyZ0UZKhftE5cY9kxknZQ7z
+	sYJPUdBEjiNMjMYErSPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0hH2-006tCJ-1l; Thu, 01 Dec 2022 10:58:36 +0000
-Received: from elvis.franken.de ([193.175.24.41])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0hGt-006t7I-J4; Thu, 01 Dec 2022 10:58:29 +0000
-Received: from uucp (helo=alpha)
-	by elvis.franken.de with local-bsmtp (Exim 3.36 #1)
-	id 1p0hGS-0007Uq-03; Thu, 01 Dec 2022 11:58:00 +0100
-Received: by alpha.franken.de (Postfix, from userid 1000)
-	id 045ACC1EF5; Thu,  1 Dec 2022 11:53:20 +0100 (CET)
-Date: Thu, 1 Dec 2022 11:53:20 +0100
-From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	soc@kernel.org, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
-	Hans Ulli Kroll <ulli.kroll@googlemail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Stefan Agner <stefan@agner.ch>, Heiko Stuebner <heiko@sntech.de>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Tim Harvey <tharvey@gateworks.com>, Peng Fan <peng.fan@nxp.com>,
-	Rasmus Villemoes <rasmus.villemoes@prevas.dk>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Oleksij Rempel <linux@rempel-privat.de>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
-Subject: Re: [PATCH 4/5] mips: dts: remove label = "cpu" from DSA dt-binding
-Message-ID: <20221201105320.GD6569@alpha.franken.de>
-References: <20221130141040.32447-1-arinc.unal@arinc9.com>
- <20221130141040.32447-5-arinc.unal@arinc9.com>
+	id 1p0hUb-006yfG-HH; Thu, 01 Dec 2022 11:12:37 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1p0hUS-006yYM-Bw; Thu, 01 Dec 2022 11:12:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1669893148; x=1701429148;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=oqwp1prmygFipaS7+KydzauQtsm23Yws4T/2+sBogyI=;
+  b=riUR8tErQKZFZIyCxW8RmecrzsRsQUlVi1qxefFltVZYsFJliNRovVAQ
+   MNvuyhl5LcQ9AX5w7ZoSxSxuxYVXGZn1eLp3ezNMpJGdhcaP85GGuqSOS
+   i/hYBw/4AHv9ixTclMTVwoajd10EjQxA1zd86Bw5GHKiwDPEYfYDP4ssI
+   Ozk0t3tr4V7lz4XJwcIrOygoDGz/XFbFyX8tS0a4UkjxmjediSEF8tWnQ
+   VOIhEf3/URMek9i4IBaWfQWq1eP/E+FHZW1SvQeKuifyifL4V6eqUO/0q
+   NULMKVK8t3FNTFfV6m+TGdqXZYtfkHdkLoM7ovNAITULzl9zp3PRp3g+A
+   A==;
+X-IronPort-AV: E=Sophos;i="5.96,209,1665471600"; 
+   d="scan'208";a="202161679"
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 01 Dec 2022 04:12:19 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.12; Thu, 1 Dec 2022 04:12:19 -0700
+Received: from wendy (10.10.115.15) by chn-vm-ex03.mchp-main.com
+ (10.10.85.151) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12 via Frontend
+ Transport; Thu, 1 Dec 2022 04:12:10 -0700
+Date: Thu, 1 Dec 2022 11:11:51 +0000
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+CC: Thierry Reding <thierry.reding@gmail.com>, Linus Walleij
+	<linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, "Douglas
+ Anderson" <dianders@chromium.org>, Pavel Machek <pavel@ucw.cz>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Nicolas Ferre
+	<nicolas.ferre@microchip.com>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Ray Jui <rjui@broadcom.com>, Scott Branden
+	<sbranden@broadcom.com>, "Broadcom internal kernel review list"
+	<bcm-kernel-feedback-list@broadcom.com>, Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>, Shawn Guo <shawnguo@kernel.org>, Sascha
+ Hauer <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+	<kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, "NXP Linux Team"
+	<linux-imx@nxp.com>, Kevin Hilman <khilman@baylibre.com>, "Jerome Brunet"
+	<jbrunet@baylibre.com>, Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "Heiko
+ Stuebner" <heiko@sntech.de>, Palmer Dabbelt <palmer@dabbelt.com>, "Paul
+ Walmsley" <paul.walmsley@sifive.com>, Michael Walle <michael@walle.cc>,
+	"Orson Zhai" <orsonzhai@gmail.com>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Hammer
+ Hsieh <hammerh0314@gmail.com>, Nobuhiro Iwamatsu
+	<nobuhiro1.iwamatsu@toshiba.co.jp>, Sean Anderson <sean.anderson@seco.com>,
+	Michal Simek <michal.simek@xilinx.com>, Bjorn Andersson
+	<andersson@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Matthias Kaehlcke
+	<mka@chromium.org>, Satya Priya <quic_c_skakit@quicinc.com>,
+	<linux-pwm@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
+	<dri-devel@lists.freedesktop.org>, <linux-leds@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <chrome-platform@lists.linux.dev>,
+	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-rpi-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
+	Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>,
+	Marijn Suijten <marijn.suijten@somainline.org>
+Subject: Re: [PATCH v2 00/11] pwm: Allow .get_state to fail
+Message-ID: <Y4iL9xf5bJM5pyeR@wendy>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221130141040.32447-5-arinc.unal@arinc9.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_025828_015959_700022E7 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20221201_031228_456121_2E5A5586 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,35 +108,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBOb3YgMzAsIDIwMjIgYXQgMDU6MTA6MzlQTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3
-cm90ZToKPiBUaGlzIGlzIG5vdCB1c2VkIGJ5IHRoZSBEU0EgZHQtYmluZGluZywgc28gcmVtb3Zl
-IGl0IGZyb20gYWxsIGRldmljZXRyZWVzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFyxLFuw6cgw5xO
-QUwgPGFyaW5jLnVuYWxAYXJpbmM5LmNvbT4KPiAtLS0KPiAgYXJjaC9taXBzL2Jvb3QvZHRzL3Fj
-YS9hcjkzMzEuZHRzaSAgICB8IDEgLQo+ICBhcmNoL21pcHMvYm9vdC9kdHMvcmFsaW5rL210NzYy
-MS5kdHNpIHwgMSAtCj4gIDIgZmlsZXMgY2hhbmdlZCwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZm
-IC0tZ2l0IGEvYXJjaC9taXBzL2Jvb3QvZHRzL3FjYS9hcjkzMzEuZHRzaSBiL2FyY2gvbWlwcy9i
-b290L2R0cy9xY2EvYXI5MzMxLmR0c2kKPiBpbmRleCBjNDEwMmIyODBiNDcuLjc2OGFjMGY4Njli
-MSAxMDA2NDQKPiAtLS0gYS9hcmNoL21pcHMvYm9vdC9kdHMvcWNhL2FyOTMzMS5kdHNpCj4gKysr
-IGIvYXJjaC9taXBzL2Jvb3QvZHRzL3FjYS9hcjkzMzEuZHRzaQo+IEBAIC0xNzYsNyArMTc2LDYg
-QEAgcG9ydHMgewo+ICAKPiAgCQkJCQkJc3dpdGNoX3BvcnQwOiBwb3J0QDAgewo+ICAJCQkJCQkJ
-cmVnID0gPDB4MD47Cj4gLQkJCQkJCQlsYWJlbCA9ICJjcHUiOwo+ICAJCQkJCQkJZXRoZXJuZXQg
-PSA8JmV0aDE+Owo+ICAKPiAgCQkJCQkJCXBoeS1tb2RlID0gImdtaWkiOwo+IGRpZmYgLS1naXQg
-YS9hcmNoL21pcHMvYm9vdC9kdHMvcmFsaW5rL210NzYyMS5kdHNpIGIvYXJjaC9taXBzL2Jvb3Qv
-ZHRzL3JhbGluay9tdDc2MjEuZHRzaQo+IGluZGV4IGYzZjRjMWYyNmUwMS4uNDQ1ODE3Y2JmMzc2
-IDEwMDY0NAo+IC0tLSBhL2FyY2gvbWlwcy9ib290L2R0cy9yYWxpbmsvbXQ3NjIxLmR0c2kKPiAr
-KysgYi9hcmNoL21pcHMvYm9vdC9kdHMvcmFsaW5rL210NzYyMS5kdHNpCj4gQEAgLTM4Niw3ICsz
-ODYsNiBAQCBwb3J0QDQgewo+ICAKPiAgCQkJCQlwb3J0QDYgewo+ICAJCQkJCQlyZWcgPSA8Nj47
-Cj4gLQkJCQkJCWxhYmVsID0gImNwdSI7Cj4gIAkJCQkJCWV0aGVybmV0ID0gPCZnbWFjMD47Cj4g
-IAkJCQkJCXBoeS1tb2RlID0gInRyZ21paSI7Cj4gIAo+IC0tIAo+IDIuMzQuMQoKYXBwbGllZCB0
-byBtaXBzLW5leHQuCgpUaG9tYXMuCgotLSAKQ3JhcCBjYW4gd29yay4gR2l2ZW4gZW5vdWdoIHRo
-cnVzdCBwaWdzIHdpbGwgZmx5LCBidXQgaXQncyBub3QgbmVjZXNzYXJpbHkgYQpnb29kIGlkZWEu
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgWyBSRkMxOTI1
-LCAyLjMgXQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Hey Uwe!
+
+On Wed, Nov 30, 2022 at 04:21:37PM +0100, Uwe Kleine-K=F6nig wrote:
+> Hello,
+> =
+
+> I forgot about this series and was remembered when I talked to Conor
+> Dooley about how .get_state() should behave in an error case.
+
+In the context of "my" driver, get_state() the proposal was to fail with
+-ETIMEDOUT rather than block a caller, potentially, for seconds or
+report a potentially "random" state.
+
+Specifically, values writen to the registers that control the PWM duty
+cycle are not visible to the cpu until the changes have propagated to
+the waveform at the start of a new period.
+The timeout would occur if the bit that signifies that the "shadow
+registers" contain a value which has not yet propagated. This bit is
+per PWM "controller" and not per PWM channel.
+
+Returning from apply() without waiting, possibly for seconds, for the
+writes to become visible could cause get_state() to see anything between
+the new and old states, inclusive!
+
+If anyone cares at all, the discussion is here:
+https://lore.kernel.org/linux-pwm/20221110093512.333881-1-conor.dooley@micr=
+ochip.com/T/#m800eeabad29067940a5684e54106fd0bb7261944
+
+> In v1 Thierry had the concern:
+> =
+
+> | That raises the question about what to do in these cases. If we return
+> | an error, that could potentially throw off consumers. So perhaps the
+> | closest would be to return a disabled PWM?
+> | Or perhaps it'd be up to the
+> | consumer to provide some fallback configuration for invalidly configured
+> | or unconfigured PWMs.
+> =
+
+> .get_state() is only called in pwm_device_request on a pwm_state that a
+> consumer might see. Before my series a consumer might have seen a
+> partial modified pwm_state (because .get_state() might have modified
+> .period, then stumbled and returned silently). The last patch ensures
+> that this partial modification isn't given out to the consumer. Instead
+> they now see the same as if .get_state wasn't implemented at all.
+
+Getting the same thing as if get_state() did not exist seems
+preferable to me in this context than "lying" and pretending that a PWM
+is disabled or potentially inconsistent reports from get_state() that I
+mentioned above.
+
+TL;DR, I quite like the ability to return an error and not mislead the
+caller.
+
+Thanks for sending a v2 of this so quickly :)
+Conor.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
