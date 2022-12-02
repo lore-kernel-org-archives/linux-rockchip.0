@@ -4,82 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D97C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Dec 2022 04:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD933C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Dec 2022 19:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DbJiTXraloQAo4iyU9DKPJYJJ41Vtpuav7Hytucd7VM=; b=byHpG5AwwpzdOo
-	DxqR1aM3yaVPV5179QKeRJz8lu56TSkEKEDDPOlr+3dDltltGl/kR/1ueTm6yndjTjruVYAdH8cS7
-	ofzVKHyl7HfYEPrCtQqFCQfgBu2HIB90LxqVwBMsN0w0dtmr252EZ1S3pzYferOlVURoFuEXo1B+r
-	gbCkUWJTdqh9qwCHBjUZ9x5VxXjfwMcefk/InPjKALwBY6PByQ2BsMnM6WgKGAOXYCTpiVGlPisCi
-	A9wgMgYU3phbyzr/IaxwQhGUn9ZYbo2WUFMXG2JwrPCZT9IBMbw4a9OxL89TFfAb6+xbktukDPA/l
-	u7ZAlXuDWSoCYn9r+uhg==;
+	List-Owner; bh=lA9LDmwTRQBXiCPyShGfg+v9E97ATrr5m5A2o5CP/Bw=; b=WePpiP415Vs1/I
+	v/aPFzhlNnjVGuyPUs+4NLzlldOy+IsyyeGe7J4ZmcYBpTqj1xrjaOE3QiPwH5n/6CNIXspwn4Eh1
+	/r9XVxW0l0VuXFJHVyyvvd/TiC2AQeEddW4M+FlKi+yAyXy/vPkhwLFKHb1XUgnZOF+9jtJE34mGA
+	eHGsghBlOWZDp6JDPmldw8BK+OqkYSTKpo0G1h8fZKa2cA8ObtdXD/P9TiCBvziTSd+mmuvugRA7R
+	pkd5FnBJvXEWjkHzr8ppDH4mgfGmTm/LtKWiX672F3m4VI6lltT5A29Ok1Jt/N0HO9lcjGfoBFawZ
+	DMSFhbePt8NMqOHgj/2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0xNg-00D6bp-0D; Fri, 02 Dec 2022 04:10:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p1BbR-000xxD-5x; Fri, 02 Dec 2022 19:21:41 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0xNT-00D6Xm-7U; Fri, 02 Dec 2022 04:10:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6AF8B61198;
-	Fri,  2 Dec 2022 04:10:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2FAD9C43470;
-	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669954217;
-	bh=HaP17cY8bC6Z7s7UbiuxYbq8Tj2YqlDJaygBIxTtgLE=;
-	h=Subject:From:Date:References:In-Reply-To:To:List-Id:Cc:From;
-	b=ceAE5Mxrl5cb2x2vxCvkWYLuAKVIUSda9eDgrj/v/dsN0Vo4tt9V/HX2M1h78crwH
-	 d03jz31h574qWxU5y0Q6ocFqqylNVBdzBI9uTKgsYl38Y8QLSLrfk+o4bDBD8VeCNC
-	 hOf+Q9VR7k40jlRRbcnmmPma/ihKnDAxNqujnGgx/nv1JtJ94HtmmJ+5QA/ZoM/ljG
-	 RbLwj0w3XtuqtUeWwYO5QEIDqRz2znS9lfFPx2OW5XdmmmHyWdfTLPeNqAhADtZ0Ow
-	 Pk/KqULn6e3dQaK9ZYBlnyp5ewEhowWzruyM0J9zZHiExqyTEM2UT4whZS83/WJftY
-	 F7YUJMQy9oi4w==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0DDFCE52545;
-	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
+	id 1p1BbF-000xsz-3P; Fri, 02 Dec 2022 19:21:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
+	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
+	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
+	bh=0NUu4ctHIlOxLau4TIcj+Sj7pIi/v+JOenF17DqHjZQ=; b=iSRBv/TWo0zdYt2Uko8NDseLAg
+	jPbzfbBU9FPjf4MmG+1kiEz4Eu4gFoxlMNgt6e80tdC0woxsEJLWb72ZLr0Iicss49YjgqrvGzt65
+	6GbXFVfCQQOPeZSRJT1bI7AENvEJbka+icCHmED7OvyAYBOOHCHbRo70f11BbRNBd7kVf/bw6rIGc
+	sX0Xdb3M6T2Cnw3nEvdVs0kU89A2D43/LTj81k4zrxr8Enn1PgETTx4O+fS91odU1aN3V7cWEBtb5
+	jvq9gNbHS+FWD1VG+mgWQ6AJfq3brAO6oBhmvjEiLoIwsOOgTiC2wqmx/BzRv+dQSEbghWKZ+Tx6P
+	gLedwFjg==;
+Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
+	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1p1Bak-0098Qj-Hm; Fri, 02 Dec 2022 20:20:58 +0100
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1p1Baj-00Ex9e-3A;
+	Fri, 02 Dec 2022 20:20:57 +0100
+Date: Fri, 2 Dec 2022 20:20:57 +0100
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Lin Jinhan <troy.lin@rock-chips.com>,
+	"open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>,
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: RNG: Add Rockchip RNG bindings
+Message-ID: <Y4pQGRMzILrkRP/2@aurel32.net>
+Mail-Followup-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Lin Jinhan <troy.lin@rock-chips.com>,
+	"open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>,
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+References: <20221128184718.1963353-1-aurelien@aurel32.net>
+ <20221128184718.1963353-2-aurelien@aurel32.net>
+ <89b16ec5-f9a5-f836-f51a-8325448e4775@linaro.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166995421705.16716.5360501255567828327.git-patchwork-notify@kernel.org>
-Date: Fri, 02 Dec 2022 04:10:17 +0000
-References: <20221130141040.32447-1-arinc.unal@arinc9.com>
-In-Reply-To: <20221130141040.32447-1-arinc.unal@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPg==?=@ci.codeaurora.org
-Cc: vladimir.oltean@nxp.com, krzysztof.kozlowski@linaro.org, soc@kernel.org,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, andrew@lunn.ch,
- gregory.clement@bootlin.com, sebastian.hesselbarth@gmail.com,
- linux@armlinux.org.uk, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
- rjui@broadcom.com, sbranden@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, f.fainelli@gmail.com,
- hauke@hauke-m.de, zajec5@gmail.com, ulli.kroll@googlemail.com,
- linus.walleij@linaro.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- matthias.bgg@gmail.com, agross@kernel.org, andersson@kernel.org,
- konrad.dybcio@somainline.org, geert+renesas@glider.be, magnus.damm@gmail.com,
- mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org, stefan@agner.ch,
- heiko@sntech.de, tsbogend@alpha.franken.de, sergio.paracuellos@gmail.com,
- mpe@ellerman.id.au, npiggin@gmail.com, christophe.leroy@csgroup.eu,
- tharvey@gateworks.com, peng.fan@nxp.com, rasmus.villemoes@prevas.dk,
- frank-w@public-files.de, michael.riesch@wolfvision.net,
- linux@rempel-privat.de, netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
+Content-Disposition: inline
+In-Reply-To: <89b16ec5-f9a5-f836-f51a-8325448e4775@linaro.org>
+User-Agent: Mutt/2.2.7 (2022-08-07)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_201019_365741_4E6F7717 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20221202_112129_624598_1B540CA5 
+X-CRM114-Status: GOOD (  24.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,43 +99,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This series was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
+Thanks for your feedback.
 
-On Wed, 30 Nov 2022 17:10:35 +0300 you wrote:
-> Hello folks,
+On 2022-11-29 10:24, Krzysztof Kozlowski wrote:
+> On 28/11/2022 19:47, Aurelien Jarno wrote:
+> > Add the RNG bindings for the RK3568 SoC from Rockchip
 > 
-> With this patch series, we're completely getting rid of 'label = "cpu";'
-> which is not used by the DSA dt-binding at all.
+> Use subject prefixes matching the subsystem (git log --oneline -- ...),
+> so it is rng, not RNG. Also, you are not adding all-Rockhip RNG but a
+> specific device.
 > 
-> Information for taking the patches for maintainers:
-> Patch 1: netdev maintainers (based off netdev/net-next.git main)
-> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
-> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
-> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
+> Subject: drop second, redundant "bindings".
 > 
-> [...]
+> > 
+> > Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+> > ---
+> >  .../bindings/rng/rockchip,rk3568-rng.yaml     | 60 +++++++++++++++++++
+> >  1 file changed, 60 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+> > new file mode 100644
+> > index 000000000000..c2f5ef69cf07
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/rng/rockchip,rk3568-rng.yaml
+> > @@ -0,0 +1,60 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/rng/rockchip,rk3568-rng.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Rockchip TRNG
+> > +
+> > +description: True Random Number Generator for some Rockchip SoCs
+> 
+> s/for some Rockchip SoCs/on Rokchip RK3568 SoC/
 
-Here is the summary with links:
-  - [1/5] dt-bindings: net: qca,ar71xx: remove label = "cpu" from examples
-    https://git.kernel.org/netdev/net-next/c/ce36d7ef4e08
-  - [2/5] arm: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [3/5] arm64: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [4/5] mips: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [5/5] powerpc: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
+My point there is that this driver should also work for other Rockchip
+SoCs like the RK3588, but 1) it support for this SoC is being added and
+not yet available in the Linux kernel 2) it hasn't been tested.
 
-You are awesome, thank you!
+Should we mark it as RK3568 specific (or rather RK356x) and change that
+once a compatible entry is added for the RK3588?
+
+> > +
+> > +maintainers:
+> > +  - Aurelien Jarno <aurelien@aurel32.net>
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - rockchip,rk3568-rng
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: TRNG clock
+> > +      - description: TRNG AHB clock
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: trng_clk
+> > +      - const: trng_hclk
+> 
+> These are too vague names. Everything is a clk in clock-names, so no
+> need usually to add it as name suffix. Give them some descriptive names,
+> e.g. core and ahb.
+
+Those names are based on <include/dt-bindings/clock/rk3568-cru.h> and
+other drivers seems to have used those for the names. But I understand
+that broken things could have been merged, so I am fine changing that to
+core and ahb.
+
+> > +
+> > +  resets:
+> > +    maxItems: 1
+> > +
+
+Regards
+Aurelien
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
 _______________________________________________
 Linux-rockchip mailing list
