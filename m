@@ -4,85 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EFC6C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Dec 2022 19:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CA7C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Dec 2022 23:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uspsd3LZY2FJqa5EJzmih4TohVlMc3KXdo/K3+RvN/I=; b=UqwcrbuZJaJHGv
-	BE7D4qsczgNz04c69vMV3olpBLfXm06O3JRFORNFDqK6bJ/ET5bxza0t2M3/oASHifbhkFt3kfHjg
-	aFP1SDH4QZMuUoub43JGJwcQadBePf+myfvabST5Rpje7hsXH8vosViDSzbeIr9NWKxBHlcaaQF9c
-	ii/uSdGuJHhOBOsOG9wwR07kPfX76uGz6IBnmdeqgtEI3D08C1T8RQ14EYQV/h4ykDUChYJBeJ/ol
-	94/GuIaJ98awISw96LbRUtFb3+yoCzUvkwF13IXIcCjhuKqHxSY0Y3WQ6rcJsSe6LDQ1diNlMrCBd
-	4O8J6EsrZdyp8UtIOAjg==;
+	List-Owner; bh=Ftk62Lq+pXpn+1mC3TKLxkoUA+4agjhTcYHKaLLLKZI=; b=DUi1ugNkIWJ+AU
+	C1uPTUETRz0bZwMfygIMbDWmQ0s1dPdzOX1m+6PcCkSfIFc+M/b4SI/6MUtiMkt/VZa5b6Kr/M0Xe
+	1Ni0LtHhrQ3vWTdA/fzeT8EzDb2pl00oMcK+2Z+Z1zAU910M4zmWHhDx98PukrdJ6JxpbmJsMEqmm
+	2FPSk7ET3+Xz/f4a/XK2dQjPJC23JpPvVk/5uaRT6PWssuPKoll0Bbs0Js9eZvDl+e32eyL6EOIxP
+	166mJ/qcZE/NXG0MjO4BCUrdUtd8aNMWollNdcOFkECSrW+o+JjdIxGkwwXVWN971MikJ/9JxLCt7
+	Vh6Jj/UsT9sriyyXJttw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1Bju-000zQH-Bc; Fri, 02 Dec 2022 19:30:26 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1p1FRY-001fnq-A3; Fri, 02 Dec 2022 23:27:44 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1Bjj-000zOK-JB; Fri, 02 Dec 2022 19:30:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=QeityKeWX9SH19NfeKIppN2I0iFKaIHoIc1Zkqq/E6k=; b=nOXshjpnQjf5mZxj6cFVHdAk9h
-	mLpBsfcpsow8dQYvO9/n9gm9O2xfktkDZJKMivAnd/LFuSFifh0wgQPFW9A7Qkk58fafdAkQG0zRI
-	hy9hov2mll82bo3A465yPE/vpjH0x7fq3VBzHw9/UIDgZU6GVhey83YDczWtYtIAcj2sop3e2n9Ke
-	YsWbaVmg7FAOYXlKDU0Rxy5VCHxKpIy2ll/rabony7mUTO4o3ySDgqto7PVzA5kMI9YldodwGlmyM
-	5l6Dl6b9XpjgNN6ayskbZf8yioFtpLsZ16JM7xoxeW2e9DtA+eHxolMZbV8Vuv/cL47R78SJPkNf1
-	ip5A3ZoQ==;
-Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1p1Bjb-0098bq-Hu; Fri, 02 Dec 2022 20:30:07 +0100
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1p1Bja-00ExHt-30;
-	Fri, 02 Dec 2022 20:30:06 +0100
-Date: Fri, 2 Dec 2022 20:30:06 +0100
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Lin Jinhan <troy.lin@rock-chips.com>,
-	"open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>,
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 2/3] hwrng: add Rockchip SoC hwrng driver
-Message-ID: <Y4pSPrIHPL8yH6cq@aurel32.net>
-Mail-Followup-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Lin Jinhan <troy.lin@rock-chips.com>,
-	"open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>,
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>
-References: <20221128184718.1963353-1-aurelien@aurel32.net>
- <20221128184718.1963353-3-aurelien@aurel32.net>
- <76091207-d81c-e737-34a2-884153251925@linaro.org>
+	id 1p1FRV-001fmZ-4L
+	for linux-rockchip@lists.infradead.org; Fri, 02 Dec 2022 23:27:42 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id 189so7809479ybe.8
+        for <linux-rockchip@lists.infradead.org>; Fri, 02 Dec 2022 15:27:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=01Dh81m4jbKqJgneaTvo1zhRa3UD/HHJqjoMbOfF7J4=;
+        b=a9xmb67lFpFoi4YEDWdAsR+kRrZg1Vr2lMYe1a6A8d0JpMMOlIXszaUkLarTleeNEU
+         zBlly5tuIWV45UB2FUN6Z7ZOmgl8BiAWc9KUkjSw53Kovacvd7z75f2pGLL6E6+0mkUm
+         D920BYaBXJl9eC4lWFhiue8lFdsSNE2c6wP/SWua7K+dcIPW644lswUb3Ssbj32OvMyq
+         fc2nfO8dt6oeBIL7nsNhE54xSg7koqWTdY+52LbY27NYIHXsCvQoi6leYjwDyzm+g5zN
+         Q1pt1EmqXyGUwqFmYTNsPZU6ZT8erB/sqm5hhRkoZLgSxvER4k5D+88zeFBOKhsjw6mk
+         sc3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=01Dh81m4jbKqJgneaTvo1zhRa3UD/HHJqjoMbOfF7J4=;
+        b=3dZGJP2R1cw0UQDGx7daUt3Kepda+1Bw3wAn1J3fhgkx6baM3S9WKF/CywMXS08rzN
+         OWELYM+w2556ppqFs95UOaLQTrYXX1v39JahlVL73HBvNy6oQ52aLefOpH+9RKiwWbsv
+         y0+uJgLAP+romyJGeA5CfN2dgAQy6+Mo1TCKSdhsDv8nMSaTAmJki/B913nWHHuzZVwO
+         4x/NAcVPRn7aJR0UdzQC1rKsCH8t6IJC0F/3hnCK5S5VrnMDZK9H+gGzj93aevQgXH86
+         tvYsKBy0+6qh91+UwGrp0TamnI1L9qhjo86HJWej1qsedxfIZSEgiFYu+IUDBz6RgGlp
+         j7NQ==
+X-Gm-Message-State: ANoB5pk/AtTGyaxoIWezB9BF74IYGfvtRfRYuWiyy6WsHga0ljNfPOzh
+	8B8d+UYDH8rEwBMGWSb0fLga4w4kgBGncg68ZYcqfQ==
+X-Google-Smtp-Source: AA0mqf6PJ/bVmIQ/wE4S1OExKpRT9O5k9pewZIINIWmGYbkjwPDqfiGxa28TxTOCYjDRDy8IyKB5CP3C62LgP1KqHhs=
+X-Received: by 2002:a25:c7cb:0:b0:6fc:834c:9c89 with SMTP id
+ w194-20020a25c7cb000000b006fc834c9c89mr7444498ybe.43.1670023656365; Fri, 02
+ Dec 2022 15:27:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <76091207-d81c-e737-34a2-884153251925@linaro.org>
-User-Agent: Mutt/2.2.7 (2022-08-07)
+References: <20221129172912.9576-1-macroalpha82@gmail.com> <20221129172912.9576-2-macroalpha82@gmail.com>
+In-Reply-To: <20221129172912.9576-2-macroalpha82@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sat, 3 Dec 2022 00:27:24 +0100
+Message-ID: <CACRpkdaW8d5w5tnn-vdKQpvqXjC0N=6nCB0QfzUJ5rUk0oTt9w@mail.gmail.com>
+Subject: Re: [PATCH V4 1/3] dt-bindings: display: panel: Add Samsung AMS495QA01
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, maccraft123mc@gmail.com, heiko@sntech.de, 
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, daniel@ffwll.ch, 
+	airlied@gmail.com, sam@ravnborg.org, thierry.reding@gmail.com, 
+	Chris Morgan <macromorgan@hotmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_113015_793399_45C2ABD5 
-X-CRM114-Status: GOOD (  32.99  )
+X-CRM114-CacheID: sfid-20221202_152741_208472_A8F06263 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,212 +89,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Chris,
 
-Thanks for your feedback.
+thanks for your patch!
 
-On 2022-11-29 10:33, Krzysztof Kozlowski wrote:
-> On 28/11/2022 19:47, Aurelien Jarno wrote:
-> > diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-> > new file mode 100644
-> > index 000000000000..18cdd91ad8c3
-> > --- /dev/null
-> > +++ b/drivers/char/hw_random/rockchip-rng.c
-> > @@ -0,0 +1,250 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * rockchip-rng.c True Random Number Generator driver for Rockchip SoCs
-> > + *
-> > + * Copyright (c) 2018, Fuzhou Rockchip Electronics Co., Ltd.
-> > + * Copyright (c) 2022, Aurelien Jarno
-> > + * Authors:
-> > + *  Lin Jinhan <troy.lin@rock-chips.com>
-> > + *  Aurelien Jarno <aurelien@aurel32.net>
-> > + */
-> > +#include <linux/clk.h>
-> > +#include <linux/hw_random.h>
-> > +#include <linux/io.h>
-> > +#include <linux/iopoll.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/pm_runtime.h>
-> > +#include <linux/reset.h>
-> > +#include <linux/slab.h>
-> > +
-> > +#define RK_RNG_AUTOSUSPEND_DELAY	100
-> > +#define RK_RNG_MAX_BYTE			32
-> > +#define RK_RNG_POLL_PERIOD_US		100
-> > +#define RK_RNG_POLL_TIMEOUT_US		10000
-> > +
-> > +/*
-> > + * TRNG collects osc ring output bit every RK_RNG_SAMPLE_CNT time. The value is
-> > + * a tradeoff between speed and quality and has been adjusted to get a quality
-> > + * of ~900 (~90% of FIPS 140-2 successes).
-> > + */
-> > +#define RK_RNG_SAMPLE_CNT		1000
-> > +
-> > +/* TRNG registers from RK3568 TRM-Part2, section 5.4.1 */
-> > +#define TRNG_RST_CTL			0x0004
-> > +#define TRNG_RNG_CTL			0x0400
-> > +#define TRNG_RNG_CTL_LEN_64_BIT		(0x00 << 4)
-> > +#define TRNG_RNG_CTL_LEN_128_BIT	(0x01 << 4)
-> > +#define TRNG_RNG_CTL_LEN_192_BIT	(0x02 << 4)
-> > +#define TRNG_RNG_CTL_LEN_256_BIT	(0x03 << 4)
-> > +#define TRNG_RNG_CTL_OSC_RING_SPEED_0	(0x00 << 2)
-> > +#define TRNG_RNG_CTL_OSC_RING_SPEED_1	(0x01 << 2)
-> > +#define TRNG_RNG_CTL_OSC_RING_SPEED_2	(0x02 << 2)
-> > +#define TRNG_RNG_CTL_OSC_RING_SPEED_3	(0x03 << 2)
-> > +#define TRNG_RNG_CTL_ENABLE		BIT(1)
-> > +#define TRNG_RNG_CTL_START		BIT(0)
-> > +#define TRNG_RNG_SAMPLE_CNT		0x0404
-> > +#define TRNG_RNG_DOUT_0			0x0410
-> > +#define TRNG_RNG_DOUT_1			0x0414
-> > +#define TRNG_RNG_DOUT_2			0x0418
-> > +#define TRNG_RNG_DOUT_3			0x041c
-> > +#define TRNG_RNG_DOUT_4			0x0420
-> > +#define TRNG_RNG_DOUT_5			0x0424
-> > +#define TRNG_RNG_DOUT_6			0x0428
-> > +#define TRNG_RNG_DOUT_7			0x042c
-> > +
-> > +struct rk_rng {
-> > +	struct hwrng rng;
-> > +	void __iomem *base;
-> > +	struct reset_control *rst;
-> > +	int clk_num;
-> > +	struct clk_bulk_data *clk_bulks;
-> > +};
-> > +
-> > +/* The mask determine the bits that are updated */
-> > +static void rk_rng_write_ctl(struct rk_rng *rng, u32 val, u32 mask)
-> > +{
-> > +	writel_relaxed((mask << 16) | val, rng->base + TRNG_RNG_CTL);
-> > +}
-> > +
-> > +static int rk_rng_init(struct hwrng *rng)
-> > +{
-> > +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-> > +	u32 reg;
-> > +	int ret;
-> > +
-> > +	/* start clocks */
-> > +	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
-> > +	if (ret < 0) {
-> > +		dev_err((struct device *) rk_rng->rng.priv,
-> > +			"Failed to enable clks %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	/* set the sample period */
-> > +	writel(RK_RNG_SAMPLE_CNT, rk_rng->base + TRNG_RNG_SAMPLE_CNT);
-> > +
-> > +	/* set osc ring speed and enable it */
-> > +	reg = TRNG_RNG_CTL_LEN_256_BIT |
-> 
-> It's not reg. It's val.
+On Tue, Nov 29, 2022 at 6:29 PM Chris Morgan <macroalpha82@gmail.com> wrote:
 
-Ok, I'll fix that.
+> From: Chris Morgan <macromorgan@hotmail.com>
+>
+> Add documentation for the Samsung AMS495QA01 panel.
+>
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 
-> > +		   TRNG_RNG_CTL_OSC_RING_SPEED_0 |
-> > +		   TRNG_RNG_CTL_ENABLE;
-> > +	rk_rng_write_ctl(rk_rng, reg, 0xffff);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static void rk_rng_cleanup(struct hwrng *rng)
-> > +{
-> > +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-> > +	u32 reg;
-> > +
-> > +	/* stop TRNG */
-> > +	reg = 0;
-> 
-> It's not reg. It's val.
+> +  reset-gpios: true
 
-I'll also fix that one.
+Can you add a description saying that this must always be specified
+GPIO_ACTIVE_LOW.
 
-> > +	rk_rng_write_ctl(rk_rng, reg, 0xffff);
-> > +
-> > +	/* stop clocks */
-> > +	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
-> > +}
-> > +
-> > +static int rk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-> > +{
-> > +	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-> > +	u32 reg;
-> > +	int ret = 0;
-> > +	int i;
-> > +
-> > +	pm_runtime_get_sync((struct device *) rk_rng->rng.priv);
-> 
-> Missing error handling.
+With that change:
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-I'll fix that.
- 
-> > +
-> > +	/* Start collecting random data */
-> > +	reg = TRNG_RNG_CTL_START;
-> 
-> This is not usefull. Just use it directly in write call. Actually this
-> is heavy confusing, as reg suggests address. This would be val instead...
-
-This was to avoid passing the value twice, as it is used for both the
-mask and the value. But I can pass it directly if it's better.
-
-> > +	rk_rng_write_ctl(rk_rng, reg, reg);
-> > +
-> > +	ret = readl_poll_timeout(rk_rng->base + TRNG_RNG_CTL, reg,
-> > +				 !(reg & TRNG_RNG_CTL_START),
-> > +				 RK_RNG_POLL_PERIOD_US,
-> > +				 RK_RNG_POLL_TIMEOUT_US);
-> > +	if (ret < 0)
-> > +		goto out;
-> > +
-> > +	/* Read random data stored in the registers */
-> > +	ret = min_t(size_t, max, RK_RNG_MAX_BYTE);
-> > +	for (i = 0; i < ret; i += 4) {
-> > +		*(u32 *)(buf + i) = readl_relaxed(rk_rng->base + TRNG_RNG_DOUT_0 + i);
-> > +	}
-> 
-> This cannot be just memcpy_fromio?
-
-According to the TRM, we should ensure 32-bit accesses, so I am not sure
-memcpy_fromio will work. However it seems __ioread32_copy could be a
-good replacement.
-
-> > +
-> > +out:
-> > +	pm_runtime_mark_last_busy((struct device *) rk_rng->rng.priv);
-> > +	pm_runtime_put_sync_autosuspend((struct device *) rk_rng->rng.priv);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int rk_rng_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev = &pdev->dev;
-> > +	struct rk_rng *rk_rng;
-> > +	int ret;
-> > +
-> > +	rk_rng = devm_kzalloc(dev, sizeof(struct rk_rng), GFP_KERNEL);
-> 
-> sizeof(*rk_rng)
-
-I'll fix that.
-
-> > +	if (!rk_rng)
-> > +		return -ENOMEM;
-> > +
-
-Regards
-Aurelien
-
-
--- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
