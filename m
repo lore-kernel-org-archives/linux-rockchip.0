@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613E3C4321E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 13:44:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52DE6C4708C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 13:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c0UxcRg/hgaN9BCnK/1JBiELqNAcOhM8GZCORIZ35ng=; b=bCIuK3wG62inB3
-	WoDPR/v5H4YU74QPyGs4kU6cztCl/5K3hqSBriRfSkV1sm3jxr2lnyPwTdKjGuUa5xhOCzo65bYbZ
-	LrHymrPB/dF62s5fSIOwYhfZq0EWbiv5PTuI4CV1s9AQ0whCFstPVqW0uwq4wR/3MS2D+RawDP+ED
-	E3DSav06CxORj3Mi1JGUiTiFexuv+6TzdKwsjEAisZ58NqAluslWKSCMrKwWSPYuue3sNbbYlMBa9
-	xFD5tgSQ5UYe66dj7f7ptmnXVz7AamNeySKlquvyABgFFIo/QQUALmGl1UebgeJ6GmiWUcIuT340Y
-	J4F9oVI0rWQhu4Gzk0qw==;
+	List-Owner; bh=p6be0CO1KMxs7gs+uAeS/Lv5Qxy7kQ4HLIc49LusP1Y=; b=TTnIA8VuW9kMs4
+	BDhzpygijalJIjENhHlN3tDQS2IISBNSYflBcyLruNKI/oz4Shkyz6OYyBOd8Ztww2AvJzVykzQ0j
+	nwWPCF1XPtPQucg46M1T3IZGpJ//G/Mb1DXZpIZ94Bn4U0eQKgJn5OLI6rbfccsXg1M9LuC9R6ohp
+	UXx4VHunshjAFK4owXesCpWgsSEUBEiWGpgH0gA44QHI6YmJY6X1F+dvn1JAZZgiERkPlyq2s7ac1
+	sHLI405Y+NeBowtEQ+2hmcbftyiLP+M0P113NkfFo13RJO0GhJ/inw5lnvNTkB1ZkBia6P+Wb0Hjk
+	uWf/mJODSZuRSSMgHjdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2BlA-003buJ-NK; Mon, 05 Dec 2022 13:43:52 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1p2Blb-003cIy-6O; Mon, 05 Dec 2022 13:44:19 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Bk2-003alO-6x; Mon, 05 Dec 2022 13:42:43 +0000
+	id 1p2BkE-003atP-0e; Mon, 05 Dec 2022 13:42:57 +0000
 Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 5BA12FF802;
-	Mon,  5 Dec 2022 13:42:29 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id E6ABCFF808;
+	Mon,  5 Dec 2022 13:42:40 +0000 (UTC)
 From: Quentin Schulz <foss+kernel@0leil.net>
 To: Samuel Holland <samuel@sholland.org>,
 	Bastien Nocera <hadess@hadess.net>,
@@ -65,17 +65,17 @@ Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
 	linux-sunxi@lists.linux.dev,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 7/9] arm64: dts: librem5: fix touchscreen reset GPIO polarity
-Date: Mon,  5 Dec 2022 14:40:36 +0100
-Message-Id: <20221103-upstream-goodix-reset-v3-7-0975809eb183@theobroma-systems.com>
+Subject: [PATCH v3 8/9] arm64: dts: qcom: msm8998-fxtec: fix touchscreen reset GPIO polarity
+Date: Mon,  5 Dec 2022 14:40:37 +0100
+Message-Id: <20221103-upstream-goodix-reset-v3-8-0975809eb183@theobroma-systems.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
 References: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
 MIME-Version: 1.0
 X-Mailer: b4 0.10.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_054242_422275_7881A95B 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20221205_054254_249166_FCAD6B78 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,22 +99,22 @@ let's fix the polarity in the Device Tree node.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
- arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts | 2 +-
+ arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-index 6445c6b90b5bb..b038300812b1e 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-@@ -542,7 +542,7 @@ touchscreen@5d {
- 		pinctrl-0 = <&pinctrl_ts>;
- 		interrupt-parent = <&gpio3>;
- 		interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
--		reset-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
- 		irq-gpios = <&gpio3 0 GPIO_ACTIVE_HIGH>;
- 		touchscreen-size-x = <720>;
- 		touchscreen-size-y = <1440>;
+diff --git a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
+index 429ba57e20f71..8f738cade2652 100644
+--- a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
++++ b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
+@@ -249,7 +249,7 @@ touchscreen@14 {
+ 		reg = <0x14>;
+ 		interrupt-parent = <&tlmm>;
+ 		interrupts = <125 IRQ_TYPE_LEVEL_LOW>;
+-		reset-gpios = <&tlmm 89 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&tlmm 89 GPIO_ACTIVE_LOW>;
+ 		AVDD28-supply = <&vreg_l28_3p0>;
+ 		VDDIO-supply = <&ts_vio_vreg>;
+ 		pinctrl-names = "active";
 
 -- 
 b4 0.10.1
