@@ -4,105 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45372C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Dec 2022 21:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16943C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 02:23:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p+CuUcmU1d4r2g7vEQD7ANa/zoQJOdO6AUwBEn6kdOQ=; b=f+zBkLbozmwsib
-	AYBn+HrkReAs9q8UCQI4CiGjCGv0UCXmv9wVOyC2tRBKnzh76bLUSaC43Yko6K6SvZ/LwQNJCfjKe
-	YmmV4Br58R8+jBkx4ID3CrMSZDnL8inNbo9kKN0lfcyFRw3bvhdTQRBEu0r2TaKDFf78TMcuXFFZG
-	tHyPEX5FSdeIFDlpr8AP/kxMRvcdtuTY9drspLpvF4spPsVKjcLhMo0GKyUq6W5qJz09wFwX00VIn
-	XkG+eC2/SxfvrjLvDs3QbZGs6zh9pX4Ok1GPlODNQaV4mG9zBBuWpKeUdLDuIgIRg4RMa7Rlfuti0
-	0G49t5rJRVy9J6ciP5Qg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CVxlpWTukfIckOVNxLEluelUxOxCuBWfc3pIeTYMm3g=; b=A51+A89vESPaHg
+	5frm4GKZ10x8a5YYUIJ4azSgVG97M8NZOk546Ay5wJDal2vMluhzqj01RIAhMxDb4EuyJNZGHZws3
+	k2RcQipZgr1jcWuS5p3bUaJDLqZtNc86mTMGthq7zkTZjeAaay5uEGHGDL9JwHjVnYZ+K+7eAw1/g
+	/UwZ0oJkoQZBvt3XeaZew+jpMZ9asfMkEKQUNdn4V2etX75C16ZKB/GhF93yfKOMefEYKUVXGlbEt
+	kpX5poeE79f784bJYfnZXzYUSw7xTXtJ9bcAd7gNPIOj3afXBn3RFCE2Q47D32GhTTKAbvoOBGKXq
+	QgsjvAD5WVKOuN1eUjsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1wab-00BLFS-3f; Sun, 04 Dec 2022 21:31:57 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1p218G-00CZHt-2O; Mon, 05 Dec 2022 02:23:00 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1waY-00BLDe-2U
-	for linux-rockchip@lists.infradead.org; Sun, 04 Dec 2022 21:31:56 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id b16so3472774yba.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 04 Dec 2022 13:31:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lI01SEvVv3MktbLdSo/+mTT0yrIOdj+1vIgFJfDfN34=;
-        b=ihXgyprU2JPflAJxQ2hlVAlQWQi84KLxjubvaMjwbXraHSizz8TCIx4U240bsQyj7+
-         f4S620hisnyPfhiCwKcejyelzlojnRQY4jMp9A5DZ+yb6q2aq4EA73+dpm0+UL0Oxh1a
-         IYwnyg3VzbGB2nq4bXM6+FsV3LOGBHWgjtL25AWN7IG9Q1azGQhN55hwsfFxbGLKWiOD
-         f/a/T7Q/HJsAQI/owlcuy6xGaGqVr+p5wZVckWegEIRl5Ivc5Qji4Sl+FvX4zG7kVyuj
-         +sXdCe5JgrGyvJk71T09UvTiajH6J8eboYF7zb6jD/uuzxRFmOa9C/7E2gTQahmgh7lS
-         cwKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lI01SEvVv3MktbLdSo/+mTT0yrIOdj+1vIgFJfDfN34=;
-        b=FCXVBCp9vSbpYXe5MQsVbP321HeBDi5nEfetHHQ7/LuP7ic2lZedSnj7vQid4JGyZ/
-         V0t8rOax+tsxs4fKL9iPK1yUXehCrXO0uiHBONkbPf+7vu7IFmqJJ5Dcq/Uz7NxXS79R
-         xQH2vm1RcOYuJqjwR3yeeH9+ppVsVlZwCLjiK93B0a+ToB5Dto0ZTg1nT/IGraq+aIOl
-         lIjqwTG2V/ojhR9Y6cpmyoP8MIYUehA7+e9HjhjQXyHjG1RuHlh6Lkn+Yz7MtTi+w8GH
-         pumypVV/a5Et561x0/PLWoLT4XgtYhPcMVLFLURL9vzjfkz6HwHI2eJuKot6b5HjUJE7
-         fvPQ==
-X-Gm-Message-State: ANoB5pmwqaRB1qKzHuOGe6CZDsfNMVW/PGilFVphuB8N8m5nycAERhVP
-	UaeTDC+raWjtOr8lyAUm2qVzasuWMDFfTfxFd3KHRA==
-X-Google-Smtp-Source: AA0mqf6AghRoYoTD/xrAAjTRoEs/YU038ITJkX/3Vhiv+Ox9xXlJbEIBdnkIbFDPiPE2mKag2EXwUYp2ImAROIxTvOc=
-X-Received: by 2002:a25:c485:0:b0:6be:8e8d:639f with SMTP id
- u127-20020a25c485000000b006be8e8d639fmr72141889ybf.506.1670189512119; Sun, 04
- Dec 2022 13:31:52 -0800 (PST)
+	id 1p2184-00CZCc-7c; Mon, 05 Dec 2022 02:22:50 +0000
+Received: from kwepemm600017.china.huawei.com (unknown [172.30.72.56])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NQS3j1s7BzRpj3;
+	Mon,  5 Dec 2022 10:21:53 +0800 (CST)
+Received: from zelda.huawei.com (10.175.103.14) by
+ kwepemm600017.china.huawei.com (7.193.23.234) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 5 Dec 2022 10:22:39 +0800
+From: Wang Jingjin <wangjingjin1@huawei.com>
+To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
+	<tiwai@suse.com>, <heiko@sntech.de>, <sugar.zhang@rock-chips.com>,
+	<alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+CC: <wangjingjin1@huawei.com>
+Subject: [PATCH] ASoC: rockchip: spdif: Add missing clk_disable_unprepare() in rockchip_pdm_runtime_resume()
+Date: Mon, 5 Dec 2022 10:43:17 +0800
+Message-ID: <20221205024317.2422223-1-wangjingjin1@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20221130141040.32447-1-arinc.unal@arinc9.com> <20221130141040.32447-3-arinc.unal@arinc9.com>
-In-Reply-To: <20221130141040.32447-3-arinc.unal@arinc9.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 4 Dec 2022 22:31:40 +0100
-Message-ID: <CACRpkdbojTVjR2G+95YS1Xqvau9XmwTkp_KtpaeE7-+v41hgeg@mail.gmail.com>
-Subject: Re: [PATCH 2/5] arm: dts: remove label = "cpu" from DSA dt-binding
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, soc@kernel.org, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, 
-	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
-	Hans Ulli Kroll <ulli.kroll@googlemail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Stefan Agner <stefan@agner.ch>, Heiko Stuebner <heiko@sntech.de>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, 
-	Tim Harvey <tharvey@gateworks.com>, Peng Fan <peng.fan@nxp.com>, 
-	Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Frank Wunderlich <frank-w@public-files.de>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Oleksij Rempel <linux@rempel-privat.de>, 
-	netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
+X-Originating-IP: [10.175.103.14]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemm600017.china.huawei.com (7.193.23.234)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_133154_121111_DE2B93F8 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20221204_182248_479581_7E6AF02C 
+X-CRM114-Status: UNSURE (   6.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,17 +61,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBOb3YgMzAsIDIwMjIgYXQgMzoxMyBQTSBBcsSxbsOnIMOcTkFMIDxhcmluYy51bmFs
-QGFyaW5jOS5jb20+IHdyb3RlOgoKPiBUaGlzIGlzIG5vdCB1c2VkIGJ5IHRoZSBEU0EgZHQtYmlu
-ZGluZywgc28gcmVtb3ZlIGl0IGZyb20gYWxsIGRldmljZXRyZWVzLgo+Cj4gU2lnbmVkLW9mZi1i
-eTogQXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPgoKQWNrZWQtYnk6IExpbnVz
-IFdhbGxlaWogPGxpbnVzLndhbGxlaWpAbGluYXJvLm9yZz4KCllvdXJzLApMaW51cyBXYWxsZWlq
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+The clk_disable_unprepare() should be called in the error handling of
+rockchip_pdm_runtime_resume().
+
+Fixes: fc05a5b22253 ("ASoC: rockchip: add support for pdm controller")
+Signed-off-by: Wang Jingjin <wangjingjin1@huawei.com>
+---
+ sound/soc/rockchip/rockchip_pdm.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
+index a7549f827235..5b1e47bdc376 100644
+--- a/sound/soc/rockchip/rockchip_pdm.c
++++ b/sound/soc/rockchip/rockchip_pdm.c
+@@ -431,6 +431,7 @@ static int rockchip_pdm_runtime_resume(struct device *dev)
+
+ 	ret = clk_prepare_enable(pdm->hclk);
+ 	if (ret) {
++		clk_disable_unprepare(pdm->clk);
+ 		dev_err(pdm->dev, "hclock enable failed %d\n", ret);
+ 		return ret;
+ 	}
+--
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
