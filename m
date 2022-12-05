@@ -4,43 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99803C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 20:26:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE84C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 20:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uwkO+EQjKiypU3eAOreY2H4ww7xcCD37cx6qaiX+iyU=; b=3Y9XgEgGci/iT9
-	y7kmoRNKkjOJugUucgspduqFYDLYP8u9OC0r2ygxzTCfzyAMvAuhUpxqPCvbClp9JLcJpeA2CErxl
-	J/I3uI044SpmcwSy8xm2aay/Cp6JpT1o2FnpzvFk/XPEHJ8LIAyU6XacT4vuCapS7dOzYJXXludxn
-	XwK4Hkwt3Ba73bZdqdrUwQ93a/Uf3ZdmEh/TwfNz6uss/xFIJwopctasEem2QySqUQ2gerQ3waKx/
-	goLulOweMx9vue6uDIb210TeiOc/ezxtMu3i0xgaHu1iXk6AFlBauXHqajsGXPUd4VS0Xc2jZcTLH
-	cnvCOAcZ6Et40fWnomug==;
+	List-Owner; bh=p50y4xIFG1xK8FBnrdChSgdemW6UCxrgJAy4ERb7S8A=; b=Nkw3RjIBLkTUsO
+	ZOrLLiDdEoREvHtcbxj2Ao58I050+YMg793uGE/U/WyQa2H2jHsUkG6oS3DxLKRIqIYTjZ3DHUdgG
+	rP1T+xbwuuDngN9lUWws8NFjgjmx37X8WAw//Lq+o1fKmjxqr8QDaxI4SSv01QP8zTTjDbwpHJhYF
+	J2foLSSR+oY2uKFWnZn96NHTVO0Uqu+3Tu4Hk5Q/1+4EYTIzbxAtIWDklrK90Isrk29/F3sdsN/fr
+	1rchMi3QAV+rIsqUcKc8kbDIsIKiloaTR8aqxv/EmWSznGy2P5xrqMQ++P9ojTs+CMr42C+uBLMIk
+	47OoorpB7LXfUzuqSOTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2I2L-00AHKa-TA; Mon, 05 Dec 2022 20:26:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1p2IQ9-00ATdx-F8; Mon, 05 Dec 2022 20:50:37 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2I29-00AHGM-S8; Mon, 05 Dec 2022 20:25:51 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1p2I25-0006MH-6e; Mon, 05 Dec 2022 21:25:45 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jagan Teki <jagan@edgeble.ai>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>, Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v9 6/8] dt-bindings: arm: rockchip: Add Edgeble Neural Compute Module 2
-Date: Mon, 05 Dec 2022 21:25:44 +0100
-Message-ID: <21697853.EfDdHjke4D@diego>
-In-Reply-To: <20221129075424.189655-7-jagan@edgeble.ai>
-References: <20221129075424.189655-1-jagan@edgeble.ai> <20221129075424.189655-7-jagan@edgeble.ai>
+	id 1p2IQ3-00ATZr-H6; Mon, 05 Dec 2022 20:50:33 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id t17so1468417eju.1;
+        Mon, 05 Dec 2022 12:50:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GVCjiKCCl/VeQNWt8PtvAxtZLBRlpY2z5UZuNcs/Lew=;
+        b=XvJr+2rJm7JOHlq9x+fOv7NDm86bbibMxBpK63VeMD2EMqGdhu2XuWkgvVLdDR0z70
+         rNjTyDDxW9o5ErSENlsUnIfCC0WhZuejJ2yih0mLoHswCM2M58xZp+WRXrhKHNzoDC98
+         eywNrn9703v1hEHCC19pIxnm9UAOmv/ciCyk8aNqL1llwB1pwKlrAN3g0vWuCDVwec3u
+         b2oe64W6gGqXEP/w77AW1mJZUnpIQaflKXXD7S2AxRLNn+kpk5aBgHioUah3AXqYRLz0
+         Ni6YsVblS514+p5ZnwbjXWkaD6uhuoaqZS6tGC11waKPWHF6EekaoetSMeNIEbDaBvy2
+         bqLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GVCjiKCCl/VeQNWt8PtvAxtZLBRlpY2z5UZuNcs/Lew=;
+        b=7HHmtDIfYrqrXBVP5/aT1S3fhmB52cKTRSyQU9Hk9ZcLedi+FH1HfDgz7nXAA16oFd
+         lyEo3kLbt+xTCC9cqn6VNsIL1wjr4LsfFILzb5wqU/0PZFuFn2aYtGWjvUKm1hVX61wv
+         SZre35WC3hFYTDTTsnaGX89yRWrgPbZX4L2y4jrQneZomYpnec5p3SDFT4PtnB0RSfPQ
+         kMKiz1CevOo5EDfaOp14Dpru82DYg9t3Uiv/Nxnf028PlylNJyYmXmGK1B+qgfni0FT2
+         8RxFpvH74Aqe3au0e4opxh698RomyF2YvClus51i1hbvL78kDOBKx9Qg36rGa1F/1FLH
+         IANQ==
+X-Gm-Message-State: ANoB5pk/EyS+ZUwDs17t1OsT0e93LsRGsYvisqwvt8f2Lf2T1N5tHrsj
+	rzAqSZD+kscw8+/cZFZmlxM=
+X-Google-Smtp-Source: AA0mqf5OSt768BV9vzFy9k66tV39xf6Wmy4SS9KX61nTQHi4Fa5yPtn/xJX8Qo/SjgdCekjDSrIRXw==
+X-Received: by 2002:a17:906:4b4a:b0:7c0:e5cb:aad8 with SMTP id j10-20020a1709064b4a00b007c0e5cbaad8mr7371981ejv.407.1670273427580;
+        Mon, 05 Dec 2022 12:50:27 -0800 (PST)
+Received: from kista.localnet (82-149-19-102.dynamic.telemach.net. [82.149.19.102])
+        by smtp.gmail.com with ESMTPSA id g9-20020a17090670c900b0077f324979absm6580859ejk.67.2022.12.05.12.50.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Dec 2022 12:50:27 -0800 (PST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>, Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Conor Dooley <conor.dooley@microchip.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Douglas Anderson <dianders@chromium.org>, Pavel Machek <pavel@ucw.cz>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Benson Leung <bleung@chromium.org>, 
+	Guenter Roeck <groeck@chromium.org>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Michael Walle <michael@walle.cc>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, 
+	Hammer Hsieh <hammerh0314@gmail.com>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Sean Anderson <sean.anderson@seco.com>, 
+	Michal Simek <michal.simek@xilinx.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Stephen Boyd <swboyd@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, 
+	Satya Priya <quic_c_skakit@quicinc.com>, linux-pwm@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an error code
+Date: Mon, 05 Dec 2022 21:50:24 +0100
+Message-ID: <22881769.6Emhk5qWAg@kista>
+In-Reply-To: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de> <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_122549_959176_78FF9C1D 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20221205_125031_610911_2038171E 
+X-CRM114-Status: GOOD (  22.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -52,62 +110,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 29. November 2022, 08:54:22 CET schrieb Jagan Teki:
-> Neural Compute Module 2(Neu2) is a 96boards SoM-CB compute module
-> based on Rockchip RV1126 from Edgeble AI.
-> 
-> Edgeble Neural Compute Module 2(Neu2) IO board is an industrial
-> form factor evaluation board from Edgeble AI.
-> 
-> Neu2 needs to mount on top of this IO board in order to create complete
-> Edgeble Neural Compute Module 2(Neu2) IO platform.
-> 
-> Add dt-bindings for it.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+Dne sreda, 30. november 2022 ob 16:21:38 CET je Uwe Kleine-K=F6nig napisal(=
+a):
+> .get_state() might fail in some cases. To make it possible that a driver
+> signals such a failure change the prototype of .get_state() to return an
+> error code.
+> =
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+> This patch was created using coccinelle and the following semantic patch:
+> =
 
-@Daniel: do you want to pick this patch into the clocksource tree?
+> @p1@
+> identifier getstatefunc;
+> identifier driver;
+> @@
+>  struct pwm_ops driver =3D {
+>         ...,
+>         .get_state =3D getstatefunc
+>         ,...
+>  };
+> =
 
-[together with the similar rk3128 one?]
+> @p2@
+> identifier p1.getstatefunc;
+> identifier chip, pwm, state;
+> @@
+> -void
+> +int
+>  getstatefunc(struct pwm_chip *chip, struct pwm_device *pwm, struct
+> pwm_state *state) {
+>    ...
+> -  return;
+> +  return 0;
+>    ...
+>  }
+> =
 
+> plus the actual change of the prototype in include/linux/pwm.h (plus some
+> manual fixing of indentions and empty lines).
+> =
+
+> So for now all drivers return success unconditionally. They are adapted
+> in the following patches to make the changes easier reviewable.
+> =
+
+> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 > ---
-> Changes for v9, v8:
-> - none
-> Changes for v7:
-> - collect Rob Ack
-> Changes for v6:
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 244c42eaae8c..26fdd205a899 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -85,6 +85,12 @@ properties:
->            - const: chipspark,rayeager-px2
->            - const: rockchip,rk3066a
->  
-> +      - description: Edgeble Neural Compute Module 2(Neu2) SoM based boards
-> +        items:
-> +          - const: edgeble,neural-compute-module-2-io   # Edgeble Neural Compute Module 2 IO Board
-> +          - const: edgeble,neural-compute-module-2      # Edgeble Neural Compute Module 2 SoM
-> +          - const: rockchip,rv1126
+>  drivers/gpio/gpio-mvebu.c             |  9 ++++++---
+>  drivers/gpu/drm/bridge/ti-sn65dsi86.c | 14 ++++++++------
+>  drivers/leds/rgb/leds-qcom-lpg.c      | 14 ++++++++------
+>  drivers/pwm/pwm-atmel.c               |  6 ++++--
+>  drivers/pwm/pwm-bcm-iproc.c           |  8 +++++---
+>  drivers/pwm/pwm-crc.c                 | 10 ++++++----
+>  drivers/pwm/pwm-cros-ec.c             |  8 +++++---
+>  drivers/pwm/pwm-dwc.c                 |  6 ++++--
+>  drivers/pwm/pwm-hibvt.c               |  6 ++++--
+>  drivers/pwm/pwm-imx-tpm.c             |  8 +++++---
+>  drivers/pwm/pwm-imx27.c               |  8 +++++---
+>  drivers/pwm/pwm-intel-lgm.c           |  6 ++++--
+>  drivers/pwm/pwm-iqs620a.c             |  6 ++++--
+>  drivers/pwm/pwm-keembay.c             |  6 ++++--
+>  drivers/pwm/pwm-lpss.c                |  6 ++++--
+>  drivers/pwm/pwm-meson.c               |  8 +++++---
+>  drivers/pwm/pwm-mtk-disp.c            | 12 +++++++-----
+>  drivers/pwm/pwm-pca9685.c             |  8 +++++---
+>  drivers/pwm/pwm-raspberrypi-poe.c     |  8 +++++---
+>  drivers/pwm/pwm-rockchip.c            | 12 +++++++-----
+>  drivers/pwm/pwm-sifive.c              |  6 ++++--
+>  drivers/pwm/pwm-sl28cpld.c            |  8 +++++---
+>  drivers/pwm/pwm-sprd.c                |  8 +++++---
+>  drivers/pwm/pwm-stm32-lp.c            |  8 +++++---
+>  drivers/pwm/pwm-sun4i.c               | 12 +++++++-----
+>  drivers/pwm/pwm-sunplus.c             |  6 ++++--
+>  drivers/pwm/pwm-visconti.c            |  6 ++++--
+>  drivers/pwm/pwm-xilinx.c              |  8 +++++---
+>  include/linux/pwm.h                   |  4 ++--
+>  29 files changed, 146 insertions(+), 89 deletions(-)
+> =
+
+<snip>
+> diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
+> index c8445b0a3339..37d75e252d4e 100644
+> --- a/drivers/pwm/pwm-sun4i.c
+> +++ b/drivers/pwm/pwm-sun4i.c
+> @@ -108,9 +108,9 @@ static inline void sun4i_pwm_writel(struct
+> sun4i_pwm_chip *chip, writel(val, chip->base + offset);
+>  }
+> =
+
+> -static void sun4i_pwm_get_state(struct pwm_chip *chip,
+> -				struct pwm_device *pwm,
+> -				struct pwm_state *state)
+> +static int sun4i_pwm_get_state(struct pwm_chip *chip,
+> +			       struct pwm_device *pwm,
+> +			       struct pwm_state *state)
+>  {
+>  	struct sun4i_pwm_chip *sun4i_pwm =3D to_sun4i_pwm_chip(chip);
+>  	u64 clk_rate, tmp;
+> @@ -132,7 +132,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
+>  		state->duty_cycle =3D DIV_ROUND_UP_ULL(state->period, 2);
+>  		state->polarity =3D PWM_POLARITY_NORMAL;
+>  		state->enabled =3D true;
+> -		return;
+> +		return 0;
+>  	}
+> =
+
+>  	if ((PWM_REG_PRESCAL(val, pwm->hwpwm) =3D=3D PWM_PRESCAL_MASK) &&
+> @@ -142,7 +142,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
+>  		prescaler =3D prescaler_table[PWM_REG_PRESCAL(val, pwm-
+>hwpwm)];
+> =
+
+>  	if (prescaler =3D=3D 0)
+> -		return;
+> +		return 0;
+> =
+
+>  	if (val & BIT_CH(PWM_ACT_STATE, pwm->hwpwm))
+>  		state->polarity =3D PWM_POLARITY_NORMAL;
+> @@ -162,6 +162,8 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
+> =
+
+>  	tmp =3D (u64)prescaler * NSEC_PER_SEC * PWM_REG_PRD(val);
+>  	state->period =3D DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
 > +
->        - description: Elgin RV1108 R1
->          items:
->            - const: elgin,rv1108-r1
-> 
+> +	return 0;
+>  }
+> =
 
+>  static int sun4i_pwm_calculate(struct sun4i_pwm_chip *sun4i_pwm,
 
+For sun4i:
+
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+Best regards,
+Jernej
 
 
 
