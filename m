@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806FFC4708E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 17:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7DABC63703
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 17:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=62Q5xSKRr8PbDLopKE/eH/wD+dBQLK8Nq0GvwJzx8yc=; b=Mp7zhxxtWLiuVL
-	Yh1UHGUgSJvQU5knT/uwP3X1NMZftbtj5QI8rG4wQ9fSFVlC7Pd5eT5nRtcZnZ5kjqMvBpD4/UJiY
-	Ftxz4fvlJMeBLswuMPCwaBXe1oPYD9zQb7Q9fsHpdlWrp811DevbJSQZYZzNZGMc8Sod4KPQWjZ9q
-	+qxtjLX1hThtZaoSHUlQYKb7F2YA2k333X9GUzfnHr8ATqeH579ygt1WO/8+u9NUxgQEyF2DwiYBf
-	AV6rak7btzPPhoUcZWAQFlu6cdK6qrJQMhrAyHEkpsz9qdCI3BB7SieslSS+rjqN5wdMj/NwMKmLM
-	f+s/uz/ufNh+yupwI3xw==;
+	List-Owner; bh=KElea3T/Hd6M5sx6+og2t4XJy2zIuBv/aVaY1QZCMQY=; b=RSmEPuG1c8cTT5
+	nJiih85iNUW6Fsxi+KrfC0wjzWDnvg+WGmjtdqBcrTegWCLKvqflTryj8oUyszkUlSy5Ba6HwfIph
+	zrZnKkuMV5UwXLCVDpOjO/mgBX9tGuc6WMfyLIanpa/u0WQP5RWrqWgokQ9SIwhYFbekSrBzBwXSk
+	cdQXp5NoXuw/kXE2WK7Tb72EviG7kpAus96HE8n5HWtDqHVfGkVdSJfopeQJ+wkf3Obnx2W1CXLE7
+	sD6NAqsZy2cJ4DRAx9WQ9RY+x0STXNhnatfOYrOBLf71voT+X1elLi8wGkChy6ZH/s6RgyA2QVyto
+	PSLQV2AKNXCl4MhRfBbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2FCE-007NOV-If; Mon, 05 Dec 2022 17:24:02 +0000
+	id 1p2FCI-007NTI-0K; Mon, 05 Dec 2022 17:24:06 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2FCC-007NLG-EE
-	for linux-rockchip@lists.infradead.org; Mon, 05 Dec 2022 17:24:01 +0000
+	id 1p2FCE-007NOR-Vo
+	for linux-rockchip@lists.infradead.org; Mon, 05 Dec 2022 17:24:04 +0000
 Received: from jupiter.universe (dyndsl-091-096-035-193.ewe-ip-backbone.de [91.96.35.193])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B826266023A1;
-	Mon,  5 Dec 2022 17:23:54 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 90E366602BB1;
+	Mon,  5 Dec 2022 17:23:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670261034;
-	bh=qlnzhQ44iCK3pxL9XYC8nPs32bPPQp/Y7GvWZaFXzdk=;
+	s=mail; t=1670261037;
+	bh=+GuZjlBKzrkBLuJavPgoFq0bQ8UXiVQqs/RNZG6hqhk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TbF0Abxj1jmFaw9yhf7VPP9X7K0LkWxknlkfrdIjPR7q+fW0DDLOWlqSHBfdmVzJF
-	 +7HNb1SS7zL95+VKK5tk1NC5A4Y0xPoudbih0FS3WhLFepHpe4kDHGgpT233eH2r99
-	 iI26tKAqNnWytHuodjMcWMerrMCq17TNXQJHwvzresPUGB2CV7QONSzEH5vJz675hw
-	 Bu1d8FQrcVPmkwd6beT+SdsMIVmBrSWvHcWqTY2I1/T4msBvQIxtFtZDoen+uLHZI4
-	 dnV5xvO6xnzcjXR+biwEYABiSSgibDDElyTL/7S6Dvd13RjJ5fEOC87oJevOvdF0XH
-	 A+Ge4TKhXldOA==
+	b=bQvOHYCwxixap/lQhjw/XCE1nwKue3EDWkmZvaPonTn2Mc70ED8ouzcGtBGMu8LoE
+	 ZaCJmW7+FeZdl+6rn3b5uADvsvMBjxZSmHIZ4QAzjm7XSUwOr9irY24w4jipkqr7Rg
+	 QyQ+aX+oVewCXhiem+u0k17scoaRcc3V3Sq4sU4P1bFA5B9m4Z+1jVMA0y/kKxkiKi
+	 kZebEK7K6hZYvpCcPyUWKhxJ+GphkmbhzayjBIknn7u6CtDlsxseGipcyE8BJCWSaC
+	 YetSQpZhXj+Um4VG+FHgAErkSsZnE8d5ER8vRdjJ9SlSTcpR+1G+NIp5Tp6exQxSA0
+	 L+I9RO51sjipw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6B419480108; Mon,  5 Dec 2022 18:23:52 +0100 (CET)
+	id 7AE4248011E; Mon,  5 Dec 2022 18:23:52 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -56,18 +56,17 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCHv5 1/7] dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
-Date: Mon,  5 Dec 2022 18:23:44 +0100
-Message-Id: <20221205172350.75234-2-sebastian.reichel@collabora.com>
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCHv5 6/7] arm64: dts: rockchip: Add rock-5a board
+Date: Mon,  5 Dec 2022 18:23:49 +0100
+Message-Id: <20221205172350.75234-7-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221205172350.75234-1-sebastian.reichel@collabora.com>
 References: <20221205172350.75234-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_092400_663876_B187B0C2 
-X-CRM114-Status: UNSURE (   7.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221205_092403_176683_0E5D401A 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +83,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add IOC and PHP GRF syscon compatibles for RK3588.
+Add board file for the RK3588s Rock 5A board. While the hardware
+offers plenty of peripherals and connectivity this basic implementation
+just handles things required to access eMMC, UART and Ethernet (i.e.
+enough to successfully boot Linux).
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
+Tested-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 73 +++++++++++++++++++
+ 2 files changed, 74 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 2ed8cca79b59..e682b407a383 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -20,6 +20,11 @@ properties:
-               - rockchip,rk3568-pipe-grf
-               - rockchip,rk3568-pipe-phy-grf
-               - rockchip,rk3568-usb2phy-grf
-+              - rockchip,rk3588-bigcore0-grf
-+              - rockchip,rk3588-bigcore1-grf
-+              - rockchip,rk3588-ioc
-+              - rockchip,rk3588-php-grf
-+              - rockchip,rk3588-sys-grf
-               - rockchip,rk3588-pcie3-phy-grf
-               - rockchip,rk3588-pcie3-pipe-grf
-               - rockchip,rv1108-usbgrf
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 12ed53de11eb..31fa55750a0f 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -73,3 +73,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+new file mode 100644
+index 000000000000..70db09230ec6
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -0,0 +1,73 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include "rk3588s.dtsi"
++
++/ {
++	model = "Radxa Rock 5A Board";
++	compatible = "radxa,rock-5a", "rockchip,rk3588s";
++
++	aliases {
++		mmc1 = &sdhci;
++		serial2 = &uart2;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++};
++
++&gmac1 {
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii-rxid";
++	pinctrl-0 = <&gmac1_miim
++		     &gmac1_tx_bus2
++		     &gmac1_rx_bus2
++		     &gmac1_rgmii_clk
++		     &gmac1_rgmii_bus>;
++	pinctrl-names = "default";
++	tx_delay = <0x3a>;
++	status = "okay";
++};
++
++&mdio1 {
++	rgmii_phy1: ethernet-phy@1 {
++		/* RTL8211F */
++		compatible = "ethernet-phy-id001c.c916";
++		reg = <0x1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rtl8211f_rst>;
++		reset-assert-us = <20000>;
++		reset-deassert-us = <100000>;
++		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&pinctrl {
++	rtl8211f {
++		rtl8211f_rst: rtl8211f-rst {
++			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
 -- 
 2.38.1
 
