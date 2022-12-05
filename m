@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B492FC4708D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 13:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3738EC4321E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 13:41:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0EXMCju8hva8iwRXpr9+KecuC2eHaNwdkJa+W+ki3I4=; b=xVP5K/1cwBpG7t
-	jXraN8A4zhBXNjMZcpQMSGAy7MgWT1L50lF4d9WyRm13ipxn11M6GnfbpR3AvPloEAXlnJCWZi1KU
-	ESnEAwWJ5vkyIvC1DDloDlS6jkvh44Z/EU+kK5xyDg2HivEXGHIXSSxVSCioWy3cqMEiqc9h5MM7B
-	6yaL38Y8U3qB84RNXHmYf0NRdAeDTu72H7XIfDog1XRw/+1Ej4g7/1QHc8s1Pn9ePKjj1zj/nmU/m
-	n2eQgNGee1tSkUzAQFiNTSjAFgdpGxDeSMcs57HiZzfiBzaBGQeKRGMgWEYMPsAgkKneT+Pelv1Ne
-	eby7EcPwPVW+f1RPJ9Ow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=I7qXQJcm/ffU8Jl5b5rAkmDDFu3D510ycC50KpOViqs=; b=QfeU7DsRdD0EMf
+	kxPXS1EPTaOZ2iAOSzuRb61uEIqs+a8mpTqhjBqgHUcHSDiZQi+HnfRrQoSc13i7NCopeiC8Hhhfl
+	Xh+pC84ma81qu9oqRHd6gxx7GG81xfbC32mxoJXxWHjLWPW6O2mUP6rvG3svUviD4TXdW6K4Z5BPQ
+	Rj7iCJUZXHCz56y+v+Y+BKE8f/ixB/wFfYJjLqrRn3XweXz+WtiaACf3lxBitRNtvf8bV3ax+Gbrp
+	WvqnZSKHb7BsTabWceAHV8ZGfRSBQbGcjqtrx3oAWicxN/xhDh+5IvL4lG08+EDhjNkGhObWlLb4w
+	2dRnltMUkKq0IVtEx5DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Bih-003ZU9-5W; Mon, 05 Dec 2022 13:41:19 +0000
+	id 1p2Biq-003ZZn-Lm; Mon, 05 Dec 2022 13:41:28 +0000
 Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2BiU-003ZNb-Rp; Mon, 05 Dec 2022 13:41:09 +0000
+	id 1p2Bid-003ZS9-Lb; Mon, 05 Dec 2022 13:41:17 +0000
 Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 0ED2BFF807;
-	Mon,  5 Dec 2022 13:40:47 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id 3D32DFF802;
+	Mon,  5 Dec 2022 13:41:00 +0000 (UTC)
 From: Quentin Schulz <foss+kernel@0leil.net>
 To: Samuel Holland <samuel@sholland.org>,
 	Bastien Nocera <hadess@hadess.net>,
@@ -65,15 +65,17 @@ Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
 	linux-sunxi@lists.linux.dev,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 0/9] fix reset line polarity for Goodix touchscreen controllers
-Date: Mon,  5 Dec 2022 14:40:29 +0100
-Message-Id: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
+Subject: [PATCH v3 1/9] Input: goodix - add macro for gpio mapping
+Date: Mon,  5 Dec 2022 14:40:30 +0100
+Message-Id: <20221103-upstream-goodix-reset-v3-1-0975809eb183@theobroma-systems.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
+References: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
 MIME-Version: 1.0
 X-Mailer: b4 0.10.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_054107_224115_F67DB7BA 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20221205_054115_987311_A7A6E0EB 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,119 +87,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QHRoZW9icm9tYS1zeXN0ZW1zLmNv
-bT4KClRoZSBHb29kaXggdG91Y2hzY3JlZW4gY29udHJvbGxlciBoYXMgYSByZXNldCBsaW5lIGFj
-dGl2ZSBsb3cuIEl0IGhhcHBlbnMgdG8KYWxzbyBiZSB1c2VkIHRvIGNvbmZpZ3VyZSBpdHMgaTJj
-IGFkZHJlc3MgYXQgcnVudGltZS4gSWYgdGhlIHJlc2V0IGxpbmUgaXMKaW5jb3JyZWN0bHkgYXNz
-ZXJ0ZWQsIHRoZSBhZGRyZXNzIHdpbGwgYmUgd3JvbmdseSBjb25maWd1cmVkLiBUaGlzIGNvc3Qg
-bWUgYSBmZXcKaG91cnMsIHRyeWluZyB0byBmaWd1cmUgb3V0IHdoeSB0aGUgdG91Y2hzY3JlZW4g
-d291bGRuJ3Qgd29yay4KClRoZSBkcml2ZXIgaXMgImFzc2VydGluZyIgdGhpcyByZXNldCBHUElP
-IGJ5IHNldHRpbmcgaXRzIG91dHB1dCB0byAwLCBwcm9iYWJseQp0byByZWZsZWN0IHRoZSBwaHlz
-aWNhbCBzdGF0ZSBvZiB0aGUgbGluZS4gSG93ZXZlciwgdGhpcyByZWxpZXMgb24gdGhlIGZhY3Qg
-dGhhdAp0aGUgRGV2aWNlIFRyZWUgbm9kZSBzZXR0aW5nIHRoZSByZXNldCBsaW5lIHBvbGFyaXR5
-IHRvIGFjdGl2ZSBoaWdoLCB3aGljaCBpcwppbmNvcnJlY3Qgc2luY2UgdGhlIHJlc2V0IGlzIGFj
-dGl2ZSBsb3cgaW4gaGFyZHdhcmUuCgpUbyBmaXggdGhpcyBpbmNvbnNpc3RlbmN5LCB0aGUgcG9s
-YXJpdHkgaXMgaW52ZXJ0ZWQgdG8gbm90IGNvbmZ1c2UgdGhlIHVzZXIKYWJvdXQgdGhlIHJlc2V0
-IGxpbmUgcG9sYXJpdHkuIFRoaXMgb2J2aW91c2x5IHJlcXVpcmVzIHRvIGZpeCB0aGUgRFQgc2lu
-Y2UgbW9zdAp1c2VycyBoYWQgdGhlICJpbmNvcnJlY3QiIHZhbHVlIGluIHRoZXJlLCBpdCBuZWVk
-cyB0byBiZSBpbnZlcnRlZC4KTm90ZSB0aGF0IHRoZSB2MiBoaWdobGlnaHRlZCB0aGF0IEkgd2Fz
-IG5vdCB0aGUgb25seSBvbmUgdGhhdCBnb3QgY29uZnVzZWQgc2luY2UKUFJUOE1NIGJvYXJkIGhh
-cyB0aGUgImNvcnJlY3QiIEhXIHJlcHJlc2VudGF0aW9uIGZvciB0aGlzIGxpbmUgaW4gRFQgKHdo
-aWNoIGRvZXMKbm90IG1hdGNoIHdoYXQgdGhlIGRyaXZlciB3YXMgZXhwZWN0aW5nKS4KClRoaXMg
-aXMgbWFya2VkIGFzIFJGQyBiZWNhdXNlIEkgY2FuIG5laXRoZXIgdGVzdCBBQ1BJIHN1cHBvcnQg
-bm9yIGJvYXJkcyBJIGRvbid0Cm93bi4gUGxlYXNlIHRlc3Qgb24gdGhlIGJvYXJkcyB5b3UgaGF2
-ZSB0aGF0IGFyZSBpbXBhY3RlZCBieSB0aGlzIHBhdGNoc2V0IGFuZApnaXZlIHlvdXIgVGVzdGVk
-LUJ5LgpEbyB3ZSBhbHNvIG1ha2UgdGhpcyBwYXRjaCBzZXJpZXMgb25seSBvbmUgcGF0Y2hzZXQg
-c2luY2UgdGhlIERUIHBhdGNoZXMgZGVwZW5kCm9uIHRoZSBkcml2ZXIgcGF0Y2ggYW5kIHZpY2Ut
-dmVyc2E/IEluIHdoaWNoIHRyZWUgd291bGQgdGhpcyBnbz8KClRoYW5rcywKUXVlbnRpbgoKVG86
-IEJhc3RpZW4gTm9jZXJhIDxoYWRlc3NAaGFkZXNzLm5ldD4KVG86IEhhbnMgZGUgR29lZGUgPGhk
-ZWdvZWRlQHJlZGhhdC5jb20+ClRvOiBEbWl0cnkgVG9yb2tob3YgPGRtaXRyeS50b3Jva2hvdkBn
-bWFpbC5jb20+ClRvOiBSb2IgSGVycmluZyA8cm9iaCtkdEBrZXJuZWwub3JnPgpUbzogS3J6eXN6
-dG9mIEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraStkdEBsaW5hcm8ub3JnPgpUbzogU2hh
-d24gR3VvIDxzaGF3bmd1b0BrZXJuZWwub3JnPgpUbzogU2FzY2hhIEhhdWVyIDxzLmhhdWVyQHBl
-bmd1dHJvbml4LmRlPgpUbzogUGVuZ3V0cm9uaXggS2VybmVsIFRlYW0gPGtlcm5lbEBwZW5ndXRy
-b25peC5kZT4KVG86IEZhYmlvIEVzdGV2YW0gPGZlc3RldmFtQGdtYWlsLmNvbT4KVG86IE5YUCBM
-aW51eCBUZWFtIDxsaW51eC1pbXhAbnhwLmNvbT4KVG86IENoZW4tWXUgVHNhaSA8d2Vuc0Bjc2ll
-Lm9yZz4KVG86IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+ClRvOiBT
-YW11ZWwgSG9sbGFuZCA8c2FtdWVsQHNob2xsYW5kLm9yZz4KVG86IEFuZHkgR3Jvc3MgPGFncm9z
-c0BrZXJuZWwub3JnPgpUbzogQmpvcm4gQW5kZXJzc29uIDxhbmRlcnNzb25Aa2VybmVsLm9yZz4K
-VG86IEtvbnJhZCBEeWJjaW8gPGtvbnJhZC5keWJjaW9Ac29tYWlubGluZS5vcmc+ClRvOiBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpUbzogRGF2aWQgSmFuZGVyIDxkYXZpZEBwcm90
-b25pYy5ubD4KVG86IEFuZ3VzIEFpbnNsaWUgPGFuZ3VzQGFra2VhLmNhPgpUbzogUGV0ZXIgR2Vp
-cyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KVG86IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNj
-aEB3b2xmdmlzaW9uLm5ldD4KVG86IEtvbnJhZCBEeWJjaW8gPGtvbnJhZC5keWJjaW9Ac29tYWlu
-bGluZS5vcmc+ClRvOiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGlu
-by5kZWxyZWdub0Bzb21haW5saW5lLm9yZz4KVG86IEd1aWRvIEfDvG50aGVyIDxhZ3hAc2lneGNw
-dS5vcmc+ClRvOiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KVG86IE9u
-ZHJlaiBKaXJtYW4gPG1lZ291c0BtZWdvdXMuY29tPgpUbzogSWNlbm93eSBaaGVuZyA8aWNlbm93
-eUBhb3NjLmlvPgpUbzogQWxla3NlaSBNYW1saW4gPG1hbWxpbmF2QGdtYWlsLmNvbT4KVG86IEx1
-a2FzeiBNYWpld3NraSA8bHVrbWFAZGVueC5kZT4KVG86IEZyaWVkZXIgU2NocmVtcGYgPGZyaWVk
-ZXIuc2NocmVtcGZAa29udHJvbi5kZT4KQ2M6IGxpbnV4LWlucHV0QHZnZXIua2VybmVsLm9yZwpD
-YzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwpDYzogZGV2aWNldHJlZUB2Z2VyLmtlcm5l
-bC5vcmcKQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgt
-c3VueGlAbGlzdHMubGludXguZGV2CkNjOiBsaW51eC1hcm0tbXNtQHZnZXIua2VybmVsLm9yZwpD
-YzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpTaWduZWQtb2ZmLWJ5OiBRdWVu
-dGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAdGhlb2Jyb21hLXN5c3RlbXMuY29tPgotLS0KQ2hh
-bmdlcyBpbiB2MzoKLSBDYydpbmcgcGVvcGxlIHdobyBjb250cmlidXRlZCB0byBEVFMgb2YgaW1w
-YWN0ZWQgYm9hcmRzLAotIHJlbW92ZWQgUFJUOE1NIERUUyBjaGFuZ2Ugc2luY2UgaXQncyBiZWVu
-IHJlcG9ydGVkIHRoZSBwb2xhcml0eSBpcyBhY3R1YWxseQogIGNvcnJlY3QgKGdvZXMgdGhyb3Vn
-aCBhbiBpbnZlcnRlciksIGtlZXBpbmcgdGhlIGFwcHJvcHJpYXRlIGZvbGtzIGluIENjIHRob3Vn
-aAogIHNpbmNlIGl0J2QgYmUgYSBnb29kIGlkZWEgdG8gY2hlY2sgdGhpcyBwYXRjaCBzZXJpZXMg
-YW55d2F5cywKLSBhZGRlZCBBQ1BJX0dQSU9fUVVJUktfTk9fSU9fUkVTVFJJQ1RJT04gdG8gYWNw
-aV9ncGlvX21hcHBpbmcgcXVpcmtzIHRvIG1ha2UKICBncGlvbGliLWFjcGkgY29yZSByZXNwZWN0
-IEdQSU9EX0FTSVMgZmxhZyBpbiBncGlvZF9nZXQsCi0gY2hlY2tlZCBzY2hlbWF0aWNzIG9mOgog
-IC0gcGluZXBob25lOiBodHRwczovL2ZpbGVzLnBpbmU2NC5vcmcvZG9jL1BpbmVQaG9uZS9QaW5l
-UGhvbmUlMjB2MS4yJTIwUmVsZWFzZWQlMjBTY2hlbWF0aWMucGRmCiAgLSBwaW5ldGFiOiBodHRw
-czovL2ZpbGVzLnBpbmU2NC5vcmcvZG9jL1BpbmVUYWIvUGluZVRhYiUyMFNjaGVtYXRpYyUyMHYx
-LjItMjAxOTExMjUucGRmCiAgLSBweDMwIGV2YjogaHR0cHM6Ly9vcGVuc291cmNlLnJvY2stY2hp
-cHMuY29tL2ltYWdlcy9kL2RiL1B4MzBfbWluaV9ldmJfdjEwXzIwMTgwNTI4LnBkZgogIC0gcm9j
-a3BybzY0OiBodHRwczovL2ZpbGVzLnBpbmU2NC5vcmcvZG9jL3JvY2twcm82NC9yb2NrcHJvNjRf
-djIxLVNDSC5wZGYKICAtIGxpYnJlbTUgZGV2a2l0OiBodHRwczovL3NvdXJjZS5wdXJpLnNtL0xp
-YnJlbTUvZHZrLW14OG0tYnNiL2Jsb2IvbWFzdGVyL2R2ay1teDhtLWJzYi5wZGYKCiAgQWxsIHNl
-ZW1zIHRvIGJlIGRpcmVjdGx5IGNvbm5lY3RlZCB0byB0aGUgR1BJTyBvbiB0aGUgU29DIHNpZGUs
-IHdpdGhvdXQgYW4KICBpbnZlcnRlciBvbiB0aGUgbGluZS4KLSBMaW5rIHRvIHYyOiBodHRwczov
-L2xvcmUua2VybmVsLm9yZy9yLzIwMjIxMTAzLXVwc3RyZWFtLWdvb2RpeC1yZXNldC12Mi0wLTJj
-MzhmYjAzYTMwMEB0aGVvYnJvbWEtc3lzdGVtcy5jb20KCkNoYW5nZXMgaW4gdjI6Ci0gaW1wbGVt
-ZW50ZWQgQUNQSSBzdXBwb3J0IGFzIHN1Z2dlc3RlZCBieSBIYW5zLAotIHJlbW92ZWQgUWNvbSBT
-QzcxODAgVHJvZ2Rvci1iYXNlZCBkZXZpY2VzIGNoYW5nZXMgYXMgdGhleSBhcmUgbm90IHVzaW5n
-IHRoaXMgR29vZGl4IGRyaXZlciwKLSBhZGRlZCBjb21tZW50IG9uIGhvdyB0byByZWFkIGdwaW9k
-X3JlcXVlc3Rfb3V0cHV0IGFuZCB0aGUgR1BJTyBEVCBwb2xhcml0eSwKLSBMaW5rIHRvIHYxOiBo
-dHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjIxMTAzLXVwc3RyZWFtLWdvb2RpeC1yZXNldC12
-MS0wLTg3YjQ5YWU1ODlmMUB0aGVvYnJvbWEtc3lzdGVtcy5jb20KCi0tLQpRdWVudGluIFNjaHVs
-eiAoOSk6CiAgICAgIElucHV0OiBnb29kaXggLSBhZGQgbWFjcm8gZm9yIGdwaW8gbWFwcGluZwog
-ICAgICBJbnB1dDogZ29vZGl4IC0gbWFrZSBncGlvZF9nZXQgaG9ub3IgR1BJT0RfQVNJUwogICAg
-ICBJbnB1dDogZ29vZGl4IC0gZml4IHJlc2V0IHBvbGFyaXR5CiAgICAgIEFSTTogZHRzOiBpbXg6
-IGZpeCB0b3VjaHNjcmVlbiByZXNldCBHUElPIHBvbGFyaXR5CiAgICAgIEFSTTogZHRzOiBzdW54
-aTogZml4IHRvdWNoc2NyZWVuIHJlc2V0IEdQSU8gcG9sYXJpdHkgb24gV2V4bGVyIFRBQjcyMDAg
-dGFibGV0CiAgICAgIGFybTY0OiBkdHM6IGFsbHdpbm5lcjogZml4IHRvdWNoc2NyZWVuIHJlc2V0
-IEdQSU8gcG9sYXJpdHkKICAgICAgYXJtNjQ6IGR0czogbGlicmVtNTogZml4IHRvdWNoc2NyZWVu
-IHJlc2V0IEdQSU8gcG9sYXJpdHkKICAgICAgYXJtNjQ6IGR0czogcWNvbTogbXNtODk5OC1meHRl
-YzogZml4IHRvdWNoc2NyZWVuIHJlc2V0IEdQSU8gcG9sYXJpdHkKICAgICAgYXJtNjQ6IGR0czog
-cm9ja2NoaXA6IGZpeCB0b3VjaHNjcmVlbiByZXNldCBHUElPIHBvbGFyaXR5CgogYXJjaC9hcm0v
-Ym9vdC9kdHMvaW14NnEta3AuZHRzaSAgICAgICAgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9h
-cm0vYm9vdC9kdHMvaW14NnVsLWtvbnRyb24tYmwtNDMuZHRzICAgICAgICAgfCAgMiArLQogYXJj
-aC9hcm0vYm9vdC9kdHMvc3VuN2ktYTIwLXdleGxlci10YWI3MjAwLmR0cyAgICAgfCAgMiArLQog
-Li4uL2R0cy9hbGx3aW5uZXIvc3VuNTBpLWE2NC1hbWFydWxhLXJlbGljLmR0cyAgICAgfCAgMiAr
-LQogLi4uL2FsbHdpbm5lci9zdW41MGktYTY0LW9jZWFuaWMtNTIwNS01aW5tZmQuZHRzICAgfCAg
-MiArLQogLi4uL2Jvb3QvZHRzL2FsbHdpbm5lci9zdW41MGktYTY0LXBpbmVwaG9uZS5kdHNpICAg
-fCAgMiArLQogLi4uL2Jvb3QvZHRzL2FsbHdpbm5lci9zdW41MGktYTY0LXBpbmV0YWIuZHRzICAg
-ICAgfCAgMiArLQogLi4uL2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtbGlicmVtNS1kZXZraXQu
-ZHRzICAgfCAgMiArLQogYXJjaC9hcm02NC9ib290L2R0cy9xY29tL21zbTg5OTgtZnh0ZWMtcHJv
-MS5kdHMgICAgfCAgMiArLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLWV2Yi5k
-dHMgICAgICAgICAgfCAgMiArLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
-cm9ja3BybzY0LmR0c2kgfCAgMiArLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-NjgtZXZiMS12MTAuZHRzICAgfCAgMiArLQogZHJpdmVycy9pbnB1dC90b3VjaHNjcmVlbi9nb29k
-aXguYyAgICAgICAgICAgICAgICAgfCA1NCArKysrKysrKysrKysrKysrKystLS0tCiAxMyBmaWxl
-cyBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspLCAyMiBkZWxldGlvbnMoLSkKLS0tCmJhc2UtY29t
-bWl0OiA3NmRjZDczNGVjYTIzMTY4Y2IwMDg5MTJjMGY2OWZmNDA4OTA1MjM1CmNoYW5nZS1pZDog
-MjAyMjExMDMtdXBzdHJlYW0tZ29vZGl4LXJlc2V0LWFhMWM2NTk5NGY1NwoKQmVzdCByZWdhcmRz
-LAotLSAKUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QHRoZW9icm9tYS1zeXN0ZW1zLmNv
-bT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+
+To prepare for the quirks member to be set for all pins, which would
+make the line longer than allowed, let's move all mappings into a macro.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+---
+ drivers/input/touchscreen/goodix.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/input/touchscreen/goodix.c b/drivers/input/touchscreen/goodix.c
+index c281e49826c23..d73d4272a8ea5 100644
+--- a/drivers/input/touchscreen/goodix.c
++++ b/drivers/input/touchscreen/goodix.c
+@@ -797,23 +797,31 @@ static int goodix_reset(struct goodix_ts_data *ts)
+ }
+ 
+ #ifdef ACPI_GPIO_SUPPORT
++
++#define GOODIX_GPIO_MAPPING(_name, _params, _size) \
++	{ \
++		.name = _name, \
++		.data = _params, \
++		.size = _size, \
++	}
++
+ static const struct acpi_gpio_params first_gpio = { 0, 0, false };
+ static const struct acpi_gpio_params second_gpio = { 1, 0, false };
+ 
+ static const struct acpi_gpio_mapping acpi_goodix_int_first_gpios[] = {
+-	{ GOODIX_GPIO_INT_NAME "-gpios", &first_gpio, 1 },
+-	{ GOODIX_GPIO_RST_NAME "-gpios", &second_gpio, 1 },
++	GOODIX_GPIO_MAPPING(GOODIX_GPIO_INT_NAME "-gpios", &first_gpio, 1),
++	GOODIX_GPIO_MAPPING(GOODIX_GPIO_RST_NAME "-gpios", &second_gpio, 1),
+ 	{ },
+ };
+ 
+ static const struct acpi_gpio_mapping acpi_goodix_int_last_gpios[] = {
+-	{ GOODIX_GPIO_RST_NAME "-gpios", &first_gpio, 1 },
+-	{ GOODIX_GPIO_INT_NAME "-gpios", &second_gpio, 1 },
++	GOODIX_GPIO_MAPPING(GOODIX_GPIO_RST_NAME "-gpios", &first_gpio, 1),
++	GOODIX_GPIO_MAPPING(GOODIX_GPIO_INT_NAME "-gpios", &second_gpio, 1),
+ 	{ },
+ };
+ 
+ static const struct acpi_gpio_mapping acpi_goodix_reset_only_gpios[] = {
+-	{ GOODIX_GPIO_RST_NAME "-gpios", &first_gpio, 1 },
++	GOODIX_GPIO_MAPPING(GOODIX_GPIO_RST_NAME "-gpios", &first_gpio, 1),
+ 	{ },
+ };
+ 
+
+-- 
+b4 0.10.1
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
