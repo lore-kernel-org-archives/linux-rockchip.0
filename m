@@ -4,51 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E9DC4321E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 03:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84104C4321E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Dec 2022 06:20:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CVxlpWTukfIckOVNxLEluelUxOxCuBWfc3pIeTYMm3g=; b=w/JJzlTqn07Rm5
-	KrwoVEnPF12E/DS3Cl9mDaShwlQasPvLsk3FuZTNUTg/BSL6yI/haa26n6KPiHT7a/GWKzlkN0flG
-	BOdjQhGr5mXZdvJFvU8ktTCpwFwRePD1LJVetXlbHersYzjafx3RArQ+WLDn0G7jKWKarZcMCTDah
-	hli3EwOgWYfir90pnZ/C4+hOptVUiI+O+SLqr1QcdRoKRrzfHRutgRjKtaLvEdsv2QPl3s5JKWPtO
-	PjqRLGZmJJ+4LMKOXohY6N7qtreThtJ/Cugaj4NRiavqyj1lEm2tI7uMSXwrXRDbilRSKg4MOV9Mb
-	lVG7tyKgj6XNRVUM0QXQ==;
+	List-Owner; bh=YQSlRX6pv2XuNO9OqMY1xrgFiJWFDRiTjnuPBsQu1YQ=; b=lcXiwvx7B3vRls
+	4UgmvNCaL52ZapTXjSPXVYcPD7EWvz085PkMVepIENsyEjbxEjtvwx1GzKsYP0MpkGiGEQ499Vudp
+	5l6vF6HCkGDMPa4xSrIaI31zp3dtNDx+AylzkqXlBABF5ZO61apZL7ZyLRoUw3cMzHqaSZJdwEjva
+	E7Xz2HcbSHUPC2ggno7Nny1ZamL7rWsl3qW4axpFh69/BnAjwBxC9iIOaHNt83V5MW0Nrpfr36Kmy
+	HXi8BWnBE4y6ldnab6hg/Gqs++30/XU5hIz4fst1Lk4ABh6KSFJ1d2bAeMCL8bGg4ZFUu7ujhRDTJ
+	lqcHscY/9CSrj8ybIPFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p21pN-00CvoR-58; Mon, 05 Dec 2022 03:07:33 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1p24q0-00EWKv-CM; Mon, 05 Dec 2022 06:20:24 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p21pB-00CvlS-OD; Mon, 05 Dec 2022 03:07:23 +0000
-Received: from kwepemm600017.china.huawei.com (unknown [172.30.72.54])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4NQSzD5n1WzqStT;
-	Mon,  5 Dec 2022 11:03:04 +0800 (CST)
-Received: from zelda.huawei.com (10.175.103.14) by
- kwepemm600017.china.huawei.com (7.193.23.234) with Microsoft SMTP Server
+	id 1p24pp-00EWE6-Tc; Mon, 05 Dec 2022 06:20:15 +0000
+Received: from canpemm500010.china.huawei.com (unknown [172.30.72.55])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NQYKZ2tS5zRpjg;
+	Mon,  5 Dec 2022 14:19:14 +0800 (CST)
+Received: from localhost.localdomain (10.175.112.70) by
+ canpemm500010.china.huawei.com (7.192.105.118) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Mon, 5 Dec 2022 11:07:11 +0800
-From: Wang Jingjin <wangjingjin1@huawei.com>
-To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
-	<tiwai@suse.com>, <heiko@sntech.de>, <sugar.zhang@rock-chips.com>,
-	<alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-CC: <wangjingjin1@huawei.com>
-Subject: [PATCH] ASoC: rockchip: pdm: Add missing clk_disable_unprepare() in rockchip_pdm_runtime_resume()
-Date: Mon, 5 Dec 2022 11:28:02 +0800
-Message-ID: <20221205032802.2422983-1-wangjingjin1@huawei.com>
-X-Mailer: git-send-email 2.25.1
+ 15.1.2375.31; Mon, 5 Dec 2022 14:20:01 +0800
+From: Wang Yufen <wangyufen@huawei.com>
+To: <linus.walleij@linaro.org>, <brgl@bgdev.pl>, <heiko@sntech.de>
+CC: <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, Wang Yufen <wangyufen@huawei.com>
+Subject: [PATCH] gpio/rockchip: fix refcount leak in rockchip_gpiolib_register()
+Date: Mon, 5 Dec 2022 14:19:56 +0800
+Message-ID: <1670221196-36806-1-git-send-email-wangyufen@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-X-Originating-IP: [10.175.103.14]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- kwepemm600017.china.huawei.com (7.193.23.234)
+X-Originating-IP: [10.175.112.70]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ canpemm500010.china.huawei.com (7.192.105.118)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_190721_968471_3B92E853 
-X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-CacheID: sfid-20221204_222014_169418_04C213EA 
+X-CRM114-Status: UNSURE (   8.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,29 +64,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clk_disable_unprepare() should be called in the error handling of
-rockchip_pdm_runtime_resume().
+The node returned by of_get_parent() with refcount incremented,
+of_node_put() needs be called when finish using it. So add it in the
+end of of_pinctrl_get().
 
-Fixes: fc05a5b22253 ("ASoC: rockchip: add support for pdm controller")
-Signed-off-by: Wang Jingjin <wangjingjin1@huawei.com>
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Signed-off-by: Wang Yufen <wangyufen@huawei.com>
 ---
- sound/soc/rockchip/rockchip_pdm.c | 1 +
+ drivers/gpio/gpio-rockchip.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index a7549f827235..5b1e47bdc376 100644
---- a/sound/soc/rockchip/rockchip_pdm.c
-+++ b/sound/soc/rockchip/rockchip_pdm.c
-@@ -431,6 +431,7 @@ static int rockchip_pdm_runtime_resume(struct device *dev)
-
- 	ret = clk_prepare_enable(pdm->hclk);
- 	if (ret) {
-+		clk_disable_unprepare(pdm->clk);
- 		dev_err(pdm->dev, "hclock enable failed %d\n", ret);
- 		return ret;
- 	}
---
-2.25.1
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 870910b..200e43a 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -610,6 +610,7 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 			return -ENODATA;
+ 
+ 		pctldev = of_pinctrl_get(pctlnp);
++		of_node_put(pctlnp);
+ 		if (!pctldev)
+ 			return -ENODEV;
+ 
+-- 
+1.8.3.1
 
 
 _______________________________________________
