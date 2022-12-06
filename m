@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 282CCC3A5A7
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 08:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C31DC3A5A7
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 09:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D8AEVOINLnl6VprOfhGNGcvOaXeQhDeN6DlvgcsRE6k=; b=C4Q5/GwqpF3uCH
-	HWtZXKWa9nydGiKzEEFrDbRs6uEc3l25JNKWArgDHoOjPIjN6bfrana2HDZwbSoyAeLwZRdWW5Msm
-	Z2Q/m6oPuq1YTkGn8yJCNF62KKGxXqDzQkMsQdumc3QBn1Z5YoFLG/zUO23MRK8InhSmMxkNtJu+C
-	mHg9c2vRmGjkhJWCHTjljiuEEkLnGEyVdRwjlkQGI4oH7imH/MTgNYnujqAjnGJlGQ1u4qLj+J/7s
-	8RbIkKdITcbTXah2FC3r0YJtVUGBLBQZ/074nGFUxIbnnN5k6sGEqpqG7SmUNEEzbLSOsLcZqiyS7
-	0ohjOLr0faVQRh8rastw==;
+	List-Owner; bh=EsIXaW/YcW48bETiHt14FxulXzDdQtkKrRUwGfNURvQ=; b=tL8xxQLf/SvyJh
+	UZj6+XL313uBdMtA9lwI8gUsB+K/w5V5aAH0eYmu1wBpapDucm6MuUh2Rttd992i98c76+PWoHcSC
+	MErkJ5MGyd/XTt8q/YkDM3f3B6TPx8PQtPQt8lTRWFzahYiN3XA+8MZw+QtOsSsYQ5ZAetgmBQmJr
+	61j8QUjW3tiNqPBbjflS4YFO9M0W7M8IXGmFWP26njZcJVV4ihISXCH2nf2QKwssZ9ItN0+fWbNqd
+	F4715KlzcwF54WNvqa3cxcds/BuW/bBCkAkoTNuSfuYwqSMmFKMez6Q6UDuTeW/yzUOrkMHErKpjD
+	1n9ugL1KThLe1wUTJrbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2T2H-004Sac-Km; Tue, 06 Dec 2022 08:10:41 +0000
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+	id 1p2U01-005avp-5l; Tue, 06 Dec 2022 09:12:25 +0000
+Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2T25-004SR5-BC; Tue, 06 Dec 2022 08:10:31 +0000
-Received: by mail-ua1-x935.google.com with SMTP id 97so4748564uam.0;
-        Tue, 06 Dec 2022 00:10:27 -0800 (PST)
+	id 1p2Tzq-005an7-UF
+	for linux-rockchip@lists.infradead.org; Tue, 06 Dec 2022 09:12:16 +0000
+Received: by mail-vs1-xe2b.google.com with SMTP id 3so12724738vsq.7
+        for <linux-rockchip@lists.infradead.org>; Tue, 06 Dec 2022 01:12:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bKcAWEZZXTJpmyPT1ayr3jLpdTGOIb7NDrdQ3e/+G1A=;
-        b=FidlB7LoUGNvZcM2mg/9CkOqvedcP6DzjlCqNsACtTbAQxvkOjnqziCp+cKcQOUJj3
-         KgvjUhzSniWZbvzvN13HlnFLHzSSrZn0EAzXUoZdfwynSG5Whta6Ob5Ge18VFfczNHUq
-         J0d4B+trJbTDhLwLxpS2FZRxz6SE0kHrKCKNBz35WsAh5tA11U1tfBenciRWu5BvXs0u
-         tpXEmq/HywxPCK6QltO2TWtFJhYh/LVCiXJ8L1FfJXbVzPgsxFlDlko7ZOI8hTPQo9D2
-         4jqrmqdGckJ3pM8yybxXWmcGVbpEkUItjMSkiQc9+EcDI/dYNZXQEyD7jaL4dZ+luGDY
-         UaYw==
+        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hlN2+7DweJBI+0ZbyELLqp7L8/wV+kOEIdMWGeIWMSU=;
+        b=so5DaPIRVAiN9c1JbsjUx3p1OP2bOsJ6Hr8q3aw1h8syCFLSOZbTa/zyVay/QBmcFm
+         7nKAC+7Ze+KQsyj/c8XzEw8QlNtyvIe2KZ0/Qd5diK/N2t1LOcCDC1VrveQyTjOMl0CP
+         8CPz7/uj3W0aFSICrYAwKFlJ/LIvSV5nM8GmqyuPipRi40y+wBrroVKDj7u7XiVaBMfg
+         G1JVLbzwC2+u/4/zczKeME8UDb8V0a/LhRM7l3HQCCWI71zyGVoUjCrQ458N337qPXZx
+         GmCH5GqIasjDpR33GGVM3hUDQ6qcMuEg2MiKyLn2ZzjjFQ3NG7fP2XD9hBg338movnXN
+         aL7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bKcAWEZZXTJpmyPT1ayr3jLpdTGOIb7NDrdQ3e/+G1A=;
-        b=sZA1S/82UjB2qZMH8LSTqRuSsZxJ/jL6w8o11d/Rss5sfuAdoHc49vhXd1PIsdIirX
-         ElckJ8ckjmxbJl5gVGmrxrsWd/FCxBgVSxTC9IngdxXlTbyvUzI7YLXM4B5hfgjgkDt1
-         QmzBeaJSnJeUL1B6O3/Fow7mw/gq2fwyfXkOq/ycJBS2mv9PZvW5U7R7hYfBnZyXtvw8
-         hWqD8wpAWISpLFOCNxHujhSPKLr16ZLWqqD035ZupUYBJDUkWBvkh6RjmAC8v/6YR6cg
-         a+4sC3Crbgoq7TRWIrCUK+yxIKgfoOzUelBh4hbZKx04mmRcAhjMdt39qocQvTPZiJ8w
-         kTzA==
-X-Gm-Message-State: ANoB5pk3kXwjYZ0jyKCxhkUP/VrnDiYsXgdE2ffs/mWfTMkrG7rTM0oG
-	b3Wjru5VPI1yxZVq4v1a5ekBAmlIQzREhoPb38k=
-X-Google-Smtp-Source: AA0mqf4S5yw8gvqxZKOx0xrCzNJZhvykGIP1wLK+b3BJ9RAdi4ofJ77OqZ6v71SijhiYv+NQQhjGVG6HLdxgycZMn3E=
-X-Received: by 2002:a05:6130:316:b0:418:b66a:6f26 with SMTP id
- ay22-20020a056130031600b00418b66a6f26mr39467855uab.21.1670314226644; Tue, 06
- Dec 2022 00:10:26 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hlN2+7DweJBI+0ZbyELLqp7L8/wV+kOEIdMWGeIWMSU=;
+        b=sW/BO7QO6CPBA5qvaHylNveEi/6ksyavpPnzXnEn4LGKk8oyZi0JkioZB2pK+O8/iP
+         2ZCTGibwJRHlHbXoh6Eu5l7NbMBMH6TSlAK2mtiJQJT5N6+iGj/hRtQxwLKSEF+dTzNt
+         9jVSiMCiItdkEugyNuRU97rNwMsPLpO54BK3beZSHn23ZO8BTqY3q1w8gwO4ZwDuzmB9
+         SqD34s+s3I5zuhgyz/1bexHi3im2ktK7GYWmNWx0Q1ZUHRVYFyd/WvWpzSN1LWGdBFhj
+         sm5Neb6U6FL0BKOOh9ANK8eR4wkgjnL9Gaxcbfu1Mw5Ib24n0qpB122VhqcaNn56eU7e
+         A1Wg==
+X-Gm-Message-State: ANoB5pkfuRLFjufxW1NNmuirfRA6Ms01WbsZCGEAwRNg1qaKfhM1RGHF
+	akRExyUvJ+OFfOGbOf637Y9ExKAHWifHoelWMx7DNg==
+X-Google-Smtp-Source: AA0mqf64L2iAbcP0f1MrVQ32b22AN+Wz2W2Xrz+41KFrZyKe4/D5r81yqMAPZseq06oTlN5EtVtJtWjHqVkIjzJ+4nc=
+X-Received: by 2002:a67:ca86:0:b0:3b1:33bd:7fc7 with SMTP id
+ a6-20020a67ca86000000b003b133bd7fc7mr5729196vsl.13.1670317931506; Tue, 06 Dec
+ 2022 01:12:11 -0800 (PST)
 MIME-Version: 1.0
-References: <CGME20221205125942eucas1p1c2d8789c974bac19a637160ce796b115@eucas1p1.samsung.com>
- <20221205125928.27806-1-m.szyprowski@samsung.com>
-In-Reply-To: <20221205125928.27806-1-m.szyprowski@samsung.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Tue, 6 Dec 2022 13:40:09 +0530
-Message-ID: <CANAwSgQCdfgY=EpPKHLiXueW0AWUwz0yfvouodU1yfcSLtewgA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: defconfig: Enable drivers for the Odroid-M1 board
-To: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Dan Johansen <strit@manjaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>
+References: <1670221196-36806-1-git-send-email-wangyufen@huawei.com>
+ <f6bab0d1-008d-c5c0-ef29-28a61df91e65@huawei.com> <CAMRc=MfD84WstmUO+qnkrAYviq_ESwvk554TGCjZq0P9JAG24w@mail.gmail.com>
+ <ff96aac6-d5e5-222a-307a-d17ccc8b3201@huawei.com>
+In-Reply-To: <ff96aac6-d5e5-222a-307a-d17ccc8b3201@huawei.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 6 Dec 2022 10:12:00 +0100
+Message-ID: <CAMRc=MdoCwMWxPoybZ_fDfcMJcoen=j=tgoFELCGFdBB2CzbSQ@mail.gmail.com>
+Subject: Re: [PATCH] gpio/rockchip: fix refcount leak in rockchip_gpiolib_register()
+To: wangyufen <wangyufen@huawei.com>
+Cc: linus.walleij@linaro.org, heiko@sntech.de, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	jay.xu@rock-chips.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_001029_453493_B94B7EF5 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20221206_011215_002733_3F73D4D4 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,149 +84,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marek,
-
-On Mon, 5 Dec 2022 at 18:30, Marek Szyprowski <m.szyprowski@samsung.com> wrote:
->
-> Hardkernel Odroid-M1 board is supported since commit fd3583267703
-> ("arm64: dts: rockchip: Add Hardkernel ODROID-M1 board"). Enable all
-> drivers needed by that board in the defconfig to let the automated
-> test systems to check them on the real hardware.
->
-> The drivers were configured to be compiled as modules if that was
-> supported.
->
-> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
->  arch/arm64/configs/defconfig | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index 851e8f9be06d..01014451ba8e 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -237,6 +237,7 @@ CONFIG_PCI_LAYERSCAPE=y
->  CONFIG_PCI_HISI=y
->  CONFIG_PCIE_QCOM=y
->  CONFIG_PCIE_ARMADA_8K=y
-> +CONFIG_PCIE_ROCKCHIP_DW_HOST=y
->  CONFIG_PCIE_KIRIN=y
->  CONFIG_PCIE_HISI_STB=y
->  CONFIG_PCIE_TEGRA194_HOST=m
-> @@ -300,6 +301,7 @@ CONFIG_ATA=y
->  CONFIG_SATA_AHCI=y
->  CONFIG_SATA_AHCI_PLATFORM=y
->  CONFIG_AHCI_BRCM=m
-> +CONFIG_AHCI_DWC=m
->  CONFIG_AHCI_CEVA=y
->  CONFIG_AHCI_MVEBU=y
->  CONFIG_AHCI_XGENE=y
-> @@ -421,6 +423,7 @@ CONFIG_INPUT_PM8941_PWRKEY=y
->  CONFIG_INPUT_PM8XXX_VIBRATOR=m
->  CONFIG_INPUT_PWM_BEEPER=m
->  CONFIG_INPUT_PWM_VIBRA=m
-> +CONFIG_INPUT_RK805_PWRKEY=m
->  CONFIG_INPUT_HISI_POWERKEY=y
->  # CONFIG_SERIO_SERPORT is not set
->  CONFIG_SERIO_AMBAKMI=y
-> @@ -516,6 +519,7 @@ CONFIG_SPI_MT65XX=y
->  CONFIG_SPI_ORION=y
->  CONFIG_SPI_PL022=y
->  CONFIG_SPI_ROCKCHIP=y
-> +CONFIG_SPI_ROCKCHIP_SFC=m
->  CONFIG_SPI_RPCIF=m
->  CONFIG_SPI_RSPI=m
->  CONFIG_SPI_QCOM_QSPI=m
-> @@ -529,6 +533,7 @@ CONFIG_SPI_TEGRA114=m
->  CONFIG_SPI_SPIDEV=m
->  CONFIG_SPMI=y
->  CONFIG_PINCTRL_MAX77620=y
-> +CONFIG_PINCTRL_RK805=m
->  CONFIG_PINCTRL_SINGLE=y
->  CONFIG_PINCTRL_OWL=y
->  CONFIG_PINCTRL_S700=y
-> @@ -596,6 +601,7 @@ CONFIG_BATTERY_MAX17042=m
->  CONFIG_CHARGER_MT6360=m
->  CONFIG_CHARGER_BQ25890=m
->  CONFIG_CHARGER_BQ25980=m
-> +CONFIG_CHARGER_RK817=m
->  CONFIG_SENSORS_ARM_SCMI=y
->  CONFIG_SENSORS_ARM_SCPI=y
->  CONFIG_SENSORS_GPIO_FAN=m
-> @@ -697,6 +703,7 @@ CONFIG_REGULATOR_VCTRL=m
->  CONFIG_RC_CORE=m
->  CONFIG_RC_DECODERS=y
->  CONFIG_RC_DEVICES=y
-> +CONFIG_IR_GPIO_CIR=m
->  CONFIG_IR_MESON=m
->  CONFIG_IR_SUNXI=m
->  CONFIG_MEDIA_SUPPORT=m
-> @@ -742,6 +749,7 @@ CONFIG_DRM_EXYNOS_DSI=y
->  CONFIG_DRM_EXYNOS_HDMI=y
->  CONFIG_DRM_EXYNOS_MIC=y
->  CONFIG_DRM_ROCKCHIP=m
-> +CONFIG_ROCKCHIP_VOP2=y
->  CONFIG_ROCKCHIP_ANALOGIX_DP=y
->  CONFIG_ROCKCHIP_CDN_DP=y
->  CONFIG_ROCKCHIP_DW_HDMI=y
-> @@ -831,6 +839,7 @@ CONFIG_SND_SOC_SM8250=m
->  CONFIG_SND_SOC_SC7180=m
->  CONFIG_SND_SOC_SC7280=m
->  CONFIG_SND_SOC_ROCKCHIP=m
-> +CONFIG_SND_SOC_ROCKCHIP_I2S_TDM=m
->  CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
->  CONFIG_SND_SOC_ROCKCHIP_RT5645=m
->  CONFIG_SND_SOC_RK3399_GRU_SOUND=m
-> @@ -863,6 +872,7 @@ CONFIG_SND_SOC_GTM601=m
->  CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
->  CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
->  CONFIG_SND_SOC_PCM3168A_I2C=m
-> +CONFIG_SND_SOC_RK817=m
->  CONFIG_SND_SOC_RT5640=m
->  CONFIG_SND_SOC_RT5659=m
->  CONFIG_SND_SOC_SIMPLE_AMPLIFIER=m
-> @@ -1277,7 +1287,9 @@ CONFIG_PHY_ROCKCHIP_EMMC=y
->  CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
->  CONFIG_PHY_ROCKCHIP_INNO_USB2=y
->  CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
-> +CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
-
-The following should be set to CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=y
-
-If not it fails to enable PCIe on Radxa 3a
-[    0.735048] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
-[    0.759924] phy phy-fe8c0000.phy.4: lane number 0, val 1
-[    0.760915] phy phy-fe8c0000.phy.4: rockchip_p3phy_rk3568_init:
-lock failed 0x6890000, check input refclk and power supply
-[    0.761881] phy phy-fe8c0000.phy.4: phy init failed --> -110
-[    0.762477] rockchip-dw-pcie: probe of 3c0800000.pcie failed with error -110
-
-Reviewed-by: Anand Moon <linux.amoon@gmail.com>
-
-Thanks
-
--Anand
-
->  CONFIG_PHY_ROCKCHIP_PCIE=m
-> +CONFIG_PHY_ROCKCHIP_SNPS_PCIE3=y
->  CONFIG_PHY_ROCKCHIP_TYPEC=y
->  CONFIG_PHY_SAMSUNG_UFS=y
->  CONFIG_PHY_UNIPHIER_USB2=y
-> --
-> 2.38.1
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBEZWMgNiwgMjAyMiBhdCAyOjQyIEFNIHdhbmd5dWZlbiA8d2FuZ3l1ZmVuQGh1YXdl
+aS5jb20+IHdyb3RlOgo+Cj4KPgo+IOWcqCAyMDIyLzEyLzUgMTg6MjYsIEJhcnRvc3ogR29sYXN6
+ZXdza2kg5YaZ6YGTOgo+ID4gT24gTW9uLCBEZWMgNSwgMjAyMiBhdCA3OjIxIEFNIHdhbmd5dWZl
+biA8d2FuZ3l1ZmVuQGh1YXdlaS5jb20+IHdyb3RlOgo+ID4+Cj4gPj4KPiA+Pgo+ID4+IOWcqCAy
+MDIyLzEyLzUgMTQ6MTksIFdhbmcgWXVmZW4g5YaZ6YGTOgo+ID4+PiBUaGUgbm9kZSByZXR1cm5l
+ZCBieSBvZl9nZXRfcGFyZW50KCkgd2l0aCByZWZjb3VudCBpbmNyZW1lbnRlZCwKPiA+Pj4gb2Zf
+bm9kZV9wdXQoKSBuZWVkcyBiZSBjYWxsZWQgd2hlbiBmaW5pc2ggdXNpbmcgaXQuIFNvIGFkZCBp
+dCBpbiB0aGUKPiA+Pj4gZW5kIG9mIG9mX3BpbmN0cmxfZ2V0KCkuCj4gPj4+Cj4gPj4+IEZpeGVz
+OiA5MzZlZTI2NzVlZWUgKCJncGlvL3JvY2tjaGlwOiBhZGQgZHJpdmVyIGZvciByb2NrY2hpcCBn
+cGlvIikKPiA+Pj4gU2lnbmVkLW9mZi1ieTogV2FuZyBZdWZlbiA8d2FuZ3l1ZmVuQGh1YXdlaS5j
+b20+Cj4gPj4+IC0tLQo+ID4+PiAgICBkcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jIHwgMSAr
+Cj4gPj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+ID4+Pgo+ID4+PiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlv
+LXJvY2tjaGlwLmMKPiA+Pj4gaW5kZXggODcwOTEwYi4uMjAwZTQzYSAxMDA2NDQKPiA+Pj4gLS0t
+IGEvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwo+ID4+PiArKysgYi9kcml2ZXJzL2dwaW8v
+Z3Bpby1yb2NrY2hpcC5jCj4gPj4+IEBAIC02MTAsNiArNjEwLDcgQEAgc3RhdGljIGludCByb2Nr
+Y2hpcF9ncGlvbGliX3JlZ2lzdGVyKHN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuaykKPiA+
+Pj4gICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gLUVOT0RBVEE7Cj4gPj4+Cj4gPj4+ICAg
+ICAgICAgICAgICAgIHBjdGxkZXYgPSBvZl9waW5jdHJsX2dldChwY3RsbnApOwo+ID4+PiArICAg
+ICAgICAgICAgIG9mX25vZGVfcHV0KHBjdGxucCk7Cj4gPj4+ICAgICAgICAgICAgICAgIGlmICgh
+cGN0bGRldikKPiA+Pj4gICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gLUVOT0RFVjsKPiA+
+Pj4KPiA+Cj4gPiBTb21ldGhpbmcgd2VudCB3cm9uZyB3aGVuIHNlbmRpbmcgdGhlIHBhdGNoPyBE
+aWQgeW91IHVzZSBnaXQgc2VuZC1lbWFpbD8KPiA+Cj4KPiBUaGUgcGF0Y2ggaXRzZWxmIGlzIGZp
+bmUsIGJ1dCBJIGZvcmdvdCB0byBDYyB0aGUgYXV0aG9yIG9mIHRoZSBwYXRjaCBJCj4gZml4ZWQs
+IHNvIEkgYWRkZWQgYSBDYy4KPgo+IFRoYW5rcywKPiBXYW5nCj4KPiA+IEJhcnQKPiA+CgpJIGRv
+bid0IGhhdmUgaXQgaW4gbXkgaW5ib3gsIG5vdCBldmVuIGluIHNwYW0uIEkgZmV0Y2hlZCB0aGUg
+cGF0Y2gKZnJvbSBwYXRjaHdvcmsgYW5kIGFwcGxpZWQgaXQgZm9yIGZpeGVzLCB0aGFua3MuCgpC
+YXJ0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
