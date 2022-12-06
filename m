@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE97C4708C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 14:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15692C352A1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 17:03:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fR3jFefcSA2J1L/OZD7nek7AIYuGMwUOdWTNfZHWO/s=; b=KGCbtjAc4FKA8A
-	fyE27BZw4OO22nxshvnSvF4LLLfadZK2yxhk3AGpa1TY+S84BVkRKTcF9tdeICTZcCi3A7EROnn8H
-	N0nGEFYWjHuB/X4RFFJZX7ycK0fEFYdwJCSNTSlcx1Yf2FlxKNxXRN9jswv9EmY9ho7iT++1VFToG
-	96ubUcJJ14sSGKY4d5Zm7NSaEc3KQXLNjXgjkuXFwbeAJsJruZmGB8wWPcahu7y9bb23UhsvdlccB
-	0BRk4k/tIBIjnMGT4zogPgrihCpZ7WTVGa7FA1ekq4W2G9KluBZONwpiD8j3JV0sr5K8krNUm/Eid
-	+PesAPN/Mt4RHA/k54uA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5khRmFiutpKB8vecOhKyDv8bXeCFwpD3xCTwKbtjlOo=; b=Da3TBcD0A1r32mVA1ziicK4Mw/
+	2gHIVnJAfvilE+uwRqBvQDuD7AVazS0wYvxKRwEBmDj7n9aBbE4oZqodtMULptGnDz6bHwOyC1Q5x
+	0lX/LTc+eoH/NyLblzaiNUzDcQqYehohrMydQvdcsr97U/JCFV5k8DLWwG4DimdvKRUd22isnolpi
+	mK7RLdWvF8rppaS+MgImcVjMQMtwbiX++UtJqOdZcMvNCyhJFUDn6rGmSmMqc0QEo+VQq0JtPiBJL
+	Ba99S7BesYd/plJewh+yW2zoVrtHliklT3W3VDFJZegtB50OhoNVMmndLODQM/GJmd2eeIffzfWU+
+	jOg+J31Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2YsR-00Ab1o-IQ; Tue, 06 Dec 2022 14:24:55 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1p2bL9-00FbS2-SW; Tue, 06 Dec 2022 17:02:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2YsJ-00AaoW-W7
-	for linux-rockchip@lists.infradead.org; Tue, 06 Dec 2022 14:24:53 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-3e45d25de97so97126377b3.6
-        for <linux-rockchip@lists.infradead.org>; Tue, 06 Dec 2022 06:24:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=+I8r/Ikze/i7BezWa/uQmhkUP93gWEH0lvmItkZak28=;
-        b=vt415P28FdlKBt2TqF2bJBATY1Ngpsn4MQSzo0T7ynONJIuaJ3lkF8BFTZ7DN89PkM
-         j97el6G9iNyM0GXZzsQ6t8G4KKANekmq14xqLHja9BZrsvsCtrBJ/ssPce1LJXO1Umaf
-         KRvr3tYbR6PIFWcsRDUSZp7v5w5anIV2mMr5iiPjB0zqrYYgWT0TcioDSX/L9XaEOgbX
-         T+4E59QUbIQTeotu9pAA4Q8zdalqeR/rsQg3M/AXnYHSMi/tYAn4ZtnBuLIQL6jYLktr
-         OwRwmXRJZAACLuuYihtduXhWIme6Q6Udth6zC5A0PO8HfW04byONHgSjniwnKzohQ1Jg
-         1JyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+I8r/Ikze/i7BezWa/uQmhkUP93gWEH0lvmItkZak28=;
-        b=r5ewCrNkNrYiUW+PTl7KAyBnrnri6vqXpQkZXnUUSlY+uZNEFX/cf/ZsRiQPO1L2fn
-         VGe26u5Uviu/+X1U3O3oCCAGpDqGAQgknocmRLjZhR9XXh+bv7R35VGbdYRXHNpWKxSX
-         LIr0ov6a6J5kHdAi8/hZWdJ2RhO7jHDtyrsUbGlPzmtugGDM8i5lXz7ffk6VJt3kEeyV
-         FG8BibheKQBm1LTS/Gf7jbFSgZJaomX7Zop0A1FMDFvUyY7p9nC6fuhpYVMovRclP0x0
-         2U0qOabF5kCYycSASw9aachLsRhexOYwPL4gtHfJ1QUU3nERVIff3etO1pNxh4P75Ufv
-         4RLw==
-X-Gm-Message-State: ANoB5pmFV4QTQqRK4wdzLUHvA7Ufp+fRl/K3HDxSvRauImtw5sb6qBP/
-	DOrCqQHegvyZ5/Gx6TsOnxRIRaWmLIay1AAZNCRqFg==
-X-Google-Smtp-Source: AA0mqf5mKBQw8iA17xoosolG2+26c+SqRDj88aSFWvi0sjxJlJW4K2uJT0cUQT+DFP5YzgGbD8WR9TpjDM9XKp6LwOo=
-X-Received: by 2002:a0d:e645:0:b0:3bb:6406:3df1 with SMTP id
- p66-20020a0de645000000b003bb64063df1mr47631212ywe.319.1670336686630; Tue, 06
- Dec 2022 06:24:46 -0800 (PST)
+	id 1p2bL5-00FbQs-K6
+	for linux-rockchip@lists.infradead.org; Tue, 06 Dec 2022 17:02:41 +0000
+Received: from mercury (dyndsl-091-096-035-193.ewe-ip-backbone.de [91.96.35.193])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id ED6786602B7B;
+	Tue,  6 Dec 2022 17:02:34 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1670346155;
+	bh=iR10PwThoLooaPdACXm0Wp7rdMnryxQTrPmCRLMlsc4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QJFq0Xs02iRgwLDcna+J7uKQR4JhKQ8bNtiLJ5abud/VNu5M7JYE1DU9Ndv8CLP+w
+	 84LUtlJAzeZuwSrF7Cte96U877r5ti6VSNENTmaSa0awpRp5od2qM2982JEVHz7XDt
+	 i7nSkSUSoQ9l4umYJXPYoSd8HqcT7I0a8qMKCRO4Tyw9pfe1pctNT7X3Wbk16dNqs6
+	 p+19RrFDCdhYDMg8M/D9lrBFJe9Ti6zlEyx7BbQcXEVzU1yUBi4aua7XGKUF3/dYqC
+	 mt0WJLRrEdFIH0UXao2vRnX/UPS9ipwyryz0WJIJk5iJSexEfy13ZZaysQ1POI3yUm
+	 FG6wTQALaS+Xw==
+Received: by mercury (Postfix, from userid 1000)
+	id AF7F91060F2F; Tue,  6 Dec 2022 18:02:32 +0100 (CET)
+Date: Tue, 6 Dec 2022 18:02:32 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 4/7] thermal: rockchip: Simplify channel id logic
+Message-ID: <20221206170232.xsm4kcbfwrmlrriw@mercury.elektranox.org>
+References: <20221031175058.175698-1-sebastian.reichel@collabora.com>
+ <20221031175058.175698-5-sebastian.reichel@collabora.com>
+ <3601039.e9J7NaK4W3@phil>
 MIME-Version: 1.0
-References: <20221129172912.9576-1-macroalpha82@gmail.com> <20221129172912.9576-3-macroalpha82@gmail.com>
- <CACRpkdZK9=Z1i3Uv=fwS=t=NXHJkucg9FYOCfog_qhomf9GV=w@mail.gmail.com> <638b9d23.4a0a0220.37bf5.143c@mx.google.com>
-In-Reply-To: <638b9d23.4a0a0220.37bf5.143c@mx.google.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 6 Dec 2022 15:24:34 +0100
-Message-ID: <CACRpkdZC_TLj2K8FaSLmFp-YBn3HxmW0zUKYvQpRafavNDoWpw@mail.gmail.com>
-Subject: Re: [PATCH V4 2/3] drm/panel: Add Samsung AMS495QA01 MIPI-DSI LCD panel
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, maccraft123mc@gmail.com, heiko@sntech.de, 
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, daniel@ffwll.ch, 
-	airlied@gmail.com, sam@ravnborg.org, thierry.reding@gmail.com, 
-	Chris Morgan <macromorgan@hotmail.com>
+In-Reply-To: <3601039.e9J7NaK4W3@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_062448_075662_D20B7216 
-X-CRM114-Status: GOOD (  43.24  )
+X-CRM114-CacheID: sfid-20221206_090240_037334_1B79609B 
+X-CRM114-Status: GOOD (  32.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,108 +76,259 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1401237862986614433=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 3, 2022 at 8:01 PM Chris Morgan <macroalpha82@gmail.com> wrote:
 
-> Will do. I'll make the changes and resubmit. For what it's worth the
-> documentation says this one is a Samsung AMS495QA01 panel on a
-> Magnachip D53E6EA8966 controller IC.
+--===============1401237862986614433==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jqofcsecvyrpcmbz"
+Content-Disposition: inline
 
-I would name the driver panel-magnachip-d53e6ea8966.c and
-KConfig PANEL_MAGNACHIP_D53E6EA8966 for now
-but keep the Samsung compatible string & match.
 
-Maybe this driver will match more magnachips in the future,
-maybe not. Sometimes people get hold of datasheets and submit
-proper code and #defines etc.
+--jqofcsecvyrpcmbz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > > +       if (db->reg_elvdd) {
-> >
-> > Do you really need to if() this? I thought the regulator
-> > framework would just ignore the calls for an optional
-> > regulator.
->
-> I don't know for sure, but I'll make the change if you request it. I
-> think other drivers had an if in this scenario which is why I did it.
+Hi,
 
-Okay but I don't think that is necessary.
+On Tue, Nov 15, 2022 at 12:30:51PM +0100, Heiko Stuebner wrote:
+> Am Montag, 31. Oktober 2022, 18:50:55 CET schrieb Sebastian Reichel:
+> > Replace the channel ID lookup table by a simple offset, since
+> > the channel IDs are consecutive.
+>=20
+> Hmm, I don't really like going this way.
+>=20
+> While it may be true _right now_ that all tsadcs have the cpu-sensor
+> at channel "x" and the gpu-sensor at "x+1", hardware engineers are
+> always waaaaay too creative in what they do.
+>=20
+> So I really expect a future soc to turn this around or add other
+> "interesting" variants.
 
-> > > +               mode->type = DRM_MODE_TYPE_DRIVER;
-> > > +               if (panel_info->num_modes == 1)
-> > > +                       mode->type |= DRM_MODE_TYPE_PREFERRED;
-> >
-> > I think you should probably set the preferred mode even
-> > if there are several of them? But maybe just on the first
-> > or something. (A bit unsure here, Sam?)
->
-> I'll keep 60hz as the preferred. 50hz was added at the request of some
-> userspace folks for running PAL based emulators and stuff.
+It's totally fine to have it the other way around. Then the first
+channel will be the GPU (or even the first channels if there are
+multiple measurement points for the GPU). Those are just arbitrary
+numbers. The only requirement of this patch is that there are no
+gaps.
 
-OK
+Supporting gaps can only be done with a lookup table, which wastes
+memory. Considering there are no such devices right now and there
+never might be any, is there a good reason for the added complexity?
 
-> This is the path that "works", but I'll happily change to something
-> else.
->
-> > > +       db->dsi_dev->lanes = 2;
-> > > +       db->dsi_dev->format = MIPI_DSI_FMT_RGB888;
-> > > +       db->dsi_dev->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-> > > +                         MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
-> > > +
-> > > +       drm_panel_init(&db->panel, dev, &ams495qa01_drm_funcs,
-> > > +                      DRM_MODE_CONNECTOR_DSI);
-> >
-> > Pixel data passes to the display using DSI but all display control
-> > is done over SPI, and the core will not help with this.
-> >
-> > So from the display controller POV this is a DSI display
-> > and from the display POV this is an SPI-controlled display.
-> > So it sits on two buses. Data path is on DSI, control path
-> > is on SPI.
-> >
-> > This would be kind of odd actually, normally DSI displays
-> > do the display control over DSI as well. SPI control is usually
-> > used on DPI displays. But I'm not surprised.
-> >
-> > If this is necessary, isn't this something we need to teach the
-> > core to handle instead of adding quirks like this to all drivers that
-> > have this characteristic?
-> >
->
-> You are correct, this panel is controlled via 3-wire SPI in my example.
-> The panel can be controlled either by 3-wire SPI or DSI commands
-> depending on whether or not pin 15 is driven high or low. Unfortunately
-> in my case it's hardwired high, so I am forced to do it via 3-wire SPI.
-> I have no way of testing it with pure DSI but that would simplify
-> things quite a bit. Pixel data is transmitted soley through DSI.
+-- Sebastian
 
-OK
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  drivers/thermal/rockchip_thermal.c | 48 +++++++++++++-----------------
+> >  1 file changed, 21 insertions(+), 27 deletions(-)
+> >=20
+> > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockc=
+hip_thermal.c
+> > index 3dab31f163b3..a547e44e2b64 100644
+> > --- a/drivers/thermal/rockchip_thermal.c
+> > +++ b/drivers/thermal/rockchip_thermal.c
+> > @@ -39,15 +39,6 @@ enum tshut_polarity {
+> >  	TSHUT_HIGH_ACTIVE,
+> >  };
+> > =20
+> > -/*
+> > - * The system has two Temperature Sensors.
+> > - * sensor0 is for CPU, and sensor1 is for GPU.
+> > - */
+> > -enum sensor_id {
+> > -	SENSOR_CPU =3D 0,
+> > -	SENSOR_GPU,
+> > -};
+> > -
+> >  /*
+> >   * The conversion table has the adc value and temperature.
+> >   * ADC_DECREMENT: the adc value is of diminishing.(e.g. rk3288_code_ta=
+ble)
+> > @@ -82,7 +73,7 @@ struct chip_tsadc_table {
+> > =20
+> >  /**
+> >   * struct rockchip_tsadc_chip - hold the private data of tsadc chip
+> > - * @chn_id: array of sensor ids of chip corresponding to the channel
+> > + * @chn_offset: the channel offset of the first channel
+> >   * @chn_num: the channel number of tsadc chip
+> >   * @tshut_temp: the hardware-controlled shutdown temperature value
+> >   * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPIO)
+> > @@ -98,7 +89,7 @@ struct chip_tsadc_table {
+> >   */
+> >  struct rockchip_tsadc_chip {
+> >  	/* The sensor id of chip correspond to the ADC channel */
+> > -	int chn_id[SOC_MAX_SENSORS];
+> > +	int chn_offset;
+> >  	int chn_num;
+> > =20
+> >  	/* The hardware-controlled tshut property */
+> > @@ -925,8 +916,8 @@ static void rk_tsadcv2_tshut_mode(int chn, void __i=
+omem *regs,
+> >  }
+> > =20
+> >  static const struct rockchip_tsadc_chip px30_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 2, /* 2 channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+> > @@ -949,7 +940,8 @@ static const struct rockchip_tsadc_chip px30_tsadc_=
+data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rv1108_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > +	/* cpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 1, /* one channel for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -973,7 +965,8 @@ static const struct rockchip_tsadc_chip rv1108_tsad=
+c_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3228_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > +	/* cpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 1, /* one channel for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -997,8 +990,8 @@ static const struct rockchip_tsadc_chip rk3228_tsad=
+c_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3288_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 1, /* cpu sensor is channel 1 */
+> > -	.chn_id[SENSOR_GPU] =3D 2, /* gpu sensor is channel 2 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 1,
+> >  	.chn_num =3D 2, /* two channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -1022,7 +1015,8 @@ static const struct rockchip_tsadc_chip rk3288_ts=
+adc_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3328_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > +	/* cpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 1, /* one channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+> > @@ -1045,8 +1039,8 @@ static const struct rockchip_tsadc_chip rk3328_ts=
+adc_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3366_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 2, /* two channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -1070,8 +1064,8 @@ static const struct rockchip_tsadc_chip rk3366_ts=
+adc_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3368_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 2, /* two channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -1095,8 +1089,8 @@ static const struct rockchip_tsadc_chip rk3368_ts=
+adc_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3399_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 2, /* two channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -1120,8 +1114,8 @@ static const struct rockchip_tsadc_chip rk3399_ts=
+adc_data =3D {
+> >  };
+> > =20
+> >  static const struct rockchip_tsadc_chip rk3568_tsadc_data =3D {
+> > -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> > -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> > +	/* cpu, gpu */
+> > +	.chn_offset =3D 0,
+> >  	.chn_num =3D 2, /* two channels for tsadc */
+> > =20
+> >  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC =
+*/
+> > @@ -1406,7 +1400,7 @@ static int rockchip_thermal_probe(struct platform=
+_device *pdev)
+> >  	for (i =3D 0; i < thermal->chip->chn_num; i++) {
+> >  		error =3D rockchip_thermal_register_sensor(pdev, thermal,
+> >  						&thermal->sensors[i],
+> > -						thermal->chip->chn_id[i]);
+> > +						thermal->chip->chn_offset + i);
+> >  		if (error)
+> >  			return dev_err_probe(&pdev->dev, error,
+> >  				"failed to register sensor[%d].\n", i);
+> >=20
+>=20
+>=20
+>=20
+>=20
+>=20
+> --=20
+> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
 
-> The way I have it implemented currently is to put the panel on the SPI
-> bus as a DBI panel; traverse through the DT bindings to find the
-> associated DSI controller, then attach it as a DSI device so the DSI
-> bus can transmit the pixel data.
->
-> I'm absolutely cool with making those functions part of the core and
-> not just specific to this panel, only I might need a bit of help on
-> that part to make sure I do it the right way. I just wasn't sure how
-> often that would be needed since this is the only panel I've ever seen
-> driven this way, especially since it seems like any sane person would
-> just want to do the whole control data/pixel data over DSI to keep
-> things simple.
+--jqofcsecvyrpcmbz
+Content-Type: application/pgp-signature; name="signature.asc"
 
-It doesn't seem all that unique.
+-----BEGIN PGP SIGNATURE-----
 
-Can you put some helper in drivers/gpu/drm/drm_of.c with the rest
-and it will (hopefully) not be linked in unless used anyway.
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmOPdaMACgkQ2O7X88g7
++pp0Mw//WC4aTgggT1BQggQ8Nm9pQKnVrD2gsyd5ncHPA6JRhAnv/0KDq4/K1ZPc
+riYsqKFTbd/oyJ4fFziBa+xy0BxZ/mgk2CsYfM1ojqFWCLnUkyfY3DM3nyw3A+TN
+UCLA/wm0uYpk43swmng4DL5pTlS31/PmafdNMTxXCOvLidEfpcI+ldDVEoRzIwRT
+POPYOfnyOyyWdL0ihMiuGMbmHp4HIb+NkJgWKBIwjLfCWw2Crb3kxZlCHsn2T8fn
+AJlbL2JDhfcBOQ85xSXUywlmMU00q2qk3QNlV3ZgeDO0sld/pNrnhO1YoIvL98qT
+atpP3n3+ZXgbWjKvZlIP2M3jkjVLSW/hWQSmQVD3jPhmaFInuGDcSYT+510VUiv2
+uQo1dUoKcHujVWWdfzKxImmsYIUkyteJpNgIBYsgSxxL2Hcu4wKBTSBcEcnhta7a
+XXYXerxUnl2jEsdTaJJw1jt5pVZFCDTEZWXCQMJjmVXUHORDSTI3I6WYoXKr14DP
+d0D7bOHdhO/gNpzoJRP9D0lEhvS8uZGViTiUt6TrmahdEvZFFXqm9Kz3ouqKEEQh
+PfoVKyLcobKcA78b+9YlWRXLiAJpHgbxQR4JvxpIVtDTQyS6eCDQHVFH4SEuOv/m
+VT08A9T4XoKICcmPOacoi6EQYg+mnZ41Zv9Za11Kc/+H0A12b6g=
+=0Yok
+-----END PGP SIGNATURE-----
 
-Yours,
-Linus Walleij
+--jqofcsecvyrpcmbz--
+
+
+--===============1401237862986614433==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1401237862986614433==--
+
