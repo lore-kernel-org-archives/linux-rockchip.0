@@ -4,57 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2B1C47089
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 01:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 282CCC3A5A7
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Dec 2022 08:10:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xKBFdJAbfZpWZyiv1Caz96Lzg6gPQgCnWtzXJnJTAg8=; b=JMUuBc/UK9lJZB
-	h+GW/WZuIa4cfWfHAtqnnmPd00foyKJu2asP5Fc76S9rWA+dt+cmUk6qnz9IFf7fmwy05tcbXjKCJ
-	+umCDqopBsNC0bHKozi0mG/FRZBjCKB/ZpvDXLRjiJz02sbOarjTfljF6SAw1gFufYjNrwXefGaVc
-	peog3g5S5h6jolgYKnmsomt/E5xXYcQ+n8hPj7N0eF4yps4N34Wz8NKt0UhlGr52l320PEN1tX9mK
-	qdYlZz/UdNnl26n8cZ/fUUDQH0ci9qhvRaBswzVQMnQOGye18fx8cA2WC3dItqPtE5NiqOmHYeWU4
-	pPuw2gAzv0PChE/kWTww==;
+	List-Owner; bh=D8AEVOINLnl6VprOfhGNGcvOaXeQhDeN6DlvgcsRE6k=; b=C4Q5/GwqpF3uCH
+	HWtZXKWa9nydGiKzEEFrDbRs6uEc3l25JNKWArgDHoOjPIjN6bfrana2HDZwbSoyAeLwZRdWW5Msm
+	Z2Q/m6oPuq1YTkGn8yJCNF62KKGxXqDzQkMsQdumc3QBn1Z5YoFLG/zUO23MRK8InhSmMxkNtJu+C
+	mHg9c2vRmGjkhJWCHTjljiuEEkLnGEyVdRwjlkQGI4oH7imH/MTgNYnujqAjnGJlGQ1u4qLj+J/7s
+	8RbIkKdITcbTXah2FC3r0YJtVUGBLBQZ/074nGFUxIbnnN5k6sGEqpqG7SmUNEEzbLSOsLcZqiyS7
+	0ohjOLr0faVQRh8rastw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2MyX-00Ey7K-6q; Tue, 06 Dec 2022 01:42:25 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1p2T2H-004Sac-Km; Tue, 06 Dec 2022 08:10:41 +0000
+Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2MyL-00Exbf-Kl; Tue, 06 Dec 2022 01:42:15 +0000
-Received: from canpemm500010.china.huawei.com (unknown [172.30.72.53])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4NR33K36MPzJp54;
-	Tue,  6 Dec 2022 09:38:37 +0800 (CST)
-Received: from [10.174.179.191] (10.174.179.191) by
- canpemm500010.china.huawei.com (7.192.105.118) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 6 Dec 2022 09:42:06 +0800
-Message-ID: <ff96aac6-d5e5-222a-307a-d17ccc8b3201@huawei.com>
-Date: Tue, 6 Dec 2022 09:42:06 +0800
+	id 1p2T25-004SR5-BC; Tue, 06 Dec 2022 08:10:31 +0000
+Received: by mail-ua1-x935.google.com with SMTP id 97so4748564uam.0;
+        Tue, 06 Dec 2022 00:10:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=bKcAWEZZXTJpmyPT1ayr3jLpdTGOIb7NDrdQ3e/+G1A=;
+        b=FidlB7LoUGNvZcM2mg/9CkOqvedcP6DzjlCqNsACtTbAQxvkOjnqziCp+cKcQOUJj3
+         KgvjUhzSniWZbvzvN13HlnFLHzSSrZn0EAzXUoZdfwynSG5Whta6Ob5Ge18VFfczNHUq
+         J0d4B+trJbTDhLwLxpS2FZRxz6SE0kHrKCKNBz35WsAh5tA11U1tfBenciRWu5BvXs0u
+         tpXEmq/HywxPCK6QltO2TWtFJhYh/LVCiXJ8L1FfJXbVzPgsxFlDlko7ZOI8hTPQo9D2
+         4jqrmqdGckJ3pM8yybxXWmcGVbpEkUItjMSkiQc9+EcDI/dYNZXQEyD7jaL4dZ+luGDY
+         UaYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bKcAWEZZXTJpmyPT1ayr3jLpdTGOIb7NDrdQ3e/+G1A=;
+        b=sZA1S/82UjB2qZMH8LSTqRuSsZxJ/jL6w8o11d/Rss5sfuAdoHc49vhXd1PIsdIirX
+         ElckJ8ckjmxbJl5gVGmrxrsWd/FCxBgVSxTC9IngdxXlTbyvUzI7YLXM4B5hfgjgkDt1
+         QmzBeaJSnJeUL1B6O3/Fow7mw/gq2fwyfXkOq/ycJBS2mv9PZvW5U7R7hYfBnZyXtvw8
+         hWqD8wpAWISpLFOCNxHujhSPKLr16ZLWqqD035ZupUYBJDUkWBvkh6RjmAC8v/6YR6cg
+         a+4sC3Crbgoq7TRWIrCUK+yxIKgfoOzUelBh4hbZKx04mmRcAhjMdt39qocQvTPZiJ8w
+         kTzA==
+X-Gm-Message-State: ANoB5pk3kXwjYZ0jyKCxhkUP/VrnDiYsXgdE2ffs/mWfTMkrG7rTM0oG
+	b3Wjru5VPI1yxZVq4v1a5ekBAmlIQzREhoPb38k=
+X-Google-Smtp-Source: AA0mqf4S5yw8gvqxZKOx0xrCzNJZhvykGIP1wLK+b3BJ9RAdi4ofJ77OqZ6v71SijhiYv+NQQhjGVG6HLdxgycZMn3E=
+X-Received: by 2002:a05:6130:316:b0:418:b66a:6f26 with SMTP id
+ ay22-20020a056130031600b00418b66a6f26mr39467855uab.21.1670314226644; Tue, 06
+ Dec 2022 00:10:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH] gpio/rockchip: fix refcount leak in
- rockchip_gpiolib_register()
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-CC: <linus.walleij@linaro.org>, <heiko@sntech.de>,
-	<linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <jay.xu@rock-chips.com>
-References: <1670221196-36806-1-git-send-email-wangyufen@huawei.com>
- <f6bab0d1-008d-c5c0-ef29-28a61df91e65@huawei.com>
- <CAMRc=MfD84WstmUO+qnkrAYviq_ESwvk554TGCjZq0P9JAG24w@mail.gmail.com>
-From: wangyufen <wangyufen@huawei.com>
-In-Reply-To: <CAMRc=MfD84WstmUO+qnkrAYviq_ESwvk554TGCjZq0P9JAG24w@mail.gmail.com>
-X-Originating-IP: [10.174.179.191]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- canpemm500010.china.huawei.com (7.192.105.118)
-X-CFilter-Loop: Reflected
+References: <CGME20221205125942eucas1p1c2d8789c974bac19a637160ce796b115@eucas1p1.samsung.com>
+ <20221205125928.27806-1-m.szyprowski@samsung.com>
+In-Reply-To: <20221205125928.27806-1-m.szyprowski@samsung.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Tue, 6 Dec 2022 13:40:09 +0530
+Message-ID: <CANAwSgQCdfgY=EpPKHLiXueW0AWUwz0yfvouodU1yfcSLtewgA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: defconfig: Enable drivers for the Odroid-M1 board
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+	Aurelien Jarno <aurelien@aurel32.net>, Dan Johansen <strit@manjaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_174213_880896_344E2756 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221206_001029_453493_B94B7EF5 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,34 +82,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgrlnKggMjAyMi8xMi81IDE4OjI2LCBCYXJ0b3N6IEdvbGFzemV3c2tpIOWGmemBkzoKPiBPbiBN
-b24sIERlYyA1LCAyMDIyIGF0IDc6MjEgQU0gd2FuZ3l1ZmVuIDx3YW5neXVmZW5AaHVhd2VpLmNv
-bT4gd3JvdGU6Cj4+Cj4+Cj4+Cj4+IOWcqCAyMDIyLzEyLzUgMTQ6MTksIFdhbmcgWXVmZW4g5YaZ
-6YGTOgo+Pj4gVGhlIG5vZGUgcmV0dXJuZWQgYnkgb2ZfZ2V0X3BhcmVudCgpIHdpdGggcmVmY291
-bnQgaW5jcmVtZW50ZWQsCj4+PiBvZl9ub2RlX3B1dCgpIG5lZWRzIGJlIGNhbGxlZCB3aGVuIGZp
-bmlzaCB1c2luZyBpdC4gU28gYWRkIGl0IGluIHRoZQo+Pj4gZW5kIG9mIG9mX3BpbmN0cmxfZ2V0
-KCkuCj4+Pgo+Pj4gRml4ZXM6IDkzNmVlMjY3NWVlZSAoImdwaW8vcm9ja2NoaXA6IGFkZCBkcml2
-ZXIgZm9yIHJvY2tjaGlwIGdwaW8iKQo+Pj4gU2lnbmVkLW9mZi1ieTogV2FuZyBZdWZlbiA8d2Fu
-Z3l1ZmVuQGh1YXdlaS5jb20+Cj4+PiAtLS0KPj4+ICAgIGRyaXZlcnMvZ3Bpby9ncGlvLXJvY2tj
-aGlwLmMgfCAxICsKPj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+Pj4KPj4+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncGlv
-L2dwaW8tcm9ja2NoaXAuYwo+Pj4gaW5kZXggODcwOTEwYi4uMjAwZTQzYSAxMDA2NDQKPj4+IC0t
-LSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3Bpby9n
-cGlvLXJvY2tjaGlwLmMKPj4+IEBAIC02MTAsNiArNjEwLDcgQEAgc3RhdGljIGludCByb2NrY2hp
-cF9ncGlvbGliX3JlZ2lzdGVyKHN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuaykKPj4+ICAg
-ICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FTk9EQVRBOwo+Pj4KPj4+ICAgICAgICAgICAg
-ICAgIHBjdGxkZXYgPSBvZl9waW5jdHJsX2dldChwY3RsbnApOwo+Pj4gKyAgICAgICAgICAgICBv
-Zl9ub2RlX3B1dChwY3RsbnApOwo+Pj4gICAgICAgICAgICAgICAgaWYgKCFwY3RsZGV2KQo+Pj4g
-ICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gLUVOT0RFVjsKPj4+Cj4gCj4gU29tZXRoaW5n
-IHdlbnQgd3Jvbmcgd2hlbiBzZW5kaW5nIHRoZSBwYXRjaD8gRGlkIHlvdSB1c2UgZ2l0IHNlbmQt
-ZW1haWw/Cj4gCgpUaGUgcGF0Y2ggaXRzZWxmIGlzIGZpbmUsIGJ1dCBJIGZvcmdvdCB0byBDYyB0
-aGUgYXV0aG9yIG9mIHRoZSBwYXRjaCBJIApmaXhlZCwgc28gSSBhZGRlZCBhIENjLgoKVGhhbmtz
-LApXYW5nCgo+IEJhcnQKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+Hi Marek,
+
+On Mon, 5 Dec 2022 at 18:30, Marek Szyprowski <m.szyprowski@samsung.com> wrote:
+>
+> Hardkernel Odroid-M1 board is supported since commit fd3583267703
+> ("arm64: dts: rockchip: Add Hardkernel ODROID-M1 board"). Enable all
+> drivers needed by that board in the defconfig to let the automated
+> test systems to check them on the real hardware.
+>
+> The drivers were configured to be compiled as modules if that was
+> supported.
+>
+> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> ---
+>  arch/arm64/configs/defconfig | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index 851e8f9be06d..01014451ba8e 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -237,6 +237,7 @@ CONFIG_PCI_LAYERSCAPE=y
+>  CONFIG_PCI_HISI=y
+>  CONFIG_PCIE_QCOM=y
+>  CONFIG_PCIE_ARMADA_8K=y
+> +CONFIG_PCIE_ROCKCHIP_DW_HOST=y
+>  CONFIG_PCIE_KIRIN=y
+>  CONFIG_PCIE_HISI_STB=y
+>  CONFIG_PCIE_TEGRA194_HOST=m
+> @@ -300,6 +301,7 @@ CONFIG_ATA=y
+>  CONFIG_SATA_AHCI=y
+>  CONFIG_SATA_AHCI_PLATFORM=y
+>  CONFIG_AHCI_BRCM=m
+> +CONFIG_AHCI_DWC=m
+>  CONFIG_AHCI_CEVA=y
+>  CONFIG_AHCI_MVEBU=y
+>  CONFIG_AHCI_XGENE=y
+> @@ -421,6 +423,7 @@ CONFIG_INPUT_PM8941_PWRKEY=y
+>  CONFIG_INPUT_PM8XXX_VIBRATOR=m
+>  CONFIG_INPUT_PWM_BEEPER=m
+>  CONFIG_INPUT_PWM_VIBRA=m
+> +CONFIG_INPUT_RK805_PWRKEY=m
+>  CONFIG_INPUT_HISI_POWERKEY=y
+>  # CONFIG_SERIO_SERPORT is not set
+>  CONFIG_SERIO_AMBAKMI=y
+> @@ -516,6 +519,7 @@ CONFIG_SPI_MT65XX=y
+>  CONFIG_SPI_ORION=y
+>  CONFIG_SPI_PL022=y
+>  CONFIG_SPI_ROCKCHIP=y
+> +CONFIG_SPI_ROCKCHIP_SFC=m
+>  CONFIG_SPI_RPCIF=m
+>  CONFIG_SPI_RSPI=m
+>  CONFIG_SPI_QCOM_QSPI=m
+> @@ -529,6 +533,7 @@ CONFIG_SPI_TEGRA114=m
+>  CONFIG_SPI_SPIDEV=m
+>  CONFIG_SPMI=y
+>  CONFIG_PINCTRL_MAX77620=y
+> +CONFIG_PINCTRL_RK805=m
+>  CONFIG_PINCTRL_SINGLE=y
+>  CONFIG_PINCTRL_OWL=y
+>  CONFIG_PINCTRL_S700=y
+> @@ -596,6 +601,7 @@ CONFIG_BATTERY_MAX17042=m
+>  CONFIG_CHARGER_MT6360=m
+>  CONFIG_CHARGER_BQ25890=m
+>  CONFIG_CHARGER_BQ25980=m
+> +CONFIG_CHARGER_RK817=m
+>  CONFIG_SENSORS_ARM_SCMI=y
+>  CONFIG_SENSORS_ARM_SCPI=y
+>  CONFIG_SENSORS_GPIO_FAN=m
+> @@ -697,6 +703,7 @@ CONFIG_REGULATOR_VCTRL=m
+>  CONFIG_RC_CORE=m
+>  CONFIG_RC_DECODERS=y
+>  CONFIG_RC_DEVICES=y
+> +CONFIG_IR_GPIO_CIR=m
+>  CONFIG_IR_MESON=m
+>  CONFIG_IR_SUNXI=m
+>  CONFIG_MEDIA_SUPPORT=m
+> @@ -742,6 +749,7 @@ CONFIG_DRM_EXYNOS_DSI=y
+>  CONFIG_DRM_EXYNOS_HDMI=y
+>  CONFIG_DRM_EXYNOS_MIC=y
+>  CONFIG_DRM_ROCKCHIP=m
+> +CONFIG_ROCKCHIP_VOP2=y
+>  CONFIG_ROCKCHIP_ANALOGIX_DP=y
+>  CONFIG_ROCKCHIP_CDN_DP=y
+>  CONFIG_ROCKCHIP_DW_HDMI=y
+> @@ -831,6 +839,7 @@ CONFIG_SND_SOC_SM8250=m
+>  CONFIG_SND_SOC_SC7180=m
+>  CONFIG_SND_SOC_SC7280=m
+>  CONFIG_SND_SOC_ROCKCHIP=m
+> +CONFIG_SND_SOC_ROCKCHIP_I2S_TDM=m
+>  CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
+>  CONFIG_SND_SOC_ROCKCHIP_RT5645=m
+>  CONFIG_SND_SOC_RK3399_GRU_SOUND=m
+> @@ -863,6 +872,7 @@ CONFIG_SND_SOC_GTM601=m
+>  CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
+>  CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
+>  CONFIG_SND_SOC_PCM3168A_I2C=m
+> +CONFIG_SND_SOC_RK817=m
+>  CONFIG_SND_SOC_RT5640=m
+>  CONFIG_SND_SOC_RT5659=m
+>  CONFIG_SND_SOC_SIMPLE_AMPLIFIER=m
+> @@ -1277,7 +1287,9 @@ CONFIG_PHY_ROCKCHIP_EMMC=y
+>  CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
+>  CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+>  CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
+> +CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
+
+The following should be set to CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=y
+
+If not it fails to enable PCIe on Radxa 3a
+[    0.735048] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
+[    0.759924] phy phy-fe8c0000.phy.4: lane number 0, val 1
+[    0.760915] phy phy-fe8c0000.phy.4: rockchip_p3phy_rk3568_init:
+lock failed 0x6890000, check input refclk and power supply
+[    0.761881] phy phy-fe8c0000.phy.4: phy init failed --> -110
+[    0.762477] rockchip-dw-pcie: probe of 3c0800000.pcie failed with error -110
+
+Reviewed-by: Anand Moon <linux.amoon@gmail.com>
+
+Thanks
+
+-Anand
+
+>  CONFIG_PHY_ROCKCHIP_PCIE=m
+> +CONFIG_PHY_ROCKCHIP_SNPS_PCIE3=y
+>  CONFIG_PHY_ROCKCHIP_TYPEC=y
+>  CONFIG_PHY_SAMSUNG_UFS=y
+>  CONFIG_PHY_UNIPHIER_USB2=y
+> --
+> 2.38.1
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
