@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B7DC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Dec 2022 12:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB20C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Dec 2022 21:40:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gGfCKnvYdFOAEmqoxxCR47gBu42fncYzqODvwNX01vo=; b=t1lbB+zxYzumE3
-	9Dah2uywtOaooRX+XUhOO8EL2X7kjCKG3egOq54hVl38XfUUsbhOrqCny6H/2d7V6GLBQUF6oEZpR
-	PW7tbS0x7gVi8MG5n1vBLwwt+SVbciQ95zH8MyK0eq48G2bzVJzFmeHPKWZt5nb3v2cfRkPYDQ0QY
-	tXuH28UKPD85yjU9nzGNyE5LJXdRbdpZsB0CHOO7s17WWQzKQxuKGEbGYlgdQGXR8pDM33IYO0UF8
-	b6/mzZm9Nje1FXM7c8rUFuLFcEmX7RaaT3hSdjLXbvoqcydvxEWCB6fcfZjs+dgDlNxnXNwYmpVHc
-	DINlcK3HDwIQjQ8V82gQ==;
+	List-Owner; bh=LfGZRm8XMG9l2kfHHqzkKssquUJqoo3D/keEkFZ4Dr4=; b=nbc2wVZeA2G8W/
+	9jbQG30NbLb6wsfnELmszigQiCBZGhADvim9/eJv5m8a2RCpHhaVJn24Yxa+5G2qa7RCPjRPmRckQ
+	EDRZzNpISYDx1kOMrRO1/Znv2kOjz7FBe4SvTxM473zWcs61L8j1M1vHR9Crg4/hdpQiWdubtNcoZ
+	vxvEJroqW0S2oM2zEeK7CZY/Jao1R4ngctlmW8wyW/Ob5td3AViJPMDNE7fWjOkp2jP0aigNodzN9
+	MPBaH2VEbRM49TVmPEEwLP2pN2w16hAQg/WAB3WtQYM5s4g2urWjwUzjAaBfD8TsC4UZiSheuoHwN
+	ROAw4En8OJfvdujq6MyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3c4K-007ISn-4I; Fri, 09 Dec 2022 12:01:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p3l6f-00BZqR-Uv; Fri, 09 Dec 2022 21:40:33 +0000
+Received: from mail-oa1-f46.google.com ([209.85.160.46])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3c4E-007IOV-HP
-	for linux-rockchip@lists.infradead.org; Fri, 09 Dec 2022 12:01:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3A89C62167;
-	Fri,  9 Dec 2022 12:01:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C602C433D2;
-	Fri,  9 Dec 2022 12:01:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670587284;
-	bh=VO1jn+Chl+xyrflXzrrO7caYAzOuX+cY2t9eRqjN5PM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=P6bvHrBh70ZZ8nZBuZs/yt+uDSQokcyK+zE2Txngfcuzobdrka6BLdoHI+V9AyL+0
-	 jSNbqFg8o3Mrza1I/hWMGbEUPpRp4TRTuRXhQkhI9JQN4omF0I2mn2LG7p0B8fK2Ec
-	 OdN558i7eUDxEEunzTacG+Z/ykbzqhrq36jgg3MnnwH5UqqLqG6KFHhgdg9NQMpsgu
-	 PcBmCxLe4VMocyLI6vfRSjEoHela7dxY0JOBITItpXL2EiqirP5u/BSAbwEWXRwpTd
-	 yn1p3MW//Oo6E35jECYxEP256TUdcs+N0Vn+Sh3h2JETsTN1bzgM7WmD5oh9F3q42W
-	 DZzHm2uPIxHEg==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1p3c4A-00BaAw-52;
-	Fri, 09 Dec 2022 12:01:22 +0000
-Date: Fri, 09 Dec 2022 12:01:21 +0000
-Message-ID: <86cz8srdke.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, 	Kever Yang <kever.yang@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCHv5 3/7] arm64: dts: rockchip: Add base DT for rk3588 SoC
-In-Reply-To: <20221205172350.75234-4-sebastian.reichel@collabora.com>
-References: <20221205172350.75234-1-sebastian.reichel@collabora.com>
-	<20221205172350.75234-4-sebastian.reichel@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, kever.yang@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linus.walleij@linaro.org, chris.obbard@collabora.com, benjamin.gaignard@collabora.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kernel@collabora.com, yifeng.zhao@rock-chips.com, zhangqing@rock-chips.com, sugar.zhang@rock-chips.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1p3l6U-00BZnZ-Ji; Fri, 09 Dec 2022 21:40:23 +0000
+Received: by mail-oa1-f46.google.com with SMTP id 586e51a60fabf-14449b7814bso1316960fac.3;
+        Fri, 09 Dec 2022 13:40:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rQNLNwb7egvKzdyQwetZ99ju3LT/N1ETMdh7cmYXrrI=;
+        b=cN4vYh84tBktenyLg02z3zRBb8bYfMR+qisKvY4QHoTIlDuf2Zgv6163LssXtiOgrK
+         z0E+XRlOdDvfWygTzJFqJTUtAapNeeoZh8TaApJplIXPCs1U5haZgnLlzJg9E8d8GQbZ
+         /7MLX5iS6ZzEqfIi1pQAl7kzPwrUCYyyXZQeJK2oiVdJTZ0pEW5sX/leOhQtl3OHlCEg
+         8i+7TC2YanDpWK+/YJkNnPrleVHHvdj2iWlAdqo+O2BJYkwMKF+Ndx9gB7cGkwh2YRya
+         SijrH0PhLQdDJVs5lJKIoWFQc4AWX9/Ou48bm8NMCXd/yxdGdIQlJvaj5kbdN86QrhY6
+         N5TQ==
+X-Gm-Message-State: ANoB5pm5ozCSH6ruK6qfY19wKfwsOL7C1LtqUoMelubQI4FMBwwiNzQC
+	8ctv+KhZgSBWLmpfZ9jTIQ==
+X-Google-Smtp-Source: AA0mqf7lwDrbenyYhLWCRr+uwf9A/1TS2dZQejWfTzGivAycybUvW/jQnBmc9p97uk9mjPhgpxrqpg==
+X-Received: by 2002:a05:6871:4592:b0:143:84e0:ac18 with SMTP id nl18-20020a056871459200b0014384e0ac18mr3687567oab.33.1670622021171;
+        Fri, 09 Dec 2022 13:40:21 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id u6-20020a056871058600b0013b92b3ac64sm1405499oan.3.2022.12.09.13.40.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Dec 2022 13:40:20 -0800 (PST)
+Received: (nullmailer pid 3892918 invoked by uid 1000);
+	Fri, 09 Dec 2022 21:40:20 -0000
+Date: Fri, 9 Dec 2022 15:40:20 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Peter Geis <pgwipeout@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: add Radxa CM3I E25
+Message-ID: <167062201942.3892855.2015967991620130082.robh@kernel.org>
+References: <20221209102524.129367-1-amadeus@jmu.edu.cn>
+ <20221209102524.129367-2-amadeus@jmu.edu.cn>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20221209102524.129367-2-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_040126_696840_2B134614 
-X-CRM114-Status: GOOD (  26.24  )
+X-CRM114-CacheID: sfid-20221209_134022_687364_40575C96 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,122 +79,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 05 Dec 2022 17:23:46 +0000,
-Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+
+On Fri, 09 Dec 2022 18:25:23 +0800, Chukun Pan wrote:
+> Radxa CM3 Industrial (CM3I) is an System on Module made by Radxa
+> based on the Rockchip RK3568 SoC. The first carrier board supported
+> is the Radxa E25. Add devicetree binding documentation for it.
 > 
-> From: Kever Yang <kever.yang@rock-chips.com>
-> 
-> This initial version supports (single core) CPU, dma, interrupts, timers,
-> UART and SDHCI. In short - everything necessary to boot Linux on this
-> system on chip.
-> 
-> The DT is split into rk3588 and rk3588s, which is a reduced version
-> (i.e. with less peripherals) of the former.
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> [rebase, squash and reword commit message]
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588.dtsi  |   58 +
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 1672 +++++++++++++++++++++
->  2 files changed, 1730 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> new file mode 100644
-> index 000000000000..ecdd2294cd42
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -0,0 +1,1672 @@
 
-[...]
-
-> +	pmu-a55 {
-> +		compatible = "arm,cortex-a55-pmu";
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
-> +
-> +	pmu-a76 {
-> +		compatible = "arm,cortex-a76-pmu";
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
-
-Two PMUs with the same PPI and no partition? This is totally
-wrong. Please see how RK3399 does it, with each PMU having a PPI
-partition allocated.
-
-See the PMU binding for the details.
-
-> +
-> +	psci {
-> +		compatible = "arm,psci-1.0";
-> +		method = "smc";
-> +	};
-> +
-> +	spll: clock-0 {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <702000000>;
-> +		clock-output-names = "spll";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH>;
-
-You have a set of ARMv8.2 cores, which do have an interrupt for the
-EL2 virtual timer. Please add this interrupt and while you're at it,
-add the interrupt-names properties that are associated with them.
-
-See the binding for the details.
-
-[...]
-
-> +	gic: interrupt-controller@fe600000 {
-> +		compatible = "arm,gic-v3";
-> +		reg = <0x0 0xfe600000 0 0x10000>, /* GICD */
-> +		      <0x0 0xfe680000 0 0x100000>; /* GICR */
-> +		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-controller;
-> +		mbi-alias = <0x0 0xfe610000>;
-> +		mbi-ranges = <424 56>;
-> +		msi-controller;
-> +		#interrupt-cells = <3>;
-> +
-> +		ppi-partitions {
-> +			interrupt-partition-0 {
-> +				affinity = <
-> +					&cpu_l0 &cpu_l1 &cpu_l2 &cpu_l3
-> +					&cpu_b0 &cpu_b1 &cpu_b2 &cpu_b3
-> +				>;
-> +			};
-> +		};
-
-What is the purpose of having an interrupt partition that covers *all*
-the CPUs? This makes zero sense. You need to:
-
-- Bump #interrupt-cells to 4, as per the GIC binding
-
-- Create PPI partitions to segregate the two CPU types
-
-- Make the PMU devices use the corresponding PPI partition as per the binding
-
-- Fix all the interrupt specifiers to use 4 cells instead of 3
-
-Again, RK3399 got it right, and for once I'm advocating some sort of
-copy/paste...
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
