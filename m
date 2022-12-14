@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10735C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Dec 2022 15:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72199C001B2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Dec 2022 18:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=U7d5D9TjjQkDyySGGwPtvLx+8+/dlZ6KpzZXNkYPawM=; b=GGxJPweqT5T2Cv
-	rkEgowDxVbh8RwykU7X1IlOGEELNUNEY2HZ+sRmDo27rBT8890Q/asiGOidEJdHjCUdbZ3DbFyHKH
-	BnFLnFV0HAq7GuMrtSaAXUtW5F4OU3Csm7PRsnj9j8wAAXYyzimrCAy20WvLYO+tz1nEi6awWjGAP
-	xxKVBziUdEiAvh7dwA73qRN62gMPDiwGgVL7QZJdtY0vFs0eY81bM1VDteUJ/EJjuBbij+mEhc9pE
-	qEfoFdTIXiQMhBIOKy0sIQ2WxDldl99wR2gFyXcZyXO+hxPAWWekyG1D9gCghY3y1W2GYrfDy8Emw
-	wSkt9k2AnhoYcuSR42hw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dCFCzGv/5G0BwOhsHNuD7JoNk+e8UheGePunoiHC3Gg=; b=T0Ekir5Yo1NIHx
+	HgAy0RGC/GkzHzgJt1N84EurmCjHOQhwQXQ04mQDx8I0e/SxqffNtJgLnsI/OM99jKGNeqZRah2wS
+	O4cNCcTyMzIZl5n3ICWdyXl94USqLPY1X457aXQXIAaMoHXrm+vxdncnaMEGINNonJHYaxGe7PSZc
+	XDwSd7HC0nk8WqgyTWBl8+VEHIqwBX19VobXDBm0i2FbRoGrs6vWVRbji/AAg4NR83MJ2aTmArMcA
+	Zm5KT5Z7HAEgcaZUR+SuNb5U0HjZ2YnueaN8tyZJbFgFXcZaGNC3IeebZfhB6EF0JIQOuXTulzz/h
+	PBKXEfnSqkp1xOyoeSCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5U5w-000NPX-75; Wed, 14 Dec 2022 15:54:56 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1p5WPA-001ZFK-K8; Wed, 14 Dec 2022 18:22:56 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5U5l-000NHF-0n; Wed, 14 Dec 2022 15:54:46 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id DAB7F408C9;
-	Wed, 14 Dec 2022 15:54:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1671033280;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=JHabEsGCzp6neX/91Eo3uw+27IBRIbG6zMdrZJN0FiY=;
-	b=wXm+8GGyrvLBhaGhEDeCW6DxdJ6kTm/b8lyMIfsgtV4T7PCUwuYIz9B4lp1tSz5R1BKjjP
-	tDDEWrZL0i2AoA0YZ27h39JKnOP+itg829Cw7lYgICnkX+tPUv9qgx7MM6FAxMINaMK7Mv
-	3qblT7wEZIQh3xcW5LvUnnMMYaVcFAs=
-Received: from frank-G5.. (fttx-pool-80.245.72.136.bambit.de [80.245.72.136])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A85471226E7;
-	Wed, 14 Dec 2022 15:54:39 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Alex Riabchenko <d3adme4t@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
+	id 1p5WP7-001ZAA-C9
+	for linux-rockchip@lists.infradead.org; Wed, 14 Dec 2022 18:22:54 +0000
+Received: from jupiter.universe (dyndsl-095-033-169-234.ewe-ip-backbone.de [95.33.169.234])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B08C16602C05;
+	Wed, 14 Dec 2022 18:22:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1671042171;
+	bh=km48d5+uuKrtU+jKn1qKtyEltR/pLoMVSjioNlT7fVs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=li/kTdDTTPbK0eOsl2Iqdv7GTq09aGgSF4+eXv1lY7D35/u4LLATtIBJMdy91C/Jr
+	 2sCZqRDzxItTHa8x8+Xc1Z6Yn7bCiaaPC6puw0lnO4+7tjoh5y6tn3g5vLRqN+Ob/a
+	 nCnSh9TifWpMtP0G8Uyz/Q+MQG9A42McYkCyub8ka35/wnIKzuEh0YKuAJNSEaXsuE
+	 cscfqoY75JhcnKH/DWmyo1r6q6oTAomBBlofh/p+dbwYQRe4F44E0ac1uOmGShG0LU
+	 1wtxqT5gb1tm2V+C4hAZliegyXB6V/IQchqChjlp8WMvOO16Vfga1ddOjRfturcDXD
+	 lgGGSKIp5u7/A==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id B72F5480117; Wed, 14 Dec 2022 19:22:48 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Marc Zyngier <maz@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add IR receiver to BPI-R2Pro
-Date: Wed, 14 Dec 2022 16:54:33 +0100
-Message-Id: <20221214155433.112257-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCHv6 1/7] dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
+Date: Wed, 14 Dec 2022 19:22:41 +0100
+Message-Id: <20221214182247.79824-2-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20221214182247.79824-1-sebastian.reichel@collabora.com>
+References: <20221214182247.79824-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221214_075445_247252_C5406952 
-X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-CacheID: sfid-20221214_102253_566703_6DF5FDF1 
+X-CRM114-Status: UNSURE (   7.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,52 +85,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Alex Riabchenko <d3adme4t@gmail.com>
+Add IOC and PHP GRF syscon compatibles for RK3588.
 
-Add the infrared receiver and its associated pinctrl entry.
-
-Based on Aurelien Jarno's patchset:
-https://lore.kernel.org/lkml/20220930051246.391614-14-aurelien@aurel32.net/
-
-Signed-off-by: Alex Riabchenko <d3adme4t@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index 5701c96d31b1..6473756a69bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -66,6 +66,13 @@ hdmi_con_in: endpoint {
- 		};
- 	};
- 
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio0 RK_PC2 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ir_receiver_pin>;
-+	};
-+
- 	vcc3v3_sys: vcc3v3-sys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
-@@ -655,6 +662,12 @@ hym8563_int: hym8563-int {
- 		};
- 	};
- 
-+	ir-receiver {
-+		ir_receiver_pin: ir-receiver-pin {
-+			rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pcie {
- 		minipcie_enable_h: minipcie-enable-h {
- 			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none_drv_level_5>;
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 2ed8cca79b59..e682b407a383 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -20,6 +20,11 @@ properties:
+               - rockchip,rk3568-pipe-grf
+               - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
++              - rockchip,rk3588-bigcore0-grf
++              - rockchip,rk3588-bigcore1-grf
++              - rockchip,rk3588-ioc
++              - rockchip,rk3588-php-grf
++              - rockchip,rk3588-sys-grf
+               - rockchip,rk3588-pcie3-phy-grf
+               - rockchip,rk3588-pcie3-pipe-grf
+               - rockchip,rv1108-usbgrf
 -- 
-2.34.1
+2.39.0
 
 
 _______________________________________________
