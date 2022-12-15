@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 865ADC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:17:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1604BC25B04
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:30:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ol5iE7Mp3UgYaZ96KY74OpMvWx58qGKtXHOfLvRfyh4=; b=OoCl6VOksHW9up13Qeeg7VI1VC
-	w0pkGgYKC9aIcvqcuPskdHBw2n2ItxJWtcAY0GqUYOljQ13gmplvaPIBo0R+CU+KF2HieQjEkgbKG
-	xIafhqIPccSzkWEj4pPIwD2DZgV5BAndASm0xK8uxoCDHwSlEQpkAEkpox2bqqMDqp9DKEXZtfVWv
-	ViR8zxqBf2cbPGDZqpm70soimvgLY+LcWmerSvj6kSqo/iUp6t64RcfRXa0pFVAONBvHHM8x4ldpa
-	LYKEPNZm9xQnxC4v/Etl6NQA0XZys6tjLkm6Q+hDon6DiNwmLxPSnGLa4ndBdtUcNbOgAua/TRZ5s
-	A9aOXO2g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kbDQNbxc70mfTyk2iELFMQG4r6Oi4ZQFClP8QLvJFTY=; b=47AUgbUsHycmNi
+	zRiGWu5qvWuKFQYPY7ayCKmKPk0hHoEp/QezeVHs8KZOai15kb15EfXELh56g1QLjCjUc6x3jy9rR
+	ixEXfvLkpijawbDzoZj+8lu6WeS80gTnrLf6UI7qZJQP8iVCrhpHIaNb7IuBt1b2ZwQwrnAe6WBeD
+	52cgeTaYa/VKCf8gpQU4Z4BLeaIzJtjGJ7cAPhISqQ1YiRmp8k8+Tf+gxiyeAmHn1pgkpgmr97ia7
+	lVt8yNH/29TESMCOHZ9e5YiutRrpiMArJIZNpfjBLM0OYrC6Eaq23W3sSOCXZRST/Ufa1BtzF9T3V
+	AuzHaQrguXx6xEsnhNuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5sna-00AnQc-Bh; Thu, 15 Dec 2022 18:17:38 +0000
+	id 1p5szj-00App6-Cq; Thu, 15 Dec 2022 18:30:11 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5snX-00AnNb-P7
-	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:17:37 +0000
-Received: from mercury (dyndsl-095-033-168-084.ewe-ip-backbone.de [95.33.168.84])
+	id 1p5szf-00ApmG-Tt
+	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:30:09 +0000
+Received: from jupiter.universe (dyndsl-095-033-168-084.ewe-ip-backbone.de [95.33.168.84])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 67B746602C74;
-	Thu, 15 Dec 2022 18:17:29 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 365B56602C74;
+	Thu, 15 Dec 2022 18:30:06 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671128249;
-	bh=tPqBuypDEG2gjIdV3HpZSKNOgRo5PoSbRevw1WTLn78=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UIm+k7b1NTSw75LADYumnmVxlGYJ3gT0q5sLfS8MTD8/KFE+whE2jQY4H2YK7tbGQ
-	 /13a30uFEPFLoWuhueOdTmmHvBajDYaQZZUsJDEqPle/KM+JLONk2bQArF+pXGT0Cz
-	 a60RjFhXFDbsZUc0YLNio4Dxm94tCTI/60XQ4IPU4eEidWb61g9KgPhWRSVcijwW/W
-	 MRpw6PO9kUlqk6z13Q6RMKmt6MaFYjQlQksF0ntnyiAdWoJd2RWofOavatnwkfLZcI
-	 ZPZJeKIpnVqvweL283MvCSmGXcUJanGwFqI1ey5Juou+3ZXfhxQ2bGWJubukNANLHK
-	 izie65qAzcXlQ==
-Received: by mercury (Postfix, from userid 1000)
-	id DD0161060F45; Thu, 15 Dec 2022 19:17:26 +0100 (CET)
-Date: Thu, 15 Dec 2022 19:17:26 +0100
+	s=mail; t=1671129006;
+	bh=wV+xB70dL/rAr5vw7rOX1NxQMtNjnz1aalkQwKIFdK4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=W4jtxJkD9DGbxWiK4ww05mPg7dOhutW6O43JRQk7hUqlTEN/SdJF9ZKygwPfF8OcC
+	 oGsYWqogKundaqs7OyBheiENCMKwbprdp0jiBVdjyjipHOxKJ6KslWeJMP1W1e1StF
+	 lJVvAALzaqIabTQNn8pFr/2nfgudSltmhDKDPaETqiYXvj+U+SOOcqRI/mtoj++Pa9
+	 fiJIiIBhukufGXe3DVSHyp38HGU+4QVYAlKYPwiBRLgoPk0JR0kUUb4t5/EnYrz4xs
+	 V2ZM1BJ6xqcQJoXHM5JITvxC7nYBZL9HG9r2AKkvGLktGwr62xoUe1yBMfmfh3lepj
+	 KOj+9fCvzh5wg==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 4A427480119; Thu, 15 Dec 2022 19:30:03 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Marc Zyngier <maz@kernel.org>,
+	Jagan Teki <jagan@edgeble.ai>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Christopher Obbard <chris.obbard@collabora.com>,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCHv6 0/7] Initial rk3588 DT
-Message-ID: <20221215181726.75qj6euoy3zgfbre@mercury.elektranox.org>
-References: <20221214182247.79824-1-sebastian.reichel@collabora.com>
- <20221215171828.GA153741-robh@kernel.org>
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv7 0/7] Initial rk3588 DT
+Date: Thu, 15 Dec 2022 19:29:55 +0100
+Message-Id: <20221215183002.211081-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-In-Reply-To: <20221215171828.GA153741-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_101736_048303_9009CEB2 
-X-CRM114-Status: GOOD (  26.19  )
+X-CRM114-CacheID: sfid-20221215_103008_243662_FF9B67D7 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,114 +77,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6194460290765001006=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6194460290765001006==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6nvfnquhkway6343"
-Content-Disposition: inline
-
-
---6nvfnquhkway6343
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
 Hi,
 
-On Thu, Dec 15, 2022 at 11:18:28AM -0600, Rob Herring wrote:
-> On Wed, Dec 14, 2022 at 07:22:40PM +0100, Sebastian Reichel wrote:
-> > Hi,
-> >=20
-> > This adds initial rk3588(s) DT including two different board
-> > devicetrees. All required driver changes have been merged into
-> > the respective maintainer trees. There is one warning from the
-> > DT check:
-> >=20
-> > $ make CHECK_DTBS=3Dy rockchip/rk3588-evb1-v10.dtb rockchip/rk3588s-roc=
-k-5a.dtb
-> >   DTC_CHK arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb
-> > /home/sre/src/collabora/rode/linux-rockchip-upstream/arch/arm64/boot/dt=
-s/rockchip/rk3588-evb1-v10.dtb:
-> >     ethernet@fe1c0000: Unevaluated properties are not allowed ('interru=
-pt-names', 'interrupts', 'mdio',
-> >     'power-domains', 'reg', 'reset-names', 'resets', 'rx-queues-config'=
-, 'snps,axi-config', 'snps,mixed-burst',
-> >     'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,tso', 'stmmac-axi=
--config', 'tx-queues-config' were unexpected)
-> > 	From schema: /home/sre/src/collabora/rode/linux-rockchip-upstream/Docu=
-mentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> >=20
-> > This is for gmac1. gmac0 has the same properties and there is no warnin=
-g. Also
-> > rk3588s (and thus the Rock 5A) has only gmac1 and there is no warning f=
-or the
-> > Rock 5A. It looks like for some reason the referenced "snps,dwmac.yaml#"
-> > is only checked for the first node. I think it's a bug in dt-validate.
-> > Also the same issue can be seen with rk356x.
->=20
-> I believe the issue is fixed in v2022.12. I didn't reproduce it. The=20
-> problem is with disabled nodes. In some cases 'required' failing in turn=
-=20
-> triggers unevaluated property failures. So we now filter out both=20
-> errors. But that's still not enough in some cases, so the only thing=20
-> that works is just removing disabled nodes before validation. That's not=
-=20
-> great if it is something where the bootloader enables the node and also=
-=20
-> means whomever enables a block for a board gets to fix the issues.
+This adds initial rk3588(s) DT including three different board
+devicetrees. All required driver changes have been merged into
+Linus tree already. To avoid warnings from
 
-Indeed, I can no longer reproduce this error with 2022.12
-(previously I was on dt-schema 2022.09). Thanks for looking into it.
+$ make CHECK_DTBS=y rockchip/rk3588-evb1-v10.dtb \
+  rockchip/rk3588-rock-5b.dtb rockchip/rk3588s-rock-5a.dtb
 
-> BTW, I do also see this warning:
->=20
-> arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dtb:0:0: /i2c@feaa0000/rtc@5=
-1: failed to match any schema with compatible: ['haoyu,hym8563']
+it is required to have dt-schema 2022.12 (older releases may
+generate warnings for the ethernet nodes) and c69bffe199270c
+("dt-bindings: rtc: convert hym8563 bindings to json-schema")
+from rtc-next.
 
-I suppose you are missing:
+Changes since PATCHv6:
+ * https://lore.kernel.org/all/20221214182247.79824-1-sebastian.reichel@collabora.com/
+ * renamed ppi_cluster<x> to ppi_partition<x>
+ * updated commit message of the third patch removing the incorrect "(single core)" and
+   listing all added IP blocks.
+ * removed brightness levels from EVB1 backlight; I kept the backlight node. It's the
+   test case for PWM support.
+ * rebase to current linus master (041fae9c105a)
 
-https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git/commit/?=
-id=3Dc69bffe199270ce001d5764985a8e414c7e05fee
+Changes since PATCHv5:
+ * https://lore.kernel.org/all/20221205172350.75234-1-sebastian.reichel@collabora.com/
+ * modified GIC interrupts to use rk3399 style setup with two PPI partitions
+ * add interrupt-names to the ARM timer node
+ * add hyp-virt IRQ to the ARM timer node
+ * re-add the #power-domain-cells for the power-controller sub-nodes and set to 0;
+   the DT binding document requires it. I'm not sure why it was not pointed out by
+   DTBS_CHECK when sending v4 and v5.
+
+Changes since PATCHv4:
+ * https://lore.kernel.org/all/20221124144928.35381-1-sebastian.reichel@collabora.com/
+ * update compatible string for the PHY to provide PHY ID. Without the IDs
+   provided in the firmware, the kernel tries to identify the correct driver by
+   reading the ID. This fails, if the bootloader does not setup the reset GPIO,
+   since the kernel only setups the reset GPIO in the PHY driver. Rock 5A with
+   the default bootloader runs into this, but I also changed EVB1 since the kernel
+   should not depend on bootloader configuration for this.
+ * added pinctrl for PHY reset-gpios
+ * drop rgmii-rxid from gmac1 node
+ * added reviewed-by from Michael Risch for board DTs
+ * I kept the order of the trailers (i.e. my SoB being the last), which is the usual
+   order in most subsystems
+
+Changes since PATCHv3:
+ * https://lore.kernel.org/all/20221121175814.68927-1-sebastian.reichel@collabora.com/
+ * update reset gpio + timings in EVB1 and Rock 5A DT to new style
+ * change regulator- prefix to -regulator suffix in EVB1 and Rock 5B DTB
+ * merge dt-binding update patches for EVB1, Rock 5A and Rock 5B and add Krzysztof's Ack
+ * change pinctrl name "active" to "default" for all PWM nodes
+ * remove aliases from rk3588s and rk3588 DTSI
+ * sort includes in rk3588s.dtsi
+ * add dma names for uart
+ * some more property order fixes
+ * remove #power-domain-cells for the power-controller sub-nodes; only the main node should be referenced
+ * add dynamic-power-coefficient and #cooling-cells for all CPU cores
+
+Changes since PATCHv2:
+ * https://lore.kernel.org/all/20221115161702.163057-1-sebastian.reichel@collabora.com/
+ * add minimal Radxa Rock 5B DT
+ * Add aliases for i2c, spi and gpio in rk3588s.dtsi
+ * Fix ethernet-phy node name and remove #phy-cells
+ * Sort nodes / includes in both boards
+ * Sort nodes in rk3588s.dtsi according to register address
+ * add missing spi4 node in rk3588s.dtsi
+ * split board specific dt-bindings into their own patches
+ * add board specific mmc alias following the downstream enumeration
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20221108171500.99599-1-sebastian.reichel@collabora.com/
+ * Drop Acked-by from Krzysztof
+ * Add 'regulator-' prefix to VCC12V VCC5V0 regulators
+ * Change 'Radxa Rock 5A' to 'Radxa ROCK 5 Model A' in DT binding
+ * Update cover-letter (clock driver and some DT binding fixes got merged)
 
 -- Sebastian
 
---6nvfnquhkway6343
-Content-Type: application/pgp-signature; name="signature.asc"
+Christopher Obbard (1):
+  arm64: dts: rockchip: Add rock-5b board
 
------BEGIN PGP SIGNATURE-----
+Jianqun Xu (1):
+  arm64: dts: rockchip: Add rk3588 pinctrl data
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmObZKwACgkQ2O7X88g7
-+ppQDA//VDi6HjP0j7Bb1Bx7v4JlMCRvVcD2toqQelyKcat50wUVFt0Ps6stMusT
-VQjGpeacT6XC2NG0eqx9J7HTOpE10SyIQo30Xuq6k5rlihdMMNuiWNEtdWtLHVDq
-Lglz/d6qqeooRBs7YT0rD0Ao+6ssZBkOJ6MaE89FCBp3dFgIZC1gH55W4dz6pade
-+hfnBWAIPEx1PC3Ny8ltMTrgEnBV3zh1lwygFhQgLI7Ka0IvGiDeOAinhoPUQdLQ
-Ffdal/IvZ/fPOFflZRcBKithpJWBouiM88JBN5ygN1bv18PwVdSUnPpgWJUEPmby
-j8rDoTdLZB5vqwP52Tbt63Mh7DcvHhCVQ+elyVniai5uaahSkBhwgM8ksKlxgRlh
-HVoDtnozZzsgX7Ol5Li9YUmVlzFFDaxOdhmRkThUy/djMfT75nsBwvgbYmeYooyY
-+urxNvSfFVj5zosTLUKBUIW1+hKoNkRUkeKGkpdFv2/AWmcPspspJKezaJDd7tXI
-0TFQTuzgGKA4pyktH+8v328l0zAXLB8gkMUAyInlHQ7a6tAxswJ/Loe0OmxxndLO
-0vx9L7w5eQmjAlMPDEbABI87ePYM/zP5zNUQdufQut21LR6fiHMAfmUnGOczp+p0
-STycbf+LbaAEHZEXEnB92vA73mXigKliApB9rvJjJ4n5Vdi5KbQ=
-=AGbZ
------END PGP SIGNATURE-----
+Kever Yang (2):
+  arm64: dts: rockchip: Add base DT for rk3588 SoC
+  arm64: dts: rockchip: Add rk3588-evb1 board
 
---6nvfnquhkway6343--
+Sebastian Reichel (3):
+  dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
+  dt-bindings: arm: rockchip: add initial rk3588 boards
+  arm64: dts: rockchip: Add rock-5a board
 
+ .../devicetree/bindings/arm/rockchip.yaml     |   15 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    3 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  129 +
+ .../boot/dts/rockchip/rk3588-pinctrl.dtsi     |  516 +++
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   44 +
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |   58 +
+ .../boot/dts/rockchip/rk3588s-pinctrl.dtsi    | 3403 +++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   73 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 1703 +++++++++
+ 10 files changed, 5949 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 
---===============6194460290765001006==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.39.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6194460290765001006==--
-
