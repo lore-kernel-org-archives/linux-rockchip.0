@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D31C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CE7C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 20:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wlEeHObhnr8djHMQv+Gh/TwAX6JmHvVlVdzzrZ252iw=; b=a8lIEBaet4Xhmj
-	4YVGIJQAYOWrl/iy5iocNcyk2N8xzeqYIWZfbL+XzWXGv0f1e3AlychrvSj0rGx+Em0+h1mVW8mgE
-	QSUOUNg4c8nSHdRsRk/5vGyxF3ws+xPm4z65EUJz3den51QW5OR7MDWqg0/78Yaa5UBlW1rIbY4Ef
-	ImMRvjLhfh2YBJtqumaT2WDVj/81tnoE1nUHzlu40ACLyL7uR9zDGdFMzNDkAia5jNg3e0OOeG0md
-	SDy/CV7PT+skFXZXsTzXWeN1nfi3DX/nWy8y99ATQ8ePpBMR4X2xULWlBxGQ/BAemMfEloNLLp3x2
-	26C9qjf360HAHZDW8bfA==;
+	List-Owner; bh=xJBGHdSE34ocLlrul30bDFEKE0JL3/HOCWcSikq0PPw=; b=G439V9t7kIsYWd
+	I8v4D5pS/uiL1OOOTrT/KxcHxf8PnsPuT+1oKdFnW55H8kQe7AtnKkEkVON5vo+cJuOlwYVYMY7i2
+	kQR/ifc8PFDq8Mi8Ac/KqVAbR0BrVlwxseaEMo525icZcnoFY7B7R8fa4clBMSzirGkH8RV68KRTK
+	vAeNmLLL91d5dWfBUBpQBYnBMpQ/ssGuimT4F4+qXyuCWZIopNNcw76Qzes1mZ7vqsfApbUlChNZc
+	MGDd7WcecWPQ2dFDh2sOAIVYCGxhPCAuL3Fk1yi+5EpY4ebCAEltY4iUeWUfYKSvNPPN33HYLxt92
+	JPtUVPnAAzcVEnRpIgLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5tLG-00Au0B-0l; Thu, 15 Dec 2022 18:52:26 +0000
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5tLB-00Atx8-V1
-	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:52:23 +0000
-Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-14449b7814bso447049fac.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Dec 2022 10:52:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5MuYdw/TKmmfACRBxYwGpprkKtsguH2MTUAVNosMrsw=;
-        b=EsXC1CFRIu5XE3KansyZwbZb7jE1sCuVK85dRB5EUL/tBP5HPxbRWXZSKC1Ch6b4H7
-         AKfuIu7VNsaEX+ipmv5asB2xobhntEe/QpPaoEHiOW5byJqg6tb9d6eJE++SmuT7+lHH
-         qSLNUX92iDTRWoexVLVCDimOKGDQFNhYlXb79X9gs+m6NRfxJIHvBz0oV1z66vOvrHJq
-         A+aadhNsjfGHhWA3DgC3bA38GrnK5REZzvr6ObeU8nB85scdaNEANb2pHrnkcubTs1dj
-         9sblbJcqdMF57hQ6UrKC05VfCzjb+G6hBE6me/HGVVEu/0tfxdWst4YA37gVN92M1T3P
-         bCKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5MuYdw/TKmmfACRBxYwGpprkKtsguH2MTUAVNosMrsw=;
-        b=Nt6bC3eKTeTMrQu1BsFC4emCwUrPakEDJy37Mg2jYj98z7t90WXhwjtMjA8EvaGgSu
-         gg7dMQvueTQy0ShagJhOfUNUu59lhqcsoocKb2UjT1P33CUYTinyUA5Mg7uOSsthq9b0
-         NOMqfgUltVLUQDx4199WnnLogd78IZcVYezDyeNOkw8k3q3bg41X+mo0t3gVvMsQd8Vk
-         6T21gAoI0PZByuC3XE1fznoZgA5WSOCR13oVS93bfR0R9wP+Sk6EpjrJuvmjWhwL5R2X
-         IZkMnTViWcFvmclL49h0tI3jqtSXahDYpYY4omT0SpJzB3uA8vGbCnKOqXiesO40uJl9
-         i7eA==
-X-Gm-Message-State: ANoB5plkE2Udo1BhZTuyjf9eNLJFQrZ3fcKC98FeMoS1tYYPAA+oBC72
-	dwsLim02UfdkuHTExcdumRo=
-X-Google-Smtp-Source: AA0mqf4wcE/8fIZDMVCDOkQEMIihhUoRExOpVnSoMrmfKqR9LU03LgjASXuXaTwuSizCrfnVMpeUyQ==
-X-Received: by 2002:a05:6870:f229:b0:141:e1f5:7194 with SMTP id t41-20020a056870f22900b00141e1f57194mr16740332oao.53.1671130339785;
-        Thu, 15 Dec 2022 10:52:19 -0800 (PST)
-Received: from localhost.localdomain ([76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id g11-20020a4ad84b000000b004a09df5a1dbsm72264oov.8.2022.12.15.10.52.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Dec 2022 10:52:19 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: devicetree@vger.kernel.org,
-	maccraft123mc@gmail.com,
-	tzimmermann@suse.de,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	heiko@sntech.de,
-	linux-rockchip@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	daniel@ffwll.ch,
-	airlied@gmail.com,
-	sam@ravnborg.org,
-	thierry.reding@gmail.com,
-	linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V6 2/4] dt-bindings: display: panel: Add Samsung AMS495QA01
-Date: Thu, 15 Dec 2022 12:52:09 -0600
-Message-Id: <20221215185211.1560736-3-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221215185211.1560736-1-macroalpha82@gmail.com>
-References: <20221215185211.1560736-1-macroalpha82@gmail.com>
+	id 1p5v5e-00BHSc-9v; Thu, 15 Dec 2022 20:44:26 +0000
+Received: from proxmox1.postmarketos.org ([213.239.216.189])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1p5v5T-00BGya-0G; Thu, 15 Dec 2022 20:44:17 +0000
+Received: from [192.168.0.17] (cpc76482-cwma10-2-0-cust177.7-3.cable.virginm.net [86.14.20.178])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by proxmox1.postmarketos.org (Postfix) with ESMTPSA id 6E33E14022A;
+	Thu, 15 Dec 2022 20:42:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=postmarketos.org;
+	s=donut; t=1671136923;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=eNzr3o3XBuM2ARVluiGzk/KlaWpCEtA4u+GM+9nASXg=;
+	b=KHp22PgWnM9kvRlxQ5yyv0xxQzwQfmrnv16OPKxTfn2i6+xgMDM29SWpe9RqwpZZyQJD/+
+	3EBjAp2ts0EHbZHIeBdf0grX/HOYu/9sYQ0ryokm68xhkvf9X7CX4b9a4S9iy9zdHbEhKn
+	TncaFG9uHHoCekbZ1dDvfLY+MRXt8+s=
+Message-ID: <78769cf4-84cc-5195-57b8-823d9fc33794@postmarketos.org>
+Date: Thu, 15 Dec 2022 20:42:02 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Subject: Re: [PATCH] arm64: dts: rockchip: fix input enable pinconf on rk3399
+Content-Language: en-US
+To: Arnaud Ferraris <arnaud.ferraris@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com
+References: <20221215101947.254896-1-arnaud.ferraris@collabora.com>
+From: Caleb Connolly <kc@postmarketos.org>
+In-Reply-To: <20221215101947.254896-1-arnaud.ferraris@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_105222_023395_61BAC002 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20221215_124415_558742_CEAAFB43 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,89 +71,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
 
-Add documentation for Samsung AMS495QA01 panel (with Magnachip
-D53E6EA8966 controller IC).
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
----
- .../display/panel/samsung,ams495qa01.yaml     | 57 +++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+On 15/12/2022 10:19, Arnaud Ferraris wrote:
+> When the input enable pinconf was introduced, a default drive-strength
+> value of 2 was set for the pull up/down configs. However, this parameter
+> is unneeded when configuring the pin as input, and having a single
+> hardcoded value here is actually harmful: GPIOs on the RK3399 have
+> various same drive-strength capabilities depending on the bank and port
+> they belong to.
+> 
+> As an example, trying to configure the GPIO4_PD3 pin as an input with
+> pull-up enabled fails with the following output:
+> 
+>    [   10.706542] rockchip-pinctrl pinctrl: unsupported driver strength 2
+>    [   10.713661] rockchip-pinctrl pinctrl: pin_config_set op failed for pin 155
+> 
+> (acceptable drive-strength values for this pin being 3, 6, 9 and 12)
+> 
+> Let's drop the drive-strength property from all input pinconfs in order
+> to solve this issue.
+> 
+> Fixes: ec48c3e82ca3 ("arm64: dts: rockchip: add an input enable pinconf to rk3399")
+> Signed-off-by: Arnaud Ferraris <arnaud.ferraris@collabora.com>
 
-diff --git a/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
-new file mode 100644
-index 000000000000..58fa073ce258
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
-@@ -0,0 +1,57 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/panel/samsung,ams495qa01.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Samsung AMS495QA01 panel with Magnachip D53E6EA8966 controller
-+
-+maintainers:
-+  - Chris Morgan <macromorgan@hotmail.com>
-+
-+allOf:
-+  - $ref: panel-common.yaml#
-+
-+properties:
-+  compatible:
-+    const: samsung,ams495qa01
-+
-+  reg: true
-+  reset-gpios:
-+    description: reset gpio, must be GPIO_ACTIVE_LOW
-+  elvdd-supply:
-+    description: regulator that supplies voltage to the panel display
-+  enable-gpios: true
-+  port: true
-+  vdd-supply:
-+    description: regulator that supplies voltage to panel logic
-+
-+required:
-+  - compatible
-+  - reg
-+  - reset-gpios
-+  - vdd-supply
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    spi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        panel@0 {
-+            compatible = "samsung,ams495qa01";
-+            reg = <0>;
-+            reset-gpios = <&gpio4 0 GPIO_ACTIVE_LOW>;
-+            vdd-supply = <&vcc_3v3>;
-+
-+            port {
-+                mipi_in_panel: endpoint {
-+                  remote-endpoint = <&mipi_out_panel>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
+Reviewed-by: Caleb Connolly <kc@postmarketos.org>
+
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 --
+>   1 file changed, 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 92c2207e686c..59858f2dc8b9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -2221,13 +2221,11 @@ pcfg_input_enable: pcfg-input-enable {
+>   		pcfg_input_pull_up: pcfg-input-pull-up {
+>   			input-enable;
+>   			bias-pull-up;
+> -			drive-strength = <2>;
+>   		};
+>   
+>   		pcfg_input_pull_down: pcfg-input-pull-down {
+>   			input-enable;
+>   			bias-pull-down;
+> -			drive-strength = <2>;
+>   		};
+>   
+>   		clock {
+
 -- 
-2.34.1
-
+Kind Regards,
+Caleb (they/them)
 
 _______________________________________________
 Linux-rockchip mailing list
