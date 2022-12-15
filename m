@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731E9C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:30:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD68C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CVVr6p5cShyAnO9fq55BdLvZQ1O4/+Ia7zlU+gL++2o=; b=mv1XKLbRXi14Jd
-	4AHZ2mcGRmRWdSFM+X/vr8SonmFHxlicSjO5+BTMDPZ34Ex7RG6hCCvO5lYEYzv9XsRbeL99ENkv9
-	3i8AXJwHrnHy6Mfm/dXtsKVM3shpbT3YTnMoNzS+TKzvHM5DiezuAZcv+tbKqHgUPTxKCdwUVqOb/
-	5BvHLF14kA5kW/58CAYOREOFQ2lwTAmVbv1TaQU/ZMg0gALDmPWdFcsMys36SYZ4XHgl5VGlTAorB
-	7vfVKfWlzNxQrc7I9IWrVfwKSE1Iw4ElcLoIfbrdzb8xN77J+7zc1KencI/a02wx/qblscROFyJD3
-	4Ni7DLS6AXcI51TxWvig==;
+	List-Owner; bh=dCFCzGv/5G0BwOhsHNuD7JoNk+e8UheGePunoiHC3Gg=; b=L/35nue8YGDzvB
+	AxTvIDVWMihGt3aKfPZc09/EE9HFcUDPPWUlRsnnN0rT2QdV+qKqEN/6vLuWaYQYDNDlw82JBCfoj
+	5rRjSrMd+icDELLdhfyb1RB3H4jLRC6wRh2b0P5Qp6WAdn7pQGKtgBbHS1BLMi5NPnfEjbxNx1iD4
+	bSu4+KvgNxjE+C2SNrSB5nLb1T1tW0VVE9LWFYViVZ1wNhvleT2zRu8Yj4QidAEfOPSLwWjdpHSCx
+	kdt3sKsYBwzad5tQpOFIqJXyOBxuHLzth8C8aOeMR1yTwSwefi4c/+D1kjNjwqtJDZpbKbfOv3vg/
+	DIH+LMI072YKtxNJIm1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5szi-00ApoA-H0; Thu, 15 Dec 2022 18:30:10 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p5szk-00AppE-41; Thu, 15 Dec 2022 18:30:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5szf-00ApmK-Tv
-	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:30:09 +0000
+	id 1p5szg-00ApmH-Qn
+	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:30:10 +0000
 Received: from jupiter.universe (dyndsl-095-033-168-084.ewe-ip-backbone.de [95.33.168.84])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 66AF46602C78;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C5F16602C75;
 	Thu, 15 Dec 2022 18:30:06 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1671129006;
-	bh=JrkPCmt11vGrQFut6ULxfM8O00Zz2V87Kt2M7Bmk3uM=;
+	bh=km48d5+uuKrtU+jKn1qKtyEltR/pLoMVSjioNlT7fVs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=de6PlJ6fBboBZwB9QAxaB8Xd5OuKjHVCVPhUjxc+uYbPtgBqbJY1t9/xPBrLS5bVC
-	 io4UPJ/i0mXb3csvVkJ+rqYbGdAhK/8o9rwnBnEkB6XQvmYSY5uMJmn/p7VWc5Xgqy
-	 7Rpr6Gmlq6zOQy0DXacQPfAYlddMJvf+UFm1LabwK1t/L4u9kCoasOFkW8AofHr4pF
-	 WnCDA7bOKXfesGfMHSP0qene639HZn46ZgnzKESJwgLI+P5vW4TEg5goQ7b+aYSUdv
-	 PPZcqDpAyIWxJh49OV2PoloL3VxR+k4ioRatdCYPSURQYInM57MXcc+ooAjbkGt2/f
-	 XSs8yaVLNAHGA==
+	b=HtAM2ny1YRp0x70eWcZ4Y1JFlEPM8itAndKNcZ6IEFObrUZTkE37rLmbHrtw/aMIw
+	 KVI9mrLdBe6pr3g5GKIGzFIVMjvSQuRTMlJOHyQ6NlQEaYiGU78x8Who81b/2OyWuu
+	 4e8I7/29x8jqOoyXOZ0vh71USwPPeinIxalNRErkqD4DvPqXJFIOd0weRznyGxH197
+	 5FTitEQKXsAguKbQdCcx5+mtf2P6vgWEDQkcFEH647uK5E10gHNpcxXVOLAsdQnk50
+	 1hUc+97ruZejgurwBlTB6NiUD16beHN5AAoHb6+txGQ2vaFWy0rvwPYxc73RAnzB5j
+	 7WWYU135qfnhA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 5486E48011E; Thu, 15 Dec 2022 19:30:03 +0100 (CET)
+	id 4BEFA48011B; Thu, 15 Dec 2022 19:30:03 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -58,17 +58,17 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCHv7 4/7] dt-bindings: arm: rockchip: add initial rk3588 boards
-Date: Thu, 15 Dec 2022 19:29:59 +0100
-Message-Id: <20221215183002.211081-5-sebastian.reichel@collabora.com>
+	Rob Herring <robh@kernel.org>
+Subject: [PATCHv7 1/7] dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
+Date: Thu, 15 Dec 2022 19:29:56 +0100
+Message-Id: <20221215183002.211081-2-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221215183002.211081-1-sebastian.reichel@collabora.com>
 References: <20221215183002.211081-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_103008_111031_95CF373F 
-X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-CacheID: sfid-20221215_103009_013909_F8C0A521 
+X-CRM114-Status: UNSURE (   7.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,50 +86,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DT binding documentation for the Rockchip RK3588 EVB1,
-Radxa Rock 5 Model A and B.
+Add IOC and PHP GRF syscon compatibles for RK3588.
 
-Co-Developed-by: Christopher Obbard <chris.obbard@collabora.com>
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/arm/rockchip.yaml         | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 88ff4422a8c1..01a6a93c940d 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -652,6 +652,16 @@ properties:
-           - const: radxa,rock3a
-           - const: rockchip,rk3568
- 
-+      - description: Radxa Rock 5 Model A
-+        items:
-+          - const: radxa,rock-5a
-+          - const: rockchip,rk3588s
-+
-+      - description: Radxa Rock 5 Model B
-+        items:
-+          - const: radxa,rock-5b
-+          - const: rockchip,rk3588
-+
-       - description: Rikomagic MK808 v1
-         items:
-           - const: rikomagic,mk808
-@@ -736,6 +746,11 @@ properties:
-           - const: rockchip,rk3399-sapphire-excavator
-           - const: rockchip,rk3399
- 
-+      - description: Rockchip RK3588 Evaluation board
-+        items:
-+          - const: rockchip,rk3588-evb1-v10
-+          - const: rockchip,rk3588
-+
-       - description: Rockchip RV1108 Evaluation board
-         items:
-           - const: rockchip,rv1108-evb
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 2ed8cca79b59..e682b407a383 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -20,6 +20,11 @@ properties:
+               - rockchip,rk3568-pipe-grf
+               - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
++              - rockchip,rk3588-bigcore0-grf
++              - rockchip,rk3588-bigcore1-grf
++              - rockchip,rk3588-ioc
++              - rockchip,rk3588-php-grf
++              - rockchip,rk3588-sys-grf
+               - rockchip,rk3588-pcie3-phy-grf
+               - rockchip,rk3588-pcie3-pipe-grf
+               - rockchip,rv1108-usbgrf
 -- 
 2.39.0
 
