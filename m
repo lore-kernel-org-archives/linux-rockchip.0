@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A4DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B62DC25B04
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 18:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iuHCQ3IuiWHzDrlb6nI7z8SoV5kuH/fECBNrQLqgCvY=; b=YKpp5gHhDG84t/
-	l3bmxP/e4LxpcZ7KtuDKt+98uf3xujX3zprCxN6vPVd5u0mISEQcX2d5iIK9JXOilP+vAlVde7vBk
-	xxPhbekH+zLJMBwz3mX6nT3mJ4UpmkXK2BM6Z67mf6d2iQhP9a+mURDOUNAs/oGUthd/1LywgYoUr
-	vty1oDH+dugW6f+7h6aEaCt+aBVmG20WPLIioJRfy/apjEPKh6D3LPpuYvdJy4L0uY9y/bTqdTPbI
-	0W/ernPGt1nkmZAAL51VcuepukuYPHeuEIPDj67uxjrk68ewQJODovgZ1paG+EApMVFT1F9tm2qHV
-	aB4HfjAJvMk2WpJT0ehw==;
+	List-Owner; bh=tJLWIMUY7NeWAvg4nDR+TeLEUNqQVETBk0Z4g2szwvU=; b=vF63Vl8YuwnLft
+	AB6n5ug8Mv4HVxsXA2nx5LHMmRQV/fXxwBcZ13+Wq7/BqY/kfkosvfzKiRZvk2dSye+eVWdPPV1Rw
+	Ikw/Dj6roPaIoFNLfI8DxWPYyWOx2H0kwtK4yF57sSDOMUF7E3jK0CLrn2Tmbu94ip3FEINWY82Jm
+	2pfKlonheh5K6APk1fBknece5plKxr85l0bNsLfCxsD80HMw/g42DlKFkK5Dv+tRGVL5c3T1vSeKI
+	3wE6XKmbn8TUlMhEA3kNuU6IZ73vmx508CfJsyIDjAbFL3ddj8MbrVzJCCaSuV1+Lpy1ZXUchGAI8
+	UslbzHF8Kw4DcNpgHMlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5tLG-00Au0Q-Ee; Thu, 15 Dec 2022 18:52:26 +0000
-Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
+	id 1p5tLF-00Atzz-Lf; Thu, 15 Dec 2022 18:52:25 +0000
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5tLE-00AtyR-F5
-	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:52:25 +0000
-Received: by mail-oo1-xc2d.google.com with SMTP id w4-20020a4aaf04000000b004a1ab217cecso23264oon.13
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Dec 2022 10:52:22 -0800 (PST)
+	id 1p5tLB-00Atwx-SQ
+	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 18:52:23 +0000
+Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-1322d768ba7so432773fac.5
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Dec 2022 10:52:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xn0RWIp29/DDAGotFO+F2cDyIEYDf7WQu136TlHaqBY=;
-        b=R2zO+t7nr+aKZeFcIqNjJdDuzyg9ArEuMc9RAnA2RV8wUsWaBNtdyp37mBaeRt7+8+
-         G4QQzSbtA5dJru3BCO7mgYs1IMenpTgKww8wUcL1udzID+jcZnshCJ5H0ywuDIMGOKLP
-         g9j56u2ug/IKiPLOttx5T/bD++cmQ3FWnRgsQHVsbX/9hV+Qn0oLxGeyGzda6nUOmaap
-         8DpEfo6QSNVKiR+qrUesjD/tJ5xbLDxHtRz2cv1xLDeH4bzHiU9VE2AxFfuGYhgoTsnx
-         ZMHc6em0/SBN4fYfMZR14UfUGABCeseV5m/ZtVJnGhSm2CU2t+IxmUkhWWMQd9v1+sMF
-         L6BA==
+        bh=xn617BcZSTh+Tv1VQzD2cNnC0x1O8uRUTBT7WhFq7GY=;
+        b=iaUGgI6zm2S4J6y8CeuTQyLrYTkN31CQSbVQcmcxcljy+iB53ew7QQ/lUzmrCIQAit
+         EAXSYFopTo/eDtzSERRPBpFTUbpF8Bp4CWJ8QxVhcQl/xN76xgq8NY4YhweKqL+6X+sQ
+         rAzrSxGP0SpDBLk2hSsQiG1O7yhGZzo/XkV1K+tzEUx492Vi/P6tfCfeW0sEgU/g60wl
+         aJxxsINu8tg9pCV8uv20ZU9W901FYSd9Ta5u+p6ChDdXUha7RjIx5UEZEjpq3yxeRoGF
+         1tPRY2msCs11fJUJjvEWBCMcGjZcyC3UmY0YJRMKuced16yxXmUqP4mXxm3PgCuzCII4
+         +Z7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xn0RWIp29/DDAGotFO+F2cDyIEYDf7WQu136TlHaqBY=;
-        b=riFRdTYJ1tYS5OxLkMqfUsJk080/jMNe2tK3qffx+9HyYFQ74YSqnSA0Qg2d6CUglR
-         c8nUSV9Okawrb7QzLRex50n5tNV5BlLVmMgddyUJd5QR9DRPd3sb/L3oP9hqAO6+Btfa
-         uhxirzPyp1J7I4KJjlOYqqwG+OslCVU38niJc7+cv5oD7pCU3Eh6+R6MDKSnGkC5+UAh
-         ncoye9lnOK6pmxtc/eWKvWdyIyOmZz1UFQh+Q3rPle0p24FmJaiHS4JWakemTghA/YIA
-         e44Ug/w1G/RPwpnWtd51gs+koUOpfCN9fR9cI2pll2B3pUAnwkyrkVsoAEQtzHkxr0PE
-         NrVQ==
-X-Gm-Message-State: ANoB5plIyIFE83UMc/LJZ92L9B89R89YuReuSD6FFhtLLOS7ym9S516L
-	V6eeIVqsZGVaqzf2AX/meVo=
-X-Google-Smtp-Source: AA0mqf51VnHChzflEHwPYqgqklV9DYyCaptTFBBoCLZRwltPPvDECieuhv4Hem5uCmz853ZgYkWHrA==
-X-Received: by 2002:a4a:b287:0:b0:4a0:2ddf:9da2 with SMTP id k7-20020a4ab287000000b004a02ddf9da2mr12199267ooo.5.1671130341879;
-        Thu, 15 Dec 2022 10:52:21 -0800 (PST)
+        bh=xn617BcZSTh+Tv1VQzD2cNnC0x1O8uRUTBT7WhFq7GY=;
+        b=l02v5H514iek3Aj5Rpzi5ocxjSIizIDgU5PaKEGbUO8wzDhJKG9fOCATDwdIJXV2QE
+         sQdejsS5Z4q61D3yhvB+Mczxb0D4FZdMc6Rb/v+0a5zO/jIUnxWbNFYNC4RNcl+NIQmM
+         jDBDZO/VUSRmuF1DcWOGE6xKCcoXbX9v906rQnuyjrQ94Ksf0zSzE+VgSgNiVfQYBcYU
+         LWUGWk7Vd3lJlY6I5P/KjXd2QzXdRL3D4oNA8X397FUtbn3bt78g1AOlaJEY5Z2euwMC
+         fUw3hNzEWHQbBNel4dyaUeE2BlOg9dQ7YuV38XDkaBqg4zGMChcZn+otaZmT9AUyZpSM
+         QTbA==
+X-Gm-Message-State: ANoB5pnZ2CGoubgqBNxFJ0AKtusXXsCVJJiXSk0oks6xxulJVfCL7JO2
+	jhJYUTezspdEP0qfjKBorxA=
+X-Google-Smtp-Source: AA0mqf47rBfZYHu7hg3Y0A1cdftmNxiEogndSB8pVOzg2OPYN/8oB6JyAVaCwGgWFxQMYJC8UY+v5w==
+X-Received: by 2002:a05:6870:8307:b0:13b:d3cd:3531 with SMTP id p7-20020a056870830700b0013bd3cd3531mr19662488oae.29.1671130338836;
+        Thu, 15 Dec 2022 10:52:18 -0800 (PST)
 Received: from localhost.localdomain ([76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id g11-20020a4ad84b000000b004a09df5a1dbsm72264oov.8.2022.12.15.10.52.20
+        by smtp.gmail.com with ESMTPSA id g11-20020a4ad84b000000b004a09df5a1dbsm72264oov.8.2022.12.15.10.52.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Dec 2022 10:52:21 -0800 (PST)
+        Thu, 15 Dec 2022 10:52:18 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: devicetree@vger.kernel.org,
@@ -77,16 +77,16 @@ Cc: devicetree@vger.kernel.org,
 	thierry.reding@gmail.com,
 	linus.walleij@linaro.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V6 4/4] arm64: dts: rockchip: add display to RG503
-Date: Thu, 15 Dec 2022 12:52:11 -0600
-Message-Id: <20221215185211.1560736-5-macroalpha82@gmail.com>
+Subject: [PATCH V6 1/4] drm: of: Add drm_of_get_dsi_bus helper function
+Date: Thu, 15 Dec 2022 12:52:08 -0600
+Message-Id: <20221215185211.1560736-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221215185211.1560736-1-macroalpha82@gmail.com>
 References: <20221215185211.1560736-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_105224_528319_CC1F7423 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20221215_105221_948006_CCA4E634 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,98 +105,131 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add Samsung AMS495QA01 panel to RG503.
+Add helper function to find DSI host for devices where DSI panel is not
+a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
+official Raspberry Pi touchscreen display).
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- .../dts/rockchip/rk3566-anbernic-rg503.dts    | 55 +++++++++++++++++++
- 1 file changed, 55 insertions(+)
+ drivers/gpu/drm/drm_of.c | 62 ++++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_of.h     | 11 +++++++
+ 2 files changed, 73 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-index 5dafcc86296b..b4b2df821cba 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-@@ -47,6 +47,21 @@ gpio_spi: spi {
- 		mosi-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
- 		cs-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
- 		num-chipselects = <0>;
-+
-+		panel@0 {
-+			compatible = "samsung,ams495qa01";
-+			reg = <0>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&lcd_reset>;
-+			reset-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
-+			vdd-supply = <&vcc_3v3>;
-+
-+			port {
-+				mipi_in_panel: endpoint {
-+					remote-endpoint = <&mipi_out_panel>;
-+				};
-+			};
-+		};
- 	};
+diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+index 7bbcb999bb75..7d89ac164069 100644
+--- a/drivers/gpu/drm/drm_of.c
++++ b/drivers/gpu/drm/drm_of.c
+@@ -10,6 +10,7 @@
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_encoder.h>
++#include <drm/drm_mipi_dsi.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_panel.h>
  
- 	/* Channels reversed for both headphones and speakers. */
-@@ -94,6 +109,32 @@ &cru {
- 	assigned-clock-rates = <1200000000>, <200000000>, <500000000>;
- };
+@@ -493,3 +494,64 @@ int drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(drm_of_get_data_lanes_count_ep);
++
++/**
++ * drm_of_get_dsi_bus - find the DSI bus for a given device
++ * @dev: parent device of display (SPI, I2C)
++ * @dsi_host: DSI host to be populated
++ * @info: DSI device info to be updated with correct DSI node
++ *
++ * Given a panel device parented to a non-DSI device, follow the
++ * devicetree to find the correct DSI host node and populate the
++ * dsi_host with the correct host and info with the correct node.
++ * Returns zero if successful, -EPROBE_DEFER if the DSI host is
++ * found but not available, or -ENODEV otherwise.
++ */
++int drm_of_get_dsi_bus(struct device *dev,
++			      struct mipi_dsi_host **dsi_host,
++			      struct mipi_dsi_device_info *info)
++{
++	struct device_node *endpoint, *dsi_host_node;
++
++	/*
++	 * Get first endpoint child from device.
++	 */
++	endpoint = of_graph_get_next_endpoint(dev->of_node, NULL);
++	if (!endpoint)
++		return -ENODEV;
++
++	/*
++	 * Follow the first endpoint to get the DSI host node.
++	 */
++	dsi_host_node = of_graph_get_remote_port_parent(endpoint);
++	if (!dsi_host_node)
++		goto error;
++
++	/*
++	 * Get the DSI host from the DSI host node. If we get an error
++	 * or the return is null assume we're not ready to probe just
++	 * yet. Release the DSI host node since we're done with it.
++	 */
++	*dsi_host = of_find_mipi_dsi_host_by_node(dsi_host_node);
++	of_node_put(dsi_host_node);
++	if (IS_ERR_OR_NULL(*dsi_host)) {
++		of_node_put(endpoint);
++		return -EPROBE_DEFER;
++	}
++
++	/*
++	 * Set the node of the mipi_dsi_device_info to the correct node
++	 * and then release the endpoint node since we're done with it.
++	 */
++	info->node = of_graph_get_remote_port(endpoint);
++	if (IS_ERR_OR_NULL(info->node))
++		goto error;
++
++	of_node_put(endpoint);
++	return 0;
++
++error:
++	of_node_put(endpoint);
++	return -ENODEV;
++}
++EXPORT_SYMBOL_GPL(drm_of_get_dsi_bus);
+diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+index 10ab58c40746..a694ce71c3b2 100644
+--- a/include/drm/drm_of.h
++++ b/include/drm/drm_of.h
+@@ -15,6 +15,8 @@ struct drm_encoder;
+ struct drm_panel;
+ struct drm_bridge;
+ struct device_node;
++struct mipi_dsi_device_info;
++struct mipi_dsi_host;
  
-+&dsi_dphy0 {
-+	status = "okay";
-+};
-+
-+&dsi0 {
-+	status = "okay";
-+
-+	ports {
-+		dsi0_in: port@0 {
-+			reg = <0>;
-+
-+			dsi0_in_vp1: endpoint {
-+				remote-endpoint = <&vp1_out_dsi0>;
-+			};
-+		};
-+
-+		dsi0_out: port@1 {
-+			reg = <1>;
-+
-+			mipi_out_panel: endpoint {
-+				remote-endpoint = <&mipi_in_panel>;
-+			};
-+		};
-+	};
-+};
-+
- &gpio_keys_control {
- 	button-a {
- 		gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
-@@ -146,6 +187,13 @@ spk_amp_enable_h: spk-amp-enable-h {
- 		};
- 	};
+ /**
+  * enum drm_lvds_dual_link_pixels - Pixel order of an LVDS dual-link connection
+@@ -56,6 +58,9 @@ int drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ 				   int port_reg, int reg,
+ 				   const unsigned int min,
+ 				   const unsigned int max);
++int drm_of_get_dsi_bus(struct device *dev,
++		       struct mipi_dsi_host **dsi_host,
++		       struct mipi_dsi_device_info *info);
+ #else
+ static inline uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
+ 					  struct device_node *port)
+@@ -127,6 +132,12 @@ drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ {
+ 	return -EINVAL;
+ }
++static int drm_of_get_dsi_bus(struct device *dev,
++			      struct mipi_dsi_host **dsi_host,
++			      struct mipi_dsi_device_info *info);
++{
++	return -EINVAL;
++}
+ #endif
  
-+	gpio-lcd {
-+		lcd_reset: lcd-reset {
-+			rockchip,pins =
-+				<4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	gpio-spi {
- 		spi_pins: spi-pins {
- 			rockchip,pins =
-@@ -164,3 +212,10 @@ rk817_charger: charger {
- 		rockchip,sleep-filter-current-microamp = <100000>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
-+		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
-+		remote-endpoint = <&dsi0_in_vp1>;
-+	};
-+};
+ /*
 -- 
 2.34.1
 
