@@ -4,83 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52365C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 09:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFF7C00145
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Dec 2022 10:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2g3fcljMctvFPpuR5/BRIE+GGClf14tySdoTlTjBy/Y=; b=r6IEJL6Ej86V+x
-	YA9L5PlNJZtDZDxi0dCDVPbn8UIubrLGwSdTHOwsN56H5nbLLWgeRUMZZNxCA3+qZ/8/JrzxagXRJ
-	KI1CAet1apG5CpYjYkpWjvx9KzF+JLnWsW/dndHpkV2dlyvyRSoFsbaZiKewvkhUBwgYPbkCPsASI
-	BkKXT7PV97ne3m+F+kvR6LkDai43tMAKV25FNwcuXsbBJLYDiLhPX5dRioPbF9kvKZ4MJbarEXh6g
-	alk8NG+giUUB54mOHIKD8V08OTVnEZt5vcS6cqJU0lzVE9wXtqeuI8DIvyt5992Cy5EDhoItBtrbO
-	L8Hj4Lx05VXhcTaHhB4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=l57L7kGqbtIkHJ62V1IPxJ12hZ73ETWkFd9Fjh775XY=; b=Jva0bJNrH0rsd2
+	wkBWcA3XRrOP0AhuXKGRlClJzCx0D62O9fvk01fBxj64l34+NFOGhf5AL++OOugjVola3weUf0Sib
+	vrKEugvoSTlJW7HSrFp8DUvGrcWO0cKQ3mBo0yx6FmW4xhNAAhuFEM1zXVMcooTtr7Q9vRIu6DNRo
+	E7PQIkadgXaZE/QiQGEe4+gUrZWc1QJXEFdtBlEyYaDZQQOIehstv7JtNcLxDrZ+WuuXcdkU4mTvU
+	ckCuylPTFcO8dP0j7nhPWyUSETQz9BNBssC01vkH3d2dLf2jNBQ0uG3Cg0PLA8SfNR8jYTfCJg1jW
+	reL96M8//fnQblMxqnGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kRn-008CLF-Cp; Thu, 15 Dec 2022 09:22:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p5lLg-008jbM-LL; Thu, 15 Dec 2022 10:20:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kRk-008CJf-53
-	for linux-rockchip@lists.infradead.org; Thu, 15 Dec 2022 09:22:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1p5lLV-008jXb-M3; Thu, 15 Dec 2022 10:20:11 +0000
+Received: from xps.home (82-65-172-229.subs.proxad.net [82.65.172.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B0A8361D30;
-	Thu, 15 Dec 2022 09:22:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04B40C433EF;
-	Thu, 15 Dec 2022 09:22:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671096151;
-	bh=zEb0ixyjXY3i78Yi3+jsNaVpreCjlmA3VWVSg0drJSE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=jRmmxySBxYf0VAsyP1TsXAARZHB2dXeW2gHqqLduWtedkH++pcV524GaCkc+Xb1Cr
-	 B/6t0G8r89JFLD3MxPx1VMKKqS8eE0WamMtrLjP5ornG+HJi9Y64jVsWqqp3wYeRul
-	 2v5RvIShXhF4H6sRlz2JxhXRfUKiIgO8wcLGjtkXeA6pm4Epf+EIqD4l3Gc5gle+jg
-	 Cr1DvhswWEAuRAI3xiAsNg71esyfieMT1Lkx4VkdV42NPRuaH/TgaEQseTK8y0KcbP
-	 Y857wr5Wd9vITwDCKTMGADPWDbQFMgogJFwSY3zU+ty7I7k9S6gvRMNQH3/jB20e+S
-	 t3nthDD+KjaSA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1p5kRg-00CnyB-Lk;
-	Thu, 15 Dec 2022 09:22:28 +0000
-Date: Thu, 15 Dec 2022 09:22:28 +0000
-Message-ID: <861qp1qawb.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
+	(Authenticated sender: aferraris)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 17D716602C5F;
+	Thu, 15 Dec 2022 10:20:06 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1671099606;
+	bh=WLY57/vsBcQcsEyV40fycSi6IdmeLYRjKEbqIxSuVAE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=L4Z7LHOP1m/pl9kidybLzd95BeF3YuK9yATRCRR4ZcXNjaSFVYLRe181UFXJXFwFN
+	 lPWMylYVLsX3qzBscLwrhwGTB+wtWerzfx6cIiYsX4cE4HT+eIjBrQRPs6tqsUBZac
+	 T3PAIPwE1fuJEL1AZ+QWSJar6g4ed5Ynx+KOmYeHgyjVdwnp9KAso2VYTBTdg9m9JC
+	 qJfcCjPNj+UXyo2Fh0cRbYBZWsmarMFrYoNzsZuu/TPu19NXve+4WOGGb8DWGbm18G
+	 +yAuQMRM1LcwE1cWE0SQjzimBAMpwtE/h+OQ9ag5DyZ/ceWA6DrjVhSzqlemMcgzDx
+	 ImC/Ev/aZV72w==
+From: Arnaud Ferraris <arnaud.ferraris@collabora.com>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Caleb Connolly <kc@postmarketos.org>,
 	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	kernel@collabora.com,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCHv6 3/7] arm64: dts: rockchip: Add base DT for rk3588 SoC
-In-Reply-To: <20221214182247.79824-4-sebastian.reichel@collabora.com>
-References: <20221214182247.79824-1-sebastian.reichel@collabora.com>
-	<20221214182247.79824-4-sebastian.reichel@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linus.walleij@linaro.org, chris.obbard@collabora.com, benjamin.gaignard@collabora.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, kernel@collabora.com, yifeng.zhao@rock-chips.com, zhangqing@rock-chips.com, sugar.zhang@rock-chips.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com,
+	Arnaud Ferraris <arnaud.ferraris@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: fix input enable pinconf on rk3399
+Date: Thu, 15 Dec 2022 11:19:47 +0100
+Message-Id: <20221215101947.254896-1-arnaud.ferraris@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_012232_294389_D420CB24 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20221215_022009_883359_BAFD4E0E 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,67 +76,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 Dec 2022 18:22:43 +0000,
-Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
-> 
-> From: Kever Yang <kever.yang@rock-chips.com>
-> 
-> This initial version supports (single core) CPU, dma, interrupts, timers,
-> UART and SDHCI. In short - everything necessary to boot Linux on this
-> system on chip.
+When the input enable pinconf was introduced, a default drive-strength
+value of 2 was set for the pull up/down configs. However, this parameter
+is unneeded when configuring the pin as input, and having a single
+hardcoded value here is actually harmful: GPIOs on the RK3399 have
+various same drive-strength capabilities depending on the bank and port
+they belong to.
 
-Single core? The DT indicates otherwise.
+As an example, trying to configure the GPIO4_PD3 pin as an input with
+pull-up enabled fails with the following output:
 
-> 
-> The DT is split into rk3588 and rk3588s, which is a reduced version
-> (i.e. with less peripherals) of the former.
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> [rebase, squash and reword commit message]
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588.dtsi  |   58 +
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 1703 +++++++++++++++++++++
->  2 files changed, 1761 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> 
+  [   10.706542] rockchip-pinctrl pinctrl: unsupported driver strength 2
+  [   10.713661] rockchip-pinctrl pinctrl: pin_config_set op failed for pin 155
 
-[...]
+(acceptable drive-strength values for this pin being 3, 6, 9 and 12)
 
-> +	gic: interrupt-controller@fe600000 {
-> +		compatible = "arm,gic-v3";
-> +		reg = <0x0 0xfe600000 0 0x10000>, /* GICD */
-> +		      <0x0 0xfe680000 0 0x100000>; /* GICR */
-> +		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-controller;
-> +		mbi-alias = <0x0 0xfe610000>;
-> +		mbi-ranges = <424 56>;
-> +		msi-controller;
-> +		#interrupt-cells = <4>;
-> +
-> +		ppi-partitions {
-> +			ppi_cluster0: interrupt-partition-0 {
-> +				affinity = <&cpu_l0 &cpu_l1 &cpu_l2 &cpu_l3>;
-> +			};
-> +
-> +			ppi_cluster1: interrupt-partition-1 {
-> +				affinity = <&cpu_b0 &cpu_b1 &cpu_b2 &cpu_b3>;
+Let's drop the drive-strength property from all input pinconfs in order
+to solve this issue.
 
-The use of the word "cluster" is pretty misleading, specially as the
-actual CPU clusters don't align with this partitioning (you seem to
-have 2 independent A76 clusters). Consider using the word "partition",
-which was chosen exactly to avoid this confusion.
+Fixes: ec48c3e82ca3 ("arm64: dts: rockchip: add an input enable pinconf to rk3399")
+Signed-off-by: Arnaud Ferraris <arnaud.ferraris@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-Thanks,
-
-	M.
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 92c2207e686c..59858f2dc8b9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -2221,13 +2221,11 @@ pcfg_input_enable: pcfg-input-enable {
+ 		pcfg_input_pull_up: pcfg-input-pull-up {
+ 			input-enable;
+ 			bias-pull-up;
+-			drive-strength = <2>;
+ 		};
+ 
+ 		pcfg_input_pull_down: pcfg-input-pull-down {
+ 			input-enable;
+ 			bias-pull-down;
+-			drive-strength = <2>;
+ 		};
+ 
+ 		clock {
 -- 
-Without deviation from the norm, progress is not possible.
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
