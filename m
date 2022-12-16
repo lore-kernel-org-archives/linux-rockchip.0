@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 030D1C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Dec 2022 13:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78BDC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Dec 2022 15:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pVqmb3u6mfVOx1i6PIQwb13vyPfLRTMP4BsyCU2y3fU=; b=sVOC8nCpAJX4ze
-	lhGqv2xHSmx4JYb3ixxYHCHYKYYnhg0oHbBFV/+fAXEDg4PMlVo8fQsWZfVOKvmfaSLBzCMapxHEn
-	xM66Fv+MNCsTS/T7DhG0w+4ANdcc8ZPV1msbDzS0Z+L/tuwo/OP6t8KqNqg+cServ8Xtwf2lp6mMy
-	vNtvCwSMXMRwM6scYyLgcEQePu6n9sD3DsKQW1qdo5PNW/5Lgv4qpJXxpwS15KoAoMNGjCIimi/+t
-	CirrM6bFgS2u15388obRQcl9QsjIM/jZlyCjBKWO7XJr3RRxJ2eZf5/mK4NJX2Gyt8qhYrHbFE/jR
-	wDpVhF6eOAZNnewB05Gg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nWNzHWsGPPn7xuJrIpgo60S7ewlYZal66baJobRPXV0=; b=gKbb/HTwM3oELc
+	zBbIQf4D0TrXcD9qG/KsCHFPPYvven9lQKaTpPBmrVOqEsSxW7yvGq6PBrlugH3YtgMqEJthwpE0N
+	EAk1rPyl77sCUserp0yfdWtdQ5n+jLomZUVDkrQSTGQo1+XaL1koET4OaV2os7yw4Y1gGOVYAO5Nj
+	tT+2B13MKe4NgwoxCoTxjG18nHl2anil5sv91GnfziZ8eMwVXN+20J+elJgAgguo3VcXJlO/h6IAa
+	TqyHoo7oQabhHod17q9wCnr4gW6UhtTJdioRyfgm2bzDfjbqYAetXEhjI0RrzMgKSiUoNHjo5p2IX
+	bBdrwqFXXbwwDcs088CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6AhO-00FHHu-9Z; Fri, 16 Dec 2022 13:24:26 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1p6CwP-00G8Tn-DI; Fri, 16 Dec 2022 15:48:05 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6AhD-00FHDj-Sk
-	for linux-rockchip@lists.infradead.org; Fri, 16 Dec 2022 13:24:17 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id z8-20020a17090abd8800b00219ed30ce47so6034329pjr.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 16 Dec 2022 05:24:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Z3c/01zbRXmXJ3Ns12aVUql+2qMAvVplYeam5dHAPwQ=;
-        b=Qmvns9E/WsdgoZHXrhiD2zkq46lfY7kbiY5GVvG5rz1HJE/eQJnzUYllOL014aNOme
-         d8K1Lx5sKwSmlwabu4De2hsKAoHvOneE12pPU6bRdQ2g6mr20hvzZ5UxEKxiAoam02Bc
-         yB5pZ1P+Hw3H0GJpshKq1wt2x/m8VSedYT854=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Z3c/01zbRXmXJ3Ns12aVUql+2qMAvVplYeam5dHAPwQ=;
-        b=KMRzuHqgWoHoSocQNeExrngsu1pMRff/yduTkVhLNxXKdNoYF/PGwvtMr7fkt/qx6U
-         AEfcFypFD1ziklg6VdJ9+YC18i6WmXem56rsdaKLkih+JDrznqurtjtkywV48SBfBkiS
-         fYLZm9zcrkxPRJa1JZOzG+ZAr6cz1f/3aDUhNnYWBcVr/uM1+26fLQZPfDXGmM6nsfkO
-         bi93uaUO4hwV2oHnKurUMu6169oQ9FSbFFtLNUNCxPpFT+WHfot60vk9AUTSjkK6YjCZ
-         Nle2wFlpuVa9g0SS+bjaBX5PJjo9oayv2/eUkb9eQImliM8zuG/zr4V9qLc3Fl5DKbtB
-         IKsw==
-X-Gm-Message-State: ANoB5pldxM2mBtud2exXUzsmXDF3WFpOMwlxw5p/702/67dESVEPM5aa
-	zsjbDoieJA5S6itln3Ow/2NHlA==
-X-Google-Smtp-Source: AA0mqf6VjK3LTR68NXjMELrPiMDHsqonu6gGq1N+lcTkMWKK7WGOTT1qfpRmG7LdZYyT/nQqY+pXOQ==
-X-Received: by 2002:a17:902:b611:b0:188:f354:d927 with SMTP id b17-20020a170902b61100b00188f354d927mr31414615pls.8.1671197051083;
-        Fri, 16 Dec 2022 05:24:11 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1837:9294:e702:48a6])
-        by smtp.gmail.com with ESMTPSA id l7-20020a170903244700b001894198d0ebsm1624278pls.24.2022.12.16.05.24.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Dec 2022 05:24:10 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] media: hantro: Use core-generated bus_info value
-Date: Fri, 16 Dec 2022 21:24:04 +0800
-Message-Id: <20221216132404.1173254-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
+	id 1p6CwL-00G8QB-Mb
+	for linux-rockchip@lists.infradead.org; Fri, 16 Dec 2022 15:48:04 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E88A16602C94;
+	Fri, 16 Dec 2022 15:47:54 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1671205676;
+	bh=OpeibgDASJdMkvfrIt2wc5RhxgM/1AD0m55P+Z6hsDI=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=DheIvro7Qj7OkGFB8YtfY1/OyrDKi9FDrq8eceDFfmnR+6THk1cazJa01O0U4pRom
+	 6SmN02ZLRF2HNWSD48DjRkH/gbn9DTPvQ2NpAUTXshn6lxYOvzHZ1aMxJJpsGF2t5g
+	 eHEvq6KE2HF57mNz5I90o6cYramUWKjjFibKLrHx6rn6kqpCcM5ck8HZ79bsTMgmVg
+	 Rp4l2JD8InGiCqjwOJ79V0JDda+a4u2C0pGpUCJONb3HwmIYmhLECwRMICTiax7quM
+	 1yL8q6LL+7R9uciTVjAy8bNtwLrIUICr9rbZ5ageiF8+lSRs2FqnU4M7jhhWxUW1JV
+	 Xq9vzEw61wtJg==
+Message-ID: <e3c73d1c20e12ab351a74ef1abc949810fc1ba77.camel@collabora.com>
+Subject: Re: [PATCHv7 7/7] arm64: dts: rockchip: Add rock-5b board
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
+	 <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Marc Zyngier <maz@kernel.org>, Jagan
+ Teki <jagan@edgeble.ai>, Linus Walleij <linus.walleij@linaro.org>,
+ Christopher Obbard <chris.obbard@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Michael Riesch <michael.riesch@wolfvision.net>
+Date: Fri, 16 Dec 2022 10:47:44 -0500
+In-Reply-To: <20221215183002.211081-8-sebastian.reichel@collabora.com>
+References: <20221215183002.211081-1-sebastian.reichel@collabora.com>
+	 <20221215183002.211081-8-sebastian.reichel@collabora.com>
+User-Agent: Evolution 3.46.2 (3.46.2-1.fc37) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_052415_936002_FB82524D 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20221216_074801_986251_FA92D34F 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +74,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Hantro driver uses a hardcoded value for the bus_info field in the
-media device and |struct v4l2_capability|. This worked well when there
-was just one device. However with the iMX.8 series we are now seeing
-two Hantro blocks on the same chip. The static bus_info is no longer
-sufficient for differentiating devices.
-
-Since commit f2d8b6917f3b ("media: v4l: ioctl: Set bus_info in
-v4l_querycap()"), the V4L2 core provides a default value for the
-bus_info field for platform and PCI devices. This value will match
-the default value for media devices added by commit cef699749f37
-("media: mc: Set bus_info in media_device_init()"). These defaults
-are stable and device-specific.
-
-Drop the static bus_info values from the hantro driver and use the
-defaults.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/freescale/Makefile           | 1 +
- drivers/media/platform/verisilicon/hantro_drv.c  | 2 --
- drivers/media/platform/verisilicon/hantro_v4l2.c | 2 --
- 3 files changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/freescale/Makefile b/arch/arm64/boot/dts/freescale/Makefile
-index ef6f364eaa18..ef815442c78b 100644
---- a/arch/arm64/boot/dts/freescale/Makefile
-+++ b/arch/arm64/boot/dts/freescale/Makefile
-@@ -55,6 +55,7 @@ dtb-$(CONFIG_ARCH_MXC) += imx8mm-data-modul-edm-sbc.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-ddr4-evk.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-emcon-avari.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-evk.dtb
-+dtb-$(CONFIG_ARCH_MXC) += imx8mm-hummingboard-pulse.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-icore-mx8mm-ctouch2.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-icore-mx8mm-edimm2.2.dtb
- dtb-$(CONFIG_ARCH_MXC) += imx8mm-innocomm-wb15-evk.dtb
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 8cb4a68c9119..b0aeedae7b65 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1050,8 +1050,6 @@ static int hantro_probe(struct platform_device *pdev)
- 
- 	vpu->mdev.dev = vpu->dev;
- 	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
--	strscpy(vpu->mdev.bus_info, "platform: " DRIVER_NAME,
--		sizeof(vpu->mdev.bus_info));
- 	media_device_init(&vpu->mdev);
- 	vpu->mdev.ops = &hantro_m2m_media_ops;
- 	vpu->v4l2_dev.mdev = &vpu->mdev;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 2c7a805289e7..c1a116031013 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -142,8 +142,6 @@ static int vidioc_querycap(struct file *file, void *priv,
- 
- 	strscpy(cap->driver, vpu->dev->driver->name, sizeof(cap->driver));
- 	strscpy(cap->card, vdev->name, sizeof(cap->card));
--	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform: %s",
--		 vpu->dev->driver->name);
- 	return 0;
- }
- 
--- 
-2.39.0.314.g84b9a713c41-goog
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2ViYXN0aWFuIGFuZCBDaHJpc3RvcGhlciwKCkxlIGpldWRpIDE1IGTDqWNlbWJyZSAyMDIy
+IMOgIDE5OjMwICswMTAwLCBTZWJhc3RpYW4gUmVpY2hlbCBhIMOpY3JpdMKgOgo+IEZyb206IENo
+cmlzdG9waGVyIE9iYmFyZCA8Y2hyaXMub2JiYXJkQGNvbGxhYm9yYS5jb20+Cj4gCj4gQWRkIGJv
+YXJkIGZpbGUgZm9yIHRoZSBSSzM1ODggUm9jayA1QiBib2FyZC4gVGhpcyBpcyBhIGJhc2ljCj4g
+aW1wbGVtZW50YXRpb24gd2hpY2gganVzdCBicmluZ3MgdXAgdGhlIGVNTUMgYW5kIFVBUlQgd2hp
+Y2ggaXMKPiBlbm91Z2ggdG8gc3VjY2Vzc2Z1bGx5IGJvb3QgTGludXguCj4gCj4gVGhlIGV0aGVy
+bmV0IGNvbnRyb2xsZXIgaXMgY29ubmVjdGVkIHZpYSBQQ0llIHNvIHN1cHBvcnQgd2lsbAo+IGNv
+bWUgaW4gYSBmb2xsb3ctdXAgcGF0Y2guCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXN0b3BoZXIg
+T2JiYXJkIDxjaHJpcy5vYmJhcmRAY29sbGFib3JhLmNvbT4KPiBSZXZpZXdlZC1ieTogTWljaGFl
+bCBSaWVzY2ggPG1pY2hhZWwucmllc2NoQHdvbGZ2aXNpb24ubmV0Pgo+IFNpZ25lZC1vZmYtYnk6
+IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgo+IC0t
+LQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgfCAgMSAr
+Cj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMgICAgICB8IDQ0ICsr
+KysrKysrKysrKysrKysrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA0NSBpbnNlcnRpb25zKCspCj4g
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1y
+b2NrLTViLmR0cwo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L01ha2VmaWxlIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+IGluZGV4
+IDg3YTg1MzQzNTE0Mi4uYzViZGQwMTc2Y2UwIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
+aGlwL01ha2VmaWxlCj4gQEAgLTgzLDQgKzgzLDUgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NI
+SVApICs9IHJrMzU2OC1ldmIxLXYxMC5kdGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVAp
+ICs9IHJrMzU2OC1vZHJvaWQtbTEuZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSAr
+PSByazM1Njgtcm9jay0zYS5kdGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJr
+MzU4OC1ldmIxLXYxMC5kdGIKPiArZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4
+OC1yb2NrLTViLmR0Ygo+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4cy1y
+b2NrLTVhLmR0Ygo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzU4OC1yb2NrLTViLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJv
+Y2stNWIuZHRzCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwMDAuLmJh
+ZjQ2YmQzMGIzOAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzU4OC1yb2NrLTViLmR0cwo+IEBAIC0wLDAgKzEsNDQgQEAKPiArLy8gU1BEWC1M
+aWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCj4gKwo+ICsvZHRzLXYxLzsKPiAr
+Cj4gKyNpbmNsdWRlICJyazM1ODguZHRzaSIKPiArCj4gKy8gewo+ICsJbW9kZWwgPSAiUmFkeGEg
+Um9jayA1QiBCb2FyZCI7Cj4gKwljb21wYXRpYmxlID0gInJhZHhhLHJvY2stNWIiLCAicm9ja2No
+aXAscmszNTg4IjsKPiArCj4gKwlhbGlhc2VzIHsKPiArCQltbWMxID0gJnNkaGNpOwoKSSBoYXZl
+IG5vIHVzZWZ1bCBrbm93bGVkZ2UsIGJ1dCBpdCBzZWVtcyB0aGUgbW1jIGFsaWFzIGRvbid0IG1h
+dGNoIHRoZSB2ZW5kb3IuCldoZW4gSSBydW4geW91ciBicmFuY2ggb24gUm9jazVCLCB0aGUgRU1N
+QyBlbmR1cCBvbiAvZGV2L21tY2JsazEgKGFrYSBtbWMxIGFsaWFzCkkgdGhpbmspIHdoaWxlIHdo
+ZW4gSSBib290IHRoZSB2ZW5kb3Iga2VybmVsLCBpdCBpcyBhbHdheXMgbW1jYmxrMCAoYWthIG1t
+YzAKYWxpYXM/KS4gUGVyaGFwcyB0aGUgdmVuZG9yIGRpZG4ndCBhZGQgYWxpYXNlcyA/CgpUaGVy
+ZSBjb3VsZCBhbHNvIGJlIG1haW5saW5lIHJ1bGVzIHRvIG51bWJlciBiYXNlZCBvbiB0aGUgYm9v
+dCBvcmRlci4gSW4gdGhpcwpjYXNlLCB0aGUgZGlmZmVyZW5jZSB3b3VsZCBiZSBhY2NlcHRhYmxl
+LCBzaW5jZSBTUEwgYm9vdCBvcmRlciBpcyAodXNiPykgPiBTRApDYXJkID4gRU1NQyA+IFNQSSBO
+T1IuIFRob3VnaCwgdGhlIFNQTCBpcyBwaWNrZWQgZnJvbSB0aGUgb3Bwb3NpdGUgb3JkZXIgKHNw
+aSwKZW1tYywgc2QgY2FyZCkuIEFueXdheSwgSSdtIGp1c3QgdHJ5aW5nIHRvIGV4cHJlc3MgdGhh
+dCBJIG5vdGljZWQgYSBkaWZmZXJlbmNlLAphbmQgaXRzIG5vdCBndWFyYW50aWVkIHRvIGJlIGEg
+YnVnLgoKPiArCQlzZXJpYWwyID0gJnVhcnQyOwo+ICsJfTsKPiArCj4gKwljaG9zZW4gewo+ICsJ
+CXN0ZG91dC1wYXRoID0gInNlcmlhbDI6MTUwMDAwMG44IjsKPiArCX07Cj4gKwo+ICsJdmNjNXYw
+X3N5czogdmNjNXYwLXN5cy1yZWd1bGF0b3Igewo+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9y
+LWZpeGVkIjsKPiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2M1djBfc3lzIjsKPiArCQlyZWd1bGF0
+b3ItYWx3YXlzLW9uOwo+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+ICsJCXJlZ3VsYXRvci1taW4t
+bWljcm92b2x0ID0gPDUwMDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDUw
+MDAwMDA+Owo+ICsJfTsKPiArfTsKPiArCj4gKyZzZGhjaSB7Cj4gKwlidXMtd2lkdGggPSA8OD47
+Cj4gKwluby1zZGlvOwo+ICsJbm8tc2Q7Cj4gKwlub24tcmVtb3ZhYmxlOwo+ICsJbWF4LWZyZXF1
+ZW5jeSA9IDwyMDAwMDAwMDA+Owo+ICsJbW1jLWhzNDAwLTFfOHY7Cj4gKwltbWMtaHM0MDAtZW5o
+YW5jZWQtc3Ryb2JlOwo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVhcnQyIHsK
+PiArCXBpbmN0cmwtMCA9IDwmdWFydDJtMF94ZmVyPjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiAr
+fTsKPiAtLSAKPiAyLjM5LjAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
