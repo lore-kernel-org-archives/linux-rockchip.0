@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A783C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Dec 2022 16:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F24C0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Dec 2022 16:20:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ueeH8zvzutu/kJTuhqGZd+q9SX9vuLlyOgTkABPiAaA=; b=MOYuIUABxzExQR
-	tcwLbpNblA452cXD3yfLi2WePu82lTQiYNYHBzYUfX3tZpmTSYw6x8U5kmuxwNVpNeJoFUPX51NIh
-	dS0uYRPt69W0JSgpHzBSZXtepFXjzoP/CmFomkQZ2D1odG/2tBwmwAnzmuNgSwCxhcNQxAtYDLPwz
-	nhCLpvIlxOQajGcaHArKGiSD1f1Fc5S0akDyVacEIVC5BzZviQr+BVBF0sS3QE/yni+sI1I071a8j
-	/phKfVemIza5/1BXjf7D7zTFlTKiQwe1Als5xfif489WupRuvA13+m3V5NmektDPJnwhhLVuI5FTx
-	gGKOSRrQnj/8rAY9mVyQ==;
+	List-Owner; bh=Bnp/4K7dL7ovsAxApXm+pcHndSpKBFJSgEifRj1Ti8s=; b=cnRVc07m0yPifk
+	ehhz7tMb0g0/eLmCWLA9n+JgXNjEyHCVTbeb6ZXcuqjrZSwI3C8UUurVTiQqZBO31MCy/LIwuhJvD
+	Dr8/S1vrq6V0mkkQdhW9+jSqeEpkE7ghs7noLznDqE/04nM18XAC6TLp2K1Q/050lvdZ00zjd35QN
+	1CUrKDd4o9xBvhYJGyrSKYRNkEPpIG+407ZAKfo2CezC4Mlax3ju8nOnAjSas26zGeEFd/y0k3BFh
+	CtPqyF+bFu9p3YofR7DgZxqdK+6EI+DENc1mkj7hzw8Mc6AhdCIcWLBzJxNIpOwyRZdsGRE3CtwrY
+	wmN0Duq1uLm1Lw/fYH/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6wOI-002wea-3V; Sun, 18 Dec 2022 16:19:54 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p6wP4-002x7u-4q; Sun, 18 Dec 2022 16:20:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6wLs-002vIK-EE; Sun, 18 Dec 2022 16:17:33 +0000
+	id 1p6wNn-002wMm-Cm; Sun, 18 Dec 2022 16:19:25 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 13EA9B80BED;
-	Sun, 18 Dec 2022 16:17:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 912B0C433D2;
-	Sun, 18 Dec 2022 16:17:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E9CF260DD6;
+	Sun, 18 Dec 2022 16:19:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90DADC433EF;
+	Sun, 18 Dec 2022 16:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671380242;
-	bh=HpqRo2m/xWnVMgEWQ20uf5kiNscaU84sX6khynGzbyM=;
+	s=k20201202; t=1671380362;
+	bh=HCLQb5do4JIKc7tx7gSvpeCjPAm+kvzfoLaPPIroch8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LJ6A8lfqtkvSRxN4k8RAaZU0wiGmH36VStNA2oEpW2LgDlKnQwTZn3u2a0QQeSbM0
-	 yOtqTgTCWagd0PoBuVMygO+Y2Tinc2wV9IUSKLjLRa5MhzU2c04b6WQXog5Mfoxfih
-	 YDG3jHopWUIb5lXihS8s5W9ibj4Btz7Cw2F97LbDs3Tf1bD9wEqXORFC1MLRQvxK0N
-	 WJnw4F5x9QhqdTDOcGQP541yDU0uKS87jbtp5XbIKh8i83V2jznQMPq2xGy6l+CycH
-	 /C8IY3L/SZ9tv08slui/WDOLBqtV26R6Q/DMDolUjpEWmItgFixTpPa/Jd+npUKLLr
-	 2LiQGVzwCTIjw==
+	b=VB7rmwQrt/hgpF60yPDz4U0V/HddQ9yBrksnORt3lnvm+pr6aHxIHYSABCsiCSwsx
+	 w8B+V9WC7qhUcVHLWEPOyXKiXjnPD2B5PkwT5sQpd8YHjR2WSh+QowvCDOBj07MQ4L
+	 gNfw3vqmZ0MpqJezLuDLUSz7IyCVkkrVF4/CsQAXq822mHwzICB/r2LqGFa9+jvkQT
+	 wuCTxPa687IF3ieBCZAzWfW3bSL2zoVgWyFfzXjMg/6+HMAhdrXEAYsC0olI5vFQGP
+	 TPcZ2StAaPhAWLHPTG9/8EL5v1BE4ei7uXPCKjJmSMoIRY565CgLzagOGiEB+OOpeK
+	 6MDc+O0Vu+gKQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,17 +54,17 @@ Cc: =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>,
 	airlied@gmail.com,
 	daniel@ffwll.ch,
 	dri-devel@lists.freedesktop.org
-Subject: [PATCH AUTOSEL 5.10 20/39] drm/rockchip: Use drm_mode_copy()
-Date: Sun, 18 Dec 2022 11:15:40 -0500
-Message-Id: <20221218161559.932604-20-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 15/30] drm/rockchip: Use drm_mode_copy()
+Date: Sun, 18 Dec 2022 11:18:20 -0500
+Message-Id: <20221218161836.933697-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221218161559.932604-1-sashal@kernel.org>
-References: <20221218161559.932604-1-sashal@kernel.org>
+In-Reply-To: <20221218161836.933697-1-sashal@kernel.org>
+References: <20221218161836.933697-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221218_081724_804857_682E2F0D 
+X-CRM114-CacheID: sfid-20221218_081923_801035_AC176032 
 X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,10 +117,10 @@ ZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
 aXAvaW5ub19oZG1pLmMgICB8IDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yazMwNjZf
 aGRtaS5jIHwgMiArLQogMyBmaWxlcyBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRp
 b25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwppbmRleCA4NTdjNDdj
-NjllZjEuLmFkZWFhMDE0MGYwZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwppbmRleCA2N2RhZTEz
+NTRhYTYuLjJlYTY3MmY0NDIwZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
 L2Nkbi1kcC1jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
-LmMKQEAgLTU2NCw3ICs1NjQsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9tb2RlX3Nl
+LmMKQEAgLTU2Myw3ICs1NjMsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9tb2RlX3Nl
 dChzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCiAJdmlkZW8tPnZfc3luY19wb2xhcml0eSA9
 ICEhKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19OVlNZTkMpOwogCXZpZGVvLT5oX3N5bmNf
 cG9sYXJpdHkgPSAhIShtb2RlLT5mbGFncyAmIERSTV9NT0RFX0ZMQUdfTkhTWU5DKTsKIAotCW1l
@@ -128,9 +128,9 @@ bWNweSgmZHAtPm1vZGUsIGFkanVzdGVkLCBzaXplb2YoKm1vZGUpKTsKKwlkcm1fbW9kZV9jb3B5
 KCZkcC0+bW9kZSwgYWRqdXN0ZWQpOwogfQogCiBzdGF0aWMgYm9vbCBjZG5fZHBfY2hlY2tfbGlu
 a19zdGF0dXMoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
 cHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lu
-bm9faGRtaS5jCmluZGV4IDdhZmRjNTRlYjNlYy4uNzgxMjBkYTVlNjNhIDEwMDY0NAotLS0gYS9k
+bm9faGRtaS5jCmluZGV4IGVkMzQ0YTc5NWI0ZC4uZjJlMmNjNjZmNDg5IDEwMDY0NAotLS0gYS9k
 cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2lubm9faGRtaS5jCkBAIC00ODgsNyArNDg4LDcgQEAgc3RhdGljIHZvaWQgaW5u
+L3JvY2tjaGlwL2lubm9faGRtaS5jCkBAIC00ODcsNyArNDg3LDcgQEAgc3RhdGljIHZvaWQgaW5u
 b19oZG1pX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAogCWlu
 bm9faGRtaV9zZXR1cChoZG1pLCBhZGpfbW9kZSk7CiAKIAkvKiBTdG9yZSB0aGUgZGlzcGxheSBt
 b2RlIGZvciBwbHVnaW4vRFBNUyBwb3dlcm9uIGV2ZW50cyAqLwotCW1lbWNweSgmaGRtaS0+cHJl
@@ -138,10 +138,10 @@ dmlvdXNfbW9kZSwgYWRqX21vZGUsIHNpemVvZihoZG1pLT5wcmV2aW91c19tb2RlKSk7CisJZHJt
 X21vZGVfY29weSgmaGRtaS0+cHJldmlvdXNfbW9kZSwgYWRqX21vZGUpOwogfQogCiBzdGF0aWMg
 dm9pZCBpbm5vX2hkbWlfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVy
 KQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcmszMDY2X2hkbWkuYwppbmRleCAxYzU0NmMzYTg5OTgu
-LjE3ZTdjNDBhOWU3YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcmszMDY2X2hkbWkuYwppbmRleCA4NWZjNWYwMWY3NjEu
+LjRhODFjNWM4YTU1MCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2
 Nl9oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMKQEAg
-LTM4Myw3ICszODMsNyBAQCByazMwNjZfaGRtaV9lbmNvZGVyX21vZGVfc2V0KHN0cnVjdCBkcm1f
+LTM4Miw3ICszODIsNyBAQCByazMwNjZfaGRtaV9lbmNvZGVyX21vZGVfc2V0KHN0cnVjdCBkcm1f
 ZW5jb2RlciAqZW5jb2RlciwKIAlzdHJ1Y3QgcmszMDY2X2hkbWkgKmhkbWkgPSB0b19yazMwNjZf
 aGRtaShlbmNvZGVyKTsKIAogCS8qIFN0b3JlIHRoZSBkaXNwbGF5IG1vZGUgZm9yIHBsdWdpbi9E
 UE1TIHBvd2Vyb24gZXZlbnRzLiAqLwotCW1lbWNweSgmaGRtaS0+cHJldmlvdXNfbW9kZSwgYWRq
