@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F803C001B2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 19:54:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E9CC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 19:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wapuAXG6JAHZXZ7DoQMoAMnrIB+KsINnHksRdrWWwqg=; b=0azqbozUtYBY20
-	Hiiu4Aail798xW43KSafMI3wq51z28ZiOYzxcDOmm/GhJ5yumqJ9NwiOHjtFM4p3CnIQCzB+BHFQb
-	3ZxY0Sn5x9rulGdrXoq+3B4OJQ4PKt7/nN0H1fka8CK/wxS0UnDTdefV+PeOmy8zsF6kk2vFZ9b41
-	hi6B/7BdmQGTMImVieFsZRn89jI381X3AYSh9c7TqphDjVNt0kjcUv1vpJlb9dTGnn/i7JwvSC8Ut
-	eQruZpXja/ScP+Q2VE2HpEEvGJB/4X50DBFYkxUymQcrIAALfVTbRaNg1KXFRCSPnauCr+ybGvBEd
-	agBNHXfiXGibWeKRNq+w==;
+	List-Owner; bh=ym8Xv34KUV15ROWt6vcTpyE1XKFhtiULH7NX5A1wHXw=; b=jUByLaMjIVr66g
+	O3Ji3rb2tG4QNPXqaQjtRFRjDtEWc9Dv0pujdUQtxRX+UMZGTvF6tDo3GGN4rYs+FJs4f8tT+7TQE
+	HWKYdhfyZyRPGrABvoy8+h5mzFUQEPzJ9G8Fb3HQoYEEAlGa/qTIgq/g9FH8Rnwe115qC7DyODbIV
+	Z4FcoBCYgGAZrcqiu8BjOW310B11zddqyBaERMT9RhAQL8lvuDYtfynKc404J/IAhSlXTtEsXi3HZ
+	2DzexOibJyW7mdJErjdKAXMYs+uBoShxXy5IXC/gasO4da7DtUnp/7Yi2hOZM6rZq2/92rzzuCwiE
+	i66N0Er6GUHcTfR1vCCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7MDZ-001RSo-RK; Mon, 19 Dec 2022 19:54:33 +0000
-Received: from mail-oa1-f54.google.com ([209.85.160.54])
+	id 1p7MEW-001SUr-7V; Mon, 19 Dec 2022 19:55:32 +0000
+Received: from mail-ot1-f41.google.com ([209.85.210.41])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7LXM-000dvc-Vd; Mon, 19 Dec 2022 19:10:58 +0000
-Received: by mail-oa1-f54.google.com with SMTP id 586e51a60fabf-1441d7d40c6so12708411fac.8;
-        Mon, 19 Dec 2022 11:10:54 -0800 (PST)
+	id 1p7LYo-000fen-F1; Mon, 19 Dec 2022 19:12:33 +0000
+Received: by mail-ot1-f41.google.com with SMTP id x25-20020a056830115900b00670932eff32so5923228otq.3;
+        Mon, 19 Dec 2022 11:12:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+5raIVmkATLs5kf4lFGVOCgkR/IHy+HENdY2c/Hj4Z4=;
-        b=rGZEINuewQnaKqBobVyC90u0naUYvsAmpBICBRmsrlFd/BvpS1yv1N6SjE3KZDEZbF
-         pqC5vjUhdJz9LESeUmYaM64q7TGrYVHvhm0D3cyM/Dnp2hQCMDo3HoppDiy53cOwPvtk
-         uZ9tzv3aFn/dg83XIOzcBVbjB+UUd6wb60t+mAK+z2IzajTYTkPYWLczuYGo8v55Ha8D
-         de7KmkpxzwUCpGJfOV9WQEqCv8Yn1pTIcQfJGAbDlmLzhlDu8PBWoE4vpEqf1zrDr7Jw
-         XJX4/rlj/j41N5VZ79JMZQGN0PeiGeP3IcRhT9olHtjfWfvsWUZnjQmOiRe+iWna2iOx
-         yvuA==
-X-Gm-Message-State: ANoB5pmEPU8DKfoX4MLhHH/xHup7xSy17ZkY1+nBHO9TbTZIDjyxmlUc
-	MkW4KFu4GidKm5CdOau7IW4vHL+ElA==
-X-Google-Smtp-Source: AA0mqf5uy2z1Px+lvgd48zxf2Np4GkD7Kjg/b/oNMMimRBtrvEYAW8M9qB2UdQywDGK10wHcqUvDiw==
-X-Received: by 2002:a05:6870:50c:b0:137:5344:70ab with SMTP id j12-20020a056870050c00b00137534470abmr21296969oao.15.1671477053900;
-        Mon, 19 Dec 2022 11:10:53 -0800 (PST)
+        bh=46JbXkm0AGTOlW4ZS4S/fkNOhqoj9coxtpa3c0vWKNs=;
+        b=nEj/plPGRnELlvroxlhfgbVsvVV3oPX0DL6K9VYTmJEClSU7n4WmHE/j47OHlq7c4D
+         xGw4ivf6rzruIVIb3B8zO/dYtNYC/ZZeLo6kZwZWclUS309S+Y3wQBJHKavGxJg3cEHl
+         J70Dl04wW16PfPLkAZ/PwzszQkgOR1tE+w7NYKY8LQ5OkGr2la5+iv9eQl1z13vaZNTZ
+         ByoKirbas2ZRoQDpHBBgj3dV9MHC5QaqgfXfYW2swAw7Uy1OpCAPiWhxWuXcFwgQ6iTc
+         6urnuHnJY5KBaOwArU+hmpcizhFJI0uSPOVb75tCfH4WJELjLM1tRPBXoIYstBii6min
+         j6Tw==
+X-Gm-Message-State: ANoB5pnAHKMQuzj48Z48m9CYReMAhRlCLCf2h3K4mYNb8eSk1XXQFdsg
+	F3y2j9CyBLoRVauh0o1/Xw==
+X-Google-Smtp-Source: AA0mqf6vCAuA3U1rnxHRSuh61gekR8vtt1ysysMF0P5bkOCPR+XEkcbQ0uG6ukdpk8Cp1bV+bNOAKQ==
+X-Received: by 2002:a05:6830:1517:b0:670:69ac:bb49 with SMTP id k23-20020a056830151700b0067069acbb49mr21123363otp.15.1671477144921;
+        Mon, 19 Dec 2022 11:12:24 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id o15-20020a056870524f00b0010d7242b623sm5124258oai.21.2022.12.19.11.10.53
+        by smtp.gmail.com with ESMTPSA id ci10-20020a05683063ca00b00660fe564e12sm1723447otb.58.2022.12.19.11.12.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Dec 2022 11:10:53 -0800 (PST)
-Received: (nullmailer pid 1974177 invoked by uid 1000);
-	Mon, 19 Dec 2022 19:10:52 -0000
+        Mon, 19 Dec 2022 11:12:24 -0800 (PST)
+Received: (nullmailer pid 1976200 invoked by uid 1000);
+	Mon, 19 Dec 2022 19:12:23 -0000
 From: Rob Herring <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Felipe Balbi <balbi@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains property
-Date: Mon, 19 Dec 2022 13:10:37 -0600
-Message-Id: <20221219191038.1973807-1-robh@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] dt-bindings: PCI: Convert Rockchip RK3399 PCIe to DT schema
+Date: Mon, 19 Dec 2022 13:12:08 -0600
+Message-Id: <20221219191209.1975834-1-robh@kernel.org>
 X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_111057_048150_3AEB7F34 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20221219_111229_349506_2D62C299 
+X-CRM114-Status: GOOD (  20.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +76,536 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3399 DWC3 node has 'power-domain' property which isn't
-allowed by the schema:
-
-usb@fe900000: Unevaluated properties are not allowed ('power-domains' was unexpected)
-
-Allow DWC3 nodes to have a single power-domains entry. We could instead
-move the power-domains property to the parent wrapper node, but the
-could be an ABI break (Linux shouldn't care). Also, we don't want to
-encourage the pattern of wrapper nodes just to define resources such as
-clocks, resets, power-domains, etc. when not necessary.
+Convert the Rockchip RK3399 PCIe Host/Endpoint controller to DT schema
+format. Like most dual mode PCI controllers, we need to split the schema
+into common, host and endpoint schemas.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+Shawn (or anyone from Rockchip), Note and please ack the license change.
+---
+ .../pci/rockchip,rk3399-pcie-common.yaml      |  69 +++++++++
+ .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |  68 +++++++++
+ .../bindings/pci/rockchip,rk3399-pcie.yaml    | 132 +++++++++++++++++
+ .../bindings/pci/rockchip-pcie-ep.txt         |  62 --------
+ .../bindings/pci/rockchip-pcie-host.txt       | 135 ------------------
+ MAINTAINERS                                   |   2 +-
+ 6 files changed, 270 insertions(+), 198 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-common.yaml
+ create mode 100644 Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+ create mode 100644 Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie.yaml
+ delete mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
+ delete mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
 
-diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
-index 6d78048c4613..bcefd1c2410a 100644
---- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
-+++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
-@@ -91,6 +91,9 @@ properties:
-         - usb2-phy
-         - usb3-phy
- 
-+  power-domains:
-+    maxItems: 1
+diff --git a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-common.yaml
+new file mode 100644
+index 000000000000..a8574f8a84a3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-common.yaml
+@@ -0,0 +1,69 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pci/rockchip,rk3399-pcie-common.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-   resets:
-     minItems: 1
++title: Rockchip AXI PCIe Bridge Common Properties
++
++maintainers:
++  - Shawn Lin <shawn.lin@rock-chips.com>
++
++properties:
++  reg:
++    maxItems: 2
++
++  clocks:
++    maxItems: 4
++
++  clock-names:
++    items:
++      - const: aclk
++      - const: aclk-perf
++      - const: hclk
++      - const: pm
++
++  num-lanes:
++    maximum: 4
++
++  phys:
++    oneOf:
++      - maxItems: 1
++      - maxItems: 4
++
++  phy-names:
++    oneOf:
++      - const: pcie-phy
++      - items:
++          - const: pcie-phy-0
++          - const: pcie-phy-1
++          - const: pcie-phy-2
++          - const: pcie-phy-3
++
++  resets:
++    maxItems: 7
++
++  reset-names:
++    items:
++      - const: core
++      - const: mgmt
++      - const: mgmt-sticky
++      - const: pipe
++      - const: pm
++      - const: pclk
++      - const: aclk
++
++required:
++  - compatible
++  - reg
++  - reg-names
++  - clocks
++  - clock-names
++  - phys
++  - phy-names
++  - resets
++  - reset-names
++
++additionalProperties: true
++
++...
+diff --git a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+new file mode 100644
+index 000000000000..88386a6d7011
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+@@ -0,0 +1,68 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pci/rockchip,rk3399-pcie-ep.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip AXI PCIe Endpoint
++
++maintainers:
++  - Shawn Lin <shawn.lin@rock-chips.com>
++
++allOf:
++  - $ref: /schemas/pci/pci-ep.yaml#
++  - $ref: rockchip,rk3399-pcie-common.yaml#
++
++properties:
++  compatible:
++    const: rockchip,rk3399-pcie-ep
++
++  reg: true
++
++  reg-names:
++    items:
++      - const: apb-base
++      - const: mem-base
++
++  rockchip,max-outbound-regions:
++    description: Maximum number of outbound regions
++    $ref: /schemas/types.yaml#/definitions/uint32
++    maximum: 32
++    default: 32
++
++required:
++  - rockchip,max-outbound-regions
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/clock/rk3399-cru.h>
++
++    bus {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        pcie-ep@f8000000 {
++            compatible = "rockchip,rk3399-pcie-ep";
++            reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0x80000000 0x0 0x20000>;
++            reg-names = "apb-base", "mem-base";
++            clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
++              <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
++            clock-names = "aclk", "aclk-perf",
++                    "hclk", "pm";
++            max-functions = /bits/ 8 <8>;
++            num-lanes = <4>;
++            resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
++              <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
++              <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
++            reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
++                    "pm", "pclk", "aclk";
++            phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
++            phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
++            rockchip,max-outbound-regions = <16>;
++        };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie.yaml
+new file mode 100644
+index 000000000000..531008f0b6ac
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie.yaml
+@@ -0,0 +1,132 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pci/rockchip,rk3399-pcie.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip AXI PCIe Root Port Bridge Host
++
++maintainers:
++  - Shawn Lin <shawn.lin@rock-chips.com>
++
++allOf:
++  - $ref: /schemas/pci/pci-bus.yaml#
++  - $ref: rockchip,rk3399-pcie-common.yaml#
++
++properties:
++  compatible:
++    const: rockchip,rk3399-pcie
++
++  reg: true
++
++  reg-names:
++    items:
++      - const: axi-base
++      - const: apb-base
++
++  interrupts:
++    maxItems: 3
++
++  interrupt-names:
++    items:
++      - const: sys
++      - const: legacy
++      - const: client
++
++  aspm-no-l0s:
++    description: This property is needed if using 24MHz OSC for RC's PHY.
++
++  ep-gpios:
++    description: pre-reset GPIO
++
++  vpcie12v-supply:
++    description: The 12v regulator to use for PCIe.
++
++  vpcie3v3-supply:
++    description: The 3.3v regulator to use for PCIe.
++
++  vpcie1v8-supply:
++    description: The 1.8v regulator to use for PCIe.
++
++  vpcie0v9-supply:
++    description: The 0.9v regulator to use for PCIe.
++
++  interrupt-controller:
++    type: object
++    additionalProperties: false
++
++    properties:
++      '#address-cells':
++        const: 0
++
++      '#interrupt-cells':
++        const: 1
++
++      interrupt-controller: true
++
++required:
++  - ranges
++  - "#interrupt-cells"
++  - interrupts
++  - interrupt-controller
++  - interrupt-map
++  - interrupt-map-mask
++  - msi-map
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/clock/rk3399-cru.h>
++
++    bus {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        pcie@f8000000 {
++            compatible = "rockchip,rk3399-pcie";
++            device_type = "pci";
++            #address-cells = <3>;
++            #size-cells = <2>;
++            clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
++              <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
++            clock-names = "aclk", "aclk-perf",
++                    "hclk", "pm";
++            interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
++                  <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
++                  <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>;
++            interrupt-names = "sys", "legacy", "client";
++            ep-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
++            ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x600000
++                0x81000000 0x0 0xfa600000 0x0 0xfa600000 0x0 0x100000>;
++            num-lanes = <4>;
++            msi-map = <0x0 &its 0x0 0x1000>;
++            reg = <0x0 0xf8000000 0x0 0x2000000>, <0x0 0xfd000000 0x0 0x1000000>;
++            reg-names = "axi-base", "apb-base";
++            resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
++              <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
++              <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
++            reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
++                    "pm", "pclk", "aclk";
++            /* deprecated legacy PHY model */
++            phys = <&pcie_phy>;
++            phy-names = "pcie-phy";
++            pinctrl-names = "default";
++            pinctrl-0 = <&pcie_clkreq>;
++            #interrupt-cells = <1>;
++            interrupt-map-mask = <0 0 0 7>;
++            interrupt-map = <0 0 0 1 &pcie0_intc 0>,
++                <0 0 0 2 &pcie0_intc 1>,
++                <0 0 0 3 &pcie0_intc 2>,
++                <0 0 0 4 &pcie0_intc 3>;
++
++            pcie0_intc: interrupt-controller {
++                interrupt-controller;
++                #address-cells = <0>;
++                #interrupt-cells = <1>;
++            };
++        };
++    };
++...
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
+deleted file mode 100644
+index 778467307a93..000000000000
+--- a/Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
++++ /dev/null
+@@ -1,62 +0,0 @@
+-* Rockchip AXI PCIe Endpoint Controller DT description
+-
+-Required properties:
+-- compatible: Should contain "rockchip,rk3399-pcie-ep"
+-- reg: Two register ranges as listed in the reg-names property
+-- reg-names: Must include the following names
+-	- "apb-base"
+-	- "mem-base"
+-- clocks: Must contain an entry for each entry in clock-names.
+-		See ../clocks/clock-bindings.txt for details.
+-- clock-names: Must include the following entries:
+-	- "aclk"
+-	- "aclk-perf"
+-	- "hclk"
+-	- "pm"
+-- resets: Must contain seven entries for each entry in reset-names.
+-	   See ../reset/reset.txt for details.
+-- reset-names: Must include the following names
+-	- "core"
+-	- "mgmt"
+-	- "mgmt-sticky"
+-	- "pipe"
+-	- "pm"
+-	- "aclk"
+-	- "pclk"
+-- pinctrl-names : The pin control state names
+-- pinctrl-0: The "default" pinctrl state
+-- phys: Must contain an phandle to a PHY for each entry in phy-names.
+-- phy-names: Must include 4 entries for all 4 lanes even if some of
+-  them won't be used for your cases. Entries are of the form "pcie-phy-N":
+-  where N ranges from 0 to 3.
+-  (see example below and you MUST also refer to ../phy/rockchip-pcie-phy.txt
+-  for changing the #phy-cells of phy node to support it)
+-- rockchip,max-outbound-regions: Maximum number of outbound regions
+-
+-Optional Property:
+-- num-lanes: number of lanes to use
+-- max-functions: Maximum number of functions that can be configured (default 1).
+-
+-pcie0-ep: pcie@f8000000 {
+-	compatible = "rockchip,rk3399-pcie-ep";
+-	#address-cells = <3>;
+-	#size-cells = <2>;
+-	rockchip,max-outbound-regions = <16>;
+-	clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
+-		 <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
+-	clock-names = "aclk", "aclk-perf",
+-		      "hclk", "pm";
+-	max-functions = /bits/ 8 <8>;
+-	num-lanes = <4>;
+-	reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0x80000000 0x0 0x20000>;
+-	reg-names = "apb-base", "mem-base";
+-	resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
+-		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
+-		 <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
+-	reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
+-		      "pm", "pclk", "aclk";
+-	phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
+-	phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie_clkreq>;
+-};
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
+deleted file mode 100644
+index af34c65773fd..000000000000
+--- a/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
++++ /dev/null
+@@ -1,135 +0,0 @@
+-* Rockchip AXI PCIe Root Port Bridge DT description
+-
+-Required properties:
+-- #address-cells: Address representation for root ports, set to <3>
+-- #size-cells: Size representation for root ports, set to <2>
+-- #interrupt-cells: specifies the number of cells needed to encode an
+-		interrupt source. The value must be 1.
+-- compatible: Should contain "rockchip,rk3399-pcie"
+-- reg: Two register ranges as listed in the reg-names property
+-- reg-names: Must include the following names
+-	- "axi-base"
+-	- "apb-base"
+-- clocks: Must contain an entry for each entry in clock-names.
+-		See ../clocks/clock-bindings.txt for details.
+-- clock-names: Must include the following entries:
+-	- "aclk"
+-	- "aclk-perf"
+-	- "hclk"
+-	- "pm"
+-- msi-map: Maps a Requester ID to an MSI controller and associated
+-	msi-specifier data. See ./pci-msi.txt
+-- interrupts: Three interrupt entries must be specified.
+-- interrupt-names: Must include the following names
+-	- "sys"
+-	- "legacy"
+-	- "client"
+-- resets: Must contain seven entries for each entry in reset-names.
+-	   See ../reset/reset.txt for details.
+-- reset-names: Must include the following names
+-	- "core"
+-	- "mgmt"
+-	- "mgmt-sticky"
+-	- "pipe"
+-	- "pm"
+-	- "aclk"
+-	- "pclk"
+-- pinctrl-names : The pin control state names
+-- pinctrl-0: The "default" pinctrl state
+-- #interrupt-cells: specifies the number of cells needed to encode an
+-	interrupt source. The value must be 1.
+-- interrupt-map-mask and interrupt-map: standard PCI properties
+-
+-Required properties for legacy PHY model (deprecated):
+-- phys: From PHY bindings: Phandle for the Generic PHY for PCIe.
+-- phy-names:  MUST be "pcie-phy".
+-
+-Required properties for per-lane PHY model (preferred):
+-- phys: Must contain an phandle to a PHY for each entry in phy-names.
+-- phy-names: Must include 4 entries for all 4 lanes even if some of
+-  them won't be used for your cases. Entries are of the form "pcie-phy-N":
+-  where N ranges from 0 to 3.
+-  (see example below and you MUST also refer to ../phy/rockchip-pcie-phy.txt
+-  for changing the #phy-cells of phy node to support it)
+-
+-Optional Property:
+-- aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
+-	using 24MHz OSC for RC's PHY.
+-- ep-gpios: contain the entry for pre-reset GPIO
+-- num-lanes: number of lanes to use
+-- vpcie12v-supply: The phandle to the 12v regulator to use for PCIe.
+-- vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+-- vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+-- vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+-
+-*Interrupt controller child node*
+-The core controller provides a single interrupt for legacy INTx. The PCIe node
+-should contain an interrupt controller node as a target for the PCI
+-'interrupt-map' property. This node represents the domain at which the four
+-INTx interrupts are decoded and routed.
+-
+-
+-Required properties for Interrupt controller child node:
+-- interrupt-controller: identifies the node as an interrupt controller
+-- #address-cells: specifies the number of cells needed to encode an
+-	address. The value must be 0.
+-- #interrupt-cells: specifies the number of cells needed to encode an
+-	interrupt source. The value must be 1.
+-
+-Example:
+-
+-pcie0: pcie@f8000000 {
+-	compatible = "rockchip,rk3399-pcie";
+-	#address-cells = <3>;
+-	#size-cells = <2>;
+-	clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
+-		 <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
+-	clock-names = "aclk", "aclk-perf",
+-		      "hclk", "pm";
+-	bus-range = <0x0 0x1>;
+-	interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
+-		     <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
+-		     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>;
+-	interrupt-names = "sys", "legacy", "client";
+-	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+-	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+-	assigned-clock-rates = <100000000>;
+-	ep-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+-	ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x600000
+-		  0x81000000 0x0 0xfa600000 0x0 0xfa600000 0x0 0x100000>;
+-	num-lanes = <4>;
+-	msi-map = <0x0 &its 0x0 0x1000>;
+-	reg = <0x0 0xf8000000 0x0 0x2000000>, <0x0 0xfd000000 0x0 0x1000000>;
+-	reg-names = "axi-base", "apb-base";
+-	resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
+-		 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
+-		 <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
+-	reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
+-		      "pm", "pclk", "aclk";
+-	/* deprecated legacy PHY model */
+-	phys = <&pcie_phy>;
+-	phy-names = "pcie-phy";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie_clkreq>;
+-	#interrupt-cells = <1>;
+-	interrupt-map-mask = <0 0 0 7>;
+-	interrupt-map = <0 0 0 1 &pcie0_intc 0>,
+-			<0 0 0 2 &pcie0_intc 1>,
+-			<0 0 0 3 &pcie0_intc 2>,
+-			<0 0 0 4 &pcie0_intc 3>;
+-	pcie0_intc: interrupt-controller {
+-		interrupt-controller;
+-		#address-cells = <0>;
+-		#interrupt-cells = <1>;
+-	};
+-};
+-
+-pcie0: pcie@f8000000 {
+-	...
+-
+-	/* preferred per-lane PHY model */
+-	phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
+-	phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
+-
+-	...
+-};
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 28cc7862a187..a080a536bfd2 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -16309,7 +16309,7 @@ M:	Shawn Lin <shawn.lin@rock-chips.com>
+ L:	linux-pci@vger.kernel.org
+ L:	linux-rockchip@lists.infradead.org
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/pci/rockchip-pcie*
++F:	Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie*
+ F:	drivers/pci/controller/pcie-rockchip*
  
+ PCIE DRIVER FOR SOCIONEXT UNIPHIER
 -- 
 2.35.1
 
