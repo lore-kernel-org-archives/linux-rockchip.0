@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E590C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 17:24:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D74FC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 17:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jxyXJfB67PCi6nIFUJI9v0X5rrkftuAOxs9s6iNnA/w=; b=y1XDmrnI5J2EtE
-	VE3V1BvFoPbxYRn3MAL97Qxcw5xXUgD55gmGtoKZfkXATTktrKssJd4XwfxTNyL7JPTYXHGnUptfl
-	WMbJc2lH+wh8SVEolynZkyYG9xiyeMXxXSVo8xCM77tYc8/OmCfND32m/DgK6AMLx6D3ChmAYVYUH
-	WhS6PUOxFkJeaMEJKJvdWfj/eVcAmeMTsYYHZfAauPNtzlJVfdowRmzSwiMhegYVGjWRI3Wl9+oi4
-	2n6tZ3M0oLatgDXhudb5Homn+mBVrWJgasVS5rBVZ+aREMFHRJN1mJPyLhxtIWpchEX38LQ40SH+K
-	dfpnbElH8OrLIAAXBbOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0CDup5BAdCmJb/XGdq/4bN3xqrOwaYsY3LJZtuy8pD8=; b=28gaBaqhWb7IfM
+	WlcNXbo2uvLJoWF8/48X9P3qMdJXFjzAcvxAcLP8lsiukLXxpmgI3Ql6zb2ZIc1Y/ZNWYYzxUGnSB
+	3II0MXHONad4wUtCGvC1mD9TahJ9U/uozc2I/fc3ZbKRgdHjK1UYdRvRAQEfrkbczAqbNF93vw3O+
+	3vfOByX0P7FcNKyCeKPj7WAPL1psOfGVQPjfwCUhV9304opq3MVQv6nREQtCyHVg7fnPWh2DQAY43
+	lRAVNF09vzYViDb/el1rvToNweoMKhMPYgreDmQQJH9y7ColXTMYW37XurXwT/55vsmLmvFlM8drf
+	VmZsxYr6yklqcFlv7iaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Jrm-00Giii-69; Mon, 19 Dec 2022 17:23:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p7JtB-00GjsT-FD; Mon, 19 Dec 2022 17:25:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7IV9-00FiCs-Un; Mon, 19 Dec 2022 15:56:30 +0000
+	id 1p7IVA-00FiD0-Ec; Mon, 19 Dec 2022 15:56:32 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f69c:5603:d4ce:7aa2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91FE36602C25;
-	Mon, 19 Dec 2022 15:56:23 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16C416602C2C;
+	Mon, 19 Dec 2022 15:56:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671465383;
-	bh=UyVulrVn+7bAVKLq/DGXCKRzuRojbWRGKmItzsniUQ0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=KhN5FkuStBnUYbcL5zO5utJ1twZs259RkiQ0rKTDWaQya+3fTR3t4H3pp2ndipwOA
-	 aey+i8pzNYFD6bYYiK2nSWMzgMISxOKWGj+oh6sVpfgC/69zqQnrtumXX5PqK64H0z
-	 uhzN+iFAfYKGXjbDSatqMCYi2jJgbz2eT2aC6prJnuyio8KDJNBQBYJPrTGs6x9EQ3
-	 06TiqQHu0pWkQxFkIbvZFQdv00x3vuTT0vNWV5GFn/s5FS6zVm4xZ/gY1rIpxxeo2q
-	 TJWk+nhf3cocvtDTRfQQJyRgglb2kLz16xYwG+Brxl6dcpdBQuJ1e07zrMmh6Uzc8G
-	 ZhXwW5Sa+Zm4A==
+	s=mail; t=1671465384;
+	bh=0xvLSgnd51UVvYAm3gheA28esQ/NuH/ser9zs6gn/To=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=aMQCph4ji1fmcge88iutVVKOjX4jkQOaQi9ZFAj2jsNKwiZqEHDuKfI/LNdqFTRs+
+	 AaN8xwR5SlMoX7wLrNKFKhJ4TPXSWitgkBz98+A7p5hmHG8lHVcGGPmFbrCQvtFlcI
+	 EmBfjwSRzeUZBR+1zjUlDFlQcNLrPFbdcBE/yUALtP2MNaJieBKC94rKpMsAj0aYmA
+	 KAAIC0oscoj575Ugso18t86qpHUqGVX73/DsgsExX326gZIJdH4qiXZ+qE54SJkK+e
+	 9VmNVESDKWOp0MbAQtn9y5Q3+WyJCsDM6Ifab4KCfSpBwXTL3oG0cMRy3NTUpiHsG1
+	 VRvGS/yN2lcSw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -57,14 +57,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v1 0/9] AV1 stateless decoder for RK3588
-Date: Mon, 19 Dec 2022 16:56:07 +0100
-Message-Id: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 1/9] dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible
+Date: Mon, 19 Dec 2022 16:56:08 +0100
+Message-Id: <20221219155616.848690-2-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
+References: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_075628_328726_115389BD 
-X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-CacheID: sfid-20221219_075628_714617_C004FA42 
+X-CRM114-Status: UNSURE (   7.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,60 +84,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series implement AV1 stateless decoder for RK3588 SoC.
-The harware support 8 and 10 bits bitstreams up to 7680x4320.
-AV1 feature like film grain or scaling are done by the postprocessor.
-The driver can produce NV12_4L4 and NV12 pixel formats.
-A native 10bits NV12_4L4 format is possible but need more investigation
-to be completly documented and enabled.
+Add compatible for rk3588 AV1 vpu decoder.
 
-It is based on Daniel's "[RFC,v3] media: Add AV1 uAPI" [1] patches and
-Sebastian's device-tree patches for RK3588.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-The full branch can be found here:
-https://gitlab.collabora.com/linux/for-upstream/-/commits/rk3588_av1_decoder_v1
-
-Fluster score is: 151/239 while testing AV1-TEST-VECTORS with GStreamer-AV1-V4L2SL-Gst1.0.
-The failing tests are:
-- 10bits bitstream because 10bits output formats aren't yet implemented.
-- the 2 tests with 2 spatial layers: few errors in luma/chroma values
-- tests with resolution < hardware limit (64x64)
-
-Benjamin
-
-Benjamin Gaignard (9):
-  dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible
-  media: verisilicon: Add AV1 decoder mode and controls
-  media: verisilicon: Save bit depth for AV1 decoder
-  media: verisilicon: Check AV1 bitstreams bit depth
-  media: verisilicon: Compute motion vectors size for AV1 frames
-  media: verisilicon: Add AV1 entropy helpers
-  media: verisilicon: Add Rockchip AV1 decoder
-  media: verisilicon: Add film grain feature to AV1 driver
-  media: verisilicon: Enable AV1 decoder on rk3588
-
- .../bindings/media/rockchip-vpu.yaml          |    1 +
- drivers/media/platform/verisilicon/Makefile   |    3 +
- drivers/media/platform/verisilicon/hantro.h   |    5 +
- .../media/platform/verisilicon/hantro_drv.c   |   54 +
- .../media/platform/verisilicon/hantro_hw.h    |  102 +
- .../platform/verisilicon/hantro_postproc.c    |    3 +
- .../media/platform/verisilicon/hantro_v4l2.c  |    5 +
- .../verisilicon/rockchip_av1_entropymode.c    | 4536 +++++++++++++++++
- .../verisilicon/rockchip_av1_entropymode.h    |  272 +
- .../verisilicon/rockchip_av1_filmgrain.c      |  401 ++
- .../verisilicon/rockchip_av1_filmgrain.h      |   36 +
- .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 2280 +++++++++
- .../verisilicon/rockchip_vpu981_regs.h        |  477 ++
- .../platform/verisilicon/rockchip_vpu_hw.c    |  116 +
- 14 files changed, 8291 insertions(+)
- create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.c
- create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.h
- create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
- create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.h
- create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
- create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index 6cc4d3e5a61d..8454df53f5cb 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -24,6 +24,7 @@ properties:
+           - rockchip,rk3399-vpu
+           - rockchip,px30-vpu
+           - rockchip,rk3568-vpu
++          - rockchip,rk3588-av1-vpu
+       - items:
+           - const: rockchip,rk3188-vpu
+           - const: rockchip,rk3066-vpu
 -- 
 2.34.1
 
