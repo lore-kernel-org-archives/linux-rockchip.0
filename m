@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D6BC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 17:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 006E4C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 17:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nIsdbQQSnG7wCuzzGXW5XygbCAtcBfMHdYvc76UlUkE=; b=f0qlLFWUzHg1hk
-	qVX+N9L3ZGhRa0pdzsUeEt3Ogv+17Tg7MnSim1M0dtTA9KjOQnJ+vRyJgkdpucZwdKfP6IZtF8PEW
-	Euud2N1Gu/A14n2/iJND3xoJdCg9muvgNM8bQG8XCakMOhU9C6A1jsXLUUdA8+SW8ZgtOkwHg5elN
-	2CvWAFMj0P6jm98NqTkjEpHNwTb4EfwdeDf1Tf3SzCnSeU/2YeFoZm7j9rCZ3VZ/yY7C6WUFCHk/X
-	+hkP7mAUZXUTgPqWWfsVlxUC2zLKGqHXgYgu0dazJikLAclcdDg29sAHdRsx205ezY7jiDWTIGdjb
-	jPcXCDddG6BUMtdd5t1A==;
+	List-Owner; bh=sQ5Y9iAH+Sqa1sVqRDC3on2JOS3IVMIMSSMHFsdrMHA=; b=x4S3SQB+S+6IdI
+	hqOnRZSIgruhXY+lnenEKJ4Njj4Y9xPa5cI08n2bzYKvHtKL6WLHkXB3oCrBeJeUzDnlcUfPh4oWt
+	dsjhqUa9oPrWLdtMyDKensU8VV/lSyGMm7NP2g/sxAMxngcSEmzZeZp/8nkKt0U5HOqbL5LPeZHk7
+	Pdx9cm/E32ogHdBcUMjXg38vcBg5UjeMcm6DgkZz6jjXvDIulXEh+yDrKHk6OZo8/z8d4e82eoNWV
+	mQYQpLi+04kuVEE4aBT5d4FsfQsHq1Urx5NZqQhE6B7aHIgRYX27AKKewrA1zWH/SxK2wyFKWyi2e
+	oWtFbJ+D3mZUhZb21BMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7JtD-00GjuH-Kp; Mon, 19 Dec 2022 17:25:23 +0000
+	id 1p7JtL-00GjzP-AS; Mon, 19 Dec 2022 17:25:31 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7IVA-00FiDR-E4; Mon, 19 Dec 2022 15:56:32 +0000
+	id 1p7IVA-00FiD7-E3; Mon, 19 Dec 2022 15:56:32 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f69c:5603:d4ce:7aa2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16E876602C51;
-	Mon, 19 Dec 2022 15:56:25 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 993746602C38;
+	Mon, 19 Dec 2022 15:56:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671465385;
-	bh=WKnUc4065UFAP8ex+HL2CHU0GCNHlvHhtIo5+EmiUnM=;
+	s=mail; t=1671465384;
+	bh=dnBJgh8sSkt857ri8yCAHtqY7H+7m35HgIufTqw86+k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gv/CtYTKPpRno7W9iePoA/tVBB01PPhcSkj3Av1aX/MRnENraKw8IJFuwOP5jcmQJ
-	 iBXgMqX3pe2+ZhTOna8ITfVdMqWeZa7nBB673QG5eAAbQN4jSVWH9mqLSslmmqDQlH
-	 uePkfM2INX8y45vPOiQKJTdP8gkYcarVz6OS4k+7+UcQbn4AeY8cT0V9VRhVZ6hPkq
-	 ibyLQG6dnly9Vg5svXvGE2mVq7x2diTRNP4JKXSGmZCao8H7c879G29pJ+rJv1LSxz
-	 dBMelhXjkr7pij8N458GPYXkkSrBidR69h+hbEezr6S03HFKl3kf6tiUqZpM1X7Gtf
-	 kZOWkbjIn7fnQ==
+	b=dM+TQZYjcvfz+QOSRqrc5sqY1jLwFJ6RJWQ5j6je+x/qWmuOfQucYQtllbzklTEGF
+	 8dSIdRN+2QdCn/3mf5cokKibr/8R5vmjXLQRnDTYV7c3JYLRtnvzpu8Yv2D1iLodeL
+	 vz06sp1fnaJbAsLvf0czQwiewHEraHf23KALfj4U2yu5eM7fIJ/ZoB5VS0KobkPCj/
+	 GvX2SfMaypzKv80MS6qtOCtF5x8P7ylGkzrHZoxmZCflcUo1mnYKQS0WomFauAFf3H
+	 eiocvEdRWCz1pP6K21qZObA5/hXeWhGua+K9fAeavWeyktksj36DK5aZn6uWnxvUrQ
+	 Kgy2sjHmNXsxw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -57,16 +57,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v1 3/9] media: verisilicon: Save bit depth for AV1 decoder
-Date: Mon, 19 Dec 2022 16:56:10 +0100
-Message-Id: <20221219155616.848690-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 2/9] media: verisilicon: Add AV1 decoder mode and controls
+Date: Mon, 19 Dec 2022 16:56:09 +0100
+Message-Id: <20221219155616.848690-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
 References: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_075628_732208_E1A6175A 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20221219_075628_739172_9864DCC6 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +83,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Store bit depth information from AV1 sequence control.
+Add AV1 decoder as new decoder mode to Hantro driver.
+Register needed AV1 controls for the decoder.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/platform/verisilicon/hantro_drv.c   | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ drivers/media/platform/verisilicon/hantro.h   |  3 +++
+ .../media/platform/verisilicon/hantro_drv.c   | 21 +++++++++++++++++++
+ 2 files changed, 24 insertions(+)
 
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 2989ebc631cc..61480825b856 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -38,6 +38,7 @@ struct hantro_postproc_ops;
+ #define HANTRO_H264_DECODER	BIT(18)
+ #define HANTRO_HEVC_DECODER	BIT(19)
+ #define HANTRO_VP9_DECODER	BIT(20)
++#define HANTRO_AV1_DECODER	BIT(21)
+ #define HANTRO_DECODERS		0xffff0000
+ 
+ /**
+@@ -111,6 +112,7 @@ struct hantro_variant {
+  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
+  * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
+  * @HANTRO_MODE_VP9_DEC: VP9 decoder.
++ * @HANTRO_MODE_AV1_DEC: AV1 decoder
+  */
+ enum hantro_codec_mode {
+ 	HANTRO_MODE_NONE = -1,
+@@ -120,6 +122,7 @@ enum hantro_codec_mode {
+ 	HANTRO_MODE_VP8_DEC,
+ 	HANTRO_MODE_HEVC_DEC,
+ 	HANTRO_MODE_VP9_DEC,
++	HANTRO_MODE_AV1_DEC,
+ };
+ 
+ /*
 diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 4500e1fc0f2c..8e93710dcfed 100644
+index 8cb4a68c9119..4500e1fc0f2c 100644
 --- a/drivers/media/platform/verisilicon/hantro_drv.c
 +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -324,6 +324,25 @@ static int hantro_vp9_s_ctrl(struct v4l2_ctrl *ctrl)
- 	return 0;
- }
- 
-+static int hantro_av1_s_ctrl(struct v4l2_ctrl *ctrl)
-+{
-+	struct hantro_ctx *ctx;
-+
-+	ctx = container_of(ctrl->handler,
-+			   struct hantro_ctx, ctrl_handler);
-+
-+	switch (ctrl->id) {
-+	case V4L2_CID_STATELESS_AV1_SEQUENCE:
-+		ctx->bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
- 	.try_ctrl = hantro_try_ctrl,
- };
-@@ -336,6 +355,12 @@ static const struct v4l2_ctrl_ops hantro_vp9_ctrl_ops = {
- 	.s_ctrl = hantro_vp9_s_ctrl,
- };
- 
-+static const struct v4l2_ctrl_ops hantro_av1_ctrl_ops = {
-+	.try_ctrl = hantro_try_ctrl,
-+	.s_ctrl = hantro_av1_s_ctrl,
-+};
-+
-+
- #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
- 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
- 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-@@ -513,6 +538,7 @@ static const struct hantro_ctrl controls[] = {
- 		.codec = HANTRO_AV1_DECODER,
+@@ -498,6 +498,27 @@ static const struct hantro_ctrl controls[] = {
  		.cfg = {
- 			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
-+			.ops = &hantro_av1_ctrl_ops,
+ 			.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR,
  		},
- 	}, {
- 		.codec = HANTRO_AV1_DECODER,
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_FRAME,
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY,
++			.dims = { V4L2_AV1_MAX_TILE_COUNT },
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_FILM_GRAIN,
++		},
+ 	},
+ };
+ 
 -- 
 2.34.1
 
