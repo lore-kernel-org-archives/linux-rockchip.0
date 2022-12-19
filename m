@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D57AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 11:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25999C10F1B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Dec 2022 12:18:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vw84zL2qle9h/zkG2I+f02sKh0dkMO9u3l5MTuZJ9HM=; b=keHRWUwjE4WHuI
-	PP4vnOSfYRS/yGqpK9RKYiutOzdXlf90N5GDyR+76eR7ddJwrnvwJax/VOnFnxoEjxYQsCuXpGj9q
-	nk7xYkqSWIMhFnRfnEFSgkrfUbqavJVWxDjsA/BWkv7GvII1bspdsPCz2HdostM7JqdiRuoWw+xfS
-	e83qkVPqjlNx6XF/FT+uTrBgeWJ59FLLuazkPWJyVs5UiFqidHE+/Ch74OdXA0pjpYWIsC7Igk+8f
-	/ZPnrsnSn0WCj+hveSwFG1Os1uBUTkOxsClAr0WJAsx19hoD66cZ/VRsySReEZA4Ks3OjsiMsfl8b
-	d4uyy8VoVcArFbKjs/9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qmG6izf275/xOhfdhMlCZaEI/FfvBBo9KUxHrC+yxA8=; b=I/MTMsq6CxuC/+
+	UrI4YMcZdJh4OqWENFNDcGvHjwzypp/FzRr1zTsZ0R+RfmSMRwwR+lzffMFLuIcEfpw+Dvo5neC74
+	49CuiHZvIk1tVZIxzyYsE41kFOXmgfPDfln/tUACDXt79hMbAOkIR4otlzPDrh8UWGhIjD3soTJEI
+	YPH3Gf+77/I7ejdh7Gw3e1GsTr+Ma29apyOt2p7l9FXr5a5rHFvJ9+2x7PmErSV1h4TZ639KMHZf6
+	unoCTs31ofkN50MoXjMvV4F6ayTdBP+lPCIeJ2gilSqTI5LyoHvL/0NzVgnLROv2qQbQ5Qv8ekzcq
+	zjyORIvHid5FyKknyiRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Dtr-00CHzW-Bu; Mon, 19 Dec 2022 11:01:39 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1p7F63-00D51d-46; Mon, 19 Dec 2022 12:18:19 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7DtK-00CHak-AS
-	for linux-rockchip@lists.infradead.org; Mon, 19 Dec 2022 11:01:12 +0000
-Received: by mail-lf1-x136.google.com with SMTP id b3so13116263lfv.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 19 Dec 2022 03:01:03 -0800 (PST)
+	id 1p7EuX-00CzFK-Nm; Mon, 19 Dec 2022 12:06:29 +0000
+Received: by mail-pf1-x429.google.com with SMTP id w26so6066258pfj.6;
+        Mon, 19 Dec 2022 04:06:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=K9TiKFq5dq+t/y/OEuShbJ7inw5lT2gdllgnKZs9p38=;
-        b=tV+hDIKitEbNl6RBh1+KFoZbFWmVqn6USwBvi4LJxZ/AhZR47+Fo9j35aIrTpcfj6l
-         /NwZP/o2r+FEQIn+WLTbuhLp5OdaPQ1whvHGTug57Q3Pvp1Y0WB+E3bzBPyTOdplbz3h
-         CzlgQQrBR09J8fvHU1G94ccNK14TGwfZUzD878MDbs3crYdN44c5IcJrRAc++Kl0wKJz
-         wuTdhbO9KL3QrNB+LmuL3R5aW+KU2aO9LNeXViYEX8mpK3/2QaafseaVdkFgLwkzEl+g
-         xsHqyDMm84eMsh8SsmCQLsrpN3wVDNIGk759Z3IapoSOfDhMjUEgNhf5cknIQ74y5Imq
-         k+iA==
+        bh=OCWgPRlFVucyzhpVtQzo2QpU4CA3O/XPeQ4v/NeiuuY=;
+        b=IBUdoHdO3/MlimJtc2Do/Vt630jMD9EPIvWinQ9zKCcFO7CQHdR8tDEs42ow4nwqKM
+         byBUTRLQ80aC1D+bugDpKColOkQ3B1+041fnSC+ivk7mczFUTJvT+qRmMMgs0x09KIJ5
+         bMPLLf+zWZ1VYOBKJr0wSFo/XrDZ0DtQC8GQMSvC9uRH2NByXSfENWuRJGNU3Pdw22Zu
+         dzZE1L7CuKZ+qEVHz/PKmrvJ5PRjU3FLqQYgjQpnpKhxcvDwc19xA5XCEifb8C9poW0A
+         olPc1vfRdGu/Ec16uOHhIa3DeGLlR1HUDkWbwWnYMAH/tV58GPl2MFDmu6qGvxapUh4Y
+         +wNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=K9TiKFq5dq+t/y/OEuShbJ7inw5lT2gdllgnKZs9p38=;
-        b=nfFPZ/zZyQM9B8wGAPr+TQPfqdww3lUUngYutXrO5C1l/hGLS25cJIlrnGWwc8xYC9
-         6KdTk3U3jqdc7b5M9pEYuZ4ZqjDKlrnQaJz+wqyHPE+iOef+UAyG60tqy/4OpgiTrvAj
-         P3gHQ2B8PjETd63SajegS5dTE60IMUyAfdf/pi6U/wh38XVI8kFUM1kHlxlx69G6BRwd
-         mfR7c2JjAxh95B0f+hhFW/P5CQnxe8XrF44dUq5WhZ4ATgihuCS0wTMlNwGsfva4id0D
-         oKkTJ9Qvz0BTuWqOQT/6qw3vtRHKGGIxSfHix9sUAbXv8uIXN2UVyI7DRykFctyN7SY4
-         hTqg==
-X-Gm-Message-State: ANoB5pkEeOnY0auC6PHCtrP4RP12+Qt4c9HMoX3cd15IdYkgMwl3gtvn
-	CThv8JAddd9jLkfH9B1dZ70d/g==
-X-Google-Smtp-Source: AA0mqf4H1M8wwTE+G1mBusCirNh1t+02owUspJmFP8vDHOct+sqr1eLVg1rG1TUYsFeKwxmO8FJFaQ==
-X-Received: by 2002:a05:6512:b89:b0:4b5:98bc:194c with SMTP id b9-20020a0565120b8900b004b598bc194cmr16119569lfv.63.1671447661907;
-        Mon, 19 Dec 2022 03:01:01 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id d20-20020a056512369400b0049ae3ed42e8sm1062948lfs.180.2022.12.19.03.01.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Dec 2022 03:01:01 -0800 (PST)
-Message-ID: <ad1a74be-c32c-522d-8183-1079e3ce7b80@linaro.org>
-Date: Mon, 19 Dec 2022 12:01:00 +0100
+        bh=OCWgPRlFVucyzhpVtQzo2QpU4CA3O/XPeQ4v/NeiuuY=;
+        b=cnLPreWQcyvPamvzwB7qwnu4zQAykhjZZfWnOGLAFJaD8jOpW8Ek+4V6e54fxAxgOI
+         ERAYp2A1vgundwlL862kWpeis2ILcjiRC9w5goZ/rSIhfrYmON+Kb78+TSDadQoBTQR6
+         ZAHQZXdsmjbKyXzhF6DI4UsWsdhjaTacGhCPe8o7CAc1LErFJOvTP2WR9o4ni01cGuM4
+         sapBIdh+YO8epLjBFa11070NUjlEMZJtMp5xJAuvRJhr746uvaW1z3mNf6aEjFWhb/x8
+         W5PPwO71d5C+Y1zrehtXsG4A0tHnrE8QhEYQQFeQ7GOooveh8CFGe9h8sBCxORR2ZHC3
+         6/Ow==
+X-Gm-Message-State: ANoB5pmbVR+hRXCWaVogvExLeu9wqpN6KTKLEZsY7hFeKjWvPapS+chc
+	ufm2EJgtFtQzI12nZto7VwItlOIWp+Ap5zLIBir85g==
+X-Google-Smtp-Source: AA0mqf6CwM66dvs5ulebjnS1zyPLxU3BpNT1AHpEp8aPn5z+/gmpJS+Cze01MgWbvY7WALr439SJaQ==
+X-Received: by 2002:a05:6a00:35c4:b0:578:ac9f:79a9 with SMTP id dc4-20020a056a0035c400b00578ac9f79a9mr28423878pfb.15.1671451578990;
+        Mon, 19 Dec 2022 04:06:18 -0800 (PST)
+Received: from VM-66-53-centos ([43.132.141.8])
+        by smtp.gmail.com with ESMTPSA id v18-20020a62a512000000b0057622e8e82csm6407778pfm.191.2022.12.19.04.06.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Dec 2022 04:06:17 -0800 (PST)
+Date: Mon, 19 Dec 2022 20:06:13 +0800
+From: Yuteng Zhong <zonyitoo@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Yuteng Zhong <zonyitoo@gmail.com>, DHDAXCW <lasstp5011@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add RK3566 LubanCat 1
+Message-ID: <Y6BTtdsRi5PsY7uF@VM-66-53-centos>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2] dt-bindings: display: rockchip: convert
- rockchip-lvds.txt to YAML
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: hjc@rock-chips.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, airlied@gmail.com, daniel@ffwll.ch,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <dea33013-ae1b-a8b2-5287-68a52f5ce028@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <dea33013-ae1b-a8b2-5287-68a52f5ce028@gmail.com>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_030106_505851_5C66C9B4 
-X-CRM114-Status: GOOD (  23.74  )
+X-CRM114-CacheID: sfid-20221219_040626_043198_D01ABD41 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,269 +89,674 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/12/2022 16:23, Johan Jonker wrote:
-> Convert rockchip-lvds.txt to YAML.
-> 
-> Changed:
->   Add power-domains property.
->   Requirements between PX30 and RK3288
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
-> 
-> Changed V2:
->   Fix title
-> ---
->  .../display/rockchip/rockchip-lvds.txt        |  92 ----------
->  .../display/rockchip/rockchip-lvds.yaml       | 157 ++++++++++++++++++
->  2 files changed, 157 insertions(+), 92 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
-> deleted file mode 100644
-> index aaf8c44cf..000000000
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
-> +++ /dev/null
-> @@ -1,92 +0,0 @@
-> -Rockchip RK3288 LVDS interface
-> -================================
-> -
-> -Required properties:
-> -- compatible: matching the soc type, one of
-> -	- "rockchip,rk3288-lvds";
-> -	- "rockchip,px30-lvds";
-> -
-> -- reg: physical base address of the controller and length
-> -	of memory mapped region.
-> -- clocks: must include clock specifiers corresponding to entries in the
-> -	clock-names property.
-> -- clock-names: must contain "pclk_lvds"
-> -
-> -- avdd1v0-supply: regulator phandle for 1.0V analog power
-> -- avdd1v8-supply: regulator phandle for 1.8V analog power
-> -- avdd3v3-supply: regulator phandle for 3.3V analog power
-> -
-> -- rockchip,grf: phandle to the general register files syscon
-> -- rockchip,output: "rgb", "lvds" or "duallvds", This describes the output interface
-> -
-> -- phys: LVDS/DSI DPHY (px30 only)
-> -- phy-names: name of the PHY, must be "dphy" (px30 only)
-> -
-> -Optional properties:
-> -- pinctrl-names: must contain a "lcdc" entry.
-> -- pinctrl-0: pin control group to be used for this controller.
-> -
-> -Required nodes:
-> -
-> -The lvds has two video ports as described by
-> -	Documentation/devicetree/bindings/media/video-interfaces.txt
-> -Their connections are modeled using the OF graph bindings specified in
-> -	Documentation/devicetree/bindings/graph.txt.
-> -
-> -- video port 0 for the VOP input, the remote endpoint maybe vopb or vopl
-> -- video port 1 for either a panel or subsequent encoder
-> -
-> -Example:
-> -
-> -lvds_panel: lvds-panel {
-> -	compatible = "auo,b101ean01";
-> -	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
-> -	data-mapping = "jeida-24";
-> -
-> -	ports {
-> -		panel_in_lvds: endpoint {
-> -			remote-endpoint = <&lvds_out_panel>;
-> -		};
-> -	};
-> -};
-> -
-> -For Rockchip RK3288:
-> -
-> -	lvds: lvds@ff96c000 {
-> -		compatible = "rockchip,rk3288-lvds";
-> -		rockchip,grf = <&grf>;
-> -		reg = <0xff96c000 0x4000>;
-> -		clocks = <&cru PCLK_LVDS_PHY>;
-> -		clock-names = "pclk_lvds";
-> -		pinctrl-names = "lcdc";
-> -		pinctrl-0 = <&lcdc_ctl>;
-> -		avdd1v0-supply = <&vdd10_lcd>;
-> -		avdd1v8-supply = <&vcc18_lcd>;
-> -		avdd3v3-supply = <&vcca_33>;
-> -		rockchip,output = "rgb";
-> -		ports {
-> -			#address-cells = <1>;
-> -			#size-cells = <0>;
-> -
-> -			lvds_in: port@0 {
-> -				reg = <0>;
-> -
-> -				lvds_in_vopb: endpoint@0 {
-> -					reg = <0>;
-> -					remote-endpoint = <&vopb_out_lvds>;
-> -				};
-> -				lvds_in_vopl: endpoint@1 {
-> -					reg = <1>;
-> -					remote-endpoint = <&vopl_out_lvds>;
-> -				};
-> -			};
-> -
-> -			lvds_out: port@1 {
-> -				reg = <1>;
-> -
-> -				lvds_out_panel: endpoint {
-> -					remote-endpoint = <&panel_in_lvds>;
-> -				};
-> -			};
-> -		};
-> -	};
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.yaml
-> new file mode 100644
-> index 000000000..f05901633
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.yaml
+LubanCat 1 is a Rockchip RK3566 SBC based
+is developed by EmbedFire Electronics Co., Ltd.
+Mini Linux Card Type Cheap Computer Development Board
+It has the following characteristics:
+- MicroSD card slot, onboard eMMC flash memory
+- 1GbE Realtek RTL8211F Ethernet Transceiver
+- 1 USB Type-C port (power and USB2.0 OTG)
+- 1 USB 3.0 Host port
+- 3 USB 2.0 Host ports
+- 1 HDMI
+- 1 infrared receiver
+- 1 MIPI DSI
+- 1 MIPI CSI
+- 1 x 4-section headphone jack
+- Mini PCIe socket (USB or PCIe)
+- 1 SIM Card slot
+- 1 SYS LED and 1 PWR LED
+- 40-pin GPIO expansion header
 
-Filename matching compatible style, so: "rockchip,lvds.yaml"
+Signed-off-by: Yuteng Zhong <zonyitoo@gmail.com>
+Signed-off-by: DHDAXCW <lasstp5011@gmail.com>
+---
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3566-lubancat-1.dts   | 604 ++++++++++++++++++
+ 3 files changed, 610 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
 
-> @@ -0,0 +1,157 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/rockchip/rockchip-lvds.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip low-voltage differential signal (LVDS) transmitter
-> +
-> +maintainers:
-> +  - Sandy Huang <hjc@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,px30-lvds
-> +      - rockchip,rk3288-lvds
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: pclk_lvds
-> +
-> +  avdd1v0-supply:
-> +    description: Regulator phandle for 1.0V analog power.
-
-Drop "Regulator phandle for ". Same in other regulators.
-
-> +
-> +  avdd1v8-supply:
-> +    description: Regulator phandle for 1.8V analog power.
-> +
-> +  avdd3v3-supply:
-> +    description: Regulator phandle for 3.3V analog power.
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: Phandle to the general register files syscon.
-> +
-> +  rockchip,output:
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +    enum: [rgb, lvds, duallvds]
-> +    description: This describes the output interface.
-> +
-> +  phys:
-> +    maxItems: 1
-> +
-> +  phy-names:
-> +    const: dphy
-> +
-> +  pinctrl-names:
-> +    const: lcdc
-> +
-> +  pinctrl-0: true
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description:
-> +          Video port 0 for the VOP input, the remote endpoint maybe vopb or vopl.
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description:
-> +          Video port 1 for either a panel or subsequent encoder.
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +additionalProperties: false
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,px30-lvds
-> +
-> +    then:
-> +      required:
-> +        - phys
-> +        - phy-names
-
-else:
-  properties:
-    phys: false
-    phy-names: false
-
-(assuming it is correct)
-
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3288-lvds
-> +
-> +    then:
-> +      required:
-> +        - reg
-> +        - clocks
-> +        - clock-names
-> +        - avdd1v0-supply
-> +        - avdd1v8-supply
-> +        - avdd3v3-supply
-> +
-> +required:
-> +  - compatible
-> +  - rockchip,grf
-> +  - rockchip,output
-> +  - ports
-
-Please keep order like in example-schema.yaml:
-
-properties:
-required:
-allOf:
-additionalProperties:
-examples:
-
-> +
-> +examples:
-> +  - |
-
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 88ff4422a8c1..84d39a3a8843 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -781,6 +781,11 @@ properties:
+           - const: rockchip,rk3568-bpi-r2pro
+           - const: rockchip,rk3568
+ 
++      - description: EmbedFire LubanCat 1
++        items:
++          - const: embedfire,lubancat-1
++          - const: rockchip,rk3566
++
+ additionalProperties: true
+ 
+ ...
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 0a76a2ebb5f6..e52bda04d45a 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -78,6 +78,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-blade.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-model-a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-box-demo.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-lubancat-1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
+new file mode 100644
+index 000000000000..50fbff349246
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
+@@ -0,0 +1,604 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++* Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++*/
++
++/dts-v1/;
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
++#include "rk3566.dtsi"
++
++/ {
++	model = "EmbedFire LubanCat 1";
++	compatible = "embedfire,lubancat-1", "rockchip,rk3566";
++
++	aliases {
++		ethernet0 = &gmac1;
++		mmc0 = &sdmmc0;
++		mmc1 = &sdhci;
++	};
++
++	chosen: chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	gmac1_clkin: external-gmac1-clock {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "gmac1_clkin";
++		#clock-cells = <0>;
++	};
++	
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
++	gpio-leds {
++		compatible = "gpio-leds";
++
++		sys_led: sys-led {
++			label = "sys_led";
++			linux,default-trigger = "heartbeat";
++			default-state = "on";
++			gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_LOW>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++	};
++
++	dc_5v: dc-5v {
++		compatible = "regulator-fixed";
++		regulator-name = "dc_5v";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vcc3v3_sys: vcc3v3-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&dc_5v>;
++	};
++
++	pcie_3v3: pcie2-3v3-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "pcie_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
++		startup-delay-us = <5000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_usb20_host: vcc5v0-usb20-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_usb20_host_en>;
++		regulator-name = "vcc5v0_usb20_host";
++		regulator-always-on;
++	};
++
++	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_usb30_host_en>;
++		regulator-name = "vcc5v0_usb30_host";
++		regulator-always-on;
++	};
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&combphy1 {
++	status = "okay";
++};
++
++&combphy2 {
++	status = "okay";
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&gpu {
++	mali-supply = <&vdd_gpu>;
++	status = "okay";
++};
++
++&hdmi {
++	avdd-0v9-supply = <&vdda0v9_image>;
++	avdd-1v8-supply = <&vcca1v8_image>;
++	status = "okay";
++};
++
++&hdmi_in {
++	hdmi_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi>;
++	};
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
++&hdmi_sound {
++	status = "okay";
++};
++
++&i2c0 {
++	status = "okay";
++
++	vdd_cpu: regulator@1c {
++		compatible = "tcs,tcs4525";
++		reg = <0x1c>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_cpu";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <800000>;
++		regulator-max-microvolt = <1150000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	rk809: pmic@20 {
++		compatible = "rockchip,rk809";
++		reg = <0x20>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
++		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
++		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
++		#clock-cells = <1>;
++		clock-names = "mclk";
++		clocks = <&cru I2S1_MCLKOUT_TX>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int>;
++		rockchip,system-power-controller;
++		#sound-dai-cells = <0>;
++		vcc1-supply = <&vcc3v3_sys>;
++		vcc2-supply = <&vcc3v3_sys>;
++		vcc3-supply = <&vcc3v3_sys>;
++		vcc4-supply = <&vcc3v3_sys>;
++		vcc5-supply = <&vcc3v3_sys>;
++		vcc6-supply = <&vcc3v3_sys>;
++		vcc7-supply = <&vcc3v3_sys>;
++		vcc8-supply = <&vcc3v3_sys>;
++		vcc9-supply = <&vcc3v3_sys>;
++		wakeup-source;
++
++		regulators {
++			vdd_logic: DCDC_REG1 {
++				regulator-name = "vdd_logic";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-init-microvolt = <900000>;
++				regulator-ramp-delay = <6001>;
++				regulator-initial-mode = <0x2>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_gpu: DCDC_REG2 {
++				regulator-name = "vdd_gpu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-init-microvolt = <900000>;
++				regulator-ramp-delay = <6001>;
++				regulator-initial-mode = <0x2>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-initial-mode = <0x2>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vdd_npu: DCDC_REG4 {
++				regulator-name = "vdd_npu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-init-microvolt = <900000>;
++				regulator-ramp-delay = <6001>;
++				regulator-initial-mode = <0x2>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_1v8: DCDC_REG5 {
++				regulator-name = "vcc_1v8";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdda0v9_image: LDO_REG1 {
++				regulator-name = "vdda0v9_image";
++				regulator-boot-on;
++				regulator-always-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdda_0v9: LDO_REG2 {
++				regulator-name = "vdda_0v9";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdda0v9_pmu: LDO_REG3 {
++				regulator-name = "vdda0v9_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <900000>;
++				};
++			};
++
++			vccio_acodec: LDO_REG4 {
++				regulator-name = "vccio_acodec";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vccio_sd: LDO_REG5 {
++				regulator-name = "vccio_sd";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc3v3_pmu: LDO_REG6 {
++				regulator-name = "vcc3v3_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcca_1v8: LDO_REG7 {
++				regulator-name = "vcca_1v8";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcca1v8_pmu: LDO_REG8 {
++				regulator-name = "vcca1v8_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vcca1v8_image: LDO_REG9 {
++				regulator-name = "vcca1v8_image";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_3v3: SWITCH_REG1 {
++				regulator-name = "vcc_3v3";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc3v3_sd: SWITCH_REG2 {
++				regulator-name = "vcc3v3_sd";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++		};
++	};
++};
++
++&i2s1_8ch {
++	rockchip,trcm-sync-tx-only;
++	status = "okay";
++};
++
++&gmac1 {
++    phy-mode = "rgmii";
++    clock_in_out = "output";
++    snps,reset-gpio = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
++    snps,reset-active-low;
++    /* Reset time is 100ms, 100ms */
++    snps,reset-delays-us = <0 75000 100000>;
++    assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
++    assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
++    assigned-clock-rates = <0>, <125000000>;
++    pinctrl-names = "default";
++    pinctrl-0 = <&gmac1m1_miim
++             &gmac1m1_tx_bus2_level3
++             &gmac1m1_rx_bus2
++             &gmac1m1_rgmii_clk_level2
++             &gmac1m1_rgmii_bus_level3>;
++    tx_delay = <0x1a>;
++    rx_delay = <0x0c>; 
++    phy-handle = <&rgmii_phy1>;
++    status = "okay";
++};
++
++&mdio1 {
++    rgmii_phy1: phy@0 {
++        compatible = "ethernet-phy-ieee802.3-c22";
++        reg = <0x0>;
++    };
++};
++
++&pcie2x1 {
++    reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
++    disable-gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
++    vpcie3v3-supply = <&pcie_3v3>;
++    status = "okay";
++};
++
++&pinctrl {
++	leds {
++		sys_led_pin: sys-status-led-pin {
++			rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++    usb {
++        vcc5v0_usb20_host_en: vcc5v0-usb20-host-en {
++            rockchip,pins = <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
++        };
++
++        vcc5v0_usb30_host_en: vcc5v0-usb30-host-en {
++            rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++        };
++    };
++
++	pmic {
++		pmic_int: pmic_int {
++			rockchip,pins =
++				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&pmu_io_domains {
++	pmuio2-supply = <&vcc3v3_pmu>;
++	vccio1-supply = <&vccio_acodec>;
++	vccio3-supply = <&vccio_sd>;
++	vccio4-supply = <&vcc_3v3>;
++	vccio5-supply = <&vcc_3v3>;
++	vccio6-supply = <&vcc_1v8>;
++	vccio7-supply = <&vcc_3v3>;
++	status = "okay";
++};
++
++&rng {
++	status = "okay";
++};
++
++&saradc {
++	vref-supply = <&vcca_1v8>;
++	status = "okay";
++};
++
++&tsadc {
++	rockchip,hw-tshut-mode = <1>;
++	rockchip,hw-tshut-polarity = <0>;
++	status = "okay";
++};
++
++&sdhci {
++	assigned-clocks = <&cru BCLK_EMMC>, <&cru TCLK_EMMC>, <&cru CCLK_EMMC>;
++	assigned-clock-rates = <200000000>, <24000000>, <200000000>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	mmc-hs200-1_8v;		
++	non-removable;	
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd>;	
++	supports-emmc;
++	status = "okay";
++};
++
++&sdmmc0 {
++    max-frequency = <150000000>;
++    supports-sd;
++    bus-width = <4>;
++    cap-mmc-highspeed;
++    cap-sd-highspeed;
++    disable-wp;
++    sd-uhs-sdr104;
++    vmmc-supply = <&vcc3v3_sd>;
++    vqmmc-supply = <&vccio_sd>;
++    pinctrl-names = "default";
++    pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
++    status = "okay";
++};
++
++/* USB OTG/USB Host_1 USB 2.0 Comb */
++&usb2phy0 {
++	status = "okay";
++};
++
++&usb2phy0_host {
++	status = "okay";
++};
++
++&usb2phy0_otg {
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
++/* USB Host_2/USB Host_3 USB 2.0 Comb */
++&usb2phy1 {
++	status = "okay";
++};
++
++&usb2phy1_host {
++	status = "okay";
++};
++
++&usb2phy1_otg {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
++
++/* USB3.0 Host */
++&usb_host1_xhci {
++	status = "okay";
++};
++
++&vop {
++	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
++	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi_in_vp0>;
++	};
++};
+-- 
+2.27.0
 
 
 _______________________________________________
