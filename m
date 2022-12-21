@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACACEC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Dec 2022 05:43:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9CAC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Dec 2022 05:47:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uYknkW2bRoSXYFAnv2CXqCYtMWh9Ykw+p0ZwpwSj4lM=; b=uw7Cdw2B/TB3uV
-	P5I3/cPwwfjSABM41ReiwY0OfNFc13C1HcW58sa5BGhScRiUi6d0nuj5eVT1O5NRoQ+9Q0bUV2Z9h
-	iyqe54uEU4Sspm5p+KH8HlHNs3pRVSU2Sy7QvdoCvzq7Y1GhgcN1j32jVBPnzg/JuzDprpzUlHJ9r
-	wwVFlZrxeA+wArmpdNclGapJD7Y3ckxR2pwx2AAv4PfYaG9BaYsPFjXRV65oCEE0nhI6bE9oMUd0R
-	WBzYLjpvJ3cX97l/4vL9LlK0M71y95OAQ9iMZxdLrAaml5evug/vpfjoRFiI7E7HzU7rb/BbfAt0s
-	IOYv21uhoub9cQk6ZfLw==;
+	List-Owner; bh=+nrAZlkzerV76ExBlSLISpOZG58fzG0Y1cIlNUiAKFA=; b=oKhBhe1WzNUxb7
+	ePijskjNuHDubueYErw1w2rWXqNz6xCSDuH0NV4Jj3azIIDQKJqxrLrTmmae7JpPNe077dikXAtC7
+	KRD/AzQ+YHcWGFykfOgfM/7PIU1k0Bm68RN6BRv/Eiyc4BYhpKUTFPk/zBjFWnvI7XLKd+lL9zVpk
+	xKztGp10AQ5UHZr94qyAxS9N/VsAr+rb6NGIyxKbHdfcwWbCCUn1MQMxpFFuxL+JNNGn0GVjkaaZM
+	CwNs1NCAXPLkq2yrE/Mti9h6lpSFruZZljCn8TSK35K0g//iuwDl8jLx0jD2niTe+TeSD7P/oWkOJ
+	zeFV8rbHqaMnAJcFqBmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7rtH-00A7xH-AU; Wed, 21 Dec 2022 05:43:43 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1p7rwW-00AAG6-Nu; Wed, 21 Dec 2022 05:47:04 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7rsv-00A7cy-B8; Wed, 21 Dec 2022 05:43:24 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id hd14-20020a17090b458e00b0021909875bccso2640679pjb.1;
-        Tue, 20 Dec 2022 21:43:12 -0800 (PST)
+	id 1p7rwA-00A9yS-NB; Wed, 21 Dec 2022 05:46:45 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d7so14500201pll.9;
+        Tue, 20 Dec 2022 21:46:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=mjL036zF9mEvMoEooqstTG9ARU7iFSgGQlBu5j9BPRc=;
-        b=Zz1Rf1pC5VJHi0VZxKzbjaByIaLOafqEhYD0Pb+uBcvlyjMIoPlJEKZts5aC2A7UHE
-         lP7zY3q+TtgtKIZZ0dLrBbkfjsxYmI17So9V4ugoGoTmMWma5m8N2uYkUWO7gHM6UUrz
-         o5Obs7x1ewYk6C2cEn+DFYQaMZ/gpKofnaWRKnRLroIx+mP8+puBVYFexjr3lBYhivAi
-         /HEqNdEG/Z4tp5pamU8v/1w0tO/IdG2QJa0D0rzMbcTXVhkvkH8y/n23MO2SDkNsStbs
-         FFOy3e/LMBYrIVUt8bNzkh0Gm2SeuHlS2CV9uQ2iuj8VQorYWCzGTKk5A2J+DQoGuzgZ
-         USZg==
+        bh=D9ieUhfFt7Cc7WHjsu/zAdtaw+2YRJ9YDJoZb+RLQzM=;
+        b=SdMGuob+izg+uxB8msRWb+SdyFJJJdp8D4GamaPbXajOFcl+bIn+0FD6TIkzYD9n3k
+         EHCrGLX82xwGEFYk2mhmX/FBzbP4uLda5AkWrb6EQ4pXcjtBf2SV8MA5J3UZmBPVsv9j
+         iO5vxqXZ93ldR9iE//R7bSDWyD62naPqBRO486ay2S4NkdcfSsxHToLFcD13ifbSxMG6
+         1DPfoGvIpwXFKlUv4DA/1YETToYeRxNgLFJptzbi0x7dvg3xOUg7nwxh1Umqgns8BXPV
+         SC4S8/g2R+EWi0bY2E9R2rc0eZb5KTp6VjpqgM9jLOPMIkiEkfmDBeJ2NUvDn8rqrs14
+         HDJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mjL036zF9mEvMoEooqstTG9ARU7iFSgGQlBu5j9BPRc=;
-        b=mzZ9Bc2QPFAsdfz1JMEg72LevMOANiXaOQlx57J5WYF+inTvkJZKYhKgV7etvf8kQJ
-         VUefB+oBt4izCeZfE1CMXPGxREepGNcuv+CppP6OYdS+qGxLYn8fxfPvvCfiUT8R2FjV
-         yWpkHZMeURGoOwwMxNJV+tV+RsUt9UmmeezpK86wVmtJ5XlvZbWIWpie0gj7ta9s/loq
-         JXSQkFDvJ4HBTEnRB+/5dCE/f98ZUW1u/d4rhlMyxDdYnO/7d393+vmU+lWCEJA9hGra
-         6EWjKMIDzezaqntaoL4PeBEYRgeVynrS2KvpYdaYY2v01NcSvS3mj1BMky/4e8Y2vDgz
-         lKGg==
-X-Gm-Message-State: AFqh2kqxLtK0+SaWw+0M2qUbF+594cMt4GcsWKRbcGnSI7IyeDcGUIlQ
-	I4fjcTaJ1VCzW9mS8mBDDUU=
-X-Google-Smtp-Source: AMrXdXtZIBBBPTfkZ8q8lvOCCK28V04+SQm+gGRKQPCxR2SAzNHtorMXxd/hb/YEcI4vgdfQxSRipg==
-X-Received: by 2002:a17:90b:30ca:b0:219:68f8:7aaa with SMTP id hi10-20020a17090b30ca00b0021968f87aaamr15989528pjb.40.1671601391838;
-        Tue, 20 Dec 2022 21:43:11 -0800 (PST)
+        bh=D9ieUhfFt7Cc7WHjsu/zAdtaw+2YRJ9YDJoZb+RLQzM=;
+        b=tHud3wl29AggdgWE17PFMXuuAdb/P3BadOJXgycuWWUA8VmQsxdzBx5XBD8P4AHh2/
+         bR/2jEpUGYeb6JUR4Ac+Ci/XttZMRYbS+8OtsiZt0BOng1Rbi+qrU78VyVjYJIcQJdFr
+         4kvl9SAr4pIFtC8I9tWh4tJDxsJLt1Soo6uDLlxvc57iJuZqnAsxJW5I7drFnjWT2kdY
+         yzBiUKHOqf2vA+iqDMKRczUr5jBBA3klrlKizPTuNEfcutDf1h0TWP+afJ+d6tXeJ2MM
+         M1WeRDZM7Ihd26mktVjn9UV4bL0eQRMfjnbXbUpr7IXAowGF6t7PCAzvkLN/PhUTP3xQ
+         M4Xg==
+X-Gm-Message-State: AFqh2kpvS3flYV2NawQmWCPkRE/8c6PUuAu2zbwjgjVtS4TCSDK5Qyq8
+	6sjyf314T7a6vYCXbeVj72w=
+X-Google-Smtp-Source: AMrXdXtewwCh3xHaInrxDZR1Fak4fFDWrGZI4WmN/OtxMEIq2UE50NmP0dTP/A+CQtNA6vlHlhVBpA==
+X-Received: by 2002:a17:90a:a405:b0:221:11b4:d5b7 with SMTP id y5-20020a17090aa40500b0022111b4d5b7mr925983pjp.21.1671601601071;
+        Tue, 20 Dec 2022 21:46:41 -0800 (PST)
 Received: from VM-66-53-centos ([43.132.141.8])
-        by smtp.gmail.com with ESMTPSA id om7-20020a17090b3a8700b001fde655225fsm3246631pjb.2.2022.12.20.21.43.09
+        by smtp.gmail.com with ESMTPSA id t3-20020a17090a024300b00210c84b8ae5sm489185pje.35.2022.12.20.21.46.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Dec 2022 21:43:11 -0800 (PST)
-Date: Wed, 21 Dec 2022 13:43:07 +0800
+        Tue, 20 Dec 2022 21:46:40 -0800 (PST)
+Date: Wed, 21 Dec 2022 13:46:36 +0800
 From: Yuteng Zhong <zonyitoo@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
@@ -66,13 +66,13 @@ Cc: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Yuteng Zhong <zonyitoo@gmail.com>, DHDAXCW <lasstp5011@gmail.com>
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: Add RK3566 LubanCat 1
-Message-ID: <Y6Kc650FuvHFWxP0@VM-66-53-centos>
+Subject: [PATCH v4 1/2] arm64: dts: rockchip: Add EmbedFire LubanCat 1
+Message-ID: <Y6KdvAlWLMG4whJh@VM-66-53-centos>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221220_214321_525474_7C5B4F43 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20221220_214642_835970_24F3F32B 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,9 +89,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+from: DHDAXCW <lasstp5011@gmail.com>
+
 LubanCat 1 is a Rockchip RK3566 SBC based
 is developed by EmbedFire Electronics Co., Ltd.
 Mini Linux Card Type Cheap Computer Development Board
+
 It has the following characteristics:
 - MicroSD card slot, onboard eMMC flash memory
 - 1GbE Realtek RTL8211F Ethernet Transceiver
@@ -115,31 +118,16 @@ Signed-off-by: DHDAXCW <lasstp5011@gmail.com>
 Changed in V2:
   - Remove RNG node
 Changed in V3:
+  - Sent E-mail with a wrong attachment
+Changed in V4:
   - Modify all node names
 
 ---
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3566-lubancat-1.dts   | 600 ++++++++++++++++++
- 3 files changed, 606 insertions(+)
+ .../boot/dts/rockchip/rk3566-lubancat-1.dts   | 598 ++++++++++++++++++
+ 2 files changed, 599 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 88ff4422a8c1..84d39a3a8843 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -781,6 +781,11 @@ properties:
-           - const: rockchip,rk3568-bpi-r2pro
-           - const: rockchip,rk3568
- 
-+      - description: EmbedFire LubanCat 1
-+        items:
-+          - const: embedfire,lubancat-1
-+          - const: rockchip,rk3566
-+
- additionalProperties: true
- 
- ...
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
 index 0a76a2ebb5f6..e52bda04d45a 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
@@ -154,10 +142,10 @@ index 0a76a2ebb5f6..e52bda04d45a 100644
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
 diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
 new file mode 100644
-index 000000000000..af1abb38d45c
+index 000000000000..443fcfabbd16
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-@@ -0,0 +1,600 @@
+@@ -0,0 +1,598 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 +* Copyright (c) 2021 Rockchip Electronics Co., Ltd.
@@ -215,13 +203,23 @@ index 000000000000..af1abb38d45c
 +		};
 +	};
 +
-+	dc_5v: dc-5v {
++	usb_5v: usb-5v-regulator {
 +		compatible = "regulator-fixed";
-+		regulator-name = "dc_5v";
++		regulator-name = "usb_5v";
 +		regulator-always-on;
 +		regulator-boot-on;
 +		regulator-min-microvolt = <5000000>;
 +		regulator-max-microvolt = <5000000>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&usb_5v>;
 +	};
 +
 +	vcc3v3_sys: vcc3v3-sys {
@@ -234,19 +232,9 @@ index 000000000000..af1abb38d45c
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	vcc5v0_sys: vcc5v0-sys {
++	vcc3v3_pcie: vcc3v3-pcie-regulator {
 +		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_5v>;
-+	};
-+
-+	pcie_3v3: pcie2-3v3-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie_3v3";
++		regulator-name = "vcc3v3_pcie";
 +		regulator-min-microvolt = <3300000>;
 +		regulator-max-microvolt = <3300000>;
 +		enable-active-high;
@@ -356,15 +344,14 @@ index 000000000000..af1abb38d45c
 +		reg = <0x20>;
 +		interrupt-parent = <&gpio0>;
 +		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-+		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
-+		#clock-cells = <1>;
-+		clock-names = "mclk";
-+		clocks = <&cru I2S1_MCLKOUT_TX>;
++		clock-output-names = "rk808-clkout1", "rk808-clkout2";
++
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&pmic_int>;
 +		rockchip,system-power-controller;
-+		#sound-dai-cells = <0>;
++		wakeup-source;
++		#clock-cells = <1>;
++
 +		vcc1-supply = <&vcc3v3_sys>;
 +		vcc2-supply = <&vcc3v3_sys>;
 +		vcc3-supply = <&vcc3v3_sys>;
@@ -374,7 +361,6 @@ index 000000000000..af1abb38d45c
 +		vcc7-supply = <&vcc3v3_sys>;
 +		vcc8-supply = <&vcc3v3_sys>;
 +		vcc9-supply = <&vcc3v3_sys>;
-+		wakeup-source;
 +
 +		regulators {
 +			vdd_logic: DCDC_REG1 {
@@ -616,7 +602,7 @@ index 000000000000..af1abb38d45c
 +&pcie2x1 {
 +    reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
 +    disable-gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+    vpcie3v3-supply = <&pcie_3v3>;
++    vpcie3v3-supply = <&vcc3v3_pcie>;
 +    status = "okay";
 +};
 +
