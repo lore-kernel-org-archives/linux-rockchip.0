@@ -4,86 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6851EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Dec 2022 18:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C195FC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Dec 2022 22:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vGiwQ24yJ3f9P3SrK9EV6NttmmpiRJYhItZWTqlSEqw=; b=i2KH1o7HjxT7Pp
-	LBJEbeU4SFhRfb8vDs5fwamlKfCrU8Hu+WoKr1EEbTAwnYGbIC7OKoRwlrSYaJS9ri6oxZYu06ZlM
-	5vZKvLzn5wxXf4X4M9zKjdNqWsUQwx2Or5gFoX0weHYXzBzf5GDqoT0cTk8Zpr4ku6fqC2202sMMk
-	LRwtuPxZpL2+KvgoI1WwmfjWigkXakWbVwiEIK1jHHArTYsfuGXRY7pG1hL6sNUSXfHrImzho6rtw
-	WhrZw+7EiDv9LNUYlUoX7EWIc6LdR0MY4eQDpz31g8qHrjLEcHYJ7SujhsJYIVCy6fH+bpkg2e4XI
-	kEbXkt275NQ6orsA7kbg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WFbma1Ju/tBTJtUeerOIn3jXO8ezEUc4a0XMmgyKsZM=; b=Edqch2/WFFG3Rl6aa/ltAva6vX
+	FYizsHo+CANoP5Tx3YviXHnCtvaJpz9UW0kjqMqyLnmHVLPoIqstsT2Pc/uSXyuXxF/6OpUpW7xit
+	4VeTlzTVJu8Ln2KnnqZNFvNhIMXEiXB6RiDe9hWEL/bXqkwHBEu19qSxX213Dt9UkG5ttUSDA7Icj
+	hZMHw8nLEkkmYrZ/MQNiQzpt1OTVVPvf9qGnABTPkjtB80s+NZjuKTqgEnTjTnCr9+48Fdvc7w2Fj
+	QUp+vnclhmT4+tuo2eHXLs0pKpn8aOVI31HMCt8H0r+2whwgE5V91Yn0FnkcUN7Jiu+8CPOYBGsaL
+	sB6BDgIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8427-000gLu-AC; Wed, 21 Dec 2022 18:41:39 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1p87A2-002yXv-Hj; Wed, 21 Dec 2022 22:02:02 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p83oW-000Yhp-IQ; Wed, 21 Dec 2022 18:27:38 +0000
-Received: by mail-ed1-x530.google.com with SMTP id i15so23253163edf.2;
-        Wed, 21 Dec 2022 10:27:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=3spaG/gmW2iurMqKAzeqtwdB73qDEY0NRjhBceQ6XKs=;
-        b=HJYnALiuBC4czUJZQZMxToOk+mUn6hrTGkmT7s0lKwO+15/vlhSGhhp6Q0iPWhrq5q
-         jOWyUmDPVqgwiEsndnL+9LELnFj6lN0IgQeahNtuNDeD6I+9cH8auJHEXoqQv84Uuol5
-         erYbwdjgpaNPJ9tz9g2UA2S8H0NMz3Yi4TJpRa5YJt1y9Y9GRdzXybOKpJCs/fMECfbH
-         G2gKgF0DKSGU8Fk9hd9k8cR46MpIslUAKhz0qYKLV5PwwtfWAx5Vz1WI462A8uNdCQbq
-         2TN9iKaJ2Cd+e32bc8z/xsyMN47sBiKojufwCMUHB5x7LY21rNIoTndGXIUyaY/jRZC3
-         b56w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3spaG/gmW2iurMqKAzeqtwdB73qDEY0NRjhBceQ6XKs=;
-        b=aGg65oUZW7PofSdhFmQzQWrFeaMtMGm8bVzLS1SBXpjSbesTPW/OAfPZ1uC+qb6sYf
-         1b6vcRsbHP00IjWra4jFKFPvpNYl1wnOa3qZGgFxDtTw7EpsEJh0PIY6B0P2UJhX3klr
-         f6AK4f6pyBdcfgMiUStj5e0knM0EcVJyzy2yhz/emSfDe0VEYPB9T65BWdTWCh/2714D
-         8b7Jn5o8hgFgR+06w5cex+TGiCo4OC5jP5GiEOw/tqO0BpaZ1qpqpAN8cRTK+eUeiovS
-         +jJ6InPmYl4wvVuZTbpY4FBPnz8/QHwGdo/5qLpqLrPittS3ERxqnoR9OVPsqxJL17Pn
-         rnXA==
-X-Gm-Message-State: AFqh2krU53XxBKkZJ5q8tBg2G71zQPb4WlLqd8xgiew3rUUYWFtPGQJn
-	OqYU01UrXoZ8b9CHw8jEYHE=
-X-Google-Smtp-Source: AMrXdXuuboy0Cy7pIoYaHpGBK0/px3c7JvHO5JGIK2vGuTSmoniRYvRFRSPlPt/0TZewWYO1okg75Q==
-X-Received: by 2002:a05:6402:685:b0:479:ab7d:1dad with SMTP id f5-20020a056402068500b00479ab7d1dadmr2840833edy.32.1671647252722;
-        Wed, 21 Dec 2022 10:27:32 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id w26-20020a056402129a00b0046dd0c2a08esm7351683edv.36.2022.12.21.10.27.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Dec 2022 10:27:32 -0800 (PST)
-Message-ID: <621bc5c4-340e-683d-fa61-520b9ed45e1e@gmail.com>
-Date: Wed, 21 Dec 2022 19:27:31 +0100
+	id 1p879n-002yLs-2U
+	for linux-rockchip@lists.infradead.org; Wed, 21 Dec 2022 22:01:51 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mgr@pengutronix.de>)
+	id 1p879W-0007O0-Gd; Wed, 21 Dec 2022 23:01:30 +0100
+Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mgr@pengutronix.de>)
+	id 1p879T-0000tt-JL; Wed, 21 Dec 2022 23:01:27 +0100
+Date: Wed, 21 Dec 2022 23:01:27 +0100
+From: Michael Grzeschik <mgr@pengutronix.de>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+	daniel.almeida@collabora.com, nicolas.dufresne@collabora.co.uk,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v1 0/9] AV1 stateless decoder for RK3588
+Message-ID: <20221221220127.GE26315@pengutronix.de>
+References: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
+ <CAAEAJfBP_D65kjHbwYP+LWfWKfzFtHtWo+3bDcbdO8tPtBurUA@mail.gmail.com>
+ <20221219215431.GB26315@pengutronix.de>
+ <939ce9a0f7f73c0b9f0cf5590f2d8b02e0825fa5.camel@ndufresne.ca>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v5 12/12] arm64: dts: rockchip: rk356x: remove hclk from dsi
- node
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, gregkh@linuxfoundation.org,
- airlied@gmail.com, daniel@ffwll.ch, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, robert.foss@linaro.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, philippe.cornu@foss.st.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org
-References: <7f883643-c796-029f-ba38-73532325632d@gmail.com>
-Content-Language: en-US
-In-Reply-To: <7f883643-c796-029f-ba38-73532325632d@gmail.com>
+In-Reply-To: <939ce9a0f7f73c0b9f0cf5590f2d8b02e0825fa5.camel@ndufresne.ca>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: mgr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221221_102736_710986_F72D3C8B 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221221_140147_331696_135DC406 
+X-CRM114-Status: GOOD (  48.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,50 +75,251 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3230416854523923294=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The hclk is not used in the dw-mipi-dsi-rockchip.c driver,
-so remove hclk from the rk356x.dtsi dsi node.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+--===============3230416854523923294==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="idY8LE8SD6/8DnRI"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 5706c3e24..2cb61a783 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -743,8 +743,8 @@
- 		compatible = "rockchip,rk3568-mipi-dsi", "snps,dw-mipi-dsi";
- 		reg = <0x00 0xfe060000 0x00 0x10000>;
- 		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>;
--		clock-names = "pclk", "hclk";
--		clocks = <&cru PCLK_DSITX_0>, <&cru HCLK_VO>;
-+		clock-names = "pclk";
-+		clocks = <&cru PCLK_DSITX_0>;
- 		phy-names = "dphy";
- 		phys = <&dsi_dphy0>;
- 		power-domains = <&power RK3568_PD_VO>;
-@@ -771,8 +771,8 @@
- 		compatible = "rockchip,rk3568-mipi-dsi", "snps,dw-mipi-dsi";
- 		reg = <0x0 0xfe070000 0x0 0x10000>;
- 		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
--		clock-names = "pclk", "hclk";
--		clocks = <&cru PCLK_DSITX_1>, <&cru HCLK_VO>;
-+		clock-names = "pclk";
-+		clocks = <&cru PCLK_DSITX_1>;
- 		phy-names = "dphy";
- 		phys = <&dsi_dphy1>;
- 		power-domains = <&power RK3568_PD_VO>;
---
-2.20.1
 
+--idY8LE8SD6/8DnRI
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Dec 20, 2022 at 12:00:01PM -0500, Nicolas Dufresne wrote:
+>Le lundi 19 d=E9cembre 2022 =E0 22:54 +0100, Michael Grzeschik a =E9crit=
+=A0:
+>> Hi Benjamin,
+>> Hi Ezequiel,
+>>
+>> On Mon, Dec 19, 2022 at 06:07:38PM -0300, Ezequiel Garcia wrote:
+>> > On Mon, Dec 19, 2022 at 12:56 PM Benjamin Gaignard
+>> > <benjamin.gaignard@collabora.com> wrote:
+>> > >
+>> > > This series implement AV1 stateless decoder for RK3588 SoC.
+>> > > The harware support 8 and 10 bits bitstreams up to 7680x4320.
+>> > > AV1 feature like film grain or scaling are done by the postprocessor.
+>> > > The driver can produce NV12_4L4 and NV12 pixel formats.
+>> > > A native 10bits NV12_4L4 format is possible but need more investigat=
+ion
+>> > > to be completly documented and enabled.
+>> > >
+>> > > It is based on Daniel's "[RFC,v3] media: Add AV1 uAPI" [1] patches a=
+nd
+>> > > Sebastian's device-tree patches for RK3588.
+>> > >
+>> >
+>> > I thought the AV1 decoder in RK3588 was really a separate hardware
+>> > from the Hantro G1/G2.
+>> >
+>> > Shouldn't this need a new driver for this new hardware?
+>>
+>> Just jumping into this discussion as I am currently working on the rkven=
+c driver.
+>>
+>> In my case I am extending the rkvdec driver to become more generic for
+>> other rockchip specific enc/decoders.
+>>
+>> My first change looks like this:
+>> ---
+>>  drivers/staging/media/rkvdec/Makefile              |   4 +-
+>>  drivers/staging/media/rkvdec/rkvdec-h264.c         | 100 ++++-----
+>>  drivers/staging/media/rkvdec/rkvdec-vp9.c          | 142 ++++++-------
+>>  drivers/staging/media/rkvdec/{rkvdec.c =3D> rkvpu.c} | 510 ++++++++++++=
++++++++++++-----------------------
+>>  drivers/staging/media/rkvdec/{rkvdec.h =3D> rkvpu.h} |  66 +++---
+>> ---
+>>
+>> While working on other parts of the encoder I found many places in the
+>> rkvdec driver (e.g. v4l2 and vb2 callbacks) that looked familiar to the =
+hantro
+>> functions but where limited to the decoder case.
+>>
+>> I think there are two options for the av1 codec.
+>>
+>> 1) If the vpu981 is a driver that has nothing to do with verisilicon but
+>> works with this driver framework, then we should integrate vepu981 into =
+it
+>> but consider rename the verisilicon unrelated parts to something generic.
+>
+>I've raised in my review the the naming is sub-optimal. This is an unmodif=
+ied
+>VC9000D AV1 decoder. No other codecs have been included in the package, ev=
+en
+>though VC9000D cores can support more.
+>
+>Stating this driver have no place here seems a bit strange to me, but with
+>proper arguments, maybe we can make a case and start a VC9000D dedicated d=
+river
+>(that will be a lot of copy paste, VC9000D post processor notably is ident=
+ical
+>to VC8000 post processor, but one could argue we should make a VCX000 driv=
+er ?
+>
+>>
+>> 2) Move the vepu981 av1 driver into the rkvdec instead.
+>
+>That make no sense, its not a Rockchip HW design, and will likely start
+>appearing on non-RK SoC in the future.
+
+Sure. I did not know that it actually is an VC9000.
+
+>> If 1) is the way to go, we can even think of moving the staging code par=
+ts from
+>> rkvdec to the verisilicon code. Likewise to the vepu981-av1.
+>
+>Again, I think using RK naming is unfortunate choice. This AV1 decoder is =
+just
+>like the G1/H1 combo you will find on RK3288. And that same combo is found=
+ on
+>many older SoC (actually even newer SoC un the VC8000Nano brand).
+>
+>Like all generation of Hantro chips, there is an optional dependency that =
+can
+>exist between encoder and decoders. The question is if this requires a sin=
+gle
+>driver to maintain a valid state or not. So far, it seems devs have assume=
+ that
+>is it needed.
+>
+>p.s. fun fact, on most HW, the decoder rate is cut in half with running
+>concurrently with the encoder
+>
+>>
+>> I could also keep on integrating the rkvenc on that base instead.
+>
+>Do you know if there is any interaction between the encoder and decoder ? =
+Shared
+>registers, shared internal cache ? That's basically what differentiate Han=
+tro
+>here. Also, be aware that some folks are considering starting on RKVDEC2 d=
+river,
+>are you looking at RK32/33 series ? or more RK35 ?
+
+I don't know of any limitations or interactions between the encoder and
+decoder. I know that the rkvdec is implementing the register space of
+the mpp called vdpu34x. My work would adress the vepu54x encoder
+registers. Which can be found on rk3588 (vepu541) and rk3568/r3566
+(vepu540).
+
+AFAIK the vepu541 and vepu540 are very similar. The vepu540 is limited
+by 4k and vepu541 can handle 8k h264.
+
+However how the vepu541 is interacting with the vdpu34x needs to be
+found out. Also I did not find any common parts in the mpp
+implementation yet.
+
+>> > > The full branch can be found here:
+>> > > https://gitlab.collabora.com/linux/for-upstream/-/commits/rk3588_av1=
+_decoder_v1
+>> > >
+>> > > Fluster score is: 151/239 while testing AV1-TEST-VECTORS with GStrea=
+mer-AV1-V4L2SL-Gst1.0.
+>> > > The failing tests are:
+>> > > - 10bits bitstream because 10bits output formats aren't yet implemen=
+ted.
+>> > > - the 2 tests with 2 spatial layers: few errors in luma/chroma values
+>> > > - tests with resolution < hardware limit (64x64)
+>> > >
+>> > > Benjamin
+>> > >
+>> > > Benjamin Gaignard (9):
+>> > >   dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible
+>> > >   media: verisilicon: Add AV1 decoder mode and controls
+>> > >   media: verisilicon: Save bit depth for AV1 decoder
+>> > >   media: verisilicon: Check AV1 bitstreams bit depth
+>> > >   media: verisilicon: Compute motion vectors size for AV1 frames
+>> > >   media: verisilicon: Add AV1 entropy helpers
+>> > >   media: verisilicon: Add Rockchip AV1 decoder
+>> > >   media: verisilicon: Add film grain feature to AV1 driver
+>> > >   media: verisilicon: Enable AV1 decoder on rk3588
+>> > >
+>> > >  .../bindings/media/rockchip-vpu.yaml          |    1 +
+>> > >  drivers/media/platform/verisilicon/Makefile   |    3 +
+>> > >  drivers/media/platform/verisilicon/hantro.h   |    5 +
+>> > >  .../media/platform/verisilicon/hantro_drv.c   |   54 +
+>> > >  .../media/platform/verisilicon/hantro_hw.h    |  102 +
+>> > >  .../platform/verisilicon/hantro_postproc.c    |    3 +
+>> > >  .../media/platform/verisilicon/hantro_v4l2.c  |    5 +
+>> > >  .../verisilicon/rockchip_av1_entropymode.c    | 4536 ++++++++++++++=
++++
+>> > >  .../verisilicon/rockchip_av1_entropymode.h    |  272 +
+>> > >  .../verisilicon/rockchip_av1_filmgrain.c      |  401 ++
+>> > >  .../verisilicon/rockchip_av1_filmgrain.h      |   36 +
+>> > >  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 2280 +++++++++
+>> > >  .../verisilicon/rockchip_vpu981_regs.h        |  477 ++
+>> > >  .../platform/verisilicon/rockchip_vpu_hw.c    |  116 +
+>> > >  14 files changed, 8291 insertions(+)
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_=
+entropymode.c
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_=
+entropymode.h
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_=
+filmgrain.c
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_=
+filmgrain.h
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu9=
+81_hw_av1_dec.c
+>> > >  create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu9=
+81_regs.h
+>> > >
+>> > > --
+>> > > 2.34.1
+>> > >
+>> >
+>> > _______________________________________________
+>> > linux-arm-kernel mailing list
+>> > linux-arm-kernel@lists.infradead.org
+>> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>> >
+>>
+>
+>
+
+--=20
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+--idY8LE8SD6/8DnRI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmOjgjQACgkQC+njFXoe
+LGTK7BAAt3FUR0RWx0YAUVvBDf1l8hsMXoWe2MJySuvNOrWtk1PSSQqzLHwnqgyy
+08fdR4TrXPP2t3yFi9JBNniMSB2CJLDyFlZWAaZJe/j1IuZtTUevd+D4o3IT7efm
+pMsiCsu5jOfdjJluuypoa9QWjUiXWL3yztt3apY5KY5oBc3+GZtSnMyoYqOBJY9s
+mTaPSIQGf3yo6bU0qMQqIOxzlpdOa9V9+3QVW4NIoJFPKMuOQsHEx7A7inYIHLFQ
++8p0UXwZIUBcV+UmTWvYmF11mKJbFkvts8PcP2Wk98YYimnrpRoxTKw2rKo9R8PB
+X3loylKkhYijbFHxMYdq63D6agf1AfpCzOQziiQqWAeqksby2z+AcTKfedTliZzU
+cLc8mETmdM+CK131FcOI9n8GNUPX97JkvuNYt1K01XWaZv413yGyzG67lhidu8DL
+4p2aAdJeIBdMDNZZcny3TTgfQfRKgvBDNQOa2zyf2vQDLZbz4nYptq+/ijycyg9+
+C89UNi8EqgiCjReOIyxXCE9dLJ0V+XV1dx+Cp7XuhUCJtE1hvaXPSZ0PXY/ie6rg
+Sxpmx8s2Od6qK6jplvhoGd37fEXjS/nLMUUdMZOc0wEZR9YKpQqK+eklQbGv0HgE
+muFjgT4hvhWjn0JoIMni1sEkOh+A9hoooQ0nM32BjTHzDmhD7/I=
+=/6GU
+-----END PGP SIGNATURE-----
+
+--idY8LE8SD6/8DnRI--
+
+
+--===============3230416854523923294==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3230416854523923294==--
+
