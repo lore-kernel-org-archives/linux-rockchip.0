@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FEBC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 15:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17096C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 15:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6yzR6TCWO20t+sT5aBXBPr/mQReB0bjsh2kJOy59sks=; b=VDrJDB972ABvoX
-	JkYNkw0FBxsALKQs1Wa3qR0fsJh0TYS4ZAF5nODxPiTdm39ePZ2xYa25vTyum+uARJWEwaY6BrrPy
-	y36vQL9hLAtMpKRe2Zn50nvj9dMJ0Y0/z4KuNxFPrUVdMD7rp8ySe3psf+/Al/xsaVjo9erSoOT1R
-	zC6JwOWNrxU2yugYXQcHVbTB7NhhbvANPAwPLG0XTZ7YpZFh4PQDrpU022PWe8MBgnz4qfioHzwug
-	O3oSGxSFL8eYrBb1YpnND+nQ7Zdv4VXOs91IY15jW4qfHbMieDQ6twEKJTFB+UogBKRTqu3+4GoVM
-	fWia0JbDtKMTs2BBGM/g==;
+	List-Owner; bh=yp9ZFAnAyOJeApn7t7ubFr7vv6ZrNp37hBDdsHi5gWo=; b=SdRJhuVGTcFzv4
+	cgan/NBgRdx3Yl0GapB3ZcJMB7QzKHFvDqVbQDvjdloNLpXrfZRa1ss7z6LJOqom7po37GglTStLw
+	hi/iXJ5ThTqWROGK2FDvM21bOpm5PnsUVSkCUmeGoabZAx/wPzYZNyf+4k7j50J6Acksx4DAPj7ag
+	rdM1EKjbQGDLHmPW+4rLRM1Hc9Bf5zpFQJc3zbrNw+aZu2b8b7KQOdFP9EetEFywScWEEZLpDF7TN
+	aq4eJcMkwq/6nfBEFcFTtZp9ZWJf6Vsd62YKl9vcZu7jS0CKzeClMxnRtxss9c3OuyvHRgRU2z3nE
+	jZaHMTqxTP8Q2ZAslqcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8NCg-00DLbB-Fz; Thu, 22 Dec 2022 15:09:50 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1p8NEX-00DMdg-1e; Thu, 22 Dec 2022 15:11:45 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8McV-00D00y-Df; Thu, 22 Dec 2022 14:32:28 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id qk9so5352770ejc.3;
-        Thu, 22 Dec 2022 06:32:25 -0800 (PST)
+	id 1p8Mcy-00D0NY-IK; Thu, 22 Dec 2022 14:32:58 +0000
+Received: by mail-ej1-x630.google.com with SMTP id bj12so5246708ejb.13;
+        Thu, 22 Dec 2022 06:32:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=gRs/p77llC39s0EwuTCxcUjkyPLLZDJFzUsSm629Z0A=;
-        b=Xl7qLiaS4H2MqrIAU1WtcuHZ0kD83PrmWdy2noxljwhNbTxBx2EmWiwDE0Uu6usFkZ
-         zULq2JeBJQtg0kG6OkXkDrlLiCZErHvdtVOpxZeizVoHsAdfdfLIg86AhWfUCSzHWD+2
-         guYt9bcEKM12W7iWyF02F7jpVM8125nm+VBIPrJB+dOPsrS1yYL1DP+wJFmlCnJr9l31
-         wJHxoD2XRKndira/Ya/zup4aif45CJZgGHLoYFqHGPwneLRvpPCHx/0a6SHMD1ZZKYg9
-         Hj+h0zkdXLr8lOmTdYNemhFM0jYs5FQsWDWIeYqNVlnKyphuwQ0zboqX7LbJcXAwj7kE
-         IrTA==
+        bh=/yrUavxSC0YydN0TKXWkrYFUw9v5M/WABkWirfDs3Xc=;
+        b=RGUKyx4pjlE81gC/a8eQInZ7qvs0UWhPxxdmRGaK+mifofPPgpx0WGBmdJobxAYIQ/
+         PLO7GXJm8O+8yrTMjYgOMMNxJqJBtqWig5wRtDIS7/Gqi+Xlt2YjmI3Nmc2vM8aM4VpN
+         b557b6VzkA8hT5kh9QqYhSC753IFQitWiJAqz/EwafSjK16nRN2qkwR7HcK57eY1c7lh
+         rfqxKk//PpVWOQQrzL1F05oUAWVWO9z+nOZ+9zZ5p94GX0OOiFSF0Gu848vCUNDoKcBx
+         PtssmvKdqBb8C0pGGBFqtCazZKizoOQLlFdfSWPS9rpLQgkMPtinfdFpuYBP/4gXFqwY
+         HENg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gRs/p77llC39s0EwuTCxcUjkyPLLZDJFzUsSm629Z0A=;
-        b=5Ii+8fPjLyySYQZIOuML7iuEed1ShLbTQB3QAqq0cWpDUXEe2ormG5kA9oq7beYMfl
-         3BPAnnzei1GX8WxJyFEM80ROyfRDlScukP9OkvoSYBn2iU3Hr2NB2KkHU890C/b5Moqt
-         hp9bAuDwWpd+KADRpOzMWmhFAeJ+ThxSfWlUpbo2aKw2TnuD24rqexYrk5abf0SJxh+x
-         C+2t80Uc+ey3qR72BLY8EC+l/qYmlb3q8D7sOg5E77sPf1FsFIdKFqzvdro3zueTI7ZN
-         XquGiW2L/6E8l7x2DaKh8SrB+s/acBFDGZW59JTXUuYATwv3Y4R2EEb1ymBdNRjPUWxJ
-         IgAQ==
-X-Gm-Message-State: AFqh2krBnsP48+hfWlMXo9LiUCD/oeGPg0Lx5PtWjGW2exHHTj8XqSdg
-	mlbNhMlAed8Ic2Gs31NngGQ=
-X-Google-Smtp-Source: AMrXdXsgv/n3jTfE7Jv0jiLSsvNygkcFwiea6D9Qjp8nzKtaD2AgVwCh95QdJ5axyGyCNMhswZ4CJA==
-X-Received: by 2002:a17:907:a091:b0:7c1:23ef:4bb9 with SMTP id hu17-20020a170907a09100b007c123ef4bb9mr4258591ejc.13.1671719544480;
-        Thu, 22 Dec 2022 06:32:24 -0800 (PST)
+        bh=/yrUavxSC0YydN0TKXWkrYFUw9v5M/WABkWirfDs3Xc=;
+        b=0QocWBBadMJYk++BV2Tnj9lIatO9OSNeNGX1vrLBZwytjjNDN0p38bUwZnHq+hWAVS
+         wN1BfFitgWvozL2OCh/SKRPYSONEfzkYh5BDOL5YJwajCEuk+xEVinAeSDKzN6RSw5ms
+         dCbM+cG4G5ubsgNCR2rL50DMgXCtRzuT/hrxVUAfYcO/d+YuYgYyjdY9lk27x8Oq/OIw
+         mc0hsHzz4+GVZRi6klLZ7DDta/E7F9Eb0bGP3QarRJ0QZP3wFez30ObzDhFl5pVUi9gY
+         p329vSdnmAqy42Zz3LkXqYss4omqYWVUwu6NQ1wu2F4Pnxs4Ozon6g9HjpkyHozDKGPR
+         XEiA==
+X-Gm-Message-State: AFqh2kqFVho1oRUpODEBoI06WMfXbjSHKVevQMtozSJP8EQ+koPkCWl7
+	0P1p9qINnHpxNggnAnaGKvE=
+X-Google-Smtp-Source: AMrXdXtqZ8JJqmp8AaMY3noPII7c2qvGh6kRZJ79yXNnz5AOds68D7oxejOaYC7RFzTdVnkiwPRxLQ==
+X-Received: by 2002:a17:906:c0ce:b0:7ad:d7a4:4346 with SMTP id bn14-20020a170906c0ce00b007add7a44346mr5969104ejb.66.1671719573988;
+        Thu, 22 Dec 2022 06:32:53 -0800 (PST)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id r4-20020a1709067fc400b007bb32e2d6f5sm290577ejs.207.2022.12.22.06.32.23
+        by smtp.gmail.com with ESMTPSA id ku22-20020a170907789600b007c10d47e748sm313265ejc.36.2022.12.22.06.32.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Dec 2022 06:32:24 -0800 (PST)
-Message-ID: <1e019e9e-a8da-3d57-2770-f6b81bbbf591@gmail.com>
-Date: Thu, 22 Dec 2022 15:32:22 +0100
+        Thu, 22 Dec 2022 06:32:53 -0800 (PST)
+Message-ID: <f6008819-db9b-0944-3f5b-5522b7cd8a8d@gmail.com>
+Date: Thu, 22 Dec 2022 15:32:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v6 14/17] arm64: dts: rockchip: rk3399: fix dsi node
+Subject: [PATCH v6 15/17] arm64: dts: rockchip: rk3399: fix dp node
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, gregkh@linuxfoundation.org,
@@ -83,8 +83,8 @@ References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 Content-Language: en-US
 In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_063227_550137_551FD67D 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20221222_063256_740419_5A536064 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,61 +101,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use generic node name for rk3399.dtsi dsi node.
-With the conversion of rockchip,dw-mipi-dsi.yaml a port@1 node
-is required, so add a node with label mipi_out.
+Use generic node name for rk3399.dtsi dp node.
+With the conversion of rockchip,analogix-dp.yaml a port@1 node
+is required, so add a node with label edp_out.
 Also restyle.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
-
-Changed V6:
-  Restyle
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 834d16acb..2250533cf 100644
+index 2250533cf..e02483b72 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1954,7 +1954,7 @@
+@@ -2037,7 +2037,7 @@
  		};
  	};
 
--	mipi_dsi: mipi@ff960000 {
-+	mipi_dsi: dsi@ff960000 {
- 		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
- 		reg = <0x0 0xff960000 0x0 0x8000>;
- 		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH 0>;
-@@ -1982,15 +1982,20 @@
- 					reg = <0>;
- 					remote-endpoint = <&vopb_out_mipi>;
- 				};
+-	edp: edp@ff970000 {
++	edp: dp@ff970000 {
+ 		compatible = "rockchip,rk3399-edp";
+ 		reg = <0x0 0xff970000 0x0 0x8000>;
+ 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
+@@ -2054,6 +2054,7 @@
+ 		ports {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
 +
- 				mipi_in_vopl: endpoint@1 {
- 					reg = <1>;
- 					remote-endpoint = <&vopl_out_mipi>;
- 				};
- 			};
-+
-+			mipi_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
- 	};
-
--	mipi_dsi1: mipi@ff968000 {
-+	mipi_dsi1: dsi@ff968000 {
- 		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
- 		reg = <0x0 0xff968000 0x0 0x8000>;
- 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH 0>;
-@@ -2025,6 +2030,10 @@
- 					remote-endpoint = <&vopl_out_mipi1>;
+ 			edp_in: port@0 {
+ 				reg = <0>;
+ 				#address-cells = <1>;
+@@ -2069,6 +2070,10 @@
+ 					remote-endpoint = <&vopl_out_edp>;
  				};
  			};
 +
-+			mipi1_out: port@1 {
++			edp_out: port@1 {
 +				reg = <1>;
 +			};
  		};
