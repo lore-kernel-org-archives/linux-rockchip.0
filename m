@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79EECC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 14:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE4EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 14:45:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=thEJr+bGhcBZgrcc0GprBstzN64MgYNZ+uHaM7MhOrY=; b=DjHtXCDK/wg7Hq
-	GTD7UCYaBlRfu6UFqhwpajexIcdSU++uZTNVSU1Y2HDmGMrWMDPZIGlwQwutp3YY75kUOJ8Hf7tw2
-	1Zubz8EmXnQKYfmiRCyVMvFQVaQ5X8SQfs9jGI3BexSBSjepQEe9dlFr98lduBQM6vXrIX3SjRRlS
-	iB2CO19S0D9tAJ7gRtAhBecgq4igHr2EffbmT2todFRXIeEauPBJTt2MDlat5oKIrDLy53m+aP2mH
-	5YDhYbueuuAdEAawUqUFwgFJVoxVK1vaf9udOmPiQfmcWqne3HCRNLo3oj1AxizqG5pRlW9cFBGMP
-	41bXrG/2YNXKlJR/pUxg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/B+13i3IbValZfKyAm8D6FxZ+TXRUdqPJXO3HKK5RV0=; b=FvjhfMIsAtmmKc
+	Jf/WUcYZQNEoz6WbisIO1VFnTbw/SlQf0uk9tjMwYYaTHetqYNaLpV3+ghr/dgVVPwh1V4W0yDPq9
+	v1hHxz/O2wUo3SiSlL2id9tA1yazUFiFeuJABI4WnAyLmxp2hMwgfCLrD+ETu5sYw4UvWFulydACJ
+	8mJl4CDJS3wgVV1C+6AL8CqaW9nhhTNZXTBSK44DDdXkd6rhE6XMo+hxOUR1kDr6+CLivUgr3cLDX
+	yVgrmIxxdBuyeBfm54DRs4gzS5Tym1zZNh3DAPx4xtKy5l1W7MdWcOFKsIgsAPq1KX+pmICCVK+vp
+	kredqUbD5gPGz+o02FXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8M6x-00ChKz-6z; Thu, 22 Dec 2022 13:59:51 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1p8Mou-00D7kZ-Ve; Thu, 22 Dec 2022 14:45:17 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8LYl-00CMeF-8b
-	for linux-rockchip@lists.infradead.org; Thu, 22 Dec 2022 13:24:34 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id n6so1850325ljj.11
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Dec 2022 05:24:28 -0800 (PST)
+	id 1p8MSi-00CuJG-Q7; Thu, 22 Dec 2022 14:22:24 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id s5so3086167edc.12;
+        Thu, 22 Dec 2022 06:22:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yNFKcj1qpbmt/ipOHNu4Y7YMRQo6qwIPI6XtcYqqxxk=;
-        b=h+4khsq2a+yHcK26zB7P+5KylxOjG9Hpm44ZDNteZ29sI9ZPAstX1ADFnbyLDJ1zFf
-         WuoZLuEQkAwtUgBcQjLM5FsxSVGZ18DNUGMtyc0bP4UyQf8JjxCAE/uv7t66mr+Eeyiv
-         wBMhWondgDZ/b08quadOY72zYaLdfRuEpBGDVpaxC7mKCT/O/5u7LnoG7KTqSLU/oUzN
-         UjJ6HBTjK3ANi5+QEvavijJXInuUJA+PG8SlTCjKF6zAO1Q+NV6SvCKYvAUg8BYN/kil
-         RQpiquKkN/+M40TFrHFu94o49M5gRvczN7SVuKM8JS97xLHnla4HRyw3y8JX4cxIg4it
-         Z2lA==
+        bh=oICMjrhWPQNlOjRYsHXcTIDJG/XY6KY3jXRiCxaOR5k=;
+        b=mUGPHBW4QRXeFFV7FJDSbecBTqr1tslLU3yOCyBavt55l7X11d5hyqA9/Brcwvrees
+         FNG4XOQ8HhLRxyfAxl6C/Dwhq66DzSxbDNpIXFwCVl9e0AYUo+aip7v5Cq+rGFqi7ISP
+         RFCcozGWwpjAjP1ScW0zEwJiqnvI1lSg7+B7vsE2PwguQdwp+DovtF939ER5rNxLt5WT
+         vNxiXo03obALBaRWG1brVYep0VA3Z6GeC/rHJ3ndxvnI3XfqhSvmkS8c/e+yEm/KM/DE
+         7cxJRjifEcT5L1su9TCkWsRp1AWCvHHHYoBTdboLo/ucSWSJCEsWn9HdPeEfacD5Spx/
+         caSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yNFKcj1qpbmt/ipOHNu4Y7YMRQo6qwIPI6XtcYqqxxk=;
-        b=qFlju8T7xNkytSqY9LviCAUWjjZWF0NAU37uZ6ffeugKlu4TjhECde4DSiNcnYUKGA
-         k8yr8MSa8goZ67m1jqC7ZEi66QmhZS8mlqHcJlbcB7FUPgULlluvibIbDCzEyVzM2k0H
-         1oHxDt1jKrFm8qF8em7zXypX20ffqksujjW6u8hh8aMA3q+J1EC4VhPvUCvmmkSE1/Ck
-         QTA+64W5Z6Nq54redBBp7VvdX/Jp4nrXqNtuknbCHN/sBAIrb4iqbcvUyEvhZ0iTQTQg
-         BBx/D5KaQ1pXiGI9+P/zkZR1Liu+78czJNh14NY+uxBbRM7P4gdyXxiekVIijEOOqBZw
-         aVxA==
-X-Gm-Message-State: AFqh2kpX4MHUCtmIUbiVwplvMomsevLf4GbRoCtY3OGOKFyc3g1ranDL
-	+Sk3oZJ+uyydMNOAPwol1RcxUI26IsbCzIV+OAfWlw==
-X-Google-Smtp-Source: AMrXdXv1eTdWh0CylvfGguRVxWq3NHfKHqZBjTAlyC6Jdqa95eu4fD1BQxZQuAqdAgXlBAlSl3TUQ57MpVVZmWIIQIA=
-X-Received: by 2002:a2e:9bcd:0:b0:27e:8a84:6c33 with SMTP id
- w13-20020a2e9bcd000000b0027e8a846c33mr486132ljj.404.1671715467262; Thu, 22
- Dec 2022 05:24:27 -0800 (PST)
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=oICMjrhWPQNlOjRYsHXcTIDJG/XY6KY3jXRiCxaOR5k=;
+        b=BitkMgMeASmJg2p/ScrT4/IsyZ8RCeVtpqkg2/pck0f7pUn1/XiAiQALiSHdBWNdk+
+         Mps4rrPxqg8/ySvf5+/MdNIl3Cs8qkvWajOk8LpsPwYfB6ACJ1Iz8S6FCI/0v0NYlCGG
+         r1wqbP+haM0EA6Zd7rU2vYr261KN1bmjyl/XwFX6SvonWiUn2gyIKUkOcNYxM1SqCogR
+         MFBfmnVXBT6iPGS66Vy4aanURsWJh/05uvmnlvGCPs5tRxfMP+YPv2Qq2EmKBzqlTE66
+         nctpnH/f19LANVF+jpw2gQnhO8NmKhi2RxKJBpdd1NDMz7hQsL121CE+kx9M+dPLgD+L
+         LSpQ==
+X-Gm-Message-State: AFqh2kp3qouPVx3VOPgLDuPnqPSvir8rGWXzkAGheEEQ4fQUiMUihP+n
+	Ph7qZdOtcK9Jx8wumGXp+TA=
+X-Google-Smtp-Source: AMrXdXtEz8EfVtvD9kAV2temSw86S2imfQcIVy6XS9fb1KMtCwWpEnJA6CGg+F96FSZHVL2zWnWybg==
+X-Received: by 2002:a05:6402:5254:b0:461:bf05:2be1 with SMTP id t20-20020a056402525400b00461bf052be1mr6593252edd.0.1671718937371;
+        Thu, 22 Dec 2022 06:22:17 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id by13-20020a0564021b0d00b0046bd3b366f9sm428708edb.32.2022.12.22.06.22.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Dec 2022 06:22:16 -0800 (PST)
+Message-ID: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
+Date: Thu, 22 Dec 2022 15:22:14 +0100
 MIME-Version: 1.0
-References: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
- <CAAEAJfBP_D65kjHbwYP+LWfWKfzFtHtWo+3bDcbdO8tPtBurUA@mail.gmail.com>
- <20221219215431.GB26315@pengutronix.de> <939ce9a0f7f73c0b9f0cf5590f2d8b02e0825fa5.camel@ndufresne.ca>
- <20221221220127.GE26315@pengutronix.de>
-In-Reply-To: <20221221220127.GE26315@pengutronix.de>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Thu, 22 Dec 2022 10:24:14 -0300
-Message-ID: <CAAEAJfAMogQzU_etD2m8vOrkQJxd3jKuFtVU9mewzCsDP-GEQQ@mail.gmail.com>
-Subject: Re: [PATCH v1 0/9] AV1 stateless decoder for RK3588
-To: Michael Grzeschik <mgr@pengutronix.de>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Daniel Almeida <daniel.almeida@collabora.com>, nicolas.dufresne@collabora.co.uk, 
-	linux-media <linux-media@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	devicetree <devicetree@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Collabora Kernel ML <kernel@collabora.com>, 
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v6 01/17] dt-bindings: display: rockchip: convert
+ rockchip-lvds.txt to YAML
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, gregkh@linuxfoundation.org,
+ airlied@gmail.com, daniel@ffwll.ch, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, robert.foss@linaro.org,
+ Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, philippe.cornu@foss.st.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org,
+ linus.walleij@linaro.org, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, alim.akhtar@samsung.com,
+ linux-samsung-soc@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_052431_670111_FC19DD7C 
-X-CRM114-Status: GOOD (  44.21  )
+X-CRM114-CacheID: sfid-20221222_062220_997618_EC303268 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,98 +95,315 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywgTWljaGFlbCwKCigrQW5kcnplaikKCkVsIG1pw6ksIDIxIGRpYy4gMjAyMiAx
-OTowMSwgTWljaGFlbCBHcnplc2NoaWsgPG1nckBwZW5ndXRyb25peC5kZT4gZXNjcmliacOzOgo+
-Cj4gT24gVHVlLCBEZWMgMjAsIDIwMjIgYXQgMTI6MDA6MDFQTSAtMDUwMCwgTmljb2xhcyBEdWZy
-ZXNuZSB3cm90ZToKPiA+TGUgbHVuZGkgMTkgZMOpY2VtYnJlIDIwMjIgw6AgMjI6NTQgKzAxMDAs
-IE1pY2hhZWwgR3J6ZXNjaGlrIGEgw6ljcml0IDoKPiA+PiBIaSBCZW5qYW1pbiwKPiA+PiBIaSBF
-emVxdWllbCwKPiA+Pgo+ID4+IE9uIE1vbiwgRGVjIDE5LCAyMDIyIGF0IDA2OjA3OjM4UE0gLTAz
-MDAsIEV6ZXF1aWVsIEdhcmNpYSB3cm90ZToKPiA+PiA+IE9uIE1vbiwgRGVjIDE5LCAyMDIyIGF0
-IDEyOjU2IFBNIEJlbmphbWluIEdhaWduYXJkCj4gPj4gPiA8YmVuamFtaW4uZ2FpZ25hcmRAY29s
-bGFib3JhLmNvbT4gd3JvdGU6Cj4gPj4gPiA+Cj4gPj4gPiA+IFRoaXMgc2VyaWVzIGltcGxlbWVu
-dCBBVjEgc3RhdGVsZXNzIGRlY29kZXIgZm9yIFJLMzU4OCBTb0MuCj4gPj4gPiA+IFRoZSBoYXJ3
-YXJlIHN1cHBvcnQgOCBhbmQgMTAgYml0cyBiaXRzdHJlYW1zIHVwIHRvIDc2ODB4NDMyMC4KPiA+
-PiA+ID4gQVYxIGZlYXR1cmUgbGlrZSBmaWxtIGdyYWluIG9yIHNjYWxpbmcgYXJlIGRvbmUgYnkg
-dGhlIHBvc3Rwcm9jZXNzb3IuCj4gPj4gPiA+IFRoZSBkcml2ZXIgY2FuIHByb2R1Y2UgTlYxMl80
-TDQgYW5kIE5WMTIgcGl4ZWwgZm9ybWF0cy4KPiA+PiA+ID4gQSBuYXRpdmUgMTBiaXRzIE5WMTJf
-NEw0IGZvcm1hdCBpcyBwb3NzaWJsZSBidXQgbmVlZCBtb3JlIGludmVzdGlnYXRpb24KPiA+PiA+
-ID4gdG8gYmUgY29tcGxldGx5IGRvY3VtZW50ZWQgYW5kIGVuYWJsZWQuCj4gPj4gPiA+Cj4gPj4g
-PiA+IEl0IGlzIGJhc2VkIG9uIERhbmllbCdzICJbUkZDLHYzXSBtZWRpYTogQWRkIEFWMSB1QVBJ
-IiBbMV0gcGF0Y2hlcyBhbmQKPiA+PiA+ID4gU2ViYXN0aWFuJ3MgZGV2aWNlLXRyZWUgcGF0Y2hl
-cyBmb3IgUkszNTg4Lgo+ID4+ID4gPgo+ID4+ID4KPiA+PiA+IEkgdGhvdWdodCB0aGUgQVYxIGRl
-Y29kZXIgaW4gUkszNTg4IHdhcyByZWFsbHkgYSBzZXBhcmF0ZSBoYXJkd2FyZQo+ID4+ID4gZnJv
-bSB0aGUgSGFudHJvIEcxL0cyLgo+ID4+ID4KPiA+PiA+IFNob3VsZG4ndCB0aGlzIG5lZWQgYSBu
-ZXcgZHJpdmVyIGZvciB0aGlzIG5ldyBoYXJkd2FyZT8KPiA+Pgo+ID4+IEp1c3QganVtcGluZyBp
-bnRvIHRoaXMgZGlzY3Vzc2lvbiBhcyBJIGFtIGN1cnJlbnRseSB3b3JraW5nIG9uIHRoZSBya3Zl
-bmMgZHJpdmVyLgo+ID4+Cj4gPj4gSW4gbXkgY2FzZSBJIGFtIGV4dGVuZGluZyB0aGUgcmt2ZGVj
-IGRyaXZlciB0byBiZWNvbWUgbW9yZSBnZW5lcmljIGZvcgo+ID4+IG90aGVyIHJvY2tjaGlwIHNw
-ZWNpZmljIGVuYy9kZWNvZGVycy4KPiA+Pgo+ID4+IE15IGZpcnN0IGNoYW5nZSBsb29rcyBsaWtl
-IHRoaXM6Cj4gPj4gLS0tCj4gPj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvTWFrZWZp
-bGUgICAgICAgICAgICAgIHwgICA0ICstCj4gPj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3Zk
-ZWMvcmt2ZGVjLWgyNjQuYyAgICAgICAgIHwgMTAwICsrKystLS0tLQo+ID4+ICBkcml2ZXJzL3N0
-YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy12cDkuYyAgICAgICAgICB8IDE0MiArKysrKystLS0t
-LS0tCj4gPj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMve3JrdmRlYy5jID0+IHJrdnB1
-LmN9IHwgNTEwICsrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
-PiA+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy97cmt2ZGVjLmggPT4gcmt2cHUuaH0g
-fCAgNjYgKysrLS0tCj4gPj4gLS0tCj4gPj4KPiA+PiBXaGlsZSB3b3JraW5nIG9uIG90aGVyIHBh
-cnRzIG9mIHRoZSBlbmNvZGVyIEkgZm91bmQgbWFueSBwbGFjZXMgaW4gdGhlCj4gPj4gcmt2ZGVj
-IGRyaXZlciAoZS5nLiB2NGwyIGFuZCB2YjIgY2FsbGJhY2tzKSB0aGF0IGxvb2tlZCBmYW1pbGlh
-ciB0byB0aGUgaGFudHJvCj4gPj4gZnVuY3Rpb25zIGJ1dCB3aGVyZSBsaW1pdGVkIHRvIHRoZSBk
-ZWNvZGVyIGNhc2UuCj4gPj4KPiA+PiBJIHRoaW5rIHRoZXJlIGFyZSB0d28gb3B0aW9ucyBmb3Ig
-dGhlIGF2MSBjb2RlYy4KPiA+Pgo+ID4+IDEpIElmIHRoZSB2cHU5ODEgaXMgYSBkcml2ZXIgdGhh
-dCBoYXMgbm90aGluZyB0byBkbyB3aXRoIHZlcmlzaWxpY29uIGJ1dAo+ID4+IHdvcmtzIHdpdGgg
-dGhpcyBkcml2ZXIgZnJhbWV3b3JrLCB0aGVuIHdlIHNob3VsZCBpbnRlZ3JhdGUgdmVwdTk4MSBp
-bnRvIGl0Cj4gPj4gYnV0IGNvbnNpZGVyIHJlbmFtZSB0aGUgdmVyaXNpbGljb24gdW5yZWxhdGVk
-IHBhcnRzIHRvIHNvbWV0aGluZyBnZW5lcmljLgo+ID4KPiA+SSd2ZSByYWlzZWQgaW4gbXkgcmV2
-aWV3IHRoZSB0aGUgbmFtaW5nIGlzIHN1Yi1vcHRpbWFsLiBUaGlzIGlzIGFuIHVubW9kaWZpZWQK
-PiA+VkM5MDAwRCBBVjEgZGVjb2Rlci4gTm8gb3RoZXIgY29kZWNzIGhhdmUgYmVlbiBpbmNsdWRl
-ZCBpbiB0aGUgcGFja2FnZSwgZXZlbgo+ID50aG91Z2ggVkM5MDAwRCBjb3JlcyBjYW4gc3VwcG9y
-dCBtb3JlLgo+ID4KPiA+U3RhdGluZyB0aGlzIGRyaXZlciBoYXZlIG5vIHBsYWNlIGhlcmUgc2Vl
-bXMgYSBiaXQgc3RyYW5nZSB0byBtZSwgYnV0IHdpdGgKPiA+cHJvcGVyIGFyZ3VtZW50cywgbWF5
-YmUgd2UgY2FuIG1ha2UgYSBjYXNlIGFuZCBzdGFydCBhIFZDOTAwMEQgZGVkaWNhdGVkIGRyaXZl
-cgo+ID4odGhhdCB3aWxsIGJlIGEgbG90IG9mIGNvcHkgcGFzdGUsIFZDOTAwMEQgcG9zdCBwcm9j
-ZXNzb3Igbm90YWJseSBpcyBpZGVudGljYWwKPiA+dG8gVkM4MDAwIHBvc3QgcHJvY2Vzc29yLCBi
-dXQgb25lIGNvdWxkIGFyZ3VlIHdlIHNob3VsZCBtYWtlIGEgVkNYMDAwIGRyaXZlciA/Cj4gPgo+
-ID4+Cj4gPj4gMikgTW92ZSB0aGUgdmVwdTk4MSBhdjEgZHJpdmVyIGludG8gdGhlIHJrdmRlYyBp
-bnN0ZWFkLgo+ID4KPiA+VGhhdCBtYWtlIG5vIHNlbnNlLCBpdHMgbm90IGEgUm9ja2NoaXAgSFcg
-ZGVzaWduLCBhbmQgd2lsbCBsaWtlbHkgc3RhcnQKPiA+YXBwZWFyaW5nIG9uIG5vbi1SSyBTb0Mg
-aW4gdGhlIGZ1dHVyZS4KPgo+IFN1cmUuIEkgZGlkIG5vdCBrbm93IHRoYXQgaXQgYWN0dWFsbHkg
-aXMgYW4gVkM5MDAwLgo+Cj4gPj4gSWYgMSkgaXMgdGhlIHdheSB0byBnbywgd2UgY2FuIGV2ZW4g
-dGhpbmsgb2YgbW92aW5nIHRoZSBzdGFnaW5nIGNvZGUgcGFydHMgZnJvbQo+ID4+IHJrdmRlYyB0
-byB0aGUgdmVyaXNpbGljb24gY29kZS4gTGlrZXdpc2UgdG8gdGhlIHZlcHU5ODEtYXYxLgo+ID4K
-PiA+QWdhaW4sIEkgdGhpbmsgdXNpbmcgUksgbmFtaW5nIGlzIHVuZm9ydHVuYXRlIGNob2ljZS4g
-VGhpcyBBVjEgZGVjb2RlciBpcyBqdXN0Cj4gPmxpa2UgdGhlIEcxL0gxIGNvbWJvIHlvdSB3aWxs
-IGZpbmQgb24gUkszMjg4LiBBbmQgdGhhdCBzYW1lIGNvbWJvIGlzIGZvdW5kIG9uCj4gPm1hbnkg
-b2xkZXIgU29DIChhY3R1YWxseSBldmVuIG5ld2VyIFNvQyB1biB0aGUgVkM4MDAwTmFubyBicmFu
-ZCkuCj4gPgo+ID5MaWtlIGFsbCBnZW5lcmF0aW9uIG9mIEhhbnRybyBjaGlwcywgdGhlcmUgaXMg
-YW4gb3B0aW9uYWwgZGVwZW5kZW5jeSB0aGF0IGNhbgo+ID5leGlzdCBiZXR3ZWVuIGVuY29kZXIg
-YW5kIGRlY29kZXJzLiBUaGUgcXVlc3Rpb24gaXMgaWYgdGhpcyByZXF1aXJlcyBhIHNpbmdsZQo+
-ID5kcml2ZXIgdG8gbWFpbnRhaW4gYSB2YWxpZCBzdGF0ZSBvciBub3QuIFNvIGZhciwgaXQgc2Vl
-bXMgZGV2cyBoYXZlIGFzc3VtZSB0aGF0Cj4gPmlzIGl0IG5lZWRlZC4KPiA+Cj4gPnAucy4gZnVu
-IGZhY3QsIG9uIG1vc3QgSFcsIHRoZSBkZWNvZGVyIHJhdGUgaXMgY3V0IGluIGhhbGYgd2l0aCBy
-dW5uaW5nCj4gPmNvbmN1cnJlbnRseSB3aXRoIHRoZSBlbmNvZGVyCj4gPgo+ID4+Cj4gPj4gSSBj
-b3VsZCBhbHNvIGtlZXAgb24gaW50ZWdyYXRpbmcgdGhlIHJrdmVuYyBvbiB0aGF0IGJhc2UgaW5z
-dGVhZC4KPiA+Cj4gPkRvIHlvdSBrbm93IGlmIHRoZXJlIGlzIGFueSBpbnRlcmFjdGlvbiBiZXR3
-ZWVuIHRoZSBlbmNvZGVyIGFuZCBkZWNvZGVyID8gU2hhcmVkCj4gPnJlZ2lzdGVycywgc2hhcmVk
-IGludGVybmFsIGNhY2hlID8gVGhhdCdzIGJhc2ljYWxseSB3aGF0IGRpZmZlcmVudGlhdGUgSGFu
-dHJvCj4gPmhlcmUuIEFsc28sIGJlIGF3YXJlIHRoYXQgc29tZSBmb2xrcyBhcmUgY29uc2lkZXJp
-bmcgc3RhcnRpbmcgb24gUktWREVDMiBkcml2ZXIsCj4gPmFyZSB5b3UgbG9va2luZyBhdCBSSzMy
-LzMzIHNlcmllcyA/IG9yIG1vcmUgUkszNSA/Cj4KPiBJIGRvbid0IGtub3cgb2YgYW55IGxpbWl0
-YXRpb25zIG9yIGludGVyYWN0aW9ucyBiZXR3ZWVuIHRoZSBlbmNvZGVyIGFuZAo+IGRlY29kZXIu
-CgpJIGJlbGlldmUgd2Ugc2hvdWxkIGV4cGxvcmUgc2VwYXJhdGUgZHJpdmVycywgYW5kIGlmIHRo
-ZXJlIGlzIGFueSBpbnRlcmFjdGlvbiwKdHJ5IHRvIG1vZGVsIHRoZSBzaGFyZWQgcGllY2UgdGhy
-b3VnaCBhIHNoYXJlZCBibG9jayBpbiB0aGUgZGV2aWNlIHRyZWUuCgpJbiBtb3N0IGNhc2VzLCB0
-aGUgZGVjb2RlciBhbmQgZW5jb2RlciBhcmUgc2VwYXJhdGUgYmxvY2tzLgpBbHNvLCB0aGUgVjRM
-MiBzdGF0ZWxlc3MgZGVjb2RlciBpbnRlcmZhY2UgY292ZXJzIG9ubHkgZGVjb2RpbmcuCgpTdXBw
-b3J0aW5nIGJvdGggaW4gdGhlIHNhbWUgZHJpdmVyIGhhcyBiZWVuIHBhaW5mdWwsIGVzcGVjaWFs
-bHkKdGhlIFY0TDIgbmVnb3RpYXRpb24sIGlzIGhhcmQgdG8gc3VwcG9ydCBmb3IgYm90aCBlbmNv
-ZGVycyBhbmQgZGVjb2RlcnMsCmFuZCBoYXMgbGVkIHRvIG1hbnkgYnVncyAoYW5kIGV2ZW4gd29y
-c2UsIHJlZ3Jlc3Npb25zKSBpbiB0aGUgZHJpdmVycy4KClRoYW5rcywKRXplcXVpZWwKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Convert rockchip-lvds.txt to YAML.
+
+Changed:
+  Add power-domains property.
+  Requirements between PX30 and RK3288
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+
+Changed V3:
+  Filename matching compatible style
+  Drop "Regulator phandle for "
+  Specify properties and requirements per SoC
+  Sort order and restyle
+
+Changed V2:
+  Fix title
+---
+ .../display/rockchip/rockchip,lvds.yaml       | 170 ++++++++++++++++++
+ .../display/rockchip/rockchip-lvds.txt        |  92 ----------
+ 2 files changed, 170 insertions(+), 92 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+new file mode 100644
+index 000000000..03b002a05
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+@@ -0,0 +1,170 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip,lvds.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip low-voltage differential signal (LVDS) transmitter
++
++maintainers:
++  - Sandy Huang <hjc@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,px30-lvds
++      - rockchip,rk3288-lvds
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: pclk_lvds
++
++  avdd1v0-supply:
++    description: 1.0V analog power.
++
++  avdd1v8-supply:
++    description: 1.8V analog power.
++
++  avdd3v3-supply:
++    description: 3.3V analog power.
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the general register files syscon.
++
++  rockchip,output:
++    $ref: /schemas/types.yaml#/definitions/string
++    enum: [rgb, lvds, duallvds]
++    description: This describes the output interface.
++
++  phys:
++    maxItems: 1
++
++  phy-names:
++    const: dphy
++
++  pinctrl-names:
++    const: lcdc
++
++  pinctrl-0: true
++
++  power-domains:
++    maxItems: 1
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Video port 0 for the VOP input.
++          The remote endpoint maybe vopb or vopl.
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Video port 1 for either a panel or subsequent encoder.
++
++    required:
++      - port@0
++      - port@1
++
++required:
++  - compatible
++  - rockchip,grf
++  - rockchip,output
++  - ports
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,px30-lvds
++
++    then:
++      properties:
++        reg: false
++        clocks: false
++        clock-names: false
++        avdd1v0-supply: false
++        avdd1v8-supply: false
++        avdd3v3-supply: false
++
++      required:
++        - phys
++        - phy-names
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3288-lvds
++
++    then:
++      properties:
++        phys: false
++        phy-names: false
++
++      required:
++        - reg
++        - clocks
++        - clock-names
++        - avdd1v0-supply
++        - avdd1v8-supply
++        - avdd3v3-supply
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++
++    lvds: lvds@ff96c000 {
++      compatible = "rockchip,rk3288-lvds";
++      reg = <0xff96c000 0x4000>;
++      clocks = <&cru PCLK_LVDS_PHY>;
++      clock-names = "pclk_lvds";
++      avdd1v0-supply = <&vdd10_lcd>;
++      avdd1v8-supply = <&vcc18_lcd>;
++      avdd3v3-supply = <&vcca_33>;
++      pinctrl-names = "lcdc";
++      pinctrl-0 = <&lcdc_ctl>;
++      rockchip,grf = <&grf>;
++      rockchip,output = "rgb";
++
++      ports {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        lvds_in: port@0 {
++          reg = <0>;
++          #address-cells = <1>;
++          #size-cells = <0>;
++
++          lvds_in_vopb: endpoint@0 {
++            reg = <0>;
++            remote-endpoint = <&vopb_out_lvds>;
++          };
++          lvds_in_vopl: endpoint@1 {
++            reg = <1>;
++            remote-endpoint = <&vopl_out_lvds>;
++          };
++        };
++
++        lvds_out: port@1 {
++          reg = <1>;
++
++          lvds_out_panel: endpoint {
++            remote-endpoint = <&panel_in_lvds>;
++          };
++        };
++      };
++    };
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+deleted file mode 100644
+index aaf8c44cf..000000000
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
++++ /dev/null
+@@ -1,92 +0,0 @@
+-Rockchip RK3288 LVDS interface
+-================================
+-
+-Required properties:
+-- compatible: matching the soc type, one of
+-	- "rockchip,rk3288-lvds";
+-	- "rockchip,px30-lvds";
+-
+-- reg: physical base address of the controller and length
+-	of memory mapped region.
+-- clocks: must include clock specifiers corresponding to entries in the
+-	clock-names property.
+-- clock-names: must contain "pclk_lvds"
+-
+-- avdd1v0-supply: regulator phandle for 1.0V analog power
+-- avdd1v8-supply: regulator phandle for 1.8V analog power
+-- avdd3v3-supply: regulator phandle for 3.3V analog power
+-
+-- rockchip,grf: phandle to the general register files syscon
+-- rockchip,output: "rgb", "lvds" or "duallvds", This describes the output interface
+-
+-- phys: LVDS/DSI DPHY (px30 only)
+-- phy-names: name of the PHY, must be "dphy" (px30 only)
+-
+-Optional properties:
+-- pinctrl-names: must contain a "lcdc" entry.
+-- pinctrl-0: pin control group to be used for this controller.
+-
+-Required nodes:
+-
+-The lvds has two video ports as described by
+-	Documentation/devicetree/bindings/media/video-interfaces.txt
+-Their connections are modeled using the OF graph bindings specified in
+-	Documentation/devicetree/bindings/graph.txt.
+-
+-- video port 0 for the VOP input, the remote endpoint maybe vopb or vopl
+-- video port 1 for either a panel or subsequent encoder
+-
+-Example:
+-
+-lvds_panel: lvds-panel {
+-	compatible = "auo,b101ean01";
+-	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
+-	data-mapping = "jeida-24";
+-
+-	ports {
+-		panel_in_lvds: endpoint {
+-			remote-endpoint = <&lvds_out_panel>;
+-		};
+-	};
+-};
+-
+-For Rockchip RK3288:
+-
+-	lvds: lvds@ff96c000 {
+-		compatible = "rockchip,rk3288-lvds";
+-		rockchip,grf = <&grf>;
+-		reg = <0xff96c000 0x4000>;
+-		clocks = <&cru PCLK_LVDS_PHY>;
+-		clock-names = "pclk_lvds";
+-		pinctrl-names = "lcdc";
+-		pinctrl-0 = <&lcdc_ctl>;
+-		avdd1v0-supply = <&vdd10_lcd>;
+-		avdd1v8-supply = <&vcc18_lcd>;
+-		avdd3v3-supply = <&vcca_33>;
+-		rockchip,output = "rgb";
+-		ports {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			lvds_in: port@0 {
+-				reg = <0>;
+-
+-				lvds_in_vopb: endpoint@0 {
+-					reg = <0>;
+-					remote-endpoint = <&vopb_out_lvds>;
+-				};
+-				lvds_in_vopl: endpoint@1 {
+-					reg = <1>;
+-					remote-endpoint = <&vopl_out_lvds>;
+-				};
+-			};
+-
+-			lvds_out: port@1 {
+-				reg = <1>;
+-
+-				lvds_out_panel: endpoint {
+-					remote-endpoint = <&panel_in_lvds>;
+-				};
+-			};
+-		};
+-	};
+--
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
