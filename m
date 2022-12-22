@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BEA4C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 19:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 634D3C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 20:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QXYYx7Jf/mIK329YNrXjJvRcLls1FZnpmZnpY2/K7xI=; b=fD+nXfhaoigCtn
-	V7m9WwyDPgKvYDwEV7pa4utChpvLdLFTndccTSlHuw8Gfp81L7nNt57O5haV4JnBPNEFnw0qBHpxC
-	S8h84+uk8PZtfhVogzRHv/DttKmlVunm9EHDAhFXIM/1+SUudEL7j6pbv1OaPvNRk+BzEECgx6Y9l
-	m23gceq/u80W/BdSXJdnUzTiio3DzU4igA6Nq6yqID7fgr/OVWV3HB3uBL8wljkz9aim2R1dhxsGU
-	q3SVKoWPYOxnaJvqQlATynidapAGzr2SdIZmd/puJSNojC0wSnEGkAVfBkIshzWQ7qy2l2CLe66+M
-	75XqV9ZXE5kGWeHNf9XA==;
+	List-Owner; bh=Qas/JvEre2X6X/T3ZOJjZkDf3qhkQ+NBLZQ9BoqqNDQ=; b=CrZWRpSGn2JW19
+	k0lvOoipsI7x11D5jL+mn3Pw503PEKNZojG8T5cjb9gMsEUl4XrqyGHD8ef+Mp0jksA5+Sa+vlaMo
+	XqkTGEuUPD32xGw//B9sNHh+QfWqAXj5mRsqj5m5O6BpTBhMikTCu4zP76EUSspsff148jHJ3dGou
+	OtKWF7AU5E7eny9tJSMzYr1YonzHrO+LVBSUjjVGD35JGL7lwejROBnj5MJLtOMRruXL/50ouDVrF
+	9RfHuQ50P22nIBOCrQtkDJI0i7fM1P/GGUdU9NrwcuYo1kl4z5qi3I3OiXnbQEsNSTtX+ilFKxdUj
+	MdqytK/6GiRrm0vN9RVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8RNx-00G01Z-Jk; Thu, 22 Dec 2022 19:37:45 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1p8S9H-00Grgt-Ey; Thu, 22 Dec 2022 20:26:39 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8RKT-00FxRi-7f; Thu, 22 Dec 2022 19:34:11 +0000
-Received: by mail-ot1-f42.google.com with SMTP id k7-20020a056830168700b0067832816190so1669251otr.1;
-        Thu, 22 Dec 2022 11:34:07 -0800 (PST)
+	id 1p8S95-00GrZb-P6; Thu, 22 Dec 2022 20:26:30 +0000
+Received: by mail-ot1-f49.google.com with SMTP id m7-20020a9d6447000000b0066da0504b5eso1710298otl.13;
+        Thu, 22 Dec 2022 12:26:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uWNJdOIyPtnMcBMmOCjYRTOB2Nr98MKKR7cn2xvEWSg=;
-        b=azLL+CUIiEJV9W5UEPRvA7/0q3BnykeEjPBdYKPLc8l4LDiJMWLYyqPnYeW6EnqZgg
-         PT30DEm9wH4GMqlzR6SmXDBIAPzfWTsoYxUxlqpOam1oWZs3BAa8kbAXOHzqUA/g7/7l
-         mvInshqM6bDBn5Zesl36M+8InYVyKK2DNf9VKeMp5RPve5LazLjQ8HxrzfyN/VnbFKkF
-         n/R5fcxhDjLJgqzCIQT5BCTgXK2EXinvQvKxLUTBwbQiBeIl3gt2uBcE1Aab5M3mY8LD
-         x9FZmS/9bQilCmdf/WqNQDwfK79t3EG3cJojZqvXPWqjQsktlQBFhMGVakyJW/PRygV+
-         bEKQ==
-X-Gm-Message-State: AFqh2krxfijYUy8dr6Um2BFLv6JM9GzWLCqcA4Yy5xlMwfpNTRYD2+/z
-	9MWOMuLEOsJqIjL/MOhIGw==
-X-Google-Smtp-Source: AMrXdXtxaghkOVQHe3AHMVz+5/vqZ37iknCqFjTCKG0OidUpJkMAaQRBm426028lPeiYNZzv8rdcFQ==
-X-Received: by 2002:a9d:196:0:b0:66e:98f2:edd with SMTP id e22-20020a9d0196000000b0066e98f20eddmr3738313ote.6.1671737647018;
-        Thu, 22 Dec 2022 11:34:07 -0800 (PST)
+        bh=0bNa5Kdmcwa+mXleBewekipXDfwkrNZzap+jetEOYl8=;
+        b=jn1FAj3+/4z1YKLROR9+CpPfGyULPT9bkUaCqP3eaZnlYgpJnzXXXL4DRCH/FgvvLT
+         6ZQMF53Vv2PM7Euc61YjXeZUfFhOoWnS8B17H8zF8ErvvJxN3CO5bWjdFfjwXHHxf0L5
+         HVJ0CdOlyM2Xo5GzIkD7iluTLwjCizSfvPcXdV6Fx+SV06WnJp2GtytUhzxd2mUJRxG+
+         uF1EAEyGNRD9mEpOgukAY8oO2kO9i32lYw/YoO/AG/eSX0Tk0ss+gTAbdwa2BZqzOYJw
+         Ww1yI4ZfDKpc5Pl1wAF7eAu9yj2gIa8K3c1NRyJu11D0871y/lwG63G4bOKrKFqq7KV6
+         Nadg==
+X-Gm-Message-State: AFqh2krf6ycjFuxsEkcHhSbOZHOLwa9OMCqPEJ3tLaPuebYrDKR2SZ/G
+	OJXhcQos4ETHrs7CTvBt0A==
+X-Google-Smtp-Source: AMrXdXucxOZJROMeEnqXizAa6bJGOHQA+pgTrIZbg3P5Tml16wuho1SX/QIVObL8GR/stBrcV9KKJw==
+X-Received: by 2002:a9d:6389:0:b0:661:dfeb:a975 with SMTP id w9-20020a9d6389000000b00661dfeba975mr3595710otk.32.1671740785784;
+        Thu, 22 Dec 2022 12:26:25 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id a16-20020a0568300b9000b00670763270fcsm699449otv.71.2022.12.22.11.34.05
+        by smtp.gmail.com with ESMTPSA id e26-20020a9d6e1a000000b0066b9a6bf3bcsm758618otr.12.2022.12.22.12.26.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Dec 2022 11:34:06 -0800 (PST)
-Received: (nullmailer pid 1949007 invoked by uid 1000);
-	Thu, 22 Dec 2022 19:34:05 -0000
-Date: Thu, 22 Dec 2022 13:34:05 -0600
+        Thu, 22 Dec 2022 12:26:25 -0800 (PST)
+Received: (nullmailer pid 2066452 invoked by uid 1000);
+	Thu, 22 Dec 2022 20:26:24 -0000
+Date: Thu, 22 Dec 2022 14:26:24 -0600
 From: Rob Herring <robh@kernel.org>
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, daniel@ffwll.ch, inki.dae@samsung.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, sw0312.kim@samsung.com, dri-devel@lists.freedesktop.org, robert.foss@linaro.org, Laurent.pinchart@ideasonboard.com, linux-usb@vger.kernel.org, kyungmin.park@samsung.com, hjc@rock-chips.com, alim.akhtar@samsung.com, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, heiko@sntech.de, airlied@gmail.com, jernej.skrabec@gmail.com, linux-arm-kernel@lists.infradead.org, andrzej.hajda@intel.com, linus.walleij@linaro.org, philippe.cornu@foss.st.com, devicetree@vger.kernel.org, gregkh@linuxfoundation.org, jonas@kwiboo.se
-Subject: Re: [PATCH v6 05/17] dt-bindings: display: rockchip: convert
- dw_mipi_dsi_rockchip.txt to yaml
-Message-ID: <167173764506.1948954.2963463914057934898.robh@kernel.org>
+Cc: alim.akhtar@samsung.com, heiko@sntech.de, kyungmin.park@samsung.com, linux-arm-kernel@lists.infradead.org, Laurent.pinchart@ideasonboard.com, devicetree@vger.kernel.org, philippe.cornu@foss.st.com, neil.armstrong@linaro.org, linux-usb@vger.kernel.org, jonas@kwiboo.se, daniel@ffwll.ch, robh+dt@kernel.org, airlied@gmail.com, andrzej.hajda@intel.com, hjc@rock-chips.com, jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org, krzysztof.kozlowski+dt@linaro.org, linus.walleij@linaro.org, linux-rockchip@lists.infradead.org, inki.dae@samsung.com, robert.foss@linaro.org, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org, linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH v6 06/17] dt-bindings: display: bridge: convert
+ analogix_dp.txt to yaml
+Message-ID: <167174078307.2066361.1514368429127273992.robh@kernel.org>
 References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
- <d6dc8453-4807-0a5d-15bf-6dcf80dcd0fe@gmail.com>
+ <489e7bd3-fa26-885f-4104-8b0b29aa4f2b@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d6dc8453-4807-0a5d-15bf-6dcf80dcd0fe@gmail.com>
+In-Reply-To: <489e7bd3-fa26-885f-4104-8b0b29aa4f2b@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_113409_356894_9B5084C0 
-X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-CacheID: sfid-20221222_122627_899463_023538A5 
+X-CRM114-Status: UNSURE (   9.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,25 +82,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 22 Dec 2022 15:26:28 +0100, Johan Jonker wrote:
-> Convert dw_mipi_dsi_rockchip.txt to yaml.
+On Thu, 22 Dec 2022 15:26:57 +0100, Johan Jonker wrote:
+> Convert analogix_dp.txt to yaml for use as common document.
 > 
 > Changed:
->   file name
->   requirements
+>   Relexed requirements
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
-> 
-> Changed V6:
->   Remove clock-master property
->   Fix $ref
-> ---
->  .../display/rockchip/dw_mipi_dsi_rockchip.txt |  94 ----------
->  .../rockchip/rockchip,dw-mipi-dsi.yaml        | 166 ++++++++++++++++++
->  2 files changed, 166 insertions(+), 94 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+>  .../bindings/display/bridge/analogix,dp.yaml  | 63 +++++++++++++++++++
+>  .../bindings/display/bridge/analogix_dp.txt   | 51 ---------------
+>  .../bindings/display/exynos/exynos_dp.txt     |  2 +-
+>  3 files changed, 64 insertions(+), 52 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
