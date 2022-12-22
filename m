@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09962C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 15:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C49A0C001B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 15:03:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hu+0oP0MMrVZ7P0pVIEHc/llsppaeaH0DQo6ZbCbUg0=; b=tLfEyt722/q+5s
-	A0s0vkVKveRAsLcMA3sqJ7ILkM6aZ7fpL/xSxVlZU/yUKcpuP2CLepdO4hek0yayaKAq7QDxF5q8f
-	ef0LFXOUcH/1C2/B1/bLrxraxHgAd8iPZ6ONT03tmOl2en419HlfNsYURxy6nx52j5wdBuGRfw81m
-	6L85puCNTZljsiXiUa6IVPsfi9PpGMWhPfnnNALrbDhMKkG/0i6SZ3Czrs/od68iuWq8XnE5ojErK
-	iV/6MkIL09d5v+fSt8qH4Ip7MWuF0JK7gCjx2LCfJhYnEj3bBbpL8ESbe6ddVLshdfI2brhAlLkYj
-	DdC5YtpRqqMrnCxRNy+Q==;
+	List-Owner; bh=39y73FkesYh0C4SkHoqmpfaicNHQsy6IykILSHoLCO4=; b=LtSwLj8vhWngvg
+	CIKXNlMHC+hUbzVTbNWXYjblL9vVU9SeNExEe5VQcBZZHuoJ47HlxRb/kaP0kZFtfhP5tZTpg659g
+	zuCf28Q9hkBVlVVX957fkt9PDuF7CcQEtUkUkZqNDHRvIppkhk19a0yi0TNPD5AkyEDWYQMfDcliY
+	oJUFp8gkX14vqImZgBLMl5aztWg2AY9/lQooUcp+VXw0wruRppgkOMnQZIbMbTN3MQlG+OLz+AkLz
+	cY4swUdVi9cfxXKRFvdUFf3NZIizK+arjDwPumuszo5bZRPzCiPTA+kc2OySNnEbgRX3BKHnr1mvJ
+	KfXV47tQLFxUoOJsE+fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8N4E-00DGeH-AR; Thu, 22 Dec 2022 15:01:06 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1p8N6I-00DHpT-DL; Thu, 22 Dec 2022 15:03:14 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8MaI-00CyeO-77; Thu, 22 Dec 2022 14:30:11 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id r26so3130002edc.10;
-        Thu, 22 Dec 2022 06:30:09 -0800 (PST)
+	id 1p8Mas-00CyxM-7g; Thu, 22 Dec 2022 14:30:47 +0000
+Received: by mail-ej1-x636.google.com with SMTP id gh17so5310839ejb.6;
+        Thu, 22 Dec 2022 06:30:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Sr8iGvYv8Y+FUygmw8CozO+P35yD6ZFMgxS2kANtCbQ=;
-        b=VaczJC3DYayhT39mpuYMMNQmAe6pOd8vIUqq19xXuzH+xCl2aEgwN3IsaSTR1hH9Uk
-         uhePN9hjMzX2lQmaG5d/c05laMe4ShHPUzQGyeoa+ifSKElXnlrR7QVH1dHdGsEq4Dd7
-         j+2E9Nv5SN8HhYJ/3tCDbTmsiDzyETXjVCKKQ4CliNHJvrDaZRuVM2E5oFHZjHBq7ll3
-         rsTJIybJ3he9K3Hknr7Q3zVnh3000wSsLfVK4dAce7Eh+5sIc1uyQ1wXS2u08Cd+vcdM
-         uE7H5gbSfx73XuMy3cHOBtr37+FwZSQr5cPPCCtXwG8592mjHRMdiKKJtAASJxH7GfEe
-         HY9A==
+        bh=9pQhvyxS2+lxPQqiIeyKdGOnYGr9Eh6AUJtIVNTuj+A=;
+        b=pra17mBr3JgRZv93t/vpFNPmD0aO+J9on1u8LfSQlR0gvmVU7fCiy6aUFxsMq6vsTw
+         88osDMCGg4w9sYCHIY2iGRaYDHMJmDFgtRBmnAhzbeuay1wknN9zrOnqyK/S+hYEfPJE
+         ufGsRbb6TMoDnIzM1EiGs+P3rUo4keriGyIoxZtVPJ+FTT9wvk/BsASkl8ne0hLBtesG
+         fx5ygMW4pFrPfjoxdWuc9HzeTQ7HdH0E4rYv9y0ysaJnaezO5OwUnf46GvaOLDPH+FEf
+         ASEjvCOYvV2eIck3hnoJR3W8dOEXhA2eKeZuGPxcvX+6peAsNRCahyRvlqJf5WhFkyeJ
+         eKgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Sr8iGvYv8Y+FUygmw8CozO+P35yD6ZFMgxS2kANtCbQ=;
-        b=gT22F4bzBVSbOt3Ts/e5XXp5lY3Udhr286PSwDoMmXIXPbOongimYJpIAz4ahbLqcW
-         xwPU+JmU+gSQ/2cqR9l67Cop2G/MBwaeoR+yIh4efOQNsSTa6kmdo44z0eH4b7ATHZQA
-         vrtWt6PGVDeF61is+teUkm4IqZhLce2u276jo6D1YAQUmMYTdiuwSiEfdC/0Wwi6u/pw
-         pid9iqdabzR+BpKQaCriP63LIHpJQuTfQX5gXFzZdzIR+g5mEO0ezwcr7l+H5ly4SJbx
-         v5Qg9wbmiO2ytza6Jm/jxVDPo6iIDm1CR2og2QatQFBUaNSPb7ULgZr/JOH7t18MzPt3
-         gp7g==
-X-Gm-Message-State: AFqh2kporsYRVy7Jpt/QHZPl9lxyQME0tiu/eQ+xnbGZbKKgOhhURp5s
-	7qMhIFbsw7LjBI2HPf0BvK4=
-X-Google-Smtp-Source: AMrXdXurqoOFkI2ZF/Yr2+mXCk6PmZYuuFqlaFxmwRRIisoHNe/8QJlN0NWxlPobXkNO6fFrIoIZpw==
-X-Received: by 2002:a05:6402:33a:b0:47b:2524:5cf6 with SMTP id q26-20020a056402033a00b0047b25245cf6mr5189089edw.40.1671719408575;
-        Thu, 22 Dec 2022 06:30:08 -0800 (PST)
+        bh=9pQhvyxS2+lxPQqiIeyKdGOnYGr9Eh6AUJtIVNTuj+A=;
+        b=3r9yK4L8U9J4ot8qzx/8byZEyMuGUbzGcSK0T5pYdE7eqLicvAQCCcFnYwwM7Ur+Sh
+         gvQCPJVQ9j0KyPi7InAI5oZMV7Jo2T2eZSbGlqqgfyU7uGxe2rhpWgzCvpmpTFmVL/WE
+         +Q1YNrCZ01HwpuL3MXZhPVrhbgMy46ls14Da9h2bTjpvOj4gDvaAw6ibAenFot9HL/0y
+         3aME9PJN62jw3TTODIJY8Iq+6PzcqAFzSKrED779jw3JZEXXv/ggZY6NPrbYat7W+UBD
+         oCs2WmosurcdkP4ODslFRKTVmM7CKnJ54B7e8NIySM7pCdfur5eSoJUlL6TaMwbTFxAg
+         q0PA==
+X-Gm-Message-State: AFqh2ko4i7EaoFxVfMuKPfpOwmgGnjQq//DDHFHt07pnZkLChpqL5133
+	Fq88UKjHpl332+x2lMJRneY=
+X-Google-Smtp-Source: AMrXdXtmL49MyBKUjTsMoWtqCRlV2PHafs92EJpPC3lRCxLlFg44CyiVrl1MfAnIoLBEhLRJvzfKQA==
+X-Received: by 2002:a17:906:71cc:b0:7c0:ff72:e877 with SMTP id i12-20020a17090671cc00b007c0ff72e877mr5058112ejk.63.1671719440099;
+        Thu, 22 Dec 2022 06:30:40 -0800 (PST)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id h13-20020a0564020e0d00b0046b00a9eeb5sm427095edh.49.2022.12.22.06.30.07
+        by smtp.gmail.com with ESMTPSA id ku2-20020a170907788200b007c0e23b5615sm317771ejc.34.2022.12.22.06.30.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Dec 2022 06:30:08 -0800 (PST)
-Message-ID: <e7b78a73-0e89-d9e9-2ecc-a8a380635f64@gmail.com>
-Date: Thu, 22 Dec 2022 15:30:06 +0100
+        Thu, 22 Dec 2022 06:30:39 -0800 (PST)
+Message-ID: <0a423eb4-0ab6-7ecb-d450-d93639160dbc@gmail.com>
+Date: Thu, 22 Dec 2022 15:30:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v6 10/17] ARM: dts: rockchip: rk3288: fix lvds node
+Subject: [PATCH v6 11/17] ARM: dts: rockchip: rk3288: fix dp node
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, gregkh@linuxfoundation.org,
@@ -83,8 +83,8 @@ References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 Content-Language: en-US
 In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_063010_329611_5DE77BAA 
-X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-CacheID: sfid-20221222_063046_409064_C6565D58 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,46 +102,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the conversion of rockchip,lvds.yaml a port@1 node
-is required, so add a node with label lvds_out.
+With the conversion of rockchip,analogix-dp.yaml a port@1 node
+is required, so add a node with label edp_out.
 Also restyle.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
-
-Changed V6:
-  Restyle
-
-Changed V5:
-  Rename title
----
- arch/arm/boot/dts/rk3288.dtsi | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3288.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index fbb174729..9def3988e 100644
+index 9def3988e..4d1bc6784 100644
 --- a/arch/arm/boot/dts/rk3288.dtsi
 +++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -1167,7 +1167,6 @@
-
- 			lvds_in: port@0 {
+@@ -1203,19 +1203,26 @@
+ 		ports {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
++
+ 			edp_in: port@0 {
  				reg = <0>;
--
  				#address-cells = <1>;
  				#size-cells = <0>;
-
-@@ -1175,11 +1174,16 @@
++
+ 				edp_in_vopb: endpoint@0 {
  					reg = <0>;
- 					remote-endpoint = <&vopb_out_lvds>;
+ 					remote-endpoint = <&vopb_out_edp>;
  				};
 +
- 				lvds_in_vopl: endpoint@1 {
+ 				edp_in_vopl: endpoint@1 {
  					reg = <1>;
- 					remote-endpoint = <&vopl_out_lvds>;
+ 					remote-endpoint = <&vopl_out_edp>;
  				};
  			};
 +
-+			lvds_out: port@1 {
++			edp_out: port@1 {
 +				reg = <1>;
 +			};
  		};
