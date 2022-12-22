@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C965C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 14:47:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51FC0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Dec 2022 14:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ULzzJ4phQniW1QdaSbiGiQleBAq44uR1mnrGUyla6eM=; b=Bjfl0PlVR5+Cw2
-	vtN3DI75jErPZLmSW89VNc1wQORjmALLKAQyWkkSV5m5PEkG5K1pJDl1HqTa7YAQuAWkacWdGzJO9
-	Qxwkn+n5dSpBQN6QmbE7ou9VwyP73pGxNtf0OS9Xer3yOkNurbJH6/0Uw57HX4C1aluVrD3gLYpWR
-	5p5ws8PvajLwRvBxNjVOsDTSZKd5L4EGXjhce8aSs/wu3gMn0bSIRlCQoNlGrOM68Q2xXlnrT9p3X
-	ehciyVo53viysK6OfzJw2gjXrCCefe9LuKpEidt7plLhvrK/27Q4wwgKfNNsEOIbr2EWhATZMEKgX
-	xk/ZI/KZp4CJg+mn3t9Q==;
+	List-Owner; bh=I0fPPBjI64oYTNDwZn9Vh4k37rstxmjIZ3YZQWz1Uf0=; b=Oq4z1Z/b6tk54p
+	2OdZAQAkTUSEwlkjr5iDjGkflLWHYNRAh5H4NmLYdWRnq8M8vF+LPv5GnKNnFdZn5awHtEp1an5b6
+	VkeumS00/3vI/4DRo3vO3KIDYrj3DIZBMZY4iRNRCU+IXyQ2A8hRlSrTv0xurqfif5nQRXKQ1YWrW
+	OYJwKGE+Uq3aFtZlfF9rYLowFeLwqfgnZqq/qZHJ5oUEx051q686LFO1QlHI9rRmYmE214kW800Y2
+	juS8x8F0eu94vx5ZOqrNLKNfvLk6xR/7TQ3hm2ooli9k1XKC//ZmqMWvr9BynwY+Gy68GQdFbKEEn
+	NGgGfa5W76NS4cuYjhEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Mqw-00D8y5-Pu; Thu, 22 Dec 2022 14:47:22 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1p8Mt4-00DAEi-B6; Thu, 22 Dec 2022 14:49:34 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8MVE-00CvgO-6d; Thu, 22 Dec 2022 14:24:57 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id ud5so5283913ejc.4;
-        Thu, 22 Dec 2022 06:24:54 -0800 (PST)
+	id 1p8MW9-00CwAV-0G; Thu, 22 Dec 2022 14:25:54 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id gh17so5276939ejb.6;
+        Thu, 22 Dec 2022 06:25:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=HdAXRp18Yhl+PSUnXtbvxR+DNOmBhpNB7mLZxnFGxfA=;
-        b=Ak5UOvazOKQI4voJRBbw/aBCbllxV6iZfxLX5kvr7a5k5+402RTMNX9ttsPTN8xVOn
-         jT6T0+rXU62S82MDgMd+aQlPOOz/nfCu0pq1ZLDkC8fIZcYV/qrF/bpFwM8yAWQ0x7EQ
-         q9HcoG9P5F+9jZje1fi5sgQoaWHo7hmbgbgOJE7cM//3AeuvYbrpdL0Sl9FsN+43sM41
-         8MexiDyS2m+RHro68c2blvLTjRBbFlnQ4ynqfyt4QdPsL54m7KwwZe765Cl5pAO+TBLQ
-         kh0a1doC6s6qxvb+rN0CUV2+qE2y3WmNyNet3Vn2IghdsPmFXjRJdFOalNe3uBpXFpbA
-         /VTA==
+        bh=fOsi2OwSq3xHI7aui3O414Oo1XlE4pBwJtqzcodoVCQ=;
+        b=MlKU5KNhffaWl+HI6LQ+w9cQLnvsbNTJVEYK+oItp52FhknzDgvIMJ+/mBcMmMp/nM
+         FBpCzLrvZGFUSW739Xqa/Ck0qPPJgnpjK0rQAn5r8CjtHNetqca/BWq7JNQ+kU+FffjZ
+         PxKNZj2lsEPu6ozrQke8Yrx6nOyxq8DCQO3+CF6oFs1k2/eMoo41sh1pwJ5vaBD+e3Rm
+         QmtU8bNdMMjy7r4ot3LTZwTOv7Y2MR9p6CCO8dRh9pCJX9XeuvS3t3CHNsI6aIZEHN+s
+         pUvz8hEIRjXvtwWLkd+UAXxEgwQIC0kvRIJIJL1TlRSDlX85aGeo05gDzYBkQ/jh/xbf
+         Rn0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HdAXRp18Yhl+PSUnXtbvxR+DNOmBhpNB7mLZxnFGxfA=;
-        b=S+Zu0sDhChc/Q8/6BX9NhnbWFhOGNIpbGpNnq8ByAt3jqLn4Ei8GX2CasBWCqYZ9Rv
-         8PI3/BYdJXUWiqjlP0EDnwq4oxiXIqZLzjnxvtiHRR07fReRd69HJmAr8dJGTCkRKz/t
-         gBoUadG1cuScreDsAkS4D8SvXVNhekxqkpx3cni2Wo8OexYYx4dJFCH8ErAhVjq3219U
-         Y0shzDiwPQ1UFWzqZrFuj/vMN46vdXK33FEkF4V+0zOvf4czbgLcsnYVowOsTY1rjdmg
-         0Y5EFAlWr2nxWksYrAl+uJF1JNqmBRN+xAY/CWi7oRjejvGYcWG4NEVH2XyU4C1/2gzZ
-         mKCw==
-X-Gm-Message-State: AFqh2kqfPY6Fvbo0U6+DvNBDxb6nXJP4C1GXCRFEBCyQSt+v91PkIW/Z
-	t5deyzZbfCuyfh5bujLK56I=
-X-Google-Smtp-Source: AMrXdXt45+koOLdg7WkWVuXyCH9JMIXYsbmfdjeRv0hUdjOfPc/eqO1XzGfCc9tGBAYRQkxdVQZgQA==
-X-Received: by 2002:a17:907:1b0b:b0:7c1:6344:84a with SMTP id mp11-20020a1709071b0b00b007c16344084amr7096364ejc.5.1671719093335;
-        Thu, 22 Dec 2022 06:24:53 -0800 (PST)
+        bh=fOsi2OwSq3xHI7aui3O414Oo1XlE4pBwJtqzcodoVCQ=;
+        b=dRsUoGEJevFw0lsuvnxcPWH6TZ7JBnxU9dVLsSHs/ptRq1RuruLPywG5+tVDi6dAyb
+         Pjb2XQ5XcXttaEOYOTefzVXWvDB3ofLpz2s/XJVWgjI8rPfx3EnrxaNApk7UXNMTMzXv
+         FKyNKlsG/5U5xxPxDVDUfZt/u+Cttd1zReXQrhfiihApdHtWO5ggOEFtvuhLmDjBpgnQ
+         Kc+BEu047Ea54BnQE6HA5vxZTI1sXhGdBTLjGWieHjhhpOdMeQ/evv8x25bSXUPKUn2v
+         hf5LomHgHxLLKdpQanBHnRbEeeaD+YUHk8n3XQ7MOBllYuvLS7+0V4cA5WR4fyMAXvEj
+         WU+Q==
+X-Gm-Message-State: AFqh2kq9nkvukWemFrcgU8etL/v+vTQnd4Tp0BCaXBVaJLsoProZHVpG
+	Z8Nj5Nle0jc4ikESoFtwflQ=
+X-Google-Smtp-Source: AMrXdXs2ZIgjx4BwdrZ9OPUxEcwQhQL93aelpNu8ZOBPma6g87PHYtq+N1Mh0lqNtQZcwkk2DClGQQ==
+X-Received: by 2002:a17:906:688f:b0:7ae:31a0:571c with SMTP id n15-20020a170906688f00b007ae31a0571cmr4818918ejr.57.1671719146475;
+        Thu, 22 Dec 2022 06:25:46 -0800 (PST)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id w14-20020a17090649ce00b00835dababb9fsm283580ejv.214.2022.12.22.06.24.52
+        by smtp.gmail.com with ESMTPSA id cq17-20020a056402221100b00477f0d89e8fsm432158edb.6.2022.12.22.06.25.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Dec 2022 06:24:53 -0800 (PST)
-Message-ID: <1c3b18ad-350f-e862-de98-a775e11e132c@gmail.com>
-Date: Thu, 22 Dec 2022 15:24:51 +0100
+        Thu, 22 Dec 2022 06:25:46 -0800 (PST)
+Message-ID: <78b4548e-dfe1-d0c6-f96c-5d40f28f8b2e@gmail.com>
+Date: Thu, 22 Dec 2022 15:25:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v6 03/17] dt-bindings: display: dsi-controller: move
- clock-master property
+Subject: [PATCH v6 04/17] dt-bindings: display: bridge: snps,dw-mipi-dsi: fix
+ clock properties
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, gregkh@linuxfoundation.org,
@@ -84,8 +84,9 @@ References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 Content-Language: en-US
 In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_062456_355115_732FF000 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20221222_062553_351504_386B4BC5 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,50 +103,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clock-master property is used for the controller and not in the panel,
-so move it there.
+Fix clock properties from the common snps,dw-mipi-dsi.yaml file,
+as they don't match with what is used on the SoCs.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/display/dsi-controller.yaml       | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ .../display/bridge/snps,dw-mipi-dsi.yaml         | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/dsi-controller.yaml b/Documentation/devicetree/bindings/display/dsi-controller.yaml
-index ca21671f6..67ce10307 100644
---- a/Documentation/devicetree/bindings/display/dsi-controller.yaml
-+++ b/Documentation/devicetree/bindings/display/dsi-controller.yaml
-@@ -30,6 +30,15 @@ properties:
-   $nodename:
-     pattern: "^dsi(@.*)?$"
+diff --git a/Documentation/devicetree/bindings/display/bridge/snps,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/bridge/snps,dw-mipi-dsi.yaml
+index 11fd68a70..0b51c64f1 100644
+--- a/Documentation/devicetree/bindings/display/bridge/snps,dw-mipi-dsi.yaml
++++ b/Documentation/devicetree/bindings/display/bridge/snps,dw-mipi-dsi.yaml
+@@ -26,19 +26,9 @@ properties:
+   reg:
+     maxItems: 1
 
-+  clock-master:
-+    type: boolean
-+    description:
-+      Should be enabled if the host is being used in conjunction with
-+      another DSI host to drive the same peripheral. Hardware supporting
-+      such a configuration generally requires the data on both the busses
-+      to be driven by the same clock. Only the DSI host instance
-+      controlling this clock should contain this property.
-+
-   "#address-cells":
-     const: 1
-
-@@ -52,15 +61,6 @@ patternProperties:
-           case the reg property can take multiple entries, one for each virtual
-           channel that the peripheral responds to.
-
--      clock-master:
--        type: boolean
--        description:
--          Should be enabled if the host is being used in conjunction with
--          another DSI host to drive the same peripheral. Hardware supporting
--          such a configuration generally requires the data on both the busses
--          to be driven by the same clock. Only the DSI host instance
--          controlling this clock should contain this property.
+-  clocks:
+-    items:
+-      - description: Module clock
+-      - description: DSI bus clock for either AHB and APB
+-      - description: Pixel clock for the DPI/RGB input
+-    minItems: 2
 -
-       enforce-video-mode:
-         type: boolean
-         description:
+-  clock-names:
+-    items:
+-      - const: ref
+-      - const: pclk
+-      - const: px_clk
+-    minItems: 2
++  clocks: true
++
++  clock-names: true
+
+   resets:
+     maxItems: 1
 --
 2.20.1
 
