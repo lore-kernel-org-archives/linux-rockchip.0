@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D33C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 03:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59C16C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 03:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=rpkyoAGhHn7hC5yY/JP//ruCf0thYVqoj0mwgxyMog0=; b=pWe/24SUG0s5Uc
-	te3Vv6TobjqHsmuHUWsoDZem2esiRrZMgjWUWMOlpB9Tq9hbCGXi/fl+Dc5BzYXZhVM2chC7+K6Ua
-	E8DnpWmqQPTgJF3V4e0YdtEvf5lzu2DE6KFBLWYfLY/IgyVpDe8ICxFs8al7kDPEhTBxtTxwb94Hs
-	TsY0sPRwRGw7r1r2/+1iOrHt3TWhX0W9/WodogTG6IfPptMaMlXjHWms3q8QUTCo5B2UG/SezJGDW
-	7ow0MJ+Rv30bJwz1BQVU2J/g8chdvVOS/QbByrMXXHpdaKcqwGwUDOfCjVRMiMEdonGdhLlb5IqeS
-	JBslMiJrwjb56OXiVpqw==;
+	List-Owner; bh=mC/kkCYMeReL2nQkyLUtbaw2SbuOLnjZPrtP/YwiHhI=; b=V2k+di4gIfvk6R
+	B934w9+Bv30zzkw3IhYmV07lJg9q2IdUie+kMUIKN4R6QoptUUl0hmzdNMXTqA+208dJ0klSvyinq
+	9FhzlVrzLgPkBjkyfRSWcxhT1X0xHTmo56AoJ9eExCSfMde5wt4vPRpIJcunN34j0BpcCcm2wbKfk
+	uqCmM8+sXp3BsUJzLIykmmz+jz1Pbf7E7LcJCfNycv0joW+obA24rVS5hsRclRjoUl5buTXBDONku
+	N4Fqt7BqkyYaycMrubIgBoyqaNS+0etWBxpQXusDKxwemX7Zg2YYFXVEqaSLuN0MpRcoAO5z42OIP
+	Aj3pU5Tjn+kGl0IC8fMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Ym9-002hIv-Uc; Fri, 23 Dec 2022 03:31:14 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1p8YoQ-002iWg-IY; Fri, 23 Dec 2022 03:33:34 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8YYn-002a3s-P8; Fri, 23 Dec 2022 03:17:27 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id o31-20020a17090a0a2200b00223fedffb30so3794465pjo.3;
-        Thu, 22 Dec 2022 19:17:23 -0800 (PST)
+	id 1p8YZf-002aZD-Bi; Fri, 23 Dec 2022 03:18:20 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id 130so2500255pfu.8;
+        Thu, 22 Dec 2022 19:18:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=eYiGrmsD33kbnsC1ctFQkhOOqCnqOHmLKFShgn5msm0=;
-        b=hCn4mJm22d3D3rll3METASgOTnhhlJ8cXe968jX0yXnrBAUhR+kbXwYcAw52wrLNaA
-         CIXdS6AP1v0bQyW7Hcn6DbLdI6m3+fc8MKYxBsF30EIqkLQCYru6CfsL54czOQicEHs+
-         sM+yOnXWhBfTPMwawZ/K8fI9Qm1DEHaRLkXCo69UKb6hjOjQcnnBOdJW2Rm9IjabV2x5
-         e80hbT80UwR3Qx11+nf3J3KAepEqdC3QjQVxd5nNldoG5AEUGiG6z1Gytu2Qhzi+K0rW
-         xjIK6pbdQ7Kqc5sfACVmQtXhyXSIs4jUqfgCSUjE7x+64SLDmjYP9Z6uzRpkutuWjob9
-         nbsQ==
+        bh=JvI3blinvaCjUYpwPXTVf3onR897jbDV84x4cQn3O60=;
+        b=Oc19VAEwOXUtxxtdKwHQqNGtQUP76Yf3FUW92uqTquY/TovWt5Tm3B57RyYb5bEhXk
+         NNqXzye01SuzGI3YviT/y5bf7uD/6bVA3Zd6OLIlDwXnIjXaodegdnJRKf3ot4qO5DIU
+         aM1HyhMD0QBOZT4l7gVjpw7sr5H2R0gvD0xm+NTNLvSZdC+Nm7uqKJ+4IIzF2KD+uVDl
+         zp4zwYvekI2aPz7dReOnZW7+hmIZkgEbfKHsP5tNm3NwyiwZEsSGi+r8z30Rcu6VlUzl
+         pOH46skNXMpcGaD/NLQlYMYPl56wWyVvoU0uqR4VhO6CHJlEu/kLihD/NO2CQpuJE4XT
+         kWrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=eYiGrmsD33kbnsC1ctFQkhOOqCnqOHmLKFShgn5msm0=;
-        b=XVDZRn+Ul6GRDFKDJIHGgUHD4dlcj4wvnjCLwPfJxvZa1YtTP/mX0mtER795rLTazG
-         4m1oM2KNnIPO9ah0m5TeYGOQxawZveCd27d+4F4xMKw9blY8Y6N9wmY1cWYkykRQO5J6
-         MF58hHEZxGGE/CK85n5fVmcva9FiruoChvq0++Rw7lVMY41IsvrUsByDP/RaGEWK8U+o
-         RMU+8E1xTcGAgzp42htq+SJzKWEgqelzIQ4I734MnwoYYeEJP0ftY4njR4JJm2Ti4cRK
-         kizv+NVSlDo4CqdCE1iueJye75+AA5d7nxYPb9p6PK9s8dDE/OFE9uYGDN1OopVQ2X+b
-         s0nw==
-X-Gm-Message-State: AFqh2kqTwPiFuwKVT8+9WdVI/5pEwqvcJSizmCsKPz5o2Tcs6jOQy1pC
-	StT/S/6ZvLYygOHKVilXt/o=
-X-Google-Smtp-Source: AMrXdXsgvy46fTENjvXN+XI1fTqJI+3SswcLm62Kn8LvvIzBZsAEkVpKcaVGX8T7r4QkdEh4qN9VUw==
-X-Received: by 2002:a05:6a20:3d14:b0:af:b909:2b3f with SMTP id y20-20020a056a203d1400b000afb9092b3fmr12961373pzi.34.1671765442579;
-        Thu, 22 Dec 2022 19:17:22 -0800 (PST)
-Received: from VM-66-53-centos ([43.132.141.9])
-        by smtp.gmail.com with ESMTPSA id w2-20020a628202000000b0057ef1262347sm1454354pfd.19.2022.12.22.19.17.20
+        bh=JvI3blinvaCjUYpwPXTVf3onR897jbDV84x4cQn3O60=;
+        b=MF8Yk6lzOkG1SkXwieQ1o3PH/sYFU9JhuvEB+VRuQ+BtFudW/BIL5ZWC1oPlB/wodE
+         qoILe1/KuKhJbdOw7cTdxHcNGkEWh73B41Qi8XhnthVCb6xdiSQke9JXSohZnEJzWbcN
+         q8CRv3RDr0BzcJXFetl8Cn+2EpvIk7YowuT3qzfXA+/TTbPi+qM4aoZUrHrsKzr/Fund
+         p9Ib2IMcFvFrel6no2u/MTWeD2daLRlSgWRYWSbvi/90n9HDhNp5MKXswnh/oqaP8rFY
+         jIcKfifaKRt84h1XreFEMu7Af00ftfmo9t0mL8bGX08Z1+jFU1QFA6WXOvOlYTa+HuoD
+         rNPw==
+X-Gm-Message-State: AFqh2krge0jmDfeFCrfBcdpT4aEnlt49XEocQv3xm9beD8QMlH+M6DYD
+	lQrUEuCADPfgSc8EiBge4Og=
+X-Google-Smtp-Source: AMrXdXsPfVNkPFXAkqMaVrtsalGBoW5UqG9NuVGNJ1jY8X6HR3rNhraFmr4D2g6g0ZZeGHRgLWYbOg==
+X-Received: by 2002:a62:6102:0:b0:578:3bc0:57d7 with SMTP id v2-20020a626102000000b005783bc057d7mr8071802pfb.13.1671765497089;
+        Thu, 22 Dec 2022 19:18:17 -0800 (PST)
+Received: from VM-66-53-centos ([43.132.141.3])
+        by smtp.gmail.com with ESMTPSA id m27-20020a62a21b000000b0057fdaff3fa0sm1457473pff.15.2022.12.22.19.18.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Dec 2022 19:17:22 -0800 (PST)
-Date: Fri, 23 Dec 2022 11:17:18 +0800
+        Thu, 22 Dec 2022 19:18:16 -0800 (PST)
+Date: Fri, 23 Dec 2022 11:18:12 +0800
 From: Yuteng Zhong <zonyitoo@gmail.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 Cc: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
@@ -67,14 +67,14 @@ Cc: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	Yuteng Zhong <zonyitoo@gmail.com>,
 	Wenhao Cui <lasstp5011@gmail.com>
-Subject: [PATCH v9 2/3] dt-bindings: arm: rockchip: Add EmbedFire LubanCat 1
-Message-ID: <Y6UdvrhLjS0/8Oic@VM-66-53-centos>
+Subject: [PATCH v9 3/3] dt-bindings: vendor-prefixes: Document EmbedFire
+Message-ID: <Y6Ud9MhRjCVAYMCj@VM-66-53-centos>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <Y6UdjhBD/Xa7ALya@VM-66-53-centos>
+In-Reply-To: <Y6UdvrhLjS0/8Oic@VM-66-53-centos>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_191725_894062_0880AD7E 
-X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-CacheID: sfid-20221222_191819_448298_6E91C0EB 
+X-CRM114-Status: UNSURE (   9.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,30 +94,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Wenhao Cui <lasstp5011@gmail.com>
 
-Add devicetree binding documentation for the EmbedFire LubanCat 1.
+EmbedFire is a manufacturer of embed computers and education platform for
+embed devices from Dongguan.
+
+Add vendor prefix for it.
 
 Signed-off-by: Wenhao Cui <lasstp5011@gmail.com>
 Signed-off-by: Yuteng Zhong <zonyitoo@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 88ff4422a8c1..058ed707f3cd 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -95,6 +95,11 @@ properties:
-           - const: elgin,rv1108-r1
-           - const: rockchip,rv1108
- 
-+      - description: EmbedFire LubanCat 1
-+        items:
-+          - const: embedfire,lubancat-1
-+          - const: rockchip,rk3566
-+
-       - description: Engicam PX30.Core C.TOUCH 2.0
-         items:
-           - const: engicam,px30-core-ctouch2
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 00493b962bd7..0f04ee30bdc2 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -396,6 +396,8 @@ patternProperties:
+     description: Elimo Engineering Ltd.
+   "^elpida,.*":
+     description: Elpida Memory, Inc.
++  "^embedfire,.*":
++    description: Dongguan EmbedFire Electronic Technology Co., Ltd.
+   "^embest,.*":
+     description: Shenzhen Embest Technology Co., Ltd.
+   "^emlid,.*":
 -- 
 2.27.0
 
