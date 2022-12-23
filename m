@@ -4,85 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8331DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 10:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD35C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 10:37:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDurWJopczYEPPPTdReMHdc4kGXqIuD/Z0tkttg0Jl8=; b=ur+avSfuR3Eq8l
-	DW8k9echxPgt9iuCxhT1huXw3Mpi2NndTvFoG9/VjlPu9C2qQONEU/JcMkJuDF2z9WyTmf1CyvsuW
-	ZVqwXI7svOnj86Pp60+M8ocCIuwpZcL3Onm+VZqurme6g3LYzK5a1Bw5Itwvi6tIjK2m8aSSJBMgj
-	vp8oiCd5kki92jlF1dOEY9msAMsp6+vXHI9eptXYRDFrB7LlvNmmSMB7B7woG8w98t34q+2KI/6rX
-	eeeApf4ie3OhsIx3zYEu4a+kvFc6DLTSLCkuvDbBy3kj+jbxgUDD70OlLJtpDOW4y+H13vL2xmbjR
-	mmPk1H09+EGzDmaKbzzQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UXYbZDPurbGtBvRs/QsXF5mB7H5e7hR9EOoNfxaEtBY=; b=j1/Ek4pF9c78FIZ9vm/RbKKjU6
+	5NY8ujVZ4pQgvyWqYTFMYf/PjmUX7qiVyBnZz5d7AO3bjHOLWRvZaSkanJduN6my09MXXN7D4Eutg
+	BfguifrGSIJJLeUw7fumNjJkkl1JxiosDTnIHPseiNkN4GV71hp7QBNnLOSM0jR2OwNVQqveD8gcA
+	AFnf+nmqFI7gEZKlZsVISh2i9naxKHZmlxwVwQAq7LZVLEfNEuqPa2gVAO85Nt7otKFrcPbxGAIgI
+	TM5KyIfbURRaJDdOgcY3t5wzuHc7W6DT2PofHA+NPXaFdi5nIzBobXeBFDY4T3+/qk0HayARtGBfI
+	2o8vjnow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8fOH-006TKo-Qi; Fri, 23 Dec 2022 10:35:02 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1p8fQH-006UuQ-Gp; Fri, 23 Dec 2022 10:37:05 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8f8W-006IYl-NW
-	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 10:18:46 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id cf42so6575344lfb.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Dec 2022 02:18:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YRC804NMX4Ft7zElwiwbqtFM7vLNhKQd0+x9jqgtXVU=;
-        b=etA0VGxOKwiDf0ID/nnsO2FOPTdemnS1pE1whMCSq3ZCeGBmgstZGp2VgEfy/qi6ar
-         T0feRKhj7r19A1bkJjaGbRr/Li0H1iuxCaPYJ++DnJIOxVubTxanaVlcUOnxaa2Jyq+O
-         BoQO+zctjPVflzH4a6aeDk5IRItyUbW7/NYOKzECzethsDhdEqmyvxtMIw9lJZou8N3t
-         oBwlGlDieqZ53Qkirxz7jaSRJXMz7cWVpey485IAzHCEE9hIQc/e8KOED5rHH0R4lVtC
-         JIg+TU9s8BECXDuwT8qFR0xU91hE/uRXs4A+Jkz7+C/4Ajx2OvXePJWtbEqZ6rKgn4vj
-         7fbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YRC804NMX4Ft7zElwiwbqtFM7vLNhKQd0+x9jqgtXVU=;
-        b=Z9C9jHMY+fAhKdiZ4mQxErVXGMVhmoweHob6Y3vpDaS6FIfXhL4qJ7Nom5mvBwIqv7
-         t6TVLJ6u/PUkscEGIrEAuMwqaWHI4EKqCGx2EZDRYbpX168FCUTx86NEIg4N/SambuGR
-         tsAjPOkzDLeJRJb6QO11VJaSnUdIZFCvcD0wRrvKyPuh4e3fycSv7Xm27CtIrowjScFI
-         rZa94QBE3r247jMpSFqe3BusewyXX3012mU7PH92qSMXYNeC+jwzH3G3VEqTqGgFGXKg
-         Em3gYWBXUXjWTidleL3rfOUrWiRtkNEz5wQG/PWMfskhV5ut+THHjN9qX7KZ7cNJ2/L6
-         aCUA==
-X-Gm-Message-State: AFqh2krVelaXMUBxrJhG9jSy2IDTxUDP9RoVTOsgplXd0kXl3HZLwkfB
-	Df7jm11Ze8W3/ZSeDUVIO6gtCg==
-X-Google-Smtp-Source: AMrXdXtymcn25ZBG/zJxhmOxOPKCJ0TJ5CVw1wGAsbh0Dg1p4XoieT9sdgtZe5B+ULnpKGF4hzZGOA==
-X-Received: by 2002:a05:6512:507:b0:4a4:68b7:e719 with SMTP id o7-20020a056512050700b004a468b7e719mr2260436lfb.3.1671790719194;
-        Fri, 23 Dec 2022 02:18:39 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id q21-20020a19a415000000b004a46f92a15bsm473828lfc.41.2022.12.23.02.18.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Dec 2022 02:18:38 -0800 (PST)
-Message-ID: <62e62d16-aa18-4487-db98-d767f1f9d438@linaro.org>
-Date: Fri, 23 Dec 2022 11:18:37 +0100
+	id 1p8fKy-006R6U-7M; Fri, 23 Dec 2022 10:31:38 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 56152B81D36;
+	Fri, 23 Dec 2022 10:31:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 015C4C433EF;
+	Fri, 23 Dec 2022 10:31:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671791490;
+	bh=6wmYFAAcZgXeEqTN//fhHTM54kWAbw0UyCStoqODi6s=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=BEyR8WP6WX3GtZpTZwyvh6OGrEFdaVlUcmfPF3c/2LEX4kyhwln3qYDDOeVFlTGuw
+	 7DrYKRNNPzm2aA4AWpm9QiLKqrk75STh/zZjnVhHDcboCUL8fv1NWdcLfTUP/KyhI6
+	 QGJPalphACsy+K7uM6ZKjrNy3ZdPIEK29DPBm7VxwNl3RrElL3xW0W200UGni6gReT
+	 bvKOUaIvd04RL0CbsKQJzs78ub+efKUqAs6kAZL/OE+K/Zc/fKOJD60EM+0buIpBs0
+	 xk2dGqETA6m4gdoxm37WekG/7yw82X2mM6t9eb7hHOgOpkcbqRRpo1m/wxXR7dSOrG
+	 SISfWKOcCFjKA==
+From: Felipe Balbi <balbi@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Thinh Nguyen
+ <Thinh.Nguyen@synopsys.com>, linux-rockchip@lists.infradead.org, Johan
+ Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains
+ property
+In-Reply-To: <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
+References: <20221219191038.1973807-1-robh@kernel.org>
+ <87edsua5q4.fsf@balbi.sh>
+ <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
+Date: Fri, 23 Dec 2022 12:31:01 +0200
+Message-ID: <878riy9ztm.fsf@balbi.sh>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v9 2/3] dt-bindings: arm: rockchip: Add EmbedFire LubanCat
- 1
-Content-Language: en-US
-To: ty <zonyitoo@gmail.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Wenhao Cui <lasstp5011@gmail.com>
-References: <Y6UdvrhLjS0/8Oic@VM-66-53-centos>
- <9a73d8fb-8a73-f8db-2ca7-51bf67cbf659@linaro.org>
- <CAMmci2UkBVaBgYMF8JaZkL==b9-0AB90VPGK7SNdNV5w5Zyzhg@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAMmci2UkBVaBgYMF8JaZkL==b9-0AB90VPGK7SNdNV5w5Zyzhg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_021845_029745_0F1CBABE 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221223_023136_640027_993A434A 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,26 +73,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7132403156959080516=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/12/2022 10:42, ty wrote:
-> Hi, Krzysztof,
-> 
-> Sorry, we do not know the process, this is our first contribution to
-> the Linux Kernel. There is no change since the last review of this
-> file.
+--===============7132403156959080516==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
 
-So I linked you the process and explain it.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
 
-Best regards,
-Krzysztof
+Hi,
 
+Rob Herring <robh@kernel.org> writes:
+>> > The Rockchip RK3399 DWC3 node has 'power-domain' property which isn't
+>> > allowed by the schema:
+>> >
+>> > usb@fe900000: Unevaluated properties are not allowed ('power-domains' =
+was unexpected)
+>> >
+>> > Allow DWC3 nodes to have a single power-domains entry. We could instead
+>> > move the power-domains property to the parent wrapper node, but the
+>> > could be an ABI break (Linux shouldn't care). Also, we don't want to
+>> > encourage the pattern of wrapper nodes just to define resources such as
+>> > clocks, resets, power-domains, etc. when not necessary.
+>> >
+>> > Signed-off-by: Rob Herring <robh@kernel.org>
+>> > ---
+>> >  Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
+>> >  1 file changed, 3 insertions(+)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Do=
+cumentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > index 6d78048c4613..bcefd1c2410a 100644
+>> > --- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > +++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > @@ -91,6 +91,9 @@ properties:
+>> >          - usb2-phy
+>> >          - usb3-phy
+>> >
+>> > +  power-domains:
+>> > +    maxItems: 1
+>>
+>> AFAICT this can be incorrect. Also, you could have Cc the dwc3
+>> maintainer to get comments.
+>
+> When we have a user with more and know what each one is, then we can
+> extend it. All the other users (upstream), put 'power-domains' in the
+
+Won't that be an ABI break at that point? You'll change the maximum
+number of power-domains.
+
+> wrapper node. But this is what we need now for RK3399.
+>
+> I used get_maintainers.pl. If that's the wrong output, fix it please.
+
+@Thinh, perhaps you should add dwc3 binding file to the list of
+maintained files for you?
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJFBAEBCAAvFiEEg3wK/NVnD14JZqsmho6y4DXKpEQFAmOlg2URHGJhbGJpQGtl
+cm5lbC5vcmcACgkQho6y4DXKpERo4hAApZSXiZmGtrVhLB64SCqHD9+VJbt4amWz
+ePO7l7j7gpou9fF4lDUnWBaoAE1xnpv/6Hr64fq5D540UXFW0pfwV+WFMSm86fjU
+jlqErZlbMAb/0oj0E0YVBN0zA4Mi7VjWuO5Q99bEdcaBr6aBQAD2/mcODQhfWHbv
+ZPmK5psZh/yoeaQBVExyJHPi3Bi/hCpZPhVkWnfUgBEUfGMeNigXloqg0jp8+tzD
+ClgH1LBw8dW5Oa2/z63C9XLYGL0KB/gsVMMGyWUY2u2v/xqJ+sLyAPzYX1JIqJq3
+MiyKJVSGplfOBa5GSGaKehTfPwAG8Du7CP3K3+9ydU/TWw3lg/fQ5UbYRBr/Q4SC
+5S3micolyaEIWkW4XyrWgPSr/eq4A5vVZWRAqEEKvyBGKGxsZZqRkFoxzhYHd8FO
+pIkBRI/kLtIhFDkXZ5e1HvmvsGgJJcRAZfawaw8RoY6sJgkQquxgKW3ob7Aeb6jK
+seY4rLlxzDmdzlqrPyXFxVNrUNn/JW1KoY5sYfAQumBdM7PSR/xNN1NYAGJAI4on
+UpKSIuTwKgMzM6i69wioIRK0QV1y3yvTdYB/umO+YT1sCKLaRX998O2Z33i6TCTv
+LDwdv8JqXQFyIn8IecdLA9qsKsqApS67M4n+38SLyBkvttJtNGka1afH5PFJNt95
+jLwjgQSUmDI=
+=6qAf
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============7132403156959080516==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7132403156959080516==--
+
