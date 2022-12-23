@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38019C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 18:17:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4A9BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 19:39:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=W58tPa5LPlEKdDM74/gQfNK4PFKz4jM2YAkrFglvo7A=; b=0sxJu9oUb5rQi7
-	oelIpcU1fp73+38MsQwQAKQCesfsfXvaU8MwzGuiWQKOu2ZxY7abJ+4eYDMiyG2MLKNIViRTW7a/3
-	ehsw8jhml2KIr56IQU7/Bs3jAo5AJEHii6xUCP3acqueqUl/Vf4tHW4hSSa/ghM04cmLJaCjpPPjH
-	aBCIAFIe8J0UjcO3MrBbehIb5VoT2MWRRTCQAxD9850A9P7Zkp9p+HmcpACb400wcGzL7x2fK5wKE
-	1/oCt7OVR353GUWLNYrDlfwmtTKOtAxVU7cpa1RRNQUMAHsrvjM1sI88SJoHwAlQE8uteBi7eSYO3
-	7tOHXbLnJ5gJD5a4mmQQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uvbFVEqO7CvrMtK+LVA/GP02x+087jyPbBP7rK60ozk=; b=G9rdXnyje2WJ9W
+	IrC7JO1iIOiCveJKSiEyTswkwcdwan5Gpg/xegypLBu7GwhmTNJ08pkbECzkXFgeuzWoMiH+qRMoU
+	kNLMGcQLSf5cv98FL0xHAxb3R+KhAzkETnF6B2YpG3bFzYLQVCfcEvGib7st4b+t4MWuHkvi8vOpU
+	cIskdutIvFPSMdhup6/+bNOUCwOvs3wlFqyN839zYYqT162IdXXLknH96l2dTe5puxbWa7y/qK0UW
+	XqUq2A2ZOuYsw65+H6vKBt+J9+3NF2azWsf4J1HY1tS8UR4Yg/IAPb7qvzBvO3P+2Kjz6niEsCa/6
+	UTH3f0DqADLXNf2eWWHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8mbj-00AqjR-9M; Fri, 23 Dec 2022 18:17:23 +0000
+	id 1p8nsU-00BbxM-5k; Fri, 23 Dec 2022 19:38:46 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8mbZ-00AqXT-Mn
-	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 18:17:15 +0000
+	id 1p8nsR-00Bbs2-4H
+	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 19:38:45 +0000
 Received: from whitebuilder.lan (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3045D6602CDF;
-	Fri, 23 Dec 2022 18:17:04 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8DACE6602CDF;
+	Fri, 23 Dec 2022 19:38:37 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671819425;
-	bh=WtkH3zd/DfeHPZ0Re8eGGq82FSkjo7m3N6d2l6hBATE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dII6bpvdM6HM6sNU54FfXTO4/cp04kUdbmAG9Ts3HYVnzAJJVe1yPWSg4KhclwCP/
-	 AN+tcSg2VzuAXtxQwt+S7is5T+FMi161WvIRGgU2HtwDBMrfpZPCUZQ4ATlfcKM97J
-	 BA7Y8+ojbBSsHHwInjNQVy2i2XjRLoLMMPHYUqQJ9RRP+iTwSmS+bt0gThlPS5XC8B
-	 0bKPRZrKtgs8ocu9L5rLg01IZiTyvx38+pTn4BIigb32TkcIlEXUHjWIKUIz00CmRQ
-	 cPJWTeBkhH3mJj4+wD8hzFZXfKPdM8KMSMadYjXUQhtz5XkuoUK5Zs/U++DCDl6dKr
-	 M3D0sKG4/3nKA==
+	s=mail; t=1671824318;
+	bh=6GcOabw66VsX84Z/gphQUubf54+X891g3yoPH/UbEEY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=IS+eubJThqDCFvet2vxtMhCIIxaTBSisgP3jlJXdfRMboqhzqtAohn3eTY/kHiCGv
+	 bhOJc4Q9Mri0cG+gD/pNOY4Ux/uPOz1igJVblO7qQaTrE13MgZsKHWpivf72sL9JxL
+	 xXPB9WMSKho3xdK1mYz80zTPVEy1VQFrCt8cn5Vy8/a0MPZ6kgd7M1aqoEAmLlHwjW
+	 4w3r5YbiGgUg65S5lFT7bLJ9XYo9L7F4f+QYPiQ084zj3vbazndqxWfsiWmXQs+sfA
+	 ZDzp7FvKvvR0tKNEv5y1m6DEt24Hxrv5VLTq9injYmS+qg6+orM/d//pwNy8lZsU3G
+	 rqawE9lwSJHKA==
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: kernel@collabora.com,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Robert Mader <robert.mader@collabora.com>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] hantro: Fix JPEG encoder ENUM_FRMSIZE on RK3399
-Date: Fri, 23 Dec 2022 13:16:47 -0500
-Message-Id: <20221223181647.720918-1-nicolas.dufresne@collabora.com>
+Subject: [PATCH v2 1/4] media: rkvdec: Add an ops to check for decode errors
+Date: Fri, 23 Dec 2022 14:38:03 -0500
+Message-Id: <20221223193807.914935-2-nicolas.dufresne@collabora.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221223193807.914935-1-nicolas.dufresne@collabora.com>
+References: <20221223193807.914935-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_101714_047339_48F6C9FC 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20221223_113843_388881_DA09B0D7 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +78,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since 79c987de8b354, enumerating framesize on format set with "MODE_NONE"
-(any raw formats) is reporting an invalid frmsize.
+This optional internal ops allow each codec to do their own
+error status checking. The presence of an error is reported
+using the ERROR buffer state. This patch have no functional
+changes.
 
-  Size: Stepwise 0x0 - 0x0 with step 0/0
-
-Before this change, the driver would return EINVAL, which is also invalid but
-worked in GStreamer. The original intent was not to implement it, hence the
--ENOTTY return in this change. While drivers should implement ENUM_FRMSIZE for
-all formats and queues, this change is limited in scope to fix the regression.
-
-This fixes taking picture in Gnome Cheese software, or any software using
-GSteamer to encode JPEG with hardware acceleration.
-
-Fixes: 79c987de8b354 ("media: hantro: Use post processor scaling capacities")
-Reported-by: Robert Mader <robert.mader@collabora.com>
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro_v4l2.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 10 ++++++----
+ drivers/staging/media/rkvdec/rkvdec.h |  2 ++
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 2c7a805289e7b..30e650edaea8a 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -161,8 +161,11 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 	}
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 7bab7586918c1..7e76f8b728854 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -950,6 +950,7 @@ static void rkvdec_v4l2_cleanup(struct rkvdec_dev *rkvdec)
+ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
+ {
+ 	struct rkvdec_dev *rkvdec = priv;
++	struct rkvdec_ctx *ctx;
+ 	enum vb2_buffer_state state;
+ 	u32 status;
  
- 	/* For non-coded formats check if postprocessing scaling is possible */
--	if (fmt->codec_mode == HANTRO_MODE_NONE && hantro_needs_postproc(ctx, fmt)) {
--		return hanto_postproc_enum_framesizes(ctx, fsize);
-+	if (fmt->codec_mode == HANTRO_MODE_NONE) {
-+		if (hantro_needs_postproc(ctx, fmt))
-+			return hanto_postproc_enum_framesizes(ctx, fsize);
-+		else
-+			return -ENOTTY;
- 	} else if (fsize->index != 0) {
- 		vpu_debug(0, "invalid frame size index (expected 0, got %d)\n",
- 			  fsize->index);
+@@ -958,12 +959,13 @@ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
+ 		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+ 
+ 	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
+-	if (cancel_delayed_work(&rkvdec->watchdog_work)) {
+-		struct rkvdec_ctx *ctx;
++	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+ 
+-		ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
++	if (ctx->coded_fmt_desc->ops->check_error_info)
++		state = ctx->coded_fmt_desc->ops->check_error_info(ctx);
++
++	if (cancel_delayed_work(&rkvdec->watchdog_work))
+ 		rkvdec_job_finish(ctx, state);
+-	}
+ 
+ 	return IRQ_HANDLED;
+ }
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index 633335ebb9c49..4ae8e6c6b03c9 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -73,6 +73,8 @@ struct rkvdec_coded_fmt_ops {
+ 		     struct vb2_v4l2_buffer *dst_buf,
+ 		     enum vb2_buffer_state result);
+ 	int (*try_ctrl)(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl);
++	/* called from IRQ handler */
++	int (*check_error_info)(struct rkvdec_ctx *ctx);
+ };
+ 
+ struct rkvdec_coded_fmt_desc {
 -- 
 2.38.1
 
