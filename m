@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A590C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 19:39:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B1DFC4332F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Dec 2022 07:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wwWky5hMCIhiIoVv3fICNYvIW2SXUDSdWt+3u+ARsfM=; b=kteKK787eVc5yq
-	3JTHnJrmSj139pfTeMKDLOtheBTqLt4yAb3HMQ6LMGF3TtLkuL+N8NU6fOrZ1QK5r4D7LQstDIdQS
-	yEje1AuJm6H9ggFWpDpFskBmSjcoiwbhxkS6VDo0pcXw3gwmPyjhErR3gOdOFk4L2bPkmlimA2apx
-	iyP44zl1H2wJjyZptTDk1sPN8n16SmYQST+MUdYoB6x3rZG01eHwRoPoEG0WIpORQR6o1X249ybQr
-	A9wGeZsDFsppgvq9K4cbpEpgJ3BcOJbIbvl4CVa/WXgXSFqRZHn1dTOKcGM++4pmafXM/bcKyM3WY
-	aAnjennskaiMTM7O2WkA==;
+	List-Owner; bh=BLxDuoIkrqji6Xml3UqXHiWJFy/naHYD9/+275Phyh0=; b=dbydoEj/Ck9stH
+	AkXgtAc2z0dHXIVTjoyInkATPeTGc0SV2nKNihKIjRBwyN6tLVT5lpQLe2/yQB3vOBifmdj12sj5v
+	Ymz+0aJuLR+vg1hunPv2hhEJK+yHuh1mfDKYkDZHS1+m6PuMFfZrOBZFgslSL/ayAQCjl1BV/1ovg
+	mztPZlH07nRC3U+p5W2AWLQlxRX0culvXNfCPfH+MTonLac7hr+TY44yuzIWhHE2EwDkhcEs3Vh6+
+	YtBHvGVYi3tc5uWd1odxSmfTi1A0Ll8rPHXCYEllzUc++IFq8ixg7VHpeh3/wEQXY3yK3zpx/dILT
+	esloXEgZJS+MvsfsAskA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8nsn-00BcD9-WA; Fri, 23 Dec 2022 19:39:06 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p8yxq-00FzBt-HA; Sat, 24 Dec 2022 07:29:02 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8nsb-00Bc2L-AC
-	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 19:38:55 +0000
-Received: from whitebuilder.lan (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	id 1p8rGs-00CuhR-CM; Fri, 23 Dec 2022 23:16:11 +0000
+Received: from [IPv6:2804:14d:72b4:8284:32a8:8167:f815:2895] (unknown [IPv6:2804:14d:72b4:8284:32a8:8167:f815:2895])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E6C796602CE5;
-	Fri, 23 Dec 2022 19:38:50 +0000 (GMT)
+	(Authenticated sender: dwlsalmeida)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9D9A86602BF9;
+	Fri, 23 Dec 2022 23:15:50 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671824332;
-	bh=fXOPvXl0JOMyURiqQQPd1PF09aMzIcFs5inRLfk9f9o=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GWTCg0alf1806OLDZ4WCJibqI95k1TsKq7o1DNvW6mPCYpqhIlu8RIoxRs9XR9f+C
-	 OHsHYF+DuO1oNWGBXL2XM3Xmqxai93VGFR63li+19GVTo1S3oLYHKy6duWJ0cmLct0
-	 bNaI/Mw81qug8iC765jeLYwfd1hMFYt5Kx80l/dZpgpA7Wbg5dDeucKaVKVDKz58CM
-	 i/olo3EGP90W3KC+j+5UCea8vuF2xy9ubRN0Fq0w/10Tw3gO5d26ktS8DHueVG9AW6
-	 7cH0K7jZnjyR2Hky7fnnwEWux2WpxFZC/AgakvUunSvjMrYP8tvRoEzjtygLHf9ZGN
-	 KJFS5wOhCEESw==
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: kernel@collabora.com,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/4] rkvdec: Improve error handling
-Date: Fri, 23 Dec 2022 14:38:06 -0500
-Message-Id: <20221223193807.914935-5-nicolas.dufresne@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221223193807.914935-1-nicolas.dufresne@collabora.com>
-References: <20221223193807.914935-1-nicolas.dufresne@collabora.com>
+	s=mail; t=1671837354;
+	bh=CAp1gtyw+Vjt15RCYF5T8+05xn1NEUQ8J9Mvv1bxvTQ=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=F/DKa+h9/h+/rHhv0HRwLqhtF4tYj8CbJh0nwYfVkatN3bJKVJgTTigMsaxtG4oLc
+	 OUOhvBOgigNj4vvwx9GxfOz+aFaJCVL845ZMeDkLBjfTu7FCQn1FTfYvaAijaNUyqA
+	 GL95kWiwUHU9+uEcDcBogAsXUM1FJ0/WgjOJb+40qUD/IGhw606vick8EW8xPc4Dbw
+	 gHyI97gKK/CxMBdXaCn0y2tiGQrAQEK6bqz+O2c1mt7Vz8R2UKKm3su8mnG5cikrOx
+	 h17IY4rxSHqYb01cjz8Kk0txGV77LcI8vyCl6Ig/Pk/BKxkHLi8H5qd0kP0AfyHotr
+	 H4XKBflOoDKuQ==
+Message-ID: <cb95838c835aa91cd69e7067c8a3b747f89d2e95.camel@collabora.com>
+Subject: Re: [PATCH v1 7/9] media: verisilicon: Add Rockchip AV1 decoder
+From: Daniel Almeida <daniel.almeida@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nicolas Dufresne
+ <nicolas@ndufresne.ca>, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de,  mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org,  heiko@sntech.de,
+ nicolas.dufresne@collabora.co.uk
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Date: Fri, 23 Dec 2022 20:15:38 -0300
+In-Reply-To: <d7025e7e-246f-a7f4-f0b5-d1290a38a96c@collabora.com>
+References: <20221219155616.848690-1-benjamin.gaignard@collabora.com>
+	 <20221219155616.848690-8-benjamin.gaignard@collabora.com>
+	 <092f76873a914c52c5157a21401be6cf78e3f188.camel@ndufresne.ca>
+	 <be1ff517-765d-c97f-8cce-3f359cd0015c@collabora.com>
+	 <4afdce546b2f10cf97e12f8325232483efeea1ce.camel@ndufresne.ca>
+	 <d7025e7e-246f-a7f4-f0b5-d1290a38a96c@collabora.com>
+User-Agent: Evolution 3.46.2 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_113853_529066_63379BE6 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20221223_151610_595348_3D2C8C1C 
+X-CRM114-Status: UNSURE (   6.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,73 +82,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are two ways decoding errors can occure. In one case, the ready
-status is not set and nothing has been written into the destination,
-while in the other case, the buffer is written but may contain a
-certain amount of errors. In order to differentiate these, we set
-the payload for the first case to 0.
+> > +	int cur_offset[V4L2_AV1_NUM_REF_FRAMES - 1];
+> > +	int cur_roffset[V4L2_AV1_NUM_REF_FRAMES - 1];
+> 
+> This looks like V4L2_AV1_REFS_PER_FRAME. Daniel, should be remove
+> this
+> V4L2_AV1_NUM_REF_FRAMES ? Its redundant with
+> V4L2_AV1_TOTAL_REFS_PER_FRAME ...
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- drivers/staging/media/rkvdec/rkvdec.c | 31 +++++++++++++++++++++++----
- 1 file changed, 27 insertions(+), 4 deletions(-)
+Hi. These are different. NUM_REF_FRAMES is the size of the "DPB" while
+TOTAL_REFS_PER_FRAME is the maximum number of references a frame can
+use. It just so happens that in AV1 these two are close in absolute
+value (i.e. 7 vs 8).
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 7e76f8b728854..11e2bbb20aea1 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -27,6 +27,9 @@
- #include "rkvdec.h"
- #include "rkvdec-regs.h"
- 
-+static int debug;
-+module_param(debug, int, 0644);
-+
- static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
- {
- 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-@@ -954,14 +957,34 @@ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
- 	enum vb2_buffer_state state;
- 	u32 status;
- 
-+	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
- 	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	state = (status & RKVDEC_RDY_STA) ?
--		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-+
-+	if (!(status & RKVDEC_RDY_STA)) {
-+		struct vb2_v4l2_buffer *dst_buf = NULL;
-+
-+		if (status & RKVDEC_TIMEOUT_STA)
-+			v4l2_dbg(debug, 1, &rkvdec->v4l2_dev,
-+				 "Decoder stopped due to an internal timeout.");
-+		else
-+			v4l2_dbg(debug, 1, &rkvdec->v4l2_dev,
-+				 "Decoder stopped due to an internal error.");
-+
-+		/*
-+		 * When this happens, the buffer is left unmodified. As it
-+		 * contains no meaningful data we mark is as empty.
-+		 */
-+		dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
-+		state = VB2_BUF_STATE_ERROR;
-+	} else {
-+		state = VB2_BUF_STATE_DONE;
-+	}
- 
- 	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
- 
--	if (ctx->coded_fmt_desc->ops->check_error_info)
-+	if (ctx->coded_fmt_desc->ops->check_error_info &&
-+	    state == VB2_BUF_STATE_DONE)
- 		state = ctx->coded_fmt_desc->ops->check_error_info(ctx);
- 
- 	if (cancel_delayed_work(&rkvdec->watchdog_work))
--- 
-2.38.1
+Using VP9 as a comparison, the DPB size is still 8, but REFS_PER_FRAME
+is 3 (meaning a frame can specificy LAST, GOLDEN and ALTREF values).
 
+As this is per spec and a mere convenience, I vote for keeping it. 
+
+-- Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
