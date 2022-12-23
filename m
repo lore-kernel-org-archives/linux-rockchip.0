@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DBFC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 11:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D325C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 13:26:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kW80WoVXPC+zJHGseU1sxD/TKegTV8kOiUiGqERpsLI=; b=NHB434AfChU/CM
-	Xy3W2ezpVZS+rrV8bgttx8Iu9uYa7HmXhHktxuoPzEOTI/2T9nroyPkFrnZOAdeOQcOsJOhIqv9An
-	klNlDgawt6eZdiB68mnBF7dOqWQtWz9cJ3PoEr9BLUw15SoglNxhGFsqYpV3BQ5cKNoz1hpYaZu99
-	onFxT2EAaofgXzOdb61n0y1ScrO4wfoHuwlzj9wle+uIMcQjfVWNQ9YQ4E3DtEwZksGu2ofi9OsZV
-	5UdX45EWmS7unYqtZr5k3UcG4vuwwZyVe4Li3uLFI313hc0lCcFperZ3Z9NrJDVKvdKSWrETe2g3l
-	Ty1ncRQuenRV1nFPUGUw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QCv6zsU7n4B5b2O2Y8mCvT/QiVE77ENSNwa+BPQ2MeI=; b=sWsze2v50wFcNb
+	QDTrxSjK/MgkSQ1HfcIkhyojgC1eygD5Hj1eGmKcomFR81+2Eg0pCP38+uWK6qU9Ut9+aO0xTGvHo
+	CfsK8DV0UnsVJQZuN3mQiMq2pC+wLBmNNkbO9/SBg+wegCGlu43RAllPtMBO4UetjR8Tfeuttl/k0
+	drmU0YPyPASB0nLhG/NbbLK2hmH9LzJmvOmIUTx1EatekkqSKWTsInrxclB7mbcBnymV8f4BwftaX
+	+71tW/q/+LanydgrDp59gbCRvR+eeYk7wMByboYI7zfIbmo1pWusIBlpEbRBBJ+DZH7twxOeMdwPO
+	JpLbrdjphJAwSMy/V0aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8ftO-006sIh-Rb; Fri, 23 Dec 2022 11:07:10 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1p8i3q-008NkN-C3; Fri, 23 Dec 2022 13:26:06 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8ftH-006s6L-Jw
-	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 11:07:05 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id y25so6670035lfa.9
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Dec 2022 03:07:00 -0800 (PST)
+	id 1p8i3Y-008Nbt-Vb
+	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 13:25:51 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id o8-20020a17090a9f8800b00223de0364beso8811492pjp.4
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Dec 2022 05:25:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/hMsumwP6KT2UUsGNA6AWGptXKAy5xS1cl3T0zVPx0k=;
-        b=HJDOnXZy6oV7VlYeiWa5i593GbfluXa8NJ9ZMW0y3hQjI3oD/hX3sWxM5VylTJ7NrW
-         K5+EBpnqltpOFjqy7Q7+LqOQ3VqZ/w7MWTSWrtXKoWUq/cDpHnARxs8Uv1wrAggY5fZW
-         0wd/9wHzMU7sba7o45yGLFFCk169BUU153qyrM2CwuYn3GVFI6Us2CVnJ06v1hEHMb5z
-         n5Wxc5lOfoEdMmtuN/FWh33xFSI0oAk2i8jN21x55VOH3v3rjw4I95dnkJAMliXvTm5d
-         tKYcul2403olv7t1rK/bx2e8pgJzy95YzexHV0nmXNDM6CBHRiCUrCLY1vzLeiz9MQWe
-         UlpA==
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=wundbcH2g9xN6/PVxd6vNLcmcPbSkSP9WqIdH+1twe8=;
+        b=3YYEJ6fsDDNLI6BSPUn9UAVpJ3cm8A8yF4bM3GKpdiztut/6kkMEIugr9asK8oqPwb
+         7col/iMpBEqJSKt1RV5xgrw3gOOwdqKXQtzhOngDvel74k9wZsQy+GIf2LNHMTlZuBZd
+         W1e7SvML5sc7KGk7DhlhvdenKHckc8FWOIP+hSbcb7zAYvzLJw2NDAHf94/UuZAqcxZv
+         YbAAevXIsrWLjuQ+YIbIqZwXqjY636/jjUSKwYaB42cLTgLa3SgAaJGXWx7YRmAkRGfC
+         SnYmpbQUXDkrX55LIpOKGX/mCUuPXDk0loPoKSkPDQkDwXSzocet1Qz1rosrrnbqnEVK
+         TwGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/hMsumwP6KT2UUsGNA6AWGptXKAy5xS1cl3T0zVPx0k=;
-        b=CvhaX8Pf+NO/ah84kCJV5UeNLKo9bnF8j3R0LdUCkQPJx0/Jmf63QCcjeGAoi4yP8F
-         OnxBEtWHdbCAWBANvB4wv8fQppivq9+4GsusE0+JnLFQBvJrHF8zi95dheMvHGXo5akG
-         3h2IwvxhKRj7vH/+QFWaTGdAOaLbSSM0MsIpNYKgZ8PVXX1+9RIHkiC+S95KIy0/TMZh
-         C++nf5w8J+XqTvmZg7hS+LWdHxRLO7JoQanws+234AZ206cO/unRG41poq3gnsNU7qS7
-         bGTqWk1DnkU9tzKoFr8olphSfAVk/kv+8fZnf1Tg9HpvHHSvCrJ/ziR8Z2ITGNeO5gr1
-         /kgQ==
-X-Gm-Message-State: AFqh2koDEeB9CJ2+BQTs65Fk1UxipJkBGOGz/EUMraubZx7wb/R8PHyP
-	Ex5h5qz2kV9Hj178W/JqAMzw9Q==
-X-Google-Smtp-Source: AMrXdXuiXxUqsVNqsObnU18wuXFBsbf9EZVBefCEZpE/VJxhS6U9Xl25fzkp53euOGSKLfCyH3rPfg==
-X-Received: by 2002:a05:6512:602:b0:4c4:6a8e:30 with SMTP id b2-20020a056512060200b004c46a8e0030mr2558660lfe.30.1671793619322;
-        Fri, 23 Dec 2022 03:06:59 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id y11-20020a19750b000000b004b4b0a68f67sm478401lfe.185.2022.12.23.03.06.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Dec 2022 03:06:58 -0800 (PST)
-Message-ID: <10750c3f-016d-905d-9c04-e41cd9248dd4@linaro.org>
-Date: Fri, 23 Dec 2022 12:06:57 +0100
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wundbcH2g9xN6/PVxd6vNLcmcPbSkSP9WqIdH+1twe8=;
+        b=193j3xEGGkHBXe449mD0unSWLjjwx+JJUjfh2jIY9a7b9zyquEKofQR82grAY6wd2x
+         t+byJn/blOU0u6A440hv7NaMdcW3RZuYPWWEEUbZSL+1XGXHZAXTPzMtpFjUR0gCwkka
+         9D/LzY4nypevIsyJnVMM/2XgZiIrvEQ3Zzfh04SYcOvn4ZMnZu6inEYo1ljQCMJR4KTT
+         R5Jxn+bstghkcuc4b3QxKa9zNfMiwWzJP2vv5pvkbkzLUj/OQNKhNI7Yx8C8fEeimsRm
+         G1q6i6wWERlsSCOSaIDNpgMeDs+iemlMDKlpVY+JqhZcvIBOMph+zQ/StreQsrA48Lqv
+         Z5aQ==
+X-Gm-Message-State: AFqh2krpmF4r0CjqTsqFC7c/KwE80ANmGS/YeILCSbLCAEMGGQ2j9eHx
+	+gKyIVO2QHmckWoc8mAwubnzYg==
+X-Google-Smtp-Source: AMrXdXupbRVLFT1bwpmjESvCYz8d60hQsjaf+PgnNKc51oTZ642XvF1P0pE3Ipqp5xf+VO1u+RWjnA==
+X-Received: by 2002:a05:6a21:6da2:b0:b2:56ba:63ee with SMTP id wl34-20020a056a216da200b000b256ba63eemr14967634pzb.24.1671801946506;
+        Fri, 23 Dec 2022 05:25:46 -0800 (PST)
+Received: from archl-hc1b.. ([45.112.3.26])
+        by smtp.gmail.com with ESMTPSA id m3-20020a635803000000b0047681fa88d1sm1308587pgb.53.2022.12.23.05.25.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Dec 2022 05:25:46 -0800 (PST)
+From: Anand Moon <anand@edgeble.ai>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>
+Cc: Anand Moon <anand@edgeble.ai>,
+	Jagan Teki <jagan@edgeble.ai>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCHv1 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix rv1126 compatible warning
+Date: Fri, 23 Dec 2022 13:22:30 +0000
+Message-Id: <20221223132235.16149-1-anand@edgeble.ai>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains
- property
-To: Felipe Balbi <balbi@kernel.org>, Rob Herring <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
- linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20221219191038.1973807-1-robh@kernel.org>
- <87edsua5q4.fsf@balbi.sh>
- <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
- <878riy9ztm.fsf@balbi.sh>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <878riy9ztm.fsf@balbi.sh>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_030703_754653_270C5D81 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20221223_052549_275841_825A0803 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,54 +99,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/12/2022 11:31, Felipe Balbi wrote:
-> 
-> Hi,
-> 
-> Rob Herring <robh@kernel.org> writes:
->>>> The Rockchip RK3399 DWC3 node has 'power-domain' property which isn't
->>>> allowed by the schema:
->>>>
->>>> usb@fe900000: Unevaluated properties are not allowed ('power-domains' was unexpected)
->>>>
->>>> Allow DWC3 nodes to have a single power-domains entry. We could instead
->>>> move the power-domains property to the parent wrapper node, but the
->>>> could be an ABI break (Linux shouldn't care). Also, we don't want to
->>>> encourage the pattern of wrapper nodes just to define resources such as
->>>> clocks, resets, power-domains, etc. when not necessary.
->>>>
->>>> Signed-off-by: Rob Herring <robh@kernel.org>
->>>> ---
->>>>  Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
->>>>  1 file changed, 3 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
->>>> index 6d78048c4613..bcefd1c2410a 100644
->>>> --- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
->>>> +++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
->>>> @@ -91,6 +91,9 @@ properties:
->>>>          - usb2-phy
->>>>          - usb3-phy
->>>>
->>>> +  power-domains:
->>>> +    maxItems: 1
->>>
->>> AFAICT this can be incorrect. Also, you could have Cc the dwc3
->>> maintainer to get comments.
->>
->> When we have a user with more and know what each one is, then we can
->> extend it. All the other users (upstream), put 'power-domains' in the
-> 
-> Won't that be an ABI break at that point? You'll change the maximum
-> number of power-domains.
+Fix compatible string for RV1126 gmac, and constrain it to
+be compatible with Synopsys dwmac 4.20a.
 
-Usually extending properties (in flexible way) is not an ABI break. What
-would be broken here if it becomes three at some point? Does Linux or
-other SW depends now on this being equal to 1?
+fix below warning
+arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
+		 compatible: 'oneOf' conditional failed, one must be fixed:
+        ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
+        'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
 
+Signed-off-by: Anand Moon <anand@edgeble.ai>
+Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+---
+ Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 42fb72b6909d..04936632fcbb 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -49,11 +49,11 @@ properties:
+               - rockchip,rk3368-gmac
+               - rockchip,rk3399-gmac
+               - rockchip,rv1108-gmac
+-              - rockchip,rv1126-gmac
+       - items:
+           - enum:
+               - rockchip,rk3568-gmac
+               - rockchip,rk3588-gmac
++              - rockchip,rv1126-gmac
+           - const: snps,dwmac-4.20a
+ 
+   clocks:
+-- 
+2.39.0
 
 
 _______________________________________________
