@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3584C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 10:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DBFC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Dec 2022 11:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+OKF/m9TnQxR4k74E9R4sYw7oU+WtTYD2Sst7crp+Sc=; b=3jfabjOyXithiY
-	b3DpTod9tJIu94HZ+Js0MJj7tW737Y0OwvCpLZvQJDXo6uE0WuO4JC6nn7HZYU6p45WQTRPbpThM6
-	wwdzMh+ma6Sj/wXJlavW4oz+CKW8vfbpGtRE6lKY1zjxmOwC9IHeg+EEKPyTMkQFF4N55l+a1foH6
-	CqhfFBnEctacMukES6qYiynrAo3Mm/8GWBknV/VOBIRyQ17bIZwAig6yS6ox1tQoa24kpK6LJFYKS
-	n0LSpR63FqMYUdTbp3hm8mbbdrjtF+UE64+x0foPTqcWbgcALuntBPbEYmuEUFVpsCsDqsOhJH2nH
-	UkRFznfDUt8dFi8dQKVA==;
+	List-Owner; bh=kW80WoVXPC+zJHGseU1sxD/TKegTV8kOiUiGqERpsLI=; b=NHB434AfChU/CM
+	Xy3W2ezpVZS+rrV8bgttx8Iu9uYa7HmXhHktxuoPzEOTI/2T9nroyPkFrnZOAdeOQcOsJOhIqv9An
+	klNlDgawt6eZdiB68mnBF7dOqWQtWz9cJ3PoEr9BLUw15SoglNxhGFsqYpV3BQ5cKNoz1hpYaZu99
+	onFxT2EAaofgXzOdb61n0y1ScrO4wfoHuwlzj9wle+uIMcQjfVWNQ9YQ4E3DtEwZksGu2ofi9OsZV
+	5UdX45EWmS7unYqtZr5k3UcG4vuwwZyVe4Li3uLFI313hc0lCcFperZ3Z9NrJDVKvdKSWrETe2g3l
+	Ty1ncRQuenRV1nFPUGUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8fjx-006jxh-JY; Fri, 23 Dec 2022 10:57:25 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1p8ftO-006sIh-Rb; Fri, 23 Dec 2022 11:07:10 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8fjg-006je4-7U; Fri, 23 Dec 2022 10:57:09 +0000
-Received: by mail-qk1-x731.google.com with SMTP id f28so2212135qkh.10;
-        Fri, 23 Dec 2022 02:57:03 -0800 (PST)
+	id 1p8ftH-006s6L-Jw
+	for linux-rockchip@lists.infradead.org; Fri, 23 Dec 2022 11:07:05 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id y25so6670035lfa.9
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Dec 2022 03:07:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WW+LCcAtlGnRQKKQ3bVeCpYjp1F+jYu+AIxRn9diqUs=;
-        b=MMOaugASq3E4MFvLrio0/ZW1VXQCotOLhNNAUOPPmGgVnRfnS8C4yF8PmSsxDhKLny
-         H7LrIAdIBSfPESmusfMvHeWuaEF9VK+k7w5BFX4NhpxQJ/s/O9AkXuK56+tdIJ1UmOjr
-         e95LjXVsPaOUviXdvosRdXvXC96/lR41+XPdv+qoyuAGqoCbrw4lKIxW+JsI+U8QxHwm
-         RdfyDN8OuGp/YJumggdpg9EvwpSmDNhYJcn+i3uDL2Ma99y5/d7PS/+RmwFJcLNQd6F5
-         pN8Jy9evlPN3T+MMZ1OTJ8MXKCkY3Syii6nrulUnX4sESX1wu6g5cHBYS4q86AiAw2od
-         mQdQ==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/hMsumwP6KT2UUsGNA6AWGptXKAy5xS1cl3T0zVPx0k=;
+        b=HJDOnXZy6oV7VlYeiWa5i593GbfluXa8NJ9ZMW0y3hQjI3oD/hX3sWxM5VylTJ7NrW
+         K5+EBpnqltpOFjqy7Q7+LqOQ3VqZ/w7MWTSWrtXKoWUq/cDpHnARxs8Uv1wrAggY5fZW
+         0wd/9wHzMU7sba7o45yGLFFCk169BUU153qyrM2CwuYn3GVFI6Us2CVnJ06v1hEHMb5z
+         n5Wxc5lOfoEdMmtuN/FWh33xFSI0oAk2i8jN21x55VOH3v3rjw4I95dnkJAMliXvTm5d
+         tKYcul2403olv7t1rK/bx2e8pgJzy95YzexHV0nmXNDM6CBHRiCUrCLY1vzLeiz9MQWe
+         UlpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WW+LCcAtlGnRQKKQ3bVeCpYjp1F+jYu+AIxRn9diqUs=;
-        b=UT6FbRRmO2Ybol3KM98asRZBRv8hBmP+LSDz1NOA08lL9Z9++CrTjhp4VGWaakgK3V
-         0wwQ9HUr0TZSUD7p4aCAm5rhbGHXWRQp6PGNVmXSeR2eBDPP07ETt22fswCYARA/hBVa
-         xwq5yAf/XqTY7/oQosm+IAF56zzS3Ap5i/vgb3eRE9KPPkRwhJNmJgt7sCSx4PbcgdEz
-         ZaEBrVNXsJHt/TQjJwSRoZGKL3ga8NhQ2qWPFk2RA5mIjogggi266UkvCkbzfRP7jJWL
-         N8n0jMOFnCSBBRqxwwQf0VpXQcGTUEoaYMgygQOPj2QIzGIHrplXNPjcukhVESwjYBo8
-         fbVg==
-X-Gm-Message-State: AFqh2kqIuD4l4tpMQw3QDH+j4ia3v9IrM2ekPcu1VDImJ++wghz7CBqj
-	SHg6ZXGfCuHlkHZhTJresIndgPANrMcRLAnk6BVXG7XI+KxYTndCR5M=
-X-Google-Smtp-Source: AMrXdXs3OQEmrbpBSV9ypraWiPlBrwwNdX2kuAZfYaCPRX7BNnG+oSFP9+O8PP+2MoKDXqmAbzfgt4zhO6vH0kOCrSM=
-X-Received: by 2002:a05:620a:8cf:b0:702:219a:130d with SMTP id
- z15-20020a05620a08cf00b00702219a130dmr411267qkz.407.1671793022215; Fri, 23
- Dec 2022 02:57:02 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/hMsumwP6KT2UUsGNA6AWGptXKAy5xS1cl3T0zVPx0k=;
+        b=CvhaX8Pf+NO/ah84kCJV5UeNLKo9bnF8j3R0LdUCkQPJx0/Jmf63QCcjeGAoi4yP8F
+         OnxBEtWHdbCAWBANvB4wv8fQppivq9+4GsusE0+JnLFQBvJrHF8zi95dheMvHGXo5akG
+         3h2IwvxhKRj7vH/+QFWaTGdAOaLbSSM0MsIpNYKgZ8PVXX1+9RIHkiC+S95KIy0/TMZh
+         C++nf5w8J+XqTvmZg7hS+LWdHxRLO7JoQanws+234AZ206cO/unRG41poq3gnsNU7qS7
+         bGTqWk1DnkU9tzKoFr8olphSfAVk/kv+8fZnf1Tg9HpvHHSvCrJ/ziR8Z2ITGNeO5gr1
+         /kgQ==
+X-Gm-Message-State: AFqh2koDEeB9CJ2+BQTs65Fk1UxipJkBGOGz/EUMraubZx7wb/R8PHyP
+	Ex5h5qz2kV9Hj178W/JqAMzw9Q==
+X-Google-Smtp-Source: AMrXdXuiXxUqsVNqsObnU18wuXFBsbf9EZVBefCEZpE/VJxhS6U9Xl25fzkp53euOGSKLfCyH3rPfg==
+X-Received: by 2002:a05:6512:602:b0:4c4:6a8e:30 with SMTP id b2-20020a056512060200b004c46a8e0030mr2558660lfe.30.1671793619322;
+        Fri, 23 Dec 2022 03:06:59 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id y11-20020a19750b000000b004b4b0a68f67sm478401lfe.185.2022.12.23.03.06.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Dec 2022 03:06:58 -0800 (PST)
+Message-ID: <10750c3f-016d-905d-9c04-e41cd9248dd4@linaro.org>
+Date: Fri, 23 Dec 2022 12:06:57 +0100
 MIME-Version: 1.0
-References: <Y6UdvrhLjS0/8Oic@VM-66-53-centos> <9a73d8fb-8a73-f8db-2ca7-51bf67cbf659@linaro.org>
- <CAMmci2UkBVaBgYMF8JaZkL==b9-0AB90VPGK7SNdNV5w5Zyzhg@mail.gmail.com> <62e62d16-aa18-4487-db98-d767f1f9d438@linaro.org>
-In-Reply-To: <62e62d16-aa18-4487-db98-d767f1f9d438@linaro.org>
-From: ty <zonyitoo@gmail.com>
-Date: Fri, 23 Dec 2022 18:56:50 +0800
-Message-ID: <CAMmci2UPxbu_nMJyqz5q_3Efw-gHawEbzBPkMyW7cGqMf0f-SA@mail.gmail.com>
-Subject: Re: [PATCH v9 2/3] dt-bindings: arm: rockchip: Add EmbedFire LubanCat 1
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, Wenhao Cui <lasstp5011@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains
+ property
+To: Felipe Balbi <balbi@kernel.org>, Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+ linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20221219191038.1973807-1-robh@kernel.org>
+ <87edsua5q4.fsf@balbi.sh>
+ <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
+ <878riy9ztm.fsf@balbi.sh>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <878riy9ztm.fsf@balbi.sh>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_025708_325579_43D0A783 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20221223_030703_754653_270C5D81 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,21 +96,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-R290IGl0LiAyLzMgYW5kIDMvMyB3aWxsIGhhdmUgdGhlIEFja2VkLUJ5IGxpbmUgaW4gdGhlIG5l
-eHQgUEFUQ0ggdmVyc2lvbi4KCk1heSBJIGFzayB3aGV0aGVyIHRoZXJlIGFyZSBhbnkgY2hhbmdl
-cyByZXF1aXJlZCBpbiBbUEFUQ0ggdjkgMS8zXT8KCktyenlzenRvZiBLb3psb3dza2kgPGtyenlz
-enRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4g5LqOMjAyMuW5tDEy5pyIMjPml6XlkajkupQgMTg6
-MTjlhpnpgZPvvJoKPgo+IE9uIDIzLzEyLzIwMjIgMTA6NDIsIHR5IHdyb3RlOgo+ID4gSGksIEty
-enlzenRvZiwKPiA+Cj4gPiBTb3JyeSwgd2UgZG8gbm90IGtub3cgdGhlIHByb2Nlc3MsIHRoaXMg
-aXMgb3VyIGZpcnN0IGNvbnRyaWJ1dGlvbiB0bwo+ID4gdGhlIExpbnV4IEtlcm5lbC4gVGhlcmUg
-aXMgbm8gY2hhbmdlIHNpbmNlIHRoZSBsYXN0IHJldmlldyBvZiB0aGlzCj4gPiBmaWxlLgo+Cj4g
-U28gSSBsaW5rZWQgeW91IHRoZSBwcm9jZXNzIGFuZCBleHBsYWluIGl0Lgo+Cj4KPiBCZXN0IHJl
-Z2FyZHMsCj4gS3J6eXN6dG9mCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On 23/12/2022 11:31, Felipe Balbi wrote:
+> 
+> Hi,
+> 
+> Rob Herring <robh@kernel.org> writes:
+>>>> The Rockchip RK3399 DWC3 node has 'power-domain' property which isn't
+>>>> allowed by the schema:
+>>>>
+>>>> usb@fe900000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+>>>>
+>>>> Allow DWC3 nodes to have a single power-domains entry. We could instead
+>>>> move the power-domains property to the parent wrapper node, but the
+>>>> could be an ABI break (Linux shouldn't care). Also, we don't want to
+>>>> encourage the pattern of wrapper nodes just to define resources such as
+>>>> clocks, resets, power-domains, etc. when not necessary.
+>>>>
+>>>> Signed-off-by: Rob Herring <robh@kernel.org>
+>>>> ---
+>>>>  Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
+>>>>  1 file changed, 3 insertions(+)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>>>> index 6d78048c4613..bcefd1c2410a 100644
+>>>> --- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>>>> +++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>>>> @@ -91,6 +91,9 @@ properties:
+>>>>          - usb2-phy
+>>>>          - usb3-phy
+>>>>
+>>>> +  power-domains:
+>>>> +    maxItems: 1
+>>>
+>>> AFAICT this can be incorrect. Also, you could have Cc the dwc3
+>>> maintainer to get comments.
+>>
+>> When we have a user with more and know what each one is, then we can
+>> extend it. All the other users (upstream), put 'power-domains' in the
+> 
+> Won't that be an ABI break at that point? You'll change the maximum
+> number of power-domains.
+
+Usually extending properties (in flexible way) is not an ABI break. What
+would be broken here if it becomes three at some point? Does Linux or
+other SW depends now on this being equal to 1?
+
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
