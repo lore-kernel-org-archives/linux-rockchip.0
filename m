@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DDBBC4332F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Dec 2022 13:13:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C73C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Dec 2022 17:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dp4IZTsm9kLSeAAZKRFxGaxrWSMuvN1Xfy/TmU3uq3U=; b=WNpWO1nwR2ykDH
-	6CPx9tkPp/pHASlt1v4GskYuoWrRYeKGF3Gzrdhjbi/ifQwAPQhpFMUC74H02cdTFqFTdGPY3qpoS
-	/NH7LR4KKvVGHGWnW03PeQaYPBrm+G8kA1XaXjtdLAZXItYCWTPrr/9wwsHkum0asPMAe8PvJGM2g
-	ogwAyG6NtN1IKkdkmTnqZDci6A7M10E9KLdcD4ExkHT304fQoN9q/36RlZdk1gxuhvf+K4z7dd9qT
-	rREG6ymIzwanq4MhrCV15+JJ0JIDhSGXZdnGw8oVc1hMJB4+1HWhAhLDMZa/2W9X9ne6JhdZ5cnGR
-	XW0JlaAaVNkSODTKrC6Q==;
+	List-Owner; bh=Z559FNeWNKSWyI0U4pFjdvLxEMdYmXSLBnrSD7Frn8k=; b=pk3AXQ6HIyBc4I
+	oqnSUvs5HLtU6WQGOf+clKKNxwPxIoCR8PxMgUUUAZfM3+QgNKArkwY6Zb314NoPRk6yi1t9ZdcPF
+	KrTxAAhU+8eBiECtalqYZPt4phIil2naw+OIl+IUZSfqeYTiNggGbTf5y6pvCLcLXCsCj07iesujh
+	APYDC+QpBS/udKVgjWnQAnurp/hAcmEUbZKiu0jhHYISNw5xvNtusLDYHxO6L5Ef1xqRg4gafGyio
+	GBInEBJ/y7/X9MX9lAz4eEVlYCLm5IrxjLdCNRHNu0y6SRrb6Fnf32/dZiIfZQzjIMQitSvXQ0m32
+	a7B8KLKMZ95dIffeOQQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p94LC-00HP3X-Hz; Sat, 24 Dec 2022 13:13:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p98HC-0020Qx-9Y; Sat, 24 Dec 2022 17:25:38 +0000
+Received: from mail-yb1-f172.google.com ([209.85.219.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8zVm-00GHLe-D7
-	for linux-rockchip@lists.infradead.org; Sat, 24 Dec 2022 08:04:44 +0000
-Received: from [IPV6:2a01:e0a:120:3210:9071:5495:b8e6:e417] (unknown [IPv6:2a01:e0a:120:3210:9071:5495:b8e6:e417])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 116216602CE4;
-	Sat, 24 Dec 2022 08:04:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671869041;
-	bh=gwiI8vPLAipPEAg6suP/Gdgsidzj+89aU3MlnmFb6CI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fudwGN1x/TMpFiYZC3wdz3auwHOAy9z/AbFYWiGILCgmSIFO6lQOvhTqFGHu54D2B
-	 h84fruUR8owRI43OQx6xmLr4ss9+Me0O0gZvTrdMzrCffz4E9BSk7O/oqC4NcrfqUl
-	 9g6EtkBgY8cDBaBhQFtXdElBNrb7GgV7jjEdK3UsJb5ttPf/WMmOwNlZ29swZIgSVC
-	 wQyz25uUHNahL5Ov0ONvcQ+4ESsyaR5R9HyHvme7OC5PLS9XT/Lu5MsN9iw+Ec6quZ
-	 z3gBAL+AZtV8DAuaXhH7HLL8yjag6NxFPdVST6ntOkMUEEN8NWDsFCAjDMcdq846hM
-	 5qEtr/gIrZjtA==
-Message-ID: <8d13ffb9-74cb-00f9-072a-0614e341e1ef@collabora.com>
-Date: Sat, 24 Dec 2022 09:03:59 +0100
+	id 1p95Wx-000Yx2-UK
+	for linux-rockchip@lists.infradead.org; Sat, 24 Dec 2022 14:30:31 +0000
+Received: by mail-yb1-f172.google.com with SMTP id 203so7891370yby.10
+        for <linux-rockchip@lists.infradead.org>; Sat, 24 Dec 2022 06:29:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=mbcutGH6OL7LuSP42at3fK5Z1YIFoEUC0KBJRJ/ehLg=;
+        b=o/D+RD6UfC13biE/yqQzwpWU6ouvKMvajgU41qpaL3psqSD8JDUscjZXrZxO75n0Wy
+         hHDMfTyQRqxZ0BSElRccT1toOMAUwjS2Wjzg7k2hWdbXQNYFm0aZBlQyI/s0tG+Ks64z
+         YYBk6AUAhmOpuww5ky43AGCmJ2WYt1kiwaUr7eBuwzKhEywzPno/1KaHKys80LbyVZVG
+         ly4/Xy3RRRXLji1hb0pTaBVkjayPjXWaxlkYnISGy29CNIXUscAG7XGEsvM2h/czLMhs
+         dnwf0bnL2xrkYIb0vD7xt1BbfdtHKNeR7oVoLhuJ7QKUq9+zmA4AC7FrNmzt8njD2WmX
+         JVAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mbcutGH6OL7LuSP42at3fK5Z1YIFoEUC0KBJRJ/ehLg=;
+        b=10iW59DO3tySVGo1ilhN4cG8JZW24yOAcdPigcRs0Dr2PQSZHeuCbxRIFPrN46eDNM
+         bqQ9gnd21tT9zkrg/0CFTsgWR2ismnqWn6wbwWkfu6lfdhWAo/PlorAS0aIjmN2sA9Ix
+         2kEw/KWiARv/7esoyPO/UkUAgAQoUzwvDItaoKKac1tUzFRZg5wQ4n29HrGXVHXn9p1i
+         eTBnH+7uGdo3IJZgTawHBzw98L4Jca9sIIRw7ck2lLZ4v/vATYH5ia2oZImq82/HQcSQ
+         S3jLCBvTEhX9ilhyZnXmPYLPNoM+2WaLpTPrN8eH0JxnUmmxJbitLKw9cMVEOfCd93f2
+         JlYQ==
+X-Gm-Message-State: AFqh2koE+Y1Dh3HUdNI5z6HHA2OVTSvHPgL8VBrdkAaFvbsa1FwnvLXL
+	laA+Rs0bdERM2iffyqjWgzhi5wPCJf/UmhNhExr5iQ==
+X-Google-Smtp-Source: AMrXdXuAv8OyH+cafe6ZRM/QujXFFE6/O1p5c35GQydmuCBIMhPqc0FHSLHxWlN2i8ZOcK6L+qZ5K5UtAV6gJh8mDtw=
+X-Received: by 2002:a25:d496:0:b0:70c:4fa3:2cce with SMTP id
+ m144-20020a25d496000000b0070c4fa32ccemr1816768ybf.539.1671892180573; Sat, 24
+ Dec 2022 06:29:40 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2] hantro: Fix JPEG encoder ENUM_FRMSIZE on RK3399
-Content-Language: en-US
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: kernel@collabora.com, Robert Mader <robert.mader@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221223181647.720918-1-nicolas.dufresne@collabora.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20221223181647.720918-1-nicolas.dufresne@collabora.com>
+References: <20221223132235.16149-1-anand@edgeble.ai>
+In-Reply-To: <20221223132235.16149-1-anand@edgeble.ai>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Sat, 24 Dec 2022 19:59:28 +0530
+Message-ID: <CA+VMnFz8nQ2DnD6L9cPmoRqk+uohRqTEpak9g=WGJnSBoONmrA@mail.gmail.com>
+Subject: Re: [PATCHv1 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix
+ rv1126 compatible warning
+To: Anand Moon <anand@edgeble.ai>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221224_000406_715736_CC71AA67 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20221224_062944_303118_4BD16F0E 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +86,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDIzLzEyLzIwMjIgw6AgMTk6MTYsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNyaXTCoDoKPiBT
-aW5jZSA3OWM5ODdkZThiMzU0LCBlbnVtZXJhdGluZyBmcmFtZXNpemUgb24gZm9ybWF0IHNldCB3
-aXRoICJNT0RFX05PTkUiCj4gKGFueSByYXcgZm9ybWF0cykgaXMgcmVwb3J0aW5nIGFuIGludmFs
-aWQgZnJtc2l6ZS4KPgo+ICAgIFNpemU6IFN0ZXB3aXNlIDB4MCAtIDB4MCB3aXRoIHN0ZXAgMC8w
-Cj4KPiBCZWZvcmUgdGhpcyBjaGFuZ2UsIHRoZSBkcml2ZXIgd291bGQgcmV0dXJuIEVJTlZBTCwg
-d2hpY2ggaXMgYWxzbyBpbnZhbGlkIGJ1dAo+IHdvcmtlZCBpbiBHU3RyZWFtZXIuIFRoZSBvcmln
-aW5hbCBpbnRlbnQgd2FzIG5vdCB0byBpbXBsZW1lbnQgaXQsIGhlbmNlIHRoZQo+IC1FTk9UVFkg
-cmV0dXJuIGluIHRoaXMgY2hhbmdlLiBXaGlsZSBkcml2ZXJzIHNob3VsZCBpbXBsZW1lbnQgRU5V
-TV9GUk1TSVpFIGZvcgo+IGFsbCBmb3JtYXRzIGFuZCBxdWV1ZXMsIHRoaXMgY2hhbmdlIGlzIGxp
-bWl0ZWQgaW4gc2NvcGUgdG8gZml4IHRoZSByZWdyZXNzaW9uLgo+Cj4gVGhpcyBmaXhlcyB0YWtp
-bmcgcGljdHVyZSBpbiBHbm9tZSBDaGVlc2Ugc29mdHdhcmUsIG9yIGFueSBzb2Z0d2FyZSB1c2lu
-Zwo+IEdTdGVhbWVyIHRvIGVuY29kZSBKUEVHIHdpdGggaGFyZHdhcmUgYWNjZWxlcmF0aW9uLgo+
-Cj4gRml4ZXM6IDc5Yzk4N2RlOGIzNTQgKCJtZWRpYTogaGFudHJvOiBVc2UgcG9zdCBwcm9jZXNz
-b3Igc2NhbGluZyBjYXBhY2l0aWVzIikKPiBSZXBvcnRlZC1ieTogUm9iZXJ0IE1hZGVyIDxyb2Jl
-cnQubWFkZXJAY29sbGFib3JhLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIER1ZnJlc25l
-IDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+CgpSZXZpZXdlZC1ieTogQmVuamFtaW4g
-R2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cgo+IC0tLQo+ICAgZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jIHwgNyArKysrKy0t
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0
-bDIuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYwo+
-IGluZGV4IDJjN2E4MDUyODllN2IuLjMwZTY1MGVkYWVhOGEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jCj4gKysrIGIvZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jCj4gQEAgLTE2MSw4ICsx
-NjEsMTEgQEAgc3RhdGljIGludCB2aWRpb2NfZW51bV9mcmFtZXNpemVzKHN0cnVjdCBmaWxlICpm
-aWxlLCB2b2lkICpwcml2LAo+ICAgCX0KPiAgIAo+ICAgCS8qIEZvciBub24tY29kZWQgZm9ybWF0
-cyBjaGVjayBpZiBwb3N0cHJvY2Vzc2luZyBzY2FsaW5nIGlzIHBvc3NpYmxlICovCj4gLQlpZiAo
-Zm10LT5jb2RlY19tb2RlID09IEhBTlRST19NT0RFX05PTkUgJiYgaGFudHJvX25lZWRzX3Bvc3Rw
-cm9jKGN0eCwgZm10KSkgewo+IC0JCXJldHVybiBoYW50b19wb3N0cHJvY19lbnVtX2ZyYW1lc2l6
-ZXMoY3R4LCBmc2l6ZSk7Cj4gKwlpZiAoZm10LT5jb2RlY19tb2RlID09IEhBTlRST19NT0RFX05P
-TkUpIHsKPiArCQlpZiAoaGFudHJvX25lZWRzX3Bvc3Rwcm9jKGN0eCwgZm10KSkKPiArCQkJcmV0
-dXJuIGhhbnRvX3Bvc3Rwcm9jX2VudW1fZnJhbWVzaXplcyhjdHgsIGZzaXplKTsKPiArCQllbHNl
-Cj4gKwkJCXJldHVybiAtRU5PVFRZOwo+ICAgCX0gZWxzZSBpZiAoZnNpemUtPmluZGV4ICE9IDAp
-IHsKPiAgIAkJdnB1X2RlYnVnKDAsICJpbnZhbGlkIGZyYW1lIHNpemUgaW5kZXggKGV4cGVjdGVk
-IDAsIGdvdCAlZClcbiIsCj4gICAJCQkgIGZzaXplLT5pbmRleCk7CgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Fri, 23 Dec 2022 at 18:55, Anand Moon <anand@edgeble.ai> wrote:
+>
+> Fix compatible string for RV1126 gmac, and constrain it to
+> be compatible with Synopsys dwmac 4.20a.
+>
+> fix below warning
+> arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
+>                  compatible: 'oneOf' conditional failed, one must be fixed:
+>         ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
+>         'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
+>
+> Signed-off-by: Anand Moon <anand@edgeble.ai>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> ---
+
+Please add Fixes above SoB.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
