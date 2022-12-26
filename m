@@ -4,76 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD4EC46467
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 05:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1157CC46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 06:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yum3XjnMseokMm+TCPaPFT/2/+yWiqFnnts5xnI9PA0=; b=HkbqogkaTHLNoa
-	B9OXO6mLzy39fwnDk/hAgR8cEMVt2/5JWofurxbI+81QuSiaqRhpJGgGWomvdEN9h6YJqC4gESvG7
-	mpPQt8FIy2mvEtkfmZadtQlZfeqlVRe9AmxTVZ8i5qN1DaIL7mTfDZrtxcfB0MQOOFA0kVzSP+1oj
-	I+E8g7LoRD+Y7EuEsM2frjdnn2FWYu1QvjyIaL6Mfbv8CANc3bxRne9ttUBumwQ8GlstgdjMWeHSQ
-	7gqAugckCzC48dd04xHhX0Bw2wu5vp0eY600ZJZnHv2TqePOUg5p3BXRqmBmmz4Q0UfOKI0PUs3VK
-	qiQUxMHY4elijGLg/Sjw==;
+	List-Owner; bh=7blNDF5HfPOB5vczbSDYE95AO1Q3PnHrhQlxjcfYPLs=; b=bfR8nxb3QiQJtW
+	xjG3P2SXc7I3DCK4d1WwWxXG5xKptXHBObK1QMPzRaYfoEjI+E4kPojR5zv1w5qQItxnE0lDL4Vy8
+	Ig4VXSlYHFmqQeXQDx6xxX6tzNChPE0QzIHO1sqlqtt9lus0d+/r3gzOo/7j93Mckgwd43XbUHYgz
+	HNktmwKBVHXsLfOQ2NrQswije9Rg1Q1VddMxyxGX5OzR0paXBnI47tqHLOnynLKzApElIMdP7DXiD
+	eh8T0JbymsXvA512ofuULkUpX9nD4giq14St+/rtXsha+hMWZMais5oSYL1XgJJY6+RaYCxMAbmJx
+	lpfErZX6FlsNSTUsdJww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9g0G-001v9X-LI; Mon, 26 Dec 2022 05:26:24 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1p9h6K-002IXI-Tr; Mon, 26 Dec 2022 06:36:45 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9g04-001v41-VM
-	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 05:26:20 +0000
-Received: by mail-pl1-x636.google.com with SMTP id m4so9942800pls.4
-        for <linux-rockchip@lists.infradead.org>; Sun, 25 Dec 2022 21:26:10 -0800 (PST)
+	id 1p9h6G-002ITt-3Q
+	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 06:36:41 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id fy4so10008071pjb.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 25 Dec 2022 22:36:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=LF9Mm3NqqH1nEG/wEah3Sd4XDD5tbfZrQgSyrQTtptI=;
-        b=ZwNZ39F5tgP/LmtcnHq6P1mt1fj6IDl0R4Ff2oPDtgYyy3gp3vWSgx5th50vG394dt
-         hM5ENWhp6uzpqpEZlsbx3YmTo+2wniMh/K6FYX9wJ8BQHvNtk9MloVceTOyuu0d+3ltT
-         vZ5rRjRPG95043TvJh6z7AT3/Mrans94SvF1c=
+        bh=QyEqd2PVsLQtBlO0g1CJLpuYJZzPUU1GAxcKYIzhawY=;
+        b=EdxnySLRFTX3rqNJ/4GMnwbtg/1RaMLcV2mZTGeRNdlwywweKSeD5eDmbqA9jOU3QX
+         aDrvmExpKF0MDmSVQONxbVtNCV+mNw84AQlq2967G6P31rpiUZQrYp89q+YtXGxL7b5V
+         VHpktZo3tiOC0wmqkUp/I98/Epx70QYt2nfgnDwo1HfsoKDWSKUFZKrwqU0zHwwN8qTN
+         kpbG6MdgRpxlSuuNvvWJRpLIIFgBLyeEbxTZON1oUa2zHvnrXsdCjLInCwZgVooy5Pb3
+         fQQQQM3+YvIV7VqFlODx2+pOCfHffH3kiLREPsTHTI0nHaeMHyefWO7MVim6754f8jb+
+         Hppw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=LF9Mm3NqqH1nEG/wEah3Sd4XDD5tbfZrQgSyrQTtptI=;
-        b=hfUWaiv8GqLGjTU7nuWId9lRMGayi8cEuSPkfQpYR7jYahuX8Ab58LCpF7dgzDk7Jh
-         PWsNwF8Frg9aY6+jcnPKxE0xYcbnct7UIV6kK3NXXg/Ep3VRgAisynHZ4nwBr7Ke1MvY
-         RTenSqcZoDdz3HsJNmx15HvtplkWhmIwb5e1zH5pQF0MF+HFw/eGpUqG/TC18600+oGO
-         0w2gdJ2csmwyVcfJ4lsEaALtJJYkq6BY4EdijhIGFulEZeMQOywUgrduK0U7IUpSim+6
-         7dRp72Ns0/275mRmO2ufFAws8cqzlz9w2paY3njwgYQTmmU3flTxXAlGoLpBOMy1yvqc
-         ctmw==
-X-Gm-Message-State: AFqh2krLBoCtznRKgIkyB8RKGqeaaworCJ2F0BZTalu2OKja6dn8n7h0
-	+/g4/doRUvyxBKgLufW2aA0IIg==
-X-Google-Smtp-Source: AMrXdXuUS+LEcZOWr2OsiwuQkSRBZt8oLI1kuQXopUgaEZ4Qu8l/Ipbgt8vQUGRyp0msSc4GtvINKw==
-X-Received: by 2002:a17:902:f550:b0:192:7258:15b5 with SMTP id h16-20020a170902f55000b00192725815b5mr7105435plf.50.1672032370405;
-        Sun, 25 Dec 2022 21:26:10 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:db30:c4d:3ee:e697])
-        by smtp.gmail.com with ESMTPSA id je20-20020a170903265400b001926c38cd42sm2966161plb.192.2022.12.25.21.26.08
+        bh=QyEqd2PVsLQtBlO0g1CJLpuYJZzPUU1GAxcKYIzhawY=;
+        b=tuE/3WrvN1szEh+Yle8wTOTCZQfb1zKfZMTa+4Yf58Holjxv/Fd2opy4j8qkZgQyWC
+         6UT6KS1vMJYAaEFt06auTnK5tEw3Z7tboUc7Vty3s/Xcqjp4N0JXnVL7R1Z4hjv3EAFf
+         1mMKzA38FCoVQ3dGAqZdS0xETbz0JNs0YdAQ0ZVdfklwqp3CM2eLqZmIE4Awh6hOCepJ
+         GtG3W1zY7RopnIIFY4LD8AIchnRb6LGDCbR5keFA0IziGOZQyB0ofE5P9Yw0tbahK7Ff
+         9/NoIKvQ8nf8cpFH1XnkVY6fK8Rj99innGA0hKfZAnBHLQeHjdmcCTLaWdcdCW+C+Be5
+         1SbQ==
+X-Gm-Message-State: AFqh2krY/P1Xej4AGUJ9Mp+DKfPWv9Vy0Ref8RtC+mLHMW/AI+LdxYPh
+	kCb6N4xaWBNmAdkHiY5GieOqyw==
+X-Google-Smtp-Source: AMrXdXvgSx1AaYCgFjX1t5DhrtDXePyDgmbNAy5h5LshIAGiVY96/pgizVT4a00Ryoh0kJTExtlL4A==
+X-Received: by 2002:a05:6a20:4985:b0:ac:a2bb:96e6 with SMTP id fs5-20020a056a20498500b000aca2bb96e6mr18549643pzb.56.1672036598255;
+        Sun, 25 Dec 2022 22:36:38 -0800 (PST)
+Received: from archl-hc1b.. ([45.112.3.26])
+        by smtp.gmail.com with ESMTPSA id 31-20020a63145f000000b0047048c201e3sm5730659pgu.33.2022.12.25.22.36.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Dec 2022 21:26:10 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-media@vger.kernel.org,
+        Sun, 25 Dec 2022 22:36:37 -0800 (PST)
+From: Anand Moon <anand@edgeble.ai>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>,
+	Anand Moon <anand@edgeble.ai>,
+	Jagan Teki <jagan@edgeble.ai>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] media: hantro: Use core-generated bus_info value
-Date: Mon, 26 Dec 2022 13:26:06 +0800
-Message-Id: <20221226052606.144109-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
+Subject: [PATCHv2 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix rv1126 compatible warning
+Date: Mon, 26 Dec 2022 06:36:19 +0000
+Message-Id: <20221226063625.1913-1-anand@edgeble.ai>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221225_212617_661402_86827E63 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20221225_223640_224686_D5FAED73 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,59 +100,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Hantro driver uses a hardcoded value for the bus_info field in the
-media device and |struct v4l2_capability|. This worked well when there
-was just one device. However with the iMX.8 series we are now seeing
-two Hantro blocks on the same chip. The static bus_info is no longer
-sufficient for differentiating devices.
+Fix compatible string for RV1126 gmac, and constrain it to
+be compatible with Synopsys dwmac 4.20a.
 
-Since commit f2d8b6917f3b ("media: v4l: ioctl: Set bus_info in
-v4l_querycap()"), the V4L2 core provides a default value for the
-bus_info field for platform and PCI devices. This value will match
-the default value for media devices added by commit cef699749f37
-("media: mc: Set bus_info in media_device_init()"). These defaults
-are stable and device-specific.
+fix below warning
+$ make CHECK_DTBS=y rv1126-edgeble-neu2-io.dtb
+arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
+		 compatible: 'oneOf' conditional failed, one must be fixed:
+        ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
+        'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
 
-Drop the static bus_info values from the hantro driver and use the
-defaults.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Fixes: b36fe2f43662 ("dt-bindings: net: rockchip-dwmac: add rv1126 compatible")
+Signed-off-by: Anand Moon <anand@edgeble.ai>
 ---
-Changes since v1:
-- Dropped unrelated Makefile change
+v2: drop SoB of Jagan Teki
+    added Fix tags and update the commit message of the warning.
+---
+ Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/media/platform/verisilicon/hantro_drv.c  | 2 --
- drivers/media/platform/verisilicon/hantro_v4l2.c | 2 --
- 2 files changed, 4 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 8cb4a68c9119..b0aeedae7b65 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1050,8 +1050,6 @@ static int hantro_probe(struct platform_device *pdev)
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 42fb72b6909d..04936632fcbb 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -49,11 +49,11 @@ properties:
+               - rockchip,rk3368-gmac
+               - rockchip,rk3399-gmac
+               - rockchip,rv1108-gmac
+-              - rockchip,rv1126-gmac
+       - items:
+           - enum:
+               - rockchip,rk3568-gmac
+               - rockchip,rk3588-gmac
++              - rockchip,rv1126-gmac
+           - const: snps,dwmac-4.20a
  
- 	vpu->mdev.dev = vpu->dev;
- 	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
--	strscpy(vpu->mdev.bus_info, "platform: " DRIVER_NAME,
--		sizeof(vpu->mdev.bus_info));
- 	media_device_init(&vpu->mdev);
- 	vpu->mdev.ops = &hantro_m2m_media_ops;
- 	vpu->v4l2_dev.mdev = &vpu->mdev;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 2c7a805289e7..c1a116031013 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -142,8 +142,6 @@ static int vidioc_querycap(struct file *file, void *priv,
- 
- 	strscpy(cap->driver, vpu->dev->driver->name, sizeof(cap->driver));
- 	strscpy(cap->card, vdev->name, sizeof(cap->card));
--	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform: %s",
--		 vpu->dev->driver->name);
- 	return 0;
- }
- 
+   clocks:
 -- 
-2.39.0.314.g84b9a713c41-goog
+2.39.0
 
 
 _______________________________________________
