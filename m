@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01F6C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 09:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6604AC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 10:21:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPmOzsQgqORikp+k/6HYgTQdMjzCEHE41XQm2ef8KSU=; b=4ZBjvFU0FdMqBd
-	Yc7zpKh2P+9jn+YsXxkuO/Y2paCTabNYI/tkaWFS2yIRzl1jTH6WZySP2qFOrztSf4RdD8nHSp6Xs
-	gL93bVPNblOCVVyZpIW+RLxL9Gh37N+C79OzeVufkian51jX67KSsZ3U4m43kTETOQezwP5asobOp
-	IwlMlhAc3NO6Waz61WMgfvQJIqFLXfpb7+XXC7ToVclEwPvFO7dR88+A5XlYacxGM6iE+CU/1LnTB
-	vMvC3wqZEqNeNnh4Bn/tkv0hJ4/XeFYxxzBDv4fNZOnw4qyLuy4uXN/f1Pobb0CS/gb26PwthCqxY
-	zy0O88akOuqyZHflLCKw==;
+	List-Owner; bh=/xj/H/OJ9ooqKQIF9AG888KCcgaPj9AsPdP/qVxsJhI=; b=qvqeYBICtCwTD+
+	3ITxamM8N07HBCW2bGeJihr95U35N4/RY08NmdZVWZ2wOZ+qwdTDzrgo2cIdGFZf0zO9JjfVQZ/5N
+	uILOWiGx0qWqViGxLOmVK2n5cVdY/t4fYxsQLNkggAcpTHfgVmBHSKQk/AKhQQ/0I4R3IhjrrRZTv
+	RIscT6XEDGCPJM02R3dX3dEbvdVyETIHjC0MnpHBXWmoP6gsgXFMihf4oHM+o/O2WylluQRBYrZl6
+	eBMOj7VIbjUgi/CZEprY9FHuE+alT/rvaM1mVp8DUlsnNoWd3DYzIylbQOYMdR3FHQH408t2v/F27
+	DW+QXw2KT1Rcxsw/n99w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9kAF-002zfB-Hp; Mon, 26 Dec 2022 09:52:59 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1p9kbb-0038mM-8B; Mon, 26 Dec 2022 10:21:15 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9k9k-002zNY-Nv
-	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 09:52:34 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-476e643d1d5so28891777b3.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 26 Dec 2022 01:52:28 -0800 (PST)
+	id 1p9kbW-0038kH-Kt
+	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 10:21:13 +0000
+Received: by mail-pl1-x631.google.com with SMTP id 4so10415458plj.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 26 Dec 2022 02:21:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=pWR+JUq2o54AwQ6BNKo0a70xKICVf0zlgFYzCKYUAOo=;
-        b=TUHkEMzI3Wy4MLlTkNJX+3OEd6QSPQdePraNM80YuZEXokTfMTzDVKEozBRheYrj4t
-         IpQyhHNCY/3lw3BY/4WEEsfccP6F/fTMik/mzIQUOiV+dXxCuiwpu78RATZfxSGxj7RM
-         VGdi/3kVo5p0MJdUGki5mCrGgpb9ihyuHihy1mW361eTBVEKBax3Br4yDNmi7G0gQH83
-         VSzMZO0L0iTB0C+IAceJ8xv1tTsUtXt9Kc4UPZ3kgDKAtOYhPev6+NVtyMYN+ewUqGp0
-         I3OJ435+cygdtXdyOHKyPCalgjegid2ZWu8xWyNMmwHXBjAGkjb2CSPVWherGbeJvM1C
-         AEBw==
+        bh=WASqzSCgjeGT/fukiuS6QON6/I6X0QmINUoYRtI17JY=;
+        b=osa9H8a2saD9qFdVr+mysKOx/tnQaHlyzQXXRSGAIS2ixIJ2KrxjTCn7vxcuAZK+Ip
+         OIgXvqHMcXFbaSqqiOQsbWYvxVrd2F3sDLcNScOGK/1lE9zuH5R3zYj9+8OBNX2Emv/1
+         UJM35rjr7UbrHIUzXkxjw9BfDsMr6oq9d5Lvnnkh08WPXdFT87tYqYQoWjzJytvrLmsk
+         yv422BcRzTjF+q3fn3XsbMStMgqjj1tp/RxjBIcoWTIeh9xiLBCrtTITmSlfVxB5FT+v
+         GsQMpF0ecifaTP1hryKuOqq0VNwSoXN+zzCSSnbH/HynkGH5OuhmRyp+IIV4eITqQuO7
+         TiNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pWR+JUq2o54AwQ6BNKo0a70xKICVf0zlgFYzCKYUAOo=;
-        b=E2LycIQK1YfNXxEQquf8PXMsL616EIycO84r7xUM8Ad8Wv8GVkfLPV4t5bqikEuHBF
-         j8c9RuLAqfYUDtenuv2LGoEWx046EhJulUy8A3aPtu+cvCo2w7ATYs1P1Z+HgB5FYYtg
-         XlVbOEVESwNlUR8L24JGek96ARDFswRnu98UUYUgwvJ4617ZoNLaICSLuHDV9ykme1yD
-         e3jvxX13UgJkXv8mJgxtuQQdqZo1Dv188OmrruNZwPZF6UpgPnbZDqFkjUZ9y/vm+Uc3
-         BALBHP0tkuiT5iqc8dvidhb5dggneKE98EMuq6AYcJg8VypBH8pceKqx7jQfqelvi7SQ
-         xcaQ==
-X-Gm-Message-State: AFqh2koP7UER4GHgBHWaR8xBQocgNZdxrMfr2zZed4FNpObhPEkvtoJP
-	gXzKNeDUj9dmKJS6eN6YU/5HFVk5JX6QcmB9WdmpWg==
-X-Google-Smtp-Source: AMrXdXtRB3VvIx7J4rn3WevIT08YlZ4foe9Ony+g6JZFUVO05YJlfKaQdwx0TxNNs0/V0i32acgO6sRgIXzMtChb/G0=
-X-Received: by 2002:a0d:f1c1:0:b0:358:36cc:b6cf with SMTP id
- a184-20020a0df1c1000000b0035836ccb6cfmr2088607ywf.505.1672048347366; Mon, 26
- Dec 2022 01:52:27 -0800 (PST)
+        bh=WASqzSCgjeGT/fukiuS6QON6/I6X0QmINUoYRtI17JY=;
+        b=KGBLOFcwQUSYgwyaC0Py4Vh3lV0RzXTrEm4sZou/bDBML8VBiWjL1gDO5AWiynTS/S
+         701k8Y3NF5MUGn1QV9KMo6SZ+LlAfXHqLYziHlhLn7XQKjitODKmOQHXx5PDAAdDwUtx
+         b3VnyriT6bsKlemVEXFh7zofmsk/EXEB03zuYbjd9knVbg8JJuzxO8QhO4h08Ps5Ufdt
+         PR8QMlnG9/G2I1jnIzaAJmt+W51enFsODmHqveG1Ug4DPS78yHok/ctHHPWP+bmKMeGM
+         9Eo/pUsKH3a1mRXRc6UeBzVQiGf9/4in9cIRkh6vFAHQ4jB+i0xlO/hu6M4/4SCcmseL
+         31zg==
+X-Gm-Message-State: AFqh2kri8SL9lS63CGynzKF/Tbfu3P8f7WC55ZPUsxCW+1pllib5wCNj
+	Ujh9e7LR5hSkwW8SUXf9P2RmtSFL9uiG5AyWP52YeA==
+X-Google-Smtp-Source: AMrXdXvdKwcLsuJS3kb5PPVbhahfhIzd1JkGVuX5RoTbk+ukjSOnB8pJu2t1iBGNfLjl9R2ATsYkspQGHhdv8HEX7JA=
+X-Received: by 2002:a17:90b:1955:b0:224:0:8766 with SMTP id
+ nk21-20020a17090b195500b0022400008766mr1785678pjb.199.1672050069589; Mon, 26
+ Dec 2022 02:21:09 -0800 (PST)
 MIME-Version: 1.0
 References: <20221226063625.1913-1-anand@edgeble.ai> <20221226063625.1913-4-anand@edgeble.ai>
-In-Reply-To: <20221226063625.1913-4-anand@edgeble.ai>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Mon, 26 Dec 2022 15:22:16 +0530
-Message-ID: <CA+VMnFz3JTJt7pYsMcKgt+cqbHNg=f0Tofrp-wgcj-51wkdxUQ@mail.gmail.com>
+ <CA+VMnFz3JTJt7pYsMcKgt+cqbHNg=f0Tofrp-wgcj-51wkdxUQ@mail.gmail.com>
+In-Reply-To: <CA+VMnFz3JTJt7pYsMcKgt+cqbHNg=f0Tofrp-wgcj-51wkdxUQ@mail.gmail.com>
+From: Anand Moon <anand@edgeble.ai>
+Date: Mon, 26 Dec 2022 15:50:58 +0530
+Message-ID: <CACF1qne=B535bH1aqjUa6MY72kML4zjvf61_LuE1jTrjEfW_eg@mail.gmail.com>
 Subject: Re: [PATCHv2 linux-next 4/4] ARM: dts: rockchip: rv1126: Enable
  Ethernet for Neu2-IO
-To: Anand Moon <anand@edgeble.ai>
+To: Jagan Teki <jagan@edgeble.ai>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221226_015229_116587_6C70A1D5 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20221226_022110_803841_C6E705F1 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +89,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 26 Dec 2022 at 12:08, Anand Moon <anand@edgeble.ai> wrote:
->
-> Rockchip RV1126 has GMAC 10/100/1000M ethernet controller.
-> Enable ethernet node on Neu2-IO board.
->
-> Signed-off-by: Anand Moon <anand@edgeble.ai>
-> ---
-> drop SoB of Jagan Teki
-> ---
->  arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts | 37 ++++++++++++++++++++
->  1 file changed, 37 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-> index dded0a12f0cd..bd592026eae6 100644
-> --- a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-> +++ b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-> @@ -22,6 +22,43 @@ chosen {
->         };
->  };
->
-> +&gmac {
-> +       clock_in_out = "input";
-> +       pinctrl-names = "default";
-> +       pinctrl-0 = <&rgmiim1_pins &clk_out_ethernetm1_pins>;
-> +       phy-mode = "rgmii";
-> +       phy-handle = <&phy>;
+Hi Jagan,
 
-arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: phy@0: '#phy-cells' is a
-required property     From schema:
-/home/j/.local/lib/python3.8/site-packages/dtschema/schemas/phy/phy-provider.yaml
+Thanks for your review comments.
 
-> +       assigned-clocks = <&cru CLK_GMAC_SRC>, <&cru CLK_GMAC_TX_RX>,
-> +                       <&cru CLK_GMAC_ETHERNET_OUT>;
-> +       assigned-clock-parents = <&cru CLK_GMAC_SRC_M1>, <&cru RGMII_MODE_CLK>;
-> +       assigned-clock-rates = <125000000>, <0>, <25000000>;
+On Mon, 26 Dec 2022 at 15:22, Jagan Teki <jagan@edgeble.ai> wrote:
+>
+> On Mon, 26 Dec 2022 at 12:08, Anand Moon <anand@edgeble.ai> wrote:
+> >
+> > Rockchip RV1126 has GMAC 10/100/1000M ethernet controller.
+> > Enable ethernet node on Neu2-IO board.
+> >
+> > Signed-off-by: Anand Moon <anand@edgeble.ai>
+> > ---
+> > drop SoB of Jagan Teki
+> > ---
+> >  arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts | 37 ++++++++++++++++++++
+> >  1 file changed, 37 insertions(+)
+> >
+> > diff --git a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+> > index dded0a12f0cd..bd592026eae6 100644
+> > --- a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+> > +++ b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
+> > @@ -22,6 +22,43 @@ chosen {
+> >         };
+> >  };
+> >
+> > +&gmac {
+> > +       clock_in_out = "input";
+> > +       pinctrl-names = "default";
+> > +       pinctrl-0 = <&rgmiim1_pins &clk_out_ethernetm1_pins>;
+> > +       phy-mode = "rgmii";
+> > +       phy-handle = <&phy>;
+>
+> arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: phy@0: '#phy-cells' is a
+> required property     From schema:
+> /home/j/.local/lib/python3.8/site-packages/dtschema/schemas/phy/phy-provider.yaml
+>
+Ok, I will update this in the next version.
+> > +       assigned-clocks = <&cru CLK_GMAC_SRC>, <&cru CLK_GMAC_TX_RX>,
+> > +                       <&cru CLK_GMAC_ETHERNET_OUT>;
+> > +       assigned-clock-parents = <&cru CLK_GMAC_SRC_M1>, <&cru RGMII_MODE_CLK>;
+> > +       assigned-clock-rates = <125000000>, <0>, <25000000>;
+>
+> Keep them in sorting order.
+ok,
+>
+> Jagan.
 
-Keep them in sorting order.
+Thanks
 
-Jagan.
+
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
