@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9F5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 06:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D79C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 09:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ueZaZ9czFrt2VQkJtgPfonXviAXVu+G8I6ss/3HbuRk=; b=26S6Abnv1oS4EC
-	3Ou6YYr9jYTDRuF+7Riv+Nk/yTUIpJueBdmZv7bRWZjSI9Qe5D1vMLJx7BbVoZJfDkIQZAqqx6FnA
-	D/XCrah7Ur1A+v2w4DPWVQ2yLa4AC/+gKlQst7BPPpYYfRx0PpYula4NnFb2FTh0UNodLm0GY1Vqh
-	E5fKrBLmYCGTtYgf5DCAQsmMsO6fJ0s7PLquP21mptqopE3YdDjwSOdZq0bQTA+ZDEeBATfV7tYbZ
-	Q3pisnmrffFz3mdNDEoZkx5DzEeIdq92j1W/fn1P04CYML6MoszE8js32lhRpD0NB1zA43BSOAe7F
-	4tO9pzfEtIJHnQaQjm/Q==;
+	List-Owner; bh=e3CZk9S+LH3DHFEm/75GSu9Ay6S7hE6swJ81s/v8Qhs=; b=gq7DvXGMXlqCp9
+	grRLkxP0POQcN1OJOjqv81J8OJuwjFke9rBJrNI/QD2kWcwLTifLuif126T+mnZSf4geU5/j+6uVl
+	SazgDpkopwLWZq7aQGZhwury869xtaO0wQknE+LCF4u5Mtg3teGM2+9Ob0Ws9idVpKHKT8kGxCxaz
+	LJ8hPL+L2ttXg+vtuUQ44AlZWGsPST65/at9QXVs/G9ZmOi2dljOcwbCVVI7YHucr95cnbMz8GkLO
+	H9wRDN5uiqA5NcmQBxYyK1Ue2JXM2Wus0Jjv7lsYVWO0lrPqE3FHYUA25JF/7ddQWfCtb2HNKpGZ6
+	AqFLmX44aP4ba2naXiMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9h7s-002JEm-TS; Mon, 26 Dec 2022 06:38:21 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1p9k80-002yNh-90; Mon, 26 Dec 2022 09:50:40 +0000
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9h6W-002Icj-Ru
-	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 06:36:58 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id h192so1897437pgc.7
-        for <linux-rockchip@lists.infradead.org>; Sun, 25 Dec 2022 22:36:56 -0800 (PST)
+	id 1p9k7i-002yFU-8A
+	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 09:50:25 +0000
+Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-466c5fb1c39so132879557b3.10
+        for <linux-rockchip@lists.infradead.org>; Mon, 26 Dec 2022 01:50:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rW+W8L4hEp5lOoEXBkKxHWasEwBBhWGhqBiD8Bx3Ygo=;
-        b=voBlDzsBgXxobxqDnz/UaPsHRfWs7i9nstSae/q3NRBCxfuyzy1+Ep+jWlbAoD5jYA
-         WyNKywWNaYysqNCSjfSzZ7829lKS+/ZwXBDxovBWTxNi7i/8FRCN23iXQIYQVCpN53dG
-         E+Yvfbq04uqXoW60RyAOQasa+JXJmKHyQZ1hBrjR8Dbky8ygnPj9oC9pmrpqKhk4ieHT
-         59pb3fUEa7iub7UP0FS3vBZix9UqCdmOqWAHl23ywrlGWIvbjLAZu2PQV9i3it0S5XnE
-         iXEOb8VGVNXQ22Of6JxWEUwcvWDsGHwMvmUsR4K5wuZ2LN932Cx1Ij3+lKvrFOti5Fnn
-         DSeA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=fmF2cGQbBs6YMQ3a2rCQYqoYyMFkRZzG4KKzAOl4kLE=;
+        b=bMQJ2p5T3B+1Eiwh0ozrHAFSKX35Q0vzPq3DrnZvLdIb6vM2G+ValqFymn66Om+Vhi
+         28fT1dH1eW6Dty1ibjLTu6Log4QqlnXfUteW1cFNoHCdDvKwEIFMkk4v6w6tn5pzhd8R
+         QOqlPlkTwcZ+vD/d9dAVA+vNDFQtgH/qlYGcjslLOYKQTxoZCo/d0HqUbVGJvXcLtKIk
+         2vL7SubckkEa5dur+drIIMjALFcA6GcFWHU7e8zxoA+k5BTMS8AKwTLE8FznvyST0dMT
+         RJk+3kpNSMjrF5R+pv615771wpwT+Nk+RWSJIz2y2BzdYh9DrPyJGOObh+wqYYoxp2Gk
+         XuOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rW+W8L4hEp5lOoEXBkKxHWasEwBBhWGhqBiD8Bx3Ygo=;
-        b=gxkNFD7xqj4p6tqNw6D4RJ9i8B3US4IP1B67IJSmp9g9D7FsKjKb1Ac1ak2tBijYWD
-         zfFcdTdb8nyhWhYzac1k3hOit9hvFTUATfkK4S9los7U2BZbt1ysPTuBAv7Y4g5GJNPr
-         ch7QmZWB9fItwRxB4x5IjP9bezNnn852Zt+wi6eSSFEdyJwcH2gNBciaEJL5sPzZOxHS
-         vBOTiA3xjkE/ARo6iXaNFAfs0OXbvO/wUgHL4CsgvgYLlxeKKcpVQL6sBcerI7v9t2ht
-         3aaW0vEUpdoEoneIP1kN+Xlbphr2EZ4JrjF/f8j8HvloG/sZeYhJlP4NAYtmf5AVkW/H
-         rfPw==
-X-Gm-Message-State: AFqh2kpz0lOhJIRPylXAFYijP2o6q4PAVT6U//gNANhp1xsNk8DlQscJ
-	l8wi0fVH+/17dSXvfLIZVKgO4uMkRSln6n2vhuc=
-X-Google-Smtp-Source: AMrXdXti84xoOVGf5X7VMNv6CCR7z2+EuYq84JZ3OTs8Oj1rP2mwcDoTDui1+Kx1tgTYoaNYTs1+JA==
-X-Received: by 2002:aa7:9f8d:0:b0:57f:ca45:66c9 with SMTP id z13-20020aa79f8d000000b0057fca4566c9mr20282753pfr.13.1672036615502;
-        Sun, 25 Dec 2022 22:36:55 -0800 (PST)
-Received: from archl-hc1b.. ([45.112.3.26])
-        by smtp.gmail.com with ESMTPSA id 31-20020a63145f000000b0047048c201e3sm5730659pgu.33.2022.12.25.22.36.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Dec 2022 22:36:55 -0800 (PST)
-From: Anand Moon <anand@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Anand Moon <anand@edgeble.ai>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCHv2 linux-next 4/4] ARM: dts: rockchip: rv1126: Enable Ethernet for Neu2-IO
-Date: Mon, 26 Dec 2022 06:36:22 +0000
-Message-Id: <20221226063625.1913-4-anand@edgeble.ai>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221226063625.1913-1-anand@edgeble.ai>
-References: <20221226063625.1913-1-anand@edgeble.ai>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fmF2cGQbBs6YMQ3a2rCQYqoYyMFkRZzG4KKzAOl4kLE=;
+        b=64OZPKCbW6rK35wBOmxSy361FGPdcg3frSBbFGjlSvyiE0H1EZC7SBNdA9QK1EsWr5
+         HAZTCU+81SspVd/62l/FuWiGjp48xIryp6xu4epdiF15Bzj05pjVf0qn0P0R17l8oG7D
+         pqkrJVJE4rHjHXLvclN0N4rWLTP+d1VJISX/nfbiYIyKdaM64OvoAtjSAX2CWi8uUOdo
+         ZdVkyNvpZCj5W2cWaTqL2Bd9OPkQ5NEbwLLyvCjOjukSHtaja96eUnA0Ry+Fxlf5OZtL
+         RkkWM7I8cBifK1pY7fetHDW3IlnklMHPn7uVLdCB3cFXNXxMqZgPGbJVNjEtJ9kAUqlf
+         xtYQ==
+X-Gm-Message-State: AFqh2kpYqm8VGygm2pBschFO5plI5HqHxixBORu8Ud3jpCfldDE3JiSZ
+	TpQfTO7ebCzca9FKFNaHeps7sijkOFtQxdcDb4WiMg==
+X-Google-Smtp-Source: AMrXdXvZTcC92hWOMbyIeK3dqSwaIggP+z9ZEXfdPvWXDfuzBL6uLz0bBSmiWglVMuUa1inps4rVFLku/JoLp2RZopU=
+X-Received: by 2002:a0d:ca88:0:b0:3f5:7f7d:2d4f with SMTP id
+ m130-20020a0dca88000000b003f57f7d2d4fmr2143854ywd.276.1672048220248; Mon, 26
+ Dec 2022 01:50:20 -0800 (PST)
 MIME-Version: 1.0
+References: <20221226063625.1913-1-anand@edgeble.ai>
+In-Reply-To: <20221226063625.1913-1-anand@edgeble.ai>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Mon, 26 Dec 2022 15:20:09 +0530
+Message-ID: <CA+VMnFw_aHNuPKrSeLy9P3ZngYdyHMtiyW+GxdNCEGRC0N_TmA@mail.gmail.com>
+Subject: Re: [PATCHv2 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix
+ rv1126 compatible warning
+To: Anand Moon <anand@edgeble.ai>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	David Wu <david.wu@rock-chips.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221225_223657_055318_3598ED59 
-X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-CacheID: sfid-20221226_015022_533221_D8DDE2D0 
+X-CRM114-Status: UNSURE (   8.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,67 +92,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RV1126 has GMAC 10/100/1000M ethernet controller.
-Enable ethernet node on Neu2-IO board.
+On Mon, 26 Dec 2022 at 12:06, Anand Moon <anand@edgeble.ai> wrote:
+>
+> Fix compatible string for RV1126 gmac, and constrain it to
+> be compatible with Synopsys dwmac 4.20a.
+>
+> fix below warning
+> $ make CHECK_DTBS=y rv1126-edgeble-neu2-io.dtb
+> arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
+>                  compatible: 'oneOf' conditional failed, one must be fixed:
+>         ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
+>         'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
+>
+> Fixes: b36fe2f43662 ("dt-bindings: net: rockchip-dwmac: add rv1126 compatible")
+> Signed-off-by: Anand Moon <anand@edgeble.ai>
+> ---
 
-Signed-off-by: Anand Moon <anand@edgeble.ai>
----
-drop SoB of Jagan Teki
----
- arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts | 37 ++++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-index dded0a12f0cd..bd592026eae6 100644
---- a/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-+++ b/arch/arm/boot/dts/rv1126-edgeble-neu2-io.dts
-@@ -22,6 +22,43 @@ chosen {
- 	};
- };
- 
-+&gmac {
-+	clock_in_out = "input";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmiim1_pins &clk_out_ethernetm1_pins>;
-+	phy-mode = "rgmii";
-+	phy-handle = <&phy>;
-+	assigned-clocks = <&cru CLK_GMAC_SRC>, <&cru CLK_GMAC_TX_RX>,
-+			<&cru CLK_GMAC_ETHERNET_OUT>;
-+	assigned-clock-parents = <&cru CLK_GMAC_SRC_M1>, <&cru RGMII_MODE_CLK>;
-+	assigned-clock-rates = <125000000>, <0>, <25000000>;
-+	phy-supply = <&vcc_3v3>;
-+	tx_delay = <0x2a>;
-+	rx_delay = <0x1a>;
-+	status = "okay";
-+};
-+
-+&mdio {
-+	phy: phy@0 {
-+		compatible = "ethernet-phy-id001c.c916",
-+			       "ethernet-phy-ieee802.3-c22";
-+		reg = <0x0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&eth_phy_rst>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pinctrl {
-+	ethernet {
-+		eth_phy_rst: eth-phy-rst {
-+			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
-+
- &sdmmc {
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
--- 
-2.39.0
-
+Reviewed-by: Jagan Teki <jagan@edgeble.ai>
 
 _______________________________________________
 Linux-rockchip mailing list
