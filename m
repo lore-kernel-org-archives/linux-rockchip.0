@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA641C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 06:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB6CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Dec 2022 06:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JGTUpaYqNgG0SIF/YxXB8hybcmFt59qATVgNPwjG0sI=; b=Hm5wuzqYQogd1m
-	D/YpiXKWXECc2LKhf3R0uLR/nSxIqudr2DaLlIvEg3bj1bILBs8QUwAzs7/UIFtpBoJuD6r2ZJLqH
-	P8i/QmCvyAfKJi5M2A9rtQe3AhRPh08sIfPo3Nl7VqvYH+ptCt6qfGM0Xf2HsVLdlNgwCHQI7OP6u
-	dKwYIEHBmbI7+C+Fa1b77M7yWCWLhRiYd8SMxvypoP8jGInYNDsgZoKztw9EwYRzJQjitDWtOemeq
-	MBNnl3W3beE83LzvPY3AFtVnIfmLtDKRqe321lsEnXX6+w3uLUElrkFdkMpVWZbx7AchYgvS4K034
-	aFfDdrNjAjYMKDCtCDJw==;
+	List-Owner; bh=itE6gc2Z/DrLHxIhaYR1Rs9s2HCnVTCwGGGvT9mFREg=; b=nDdaJ5zWtptbJW
+	qUc5Tf19qelJCr5vh9a0a/u4n2sTMW2LnoFT/GOCsltpvTaIYQolTcYHOEiN+QKpGza9GsmhV3x7V
+	8XqfQVDOtXooUI1/feRdi+nIQz5dvvtI0PK6Cm7+Ol62AZS7m3otCVzI+yG0KjCFn2G6KYYLmN1Kn
+	EALH4+KHhFGwddBR8cGNo7LBOvBIGDmd99NfG1afiXMyj0dK4uAbDyGoM3fEJP8Uf9wV2hx683Tgh
+	o2sSm3cUqnwkTRlWBinkzdITfIkDFs75z2j1Jfc+q5eUUJUy+Po03RVfx+sN41PSjoNaEWlyN50gD
+	zLUdsTQKZ/NYl8PlICZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9h6u-002Ilu-4k; Mon, 26 Dec 2022 06:37:20 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1p9h7P-002J10-7s; Mon, 26 Dec 2022 06:37:51 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9h6L-002IXG-4U
-	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 06:36:46 +0000
-Received: by mail-pl1-x632.google.com with SMTP id jn22so10007705plb.13
-        for <linux-rockchip@lists.infradead.org>; Sun, 25 Dec 2022 22:36:44 -0800 (PST)
+	id 1p9h6R-002IZz-CV
+	for linux-rockchip@lists.infradead.org; Mon, 26 Dec 2022 06:36:53 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id s7so10044746plk.5
+        for <linux-rockchip@lists.infradead.org>; Sun, 25 Dec 2022 22:36:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lbYKeQDdqP1ch9vSzLDC3uKKF34wY5rVbaptUoqvdAQ=;
-        b=z9HMNT4MykhC60knbICdXV7pS81E4ck4YuoynRIewr1Wz52l/4vvf/ZQMNYg0VYVBG
-         m9tOMnrlQMOuGhTbE1et9tWMwN0CtdvwaKRjEr5Vqb2uVNY88XYTXLo5IYrvtDdyAYgW
-         IB43ouPr0pCfel0CCdnvDOoXSpYqegeCtYRgY5oCyeiwSO8JIjJbISBgJKE8zJP9X5Hy
-         yDoAhwTRUmgVBVlaNq2KMbY4dQtDK9dUn3GVvb5xUgjRQuHMTEVe5w/U8pBNyu7JtXC+
-         bmmvB3YPTclY2Vhi+r/CrEPYHUJtWV0haojJZDxnBLo45b8MyemNI1mIu7p5oBcFC+VT
-         ns5A==
+        bh=zRydJoD+3l5BbQJGYGzK94pJXqmLy5AkAXCFfnzAak8=;
+        b=BFKUYDcDi3wJiuZe2q7RhU8Ttz5/yi1pUbqQclFaweXlBEp/WqAB8nILCvIWhw/Ljp
+         bedu0Ey77KV4ihqj2K2cN2YqIO15O44OogbyVhFhzzHZaLxoIAitNkdqucOPEhv2jlIi
+         UrkSEQafSVHrGMtwZycsUn8w0jHX9WlsHbZg/IMdhgYzcn+xfB2PuOhb7Q8FInRZuB4o
+         D1hRwpcy5kOAsZZiTitt/JNsKp2CLLMDMdaI1lojwdsq5H+ZWMBJI2bfBiicfLMJopp9
+         cpus5BZf7g9N+aA2ptDcdEBC/uvCexvfJMiQcnBZc2hJ+lit6eBpvMdkVGiFbKu05QDp
+         PA1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lbYKeQDdqP1ch9vSzLDC3uKKF34wY5rVbaptUoqvdAQ=;
-        b=2fYO6zbnJyKR5gI4+EKhmkYgJHbYCYdoX7jXDiRxO3HWRZ/J7c7rIpKIBi4apPQrSv
-         ol3tUSdEzTPqv5YN+9AITqUVSplDFgIX1miIn55U/+mh70xWXNugVRIrXRQSQlAVYMhv
-         z+zcVkNIYfzuRWVy+OAQevi5K3M+fz6d+fPEx4llL8mEpzYcnX/SAYpotAsyN3J/Hhi0
-         ZWm7fbyZ5YgoLOxaQE0uhvquDews4py6sidEmyCpzqPew49knpzADoErhGhHypnDLTEu
-         JoBXrKcxOq1Z7blhVXDJ0lKEfvA8ufwxNm9u6uED76gtWbxdJjO8b1NE5ijBXyQf8anJ
-         XDLw==
-X-Gm-Message-State: AFqh2koY0j0vA5bHIcpMzkwLnetMFgQjbbVgN4zO5JkAnORJPHixV3EC
-	eXTEzvYNLaTWUUk4cZoi4+fmFg==
-X-Google-Smtp-Source: AMrXdXsegnB/4YgCRPurb7/c4aUXMRuD733OB0kVFb4zixNOin28xG+7a90OjS5sZrt9IbqGnbyDGQ==
-X-Received: by 2002:a05:6a20:a6a8:b0:9d:efd3:66bf with SMTP id ba40-20020a056a20a6a800b0009defd366bfmr22241960pzb.6.1672036604145;
-        Sun, 25 Dec 2022 22:36:44 -0800 (PST)
+        bh=zRydJoD+3l5BbQJGYGzK94pJXqmLy5AkAXCFfnzAak8=;
+        b=I9uzyCaV1b0Mf30NDRypc1eG48JV6AxGRzpwKfBw8ExPCJnWfBcqllXdW/pJ9pFdfb
+         +qc4XvPkMlLty8LiOYa0J7xQL5j0X2Hjdyc2887FkZFcRYCpYcewkwnV0O1w0ID/uxpU
+         qpHma3dZ+lcbTHZqB7iDmXuiW/2AUeCOAhcFlIVIpoDm2ZLv/YLVzLcOQ9tDosY4IifE
+         RbkkokwMnYk8GzBaqvgbSgKgCf31jFdBg7usjethpqSEn9stZRMnoBKc/G1GM+oOgyFc
+         8B8sVKfyhrXXqXwBjuoGmB0f9LLEHbk7NXMM62oG6OLTrVtv5dta1jD76hHW3fWw+agq
+         5cyg==
+X-Gm-Message-State: AFqh2kouqt9QUxQTbfO/EUMcIjXobczySrBkGz7XEbXrVtlYo5fPj7k7
+	RXiq28nbX//D4ddTp/dPWliZHg==
+X-Google-Smtp-Source: AMrXdXvW7ZGz0p3A8h2MncIToc6h6JK5uh5DjZOAx25rPJ7yJsQI2fj/1Ma3hLFakhZZ83eXaZUb6g==
+X-Received: by 2002:a17:90a:ce07:b0:21a:db1:d87e with SMTP id f7-20020a17090ace0700b0021a0db1d87emr34264398pju.8.1672036610156;
+        Sun, 25 Dec 2022 22:36:50 -0800 (PST)
 Received: from archl-hc1b.. ([45.112.3.26])
-        by smtp.gmail.com with ESMTPSA id 31-20020a63145f000000b0047048c201e3sm5730659pgu.33.2022.12.25.22.36.40
+        by smtp.gmail.com with ESMTPSA id 31-20020a63145f000000b0047048c201e3sm5730659pgu.33.2022.12.25.22.36.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Dec 2022 22:36:43 -0800 (PST)
+        Sun, 25 Dec 2022 22:36:49 -0800 (PST)
 From: Anand Moon <anand@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Richard Cochran <richardcochran@gmail.com>
 Cc: Anand Moon <anand@edgeble.ai>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCHv2 linux-next 2/4] ARM: dts: rockchip: rv1126: Add rgmiim1 pin-control
-Date: Mon, 26 Dec 2022 06:36:20 +0000
-Message-Id: <20221226063625.1913-2-anand@edgeble.ai>
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCHv2 linux-next 3/4] ARM: dts: rockchip: rv1126: Add GMAC node
+Date: Mon, 26 Dec 2022 06:36:21 +0000
+Message-Id: <20221226063625.1913-3-anand@edgeble.ai>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221226063625.1913-1-anand@edgeble.ai>
 References: <20221226063625.1913-1-anand@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221225_223645_270060_6B047C2F 
-X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-CacheID: sfid-20221225_223651_563591_8350C133 
+X-CRM114-Status: UNSURE (   9.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,75 +98,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add ethernet pin-control for rv1126 SoC.
+Rockchip RV1126 has GMAC 10/100/1000M ethernet controller
+add GMAC node for RV1126 SoC.
 
 Signed-off-by: Anand Moon <anand@edgeble.ai>
 ---
 drop SoB of Jagan Teki
 ---
- arch/arm/boot/dts/rv1126-pinctrl.dtsi | 42 +++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ arch/arm/boot/dts/rv1126.dtsi | 63 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rv1126-pinctrl.dtsi b/arch/arm/boot/dts/rv1126-pinctrl.dtsi
-index 4bc419cc1210..b77021772781 100644
---- a/arch/arm/boot/dts/rv1126-pinctrl.dtsi
-+++ b/arch/arm/boot/dts/rv1126-pinctrl.dtsi
-@@ -11,6 +11,14 @@
-  * by adding changes at end of this file.
-  */
- &pinctrl {
-+	clk_out_ethernet {
-+		/omit-if-no-ref/
-+		clk_out_ethernetm1_pins: clk-out-ethernetm1-pins {
-+			rockchip,pins =
-+				/* clk_out_ethernet_m1 */
-+				<2 RK_PC5 2 &pcfg_pull_none>;
-+		};
-+	};
- 	emmc {
- 		/omit-if-no-ref/
- 		emmc_rstnout: emmc-rstnout {
-@@ -61,6 +69,40 @@ i2c0_xfer: i2c0-xfer {
- 				<0 RK_PB5 1 &pcfg_pull_none_drv_level_0_smt>;
- 		};
+diff --git a/arch/arm/boot/dts/rv1126.dtsi b/arch/arm/boot/dts/rv1126.dtsi
+index 1cb43147e90b..bae318c1d839 100644
+--- a/arch/arm/boot/dts/rv1126.dtsi
++++ b/arch/arm/boot/dts/rv1126.dtsi
+@@ -90,6 +90,69 @@ xin24m: oscillator {
+ 		#clock-cells = <0>;
  	};
-+	rgmii {
-+		/omit-if-no-ref/
-+		rgmiim1_pins: rgmiim1-pins {
-+			rockchip,pins =
-+				/* rgmii_mdc_m1 */
-+				<2 RK_PC2 2 &pcfg_pull_none>,
-+				/* rgmii_mdio_m1 */
-+				<2 RK_PC1 2 &pcfg_pull_none>,
-+				/* rgmii_rxclk_m1 */
-+				<2 RK_PD3 2 &pcfg_pull_none>,
-+				/* rgmii_rxd0_m1 */
-+				<2 RK_PB5 2 &pcfg_pull_none>,
-+				/* rgmii_rxd1_m1 */
-+				<2 RK_PB6 2 &pcfg_pull_none>,
-+				/* rgmii_rxd2_m1 */
-+				<2 RK_PC7 2 &pcfg_pull_none>,
-+				/* rgmii_rxd3_m1 */
-+				<2 RK_PD0 2 &pcfg_pull_none>,
-+				/* rgmii_rxdv_m1 */
-+				<2 RK_PB4 2 &pcfg_pull_none>,
-+				/* rgmii_txclk_m1 */
-+				<2 RK_PD2 2 &pcfg_pull_none_drv_level_3>,
-+				/* rgmii_txd0_m1 */
-+				<2 RK_PC3 2 &pcfg_pull_none_drv_level_3>,
-+				/* rgmii_txd1_m1 */
-+				<2 RK_PC4 2 &pcfg_pull_none_drv_level_3>,
-+				/* rgmii_txd2_m1 */
-+				<2 RK_PD1 2 &pcfg_pull_none_drv_level_3>,
-+				/* rgmii_txd3_m1 */
-+				<2 RK_PA4 2 &pcfg_pull_none_drv_level_3>,
-+				/* rgmii_txen_m1 */
-+				<2 RK_PC6 2 &pcfg_pull_none_drv_level_3>;
+ 
++	gmac_clkin_m0: external-gmac-clockm0 {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "clk_gmac_rgmii_clkin_m0";
++		#clock-cells = <0>;
++	};
++
++	gmac_clkini_m1: external-gmac-clockm1 {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "clk_gmac_rgmii_clkin_m1";
++		#clock-cells = <0>;
++	};
++
++	gmac: ethernet@ffc40000 {
++		compatible = "rockchip,rv1126-gmac", "snps,dwmac-4.20a";
++		reg = <0xffc40000 0x4000>;
++		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "macirq", "eth_wake_irq";
++		rockchip,grf = <&grf>;
++		clocks = <&cru CLK_GMAC_SRC>, <&cru CLK_GMAC_TX_RX>,
++			 <&cru CLK_GMAC_TX_RX>, <&cru CLK_GMAC_REF>,
++			 <&cru ACLK_GMAC>, <&cru PCLK_GMAC>,
++			 <&cru CLK_GMAC_TX_RX>, <&cru CLK_GMAC_PTPREF>;
++		clock-names = "stmmaceth", "mac_clk_rx",
++			      "mac_clk_tx", "clk_mac_ref",
++			      "aclk_mac", "pclk_mac",
++			      "clk_mac_speed", "ptp_ref";
++		resets = <&cru SRST_GMAC_A>;
++		reset-names = "stmmaceth";
++
++		snps,mixed-burst;
++		snps,tso;
++
++		snps,axi-config = <&stmmac_axi_setup>;
++		snps,mtl-rx-config = <&mtl_rx_setup>;
++		snps,mtl-tx-config = <&mtl_tx_setup>;
++		status = "disabled";
++
++		mdio: mdio {
++			compatible = "snps,dwmac-mdio";
++			#address-cells = <0x1>;
++			#size-cells = <0x0>;
++		};
++
++		stmmac_axi_setup: stmmac-axi-config {
++			snps,wr_osr_lmt = <4>;
++			snps,rd_osr_lmt = <8>;
++			snps,blen = <0 0 0 0 16 8 4>;
++		};
++
++		mtl_rx_setup: rx-queues-config {
++			snps,rx-queues-to-use = <1>;
++			queue0 {};
++		};
++
++		mtl_tx_setup: tx-queues-config {
++			snps,tx-queues-to-use = <1>;
++			queue0 {};
 +		};
 +	};
- 	sdmmc0 {
- 		/omit-if-no-ref/
- 		sdmmc0_bus4: sdmmc0-bus4 {
++
+ 	grf: syscon@fe000000 {
+ 		compatible = "rockchip,rv1126-grf", "syscon", "simple-mfd";
+ 		reg = <0xfe000000 0x20000>;
 -- 
 2.39.0
 
