@@ -4,76 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4FEC3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Dec 2022 05:29:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3F8C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Dec 2022 13:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1vpU7cRxbGZ2bprYWLYenBSHpb+kW1z1j5xki3qeDzo=; b=XNyw8kpkfapEDb
-	Vz2iLKurIE+yweKsVZri7KBiRh5eb4Hk+EhXQdWRNyHMqgRsRAc6IJw/RkIfRgfvXZn17tfZt6NEK
-	mbK4kQPH06h6EsWMejuWukQ0SxRYk4CU1jv6Ac6AFj55gArlKIIzm140NDKNEaBva7xbYnv8J+pi3
-	w8rLluXm2TUpL0vFOyseIfBSlYHKJJniZ1r2+LMdIErMzB7bkO76H5tXxgNGsSz6tn7XclBaLrGSF
-	4bDOxyt7FxSrp1W0/3hAgHZeLG7LkkrlaW8aMWHrKN8puZd3D1nyA229XF/+CdR+oZ8ZNXDxZb2ww
-	IUbKYInHsEnF+SUcmNkA==;
+	List-Owner; bh=v45W3f13ZKdtxvsheSeIHWuCn+2qR2sABc2fNLzXFa0=; b=k9wMMkkJjOQZ/s
+	hckqZi2Pb08Hu8E+PtYnQ0fz6/Y2ANmgPGlVd+v0ty1MxKPgtd1cwW9ukTaPFDc0laoCa3Xz/JN5e
+	zc4viShJ5NHrMtB4GkO4lyNrk5MOPMMOhXmvCG2ec6eV8hp6dYmYG7hnHACq4a8G2gbGO/Ynic778
+	6dAmyMROq0j/+RKbZX+aUE40m6XLxPH5h1OUFW5sQcK1Gz7m3i+m7/RYZTkKUifQD0gK7gKLlxDcB
+	eFATVoy+JYnMSBnqEvAPUsYRvBEhv5MtX/RNf4PB9/RgiAjra3RHeX4WRMjRXyI1ZOaRMI1qzYK1O
+	0GJ+2I/HyS1wCPZqsQdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAOzy-001xWZ-6e; Wed, 28 Dec 2022 05:29:06 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1pAWM0-0058aU-LQ; Wed, 28 Dec 2022 13:20:20 +0000
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAOza-001xN9-Ng
-	for linux-rockchip@lists.infradead.org; Wed, 28 Dec 2022 05:28:50 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id o2so9698852pjh.4
-        for <linux-rockchip@lists.infradead.org>; Tue, 27 Dec 2022 21:28:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9cAM4RhmUF/0okz7iGJZyGhb8wvgosg7Pe52G62TzuE=;
-        b=JGTuVx/19KQlpCvCoeEmPy73oDMhAn7fVSSmJgfHEX+2S7PV4Hksc4YduZq9w/truH
-         uJuU7bxjIiESuewVZq8SHZ9CNJylx1p6sYC7LeJqINs+8+geWB6fGwuNQ5FWmvmjFkmo
-         cjJ2NKoqj1SfJhKB+YlzR6M+/EyPs6lR0kUzg6JR1YYEZD/NYVTABQWVr3MRhrcKQeEY
-         RarBkVkfPt4crvf+YmnXF42s+cJ64RA5roSOrtnJKa/vyXnsvt/VEm8iOPkn/4fEyb8m
-         8N8C/+xYegf7pnFB7dh0Ys4ZwhGVnlkvPDvBsmN2Q91KZnOPuhBtjg/DL3KruKZDtF7i
-         BeSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9cAM4RhmUF/0okz7iGJZyGhb8wvgosg7Pe52G62TzuE=;
-        b=4ko6kvf0Wl4FcB75fTTakA2/ESycfd6stW7glIb7UGFGgp9ggFJoju/GzsUCrMUOQm
-         0uDA3mknGn12M8YZgiGF3Go7BdUXUBu5lc40q4es2+ss6E60oLXkQGF/IM6NIRp7FbN2
-         wU7zC/53ToVWwlHKFXpIa6BY1K+5J7szGCqtbwmAnk6PhKHw9UyJaD186I+TQS9Iqe1z
-         0NO232WzW4v5vroMmvZvD49GJEoIPNkRVIL+MDvP7FnvAuQDMcuDHQsdFMVJQTh5NTPN
-         jrcPSVz4fTZ+bLr0qj+XIMobA8Ic03VqPT6bqo/PqJTNP6tGNbKltWreOTtVWlXXfet3
-         iphQ==
-X-Gm-Message-State: AFqh2kryvcogt4aXZxjNuuqF00bW3x8a33cy+/OzoPNFLMwHDydaeqCc
-	bz/xKolceLIxpppr2lgH42KcHxRforwPGRGt+luCxg==
-X-Google-Smtp-Source: AMrXdXucD2UuV6eCz/qiNghJ5GxgT3TnOtddAezIMiy5Cbg7XzHb/zmA7oU/ii3ws+/T5IFcS9BIisTXbPI+gj6CLxI=
-X-Received: by 2002:a17:90b:1281:b0:225:be82:ba21 with SMTP id
- fw1-20020a17090b128100b00225be82ba21mr1650901pjb.209.1672205316516; Tue, 27
- Dec 2022 21:28:36 -0800 (PST)
+	id 1pAWLp-0058Tx-8D; Wed, 28 Dec 2022 13:20:10 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id BE22E320093C;
+	Wed, 28 Dec 2022 08:20:00 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Wed, 28 Dec 2022 08:20:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	tom-fitzhenry.me.uk; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm2; t=1672233600; x=1672320000; bh=NnxyuSjPe4
+	7CKfUwte6w8c6VBQb/k7DbuSDxv2BLmng=; b=WfyjGyqG12yhYjnnlt5yX0bY/s
+	c1uKXrryw2mU/oh5Fta4torBmnvK6GXs+ixYQgL4gehIHdm9+XRIBu9osoGiQBh8
+	NeOdLruTyqdEMCeb24P06V9X8UDvPJLMD2AaZKvu1ZEY7E/WOVuj3fale9ntQmU1
+	EFx9halZUjzdDE1yM+fe2GvuTfbUCq6J6Rs3xtAhg1lU6fRanJ4eLVxyt54smY7V
+	srWk/yLwkm2gjFasXJMcXbHIqGAf4S1e8yRED5PDf2sp8/2J2EqaGaaT5v48PbVZ
+	1lnhgkDZ+3xXZdvFPKqDAMM3ZpcrNvd7X8v5wPVkF3fsR9PoYi7e8cxBIbRw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1672233600; x=
+	1672320000; bh=NnxyuSjPe47CKfUwte6w8c6VBQb/k7DbuSDxv2BLmng=; b=t
+	78bjezcCqMhL/qEsXN52xffaVFBfszMEfSa6xYQ5qvMnN7yLY6C1CG4+bAz3Jj5p
+	t6aA2pP6NBzvLJ44oNUwW5NTeXTOmZO6cUqBAd3GptVTdN06CYe/tCtO1tA9sBcf
+	djPOjWvjaMj3xx0KdtR5q6WsQfWmrSt80i4+jcA2iWKeU+EoYVMCU6yQuHAasod4
+	x9xhoi48jCod2aUzPDWyWpIPAnYag4UQ/7ud5cUe485LHJ4cNax+wDch8ga//idF
+	fOLOyWkcUyPsXuioeM2sNvZc9ZFu6mQTn7szkWhm69Q7/563pe6rLYRjGq4EANZ5
+	Crr17XPGzwnKFyI/yurbQ==
+X-ME-Sender: <xms:f0KsY4-OCSSwjsN2AxNQN5xWdex9kw4YVm79doe5x4daF3525u-ElQ>
+    <xme:f0KsYwtJ8KN9cFNO08g3cgCi0zo6kqXw14L1O3k-QsaP8w9lfq9BIVdCaCAOyvSdq
+    aNjvqrC_26ZHiH_hg>
+X-ME-Received: <xmr:f0KsY-BTc4Z4uRrH-i8QAtF6P9rRSU2VBdNxBDhmncDeM2JCgWFdooSx5xSXls9CWbyLIt1U0KBoXPihbSfzKn4l>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedriedvgdehudcutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpefkffggfgfvvehfhffujggtgfesthekredttdefjeenucfhrhhomhepvfhomhcu
+    hfhithiihhgvnhhrhicuoehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruhhkqe
+    enucggtffrrghtthgvrhhnpeeiueelgedvudfhkeeufeeiuefhteeftdffhfefudehjeet
+    hedtfeeikeevieffgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
+    hlfhhrohhmpehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruhhk
+X-ME-Proxy: <xmx:f0KsY4di2bMNhJ7Jj3CMM5B-mA0K4lMHMv38ArJTepf789lv8uSa6w>
+    <xmx:f0KsY9MBzATAzVxlLCG_NGVeLZgzgBMY6pY7FNodevssuBN3BKlXmQ>
+    <xmx:f0KsYyn16n3v4StfC8hzQQ3csWM_XNST5ty3qJEjrQ_V3nDmPlwFlA>
+    <xmx:gEKsY_3s_-bJy5Sl3TehTCToUXiFNdCiYP6xr4uUMNDJVqt61kZK4Q>
+Feedback-ID: iefc945ae:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 28 Dec 2022 08:19:55 -0500 (EST)
+Message-ID: <b7204e9a-cb23-c2ed-88de-0d6271bba98a@tom-fitzhenry.me.uk>
+Date: Thu, 29 Dec 2022 00:19:52 +1100
 MIME-Version: 1.0
-References: <20221227104837.27208-1-anand@edgeble.ai> <20221227104837.27208-3-anand@edgeble.ai>
- <732352f3-fda0-039e-4fef-ceb6f5348086@gmail.com>
-In-Reply-To: <732352f3-fda0-039e-4fef-ceb6f5348086@gmail.com>
-From: Anand Moon <anand@edgeble.ai>
-Date: Wed, 28 Dec 2022 10:58:25 +0530
-Message-ID: <CACF1qnfEjGCQ2e5DQqszc6Ak0XR5+NB-PSBFJtnC1P5O9hNGqA@mail.gmail.com>
-Subject: Re: [PATCHv3 linux-next 3/4] ARM: dts: rockchip: rv1126: Add GMAC node
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Richard Cochran <richardcochran@gmail.com>, Jagan Teki <jagan@edgeble.ai>, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	netdev@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Content-Language: en-US
+To: Javier Martinez Canillas <javierm@redhat.com>,
+ linux-kernel@vger.kernel.org
+Cc: Peter Robinson <pbrobinson@gmail.com>, Martijn Braam <martijn@brixit.nl>,
+ Maya Matuszczyk <maccraft123mc@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Neal Gompa <ngompa13@gmail.com>, =?UTF-8?Q?Kamil_Trzci=c5=84ski?=
+ <ayufan@ayufan.eu>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Robert Mader <robert.mader@posteo.de>,
+ Onuralp Sezer <thunderbirdtr@fedoraproject.org>, Ondrej Jirman
+ <megi@xff.cz>, dri-devel@lists.freedesktop.org,
+ Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20221227110335.2923359-1-javierm@redhat.com>
+ <20221227110335.2923359-5-javierm@redhat.com>
+From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+Subject: Re: [PATCH v3 4/4] arm64: dts: rk3399-pinephone-pro: Add internal
+ display support
+In-Reply-To: <20221227110335.2923359-5-javierm@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_212847_507856_1297BAF6 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20221228_052009_358385_B6220100 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +112,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan
-
-On Tue, 27 Dec 2022 at 17:25, Johan Jonker <jbx6244@gmail.com> wrote:
->
->
->
-> On 12/27/22 11:48, Anand Moon wrote:
-> > Rockchip RV1126 has GMAC 10/100/1000M ethernet controller
-> > add GMAC node for RV1126 SoC.
-> >
-> > Signed-off-by: Anand Moon <anand@edgeble.ai>
-> > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> > ---
-> > v3: drop the gmac_clkin_m0 & gmac_clkin_m1 fix clock node which are not
-> > used, Add SoB of Jagan Teki.
-> > V2: drop SoB of Jagan Teki.
-> > ---
-> >  arch/arm/boot/dts/rv1126.dtsi | 49 +++++++++++++++++++++++++++++++++++
-> >  1 file changed, 49 insertions(+)
-> >
-> > diff --git a/arch/arm/boot/dts/rv1126.dtsi b/arch/arm/boot/dts/rv1126.dtsi
-> > index 1cb43147e90b..e20fdd0d333c 100644
-> > --- a/arch/arm/boot/dts/rv1126.dtsi
-> > +++ b/arch/arm/boot/dts/rv1126.dtsi
-> > @@ -90,6 +90,55 @@ xin24m: oscillator {
-> >               #clock-cells = <0>;
-> >       };
-> >
->
-> > +     gmac: ethernet@ffc40000 {
->
-> Nodes with a reg property are sort on reg address.
-> Heiko can fix that.. ;)
->
->         timer0: timer@ff660000 {
->         gmac: ethernet@ffc40000 {
->         emmc: mmc@ffc50000 {
->
-
-will sort these on reg address. In the future. or the next version.
-
-Thanks.
--Anand
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjcvMTIvMjIgMjI6MDMsIEphdmllciBNYXJ0aW5leiBDYW5pbGxhcyB3cm90ZToKPiBGcm9t
+OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiAKPiBUaGUgcGhvbmUncyBkaXNwbGF5IGlz
+IHVzaW5nIEhhbm5zdGFyIExDRCBwYW5lbCwgYW5kIEdvb2RpeCBiYXNlZAo+IHRvdWNoc2NyZWVu
+LiBTdXBwb3J0IGl0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZm
+LmN6Pgo+IENvLWRldmVsb3BlZC1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+
+Cj4gU2lnbmVkLW9mZi1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gQ28t
+ZGV2ZWxvcGVkLWJ5OiBLYW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1Pgo+IFNpZ25l
+ZC1vZmYtYnk6IEthbWlsIFRyemNpxYRza2kgPGF5dWZhbkBheXVmYW4uZXU+Cj4gU2lnbmVkLW9m
+Zi1ieTogSmF2aWVyIE1hcnRpbmV6IENhbmlsbGFzIDxqYXZpZXJtQHJlZGhhdC5jb20+CgpUZXN0
+ZWQtYnk6IFRvbSBGaXR6aGVucnkgPHRvbUB0b20tZml0emhlbnJ5Lm1lLnVrPgoKRGlzcGxheSBh
+bmQgdG91Y2hzY3JlZW4gd29ya3Mgb24gbXkgUGluZXBob25lIFBybywgdGhhbmtzIGZvciB0aGUg
+Cm1haW5saW5pbmchCgo+IEBAIC0zNjcsNiArNDc0LDEwIEBAIHZjYzF2OF9jb2RlY19lbjogdmNj
+MXY4LWNvZGVjLWVuIHsKPiAgIAl9Owo+ICAgfTsKPiAgIAo+ICsmcHdtMCB7Cj4gKwlzdGF0dXMg
+PSAib2theSI7Cj4gK307CgpQbGVhc2UgbW92ZSAmcHdtMCBiZWZvcmUgJnNkaW8wLCB0byBrZWVw
+IHRoaXMgfmFscGhhYmV0aWNhbC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
