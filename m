@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25359C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Dec 2022 16:41:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77FE3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Dec 2022 16:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tewP3xjJ7+E8JA8mmL9CBNGtt4yL2N6E8rdTEf2EkFY=; b=Ivu90OwuUZjUsh
-	kJk4WxiNUANnKRSD5l70MKU9qfX2L5shQ3edPqgCYw1shqqJqI68mwE/yH+zU71c+EKs7HQZ5KZgv
-	Fpd6IDclvGx74cCVrHRPGKydznEFitTgjXvODqxzxCaa0QuIVqxRPr1U0vq5UmVASuayqwCYshWq1
-	VTmV6v3TlP4Jrx1vq5CsGPIJPBlFnYKnsnwmFVwVaEEoNfs7GrVyE1cl4eWdF0h3CowVKcuLXU0NK
-	ILXuJ9nS/vfPHwG8KD8EukXA1WZPvQx+n/HHWTou2NQFDjIEDkhp76pxAuAPY360Gyo2MiRUmhU8X
-	5TWRfN8A4xr6Ips17UIw==;
+	List-Owner; bh=tewP3xjJ7+E8JA8mmL9CBNGtt4yL2N6E8rdTEf2EkFY=; b=x2ErXBi8zhnSzw
+	ly9uNQXwZGnSIA4fzhphZaipRPdIhXSV+sMFGinaTszg0UPNOFO9/V35Yqny5LOf+AaigbLbYtmmh
+	xl73bQaJJ9ONAwysOZZz9GzJJNt9dfl3wHPTWmSooM9qx1o/ID5h9DKZ5v1erS7m1wvjtFv+CI6VO
+	JH/7tqg0gk+7YDVmItQdEMBu5YhPNUDDv8GvPFFn5zBZYFaCN+Hsyy49ZdyVaQQXOCO19f8m7qZdc
+	JVCcJLkQKIfJE+eYtoP1EV52jV9tw0RA4FcdKVN6IxSBYpkdzyjG6mkdUHIruaUpIEO/gicrbDHkd
+	7egM4dCy24dg19+eo44w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAZUt-006RgE-FC; Wed, 28 Dec 2022 16:41:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pAZdO-006Vfb-2R; Wed, 28 Dec 2022 16:50:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAZUh-006Rba-9N; Wed, 28 Dec 2022 16:41:33 +0000
+	id 1pAZd6-006VUB-Tm; Wed, 28 Dec 2022 16:50:14 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A42A16155B;
-	Wed, 28 Dec 2022 16:41:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B67BBC433D2;
-	Wed, 28 Dec 2022 16:41:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 792116156C;
+	Wed, 28 Dec 2022 16:50:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82131C433EF;
+	Wed, 28 Dec 2022 16:50:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1672245690;
+	s=korg; t=1672246211;
 	bh=nUSiROIuywcjFmshTbQQuHbfp+Kk9J/uXgecjOrgqXc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UfqkhmZXfl1J4ubGeyZqpal3NdE7UOmgWta0MYnzI0mDrVFeHvQBf2jPwLd7KLm9t
-	 naeHAoVwzWOWLAj87Qc1jYs7i9ltyz13F3uccl/Is4M7l0A4N+2K9GkSAnN1WoIzjg
-	 SUxXHT+AufxRIm/ceolSSUzkevDcFXebRIERWCaQ=
+	b=haB4fgICIv4nIId+fDbtmXRrEqEK8W7kB7rTR3C5t/O3RN014ClIcilOpgaCzKGNm
+	 hDuN/zeUrRIoa0J/XtnFf3MXwJJ4xb06q0+NPEsGHwl5ypAGR7iVeeVasqsnJ4AiYs
+	 pYWYPgvMowfm7NBBIA2Z5ru7Dj+1pyVKknCGHIs8=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: stable@vger.kernel.org
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -49,16 +49,16 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-rockchip@lists.infradead.org,
 	Daniel Vetter <daniel.vetter@ffwll.ch>,
 	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 6.0 0938/1073] drm/rockchip: Use drm_mode_copy()
-Date: Wed, 28 Dec 2022 15:42:06 +0100
-Message-Id: <20221228144353.508088756@linuxfoundation.org>
+Subject: [PATCH 6.1 1003/1146] drm/rockchip: Use drm_mode_copy()
+Date: Wed, 28 Dec 2022 15:42:22 +0100
+Message-Id: <20221228144357.613090753@linuxfoundation.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221228144328.162723588@linuxfoundation.org>
-References: <20221228144328.162723588@linuxfoundation.org>
+In-Reply-To: <20221228144330.180012208@linuxfoundation.org>
+References: <20221228144330.180012208@linuxfoundation.org>
 User-Agent: quilt/0.67
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221228_084131_544302_0C39A2D3 
+X-CRM114-CacheID: sfid-20221228_085013_200675_F586FF4D 
 X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
