@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4A6C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Dec 2022 19:02:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CB7C3DA7A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Dec 2022 21:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFdqRrkrZvlSbjdA7cW6sYKGxZkc7EZ3JcxDE9J0ONE=; b=T3Vj2eOBklHwY1
-	/bAN/OTibMXqMWkHPx7xm53t7OrSmNd/CG8j+A0CxEfe+8tpEibyJrDRHfZZClNs6tFwu1SjwF6R9
-	/NnC5rv/ff0kKH6GBJ4dSRinh/KUt8lBnfRaIZ38y3eINgWgIqZVLLcVodZR56te3+9aNedINQxGf
-	cfgx5hnk+0g/DZvkVgR5+OZ5kejlmGJNbhmGemY0TMxp0c2cmQ7jua/cLs7mJAHNw2G0lXmXIUF/g
-	ChHz4TU+5xSg4VqzsijXLrKXs9De2hs1ALBhHYXm1hmqsgcyPzIC+HYju2iywsE9POzDPs+krwfqK
-	yunickWMktSQnB3CEs8Q==;
+	List-Owner; bh=/R+Sk8/3M+6bwBvK0DjwLVb21npc+rZ0ND6gM6StCQo=; b=AbKv9k8AfLkBOn
+	EFCKPNR4FQVaIYnttY7dtiWQnMFwvEn8vZ3Bq05ySAH4rs8N4jlwHODMekHlCL7Nn+MexOAOgpwu2
+	gMGRMdYP00rxCTAWAwZwVKaj9vj3+m0D/zRsTdGMJeBV3yQ+DJut5p+dpGFNaL0oxp1PUwGY/Fkeo
+	d03rpOMaI9P+9qIXkyHKyoDWBmQkMdW/TPLDPH0DpdJEoxA/t+hIFR60N8ELXH9k1BrpH1qjR4fYX
+	xIl7q/G+unwI60TIkyWDhzhxWG1jH34ZcevyzLFsWoTH7zAqG+mHQm404Pin960pPvzPIiCIm8Kve
+	0cnUJmnCpKKplSk4FTag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAyAZ-0011jy-Ue; Thu, 29 Dec 2022 19:02:24 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([216.145.221.124])
+	id 1pB0B8-0026xD-V9; Thu, 29 Dec 2022 21:11:07 +0000
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAxcm-000m7h-Ue
-	for linux-rockchip@lists.infradead.org; Thu, 29 Dec 2022 18:27:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1672338444;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ncz/JzRiNhIzkJdS+Qxx5N7DoIcWvm3kfeKHRY93eqg=;
-	b=Z7VHiCaqsesVwB+oXV58/FuIz66fJiYbOPok+KccpFE6WC9mFMbGNdpTCd/1o9yzRMMUhR
-	vOe5JSrLBHkIn7i3gEHUOsURXtHZ75yKKYkt672eSvC+ZGbzLfLaDonm21pompgOelTfku
-	H3JflRIVx+MWUUF7qNmb3Qr3Cu8LMKM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-2-Bs1HfTSxMYGSCKhFaakdGg-1; Thu, 29 Dec 2022 13:27:22 -0500
-X-MC-Unique: Bs1HfTSxMYGSCKhFaakdGg-1
-Received: by mail-wm1-f71.google.com with SMTP id m38-20020a05600c3b2600b003d1fc5f1f80so13036566wms.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 29 Dec 2022 10:27:22 -0800 (PST)
+	id 1pB0B3-0026un-IB
+	for linux-rockchip@lists.infradead.org; Thu, 29 Dec 2022 21:11:02 +0000
+Received: by mail-oi1-x22d.google.com with SMTP id j130so12436647oif.4
+        for <linux-rockchip@lists.infradead.org>; Thu, 29 Dec 2022 13:11:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ytpOR5QKWww4Z2Cv85ErUsWgiGHeMk8+Lk2wYOFtAtw=;
+        b=xbFD/xyyvlgiwXtsMAxGjOb+jsXVwyc4HW4hneMivB6velLE6QyBbjxoUe8EUeuLlJ
+         86104vtAl7L3T3sWLVR2Ak49fVJd/web83caPH64VqDtv90t9YEhfVMx//GTpSFNNqVF
+         fLmtNqSSxqKdr06gi2BFgfHePwCu9VtkHnsJ1eOKIF7jfv1o6vXmislXFnuKy42DTxqu
+         g2TyFNqdzuDvE1NlTLXrEjxO0BGZJ5Llk8jHSTMP54OcQeX9pImEc4R7cymQMtOqDTi/
+         eKq9Yawt+2eU4AoXTezethraApb1YAYj6Pw4PPkeHCJBn41e8kLdgFwvyd9pcU+pWQBp
+         Ag5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ncz/JzRiNhIzkJdS+Qxx5N7DoIcWvm3kfeKHRY93eqg=;
-        b=JRVDqkmBD13OD+vLgDd2Fm6YgtlcT7fXZRhK6fM6sHIIkd6kFz7Np6iQ72NHle7rkn
-         KR4kp3Kyd6KruyHCX9zJa1YVpOZKmEz/pJVgcqmUCMEjWrBq/wzuw0stDlb986JyCYQR
-         S/QOWP+WnmVmcWNPjKYqMh+EMX3YE2ksOnGJNTDI2j5YRiJwC4Fxv5kel/4EbaYFR1WW
-         btBmYv6KOdBeJ8HMV0W9g3zABbVJXblJW+xmkjpgiwDObutN/M4vj76cpqp6RNmZjcT3
-         AqeMun6YfrqipwrK31O5ptDGVYbL9osPPbkIxcFcTsGDgQnEorq0EBiMRSBKTrR2ltDb
-         9orQ==
-X-Gm-Message-State: AFqh2koDPlQSsv1mfTkReZpQvjP5GeEgQ8Prtw9v/rBjhVBXmZHHrrBZ
-	Rdw32WFugLCv6VUqKgqsuHQM6WFGSevOSGYPm2Stp98W1nuel5xXuzyEtkh7UA0q295YqAqhsWQ
-	rpQ2C/zMjqHAX0Htg7cOlib0Z1BAhhbEA
-X-Received: by 2002:a05:600c:34c2:b0:3cf:7397:c768 with SMTP id d2-20020a05600c34c200b003cf7397c768mr20815948wmq.30.1672338441682;
-        Thu, 29 Dec 2022 10:27:21 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXsCc4gewdGeIbLXPGQ/OrYxNRihTGtBQpf+uuO+YOr1Ab2iTKmz/boWaAqV5T2Mf4PPK2R80w==
-X-Received: by 2002:a05:600c:34c2:b0:3cf:7397:c768 with SMTP id d2-20020a05600c34c200b003cf7397c768mr20815935wmq.30.1672338441496;
-        Thu, 29 Dec 2022 10:27:21 -0800 (PST)
-Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id g7-20020a05600c4ec700b003d978f8f255sm22278897wmq.27.2022.12.29.10.27.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Dec 2022 10:27:21 -0800 (PST)
-Message-ID: <257b19f7-89ce-39cd-a403-b5a03d92c7bf@redhat.com>
-Date: Thu, 29 Dec 2022 19:27:20 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ytpOR5QKWww4Z2Cv85ErUsWgiGHeMk8+Lk2wYOFtAtw=;
+        b=GtwjUe81GkVUjiUglC3fVyZn4q+6y/E4PRIkMdU2ixTBjV1z1lJNzsjVy6dAuKOEB0
+         Nv+CaPWZtBatTV5YlecCQdd/lzX53xTOkd5RDpYxde2ZYbCH++wGovoOvZly42OqLnTZ
+         dZ+mkcm0i2PH88zvwvSDKwKASRWFJPTWgJrcIgMCdoMGZJ5LRpoIS8mIYQTi7/f1weNF
+         c719fW+wX7sxeVNSrOY3rCy79ra3qKVI/D8Hy8/+tJtGhoG/h8JN2RLPHty5IYIPe3f7
+         t+Oq3dxwHaBDQExdRlIAsntmdRhRutzrnZxBlxYi5QqfHFcdZaG2AFtfhh8qLCBt4tGs
+         nImQ==
+X-Gm-Message-State: AFqh2kq3SeDW7f3hkXGmdZeydx7MNKxD6peFI9piPGnaYb0CQ70cj5my
+	FD6+QaqujK/uJcLxtUdXfKL9rjjRQznrfIDKoeyDHg==
+X-Google-Smtp-Source: AMrXdXvmYVRVuctXWIBSVhNIR2w3Wbao95qnogH453MhyUTn81jk1LWCyFZbpRJUL5cnYYT094MnX3RBubSmKHxwWQM=
+X-Received: by 2002:aca:3dd7:0:b0:35b:8358:aed4 with SMTP id
+ k206-20020aca3dd7000000b0035b8358aed4mr1552718oia.291.1672348260189; Thu, 29
+ Dec 2022 13:11:00 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH] mfd: rk808: re-add rk808-clkout to RK818
-To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Lee Jones <lee@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Ondrej Jirman <megi@xff.cz>, Martijn Braam <martijn@brixit.nl>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221228140708.26431-1-tom@tom-fitzhenry.me.uk>
-From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221228140708.26431-1-tom@tom-fitzhenry.me.uk>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+References: <20221215185211.1560736-1-macroalpha82@gmail.com> <20221215185211.1560736-2-macroalpha82@gmail.com>
+In-Reply-To: <20221215185211.1560736-2-macroalpha82@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 29 Dec 2022 22:12:54 +0100
+Message-ID: <CACRpkdYR1VOwHjUo-NKZgTuMnx5GUUtUjKYbAg0sZXy0064LNg@mail.gmail.com>
+Subject: Re: [PATCH V6 1/4] drm: of: Add drm_of_get_dsi_bus helper function
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	maccraft123mc@gmail.com, tzimmermann@suse.de, mripard@kernel.org, 
+	maarten.lankhorst@linux.intel.com, heiko@sntech.de, 
+	linux-rockchip@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, 
+	robh+dt@kernel.org, daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, 
+	thierry.reding@gmail.com, Chris Morgan <macromorgan@hotmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_102729_140576_C40C2979 
-X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-CacheID: sfid-20221229_131101_658970_91F1BCF7 
+X-CRM114-Status: UNSURE (   9.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,32 +90,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Tom,
+On Thu, Dec 15, 2022 at 7:52 PM Chris Morgan <macroalpha82@gmail.com> wrote:
 
-On 12/28/22 15:07, Tom Fitzhenry wrote:
-> Fixes RK818 (e.g. on Pinephone Pro) to register its clock, without which
-> dependent devices (e.g. wifi/BT, via sdio-wifi-pwrseq) fail to probe.
-> 
-> This line was removed in commit 3633daacea2e
-> ("mfd: rk808: Permit having multiple PMIC instances"), but only from RK818.
-> 
+> From: Chris Morgan <macromorgan@hotmail.com>
+>
+> Add helper function to find DSI host for devices where DSI panel is not
+> a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
+> official Raspberry Pi touchscreen display).
+>
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Maybe add a Fixes: 3633daacea2e ("mfd: rk808: Permit having multiple PMIC instances") ?
+The kernel test robot is complaining because the stub isn't compiling,
+because of a copy-paste error (superfluous semicolon).
 
-> Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-> ---
+If you fix this up and resend I think we are ready with the patches!
 
-The patch looks good to me.
-
-Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
-
--- 
-Best regards,
-
-Javier Martinez Canillas
-Core Platforms
-Red Hat
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
