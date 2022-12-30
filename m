@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CB7C3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Dec 2022 21:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 426C3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Dec 2022 08:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/R+Sk8/3M+6bwBvK0DjwLVb21npc+rZ0ND6gM6StCQo=; b=AbKv9k8AfLkBOn
-	EFCKPNR4FQVaIYnttY7dtiWQnMFwvEn8vZ3Bq05ySAH4rs8N4jlwHODMekHlCL7Nn+MexOAOgpwu2
-	gMGRMdYP00rxCTAWAwZwVKaj9vj3+m0D/zRsTdGMJeBV3yQ+DJut5p+dpGFNaL0oxp1PUwGY/Fkeo
-	d03rpOMaI9P+9qIXkyHKyoDWBmQkMdW/TPLDPH0DpdJEoxA/t+hIFR60N8ELXH9k1BrpH1qjR4fYX
-	xIl7q/G+unwI60TIkyWDhzhxWG1jH34ZcevyzLFsWoTH7zAqG+mHQm404Pin960pPvzPIiCIm8Kve
-	0cnUJmnCpKKplSk4FTag==;
+	List-Owner; bh=aYknvZK+9Lmb2f4bYHMSW2jRyEPKy896VRhUFsKqViw=; b=cYERDQb17di2eO
+	tWGeCc3I9flyCLPg+J9k7Gi+zj/xTawB8XxE4GHll/hEPuWKqQ0Y2kWHtSGPhdA2z9PODZL0Xu8+h
+	+xXhrSzwvAp6z6QMtnXBygf+32JJzkCgWpwh/91iXsYRg1xxrK5OATvHXV+oo3HfkTU/OOxFnYsHT
+	HkgrCTH8biRIxGrWo0KFwbJRXaBa7b8sGjP9Jotakoe7aa3pkGgW8quTR72m31VdQHRNLoYvclHP/
+	16AnzKGCT6BarSLzxQAsmfrNE3Bhi0ZFCC4uNM9QQOcc7ljCKp8TmpOqHcVGy96Vz/ElesS8Detgh
+	FuzAr1tw8J2tuNz/Oi/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB0B8-0026xD-V9; Thu, 29 Dec 2022 21:11:07 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1pBB00-007Ogw-3R; Fri, 30 Dec 2022 08:44:20 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB0B3-0026un-IB
-	for linux-rockchip@lists.infradead.org; Thu, 29 Dec 2022 21:11:02 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id j130so12436647oif.4
-        for <linux-rockchip@lists.infradead.org>; Thu, 29 Dec 2022 13:11:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ytpOR5QKWww4Z2Cv85ErUsWgiGHeMk8+Lk2wYOFtAtw=;
-        b=xbFD/xyyvlgiwXtsMAxGjOb+jsXVwyc4HW4hneMivB6velLE6QyBbjxoUe8EUeuLlJ
-         86104vtAl7L3T3sWLVR2Ak49fVJd/web83caPH64VqDtv90t9YEhfVMx//GTpSFNNqVF
-         fLmtNqSSxqKdr06gi2BFgfHePwCu9VtkHnsJ1eOKIF7jfv1o6vXmislXFnuKy42DTxqu
-         g2TyFNqdzuDvE1NlTLXrEjxO0BGZJ5Llk8jHSTMP54OcQeX9pImEc4R7cymQMtOqDTi/
-         eKq9Yawt+2eU4AoXTezethraApb1YAYj6Pw4PPkeHCJBn41e8kLdgFwvyd9pcU+pWQBp
-         Ag5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ytpOR5QKWww4Z2Cv85ErUsWgiGHeMk8+Lk2wYOFtAtw=;
-        b=GtwjUe81GkVUjiUglC3fVyZn4q+6y/E4PRIkMdU2ixTBjV1z1lJNzsjVy6dAuKOEB0
-         Nv+CaPWZtBatTV5YlecCQdd/lzX53xTOkd5RDpYxde2ZYbCH++wGovoOvZly42OqLnTZ
-         dZ+mkcm0i2PH88zvwvSDKwKASRWFJPTWgJrcIgMCdoMGZJ5LRpoIS8mIYQTi7/f1weNF
-         c719fW+wX7sxeVNSrOY3rCy79ra3qKVI/D8Hy8/+tJtGhoG/h8JN2RLPHty5IYIPe3f7
-         t+Oq3dxwHaBDQExdRlIAsntmdRhRutzrnZxBlxYi5QqfHFcdZaG2AFtfhh8qLCBt4tGs
-         nImQ==
-X-Gm-Message-State: AFqh2kq3SeDW7f3hkXGmdZeydx7MNKxD6peFI9piPGnaYb0CQ70cj5my
-	FD6+QaqujK/uJcLxtUdXfKL9rjjRQznrfIDKoeyDHg==
-X-Google-Smtp-Source: AMrXdXvmYVRVuctXWIBSVhNIR2w3Wbao95qnogH453MhyUTn81jk1LWCyFZbpRJUL5cnYYT094MnX3RBubSmKHxwWQM=
-X-Received: by 2002:aca:3dd7:0:b0:35b:8358:aed4 with SMTP id
- k206-20020aca3dd7000000b0035b8358aed4mr1552718oia.291.1672348260189; Thu, 29
- Dec 2022 13:11:00 -0800 (PST)
+	id 1pBAza-007OUW-1U; Fri, 30 Dec 2022 08:43:57 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7FF72B81A96;
+	Fri, 30 Dec 2022 08:43:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D86AC433D2;
+	Fri, 30 Dec 2022 08:43:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672389830;
+	bh=oxPX55GSzrEg4Xut6zu5HPxj2Ni8vtV2mF93cd30lns=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=roDK69SfgitggRUmVYhS1zUe2p+s9s47eId7r7uDqmn66uyeyQS7KtAAgRa1c8/OO
+	 Wl26PgoSJLBGjFFLhssXINx0Wz7ZM5ueJIvqltcGObsUGXUCLeDATQZn7lxDWsOdhu
+	 qhtYL+x7ynbWQj5eCAE63YIAXkN7PQWC13jfG0fTgWagj0LhwbtzLAL/cBDw1YnLtg
+	 Y+6jYrOa7UTTB3JkKQIpoV76+3fBhJc/JEa0BO/xvlpmBq+T4Z/54tou5W/e1VO/f8
+	 qN+nan6MDluay6Hl3ME4LQmmYow8WdR5YalsUzIl8eCJe/e9PQ2fMenyJqIwmJe4ro
+	 guFTz/dtfpyeQ==
+From: Felipe Balbi <balbi@kernel.org>
+To: Rob Herring <robh@kernel.org>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, "linux-rockchip@lists.infradead.org"
+ <linux-rockchip@lists.infradead.org>, Johan Jonker <jbx6244@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-usb@vger.kernel.org"
+ <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains
+ property
+In-Reply-To: <CAL_Jsq+gCi8g0jY2ic1tJebc_JijMU-GntWQg09q+X41O3=1RA@mail.gmail.com>
+References: <20221219191038.1973807-1-robh@kernel.org>
+ <87edsua5q4.fsf@balbi.sh>
+ <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
+ <878riy9ztm.fsf@balbi.sh> <20221223235712.h54lggnjjuu3weol@synopsys.com>
+ <CAL_Jsq+gCi8g0jY2ic1tJebc_JijMU-GntWQg09q+X41O3=1RA@mail.gmail.com>
+Date: Fri, 30 Dec 2022 10:43:44 +0200
+Message-ID: <87o7rlffi7.fsf@balbi.sh>
 MIME-Version: 1.0
-References: <20221215185211.1560736-1-macroalpha82@gmail.com> <20221215185211.1560736-2-macroalpha82@gmail.com>
-In-Reply-To: <20221215185211.1560736-2-macroalpha82@gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 29 Dec 2022 22:12:54 +0100
-Message-ID: <CACRpkdYR1VOwHjUo-NKZgTuMnx5GUUtUjKYbAg0sZXy0064LNg@mail.gmail.com>
-Subject: Re: [PATCH V6 1/4] drm: of: Add drm_of_get_dsi_bus helper function
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	maccraft123mc@gmail.com, tzimmermann@suse.de, mripard@kernel.org, 
-	maarten.lankhorst@linux.intel.com, heiko@sntech.de, 
-	linux-rockchip@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, 
-	robh+dt@kernel.org, daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, 
-	thierry.reding@gmail.com, Chris Morgan <macromorgan@hotmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_131101_658970_91F1BCF7 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221230_004355_631336_16DC1A1D 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,25 +82,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 15, 2022 at 7:52 PM Chris Morgan <macroalpha82@gmail.com> wrote:
 
-> From: Chris Morgan <macromorgan@hotmail.com>
+Hi,
+
+Rob Herring <robh@kernel.org> writes:
+> On Fri, Dec 23, 2022 at 5:57 PM Thinh Nguyen <Thinh.Nguyen@synopsys.com> wrote:
+>> > Rob Herring <robh@kernel.org> writes:
+>> > >> > The Rockchip RK3399 DWC3 node has 'power-domain' property which isn't
+>> > >> > allowed by the schema:
+>> > >> >
+>> > >> > usb@fe900000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+>> > >> >
+>> > >> > Allow DWC3 nodes to have a single power-domains entry. We could instead
+>> > >> > move the power-domains property to the parent wrapper node, but the
+>> > >> > could be an ABI break (Linux shouldn't care). Also, we don't want to
+>> > >> > encourage the pattern of wrapper nodes just to define resources such as
+>> > >> > clocks, resets, power-domains, etc. when not necessary.
+>> > >> >
+>> > >> > Signed-off-by: Rob Herring <robh@kernel.org>
+>> > >> > ---
+>> > >> >  Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
+>> > >> >  1 file changed, 3 insertions(+)
+>> > >> >
+>> > >> > diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > >> > index 6d78048c4613..bcefd1c2410a 100644
+>> > >> > --- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > >> > +++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+>> > >> > @@ -91,6 +91,9 @@ properties:
+>> > >> >          - usb2-phy
+>> > >> >          - usb3-phy
+>> > >> >
+>> > >> > +  power-domains:
+>> > >> > +    maxItems: 1
+>> > >>
+>> > >> AFAICT this can be incorrect. Also, you could have Cc the dwc3
+>> > >> maintainer to get comments.
+>>
+>> Felipe is correct. We have 2 power-domains: Core domain and PMU.
 >
-> Add helper function to find DSI host for devices where DSI panel is not
-> a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
-> official Raspberry Pi touchscreen display).
+> Power management unit? Performance management unit?
 >
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> That doesn't change that the rk3399 is 1 and we're stuck with it. So I
+> can say 1 or 2 domains, or we add the 2nd domain when someone needs
+> it.
 
-The kernel test robot is complaining because the stub isn't compiling,
-because of a copy-paste error (superfluous semicolon).
+Isn't the snps,dwc3.yaml document supposed to document dwc3's view of
+the world? In that case, dwc3 expects 2 power domains. It just so
+happens that in rk3399 they are fed from the same power supply, but
+dwc3' still thinks there are two of them. No?
 
-If you fix this up and resend I think we are ready with the patches!
+It's a similar situation when you have multiple clock domains with the
+same parent clock.
 
-Yours,
-Linus Walleij
+-- 
+balbi
 
 _______________________________________________
 Linux-rockchip mailing list
