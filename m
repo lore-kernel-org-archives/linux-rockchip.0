@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D24C3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jan 2023 09:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2986CC46467
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jan 2023 10:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9vpLxzhqBxvHkQGagBLrm5MoASiByj6aEy9T1cXiDiY=; b=exezDdFojTaWr3
-	uqYAEHL1M2wYezetEln3OZUPCRMcPokrXNIhG71RQyLd4rJeHlfgFgkwTCa4InynPj7KTPeW3gP5+
-	RAwpOmlrgkn6y4LsbmnxLpmXGvk2+nBYKM6/jjGFZ7zIVlEacKGchFwFDO0XjHSo1jvRAfXL/qOJR
-	k8FXDmuEKj6ef0ZYkaOETbZmN795qztPgtpQDqXAgMPeOc6Cv1Z+XMiDv67u6OnHD8T1ADTezIBm+
-	byyTiikBM66oIXKJewhnwNCX4huhCBIZzHeUYKYQ6KzNDssXtkjuWez/58MN69ECpijt9k1hbYtE+
-	mbbS8OA2TOuvq9YKPiZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uk/gHZmaHwAfrQz1cLLDu6hH7QkACv8jh+JxEtQzwAU=; b=LDGG7lWgV1y/5LlinXeWtLwFSk
+	gGFM/KjYYE7QpWOt9hhQu1ODLcX5Sq11oFR4UY29eltNmGywZTtvToHJr8p0HUl117omTpf1tHjzX
+	eKHr0j6YAzXF6QH4KnnF20U7tOXn/uS43WEWOByqX8Rtw3qkSh9tKdiN8cmh4gAkIllH9URsObPtl
+	BbcKxkW1zrxJEFikhx+icN24w79PCR4qE4qpJpotCLYWnmgKFJejRAxrKnD0lJJs3oiH1rk0ZjSwv
+	1ra+Mw0blv0EUF7VhLGD/JeI8NWGEX8gvmXR4WHj12X2HgQ0GZ+E7jy2QkA77YLIyjgazukunVZxN
+	qTSE/8BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCHTz-00A6Ct-H0; Mon, 02 Jan 2023 09:51:51 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pCHiZ-00AEeQ-1W; Mon, 02 Jan 2023 10:06:55 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCHNQ-00A2CQ-NP
-	for linux-rockchip@lists.infradead.org; Mon, 02 Jan 2023 09:45:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1672652700;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hrNAqV6ZY5ivQJapJxCgpk49bJb25LBax+4yjjic7Lg=;
-	b=Kpe1QT6dvsbCrkPs43Z7Fs74qSEFRgoRUayeykmRfE/FTxaWxKHlpiMZIZZHXtLX0dzxfh
-	Z19Aq0k0NtvStV7St8Fk4kZ5P8adqovzyK/nxfeJV/SsZwskKg3agBVr/TcmprZQmWvsS5
-	8fJEwFXbdrfWFs1uR5z+/hixmGHarvc=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-324-w-qRugF-McGqRru4wX03Dw-1; Mon, 02 Jan 2023 04:44:56 -0500
-X-MC-Unique: w-qRugF-McGqRru4wX03Dw-1
-Received: by mail-wm1-f72.google.com with SMTP id m7-20020a05600c4f4700b003d971a5e770so12809979wmq.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Jan 2023 01:44:56 -0800 (PST)
+	id 1pCHhv-00AEI1-F9
+	for linux-rockchip@lists.infradead.org; Mon, 02 Jan 2023 10:06:16 +0000
+Received: by mail-wm1-x333.google.com with SMTP id k26-20020a05600c1c9a00b003d972646a7dso17254424wms.5
+        for <linux-rockchip@lists.infradead.org>; Mon, 02 Jan 2023 02:06:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=F1RL6LflIG8Mw7UlknL1u+EpOcbFN6xIFh4jzQAsTkA=;
+        b=nxyBhliPiMemarZoDV3u8Mwu+5EB4RlTq20rm2hG34ycFDjLE/LzFRAfg4xxCcK/qi
+         995TJhcNh9A+kioKUMJMkg2wAQQ1GbQQy2w10Uucncx7gVrcJ1beY+QkpGNg0/90P+Zd
+         L4a6olXJ7D7O5Sh4LTg72EE+dPTkd1umQDSqE6Hi4/j9hWTuAtqlb+u0gVRX4e13yONp
+         m9trj97VWd70g2NeMOhx3r7DnqR1tlX1QHpZfZtRRYxiTlDJl3jDPPdbU1ZQlubiboU5
+         StUq4gZyYQpo0D/882+2uK5izZ/sICUiEZ/sOYmN4h6rs16jnZgR68++1wzkfrUVBMhH
+         H58A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hrNAqV6ZY5ivQJapJxCgpk49bJb25LBax+4yjjic7Lg=;
-        b=onoStcP4EaE+bLywX3YCLg+J0OJnILdbxsr5RWlalVl7sMrgkpQ9m8d6NacbM3GCUh
-         w4ekYJOJj59147rTxyuwN/TeN78SrdUD4uvo1uYIl6d38ffMseegvAqU193DjQBX/jAQ
-         eI/o0+zUymRTKxvxyLu+Ze4alNsiixLZump8v+f5D5DASFgyvNZJPyicRF2SCqvAA7LI
-         2GBMMSOLmgcs6fxw0q2wzlW+fgWSpsg+lYo4Jn4x3Eboi6YtkmH7gbFHePhSU6RNtKlV
-         r2JjHTi1vB87EhEdJumTTSQCjOPBggZ2kXZedBfkQ5l9fxOEuOXLV8lQmG6ljYA9w2Yx
-         l4WQ==
-X-Gm-Message-State: AFqh2kqR1QY8pGMNQZXPw4NA5/g5oTlf5RKMGAHRA+gptrjjj95AIkOM
-	0g8Qn48qs+tVXme3gXL79Oe1kOAd1rpynBYd/MjBtOSbYjHrLPE7da6nwCV+BO/vZ9mHB4wdNtq
-	+42vR8POPrbWwrMZleY9RUj6UEBBieREr
-X-Received: by 2002:a05:600c:d2:b0:3d2:2b70:f2fd with SMTP id u18-20020a05600c00d200b003d22b70f2fdmr29035356wmm.21.1672652695632;
-        Mon, 02 Jan 2023 01:44:55 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvGGW0J+6nq6DUxW1h2xRC/i7kscSszFCvw0h/Drz9ysxqRksonNdlBfYAtcIGbHZBQsbKS3Q==
-X-Received: by 2002:a05:600c:d2:b0:3d2:2b70:f2fd with SMTP id u18-20020a05600c00d200b003d22b70f2fdmr29035334wmm.21.1672652695377;
-        Mon, 02 Jan 2023 01:44:55 -0800 (PST)
-Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id m8-20020a05600c4f4800b003cfaae07f68sm44938241wmq.17.2023.01.02.01.44.53
+        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+         :content-language:subject:reply-to:from:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=F1RL6LflIG8Mw7UlknL1u+EpOcbFN6xIFh4jzQAsTkA=;
+        b=uE2vty6gZovI9ArGkdCOerg8PwkZVo0/pjxsoodojhsvmzL9xcILG+akitzmbmmS/E
+         wq/wm1gTEHQI2SRMFaPAkMUe9ewz/tz5d7Kl3AyBbqn0JtMJ9TkkOmYAlmAI3VgHz2Cx
+         bNx7yVuFMQ8GLCIRDPjq5h56iibceFZrsD46HXFKg1zqPiMRTsrPMp4yxc1Xbo+QHF2q
+         EhPX5po1ot17TdLnMPU/L1l2T8jnR/db7krp3J+RItPvl2JcaGHu8biKfHRCcVsyjX5C
+         kHwJGn7qhxs0clvt+fQGiRbQ9Z4VJHf29tLCRUs9uLUaK/NkIRsBd6tl2qa+SwvR5lQP
+         UQMg==
+X-Gm-Message-State: AFqh2krl6jZchOHBXqGGx7K6yQMitNTXsN/lC6hr0Kx1pgY/iLOtVX4B
+	6OcTXGNtoUj2j/1mwl8DwCHFkw==
+X-Google-Smtp-Source: AMrXdXv4JA4tlRg9gobOljg3u3b3xyCoqMnyrpZqgffOFiHxr55dZw9X/PXLh6neNwbEAaaR4q2SZg==
+X-Received: by 2002:a1c:2bc1:0:b0:3d2:fbab:3609 with SMTP id r184-20020a1c2bc1000000b003d2fbab3609mr28458725wmr.27.1672653974222;
+        Mon, 02 Jan 2023 02:06:14 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:982:cbb0:4f32:f70:35be:acf9? ([2a01:e0a:982:cbb0:4f32:f70:35be:acf9])
+        by smtp.gmail.com with ESMTPSA id n36-20020a05600c3ba400b003b49bd61b19sm44890446wms.15.2023.01.02.02.06.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Jan 2023 01:44:54 -0800 (PST)
-Message-ID: <c0c5b5ac-821c-1277-a2f1-d896a6ed680b@redhat.com>
-Date: Mon, 2 Jan 2023 10:44:53 +0100
+        Mon, 02 Jan 2023 02:06:13 -0800 (PST)
+Message-ID: <3f40e58a-dcd2-7c9a-1a9d-cae36719352f@linaro.org>
+Date: Mon, 2 Jan 2023 11:06:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v4 0/4] Add PinePhone Pro display support
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Neal Gompa <ngompa13@gmail.com>, dri-devel@lists.freedesktop.org,
- Martijn Braam <martijn@brixit.nl>, Caleb Connolly <kc@postmarketos.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- =?UTF-8?Q?Kamil_Trzci=c5=84ski?= <ayufan@ayufan.eu>,
- Sam Ravnborg <sam@ravnborg.org>, linux-rockchip@lists.infradead.org,
- Jagan Teki <jagan@amarulasolutions.com>,
- Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
- Robert Mader <robert.mader@posteo.de>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- Onuralp Sezer <thunderbirdtr@fedoraproject.org>,
- linux-kernel@vger.kernel.org, Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Ondrej Jirman <megi@xff.cz>, Maya Matuszczyk <maccraft123mc@gmail.com>
-References: <20221230113155.3430142-1-javierm@redhat.com>
- <Y7H5UJOz/zYuZn7j@duo.ucw.cz>
-From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <Y7H5UJOz/zYuZn7j@duo.ucw.cz>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/102.5.1
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH] mfd: rk808: re-add rk808-clkout to RK818
 Content-Language: en-US
+To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Lee Jones <lee@kernel.org>
+Cc: Ondrej Jirman <megi@xff.cz>, Javier Martinez Canillas
+ <javierm@redhat.com>, Martijn Braam <martijn@brixit.nl>,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20221228140708.26431-1-tom@tom-fitzhenry.me.uk>
+Organization: Linaro Developer Services
+In-Reply-To: <20221228140708.26431-1-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_014504_941164_58DC8D24 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20230102_020615_607226_0A496387 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,45 +90,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: neil.armstrong@linaro.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Pavel,
-
-On 1/1/23 22:21, Pavel Machek wrote:
-> Hi!
+On 28/12/2022 15:07, Tom Fitzhenry wrote:
+> Fixes RK818 (e.g. on Pinephone Pro) to register its clock, without which
+> dependent devices (e.g. wifi/BT, via sdio-wifi-pwrseq) fail to probe.
 > 
->> This series add support for the display present in the PinePhone Pro.
->>
->> Patch #1 adds a driver for panels using the Himax HX8394 panel controller,
->> such as the HSD060BHW4 720x1440 TFT LCD panel present in the PinePhone Pro.
->>
->> Patch #2 adds a devicetree binding schema for this driver and patch #3 adds
->> an entry for the driver in the MAINTAINERS file.
->>
->> Finally patch #4 adds the needed devicetree nodes in the PinePhone Pro DTS,
->> to enable both the display and the touchscreen. This makes the upstream DTS
->> much more usable and will allow for example to enable support for the phone
->> in the Fedora distribution.
+> This line was removed in commit 3633daacea2e
+> ("mfd: rk808: Permit having multiple PMIC instances"), but only from RK818.
 > 
-> Thanks for the series. Please cc: phone-devel@vger.kernel.org with
-> future patches.
->
+> Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+> ---
+>   drivers/mfd/rk808.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+> index f44fc3f080a8..0f22ef61e817 100644
+> --- a/drivers/mfd/rk808.c
+> +++ b/drivers/mfd/rk808.c
+> @@ -189,6 +189,7 @@ static const struct mfd_cell rk817s[] = {
+>   };
+>   
+>   static const struct mfd_cell rk818s[] = {
+> +	{ .name = "rk808-clkout", .id = PLATFORM_DEVID_NONE, },
+>   	{ .name = "rk808-regulator", .id = PLATFORM_DEVID_NONE, },
+>   	{
+>   		.name = "rk808-rtc",
+> 
+> base-commit: c76083fac3bae1a87ae3d005b5cb1cbc761e31d5
 
-Sure, I will.
- 
-> Best regards,
-> 								Pavel
+Sorry, my bad...
 
--- 
-Best regards,
 
-Javier Martinez Canillas
-Core Platforms
-Red Hat
+Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
 
+Thanks,
+Neil
 
 _______________________________________________
 Linux-rockchip mailing list
