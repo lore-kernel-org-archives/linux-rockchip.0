@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26227C3DA7D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 18:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DBC0C3DA7D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 19:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o81Y5jx4+nUg0zyFJxgJygAld29ObKs66UeMD4H93nM=; b=Wv1UIgEhXuQtWk
-	5YxGM2IoRoXcfa52/sMS5nNvl4hL55EiLjlHo8cA3+UPTxKDUr1RXpK3FPP5hAcWsd9A4uc+EwVJS
-	dKvIVdf8t8p3CfwQEP069Yyin7WakzZKchLJIwbejdBYFkhfRN5ogffCP71uAe6oZwtFbTL87atDB
-	VJtmhwNGmYMVQe5z939mEZC/1HLnPMG6hxylS6U32wT+GOxOuF9TQIYPCSHksxndPjlGKZZC11ob9
-	QlNIiJLGV3Zc9DJNpVc7S0/uQDFsPM95kgto/g2h4Xa/0mCxbgmDaP4nUHryNIRpSY7nFC2Z+sJST
-	EDXGRzZdJe/yp7WGjkIQ==;
+	List-Owner; bh=hT834e42aCi9qVgKLfOA8OXPraqQmTJ27sP2K5zMkIE=; b=SLkGD5hUG3Pd9a
+	NlE4LstSeMHZOlSi2J2Ogknk1g366QMFGZEWumKaV0kXVyf0COYeYUFqGprqZbSOZ/gHXcWmyaAyY
+	q5c0EJzNgIW9N296NKJOphRKpKtZ0vRUzFY7igfRJk68Khxs5lfi/6XcqHmu06s3sizRhndL+nSbx
+	kc7CC1sFweAo3DYCl85wOyqnGWFDiVv+ejkrSKCMq4GwBOCItWgrAkeQI8p0KNHNhOsf3eAQJ692E
+	rnzTcv8OhYCOBFIqaIhLGkN0geoA+3JNxbeGdIzSWCysuTxLzOxJ11MtKptVP8UKR282TIiSY9AFM
+	nlV4NhgMQ8MDpws6PiPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmPA-0045Zy-7D; Tue, 03 Jan 2023 18:52:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pCmps-004KmO-0m; Tue, 03 Jan 2023 19:20:32 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkfv-003CRX-4S; Tue, 03 Jan 2023 17:02:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=eTGWZ8l1kHJ0X0Om/HmrO7hUnSJIdp/Izi5SBfhFI0c=; b=Mbx+d5FYngreSG63bW13TKuRfW
-	5styMM04evsum4v7TaYCP9urTGlY34tQdkXPJbaTPB3a5iguIHnV4qRTOPWn/6iJykhCoPzyWZ9uQ
-	jcC1ZF829eDcLMRBwDivaU4QGzvBs/FwAH+joxLDTggsP2vEr800aXY70a+2Bxi8CKdpiI973gjeb
-	FkANclwxFHHzhey2LEVlSZciFx1w1xqf/wVJdoxm/unh9pBiKq3Ws0AbAD2yqdDhGBXzFYMKC/jWY
-	H8Jq5YYhMpl2oxHyy1qh90k000a3PV25qwUs47DCkc1zymJS9ae2LgLJlNKYSvy9vMH3SVerI+0wP
-	Al7giKVA==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pCkfi-000dlT-1I;
-	Tue, 03 Jan 2023 17:02:00 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:abfa:cf23:1e4e:2b14])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 437436602D1E;
-	Tue,  3 Jan 2023 17:01:15 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672765275;
-	bh=8nqX7AdRTL0gsT/XY5duRSc25gPJz3r0QEUnezt4R/U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Y6rQ2LD81U8hy4HkR0hXvEh9gcQ4jw34SbYDpWfIq4LNAFHwwGKIPomPlubLzjwri
-	 tXv2JgUn4n79fGgjwl4tRWiHuXDeA0oUuRrvFEwGQm59ogr3at+tsC/W0ASxODA1W4
-	 vdJTzFdd+FCQbqJzGkulC0bY5RrD0bn8ARLsp5im6aMbd7BHE89RMMV3MyAvq+qjrY
-	 wbHXzoS6hDfrawRLmTL4Bv94mLpukKIrQzT9mMUhSCys1qYMK0Tzf7mokB2sHdmVTx
-	 Nj9jvqZvMsqWESWHR6vbpiXSgKsRfi62LrnYsm1yWERYGEBXpRXZr7gWADUkvORxUt
-	 7e+VQ1b0MTNwQ==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de,
-	daniel.almeida@collabora.com,
-	nicolas.dufresne@collabora.co.uk
-Cc: linux-media@vger.kernel.org,
+	id 1pCmd2-004Df6-DP
+	for linux-rockchip@lists.infradead.org; Tue, 03 Jan 2023 19:07:20 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-1433ef3b61fso37836606fac.10
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Jan 2023 11:07:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+0Um4d9FYBJt1NB9tT+HCXuVoX80Yqj9dMdEFao5ois=;
+        b=RxjGFzl0G+YkxWQ5UeDo4vkkIJKUInLclCHG8+NKK3wvIgzBdckSTZaENtt8rbcNtX
+         HIYtAfY7ZLpsVqi4ZVUsaVtgiNr95wrZkZf9Z3EfEzTi71YRDuQFDVl5N3Vr7HmfN1o0
+         DfnU7ErMpjWq+8YR9fKs7DIBEvsQpMNyGs5iZ30Ar7NbsXwK49viwdPqBPq3AUCZ2zK3
+         bv8PAvK7Niz3zR9qUyH5/5Jmew2sM/eFxZdXoOdFZ/gypbOJ3KzEMQCTI725P0sr4lXf
+         pjdBDd/zXcvxd4gGUiBjf1HWgbPo1TXBRmAvohb5jhpFuwKqiNwuN9B5GfgoDT05APAI
+         xLIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+0Um4d9FYBJt1NB9tT+HCXuVoX80Yqj9dMdEFao5ois=;
+        b=aEzKwkwbc5hhLNKccsbDgniwo65y9x6gzlNNdotxwYYeyCUoNd2qbc7M8DPKePlCas
+         ly/ETzIwWOwTHS6wBZplfDhDp0YtG82LNDZL2oEAQhSeo2ZeKVbgh3PxJOJK1wC3Ncjq
+         QIuK8ano2lNtRgFT4vlxhmU2Mj7yyv5eXSzch4sDgD/zmOwui5Xyf9WL1EW9mJJxl7nZ
+         8qYdpb0MEXDaSU6EphGuFBGJeTaHGdqHV5/x4vaeaacK1bZuGRLAg6vLQfc0aowb7/MN
+         8TDNy2Wz+D1cEgnDs3U9ZHSKQ+7/DUVrahEtiwbWQi9b2qjaQdRkfFg0Au387vXrJeMd
+         8ekQ==
+X-Gm-Message-State: AFqh2ko0HGslH7SJw/6JZ/9K2nHaY5rHaWJM0CBshXNporWuBcASak1o
+	339tuRPpQn9AZyBLk7UiLaw=
+X-Google-Smtp-Source: AMrXdXs0GirooKkdg1/hyFUXXEQq/Q2pGP2B1UwsIFW4/SHD9Y8zryvm0HWC1W2WMZ2SsLeUB3fCbg==
+X-Received: by 2002:a05:6870:4b4f:b0:150:841b:4df with SMTP id ls15-20020a0568704b4f00b00150841b04dfmr7491020oab.28.1672772834203;
+        Tue, 03 Jan 2023 11:07:14 -0800 (PST)
+Received: from localhost.localdomain ([76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id s24-20020a056870ea9800b0014c7958c55bsm14752207oap.42.2023.01.03.11.07.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jan 2023 11:07:13 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 12/13] media: verisilicon: Enable AV1 decoder on rk3588
-Date: Tue,  3 Jan 2023 18:00:57 +0100
-Message-Id: <20230103170058.810597-13-benjamin.gaignard@collabora.com>
+	maccraft123mc@gmail.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	thierry.reding@gmail.com,
+	linus.walleij@linaro.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V7 3/4] drm/panel: Add Magnachip D53E6EA8966 Panel Driver
+Date: Tue,  3 Jan 2023 13:07:06 -0600
+Message-Id: <20230103190707.104595-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230103170058.810597-1-benjamin.gaignard@collabora.com>
-References: <20230103170058.810597-1-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230103190707.104595-1-macroalpha82@gmail.com>
+References: <20230103190707.104595-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_170154_912777_3261E71A 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20230103_110716_658269_A1B7D1DA 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,241 +103,577 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rk3588 AV1 decoder to Hantro variant.
-The hardware support image from 64x64 up to 7680x4320
-by steps of 16 pixels.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Support Magnachip D53E6EA8966 based panels such as the Samsung
+AMS495QA01 panel as found on the Anbernic RG503. Note this driver
+supports only the AMS495QA01 today which receives video signals via DSI,
+however it receives commands via 3-wire SPI using DBI.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- .../media/platform/verisilicon/hantro_drv.c   |   1 +
- .../media/platform/verisilicon/hantro_hw.h    |   6 +
- .../platform/verisilicon/rockchip_vpu_hw.c    | 119 ++++++++++++++++++
- 3 files changed, 126 insertions(+)
+ drivers/gpu/drm/panel/Kconfig                 |  11 +
+ drivers/gpu/drm/panel/Makefile                |   1 +
+ .../drm/panel/panel-magnachip-d53e6ea8966.c   | 514 ++++++++++++++++++
+ 3 files changed, 526 insertions(+)
+ create mode 100644 drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 16539e89935c..4fc6dea16ae6 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -688,6 +688,7 @@ static const struct of_device_id of_hantro_match[] = {
- 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
- 	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
- 	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
-+	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index ad1b39d65683..79cbd27f676c 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -404,11 +404,13 @@ extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3399_vpu_variant;
- extern const struct hantro_variant rk3568_vepu_variant;
- extern const struct hantro_variant rk3568_vpu_variant;
-+extern const struct hantro_variant rk3588_vpu981_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- extern const struct hantro_variant sunxi_vpu_variant;
+diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+index 737edcdf9eef..204b84a83604 100644
+--- a/drivers/gpu/drm/panel/Kconfig
++++ b/drivers/gpu/drm/panel/Kconfig
+@@ -298,6 +298,17 @@ config DRM_PANEL_LG_LG4573
+ 	  Say Y here if you want to enable support for LG4573 RGB panel.
+ 	  To compile this driver as a module, choose M here.
  
- extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
- extern const struct hantro_postproc_ops hantro_g2_postproc_ops;
-+extern const struct hantro_postproc_ops rockchip_vpu981_postproc_ops;
- 
- extern const u32 hantro_vp8_dec_mc_filter[8][6];
- 
-@@ -445,6 +447,10 @@ void hantro_hevc_ref_init(struct hantro_ctx *ctx);
- dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
- int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
- 
-+int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx);
-+void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx);
-+int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx);
-+void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx);
- 
- static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
- {
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 8de6fd2e8eef..b0b66a13f9ec 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -13,9 +13,13 @@
- #include "hantro_g1_regs.h"
- #include "hantro_h1_regs.h"
- #include "rockchip_vpu2_regs.h"
-+#include "rockchip_vpu981_regs.h"
- 
- #define RK3066_ACLK_MAX_FREQ (300 * 1000 * 1000)
- #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
-+#define RK3588_ACLK_MAX_FREQ (300 * 1000 * 1000)
++config DRM_PANEL_MAGNACHIP_D53E6EA8966
++	tristate "Magnachip D53E6EA8966 DSI panel"
++	depends on OF && SPI
++	depends on DRM_MIPI_DSI
++	depends on BACKLIGHT_CLASS_DEVICE
++	select DRM_MIPI_DBI
++	help
++	  DRM panel driver for the Samsung AMS495QA01 panel controlled
++	  with the Magnachip D53E6EA8966 panel IC. This panel receives
++	  video data via DSI but commands via 9-bit SPI using DBI.
 +
-+#define ROCKCHIP_VPU981_MIN_SIZE 64
- 
- /*
-  * Supported formats.
-@@ -74,6 +78,22 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
- 	},
- };
- 
-+static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
+ config DRM_PANEL_NEC_NL8048HL11
+ 	tristate "NEC NL8048HL11 RGB panel"
+ 	depends on GPIOLIB && OF && SPI
+diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+index f8f9d9f6a307..20de312aa5e9 100644
+--- a/drivers/gpu/drm/panel/Makefile
++++ b/drivers/gpu/drm/panel/Makefile
+@@ -27,6 +27,7 @@ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK050H3146W) += panel-leadtek-ltk050h3146w.o
+ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK500HD1829) += panel-leadtek-ltk500hd1829.o
+ obj-$(CONFIG_DRM_PANEL_LG_LB035Q02) += panel-lg-lb035q02.o
+ obj-$(CONFIG_DRM_PANEL_LG_LG4573) += panel-lg-lg4573.o
++obj-$(CONFIG_DRM_PANEL_MAGNACHIP_D53E6EA8966) += panel-magnachip-d53e6ea8966.o
+ obj-$(CONFIG_DRM_PANEL_NEC_NL8048HL11) += panel-nec-nl8048hl11.o
+ obj-$(CONFIG_DRM_PANEL_NEWVISION_NV3051D) += panel-newvision-nv3051d.o
+ obj-$(CONFIG_DRM_PANEL_NEWVISION_NV3052C) += panel-newvision-nv3052c.o
+diff --git a/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c b/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
+new file mode 100644
+index 000000000000..ec90da8e2ae7
+--- /dev/null
++++ b/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
+@@ -0,0 +1,514 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Magnachip d53e6ea8966 MIPI-DSI panel driver
++ * Copyright (C) 2022 Chris Morgan
++ */
++
++#include <drm/drm_mipi_dbi.h>
++#include <drm/drm_mipi_dsi.h>
++#include <drm/drm_modes.h>
++#include <drm/drm_of.h>
++#include <drm/drm_panel.h>
++
++#include <linux/backlight.h>
++#include <linux/delay.h>
++#include <linux/gpio/consumer.h>
++#include <linux/init.h>
++#include <linux/kernel.h>
++#include <linux/media-bus-format.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/spi/spi.h>
++
++#include <video/mipi_display.h>
++
++/* Forward declaration for use in backlight function */
++struct d53e6ea8966;
++
++/* Panel info, unique to each panel */
++struct d53e6ea8966_panel_info {
++	/** @display_modes: the supported display modes */
++	const struct drm_display_mode *display_modes;
++	/** @num_modes: the number of supported display modes */
++	unsigned int num_modes;
++	/** @width_mm: panel width in mm */
++	u16 width_mm;
++	/** @height_mm: panel height in mm */
++	u16 height_mm;
++	/** @bus_flags: drm bus flags for panel */
++	u32 bus_flags;
++	/** @panel_funcs: panel functions for panel */
++	const struct drm_panel_funcs *panel_funcs;
++	/** @backlight: panel backlight registration or NULL */
++	int (*backlight_register)(struct d53e6ea8966 *db);
 +};
 +
- static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
-@@ -277,6 +297,48 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 	},
- };
- 
-+static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12_10LE40_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_AV1_FRAME,
-+		.codec_mode = HANTRO_MODE_AV1_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
++struct d53e6ea8966 {
++	/** @dev: the container device */
++	struct device *dev;
++	/** @dbi: the DBI bus abstraction handle */
++	struct mipi_dbi dbi;
++	/** @panel: the DRM panel instance for this device */
++	struct drm_panel panel;
++	/** @reset: reset GPIO line */
++	struct gpio_desc *reset;
++	/** @enable: enable GPIO line */
++	struct gpio_desc *enable;
++	/** @reg_vdd: VDD supply regulator for panel logic */
++	struct regulator *reg_vdd;
++	/** @reg_elvdd: ELVDD supply regulator for panel display */
++	struct regulator *reg_elvdd;
++	/** @dsi_dev: DSI child device (panel) */
++	struct mipi_dsi_device *dsi_dev;
++	/** @bl_dev: pseudo-backlight device for oled panel */
++	struct backlight_device *bl_dev;
++	/** @panel_info: struct containing panel timing and info */
++	const struct d53e6ea8966_panel_info *panel_info;
 +};
 +
- static irqreturn_t rockchip_vpu1_vepu_irq(int irq, void *dev_id)
- {
- 	struct hantro_dev *vpu = dev_id;
-@@ -331,6 +393,24 @@ static irqreturn_t rockchip_vpu2_vepu_irq(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
-+static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
++#define NUM_GAMMA_LEVELS	16
++#define GAMMA_TABLE_COUNT	23
++#define MAX_BRIGHTNESS		(NUM_GAMMA_LEVELS - 1)
++
++#define MCS_ELVSS_ON			0xb1
++#define MCS_TEMP_SWIRE			0xb2
++#define MCS_PASSWORD_0			0xf0
++#define MCS_PASSWORD_1			0xf1
++#define MCS_ANALOG_PWR_CTL_0		0xf4
++#define MCS_ANALOG_PWR_CTL_1		0xf5
++#define MCS_GTCON_SET			0xf7
++#define MCS_GATELESS_SIGNAL_SET		0xf8
++#define MCS_SET_GAMMA			0xf9
++
++static inline struct d53e6ea8966 *to_d53e6ea8966(struct drm_panel *panel)
 +{
-+	struct hantro_dev *vpu = dev_id;
-+	enum vb2_buffer_state state;
-+	u32 status;
-+
-+	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
-+	state = (status & AV1_REG_INTERRUPT_DEC_RDY_INT) ?
-+		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-+
-+	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
-+	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
-+
-+	hantro_irq_done(vpu, state);
-+
-+	return IRQ_HANDLED;
++	return container_of(panel, struct d53e6ea8966, panel);
 +}
 +
- static int rk3036_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	/* Bump ACLK to max. possible freq. to improve performance. */
-@@ -346,6 +426,13 @@ static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
- 	return 0;
- }
- 
-+static int rk3588_vpu981_hw_init(struct hantro_dev *vpu)
++/* Table of gamma values provided in datasheet */
++static u8 ams495qa01_gamma[NUM_GAMMA_LEVELS][GAMMA_TABLE_COUNT] = {
++	{0x01, 0x79, 0x78, 0x8d, 0xd9, 0xdf, 0xd5, 0xcb, 0xcf, 0xc5,
++	 0xe5, 0xe0, 0xe4, 0xdc, 0xb8, 0xd4, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x7d, 0x7c, 0x92, 0xd7, 0xdd, 0xd2, 0xcb, 0xd0, 0xc6,
++	 0xe5, 0xe1, 0xe3, 0xda, 0xbd, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x7f, 0x7e, 0x95, 0xd7, 0xde, 0xd2, 0xcb, 0xcf, 0xc5,
++	 0xe5, 0xe3, 0xe3, 0xda, 0xbf, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x82, 0x81, 0x99, 0xd6, 0xdd, 0xd1, 0xca, 0xcf, 0xc3,
++	 0xe4, 0xe3, 0xe3, 0xda, 0xc2, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x84, 0x83, 0x9b, 0xd7, 0xde, 0xd2, 0xc8, 0xce, 0xc2,
++	 0xe4, 0xe3, 0xe2, 0xd9, 0xc3, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x87, 0x86, 0x9f, 0xd6, 0xdd, 0xd1, 0xc7, 0xce, 0xc1,
++	 0xe4, 0xe3, 0xe2, 0xd9, 0xc6, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x89, 0x89, 0xa2, 0xd5, 0xdb, 0xcf, 0xc8, 0xcf, 0xc2,
++	 0xe3, 0xe3, 0xe1, 0xd9, 0xc7, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8b, 0x8b, 0xa5, 0xd5, 0xdb, 0xcf, 0xc7, 0xce, 0xc0,
++	 0xe3, 0xe3, 0xe1, 0xd8, 0xc7, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8d, 0x8d, 0xa7, 0xd5, 0xdb, 0xcf, 0xc6, 0xce, 0xc0,
++	 0xe4, 0xe4, 0xe1, 0xd7, 0xc8, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8f, 0x8f, 0xaa, 0xd4, 0xdb, 0xce, 0xc6, 0xcd, 0xbf,
++	 0xe3, 0xe3, 0xe1, 0xd7, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x91, 0x91, 0xac, 0xd3, 0xda, 0xce, 0xc5, 0xcd, 0xbe,
++	 0xe3, 0xe3, 0xe0, 0xd7, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x93, 0x93, 0xaf, 0xd3, 0xda, 0xcd, 0xc5, 0xcd, 0xbe,
++	 0xe2, 0xe3, 0xdf, 0xd6, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x95, 0x95, 0xb1, 0xd2, 0xd9, 0xcc, 0xc4, 0xcd, 0xbe,
++	 0xe2, 0xe3, 0xdf, 0xd7, 0xcc, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x99, 0x99, 0xb6, 0xd1, 0xd9, 0xcc, 0xc3, 0xcb, 0xbc,
++	 0xe2, 0xe4, 0xdf, 0xd6, 0xcc, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x9c, 0x9c, 0xba, 0xd0, 0xd8, 0xcb, 0xc3, 0xcb, 0xbb,
++	 0xe2, 0xe4, 0xdf, 0xd6, 0xce, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x9f, 0x9f, 0xbe, 0xcf, 0xd7, 0xc9, 0xc2, 0xcb, 0xbb,
++	 0xe1, 0xe3, 0xde, 0xd6, 0xd0, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++};
++
++/*
++ * Table of elvss values provided in datasheet and corresponds to
++ * gamma values.
++ */
++static u8 ams495qa01_elvss[NUM_GAMMA_LEVELS] = {
++	0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15,
++	0x15, 0x15, 0x14, 0x14, 0x13, 0x12,
++};
++
++static int ams495qa01_update_gamma(struct mipi_dbi *dbi, u32 brightness)
 +{
-+	/* Bump ACLKs to max. possible freq. to improve performance. */
-+	clk_set_rate(vpu->clocks[0].clk, RK3588_ACLK_MAX_FREQ);
++	u32 tmp = brightness;
++
++	mipi_dbi_command_buf(dbi, MCS_SET_GAMMA, ams495qa01_gamma[tmp],
++			     ARRAY_SIZE(ams495qa01_gamma[tmp]));
++	mipi_dbi_command(dbi, MCS_SET_GAMMA, 0x00);
++
++	/* Undocumented command */
++	mipi_dbi_command(dbi, 0x26, 0x00);
++
++	mipi_dbi_command(dbi, MCS_TEMP_SWIRE, ams495qa01_elvss[tmp]);
++
 +	return 0;
 +}
 +
- static int rockchip_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	/* Bump ACLK to max. possible freq. to improve performance. */
-@@ -498,6 +585,14 @@ static const struct hantro_codec_ops rk3568_vepu_codec_ops[] = {
- 	},
- };
- 
-+static const struct hantro_codec_ops rk3588_vpu981_codec_ops[] = {
-+	[HANTRO_MODE_AV1_DEC] = {
-+		.run = rockchip_vpu981_av1_dec_run,
-+		.init = rockchip_vpu981_av1_dec_init,
-+		.exit = rockchip_vpu981_av1_dec_exit,
-+		.done = rockchip_vpu981_av1_dec_done,
++static int ams495qa01_prepare(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	struct mipi_dbi *dbi = &db->dbi;
++	int ret;
++
++	/* Power up */
++	ret = regulator_enable(db->reg_vdd);
++	if (ret) {
++		dev_err(db->dev, "failed to enable vdd regulator: %d\n", ret);
++		return ret;
++	}
++
++	if (db->reg_elvdd) {
++		ret = regulator_enable(db->reg_elvdd);
++		if (ret) {
++			dev_err(db->dev,
++				"failed to enable elvdd regulator: %d\n", ret);
++			regulator_disable(db->reg_vdd);
++			return ret;
++		}
++	}
++
++	/* Enable */
++	if (db->enable)
++		gpiod_set_value_cansleep(db->enable, 1);
++
++	msleep(50);
++
++	/* Reset */
++	gpiod_set_value_cansleep(db->reset, 1);
++	usleep_range(1000, 5000);
++	gpiod_set_value_cansleep(db->reset, 0);
++	msleep(20);
++
++	/* Panel Init Sequence */
++
++	mipi_dbi_command(dbi, MCS_PASSWORD_0, 0x5a, 0x5a);
++	mipi_dbi_command(dbi, MCS_PASSWORD_1, 0x5a, 0x5a);
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xb0, 0x02);
++	mipi_dbi_command(dbi, 0xf3, 0x3b);
++
++	mipi_dbi_command(dbi, MCS_ANALOG_PWR_CTL_0, 0x33, 0x42, 0x00, 0x08);
++	mipi_dbi_command(dbi, MCS_ANALOG_PWR_CTL_1, 0x00, 0x06, 0x26, 0x35, 0x03);
++
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xf6, 0x02);
++	mipi_dbi_command(dbi, 0xc6, 0x0b, 0x00, 0x00, 0x3c, 0x00, 0x22,
++			 0x00, 0x00, 0x00, 0x00);
++
++	mipi_dbi_command(dbi, MCS_GTCON_SET, 0x20);
++	mipi_dbi_command(dbi, MCS_TEMP_SWIRE, 0x06, 0x06, 0x06, 0x06);
++	mipi_dbi_command(dbi, MCS_ELVSS_ON, 0x07, 0x00, 0x10);
++	mipi_dbi_command(dbi, MCS_GATELESS_SIGNAL_SET, 0x7f, 0x7a,
++			 0x89, 0x67, 0x26, 0x38, 0x00, 0x00, 0x09,
++			 0x67, 0x70, 0x88, 0x7a, 0x76, 0x05, 0x09,
++			 0x23, 0x23, 0x23);
++
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xb5, 0xff, 0xef, 0x35, 0x42, 0x0d, 0xd7,
++			 0xff, 0x07, 0xff, 0xff, 0xfd, 0x00, 0x01,
++			 0xff, 0x05, 0x12, 0x0f, 0xff, 0xff, 0xff,
++			 0xff);
++	mipi_dbi_command(dbi, 0xb4, 0x15);
++	mipi_dbi_command(dbi, 0xb3, 0x00);
++
++	ams495qa01_update_gamma(dbi, MAX_BRIGHTNESS);
++
++	return 0;
++}
++
++static int ams495qa01_enable(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	struct mipi_dbi *dbi = &db->dbi;
++
++	mipi_dbi_command(dbi, MIPI_DCS_EXIT_SLEEP_MODE);
++	msleep(200);
++	mipi_dbi_command(dbi, MIPI_DCS_SET_DISPLAY_ON);
++	usleep_range(10000, 15000);
++
++	return 0;
++}
++
++static int ams495qa01_disable(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	struct mipi_dbi *dbi = &db->dbi;
++
++	mipi_dbi_command(dbi, MIPI_DCS_SET_DISPLAY_OFF);
++	msleep(20);
++	mipi_dbi_command(dbi, MIPI_DCS_ENTER_SLEEP_MODE);
++	msleep(100);
++
++	return 0;
++}
++
++static int ams495qa01_unprepare(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++
++	if (db->enable)
++		gpiod_set_value_cansleep(db->enable, 0);
++
++	gpiod_set_value_cansleep(db->reset, 1);
++
++	if (db->reg_elvdd)
++		regulator_disable(db->reg_elvdd);
++
++	regulator_disable(db->reg_vdd);
++	msleep(100);
++
++	return 0;
++}
++
++static int ams495qa01_get_modes(struct drm_panel *panel,
++				struct drm_connector *connector)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	const struct d53e6ea8966_panel_info *panel_info = db->panel_info;
++	struct drm_display_mode *mode;
++	static const u32 bus_format = MEDIA_BUS_FMT_RGB888_1X24;
++	unsigned int i;
++
++	for (i = 0; i < panel_info->num_modes; i++) {
++		mode = drm_mode_duplicate(connector->dev,
++					  &panel_info->display_modes[i]);
++		if (!mode)
++			return -ENOMEM;
++
++		drm_mode_set_name(mode);
++		drm_mode_probed_add(connector, mode);
++	}
++
++	connector->display_info.bpc = 8;
++	connector->display_info.width_mm = panel_info->width_mm;
++	connector->display_info.height_mm = panel_info->height_mm;
++	connector->display_info.bus_flags = panel_info->bus_flags;
++
++	drm_display_info_set_bus_formats(&connector->display_info,
++					 &bus_format, 1);
++
++	return 1;
++}
++
++static const struct drm_panel_funcs ams495qa01_panel_funcs = {
++	.disable = ams495qa01_disable,
++	.enable = ams495qa01_enable,
++	.get_modes = ams495qa01_get_modes,
++	.prepare = ams495qa01_prepare,
++	.unprepare = ams495qa01_unprepare,
++};
++
++static int ams495qa01_set_brightness(struct backlight_device *bd)
++{
++	struct d53e6ea8966 *db = bl_get_data(bd);
++	struct mipi_dbi *dbi = &db->dbi;
++	int brightness = bd->props.brightness;
++
++	ams495qa01_update_gamma(dbi, brightness);
++
++	return 0;
++}
++
++static const struct backlight_ops ams495qa01_backlight_ops = {
++	.update_status	= ams495qa01_set_brightness,
++};
++
++static int ams495qa01_backlight_register(struct d53e6ea8966 *db)
++{
++	struct backlight_properties props = {
++		.type		= BACKLIGHT_RAW,
++		.brightness	= MAX_BRIGHTNESS,
++		.max_brightness = MAX_BRIGHTNESS,
++	};
++	struct device *dev = db->dev;
++	int ret = 0;
++
++	db->bl_dev = devm_backlight_device_register(dev, "panel", dev, db,
++						     &ams495qa01_backlight_ops,
++						     &props);
++	if (IS_ERR(db->bl_dev)) {
++		ret = PTR_ERR(db->bl_dev);
++		dev_err(dev, "error registering backlight device (%d)\n", ret);
++	}
++
++	return ret;
++}
++
++static int d53e6ea8966_probe(struct spi_device *spi)
++{
++	struct device *dev = &spi->dev;
++	struct mipi_dsi_host *dsi_host;
++	struct d53e6ea8966 *db;
++	int ret;
++	struct mipi_dsi_device_info info = {
++		.type = "d53e6ea8966",
++		.channel = 0,
++		.node = NULL,
++	};
++
++	db = devm_kzalloc(dev, sizeof(*db), GFP_KERNEL);
++	if (!db)
++		return -ENOMEM;
++
++	spi_set_drvdata(spi, db);
++
++	db->dev = dev;
++
++	db->panel_info = of_device_get_match_data(dev);
++	if (!db->panel_info)
++		return -EINVAL;
++
++	db->reg_vdd = devm_regulator_get(dev, "vdd");
++	if (IS_ERR(db->reg_vdd))
++		return dev_err_probe(dev, PTR_ERR(db->reg_vdd),
++				     "Failed to get vdd supply\n");
++
++	db->reg_elvdd = devm_regulator_get_optional(dev, "elvdd");
++	if (IS_ERR(db->reg_elvdd))
++		db->reg_elvdd = NULL;
++
++	db->reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
++	if (IS_ERR(db->reset)) {
++		ret = PTR_ERR(db->reset);
++		return dev_err_probe(dev, ret, "no RESET GPIO\n");
++	}
++
++	db->enable = devm_gpiod_get_optional(dev, "enable", GPIOD_OUT_LOW);
++	if (IS_ERR(db->enable)) {
++		ret = PTR_ERR(db->enable);
++		return dev_err_probe(dev, ret, "cannot get ENABLE GPIO\n");
++	}
++
++	ret = mipi_dbi_spi_init(spi, &db->dbi, NULL);
++	if (ret)
++		return dev_err_probe(dev, ret, "MIPI DBI init failed\n");
++
++	ret = drm_of_get_dsi_bus(dev, &dsi_host, &info);
++	if (ret)
++		return dev_err_probe(dev, ret, "Error attaching DSI bus\n");
++
++	db->dsi_dev = devm_mipi_dsi_device_register_full(dev, dsi_host, &info);
++	if (IS_ERR(db->dsi_dev)) {
++		dev_err(dev, "failed to register dsi device: %ld\n",
++			PTR_ERR(db->dsi_dev));
++		ret = PTR_ERR(db->dsi_dev);
++	}
++
++	db->dsi_dev->lanes = 2;
++	db->dsi_dev->format = MIPI_DSI_FMT_RGB888;
++	db->dsi_dev->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
++			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
++
++	drm_panel_init(&db->panel, dev, db->panel_info->panel_funcs,
++		       DRM_MODE_CONNECTOR_DSI);
++
++	if (db->panel_info->backlight_register != NULL) {
++		ret = db->panel_info->backlight_register(db);
++		if (ret < 0)
++			return ret;
++	}
++
++	drm_panel_add(&db->panel);
++
++	ret = devm_mipi_dsi_attach(dev, db->dsi_dev);
++	if (ret < 0) {
++		dev_err(dev, "mipi_dsi_attach failed: %d\n", ret);
++		drm_panel_remove(&db->panel);
++		return ret;
++	}
++
++	return 0;
++}
++
++static void d53e6ea8966_remove(struct spi_device *spi)
++{
++	struct d53e6ea8966 *db = spi_get_drvdata(spi);
++
++	drm_panel_remove(&db->panel);
++}
++
++static const struct drm_display_mode ams495qa01_modes[] = {
++	{ /* 60hz */
++		.clock = 33500,
++		.hdisplay = 960,
++		.hsync_start = 960 + 10,
++		.hsync_end = 960 + 10 + 2,
++		.htotal = 960 + 10 + 2 + 10,
++		.vdisplay = 544,
++		.vsync_start = 544 + 10,
++		.vsync_end = 544 + 10 + 2,
++		.vtotal = 544 + 10 + 2 + 10,
++		.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++		.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
++		},
++	{ /* 50hz */
++		.clock = 27800,
++		.hdisplay = 960,
++		.hsync_start = 960 + 10,
++		.hsync_end = 960 + 10 + 2,
++		.htotal = 960 + 10 + 2 + 10,
++		.vdisplay = 544,
++		.vsync_start = 544 + 10,
++		.vsync_end = 544 + 10 + 2,
++		.vtotal = 544 + 10 + 2 + 10,
++		.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++		.type = DRM_MODE_TYPE_DRIVER,
 +	},
 +};
- /*
-  * VPU variant.
-  */
-@@ -529,10 +624,18 @@ static const char * const rk3066_vpu_clk_names[] = {
- 	"aclk_vepu", "hclk_vepu"
- };
- 
-+static const struct hantro_irq rk3588_vpu981_irqs[] = {
-+	{ "vdpu", rk3588_vpu981_irq },
++
++static const struct d53e6ea8966_panel_info ams495qa01_info = {
++	.display_modes = ams495qa01_modes,
++	.num_modes = ARRAY_SIZE(ams495qa01_modes),
++	.width_mm = 117,
++	.height_mm = 74,
++	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
++	.panel_funcs = &ams495qa01_panel_funcs,
++	.backlight_register = ams495qa01_backlight_register,
 +};
 +
- static const char * const rockchip_vpu_clk_names[] = {
- 	"aclk", "hclk"
- };
- 
-+static const char * const rk3588_vpu981_vpu_clk_names[] = {
-+	"aclk", "hclk", "aclk_vdpu_root", "hclk_vdpu_root"
++static const struct of_device_id d53e6ea8966_match[] = {
++	{ .compatible = "samsung,ams495qa01", .data = &ams495qa01_info },
++	{},
 +};
++MODULE_DEVICE_TABLE(of, d53e6ea8966_match);
 +
- /* VDPU1/VEPU1 */
- 
- const struct hantro_variant rk3036_vpu_variant = {
-@@ -678,3 +781,19 @@ const struct hantro_variant px30_vpu_variant = {
- 	.clk_names = rockchip_vpu_clk_names,
- 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
- };
-+
-+const struct hantro_variant rk3588_vpu981_variant = {
-+	.dec_offset = 0x0,
-+	.dec_fmts = rockchip_vpu981_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rockchip_vpu981_dec_fmts),
-+	.postproc_fmts = rockchip_vpu981_postproc_fmts,
-+	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu981_postproc_fmts),
-+	.postproc_ops = &rockchip_vpu981_postproc_ops,
-+	.codec = HANTRO_AV1_DECODER,
-+	.codec_ops = rk3588_vpu981_codec_ops,
-+	.irqs = rk3588_vpu981_irqs,
-+	.num_irqs = ARRAY_SIZE(rk3588_vpu981_irqs),
-+	.init = rk3588_vpu981_hw_init,
-+	.clk_names = rk3588_vpu981_vpu_clk_names,
-+	.num_clocks = ARRAY_SIZE(rk3588_vpu981_vpu_clk_names)
++static const struct spi_device_id d53e6ea8966_ids[] = {
++	{ "ams495qa01", 0 },
++	{},
 +};
++MODULE_DEVICE_TABLE(spi, d53e6ea8966_ids);
++
++static struct spi_driver d53e6ea8966_driver = {
++	.driver		= {
++		.name	= "d53e6ea8966-panel",
++		.of_match_table = d53e6ea8966_match,
++	},
++	.id_table	= d53e6ea8966_ids,
++	.probe		= d53e6ea8966_probe,
++	.remove		= d53e6ea8966_remove,
++};
++module_spi_driver(d53e6ea8966_driver);
++
++MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
++MODULE_DESCRIPTION("Magnachip d53e6ea8966 panel driver");
++MODULE_LICENSE("GPL");
 -- 
 2.34.1
 
