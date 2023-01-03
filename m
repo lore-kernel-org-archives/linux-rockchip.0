@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27DD3C4708D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 19:24:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7FF8C3DA7D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 19:24:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uQ+79rYvs7eR89q3H83wJRjtuL38yUh+b91BJYSJN4g=; b=0b7xsA8eZqifyU
-	GAK3aYH92aIq1f/2VJlfLE38ol+XNswJ7adDUOFcnj4aau4NbpXUc7QoFYI3+u34t4LegzzFVNikM
-	LP63MNK6srkW/StcB/m9S2rA49o5HzARPNFQ6UJXL7wEwfQt1td5YhGJmYCgL/+QdcF0/n6+vkRsB
-	az0kUqqK+hhHMP1cKl6aOmmh1CLEVv20IQ3ve3E9yCu/uiN5U7mG7wQTDaSmTnggk6p3p6X4261EB
-	VlIc3RdO7BacwHr7gWe+bWU15coRUOP9ixK5oSVQMXY94NWnOu42aYDNJdENxxR9vaesVYcJALc26
-	kb2gbuzX/f43HXaV9ceQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cynRuy2DzJZWb6+oJpL/pYeOUMWwAQOOKKtBRZsbLn4=; b=3tZCYkdkCSgvFe
+	o5qmicqhQxBlciqV1iIzX0Mn3LC7K2COzVm13I+y/aPioIzNwhQM0NEgY30NFCWykSmhraqVTtAN1
+	XM2xpxi4hsdHExNLit8ViNf6WIDe+MNtPZCS+SwVGWUO26GBTdPhuVlx7crxzLTiDe0rEj9JxeTFz
+	h+CRnCHtYrTrQ8sCbtSifmEvmzP5znaUi4ZQBMpK8vBEbhOhKZoG7aIRVdvzt9xP7pNlUjwiU2OIm
+	O1deTSD/YOpyO75XoLxIU7HEFPGekthOjF1YtH7ltZ9IeMNgT/zjogjuzbb+rQxqarfVvupyzEVNw
+	+sig3U77p/YbF2LcMajw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmt8-004Mm2-Hb; Tue, 03 Jan 2023 19:23:54 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+	id 1pCmt5-004MkG-Gd; Tue, 03 Jan 2023 19:23:51 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmd1-004De2-Cv
-	for linux-rockchip@lists.infradead.org; Tue, 03 Jan 2023 19:07:17 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-14ffd3c5b15so26340610fac.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Jan 2023 11:07:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=USvKgiAPMhAy/9BXMiGdBIzgvIIPEyBr90rzPBia1lQ=;
-        b=BogNOQMXGscV/PNfPtNIXQ+l4PnWaHfNKE/mkN9S01aQY33TCcu+rCsD2VJf1f+eaT
-         g9Oes7chIW9wFsiteJVsY20YSdqrtiEzsibVxhu+OiqEsdebNQtPsx878WFL41115e9g
-         UVBZ5rHq32tygcnioTYh068/FqMauETJHOmhvElIYwEcYDpVM4NyXklZ918Qecw6XtLB
-         o4AIGRd2AoH+74KIsLb2Q7Q9d97hO0juN+7hF+eMpvt8CsTgix4Fo9rS7lEjWBozqW8m
-         rPmecvoM1BxJcWl5cS+uzLtcVqJXTunAJS+4qxwuicNEm0hJZ4mVGqE40f1VFFr/unIe
-         R6fA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=USvKgiAPMhAy/9BXMiGdBIzgvIIPEyBr90rzPBia1lQ=;
-        b=WWYzFTfNn+Tfnryj6GQRVt+bgjVsXURBCqYSiD5ZvZj4brb7n5Mu+4l42c9h5KzzrC
-         GhHibE+q0/An2sa8CsvHbciqOcKQPs4fI4pcvnyoZfxTIl07IjPgYOyQ37w2CboTCC/c
-         u97QjUkFBLzD8LEYSQ/9LKpZl9RrTB1c17o9mjNdLwUeNOnX2I9JcLCoJhlUIn22PfT/
-         xzLjFb67caX7vEX5xIbhSb6peU7yMmlXKCfhQbkv65wWh7Z6WIMi5d3S0Soid2CyzDcm
-         AohOXfTgVrTOSQLQdrYEFjpinGQI/rZWOCjX1BzTIUEPH9LwIC0bK/d12Y7D7IPAHC4Q
-         ap8A==
-X-Gm-Message-State: AFqh2kr1a/dgj6QIOVXaAhs6ezQYFkgnF6q8GJ9CSpfRRuZBIW3o4ZTJ
-	V4xLj3A7DJ1iXEAGNy/+E8w=
-X-Google-Smtp-Source: AMrXdXtGNMtBwha02Tmu9U+Hj18evMBRiTxlYHZoPF3iuu+S6yMosoMfI7g0aa/7E+6zd4xLHpZHDQ==
-X-Received: by 2002:a05:6870:f707:b0:14f:f223:faad with SMTP id ej7-20020a056870f70700b0014ff223faadmr15526419oab.15.1672772832000;
-        Tue, 03 Jan 2023 11:07:12 -0800 (PST)
-Received: from localhost.localdomain ([76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id s24-20020a056870ea9800b0014c7958c55bsm14752207oap.42.2023.01.03.11.07.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jan 2023 11:07:11 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	maccraft123mc@gmail.com,
-	tzimmermann@suse.de,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	daniel@ffwll.ch,
-	airlied@gmail.com,
-	sam@ravnborg.org,
-	thierry.reding@gmail.com,
-	linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v7 0/4] drm/panel: Add Magnachip D53E6EA8966 Panel Controller
-Date: Tue,  3 Jan 2023 13:07:03 -0600
-Message-Id: <20230103190707.104595-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1pCmVF-004918-2P; Tue, 03 Jan 2023 18:59:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2AF3AB80FEE;
+	Tue,  3 Jan 2023 18:59:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE05DC433D2;
+	Tue,  3 Jan 2023 18:59:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672772349;
+	bh=+CJk9OwSCEk1H/q4t+TF4/vkdk8PvOEpM8L7jWrZOjY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=HXhSvzMTqih359QbIxXdEIubg8JzAxZNkH/B6vmJPb2c83zUxlSbv05qAAdM3AqFZ
+	 RNsw6Yld/pCkKtNLx7J8sbT9vAoum/XkGKT8FtL6pHR70wr9pB+i9bhplgbtXK+W2A
+	 W9lIh+rQhP15L28U8ETt5QyyWUDYPgpWTZa3yWY0vvACcRqQmO9V24itMM6Hr/u0Xe
+	 uBH5pAUtuv09Lr0709haFcc9JlmebobKwechcad7RbIzxxXwt8o0KK+c4yw79wIwAq
+	 4GL3DEJ3pVlHF+y2YoTM4zdUDx9z4qMF66Z1AjQP5gKeoA785mZp0Mb20u64PiHzke
+	 RrezfG9sGho/g==
+Received: by mail-vs1-f45.google.com with SMTP id m129so26917447vsc.11;
+        Tue, 03 Jan 2023 10:59:09 -0800 (PST)
+X-Gm-Message-State: AFqh2kpnAyCdRl9zTTU9WpYkB8eTOt5D5WJVnaG7y5cTKDaiQkMvFPR9
+	Iio9J+yZxONdG/na6AT0WLrPmQsHHfDzLQlZrw==
+X-Google-Smtp-Source: AMrXdXt30e7MO4nUMxWQHE6eLMPSl7qMY4TL2xhtIPpuWB6pfg5JetNnhvd0qb+pRf12HhvnIWpNMXq7DfSUX1oyzqI=
+X-Received: by 2002:a05:6102:3546:b0:3c8:a6ed:faa8 with SMTP id
+ e6-20020a056102354600b003c8a6edfaa8mr3777310vss.85.1672772348793; Tue, 03 Jan
+ 2023 10:59:08 -0800 (PST)
 MIME-Version: 1.0
+References: <20221219191038.1973807-1-robh@kernel.org> <87edsua5q4.fsf@balbi.sh>
+ <CAL_JsqKgGWN93QJ=V34=X3hC2bgdcd3vwO0Mne-8z8HOfVDz-g@mail.gmail.com>
+ <878riy9ztm.fsf@balbi.sh> <20221223235712.h54lggnjjuu3weol@synopsys.com>
+ <CAL_Jsq+gCi8g0jY2ic1tJebc_JijMU-GntWQg09q+X41O3=1RA@mail.gmail.com>
+ <87o7rlffi7.fsf@balbi.sh> <CAL_Jsq+viP_aY3n378WC7WpxZFnsTc-vKjW9Ojvcy0Ef-z09Ng@mail.gmail.com>
+ <87k028g6ol.fsf@balbi.sh>
+In-Reply-To: <87k028g6ol.fsf@balbi.sh>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 3 Jan 2023 12:58:57 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqKjrXsz6hak2rG3GMKaOot4azDWpYCOsQmdVtmszN1WQw@mail.gmail.com>
+Message-ID: <CAL_JsqKjrXsz6hak2rG3GMKaOot4azDWpYCOsQmdVtmszN1WQw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: snps,dwc3: Allow power-domains property
+To: Felipe Balbi <balbi@kernel.org>
+Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Johan Jonker <jbx6244@gmail.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_110715_674329_1ECF3555 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20230103_105914_059857_13451D0A 
+X-CRM114-Status: GOOD (  31.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,78 +90,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On Fri, Dec 30, 2022 at 11:09 AM Felipe Balbi <balbi@kernel.org> wrote:
+>
+>
+> Hi,
+>
+> Rob Herring <robh@kernel.org> writes:
+> >> >> > >> >  Documentation/devicetree/bindings/usb/snps,dwc3.yaml | 3 +++
+> >> >> > >> >  1 file changed, 3 insertions(+)
+> >> >> > >> >
+> >> >> > >> > diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+> >> >> > >> > index 6d78048c4613..bcefd1c2410a 100644
+> >> >> > >> > --- a/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+> >> >> > >> > +++ b/Documentation/devicetree/bindings/usb/snps,dwc3.yaml
+> >> >> > >> > @@ -91,6 +91,9 @@ properties:
+> >> >> > >> >          - usb2-phy
+> >> >> > >> >          - usb3-phy
+> >> >> > >> >
+> >> >> > >> > +  power-domains:
+> >> >> > >> > +    maxItems: 1
+> >> >> > >>
+> >> >> > >> AFAICT this can be incorrect. Also, you could have Cc the dwc3
+> >> >> > >> maintainer to get comments.
+> >> >>
+> >> >> Felipe is correct. We have 2 power-domains: Core domain and PMU.
+> >> >
+> >> > Power management unit? Performance management unit?
+> >> >
+> >> > That doesn't change that the rk3399 is 1 and we're stuck with it. So I
+> >> > can say 1 or 2 domains, or we add the 2nd domain when someone needs
+> >> > it.
+> >>
+> >> Isn't the snps,dwc3.yaml document supposed to document dwc3's view of
+> >> the world? In that case, dwc3 expects 2 power domains. It just so
+> >> happens that in rk3399 they are fed from the same power supply, but
+> >> dwc3' still thinks there are two of them. No?
+> >
+> > Yes. That is how bindings *should* be. However, RK3399 defined one PD
+> > long ago and it's an ABI. So we are stuck with it. Everyone else put
+>
+> Are you confusing things, perhaps? DWC3, the block Synopsys licenses,
+> has, as Thinh confirmed, 2 internal power domains. How OEMs (TI, Intel,
+> Rockchip, Allwinner, etc) decide to integrate the IP into their systems
+> is something different. That is part of the (so-called)
+> wrapper. Different integrators will wrap Synopsys IP however they see
+> fit, as long as they can provide a suitable translation layer between
+> Synopsys own view of the world (its own interconnect implementation, of
+> which there are 3 to choose from, IIRC) and the rest of the SoC.
+>
+> Perhaps what RK3399 did was provide a single power domain at the wrapper
+> level that feeds both of DWC3's own power domains, but DWC3 itself still
+> has 2 power domains, that's not something rockchip can change without
+> risking the loss of support from Synopsys, as it would not be Synopsys
+> IP anymore.
 
-Add the Magnachip D53E6EA8966 panel IC controller for display panels
-such as the Samsung AMS495QA01 panel as found on the Anbernic RG503.
-This panel uses DSI to receive video signals, but 3-wire SPI to receive
-command signals using DBI.
+Again, none of this matters. I'm documenting what is already in use
+and an ABI, not what is correct. The time for correctness was when
+this binding was added.
 
-Changes since V6:
- - Fixed a trivial error with definition of drm_of_get_dsi_bus().
-   Reported-by: kernel test robot <lkp@intel.com>
+To move forward, how about something like this:
 
-Changes since V5:
- - Reverted dt binding documentation name back to
-   samsung,ams495qa01.yaml.
- - Removed no longer needed of_graph.h header file.
- - Added backlight as a dependency.
+power-domains:
+  description: Really there are 2 PDs, but some implementations
+defined a single PD.
+  minItems: 1
+  items:
+    - description: core
+    - description: PMU
 
-Changes since V4:
- - Renamed driver from the panel model to the panel IC controller per
-   DRM team.
- - Added a drm_of helper function of drm_of_get_dsi_bus() to handle
-   finding and populating the DSI node when the DSI node is not the
-   parent of the DSI controlled display.
- - Converted the documented commands to constants to make it more
-   readable.
- - Reset GPIO is now required and documented as GPIO_ACTIVE_LOW.
- - Removed "prepared" logic from panel.
+We unfortunately can't constrain this to Rockchip in the schema
+because that specific information is in the parent node.
 
-Changes since V3:
- - Updated documentation to add spi-peripheral-props.yaml per updates
-   made for similar devices. Note that I removed a "Reviewed-by" tag
-   from Rob Herring since this change probably needs to be confirmed.
- - Added binding for RG503, since this device is now accepted with this
-   request: https://lore.kernel.org/linux-rockchip/166274831283.21181.6861718157177507544.b4-ty@sntech.de/
+(kind of crappy descriptions too, but that's the amount of information I have.)
 
-Changes since V2:
- - Added 50hz mode at request of userspace devs.
- - Renamed "dupa" to panel name. Good catch Maya.
- - Added Maya's Signed-off-by.
- - Removed check for max backlight, since it is already done by
-   backlight_device_set_brightness.
- - Fixed minor formatting issues on devicetree binding documentation
-   and added port to provided example.
+> > power-domains in the parent because obviously the DWC3 has 0
+> > power-domains.
+>
+> How did you come to this conclusion?
 
-Changes since V1:
- - Removed errant reference to backlight in documentation. This is an
-   OLED panel.
- - Made elvss regulator optional. In my case its hard wired and not
-   controllable.
- - Added "prepared" enum to track panel status to prevent unbalanced
-   regulator enable/disable.
+By testing the schema against the in tree .dts files. To date, no one
+other than Rockchip has power-domains in the DWC3 node.
 
-Chris Morgan (4):
-  drm: of: Add drm_of_get_dsi_bus helper function
-  dt-bindings: display: panel: Add Samsung AMS495QA01
-  drm/panel: Add Magnachip D53E6EA8966 Panel Driver
-  arm64: dts: rockchip: add display to RG503
-
- .../display/panel/samsung,ams495qa01.yaml     |  57 ++
- .../dts/rockchip/rk3566-anbernic-rg503.dts    |  55 ++
- drivers/gpu/drm/drm_of.c                      |  62 +++
- drivers/gpu/drm/panel/Kconfig                 |  11 +
- drivers/gpu/drm/panel/Makefile                |   1 +
- .../drm/panel/panel-magnachip-d53e6ea8966.c   | 514 ++++++++++++++++++
- include/drm/drm_of.h                          |  11 +
- 7 files changed, 711 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
- create mode 100644 drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
-
--- 
-2.34.1
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
