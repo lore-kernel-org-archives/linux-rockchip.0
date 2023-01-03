@@ -4,134 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD3CC3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jan 2023 15:30:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CC41C46467
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 08:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mNQdsNUpa5sRSuYfSxBaEsyyXgY+CI1LwF+DnzNr6dE=; b=tKy6lAuY01w6MzDI4QLyVt0/ro
-	LUEMZ2VIn0n38UCrN2cgzm+WvTh3N7yYYiY3dXJDTSuJ1HmH8J7cIqMINPIML275+mKuCCDFudV9Y
-	e3EskOXUsBR8WXXj+7ztOE6c9ndPj8Ov4SyO6f7oLbUDQOcoxK02TkF6ocgYxxbEP+2Vsa80Vu0/W
-	ABeAccKUSwg9vFIb6V7A+wpSZCNey4SJvuCvuQFy/AS4Pl4kz2DoGB/r33tjj6tlOTFk4/0sEu6g4
-	De/EuM5YaXC0X2N6RhtEdomUmBnqT8giroeFzXn1rBUQczAZElBE+dQK5MaZGwpSxR+MaJF9z09Cr
-	s0DtK0vw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=UapZgy1JkyeRfEBs6KzoEDFkORpDTYgRpJioUFXmyl4=; b=WToukPR1UHnBjD
+	yLO5qm0+VIW13qpsjadjGTyVIF8rLdncAiKECychLfAJ1oFGT7q7uhTv+9WdburccbCu951zKppiN
+	1mlHevnilW8DoUHYnNHotjRfDpFEuAVgE9wPfGALnCu9rDDV9yIqy2EMqFkAHGBQ+BS0CjkdZCfPl
+	7x9o3W0F80RF0QJmep2N35DfKdXi0phWBPcj03UTvyEVWVfPnY51po0BiBhMb2nABA/7G+MbbcxfD
+	4TsbBrrovcNlb4TOssXUazZqT3hY7iHXyQ3qYvp3RjdRLGzrFbLlwn+LOI+lHgtupqhn0mvLvrOFx
+	MocA4iLhTrTOkPSrTaig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCMl1-00CEce-Dw; Mon, 02 Jan 2023 15:29:47 +0000
-Received: from mail-am6eur05on2083.outbound.protection.outlook.com ([40.107.22.83] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1pCcPe-0006TU-7t; Tue, 03 Jan 2023 08:12:46 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCMkl-00CEUg-6u; Mon, 02 Jan 2023 15:29:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iprGI7XcIkd+1nlWErkdShrJ/Ee3fxESeaJUtlWE3LqboZhGvdUQlH+jEUk3BLugR4wPLkxJHS2tCmhtuEXs4QYLe9bEs/ZkvKkNOzxN3LEbgHQqgQgi1fd1z01EOxrvKtAUae6Ryz9wO4ScIa9t79AlAM4gj1dCc0P1nQZ2D3VKxiBbj3Yr2wYYhFRSlTmc41ptiCnRj1w6HyK2V/AuUvVJVsRtTGU9Mw5P3SRz3nexRh1wpazlRYViI4hzoUBKdGkhE1w6auzucFMscbhmPziXpdXumA7DHSAIpKJiJAOMPU8PId9FT6UH8k69H8gBYoDjju9Ck7e8zDjCzS6QVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=R0tPBYCm/yrksBjxeVdXfxI8+ebPHM0MyKydnnih1tU=;
- b=PJScIc07BivQWGQlQ5kh0nQGBXTBovmGgDO11ACpffmbB/WYJ/z9LGB6XMhqA73yOoYHLl7d5NtBEf/geVd0SHQBTIl8FjTTbx9gokXUelM2eLkp44uCdA+j6USqQrtden68GhSMQx8hJ2v7N6z5yZEmnif2QmVtc91IGqR+E6uF2Q5UfGKq4Eyv963BT+rlTEHnUs311989aRjSqyAEFfJ3Dni7eqksEGDoFxYOTH6Rj12O61YNnw0af+hxxav/swwzm6byKWfRHXXW2+N1xyZmBN13dVkZ2VEm21iTufXpM5WrBFDew6SSChPS1TyIv35SjVKDalpoJvKqWTNU/w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=R0tPBYCm/yrksBjxeVdXfxI8+ebPHM0MyKydnnih1tU=;
- b=OBQ5Dr9mpT9W/zEvTMnVz4D9oq/a6gGX4qHaa9P6rLwz6VzX2P1q8gVzIpQq3gECvWZ4TU7bDdqKAKZx9+mrGbdvpRu/QMQUlZn8T5DcKYDQdGfdTqqb3Fk4wYaciPqqz01/O1ebrHDy+/INY40XBIlFYBtvDN5R5OuownRgFp7WxRDDJHcm9ymw5NUITZS0sn8L/DPoM/t2jMhVDkD7vao1XoWHE5/wxEJzxsARL9uBPfXJUmN2ojGZr2AL0uCJmVVwHVhR5dtyQm/nfymGoj9IZyHUkZ6LI6l/kOEXLkLoSGGHvourLNrWbpo0pDbLFsO6GRTCAYymGDGJ+n3amA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
- by AM7PR04MB6791.eurprd04.prod.outlook.com (2603:10a6:20b:103::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.19; Mon, 2 Jan
- 2023 15:29:23 +0000
-Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
- ([fe80::9ebd:cd48:9396:76f6]) by DU2PR04MB8536.eurprd04.prod.outlook.com
- ([fe80::9ebd:cd48:9396:76f6%6]) with mapi id 15.20.5944.019; Mon, 2 Jan 2023
- 15:29:23 +0000
-Message-ID: <09bd4e26-3e1e-061f-e228-a06ac2e4ab90@theobroma-systems.com>
-Date: Mon, 2 Jan 2023 16:29:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] clk: rockchip: rk3399: allow clk_cifout to force
- clk_cifout_src to reparent
-Content-Language: en-US
-To: Quentin Schulz <foss+kernel@0leil.net>, Stephen Boyd <sboyd@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>,
- Michael Turquette <mturquette@baylibre.com>
-Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- stable@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20221117-rk3399-cifout-set-rate-parent-v1-0-432548d04081@theobroma-systems.com>
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-In-Reply-To: <20221117-rk3399-cifout-set-rate-parent-v1-0-432548d04081@theobroma-systems.com>
-X-ClientProxiedBy: VI1PR0502CA0030.eurprd05.prod.outlook.com
- (2603:10a6:803:1::43) To DU2PR04MB8536.eurprd04.prod.outlook.com
- (2603:10a6:10:2d7::10)
+	id 1pCcKy-0004zE-DF; Tue, 03 Jan 2023 08:07:58 +0000
+Received: by mail-wr1-x429.google.com with SMTP id az7so4240163wrb.5;
+        Tue, 03 Jan 2023 00:07:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YQO0ONCN4ZgZtx9HE+Nsk3Zq7sSG4eK1JNOppC+Lx/M=;
+        b=QDLW1jX26AnzUwefK2H+ja7576rr/JSkW+0K2ljLG+6oZyopCuqAABCXZ3ttcx+kDm
+         rphxzjnPsFyNFkPffo8odV6vt4PbFDc9cqI+u8JDxzKceNO4WgoGsUxREIsnDUc0We7R
+         v0rNKXv8unP0hz2MkdTwrgMe/35vng2kL8cLfRcU0Dfm9/reaRkj9d1dqBGii7+wxkg4
+         lySdvACqMcEwQMj7koxsJKBHZbQ13IVluzaJUKU439TJovDsSQCUQJBhr0XRbaS3LGiz
+         K7kxbtef9AQxASGqRMOZlYH4TmEedLmz0NryAw+5hkJzUmd+KUJDzhEgZC1FwD4lRT45
+         56lQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YQO0ONCN4ZgZtx9HE+Nsk3Zq7sSG4eK1JNOppC+Lx/M=;
+        b=LcjwFzjj65H3eAfaXUa7OIGPwVjV4+D+3Q6a5fcAsLGnIzvEAURY/jzOA6Jf7K1QRS
+         c/pDJlMakSKCMJf79/YnVoMagDfFXXLIJVeYlJdFtuyXSfzNddPuQc858/3cmkvPG03U
+         8dKFeYzedyjbJMYRGOlx4SejpGfmQhJu41Nd+NvfkO8HFBFx0HXYSvXmIArO2VI0uI42
+         WgxZJpjTdhpQt6DA1/qWjm+E3suOVAFhWe2XIm2glDQHXwsGTuVZYupuOLdO3IzR/yxL
+         xc+iYEYdm10CuVJlFJqNyJ6FQbxfaJzKbBi7fB34x6l9PzUt0WpyKkfDX1JvnwyDGrw1
+         IO7g==
+X-Gm-Message-State: AFqh2krB6plRosdKS7djTw6x1dsdPBpxnQ7tNnNsiEdPemk124SaFpzx
+	FSZtnvhuGrebQ24iqbNtxBw=
+X-Google-Smtp-Source: AMrXdXtmMg3fso+1Q3zVGl2iFiX51Pj04IeNueZWY1axHYHgHL3dcIYuPR3TZbL9T/xOaJH0CCZjkA==
+X-Received: by 2002:adf:f606:0:b0:28c:1ae0:e67f with SMTP id t6-20020adff606000000b0028c1ae0e67fmr10080656wrp.55.1672733270983;
+        Tue, 03 Jan 2023 00:07:50 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id i1-20020adfb641000000b002425787c5easm30768195wre.96.2023.01.03.00.07.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jan 2023 00:07:50 -0800 (PST)
+Date: Tue, 3 Jan 2023 11:07:45 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: oe-kbuild@lists.linux.dev,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Sascha Hauer <sha@pengutronix.de>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH 3/5] drm/rockchip: vop2: use symmetric function pair
+ vop2_{create,destroy}_crtcs
+Message-ID: <202301010414.gzia8KzY-lkp@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|AM7PR04MB6791:EE_
-X-MS-Office365-Filtering-Correlation-Id: b9f235ad-7e92-4ed0-6fd9-08daecd62033
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	+DlYA/MA8+WvqK+gwma7BBHx+8lzlFmMF162gzhV/uZ0TXI2/7Lyo5T+blVEr23S467vMcsCJNOGI6+wY0BPbrwtMaKJMJAi1468hmIHRd5frgxiYZpjRNagH6iCVwZtHvp24tPhK+TP2oVclXoyW97M+lDKYwyeZpWPAkh8wTBvXZUbAcceLDQh4coFnfRp/U7AAUrrupAZmpYhlNi5FMoqfM1/99VsXzmH8wrsMI9XVWsIWgxx3l5UdJ76Q+zDyYCYfflzka0JWo6C9OkGYGDjA9O0iy88ZfCaYEpJDQ6kw5tsLYdreKhOMAfGZ7QoS2f2FEcQA3zSgjEY9oPW6IAGKcDwWLGvijOb9ifKFCT9bPjL7bhuN7CpWaFQV2LYwEtXTZ/P0IrYfDIhnQmvSYhHYC3s0kTloRGQ7pQ++gKQ0jP18LDB5vpeazJq+g/NvoE/lfhyv2pvC/rLJcql1ywh3TVs8N/oVFA04b9rVdyoLlpA7UK/3z4TVOHc6Y6UFl5bUYXqqInw0WghqxgK40zWT0fP4QUtMV7t3FtQz4get+OHa2Z0OyZdctPOgh9DBAteDrtVGig47SWh47NpSALnrwS6cAdbfbC3AfikLtMfxxTwmCBM6rXi8HOQkk3G+wiA9J4WNOC1Fsf44pV40Z1KGUw1sGXjwDbARLPGtn+rTcwCHqqItWydOlpHiJE6OoLr8cnUVn0ONPC17sEK0KNGrmk/EmYfmtw3v8YNFMaOdU8TDCZL5jT40QBXus8+/zEknulDoTHb/o8wFTjFAw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(136003)(376002)(396003)(366004)(39840400004)(451199015)(83380400001)(186003)(6512007)(53546011)(2616005)(6506007)(31696002)(86362001)(36756003)(38100700002)(41300700001)(8676002)(4326008)(2906002)(5660300002)(7416002)(8936002)(44832011)(6486002)(66556008)(31686004)(478600001)(66946007)(316002)(66476007)(110136005)(22166006)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?T3RhRGUrbk1TU2JCOWtnVzVMOFJ3Y253Y1JnZE1FdDZ2ZWNCVjJOOWNSdGtE?=
- =?utf-8?B?VWtPTnNUb0tTRFJMdktzOTQ4WlhvUUlQUDgxVnZkZS9qTHlobm5Nanh0dnBG?=
- =?utf-8?B?UkJxWGJWUXhqTWE5cGR6OE1qZHk4NjlDZWV5UVo1Zm5ZU0Y3ZFJCbW83TGVP?=
- =?utf-8?B?dStFbklONVI1UVNEdklOcmdQRkRPTzlzRW9TTU0yMUVjTEpydVpVNHcwT01H?=
- =?utf-8?B?cTVLaTA2NGt4MTdXVEtWQU53aFM2MHNBTTB3enUzeWE0eHpGM2VlUVY2R0Zi?=
- =?utf-8?B?VTBPWXFzR2Z5VmRpNmU4bFVNaDVuOW1kQm9HZ240dWkxQzJPaUEwQ3REZ2xG?=
- =?utf-8?B?MXZSSTZaKzA2Y1JGMzFLQjRBbUNhK1ppNkdzd1N3UGRPN01heWNKRllYeU1s?=
- =?utf-8?B?ZXBmZkE4NUMrNFZEQlZoVWZndnNMV01xWGZ4VGtMT3NrWCt1WlNVZDR2QmVq?=
- =?utf-8?B?dzdiK1NQbmRzbDNWdDVxcG1saHZ6TEtSYi9xbjZHd0hTR1FhMUFNc3dTcTVC?=
- =?utf-8?B?a2h5MEhLL3ppMU1vZko4OFBxV0x6ZmNzbGJDeUJkc1FtMW9halFKb3VUeWhB?=
- =?utf-8?B?L3RWVVN0TlRNR2xLT1RpdVFrUmJremplS3BIVnlRNFFnQWIyQlcvMlp3UDFx?=
- =?utf-8?B?M0hjalFXOVlFRDNETmloak9kN1NKVTE5VE1xVWF6TXBzdStkZ0I1ckEzTlVj?=
- =?utf-8?B?Y3pGbmkvbzIxYVUraWN0TW1WUHRZb2ozTERMRXlmUGtEaHhZdjlCTDF5UTd4?=
- =?utf-8?B?N2J4M2ZPQ3pCSzZzTGdYOEdWOGhSUk1OcXg1SWxLWEs1MU9xUGZhaTlab0pY?=
- =?utf-8?B?eW1tdm4vVVJsL1lOWnlxY2R0MndEaTU5L1hpbmRkeFUzVW5yaEcvZEVIVm9y?=
- =?utf-8?B?c1VnTzlQTHRCSmZXQUZic254OTk2cGZQSkRia3J3NWlQMjc0cGt0MGE3NnhD?=
- =?utf-8?B?QkJ6SzV4bGFhSytCZDVxRDN4MENiQnIyWUQ0SXBsbHVrRXU1alZHY2NTZGhN?=
- =?utf-8?B?dGtuMWNLT1NjVjNEOTAxSHpORmFEOEhGcTA0UzArN01WOFpvVkZJTGl5ZHVL?=
- =?utf-8?B?MEg3Sk91QW1VWmQ3Y3JYUW5DcUU4K3BnQi9jUkphN2xRWHhMcmtCc1I1V2NY?=
- =?utf-8?B?SjkxbFdSZnZuMUdNaWFWRjZBQ3RQaTVIRjRvdVhRMWo1a3IrMlNsNTB1VUZv?=
- =?utf-8?B?NE8wNXpsQmFqK3hrVmZIaXk5N1I1RzVpTis2ZDZ1dk1pT3VkcW5DTTVDbzU4?=
- =?utf-8?B?SWhERkplL0J6VlRYdDlBZE1seWRYdVNnQytuUmRQN1VVUlY4N2pTOGE0T2Fr?=
- =?utf-8?B?NkVOb0FJSVE1UnhHOHphMWZmWVVFNW5kY1k4Q1d3TnlzSkxBUk9BclFTeFBt?=
- =?utf-8?B?SkozM2ErbnhRdno2U3FOdkpQbUh6TFJLUE5CNFNmb29GTUhPM3pjYml5ci9j?=
- =?utf-8?B?ZThFYk5mL1VLaEVBOHhyaWhCZkN2NXFSWkRtQ3o0Z21BbU00NVNtQkxOelBD?=
- =?utf-8?B?NG5KNGpiZUNVbi9VOXlrZGVHUDRINjZpdndsVEFIdzRUV1U4TGh5ZWI3cktM?=
- =?utf-8?B?S1picHdNU3Znd0VIMlo3cGkxSVpaMkpVL1d1dFJXMEU5V21pellDQ2ZFMW5m?=
- =?utf-8?B?THBCZE9LZitoTG9oRmVJVUhrelVueUlCRjZVcjgvY0RhcnRTOEZpN3FpWkcr?=
- =?utf-8?B?bnFpQUFjbkd1eGFzQTQwT1NiYmNRVDdCQXNXc0xjZ1hWM2xiOHN1L2J5NkNO?=
- =?utf-8?B?QktXY0F6UVh6YUVsYitKcmhwOGZEbDdjeUp0TzZMWmMyR01BOHJyazRLc1d0?=
- =?utf-8?B?TlRjRnJ0QlVkVGErUVI4S3IzQmQvYVNKQTBoU0RZcEJRTVU0ZTREUTNzc2Js?=
- =?utf-8?B?UGJlaDlzS0lhSDhQa3M3TmplSU0zVmEwRzVWWUJGNHFKZGhuQ2FSeW4zZ2FL?=
- =?utf-8?B?V3JFSWJvSHk4dnZ1cVpRZW8wVlRuNFRXeEQ2d1dkMWVBR1h4MzB5OVBvVTVm?=
- =?utf-8?B?bWxzNXpqMlJpTzhPeXVWUUZvREk2YkVDUzBzRXZEUkhoOVR1Ny8vSFdRR3VB?=
- =?utf-8?B?N2thUXp2eFFRVkdXdG1tY0R5Y3RaOFZ6UzZ1ZExrZnNxRStMVW5hbXlnNnB1?=
- =?utf-8?B?MVhBL3g1QlduUEdjR054ckpFblVpcVFybVBBelFiaGFTQkZaUkc4ZXlsU0RD?=
- =?utf-8?B?T1B2ckRxN0NCZUFFTUp0M3hsSHFEUnlMV0srTFA3UDFSOVd4cjhSYkowdk5Z?=
- =?utf-8?B?YjhoZkxyNHo1eEtsK0dKNnhnRWR3PT0=?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b9f235ad-7e92-4ed0-6fd9-08daecd62033
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jan 2023 15:29:23.5443
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sPCLSEADM4cBBY/6OhsIaRAKzHj2tqQgymBi/mzqybYCRwXaeCG/1xqKpsecQTdvTg53kZTIt1Ggm3iU75bKpfNY6fQwbw0NDRwx+d8sP7Dm9Eb7VDW54XsxSoj8N8dI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6791
+Content-Disposition: inline
+In-Reply-To: <20221130140217.3196414-4-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_072931_593110_9D2AF177 
-X-CRM114-Status: GOOD (  26.08  )
+X-CRM114-CacheID: sfid-20230103_000756_489136_4EB2C4D0 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,77 +92,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Hi Michael,
 
-Gently pinging as it hasn't received any review and I couldn't find the 
-patch in a branch in the linux-clk tree.
+url:    https://github.com/intel-lab-lkp/linux/commits/Michael-Riesch/drm-rockchip-vop2-add-support-for-the-rgb-output-block/20221130-220346
+base:   b7b275e60bcd5f89771e865a8239325f86d9927d
+patch link:    https://lore.kernel.org/r/20221130140217.3196414-4-michael.riesch%40wolfvision.net
+patch subject: [PATCH 3/5] drm/rockchip: vop2: use symmetric function pair vop2_{create,destroy}_crtcs
+config: parisc-randconfig-m031-20221225
+compiler: hppa-linux-gcc (GCC) 12.1.0
 
-Cheers,
-Quentin
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <error27@gmail.com>
 
-On 11/17/22 13:04, Quentin Schulz wrote:
-> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> 
-> clk_cifout is derived from clk_cifout_src through an integer divider
-> limited to 32. clk_cifout_src is a child of either cpll, gpll or npll
-> without any possibility of a divider of any sort. The default clock
-> parent is cpll.
-> 
-> Let's allow clk_cifout to ask its parent clk_cifout_src to reparent in
-> order to find the real closest possible rate for clk_cifout and not one
-> derived from cpll only.
-> 
-> Cc: stable@vger.kernel.org # 4.10+
-> Fixes: fd8bc829336a ("clk: rockchip: fix the rk3399 cifout clock")
-> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> ---
-> clk: rockchip: rk3399: allow clk_cifout to force clk_cifout_src to reparent
-> 
-> This used to be correct before v4.10 but commit fd8bc829336a ("clk: rockchip:
-> fix the rk3399 cifout clock") incorrectly removed this ability while reworking
-> it.
-> 
-> Note: this has been tested on top of v6.0.2 only but no changes were made to
-> this driver since. As for older stable releases, the git context seems identical
-> and there does not seem to have been any logical change introduced since v4.10
-> so it should be pretty safe to apply.
-> 
-> To: Michael Turquette <mturquette@baylibre.com>
-> To: Stephen Boyd <sboyd@kernel.org>
-> To: Heiko Stuebner <heiko@sntech.de>
-> To: Xing Zheng <zhengxing@rock-chips.com>
-> Cc: linux-clk@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->   drivers/clk/rockchip/clk-rk3399.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 306910a3a0d38..9ebd6c451b3db 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -1263,7 +1263,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
->   			RK3399_CLKSEL_CON(56), 6, 2, MFLAGS,
->   			RK3399_CLKGATE_CON(10), 7, GFLAGS),
->   
-> -	COMPOSITE_NOGATE(SCLK_CIF_OUT, "clk_cifout", mux_clk_cif_p, 0,
-> +	COMPOSITE_NOGATE(SCLK_CIF_OUT, "clk_cifout", mux_clk_cif_p, CLK_SET_RATE_PARENT,
->   			 RK3399_CLKSEL_CON(56), 5, 1, MFLAGS, 0, 5, DFLAGS),
->   
->   	/* gic */
-> 
-> ---
-> base-commit: cc675d22e422442f6d230654a55a5fc5682ea018
-> change-id: 20221117-rk3399-cifout-set-rate-parent-1fbf0173ef2d
-> 
-> Best regards,
+New smatch warnings:
+drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2330 vop2_create_crtcs() error: uninitialized symbol 'possible_crtcs'.
+
+vim +/possible_crtcs +2330 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+
+fb83276e59f2d6 Michael Riesch 2022-11-30  2249  static int vop2_create_crtcs(struct vop2 *vop2)
+604be85547ce4d Andy Yan       2022-04-22  2250  {
+604be85547ce4d Andy Yan       2022-04-22  2251  	const struct vop2_data *vop2_data = vop2->data;
+604be85547ce4d Andy Yan       2022-04-22  2252  	struct drm_device *drm = vop2->drm;
+604be85547ce4d Andy Yan       2022-04-22  2253  	struct device *dev = vop2->dev;
+604be85547ce4d Andy Yan       2022-04-22  2254  	struct drm_plane *plane;
+604be85547ce4d Andy Yan       2022-04-22  2255  	struct device_node *port;
+604be85547ce4d Andy Yan       2022-04-22  2256  	struct vop2_video_port *vp;
+604be85547ce4d Andy Yan       2022-04-22  2257  	int i, nvp, nvps = 0;
+604be85547ce4d Andy Yan       2022-04-22  2258  	int ret;
+604be85547ce4d Andy Yan       2022-04-22  2259  
+604be85547ce4d Andy Yan       2022-04-22  2260  	for (i = 0; i < vop2_data->nr_vps; i++) {
+604be85547ce4d Andy Yan       2022-04-22  2261  		const struct vop2_video_port_data *vp_data;
+604be85547ce4d Andy Yan       2022-04-22  2262  		struct device_node *np;
+604be85547ce4d Andy Yan       2022-04-22  2263  		char dclk_name[9];
+604be85547ce4d Andy Yan       2022-04-22  2264  
+604be85547ce4d Andy Yan       2022-04-22  2265  		vp_data = &vop2_data->vp[i];
+604be85547ce4d Andy Yan       2022-04-22  2266  		vp = &vop2->vps[i];
+604be85547ce4d Andy Yan       2022-04-22  2267  		vp->vop2 = vop2;
+604be85547ce4d Andy Yan       2022-04-22  2268  		vp->id = vp_data->id;
+604be85547ce4d Andy Yan       2022-04-22  2269  		vp->regs = vp_data->regs;
+604be85547ce4d Andy Yan       2022-04-22  2270  		vp->data = vp_data;
+604be85547ce4d Andy Yan       2022-04-22  2271  
+604be85547ce4d Andy Yan       2022-04-22  2272  		snprintf(dclk_name, sizeof(dclk_name), "dclk_vp%d", vp->id);
+604be85547ce4d Andy Yan       2022-04-22  2273  		vp->dclk = devm_clk_get(vop2->dev, dclk_name);
+604be85547ce4d Andy Yan       2022-04-22  2274  		if (IS_ERR(vp->dclk)) {
+604be85547ce4d Andy Yan       2022-04-22  2275  			drm_err(vop2->drm, "failed to get %s\n", dclk_name);
+604be85547ce4d Andy Yan       2022-04-22  2276  			return PTR_ERR(vp->dclk);
+604be85547ce4d Andy Yan       2022-04-22  2277  		}
+604be85547ce4d Andy Yan       2022-04-22  2278  
+604be85547ce4d Andy Yan       2022-04-22  2279  		np = of_graph_get_remote_node(dev->of_node, i, -1);
+604be85547ce4d Andy Yan       2022-04-22  2280  		if (!np) {
+604be85547ce4d Andy Yan       2022-04-22  2281  			drm_dbg(vop2->drm, "%s: No remote for vp%d\n", __func__, i);
+604be85547ce4d Andy Yan       2022-04-22  2282  			continue;
+604be85547ce4d Andy Yan       2022-04-22  2283  		}
+604be85547ce4d Andy Yan       2022-04-22  2284  		of_node_put(np);
+604be85547ce4d Andy Yan       2022-04-22  2285  
+604be85547ce4d Andy Yan       2022-04-22  2286  		port = of_graph_get_port_by_id(dev->of_node, i);
+604be85547ce4d Andy Yan       2022-04-22  2287  		if (!port) {
+604be85547ce4d Andy Yan       2022-04-22  2288  			drm_err(vop2->drm, "no port node found for video_port%d\n", i);
+604be85547ce4d Andy Yan       2022-04-22  2289  			return -ENOENT;
+604be85547ce4d Andy Yan       2022-04-22  2290  		}
+604be85547ce4d Andy Yan       2022-04-22  2291  
+604be85547ce4d Andy Yan       2022-04-22  2292  		vp->crtc.port = port;
+604be85547ce4d Andy Yan       2022-04-22  2293  		nvps++;
+604be85547ce4d Andy Yan       2022-04-22  2294  	}
+604be85547ce4d Andy Yan       2022-04-22  2295  
+604be85547ce4d Andy Yan       2022-04-22  2296  	nvp = 0;
+604be85547ce4d Andy Yan       2022-04-22  2297  	for (i = 0; i < vop2->registered_num_wins; i++) {
+604be85547ce4d Andy Yan       2022-04-22  2298  		struct vop2_win *win = &vop2->win[i];
+604be85547ce4d Andy Yan       2022-04-22  2299  		u32 possible_crtcs;
+604be85547ce4d Andy Yan       2022-04-22  2300  
+604be85547ce4d Andy Yan       2022-04-22  2301  		if (vop2->data->soc_id == 3566) {
+604be85547ce4d Andy Yan       2022-04-22  2302  			/*
+604be85547ce4d Andy Yan       2022-04-22  2303  			 * On RK3566 these windows don't have an independent
+604be85547ce4d Andy Yan       2022-04-22  2304  			 * framebuffer. They share the framebuffer with smart0,
+604be85547ce4d Andy Yan       2022-04-22  2305  			 * esmart0 and cluster0 respectively.
+604be85547ce4d Andy Yan       2022-04-22  2306  			 */
+604be85547ce4d Andy Yan       2022-04-22  2307  			switch (win->data->phys_id) {
+604be85547ce4d Andy Yan       2022-04-22  2308  			case ROCKCHIP_VOP2_SMART1:
+604be85547ce4d Andy Yan       2022-04-22  2309  			case ROCKCHIP_VOP2_ESMART1:
+604be85547ce4d Andy Yan       2022-04-22  2310  			case ROCKCHIP_VOP2_CLUSTER1:
+604be85547ce4d Andy Yan       2022-04-22  2311  				continue;
+604be85547ce4d Andy Yan       2022-04-22  2312  			}
+604be85547ce4d Andy Yan       2022-04-22  2313  		}
+604be85547ce4d Andy Yan       2022-04-22  2314  
+604be85547ce4d Andy Yan       2022-04-22  2315  		if (win->type == DRM_PLANE_TYPE_PRIMARY) {
+604be85547ce4d Andy Yan       2022-04-22  2316  			vp = find_vp_without_primary(vop2);
+604be85547ce4d Andy Yan       2022-04-22  2317  			if (vp) {
+604be85547ce4d Andy Yan       2022-04-22  2318  				possible_crtcs = BIT(nvp);
+604be85547ce4d Andy Yan       2022-04-22  2319  				vp->primary_plane = win;
+604be85547ce4d Andy Yan       2022-04-22  2320  				nvp++;
+604be85547ce4d Andy Yan       2022-04-22  2321  			} else {
+604be85547ce4d Andy Yan       2022-04-22  2322  				/* change the unused primary window to overlay window */
+604be85547ce4d Andy Yan       2022-04-22  2323  				win->type = DRM_PLANE_TYPE_OVERLAY;
+604be85547ce4d Andy Yan       2022-04-22  2324  			}
+604be85547ce4d Andy Yan       2022-04-22  2325  		}
+604be85547ce4d Andy Yan       2022-04-22  2326  
+604be85547ce4d Andy Yan       2022-04-22  2327  		if (win->type == DRM_PLANE_TYPE_OVERLAY)
+604be85547ce4d Andy Yan       2022-04-22  2328  			possible_crtcs = (1 << nvps) - 1;
+
+What about if win->type is not equal to either DRM_PLANE_TYPE_PRIMARY or
+DRM_PLANE_TYPE_OVERLAY?  That's what the checker is worried about.
+
+604be85547ce4d Andy Yan       2022-04-22  2329  
+604be85547ce4d Andy Yan       2022-04-22 @2330  		ret = vop2_plane_init(vop2, win, possible_crtcs);
+                                                                                                 ^^^^^^^^^^^^^^
+
+604be85547ce4d Andy Yan       2022-04-22  2331  		if (ret) {
+604be85547ce4d Andy Yan       2022-04-22  2332  			drm_err(vop2->drm, "failed to init plane %s: %d\n",
+604be85547ce4d Andy Yan       2022-04-22  2333  				win->data->name, ret);
+604be85547ce4d Andy Yan       2022-04-22  2334  			return ret;
+604be85547ce4d Andy Yan       2022-04-22  2335  		}
+604be85547ce4d Andy Yan       2022-04-22  2336  	}
+604be85547ce4d Andy Yan       2022-04-22  2337  
+604be85547ce4d Andy Yan       2022-04-22  2338  	for (i = 0; i < vop2_data->nr_vps; i++) {
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
