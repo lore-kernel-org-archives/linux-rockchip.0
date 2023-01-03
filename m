@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CF8C3DA7D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 18:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E079C4708D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jan 2023 18:47:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YSmAPcExC7pkp5YKzOzT2zsFrJfSadR+FJEyty6q4SY=; b=Tv0YK/M3P1fDjX
-	WvpJcgRaO84Mxc4cwQTN37nA2YofuB1HaMDov39XwR6kD9X7la8mORLaCZseOiv6+uefkRTkA6YIf
-	7yXPl4st8d2yboJQMqPuWmKgveDpPyClDMpQBDHD4i/EvY+Gb13Yp86NH0CyeK219Jzg5XXp5lM93
-	3rrGVTrSkFhYGhkcaQMA6yFWmQmD1D0L1kNbfweXUNUOtziaLCho0dPCJ5spO/fWAQkBDd9sU2BzO
-	rg6UcmS+JLaW+9ikQZCR7DVXvsQ9R0hZwOwP7eKY494mJNFtb+/L+0i+1z9KzUY2nduvPpatehRtQ
-	0MqIkPFup6bHGnKGrjhw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+8Ky0gEnP+rPGyt6/4HxIrRxcndjSr560pNENDKyyqw=; b=KWY21ijSelcE7n
+	2e1+XcHUX/zCrgoQL2WKWFuNUhDV5NvNH4E2Z0i6N3khRUwdyuoYzOoi1Hj4xUqQoNFeKEWMoFWpP
+	4pyFjCBdTu8ZpzrD1wldu8lihZ1aMG+7f9+DHh2kwniKUnRsDYZuQTtdreMGd6XS1IMh0TQUXmRV3
+	soIu2wBPMh7gj+ij+XhJVT0PGCV9vqta0qjMfFcJL4NRrJ3finPY+G4h9nZJqgqBr5WjSHBy2NnxZ
+	XmagVAfsTAW5pCymL4ektmHwQ2PmmyZXtBmmsO1EY8JgNx/Qhn8HfdrhEVQIDIK6n+DlxA6CRX+Eg
+	hk68vojd8elj9M8GCa2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmJ9-0041pv-28; Tue, 03 Jan 2023 18:46:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pCmJC-0041t6-H0; Tue, 03 Jan 2023 18:46:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkf5-003Bqs-JF; Tue, 03 Jan 2023 17:01:24 +0000
+	id 1pCkf5-003Bq1-Hs; Tue, 03 Jan 2023 17:01:23 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:abfa:cf23:1e4e:2b14])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A112D6602D00;
-	Tue,  3 Jan 2023 17:01:10 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2E89E6602CEE;
+	Tue,  3 Jan 2023 17:01:09 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672765271;
-	bh=G7EbYqzzKPwX7xpqO9DZV8LtV7c0Hlez9HUiWRVZSXw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HiaAsfNLfSlsFgpYMdiUEsvlZmL0K/AzTOGSHGysiblqA92ddl0r+zpDCMEwJV3bF
-	 JxO7UpX2bumZVOs0hyjOEOo9i3CWt7M3gqcsO0bjL1GfqEGlRFiWTGPWcRkala0w0Y
-	 ggf92yQDt5Gf6r/Yf/CMn0luccrrDLAQOJ8RQMVySGHr09WwBH8WgXJ4SiZWzNR0Ss
-	 9BqJ+Tus7WbeZw2EHkPgEizUYpl/O4lChysan1OBCh3mT/+rANykdxNybbFr4hUQrh
-	 rxB4Qb1hLrKQNYp92IvYTUAKbe9mtUEtowyPMn6MYHL4ywuTAxek4qhDhdniLb3CqJ
-	 YIV7Shv5emW0w==
+	s=mail; t=1672765269;
+	bh=tup4Eb76uspONm3q+7VqPIP2eK1mHXuDxCsrk3zil+E=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KT9UTq4eeQv0Q4/KCdUvU9Bd96a6GbLZAcLFHIXJhg8zZ+Sm4j2x1zf+0SJFrKeo9
+	 jvwa6VTL4GkcdUHdBn7b0p9ozMWVHncNPrTkFsY6rtlQMGxheGrkB3KCwRA0JhWf9/
+	 aJ5Ri3h1sfMPKVHdCY5rBv7t7McWfSbUzYR1UhSSlblpggcfgOrtuJwgGH7GGJPNO8
+	 OnKHYw5oLFGbjKVO5kH0ZJkAy27pyyUKlRRgXS6qT9ZDHg+ny5mPB384sI8ANYoccE
+	 cwX7j90Sx1cfGfkABX3G5cA+OTDwkb60vMB9e7q+dIusJcWDQUYOsHjWow90Y8uK9s
+	 w5pSlEDS6jTHA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -56,18 +56,15 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v2 03/13] media: Add NV12_10LE40_4L4 pixel format
-Date: Tue,  3 Jan 2023 18:00:48 +0100
-Message-Id: <20230103170058.810597-4-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 00/13] AV1 stateless decoder for RK3588
+Date: Tue,  3 Jan 2023 18:00:45 +0100
+Message-Id: <20230103170058.810597-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230103170058.810597-1-benjamin.gaignard@collabora.com>
-References: <20230103170058.810597-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_090116_176677_23380BC0 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20230103_090116_035869_A3A1F659 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +81,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-NV12_10LE40_4L4 is the 10-bits per component version of
-NV12_4L4 pixel format.
+This series implement AV1 stateless decoder for RK3588 SoC.
+The hardware support 8 and 10 bits bitstreams up to 7680x4320.
+AV1 feature like film grain or scaling are done by the postprocessor.
+The driver can produce NV12_4L4, NV12_10LE40_4L4, NV12 and P010 pixels formats.
+Even if Rockchip have named the hardware VPU981 it looks like a VC9000 but 
+with a different registers mapping.
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst | 4 ++++
- drivers/media/v4l2-core/v4l2-common.c                       | 1 +
- drivers/media/v4l2-core/v4l2-ioctl.c                        | 1 +
- include/uapi/linux/videodev2.h                              | 1 +
- 4 files changed, 7 insertions(+)
+It is based on Daniel's "[PATCH v4] media: Add AV1 uAPI" [1] patches and
+Sebastian's device-tree patches for RK3588.
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-index f1d5bb7b806d..8805213a75f8 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-@@ -270,6 +270,7 @@ of the luma plane.
- .. _V4L2-PIX-FMT-NV12MT:
- .. _V4L2-PIX-FMT-NV12MT-16X16:
- .. _V4L2-PIX-FMT-NV12-4L4:
-+.. _V4L2-PIX-FMT-NV12-10LE40-4L4:
- .. _V4L2-PIX-FMT-NV12-16L16:
- .. _V4L2-PIX-FMT-NV12-32L32:
- .. _V4L2-PIX-FMT-NV12M-8L128:
-@@ -306,6 +307,9 @@ tiles linearly in memory. The line stride and image height must be
- aligned to a multiple of 4. The layouts of the luma and chroma planes are
- identical.
+The full branch can be found here:
+https://gitlab.collabora.com/linux/for-upstream/-/commits/rk3588_av1_decoder_v2
+
+Fluster score is: 200/239 while testing AV1-TEST-VECTORS with GStreamer-AV1-V4L2SL-Gst1.0.
+The failing tests are:
+- the 2 tests with 2 spatial layers: few errors in luma/chroma values
+- tests with resolution < hardware limit (64x64)
+- 10bits film grain test: bad macroblocks while decoding, the same 8bits
+  test is working fine.
+
+Changes in v2:
+- Remove useless +1 in sbs computation. 
+- Describe NV12_10LE40_4L4 pixels format.
+- Post-processor could generate P010.
+- Fix comments done on v1.
+- The last patch make sure that only post-processed formats are used when film
+  grain feature is enabled.
+
+Benjamin
+
+[1] https://lore.kernel.org/linux-media/20230103154832.6982-1-daniel.almeida@collabora.com/T/#u
  
-+``V4L2_PIX_FMT_NV12_10LE40_4L4`` is similar to ``V4L2_PIX_FMT_NV12_4L4``
-+and stores 10 bits pixels in 4x4 tiles.
-+
- ``V4L2_PIX_FMT_NV12_16L16`` stores pixels in 16x16 tiles, and stores
- tiles linearly in memory. The line stride and image height must be
- aligned to a multiple of 16. The layouts of the luma and chroma planes are
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 9cb0895dea1c..7f46c45982d6 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -278,6 +278,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 
- 		/* Tiled YUV formats */
- 		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-+		{ .format = V4L2_PIX_FMT_NV12_10LE40_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 		{ .format = V4L2_PIX_FMT_P010_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 
- 		/* YUV planar formats, non contiguous variant */
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 1fd9b0041554..ea8afc8c9250 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1351,6 +1351,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/UV 4:2:0 (16x16 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/UV 4:2:0 (32x32 Linear)"; break;
-+	case V4L2_PIX_FMT_NV12_10LE40_4L4: descr = "10-bit YUV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_P010_4L4:	descr = "10-bit Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12M:	descr = "Y/UV 4:2:0 (N-C)"; break;
- 	case V4L2_PIX_FMT_NV21M:	descr = "Y/VU 4:2:0 (N-C)"; break;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 3dec002cb420..f034cf3a6e6d 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -653,6 +653,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV12_4L4 v4l2_fourcc('V', 'T', '1', '2')   /* 12  Y/CbCr 4:2:0  4x4 tiles */
- #define V4L2_PIX_FMT_NV12_16L16 v4l2_fourcc('H', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 16x16 tiles */
- #define V4L2_PIX_FMT_NV12_32L32 v4l2_fourcc('S', 'T', '1', '2') /* 12  Y/CbCr 4:2:0 32x32 tiles */
-+#define V4L2_PIX_FMT_NV12_10LE40_4L4 v4l2_fourcc('V', 'T', '1', '5')
- #define V4L2_PIX_FMT_P010_4L4 v4l2_fourcc('T', '0', '1', '0') /* 12  Y/CbCr 4:2:0 10-bit 4x4 macroblocks */
- #define V4L2_PIX_FMT_NV12_8L128       v4l2_fourcc('A', 'T', '1', '2') /* Y/CbCr 4:2:0 8x128 tiles */
- #define V4L2_PIX_FMT_NV12_10BE_8L128  v4l2_fourcc_be('A', 'X', '1', '2') /* Y/CbCr 4:2:0 10-bit 8x128 tiles */
+Benjamin Gaignard (12):
+  dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible
+  media: Add NV12_10LE40_4L4 pixel format
+  media: verisilicon: Get bit depth for V4L2_PIX_FMT_NV12_10LE40_4L4
+  media: verisilicon: Add AV1 decoder mode and controls
+  media: verisilicon: Save bit depth for AV1 decoder
+  media: verisilicon: Check AV1 bitstreams bit depth
+  media: verisilicon: Compute motion vectors size for AV1 frames
+  media: verisilicon: Add AV1 entropy helpers
+  media: verisilicon: Add Rockchip AV1 decoder
+  media: verisilicon: Add film grain feature to AV1 driver
+  media: verisilicon: Enable AV1 decoder on rk3588
+  media: verisilicon: Conditionnaly ignore native formats
+
+Nicolas Dufresne (1):
+  v4l2-common: Add support for fractional bpp
+
+ .../bindings/media/rockchip-vpu.yaml          |    1 +
+ .../media/v4l/pixfmt-yuv-planar.rst           |    4 +
+ drivers/media/platform/verisilicon/Makefile   |    3 +
+ drivers/media/platform/verisilicon/hantro.h   |    8 +
+ .../media/platform/verisilicon/hantro_drv.c   |   65 +
+ .../media/platform/verisilicon/hantro_hw.h    |  103 +
+ .../platform/verisilicon/hantro_postproc.c    |    7 +
+ .../media/platform/verisilicon/hantro_v4l2.c  |   52 +-
+ .../verisilicon/rockchip_av1_entropymode.c    | 4546 +++++++++++++++++
+ .../verisilicon/rockchip_av1_entropymode.h    |  272 +
+ .../verisilicon/rockchip_av1_filmgrain.c      |  401 ++
+ .../verisilicon/rockchip_av1_filmgrain.h      |   36 +
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 2278 +++++++++
+ .../verisilicon/rockchip_vpu981_regs.h        |  477 ++
+ .../platform/verisilicon/rockchip_vpu_hw.c    |  119 +
+ drivers/media/v4l2-core/v4l2-common.c         |  149 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
+ include/media/v4l2-common.h                   |    2 +
+ include/uapi/linux/videodev2.h                |    1 +
+ 19 files changed, 8438 insertions(+), 87 deletions(-)
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.c
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.h
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.h
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+ create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+
 -- 
 2.34.1
 
