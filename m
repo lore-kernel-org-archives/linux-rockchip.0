@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DE5EC3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jan 2023 20:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 439D5C3DA7A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jan 2023 22:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nyABpyYNn3g/IroAxYW8aCOgS6NvrYXA9NmOYYAzshY=; b=hxAfrOIt8GYTwu
-	Dg5jf5xYqlKLu2MECCvuB5nDZz0KCrA6bflEN1/BErqbRRiVCzMCORu+bDKhrEVGJKBwak34OSSre
-	Qhk7al23xi+mo7AugtrmCnRZhzcETDs/qHTe7ht1IsXa/wNgTcptSuQDVFcAMlMKpdKM+ehk2faIH
-	3ypMh7gvDXHOI094T62NHlMuxnwDP4PcTPZ9pDWcY+XvkOnQNbR5JgMS5t3tGalEMiBijQHC1JMeN
-	L5Ys2oiL0CstiGqXr5SYS8ex9WBgNm2QZq+njercV/NfJ8CM+WS3bHeLsLBKPr6uYtXXMcPD1O2/+
-	tugNElL1gBr0IXyJC3Dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5UFvFLxHK5DbImrIr7hBHTaBilHXKTu/Js9cro2Z5jw=; b=QRhG094EH0QmwF
+	D+HtA/+OK35FZswUWxXoa8Im66veBm9kIfyGNlaA6xrUKhlWsH4/eY9SlfTpVsZYqc+rUp/NRUuYY
+	vQEHPCmuLWnK3v56gY9ZtkkN75qmyGvu5aUM6ZeMPuMicVKyeturDxdrAAVzmAErVk5npYXOLJhaN
+	6p+pk/+3/1I9BayvsFRngS4Cu06/pK8PfehfGdOhMSwGS0PIHIlobx2LkkW5UD45PztxIVe3y3uXu
+	R9AL6ch0zIqADHQeypiG/W0WEYwVXfCMPEzFROhLvMaUkiRToGZu2yBLpvwxhyXDurkwJkYZAkzc6
+	teVkOf2/GJj2nPrhsXNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDX8g-00EjP9-Vz; Thu, 05 Jan 2023 20:47:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pDYZP-00FW1m-9a; Thu, 05 Jan 2023 22:18:43 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDUaq-00DJ88-FL
-	for linux-rockchip@lists.infradead.org; Thu, 05 Jan 2023 18:04:00 +0000
-Received: from jupiter.universe (dyndsl-085-016-198-020.ewe-ip-backbone.de [85.16.198.20])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D88F26602D3C;
-	Thu,  5 Jan 2023 18:03:47 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672941828;
-	bh=lTGrwZPjeKQ4ku1FY34DkLAoLXnDqkhLQCLk/igV0sM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MYmsswZvebBj63R6KxbuosFFnxjYMTOdcgGoN0RCpUCOcON++9vfPKpiXyUrQOp+z
-	 Wwkr4afYR9v9+P5Wx2GqsEa0bWVLTKGTVuqDM5sFU0wY6wfaJh2QP2F2y2VCCXaYxl
-	 ifAjLEdeprm+qX5u5+Ta5+/amnoovHdJ1SlAN0r1Qy1tNn3mcSvgcWEOQrVjZ5TRcH
-	 +Q3gPLixbnY+ZoOMcWBi89GeJCLiw83N6OPh72E3P+faRrbZoR+SvqHb3XdGd5i6eq
-	 3kObCJCT22plyz6rfqV5cID6Aq0LM0dy3R2NySVbu5T5ZDi+u7ym+XUzrFPV4kGi+H
-	 qeB+BA5X14PWw==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id ADB8F48011D; Thu,  5 Jan 2023 19:03:42 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-pm@vger.kernel.org,
+	id 1pDVDl-00DmVZ-11; Thu, 05 Jan 2023 18:44:10 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id t15so28156882wro.9;
+        Thu, 05 Jan 2023 10:44:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=R5VFmITpcq980NC7BHDSxAFwvqy7pS4EajnFTTRxXo8=;
+        b=KwmlitPYUG0nvLmz8rNf3rqtW8HM76f8nSBVunCIkaSBPwbAvZxYZzHGK3PwNwR7aP
+         fXmL4M+I2ETLzUWtEaUP9ZgpU40ro0a++SN8LS/D/grUAMzOWx6pMpjTO2xBTma+fF+p
+         8Z3nxBZ+cC1pRdAij++ZrS7CSicWYw5vryfLTNzHWibH4C2JwL/mO05ngE6FAeKFTJPp
+         7117FL10SSEFxQmIZmC6nSjOs4c24ZGqcR7nqVsYXQU9BeeIsdoNF9Bm4KRUmUoNNXC8
+         SmTSY6Ry8x2RKUASJo4qsQmKlVlyA07StKm5osrTpfbX+VlP9JLQW2BgFMmSPB+jWHEV
+         wp5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=R5VFmITpcq980NC7BHDSxAFwvqy7pS4EajnFTTRxXo8=;
+        b=ZPmPxkHMHoe1vCnOJTWaj/iAJ/b5st6O/dy0zirhkbWY4BnIiCXbZ/6AW0q/aQOZn7
+         TnK/7WMv4jeuuAJvTTx2S19M9/sQH7+yoPqMUXbRkiZ9BGKOjsGWzEL6omrpUI3vW9Mi
+         /GbpBxt0aNZiw9a5TwkrxX4ZmgX7rNpIIWGZGD/7RxiB4l08trQW/7vGssRsyZ4ERdTP
+         AFhJuGcnzucbLr0jIdNmmHj08ERsE7yqN2nWmqY5eOp3n4gtad554y5rZwpkHkwKlohk
+         Ux/vypk1qfYbidIUtBFrMcXCboKfRTxq1kTXKuEJHBAjoha5eoW5ytfpEZBmMlNN+fYa
+         R8tg==
+X-Gm-Message-State: AFqh2kqovBITriY+OjQEQprNjJbL4pN3hNX1VYv7Wcd2F4LkN3CmTfFt
+	dtwwyxTznZvjLgtT8Mc/IMQ=
+X-Google-Smtp-Source: AMrXdXupHpSiCAPJMry8NhE3IeKFncHiPo3XY0ysiysKAVmAVt/UICl6Oja6cqmdM/4eTxSax6ktpw==
+X-Received: by 2002:adf:db11:0:b0:242:6055:dee3 with SMTP id s17-20020adfdb11000000b002426055dee3mr31114213wri.63.1672944244668;
+        Thu, 05 Jan 2023 10:44:04 -0800 (PST)
+Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
+        by smtp.gmail.com with ESMTPSA id b14-20020a05600010ce00b0023c8026841csm37004971wrx.23.2023.01.05.10.44.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Jan 2023 10:44:04 -0800 (PST)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv3 6/7] thermal: rockchip: Support RK3588 SoC in the thermal driver
-Date: Thu,  5 Jan 2023 19:03:39 +0100
-Message-Id: <20230105180340.29140-7-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230105180340.29140-1-sebastian.reichel@collabora.com>
-References: <20230105180340.29140-1-sebastian.reichel@collabora.com>
+	linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] media: rkisp1: make a few const arrays static
+Date: Thu,  5 Jan 2023 18:44:03 +0000
+Message-Id: <20230105184403.63419-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_100356_828838_5E2C919C 
-X-CRM114-Status: GOOD (  20.88  )
+X-CRM114-CacheID: sfid-20230105_104409_092427_81AF6DB9 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,323 +91,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+Don't populate the const arrays on the stack, instead make them
+static. Also makes the object code smaller.
 
-The RK3588 SoC has seven temperature sensor ADC channels:
-
-- Chip Center
-- CPU Cluster 1 (Dual A76 "Big" Cores)
-- CPU Cluster 2 (Dual A76 "Big" Cores)
-- CPU Cluster 0 (Quad A55 "Little" Cores)
-- Power Domain Center
-- Graphics Processing Unit
-- Neural Processing Unit
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-[rebase, squash fixes]
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
 ---
- drivers/thermal/rockchip_thermal.c | 177 +++++++++++++++++++++++++++++
- 1 file changed, 177 insertions(+)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c     | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index c104c60faafd..2c45558b7e35 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -165,29 +165,49 @@ struct rockchip_thermal_data {
- #define TSADCV2_AUTO_CON			0x04
- #define TSADCV2_INT_EN				0x08
- #define TSADCV2_INT_PD				0x0c
-+#define TSADCV3_AUTO_SRC_CON			0x0c
-+#define TSADCV3_HT_INT_EN			0x14
-+#define TSADCV3_HSHUT_GPIO_INT_EN		0x18
-+#define TSADCV3_HSHUT_CRU_INT_EN		0x1c
-+#define TSADCV3_INT_PD				0x24
-+#define TSADCV3_HSHUT_PD			0x28
- #define TSADCV2_DATA(chn)			(0x20 + (chn) * 0x04)
- #define TSADCV2_COMP_INT(chn)		        (0x30 + (chn) * 0x04)
- #define TSADCV2_COMP_SHUT(chn)		        (0x40 + (chn) * 0x04)
-+#define TSADCV3_DATA(chn)			(0x2c + (chn) * 0x04)
-+#define TSADCV3_COMP_INT(chn)		        (0x6c + (chn) * 0x04)
-+#define TSADCV3_COMP_SHUT(chn)		        (0x10c + (chn) * 0x04)
- #define TSADCV2_HIGHT_INT_DEBOUNCE		0x60
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE		0x64
-+#define TSADCV3_HIGHT_INT_DEBOUNCE		0x14c
-+#define TSADCV3_HIGHT_TSHUT_DEBOUNCE		0x150
- #define TSADCV2_AUTO_PERIOD			0x68
- #define TSADCV2_AUTO_PERIOD_HT			0x6c
-+#define TSADCV3_AUTO_PERIOD			0x154
-+#define TSADCV3_AUTO_PERIOD_HT			0x158
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index d4540684ea9a..d1d1fdce03e3 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1131,10 +1131,12 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+ 	const struct rkisp1_capture_config *config = cap->config;
+ 	const struct rkisp1_capture_fmt_cfg *fmt;
+ 	const struct v4l2_format_info *info;
+-	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+-					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
+-	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+-					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
++	static const unsigned int max_widths[] = {
++		RKISP1_RSZ_MP_SRC_MAX_WIDTH, RKISP1_RSZ_SP_SRC_MAX_WIDTH
++	};
++	static const unsigned int max_heights[] = {
++		RKISP1_RSZ_MP_SRC_MAX_HEIGHT, RKISP1_RSZ_SP_SRC_MAX_HEIGHT
++	};
  
- #define TSADCV2_AUTO_EN				BIT(0)
-+#define TSADCV2_AUTO_EN_MASK			BIT(16)
- #define TSADCV2_AUTO_SRC_EN(chn)		BIT(4 + (chn))
-+#define TSADCV3_AUTO_SRC_EN(chn)		BIT(chn)
-+#define TSADCV3_AUTO_SRC_EN_MASK(chn)		BIT(16 + chn)
- #define TSADCV2_AUTO_TSHUT_POLARITY_HIGH	BIT(8)
-+#define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
+ 	fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
+ 	if (!fmt) {
+@@ -1336,8 +1338,9 @@ void rkisp1_capture_devs_unregister(struct rkisp1_device *rkisp1)
  
- #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
- 
- #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
-+#define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
- #define TSADCV2_SHUT_2GPIO_SRC_EN(chn)		BIT(4 + (chn))
- #define TSADCV2_SHUT_2CRU_SRC_EN(chn)		BIT(8 + (chn))
- 
- #define TSADCV2_INT_PD_CLEAR_MASK		~BIT(8)
- #define TSADCV3_INT_PD_CLEAR_MASK		~BIT(16)
-+#define TSADCV4_INT_PD_CLEAR_MASK		0xffffffff
- 
- #define TSADCV2_DATA_MASK			0xfff
- #define TSADCV3_DATA_MASK			0x3ff
-+#define TSADCV4_DATA_MASK			0x1ff
- 
- #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
-@@ -198,6 +218,8 @@ struct rockchip_thermal_data {
- 
- #define TSADCV5_AUTO_PERIOD_TIME		1622 /* 2.5ms */
- #define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
-+#define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
-+#define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
- 
- #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
- #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
-@@ -214,6 +236,12 @@ struct rockchip_thermal_data {
- #define RK3568_GRF_TSADC_ANA_REG2		(0x10001 << 2)
- #define RK3568_GRF_TSADC_TSEN			(0x10001 << 8)
- 
-+#define RK3588_GRF0_TSADC_CON			0x0100
-+
-+#define RK3588_GRF0_TSADC_TRM			(0xff0077 << 0)
-+#define RK3588_GRF0_TSADC_SHUT_2CRU		(0x30003 << 10)
-+#define RK3588_GRF0_TSADC_SHUT_2GPIO		(0x70007 << 12)
-+
- #define GRF_SARADC_TESTBIT_ON			(0x10001 << 2)
- #define GRF_TSADC_TESTBIT_H_ON			(0x10001 << 2)
- #define GRF_TSADC_VCM_EN_L			(0x10001 << 7)
-@@ -508,6 +536,15 @@ static const struct tsadc_table rk3568_code_table[] = {
- 	{TSADCV2_DATA_MASK, 125000},
- };
- 
-+static const struct tsadc_table rk3588_code_table[] = {
-+	{0, -40000},
-+	{215, -40000},
-+	{285, 25000},
-+	{350, 85000},
-+	{395, 125000},
-+	{TSADCV4_DATA_MASK, 125000},
-+};
-+
- static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
- 				   int temp)
+ static int rkisp1_register_capture(struct rkisp1_capture *cap)
  {
-@@ -778,6 +815,25 @@ static void rk_tsadcv7_initialize(struct regmap *grf, void __iomem *regs,
- 	}
- }
- 
-+static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
-+				  enum tshut_polarity tshut_polarity)
-+{
-+	writel_relaxed(TSADCV6_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
-+	writel_relaxed(TSADCV6_AUTO_PERIOD_HT_TIME,
-+		       regs + TSADCV3_AUTO_PERIOD_HT);
-+	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
-+	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
-+	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-+		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
-+			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
-+			       regs + TSADCV2_AUTO_CON);
-+	else
-+		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
-+			       regs + TSADCV2_AUTO_CON);
-+}
-+
- static void rk_tsadcv2_irq_ack(void __iomem *regs)
- {
- 	u32 val;
-@@ -794,6 +850,17 @@ static void rk_tsadcv3_irq_ack(void __iomem *regs)
- 	writel_relaxed(val & TSADCV3_INT_PD_CLEAR_MASK, regs + TSADCV2_INT_PD);
- }
- 
-+static void rk_tsadcv4_irq_ack(void __iomem *regs)
-+{
-+	u32 val;
-+
-+	val = readl_relaxed(regs + TSADCV3_INT_PD);
-+	writel_relaxed(val & TSADCV4_INT_PD_CLEAR_MASK, regs + TSADCV3_INT_PD);
-+	val = readl_relaxed(regs + TSADCV3_HSHUT_PD);
-+	writel_relaxed(val & TSADCV3_INT_PD_CLEAR_MASK,
-+		       regs + TSADCV3_HSHUT_PD);
-+}
-+
- static void rk_tsadcv2_control(void __iomem *regs, bool enable)
- {
- 	u32 val;
-@@ -829,6 +896,18 @@ static void rk_tsadcv3_control(void __iomem *regs, bool enable)
- 	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
- }
- 
-+static void rk_tsadcv4_control(void __iomem *regs, bool enable)
-+{
-+	u32 val;
-+
-+	if (enable)
-+		val = TSADCV2_AUTO_EN | TSADCV2_AUTO_EN_MASK;
-+	else
-+		val = TSADCV2_AUTO_EN_MASK;
-+
-+	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
-+}
-+
- static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
- 			       int chn, void __iomem *regs, int *temp)
- {
-@@ -839,6 +918,16 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
- 	return rk_tsadcv2_code_to_temp(table, val, temp);
- }
- 
-+static int rk_tsadcv4_get_temp(const struct chip_tsadc_table *table,
-+			       int chn, void __iomem *regs, int *temp)
-+{
-+	u32 val;
-+
-+	val = readl_relaxed(regs + TSADCV3_DATA(chn));
-+
-+	return rk_tsadcv2_code_to_temp(table, val, temp);
-+}
-+
- static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
- 				 int chn, void __iomem *regs, int temp)
- {
-@@ -873,6 +962,33 @@ static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
- 	return 0;
- }
- 
-+static int rk_tsadcv3_alarm_temp(const struct chip_tsadc_table *table,
-+				 int chn, void __iomem *regs, int temp)
-+{
-+	u32 alarm_value;
-+
-+	/*
-+	 * In some cases, some sensors didn't need the trip points, the
-+	 * set_trips will pass {-INT_MAX, INT_MAX} to trigger tsadc alarm
-+	 * in the end, ignore this case and disable the high temperature
-+	 * interrupt.
-+	 */
-+	if (temp == INT_MAX) {
-+		writel_relaxed(TSADCV2_INT_SRC_EN_MASK(chn),
-+			       regs + TSADCV3_HT_INT_EN);
-+		return 0;
-+	}
-+	/* Make sure the value is valid */
-+	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
-+	if (alarm_value == table->data_mask)
-+		return -ERANGE;
-+	writel_relaxed(alarm_value & table->data_mask,
-+		       regs + TSADCV3_COMP_INT(chn));
-+	writel_relaxed(TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn),
-+		       regs + TSADCV3_HT_INT_EN);
-+	return 0;
-+}
-+
- static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
- 				 int chn, void __iomem *regs, int temp)
- {
-@@ -892,6 +1008,25 @@ static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
- 	return 0;
- }
- 
-+static int rk_tsadcv3_tshut_temp(const struct chip_tsadc_table *table,
-+				 int chn, void __iomem *regs, int temp)
-+{
-+	u32 tshut_value;
-+
-+	/* Make sure the value is valid */
-+	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
-+	if (tshut_value == table->data_mask)
-+		return -ERANGE;
-+
-+	writel_relaxed(tshut_value, regs + TSADCV3_COMP_SHUT(chn));
-+
-+	/* TSHUT will be valid */
-+	writel_relaxed(TSADCV3_AUTO_SRC_EN(chn) | TSADCV3_AUTO_SRC_EN_MASK(chn),
-+		       regs + TSADCV3_AUTO_SRC_CON);
-+
-+	return 0;
-+}
-+
- static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
- 				  enum tshut_mode mode)
- {
-@@ -909,6 +1044,22 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
- 	writel_relaxed(val, regs + TSADCV2_INT_EN);
- }
- 
-+static void rk_tsadcv3_tshut_mode(int chn, void __iomem *regs,
-+				  enum tshut_mode mode)
-+{
-+	u32 val_gpio, val_cru;
-+
-+	if (mode == TSHUT_MODE_GPIO) {
-+		val_gpio = TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn);
-+		val_cru = TSADCV2_INT_SRC_EN_MASK(chn);
-+	} else {
-+		val_cru = TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn);
-+		val_gpio = TSADCV2_INT_SRC_EN_MASK(chn);
-+	}
-+	writel_relaxed(val_gpio, regs + TSADCV3_HSHUT_GPIO_INT_EN);
-+	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
-+}
-+
- static const struct rockchip_tsadc_chip px30_tsadc_data = {
- 	/* cpu, gpu */
- 	.chn_offset = 0,
-@@ -1132,6 +1283,28 @@ static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
- 	},
- };
- 
-+static const struct rockchip_tsadc_chip rk3588_tsadc_data = {
-+	/* top, big_core0, big_core1, little_core, center, gpu, npu */
-+	.chn_offset = 0,
-+	.chn_num = 7, /* seven channels for tsadc */
-+	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-+	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-+	.tshut_temp = 95000,
-+	.initialize = rk_tsadcv8_initialize,
-+	.irq_ack = rk_tsadcv4_irq_ack,
-+	.control = rk_tsadcv4_control,
-+	.get_temp = rk_tsadcv4_get_temp,
-+	.set_alarm_temp = rk_tsadcv3_alarm_temp,
-+	.set_tshut_temp = rk_tsadcv3_tshut_temp,
-+	.set_tshut_mode = rk_tsadcv3_tshut_mode,
-+	.table = {
-+		.id = rk3588_code_table,
-+		.length = ARRAY_SIZE(rk3588_code_table),
-+		.data_mask = TSADCV4_DATA_MASK,
-+		.mode = ADC_INCREMENT,
-+	},
-+};
-+
- static const struct of_device_id of_rockchip_thermal_match[] = {
- 	{	.compatible = "rockchip,px30-tsadc",
- 		.data = (void *)&px30_tsadc_data,
-@@ -1168,6 +1341,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
- 		.compatible = "rockchip,rk3568-tsadc",
- 		.data = (void *)&rk3568_tsadc_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3588-tsadc",
-+		.data = (void *)&rk3588_tsadc_data,
-+	},
- 	{ /* end */ },
- };
- MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
+-	const char * const dev_names[] = {RKISP1_MP_DEV_NAME,
+-					  RKISP1_SP_DEV_NAME};
++	static const char * const dev_names[] = {
++		RKISP1_MP_DEV_NAME, RKISP1_SP_DEV_NAME
++	};
+ 	struct v4l2_device *v4l2_dev = &cap->rkisp1->v4l2_dev;
+ 	struct video_device *vdev = &cap->vnode.vdev;
+ 	struct rkisp1_vdev_node *node;
 -- 
-2.39.0
+2.30.2
 
 
 _______________________________________________
