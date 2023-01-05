@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82554C3DA7A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B45BC3DA7D
 	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jan 2023 20:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tF3b+cNEkK+q6aYPekJevL8tPz4NruBu4dd1MfHQi0k=; b=dzpyIcej10AmKz
-	nszqu7RWA4B3AGBpLTZWwJjUZ88mvR93lzTPkssW8SJYp/zYl5Of1OikkN20fvOwmLwxW2ah7/jrD
-	/WfpTOuqhAIe7E+r1VtfzDvKBSaKDH5eqi5dk7saAVD15d96DYTwQAeQEjzHfOC0cRLC6RUK/r6uL
-	Xj0O1Ccnck/Y2DxSkKzQDlPa5o8+BBAFAFUycsmLvYyw/scIL08IYaBCufnEwdq+9W/NQ98jNSxJg
-	oLiH76uHFDzEYMHQZM1uP5C6Z115fh6I9F1b/m2tmDgPCCnkHOrB+OAs9IsYEAmFPdhzMuV9rEDP3
-	O/qk8DVS5dkONP21FZ3g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=q+ROlVDQ0QehF0W+OD3jtMyzFlmWGTs9PJNtHjHdPdg=; b=ad5q0cGwVkYzCI
+	KTA6w3kG5yxrXtP8Rfx5/FijGZhQx8zXF7OsVrYTDmLnhL4rU6LxYP4PKwmwD2cjoJNKYcVnQrhdM
+	/K5tqKo1KxUEx/1QNA2OaCddCIST5Eyg+TigoUrbbMNB96VICVbJyJAn8U4U4NZ78TbaQD/gw8cDl
+	EvKIxsV5ZyHLDB17lPgC2E1dEH74fxjfd4nTM4L/blRVQS4Jhd3UYkATgq1xD8AENYQgpifVtvw7j
+	vvUpqy71FZtobJoqtR0BzHtkQwaxaMICFyBCCmUV3Z26y0jh+2zy27jMjgYQ41/QSxzT/bcF/esSK
+	jsS0JBR1JcIbyGDqyqzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDX8Y-00EjI7-Vj; Thu, 05 Jan 2023 20:46:55 +0000
+	id 1pDX8b-00EjKR-Qa; Thu, 05 Jan 2023 20:46:57 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDUam-00DJ1R-Ch
-	for linux-rockchip@lists.infradead.org; Thu, 05 Jan 2023 18:03:55 +0000
+	id 1pDUan-00DJ1O-7C
+	for linux-rockchip@lists.infradead.org; Thu, 05 Jan 2023 18:03:58 +0000
 Received: from jupiter.universe (dyndsl-085-016-198-020.ewe-ip-backbone.de [85.16.198.20])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 49DD46602CCE;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 63AF46602D30;
 	Thu,  5 Jan 2023 18:03:45 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1672941825;
-	bh=xIMSW4AOlAHM6XznKwVJh8dNalSiPuEcNwEAA+jCX+Y=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ARcEhpNhY8IjBHP1mZiLKhnqOgnoKS1kPMfjbrZixL0pJ13OycZhhxh8Ctc6eQAE5
-	 soGLACoxLgOJZ3n+9Pl//W7Rz46EPVWcFNrftD2asguPWfhBn9hcTiul8ZOClVJCux
-	 lzvxPvb81YcdDhg3r+fL65mP/xI7/KFnBKUL2TaORQ6ivQlyO/mnRFy9Ov+/Fh02LD
-	 rSktOEczDffayNaMzST6/Wxf9LPIngjXFEgsIlx9JRBYOzpEm49EzZMJy1uzlDLqy2
-	 XaZcyWpDt4VmpcJbN5AFHQBwr9Wjv9AEr93cR95bYFiVUNIlA41ZtfGCuXyv1RJEEm
-	 h0XTt4o9DLSrw==
+	bh=AjVkCvwd25Eqi7gunh0LzeJ3T0+2xIcK9Yge17EECto=;
+	h=From:To:Cc:Subject:Date:From;
+	b=k7KvuEVUCQtkqfAG0xuCFEC3PeX7vNU5bpGhKoYkQ99j186WwTVMrPgUPAQXdTCZf
+	 1zNGnMUa7ArMRvuF3mXKKMosiAA3d5rr4H3J7nsL0LifQT7IT9Nqw1TdUkvUcEbGtp
+	 7WhqYp5ShPNKZO3ipEj4ZDeh0eYAYFC+aCGxoJGvGqREoMtmt+7emgWST+6B396cOs
+	 2gqCKN+ZLPtj4IEhWpkiWNo+FaXxpX1jqiH64JTBKlyNUZ39Ew3yUnpOWoIVzF/BcH
+	 EeEjHFZDgjVdfDm3PgzavyQLUtsfoRQ+TAxUUCvRXitdo5oKSzDhp8zPQtRpumXDpL
+	 P83Xl722q7kyw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id A6CFF480119; Thu,  5 Jan 2023 19:03:42 +0100 (CET)
+	id A1E21480117; Thu,  5 Jan 2023 19:03:42 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	"Rafael J. Wysocki" <rafael@kernel.org>,
@@ -58,16 +58,15 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCHv3 2/7] thermal: rockchip: Simplify clock logic
-Date: Thu,  5 Jan 2023 19:03:35 +0100
-Message-Id: <20230105180340.29140-3-sebastian.reichel@collabora.com>
+Subject: [PATCHv3 0/7] RK3588 Thermal Support
+Date: Thu,  5 Jan 2023 19:03:33 +0100
+Message-Id: <20230105180340.29140-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230105180340.29140-1-sebastian.reichel@collabora.com>
-References: <20230105180340.29140-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_100353_412471_A66B70C0 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20230105_100353_505652_DDC057B1 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,107 +83,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-By using devm_clk_get_enabled() the clock acquisition and
-enabling can be done in one step with automatic error
-handling.
+Hi,
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/thermal/rockchip_thermal.c | 33 +++++-------------------------
- 1 file changed, 5 insertions(+), 28 deletions(-)
+This adds thermal support for the new RK3588(s) SoC series. The
+series has been tested on the RK3588 EVB1 board.
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 8c52700d58e8..74e0ad001b33 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1385,14 +1385,14 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 		return error;
- 	}
- 
--	thermal->clk = devm_clk_get(&pdev->dev, "tsadc");
-+	thermal->clk = devm_clk_get_enabled(&pdev->dev, "tsadc");
- 	if (IS_ERR(thermal->clk)) {
- 		error = PTR_ERR(thermal->clk);
- 		dev_err(&pdev->dev, "failed to get tsadc clock: %d\n", error);
- 		return error;
- 	}
- 
--	thermal->pclk = devm_clk_get(&pdev->dev, "apb_pclk");
-+	thermal->pclk = devm_clk_get_enabled(&pdev->dev, "apb_pclk");
- 	if (IS_ERR(thermal->pclk)) {
- 		error = PTR_ERR(thermal->pclk);
- 		dev_err(&pdev->dev, "failed to get apb_pclk clock: %d\n",
-@@ -1400,26 +1400,13 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 		return error;
- 	}
- 
--	error = clk_prepare_enable(thermal->clk);
--	if (error) {
--		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
--			error);
--		return error;
--	}
--
--	error = clk_prepare_enable(thermal->pclk);
--	if (error) {
--		dev_err(&pdev->dev, "failed to enable pclk: %d\n", error);
--		goto err_disable_clk;
--	}
--
- 	rockchip_thermal_reset_controller(thermal->reset);
- 
- 	error = rockchip_configure_from_dt(&pdev->dev, np, thermal);
- 	if (error) {
- 		dev_err(&pdev->dev, "failed to parse device tree data: %d\n",
- 			error);
--		goto err_disable_pclk;
-+		return error;
- 	}
- 
- 	thermal->chip->initialize(thermal->grf, thermal->regs,
-@@ -1433,7 +1420,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 			dev_err(&pdev->dev,
- 				"failed to register sensor[%d] : error = %d\n",
- 				i, error);
--			goto err_disable_pclk;
-+			return error;
- 		}
- 	}
- 
-@@ -1444,7 +1431,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	if (error) {
- 		dev_err(&pdev->dev,
- 			"failed to request tsadc irq: %d\n", error);
--		goto err_disable_pclk;
-+		return error;
- 	}
- 
- 	thermal->chip->control(thermal->regs, true);
-@@ -1462,13 +1449,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, thermal);
- 
- 	return 0;
--
--err_disable_pclk:
--	clk_disable_unprepare(thermal->pclk);
--err_disable_clk:
--	clk_disable_unprepare(thermal->clk);
--
--	return error;
- }
- 
- static int rockchip_thermal_remove(struct platform_device *pdev)
-@@ -1485,9 +1465,6 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
- 
- 	thermal->chip->control(thermal->regs, false);
- 
--	clk_disable_unprepare(thermal->pclk);
--	clk_disable_unprepare(thermal->clk);
--
- 	return 0;
- }
- 
+Changes since PATCHv2:
+ * https://lore.kernel.org/all/20221031175058.175698-1-sebastian.reichel@collabora.com/
+ * rebased against v6.2-rc1
+ * drop useless cast from patch 1
+ * add Heiko's reviewed-by to patches 1-3 & 5
+ * The discussion around patch 4 died, so I kept it unchanged
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20221021174721.92468-1-sebastian.reichel@collabora.com/
+ * Collect Reviewed-by/Acked-by
+ * Use TRM channel info in commit message (Daniel Lezcano)
+ * Add patch removing channel id lookup table (Daniel Lezcano)
+ * Add patch allocating sensors array dynamiccaly (Daniel Lezcano)
+ * I also added patches simplifying up the probe routine a bit
+
+-- Sebastian
+
+Finley Xiao (1):
+  thermal: rockchip: Support RK3588 SoC in the thermal driver
+
+Sebastian Reichel (6):
+  thermal: rockchip: Simplify getting match data
+  thermal: rockchip: Simplify clock logic
+  thermal: rockchip: Use dev_err_probe
+  thermal: rockchip: Simplify channel id logic
+  thermal: rockchip: Support dynamic sized sensor array
+  dt-bindings: rockchip-thermal: Support the RK3588 SoC compatible
+
+ .../bindings/thermal/rockchip-thermal.yaml    |   1 +
+ drivers/thermal/rockchip_thermal.c            | 322 ++++++++++++------
+ 2 files changed, 226 insertions(+), 97 deletions(-)
+
 -- 
 2.39.0
 
