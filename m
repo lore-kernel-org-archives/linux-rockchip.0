@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72CF2C54EBE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 07:33:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE6A0C5479D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 08:23:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=4EgFkDZBx6vA0EqBCqvnLlcY51niZ+Q2BsCspuh5pEY=; b=EK/+QpQyEF+wzl
-	Z2Cqo7PiBQXoHU70lmD8LZRGnunWLJ28mvu3SuxCOxJW5k/AU8ghjyNSK5v31Y8OxvKayweLmZIcV
-	z3nHNZt30/Iw4yL8q5LMYwxQOuBKeUs/qJei2kJ7NUjpuq0gZ+YMmy02KI6pe+CtYe0Q6aM5Dv8MN
-	RrGKqF9KSYv5qyIT0IKNhdNEbb7n0/VCps/d2Y2l+f1ij08rmCVZREQX4QwyuX0NYrilfyyCfU+7i
-	0Yf3OU39wGmyDqOTqpZdiXgdP8XPfgYFPOpcT7MrFZLs9qwGpvc6n45630VOw0wM2GncjtC1aWj7A
-	J+DeTfmqyOJcjwu9M8cQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WAJR5b+meXBP/rYB3Pa2K8sMEazhcqbhd/oqNnQBF0k=; b=e5VtV/BaNBpGXh
+	fFmpzoG3KhnCHepx1t1E8m0phJ0ABSjTKyrZ4xUECVEARTOrqQXTaUeHHPrfhVCrfIsDzpCI6H6k0
+	euA+XurAvABj1U/IBSFGA0iyoTpT8I4j3cVHBGCOXUhyayNQaElZKrFc/ewxAWSs9M+vD/oSTJi/o
+	PnIjIgEZBfKpT8JhvFx/16BT6+E04W+2B4/eH1uxcOm0UNXiggYLpDAyy4l3H9uD3IyYPS20WFQCN
+	RbD5/Ig+gX+niL4FD5o/rdkalB0d0u7docNneWHdm2njO4dHndpvukioODaH/xx6IpOUW9Dyw9Afk
+	au1sfMua/xJBRQdYwzKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDhE1-006NA1-8c; Fri, 06 Jan 2023 07:33:13 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1pDi0T-006ZzA-Pu; Fri, 06 Jan 2023 08:23:17 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDhDx-006N6k-Mp; Fri, 06 Jan 2023 07:33:11 +0000
-Received: by mail-wm1-x329.google.com with SMTP id o15so497807wmr.4;
-        Thu, 05 Jan 2023 23:33:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fryLgUhyc4PP68FzTGHDLJwZ8g1kpMrCFCBcKvTSbIM=;
-        b=Mbqqc4SfDl3i56U8CiGCOj+H2nPqKWcc12YtYWpqSfK0x15AstNbluvOdr2oPmiliG
-         fc6zDseyy4eNH8VzpRuJmuXBS+ZtI5WICcU4/YgST9aN0o6jR6lGzFQviERtx1OVyIuL
-         IXcWDQ5MyxHpSHQ+Z6aMYbiL7CeDOv6cEESo4EarXDxRJ8RSXCi5xsulU6ln66e+YYy1
-         Ums3GDYdLhjYZFtuYEHTk/urEZKHE499xsXrYix4MgioddCTlRDBp6ch6S71aQGVUce2
-         QYgdn7WXk5mKKk+DuYd1WATw2wQCJxt5n8jqIpEtv5hprPvJBneRWUbD/lCGPGUwdojf
-         rriw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=fryLgUhyc4PP68FzTGHDLJwZ8g1kpMrCFCBcKvTSbIM=;
-        b=UkySUkm22YzD/Ai1Q8jj0Qo4o/SHIbGjJSWLfn85W29mwUFoYZ1qELWGPixdUnQylO
-         EqwiLMOxqzZ4egblACvzWrw1oQtIeUqFjZgSxHNGKsPms6PT8U4w1fUsUtd+feJOoW5d
-         XcgyFg8lgrMG+NT7Mh0Zowc/OuucLlasujSg9XvNAxkQhaCcVHhfXhMtLzbqa5lFDwKq
-         2BGaAdjSAG0aMMPnkVB1ETygVFp+/59MfU/2RbJrpJHOzwMWiD2omhirIWsiWzVTYtfa
-         wHnZgM2nUD2TCzyBm0jibBK6oN6MegB1GuzGb2t4bori+xGURbWVBn97KKQtu1+uNNaT
-         PO0A==
-X-Gm-Message-State: AFqh2kqfws4YyMuYUezoifYOHOQh3V9rFpIDXBT6kV4S3lOI82i9oYku
-	jTjBLxtlmPFqtTKUsCcQ9YU=
-X-Google-Smtp-Source: AMrXdXtrcCS7Q3zoliyIo93NAmMqzefmn1311SdNqJbWKYGFmApsuGCWfyU7SHOWGLkVONfzKGXv5Q==
-X-Received: by 2002:a05:600c:250:b0:3d2:2830:b8bb with SMTP id 16-20020a05600c025000b003d22830b8bbmr42185381wmj.34.1672990385260;
-        Thu, 05 Jan 2023 23:33:05 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id j19-20020a05600c301300b003d6b71c0c92sm5470479wmh.45.2023.01.05.23.33.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 23:33:04 -0800 (PST)
-Date: Fri, 6 Jan 2023 10:33:00 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: oe-kbuild@lists.linux.dev,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	mchehab@kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
-	daniel.almeida@collabora.com, nicolas.dufresne@collabora.co.uk
-Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v2 10/13] media: verisilicon: Add Rockchip AV1 decoder
-Message-ID: <202301060326.FJvy51O1-lkp@intel.com>
+	id 1pDi0I-006ZrM-7r; Fri, 06 Jan 2023 08:23:08 +0000
+Received: from [IPV6:2a01:e0a:120:3210:52f4:db34:c2f0:4d75] (unknown [IPv6:2a01:e0a:120:3210:52f4:db34:c2f0:4d75])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 53B2C6602D05;
+	Fri,  6 Jan 2023 08:23:00 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1672993380;
+	bh=vAbwKXZOJip0G6a4yIO6tOXf4HycylFNKhbnhzsdbMU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IqnxTc2BEOyZ4I2QqXLh4/Akk+wekLf1cAMGp4vddn07ZruuijwS2NSLqexLDthYK
+	 VAVNaKiHicprDrfg2VfeCHQax8xGG5WL2shv+yNvL1eip/CUboUCaSuK1PhzT7nDZJ
+	 pbzUymBpOav9wt6abcp4cxP3hCYxwh+DAjFdcKRpkxllj+6HGbKA4e1G+rMpjxjoGS
+	 qheoXTb6MnL+sc2ru6TSt3fuZUe1udLAyhNBTDGLY5yZYjOIgxGMzUC7x/yjMi6btT
+	 wHPMXscaKVaT4DaHsL6suQwY2rXza8maognUAGxWEmC8/00uAbaPwuHl5tFdThma7/
+	 vORfq//kHvUnA==
+Message-ID: <502dd378-db76-fbe0-c922-c0b3761e5eb8@collabora.com>
+Date: Fri, 6 Jan 2023 09:22:57 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230103170058.810597-11-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v2 10/13] media: verisilicon: Add Rockchip AV1 decoder
+To: Dan Carpenter <error27@gmail.com>, oe-kbuild@lists.linux.dev,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ daniel.almeida@collabora.com, nicolas.dufresne@collabora.co.uk
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <202301060326.FJvy51O1-lkp@intel.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <202301060326.FJvy51O1-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_233309_769861_75DF1BB4 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230106_002306_663177_11E5FF56 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,120 +73,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-media-rockchip-vpu-Add-rk3588-vpu-compatible/20230104-010906
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230103170058.810597-11-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 10/13] media: verisilicon: Add Rockchip AV1 decoder
-config: ia64-randconfig-m041-20230101
-compiler: ia64-linux-gcc (GCC) 12.1.0
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <error27@gmail.com>
-
-smatch warnings:
-drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:121 rockchip_vpu981_get_frame_index() error: buffer overflow 'frame->reference_frame_ts' 8 <= 8
-drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:167 rockchip_vpu981_av1_dec_frame_ref() error: buffer overflow 'frame->global_motion.type' 8 <= 9
-drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1947 rockchip_vpu981_av1_dec_run() warn: missing error code 'ret'
-
-vim +121 drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-
-9223ba771533395 Benjamin Gaignard 2023-01-03  109  
-9223ba771533395 Benjamin Gaignard 2023-01-03  110  static int rockchip_vpu981_get_frame_index(struct hantro_ctx *ctx, int ref)
-9223ba771533395 Benjamin Gaignard 2023-01-03  111  {
-9223ba771533395 Benjamin Gaignard 2023-01-03  112  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
-9223ba771533395 Benjamin Gaignard 2023-01-03  113  	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
-9223ba771533395 Benjamin Gaignard 2023-01-03  114  	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
-9223ba771533395 Benjamin Gaignard 2023-01-03  115  	u64 timestamp;
-9223ba771533395 Benjamin Gaignard 2023-01-03  116  	int i, idx = frame->ref_frame_idx[ref];
-9223ba771533395 Benjamin Gaignard 2023-01-03  117  
-9223ba771533395 Benjamin Gaignard 2023-01-03  118  	if (idx >= AV1_MAX_FRAME_BUF_COUNT || idx < 0)
-                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Should this be V4L2_AV1_TOTAL_REFS_PER_FRAME?
-
-9223ba771533395 Benjamin Gaignard 2023-01-03  119  		return AV1_INVALID_IDX;
-9223ba771533395 Benjamin Gaignard 2023-01-03  120  
-9223ba771533395 Benjamin Gaignard 2023-01-03 @121  	timestamp = frame->reference_frame_ts[idx];
-                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-9223ba771533395 Benjamin Gaignard 2023-01-03  122  	for (i = 0; i < AV1_MAX_FRAME_BUF_COUNT; i++) {
-9223ba771533395 Benjamin Gaignard 2023-01-03  123  		if (!av1_dec->frame_refs[i].used)
-9223ba771533395 Benjamin Gaignard 2023-01-03  124  			continue;
-9223ba771533395 Benjamin Gaignard 2023-01-03  125  		if (av1_dec->frame_refs[i].timestamp == timestamp)
-9223ba771533395 Benjamin Gaignard 2023-01-03  126  			return i;
-9223ba771533395 Benjamin Gaignard 2023-01-03  127  	}
-9223ba771533395 Benjamin Gaignard 2023-01-03  128  
-9223ba771533395 Benjamin Gaignard 2023-01-03  129  	return AV1_INVALID_IDX;
-9223ba771533395 Benjamin Gaignard 2023-01-03  130  }
-9223ba771533395 Benjamin Gaignard 2023-01-03  131  
-9223ba771533395 Benjamin Gaignard 2023-01-03  132  static int rockchip_vpu981_get_order_hint(struct hantro_ctx *ctx, int ref)
-9223ba771533395 Benjamin Gaignard 2023-01-03  133  {
-9223ba771533395 Benjamin Gaignard 2023-01-03  134  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
-9223ba771533395 Benjamin Gaignard 2023-01-03  135  	int idx = rockchip_vpu981_get_frame_index(ctx, ref);
-9223ba771533395 Benjamin Gaignard 2023-01-03  136  
-9223ba771533395 Benjamin Gaignard 2023-01-03  137  	if (idx != AV1_INVALID_IDX)
-9223ba771533395 Benjamin Gaignard 2023-01-03  138  		return av1_dec->frame_refs[idx].order_hint;
-9223ba771533395 Benjamin Gaignard 2023-01-03  139  
-9223ba771533395 Benjamin Gaignard 2023-01-03  140  	return 0;
-9223ba771533395 Benjamin Gaignard 2023-01-03  141  }
-9223ba771533395 Benjamin Gaignard 2023-01-03  142  
-9223ba771533395 Benjamin Gaignard 2023-01-03  143  static int rockchip_vpu981_av1_dec_frame_ref(struct hantro_ctx *ctx,
-9223ba771533395 Benjamin Gaignard 2023-01-03  144  					     u64 timestamp)
-9223ba771533395 Benjamin Gaignard 2023-01-03  145  {
-9223ba771533395 Benjamin Gaignard 2023-01-03  146  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
-9223ba771533395 Benjamin Gaignard 2023-01-03  147  	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
-9223ba771533395 Benjamin Gaignard 2023-01-03  148  	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
-9223ba771533395 Benjamin Gaignard 2023-01-03  149  	int i;
-9223ba771533395 Benjamin Gaignard 2023-01-03  150  
-9223ba771533395 Benjamin Gaignard 2023-01-03  151  	for (i = 0; i < AV1_MAX_FRAME_BUF_COUNT; i++) {
-9223ba771533395 Benjamin Gaignard 2023-01-03  152  		if (!av1_dec->frame_refs[i].used) {
-9223ba771533395 Benjamin Gaignard 2023-01-03  153  			int j;
-9223ba771533395 Benjamin Gaignard 2023-01-03  154  
-9223ba771533395 Benjamin Gaignard 2023-01-03  155  			av1_dec->frame_refs[i].width =
-9223ba771533395 Benjamin Gaignard 2023-01-03  156  			    frame->frame_width_minus_1 + 1;
-9223ba771533395 Benjamin Gaignard 2023-01-03  157  			av1_dec->frame_refs[i].height =
-9223ba771533395 Benjamin Gaignard 2023-01-03  158  			    frame->frame_height_minus_1 + 1;
-9223ba771533395 Benjamin Gaignard 2023-01-03  159  			av1_dec->frame_refs[i].mi_cols =
-9223ba771533395 Benjamin Gaignard 2023-01-03  160  			    DIV_ROUND_UP(frame->frame_width_minus_1 + 1, 8);
-9223ba771533395 Benjamin Gaignard 2023-01-03  161  			av1_dec->frame_refs[i].mi_rows =
-9223ba771533395 Benjamin Gaignard 2023-01-03  162  			    DIV_ROUND_UP(frame->frame_height_minus_1 + 1, 8);
-9223ba771533395 Benjamin Gaignard 2023-01-03  163  			av1_dec->frame_refs[i].timestamp = timestamp;
-9223ba771533395 Benjamin Gaignard 2023-01-03  164  			av1_dec->frame_refs[i].frame_type = frame->frame_type;
-9223ba771533395 Benjamin Gaignard 2023-01-03  165  			av1_dec->frame_refs[i].order_hint = frame->order_hint;
-9223ba771533395 Benjamin Gaignard 2023-01-03  166  			av1_dec->frame_refs[i].gm_mode =
-9223ba771533395 Benjamin Gaignard 2023-01-03 @167  				frame->global_motion.type[V4L2_AV1_REF_LAST_FRAME + i];
-9223ba771533395 Benjamin Gaignard 2023-01-03  168  			if (!av1_dec->frame_refs[i].vb2_ref)
-9223ba771533395 Benjamin Gaignard 2023-01-03  169  				av1_dec->frame_refs[i].vb2_ref = hantro_get_dst_buf(ctx);
-9223ba771533395 Benjamin Gaignard 2023-01-03  170  
-9223ba771533395 Benjamin Gaignard 2023-01-03  171  			for (j = 0; j < V4L2_AV1_TOTAL_REFS_PER_FRAME; j++)
-9223ba771533395 Benjamin Gaignard 2023-01-03  172  				av1_dec->frame_refs[i].order_hints[j] = frame->order_hints[j];
-9223ba771533395 Benjamin Gaignard 2023-01-03  173  
-9223ba771533395 Benjamin Gaignard 2023-01-03  174  			av1_dec->frame_refs[i].used = true;
-9223ba771533395 Benjamin Gaignard 2023-01-03  175  			av1_dec->current_frame_index = i;
-9223ba771533395 Benjamin Gaignard 2023-01-03  176  			return i;
-9223ba771533395 Benjamin Gaignard 2023-01-03  177  		}
-9223ba771533395 Benjamin Gaignard 2023-01-03  178  	}
-9223ba771533395 Benjamin Gaignard 2023-01-03  179  
-9223ba771533395 Benjamin Gaignard 2023-01-03  180  	return AV1_INVALID_IDX;
-9223ba771533395 Benjamin Gaignard 2023-01-03  181  }
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA2LzAxLzIwMjMgw6AgMDg6MzMsIERhbiBDYXJwZW50ZXIgYSDDqWNyaXTCoDoKPiBIaSBC
+ZW5qYW1pbiwKPgo+IGh0dHBzOi8vZ2l0LXNjbS5jb20vZG9jcy9naXQtZm9ybWF0LXBhdGNoI19i
+YXNlX3RyZWVfaW5mb3JtYXRpb25dCj4KPiB1cmw6ICAgIGh0dHBzOi8vZ2l0aHViLmNvbS9pbnRl
+bC1sYWItbGtwL2xpbnV4L2NvbW1pdHMvQmVuamFtaW4tR2FpZ25hcmQvZHQtYmluZGluZ3MtbWVk
+aWEtcm9ja2NoaXAtdnB1LUFkZC1yazM1ODgtdnB1LWNvbXBhdGlibGUvMjAyMzAxMDQtMDEwOTA2
+Cj4gYmFzZTogICBnaXQ6Ly9saW51eHR2Lm9yZy9tZWRpYV90cmVlLmdpdCBtYXN0ZXIKPiBwYXRj
+aCBsaW5rOiAgICBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjMwMTAzMTcwMDU4LjgxMDU5
+Ny0xMS1iZW5qYW1pbi5nYWlnbmFyZCU0MGNvbGxhYm9yYS5jb20KPiBwYXRjaCBzdWJqZWN0OiBb
+UEFUQ0ggdjIgMTAvMTNdIG1lZGlhOiB2ZXJpc2lsaWNvbjogQWRkIFJvY2tjaGlwIEFWMSBkZWNv
+ZGVyCj4gY29uZmlnOiBpYTY0LXJhbmRjb25maWctbTA0MS0yMDIzMDEwMQo+IGNvbXBpbGVyOiBp
+YTY0LWxpbnV4LWdjYyAoR0NDKSAxMi4xLjAKPgo+IElmIHlvdSBmaXggdGhlIGlzc3VlLCBraW5k
+bHkgYWRkIGZvbGxvd2luZyB0YWcgd2hlcmUgYXBwbGljYWJsZQo+IHwgUmVwb3J0ZWQtYnk6IGtl
+cm5lbCB0ZXN0IHJvYm90IDxsa3BAaW50ZWwuY29tPgo+IHwgUmVwb3J0ZWQtYnk6IERhbiBDYXJw
+ZW50ZXIgPGVycm9yMjdAZ21haWwuY29tPgo+Cj4gc21hdGNoIHdhcm5pbmdzOgo+IGRyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYzox
+MjEgcm9ja2NoaXBfdnB1OTgxX2dldF9mcmFtZV9pbmRleCgpIGVycm9yOiBidWZmZXIgb3ZlcmZs
+b3cgJ2ZyYW1lLT5yZWZlcmVuY2VfZnJhbWVfdHMnIDggPD0gOAo+IGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYzoxNjcgcm9ja2No
+aXBfdnB1OTgxX2F2MV9kZWNfZnJhbWVfcmVmKCkgZXJyb3I6IGJ1ZmZlciBvdmVyZmxvdyAnZnJh
+bWUtPmdsb2JhbF9tb3Rpb24udHlwZScgOCA8PSA5Cj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92
+ZXJpc2lsaWNvbi9yb2NrY2hpcF92cHU5ODFfaHdfYXYxX2RlYy5jOjE5NDcgcm9ja2NoaXBfdnB1
+OTgxX2F2MV9kZWNfcnVuKCkgd2FybjogbWlzc2luZyBlcnJvciBjb2RlICdyZXQnCj4KPiB2aW0g
+KzEyMSBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3JvY2tjaGlwX3ZwdTk4MV9o
+d19hdjFfZGVjLmMKPgo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAx
+LTAzICAxMDkKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAg
+MTEwICBzdGF0aWMgaW50IHJvY2tjaGlwX3ZwdTk4MV9nZXRfZnJhbWVfaW5kZXgoc3RydWN0IGhh
+bnRyb19jdHggKmN0eCwgaW50IHJlZikKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25h
+cmQgMjAyMy0wMS0wMyAgMTExICB7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJk
+IDIwMjMtMDEtMDMgIDExMiAgCXN0cnVjdCBoYW50cm9fYXYxX2RlY19od19jdHggKmF2MV9kZWMg
+PSAmY3R4LT5hdjFfZGVjOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIz
+LTAxLTAzICAxMTMgIAlzdHJ1Y3QgaGFudHJvX2F2MV9kZWNfY3RybHMgKmN0cmxzID0gJmF2MV9k
+ZWMtPmN0cmxzOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAz
+ICAxMTQgIAljb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2F2MV9mcmFtZSAqZnJhbWUgPSBjdHJscy0+
+ZnJhbWU7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDEx
+NSAgCXU2NCB0aW1lc3RhbXA7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIw
+MjMtMDEtMDMgIDExNiAgCWludCBpLCBpZHggPSBmcmFtZS0+cmVmX2ZyYW1lX2lkeFtyZWZdOwo+
+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxMTcKPiA5MjIz
+YmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTE4ICAJaWYgKGlkeCA+
+PSBBVjFfTUFYX0ZSQU1FX0JVRl9DT1VOVCB8fCBpZHggPCAwKQo+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeXl5eXl5eXl5eXl5e
+Xl5eXl5eXl5eXl5eXl5eXl4KPgo+IFNob3VsZCB0aGlzIGJlIFY0TDJfQVYxX1RPVEFMX1JFRlNf
+UEVSX0ZSQU1FPwoKWWVzIGl0IHNob3VsZCBiZS4KSSB3aWxsIGZpeCB0aGF0IGFuZCB0aGUgb3Ro
+ZXIgd2FybmluZ3MgaW4gdjMuCgpUaGFua3MsCkJlbmphbWluCgo+Cj4gOTIyM2JhNzcxNTMzMzk1
+IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDExOSAgCQlyZXR1cm4gQVYxX0lOVkFMSURf
+SURYOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxMjAK
+PiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyBAMTIxICAJdGlt
+ZXN0YW1wID0gZnJhbWUtPnJlZmVyZW5jZV9mcmFtZV90c1tpZHhdOwo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5e
+Xl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXgo+Cj4KPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFt
+aW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTIyICAJZm9yIChpID0gMDsgaSA8IEFWMV9NQVhfRlJB
+TUVfQlVGX0NPVU5UOyBpKyspIHsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyAgMTIzICAJCWlmICghYXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS51c2VkKQo+IDky
+MjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxMjQgIAkJCWNvbnRp
+bnVlOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxMjUg
+IAkJaWYgKGF2MV9kZWMtPmZyYW1lX3JlZnNbaV0udGltZXN0YW1wID09IHRpbWVzdGFtcCkKPiA5
+MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTI2ICAJCQlyZXR1
+cm4gaTsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTI3
+ICAJfQo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxMjgK
+PiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTI5ICAJcmV0
+dXJuIEFWMV9JTlZBTElEX0lEWDsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyAgMTMwICB9Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIw
+MjMtMDEtMDMgIDEzMQo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAx
+LTAzICAxMzIgIHN0YXRpYyBpbnQgcm9ja2NoaXBfdnB1OTgxX2dldF9vcmRlcl9oaW50KHN0cnVj
+dCBoYW50cm9fY3R4ICpjdHgsIGludCByZWYpCj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdh
+aWduYXJkIDIwMjMtMDEtMDMgIDEzMyAgewo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWln
+bmFyZCAyMDIzLTAxLTAzICAxMzQgIAlzdHJ1Y3QgaGFudHJvX2F2MV9kZWNfaHdfY3R4ICphdjFf
+ZGVjID0gJmN0eC0+YXYxX2RlYzsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyAgMTM1ICAJaW50IGlkeCA9IHJvY2tjaGlwX3ZwdTk4MV9nZXRfZnJhbWVfaW5k
+ZXgoY3R4LCByZWYpOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAx
+LTAzICAxMzYKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAg
+MTM3ICAJaWYgKGlkeCAhPSBBVjFfSU5WQUxJRF9JRFgpCj4gOTIyM2JhNzcxNTMzMzk1IEJlbmph
+bWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDEzOCAgCQlyZXR1cm4gYXYxX2RlYy0+ZnJhbWVfcmVm
+c1tpZHhdLm9yZGVyX2hpbnQ7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIw
+MjMtMDEtMDMgIDEzOQo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAx
+LTAzICAxNDAgIAlyZXR1cm4gMDsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyAgMTQxICB9Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIw
+MjMtMDEtMDMgIDE0Mgo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAx
+LTAzICAxNDMgIHN0YXRpYyBpbnQgcm9ja2NoaXBfdnB1OTgxX2F2MV9kZWNfZnJhbWVfcmVmKHN0
+cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJk
+IDIwMjMtMDEtMDMgIDE0NCAgCQkJCQkgICAgIHU2NCB0aW1lc3RhbXApCj4gOTIyM2JhNzcxNTMz
+Mzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE0NSAgewo+IDkyMjNiYTc3MTUzMzM5
+NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNDYgIAlzdHJ1Y3QgaGFudHJvX2F2MV9k
+ZWNfaHdfY3R4ICphdjFfZGVjID0gJmN0eC0+YXYxX2RlYzsKPiA5MjIzYmE3NzE1MzMzOTUgQmVu
+amFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTQ3ICAJc3RydWN0IGhhbnRyb19hdjFfZGVjX2N0
+cmxzICpjdHJscyA9ICZhdjFfZGVjLT5jdHJsczsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4g
+R2FpZ25hcmQgMjAyMy0wMS0wMyAgMTQ4ICAJY29uc3Qgc3RydWN0IHY0bDJfY3RybF9hdjFfZnJh
+bWUgKmZyYW1lID0gY3RybHMtPmZyYW1lOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWln
+bmFyZCAyMDIzLTAxLTAzICAxNDkgIAlpbnQgaTsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4g
+R2FpZ25hcmQgMjAyMy0wMS0wMyAgMTUwCj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWdu
+YXJkIDIwMjMtMDEtMDMgIDE1MSAgCWZvciAoaSA9IDA7IGkgPCBBVjFfTUFYX0ZSQU1FX0JVRl9D
+T1VOVDsgaSsrKSB7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEt
+MDMgIDE1MiAgCQlpZiAoIWF2MV9kZWMtPmZyYW1lX3JlZnNbaV0udXNlZCkgewo+IDkyMjNiYTc3
+MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNTMgIAkJCWludCBqOwo+IDky
+MjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNTQKPiA5MjIzYmE3
+NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTU1ICAJCQlhdjFfZGVjLT5m
+cmFtZV9yZWZzW2ldLndpZHRoID0KPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyAgMTU2ICAJCQkgICAgZnJhbWUtPmZyYW1lX3dpZHRoX21pbnVzXzEgKyAxOwo+
+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNTcgIAkJCWF2
+MV9kZWMtPmZyYW1lX3JlZnNbaV0uaGVpZ2h0ID0KPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4g
+R2FpZ25hcmQgMjAyMy0wMS0wMyAgMTU4ICAJCQkgICAgZnJhbWUtPmZyYW1lX2hlaWdodF9taW51
+c18xICsgMTsKPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAg
+MTU5ICAJCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ldLm1pX2NvbHMgPQo+IDkyMjNiYTc3MTUzMzM5
+NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNjAgIAkJCSAgICBESVZfUk9VTkRfVVAo
+ZnJhbWUtPmZyYW1lX3dpZHRoX21pbnVzXzEgKyAxLCA4KTsKPiA5MjIzYmE3NzE1MzMzOTUgQmVu
+amFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTYxICAJCQlhdjFfZGVjLT5mcmFtZV9yZWZzW2ld
+Lm1pX3Jvd3MgPQo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAz
+ICAxNjIgIAkJCSAgICBESVZfUk9VTkRfVVAoZnJhbWUtPmZyYW1lX2hlaWdodF9taW51c18xICsg
+MSwgOCk7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE2
+MyAgCQkJYXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS50aW1lc3RhbXAgPSB0aW1lc3RhbXA7Cj4gOTIy
+M2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE2NCAgCQkJYXYxX2Rl
+Yy0+ZnJhbWVfcmVmc1tpXS5mcmFtZV90eXBlID0gZnJhbWUtPmZyYW1lX3R5cGU7Cj4gOTIyM2Jh
+NzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE2NSAgCQkJYXYxX2RlYy0+
+ZnJhbWVfcmVmc1tpXS5vcmRlcl9oaW50ID0gZnJhbWUtPm9yZGVyX2hpbnQ7Cj4gOTIyM2JhNzcx
+NTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE2NiAgCQkJYXYxX2RlYy0+ZnJh
+bWVfcmVmc1tpXS5nbV9tb2RlID0KPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQg
+MjAyMy0wMS0wMyBAMTY3ICAJCQkJZnJhbWUtPmdsb2JhbF9tb3Rpb24udHlwZVtWNEwyX0FWMV9S
+RUZfTEFTVF9GUkFNRSArIGldOwo+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAy
+MDIzLTAxLTAzICAxNjggIAkJCWlmICghYXYxX2RlYy0+ZnJhbWVfcmVmc1tpXS52YjJfcmVmKQo+
+IDkyMjNiYTc3MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNjkgIAkJCQlh
+djFfZGVjLT5mcmFtZV9yZWZzW2ldLnZiMl9yZWYgPSBoYW50cm9fZ2V0X2RzdF9idWYoY3R4KTsK
+PiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAgMTcwCj4gOTIy
+M2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE3MSAgCQkJZm9yIChq
+ID0gMDsgaiA8IFY0TDJfQVYxX1RPVEFMX1JFRlNfUEVSX0ZSQU1FOyBqKyspCj4gOTIyM2JhNzcx
+NTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE3MiAgCQkJCWF2MV9kZWMtPmZy
+YW1lX3JlZnNbaV0ub3JkZXJfaGludHNbal0gPSBmcmFtZS0+b3JkZXJfaGludHNbal07Cj4gOTIy
+M2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE3Mwo+IDkyMjNiYTc3
+MTUzMzM5NSBCZW5qYW1pbiBHYWlnbmFyZCAyMDIzLTAxLTAzICAxNzQgIAkJCWF2MV9kZWMtPmZy
+YW1lX3JlZnNbaV0udXNlZCA9IHRydWU7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWdu
+YXJkIDIwMjMtMDEtMDMgIDE3NSAgCQkJYXYxX2RlYy0+Y3VycmVudF9mcmFtZV9pbmRleCA9IGk7
+Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE3NiAgCQkJ
+cmV0dXJuIGk7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMg
+IDE3NyAgCQl9Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMg
+IDE3OCAgCX0KPiA5MjIzYmE3NzE1MzMzOTUgQmVuamFtaW4gR2FpZ25hcmQgMjAyMy0wMS0wMyAg
+MTc5Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWduYXJkIDIwMjMtMDEtMDMgIDE4MCAg
+CXJldHVybiBBVjFfSU5WQUxJRF9JRFg7Cj4gOTIyM2JhNzcxNTMzMzk1IEJlbmphbWluIEdhaWdu
+YXJkIDIwMjMtMDEtMDMgIDE4MSAgfQo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
