@@ -4,65 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35DECC4708D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 11:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 247E5C54EBD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 17:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RaaN5zn8LzaIyDNkecbRW4oQS4UGhrt6Anh5lQ4sUcM=; b=1IRe4+WrU+GGvN
-	LQJIShr7lvwZt+xhVRpn1gsi4xj4V19T7Mwvp+/qVXvDgGBA3ikNZFZNm1ik2JQmf7G0XiAvAhXj5
-	B8thZOa9I94fnDKpe6m6gQz7fjszoFiI8ajJt01YOAsbyP+ZfSYjroookCm1vaiolmQhQuh43D4Um
-	/GpkKqRQDebQGsI1sWJDVT50L+SSVYKO2SjqAvRPmY9iCPLWEyb2YMBWyL1RrxMTi4yZ4mDHnq9Wb
-	CzSr7ASH88IZZjdUNXVEtukgyBnSt/V5IIwLiBwcJx16GAg+0ayxESwzSiXet/CesQyxGgw0qynnS
-	wCTqU7/ZrvxKvBG1eraQ==;
+	List-Owner; bh=wg7vjryNQetb4YSgGYQrd2OAyda+/ihQGHb/VXdNtzU=; b=gFnq8iOqB6PecH
+	lBUPTqwanmdhxr38gACZ5KW+VxUzfIyySLAkCZawI89PvDs2KmKqeyxDeIyls/67Oj6QKRkaxMD5p
+	orM/9v0W7g5j+6qTjDBkPgzvCGMpwYr/eECA7PifHKZ6Hj1QZNqrBJeCmwdrC/1t9svyT6CqyqCBV
+	pdde14vRzWOMLi36SvUIgsQxtrd16rv+g9NSFVkqjaa2k4jdPzVeoQblHsgOg0c5wolz7S9AkwyER
+	JYuxSB2/sl0H/smpNTqIJZDQhmZSRad5MJjntx+Hy+ya9oTpqFlk8xMfqSYjMyshhGlben0nr3Ijr
+	vXnqX2dXr4U1Nu3A04Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDl7s-007npW-LA; Fri, 06 Jan 2023 11:43:08 +0000
-Received: from mout-p-101.mailbox.org ([2001:67c:2050:0:465::101])
+	id 1pDqqy-00DrjT-QS; Fri, 06 Jan 2023 17:50:04 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDl7p-007nnk-H1
-	for linux-rockchip@lists.infradead.org; Fri, 06 Jan 2023 11:43:07 +0000
-Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4NpM0K0sZFz9sTD;
-	Fri,  6 Jan 2023 12:42:57 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1673005377;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+MKewvQAOmy/Zn8oNArbj5sMzsVqtojw6uyLjAN8pxw=;
-	b=RR68Uij7oOSXHjTTB6IOaiZ/WbfzNHq250+jiBWvglyo7RsQaixfIba1oTOVzP+MdTCWcf
-	Jyzp435Zmhb4JdZueZrcdt7ZjPijmFyzYkIdLkAOyk/2VRX8pMXF+7pDR3Zgh7S901EvLS
-	M9YeS46cK2eNA11KeWC1zaBgnwu5vISzjr8xftwfjXd7T8V9EwXqJ6jnEbkSVAx5s3y8V0
-	Ucish6QEzF4eXtaehQG4YxrtXfk0Y7NMwXCqtJ4zfn8XBPoaI6SDM0n/zAvHSBA/1eMjBr
-	/UbXykZOCpYV6Cg1HUXtLxoZmh/2XaE9ToBZ5CfSs0rtN2nUiCv6+py6c8s5jg==
-Message-ID: <9455bc5b-2074-4f48-71a7-5c816ee19a78@mailbox.org>
-Date: Fri, 6 Jan 2023 12:42:54 +0100
-MIME-Version: 1.0
-Subject: Re: [PATCH 2/2] drm/rockchip: vop: Leave vblank enabled in
- self-refresh
-To: Brian Norris <briannorris@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: "kernelci.org bot" <bot@kernelci.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org
+	id 1pDqqv-00Dqs4-HD
+	for linux-rockchip@lists.infradead.org; Fri, 06 Jan 2023 17:50:03 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id r2so1951562wrv.7
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jan 2023 09:50:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ffwll.ch; s=google;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MEWcai/0BTUSDXzlv/9ZnddHBUgd9q90oSNrTCd/iAE=;
+        b=hkasdKR/OrqmQwA/oOWmPJTk7z6ETkOAnL/+a1hwca7i4k8ududHCU7HQbUMGoP+qW
+         Uw1kYQ2NTYX+GOukmMyi/bR5ErlLtQqAnJdJ2bagG5WkAe3w1XbjORO4Qr+yOgg+9g3Q
+         Mf1s4J2Xy6cIj76SMWXp0VGHGG3zAIgDoQ+Mo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MEWcai/0BTUSDXzlv/9ZnddHBUgd9q90oSNrTCd/iAE=;
+        b=Nwi9SNuPWV/fAJTfQ4hfoL3Kj19jWytg+XLhr3w2TUmhKVUXrLyDW2wYetmw5bDo7o
+         8KX8twNsB74t2Bzxm+kkmohEzWo5uCgg6Wxochn004XOOUwGQ0/hjIIWzLGDKD+SqKrj
+         4j9FiQBCBnjgqhoj3eUyB8e/moiUUJJYHoXuJd4PGr6aNB+zL4SFDhlZtISuW/Fk15Cl
+         I4JvIvfkt40Ll6QTReMqy/xsrLI/0BaO5OldRIb4NDNam31YmsMHgJsVyMJtySc8QVrS
+         oMJoCkI0vhsYl0xPuJbLLPkrfZaClD4KIk6IWqePPl9HWTjl4+8EBXpudC1oOxTXv+Z2
+         Gy6w==
+X-Gm-Message-State: AFqh2kqamjAFnYsHdog90+FJQzV2qMgz9xPyazS/HlwodFr+KlyYfzxL
+	3gFd6mnzn60CwbN2YEEQyvlic6VkH6ihkwzI
+X-Google-Smtp-Source: AMrXdXsSQA1sZlk78KWMQ3ZlByTzU+qPddwuRA0IvEpJPokqzlPt1nfac/dSnY9a55WhImAedfMMaw==
+X-Received: by 2002:adf:f4c1:0:b0:27e:7f5:6634 with SMTP id h1-20020adff4c1000000b0027e07f56634mr26567517wrp.60.1673027399535;
+        Fri, 06 Jan 2023 09:49:59 -0800 (PST)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+        by smtp.gmail.com with ESMTPSA id o12-20020adfe80c000000b0024258722a7fsm1710958wrm.37.2023.01.06.09.49.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Jan 2023 09:49:58 -0800 (PST)
+Date: Fri, 6 Jan 2023 18:49:56 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Brian Norris <briannorris@chromium.org>,
+	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Sean Paul <seanpaul@chromium.org>, stable@vger.kernel.org
+Subject: Re: [PATCH 1/2] drm/atomic: Allow vblank-enabled + self-refresh
+ "disable"
+Message-ID: <Y7hfRNHMjk5H+muj@phenom.ffwll.local>
+Mail-Followup-To: Greg KH <gregkh@linuxfoundation.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Sean Paul <seanpaul@chromium.org>, stable@vger.kernel.org
 References: <20230105174001.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
- <20230105174001.2.Ic07cba4ab9a7bd3618a9e4258b8f92ea7d10ae5a@changeid>
-Content-Language: en-CA
-From: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel.daenzer@mailbox.org>
-In-Reply-To: <20230105174001.2.Ic07cba4ab9a7bd3618a9e4258b8f92ea7d10ae5a@changeid>
-X-MBO-RS-META: tq4hqps3dpqxcfuhdffygmxousg6bo4x
-X-MBO-RS-ID: a6ab78268fa770b490a
+ <Y7fH88gNfja364JD@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <Y7fH88gNfja364JD@kroah.com>
+X-Operating-System: Linux phenom 5.19.0-2-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_034305_851871_3E140C53 
-X-CRM114-Status: GOOD (  27.33  )
+X-CRM114-CacheID: sfid-20230106_095001_608151_5D3F5751 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,64 +96,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMS82LzIzIDAyOjQwLCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4gSWYgd2UgZGlzYWJsZSB2Ymxh
-bmsgd2hlbiBlbnRlcmluZyBzZWxmLXJlZnJlc2gsIHZibGFuayBBUElzIChsaWtlCj4gRFJNX0lP
-Q1RMX1dBSVRfVkJMQU5LKSBubyBsb25nZXIgd29yay4gQnV0IHVzZXIgc3BhY2UgaXMgbm90IGF3
-YXJlIHdoZW4KPiB3ZSBlbnRlciBzZWxmLXJlZnJlc2gsIHNvIHRoaXMgYXBwZWFycyB0byBiZSBh
-biBBUEkgdmlvbGF0aW9uIC0tIHRoYXQKPiBEUk1fSU9DVExfV0FJVF9WQkxBTksgZmFpbHMgd2l0
-aCBFSU5WQUwgd2hlbmV2ZXIgdGhlIGRpc3BsYXkgaXMgaWRsZSBhbmQKPiBlbnRlcnMgc2VsZi1y
-ZWZyZXNoLgo+IAo+IFRoZSBkb3duc3RyZWFtIGRyaXZlciB1c2VkIGJ5IG1hbnkgb2YgdGhlc2Ug
-c3lzdGVtcyBuZXZlciB1c2VkIHRvCj4gZGlzYWJsZSB2YmxhbmsgZm9yIFBTUiwgYW5kIGluIGZh
-Y3QsIGV2ZW4gdXBzdHJlYW0sIHdlIGRpZG4ndCBkbyB0aGF0Cj4gdW50aWwgcmFkaWNhbGx5IHJl
-ZGVzaWduaW5nIHRoZSBzdGF0ZSBtYWNoaW5lIGluIGNvbW1pdCA2YzgzNmQ5NjViYWQKPiAoImRy
-bS9yb2NrY2hpcDogVXNlIHRoZSBoZWxwZXJzIGZvciBQU1IiKS4KPiAKPiBUaHVzLCBpdCBzZWVt
-cyBsaWtlIGEgcmVhc29uYWJsZSBBUEkgZml4IHRvIHNpbXBseSByZXN0b3JlIHRoYXQKPiBiZWhh
-dmlvciwgYW5kIGxlYXZlIHZibGFuayBlbmFibGVkLgo+IAo+IE5vdGUgdGhhdCB0aGlzIGFwcGVh
-cnMgdG8gcG90ZW50aWFsbHkgdW5iYWxhbmNlIHRoZQo+IGRybV9jcnRjX3ZibGFua197b2ZmLG9u
-fSgpIGNhbGxzIGluIHNvbWUgY2FzZXMsIGJ1dDoKPiAoYSkgZHJtX2NydGNfdmJsYW5rX29uKCkg
-ZG9jdW1lbnRzIHRoaXMgYXMgT0sgYW5kCj4gKGIpIGlmIEkgZG8gdGhlIG5haXZlIGJhbGFuY2lu
-ZywgSSBmaW5kIHN0YXRlIG1hY2hpbmUgaXNzdWVzIHN1Y2ggdGhhdAo+ICAgICB3ZSdyZSBub3Qg
-aW4gc3luYyBwcm9wZXJseTsgc28gaXQncyBlYXNpZXIgdG8gdGFrZSBhZHZhbnRhZ2Ugb2YgKGEp
-Lgo+IAo+IEJhY2twb3J0aW5nIG5vdGVzOgo+IE1hcmtpbmcgYXMgJ0ZpeGVzJyBjb21taXQgNmM4
-MzZkOTY1YmFkICgiZHJtL3JvY2tjaGlwOiBVc2UgdGhlIGhlbHBlcnMKPiBmb3IgUFNSIiksIGJ1
-dCBpdCBwcm9iYWJseSBkZXBlbmRzIG9uIGNvbW1pdCBiZWQwMzBhNDlmM2UKPiAoImRybS9yb2Nr
-Y2hpcDogRG9uJ3QgZnVsbHkgZGlzYWJsZSB2b3Agb24gc2VsZiByZWZyZXNoIikgYXMgd2VsbC4K
-PiAKPiBXZSBhbHNvIG5lZWQgdGhlIHByZXZpb3VzIHBhdGNoICgiZHJtL2F0b21pYzogQWxsb3cg
-dmJsYW5rLWVuYWJsZWQgKwo+IHNlbGYtcmVmcmVzaCAiZGlzYWJsZSIiKSwgb2YgY291cnNlLgo+
-IAo+IEZpeGVzOiA2YzgzNmQ5NjViYWQgKCJkcm0vcm9ja2NoaXA6IFVzZSB0aGUgaGVscGVycyBm
-b3IgUFNSIikKPiBDYzogPHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmc+Cj4gTGluazogaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsL1k1aXRmMCt5TklRYTZmVTRAc2lyZW5hLm9yZy51ay8K
-PiBSZXBvcnRlZC1ieTogImtlcm5lbGNpLm9yZyBib3QiIDxib3RAa2VybmVsY2kub3JnPgo+IFNp
-Z25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hyb21pdW0ub3JnPgo+IC0t
-LQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgNCAr
-Ky0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4g
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXgg
-ZmExZjRlZTZkMTk1Li5jNTQxOTY3MTE0YjQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNzE5LDExICs3MTksMTEgQEAgc3RhdGljIHZv
-aWQgdm9wX2NydGNfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAKPiAg
-CW11dGV4X2xvY2soJnZvcC0+dm9wX2xvY2spOwo+ICAKPiAtCWRybV9jcnRjX3ZibGFua19vZmYo
-Y3J0Yyk7Cj4gLQo+ICAJaWYgKGNydGMtPnN0YXRlLT5zZWxmX3JlZnJlc2hfYWN0aXZlKQo+ICAJ
-CWdvdG8gb3V0Owo+ICAKPiArCWRybV9jcnRjX3ZibGFua19vZmYoY3J0Yyk7Cj4gKwo+ICAJLyoK
-PiAgCSAqIFZvcCBzdGFuZGJ5IHdpbGwgdGFrZSBlZmZlY3QgYXQgZW5kIG9mIGN1cnJlbnQgZnJh
-bWUsCj4gIAkgKiBpZiBkc3AgaG9sZCB2YWxpZCBpcnEgaGFwcGVuLCBpdCBtZWFucyBzdGFuZGJ5
-IGNvbXBsZXRlLgoKVGhlIG91dCBsYWJlbCBpbW1lZGlhdGVseSB1bmxvY2tzIHZvcC0+dm9wX2xv
-Y2sgYWdhaW4sIHNlZW1zIGEgYml0IHBvaW50bGVzcy4gOikKCkFGQUlDVCB0aGUgc2VsZl9yZWZy
-ZXNoX2FjdGl2ZSBjYXNlIHNob3VsZCBqdXN0IHJldHVybiBpbW1lZGlhdGVseSwgdGhlIG91dCBs
-YWJlbCB3b3VsZCBhbHNvIHNlbmQgYW55IHBlbmRpbmcgYXRvbWljIGNvbW1pdCBjb21wbGV0aW9u
-IGV2ZW50LCB3aGljaCBzZWVtcyB3cm9uZyBub3cgdGhhdCB0aGUgdmJsYW5rIGludGVycnVwdCBp
-cyBsZWZ0IGVuYWJsZWQuIChJIGFsc28gd29uZGVyIGlmIGRybV9jcnRjX3ZibGFua19vZmYgZG9l
-c24ndCB0YWtlIGNhcmUgb2YgdGhhdCBhbHJlYWR5LCBhdCBsZWFzdCBhbWRncHUgZG9lc24ndCBk
-byB0aGlzIGV4cGxpY2l0bHkgQUZBSUNUKQoKCi0tIApFYXJ0aGxpbmcgTWljaGVsIETDpG56ZXIg
-ICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgaHR0cHM6Ly9yZWRoYXQuY29tCkxpYnJlIHNv
-ZnR3YXJlIGVudGh1c2lhc3QgICAgICAgICAgfCAgICAgICAgIE1lc2EgYW5kIFh3YXlsYW5kIGRl
-dmVsb3BlcgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+On Fri, Jan 06, 2023 at 08:04:19AM +0100, Greg KH wrote:
+> On Thu, Jan 05, 2023 at 05:40:17PM -0800, Brian Norris wrote:
+> > The self-refresh helper framework overloads "disable" to sometimes mean
+> > "go into self-refresh mode," and this mode activates automatically
+> > (e.g., after some period of unchanging display output). In such cases,
+> > the display pipe is still considered "on", and user-space is not aware
+> > that we went into self-refresh mode. Thus, users may expect that
+> > vblank-related features (such as DRM_IOCTL_WAIT_VBLANK) still work
+> > properly.
+> > 
+> > However, we trigger the WARN_ONCE() here if a CRTC driver tries to leave
+> > vblank enabled here.
+> > 
+> > Add a new exception, such that we allow CRTCs to be "disabled" (with
+> > self-refresh active) with vblank interrupts still enabled.
+> > 
+> > Cc: <stable@vger.kernel.org> # dependency for subsequent patch
+> 
+> "subsequent" doesn't mean much when it is committed, give it a name
+> perhaps?
+
+It also looks a bit funny tbh, and a bit much like duct-tape. I need to
+think through how this is supposed to work really.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
