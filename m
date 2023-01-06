@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2680C3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 20:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07BBC54EBD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jan 2023 21:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SYX2O36bJHxJBM2AVw5BT6vlVBIXmp0xZFleKeyrHEA=; b=kBqSrbDtyXPGRS
-	ffAZxN16yo+NqqhroLxvRhpCWTpmHXTN72F7iQL3sQ5/C49dkrqnWAoRiCPPttuvejLfRzpoN4act
-	YxJBFPDzVHIwPLfYX3T1DM/KAG5PxVHKuReoOJ2f5BJnwd5eT1PLtYsDpmioYuIajL+ufHaYEaYnv
-	bmZ7ZDFnzHIfPyhtZ92bVxObv7pWLQqoLLgz+BKFDnjOx3wdkjEbiprwP/r30Gq8e+TG/VGRzURr1
-	6YBYCtOwTr6SS89mWETSkhBpfzw4j6yVzjgOZTRxmDKcqDgoIO5ntgu/vYXGUXolF/5q5bLR594zY
-	r8pqP6N0LZ7aQmUSHMKQ==;
+	List-Owner; bh=cBci7D6pCSx/3PlmoBxNGVHe6BMlo3FGBR1q3vl3LTs=; b=SVqZAjRyIKXbef
+	+X/yDhxc0zvqdkoiMeRKWgbQJBywX/r3DGLVfnOCvUx0eJTJDwvridWUOfTgXAnId+oOaYtHwpanE
+	uWsDbZKY/0wL2cn7kuV0af90xAl9G28r/ZV32VNTy4YNSeHZJhgML7ScECGvEuZ3XwOW7zNxlQOMq
+	4OQyfYoRyyayNW91Ju6wezTWEPfCcHGyPQlIxXKGeJDUSGMOA444vCRZoIJ9BW0XYjLf6u41Mm7pc
+	NoNTnHci47gA8vgFACz84DzijAfU8E71iqDhYOYGJBken8RKnFcz0ZD0iogQJg8zjFX28Yn4hSVJv
+	dQnTtMFShocSQWecYR7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDtMs-00Eomc-Fl; Fri, 06 Jan 2023 20:31:10 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1pDuIC-00F3d7-EL; Fri, 06 Jan 2023 21:30:24 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDtMm-00Eojp-3j
-	for linux-rockchip@lists.infradead.org; Fri, 06 Jan 2023 20:31:08 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id r2so2338748wrv.7
-        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jan 2023 12:31:00 -0800 (PST)
+	id 1pDuI9-00F3bx-FU
+	for linux-rockchip@lists.infradead.org; Fri, 06 Jan 2023 21:30:22 +0000
+Received: by mail-pl1-x630.google.com with SMTP id y1so3028536plb.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jan 2023 13:30:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zmnTz8/2kfdFyB6x8PTFchjQzfo0fx86uAVQddggYnU=;
-        b=QDiE9naefEI1d5kfh4laxGY1RcATSlKvPxkPLXOkcJ9yILKQhTE4aESsj1oYoKNoD1
-         +JqJEO+cE/oaC3db0934YfBDzaJfkep6EF1RNkAzSCyF4yOW4irWP5lPS/S+Pa1HYOkj
-         8DNo819Vw9PzXSpGcwo9fonNqrP4IfiIKYlVA=
+        d=chromium.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=uBO4FktmK6B4vf85PEbj+zhpKQreEDnrkFtn4Z9nRks=;
+        b=OIIbGQJxzBLO7wv9/sPjTp5y7hdL2iWtD8GEt2IDMqLwSm+ZLQgKJaWVWmbl5V/IxB
+         vBQBQHiIHxWOQxKkDl91hruPIVXwDuQyESeivpfWahMcH4uOKyEe2UpDBQL8sKov2bbK
+         gSXg/T5si3rR9wkYqyCdFA2ALe5aq0x5Ylluw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zmnTz8/2kfdFyB6x8PTFchjQzfo0fx86uAVQddggYnU=;
-        b=S0Zb8eoB/NGnmw7ZvgzE+DINCHYp8vAITc+hdpV7pFu2RXWqhSgwgeR/lNR8ZXnJst
-         Ml+iKjJtLHXE0BcFq+ojoE3L+BwnZ44h5AovwWbpWdvWEQBDqaGxHDWJ5WV9Ka2QinRY
-         IOcemKGCJD3tgcUC5pLoLxb940vALm7ULnRxrkG9yS3TSCgCmiMaLpClJg1v1DoV+Lnd
-         WS5DpTkjkXB6aUPUS8zl+JnVH6eOUSQbQMz42nGfHHy13E/uponCvT4SEZSJoDsK6LQX
-         ii2Kyw8mVYVxTWo3PgkT1l6r475aoZsm+PGYcQntIZWho0i4kbGN6JNj9jjh83S7Mze/
-         2DwA==
-X-Gm-Message-State: AFqh2kqkoBkS5I5DB/pg2knxMSOJcD1g8p+QeQ7+bDCDyqMkWSPs8l0y
-	zA1sMfqNywBPzP0g450vy9FwwqedTgCWzD7u
-X-Google-Smtp-Source: AMrXdXsGhHQm6ue86ek8a/TahpSuukropvViZubkaaHdP6I4LctKBRL7+Y+FkYhKQhuX8FcLuzSEJg==
-X-Received: by 2002:adf:f54a:0:b0:242:2e1e:23a6 with SMTP id j10-20020adff54a000000b002422e1e23a6mr36969526wrp.22.1673037059116;
-        Fri, 06 Jan 2023 12:30:59 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id t14-20020adfeb8e000000b002baa780f0fasm1998405wrn.111.2023.01.06.12.30.57
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uBO4FktmK6B4vf85PEbj+zhpKQreEDnrkFtn4Z9nRks=;
+        b=EzgxnCGltNrxeva2mYDTEPq9PXBuwTRoAAB6HBaHXtD4AfnBqhbVL0Q4zeQOSs4Fgt
+         WGXNsxeMPO8UXD0yGlpjOXcj6PXz3xulCSW9QsEJwKZl59GAy4ADA8KcgrIsG/B2UMYO
+         30IhhlzwcvFhC78Dux7jTOvQloJYDcPq2HlN3fDveiWcyn2LNHlxlOTj7osmJW0Yx/O6
+         qEDHGmAmCeX3Bwf+VVB64zhePZXpg86m9DSzwqODMBz4JahKtHnxeZWylVfqeD6Bk/UP
+         fDrSzy2fHB217YIP1oC8DCu2gJngLjw0vyVAtFmioJq54Ja3ugPH13hgrZRW+qym3+M8
+         Z48A==
+X-Gm-Message-State: AFqh2ko8uXNPw3Ya5ZcxL658lQ1iR5qx0aqUk2ZTAU0hOs9+cqsSkOvD
+	H1f5qOXhTtv0+1vMHMBEjlR14Q==
+X-Google-Smtp-Source: AMrXdXtctuMxpO+yWZByUv5pU58/S3zStxu5pv6MQgkWfy4yibmn8t7EWVsbY9JnzLFXXpQVflBD+g==
+X-Received: by 2002:a17:902:eb4c:b0:192:feef:588 with SMTP id i12-20020a170902eb4c00b00192feef0588mr7130910pli.23.1673040619642;
+        Fri, 06 Jan 2023 13:30:19 -0800 (PST)
+Received: from google.com ([2620:15c:9d:2:bc4e:2cc9:68b3:15dc])
+        by smtp.gmail.com with ESMTPSA id s21-20020a170902b19500b00189e1522982sm1353032plr.168.2023.01.06.13.30.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Jan 2023 12:30:58 -0800 (PST)
-Date: Fri, 6 Jan 2023 21:30:56 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+        Fri, 06 Jan 2023 13:30:19 -0800 (PST)
+Date: Fri, 6 Jan 2023 13:30:16 -0800
+From: Brian Norris <briannorris@chromium.org>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
 	Sean Paul <seanpaul@chromium.org>,
 	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
 	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
@@ -68,25 +66,18 @@ Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
 Subject: Re: [PATCH 1/2] drm/atomic: Allow vblank-enabled + self-refresh
  "disable"
-Message-ID: <Y7iFAJqGNXA7wHoK@phenom.ffwll.local>
-Mail-Followup-To: Brian Norris <briannorris@chromium.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sean Paul <seanpaul@chromium.org>,
-	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
+Message-ID: <Y7iS6E4UQVllOCFv@google.com>
 References: <20230105174001.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
  <Y7hgLUXOrD7QwKs1@phenom.ffwll.local>
  <Y7hl0Z9PZhFk8On9@phenom.ffwll.local>
  <Y7h3cuAVE2fdS9K3@google.com>
+ <Y7iFAJqGNXA7wHoK@phenom.ffwll.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <Y7h3cuAVE2fdS9K3@google.com>
-X-Operating-System: Linux phenom 5.19.0-2-amd64 
+In-Reply-To: <Y7iFAJqGNXA7wHoK@phenom.ffwll.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_123104_199284_0D30B421 
-X-CRM114-Status: GOOD (  51.11  )
+X-CRM114-CacheID: sfid-20230106_133021_584043_061E67A6 
+X-CRM114-Status: GOOD (  35.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,129 +94,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 06, 2023 at 11:33:06AM -0800, Brian Norris wrote:
-> On Fri, Jan 06, 2023 at 07:17:53PM +0100, Daniel Vetter wrote:
-> > Ok I think I was a bit slow here, and it makes sense. Except this now
-> > means we loose this check, and I'm also not sure whether we really want
-> > drivers to implement this all.
+On Fri, Jan 06, 2023 at 09:30:56PM +0100, Daniel Vetter wrote:
+> On Fri, Jan 06, 2023 at 11:33:06AM -0800, Brian Norris wrote:
+> > On Fri, Jan 06, 2023 at 07:17:53PM +0100, Daniel Vetter wrote:
+> > > - check that drivers which use self_refresh are not using
+> > >   drm_atomic_helper_wait_for_vblanks(), because that would defeat the
+> > >   point
 > > 
-> > What I think we want here is a bit more:
-> > - for the self-refresh case check that the vblank all still works
+> > I'm a bit lost on this one. drm_atomic_helper_wait_for_vblanks() is part
+> > of the common drm_atomic_helper_commit_tail*() helpers, and so it's
+> > naturally used in many cases (including Rockchip/PSR). And how does it
+> > defeat the point?
 > 
-> You mean, keep the WARN_ONCE(), but invert it to ensure that 'ret == 0'?
-> I did consider that, but I don't know why I stopped.
+> Yeah, but that's for backwards compat reasons, the much better function is
+> drm_atomic_helper_wait_for_flip_done(). And if you go into self refresh
+> that's really the better one.
 
-Yeah, so that we check that vblanks keep working in the self-refresh case.
+My knowledge is certainly going to diminish once you talk about
+backwards compat for drivers I'm very unfamiliar with. Are you
+suggesting I can change the default
+drm_atomic_helper_commit_tail{,_rpm}() to use
+drm_atomic_helper_wait_for_flip_done()? (Or, just when
+self_refresh_active==true?) I can try to read through drivers for
+compatibility, but I may be prone to breaking things.
 
-> > - check that drivers which use self_refresh are not using
-> >   drm_atomic_helper_wait_for_vblanks(), because that would defeat the
-> >   point
+Otherwise, I'd be copy/paste/modifying the generic commit helpers.
+
+> > > - have a drm_crtc_vblank_off/on which take the crtc state, so they can
+> > >   look at the self-refresh state
+> > 
+> > And I suppose you mean this helper variant would kick off the next step
+> > (fake vblank timer)?
 > 
-> I'm a bit lost on this one. drm_atomic_helper_wait_for_vblanks() is part
-> of the common drm_atomic_helper_commit_tail*() helpers, and so it's
-> naturally used in many cases (including Rockchip/PSR). And how does it
-> defeat the point?
+> Yeah, I figured that's the better way to implement this since it would be
+> driver agnostic. But rockchip is still the only driver using the
+> self-refresh helpers, so I guess it doesn't really matter.
 
-Yeah, but that's for backwards compat reasons, the much better function is
-drm_atomic_helper_wait_for_flip_done(). And if you go into self refresh
-that's really the better one.
+I've run into enough gotchas with these helpers that I feel like it
+might be difficult to ever get a second driver using this. Or at least,
+we'd have to learn what requirements they have when we get there. (Well,
+maybe you know better, but I certainly don't.)
 
-> > - have a drm_crtc_vblank_off/on which take the crtc state, so they can
-> >   look at the self-refresh state
+I'm tempted to just go with what's the simplest for Rockchip now, and
+look at some generic timer fallbacks later if the need arises.
+
+> > Also, I still haven't found that fake timer machinery, but maybe I just
+> > don't know what I'm looking for.
 > 
-> And I suppose you mean this helper variant would kick off the next step
-> (fake vblank timer)?
+> I ... didn't find it either. I'm honestly not sure whether this works for
+> intel, or whether we do something silly like disable self-refresh when a
+> vblank interrupt is pending :-/
 
-Yeah, I figured that's the better way to implement this since it would be
-driver agnostic. But rockchip is still the only driver using the
-self-refresh helpers, so I guess it doesn't really matter.
+Nice to know I'm not the only one, I suppose :)
 
-> > - fake vblanks with hrtimer, because on most hw when you turn off the crtc
-> >   the vblanks are also turned off, and so your compositor would still
-> >   hang. The vblank machinery already has all the code to make this happen
-> >   (and if it's not all, then i915 psr code should have it).
-> 
-> Is a timer better than an interrupt? I'm pretty sure the vblank
-> interrupts still can fire on Rockchip CRTC (VOP) (see also the other
-> branch of this thread), so this isn't really necessary. (IGT vblank
-> tests pass without hanging.) Unless you simply prefer a fake timer for
-> some reason.
-> 
-> Also, I still haven't found that fake timer machinery, but maybe I just
-> don't know what I'm looking for.
+> I think new proposal from me is to just respin this patch here with our
+> discussion all summarized (it's good to record this stuff for the next
+> person that comes around), and the WARN_ON adjusted so it also checks that
+> vblank interrupts keep working (per the ret value at least, it's not a
+> real functional check). And call that good enough.
 
-I ... didn't find it either. I'm honestly not sure whether this works for
-intel, or whether we do something silly like disable self-refresh when a
-vblank interrupt is pending :-/
- 
-> > - I think kunit tests for this all would be really good, it's a rather
-> >   complex state machinery between modesets and vblank functionality. You
-> >   can speed up the kunit tests with some really high refresh rate, which
-> >   isn't possible on real hw.
-> 
-> Last time I tried my hand at kunit in a subsystem with no prior kunit
-> tests, I had a miserable time and gave up. At least DRM has a few
-> already, so maybe this wouldn't be as terrible. Perhaps I can give this
-> a shot, but there's a chance this will kick things to the back burner
-> far enough that I simply don't get around to it at all. (So far, I'm
-> only addressing this because KernelCI complained.)
+Sounds good. I'll try to summarize without immortalizing too much of my
+ignorance ;)
 
-Nah if we dont solve this in a generic way then we don't need kunit to
-make sure it keeps working.
+And thanks for your thoughts.
 
-> > I'm also wondering why we've had this code for years and only hit issues
-> > now?
-> 
-> I'd guess a few reasons:
-> 1. drm_self_refresh_helper_init() is only used by one driver -- Rockchip
-> 2. Rockchip systems are most commonly either Chromebooks, or else
->    otherwise cheap embedded things, and may not have displays at all,
->    let alone displays with PSR
-> 3. Rockchip Chromebooks shipped with a kernel forked off of the earlier
->    PSR support, before everything got refactored (and vblank handling
->    regressed) for the self-refresh "helpers". They only upgraded to a
->    newer upstream kernel within the last few months.
-> 4. AFAICT, ChromeOS user space doesn't even exercise the vblank-related
->    ioctls, so we don't actually notice that this is "broken". I suppose
->    it would only be IGT tests that notice.
-> 5. I fixed up various upstream PSR bugs are part of #3 [0],
->    along the way I unborked PSR enough that KernelCI finally caught the
->    bug. See my explanation in [1] for why the vblank bug was masked, and
->    appeared to be a "regression" due to my more recent fixes.
+> Also maybe look into switching from wait_for_vblanks to
+> wait_for_flip_done, it's the right thing to do (see kerneldoc, it should
+> explain things a bit).
 
-Yeah I thought we had more drivers using self-refresh helpers, bot that's
-not the case :-/
+I've read some, and will probably reread a few more times. And I left
+one question above.
 
-I think new proposal from me is to just respin this patch here with our
-discussion all summarized (it's good to record this stuff for the next
-person that comes around), and the WARN_ON adjusted so it also checks that
-vblank interrupts keep working (per the ret value at least, it's not a
-real functional check). And call that good enough.
-
-Also maybe look into switching from wait_for_vblanks to
-wait_for_flip_done, it's the right thing to do (see kerneldoc, it should
-explain things a bit).
--Daniel
-
-
-> 
-> Brian
-> 
-> [0] Combined with point #2: ChromeOS would be the first serious users of
->     the refactored PSR support. All this was needed to make it actually
->     usable:
-> 
->     (2021) c4c6ef229593 drm/bridge: analogix_dp: Make PSR-exit block less
->     (2022) ca871659ec16 drm/bridge: analogix_dp: Support PSR-exit to disable transition <--- KernelCI "blamed" this one, because PSR was less broken
->     (2022) e54a4424925a drm/atomic: Force bridge self-refresh-exit on CRTC switch
-> 
-> [1] https://lore.kernel.org/dri-devel/Y6OCg9BPnJvimQLT@google.com/
-> Re: renesas/master bisection: igt-kms-rockchip.kms_vblank.pipe-A-wait-forked on rk3399-gru-kevin
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
