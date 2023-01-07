@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8CABC54EBD
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jan 2023 01:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3BD8C54EBD
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jan 2023 01:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wHO6swJoN6SpgNDBl3wFvD7yDr4GKfavOmYUXejGUpw=; b=USR6AkfMnip5L8
-	txzwe5uE/kcKcg985YRz9OralzRmQ1NvT4MOE4f9cqnpBqRmybCvJURp4mUkyr3yZjgCDxXnRg7N2
-	ByAPR/L9Z3V/a+hVW4RghvPaNsPgi/wVcUUYJG6q7Per/HavannInw2dCUqEDtsHwQc85nBQwyiK9
-	ATrAemBtLvguiVpNQ8o3cNlHdbnP9RVp4H64m0t3NXHiGeJ1XWk4Owj6luNDc6zW+S1Z5yGBKVyBu
-	LYOH7kIHtWIRnP42W4utxcGHyhGOqRBa9ffMYxV4UDQJKbd/k03gP1KHcyY5/J7z5XJPAntXldoRo
-	y1bEGPN1VfGHiIDA4GhA==;
+	List-Owner; bh=Bgjyv3Zx3jjm8PCXnuU3Uvm5Ww689yV4r50bUOmDQhc=; b=0AGODEE/W7yecE
+	lLn59sHlIpZOJc/k9PyAn/2zbIjF+SVw8Q4qgrWvu34gPxYyedOj4CspgvpwfTMSmknUu2kT5NEum
+	ss7NOhgSbjXMSobQghr8WWFvL7r8JIchrPCu2CuCLV1t0kLUJ8cbwmDa5DTF1PHMKCyk3UpoNJh1q
+	mWiFn9rMgzYnMMuqBjaj5wNZgUGO+CbTBWv0T8jdDz6w4jrjygDgglyjS2OM6vrUNQXefcHIdvIhy
+	QUun8sA5zLTJaru8BueB7Tn9l9ODFkpgTYEcU72IkCa2aBMOATTkUGAOUfZsXbxjIZpM3oHDdGRwg
+	RwUw1sneZFWnMri/smCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDxto-00GGPI-1h; Sat, 07 Jan 2023 01:21:28 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1pDxwH-00GHCr-TO; Sat, 07 Jan 2023 01:24:01 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDxtl-00GGMy-5K
-	for linux-rockchip@lists.infradead.org; Sat, 07 Jan 2023 01:21:26 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id w4-20020a17090ac98400b002186f5d7a4cso7048182pjt.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jan 2023 17:21:23 -0800 (PST)
+	id 1pDxwE-00GHAT-JB
+	for linux-rockchip@lists.infradead.org; Sat, 07 Jan 2023 01:24:00 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id o21so3216486pjw.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jan 2023 17:23:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=fGp7XQc2VGbBDxiW6oPsPSq8rd+Pp+GUF89FSmtguMY=;
-        b=ctHCqkF8lWWCEMvSMP9SB71dYd2YSRUg9u4uNjoTKAZOuhG9kNvAcXTqwBn8Pl6rDm
-         o/rzUuIRcux5YaDdSV5Ygdm16fu+ymgygpIhROQBk1CdYiXLc6BAV0oHyT4CP24tQoAP
-         BJLKuFdc8n/R4v9FAHU85MgPACIAHu0IsRGws=
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Fqc+kkMFie/fztyQhVGKblB/deI6poCZbFpfQY0gQ5M=;
+        b=T58kzIf5KVpaNXEtW9T33Mo50vYqvco1twQmTAboyo/KCu3tpXXPxRX3is2nRboBkK
+         IFmSrS0lC/MbF3+tyDud6LC3NdPNHNDld4SpKQ/1bF5KEgQ1Cd/Puai5wuLafJcGw5hQ
+         Xu6lrgspDIHnr68pABxoI/C7OTjXX4iVHNjOg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fGp7XQc2VGbBDxiW6oPsPSq8rd+Pp+GUF89FSmtguMY=;
-        b=2rSH8LOgMVS+lpGMTNC4FXYoaajh2yyReO7p0PZuZuCNSMkpXI8OFpuUffo7jX5aAk
-         7iIsUxY4lxSxk1zKPNNX7o9nr/alHQM80zlxTb16VKzFCcmZs8tVaUbEagh04UbWBOgE
-         rSTohBah0VLKGi4uK0V6X+e8KjrnKwTbWXdeA8VeDGvqBfQj+upSmPEt/ODEHKxxuzQ0
-         mp9XFzsQRpda2yqlrEvAtw2dgJdIte7i8XAxgY7ZqffzwOEBqIpUF+pK/hUELT/6Iux3
-         0O7iwcdOjVGe93e0IdGiibmqXb4U7T9wigOzuP9bH1OxEMwTmGeJkVs5/YZgbZjDyDSl
-         ankw==
-X-Gm-Message-State: AFqh2kr7cW0deBXq215coXnKAvlwy+XqSq4PkOaxIVnhvTxxINbWKYUJ
-	aAqXyMGjRoYhb0glYYcdO7VznQ==
-X-Google-Smtp-Source: AMrXdXucd5QiL3Gpmu1dQs5wApEskRuwAtx0qubwZvtkLbZyghXUapggu1smjFX+LjoGpUNSoGZhlw==
-X-Received: by 2002:a17:902:e354:b0:192:6aa8:e3d8 with SMTP id p20-20020a170902e35400b001926aa8e3d8mr46653793plc.28.1673054482918;
-        Fri, 06 Jan 2023 17:21:22 -0800 (PST)
-Received: from google.com ([2620:15c:9d:2:bc4e:2cc9:68b3:15dc])
-        by smtp.gmail.com with ESMTPSA id m7-20020a170902db0700b00192b0a07891sm1545055plx.101.2023.01.06.17.21.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Jan 2023 17:21:22 -0800 (PST)
-Date: Fri, 6 Jan 2023 17:21:19 -0800
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Fqc+kkMFie/fztyQhVGKblB/deI6poCZbFpfQY0gQ5M=;
+        b=NdY1Hp80bqFkbZGnCs1XtHa3v80rhMV4ZNlNYsfhiPK51JGRn7zWQ8zqZ55YOLijL3
+         /tntBf8N9cIuzQEBq+IdhgkkE1HyRg/90+mpCmKvgSG509cIhdfDQJRv+GWqJ55qDh9q
+         X2op+8XtG8xLCbQU74QBwLnuW34/7fN2+MUkCWyJSXtCFDUfyci8Pj6Je5Z33bCSv3Fo
+         ykHtSN7t1xsKDCGMuu+nPQOYNX+DA+TmesA674enNTZ0xcg2FvEZAIglpaDMGomgCWmw
+         O6m3jwCQ6Ot1U91d1n0tTLYjnAGrdWXRnhQBMhZWdKlWltV7WSoOxlv7rec9CXEqJrGe
+         I0Iw==
+X-Gm-Message-State: AFqh2kpwT0vYrMKMQYTd2bUM9aFUq6hJBl4CehYBYioSqKsb5KRvZ6mP
+	r8EtNlQYsJFM4EqjW1HmiyBrXQ==
+X-Google-Smtp-Source: AMrXdXvm4NOW/ltnbwyEvzMNORkJ0sSf/IJ/q3eNi+aIWeAhDUuIo1PyIhxCieNcGFJa22JoQ5TygQ==
+X-Received: by 2002:a17:902:ee13:b0:189:13df:9d86 with SMTP id z19-20020a170902ee1300b0018913df9d86mr65902309plb.14.1673054636979;
+        Fri, 06 Jan 2023 17:23:56 -0800 (PST)
+Received: from localhost ([2620:15c:9d:2:bc4e:2cc9:68b3:15dc])
+        by smtp.gmail.com with UTF8SMTPSA id cp12-20020a170902e78c00b0019276616eb0sm1569183plb.83.2023.01.06.17.23.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 06 Jan 2023 17:23:56 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
-To: Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sean Paul <seanpaul@chromium.org>,
-	"kernelci.org bot" <bot@kernelci.org>, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH 2/2] drm/rockchip: vop: Leave vblank enabled in
- self-refresh
-Message-ID: <Y7jJDw4RcNceyLbR@google.com>
-References: <20230105174001.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
- <20230105174001.2.Ic07cba4ab9a7bd3618a9e4258b8f92ea7d10ae5a@changeid>
- <9455bc5b-2074-4f48-71a7-5c816ee19a78@mailbox.org>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Sean Paul <seanpaul@chromium.org>
+Cc: =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer@mailbox.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>,
+	stable@vger.kernel.org,
+	"kernelci.org bot" <bot@kernelci.org>
+Subject: [PATCH v2 2/2] drm/rockchip: vop: Leave vblank enabled in self-refresh
+Date: Fri,  6 Jan 2023 17:23:23 -0800
+Message-Id: <20230106172310.v2.2.Ic07cba4ab9a7bd3618a9e4258b8f92ea7d10ae5a@changeid>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
+In-Reply-To: <20230106172310.v2.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
+References: <20230106172310.v2.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9455bc5b-2074-4f48-71a7-5c816ee19a78@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_172125_254293_000C98DC 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20230106_172358_652798_A0C95C80 
+X-CRM114-Status: GOOD (  18.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,63 +90,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 06, 2023 at 12:42:54PM +0100, Michel D=E4nzer wrote:
-> On 1/6/23 02:40, Brian Norris wrote:
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -719,11 +719,11 @@ static void vop_crtc_atomic_disable(struct drm_cr=
-tc *crtc,
-> >  =
+If we disable vblank when entering self-refresh, vblank APIs (like
+DRM_IOCTL_WAIT_VBLANK) no longer work. But user space is not aware when
+we enter self-refresh, so this appears to be an API violation -- that
+DRM_IOCTL_WAIT_VBLANK fails with EINVAL whenever the display is idle and
+enters self-refresh.
 
-> >  	mutex_lock(&vop->vop_lock);
-> >  =
+The downstream driver used by many of these systems never used to
+disable vblank for PSR, and in fact, even upstream, we didn't do that
+until radically redesigning the state machine in commit 6c836d965bad
+("drm/rockchip: Use the helpers for PSR").
 
-> > -	drm_crtc_vblank_off(crtc);
-> > -
-> >  	if (crtc->state->self_refresh_active)
-> >  		goto out;
-> >  =
+Thus, it seems like a reasonable API fix to simply restore that
+behavior, and leave vblank enabled.
 
-> > +	drm_crtc_vblank_off(crtc);
-> > +
-> >  	/*
-> >  	 * Vop standby will take effect at end of current frame,
-> >  	 * if dsp hold valid irq happen, it means standby complete.
-> =
+Note that this appears to potentially unbalance the
+drm_crtc_vblank_{off,on}() calls in some cases, but:
+(a) drm_crtc_vblank_on() documents this as OK and
+(b) if I do the naive balancing, I find state machine issues such that
+    we're not in sync properly; so it's easier to take advantage of (a).
 
-> The out label immediately unlocks vop->vop_lock again, seems a bit pointl=
-ess. :)
+This issue was exposed by IGT's kms_vblank tests, and reported by
+KernelCI.
 
-Oops, of course. Will change that in v2.
+Backporting notes:
+Marking as 'Fixes' commit 6c836d965bad ("drm/rockchip: Use the helpers
+for PSR"), but it probably depends on commit bed030a49f3e
+("drm/rockchip: Don't fully disable vop on self refresh") as well.
 
-> AFAICT the self_refresh_active case should just return immediately,
-> the out label would also send any pending atomic commit completion
-> event, which seems wrong now that the vblank interrupt is left
-> enabled.
+We also need the previous patch ("drm/atomic: Allow vblank-enabled +
+self-refresh "disable""), of course.
 
-If I return immediately and drop that completion, I hit a warning:
+v2:
+ * skip unnecessary lock/unlock
 
-[    4.423876] WARNING: CPU: 5 PID: 58 at drivers/gpu/drm/drm_atomic_helper=
-.c:2460 drm_atomic_helper_commit_hw_done+0xe0/0xe8
-...
-[    4.424036] Call trace:
-[    4.424039]  drm_atomic_helper_commit_hw_done+0xe0/0xe8
-[    4.424045]  drm_atomic_helper_commit_tail_rpm+0x58/0x7c
-...
+Fixes: 6c836d965bad ("drm/rockchip: Use the helpers for PSR")
+Cc: <stable@vger.kernel.org>
+Link: https://lore.kernel.org/dri-devel/Y5itf0+yNIQa6fU4@sirena.org.uk/
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-I plan to leave it as-is for v2.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index fa1f4ee6d195..9fea03121247 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -717,13 +717,13 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
+ 	if (crtc->state->self_refresh_active)
+ 		rockchip_drm_set_win_enabled(crtc, false);
+ 
++	if (crtc->state->self_refresh_active)
++		goto out;
++
+ 	mutex_lock(&vop->vop_lock);
+ 
+ 	drm_crtc_vblank_off(crtc);
+ 
+-	if (crtc->state->self_refresh_active)
+-		goto out;
+-
+ 	/*
+ 	 * Vop standby will take effect at end of current frame,
+ 	 * if dsp hold valid irq happen, it means standby complete.
+@@ -757,9 +757,9 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
+ 	vop_core_clks_disable(vop);
+ 	pm_runtime_put(vop->dev);
+ 
+-out:
+ 	mutex_unlock(&vop->vop_lock);
+ 
++out:
+ 	if (crtc->state->event && !crtc->state->active) {
+ 		spin_lock_irq(&crtc->dev->event_lock);
+ 		drm_crtc_send_vblank_event(crtc, crtc->state->event);
+-- 
+2.39.0.314.g84b9a713c41-goog
 
-> (I also wonder if drm_crtc_vblank_off doesn't take care of
-> that already, at least amdgpu doesn't do this explicitly AFAICT)
-
-I'm not sure.
-
-Brian
 
 _______________________________________________
 Linux-rockchip mailing list
