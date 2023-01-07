@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AC3EC46467
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jan 2023 12:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2CB2C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jan 2023 12:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vNaCMFrxCEe5FyuKgj7hnu/hOKe9zUVnTNQlEx6QqcQ=; b=ociNVHo+jrGDC7
-	aVnfwLdSLwDYIx54f3zltTkbroXgq3kK33b9AavF6PbFHYixyfuDXdxcN+eJeLozzRwYtb8dHavoT
-	woIpIf8LJRI79IADhdnzZVJkeDkav/3k77RSsT39gJnv594yzQ1eZ/MGHnPHdFu5kZ0GqSWZCAWCG
-	1G/MY7MVdf2DNTkLC23yjsz5YdWRyZG4QFpus1SLeZA1NgJV8qcW/ynixAJDvvCEzLzL1yGaV2q9o
-	/RhYGSVcmBDTRgOKPeB7EHBLcl2knG+u7p0oTQBXP9jUkdMGaB+dNc/gBy8sPZywYecHQP9prymvQ
-	KxEwR987L5RBCFSASifw==;
+	List-Owner; bh=zAnQQScM3xGheYuJrQ1iHmVq9Ya4zV3nupAAMvZ2VcY=; b=reQPdmluCcRhXz
+	pjOTEbJlevey5JBYFPc5y/XerEfCh0Y+muQueRj4Upm5hCTJySlTFzKMoMLaNj+2t5Tw2/nv+jECX
+	3xqkHoY0+3bI6hIywyqGYQm/f9WWDxyfINTjZ2Y3b+CyysLVAqgwBnnyqEkxNSMvtS7DPIoeNPQWN
+	LTkfyeDnhDmWGFaLQbWA7Cbyb2trff4UClRRw/OQg5p6iv3MiaT4PBFt39kP8K0j/LkNKwoQiEGgz
+	Fm0AxhVK/NaJyYtj/aX+R2k4lbHSfuqsznxx/xfFSIpdD3nBdbxjbYZWc9b0YnGIzPeOpqN9SWyrd
+	3V9J0TsFBuf02mrnEMDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pE7xp-004gSx-7d; Sat, 07 Jan 2023 12:06:17 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pE8fb-004ylW-BR; Sat, 07 Jan 2023 12:51:31 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pE7xc-004gMb-IS
-	for linux-rockchip@lists.infradead.org; Sat, 07 Jan 2023 12:06:09 +0000
-Received: by mail-wm1-x335.google.com with SMTP id g10so2763868wmo.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 07 Jan 2023 04:06:02 -0800 (PST)
+	id 1pE8fY-004yiu-My
+	for linux-rockchip@lists.infradead.org; Sat, 07 Jan 2023 12:51:30 +0000
+Received: by mail-wm1-x336.google.com with SMTP id ay2-20020a05600c1e0200b003d22e3e796dso2871257wmb.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 07 Jan 2023 04:51:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZLjHqFbROXlE+sbQ3Mi0YQwdit1/ACHkltZB2eIp6ZY=;
-        b=VZ5LC/sHAOIR5huRKj2y+0d40HWTG5UTtD8WCG8STyZQlXt4fYxcz2D61c7EiDK6+x
-         1iq1BqhEjdpRL68bguKTkMX/H/fNo0BFSKZA5L7Sh7kAEIsM4f9s77WkVIFxDZOxdX4p
-         yh1QQk2Nn0mdoUl0yg72fRnItYVKI0RJ5/Pmc=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6kmoQ/u+G9G8zOvmN8BbgXLEcMlL+8PUMUot4O7oTYU=;
+        b=dknDOhZiOZx6N8mxrLxmzfEGaVB/HnbxjqdFLw5Hh5lat8whsxNiUpbrXJZ/QpNuZB
+         qxj8EEWJevM9ZkMVPw+waMFv57StmKbYPk4Y56hgENFawyjqMFfRepcGBA4wa2kHiZ/h
+         nAXHcCudu/yMVDIzK3pSaZsHrswTHjIGjy+CWstzt05koUq9ojtEFJMtspNz0AN0H6xs
+         864Z5C/7YNZDXaUED4BNaxlPiHWVbh2MC2qxeCwk67RDvpqSJQPQrthlwkbV6LbQtt6H
+         1v4mRqOJS/SiOdb8OAQDaehKloUKa4AKZtgNc+52YOo60MV+ykMlbEoyFkWxF3BPe4T2
+         uDCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZLjHqFbROXlE+sbQ3Mi0YQwdit1/ACHkltZB2eIp6ZY=;
-        b=02P852PryqusYeoVCb78SCNd0cEEjHVcy7lu0VX8A0Bp8P8oCcf2IBCFXYDzvvqoMr
-         VBjdISAWXXfUE6Is9lUNHKKimOJZle5nH4Tk6GTJdDIAKq5oxo8cmQPNgnaiPzSRki+Q
-         /iHJXxYRdnjllCWAruCENsaKhc8KDxG1jrz+LpvVNmeAuB48QhMIVoT99JK/Qn0yDEMH
-         d5WulJ1021DpsA1KuqoPkvp3gV6LljdZ/1IgThdoDcW9f/f8UY/8FtkoLgMb8gvN+RdS
-         VO1GnV7I0ReTrRyD5HShWIh/KZ7hsT/yMlgx3pBT2G4jQPWhuY6OPfgbHgU41BeOLScA
-         Pq0A==
-X-Gm-Message-State: AFqh2kqTMBpuosEi2F1lK0RcaxjY6PUbx+rGgJEarvw1etZbby1BorLZ
-	njF4M1YclRbKjzFyanflrcy81g==
-X-Google-Smtp-Source: AMrXdXvG2OKBklPVU/w7yJTB6p28qUxxhsgOsf2xdlo6IBSDgcIEZZbPsf9QYXqEN76wJsjC57mQNQ==
-X-Received: by 2002:a7b:ca4f:0:b0:3c6:edc0:5170 with SMTP id m15-20020a7bca4f000000b003c6edc05170mr40747291wml.25.1673093160874;
-        Sat, 07 Jan 2023 04:06:00 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id o9-20020a05600c510900b003c6f8d30e40sm10842896wms.31.2023.01.07.04.05.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Jan 2023 04:05:59 -0800 (PST)
-Date: Sat, 7 Jan 2023 13:05:57 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Daniel Vetter <daniel@ffwll.ch>, Sean Paul <seanpaul@chromium.org>,
-	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] drm/atomic: Allow vblank-enabled + self-refresh
- "disable"
-Message-ID: <Y7lgJVP7hVtHpWTB@phenom.ffwll.local>
-Mail-Followup-To: Brian Norris <briannorris@chromium.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sean Paul <seanpaul@chromium.org>,
-	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org
-References: <20230106172310.v2.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
- <CA+ASDXNBDkzz_xRDbE9gNZZN5kSfxksh0EN01_CxNgyog_BZOg@mail.gmail.com>
+        bh=6kmoQ/u+G9G8zOvmN8BbgXLEcMlL+8PUMUot4O7oTYU=;
+        b=wvHbvMbKnVKlH4RuT9xJe9GT6+hQHOVhzIE5kAY7dIEHRar4cdOxPc+oOVvpJMMmny
+         iT8FDvuY0QXVG2fK9Mzio+ywjY97SDLlD5rbKu+hY32KsfErz45OfiPA3EqONuWEAotE
+         hza8UYaU+aInQBfm/XZINGC5lya0t6XK2L/Q272PJGRCIXP5MD2gLxO+wkKomRlkeuZv
+         la/kGa56AwIzeA9U9e8vcS5/u9GG+FhGeyeSRixF+XkuMUihFXwoXc2l2EaNlVgX1Y2Q
+         PIcQtoVFQC3QKw/PSW3hpRlGFArWHZuLP6A6t6reM8Z4TdXPBoi2ddCH+1qqnSktCUmZ
+         guCA==
+X-Gm-Message-State: AFqh2kqDZz0bX/J0PqLS79PfypgZfSqXdkRaB3ZcfhK0KJ99fJlU2P7B
+	jKotSccDpf5d2fsOuFIKx+kh+Q==
+X-Google-Smtp-Source: AMrXdXtsspADlUPwT3zNqefHd0aEud7EVXUZY6ZyOJcd15kj/Gbaw0+SfMbh9vvJtXz+AvbtR6APXQ==
+X-Received: by 2002:a7b:cb8a:0:b0:3d2:7e0:3d51 with SMTP id m10-20020a7bcb8a000000b003d207e03d51mr44260530wmi.17.1673095885793;
+        Sat, 07 Jan 2023 04:51:25 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id h8-20020a05600c350800b003d990372dd5sm10691037wmq.20.2023.01.07.04.51.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 07 Jan 2023 04:51:25 -0800 (PST)
+Message-ID: <2b2abd3f-469b-91ff-12ed-c8422c50ba6f@linaro.org>
+Date: Sat, 7 Jan 2023 13:51:23 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+ASDXNBDkzz_xRDbE9gNZZN5kSfxksh0EN01_CxNgyog_BZOg@mail.gmail.com>
-X-Operating-System: Linux phenom 5.19.0-2-amd64 
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add EmbedFire LubanCat 2
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: lasstp5011@gmail.com
+References: <20230107115159.2125308-1-andyshrk@163.com>
+ <20230107115221.2125368-1-andyshrk@163.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230107115221.2125368-1-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230107_040604_656362_B637F5E8 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20230107_045128_787025_D1A36900 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,26 +95,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 06, 2023 at 05:27:33PM -0800, Brian Norris wrote:
-> On Fri, Jan 6, 2023 at 5:23 PM Brian Norris <briannorris@chromium.org> wrote:
-> > v2:
-> >  * add 'ret != 0' warning case for self-refresh
-> >  * describe failing test case and relation to drm/rockchip patch better
+On 07/01/2023 12:52, Andy Yan wrote:
+> Add EmbedFire LubanCat 2>
+> Signed-off-by: Andy Yan <andyshrk@163.com>
 > 
-> Ugh, there's always something you remember right after you hit send: I
-> forgot to better summarize some of the other discussion from v1, and
-> alternatives we didn't entertain. I'll write that up now (not sure
-> whether in patch 1 or 2) and plan on sending a v3 for next week, in
-> case there are any other comments I should address at the same time.
+> ---
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 058ed707f3cd..870c32f8574b 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -100,6 +100,12 @@ properties:
+>            - const: embedfire,lubancat-1
+>            - const: rockchip,rk3566
+>  
+> +      - description: EmbedFire LubanCat 2
+> +        items:
+> +          - const: embedfire,lubancat-2
+> +          - const: rockchip,rk3568
+> +
+> +
 
-For me it needs to be in the helper patch, since anyone not doing rockchip
-work will otherwise never find it. But you can also duplicate the
-discussion summary into the 2nd patch, doesn't really hurt.
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Only one blank line.
+With above:
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+>        - description: Engicam PX30.Core C.TOUCH 2.0
+>          items:
+>            - const: engicam,px30-core-ctouch2
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
