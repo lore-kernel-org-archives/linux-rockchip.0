@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DBBC54EBD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jan 2023 14:27:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1372C54EBD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jan 2023 15:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z2HZcrh8AcGxpzWh1qBaD8ReoWz/oDxK3dGFLHSv1dw=; b=Ua1sIPlx8UbZ81
-	1CcNEEOPncGW3UsVs2CAo73E2NXHxY6Ok0qBIpG7ZUSg7QLYWempVp1V/U1WCSz6gIALUypLtzaEV
-	FEjncbxGDNIqOKltb6tbYECeCjtv/32RioSS4uJMnLYT7AiQdVJBx+vIeIKX+sy+c5xNlKzdgmche
-	6hjCL3ARDBvvsiujf58+Nrplkmo35ziOPDzUKg2Z1RtI0qATRycommQHQvRP3IpL0K7AOR52JD/92
-	mZ7CHpxRtE4kUXSZhLPyIWzAGrImpczo6DwoLiJR8DCzPIACs2ifJnJImjMYyurzuwxzIbpt/+C7u
-	0coKJ7aFzDR2w63pMOVg==;
+	List-Owner; bh=rM5lRy2Phx9vlkSmNkL2Zlht8sZHWYBVnGrva5g3F50=; b=hGGQXTpCDurur2
+	0bbwnI1PY4qrjlzkt4CWnupFSDheCha++wOnkpmyUwss0WLhAXhdpIPIQBiCH8XqUcpBO3a+f2WNq
+	ZjqbhQa/1gKHg8Bmhee9z9pIysnEuCfkRETS20zcYOT0lVgnkcXo91LEiofave2apdsR97lOgcPgx
+	F5LgS2Bz09c71RuPVMtNYhiicIifzf+DhrnQBTzonobxyx6mySQa9Mh0oUdwbAh3ZataMOUOw2Yny
+	m7NVm2DuaIx+6RZJSNscovE6sH/avO5Up9h9PPk8wRTyzwj70uw96KugJK5nXnNxsHZoqeRUkQWqg
+	TNIU4iJze36tCLEyN5+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEt7d-001xkF-A6; Mon, 09 Jan 2023 14:27:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pEuXN-002RMs-1D; Mon, 09 Jan 2023 15:58:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEt7Z-001xfE-HZ
-	for linux-rockchip@lists.infradead.org; Mon, 09 Jan 2023 14:27:31 +0000
-Received: from [IPv6:2a00:23c7:6883:e501:e3dd:1a86:446f:7abf] (unknown [IPv6:2a00:23c7:6883:e501:e3dd:1a86:446f:7abf])
+	id 1pEuXJ-002RJN-3B
+	for linux-rockchip@lists.infradead.org; Mon, 09 Jan 2023 15:58:10 +0000
+Received: from jupiter.universe (dyndsl-037-138-188-006.ewe-ip-backbone.de [37.138.188.6])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99A346602D66;
-	Mon,  9 Jan 2023 14:27:23 +0000 (GMT)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C65006602B2C;
+	Mon,  9 Jan 2023 15:58:05 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673274443;
-	bh=tLNThKqZUB1DNyTWYvgWqdVsU5kyJKEgZq9b9ugHPaA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=RPNXhDRfX1c2Bi9mrDKcZzUiviQA60XpYEFXb9IzNye4DXIZ0CjUeDsbC+DC5sjrL
-	 yWtC/7SdtOd9g9XFvthticMcdfIUncQwRotmkckYf401pvUWp3gJzsPQ1vabgDj0OQ
-	 7v2GrID0HB/EQjrZh2ACUjmdfAaGBY8+eIliQsq8gHBWtm2yDh6ML2m3Kr0gaRNEaq
-	 pnQ87S1B3xnrIAHl5MvNTfEzrAQ/baWVJZer49Y3XwqZkK4Dz6bpQgZTDH90Ed4B8a
-	 5jkzhyazihqVdwh8AYB49ch8TpbMIdratY3AO29zsWyYATaqr/FBNw1UeN7I5h8aB3
-	 xbFvePIT9gJZQ==
-Message-ID: <0a3c520c75dcfe6ff86e96aa18fc5b52ce1e3f30.camel@collabora.com>
-Subject: Re: [PATCHv6 4/7] dt-bindings: arm: rockchip: add initial rk3588
- boards
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Marc Zyngier
- <maz@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Benjamin
- Gaignard <benjamin.gaignard@collabora.com>, 
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>
-Date: Mon, 09 Jan 2023 14:27:21 +0000
-In-Reply-To: <20230107002854.2kok76qdvl4a3hzw@mercury.elektranox.org>
-References: <20221214182247.79824-1-sebastian.reichel@collabora.com>
-	 <20221214182247.79824-5-sebastian.reichel@collabora.com>
-	 <d12fc3f83ace9285f7e1153003b14bc351ce95de.camel@collabora.com>
-	 <20230107002854.2kok76qdvl4a3hzw@mercury.elektranox.org>
-User-Agent: Evolution 3.46.2-1 
+	s=mail; t=1673279885;
+	bh=tM45dWy//AwoQ+2JT8c7y1nHkHLcYN3y0Y0kpp6ErLk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Xjmj2jtXbDjf4Uw0uFYRfNJ8JmNEjTECudgd6BkwjjyWUgSsFxpwfqzciorEfwO5u
+	 NXebQCRGjvxjrQSgq4PyBqdHQjiQgjrtCWIG/pB1mQt11mtgC7iX7EcZypei3vM3yK
+	 xkskOFJzBIBsBVjscYT4Y1iucOk63QFbwExhtFmetLMNIbh1PJISLosgcMxgfXKBLo
+	 zgfhD/nGNEjlHm2cbIylHaelnwLSNhOpe0h6I/Y72Roif8HvC38GSKAWAV95KlsST/
+	 855guCmDDxXN90/AqBI1eGw2Y0c5sm2L52/m8O0xwm6emEV4W8/ZSiRLdk4qSdkAU2
+	 qfV/hjNtHjrTw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 8940348011C; Mon,  9 Jan 2023 16:58:03 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Marc Zyngier <maz@kernel.org>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCHv8 4/7] dt-bindings: arm: rockchip: add initial rk3588 boards
+Date: Mon,  9 Jan 2023 16:57:58 +0100
+Message-Id: <20230109155801.51642-5-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230109155801.51642-1-sebastian.reichel@collabora.com>
+References: <20230109155801.51642-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_062729_792156_02EB35D0 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20230109_075809_403912_380F2CF8 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,51 +86,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> 
-> 
-Hi Sebastian,
+Add DT binding documentation for the Rockchip RK3588 EVB1,
+Radxa Rock 5 Model A and B.
 
-> > To better match other boards from this vendor (e.g. RADXA ROCK 4)
-> > 
-> > would it be best to capitalise this (and obviously the model field
-> > in
-> > the respective DTS patches) the same?
-> > 
-> > So it would become "Radxa ROCK 5A" and "Radxa ROCK 5B".
-> > 
-> > It's also capitalised this way on the documentation website [1].
-> > 
-> > (I think the vendor has specifically dropped the Pi reference from
-> > these boards, but I don't know why)
-> > 
-> > Thanks!
-> > Chris
-> > 
-> > [1]: https://wiki.radxa.com/Rock5/5B
-> 
-> The current format has been requested by Radxa:
-> 
-> https://lore.kernel.org/all/892CB3E963AEF095+eaed7498-2324-9476-6a24-f940d62adb74@radxa.com/
-> 
+Co-Developed-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../devicetree/bindings/arm/rockchip.yaml         | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-The comment there suggests to use "Radxa ROCK 5 Model A" and "Radxa
-ROCK 5 Model B", so can we make the following changes before the next
-revision, to align on the model names?
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 88ff4422a8c1..0e818e309734 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -652,6 +652,16 @@ properties:
+           - const: radxa,rock3a
+           - const: rockchip,rk3568
+ 
++      - description: Radxa ROCK 5 Model A
++        items:
++          - const: radxa,rock-5a
++          - const: rockchip,rk3588s
++
++      - description: Radxa ROCK 5 Model B
++        items:
++          - const: radxa,rock-5b
++          - const: rockchip,rk3588
++
+       - description: Rikomagic MK808 v1
+         items:
+           - const: rikomagic,mk808
+@@ -736,6 +746,11 @@ properties:
+           - const: rockchip,rk3399-sapphire-excavator
+           - const: rockchip,rk3399
+ 
++      - description: Rockchip RK3588 Evaluation board
++        items:
++          - const: rockchip,rk3588-evb1-v10
++          - const: rockchip,rk3588
++
+       - description: Rockchip RV1108 Evaluation board
+         items:
+           - const: rockchip,rv1108-evb
+-- 
+2.39.0
 
-PS. I think "board" is a terrible suffix, it's almost like when people
-say "PCB Board". But maybe I am missing some historical context here ?
-
-
-- Patch 4: "description: Radxa Rock 5 Model A" > "description: Radxa
-ROCK 5 Model A"
-- Patch 4: "description: Radxa Rock 5 Model B" > "description: Radxa
-ROCK 5 Model B"
-- Patch 6: "Radxa Rock 5A Board" > "Radxa ROCK 5 Model A"
-- Patch 7: "Radxa Rock 5B Board" > "Radxa ROCK 5 Model B"
-
-
-Thanks!
-Chris
 
 _______________________________________________
 Linux-rockchip mailing list
