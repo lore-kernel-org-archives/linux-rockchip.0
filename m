@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1372C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jan 2023 15:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E99F8C5479D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jan 2023 15:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rM5lRy2Phx9vlkSmNkL2Zlht8sZHWYBVnGrva5g3F50=; b=hGGQXTpCDurur2
-	0bbwnI1PY4qrjlzkt4CWnupFSDheCha++wOnkpmyUwss0WLhAXhdpIPIQBiCH8XqUcpBO3a+f2WNq
-	ZjqbhQa/1gKHg8Bmhee9z9pIysnEuCfkRETS20zcYOT0lVgnkcXo91LEiofave2apdsR97lOgcPgx
-	F5LgS2Bz09c71RuPVMtNYhiicIifzf+DhrnQBTzonobxyx6mySQa9Mh0oUdwbAh3ZataMOUOw2Yny
-	m7NVm2DuaIx+6RZJSNscovE6sH/avO5Up9h9PPk8wRTyzwj70uw96KugJK5nXnNxsHZoqeRUkQWqg
-	TNIU4iJze36tCLEyN5+w==;
+	List-Owner; bh=No78/bX7Oyfrdtmcggr8ju7zOXrgH6V7k6amrIi49e0=; b=ydBMQHyey9lgvi
+	HHKGayXsvgdS3XbvaQm/UiboOLqGUqAdyZ96igUKe4AHpD1BuvwaJ/gHKseeXQJD504YfANfckRJl
+	D/Z5XI6qpl3kpcVlD17Pahbim7tItj9ulHkbgIG8llrjoNWFVqn0SCdXqKlIr7Sk985ji4NHcKxeU
+	nqNFjMgs3VNxnha0WydezzZa/1ILEXz2npXGQHGjNX2PAkWOS1NTLpzPALJ4/SN2NB8AKyfGxf9Jf
+	2W7+KRlPnQi7zNB80lZHv19Q0qr1eJzZJKn+CSGh1+o4oOJ1BfYnu3tviGOy+U1Ff07OKUqCqUsSe
+	oiePTHMtOzwZngCuKbnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEuXN-002RMs-1D; Mon, 09 Jan 2023 15:58:13 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pEuXR-002RPO-6f; Mon, 09 Jan 2023 15:58:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pEuXJ-002RJN-3B
-	for linux-rockchip@lists.infradead.org; Mon, 09 Jan 2023 15:58:10 +0000
+	id 1pEuXL-002RLf-UD
+	for linux-rockchip@lists.infradead.org; Mon, 09 Jan 2023 15:58:13 +0000
 Received: from jupiter.universe (dyndsl-037-138-188-006.ewe-ip-backbone.de [37.138.188.6])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C65006602B2C;
-	Mon,  9 Jan 2023 15:58:05 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 565E46602D75;
+	Mon,  9 Jan 2023 15:58:08 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673279885;
-	bh=tM45dWy//AwoQ+2JT8c7y1nHkHLcYN3y0Y0kpp6ErLk=;
+	s=mail; t=1673279888;
+	bh=Aod75PABF88FguFuDgtJL/UxZx5iDuWoEMSl5YvgmK8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Xjmj2jtXbDjf4Uw0uFYRfNJ8JmNEjTECudgd6BkwjjyWUgSsFxpwfqzciorEfwO5u
-	 NXebQCRGjvxjrQSgq4PyBqdHQjiQgjrtCWIG/pB1mQt11mtgC7iX7EcZypei3vM3yK
-	 xkskOFJzBIBsBVjscYT4Y1iucOk63QFbwExhtFmetLMNIbh1PJISLosgcMxgfXKBLo
-	 zgfhD/nGNEjlHm2cbIylHaelnwLSNhOpe0h6I/Y72Roif8HvC38GSKAWAV95KlsST/
-	 855guCmDDxXN90/AqBI1eGw2Y0c5sm2L52/m8O0xwm6emEV4W8/ZSiRLdk4qSdkAU2
-	 qfV/hjNtHjrTw==
+	b=Xqr2GHPBK2xv6ccpILHlhMXqPRvaGMstVc7xFeTiLabw5G0mPYxwIfkH5UjtMxmXN
+	 dNcdB4n2/ZV8Sbfi5jmw2Dyr/sulLNZ4lNs/SUvgD2CSGZ3OxUMHCMarEhrJBXYNl/
+	 rFuvI9aUKr9rmTqDJRinsJT94ntQasy1r4wo2rN/aI78FQOPuo6opDgJ0DuT5Aj7s0
+	 8l1pnl7A5d/4tdnSwEdLWd9ve5ut9vupOa9kxiUdaCuNDLthUgXvBBzOOxUdu5D2b3
+	 uDsnLR2l0f9wkjRovbubV3IH0CENO1kj2EQbMku92+4tGfUpVIlKdNzu+wFc3fsBKT
+	 aWO3loxF7+P8A==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8940348011C; Mon,  9 Jan 2023 16:58:03 +0100 (CET)
+	id 8F4E648011F; Mon,  9 Jan 2023 16:58:03 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -56,20 +56,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCHv8 4/7] dt-bindings: arm: rockchip: add initial rk3588 boards
-Date: Mon,  9 Jan 2023 16:57:58 +0100
-Message-Id: <20230109155801.51642-5-sebastian.reichel@collabora.com>
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv8 7/7] arm64: dts: rockchip: Add rock-5b board
+Date: Mon,  9 Jan 2023 16:58:01 +0100
+Message-Id: <20230109155801.51642-8-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230109155801.51642-1-sebastian.reichel@collabora.com>
 References: <20230109155801.51642-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_075809_403912_380F2CF8 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230109_075812_185866_75D5C791 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,50 +85,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DT binding documentation for the Rockchip RK3588 EVB1,
-Radxa Rock 5 Model A and B.
+From: Christopher Obbard <chris.obbard@collabora.com>
 
-Co-Developed-by: Christopher Obbard <chris.obbard@collabora.com>
+Add board file for the RK3588 Rock 5B board. This is a basic
+implementation which just brings up the eMMC and UART which is
+enough to successfully boot Linux.
+
+The ethernet controller is connected via PCIe so support will
+come in a follow-up patch.
+
 Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/arm/rockchip.yaml         | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      | 44 +++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 88ff4422a8c1..0e818e309734 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -652,6 +652,16 @@ properties:
-           - const: radxa,rock3a
-           - const: rockchip,rk3568
- 
-+      - description: Radxa ROCK 5 Model A
-+        items:
-+          - const: radxa,rock-5a
-+          - const: rockchip,rk3588s
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 87a853435142..c5bdd0176ce0 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -83,4 +83,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+new file mode 100644
+index 000000000000..d2f1e963ce06
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -0,0 +1,44 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
-+      - description: Radxa ROCK 5 Model B
-+        items:
-+          - const: radxa,rock-5b
-+          - const: rockchip,rk3588
++/dts-v1/;
 +
-       - description: Rikomagic MK808 v1
-         items:
-           - const: rikomagic,mk808
-@@ -736,6 +746,11 @@ properties:
-           - const: rockchip,rk3399-sapphire-excavator
-           - const: rockchip,rk3399
- 
-+      - description: Rockchip RK3588 Evaluation board
-+        items:
-+          - const: rockchip,rk3588-evb1-v10
-+          - const: rockchip,rk3588
++#include "rk3588.dtsi"
 +
-       - description: Rockchip RV1108 Evaluation board
-         items:
-           - const: rockchip,rv1108-evb
++/ {
++	model = "Radxa ROCK 5 Model B";
++	compatible = "radxa,rock-5b", "rockchip,rk3588";
++
++	aliases {
++		mmc1 = &sdhci;
++		serial2 = &uart2;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	vcc5v0_sys: vcc5v0-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
 -- 
 2.39.0
 
