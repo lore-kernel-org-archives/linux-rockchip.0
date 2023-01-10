@@ -4,51 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA88C54EBC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 14:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76593C46467
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 14:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+cqKN05fs/kcFGBf3qE8qVO6epA7go/IIlU9NzwNQzo=; b=hHeL+1SvaOy1cN
-	TpUaoBh4G4yzyxg/TmXmnQSHVO2OBaGob3tYZ+DA495NMwKlul8CDDR+j9UH/nmuVdSXFd9QGLOz5
-	QxziBa88m7JyAtJM4QVZcC6QJY6KHBCAAmRL7tanruouiSgU1cZobrWMioUAxp9CEliQ41mDzrhrK
-	jG5Zixqeqnr925oL16tzzYltmUrBGZUazIpEkW5hMOdX9Wy5DUFi70k1+dOo+WghLjaIXGcQk7UYt
-	XHavl8YGlq00UB/cnk6phlIAXlE3PTbxyaH+zuVwdvyaDzqJnwKLudsK+2h2fVMheZiRjA9zBS+UJ
-	mb/pCBnY0WYkDQ1pjTWg==;
+	List-Owner; bh=c4BH+f+QOf34rSGqEd4L0ZvPsQ+tKSyiltW/fthCwCs=; b=SordFzkdZBURjy
+	RlTnyhSOGyspS3+rkDVQL+7PZnp6dihS16UYpxlBRNnNPK/8uuHE+QJkPmg+KTag8v8RX2pzHNTKi
+	jinSRpABzAh8uNbz9W8DNabq37k/e6uN7M8GC9YJaVIFnRaC9mtWDysDTD21GM3qOv6jSxKe1ZuOz
+	8aiXQYsCEc18Vl/PfxIpgcOuKKs8VDxsU8qJlNDbP42yapsF1tT0KyViMgJEzD0vDz0AJWFqjrDaL
+	c7SCEx03o2sGDJ1TC2x8bCq2GDcTh7bbXEoedTIO54kZF5xD5t3DzycLD9qak/Gsn3297QObTL8KP
+	EX5cRBFUgh2u/VvruNEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFFFL-007BKi-78; Tue, 10 Jan 2023 14:04:59 +0000
+	id 1pFFFo-007Bas-W8; Tue, 10 Jan 2023 14:05:29 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFFF9-007BCv-QT
-	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 14:04:49 +0000
+	id 1pFFF9-007BDT-Qf; Tue, 10 Jan 2023 14:04:50 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pFFF4-0004vx-Pt; Tue, 10 Jan 2023 15:04:42 +0100
+	id 1pFFF4-0004vx-Fp; Tue, 10 Jan 2023 15:04:42 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org
+To: linux-rockchip@lists.infradead.org,
+	Frank Wunderlich <linux@fw-web.de>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
-	maccraft123mc@gmail.com,
-	Chris Morgan <macromorgan@hotmail.com>,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org
-Subject: Re: [PATCH 0/4] Miscellaneous fixes for Odroid Go Advance
-Date: Tue, 10 Jan 2023 15:04:38 +0100
-Message-Id: <167335938207.2550251.3848668276552079564.b4-ty@sntech.de>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Alex Riabchenko <d3adme4t@gmail.com>,
+	Frank Wunderlich <frank-w@public-files.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add IR receiver to BPI-R2Pro
+Date: Tue, 10 Jan 2023 15:04:37 +0100
+Message-Id: <167335938205.2550251.6143947309802400390.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221201203655.1245-1-macroalpha82@gmail.com>
-References: <20221201203655.1245-1-macroalpha82@gmail.com>
+In-Reply-To: <20221214155433.112257-1-linux@fw-web.de>
+References: <20221214155433.112257-1-linux@fw-web.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_060447_897344_C661A257 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20230110_060447_962059_8D358A05 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,31 +68,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 1 Dec 2022 14:36:51 -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Wed, 14 Dec 2022 16:54:33 +0100, Frank Wunderlich wrote:
+> From: Alex Riabchenko <d3adme4t@gmail.com>
 > 
-> This series is for a bunch of trivial changes to the Odroid Go
-> Advance to clean up some errors in the dmesg log and make it
-> easier to support with alsa ucm.
+> Add the infrared receiver and its associated pinctrl entry.
 > 
-> Chris Morgan (4):
->   arm64: dts: rockchip: Change audio card name for Odroid Go
->   arm64: dts: rockchip: don't set cpll rate for Odroid Go
->   arm64: dts: rockchip: update px30 thermal zones for GPU
->   arm64: dts: rockchip: Update leds for Odroid Go Advance
+> Based on Aurelien Jarno's patchset:
+> https://lore.kernel.org/lkml/20220930051246.391614-14-aurelien@aurel32.net/
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] arm64: dts: rockchip: Change audio card name for Odroid Go
-      commit: 658a87efb47a85cf8205ed9280d611e9870d3e43
-[2/4] arm64: dts: rockchip: don't set cpll rate for Odroid Go
-      commit: 9b1eb739307d9769ff3eb04fa5938c03b16af09e
-[3/4] arm64: dts: rockchip: update px30 thermal zones for GPU
-      commit: 8ad9b52eea99b80e84e3a077e962ab5cf8d736a2
-[4/4] arm64: dts: rockchip: Update leds for Odroid Go Advance
-      commit: 882f6abdd411f941db822918ef76f4b03f2052fd
+[1/1] arm64: dts: rockchip: Add IR receiver to BPI-R2Pro
+      commit: 91ab5a0dcf3f6718099b894312dee2f1a235348d
 
 Best regards,
 -- 
