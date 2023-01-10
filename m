@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA11C61DB3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 20:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE69C46467
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 20:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4GG17SqRXXRrDHSkjlVLXtfpi8proW4ELECDJod9g4M=; b=o/JBR+Ko4ap13C
-	601EI5mxuJW4Lu+aPfuRZh9ZHCimzGlfAvI9537gqZmvcjh7367vq1n4jlrdwE04AIpnYz6LNJW6B
-	ERGS1FF3S4YPzi8dCXw0W7gY7yZYTYhHfVFOUAFQIeEWniWsYB+egYOQqRF+7spNy4iKC7PhajSYP
-	opZ2XeN4Ma82WOj48eTNKDCfTe0Cuvsdb8qaZhwbeUuYt9o/NRPZCpNoA3yhAr4Lfng64ZjUNF+Fa
-	+wEKVF2sVusRUPso3zLOn8S0xsaGqmy/5diXYh9xh21TwE9BLoULC2xp/ETCgdJMk3cNAzDFvwAy3
-	eEEa+6IoWtdpVgY5e/vg==;
+	List-Owner; bh=qJpM+BjxDoDFtD5x3Fh/7mwsofZfcP5M6m4s7YLABEc=; b=aquwm7CQ0EDG3c
+	Tjdeomk8aXgNt5ruIcVRKnxz+Kezb/BAZsMBWtDN7LfSZIJZ+K+Tyb4fFxehcDygKhM+OrCLRLeFS
+	TPtfY7UEUciDH9UxxMoXF5q8KPzFkH7wl6+hp9tAhDnW4Ee12JCnMnZUy7S/UWw62+o8tBtCI19vU
+	VUdkuErHbpla4MgBGZyAXAmBL0DDIz8zSwg9KthFDzCAfA/qNC1OZW45n9iixhqIJBWv+294Wdc3I
+	WtaSripn+nghN9SLx0MJFJdcrMNYTe8ItIH/oim8lPmRS9axZEfAdujXXq7le4CWBbOTB25TwG4fE
+	IHHhOi5WKJ1+BVsy1otw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKq0-008QVz-7r; Tue, 10 Jan 2023 20:03:12 +0000
-Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
+	id 1pFKq0-008QWT-W3; Tue, 10 Jan 2023 20:03:13 +0000
+Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKpv-008QSv-HS
-	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 20:03:09 +0000
-Received: by mail-oo1-xc31.google.com with SMTP id h3-20020a4aa283000000b004ead187bd6eso3502573ool.5
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 12:03:06 -0800 (PST)
+	id 1pFKpw-008QTF-Im
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 20:03:11 +0000
+Received: by mail-oo1-xc35.google.com with SMTP id t15-20020a4a96cf000000b0049f7e18db0dso3499506ooi.10
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 12:03:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
-        b=lyuDrX+JUiUXvd41LuqumERhjN0RSpIxWin21vu+wf1V0YRZkVgID+091W5ug1Vi/q
-         Qa7TPma391EC7LZEDf/LYaocyRLjZayXOMlI+VuuhPk+8ovZ56ZsXrSjA6F8KWmJavxp
-         y5gcfNraHjo9bUcEZuhWviC6v2LmKNa9dEBeBnHDeLuAj25e7k0oJYsmjiJtrgB7YPc2
-         xvKS52Io0b0TlbXjf+wXmPTzVCY4CDIWejtsn1ZcVNynKRVJKChsyLKOA/mzJ1E/cl/5
-         +SyNmOs5yS5gAbtEzq6SUE4Dq+hTOdpZ/TytODXlaIwoob1ItgiQq8FL5nROvdHeQx5U
-         tufw==
+        bh=Ug9Qalu5EQh2ykE3eLRnhG5I3plTxJnHDwIw/1EQhJ8=;
+        b=R9O3FGzGI2egRe81BxLh6Q/JSF3GQ7qc6/AgYWiOK2qSr+lLIwfBWkPlp59bFtsrg9
+         bmGFFI18F1b98zg2nHrqzGA7+4p0ekuh+A46m3zBJWAUtQtN4BGpm2uorwqWKnK01rAW
+         +FbZWzk3hGjMdIeRTexsC3BHxF5DygFVJEB/atftj5w4JmbLb8MQCXdT+CS+iSdTehBl
+         Tf6io2zzEwH9avLb45F/cLRVoQm1n2VSyeOnrbuCo4U1cIFOG+QAtUwwKOvYbmbp1t2V
+         J4BW9TY7sYgGH8nQY2tA17ZGiYIerKAjHfIJ4tZzC5jh23YrEIjRxj/WlDTLg2FcyxUZ
+         zIuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
-        b=nffihiA8fBwqy7uAgVQmVfHnhRwt1ErHHflNgp7xXUInRQaLVWsS7ODxBClLXCwbxe
-         E1epF35CVxHCHs1FSmre6JbrYqw2oiGTlUdLz0dGSQVER0u5BKaVC9DCD4LniD/vigm7
-         HZtLDioDwhvElPoEeMygrCTJ2dCUgOKsrXoUpNqU+GSyr6WItlYLvuTqnUxgPjYjJIkw
-         nYbtACsTAOceABXXDas29eBFAGDzZQDK+u9scVG3k2TxjChEa/K35/xQvYDWwc8elb2K
-         GbWK0rpXR1kFSMnSHmjAzTfqgliNnfUn+32s7oml/tnr9D8ltQjVyy1EZ4MXjP93fdOl
-         rjQQ==
-X-Gm-Message-State: AFqh2kol5pTwBTCfxCEe+zabl3wDoApTMop/CO9d2+kAsnGkZ5Y0Oot6
-	MD4lcTX8qOVlCg4rYiYDZWo=
-X-Google-Smtp-Source: AMrXdXttj8wh0ymNl53Hrx8x6W1dqMYoQv3OPum00In+oTXiJ/NIMK/j/iDobxR7iiXYnxWjf+3yDQ==
-X-Received: by 2002:a4a:97b1:0:b0:49f:dba7:5e65 with SMTP id w46-20020a4a97b1000000b0049fdba75e65mr28394714ooi.3.1673380985493;
-        Tue, 10 Jan 2023 12:03:05 -0800 (PST)
+        bh=Ug9Qalu5EQh2ykE3eLRnhG5I3plTxJnHDwIw/1EQhJ8=;
+        b=oZhxG+UQOZFsMEzYtn4/p70Qv5B/VQojYDUWS1mQ7/zSXpxSkYYb1TK19Bl2kbqd1K
+         1kjSZYrkf5zXSUy78X3uM6iLR8Z1pLP8JYx54tPBWVw/mIVF2K0Yj4qytSqeJXB/EVsF
+         XQiABh8WtcC6ZfkP8CPaJWAxpdxKdLwYG3F/mm7CpH+Q7Ot8caS6cTpYt66AG1aZ3X7P
+         DuL9iiHWwuVYXZj9Onw9sm5zULggn8edjqLjcdi8x7R2210zVAweR0txFdn7skPPXY2O
+         jay3lu8S47aSUn9MCn8ieyJCaffs+BcHI1QVnjn2+ynIoWjupQy8XR+tqtUisREH7bCJ
+         1jqg==
+X-Gm-Message-State: AFqh2ko5fmg8NdQeA+e7nOWDi8ap48PhAO/7tJT3EHZoHLOKG8du1RCi
+	VmkfyRvJg0CCXJDUp05ydLs=
+X-Google-Smtp-Source: AMrXdXv1ZFWWxlJ9+r8RetCCCpbrOon7U7KDZnmdvQjIbsone6id9rwTBgILp37xDKFME2XjnWmfvQ==
+X-Received: by 2002:a4a:e84a:0:b0:4d1:c23:3c51 with SMTP id m10-20020a4ae84a000000b004d10c233c51mr26865012oom.9.1673380986339;
+        Tue, 10 Jan 2023 12:03:06 -0800 (PST)
 Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id r4-20020a4aad04000000b004a394578e14sm6089779oon.32.2023.01.10.12.03.04
+        by smtp.gmail.com with ESMTPSA id r4-20020a4aad04000000b004a394578e14sm6089779oon.32.2023.01.10.12.03.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Jan 2023 12:03:05 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
@@ -76,18 +76,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	sam@ravnborg.org,
 	thierry.reding@gmail.com,
 	linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v8 2/4] dt-bindings: display: panel: Add Samsung AMS495QA01
-Date: Tue, 10 Jan 2023 14:02:53 -0600
-Message-Id: <20230110200255.1218738-3-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v8 3/4] drm/panel: Add Magnachip D53E6EA8966 Panel Driver
+Date: Tue, 10 Jan 2023 14:02:54 -0600
+Message-Id: <20230110200255.1218738-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230110200255.1218738-1-macroalpha82@gmail.com>
 References: <20230110200255.1218738-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_120307_600104_C87F3646 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20230110_120308_675987_D7BC7A57 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,80 +105,582 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add documentation for Samsung AMS495QA01 panel (with Magnachip
-D53E6EA8966 controller IC).
+Support Magnachip D53E6EA8966 based panels such as the Samsung
+AMS495QA01 panel as found on the Anbernic RG503. Note this driver
+supports only the AMS495QA01 today which receives video signals via DSI,
+however it receives commands via 3-wire SPI using DBI.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../display/panel/samsung,ams495qa01.yaml     | 57 +++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+ drivers/gpu/drm/panel/Kconfig                 |  11 +
+ drivers/gpu/drm/panel/Makefile                |   1 +
+ .../drm/panel/panel-magnachip-d53e6ea8966.c   | 522 ++++++++++++++++++
+ 3 files changed, 534 insertions(+)
+ create mode 100644 drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
 
-diff --git a/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+index 737edcdf9eef..204b84a83604 100644
+--- a/drivers/gpu/drm/panel/Kconfig
++++ b/drivers/gpu/drm/panel/Kconfig
+@@ -298,6 +298,17 @@ config DRM_PANEL_LG_LG4573
+ 	  Say Y here if you want to enable support for LG4573 RGB panel.
+ 	  To compile this driver as a module, choose M here.
+ 
++config DRM_PANEL_MAGNACHIP_D53E6EA8966
++	tristate "Magnachip D53E6EA8966 DSI panel"
++	depends on OF && SPI
++	depends on DRM_MIPI_DSI
++	depends on BACKLIGHT_CLASS_DEVICE
++	select DRM_MIPI_DBI
++	help
++	  DRM panel driver for the Samsung AMS495QA01 panel controlled
++	  with the Magnachip D53E6EA8966 panel IC. This panel receives
++	  video data via DSI but commands via 9-bit SPI using DBI.
++
+ config DRM_PANEL_NEC_NL8048HL11
+ 	tristate "NEC NL8048HL11 RGB panel"
+ 	depends on GPIOLIB && OF && SPI
+diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+index f8f9d9f6a307..20de312aa5e9 100644
+--- a/drivers/gpu/drm/panel/Makefile
++++ b/drivers/gpu/drm/panel/Makefile
+@@ -27,6 +27,7 @@ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK050H3146W) += panel-leadtek-ltk050h3146w.o
+ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK500HD1829) += panel-leadtek-ltk500hd1829.o
+ obj-$(CONFIG_DRM_PANEL_LG_LB035Q02) += panel-lg-lb035q02.o
+ obj-$(CONFIG_DRM_PANEL_LG_LG4573) += panel-lg-lg4573.o
++obj-$(CONFIG_DRM_PANEL_MAGNACHIP_D53E6EA8966) += panel-magnachip-d53e6ea8966.o
+ obj-$(CONFIG_DRM_PANEL_NEC_NL8048HL11) += panel-nec-nl8048hl11.o
+ obj-$(CONFIG_DRM_PANEL_NEWVISION_NV3051D) += panel-newvision-nv3051d.o
+ obj-$(CONFIG_DRM_PANEL_NEWVISION_NV3052C) += panel-newvision-nv3052c.o
+diff --git a/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c b/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
 new file mode 100644
-index 000000000000..58fa073ce258
+index 000000000000..09ee12f0a147
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
-@@ -0,0 +1,57 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/panel/samsung,ams495qa01.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
+@@ -0,0 +1,522 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Magnachip d53e6ea8966 MIPI-DSI panel driver
++ * Copyright (C) 2023 Chris Morgan
++ */
 +
-+title: Samsung AMS495QA01 panel with Magnachip D53E6EA8966 controller
++#include <drm/drm_mipi_dbi.h>
++#include <drm/drm_mipi_dsi.h>
++#include <drm/drm_modes.h>
++#include <drm/drm_of.h>
++#include <drm/drm_panel.h>
 +
-+maintainers:
-+  - Chris Morgan <macromorgan@hotmail.com>
++#include <linux/backlight.h>
++#include <linux/delay.h>
++#include <linux/gpio/consumer.h>
++#include <linux/init.h>
++#include <linux/kernel.h>
++#include <linux/media-bus-format.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_device.h>
++#include <linux/regulator/consumer.h>
++#include <linux/spi/spi.h>
 +
-+allOf:
-+  - $ref: panel-common.yaml#
++#include <video/mipi_display.h>
 +
-+properties:
-+  compatible:
-+    const: samsung,ams495qa01
++/* Forward declaration for use in backlight function */
++struct d53e6ea8966;
 +
-+  reg: true
-+  reset-gpios:
-+    description: reset gpio, must be GPIO_ACTIVE_LOW
-+  elvdd-supply:
-+    description: regulator that supplies voltage to the panel display
-+  enable-gpios: true
-+  port: true
-+  vdd-supply:
-+    description: regulator that supplies voltage to panel logic
++/* Panel info, unique to each panel */
++struct d53e6ea8966_panel_info {
++	/** @display_modes: the supported display modes */
++	const struct drm_display_mode *display_modes;
++	/** @num_modes: the number of supported display modes */
++	unsigned int num_modes;
++	/** @width_mm: panel width in mm */
++	u16 width_mm;
++	/** @height_mm: panel height in mm */
++	u16 height_mm;
++	/** @bus_flags: drm bus flags for panel */
++	u32 bus_flags;
++	/** @panel_init_seq: panel specific init sequence */
++	void (*panel_init_seq)(struct d53e6ea8966 *db);
++	/** @backlight_register: panel backlight registration or NULL */
++	int (*backlight_register)(struct d53e6ea8966 *db);
++};
 +
-+required:
-+  - compatible
-+  - reg
-+  - reset-gpios
-+  - vdd-supply
++struct d53e6ea8966 {
++	/** @dev: the container device */
++	struct device *dev;
++	/** @dbi: the DBI bus abstraction handle */
++	struct mipi_dbi dbi;
++	/** @panel: the DRM panel instance for this device */
++	struct drm_panel panel;
++	/** @reset: reset GPIO line */
++	struct gpio_desc *reset;
++	/** @enable: enable GPIO line */
++	struct gpio_desc *enable;
++	/** @reg_vdd: VDD supply regulator for panel logic */
++	struct regulator *reg_vdd;
++	/** @reg_elvdd: ELVDD supply regulator for panel display */
++	struct regulator *reg_elvdd;
++	/** @dsi_dev: DSI child device (panel) */
++	struct mipi_dsi_device *dsi_dev;
++	/** @bl_dev: pseudo-backlight device for oled panel */
++	struct backlight_device *bl_dev;
++	/** @panel_info: struct containing panel timing and info */
++	const struct d53e6ea8966_panel_info *panel_info;
++};
 +
-+additionalProperties: false
++#define NUM_GAMMA_LEVELS	16
++#define GAMMA_TABLE_COUNT	23
++#define MAX_BRIGHTNESS		(NUM_GAMMA_LEVELS - 1)
 +
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    spi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        panel@0 {
-+            compatible = "samsung,ams495qa01";
-+            reg = <0>;
-+            reset-gpios = <&gpio4 0 GPIO_ACTIVE_LOW>;
-+            vdd-supply = <&vcc_3v3>;
++#define MCS_ELVSS_ON			0xb1
++#define MCS_TEMP_SWIRE			0xb2
++#define MCS_PASSWORD_0			0xf0
++#define MCS_PASSWORD_1			0xf1
++#define MCS_ANALOG_PWR_CTL_0		0xf4
++#define MCS_ANALOG_PWR_CTL_1		0xf5
++#define MCS_GTCON_SET			0xf7
++#define MCS_GATELESS_SIGNAL_SET		0xf8
++#define MCS_SET_GAMMA			0xf9
 +
-+            port {
-+                mipi_in_panel: endpoint {
-+                  remote-endpoint = <&mipi_out_panel>;
-+                };
-+            };
-+        };
-+    };
++static inline struct d53e6ea8966 *to_d53e6ea8966(struct drm_panel *panel)
++{
++	return container_of(panel, struct d53e6ea8966, panel);
++}
 +
-+...
++/* Table of gamma values provided in datasheet */
++static u8 ams495qa01_gamma[NUM_GAMMA_LEVELS][GAMMA_TABLE_COUNT] = {
++	{0x01, 0x79, 0x78, 0x8d, 0xd9, 0xdf, 0xd5, 0xcb, 0xcf, 0xc5,
++	 0xe5, 0xe0, 0xe4, 0xdc, 0xb8, 0xd4, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x7d, 0x7c, 0x92, 0xd7, 0xdd, 0xd2, 0xcb, 0xd0, 0xc6,
++	 0xe5, 0xe1, 0xe3, 0xda, 0xbd, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x7f, 0x7e, 0x95, 0xd7, 0xde, 0xd2, 0xcb, 0xcf, 0xc5,
++	 0xe5, 0xe3, 0xe3, 0xda, 0xbf, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x82, 0x81, 0x99, 0xd6, 0xdd, 0xd1, 0xca, 0xcf, 0xc3,
++	 0xe4, 0xe3, 0xe3, 0xda, 0xc2, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x84, 0x83, 0x9b, 0xd7, 0xde, 0xd2, 0xc8, 0xce, 0xc2,
++	 0xe4, 0xe3, 0xe2, 0xd9, 0xc3, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x87, 0x86, 0x9f, 0xd6, 0xdd, 0xd1, 0xc7, 0xce, 0xc1,
++	 0xe4, 0xe3, 0xe2, 0xd9, 0xc6, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x89, 0x89, 0xa2, 0xd5, 0xdb, 0xcf, 0xc8, 0xcf, 0xc2,
++	 0xe3, 0xe3, 0xe1, 0xd9, 0xc7, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8b, 0x8b, 0xa5, 0xd5, 0xdb, 0xcf, 0xc7, 0xce, 0xc0,
++	 0xe3, 0xe3, 0xe1, 0xd8, 0xc7, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8d, 0x8d, 0xa7, 0xd5, 0xdb, 0xcf, 0xc6, 0xce, 0xc0,
++	 0xe4, 0xe4, 0xe1, 0xd7, 0xc8, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x8f, 0x8f, 0xaa, 0xd4, 0xdb, 0xce, 0xc6, 0xcd, 0xbf,
++	 0xe3, 0xe3, 0xe1, 0xd7, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x91, 0x91, 0xac, 0xd3, 0xda, 0xce, 0xc5, 0xcd, 0xbe,
++	 0xe3, 0xe3, 0xe0, 0xd7, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x93, 0x93, 0xaf, 0xd3, 0xda, 0xcd, 0xc5, 0xcd, 0xbe,
++	 0xe2, 0xe3, 0xdf, 0xd6, 0xca, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x95, 0x95, 0xb1, 0xd2, 0xd9, 0xcc, 0xc4, 0xcd, 0xbe,
++	 0xe2, 0xe3, 0xdf, 0xd7, 0xcc, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x99, 0x99, 0xb6, 0xd1, 0xd9, 0xcc, 0xc3, 0xcb, 0xbc,
++	 0xe2, 0xe4, 0xdf, 0xd6, 0xcc, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x9c, 0x9c, 0xba, 0xd0, 0xd8, 0xcb, 0xc3, 0xcb, 0xbb,
++	 0xe2, 0xe4, 0xdf, 0xd6, 0xce, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++	{0x01, 0x9f, 0x9f, 0xbe, 0xcf, 0xd7, 0xc9, 0xc2, 0xcb, 0xbb,
++	 0xe1, 0xe3, 0xde, 0xd6, 0xd0, 0xd3, 0xfa, 0xed, 0xe6, 0x2f,
++	 0x00, 0x2f},
++};
++
++/*
++ * Table of elvss values provided in datasheet and corresponds to
++ * gamma values.
++ */
++static u8 ams495qa01_elvss[NUM_GAMMA_LEVELS] = {
++	0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15,
++	0x15, 0x15, 0x14, 0x14, 0x13, 0x12,
++};
++
++static int ams495qa01_update_gamma(struct mipi_dbi *dbi, int brightness)
++{
++	int tmp = brightness;
++
++	mipi_dbi_command_buf(dbi, MCS_SET_GAMMA, ams495qa01_gamma[tmp],
++			     ARRAY_SIZE(ams495qa01_gamma[tmp]));
++	mipi_dbi_command(dbi, MCS_SET_GAMMA, 0x00);
++
++	/* Undocumented command */
++	mipi_dbi_command(dbi, 0x26, 0x00);
++
++	mipi_dbi_command(dbi, MCS_TEMP_SWIRE, ams495qa01_elvss[tmp]);
++
++	return 0;
++}
++
++static void ams495qa01_panel_init(struct d53e6ea8966 *db)
++{
++	struct mipi_dbi *dbi = &db->dbi;
++
++	mipi_dbi_command(dbi, MCS_PASSWORD_0, 0x5a, 0x5a);
++	mipi_dbi_command(dbi, MCS_PASSWORD_1, 0x5a, 0x5a);
++
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xb0, 0x02);
++	mipi_dbi_command(dbi, 0xf3, 0x3b);
++
++	mipi_dbi_command(dbi, MCS_ANALOG_PWR_CTL_0, 0x33, 0x42, 0x00, 0x08);
++	mipi_dbi_command(dbi, MCS_ANALOG_PWR_CTL_1, 0x00, 0x06, 0x26, 0x35, 0x03);
++
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xf6, 0x02);
++	mipi_dbi_command(dbi, 0xc6, 0x0b, 0x00, 0x00, 0x3c, 0x00, 0x22,
++			 0x00, 0x00, 0x00, 0x00);
++
++	mipi_dbi_command(dbi, MCS_GTCON_SET, 0x20);
++	mipi_dbi_command(dbi, MCS_TEMP_SWIRE, 0x06, 0x06, 0x06, 0x06);
++	mipi_dbi_command(dbi, MCS_ELVSS_ON, 0x07, 0x00, 0x10);
++	mipi_dbi_command(dbi, MCS_GATELESS_SIGNAL_SET, 0x7f, 0x7a,
++			 0x89, 0x67, 0x26, 0x38, 0x00, 0x00, 0x09,
++			 0x67, 0x70, 0x88, 0x7a, 0x76, 0x05, 0x09,
++			 0x23, 0x23, 0x23);
++
++	/* Undocumented commands */
++	mipi_dbi_command(dbi, 0xb5, 0xff, 0xef, 0x35, 0x42, 0x0d, 0xd7,
++			 0xff, 0x07, 0xff, 0xff, 0xfd, 0x00, 0x01,
++			 0xff, 0x05, 0x12, 0x0f, 0xff, 0xff, 0xff,
++			 0xff);
++	mipi_dbi_command(dbi, 0xb4, 0x15);
++	mipi_dbi_command(dbi, 0xb3, 0x00);
++
++	ams495qa01_update_gamma(dbi, MAX_BRIGHTNESS);
++}
++
++static int d53e6ea8966_prepare(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	int ret;
++
++	/* Power up */
++	ret = regulator_enable(db->reg_vdd);
++	if (ret) {
++		dev_err(db->dev, "failed to enable vdd regulator: %d\n", ret);
++		return ret;
++	}
++
++	if (db->reg_elvdd) {
++		ret = regulator_enable(db->reg_elvdd);
++		if (ret) {
++			dev_err(db->dev,
++				"failed to enable elvdd regulator: %d\n", ret);
++			regulator_disable(db->reg_vdd);
++			return ret;
++		}
++	}
++
++	/* Enable */
++	if (db->enable)
++		gpiod_set_value_cansleep(db->enable, 1);
++
++	msleep(50);
++
++	/* Reset */
++	gpiod_set_value_cansleep(db->reset, 1);
++	usleep_range(1000, 5000);
++	gpiod_set_value_cansleep(db->reset, 0);
++	msleep(20);
++
++	db->panel_info->panel_init_seq(db);
++
++	return 0;
++}
++
++static int d53e6ea8966_enable(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	struct mipi_dbi *dbi = &db->dbi;
++
++	mipi_dbi_command(dbi, MIPI_DCS_EXIT_SLEEP_MODE);
++	msleep(200);
++	mipi_dbi_command(dbi, MIPI_DCS_SET_DISPLAY_ON);
++	usleep_range(10000, 15000);
++
++	return 0;
++}
++
++static int d53e6ea8966_disable(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	struct mipi_dbi *dbi = &db->dbi;
++
++	mipi_dbi_command(dbi, MIPI_DCS_SET_DISPLAY_OFF);
++	msleep(20);
++	mipi_dbi_command(dbi, MIPI_DCS_ENTER_SLEEP_MODE);
++	msleep(100);
++
++	return 0;
++}
++
++static int d53e6ea8966_unprepare(struct drm_panel *panel)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++
++	if (db->enable)
++		gpiod_set_value_cansleep(db->enable, 0);
++
++	gpiod_set_value_cansleep(db->reset, 1);
++
++	if (db->reg_elvdd)
++		regulator_disable(db->reg_elvdd);
++
++	regulator_disable(db->reg_vdd);
++	msleep(100);
++
++	return 0;
++}
++
++static int d53e6ea8966_get_modes(struct drm_panel *panel,
++				struct drm_connector *connector)
++{
++	struct d53e6ea8966 *db = to_d53e6ea8966(panel);
++	const struct d53e6ea8966_panel_info *panel_info = db->panel_info;
++	struct drm_display_mode *mode;
++	static const u32 bus_format = MEDIA_BUS_FMT_RGB888_1X24;
++	unsigned int i;
++
++	for (i = 0; i < panel_info->num_modes; i++) {
++		mode = drm_mode_duplicate(connector->dev,
++					  &panel_info->display_modes[i]);
++		if (!mode)
++			return -ENOMEM;
++
++		drm_mode_set_name(mode);
++		drm_mode_probed_add(connector, mode);
++	}
++
++	connector->display_info.bpc = 8;
++	connector->display_info.width_mm = panel_info->width_mm;
++	connector->display_info.height_mm = panel_info->height_mm;
++	connector->display_info.bus_flags = panel_info->bus_flags;
++
++	drm_display_info_set_bus_formats(&connector->display_info,
++					 &bus_format, 1);
++
++	return 1;
++}
++
++static const struct drm_panel_funcs d53e6ea8966_panel_funcs = {
++	.disable = d53e6ea8966_disable,
++	.enable = d53e6ea8966_enable,
++	.get_modes = d53e6ea8966_get_modes,
++	.prepare = d53e6ea8966_prepare,
++	.unprepare = d53e6ea8966_unprepare,
++};
++
++static int ams495qa01_set_brightness(struct backlight_device *bd)
++{
++	struct d53e6ea8966 *db = bl_get_data(bd);
++	struct mipi_dbi *dbi = &db->dbi;
++	int brightness = backlight_get_brightness(bd);
++
++	ams495qa01_update_gamma(dbi, brightness);
++
++	return 0;
++}
++
++static const struct backlight_ops ams495qa01_backlight_ops = {
++	.update_status	= ams495qa01_set_brightness,
++};
++
++static int ams495qa01_backlight_register(struct d53e6ea8966 *db)
++{
++	struct backlight_properties props = {
++		.type		= BACKLIGHT_RAW,
++		.brightness	= MAX_BRIGHTNESS,
++		.max_brightness = MAX_BRIGHTNESS,
++	};
++	struct device *dev = db->dev;
++	int ret = 0;
++
++	db->bl_dev = devm_backlight_device_register(dev, "panel", dev, db,
++						     &ams495qa01_backlight_ops,
++						     &props);
++	if (IS_ERR(db->bl_dev)) {
++		ret = PTR_ERR(db->bl_dev);
++		dev_err(dev, "error registering backlight device (%d)\n", ret);
++	}
++
++	return ret;
++}
++
++static int d53e6ea8966_probe(struct spi_device *spi)
++{
++	struct device *dev = &spi->dev;
++	struct mipi_dsi_host *dsi_host;
++	struct d53e6ea8966 *db;
++	int ret;
++	struct mipi_dsi_device_info info = {
++		.type = "d53e6ea8966",
++		.channel = 0,
++		.node = NULL,
++	};
++
++	db = devm_kzalloc(dev, sizeof(*db), GFP_KERNEL);
++	if (!db)
++		return -ENOMEM;
++
++	spi_set_drvdata(spi, db);
++
++	db->dev = dev;
++
++	db->panel_info = of_device_get_match_data(dev);
++	if (!db->panel_info)
++		return -EINVAL;
++
++	db->reg_vdd = devm_regulator_get(dev, "vdd");
++	if (IS_ERR(db->reg_vdd))
++		return dev_err_probe(dev, PTR_ERR(db->reg_vdd),
++				     "Failed to get vdd supply\n");
++
++	db->reg_elvdd = devm_regulator_get_optional(dev, "elvdd");
++	if (IS_ERR(db->reg_elvdd))
++		db->reg_elvdd = NULL;
++
++	db->reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
++	if (IS_ERR(db->reset)) {
++		ret = PTR_ERR(db->reset);
++		return dev_err_probe(dev, ret, "no RESET GPIO\n");
++	}
++
++	db->enable = devm_gpiod_get_optional(dev, "enable", GPIOD_OUT_LOW);
++	if (IS_ERR(db->enable)) {
++		ret = PTR_ERR(db->enable);
++		return dev_err_probe(dev, ret, "cannot get ENABLE GPIO\n");
++	}
++
++	ret = mipi_dbi_spi_init(spi, &db->dbi, NULL);
++	if (ret)
++		return dev_err_probe(dev, ret, "MIPI DBI init failed\n");
++
++	dsi_host = drm_of_get_dsi_bus(dev, &info);
++	if (IS_ERR(dsi_host)) {
++		ret = PTR_ERR(dsi_host);
++		return dev_err_probe(dev, ret, "Error attaching DSI bus\n");
++	}
++
++	db->dsi_dev = devm_mipi_dsi_device_register_full(dev, dsi_host, &info);
++	if (IS_ERR(db->dsi_dev)) {
++		dev_err(dev, "failed to register dsi device: %ld\n",
++			PTR_ERR(db->dsi_dev));
++		ret = PTR_ERR(db->dsi_dev);
++	}
++
++	db->dsi_dev->lanes = 2;
++	db->dsi_dev->format = MIPI_DSI_FMT_RGB888;
++	db->dsi_dev->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
++			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
++
++	drm_panel_init(&db->panel, dev, &d53e6ea8966_panel_funcs,
++		       DRM_MODE_CONNECTOR_DSI);
++
++	if (db->panel_info->backlight_register != NULL) {
++		ret = db->panel_info->backlight_register(db);
++		if (ret < 0)
++			return ret;
++		db->panel.backlight = db->bl_dev;
++	}
++
++	drm_panel_add(&db->panel);
++
++	ret = devm_mipi_dsi_attach(dev, db->dsi_dev);
++	if (ret < 0) {
++		dev_err(dev, "mipi_dsi_attach failed: %d\n", ret);
++		drm_panel_remove(&db->panel);
++		return ret;
++	}
++
++	return 0;
++}
++
++static void d53e6ea8966_remove(struct spi_device *spi)
++{
++	struct d53e6ea8966 *db = spi_get_drvdata(spi);
++
++	drm_panel_remove(&db->panel);
++}
++
++static const struct drm_display_mode ams495qa01_modes[] = {
++	{ /* 60hz */
++		.clock = 33500,
++		.hdisplay = 960,
++		.hsync_start = 960 + 10,
++		.hsync_end = 960 + 10 + 2,
++		.htotal = 960 + 10 + 2 + 10,
++		.vdisplay = 544,
++		.vsync_start = 544 + 10,
++		.vsync_end = 544 + 10 + 2,
++		.vtotal = 544 + 10 + 2 + 10,
++		.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++		.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
++		},
++	{ /* 50hz */
++		.clock = 27800,
++		.hdisplay = 960,
++		.hsync_start = 960 + 10,
++		.hsync_end = 960 + 10 + 2,
++		.htotal = 960 + 10 + 2 + 10,
++		.vdisplay = 544,
++		.vsync_start = 544 + 10,
++		.vsync_end = 544 + 10 + 2,
++		.vtotal = 544 + 10 + 2 + 10,
++		.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++		.type = DRM_MODE_TYPE_DRIVER,
++	},
++};
++
++static const struct d53e6ea8966_panel_info ams495qa01_info = {
++	.display_modes = ams495qa01_modes,
++	.num_modes = ARRAY_SIZE(ams495qa01_modes),
++	.width_mm = 117,
++	.height_mm = 74,
++	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
++	.panel_init_seq = ams495qa01_panel_init,
++	.backlight_register = ams495qa01_backlight_register,
++};
++
++static const struct of_device_id d53e6ea8966_match[] = {
++	{ .compatible = "samsung,ams495qa01", .data = &ams495qa01_info },
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(of, d53e6ea8966_match);
++
++static const struct spi_device_id d53e6ea8966_ids[] = {
++	{ "ams495qa01", 0 },
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(spi, d53e6ea8966_ids);
++
++static struct spi_driver d53e6ea8966_driver = {
++	.driver		= {
++		.name	= "d53e6ea8966-panel",
++		.of_match_table = d53e6ea8966_match,
++	},
++	.id_table	= d53e6ea8966_ids,
++	.probe		= d53e6ea8966_probe,
++	.remove		= d53e6ea8966_remove,
++};
++module_spi_driver(d53e6ea8966_driver);
++
++MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
++MODULE_DESCRIPTION("Magnachip d53e6ea8966 panel driver");
++MODULE_LICENSE("GPL");
 -- 
 2.34.1
 
