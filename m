@@ -4,91 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45804C54EBC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 16:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0EE7C54EBE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 16:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V113+gTeW4gus0aeXVvxK7ZPPleT5Al1bbIMqqRXKM0=; b=MnUvvKF4Un3f/K
-	OqJ4diSBzWl4VWkhsd+XQSmasmbO97OGQN5xlI78K4FTrFP44GdhsClRIcnOmYp+vOBTdZTJDol2N
-	7EDhTdplOn/1WjRf1dnGCNF+G9JGZop3wS7UtcwaygT5Zlfc0tFPglWCM8PCpngcjfL3Xf0KCf4qz
-	MNGXMdy/LFCdpJ/R2MhaRnUq20/7fzzYLNv62uECtSzx2VWNaJel7Tb+GvGBi8yL/v6LI2MtFzz+6
-	oQOsTIqakDRvBhSquyKvQXSy81C64X9+KRk+J4Un07sG3NAmBB2z2vY2u4yVK6I7wVzrKEqwQklOZ
-	UMBdou1gFqlP25xnjIFg==;
+	List-Owner; bh=flVOM7xMcvDftsYnDwaGHyPZ5dWxcysxqx3hefm8et0=; b=Om57Z4NJYxRxmX
+	UGXoX3j3hrKyZAqKVZ4dJKrYkJFqmtNX5OnHJNaNP4YD474skkOO6WtIILNnCSSS12g8Kal1xn1el
+	u6OhWgDI2IHWqAsJPONWD4CLmBpiCJiIqJL9p044WdVH+Ia0iscjFzbS/rnykw8rFMOhaEV2TQMmM
+	gZH1gB2AWdz/C9Ln8ilprxm9cF0NJq0cpy79atJB3exbt/62CtBUEm57CUxTk3jlSUKeiPnUkKwL/
+	HPGiOUg8Mi/I1lv++bx+kxERX2mVibOgpzLAzbGeRFRKgK02YtWGmUKqcdl8EJJwoOUpzNM4wNqim
+	xFIMeE2F4qwNxRgXhvUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFHJl-007kkW-Dh; Tue, 10 Jan 2023 16:17:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pFHfF-007p8x-CK; Tue, 10 Jan 2023 16:39:53 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFHJa-007kgR-Fu; Tue, 10 Jan 2023 16:17:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4F35E617C3;
-	Tue, 10 Jan 2023 16:17:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A474DC43396;
-	Tue, 10 Jan 2023 16:17:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673367449;
-	bh=B1wBKo3cDbweRD7XMkug8uJodBE8kcjQKvZBxTx7Ok8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hJN56HNsaSeSc4ovjlSJA6QcqyPrLqV5l1jDxV2jatRDTB6Kj6RSRJ+pLDWC3kVnu
-	 Bdh82Xfutc3h6yzmv+da8gn0BEHZWwvePdWHvWz8Xmy+MZA5KDr1m6+O83HO5ZLv1Z
-	 JcW8wWvrAU8yq8MECxEOqtVf3AHfXxnQ7vKsd/LGAG13z86kP7djxbDXyHbqXr3IQR
-	 YBxOFk0V1/HKcvSKK9ksmrcM+pH6bVM+Z2OdQxAlvXIeW/4E0vJOMvtxhRJ8Z/LuyV
-	 FdiYehaFml2GcrPHFF0A9GF0AJxIaJlcYFDt5QyhTNmtEHIpZGqPf7imkuPJ2AFtZQ
-	 PtJVUOtNK889w==
-From: Bjorn Andersson <andersson@kernel.org>
-To: samuel@sholland.org,
-	agx@sigxcpu.org,
-	megous@megous.com,
-	heiko@sntech.de,
-	hdegoede@redhat.com,
-	robh+dt@kernel.org,
-	wens@csie.org,
-	michael.riesch@wolfvision.net,
-	lukma@denx.de,
-	icenowy@aosc.io,
-	kernel@pengutronix.de,
-	david@protonic.nl,
-	shawnguo@kernel.org,
-	foss+kernel@0leil.net,
-	linux-imx@nxp.com,
-	festevam@gmail.com,
-	pgwipeout@gmail.com,
-	jagan@amarulasolutions.com,
-	agross@kernel.org,
-	hadess@hadess.net,
-	dmitry.torokhov@gmail.com,
-	jernej.skrabec@gmail.com,
-	angelogioacchino.delregno@somainline.org,
-	mamlinav@gmail.com,
-	frieder.schrempf@kontron.de,
-	angus@akkea.ca,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	konrad.dybcio@somainline.org,
-	krzysztof.kozlowski+dt@linaro.org
-Cc: linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	quentin.schulz@theobroma-systems.com,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v3 0/9] fix reset line polarity for Goodix touchscreen controllers
-Date: Tue, 10 Jan 2023 10:17:20 -0600
-Message-Id: <167336743963.2134489.16668389773212954467.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
-References: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
+	id 1pFHf4-007p66-MK
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 16:39:43 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id k22-20020a05600c1c9600b003d1ee3a6289so10545537wms.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 08:39:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=76z269HHy4FyyHUAPr8lTZqL1EfM7779/xLjc1+5hq4=;
+        b=f6P6qB+MThS7or9SxkSLmDlMwr/Sy8IO4X3NKxxSO1lvHMNvHyrbU4aciwm+uzoj1I
+         hq4Hi29wBraHKq8+ySWksZwJp4mqmqkUTs3azTla+EEVX5AnDAg9awljMcElEha7Xwls
+         Y05iuE3CaZ7mQpJAGZusJNJudO7rLPKpPv2US0ts2hdEr7yCIq0uXKlAinTxr4oLgz9R
+         DMt3eNjw826cqmqG9bk69/hjUUe7Oef9QMoxqiGm4JqA0ynGDC1ugkaIX0qRmBMQXTiO
+         cohBTL7Sdoqw5w1YapgQW8dDl39quOuLd2XSnBhlvAlBoQfsplOq51ParlHeODt89hIm
+         321w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=76z269HHy4FyyHUAPr8lTZqL1EfM7779/xLjc1+5hq4=;
+        b=BUOVe8g6G4QH0vSEPGttF/yRt4XAjvzWv1Y4tQpeaCrMfQUBJbrsbIXWV/gnIVzAZa
+         PK81P3pl6a1IIZgTLPwTpsPmxy+XshY5LJ3PoDY8ZGeHAAe/DEcke1G7q6r91Idojvmr
+         cCX/rjBmUDEmyfwtfXb7DqgIe0Hs9o/JFKqGimlFf6IY+QWgMNR2lbr6EYbEMrXJcYDV
+         BQBGbdgUxr3EYeoAxye9egIUHKYs+MVirFS4dthcMY35BBP+k73PIMr2T0xJ/PyYerFv
+         WQTP13h5ORVgikhoe+a0xuPHzoM4OeBDQqWc+EyJW1ng1iHKpEyv9XJvlVRVF8h44Gyb
+         osNg==
+X-Gm-Message-State: AFqh2kq/Pu1HHqYk65hc/so+fdVye8PMyVJ89PPcMXdMVBAkZphyxwfG
+	27fZ6Dq776DgwepXJpsG/yWRwA==
+X-Google-Smtp-Source: AMrXdXuJ5I9OptNe9qPfu10ArK8AkMJeuK6hRf2mL5FnXKCy2MoM2LwbmUi6qWqDnVJSrLQqpqgqxQ==
+X-Received: by 2002:a05:600c:1e18:b0:3d2:5e4e:701 with SMTP id ay24-20020a05600c1e1800b003d25e4e0701mr49768128wmb.31.1673368780003;
+        Tue, 10 Jan 2023 08:39:40 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id bi6-20020a05600c3d8600b003d9df9e59c4sm13280998wmb.37.2023.01.10.08.39.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Jan 2023 08:39:39 -0800 (PST)
+Message-ID: <e887125b-9bcc-2fa1-a8aa-a5f0176d00af@linaro.org>
+Date: Tue, 10 Jan 2023 17:39:36 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add Edgeble Neural
+ Compute Module 6
+Content-Language: en-US
+To: Jagan Teki <jagan@edgeble.ai>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20230110134658.820691-1-jagan@edgeble.ai>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230110134658.820691-1-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_081730_607208_F19AC4A5 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20230110_083942_741991_0925C522 
+X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,24 +97,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 5 Dec 2022 14:40:29 +0100, Quentin Schulz wrote:
-> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+On 10/01/2023 14:46, Jagan Teki wrote:
+> Neural Compute Module 6(Neu6) is a 96boards SoM-CB compute module
+> based on Rockchip RK3588 from Edgeble AI.
 > 
-> The Goodix touchscreen controller has a reset line active low. It happens to
-> also be used to configure its i2c address at runtime. If the reset line is
-> incorrectly asserted, the address will be wrongly configured. This cost me a few
-> hours, trying to figure out why the touchscreen wouldn't work.
-> 
-> [...]
+> Edgeble Neural Compute Module 6(Neu6) IO board is an industrial
+> form factor evaluation board from Edgeble AI.
 
-Applied, thanks!
-
-[8/9] arm64: dts: qcom: msm8998-fxtec: fix touchscreen reset GPIO polarity
-      commit: 8a0721dae68fdb4534e220fc9faae7a0ef2f3785
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
--- 
-Bjorn Andersson <andersson@kernel.org>
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
