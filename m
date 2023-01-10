@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13922C54EBC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA11C61DB3
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 20:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5nyer73rw7xdYhhePENw1cDAOaKV724rFmIjBo4tsvE=; b=JG5xUvncP4nzXM
-	tt1qntaNoYtgmGCn/MLRlqxfStX3X0MpdxLPEnGWuuDTJ1OZJEBVuuJLu6nV6UnDJpQKol3NaT/UM
-	dDLF0kTG5vc9PlD7IM4M217kZLBgVG9SjAl3hWzGcstOOVv+fAuc/8FaSZWlnv+m+nG4s+hCERjtH
-	7ZNvBMqO4RXZXa1yDq+IbbVGM8YHGRIph0etX3tN1QLyh9FZXarplm7+FkQ7np5nbAFQ292pP5Mdp
-	mDq9e9iBzOE09gycLISk4gXep+ntfxzMxYpMBuZHfn2YktB1a6U+iXVQxUZaRw7t7TZfi3xU370HG
-	6f/EEORCWZ0MdcgD9ong==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4GG17SqRXXRrDHSkjlVLXtfpi8proW4ELECDJod9g4M=; b=o/JBR+Ko4ap13C
+	601EI5mxuJW4Lu+aPfuRZh9ZHCimzGlfAvI9537gqZmvcjh7367vq1n4jlrdwE04AIpnYz6LNJW6B
+	ERGS1FF3S4YPzi8dCXw0W7gY7yZYTYhHfVFOUAFQIeEWniWsYB+egYOQqRF+7spNy4iKC7PhajSYP
+	opZ2XeN4Ma82WOj48eTNKDCfTe0Cuvsdb8qaZhwbeUuYt9o/NRPZCpNoA3yhAr4Lfng64ZjUNF+Fa
+	+wEKVF2sVusRUPso3zLOn8S0xsaGqmy/5diXYh9xh21TwE9BLoULC2xp/ETCgdJMk3cNAzDFvwAy3
+	eEEa+6IoWtdpVgY5e/vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKpx-008QUo-Af; Tue, 10 Jan 2023 20:03:09 +0000
-Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
+	id 1pFKq0-008QVz-7r; Tue, 10 Jan 2023 20:03:12 +0000
+Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKpu-008QSj-Sw
-	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 20:03:08 +0000
-Received: by mail-oo1-xc29.google.com with SMTP id y15-20020a4aaa4f000000b004e6b4e0acc0so3514444oom.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 12:03:05 -0800 (PST)
+	id 1pFKpv-008QSv-HS
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 20:03:09 +0000
+Received: by mail-oo1-xc31.google.com with SMTP id h3-20020a4aa283000000b004ead187bd6eso3502573ool.5
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 12:03:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZIZAQ7FO4CZGj3dZTTG5OAyA7lcqHMiys9+DWMrDW2Q=;
-        b=UKGzI8uY3xEF0vdZ/Ohb91g38rPExonbRBdEMO0WnryE1zNyFMv46RacCm2/W2ru+H
-         xQQhHYI1ToVVivDsr8dH0CD5gL5gbUrj6LaVF7lvR4wByv1lIgPrXm9Em/cWoTvTuybj
-         kw8SJvQFtLDRnEnY09Y7x3iHahvPoAQJMBRwIQCIDwXYTcfwQQ82CZT8997SabnPNpqr
-         IvMlBL/nYFF8utdu/8SXUNaY7WoJTMjNM2zVn3RDM244GtovWIvgS59RGZFZUMGI9VmR
-         jE5IVSqZGoCtUj9R3yZ6datsiscM8g1VRFObAsEySMB8QsuxcMsh490xOeSHVLmHF2mm
-         XXAA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
+        b=lyuDrX+JUiUXvd41LuqumERhjN0RSpIxWin21vu+wf1V0YRZkVgID+091W5ug1Vi/q
+         Qa7TPma391EC7LZEDf/LYaocyRLjZayXOMlI+VuuhPk+8ovZ56ZsXrSjA6F8KWmJavxp
+         y5gcfNraHjo9bUcEZuhWviC6v2LmKNa9dEBeBnHDeLuAj25e7k0oJYsmjiJtrgB7YPc2
+         xvKS52Io0b0TlbXjf+wXmPTzVCY4CDIWejtsn1ZcVNynKRVJKChsyLKOA/mzJ1E/cl/5
+         +SyNmOs5yS5gAbtEzq6SUE4Dq+hTOdpZ/TytODXlaIwoob1ItgiQq8FL5nROvdHeQx5U
+         tufw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZIZAQ7FO4CZGj3dZTTG5OAyA7lcqHMiys9+DWMrDW2Q=;
-        b=SWVbXf1vCdHXqgtwNidHOtS+l8nlRWqbt7+2BXWTWvjLQY/x9V/onbje+uHClxa0KO
-         hFlwpuLfhZvDhe/JoBiX7+bJxq9fptpSOnvQZrbkwDNyItmOZXw20N/ebMz5mLKRIRTo
-         hmed83+n3Xx1WY7+y+eI07p3jTFHWcfrUdC4Ktz0OofkgjcuC8wM1uDRO4HXhZB3ycZt
-         tKAaDYnl6CMgUzMsmnvZ70agvOQu1vQOeS4HWtPNkbB6Xx7JMQwktH6jH0mCzlvHUbtL
-         sHQgU8EFjpH/gAkE5nGwW3tw22qUxa8nVO10eVaYIOZ8NE8B4N2MdbxmnEOcOGWcWhA3
-         UkuQ==
-X-Gm-Message-State: AFqh2kqdED1/EcHb2R44Ar5NZLzgBB8fkZxxhf8gXEQgAr0rLtZ7WQRv
-	oJuW5OjgIevLhfq/7vXrQn0=
-X-Google-Smtp-Source: AMrXdXv0XfdXOiVrysJFccTGAHXaxSR0nxtxpNTrXlKSzD0F0bIQWmuOVoNIFlzqlye/txlYPGRvWg==
-X-Received: by 2002:a4a:ba94:0:b0:4f2:9e:3e90 with SMTP id d20-20020a4aba94000000b004f2009e3e90mr3433752oop.6.1673380984099;
-        Tue, 10 Jan 2023 12:03:04 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
+        b=nffihiA8fBwqy7uAgVQmVfHnhRwt1ErHHflNgp7xXUInRQaLVWsS7ODxBClLXCwbxe
+         E1epF35CVxHCHs1FSmre6JbrYqw2oiGTlUdLz0dGSQVER0u5BKaVC9DCD4LniD/vigm7
+         HZtLDioDwhvElPoEeMygrCTJ2dCUgOKsrXoUpNqU+GSyr6WItlYLvuTqnUxgPjYjJIkw
+         nYbtACsTAOceABXXDas29eBFAGDzZQDK+u9scVG3k2TxjChEa/K35/xQvYDWwc8elb2K
+         GbWK0rpXR1kFSMnSHmjAzTfqgliNnfUn+32s7oml/tnr9D8ltQjVyy1EZ4MXjP93fdOl
+         rjQQ==
+X-Gm-Message-State: AFqh2kol5pTwBTCfxCEe+zabl3wDoApTMop/CO9d2+kAsnGkZ5Y0Oot6
+	MD4lcTX8qOVlCg4rYiYDZWo=
+X-Google-Smtp-Source: AMrXdXttj8wh0ymNl53Hrx8x6W1dqMYoQv3OPum00In+oTXiJ/NIMK/j/iDobxR7iiXYnxWjf+3yDQ==
+X-Received: by 2002:a4a:97b1:0:b0:49f:dba7:5e65 with SMTP id w46-20020a4a97b1000000b0049fdba75e65mr28394714ooi.3.1673380985493;
+        Tue, 10 Jan 2023 12:03:05 -0800 (PST)
 Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id r4-20020a4aad04000000b004a394578e14sm6089779oon.32.2023.01.10.12.03.03
+        by smtp.gmail.com with ESMTPSA id r4-20020a4aad04000000b004a394578e14sm6089779oon.32.2023.01.10.12.03.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jan 2023 12:03:03 -0800 (PST)
+        Tue, 10 Jan 2023 12:03:05 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -75,15 +76,18 @@ Cc: linux-rockchip@lists.infradead.org,
 	sam@ravnborg.org,
 	thierry.reding@gmail.com,
 	linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v8 0/4] drm/panel: Add Magnachip D53E6EA8966 Panel Controller
-Date: Tue, 10 Jan 2023 14:02:51 -0600
-Message-Id: <20230110200255.1218738-1-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH v8 2/4] dt-bindings: display: panel: Add Samsung AMS495QA01
+Date: Tue, 10 Jan 2023 14:02:53 -0600
+Message-Id: <20230110200255.1218738-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230110200255.1218738-1-macroalpha82@gmail.com>
+References: <20230110200255.1218738-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_120306_974803_2A702E3C 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20230110_120307_600104_C87F3646 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,89 +106,80 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the Magnachip D53E6EA8966 panel IC controller for display panels
-such as the Samsung AMS495QA01 panel as found on the Anbernic RG503.
-This panel uses DSI to receive video signals, but 3-wire SPI to receive
-command signals using DBI.
+Add documentation for Samsung AMS495QA01 panel (with Magnachip
+D53E6EA8966 controller IC).
 
-Changes since V7:
- - Removed Linus Walleij review note due to substantial changes.
- - Corrected documentation of drm_of_get_dsi_bus function.
- - Updated the drm_of_get_dsi_bus function to return pointer to
-   mipi_dsi_host and use ERR_PTR macros.
- - Refactored drm_panel_funcs so that the prepare function calls
-   panel specific function for init sequence and uses generic
-   functions otherwise.
- - Renamed non-panel specific functions.
- - Changed backlight value to int instead of u32.
- - Corrected brightness function to use backlight_get_brightness().
- - Fix an error reported when CONFIG_OF is selected but
-   CONFIG_DRM_MIPI_DSI is not. Add an if function to drm_of_get_dsi_bus
-   function to return -EINVAL in this instance.
-   Reported-by: kernel test robot <lkp@intel.com>
-
-Changes since V6:
- - Fixed a trivial error with definition of drm_of_get_dsi_bus().
-   Reported-by: kernel test robot <lkp@intel.com>
-
-Changes since V5:
- - Reverted dt binding documentation name back to
-   samsung,ams495qa01.yaml.
- - Removed no longer needed of_graph.h header file.
- - Added backlight as a dependency.
-
-Changes since V4:
- - Renamed driver from the panel model to the panel IC controller per
-   DRM team.
- - Added a drm_of helper function of drm_of_get_dsi_bus() to handle
-   finding and populating the DSI node when the DSI node is not the
-   parent of the DSI controlled display.
- - Converted the documented commands to constants to make it more
-   readable.
- - Reset GPIO is now required and documented as GPIO_ACTIVE_LOW.
- - Removed "prepared" logic from panel.
-
-Changes since V3:
- - Updated documentation to add spi-peripheral-props.yaml per updates
-   made for similar devices. Note that I removed a "Reviewed-by" tag
-   from Rob Herring since this change probably needs to be confirmed.
- - Added binding for RG503, since this device is now accepted with this
-   request: https://lore.kernel.org/linux-rockchip/166274831283.21181.6861718157177507544.b4-ty@sntech.de/
-
-Changes since V2:
- - Added 50hz mode at request of userspace devs.
- - Renamed "dupa" to panel name. Good catch Maya.
- - Added Maya's Signed-off-by.
- - Removed check for max backlight, since it is already done by
-   backlight_device_set_brightness.
- - Fixed minor formatting issues on devicetree binding documentation
-   and added port to provided example.
-
-Changes since V1:
- - Removed errant reference to backlight in documentation. This is an
-   OLED panel.
- - Made elvss regulator optional. In my case its hard wired and not
-   controllable.
- - Added "prepared" enum to track panel status to prevent unbalanced
-   regulator enable/disable.
-
-Chris Morgan (4):
-  drm: of: Add drm_of_get_dsi_bus helper function
-  dt-bindings: display: panel: Add Samsung AMS495QA01
-  drm/panel: Add Magnachip D53E6EA8966 Panel Driver
-  arm64: dts: rockchip: add display to RG503
-
- .../display/panel/samsung,ams495qa01.yaml     |  57 ++
- .../dts/rockchip/rk3566-anbernic-rg503.dts    |  55 ++
- drivers/gpu/drm/drm_of.c                      |  70 +++
- drivers/gpu/drm/panel/Kconfig                 |  11 +
- drivers/gpu/drm/panel/Makefile                |   1 +
- .../drm/panel/panel-magnachip-d53e6ea8966.c   | 522 ++++++++++++++++++
- include/drm/drm_of.h                          |   9 +
- 7 files changed, 725 insertions(+)
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../display/panel/samsung,ams495qa01.yaml     | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
- create mode 100644 drivers/gpu/drm/panel/panel-magnachip-d53e6ea8966.c
 
+diff --git a/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+new file mode 100644
+index 000000000000..58fa073ce258
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/panel/samsung,ams495qa01.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Samsung AMS495QA01 panel with Magnachip D53E6EA8966 controller
++
++maintainers:
++  - Chris Morgan <macromorgan@hotmail.com>
++
++allOf:
++  - $ref: panel-common.yaml#
++
++properties:
++  compatible:
++    const: samsung,ams495qa01
++
++  reg: true
++  reset-gpios:
++    description: reset gpio, must be GPIO_ACTIVE_LOW
++  elvdd-supply:
++    description: regulator that supplies voltage to the panel display
++  enable-gpios: true
++  port: true
++  vdd-supply:
++    description: regulator that supplies voltage to panel logic
++
++required:
++  - compatible
++  - reg
++  - reset-gpios
++  - vdd-supply
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    spi {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        panel@0 {
++            compatible = "samsung,ams495qa01";
++            reg = <0>;
++            reset-gpios = <&gpio4 0 GPIO_ACTIVE_LOW>;
++            vdd-supply = <&vcc_3v3>;
++
++            port {
++                mipi_in_panel: endpoint {
++                  remote-endpoint = <&mipi_out_panel>;
++                };
++            };
++        };
++    };
++
++...
 -- 
 2.34.1
 
