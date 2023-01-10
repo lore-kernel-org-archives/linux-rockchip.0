@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D10C46467
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 13:59:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7E07C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 14:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qsXnXBRh9tbBZl9lXtynljj1dDZE37fJkXhJPP0q20E=; b=3Iua3xIKEU7Wrg
-	ivCJmx9U+zYLqlVlBrZkI76b2d92HCTKdYSw94oUsL5iEzS9CABXQcdwKPWipSKwoNF0XP3B04Wtf
-	OSQgrArjlUU/lL03oCwGT3XecDBU+gD90is3mDUNlz/ZXYUtFzVqMH8mv0RYSDsbS7uMWGd8nuPsK
-	xPvJySmVaSRpp5POEsqr5yhxxSDZljtmcbAoD4BMIep2Y+ftOWF1PzxgwsyZVCER8jqWL6V29DiTi
-	g18eTFi4ZUzCKVZ26Sh5bGxyU+M2+gdqzp69RVK80oPODTCB2bs2kiWrT+zyma55KFSGX+Ftn3Kz3
-	EBe2v5YP2tc5hjI9XNjQ==;
+	List-Owner; bh=x8erhEYeq36e+zMxYnbMv0KdrPNp9HpK88t5U0n+JFM=; b=hXoVxF1/6Og0yu
+	zVjSMmSJg2MLAftCEJUk5DLRXgU3LkuTvfD99bCVXK96aP1kI3ZPhMSvvxui1YSPSYEgSUTEWlP1W
+	CJeC0uWO/NU76BYlYiS5RzaIIOtj4u/fZ8b6wIELo6q6mlXdkSrRXUFAh9n1eFd+/b+ATQGxNHrIE
+	mzd/dFWPCt5nkC1yPThudwTrUt2TjSv2Ohr9qtuL/8pqpkzdulNIdZLHlIJpaBftdrV+P0UkQY5md
+	xfjFZuJh30/Nz7825xrX4EykjghMzxh7uOIp+aaTJNulwh6TKeDoU3EnpaHqSnDXYNm3bHx0FZ1i7
+	0Fo5XTl4VsPCx3hX5NXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFF9g-007A7k-P7; Tue, 10 Jan 2023 13:59:08 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1pFFBc-007AWT-Av; Tue, 10 Jan 2023 14:01:08 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFF9e-007A6E-1Q
-	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 13:59:07 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id c82so4580626ybf.6
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 05:59:02 -0800 (PST)
+	id 1pFFBX-007AUV-Ah
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 14:01:07 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-4d4303c9de6so4056487b3.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 06:01:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Dsda8KMeucoX1ilrO2O3wq/4jP5OycOEc8TNPvLqSL4=;
-        b=5lyVr6VVay+hI8m/2i2l6KZTNNDYjLNisen/l9+2D4grmXW74VmNb1x4m5nbef8RXi
-         JOAojJoCo1HbXi3nVvVVOUB+T2fQmistSoC/b63bhcG3/3JysMrsEfPKlW+YRW1p8t65
-         VOP4atNNpHyKBKdgkbB/UEgCgbYlryKYJe1EIlbWzg1QRSe13ENMHYcghfFljnaSUQ/E
-         Xuj2mlpfVbhveYHn3uO96y7Jn5W95rYc6P3PMEBLFyv7ViQy2OfLwIZpreXzYjoCmYKR
-         y1Qslj64GGca37Yh7ahrSLvCi4Rua4MtNbo3LyyLaLypcxtVo6bK9nY9xmHaOXBFyEob
-         P44g==
+        bh=cTd66jKz4KsZyqN8B/YkkUACqAiuZizBOAJvACAkBxg=;
+        b=aIFk15a4imSPftRnezXf4PjAty+9YfBMqX3ux2KWPtiYYx9gc2hnvHkZtVuh/u/NTu
+         f67DP8xH02iLAliBfHs5+7grh2oqRe6IbWj471ytYWDj8dlznC3FzOnRdiAKNji1PD+B
+         IsWjDVgrF4HoH9da9KLqI5fPO2B0T5sGAD5ihCLfJVej0Et+tWm6oQOLrO4MlCKy+iu7
+         O/VULzjRav5t5R19YzpL7rlLXwerFK4fGHnOg1aRD267Amrwe/CjAet7nOsUSY/+P3wG
+         U1YOMTSb2w6ZHlC0Oj7DWr3RHftFcALIltj8AgjcSEO7qxaFkoNPknyVoxjO1Cnlij++
+         4JTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Dsda8KMeucoX1ilrO2O3wq/4jP5OycOEc8TNPvLqSL4=;
-        b=W4S/hsNC/LKV18AnGVo4s9l63wCbGk6XXnpGexmYejRKh3ZM+xiOLicIzOLTlUT4us
-         ZQJBS1Ll3ZXJIPkPUUJwTTKl4CRDis1RULp46RUcCS07MOcijHFNL8bxTS2aSHOpM5rQ
-         LvYYWiKNWczIkZVX9EKeoqd8jqOtcoink6REbn27vC5Ymb/sN3IR1Zo31OApAnhrYLXq
-         p/F3oBGwc74Bvydh+1Zk6lolckr/Rp5zvBxZVRFzjjdXS8wX+hbxmwWo8sBnb/N2wvC1
-         KvdfuU1fdQbpKAQuZcmhdWmugMtvNPrydg1C1IvDmD6n4A2S5xwZe5cWvqFQqEyvIpSY
-         FHeQ==
-X-Gm-Message-State: AFqh2kod7OHCA4/pUXXZCrQdtPjk5tOJuEN/HVhVO18PH0z22XNqkb2C
-	uAXeFuvKcJ6bOUzMYXB4FT/YR//zsUMjp2lLzBXYIA==
-X-Google-Smtp-Source: AMrXdXuJbj8SnHjb++QBh1i8j0IsUc1D544EYFAL+i06GsxF0sSb2SQc9S5qlLQdeW1ZXpeu3gUoVzWVYHKJsJUSqO4=
-X-Received: by 2002:a25:e087:0:b0:7b9:e22:7262 with SMTP id
- x129-20020a25e087000000b007b90e227262mr1448243ybg.416.1673359142043; Tue, 10
- Jan 2023 05:59:02 -0800 (PST)
+        bh=cTd66jKz4KsZyqN8B/YkkUACqAiuZizBOAJvACAkBxg=;
+        b=L6vQEEwZTKchOLtXQ72Ep0OQ35Q5E8P9IlUA6r3eZOTqAuMVMknEyB85nSZMkGRmw1
+         dDk5aeHEz6axUKzBL+nNgkKSKncrDL0uwdj+tMIbH5cf+BWYCialktQ1o6D1NLNmxDG+
+         pyEwHLWg0XLGWK4I4v5UIBEOYvuWNRpgRW4bwL+fpDt75qKj/L4h8+DPxOpMnklSzU2R
+         N53MuBIWCXBrUM1+Dh6QE0ux3tUbf12B1G2uIMpw0SbX7gN4tJzFK6OOPMB85CGdtsNH
+         eUUZfJa+5GWTMnhSF6qMY1eYWh6qVkJsf2rX9GyG2USh0MEdvvxUoJPfIlNYBpC1I2Zk
+         gaVA==
+X-Gm-Message-State: AFqh2kpSBUiFSHg4LCR9uM+vmVjOXsSoXazlxNBfRrN3dYu8yZ/FnRwN
+	cq8Cbg6rN9kv2rRexExfaV9WQlgIz6eLWewUxfZpMQ==
+X-Google-Smtp-Source: AMrXdXte7/yVmWym4kBD4FeqBuwxA2OpS1LIITSRjqcaj7G0ZDI7m0a7+72sliLh2TY5Jg5OumbH6emc5Qy5i0kdbuI=
+X-Received: by 2002:a81:7585:0:b0:358:36cc:b6cf with SMTP id
+ q127-20020a817585000000b0035836ccb6cfmr2398180ywc.505.1673359261105; Tue, 10
+ Jan 2023 06:01:01 -0800 (PST)
 MIME-Version: 1.0
-References: <20230109155801.51642-1-sebastian.reichel@collabora.com> <20230109155801.51642-6-sebastian.reichel@collabora.com>
-In-Reply-To: <20230109155801.51642-6-sebastian.reichel@collabora.com>
+References: <20230109155801.51642-1-sebastian.reichel@collabora.com> <20230109155801.51642-8-sebastian.reichel@collabora.com>
+In-Reply-To: <20230109155801.51642-8-sebastian.reichel@collabora.com>
 From: Jagan Teki <jagan@edgeble.ai>
-Date: Tue, 10 Jan 2023 19:28:51 +0530
-Message-ID: <CA+VMnFwBNc+Mk2VM=6BVGJoxVkpueekXHmkMdp50V7e6UNq8xA@mail.gmail.com>
-Subject: Re: [PATCHv8 5/7] arm64: dts: rockchip: Add rk3588-evb1 board
+Date: Tue, 10 Jan 2023 19:30:50 +0530
+Message-ID: <CA+VMnFxb1P4tP5sef5ME3jCcCq2Y3rD-0bpv1B0TsUZ3RXXuqg@mail.gmail.com>
+Subject: Re: [PATCHv8 7/7] arm64: dts: rockchip: Add rock-5b board
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Marc Zyngier <maz@kernel.org>, 
 	Linus Walleij <linus.walleij@linaro.org>, Christopher Obbard <chris.obbard@collabora.com>, 
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>, linux-rockchip@lists.infradead.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com, 
-	Michael Riesch <michael.riesch@wolfvision.net>
+	kernel@collabora.com, Michael Riesch <michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_055906_095998_C30D1B50 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230110_060105_769581_1305647F 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,20 +92,56 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On Mon, 9 Jan 2023 at 21:28, Sebastian Reichel
 <sebastian.reichel@collabora.com> wrote:
 >
-> From: Kever Yang <kever.yang@rock-chips.com>
+> From: Christopher Obbard <chris.obbard@collabora.com>
 >
-> Add board file for the RK3588 evaluation board. While the hardware
-> offers plenty of peripherals and connectivity this basic implementation
-> just handles things required to successfully boot Linux from eMMC,
-> connect via UART or Ethernet.
+> Add board file for the RK3588 Rock 5B board. This is a basic
+> implementation which just brings up the eMMC and UART which is
+> enough to successfully boot Linux.
 >
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> [rebase, update commit message, use EVB1 for SoC bringup]
+> The ethernet controller is connected via PCIe so support will
+> come in a follow-up patch.
+>
+> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 > Reviewed-by: Michael Riesch <michael.riesch@wolfvision.net>
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+>  .../boot/dts/rockchip/rk3588-rock-5b.dts      | 44 +++++++++++++++++++
+>  2 files changed, 45 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 87a853435142..c5bdd0176ce0 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -83,4 +83,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> new file mode 100644
+> index 000000000000..d2f1e963ce06
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -0,0 +1,44 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3588.dtsi"
+> +
+> +/ {
+> +       model = "Radxa ROCK 5 Model B";
+> +       compatible = "radxa,rock-5b", "rockchip,rk3588";
+> +
+> +       aliases {
+> +               mmc1 = &sdhci;
 
-Reviewed-by: Jagan Teki <jagan@edgeble.ai>
+I think sdhci - emmc has to be mmc0 due to boot priority.
+
+Jagan.
 
 _______________________________________________
 Linux-rockchip mailing list
