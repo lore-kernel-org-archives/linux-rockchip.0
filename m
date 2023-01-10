@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B386BC54EBE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 01:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3049C46467
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 08:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b1ErSJMHWzQR56blz0cYOth/59z7NOAKVLYPGXJfFNM=; b=QCcrYH9tuGQnKF
-	Xpdr2pfdpFh18a6JXyZqODXOGlfHUMOd1QcmOD7r/Yu0rNx8tGmzNa13ihHWB6EtHo//0aaB8b3XG
-	Uw3QLJaiKec1fwmKI8WStbZhWLECa9ZqdMniU/KQ9WxwoSoo084bU+TXZPSJt0DiIlX08FhdeBTWA
-	LSP0VJ+Qjv7KgK8MCpUE7YQWBSXZzMmvPh+NyYJZy9Wf9v8hPJZSHijyGhpqO3MtU1uPsxtX6BQl1
-	mdTu3vW76r3/hQaj+ZUDSRxcDNoIXidzE0ZtQ8vByTNuJ+AaKDM+sg1gMpft9RE5utDTZ7R6y6gG6
-	RzOKaN/RNl/cTsOPpHPg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fn/tFtw+NpOc5mLA7ZvhxYBdCpPCPXHcUQOscqoVOks=; b=alg1VvUax7NXc2
+	x/l6qSyWLb8m+3LNJz9hOhFnOm4O7T2vl8RkWK0lYn5cpiLoexK1x+6PPe7KRe8GqBVQfrLxCjxAE
+	WqR0OzLDANYOEBImv+pOtsDZ97wbWh+JXqB0hPyNV2fk/Nm2QQ+m4BVkFKeiAc22SqrnwyEkSNdHt
+	svorlLiGkVqVpBFHDpVdgwL+W6QjauZeFePj6I/YIi1QWVnK3AKjdJPvsOHanoRmhMIzwrMq1+J9V
+	VUxHtPNuctNe0FFGbcdwxVvtTUwX1p7A0LDJoWbSLqYmbMHvAsNhqRG/awe3FTq37NpMR2K1/1LqN
+	hcT9VzktWfJdn7ENl4ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF3IR-004pgO-82; Tue, 10 Jan 2023 01:19:23 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1pFAMz-005vkW-UO; Tue, 10 Jan 2023 08:52:33 +0000
+Received: from wrqvnvpf.outbound-mail.sendgrid.net ([149.72.40.63])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pF3IN-004pd6-3X
-	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 01:19:21 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id g16so11526444plq.12
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Jan 2023 17:19:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XYUtIGSdiXv+1u4fwXxMmXFQoGZCC8A3hPLYtYLpNZQ=;
-        b=Bmk2SAk4VLW306BHVtiboysQjz5H/DFJf0Tjh0hvrntMIxLtck9ATcuiUFhmj7LHNL
-         B2lYETyD1f5zrcSLwCFTSAlf7/2XYNt9xuJqUxURQT7gjmsPAV0cEbg1BsWx9KUl86lc
-         IzdBVOADWqnelw8o3fWnEGPECU4Vf3WBPVXls=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XYUtIGSdiXv+1u4fwXxMmXFQoGZCC8A3hPLYtYLpNZQ=;
-        b=fnYzTI/1i52J2ofavstn0kPLE/TUrgYCj0HdfSHnuN+MC1dsxOVLOUbWgCO2M08TmP
-         UQjTFGdEZZrd2B4PZnw4VtKOTGeMFMmPVf/T6W91bbn+/fDb3WPc9o84EUPpSOPqno+I
-         pL5oNrzyaQ0GWgRkyZbBvUv2muVZhjOfUC8Uj1IfX5E7fWGO/1z073Vla90VQk9bGItD
-         A9YCMq2vg+hPkG2LdYjJMnfmvQkAYOYNH1AsSrkij5V0V+ic0WTGUNi878uNSaL6VJeV
-         NOQGheajCnxINFJCVb7nJq6YEYdKFci/1NzF5Mjog9nNhZJK4anRVoGO6/e+aacpxUgm
-         WEtw==
-X-Gm-Message-State: AFqh2kpFHmzKIRtZEi4o99Gk2DDl2ZCvn2qzp/6Aw5ina9N1NJmtbdnh
-	dzZYGovRlRS/+XUKWlZ7J7iAaw==
-X-Google-Smtp-Source: AMrXdXtC5EUTKJLeK/jZ2SnSPdj4TAQrYDbyicW7TAjCMQdn4sHpMINHMClNMz/+JBeoOEMkxs7HIw==
-X-Received: by 2002:a05:6a21:999d:b0:9e:9685:f15e with SMTP id ve29-20020a056a21999d00b0009e9685f15emr100766242pzb.0.1673313555362;
-        Mon, 09 Jan 2023 17:19:15 -0800 (PST)
-Received: from localhost ([2620:15c:9d:2:99d8:feca:9efd:a216])
-        by smtp.gmail.com with UTF8SMTPSA id j1-20020a170902c3c100b0018853416bbcsm6827097plj.7.2023.01.09.17.19.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Jan 2023 17:19:14 -0800 (PST)
-From: Brian Norris <briannorris@chromium.org>
-To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer@mailbox.org>,
-	Brian Norris <briannorris@chromium.org>,
-	stable@vger.kernel.org,
-	"kernelci.org bot" <bot@kernelci.org>
-Subject: [PATCH v3 2/2] drm/rockchip: vop: Leave vblank enabled in self-refresh
-Date: Mon,  9 Jan 2023 17:18:17 -0800
-Message-Id: <20230109171809.v3.2.Ic07cba4ab9a7bd3618a9e4258b8f92ea7d10ae5a@changeid>
-X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
-In-Reply-To: <20230109171809.v3.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
-References: <20230109171809.v3.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
+	id 1pFAMo-005vb0-7Y
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 08:52:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=onqNOcJjmPKtXUMBvrGEjTUtJ5dH/KV5YbG6DnTxZfw=;
+	b=d74CTUxntrIjGKPrzOMx8CZ/Dj5Qp9QzM1hmw4a2Rds0ti+NKRlzVMon4Vt5GpJMQniX
+	gsa1J4F2IhOyt2OhyLxNPj6EzSXVjkfDbhofEUMfUHCbNvOVQImVBCBRWTxPZ6Ka+FelS8
+	zTsaSx7CKO5BI8UX1Ck23LORhClr0VLEoMa+M/w/cVm2GjiDnUSgtN+j5Sz5jfeR4gPHWd
+	HHLc4NB6mIUUVi0cDROiCxhnPJCgvv6UqpWs71T9hy2kLAjznTgn9RxpUzXRadtWc/zvur
+	HtI9fBHBomT3m8CiQP7E3hXlwEwBuppAxL7QbsKJs4WhNhgxtAJya1ffS6YpDcxA==
+Received: by filterdrecv-6b9548745c-b6qpv with SMTP id filterdrecv-6b9548745c-b6qpv-1-63BD25FD-E
+        2023-01-10 08:46:53.345496623 +0000 UTC m=+4613916.831122562
+Received: from bionic.localdomain (unknown)
+	by geopod-ismtpd-4-2 (SG)
+	with ESMTP
+	id mYmyxaFmQsC26v_jgAgqvw
+	Tue, 10 Jan 2023 08:46:52.980 +0000 (UTC)
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH] pinctrl: rockchip: fix mux route data for rk3568
+Date: Tue, 10 Jan 2023 08:46:53 +0000 (UTC)
+Message-Id: <20230110084636.1141740-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
+X-SG-EID:  =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h5w=2F9lJ8jZchmrJ20?=
+ =?us-ascii?Q?2v+AesMsdcJOntamhifAJTJaZvzI4hTS3bA8oAb?=
+ =?us-ascii?Q?=2FRR+50Gv77mY9HQXdLoYrrBSrfgbUva7iWPc6BL?=
+ =?us-ascii?Q?BCC7uiwjLnhtRMXw8lVE9GOpgTFEV=2FBFqij7FCM?=
+ =?us-ascii?Q?1VS8snIiOZTKTPB7QT4DRg78TGPJ+e8gbGSe0+Z?=
+ =?us-ascii?Q?=2FgNUuWZfsrrHdJXIwcMww=3D=3D?=
+To: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner
+	<heiko@sntech.de>
+Cc: Jianqun Xu <jay.xu@rock-chips.com>, linux-gpio@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	Jonas Karlman <jonas@kwiboo.se>
+X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230109_171919_166926_94537807 
-X-CRM114-Status: GOOD (  19.87  )
+X-CRM114-CacheID: sfid-20230110_005222_354357_D87683D9 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,92 +80,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If we disable vblank when entering self-refresh, vblank APIs (like
-DRM_IOCTL_WAIT_VBLANK) no longer work. But user space is not aware when
-we enter self-refresh, so this appears to be an API violation -- that
-DRM_IOCTL_WAIT_VBLANK fails with EINVAL whenever the display is idle and
-enters self-refresh.
+IO mux selection is configured in PMU_GRF_SOC_CON4 and GRF_IOFUNC_SEL0-5
+regs on RK3568. pwm0-2 is configured in PMU_GRF reg and the rest is
+configured in GRF_IOFUNC regs according to TRM [1].
 
-The downstream driver used by many of these systems never used to
-disable vblank for PSR, and in fact, even upstream, we didn't do that
-until radically redesigning the state machine in commit 6c836d965bad
-("drm/rockchip: Use the helpers for PSR").
+Update mux route data to reflect this and use proper detection pin for
+UART1 IO mux M1.
 
-Thus, it seems like a reasonable API fix to simply restore that
-behavior, and leave vblank enabled.
+This fixes HDMITX IO mux M1 selection and makes it possible to enable
+HDMI CEC on my Radxa ROCK 3 Model A v1.31 board.
 
-Note that this appears to potentially unbalance the
-drm_crtc_vblank_{off,on}() calls in some cases, but:
-(a) drm_crtc_vblank_on() documents this as OK and
-(b) if I do the naive balancing, I find state machine issues such that
-    we're not in sync properly; so it's easier to take advantage of (a).
+[1] http://opensource.rock-chips.com/images/2/26/Rockchip_RK3568_TRM_Part1_V1.3-20220930P.PDF
 
-This issue was exposed by IGT's kms_vblank tests, and reported by
-KernelCI. The bug has been around a while (longer than KernelCI
-noticed), but was only exposed once self-refresh was bugfixed more
-recently, and so KernelCI could properly test it. Some other notes in:
-
-  https://lore.kernel.org/dri-devel/Y6OCg9BPnJvimQLT@google.com/
-  Re: renesas/master bisection: igt-kms-rockchip.kms_vblank.pipe-A-wait-forked on rk3399-gru-kevin
-
-== Backporting notes: ==
-
-Marking as 'Fixes' commit 6c836d965bad ("drm/rockchip: Use the helpers
-for PSR"), but it probably depends on commit bed030a49f3e
-("drm/rockchip: Don't fully disable vop on self refresh") as well.
-
-We also need the previous patch ("drm/atomic: Allow vblank-enabled +
-self-refresh "disable""), of course.
-
-v3:
- * no update
-
-v2:
- * skip unnecessary lock/unlock
-
-Fixes: 6c836d965bad ("drm/rockchip: Use the helpers for PSR")
-Cc: <stable@vger.kernel.org>
-Link: https://lore.kernel.org/dri-devel/Y5itf0+yNIQa6fU4@sirena.org.uk/
-Reported-by: "kernelci.org bot" <bot@kernelci.org>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
+Fixes: c0dadc0e47a8 ("pinctrl: rockchip: add support for rk3568")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/pinctrl/pinctrl-rockchip.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index fa1f4ee6d195..9fea03121247 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -717,13 +717,13 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 	if (crtc->state->self_refresh_active)
- 		rockchip_drm_set_win_enabled(crtc, false);
- 
-+	if (crtc->state->self_refresh_active)
-+		goto out;
-+
- 	mutex_lock(&vop->vop_lock);
- 
- 	drm_crtc_vblank_off(crtc);
- 
--	if (crtc->state->self_refresh_active)
--		goto out;
--
- 	/*
- 	 * Vop standby will take effect at end of current frame,
- 	 * if dsp hold valid irq happen, it means standby complete.
-@@ -757,9 +757,9 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 	vop_core_clks_disable(vop);
- 	pm_runtime_put(vop->dev);
- 
--out:
- 	mutex_unlock(&vop->vop_lock);
- 
-+out:
- 	if (crtc->state->event && !crtc->state->active) {
- 		spin_lock_irq(&crtc->dev->event_lock);
- 		drm_crtc_send_vblank_event(crtc, crtc->state->event);
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index da974ff2d75d..849d5fa2a362 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -926,19 +926,19 @@ static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
+ 	RK_MUXROUTE_PMU(0, RK_PB5, 4, 0x0110, WRITE_MASK_VAL(3, 2, 1)), /* PWM1 IO mux M1 */
+ 	RK_MUXROUTE_PMU(0, RK_PC1, 1, 0x0110, WRITE_MASK_VAL(5, 4, 0)), /* PWM2 IO mux M0 */
+ 	RK_MUXROUTE_PMU(0, RK_PB6, 4, 0x0110, WRITE_MASK_VAL(5, 4, 1)), /* PWM2 IO mux M1 */
+-	RK_MUXROUTE_PMU(0, RK_PB3, 2, 0x0300, WRITE_MASK_VAL(0, 0, 0)), /* CAN0 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PB3, 2, 0x0300, WRITE_MASK_VAL(0, 0, 0)), /* CAN0 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PA1, 4, 0x0300, WRITE_MASK_VAL(0, 0, 1)), /* CAN0 IO mux M1 */
+ 	RK_MUXROUTE_GRF(1, RK_PA1, 3, 0x0300, WRITE_MASK_VAL(2, 2, 0)), /* CAN1 IO mux M0 */
+ 	RK_MUXROUTE_GRF(4, RK_PC3, 3, 0x0300, WRITE_MASK_VAL(2, 2, 1)), /* CAN1 IO mux M1 */
+ 	RK_MUXROUTE_GRF(4, RK_PB5, 3, 0x0300, WRITE_MASK_VAL(4, 4, 0)), /* CAN2 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PB2, 4, 0x0300, WRITE_MASK_VAL(4, 4, 1)), /* CAN2 IO mux M1 */
+ 	RK_MUXROUTE_GRF(4, RK_PC4, 1, 0x0300, WRITE_MASK_VAL(6, 6, 0)), /* HPDIN IO mux M0 */
+-	RK_MUXROUTE_PMU(0, RK_PC2, 2, 0x0300, WRITE_MASK_VAL(6, 6, 1)), /* HPDIN IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PC2, 2, 0x0300, WRITE_MASK_VAL(6, 6, 1)), /* HPDIN IO mux M1 */
+ 	RK_MUXROUTE_GRF(3, RK_PB1, 3, 0x0300, WRITE_MASK_VAL(8, 8, 0)), /* GMAC1 IO mux M0 */
+ 	RK_MUXROUTE_GRF(4, RK_PA7, 3, 0x0300, WRITE_MASK_VAL(8, 8, 1)), /* GMAC1 IO mux M1 */
+ 	RK_MUXROUTE_GRF(4, RK_PD1, 1, 0x0300, WRITE_MASK_VAL(10, 10, 0)), /* HDMITX IO mux M0 */
+-	RK_MUXROUTE_PMU(0, RK_PC7, 1, 0x0300, WRITE_MASK_VAL(10, 10, 1)), /* HDMITX IO mux M1 */
+-	RK_MUXROUTE_PMU(0, RK_PB6, 1, 0x0300, WRITE_MASK_VAL(14, 14, 0)), /* I2C2 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PC7, 1, 0x0300, WRITE_MASK_VAL(10, 10, 1)), /* HDMITX IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PB6, 1, 0x0300, WRITE_MASK_VAL(14, 14, 0)), /* I2C2 IO mux M0 */
+ 	RK_MUXROUTE_GRF(4, RK_PB4, 1, 0x0300, WRITE_MASK_VAL(14, 14, 1)), /* I2C2 IO mux M1 */
+ 	RK_MUXROUTE_GRF(1, RK_PA0, 1, 0x0304, WRITE_MASK_VAL(0, 0, 0)), /* I2C3 IO mux M0 */
+ 	RK_MUXROUTE_GRF(3, RK_PB6, 4, 0x0304, WRITE_MASK_VAL(0, 0, 1)), /* I2C3 IO mux M1 */
+@@ -964,7 +964,7 @@ static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
+ 	RK_MUXROUTE_GRF(4, RK_PC3, 1, 0x0308, WRITE_MASK_VAL(12, 12, 1)), /* PWM15 IO mux M1 */
+ 	RK_MUXROUTE_GRF(3, RK_PD2, 3, 0x0308, WRITE_MASK_VAL(14, 14, 0)), /* SDMMC2 IO mux M0 */
+ 	RK_MUXROUTE_GRF(3, RK_PA5, 5, 0x0308, WRITE_MASK_VAL(14, 14, 1)), /* SDMMC2 IO mux M1 */
+-	RK_MUXROUTE_PMU(0, RK_PB5, 2, 0x030c, WRITE_MASK_VAL(0, 0, 0)), /* SPI0 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PB5, 2, 0x030c, WRITE_MASK_VAL(0, 0, 0)), /* SPI0 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PD3, 3, 0x030c, WRITE_MASK_VAL(0, 0, 1)), /* SPI0 IO mux M1 */
+ 	RK_MUXROUTE_GRF(2, RK_PB5, 3, 0x030c, WRITE_MASK_VAL(2, 2, 0)), /* SPI1 IO mux M0 */
+ 	RK_MUXROUTE_GRF(3, RK_PC3, 3, 0x030c, WRITE_MASK_VAL(2, 2, 1)), /* SPI1 IO mux M1 */
+@@ -973,8 +973,8 @@ static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
+ 	RK_MUXROUTE_GRF(4, RK_PB3, 4, 0x030c, WRITE_MASK_VAL(6, 6, 0)), /* SPI3 IO mux M0 */
+ 	RK_MUXROUTE_GRF(4, RK_PC2, 2, 0x030c, WRITE_MASK_VAL(6, 6, 1)), /* SPI3 IO mux M1 */
+ 	RK_MUXROUTE_GRF(2, RK_PB4, 2, 0x030c, WRITE_MASK_VAL(8, 8, 0)), /* UART1 IO mux M0 */
+-	RK_MUXROUTE_PMU(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(8, 8, 1)), /* UART1 IO mux M1 */
+-	RK_MUXROUTE_PMU(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(10, 10, 0)), /* UART2 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PD6, 4, 0x030c, WRITE_MASK_VAL(8, 8, 1)), /* UART1 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(10, 10, 0)), /* UART2 IO mux M0 */
+ 	RK_MUXROUTE_GRF(1, RK_PD5, 2, 0x030c, WRITE_MASK_VAL(10, 10, 1)), /* UART2 IO mux M1 */
+ 	RK_MUXROUTE_GRF(1, RK_PA1, 2, 0x030c, WRITE_MASK_VAL(12, 12, 0)), /* UART3 IO mux M0 */
+ 	RK_MUXROUTE_GRF(3, RK_PB7, 4, 0x030c, WRITE_MASK_VAL(12, 12, 1)), /* UART3 IO mux M1 */
+@@ -1004,13 +1004,13 @@ static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
+ 	RK_MUXROUTE_GRF(3, RK_PD6, 5, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
+ 	RK_MUXROUTE_GRF(4, RK_PA0, 4, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
+ 	RK_MUXROUTE_GRF(3, RK_PC4, 5, 0x0314, WRITE_MASK_VAL(1, 0, 2)), /* PDM IO mux M2 */
+-	RK_MUXROUTE_PMU(0, RK_PA5, 3, 0x0314, WRITE_MASK_VAL(3, 2, 0)), /* PCIE20 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PA5, 3, 0x0314, WRITE_MASK_VAL(3, 2, 0)), /* PCIE20 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PD0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 1)), /* PCIE20 IO mux M1 */
+ 	RK_MUXROUTE_GRF(1, RK_PB0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 2)), /* PCIE20 IO mux M2 */
+-	RK_MUXROUTE_PMU(0, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(5, 4, 0)), /* PCIE30X1 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(5, 4, 0)), /* PCIE30X1 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PD2, 4, 0x0314, WRITE_MASK_VAL(5, 4, 1)), /* PCIE30X1 IO mux M1 */
+ 	RK_MUXROUTE_GRF(1, RK_PA5, 4, 0x0314, WRITE_MASK_VAL(5, 4, 2)), /* PCIE30X1 IO mux M2 */
+-	RK_MUXROUTE_PMU(0, RK_PA6, 2, 0x0314, WRITE_MASK_VAL(7, 6, 0)), /* PCIE30X2 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PA6, 2, 0x0314, WRITE_MASK_VAL(7, 6, 0)), /* PCIE30X2 IO mux M0 */
+ 	RK_MUXROUTE_GRF(2, RK_PD4, 4, 0x0314, WRITE_MASK_VAL(7, 6, 1)), /* PCIE30X2 IO mux M1 */
+ 	RK_MUXROUTE_GRF(4, RK_PC2, 4, 0x0314, WRITE_MASK_VAL(7, 6, 2)), /* PCIE30X2 IO mux M2 */
+ };
 -- 
-2.39.0.314.g84b9a713c41-goog
+2.39.0
 
 
 _______________________________________________
