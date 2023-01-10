@@ -4,51 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B1AC54EBC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 15:33:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A089C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 15:53:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cWvAI+5jwemj9R309xDB1B8+4kyshe5OAE9+ch/tmHU=; b=wt71LQLxt9a7FH
-	FTRhRnywzRsIzKdYQJnSc6n/4LZ8kejOlDdPcG2dHdZPiMEamXx6PS0Zc3DypYjF2cVJGoaojmHbO
-	04J4Amh/Yjs2rAjpEz/dlCvOdXHdEaDOhbtx/gu4QD0wPx28g1m0YXuJuP0uu0nzwjPrU62dPa8Va
-	HWtpcHla/zmUD3VOmfSThYo1OFREOLZbp6z2vKH5gVLiQO4NxvjdRGtqmOGvPAeJwnDLQBBmU+7X5
-	zOTmtA2shm/eF3N1MmESrtsMl+GQQ8x8D1d6Eu64UKW6GB2V4ojkvTPSX//obwYM4I2YCQoF2OZye
-	2xz6CR5MzlZ9UFTNaC/w==;
+	List-Owner; bh=Tawz0fEvcvbixj16mlWHlqmOYhdAE7h2mboA742x13U=; b=MowaVffJOPnU2+
+	AHDDM7LKQIvi3kaPwDOxjYgCSrT8VxvMhXLiQoHBZ7ShqYHTB8BAXkD8pVuXrrLSCS3GC+5uMD2X+
+	U/EfketVMeOfKrpyQqQoWrfG3BC1Y+tE6sH7yW2lzZMnUmJvZuE7acYaWJ1pjOvjyGFTJUF4x2gqJ
+	g9yL40JWowHfk3g+bXjT/cbIIuVE3DTsDpVdtW3f9QICHb+3MLqoLrVMJ0q18AFBzo/hbTSibh1FP
+	j5vHOjnLrD7Tl4TmG/WpAEpf+KpFgH3vnMEj4utVZJyLSu2g2b+Jdz18kaMMxc1iSX78pk5QLbSKg
+	VK1qOGPd5wlL5LlQuT9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFGcz-007boK-Rg; Tue, 10 Jan 2023 15:33:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pFGwB-007feQ-Vd; Tue, 10 Jan 2023 15:53:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFGcc-007bfu-Sw; Tue, 10 Jan 2023 15:33:08 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pFGcX-0005bB-I3; Tue, 10 Jan 2023 16:33:01 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
+	id 1pFGvu-007fTj-G0; Tue, 10 Jan 2023 15:53:03 +0000
+Received: from obbardc-t14.home (unknown [IPv6:2a00:23c7:6883:e501:329c:8425:8e97:eae9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: obbardc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id ED4CF6602D88;
+	Tue, 10 Jan 2023 15:52:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673365979;
+	bh=NifcOS43y+N68BurrSuB+JMF2pV8C2qpP/aWsRXSUKk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MqwyudRT1PL6D6Tkp7yCXoGGWR1WwqJV/wdzoT3fVHB+r+Uo5SUhdCTp8ZnBxRyYg
+	 74OmvChDrczxyw3nC4HEBVaVrlc/KAijfRCNacVLjoTnREr0dW+3UiUeZYLzeo6QlU
+	 2hRnAoBh2ux6X7s9ONZ6xLw+m18aUvEigTUWBXYgGXFd9fSfqaxUXRBESyoIacs4fO
+	 1XqecZmkQyxPAB962SkrjgtbRltkpzdvG5YzIsvcRMfdTKmKoQXBhxCsSsaDEO1u1u
+	 4tRn2e+KEixWuZ6lmoX3xkwJycCDRhK2diONFVmgKVTZtDdxAfuIq7y5GxU3K6I45R
+	 rlrizMspoT6ng==
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-rockchip@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: remove unsupported property from sdmmc2 for rock-3a
-Date: Tue, 10 Jan 2023 16:32:58 +0100
-Message-Id: <167336477675.2640328.2287361282584419337.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221219101052.7899-1-amadeus@jmu.edu.cn>
-References: <20221219101052.7899-1-amadeus@jmu.edu.cn>
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Christopher Obbard <chris.obbard@collabora.com>
+Subject: [PATCH v1 2/3] arm64: dts: rockchip: Remove empty line from rock-5a
+Date: Tue, 10 Jan 2023 15:52:51 +0000
+Message-Id: <20230110155252.189300-3-chris.obbard@collabora.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230110155252.189300-1-chris.obbard@collabora.com>
+References: <20230110155252.189300-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_073306_966001_F6BC0788 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20230110_075302_759553_F966CBE0 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,20 +80,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 Dec 2022 18:10:52 +0800, Chukun Pan wrote:
-> 'supports-sdio' is not part of the DT binding
-> and not supported by the Linux driver.
-> 
-> 
+There is a line which is empty. Remove it.
 
-Applied, thanks!
+Fixes: a4a8f1afb360 ("arm64: dts: rockchip: Add rock-5a board")
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
-[1/1] arm64: dts: rockchip: remove unsupported property from sdmmc2 for rock-3a
-      commit: 0b693c8f8b88d50114caaa4d2337932d4d172631
-
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index c85af1334c05..6432b586bf5a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -52,7 +52,6 @@ rtl8211f {
+ 		rtl8211f_rst: rtl8211f-rst {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+-
+ 	};
+ };
+ 
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.39.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
