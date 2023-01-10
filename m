@@ -4,65 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9087BC46467
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 19:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 255D8C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 20:03:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WDRIZth/uTIiMGgdFnUgm8cIjkXj1gX2IH/9Vb2HsXQ=; b=c0wlQOrZiuncJd
-	KFmX3QxF/pKjIaCcZ5RCB1nXY49oKrMFcZr0EkVZE9GwY1UFm9ICjAnoYNTYarJ1qQqbWLv4k9UY+
-	DTpm0QvgjW5OkxdmgLwX2Nourc5HyT+c1c2TS0MWc8Kn3CwJLfG3ds5eQz98DEU2bX8LLfylJ9Zi0
-	ETVy765xXjuQf7l52WpEGOlH+Ga2PmTQb5rQES6UhmV+0KsH+x0LT+RUa9hkALSbhaKZRbyLN2JrN
-	2A89jd5rPKJmFLwRQrPvCaYVYaJKUBaD2IJS2otr0fZmw3ikaSOG4j6BZUsSVbzkfGGlWsJwfqGXF
-	3boufVFp/bQaO47sotGg==;
+	List-Owner; bh=iuHCQ3IuiWHzDrlb6nI7z8SoV5kuH/fECBNrQLqgCvY=; b=mpyoEKNjNEDgKG
+	GbhrW+KQIT1lJL43KBpZ8nSIDspbvO50ELo9uZ0e17pNbinPaULFOccgCSZczrzNbuxa0PEBiXfYT
+	EKxPBjDx/wnFZXxkGdcWPEYJ2IRj6QuXpFh2mJuKx51/8aCcJHgata7GSwcIXEeOK5QYHuHLHLTcX
+	PxkcQzMvotPa7Sm2oVv6KnSCp02SU44g+oTt30y5LWCq9QQ5a0Cmq+WsX1hIBpjM5N224lVKqNsCF
+	33yfrswacvvwZYMIU0UEn1MLSL6uYepw9Zvn0UgKyp4VlSeCUgN4OIaqJLngVslo2NY7NpPo1et/U
+	bDTGd+1fpjL4PzqnLsJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKix-008OIk-KQ; Tue, 10 Jan 2023 19:55:55 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pFKq0-008QW7-Iq; Tue, 10 Jan 2023 20:03:12 +0000
+Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFKik-008OBR-LT; Tue, 10 Jan 2023 19:55:45 +0000
-Received: from [IPv6:2a00:23c7:6883:e501:329c:8425:8e97:eae9] (unknown [IPv6:2a00:23c7:6883:e501:329c:8425:8e97:eae9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 475C66602D29;
-	Tue, 10 Jan 2023 19:55:41 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673380541;
-	bh=h93q8fATA0vHzK9NLlM/VLoX4onwSG8abSVypH1iTYw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Ggj9DrDoeacXy6btIJ3KG/jZAoLaHc7MpPJquOq6+Wto41mowzJsa50R4CqkbvEEE
-	 y1NGMesA6FS1tV0pyWIfevQRKGf3iZf4kcEh4kKJTjRxD6IgCeIZAdsqVY6BbOSRT7
-	 eetXxAhoOBh6QwFx4NH8JIhtjY2jTHPW64V+vKGRKECvaCCtsrxD8yi7MC9tAI8/m9
-	 hlk6CdL11N80ywYqixomMXlAJPtRd80NZDgOXT64Mlxn3aSVV8nHQFEhY/Pl+bGH/z
-	 GyiF0VOcdU7uVVGjT7E/j982Xco1aL68S2FxGqhDiclry0tPQYRx3ULjAftkaxnjgN
-	 5MCgn0dr1yo7A==
-Message-ID: <7843211667a5f8451bfe5f37533c9b5896b589ac.camel@collabora.com>
-Subject: Re: [PATCH v1 1/3] arm64: dts: rockchip: Update sdhci alias for
- rock-5a
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Heiko Stuebner
-	 <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	 <krzysztof.kozlowski+dt@linaro.org>, Michael Riesch
-	 <michael.riesch@wolfvision.net>, Sebastian Reichel
-	 <sebastian.reichel@collabora.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Date: Tue, 10 Jan 2023 19:55:39 +0000
-In-Reply-To: <615a84c8-0b5a-8f3f-517b-af1feea6d005@linaro.org>
-References: <20230110155252.189300-1-chris.obbard@collabora.com>
-	 <20230110155252.189300-2-chris.obbard@collabora.com>
-	 <615a84c8-0b5a-8f3f-517b-af1feea6d005@linaro.org>
-User-Agent: Evolution 3.46.2-1 
+	id 1pFKpx-008QTT-8W
+	for linux-rockchip@lists.infradead.org; Tue, 10 Jan 2023 20:03:10 +0000
+Received: by mail-oo1-xc34.google.com with SMTP id h3-20020a4aa283000000b004ead187bd6eso3502588ool.5
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Jan 2023 12:03:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xn0RWIp29/DDAGotFO+F2cDyIEYDf7WQu136TlHaqBY=;
+        b=J5wl9aZ1IGVKg3lxEsQz4tnGLe3hwvrXmSc6JvIcjnH9Qk+O/wKX6InDxVsiLFF7HI
+         nElQ3Tdyo29n+VERdoB4PBD3HnjdmlHL48hCL/FqvLqTb1jatMoEBMqrz4zCNR3Ltx4J
+         SGnktX0yevWOFId052bDTYFckwojX1RXTdYuBmZV9/1hoKyiQu0FekR8zRoiqxtmmFrp
+         DZqEicdPijXJvtEgoiaUnJwDEwer4qP0+y05oZ0AiBgsBvwCPqmpLhJRIAudwRjGuQ8z
+         DditkC69Hsf57phbBQFTQKhwr840n2PXLpWs5b5reDRS2lClfMSxuRAnfhaw10/ANiXy
+         Q6Hw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xn0RWIp29/DDAGotFO+F2cDyIEYDf7WQu136TlHaqBY=;
+        b=Mlz/H3rS1yvTyUmDk7JjI1L6yUEuYweXGIKr4LuCT7fsiiZ5twXqO7eDhAim6DfFnz
+         GMxlMZxBxl81BbzUqfkcXbHzglL0KhZx9KoMRaXUWUWTQSCF1Kq2hpt/Lczq+M4jLnB+
+         qzd27n70RMnSfsHksZ0M59bPpn2OiHe88NlPp918QiarQd4wW3pCwyAy9KrEiwBqvJcI
+         sAlvX9NhWqjxqOcKRNMUFB8m9AZDSVbY6K331u6mRppJWRT594RezYQzhONltZGebNJi
+         rV5zy00v4DOGma5945TQdcT6D77ZZA2uQ8fExOOYmaiNP5Mxm7DI9B2Vnb1cR/bDCJLU
+         OcOg==
+X-Gm-Message-State: AFqh2koVtDktKLZJTgGmAuBVNQN33isSu8XzvwGXSniGzoR7Wwj4FixR
+	KwKkbuGzqFhMBPJQH+nx2lU=
+X-Google-Smtp-Source: AMrXdXsUnCZFrgXKeAiUQMlpciK+Y2fvmBkeu+sGeN5vr+2gS/lMTnHiixfEKYg1f/tLIXAiTGxg2A==
+X-Received: by 2002:a4a:ce8b:0:b0:4b0:ddb0:e0a6 with SMTP id f11-20020a4ace8b000000b004b0ddb0e0a6mr30972164oos.3.1673380986977;
+        Tue, 10 Jan 2023 12:03:06 -0800 (PST)
+Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id r4-20020a4aad04000000b004a394578e14sm6089779oon.32.2023.01.10.12.03.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jan 2023 12:03:06 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	maccraft123mc@gmail.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	thierry.reding@gmail.com,
+	linus.walleij@linaro.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v8 4/4] arm64: dts: rockchip: add display to RG503
+Date: Tue, 10 Jan 2023 14:02:55 -0600
+Message-Id: <20230110200255.1218738-5-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230110200255.1218738-1-macroalpha82@gmail.com>
+References: <20230110200255.1218738-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_115542_858367_7BA69C32 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20230110_120309_332955_312EF9B3 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,27 +103,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2023-01-10 at 20:21 +0100, Krzysztof Kozlowski wrote:
-> On 10/01/2023 16:52, Christopher Obbard wrote:
-> > In the previous version, the sdhci alias was set
-> > to mmc1: an artifact leftover from the port from
-> > vendor kernel. Update the alias to mmc0 to match
-> 
-> Please wrap
-> commit
-> message
-> according
-> to
-> Linux
-> coding style / submission process (neither too early nor over the
-> limit):
-> https://elixir.bootlin.com/linux/v5.18-rc4/source/Documentation/process/submitting-patches.rst#L586
+From: Chris Morgan <macromorgan@hotmail.com>
 
-thanks
-for
-the
-hint - I sent V2 and will hopefully make less awful Haikus in future ;-
-)
+Add Samsung AMS495QA01 panel to RG503.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+---
+ .../dts/rockchip/rk3566-anbernic-rg503.dts    | 55 +++++++++++++++++++
+ 1 file changed, 55 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+index 5dafcc86296b..b4b2df821cba 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+@@ -47,6 +47,21 @@ gpio_spi: spi {
+ 		mosi-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
+ 		cs-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
+ 		num-chipselects = <0>;
++
++		panel@0 {
++			compatible = "samsung,ams495qa01";
++			reg = <0>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&lcd_reset>;
++			reset-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
++			vdd-supply = <&vcc_3v3>;
++
++			port {
++				mipi_in_panel: endpoint {
++					remote-endpoint = <&mipi_out_panel>;
++				};
++			};
++		};
+ 	};
+ 
+ 	/* Channels reversed for both headphones and speakers. */
+@@ -94,6 +109,32 @@ &cru {
+ 	assigned-clock-rates = <1200000000>, <200000000>, <500000000>;
+ };
+ 
++&dsi_dphy0 {
++	status = "okay";
++};
++
++&dsi0 {
++	status = "okay";
++
++	ports {
++		dsi0_in: port@0 {
++			reg = <0>;
++
++			dsi0_in_vp1: endpoint {
++				remote-endpoint = <&vp1_out_dsi0>;
++			};
++		};
++
++		dsi0_out: port@1 {
++			reg = <1>;
++
++			mipi_out_panel: endpoint {
++				remote-endpoint = <&mipi_in_panel>;
++			};
++		};
++	};
++};
++
+ &gpio_keys_control {
+ 	button-a {
+ 		gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
+@@ -146,6 +187,13 @@ spk_amp_enable_h: spk-amp-enable-h {
+ 		};
+ 	};
+ 
++	gpio-lcd {
++		lcd_reset: lcd-reset {
++			rockchip,pins =
++				<4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gpio-spi {
+ 		spi_pins: spi-pins {
+ 			rockchip,pins =
+@@ -164,3 +212,10 @@ rk817_charger: charger {
+ 		rockchip,sleep-filter-current-microamp = <100000>;
+ 	};
+ };
++
++&vp1 {
++	vp1_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
++		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
++		remote-endpoint = <&dsi0_in_vp1>;
++	};
++};
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
