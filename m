@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A51BC46467
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 15:33:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43E1BC54EBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jan 2023 15:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kInQT0jVpLpDTTCDcVXYKAmbxsXTz0SxNu7ek9f5VZY=; b=LYzr0NN+HCUpcJ
-	+fNn8y7vzwPxwHWMdkzeN+u+lFoX4wFVfrmuzln5ZSLCpmK16mELw4cvm7UowrjHKcW/U1u+lRZ33
-	BKpw5hNOqpsDb/j6Y3lG20hnEnsRVwif4gm+nfpFEMU9tXdUMMwhF3ApreGpJswR7nROBz69xnX5Q
-	CLkBePFunDvY1tfM3XL9uw+WhOZ+JZNWK7anBMtg4NOvemaWv7UwVQSRnmBQJlqCz5YXNXKrvDFHo
-	Pj2LbmEivUikZNigpaR+pIy/K7ILrw7rR9SbORxEZXO4uXEI50cdeE70wbnX/VLSZbjLC62Um8jN6
-	03OCwgD/++0qD6GO1Jvw==;
+	List-Owner; bh=V7UXCBYZldC1X7dKWmn+jWhEuDy4NEHX7D7Ihw5wq88=; b=BPGE2HqaAQI/ZK
+	SGJsCs5ndSvBq+VVl4yJJ0U5i3LpDTEKVasmjpUqWLeWte9q7gJNRUVW2RbIIk+3UD2wd8kv4Q20G
+	wwN9dE1IAzwzOEN58i1qcLpDVyZ//sqHncustlVW640sJi8hN5bvVxL3cDY3PS6Aa648Ma65ZihbB
+	JcCHgwYjXg8tUNZHoIw/lAnlaCKoKTQ6PQHQXYkS7Y8r9eQMb5lKTOpSA6i7udugys17BGpcBDPAR
+	G/ZIN6avvaKSDVIqDH+XXzbQbsErHQl4xStTfXKt/VYhEYpCS0VBGOR9SDUXyobtvJjmjga2HPwKm
+	/wncyJ1dh9VjKpoS8BHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFGcc-007bft-6H; Tue, 10 Jan 2023 15:33:06 +0000
+	id 1pFGcp-007bks-QR; Tue, 10 Jan 2023 15:33:19 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFGcZ-007be0-FZ; Tue, 10 Jan 2023 15:33:04 +0000
+	id 1pFGcZ-007be4-Kn; Tue, 10 Jan 2023 15:33:04 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pFGcX-0005bB-UD; Tue, 10 Jan 2023 16:33:01 +0100
+	id 1pFGcY-0005bB-8v; Tue, 10 Jan 2023 16:33:02 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -38,16 +38,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org
-Subject: Re: [PATCH v1] ARM: dts: rockchip: add brcmf node to rk3066a-mk808.dts
-Date: Tue, 10 Jan 2023 16:32:59 +0100
-Message-Id: <167336477675.2640328.14984195063883360325.b4-ty@sntech.de>
+Subject: Re: [PATCH v1] ARM: dts: rockchip: rk3128: add space between label and nodename nfc pinctrl node
+Date: Tue, 10 Jan 2023 16:33:00 +0100
+Message-Id: <167336477675.2640328.10861185055523187407.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <b3c7f1d7-47fd-90e4-badb-e8ceb8901e27@gmail.com>
-References: <b3c7f1d7-47fd-90e4-badb-e8ceb8901e27@gmail.com>
+In-Reply-To: <67675d28-87c5-0df1-4b93-2f1233918a1e@gmail.com>
+References: <67675d28-87c5-0df1-4b93-2f1233918a1e@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230110_073303_547856_95E7C82D 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20230110_073303_707967_4B7C1044 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,18 +65,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 16 Dec 2022 00:17:44 +0100, Johan Jonker wrote:
-> The MK808 board has a wifi chip called RK901.
-> Add a somewhat brcmf compatible node to the rk3066a-mk808.dts file.
-> That's what's available as driver in the mainline kernel in relation
-> to this Rockchip wifi product that is able to load the firmware.
+On Sat, 17 Dec 2022 13:05:32 +0100, Johan Jonker wrote:
+> Add space between label and nodename nfc pinctrl node.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] ARM: dts: rockchip: add brcmf node to rk3066a-mk808.dts
-      commit: 75bba4f4faf4f14112377ff6d1b996a7ec4c0fa1
+[1/1] ARM: dts: rockchip: rk3128: add space between label and nodename nfc pinctrl node
+      commit: 4a88d9ebc27e144ad9e1cad6a7832cb65f332673
 
 Best regards,
 -- 
