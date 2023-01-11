@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05233C5479D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jan 2023 11:12:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8759C5479D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jan 2023 15:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=uiuxMwtjY0vjV6fwUQpFjR3tJo49gxnbnrxUkCaxOZw=; b=manOGz+RqomkbY
-	mISjc42RMlVwEXc0FEYaTFuZ6k3G9Any1ssKwtoCLkVOMT2OLRMphzEDN5OMYDVSeYsEyxBS5oucJ
-	BF3a5ZAk+e6Mtk06vvNXAcbm2vZ9EvKkw+i8JN2PRLkfDouZqDSqSZVPhXddS5/1XTlTDdMWcx7aa
-	3LtFSDpZaCF+TAdJ/D5GBCQNVdJ1RqJvYLLSqXTHe2FRzboMoWD1aRLlpE79FbSBOKToRdSsQKXh+
-	vrrtcqc78yxkAlWLXQuaNKRJ0J3rQTVJYoAaHmsUijnUoUlU4LiUpzf1D+QMqylmWNZzrB0KSa823
-	dcOfyLwGTSqoqlOlzCSQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8hL+ueEV6d3gYjF5NLotBDFTAWZZO36PUhfcHBAcTJI=; b=DA3otV2ald2HOT
+	7G4UmcPtvj8FGK3Nf9kw3uQl7K2ksnIetSRXY9dpPV1WDEjrWHtsU0G5KbI3WLgcYERa9LgUhObUE
+	FHMANPu4LlEk8ZPo5HiPn7E1E3BfWeMKBUAM8SdRXoytBTFr+w6Mr6ljIpGCdtIidHKrxvg/p/jsf
+	ZWCyicTDA0L8tPD4ZfBOT4e+xgCvmjW6sBOgPuGguT4nQJjALPy319abGerFEOON1A/yEhhSEswqr
+	UFjC0B2PO1Nx6P28WDY27XBr0gqO+NqpYB1dOIF+o07lpSrDtRzNl7/tnUYcB6K1fJ8E+8k1SzLWS
+	M/a1jr+lYnWtHX8vvCrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFZ2J-00B0ws-OI; Wed, 11 Jan 2023 11:12:51 +0000
-Received: from mail-m11878.qiye.163.com ([115.236.118.78])
+	id 1pFcf5-00Bv9i-7f; Wed, 11 Jan 2023 15:05:07 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFZ22-00B0ql-T3; Wed, 11 Jan 2023 11:12:37 +0000
-Received: from DESKTOP-SG5V5EA (unknown [58.22.7.114])
-	by mail-m11878.qiye.163.com (Hmail) with ESMTPA id 718F4740A82;
-	Wed, 11 Jan 2023 19:12:29 +0800 (CST)
-Date: Wed, 11 Jan 2023 19:12:29 +0800
-From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-To: =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, 
-	"Jonas Karlman" <jonas@kwiboo.se>, 
-	linus.walleij <linus.walleij@linaro.org>
-Cc: linux-gpio <linux-gpio@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	"Jonas Karlman" <jonas@kwiboo.se>
-Subject: Re: Re: [PATCH] pinctrl: rockchip: fix reading pull type on rk3568
-References: <20230110172955.1258840-1-jonas@kwiboo.se>, 
-	<2023011118261820881054@rock-chips.com>, 
-	<3490318.N7aMVyhfb1@diego>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.19.158[cn]
-Mime-Version: 1.0
-Message-ID: <2023011119122923852255@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQktMVh9PGkMYGEkaSUMdGVUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MzI6Syo6SD0YGQ9RFRAoOhxI
-	TzhPCUlVSlVKTUxIT0hOTk5LS09PVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQU9DTk03Bg++
-X-HM-Tid: 0a85a0880fb52eb4kusn718f4740a82
+	id 1pFcev-00Bv4V-Bz
+	for linux-rockchip@lists.infradead.org; Wed, 11 Jan 2023 15:04:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1673449497; x=1704985497;
+  h=date:from:to:subject:message-id:references:mime-version:
+   content-transfer-encoding:in-reply-to;
+  bh=jxDJ3ooBqVnTaczv1GXFLe+oPshX0iJRCjOYwPWvPAA=;
+  b=So19viAxImIb2Fy0yIZOWBVElxlOrvzsymy6JU11HuWagMyzTJbDvP/o
+   aJ+PrRm8LxL1obS/OpduiDi2+oD7j5EXetci5cfab8nroet3EDc0sutI3
+   INhtXbYWFXA67p8AgCQ/H7l6LYzZeP+MON93sLlxOuC28E99pVjtK3NHH
+   4SmbqEbz8y0lBEwLmuecm6/wL+S3wXERZIkr+dRXHZIt1QlkupFllF7AT
+   yIe/3LbWKp+pJr3JaQ2RYx2OunGAJC+dkCFyOpbG+XHWmflsaAYW0TFHm
+   MfyVc7Emtksdg5+FNGflDt4n3QlVzqa+J3AQnpqyAgq+n1qd12sM9QUh6
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="350662840"
+X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; 
+   d="scan'208";a="350662840"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2023 07:03:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="687955288"
+X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; 
+   d="scan'208";a="687955288"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.55])
+  by orsmga008.jf.intel.com with SMTP; 11 Jan 2023 07:03:31 -0800
+Received: by stinkbox (sSMTP sendmail emulation); Wed, 11 Jan 2023 17:03:30 +0200
+Date: Wed, 11 Jan 2023 17:03:30 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Brian Norris <briannorris@chromium.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Sean Paul <seanpaul@chromium.org>,
+	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH 1/2] drm/atomic: Allow vblank-enabled + self-refresh
+ "disable"
+Message-ID: <Y77PwoqlfUS5JK7q@intel.com>
+References: <20230105174001.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
+ <Y7hgLUXOrD7QwKs1@phenom.ffwll.local>
+ <Y7hl0Z9PZhFk8On9@phenom.ffwll.local>
+ <Y7h3cuAVE2fdS9K3@google.com>
+ <Y7iFAJqGNXA7wHoK@phenom.ffwll.local>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <Y7iFAJqGNXA7wHoK@phenom.ffwll.local>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_031235_108039_99C9458D 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20230111_070457_485103_63D554F3 
+X-CRM114-Status: GOOD (  21.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,54 +85,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa286CgotLS0tLS0tLS0tLS0tLQpqYXkueHVAcm9jay1jaGlwcy5jb20KPkhpIEpheSwK
-Pgo+QW0gTWl0dHdvY2gsIDExLiBKYW51YXIgMjAyMywgMTE6MjY6MTggQ0VUIHNjaHJpZWIgamF5
-Lnh1QHJvY2stY2hpcHMuY29tOgo+PiBIaSBKb25hcwo+Pgo+PiAtLS0tLS0tLS0tLS0tLQo+PiBq
-YXkueHVAcm9jay1jaGlwcy5jb20KPj4gPldoZW4gcmVhZGluZyBwaW5jb25mLXBpbnMgZnJvbSBk
-ZWJ1Z2ZzIGl0IGZhaWxzIHRvIGdldCB0aGUgY29uZmlndXJlZCBwdWxsCj4+ID50eXBlIG9uIFJL
-MzU2OCwgInVuc3VwcG9ydGVkIHBpbmN0cmwgdHlwZSIgZXJyb3IgbWVzc2FnZXMgaXMgYWxzbyBy
-ZXBvcnRlZC4KPj4gPgo+PiA+Rml4IHRoaXMgYnkgYWRkaW5nIHN1cHBvcnQgZm9yIFJLMzU2OCBp
-biByb2NrY2hpcF9nZXRfcHVsbCwgaW5jbHVkaW5nIGEKPj4gPnJldmVyc2Ugb2YgdGhlIHB1bGwt
-dXAgdmFsdWUgc3dhcCBhcHBsaWVkIGluIHJvY2tjaGlwX3NldF9wdWxsIHNvIHRoYXQKPj4gPnB1
-bGwtdXAgaXMgY29ycmVjdGx5IHJlcG9ydGVkIGluIHBpbmNvbmYtcGlucy4KPj4gPkFsc28gdXBk
-YXRlIHRoZSB3b3JrYXJvdW5kIGNvbW1lbnQgdG8gcmVmbGVjdCBhZmZlY3RlZCBwaW5zLCBHUElP
-MF9EMy1ENi4KPj4gPgo+PiA+Rml4ZXM6IGMwZGFkYzBlNDdhOCAoInBpbmN0cmw6IHJvY2tjaGlw
-OiBhZGQgc3VwcG9ydCBmb3IgcmszNTY4IikKPj4gPlNpZ25lZC1vZmYtYnk6IEpvbmFzIEthcmxt
-YW4gPGpvbmFzQGt3aWJvby5zZT4KPj4gPi0tLQo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBKaWFucXVu
-IFh1IDxqYXkueHVAcm9jay1jaGlwcy5jb20+Cj4KPkRpZCB5b3Ugd2FudCBvbmUgb2YKPgo+LSBS
-ZXZpZXdlZC1ieToKPi0gVGVzdGVkLWJ5Ogo+LSBBY2tlZC1ieToKPgo+aW5zdGVhZD8gCnRoYW5r
-cywgCgpSZXZpZXdlZC1ieTrCoEppYW5xdW4gWHUgPGpheS54dUByb2NrLWNoaXBzLmNvbT4KPgo+
-Cj5IZWlrbwo+Cj4+ID4gZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYyB8IDExICsr
-KysrKysrKystCj4+ID4gMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDEgZGVsZXRp
-b24oLSkKPj4gPgo+PiA+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tj
-aGlwLmMgYi9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jCj4+ID5pbmRleCA4NDlk
-NWZhMmEzNjIuLjVlZWFjOTJmNjEwYSAxMDA2NDQKPj4gPi0tLSBhL2RyaXZlcnMvcGluY3RybC9w
-aW5jdHJsLXJvY2tjaGlwLmMKPj4gPisrKyBiL2RyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tj
-aGlwLmMKPj4gPkBAIC0yNDM2LDEwICsyNDM2LDE5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ2V0
-X3B1bGwoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5rLCBpbnQgcGluX251bSkKPj4gPiBj
-YXNlIFJLMzMwODoKPj4gPiBjYXNlIFJLMzM2ODoKPj4gPiBjYXNlIFJLMzM5OToKPj4gPisJY2Fz
-ZSBSSzM1Njg6Cj4+ID4gY2FzZSBSSzM1ODg6Cj4+ID4gcHVsbF90eXBlID0gYmFuay0+cHVsbF90
-eXBlW3Bpbl9udW0gLyA4XTsKPj4gPiBkYXRhID4+PSBiaXQ7Cj4+ID4gZGF0YSAmPSAoMSA8PCBS
-SzMxODhfUFVMTF9CSVRTX1BFUl9QSU4pIC0gMTsKPj4gPisJLyoKPj4gPisJKiBJbiB0aGUgVFJN
-LCBwdWxsLXVwIGJlaW5nIDEgZm9yIGV2ZXJ5dGhpbmcgZXhjZXB0IHRoZSBHUElPMF9EMy1ENiwK
-Pj4gPisJKiB3aGVyZSB0aGF0IHB1bGwgdXAgdmFsdWUgYmVjb21lcyAzLgo+PiA+KwkqLwo+PiA+
-KwlpZiAoY3RybC0+dHlwZSA9PSBSSzM1NjggJiYgYmFuay0+YmFua19udW0gPT0gMCAmJiBwaW5f
-bnVtID49IDI3ICYmIHBpbl9udW0gPD0gMzApIHsKPj4gPisJaWYgKGRhdGEgPT0gMykKPj4gPisJ
-ZGF0YSA9IDE7Cj4+ID4rCX0KPj4gPgo+PiA+IHJldHVybiByb2NrY2hpcF9wdWxsX2xpc3RbcHVs
-bF90eXBlXVtkYXRhXTsKPj4gPiBkZWZhdWx0Ogo+PiA+QEAgLTI0OTcsNyArMjUwNiw3IEBAIHN0
-YXRpYyBpbnQgcm9ja2NoaXBfc2V0X3B1bGwoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5r
-LAo+PiA+IH0KPj4gPiB9Cj4+ID4gLyoKPj4gPi0JKiBJbiB0aGUgVFJNLCBwdWxsLXVwIGJlaW5n
-IDEgZm9yIGV2ZXJ5dGhpbmcgZXhjZXB0IHRoZSBHUElPMF9EMC1ENiwKPj4gPisJKiBJbiB0aGUg
-VFJNLCBwdWxsLXVwIGJlaW5nIDEgZm9yIGV2ZXJ5dGhpbmcgZXhjZXB0IHRoZSBHUElPMF9EMy1E
-NiwKPj4gPiAqIHdoZXJlIHRoYXQgcHVsbCB1cCB2YWx1ZSBiZWNvbWVzIDMuCj4+ID4gKi8KPj4g
-PiBpZiAoY3RybC0+dHlwZSA9PSBSSzM1NjggJiYgYmFuay0+YmFua19udW0gPT0gMCAmJiBwaW5f
-bnVtID49IDI3ICYmIHBpbl9udW0gPD0gMzApIHsKPj4gPi0tCj4+ID4yLjM5LjAKPj4gPgo+Pgo+
-Cj4KPgo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On Fri, Jan 06, 2023 at 09:30:56PM +0100, Daniel Vetter wrote:
+> On Fri, Jan 06, 2023 at 11:33:06AM -0800, Brian Norris wrote:
+> > On Fri, Jan 06, 2023 at 07:17:53PM +0100, Daniel Vetter wrote:
+> > > - fake vblanks with hrtimer, because on most hw when you turn off the=
+ crtc
+> > >   the vblanks are also turned off, and so your compositor would still
+> > >   hang. The vblank machinery already has all the code to make this ha=
+ppen
+> > >   (and if it's not all, then i915 psr code should have it).
+> > =
+
+> > Is a timer better than an interrupt? I'm pretty sure the vblank
+> > interrupts still can fire on Rockchip CRTC (VOP) (see also the other
+> > branch of this thread), so this isn't really necessary. (IGT vblank
+> > tests pass without hanging.) Unless you simply prefer a fake timer for
+> > some reason.
+> > =
+
+> > Also, I still haven't found that fake timer machinery, but maybe I just
+> > don't know what I'm looking for.
+> =
+
+> I ... didn't find it either. I'm honestly not sure whether this works for
+> intel, or whether we do something silly like disable self-refresh when a
+> vblank interrupt is pending :-/
+
+Intel hardware doesn't enter PSR while the vblank interrupt is enabled.
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
