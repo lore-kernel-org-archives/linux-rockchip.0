@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3500BC46467
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jan 2023 10:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A128BC46467
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jan 2023 10:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KrBnCIe8MA4rthrltuoS5gmnZsGY1e6hY/85aElJREw=; b=n4c0HI9SD2P+oq
-	KD7g3wTB66+/84k8nA/ErrWS7fZrogcs4TqnY9Vc+krsyzzm9m3Mn0HBS+9PJQDe4MlwcOXryPFYZ
-	pVi96EoFWAIc1TLamfWvGUhZVatMn7JjqiBlpQghCwZObnAiCSOpTjL0Z8oIdJQVplBqqbjmpIRwV
-	3wuAfP97Z4Jy4jmYF3EyjB4itn/Vn6O9EM5tGmBB6Kqospd60pHVbRE+fUhErzwTT0p52n0JCCuXm
-	UlVWUWWUEpRKHlaPsc1BtPrq6p4a84B7XPRZpkQRSNeGJzjbokBukZNBqc7AN/GtDAY/OlGpmq/fo
-	3jc5Q6OadSs7gPu1Qjpg==;
+	List-Owner; bh=jd4OvvB9iFpnKR8kGMT+SmJEqtg8DSlsUViuR0WwJsM=; b=M8l4if7birIcsw
+	QG9gPF6IZuoxDjJMbtJpCrpnkHOF/vGfO0UPaoUZBXy+kbA4OIVo7rveBhbRmgkOG1ONynk/yD8oK
+	PPezKYAs0fgl5Dsc41pzS/TmeL/KUhuM21SjzYxAB9JPkPUWsRbrNUisYaKbyV+ALrElpSeUbSUL0
+	kkc75y7v8WCGFPkD5IZIWOy4DiJXdm7R4/LFK80UHPHlWkNxRERtKGiaytEZ25KiKk7RBbdBaiPEz
+	TTC11zgJeWCV6qbPnTpAdV3EnTmcC0OyvUuOyyWetLUl3v3AuCtQcdK22VStkpeHSAiparufMwx2u
+	iQusYBb7WnuLKUgPF8NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFYaS-00ArXy-BV; Wed, 11 Jan 2023 10:44:04 +0000
+	id 1pFYbk-00AsFQ-IZ; Wed, 11 Jan 2023 10:45:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFYaB-00ArPO-Br; Wed, 11 Jan 2023 10:43:48 +0000
+	id 1pFYbh-00AsDG-DA; Wed, 11 Jan 2023 10:45:22 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pFYa7-0004Th-7W; Wed, 11 Jan 2023 11:43:43 +0100
+	id 1pFYbb-0004VK-0N; Wed, 11 Jan 2023 11:45:15 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Anand Moon <anand@edgeble.ai>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Richard Cochran <richardcochran@gmail.com>, Johan Jonker <jbx6244@gmail.com>, Jagan Teki <jagan@edgeble.ai>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCHv4 linux-next 3/4] Rockchip RV1126 has GMAC 10/100/1000M ethernet controller
-Date: Wed, 11 Jan 2023 11:43:42 +0100
-Message-ID: <2917690.KRxA6XjA2N@diego>
-In-Reply-To: <CACF1qnd=o+QWuofgAb+YXOs1R_dOuCPxWrb-+YEhuN4z8OnTrA@mail.gmail.com>
-References: <20230111064842.5322-1-anand@edgeble.ai> <7148963.18pcnM708K@diego> <CACF1qnd=o+QWuofgAb+YXOs1R_dOuCPxWrb-+YEhuN4z8OnTrA@mail.gmail.com>
+To: Jonas Karlman <jonas@kwiboo.se>, "linus. walleij" <linus.walleij@linaro.org>, "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
+Cc: linux-gpio <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] pinctrl: rockchip: fix reading pull type on rk3568
+Date: Wed, 11 Jan 2023 11:45:14 +0100
+Message-ID: <3490318.N7aMVyhfb1@diego>
+In-Reply-To: <2023011118261820881054@rock-chips.com>
+References: <20230110172955.1258840-1-jonas@kwiboo.se> <2023011118261820881054@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230111_024347_422539_B608358F 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20230111_024521_477231_8B0318F3 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -52,60 +52,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 11. Januar 2023, 11:31:40 CET schrieb Anand Moon:
-> Hi Heiko,
-> =
+Hi Jay,
 
-> Thanks for your review comments.
-> =
-
-> On Wed, 11 Jan 2023 at 15:41, Heiko St=FCbner <heiko@sntech.de> wrote:
+Am Mittwoch, 11. Januar 2023, 11:26:18 CET schrieb jay.xu@rock-chips.com:
+> Hi Jonas
+> 
+> --------------
+> jay.xu@rock-chips.com
+> >When reading pinconf-pins from debugfs it fails to get the configured pull
+> >type on RK3568, "unsupported pinctrl type" error messages is also reported.
 > >
-> > Hi,
+> >Fix this by adding support for RK3568 in rockchip_get_pull, including a
+> >reverse of the pull-up value swap applied in rockchip_set_pull so that
+> >pull-up is correctly reported in pinconf-pins.
+> >Also update the workaround comment to reflect affected pins, GPIO0_D3-D6.
 > >
-> > Am Mittwoch, 11. Januar 2023, 07:48:38 CET schrieb Anand Moon:
-> > > Add Ethernet GMAC node for RV1126 SoC.
-> > >
-> > > Signed-off-by: Anand Moon <anand@edgeble.ai>
-> > > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> >Fixes: c0dadc0e47a8 ("pinctrl: rockchip: add support for rk3568")
+> >Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> >--- 
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+
+Did you want one of
+
+- Reviewed-by:
+- Tested-by:
+- Acked-by:
+
+instead?
+
+
+Heiko
+
+> > drivers/pinctrl/pinctrl-rockchip.c | 11 ++++++++++-
+> > 1 file changed, 10 insertions(+), 1 deletion(-)
 > >
-> > patches 2-4 have this Signed-off-by from Jagan again where he is not
-> > not the author but also not the sender.
-> =
-
-> We both work to fix this patch hence Jagan's SoB was added.
-
-ok, then I think the correct way to express that would be:
-
-Co-Developed-by: Jagan Teki <jagan@edgeble.ai>
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-Signed-off-by: Anand Moon <anand@edgeble.ai>
-
-
+> >diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> >index 849d5fa2a362..5eeac92f610a 100644
+> >--- a/drivers/pinctrl/pinctrl-rockchip.c
+> >+++ b/drivers/pinctrl/pinctrl-rockchip.c
+> >@@ -2436,10 +2436,19 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+> > case RK3308:
+> > case RK3368:
+> > case RK3399:
+> >+	case RK3568:
+> > case RK3588:
+> > pull_type = bank->pull_type[pin_num / 8];
+> > data >>= bit;
+> > data &= (1 << RK3188_PULL_BITS_PER_PIN) - 1;
+> >+	/*
+> >+	* In the TRM, pull-up being 1 for everything except the GPIO0_D3-D6,
+> >+	* where that pull up value becomes 3.
+> >+	*/
+> >+	if (ctrl->type == RK3568 && bank->bank_num == 0 && pin_num >= 27 && pin_num <= 30) {
+> >+	if (data == 3)
+> >+	data = 1;
+> >+	}
 > >
-> > Also this patch here, needs a fixed subject with the correct prefixes.
+> > return rockchip_pull_list[pull_type][data];
+> > default:
+> >@@ -2497,7 +2506,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+> > }
+> > }
+> > /*
+> >-	* In the TRM, pull-up being 1 for everything except the GPIO0_D0-D6,
+> >+	* In the TRM, pull-up being 1 for everything except the GPIO0_D3-D6,
+> > * where that pull up value becomes 3.
+> > */
+> > if (ctrl->type == RK3568 && bank->bank_num == 0 && pin_num >= 27 && pin_num <= 30) {
+> >--
+> >2.39.0
 > >
-> Ok, will fix this in the next version.
-> >
-> > Heiko
-> >
-> > > ---
-> > > v4: sort the node as reg adds. update the commit message.
-> > > v3: drop the gmac_clkin_m0 & gmac_clkin_m1 fix clock node which are n=
-ot
-> > >     used, Add SoB of Jagan Teki.
-> > > v2: drop SoB of Jagan Teki.
-> =
-
-> Thanks
-> -Anand
-> =
-
+> 
 
 
 
