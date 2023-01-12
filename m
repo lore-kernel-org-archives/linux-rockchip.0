@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73DA6C54EBC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 11:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 196B2C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 12:56:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lpfkx/YE78zwd4OpjAzFDLH8rQT7P05AfGXuo5aFcAI=; b=aeeYASb4RIzRUu
-	EnEML/RwOjhFx2xIoircNUxQyocRBnLhmsklec/nbN9zPvi5AZxgtOL5jcWlAlK87DdWnbSF6iRFw
-	GI12DIAIlXoM0ZUwUK7YsJVFqD7uFKHvfoHDZcKrUwftENiC1W39SIj6G2mRqLyN2pYOXa6xF+z7o
-	lv710lP7k4rVFTqnlWmJg4ugR6lhNiJlhncPypYnCu9XR3kCe4tbm6JSB1uopOkjlFEmLAFEi/FnA
-	gOQaTE0rN0s/NvEQ1N06X3eedWhfx6oXhDXJMf0yyAXNQLNp+YYf3RGuCV6Kfk4YcoEjZ0tEDqv0E
-	c0067ogLP1s8t3zgf6rA==;
+	List-Owner; bh=Ctp40i356LV8XXawk+qoznneur157/VC0/89BZjdCCY=; b=T+/ejI1q7xcWmT
+	dpfDuNh68ui0/MFk1qo4+7Z7Kl2EzpYvLfAx1aZJ1DNKjA5ajbgC4eQvyfLmw/03l/Z5HcxooTgFN
+	s+Vv/03VVkuDsXHC6RfJuYpKrhP5oMkiVN29Y2pyTPRBAAB/YKGjTN44AmFCAez5lmTaAoRJ6shOv
+	K7kvQJYjk7Oa6jfZl0Gw2zQXC/ct1QVW3hrCxvIJp60F+N/HkYi0o6/FPkpYkP0aaSnSUf6g+RS0e
+	LG0RDEEMxzF1ZNX8Q4zwGO2GaxpgTegGg/g4GSDfkrPonFl5Txy+IsG9pkoWlPim0AotmH4zIepdB
+	dyEJb3LQidGQ1lFOMfBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFw1W-00EtPC-8l; Thu, 12 Jan 2023 11:45:34 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pFx8L-00F3p3-7B; Thu, 12 Jan 2023 12:56:41 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFw1S-00EtOF-VZ
-	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 11:45:32 +0000
-Received: by mail-ed1-x532.google.com with SMTP id b4so6920248edf.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 12 Jan 2023 03:45:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=x4LA4Q8/HHLhGLaT8XU0nK2e9i+YSbZwOJxVCpmHI0I=;
-        b=bpOqQTYFDGDl7PIgL42MAbC50CiOdPxbgmWL2zFCPINFYf+rlyiMtYAlJ1vbk0D5hy
-         vNzg2J21f1iGfNp2GsropFmdg4gCWsKtLD2nc6D32uG4DuEw5x+oncX7/xi4N2ChTsVN
-         1hemOIk4Du3QqSNoVQRf/nsnbkRotAhS6doE1lBM33FukOEmiZ4/5PHrRC5ta/Wh86m5
-         PIBj+hrdLZteETDPxDeOnLcw7uWE2mJIsJUQDIZkqbWTJVJspjIDcHeadBga2kP2JBCr
-         nkbdt5hTvWgmtHsSwZ+SgOHURX5qKe9hFA/1fBTPmOah4rKrN2W4WdPvr9NpfohQaph1
-         EFNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=x4LA4Q8/HHLhGLaT8XU0nK2e9i+YSbZwOJxVCpmHI0I=;
-        b=dHok4yBU5TqbtQuhf4CKXnTuKoz87S1jZposONqSmtXgsWxKGDAkBflD+lgpHhWoGT
-         CmBf1xIMm8cVyehAMIeN5nGlEdrv2aOOW8YNKZ4N21Jlql1AJ6S/vX6UFycey+E5EKkc
-         L08HjVfQJ1e5z5pTFgPTslm05GyGLrWr8jVwq1KYQhjnFnypBAr3O7ol/7c3jYb94lt7
-         AXJpWMlw+COJv+rXnrPYtT85GyDJN7FQLNFYsqbIBWj0VKadEkoWjCZLGXJl18N6xVBh
-         ATnCJgcOg31vF78upZ+sDF7/Z/DadHZ53vpgyImSrlBcHc7d0nAXWK1K3z9rpUuY7+nR
-         FWOw==
-X-Gm-Message-State: AFqh2kro07oTbvQZazIqvME/9wlCslRJttzDJqYHuegSylBIDtVsPV0F
-	FS5ug0EGiDBeIwMZu27e3cAqPA==
-X-Google-Smtp-Source: AMrXdXsbrvSXd6u5bwYj0uqlv095hGGPI6g9p+Yw13whSg5c4InwHr8YvQRcNxuFFNr1cGvhnKQhAg==
-X-Received: by 2002:aa7:d0c9:0:b0:498:d121:6e00 with SMTP id u9-20020aa7d0c9000000b00498d1216e00mr15824262edo.35.1673523929239;
-        Thu, 12 Jan 2023 03:45:29 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id c8-20020aa7df08000000b0046c4553010fsm7057603edy.1.2023.01.12.03.45.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Jan 2023 03:45:28 -0800 (PST)
-Message-ID: <758cf086-541b-5c16-2d98-59c7f064378c@linaro.org>
-Date: Thu, 12 Jan 2023 12:45:26 +0100
+	id 1pFx8G-00F3ly-HF
+	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 12:56:38 +0000
+Received: from localhost (89-26-75-29.goll.dyn.salzburg-online.at [89.26.75.29])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2E7356602DBC;
+	Thu, 12 Jan 2023 12:56:35 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673528195;
+	bh=TMBuSYYQgufdE8ilX8+9MkfvSRLEsm/O1NHAsGj+B/Y=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=XOPL1XeRQInEt43srKZYrnrk2C/E2t6TlKO5p4bXvoEV/zBpFhHONeClKtTqj6JBz
+	 4o16E9P1tWHpCvOrfc/+9iIjNnCFUEt3alSQI9jpYrBa97dU0lspWglEQG7xskQ+Vh
+	 XgKtlMfpbzLXq5q5BhUkbtzWVHVDkvZEYFxOjhJNvkgCXtU1KoG3oR4M3PnfACexdl
+	 9q7Korw+75cBpygJm/0frQyYKChkqDwnB9NkXuNDQiZrBS9TrMrOaalV1OFgwXKasX
+	 moplnbm24XFPXMFZ9qSAmZAwk4rp/hYi5DzvT741iOfZxvOz2Ti1iZicgEHEOkRIEQ
+	 VFf5gm44ncdsA==
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+Date: Thu, 12 Jan 2023 13:56:17 +0100
+Subject: [PATCH v2 02/12] media: v4l2-common: Add helpers to calculate
+ bytesperline and sizeimage
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 1/3] dt-bindings: dt-bindings: arm: rockchip: Add Radxa
- Compute Module 3
-Content-Language: en-US
-To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
- <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230112105902.192852-1-jagan@amarulasolutions.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230112105902.192852-1-jagan@amarulasolutions.com>
+Message-Id: <20230101-patch-series-v2-6-2-rc1-v2-2-fa1897efac14@collabora.com>
+References: <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
+In-Reply-To:  <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ Jonas Karlman <jonas@kwiboo.se>, Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel-domain <kernel@collabora.com>,
+ Robert Beckett <bob.beckett@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+X-Mailer: b4 0.11.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1673528186; l=4683;
+ i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
+ bh=LcMmGvBIJq4nek85HGURC0+BOvaXuS5YxkC2HDnyM4I=;
+ b=21yB2ximJGHXO2qRmwC71wOACLdxQEDfraCFxz9My9OOeP/Bg30IT6qXnRdRmTEICA6UNWxjEJjI
+ 0AsKrLSDBeIJqIIhK3dU2M8+aYSDn/AyK7/xOhcyFbJLtFv1L49Z
+X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
+ pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_034531_043306_F9C5C295 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230112_045636_867626_9B6D14DE 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +90,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/01/2023 11:59, Jagan Teki wrote:
-> Radxa Compute Module 3(CM3) is one of the modules from a series
-> System On Module based on the Radxa ROCK 3 series and is compatible
-> with Raspberry Pi CM4 in pinout and form factor.
-> 
-> Specification:
-> - Rockchip RK3566
-> - up to 8GB LPDDR4
-> - up to 128GB high performance eMMC
-> - Optional wireless LAN, 2.4GHz and 5.0GHz IEEE 802.11b/g/n/ac wireless,
->   BT 5.0, BLE with onboard and external antenna.
-> - Gigabit Ethernet PHY
-> 
-> Add dt-bindings for Radxa CM3.
-> 
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Subject: drop second/last, redundant "dt-bindings" (duplicate).
+Add helper functions to calculate plane bytesperline and sizeimage, these
+new helpers consider block width and height when calculating plane
+bytesperline and sizeimage.
 
-With above:
+This prepares support for a new pixel format added in next patch that makes
+use of block width and height.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ drivers/media/v4l2-core/v4l2-common.c | 77 +++++++++++++++++------------------
+ 1 file changed, 38 insertions(+), 39 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index be23e319fb3a..12c1d2f409b0 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -340,6 +340,33 @@ static inline unsigned int v4l2_format_block_height(const struct v4l2_format_inf
+ 	return info->block_h[plane];
+ }
+ 
++static inline unsigned int v4l2_format_plane_width(const struct v4l2_format_info *info, int plane,
++						   unsigned int width)
++{
++	unsigned int hdiv = plane ? info->hdiv : 1;
++	unsigned int bytes = DIV_ROUND_UP(width * info->bpp[plane],
++				v4l2_format_block_width(info, plane) *
++				v4l2_format_block_height(info, plane));
++
++	return DIV_ROUND_UP(bytes, hdiv);
++}
++
++static inline unsigned int v4l2_format_plane_height(const struct v4l2_format_info *info, int plane,
++						    unsigned int height)
++{
++	unsigned int vdiv = plane ? info->vdiv : 1;
++	unsigned int lines = ALIGN(height, v4l2_format_block_height(info, plane));
++
++	return DIV_ROUND_UP(lines, vdiv);
++}
++
++static inline unsigned int v4l2_format_plane_size(const struct v4l2_format_info *info, int plane,
++						  unsigned int width, unsigned int height)
++{
++	return v4l2_format_plane_width(info, plane, width) *
++	       v4l2_format_plane_height(info, plane, height);
++}
++
+ void v4l2_apply_frmsize_constraints(u32 *width, u32 *height,
+ 				    const struct v4l2_frmsize_stepwise *frmsize)
+ {
+@@ -375,37 +402,19 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+ 
+ 	if (info->mem_planes == 1) {
+ 		plane = &pixfmt->plane_fmt[0];
+-		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
++		plane->bytesperline = v4l2_format_plane_width(info, 0, width);
+ 		plane->sizeimage = 0;
+ 
+-		for (i = 0; i < info->comp_planes; i++) {
+-			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+-			unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+-			unsigned int aligned_width;
+-			unsigned int aligned_height;
+-
+-			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+-			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+-
+-			plane->sizeimage += info->bpp[i] *
+-				DIV_ROUND_UP(aligned_width, hdiv) *
+-				DIV_ROUND_UP(aligned_height, vdiv);
+-		}
++		for (i = 0; i < info->comp_planes; i++)
++			plane->sizeimage +=
++				v4l2_format_plane_size(info, i, width, height);
+ 	} else {
+ 		for (i = 0; i < info->comp_planes; i++) {
+-			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+-			unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+-			unsigned int aligned_width;
+-			unsigned int aligned_height;
+-
+-			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+-			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+-
+ 			plane = &pixfmt->plane_fmt[i];
+ 			plane->bytesperline =
+-				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
+-			plane->sizeimage =
+-				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
++				v4l2_format_plane_width(info, i, width);
++			plane->sizeimage = plane->bytesperline *
++				v4l2_format_plane_height(info, i, height);
+ 		}
+ 	}
+ 	return 0;
+@@ -429,22 +438,12 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+ 	pixfmt->width = width;
+ 	pixfmt->height = height;
+ 	pixfmt->pixelformat = pixelformat;
+-	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
++	pixfmt->bytesperline = v4l2_format_plane_width(info, 0, width);
+ 	pixfmt->sizeimage = 0;
+ 
+-	for (i = 0; i < info->comp_planes; i++) {
+-		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+-		unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+-		unsigned int aligned_width;
+-		unsigned int aligned_height;
+-
+-		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+-		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+-
+-		pixfmt->sizeimage += info->bpp[i] *
+-			DIV_ROUND_UP(aligned_width, hdiv) *
+-			DIV_ROUND_UP(aligned_height, vdiv);
+-	}
++	for (i = 0; i < info->comp_planes; i++)
++		pixfmt->sizeimage +=
++			v4l2_format_plane_size(info, i, width, height);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
 
+-- 
+2.25.1
 
 _______________________________________________
 Linux-rockchip mailing list
