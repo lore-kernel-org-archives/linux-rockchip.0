@@ -4,94 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB503C54EBC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 15:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B67BC61DB3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 17:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QUv5frTgCmycP273mUcndW3J5gJekWd8A4q3c7AqxSU=; b=PoGyKTugT+nIyx
-	LMwOxfMKAoVRQEERuDm35KjL01HvBc+KXfQpS7v7lbyS4mamwaoLgEk3L4OEvbxXYKy7oq0UNbjsu
-	4uYSgRw3fUE3qt+3eti5E4GmZx2V/HHQa5G3nGAeBGl8ZzELcB8Ns7OJhWALBmHY08jnSVTX1YDYs
-	hZl0mI+SO3mDnM1fFuCNlIlMie02GF1vs+b9GW8TUN3s5Dr2ixQ9++5Lcv85NAHuBpXXJibVVRVoF
-	lWJ1XzOIxW+3PkWBX62hheyzZlaZ+jBuRtoEyzkzLro61s4wqMpn4hgNhr62Ix67eTw+c7tZJW8vU
-	HuliUl1BjWytzMELOQmw==;
+	List-Owner; bh=9klDfTCA2E9cy4PDblPKbnixIexhof96Law8ZJNQnMA=; b=4UiF4JtGpujbTo
+	OOwtRuV168Zw2Wp+5ADzcft25e7EBPBtOI/dTyiw2g5jB7mlpdZ17mKmDuiQaM6w0N8xgjzbatAbg
+	GjsYIyWrhFr5g1DXbQpbLmw/TSYBKfN6b/nFODLxFeVlcdJz47RPZW2Nolw9fMO09rlFykuCdY4WP
+	pHJhCiyr1YxFExGQJlQvZCCyTxTKUuF1l10B6wXmBXY9I5wmp6HBOaFho6sZC+vgXl3y6V/R7bP1y
+	MlOkcEbFHVxwg1tgfS12mgK2EiOBmrkkCT6LYPOvs2iZqaLRTqtVMKO83JA9iOnYN9bvo/tW6ugmX
+	rM6W8z33jfGc6KvKobLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzYw-00Ffwu-R8; Thu, 12 Jan 2023 15:32:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pG1mN-00G8Cj-JS; Thu, 12 Jan 2023 17:54:20 +0000
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFzXC-00FetV-Q9
-	for linux-rockchip@bombadil.infradead.org; Thu, 12 Jan 2023 15:30:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
-	Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=iKwwjEGopbISTrCjxgfQJsmoWWl/0HgOwyebrt0JLGA=; b=FnsC2xiqt8M+y8if3a6XKWN18Q
-	FqKR/5FYYLy9kuUfioJ1PUQlv14ipDLRPgsZ0i7NF+jOmhR2+gpgjR/h9b2yh0VCTVJL6JBclTt58
-	AQziyokZm04+lxhbyZQ3kXFgwQLVRgUOgPV9dLjd2ZQiomgewjVn4zOvxlovptgrF0razrtq+DMR8
-	GU16s739SyKZrqVwqRFyUdr8hUzfg7VtYVFHbuZVMJ1K+OU7yeDkSvdsf2mmBLuwfoBThN7gFh/fX
-	mttU7VPv047oA44Tj7+DpBUvUqxMrP/LVMnEwbtvJbpvDYhM/+YmWYsbmxUltJarkcwCI4qU03jPG
-	W14qyjYw==;
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pFzX0-0041ZK-34
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Jan 2023 15:30:21 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id bu8so28937882lfb.4
-        for <linux-rockchip@lists.infradead.org>; Thu, 12 Jan 2023 07:30:25 -0800 (PST)
+	id 1pG1mA-00G841-04
+	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 17:54:09 +0000
+Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-14fb7fdb977so19658029fac.12
+        for <linux-rockchip@lists.infradead.org>; Thu, 12 Jan 2023 09:54:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=iKwwjEGopbISTrCjxgfQJsmoWWl/0HgOwyebrt0JLGA=;
-        b=QbI169xhV8vhsr4V43oKe3t3ypXsYwuhSqv+U3fpDtFAZlimhEns/OKDdeLbZoZmIh
-         vBTAIdpXaeEx1D8wnaC3SOK1pmpgvLkcH52Ack0AR7xityglMY5G15apEjxBliyOTcKf
-         KFFNUZ/wh5OgRKL1qOxea/YdXalez4QJD7y6CWBklcPj8VmiUF9OHe+7zenmpRYbEwyj
-         vVdl99EChOEYB09vc3Xi2oVNySDI1Kr72mtUi2hElBPN5ZCghAltKgpET/OaAgmQjr1y
-         KGcH3IH4RklrAMcPgz1IyWMrFqQh8AnpD12cHrk5PQxIO3ZQD7ZqWRNC9TEbE+lVRNPl
-         asWA==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tbQtC6VR/FF2nTlwiIZ/sGihRVBeIvN5iTfkeWtgBLM=;
+        b=qPTD6c3rS1AIGdJd/IqwreRStSbgDKPzxdzC184rjfwMWhuSAyM+9w6ZlOnS18n5Ac
+         Ur5lWfjTQpEn6+CjmmWae26MLrYu/Mm1MC5GHtyb2l8Lwji+JZzBG6JXDbL3BFisoZuO
+         xUanSW2hmFOJ1mYsDeQ5wElTceOuKCkqGF03Ny/zR9PtsZhuLPXrODXy82BwbFL8gs1+
+         qK/MPEa8VfwCRl9hMLlz4dE/0wo/LraqHGrjFFJg7Rqo3Nw4oyalzSpyVm7wiMI0Za5U
+         mSsfdgEgjLMhZBN8OwcXOwpSJAY648bSybKLME8kZ/zA+94/bwebwd6LzXu8PDvVcyDv
+         K3UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iKwwjEGopbISTrCjxgfQJsmoWWl/0HgOwyebrt0JLGA=;
-        b=XHL2hFdRJU7ErXATiLM3iryeGeu13dqfyZuxb9xSfWz+6zKcKJX9ItwvGIPg2IKQyi
-         clfvCERpyiQy4XpdpgXCJjDmcJOC07DPVtSAnOqpOO/SW5mbij0QUxMJ8+5z48smswl9
-         UiGOwgGNUYt2KQV1iB/rHlQyumDA0QtjN+8tGpYYPMIDrlwZGgkfHB/FNuy+gUaoE/Lx
-         u7dSo4pY9fGXuZOxXl25Y44/BP4y1SF6TUWDyNCv2wbrJj5bPgm6uFSXo0mnVkfgGDAY
-         P6jAzUkgGUt8PPu5iaVYYRbUySYluK1GBz1AQv/9l376m9C8PDoODqc30mOhyrkywTCQ
-         M3tQ==
-X-Gm-Message-State: AFqh2kotfgOC2miP9eQqeY1VfaALBBTC8Y31LWfqB2dLcXPLufjpacNZ
-	eg6kvv/j4p4zNoqXfeiXPKNceIIaDIovZDxu6qS/0YrlsR+MJg==
-X-Google-Smtp-Source: AMrXdXsfoS3G1+dA5+WKzSYh25yd+Y2eQHNON3kw/MeVVXIcC4tY8i5M8+KHlpGkY0ARtDng3p/ekgpCc9RpY74z6no=
-X-Received: by 2002:a05:6512:2805:b0:4b5:b18a:c52d with SMTP id
- cf5-20020a056512280500b004b5b18ac52dmr7967483lfb.299.1673537423283; Thu, 12
- Jan 2023 07:30:23 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tbQtC6VR/FF2nTlwiIZ/sGihRVBeIvN5iTfkeWtgBLM=;
+        b=igXdDdCR3JCjcUo5nGIVgxhefxK3I+kLH0SKLZHIhyJCUqSOF140TtszcmZkEoa4wP
+         1BLkU3+JfiZSIsbZ6rWdGU9EHZh9ygjdsagW5wGeS+pyfDu+PVLW/M41nL0MWr6cK4H/
+         xq+A7HDokpFkYWOvxKqYXzsTgiGdNBTW+fI//wzXh5VGU29C7J863HqVZjvvJTPdf8fN
+         L0IW0Cl72K1YBUWQIOWZRZdLoLDSz2A0takMBU3vEWX5P3Moo5+6WHfGqEbIaICsgjmo
+         1oiLVFLRfLpA/Jt0N8e7dkgC2Le2LnG8xSCP2pQZJV4vExvGKoe0GqDdvHsiFb5F6zi5
+         GQeg==
+X-Gm-Message-State: AFqh2krPhIHsySH9qI0aqttUqiNpWv/7V9/YmT6dkz1VMsBekTSq4n3S
+	UiH/fo/G8YU20S8R+OG/Qt0=
+X-Google-Smtp-Source: AMrXdXuatgeeWB+YNvfU20Yql1rz5X827vbxrDwe2VY8Li5QrKB8iTXVl6QQLGb8ofIMG+3MqP+4vg==
+X-Received: by 2002:a05:6870:9f0d:b0:15e:ae80:4733 with SMTP id xl13-20020a0568709f0d00b0015eae804733mr2519457oab.6.1673546044553;
+        Thu, 12 Jan 2023 09:54:04 -0800 (PST)
+Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id v17-20020a05687105d100b0014866eb34cesm9317049oan.48.2023.01.12.09.54.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jan 2023 09:54:04 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linus.walleij@linaro.org,
+	maccraft123mc@gmail.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	thierry.reding@gmail.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V10 1/4] drm: of: Add drm_of_get_dsi_bus helper function
+Date: Thu, 12 Jan 2023 11:53:55 -0600
+Message-Id: <20230112175358.421975-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230112175358.421975-1-macroalpha82@gmail.com>
+References: <20230112175358.421975-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-References: <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com> <20230101-patch-series-v2-6-2-rc1-v2-6-fa1897efac14@collabora.com>
-In-Reply-To: <20230101-patch-series-v2-6-2-rc1-v2-6-fa1897efac14@collabora.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Thu, 12 Jan 2023 12:30:11 -0300
-Message-ID: <CAAEAJfDOcYBtWR41BLM-SUnm9oe1t=8ffJS1Kg_V-gYWzUfe8w@mail.gmail.com>
-Subject: Re: [PATCH v2 06/12] staging: media: rkvdec: Add a valid pixel format
- check as callback
-To: Sebastian Fricke <sebastian.fricke@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	Jonas Karlman <jonas@kwiboo.se>, Alex Bee <knaerzche@gmail.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	Collabora Kernel-domain <kernel@collabora.com>, Robert Beckett <bob.beckett@collabora.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_153019_296109_84E5473B 
-X-CRM114-Status: GOOD (  29.99  )
+X-CRM114-CacheID: sfid-20230112_095406_179042_DDEA8EC6 
+X-CRM114-Status: GOOD (  18.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,129 +103,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On Thu, Jan 12, 2023 at 9:56 AM Sebastian Fricke
-<sebastian.fricke@collabora.com> wrote:
->
-> Provide a callback for codec variant drivers to indicate the correct
-> output pixel-format. It will either utilize the SPS structure stored via
-> the S_CTRL IOCTL or return the default pixel-format.
->
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
-> ---
->  drivers/staging/media/rkvdec/rkvdec.c | 45 +++++++++++++++++++++++++++++------
->  drivers/staging/media/rkvdec/rkvdec.h |  1 +
->  2 files changed, 39 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> index e0e95d06e216..a46f918926a2 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -38,6 +38,20 @@ static int rkvdec_queue_busy(struct rkvdec_ctx *ctx, enum v4l2_buf_type buf_type
->                 return 0;
->  }
->
-> +/*
-> + * Use the current SPS, set by the user via the VIDIOC_S_CTRL IOCTL,
-> + * to determine the optimal pixel-format. Each codec is responsible
-> + * for choosing the appropriate pixel-format for a given parameter set.
-> + */
+Add helper function to find DSI host for devices where DSI panel is not
+a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
+official Raspberry Pi touchscreen display).
 
-It seems this assumes there's always only one valid format.
-Do you think that will hold true always for RKVDEC and for all codecs?
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+---
+ drivers/gpu/drm/drm_of.c | 70 ++++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_of.h     | 10 ++++++
+ 2 files changed, 80 insertions(+)
 
-How about we approach this differently? Instead of having a callback
-for codecs to implement, we just maintain a list of valid decoded formats
-(in the context) and re-create the list when the SPS is changed (in the S_CTRL).
+diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+index 7bbcb999bb75..6c2c97a716fe 100644
+--- a/drivers/gpu/drm/drm_of.c
++++ b/drivers/gpu/drm/drm_of.c
+@@ -10,6 +10,7 @@
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_encoder.h>
++#include <drm/drm_mipi_dsi.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_panel.h>
+ 
+@@ -493,3 +494,72 @@ int drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(drm_of_get_data_lanes_count_ep);
++
++#if IS_ENABLED(CONFIG_DRM_MIPI_DSI)
++
++/**
++ * drm_of_get_dsi_bus - find the DSI bus for a given device
++ * @dev: parent device of display (SPI, I2C)
++ * @info: DSI device info to be updated with DSI node. This is optional
++ * and if not needed can be NULL.
++ *
++ * Gets parent DSI bus for a DSI device controlled through a bus other
++ * than MIPI-DCS (SPI, I2C, etc.) using the Device Tree.
++ *
++ * Returns pointer to mipi_dsi_host if successful, -EINVAL if the
++ * request is unsupported, -EPROBE_DEFER if the DSI host is found but
++ * not available, or -ENODEV otherwise.
++ */
++struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
++					 struct mipi_dsi_device_info *info)
++{
++	struct mipi_dsi_host *dsi_host;
++	struct device_node *endpoint, *dsi_host_node;
++
++	/*
++	 * Get first endpoint child from device.
++	 */
++	endpoint = of_graph_get_next_endpoint(dev->of_node, NULL);
++	if (!endpoint)
++		return ERR_PTR(-ENODEV);
++
++	/*
++	 * Follow the first endpoint to get the DSI host node.
++	 */
++	dsi_host_node = of_graph_get_remote_port_parent(endpoint);
++	if (!dsi_host_node)
++		goto error;
++
++	/*
++	 * Get the DSI host from the DSI host node. If we get an error
++	 * or the return is null assume we're not ready to probe just
++	 * yet. Release the DSI host node since we're done with it.
++	 */
++	dsi_host = of_find_mipi_dsi_host_by_node(dsi_host_node);
++	of_node_put(dsi_host_node);
++	if (IS_ERR_OR_NULL(dsi_host)) {
++		of_node_put(endpoint);
++		return ERR_PTR(-EPROBE_DEFER);
++	}
++
++	/*
++	 * Set the node of the mipi_dsi_device_info to the correct node
++	 * and then release the endpoint node since we're done with it.
++	 * since this is optional, check if the info is NULL first.
++	 */
++	if (info) {
++		info->node = of_graph_get_remote_port(endpoint);
++		if (IS_ERR_OR_NULL(info->node))
++			goto error;
++	}
++
++	of_node_put(endpoint);
++	return dsi_host;
++
++error:
++	of_node_put(endpoint);
++	return ERR_PTR(-ENODEV);
++}
++EXPORT_SYMBOL_GPL(drm_of_get_dsi_bus);
++
++#endif /* CONFIG_DRM_MIPI_DSI */
+diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+index 10ab58c40746..705ea2caa494 100644
+--- a/include/drm/drm_of.h
++++ b/include/drm/drm_of.h
+@@ -15,6 +15,8 @@ struct drm_encoder;
+ struct drm_panel;
+ struct drm_bridge;
+ struct device_node;
++struct mipi_dsi_device_info;
++struct mipi_dsi_host;
+ 
+ /**
+  * enum drm_lvds_dual_link_pixels - Pixel order of an LVDS dual-link connection
+@@ -56,6 +58,8 @@ int drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ 				   int port_reg, int reg,
+ 				   const unsigned int min,
+ 				   const unsigned int max);
++struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
++					 struct mipi_dsi_device_info *info);
+ #else
+ static inline uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
+ 					  struct device_node *port)
+@@ -127,6 +131,12 @@ drm_of_get_data_lanes_count_ep(const struct device_node *port,
+ {
+ 	return -EINVAL;
+ }
++static inline struct
++mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
++					 struct mipi_dsi_device_info *info)
++{
++	return ERR_PTR(-EINVAL);
++}
+ #endif
+ 
+ /*
+-- 
+2.34.1
 
-Possibly simpler and less invasive, not sure if there are any caveats.
-
-Thanks,
-Ezequiel
-
-> +static int rkvdec_get_valid_fmt(struct rkvdec_ctx *ctx)
-> +{
-> +       const struct rkvdec_coded_fmt_desc *coded_desc = ctx->coded_fmt_desc;
-> +
-> +       if (coded_desc->ops->valid_fmt)
-> +               return coded_desc->ops->valid_fmt(ctx);
-> +       return ctx->coded_fmt_desc->decoded_fmts[0];
-> +}
-> +
->  static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
->  {
->         struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-> @@ -200,8 +214,9 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
->  static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
->  {
->         struct v4l2_format *f = &ctx->decoded_fmt;
-> +       u32 valid_fmt = rkvdec_get_valid_fmt(ctx);
->
-> -       rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
-> +       rkvdec_reset_fmt(ctx, f, valid_fmt);
->         f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
->         v4l2_fill_pixfmt_mp(&f->fmt.pix_mp,
->                             ctx->coded_fmt_desc->decoded_fmts[0],
-> @@ -260,13 +275,17 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
->         if (WARN_ON(!coded_desc))
->                 return -EINVAL;
->
-> -       for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
-> -               if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
-> -                       break;
-> -       }
-> +       if (ctx->sps) {
-> +               pix_mp->pixelformat = rkvdec_get_valid_fmt(ctx);
-> +       } else {
-> +               for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
-> +                       if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
-> +                               break;
-> +               }
->
-> -       if (i == coded_desc->num_decoded_fmts)
-> -               pix_mp->pixelformat = coded_desc->decoded_fmts[0];
-> +               if (i == coded_desc->num_decoded_fmts)
-> +                       pix_mp->pixelformat = coded_desc->decoded_fmts[0];
-> +       }
->
->         /* Always apply the frmsize constraint of the coded end. */
->         pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
-> @@ -435,6 +454,18 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
->         if (WARN_ON(!ctx->coded_fmt_desc))
->                 return -EINVAL;
->
-> +       /*
-> +        * According to the specification the driver can only return formats
-> +        * that are supported by both the current encoded format and the
-> +        * provided controls
-> +        */
-> +       if (ctx->sps) {
-> +               if (f->index)
-> +                       return -EINVAL;
-> +               f->pixelformat = rkvdec_get_valid_fmt(ctx);
-> +               return 0;
-> +       }
-> +
->         if (f->index >= ctx->coded_fmt_desc->num_decoded_fmts)
->                 return -EINVAL;
->
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-> index 332126e7b812..e353a4403e5b 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.h
-> +++ b/drivers/staging/media/rkvdec/rkvdec.h
-> @@ -66,6 +66,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
->  struct rkvdec_coded_fmt_ops {
->         int (*adjust_fmt)(struct rkvdec_ctx *ctx,
->                           struct v4l2_format *f);
-> +       u32 (*valid_fmt)(struct rkvdec_ctx *ctx);
->         int (*start)(struct rkvdec_ctx *ctx);
->         void (*stop)(struct rkvdec_ctx *ctx);
->         int (*run)(struct rkvdec_ctx *ctx);
->
-> --
-> 2.25.1
 
 _______________________________________________
 Linux-rockchip mailing list
