@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D8E1C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 12:57:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6ED1C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 12:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rSXD+xVjp2RS+S0mwwgdWRF5QJwREONlGmbmz03xEJM=; b=QyJ8hneLRybXk6
-	xy4XD1Pxa270vU1ejEXkrKwNQpMU1diNcs4+tQsw4MiDOQSLHnh8bGs4mp0Uyq/pxPmHpBy9GD0FY
-	A37MYgnFvv4tn9MIFVNUot2boTjBJ+7aU6Fo5FU+QIlV0n5ORNb6qzv9RqlviQvWQmeaIuzKrnF4O
-	Z4lHrPsDeQwD6DC2Xq4yLZfaMVd2mmYOJaLftQEq2+h20pCtPZ7bMcGftOjIs1RFKuk4RGsTNTKwM
-	3bhRlhfmUJx15DllbY8j2nsAq7wQ/2BqfseYvMDsqcFWNcD30YE6D4zEshpxmxLdj3GJpc7Qn8qk5
-	72pr8HK9CIcyi01OTIoA==;
+	List-Owner; bh=dPfWwPZDCQxbx9yiSI7L5gJHJQolf/5GTNwS6WlBt74=; b=Y/aeq3TZeaSCJ/
+	AqXHjO4XZiLUOXAFw49nU2lxvLcbHTZiYNdJ6uwEJa0vwjpVqQogf5d6cZ/3y36uNkXC9+QU7BrxN
+	m7RVqlqY81dHkKO/mzaPqnUbD5hhQGPt2SWXiGur5rf1SNktNqxc+vhiq/3yyCb8FNDC9FQKg/twC
+	Vdjcfspxvo7V5nDlynDJGYaW0nTTTj5D9zN45utY85x6wk6N96AU1tb05Bh0OkutslcEL1pMJWvSx
+	eIwzR958QT7ffPTrAmvAwiQFQnJBoGlB8Zhwoa371XRVE5ZoDC0JbCA7uilCJ/A1M/WP52yNAtpt0
+	L5z7Qv1WrKAYFmkkyNJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFx8s-00F4KT-P3; Thu, 12 Jan 2023 12:57:15 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pFx8z-00F4PX-6G; Thu, 12 Jan 2023 12:57:21 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFx8f-00F45I-HR
-	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 12:57:10 +0000
+	id 1pFx8j-00F4AP-3b
+	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 12:57:13 +0000
 Received: from localhost (89-26-75-29.goll.dyn.salzburg-online.at [89.26.75.29])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3DE736602DBC;
-	Thu, 12 Jan 2023 12:57:00 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B56856602DB1;
+	Thu, 12 Jan 2023 12:57:03 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673528220;
-	bh=s+EQFfhyAuhQn7YicE5XWPWi6yC+rHeMTsHsU87SIDc=;
+	s=mail; t=1673528223;
+	bh=KAJmQ51TusAs/OBMlUcE6FAB/zXgKsXdACD+yS0cJJs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Eyo/iGEhDGKhLVHuYynBUcGxCA0HxniOOj0YZEwal5LZ6soLeyCp4E7HfoRrLRjJE
-	 +7CPbCElblJWl5FLdwz5ki6VcLqRHunXVfOk/eeKydjm0nZd0xMDazQUYyNDBj6KxP
-	 pOezH+PpLuIjcqzHCmBymhOJ5i4eCyoG8Tdk8lhF2uVIwCX9ezQEfpfV95CsbSWAL6
-	 ho+dTUNgvObJF1HFAQd6jiIyZ+etRpjnfwynf0OCN1ddZHY6lqgq7fAPdhBJSa+TWf
-	 B9yaXLU7wS/F0pZHXWBbL4XLWNpAP/pUEEVBjcnVkSgjvhIFuzNkBDg4tft8sNJKIL
-	 2S8s260THKobA==
+	b=abuLMAtI+0Ssmb0Qet0J4hPnVAdraA31EB3fvZ/zDjZvc2UyLQpbuGpOiFbxXhOqc
+	 S9NUy9xnqLwAqNNtyQFTUiP7+lJpwbtRYRwTevw/9OIF62BM43kv9v/Y8O5Dan8zJD
+	 zy3+0jfREptqFrzuMIuITsGVocKGn8VB9qrbRTUXlbka8E6UkheBghOkMgwWlfjhJ6
+	 bvU2BcEkzGokpvaFOODMzAKJe3+Xa3+EXgkqaaYK3u3a9zVb6+KOCsN5F9v9WFMQIW
+	 dAqSQiVNpyzqaypDHC12Df8AFUhQ4HVKlMv25c6RbKfbpJOAj4W627U9Xoa2Xkd1Up
+	 n9oHDOyuMFo1Q==
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Thu, 12 Jan 2023 13:56:25 +0100
-Subject:  [PATCH v2 10/12] staging: media: rkvdec: Wrapper for pixel format preparation
+Date: Thu, 12 Jan 2023 13:56:26 +0100
+Subject: [PATCH v2 11/12] staging: media: rkvdec: Enable S_CTRL IOCTL
 MIME-Version: 1.0
-Message-Id:  <20230101-patch-series-v2-6-2-rc1-v2-10-fa1897efac14@collabora.com>
+Message-Id:  <20230101-patch-series-v2-6-2-rc1-v2-11-fa1897efac14@collabora.com>
 References: <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
 In-Reply-To:  <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -63,16 +63,16 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Sebastian Fricke <sebastian.fricke@collabora.com>
 X-Mailer: b4 0.11.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1673528186; l=2354;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1673528186; l=3704;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=s+EQFfhyAuhQn7YicE5XWPWi6yC+rHeMTsHsU87SIDc=;
- b=oUnmXcIum/7DI0U2ej2rfr/P1PixLPwOAObjiKfMcquGxYFvoCILsKjwmY7ITmfCmaF2++etqDiM
- TEkWc0fzCCv3jOdJWB4kONL9IPeV96X/47kcNH//+CB+vl9DcchG
+ bh=KAJmQ51TusAs/OBMlUcE6FAB/zXgKsXdACD+yS0cJJs=;
+ b=3Q8dYQ7JJV91gBKcZI7SdzmsUpSj8tSF8FmAoOpA4+8doicKKzpHZXOKqfCS3w0RSMTTwbQ545S3
+ /EmOOuLQCwWk/liG7p+9gfjw2YEBe+DwYIkP0cAdOuppKUob+jYn
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_045701_839137_AF1F2F19 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20230112_045705_544895_04B1CA8E 
+X-CRM114-Status: GOOD (  20.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +89,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reduce code duplication by creating a wrapper around the preparation of
-the `v4l2_pix_format_mplane` structure and the calculation of the
-image size.
+Enable user-space to set the SPS of the current byte-stream on the
+decoder. This action will enable the decoder to pick the optimal
+pixel-format for the capture queue, whenever it is required.
 
 Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 81 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 81 insertions(+)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 8d948bcc4e46..b303c6e0286d 100644
+index b303c6e0286d..3d413c5ad1d2 100644
 --- a/drivers/staging/media/rkvdec/rkvdec.c
 +++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -27,6 +27,17 @@
- #include "rkvdec.h"
- #include "rkvdec-regs.h"
- 
-+static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
-+				       struct v4l2_pix_format_mplane *pix_mp)
-+{
-+	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
-+			    pix_mp->width, pix_mp->height);
-+	pix_mp->plane_fmt[0].sizeimage += 128 *
-+		DIV_ROUND_UP(pix_mp->width, 16) *
-+		DIV_ROUND_UP(pix_mp->height, 16);
-+	pix_mp->field = V4L2_FIELD_NONE;
-+}
-+
- static int rkvdec_queue_busy(struct rkvdec_ctx *ctx, enum v4l2_buf_type buf_type)
- {
- 	struct vb2_queue *vq;
-@@ -248,13 +259,9 @@ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
- 
- 	rkvdec_reset_fmt(ctx, f, valid_fmt);
- 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
--	v4l2_fill_pixfmt_mp(&f->fmt.pix_mp,
--			    ctx->coded_fmt_desc->decoded_fmts[0],
--			    ctx->coded_fmt.fmt.pix_mp.width,
--			    ctx->coded_fmt.fmt.pix_mp.height);
--	f->fmt.pix_mp.plane_fmt[0].sizeimage += 128 *
--		DIV_ROUND_UP(f->fmt.pix_mp.width, 16) *
--		DIV_ROUND_UP(f->fmt.pix_mp.height, 16);
-+	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
-+	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
-+	rkvdec_fill_decoded_pixfmt(ctx, &f->fmt.pix_mp);
- }
- 
- static int rkvdec_enum_framesizes(struct file *file, void *priv,
-@@ -324,13 +331,7 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
- 				       &pix_mp->height,
- 				       &coded_desc->frmsize);
- 
--	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
--			    pix_mp->width, pix_mp->height);
--	pix_mp->plane_fmt[0].sizeimage +=
--		128 *
--		DIV_ROUND_UP(pix_mp->width, 16) *
--		DIV_ROUND_UP(pix_mp->height, 16);
--	pix_mp->field = V4L2_FIELD_NONE;
-+	rkvdec_fill_decoded_pixfmt(ctx, pix_mp);
- 
+@@ -93,6 +93,79 @@ static int rkvdec_get_sps_attributes(struct rkvdec_ctx *ctx, void *sps,
  	return 0;
  }
+ 
++static int rkvdec_set_sps(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
++{
++	struct v4l2_pix_format_mplane *pix_mp;
++	struct sps_attributes attributes = {0};
++	void *new_sps = NULL;
++
++	/*
++	 * SPS structures are not filled until the control handler is set up
++	 */
++	if (!ctx->fh.ctrl_handler)
++		return 0;
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_H264_SPS:
++		new_sps = (void *)ctrl->p_new.p_h264_sps;
++		break;
++	case V4L2_CID_STATELESS_HEVC_SPS:
++		new_sps = (void *)ctrl->p_new.p_hevc_sps;
++		break;
++	default:
++		dev_err(ctx->dev->dev, "Unsupported stateless control ID: %x\n", ctrl->id);
++		return -EINVAL;
++	};
++	rkvdec_get_sps_attributes(ctx, new_sps, &attributes);
++
++	/*
++	 * Providing an empty SPS is valid but we do not store it.
++	 */
++	if (attributes.width == 0 && attributes.height == 0)
++		return 0;
++
++	pix_mp = &ctx->decoded_fmt.fmt.pix_mp;
++
++	/*
++	 * SPS must match the provided format dimension, if it doesn't userspace has to
++	 * first reset the output format
++	 */
++	if ((attributes.width > pix_mp->width) || (attributes.height > pix_mp->height)) {
++		dev_err(ctx->dev->dev,
++			"Dimension mismatch. [%s SPS] W: %d, H: %d, [Format] W: %d, H: %d)\n",
++			ctrl->id == V4L2_CID_STATELESS_HEVC_SPS ? "HEVC" : "H264",
++			attributes.width, attributes.height, pix_mp->width, pix_mp->height);
++		return -EINVAL;
++	}
++
++	if (ctx->sps && pix_mp->pixelformat == rkvdec_get_valid_fmt(ctx)) {
++		/*
++		 * Userspace is allowed to change the SPS at any point, if the
++		 * pixel format doesn't differ from the format in the context,
++		 * just accept the change even if buffers are queued
++		 */
++		ctx->sps = new_sps;
++	} else {
++		/*
++		 * Do not accept changing the SPS, while buffers are queued,
++		 * when the new SPS would cause switching the CAPTURE pixel format
++		 */
++		if (pix_mp->pixelformat != rkvdec_get_valid_fmt(ctx)) {
++			if (rkvdec_queue_busy(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE))
++				return -EBUSY;
++		}
++		ctx->sps = new_sps;
++		/*
++		 * For the initial SPS setting and when the pixel format is
++		 * changed adjust the pixel format stored in the context
++		 */
++		pix_mp->pixelformat = rkvdec_get_valid_fmt(ctx);
++		rkvdec_fill_decoded_pixfmt(ctx, pix_mp);
++	}
++
++	return 0;
++}
++
+ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
+@@ -104,8 +177,16 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
+ 
++static int rkvdec_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
++
++	return rkvdec_set_sps(ctx, ctrl);
++}
++
+ static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
+ 	.try_ctrl = rkvdec_try_ctrl,
++	.s_ctrl = rkvdec_s_ctrl,
+ };
+ 
+ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
 
 -- 
 2.25.1
