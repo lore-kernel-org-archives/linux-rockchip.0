@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A92F0C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 05:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A20D2C54EBC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 07:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k/wuu2iAIxyPYhkBnoJOQKw7k2jVXd11k+kflHEmwNQ=; b=3AxRlo+FP/0QlSywEDpIpfvX4t
-	kXMao9VJJZ+xEIebfVGqiJSgUDK4Au1QAdJPcWBMqNX0zQVeVH8fBX9FuBWfsD6MLYoHyUSO0ik2h
-	iu28LKm7Bg/cIDDciBraRkDvO/gsCik/8A2e1OZxpetjU2i5y2hZ47/OP53wRvqO2/UDv82rdVag+
-	Uob8yPY54y9MNomLHbxVNLGcuuhuhpMySu0ERkqGNHNSvycKzfrhw0MJb6CJPpfcSrofz6Ifdhq8h
-	FTzJPKmc9hvuHtzEK3ZU74tOue3Jw4wX5+KCAhuAUZJyLsjH1MvhgBcQb87sx66/PuBuDjHi8tWiQ
-	7kMKBJgw==;
+	bh=o6Lj50KeK95vZwLxbAN862R8x6vZNkPh+o0ITQLaPDY=; b=yVdqicZAaRwQKXnPiK4d2s+BuQ
+	M+iOhBsDFLneXYaP3uDIQXuG6/kikaXHNgnuBhudpq1rovtqfhzP1FTXhmO3zT5U8UE5ervKIZo4l
+	DwsP4Aqrf2HinmxVipFkdbq6DXTIi+BZIGLz65l2/2bzDvzU6OASkipDDh6o9Gooii+FjLvDFvmio
+	KlP6twmjtBNrCrEa8tj9VtTicS7+PPIlhhjMeT2GFd/uqZZAGL7+gkcJBcMom6Jy950gcrTAIBXXu
+	FYxF9VSVXWOvcR3YyUD9ngJtHqfF5hTsGp/RXLcPyz26KBF3/9T2N7gnxxlxF0OhriFa6M8KOxQj8
+	egfQNRfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFqTC-00DrwH-Er; Thu, 12 Jan 2023 05:49:46 +0000
+	id 1pFsDc-00E1tZ-VJ; Thu, 12 Jan 2023 07:41:49 +0000
 Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFqT4-00Drvf-Lo; Thu, 12 Jan 2023 05:49:44 +0000
+	id 1pFsDW-00E1sv-3f; Thu, 12 Jan 2023 07:41:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1673502578; x=1705038578;
+  t=1673509302; x=1705045302;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=T508bi5I3+eTTuRsuWm1flXWLfrX7IjNfyhMG9sz5Ao=;
-  b=AFkflV4fWnNyDhJVc1eZPJQ/fYJeF8s/GH8cJ7p9PdT+4Ik1c7v76mBM
-   KOVToyL6W8u2EttVMO6pbc/P8rB9ZbEarnJf+X6STByec98rR1egr4ODM
-   VOGNKyjMDOHaoOqEIVkm4E+AZzJWCm38k4uQzG+8NuSWLDkQcKCcgx9H9
-   l3ao/8pntu0gZXxUHDnPMGaDKzUyttONlNt+LH9gtEYr4HkLUBEScc/sq
-   SilOWyGonoMP1A7BnPN+FIg0v7Zkweh+5a+FPA3Bc26FwldEXfl06s+3W
-   Ejn5149VlualKKALS36SqhEPD2OzzdPYAsbPnxYpVUDoOV+mxQ8R0nOOq
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="323683027"
+  bh=dxMrgswuhe6H18+H81btYTAn5U5bmnPGA8DYa/l/p70=;
+  b=lfCmO5NDJml/0Z0kqhliwgRBuccMVDMToVLAnGg7SgZekSCTbLltbONr
+   /ehGnAiUi9ysgaLi5xfUOG3YxS80MJ4RXQ3zAVF9+QL5Getur+DWs3uPE
+   jrAckrqL5dPOsOClpGj+PHa5cNytajR1LdXR8/mEI8KtJUC8RXBAQBFm8
+   8j2gY0D2bRg6vWeujJ3c0++gSGBv/DqifwA/ANBrnyep5wA0xrjCWE4X7
+   6kxMyxsn8jFPyIClMoxAZV9Ysgivr/+S0kDmED0JOrhVBvA4UM9N6JNbr
+   7nH85hG7AoMUT2s2/MpSQ0l+u5SCjnvhijHPf3VJan5DMT0gpl4zjGZNd
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="323698354"
 X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; 
-   d="scan'208";a="323683027"
+   d="scan'208";a="323698354"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2023 21:49:35 -0800
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2023 23:41:38 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="720975662"
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="721010671"
 X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; 
-   d="scan'208";a="720975662"
+   d="scan'208";a="721010671"
 Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
-  by fmsmga008.fm.intel.com with ESMTP; 11 Jan 2023 21:49:30 -0800
+  by fmsmga008.fm.intel.com with ESMTP; 11 Jan 2023 23:41:33 -0800
 Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1pFqSv-0009rm-0w;
-	Thu, 12 Jan 2023 05:49:29 +0000
-Date: Thu, 12 Jan 2023 13:49:27 +0800
+	id 1pFsDH-0009vY-1G;
+	Thu, 12 Jan 2023 07:41:27 +0000
+Date: Thu, 12 Jan 2023 15:40:52 +0800
 From: kernel test robot <lkp@intel.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
@@ -64,14 +64,13 @@ Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org, kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 07/13] media: verisilicon: Check AV1 bitstreams bit
- depth
-Message-ID: <202301121347.3nTfX4Kj-lkp@intel.com>
-References: <20230111165931.753763-8-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 10/13] media: verisilicon: Add Rockchip AV1 decoder
+Message-ID: <202301121537.EbrTgQyL-lkp@intel.com>
+References: <20230111165931.753763-11-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="RARvsY/WYZHwTBQV"
+Content-Type: multipart/mixed; boundary="YfIXaOVF4KTKLYhr"
 Content-Disposition: inline
-In-Reply-To: <20230111165931.753763-8-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230111165931.753763-11-benjamin.gaignard@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,16 +86,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---RARvsY/WYZHwTBQV
+--YfIXaOVF4KTKLYhr
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Benjamin,
 
-I love your patch! Yet something to improve:
+I love your patch! Perhaps something to improve:
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on rockchip/for-next linus/master v6.2-rc3 next-20230112]
+[auto build test WARNING on media-tree/master]
+[also build test WARNING on rockchip/for-next linus/master v6.2-rc3 next-20230112]
 [cannot apply to pza/reset/next pza/imx-drm/next]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
@@ -104,17 +103,17 @@ https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-media-rockchip-vpu-Add-rk3588-vpu-compatible/20230112-010155
 base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230111165931.753763-8-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v3 07/13] media: verisilicon: Check AV1 bitstreams bit depth
+patch link:    https://lore.kernel.org/r/20230111165931.753763-11-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v3 10/13] media: verisilicon: Add Rockchip AV1 decoder
 config: hexagon-randconfig-r011-20230110
 compiler: clang version 16.0.0 (https://github.com/llvm/llvm-project 8d9828ef5aa9688500657d36cd2aefbe12bbd162)
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/64e086ae4e3c168e190fc87fcd19ca73346fee2e
+        # https://github.com/intel-lab-lkp/linux/commit/e6afd9e0717775b8e81ee22d5f2dc54fdb1c3a5a
         git remote add linux-review https://github.com/intel-lab-lkp/linux
         git fetch --no-tags linux-review Benjamin-Gaignard/dt-bindings-media-rockchip-vpu-Add-rk3588-vpu-compatible/20230112-010155
-        git checkout 64e086ae4e3c168e190fc87fcd19ca73346fee2e
+        git checkout e6afd9e0717775b8e81ee22d5f2dc54fdb1c3a5a
         # save the config file
         mkdir build_dir && cp config build_dir/.config
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon olddefconfig
@@ -123,9 +122,9 @@ reproduce (this is a W=1 build):
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
 
-All error/warnings (new ones prefixed by >>):
+All warnings (new ones prefixed by >>):
 
-   In file included from drivers/media/platform/verisilicon/hantro_drv.c:23:
+   In file included from drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:8:
    In file included from include/media/v4l2-mem2mem.h:16:
    In file included from include/media/videobuf2-v4l2.h:16:
    In file included from include/media/videobuf2-core.h:18:
@@ -142,7 +141,7 @@ All error/warnings (new ones prefixed by >>):
    include/uapi/linux/byteorder/little_endian.h:37:51: note: expanded from macro '__le16_to_cpu'
    #define __le16_to_cpu(x) ((__force __u16)(__le16)(x))
                                                      ^
-   In file included from drivers/media/platform/verisilicon/hantro_drv.c:23:
+   In file included from drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:8:
    In file included from include/media/v4l2-mem2mem.h:16:
    In file included from include/media/videobuf2-v4l2.h:16:
    In file included from include/media/videobuf2-core.h:18:
@@ -156,7 +155,7 @@ All error/warnings (new ones prefixed by >>):
    include/uapi/linux/byteorder/little_endian.h:35:51: note: expanded from macro '__le32_to_cpu'
    #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
                                                      ^
-   In file included from drivers/media/platform/verisilicon/hantro_drv.c:23:
+   In file included from drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:8:
    In file included from include/media/v4l2-mem2mem.h:16:
    In file included from include/media/videobuf2-v4l2.h:16:
    In file included from include/media/videobuf2-core.h:18:
@@ -173,57 +172,93 @@ All error/warnings (new ones prefixed by >>):
    include/asm-generic/io.h:604:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
            __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
                                                          ~~~~~~~~~~ ^
->> drivers/media/platform/verisilicon/hantro_drv.c:342:3: error: expected expression
-                   int bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
-                   ^
->> drivers/media/platform/verisilicon/hantro_drv.c:345:26: error: use of undeclared identifier 'bit_depth'
-                           if (ctx->bit_depth != bit_depth)
+>> drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:227:6: warning: no previous prototype for function 'rockchip_vpu981_av1_dec_tiles_free' [-Wmissing-prototypes]
+   void rockchip_vpu981_av1_dec_tiles_free(struct hantro_ctx *ctx)
+        ^
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:227:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   void rockchip_vpu981_av1_dec_tiles_free(struct hantro_ctx *ctx)
+   ^
+   static 
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:325:6: warning: no previous prototype for function 'rockchip_vpu981_av1_dec_exit' [-Wmissing-prototypes]
+   void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
+        ^
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:325:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
+   ^
+   static 
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:361:5: warning: no previous prototype for function 'rockchip_vpu981_av1_dec_init' [-Wmissing-prototypes]
+   int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+       ^
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:361:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+   ^
+   static 
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:788:26: warning: variable 'chroma_addr' set but not used [-Wunused-but-set-variable]
+                           dma_addr_t luma_addr, chroma_addr, mv_addr = 0;
                                                  ^
-   drivers/media/platform/verisilicon/hantro_drv.c:348:20: error: use of undeclared identifier 'bit_depth'
-                   ctx->bit_depth = bit_depth;
-                                    ^
->> drivers/media/platform/verisilicon/hantro_drv.c:1039:46: warning: implicit conversion from 'unsigned long long' to 'unsigned int' changes value from 18446744073709551615 to 4294967295 [-Wconstant-conversion]
-           vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~             ^~~~~~~~~~~~~~~~
-   include/linux/dma-mapping.h:76:40: note: expanded from macro 'DMA_BIT_MASK'
-   #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
-                                          ^~~~~
-   7 warnings and 3 errors generated.
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1139:6: warning: no previous prototype for function 'rockchip_vpu981_av1_dec_done' [-Wmissing-prototypes]
+   void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx)
+        ^
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1139:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx)
+   ^
+   static 
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1931:5: warning: no previous prototype for function 'rockchip_vpu981_av1_dec_run' [-Wmissing-prototypes]
+   int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+       ^
+   drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1931:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+   ^
+   static 
+>> drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1931:5: warning: stack frame size (1176) exceeds limit (1024) in 'rockchip_vpu981_av1_dec_run' [-Wframe-larger-than]
+   int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+       ^
+   120/1176 (10.20%) spills, 1056/1176 (89.80%) variables
+   13 warnings generated.
 
 
-vim +342 drivers/media/platform/verisilicon/hantro_drv.c
+vim +/rockchip_vpu981_av1_dec_tiles_free +227 drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
 
-   332	
-   333	static int hantro_av1_s_ctrl(struct v4l2_ctrl *ctrl)
-   334	{
-   335		struct hantro_ctx *ctx;
-   336	
-   337		ctx = container_of(ctrl->handler,
-   338				   struct hantro_ctx, ctrl_handler);
-   339	
-   340		switch (ctrl->id) {
-   341		case V4L2_CID_STATELESS_AV1_SEQUENCE:
- > 342			int bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
-   343	
-   344			if (vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)))
- > 345				if (ctx->bit_depth != bit_depth)
-   346					return -EINVAL;
-   347	
-   348			ctx->bit_depth = bit_depth;
-   349			break;
-   350		default:
-   351			return -EINVAL;
-   352		}
-   353	
-   354		return 0;
-   355	}
-   356	
+   226	
+ > 227	void rockchip_vpu981_av1_dec_tiles_free(struct hantro_ctx *ctx)
+   228	{
+   229		struct hantro_dev *vpu = ctx->dev;
+   230		struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+   231	
+   232		if (av1_dec->db_data_col.cpu)
+   233			dma_free_coherent(vpu->dev, av1_dec->db_data_col.size,
+   234					  av1_dec->db_data_col.cpu,
+   235					  av1_dec->db_data_col.dma);
+   236		av1_dec->db_data_col.cpu = NULL;
+   237	
+   238		if (av1_dec->db_ctrl_col.cpu)
+   239			dma_free_coherent(vpu->dev, av1_dec->db_ctrl_col.size,
+   240					  av1_dec->db_ctrl_col.cpu,
+   241					  av1_dec->db_ctrl_col.dma);
+   242		av1_dec->db_ctrl_col.cpu = NULL;
+   243	
+   244		if (av1_dec->cdef_col.cpu)
+   245			dma_free_coherent(vpu->dev, av1_dec->cdef_col.size,
+   246					  av1_dec->cdef_col.cpu, av1_dec->cdef_col.dma);
+   247		av1_dec->cdef_col.cpu = NULL;
+   248	
+   249		if (av1_dec->sr_col.cpu)
+   250			dma_free_coherent(vpu->dev, av1_dec->sr_col.size,
+   251					  av1_dec->sr_col.cpu, av1_dec->sr_col.dma);
+   252		av1_dec->sr_col.cpu = NULL;
+   253	
+   254		if (av1_dec->lr_col.cpu)
+   255			dma_free_coherent(vpu->dev, av1_dec->lr_col.size,
+   256					  av1_dec->lr_col.cpu, av1_dec->lr_col.dma);
+   257		av1_dec->lr_col.cpu = NULL;
+   258	}
+   259	
 
 -- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests
 
---RARvsY/WYZHwTBQV
+--YfIXaOVF4KTKLYhr
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: attachment; filename=config
 
@@ -6744,7 +6779,7 @@ CONFIG_CC_HAS_SANCOV_TRACE_PC=y
 CONFIG_WARN_ABI_ERRORS=y
 # end of Kernel hacking
 
---RARvsY/WYZHwTBQV
+--YfIXaOVF4KTKLYhr
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -6755,5 +6790,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---RARvsY/WYZHwTBQV--
+--YfIXaOVF4KTKLYhr--
 
