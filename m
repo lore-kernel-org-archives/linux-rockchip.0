@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2620CC677F1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 12:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F525C54EBD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jan 2023 12:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MVrooTGltkPpT/n0ZvVb8U5qmV/AErXBG4cVjGtelsk=; b=l203ts8Jx1EKgE
-	tzU6XqUqSZBRXRhNUwIhwhl23pYw7W9K3snOE0JK8f0fTtTUQlEiGHTweYN8ifHM5MIdvi4vwpDsS
-	1ORP/D6OGs4DheQeX8AHk0MgN1cHbpJBO4830VzNZz/qKmAIYgVLa8Hq6kLRLFVsR1etZiDSw0UMb
-	5hvZHFWwLaWzpzF56HHYOLNgoiVqDKLLaEJfnt3b+YwFrOYsMMY84JnNoG5U2iVW+nQx4JlWovN8a
-	CleK7dbtCkaaWGlEPjnvs6UUMCycKpvN24pd2oVTkwQGgTplyOxPbS00oDbKMa27TEbEDUujujT7u
-	upaR06eRyzxvocqqm7eQ==;
+	List-Owner; bh=Ncxg85gTFZZMMOniTNAFMGfci1K9dQtul/yCAoHb9T4=; b=gAs4AVWxazuXDc
+	WuWTPCXOWYczcl68zbx6OPNtmqlAk4s51vcqrRE1Ke/TEd65GRjgK+3xxok0uCswE6qvcQ7hNFoVO
+	qSleQo6Fv8bFwq88Q6LH0LTTcMhEP2nOLCBJVFEQfKPkHLJwrRdNrv9LYEJuKzxUpNchDsZkSpFBa
+	R9rW1RiiLAkAAESlk9SlnpXEthkvhFgmxrrSX34dEILj4asBa73993tQh4bm6ywmGs0PUZ9mkQCl7
+	dnxqT+FMnqHt6o+0DxXzsWdd/ncBabvwB4ClJBfkvDjaf6i5W9tLQAdnJamOwFvavfe93cUdQVc0t
+	Rq9r/T7F9lG4HETf4eMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFx8X-00F3xt-Ew; Thu, 12 Jan 2023 12:56:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pFx8g-00F48P-Qw; Thu, 12 Jan 2023 12:57:03 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pFx8T-00F3uE-3W
-	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 12:56:52 +0000
+	id 1pFx8c-00F42B-RU
+	for linux-rockchip@lists.infradead.org; Thu, 12 Jan 2023 12:57:00 +0000
 Received: from localhost (89-26-75-29.goll.dyn.salzburg-online.at [89.26.75.29])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BA61F6602DB1;
-	Thu, 12 Jan 2023 12:56:47 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7A1636602DBA;
+	Thu, 12 Jan 2023 12:56:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1673528207;
-	bh=Da6QtFYOuId0q8spuTSgR9gP0GfvHSM7GfQl76avmIU=;
+	s=mail; t=1673528217;
+	bh=19U+A00eX7GomcVZ4hwuwzX1XI4Jf/K9mYqNNP1Mc6c=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=dHzAuxLpAj79iY9LVET5QkBL9VPhVA1ioJQwPn2iFXHU4fDdFn9jzLrSF87VecJ2y
-	 1g4/d6x53E0SC3CNDg90z3NYtWNIMSmbDKQL9hU958IXnDuafam/WNGpmJbUwSYfrB
-	 7XAEnIX34wDmWKijisW8hShchRspOnId3nGqxD0wNFptvHvdLBIZ2hP5HxLP0mbtsB
-	 8vfs4fP10dIJERtoHYCSiY6fm95Y2n60qeW6NRfZAfazo04rhOlRNAw44VAk+2TSC5
-	 Y/yrD0dScreg28gKD8HaSfR1/oASNvZ/pY/7vp1xqbDHuvtoJq1cHwigZI9Im2CVlN
-	 e0Za9curbjdng==
+	b=d7S8hzbl9CZf9tINvxTrwAjOPyZGpYeDkOqtO15LV6A+mhlACIc8cO4x/l0QhLMDV
+	 RKtUTsC7nqNRAguPa6HrSTppiAP+1MA8FDk9ZHJ6IeS3YiPDk9+Z0RHqgXca364iyY
+	 kPl9M+S+OxTFPmU58ZejKKYo/UXx+XjYE7gInFp8dzFpr6PjgyppTspRMHeBo6B0vR
+	 wGh0SrbnkraovnN/1QBadr3FDZT4PVFJePnsNXM/Ey47S0Kgc8cBk0q4HU3KAmJ+AT
+	 CSQoFV/3kRVQDouTMqx+p/j/egX/DTbgfWmQixUEaho3i+DQosC1e3d9d3RjYAvhRy
+	 txFyOGKwsixbA==
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-Date: Thu, 12 Jan 2023 13:56:21 +0100
-Subject: [PATCH v2 06/12] staging: media: rkvdec: Add a valid pixel format
- check as callback
+Date: Thu, 12 Jan 2023 13:56:24 +0100
+Subject: [PATCH v2 09/12] staging: media: rkvdec: h264: Add callbacks for h264
 MIME-Version: 1.0
-Message-Id: <20230101-patch-series-v2-6-2-rc1-v2-6-fa1897efac14@collabora.com>
+Message-Id: <20230101-patch-series-v2-6-2-rc1-v2-9-fa1897efac14@collabora.com>
 References: <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
 In-Reply-To:  <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -64,16 +63,16 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Sebastian Fricke <sebastian.fricke@collabora.com>
 X-Mailer: b4 0.11.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1673528186; l=3923;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1673528186; l=5576;
  i=sebastian.fricke@collabora.com; s=linux-media; h=from:subject:message-id;
- bh=Da6QtFYOuId0q8spuTSgR9gP0GfvHSM7GfQl76avmIU=;
- b=Ei9OhrN5lMhBxVdjk4LBAl2cBQ2833Mt1irFmo2edGvikdXUqvhqqNyW0wxQ84YZ9drS3FRc9gZs
- 0Ef1O9TjAyFyFdBeAO/IeTnNjUYTD+y6bGpxE1du+FdS0vTDEOur
+ bh=19U+A00eX7GomcVZ4hwuwzX1XI4Jf/K9mYqNNP1Mc6c=;
+ b=q/7dHZEZC7Om5sfZ593nhkIVNVGwUmKnKRnaq5y/97IVmaJeS8raTGDHwcL5TyDW1rqoym9zCAKB
+ cUypHMjIB7YqWAGX5s3xun+/JDEUBTd5vaUDxzWqeURvM7C16Agw
 X-Developer-Key: i=sebastian.fricke@collabora.com; a=ed25519;
  pk=pYXedPwrTtErcj7ERYeo/IpTrpe4QbJuEzSB52fslBg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_045650_064994_8DADEECF 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20230112_045659_188388_901030C0 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,108 +89,167 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Provide a callback for codec variant drivers to indicate the correct
-output pixel-format. It will either utilize the SPS structure stored via
-the S_CTRL IOCTL or return the default pixel-format.
+Implement the valid format and sps validation callbacks for H264.
+H264 already has a SPS validation function, adjust it to fit the
+function the declaration and add error messages.
+Additionally, add a function to fetch attributes from the SPS in a human
+readable format to make the code more self documenting.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 45 +++++++++++++++++++++++++++++------
- drivers/staging/media/rkvdec/rkvdec.h |  1 +
- 2 files changed, 39 insertions(+), 7 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 105 ++++++++++++++++++++++-------
+ 1 file changed, 80 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index e0e95d06e216..a46f918926a2 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -38,6 +38,20 @@ static int rkvdec_queue_busy(struct rkvdec_ctx *ctx, enum v4l2_buf_type buf_type
- 		return 0;
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 4fc167b42cf0..17b215874ddd 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -1026,40 +1026,80 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
+ 	return 0;
  }
  
+-static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx,
+-				    const struct v4l2_ctrl_h264_sps *sps)
 +/*
-+ * Use the current SPS, set by the user via the VIDIOC_S_CTRL IOCTL,
-+ * to determine the optimal pixel-format. Each codec is responsible
-+ * for choosing the appropriate pixel-format for a given parameter set.
++ * Convert some fields from the SPS structure into human readable attributes.
 + */
-+static int rkvdec_get_valid_fmt(struct rkvdec_ctx *ctx)
++static int rkvdec_h264_get_sps_attributes(struct rkvdec_ctx *ctx, void *sps,
++					  struct sps_attributes *attributes)
 +{
-+	const struct rkvdec_coded_fmt_desc *coded_desc = ctx->coded_fmt_desc;
++	struct v4l2_ctrl_h264_sps *h264_sps = sps;
++	unsigned int width = (h264_sps->pic_width_in_mbs_minus1 + 1) * 16;
++	unsigned int height = (h264_sps->pic_height_in_map_units_minus1 + 1) * 16;
++	/*
++	 * When frame_mbs_only_flag is not set, this is field height,
++	 * which is half the final height (see (7-18) in the
++	 * specification)
++	 */
++	if (!(h264_sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
++		height *= 2;
 +
-+	if (coded_desc->ops->valid_fmt)
-+		return coded_desc->ops->valid_fmt(ctx);
-+	return ctx->coded_fmt_desc->decoded_fmts[0];
++	attributes->width = width;
++	attributes->height = height;
++	attributes->luma_bitdepth = h264_sps->bit_depth_luma_minus8 + 8;
++	attributes->chroma_bitdepth = h264_sps->bit_depth_chroma_minus8 + 8;
++	switch (h264_sps->chroma_format_idc) {
++	case 0:
++		attributes->subsampling = 400;
++		break;
++	case 1:
++		attributes->subsampling = 420;
++		break;
++	case 2:
++		attributes->subsampling = 422;
++		break;
++	case 3:
++		attributes->subsampling = 444;
++		break;
++	};
++	return 0;
 +}
 +
- static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
++static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx, void *sps,
++				    struct v4l2_pix_format_mplane *pix_mp)
  {
- 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-@@ -200,8 +214,9 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
- {
- 	struct v4l2_format *f = &ctx->decoded_fmt;
-+	u32 valid_fmt = rkvdec_get_valid_fmt(ctx);
- 
--	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
-+	rkvdec_reset_fmt(ctx, f, valid_fmt);
- 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	v4l2_fill_pixfmt_mp(&f->fmt.pix_mp,
- 			    ctx->coded_fmt_desc->decoded_fmts[0],
-@@ -260,13 +275,17 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
- 	if (WARN_ON(!coded_desc))
- 		return -EINVAL;
- 
--	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
--		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
--			break;
--	}
-+	if (ctx->sps) {
-+		pix_mp->pixelformat = rkvdec_get_valid_fmt(ctx);
-+	} else {
-+		for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
-+			if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
-+				break;
-+		}
- 
--	if (i == coded_desc->num_decoded_fmts)
--		pix_mp->pixelformat = coded_desc->decoded_fmts[0];
-+		if (i == coded_desc->num_decoded_fmts)
-+			pix_mp->pixelformat = coded_desc->decoded_fmts[0];
-+	}
- 
- 	/* Always apply the frmsize constraint of the coded end. */
- 	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
-@@ -435,6 +454,18 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
- 	if (WARN_ON(!ctx->coded_fmt_desc))
- 		return -EINVAL;
- 
-+	/*
-+	 * According to the specification the driver can only return formats
-+	 * that are supported by both the current encoded format and the
-+	 * provided controls
-+	 */
-+	if (ctx->sps) {
-+		if (f->index)
-+			return -EINVAL;
-+		f->pixelformat = rkvdec_get_valid_fmt(ctx);
-+		return 0;
-+	}
+-	unsigned int width, height;
++	struct sps_attributes attributes = {0};
 +
- 	if (f->index >= ctx->coded_fmt_desc->num_decoded_fmts)
++	rkvdec_h264_get_sps_attributes(ctx, sps, &attributes);
+ 
+ 	/*
+ 	 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+ 	 * but it's currently broken in the driver.
+ 	 * Reject them for now, until it's fixed.
+ 	 */
+-	if (sps->chroma_format_idc > 1)
+-		/* Only 4:0:0 and 4:2:0 are supported */
++	if (attributes.subsampling > 420) {
++		dev_err(ctx->dev->dev,
++			"Only 4:0:0 and 4:2:0 subsampling schemes are supported, got: %d\n",
++			attributes.subsampling);
+ 		return -EINVAL;
+-	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+-		/* Luma and chroma bit depth mismatch */
++	}
++	if (attributes.luma_bitdepth != attributes.chroma_bitdepth) {
++		dev_err(ctx->dev->dev,
++			"Luma and chroma bit depth mismatch, luma %d, chroma %d\n",
++			attributes.luma_bitdepth, attributes.chroma_bitdepth);
+ 		return -EINVAL;
+-	if (sps->bit_depth_luma_minus8 != 0)
+-		/* Only 8-bit is supported */
++	}
++	if (attributes.luma_bitdepth != 8) {
++		dev_err(ctx->dev->dev, "Only 8-bit H264 formats supported, SPS %d\n",
++			attributes.luma_bitdepth);
+ 		return -EINVAL;
++	}
+ 
+-	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
+-	height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
+-
+-	/*
+-	 * When frame_mbs_only_flag is not set, this is field height,
+-	 * which is half the final height (see (7-18) in the
+-	 * specification)
+-	 */
+-	if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
+-		height *= 2;
+-
+-	if (width > ctx->coded_fmt.fmt.pix_mp.width ||
+-	    height > ctx->coded_fmt.fmt.pix_mp.height)
++	if (attributes.width > pix_mp->width || attributes.height > pix_mp->height) {
++		dev_err(ctx->dev->dev,
++			"Incompatible SPS dimension, SPS %dx%d, Pixel format %dx%d.",
++			attributes.width, attributes.height, pix_mp->width, pix_mp->height);
+ 		return -EINVAL;
++	}
+ 
+ 	return 0;
+ }
+@@ -1077,8 +1117,9 @@ static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
+ 	if (!ctrl)
  		return -EINVAL;
  
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index 332126e7b812..e353a4403e5b 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -66,6 +66,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
- struct rkvdec_coded_fmt_ops {
- 	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
- 			  struct v4l2_format *f);
-+	u32 (*valid_fmt)(struct rkvdec_ctx *ctx);
- 	int (*start)(struct rkvdec_ctx *ctx);
- 	void (*stop)(struct rkvdec_ctx *ctx);
- 	int (*run)(struct rkvdec_ctx *ctx);
+-	ret = rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps);
+-	if (ret)
++	ret = rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps,
++				       &ctx->coded_fmt.fmt.pix_mp);
++	if (ret < 0)
+ 		return ret;
+ 
+ 	h264_ctx = kzalloc(sizeof(*h264_ctx), GFP_KERNEL);
+@@ -1175,10 +1216,21 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+ 	return 0;
+ }
+ 
++static u32 rkvdec_h264_valid_fmt(struct rkvdec_ctx *ctx)
++{
++	/*
++	 * Only 8 bit 4:0:0 and 4:2:0 formats supported for now.
++	 * The SPS is validated at a different function thus we can assume that
++	 * it is correct.
++	 */
++	return V4L2_PIX_FMT_NV12;
++}
++
+ static int rkvdec_h264_try_ctrl(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
+ {
+ 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS)
+-		return rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps);
++		return rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps,
++						&ctx->coded_fmt.fmt.pix_mp);
+ 
+ 	return 0;
+ }
+@@ -1189,4 +1241,7 @@ const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
+ 	.stop = rkvdec_h264_stop,
+ 	.run = rkvdec_h264_run,
+ 	.try_ctrl = rkvdec_h264_try_ctrl,
++	.valid_fmt = rkvdec_h264_valid_fmt,
++	.sps_check = rkvdec_h264_validate_sps,
++	.get_sps_attributes = rkvdec_h264_get_sps_attributes,
+ };
 
 -- 
 2.25.1
