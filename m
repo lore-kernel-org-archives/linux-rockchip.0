@@ -4,42 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD175C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 06:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96EE3C61DB3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 06:45:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wI4IJ2gVs5A8b+Bx7l1SZG34U87pEuYTkSj4bW/Y2jM=; b=CVkCpE+kctlmfj
-	yJCTQqq7zF3fflRn/V5MlFIctAMA9byjr9QGTh2t4meyKZDVXQ9/P4VecAWftJf5N+bgH9kPh3Srw
-	BUHjmejcGbQuYGofhayCcTK4UrSzDzuVOmSqbHv4nqG2WENHRGwW9h5VTA5SnH5dS73+w3eC295xy
-	Y5jc45Lo1ibvAbZs6369A/yvJIAbLlcz+Wrn7VNX+7dTAQxDaLeMXak2JE2Hv9eo+hY53cuWmvuTo
-	b5xWEvvoEcbu2RNQBKYVofe0EV6M1KIPlb6muxA8MsxGba8noKyed57IvUF733NzgJESssP4yRU4f
-	3ov3XdfdBFXArtJy4aCQ==;
+	List-Owner; bh=XSam08hsQJdw3WAXK5Fe++LzFYRcACwqQAEZMaRE5Mk=; b=oeh38NONttAmRR
+	MYVbRDhPmIEZc7tWe+N93bM8qPCzJHaWmHwKYBfhN31Jok8rB5oyo+9ahP4jjfKuftMMpme42vjS2
+	tcw6ZYh/+MNHTCEZyMV0ppV2Rmjje+fOW4w06i+dll/7hAGzyyNBVjgI+Fq6J1Doywjnl/JHfEYNP
+	m+40tBcWJq3exbVOB5J4Xb5/TL+cLATshzrpZxFjbP9N/YclA/5YFsGmLHpm+6L/bnzisi9mxsiO9
+	zpONXspbcSAU2mqreYLRmigNFHqxUqE+GyTqiI637clZKoWmcZ00pMrzfeK9Vzouqi4+Kq4U28J8Q
+	aiXtA9nGay/Wqsm9bXyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGDoM-000s15-Gq; Fri, 13 Jan 2023 06:45:10 +0000
-Received: from [2601:1c2:d80:3110::9307] (helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGDoC-000rxk-Rg; Fri, 13 Jan 2023 06:45:00 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Cc: Randy Dunlap <rdunlap@infradead.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-pm@vger.kernel.org,
+	id 1pGDoX-000s5S-LP; Fri, 13 Jan 2023 06:45:21 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pGDoP-000s0q-Mo
+	for linux-rockchip@lists.infradead.org; Fri, 13 Jan 2023 06:45:15 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id c85so12218357pfc.8
+        for <linux-rockchip@lists.infradead.org>; Thu, 12 Jan 2023 22:45:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=friendlyarm-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FC/n51wttnGtNiNe7WH/BCIkLrvufvFzSnIEhGzQM4w=;
+        b=b0jXb0ooQnNdoQ1WJ1MwgGXuYTywiQ6y+Pr92jpfFcquqViGzUGql5QyfKLmpQAOCt
+         sAXVt8LTJf2qY6u5MSi9BQ8MQ+ZIG4E6OOVRCltq5A8wC4vADIcT0KdoeIQZ8iVfJ51E
+         yTiLT3jCXN9OUYohSxwtFWUeDjQ0/esf9aBuIgXA7NYo8w+wct9CAK2IsShJIWWw1X4c
+         4sE2DExfsS0srEhZAEEs4Zgf0jFwO1NQ8SU5IRwSyk7tr/0R87VxAF0GRkB5H1bujoMP
+         8ZsMYzT/Pk+9MRBSKfaDi6tTSnyVytrNcKaUNWSA2+GVlWNgKRoU8L7MuQBmTJ5GhEwc
+         6PUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FC/n51wttnGtNiNe7WH/BCIkLrvufvFzSnIEhGzQM4w=;
+        b=Rhx5DWAxierGXjjr3TpLQgKt+2rUxjVH/I+355vkR5iaBZdU1gygEJnwPeHipjWyVX
+         Fj4cifT9EHrSI96bFXoCXLtZ4ugMY+V6VZ8pE2/sOiDY8PmoNB21V3TmRsO0OznaJcms
+         bI5yd8N3h+z/1OQLquNLgAYyQtFoIdcuBByvbOwJGQcY4r9BjAxNqUBQb31bdeR4P7mu
+         TvbWukb+DWyZz77J/nc1kc7yYd2SgRhJxksczcsvIf0jkYqQrvM6xO/5GmzOzG6SiTEl
+         0Zv4797eIvUlUEntowYw4umyREtX4SyzKukiCxiQpvHxQlozya2ulcXid7ikOKZMpQVQ
+         K5hw==
+X-Gm-Message-State: AFqh2koQdnFuq+RUuMFaUwq0+5djqIpEbOdfMprDQNA8LACBlSSKY8eM
+	IMJr36r1IN8z/h2+704yXgkKKw==
+X-Google-Smtp-Source: AMrXdXvDmf/1LdiTumMJjPEnygIZlv2EFUyFz6qHZThsAio0M/pePfshn1odQvyy9Za0jbgDpDpHIQ==
+X-Received: by 2002:a05:6a00:88a:b0:581:19ed:78b9 with SMTP id q10-20020a056a00088a00b0058119ed78b9mr79911887pfj.2.1673592309502;
+        Thu, 12 Jan 2023 22:45:09 -0800 (PST)
+Received: from jensen.next (li999-236.members.linode.com. [45.33.49.236])
+        by smtp.gmail.com with ESMTPSA id p29-20020aa79e9d000000b00574db8ca00fsm12886122pfq.185.2023.01.12.22.45.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jan 2023 22:45:08 -0800 (PST)
+From: Jensen Huang <jensenhuang@friendlyarm.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] thermal: rockchip: fix kernel-doc warnings
-Date: Thu, 12 Jan 2023 22:45:00 -0800
-Message-Id: <20230113064500.16103-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.39.0
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: add missing #interrupt-cells to rk356x pcie2x1
+Date: Fri, 13 Jan 2023 14:44:57 +0800
+Message-Id: <20230113064457.7105-1-jensenhuang@friendlyarm.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230112_224514_483673_6615DE75 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,59 +93,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Don't use "/**" to begin non-kernel-doc comments.
-Convert one function description to kernel-doc format.
-Prevents these kernel-doc warnings:
+This fixes the following issue:
+  pcieport 0000:00:00.0: of_irq_parse_pci: failed with rc=-22
 
-drivers/thermal/rockchip_thermal.c:64: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
- * The max sensors is two in rockchip SoCs.
-drivers/thermal/rockchip_thermal.c:179: warning: expecting prototype for TSADC Sensor Register description(). Prototype was for TSADCV2_USER_CON() instead
-drivers/thermal/rockchip_thermal.c:1342: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
- * Reset TSADC Controller, reset all tsadc registers.
-
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Amit Kucheria <amitk@kernel.org>
-Cc: Zhang Rui <rui.zhang@intel.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
 ---
- drivers/thermal/rockchip_thermal.c |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff -- a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -60,7 +60,7 @@ enum adc_sort_mode {
- 
- #include "thermal_hwmon.h"
- 
--/**
-+/*
-  * The max sensors is two in rockchip SoCs.
-  * Two sensors: CPU and GPU sensor.
-  */
-@@ -169,7 +169,7 @@ struct rockchip_thermal_data {
- 	enum tshut_polarity tshut_polarity;
- };
- 
--/**
-+/*
-  * TSADC Sensor Register description:
-  *
-  * TSADCV2_* are used for RK3288 SoCs, the other chips can reuse it.
-@@ -1339,7 +1339,7 @@ rockchip_thermal_register_sensor(struct
- }
- 
- /**
-- * Reset TSADC Controller, reset all tsadc registers.
-+ * rockchip_thermal_reset_controller - Reset TSADC Controller, reset all tsadc registers.
-  * @reset: the reset controller of tsadc
-  */
- static void rockchip_thermal_reset_controller(struct reset_control *reset)
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 5706c3e24f0a..b3185e4115d9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -985,6 +985,7 @@ pcie2x1: pcie@fe260000 {
+ 		resets = <&cru SRST_PCIE20_POWERUP>;
+ 		reset-names = "pipe";
+ 		#address-cells = <3>;
++		#interrupt-cells = <1>;
+ 		#size-cells = <2>;
+ 		status = "disabled";
+
+--
+2.38.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
