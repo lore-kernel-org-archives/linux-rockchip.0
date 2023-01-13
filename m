@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51BF6C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 00:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18769C54EBE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 05:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LAjGArSuLgYfL0VknBflIbinvRvSyZtbyYJO2tWnn+Q=; b=RArcM8W+7BC0iB
-	sc4I2aFK5czjqi5rdtQeebIjopj2RQjaA+tbFM/6gulkCrSW3Yr1NG7Z+9rdzAeLifv8XvwIIo9SN
-	POE6VSRgMYtqOKerqwy6P65BYXzDMid9HZkJFTiMkC1TT6ctukolLfE9DvTH6XI1ut/VtvRLQ2Te7
-	a1mGwsXqr/Uha6ifrVFkr/JkwYo9trm3WumtuGHO4IcvxMUyw0rrd62D20gE7lQtxAqr6dtDvFijn
-	WJ7+hM40XswaqB5dcxQJVfgo0acmIYrFUAhY6/C0pEl3WAdr95PF4JcNcqAqiH2kwvx5SP+1y4Ldy
-	+kuX4L98+B67+n1EqgvQ==;
+	List-Owner; bh=8z1hk16vtaxUvgF2sHh60UVgBhN+9nu3LfmqeuJyW6I=; b=zO2MgwwZBLiNnR
+	ZkUrIjU0mmHkWHWcXt9QFLizSQYaMjQR5/Yk5Au9/2nkltj1MZzFpnUBW32CLHVyL3Cc1c+oXVkHO
+	71NZiCUhDDrmRp8DjmkVJZctZEChGV094NU2OgR+5S2xVy/u3ZMCml1IWaXz1CVHIWIyIwpCbjh3x
+	UqkmaHkxIqp0AjrDaEQ/ILSaHdadijrozjnnimkWv3G3rSXju82jhcxbtUpZ8fWprBFPexZU2eh47
+	nBGS1c/+up+7lS48gmeyFOB9SOriPvMCN0IAcIRCP0Syg4UTfyUgL829oVp7OMB78IW8+Vr/c7RTu
+	di03xsYBh55rspjJCuvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG7ef-00HXr7-Eh; Fri, 13 Jan 2023 00:10:45 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1pGCvH-000aiR-Tt; Fri, 13 Jan 2023 05:48:15 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pG7ec-00HXqh-1R
-	for linux-rockchip@lists.infradead.org; Fri, 13 Jan 2023 00:10:43 +0000
-Received: by mail-ot1-f47.google.com with SMTP id k44-20020a9d19af000000b00683e176ab01so11463753otk.13
-        for <linux-rockchip@lists.infradead.org>; Thu, 12 Jan 2023 16:10:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fa4bJd4FpH5J8PcBXntkqApcXjG667hIZgm37d7PnJs=;
-        b=ac7nhJM68PyC0X34vtKxkRz38bbSuWnCDn2tWm+/lNL3J9jtk4GjpMSUCkH7i6Zu9L
-         /aWN62Uqd6pY7qO1zrz8ZO4fUwnmMaM7qk2Vw+JzwWlr6Z4jiBdnxiC0PCOia4fiLJQC
-         JoRAw+CJ7Gw1Bfh5ugBbhXAjnGd9K73Wla60cfHMpcGQcp8yCevHCX6TAp8GANju7OFY
-         IbrRWKkw08o2LH44eHiv7hhH3qJhOYMfFLrBFEpnN4TCBkQ1/OswyysU80ATiDiTnDRq
-         hGS7zw6UQOKes2sSo11ssAXCstp9hysgd8mixnfRVVW6d/L4o6M5UWp1phMe+aN0Oc5K
-         TWPw==
-X-Gm-Message-State: AFqh2kpBRLQD37dFDPMdNyHUeSwCXQO583QV7QdplMjP0RpBhI6lZZK3
-	ZcGE46j6ERRdeF074jIHPw==
-X-Google-Smtp-Source: AMrXdXsCm+dOf8HVHiGAZD0eySI8muKiDK59xiObAtl+2yolg7B9eZifleapRpBiiS57/n3VNls3Og==
-X-Received: by 2002:a05:6830:388c:b0:671:7bc7:dabe with SMTP id bq12-20020a056830388c00b006717bc7dabemr49626972otb.21.1673568640879;
-        Thu, 12 Jan 2023 16:10:40 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id e26-20020a0568301f3a00b006770e855c61sm439545oth.31.2023.01.12.16.10.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jan 2023 16:10:40 -0800 (PST)
-Received: (nullmailer pid 501210 invoked by uid 1000);
-	Fri, 13 Jan 2023 00:10:39 -0000
-Date: Thu, 12 Jan 2023 18:10:39 -0600
-From: Rob Herring <robh@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Stephen Boyd <sboyd@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Michael Turquette <mturquette@baylibre.com>, kernel@collabora.com, Rob Herring <robh+dt@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, Lee Jones <lee@kernel.org>
-Subject: Re: [PATCHv5 06/10] dt-bindings: mfd: add rk806 binding
-Message-ID: <167356863889.501159.246967021598779982.robh@kernel.org>
-References: <20230109172723.60304-1-sebastian.reichel@collabora.com>
- <20230109172723.60304-7-sebastian.reichel@collabora.com>
+	id 1pGCuS-000aKC-N9; Fri, 13 Jan 2023 05:47:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 7D33CCE2012;
+	Fri, 13 Jan 2023 05:47:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08365C433EF;
+	Fri, 13 Jan 2023 05:47:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1673588833;
+	bh=LW8TnaibHU54vrL0vPl9vuILz/2J0PtXSn9Y9MJpIM0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=jYXuikPElIiZLpCpgEPw9EzisX6zGqhA8mqkSB44BiFu/Wt0AnAdt9se/2o7AE5YP
+	 qm1RuwwbrJFHIpqEDlh7O0j0dyJShzn0/cZXM3C3TDaEmEnfbvWRbE3XviQrBnlCgA
+	 JHcHUBiolb+hvW1kqRxDbvnk0sBq5j40+yVgzkoG9v5zI8uFNVMPeL4lSmQsGiJ5at
+	 4pi1lUpHoI09/NO209TPNPI1q2hUObiyKpZtxXHUBpfnF934aBcYKylPDQJkSuf4pA
+	 ZKpwpsf8Rm3fMojzOIA2x7/4yfpcxJ6Aiaf248BEkgFR60dXgloQuZlOuCUmr56jk2
+	 ambovgE/5biTg==
+Date: Thu, 12 Jan 2023 21:47:12 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Anand Moon <anand@edgeble.ai>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ David Wu <david.wu@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, Johan
+ Jonker <jbx6244@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski@linaro.org>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix
+ rv1126 compatible warning
+Message-ID: <20230112214712.0a32189d@kernel.org>
+In-Reply-To: <20230111172437.5295-1-anand@edgeble.ai>
+References: <20230111172437.5295-1-anand@edgeble.ai>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230109172723.60304-7-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_161042_097698_1626C446 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230112_214725_003994_51AC1A4D 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +78,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 09 Jan 2023 18:27:19 +0100, Sebastian Reichel wrote:
-> Add DT binding document for Rockchip's RK806 PMIC.
+On Wed, 11 Jan 2023 17:24:31 +0000 Anand Moon wrote:
+> Fix compatible string for RV1126 gmac, and constrain it to
+> be compatible with Synopsys dwmac 4.20a.
 > 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/mfd/rockchip,rk806.yaml          | 406 ++++++++++++++++++
->  1 file changed, 406 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+> fix below warning
+> $ make CHECK_DTBS=y rv1126-edgeble-neu2-io.dtb
+> arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
+> 		 compatible: 'oneOf' conditional failed, one must be fixed:
+>         ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
+>         'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
 > 
+> Fixes: b36fe2f43662 ("dt-bindings: net: rockchip-dwmac: add rv1126 compatible")
+> Reviewed-by: Jagan Teki <jagan@edgeble.ai>
+> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Anand Moon <anand@edgeble.ai>
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+I think this patch should go via net-next?
+Please let us know when it's ready to be applied, 
+'cause we're not CCed on the entire series..
 
 _______________________________________________
 Linux-rockchip mailing list
