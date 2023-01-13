@@ -4,43 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0B1C54EBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 08:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2521C54EBE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 10:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZDpsiARF8LBdv+ZP+Z0fLxh+eoxfLFo2Q9y+fLQ2DcA=; b=upvqGRlsJ6DpQq
-	t9SGfnCRO+TkFK/bRTZsFTRws+iYTpxDKsduSIxBMCmggJIdTGVg+/dTjKwgX1AGQ0x6jIJ97moAf
-	76wmhvIefdQM2xQG2pffCDrKvno1gix05hHY5+CHdotglfaTAkWrmZWz0coV2/zsMM9HQEWOUoim1
-	nG+tHRg2IPu3On4oCjrlv8zNZBkjHaFAxv7eSoQf8nh7KOrM8b0UBW6IJq6LiiMct5h7dKuhSsnBC
-	SicZ5KY6Y5c0T9ZeNOqCp2gVw9Tglizx90oJqTJBdibvk0i8mOin450u3CizBdIqiZylqxWjx1jUe
-	6jW4XWcA6ZAWxdiloDMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mIuOYFmC5aOYP7gbM5/oyk9RxLiGMpe4XyUo18MRo44=; b=iBZAyTci9PoAjg
+	89FAu0/d8lcs7oRnrgBR3CVsEJLvIENj5lcoKsMMO9mGEELYwqzdVKq/nDlrZ6p0ezb5jiSD8k/1/
+	38w7BAj82nX7zPvEL2YzIQsxct+0e4EoBUvZtFyDteOMHmp7kc+tPKsxIG18pq9begTaNOYY1otqy
+	uT/wylFbVQckabafIt/Y6cayBUSlc5xCJFg992POqpDANe8NbjzLmI9D53+KrJhEpq46E8lPIplKI
+	9w55WZwstvMhgd0gFjA+FqDpeAxpayo6lV2a3KmUm65ZXSIWDsY+mZWjq8xkMReSMaPc7TE1IEOuk
+	b+nYihwRTsKPtr2We3Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGFbC-001HFE-A3; Fri, 13 Jan 2023 08:39:42 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pGH6v-001ibP-BP; Fri, 13 Jan 2023 10:16:33 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGFb0-001HAc-VE; Fri, 13 Jan 2023 08:39:32 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pGFaj-0005x6-QV; Fri, 13 Jan 2023 09:39:13 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Anand Moon <anand@edgeble.ai>, Jakub Kicinski <kuba@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, David Wu <david.wu@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix rv1126 compatible warning
-Date: Fri, 13 Jan 2023 09:39:12 +0100
-Message-ID: <4085845.mvXUDI8C0e@diego>
-In-Reply-To: <20230112214712.0a32189d@kernel.org>
-References: <20230111172437.5295-1-anand@edgeble.ai> <20230112214712.0a32189d@kernel.org>
+	id 1pGH6i-001iPH-8f; Fri, 13 Jan 2023 10:16:22 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:299b:2170:fef0:26ee])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BE14A6602CCE;
+	Fri, 13 Jan 2023 10:16:11 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1673604972;
+	bh=uvLHq13CAGAoG5W+OuGNtmqdHKgq7qLWvksrMYmsUYk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=CB35nnrxX+A7tXdRtYYNRX5ZsjQQrcwd+zppfC3orQ1+P/Vp1cXmpgYPabLpckzfN
+	 Gp24WIMFMn+dL49BB0zCqPxDFH+D2xddU89kQY5etC/N2s8QTpE07jXmQoDystaRkX
+	 S5bLGIoY35+q/ueWDSvI3NOhL0tQyqb9yYo38ckgadHecycElJHDpOH3ZuA7EK3C4B
+	 feCvHyOoBziQpJg2NxrlwffTxuM7m7zOqE/+AqbZt2RviDlFjz4XhNQ64ViTdnrbjP
+	 foxvwEISfhhrvDpoFPcDnG+smRMY4lVkAdclfPHuLQwwiSzDaCpt6I8ysVyvvQGol2
+	 QFNJvdLCdMiTA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.co.uk
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: verisilicon: HEVC: Only propose 10 bits compatible pixels formats
+Date: Fri, 13 Jan 2023 11:16:04 +0100
+Message-Id: <20230113101604.261429-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230113_003931_053765_19958DBA 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20230113_021620_589837_A582FB0E 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,38 +80,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jakub,
+When decoding a 10bits bitstreams HEVC driver should only expose
+10bits pixel formats.
+To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
+when bit depth change and to correctly set match_depth in pixel formats
+enumeration.
 
-Am Freitag, 13. Januar 2023, 06:47:12 CET schrieb Jakub Kicinski:
-> On Wed, 11 Jan 2023 17:24:31 +0000 Anand Moon wrote:
-> > Fix compatible string for RV1126 gmac, and constrain it to
-> > be compatible with Synopsys dwmac 4.20a.
-> > 
-> > fix below warning
-> > $ make CHECK_DTBS=y rv1126-edgeble-neu2-io.dtb
-> > arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
-> > 		 compatible: 'oneOf' conditional failed, one must be fixed:
-> >         ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
-> >         'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
-> > 
-> > Fixes: b36fe2f43662 ("dt-bindings: net: rockchip-dwmac: add rv1126 compatible")
-> > Reviewed-by: Jagan Teki <jagan@edgeble.ai>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Anand Moon <anand@edgeble.ai>
-> 
-> I think this patch should go via net-next?
-> Please let us know when it's ready to be applied, 
-> 'cause we're not CCed on the entire series..
+Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 
-Correct, this patch should go via net-next, while I would pick up the
-dts patches (2-4).
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/platform/verisilicon/hantro_drv.c   | 35 +++++++++++++++++--
+ .../media/platform/verisilicon/hantro_v4l2.c  |  2 +-
+ .../media/platform/verisilicon/hantro_v4l2.h  |  1 +
+ .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 ++
+ 4 files changed, 36 insertions(+), 4 deletions(-)
 
-And this patch is ready to be applied.
-
-Thanks
-Heiko
-
-
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 8cb4a68c9119..78ea05294004 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -274,8 +274,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
+ 			/* Only 8-bit and 10-bit are supported */
+ 			return -EINVAL;
+-
+-		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
+ 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
+ 
+@@ -286,6 +284,32 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
+ 
++static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
++	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_HEVC_SPS:
++		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
++		int bit_depth = sps->bit_depth_luma_minus8 + 8;
++
++		if (ctx->bit_depth != bit_depth) {
++			ctx->bit_depth = bit_depth;
++			hantro_reset_raw_fmt(ctx);
++		}
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct hantro_ctx *ctx;
+@@ -328,6 +352,11 @@ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+ 	.try_ctrl = hantro_try_ctrl,
+ };
+ 
++static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
++	.s_ctrl = hantro_hevc_s_ctrl,
++	.try_ctrl = hantro_try_ctrl,
++};
++
+ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
+ 	.s_ctrl = hantro_jpeg_s_ctrl,
+ };
+@@ -470,7 +499,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_HEVC_SPS,
+-			.ops = &hantro_ctrl_ops,
++			.ops = &hantro_hevc_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 2c7a805289e7..0025e049dd26 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -398,7 +398,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+ 		hantro_set_fmt_out(ctx, fmt);
+ }
+ 
+-static void
++void
+ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+ {
+ 	const struct hantro_fmt *raw_vpu_fmt;
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h b/drivers/media/platform/verisilicon/hantro_v4l2.h
+index 64f6f57e9d7a..f642560aed93 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.h
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
+@@ -21,6 +21,7 @@
+ extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
+ extern const struct vb2_ops hantro_queue_ops;
+ 
++void hantro_reset_raw_fmt(struct hantro_ctx *ctx);
+ void hantro_reset_fmts(struct hantro_ctx *ctx);
+ int hantro_get_format_depth(u32 fourcc);
+ const struct hantro_fmt *
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index b390228fd3b4..f850d8bddef6 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -152,6 +152,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+@@ -165,6 +166,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_P010,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+-- 
+2.34.1
 
 
 _______________________________________________
