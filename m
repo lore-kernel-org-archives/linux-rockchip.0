@@ -4,64 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18769C54EBE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 05:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABD7C54EBE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jan 2023 06:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8z1hk16vtaxUvgF2sHh60UVgBhN+9nu3LfmqeuJyW6I=; b=zO2MgwwZBLiNnR
-	ZkUrIjU0mmHkWHWcXt9QFLizSQYaMjQR5/Yk5Au9/2nkltj1MZzFpnUBW32CLHVyL3Cc1c+oXVkHO
-	71NZiCUhDDrmRp8DjmkVJZctZEChGV094NU2OgR+5S2xVy/u3ZMCml1IWaXz1CVHIWIyIwpCbjh3x
-	UqkmaHkxIqp0AjrDaEQ/ILSaHdadijrozjnnimkWv3G3rSXju82jhcxbtUpZ8fWprBFPexZU2eh47
-	nBGS1c/+up+7lS48gmeyFOB9SOriPvMCN0IAcIRCP0Syg4UTfyUgL829oVp7OMB78IW8+Vr/c7RTu
-	di03xsYBh55rspjJCuvw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1PkO0KKSKEWaEKXnwWeV2dK8Cyca+CbeDrrvBDO517w=; b=Leo7wYWHLDAIqS
+	hIj27lXkGrLjBHN1E2tvL7W/i9Nz701XyQMeICMbuK65IlpP2ROKj6uoCXiXAQtbLAt/5XkJs+TXG
+	SF8B/4slc5YESJ//gCrs3QJrNhz3obzekuSBmTX5XvENr/axkv08GEq+uTlFMElPBUEdntjyS2qIt
+	/HzMPq/H1yYqn5P/KcRsGwOsxNTzkqSw8nPAuVOTvpXj32YkbIJ/qlDLz7HUxl6xrvSUeP8EiDPtE
+	EBJ4EblurE6yzZKKT3+gi9U97RbkI36Wl9y/lv/zEKurlgUVjBm2sbM160shYfDBoe4S2B+UgGbs4
+	C+7JE+/tnCPU3g3CCxNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGCvH-000aiR-Tt; Fri, 13 Jan 2023 05:48:15 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pGCuS-000aKC-N9; Fri, 13 Jan 2023 05:47:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 7D33CCE2012;
-	Fri, 13 Jan 2023 05:47:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08365C433EF;
-	Fri, 13 Jan 2023 05:47:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1673588833;
-	bh=LW8TnaibHU54vrL0vPl9vuILz/2J0PtXSn9Y9MJpIM0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=jYXuikPElIiZLpCpgEPw9EzisX6zGqhA8mqkSB44BiFu/Wt0AnAdt9se/2o7AE5YP
-	 qm1RuwwbrJFHIpqEDlh7O0j0dyJShzn0/cZXM3C3TDaEmEnfbvWRbE3XviQrBnlCgA
-	 JHcHUBiolb+hvW1kqRxDbvnk0sBq5j40+yVgzkoG9v5zI8uFNVMPeL4lSmQsGiJ5at
-	 4pi1lUpHoI09/NO209TPNPI1q2hUObiyKpZtxXHUBpfnF934aBcYKylPDQJkSuf4pA
-	 ZKpwpsf8Rm3fMojzOIA2x7/4yfpcxJ6Aiaf248BEkgFR60dXgloQuZlOuCUmr56jk2
-	 ambovgE/5biTg==
-Date: Thu, 12 Jan 2023 21:47:12 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Anand Moon <anand@edgeble.ai>
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- David Wu <david.wu@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, Johan
- Jonker <jbx6244@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski@linaro.org>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 linux-next 1/4] dt-bindings: net: rockchip-dwmac: fix
- rv1126 compatible warning
-Message-ID: <20230112214712.0a32189d@kernel.org>
-In-Reply-To: <20230111172437.5295-1-anand@edgeble.ai>
-References: <20230111172437.5295-1-anand@edgeble.ai>
+	id 1pGDhf-000qIj-Rr; Fri, 13 Jan 2023 06:38:15 +0000
+Received: from [2601:1c2:d80:3110::9307] (helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pGDhW-000qHc-IN; Fri, 13 Jan 2023 06:38:06 +0000
+From: Randy Dunlap <rdunlap@infradead.org>
+To: linux-kernel@vger.kernel.org
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Wolfram Sang <wsa@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH] i2c: rk3x: fix a bunch of kernel-doc warnings
+Date: Thu, 12 Jan 2023 22:38:05 -0800
+Message-Id: <20230113063805.14457-1-rdunlap@infradead.org>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230112_214725_003994_51AC1A4D 
-X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +53,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 11 Jan 2023 17:24:31 +0000 Anand Moon wrote:
-> Fix compatible string for RV1126 gmac, and constrain it to
-> be compatible with Synopsys dwmac 4.20a.
-> 
-> fix below warning
-> $ make CHECK_DTBS=y rv1126-edgeble-neu2-io.dtb
-> arch/arm/boot/dts/rv1126-edgeble-neu2-io.dtb: ethernet@ffc40000:
-> 		 compatible: 'oneOf' conditional failed, one must be fixed:
->         ['rockchip,rv1126-gmac', 'snps,dwmac-4.20a'] is too long
->         'rockchip,rv1126-gmac' is not one of ['rockchip,rk3568-gmac', 'rockchip,rk3588-gmac']
-> 
-> Fixes: b36fe2f43662 ("dt-bindings: net: rockchip-dwmac: add rv1126 compatible")
-> Reviewed-by: Jagan Teki <jagan@edgeble.ai>
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Anand Moon <anand@edgeble.ai>
+Fix multiple W=1 kernel-doc warnings in i2c-rk3x.c:
 
-I think this patch should go via net-next?
-Please let us know when it's ready to be applied, 
-'cause we're not CCed on the entire series..
+drivers/i2c/busses/i2c-rk3x.c:83: warning: missing initial short description on line:
+ * struct i2c_spec_values:
+drivers/i2c/busses/i2c-rk3x.c:139: warning: missing initial short description on line:
+ * struct rk3x_i2c_calced_timings:
+drivers/i2c/busses/i2c-rk3x.c:162: warning: missing initial short description on line:
+ * struct rk3x_i2c_soc_data:
+drivers/i2c/busses/i2c-rk3x.c:242: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Generate a START condition, which triggers a REG_INT_START interrupt.
+drivers/i2c/busses/i2c-rk3x.c:261: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+drivers/i2c/busses/i2c-rk3x.c:304: warning: expecting prototype for Setup a read according to i2c(). Prototype was for rk3x_i2c_prepare_read() instead
+drivers/i2c/busses/i2c-rk3x.c:335: warning: expecting prototype for Fill the transmit buffer with data from i2c(). Prototype was for rk3x_i2c_fill_transmit_buf() instead
+drivers/i2c/busses/i2c-rk3x.c:535: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Get timing values of I2C specification
+drivers/i2c/busses/i2c-rk3x.c:552: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Calculate divider values for desired SCL frequency
+drivers/i2c/busses/i2c-rk3x.c:713: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Calculate timing values for desired SCL frequency
+drivers/i2c/busses/i2c-rk3x.c:963: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Setup I2C registers for an I2C operation specified by msgs, num.
+
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: Wolfram Sang <wsa@kernel.org>
+Cc: linux-i2c@vger.kernel.org
+---
+ drivers/i2c/busses/i2c-rk3x.c |   44 ++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff -- a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -80,7 +80,7 @@ enum {
+ #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
+ 
+ /**
+- * struct i2c_spec_values:
++ * struct i2c_spec_values - I2C specification values for various modes
+  * @min_hold_start_ns: min hold time (repeated) START condition
+  * @min_low_ns: min LOW period of the SCL clock
+  * @min_high_ns: min HIGH period of the SCL cloc
+@@ -136,7 +136,7 @@ static const struct i2c_spec_values fast
+ };
+ 
+ /**
+- * struct rk3x_i2c_calced_timings:
++ * struct rk3x_i2c_calced_timings - calculated V1 timings
+  * @div_low: Divider output for low
+  * @div_high: Divider output for high
+  * @tuning: Used to adjust setup/hold data time,
+@@ -159,7 +159,7 @@ enum rk3x_i2c_state {
+ };
+ 
+ /**
+- * struct rk3x_i2c_soc_data:
++ * struct rk3x_i2c_soc_data - SOC-specific data
+  * @grf_offset: offset inside the grf regmap for setting the i2c type
+  * @calc_timings: Callback function for i2c timing information calculated
+  */
+@@ -239,7 +239,8 @@ static inline void rk3x_i2c_clean_ipd(st
+ }
+ 
+ /**
+- * Generate a START condition, which triggers a REG_INT_START interrupt.
++ * rk3x_i2c_start - Generate a START condition, which triggers a REG_INT_START interrupt.
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+ {
+@@ -258,8 +259,8 @@ static void rk3x_i2c_start(struct rk3x_i
+ }
+ 
+ /**
+- * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+- *
++ * rk3x_i2c_stop - Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
++ * @i2c: target controller data
+  * @error: Error code to return in rk3x_i2c_xfer
+  */
+ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
+@@ -298,7 +299,8 @@ static void rk3x_i2c_stop(struct rk3x_i2
+ }
+ 
+ /**
+- * Setup a read according to i2c->msg
++ * rk3x_i2c_prepare_read - Setup a read according to i2c->msg
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+ {
+@@ -329,7 +331,8 @@ static void rk3x_i2c_prepare_read(struct
+ }
+ 
+ /**
+- * Fill the transmit buffer with data from i2c->msg
++ * rk3x_i2c_fill_transmit_buf - Fill the transmit buffer with data from i2c->msg
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_fill_transmit_buf(struct rk3x_i2c *i2c)
+ {
+@@ -532,11 +535,10 @@ out:
+ }
+ 
+ /**
+- * Get timing values of I2C specification
+- *
++ * rk3x_i2c_get_spec - Get timing values of I2C specification
+  * @speed: Desired SCL frequency
+  *
+- * Returns: Matched i2c spec values.
++ * Return: Matched i2c_spec_values.
+  */
+ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+ {
+@@ -549,13 +551,12 @@ static const struct i2c_spec_values *rk3
+ }
+ 
+ /**
+- * Calculate divider values for desired SCL frequency
+- *
++ * rk3x_i2c_v0_calc_timings - Calculate divider values for desired SCL frequency
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+  * @t_calc: Caculated rk3x private timings that would be written into regs
+  *
+- * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
++ * Return: %0 on success, -%EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+  * too high, we silently use the highest possible rate.
+  */
+@@ -710,13 +711,12 @@ static int rk3x_i2c_v0_calc_timings(unsi
+ }
+ 
+ /**
+- * Calculate timing values for desired SCL frequency
+- *
++ * rk3x_i2c_v1_calc_timings - Calculate timing values for desired SCL frequency
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+  * @t_calc: Caculated rk3x private timings that would be written into regs
+  *
+- * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
++ * Return: %0 on success, -%EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+  * too high, we silently use the highest possible rate.
+  * The following formulas are v1's method to calculate timings.
+@@ -960,14 +960,14 @@ static int rk3x_i2c_clk_notifier_cb(stru
+ }
+ 
+ /**
+- * Setup I2C registers for an I2C operation specified by msgs, num.
+- *
+- * Must be called with i2c->lock held.
+- *
++ * rk3x_i2c_setup - Setup I2C registers for an I2C operation specified by msgs, num.
++ * @i2c: target controller data
+  * @msgs: I2C msgs to process
+  * @num: Number of msgs
+  *
+- * returns: Number of I2C msgs processed or negative in case of error
++ * Must be called with i2c->lock held.
++ *
++ * Return: Number of I2C msgs processed or negative in case of error
+  */
+ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
+ {
 
 _______________________________________________
 Linux-rockchip mailing list
