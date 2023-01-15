@@ -4,50 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45318C63797
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Jan 2023 14:47:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F2CDC63797
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Jan 2023 14:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iSxNDixHf1t3KYfGH4UWMhkGScA46CvSv7a8mERQj/Q=; b=fRm1L2auSSom5T
-	oOcsjOfV7NLOksthMo35tloXCVJbZcoVGQPmzXtp8OKrvKje9YinucbWOQVky3xWyd42qE7aw4otD
-	ycWlIIm65XBPZxqOBSKsjzDoz0NObqorlYMjCq37wsIrOvKTxUeaAHtyd31vylz5x/LQx1sylfY81
-	DfGSYO1qr8FJ22G1Fa8Mji6IsYBg9dh7CxXvXktCGbsBzycBD15pIKY0G2GU6INicb8NMSDV7bMyy
-	zclLEhyWt7XJF8LqNol0MhRm5xcEKjiSiCs1TF0DoEU+8tynPncDNlQVOP83AeQsqPXgq0C6SEk1c
-	g0nZOmdEzQZIE5FwSh5w==;
+	List-Owner; bh=OkyyYUvu68dgOhuP2GIiKzcwHFxkbLHifR6/Cmz4MMc=; b=R8iqxAMTVs3Y4r
+	NpSpvnKZV+ZtbPkBFcILJxj9p71OgszMbIZvPmXAHLszvqImIh1oY1motk8XrtdDqOHqglIVDFFoo
+	o8E8OUMWZb6iubh9QvmreYS5C0311NQTzBD7mSIE1A12u71aWL6np6zSkS3cYrNvesGsVR61ck39f
+	JS9+UkKWeMoc8jBjcJuLccd4e/gAHnAuLRD5vNGhJ/f2uiTpNJZ/24PO7t/UnSfuergc3Z5nBnMwc
+	fxjC0IRYYsb8NNKgFGE3/aL1fsJIcOSo6whDB1m2tyN27iGETSqRjCbFKkxDu1Y6RiZ6xuTwePSGk
+	xspF8Oh49T2432BX4rQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pH4IB-007Tiy-Di; Sun, 15 Jan 2023 14:47:27 +0000
+	id 1pH4KS-007UY9-Q8; Sun, 15 Jan 2023 14:49:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pH4Hl-007TbZ-GX; Sun, 15 Jan 2023 14:47:03 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
+	id 1pH4KI-007UVP-GO; Sun, 15 Jan 2023 14:49:39 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pH4He-0007bK-3g; Sun, 15 Jan 2023 15:46:54 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jensen Huang <jensenhuang@friendlyarm.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: add missing #interrupt-cells to rk356x pcie2x1
-Date: Sun, 15 Jan 2023 15:46:50 +0100
-Message-Id: <167379396101.36245.10680301028456952223.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230113064457.7105-1-jensenhuang@friendlyarm.com>
-References: <20230113064457.7105-1-jensenhuang@friendlyarm.com>
+	id 1pH4KF-0007eP-O5; Sun, 15 Jan 2023 15:49:35 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject:  Re: [PATCH 1/3] dt-bindings: dt-bindings: arm: rockchip: Add Radxa Compute
+ Module 3
+Date: Sun, 15 Jan 2023 15:49:35 +0100
+Message-ID: <5638590.DvuYhMxLoT@diego>
+In-Reply-To: <167379396101.36245.3129099751878177714.b4-ty@sntech.de>
+References:  <20230112105902.192852-1-jagan@amarulasolutions.com>
+ <167379396101.36245.3129099751878177714.b4-ty@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230115_064701_583710_8848525C 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20230115_064938_574236_71D71146 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,23 +62,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Jan 2023 14:44:57 +0800, Jensen Huang wrote:
-> This fixes the following issue:
->   pcieport 0000:00:00.0: of_irq_parse_pci: failed with rc=-22
+Am Sonntag, 15. Januar 2023, 15:46:49 CET schrieb Heiko Stuebner:
+> On Thu, 12 Jan 2023 16:29:00 +0530, Jagan Teki wrote:
+> > Radxa Compute Module 3(CM3) is one of the modules from a series
+> > System On Module based on the Radxa ROCK 3 series and is compatible
+> > with Raspberry Pi CM4 in pinout and form factor.
+> > 
+> > Specification:
+> > - Rockchip RK3566
+> > - up to 8GB LPDDR4
+> > - up to 128GB high performance eMMC
+> > - Optional wireless LAN, 2.4GHz and 5.0GHz IEEE 802.11b/g/n/ac wireless,
+> >   BT 5.0, BLE with onboard and external antenna.
+> > - Gigabit Ethernet PHY
+> > 
+> > [...]
 > 
+> Applied, thanks!
+> 
+> [1/3] dt-bindings: dt-bindings: arm: rockchip: Add Radxa Compute Module 3
+>       commit: 8f590d9a049438f0fcab156690394be82060e800
+
+for the record, I did drop the second dt-bindings from the subject as
+suggested by Krzysztof and the patch is named
+	"dt-bindings: arm: rockchip: Add Radxa Compute Module 3"
+
+Heiko
+
+> [2/3] arm64: dts: rockchip: rk3566: Add Radxa Compute Module 3
+>       commit: 206cf8403c9e9e46b74995b5bb98c6f4162d8a29
+> [3/3] arm64: dts: rockchip: rk3566: Add Radxa Compute Module 3 IO
+>       commit: 856d168ab16b99b2a4d75d8f8c66390aafef996b
+> 
+> Best regards,
 > 
 
-Applied, thanks!
 
-[1/1] arm64: dts: rockchip: add missing #interrupt-cells to rk356x pcie2x1
-      commit: a323e6b5737bb6e3d3946369b97099abb7dde695
 
-Moved the new line to a better position inside the node
-(similar to the pcie3 on rk3568)
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
