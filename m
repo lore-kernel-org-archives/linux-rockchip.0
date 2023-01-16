@@ -4,75 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D138C54EBE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 12:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA84C46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 12:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X98fwIiR0r9X8sFwzYO2SFMyYxbiRUm39+8cOxEnM9A=; b=ykSVOaQSNpllg5
-	VoSukqc6Fk39IuTC4IaSsUQGi1FcPa+codCO9vIVk4ducxESzRLumqVbVZFgGui9jLA8cMLFzzZca
-	6w9fqq7GK3dWqqonr2yUB6HTvpOR4elix0zJxgTtt7Yzd2SCmeNF+qcKrDVdK8TRrHVfBfRMTWNb0
-	1ukzrZQdjLwqacId5dmisNtdeklRB9y5RqIhOnXr8jXmjWFHjpu27CBLSOymZHDpe+Uek78KhoRpR
-	w9IFjWg1HoBekZxNMbJ8zFe5pWy79ITv9EztGWU44ATWacl+qY1Fa07G8OjPdn9R9XxNiCG2Hnt1I
-	atgg3NJIIY0fQTHP9IHw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eqnX3GfIB4oP5a13RXkKq9Dt8yOi+0kNDdJjb5haejI=; b=AbdHLXMlwL8eZERUIFVvo/ZNwv
+	RoykgtOvJop1ObPrExHAQtIwFcdguHJ1Kxs2DmVbFgN9uHbRnx7xdGY7W7RhW4Eu9fgaoX1lKtYQT
+	pfEvk8XSSSJYCA4hWWHuZZwj4nvflbqjcUuxJJBWU+X3e8P6tHvBY2wKPHiAHSpuWPOjxuvyIrEpq
+	OuInt0YAKmKnh9/PwdgNH7Uu6FliBXkQp/zPlVGVLXBJEFjYR26IeWyYalFRgwO4sTK8God6KOqj+
+	HcyPNJqUtK1Tic7Adk29V7p7PZbkjM1CGfTYmp6moYCv5sSz9sMdExcSyKw/f4SWMAX7luleuB6Xm
+	gm8qnWCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOi1-00A6wk-K3; Mon, 16 Jan 2023 12:35:29 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1pHOkH-00A7TG-SR; Mon, 16 Jan 2023 12:37:49 +0000
+Received: from mail-vi1eur04on2042.outbound.protection.outlook.com ([40.107.8.42] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOhz-00A6w5-8P
-	for linux-rockchip@lists.infradead.org; Mon, 16 Jan 2023 12:35:28 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id o75so30123537yba.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 16 Jan 2023 04:35:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/erdhCvJApG5+vMesdd42dNerta3+LyPUExayIGJPz0=;
-        b=itZ+gDDTGwuqBx/tze1RvlEJN6u0EwoKQK0i1czQF/cl/UscOfz6YkJegbygVvnrMp
-         tydo6HMMV5c7DobR3fHke+4bSyEgulQb0Ew+P7FzMYldQrV4/mZU4KB+y/8DCQzvuy7s
-         MUhHh384PCVdpJ3iJPHcLbjwixsAx77cmLWOITqfCSi7LiLAsMmM8lLUqjn9pSBN61xI
-         DOXsOIjgDXJkWQuxmXktlp/jOKVXc/MA8YsG3hX0qt328aaEpUEb2w6iE8J2AKtnxr1Q
-         AhlcJa+r6B1r21bTWW0Vw0yIyTGxaOowB/tOLoCuveWnmUTZ2givnijP1r6RiIBvW8so
-         ZKxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/erdhCvJApG5+vMesdd42dNerta3+LyPUExayIGJPz0=;
-        b=eT5d22FlTmFMN9a7gmLD6JzztQ1/xaiHi3vwwac+6yQrTFYF/91V9AOeMD0rp1L5ft
-         s1/4ZIeIKgnGqyoLFXX0ueFvPcv7/kwHnSLwBm2D3+UwSyhx0vChjVsoA6nmzMAN/zrc
-         0bQxhQvorM7zFVY2TgzhkJgG9OgnQ9sviQ9ToreDk3maZ+QsowY0799Pyk4jMNeioKJU
-         N9D8oCoj9UySukfRA6gQAuBS/TVHpRAyJb+ysuPs4/9OqbcPXgon2SVmzNbwFLM+r7ds
-         5RF8cU7pblsSlG7gVVF7ybaq6Lr89fAe8uSvUnMIKM/6u2XbfSoouJE1lSUbzPKT9oom
-         tEpA==
-X-Gm-Message-State: AFqh2koxIyxQ5sLu7eOZaG0j4K+yAA7fG2GfofX5oehLdErsl/xk/uaO
-	BNUuO3yuMxtcIQmZ4ac6OACPCj8cvJilRjjQlj6ezg==
-X-Google-Smtp-Source: AMrXdXt1WAMrSMDgrFvzDatVwEnbHDFT16F4YV0aLDOnGxfs2CR1LL+5Qr5ImSLTYmxCautE2oqiS8pGzCGYY5jDKcQ=
-X-Received: by 2002:a25:d08d:0:b0:7ca:9b40:72a7 with SMTP id
- h135-20020a25d08d000000b007ca9b4072a7mr1821610ybg.130.1673872525317; Mon, 16
- Jan 2023 04:35:25 -0800 (PST)
+	id 1pHOk5-00A7P7-Ix; Mon, 16 Jan 2023 12:37:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hSqSuCyFjWaJCqZB4ZrkZq6YRV/EY8IBO63YiEeiAUV/OtuHBIi+EE1NIAQ7m7OGbM8XSD9eigsMuVC+S7jJaZdJ6kSTUPA5CdLJu9hcaPCkXSHn4HUWOE1ZfvxHixzvxGwgbc58o4S7sqzJWnYoOFZwUdPh32BGciSJPP2rst+WxDYzOCBFG71fqQPjiLD7t7CJRBpmboykLuRdjKswNvtikbCyfhH5F1ccIxSKNKFt+L/04PwhF0HIEHPJIDKR+iMN54PFYzg931pG9/89+8LFMtBNXQxXsXSr2JO7ouZB3T9VD3o9mbvBlw6sCuXb7DM7HVwto7yfyi6hixRHrQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aF5ONRrDWMhuOdDf9goRLV60SA7+3clSZ1uG4XBdVZU=;
+ b=WYTcdoCVMpKM1sVWiz9fHsHX4IoPXp93e9m9FQotRilwzhuGlvWGXRQhKyKIgmQZIG6nJ7c9622MFAX2LcANzP58mlT3ZYwi50xySRS91PCl9Vbj4UbI4K8YKo0iJt0A8y2KOFtD+xNy4eV9Q3ZmW4QXzzxBwDn0b2ntt0jjz2g74rFPia9m6MzWwTl04L7VDy2fU+eVG9Ng83Y6vcJQ94cbG34WCx6R5K2Em3ZN6tCA9Fk4LiiM2zUoaGDYvt1YlNRM/a9jEj+xDMsZGUBQ6kqenxov4lTPxKwuf35lBlxlcurYTYBk+I1Qt6SZzWwrxF/GxybFMDNnhhDWL5SgYA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aF5ONRrDWMhuOdDf9goRLV60SA7+3clSZ1uG4XBdVZU=;
+ b=PLoqLsNpfl9d+7xPJe0rLO7tAcdoGcRkYnSnhEusDxmdxJ7BMeq/ORjvIrTl3A+GpIR4QGm6cG3pbvfA0/Lc5IeH0BFlF8F0eqLOZ3kmQEWEt3mpgkZM/jAu3t9EZ5g/y2VCp/dgv/jLcPoWA/qX1wb2Ukny5zqkWANjZyyg0+qBO+YRHN9gtUUbDNcUQiFJ30MwugRhCIz5V6pqAJj9B5i3/IwVplK25Ikvr4L1QDYbnxIdR6nlkP5y6Ovjlu8Uv/OnLyZoFLUdam/mxCWuFiLjKlUDmJmKT1YQHE/GoZV/FQLydmjPXXNadQg/IAOK4CkEWft/fQahl1t6fAsHsw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
+ by PAXPR04MB8078.eurprd04.prod.outlook.com (2603:10a6:102:1c1::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.13; Mon, 16 Jan
+ 2023 12:37:28 +0000
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::24d3:14a5:eeda:6cdd]) by DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::24d3:14a5:eeda:6cdd%4]) with mapi id 15.20.5986.023; Mon, 16 Jan 2023
+ 12:37:28 +0000
+Message-ID: <f6a8a8f1-0eec-2716-d4f1-9115c9d156b6@theobroma-systems.com>
+Date: Mon, 16 Jan 2023 13:37:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: (subset) [PATCH v3 0/9] fix reset line polarity for Goodix
+ touchscreen controllers
+Content-Language: en-US
+To: Bjorn Andersson <andersson@kernel.org>, samuel@sholland.org,
+ agx@sigxcpu.org, megous@megous.com, heiko@sntech.de, hdegoede@redhat.com,
+ robh+dt@kernel.org, wens@csie.org, michael.riesch@wolfvision.net,
+ lukma@denx.de, icenowy@aosc.io, kernel@pengutronix.de, david@protonic.nl,
+ shawnguo@kernel.org, foss+kernel@0leil.net, linux-imx@nxp.com,
+ festevam@gmail.com, pgwipeout@gmail.com, jagan@amarulasolutions.com,
+ agross@kernel.org, hadess@hadess.net, dmitry.torokhov@gmail.com,
+ jernej.skrabec@gmail.com, angelogioacchino.delregno@somainline.org,
+ mamlinav@gmail.com, frieder.schrempf@kontron.de, angus@akkea.ca,
+ Sascha Hauer <s.hauer@pengutronix.de>, konrad.dybcio@somainline.org,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20221103-upstream-goodix-reset-v3-0-0975809eb183@theobroma-systems.com>
+ <167336743963.2134489.16668389773212954467.b4-ty@kernel.org>
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+In-Reply-To: <167336743963.2134489.16668389773212954467.b4-ty@kernel.org>
+X-ClientProxiedBy: FR0P281CA0067.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:49::21) To DU2PR04MB8536.eurprd04.prod.outlook.com
+ (2603:10a6:10:2d7::10)
 MIME-Version: 1.0
-References: <20230110200255.1218738-2-macroalpha82@gmail.com> <202301111039.dxBiLene-lkp@intel.com>
-In-Reply-To: <202301111039.dxBiLene-lkp@intel.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 16 Jan 2023 13:35:13 +0100
-Message-ID: <CACRpkdbvsFDDRt1otJcZ-mPdSBecL0cwDSW92YeBGmmyLXee0A@mail.gmail.com>
-Subject: Re: [PATCH v8 1/4] drm: of: Add drm_of_get_dsi_bus helper function
-To: kernel test robot <lkp@intel.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, Chris Morgan <macromorgan@hotmail.com>, tzimmermann@suse.de, 
-	linux-rockchip@lists.infradead.org, robh+dt@kernel.org, 
-	thierry.reding@gmail.com, krzysztof.kozlowski+dt@linaro.org, 
-	oe-kbuild-all@lists.linux.dev, sam@ravnborg.org, maccraft123mc@gmail.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|PAXPR04MB8078:EE_
+X-MS-Office365-Filtering-Correlation-Id: c42a43f9-0b9c-4b1b-185c-08daf7be6db4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	O1bDejm1vqfTPou9LBurLw6RQy5bdMpspZCX78yN+ypWjdevkTnxBye2jF87yEtebSIIX+N0QiO7qtgCaf19CM4j3KMh4Hf5hPfT6ywfHjoG0hEIHLtyVD/QJbWsJYwS6Km38aPwS5kKpeWupYX4CeFiomihW5LRXlqHn9VwiTcVP0Drc86Dk5sZdOhr7pusQZmghfmidVm0vdAZeYcfpwN1h72gIEL+XD9nb/XTDKSt9ALa7YZ8j5+HQBTUkoXFGGDuM8A4GKQ/NM4ZENc3FjWF5KkiwysRSNpKyWRoMfDCoSyhCdg7jWV/19f5IGCYgmchmiibGorsJwfImBrei6mL2WiaCam+R8NVpOt0K1qDPCKaEbIUgQ9nwQ1zRWV90mWv95LdF4zoU0zcsqT/pyLx1FpCZVHp/wKdfzyz2BNXQ9VKG5Czh2z5DFDVQzxY8wdJiAJkzVMFbwNkLrVdDSxmFb5VSMRZSHL0qbf7QLiORK8bBhQWr1wRB0ge6Odja9gB5f9ZavY1seTlH7ttvWabrQv8z5zJpUMIVhqWpPXNSvFrTS8TwaEK1BEIK0iaKJFkpYhQVVQWhfWLMynqxeILh6GEkhHnCMSUzTTNpyrMbIDi0PMwG3EZWPB7vGgRzKLSVH07/NNnJ/WzP1HtUCNz3IcpC2a+Fr/k4olwSPEfhyuUOJZEUqTVpi3J96RcTvEqvAqHUhP/EOjfKh1ejpH/WuaNI1X+/cioN/XBhdsxUBEZk9Yc+c5KUjFBwl04
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39850400004)(376002)(396003)(136003)(346002)(366004)(451199015)(186003)(921005)(2906002)(26005)(6486002)(6512007)(66476007)(66556008)(66946007)(4326008)(478600001)(8676002)(31696002)(83380400001)(41300700001)(86362001)(2616005)(110136005)(316002)(44832011)(36756003)(7416002)(8936002)(7406005)(38100700002)(5660300002)(53546011)(31686004)(6666004)(6506007)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?QXZ4RXF3VTQzMzV1cTcvbkhmNGt2anpUdlgySitDdjV2dUpGWlg2c2R6YW9M?=
+ =?utf-8?B?U2U0T09MS0dzd0ErSzU3K1NLSlFSa0RRZUl0YjZkeFdSV0J6OVlqQzdsY0tR?=
+ =?utf-8?B?TS9nMTc1MFZWOThleitxVU44L0trYmZESGY4MFE4UjNsZVhXTldrREx3aSt6?=
+ =?utf-8?B?YWZFU1ozaTBtdjI5T29vVVEvclhOZVlpMmNYcXoyNUxrSFVZSUpjbW0wRWps?=
+ =?utf-8?B?SGJXMThwMHhuQmZCNEo0TTVkZkNsK21XNzNEcXRDWkxQbm96cWYvSkpET2Ez?=
+ =?utf-8?B?L0tyUWZaUWVhK280bTRnNXlPWEl5U3Z4Um9tbExWOXdORGp5b3ZvZ05ldG4w?=
+ =?utf-8?B?SjNobFFGaFcyRXlHMjh4Z1Y5bUlhWXJFM0FQSHdXWXpJaVNmVGQ3VVJ1NFkv?=
+ =?utf-8?B?YUJhbHl6aGNEWUlDYXZTS25BYldxTUhLUE5iQjFDUEhKd2hQUGcxSy9iMHRk?=
+ =?utf-8?B?bE1YTHpoTEY3U0R3c0krZkFkYWxseWtUd3VXQ2JFR3ZSSkhMdEtuU2xKczA0?=
+ =?utf-8?B?QWRLU253N1h3VWFQbityZmV4Y1ZnODNKeHMvTDVZMFJZY0w1cm5lZWNQM2kv?=
+ =?utf-8?B?d0VmT3ZuK3NNemV5aThETGJBc3VRZitUSjUzVVpsNktKblR3dm51N1E3SS9q?=
+ =?utf-8?B?QlBGbkR4aE9PQ24xZTE1WG14N0hLdEcycnUvSTEyZnBNUmJZaEszNXVEWFpm?=
+ =?utf-8?B?QUp6bWxEWW1CNzJ3QmdPM1FFV1IzbmxMTWhvU2xCTGNiOVQvSitxZGVTanJo?=
+ =?utf-8?B?bTZuMjZrOFI5dzBqR1EwOHZtWEdSTzBUTWlOcDlxV2l0VTI4Y012cGNySjkz?=
+ =?utf-8?B?cVUxZ3FRUms4YWs0TnB6d2duT05sbUpuMmpZZlJQbGlJb3FVNk14aVd4YVh5?=
+ =?utf-8?B?dmVyYklSRk1VQlRkdWdXWHV0WWtxM3ppcThEMDlwRWZXSExraTlTWUg1YW9O?=
+ =?utf-8?B?aFZEaTE1TVdBbDJCM0dYZnpKS3c4Y3hETkZJV1puazJackZVYkxFVEsyTDB4?=
+ =?utf-8?B?dlBFNVp2WDZBTHpDWTYvb1pMczNjNFNobnVzb0JBb3NJam9BOWVFSVdOWW5s?=
+ =?utf-8?B?cDVpQW9ONmducmtTNTRDRDhyc0w2bUZ0cWxOai9qZXNPTWVwS3BxbEFLdG1N?=
+ =?utf-8?B?TkVmMmZUZ0NWQll4cUNRTjBsKzV4c3pSZmJFdXhXVFFhQTQrQTdaZXpiMUtD?=
+ =?utf-8?B?bGc0ejRRdlRPUWtXTTB0LzVkNnF3UlpYMWo1VUMyNjNwTGdEYjZKNUxoeFBU?=
+ =?utf-8?B?ZUlUZnJPTVpuVUlGSWQrWDhFYnBsRktjN0VwRlN3MUI2eSszZFNTZXNUbnND?=
+ =?utf-8?B?OEM5dTAxb0RwZVlPTGVDV0oxd0dJVEZVWEwzZk9ES25RVFpmK0duL1VFSkRU?=
+ =?utf-8?B?SkQ2V0NOMEVZbkZOdjFNUnZ3N2ErbFRTMVYwT3k4dnFLbFZLdmxHZFNYRk9m?=
+ =?utf-8?B?NG9yLzhjMERYNlhXb2d5a21wTGZSVkQvU1VnMDduZFRpNnhBRGIwL3EwL3RV?=
+ =?utf-8?B?dTJvRWQ5Q0xrbEZIZ2x3eHlwcTJrbXROeGkzU2ZYajhlUFR3L242cnY0dmlT?=
+ =?utf-8?B?VmhzdEFIdGdJYktHLzVSUDk0RjFvTTF6NS9JYmV0Lzh5U0txOUJFMWhZOWdG?=
+ =?utf-8?B?cWJXZ29DQU41b1dETWlJMjI3aCtid2hnMFhqMDNQMkZ4d0ZhMGxRbVNWYVpm?=
+ =?utf-8?B?bVFnRk82S2Y1Z1plaWtHN3NBcUttV1c5Q1JtQkdTWTBjUnVrbVRKNTI2TU5a?=
+ =?utf-8?B?NGRpMHZTbC81WlUwWU5IN0p5WlZDcXkxcXY0Y1RSQ2pIM2kvdk9Ed1NsdE9a?=
+ =?utf-8?B?RE4yMDFEam9QR3NVL056R0xXUmgyOE1RNm1PSlVONHVRNk5WU3FoaGtZcUcz?=
+ =?utf-8?B?NlV4bVNsQnZ6NHVROXJaMmxGekc1Q0RIalkzUkJoVFV4NnlOalZ5MUw1Y2lE?=
+ =?utf-8?B?L0U1OHRYWStEWkxRN0p5L1VoZERHNGpFQStFUm5QQkpTdkZ4b084d1kwSHNE?=
+ =?utf-8?B?S1VCZnNncEhJY05kcWEyUE5SZU5PTDlHQVNFM3UzK3NuRlRnOEw2bGhFTzVp?=
+ =?utf-8?B?OCt5WFZYYUd5djM2b0ZTZzRVWnZwYVU4SHdDcjdnaG42Zk9IbHY2NFIySHo2?=
+ =?utf-8?B?N3ppK0lLY2pzYm95aFo0ZFpWZ0UwUXVYTWw4UnB5ckRCZG5zakQ4LzlGNFZq?=
+ =?utf-8?Q?Q5tJDvuegMaTvUDVf/ErCdw=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c42a43f9-0b9c-4b1b-185c-08daf7be6db4
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2023 12:37:28.4587
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uzuJoSa0Kz+aDIXD7G2o7qOGgI5b8HkPQVzUocAJ+16M1E62Uo4lUaJRVppJW4xKlY9YPgFs5+5dQ0AYWF4y9h9WxiRiU7qDGVIExHtir+5R4/JZ7VEpP/aYYTSVwNux
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8078
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_043527_318408_8013AE2E 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_043737_852315_1BBFBC66 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +152,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 11, 2023 at 4:01 AM kernel test robot <lkp@intel.com> wrote:
+Hi Bjorn, all,
 
->    126  static inline int
->    127  drm_of_get_data_lanes_count_ep(const struct device_node *port,
->    128                                 int port_reg, int reg,
->    129                                 const unsigned int min,
->    130                                 const unsigned int max)
->    131  {
->    132          return -EINVAL;
->    133  }
->  > 134  struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
->    135                                           struct mipi_dsi_device_info *info)
->    136  {
->    137          return ERR_PTR(-EINVAL);
->    138  }
->    139  #endif
+On 1/10/23 17:17, Bjorn Andersson wrote:
+> On Mon, 5 Dec 2022 14:40:29 +0100, Quentin Schulz wrote:
+>> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+>>
+>> The Goodix touchscreen controller has a reset line active low. It happens to
+>> also be used to configure its i2c address at runtime. If the reset line is
+>> incorrectly asserted, the address will be wrongly configured. This cost me a few
+>> hours, trying to figure out why the touchscreen wouldn't work.
+>>
+>> [...]
+> 
+> Applied, thanks!
+> 
+> [8/9] arm64: dts: qcom: msm8998-fxtec: fix touchscreen reset GPIO polarity
+>        commit: 8a0721dae68fdb4534e220fc9faae7a0ef2f3785
+> 
 
-This needs to be prefixed "static inline" like the function above, then
-I bet it works.
+Thank you for the merge, however I think there could be some issue here.
 
-Yours,
-Linus Walleij
+This requires the patches 1, 2 and 3 all modifying the input driver in 
+order to not introduce a regression.
+
+I mistakenly removed the RFC tag and seemingly didn't make it clear 
+enough that I had some question on how to properly merge this patch 
+series, c.f. "Do we also make this patch series only one patchset since 
+the DT patches depend
+on the driver patch and vice-versa? In which tree would this go?" in the 
+cover letter.
+
+So please, how do we go on with the rest of the patch series? Should I 
+submit a v4 which would be only one patch with DT and input changes all 
+at once and Bjorn reverts the patch they had just merged?
+
+@Dmitry, since you would have to merge at least patches 1 to 3 in your 
+tree (I assume), would you be willing to take the DT patches at the same 
+time through your tree too? Are the appropriate device DT maintainers OK 
+with this?
+
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
