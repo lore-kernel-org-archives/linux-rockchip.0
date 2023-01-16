@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD91EC63797
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A1BC46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:23:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=abUm3wnMaBf9cxum3H4UW/1ZafUU4hJM5q7KqdDHNnI=; b=eSbSBEtG2rp7Zg
-	FEs95mCirlHE9NBhDC5i7PcWOofW0lDXR/Ns23PH/cC7Y4TZOnHc38zzEsqOH2kUWhQWYtc16NnXj
-	4P09kEIVwh2OPRvfqaVeBQIx7YN3HjqMA8zsh9gqOb+G/vX+E5zLqYvjYuP5BXHDOTAWcSJaaaMCe
-	JI9YDru1RyIw7zg+xrdxIgQIM8gSixGYdrSfq1/hW1jZvezdm1AdxfwuZU6q4bW7MrZQmrECwxizu
-	PVDdgq2N5Djb/AQtib9zQ2hyv2gQdQDNacXewq8vCOF3yeQKltXeT0/aHOFY5xq72uw6oNuA2m+1o
-	a+fvDC5kiujXo853bBmw==;
+	List-Owner; bh=9Xxy05Rbi5IU/PKyjJTAqqpo7jjuO05kC1srrT1UHEc=; b=Fbof7fgObqCNCn
+	h5OlP5PDdRSmuCAwFC814ggLHLGnTiK4ojo7PxcIEY3oKAtMTTMKf6Wklpu6ijktSCSWHcIEf1jVC
+	lQf47MsvZDSUhekDZygAcYaNw+VmO0jy6O2TmPUU+b9B5MSiWT3t7AahehUU0v3MhXHoxDWa0SMmk
+	ozIb08y92hnIBnVOdM560j6hjxRAz0psPlZupUgi5JwniHDQhJ/I+qH1tBEtFr9Epmzpp5EliBAdI
+	XbYbrizizS5NLtZcVIP1QSpwkOB7RSYR+RUVWWczuFapkgGxlnLHJ+wE6k8JDTMPLtqat2KzybrnG
+	LLaqBVFQVdVgh6CDccLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPR9-00ANbc-Ck; Mon, 16 Jan 2023 13:22:07 +0000
-Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
+	id 1pHPSK-00AOCS-Ho; Mon, 16 Jan 2023 13:23:20 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPI2-00AJrl-13; Mon, 16 Jan 2023 13:12:43 +0000
+	id 1pHPI2-00AJrB-Ci; Mon, 16 Jan 2023 13:12:46 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id B6C1E67774;
-	Mon, 16 Jan 2023 13:12:40 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 566F53748B;
+	Mon, 16 Jan 2023 13:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673874760; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673874758; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=aGIRfrzVt2lRRJCGWOkDzXbm/q1OhozGZKyV82xrWWY=;
-	b=AS5i292l/TLgt4y3tGHiRr01JCShlfp66THwbAg3jJFIvnImn7Ct5+50iO9uIlgjh8MZQd
-	tQfNMSwxEbemShLlp/b33L8ieGHwaQif1y2izATuwJW66AnyuBL/ixmmMbhx5yPH5WbUDs
-	pTXW2tCqZOU34yzoIjzEPBt66vjaaNE=
+	bh=6aqtATkZoYffG6UI5K5Okp+pm86436Ur3nX5CypeQrw=;
+	b=QGP6WBLkvJWbaValZVZROvmH7gIgxq8GrOs0IANkznAeptXFVooCalRLFDOpHscnAsMzXv
+	qZx5darxl0z5NxkFKTwc1BY0hV1znB2KtII8VmrLPdLRbfMmNJBr3wdZEB6MlQu4IpJaNO
+	bkpgE2vAWDvHIojzOHodmrPhF2lhzvQ=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673874760;
+	s=susede2_ed25519; t=1673874758;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=aGIRfrzVt2lRRJCGWOkDzXbm/q1OhozGZKyV82xrWWY=;
-	b=rOl/art5B6sAVF+ULi2azkGtW2PW8r8ly1/1Kntr5X0XMWjqhkvrRVE/NwY/U8yaFWfWbG
-	2eAWnTQU0aIcWFDQ==
+	bh=6aqtATkZoYffG6UI5K5Okp+pm86436Ur3nX5CypeQrw=;
+	b=+SyjorZc2v4J3wxa03FiMpZk4Dr9NGdmDi2YCH8PVK9ZApaZ/v8x3qiMLkP61THHqFpJhR
+	6+lwzpf7R1N++7Dg==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 74066139C3;
-	Mon, 16 Jan 2023 13:12:40 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 0AF63139C3;
+	Mon, 16 Jan 2023 13:12:38 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id sHD7GkhNxWNrNQAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:40 +0000
+	id WATjAUZNxWNrNQAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:38 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: sam@ravnborg.org,
 	daniel@ffwll.ch,
@@ -72,17 +72,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 11/22] drm/kmb: Remove unnecessary include statements for drm_crtc_helper.h
-Date: Mon, 16 Jan 2023 14:12:24 +0100
-Message-Id: <20230116131235.18917-12-tzimmermann@suse.de>
+Subject: [PATCH 03/22] drm/amdgpu: Remove unnecessary include statements for drm_crtc_helper.h
+Date: Mon, 16 Jan 2023 14:12:16 +0100
+Message-Id: <20230116131235.18917-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230116131235.18917-1-tzimmermann@suse.de>
 References: <20230116131235.18917-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_051242_276242_7228DF6C 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_051242_785602_DB4F6700 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,34 +107,170 @@ possible.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/kmb/kmb_crtc.c  | 1 -
- drivers/gpu/drm/kmb/kmb_plane.c | 1 -
- 2 files changed, 2 deletions(-)
+ drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c | 2 ++
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c     | 1 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c    | 1 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_encoders.c   | 1 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c        | 1 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_mode.h       | 1 -
+ drivers/gpu/drm/amd/amdgpu/atombios_crtc.c     | 1 -
+ drivers/gpu/drm/amd/amdgpu/atombios_encoders.c | 1 -
+ drivers/gpu/drm/amd/amdgpu/dce_v10_0.c         | 2 ++
+ drivers/gpu/drm/amd/amdgpu/dce_v11_0.c         | 2 ++
+ drivers/gpu/drm/amd/amdgpu/dce_v6_0.c          | 2 ++
+ drivers/gpu/drm/amd/amdgpu/dce_v8_0.c          | 2 ++
+ 12 files changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/kmb/kmb_crtc.c b/drivers/gpu/drm/kmb/kmb_crtc.c
-index 06613ffeaaf8..647872f65bff 100644
---- a/drivers/gpu/drm/kmb/kmb_crtc.c
-+++ b/drivers/gpu/drm/kmb/kmb_crtc.c
-@@ -8,7 +8,6 @@
- #include <drm/drm_atomic.h>
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c
+index 2ebbc6382a06..3c962d0214cc 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c
+@@ -25,7 +25,9 @@
+  */
+ 
+ #include <drm/display/drm_dp_helper.h>
++#include <drm/drm_crtc_helper.h>
+ #include <drm/drm_edid.h>
++#include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/amdgpu_drm.h>
+ #include "amdgpu.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+index 0993ee91fe18..63122482208d 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -39,6 +39,7 @@
+ #include <drm/drm_aperture.h>
  #include <drm/drm_atomic_helper.h>
- #include <drm/drm_crtc.h>
--#include <drm/drm_crtc_helper.h>
- #include <drm/drm_print.h>
- #include <drm/drm_vblank.h>
- #include <drm/drm_modeset_helper_vtables.h>
-diff --git a/drivers/gpu/drm/kmb/kmb_plane.c b/drivers/gpu/drm/kmb/kmb_plane.c
-index d172a302f902..9e0562aa2bcb 100644
---- a/drivers/gpu/drm/kmb/kmb_plane.c
-+++ b/drivers/gpu/drm/kmb/kmb_plane.c
-@@ -7,7 +7,6 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_blend.h>
- #include <drm/drm_crtc.h>
--#include <drm/drm_crtc_helper.h>
- #include <drm/drm_fb_dma_helper.h>
+ #include <drm/drm_fb_helper.h>
++#include <drm/drm_crtc_helper.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/amdgpu_drm.h>
+ #include <linux/vgaarb.h>
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+index b22471b3bd63..c5b98e9a69e9 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+@@ -42,6 +42,7 @@
+ #include <drm/drm_fb_helper.h>
+ #include <drm/drm_gem_framebuffer_helper.h>
  #include <drm/drm_fourcc.h>
++#include <drm/drm_modeset_helper.h>
+ #include <drm/drm_vblank.h>
+ 
+ /**
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_encoders.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_encoders.c
+index c96e458ed088..27a782a9dc72 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_encoders.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_encoders.c
+@@ -24,7 +24,6 @@
+  *          Alex Deucher
+  */
+ 
+-#include <drm/drm_crtc_helper.h>
+ #include <drm/amdgpu_drm.h>
+ #include "amdgpu.h"
+ #include "amdgpu_connectors.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
+index a6aef488a822..d0a1cc88832c 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
+@@ -45,7 +45,6 @@
+ #include <linux/irq.h>
+ #include <linux/pci.h>
+ 
+-#include <drm/drm_crtc_helper.h>
+ #include <drm/drm_vblank.h>
+ #include <drm/amdgpu_drm.h>
+ #include <drm/drm_drv.h>
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_mode.h b/drivers/gpu/drm/amd/amdgpu/amdgpu_mode.h
+index 8a39300b1a84..cf4b6e8d7d1e 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_mode.h
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_mode.h
+@@ -35,7 +35,6 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_encoder.h>
+ #include <drm/drm_fixed.h>
+-#include <drm/drm_crtc_helper.h>
  #include <drm/drm_framebuffer.h>
+ #include <drm/drm_probe_helper.h>
+ #include <linux/i2c.h>
+diff --git a/drivers/gpu/drm/amd/amdgpu/atombios_crtc.c b/drivers/gpu/drm/amd/amdgpu/atombios_crtc.c
+index afad094f84c2..10098fdd33fc 100644
+--- a/drivers/gpu/drm/amd/amdgpu/atombios_crtc.c
++++ b/drivers/gpu/drm/amd/amdgpu/atombios_crtc.c
+@@ -24,7 +24,6 @@
+  *          Alex Deucher
+  */
+ 
+-#include <drm/drm_crtc_helper.h>
+ #include <drm/amdgpu_drm.h>
+ #include <drm/drm_fixed.h>
+ #include "amdgpu.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/atombios_encoders.c b/drivers/gpu/drm/amd/amdgpu/atombios_encoders.c
+index 18ae9433e463..d95b2dc78063 100644
+--- a/drivers/gpu/drm/amd/amdgpu/atombios_encoders.c
++++ b/drivers/gpu/drm/amd/amdgpu/atombios_encoders.c
+@@ -28,7 +28,6 @@
+ 
+ #include <acpi/video.h>
+ 
+-#include <drm/drm_crtc_helper.h>
+ #include <drm/amdgpu_drm.h>
+ #include "amdgpu.h"
+ #include "amdgpu_connectors.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
+index a2452fc304c5..01d1e2a631be 100644
+--- a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
+@@ -22,6 +22,8 @@
+  */
+ 
+ #include <drm/drm_fourcc.h>
++#include <drm/drm_modeset_helper.h>
++#include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_vblank.h>
+ 
+ #include "amdgpu.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
+index 6ac680c4c6e2..973abe989ebe 100644
+--- a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
+@@ -22,6 +22,8 @@
+  */
+ 
+ #include <drm/drm_fourcc.h>
++#include <drm/drm_modeset_helper.h>
++#include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_vblank.h>
+ 
+ #include "amdgpu.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c
+index 354ae09cc9a2..86e95b1c9d0e 100644
+--- a/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/dce_v6_0.c
+@@ -24,6 +24,8 @@
+ #include <linux/pci.h>
+ 
+ #include <drm/drm_fourcc.h>
++#include <drm/drm_modeset_helper.h>
++#include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_vblank.h>
+ 
+ #include "amdgpu.h"
+diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
+index 33977b0ba19d..f81f1d5d3e8a 100644
+--- a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
+@@ -22,6 +22,8 @@
+  */
+ 
+ #include <drm/drm_fourcc.h>
++#include <drm/drm_modeset_helper.h>
++#include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_vblank.h>
+ 
+ #include "amdgpu.h"
 -- 
 2.39.0
 
