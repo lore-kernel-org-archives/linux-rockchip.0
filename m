@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A53BAC54EBE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:35:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75861C46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7jL4933edgkuwRorv6jGUfEM/emVN5G5qY8/2l20AAQ=; b=lOyTsK5oiKwa4S
-	rkLswCztpsBNbW2LlP9XXob0QRPgI/BJ1uK+zS+GcRAd5aBodTJJ+DWqLMKAE/kmxFVjf7fNIG9XM
-	w0KTXfJNYBsVZmmETvOhWcahhIvpnzdBINGGgVbEz/EdRikh1oPvBaMDpfGrdJHafPTbjpHhft+vX
-	XmqAcaiY8NGv8KDms43zdvSx7mbVD93y9wbMLcI/U6rRDeMbvCK+caRa4FwKe9DPgr8I3vDV5QyWz
-	r2KTgn1Zd8mci4mEJ4vPMI5zzlMCJDbC5tb4dyZeZcBUQPAtYX9Li0mCNYGnlE7F4APZwXO6XAG9y
-	oa/K8EWdAoGdxf7O/paw==;
+	List-Owner; bh=Ewrd9yp5nNX7yQc5h9BdNkMvitAiWpRFx6mmyeFdFLU=; b=vg0zSSZ8vbbcTr
+	tA9o+IkUMX+lYIkN44K6C+rJGTXzBhqROkRNXTkqeojoCi11aShVvf6N1dGY4qR1EaqoFyN9qOV9N
+	FCEfF1nAKMtV7I0qOyPYhrqrirsLLTKiGrMK8+7tQSIEu+b4MWhekJfMM8yoth8/yIAztSHr4V5e4
+	aYHBfjbTdDtzIN4BSgjscu0OqSSkYYHvz00cyFyBU+rvIiEfEkLnFjWvBPOW+F3HWIiPn9/PU0A7M
+	ehzl+DXyIuTigVhgSUVgo24JP04ErDKq7s9EgnJta4e7SnOkVdm7Jxz2qMRdo+UH67G+YJSbD6qgL
+	jMiDCIcKIdC3vwBxQIbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPdQ-00ATDx-0B; Mon, 16 Jan 2023 13:34:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pHPda-00ATLn-3u; Mon, 16 Jan 2023 13:34:58 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPIH-00AK2U-I1; Mon, 16 Jan 2023 13:12:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=iMWrrVURFOdZlPDrSQjPvTy4WvSl6jIkUYePEf/jIB0=; b=iGsYM+Vjz86bALXWdRZ5QWK35X
-	jYndSZCkbS+nufb+/9MFGWO0gKhgCJMg2ph3qFMuzShsKb4l1P03DpQXxzlT3rTzIBpcL9fB0ithf
-	1sDQ6NgwIGJcmbqGSTUcB2jjbvwyrBJF33H5H7Z137CZhd+6vAy7LNmNS+W0hb9T/XtVbciqkFkZC
-	P73d2UicB1fFbasepPWgQ+bNO2bKsWsCcDoJeZYD7yzflI+cxRVAid1OQKjnCF9RINpviI9Cf88Ma
-	KSL78JOowP4GoAqN0072MHIUvje3cMW3AZKeSMrmL8jnlsWPXKLpe0EpZ3p0oamoytKNT/9jAi1yA
-	s3bSp9xw==;
-Received: from smtp-out2.suse.de ([195.135.220.29])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pHPI2-005bUU-2S;
-	Mon, 16 Jan 2023 13:12:45 +0000
+	id 1pHPI9-00AJyC-Jc; Mon, 16 Jan 2023 13:12:58 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id BCF8A67842;
-	Mon, 16 Jan 2023 13:12:42 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id D486F3751A;
+	Mon, 16 Jan 2023 13:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673874762; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673874763; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=iMWrrVURFOdZlPDrSQjPvTy4WvSl6jIkUYePEf/jIB0=;
-	b=UxVaOrSFyjouFhmAZS5h/SHqg6/IBoomW+s8b5fEhWFAWA1efS1iNCNo9MTfiOdWSRlfH4
-	IuwBsCDFgJiJ3QDWRnvZ4uqKadiBVb9NSDFX89/jMiBC7vXyL0fVdOsB1TOWOp7He7ew7Z
-	o243vwFfHr16dc7/p++LjWOTeZ/30Mg=
+	bh=OO536y1oIIavqxJbggquU+Ve/xMHXk1PsPJeSriBnEc=;
+	b=Udkbksja4U2SmueaT/CBQsB1+CnfK2yVlqG1l9ZE5v78J3trCBUlXz2roVXvwoK8JV+j/5
+	RJBpTXJMbF1eF1IVQTt5IsaogDnmOtmBRNYkOH3qPIyZY2v7XlyXWADk1UpBB17xSI4khU
+	CZJDLkGyF0XQJr3XVOuEWpBhmMoHRt4=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673874762;
+	s=susede2_ed25519; t=1673874763;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=iMWrrVURFOdZlPDrSQjPvTy4WvSl6jIkUYePEf/jIB0=;
-	b=Vv7gBxVnrO8Kq1tEjCJb2E8h180KuG7452sbf68LEcxGEP4e0TzBeSUTEQiPViQc+qF6gF
-	CIhea/utyyyqTxBw==
+	bh=OO536y1oIIavqxJbggquU+Ve/xMHXk1PsPJeSriBnEc=;
+	b=9MzN2mh+4Y19EA2xQcARcGH/wwJ5CLbTFhxyzTEtdsZAzOAJxfT4YnHxkMNDoB0Q8nvGy/
+	kHh7OuLMzJlFZ8AQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7F227138FA;
-	Mon, 16 Jan 2023 13:12:42 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 94FAB138FA;
+	Mon, 16 Jan 2023 13:12:43 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id aNMZHkpNxWNrNQAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:42 +0000
+	id WB17I0tNxWNrNQAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:43 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: sam@ravnborg.org,
 	daniel@ffwll.ch,
@@ -86,16 +72,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 18/22] drm/sun4i: Remove unnecessary include statements for drm_crtc_helper.h
-Date: Mon, 16 Jan 2023 14:12:31 +0100
-Message-Id: <20230116131235.18917-19-tzimmermann@suse.de>
+Subject: [PATCH 22/22] drm/crtc-helper: Remove most include statements from drm_crtc_helper.h
+Date: Mon, 16 Jan 2023 14:12:35 +0100
+Message-Id: <20230116131235.18917-23-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230116131235.18917-1-tzimmermann@suse.de>
 References: <20230116131235.18917-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_131243_141607_AD5432AA 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20230116_051249_854020_849831C8 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,32 +99,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several source files include drm_crtc_helper.h without needing it or
-only to get its transitive include statements; leading to unnecessary
-compile-time dependencies.
+Remove most include statements from crm_crtc_helper.h and forward-
+declare the contained types in drm_crtc_helper.h. Only keep <linux/types.h>
+for the definition of 'bool'.
 
-Directly include required headers and drop drm_crtc_helper.h where
-possible.
-
+Suggested-by: Sam Ravnborg <sam@ravnborg.org>
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/drm/drm_crtc_helper.h | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c b/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
-index 477cb6985b4d..37dc66332bbd 100644
---- a/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
-+++ b/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
-@@ -8,8 +8,8 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
+diff --git a/include/drm/drm_crtc_helper.h b/include/drm/drm_crtc_helper.h
+index 072bc4f90349..8c886fc46ef2 100644
+--- a/include/drm/drm_crtc_helper.h
++++ b/include/drm/drm_crtc_helper.h
+@@ -33,13 +33,17 @@
+ #ifndef __DRM_CRTC_HELPER_H__
+ #define __DRM_CRTC_HELPER_H__
  
--#include <drm/drm_crtc_helper.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_modeset_helper_vtables.h>
- #include <drm/drm_simple_kms_helper.h>
+-#include <linux/spinlock.h>
+ #include <linux/types.h>
+-#include <linux/idr.h>
  
- #include "sun8i_dw_hdmi.h"
+-#include <drm/drm_crtc.h>
+-#include <drm/drm_modeset_helper_vtables.h>
+-#include <drm/drm_modeset_helper.h>
++struct drm_atomic_state;
++struct drm_connector;
++struct drm_crtc;
++struct drm_device;
++struct drm_display_mode;
++struct drm_encoder;
++struct drm_framebuffer;
++struct drm_mode_set;
++struct drm_modeset_acquire_ctx;
+ 
+ void drm_helper_disable_unused_functions(struct drm_device *dev);
+ int drm_crtc_helper_set_config(struct drm_mode_set *set,
 -- 
 2.39.0
 
