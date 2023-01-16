@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D60C46467
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEDEC46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 13:31:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YbsPAGCJ6BW3M3I6V7D8BvmvCHFAGbKYhAYG4eo5CmU=; b=LDs8c5EFp4RlOR
-	TOrKSFe6V1i7vt8tI68xTWxctvuGr07uOCBiArmSvdNs+76ug9P/9OhOfhoC7mFE8khJqrw6SoraB
-	TOKer2lWbGVcPFI3bab2cZNA1whgQF1lVDgPHS9YUOMl21j7ULkR0f3IQbPBPUGG7BRRBGb7ZqKsU
-	2LCaH+EQ0WyQ8C7mTLiVhOzVE+o61TaXSqHJ6fkv3vgZBQ3n90xPVIVSbuuPYNaFOjEzrj9LEyaQc
-	hPMhM9pL1AkZUcyItYhXMs+sqoFQ+atrf27qnwK/JgqSipB8/iVJFZm2OXIiQzN8iKPdKYpmRF55v
-	FFDbJ3ULCkf1815ruLbA==;
+	List-Owner; bh=D/sUEHEMLCiMNDqSlcf6yd9hCsfv+fc8+VPbPjpk9Pc=; b=242b2iOTwq/owl
+	WrIYtBocW0D2y+EPlxdHIzKPyMAAWBYJ2Gx9Mek4yb951DhkVlK6mYcn++yjsH+YMUQlws0ZNwbWT
+	pnr7dZP3LsC2+atvwkYK/9vkaF2us67+vxBJLIPc7DBTI/CmZkRpX4cOMoBdQkm3xgK5lTl4XNOa0
+	G9+qu/tRmLCHIkJQQ9CqZmadZw/3cFELgz3DYsuZ971sa5b0tTXi569lWHkj+chpYq6D86lxcYslc
+	SYuch8e7SuczyepMLy/NQ1aPFiZJIsV5+qb0rp+VbKQ1OHdqRDcxFgcvu1k6andor/XspYNRWHz6V
+	pqvcs8MhSsxu8+ImK4RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPZr-00ARgZ-6M; Mon, 16 Jan 2023 13:31:07 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1pHPZn-00ARf7-Mk; Mon, 16 Jan 2023 13:31:03 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHPI5-00AJun-S1; Mon, 16 Jan 2023 13:12:50 +0000
+	id 1pHPI3-00AJrA-Uw; Mon, 16 Jan 2023 13:12:48 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 7B84B67832;
-	Mon, 16 Jan 2023 13:12:42 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 07782371EC;
+	Mon, 16 Jan 2023 13:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1673874762; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1673874758; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=sQCXLFTLt+wfi6KI5cdFPgyAVMHQnxpXhwmOeB7S9RQ=;
-	b=tEiTlOEy9ddvHnRqwXavA6g9R/aGsxvKPlR95AYyaWbYGJ+2h5J7iPDh10ZBWs+kDE7Tk4
-	3z+DUhLt07j6NsxOqnI6lBYDOhkfLa19MfExIdTl4Cfni2BHkHFhVPDKRjV7XCmmybm9Du
-	mGfkcz6u1Hf/1EbiaeS6J8jjMY6FGS0=
+	bh=G+jFAu9vBpTanD+YawBBTr0z0aAlIqtrIhahbYVnnRU=;
+	b=AC1jGQSwx0MTb6F2nuKKdUcBph/f61YnuYD4+F34frIgH4NLGZXsf52bb6zzTelMe0werA
+	LkP1pzz2+InIY+wQJPrKCExsuM5zLBSLKTa/zTWlXhqEuYGkhe+1t4/auT2+LNtfynG/Dz
+	e6/kvhbAYlbikOvfeQAACiU8vZidMxM=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1673874762;
+	s=susede2_ed25519; t=1673874758;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=sQCXLFTLt+wfi6KI5cdFPgyAVMHQnxpXhwmOeB7S9RQ=;
-	b=6GXx3nY5Dtfl/pDbH9nDpJyzouzH0m/gxZLKRlIe+cz987job/+7gl4ul8a7uMQmfEvUKd
-	CHZnIWDxpuSuT7DQ==
+	bh=G+jFAu9vBpTanD+YawBBTr0z0aAlIqtrIhahbYVnnRU=;
+	b=rggs4dUrf//Qw43oqDjtJMHw7aSCLKlYDfZSEeKCPBNt60KSnjstHzlpTUEkhqxpcCZl0d
+	S4M9GKAc2OhgtlAA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3CE08139C3;
-	Mon, 16 Jan 2023 13:12:42 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B7778138FA;
+	Mon, 16 Jan 2023 13:12:37 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id IMEBDkpNxWNrNQAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:42 +0000
+	id yM3tK0VNxWNrNQAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Mon, 16 Jan 2023 13:12:37 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: sam@ravnborg.org,
 	daniel@ffwll.ch,
@@ -72,17 +72,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 17/22] drm/sprd: Remove unnecessary include statements for drm_crtc_helper.h
-Date: Mon, 16 Jan 2023 14:12:30 +0100
-Message-Id: <20230116131235.18917-18-tzimmermann@suse.de>
+Subject: [PATCH 02/22] drm: Remove unnecessary include statements for drm_crtc_helper.h
+Date: Mon, 16 Jan 2023 14:12:15 +0100
+Message-Id: <20230116131235.18917-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230116131235.18917-1-tzimmermann@suse.de>
 References: <20230116131235.18917-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_051246_103764_8E4598AA 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230116_051244_269041_7CCCBEAF 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,56 +98,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several source files include drm_crtc_helper.h without needing it or
-only to get its transitive include statements; leading to unnecessary
-compile-time dependencies.
+Several DRM core and helper source files include drm_crtc_helper.h
+without needing it or only to get its transitive include statements;
+leading to unnecessary compile-time dependencies.
 
 Directly include required headers and drop drm_crtc_helper.h where
-possible.
+possible. The header file, drm_fixed.h, includes <linux/kernel.h>
+for lower_32_bits().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/sprd/sprd_dpu.c | 1 -
- drivers/gpu/drm/sprd/sprd_drm.c | 1 -
- drivers/gpu/drm/sprd/sprd_dsi.c | 1 -
- 3 files changed, 3 deletions(-)
+ drivers/gpu/drm/drm_crtc_helper.c  | 1 -
+ drivers/gpu/drm/drm_lease.c        | 2 +-
+ drivers/gpu/drm/drm_plane_helper.c | 1 -
+ include/drm/drm_fixed.h            | 1 +
+ 4 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/sprd/sprd_dpu.c b/drivers/gpu/drm/sprd/sprd_dpu.c
-index db0bcea1d9f4..b96fc6837b0d 100644
---- a/drivers/gpu/drm/sprd/sprd_dpu.c
-+++ b/drivers/gpu/drm/sprd/sprd_dpu.c
-@@ -18,7 +18,6 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_blend.h>
--#include <drm/drm_crtc_helper.h>
- #include <drm/drm_fb_dma_helper.h>
- #include <drm/drm_framebuffer.h>
- #include <drm/drm_gem_dma_helper.h>
-diff --git a/drivers/gpu/drm/sprd/sprd_drm.c b/drivers/gpu/drm/sprd/sprd_drm.c
-index 9d42f17a5734..be60c0d546a3 100644
---- a/drivers/gpu/drm/sprd/sprd_drm.c
-+++ b/drivers/gpu/drm/sprd/sprd_drm.c
-@@ -11,7 +11,6 @@
- #include <linux/of_platform.h>
- 
- #include <drm/drm_atomic_helper.h>
+diff --git a/drivers/gpu/drm/drm_crtc_helper.c b/drivers/gpu/drm/drm_crtc_helper.c
+index a209659a996c..e7a23e18140c 100644
+--- a/drivers/gpu/drm/drm_crtc_helper.c
++++ b/drivers/gpu/drm/drm_crtc_helper.c
+@@ -39,7 +39,6 @@
+ #include <drm/drm_atomic_uapi.h>
+ #include <drm/drm_bridge.h>
+ #include <drm/drm_crtc.h>
 -#include <drm/drm_crtc_helper.h>
  #include <drm/drm_drv.h>
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
-diff --git a/drivers/gpu/drm/sprd/sprd_dsi.c b/drivers/gpu/drm/sprd/sprd_dsi.c
-index 12b67a5d5923..ab0e5cce7adb 100644
---- a/drivers/gpu/drm/sprd/sprd_dsi.c
-+++ b/drivers/gpu/drm/sprd/sprd_dsi.c
-@@ -13,7 +13,6 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_encoder.h>
+diff --git a/drivers/gpu/drm/drm_lease.c b/drivers/gpu/drm/drm_lease.c
+index 08ab75303a00..150fe1555068 100644
+--- a/drivers/gpu/drm/drm_lease.c
++++ b/drivers/gpu/drm/drm_lease.c
+@@ -6,7 +6,7 @@
+ #include <linux/uaccess.h>
  
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
+ #include <drm/drm_auth.h>
 -#include <drm/drm_crtc_helper.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
++#include <drm/drm_crtc.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_file.h>
+ #include <drm/drm_lease.h>
+diff --git a/drivers/gpu/drm/drm_plane_helper.c b/drivers/gpu/drm/drm_plane_helper.c
+index ba6a9136a065..c91e454eba09 100644
+--- a/drivers/gpu/drm/drm_plane_helper.c
++++ b/drivers/gpu/drm/drm_plane_helper.c
+@@ -28,7 +28,6 @@
+ #include <drm/drm_atomic.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_atomic_uapi.h>
+-#include <drm/drm_crtc_helper.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_encoder.h>
+diff --git a/include/drm/drm_fixed.h b/include/drm/drm_fixed.h
+index 553210c02ee0..255645c1f9a8 100644
+--- a/include/drm/drm_fixed.h
++++ b/include/drm/drm_fixed.h
+@@ -25,6 +25,7 @@
+ #ifndef DRM_FIXED_H
+ #define DRM_FIXED_H
  
++#include <linux/kernel.h>
+ #include <linux/math64.h>
+ 
+ typedef union dfixed {
 -- 
 2.39.0
 
