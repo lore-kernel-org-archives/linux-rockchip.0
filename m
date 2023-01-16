@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C002C54EBE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 18:38:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ECC0C54EBE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 20:16:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ngSUqu3uD5xe9+Va7/Ld3jLDbBxpVr9ihvt5xKFYjV8=; b=ZMCQmKmPjbWDVr
-	Yt83Q+HdCqxowkXN8X0wi+n895KoVq7MucNfYXnlY9E4vhuPsZVaPg18wZ7uC1+fKBNPrCmUS2hUr
-	RcdgAjIU6WpL8LguFXDg6zR4DeXhqUkn41l8vR9FcxRiACFE5Y7amLUKrtgDkMiAIJ76OvDMC7jlF
-	ok4nm4w31/RzekL1A8fIf4mgXRw85hONRIezWCRIrW2K+ubOdnIqvfVoSOoBvhwjx8J9OXXHrKrAs
-	5yRYTsAVZzzyYdHl+Y04hrJfOVrjpiIAd9FMDk2TC8G6VN2RBeR8ojZQwQZiT18wKLEsgsGtjg1tf
-	nHEo6DExeciiDrSfK55w==;
+	List-Owner; bh=ejQbx99meTsepxXgF9gbUcOyUQb0/pkqec1BwMD6B3Q=; b=TWxwwi1gYfDfFF
+	r86HSXIDaIup3/SJ+GGBqWt1kTW/Q8Y/A9Og3ha19qwJFqYTJdhRlA77NNWw57DmJFYNLZ8ADedjJ
+	xBF66LMcQKiPWA+BlMfcpSZaJy8CmwzgQJZNPMjk+ks+yCJebPpmRKksaE5XPHamgRJczi025kLRv
+	01S29efFx5U81Rqiw6AmlH4o6NlKtqBgRLvnqCL5xjc5Au/iFokGV99NPoYUGU+Hnv8k/8T8kqgIZ
+	tmDEnKWEPL3aviTMtnwmKaA3ry2oalpKl/RtFKKrKJITQ5BESucIaH5fH7OUgy+t3lZwyLMKwYBzV
+	5jxpkfMKNlPcKBr9+OXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHUMf-00BjiR-Gt; Mon, 16 Jan 2023 18:37:49 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1pHVtr-00BwzT-7X; Mon, 16 Jan 2023 20:16:11 +0000
+Received: from mailrelay1-1.pub.mailoutpod2-cph3.one.com ([2a02:2350:5:400::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHUMb-00BjhY-0C; Mon, 16 Jan 2023 18:37:48 +0000
-Received: by mail-oi1-x236.google.com with SMTP id p185so2969381oif.2;
-        Mon, 16 Jan 2023 10:37:43 -0800 (PST)
+	id 1pHVtf-00Bwxz-Jv
+	for linux-rockchip@lists.infradead.org; Mon, 16 Jan 2023 20:16:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bz6Srssb7KxtWIp2StQowmALBQ/ecYiEATmxxDpLUgE=;
-        b=da/8FrC3su8n4920e9FOvu1j/TWeGMIAZK3QFppvkb8spsp70RYdvbMm2q6kr8fatp
-         5ZhAWveL0+ghlV+yoW55uxO1VApqKx7SI3P9NQE44tN5xuWeO0ji9XuxwTvr/dlc9rsT
-         tVUpF37v44gwmO7bLXKdtbiGDN/w5BQAj3xAbBkq52KC4lJdYL5HB8bnXAJ4+Its3plb
-         v4Jme9uznTgidvg/tGOHCdyd7VszsqLeOpmjJn9xH6h/dQojHZTl8CSLKaqG/edls6PK
-         yQ1U3V9Jp+1Ca32YYe1xYlqr5URZI2+ZvAQNN1kMuPpVWR6dfbhkvE0JUVZPCO257Kdu
-         QMeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bz6Srssb7KxtWIp2StQowmALBQ/ecYiEATmxxDpLUgE=;
-        b=DCLjWkdmaHaK2OAqu+h4PScNZECdI9TBLZI7+Znu8FBOxxseSLrHzVGnlvxgXFxltC
-         1+O9hPk5AFiVhNLrE+eNXq5RN41yr+x2/a+dfdKiASgzTRK43P6tOljMTQCRd0TTxJ9n
-         0mtPurWS5CLEX4gv134Z187T3i8Rx9l+Gu6vzsd3SATSNNmlEZ8JpJ5155svD9+AH5KZ
-         1d1KY40eZFQ9iRD3R19M4YNSKPBQAQYYemHftEYyTg6keEo8bbs6mnN32h3ya5bW1w14
-         8TeA5zlGG3NJQ2F2gMpTk07S+2hQCc2lRGyqmkY8KXWEfGT1hVN8KM1Gc4gf3R0lkUhz
-         vTzA==
-X-Gm-Message-State: AFqh2kotPFPsi6EePM4xojdDHmngcppymMYo0Xsi+4O36VQndbeN70qL
-	26Ztx2ArJao8RUNVyTiZ0n5zgEPs60dhTfU1HtwzQfE3
-X-Google-Smtp-Source: AMrXdXtOKveG9OHXqQHo9xNE/hNA9+TOjgR84/kFoTmzmkWJIw/wZWO6Z17PeC1Jr2qOmQVHIKAxEfu0US9MC60q0b0=
-X-Received: by 2002:aca:2807:0:b0:35b:f5f7:3ed0 with SMTP id
- 7-20020aca2807000000b0035bf5f73ed0mr17751oix.46.1673894262477; Mon, 16 Jan
- 2023 10:37:42 -0800 (PST)
+	d=ravnborg.org; s=rsa2;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=qWZKxlX4KW/JmPpNe4hoOYISYsciP5gHQlpn+CvfXf8=;
+	b=kt2RebpVMaIBssccQkMEgek+nwW85G6J0siMHGZ1qETVQeJlMBKmjG0mlVm3r7ePnu8jfPm81ygq7
+	 Mz8rQydCpwnm7+yWjbjNIN/fzDJe5WsKcBoAUsBadcQc0vOYb6T41tQjEeU/05VcOGjEkJnNNqYFDv
+	 W6Hs6b61sUUwtJAeXWksNEBFK4Y9hM1amCX4haYovx3yLNNcTv+aB4AWsRcwfANqGXT1LV3gcWRrqV
+	 ROUTznYXXwPl8HONFIMoZCbhWD4ezvanZv5cXNNxoJUbsVJ4K/EAnSMi/8BPSb4nuXYYFMXiL4SyAH
+	 nCwGrMJpVzOvZphymhAQroedp3D9X1Q==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+	d=ravnborg.org; s=ed2;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=qWZKxlX4KW/JmPpNe4hoOYISYsciP5gHQlpn+CvfXf8=;
+	b=xE4aoD0tRO5MstpdlKpx4S2jKlZCleYS/37b6LqWjWapIOw44SoqoiaLAWrBeI0WODd2oUSv6O6cJ
+	 cNcxfeJCQ==
+X-HalOne-ID: 90146bb7-95da-11ed-afa2-11abd97b9443
+Received: from ravnborg.org (2-105-2-98-cable.dk.customer.tdc.net [2.105.2.98])
+	by mailrelay1 (Halon) with ESMTPSA
+	id 90146bb7-95da-11ed-afa2-11abd97b9443;
+	Mon, 16 Jan 2023 20:15:49 +0000 (UTC)
+Date: Mon, 16 Jan 2023 21:15:47 +0100
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: daniel@ffwll.ch, airlied@gmail.com, dri-devel@lists.freedesktop.org,
+	amd-gfx@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	nouveau@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 02/22] drm: Remove unnecessary include statements for
+ drm_crtc_helper.h
+Message-ID: <Y8Wwcy3LuknhDQz1@ravnborg.org>
+References: <20230116131235.18917-1-tzimmermann@suse.de>
+ <20230116131235.18917-3-tzimmermann@suse.de>
 MIME-Version: 1.0
-References: <20230116131235.18917-1-tzimmermann@suse.de> <87k01me9jn.fsf@intel.com>
-In-Reply-To: <87k01me9jn.fsf@intel.com>
-From: Alex Deucher <alexdeucher@gmail.com>
-Date: Mon, 16 Jan 2023 13:37:31 -0500
-Message-ID: <CADnq5_PsL8N27_LC_h1m8i_FCg6mJtr7K9Yjv=guw-KGD2wU5w@mail.gmail.com>
-Subject: Re: [PATCH 00/22] drm: Remove includes for drm_crtc_helper.h
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, sam@ravnborg.org, daniel@ffwll.ch, 
-	airlied@gmail.com, linux-aspeed@lists.ozlabs.org, 
-	nouveau@lists.freedesktop.org, linux-mips@vger.kernel.org, 
-	amd-gfx@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20230116131235.18917-3-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_103745_068952_D763843E 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20230116_121601_004134_8CF1E5B8 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +82,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 16, 2023 at 11:20 AM Jani Nikula
-<jani.nikula@linux.intel.com> wrote:
->
-> On Mon, 16 Jan 2023, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> > A lot of source files include drm_crtc_helper.h for its contained
-> > include statements. This leads to excessive compile-time dependencies.
-> >
-> > Where possible, remove the include statements for drm_crtc_helper.h
-> > and include the required source files directly. Also remove the
-> > include statements from drm_crtc_helper.h itself, which doesn't need
-> > most of them.
-> >
-> > I built this patchset on x86-64, aarch64 and arm. Hopefully I found
-> > all include dependencies.
->
-> I think this is the right direction and I support this. Personally I
-> think it's enough to build test and fix any fallout afterwards.
->
-> To that end, I did build test this myself with my config, and it was
-> fine, though that probably doesn't add much coverage.
->
-> FWIW,
->
-> Acked-by: Jani Nikula <jani.nikula@intel.com>
+Hi Thomas.
 
-Agreed.  I applied 1/22 since it was an unrelated cleanup, but the
-rest of the series is:
-Acked-by: Alex Deucher <alexander.deucher@amd.com>
+On Mon, Jan 16, 2023 at 02:12:15PM +0100, Thomas Zimmermann wrote:
+> Several DRM core and helper source files include drm_crtc_helper.h
+> without needing it or only to get its transitive include statements;
+> leading to unnecessary compile-time dependencies.
+> 
+> Directly include required headers and drop drm_crtc_helper.h where
+> possible. The header file, drm_fixed.h, includes <linux/kernel.h>
+> for lower_32_bits().
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>  drivers/gpu/drm/drm_crtc_helper.c  | 1 -
+>  drivers/gpu/drm/drm_lease.c        | 2 +-
+>  drivers/gpu/drm/drm_plane_helper.c | 1 -
+>  include/drm/drm_fixed.h            | 1 +
+>  4 files changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_crtc_helper.c b/drivers/gpu/drm/drm_crtc_helper.c
+> index a209659a996c..e7a23e18140c 100644
+> --- a/drivers/gpu/drm/drm_crtc_helper.c
+> +++ b/drivers/gpu/drm/drm_crtc_helper.c
+> @@ -39,7 +39,6 @@
+>  #include <drm/drm_atomic_uapi.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_crtc.h>
+> -#include <drm/drm_crtc_helper.h>
 
->
->
-> --
-> Jani Nikula, Intel Open Source Graphics Center
+drm_crtc_helper.c may not require drm/drm_crtc_helper.h, but it should
+include it so we get a warning in case there is a mismatch between the
+header file and the implementation.
+I think sparse would also complain that the function is not declared
+or something like that.
+
+With this fixed:
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+
+>  #include <drm/drm_drv.h>
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_encoder.h>
+> diff --git a/drivers/gpu/drm/drm_lease.c b/drivers/gpu/drm/drm_lease.c
+> index 08ab75303a00..150fe1555068 100644
+> --- a/drivers/gpu/drm/drm_lease.c
+> +++ b/drivers/gpu/drm/drm_lease.c
+> @@ -6,7 +6,7 @@
+>  #include <linux/uaccess.h>
+>  
+>  #include <drm/drm_auth.h>
+> -#include <drm/drm_crtc_helper.h>
+> +#include <drm/drm_crtc.h>
+>  #include <drm/drm_drv.h>
+>  #include <drm/drm_file.h>
+>  #include <drm/drm_lease.h>
+> diff --git a/drivers/gpu/drm/drm_plane_helper.c b/drivers/gpu/drm/drm_plane_helper.c
+> index ba6a9136a065..c91e454eba09 100644
+> --- a/drivers/gpu/drm/drm_plane_helper.c
+> +++ b/drivers/gpu/drm/drm_plane_helper.c
+> @@ -28,7 +28,6 @@
+>  #include <drm/drm_atomic.h>
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_atomic_uapi.h>
+> -#include <drm/drm_crtc_helper.h>
+>  #include <drm/drm_device.h>
+>  #include <drm/drm_drv.h>
+>  #include <drm/drm_encoder.h>
+> diff --git a/include/drm/drm_fixed.h b/include/drm/drm_fixed.h
+> index 553210c02ee0..255645c1f9a8 100644
+> --- a/include/drm/drm_fixed.h
+> +++ b/include/drm/drm_fixed.h
+> @@ -25,6 +25,7 @@
+>  #ifndef DRM_FIXED_H
+>  #define DRM_FIXED_H
+>  
+> +#include <linux/kernel.h>
+>  #include <linux/math64.h>
+>  
+>  typedef union dfixed {
+> -- 
+> 2.39.0
 
 _______________________________________________
 Linux-rockchip mailing list
