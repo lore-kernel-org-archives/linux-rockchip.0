@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54490C46467
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 12:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30702C46467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jan 2023 12:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5pEcU9Ostg6sDy6A7aVagOZs1Hc4b4zlS5i1t3D8PJ0=; b=kiCXmtuw4tGEC9
-	hHJDB2NzY50uvihW5o97VwuuF3e6HJfPPpzCzCPOz7sUFbfKmqt3qEp0ArUO2EfYYH8PvHhrzUX2c
-	krReMGJPQEUtIFb/t3G8Lb+S/LvLXKoFvZ+UP2QRsoyF5eMa9FUdUrEEHyXVOgE9F9CqcGSZPu+3s
-	ABwDwf04p08JBA8ne+Xs8GWB1wjcoEaSAzqK9AA6oTJ3R8K6vzG63a0tG3y9U7yz2rNG0MslL0zX4
-	8mZjljRiU4WGAAKZmFfiP61YYEynYQorAUYpwsrWvJRvNisEb7o5SMpp3BHZmN9fzOkhr1Z0WQuLf
-	ZYtWky1pyIeqQrKYokDQ==;
+	List-Owner; bh=XXnsLYRI3tkp7r1KSZhj+N9sRGjh/bJHGPIs+NQOZxk=; b=qwfzUD+S9EOXxr
+	hA9+Q7RO7nc8Wy/xgq1qQW/HMEJ/jHmxZ7VTBxEDNUmLiogYEeoxMFSEsmKl49YCRgmUDT9me6EyI
+	XNwNvyk8t6YXYWB53ApkvaXSJ6WuVJoca9I0prq7vILTOuQTCVoJq2hd+0+Eoq5QTODRhyXrOgPNy
+	1osJANEkS5zltThZEBuordn8MBYo5f8f7lqIR+XySbjWR7PlZHomMlCfxE7IHT7wsM+Gktb8zBM+g
+	WGOH/TBF88li8eB1Pk8cMPFxLsmwM0kMhD5Q6m73KfhhS1grZWWx+Y4IiF1GERhhQxx1wmzjxp60k
+	RevtPpO87tj8cOnJBEsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOmE-00A7uA-MW; Mon, 16 Jan 2023 12:39:50 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1pHOpx-00A8nZ-Ej; Mon, 16 Jan 2023 12:43:41 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHOmC-00A7tG-Ck
-	for linux-rockchip@lists.infradead.org; Mon, 16 Jan 2023 12:39:49 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-4e4a6af2d99so59263127b3.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 16 Jan 2023 04:39:47 -0800 (PST)
+	id 1pHOpu-00A8mC-Bu
+	for linux-rockchip@lists.infradead.org; Mon, 16 Jan 2023 12:43:39 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id 188so30081017ybi.9
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Jan 2023 04:43:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=21EV7MGKC5QObOMnPy3UW40c0DLw32rJogBwJT3MIds=;
-        b=zZehO8ZzFJKe6Z8JfQ+jziUUss6hBb1odzJ7fSddRhyWsBKi3p7AC67YQgHqFDmX03
-         CYAcsix0MeJvzcfJchvoN/gakM1Euc4gGhUVSMfZfV+25PO13Mg4L58wBN4OJwGwq7Hl
-         BzKHo1qXV0ccwQMyhCx/cm6b3CG3Ui9A3iCG51KiSrCp1d5ZYjaCr2lyKloFtlCUHTov
-         C+MxNWkrYVM72ArBXBvQ8giE6pLX6/2gy4h53AJrw9Hu8MnRRnOm42b74eA7KJcxGdYz
-         PwZdI6Zq9T7c2t8RiugGsdy/emwL6vN/uXyQk0Z+MlHVSSJlYneQblKmgAA20T/Y7chi
-         Eocw==
+        bh=bzAXwdCvDxq2ZXNmGsdcs5ULG6ySxlBGhBK+Q84iWyc=;
+        b=z429dc8HTSxSpP83/Qvm8uHIwVOjUxW+fB3mUGvLwV7TDdHjjp5oZmDcHqKCuGx3rg
+         HL/QvYIf9C2va1HJ+tXJ9BFWFytG6LZRHpd2yqYSSUqbvWzX+OaniGDqRYr4yPeJAhUb
+         NzGHYw5tDuLWgXvZntzWDQ603DCyNowwAYQV1MHA8TGybyn2CiFV2t3zDLe7GozgxwbS
+         cQl23omTkC15QGGvX29CHZvT79o24NreIe9YBmanerG3LxwnIjo8JpIeCwW8uw1BbP/J
+         oQBhWD3vNF0Cd58k01fdckG5P3DvCwx0zEVMp7tEd0Lz45k8FYZJLEtfTatwlEc+xHA/
+         C1pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=21EV7MGKC5QObOMnPy3UW40c0DLw32rJogBwJT3MIds=;
-        b=PZuxyW968foTOanQ69A9vfAvMVz8AIjIHn4ZOFm0CqTId4Gij2wSnjDKZbAJ9CnpZ6
-         j5qHg03WD9vlio4bghJ+aLG7pcLTctxTe6We6Ol5EvnPY/IPcH/O7w3XZcBTz6mMpxhD
-         Q2JFzRpcxkZClmolOuCi8Dq1E+cSYYoAJTJociMvDgRVhWdWTOtydggkWBRAhbvkumcn
-         QeUKrdpORlPLWgnWYjt5sTZh3HdMkXItCnktwbZPov8Hks0uzvP8T0PXffMElRy+SeWH
-         /FZdkqejQRtPE1OkC5MoWxLP5WgR6mpjGaM4v0eMgi1/z44jbEPdeGM6WVfeuVJvpGtL
-         4RQA==
-X-Gm-Message-State: AFqh2krgfpLbIbBV+kdCQ56ccVwwLtITJJ8KhPZUPlAUfuaeplTyW9lq
-	CoOi4F28vjJEkTl+XefVDPY+LMS7WWiNsTI2HAd5IQ==
-X-Google-Smtp-Source: AMrXdXsHbKcpLGxxCwS2tNq4ORQ3SaOOFWwMExjuHj1/QZaDfCO1C+FG9rSuUZs4REjmxPH5L4xtiVgoWJ8OxgrrLdA=
-X-Received: by 2002:a81:484c:0:b0:36a:de9d:825e with SMTP id
- v73-20020a81484c000000b0036ade9d825emr4504610ywa.477.1673872786348; Mon, 16
- Jan 2023 04:39:46 -0800 (PST)
+        bh=bzAXwdCvDxq2ZXNmGsdcs5ULG6ySxlBGhBK+Q84iWyc=;
+        b=cOr8H8S0EPFmRrcuDYKpmv9tpK0Wpj28Qp/smv7jAqvELuL+gelEYseGU3KItKLT7E
+         IPmt5OxBBgiZAFE+Mvs7FN6EpyXjwawQ+hXnNOx3m6VJbctZg+EhtNmpueQoh1qXBx0R
+         Px3W+NJO9+HK5pmu4Z4XWTXHne4MpzHAFwbte/pNW6AT6Snh7YVl4MbR9ZQOx3QYU226
+         fYjsfqZyJm+FrYL5LO4TqW47b0oRW1HUb+qTuZqWDFq60H9qPmxofVL9Jbkb1PzvEyMy
+         1DfHvCgh+Av2pP5/owHnJBcTphzlzrHwTvvbUz2ITQhBMMHkVoTfYsz82pX3e8/bYoqe
+         VDOg==
+X-Gm-Message-State: AFqh2kpQfTJsiGkpxXGzSxF4YQJg35EEBiFy+k67h48JO10b356toXup
+	nt6ZZurlkAZ0DgrOiMLFgJreR8EpxbpXzD58z12AEw==
+X-Google-Smtp-Source: AMrXdXvAx6y1ThlA1UIN8G7jYozTcqWPm5nhqThDDSJen+uXvBbrhIA8Aeq85e+9eAZsYZA6UVZvtUEAHY1gLjQITy8=
+X-Received: by 2002:a25:c042:0:b0:7e4:fa1:b33 with SMTP id c63-20020a25c042000000b007e40fa10b33mr255611ybf.460.1673873016453;
+ Mon, 16 Jan 2023 04:43:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20230110084636.1141740-1-jonas@kwiboo.se> <2023011017420455469534@rock-chips.com>
- <DB9P190MB1594C0CEEF186240558D58EDACFC9@DB9P190MB1594.EURP190.PROD.OUTLOOK.COM>
-In-Reply-To: <DB9P190MB1594C0CEEF186240558D58EDACFC9@DB9P190MB1594.EURP190.PROD.OUTLOOK.COM>
+References: <20230110172955.1258840-1-jonas@kwiboo.se>
+In-Reply-To: <20230110172955.1258840-1-jonas@kwiboo.se>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 16 Jan 2023 13:39:35 +0100
-Message-ID: <CACRpkdYRr_WDC59LC3iGqpTEcyGErdyCBLmB4Ox5ZQH3M70Lgw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: rockchip: fix mux route data for rk3568
+Date: Mon, 16 Jan 2023 13:43:25 +0100
+Message-ID: <CACRpkdaY7Q9WngrznF8jch8fzfu8uEbk1t30NAMd2tBdLnZXOA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: fix reading pull type on rk3568
 To: Jonas Karlman <jonas@kwiboo.se>
-Cc: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	linux-gpio <linux-gpio@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, linux-gpio@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230116_043948_446277_D582A9B3 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20230116_044338_488677_FB90CE72 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,25 +84,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 11, 2023 at 9:42 AM Jonas Karlman <jonas@kwiboo.se> wrote:
-> On 2023-01-10 10:42, jay.xu@rock-chips.com wrote:
-> > Hi Jonas
-> >
-> > A patch from https://github.com/rockchip-linux/kernel/commit/55aa440fb85377a8b8c7e4bbc367463c235da804
-> > can you try it ?
+On Tue, Jan 10, 2023 at 6:29 PM Jonas Karlman <jonas@kwiboo.se> wrote:
+
+> When reading pinconf-pins from debugfs it fails to get the configured pull
+> type on RK3568, "unsupported pinctrl type" error messages is also reported.
 >
-> Good that this was fixed in vendor kernel long time ago.
-> Could have saved me some hours of troubleshooting if it would have been upstreamed to mainline :-)
+> Fix this by adding support for RK3568 in rockchip_get_pull, including a
+> reverse of the pull-up value swap applied in rockchip_set_pull so that
+> pull-up is correctly reported in pinconf-pins.
+> Also update the workaround comment to reflect affected pins, GPIO0_D3-D6.
+>
+> Fixes: c0dadc0e47a8 ("pinctrl: rockchip: add support for rk3568")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-Hm hm some technical debt to pay off here I see. It happens
-to us all.
-
-Jonas is your patch identical or do you want to send a more
-inspired version with more of the fixes from the vendor tree?
-
-I'm certainly not going to sit and wait for the patch to come
-from another source, so I would like to apply some version of
-this patch.
+Patch applied for fixes. Thanks for fixing this!
 
 Yours,
 Linus Walleij
