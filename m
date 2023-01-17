@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2727AC63797
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 10:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C93C3DA78
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 11:06:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FgGkYgicwQp1U56IVktNa2nveQj/iPi5Tjk3I21ufC4=; b=gKK0AHCktq7f9i
-	ByV5XpWjqgMMUvxel+D6qQFRPPeTr0mMkQHFI0XrXnx6TS6xTGUOyINhiDT2EIftcBxIoixR/VVMD
-	L36J1Ck+ZluyPioAyS1tVvAYSDDiIzo3PEhUvFYLZ7sSARIhjMGQ8V7Cn4odWwemctCB7katB0aR1
-	QOsGl4dk0Nuavpae5DlCYcDJQMxMzRyswKBCsbpvZdIwdY8dzjTWmhRTCaWVVGJXCUBxJl9SYf2MM
-	WEpyp9sXOUXiEWOh4dLJhelG2OMWLtEZy73zYoRFSaYlGg6zz524sb2M4Ql2jesaSTto86Twzqst7
-	4H0p0K0pnWogA+hZ+lKw==;
+	List-Owner; bh=jzGsg7M/ZmvYz5BkSInZTyuPa5UfFppl15lfpfQ4/A4=; b=yFyzeZqvRsHNdl
+	+u70JguXwWrZPJsMXW0fJDu+9ePxHdwuQuskS1oixaNa1w3pjji79i4c1CxS2BUggLZH7hPWxsH1H
+	wDvQAA4zPqudyqBDVeYOA+QCP/0pGg2NP4AbEEJcm6MudS3a+njE8PPAEZu9rzoNlN8UiprCGktLN
+	rwcl9hoH10YY0xa0ycgDzvhIypwL/A3ebAtgjAqr8wefiqn4rs/xy0TK9/C6nbXxbmlRdCAdgq5CD
+	ipURJiIs7o368Pbi1mV1rFnvBAxAKUVc0TfX6+BINuBcwA2cFNEjzOpTC9zcPh38Df4yHZ4kdF6Ya
+	TEYhSNdHcWk5fsLHLpnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHjeB-00DsgZ-Oo; Tue, 17 Jan 2023 10:56:55 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1pHjmq-00DvOA-Ed; Tue, 17 Jan 2023 11:05:52 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHjd0-00Ds0g-I6
-	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 10:55:45 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id h192so21642361pgc.7
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jan 2023 02:55:41 -0800 (PST)
+	id 1pHjmg-00DvKe-Ck
+	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 11:05:43 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id z5so29117348wrt.6
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jan 2023 03:05:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rntfRZnff+n5lbhzJZ4A2rcNW7HidbhUCoXTa14UKAc=;
-        b=SnQ+hjWEox1G5YrR4AQn7aHZmdA/ONYA//zFLJArkoZxXZCUpUssTTqz96FvIzoNDh
-         p0q4hJyV/G2t4ks9mesRxmQ5wl2zaqSf68B2mZmH8H5kJxSTJSjFcEqNVhskYYdpMFJ+
-         U/qxP3WmXlvOTFTBzSs+bV1WTBcaWKy9pHgTA=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WkAch3cPlv0u9HLJEP9wT65kJ6jSPsixjJXREuqK/Wo=;
+        b=XkqevF5dsEDoRoBJSq56XUMlWdzwqaOhj29iLZMnB5anXQ/3qz+bSaHppM+ZhfOUqq
+         3l7qzJmcCnOUxKK1d/yqFQajCmQlhTWQcE3AQsDLHfMPLzRGUiHWY5jjy/rq6Gs+XqEg
+         cXt4Vv6EFfX2Ou027dcFLewNxdiw89qUedqnD+7vNYR8j4VUkOgSvdAjQFDg9TPFSVMQ
+         3l6YwvADl8HOLsN1jqs9cJzWZKqw1TsLMsGu17UqSNnfhVIKCqLUPAUZX/VBb3pWS0rZ
+         0Fx0WUsmoLxFDlAyy+wPUBHXxpYD6YWkdYpk/YHV0u3UuoKXPbjpYOOaeUxuCJ0ICZC7
+         wHJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rntfRZnff+n5lbhzJZ4A2rcNW7HidbhUCoXTa14UKAc=;
-        b=farhzFrHJUiHGyl4hP0GWRHqiyJPFEDehf4hFi0nvrvB4IzrzqWhP5T9ih/foRFTMF
-         Ll0SbqjDxArabYhUatr2MalYMYksKNA8SHl2ouPbclvecKiPXMZUuQAiAVzejHFwIlxY
-         q5mFlib2YCN3G0GO+CtbDX2HDApf1LO/iLZZFBgATOVaZEYDzj4G8clyFR75tq8PlBSr
-         ZFt1Q/VWWVUuO/B6vHOGrfpQOuLIz5RxVboiwXsrxG8GKnPLoRDc8rbihiq1HAVyB7Lw
-         fwTWbTxqv3QDCHrNhMjtRtlo+bXPR7ChC4UiFBCaO6sSmu0NGftUGc0pbRJyAIt8HXCZ
-         sQmg==
-X-Gm-Message-State: AFqh2kqbGMnONws5+sHPaUoDYTmegPcubGkn8mj50E0puXiGS+JM9rm4
-	NHy4Y7pgBNRr3t0lnOTVJrhEQQ==
-X-Google-Smtp-Source: AMrXdXvV6zuZ2hXmO+gpQebDvUeI4P7sWLhlUX5aBmzVEj6XfkP2Wcs/QSQ80SSR/kRv20F7ZDRLgQ==
-X-Received: by 2002:a62:790d:0:b0:58a:fccd:9eb5 with SMTP id u13-20020a62790d000000b0058afccd9eb5mr25431472pfc.23.1673952940718;
-        Tue, 17 Jan 2023 02:55:40 -0800 (PST)
-Received: from localhost.localdomain ([45.249.78.214])
-        by smtp.gmail.com with ESMTPSA id w65-20020a623044000000b0056c349f5c70sm19837413pfw.79.2023.01.17.02.55.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jan 2023 02:55:40 -0800 (PST)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 7/7] arm64: dts: rockchip: Update eMMC, SD aliases for Radxa SBC boards
-Date: Tue, 17 Jan 2023 16:25:04 +0530
-Message-Id: <20230117105504.18296-7-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230117105504.18296-1-jagan@amarulasolutions.com>
-References: <20230117105504.18296-1-jagan@amarulasolutions.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WkAch3cPlv0u9HLJEP9wT65kJ6jSPsixjJXREuqK/Wo=;
+        b=OlHBfYGb6AP9JzMQm3DIK3zpu87INtV02YgA8IQRchwE4AQ/uPwWASxnLZkNij1hfZ
+         cB+gLSvrIDl9+b9R8XKnul7kAcfwJSNTznERRk3/mGtaMat3VGdTAOBbmYUwErZ+cL+k
+         xd7HQBW+EenUz1x2COB0rDC5YeQrH5Xob5sw63JuTwjp+PW26adeoq/dNBMEJi5OAoyc
+         Htlcdnt31Ms7lfJyttHiB5efOfgDJDrFM/VP5DXAXuHSjQsXBzfgt7oVB+Q0/vp3vdhG
+         atb/bAvO3khzgNFS6ac2rWqv7YPGp24SlxPFOpHbwWx0mVQFDHBlHxkZ3y97CDVUkpsT
+         xfFg==
+X-Gm-Message-State: AFqh2kp9aRMdbom2e3dc0JTlBNN2HAuMtwco8qBj+32L8LQ97Ni1lk3y
+	rSmU6ZTko+QlGketyhFoNh7+Zw==
+X-Google-Smtp-Source: AMrXdXt/Umjyw3OqUj4Zs66LDzH1XafK42kL2QUfsS7wOTJ8QQOs22oaeMdWBPRUEz335Y4Rdv5MyA==
+X-Received: by 2002:a5d:5e85:0:b0:2bd:ec14:9c8 with SMTP id ck5-20020a5d5e85000000b002bdec1409c8mr2593689wrb.40.1673953540284;
+        Tue, 17 Jan 2023 03:05:40 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id bt19-20020a056000081300b002bdc3f5945dsm16265978wrb.89.2023.01.17.03.05.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 17 Jan 2023 03:05:39 -0800 (PST)
+Message-ID: <c266f909-e84f-3699-c658-a4e4880d57bd@linaro.org>
+Date: Tue, 17 Jan 2023 12:05:38 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH 1/7] dt-bindings: arm: rockchip: Add meaningful comments
+ for Radxa CM3
+Content-Language: en-US
+To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20230117105504.18296-1-jagan@amarulasolutions.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230117105504.18296-1-jagan@amarulasolutions.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_025542_631518_18BAA39E 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20230117_030542_437734_A6E79543 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +95,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Radxa SBC boards like ROCK 3A/4 models do support eMMC and SDcard
-via external connector slots.
+On 17/01/2023 11:54, Jagan Teki wrote:
+> Radxa produced several versions of the RK356x-based Compute modules
+> called Radxa Compute Module 3(CM3) for consumer and industrial use
+> with a variety of form factors.
+> 
+> So, adding meaningful comments on dt-bindings would help to understand
+> more about specific module relevance.
+> 
+> This patch is trying to add comments on existing CM3 bindings and
+> expecting the subsequent modules are following similar comments while
+> adding dt-bindings to it.
 
-Mark, the eMMC has mmc0 by considering the Rockchip boot order priority
-as both MMC devices are connected externally.
 
-Reported-by: FUKAUMI Naoki <naoki@radxa.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts      | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index 309c35d7fca8..028eb508ae30 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -15,8 +15,8 @@ / {
- 	compatible = "radxa,rock-4c-plus", "rockchip,rk3399";
- 
- 	aliases {
--		mmc0 = &sdmmc;
--		mmc1 = &sdhci;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 1f76d3501bda..907071d4fe80 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -13,8 +13,8 @@
- 
- / {
- 	aliases {
--		mmc0 = &sdmmc;
--		mmc1 = &sdhci;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index cd1e1d8e1244..77ba37ce6d6c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -13,8 +13,8 @@ / {
- 
- 	aliases {
- 		ethernet0 = &gmac1;
--		mmc0 = &sdmmc0;
--		mmc1 = &sdhci;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc0;
- 	};
- 
- 	chosen: chosen {
--- 
-2.25.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
