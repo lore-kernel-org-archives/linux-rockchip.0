@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1020FC3DA78
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 12:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED24BC63797
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 13:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PSwbzvkiyU296GMiFiWsXX5BJ4ZV1OI5OtdtrOF7mVA=; b=Xd0CwEmiEdwDEM
-	EyRmwq+qBmyHLun/YGkPPMy2o+aPqj3xl14Bzu2rjJEqieSZrLkEgyVoGKdLmrkqocm4XHE5MqcLl
-	Ndi5QYt1oEiZnJI+jt6onrya3sQqpMoikvbPkxxesIz+DUR9utDXbW12cskU1A+/456Y9bh1MAuMi
-	WackI7DO4IoEPbSP+cNgB4VValCW6zgKQAucCMAEBZPNTg47RvN8zRRLqV0aHCiV1qPECTdX6tkFC
-	dV6XdXEKOUJyWbGZfzuIViUBPhh81tgCtU/rloOI9b04DQXmr2d1MM4b23cNXX6+mqBhS3/w3BlKR
-	FHt4QGQRn0OlHD+21IKQ==;
+	List-Owner; bh=5YI27kQw/d9DIQLShhhgeP4zw8KaGi8Gnjs0Fw8Q1dQ=; b=RvP5gEB+mXNM15
+	tG/jRqZ6uJjwwowTwCW//JSFP+10E+f/MkqblIOCFm3mNNmtrQ5gFBG6zmyFrA8e9tozYbJ+LiqZJ
+	YCjiRaAU//nGvMpAFz8LVLZ/gPEl0JfKRphT42Lo5nEf4movPiihJGGEb4yaXYAJxD11DgR9KX8Yn
+	Mdcc8vQH8rMuyFyu7WeQw9PHQA+krlhyyiTAo94g70XtD7MyGjYl6BJKAVqVO2eA2lqSfp8HY8+cW
+	y4XWSTHTERyGGNmgc5cSDiZwv3Gz1PZ5rTbSU0abEHUT0+GQa69l0ANP2BxfqQ/cHPCxI2wdrN1Vs
+	1AVxVciEjCdPhGWm5J4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHlY2-00EHeW-Gv; Tue, 17 Jan 2023 12:58:42 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pHlqm-00EKXS-Sq; Tue, 17 Jan 2023 13:18:04 +0000
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHlXq-00EHbD-6o
-	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 12:58:31 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id f25-20020a1c6a19000000b003da221fbf48so8059573wmc.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jan 2023 04:58:30 -0800 (PST)
+	id 1pHlqj-00EKSw-AE
+	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 13:18:03 +0000
+Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-4e4a6af2d99so102046987b3.4
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jan 2023 05:17:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=wSsXyk03ywnQUqDx7XCJIEj/SElIyzJeF7Cm3UzPcUk=;
-        b=gterr9ulCcSSQVEcnIUwQz1SgWJ1e00EZkhsrtnr7Hqaf7dVahXfIxQS7kAy3HfPfR
-         AJrgMFi3ClZzuwxJsl63bN0kW+LsPTrgbihqCDGxOKBzlCUC5hpqns3IvBpwot7eez2N
-         GZ6TNGIfeSvv9oPWFOBupmo/b9ByB9XoNG1jlePFwk35VTJar/NwknSiK6G6f+H9UmgP
-         gEOTLnb44IOohk5N0jXKmzK7AanaPJkG6J2JfVRNDEMgn6KK/ZIjF3NwKtNroSYEbML6
-         M9noG+XxkYA0qWy50yhW4NLcdCjQqg/W5LQT6gkYl2jY49KrjalF8VWLxlUUJQAxNWOz
-         fPTA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=bUJBsht1LCslMFYdFKdEQEWjO6qOnqb0dKRr7V+rz1s=;
+        b=uH657sJ96vyYmomeeAy9rjbmKABv8Mt7N2OJToJoDYNjELfnltO/kVT/5ai5qdsiOR
+         Wxpi811dWS8nwDf5BgU1qNX/nDtzdjRHues5ANdJu62dibPkiY8W5qj9WZtkkvMcqhSq
+         akODpqd2dRsn+U4lq8rHmQ4y2yn76tX/TWr46xktzxmHK1CnX+a8jhCUP6uyP9f6lrSC
+         xe9r06s9KOocdu+7xaqfVLWDdSX+Ao+JtZ6SzAt4v6vw+6QhkUkuUmfIC7FPORvMWTdE
+         GeKXCbOc+VvtzoKqiLvoRA6GwEf1qIV4NOZhF+HCVZ6YGJmY3/BpaRsUvOt5YPR0mqZR
+         Nhng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wSsXyk03ywnQUqDx7XCJIEj/SElIyzJeF7Cm3UzPcUk=;
-        b=UQijNJ0KorPzvTbHfTCs/VrakiM5taHxwqB4tk/WA9wuHLGgIjL01LqY4fPIdv1mS7
-         cAug432CZC8q1Ce8MqWNiuIaH01aujzf5fk/YfgwC9dpIjf8gR2taNDx/vr9nAVpR+Ad
-         hPFRG1zhdz00/ViCYHk1Ss5fI7sWxJBJAlD8T5JbwColuQ4gwfVPzPKwVEu9VvaTmrSD
-         EUw9SzjsTSjUmQoyVeBGVhQtY40XB0LYanTSOFHZbeZUMgdYKJegf0BnI+2e5DJcSFma
-         9/FM9rwjyJitHUE+ABbbMR0ZpT2W7lGpwy0kh7cxLL7YzBuVmeMjYehLhoQ7gNntTDab
-         zVxA==
-X-Gm-Message-State: AFqh2kohKll29+MWacoD0G6pMYJwAy8m+bjtOtKGjTtM2DUbliJ8ssgS
-	kyTuvnp1VtT2ldupcFUH8JkHwg==
-X-Google-Smtp-Source: AMrXdXv2YOf0E3sSYx2v6QrWr9BMdWNfNovpW/d+5FRDKmv4TxUc9m4QxIFiXfl7EeKQegI2BK4tiQ==
-X-Received: by 2002:a05:600c:4f0c:b0:3d9:7062:e0b7 with SMTP id l12-20020a05600c4f0c00b003d97062e0b7mr2916789wmq.33.1673960308935;
-        Tue, 17 Jan 2023 04:58:28 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id bg42-20020a05600c3caa00b003b4cba4ef71sm48073293wmb.41.2023.01.17.04.58.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jan 2023 04:58:28 -0800 (PST)
-Message-ID: <c23bf1ef-de1d-ee64-f624-11e65915680a@linaro.org>
-Date: Tue, 17 Jan 2023 13:58:26 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bUJBsht1LCslMFYdFKdEQEWjO6qOnqb0dKRr7V+rz1s=;
+        b=VJs9KxOx4MrWGonI8w0v+o29zBxiwsBsAo/vjuRKvcM63OUM/sWVJ0jAlUCCnL5azv
+         ZnTUufhlVjTHzc+Nc3O5cbbhhYBm6hOdZWuIf0XkvgnZo2ZUlFndWHcZeN4PPsc019lv
+         N+/qu9fDYni1XCmUNoOKfqbogflyloKa6Kjw3KeO6t3kIT7JceUHrPUb3KQXI0fJOFZc
+         QWRivkwGduoR6vFPaqYC/zLZe1LRNIlgTif3MQyRckhreM9WE5q3c2IJc/Xy+L5ZHPmD
+         oSo3EzGIXo+6pzduxTeG7aPdK7DaAjjDxNoFYVzvnNeo6I0VqOxPu3Hmx6M++f26H9+Z
+         omew==
+X-Gm-Message-State: AFqh2kodjKgTZ+VcaORBTR6sFRuVyYu/zbpOgzrzR/HhD+dNuRnXxQSn
+	Ccm1DXH14MSQdenZ5drUvJmBMtNSpfijGbc/TS5aGA==
+X-Google-Smtp-Source: AMrXdXvCau06WdWXAr4lq44sOWKLJC6ryOzfbmLnbjwTbwgo3Cks2NTb/dw9TZi45VpxAg/KejdNFI+rymFMe9uTbhA=
+X-Received: by 2002:a81:9b14:0:b0:4dd:ff06:1358 with SMTP id
+ s20-20020a819b14000000b004ddff061358mr413851ywg.488.1673961454031; Tue, 17
+ Jan 2023 05:17:34 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 4/7] arm64: dts: rockchip: Fix compatible and model for
- Radxa CM3i
-Content-Language: en-US
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>
-References: <20230117105504.18296-1-jagan@amarulasolutions.com>
- <20230117105504.18296-4-jagan@amarulasolutions.com>
- <2dcb7b4a-9751-ec7a-f0ea-6de748ca3bf7@linaro.org>
- <CAMty3ZD_LWBR2+fu41Z5LEBcNw1KXEaY8P92Ypa-4rg2t8BH_A@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAMty3ZD_LWBR2+fu41Z5LEBcNw1KXEaY8P92Ypa-4rg2t8BH_A@mail.gmail.com>
+References: <20230110084636.1141740-1-jonas@kwiboo.se>
+In-Reply-To: <20230110084636.1141740-1-jonas@kwiboo.se>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 17 Jan 2023 14:17:22 +0100
+Message-ID: <CACRpkdbJvTB5VeyfM7gruB3MrDMXNo3XezmcVyZGH0Vro=kVTQ@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: fix mux route data for rk3568
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, linux-gpio@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_045830_286889_4EB2DB42 
-X-CRM114-Status: GOOD (  20.91  )
+X-CRM114-CacheID: sfid-20230117_051801_394652_DF1F6802 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,75 +85,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/01/2023 13:52, Jagan Teki wrote:
-> On Tue, Jan 17, 2023 at 4:37 PM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->>
->> On 17/01/2023 11:55, Jagan Teki wrote:
->>> Fix the model name and compatible strings for Radxa CM3i SoM
->>> and Carrier board based on Radxa recommendation.
->>>
->>> Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
->>> Cc: Chukun Pan <amadeus@jmu.edu.cn>
->>> Reported-by: FUKAUMI Naoki <naoki@radxa.com>
->>> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
->>> ---
->>>  arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi | 2 +-
->>>  arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts   | 4 ++--
->>>  2 files changed, 3 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
->>> index 225dbbe4955d..0c9a918b809a 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
->>> @@ -7,7 +7,7 @@
->>>
->>>  / {
->>>       model = "Radxa CM3 Industrial Board";
->>> -     compatible = "radxa,cm3i", "rockchip,rk3568";
->>> +     compatible = "radxa,radxa-cm3i", "rockchip,rk3568";
->>
->> Nope, second radxa is redundant.
-> 
-> It is not redundant, Product name and vendor name is same. Vendor name
-> is Radxa and product name is Radxa CM3i
+On Tue, Jan 10, 2023 at 9:46 AM Jonas Karlman <jonas@kwiboo.se> wrote:
 
-If this was true, then on their website the product would be called
-"Radxa Radxa CM3i", but it is not. It is called Radxa CM3i, to denote
-the company name with the model name. Anyway, in the name of model you
-can call it. In the context of compatible it is redundant.
+> IO mux selection is configured in PMU_GRF_SOC_CON4 and GRF_IOFUNC_SEL0-5
+> regs on RK3568. pwm0-2 is configured in PMU_GRF reg and the rest is
+> configured in GRF_IOFUNC regs according to TRM [1].
+>
+> Update mux route data to reflect this and use proper detection pin for
+> UART1 IO mux M1.
+>
+> This fixes HDMITX IO mux M1 selection and makes it possible to enable
+> HDMI CEC on my Radxa ROCK 3 Model A v1.31 board.
+>
+> [1] http://opensource.rock-chips.com/images/2/26/Rockchip_RK3568_TRM_Part1_V1.3-20220930P.PDF
+>
+> Fixes: c0dadc0e47a8 ("pinctrl: rockchip: add support for rk3568")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-> 
->>
->>>
->>>       aliases {
->>>               mmc0 = &sdhci;
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
->>> index a4c33310ca42..8ca15b723799 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
->>> @@ -4,8 +4,8 @@
->>>  #include "rk3568-radxa-cm3i.dtsi"
->>>
->>>  / {
->>> -     model = "Radxa E25";
->>> -     compatible = "radxa,e25", "radxa,cm3i", "rockchip,rk3568";
->>> +     model = "Radxa E25 Carrier Board";
->>> +     compatible = "radxa,radxa-e25", "radxa,radxa-cm3i", "rockchip,rk3568";
->>
->> NAK. You just changed it in patch 2. Don't add broken compatibles in one
->> patch (cm3i) and fix them next one. It's like adding intentional bugs
->> and fixing them immediately...
-> 
-> I did squash this with previous patch but the check patch showing
-> warning to separate the dt-bindings patch from actual devicetree file
-> change.
+Patch applied for fixes!
 
-Patch 2 was not a bindings patch, so you squashed wrong files.
-
-Best regards,
-Krzysztof
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
