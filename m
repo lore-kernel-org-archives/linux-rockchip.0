@@ -4,83 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F5EC63797
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 11:08:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 110DBC63797
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 12:41:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HrItW9PltqlBDn9Pp3iPO3c1Bn3JpkfSOgg1KE2TZxM=; b=xSY/UQzO38V8+J
-	BCbWjsEYS7wSiffe0PlS2kJXpeRCplAQYe4XH9uk1c1yofOfElewB+TyYa2Z0LtFaNt2/tOSARbU1
-	6tQnjlkIlpFzhJfcbF7sq9r89qlEIWtlY1Sfz4s8xSVmwFuI/PV4f4v+/8Wn1ai0G8PIE3DAU6C/K
-	bdbjqJhLlpS4rJj3x0NWIBa0BDKMmdbhDMj+6cK7PwLaYvWvAuWvUqwiEGPhEqPh8QSLivJ3gLFYL
-	XCwbs2PcdWg79ihF4RK4RwqHf9zMuAESlEpcwTg9BZ5TZET0EUb34gGHS+NDPROnPelMBPlGZLLGA
-	Hw3dJh0TW0IeIxzVlMmQ==;
+	List-Owner; bh=061jgvOrkjexX7vlZ5QSCkwcz49B2Jr0HGrRVpXfGA4=; b=2zc6xtkS3DaUVJ
+	6Y0J/oi5yVOR8oCDdBGhBm81dWWeQCh9z2po1Ao7C6zT33Amn57RIpr3Kb8NWiqWqgJtuixLr3lDT
+	z/tLaxVZ+snwEpNvLmKzCCAh6ehmxbUzMDpRm84W92UjrMEM6IODh/YQ2b/pfJ+hcD4IX6mCFM3v7
+	GEvxmd+EC6HsgEldT1ddom0f2ZdtiBFic6KMkvWkCxwQvERxDZ0VS5MswArvD+OQwW0xJDOonZMnu
+	Tln4FkY8JgqJblSGOjmWLaLDGNjNCLHe222Omg1RfMqJL6JJoxrv2FUWRdzwGihpo0e633dDJou0t
+	1S9pCM/EWrVvAHoOQIWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHjpD-00DwBi-KQ; Tue, 17 Jan 2023 11:08:19 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1pHlHQ-00ECb5-Fv; Tue, 17 Jan 2023 12:41:32 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHjp8-00Dw0g-8b
-	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 11:08:15 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id t5so25770079wrq.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jan 2023 03:07:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/YKpwDr0UUktSDgsQPjg+oJ20FdKqwcj/JdiWGfoHTc=;
-        b=Y7GVv3NebXhn+bTHG6Wy+IAWfFJ3kREvxXhRMu7K0wWx3n9n2QL8uut15TsLJ1PW8w
-         OPq/tVa0lZW7Yu6g3ye5hhZt5J8lsX669PnW9v0WlFRkOnKJ/fXOdRIiL1qbyBrDK7rx
-         fOQDlMSn8UfrZxZAfHPx8tgsqrHV2N0aUUjCeqPY58a+9AQ/9rld6JSGbnkcvZqZK+8w
-         dLDLNr0jQMElRHbEd3Oz99zSi0z1974IEAStlPC/ioaHXNqbHfxWBOzaqS4MT6Tt1ulp
-         lmIB1V1yyO+z58wpqdCCHnZLrn4s72vLIs3+QpnaUizw5nJYkw9JNyKDO62ZPba0TqLw
-         Q+4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/YKpwDr0UUktSDgsQPjg+oJ20FdKqwcj/JdiWGfoHTc=;
-        b=xUsEH2hkZZ4BTBNYYbLK+wJBgK8yeligM5lZj9+5cYijJkxWwLkTtVIhV8d9x9hD9N
-         siW3UKHAWdw3+QmmhQdjHD4vCJlogJJmbg1qhFMeUw3yDbW9WyrZB0y9mVLGDpl3xsk7
-         gz8SSdyZU77D4p0E510jpm5PyxxzSxzDtSi2Bg6HAXJjFwXdmr+G01c1cMi4KQJ+BPhs
-         LIyB9f9upK6mQa+DxGDzzlU+TVvrb9eESaumVLJBA+Q+WoSN5itT1RCWi5E2JsO+G47g
-         HOVpeZcbEqlOWd7ABEX8W7xo5g8eqsQjG/1JfmGkbcBsw+rtDEnUpOd4DxjJYRJoZJ/D
-         NV8Q==
-X-Gm-Message-State: AFqh2kqwWMM/skQyRdrT2x2QcdLVA4LQCZzx+IcZ4I8y1emf4EvM968C
-	KB910X3VDV2l3hbLwX2EP4tc7A==
-X-Google-Smtp-Source: AMrXdXtbOcrj5+56lXkypFDSjytXH5w1/JHUeAOyfhMXO94sWxbA0n1svGQKodEALb2FyXvyBBAt1Q==
-X-Received: by 2002:adf:f0c7:0:b0:2bd:e18d:c9e5 with SMTP id x7-20020adff0c7000000b002bde18dc9e5mr2494090wro.40.1673953657463;
-        Tue, 17 Jan 2023 03:07:37 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id o15-20020a5d62cf000000b002bbedd60a9asm22862139wrv.77.2023.01.17.03.07.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Jan 2023 03:07:37 -0800 (PST)
-Message-ID: <2dcb7b4a-9751-ec7a-f0ea-6de748ca3bf7@linaro.org>
-Date: Tue, 17 Jan 2023 12:07:35 +0100
+	id 1pHlHN-00ECYX-Bg
+	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 12:41:30 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1pHlHD-0006CB-Cd; Tue, 17 Jan 2023 13:41:19 +0100
+Received: from mtr by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1pHlH8-00045q-Io; Tue, 17 Jan 2023 13:41:14 +0100
+Date: Tue, 17 Jan 2023 13:41:14 +0100
+From: Michael Tretter <m.tretter@pengutronix.de>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	linux-rockchip@lists.infradead.org,
+	Shengyu Qu <wiagn233@outlook.com>, devicetree@vger.kernel.org,
+	heiko@sntech.de, jacob-chen@iotwrt.com, kernel@pengutronix.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org, michael.riesch@wolfvision.net,
+	robh+dt@kernel.org, Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add RGA2 support to rk356x
+Message-ID: <20230117124114.GF23495@pengutronix.de>
+References: <20221121151755.2072816-3-m.tretter@pengutronix.de>
+ <CAAEAJfC74Am19+GSpCpbWJVpdbgv4n=3pjMHNkpRcCQfwi5xQA@mail.gmail.com>
+ <CAMdYzYr68xvNvJRiJw9JyHoN7v12bvucdWLhdkt5j1QJqEuApg@mail.gmail.com>
+ <2694546.oTxpM42Gb3@archbook>
+ <20221123092841.GB13042@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 4/7] arm64: dts: rockchip: Fix compatible and model for
- Radxa CM3i
-Content-Language: en-US
-To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
- <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Chukun Pan <amadeus@jmu.edu.cn>,
- FUKAUMI Naoki <naoki@radxa.com>
-References: <20230117105504.18296-1-jagan@amarulasolutions.com>
- <20230117105504.18296-4-jagan@amarulasolutions.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230117105504.18296-4-jagan@amarulasolutions.com>
+Content-Disposition: inline
+In-Reply-To: <20221123092841.GB13042@pengutronix.de>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: mtr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_030814_311175_C5B70AF3 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20230117_044129_417982_28478FA0 
+X-CRM114-Status: GOOD (  46.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,62 +76,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/01/2023 11:55, Jagan Teki wrote:
-> Fix the model name and compatible strings for Radxa CM3i SoM
-> and Carrier board based on Radxa recommendation.
-> 
-> Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
-> Cc: Chukun Pan <amadeus@jmu.edu.cn>
-> Reported-by: FUKAUMI Naoki <naoki@radxa.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts   | 4 ++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> index 225dbbe4955d..0c9a918b809a 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> @@ -7,7 +7,7 @@
->  
->  / {
->  	model = "Radxa CM3 Industrial Board";
-> -	compatible = "radxa,cm3i", "rockchip,rk3568";
-> +	compatible = "radxa,radxa-cm3i", "rockchip,rk3568";
-
-Nope, second radxa is redundant.
-
->  
->  	aliases {
->  		mmc0 = &sdhci;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> index a4c33310ca42..8ca15b723799 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
-> @@ -4,8 +4,8 @@
->  #include "rk3568-radxa-cm3i.dtsi"
->  
->  / {
-> -	model = "Radxa E25";
-> -	compatible = "radxa,e25", "radxa,cm3i", "rockchip,rk3568";
-> +	model = "Radxa E25 Carrier Board";
-> +	compatible = "radxa,radxa-e25", "radxa,radxa-cm3i", "rockchip,rk3568";
-
-NAK. You just changed it in patch 2. Don't add broken compatibles in one
-patch (cm3i) and fix them next one. It's like adding intentional bugs
-and fixing them immediately...
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAyMyBOb3YgMjAyMiAxMDoyODo0MSArMDEwMCwgTWljaGFlbCBUcmV0dGVyIHdyb3Rl
+Ogo+IE9uIFR1ZSwgMjIgTm92IDIwMjIgMjA6NDc6NDkgKzAxMDAsIE5pY29sYXMgRnJhdHRhcm9s
+aSB3cm90ZToKPiA+IE9uIERpZW5zdGFnLCAyMi4gTm92ZW1iZXIgMjAyMiAwMDoxMDoyNSBDRVQg
+UGV0ZXIgR2VpcyB3cm90ZToKPiA+ID4gT24gTW9uLCBOb3YgMjEsIDIwMjIgYXQgMTI6MzQgUE0g
+RXplcXVpZWwgR2FyY2lhCj4gPiA+IDxlemVxdWllbEB2YW5ndWFyZGlhc3VyLmNvbS5hcj4gd3Jv
+dGU6Cj4gPiA+ID4gT24gTW9uLCBOb3YgMjEsIDIwMjIgYXQgMjoxMyBQTSBTaGVuZ3l1IFF1IDx3
+aWFnbjIzM0BvdXRsb29rLmNvbT4gd3JvdGU6Cj4gPiA+ID4gPiBJIHJlbWVtYmVyIHNvbWVvbmUg
+c2FpZCB0aGF0IHJnYTIgaGFzIG9ubHkgMzJiaXQgYWRkcmVzcyBzcGFjZSBidXQgbm90Cj4gPiA+
+ID4gPiBoYXZpbmcgYSBtbXUgb3IgbW11IG5lZWRzIHRvIGJlIGNvbmZpZ3VyZWQuIEJldHRlciBh
+c2sgYnkgeW91cnNlbGYgaW4KPiA+ID4gPiA+IHBpbmU2NCBkaXNjb3JkIHNpbmNlIEknbSBub3Qg
+c3VyZSBhYm91dCB0aGF0Lgo+ID4gPiA+ID4g5LqOIDIwMjLlubQxMeaciDIy5pelIEdNVCswODow
+MCDkuIrljYgxMjo0MToxNiwgTWljaGFlbCBUcmV0dGVyIDxtLnRyZXR0ZXJAcGVuZ3V0cm9uaXgu
+ZGU+IOWGmeWIsDoKPiA+ID4gPiA+ID5PbiBUdWUsIDIyIE5vdiAyMDIyIDAwOjAxOjI4ICswODAw
+LCBTaGVuZ3l1IFF1IHdyb3RlOgo+ID4gPiA+ID4gPj4gU29tZW9uZSBmcm9tIHBpbmU2NCBkaXNj
+b3JkIGZvdW5kIHRoYXQgUkdBMiBkb2Vzbid0IHdvcmsgcHJvcGVybHkgb24gb3Zlcgo+ID4gPiA+
+ID4gPj4KPiA+ID4gPiA+ID4+IDRHQiBtZW1vcnkgUkszNTY4IGRldmljZXMuIEFyZSB5b3Ugc3Vy
+ZSBjdXJyZW50IGRyaXZlciB3b3JrcyBub3c/Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+SSBhbSBh
+YnNvbHV0ZWx5IHN1cmUgdGhhdCB0aGUgZHJpdmVyIHdvcmtzIG9uIGEgMkdCIFJPQ0szQSBib2Fy
+ZC4KPiA+ID4gPiA+ID5VbmZvcnR1bmF0ZWx5LCBJIGRvbid0IGhhdmUgYSBkZXZpY2Ugd2l0aCA0
+R0Igb3IgbW9yZSBtZW1vcnkgYW5kIEkgY2Fubm90IHRlc3QKPiA+ID4gPiA+ID50aGUgZHJpdmVy
+IHdpdGggc3VjaCBhIGRldmljZS4KPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID5BcyB0aGUgZG9jdW1l
+bnRhdGlvbiBmb3IgdGhlIFJHQTIgaXMgdGhlIHNhbWUgaW4gdGhlIFRSTSBvZiB0aGUgcmszMjg4
+IGFuZAo+ID4gPiA+ID4gPnJrMzU2OCwgSSB3b3VsZCBndWVzcyB0aGF0IHRoZSBkcml2ZXIgZG9l
+c24ndCB3b3JrIG9uIGEgcmszMjg4IHdpdGggbW9yZSB0aGFuCj4gPiA+ID4gPiA+NEdCIChpZiB0
+aGVyZSBpcyBzdWNoIGEgdGhpbmcpIGVpdGhlciBhbmQgdGhlIGRyaXZlciBuZWVkcyB0byBiZSBm
+aXhlZCBmb3IKPiA+ID4gPiA+ID5ib3RoIFNvQ3MuCj4gPiA+ID4gPiA+Cj4gPiA+ID4KPiA+ID4g
+PiBJbiBhbnkgY2FzZSwgaWYgdGhlcmUncyBzb21lIGtpbmQgb2YgaXNzdWUgaXQgbXVzdCBiZSBp
+biB0aGUgZHJpdmVyLAo+ID4gPiA+IGFuZCBub3QgaW4gdGhlIGRldmljZSB0cmVlIGJpbmRpbmcg
+KGkuZS4gdGhpcyBwYXRjaHNldCkuCj4gPiA+IAo+ID4gPiBBbiB1bmZvcnR1bmF0ZSBudW1iZXIg
+b2YgUm9ja2NoaXAgZHJpdmVycyBicmVhayBvbiByazM1NnggYm9hcmRzIHdpdGgKPiA+ID4gbW9y
+ZSB0aGFuIDRHQiBvZiByYW0uIEkndmUgZm91bmQgcmVxdWVzdGluZyBtZW1vcnkgYWxsb2NhdGlv
+bnMgd2l0aAo+ID4gPiB0aGUgR0ZQX0RNQSBmbGFnIHNvbHZlcyB0aGUgcHJvYmxlbSwgYXMgdGhl
+IGtlcm5lbCBvbmx5IGFsbG9jYXRlcwo+ID4gPiAzMmJpdCBhZGRyZXNzZXMgZm9yIERNQSBvbiBy
+azM1NnguIFRoaXMgaXMgc2ltaWxhciB0byB0aGUgYnVnIHdpdGggdGhlCj4gPiA+IElUUyBNU0kg
+YWxsb2NhdGlvbnMuCj4gPiAKPiA+IHRoZSBwcm9ibGVtIGluIHRoaXMgY2FzZSBhdCBsZWFzdCBw
+YXJ0bHkgc2VlbXMgdG8gYmUgZG93biB0byB0aGUgZHJpdmVyCj4gPiBhc3N1bWluZyAzMiBiaXQg
+YWRkcmVzc2VzLCBzZWUgZS5nLiBbMV0gKGlmIEkgdW5kZXJzdGFuZCB0aGUgY29kZQo+ID4gY29y
+cmVjdGx5KSBhbmQgWzJdLiBXaGVuIEkgYXNrZWQgaW4gdGhlICNhcm1saW51eCBJUkMgb24gTGli
+ZXJhLmNoYXQKPiA+IGFib3V0IHRoaXMsIFJvYmluIE11cnBoeSByZW1hcmtlZDoKPiA+IAo+ID4g
+ICA8cm9ibXVyMDE+IHllZXNoLCB0aGUgdmlydF90b19waHlzL2RtYV9zeW5jIGFidXNlIGlzIGV2
+ZW4gd29yc2UKPiA+ICAgLSBpbiB0aGF0IHBhcnRpY3VsYXIgaW5zdGFuY2UgSSdkIGJlIGluY2xp
+bmVkIHRvIHJlcGxhY2UKPiA+ICAge3NyYyxkc3R9X21tdV9wYWdlcyB3aXRoIHByb3BlciBjb2hl
+cmVudCBETUEgYnVmZmVycwo+ID4gCj4gPiBTbyB0aGUgZHJpdmVyIGluIGdlbmVyYWwgbmVlZHMg
+c29tZSBjbGVhbnVwLCB3aGljaCBjb250cmlidXRlcyB0byB0aGUKPiA+IHByb2JsZW0uCj4gCj4g
+QXMgZmFyIGFzIEkgdW5kZXJzdGFuZCB0aGUgNEdCIGFyZSBhIGhhcmR3YXJlIGxpbWl0YXRpb24u
+Cj4gCj4gQWNjb3JkaW5nIHRvIHRoZSByazM1NjggVFJNLCB0aGUgUkdBMl9NTVVfU1JDX0JBU0Ug
+aGFzIDI4IGJpdHMgZm9yIHRoZSB1cHBlcgo+IDI4IGJpdHMgb2YgdGhlIGFkZHJlc3Mgb2YgdGhl
+IE1NVSBUTEIuIFRodXMgdGhlIE1NVSBUTEIgbXVzdCBiZSBsb2NhdGVkIHdpdGhpbgo+IDRHQiBt
+ZW1vcnkuCj4gCj4gQW5kIHdpdGhpbiB0aGUgTU1VIFRMQiwgdGhlIGFkZHJlc3NlcyBhcmUgMzIg
+Yml0IGFzIHdlbGwgKHVubGVzcyBJIGFtIG1pc3NpbmcKPiBzb21ldGhpbmcgaW1wb3J0YW50KS4g
+VW5mb3J0dW5hdGVseSwgSSBjb3VsZG4ndCBmaW5kIGFueSBkb2N1bWVudGF0aW9uIGZvciB0aGUK
+PiBUTEIuIFRoZSBkb3duc3RyZWFtIGRyaXZlciB3cml0ZXMgb25seSAzMiBiaXQgYWRkcmVzc2Vz
+IHRvIHRoZSBUTEIgYXMgd2VsbC4KPiBUaHVzLCBJIGFzc3VtZSB0aGF0IGFsbCB2aWRlbyBidWZm
+ZXJzIG11c3QgYmUgbG9jYXRlZCB3aXRoaW4gNEdCIG1lbW9yeSwgdG9vLgo+IAo+IFdoaWxlIEkg
+YWdyZWUgdGhhdCB0aGUgZHJpdmVyIG5lZWRzIHNvbWUgY2xlYW51cCBhbmQgbWF5IHVzZSBjb3Jy
+ZWN0IHR5cGVzIGZvcgo+IGhhbmRsaW5nIHRoZSBiaXQgc2l6ZSBsaW1pdGF0aW9uLCBJIHRoaW5r
+IHRoaXMgaXNuJ3Qgc29tZSBkcml2ZXIgbGltaXRhdGlvbi4KPiBNYXliZSB0aGUgZHJpdmVyIHNo
+b3VsZCBzZXQgdGhlIGRtYSBtYXNrIHRvIDMyIGJpdHMgYW5kIHNob3VsZCBiZSBleHBsaWNpdGx5
+Cj4gYXdhcmUgb2YgdGhlIDMyIGJpdCBsaW1pdC4KPiAKPiA+IAo+ID4gQnV0IGFzIHdhcyBzYWlk
+LCB0aGlzIGlzbid0IGEgcHJvYmxlbSB3aXRoIHRoZSBkZXZpY2UgdHJlZSwgc28gaXQgc2hvdWxk
+Cj4gPiBzdGlsbCBtYWtlIGl0IGluLiBJdCBqdXN0IG1lYW5zIHRoYXQgdGhlIGRyaXZlciBpcyBi
+cm9rZW4gb24gOEdCIFJLMzU2eC4KCk5pY29sYXM6IElzIHRoaXMgeW91ciBBY2tlZC1CeT8KCldo
+byB3b3VsZCBwaWNrIHVwIHRoZSBwYXRjaD8gSGVpa28/CgpNaWNoYWVsCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
