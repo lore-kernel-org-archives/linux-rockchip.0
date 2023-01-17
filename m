@@ -4,92 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4548C3DA78
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 16:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FBDAC54E76
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jan 2023 17:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UNj9zruLl6udGieSPKZVJefrEFs4u/96FUoFTBun+94=; b=c8OYAV2VM3il1DTvjHbGwSAY77
-	eNIy6Yzlo6PBgXUYhrbEWXLkMhByp9fV4BY1XZOZX9G/OBmGFF63iYSHllZPqZujEvkK/zA7S2x7z
-	skscPKVJ90ZSYryWKw0ltOhq1yITYqTFfNhIOn7Ym6/axAVIZdIKIaw76MBYu8LNfHEsIjpNEdGMK
-	Wu1UsMuKV3WAHKYS5J3qJrSsVL1lyeBbcb52uEY5cwrpH0/3uriAMIm7fm6Pa0/rIOJ58xb1DTDVG
-	sfxQbvcqrtavoBMoyCKB3M7WAK5UQkDMVJQtt4SG0NxPzpXJVRMeoQL5Jq3vEFW3YtcY9yBJZWMmw
-	hz7z522g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fT3kvVtmWUoV8jzaLT/flZ4IxSuqtK5txH5vnFtLRRE=; b=Zbs5Di/XtbfCQR
+	xQEHnEUa6lsWEj3yymEt7G5GS8RqC5tc88R/IG7nWuZC56zW054WWf2bWJ+KjAIjLT94+pyIL1FGV
+	7+SiQhMuYa1w7nbJJhBWAHvAmFuCweMmRL0pZ++daohYjhyGXKw8Z0q26WkPivMFmu39211dvgtp+
+	tS/5aWmv9HjgtQ4+9cBOl08LOUIjvE0t6DEndi5il6jETQ4gLuRltYuedg5AGhpJBxeunzb/kvCoZ
+	9OE82/sswD3mv/AloTVqe0Mg6+x+ts9tyKivbHMPiexEVwmTPKw8zSeFp0xdJF4/QLhJRb+FYAzIv
+	cw0TyAFv2xY/xdKmtTGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHpI7-00FBMe-K3; Tue, 17 Jan 2023 16:58:31 +0000
-Received: from out3-smtp.messagingengine.com ([66.111.4.27])
+	id 1pHpkm-00FGJN-96; Tue, 17 Jan 2023 17:28:08 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pHpI3-00FBKO-QJ
-	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 16:58:29 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id D940C5C0176;
-	Tue, 17 Jan 2023 11:58:22 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute6.internal (MEProxy); Tue, 17 Jan 2023 11:58:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1673974702; x=1674061102; bh=mwIGHWCBek
-	Q9BMMNPOARhkG/MMqyeZiMnAu5idF4a44=; b=gqW1tXrcYmHRBtgbUr2F1/rAH0
-	9ZFp3lBa1B1wsFQPUPfib73+TlNg0RkkshBRDy6NQ1REEsVC12Hn7GA19OdbG+bD
-	qGoHEN1LwyQzJbp59dIBL0Ou/TLNRQvPs0BMfeROupwudmCvK5zh6RWvHSxHnUaP
-	UM/aRj8JWGHlEbkn+4jJNrgLKf0TomfRHMtBxztpniV9JF6yzEnSJCTbxoeSZaLE
-	bkL7m3nZnHuxXHyoELZ1sG2wFl4g52EwvDO6/s/4AvzhDL1ENKbvOjUkoSSHnRY6
-	cpcgdLoAkFt3JSIlrBJrZgZXL2AeJkDOsUKUcN81eEcGm1bsL4YccnCnHCqg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1673974702; x=1674061102; bh=mwIGHWCBekQ9BMMNPOARhkG/MMqy
-	eZiMnAu5idF4a44=; b=aGsip6jLC6+VCcXF7IXcCUdHpOIqeO38sfAVlVmKB8t6
-	E2fBX7dOZMEQ+XGaUOKz+ci8bASHYqn7Dm15vMdn1KCpxyfsWZFnHn9GSbLu/QOW
-	uGvWTmh4jPgeSM0ONQgPbnm6KtH6staeSqdUZJQ1F42P26hPlrH6er6bmkmB3bm/
-	NSLSh1wbTCZAcrrRutzEnC4up6DLUrdOegFOOZMiE1vQu6bhD2hWcezbxrg/utLl
-	KGJBW8uliPurLJwbZWD1GROJS5z8cyggXwhZSNMgxSihz1oxQHdtKdl9c1Q3HTF5
-	41xpCAq3qcEJy1IjfAo9Chs3or3QdJlaUYBFUG/PhA==
-X-ME-Sender: <xms:rtPGYxTNOWM0bbUi7EWZSH-aw3zNjbaC1SRmc29sY_3r2l7yFsNaAA>
-    <xme:rtPGY6xlQtzkBUarCNwCF30sAsPulQkmX2eZK7JKKgDHYCI8Lp0O1LeytOr6OunoD
-    gS2b6LxfcVsRz13Obg>
-X-ME-Received: <xmr:rtPGY20qjknBQzw9wv0Nx-ZiGohsgUAYaBMUb6lReJMmy-mKcRdEQSpnakrKO_PbG5jfOf6yIiX55IBSQt7XMGP4R4QNMIOvHxiHlFL2fUgfxA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtiedgleefucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihi
-    mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
-    htthgvrhhnpeetfefffefgkedtfefgledugfdtjeefjedvtddtkeetieffjedvgfehheff
-    hfevudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:rtPGY5BqBfOXJgPDCvw5zMamlk2nchiW1HUHq4BCdkz9V94rYi6I-Q>
-    <xmx:rtPGY6iDD7CdaA5lQMNhwlzMldQx2DkIlMc_g00sHYNaxKfun71ewg>
-    <xmx:rtPGY9qaqnZSvTAGeFax90SZ49EIs6VHqumFAv_6--SrSPXrlxhbvA>
-    <xmx:rtPGY_tSiDgX1I5qh3XTPDK1KiQbDnHhw18LJYH2c_Jb7owvrrRgyQ>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 17 Jan 2023 11:58:21 -0500 (EST)
-Date: Tue, 17 Jan 2023 17:58:19 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linus.walleij@linaro.org,
-	maccraft123mc@gmail.com, tzimmermann@suse.de,
-	maarten.lankhorst@linux.intel.com, heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
-	thierry.reding@gmail.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V10 1/4] drm: of: Add drm_of_get_dsi_bus helper function
-Message-ID: <20230117165819.4rx7aucvyp5e2rj6@houat>
-References: <20230112175358.421975-1-macroalpha82@gmail.com>
- <20230112175358.421975-2-macroalpha82@gmail.com>
+	id 1pHpkj-00FGI5-Be
+	for linux-rockchip@lists.infradead.org; Tue, 17 Jan 2023 17:28:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=metanate.com; s=stronger; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description;
+	bh=FUQAy2s7dHxTxQIflnaMFOQzA6Y9z8buboU3GpqDujg=; b=qZfgnA0ENHbBEG4FNnkxu8a8uW
+	2rBzymK3M5lnvJMGEx+3njrCMGGzIUUjlgQq8mCQ89BGuhGNCcslj4LOaTEcn9d8xBaamVrZVYQWp
+	xOh6GO7lOXPEu5H2Qzw2YIpGBDhoq3xmlDOBIcD8X10MT4qB6iFp8Lei/aIgzvkZIX8NnXFbJQGJf
+	KuQ9ztCMiHiGnBaORCTtagiM3WcJ9/+IHXGrJgYR7ZyvjR9uEwjusI0PBZT1Kgj+67n9XtJZIBoEN
+	/lRYpIjtzMIJ6P2k856KGspiShPv6bUI3liqxUOORH1UdkBvN5Cqd4RzXKSaSeqv+4ZzzCeOOvVpz
+	5WWz0gAA==;
+Received: from [81.174.171.191] (helo=donbot)
+	by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <john@metanate.com>)
+	id 1pHpkX-0001C1-Ok;
+	Tue, 17 Jan 2023 17:27:53 +0000
+Date: Tue, 17 Jan 2023 17:27:52 +0000
+From: John Keeping <john@metanate.com>
+To: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Cc: Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com,
+	sjg@chromium.org, philipp.tomsich@vrull.eu, u-boot@lists.denx.de,
+	Heiko Stuebner <heiko@sntech.de>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH v1] arm: dts: rockchip: sync rk3066/rk3188 DT files from
+ linux-next v6.2-rc4
+Message-ID: <Y8bamLo1CTsAKJ8v@donbot>
+References: <48680512-0312-6342-ba0a-f2411463099a@gmail.com>
+ <31883268-dedf-6e3c-8647-0b7955c1ff16@theobroma-systems.com>
+ <a5943bfb-8d7b-6ed4-bbb4-0f018b921564@gmail.com>
+ <Y8a8ywAzHaUQbQca@donbot>
+ <eada6801-bb15-0b0b-500a-cae55f0f29e8@theobroma-systems.com>
 MIME-Version: 1.0
-In-Reply-To: <20230112175358.421975-2-macroalpha82@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <eada6801-bb15-0b0b-500a-cae55f0f29e8@theobroma-systems.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230117_085828_239607_DB297023 
-X-CRM114-Status: GOOD (  32.86  )
+X-CRM114-CacheID: sfid-20230117_092805_418178_9B14DD7D 
+X-CRM114-Status: GOOD (  30.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,207 +76,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2185072488991941574=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Quentin,
 
---===============2185072488991941574==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7npjgdbxmfp4vihi"
-Content-Disposition: inline
+On Tue, Jan 17, 2023 at 04:58:54PM +0100, Quentin Schulz wrote:
+> On 1/17/23 16:20, John Keeping wrote:
+> > Hi Johan,
+> > =
 
+> > On Tue, Jan 17, 2023 at 03:44:07PM +0100, Johan Jonker wrote:
+> > > On 1/17/23 10:46, Quentin Schulz wrote:
+> > > > On 1/16/23 20:45, Johan Jonker wrote:
+> > > > > Sync rk3066/rk3188 DT files from Linux.
+> > > > > This is the state as of linux-next v6.2-rc4.
+> > > > > New nfc node for MK808 rk3066a.
+> > > > > CRU nodes now have a clock property.
+> > > > > To prefend dtoc errors a fixed clock must also be
+> > > > > included for tpl/spl in the rk3xxx-u-boot.dtsi file.
+> > > > > =
 
---7npjgdbxmfp4vihi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> > > > > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> > > > > ---
+> > > =
 
-Hi,
+> > > [..]
+> > > =
 
-On Thu, Jan 12, 2023 at 11:53:55AM -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add helper function to find DSI host for devices where DSI panel is not
-> a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
-> official Raspberry Pi touchscreen display).
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> ---
->  drivers/gpu/drm/drm_of.c | 70 ++++++++++++++++++++++++++++++++++++++++
->  include/drm/drm_of.h     | 10 ++++++
->  2 files changed, 80 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> index 7bbcb999bb75..6c2c97a716fe 100644
-> --- a/drivers/gpu/drm/drm_of.c
-> +++ b/drivers/gpu/drm/drm_of.c
-> @@ -10,6 +10,7 @@
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_device.h>
->  #include <drm/drm_encoder.h>
-> +#include <drm/drm_mipi_dsi.h>
->  #include <drm/drm_of.h>
->  #include <drm/drm_panel.h>
-> =20
-> @@ -493,3 +494,72 @@ int drm_of_get_data_lanes_count_ep(const struct devi=
-ce_node *port,
->  	return ret;
->  }
->  EXPORT_SYMBOL_GPL(drm_of_get_data_lanes_count_ep);
-> +
-> +#if IS_ENABLED(CONFIG_DRM_MIPI_DSI)
-> +
-> +/**
-> + * drm_of_get_dsi_bus - find the DSI bus for a given device
-> + * @dev: parent device of display (SPI, I2C)
-> + * @info: DSI device info to be updated with DSI node. This is optional
-> + * and if not needed can be NULL.
-> + *
-> + * Gets parent DSI bus for a DSI device controlled through a bus other
-> + * than MIPI-DCS (SPI, I2C, etc.) using the Device Tree.
-> + *
-> + * Returns pointer to mipi_dsi_host if successful, -EINVAL if the
-> + * request is unsupported, -EPROBE_DEFER if the DSI host is found but
-> + * not available, or -ENODEV otherwise.
-> + */
-> +struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-> +					 struct mipi_dsi_device_info *info)
-> +{
-> +	struct mipi_dsi_host *dsi_host;
-> +	struct device_node *endpoint, *dsi_host_node;
-> +
-> +	/*
-> +	 * Get first endpoint child from device.
-> +	 */
-> +	endpoint =3D of_graph_get_next_endpoint(dev->of_node, NULL);
-> +	if (!endpoint)
-> +		return ERR_PTR(-ENODEV);
-> +
-> +	/*
-> +	 * Follow the first endpoint to get the DSI host node.
-> +	 */
-> +	dsi_host_node =3D of_graph_get_remote_port_parent(endpoint);
-> +	if (!dsi_host_node)
-> +		goto error;
-> +
-> +	/*
-> +	 * Get the DSI host from the DSI host node. If we get an error
-> +	 * or the return is null assume we're not ready to probe just
-> +	 * yet. Release the DSI host node since we're done with it.
-> +	 */
-> +	dsi_host =3D of_find_mipi_dsi_host_by_node(dsi_host_node);
-> +	of_node_put(dsi_host_node);
-> +	if (IS_ERR_OR_NULL(dsi_host)) {
-> +		of_node_put(endpoint);
-> +		return ERR_PTR(-EPROBE_DEFER);
-> +	}
-> +
-> +	/*
-> +	 * Set the node of the mipi_dsi_device_info to the correct node
-> +	 * and then release the endpoint node since we're done with it.
-> +	 * since this is optional, check if the info is NULL first.
-> +	 */
-> +	if (info) {
-> +		info->node =3D of_graph_get_remote_port(endpoint);
+> > > > > @@ -223,7 +224,7 @@
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0 #size-cells =3D <1>;
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0 ranges;
+> > > > > =
 
-it looks to me that the info->node is actually the DSI device OF node,
-not its host port. Which begs the question, why should we even return it
-there, since there's a pretty big chance that dev->of.node =3D=3D
-info->node, and you obviously don't care about the channel and type fields.
+> > > > > -=A0=A0=A0=A0=A0=A0=A0 gpio0: gpio0@2000a000 {
+> > > > > +=A0=A0=A0=A0=A0=A0=A0 gpio0: gpio@2000a000 {
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 compatible =3D "rockchip=
+,rk3188-gpio-bank0";
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 reg =3D <0x2000a000 0x10=
+0>;
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 interrupts =3D <GIC_SPI =
+54 IRQ_TYPE_LEVEL_HIGH>;
+> > > > > @@ -236,7 +237,7 @@
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 #interrupt-cells =3D <2>;
+> > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0 };
+> > > > > =
 
-I've had a look and node of the current users of
-mipi_dsi_device_register_full actually register a mipi_dsi_device_info
-with a node pointer set to !NULL, including the driver in this series.
+> > > > > -=A0=A0=A0=A0=A0=A0=A0 gpio1: gpio1@2003c000 {
+> > > =
 
-So, why do we care about the device info at all?
+> > > > > +=A0=A0=A0=A0=A0=A0=A0 gpio1: gpio@2003c000 {
+> > > =
 
-> +		if (IS_ERR_OR_NULL(info->node))
+> > > Hi,
+> > > =
 
-of_graph_get_remote_port doesn't return an error pointer.
+> > > LOL: I made that binding change on request from Linux DT maintainers.
+> > > Node names should generic.
+> > > =
 
-> --- a/include/drm/drm_of.h
-> +++ b/include/drm/drm_of.h
-> @@ -15,6 +15,8 @@ struct drm_encoder;
->  struct drm_panel;
->  struct drm_bridge;
->  struct device_node;
-> +struct mipi_dsi_device_info;
-> +struct mipi_dsi_host;
-> =20
->  /**
->   * enum drm_lvds_dual_link_pixels - Pixel order of an LVDS dual-link con=
-nection
-> @@ -56,6 +58,8 @@ int drm_of_get_data_lanes_count_ep(const struct device_=
-node *port,
->  				   int port_reg, int reg,
->  				   const unsigned int min,
->  				   const unsigned int max);
-> +struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-> +					 struct mipi_dsi_device_info *info);
->  #else
->  static inline uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
->  					  struct device_node *port)
-> @@ -127,6 +131,12 @@ drm_of_get_data_lanes_count_ep(const struct device_n=
-ode *port,
->  {
->  	return -EINVAL;
->  }
-> +static inline struct
-> +mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-> +					 struct mipi_dsi_device_info *info)
-> +{
-> +	return ERR_PTR(-EINVAL);
-> +}
->  #endif
+> > > =3D=3D=3D
+> > > =
 
-So it looks to me that if CONFIG_OF is defined, we'll define an external
-symbol declared for drm_of_get_dsi_bus, but that function will only be
-compiled if CONFIG_DRM_MIPI_DSI is enabled.
+> > > My full u-boot is able to boot a Linux kernel for rk3066a.
+> > > Only when I give the command below it crashes:
+> > > =
 
-What happens if we have CONFIG_OF but not CONFIG_DRM_MIPI_DSI?
+> > > gpio status -a
+> > > =
 
-If think you need to have here something like:
+> > > Could you confirm what other parts are effected?
+> > > =
 
-#ifdef IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_DRM_MIPI_DSI)
-struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-       					 struct mipi_dsi_device_info *info);
-#else
-static inline struct
-mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-				  struct mipi_dsi_device_info *info)
-{
-	return ERR_PTR(-EINVAL);
-}
-#endif
+> > > If it's boots then it's good enough for me and move forward, so pleas=
+e merge.(Kever)
+> > > =
 
-Maxime
+> > > Driver fixes for u-boot depending on Linux DT changes is already very=
+ time consuming enough!
+> > =
 
---7npjgdbxmfp4vihi
-Content-Type: application/pgp-signature; name="signature.asc"
+> > This reminded me of a patch that I never followed up with:
+> > =
 
------BEGIN PGP SIGNATURE-----
+> > 	https://urldefense.com/v3/__https://lore.kernel.org/u-boot/20220726162=
+509.1304234-1-john@metanate.com/__;!!OOPJP91ZZw!lmqsst1SAzm_NO-LfRooukeMJOc=
+5jP-Tqsm_DdWmyjnQc2VsP0D4TWJakw0qh5K-ENTe96HCtGp-MjKZtVrDM4Y8Tlg$
+> > =
 
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY8bToAAKCRDj7w1vZxhR
-xeNAAQDHf3gD/m6rIOl3XCKS1NtqNRV0SVpHe1YxIRdLehnAfQD/aa7TDSE3I6aL
-TSyB4r5bH6LV9iHI1J9Rs76LuemgTA8=
-=TFgQ
------END PGP SIGNATURE-----
+> > Can you test if that fixes `gpio status -a` for you?
+> > =
 
---7npjgdbxmfp4vihi--
+> =
+
+> That's not enough I believe. You need CONFIG_DM_SEQ_ALIAS enabled, which
+> isn't a given and we shouldn't rely on it. Also, there are currently no
+> aliases for gpio controllers. And we shouldn't rely on u-boot.dtsi for
+> those, because upstream might decide to have an alias gpio2 for gpio0 for=
+ a
+> board.
+
+If the aliases are set up in a non-standard way, then I think changing
+the name here may be the right thing to do.
+
+Any GPIOs referenced in the device tree will be by handle so the name is
+irrelevant.  GPIO names are only used by board code or by the `gpio`
+command, both of which are tightly tied to the device tree anyway.
+
+If a stable name for a GPIO is needed, then the gpio-line-names DT
+property exists and is supported by Linux.  The names here are purely a
+U-Boot construction and effectively part of a "userspace" interface.
+
+Just using dev_seq() unconditionally as Simon suggested in response to
+my patch seems like the right answer (and then there is no dependency on
+CONFIG_DM_SEQ_ALIAS although boards can require it and use aliases if
+necessary).
 
 
---===============2185072488991941574==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+John
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2185072488991941574==--
-
