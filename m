@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D922C32793
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 17:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F330C32793
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 17:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eYxLn1twINUqa3RyjCx4GMR16ad9yEAANxnt6ooLeyM=; b=gEpbyU2yMI/Cix
-	E/ua5IBEMm8tiGxH3fDaGV28pRCDOWJVPI2uEHoEv51Qb3srefc54HsekRLEPYJ4rD86bI93LoXqj
-	378/nCLBPk91mjfIyPhLinmiTFIkzBuJ44aTcToMlJJkRao5r25GBUl6THN+QWlV7LPTJRw7ZOtff
-	/cOW5PynsfFybXD2GLZ0cnrlEP0OPLt3xpxjopEEHb+yQxjmTXZFVLx/IF0xPJ6JtlnYzBzkj9saE
-	UWmzJCMhbCHShQt0mdl4+4NpSDGBsuXnFSZW+GEiauXW+98zLQGtCPIUdozkVe6US/D2e62opS9tO
-	7AoD4XFquzmHRZY8u+oQ==;
+	List-Owner; bh=/9nhR00ih3FsjNbd7F99EJgWsMghoG7BtzqSNVqALXY=; b=sjhMagn2BjzCfO
+	jm0ag2q+eCarHvD3sJo8VTrE+wj9HIHl+hdHwwY1AZOsNHfNVlNoLk3fF91vD9+Jk6T81Pc4jqhzM
+	EDJJbbjU0n/9HrTqph0bkpNl5Jb/sUHZt0Mrr8w4FNfVtZfy+t27qxYX5Up3gSD2i/UvmbAt/1yDL
+	JyKTlSCSz0+m9OG9Qtm1KwrGx+D9FODkoeCYVi2RB021z6lc0GUCLctlO2W9xKwcKcGdq/bIje1bg
+	Fzeb/Wx5qpG//JGTPUyI+7goGXW1TaL8i0Q4Taz5pbo+IDadokKSh9tCoPvY2lsCL2EChiM2E/C8c
+	+5FiaKUXpfRa3cVGKsIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIBpD-001wmo-JH; Wed, 18 Jan 2023 17:02:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pIBzW-001z9u-34; Wed, 18 Jan 2023 17:12:50 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIBp1-001wjH-Uf; Wed, 18 Jan 2023 17:02:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5090F6191D;
-	Wed, 18 Jan 2023 17:01:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6ACBC433EF;
-	Wed, 18 Jan 2023 17:01:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1674061318;
-	bh=a84FGLCSP4PpD8EGf1sRH+8aTGt6Fj6ydtWWlmpcOz8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=L+8hO2MhIPUNgLfP48afah90W+Xs8YWIoEM837iIGMbMTL70AX7vhr44TyV2s1iwJ
-	 nwrwhv+UDdojkiAXIHJEB8GlLE3fRrC7rmQNU7rbR8FlgTAtxBIpPUXpn37rCmx9JR
-	 eiAq8sPtnW5wl0afAiEZ1q7kB0aQUpUbh5EU/NJgXVwzemSUk8K0+M+MNMrDI/IDel
-	 HwrUAmr0LJ4cwisZKlI3rvezNllGf1+VS0fO9FhCOnNKuZJwjpBu1XdDPdwJr3ZSKP
-	 lzuy4C+gLABq6/Op0lsxSY4ciwQS0XGnniAku5nEmV7tnVuE6VvSjA7xIrCMnjjHvz
-	 I3c2Zw+bOqyGA==
-Date: Wed, 18 Jan 2023 22:31:54 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	kishon@kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: rockchip: convert
- rockchip-dp-phy.txt to yaml
-Message-ID: <Y8gmAiHMcU4ekkUk@matsya>
-References: <aa6fe473-71f2-edba-f009-994a3dbc9802@gmail.com>
- <Y8GeBzNJvhMeh3sn@matsya>
- <8eca0d59-8db3-b66e-f219-0a256a9b0c79@gmail.com>
+	id 1pIBzI-001z6N-2b; Wed, 18 Jan 2023 17:12:39 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id mg12so12540384ejc.5;
+        Wed, 18 Jan 2023 09:12:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TSqHeiPg445FTYU+12Cfi8M5vyG4aei2V8sKE7XRXUg=;
+        b=lY/JCaGJUPV5uWawP1aJnQI0yK0dF8yAAOjzPOSVhkofmd+c2D+3aqiGyeBd2xAdgy
+         quJ7zgi91QqHv0fXLs+VXV+LiZhZ+VqB1sOWxU11yFTf4xJMe/O7aJ4S096JjIjc9v3Z
+         WwxBHk5+bjaYG6mQUwPSo7OwZWlAI+NF/gPTyd4Qipnzq+NPuFHtBRz0qHkj4D1pB8Kx
+         FbIFDJ6XqixSPf8B59sOIhSdl4GgPS2o3AyfdlaA0nQSIr4DCa60xbahHCXA/Rs/G9LU
+         9f/PpblwA1QDt2AYcr5vSfslcqpjiJtbLzrGvpTqbMEeZ8IDsMNR6sqChmgbWvydRri1
+         +o+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TSqHeiPg445FTYU+12Cfi8M5vyG4aei2V8sKE7XRXUg=;
+        b=gCVHls1Eqdxp+IB1KetPtwvBbcMRnfeB+PGTmhD/zre+nLCi+TpiPrUKfgu0bblRX3
+         6iaTuagikKgaqF85d+yjeU9EFlrx+MmHM1mbW3vF8LioXSB7Sj4Fx/+uEOJ/HvO4FAP6
+         LcGACUsBJIw8e3YgptlEUtqJ9sulBcrU7LbYo3jM59BAj9wk6D+SX1kGoZ13D0CugTjY
+         Z4p0Xq12KBvSLUrhsI+JT4yMQ2BAAz83cTJBj9I3HvQZNtUTzIXgZgVSIPnRMaqWE3B1
+         /Dk+ZGYRx+mLU2ZcjVHmNe6VqPQ4zLYorAItNe10BNLsZDAKTCUAJvluUv1Wq2937lhe
+         P+8A==
+X-Gm-Message-State: AFqh2ko02PqgAUaEDWVaNN9gy9J4Y6i1D9MRhQp3xHV0f5frZL431klR
+	fWfQhWPQeeBJAKV6Hl9Snh4=
+X-Google-Smtp-Source: AMrXdXsQ5zjMfW51P4D6BEYdSqcJGv6m0Wfy377/gQMr+nFfipIAGkyxbuzQOsQP+/cyzlyjwMeVlw==
+X-Received: by 2002:a17:907:c017:b0:840:c37d:b5e4 with SMTP id ss23-20020a170907c01700b00840c37db5e4mr9070990ejc.16.1674061950703;
+        Wed, 18 Jan 2023 09:12:30 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id et21-20020a170907295500b00871f66bf354sm3266487ejc.204.2023.01.18.09.12.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Jan 2023 09:12:30 -0800 (PST)
+Message-ID: <f624fcf3-f8f1-68c0-eab0-43bcda3cbe90@gmail.com>
+Date: Wed, 18 Jan 2023 18:12:29 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8eca0d59-8db3-b66e-f219-0a256a9b0c79@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v1 1/4] dt-bindings: gpio: rockchip,gpio-bank: add
+ compatible string per SoC
+To: Rob Herring <robh@kernel.org>
+Cc: linus.walleij@linaro.org, brgl@bgdev.pl,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org,
+ philipp.tomsich@vrull.eu
+References: <08de3f4b-e33f-95c8-3297-814ea107272a@gmail.com>
+ <20230118153236.GA33699-robh@kernel.org>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20230118153236.GA33699-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_090200_061232_198E53BB 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230118_091236_152373_47333611 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +97,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13-01-23, 20:58, Johan Jonker wrote:
-> 
-> 
-> On 1/13/23 19:08, Vinod Koul wrote:
-> > On 29-12-22, 10:44, Johan Jonker wrote:
-> >> Convert rockchip-dp-phy.txt to yaml.
-> > 
-> > This series fails to apply, pls rebase
-> 
-> Hi Vinod, Heiko,
-> 
-> This serie and others must be combined in the right order to grf.yaml.
-> Maybe better that Heiko does that with your ACK.
 
-Sure:
 
-Acked-By: Vinod Koul <vkoul@kernel.org>
+On 1/18/23 16:32, Rob Herring wrote:
+> On Wed, Jan 18, 2023 at 01:13:23PM +0100, Johan Jonker wrote:
+>> Currently all Rockchip gpio nodes have the same compatible.
+>> Replace all the compatibles in gpio nodes to be able to
+>> give them a consistent ID independent from probe order or alias.
+> 
+> I fail to see how the compatible change affects probe order or aliases. 
+> It is also an ABI break if there is not the existing compatible as a 
+> fallback. State the problem you are trying to solve with this change, 
+> not just what your solution is.
 
--- 
-~Vinod
+Hi Rob,
+
+Since the yaml conversion of rockchip,gpio-bank.yaml we have generic "gpio" names instead of "gpio-1".
+For both Linux and U-boot there's a need for a consisted ID order between the nodes.
+
+The kernel has no logic to decide between the first compatible and the fallback.
+A fallback doesn't have ability to add/select "data" with probe, but have to use
+of_device_is_compatible(np, "rockchip,rk3188-gpio-bank") for  "15"  SoCs instead.
+
+I can produce a serie with fall back.
+Let us know how to move forward here.
+
+Kind regards,
+
+Johan Jonker
+
+
+===
+Linux driver behavior:
+
+	id = of_alias_get_id(np, "gpio");
+	if (id < 0)
+		id = gpio++;
+
+Problems:
+Alias not always available in existing DT files(not part of the binding)
+Probe order is not guarantied and possible number gap for rk3066a between gpio4 and gpio6.
+(id counter gives not consistent result)
+
+===
+U-boot rk_gpio.c current behavior:
+
+	end = strrchr(dev->name, '@');
+	priv->bank = trailing_strtoln(dev->name, end);
+	priv->name[0] = 'A' + priv->bank;
+	uc_priv->bank_name = priv->name;
+
+Problems:
+Crash when node name has no "gpio-1" format
+
+U-boot rk-gpio proposed: 
+
+	priv->name[0] = 'A' + dev_seq(dev);
+	uc_priv->bank_name = priv->name;
+
+Problems:
+Reduced FDT's and rk3066a gives number gaps.
+
+===
+
+My proposal:
+
+struct lookup_table rk_gpio_rk3188_data[] = {
+	{0x2000a000, "A"},
+	{0x2003c000, "B"},
+	{0x2003e000, "C"},
+	{0x20080000, "D"},
+};
+
+	{ .compatible = "rockchip,rk3188-gpio-bank", .data = &rk_gpio_rk3188_data },
+
+===
+
+
+See links for previous discussions:
+
+[PATCH v1] arm: dts: rockchip: sync rk3066/rk3188 DT files from linux-next v6.2-rc4 Johan Jonker
+https://lore.kernel.org/linux-rockchip/6ec4427e-f56f-7545-2296-bc75d74f4364@theobroma-systems.com/T/#t
+
+[PATCH 1/3] arm64: dts: rk3399: sync rk3399.dtsi from 6.1-rc1 Peter Robinson
+https://lore.kernel.org/u-boot/0ab9a600-b517-0ce5-d189-99fc8eddfa60@theobroma-systems.com/
+
+[PATCH/RFC] rockchip: derive GPIO bank from alias if available John Keeping
+https://lore.kernel.org/u-boot/CAPnjgZ3j7YVJt+B-uEKS_rsSRBSR-kmyLujV3RozL7kbFNrqFw@mail.gmail.com/
+
+[PATCH] rockchip: derive GPIO bank from alias if available John Keeping
+https://lore.kernel.org/u-boot/Y8gaqasu9ho0vl8X@donbot/T/#m00e3823cf74d35a7c8536a1193ed1a77c7698135
+
+Broken U-boot gpio driver:
+https://source.denx.de/u-boot/u-boot/-/blob/master/drivers/gpio/rk_gpio.c#L154-L157
+
+> 
+> GPIO shouldn't really have an alias either IMO.
+> 
+> Rob
 
 _______________________________________________
 Linux-rockchip mailing list
