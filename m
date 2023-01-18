@@ -4,94 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD33C32793
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 08:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F395FC32793
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 12:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/QX4e9PeQHOBPF21CcEAEssosHmnbfoPcXgrMV2gmGY=; b=qPqNcqVSErOlRfI6KPLiGdpq5c
-	qAoAMmkkVy/gWc1gsMUgB5hr4sgZ3d/bgvsrPjBFx+a16Mg3/FNWaZsHnTUJ4ktENDsqQsqHHLeTv
-	EtkaEvy3JwWqsiLBm9vQvT3KleTVQVTF7vX0qT6BVUZdGKWMcrXkxtzQ294n/xGGqxqclzSHbeS3S
-	CsclOX+GQwufep+DmFhRUks1fo6K23G4WkhZEYvfKdYKQR7zmIa8PWJeomUVdLxpLZBAKc2xx48Td
-	p6YK90UdPefo6zBTwtPSh/u1oHOCLB9L6JbPEyL/bI0oa6AB7jYz7PvibUphjYjhUV0WUT5p5IGco
-	rzA4cz4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8hygCLanoyBTFjcXSAN39sn0loDoMAvrNyQBKLn64xM=; b=w1orj7LJm1Bpnr
+	8rD4d+K91OwvfGdRars+L1yKyp/vTer7yrc18whp9xJdR2y9Lz9ZDvob5+ebXc5u1IngPuj5sILyF
+	pwkHU1eigHzG/LPFs3UYCrapsyJkou8t8sdMTnC6/0lTaQH0W3TdA5Hvp2C4V7sgF7jZa3liNDHiT
+	I84rfgVot8ieaHR2ygSGM9OLSCrpZ34ij3nR1T9lpNb0OBmiCgq8jGWdVkns1qdoZm02PdoniF3fv
+	bQQJvZ3hu6qaSf5SS0Dbwt0Bp0HhNwT/DVCy5iYqEgSekvmdxNUmBujno/SbTpTGOT5cF+uFYT+mm
+	GJlwLiIwBjTf44Co93Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI4Ab-00HYzB-3m; Wed, 18 Jan 2023 08:51:45 +0000
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+	id 1pI7K2-000i5Y-At; Wed, 18 Jan 2023 12:13:42 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI4AB-00HYnK-8J
-	for linux-rockchip@lists.infradead.org; Wed, 18 Jan 2023 08:51:21 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.west.internal (Postfix) with ESMTP id 98CD5320029B;
-	Wed, 18 Jan 2023 03:51:12 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Wed, 18 Jan 2023 03:51:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1674031872; x=1674118272; bh=9KUlsgI3dn
-	S0cospHZM0OdIrpPKgU9PSIeNZux/mzes=; b=VHpuXgGRlkv5xc8SExS+dg31iB
-	+Q+CYFjSv9ud6aswis1izSDAblf05ZPwclFetYjnu8f9MfsaYSxXhZmiXlvEQRk4
-	2ZYkw7NleykQ9es6UTxzMIFiCgtywrbKreB9QP9eLKmcKacjfKiGptdJiNq3/tQA
-	Ap5ddP/R65lrHO29TZH7TX7F0swpIs7wogcyEivQnA2upeFwzqs3eyp97pdx3TND
-	y8RvcNsiyLmbtq8h5dqltyilugYulmbpA1RprvzoQ2TFxTaxzVU94TkidxOQUQOP
-	plreSci1FPoUwBbXEpJF6tomUxovNJ50vp0QyyJxWvdDzjLZvB+6KLC2E2SQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1674031872; x=1674118272; bh=9KUlsgI3dnS0cospHZM0OdIrpPKg
-	U9PSIeNZux/mzes=; b=rjz5pqWyZcUB3WkTJowupxeNrhtn1dvu8BqR8VDJKlia
-	/bxpnMP+NuFG40RzAxgYOI+GYH3EP8O2msetwFdQHV6hvkzeLDEOBL4b10d+H//+
-	WgxWpuf1qSpoKmer3WFBjlUwgmWyyYJ7LRDKicEpvRc6qyPvpTfSHpL1vU9tMzeJ
-	GvuIvISNbPeWKIUMEVsZYBO9+cJfMAiPTZKaWS61P2y+57NnGoJvC7EEH/E6nUkr
-	4LchYH0AEOhlBN3uZHHkJtkppQJXj2Qm1GtWDQjAGh+GEZkyTv9LDXFss2LURCfY
-	3hipnsWh+4oQPbgxPCt5RQGWxNT5PRDT6V7KLT1rfA==
-X-ME-Sender: <xms:_7LHYyUZ3W6_D0KDonQUvuqXT52av5tAtXbIb-IdyCRndIdlN953sw>
-    <xme:_7LHY-kOzWReXpWtrWdMqsy5feqDqeRNu94yZS38dizVRGbo6IZ98FJQEf9Pxbxbm
-    Hl9z9plykKvGDKoIDc>
-X-ME-Received: <xmr:_7LHY2YH4eqzPjJjuFr8iJsyFvPazhCNAly9u0GRWxsAA8Ck5m3hHtag647kf-Ahz5ipW_YUjkW0-Em4Oqx6ecI94t4vKMIuM6wjXQ3zcqHHvg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtjedguddvkecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheeh
-    fffhvedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:_7LHY5U2Ybl6Oa0fGtX5eIMw9jzassbK-x78IIAttHDpoDDBlDeOFA>
-    <xmx:_7LHY8nfDQkoggn6SyxTl4ryUQMgvZnlopw_ROiFy1XwjRoPSWGFXQ>
-    <xmx:_7LHY-d6KW7OhfEBhpBRdCYPwofC_WAMgkKUWiHhzYAszG1Pb0I-1w>
-    <xmx:ALPHY6wcHIrClecEzdSuS6AP4OF_h2lEUu5RYDdVIow0CBot5Y0DSQ>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 18 Jan 2023 03:51:10 -0500 (EST)
-Date: Wed, 18 Jan 2023 09:51:08 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linus.walleij@linaro.org,
-	maccraft123mc@gmail.com, tzimmermann@suse.de,
-	maarten.lankhorst@linux.intel.com, heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
-	thierry.reding@gmail.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V10 1/4] drm: of: Add drm_of_get_dsi_bus helper function
-Message-ID: <20230118085108.huhhod43ixwe7pwk@houat>
-References: <20230112175358.421975-1-macroalpha82@gmail.com>
- <20230112175358.421975-2-macroalpha82@gmail.com>
- <20230117165819.4rx7aucvyp5e2rj6@houat>
- <63c6f329.050a0220.82479.85d4@mx.google.com>
+	id 1pI7Jp-000i2C-Pk; Wed, 18 Jan 2023 12:13:31 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id az20so63655241ejc.1;
+        Wed, 18 Jan 2023 04:13:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zSiUjqeIhXTuZdT6eBiGLcbiQdlWY4D946T8IZEq1tM=;
+        b=dKanFbSavWhQ2T04eS+23uXizOzrzix2u0Cn/8NyzbdwfmUOqEwbG0Mvvs/5qQAZYw
+         E9SMCML7RNO6mwGoYvIku1ZYootIDWCeVdQy4IOV9nnp5z9QMjUlEcQnoSIKsIEx4BuJ
+         ANNkfnb3q0U5o5qoR2AxxjfX55b1fjCrbA/clrv/NzXcYQ1K6icZHfFK3HCaDyb2Mzbl
+         W4iwTVmvr1HjtdQwfFXUlIwRHQJI+A58LMkUrbvyzCXpWKppAklGEwHAp0xqR1jcZ+pZ
+         OJGYYZxgSkoRYiN5wwame4F5h8Vyoad7PzXPCsFNSiUysNL3v82BgUkf8PgkyPZ+MqE8
+         5OpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=zSiUjqeIhXTuZdT6eBiGLcbiQdlWY4D946T8IZEq1tM=;
+        b=K72PsCyNE7+owyMGFh16RYYduaxHXcMCCqqxOwpWOMd1JAY0aw28p3rET21+iywLDG
+         SOyFpaj/79lSiZoX4u/B2HDndqxK7Ktbt6HQUjc5utmJKhVpZRXXbWdhSBaqsEtsZfq5
+         nMMAV/pP6We/xaXo1myVIVmrI+vH773qoRd5nZcjFQWxF4nj8unvIaDU48r+ks4dKn4P
+         LSXBS3S8fQV4VNq0O5QpVPBmBHwbNkAwtQ7aj0OoQeyBLDIyMlIISk7r4UpzNY494GBo
+         70y7yWzTOqab2j7raF9KzhRFDByclritfwDZTJlS3XqUdK1z2fUmFwIf3crzhbp2gb5A
+         kAXg==
+X-Gm-Message-State: AFqh2koLOjAlVcAxvusPuoyM5UlZECUZjzk9jgxnGPLKkTJjpSqMxQv9
+	+lVyRZu5WPgHcCp2wkYTl3I=
+X-Google-Smtp-Source: AMrXdXuJB5h75c09Lnc02md4iwcnhiUM2jh4kDT+SpXEP089W+YmPnXFzPBoQG85j5oV/lLrbE//Iw==
+X-Received: by 2002:a17:907:86a5:b0:870:d4f3:61b3 with SMTP id qa37-20020a17090786a500b00870d4f361b3mr8604731ejc.12.1674044005883;
+        Wed, 18 Jan 2023 04:13:25 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id r24-20020aa7da18000000b004704658abebsm14187212eds.54.2023.01.18.04.13.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Jan 2023 04:13:25 -0800 (PST)
+Message-ID: <08de3f4b-e33f-95c8-3297-814ea107272a@gmail.com>
+Date: Wed, 18 Jan 2023 13:13:23 +0100
 MIME-Version: 1.0
-In-Reply-To: <63c6f329.050a0220.82479.85d4@mx.google.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1 1/4] dt-bindings: gpio: rockchip,gpio-bank: add compatible
+ string per SoC
+To: linus.walleij@linaro.org, brgl@bgdev.pl
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org,
+ philipp.tomsich@vrull.eu
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_005119_698064_27A61686 
-X-CRM114-Status: GOOD (  47.47  )
+X-CRM114-CacheID: sfid-20230118_041329_860762_48D14E72 
+X-CRM114-Status: UNSURE (   7.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,197 +89,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5027786722895336258=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Currently all Rockchip gpio nodes have the same compatible.
+Replace all the compatibles in gpio nodes to be able to
+give them a consistent ID independent from probe order or alias.
 
---===============5027786722895336258==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="rybdiaw5plw7ten3"
-Content-Disposition: inline
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ .../bindings/gpio/rockchip,gpio-bank.yaml         | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index affd823c8..72fdfcc65 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -13,7 +13,22 @@ properties:
+   compatible:
+     enum:
+       - rockchip,gpio-bank
++      - rockchip,px30-gpio-bank
++      - rockchip,rk3036-gpio-bank
++      - rockchip,rk3066a-gpio-bank
++      - rockchip,rk3128-gpio-bank
++      - rockchip,rk3188-gpio-bank
+       - rockchip,rk3188-gpio-bank0
++      - rockchip,rk3228-gpio-bank
++      - rockchip,rk3288-gpio-bank
++      - rockchip,rk3328-gpio-bank
++      - rockchip,rk3308-gpio-bank
++      - rockchip,rk3368-gpio-bank
++      - rockchip,rk3399-gpio-bank
++      - rockchip,rk3568-gpio-bank
++      - rockchip,rk3588-gpio-bank
++      - rockchip,rv1108-gpio-bank
++      - rockchip,rv1126-gpio-bank
 
---rybdiaw5plw7ten3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+   reg:
+     maxItems: 1
+--
+2.20.1
 
-On Tue, Jan 17, 2023 at 01:12:39PM -0600, Chris Morgan wrote:
-> On Tue, Jan 17, 2023 at 05:58:19PM +0100, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Thu, Jan 12, 2023 at 11:53:55AM -0600, Chris Morgan wrote:
-> > > From: Chris Morgan <macromorgan@hotmail.com>
-> > >=20
-> > > Add helper function to find DSI host for devices where DSI panel is n=
-ot
-> > > a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
-> > > official Raspberry Pi touchscreen display).
-> > >=20
-> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > > Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> > > ---
-> > >  drivers/gpu/drm/drm_of.c | 70 ++++++++++++++++++++++++++++++++++++++=
-++
-> > >  include/drm/drm_of.h     | 10 ++++++
-> > >  2 files changed, 80 insertions(+)
-> > >=20
-> > > diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> > > index 7bbcb999bb75..6c2c97a716fe 100644
-> > > --- a/drivers/gpu/drm/drm_of.c
-> > > +++ b/drivers/gpu/drm/drm_of.c
-> > > @@ -10,6 +10,7 @@
-> > >  #include <drm/drm_crtc.h>
-> > >  #include <drm/drm_device.h>
-> > >  #include <drm/drm_encoder.h>
-> > > +#include <drm/drm_mipi_dsi.h>
-> > >  #include <drm/drm_of.h>
-> > >  #include <drm/drm_panel.h>
-> > > =20
-> > > @@ -493,3 +494,72 @@ int drm_of_get_data_lanes_count_ep(const struct =
-device_node *port,
-> > >  	return ret;
-> > >  }
-> > >  EXPORT_SYMBOL_GPL(drm_of_get_data_lanes_count_ep);
-> > > +
-> > > +#if IS_ENABLED(CONFIG_DRM_MIPI_DSI)
-> > > +
-> > > +/**
-> > > + * drm_of_get_dsi_bus - find the DSI bus for a given device
-> > > + * @dev: parent device of display (SPI, I2C)
-> > > + * @info: DSI device info to be updated with DSI node. This is optio=
-nal
-> > > + * and if not needed can be NULL.
-> > > + *
-> > > + * Gets parent DSI bus for a DSI device controlled through a bus oth=
-er
-> > > + * than MIPI-DCS (SPI, I2C, etc.) using the Device Tree.
-> > > + *
-> > > + * Returns pointer to mipi_dsi_host if successful, -EINVAL if the
-> > > + * request is unsupported, -EPROBE_DEFER if the DSI host is found but
-> > > + * not available, or -ENODEV otherwise.
-> > > + */
-> > > +struct mipi_dsi_host *drm_of_get_dsi_bus(struct device *dev,
-> > > +					 struct mipi_dsi_device_info *info)
-> > > +{
-> > > +	struct mipi_dsi_host *dsi_host;
-> > > +	struct device_node *endpoint, *dsi_host_node;
-> > > +
-> > > +	/*
-> > > +	 * Get first endpoint child from device.
-> > > +	 */
-> > > +	endpoint =3D of_graph_get_next_endpoint(dev->of_node, NULL);
-> > > +	if (!endpoint)
-> > > +		return ERR_PTR(-ENODEV);
-> > > +
-> > > +	/*
-> > > +	 * Follow the first endpoint to get the DSI host node.
-> > > +	 */
-> > > +	dsi_host_node =3D of_graph_get_remote_port_parent(endpoint);
-> > > +	if (!dsi_host_node)
-> > > +		goto error;
-> > > +
-> > > +	/*
-> > > +	 * Get the DSI host from the DSI host node. If we get an error
-> > > +	 * or the return is null assume we're not ready to probe just
-> > > +	 * yet. Release the DSI host node since we're done with it.
-> > > +	 */
-> > > +	dsi_host =3D of_find_mipi_dsi_host_by_node(dsi_host_node);
-> > > +	of_node_put(dsi_host_node);
-> > > +	if (IS_ERR_OR_NULL(dsi_host)) {
-> > > +		of_node_put(endpoint);
-> > > +		return ERR_PTR(-EPROBE_DEFER);
-> > > +	}
-> > > +
-> > > +	/*
-> > > +	 * Set the node of the mipi_dsi_device_info to the correct node
-> > > +	 * and then release the endpoint node since we're done with it.
-> > > +	 * since this is optional, check if the info is NULL first.
-> > > +	 */
-> > > +	if (info) {
-> > > +		info->node =3D of_graph_get_remote_port(endpoint);
-> >=20
-> > it looks to me that the info->node is actually the DSI device OF node,
-> > not its host port. Which begs the question, why should we even return it
-> > there, since there's a pretty big chance that dev->of.node =3D=3D
-> > info->node, and you obviously don't care about the channel and type fie=
-lds.
-> >=20
-> > I've had a look and node of the current users of
-> > mipi_dsi_device_register_full actually register a mipi_dsi_device_info
-> > with a node pointer set to !NULL, including the driver in this series.
-> >=20
-> > So, why do we care about the device info at all?
->
-> I honestly thought it might be useful, but I can try without it.
-
-It might tbh, but it doesn't look like you use it in your driver. You have:
-
-struct mipi_dsi_device_info info =3D {
-	.type =3D "d53e6ea8966",
-	.channel =3D 0,
-	.node =3D NULL,
-};
-
-=2E..
-
-// info.node is NULL so far
-dsi_host =3D drm_of_get_dsi_bus(dev, &info);
-
-=2E..
-
-// info.node has been filled to the port node by drm_of_get_dsi_bus()
-db->dsi_dev =3D devm_mipi_dsi_device_register_full(dev, dsi_host, &info);
-
-// db->dsi_dev.dev.of_node is now set to the port node
-
-But if we grep through drm_mipi_dsi.c, we can see that the of_node is
-only really useful if we're using of_find_mipi_dsi_device_by_node, and
-it looks like you don't.
-
-So nothing uses info->node, which also explains why not reporting the
-proper node has been working.
-
-Looking more into the code, it really looks to me that info->node should
-be equal to the your panel device tree node, that's what
-of_mipi_dsi_device_add does at least.
-
-if info->node =3D=3D dev->of_node, and if info->node is the only thing
-filled by drm_of_get_dsi_bus(), then it doesn't need to fill it at all
-because it's already accessible easily to the caller (and even more
-easily than to the callee).
-
-So yeah, until we have a real-world need to retrieve the info function I
-think we should leave it aside for now, and we can always change the API
-later if we need to.
-
-Maxime
-
---rybdiaw5plw7ten3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY8ey/AAKCRDj7w1vZxhR
-xVS/AQDUdnSGblEzWLEWmRten0nr00zGWqhrXBNcMiHWRnUERgD+JwQ2k5RXvHoW
-kEDhs0Tdt0wE9hYtSODBYAEGVjWMewo=
-=R/IG
------END PGP SIGNATURE-----
-
---rybdiaw5plw7ten3--
-
-
---===============5027786722895336258==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5027786722895336258==--
-
