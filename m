@@ -4,82 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9FA9C38147
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 21:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13279C38147
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 23:32:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I62xAWjvFIics9isIJKRQn8rgmo6ItpcCopzPpKqM7c=; b=Yhqb9dnK+yExYL
-	/Wi3GfUgQx2S3WvMCzdQavSOVVibVAoZm52d84RhD6YKP6+Yywz8rLTUrhF3kj/vJiVx/pOStWg5p
-	5k67x7JhyHfnGuVnzdKRNxr2GOe9k4eSOcqErYAMPwJNi8OaKFvxFN00vqX1C7xnCZDRr/Mio8jKo
-	vvKGgXz8TON6EAZWYVwR/v2uhXTnRqoI18o+SmgcCcflY8KcNBqRs8Pr/kV5rCQhzu+HNSxYlFjhu
-	rqX9muyLngs5A9ZGW9G8nJjnzQnccpRhidc3XGT2zOWrSn3t5cFniurZEZe7Uvidb+IuLxA38MDKO
-	8DQAKRUYIMFzHfVE92bA==;
+	List-Owner; bh=4GG17SqRXXRrDHSkjlVLXtfpi8proW4ELECDJod9g4M=; b=zuBEdgEIeOSsc7
+	KMx083zj+T5OwOrr1764QKbDiqUcpZRHHyMglXG97VAvS83U7O6rYktfwhJ56pwKxOly3SxHgt952
+	W10Wmc3FzU4ey/b3jUNPavgMvuIQOq2bAGC1T9gP0WDpr6d1u0Us1Fo+jwKnVT/KVPpMR5i2hlq/Z
+	hhCXf0G6xxsz1ee3iKdkFwTFXZcv0arNYRwl+8zsKTwFFJdN2rNyu2XquzZrrJez41G8vHo2Fnjcq
+	DdYmnEVzsmkmxKQRD8YL1fCkbJdBgH0ZTcS55PMm+TQBDtrlBFZ3S/4aEVwR2nvO1iAGhO7WWhamI
+	VrfD48bhdtrD8XZ+l0HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIFvV-002ilA-9j; Wed, 18 Jan 2023 21:24:57 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1pIHuJ-002xWz-74; Wed, 18 Jan 2023 23:31:51 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIFvS-002ikD-Co
-	for linux-rockchip@lists.infradead.org; Wed, 18 Jan 2023 21:24:55 +0000
-Received: by mail-wm1-x336.google.com with SMTP id f19-20020a1c6a13000000b003db0ef4dedcso2303287wmc.4
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Jan 2023 13:24:54 -0800 (PST)
+	id 1pIHuF-002xUm-IL
+	for linux-rockchip@lists.infradead.org; Wed, 18 Jan 2023 23:31:49 +0000
+Received: by mail-oi1-x234.google.com with SMTP id v17so362645oie.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Jan 2023 15:31:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DCqzYAGXvRtLAjxxpIF3ytH9cKaozsC7FyVAZziQiDo=;
-        b=gfxbRG1yS40vpY4OIJpTCM55FK2tNlgVC3W4IiUqmcDXKHDbnfBMUjedMFCMH/ZmZm
-         xVIZuPpExGHeQrAHweuH9rTmR8wUxB3itqMKziuxXoGXkvi2jMqPSeCMQg7bNPhCDWce
-         6UFXL1IiuT0W64K9DoXmXC/1feGZ54IEKshK8tODRcK6CfwRt+kgoyB4a7GgVNx9YpF7
-         yhEM8dgTL1DTteFh1g5IaB2xTwlFibaf3QyIMmgLvhoNoZVg6Mz8cKOF3myTRb1BBQdJ
-         0iK/bjE1fCFVIWZEv3rRAW3PWAsO+E6aGaxeEun98X25tflOL2BAqAxW0XFOsUHC+VeE
-         oLbg==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
+        b=X6JBlJU/7tvkFPCMBD9PeXuiqWarnqBo/0icQo82UJM0vocSX4rHcq6S1QJHgYpV4S
+         DVcispan4eaNtC1tRGvtn8crCZhQ7SwzEhGbPWRBdnrEr43QdN9UjicqydKQA9zSyA/q
+         Hlerj6Lkfzop3hnRXzXuoYxHji7DzOWMskhB2WaZGyJUYl+7Weio2JOIfTxL+whBGsd6
+         UgcZuOSisdXwJ3oYg3HnRqBT4Tfn5lMTqhCg7e1pzSQZ+ea5XGDeyWYGndH7X0B2UoJj
+         hizTQEVsvZ+JrQQfZ2KtGqQWHQxFSmEAxHEtjOETkUxs4WZHZx3QQLHI0lUrEvWPQlra
+         eI2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DCqzYAGXvRtLAjxxpIF3ytH9cKaozsC7FyVAZziQiDo=;
-        b=vscHSvpGg0Wwhc/y7kk5iNcpOad0bUXQEQVd5a7FcUN1PMsk6TmUzKM0Q4P3xDzbN/
-         a3uaEpOByPUsU1kmBWLXwHjKgvD2V6hBKQ4hE/PPi7K88hCwmVkthWivAG5d2hNDJesg
-         rznj2QRRzgtxpyQDNUWHDTwWEEnmHqjmm37Nm7RzV+SZWyiepKpa47zq/HdWR2TnM+I7
-         T8Ibd/JjD36t/zIKld68glFW+HW/iaZehexIlSMjPIbI+LYgc6fYBGK2duLnA2TfZPi0
-         mGFeRaW6RwVI/ZXKr1is/m+fjciCK8gLWhYemlX0vOBrjPYpLE8/wzbJJDekUZ+2iKl5
-         fBNg==
-X-Gm-Message-State: AFqh2krh8irKA2C+UBEznPVtb00mT9It+VTi2BhU4MvyzePp/zWAqgny
-	wWQTz+dCtK/QyCFe7v3uWzIcJw==
-X-Google-Smtp-Source: AMrXdXvfYwcENXAPvZFHMl2qo8K6r2Sx9rcaaEI21AAl3zPp9Z0PAa1TFXYyvwNQO/hm+b5a6MHzvA==
-X-Received: by 2002:a05:600c:1695:b0:3d3:4ae6:a71b with SMTP id k21-20020a05600c169500b003d34ae6a71bmr7849969wmn.2.1674077092997;
-        Wed, 18 Jan 2023 13:24:52 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id v20-20020a05600c215400b003d358beab9dsm2910677wml.47.2023.01.18.13.24.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Jan 2023 13:24:52 -0800 (PST)
-Message-ID: <42badcdd-771e-ac4f-77b3-8c40e12ebcc9@linaro.org>
-Date: Wed, 18 Jan 2023 22:24:51 +0100
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dgMx+QidzWwZB9d8EFxiQBvCTRSPbMX2JTxiBtWNFyk=;
+        b=zPA6jWSyff6pl9eAbAcxOV2KsNmjwzrtI6zKVbbYmyg6LWov82RZljhzpLKt2z6Sn1
+         uiOCqu+n6EueI3+wuuKamXtt/XCvg55HzIazsWFryV4VYp5mAeellY71DWRkz01+rlwZ
+         JaBvYC52VVdGQZeKAVueh69z0ScR8v0ppiz2+mq4TkLKa0QpumsvBBIEfpLQiMj51E0c
+         1M3QGN46AskAF5fA+i8+j2kSzT89sfipZiR0cxz5Y/zUCd0ve0gGX4p4CYJjDh+GENeW
+         DuhNgPWTKeVnj4mFPsSv1kG5Mi8bnFTKQzZony54mKq1lWFmwmUQQOlzkpLOCRQFYeFQ
+         Isgg==
+X-Gm-Message-State: AFqh2koqUBodFogBHURIowhw5/PABewkTYYF6cF/tdSQAXOBPvfeUkDx
+	UxlAubzrx3xPj4NkyMJ/QImfLYg0Ay0=
+X-Google-Smtp-Source: AMrXdXuj78srkvIFpMzKbCHNr28A9yO08G7rFmLRL2jCPRXug5HUzDh20lc/mwGJf5WtomBjD0LFuQ==
+X-Received: by 2002:a05:6808:3082:b0:364:46ae:5aa5 with SMTP id bl2-20020a056808308200b0036446ae5aa5mr5985054oib.0.1674084705776;
+        Wed, 18 Jan 2023 15:31:45 -0800 (PST)
+Received: from localhost.localdomain ([76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id q10-20020acad90a000000b00354932bae03sm16966933oig.10.2023.01.18.15.31.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Jan 2023 15:31:45 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	thierry.reding@gmail.com,
+	linus.walleij@linaro.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH V11 2/4] dt-bindings: display: panel: Add Samsung AMS495QA01
+Date: Wed, 18 Jan 2023 17:31:33 -0600
+Message-Id: <20230118233135.1174859-3-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230118233135.1174859-1-macroalpha82@gmail.com>
+References: <20230118233135.1174859-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_thermal/drivers/rockchip=3a_Use=c2=a0de?=
- =?UTF-8?Q?vm=5fplatform=5fget=5fand=5fioremap=5fresource=28=29?=
-Content-Language: en-US
-To: ye.xingchen@zte.com.cn
-Cc: rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
- heiko@sntech.de, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <202301181639300333679@zte.com.cn>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <202301181639300333679@zte.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_132454_455587_F3ED300B 
-X-CRM114-Status: UNSURE (   7.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230118_153147_625767_63453485 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,23 +99,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTgvMDEvMjAyMyAwOTozOSwgeWUueGluZ2NoZW5AenRlLmNvbS5jbiB3cm90ZToKPiBGcm9t
-OiB5ZSB4aW5nY2hlbiA8eWUueGluZ2NoZW5AenRlLmNvbS5jbj4KPiAKPiBDb252ZXJ0IHBsYXRm
-b3JtX2dldF9yZXNvdXJjZSgpLCBkZXZtX2lvcmVtYXBfcmVzb3VyY2UoKSB0byBhIHNpbmdsZQo+
-IGNhbGwgdG8gZGV2bV9wbGF0Zm9ybV9nZXRfYW5kX2lvcmVtYXBfcmVzb3VyY2UoKSwgYXMgdGhp
-cyBpcyBleGFjdGx5Cj4gd2hhdCB0aGlzIGZ1bmN0aW9uIGRvZXMuCj4gCj4gU2lnbmVkLW9mZi1i
-eTogeWUgeGluZ2NoZW4gPHllLnhpbmdjaGVuQHp0ZS5jb20uY24+Cj4gLS0tCj4gICBkcml2ZXJz
-L3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIHwgNCArLS0tCgpBcHBsaWVkLCB0aGFua3MKCi0t
-IAo8aHR0cDovL3d3dy5saW5hcm8ub3JnLz4gTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29m
-dHdhcmUgZm9yIEFSTSBTb0NzCgpGb2xsb3cgTGluYXJvOiAgPGh0dHA6Ly93d3cuZmFjZWJvb2su
-Y29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xpbmFy
-b29yZz4gVHdpdHRlciB8CjxodHRwOi8vd3d3LmxpbmFyby5vcmcvbGluYXJvLWJsb2cvPiBCbG9n
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+From: Chris Morgan <macromorgan@hotmail.com>
+
+Add documentation for Samsung AMS495QA01 panel (with Magnachip
+D53E6EA8966 controller IC).
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../display/panel/samsung,ams495qa01.yaml     | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+new file mode 100644
+index 000000000000..58fa073ce258
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/samsung,ams495qa01.yaml
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/panel/samsung,ams495qa01.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Samsung AMS495QA01 panel with Magnachip D53E6EA8966 controller
++
++maintainers:
++  - Chris Morgan <macromorgan@hotmail.com>
++
++allOf:
++  - $ref: panel-common.yaml#
++
++properties:
++  compatible:
++    const: samsung,ams495qa01
++
++  reg: true
++  reset-gpios:
++    description: reset gpio, must be GPIO_ACTIVE_LOW
++  elvdd-supply:
++    description: regulator that supplies voltage to the panel display
++  enable-gpios: true
++  port: true
++  vdd-supply:
++    description: regulator that supplies voltage to panel logic
++
++required:
++  - compatible
++  - reg
++  - reset-gpios
++  - vdd-supply
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    spi {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        panel@0 {
++            compatible = "samsung,ams495qa01";
++            reg = <0>;
++            reset-gpios = <&gpio4 0 GPIO_ACTIVE_LOW>;
++            vdd-supply = <&vcc_3v3>;
++
++            port {
++                mipi_in_panel: endpoint {
++                  remote-endpoint = <&mipi_out_panel>;
++                };
++            };
++        };
++    };
++
++...
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
