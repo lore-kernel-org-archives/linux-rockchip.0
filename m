@@ -4,57 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF73C32793
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 14:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34F5C32793
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jan 2023 14:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K0glthC9stAzyA73Q4Z94ntig7PF2kw3D2wcK66TfYs=; b=A7rVsOK5huINRG
-	gpX2TV1HWcHXjoGV4Hsfy+spFDwoNgmV/Qr/o7g8aQuGOMxjs3ErW+VJR9Pk2aFJcNstJjBZ7CORN
-	jG+ZOY90Pk7X/T06/1vX3Fwvl+OPSi4zIMX6AA/mRPrTVkawbolgCLoZ3NdifxDhl0jU21GYJqTGn
-	Q6uVB+ufjcIEnp1IqmHJ1qPrtTXuE9DdvuNwBQag1+c/F6Nty2YQPQ5ewcV4y9naXxliyS3Fo0P/k
-	09mqC3U4Cb00IjfumMvw4kALw2bmUz6De0bbPfsJ2yGsj7DQcEvJ9rYlQXYyD4/GM1TogDuMe2GVh
-	DzVbH1JpeKP0dayTU6iQ==;
+	List-Owner; bh=/FDR5Z3pFRgfs7ln8PCUkNvgPX2EQtAudcJjqPZwrtI=; b=LGIjrRkRWpAB85
+	umKTggmc2op/Z7NONlA+5zpDfCm7R5+oHATWffBUBwEqVu9s5Y+UjbCsHSNYBSrOZO2iik9NwuuP9
+	sn+j0dMNSVY2tyAe2SP57CBeFoJIb8zvM8OzyyWZMCn+AKp7Po3T52GJ9rIpTfZMHXqh/sWWkvhC9
+	hroPtFCWEyuofCOQLT6fn8sVWZuQytLTqm7ArwIiyc8R1J46eWOmGPUQ3gchvoDtrHOXWnQ1nTqvI
+	UkUPzQMEF5MHn+UYEyh+g934Za81NQ/ScyEkZ51n+wNjcQC59Opa3GI6bWgGrkc2KyTZScKISOvbC
+	Om0f/XZ/HySX7Rf3MWgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI99h-001HRf-Iy; Wed, 18 Jan 2023 14:11:09 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1pI9D3-001Hvi-8h; Wed, 18 Jan 2023 14:14:37 +0000
+Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pI99d-001HQh-Ui
-	for linux-rockchip@lists.infradead.org; Wed, 18 Jan 2023 14:11:08 +0000
-Message-ID: <f4ba9333-144a-c2c4-108f-71b2b4c9acd1@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1674051057;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ilB7OTwIAX8N3WvG1TvNqQJkH9aWvuim71G4PHOXXrA=;
-	b=EFBGsmmR6q243VF+wlXauMTBGMsILKrq7geT1pnQEieX6a0gPpkr1d/lb9KS1iBmF/0cma
-	ycwKYXxM/GopSfdsCIZd/x8x0smN8dVjMZqY4NdDGM3IZk7m1jmejxR5DexcMRplskxRks
-	Ib4/46hsfwNuaXnrbA653grzgIHwHiuCbq8Mcdq8C2/svExWyhpY31ADGDH7Rzpk7FwWOh
-	d6UlufudOoNDQikO5V7emwxrKDc6cLmTx7PgplfBWqj+6gI5pQQ58gtmzdHSrIQnugEjmQ
-	tR0Q5wKQcK/ZOMmzLuGBbcbMOttOtC/NNa93WNuthUgxO8v/rAhtnSEuUygJ2A==
-Date: Wed, 18 Jan 2023 15:10:56 +0100
+	id 1pI9D0-001HuJ-TX
+	for linux-rockchip@lists.infradead.org; Wed, 18 Jan 2023 14:14:36 +0000
+Received: by mail-vs1-xe2c.google.com with SMTP id l125so16478329vsc.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Jan 2023 06:14:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Yplg9S1JhovxIGfaL6Q6VaDnzZMitHU7C7LFyjrBCuM=;
+        b=mGOjDpy3dF95PKoyeVvrLC5FeH+PXh22DunupbTN82XxucIOoB9IfnAGgZWsA0bugk
+         ghgVxgGaqxmR1Suz1X/FfKWLNnkW3ZVoxc9K0HMrtBSkHdXD8DVM7N1sJaasijyFGpnR
+         L/1aqNTzRZrH3sdOcPKK1ofJQarqe9W68GcIg7QcyjwAzPuDPqSirGWp7t9mK1jTsa0i
+         WSgvuq7Y96gAC3j8N+B+YTGhhCGZDenxGIp5XgUgDA6CxWmjlDdcPunypgl1EpnbTA1F
+         yuNk7YZRFtrL0oFiPy1YRkh6kQwTk/WoF30VksoF4gQ7irgW1QWeXKd5LsQO9ulEYE34
+         1QKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Yplg9S1JhovxIGfaL6Q6VaDnzZMitHU7C7LFyjrBCuM=;
+        b=ls9TSur5H5i+HnEZz+EULhFJeU6ERekxSssbZGF2AG1//Es19RUzoCSRjBkiyk6QCY
+         5CS4mLl7WJMDWgQbL2wkENbz+0rRVDYhSAPdH17ejlfGj6PUHHqcIM5fw9zX73yR8O9J
+         wX37pfdRkS0OEhaD8Dh9dAkORGj3pxBYfmJZYxzWXa/luNfhdZTCjO59BiQk0vgtAPnr
+         8TASwvipQAi9J2gEm2o7734NpOKeDpxfoFNVCdPQjflHzQmYdtia5ZBQwJDkXVtLUiYf
+         08VRczUmD4fUunfEvgDopeFYGC1x3J2EqQeKLZMOaFE1BU63MkD/oRz5nvr7e+wsYz3u
+         zEpw==
+X-Gm-Message-State: AFqh2kpinR/pJq742SRGUkTcRm19I9L0RTwCLwONRvDCnffpy/aeRS9e
+	yFzxeS30RX/j1C5hCAo5hhv74NP/4Dcs+416qhQwlA==
+X-Google-Smtp-Source: AMrXdXsOVriRa6oQhyPR0ZpbJLJH4CUKQQvaM0V7d5YeQLv6Q29OqDl6sUg6xmxGgO5mtPbL0SJUElCeOqG5CnHMkcw=
+X-Received: by 2002:a05:6102:3e08:b0:3c5:1ac1:bf38 with SMTP id
+ j8-20020a0561023e0800b003c51ac1bf38mr1062676vsv.78.1674051271374; Wed, 18 Jan
+ 2023 06:14:31 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 0/3] drm/rockchip: dw_hdmi: Add 4k@30 support
-To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- Robin Murphy <robin.murphy@arm.com>
-References: <20230118132213.2911418-1-s.hauer@pengutronix.de>
-Content-Language: en-US
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <20230118132213.2911418-1-s.hauer@pengutronix.de>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
+References: <08de3f4b-e33f-95c8-3297-814ea107272a@gmail.com> <1510c02c-f640-9924-e42e-fa34e28a580f@gmail.com>
+In-Reply-To: <1510c02c-f640-9924-e42e-fa34e28a580f@gmail.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 18 Jan 2023 15:14:20 +0100
+Message-ID: <CAMRc=Me2yj6A5ZvLXbWn8H0yuL5pUqOJ7B7kGaOyN=jLXGJEGQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/4] gpio: gpio-rockchip: add compatible string per SoC
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: linus.walleij@linaro.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org, 
+	philipp.tomsich@vrull.eu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230118_061106_481221_332C8076 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20230118_061434_968942_B8A2EE9A 
+X-CRM114-Status: GOOD (  17.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,52 +84,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Tested the whole series on my Rock 3A, with my 1440p monitor. Works wonders!
+On Wed, Jan 18, 2023 at 1:14 PM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> Currently all Rockchip gpio nodes have the same compatible.
+> Replace all the compatibles in gpio nodes to be able to
+> give them a consistent ID independent from probe order or alias.
+>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>
+> For now only add new compatibles.
+> No changes to rockchip_gpio_probe() function yet.
+> ---
+>  drivers/gpio/gpio-rockchip.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+>
+> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> index e5de15a2a..493207de1 100644
+> --- a/drivers/gpio/gpio-rockchip.c
+> +++ b/drivers/gpio/gpio-rockchip.c
+> @@ -790,7 +790,22 @@ static int rockchip_gpio_remove(struct platform_device *pdev)
+>
+>  static const struct of_device_id rockchip_gpio_match[] = {
+>         { .compatible = "rockchip,gpio-bank", },
+> +       { .compatible = "rockchip,px30-gpio-bank", },
+> +       { .compatible = "rockchip,rk3036-gpio-bank", },
+> +       { .compatible = "rockchip,rk3066a-gpio-bank", },
+> +       { .compatible = "rockchip,rk3128-gpio-bank", },
+> +       { .compatible = "rockchip,rk3188-gpio-bank", },
+>         { .compatible = "rockchip,rk3188-gpio-bank0" },
+> +       { .compatible = "rockchip,rk3228-gpio-bank", },
+> +       { .compatible = "rockchip,rk3288-gpio-bank", },
+> +       { .compatible = "rockchip,rk3328-gpio-bank", },
+> +       { .compatible = "rockchip,rk3308-gpio-bank", },
+> +       { .compatible = "rockchip,rk3368-gpio-bank", },
+> +       { .compatible = "rockchip,rk3399-gpio-bank", },
+> +       { .compatible = "rockchip,rk3568-gpio-bank", },
+> +       { .compatible = "rockchip,rk3588-gpio-bank", },
+> +       { .compatible = "rockchip,rv1108-gpio-bank", },
+> +       { .compatible = "rockchip,rv1126-gpio-bank", },
+>         { },
+>  };
+>
+> --
+> 2.20.1
+>
 
-Thank you.
+If they don't have any additional data associated with each compatible
+- why not just use "rockchip,gpio-bank" as the fallback in DT?
 
-Tested-by: Dan Johansen <strit@manjaro.org>
-
-Den 18.01.2023 kl. 14.22 skrev Sascha Hauer:
-> It's been some time since I last sent this series. This version fixes
-> a regression Dan Johansen reported. The reason turned out to be simple,
-> I used the YUV420 register values instead of the RGB ones.
->
-> I realized that we cannot achieve several modes offered by my monitor
-> as these require pixelclocks that are slightly below the standard
-> pixelclocks. As these are lower than the standard clock rates the PLL
-> driver offers the clk driver falls back to a way lower frequency
-> which results in something the monitor can't display, so this series
-> now contains a patch to discard these unachievable modes.
->
-> Sascha
->
-> Changes since v2:
-> - Use correct register values for mpll_cfg
-> - Add patch to discard modes we cannot achieve
->
-> Changes since v1:
-> - Allow non standard clock rates only on Synopsys phy as suggested by
->    Robin Murphy
->
-> Sascha Hauer (3):
->    drm/rockchip: dw_hdmi: relax mode_valid hook
->    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
->    drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
->
->   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 40 ++++++++++++++++-----
->   1 file changed, 32 insertions(+), 8 deletions(-)
->
--- 
-Kind regards
-*Dan Johansen*
-Project lead of the *Manjaro ARM* project
-Manjaro-ARM <https://manjaro.org>
+Bart
 
 _______________________________________________
 Linux-rockchip mailing list
