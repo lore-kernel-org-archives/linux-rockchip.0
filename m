@@ -4,93 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D34BDC004D4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 08:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE3FC38142
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 08:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Bus6dloC5GzdTPpj4PfOz2GU/f54h7p3NrIs4nbvvY=; b=db2M0sVquQKY6XPEknYmMewHeq
-	1QRfNBE6WOqxUBFXudbjQ3Rf13qltZBgBJ9iNdVzN1+r4M5CTSRigwvZnhfMdADniFqAK2hR7wtAB
-	8Xr4BkMbiAxOPKhvqgbcgXnsWmPEqPBkCqTTqXH8zrycfd4q8wIFXqthahYz7XYcQJmartpTMZ0Ef
-	Cb11w4Ru3GD0mXIaesH5mX7AeWeT/lh7TQhAhgHEGbKipRFBHev733Zh3tGbxhVguh8h1eO5N/v44
-	bzEXlX5VFvCPhmPfBxJu4YtkWE0hOzUWaR7StlhV2Vam+pPrVqTKiE6Y+UO/Q+kCPEBM+RBgxsNhT
-	/dotXPqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5YagfcmZiuPvJxCSrfhfAsvaSdwY8fDC1CAZlJfgLOc=; b=TYUmNiAsfhHM+i
+	JwHuk/KqiupOC5m5jNHb1c1z4DWpqPlXpMJ7IQOGgnfJnci3tZpCgIZ1HBTHgJujVn1PRefgm+Xpf
+	nBXijtqow296XSiRDP1/y5XF1tXiFBwBTYxlHbzXEz0WWy8JKcClTIBR5oe5JPlpJNiZIizRfshkn
+	aLBBAQr5RB3a3zPU42pBU6SM7sJwpQRc91NE4PD1FIkiTwjBEdZJb94l65Adf4UJwi/Up13O6t9P9
+	tMsHrS+RvkhcsTwJF/jyszNvoGXudclF7TF+sipIU+hDiiL3DXAR7bCnWHcGZnyiZH54STLMeNlqY
+	jlBzKdnM+qlVxl85U2bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIQ5V-0044oq-Fk; Thu, 19 Jan 2023 08:15:57 +0000
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+	id 1pIQaK-0048FX-Ff; Thu, 19 Jan 2023 08:47:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIQ5S-0044nb-OB
-	for linux-rockchip@lists.infradead.org; Thu, 19 Jan 2023 08:15:56 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 332D3320095E;
-	Thu, 19 Jan 2023 03:15:47 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Thu, 19 Jan 2023 03:15:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1674116146; x=1674202546; bh=AZRqOyZ8Jg
-	0MbSigIqhiYgKAcHHhTXZH8+7bfjgrWU4=; b=LP5+JNiwkPnLwEx6u9gEKvzPak
-	gR9u40GgP9CcYVOzfbGhJ2/ZgWW4sQNJt0BQ2YWZtlCtkhNU27aKU1NlfEwocW4s
-	deNlxLjDFOJg5XLWCxO+xqqw40kCqJ1Bee1H28cpUagno9js3vjSQNu9omlLfmO1
-	UA0XYllwYU/kfFEXYNfy3gc7K+F2AuydY3HKCCyRpZmaKoyrIL2tQ79r4zkO6Rbt
-	WGWnSTHP0ca/s7nppeht4wmANRjNUClAb4d11HYGO+mwzBnyqGFkvQMelbRzo/Vt
-	YisWgjxYgFwtI8ePMb9d0po2oEubJj3IJTbpMuGpzVAkf3IK9tVh10SxHkfA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1674116146; x=1674202546; bh=AZRqOyZ8Jg0MbSigIqhiYgKAcHHh
-	TXZH8+7bfjgrWU4=; b=VaQLe8YARBu4q916stigTGelbMrwK68R9xSCbIanguf+
-	l7ie2L/BlLaxqZL1+b4KE+FIjoAjvUormBsO7NJ+ug9o8HD//ybJxA1CyOBeAQTP
-	s3Qw8tbJl3kiXKk8wrz+ZIjsPP7JSjGwMM2SgpAAtnuHU8Nz70iqJJde4bbqc8qO
-	C1SIPoGPosf2Mhanzij0adU9xkbvTzrnu1nI2uIrSlbmKSbXI5iQEjdi7VQGKvPT
-	+qkfvFQtuLWZtN0y4hTeF57DxsOFAlveeJmsPrJpDy2HToPXx8xDRLrY2wbD+oOO
-	BzNnB/8LYg5fjf/yBhGInIElQal4bkMGcj/5uJS5ig==
-X-ME-Sender: <xms:MfzIY_Nm7wDMMrKoKqunBID-IyJkvuYtzDQpT7OQbFYOxFXBXYjf_Q>
-    <xme:MfzIY59DZ2bm_m915g_KP5xwa9hwOgtfiEQuyl5jjJNGclvfoGX-6MJxSt8HyGEQ6
-    lGtRpVSLOuF0OePK9E>
-X-ME-Received: <xmr:MfzIY-T8rJAxohiu_j7QTKpGtJWMp8g8_pN46xmg9L9i1DoC9M6BodfOc13bAOgB0ThD_SUUP0rxgYHM-asn2H1IhLt2k6D6Y50_3CCG5MD-mg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddtledguddukecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgig
-    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
-    grthhtvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheeh
-    fffhvedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
-    epmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:MfzIYzvx7yNbHEBqSgndxb-UFJbYvwmKoto5AyWb1XIIvtdk_8nRvQ>
-    <xmx:MfzIY3d8jKhKldvaar3p6WSbbFVqZAdcwquOzs4eVSxO3k4JkqReqg>
-    <xmx:MfzIY_2EPmypF7BSidS5QFm8Tl13sZnhF-tPzJzebSysey09PSp37g>
-    <xmx:MvzIYzr1AuA9avFaah3yRML2Lcp1m-BqegNjohm-I2hapr5cMYumDw>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 19 Jan 2023 03:15:44 -0500 (EST)
-Date: Thu, 19 Jan 2023 09:15:42 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, tzimmermann@suse.de,
-	maarten.lankhorst@linux.intel.com, heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
-	thierry.reding@gmail.com, linus.walleij@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>
-Subject: Re: [PATCH V11 1/4] drm: of: Add drm_of_get_dsi_bus helper function
-Message-ID: <20230119081542.lfgvaj6lwwdb2eaa@houat>
-References: <20230118233135.1174859-1-macroalpha82@gmail.com>
- <20230118233135.1174859-2-macroalpha82@gmail.com>
+	id 1pIQa9-0048Bc-Cx; Thu, 19 Jan 2023 08:47:39 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:2ad6:2833:dcf0:41ee])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 783926600864;
+	Thu, 19 Jan 2023 08:47:31 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674118051;
+	bh=CAlP9QcCzlEbxHvVcSyXEx1s2/N6vplOVRdCA93dTew=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WXKcs6gWzur4lPf8hAJvPjWmt79h0TzssBAPj2/0GLycgG/I8poyZofsrsMBznMFU
+	 cRX7Nj6PphBfVQ4PDNs9VsxhLRDXdPlbJYrB3+1ginwhCyw7fjx7sEr9OZVUr5GZtE
+	 6oJIo/FHZIUWsT0unwWs4UyAFAJO4eFkZOzilhWJm0iwZZcXIkVWvZCd+k7Ih3zBcs
+	 Q6YW3cy4T+Y0CwoGh7NlbJLIuyymuh21grZYALQZQO08z1uiN+fJAsdc1vIpEx+tkW
+	 69ubYa+9BgIrXD5awIyNp6OvH3o78md9B/sDCy3Z4pNJq8hlvoYdUPAzi9cLy7IksU
+	 80FI/eGjO6lsA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	linux-imx@nxp.com,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.co.uk
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v3] media: verisilicon: HEVC: Only propose 10 bits compatible pixels formats
+Date: Thu, 19 Jan 2023 09:47:23 +0100
+Message-Id: <20230119084723.133576-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <20230118233135.1174859-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_001555_016674_67A48EFC 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20230119_004737_697986_8EEBCDBB 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,70 +77,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5359458066749255134=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+When decoding a 10bits bitstreams HEVC driver should only expose
+10bits pixel formats.
+To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
+when bit depth change and to correctly set match_depth in pixel formats
+enumeration.
 
---===============5359458066749255134==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xnang3wyffhh7tnm"
-Content-Disposition: inline
+Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+version 3:
+- Propagate hantro_reset_raw_fmt() error.
+  I hope I have correctly understood Ezekiel's thoughts 
+  in the way I have implemented them.
 
---xnang3wyffhh7tnm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+version 2:
+- Remove struct hantro_ctx *ctx variable in hantro_try_ctrl()
+  because it isn't used anymore.
 
-Hi,
+ .../media/platform/verisilicon/hantro_drv.c   | 40 +++++++++++++++----
+ .../media/platform/verisilicon/hantro_v4l2.c  |  6 +--
+ .../media/platform/verisilicon/hantro_v4l2.h  |  1 +
+ .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 +
+ 4 files changed, 38 insertions(+), 11 deletions(-)
 
-On Wed, Jan 18, 2023 at 05:31:32PM -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add helper function to find DSI host for devices where DSI panel is not
-> a minor of a DSI bus (such as the Samsung AMS495QA01 panel or the
-> official Raspberry Pi touchscreen display).
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 8cb4a68c9119..a713a45c0108 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -251,11 +251,6 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 
+ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+-	struct hantro_ctx *ctx;
+-
+-	ctx = container_of(ctrl->handler,
+-			   struct hantro_ctx, ctrl_handler);
+-
+ 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+ 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
+ 
+@@ -274,8 +269,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
+ 			/* Only 8-bit and 10-bit are supported */
+ 			return -EINVAL;
+-
+-		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
+ 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
+ 
+@@ -286,6 +279,32 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
+ 
++static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
++	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_HEVC_SPS:
++		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
++		int bit_depth = sps->bit_depth_luma_minus8 + 8;
++
++		if (ctx->bit_depth != bit_depth) {
++			ctx->bit_depth = bit_depth;
++			return hantro_reset_raw_fmt(ctx);
++		}
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct hantro_ctx *ctx;
+@@ -328,6 +347,11 @@ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+ 	.try_ctrl = hantro_try_ctrl,
+ };
+ 
++static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
++	.s_ctrl = hantro_hevc_s_ctrl,
++	.try_ctrl = hantro_try_ctrl,
++};
++
+ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
+ 	.s_ctrl = hantro_jpeg_s_ctrl,
+ };
+@@ -470,7 +494,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_HEVC_SPS,
+-			.ops = &hantro_ctrl_ops,
++			.ops = &hantro_hevc_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 2c7a805289e7..cd85877bbbe2 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -398,7 +398,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+ 		hantro_set_fmt_out(ctx, fmt);
+ }
+ 
+-static void
++int
+ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+ {
+ 	const struct hantro_fmt *raw_vpu_fmt;
+@@ -420,9 +420,9 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+ 	raw_fmt->width = encoded_fmt->width;
+ 	raw_fmt->height = encoded_fmt->height;
+ 	if (ctx->is_encoder)
+-		hantro_set_fmt_out(ctx, raw_fmt);
++		return hantro_set_fmt_out(ctx, raw_fmt);
+ 	else
+-		hantro_set_fmt_cap(ctx, raw_fmt);
++		return hantro_set_fmt_cap(ctx, raw_fmt);
+ }
+ 
+ void hantro_reset_fmts(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h b/drivers/media/platform/verisilicon/hantro_v4l2.h
+index 64f6f57e9d7a..cb8e1fe3422d 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.h
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
+@@ -21,6 +21,7 @@
+ extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
+ extern const struct vb2_ops hantro_queue_ops;
+ 
++int hantro_reset_raw_fmt(struct hantro_ctx *ctx);
+ void hantro_reset_fmts(struct hantro_ctx *ctx);
+ int hantro_get_format_depth(u32 fourcc);
+ const struct hantro_fmt *
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index b390228fd3b4..f850d8bddef6 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -152,6 +152,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+@@ -165,6 +166,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_P010,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+-- 
+2.34.1
 
-Sorry for not noticing this earlier, but this is a bit confusing.
-Signed-off-by is there usually to follow either the authors or the
-maintainers (or people that passed the patch along).
-
-Given the order, the SoB here indicates that it's Maya Matuszczyk that
-committed/submitted that patch, while you are the author. Obviously,
-that isn't the case since you are both the author and submitter.
-
-So what's going on?
-
-Maxime
-
---xnang3wyffhh7tnm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY8j8LgAKCRDj7w1vZxhR
-xZ1XAP9XFViG0eHZD7K5/KzeUiZe3lVYfB1DC8XKmh9GP2ag3AD7BlvkM95/uzQj
-IfPVTz2J4DzlByHwREBzcFBWojs09wg=
-=JHSM
------END PGP SIGNATURE-----
-
---xnang3wyffhh7tnm--
-
-
---===============5359458066749255134==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5359458066749255134==--
-
