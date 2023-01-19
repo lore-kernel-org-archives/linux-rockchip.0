@@ -4,83 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 362D5C678D6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 14:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D56C00A5A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 14:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hDbLSmZywtnjO4NLM8gVyGFnDKl4wV/VSfDUyk1qn7U=; b=pxEpzTqPyUaa5k
-	/8kGndhkrFLh778ZPuzmElnKJy1rvfHJgMnezjWtTxhHuESqlXbIC5CS3p4yW02/QeCGjUUG8z/yc
-	+54f50m9bDwRcARk5pIAtnsLWpjkY0WRJtsgZBno1wdOx42Nn6eXw6oDvDLzl8EqHqoQBKMCO2AKl
-	IOdghe2430pWcjiJhJc5gxlewxdMgoHKs9bNuxTpqzc4HXeeCX7rvDHlVX0Zjndbl2UwtYtCH/WRC
-	3cXr+RZtRn8Gdw71artJBsGq9pp4UnRBbu5XODd3bUCpdS8tgW/I4O/C9nfF1cAhTmtEeTdIMEI3W
-	y8cyxbqMl0XcoZBOyW4A==;
+	List-Owner; bh=zW5yNTenbzUGfYWBum4k1k6v+rLBX91Ps/6xQqCstM8=; b=PgBERR1BMpLCqz
+	ky0/v+FO1RriEWNGlOWEvP78JuiT7FyAeZNaiOqvN6O7tVI4lF3BSWBDmriXmawNcUVxxdD2U2ANx
+	1Bqq8AAmd32kcTncO3I3NGDGiXOFAPk4x7Fu1fK4/AXWLVf6r4/qL2jbAO77ObJ9EXPARnMMIzz0Z
+	VS2kxQQQytBoj8LY8tO7vii4NruTudgq9TgeUQ2DZnsCDOqhOgHUfFp7S1xMk7XSSVFYHbmGndGyD
+	2nnydG1kIg3ByRa9sVZAVig+UMTdjDtfbV1Guj1tHTpN9iasPnAOBChl+m47vZNxIdvY/a+6m0cw5
+	YO3je5LD8yDOuDnhxH7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIVV3-005DAx-CS; Thu, 19 Jan 2023 14:02:41 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1pIWAN-005PrC-8s; Thu, 19 Jan 2023 14:45:23 +0000
+Received: from mail-db5eur02on2088.outbound.protection.outlook.com ([40.107.249.88] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIVUY-005Cvg-8m; Thu, 19 Jan 2023 14:02:12 +0000
-Received: by mail-ej1-x634.google.com with SMTP id qx13so5821849ejb.13;
-        Thu, 19 Jan 2023 06:02:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=5kHbDEn6Sxe+uk86dDydXegy6EfeykEDiCkIcsYDge4=;
-        b=BBgdG2kq5VvTXe5sXyyRylMRItJBtYHf/OTyz3R9Eg/Wb5SOhXw9tqQaWJgER6yrhT
-         HQCHP86oaoCNQPdEsMsSNstp7ZT8ygSCx7THCOnVgsIx9cg49UmS6iH+oOt1QOMMwbk3
-         d24kfbm7r37Lq30YXJm6bZzzkOyveDJRreCMnlCAQX+lJutiyDaUV3IYtxh40e/SMT/5
-         j42rqCIfckKosyf+gYJeTdifCs4bSCyEb7b3g9AkbTiswiQvyFNUrh9ibOSi4W2/jt0M
-         7At2wEHxGwwk3mOIl2crUOpzon1VyUWoFvpWhqcr4CbfHwC3nubzb4Tj1akiwTdCad3m
-         L+jw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5kHbDEn6Sxe+uk86dDydXegy6EfeykEDiCkIcsYDge4=;
-        b=gMdkjpQnccZW4nrePC0jqDLEAGUqUiMRiB4QRjxdwPtOUyctOhgvfBHvS5z0Ccdi4y
-         f0VVBq5hvNhhLzgFC4cnEW25hDXtIBWqip1VDhDRVRiz0tflQ9WoKPaafwmRObE0sPDL
-         DSBR5QLWr/LDiRER090qQvixQHpN3wyX2pEYtJBsR7DIIlexpjmVcBDaITKEP9nAj/CJ
-         P2sMaGdNBBSnaWlpiIqcVNthQnKnqnusRKd3wUL0iHVthIrXq9LgHwjzyiWT543EAUG9
-         VzbtO7m77eOnS/7UUyRGwAWC6DvSfgyBWQInDhFUXp3Iay2aPgnn/tMNJP1d0Vy4JLjf
-         9Wnw==
-X-Gm-Message-State: AFqh2kqCrHXrZuAM705GTbfOhlhFG/MkLshBTgtaW0fAw3d2Lzb+Z1os
-	LYYBIV1YuGvDjbKcUjAlVPE=
-X-Google-Smtp-Source: AMrXdXvkf9BGaYt7OUJJWW3+FUYSgrinvN+X6OZp4IrfSfz8ARnEosaoym+MVxI1FkLLdbfeOTBIgw==
-X-Received: by 2002:a17:907:c606:b0:870:d9a:9ebb with SMTP id ud6-20020a170907c60600b008700d9a9ebbmr7594811ejc.38.1674136926957;
-        Thu, 19 Jan 2023 06:02:06 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id la17-20020a170907781100b0084d3f3f9984sm14614436ejc.114.2023.01.19.06.02.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Jan 2023 06:02:06 -0800 (PST)
-Message-ID: <bf2f27cf-b0bc-a867-9f2f-c161f72a46c8@gmail.com>
-Date: Thu, 19 Jan 2023 15:02:05 +0100
+	id 1pIW4h-005N03-Qk; Thu, 19 Jan 2023 14:39:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Mj+75FXRCjwFx9HkyLoSytfSbiB+Ilu07E8EhSdB07IM9YXvdH/EJYuvfJ/4nFXY2wruAmbs0xKDNgCAa8C12UWMZ4ei0gtoHdOcqCkxXXwxQbmypnLqA4Uj315DWSbH34Y0MyVPr0neNSAeM1hDc8JXN7yj4sSHs/UNQawJDa+XhgXwVep4GjK0KkeRQY2gVkrcNC04zE49zlaV2sw3yEDUUY1KQAE+SickklK3JYwIELRnJoozdaVHRLmxk+AGVRxBc94yGOjpLOexB1G8C5kcNN7YCd+7g6AwW/i3NOIsDJ3/G77laviZl0KxFHy+ZCia66sEJxkAWmQWttcUbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YkmzXP433g36lmVGSWk0FObt+14496EMVIh7i4RMKLA=;
+ b=jp+OHkxvaXKRE6sYQDo7pfItEEUawfk9zGk2/0jYqKEuis1PWEYQHSW/XMaX34fvrZ5Bu/gZ+KbxFP0KD3ipWzG/HMEgFhsSFa95OQrgxKqws9kHs1ybv1/4QS9CLyaJHiwLO3HJuExBJ+WNZXEEzzvLrycff9zIf6pHmr1yencaWiVep9+pZm+nZqdfIBzGtN6o6kSMJgDdg7p4Df38zs5/4Lsbr8CV/QNf/STSUwe5z+Xa0V2+KfabH8ULMeC81InZRCtzjKSdIcKmNxRpaQ2LJyNvaBkb2+alKINnh0vd78AUx4+Lo473hKXb7p+glgf+olZ5sGJEy0C4xLVH0A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YkmzXP433g36lmVGSWk0FObt+14496EMVIh7i4RMKLA=;
+ b=lffbv7IvJJ0pFhIdUqN4vpxl3s3uRGHWwBNUMFYsTj6ZhE5ttMZB7whm5a8ycHsQyK+Fg9QXlWmmjZUGiSjzrFpbcxpcDFSWvaW/yMm2pyGDU5ENdxJg8PEBereK1pzcyWsnL5+cev4iCHj5qI+jj0r7vgcPxsJ7EvFIzP0kANI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by DB9PR08MB6556.eurprd08.prod.outlook.com (2603:10a6:10:261::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.13; Thu, 19 Jan
+ 2023 14:39:25 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4718:6092:e763:4219]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::4718:6092:e763:4219%2]) with mapi id 15.20.6002.024; Thu, 19 Jan 2023
+ 14:39:25 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Sascha Hauer <sha@pengutronix.de>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	kernel test robot <lkp@intel.com>,
+	Dan Carpenter <error27@gmail.com>
+Subject: [PATCH v2 1/6] drm/rockchip: vop2: initialize possible_crtcs properly
+Date: Thu, 19 Jan 2023 15:39:06 +0100
+Message-Id: <20230119143911.3793654-2-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230119143911.3793654-1-michael.riesch@wolfvision.net>
+References: <20230119143911.3793654-1-michael.riesch@wolfvision.net>
+X-ClientProxiedBy: VI1PR07CA0152.eurprd07.prod.outlook.com
+ (2603:10a6:802:16::39) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [RFC PATCH v1 3/3] arm64: dts: rockchip: add gpio-ranges property to
- gpio nodes
-To: linus.walleij@linaro.org, brgl@bgdev.pl
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org,
- philipp.tomsich@vrull.eu, john@metanate.com,
- quentin.schulz@theobroma-systems.com
-References: <91a339b3-f233-d7f6-54d8-061b1cd6a6ba@gmail.com>
-Content-Language: en-US
-In-Reply-To: <91a339b3-f233-d7f6-54d8-061b1cd6a6ba@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DB9PR08MB6556:EE_
+X-MS-Office365-Filtering-Correlation-Id: e307a077-75a8-4286-8e62-08dafa2af64d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	pLIOIWTeCLGBbDJ3hBddCSGBttpzzT89GMkFepDXZ7ciDvjsnYRVN1rjN3pV/JQk4q0Fobe90+df+x3h5Ak/BHrJxcpnnz09DEm7o8DmFiSYAjAyuwSbuuKFGuX+EuYcVYnr4oPbMVXd2v47qgTPlbbCRrholk1KJzXGminnwp6FNLcPhX6Wxh2zyS1fRKbnT+HRdijV5kOwkM6zJup1/mUgnuJHXrk4nwHB2H+57F57tsoXkqTCPlGPrIl+E0aB6rM/+8i2BZyNnGWoC7miKusyfDxIap6odBKFwHXM+0uNtUMnzDZxTvw1BygE0lRNqAmuJ8W7t/6VlQ2c249Di4+cgKe6erbTH/oS9QtSAEiQEGNsFbrh2Ckvx+OI96TkHU20TMlSyZSwwbhBF+PIgaRM4+Dn/N9rvbhpjeDRqJBi+bprlKcV/wukl2bQ0ndtDuFZ5NvQ2YLr0ii9Su3Gre+aX5T2aLC6B9cQ5nv4+aemV5015eZWMX/IH3N+So7exnIyHhExELyL63FsDv3n6fuJUzcUKA3BZB5iOB+NcKdPDgpRFkc+yB2eGaHR6T90f0LCMjLDaKzq/zv6cSRr6JAzjP+toaa4Q0wJah298VtHvR7actCKbMbJGTHatriZw0Ud0maDf77IaGxs+JJ3nw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(366004)(346002)(136003)(39850400004)(396003)(451199015)(2616005)(52116002)(36756003)(478600001)(6512007)(8936002)(186003)(6486002)(5660300002)(83380400001)(41300700001)(7416002)(38100700002)(44832011)(316002)(1076003)(66556008)(66946007)(66476007)(86362001)(8676002)(2906002)(4326008)(54906003)(6666004)(6506007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?0lPkwXv+0eEWl9DI7JUrW8QFFLdYUgC0deK0Xvli06M/fhULcHjh2JIlafZ9?=
+ =?us-ascii?Q?7NSyqLQRkvuopuRPaYBZEPz7OY0NbpfwEl95hbQdZSZVwEBC2+swUEqW03nm?=
+ =?us-ascii?Q?YNVwCyyGPmY1//C0vw/j/+nLE85larCeWPLJFhpzW5qrZdZrbEFxEkeF7Lqh?=
+ =?us-ascii?Q?ck1JOnmzgeYklWEuKCgRab/WonUfv+k93+h5rSfN5Pex/V3e9BadBB1JVNQi?=
+ =?us-ascii?Q?A9IEyWEpce3XYj3ImGzUotSogizC/UvI3Tloph87HZA7Co7seuBAgRdQAULL?=
+ =?us-ascii?Q?L7S9Qo1Xh1bwpA8xJGxPJo/zTu8iUWjn6IB6q+CL6cNXVNIH6cp2KvfLZODs?=
+ =?us-ascii?Q?AG6mD9OZbm8k8FFOXXD+BbpmGMfrtogBpbDDguDO8lrUPPoXWpPqeM+rBSlx?=
+ =?us-ascii?Q?g4zWTWFZnJaT/eD/C4GRjFmNvxn2Q0AW+rYMRQIzTQxp4gzTuYkAP6zs0j8Y?=
+ =?us-ascii?Q?VCrbMS/uEfb8EJQ1QKCekBbgKk6F96ZxWxD1cSqXbwED+9ZMdNFilMFctVJL?=
+ =?us-ascii?Q?NdVXbSvUzN6IaZx6PxjYQAnwGhi5d3o2s4PcyhK5vybemrQkEtTX0T8h2KLk?=
+ =?us-ascii?Q?imfDlZ5O3WV6Hzo0Iih6CETg5BbS/TlBwiIjlCtGcTPwHBT/NmTBn21XqDl4?=
+ =?us-ascii?Q?2CIkGc0zOcixC/AjRluHqJ1/tiazZn3DE3nRuQE7QSbkUKQkMiUwSXsM/lD1?=
+ =?us-ascii?Q?JYn+DV801YgIOfklZrIDxOyTo9Eg2UBE6gsg/p+asasa/hShJpuxGfD+rtxw?=
+ =?us-ascii?Q?0M9HxgoDi1XL4zts+Lh6n21SzlyCvyUPeI9Gw5xPIfvgwJA1/ONDvROqQ7hU?=
+ =?us-ascii?Q?+K9goA2AlCBl/aOKcmTcQOxG1GZmiBYO7Ii8LgSbB9hMjaI19YZRVGK8d57A?=
+ =?us-ascii?Q?fwqUz25bLaOb82D/799xyS7otyFkZVX6aPDSuUEvXwV76ahrazNz7/sjyKa3?=
+ =?us-ascii?Q?etMkROEtUDPyotWbPn4PKTwcviTwGSP9z4M5L4cKoLm+mL4M/T2Ol0oY0OmL?=
+ =?us-ascii?Q?KGgFcReLoV1fhlh0Cj5olVu809VnVLMX1VpvwG4dor89QfiYSgBgmXBmrG1H?=
+ =?us-ascii?Q?XiTafyAZXM/b0fvEHBdKJHputMfVI2yaj8Urz6J4DBR20MFtp1NrZ6R6AYaP?=
+ =?us-ascii?Q?RRMCdR1VUqCUYG6l/rYugvRimOm57ujAky7g9pXM2u7EtxUaToeYaxIQvXtm?=
+ =?us-ascii?Q?i4jlksrf5ad9VS+goc2e/Rkqut1hBeRHCyf/9b9fyJzNhG3FhIjO+E1VeaXM?=
+ =?us-ascii?Q?opDVfMZzyheoZIeK4mHNK2u28rBgMDTEJDqBIWRuPNsbc4Kv2wdoue/TxXQy?=
+ =?us-ascii?Q?6eW789sx5bhzmTvms1y8ZJpI108ujvv5x1R/LkkKDzBVdgMShDRF8MJS8afC?=
+ =?us-ascii?Q?AxrXrQAXbxcfFO00g4a9zoxAFD9Zr0tNIksriLP7gqOiwc9XzyfvoL00O4qq?=
+ =?us-ascii?Q?B++ZsvflrDcCuw2jp7GK5dj67AFBS/5KeK62SlKGQQgw7c2ALBxilCfFLD3N?=
+ =?us-ascii?Q?0Yy3DbcL5ffUIBL+5wBgVp8DKCurhIHiqYRUSZQ/oDPYBS5py/7+FnN7Kfxr?=
+ =?us-ascii?Q?JW4oelYU/imhsd1hE27JxLt0cUvFYU2DFB/RGBfsaP6lgSgW7crlRrhKs8OI?=
+ =?us-ascii?Q?PE7v6kEbBjXp0mA75+dPPpjvhpyIbUe1YMqng4QyU+7bUduJ+us9Jssn7MtU?=
+ =?us-ascii?Q?eYb3SB/Ig+/yNcpMDOJ6UzNJ9/o=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: e307a077-75a8-4286-8e62-08dafa2af64d
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2023 14:39:25.5600
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Ev9n9lWn28ZvX4uLV7i+Q06HoBohrCitVJcOOUf75H63iqXjwkYFyXtooNJn58uGW+gfqyYi18kne+n6gEjVq4jeQLk9VZslfbN4toRxO+g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR08MB6556
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_060210_504168_230B84D1 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230119_063932_038644_B023D8AD 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,265 +144,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a gpio-ranges property to Rockchip gpio nodes to be
-independent from aliases and probe order for our bank id.
+The variable possible_crtcs is only initialized for primary and
+overlay planes. Since the VOP2 driver only supports these plane
+types at the moment, the current code is safe. However, in order
+to provide a future-proof solution, fix the initialization of
+the variable.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Dan Carpenter <error27@gmail.com>
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 ---
+v2:
+ - new patch
 
-Number of pins per bank not checked with datasheet.
-Use default 32 for now.
----
- arch/arm64/boot/dts/rockchip/px30.dtsi   | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 5 +++++
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 5 +++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 5 +++++
- 6 files changed, 27 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 4f6959eb5..9fcc0d0f3 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -1387,6 +1387,7 @@
- 			interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&pmucru PCLK_GPIO0_PMU>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1399,6 +1400,7 @@
- 			interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO1>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1411,6 +1413,7 @@
- 			interrupts = <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO2>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1423,6 +1426,7 @@
- 			interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO3>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index dd228a256..38976f413 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -798,6 +798,7 @@
- 			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO0>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -809,6 +810,7 @@
- 			interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO1>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -820,6 +822,7 @@
- 			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO2>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -831,6 +834,7 @@
- 			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO3>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -842,6 +846,7 @@
- 			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO4>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 128 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 6d7a7bf72..7ba695728 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -1051,6 +1051,7 @@
- 			clocks = <&cru PCLK_GPIO0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1064,6 +1065,7 @@
- 			clocks = <&cru PCLK_GPIO1>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1077,6 +1079,7 @@
- 			clocks = <&cru PCLK_GPIO2>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-@@ -1090,6 +1093,7 @@
- 			clocks = <&cru PCLK_GPIO3>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <2>;
-
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index a4c5aaf1f..5a008ed18 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -984,6 +984,7 @@
- 			interrupts = <GIC_SPI 0x51 IRQ_TYPE_LEVEL_HIGH>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -997,6 +998,7 @@
- 			interrupts = <GIC_SPI 0x52 IRQ_TYPE_LEVEL_HIGH>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -1010,6 +1012,7 @@
- 			interrupts = <GIC_SPI 0x53 IRQ_TYPE_LEVEL_HIGH>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -1023,6 +1026,7 @@
- 			interrupts = <GIC_SPI 0x54 IRQ_TYPE_LEVEL_HIGH>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 1881b4b71..7eb96fcc6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2091,6 +2091,7 @@
- 			interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH 0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -2104,6 +2105,7 @@
- 			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH 0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -2117,6 +2119,7 @@
- 			interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH 0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -2130,6 +2133,7 @@
- 			interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-@@ -2143,6 +2147,7 @@
- 			interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
-
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 128 32>;
- 			#gpio-cells = <0x2>;
-
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index eed0059a6..870b4d9c6 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -1808,6 +1808,7 @@
- 			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&pmucru PCLK_GPIO0>, <&pmucru DBCLK_GPIO0>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 0 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -1819,6 +1820,7 @@
- 			interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 32 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -1830,6 +1832,7 @@
- 			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 64 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -1841,6 +1844,7 @@
- 			interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO3>, <&cru DBCLK_GPIO3>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 96 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
-@@ -1852,6 +1856,7 @@
- 			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru PCLK_GPIO4>, <&cru DBCLK_GPIO4>;
- 			gpio-controller;
-+			gpio-ranges = <&pinctrl 0 128 32>;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
---
-2.20.1
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 8cecf81a5ae0..374ef821b453 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2322,10 +2322,11 @@ static int vop2_create_crtc(struct vop2 *vop2)
+ 				/* change the unused primary window to overlay window */
+ 				win->type = DRM_PLANE_TYPE_OVERLAY;
+ 			}
+-		}
+-
+-		if (win->type == DRM_PLANE_TYPE_OVERLAY)
++		} else if (win->type == DRM_PLANE_TYPE_OVERLAY) {
+ 			possible_crtcs = (1 << nvps) - 1;
++		} else {
++			possible_crtcs = 0;
++		}
+ 
+ 		ret = vop2_plane_init(vop2, win, possible_crtcs);
+ 		if (ret) {
+-- 
+2.30.2
 
 
 _______________________________________________
