@@ -4,137 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9716C00A5A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 16:14:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D897C46467
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 18:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=DzqVuqZuRCbpwl1R5/nGthdi5rJlye6Cm08m7uUU/no=; b=VY+ofgmRd9tTzFIHD/9/djZSwh
-	pb4lJoci/bXQyZO+Fj0l12H+kX0Ao1uYZiCYA8P6ZRPffsQ5u4rHrBU63bppuFnEw9AJWi5+meF2D
-	MQ+7UvunbJmN4qUE7c43BoOYNVYDSASGMkVqAIoPQgvyfMs2x8ziTGSwaYoJ4WCPnSnKnBJvBv/Ni
-	cvnjz8FCoSHfddXm8krWy2Alf42T0GcM48pquaisO5Vf4qL6wn/A6VpJFmKiAkCUVTSg9kHpzdF/c
-	8nuqtA2xYrvrLEiIpT/FPoZ3uAOKXRNfL9fij8T9cGa9REAWfKrexMxGYc9A/Xu9fJPkc4u7Je013
-	XUB3LenQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=batV2EfLuCjuCEAdJDEHMy+6AfHuJKpRH4beEsoq6G8=; b=ehv5ybNhEn7xEb
+	+llOX34dZx+JgG2UZGQN+xR9jsc+/2PXmJdA3L559X4rbptrqJS8+dNNZWeYWQREkHtAhFgBdnUa7
+	KsrdsMEGaNYOpp0doInl1AzoQING0QYfsSNAY33BAAUy9qHKE/2qSguD+0d75S4PKReZfDEw0IRE9
+	BrDsXHxPzYWag/ufsRkesQVHtFT3zEObmmPE0SbNg+9zcYSW4GLx9MohzfBOvTijMxbJOD7b4WIed
+	C9ZIOoY59DupLVcIEy0GRLf1QeRXvBe3OGDWhedLhihT6DEHxw0Ty1B2CrvAuwX3yJDnqNeZs+YCe
+	4MNoxVj22diO6eQ7rD/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXYf-005t0v-SJ; Thu, 19 Jan 2023 16:14:33 +0000
-Received: from mail-db8eur05on2054.outbound.protection.outlook.com ([40.107.20.54] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1pIZyl-006eFV-G0; Thu, 19 Jan 2023 18:49:39 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIXYL-005suO-Ro; Thu, 19 Jan 2023 16:14:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dACqw1HnyWmM5AtAMFwYw1EF/Y8J/etsebDps+q6ltm7bfyGzsp+BDWnjn7g/FWaO6c84XUs8oDoSb0i7KsfnfvoMXRLGthXx7X+XeXY8I9HAunc/MXfmIDqz8xMzF4/wwBrXsm60qfh7GurGR5LH+EejK3w8a8/tegQgyB5Lf6KNuoa5wqARkdSJE1rCb01+ePGS7kpFvv2d4VL00J1d6+dAU2xkDk2SC57kok5EFgMLVOUSeJcvDKDJ5//P7UPqoBwk04CiPzluXqyL0qUtkcC6etmotnHfnwBMdlo0ymEu3TIzek8q5O3vS5WQa9fAwxo5505TYq8uABrO8PZlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=K3Bz2r2ka+bL1NORbJAMKGCPTh/P9Cs5yaxSXNOvFrQ=;
- b=dbpVdxBJT40VfRanEkDZvMd9y5WRJKAM4e/p6A99BKk/Wj3wp+BG9cNDB6frl2C7l3UY5cjMGOAhjp22pgJLTIwVK7Ka2OoRUyrJ0blYbCs7GecJI5tp+ZmJC2DUhujrllqBdhzp9+PQgsLxnSIiDHmF1H4PW/uEriWE2fQzyfywQY5v8xntekgCLovzRBIQl5x2mbXNAKqXgEvyGBcE18vGtFhcEdkfSF8TqMFQ6GiTEN7RAPXpTZZ3BCZrUMOiJz7ZHVieTMDDXBl5FjoZIl5la+joTBVlYODv1PyFET41UHKhR8Y3V4MVxx0BDAdKuRgMQAVNYX41VekQf4cDbw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=K3Bz2r2ka+bL1NORbJAMKGCPTh/P9Cs5yaxSXNOvFrQ=;
- b=yrrAeivEjVnBZ/A85EqXPlhmMfc7ba/ryZ3SjnDwIzu+m8rt2puylZMhBU+wS9JQeSQJDf00Fx6mTRYAQXfzUhEMPpkLsZuKcqe0Ugy8PTgfv/Qkn7PXrBlNXtD1IFN8SMqCVkpZhm55r8IGIlvw9qLsWWvykjS5eH5LNv4cIhc=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by PR3PR08MB5786.eurprd08.prod.outlook.com (2603:10a6:102:85::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.25; Thu, 19 Jan
- 2023 16:14:10 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4718:6092:e763:4219]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::4718:6092:e763:4219%2]) with mapi id 15.20.6002.024; Thu, 19 Jan 2023
- 16:14:10 +0000
-Message-ID: <6e7844f0-2a41-6542-9a0c-4837233f1251@wolfvision.net>
-Date: Thu, 19 Jan 2023 17:14:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2 5/6] drm/rockchip: vop2: add support for the rgb output
- block
-Content-Language: en-US
-To: Sascha Hauer <sha@pengutronix.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-References: <20230119143911.3793654-1-michael.riesch@wolfvision.net>
- <20230119143911.3793654-6-michael.riesch@wolfvision.net>
- <20230119151734.GH24755@pengutronix.de>
-From: Michael Riesch <michael.riesch@wolfvision.net>
-In-Reply-To: <20230119151734.GH24755@pengutronix.de>
-X-ClientProxiedBy: VI1PR06CA0140.eurprd06.prod.outlook.com
- (2603:10a6:803:a0::33) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1pIZyS-006e7X-VT; Thu, 19 Jan 2023 18:49:27 +0000
+Received: by mail-lf1-x136.google.com with SMTP id cf42so4592247lfb.1;
+        Thu, 19 Jan 2023 10:49:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0tYQWEbUqqtKGBVD+CO4A492dYz/WsYLmCYf41kZNY0=;
+        b=n4+uFCk4bo7SZ7RmgW5WWFS2/uh17oFHi2Wu9OV80FtxP/hAJM9pjaHBJ5mpNMX4zp
+         iqUbr25lWZiyYIdkoLZHprxJ4JDQEiSqI7v0q/QYCLR3UBEKWET2ObvRHhWUKDyvsB2s
+         YObPiYCnEY0r7z+Keof0aqnZ1Zi5fNiEVxqf5FsInWplXEqz/kqY1BirhVrF1e8YKUuq
+         fkW05KcHdREfG9ceIUhO+7zrn3HBd5vnYGE0aAo2VdY+Cnz7OlDJj/JN5qfDJUxYqRBB
+         CADly1MC2ftqbiAlNtjs0w5MBnay+SAahDiPJ7cUj9iSDgEtV2qFXwdkpcv6hBBR7nTq
+         rkqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0tYQWEbUqqtKGBVD+CO4A492dYz/WsYLmCYf41kZNY0=;
+        b=NzwCs23BwK57BXwBN4JyCGDg9/I9jpXfvvMOJM/fi92ikw3vCIb3i5iswzuzlB0OHL
+         pcNxz2NZHGq3RUCFJt+EI5zUFYJfNxvl6KnWcLRJX/ELwlkk71PjT68bDZE3D5rskU+M
+         8MEkAkHWhiVBI/DNr9RhcFG7oEV2WBygSP2DtSEZOl5OykbnSqvaGALMxF9Tph3B5R1T
+         xvApOdR9mmQSebaayoooCbGOdsfcb8PAob1davMFCwIoHkAQNGwiivwnIx7LnE8ApLQB
+         Ywth0ZxIhxynIgPG3roDYDDnVZLHY6blBgy1nHPwwJK/39fmbMleEMzugKiyyXLCeHCZ
+         Haxg==
+X-Gm-Message-State: AFqh2koi1OU0lkmOdWr7LK4BmJO6FnPx+GJZVZBKO1rNfeGlrG+9kmgR
+	9J+v3WNRus4srQc4GetT0Jo=
+X-Google-Smtp-Source: AMrXdXsjFhKWKq7za7X1ZzjrMsEeb9ETu3sg+Kbqp8I3AZi5X5TNNlg+CZgXDBTXn0b9+8w2zTN+zw==
+X-Received: by 2002:ac2:57cd:0:b0:4cd:afbf:c206 with SMTP id k13-20020ac257cd000000b004cdafbfc206mr2700092lfo.22.1674154157481;
+        Thu, 19 Jan 2023 10:49:17 -0800 (PST)
+Received: from U19.ag.local (static.187.76.181.135.clients.your-server.de. [135.181.76.187])
+        by smtp.gmail.com with ESMTPSA id b31-20020a0565120b9f00b004d30752a561sm2112737lfv.298.2023.01.19.10.49.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Jan 2023 10:49:16 -0800 (PST)
+From: Alibek Omarov <a1ba.omarov@gmail.com>
+To: 
+Cc: a1ba.omarov@gmail.com,
+	alexander.sverdlin@siemens.com,
+	macromorgan@hotmail.com,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] drm/rockchip: lvds: add support for rk356x
+Date: Thu, 19 Jan 2023 21:48:02 +0300
+Message-Id: <20230119184807.171132-1-a1ba.omarov@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|PR3PR08MB5786:EE_
-X-MS-Office365-Filtering-Correlation-Id: a7445ae7-8199-4251-61aa-08dafa3832cb
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	5r6bbRBGzSLprzfo4bLrobejxq+UT4z3m0ZjHee0X7ex18Brqj5FTZ4y8x+elCko/R7NoUwNgoFl5Kh85D5myh7rapsYoU9NQ6aC6XmP17XraBJsLvf7PkgC+wiZ27E55ErP+eCW487MECLFmAOgA2d1OuqJwTz5M6iYFG0+jxRHYjhTjs8vsKYx3BqJs3JayGhbEsVEREcdHDt5QZE4AFFrh3iULU3u36pstWWah5z3eu2ECWQ/kZwILs85QJso+imY+/7cVr1b1JHf2LenIHqCR3WsDekdaO8mIs8pTVbgpWtigcvERoyiXM428uWpVJZlfkKtOm7B8pbveuauAV1VjYm7LLn7Iiwt96XRJ9oTYSECuNsmrnSuX6AkXlah61HDsrmCa6K2FmmqiOPfKaCqUTRqBC/vpandy7cviicV87O0S6BdUxRb2hogCaGmAN5DqCC55eBYvdK8NtOOF1PLx20Jdv7TPe2xOkC1lLmwoynx3Ldz39oc3/GPjvYLI6vTmnq1OAU8TYJGbQyD1YrOA+SwQEClpTY3ZZQrsfnRBSwQ1bCXzb3JkqsDnhAjRAwfYv35Ll/r6P4BgAs3hed5MEpGYYTswGbjEFQth/N7H8WHWiFsdGOuOVzlilaPIx32xS7HxcdFferO3lsGeybiW//aQBX+qQJWA2GPiiIUIjHHz54he7Nuxq3iuFU8yEJEIj0yGHV9W+MfI4Ub/Bx2pg6+DTvyOq1XoJMkBgE=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(136003)(39840400004)(376002)(396003)(366004)(451199015)(36756003)(5660300002)(41300700001)(6916009)(66556008)(66946007)(4326008)(7416002)(66476007)(44832011)(83380400001)(8936002)(478600001)(6512007)(6486002)(186003)(6666004)(53546011)(6506007)(8676002)(2616005)(316002)(52116002)(54906003)(31696002)(86362001)(2906002)(38100700002)(31686004)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?Uk5uajhHdkJIV0lqanRGVEpNZjJteERBQ3BocE5KTEFmVUovTlNGMmpxMHFy?=
- =?utf-8?B?anNWLy9xUlp2ZWsvd2NYSDV2VHdkL2swTG1Jcy9KVTljeERZYXJRQkJaZU9X?=
- =?utf-8?B?M2ZEdFp4UG15MlNMQnJXNGw1RXN6QmNySWhFSnU0c2VQd2VGVUlGVFRaNFpQ?=
- =?utf-8?B?KzA2MVY1eldrc1RwOEd6SnYrOHlHYlBOVzZvWWRQTm1ESFRBVU1ZR3RMNUV2?=
- =?utf-8?B?WGRWMndMVTQ5V1NOdVJGV0wyZ2dxcHFQVG5URENJTkRzcTUyMFNRUjVoN1p3?=
- =?utf-8?B?Rk1vOTgzaHlBeWVFL3lBYWtJem8wMlE3dGV5UE0wR1Q4NkJZR0tNblZpY1Vw?=
- =?utf-8?B?QjVhZWRUOHNiSURlcUtRWUpnenZ0YUhuMGlsd3JLNXFvT1ltSTA5V3hsdkxY?=
- =?utf-8?B?RmcvVVRYNHVUZlhEQnhGV2RIS3BvSW9wcTJqMWNneTMyL2Z4citXb1lWSDRG?=
- =?utf-8?B?VlowTmh5MHZsOExCdUFBVVAwelRCZFl2aVRZbEN4M09lWUtVS3FTV2Zxb0Jm?=
- =?utf-8?B?b1ppZ3hYenUzYnVMbWJhV0E5SUFmYjU5K0tTNUVmWm05bWc5eWx2MEtpaVF1?=
- =?utf-8?B?b2l6RGRJZnVXY0NwTnVlbnV2VncrVGoyVFRkdGJwaFVpWis0K3Y5NkNyTk9T?=
- =?utf-8?B?VUowdXZEQmhVK0MvaGc4SjMzVHdOZ2ZzTDVoL3JmNTFHWFlQb0xCNVIvVGRL?=
- =?utf-8?B?OFMwL2pWeUFqUkw3Vllaa3MwYmJzaDZCS3lEdWI4d3dLVVZtN1dzc1h3V0Nn?=
- =?utf-8?B?SnpVM29FUThxNHdscWdzZklrU3g1bmY5MzBkK3FaRGlwdjhzRmtmcTZBVS9B?=
- =?utf-8?B?emQyakx2SmlVVUJLSmFPSTBUTTY5K1FmRXlkRHRNb1ZpcUorbnl4TkF5STlz?=
- =?utf-8?B?YWRQZ2xCNmVQcHFsQ0gwbWxzWEt2TWFlaXM4bFRhVWdnazhLeVpPZlFSTndY?=
- =?utf-8?B?ME1DOGo2a2FOdlVTRnU5T0F5Y1hCQThNYlZtVVpnSU5uYStRMWpIalpaVlBJ?=
- =?utf-8?B?TmNrZElaVTBtN0MrNGZXWlBIMEE3TG5JUkY1aVlMajhoOVRzbFZFaHZIM3Qw?=
- =?utf-8?B?UkZkZUpER3pkc3Bxb0RyQnZDMVl4UnMvb1g1Vng0UEhsOEJGWnNrUmI5MTB6?=
- =?utf-8?B?TU1CNElTVnp3MFpwMDB0dWZuQXVVUFY1dGs3SERvc2RlRFdsVElhamxkb0Fj?=
- =?utf-8?B?VmlJVkF0OURwL3hETWQ3S0xEWHA3M0E4VEc3WnZ5VFlIc2N5Q0xVcnIyaXU3?=
- =?utf-8?B?Nm9qMHdXVHJoSWpibS90WFF6dzJuYWhaOXlNOUJFYXJpRkZpMTVmamRMVjlh?=
- =?utf-8?B?UVE3OGNzNWJIUEJmT01jMUNGZ3dwUVAvNDZKeXdhU0hmLzdZWjB4NTJKb0gw?=
- =?utf-8?B?UldvUWJoRkhkRmk3OXBESlpSSkMrcEJ4WEFJTXp1cWFMbkVDYWFoWUNWU3ZQ?=
- =?utf-8?B?QnhoMVpsMnRjSXJRd0ROcXlXTzY5ZmtMQjVwbTU2aWY2dmpHZHh3TlkyUTVa?=
- =?utf-8?B?d01zVXRBRDlNeDVnN1Y0cXFuY3UzQmxja05ncUVSTUxhODNaRUpNSDgrM3RR?=
- =?utf-8?B?NlA1UVZKbEtLRFVIczB6dm04VCtLUXgxVXVQblVhRjhJRlptdTdZTzJTdDA4?=
- =?utf-8?B?UmN2YXlsYmdWUUxRRUNVbHJiYTlGZ0dtdUFzTFd2Z0I0KzJ4SGg4MXFJcFB5?=
- =?utf-8?B?TnoxZWRqamVYUVp2SGE0MGNCaHkxd0NvVlNLZjFoZkxjbTBPM0Myc1F5WHF5?=
- =?utf-8?B?czhMYkFub3pLckpib0lneEFkODJkYlB0L3l6di9ramhrb2kwWmtqaEt4STJS?=
- =?utf-8?B?eGd2Y1ZPWDZJcjA2Q0VjbDhqMXdJM2J5M1hMR1RTLzdZU0tMdHFIMFNJcFFN?=
- =?utf-8?B?cXFMc0tJUk9zTDJnZkdGZ3NCY1doYlQzMWpma2x6Rm5DWHo4a2VLdUFoUUJi?=
- =?utf-8?B?Z2NQWnkvRWkwcElOQitCRUFpOWh0cnRUSVlIU0F0dVVUTTI0S0lBK0xCd080?=
- =?utf-8?B?Z0NBWXp5bmdmQjVNVFEyWU02QkpPNVVuTDVsZEF3VmN1bEpjL1JBQ0xBSFlw?=
- =?utf-8?B?NUEySFNlV2hoNm9kRU9YbE1BT3VzTVd3MW9xaWVrcUNZMVQ0ZHhBOUtpMWpB?=
- =?utf-8?B?Z1k0eHBMZlBvM1dkL20vUTdmNkhxYlpOUEZFNHM1ME9rZkNyNmZNWWxTUklh?=
- =?utf-8?B?N2J4YXFhem95c3k3cEorTkk3MVZHNWRFM2IrVXo2dFYxMllYZEh3bVQrRGx4?=
- =?utf-8?Q?+bqutDQ5MskqIMyiYUVO1iKSaLGfC5Uhn24y5xAxk8=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7445ae7-8199-4251-61aa-08dafa3832cb
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2023 16:14:10.4597
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: W00t7krhLiCBHXJQnfN50iOG9HVVWzBAusnUJgGOrGean2tniTSlhgGpkOKaFcUS32NTmjYEspK/pzhDAb7IFKVBR2i1mM19O33xg9Ft3Ks=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR08MB5786
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_081414_193145_97C7A0EA 
-X-CRM114-Status: GOOD (  25.03  )
+X-CRM114-CacheID: sfid-20230119_104922_011376_B9841AE6 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,82 +104,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
+Hi all,
 
-On 1/19/23 16:17, Sascha Hauer wrote:
-> Hi Michael,
-> 
-> On Thu, Jan 19, 2023 at 03:39:10PM +0100, Michael Riesch wrote:
->> The Rockchip VOP2 features an internal RGB output block, which can be
->> attached to the video port 2 of the VOP2. Add support for this output
->> block.
->>
->> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
->> ---
->> v2:
->>  - move away from wrong assumption that the RGB block is always
->>    connected to video port 2 -> check devicetree to find RGB block
-> 
-> Traces of that assumption are still in the commmit message.
+This series adds support for the LVDS controller on the Rockchip RK3566 and
+RK3568. First patch adds the support in rockchip-lvds.c driver, setting all
+the needed GRF registers. Second patch adds device tree bindings, and third
+patch adds a note in the documentation.
 
-Oops, this needs fixing of course...
+LVDS controller on rk356x does share DSI DPHY with MIPI DSI, and all
+groundwork on enabling it is done by Chris Morgan.
 
->>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 44 ++++++++++++++++++++
->>  1 file changed, 44 insertions(+)
->>
->> +static int vop2_find_rgb_encoder(struct vop2 *vop2)
->> +{
->> +	struct device_node *node = vop2->dev->of_node;
->> +	struct device_node *endpoint;
->> +	int i;
->> +
->> +	for (i = 0; i < vop2->data->nr_vps; i++) {
->> +		endpoint = of_graph_get_endpoint_by_regs(node, i,
->> +							 ROCKCHIP_VOP2_EP_RGB0);
->> +		if (!endpoint)
->> +			continue;
->> +
->> +		of_node_put(endpoint);
->> +		return i;
->> +	}
->> +
->> +	return -ENOENT;
->> +}
->> +
->>  static struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
->>  	[VOP2_WIN_ENABLE] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 0, 0),
->>  	[VOP2_WIN_FORMAT] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 1, 5),
->> @@ -2698,11 +2721,29 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->>  	if (ret)
->>  		return ret;
->>  
->> +	ret = vop2_find_rgb_encoder(vop2);
->> +	if (ret > 0) {
-> 
-> '0' seems to be a valid vp as well. Shouldn't this be ret >= 0?
+Tested on Autogramma Monitor RockChip, custom board based on Radxa Rock 3
+Computing Module Plus.
 
-...and you are right of course. What a stupid mistake.
+Alibek Omarov (3):
+  drm/rockchip: lvds: add rk3568 support
+  arm64: dts: rockchip: rk356x: add LVDS bindings
+  dt-bindings: display: rockchip-lvds: add compatible string for RK3568
 
-Will fix these in v3.
+ .../display/rockchip/rockchip-lvds.txt        |   1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  25 +++
+ drivers/gpu/drm/rockchip/rockchip_lvds.c      | 144 +++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_lvds.h      |  10 ++
+ 4 files changed, 173 insertions(+), 7 deletions(-)
 
-Best regards,
-Michael
+-- 
+2.34.1
 
-> 
->> +		vop2->rgb = rockchip_rgb_init(dev, &vop2->vps[ret].crtc,
->> +					      vop2->drm, ret);
->> +		if (IS_ERR(vop2->rgb)) {
->> +			if (PTR_ERR(vop2->rgb) == -EPROBE_DEFER) {
->> +				ret = PTR_ERR(vop2->rgb);
->> +				goto err_crtcs;
->> +			}
->> +			vop2->rgb = NULL;
->> +		}
->> +	}
->> +
-> 
-> Sascha
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
