@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D84CC00A5A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 11:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86556C004D4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 11:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WbiCkVoghTOwI2RHK4KRrR6OBug6bojYZn04iI2Ec/I=; b=F9JuwaVybs6GWm
-	/L2mlgrC5h1BHpLiUVLTMu8/tiz/hhX4u3OcZKT+QiQdCFwrLEIhvib0Q8cVT1F0FvwSfutnih2Xe
-	O2EcItKCq/Sx7DEC14X3/2uP+to8YCLvd0arQYyOp41E/gH3BBzVhwo17ickC2BddzIdKBHoCo9jl
-	xrnriO/+vxjK5zu1h2KE488nCwkw7cNphMObo0u3ErIXldZyUJxbBzsuWaMI8TbEPjo0/Ms5RNFQt
-	Q0lnMTw42g3AkH4rjy2/t2KY5XdblOz7ynjcCUnlvuh6H6v84uq4udC7VY0kMz9o3hXDT3eWg3m16
-	fKgh5yjjl29Jc5Qz3UMQ==;
+	List-Owner; bh=KMza301mRSKEfq0ScjR6qQtlriGVg5KeL/krUERZGlA=; b=MdE23rntbzU6Ib
+	ABtMER89ioIMCfhC3r6drLlsVVEZb3OlcffeTQOv0ipWwhN0yJm2tR+XB3DC3mBzrV8n2ItrLuElA
+	9phAp/8hDLRoq6z/l+9DShwhHRaIPWCQ+QqA9AAHptRX3RhkojIEoVWcxfJLu94wUhpeQ5BGn5hvE
+	zsrTMhHNmOKCOElqEttuYID3AcRC4GyVkJT6SPyH5RqL9gPLW8gZTx3Vjr06X0Zn73+PynltzzWkL
+	UjKwplLDMeYzT8m1450b07vVkPHGGr1+4RLMiXC9h++mxNjBiTq4KlfbnkezPaOigFcUDcvghRFAQ
+	vi8psQouC+4ZX8nU5HTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pITXw-004gMv-SR; Thu, 19 Jan 2023 11:57:32 +0000
+	id 1pITYP-004gbc-PI; Thu, 19 Jan 2023 11:58:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pITXr-004gH0-Vy; Thu, 19 Jan 2023 11:57:31 +0000
+	id 1pITXz-004gNs-G6; Thu, 19 Jan 2023 11:57:37 +0000
 Received: from wf0783.dip.tu-dresden.de ([141.76.183.15] helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pITXg-0002cW-SF; Thu, 19 Jan 2023 12:57:16 +0100
+	id 1pITXg-0002cW-HL; Thu, 19 Jan 2023 12:57:16 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Jonas Karlman <jonas@kwiboo.se>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Rob Herring <robh+dt@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	FUKAUMI Naoki <naoki@radxa.com>,
 	devicetree@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix probe of analog sound card on rock-3a
-Date: Thu, 19 Jan 2023 12:57:14 +0100
-Message-Id: <167412943040.431585.4255178280669103908.b4-ty@sntech.de>
+Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Update eMMC, SD aliases for Radxa SoM boards
+Date: Thu, 19 Jan 2023 12:57:13 +0100
+Message-Id: <167412943038.431585.2721937683421159813.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230115211553.445007-1-jonas@kwiboo.se>
-References: <20230115211553.445007-1-jonas@kwiboo.se>
+In-Reply-To: <20230118080454.11643-1-jagan@amarulasolutions.com>
+References: <20230118080454.11643-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_035728_224887_E9A322EE 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20230119_035735_647278_EE559B5D 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,22 +65,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 15 Jan 2023 21:15:56 +0000 (UTC), Jonas Karlman wrote:
-> The following was observed on my Radxa ROCK 3 Model A board:
+On Wed, 18 Jan 2023 13:34:53 +0530, Jagan Teki wrote:
+> Radxa has produced Compute Modules like RK3399pro VMARC and CM3i with
+> onboarding eMMC flash, so the eMMC is the primary MMC device.
 > 
->   rockchip-pinctrl pinctrl: pin gpio1-9 already requested by vcc-cam-regulator; cannot claim for fe410000.i2s
->   ...
->   platform rk809-sound: deferred probe pending
+> On the other hand, Rockchip boot orders start from eMMC from an MMC
+> device perspective.
 > 
-> Fix this by supplying a board specific pinctrl with the i2s1 pins used
-> by pmic codec according to the schematic [1].
+> Mark, the eMMC has mmc0 to satisfy the above two conditions.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix probe of analog sound card on rock-3a
-      commit: 1104693cdfcd337e73ab585a225f05445ff7a864
+[1/2] arm64: dts: rockchip: Update eMMC, SD aliases for Radxa SoM boards
+      commit: c80992abd2877590059e9cb254213c16824e2106
+[2/2] arm64: dts: rockchip: Update eMMC, SD aliases for Radxa SBC boards
+      commit: d268da063b99cf1c4d8304a33c27bbed0763a474
 
 Best regards,
 -- 
