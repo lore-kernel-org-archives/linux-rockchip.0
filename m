@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F59C004D4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jan 2023 23:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D37C05027
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 08:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Zh3UFbqiVwo1cP6LB3CjHYxAMoHQB5ItKngYZL6LukI=; b=1apX4jyVOzFiV2
-	IKm+Zf1woLRM9/J1/2LWf+50ztJFFE+P9nHQ8UPAQ50+n/mNHqiRAXoPGJMGKFtrCST2n08Ve2C8x
-	KK3bhiSPIEQHOEkjsZQavDRj/2h/6ICFMzCNRCdNB+9D8RKIs2YpXG5q8BPc+xqzPeQRFNhf6Ek0D
-	61u+3GpvLVFZtnSLPFQxAWgIYhBRdd1DCaL9NQIwnIUizfZ8+6GSPPCecXHFRYw3mCQZvKtgsma41
-	WnMKkUrGWq/i9VQgFtxVde8pxRq2RqHF6li36QIZZwssskZgiw9RnTPyLg9HK2ZbNDaTwQpjzAvIJ
-	mv6Ro0/UHu9SDDEtwUaA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uZuoLjrJ3kLtlXNOOFl8U270drgcIvGtJkK33eTUljU=; b=Zhh9gqUSMx6Ink
+	hJUEa5oMbbaxb46MGFgYBpW2bgX/P0s0mjmsO+NHDbg4oAJdmogNU747ahiTnnlPRBGDaRBcJPO48
+	+eT1Io8b8znIaE0O+v2oPQqtaDkvmAkzb1eagn/aWIN8rAGUAOe3FwUzvyfli+ObDRzW5uoozsAog
+	1n+MJGhxCv7gWAHfUxsyXdfLfsDi17/nKxvBnC/JdUNhtvLjXrBMgWbBQs9kE31dTRxHcBeAsCgw7
+	dsBMefsK9DQ+Ouhch1ecYRJQ8iSsMypkgi1+TV36e5gg0Iz3x3i6rxsccjGBQym1acb7l8Vh7GUTI
+	flk2rSMOqJRkhvCes+Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIeAU-007Zzg-6p; Thu, 19 Jan 2023 23:18:02 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1pImjn-0092Rh-BD; Fri, 20 Jan 2023 08:27:03 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pIeA8-007Ztx-NC; Thu, 19 Jan 2023 23:17:53 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id k13so3844814plg.0;
-        Thu, 19 Jan 2023 15:17:30 -0800 (PST)
+	id 1pImjY-0092JX-GC
+	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 08:26:49 +0000
+Received: by mail-wr1-x436.google.com with SMTP id n7so4137804wrx.5
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Jan 2023 00:26:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=LoPT1qZTZAiwXdlOT9grX8TQ8vUdaTmpWhI7QC60cXs=;
-        b=awbv6pu4ENIEU6blOT7ognTpQESQ7PK3rksK/Li2rhuFEXMIgQPIVEQJgFOhFvQZMM
-         z1qM4WyqdoS2qycGh4iuFu9CzCkCDEfCbVYcbnocOQ7X1mUJgZVJhmNsgz3AlsXZgPUB
-         RX97qZm5KkyND7oXpFMe0e2zN0iJX9R+1xiaDmDggFxLobRLz1OMtHlXQkYCe1wVVC5R
-         KpQzyTJyUjkfG++QAB7DBxJVT/mrBUa9OaNpwR4qPXrRx41TB4YSI7k8VM5lQxsLN+O5
-         M99Y6PF0ogupxXhew39KKeCyvLrEVzlAYA2tabdXeE7cqz/2SrRlENPKajqHTlez5Hwt
-         udUA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dQD3SeU5cieHqSaSQOFOuvwfEvzyXZdGHoT+3iMV3+Q=;
+        b=sVyo1WQwvoZ440cfSfd/pBn6sA68vMHM8R19MkVLWsSsjdsZTDLI/NPzuoCWheFB43
+         U7XktPstpagWZ2qz+/mHgKjzQQgu3K9H8IY2GeXgWQYXzCePDwAWGP8CDHTPDv1XAbUK
+         dLcildkMljvAn1QFV/+0m7H3A/iSELWMk8RmyCxo4MfsLd0NJX4Bq5SCA2I+UggX4tp6
+         W6pC9BpEKDUFQ3uN21L7ZEHZbdVwujf+RUFsv+roVc6i/LE8/3KauFC7lJjED2eJXAaD
+         OkTontz5KnEQacEvrHalrX1nNKaPgQUBXoYOJu+4WJhlFa3MztSxvXw8DUEY7rb12NJP
+         jhYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LoPT1qZTZAiwXdlOT9grX8TQ8vUdaTmpWhI7QC60cXs=;
-        b=qqKSRScTBElPAf/rBAuTrZ6dhyHnFf4MGBTkQL3/XppJv0WfHKCrvgagmci0JpARPy
-         jbcoQfo0e+7iJmNC0Qu1yRd4K6ahFRNFX9V+X8fHP55qRn2d6cW18rjqhnrZ4mg3jrQe
-         TzCy6PsOVcSWb+FW8DjOYEYYhV8PEwEQMVg6k4sIM0qzc9EWiPp7bhwBpM+/ySiC3TkR
-         HgWXyS3H39IxDaAgK9HIwVuD5EguOYD3SovTVnlB0NF+AP7/T/GZ8lIZ1idGlcOxFL//
-         HWz168hr7/iu5UJ8aFSHpY60xw855PpGhSwhAjNzqVUwURJUTCaO9zB8MQKjMoDBCIeo
-         lg0Q==
-X-Gm-Message-State: AFqh2krOW90JuVx24a/leTBoWfUeom+RqVgqIAX/m6mG11dorLzcdbZx
-	Sef+2ABa36n/KyerCw9EQPk=
-X-Google-Smtp-Source: AMrXdXsVdDw+YB0Zgvq034UW+xelPx2PPY4N5TAKF0D/Jclal3YFKMREgNQamm7c8VfVvfM/mVcIug==
-X-Received: by 2002:a17:903:200b:b0:194:ab2a:b74a with SMTP id s11-20020a170903200b00b00194ab2ab74amr11069280pla.38.1674170250390;
-        Thu, 19 Jan 2023 15:17:30 -0800 (PST)
-Received: from localhost ([2a00:79e1:abd:4a00:2703:3c72:eb1a:cffd])
-        by smtp.gmail.com with ESMTPSA id l15-20020a170903120f00b00188fce6e8absm22498801plh.280.2023.01.19.15.17.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jan 2023 15:17:29 -0800 (PST)
-From: Rob Clark <robdclark@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: Rob Clark <robdclark@chromium.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Daniel Kurtz <djkurtz@chromium.org>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH] drm/rockchip: Drop unbalanced obj unref
-Date: Thu, 19 Jan 2023 15:17:34 -0800
-Message-Id: <20230119231734.2884543-1-robdclark@gmail.com>
-X-Mailer: git-send-email 2.38.1
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dQD3SeU5cieHqSaSQOFOuvwfEvzyXZdGHoT+3iMV3+Q=;
+        b=qrAEyGz6HcFiKVioQe4pq9KCwWW8ZDzEwEgG5wi3oD6POVoosSLMCDDr+OjHbGIuXp
+         6rtTTjRCcG7SxEvp4+5oOmlmZSHktTQJEG5fi7z7Gn59Cr7tWKylzlgDE4URp4TtZi+8
+         Qnuld9GIZx6knXzM7EhnvSobK+5MOVcKOVdyCnYj0AgtAb+eIG+NnMZZoDSn6OX/N+tb
+         RcHvOvtH+EDpEt3OdJ2eMlETZUuNzMFYM3bSzCO0p7QqkJXELUJkVgmUsnncLotnuHv6
+         3QvN9vbLrFxV66RkRw9wqMiVI6uSoe27FqGwXSXO2Xq90BdYTLTVAtVEMZJBUeqd/TFV
+         GMfg==
+X-Gm-Message-State: AFqh2kruaKJr8MXoeyuyVebcU13WP9mvHM2NiRVlUqvms1Omdi43m/dN
+	UnezW8PdxlgHacCXx5u3acBDwA==
+X-Google-Smtp-Source: AMrXdXumlxfJ8KEAKW4uHiXN9MBz2WNa1cx1COulyE/9/p90MuXxNfk3ZAmuW8Tb8rR6CiXOYcG//A==
+X-Received: by 2002:a5d:6447:0:b0:2be:34f9:5284 with SMTP id d7-20020a5d6447000000b002be34f95284mr6818039wrw.48.1674203206302;
+        Fri, 20 Jan 2023 00:26:46 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id w10-20020a5d404a000000b00275970a85f4sm35371733wrp.74.2023.01.20.00.26.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Jan 2023 00:26:45 -0800 (PST)
+Message-ID: <94655b6a-4e2b-9ec5-8c86-17cb8690f44f@linaro.org>
+Date: Fri, 20 Jan 2023 09:26:43 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.0
+Subject: Re: [PATCH 3/3] dt-bindings: display: rockchip-lvds: add compatible
+ string for RK3568
+Content-Language: en-US
+To: Alibek Omarov <a1ba.omarov@gmail.com>
+Cc: alexander.sverdlin@siemens.com, macromorgan@hotmail.com,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Alex Bee <knaerzche@gmail.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20230119184807.171132-1-a1ba.omarov@gmail.com>
+ <20230119184807.171132-4-a1ba.omarov@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230119184807.171132-4-a1ba.omarov@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230119_151749_276014_4B28876C 
-X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-CacheID: sfid-20230120_002648_565883_D506F46A 
+X-CRM114-Status: UNSURE (   6.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,33 +107,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Rob Clark <robdclark@chromium.org>
+On 19/01/2023 19:48, Alibek Omarov wrote:
+> RK3568 SoCs have a single LVDS output, that use PHY shared by two display
+> pipelines: LVDS and MIPI DSI.
+> 
+> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
 
-In the error path, rockchip_drm_gem_object_mmap() is dropping an obj
-reference that it doesn't own.
 
-Fixes: 41315b793e13 ("drm/rockchip: use drm_gem_mmap helpers")
-Signed-off-by: Rob Clark <robdclark@chromium.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 3 ---
- 1 file changed, 3 deletions(-)
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 6edb7c52cb3d..19b46c00dcbf 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -262,9 +262,6 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	else
- 		ret = rockchip_drm_gem_object_mmap_dma(obj, vma);
- 
--	if (ret)
--		drm_gem_vm_close(vma);
--
- 	return ret;
- }
- 
--- 
-2.38.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
