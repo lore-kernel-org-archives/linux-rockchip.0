@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5378C05027
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2283C05027
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEqFFF2EVOeiK/MCBCaqRPxzYyxF/wPXR0fim4VuuhQ=; b=SqjxU+2DY/TXus
-	UbwlGv2OYMmOqs8W3lM33sJxKjJNcoSbdZloUr8q59JMUF5uVUgHCuCUEwzG/M0JW1AB3WgW2JTZQ
-	f0oaFHLWidqsBCFkFRe380vAm7F5dXLyiVjTw+uuNSou3EFpZfQnzpyQZj9AhYkCYwF0cV9rYlfXl
-	VlIBKXGcaoQAVVCpTGIGYg9kbezfEr0VUs8qMT0tf5oukFrFnZkeILYisFp/SiHt9t+YDcGhKGGHn
-	/euRad6k0DQO7UhBEniz/Q5OyjQ59HBhhOyUrWzce0wQHySBneNYKUPk0EZhf6GM4B+Q8BRaTnaq1
-	TXoPGCT0vGbBP0YmHppw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dOJV/TjMat5Qpi3/4VAHGIvwup65DPO7QKzXWrHt4bQ=; b=Ejb/P2FxW5viOZbRbywR/P45wa
+	lJjOneaPcIhCP7OkkP10qtsxewSTbA3b8FCVx2oS3h44uyZNV/bgtduAOBnRk7rblhE8oBwTYQUu+
+	f7EVGQRY26CpVazpT0AD7dhORd+ZEErIdNoRLiYSOv54x9TAyxvdrMOQBKCXEndfcnGjlgkAf8n0I
+	uWGeJLMJMJka+q0WN4IGG4pGIFJU4pnF31QtMDv3fIWlwOwZY0jg1YeByqOUqObGIEEnOrb4xivFm
+	o1vrWDquW4E8jkXsK1AwUeMF77WPcDl1SwVxzLCErNQ5+ihLe/9qeK8gSszc/wSVVCgSWOZJVd5xn
+	qWEGoXnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInXu-009IiQ-W3; Fri, 20 Jan 2023 09:18:51 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pInfd-009M8q-SK; Fri, 20 Jan 2023 09:26:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInW4-009HoQ-JZ
-	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 09:16:58 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pInVs-00022D-Ic; Fri, 20 Jan 2023 10:16:44 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pInVp-0004z4-60; Fri, 20 Jan 2023 10:16:41 +0100
-Date: Fri, 20 Jan 2023 10:16:41 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Alibek Omarov <a1ba.omarov@gmail.com>
-Cc: alexander.sverdlin@siemens.com, macromorgan@hotmail.com,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	id 1pInZx-009Jeh-85; Fri, 20 Jan 2023 09:21:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B3CE161EC1;
+	Fri, 20 Jan 2023 09:20:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C435FC433D2;
+	Fri, 20 Jan 2023 09:20:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674206456;
+	bh=8YtcQpd8nHqXd+973881i712KyZxniPOL90+PIO7yEs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cPslklE8R0UMrCR8HRxvxN9YgbL0IeGdmwGT45RX0wKN8WWZhzMTFbR8a7hUpTXxm
+	 ggwDk8Ax1tCZ5EdbCfLY5TO8s3Gmk/ltiP8tyB8B9fVu7nqm6X1kX5MKAGvycKo1V1
+	 +e1jDMfXNV6ElS7jkIez1GYWWzZb6ZKeJGP5/qJjNmJ9q9P4hGrrrkh/jhu5W/GnE6
+	 mWgqnUKPeKOjFcRnz0RadIGpswmxZg32Fs8Qfpq7WJG+UQAhE13JNsZHx8XXfFSS1T
+	 CeGlugFV4gbPmrwogXRfVguayEYXgg/bR5L9tMtlf+OOEouGWPevzflSwFZ8EHZUi/
+	 pE4IOtLF0xHuA==
+Date: Fri, 20 Jan 2023 10:20:53 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: Randy Dunlap <rdunlap@infradead.org>
+Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] drm/rockchip: lvds: add rk3568 support
-Message-ID: <20230120091641.GL24755@pengutronix.de>
-References: <20230119184807.171132-1-a1ba.omarov@gmail.com>
- <20230119184807.171132-2-a1ba.omarov@gmail.com>
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org
+Subject: Re: [PATCH] i2c: rk3x: fix a bunch of kernel-doc warnings
+Message-ID: <Y8pc9bhrqmpUn3v6@ninjato>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org
+References: <20230113063805.14457-1-rdunlap@infradead.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230119184807.171132-2-a1ba.omarov@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <20230113063805.14457-1-rdunlap@infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_011656_875217_D9D34354 
-X-CRM114-Status: GOOD (  37.53  )
+X-CRM114-CacheID: sfid-20230120_012058_633498_2B776405 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,218 +71,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1260267916205334644=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 19, 2023 at 09:48:03PM +0300, Alibek Omarov wrote:
-> One of the ports of RK3568 can be configured as LVDS, re-using the DSI DPHY
-> 
-> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_lvds.c | 144 +++++++++++++++++++++--
->  drivers/gpu/drm/rockchip/rockchip_lvds.h |  10 ++
->  2 files changed, 147 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> index 68f6ebb33460..83c60240af85 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> @@ -433,6 +433,90 @@ static void px30_lvds_encoder_disable(struct drm_encoder *encoder)
->  	drm_panel_unprepare(lvds->panel);
->  }
->  
-> +static int rk3568_lvds_poweron(struct rockchip_lvds *lvds)
-> +{
-> +	int ret;
-> +
-> +	ret = clk_enable(lvds->pclk);
-> +	if (ret < 0) {
-> +		DRM_DEV_ERROR(lvds->dev, "failed to enable lvds pclk %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = pm_runtime_get_sync(lvds->dev);
-> +	if (ret < 0) {
-> +		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
-> +		clk_disable(lvds->pclk);
-> +		return ret;
-> +	}
-> +
-> +	/* Enable LVDS mode */
-> +	return regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON2,
-> +				  RK3568_LVDS0_MODE_EN(1),
-> +				  RK3568_LVDS0_MODE_EN(1));
 
-Isn't this the same as:
+--===============1260267916205334644==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1mLmRMcLlcLNbu+v"
+Content-Disposition: inline
 
-	regmap_write(lvds->grf, RK3568_GRF_VO_CON2, RK3568_LVDS0_MODE_EN(1));
 
-Unless I am missing something I find a plain regmap_write() easier to
-read.
+--1mLmRMcLlcLNbu+v
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +}
-> +
-> +static void rk3568_lvds_poweroff(struct rockchip_lvds *lvds)
-> +{
-> +	regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON2,
-> +			   RK3568_LVDS0_MODE_EN(1) | RK3568_LVDS0_P2S_EN(1),
-> +			   RK3568_LVDS0_MODE_EN(0) | RK3568_LVDS0_P2S_EN(0));
+On Thu, Jan 12, 2023 at 10:38:05PM -0800, Randy Dunlap wrote:
+> Fix multiple W=3D1 kernel-doc warnings in i2c-rk3x.c:
+>=20
+> drivers/i2c/busses/i2c-rk3x.c:83: warning: missing initial short descript=
+ion on line:
+>  * struct i2c_spec_values:
+> drivers/i2c/busses/i2c-rk3x.c:139: warning: missing initial short descrip=
+tion on line:
+>  * struct rk3x_i2c_calced_timings:
+> drivers/i2c/busses/i2c-rk3x.c:162: warning: missing initial short descrip=
+tion on line:
+>  * struct rk3x_i2c_soc_data:
+> drivers/i2c/busses/i2c-rk3x.c:242: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Generate a START condition, which triggers a REG_INT_START interrupt.
+> drivers/i2c/busses/i2c-rk3x.c:261: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+> drivers/i2c/busses/i2c-rk3x.c:304: warning: expecting prototype for Setup=
+ a read according to i2c(). Prototype was for rk3x_i2c_prepare_read() inste=
+ad
+> drivers/i2c/busses/i2c-rk3x.c:335: warning: expecting prototype for Fill =
+the transmit buffer with data from i2c(). Prototype was for rk3x_i2c_fill_t=
+ransmit_buf() instead
+> drivers/i2c/busses/i2c-rk3x.c:535: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Get timing values of I2C specification
+> drivers/i2c/busses/i2c-rk3x.c:552: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Calculate divider values for desired SCL frequency
+> drivers/i2c/busses/i2c-rk3x.c:713: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Calculate timing values for desired SCL frequency
+> drivers/i2c/busses/i2c-rk3x.c:963: warning: This comment starts with '/**=
+', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc=
+=2Erst
+>  * Setup I2C registers for an I2C operation specified by msgs, num.
+>=20
+> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: Wolfram Sang <wsa@kernel.org>
+> Cc: linux-i2c@vger.kernel.org
 
-Same here:
+Applied to for-current, thanks!
 
-	regmap_write(lvds->grf, RK3568_GRF_VO_CON2,
-		     RK3568_LVDS0_MODE_EN(0) | RK3568_LVDS0_P2S_EN(0));
 
-What about the RK3568_LVDS0_P2S_EN bit? This is set in probe() and
-cleared here. For symmetry reasons shouldn't it be set in
-rk3568_lvds_poweron() instead?
+--1mLmRMcLlcLNbu+v
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> +
-> +	pm_runtime_put(lvds->dev);
-> +	clk_disable(lvds->pclk);
-> +}
-> +
-> +static int rk3568_lvds_grf_config(struct drm_encoder *encoder,
-> +				struct drm_display_mode *mode)
-> +{
-> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-> +
-> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
-> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
-> +			      lvds->output);
-> +		return -EINVAL;
-> +	}
-> +
-> +	/* Set format */
-> +	return regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON0,
-> +				  RK3568_LVDS0_SELECT(3),
-> +				  RK3568_LVDS0_SELECT(lvds->format));
+-----BEGIN PGP SIGNATURE-----
 
-It seems lvds->format does not match what the register expects. We
-have:
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmPKXPUACgkQFA3kzBSg
+KbZZlg//UOAed1QTL3dLoSCkkvMRc1WMvTIzeC1OkEhJ0MZCp0/dt0f0pm1N5HFE
+gRutbiIsWvT/9Tgl/QHE5GZFTtjayRO6QMGBkbZDh2EYTTNV/+zN5BfzgcVd4cZj
+PY68lXO6pTp/2KEN7BqvHgTAnxffZwkT9/di8q8K9kTvRa7DHkTns5WYKNbLJY3H
+c0cJL5uuGbJIKRFvDE6sBP+B1FvxJe9UTNlQYNuGMd92NanFFI+73+RwQl4jCWlk
+CSuEbO7m5mmIjSaWkjBL2D4WCa/5d3YcIHCT41qfQ6hnaiqFn6+zC8AQRQM8TX/S
+TNftvL054IGuCoMkUiGZdyaO0CwpEWwclp1r9pC38896I4W0MSlivAhFOvlCVszJ
+cts3x85CH11XhicO3sT76nGsIv2nIMHbEINQmZ7aMWzrfcBYlJ/mLKR9nbKbDPC1
+sZOxYq5xE4+g8ogFJpSAb97eT82LyIQpalRhL2NKFIr4LbuNPgrN/cfNp1nV6egh
+WT6WwglfD5HdDKu9bH0gDVFEkRPDWUxyR+0UTeg+SfGO6ITV1C0QyODdRYV7si4U
+7FAqVqB1TR7xv3xvs7YVvvYNysE2Bj0mCPm1yTu/vyDrLmGO8XfTGrAYvIJ1YT4Y
+OXhvYoxfbjSxY8SrYFDX6JU9iux5Bx6y+OjMO1Jedgm8foD6qkU=
+=EIvS
+-----END PGP SIGNATURE-----
 
-#define LVDS_VESA_24                            0
-#define LVDS_JEIDA_24                           1
-#define LVDS_VESA_18                            2
-#define LVDS_JEIDA_18                           3
+--1mLmRMcLlcLNbu+v--
 
-According to the reference manual the register expects:
 
-lvdsformat_lvds0_select
- 2'b00: VESA 24bit
- 2'b01: JEIDA 24bit
- 2'b10: JEIDA 18bit
- 2'b11: VESA 18bit
-
-I only have the RK3568 manual but no PX30 or RK3288 manual, so I can't say if
-they changed the register mapping between the SoCs or if it's wrong on
-the other SoCs as well.
-
-BTW you correctly set the mask to RK3568_LVDS0_SELECT(3), but for the
-PX30 it looks wrong:
-
-	return regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
-				  PX30_LVDS_FORMAT(lvds->format),
-				  PX30_LVDS_FORMAT(lvds->format));
-
-I really think regmap_write() would be better to use here to avoid such
-things.
-
-> +
-> +static void rk3568_lvds_encoder_enable(struct drm_encoder *encoder)
-> +{
-> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-> +	struct drm_display_mode *mode = &encoder->crtc->state->adjusted_mode;
-
-'mode' is unused.
-
-> +	int ret;
-> +
-> +	drm_panel_prepare(lvds->panel);
-> +
-> +	ret = rk3568_lvds_poweron(lvds);
-> +	if (ret) {
-> +		DRM_DEV_ERROR(lvds->dev, "failed to power on LVDS: %d\n", ret);
-> +		drm_panel_unprepare(lvds->panel);
-> +		return;
-> +	}
-> +
-> +	ret = rk3568_lvds_grf_config(encoder, mode);
-> +	if (ret) {
-> +		DRM_DEV_ERROR(lvds->dev, "failed to configure LVDS: %d\n", ret);
-> +		drm_panel_unprepare(lvds->panel);
-> +		return;
-> +	}
-> +
-> +	drm_panel_enable(lvds->panel);
-> +}
-> +
-> +static void rk3568_lvds_encoder_disable(struct drm_encoder *encoder)
-> +{
-> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-> +
-> +	drm_panel_disable(lvds->panel);
-> +	rk3568_lvds_poweroff(lvds);
-> +	drm_panel_unprepare(lvds->panel);
-> +}
-> +
->  static const
->  struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
->  	.enable = rk3288_lvds_encoder_enable,
-> @@ -447,6 +531,13 @@ struct drm_encoder_helper_funcs px30_lvds_encoder_helper_funcs = {
->  	.atomic_check = rockchip_lvds_encoder_atomic_check,
->  };
->  
-> +static const
-> +struct drm_encoder_helper_funcs rk3568_lvds_encoder_helper_funcs = {
-> +	.enable = rk3568_lvds_encoder_enable,
-> +	.disable = rk3568_lvds_encoder_disable,
-> +	.atomic_check = rockchip_lvds_encoder_atomic_check,
-> +};
-> +
->  static int rk3288_lvds_probe(struct platform_device *pdev,
->  			     struct rockchip_lvds *lvds)
->  {
-> @@ -491,6 +582,26 @@ static int rk3288_lvds_probe(struct platform_device *pdev,
->  	return 0;
->  }
->  
-> +static int rockchip_lvds_phy_probe(struct platform_device *pdev,
-> +				   struct rockchip_lvds *lvds)
-> +{
-> +	int ret;
-> +
-> +	lvds->dphy = devm_phy_get(&pdev->dev, "dphy");
-> +	if (IS_ERR(lvds->dphy))
-> +		return PTR_ERR(lvds->dphy);
-> +
-> +	ret = phy_init(lvds->dphy);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return phy_power_on(lvds->dphy);
-> +}
-
-You factor out the steps done for px30 to a separate function in order
-to reuse it on rk3568. You could make a separate patch from this to
-make it easier to understand and to verify that there is no functional
-change involved for the px30.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--===============1260267916205334644==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1260267916205334644==--
+
