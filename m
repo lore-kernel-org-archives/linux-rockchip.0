@@ -4,58 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E5CC05027
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5378C05027
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NEF3bcy2ZU8I0bV1Pq/dMh7zyrl8LQIYlQyIxCRAbkg=; b=XU8vdzG3UGBJMS
-	DcUGrT9KOexEC/6VSATBCDb7DdKJ2f0ldx568u0T+8yUosMgaxPG5Gob0aUjQ1d+yEaweQlQ8XgUr
-	513B25gousT3Jf5p42U4gFxkMbnZh1M7MN9ZtLZU0ZGBgUPRpi5wRH1r+seM8ErxKi0ERBR5lUGOp
-	udUkJ8elja3S6RQaj+yePdkmZ/mHQv78b8AsWWG41hdYv/0aTJMUYU0B2KGktptwE+/nEqYfNWwcG
-	OqE8vRr/TOOiGM6sTAK/UXkZEzQUYSrbLQrFSnjRZMBWG7nG/YD0swQ+QFuY1YNixoD/IC1mxuA5u
-	ACJR/JLLDfubyuObGxUg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nEqFFF2EVOeiK/MCBCaqRPxzYyxF/wPXR0fim4VuuhQ=; b=SqjxU+2DY/TXus
+	UbwlGv2OYMmOqs8W3lM33sJxKjJNcoSbdZloUr8q59JMUF5uVUgHCuCUEwzG/M0JW1AB3WgW2JTZQ
+	f0oaFHLWidqsBCFkFRe380vAm7F5dXLyiVjTw+uuNSou3EFpZfQnzpyQZj9AhYkCYwF0cV9rYlfXl
+	VlIBKXGcaoQAVVCpTGIGYg9kbezfEr0VUs8qMT0tf5oukFrFnZkeILYisFp/SiHt9t+YDcGhKGGHn
+	/euRad6k0DQO7UhBEniz/Q5OyjQ59HBhhOyUrWzce0wQHySBneNYKUPk0EZhf6GM4B+Q8BRaTnaq1
+	TXoPGCT0vGbBP0YmHppw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInUd-009GyY-9M; Fri, 20 Jan 2023 09:15:27 +0000
+	id 1pInXu-009IiQ-W3; Fri, 20 Jan 2023 09:18:51 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInTr-009GZ7-0z
-	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 09:14:41 +0000
-Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
-	by metis.ext.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <m.tretter@pengutronix.de>)
-	id 1pInTf-0001QK-8T; Fri, 20 Jan 2023 10:14:27 +0100
-From: Michael Tretter <m.tretter@pengutronix.de>
-Subject: [PATCH RESEND 0/2] media: rockchip: rga: Add rk3568 support
-Date: Fri, 20 Jan 2023 10:14:21 +0100
-Message-Id: <20230119-rk3568-rga-v1-0-43d4d14365e6@pengutronix.de>
+	id 1pInW4-009HoQ-JZ
+	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 09:16:58 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pInVs-00022D-Ic; Fri, 20 Jan 2023 10:16:44 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pInVp-0004z4-60; Fri, 20 Jan 2023 10:16:41 +0100
+Date: Fri, 20 Jan 2023 10:16:41 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Alibek Omarov <a1ba.omarov@gmail.com>
+Cc: alexander.sverdlin@siemens.com, macromorgan@hotmail.com,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] drm/rockchip: lvds: add rk3568 support
+Message-ID: <20230120091641.GL24755@pengutronix.de>
+References: <20230119184807.171132-1-a1ba.omarov@gmail.com>
+ <20230119184807.171132-2-a1ba.omarov@gmail.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAG1bymMC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI2MDQ0NL3aJsY1MzC92i9ETdFMMkg2QgME+yMFICakhKLE7VTSpKzEvOAGnJ
- TSwuSS0CSRQUpaZlVoBtiVYKcg129XNRiq2tBQC8oywVfQAAAA==
-To: Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>
-X-Mailer: b4 0.11.2
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:1101:1d::54
-X-SA-Exim-Mail-From: m.tretter@pengutronix.de
+Content-Disposition: inline
+In-Reply-To: <20230119184807.171132-2-a1ba.omarov@gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_011439_196962_59CC1819 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20230120_011656_875217_D9D34354 
+X-CRM114-Status: GOOD (  37.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +85,211 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RGA2 on the Rockchip rk3568 is the same core as the RGA2 on the Rockchip
-rk3288.
+On Thu, Jan 19, 2023 at 09:48:03PM +0300, Alibek Omarov wrote:
+> One of the ports of RK3568 can be configured as LVDS, re-using the DSI DPHY
+> 
+> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 144 +++++++++++++++++++++--
+>  drivers/gpu/drm/rockchip/rockchip_lvds.h |  10 ++
+>  2 files changed, 147 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index 68f6ebb33460..83c60240af85 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -433,6 +433,90 @@ static void px30_lvds_encoder_disable(struct drm_encoder *encoder)
+>  	drm_panel_unprepare(lvds->panel);
+>  }
+>  
+> +static int rk3568_lvds_poweron(struct rockchip_lvds *lvds)
+> +{
+> +	int ret;
+> +
+> +	ret = clk_enable(lvds->pclk);
+> +	if (ret < 0) {
+> +		DRM_DEV_ERROR(lvds->dev, "failed to enable lvds pclk %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = pm_runtime_get_sync(lvds->dev);
+> +	if (ret < 0) {
+> +		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
+> +		clk_disable(lvds->pclk);
+> +		return ret;
+> +	}
+> +
+> +	/* Enable LVDS mode */
+> +	return regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON2,
+> +				  RK3568_LVDS0_MODE_EN(1),
+> +				  RK3568_LVDS0_MODE_EN(1));
 
-This series adds the necessary device tree binding and node in the device tree
-to enable the RGA2 on the Rockchip rk3568.
+Isn't this the same as:
 
-I tested the driver with the GStreamer v4l2convert element on a Rock3 Model A
-board.
+	regmap_write(lvds->grf, RK3568_GRF_VO_CON2, RK3568_LVDS0_MODE_EN(1));
 
-This is a RESEND including the linux-media list, as Heiko asked for an
-Acked-by from someone from media.
+Unless I am missing something I find a plain regmap_write() easier to
+read.
 
-Michael
+> +}
+> +
+> +static void rk3568_lvds_poweroff(struct rockchip_lvds *lvds)
+> +{
+> +	regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON2,
+> +			   RK3568_LVDS0_MODE_EN(1) | RK3568_LVDS0_P2S_EN(1),
+> +			   RK3568_LVDS0_MODE_EN(0) | RK3568_LVDS0_P2S_EN(0));
 
-To: Jacob Chen <jacob-chen@iotwrt.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+Same here:
 
----
-Michael Tretter (2):
-      media: dt-bindings: media: rockchip-rga: add rockchip,rk3568-rga
-      arm64: dts: rockchip: Add RGA2 support to rk356x
+	regmap_write(lvds->grf, RK3568_GRF_VO_CON2,
+		     RK3568_LVDS0_MODE_EN(0) | RK3568_LVDS0_P2S_EN(0));
 
- Documentation/devicetree/bindings/media/rockchip-rga.yaml |  4 +++-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi                  | 11 +++++++++++
- 2 files changed, 14 insertions(+), 1 deletion(-)
----
-base-commit: 5dc4c995db9eb45f6373a956eb1f69460e69e6d4
-change-id: 20230119-rk3568-rga-d1b0cccc7b82
+What about the RK3568_LVDS0_P2S_EN bit? This is set in probe() and
+cleared here. For symmetry reasons shouldn't it be set in
+rk3568_lvds_poweron() instead?
 
-Best regards,
+> +
+> +	pm_runtime_put(lvds->dev);
+> +	clk_disable(lvds->pclk);
+> +}
+> +
+> +static int rk3568_lvds_grf_config(struct drm_encoder *encoder,
+> +				struct drm_display_mode *mode)
+> +{
+> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+> +
+> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
+> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
+> +			      lvds->output);
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Set format */
+> +	return regmap_update_bits(lvds->grf, RK3568_GRF_VO_CON0,
+> +				  RK3568_LVDS0_SELECT(3),
+> +				  RK3568_LVDS0_SELECT(lvds->format));
+
+It seems lvds->format does not match what the register expects. We
+have:
+
+#define LVDS_VESA_24                            0
+#define LVDS_JEIDA_24                           1
+#define LVDS_VESA_18                            2
+#define LVDS_JEIDA_18                           3
+
+According to the reference manual the register expects:
+
+lvdsformat_lvds0_select
+ 2'b00: VESA 24bit
+ 2'b01: JEIDA 24bit
+ 2'b10: JEIDA 18bit
+ 2'b11: VESA 18bit
+
+I only have the RK3568 manual but no PX30 or RK3288 manual, so I can't say if
+they changed the register mapping between the SoCs or if it's wrong on
+the other SoCs as well.
+
+BTW you correctly set the mask to RK3568_LVDS0_SELECT(3), but for the
+PX30 it looks wrong:
+
+	return regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
+				  PX30_LVDS_FORMAT(lvds->format),
+				  PX30_LVDS_FORMAT(lvds->format));
+
+I really think regmap_write() would be better to use here to avoid such
+things.
+
+> +
+> +static void rk3568_lvds_encoder_enable(struct drm_encoder *encoder)
+> +{
+> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+> +	struct drm_display_mode *mode = &encoder->crtc->state->adjusted_mode;
+
+'mode' is unused.
+
+> +	int ret;
+> +
+> +	drm_panel_prepare(lvds->panel);
+> +
+> +	ret = rk3568_lvds_poweron(lvds);
+> +	if (ret) {
+> +		DRM_DEV_ERROR(lvds->dev, "failed to power on LVDS: %d\n", ret);
+> +		drm_panel_unprepare(lvds->panel);
+> +		return;
+> +	}
+> +
+> +	ret = rk3568_lvds_grf_config(encoder, mode);
+> +	if (ret) {
+> +		DRM_DEV_ERROR(lvds->dev, "failed to configure LVDS: %d\n", ret);
+> +		drm_panel_unprepare(lvds->panel);
+> +		return;
+> +	}
+> +
+> +	drm_panel_enable(lvds->panel);
+> +}
+> +
+> +static void rk3568_lvds_encoder_disable(struct drm_encoder *encoder)
+> +{
+> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+> +
+> +	drm_panel_disable(lvds->panel);
+> +	rk3568_lvds_poweroff(lvds);
+> +	drm_panel_unprepare(lvds->panel);
+> +}
+> +
+>  static const
+>  struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
+>  	.enable = rk3288_lvds_encoder_enable,
+> @@ -447,6 +531,13 @@ struct drm_encoder_helper_funcs px30_lvds_encoder_helper_funcs = {
+>  	.atomic_check = rockchip_lvds_encoder_atomic_check,
+>  };
+>  
+> +static const
+> +struct drm_encoder_helper_funcs rk3568_lvds_encoder_helper_funcs = {
+> +	.enable = rk3568_lvds_encoder_enable,
+> +	.disable = rk3568_lvds_encoder_disable,
+> +	.atomic_check = rockchip_lvds_encoder_atomic_check,
+> +};
+> +
+>  static int rk3288_lvds_probe(struct platform_device *pdev,
+>  			     struct rockchip_lvds *lvds)
+>  {
+> @@ -491,6 +582,26 @@ static int rk3288_lvds_probe(struct platform_device *pdev,
+>  	return 0;
+>  }
+>  
+> +static int rockchip_lvds_phy_probe(struct platform_device *pdev,
+> +				   struct rockchip_lvds *lvds)
+> +{
+> +	int ret;
+> +
+> +	lvds->dphy = devm_phy_get(&pdev->dev, "dphy");
+> +	if (IS_ERR(lvds->dphy))
+> +		return PTR_ERR(lvds->dphy);
+> +
+> +	ret = phy_init(lvds->dphy);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return phy_power_on(lvds->dphy);
+> +}
+
+You factor out the steps done for px30 to a separate function in order
+to reuse it on rk3568. You could make a separate patch from this to
+make it easier to understand and to verify that there is no functional
+change involved for the px30.
+
+Sascha
+
 -- 
-Michael Tretter <m.tretter@pengutronix.de>
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
