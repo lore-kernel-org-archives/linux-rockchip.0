@@ -4,36 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1C9BC05027
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:15:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D52EDC25B4E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jan 2023 09:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MMEzEJ9nNScRXWURIc+bXtENiBkj62hkQdU8eW5rIKg=; b=kDvzYu+NND2HXY
-	9irtc1OAGJ0DxuCSORzEn8eNh57OlSKkelrukdlBttQOv7bfm9cBKVyME7nrh279JVWyG13DAxieq
-	p/PNZ2IRKthMVI3E9kUB67FnVB0CetqK/hjzTVams6CKJ7w7a9ozKLvYD7sgqp376avLe8TiiUS3y
-	ogn3QyY0DXq0QGNsn9oT+C6w8ZlDFAEpUOMdD6GWOME69hVEHkCmE+cQtaUO4Y4hv374+cxyhz6wV
-	r5xrFkaBZEOQxXgdKDwH8c2Ob21B7o5Q08uHKlhWwbaguWYvDfajKW34J8k8u61QhhDI8sIrjRV3q
-	mCCduYNu1IKQxcKFynAw==;
+	List-Owner; bh=pqtL8kTwZ5aZiAcJYvgUnjlBx7Q5o7ugOzEBoFBY9Hg=; b=D8GQxcpyLJGYDa
+	M97fUPbQ3cztnZUEgkDLde/WgMml5aFe8KtaHLkTgAz58pVxuFMPRLUfeknWJxcAYE5GqkAuT5Uzm
+	rLB2CJ2yCIt2c39Oyk6mG9eNycosRmAnL155PtjD7oGsTbzigoi1hNJPdTyXq5TrEGz8I6LrfOemH
+	6sjvmSbh80B/QGzu0P/FPImPJPYhGtHpGzrEAmbBeCyxWqr4e47cmwiRpg98L6morUkfciPhq/UT/
+	k0JcZB1WkXXF7018amUJD44VCvh6K4JqKheyEcLm8ndEKpHOUnmkSqxnhfBWU3oE/NuU9x0E9L+nO
+	Qu2wkXaRfjVrTIA04W2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInUY-009Gvg-O9; Fri, 20 Jan 2023 09:15:22 +0000
+	id 1pInUb-009Gwo-7x; Fri, 20 Jan 2023 09:15:25 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pInTr-009GZO-0B
-	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 09:14:41 +0000
+	id 1pInTr-009GZM-1X
+	for linux-rockchip@lists.infradead.org; Fri, 20 Jan 2023 09:14:42 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.ext.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1pInTg-0001QK-Bq; Fri, 20 Jan 2023 10:14:28 +0100
+	id 1pInTf-0001QK-QB; Fri, 20 Jan 2023 10:14:27 +0100
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 20 Jan 2023 10:14:22 +0100
-Subject: [PATCH RESEND 2/2] arm64: dts: rockchip: Add RGA2 support to rk356x
+Date: Fri, 20 Jan 2023 10:14:21 +0100
+Subject: [PATCH RESEND 1/2] media: dt-bindings: media: rockchip-rga: add
+ rockchip,rk3568-rga
 MIME-Version: 1.0
-Message-Id: <20230119-rk3568-rga-v1-2-43d4d14365e6@pengutronix.de>
+Message-Id: <20230119-rk3568-rga-v1-1-43d4d14365e6@pengutronix.de>
 References: <20230119-rk3568-rga-v1-0-43d4d14365e6@pengutronix.de>
 In-Reply-To: <20230119-rk3568-rga-v1-0-43d4d14365e6@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>,
@@ -53,9 +54,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230120_011439_100151_D15277E9 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230120_011439_200304_16E89313 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,37 +72,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3568 also features a RGA2 block. Add the necessary device tree
-node.
+Add a new compatible for the rk3568 Rockchip SoC, which also features an
+RGA, which is called RGA2 in the TRM Part2. It is the same core as used
+on the rk3288, which documents the same RGA2.
 
-Acked-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Specify a new compatible for the rk3568 to be able to handle unknown
+SoC-specific differences in the driver.
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ Documentation/devicetree/bindings/media/rockchip-rga.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 5706c3e24f0a..704b13f7f717 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -612,6 +612,17 @@ vdpu_mmu: iommu@fdea0800 {
- 		#iommu-cells = <0>;
- 	};
+diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+index dd645ddccb07..ea2342222408 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+@@ -21,7 +21,9 @@ properties:
+       - const: rockchip,rk3288-rga
+       - const: rockchip,rk3399-rga
+       - items:
+-          - const: rockchip,rk3228-rga
++          - enum:
++              - rockchip,rk3228-rga
++              - rockchip,rk3568-rga
+           - const: rockchip,rk3288-rga
  
-+	rga: rga@fdeb0000 {
-+		compatible = "rockchip,rk3568-rga", "rockchip,rk3288-rga";
-+		reg = <0x0 0xfdeb0000 0x0 0x180>;
-+		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru CLK_RGA_CORE>;
-+		clock-names = "aclk", "hclk", "sclk";
-+		resets = <&cru SRST_RGA_CORE>, <&cru SRST_A_RGA>, <&cru SRST_H_RGA>;
-+		reset-names = "core", "axi", "ahb";
-+		power-domains = <&power RK3568_PD_RGA>;
-+	};
-+
- 	vepu: video-codec@fdee0000 {
- 		compatible = "rockchip,rk3568-vepu";
- 		reg = <0x0 0xfdee0000 0x0 0x800>;
+   reg:
 
 -- 
 2.30.2
