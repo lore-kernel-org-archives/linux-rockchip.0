@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E5A2C004D4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jan 2023 11:09:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DECEC004D4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jan 2023 11:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rvlBb1pgfXjJwb3t7sWtwXGsdaYfoWApPDH6eK20gCY=; b=E1F2tce/QK42iK
-	qZDw0emlaT7GwJNfkwIWksKpI59XwhEzNXJRZzUwEZIYBXQNfE3cc8KE5KSUnFuJO2Jlu86nCBZal
-	n8+WlKnrVxsp4IxDMShuQwj5pbk7LazMXfAwVES07qYAb3mqDJap2fK21UCg2ANx8xheLajuiQk/B
-	IMNarXsryXdtWilPigFHOB+6Pzn6igG8x37UapD6xUGtKfgAuLJBImDy0w8E5ajxN9gy4BcTW8wEv
-	AlgEMsei2SvPT0bpzTrpf4vepZSXtvuTkgDZ8c4TqsGYhz+3rOXp7/B1sHyFpdDdM0pbmGeBBocL4
-	bwZ/Ugfhj/c8a479C5Jg==;
+	List-Owner; bh=kGHW47wvEAIUgrzudQbQ+JPGSbm84jbZKzpSXg6ZCF0=; b=DuGRG1YX1UQ+pm
+	seM9NKI+Ifqs3GL014Za98VnSCvm32M4U8BtjHkYJN0dxKFdhzN+DV4wG6BfUI3iwijVA/dGmZVw3
+	m21hKbf2zvukHVCJXwkcV+uJwywV6TsFZWvHoiCu7T8jSsrrBnz+6LpnZ5RYYNVufMRbB7+knUlBY
+	YMZcrkaIW9rn4JQAw/UvZwZZlJi/0U1QXTalyhVnjMmEar7Y3eaAAqZAB5Xwg74hK3z+vuNB7NZjN
+	RNrkm8T+56Y4e6meooYIzEEqUWtyz3SCcs0PeNKLPm3DzMoP34ke+D9LfSWwd0DQMm0G2+r2oJCph
+	1Bf7Kp/wzRd3GG/g9vCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJBk7-00DjTU-0t; Sat, 21 Jan 2023 11:09:03 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1pJBkZ-00DjhB-FO; Sat, 21 Jan 2023 11:09:31 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJBjn-00DjO6-PD; Sat, 21 Jan 2023 11:08:45 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id u19so19816895ejm.8;
-        Sat, 21 Jan 2023 03:08:41 -0800 (PST)
+	id 1pJBk6-00DjRi-2s; Sat, 21 Jan 2023 11:09:04 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 18so9470048edw.7;
+        Sat, 21 Jan 2023 03:08:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=v3b7+rhgpzwNviPg8rPLBXq+7U8FJNnHoMKxitjzZvU=;
-        b=lLQotlq9YYZaxdFooJZBoQlundnE/fFNTBIAufPgr/zxzvpq8RhkaAMbyjX8ENQCop
-         tODPr0V5RMIZq/b5tIbV3IsWQRH6obQHk+BNmMuhdk5yAQ9btE29bAlUeR6HOtpgCuBC
-         6eXGrsSfDpkHEnVPCFyumF++ZUi7v6uwIHKvnF2AhVAslIstX/Oqwir4n2aOqy1JKxkx
-         EBy0n2A+hY6c8mLUaSQNtZRIZ2RSPYnCgkgS4PmDKxG5z1nDlraagUPFNHiHexp82r8d
-         1rOTi8wtBlShKMGtZG9xUY/j7yOH546QcLdreQyhXrcTi1wTVwp2+6JvJrPz8S+HtGXZ
-         pi0A==
+        bh=NapgBQpV8EOK/qEREONNW/kBlocdhbxkdr9Xp/TagqQ=;
+        b=LqgYzPB6YDESYzT287UAP35a00Rf4oo9S3j+AaIbuobjgRfk1ePOCwp/HkEa6V+tcd
+         xSpWMx/i3PNbg+Yzk+yc20TEgTJ7FqZBGh28elBWvkttJwKIqyZWpbxLf0BrXmjMwWgd
+         kSkC71tthAKTa6GdD5M2nfqW5b713l59KE3/sSIrzKrluYEFHiO4bbwemRjOs5BQLk4j
+         0yds9xwzMeEbFpCKBxvdFUNZ1CJtOs4QnCMN6xabzRitXO+KYXZv20gJOUAWmwr+Xrf5
+         ply63AIcx7xbMh1mLn7SbjB5awNH4e/L+fOG/sM5dxEmgVBhA3/xJ2SGEbRifSFZplBY
+         gjJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=v3b7+rhgpzwNviPg8rPLBXq+7U8FJNnHoMKxitjzZvU=;
-        b=kBZT7x/bdndBw2+RCpObS90rFz73gDq9KjxiGszjDbl3BY4GZt06J9P5trcYYByo4N
-         1VSKZF8n0fheyckJiH1jxWOckJ5DzHrJJ7U34X4ebkgTo8m9lQoPw8Hpla3xJ5yhcMTz
-         3nCMuV4TC+9vTolCp8RuNqbEjXmSJqU8TqgaJWb0iKUtxZDTEDrp6ytPgeRoiM6Niv+H
-         iddZIcY2wVsLjPISaWHoCODESBFXVFKHNTZm3AlvU75ufifa8frOTZwW1I0dz148A0o2
-         3y3jV2va76CX8fqoYasR413QtWE6/cJUCoCW+IpbEg0bZR66j40xEfooloO9N676QOmz
-         etaQ==
-X-Gm-Message-State: AFqh2kqrXKDeWCYjIfRfYyI3HCKv5kOtjTaJPB0AAHZQ5yFS61QG+9fZ
-	jaCg0g4ih2ByAVl9eFoTz9o=
-X-Google-Smtp-Source: AMrXdXvnOIE3+iioq9IO2ZumHcM3PA+mj8N56wKlF2oayqC2u2XW5HIy0DBO2GVHGowlLY8GH4BASg==
-X-Received: by 2002:a17:906:1605:b0:872:41a5:7c78 with SMTP id m5-20020a170906160500b0087241a57c78mr23807819ejd.3.1674299319795;
-        Sat, 21 Jan 2023 03:08:39 -0800 (PST)
+        bh=NapgBQpV8EOK/qEREONNW/kBlocdhbxkdr9Xp/TagqQ=;
+        b=rDlGmdkZUr30G8FP955nXjYcpAge7hhYyqZ81FeYeo9zBzQnQ+c5K9fAfxndoNCVv6
+         Y3flOqvn8Qorku9JUGaCvXyzwS1tM1pz7cg/3jzcz6aeCzNhp+PvdnAOP1l+OpM/IRlR
+         HH/QmYFYU5/tyHFbaMsifWq1+eXayanKevVsEblTAu4/7GkAzGrw3lmPyNF/PstkER0V
+         KRvkoCeJnJHmg2u56RswrJJBG3m9FvCbsWsa6Q3wS3oLolX37zEXzX4zIQEqdSO4DEDC
+         FhvzXh60buqeRF24yctvQiGthht0HzbfQsjuW5e6JFkbyBTFDwaZKzfEZX+irBi8S7IV
+         rstA==
+X-Gm-Message-State: AFqh2kr+IEdZOMU6aB2GdV7Ppw6dYCICAtS98jvapKnLstriCkK5V7zB
+	xljOlSqCHRCa2v0qKvuGwKY=
+X-Google-Smtp-Source: AMrXdXsaanSGKMj2tYPiJEMycWxT/h/s1f6jogsJGld+WEAr2SUlS4Z6JgfaIdq2UoUttLxzM45Dwg==
+X-Received: by 2002:a05:6402:1044:b0:498:8c60:d7d9 with SMTP id e4-20020a056402104400b004988c60d7d9mr17820974edu.12.1674299336230;
+        Sat, 21 Jan 2023 03:08:56 -0800 (PST)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id vo13-20020a170907a80d00b0086a4bb74cf7sm11582476ejc.212.2023.01.21.03.08.38
+        by smtp.gmail.com with ESMTPSA id bt16-20020a0564020a5000b00482e0c55e2bsm18388259edb.93.2023.01.21.03.08.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Jan 2023 03:08:39 -0800 (PST)
-Message-ID: <890be9a0-8e82-a8f4-bc15-d5d1597343c2@gmail.com>
-Date: Sat, 21 Jan 2023 12:08:38 +0100
+        Sat, 21 Jan 2023 03:08:55 -0800 (PST)
+Message-ID: <a071f3ee-a560-93bf-9c9e-0c1edf897d6a@gmail.com>
+Date: Sat, 21 Jan 2023 12:08:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 3/8] gpio: gpio-rockchip: parse gpio-ranges for bank id
+Subject: [PATCH v2 4/8] ARM: dts: rockchip: add gpio-ranges property to gpio
+ nodes
 To: linus.walleij@linaro.org, brgl@bgdev.pl
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
  linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
@@ -77,8 +78,8 @@ References: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
 Content-Language: en-US
 In-Reply-To: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230121_030843_864296_A9ED8AD9 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20230121_030902_184672_39BF72D0 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,61 +96,389 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Parse the gpio-ranges property in Rockchip gpio nodes to be
+Add a gpio-ranges property to Rockchip gpio nodes to be
 independent from aliases and probe order for our bank id.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- drivers/gpio/gpio-rockchip.c | 24 ++++++++++++++++++------
- 1 file changed, 18 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index e5de15a2a..df74b71aa 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -702,24 +702,36 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
--	struct device_node *pctlnp = of_get_parent(np);
-+	struct device_node *pctlnp;
- 	struct pinctrl_dev *pctldev = NULL;
- 	struct rockchip_pin_bank *bank = NULL;
- 	struct rockchip_pin_deferred *cfg;
-+	struct of_phandle_args args;
- 	static int gpio;
- 	int id, ret;
+Number of pins per bank not checked with datasheet.
+Use default 32 for now.
+---
+ arch/arm/boot/dts/rk3036.dtsi  | 3 +++
+ arch/arm/boot/dts/rk3066a.dtsi | 6 ++++++
+ arch/arm/boot/dts/rk3128.dtsi  | 4 ++++
+ arch/arm/boot/dts/rk3188.dtsi  | 4 ++++
+ arch/arm/boot/dts/rk322x.dtsi  | 8 ++++++++
+ arch/arm/boot/dts/rk3288.dtsi  | 9 +++++++++
+ arch/arm/boot/dts/rv1108.dtsi  | 4 ++++
+ arch/arm/boot/dts/rv1126.dtsi  | 5 +++++
+ 8 files changed, 43 insertions(+)
 
--	if (!np || !pctlnp)
-+	if (!np)
-+		return -ENODEV;
-+
-+	ret = of_parse_phandle_with_fixed_args(np, "gpio-ranges", 3, 0, &args);
-+	if (ret == 0) {
-+		pctlnp = args.np;
-+		id = args.args[1] / 32;
-+	} else {
-+		pctlnp = of_get_parent(np);
-+		id = of_alias_get_id(np, "gpio");
-+		if (id < 0)
-+			id = gpio++;
-+	}
-+
-+	if (!pctlnp)
- 		return -ENODEV;
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 78686fc72..d99e4ea31 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -582,6 +582,7 @@
+ 			clocks = <&cru PCLK_GPIO0>;
 
- 	pctldev = of_pinctrl_get(pctlnp);
-+	of_node_put(pctlnp);
- 	if (!pctldev)
- 		return -EPROBE_DEFER;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
 
--	id = of_alias_get_id(np, "gpio");
--	if (id < 0)
--		id = gpio++;
--
- 	bank = rockchip_gpio_find_bank(pctldev, id);
- 	if (!bank)
- 		return -EINVAL;
+ 			interrupt-controller;
+@@ -595,6 +596,7 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -608,6 +610,7 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index de9915d94..6ff392735 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -280,6 +280,7 @@
+ 			clocks = <&cru PCLK_GPIO0>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -293,6 +294,7 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -306,6 +308,7 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -319,6 +322,7 @@
+ 			clocks = <&cru PCLK_GPIO3>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -332,6 +336,7 @@
+ 			clocks = <&cru PCLK_GPIO4>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 128 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -345,6 +350,7 @@
+ 			clocks = <&cru PCLK_GPIO6>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 192 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+diff --git a/arch/arm/boot/dts/rk3128.dtsi b/arch/arm/boot/dts/rk3128.dtsi
+index b63bd4ad3..0ea277eb7 100644
+--- a/arch/arm/boot/dts/rk3128.dtsi
++++ b/arch/arm/boot/dts/rk3128.dtsi
+@@ -476,6 +476,7 @@
+ 			interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO0>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -487,6 +488,7 @@
+ 			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO1>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -498,6 +500,7 @@
+ 			interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO2>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -509,6 +512,7 @@
+ 			interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO3>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 44b54af0b..6677e4a10 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -231,6 +231,7 @@
+ 			clocks = <&cru PCLK_GPIO0>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -244,6 +245,7 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -257,6 +259,7 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -270,6 +273,7 @@
+ 			clocks = <&cru PCLK_GPIO3>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index ffc16d6b9..a87db48c5 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -955,10 +955,12 @@
+ 			clocks = <&cru PCLK_GPIO0>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
++			rockchip,gpio-controller = <0>;
+ 		};
+
+ 		gpio1: gpio@11120000 {
+@@ -968,10 +970,12 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
++			rockchip,gpio-controller = <1>;
+ 		};
+
+ 		gpio2: gpio@11130000 {
+@@ -981,10 +985,12 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
++			rockchip,gpio-controller = <2>;
+ 		};
+
+ 		gpio3: gpio@11140000 {
+@@ -994,10 +1000,12 @@
+ 			clocks = <&cru PCLK_GPIO3>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
++			rockchip,gpio-controller = <3>;
+ 		};
+
+ 		pcfg_pull_up: pcfg-pull-up {
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 2ca76b69a..20567ca98 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1431,6 +1431,7 @@
+ 			clocks = <&cru PCLK_GPIO0>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1444,6 +1445,7 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1457,6 +1459,7 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1470,6 +1473,7 @@
+ 			clocks = <&cru PCLK_GPIO3>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1483,6 +1487,7 @@
+ 			clocks = <&cru PCLK_GPIO4>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 128 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1496,6 +1501,7 @@
+ 			clocks = <&cru PCLK_GPIO5>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 160 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1509,6 +1515,7 @@
+ 			clocks = <&cru PCLK_GPIO6>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 192 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1522,6 +1529,7 @@
+ 			clocks = <&cru PCLK_GPIO7>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 224 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -1535,6 +1543,7 @@
+ 			clocks = <&cru PCLK_GPIO8>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 256 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index abf3006f0..d12b97ee7 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -602,6 +602,7 @@
+ 			clocks = <&cru PCLK_GPIO0_PMU>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -615,6 +616,7 @@
+ 			clocks = <&cru PCLK_GPIO1>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -628,6 +630,7 @@
+ 			clocks = <&cru PCLK_GPIO2>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+@@ -641,6 +644,7 @@
+ 			clocks = <&cru PCLK_GPIO3>;
+
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+
+ 			interrupt-controller;
+diff --git a/arch/arm/boot/dts/rv1126.dtsi b/arch/arm/boot/dts/rv1126.dtsi
+index 1f07d0a4f..68e820221 100644
+--- a/arch/arm/boot/dts/rv1126.dtsi
++++ b/arch/arm/boot/dts/rv1126.dtsi
+@@ -433,6 +433,7 @@
+ 			interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&pmucru PCLK_GPIO0>, <&pmucru DBCLK_GPIO0>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 0 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -444,6 +445,7 @@
+ 			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 32 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -455,6 +457,7 @@
+ 			interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 64 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -466,6 +469,7 @@
+ 			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO3>, <&cru DBCLK_GPIO3>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 96 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
+@@ -477,6 +481,7 @@
+ 			interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru PCLK_GPIO4>, <&cru DBCLK_GPIO4>;
+ 			gpio-controller;
++			gpio-ranges = <&pinctrl 0 128 32>;
+ 			#gpio-cells = <2>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
 --
 2.20.1
 
