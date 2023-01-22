@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B9FAC27C76
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Jan 2023 13:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FA2C25B4E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Jan 2023 23:14:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h46ITHXwJlAgNkYOaS4WystT+O68Ogl+uUOZ7C4HKG0=; b=OudM1ydhjzLOyq
-	+UsPF41NmlBYLVGevLUpR/KixtDY12KXrj2Ker6oj6QEol3dNLS7iFLafJ/ghGHyQDF8QGH/nS643
-	rEvn3u41I3T8us66kIpFQv8QrpJ+GZWnpy5NHMnXteFzT8k0PQPekREF8qlYklT9S4ATHi1wIHwqu
-	9t1HELVflvupYayedFqN5TeZATINvaROyVFes6F/Syr/KWw8PCLXpTJffs2m8cgpYkrL2plpn42uc
-	2bRPBtjoEMtukrm2NCpvy4ti4FSOwo+9HyRCJwQbic5AFkyU/mkVe8pkttTYXLU6JupnjyMTqxyN7
-	F3fcPZCcDTuklXaZUubg==;
+	List-Owner; bh=6BBUL8jJgsauEfHJVwplRRfaU7TUTcEIGSMAqDm2H6w=; b=T5jBnIB8xVqN3h
+	khj75MlsOWFjMt+6jMCSSsC2mT8Z686rL3hml1SOKspngjjFeWwxU5rpcUOMA/aWRdt8B12j9Oyx2
+	/8lwaH0B2FvdfXgC/gvwPcxPFmAlJsF581CEfIXEUuUxRxiiDeolwjMCbCzQjlg983t8saJUhz7/A
+	vViw/QknGGH1TtLiYaT2TdorYyeDdZyUTIaiAc3P0FL8sOtSKQCWjPButZQ6p7YSK+L9POS55oiPq
+	mgvc0MytMRcbgc9qUFl3M/HiJ1f9CDOzJboLT4i4nzfUsef+kPm2aiHQhsXYsFm0Pohvm4LbRQlnt
+	5djL6SDXxIsj1YFwaE9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJamh-00FNci-Se; Sun, 22 Jan 2023 13:53:23 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1pJjXA-00FrIc-TF; Sun, 22 Jan 2023 23:13:56 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJamW-00FNYO-Jy
-	for linux-rockchip@lists.infradead.org; Sun, 22 Jan 2023 13:53:13 +0000
-Received: by mail-wr1-x432.google.com with SMTP id h16so8576392wrz.12
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Jan 2023 05:53:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3uz2hambBKLny/k/c/XNti8Jw4YcdQCQlmBD+jwVcBk=;
-        b=im0FbK9Wffib+B7bORG4P13UYRAyZyp1no4g55k/all0Vq+yhRXlxv2tPSHemQfYHU
-         kXkT2Mcfsephkho3xZWoUR8TXApQ7QUPOdNlAwxCICAfWBqXvY5I548WRlXqDDloXbRi
-         quHu9BOObQpNOBG45Xflh9/8aN8hkZD9jCNdy7NeGAdvCY837WzuOHO6xcl0l98Y3KtT
-         QQSuN0cYtNQbkaoYYfw0N7d7RKk3Cg/yRJY39GblJJYmyVZ2T+xDbrVF7NLmXwXDSAac
-         gClk2nzoILKbEUksvkVncpo7CpYIaU1mIgjWeagoKIo0+rejOBRT4S2IgZKl4FJx2fT7
-         0rvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3uz2hambBKLny/k/c/XNti8Jw4YcdQCQlmBD+jwVcBk=;
-        b=yOqIjMOiTb6Ny6qeK3K4toIrGGdlewbPhvD//mBE5W97ftWhpRTgaT5MeM29hQDxuN
-         9TmVRo+KAdMWVcaPrbQH+g9nDreApDWkKyFWo6myvJVZgKsmsuiqTVvNJL6BHmyutHdE
-         gXDtvNGcTRf0MRqKUnauQHykeoM343QR+m9v2jYUB+zgcet+3a4++Vn5m49gO5PNAyzL
-         0pQ8CkpkABnEZ8HxV2+tvAkOdXX75FPSoLnqbQvQpXiOEMoXMwxACm/sWCRS6+jluxIu
-         4oXLer0Q+sZTMIY9hLsLyqRWNVhi8EvNl6ybiDLDtq5ezInpFbvGJoQdW0RUShk8crTW
-         +mXg==
-X-Gm-Message-State: AFqh2kowpgSmYMEJGDM+6gyeovfp3MyFfQlMOge3UAb0KKeqSOB0cVrL
-	NQhFFTvAG0e5QcbCoZuqR3GAdQ==
-X-Google-Smtp-Source: AMrXdXshgTb0eYjX3WLoeDDjDTBa4r4aeJ+fgpVNN17aH0ELUdXHirup37RL7a9oBC55AR+KGOFzDg==
-X-Received: by 2002:adf:fc4c:0:b0:2bd:dbbb:e7e2 with SMTP id e12-20020adffc4c000000b002bddbbbe7e2mr17629897wrs.60.1674395590842;
-        Sun, 22 Jan 2023 05:53:10 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id w4-20020adfee44000000b002ba2646fd30sm3247627wro.36.2023.01.22.05.53.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Jan 2023 05:53:10 -0800 (PST)
-Message-ID: <d5d9cd96-d12a-9cd1-f49a-54c036174c8b@linaro.org>
-Date: Sun, 22 Jan 2023 14:53:08 +0100
+	id 1pJjX7-00FrHy-NI; Sun, 22 Jan 2023 23:13:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1674429233; x=1705965233;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=p4zihUGlUVon576ZG2MBamybWBvtrWsAIn3m0PxR2aY=;
+  b=Tx7VNH91NvupkG2jBXrr3JsYHQF5rP7nUUAojJozF1jFU4n9t1EfYf8s
+   6Xfvdyt41+el9w8AKJK+Bd7+z1i7deGuQE/d7UkIdLmKMGicTgAIlkifo
+   JqHHtCMNDV8TMLpxUXqgMrIk8Puqpm0n4mLi/4PqB0SmBwJo7boCN8Luo
+   rTsmBT9xO44aamPIIrkB/PEl91l3k9Z+tminT719+D+0NHHe/xzrbTm5o
+   1d4YvbcluFiEcX/Nrz5IoGNsXNyN9dpLDNpA5TBZGNgE4/uHR6kbePiYD
+   7wesaEuIaVOKGXhIzl3vhHxTNQ8aqZmuztwviquPu3I4N+ARBWL4DdNOw
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="305611253"
+X-IronPort-AV: E=Sophos;i="5.97,238,1669104000"; 
+   d="scan'208";a="305611253"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jan 2023 15:13:49 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="750137575"
+X-IronPort-AV: E=Sophos;i="5.97,238,1669104000"; 
+   d="scan'208";a="750137575"
+Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
+  by FMSMGA003.fm.intel.com with ESMTP; 22 Jan 2023 15:13:45 -0800
+Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pJjWy-0005Ho-2A;
+	Sun, 22 Jan 2023 23:13:44 +0000
+Date: Mon, 23 Jan 2023 07:13:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+	hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.co.uk
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3] media: verisilicon: HEVC: Only propose 10 bits
+ compatible pixels formats
+Message-ID: <202301230653.0LvIKTcP-lkp@intel.com>
+References: <20230119084723.133576-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.0
-Subject: Re: [PATCH v2 2/8] dt-bindings: pinctrl: rockchip,pinctrl: mark gpio
- sub nodes of pinctrl as deprecated
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, linus.walleij@linaro.org, brgl@bgdev.pl
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org,
- philipp.tomsich@vrull.eu, john@metanate.com,
- quentin.schulz@theobroma-systems.com
-References: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
- <137b56f0-8e86-f705-4ba7-d5dfe3c0b477@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <137b56f0-8e86-f705-4ba7-d5dfe3c0b477@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20230119084723.133576-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230122_055312_670559_337BEF20 
-X-CRM114-Status: UNSURE (   6.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230122_151353_814961_AB33E4C6 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,20 +90,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/01/2023 12:08, Johan Jonker wrote:
-> Mark gpio sub nodes of pinctrl as deprecated.
-> Gpio nodes are now placed in the root of the device tree.
-> The relation to pinctrl is now described with the
-> "gpio-ranges" property.
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Hi Benjamin,
+
+I love your patch! Yet something to improve:
+
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on sailus-media-tree/streams linus/master v6.2-rc5 next-20230120]
+[cannot apply to pza/reset/next pza/imx-drm/next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-verisilicon-HEVC-Only-propose-10-bits-compatible-pixels-formats/20230119-164844
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230119084723.133576-1-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v3] media: verisilicon: HEVC: Only propose 10 bits compatible pixels formats
+config: arm-randconfig-r022-20230122 (https://download.01.org/0day-ci/archive/20230123/202301230653.0LvIKTcP-lkp@intel.com/config)
+compiler: clang version 16.0.0 (https://github.com/llvm/llvm-project 4196ca3278f78c6e19246e54ab0ecb364e37d66a)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm cross compiling tool for clang build
+        # apt-get install binutils-arm-linux-gnueabi
+        # https://github.com/intel-lab-lkp/linux/commit/11b698515c987afb9699f60be773dd7c52cea592
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Benjamin-Gaignard/media-verisilicon-HEVC-Only-propose-10-bits-compatible-pixels-formats/20230119-164844
+        git checkout 11b698515c987afb9699f60be773dd7c52cea592
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/media/platform/verisilicon/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/media/platform/verisilicon/hantro_drv.c:20:
+   In file included from include/linux/videodev2.h:61:
+   include/uapi/linux/videodev2.h:1779:2: warning: field  within 'struct v4l2_ext_control' is less aligned than 'union v4l2_ext_control::(anonymous at include/uapi/linux/videodev2.h:1779:2)' and is usually due to 'struct v4l2_ext_control' being packed, which can lead to unaligned accesses [-Wunaligned-access]
+           union {
+           ^
+>> drivers/media/platform/verisilicon/hantro_drv.c:293:3: error: expected expression
+                   const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+                   ^
+>> drivers/media/platform/verisilicon/hantro_drv.c:294:19: error: use of undeclared identifier 'sps'
+                   int bit_depth = sps->bit_depth_luma_minus8 + 8;
+                                   ^
+   drivers/media/platform/verisilicon/hantro_drv.c:294:7: warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+                   int bit_depth = sps->bit_depth_luma_minus8 + 8;
+                       ^
+   drivers/media/platform/verisilicon/hantro_drv.c:1004:46: warning: implicit conversion from 'unsigned long long' to 'unsigned int' changes value from 18446744073709551615 to 4294967295 [-Wconstant-conversion]
+           vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~             ^~~~~~~~~~~~~~~~
+   include/linux/dma-mapping.h:76:40: note: expanded from macro 'DMA_BIT_MASK'
+   #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
+                                          ^~~~~
+   3 warnings and 2 errors generated.
 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+vim +293 drivers/media/platform/verisilicon/hantro_drv.c
 
-Best regards,
-Krzysztof
+   281	
+   282	static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
+   283	{
+   284		struct hantro_ctx *ctx;
+   285	
+   286		ctx = container_of(ctrl->handler,
+   287				   struct hantro_ctx, ctrl_handler);
+   288	
+   289		vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
+   290	
+   291		switch (ctrl->id) {
+   292		case V4L2_CID_STATELESS_HEVC_SPS:
+ > 293			const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+ > 294			int bit_depth = sps->bit_depth_luma_minus8 + 8;
+   295	
+   296			if (ctx->bit_depth != bit_depth) {
+   297				ctx->bit_depth = bit_depth;
+   298				return hantro_reset_raw_fmt(ctx);
+   299			}
+   300			break;
+   301		default:
+   302			return -EINVAL;
+   303		}
+   304	
+   305		return 0;
+   306	}
+   307	
 
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
 _______________________________________________
 Linux-rockchip mailing list
