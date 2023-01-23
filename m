@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C4AC38142
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jan 2023 07:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EEEC05027
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jan 2023 08:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tWNibh29egbK7lQS41aJwFhvdm4OfK5oSmuFoNtmD8o=; b=BC0k4Rkgvtw+JH
-	h0dQLlHtuoLd2YMAuQesgzuFNsSRp6PtzUrjustBBTl0NBkb/AAW1oBu3t+Oj0FPlRKu0FqPZtpj1
-	7HK+B2two8CFVY/rL0WLNZVhSK+n1KUC6i8hcesjSKhXRh4NWrvqtKSrWuVefqnBtrM4y3v7d/48v
-	HsNq/JEze8dpIvD+LScz6KlKdZdKRefJY6bvH1BmzNshMialpNu9i6BlPH+kZ2/iJOoA7I0/mPvFV
-	9BHVgQjvbKNG8xbQ5Di8UD9XWBpUV283DvlCEpa47lUDtFbeGfqHsk7122ZL1YiHK1hl1eywFWR1l
-	U7Jf7xLsskiEIn36nDfw==;
+	List-Owner; bh=CSm9MZ/7j+IY7F4pUyKZPpAtr1MDmwdHs1uPCuAk0q8=; b=p0BBTS7m/jzfxQ
+	/j5wlADhHa10p0sZeTurR21HC78sjNxeE4YO7huygGBrs5z+YBX68SitqWcq5DXya36Wdo75gTOFG
+	2Klao2+hCXP9+Lqi/tRMdzBK+60uPpRuVF4jR9ol/pXRXmkSL1KSTsQvX6diFRyI2SmLf31dQgqu8
+	1Z7b34TYHXexPAs9ODimYUh6pw5U3FMYHEwD26MlIaprz3oHBRnucub7lU37VrjF4UZUof5MmPTZL
+	KdO9W73vrfmfIMgVJjNqNryQO/k//UGRvfXEemi1si59zMXVO8h7U79b8lZIqMz3Op9kks1j3iyPL
+	zABsDkCjdZTTdr+owMrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJr66-00GBIM-JO; Mon, 23 Jan 2023 07:18:30 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1pJrkL-00GHWx-V0; Mon, 23 Jan 2023 08:00:05 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJr5D-00GAwl-Jp
-	for linux-rockchip@lists.infradead.org; Mon, 23 Jan 2023 07:17:37 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id h5-20020a17090a9c0500b0022bb85eb35dso5822397pjp.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Jan 2023 23:17:35 -0800 (PST)
+	id 1pJrkB-00GHUh-OJ
+	for linux-rockchip@lists.infradead.org; Mon, 23 Jan 2023 07:59:57 +0000
+Received: by mail-wr1-x431.google.com with SMTP id h12so5931928wrv.10
+        for <linux-rockchip@lists.infradead.org>; Sun, 22 Jan 2023 23:59:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GI8NCTgrz3eH8HHLTGGwu4ZgM3J2mR0tZKBmJm8ZEFI=;
-        b=AyHSatqd3SUjFsZkrghnvnPkSgYtNAYZoegmcjQ8bkGVdN9rOP/5QyzHb7MuYYZe6E
-         PjyIXgUSZ47Jd/uwzJ0o7sEDXjCCvWYcmafwW8Lozy6zNDY2RuClH4qDFstKW5IEwVu9
-         CeigfEACWVJvv3FPV/J0I3zK+7VflToE5PWSA=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=idh6sx0e6uhCWn+KZqgehd2YjOqvGaInaktIuCtUf8g=;
+        b=FBpZJvmEGnJZFPoSIBqK/DYJlDR5moUn8slQOcxtrkP/vC5b+rnXSmbtRr31ZVdn24
+         JswmMyGTnaHHizXVPBqcgBk4CG3jm8u0e99tRYrtEENZYxmLcy6FXBR7E6AaHeELHTBP
+         /UPh4vw+F2z2TutxmhwgVWiQCRbwhXnCfVvZ2MTHFoi53n635ty/kjHraf6G9Zey4PjP
+         4Fq4HfBprgZFrgragb8sLD1A+zGveT16frO8v/6aLzrlP/L4VrbZ0SnoAwgrUTCyBhAH
+         xRBrns1l65dcKTn0E1voIhfTfGjxuqPYe7zhHm9ogi6UCaQCrkV06cAy2qH0ECXpc6LA
+         i+kQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GI8NCTgrz3eH8HHLTGGwu4ZgM3J2mR0tZKBmJm8ZEFI=;
-        b=N1X/B8uXFrrnDFcIxIMlYqCZk/Cz+cfFFE9xW3I0PeX9wBIgY9f+7xl4MX59GnfGbp
-         B0uHaDIeaXg8LRiPqTL1L99qcYD6AtBg0hGLmeQMCt1HfowWal2NxhhnZfkFgB4Ue8P7
-         ISWQHbnFYLkzIrx7ev19Y9SBRmRoeze8zeBum72kYBDzT++cR8OglOGlDS/7YphAQMQc
-         7xeBWaSaLIiTJjg+uEFnswvROkV/9xGtRYSrDGLhVRqCNw0q44DTnZc6NMj1q2Dutq91
-         ZaUi0VwI5e2+JYvwj3ZKv/QfeOOS/LQwAJgHf/3yzDF3oSXVSP+qwcFp9sAVpE+QXBMh
-         HhMw==
-X-Gm-Message-State: AFqh2krNIKNGS0+Z+H56vBYF4i3/RYWnYMdvc3gSU3Yc+DZGRo9rV3NE
-	HM1wBpVN2ZVB1SO2Z6xk+XKKpg==
-X-Google-Smtp-Source: AMrXdXsOSisp+SnbTKLWuVOng0nj+csLrTEKupg1J6PgyZ1aQ/kMu0a27LLno5vdQZS39iibZqWZCw==
-X-Received: by 2002:a05:6a20:1bc7:b0:b8:653a:6376 with SMTP id cv7-20020a056a201bc700b000b8653a6376mr21850436pzb.2.1674458254574;
-        Sun, 22 Jan 2023 23:17:34 -0800 (PST)
-Received: from localhost.localdomain ([2405:201:c00a:a15f:3847:3e45:1d7:787c])
-        by smtp.gmail.com with ESMTPSA id e3-20020a17090301c300b00172cb8b97a8sm17742091plh.5.2023.01.22.23.17.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Jan 2023 23:17:33 -0800 (PST)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH v2 3/4] arm64: dts: rockchip: Drop unneeded model for Radxa CM3i
-Date: Mon, 23 Jan 2023 12:46:52 +0530
-Message-Id: <20230123071654.73139-3-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230123071654.73139-1-jagan@amarulasolutions.com>
-References: <20230123071654.73139-1-jagan@amarulasolutions.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=idh6sx0e6uhCWn+KZqgehd2YjOqvGaInaktIuCtUf8g=;
+        b=mX+cPYtsrOXMUx3oAaDRWKp905xu+NBL5BQ8rnK5ZEiE0BL06DlmZthw/q52cShFcw
+         jNc36lt0VNiDczDCAkNj3QPn8fZufhvDcs2WeDL9yTCABtUAcJsj4Jiz1v8HiuOAqw5J
+         vEoI4FjHspBrnWGNvsNGMgoXnrtvTkQ3MCkqvPLfbddAf+iM/ya7J43apsz8/49VLtZV
+         jiZz3a/0t97lU7kpHNubphbswqZCoyzth1QpwylSkI1+MoFKFIkCwii1VHXDSk46AYtK
+         VKb9UjxnSCw50rYp7pAS0eXysBEfsTkvDl47ptwFfhWlhwefunkCYzQyN2PZrk7E1VSY
+         v2dg==
+X-Gm-Message-State: AFqh2kqm6dNvqinxTjbLwGwpUXOVK3DiuHUqoXaiOVMU1ZkKAukYbdsy
+	rl3X11JymIrkwkm6iYuysuAByg==
+X-Google-Smtp-Source: AMrXdXshHBUNpPz/O/C/jW49E6Tp4olY81SmdIrKo/A9hQmADBvyCAT+q72/fo0mFOkX4M59F+/8SQ==
+X-Received: by 2002:adf:fa88:0:b0:2bd:feb5:fb7b with SMTP id h8-20020adffa88000000b002bdfeb5fb7bmr19009713wrr.33.1674460793384;
+        Sun, 22 Jan 2023 23:59:53 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id m17-20020a056000025100b002b8fe58d6desm4153357wrz.62.2023.01.22.23.59.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Jan 2023 23:59:53 -0800 (PST)
+Message-ID: <110befb9-090e-54e4-b669-ec81a89580e0@linaro.org>
+Date: Mon, 23 Jan 2023 08:59:51 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.0
+Subject: Re: [PATCH v2 1/4] arm64: dts: rockchip: Fix compatible for Radxa CM3
+Content-Language: en-US
+To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+References: <20230123071654.73139-1-jagan@amarulasolutions.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230123071654.73139-1-jagan@amarulasolutions.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230122_231735_696486_7484D3CE 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20230122_235955_818244_FA3557AD 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,30 +90,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-V2l0aCBtb2R1bGUgYW5kIGNhcnJpZXIgYm9hcmQgdG9wb2xvZ3ksIGNhcnJpZXIgYm9hcmQgZHRz
-IHdpbGwgaW5jbHVkZQptb2R1bGUgZHRzaSBmaWxlcyBmb3IgY3JlYXRpbmcgY29tcGxldGUgcGxh
-dGZvcm0uCgpUaGUgY2FycmllciBib2FyZCBkdHMgd2lsbCBoYXZlIGZpbmFsIG1vZGVsIG5hbWUg
-YW5kIGNvbXBhdGlibGUgc3RyaW5nCnNvIGFueSBtb2RlbCBuYW1lIGFkZGVkIGluIG1vZHVsZSBk
-dHNpIHdpbGwgZXZlbnR1YWxseSByZXBsYWNlZC4KClRoaXMgaGFwcGVuZWQgZm9yIGFueSBkZXZp
-Y2V0cmVlIHByb3BlcnR5IGlmIHRoZSBzYW1lIHByb3BlcnR5IGlzIHVwZGF0ZWQKb3IgYWRkZWQg
-dHdpY2UuCgpTbywgZHJvcCB0aGlzIHVubmVlZGVkwqBtb2RlbCBuYW1lIGZyb20gbW9kdWxlIGR0
-c2kuCgpDYzogQ2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPgpTaWduZWQtb2ZmLWJ5OiBK
-YWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCkNoYW5nZXMgZm9yIHYy
-OgotIG5vbmUKCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1yYWR4YS1jbTNp
-LmR0c2kgfCAxIC0KIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcmFkeGEtY20zaS5kdHNpIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcmFkeGEtY20zaS5kdHNpCmluZGV4IDIy
-NWRiYmU0OTU1ZC4uYzUwZmJkZDQ4NjgwIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU2OC1yYWR4YS1jbTNpLmR0c2kKKysrIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1NjgtcmFkeGEtY20zaS5kdHNpCkBAIC02LDcgKzYsNiBAQAogI2luY2x1
-ZGUgInJrMzU2OC5kdHNpIgogCiAvIHsKLQltb2RlbCA9ICJSYWR4YSBDTTMgSW5kdXN0cmlhbCBC
-b2FyZCI7CiAJY29tcGF0aWJsZSA9ICJyYWR4YSxjbTNpIiwgInJvY2tjaGlwLHJrMzU2OCI7CiAK
-IAlhbGlhc2VzIHsKLS0gCjIuMjUuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 23/01/2023 08:16, Jagan Teki wrote:
+> The compatible string "radxa,radxa-cm3" referring the product name
+> as "Radxa Radxa CM3" but the actual product name is "Radxa CM3".
+> 
+> Fix the compatible strings.
+> 
+> Fixes: 24a28d3eb07d ("dt-bindings: arm: rockchip: Add Radxa Compute
+> Module 3")
+> Fixes: 7469ab529bca ("arm64: dts: rockchip: Add rk3566 based Radxa
+> Compute Module 3")
+> Fixes: 096ebfb74b19 ("arm64: dts: rockchip: Add Radxa Compute Module
+> 3 IO board")
+> Suggested-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+
+Don't wrap the tags.
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
