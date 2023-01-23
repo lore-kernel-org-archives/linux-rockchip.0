@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B336C05027
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jan 2023 07:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C961FC38142
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jan 2023 07:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f5YCfCWMzxGiTvgbhrFkNtbmmQ+5S1MN43MmIz19OPY=; b=TsS4mMzYQzLWtM
-	FqmBIzjAivdNu4fYvkuZm2udfdjyTvdGr0bkygyPQECVQMA9xo8NkZp+c2Wz6Wt/xsuFX3ocPkKp7
-	OigyK2pZ/oeIF81K3Zwxgsvc0lRKW/xH8zJJgp6JUje02MiMUjMNWNBrJE2ev4OAaQn6gMNOYWeWH
-	hwcSN657lMjhhzcpsGmNqjQMyW2ANYxCS6iHsvT2l26kIwjwpDoBak/j65Ut/VHhOpKrq0sKNdb96
-	SDbg4nD26czulfWHElMiW1/XPaDz1pjgrKFeI2yQLBccr3wO9Ektxyiv2LoqqlRjJsPiho7OKzCqh
-	QGdHNdvg4dPYgEVZ+6HQ==;
+	List-Owner; bh=LKj9B++nSadDe1YKqEgWbXB7hcLqYutTi/B83cXpLM4=; b=KXZIcron0NTciQ
+	FrbQzldcjdoCD6Uf7X/i841rIc8m94eRJj3CQOlDSV7PYNToxspZbN5igvmOe32ie1Bz4V1bOiEQG
+	TeRcaoHIK8XR5eQx+3AIiDHV8J3CYwxaOV0w0mVvZWoXY+ZN6ZtIwscQwgbivYCguGSEf8FggCHlR
+	wtDxFLef5x3m7Al505hWUBoJ8qIoahefQBYrypkhv/ZpV/2TOHdZWgZnmrA7YbDuedSuWXJi6NIkh
+	YGZyN1TTKDFf5HvsUdirMywvcklIeBC+L4blY7x9ulv9QVoJxKil6CM52fZsNpsKXLpZVLNHUymQo
+	BNtNe/lWXU0xBHEcpmdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJr5o-00GBA7-BK; Mon, 23 Jan 2023 07:18:12 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1pJr67-00GBIe-5J; Mon, 23 Jan 2023 07:18:31 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pJr56-00GAu7-7Z
-	for linux-rockchip@lists.infradead.org; Mon, 23 Jan 2023 07:17:30 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id t12-20020a17090aae0c00b00229f4cff534so5782454pjq.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Jan 2023 23:17:27 -0800 (PST)
+	id 1pJr5J-00GAyk-2S
+	for linux-rockchip@lists.infradead.org; Mon, 23 Jan 2023 07:17:42 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id z1-20020a17090a66c100b00226f05b9595so10255038pjl.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 22 Jan 2023 23:17:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=amarulasolutions.com; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nMwonOiSUVp9jhT90JcUAzZvSTpZ6/Yz1M6VtYsU3xE=;
-        b=CQIlqmQAloiuVIqAm5JZ1Bk2PqJWFMwN8DX8XROZo/z+rWmcVm75yRw9ovQyokUyYT
-         g1IGiBCEfgZ3PXfjw18lx0k1UHzJj3zLlyfye29ULiXhcUT3E1YQambsJYa57pmrjk1l
-         MctNVSrMcKQOg/gjp4AtQjpbBCikx3eMd8ywg=
+        bh=d2YGakH9pYkYD73KfKfwouPB9cCWa0mtmcn+X4PJ1qI=;
+        b=rKOwd5XzvsFOgekLFnlLwsvEiUCrNhSlvpUvRYxSIohtqmWAvIsJgJGOV7e3BEWDcw
+         VYZjE4nIQjYuOrnUxUllf/dXlseQY8xfX8YsKvpEDRhjYSX8cDjvQgt0Rtg8s4Ji+2Wi
+         2H/3vlt9dZEQ/XT0ypBjM3bROlf5v+iNQvfio=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nMwonOiSUVp9jhT90JcUAzZvSTpZ6/Yz1M6VtYsU3xE=;
-        b=aHOqCo4suAImvcV9od/u7mlMMDvi77+89zHpy20iYKz9b5D6CojgPNNNebwSsmaG6c
-         kf+wxcs+gv+grucZUdyI5zOE+egZJU4kPeHZfiuu8Bw7FKUDUY2/nPH5AzV38JYyO/0G
-         pM9RQr6L+fyKI8Gcx8ceoZp7hcjswrhYW3oqlfnGcpOZARQkoBItEb4kpirRvsKFoiWt
-         FjSDT901ENOc575o1ZLLVhHDITPqK3grYMNseYA3qfd3l/CL54TJj3aA3koL/mErymSJ
-         7Ro5UPfdondsDO8Fc4cbTr30XPffBMQO+TXruJcw6MZSdQ0E9Zv0LboPIw0ktG6kOyJi
-         ndoA==
-X-Gm-Message-State: AFqh2krDNyBz6mYiFkFEchvnG9NhFALC7/auafH+mWbkxI4ubFfOwuNa
-	uSr6Z0B17t5W3EMkOpPSzUcsRw==
-X-Google-Smtp-Source: AMrXdXvUu2JbWD9FpaP1gO1cV4kQmyV69aEA3EdyJN8SBgUCbshXSTxactSZpS/eyxpH+6ZvLEoCFA==
-X-Received: by 2002:a05:6a20:7fa5:b0:b9:4afb:1472 with SMTP id d37-20020a056a207fa500b000b94afb1472mr21863315pzj.13.1674458246817;
-        Sun, 22 Jan 2023 23:17:26 -0800 (PST)
+        bh=d2YGakH9pYkYD73KfKfwouPB9cCWa0mtmcn+X4PJ1qI=;
+        b=sWdUK7Xcogqs0o0QB/BBG61TxX4g9EwzDVtXr3LyhWI+wTHIc4o3sriOWqDp7X6W0r
+         mqnPV4+HVmCNl4zfXlCBx2mIiXW3Qolgusi2r1K87Dcz5EG6bCcXpWJ48HdJEJ22acKu
+         xkXeB0DGhbQkuluUGhA1IhK/j+wa8dOOtqk9Lk5uLXMqrA3qjY391t7tCdJ+VYF/inz4
+         Lj3IRRh05V78SCcjyULB4Z87kpvACn7TihUC4b4KPkCb1VFUlk+1fybfBbXIqcTKD9B8
+         LIG1k5TQuqxAFsqJCtrZIxJINnPvKkQu6DUOMXvVfykMiMPZnlIAJpeYgbH6JxVFFIlq
+         H9NA==
+X-Gm-Message-State: AFqh2kqVNXqS9kJ7ezFVo10TYeyUq9XZFSh5OBKNSqXaUNY70mSx00ZM
+	6bzuIGrwZR26ltNxjkbbJ2VVpg==
+X-Google-Smtp-Source: AMrXdXviTJZzXMOc8OKmyBpNavbXFCp4YfwA3oQupaeAFEbtlVRcNlIe4OclPoA1jLQng7UdgTEO3w==
+X-Received: by 2002:a05:6a20:4d91:b0:b9:7a34:a78d with SMTP id gj17-20020a056a204d9100b000b97a34a78dmr9923977pzb.9.1674458260089;
+        Sun, 22 Jan 2023 23:17:40 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a15f:3847:3e45:1d7:787c])
-        by smtp.gmail.com with ESMTPSA id e3-20020a17090301c300b00172cb8b97a8sm17742091plh.5.2023.01.22.23.17.23
+        by smtp.gmail.com with ESMTPSA id e3-20020a17090301c300b00172cb8b97a8sm17742091plh.5.2023.01.22.23.17.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Jan 2023 23:17:26 -0800 (PST)
+        Sun, 22 Jan 2023 23:17:39 -0800 (PST)
 From: Jagan Teki <jagan@amarulasolutions.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -67,16 +67,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	FUKAUMI Naoki <naoki@radxa.com>,
 	Jagan Teki <jagan@amarulasolutions.com>,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH v2 2/4] arm64: dts: rockchip: Add missing CM3i fallback compatible for Radxa E25
-Date: Mon, 23 Jan 2023 12:46:51 +0530
-Message-Id: <20230123071654.73139-2-jagan@amarulasolutions.com>
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: Correct the model name for Radxa E25
+Date: Mon, 23 Jan 2023 12:46:53 +0530
+Message-Id: <20230123071654.73139-4-jagan@amarulasolutions.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230123071654.73139-1-jagan@amarulasolutions.com>
 References: <20230123071654.73139-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230122_231728_371053_5D29A9E6 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20230122_231741_152397_379FC105 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +88,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SW4gb3JkZXIgdG8gZnVuY3Rpb24gdGhlIFJhZHhhIEUyNSBDYXJyaWVyIGJvYXJkLCBpdCBpcyBt
-YW5kYXRvcnkgdG8KbW91bnQgdGhlIFJhZHhhIENNM2kgbW9kdWxlLsKgCgpBZGQgUmFkeGEgQ00z
-aSBjb21wYXRpYmxlIGFzIGZhbGxiYWNrIGNvbXBhdGlibGUgdG8gc3RyaW5nIHRvIHNhdGlzZnkK
-dGhlIE1vZHVsZSBhbmQgQ2FycmllciBib2FyZCB0b3BvbG9neS4KCkZpeGVzOiAyYmYyZjRkOWY2
-NzMgKCJhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIFJhZHhhIENNM0kgRTI1IikKQ2M6IENodWt1
-biBQYW4gPGFtYWRldXNAam11LmVkdS5jbj4KU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFn
-YW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Ci0tLQpDaGFuZ2VzIGZvciB2MjoKLSBub25lIAoKIGFy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJhZHhhLWUyNS5kdHMgfCAyICstCiAx
-IGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQg
-YS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1yYWR4YS1lMjUuZHRzIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcmFkeGEtZTI1LmR0cwppbmRleCAwMzcy
-ZGQ5N2MzOTIuLjlmYzk0NTk1MDViZCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1NjgtcmFkeGEtZTI1LmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU2OC1yYWR4YS1lMjUuZHRzCkBAIC01LDcgKzUsNyBAQAogCiAvIHsKIAltb2Rl
-bCA9ICJSYWR4YSBFMjUiOwotCWNvbXBhdGlibGUgPSAicmFkeGEsZTI1IiwgInJvY2tjaGlwLHJr
-MzU2OCI7CisJY29tcGF0aWJsZSA9ICJyYWR4YSxlMjUiLCAicmFkeGEsY20zaSIsICJyb2NrY2hp
-cCxyazM1NjgiOwogCiAJYWxpYXNlcyB7CiAJCW1tYzEgPSAmc2RtbWMwOwotLSAKMi4yNS4xCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Radxa E25 is a Carrier board, so update the model name for Radxa E25
+as suggested by the Radxa website.
+
+Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
+Cc: Chukun Pan <amadeus@jmu.edu.cn>
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+Changes for v2:
+- update commit message add Fixes tag
+
+ arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+index 9fc9459505bd..63c4bd873188 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+@@ -4,7 +4,7 @@
+ #include "rk3568-radxa-cm3i.dtsi"
+ 
+ / {
+-	model = "Radxa E25";
++	model = "Radxa E25 Carrier Board";
+ 	compatible = "radxa,e25", "radxa,cm3i", "rockchip,rk3568";
+ 
+ 	aliases {
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
