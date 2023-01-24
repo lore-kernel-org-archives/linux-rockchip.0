@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121ADC38142
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jan 2023 05:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1857C38142
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jan 2023 05:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UAYG+/WJkYRAE6iR/gxH/P/QhuVGlXsQWC3sCk6zLKs=; b=RHOWBVZuLNCpKW
-	+ZOqhFEdTMwDd/0dfiyVQqLJwhwy2DZFC7EnttyQ6JmFs1CHfzHncaHULbidtafQ2syo6n+3BkaR2
-	Ys1TnYQ6GKMVREnXD/GVOx3e12B1B9DKsPujndr+6+e064iPiFn9xKqoXujjHlrvzBEDiAzTePe96
-	JY5afxmMEdvaClJH/XedFzkYHucNA4zTd99DMRjdYYJG8lWtpjtOKHtra+jDMonBxxVADp+DINDNN
-	dTHVg9Y+nSeE9D/vZwnZao4unJ2FQMfLGUB0bPkdZouNSTYej7VIZ3LMzGxDgyADjHEV0Nf5cT81P
-	T1w8LSf6umQtC/l5RlXw==;
+	List-Owner; bh=lZmuYrk6h19Y7uXBQLnRif1M+kn96Qv96rO7P+0HeFk=; b=qs5aVKNcnnEV/O
+	UG01hWcPuqmMrrroQM+9Ir4x0F3q5BGcSDddNoi7uh8aRWK318S50595OfGiIUY4M4uvwyOVHOjqh
+	7Rddakh7WUASlGdPmZXfgejfoxk/ZP7Ye4xlleRRqAeBNmXxZwryxa0350rT3hcOM4Q8hGvD6XWKH
+	EHCEt+1xyyh6otjPYOg1RLISWMwXOgciDzwv/ez7jajZz/i1VTkCh5dqzSpems/HgkpEu0iIIE2fy
+	Sywmf6/XktoevFFsq6Bfwg+Zv1L6MxHBRRGw8wNMIBE/O9Kp23jWf4S8L+JJki0KNrZMjfiuJgjVE
+	o37wSa/XeyOvj1mQgdkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKCBd-002QVU-VE; Tue, 24 Jan 2023 05:49:38 +0000
-Received: from mail-vi1eur02on2053.outbound.protection.outlook.com ([40.107.241.53] helo=EUR02-VI1-obe.outbound.protection.outlook.com)
+	id 1pKCBc-002QUz-Vh; Tue, 24 Jan 2023 05:49:37 +0000
+Received: from mail-am0eur02on2068.outbound.protection.outlook.com ([40.107.247.68] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKC9Y-002PTL-Ry; Tue, 24 Jan 2023 05:47:30 +0000
+	id 1pKC9Y-002PUP-Ay; Tue, 24 Jan 2023 05:47:29 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Oj9R+/IMgFsQkMokuOT5VWFxM2HmGiXDZP/hRb4AjEUzBh2nIMzj35szg7aYI3z1HsWrsTHjJCfbeuvktf7H/sH8UZvnWSCwTCpJ9/pxVyjzjrbMkKYijd3BFfuftOj81r2dIfKgq5yboN7Z0TZ0QWzOhhfy8w7JVzDAqtC8K1Wr+R6JjzNphDGQ2rJgUcpYagQNlXsiMAsz5TZeDTe5ugSLmuZRXsO/d64J+sG5Hi6RGRKzjSVNFU8TYw3emGotZBJZVhAxY+R78J8HdVQhqGNPsKBAHVEHdDT0ZsQ2HwY/aZct/FBbHYGuZ8aTpmJXwpEUHznS+VdbfOKta61pyw==
+ b=MF5A2FxbgO9cnr0aWgDoCGuTHxtsfsvqygr8l5h3G7gpov1Rah4YN3hioOJFqJTh4KWLIiaG5AhNDMd8TCFGTSGAOoRc8ZGzfcuXkJYHm3Jt/06ySdq0wbJ7RABJaNa7UZxBzGvcAAT0Rda2JLyd51upawam39Fgvj2QVSTDY1/nWIv9D/V67qT+KJIDZ6xT0LZMGkTMgwXGZ2vE44QoSgSoI3pm7NgCIqLwelahhbt7OGS82NDKO/RRozSmuAKJ1cFi+lrMrhsi5ItBDt6wSLr+KkqSuiD2eraJBvQ9bcBX/M6+vvMJI8CuMICXZZxzdkibHKX44a75n6q07VcgKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=g4qMVJMpLkSgyH995ws7aK1P48Io+P7fDQjJHTGRi6Q=;
- b=CDdywWMr+3adI3RsbO4w64RwF/fa9FHs2I1ObGgYcvT67cLGiKmFq2XcRafTFMGgI9zgbY1x8FW+Ru/J+Q/38bCyYUTZmyFUaASzYn/UAIC2EJZd3m6FyHzqCn8wLUAw3Y6DEW3t7Qvcn337yn0t/AlCayeE8iiVBA7gMQkcPihCFA2qZPGKKOHMgFYteeg06RzeM1DJTi8TowCUVJF7IQ3U8ku0ew4OQ0iGJj+Q5nI2/Z8nA9jGTZMGYC3Skm8pkb7UTq5DArYtyEFCXYeH+ApNw1EKM8kstidoCWGzCncBLKIhw4PmEAbNo7bLsAwZPfaHYR1fWSXewFgSECQDfA==
+ bh=jmMn2MrzNdLf4gxHZQEmHIe0WNK9Hf6gYQ+Ss8LUPbc=;
+ b=cZ1eWNdlqH4BGtSJJw9OjL1rrvIxqefUxSEJVUbdWdgSuEuitvO2YidYYzHY2DwPqWv/7oEnUKA+SHI6kkg6g1skRuDD4YGFE9K9gLVK54bh6LNGcwcX+KrRBWhWnKrOO812/GR1bF01GEgq0XDfh3cDTFYGxLH48YSnJOvMzbNHy6jH7tOkAA3vzAg7E8AJZ/R8UcueD59IAazINO6fS7/oJimM72yOXdLfcKO6VD91Qv1C+Gj6ypFGfM0BuN0e/tR1kRaSkmDMi5bxK1z9RVk4vGqAsqFr6ZL91+EpqRmsQ07B3TgIvorFNHW65H2l56JmnEtg7P0xg9zdhYwYYA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=g4qMVJMpLkSgyH995ws7aK1P48Io+P7fDQjJHTGRi6Q=;
- b=m7TrbJ/WEfPajxPzISYIGUv8gq2d8ZPewhMnanCDTFIKnYgLqCRj50lcS5Z+b76wIOIhXzQIDOCc1CpdOJ0XjXL9Ctt/+KSKMCv+76jmkPlxnFByD4sBD+W1zNwcGZVRubM4zKdftdf816MK6YxeVnNxMWXh83b3XkNb9zffNPc=
+ bh=jmMn2MrzNdLf4gxHZQEmHIe0WNK9Hf6gYQ+Ss8LUPbc=;
+ b=jAHsna9XPaUUn0HYkZv/srifYofBnYc1AIt0Rq7ULM2dDXQTiuilHOx9Jdf9r9yqCtQVshNiwgfLykFVOYq9HXNrg1UzBXjfeSBReime+M00pm0ply/h+ZxKlxEzmIq8Gbon2AxW5eaIBOQVk4AB75fpu+xnvabrpya65gxTzTk=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=wolfvision.net;
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by VE1PR08MB5678.eurprd08.prod.outlook.com (2603:10a6:800:1a0::20) with
+ by VI1PR08MB10032.eurprd08.prod.outlook.com (2603:10a6:800:1cc::6) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.33; Tue, 24 Jan
- 2023 05:47:19 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.28; Tue, 24 Jan
+ 2023 05:47:23 +0000
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::4718:6092:e763:4219]) by DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::4718:6092:e763:4219%2]) with mapi id 15.20.6002.033; Tue, 24 Jan 2023
- 05:47:19 +0000
+ 05:47:23 +0000
 From: Michael Riesch <michael.riesch@wolfvision.net>
 To: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -64,9 +64,9 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	Daniel Vetter <daniel@ffwll.ch>,
 	Sascha Hauer <sha@pengutronix.de>,
 	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH v3 2/6] drm/rockchip: rgb: embed drm_encoder into rockchip_encoder
-Date: Tue, 24 Jan 2023 06:47:02 +0100
-Message-Id: <20230124054706.3921383-3-michael.riesch@wolfvision.net>
+Subject: [PATCH v3 5/6] drm/rockchip: vop2: add support for the rgb output block
+Date: Tue, 24 Jan 2023 06:47:05 +0100
+Message-Id: <20230124054706.3921383-6-michael.riesch@wolfvision.net>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
 References: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
@@ -75,57 +75,57 @@ X-ClientProxiedBy: ZR0P278CA0189.CHEP278.PROD.OUTLOOK.COM
  (2603:10a6:10:416::5)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|VE1PR08MB5678:EE_
-X-MS-Office365-Filtering-Correlation-Id: 249d5dcc-f139-4d4e-9e49-08dafdce751b
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|VI1PR08MB10032:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0a016dd7-b29f-4535-b0c3-08dafdce7771
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	o5DGNMhGTMxoKtDV9IaqJv+MXGbosHjP8VMEZqkCb1UG2APAYwCWauKwQtsd/8izKnQTdOYfI35dgjw0R1/uYCAKbalXM5nqB1ZfKQinBpovGu+5NBiezhtaMVf4KhyqpD72mI2WncKF2FfX2iwBZk0OSKMyM0RSQZh4/kNjYL/BxxfTX8GjI3cfBUPCuGPBU1bEIUoGrT6zffgUWwCuFS1UjvD312lqn1FMox/r2eA0ReqPP4L6ITm682FzB6AVpJZFm6E1i9+fcYxhLRGy9SC8OlE4LiHYLbdu35HOJRlCMW7ezeUpZ/TQWhrz4K6vXbFqk4P6+9S4x8IVIIQdP58SPAjWnBgOAWs/YQxDsiwcs0BD+yaAolvpSf6kaXGsByiKUh0mws19JTNapJ9m/XxRvM4UHXB4rfVAiu5wBKdUQuvKo4T9z4akYriZjFwNVOf+X1zvLcYK65dH3zso3gl6YgL3sQrAhrM0oyye2H5HvSfgXMX+btclUtM4gT1+QYfgdE3c/uDbwWcDOHo2FTvnYYcmA87fQ8OUmekAnGbwwuvww+rqxv/tJXrHFdgXDWHBSe+6iezJdLqiwx2B8MivtMRps6xiACeheBhTMENsnCWcJMnspVb5jGSUE11uG48S+mo5BqbBrB8dZo69wA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(39840400004)(396003)(376002)(136003)(346002)(451199015)(1076003)(66946007)(4326008)(8676002)(66476007)(6486002)(66556008)(52116002)(2616005)(6512007)(107886003)(6666004)(44832011)(186003)(5660300002)(8936002)(7416002)(41300700001)(83380400001)(2906002)(6506007)(38100700002)(54906003)(316002)(86362001)(478600001)(36756003);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam-Message-Info: 	uaSKcXXHhv6Ui+QwCAZHb3ye3KgB+ZU1fFtwCJe8EmTCi4sxIB3rJMpibQDYt1UBrqE/43JECAztV8ruCwO4fFaUKMcUi3SQNDGodUr6tveBzBYIhZ+En+cuyMg4BY2WDxeiKHezAp5OoRNjbHDhstrFOS1SdORv1m9BFs8O9isKfG2XIgnXBzDc7Pmjus0PuXidr7rbVsNcdwFwUHhUWq7Om4GN97DYituywN0N7YoUlpgOXrkn4nHsziBsaM0DpaOiIk0WS2uPqvT8IKIOpnUWe+5u2I2T4sdxzYuJpMMj06h2a4P6y3tKMbpwgN6Q4GMH7Nk2nE6lIJjIPsvnV97rqJfW+6Xu8nolhAiT2sNLW+buL/GNvY/+Pa/rpaYp/CBU39trXHA3x8uvuetYHPiN/Lq0BF/QQo+JomXFWQ+HZxvaKdKZ9ekYbdsbe9kg+B1ii3LF81QDKZ4ys6atYqt6ppVuKIfUReUCLUCQ/1NoeE8BMgPyM8Dy5pWEgSkXduVAZPSwyo68XbU92SxEyp4QPl6frKd33PycgGHLzyLSikGMM7Lp4MOp3IZyLhS96GUyG57DNPKsaWV8yp/GwCVL9QRIN02fg476z0ifaa4juVwVWcbA+1wwmfJC1mmKGJEtKn4JvEAkKYolhELLvw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39840400004)(396003)(346002)(366004)(136003)(376002)(451199015)(36756003)(66946007)(2616005)(66476007)(66556008)(316002)(54906003)(8676002)(4326008)(6666004)(5660300002)(7416002)(2906002)(44832011)(83380400001)(107886003)(52116002)(6486002)(186003)(1076003)(478600001)(41300700001)(6506007)(86362001)(38100700002)(6512007)(8936002);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?RUACdaCjjtIgFtCuZi2LYLtWHSEiCMRH0DLytJA/AudecYtw3guGIzWiDnTy?=
- =?us-ascii?Q?bMJ0pSSJOWv1g4Wwd7keoYeVYRvYbgW/kJA1VnfddN3dCxY9uObtWcOe1YHa?=
- =?us-ascii?Q?tr8iiGBAf8Cx7WcWX58Hl5iTA8LekxZxC+RbtCnT4P5oO8GWI/5OsqaVf7E6?=
- =?us-ascii?Q?90ZA4Xb5duYFLPSDlkvh+X1WIP55CCcc9Ib0N0WKyaIEmhEt+/Fr96ecA3F6?=
- =?us-ascii?Q?+BGV6DNy6QBzipAej77L1BgdPgrLBx8RYD8TpJp3K8IW9BU2baEwzX3G3izj?=
- =?us-ascii?Q?UvxWziVmZ163Z3oh/ktq4Omt6TYsjwt+EG8Qby4VEbKjIMBKhdrENGSZ/N8D?=
- =?us-ascii?Q?Pr57jejPeEBO/P1ppPnGo6bYBWFYvfyd3vBkLNwA9ddS30qCAOqR3fryPLw8?=
- =?us-ascii?Q?5AoYm09Ny8J+ZUE/fza+T9qcAaUs3V+lJgnmAo2O5iVlWcP5Df978s7SExbZ?=
- =?us-ascii?Q?Y4kp8JLsv7t16VQRpJaCQ0MGlB1AMbA950u18cfZLXpoWVnBd29O3aCDpXi0?=
- =?us-ascii?Q?3pNZVQFhByUwUpIWiMgw/nZ0X9J+GL80Yqi8CHyRbRwk8zkrSLGk76gzVJQA?=
- =?us-ascii?Q?G4OjUURKj6M0hsSc2Adem2H9T2LhKnGlzanHjy7TbQGDLaNI8p3HBzpwx7bK?=
- =?us-ascii?Q?JdfEPnEVRD8Xlot1T5WuAvmWWcaZHo27QmPuq0DsAQNm9efvsu3U963D1jlJ?=
- =?us-ascii?Q?KwC7yb4Xtpl0PkpIQDjDaaB26BD5KwyOSRQfWF7Wm4234bpHnWjJANEv2I0r?=
- =?us-ascii?Q?ackp/mGwMVYZ39kmagJrwmPPoNk/DY4fttDwbgw9aXcfdys5LECN7Hl7Qiow?=
- =?us-ascii?Q?iZht2WM65zPXz2tuxN8mOyxY/Dqu72DZRCno9epasYRHhOmkDD1XSHa2NXNS?=
- =?us-ascii?Q?eCpHu+wzj570YBQU5kluUVmkg4AOnZIumYDwps72AS4fNqfE9r0JObekiVA4?=
- =?us-ascii?Q?FflgPwdpcXibOP3vIHkOLH2j94kA0piC38x3Q2g2dOoZdl8kyWma5ta/M9KD?=
- =?us-ascii?Q?cjJOcyR/a9tEl/m7Ih3B7gH32o4Bj8rOlq9nFZ1JBU8QVv2lhGLU7mW1QSZS?=
- =?us-ascii?Q?KuoWH42alcRBBsm3bw8tz1wAiyyWmTreaVeRTaMRCP6vlW4faBt6rEavN/bb?=
- =?us-ascii?Q?Qp2v+L4xiRoc3/qTfyhIq+M+TeBrpIWT/nBOgo7dCmqsLB6PjxYwoiZg3K/2?=
- =?us-ascii?Q?NN7BYhYppsaW/CrCxk40fhGfP40EGVydSA5ujeBUa8X5wtQCj8b7CiPj9ohe?=
- =?us-ascii?Q?+CciGq5TN70pcOpufC1LuqHSyGUxWlRayNZCmuJTTZYGumyls1YNEfVF17H7?=
- =?us-ascii?Q?YuPMxnnzLAfIc5+CIlXof/qtB5Evhuql9O7xWY5fzk5ct1tYvHX8xgmZpvci?=
- =?us-ascii?Q?odk7HeZnCZYAjqo70G0mm+M0hn1r5l3imqqPpEF+6U1g/KRAb6Z4OzQtWatU?=
- =?us-ascii?Q?fJSqEC64AGs64EM5/7wVtO+i2wZw2uzmJO7NlW4hB+5JgLJZkNy+KzjGaPka?=
- =?us-ascii?Q?nrEwWLK6RGISLAWkfWCpzYnM1dEFSe9RP9i0xOysk5ES87aVPJQoHdqI+8dO?=
- =?us-ascii?Q?yLAm69KSgDk+Kdxx+XYirYuWhDIIWm/ecYc/WSUn6DlggUz6u334vKe3H6UM?=
- =?us-ascii?Q?4kopUXoMObQ58QxosULU6rLge7p/uHndq5X00xCWqEUMFrbl46UMplXKNEBi?=
- =?us-ascii?Q?0+pELvSA3dwnBtBpeaq98CPiiZI=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?puEmXFztMRFYwmJlRzumJzg5aq6HRDzELbT9goxm3J0EURxKjtyWn2rqv3Z/?=
+ =?us-ascii?Q?yuwqgdiO2Hp+QwMPMbj730IhHALAI1V21FQFH31Jd+g1ssR5l3aliORgkFLu?=
+ =?us-ascii?Q?Okt3oG9MCs/mjhEEASKBAGG8N8flJbx+XWV2MgmBJzv4a8TvWYt/CwnveLyC?=
+ =?us-ascii?Q?+3MRqVhd/IdWnk64Dqcmf7DWarjztVMEHYJi/tGzUL0IFypobR3+Fo2ryqsB?=
+ =?us-ascii?Q?cdAs2PcEYImd6p06ZMBiCakK7Cxi3abGHlpMbWhuzcWI+MJ3GZkSroqES9OC?=
+ =?us-ascii?Q?JYbfFBsQGXT1guaoqiIXwoQylU+6vfZIWkJQ5KF5ApNxodLcIwzQCX8m1+IO?=
+ =?us-ascii?Q?YsJ7UzyTB7wpLDwMJ7UjGAK/bUTPEg/eQJYg07gukoSkEb9Kikz+oozX66jx?=
+ =?us-ascii?Q?/fJVBbXvw4SE71FFYW2kZgQZAt5KjrN0fHInGJ3LBVwwznv2KcHpANK7B6sw?=
+ =?us-ascii?Q?xFvRff1LCwSCMnddW5l/VPHfBGmiciWjQCWEnfL+L7VjrxRpy++3noKhOCqu?=
+ =?us-ascii?Q?uOwPRjCN9LsbBLBCdK3LlnVyEBjhfaXq24sP3TsOCL0LkedOFNT26QOD9+5B?=
+ =?us-ascii?Q?020B7MwdYIm2OQYq4LxNWKqlrXQ2vhk/oYW/pXZY20DxGrY0P4MPCgJbcgBo?=
+ =?us-ascii?Q?c2YEfFGYWTDaJrsFckxVmuS1FvYjN9JVhR6hFQTY4DuBJ+m0Jt8+9OCCIyr5?=
+ =?us-ascii?Q?WjjP2zcAwM3uIYlZL66Y8JozzBYbwWNqkMlyr93BArWuRb18P9EoVa8joXw9?=
+ =?us-ascii?Q?iIu6427X5mIDb2Tud5IsMyQsDa4PZuM77AiMwg/pEnAGKHUIOMMRv3sH/BaR?=
+ =?us-ascii?Q?zQvsrdkrhZW7vDQ045cKOzqc7m8ze/pZUYVa+EC28Xi/SX52VvycMvE8t+6j?=
+ =?us-ascii?Q?TxKIPoaxghLsILxvb7J1fm7ESNsmwdncO94Xo+yXsGcTurt0hnhhBx0V97ak?=
+ =?us-ascii?Q?QNeEnevOWwGH/jcHADrwm/tRMJ8MX4T49rUPHIFFQhsL902lkf3jCFoxZgqi?=
+ =?us-ascii?Q?9+2rJzFlYLN1voD6DVTOxheCGim4Bi3TzD/HEKATk63ZaEG/asl4jX20pNdt?=
+ =?us-ascii?Q?pS7bQLVu1mTBmj3vtHV3nAqv/Ue8/fGmOE51RFxD1D/VbYwo+SYws9C1soCs?=
+ =?us-ascii?Q?Z3L59uSpNYzJvEdp6b9NDBV3Y3IANC8TCXfHiPMIgP9CCBc+xQ8M/o+XpIhg?=
+ =?us-ascii?Q?7SBwm5zwcXsupuLGWUiT3cx1WInvuUbIOVqinF8lDmG4NUvUqweK7Tdzzp6T?=
+ =?us-ascii?Q?dCrYfZwl1V6CpUTVhaNdML3WKytllF+HpD2Z7tmW0gFS3sjWgxXRS/fHVfu1?=
+ =?us-ascii?Q?H19U1VfCU6sEF0wMbsgmW2ipoRZcypbF9kz/fScwocQ5TTq/Jn0lPEYQA8Fb?=
+ =?us-ascii?Q?hqufJkll07Z+bY2UywdIQpg4KWkYBEDjCNo/JFnHqvTrl3bp2/GDmyla14E+?=
+ =?us-ascii?Q?IyOxFuZ7AwXfTZ3/2Fznt028i8HT2eeAaH/KVrbcVEybna7VPMcZsYnUy+s3?=
+ =?us-ascii?Q?wqZJfSqsJdQ7LKVNoisP4v+Z5hbgTm96twEl0RAvK5s+ea6C8bObPzw0ch5M?=
+ =?us-ascii?Q?TmjpdlsdwhqLKNsK3QrNzzgEz6mwSh0X3GBepxm0EX10aV/M/5vCSjxbhu3x?=
+ =?us-ascii?Q?eHahdurAqV2g6C3QXfOxgHUmUTWYxi4WWY9jdedv6UdTAKYzRsg0Wurnq/TA?=
+ =?us-ascii?Q?fSX+2e1/1Z3GYw/IB1QXr/SAmAI=3D?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 249d5dcc-f139-4d4e-9e49-08dafdce751b
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0a016dd7-b29f-4535-b0c3-08dafdce7771
 X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2023 05:47:19.7118
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2023 05:47:23.6157
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0BNdxMBa44CZ/QBLpgEcb/Ll5GDy4ObLg36pvsPnJa2wNsuIeic0bYMHrreSRjcaLn12hznx/StH62S25OB8nsB7rDLPdftj/Mo6rQinuX4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR08MB5678
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2rtwT7sze6TRGqBFKYjVzQMCjrodU3HpZBY3XZwfaq0Cw57U5S9uccmB1sAsti89TuUGSkrNc6B/MvNSq7QNc/c0XbGD0bpdjEVPypKAgNA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB10032
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230123_214728_961146_A58EBDC5 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20230123_214728_437060_4FF8D5B9 
+X-CRM114-Status: GOOD (  21.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,68 +142,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 540b8f271e53 ("drm/rockchip: Embed drm_encoder into
-rockchip_decoder") provides the means to pass the endpoint ID to the
-VOP2 driver, which sets the interface MUX accordingly. However, this
-step has not yet been carried out for the RGB output block. Embed the
-drm_encoder structure into the rockchip_encoder structure and set the
-endpoint ID correctly.
+The Rockchip VOP2 features an internal RGB output block, which can be
+attached any video port of the VOP2. Add support for this output block.
 
 Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 ---
 v3:
- - no changes
+ - fix commit messages (still assumed video port 2)
+ - fix condition to make 0 a valid video port
 v2:
- - use endpoint id from device tree instead of hardcoded value
+ - move away from wrong assumption that the RGB block is always
+   connected to video port 2 -> check devicetree to find RGB block
 
- drivers/gpu/drm/rockchip/rockchip_rgb.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 44 ++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-index 75eb7cca3d82..5971df4302f2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-@@ -22,13 +22,11 @@
- #include "rockchip_drm_vop.h"
- #include "rockchip_rgb.h"
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 06fcdfa7b885..f38ffd0ccd9f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -39,6 +39,7 @@
+ #include "rockchip_drm_gem.h"
+ #include "rockchip_drm_fb.h"
+ #include "rockchip_drm_vop2.h"
++#include "rockchip_rgb.h"
  
--#define encoder_to_rgb(c) container_of(c, struct rockchip_rgb, encoder)
--
- struct rockchip_rgb {
- 	struct device *dev;
- 	struct drm_device *drm_dev;
- 	struct drm_bridge *bridge;
--	struct drm_encoder encoder;
-+	struct rockchip_encoder encoder;
- 	struct drm_connector connector;
- 	int output_mode;
- };
-@@ -125,7 +123,7 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
- 		return ERR_PTR(ret);
- 	}
+ /*
+  * VOP2 architecture
+@@ -212,6 +213,9 @@ struct vop2 {
+ 	struct clk *hclk;
+ 	struct clk *aclk;
  
--	encoder = &rgb->encoder;
-+	encoder = &rgb->encoder.encoder;
- 	encoder->possible_crtcs = drm_crtc_mask(crtc);
- 
- 	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_NONE);
-@@ -161,6 +159,8 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
- 		goto err_free_encoder;
- 	}
- 
-+	rgb->encoder.crtc_endpoint_id = endpoint_id;
++	/* optional internal rgb encoder */
++	struct rockchip_rgb *rgb;
 +
- 	ret = drm_connector_attach_encoder(connector, encoder);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(drm_dev->dev,
-@@ -182,6 +182,6 @@ void rockchip_rgb_fini(struct rockchip_rgb *rgb)
- {
- 	drm_panel_bridge_remove(rgb->bridge);
- 	drm_connector_cleanup(&rgb->connector);
--	drm_encoder_cleanup(&rgb->encoder);
-+	drm_encoder_cleanup(&rgb->encoder.encoder);
+ 	/* must be put at the end of the struct */
+ 	struct vop2_win win[];
+ };
+@@ -2393,6 +2397,25 @@ static void vop2_destroy_crtcs(struct vop2 *vop2)
+ 	}
  }
- EXPORT_SYMBOL_GPL(rockchip_rgb_fini);
+ 
++static int vop2_find_rgb_encoder(struct vop2 *vop2)
++{
++	struct device_node *node = vop2->dev->of_node;
++	struct device_node *endpoint;
++	int i;
++
++	for (i = 0; i < vop2->data->nr_vps; i++) {
++		endpoint = of_graph_get_endpoint_by_regs(node, i,
++							 ROCKCHIP_VOP2_EP_RGB0);
++		if (!endpoint)
++			continue;
++
++		of_node_put(endpoint);
++		return i;
++	}
++
++	return -ENOENT;
++}
++
+ static struct reg_field vop2_cluster_regs[VOP2_WIN_MAX_REG] = {
+ 	[VOP2_WIN_ENABLE] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 0, 0),
+ 	[VOP2_WIN_FORMAT] = REG_FIELD(RK3568_CLUSTER_WIN_CTRL0, 1, 5),
+@@ -2698,11 +2721,29 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 	if (ret)
+ 		return ret;
+ 
++	ret = vop2_find_rgb_encoder(vop2);
++	if (ret >= 0) {
++		vop2->rgb = rockchip_rgb_init(dev, &vop2->vps[ret].crtc,
++					      vop2->drm, ret);
++		if (IS_ERR(vop2->rgb)) {
++			if (PTR_ERR(vop2->rgb) == -EPROBE_DEFER) {
++				ret = PTR_ERR(vop2->rgb);
++				goto err_crtcs;
++			}
++			vop2->rgb = NULL;
++		}
++	}
++
+ 	rockchip_drm_dma_init_device(vop2->drm, vop2->dev);
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
+ 	return 0;
++
++err_crtcs:
++	vop2_destroy_crtcs(vop2);
++
++	return ret;
+ }
+ 
+ static void vop2_unbind(struct device *dev, struct device *master, void *data)
+@@ -2711,6 +2752,9 @@ static void vop2_unbind(struct device *dev, struct device *master, void *data)
+ 
+ 	pm_runtime_disable(dev);
+ 
++	if (vop2->rgb)
++		rockchip_rgb_fini(vop2->rgb);
++
+ 	vop2_destroy_crtcs(vop2);
+ }
+ 
 -- 
 2.30.2
 
