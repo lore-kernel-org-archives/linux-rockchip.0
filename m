@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A23AC54E94
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 16:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9663FC27C76
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 16:11:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hnpz8yW1llKxND0r9/mGBceq2gDIR+Lhw6oQbZ7AEt4=; b=poOaMKOK0aVx6V
-	UlD2MbWSWiLJJgLgzXH0GcEL9dZGiyd8Kl+iARa86kwmyFrq1wxIs2LxgjwxJdxScbD63xDdqA+Rr
-	/kSFxxbUnpPkkV/Ipli/Fkod1W6ycXDhDDA5dmfnAhlRi9BkoXoSkdAb6ANsZ4X4RmqTDP1ND2xI0
-	5eopLGsVJtWYjo4HKmcCSwc557KYt8XE6TZd/KKJ7quET9S5alNXsyWhLD1gJuBb08p4hp7Z3aRy4
-	qnuJgBeXSEId1RUumubO4h14CKPzDwqFTYY9WsJaQqwnjzw/T6DLz4nWimiRIJHlF1clBXoXr+h/2
-	a6dzgdrkMU36EasL56Hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=o4Z6TKbeVufoaB7K4id7NejeX0gERDH/9ZSuoal9kTI=; b=k9sFQz2E7eWgi1
+	75Xts5rrVhptRZe93hIVA9+lyMk0fKqagu0Xhif0WGVnvr+Hj2oODOl+hCDYjtwau5ZfM8uJcVttU
+	ngdKwGUsfs4mZVV5+Xr/AhAQk4G9tk9R2RVeztzcLS6j5rvJ77WRadeUuggpkIRZOPpXgoryCxTo3
+	1BEfTBS1pgKhAHqFhzPhZ9PWPwQr8E3tCfKujrDNQZA13Ne8s2pCy5jf++QYea0j6HVtP9wHc19bt
+	kk+TthbIuAnhPwnhC54Q8UAKzITYxIPMo8TLWLcRszcfnqjRfYSQPbXbFABRYlleReXw8siy9S5dH
+	qmeN3zl2QZplyUdBuH2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKiMG-007uuR-HR; Wed, 25 Jan 2023 16:10:44 +0000
+	id 1pKiMG-007uuN-6t; Wed, 25 Jan 2023 16:10:44 +0000
 Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKiM5-007us1-Bn
+	id 1pKiM4-007urH-Qc
 	for linux-rockchip@lists.infradead.org; Wed, 25 Jan 2023 16:10:35 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id m11so7173256pji.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 25 Jan 2023 08:10:33 -0800 (PST)
+Received: by mail-pj1-x1032.google.com with SMTP id b10so19041937pjo.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 Jan 2023 08:10:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=amarulasolutions.com; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZqGU3wJDMck0hXctP8UU1PV+5x18nPVs244//C4MGVw=;
-        b=dTySioobE8TdQKBH6lc6LWHFTTNTkEXJLgy97QDnTIj5UEzY8QS/PqjYyZBYXBTByg
-         YUuwZXmMw9SeyAPgwfJZyowKrKWH9+Srckmyhwij2CQ7SQ57F71NNxyslx2FdzScmnEc
-         dfxA5ZWNmkmECARukK5gN1d02WquRj7a/V72c=
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=stSWpw8TUYjnXGpZEjiWEmn4szU9a8OizCIboNZhV04=;
+        b=aTkxaiAsF5fkrYH8+9HyksKu877tIYcuOSBTrL3prk1kEQ1eZZMwvqsxZYt9f72Ro2
+         KrTEPr7hvMXqckVEwAxAJivJOEI+63xrPx6KomJMGp3J1u5wmn51K06+TN+5ACX6eU9f
+         jLPcpjy8PdK8FNmsfGFcUQwjmaZSF0q7n/qt8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZqGU3wJDMck0hXctP8UU1PV+5x18nPVs244//C4MGVw=;
-        b=ViYdbdahxVsT3qQX4uqDgcOlrTpWRoDm5tn6pluKaMoJyPzci1WWnoNaKTXXr+zd5p
-         XWtXFQqp24EQcCR7HazXgieJAqbVbu8i97tVcj3xoFc1FLNZFxLdI222WbgZp8Ta836L
-         QIYBUvMb2QkmpwGdxgtug4e2t5YWtiPHUZqvwOVIpT0nGNYKR0T6Yx8Poaz/iKLRFgjU
-         S9Twbz8G2d3P1d9m+tAQxTCiobjKq2S2HJsIIIwq9D+QBjdw+/wCDZqm5CNZqICh8ZzH
-         sR6O4oVjjT3AAsUP9nf+sgWdeC54lkE2omIt1A1VZBTgI/OiUlbVIMQ1bpRQUJovTiRt
-         DtmA==
-X-Gm-Message-State: AFqh2kor+kpCygIdSv24cfIdnKbD3j7R8mP7pkM/iRsvatOrTnwdXGot
-	kZoPKL0KS6ZBgEjGJltiRARXow==
-X-Google-Smtp-Source: AMrXdXuD52QWY23VyKrzu75dZZ2SbzMvglaxF2fTNgQpl1FDQKTDpLl2vrR8wSMJdFuVAuwBDPbedg==
-X-Received: by 2002:a05:6a20:b71b:b0:b8:965a:ccb5 with SMTP id fg27-20020a056a20b71b00b000b8965accb5mr30301826pzb.24.1674663032871;
-        Wed, 25 Jan 2023 08:10:32 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=stSWpw8TUYjnXGpZEjiWEmn4szU9a8OizCIboNZhV04=;
+        b=asU+bVgfVEwejIcoJMCu9qohgDHRQ6EPGUse3wQYhClz0iy7Ws6LmIgyL1UiA7VGsB
+         L3TkQRUWmMJXOhK3kM0iWyK0sHmJrKP29u4WVbvJVTUKNREV74PrUvgfcVhSY4AKEt+C
+         yf91NljAhx5e8DHqWLbI9l31XiJV/2MAackh/X9tvTk4qO3TcesnUfGpFa5lcAzRcQVX
+         WY1dC7LIiiWUnisKBTh1YJJlDHOO3B00hG9iclaDZERlJUIETQoXGBcwCxyITGyAOY42
+         PJnHSR2BWZHM1hNiSXlVGWpBo6WPHAxyEP72+GHn+TIcV9TMg+MQTUijxlqMrGAM0MR8
+         w9bw==
+X-Gm-Message-State: AFqh2kpD3yHNUgrpdb7m8Lw8i2Rowd0cbfqhkx1QCbC90Jh2GkkkAA62
+	/A52QVHvUn3gTnL5GOBg0PX8QQ==
+X-Google-Smtp-Source: AMrXdXvP/zwB7h3HdIwW3NhfX//yk279ulFteXpkPz7QTebWQ0/74xOm7OiR1WdhQNIuHJcuC5aXUg==
+X-Received: by 2002:a05:6a20:cb41:b0:b5:951b:e339 with SMTP id hd1-20020a056a20cb4100b000b5951be339mr30213436pzb.21.1674663029881;
+        Wed, 25 Jan 2023 08:10:29 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a238:3cb1:2156:ef87:8af5])
-        by smtp.gmail.com with ESMTPSA id n29-20020a638f1d000000b004dadeb4decasm14929pgd.53.2023.01.25.08.10.30
+        by smtp.gmail.com with ESMTPSA id n29-20020a638f1d000000b004dadeb4decasm14929pgd.53.2023.01.25.08.10.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Jan 2023 08:10:32 -0800 (PST)
+        Wed, 25 Jan 2023 08:10:29 -0800 (PST)
 From: Jagan Teki <jagan@amarulasolutions.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -64,17 +63,15 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3566: Enable WiFi, BT support for Radxa CM3
-Date: Wed, 25 Jan 2023 21:40:23 +0530
-Message-Id: <20230125161023.12115-2-jagan@amarulasolutions.com>
+	Manoj Sai <abbaraju.manojsai@amarulasolutions.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: Enable Ethernet for Radxa CM3 IO
+Date: Wed, 25 Jan 2023 21:40:22 +0530
+Message-Id: <20230125161023.12115-1-jagan@amarulasolutions.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230125161023.12115-1-jagan@amarulasolutions.com>
-References: <20230125161023.12115-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_081033_418910_56CCDE91 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20230125_081032_912428_E1D6B267 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,134 +88,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Radxa Compute Module 3 has an onboard AW_CM256SM WiFi/BT module.
+From: Manoj Sai <abbaraju.manojsai@amarulasolutions.com>
 
-Add nodes for enabling it.
+Add ethernet nodes for enabling gmac1 on the Radxa CM3 IO board.
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Manoj Sai <abbaraju.manojsai@amarulasolutions.com>
 ---
- .../boot/dts/rockchip/rk3566-radxa-cm3.dtsi   | 80 +++++++++++++++++++
- 1 file changed, 80 insertions(+)
+ .../boot/dts/rockchip/rk3566-radxa-cm3-io.dts | 93 +++++++++++++++++++
+ 1 file changed, 93 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
-index 23a85a13311a..3de3a4f38756 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
-@@ -66,6 +66,15 @@ vcca_1v8: vcca-1v8-regulator {
- 		regulator-max-microvolt = <1800000>;
- 		vin-supply = <&vcc_1v8_p>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
+index 3e6578f27ec0..170af01371ff 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
+@@ -21,6 +21,13 @@ chosen: chosen {
+ 		stdout-path = "serial2:1500000n8";
  	};
-+
-+	sdio_pwrseq: pwrseq-sdio {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk817 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_reg_on_h>;
-+		reset-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_LOW>;
+ 
++	gmac1_clkin: external-gmac1-clock {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "gmac1_clkin";
++		#clock-cells = <0>;
 +	};
++
+ 	hdmi-con {
+ 		compatible = "hdmi-connector";
+ 		type = "a";
+@@ -83,6 +90,29 @@ &combphy1 {
+ 	status = "okay";
  };
  
- &cpu0 {
-@@ -287,6 +296,20 @@ regulator-state-mem {
++&gmac1 {
++	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
++	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "input";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii";
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac1m0_miim
++		     &gmac1m0_tx_bus2
++		     &gmac1m0_rx_bus2
++		     &gmac1m0_rgmii_clk
++		     &gmac1m0_rgmii_bus
++		     &gmac1m0_clkinout>;
++	snps,reset-gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 20ms, 100ms for rtl8211f */
++	snps,reset-delays-us = <0 20000 100000>;
++	tx_delay = <0x46>;
++	rx_delay = <0x2e>;
++	status = "okay";
++};
++
+ &hdmi {
+ 	avdd-0v9-supply = <&vdda0v9_image>;
+ 	avdd-1v8-supply = <&vcca1v8_image>;
+@@ -105,7 +135,70 @@ &hdmi_sound {
+ 	status = "okay";
  };
  
++&mdio1 {
++	rgmii_phy1: ethernet-phy@0 {
++		compatible="ethernet-phy-ieee802.3-c22";
++		reg= <0x0>;
++	};
++};
++
  &pinctrl {
-+	bluetooth {
-+		bt_host_wake_h: bt-host-wake-h {
-+			rockchip,pins = <2 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++	gmac1 {
++		gmac1m0_miim: gmac1m0-miim {
++			rockchip,pins =
++				/* gmac1_mdcm0 */
++				<3 RK_PC4 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_mdiom0 */
++				<3 RK_PC5 3 &pcfg_pull_none_drv_level_15>;
 +		};
 +
-+		bt_reg_on_h: bt-reg-on-h {
-+			rockchip,pins = <2 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
++		gmac1m0_rx_bus2: gmac1m0-rx-bus2 {
++			rockchip,pins =
++				/* gmac1_rxd0m0 */
++				<3 RK_PB1 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_rxd1m0 */
++				<3 RK_PB2 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_rxdvcrsm0 */
++				<3 RK_PB3 3 &pcfg_pull_none_drv_level_15>;
 +		};
 +
-+		bt_wake_host_h: bt-wake-host-h {
-+			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		gmac1m0_tx_bus2: gmac1m0-tx-bus2 {
++			rockchip,pins =
++				/* gmac1_txd0m0 */
++				<3 RK_PB5 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_txd1m0 */
++				<3 RK_PB6 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_txenm0 */
++				<3 RK_PB7 3 &pcfg_pull_none_drv_level_15>;
++		};
++
++		gmac1m0_rgmii_clk: gmac1m0-rgmii-clk {
++			rockchip,pins =
++				/* gmac1_rxclkm0 */
++				<3 RK_PA7 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_txclkm0 */
++				<3 RK_PA6 3 &pcfg_pull_none_drv_level_15>;
++		};
++
++		gmac1m0_rgmii_bus: gmac1m0-rgmii-bus {
++			rockchip,pins =
++				/* gmac1_rxd2m0 */
++				<3 RK_PA4 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_rxd3m0 */
++				<3 RK_PA5 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_txd2m0 */
++				<3 RK_PA2 3 &pcfg_pull_none_drv_level_15>,
++				/* gmac1_txd3m0 */
++				<3 RK_PA3 3 &pcfg_pull_none_drv_level_15>;
++		};
++
++		gmac1m0_clkinout: gmac1m0-clkinout {
++			rockchip,pins =
++				/* gmac1_mclkinoutm0 */
++				<3 RK_PC0 3 &pcfg_pull_none_drv_level_15>;
 +		};
 +	};
 +
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-@@ -298,6 +321,16 @@ user_led2: user-led2 {
- 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	wifi {
-+		wifi_reg_on_h: wifi-reg-on-h {
-+			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wifi_host_wake_h: wifi-host-wake-h {
-+			rockchip,pins = <2 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pmu_io_domains {
-@@ -318,6 +351,34 @@ &saradc {
- 	status = "okay";
- };
- 
-+&sdmmc1 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_clk &sdmmc1_cmd>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "okay";
-+
-+	wifi@1 {
-+		compatible = "brcm,bcm43455-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <RK_PC1 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake_h>;
-+	};
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	max-frequency = <200000000>;
-@@ -330,6 +391,25 @@ &sdhci {
- 	status = "okay";
- };
- 
-+&uart1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart1m0_ctsn &uart1m0_rtsn &uart1m0_xfer>;
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm4345c5";
-+		clocks = <&rk817 1>;
-+		clock-names = "lpo";
-+		device-wakeup-gpios = <&gpio2 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_h &bt_reg_on_h &bt_wake_host_h>;
-+		vbat-supply = <&vcc_3v3>;
-+		vddio-supply = <&vcc_1v8>;
-+	};
-+};
-+
- &usb2phy0 {
- 	status = "okay";
- };
+ 	leds {
+ 		pi_nled_activity: pi-nled-activity {
+ 			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
 2.25.1
 
