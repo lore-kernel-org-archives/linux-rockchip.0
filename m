@@ -4,55 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F37F2C27C76
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 12:40:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E6FC27C76
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 14:28:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FPu2+8cCtTc6OZ2fgcxdvU8m/4dPQE+HCGQeUC2XBkI=; b=I4qKNk8wdizh00
-	Xj/mhXVj5nXCvDhVLel7ljLqymw8cbq+ADwCx9Iti0QyhKUx6ZNxH4RMrzHRFGXc2DvDxaeNaT2o5
-	Xo/2YytASWKkXa2N9gySHYhI41gLsRIcQk0oD0toGcbTnTwwWSofU//Ei2bx2ov+9UFGCD9D+o+X/
-	paQJXsOqGGQ7L3RfvqtW39dHU9eJ5WiUENvY9vYxz+bbShC5bYxskE/XYU5prmta9/Yk1ziSwiyA4
-	vvGWdM8OrTlL4xl6Ew4zl+frTiWVeRpc+V5gCPa2SNT8O8TcMFtDbIrkAsHP8E0cty4doz3CIAMoK
-	fdgdAa8UDDdZz/tRhrTw==;
+	List-Owner; bh=6JFEn2vrkUKkGchHOd0BYP0NUS53zENk72d1XA85fRY=; b=uJ6IXlYCf4xb3q
+	NOMOmnc5IbBnpSLEQrC8Ah91q0Wbk75fXCOImthdw8g+vESYLy1JzgxmLMGHdPo0wZmAbHKonMe3f
+	MksgU0imJtKNZ76CoUo8zarU5j6/j2qFcXiOGQVblvEVaM6QRsyZm1SbNueafB9CvNx21DOvHih2y
+	UwxkZhV3Jvrq0+XIEmMfeTMXq+i5ADPR+ZEwiecnlEbDBYvP8cvOhxmB5/rbhNeBT+QtCnrUeuZBx
+	xZ8VxX1r7cmBcYFhD6lkpu9UHUNx4AdZdjEAGat/8uGq/DqGxw00txpEfKRNCWTmJTVBQnK3co2Fy
+	vL20wx0AlRYvHa1vaNEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKf4P-007J1e-T0; Wed, 25 Jan 2023 12:40:05 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1pKgl8-007XbL-LO; Wed, 25 Jan 2023 14:28:18 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKf4E-007IzM-Rl; Wed, 25 Jan 2023 12:39:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pKgkw-007XVd-QY; Wed, 25 Jan 2023 14:28:09 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 49952CE1E29;
-	Wed, 25 Jan 2023 12:39:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62163C433D2;
-	Wed, 25 Jan 2023 12:39:46 +0000 (UTC)
-Message-ID: <87f60e3e-4d91-5fed-eeaa-406e0a47a684@xs4all.nl>
-Date: Wed, 25 Jan 2023 13:39:44 +0100
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1CC8B6602E00;
+	Wed, 25 Jan 2023 14:28:01 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674656882;
+	bh=rJyQR0v8iKrJWtNCwmnLS2MPNx/i9JuopJQn6g7HfHo=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=e4kCLdzLbodn4ePgll8WwdPnbAuQkmut++zrt+qx8TBYx9Mjr3g977GWWM6coPMwr
+	 yY7hLiYQwcoytxDP5p08n83DzKzpY3BjjexkZ6BJHaIVIDkNtIkghykFjvBPzJ/9kZ
+	 D5b/A8rheAUNY8osRPtr1MWvD29fuahDTr2TujuqsdjdaDeS7bvSO61E82Q7C4iNJj
+	 S8553kwdOEQ7lMgWa0jsGfnvgN2Z1HbyT8z19VHMqDjlJEOt2lHfFW6wLETAaceoF5
+	 lcxKkTgygJpptXNsndEAyaV7J2z77FD3kk1zz31dl3vNLHz22D0DrKNriyZCt4wK/d
+	 MU4CC2zvyHzrQ==
+Message-ID: <dc550ea69488a53e108a31bd0574e63e18704a0b.camel@collabora.com>
+Subject: Re: [PATCH] hantro: Fix JPEG encoder ENUM_FRAMESIZE on RK3399
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Michael Grzeschik <mgr@pengutronix.de>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ kernel@collabora.com, Robert Mader <robert.mader@collabora.com>, Mauro
+ Carvalho Chehab <mchehab+samsung@kernel.org>,  linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Wed, 25 Jan 2023 09:27:50 -0500
+In-Reply-To: <20230124223855.GD7611@pengutronix.de>
+References: <20221223141644.703088-1-nicolas.dufresne@collabora.com>
+	 <CAAEAJfATk+jOq3qt-m2CZEbCVumHHWDFfuEXKA7k0NZQXajCRg@mail.gmail.com>
+	 <6449640fcfbbfd4b72e619f03704b7e9031a8a17.camel@collabora.com>
+	 <20230124223855.GD7611@pengutronix.de>
+User-Agent: Evolution 3.46.2 (3.46.2-1.fc37) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v3 13/13] media: verisilicon: Conditionnaly ignore native
- formats
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- daniel.almeida@collabora.com, nicolas.dufresne@collabora.co.uk
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20230111165931.753763-1-benjamin.gaignard@collabora.com>
- <20230111165931.753763-14-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20230111165931.753763-14-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_043955_250733_79AA7423 
-X-CRM114-Status: GOOD (  25.57  )
+X-CRM114-CacheID: sfid-20230125_062807_246736_C5ADD685 
+X-CRM114-Status: GOOD (  43.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,156 +74,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Typo in Subject line: Conditionnaly -> Conditionally
-
-Regards,
-
-	Hans
-
-On 1/11/23 17:59, Benjamin Gaignard wrote:
-> AV1 film grain feature requires to use the postprocessor to produce
-> valid frames. In such case the driver shouldn't propose native pixels
-> format but only post-processed pixels format.
-> Additionally if when setting a control a value could change capture
-> queue pixels formats it is needed to call hantro_reset_raw_fmt().
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> v3:
-> - Reset raw pixel formats list when bit depth or film grain feature
->   values change.
-> 
->  drivers/media/platform/verisilicon/hantro.h      |  3 +++
->  drivers/media/platform/verisilicon/hantro_drv.c  | 11 ++++++++++-
->  .../media/platform/verisilicon/hantro_postproc.c |  4 ++++
->  drivers/media/platform/verisilicon/hantro_v4l2.c | 16 +++++++++++++++-
->  drivers/media/platform/verisilicon/hantro_v4l2.h |  1 +
->  5 files changed, 33 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-> index a98cb40a8d3b..7a5357e810fb 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -231,6 +231,8 @@ struct hantro_dev {
->   * @ctrl_handler:	Control handler used to register controls.
->   * @jpeg_quality:	User-specified JPEG compression quality.
->   * @bit_depth:		Bit depth of current frame
-> + * @need_postproc:	Set to true if the bitstream features require to
-> + *			use the post-processor.
->   *
->   * @codec_ops:		Set of operations related to codec mode.
->   * @postproc:		Post-processing context.
-> @@ -258,6 +260,7 @@ struct hantro_ctx {
->  	struct v4l2_ctrl_handler ctrl_handler;
->  	int jpeg_quality;
->  	int bit_depth;
-> +	bool need_postproc;
->  
->  	const struct hantro_codec_ops *codec_ops;
->  	struct hantro_postproc_ctx postproc;
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index 4fc6dea16ae6..ef99f0f0fc53 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -340,12 +340,21 @@ static int hantro_av1_s_ctrl(struct v4l2_ctrl *ctrl)
->  	switch (ctrl->id) {
->  	case V4L2_CID_STATELESS_AV1_SEQUENCE:
->  		int bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
-> +		bool need_postproc = false;
->  
->  		if (vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)))
->  			if (ctx->bit_depth != bit_depth)
->  				return -EINVAL;
->  
-> -		ctx->bit_depth = bit_depth;
-> +		if (ctrl->p_new.p_av1_sequence->flags
-> +		    & V4L2_AV1_SEQUENCE_FLAG_FILM_GRAIN_PARAMS_PRESENT)
-> +			need_postproc = true;
-> +
-> +		if (ctx->bit_depth != bit_depth || ctx->need_postproc != need_postproc) {
-> +			ctx->bit_depth = bit_depth;
-> +			ctx->need_postproc = need_postproc;
-> +			hantro_reset_raw_fmt(ctx);
-> +		}
->  		break;
->  	default:
->  		return -EINVAL;
-> diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-> index 7dc39519a2ee..293e5612e2ce 100644
-> --- a/drivers/media/platform/verisilicon/hantro_postproc.c
-> +++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-> @@ -57,6 +57,10 @@ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
->  {
->  	if (ctx->is_encoder)
->  		return false;
-> +
-> +	if (ctx->need_postproc)
-> +		return true;
-> +
->  	return fmt->postprocessed;
->  }
->  
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index bbe79dbd2cd9..7566fe86f624 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -38,6 +38,11 @@ hantro_get_formats(const struct hantro_ctx *ctx, unsigned int *num_fmts)
->  {
->  	const struct hantro_fmt *formats;
->  
-> +	if (ctx->need_postproc) {
-> +		*num_fmts = 0;
-> +		return NULL;
-> +	}
-> +
->  	if (ctx->is_encoder) {
->  		formats = ctx->dev->variant->enc_fmts;
->  		*num_fmts = ctx->dev->variant->num_enc_fmts;
-> @@ -132,6 +137,15 @@ hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream)
->  		    hantro_check_depth_match(ctx, &formats[i]))
->  			return &formats[i];
->  	}
-> +
-> +	formats = hantro_get_postproc_formats(ctx, &num_fmts);
-> +	for (i = 0; i < num_fmts; i++) {
-> +		if (bitstream == (formats[i].codec_mode !=
-> +				  HANTRO_MODE_NONE) &&
-> +		    hantro_check_depth_match(ctx, &formats[i]))
-> +			return &formats[i];
-> +	}
-> +
->  	return NULL;
->  }
->  
-> @@ -404,7 +418,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
->  		hantro_set_fmt_out(ctx, fmt);
->  }
->  
-> -static void
-> +void
->  hantro_reset_raw_fmt(struct hantro_ctx *ctx)
->  {
->  	const struct hantro_fmt *raw_vpu_fmt;
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h b/drivers/media/platform/verisilicon/hantro_v4l2.h
-> index 64f6f57e9d7a..f642560aed93 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.h
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
-> @@ -21,6 +21,7 @@
->  extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
->  extern const struct vb2_ops hantro_queue_ops;
->  
-> +void hantro_reset_raw_fmt(struct hantro_ctx *ctx);
->  void hantro_reset_fmts(struct hantro_ctx *ctx);
->  int hantro_get_format_depth(u32 fourcc);
->  const struct hantro_fmt *
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgbWFyZGkgMjQgamFudmllciAyMDIzIMOgIDIzOjM4ICswMTAwLCBNaWNoYWVsIEdyemVzY2hp
+ayBhIMOpY3JpdMKgOgo+IE9uIEZyaSwgRGVjIDIzLCAyMDIyIGF0IDEyOjA1OjIxUE0gLTA1MDAs
+IE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gPiBMZSB2ZW5kcmVkaSAyMyBkw6ljZW1icmUgMjAy
+MiDDoCAxMzoyOCAtMDMwMCwgRXplcXVpZWwgR2FyY2lhIGEgw6ljcml0wqA6Cj4gPiA+IEhpIGV2
+ZXJ5b25lLAo+ID4gPiAKPiA+ID4gT24gRnJpLCBEZWMgMjMsIDIwMjIgYXQgMTE6MTcgQU0gTmlj
+b2xhcyBEdWZyZXNuZQo+ID4gPiA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPiB3cm90
+ZToKPiA+ID4gPiAKPiA+ID4gPiBUaGUgZnJtc2l6ZSBzdHJ1Y3R1cmUgd2FzIGxlZnQgaW5pdGlh
+bGl6ZSB0byAwLCBhcyBzaWRlIGVmZmVjdCwgdGhlIGRyaXZlciB3YXMKPiA+ID4gPiByZXBvcnRp
+bmcgYW4gaW52YWxpZCBmcm1zaXplLgo+ID4gPiA+IAo+ID4gPiA+ICAgU2l6ZTogU3RlcHdpc2Ug
+MHgwIC0gMHgwIHdpdGggc3RlcCAwLzAKPiA+ID4gPiAKPiA+ID4gPiBGaXggdGhpcyBieSByZXBs
+aWNhdGluZyB0aGUgY29uc3RyYWludHMgaW4gdGhlIHJhdyBmb3JtYXRzIHRvby4gVGhpcyBmaXhl
+cwo+ID4gPiA+IHRha2luZyBwaWN0dXJlIGluIEdub21lIENoZWVzZSBTb2Z0d2FyZSwgb3IgYW55
+IHNvZnR3YXJlIHVzaW5nIEdTdGVhbWVyCj4gPiA+ID4gZW5jb2RlYmluIGZlYXR1cmUuCj4gPiA+
+ID4gCj4gPiA+ID4gRml4ZXM6IDc3NWZlYzY5MDA4ZDMwICgibWVkaWE6IGFkZCBSb2NrY2hpcCBW
+UFUgSlBFRyBlbmNvZGVyIGRyaXZlciIpCj4gPiA+IAo+ID4gPiBUaGUgZnJtc2l6ZSBpcyBvbmx5
+IGZvciBiaXRzdHJlYW0gZm9ybWF0cyAoc2VlIGNvbW1lbnQgaW4gc3RydWN0IGhhbnRyb19mbXQp
+Lgo+ID4gPiBJZiBJIGNhbiByZWFkIGNvZGUgY29ycmVjdGx5LCB0aGlzIHdhcyBicm9rZW4gYnkg
+dGhpcyBjb21taXQ6Cj4gPiA+IAo+ID4gPiBjb21taXQgNzljOTg3ZGU4YjM1NDIxYTJhOTc1OTgy
+OTI5ZjE1MGRkNDE1ZjhmNwo+ID4gPiBBdXRob3I6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1p
+bi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+ID4gPiBEYXRlOiAgIE1vbiBBcHIgNCAxODowNjo0
+MCAyMDIyICswMjAwCj4gPiA+IAo+ID4gPiAgICAgbWVkaWE6IGhhbnRybzogVXNlIHBvc3QgcHJv
+Y2Vzc29yIHNjYWxpbmcgY2FwYWNpdGllcwo+ID4gPiAKPiA+ID4gQmVmb3JlIHRoYXQgY29tbWl0
+IHdlIHVzZWQgdG8gcmV0dXJuIEVJTlZBTCBmb3IgZW51bV9mcmFtZXNpemVzCj4gPiA+IGluIFJB
+VyBmb3JtYXRzLiBJIGd1ZXNzIHdlIG1pc3NlZCB0aGF0IDotKQo+ID4gCj4gPiBJIHNlZSwgYW5k
+IGdzdHJlYW1lciBoYWQgYSBxdWlyayBmb3Igc3VjaCBhIGJvZ3VzIHJlc3BvbnNlLiBMZXQgbWUg
+ZXhwbGFpbiB3aHkKPiA+IGl0cyBib2d1cywgZm9yIHRoZSBnZW5lcmFsIGtub3dsZWdlLiBBIGRy
+aXZlciB0aGF0IHN1cHBvcnRzIEVOVU1fRlJBTUVTSVpFIGJ1dAo+ID4gZG9lcyBub3QgcmV0dXJu
+IGFueSBzaXplcywgaXMgaW4gdGhlb3J5IGEgZHJpdmVyIHRoYXQgZG9lcyBub3Qgc3VwcG9ydCBh
+bnl0aGluZy4KPiA+IEZvcnR1bmFseSwgR1N0cmVhbWVyIGNvbnNpZGVyZWQgbm90IGhhdmluZyBh
+IHNpbmdsZSBmcmFtZXNpemUgYm9ndXMsIGFuZCB3b3VsZAo+ID4gZmFsbGJhY2sgdG8gdGhlIG9s
+ZCBzY2hvb2wgdHJ5X2ZtdCgpIGRhbmNlIHRvIGZpbmQgdGhlIHN1cHBvcnRlZCBzaXplcy4KPiA+
+IAo+ID4gU28geWVzLCBpdCB1c2VkIHRvIHdvcmsgaW4gZ3N0cmVhbWVyLCBhbmQgaXRzIGluZGVl
+ZAo+ID4gNzljOTg3ZGU4YjM1NDIxYTJhOTc1OTgyOTI5ZjE1MGRkNDE1ZjhmNyB0aGF0IGJyb2tl
+IGl0LiBJJ2xsIGNvcnJlY3QgaGlzIGluIFYyLgo+ID4gCj4gPiA+IAo+ID4gPiBUbyBiZSBjb21w
+bGV0ZWx5IGhvbmVzdCwgSSdtIG5vdCBzdXJlIGlmIHdlIHVzZWQgdG8gc3VwcG9ydCBlbmNvZGVi
+aW4sCj4gPiA+IGFuZCBJJ20gbm90IHRvbyBzdXJlIGhvdyB0byBhcHByb2FjaCB0aGlzIGlzc3Vl
+LCBidXQgSSB3b3VsZCByZWFsbHkKPiA+ID4gbG92ZSB0byBzdGFydCB3aXRoIHNvbWV0aGluZyBz
+dXBlciBzaW1wbGUgbGlrZToKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gYi9kcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gaW5kZXggMmM3YTgwNTI4
+OWU3Li4wYjI4Zjg2Yjc0NjMgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
+cm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYwo+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Bs
+YXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gQEAgLTE2MSw4ICsxNjEsMTEg
+QEAgc3RhdGljIGludCB2aWRpb2NfZW51bV9mcmFtZXNpemVzKHN0cnVjdCBmaWxlCj4gPiA+ICpm
+aWxlLCB2b2lkICpwcml2LAo+ID4gPiAgICAgICAgIH0KPiA+ID4gCj4gPiA+ICAgICAgICAgLyog
+Rm9yIG5vbi1jb2RlZCBmb3JtYXRzIGNoZWNrIGlmIHBvc3Rwcm9jZXNzaW5nIHNjYWxpbmcgaXMg
+cG9zc2libGUgKi8KPiA+ID4gLSAgICAgICBpZiAoZm10LT5jb2RlY19tb2RlID09IEhBTlRST19N
+T0RFX05PTkUgJiYKPiA+ID4gaGFudHJvX25lZWRzX3Bvc3Rwcm9jKGN0eCwgZm10KSkgewo+ID4g
+PiAtICAgICAgICAgICAgICAgcmV0dXJuIGhhbnRvX3Bvc3Rwcm9jX2VudW1fZnJhbWVzaXplcyhj
+dHgsIGZzaXplKTsKPiA+ID4gKyAgICAgICBpZiAoZm10LT5jb2RlY19tb2RlID09IEhBTlRST19N
+T0RFX05PTkUpCj4gPiA+ICsgICAgICAgIGlmIChoYW50cm9fbmVlZHNfcG9zdHByb2MoY3R4LCBm
+bXQpKQo+ID4gPiArICAgICAgICAgICAgcmV0dXJuIGhhbnRvX3Bvc3Rwcm9jX2VudW1fZnJhbWVz
+aXplcyhjdHgsIGZzaXplKTsKPiA+ID4gKyAgICAgICAgZWxzZQo+ID4gPiArICAgICAgICAgICAg
+cmV0dXJuIC1FTk9UVFk7Cj4gPiA+ICAgICAgICAgfSBlbHNlIGlmIChmc2l6ZS0+aW5kZXggIT0g
+MCkgewo+ID4gPiAgICAgICAgICAgICAgICAgdnB1X2RlYnVnKDAsICJpbnZhbGlkIGZyYW1lIHNp
+emUgaW5kZXggKGV4cGVjdGVkIDAsIGdvdCAlZClcbiIsCj4gPiA+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgZnNpemUtPmluZGV4KTsKPiA+ID4gCj4gPiA+IChFTk9UVFkgd2FzIHN1Z2dlc3Rl
+ZCBieSBOaWNvbGFzIG9uIElSQykKPiA+ID4gCj4gPiA+IE5pY29sYXMgYWxzbyBwb2ludGVkIG91
+dCB0aGF0IG91ciBjdXJyZW50IGhhbmRsaW5nIG9mIGZybXNpemUgaXMgbm90IGNvcnJlY3QsCj4g
+PiA+IGFzIHdlIGNhbm5vdCBleHByZXNzIGRpZmZlcmVudCBjb25zdHJhaW50cyBvbiBjb21iaW5h
+dGlvbnMgb2YgUkFXCj4gPiA+IGFuZCBiaXRzdHJlYW0gZm9ybWF0cy4KPiA+ID4gCj4gPiA+IFRo
+aXMgc2VlbXMgdG8gY2FsbCBmb3IgYSByZXdvcmsgb2YgZW51bV9mcmFtZXNpemVzLCBzbyBmcm1z
+aXplCj4gPiA+IGlzIG5vdCBzdGF0aWMgYnV0IHNvbWVob3cgb2J0YWluZWQgcGVyLWNvZGVjLgo+
+ID4gCj4gPiBTbyBJJ2xsIHJlc3BpbiBhbG9uZyB0aGVzZSBsaW5lIHRvIHdlIG1vcmUgb3IgbGVz
+cyAicmV2ZXJ0IGJhY2siIHRvIHdvcmtpbmcKPiA+IHN0YXRlLiBUaG91Z2ggaGF2aW5nIGEgZnJh
+bWVzaXplIGVudW1lcmF0aW9uIG9uIGVuY29kZXIgcmF3IChPVVRQVVQgcXVldWUpIGlzCj4gPiB3
+aGF0IG1ha2VzIG1vc3Qgc2Vuc2Ugc28gdGhhdCB3aWxsIGhhdmUgdG8gYmUgcmV2aXNpdGVkIHdp
+dGggYSBjb3JyZWN0ZWQKPiA+IG1lY2hhbmlzbSwgYXMgd2hlbmV2ZXIgd2UgYWRkIFZQOCBhbmQg
+SC4yNjQgZW5jb2RpbmcsIHdlJ2xsIG5lZWQgZGlmZmVyZW50IHJhbmdlCj4gPiBwZXIgY29kZWMu
+IEknbGwgY2hlY2sgaW4gSmFudWFyeSB3aXRoIG15IGNvbGxlYWd1ZSwgd2UgbWlnaHQgZG8gdGhh
+dCBpbnNpZGUgdGhlCj4gPiBWUDggZW5jb2RlciBicmFuY2ggKHRoYXQgaXMgbmVhcmx5IHJlYWR5
+IGFuZCB3aWxsIGJlIHNlbnQgYWZ0ZXIgdGhlIGhvbGlkYXlzKSwKPiA+IG9yIGNvdWxkIGJlIGFu
+IGludGVybWVkaWF0ZSBzZXQuCj4gCj4gSSBqdXN0IGNhbWUgYWNyb3NzIHRoaXMgZGlzY3Vzc2lv
+biBhbmQgZm91bmQgbXkgdmVyeSBzaW1pbGFyIGFuZCBzb21laG93Cj4gZm9yZ290dGVuIHBhdGNo
+IHRoZSBvdGhlciBkYXkuCj4gCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEv
+NjY4MzllMGM0YjE5ZWI0ZmFiYTVmYmVkNWNkMGE0ZWMwYzg0MTVmOC5jYW1lbEBuZHVmcmVzbmUu
+Y2EvCj4gCj4gU2hvdWxkIEkganVzdCBzZW5kIGEgdjIgd2l0aCB0aGUgRU5PVFRZIGZvciBub3c/
+CgpJIHdhcyBmb3JnZXR0aW5nIGFib3V0IHRoaXMsIHNvcnJ5LCBvayBpZiB5b3UgaGF2ZSBiYW5k
+d2lkdGgsIGp1c3QgdXBkYXRlIHlvdXIKcGF0Y2ggd2l0aCBFTk9UVFksIGNhbiB5b3UgZXh0ZW5k
+IHlvdXIgY29tbWVudCB3aXRoIHdoYXQgd2FzIHdyb25nIHdpdGggdGhlIEVOVU0KKGxpa2UgSSBk
+aWQgaW4gbXkgcGF0Y2gpID8gQWxzbyBkb24ndCBmb3JnZXQgdG8gYWRkIGEgRml4ZXMgdGFnLCB0
+aGlzIG5lZWRzCmJhY2twb3J0aW5nLgoKPiAKPiBUaGFua3MsCj4gTWljaGFlbAo+IAo+ID4gPiA+
+IFJlcG9ydGVkLWJ5OiBSb2JlcnQgTWFkZXIgPHJvYmVydC5tYWRlckBjb2xsYWJvcmEuY29tPgo+
+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
+Y29sbGFib3JhLmNvbT4KPiA+ID4gCj4gPiA+IEFuZCB0aGFua3MgYSBsb3QgZm9yIHRoZSByZXBv
+cnQgYW5kIHRoZSBwYXRjaCEKPiA+ID4gCj4gPiAKPiA+IAo+ID4gX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
+ZyBsaXN0Cj4gPiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+IGh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo+
+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
