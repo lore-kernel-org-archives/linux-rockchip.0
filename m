@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E6FC27C76
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 14:28:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A23AC54E94
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 16:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6JFEn2vrkUKkGchHOd0BYP0NUS53zENk72d1XA85fRY=; b=uJ6IXlYCf4xb3q
-	NOMOmnc5IbBnpSLEQrC8Ah91q0Wbk75fXCOImthdw8g+vESYLy1JzgxmLMGHdPo0wZmAbHKonMe3f
-	MksgU0imJtKNZ76CoUo8zarU5j6/j2qFcXiOGQVblvEVaM6QRsyZm1SbNueafB9CvNx21DOvHih2y
-	UwxkZhV3Jvrq0+XIEmMfeTMXq+i5ADPR+ZEwiecnlEbDBYvP8cvOhxmB5/rbhNeBT+QtCnrUeuZBx
-	xZ8VxX1r7cmBcYFhD6lkpu9UHUNx4AdZdjEAGat/8uGq/DqGxw00txpEfKRNCWTmJTVBQnK3co2Fy
-	vL20wx0AlRYvHa1vaNEw==;
+	List-Owner; bh=hnpz8yW1llKxND0r9/mGBceq2gDIR+Lhw6oQbZ7AEt4=; b=poOaMKOK0aVx6V
+	UlD2MbWSWiLJJgLgzXH0GcEL9dZGiyd8Kl+iARa86kwmyFrq1wxIs2LxgjwxJdxScbD63xDdqA+Rr
+	/kSFxxbUnpPkkV/Ipli/Fkod1W6ycXDhDDA5dmfnAhlRi9BkoXoSkdAb6ANsZ4X4RmqTDP1ND2xI0
+	5eopLGsVJtWYjo4HKmcCSwc557KYt8XE6TZd/KKJ7quET9S5alNXsyWhLD1gJuBb08p4hp7Z3aRy4
+	qnuJgBeXSEId1RUumubO4h14CKPzDwqFTYY9WsJaQqwnjzw/T6DLz4nWimiRIJHlF1clBXoXr+h/2
+	a6dzgdrkMU36EasL56Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKgl8-007XbL-LO; Wed, 25 Jan 2023 14:28:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pKiMG-007uuR-HR; Wed, 25 Jan 2023 16:10:44 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKgkw-007XVd-QY; Wed, 25 Jan 2023 14:28:09 +0000
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1CC8B6602E00;
-	Wed, 25 Jan 2023 14:28:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674656882;
-	bh=rJyQR0v8iKrJWtNCwmnLS2MPNx/i9JuopJQn6g7HfHo=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=e4kCLdzLbodn4ePgll8WwdPnbAuQkmut++zrt+qx8TBYx9Mjr3g977GWWM6coPMwr
-	 yY7hLiYQwcoytxDP5p08n83DzKzpY3BjjexkZ6BJHaIVIDkNtIkghykFjvBPzJ/9kZ
-	 D5b/A8rheAUNY8osRPtr1MWvD29fuahDTr2TujuqsdjdaDeS7bvSO61E82Q7C4iNJj
-	 S8553kwdOEQ7lMgWa0jsGfnvgN2Z1HbyT8z19VHMqDjlJEOt2lHfFW6wLETAaceoF5
-	 lcxKkTgygJpptXNsndEAyaV7J2z77FD3kk1zz31dl3vNLHz22D0DrKNriyZCt4wK/d
-	 MU4CC2zvyHzrQ==
-Message-ID: <dc550ea69488a53e108a31bd0574e63e18704a0b.camel@collabora.com>
-Subject: Re: [PATCH] hantro: Fix JPEG encoder ENUM_FRAMESIZE on RK3399
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Michael Grzeschik <mgr@pengutronix.de>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- kernel@collabora.com, Robert Mader <robert.mader@collabora.com>, Mauro
- Carvalho Chehab <mchehab+samsung@kernel.org>,  linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 25 Jan 2023 09:27:50 -0500
-In-Reply-To: <20230124223855.GD7611@pengutronix.de>
-References: <20221223141644.703088-1-nicolas.dufresne@collabora.com>
-	 <CAAEAJfATk+jOq3qt-m2CZEbCVumHHWDFfuEXKA7k0NZQXajCRg@mail.gmail.com>
-	 <6449640fcfbbfd4b72e619f03704b7e9031a8a17.camel@collabora.com>
-	 <20230124223855.GD7611@pengutronix.de>
-User-Agent: Evolution 3.46.2 (3.46.2-1.fc37) 
+	id 1pKiM5-007us1-Bn
+	for linux-rockchip@lists.infradead.org; Wed, 25 Jan 2023 16:10:35 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id m11so7173256pji.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 Jan 2023 08:10:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amarulasolutions.com; s=google;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZqGU3wJDMck0hXctP8UU1PV+5x18nPVs244//C4MGVw=;
+        b=dTySioobE8TdQKBH6lc6LWHFTTNTkEXJLgy97QDnTIj5UEzY8QS/PqjYyZBYXBTByg
+         YUuwZXmMw9SeyAPgwfJZyowKrKWH9+Srckmyhwij2CQ7SQ57F71NNxyslx2FdzScmnEc
+         dfxA5ZWNmkmECARukK5gN1d02WquRj7a/V72c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZqGU3wJDMck0hXctP8UU1PV+5x18nPVs244//C4MGVw=;
+        b=ViYdbdahxVsT3qQX4uqDgcOlrTpWRoDm5tn6pluKaMoJyPzci1WWnoNaKTXXr+zd5p
+         XWtXFQqp24EQcCR7HazXgieJAqbVbu8i97tVcj3xoFc1FLNZFxLdI222WbgZp8Ta836L
+         QIYBUvMb2QkmpwGdxgtug4e2t5YWtiPHUZqvwOVIpT0nGNYKR0T6Yx8Poaz/iKLRFgjU
+         S9Twbz8G2d3P1d9m+tAQxTCiobjKq2S2HJsIIIwq9D+QBjdw+/wCDZqm5CNZqICh8ZzH
+         sR6O4oVjjT3AAsUP9nf+sgWdeC54lkE2omIt1A1VZBTgI/OiUlbVIMQ1bpRQUJovTiRt
+         DtmA==
+X-Gm-Message-State: AFqh2kor+kpCygIdSv24cfIdnKbD3j7R8mP7pkM/iRsvatOrTnwdXGot
+	kZoPKL0KS6ZBgEjGJltiRARXow==
+X-Google-Smtp-Source: AMrXdXuD52QWY23VyKrzu75dZZ2SbzMvglaxF2fTNgQpl1FDQKTDpLl2vrR8wSMJdFuVAuwBDPbedg==
+X-Received: by 2002:a05:6a20:b71b:b0:b8:965a:ccb5 with SMTP id fg27-20020a056a20b71b00b000b8965accb5mr30301826pzb.24.1674663032871;
+        Wed, 25 Jan 2023 08:10:32 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:c00a:a238:3cb1:2156:ef87:8af5])
+        by smtp.gmail.com with ESMTPSA id n29-20020a638f1d000000b004dadeb4decasm14929pgd.53.2023.01.25.08.10.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Jan 2023 08:10:32 -0800 (PST)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: rk3566: Enable WiFi, BT support for Radxa CM3
+Date: Wed, 25 Jan 2023 21:40:23 +0530
+Message-Id: <20230125161023.12115-2-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230125161023.12115-1-jagan@amarulasolutions.com>
+References: <20230125161023.12115-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_062807_246736_C5ADD685 
-X-CRM114-Status: GOOD (  43.91  )
+X-CRM114-CacheID: sfid-20230125_081033_418910_56CCDE91 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,101 +86,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbWFyZGkgMjQgamFudmllciAyMDIzIMOgIDIzOjM4ICswMTAwLCBNaWNoYWVsIEdyemVzY2hp
-ayBhIMOpY3JpdMKgOgo+IE9uIEZyaSwgRGVjIDIzLCAyMDIyIGF0IDEyOjA1OjIxUE0gLTA1MDAs
-IE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gPiBMZSB2ZW5kcmVkaSAyMyBkw6ljZW1icmUgMjAy
-MiDDoCAxMzoyOCAtMDMwMCwgRXplcXVpZWwgR2FyY2lhIGEgw6ljcml0wqA6Cj4gPiA+IEhpIGV2
-ZXJ5b25lLAo+ID4gPiAKPiA+ID4gT24gRnJpLCBEZWMgMjMsIDIwMjIgYXQgMTE6MTcgQU0gTmlj
-b2xhcyBEdWZyZXNuZQo+ID4gPiA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPiB3cm90
-ZToKPiA+ID4gPiAKPiA+ID4gPiBUaGUgZnJtc2l6ZSBzdHJ1Y3R1cmUgd2FzIGxlZnQgaW5pdGlh
-bGl6ZSB0byAwLCBhcyBzaWRlIGVmZmVjdCwgdGhlIGRyaXZlciB3YXMKPiA+ID4gPiByZXBvcnRp
-bmcgYW4gaW52YWxpZCBmcm1zaXplLgo+ID4gPiA+IAo+ID4gPiA+ICAgU2l6ZTogU3RlcHdpc2Ug
-MHgwIC0gMHgwIHdpdGggc3RlcCAwLzAKPiA+ID4gPiAKPiA+ID4gPiBGaXggdGhpcyBieSByZXBs
-aWNhdGluZyB0aGUgY29uc3RyYWludHMgaW4gdGhlIHJhdyBmb3JtYXRzIHRvby4gVGhpcyBmaXhl
-cwo+ID4gPiA+IHRha2luZyBwaWN0dXJlIGluIEdub21lIENoZWVzZSBTb2Z0d2FyZSwgb3IgYW55
-IHNvZnR3YXJlIHVzaW5nIEdTdGVhbWVyCj4gPiA+ID4gZW5jb2RlYmluIGZlYXR1cmUuCj4gPiA+
-ID4gCj4gPiA+ID4gRml4ZXM6IDc3NWZlYzY5MDA4ZDMwICgibWVkaWE6IGFkZCBSb2NrY2hpcCBW
-UFUgSlBFRyBlbmNvZGVyIGRyaXZlciIpCj4gPiA+IAo+ID4gPiBUaGUgZnJtc2l6ZSBpcyBvbmx5
-IGZvciBiaXRzdHJlYW0gZm9ybWF0cyAoc2VlIGNvbW1lbnQgaW4gc3RydWN0IGhhbnRyb19mbXQp
-Lgo+ID4gPiBJZiBJIGNhbiByZWFkIGNvZGUgY29ycmVjdGx5LCB0aGlzIHdhcyBicm9rZW4gYnkg
-dGhpcyBjb21taXQ6Cj4gPiA+IAo+ID4gPiBjb21taXQgNzljOTg3ZGU4YjM1NDIxYTJhOTc1OTgy
-OTI5ZjE1MGRkNDE1ZjhmNwo+ID4gPiBBdXRob3I6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1p
-bi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+ID4gPiBEYXRlOiAgIE1vbiBBcHIgNCAxODowNjo0
-MCAyMDIyICswMjAwCj4gPiA+IAo+ID4gPiAgICAgbWVkaWE6IGhhbnRybzogVXNlIHBvc3QgcHJv
-Y2Vzc29yIHNjYWxpbmcgY2FwYWNpdGllcwo+ID4gPiAKPiA+ID4gQmVmb3JlIHRoYXQgY29tbWl0
-IHdlIHVzZWQgdG8gcmV0dXJuIEVJTlZBTCBmb3IgZW51bV9mcmFtZXNpemVzCj4gPiA+IGluIFJB
-VyBmb3JtYXRzLiBJIGd1ZXNzIHdlIG1pc3NlZCB0aGF0IDotKQo+ID4gCj4gPiBJIHNlZSwgYW5k
-IGdzdHJlYW1lciBoYWQgYSBxdWlyayBmb3Igc3VjaCBhIGJvZ3VzIHJlc3BvbnNlLiBMZXQgbWUg
-ZXhwbGFpbiB3aHkKPiA+IGl0cyBib2d1cywgZm9yIHRoZSBnZW5lcmFsIGtub3dsZWdlLiBBIGRy
-aXZlciB0aGF0IHN1cHBvcnRzIEVOVU1fRlJBTUVTSVpFIGJ1dAo+ID4gZG9lcyBub3QgcmV0dXJu
-IGFueSBzaXplcywgaXMgaW4gdGhlb3J5IGEgZHJpdmVyIHRoYXQgZG9lcyBub3Qgc3VwcG9ydCBh
-bnl0aGluZy4KPiA+IEZvcnR1bmFseSwgR1N0cmVhbWVyIGNvbnNpZGVyZWQgbm90IGhhdmluZyBh
-IHNpbmdsZSBmcmFtZXNpemUgYm9ndXMsIGFuZCB3b3VsZAo+ID4gZmFsbGJhY2sgdG8gdGhlIG9s
-ZCBzY2hvb2wgdHJ5X2ZtdCgpIGRhbmNlIHRvIGZpbmQgdGhlIHN1cHBvcnRlZCBzaXplcy4KPiA+
-IAo+ID4gU28geWVzLCBpdCB1c2VkIHRvIHdvcmsgaW4gZ3N0cmVhbWVyLCBhbmQgaXRzIGluZGVl
-ZAo+ID4gNzljOTg3ZGU4YjM1NDIxYTJhOTc1OTgyOTI5ZjE1MGRkNDE1ZjhmNyB0aGF0IGJyb2tl
-IGl0LiBJJ2xsIGNvcnJlY3QgaGlzIGluIFYyLgo+ID4gCj4gPiA+IAo+ID4gPiBUbyBiZSBjb21w
-bGV0ZWx5IGhvbmVzdCwgSSdtIG5vdCBzdXJlIGlmIHdlIHVzZWQgdG8gc3VwcG9ydCBlbmNvZGVi
-aW4sCj4gPiA+IGFuZCBJJ20gbm90IHRvbyBzdXJlIGhvdyB0byBhcHByb2FjaCB0aGlzIGlzc3Vl
-LCBidXQgSSB3b3VsZCByZWFsbHkKPiA+ID4gbG92ZSB0byBzdGFydCB3aXRoIHNvbWV0aGluZyBz
-dXBlciBzaW1wbGUgbGlrZToKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gYi9kcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gaW5kZXggMmM3YTgwNTI4
-OWU3Li4wYjI4Zjg2Yjc0NjMgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYwo+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Bs
-YXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMKPiA+ID4gQEAgLTE2MSw4ICsxNjEsMTEg
-QEAgc3RhdGljIGludCB2aWRpb2NfZW51bV9mcmFtZXNpemVzKHN0cnVjdCBmaWxlCj4gPiA+ICpm
-aWxlLCB2b2lkICpwcml2LAo+ID4gPiAgICAgICAgIH0KPiA+ID4gCj4gPiA+ICAgICAgICAgLyog
-Rm9yIG5vbi1jb2RlZCBmb3JtYXRzIGNoZWNrIGlmIHBvc3Rwcm9jZXNzaW5nIHNjYWxpbmcgaXMg
-cG9zc2libGUgKi8KPiA+ID4gLSAgICAgICBpZiAoZm10LT5jb2RlY19tb2RlID09IEhBTlRST19N
-T0RFX05PTkUgJiYKPiA+ID4gaGFudHJvX25lZWRzX3Bvc3Rwcm9jKGN0eCwgZm10KSkgewo+ID4g
-PiAtICAgICAgICAgICAgICAgcmV0dXJuIGhhbnRvX3Bvc3Rwcm9jX2VudW1fZnJhbWVzaXplcyhj
-dHgsIGZzaXplKTsKPiA+ID4gKyAgICAgICBpZiAoZm10LT5jb2RlY19tb2RlID09IEhBTlRST19N
-T0RFX05PTkUpCj4gPiA+ICsgICAgICAgIGlmIChoYW50cm9fbmVlZHNfcG9zdHByb2MoY3R4LCBm
-bXQpKQo+ID4gPiArICAgICAgICAgICAgcmV0dXJuIGhhbnRvX3Bvc3Rwcm9jX2VudW1fZnJhbWVz
-aXplcyhjdHgsIGZzaXplKTsKPiA+ID4gKyAgICAgICAgZWxzZQo+ID4gPiArICAgICAgICAgICAg
-cmV0dXJuIC1FTk9UVFk7Cj4gPiA+ICAgICAgICAgfSBlbHNlIGlmIChmc2l6ZS0+aW5kZXggIT0g
-MCkgewo+ID4gPiAgICAgICAgICAgICAgICAgdnB1X2RlYnVnKDAsICJpbnZhbGlkIGZyYW1lIHNp
-emUgaW5kZXggKGV4cGVjdGVkIDAsIGdvdCAlZClcbiIsCj4gPiA+ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZnNpemUtPmluZGV4KTsKPiA+ID4gCj4gPiA+IChFTk9UVFkgd2FzIHN1Z2dlc3Rl
-ZCBieSBOaWNvbGFzIG9uIElSQykKPiA+ID4gCj4gPiA+IE5pY29sYXMgYWxzbyBwb2ludGVkIG91
-dCB0aGF0IG91ciBjdXJyZW50IGhhbmRsaW5nIG9mIGZybXNpemUgaXMgbm90IGNvcnJlY3QsCj4g
-PiA+IGFzIHdlIGNhbm5vdCBleHByZXNzIGRpZmZlcmVudCBjb25zdHJhaW50cyBvbiBjb21iaW5h
-dGlvbnMgb2YgUkFXCj4gPiA+IGFuZCBiaXRzdHJlYW0gZm9ybWF0cy4KPiA+ID4gCj4gPiA+IFRo
-aXMgc2VlbXMgdG8gY2FsbCBmb3IgYSByZXdvcmsgb2YgZW51bV9mcmFtZXNpemVzLCBzbyBmcm1z
-aXplCj4gPiA+IGlzIG5vdCBzdGF0aWMgYnV0IHNvbWVob3cgb2J0YWluZWQgcGVyLWNvZGVjLgo+
-ID4gCj4gPiBTbyBJJ2xsIHJlc3BpbiBhbG9uZyB0aGVzZSBsaW5lIHRvIHdlIG1vcmUgb3IgbGVz
-cyAicmV2ZXJ0IGJhY2siIHRvIHdvcmtpbmcKPiA+IHN0YXRlLiBUaG91Z2ggaGF2aW5nIGEgZnJh
-bWVzaXplIGVudW1lcmF0aW9uIG9uIGVuY29kZXIgcmF3IChPVVRQVVQgcXVldWUpIGlzCj4gPiB3
-aGF0IG1ha2VzIG1vc3Qgc2Vuc2Ugc28gdGhhdCB3aWxsIGhhdmUgdG8gYmUgcmV2aXNpdGVkIHdp
-dGggYSBjb3JyZWN0ZWQKPiA+IG1lY2hhbmlzbSwgYXMgd2hlbmV2ZXIgd2UgYWRkIFZQOCBhbmQg
-SC4yNjQgZW5jb2RpbmcsIHdlJ2xsIG5lZWQgZGlmZmVyZW50IHJhbmdlCj4gPiBwZXIgY29kZWMu
-IEknbGwgY2hlY2sgaW4gSmFudWFyeSB3aXRoIG15IGNvbGxlYWd1ZSwgd2UgbWlnaHQgZG8gdGhh
-dCBpbnNpZGUgdGhlCj4gPiBWUDggZW5jb2RlciBicmFuY2ggKHRoYXQgaXMgbmVhcmx5IHJlYWR5
-IGFuZCB3aWxsIGJlIHNlbnQgYWZ0ZXIgdGhlIGhvbGlkYXlzKSwKPiA+IG9yIGNvdWxkIGJlIGFu
-IGludGVybWVkaWF0ZSBzZXQuCj4gCj4gSSBqdXN0IGNhbWUgYWNyb3NzIHRoaXMgZGlzY3Vzc2lv
-biBhbmQgZm91bmQgbXkgdmVyeSBzaW1pbGFyIGFuZCBzb21laG93Cj4gZm9yZ290dGVuIHBhdGNo
-IHRoZSBvdGhlciBkYXkuCj4gCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEv
-NjY4MzllMGM0YjE5ZWI0ZmFiYTVmYmVkNWNkMGE0ZWMwYzg0MTVmOC5jYW1lbEBuZHVmcmVzbmUu
-Y2EvCj4gCj4gU2hvdWxkIEkganVzdCBzZW5kIGEgdjIgd2l0aCB0aGUgRU5PVFRZIGZvciBub3c/
-CgpJIHdhcyBmb3JnZXR0aW5nIGFib3V0IHRoaXMsIHNvcnJ5LCBvayBpZiB5b3UgaGF2ZSBiYW5k
-d2lkdGgsIGp1c3QgdXBkYXRlIHlvdXIKcGF0Y2ggd2l0aCBFTk9UVFksIGNhbiB5b3UgZXh0ZW5k
-IHlvdXIgY29tbWVudCB3aXRoIHdoYXQgd2FzIHdyb25nIHdpdGggdGhlIEVOVU0KKGxpa2UgSSBk
-aWQgaW4gbXkgcGF0Y2gpID8gQWxzbyBkb24ndCBmb3JnZXQgdG8gYWRkIGEgRml4ZXMgdGFnLCB0
-aGlzIG5lZWRzCmJhY2twb3J0aW5nLgoKPiAKPiBUaGFua3MsCj4gTWljaGFlbAo+IAo+ID4gPiA+
-IFJlcG9ydGVkLWJ5OiBSb2JlcnQgTWFkZXIgPHJvYmVydC5tYWRlckBjb2xsYWJvcmEuY29tPgo+
-ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
-Y29sbGFib3JhLmNvbT4KPiA+ID4gCj4gPiA+IEFuZCB0aGFua3MgYSBsb3QgZm9yIHRoZSByZXBv
-cnQgYW5kIHRoZSBwYXRjaCEKPiA+ID4gCj4gPiAKPiA+IAo+ID4gX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
-ZyBsaXN0Cj4gPiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+IGh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo+
-IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Radxa Compute Module 3 has an onboard AW_CM256SM WiFi/BT module.
+
+Add nodes for enabling it.
+
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ .../boot/dts/rockchip/rk3566-radxa-cm3.dtsi   | 80 +++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
+index 23a85a13311a..3de3a4f38756 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi
+@@ -66,6 +66,15 @@ vcca_1v8: vcca-1v8-regulator {
+ 		regulator-max-microvolt = <1800000>;
+ 		vin-supply = <&vcc_1v8_p>;
+ 	};
++
++	sdio_pwrseq: pwrseq-sdio {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&rk817 1>;
++		clock-names = "ext_clock";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_reg_on_h>;
++		reset-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_LOW>;
++	};
+ };
+ 
+ &cpu0 {
+@@ -287,6 +296,20 @@ regulator-state-mem {
+ };
+ 
+ &pinctrl {
++	bluetooth {
++		bt_host_wake_h: bt-host-wake-h {
++			rockchip,pins = <2 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_reg_on_h: bt-reg-on-h {
++			rockchip,pins = <2 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_host_h: bt-wake-host-h {
++			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+ 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -298,6 +321,16 @@ user_led2: user-led2 {
+ 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	wifi {
++		wifi_reg_on_h: wifi-reg-on-h {
++			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wifi_host_wake_h: wifi-host-wake-h {
++			rockchip,pins = <2 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &pmu_io_domains {
+@@ -318,6 +351,34 @@ &saradc {
+ 	status = "okay";
+ };
+ 
++&sdmmc1 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	bus-width = <4>;
++	disable-wp;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_clk &sdmmc1_cmd>;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_3v3>;
++	vqmmc-supply = <&vcc_1v8>;
++	status = "okay";
++
++	wifi@1 {
++		compatible = "brcm,bcm43455-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio2>;
++		interrupts = <RK_PC1 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_h>;
++	};
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	max-frequency = <200000000>;
+@@ -330,6 +391,25 @@ &sdhci {
+ 	status = "okay";
+ };
+ 
++&uart1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart1m0_ctsn &uart1m0_rtsn &uart1m0_xfer>;
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm4345c5";
++		clocks = <&rk817 1>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio2 RK_PB2 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_h &bt_reg_on_h &bt_wake_host_h>;
++		vbat-supply = <&vcc_3v3>;
++		vddio-supply = <&vcc_1v8>;
++	};
++};
++
+ &usb2phy0 {
+ 	status = "okay";
+ };
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
