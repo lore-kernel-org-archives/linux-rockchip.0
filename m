@@ -4,63 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63715C54E94
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 08:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACE3C54EED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 10:00:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nvlu3BWpib4rBiPHhikE/m0X4LREQdGjZLT5fv9CZM8=; b=Yrmb/nW4lVAlfH
-	AyzYS17kbOdP/8HJxOcWtLhnxbWZhUncAh/Hgbw3gXGEZ4xuAtO356WR0KG5Xpxnf9Ie96MIHKZkd
-	2F4YnpAYHNYCIHhwu6qR2Kchn/ROKeDa5yMZTzuTo4qvjo2ZDIy/CNIs5Eiu0hY6KOQ3A2Jp1tya+
-	ua+gRO/Wpy/xm5PlnGNwkLxariO8UgtFC2S5NSVKBRSUscFEj1YbW5gl3RGBKVYhtjTNnJUiin6ge
-	LT0OpoPjixpwPPvKzGkLxUKamMP4BumT4Kmpj4/dsWOUv0J8yx6HebZ7D51+mjLQoPUU2Y0Jcrmw8
-	T9563+ys/0hWnOaFkZaA==;
+	List-Owner; bh=uJKPxFjizaVXPNerApoCDOjakZLnsArBAzq8ZEgUdJU=; b=TYcMqmEYXb+o21
+	F3MlCEnoB7xPNfXYN+ay+LpGC8wSBq3zeClr8BYLmcEnd/cvt555xViyvwc4t6sKaeLmGNCV8EAl/
+	qcQjEJlboaIQRFeteTui/fQYKzRr8Jw60YK0tWJF48R+lfO0H2HKVdZIWEenHYyxPfph1qcI4uGRa
+	0do60I30tyX43LH4TJZ+Wu2iE0IZ6aMsK0Z6RdrrVOIPhOtp1/gKdEIIMr1oxFD6JCtRyTmRkQ0lk
+	U2WzbHhe4HcmlriiDI7KZpF9MwKl2TFbDoH2GA/RevUiQ47lKuL9RPkW/0gqAl4VEz1okX3otrC30
+	mYcO6AC8CzX9OppKX3mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKbAE-006QRr-5d; Wed, 25 Jan 2023 08:29:50 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pKcZZ-006mVm-47; Wed, 25 Jan 2023 10:00:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKb9t-006QIP-Sw
-	for linux-rockchip@lists.infradead.org; Wed, 25 Jan 2023 08:29:31 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pKb9p-0006lm-82; Wed, 25 Jan 2023 09:29:25 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pKb9m-00034W-Gv; Wed, 25 Jan 2023 09:29:22 +0100
-Date: Wed, 25 Jan 2023 09:29:22 +0100
-From: Sascha Hauer <sha@pengutronix.de>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3 0/6] drm/rockchip: vop2: add support for the rgb
- output block
-Message-ID: <20230125082922.GZ24755@pengutronix.de>
-References: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
+	id 1pKcUT-006kT5-49; Wed, 25 Jan 2023 09:54:51 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B7BF16148A;
+	Wed, 25 Jan 2023 09:54:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD4C9C433D2;
+	Wed, 25 Jan 2023 09:54:42 +0000 (UTC)
+Message-ID: <b4553096-330f-2e6e-239b-bee519140810@xs4all.nl>
+Date: Wed, 25 Jan 2023 10:54:41 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v3 00/13] AV1 stateless decoder for RK3588
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ daniel.almeida@collabora.com, nicolas.dufresne@collabora.co.uk
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230111165931.753763-1-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20230111165931.753763-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_002929_940283_76B27AE2 
-X-CRM114-Status: GOOD (  22.92  )
+X-CRM114-CacheID: sfid-20230125_015449_294250_0673E8C8 
+X-CRM114-Status: GOOD (  24.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +67,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 24, 2023 at 06:47:00AM +0100, Michael Riesch wrote:
-> Hi all,
+On 1/11/23 17:59, Benjamin Gaignard wrote:
+> This series implement AV1 stateless decoder for RK3588 SoC.
+> The hardware support 8 and 10 bits bitstreams up to 7680x4320.
+> AV1 feature like film grain or scaling are done by the postprocessor.
+> The driver can produce NV12_4L4, NV12_10LE40_4L4, NV12 and P010 pixels formats.
+> Even if Rockchip have named the hardware VPU981 it looks like a VC9000 but 
+> with a different registers mapping.
 > 
-> This series adds support for the RGB output block that can be found in the
-> Rockchip Video Output Processor (VOP) 2. Version 2 of this series
-> incorporates the feedback by Dan Carpenter and Sascha Hauer. Version 3
-> fixes a dumb mistake pointed out by Sascha :-) Thanks for your comments!
+> It is based on Daniel's "[PATCH v4] media: Add AV1 uAPI" [1] patches.
 > 
-> Patches 1-4 clean up the code and make it more general.
+> The full branch can be found here:
+> https://gitlab.collabora.com/linux/for-upstream/-/commits/rk3588_av1_decoder_v3
 > 
-> Patch 5 activates the support for the RGB output block in the VOP2 driver.
+> Fluster score is: 200/239 while testing AV1-TEST-VECTORS with GStreamer-AV1-V4L2SL-Gst1.0.
+> The failing tests are:
+> - the 2 tests with 2 spatial layers: few errors in luma/chroma values
+> - tests with resolution < hardware limit (64x64)
+> - 10bits film grain test: bad macroblocks while decoding, the same 8bits
+>   test is working fine.
 > 
-> Patch 6 adds pinctrls for the 16-bit and 18-bit RGB data lines.
+> Changes in v3:
+> - Fix arrays loops limites.
+> - Remove unused field.
+> - Reset raw pixel formats list when bit depth or film grain feature
+>   values change.
+> - Enable post-processor P010 support
 > 
-> Tested on a custom board featuring the RK3568 SoC with a 18-bit RGB
-> display.
+> Changes in v2:
+> - Remove useless +1 in sbs computation. 
+> - Describe NV12_10LE40_4L4 pixels format.
+> - Post-processor could generate P010.
+> - Fix comments done on v1.
+> - The last patch make sure that only post-processed formats are used when film
+>   grain feature is enabled.
 > 
-> Looking forward to your comments!
+> Benjamin
+> 
 
-For the series:
+I have a bunch of sparse errors:
 
-Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:342:17: error: typename in expression
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:342:21: error: Expected ; at end of statement
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:342:21: error: got bit_depth
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:342:17: error: undefined identifier 'int'
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:346:47: error: undefined identifier 'bit_depth'
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:353:39: error: undefined identifier 'bit_depth'
+SPARSE:drivers/media/platform/verisilicon/hantro_drv.c:354:42: error: undefined identifier 'bit_depth'
 
-Sascha
+Also some smatch errors:
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+SMATCH:drivers/media/platform/verisilicon/hantro_drv.c:342:17: :error: typename in expression
+SMATCH:drivers/media/platform/verisilicon/hantro_drv.c:342:21: :error: Expected ; at end of statement
+SMATCH:drivers/media/platform/verisilicon/hantro_drv.c:342:21: :error: got bit_depth
+drivers/media/platform/verisilicon/hantro_drv.c:342 hantro_av1_s_ctrl() warn: statement has no effect 3
+drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:227:6: warning: no previous prototype for 'rockchip_vpu981_av1_dec_tiles_free' [-Wmissing-prototypes]
+drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:802:47: warning: variable 'chroma_addr' set but not used [-Wunused-but-set-variable]
+
+Regards,
+
+	Hans
+
+> [1] https://lore.kernel.org/linux-media/20230103154832.6982-1-daniel.almeida@collabora.com/T/#u
+> 
+> Benjamin Gaignard (12):
+>   dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible
+>   media: Add NV12_10LE40_4L4 pixel format
+>   media: verisilicon: Get bit depth for V4L2_PIX_FMT_NV12_10LE40_4L4
+>   media: verisilicon: Add AV1 decoder mode and controls
+>   media: verisilicon: Save bit depth for AV1 decoder
+>   media: verisilicon: Check AV1 bitstreams bit depth
+>   media: verisilicon: Compute motion vectors size for AV1 frames
+>   media: verisilicon: Add AV1 entropy helpers
+>   media: verisilicon: Add Rockchip AV1 decoder
+>   media: verisilicon: Add film grain feature to AV1 driver
+>   media: verisilicon: Enable AV1 decoder on rk3588
+>   media: verisilicon: Conditionnaly ignore native formats
+> 
+> Nicolas Dufresne (1):
+>   v4l2-common: Add support for fractional bpp
+> 
+>  .../bindings/media/rockchip-vpu.yaml          |    1 +
+>  .../media/v4l/pixfmt-yuv-planar.rst           |    4 +
+>  drivers/media/platform/verisilicon/Makefile   |    3 +
+>  drivers/media/platform/verisilicon/hantro.h   |    8 +
+>  .../media/platform/verisilicon/hantro_drv.c   |   69 +
+>  .../media/platform/verisilicon/hantro_hw.h    |  102 +
+>  .../platform/verisilicon/hantro_postproc.c    |    7 +
+>  .../media/platform/verisilicon/hantro_v4l2.c  |   22 +-
+>  .../media/platform/verisilicon/hantro_v4l2.h  |    1 +
+>  .../verisilicon/rockchip_av1_entropymode.c    | 4546 +++++++++++++++++
+>  .../verisilicon/rockchip_av1_entropymode.h    |  272 +
+>  .../verisilicon/rockchip_av1_filmgrain.c      |  401 ++
+>  .../verisilicon/rockchip_av1_filmgrain.h      |   36 +
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 2278 +++++++++
+>  .../verisilicon/rockchip_vpu981_regs.h        |  477 ++
+>  .../platform/verisilicon/rockchip_vpu_hw.c    |  134 +
+>  drivers/media/v4l2-core/v4l2-common.c         |  149 +-
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
+>  include/media/v4l2-common.h                   |    2 +
+>  include/uapi/linux/videodev2.h                |    1 +
+>  20 files changed, 8439 insertions(+), 75 deletions(-)
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.c
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_entropymode.h
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.h
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+>  create mode 100644 drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
