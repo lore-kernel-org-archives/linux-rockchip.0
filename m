@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C594C54EED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jan 2023 22:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63715C54E94
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 08:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1/M4/QNzbHDNEIEgX8sAQaxHyP3lwV4aZ6bMHnzYKCg=; b=x4AmPqzrVPWkG2ULwJgWOjYZw7
-	tv8gxTVxGf0fdvOAVoE+QNsboyV4soCcXE6534/BkX9+6EK6cnfi8T7dVNWa6mMXZY9WOW73fOv3O
-	UWTRq5ChWI5Nkil6pMACd3S5UI3udM/tL2d4UgT/JMAojbPqyhNF+g016MPuqT4zDb4lozPfc+yhq
-	zOSbIByrYswCOk0tCdq8fzROKbr+nVoTEQ+lesTwkptVEQ9zeelYtSopiRAGwzaKZDKqp6CX9PjZo
-	7ewLcvYVYcXS4ZMvSlolC/MlcW8mnzvPKOxh6ChZCzVxE4bUwvDnZmCzMUktXfD/El9tp8ViPz58D
-	yDvamo4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Nvlu3BWpib4rBiPHhikE/m0X4LREQdGjZLT5fv9CZM8=; b=Yrmb/nW4lVAlfH
+	AyzYS17kbOdP/8HJxOcWtLhnxbWZhUncAh/Hgbw3gXGEZ4xuAtO356WR0KG5Xpxnf9Ie96MIHKZkd
+	2F4YnpAYHNYCIHhwu6qR2Kchn/ROKeDa5yMZTzuTo4qvjo2ZDIy/CNIs5Eiu0hY6KOQ3A2Jp1tya+
+	ua+gRO/Wpy/xm5PlnGNwkLxariO8UgtFC2S5NSVKBRSUscFEj1YbW5gl3RGBKVYhtjTNnJUiin6ge
+	LT0OpoPjixpwPPvKzGkLxUKamMP4BumT4Kmpj4/dsWOUv0J8yx6HebZ7D51+mjLQoPUU2Y0Jcrmw8
+	T9563+ys/0hWnOaFkZaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKRwf-005XLe-QS; Tue, 24 Jan 2023 22:39:13 +0000
+	id 1pKbAE-006QRr-5d; Wed, 25 Jan 2023 08:29:50 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKRwc-005XIz-QQ
-	for linux-rockchip@lists.infradead.org; Tue, 24 Jan 2023 22:39:12 +0000
+	id 1pKb9t-006QIP-Sw
+	for linux-rockchip@lists.infradead.org; Wed, 25 Jan 2023 08:29:31 +0000
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1pKRwQ-0000eR-1x; Tue, 24 Jan 2023 23:38:58 +0100
-Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1pKRwN-000359-UC; Tue, 24 Jan 2023 23:38:55 +0100
-Date: Tue, 24 Jan 2023 23:38:55 +0100
-From: Michael Grzeschik <mgr@pengutronix.de>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
-	Robert Mader <robert.mader@collabora.com>,
-	Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] hantro: Fix JPEG encoder ENUM_FRAMESIZE on RK3399
-Message-ID: <20230124223855.GD7611@pengutronix.de>
-References: <20221223141644.703088-1-nicolas.dufresne@collabora.com>
- <CAAEAJfATk+jOq3qt-m2CZEbCVumHHWDFfuEXKA7k0NZQXajCRg@mail.gmail.com>
- <6449640fcfbbfd4b72e619f03704b7e9031a8a17.camel@collabora.com>
+	(envelope-from <sha@pengutronix.de>)
+	id 1pKb9p-0006lm-82; Wed, 25 Jan 2023 09:29:25 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pKb9m-00034W-Gv; Wed, 25 Jan 2023 09:29:22 +0100
+Date: Wed, 25 Jan 2023 09:29:22 +0100
+From: Sascha Hauer <sha@pengutronix.de>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v3 0/6] drm/rockchip: vop2: add support for the rgb
+ output block
+Message-ID: <20230125082922.GZ24755@pengutronix.de>
+References: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
-In-Reply-To: <6449640fcfbbfd4b72e619f03704b7e9031a8a17.camel@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-Accept-Language: de,en
 X-Accept-Content-Type: text/plain
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: mgr@pengutronix.de
+X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230124_143910_866798_B7C3F893 
-X-CRM114-Status: GOOD (  35.63  )
+X-CRM114-CacheID: sfid-20230125_002929_940283_76B27AE2 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,183 +72,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5840437441273941738=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 24, 2023 at 06:47:00AM +0100, Michael Riesch wrote:
+> Hi all,
+> 
+> This series adds support for the RGB output block that can be found in the
+> Rockchip Video Output Processor (VOP) 2. Version 2 of this series
+> incorporates the feedback by Dan Carpenter and Sascha Hauer. Version 3
+> fixes a dumb mistake pointed out by Sascha :-) Thanks for your comments!
+> 
+> Patches 1-4 clean up the code and make it more general.
+> 
+> Patch 5 activates the support for the RGB output block in the VOP2 driver.
+> 
+> Patch 6 adds pinctrls for the 16-bit and 18-bit RGB data lines.
+> 
+> Tested on a custom board featuring the RK3568 SoC with a 18-bit RGB
+> display.
+> 
+> Looking forward to your comments!
 
---===============5840437441273941738==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pZs/OQEoSSbxGlYw"
-Content-Disposition: inline
+For the series:
 
+Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
 
---pZs/OQEoSSbxGlYw
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Sascha
 
-On Fri, Dec 23, 2022 at 12:05:21PM -0500, Nicolas Dufresne wrote:
->Le vendredi 23 d=E9cembre 2022 =E0 13:28 -0300, Ezequiel Garcia a =E9crit=
-=A0:
->> Hi everyone,
->>
->> On Fri, Dec 23, 2022 at 11:17 AM Nicolas Dufresne
->> <nicolas.dufresne@collabora.com> wrote:
->> >
->> > The frmsize structure was left initialize to 0, as side effect, the dr=
-iver was
->> > reporting an invalid frmsize.
->> >
->> >   Size: Stepwise 0x0 - 0x0 with step 0/0
->> >
->> > Fix this by replicating the constraints in the raw formats too. This f=
-ixes
->> > taking picture in Gnome Cheese Software, or any software using GSteamer
->> > encodebin feature.
->> >
->> > Fixes: 775fec69008d30 ("media: add Rockchip VPU JPEG encoder driver")
->>
->> The frmsize is only for bitstream formats (see comment in struct hantro_=
-fmt).
->> If I can read code correctly, this was broken by this commit:
->>
->> commit 79c987de8b35421a2a975982929f150dd415f8f7
->> Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->> Date:   Mon Apr 4 18:06:40 2022 +0200
->>
->>     media: hantro: Use post processor scaling capacities
->>
->> Before that commit we used to return EINVAL for enum_framesizes
->> in RAW formats. I guess we missed that :-)
->
->I see, and gstreamer had a quirk for such a bogus response. Let me explain=
- why
->its bogus, for the general knowlege. A driver that supports ENUM_FRAMESIZE=
- but
->does not return any sizes, is in theory a driver that does not support any=
-thing.
->Fortunaly, GStreamer considered not having a single framesize bogus, and w=
-ould
->fallback to the old school try_fmt() dance to find the supported sizes.
->
->So yes, it used to work in gstreamer, and its indeed
->79c987de8b35421a2a975982929f150dd415f8f7 that broke it. I'll correct his i=
-n V2.
->
->>
->> To be completely honest, I'm not sure if we used to support encodebin,
->> and I'm not too sure how to approach this issue, but I would really
->> love to start with something super simple like:
->>
->> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c
->> b/drivers/media/platform/verisilicon/hantro_v4l2.c
->> index 2c7a805289e7..0b28f86b7463 100644
->> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
->> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
->> @@ -161,8 +161,11 @@ static int vidioc_enum_framesizes(struct file
->> *file, void *priv,
->>         }
->>
->>         /* For non-coded formats check if postprocessing scaling is poss=
-ible */
->> -       if (fmt->codec_mode =3D=3D HANTRO_MODE_NONE &&
->> hantro_needs_postproc(ctx, fmt)) {
->> -               return hanto_postproc_enum_framesizes(ctx, fsize);
->> +       if (fmt->codec_mode =3D=3D HANTRO_MODE_NONE)
->> +        if (hantro_needs_postproc(ctx, fmt))
->> +            return hanto_postproc_enum_framesizes(ctx, fsize);
->> +        else
->> +            return -ENOTTY;
->>         } else if (fsize->index !=3D 0) {
->>                 vpu_debug(0, "invalid frame size index (expected 0, got =
-%d)\n",
->>                           fsize->index);
->>
->> (ENOTTY was suggested by Nicolas on IRC)
->>
->> Nicolas also pointed out that our current handling of frmsize is not cor=
-rect,
->> as we cannot express different constraints on combinations of RAW
->> and bitstream formats.
->>
->> This seems to call for a rework of enum_framesizes, so frmsize
->> is not static but somehow obtained per-codec.
->
->So I'll respin along these line to we more or less "revert back" to working
->state. Though having a framesize enumeration on encoder raw (OUTPUT queue)=
- is
->what makes most sense so that will have to be revisited with a corrected
->mechanism, as whenever we add VP8 and H.264 encoding, we'll need different=
- range
->per codec. I'll check in January with my colleague, we might do that insid=
-e the
->VP8 encoder branch (that is nearly ready and will be sent after the holida=
-ys),
->or could be an intermediate set.
-
-I just came across this discussion and found my very similar and somehow
-forgotten patch the other day.
-
-https://lore.kernel.org/linux-media/66839e0c4b19eb4faba5fbed5cd0a4ec0c8415f=
-8.camel@ndufresne.ca/
-
-Should I just send a v2 with the ENOTTY for now?
-
-Thanks,
-Michael
-
->> > Reported-by: Robert Mader <robert.mader@collabora.com>
->> > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
->>
->> And thanks a lot for the report and the patch!
->>
->
->
->_______________________________________________
->linux-arm-kernel mailing list
->linux-arm-kernel@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---=20
+-- 
 Pengutronix e.K.                           |                             |
 Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
 31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
 Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
---pZs/OQEoSSbxGlYw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmPQXf8ACgkQC+njFXoe
-LGR0URAAnuIJ1dqGDMV7Do/ZHpZdF0V/7bcGJE4ur8iVcpa23lu6TpbboYTIT7Wu
-YlKwhKkSwmKny7fQIujtHMQ34WQCJc+LET9sccMg23pr8ZFNoeSJOALfeWY2F039
-mDTGT3RDz6T/vtb1jBkA+r/uABVZe9XwB//1INx5BYBVBCy8nJWLCzWIh858njLk
-a5SEXcB89AKNASx2QXkV8GXvXwTwYzxh9myreJRo0Zsu5ZNZKmdP90ohWPAVRDGb
-M7L4f54ZAYOdlOqHalqujcazbOq5jifjheD2dXVgGZX0viR1vY7msdtE33MOP2ma
-VACntFZRkfQb9LwuxRE/TarOVecZqm44J93eU8LfS4azWjf/cVpe3PmniJ0B9Zkc
-opIGR+h/kbig+VZpvix5Z683UqtdHg3MAtLSe1j2E7r1h3THE2Q/SJ+BR2BFLkE5
-hRszxEbPMJSQY3BQtOWsG2QvxNrfq+29WyxSHzN+ZidHr3DO2Clcj08zDsmQ0H6R
-h9+ohPy9DWgr887bolhR49dPzvuuPpiWBSdZDK6yJvBD6EjxpSMSsDtSp/7mBfvA
-tSjxKfnI8EEUve9uhhI+iUkHsgl4kE9QLzozcVXkxOMlc3lQMEmNz/zAGq6ymK+D
-KE9u9I3v59cIQk7jomSxcXJFqhHTWyn26SOLT6ugzve4fNIePgI=
-=rLWU
------END PGP SIGNATURE-----
-
---pZs/OQEoSSbxGlYw--
-
-
---===============5840437441273941738==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5840437441273941738==--
-
