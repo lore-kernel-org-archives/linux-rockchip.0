@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E50C8C54E94
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 17:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C2AC54EED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jan 2023 22:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/NMz/mY/+bwg0mcAdQvFo2Eve7g1D6gAtrQOVCWDKYs=; b=TvcNsyRMHZtHwN
-	7P95OEiplQGpJkvmRdG8ATWmK0Pt3K7yUkwOoEZmJrq6F+oySy+m7KmAlB6F0EueU1X4n16Xx4qRj
-	TTyPwGXJ756Pt/j45Sg7es9GqHRdobMwuGJIK9mMv7bZGbnldKuVkAye+wL38g5KwP94XK9QlNyQ4
-	gsARgnjik1VbwN8oqtFgByWmhNjMkwQi8hXG/HFXhDlD/h2yBdBPebEh26znciSLpIBmaJQGD6WKU
-	+H0DF2JrbuX6Ag7FiXUZi3gReKhShA8IqOPqbwkHb49IwadV9wfLPjBWiX0vdgrXl7c1qyCMStv/U
-	5YgJFKJ79b+rgT/WLuDA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=afdQEw204C4rWK9W45guP6wPRfWRqWtqbGS1N09zsMI=; b=wo2ttw/j+13uDE
+	wPAFKw2ZzEZUc42sxwbu+W7B5RMoFXRYUi/J7Uu6FTAmxzjeR3+pgCsmKPDsHfYHohu/Lx6E+6z9x
+	i1Ezjf2KNjEBErXK3UZx4fJG5SDfKrHhRIGIRvZPtfHyFC8G8o2sKCOgR0C7LiU9e4A7Mx+nXUXS9
+	EcaoBlEkMGKAz4z6lWT/fCyvXSUt8z5NcT0r3x6nTPL2H7+Zp/e0xzAJMO59q3JhOESkBpkOCIpTe
+	6Dm7PU4XVc9UYRXedpI3G5uZUULwreudQ6UOjKRhXnIaVE30orcDtcIEdqSbsurVGddH5pzIRcyZg
+	KDzpPHp39z8LwMpmeRUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKjZf-008CPY-Dy; Wed, 25 Jan 2023 17:28:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pKo62-008xtC-0R; Wed, 25 Jan 2023 22:18:22 +0000
+Received: from wrqvxttq.outbound-mail.sendgrid.net ([149.72.167.116])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pKjZ8-008CCI-UO; Wed, 25 Jan 2023 17:28:10 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ad6f:c6af:709d:745c])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E11C6601F13;
-	Wed, 25 Jan 2023 17:28:03 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674667683;
-	bh=qAOPntfok7N1IY0TGZ6pBf6lWE6Cxnxe5FpFMhM+OOY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=O0Kl3tFB9Spcbe0aAc2p4xz7CfxtyEvKP984Zx7yB7pac0JhnHEzRn093p/F2X9h3
-	 SGGAKIbhi0ja2tjsO7+xAKS1sEl8KYhBE/qQK6dUloSkO8DWIpBi/Evn7Nhk6rsMml
-	 brqNnWtWj5bsw7Hy8XzP48wf71tdWXjUkD9zWOnfhd2sA8s972PuFhR7qORn2u/X9j
-	 5exCDRxNIusoffRuP9vNbgAlhJ9u7S/CaKAEWsnL6iH7TlBrFI2xrYNnvR3LnekmB6
-	 Bf8fp+gcHmLGBb7k1ouTn8eXdCUV2wZ3bfUuVpv1h0FvlDFTL32/+X+2b1QUWmYll3
-	 YfUdFWIIVwlMg==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	linux-imx@nxp.com,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.co.uk
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 1/2] media: verisilicon: Do not change context bit depth before validating the format
-Date: Wed, 25 Jan 2023 18:27:54 +0100
-Message-Id: <20230125172755.1498973-2-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230125172755.1498973-1-benjamin.gaignard@collabora.com>
-References: <20230125172755.1498973-1-benjamin.gaignard@collabora.com>
+	id 1pKo5z-008xrB-K0
+	for linux-rockchip@lists.infradead.org; Wed, 25 Jan 2023 22:18:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=kGke5edPgidw4Kgicc640oZCu6fsWxaSyhE/gDaRI2Q=;
+	b=XblzpKJ8soEMLVg+yUpF3JphdhMNLnsBDfRn0P6AXv0bhSpCAxtIRdbkCfjgnYADXq6B
+	35OQVMYQ/Qs8AX3wEmVmtFshtvuNhRQsFhIk671Tf8i9/C2vqpCaccOferEhTngQWtfqkJ
+	lZto9omIW91SSahOh9m3ezYKDaOHJa+mPTpU7A4M8oOyKCF8P0U3mYi6Gc42wHiSxJ3SJp
+	hb+EQ/5M8PrMYQGixiTitEZmmQ6i6Ek9IIPtqkB6b3K/8ydXDG02H3iaRTGByACeccTu40
+	Fu/p9rswK/mqfqqhdxQ5z4StF6MP11eWNNx3PHuGXg7L7k0J4GNNoycbiAbtjUEA==
+Received: by filterdrecv-6c4ccfbdd8-lnbvl with SMTP id filterdrecv-6c4ccfbdd8-lnbvl-1-63D1AAA4-15
+        2023-01-25 22:18:12.410596366 +0000 UTC m=+3739926.770958580
+Received: from bionic.localdomain (unknown)
+	by geopod-ismtpd-5-2 (SG)
+	with ESMTP
+	id hX57VA6qR36DCkAP3QyLzg
+	Wed, 25 Jan 2023 22:18:11.960 +0000 (UTC)
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/3] iommu: rockchip: Fix discovery table address encoding
+Date: Wed, 25 Jan 2023 22:18:12 +0000 (UTC)
+Message-Id: <20230125221809.3275481-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
+X-SG-EID:  =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h+b6OdEgqdo0FKrYj?=
+ =?us-ascii?Q?=2FBcwrsVdNRHqB+3oeHwdNZpVrS5W5rxt4OxE4e9?=
+ =?us-ascii?Q?6T+9x5PVTw5l1hZ=2FeEI5COV2toxaK+KZ=2FQcPLcz?=
+ =?us-ascii?Q?svxA8ByQNcoFhKReBguD1EhWsKElqo4ffOUA61W?=
+ =?us-ascii?Q?lDahez4XaA6YR1tVdwIvq48n77wsxAXagX5Y6Cx?=
+ =?us-ascii?Q?k62zP5Kd02UXB+eQswB8A=3D=3D?=
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Robin Murphy <robin.murphy@arm.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, iommu@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	Jonas Karlman <jonas@kwiboo.se>
+X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230125_092807_295146_4EB685A8 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20230125_141820_215971_5C891D49 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,220 +81,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It is needed to check if the proposed pixels format is valid before
-updating context bit depth and other internal states.
-Stop using ctx->bit_depth to check format depth match and return
-result to the caller.
+The address to the discovery table is currently encoded using an
+incorrect bit layout when configured into the MMU_DTE_ADDR reg.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-version 4:
-- Change hantro_check_depth_match() prototype to avoid using
-  ctx->bit_depth
-- Return the result of hantro_reset_raw_fmt() to the caller.
+This currently do not cause any issue because the discovery and page
+tables is allocated in memory below 4GB thanks to the GFP_DMA32 flag.
 
- .../platform/verisilicon/hantro_postproc.c    |  2 +-
- .../media/platform/verisilicon/hantro_v4l2.c  | 53 +++++++++----------
- .../media/platform/verisilicon/hantro_v4l2.h  |  3 +-
- 3 files changed, 28 insertions(+), 30 deletions(-)
+Testing has shown that the discovery table address should be encoded
+using the same bit layout as the page table and memory page addresses.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index 09d8cf942689..6437423ccf3a 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -197,7 +197,7 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	unsigned int i, buf_size;
- 
- 	/* this should always pick native format */
--	fmt = hantro_get_default_fmt(ctx, false);
-+	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth);
- 	if (!fmt)
- 		return -EINVAL;
- 	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 2c7a805289e7..2475bc05dee9 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -76,17 +76,16 @@ int hantro_get_format_depth(u32 fourcc)
- }
- 
- static bool
--hantro_check_depth_match(const struct hantro_ctx *ctx,
--			 const struct hantro_fmt *fmt)
-+hantro_check_depth_match(const struct hantro_fmt *fmt, int bit_depth)
- {
--	int fmt_depth, ctx_depth = 8;
-+	int fmt_depth, depth = 8;
- 
- 	if (!fmt->match_depth && !fmt->postprocessed)
- 		return true;
- 
- 	/* 0 means default depth, which is 8 */
--	if (ctx->bit_depth)
--		ctx_depth = ctx->bit_depth;
-+	if (bit_depth)
-+		depth = bit_depth;
- 
- 	fmt_depth = hantro_get_format_depth(fmt->fourcc);
- 
-@@ -95,9 +94,9 @@ hantro_check_depth_match(const struct hantro_ctx *ctx,
- 	 * It may be possible to relax that on some HW.
- 	 */
- 	if (!fmt->match_depth)
--		return fmt_depth <= ctx_depth;
-+		return fmt_depth <= depth;
- 
--	return fmt_depth == ctx_depth;
-+	return fmt_depth == depth;
- }
- 
- static const struct hantro_fmt *
-@@ -119,7 +118,7 @@ hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
- }
- 
- const struct hantro_fmt *
--hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream)
-+hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, int bit_depth)
- {
- 	const struct hantro_fmt *formats;
- 	unsigned int i, num_fmts;
-@@ -128,7 +127,7 @@ hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream)
- 	for (i = 0; i < num_fmts; i++) {
- 		if (bitstream == (formats[i].codec_mode !=
- 				  HANTRO_MODE_NONE) &&
--		    hantro_check_depth_match(ctx, &formats[i]))
-+		    hantro_check_depth_match(&formats[i], bit_depth))
- 			return &formats[i];
- 	}
- 	return NULL;
-@@ -203,7 +202,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
- 
- 		if (skip_mode_none == mode_none)
- 			continue;
--		if (!hantro_check_depth_match(ctx, fmt))
-+		if (!hantro_check_depth_match(fmt, ctx->bit_depth))
- 			continue;
- 		if (j == f->index) {
- 			f->pixelformat = fmt->fourcc;
-@@ -223,7 +222,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
- 	for (i = 0; i < num_fmts; i++) {
- 		fmt = &formats[i];
- 
--		if (!hantro_check_depth_match(ctx, fmt))
-+		if (!hantro_check_depth_match(fmt, ctx->bit_depth))
- 			continue;
- 		if (j == f->index) {
- 			f->pixelformat = fmt->fourcc;
-@@ -291,7 +290,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 
- 	fmt = hantro_find_format(ctx, pix_mp->pixelformat);
- 	if (!fmt) {
--		fmt = hantro_get_default_fmt(ctx, coded);
-+		fmt = hantro_get_default_fmt(ctx, coded, 0);
- 		pix_mp->pixelformat = fmt->fourcc;
- 	}
- 
-@@ -379,15 +378,12 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
- 	const struct hantro_fmt *vpu_fmt;
- 	struct v4l2_pix_format_mplane *fmt;
- 
--	vpu_fmt = hantro_get_default_fmt(ctx, true);
-+	vpu_fmt = hantro_get_default_fmt(ctx, true, 0);
- 
--	if (ctx->is_encoder) {
--		ctx->vpu_dst_fmt = vpu_fmt;
-+	if (ctx->is_encoder)
- 		fmt = &ctx->dst_fmt;
--	} else {
--		ctx->vpu_src_fmt = vpu_fmt;
-+	else
- 		fmt = &ctx->src_fmt;
--	}
- 
- 	hantro_reset_fmt(fmt, vpu_fmt);
- 	fmt->width = vpu_fmt->frmsize.min_width;
-@@ -398,20 +394,21 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
- 		hantro_set_fmt_out(ctx, fmt);
- }
- 
--static void
--hantro_reset_raw_fmt(struct hantro_ctx *ctx)
-+int
-+hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
- {
- 	const struct hantro_fmt *raw_vpu_fmt;
- 	struct v4l2_pix_format_mplane *raw_fmt, *encoded_fmt;
- 
--	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
-+	raw_vpu_fmt = hantro_get_default_fmt(ctx, false, bit_depth);
-+
-+	if (!raw_vpu_fmt)
-+		return -EINVAL;
- 
- 	if (ctx->is_encoder) {
--		ctx->vpu_src_fmt = raw_vpu_fmt;
- 		raw_fmt = &ctx->src_fmt;
- 		encoded_fmt = &ctx->dst_fmt;
- 	} else {
--		ctx->vpu_dst_fmt = raw_vpu_fmt;
- 		raw_fmt = &ctx->dst_fmt;
- 		encoded_fmt = &ctx->src_fmt;
- 	}
-@@ -420,15 +417,15 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
- 	raw_fmt->width = encoded_fmt->width;
- 	raw_fmt->height = encoded_fmt->height;
- 	if (ctx->is_encoder)
--		hantro_set_fmt_out(ctx, raw_fmt);
-+		return hantro_set_fmt_out(ctx, raw_fmt);
- 	else
--		hantro_set_fmt_cap(ctx, raw_fmt);
-+		return hantro_set_fmt_cap(ctx, raw_fmt);
- }
- 
- void hantro_reset_fmts(struct hantro_ctx *ctx)
- {
- 	hantro_reset_encoded_fmt(ctx);
--	hantro_reset_raw_fmt(ctx);
-+	hantro_reset_raw_fmt(ctx, 0);
- }
- 
- static void
-@@ -528,7 +525,7 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
- 	 * changes to the raw format.
- 	 */
- 	if (!ctx->is_encoder)
--		hantro_reset_raw_fmt(ctx);
-+		hantro_reset_raw_fmt(ctx, hantro_get_format_depth(pix_mp->pixelformat));
- 
- 	/* Colorimetry information are always propagated. */
- 	ctx->dst_fmt.colorspace = pix_mp->colorspace;
-@@ -591,7 +588,7 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
- 	 * changes to the raw format.
- 	 */
- 	if (ctx->is_encoder)
--		hantro_reset_raw_fmt(ctx);
-+		hantro_reset_raw_fmt(ctx, 0);
- 
- 	/* Colorimetry information are always propagated. */
- 	ctx->src_fmt.colorspace = pix_mp->colorspace;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h b/drivers/media/platform/verisilicon/hantro_v4l2.h
-index 64f6f57e9d7a..9ea2fef57dcd 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.h
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
-@@ -21,9 +21,10 @@
- extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
- extern const struct vb2_ops hantro_queue_ops;
- 
-+int hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth);
- void hantro_reset_fmts(struct hantro_ctx *ctx);
- int hantro_get_format_depth(u32 fourcc);
- const struct hantro_fmt *
--hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream);
-+hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, int bit_depth);
- 
- #endif /* HANTRO_V4L2_H_ */
+Removing the GFP_DMA32 on a RK3568 with 8GB of memory will result in:
+
+[    0.907236] rk_iommu fe043e00.iommu: Page fault at 0x00000000ff801000 of type read
+[    0.907264] rk_iommu fe043e00.iommu: iova = 0x00000000ff801000: dte_index: 0x3fe pte_index: 0x1 page_offset: 0x0
+[    0.907281] rk_iommu fe043e00.iommu: mmu_dte_addr: 0x000000010189a000 dte@0x000000010189aff8: 0x1722101 valid: 1 pte@0x0000000101722004: 0x2c01107 valid: 1 page@0x0000000102c01000 flags: 0x106
+
+This series fixes this by using the existing mk_dtentries instead of the
+dma_addr_dte ops to encode the discovery table address, removes unused
+ops and finally removes the GFP_DMA32 flag to allow for discovery and
+page tables to be allocated in memory above 4GB.
+
+Jonas Karlman (3):
+  iommu: rockchip: Fix discovery table address encoding
+  iommu: rockchip: Remove unused variant ops
+  iommu: rockchip: Allocate tables from all available memory
+
+ drivers/iommu/rockchip-iommu.c | 45 +++++-----------------------------
+ 1 file changed, 6 insertions(+), 39 deletions(-)
+
 -- 
-2.34.1
+2.39.1
 
 
 _______________________________________________
