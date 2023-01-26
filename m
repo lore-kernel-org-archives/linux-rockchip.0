@@ -4,93 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90306C54E94
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jan 2023 15:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DA1C54EED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jan 2023 15:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lliIikhrUzruO4HHVVeamelhSYMr0D3sl8wrbDT8cMQ=; b=Z5ViN7FiyGdrn8
-	DkhGfOLrWs+TSB2IcO6uiQl3cTk9SMw3hnsWdgSQ/oUGkwWacLRp9UANozcvNE1zNNn+XFNkukdH5
-	l82oNvOtkX2NkPW1vn3VBkTFiNKFfUZDcGGEufdDn8Yq6b6d0OpDlqjQNYQRqQoNd2/GceB9FjjV7
-	CgFApA6/sMS3sOsaYV+XIeCiBAbZdRkoEYyvajmQjgjknHkzwdQ+fIF7Yl+IaryJfbb6dCGYj2Id3
-	xaW3TAzO14IqzZ7WYSc6fzpKMPfxwld+U9/KQ7o/gSCmQl80sSiKEf57CwA9KAPAwaCdybEV1qmUQ
-	6na1t5Rn69ch6IErmVTQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=mcrO0/NDXKtiTTPMIBhb6J9WJytF9n4mP4GNNpBiMC0=; b=tEsZqsYnkVsBbE
+	9By3S8axf4E/f9krAkP6r+2J12BfXe+ZM7V8g4MsC8UCzRh4gqddaMY6x+zeCWZB2GMEtCvQ6uGHK
+	8vIQ2I3d7/wi+WGlFKbFLUnFGvApPXh6WSQ75AnKtzRgYSV5jBoUz+BEC/u/Fkogh9Qe/588fe1Dv
+	2WZjWtP69ycfyOrwU9TsiwanMV3EbbKWoha1dJJrhfVAOtU3TdsMbsRJfNpUZtLQbYEI824iEzHIM
+	Bp7l8HYWh5DWAk+UdYV6lpJfyo8+Uze/RSYPXy9DSmoNtN6oMzMR6YI345s4mCM+BTNvD+2Bl/tJw
+	yihGVnwqZLz+JmU0pNMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4PG-00BaYp-Ve; Thu, 26 Jan 2023 15:43:18 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1pL4Vy-00Bbrm-AJ; Thu, 26 Jan 2023 15:50:14 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL4P5-00BaVz-CI
-	for linux-rockchip@lists.infradead.org; Thu, 26 Jan 2023 15:43:10 +0000
-Received: by mail-wm1-x331.google.com with SMTP id k16so1411367wms.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Jan 2023 07:43:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=xaZrQvVMTexBK48seT2psGxItVIS/L4zE3c6J55k3h8=;
-        b=jp04WqjEyYm+E2Tkc2ENfbxkh/4b4cMWFdtsFMHJIToG/9FZmnDZ/gC0vYolLvjzDN
-         LTsDQVL579z+vKzZnxymlDvwLVEDgBe9ase7OQTz1ZNpwI+PTJjQK0bRFenOMnVGsT9O
-         6QnmSFMr33MFNEGur7/bmTMkkk8b5NA6aWyz9oYUKymdP84Niq5uq2VGeLubsuEHQJji
-         6UG2BA315Q0TT+gPUNNzXsBiKmUDjw5ZCKIfVrV1qLeU85jiDVZJBCjTvp2Xy25j7vQP
-         N5pKbQbsQTnporgM+/+gREkjUb008iRxWJGISmoBYaD9UB1E5yY+2er2c/np+gzEu0XX
-         6XUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xaZrQvVMTexBK48seT2psGxItVIS/L4zE3c6J55k3h8=;
-        b=bdBf1096GcLkld1k80fF2U/RpAH5bxJ8GJTIEfZxkI4k4Chj/84NrtbCRWOWihOJx1
-         Gdt6ztVEKVFBsf5EZmqclutsfq2yueNddbYC8eORj0Kk3PHREhbLpi5jvWW2PRIiVpbE
-         jvd39NevKEnRKs/oTEbhMFs2oKZefSP9qxEAkype0QmqRN5P//R+Wi+n0fcDWxMrB4zp
-         LAKy42NsLNi4Z35ApMqGeyU4BLDJSIOpNcBVkn4Z/olJ6AgGe4+sX7eQ6/LPtz4PnCkN
-         kb9YRjKMXoKOtCWzCiAvYPibKkH3muwAFso2ShOxcNvYUWkBD/Uf28n/zS9d3WJM+wfw
-         Z7HQ==
-X-Gm-Message-State: AFqh2kr+mqHMZgS68Ty9m1tcCNU72DPqCfH9UhDtZ/xusFMRe8A5kOGg
-	7FZHJfpOI2VwCXbg+o67htoJGg==
-X-Google-Smtp-Source: AMrXdXssH15/vKnONbR1ylH/B9IaLwcgbhlzvUsooXAZkMdME223Pi73mbSr4a1nFyzzO0iOryMlCw==
-X-Received: by 2002:a05:600c:4395:b0:3da:2829:2935 with SMTP id e21-20020a05600c439500b003da28292935mr35895070wmn.11.1674747785757;
-        Thu, 26 Jan 2023 07:43:05 -0800 (PST)
-Received: from [192.168.1.109] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id ip6-20020a05600ca68600b003d04e4ed873sm4909786wmb.22.2023.01.26.07.43.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Jan 2023 07:43:05 -0800 (PST)
-Message-ID: <f8aab3ce-f48d-3e7f-933e-abc7bd4dcc52@linaro.org>
-Date: Thu, 26 Jan 2023 16:43:02 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.0
-Subject: Re: [PATCH 5/8] PCI: rockchip: Added dtsi entry for PCIe endpoint
- controller
-Content-Language: en-US
+	id 1pL4Vl-00Bbll-LX; Thu, 26 Jan 2023 15:50:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0A286B81E6F;
+	Thu, 26 Jan 2023 15:50:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F9D5C4339B;
+	Thu, 26 Jan 2023 15:49:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674748198;
+	bh=tz37H93KJoXT7koLr1H4HT5GaXKxGQjDxvtFWm7fYOY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=jqXQMHePLVFSiJqj0BgbGZMSJfFzBNY1s6BwEQB8uiax+WOjHz0lV4186ZtQdvbU3
+	 VlcXlHGw+7BSYxkQhOdJkzk5JGC3Sjei/OXUTgUyXuis2MgcgbNTcTFDhBGwtHsapv
+	 BWjzD2QkPbh4tcAjQOAWHKvfEIc7v7GVmCAWqYo0dL1dMpif0lnkTtRgmiIgdyTYnv
+	 HVwbngVuGhfvugMn/7DfKFiw47VQtQ6TJQaM9BwGmw6P3Q2Xitjm1qmI9trS1Atlk8
+	 JJoBV0NzEojUnCR5P0ARoBsXnZYnZ7iK+BEISeiOB51RuC05DGjF6/mWBB0AUtiM01
+	 iL+0jwwg2LTxg==
+Date: Thu, 26 Jan 2023 09:49:56 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
 To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
- wenrui.li@rock-chips.com, rick.wertenbroek@heig-vd.ch,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mikko Kovanen <mikko.kovanen@aavamobile.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
-References: <20230126135049.708524-1-rick.wertenbroek@gmail.com>
- <20230126135049.708524-6-rick.wertenbroek@gmail.com>
- <6a54a51b-cf1a-c601-275f-00f825fcec5d@linaro.org>
- <CAAEEuhpOjSUhiQFxKwkhiwDNtmRzzUXmGYKMuHWePJF-Q7R9dQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAAEEuhpOjSUhiQFxKwkhiwDNtmRzzUXmGYKMuHWePJF-Q7R9dQ@mail.gmail.com>
+	wenrui.li@rock-chips.com, rick.wertenbroek@heig-vd.ch,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jani Nikula <jani.nikula@intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Mikko Kovanen <mikko.kovanen@aavamobile.com>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pci@vger.kernel.org
+Subject: Re: [PATCH 0/8] PCI: rockchip: Fix PCIe endpoint controller driver
+Message-ID: <20230126154956.GA1278063@bhelgaas>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAAEEuhq9X0ppqTMp7fnZapbubf9k8xhH=u3gPva3hEpAdawK3w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_074307_527551_165610FD 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20230126_075001_945301_C8AF9867 
+X-CRM114-Status: GOOD (  29.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +79,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/01/2023 16:30, Rick Wertenbroek wrote:
-> On Thu, Jan 26, 2023 at 4:23 PM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->>
->> On 26/01/2023 14:50, Rick Wertenbroek wrote:
->>> Added missing PCIe endpoint controller entry in the device tree. This
->>> entry is documented in :
->>> Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
->>
->> There is no such file
-> 
-> Sorry but the file exists see :
-> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt?h=v6.0.19
-> It also exists in 6.1 :
-> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt?h=linux-6.1.y
+On Thu, Jan 26, 2023 at 04:23:57PM +0100, Rick Wertenbroek wrote:
+> Le jeu. 26 janv. 2023 =E0 15:52, Bjorn Helgaas <helgaas@kernel.org> a =E9=
+crit :
+> > Thanks very much for your work.
+> >
+> > On Thu, Jan 26, 2023 at 02:50:40PM +0100, Rick Wertenbroek wrote:
+> > > This is a series of patches that fixes the PCIe endpoint controller d=
+river
+> > > for the Rockchip RK3399 SoC. It is based on Linux kernel 6.0.19
+> > >
+> > > The original driver in mainline had issues and would not allow for the
+> > > RK3399 to operate in PCIe endpoint mode. This patch series fixes that=
+ so
+> > > that the PCIe core controller of the RK3399 SoC can now act as a PCIe
+> > > endpoint.
+> >
+> > So we merged cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip
+> > PCIe controller") when it actually didn't work?  Ouch.  Thanks for
+> > fixing it and testing it.
+> =
 
-It's some old tree. It could have existed in the past. But it does not
-exist. Don't refer to non-existing paths.
+> It seems it wasn't fully tested, the code compiles and kernel module load=
+s,
+> but further functionality didn't seem to have been tested
+> (e.g., lspci, and with the pcitest tool and pci_endpoit_test_driver).
 
-Your code needs then rebasing if you refer to some old trees. Please
-always work on latest maintainer's tree. Optionally on linux-next.
+OK, I guess that happens sometimes.  Glad you're getting it into
+shape!
 
-Best regards,
-Krzysztof
+> Does this mean I should refer to the commit cf590b078391
+> ("PCI: rockchip: Add EP driver for Rockchip PCIe controller") ?
+> Because it wasn't working in the first place ?
 
+Yes, I think so.
+
+> Thank you for all the pointers, I'll take them into account for the
+> next iteration. This is the first time I actually submitted a series of
+> patches to the LKML so it's all relatively new to me.
+
+Welcome to Linux, and great start!
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
