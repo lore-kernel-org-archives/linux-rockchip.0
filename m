@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75612C54E94
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jan 2023 14:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE9CC54E94
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jan 2023 14:42:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yc/F0v3ZbDp798sa2am0qrtN8YYU1Tz1qIs2SqcPPqU=; b=hojHZuUEWjeuu8
-	Mf7wk2qcEchrBme+FelUVvBqgzMZ7aNcomtBpmodAqV4Hz/Pc1ZWapiKd73Ye2OCJGbrJCySsf+cy
-	omjk+WvJEPpQRPFbz7Sg4XXmhOS5d3D8a/HbSn6HlT885p7zxjt+cpVb9xUV21sKhqyfgEa8xgTSq
-	EVFgQNYOzRbPLcegvdhq7EINO4Evlvwpdhv61pub/wrE8z3kW0zWxYhMC82LG20yPH0XmVRxMoxbQ
-	GAIqEc8beCBXnCtVM7m0eiBk3RNtAZECCl+921Z232xi5aIR9Dva/xzY/a4E4WDvhH3d6TbLxJGWY
-	PSlBKAFE00TcvKxGeiHA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=1pq9PHwkDbE4UW1AkxxXcDCs2BZxP05DI1MD68NBEtA=; b=LIoCOeBdixjtqk
+	XwsNEamHkpAf5scl2ocRMyvTKjnEpJUxLy5s8XvMrR286QUQJV7LbHRPaxL55Ypub0HdS9ry46f4x
+	xDBNel96hOsS+NRl76qTcjXmlrI4SNBOJ9AlHuDdmK5yvprc9ebuTAZMmfGuqy7b2gT7J4TN9NK/k
+	2TcvRGAF2XOvLBpwvKEsTQRJjoIKBmlcl/87x40FPNjf7SK45/O999l8ZdJG5zRqBAREXgTjkA7NF
+	vGFoWqk9WcHLcLeGknZxU8X/Aw87rCMSTmjCQc3wY8DMz8DB3UUHxCV3jXOi2BhxtKnQICLIAI2Wu
+	svbUVRtfWpMgba3IZoSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL3K6-00BD7Y-2a; Thu, 26 Jan 2023 14:33:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pL3Sc-00BFPw-4q; Thu, 26 Jan 2023 14:42:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pL3Js-00BD2Z-A8; Thu, 26 Jan 2023 14:33:43 +0000
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1pL3SQ-00BFN0-F3; Thu, 26 Jan 2023 14:42:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 959296602E70;
-	Thu, 26 Jan 2023 14:33:33 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674743615;
-	bh=8qFUxdsl7twq591uo+X+TfuQMTvgNu9wejrziThHdEk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ngH9Ek/2a+3iJwWPHctejHS/IkeA/HAsHuLRvGU5a1xIjuL6pRKYKcCaTI1wkXecN
-	 y9Cdb3EDU3PhQtV+fHL3BH1mfgaQNc/YXDY7vpsHi/qCrb94EVvzR+nsMybyrGOdBI
-	 9hcNpWwWFJAuyaoNWr+o03VgYWOlbULq5+sXxsWUqtkRQ2XVBVJ6qebje2BqOb7bW5
-	 j2eXGYymttnohVyr0f4S0w0EkxTwB4k7dNTVGxQB+orkFeihT6a33VqtRM6LhZ1/qv
-	 WD83I+0ZdF/j63kNHPoc8F+zWkKEyvCAuKBy/UvQ6WFkNZBkImXKrhV9LNT1uIO79M
-	 GIPlfrRa9MWCA==
-Message-ID: <beb018218c6b0763ae15e28752f3292240f664c6.camel@collabora.com>
-Subject: Re: [PATCH v4 2/2] media: verisilicon: HEVC: Only propose 10 bits
- compatible pixels formats
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, 
-	shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, 
-	festevam@gmail.com, linux-imx@nxp.com, hverkuil-cisco@xs4all.nl, 
-	nicolas.dufresne@collabora.co.uk
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Date: Thu, 26 Jan 2023 09:33:24 -0500
-In-Reply-To: <20230125172755.1498973-3-benjamin.gaignard@collabora.com>
-References: <20230125172755.1498973-1-benjamin.gaignard@collabora.com>
-	 <20230125172755.1498973-3-benjamin.gaignard@collabora.com>
-User-Agent: Evolution 3.46.2 (3.46.2-1.fc37) 
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7665861852;
+	Thu, 26 Jan 2023 14:42:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96BDDC433D2;
+	Thu, 26 Jan 2023 14:42:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1674744148;
+	bh=CCnYelU7vTWlPZSDl5BT9muUMJjl8j5MAppunZabsV4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=ehJKrCD8jcjfhoDgsR6ecGQVWtuWDx5JLIwvHsueNlXIxaIYuVjIx9Pv1DPonDJIi
+	 SEwF2sFyaI+no5tUS1i9CWP+akisKqLIYBwBtFGv0+AuiYrfpnyr30bCkLXoTrRYiu
+	 hsJJYi7r0t6ihexW55XaFpla7rPjYVvBZ+421W8fKfzXfB2Lys1c8hDZ7TQ3dfDaHi
+	 sjXRIFp7x8G339EFwAncZTmkwFEonMXS8WIeo/lIDLnUAYkOqeKoY8GDfxNasDQb8s
+	 GBrKXLK8JqMcpA676/E+eJTJsi72j2OTEIjowtO4ug5dU7vY0yfQA1o2Rnc+nGv7dE
+	 /xg3Eg1MvyDwg==
+Date: Thu, 26 Jan 2023 08:42:27 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
+	wenrui.li@rock-chips.com, rick.wertenbroek@heig-vd.ch,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jani Nikula <jani.nikula@intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Mikko Kovanen <mikko.kovanen@aavamobile.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pci@vger.kernel.org
+Subject: Re: [PATCH 4/8] PCI: rockchip: Added poll and timeout to wait for
+ PHY PLLs to be locked
+Message-ID: <20230126144227.GA1271912@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230126135049.708524-5-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230126_063340_647857_D253C9CA 
-X-CRM114-Status: GOOD (  23.01  )
+X-CRM114-CacheID: sfid-20230126_064230_557573_43EB76E0 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,90 +80,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmVuamFtaW4sCgpMZSBtZXJjcmVkaSAyNSBqYW52aWVyIDIwMjMgw6AgMTg6MjcgKzAxMDAs
-IEJlbmphbWluIEdhaWduYXJkIGEgw6ljcml0wqA6Cj4gV2hlbiBkZWNvZGluZyBhIDEwYml0cyBi
-aXRzdHJlYW1zIEhFVkMgZHJpdmVyIHNob3VsZCBvbmx5IGV4cG9zZQo+IDEwYml0cyBwaXhlbCBm
-b3JtYXRzLgo+IFRvIGZ1bGZpbGwgdGhpcyByZXF1aXJlbWVudCBpdCBpcyBuZWVkZWQgdG8gY2Fs
-bCBoYW50cm9fcmVzZXRfcmF3X2ZtdCgpCj4gd2hlbiBiaXQgZGVwdGggY2hhbmdlIGFuZCB0byBj
-b3JyZWN0bHkgc2V0IG1hdGNoX2RlcHRoIGluIHBpeGVsIGZvcm1hdHMKPiBlbnVtZXJhdGlvbi4K
-PiAKPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRA
-Y29sbGFib3JhLmNvbT4KPiAtLS0KPiB2ZXJzaW9uIDQ6Cj4gLSBPbmx5IHNldCBjdHgtPmJpdF9k
-ZXB0aCB3aGVuIGhhbnRyb19yZXNldF9yYXdfZm10KCkgcmV0dXJucyBpcyBvay4KPiAKPiAgLi4u
-L21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19kcnYuYyAgIHwgNDYgKysrKysrKysr
-KysrKysrLS0tLQo+ICAuLi4vbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaW14OG1fdnB1X2h3
-LmMgfCAgMiArCj4gIDIgZmlsZXMgY2hhbmdlZCwgNDAgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm9fZHJ2LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRy
-b19kcnYuYwo+IGluZGV4IDhjYjRhNjhjOTExOS4uMzBhYmFiN2FjOWJmIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2Rydi5jCj4gKysrIGIv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMKPiBAQCAtMjUx
-LDExICsyNTEsNiBAQCBxdWV1ZV9pbml0KHZvaWQgKnByaXYsIHN0cnVjdCB2YjJfcXVldWUgKnNy
-Y192cSwgc3RydWN0IHZiMl9xdWV1ZSAqZHN0X3ZxKQo+ICAKPiAgc3RhdGljIGludCBoYW50cm9f
-dHJ5X2N0cmwoc3RydWN0IHY0bDJfY3RybCAqY3RybCkKPiAgewo+IC0Jc3RydWN0IGhhbnRyb19j
-dHggKmN0eDsKPiAtCj4gLQljdHggPSBjb250YWluZXJfb2YoY3RybC0+aGFuZGxlciwKPiAtCQkJ
-ICAgc3RydWN0IGhhbnRyb19jdHgsIGN0cmxfaGFuZGxlcik7Cj4gLQo+ICAJaWYgKGN0cmwtPmlk
-ID09IFY0TDJfQ0lEX1NUQVRFTEVTU19IMjY0X1NQUykgewo+ICAJCWNvbnN0IHN0cnVjdCB2NGwy
-X2N0cmxfaDI2NF9zcHMgKnNwcyA9IGN0cmwtPnBfbmV3LnBfaDI2NF9zcHM7Cj4gIAo+IEBAIC0y
-NzQsOCArMjY5LDYgQEAgc3RhdGljIGludCBoYW50cm9fdHJ5X2N0cmwoc3RydWN0IHY0bDJfY3Ry
-bCAqY3RybCkKPiAgCQlpZiAoc3BzLT5iaXRfZGVwdGhfbHVtYV9taW51czggIT0gMCAmJiBzcHMt
-PmJpdF9kZXB0aF9sdW1hX21pbnVzOCAhPSAyKQo+ICAJCQkvKiBPbmx5IDgtYml0IGFuZCAxMC1i
-aXQgYXJlIHN1cHBvcnRlZCAqLwo+ICAJCQlyZXR1cm4gLUVJTlZBTDsKPiAtCj4gLQkJY3R4LT5i
-aXRfZGVwdGggPSBzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCArIDg7Cj4gIAl9IGVsc2UgaWYg
-KGN0cmwtPmlkID09IFY0TDJfQ0lEX1NUQVRFTEVTU19WUDlfRlJBTUUpIHsKPiAgCQljb25zdCBz
-dHJ1Y3QgdjRsMl9jdHJsX3ZwOV9mcmFtZSAqZGVjX3BhcmFtcyA9IGN0cmwtPnBfbmV3LnBfdnA5
-X2ZyYW1lOwo+ICAKPiBAQCAtMjg2LDYgKzI3OSwzOCBAQCBzdGF0aWMgaW50IGhhbnRyb190cnlf
-Y3RybChzdHJ1Y3QgdjRsMl9jdHJsICpjdHJsKQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gK3N0
-YXRpYyBpbnQgaGFudHJvX2hldmNfc19jdHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4gK3sK
-PiArCXN0cnVjdCBoYW50cm9fY3R4ICpjdHg7Cj4gKwo+ICsJY3R4ID0gY29udGFpbmVyX29mKGN0
-cmwtPmhhbmRsZXIsCj4gKwkJCSAgIHN0cnVjdCBoYW50cm9fY3R4LCBjdHJsX2hhbmRsZXIpOwo+
-ICsKPiArCXZwdV9kZWJ1ZygxLCAic19jdHJsOiBpZCA9ICVkLCB2YWwgPSAlZFxuIiwgY3RybC0+
-aWQsIGN0cmwtPnZhbCk7CgpUaGlzIHRyYWNlIGZlZWxzIHJlZHVuZGFudCB3aXRoIHRoZSB2NGwy
-IGNvcmUgdHJhY2VzLCBtaW5kIGRyb3BwaW5nIGl0ID8KCk90aGVyIHRoZW4gdGhhdCwgdGhlIHBh
-dGNoIGxvb2tzIGdvb2QgdG8gbWUsIGJ1dCBzaG91bGQgaGF2ZSBpbmNsdWRlZCBhIEZpeGVzCnRh
-ZyBmb3IgYmFja3BvcnQgcHVycG9zZXMuIENvdWxkIGl0IGJlID8KCkZpeGVzOiBkYzM5NDczZDAz
-NDAgKCJtZWRpYTogaGFudHJvOiBpbXg4bTogRW5hYmxlIDEwYml0IGRlY29kaW5nIikKCldpdGgg
-dGhhdCBhZGp1c3RlZDoKClJldmlld2VkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1
-ZnJlc25lQGNvbGxhYm9yYS5jb20+Cgo+ICsKPiArCXN3aXRjaCAoY3RybC0+aWQpIHsKPiArCWNh
-c2UgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNfU1BTOgo+ICsJewo+ICsJCWNvbnN0IHN0cnVjdCB2
-NGwyX2N0cmxfaGV2Y19zcHMgKnNwcyA9IGN0cmwtPnBfbmV3LnBfaGV2Y19zcHM7Cj4gKwkJaW50
-IGJpdF9kZXB0aCA9IHNwcy0+Yml0X2RlcHRoX2x1bWFfbWludXM4ICsgODsKPiArCQlpbnQgcmV0
-Owo+ICsKPiArCQlpZiAoY3R4LT5iaXRfZGVwdGggPT0gYml0X2RlcHRoKQo+ICsJCQlyZXR1cm4g
-MDsKPiArCj4gKwkJcmV0ID0gaGFudHJvX3Jlc2V0X3Jhd19mbXQoY3R4LCBiaXRfZGVwdGgpOwo+
-ICsJCWlmICghcmV0KQo+ICsJCQljdHgtPmJpdF9kZXB0aCA9IGJpdF9kZXB0aDsKPiArCj4gKwkJ
-cmV0dXJuIHJldDsKPiArCX0KPiArCWRlZmF1bHQ6Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9
-Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgaGFudHJvX2pwZWdfc19j
-dHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4gIHsKPiAgCXN0cnVjdCBoYW50cm9fY3R4ICpj
-dHg7Cj4gQEAgLTMyOCw2ICszNTMsMTEgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxf
-b3BzIGhhbnRyb19jdHJsX29wcyA9IHsKPiAgCS50cnlfY3RybCA9IGhhbnRyb190cnlfY3RybCwK
-PiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX29wcyBoYW50cm9faGV2
-Y19jdHJsX29wcyA9IHsKPiArCS5zX2N0cmwgPSBoYW50cm9faGV2Y19zX2N0cmwsCj4gKwkudHJ5
-X2N0cmwgPSBoYW50cm9fdHJ5X2N0cmwsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0
-IHY0bDJfY3RybF9vcHMgaGFudHJvX2pwZWdfY3RybF9vcHMgPSB7Cj4gIAkuc19jdHJsID0gaGFu
-dHJvX2pwZWdfc19jdHJsLAo+ICB9Owo+IEBAIC00NzAsNyArNTAwLDcgQEAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBoYW50cm9fY3RybCBjb250cm9sc1tdID0gewo+ICAJCS5jb2RlYyA9IEhBTlRST19I
-RVZDX0RFQ09ERVIsCj4gIAkJLmNmZyA9IHsKPiAgCQkJLmlkID0gVjRMMl9DSURfU1RBVEVMRVNT
-X0hFVkNfU1BTLAo+IC0JCQkub3BzID0gJmhhbnRyb19jdHJsX29wcywKPiArCQkJLm9wcyA9ICZo
-YW50cm9faGV2Y19jdHJsX29wcywKPiAgCQl9LAo+ICAJfSwgewo+ICAJCS5jb2RlYyA9IEhBTlRS
-T19IRVZDX0RFQ09ERVIsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVy
-aXNpbGljb24vaW14OG1fdnB1X2h3LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxp
-Y29uL2lteDhtX3ZwdV9ody5jCj4gaW5kZXggYjM5MDIyOGZkM2I0Li5mODUwZDhiZGRlZjYgMTAw
-NjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9pbXg4bV92cHVf
-aHcuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaW14OG1fdnB1
-X2h3LmMKPiBAQCAtMTUyLDYgKzE1Miw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaGFudHJvX2Zt
-dCBpbXg4bV92cHVfZzJfcG9zdHByb2NfZm10c1tdID0gewo+ICAJewo+ICAJCS5mb3VyY2MgPSBW
-NEwyX1BJWF9GTVRfTlYxMiwKPiAgCQkuY29kZWNfbW9kZSA9IEhBTlRST19NT0RFX05PTkUsCj4g
-KwkJLm1hdGNoX2RlcHRoID0gdHJ1ZSwKPiAgCQkucG9zdHByb2Nlc3NlZCA9IHRydWUsCj4gIAkJ
-LmZybXNpemUgPSB7Cj4gIAkJCS5taW5fd2lkdGggPSBGTVRfTUlOX1dJRFRILAo+IEBAIC0xNjUs
-NiArMTY2LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBoYW50cm9fZm10IGlteDhtX3ZwdV9nMl9w
-b3N0cHJvY19mbXRzW10gPSB7Cj4gIAl7Cj4gIAkJLmZvdXJjYyA9IFY0TDJfUElYX0ZNVF9QMDEw
-LAo+ICAJCS5jb2RlY19tb2RlID0gSEFOVFJPX01PREVfTk9ORSwKPiArCQkubWF0Y2hfZGVwdGgg
-PSB0cnVlLAo+ICAJCS5wb3N0cHJvY2Vzc2VkID0gdHJ1ZSwKPiAgCQkuZnJtc2l6ZSA9IHsKPiAg
-CQkJLm1pbl93aWR0aCA9IEZNVF9NSU5fV0lEVEgsCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Thu, Jan 26, 2023 at 02:50:44PM +0100, Rick Wertenbroek wrote:
+> The Rockchip PCIe controller did not wait until the PHY PLLs were locked.
+> This could cause hangs. Now the PHY PLLs status is checked through a side
+> channel bit with a poll and timeout. If the PHY PLLs cannot lock an error
+> is generated. This is documented in the TRM section 17.5.8.1 PCIe
+> Initalization Sequence.
+
+s/Initalization/Initialization/
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
