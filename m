@@ -4,57 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4549EC38142
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jan 2023 15:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B45C54EAA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jan 2023 18:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1N0H7hzNbp/Rh5f+gFm+WtxtoOsVH+0jVv35dIsbXPk=; b=CEp6ix6HqFg33o
-	YT8Qa3oT1sB73Do2+k9R6KnqDx5Agzndfl4hiyiB3E/NHk5LIhJX5kThnPXckKs+wGj0bUPNeIChO
-	r/iwYwPlsqiNabbFMDSSn6ZWOy22RJjAdp1ernNuGwn+K+m2tWqWGehHVdzifV+lGR5ZSu1+7DDWy
-	kh6XNaYp811BK5BxV9jZ26B4Gz3CbpTyAM4Rq/lcp1byEzrH7AN0+rANVnp5/7zKwB0jB+0gW75eC
-	g+XbRYKqzHT56ZFztj5DpXnIffdrFkPjGRworZlt61oxTLzDZlbTmNAOfDp9hXOlxeCgBY0dD5Fwk
-	ovXOtwgld/YWIf7h7xhA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LZQpmbYCbL3qsa7nfoRXCERLy/iv5YmL0k4pGzTG7M8=; b=DLWrbln4ftKnVW
+	JCOBjkOyeIkkNCZOjta5Hy7V60L5GLrFnwiFVsV/XmcSbJ6ewsgh0khG6INAIgPiUYf0gRvo351hQ
+	n/1W5m88uqj5dyPXaGtM5VIWDcrD07yH32PKq9Gy/QMcUylYQ4/2O07kzHowGGuzQodiiZMenB4Me
+	IXDQMVs/2XsA42NB2GsGsUhYKOFaZ0P0AfBG1IY8THi7fAmI3eeTHLB3Ef88b+CD9rDDv0AsG4KHY
+	BJm6HC9sUCryAegZ04yLwCA0x8jLY2zMpsHZBU4Cf0tWt2NBrGwK1C6mONmkvqhf8WtfhP80t51OK
+	fe5PX0JSiR/63Cf+Mfng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLQfK-00FSse-QF; Fri, 27 Jan 2023 15:29:22 +0000
-Received: from relay11.mail.gandi.net ([2001:4b98:dc4:8::231])
+	id 1pLTEg-00G0NJ-42; Fri, 27 Jan 2023 18:14:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLQfG-00FSqc-DU
-	for linux-rockchip@lists.infradead.org; Fri, 27 Jan 2023 15:29:20 +0000
-Received: (Authenticated sender: kory.maincent@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id DAE81100015;
-	Fri, 27 Jan 2023 15:29:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1674833354;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=u8Jk4Z/SE+NlYS7gxbtKyd/CSFe2QWdu6dqHZW1dXMs=;
-	b=OsJ9di1IdSOqsh1joqGygi5e+0eapaLp5d/3OHA/R88ai1oR8tcDCkLg/I6HCFvRIZfFbT
-	/PzrM1f0NTu96XQHnHTtN2g73m9IqbCgjoijn8UwJ/p1EZCxrsuJF7LW9KhoCh7DIAaNfD
-	XGweywHG3k0Fy5+zqCmMMDou10F22j1v5Ehw2MhTdrsVaG0bAr+pyjZKBdlGW1IKtpmRHZ
-	lpGQGx7OLTjup2IgoCFvZhWCZ9aCZTBQJfQ9cMhiOSygpxxQTCPPb+QkHEcPeYnGN1qc1b
-	zU+JHQt+Hmkdn6XZDsMaBdA+KE/X78rr3WjIbXYFa9DUA+jYT954C5QtwdEOcw==
-Date: Fri, 27 Jan 2023 16:29:09 +0100
-From: =?UTF-8?B?S8O2cnk=?= Maincent <kory.maincent@bootlin.com>
-To: Sandy Huang <hjc@rock-chips.com>, "Heiko =?UTF-8?B?U3TDvGJuZXI=?="
- <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, Paul Kocialkowski
- <paul.kocialkowski@bootlin.com>, Marton Borzak <marton@unfoldedcircle.com>,
- Markus Zehnder <markus@unfoldedcircle.com>
-Subject: rockchip_drm_vop2 suspend resume issue
-Message-ID: <20230127162909.19e799b5@kmaincent-XPS-13-7390>
-Organization: bootlin
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+	id 1pLTE6-00G05U-BA
+	for linux-rockchip@lists.infradead.org; Fri, 27 Jan 2023 18:13:30 +0000
+Received: from jupiter.universe (dyndsl-095-033-159-051.ewe-ip-backbone.de [95.33.159.51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 787F96602EA0;
+	Fri, 27 Jan 2023 18:13:20 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1674843200;
+	bh=5Zn8aDYnrSMF2mwEGl5Y8i472oI3FD8C2W/ATAfeeeA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=PWfcrt+miNRKODV57/D7ZZ0JuNFEpoyzOOU75IGBF+TlRpdbTFlSj3TbxW7s61WiC
+	 VyRNvguFFjLgumYhA0Jqsb3QRIBkObFchyukvqsafzCRhz8VjmyihknKzxtpkHjE9F
+	 i2KdVr1kwnzaGW0C1gNPrkAC9Ptfs/nJbf1OkLK4/UrGuwnK0HDVr5wT5aJ+b5MJYg
+	 Eq6VVxAkThjItvmJ9abF23I7rjVkqnzaNwffMooymoN+PlWMG2zSRoEUAIEv0Fn7x6
+	 xbfdKbe+wWVR5vc2UklP3XabXiAI1RsCsUbtcRmg6IPOxK3IAViY8HN342sJRrGSkm
+	 lwvgtR4pnb+4Q==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 3594E48011A; Fri, 27 Jan 2023 19:13:17 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv6 04/11] mfd: rk808: replace 'struct i2c_client' with 'struct device'
+Date: Fri, 27 Jan 2023 19:12:37 +0100
+Message-Id: <20230127181244.160887-5-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230127181244.160887-1-sebastian.reichel@collabora.com>
+References: <20230127181244.160887-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_072918_794493_DB568D2F 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230127_101326_697613_24EBD702 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,79 +82,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpJIGdvdCBhbiBpc3N1ZSB3aXRoIHRoZSByb2NrY2hpcF9kcm1fdm9wMiBkcml2ZXIu
-IEl0IGlzIG5vdCB3b3JraW5nIHdlbGwgYWZ0ZXIKYSBzdXNwZW5kIHRvIHJhbS9yZXN1bWUgcHJv
-Y2Vzcy4gVGhlIHBsYW5lIGFuZCBjcnRjIHNlZW1zIG9rLCBtb2RldGVzdCBxdWVyeQpkb2VzIG5v
-dCBzaG93IGFueSBkaWZmZXJlbmNlcywgYnV0IHRoZW4gSSBzZW5kIHRoZSB0ZXN0IGltYWdlIHdp
-dGggbW9kZXRlc3QKYWZ0ZXIgdGhlIHdha2V1cCBpdCBkb2VzIG5vdCB3b3JrLiBUaGUgRFNJIGNs
-b2NrIGlzIHRvZ2dsaW5nIHRoZXJlZm9yZSBpdCBzZWVtcwp0aGF0IG5vIG9yIHdyb25nIGRhdGEg
-aXMgc2VudC4gVGhlIHZibGFuayBpbnRlcnJ1cHQgYWxzbyBzZWVtcyB0byBiZSBnZW5lcmF0ZWQu
-IApJZiBJIHVubG9hZCBhbiBsb2FkIGFnYWluIHRoZSBwYW5lbCBtb2R1bGUgaXQgd29ya2VkIGFn
-YWluLgpJIGFtIGNvbnRpbnVpbmcgdGhlIGludmVzdGlnYXRpb24uIERvIHlvdSBoYXZlIGFuIGlk
-ZWEgb2Ygd2hlcmUgdGhlIGlzc3VlIGNvdWxkCmNvbWUgZnJvbT8KCkFsc28gSSBmaWd1cmVkIG91
-dCBJIGdvdCBhIE5VTEwgcG9pbnRlciBkZXJlZmVyZW5jZSB3aGVuIHVubG9hZGluZyBpdCBhcyBh
-Cm1vZHVsZS4gSSBkb24ndCB0aGluayBpdCBpcyByZWxhdGVkIGJ1dCBJIGp1c3Qgd2FudGVkIHRv
-IHJlcG9ydCBpdC4KCiMgcm1tb2Qgcm9ja2NoaXBkcm0ua28gClsgICA3Ni4wMTQ3OTZdIFVuYWJs
-ZSB0byBoYW5kbGUga2VybmVsIE5VTEwgcG9pbnRlciBkZXJlZmVyZW5jZSBhdCB2aXJ0dWFsCmFk
-ZHJlc3MgMDAwMDAwMDAwMDAwMDAwOCBbICAgNzYuMDE1NjE0XSBNZW0gYWJvcnQgaW5mbzoKWyAg
-IDc2LjAxNTg4M10gICBFU1IgPSAweDAwMDAwMDAwOTYwMDAwMDUKWyAgIDc2LjAxNjIyNV0gICBF
-QyA9IDB4MjU6IERBQlQgKGN1cnJlbnQgRUwpLCBJTCA9IDMyIGJpdHMKWyAgIDc2LjAxNjczNV0g
-ICBTRVQgPSAwLCBGblYgPSAwClsgICA3Ni4wMTcwMzJdICAgRUEgPSAwLCBTMVBUVyA9IDAKWyAg
-IDc2LjAxNzMyMV0gICBGU0MgPSAweDA1OiBsZXZlbCAxIHRyYW5zbGF0aW9uIGZhdWx0ClsgICA3
-Ni4wMTc3OTFdIERhdGEgYWJvcnQgaW5mbzoKWyAgIDc2LjAxODA3MF0gICBJU1YgPSAwLCBJU1Mg
-PSAweDAwMDAwMDA1ClsgICA3Ni4wMTg0MjFdICAgQ00gPSAwLCBXblIgPSAwClsgICA3Ni4wMTg3
-MTRdIHVzZXIgcGd0YWJsZTogNGsgcGFnZXMsIDM5LWJpdCBWQXMsIHBnZHA9MDAwMDAwMDAwNmJi
-NTAwMApbICAgNzYuMDE5MzA0XSBbMDAwMDAwMDAwMDAwMDAwOF0gcGdkPTAwMDAwMDAwMDAwMDAw
-MDAsIHA0ZD0wMDAwMDAwMDAwMDAwMDAwLApwdWQ9MDAwMDAwMDAwMDAwMDAwMCBbICAgNzYuMDIw
-MTUxXSBJbnRlcm5hbCBlcnJvcjogT29wczogMDAwMDAwMDA5NjAwMDAwNSBbIzFdClNNUCBbICAg
-NzYuMDIwNjgwXSBNb2R1bGVzIGxpbmtlZCBpbjogcm9ja2NoaXBkcm0oLSkgZHdfbWlwaV9kc2kK
-WyAgIDc2LjAyMTE5NV0gQ1BVOiAxIFBJRDogMzY1IENvbW06IHJtbW9kIE5vdCB0YWludGVkIDYu
-MS44KyAjMTEKWyAgIDc2LjAyMTcyN10gSGFyZHdhcmUgbmFtZTogVW5mb2xkZWQgQ2lyY2xlIFJl
-bW90ZSBUd28gcmV2MSAoRFQpClsgICA3Ni4wMjIyNTldIHBzdGF0ZTogNjA0MDAwMDkgKG5aQ3Yg
-ZGFpZiArUEFOIC1VQU8gLVRDTyAtRElUIC1TU0JTIEJUWVBFPS0tKQpbICAgNzYuMDIyODgxXSBw
-YyA6IG1pcGlfZHNpX2RldGFjaCsweDEwLzB4NDQKWyAgIDc2LjAyMzI2MV0gbHIgOiBtaXBpX2Rz
-aV9yZW1vdmVfZGV2aWNlX2ZuKzB4MjQvMHg0MApbICAgNzYuMDIzNzA5XSBzcCA6IGZmZmZmZmMw
-MGE3YjNiMjAKWyAgIDc2LjAyNDAwNV0geDI5OiBmZmZmZmZjMDBhN2IzYjIwIHgyODogZmZmZmZm
-ODAwNTcxNmFjMCB4Mjc6IDAwMDAwMDAwMDAwMDAwMDAKWyAgIDc2LjAyNDY0NF0geDI2OiAwMDAw
-MDAwMDAwMDAwMDAwIHgyNTogMDAwMDAwMDAwMDAwMDAwMCB4MjQ6IDAwMDAwMDAwMDAwMDAwMDAK
-WyAgIDc2LjAyNTI4Ml0geDIzOiAwMDAwMDAwMDAwMDAwMDAwIHgyMjogZmZmZmZmYzAwMGI5NDQy
-MCB4MjE6IGZmZmZmZmMwMDg2NjFiZDAKWyAgIDc2LjAyNTkyNF0geDIwOiAwMDAwMDAwMDAwMDAw
-MDAwIHgxOTogZmZmZmZmODAwNTZkNTAwMCB4MTg6IDAwMDAwMDAwMDAwMDAwMDAKWyAgIDc2LjAy
-NjU2MV0geDE3OiAwMDAwMDAwMDAwMDAwMDAwIHgxNjogMDAwMDAwMDAwMDAwMDAwMCB4MTU6IDAw
-MDAwMDAwMDAwMDAwMDAKWyAgIDc2LjAyNzE5OV0geDE0OiAwMDAwMDAwMDAwMDAwMDAwIHgxMzog
-MzYzNDM1MjA2OTZlNjk2NiB4MTI6IDVmNmQ3MjY0NWY3MDY5NjgKWyAgIDc2LjAyNzgzNl0geDEx
-OiAwMDAwMDAwMDAwMDAwMDAwIHgxMDogMDAwMDAwMDAwMDAwMDAwMCB4OSA6IGZmZmZmZmMwMDg2
-NjFiZjQKWyAgIDc2LjAyODQ3Ml0geDggOiAwMTAxMDEwMTAxMDEwMTAxIHg3IDogN2Y3ZjdmN2Y3
-ZjdmN2Y3ZiB4NiA6IDczNmQ0N2ZmNjM2NDYyNmQKWyAgIDc2LjAyOTExMF0geDUgOiAwMDAwMDA4
-MDAwMDAwMDAwIHg0IDogMDAwMDAwMDAwMDAwMDAwMCB4MyA6IGZmZmZmZjgwMDJkMjBmMDAKWyAg
-IDc2LjAyOTc0N10geDIgOiAwMDAwMDAwMDAwMDAwMDAxIHgxIDogZmZmZmZmODAwNTZkNGZmOCB4
-MCA6IDAwMDAwMDAwMDAwMDAwMDAKWyAgIDc2LjAzMDM4OF0gQ2FsbCB0cmFjZToKWyAgIDc2LjAz
-MDYxNV0gIG1pcGlfZHNpX2RldGFjaCsweDEwLzB4NDQKWyAgIDc2LjAzMDk2MV0gIGRldmljZV9m
-b3JfZWFjaF9jaGlsZCsweDY4LzB4YjgKWyAgIDc2LjAzMTM1MV0gIG1pcGlfZHNpX2hvc3RfdW5y
-ZWdpc3RlcisweDQwLzB4NzgKWyAgIDc2LjAzMTc2MF0gIGR3X21pcGlfZHNpX3JlbW92ZSsweDI0
-LzB4NTAgW2R3X21pcGlfZHNpXQpbICAgNzYuMDMyMjQzXSAgZHdfbWlwaV9kc2lfcm9ja2NoaXBf
-cmVtb3ZlKzB4MjAvMHgzMCBbcm9ja2NoaXBkcm1dClsgICA3Ni4wMzI4MDRdICBwbGF0Zm9ybV9y
-ZW1vdmUrMHgzMC8weDYwClsgICA3Ni4wMzMxNDZdICBkZXZpY2VfcmVtb3ZlKzB4NTQvMHg3Ywpb
-ICAgNzYuMDMzNDcyXSAgZGV2aWNlX3JlbGVhc2VfZHJpdmVyX2ludGVybmFsKzB4OTQvMHgxNTAK
-WyAgIDc2LjAzMzkzM10gIGRyaXZlcl9kZXRhY2grMHhmOC8weDEwNApbICAgNzYuMDM0MjY1XSAg
-YnVzX3JlbW92ZV9kcml2ZXIrMHhiYy8weGU4ClsgICA3Ni4wMzQ2MjBdICBkcml2ZXJfdW5yZWdp
-c3RlcisweDU4LzB4NWMKWyAgIDc2LjAzNDk3NV0gIHBsYXRmb3JtX3VucmVnaXN0ZXJfZHJpdmVy
-cysweDg0LzB4ODgKWyAgIDc2LjAzNTQwNl0gIHJvY2tjaGlwX2RybV9maW5pKzB4NjAvMHgxMGY4
-IFtyb2NrY2hpcGRybV0KWyAgIDc2LjAzNTg5OV0gIF9fYXJtNjRfc3lzX2RlbGV0ZV9tb2R1bGUr
-MHgyMTQvMHgyNTAKWyAgIDc2LjAzNjMzNF0gIGludm9rZV9zeXNjYWxsKzB4ODQvMHgxMWMKWyAg
-IDc2LjAzNjY3N10gIGVsMF9zdmNfY29tbW9uLmNvbnN0cHJvcC4wKzB4YzAvMHhlYwpbICAgNzYu
-MDM3MDk5XSAgZG9fZWwwX3N2YysweDljLzB4YzQKWyAgIDc2LjAzNzQwMV0gIGVsMF9zdmMrMHgy
-Yy8weDU0ClsgICA3Ni4wMzc2ODRdICBlbDB0XzY0X3N5bmNfaGFuZGxlcisweDk0LzB4MTAwClsg
-ICA3Ni4wMzgwNzRdICBlbDB0XzY0X3N5bmMrMHgxOTAvMHgxOTQKWyAgIDc2LjAzODQxNV0gQ29k
-ZTogYWExZTAzZTkgZDUwMzIwMWYgYWEwMDAzZTEgZjk0MDAwMDAgKGY5NDAwNDAyKSAKWyAgIDc2
-LjAzODk2MV0gLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tClNlZ21lbnRhdGlv
-biBmYXVsdAoKUmVnYXJkcywKCi0tIApLw7ZyeSBNYWluY2VudCwgQm9vdGxpbgpFbWJlZGRlZCBM
-aW51eCBhbmQga2VybmVsIGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Put 'struct device' pointer into the MFD platform_data instead
+of the 'struct i2c_client' pointer. This simplifies the code
+and prepares the MFD for SPI support.
+
+Acked-for-MFD-by: Lee Jones <lee@kernel.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/mfd/rk808.c       | 6 +++---
+ include/linux/mfd/rk808.h | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 01d8303fccbe..695a3fe6b9e0 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -576,7 +576,7 @@ static int rk808_power_off(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to shutdown device!\n");
++		dev_err(rk808->dev, "Failed to shutdown device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+@@ -599,7 +599,7 @@ static int rk808_restart(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to restart device!\n");
++		dev_err(rk808->dev, "Failed to restart device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+@@ -719,7 +719,7 @@ static int rk808_probe(struct i2c_client *client)
+ 		return -EINVAL;
+ 	}
+ 
+-	rk808->i2c = client;
++	rk808->dev = &client->dev;
+ 	i2c_set_clientdata(client, rk808);
+ 
+ 	rk808->regmap = devm_regmap_init_i2c(client, rk808->regmap_cfg);
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 9af1f3105f80..a89ddd9ba68e 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -787,7 +787,7 @@ enum {
+ };
+ 
+ struct rk808 {
+-	struct i2c_client		*i2c;
++	struct device			*dev;
+ 	struct regmap_irq_chip_data	*irq_data;
+ 	struct regmap			*regmap;
+ 	long				variant;
+-- 
+2.39.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
