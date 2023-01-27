@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EE8AC54EAA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jan 2023 09:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22796C54EAA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jan 2023 09:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bKbxqOtfguvM83rtnnB3sqP0zx3J7U/DRmucpO8hE1I=; b=2frhynKifBv+8D
-	oWtvP6NC2ULt2b8RG2Fnf+v8w+GSIsK2fh7nXLaLg+RaCZ4orHLhGkEbvYCFk7Qg0VdMn/8IlsfIJ
-	ZCH3mg3uwcg+iRnmMa7XGMRkDutgAXjli3+84ISwoVUhGeivwNXJBKRv7V481XbriWgJ9u4qFTpfL
-	4ymki3ITAGqLxI4EfCV/7MeaVMwRyXPswBF6wgzZRhx3xkQiFGvHcXidNtJYIXRBTSpRGr4IPEqrR
-	4ztHaYLZDPbL2yMOGXLnC+Y54PMuPKJMNyruD1fJcglGcvKB5lsCZcNLtg0qW49+XcKCIb8MTd1Ni
-	VdmytfqASkK+9BTXGQhg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z/wBPwWvUAXyM9XaSSYMt2X/Cyer+jSqnfg8BFIIlYw=; b=CnvW224ImIv9m/
+	l3oOb7vt5uRx6ltGlySAU1MYaFeMV5rB1Pu+Uk4koAmOSQv4nrXVwZBeLEMc3da0pr+Jz7e6sI7Dd
+	sA82hkYTnM5jgzwPs+/oF5tanm04JyZ1umkKhSm8pYApRv8ZV8ORq9mXWwtVXcxLiZ4V5c1acoblU
+	SyoD5/e0+u31hkvIAusHkArU62nh6kJkHYm5AAQ7jYVo1fPBsBogRDNlIj7y7lQhBW5hHWf98wzar
+	XpvFEmB8WMS6Sgddbv3JSGmfBLkFdkQfqEGyw6SScOz4oTYeZdbQowM64H8KUlvODS2LkQz/dOXFg
+	gH7ZJHe6K5lz3Zb0YWTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLKvn-00DcPN-3x; Fri, 27 Jan 2023 09:21:59 +0000
+	id 1pLKvn-00DcPa-Nv; Fri, 27 Jan 2023 09:21:59 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pLKvR-00DcHL-G7; Fri, 27 Jan 2023 09:21:39 +0000
+	id 1pLKvR-00DcHU-G5; Fri, 27 Jan 2023 09:21:39 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4623:efe7:8a8:33c2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B35FF6602E66;
-	Fri, 27 Jan 2023 09:21:32 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EBB536602EA1;
+	Fri, 27 Jan 2023 09:21:33 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1674811293;
-	bh=REsCtAkZRuIgQgakBRZ6FEEcPq8lAcKiHRdXzz5RX8s=;
-	h=From:To:Cc:Subject:Date:From;
-	b=b4PszC+NphdjWD0SnVj5join0Iiiuu16xO81xWXFlCKCIIOgsCrUoQZLn/Rzh9kFu
-	 dQyfWf4jdiIFsbkLDaH5w93/r1j0PPa8Hrd6BbCCYx0TdOIDo8BnTG5KSl+NalC8IG
-	 HTYQV3Tm3NvZOpWrb8J2ELoHW8jvrysU77zwO56SNR/DFKbRcJ97LbvJ4NTclsAYMf
-	 a/WRkpS1gha8n9DjVju5QE5Fa3wqJ/KJIwDzzk7i5pdhmioGAxThBDS2rpD30zPixA
-	 nFgQeYVYhVgswsF+KU5U5ztbZY2c8Hbb5gpNTWnHUsf0zZ60Yck/GrpkEyo9cn/Jii
-	 Wle80RsO+J5ew==
+	s=mail; t=1674811294;
+	bh=7Fa9dzvTgBivHIPI4iHsytCfPy7D6F7WBpQuVBtYwF8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=YWw6QuA4FDh22bhiEkZZUUBAskmKEsnvyu6ddHe9fd8TIV7CicdTkZ74WwJwjIxQh
+	 qQsl+9uhurLo58HpxZc7yjGO1j53x4onDuSM6Ax9/sDM1r7SBDnA6uIaUhCrD4lmiZ
+	 kooH7vIEZa/zGTCylqBDYQps+hT8oOnepCZ97Kxhq6eFLzmRcM7zYTXM4CbbyVodnr
+	 ZKtZ1uUBFCmH+3J7pXnUFT8f2xKEtyeIosw3hTDLZWL93yvtnmggpYniMB/bFC4MQK
+	 BFZfKzsks+w9HN3VbFWm9s3zz0SxcEcycI3MLYhrNUHAKfula1LyaMm5k59wdJRCgZ
+	 MZ7l+Ll3Kwtzw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -57,16 +57,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 0/2] media: verisilicon: HEVC: fix 10bits handling
-Date: Fri, 27 Jan 2023 10:21:24 +0100
-Message-Id: <20230127092126.318268-1-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: [PATCH v5 2/2] media: verisilicon: HEVC: Only propose 10 bits compatible pixels formats
+Date: Fri, 27 Jan 2023 10:21:26 +0100
+Message-Id: <20230127092126.318268-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230127092126.318268-1-benjamin.gaignard@collabora.com>
+References: <20230127092126.318268-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230127_012137_790374_9328932A 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230127_012137_831512_CFF7AC08 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +85,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When decoding a 10bits bitstreams HEVC driver should only expose 10bits pixel formats.
+When decoding a 10bits bitstreams HEVC driver should only expose
+10bits pixel formats.
 To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
-and to only change driver internal state in case of success.
+when bit depth change and to correctly set match_depth in pixel formats
+enumeration.
 
-Fluster score (140/147) doesn't change after this series.
+Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
 version 5:
-- Add Nicolas's review tags
-- Add Fixes tags
+- Add Review and Fixes tags
 
-version 4:
-- Split the change in 2 patches.
-- Change hantro_check_depth_match() prototype to avoid using
-  ctx->bit_depth
-- Return the result of hantro_reset_raw_fmt() to the caller.
-- Only set ctx->bit_depth when hantro_reset_raw_fmt() returns is ok.
-
- 
-Benjamin Gaignard (2):
-  media: verisilicon: Do not change context bit depth before validating
-    the format
-  media: verisilicon: HEVC: Only propose 10 bits compatible pixels
-    formats
-
- .../media/platform/verisilicon/hantro_drv.c   | 44 ++++++++++++---
- .../platform/verisilicon/hantro_postproc.c    |  2 +-
- .../media/platform/verisilicon/hantro_v4l2.c  | 53 +++++++++----------
- .../media/platform/verisilicon/hantro_v4l2.h  |  3 +-
+ .../media/platform/verisilicon/hantro_drv.c   | 44 +++++++++++++++----
  .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 +
- 5 files changed, 66 insertions(+), 38 deletions(-)
+ 2 files changed, 38 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 8cb4a68c9119..a736050fef5a 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -251,11 +251,6 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 
+ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+-	struct hantro_ctx *ctx;
+-
+-	ctx = container_of(ctrl->handler,
+-			   struct hantro_ctx, ctrl_handler);
+-
+ 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+ 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
+ 
+@@ -274,8 +269,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
+ 			/* Only 8-bit and 10-bit are supported */
+ 			return -EINVAL;
+-
+-		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
+ 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
+ 
+@@ -286,6 +279,36 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
+ 
++static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_HEVC_SPS:
++	{
++		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
++		int bit_depth = sps->bit_depth_luma_minus8 + 8;
++		int ret;
++
++		if (ctx->bit_depth == bit_depth)
++			return 0;
++
++		ret = hantro_reset_raw_fmt(ctx, bit_depth);
++		if (!ret)
++			ctx->bit_depth = bit_depth;
++
++		return ret;
++	}
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct hantro_ctx *ctx;
+@@ -328,6 +351,11 @@ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+ 	.try_ctrl = hantro_try_ctrl,
+ };
+ 
++static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
++	.s_ctrl = hantro_hevc_s_ctrl,
++	.try_ctrl = hantro_try_ctrl,
++};
++
+ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
+ 	.s_ctrl = hantro_jpeg_s_ctrl,
+ };
+@@ -470,7 +498,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_HEVC_SPS,
+-			.ops = &hantro_ctrl_ops,
++			.ops = &hantro_hevc_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index b390228fd3b4..f850d8bddef6 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -152,6 +152,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+@@ -165,6 +166,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_P010,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
 -- 
 2.34.1
 
