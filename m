@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3626C61D97
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7265C05027
 	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jan 2023 13:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+lWt1WtSG/V/iaa21LQAzEpY+EGv3nBCtRnagInMjkc=; b=m0h6uxk62XNGS0
-	41qW4zsBbWleDwgYLywt8pvb2NnkabA0ETIQDJsaosJ8mimK/T7Qbvg8kvzl7QIp3sN0/XBSKerB5
-	VnUKMr+/+q4GZw3hPcz4Jt26N2ZMegp75lG2t73+8gw4VodU7E08gPBSMR16JOqbxGEIAhkRkrcYx
-	IyKxqNfwQvFdbSlEXhmUzHY/i/9k7m9WnXJ80XalpLn5b1U9RdKjf4FxH1ur5tTjT1tQeQTrQnXQO
-	dToic2Vt2Z32o5nN2L5cxXyp0XC9vRK+7s+HRjGP+1L3TXzp206u9N6ImBbEZj3mhYwAYORiqLXKT
-	NThActW1tXX8q5wixlKQ==;
+	List-Owner; bh=GJRKUYqqU90NP5mfGBz6kSvVmjZlZyK+wtxjVKIsUTY=; b=gGmkVgqUUfOdCP
+	q/NZQKbKipZ4j6sUe02QoGcYrz1XIBzYF11NJEzDae7CFYYQ1jaZOpOMJI/e4A7RTLS88twUgY2BS
+	XqJB9zDIG9hv78n/RRKzCjRIOB2dTi+kSgLcH3ptjn1lRueMauZR1MH0FPw4MbZBijYwpMSc+PhWB
+	NUrGoT0AVkgS+WMNkNQN89r6nXexqHddtASYwvH2T8/Av5vUSmQQjRwkqdd5ssRZw1aF+0q85W6+U
+	s/6ButwacseMB5X8Ow8NPb3gXzooonexOVlmnvL93J7Y1NZgqjEKyMGQKU6ZfRoQZvnHWjzq1ZbkV
+	03EwNcDuBtE6JvDpSH5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pM7uI-001Vxr-HF; Sun, 29 Jan 2023 13:39:42 +0000
+	id 1pM7u8-001Vvk-Su; Sun, 29 Jan 2023 13:39:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pM7tx-001VqX-Fs; Sun, 29 Jan 2023 13:39:23 +0000
+	id 1pM7tx-001VqZ-C5; Sun, 29 Jan 2023 13:39:22 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pM7tr-0003rM-LA; Sun, 29 Jan 2023 14:39:15 +0100
+	id 1pM7tq-0003rM-Ty; Sun, 29 Jan 2023 14:39:15 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Jagan Teki <jagan@amarulasolutions.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	vkoul@kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	kishon@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: rockchip: convert rockchip-dp-phy.txt to yaml
-Date: Sun, 29 Jan 2023 14:39:08 +0100
-Message-Id: <167499930030.3595793.1225360645667569018.b4-ty@sntech.de>
+	Manoj Sai <abbaraju.manojsai@amarulasolutions.com>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Enable Ethernet for Radxa CM3 IO
+Date: Sun, 29 Jan 2023 14:39:06 +0100
+Message-Id: <167499930028.3595793.12135511389225494732.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <aa6fe473-71f2-edba-f009-994a3dbc9802@gmail.com>
-References: <aa6fe473-71f2-edba-f009-994a3dbc9802@gmail.com>
+In-Reply-To: <20230125161023.12115-1-jagan@amarulasolutions.com>
+References: <20230125161023.12115-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230129_053921_557185_0FFEFB6B 
-X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-CacheID: sfid-20230129_053921_449703_DF378BAB 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,20 +65,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Dec 2022 10:44:28 +0100, Johan Jonker wrote:
-> Convert rockchip-dp-phy.txt to yaml.
+On Wed, 25 Jan 2023 21:40:22 +0530, Jagan Teki wrote:
+> From: Manoj Sai <abbaraju.manojsai@amarulasolutions.com>
 > 
-> Changed:
->   rename file name
+> Add ethernet nodes for enabling gmac1 on the Radxa CM3 IO board.
 > 
 > 
 
 Applied, thanks!
 
-[1/2] dt-bindings: phy: rockchip: convert rockchip-dp-phy.txt to yaml
-      commit: fc7b83bcaf0334a80d175ab6b280fd838e8a5596
-[2/2] dt-bindings: soc: rockchip: grf: add rockchip,rk3288-dp-phy.yaml
-      commit: 51b2089284f3f08ca8971b65d5b2f66f926f7d14
+[1/2] arm64: dts: rockchip: Enable Ethernet for Radxa CM3 IO
+      commit: cc52bfc04726a574fc4440bbbe0c710890e7040a
+[2/2] arm64: dts: rockchip: rk3566: Enable WiFi, BT support for Radxa CM3
+      commit: af5a803bf212e077e5fb7a1d4cf6be02f74a74ca
 
 Best regards,
 -- 
