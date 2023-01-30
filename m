@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A72C54EED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jan 2023 15:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A5EC54EED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jan 2023 17:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b286N6/sH/y3lqz1vfM5+Sfiw5VFlguqiNjuc+z6Si0=; b=uPD2hPnB4sROT0
-	r+BgQu5+GLxKIsG8xvLiB2gnQpHxdxaMicjNGv2iIN2E2p/8GKCMNlRjSegIlqrKIRqq6nuNC0kag
-	rwAIysSIfG4NhNb0bKpfjpdiULVBgG6cm7nUuGn+WJVgorFJP8T4NvqROBbtqAHlweKgICvceVImI
-	ku8grNH3dauqOGcAyhSdO+aYkqJt0rkfOISff2qtFCbpZp0nMLjUanyYdgJwwlrOCa1wdLeZX8VfL
-	wEMMIc0GUtL7ycR1r7PGc+GCBWenkWgF+tF8dwTxiuBDkjLqHRGHW/ZsHUNJwE5cbC0WPXRooir+U
-	z6o9A73w6syy1z1+M48g==;
+	List-Owner; bh=M6rgVOBFU6kc2un2A3w/NCBRk8jKnLltI9rv16zyc8U=; b=BvnbvOHzaSAiUT
+	G2xPC0GwMg+xyDkARTEsAy/uUkxKjfnQxIq0ZenfEbbOs8uX6wfethY3pYQUaAeSX3pJr3+MwwayJ
+	6s2JFOhEUpZVeKm4hMy8ziSqPn+YUT0d8GvbznJkUEKBmfRQI7gGaFkzZowldVxzb03u4/I6nom+U
+	Cr73To2XVheVQ0rmWRIRILOnKUPQFYiOMgRx2qyfmYax7ygz1698BBL2l0hNqPM02i/BwLsBcBqiC
+	P7C7dFoVKSASnJkyy1ymNFkpv8tFyRrhuJlbQd147mDjdzaKcncJzDRQ/67gZyKz31/WeClo/Ij7Y
+	JVeCRwD6jpgQuIb3REvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMW18-0041P3-PB; Mon, 30 Jan 2023 15:24:22 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pMXa7-004MvR-IB; Mon, 30 Jan 2023 17:04:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMW0Q-0041AR-LD; Mon, 30 Jan 2023 15:23:40 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pMXYg-004MNd-7d; Mon, 30 Jan 2023 17:03:07 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:e655:2335:9172:6e39])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 62516B811C7;
-	Mon, 30 Jan 2023 15:04:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1DE3C433A7;
-	Mon, 30 Jan 2023 15:04:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675091094;
-	bh=NP5hS1dR9EZmj2uQzPc5GC8kAzVVdZAEiPRJ9S3ogeI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JfkSBEiDdHCwrsfpP1o2ASLyl1gWXHuRLeuSIvE9vW44hD9mhkvwoROQD8QIrcP9+
-	 kfiUaMTjYKtpddyFZN8rH6G9MqO7wZz+ISPYrrD4YRTfIPovQZiXJtGC6XfOudB6RT
-	 ZA3O9mb9VjUFkTDHsOMNoJK83ukgTyNQwOz4IfYQtxqkLVnz5nhg7EG6CeUofwyhgV
-	 FqaLYi+mLu6CnaOZLUOyHh2sRF+RkeCmeFBpWdKB2/wIqv5P/TxfJYX3IgJqCIekbm
-	 dyaxlVSrZf+K1XGw3c+JGDbsDFjMMVcmzFy017yUOq/XW5mCkB9znE3yBAo+sjXFrU
-	 D3/LIj1ZMEcOw==
-Received: by mail-vs1-f53.google.com with SMTP id y8so12812063vsq.0;
-        Mon, 30 Jan 2023 07:04:54 -0800 (PST)
-X-Gm-Message-State: AO0yUKUZOmfw29yUIJXgZ88LEJVEngBy8sgtfkBNQ3nPR3hcHWlt5yZT
-	5CylwU6XPrqbQc/xNVZoAstLFjnFbp7+q0zOdQ==
-X-Google-Smtp-Source: AK7set+hZraBztww+lgC8qx204C8V9L5htt85m/SDlWTCczhWl723RbgSQuPGeGVqFZxYylGIiZSxrnXAgLr+5AEgsw=
-X-Received: by 2002:a67:fe41:0:b0:3ea:c8c:48a5 with SMTP id
- m1-20020a67fe41000000b003ea0c8c48a5mr2455575vsr.53.1675091093363; Mon, 30 Jan
- 2023 07:04:53 -0800 (PST)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 996E96602F10;
+	Mon, 30 Jan 2023 13:58:13 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675087094;
+	bh=R5a/mEpnxaqGwC3EbPKXrQNBPFEzTc0n/5f90KTNBzU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=UbeFUDJNjH+boCT1h8uJhzuLeqp2wTx96eCbu0JLaU1/SUDFSJmZWNun3sKp/eTq4
+	 Z9JlKRyaD57WcD78uF34AkuL4sOnpO5Z3MVZlamrTDr3tmzPTyw1YWl+KIXuCgTAI6
+	 7lb3WaYZMzVrkEqbZnpujWMWiVShNEVwqWfIJrQiEqXE97N6tfcj43R564dC3ItQcx
+	 zmy2wZlIUVs8qj+36vV8mwiqHQsXgvKW60WolHykjBDgCSiOPQDdciKy+YeU2pzgMn
+	 6GkT3nEOV3N1sa53CZ1kdGaYOR+kP0PBQDNN6853mzqZbgKcxeOgP7l8+EIpYjtX4E
+	 PszSStAJgWSZg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	linux-imx@nxp.com,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.co.uk
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: [PATCH v6 5/5] media: verisilicon: HEVC: Only propose 10 bitscompatible pixels formats
+Date: Mon, 30 Jan 2023 14:58:02 +0100
+Message-Id: <20230130135802.744743-6-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230130135802.744743-1-benjamin.gaignard@collabora.com>
+References: <20230130135802.744743-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20230126135049.708524-1-rick.wertenbroek@gmail.com> <20230126135049.708524-6-rick.wertenbroek@gmail.com>
-In-Reply-To: <20230126135049.708524-6-rick.wertenbroek@gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Mon, 30 Jan 2023 09:04:41 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJSZ7v-YSOyUu2zJ0Yu2pU+qm=hRtoyQpdmQdhs1tirDg@mail.gmail.com>
-Message-ID: <CAL_JsqJSZ7v-YSOyUu2zJ0Yu2pU+qm=hRtoyQpdmQdhs1tirDg@mail.gmail.com>
-Subject: Re: [PATCH 5/8] PCI: rockchip: Added dtsi entry for PCIe endpoint controller
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com, wenrui.li@rock-chips.com, 
-	rick.wertenbroek@heig-vd.ch, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mikko Kovanen <mikko.kovanen@aavamobile.com>, 
-	Rodrigo Vivi <rodrigo.vivi@intel.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_072339_006140_7598A9E0 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20230130_090306_518194_BD30BCE4 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,67 +85,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 26, 2023 at 7:52 AM Rick Wertenbroek
-<rick.wertenbroek@gmail.com> wrote:
->
-> Added missing PCIe endpoint controller entry in the device tree. This
-> entry is documented in :
-> Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
-> The status is disabled by default, so it will not be loaded unless
-> explicitly chosen to.
->
-> Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 9d5b0e8c9..5f7251118 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -265,6 +265,31 @@ pcie0_intc: interrupt-controller {
->                 };
->         };
->
-> +       pcie0_ep: pcie-ep@f8000000 {
-> +               compatible = "rockchip,rk3399-pcie-ep";
-> +               #address-cells = <3>;
-> +               #size-cells = <2>;
+When decoding a 10bits bitstreams HEVC driver should only expose
+10bits pixel formats.
+To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
+when bit depth change and to correctly set match_depth in pixel formats
+enumeration.
 
-These are only needed when you have child nodes. Additionally, it
-would not be a PCI bus which is the only case that has 3 address
-cells.
+Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 
-There's a schema for this in linux-next now. Please test this change
-with that. It should point out the above issue and maybe others.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/platform/verisilicon/hantro_drv.c  | 16 ++++++++++++++--
+ .../media/platform/verisilicon/imx8m_vpu_hw.c    |  2 ++
+ 2 files changed, 16 insertions(+), 2 deletions(-)
 
-> +               rockchip,max-outbound-regions = <32>;
-> +               clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
-> +                       <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
-> +               clock-names = "aclk", "aclk-perf",
-> +                               "hclk", "pm";
-> +               max-functions = /bits/ 8 <8>;
-> +               num-lanes = <4>;
-> +               reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0xfa000000 0x0 0x2000000>;
-> +               reg-names = "apb-base", "mem-base";
-> +               resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
-> +                       <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE> ,
-> +                       <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
-> +               reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
-> +                               "pm", "pclk", "aclk";
-> +               phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
-> +               phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&pcie_clkreqnb_cpm>;
-> +               status = "disabled";
-> +       };
-> +
->         gmac: ethernet@fe300000 {
->                 compatible = "rockchip,rk3399-gmac";
->                 reg = <0x0 0xfe300000 0x0 0x10000>;
-> --
-> 2.25.1
->
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 715075f15596..e3656649c717 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -331,8 +331,20 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
+ 
+ 	switch (ctrl->id) {
+ 	case V4L2_CID_STATELESS_HEVC_SPS:
+-		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
+-		break;
++	{
++		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
++		int bit_depth = sps->bit_depth_luma_minus8 + 8;
++		int ret;
++
++		if (ctx->bit_depth == bit_depth)
++			return 0;
++
++		ret = hantro_reset_raw_fmt(ctx, bit_depth);
++		if (!ret)
++			ctx->bit_depth = bit_depth;
++
++		return ret;
++	}
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index b390228fd3b4..f850d8bddef6 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -152,6 +152,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+@@ -165,6 +166,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_P010,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
+ 		.postprocessed = true,
+ 		.frmsize = {
+ 			.min_width = FMT_MIN_WIDTH,
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
