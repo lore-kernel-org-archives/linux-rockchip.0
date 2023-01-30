@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10ABBC54EAA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jan 2023 22:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5F0C54EAA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jan 2023 23:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zf2z8xxioWE/4Dw3iXMQIftxB89e1UqZT+0mEBmepW8=; b=PYmjtESSZvkap6
-	IfCQEgv+2gN2Y6uuMY20u3rJ5kzeOvc+tgvpRH1+Q7QDLb1qE9QxkHXAXweZ0K4WzHry3qTZ0zn3+
-	SjUGNVmmEKuNNoELgHFzGqc8PKVIh41Op2IV9JVEVfJPfpVSqL9uW2XrM5NFiYLtBdosEJSPr/n8h
-	WfLeY9lW1/8oGV+mGvhfL4BQdMn5s6/9opTXf/Vf1hDE6vSPsjo0wk5Bgf4Mv14+lpcTGcwjBGufR
-	UqcPrSKXGHI7K1gdNj5EK8OAbWjUdIEGWBjl7UVbh5qgJLxYsVNZjKouBtkGsQaqaJezCHA4Kou5X
-	KvLn+YTdHTrfmGrsw8Xg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yHDGe4RLnNp31Kx6hbLrnWsHInO3HYjqL9weS9GZSf8=; b=bNsuyko57RF6eVUTnRTD4XEj4d
+	F8lH0XwSB/02DabqJcUgT7Io+Jh/e0aMrOmbXkwfYCPmFrfJWgDw5ALPiqtlb8/AO74HT3xWf6pla
+	bF051EehbiE0ZaStrLnogI58Oy/8j6q8EZNIcRACKqQwLX8aDMMc3jxdRnzIFgEZwFlcjW8yBaX2b
+	+vvZp2LRBefYEjRT44ZtqwEEzbFTT7HiSsXc5ETeXQ8gEGgPNzCpCil4MWud9ebJSzm2lQ5ctmMo7
+	iqISolMRC1tEhpS7f7h466PLVJfQPalzT71kZ+H2WEwUFBUuiBb5bD9kHn8tJV90z3PNWXUmzRxSZ
+	pthYC4fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMch6-005ejj-9n; Mon, 30 Jan 2023 22:32:08 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1pMdr3-005oKl-K6; Mon, 30 Jan 2023 23:46:29 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMch3-005eig-5p
-	for linux-rockchip@lists.infradead.org; Mon, 30 Jan 2023 22:32:06 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-506609635cbso180339527b3.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 30 Jan 2023 14:32:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=skjZ7zrvUldsqxQv6fmmWTawDIpJ/RoIfn/nYqoiZWo=;
-        b=QEXdNuQ5hEhdsUEfuwdYpdcQhRoLW1LDmoXD0oDISEYinsMExRfUf36mW72+XcfUII
-         5LNaCLyDswzhEuTzgX+WblZ1/EPgqFJ8F6dpm45eX/5xfN85/ZP0aNBOh+uy0JWhSde7
-         zfvUQNj5WrrsMkIblZ/s66loaAFhIgWSOLZbL3TAdrd215HVVV4A1i1q2MgUtJbN2sOa
-         eFg10oQh+JY5wP7JrRmblExDjUIL2fhzNKw+D7PbLkcIXWAv2i8per83fJ+whffB024i
-         pZ9Tkwtigo7SXwbV5bhwzK1ct/53Zj6YUl1sNnkb5KqP8FtCg6t84j1AV76Fti2YLfNA
-         zBuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=skjZ7zrvUldsqxQv6fmmWTawDIpJ/RoIfn/nYqoiZWo=;
-        b=xE+UgGObo4dXZmV15lRDHH9OLx/0EzGu/1qalHB2qE0XH1hU82bMtmk8Yc5emP0kOU
-         Jr6UHtC8jgVX3u8OMRxaz/gEI2sJM4jF3sGa+LG00B+RgEprDoHH/WCQ0Uwx5pdUBZRA
-         wbu5AY/OeIkQiR8UuUDKBWB1sNr3SasU34l1t4zardeZ+itgWQB7/DApX+q7RowC347o
-         bC0cvTVgeAvC8QYYg+EwjhIlGuFlOwEoIiD84gsCgV2jOMsDVafq0+PiN8TN91iL2qW3
-         YF8IqDu4GkRT7NpePI5ErIuGkE79Tv0ld5xmOg1s9ZbrWwfYxFb/c3OARTNJazkNC/tS
-         c/hA==
-X-Gm-Message-State: AO0yUKVRqFLLSFu315bMw1ObQjyAHMjIyvmguxEIDbdDxIB8aasZnZBc
-	o2PQg/4L+nzUU8Oqu1YXeIlygZnUm/Ta2IwpzaRHFQ==
-X-Google-Smtp-Source: AK7set/ouXAVankrNwYj1xEQDazhfSPde9attbZo+h9D0l5ir656lWUIhIQ+1oQuF+L7x/AYiQCqqerKSFPkyPayHpk=
-X-Received: by 2002:a0d:e701:0:b0:506:66f5:fd24 with SMTP id
- q1-20020a0de701000000b0050666f5fd24mr3154161ywe.130.1675117922613; Mon, 30
- Jan 2023 14:32:02 -0800 (PST)
-MIME-Version: 1.0
-References: <20230127181244.160887-1-sebastian.reichel@collabora.com> <20230127181244.160887-10-sebastian.reichel@collabora.com>
-In-Reply-To: <20230127181244.160887-10-sebastian.reichel@collabora.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 30 Jan 2023 23:31:51 +0100
-Message-ID: <CACRpkdbQfaCX=ZbFQh3p_T3biWEex-QZofXTrbVKd5hYOzMAug@mail.gmail.com>
-Subject: Re: [PATCHv6 09/11] pinctrl: rk805: add rk806 pinctrl support
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, 
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	id 1pMdr0-005oJ6-CP
+	for linux-rockchip@lists.infradead.org; Mon, 30 Jan 2023 23:46:27 +0000
+Received: from mercury (unknown [185.209.196.162])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BBFC16602E5A;
+	Mon, 30 Jan 2023 23:46:22 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1675122382;
+	bh=qpiVtCBTcq4oyUEyHgfHNcNf3c0Lxxip1+ljGsvf18o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TEMYysGSmrxfvdsxZrDW4tEPboZ8B6cjfRjj0ovlA/ctdSyEWJ/IPnEHuawG/8SnC
+	 MIb7yAO+nj40GgZB+2XCc+qn2qF7CkuHCOkqKCNgCrTJ42w1zYqDolAP9L8VUkbuFH
+	 Ket+ykZbBygP/R+K2xGNY6eFovXfRICzDgHwGb9nOFt94zk4xpSyaflRrLM+50Nl9p
+	 yXZ8vC/RVJnaUSustzLqn5ooSaMPHZsaOF5WyRmXp7JqDiHA+lmojBb1YBl30o/zgh
+	 +99Pk3e+xR32CHTTw5tUHRcxOjDQQFmeiWRnEaIXroqil+t0zFb9O0lhoyBM3B9Prc
+	 9mmAzWcHmn43A==
+Received: by mercury (Postfix, from userid 1000)
+	id 4E6A41060FFA; Tue, 31 Jan 2023 00:36:26 +0100 (CET)
+Date: Tue, 31 Jan 2023 00:36:26 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
 	shengfei Xu <xsf@rock-chips.com>
+Subject: Re: [PATCHv6 09/11] pinctrl: rk805: add rk806 pinctrl support
+Message-ID: <20230130233626.r5kfnduj2i2urb56@mercury.elektranox.org>
+References: <20230127181244.160887-1-sebastian.reichel@collabora.com>
+ <20230127181244.160887-10-sebastian.reichel@collabora.com>
+ <CACRpkdbQfaCX=ZbFQh3p_T3biWEex-QZofXTrbVKd5hYOzMAug@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CACRpkdbQfaCX=ZbFQh3p_T3biWEex-QZofXTrbVKd5hYOzMAug@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_143205_242048_8018D575 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20230130_154626_650350_6563D6CB 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,32 +79,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6043809082127586042=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 27, 2023 at 7:13 PM Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
 
-> Add support for rk806 dvs pinctrl to the existing rk805
-> driver.
->
-> This has been implemented using shengfei Xu's rk806
-> specific driver from the vendor tree as reference.
->
-> Co-Developed-by: shengfei Xu <xsf@rock-chips.com>
-> Signed-off-by: shengfei Xu <xsf@rock-chips.com>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+--===============6043809082127586042==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="uiqkrrhztl7odqxv"
+Content-Disposition: inline
 
-Is this something I can just apply? I haven't had Heiko's review
-on it but it looks innocent enough.
 
-Yours,
-Linus Walleij
+--uiqkrrhztl7odqxv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Linus,
+
+On Mon, Jan 30, 2023 at 11:31:51PM +0100, Linus Walleij wrote:
+> On Fri, Jan 27, 2023 at 7:13 PM Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+>=20
+> > Add support for rk806 dvs pinctrl to the existing rk805
+> > driver.
+> >
+> > This has been implemented using shengfei Xu's rk806
+> > specific driver from the vendor tree as reference.
+> >
+> > Co-Developed-by: shengfei Xu <xsf@rock-chips.com>
+> > Signed-off-by: shengfei Xu <xsf@rock-chips.com>
+> > Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>=20
+> Is this something I can just apply? I haven't had Heiko's review
+> on it but it looks innocent enough.
+
+No. This code depends on the RK806 register defines added to
+include/linux/mfd/rk808.h in the previous patch. The series cannot
+be applied per-subsystem and my suggestion is that Lee provides an
+immutable branch once he is happy with the MFD patches.
+
+Greetings,
+
+-- Sebastian
+
+--uiqkrrhztl7odqxv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmPYVHcACgkQ2O7X88g7
++ppYZg/8DGI/AMzUJEq3qV2LqyRgz6nFLAFoFr+dA4My3ID5/iL597LBZwdPCDi0
+zE5d8mcUvdQu9eJRlKfMe7W5nrLzp9whOjYGu27cpG8Ho9W4gvKX1oAo0xjiZvpw
+TVZzuyWMdTAh622T+XhN/x9PFYsWop1nMm/Olxl5vC5uole/RxMO7uUNcgjeQgP0
+ssVDGROpjWEpvUg9BYEISBK3G8SN/noMlzpLUZoJkVtEJlGwsIcnJip8BXmKUlqr
+4gVc8Y5GrlULFFCDG+mxoW12YhB28PvxKgp4YtpNxx1sUfa38qJU6Q+U1UoPzXR7
+H5PaH+K288xcSG9Rt4xfZcFcxcmLytvw1Hsdi2zDCgredgwgrS3HaP0QEW8K0VSy
+VPWQ9ndbsyxWMYKhFcm9NFBaqw/rIWqiw0C/Mj7lV9UPXE4yZ+MtNf1zmLXeNYny
+DPKcWrpoiEtkWb5U5sSnE4x2sI12TDy1actVc3y49b//Mwg3N+BS3FWDogcZVKli
+94uKdiZUMtqucK9/BWNov9TCRXDUeYh5myPqI0DtivBnqCq4DYtjdfBasR6VX/jW
+A3UbLxorMUyXvRELdOb7/2u4BhY9QfPJTWu4iZ1/JNpKqiafB4BSPilrKz7dQs1+
+0q0MWr1Fv98SFIMlYXAeRZIxToP2GBHMg5+ly7LZ+mhpYMcFqTs=
+=oQOe
+-----END PGP SIGNATURE-----
+
+--uiqkrrhztl7odqxv--
+
+
+--===============6043809082127586042==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6043809082127586042==--
+
