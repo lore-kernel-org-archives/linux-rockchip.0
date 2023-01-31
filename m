@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB66FC38142
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 15:02:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB0DC636D3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 15:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xw4wFmefYoE2D333NvVnuU9vl5HjNqap2iOwGFP/Ey4=; b=KcYl3Y8fyUc0fQ
-	cGZJ3eqjUtE2egd/jNLajcNDBVZlUanz1MyCoGh5rWI3hRAFhIyuWzQv0DudTpHvtnTQ7wh6jhmvh
-	UhyqMIHtantkLRlNQU7gvbEEknIYBIj8Eubxbp07os9R7KvyXgCPPKIYTB/58G2GD+ObKiV08FTg6
-	+J95Wguk8S44tQXCVzwixTbYMqsVdg2zegzDiTwgc2eUUdbt6qBXZgRcSmxDL30BYRj0UsOgywoZf
-	EIwOO9SUhTBXnvdhB8GXNHr1QnoHWQ9GuRoNQjATsXzxCXcKhhDenuHWtUc4wysXHLGucb3z1UQcM
-	FFfFlRPqAwWWPzjBfH6g==;
+	List-Owner; bh=G4I8kfBKknBJIfUxtAzWkr9j3u732dG18czTaXYAxnU=; b=SFokhV93qYujX1
+	+qMSxMUeFEfFR1ZMpFtcxW6A4VJ/mvqQN4Qh8QU6xhuflhr/DuxyvYncCGei/jHAo6klWaBP1ctbU
+	7l55I5LgIjP/IBWH0pYFF6xl7nDfSDaWd/0pysHshjCkDLkmd29TCjpEXrgCkM8R2a+TPW/1Me5R7
+	urwB276ZfGH+X0U7LMALhOD73acN+afLCfF3vIfKnNgC+rvyePDwYywXGAapIGHv1PikGf62e9PfF
+	DBG1cTJffNk2klfO3DAjNhjVArSlRFwxex/RzwiIkL7AiffOOdDl1Xr/umRCm6sNgCKzOdbELuNit
+	yhJxJZ4psbrbEEs3DJFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMs97-008NaQ-EZ; Tue, 31 Jan 2023 15:02:05 +0000
+	id 1pMs9J-008NjS-Rr; Tue, 31 Jan 2023 15:02:17 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMs8C-008N4d-J4; Tue, 31 Jan 2023 15:01:10 +0000
+	id 1pMs8L-008N9f-QS; Tue, 31 Jan 2023 15:01:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0950C61583;
-	Tue, 31 Jan 2023 15:01:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9703C4339C;
-	Tue, 31 Jan 2023 15:01:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 402D961582;
+	Tue, 31 Jan 2023 15:01:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71A4DC433D2;
+	Tue, 31 Jan 2023 15:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675177267;
-	bh=mKMtYGUi6EE7cBFlIcoLmALfj0P1c3k95YLF5gyXM3Q=;
+	s=k20201202; t=1675177276;
+	bh=6n+PAexPKhG9Y9b7aiGaDzJOSZd6jfnkPNkyYiANTdw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=d+P66qNsjWvGB5jIsZTMp7bMj8lfczStnUNxwIZKIKDC80qLnGvpR4Uaikfg9d+Zu
-	 baVp/GSHPz7dNBDlJgFsK6U5lcn1WoyEGv79hmllD/FatvRquX/0xBZyEdANk5bCf+
-	 w0ELkpxZPE1NrFtaTcv2Qya1Hbog46ZdBsSgejpgJLTeEvCYGnu2Wz/eUB9gcuPriU
-	 rzuaQCevjiKv3cHioT7DGOM7GbabyKR5nu5WkJxumsEk12BTrA1n8K2GKIRCbkxs5+
-	 KCB9IhsX0YyHvhhjHZ1+VksapukcDyUXauSdmw/ME2di6DSkiH1GVfVuii61+6o+GW
-	 Z+6CjaKNs7F6Q==
+	b=ZKM9G58okejICEHK0v3QMHzfhBJDdlxzUAbpdsHn5L73R8BCDHe2zVBYo5V1doV1M
+	 cF9DW9CedcLf0+3xBjRBaN4QQFS6/JWgKolNqK3hH7h/EQKyU9zv+S2bZtMRuu6UM2
+	 HX5rqPPf6Nshc7jjaezgJy0WtNpkOVfCL69mFzMqzCSDzVJye+1wwkeagiURS0CFh/
+	 dHJeEl/bzwak7VuesTHYpJoKv4crGnQFL36YEhlLyMWW6EGyi5Gj55fyuBkGdbcy/i
+	 oZEShk4G+/Oc/9aAKBrIpOu1tQb6BKNPFFW6YYTrs/SAm0axahATbLe8s1Z6H1O5FI
+	 HJH2CZrZvZuKw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -51,18 +51,18 @@ Cc: Randy Dunlap <rdunlap@infradead.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-i2c@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 4/6] i2c: rk3x: fix a bunch of kernel-doc warnings
-Date: Tue, 31 Jan 2023 10:00:56 -0500
-Message-Id: <20230131150100.1250267-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 3/4] i2c: rk3x: fix a bunch of kernel-doc warnings
+Date: Tue, 31 Jan 2023 10:01:09 -0500
+Message-Id: <20230131150110.1250351-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230131150100.1250267-1-sashal@kernel.org>
-References: <20230131150100.1250267-1-sashal@kernel.org>
+In-Reply-To: <20230131150110.1250351-1-sashal@kernel.org>
+References: <20230131150110.1250351-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_070108_731130_BA23FDCA 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20230131_070118_015241_16EF42FC 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,10 +114,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 22 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 02ddb237f69a..13c14eb175e9 100644
+index 1107a5e7229e..ac3ae14a4c07 100644
 --- a/drivers/i2c/busses/i2c-rk3x.c
 +++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -80,7 +80,7 @@ enum {
+@@ -79,7 +79,7 @@ enum {
  #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
  
  /**
@@ -126,7 +126,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * @min_hold_start_ns: min hold time (repeated) START condition
   * @min_low_ns: min LOW period of the SCL clock
   * @min_high_ns: min HIGH period of the SCL cloc
-@@ -136,7 +136,7 @@ static const struct i2c_spec_values fast_mode_plus_spec = {
+@@ -135,7 +135,7 @@ static const struct i2c_spec_values fast_mode_plus_spec = {
  };
  
  /**
@@ -135,7 +135,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * @div_low: Divider output for low
   * @div_high: Divider output for high
   * @tuning: Used to adjust setup/hold data time,
-@@ -159,7 +159,7 @@ enum rk3x_i2c_state {
+@@ -158,7 +158,7 @@ enum rk3x_i2c_state {
  };
  
  /**
@@ -144,7 +144,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * @grf_offset: offset inside the grf regmap for setting the i2c type
   * @calc_timings: Callback function for i2c timing information calculated
   */
-@@ -239,7 +239,8 @@ static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
+@@ -238,7 +238,8 @@ static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
  }
  
  /**
@@ -154,7 +154,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   */
  static void rk3x_i2c_start(struct rk3x_i2c *i2c)
  {
-@@ -258,8 +259,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+@@ -257,8 +258,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
  }
  
  /**
@@ -165,7 +165,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * @error: Error code to return in rk3x_i2c_xfer
   */
  static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
-@@ -298,7 +299,8 @@ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
+@@ -297,7 +298,8 @@ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
  }
  
  /**
@@ -175,7 +175,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   */
  static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
  {
-@@ -329,7 +331,8 @@ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+@@ -328,7 +330,8 @@ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
  }
  
  /**
@@ -185,7 +185,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   */
  static void rk3x_i2c_fill_transmit_buf(struct rk3x_i2c *i2c)
  {
-@@ -532,11 +535,10 @@ static irqreturn_t rk3x_i2c_irq(int irqno, void *dev_id)
+@@ -531,11 +534,10 @@ static irqreturn_t rk3x_i2c_irq(int irqno, void *dev_id)
  }
  
  /**
@@ -199,7 +199,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   */
  static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
  {
-@@ -549,13 +551,12 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+@@ -548,13 +550,12 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
  }
  
  /**
@@ -215,7 +215,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * a best-effort divider value is returned in divs. If the target rate is
   * too high, we silently use the highest possible rate.
   */
-@@ -710,13 +711,12 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+@@ -709,13 +710,12 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
  }
  
  /**
@@ -231,7 +231,7 @@ index 02ddb237f69a..13c14eb175e9 100644
   * a best-effort divider value is returned in divs. If the target rate is
   * too high, we silently use the highest possible rate.
   * The following formulas are v1's method to calculate timings.
-@@ -960,14 +960,14 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
+@@ -959,14 +959,14 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
  }
  
  /**
