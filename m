@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DDF9C38142
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 13:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE108C636CC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 13:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DSen5BmsLA344RX3fMwKbgh1lW7yXUXj/NrOcKeWU/E=; b=rSC9ZoAz6Fo75I
-	zXselkPLc8erse76N4DJzFHMWlEJPgAamiPkvA5qHd0JsA1Oq1/7YVe0liDx02ScRHITnDRO2WnTR
-	vWNxw868d8JPc+r9v5FigPliU1AdfCObLT1q7KMkXcDLL2zOWWO/PK4ybKd0QkEf/wC1omWgzcS00
-	ZWt9fJZXAbAYHSpEq/JAWdRI8zF/vbFmaFYdQrWsqt1U50/mG3J/sB4wKtfeVMfSo2LF3YgupcFWi
-	zNDDUmzAw+HPktbfSm0RTc2+e5M/Q7lf0K5iEQN+Xx6PF2UfNqHiL4+1imxgthw2GWk3ZyEKsTcK3
-	mAMydIRPwDnxfYiq710w==;
+	List-Owner; bh=yWcVCJboGbefe3J4pwIt7q508pRO+pf0hNzI+MbysQI=; b=NTxW6fI1cLCK30
+	TWXOUiwx5qiBO6Gd+UpCJ6Hz812dPllcE/dlBV0Bq1TDypaSTonO9Cr7/WdNCdcjdv44oRaxqReuH
+	bTdvrlRFcSWVqOXu0UBF3OPrdanVdHdyEj6HMrwP0WvM5s03vj7WsUzX5jiptUVSGmuPC1uG211Te
+	531yme5z/OQh3OrfEdcOwzM3ly1EmFooOoh3PDPfQY/OQB7g1SZvco7d4XwXfOf9jOYq3J1SogCOj
+	vdk7Qi/4Q4ZvfUGegYKKOlxBVnWRx6jPFbBdYx0Fi2/C0Im++8eil0icoUua7vB8O9K8SvoF3pY2L
+	M8IAihs3YLDz1qQfy+/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqKV-007yZg-22; Tue, 31 Jan 2023 13:05:43 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pMqly-0088Y1-VB; Tue, 31 Jan 2023 13:34:06 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqId-007xHF-Ki; Tue, 31 Jan 2023 13:03:49 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:d507:461a:a036:bf89])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 659926602F21;
-	Tue, 31 Jan 2023 13:03:44 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1675170224;
-	bh=2u7fYNspq4vzaXs20IC2PfPMx0Y7wxGqqAi7GFh5rb8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TVi0DKWN+e6robHpeRsNMOV9qA0For7LI7lGpnHIxkS3Xo/TM2sCOrrIDEaMWd+LH
-	 XIEm7EVsko8vA6ZycMESIyn8I65XfGN760QZ6fBjDmmwFL9Wk+Pt4RmcGzIHtYBzH0
-	 AURtbstu4ImAVNcYaY5Fjk1LX3cr3H11tuc7pKl7OCBitLbu7AIziQhUkyXaEq86F9
-	 QlZFnxLH6lHS8ncAQY+7fRNzhMLDpRMZ57BNedbXnUCBZHDxWAHcUrD2S0mnE8IRw4
-	 tza7r2t7YpE5J35+wzkpAaLdKQVJGGzf63VGShB0oVNkK27g54m1NSXBO5okudN1oA
-	 5ayfdKUO5hpfA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	linux-imx@nxp.com,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.co.uk
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v7 5/5] media: verisilicon: HEVC: Only propose 10 bits compatible pixels formats
-Date: Tue, 31 Jan 2023 14:03:27 +0100
-Message-Id: <20230131130327.776899-6-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230131130327.776899-1-benjamin.gaignard@collabora.com>
-References: <20230131130327.776899-1-benjamin.gaignard@collabora.com>
+	id 1pMqlv-0088WN-VB
+	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 13:34:05 +0000
+Received: by mail-ed1-x534.google.com with SMTP id fi26so14397178edb.7
+        for <linux-rockchip@lists.infradead.org>; Tue, 31 Jan 2023 05:34:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=69Jx87Fz+OvJSEasPRGdkGLajlY/SB/bqN3Qg1JBCFk=;
+        b=PxHm50Pa/Za5hmAH36v3uqeIeO0xus1WebU5rryEEo+wNYdj+cvAFEaG9tLMu5VlzM
+         jg4ic/hBRWn2/iqOCIoWdPA4PhVqDjQrT5ud/IiMQJdBKPpwS0amcM182DARor91xqox
+         /cN6qiyW1U8xOYAoxKI5HQ4zPkH2r9evbXayR4naqMPkBDr6fYcTx3+7GpaqkqKt9akq
+         6vsKh7eZO5iAtR+SpuBZ42/DrTsIA2r+k2znshuG1ZqWAT894Q6hStCPNdtS/t4b6cT8
+         LEI2coibB5qLX81LRC3WoTHFPWMqZEbDr1OC9PGZSOGgHomeTrUmYcbYP9vJpP7E56Qd
+         8MgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=69Jx87Fz+OvJSEasPRGdkGLajlY/SB/bqN3Qg1JBCFk=;
+        b=p2swCclRSyEzIPP+tcAyv2rzU6r4q11j/fEWu7dL+QCKKkrO/KMUztK6AKbVZycmyP
+         eHqQevNzN75HCNLpQ0uGrwllte+UFUnVe3SnPlrAxGfipXPS3q9aNWtMaZLw0I42RjJk
+         Kq5qPX3O4G9PdybV1uo/TEuxVtwfTt1ppm9XjGzSvkMl+kQICSt+ZZ69fL+xbyGOFQMf
+         MuRme99eY/LmC23CAYcgikrmb8kMRfGzmmO1ObFJ7gPUaCWVcMpy/hhn6ZhMY97nfXBL
+         FXB5ep3xjPLnGoTlwrUwMVlQhylNg0CntQWzxwqIIGZToHgt4S0lzNSlJVQmcGJqSIk4
+         HNFw==
+X-Gm-Message-State: AFqh2kr1nAM2LrMV5mFqKf0CII6rW9GmDZyqKxOaltMmkLZdzV3qdLbt
+	lGFhLHU2S/ZzLaqmbUrONX4=
+X-Google-Smtp-Source: AMrXdXskLBH8LGwFIzUr9rI2BHKefEivZ4lkyFFylCx2cXZtSnmvqUOepvO5RPRDp/h34oqd2NmXFg==
+X-Received: by 2002:a05:6402:4496:b0:49e:ca5:244a with SMTP id er22-20020a056402449600b0049e0ca5244amr60489937edb.1.1675172041003;
+        Tue, 31 Jan 2023 05:34:01 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id i9-20020a05640200c900b0049ef04ad502sm590618edu.40.2023.01.31.05.34.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Jan 2023 05:34:00 -0800 (PST)
+Message-ID: <f406b303-ff78-33ff-7f59-cc7904b9a9e4@gmail.com>
+Date: Tue, 31 Jan 2023 14:33:58 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [RFC PATCH 2/3] arm64: dts: rockchip: rk356x: add LVDS bindings
+Content-Language: en-US
+To: Alibek Omarov <a1ba.omarov@gmail.com>, linux-rockchip@lists.infradead.org
+References: <20220923160115.2946615-1-a1ba.omarov@gmail.com>
+ <20220923160115.2946615-3-a1ba.omarov@gmail.com>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20220923160115.2946615-3-a1ba.omarov@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_050347_979559_5C3C9C71 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20230131_053404_034600_5FCE2068 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,134 +91,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When decoding a 10bits bitstreams HEVC driver should only expose
-10bits pixel formats.
-To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
-when bit depth change and to correctly set match_depth in pixel formats
-enumeration.
 
-Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- .../media/platform/verisilicon/hantro_drv.c   | 11 ++++++++--
- .../media/platform/verisilicon/hantro_v4l2.c  | 22 ++++++++++---------
- .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 ++
- 3 files changed, 23 insertions(+), 12 deletions(-)
+On 9/23/22 18:01, Alibek Omarov wrote:
+> Exposes ports for VOP2 and for panel
+> 
+> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 25 ++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> index 0473d7ee2668..fea3319a6a4e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -787,6 +787,31 @@ hdmi_out: port@1 {
+>  		};
+>  	};
+> 
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 6d8bc55ea627..fa31b200b097 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -326,8 +326,15 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
  
- 	switch (ctrl->id) {
- 	case V4L2_CID_STATELESS_HEVC_SPS:
--		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
--		break;
-+	{
-+		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
-+		int bit_depth = sps->bit_depth_luma_minus8 + 8;
-+
-+		if (ctx->bit_depth == bit_depth)
-+			return 0;
-+
-+		return hantro_reset_raw_fmt(ctx, bit_depth);
-+	}
- 	default:
- 		return -EINVAL;
- 	}
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 6c5f4351b257..7c9a04171b45 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -28,7 +28,7 @@
- #include "hantro_hw.h"
- #include "hantro_v4l2.h"
- 
--#define  HANTRO_DEFAULT_BIT_DEPTH 0
-+#define  HANTRO_DEFAULT_BIT_DEPTH 8
- 
- static int hantro_set_fmt_out(struct hantro_ctx *ctx,
- 			      struct v4l2_pix_format_mplane *pix_mp);
-@@ -80,15 +80,11 @@ int hantro_get_format_depth(u32 fourcc)
- static bool
- hantro_check_depth_match(const struct hantro_fmt *fmt, int bit_depth)
- {
--	int fmt_depth, depth = 8;
-+	int fmt_depth;
- 
- 	if (!fmt->match_depth && !fmt->postprocessed)
- 		return true;
- 
--	/* 0 means default depth, which is 8 */
--	if (bit_depth)
--		depth = bit_depth;
--
- 	fmt_depth = hantro_get_format_depth(fmt->fourcc);
- 
- 	/*
-@@ -96,9 +92,9 @@ hantro_check_depth_match(const struct hantro_fmt *fmt, int bit_depth)
- 	 * It may be possible to relax that on some HW.
- 	 */
- 	if (!fmt->match_depth)
--		return fmt_depth <= depth;
-+		return fmt_depth <= bit_depth;
- 
--	return fmt_depth == depth;
-+	return fmt_depth == bit_depth;
- }
- 
- static const struct hantro_fmt *
-@@ -398,6 +394,7 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
- {
- 	const struct hantro_fmt *raw_vpu_fmt;
- 	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
-+	int ret;
- 
- 	raw_vpu_fmt = hantro_get_default_fmt(ctx, false, bit_depth);
- 	if (!raw_vpu_fmt)
-@@ -412,9 +409,14 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
- 	raw_fmt.width = encoded_fmt->width;
- 	raw_fmt.height = encoded_fmt->height;
- 	if (ctx->is_encoder)
--		return hantro_set_fmt_out(ctx, &raw_fmt);
-+		ret = hantro_set_fmt_out(ctx, &raw_fmt);
- 	else
--		return hantro_set_fmt_cap(ctx, &raw_fmt);
-+		ret = hantro_set_fmt_cap(ctx, &raw_fmt);
-+
-+	if (!ret)
-+		ctx->bit_depth = bit_depth;
-+
-+	return ret;
- }
- 
- void hantro_reset_fmts(struct hantro_ctx *ctx)
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index b390228fd3b4..f850d8bddef6 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -152,6 +152,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
- 		.postprocessed = true,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
-@@ -165,6 +166,7 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_P010,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
- 		.postprocessed = true,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
--- 
-2.34.1
+> +	lvds: lvds {
+> +		compatible = "rockchip,rk3568-lvds";
 
+Hi Alibek,
+
+1:
+In the manufacturer tree they model this node in the grf node.
+Any particular reason to do that different?
+
+https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3568.dtsi#L734
+
+In mainline PX30 already does the same.
+
+2:
+There's complete "Acked" serie to be merged by Heiko for a LVDS yaml binding.
+
+[PATCH v6 01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
+https://lore.kernel.org/linux-rockchip/67771143-fd83-383d-41b2-68e8707134e8@gmail.com/
+
+Maybe it's better to check this node in a automated way?
+
+Johan
+
+
+> +		clocks = <&cru PCLK_DSITX_0>;
+> +		clock-names = "pclk_lvds";
+> +		phys = <&dsi_dphy0>;
+> +		phy-names = "dphy";
+> +		power-domains = <&power RK3568_PD_VO>;
+> +		rockchip,grf = <&grf>;
+> +		rockchip,output = "lvds";
+> +		status = "disabled";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			lvds_in: port@0 {
+> +				reg = <0>;
+> +			};
+> +
+> +			lvds_out: port@1 {
+> +				reg = <1>;
+> +			};
+> +		};
+> +	};
+> +
+>  	qos_gpu: qos@fe128000 {
+>  		compatible = "rockchip,rk3568-qos", "syscon";
+>  		reg = <0x0 0xfe128000 0x0 0x20>;
 
 _______________________________________________
 Linux-rockchip mailing list
