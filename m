@@ -4,52 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCC8C54EAA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 00:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15197C38142
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 08:09:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ueY31yo/P6O13q7ST8lqgfL/ff7OCYn03ddyiltiMHY=; b=44OYooaoMD7rdC
-	cLcPFxLXC5Pk15u0zzf3k8B7UZ22ncClOqdZESMnIxo32oWSHyLdgIIIRwNmBROFOiOygFBTKSpbm
-	MVeFCNRoHwKlQyqv1FF5p2Hg71ll7QodgfFIngF1RVnwW2jWayITG3ELMWhdgnKii6JGMUTcHnkGr
-	MQ6TkvUilJ1vnP73/iM1x+rAe/ADvpqNHzBc6B2Ky3Vd9qcF5GaURLld4CswvvIhFuks6WXRNJENn
-	+lBhXVY7Ijoq6yJyQMkEDjrcgXS5OgLCzYpx9FhpW3wQueJqy/KdMoVlbNAzoft0xL6Y1LUOZDCbU
-	X7Rg3RdliGQbyE1N4Tnw==;
+	List-Owner; bh=/rgT1uyv3JVtOUYz4U8qe5sKb2AZwr7o6+teBttneSs=; b=U+GPANHWMjT722
+	n3X1oD7E/mgDHWOu8hkrUOmVXzTNfqsuNJcHunYPPMepDGMHCBnbUkL6DFx1CjcGPtOXEzLZbYkw6
+	XChF9Loybjx9/ne/iTA0v0phXlVeznHt3ovAJ/94QL60LUgMgBueO7aakCAQMmGBSd90yI5Y4lT9V
+	NTC9lNNtuQEy/LSb4TCAYML2vBSQCkXxsijosWRoBUx6e53pUb11dc1HhUTBaKe/qBN4vX58fYxg9
+	fbwuTsLafZsxKjX1I9Y6uka9ojImZ25Ka4X1dNHVAWSqjDDLjza4SExN8j0hV3UBcm8tX0ykd8HMx
+	9569h0fLPGBrAFKcZdwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMenP-005w8N-MO; Tue, 31 Jan 2023 00:46:47 +0000
-Received: from mail-m11875.qiye.163.com ([115.236.118.75])
+	id 1pMli2-006eMP-Gr; Tue, 31 Jan 2023 08:09:42 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMenK-005w68-QO
-	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 00:46:45 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 827F2280194;
-	Tue, 31 Jan 2023 08:46:40 +0800 (CST)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 3/3] mmc: sdhci-of-dwcmshc: Add host software queue support
-Date: Tue, 31 Jan 2023 08:46:31 +0800
-Message-Id: <1675125991-189452-4-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1675125991-189452-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1675125991-189452-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQkkYVhlISkhPSB9DT0NJSFUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NTo6HBw*GT0IGD8zUSNODBFC
-	DzkaC0xVSlVKTUxOSklNS0tKS0NKVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhMT0w3Bg++
-X-HM-Tid: 0a86054a4c022eb1kusn827f2280194
+	id 1pMlhz-006eLM-Jy
+	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 08:09:41 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pMlhr-0005g3-W7; Tue, 31 Jan 2023 09:09:32 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pMlho-00069s-DI; Tue, 31 Jan 2023 09:09:28 +0100
+Date: Tue, 31 Jan 2023 09:09:28 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	kernel@pengutronix.de, Robin Murphy <robin.murphy@arm.com>,
+	Dan Johansen <strit@manjaro.org>
+Subject: Re: [PATCH v3 0/3] drm/rockchip: dw_hdmi: Add 4k@30 support
+Message-ID: <20230131080928.GG23347@pengutronix.de>
+References: <20230118132213.2911418-1-s.hauer@pengutronix.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230118132213.2911418-1-s.hauer@pengutronix.de>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_164643_017716_499A080A 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230131_000939_659469_771278CF 
+X-CRM114-Status: GOOD (  23.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,104 +70,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Heiko, Sandy,
 
----
+Ok to apply these patches?
 
- drivers/mmc/host/sdhci-of-dwcmshc.c | 29 ++++++++++++++++++++++++++++-
- 1 file changed, 28 insertions(+), 1 deletion(-)
+Sascha
 
-diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index fc917ed..e90fa69 100644
---- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-+++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -20,6 +20,7 @@
- #include <linux/sizes.h>
- 
- #include "sdhci-pltfm.h"
-+#include "mmc_hsq.h"
- 
- #define SDHCI_DWCMSHC_ARG2_STUFF	GENMASK(31, 16)
- 
-@@ -331,6 +332,14 @@ static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
- 	sdhci_reset(host, mask);
- }
- 
-+static void sdhci_dwcmshc_request_done(struct sdhci_host *host, struct mmc_request *mrq)
-+{
-+	if (mmc_hsq_finalize_request(host->mmc, mrq))
-+		return;
-+
-+	mmc_request_done(host->mmc, mrq);
-+}
-+
- static const struct sdhci_ops sdhci_dwcmshc_ops = {
- 	.set_clock		= sdhci_set_clock,
- 	.set_bus_width		= sdhci_set_bus_width,
-@@ -347,6 +356,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk35xx_ops = {
- 	.get_max_clock		= sdhci_pltfm_clk_get_max_clock,
- 	.reset			= rk35xx_sdhci_reset,
- 	.adma_write_desc	= dwcmshc_adma_write_desc,
-+	.request_done		= sdhci_dwcmshc_request_done,
- };
- 
- static const struct sdhci_pltfm_data sdhci_dwcmshc_pdata = {
-@@ -462,6 +472,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
- 	struct dwcmshc_priv *priv;
- 	struct rk35xx_priv *rk_priv = NULL;
- 	const struct sdhci_pltfm_data *pltfm_data;
-+	struct mmc_hsq *hsq;
- 	int err;
- 	u32 extra;
- 
-@@ -515,6 +526,16 @@ static int dwcmshc_probe(struct platform_device *pdev)
- 	host->mmc_host_ops.request = dwcmshc_request;
- 	host->mmc_host_ops.hs400_enhanced_strobe = dwcmshc_hs400_enhanced_strobe;
- 
-+	hsq = devm_kzalloc(&pdev->dev, sizeof(*hsq), GFP_KERNEL);
-+	if (!hsq) {
-+		err = -ENOMEM;
-+		goto err_clk;
-+	}
-+
-+	err = mmc_hsq_init(hsq, host->mmc);
-+	if (err)
-+		goto err_clk;
-+
- 	if (pltfm_data == &sdhci_dwcmshc_rk35xx_pdata) {
- 		rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk35xx_priv), GFP_KERNEL);
- 		if (!rk_priv) {
-@@ -607,6 +628,8 @@ static int dwcmshc_suspend(struct device *dev)
- 	struct rk35xx_priv *rk_priv = priv->priv;
- 	int ret;
- 
-+	mmc_hsq_suspend(host->mmc);
-+
- 	ret = sdhci_suspend_host(host);
- 	if (ret)
- 		return ret;
-@@ -647,7 +670,11 @@ static int dwcmshc_resume(struct device *dev)
- 			return ret;
- 	}
- 
--	return sdhci_resume_host(host);
-+	ret = sdhci_resume_host(host);
-+	if (ret)
-+		return ret;
-+
-+	return mmc_hsq_resume(host->mmc);
- }
- #endif
- 
+On Wed, Jan 18, 2023 at 02:22:10PM +0100, Sascha Hauer wrote:
+> It's been some time since I last sent this series. This version fixes
+> a regression Dan Johansen reported. The reason turned out to be simple,
+> I used the YUV420 register values instead of the RGB ones.
+> 
+> I realized that we cannot achieve several modes offered by my monitor
+> as these require pixelclocks that are slightly below the standard
+> pixelclocks. As these are lower than the standard clock rates the PLL
+> driver offers the clk driver falls back to a way lower frequency
+> which results in something the monitor can't display, so this series
+> now contains a patch to discard these unachievable modes.
+> 
+> Sascha
+> 
+> Changes since v2:
+> - Use correct register values for mpll_cfg
+> - Add patch to discard modes we cannot achieve
+> 
+> Changes since v1:
+> - Allow non standard clock rates only on Synopsys phy as suggested by
+>   Robin Murphy
+> 
+> Sascha Hauer (3):
+>   drm/rockchip: dw_hdmi: relax mode_valid hook
+>   drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
+>   drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
+> 
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 40 ++++++++++++++++-----
+>  1 file changed, 32 insertions(+), 8 deletions(-)
+> 
+> -- 
+> 2.30.2
+> 
+> 
+
 -- 
-2.7.4
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
