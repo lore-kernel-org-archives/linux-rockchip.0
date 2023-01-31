@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706C0C54EAA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F41C61DA4
 	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 00:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nbud+LWMSpXC2GoFneucGPfMziF0CArba7s1sV+0ZYk=; b=VZzC6Ap5vFSOWH
-	DoxAAfXvZ5tn/uwdyTYGveMxilPnJ9V6B13zoPCfIJlsogW5h3M0G9/5q7BfbfioDshwyulIluHF1
-	vp+LKiAw2NXCIKxJmsuT1srm3xPKLW2qElCbP12iZZPCdgwQ9mQq5e4lUu0yQ5IVo0tMCb/TlC//m
-	+l0TkyTxQGVxrGMA1G1rAEJXVJ0ZzUu+n4PtjItznt9gJVdXqImgksgO/N/94fTk74er/WucuTqvD
-	BdBe42mXA+Q/QV1GvDemfKxltPrmp4iGsqwcb5XDEUvON7CxoJyO0DFV0FRpKCaWABZCLzc8uUbA/
-	Btjxyg9tQcqEKPK2E3Gg==;
+	List-Owner; bh=nPL0VMwKYbQlqbZpeCmoMdUY47vwUX4jcVkYm+VgdrM=; b=tFOzqyOzDcH3ZP
+	5bf4xBu1bQneTpiOBH+Ub4sbZ8tVSCq+KSj07CXTpkJQItIjDbbddOHJuR61RkuOLoEcJ49ezQrnP
+	nShevWoBESRdgenqMh9n3G5tKIJYcc8woA4OYbUhTFb3tgMNGKbV2pagnZxk0JzY6G13PvIbeOlmG
+	DxzSbVErr+HBufzj8N0rmoid/JMnCjm5SkKskljNyzmg591ABj8ngGLKes+IaqH7e0oW98eQaed8o
+	/aMCrievBx1vveF1pdpAQIJzeaGfInTiIVYYhoJ+TIcvwBxtboD5Q8ESyjygjy7yxF6t8NjOtraz1
+	9E4e+UMhd7vqj6+S61Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMenP-005w8T-Ur; Tue, 31 Jan 2023 00:46:47 +0000
+	id 1pMenO-005w8B-CE; Tue, 31 Jan 2023 00:46:46 +0000
 Received: from mail-m11875.qiye.163.com ([115.236.118.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMenK-005w63-QN
-	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 00:46:46 +0000
+	id 1pMenK-005w5v-QQ
+	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 00:46:44 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 1589C280193;
-	Tue, 31 Jan 2023 08:46:39 +0800 (CST)
+	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 42C49280195;
+	Tue, 31 Jan 2023 08:46:37 +0800 (CST)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>
 Cc: linux-mmc@vger.kernel.org,
 	Adrian Hunter <adrian.hunter@intel.com>,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/3] mmc: sdhci-of-dwcmshc: Add runtime PM support
-Date: Tue, 31 Jan 2023 08:46:30 +0800
-Message-Id: <1675125991-189452-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/3] mmc: sdhci-of-dwcmshc: Update DLL and pre-change delay for rockchip platform
+Date: Tue, 31 Jan 2023 08:46:29 +0800
+Message-Id: <1675125991-189452-2-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1675125991-189452-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1675125991-189452-1-git-send-email-shawn.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTUhJVk8YQ0JMGh4dSx9PSFUTARMWGhIXJB
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGklCVkgYT09PTkpCGk4aSVUTARMWGhIXJB
 	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRA6Ngw*Mz0TIj8rUS0WDApK
-	CQIwCy5VSlVKTUxOSklOQkJCTk1LVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhNTko3Bg++
-X-HM-Tid: 0a86054a465c2eb1kusn1589c280193
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NQg6TBw6HD0XPj8wUSwyDA8z
+	CzdPCghVSlVKTUxOSklOQkJMTE5KVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhPT0M3Bg++
+X-HM-Tid: 0a86054a3f442eb1kusn42c49280195
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230130_164643_017724_EE2E0178 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20230130_164643_019022_2C6BB326 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,97 +67,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds runtime PM support.
+For Rockchip platform, DLL bypass bit and start bit need to be set if
+DLL is not locked. And adjust pre-change delay to 0x3 for better signal
+test result.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/mmc/host/sdhci-of-dwcmshc.c | 51 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 50 insertions(+), 1 deletion(-)
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index 46b1ce7..fc917ed 100644
+index 4933867..46b1ce7 100644
 --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
 +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -15,6 +15,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/reset.h>
- #include <linux/sizes.h>
+@@ -48,6 +48,7 @@
+ #define DWCMSHC_EMMC_DLL_RXCLK_SRCSEL	29
+ #define DWCMSHC_EMMC_DLL_START_POINT	16
+ #define DWCMSHC_EMMC_DLL_INC		8
++#define DWCMSHC_EMMC_DLL_BYPASS		BIT(24)
+ #define DWCMSHC_EMMC_DLL_DLYENA		BIT(27)
+ #define DLL_TXCLK_TAPNUM_DEFAULT	0x10
+ #define DLL_TXCLK_TAPNUM_90_DEGREES	0xA
+@@ -60,6 +61,7 @@
+ #define DLL_RXCLK_NO_INVERTER		1
+ #define DLL_RXCLK_INVERTER		0
+ #define DLL_CMDOUT_TAPNUM_90_DEGREES	0x8
++#define DLL_RXCLK_ORI_GATE		BIT(31)
+ #define DLL_CMDOUT_TAPNUM_FROM_SW	BIT(24)
+ #define DLL_CMDOUT_SRC_CLK_NEG		BIT(28)
+ #define DLL_CMDOUT_EN_SRC_CLK_NEG	BIT(29)
+@@ -234,9 +236,12 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 	sdhci_writel(host, extra, reg);
  
-@@ -551,6 +552,13 @@ static int dwcmshc_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_setup_host;
+ 	if (clock <= 52000000) {
+-		/* Disable DLL and reset both of sample and drive clock */
+-		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_CTRL);
+-		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_RXCLK);
++		/*
++		 * Disable DLL and reset both of sample and drive clock.
++		 * The bypass bit and start bit need to be set if DLL is not locked.
++		 */
++		sdhci_writel(host, DWCMSHC_EMMC_DLL_BYPASS | DWCMSHC_EMMC_DLL_START, DWCMSHC_EMMC_DLL_CTRL);
++		sdhci_writel(host, DLL_RXCLK_ORI_GATE, DWCMSHC_EMMC_DLL_RXCLK);
+ 		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_TXCLK);
+ 		sdhci_writel(host, 0, DECMSHC_EMMC_DLL_CMDOUT);
+ 		/*
+@@ -279,7 +284,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 	}
  
-+	pm_runtime_get_noresume(&pdev->dev);
-+	pm_runtime_set_active(&pdev->dev);
-+	pm_runtime_enable(&pdev->dev);
-+	pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
-+	pm_runtime_use_autosuspend(&pdev->dev);
-+	pm_runtime_put_autosuspend(&pdev->dev);
-+
- 	return 0;
+ 	extra = 0x1 << 16 | /* tune clock stop en */
+-		0x2 << 17 | /* pre-change delay */
++		0x3 << 17 | /* pre-change delay */
+ 		0x3 << 19;  /* post-change delay */
+ 	sdhci_writel(host, extra, dwc_priv->vendor_specific_area1 + DWCMSHC_EMMC_ATCTRL);
  
- err_setup_host:
-@@ -580,6 +588,11 @@ static int dwcmshc_remove(struct platform_device *pdev)
- 	if (rk_priv)
- 		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
- 					   rk_priv->rockchip_clks);
-+
-+	pm_runtime_get_sync(&pdev->dev);
-+	pm_runtime_disable(&pdev->dev);
-+	pm_runtime_put_noidle(&pdev->dev);
-+
- 	sdhci_pltfm_free(pdev);
- 
- 	return 0;
-@@ -638,7 +651,43 @@ static int dwcmshc_resume(struct device *dev)
- }
- #endif
- 
--static SIMPLE_DEV_PM_OPS(dwcmshc_pmops, dwcmshc_suspend, dwcmshc_resume);
-+#ifdef CONFIG_PM
-+static int dwcmshc_runtime_suspend(struct device *dev)
-+{
-+	struct sdhci_host *host = dev_get_drvdata(dev);
-+	u16 data;
-+	int ret;
-+
-+	ret = sdhci_runtime_suspend_host(host);
-+	if (ret)
-+		return ret;
-+
-+	data = sdhci_readw(host, SDHCI_CLOCK_CONTROL);
-+	data &= ~SDHCI_CLOCK_CARD_EN;
-+	sdhci_writew(host, data, SDHCI_CLOCK_CONTROL);
-+
-+	return 0;
-+}
-+
-+static int dwcmshc_runtime_resume(struct device *dev)
-+{
-+	struct sdhci_host *host = dev_get_drvdata(dev);
-+	u16 data;
-+
-+	data = sdhci_readw(host, SDHCI_CLOCK_CONTROL);
-+	data |= SDHCI_CLOCK_CARD_EN;
-+	sdhci_writew(host, data, SDHCI_CLOCK_CONTROL);
-+
-+	return sdhci_runtime_resume_host(host, 0);
-+}
-+#endif
-+
-+static const struct dev_pm_ops dwcmshc_pmops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(dwcmshc_suspend,
-+				dwcmshc_resume)
-+	SET_RUNTIME_PM_OPS(dwcmshc_runtime_suspend,
-+			   dwcmshc_runtime_resume, NULL)
-+};
- 
- static struct platform_driver sdhci_dwcmshc_driver = {
- 	.driver	= {
 -- 
 2.7.4
 
