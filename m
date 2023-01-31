@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE108C636CC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 13:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD96FC38142
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Jan 2023 15:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yWcVCJboGbefe3J4pwIt7q508pRO+pf0hNzI+MbysQI=; b=NTxW6fI1cLCK30
-	TWXOUiwx5qiBO6Gd+UpCJ6Hz812dPllcE/dlBV0Bq1TDypaSTonO9Cr7/WdNCdcjdv44oRaxqReuH
-	bTdvrlRFcSWVqOXu0UBF3OPrdanVdHdyEj6HMrwP0WvM5s03vj7WsUzX5jiptUVSGmuPC1uG211Te
-	531yme5z/OQh3OrfEdcOwzM3ly1EmFooOoh3PDPfQY/OQB7g1SZvco7d4XwXfOf9jOYq3J1SogCOj
-	vdk7Qi/4Q4ZvfUGegYKKOlxBVnWRx6jPFbBdYx0Fi2/C0Im++8eil0icoUua7vB8O9K8SvoF3pY2L
-	M8IAihs3YLDz1qQfy+/Q==;
+	List-Owner; bh=G5CMbunITbw3Fxn0AIF0iO2ETUTEAYUzuuK4QVp2iPA=; b=inH6KUmKJlzd5g
+	UpiXe/RklDB8/n441oZc7loeIJqbKMB9959Odrdo8liPQb4HdHGsWTGaLysFFIqzwS6UWAYW4oBbr
+	Kby3NDoZDLcWMkj1dm9c6kAmz22BfxQGSVQfNndzxKW2szsN9HRVbkATHPlICh8F5sYgzxHtWaG+N
+	YqFpPfX0LajTHiTPr61MLoB//mDZaRrZjiXDWZGnvUld+JaE8nHGAdIKNXiK6zr56FidthNlQ6aok
+	jp3VIPONhZw9PjdnLwJoltLSgqlMoTmxNi5UiqEpaIrr6uuOxLc8IbdXgGtqVP9NtxBvwbAb7cIQL
+	jHZPDK7a8QC2j0EigbyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqly-0088Y1-VB; Tue, 31 Jan 2023 13:34:06 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pMs7R-008Mdk-2L; Tue, 31 Jan 2023 15:00:21 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pMqlv-0088WN-VB
-	for linux-rockchip@lists.infradead.org; Tue, 31 Jan 2023 13:34:05 +0000
-Received: by mail-ed1-x534.google.com with SMTP id fi26so14397178edb.7
-        for <linux-rockchip@lists.infradead.org>; Tue, 31 Jan 2023 05:34:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=69Jx87Fz+OvJSEasPRGdkGLajlY/SB/bqN3Qg1JBCFk=;
-        b=PxHm50Pa/Za5hmAH36v3uqeIeO0xus1WebU5rryEEo+wNYdj+cvAFEaG9tLMu5VlzM
-         jg4ic/hBRWn2/iqOCIoWdPA4PhVqDjQrT5ud/IiMQJdBKPpwS0amcM182DARor91xqox
-         /cN6qiyW1U8xOYAoxKI5HQ4zPkH2r9evbXayR4naqMPkBDr6fYcTx3+7GpaqkqKt9akq
-         6vsKh7eZO5iAtR+SpuBZ42/DrTsIA2r+k2znshuG1ZqWAT894Q6hStCPNdtS/t4b6cT8
-         LEI2coibB5qLX81LRC3WoTHFPWMqZEbDr1OC9PGZSOGgHomeTrUmYcbYP9vJpP7E56Qd
-         8MgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=69Jx87Fz+OvJSEasPRGdkGLajlY/SB/bqN3Qg1JBCFk=;
-        b=p2swCclRSyEzIPP+tcAyv2rzU6r4q11j/fEWu7dL+QCKKkrO/KMUztK6AKbVZycmyP
-         eHqQevNzN75HCNLpQ0uGrwllte+UFUnVe3SnPlrAxGfipXPS3q9aNWtMaZLw0I42RjJk
-         Kq5qPX3O4G9PdybV1uo/TEuxVtwfTt1ppm9XjGzSvkMl+kQICSt+ZZ69fL+xbyGOFQMf
-         MuRme99eY/LmC23CAYcgikrmb8kMRfGzmmO1ObFJ7gPUaCWVcMpy/hhn6ZhMY97nfXBL
-         FXB5ep3xjPLnGoTlwrUwMVlQhylNg0CntQWzxwqIIGZToHgt4S0lzNSlJVQmcGJqSIk4
-         HNFw==
-X-Gm-Message-State: AFqh2kr1nAM2LrMV5mFqKf0CII6rW9GmDZyqKxOaltMmkLZdzV3qdLbt
-	lGFhLHU2S/ZzLaqmbUrONX4=
-X-Google-Smtp-Source: AMrXdXskLBH8LGwFIzUr9rI2BHKefEivZ4lkyFFylCx2cXZtSnmvqUOepvO5RPRDp/h34oqd2NmXFg==
-X-Received: by 2002:a05:6402:4496:b0:49e:ca5:244a with SMTP id er22-20020a056402449600b0049e0ca5244amr60489937edb.1.1675172041003;
-        Tue, 31 Jan 2023 05:34:01 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id i9-20020a05640200c900b0049ef04ad502sm590618edu.40.2023.01.31.05.34.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Jan 2023 05:34:00 -0800 (PST)
-Message-ID: <f406b303-ff78-33ff-7f59-cc7904b9a9e4@gmail.com>
-Date: Tue, 31 Jan 2023 14:33:58 +0100
+	id 1pMs7F-008MY6-CG; Tue, 31 Jan 2023 15:00:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1E90CB81D4C;
+	Tue, 31 Jan 2023 15:00:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A614CC433EF;
+	Tue, 31 Jan 2023 15:00:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675177207;
+	bh=GfF/6s14IQuw3f0GOiv7Hu9kBoATGIrGl83s3spGSZc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Ujxrwaa2RU8xKESHtG/+4o7bImFgdKsDmmjdlmBNJdBs45ndIZSnPWp7thhTgaR7Y
+	 itDqz8chY4fIlk5DwOeZ4ncMy126P3aGEBbbzF1Jnspoo+xyPzNk2kBhI0fn6Ftaue
+	 knTuGoPpD2OU3Q1tarBKi7DDHxI9C9R5716Q6DO4HFWCtzdXOjwtHHILJJmcY6QuIQ
+	 wzI0rsnx6rt/r1DYb6FPwE8JUJIoWrznaMF0Lj4f9A2Lh3CrnNM76THkE3xyTcLreT
+	 ekJNRxwuFJHJGW8iL8fB1DAJrC6c0Ez4opS8+fjt+SXVkbFt+VNoaA3WGwcjWiu1YD
+	 45AwCBHNGfxzQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+	Wolfram Sang <wsa@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.1 09/20] i2c: rk3x: fix a bunch of kernel-doc warnings
+Date: Tue, 31 Jan 2023 09:59:35 -0500
+Message-Id: <20230131145946.1249850-9-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230131145946.1249850-1-sashal@kernel.org>
+References: <20230131145946.1249850-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [RFC PATCH 2/3] arm64: dts: rockchip: rk356x: add LVDS bindings
-Content-Language: en-US
-To: Alibek Omarov <a1ba.omarov@gmail.com>, linux-rockchip@lists.infradead.org
-References: <20220923160115.2946615-1-a1ba.omarov@gmail.com>
- <20220923160115.2946615-3-a1ba.omarov@gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20220923160115.2946615-3-a1ba.omarov@gmail.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230131_053404_034600_5FCE2068 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20230131_070009_729522_8CDFC018 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,76 +79,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Randy Dunlap <rdunlap@infradead.org>
 
+[ Upstream commit 0582d984793d30442da88fe458674502bad1ad29 ]
 
-On 9/23/22 18:01, Alibek Omarov wrote:
-> Exposes ports for VOP2 and for panel
-> 
-> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 25 ++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 0473d7ee2668..fea3319a6a4e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -787,6 +787,31 @@ hdmi_out: port@1 {
->  		};
->  	};
-> 
+Fix multiple W=1 kernel-doc warnings in i2c-rk3x.c:
 
+drivers/i2c/busses/i2c-rk3x.c:83: warning: missing initial short description on line:
+ * struct i2c_spec_values:
+drivers/i2c/busses/i2c-rk3x.c:139: warning: missing initial short description on line:
+ * struct rk3x_i2c_calced_timings:
+drivers/i2c/busses/i2c-rk3x.c:162: warning: missing initial short description on line:
+ * struct rk3x_i2c_soc_data:
+drivers/i2c/busses/i2c-rk3x.c:242: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Generate a START condition, which triggers a REG_INT_START interrupt.
+drivers/i2c/busses/i2c-rk3x.c:261: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+drivers/i2c/busses/i2c-rk3x.c:304: warning: expecting prototype for Setup a read according to i2c(). Prototype was for rk3x_i2c_prepare_read() instead
+drivers/i2c/busses/i2c-rk3x.c:335: warning: expecting prototype for Fill the transmit buffer with data from i2c(). Prototype was for rk3x_i2c_fill_transmit_buf() instead
+drivers/i2c/busses/i2c-rk3x.c:535: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Get timing values of I2C specification
+drivers/i2c/busses/i2c-rk3x.c:552: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Calculate divider values for desired SCL frequency
+drivers/i2c/busses/i2c-rk3x.c:713: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Calculate timing values for desired SCL frequency
+drivers/i2c/busses/i2c-rk3x.c:963: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ * Setup I2C registers for an I2C operation specified by msgs, num.
+
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Signed-off-by: Wolfram Sang <wsa@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/i2c/busses/i2c-rk3x.c | 44 +++++++++++++++++------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index d1658ed76562..b31cf4f18f85 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -80,7 +80,7 @@ enum {
+ #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
  
-> +	lvds: lvds {
-> +		compatible = "rockchip,rk3568-lvds";
+ /**
+- * struct i2c_spec_values:
++ * struct i2c_spec_values - I2C specification values for various modes
+  * @min_hold_start_ns: min hold time (repeated) START condition
+  * @min_low_ns: min LOW period of the SCL clock
+  * @min_high_ns: min HIGH period of the SCL cloc
+@@ -136,7 +136,7 @@ static const struct i2c_spec_values fast_mode_plus_spec = {
+ };
+ 
+ /**
+- * struct rk3x_i2c_calced_timings:
++ * struct rk3x_i2c_calced_timings - calculated V1 timings
+  * @div_low: Divider output for low
+  * @div_high: Divider output for high
+  * @tuning: Used to adjust setup/hold data time,
+@@ -159,7 +159,7 @@ enum rk3x_i2c_state {
+ };
+ 
+ /**
+- * struct rk3x_i2c_soc_data:
++ * struct rk3x_i2c_soc_data - SOC-specific data
+  * @grf_offset: offset inside the grf regmap for setting the i2c type
+  * @calc_timings: Callback function for i2c timing information calculated
+  */
+@@ -239,7 +239,8 @@ static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
+ }
+ 
+ /**
+- * Generate a START condition, which triggers a REG_INT_START interrupt.
++ * rk3x_i2c_start - Generate a START condition, which triggers a REG_INT_START interrupt.
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+ {
+@@ -258,8 +259,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+ }
+ 
+ /**
+- * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+- *
++ * rk3x_i2c_stop - Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
++ * @i2c: target controller data
+  * @error: Error code to return in rk3x_i2c_xfer
+  */
+ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
+@@ -298,7 +299,8 @@ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
+ }
+ 
+ /**
+- * Setup a read according to i2c->msg
++ * rk3x_i2c_prepare_read - Setup a read according to i2c->msg
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+ {
+@@ -329,7 +331,8 @@ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+ }
+ 
+ /**
+- * Fill the transmit buffer with data from i2c->msg
++ * rk3x_i2c_fill_transmit_buf - Fill the transmit buffer with data from i2c->msg
++ * @i2c: target controller data
+  */
+ static void rk3x_i2c_fill_transmit_buf(struct rk3x_i2c *i2c)
+ {
+@@ -532,11 +535,10 @@ static irqreturn_t rk3x_i2c_irq(int irqno, void *dev_id)
+ }
+ 
+ /**
+- * Get timing values of I2C specification
+- *
++ * rk3x_i2c_get_spec - Get timing values of I2C specification
+  * @speed: Desired SCL frequency
+  *
+- * Returns: Matched i2c spec values.
++ * Return: Matched i2c_spec_values.
+  */
+ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+ {
+@@ -549,13 +551,12 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+ }
+ 
+ /**
+- * Calculate divider values for desired SCL frequency
+- *
++ * rk3x_i2c_v0_calc_timings - Calculate divider values for desired SCL frequency
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+  * @t_calc: Caculated rk3x private timings that would be written into regs
+  *
+- * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
++ * Return: %0 on success, -%EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+  * too high, we silently use the highest possible rate.
+  */
+@@ -710,13 +711,12 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+ }
+ 
+ /**
+- * Calculate timing values for desired SCL frequency
+- *
++ * rk3x_i2c_v1_calc_timings - Calculate timing values for desired SCL frequency
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+  * @t_calc: Caculated rk3x private timings that would be written into regs
+  *
+- * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
++ * Return: %0 on success, -%EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+  * too high, we silently use the highest possible rate.
+  * The following formulas are v1's method to calculate timings.
+@@ -960,14 +960,14 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
+ }
+ 
+ /**
+- * Setup I2C registers for an I2C operation specified by msgs, num.
+- *
+- * Must be called with i2c->lock held.
+- *
++ * rk3x_i2c_setup - Setup I2C registers for an I2C operation specified by msgs, num.
++ * @i2c: target controller data
+  * @msgs: I2C msgs to process
+  * @num: Number of msgs
+  *
+- * returns: Number of I2C msgs processed or negative in case of error
++ * Must be called with i2c->lock held.
++ *
++ * Return: Number of I2C msgs processed or negative in case of error
+  */
+ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
+ {
+-- 
+2.39.0
 
-Hi Alibek,
-
-1:
-In the manufacturer tree they model this node in the grf node.
-Any particular reason to do that different?
-
-https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3568.dtsi#L734
-
-In mainline PX30 already does the same.
-
-2:
-There's complete "Acked" serie to be merged by Heiko for a LVDS yaml binding.
-
-[PATCH v6 01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
-https://lore.kernel.org/linux-rockchip/67771143-fd83-383d-41b2-68e8707134e8@gmail.com/
-
-Maybe it's better to check this node in a automated way?
-
-Johan
-
-
-> +		clocks = <&cru PCLK_DSITX_0>;
-> +		clock-names = "pclk_lvds";
-> +		phys = <&dsi_dphy0>;
-> +		phy-names = "dphy";
-> +		power-domains = <&power RK3568_PD_VO>;
-> +		rockchip,grf = <&grf>;
-> +		rockchip,output = "lvds";
-> +		status = "disabled";
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			lvds_in: port@0 {
-> +				reg = <0>;
-> +			};
-> +
-> +			lvds_out: port@1 {
-> +				reg = <1>;
-> +			};
-> +		};
-> +	};
-> +
->  	qos_gpu: qos@fe128000 {
->  		compatible = "rockchip,rk3568-qos", "syscon";
->  		reg = <0x0 0xfe128000 0x0 0x20>;
 
 _______________________________________________
 Linux-rockchip mailing list
