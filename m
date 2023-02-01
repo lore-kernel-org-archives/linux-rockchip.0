@@ -4,54 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59280C38142
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Feb 2023 17:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB650C636D3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Feb 2023 23:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ri7vcL2c7bHfD94RMmZRr5o/7jgXY7KRQ5xxQTlePqQ=; b=mOmV4lJw3ju8nk
-	DDexoLk8Gkrh5LWxvGaTaNhLbsg+v9U4VCqdeMmBSxwvEiFdSRULfscGvNpsay+K5phhkl47xoS3Q
-	sDwJJLE3eYfVoqhyNkT+wGipBMiY9Xns5MZ230LCIaLcPYNPHPS54B5vzyZUDathuNKLk3/raTMF3
-	fMVPnfSLWycBk+ad3VENI8Md+R1nlk53wns5i3g/VfYnhRGGQ+8bae44U/aIwUSY3aDLFQvd0Mdyi
-	jE2ZAaE73Vr39bg6v6gfC8GRJEAdwtB7BeE+I2+UxEFOBzSJ67/2+6EzZKJCzelng2z/5Jns07C7Q
-	DsZ+A0Tmbj13LfMZ7CsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=V3Iz3DmVvUnaFMM5B6Wxpt8ej2Xv9S0lBZGNVSspfdY=; b=hOyLP+ugkmUU4N
+	dscVjdlto1OPNR571DcdbkoE7Uj7mwWub6BKqr/ZLqHYtJYh8oLnC93m6uKD/TPsvLHE34S0rurAk
+	gWvdR9HlrnSRB7k4aQmFL6PptILpBD44YNxCgwC5xwS2N+s2xH0vE6VsfNzsv4tD2dOQotFNZW3lU
+	0VsDPL2ABUehu+ymSCGreHE7tKY/wrdk6Id8xcgSQ4j9pvjCp2ApkqCWpY7GMpgD/tkEzw4ckhSvA
+	YunE8syKlCqLfvxASMxnPbKeUw6eMuhhovKtXX4wLRCyNLdvAEUJk+ydL8sxe6Nz/r8OWY0Mx/vWx
+	aJRr8onKDztlvHYhmdfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNH8r-00D3L0-9b; Wed, 01 Feb 2023 17:43:29 +0000
+	id 1pNM7K-00DpXv-Bq; Wed, 01 Feb 2023 23:02:14 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNH8h-00D3JE-E0; Wed, 01 Feb 2023 17:43:20 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.fritz.box)
+	id 1pNM7G-00DpVy-M8; Wed, 01 Feb 2023 23:02:12 +0000
+Received: from p508fda63.dip0.t-ipconnect.de ([80.143.218.99] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pNH8c-0005A3-4d; Wed, 01 Feb 2023 18:43:14 +0100
+	id 1pNM72-0007LN-Ls; Thu, 02 Feb 2023 00:01:56 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	vkoul@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kishon@kernel.org,
-	robh+dt@kernel.org
-Subject: Re: [PATCH v1] dt-bindings: phy: rename phy-rockchip-inno-usb2.yaml
-Date: Wed,  1 Feb 2023 18:43:12 +0100
-Message-Id: <167527337748.374583.11647809096785895837.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <99794484-d67e-ee1f-4e76-200de20a879c@gmail.com>
-References: <99794484-d67e-ee1f-4e76-200de20a879c@gmail.com>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.2
+Date: Thu, 02 Feb 2023 00:01:54 +0100
+Message-ID: <3514663.mvXUDI8C0e@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230201_094319_485656_0BCB0C18 
-X-CRM114-Status: UNSURE (   8.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230201_150210_747309_52FC8EB0 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,20 +56,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Dec 2022 12:39:17 +0100, Johan Jonker wrote:
-> Rename phy-rockchip-inno-usb2.yaml to a more common format of
-> rockchip,inno-usb2phy.yaml
-> 
-> 
+The following changes since commit 1b929c02afd37871d5afb9d498426f83432e71c2:
 
-Applied, thanks!
+  Linux 6.2-rc1 (2022-12-25 13:41:39 -0800)
 
-[1/1] dt-bindings: phy: rename phy-rockchip-inno-usb2.yaml
-      commit: 0f48b0ed356d8868f62f7c6814fc2edcd70d1816
+are available in the Git repository at:
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.2-rockchip-dtsfixes1
+
+for you to fetch changes up to b67b09733d8a41eec33d5d37be2f8cff8af82a5e:
+
+  arm64: dts: rockchip: align rk3399 DMC OPP table with bindings (2023-01-29 23:35:12 +0100)
+
+----------------------------------------------------------------
+Fixes to adapt to correct binding behaviour and fixes for devices on some boards
+
+Most notably may be the adaption of lower thermal limits for the pinephone
+pro, where the original hiher ones could result in (possibly permanent)
+display issues.
+
+----------------------------------------------------------------
+Andy Yan (1):
+      arm64: dts: rockchip: add io domain setting to rk3566-box-demo
+
+Arnaud Ferraris (1):
+      arm64: dts: rockchip: fix input enable pinconf on rk3399
+
+Chukun Pan (1):
+      arm64: dts: rockchip: remove unsupported property from sdmmc2 for rock-3a
+
+Corentin Labbe (1):
+      arm64: dts: rockchip: use correct reset names for rk3399 crypto nodes
+
+Dan Johansen (1):
+      arm64: dts: rockchip: set sdmmc0 speed to sd-uhs-sdr50 on rock-3a
+
+Jarrah Gosbell (1):
+      arm64: dts: rockchip: reduce thermal limits on rk3399-pinephone-pro
+
+Jensen Huang (1):
+      arm64: dts: rockchip: add missing #interrupt-cells to rk356x pcie2x1
+
+Johan Jonker (1):
+      ARM: dts: rockchip: add power-domains property to dp node on rk3288
+
+Jonas Karlman (1):
+      arm64: dts: rockchip: fix probe of analog sound card on rock-3a
+
+Krzysztof Kozlowski (2):
+      arm64: dts: rockchip: drop unused LED mode property from rk3328-roc-cc
+      arm64: dts: rockchip: align rk3399 DMC OPP table with bindings
+
+ arch/arm/boot/dts/rk3288.dtsi                         |  1 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts        |  2 --
+ arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi      |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts |  7 +++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi              |  6 ++----
+ arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts      | 11 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts       |  5 +++--
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi              |  1 +
+ 8 files changed, 26 insertions(+), 9 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
