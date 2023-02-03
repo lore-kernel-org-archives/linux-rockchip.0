@@ -4,81 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD9EC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Feb 2023 13:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE73BC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Feb 2023 13:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lj1/UMFClBpLkL6gviiSgV4NiKPjjHvSb1j+aNoYtZE=; b=co7vRxUd5DqgWD
-	zSkouisC00mXGpAxL4uoM/fGexHO6cRvjd3zBYUxkr1diaD4MVh5Sz8W/k055KdZwhvuc7mfEKUtE
-	d1x/VBbK+EKPg3xPxBXAh3ExLluRSu6cCk7HNkQkp6nG+0s2ao/lr7ijNed7Dybo5dc7MmC6UKDsM
-	a850O76HTrBxPfnHDKBLujkI3XsCZGRtHXEdxsr6ekKG4ZFAS2G51QVJ92qaSgAuTcFng+NE6txdM
-	ncQnyPQO6wZGnWOfglMSQQ7IAIULFQYPkemoLIbvHPxd3YF4RdGSlZD3hDCX3uDZJTN02GZD+BjGY
-	i+uJsG8ej0katiGuMghQ==;
+	List-Owner; bh=WLs8MhZ2AK10sgT13+K1hSbjhx/LGSB/x1VM49hFSao=; b=xwl4KAWfpxSclB
+	qIexOhW6mEiGTAJyKjktp3cf9rYJPFn8oWeKd39ZL+JGdvJUfA5Pb5gfoMcyOUIHU9Os7xSINfwze
+	+v1qiDZ3AZ/NmNxvF37kFYxc/SuZ/ut3BGn0DeX+V6cFrIIEuC3mpqwAbZZlQn3H8LFvySD5pPmiZ
+	RbGDm98Z4+1qAp1oMB54SsCXNMWKRfQJabe5kPdciTXMYreSPiMjOQst4sA6oxosXgg+4AhZpBp9I
+	q5bmIKfgfNojRPnGZDPcdYfbLcSvGHsi+VdXcd5UBIpnKgK8RFo+B9BhmpbIPcaxSNRU1ng0u9YZ2
+	SESxf7+6mpfGS/HCqHwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNvga-001vOL-RV; Fri, 03 Feb 2023 13:01:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNvWo-001qCw-Dw
-	for linux-rockchip@bombadil.infradead.org; Fri, 03 Feb 2023 12:50:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=MA/FyEsljGbfFcscnaE5ma7p4torTFlHSB4SlzvsQac=; b=E7f+BwwCBsDj7Au7debqyEo3Jy
-	s0ssxLARGa50nzo+H5cb7l3F70/5WyrObu/DgJeHrIhXBpY/CjsFYwbFsX3lJ5KHIIqIYFsy/M79n
-	Fxds2RgZUIfnDwbgo1SML1WzHwNGJbzT2JOJEHv2JpgZiRwo6ZNSy96EpGH1p+/333pG5z0Cx0vXC
-	gfaYqJ6HNSMA7rTxQIC6O3Nnm4p4biRPgMoQSgu7GmN2OJFc7mXClIStFMdats2mEJ4Gv9bn3y6Or
-	4BczHvos6tmBZF5UzL12BDQ4p7f3CGJymN5UublopYTeB3mApAyDRfqqQw0NLsHVYGRBEDttHDrKP
-	z8iOkAZw==;
+	id 1pNvpK-001zJq-OR; Fri, 03 Feb 2023 13:10:02 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pNvWB-005Vgz-04
-	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Feb 2023 12:50:17 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pNvpH-001zIS-Nk
+	for linux-rockchip@lists.infradead.org; Fri, 03 Feb 2023 13:10:01 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pNvWE-0000al-5M; Fri, 03 Feb 2023 13:50:18 +0100
-Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	id 1pNvp8-00051O-FZ; Fri, 03 Feb 2023 14:09:50 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pNvWA-002Opa-IL; Fri, 03 Feb 2023 13:50:15 +0100
-Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pNvWA-000Zm5-5B; Fri, 03 Feb 2023 13:50:14 +0100
+	id 1pNvp1-0008Iw-Vz; Fri, 03 Feb 2023 14:09:43 +0100
+Date: Fri, 3 Feb 2023 14:09:43 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
-To: linux-pm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Will Deacon <will@kernel.org>,
-	Mark Rutland <mark.rutland@arm.com>,
-	kernel@pegutronix.de,
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+	Dan Johansen <strit@manjaro.org>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
 	Michael Riesch <michael.riesch@wolfvision.net>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 14/18] PM / devfreq: rockchip-dfi: Prepare for multiple users
-Date: Fri,  3 Feb 2023 13:50:08 +0100
-Message-Id: <20230203125012.3804008-15-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230203125012.3804008-1-s.hauer@pengutronix.de>
-References: <20230203125012.3804008-1-s.hauer@pengutronix.de>
+	kernel@pengutronix.de, Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v3 0/3] drm/rockchip: dw_hdmi: Add 4k@30 support
+Message-ID: <20230203130943.GX13319@pengutronix.de>
+References: <20230118132213.2911418-1-s.hauer@pengutronix.de>
+ <20230131080928.GG23347@pengutronix.de>
+ <3C4B67628F8D73D6+63ea74ac-b8a2-45b1-5f92-8c7868906687@radxa.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+Content-Disposition: inline
+In-Reply-To: <3C4B67628F8D73D6+63ea74ac-b8a2-45b1-5f92-8c7868906687@radxa.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_125015_340331_FD74BAF2 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20230203_050959_788801_4FF742EC 
+X-CRM114-Status: GOOD (  39.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,139 +78,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When adding perf support later the DFI must be enabled when
-either of devfreq-event or perf is active. Prepare for that
-by adding a usage counter for the DFI. Also move enabling
-and disabling of the clock away from the devfreq-event specific
-functions to which the perf specific part won't have access.
+Hi,
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- drivers/devfreq/event/rockchip-dfi.c | 57 +++++++++++++++++++---------
- 1 file changed, 40 insertions(+), 17 deletions(-)
+On Wed, Feb 01, 2023 at 09:23:56AM +0900, FUKAUMI Naoki wrote:
+> hi,
+> 
+> I'm trying this patch series with 6.1.x kernel. it works fine on rk356x
+> based boards (ROCK 3), but it has a problem on rk3399 boards (ROCK 4).
+> 
+> on rk3399 with this patch, I can see large noise area (about one third right
+> side of the screen) at 4k@30. 1080p works fine as same as before.
+> 
+> can someone reproduce this problem on rk3399?
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index c0b7b1e9805e9..eae010644935a 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -69,13 +69,28 @@ struct rockchip_dfi {
- 	void __iomem *regs;
- 	struct regmap *regmap_pmu;
- 	struct clk *clk;
-+	int usecount;
-+	struct mutex mutex;
- 	u32 ddr_type;
- 	unsigned int channel_mask;
- };
- 
--static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
-+static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- {
- 	void __iomem *dfi_regs = dfi->regs;
-+	int ret = 0;
-+
-+	mutex_lock(&dfi->mutex);
-+
-+	dfi->usecount++;
-+	if (dfi->usecount > 1)
-+		goto out;
-+
-+	ret = clk_prepare_enable(dfi->clk);
-+	if (ret) {
-+		dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n", ret);
-+		goto out;
-+	}
- 
- 	/* clear DDRMON_CTRL setting */
- 	writel_relaxed(HIWORD_UPDATE(0, 0xffff), dfi_regs + DDRMON_CTRL);
-@@ -99,14 +114,30 @@ static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
- 	/* enable count, use software mode */
- 	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
- 		       dfi_regs + DDRMON_CTRL);
-+out:
-+	mutex_unlock(&dfi->mutex);
-+
-+	return ret;
- }
- 
--static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
-+static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
- {
- 	void __iomem *dfi_regs = dfi->regs;
- 
-+	mutex_lock(&dfi->mutex);
-+
-+	dfi->usecount--;
-+
-+	WARN_ON_ONCE(dfi->usecount < 0);
-+
-+	if (dfi->usecount > 0)
-+		goto out;
-+
- 	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
- 		       dfi_regs + DDRMON_CTRL);
-+	clk_disable_unprepare(dfi->clk);
-+out:
-+	mutex_unlock(&dfi->mutex);
- }
- 
- static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
-@@ -124,29 +155,20 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 	}
- }
- 
--static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
-+static int rockchip_dfi_event_disable(struct devfreq_event_dev *edev)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 
--	rockchip_dfi_stop_hardware_counter(dfi);
--	clk_disable_unprepare(dfi->clk);
-+	rockchip_dfi_disable(dfi);
- 
- 	return 0;
- }
- 
--static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
-+static int rockchip_dfi_event_enable(struct devfreq_event_dev *edev)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
--	int ret;
--
--	ret = clk_prepare_enable(dfi->clk);
--	if (ret) {
--		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
--		return ret;
--	}
- 
--	rockchip_dfi_start_hardware_counter(dfi);
--	return 0;
-+	return rockchip_dfi_enable(dfi);
- }
- 
- static int rockchip_dfi_set_event(struct devfreq_event_dev *edev)
-@@ -190,8 +212,8 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- }
- 
- static const struct devfreq_event_ops rockchip_dfi_ops = {
--	.disable = rockchip_dfi_disable,
--	.enable = rockchip_dfi_enable,
-+	.disable = rockchip_dfi_event_disable,
-+	.enable = rockchip_dfi_event_enable,
- 	.get_event = rockchip_dfi_get_event,
- 	.set_event = rockchip_dfi_set_event,
- };
-@@ -285,6 +307,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 		return PTR_ERR(dfi->regmap_pmu);
- 
- 	dfi->dev = dev;
-+	mutex_init(&dfi->mutex);
- 
- 	desc = &dfi->desc;
- 	desc->ops = &rockchip_dfi_ops;
+I have a RK339 board here, I can try to reproduce this next week. Of
+course I have no idea what the issue might be, in the downstream Kernel
+I can't find anything that is handled specially for the RK3399.
+
+What might be worth checking is the VOP clock rate. Does the VOP clock
+in /sys/kernel/debug/clk/clk_summary (I don't know which one it is
+though) match the pixelclock?
+
+If nothing else helps I can change the code to only allow the higher
+resolutions on RK3568 where we know it works.
+
+Sascha
+
+> 
+> --
+> FUKAUMI Naoki
+> 
+> On 1/31/23 17:09, Sascha Hauer wrote:
+> > Heiko, Sandy,
+> > 
+> > Ok to apply these patches?
+> > 
+> > Sascha
+> > 
+> > On Wed, Jan 18, 2023 at 02:22:10PM +0100, Sascha Hauer wrote:
+> > > It's been some time since I last sent this series. This version fixes
+> > > a regression Dan Johansen reported. The reason turned out to be simple,
+> > > I used the YUV420 register values instead of the RGB ones.
+> > > 
+> > > I realized that we cannot achieve several modes offered by my monitor
+> > > as these require pixelclocks that are slightly below the standard
+> > > pixelclocks. As these are lower than the standard clock rates the PLL
+> > > driver offers the clk driver falls back to a way lower frequency
+> > > which results in something the monitor can't display, so this series
+> > > now contains a patch to discard these unachievable modes.
+> > > 
+> > > Sascha
+> > > 
+> > > Changes since v2:
+> > > - Use correct register values for mpll_cfg
+> > > - Add patch to discard modes we cannot achieve
+> > > 
+> > > Changes since v1:
+> > > - Allow non standard clock rates only on Synopsys phy as suggested by
+> > >    Robin Murphy
+> > > 
+> > > Sascha Hauer (3):
+> > >    drm/rockchip: dw_hdmi: relax mode_valid hook
+> > >    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
+> > >    drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
+> > > 
+> > >   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 40 ++++++++++++++++-----
+> > >   1 file changed, 32 insertions(+), 8 deletions(-)
+> > > 
+> > > -- 
+> > > 2.30.2
+> > > 
+> > > 
+> > 
+> 
+> 
+
 -- 
-2.30.2
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
