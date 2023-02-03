@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE73BC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Feb 2023 13:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D7E1C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Feb 2023 15:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WLs8MhZ2AK10sgT13+K1hSbjhx/LGSB/x1VM49hFSao=; b=xwl4KAWfpxSclB
-	qIexOhW6mEiGTAJyKjktp3cf9rYJPFn8oWeKd39ZL+JGdvJUfA5Pb5gfoMcyOUIHU9Os7xSINfwze
-	+v1qiDZ3AZ/NmNxvF37kFYxc/SuZ/ut3BGn0DeX+V6cFrIIEuC3mpqwAbZZlQn3H8LFvySD5pPmiZ
-	RbGDm98Z4+1qAp1oMB54SsCXNMWKRfQJabe5kPdciTXMYreSPiMjOQst4sA6oxosXgg+4AhZpBp9I
-	q5bmIKfgfNojRPnGZDPcdYfbLcSvGHsi+VdXcd5UBIpnKgK8RFo+B9BhmpbIPcaxSNRU1ng0u9YZ2
-	SESxf7+6mpfGS/HCqHwQ==;
+	List-Owner; bh=ZNmJzYehXkyUugEw1aLPALEqT9IdQxk9Q+iD6EzEOiA=; b=VOB5+g6fcMssDq
+	CprhQ3BWySKpoODcUZpFfCrSjG59r9FlVWkh5/sod/lPKc+z9cU0/LR5cCee/+otW7sSG1oTsNX8s
+	r7OJJKgHuelzy4ehdl2UCeFW+GIfr0DfuKxiv14xU01EbLwjyykMJwTGPpcp3y8kK01CNzzbaapDk
+	wWGWado88E6qiQO3kQavv8iUe6IhYsvB3f0SfNTl+U4HBx4JED/rE1xkqaWgGjNttLZAMYsm5UChA
+	83BJ7UjxfNQV0N38fFf5xxzrE8DYhy9Zlx22dVsyQZbSCcszxk4zNRaYQIdgepWq2EL0mYhtUhi9t
+	7e9KPiEI/MZH8tm0OzkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNvpK-001zJq-OR; Fri, 03 Feb 2023 13:10:02 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pNxma-002ebJ-7w; Fri, 03 Feb 2023 15:15:20 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pNvpH-001zIS-Nk
-	for linux-rockchip@lists.infradead.org; Fri, 03 Feb 2023 13:10:01 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pNvp8-00051O-FZ; Fri, 03 Feb 2023 14:09:50 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pNvp1-0008Iw-Vz; Fri, 03 Feb 2023 14:09:43 +0100
-Date: Fri, 3 Feb 2023 14:09:43 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
-	Dan Johansen <strit@manjaro.org>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	kernel@pengutronix.de, Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3 0/3] drm/rockchip: dw_hdmi: Add 4k@30 support
-Message-ID: <20230203130943.GX13319@pengutronix.de>
-References: <20230118132213.2911418-1-s.hauer@pengutronix.de>
- <20230131080928.GG23347@pengutronix.de>
- <3C4B67628F8D73D6+63ea74ac-b8a2-45b1-5f92-8c7868906687@radxa.com>
+	id 1pNxmO-002eZA-4z; Fri, 03 Feb 2023 15:15:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id CDED6B82AC1;
+	Fri,  3 Feb 2023 15:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0B9FC433D2;
+	Fri,  3 Feb 2023 15:14:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1675437303;
+	bh=x0NLukImJJDpktA+YghswEFtxNLyI5xpCIdNlCmuBO4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NLUBn4h/CKILAGCpjGu0PzQnrUCRnVJbM6dZx7IIfZywK5lylTRd8Avflxpbo09Q9
+	 xQh545o7xNOt9qNyT2m5rcTqJgOm9ejCcQrbPVLOdZ8zQirekTYRrPOYoaRELSPbP+
+	 MZVsIk2wd94x2Civ0+bm9wZohVR08BZ1C6Mr5TFGnrATDaM5CNhzU77xPG1lGEKKHL
+	 34iY8ZdLhmQ7CBUp8sdh/+obu+7giWUNwSMp8JC8C1+Kr3uOeaScfCIbYxSCq2wYfW
+	 kde7404ixw4A57qmXhwmIx+yUTCY5PAphPEJlxLrc76ji4EvL8mi0LUtosVWw4LdBp
+	 dEynRBEqO5BBw==
+Message-ID: <ed9c3224-2f1a-c335-3028-6c23f40f57f4@kernel.org>
+Date: Fri, 3 Feb 2023 16:14:56 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3C4B67628F8D73D6+63ea74ac-b8a2-45b1-5f92-8c7868906687@radxa.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip DFI
+ binding to yaml
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, kernel@pegutronix.de,
+ Michael Riesch <michael.riesch@wolfvision.net>
+References: <20230203125012.3804008-1-s.hauer@pengutronix.de>
+ <20230203125012.3804008-19-s.hauer@pengutronix.de>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20230203125012.3804008-19-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_050959_788801_4FF742EC 
-X-CRM114-Status: GOOD (  39.41  )
+X-CRM114-CacheID: sfid-20230203_071508_550884_EBE836CC 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,86 +79,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, Feb 01, 2023 at 09:23:56AM +0900, FUKAUMI Naoki wrote:
-> hi,
+On 03/02/2023 13:50, Sascha Hauer wrote:
+> Convert the Rockchip DFI binding to yaml. While at it add the newly
+> supported rk3568-dfi to the binding.
 > 
-> I'm trying this patch series with 6.1.x kernel. it works fine on rk356x
-> based boards (ROCK 3), but it has a problem on rk3399 boards (ROCK 4).
-> 
-> on rk3399 with this patch, I can see large noise area (about one third right
-> side of the screen) at 4k@30. 1080p works fine as same as before.
-> 
-> can someone reproduce this problem on rk3399?
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-I have a RK339 board here, I can try to reproduce this next week. Of
-course I have no idea what the issue might be, in the downstream Kernel
-I can't find anything that is handled specially for the RK3399.
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC.  It might happen, that command when run on an older
+kernel, gives you outdated entries.  Therefore please be sure you base
+your patches on recent Linux kernel.
 
-What might be worth checking is the VOP clock rate. Does the VOP clock
-in /sys/kernel/debug/clk/clk_summary (I don't know which one it is
-though) match the pixelclock?
-
-If nothing else helps I can change the code to only allow the higher
-resolutions on RK3568 where we know it works.
-
-Sascha
-
+> ---
+>  .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ---------
+>  .../bindings/devfreq/event/rockchip-dfi.yaml  | 38 +++++++++++++++++++
+>  2 files changed, 38 insertions(+), 18 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+>  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
 > 
-> --
-> FUKAUMI Naoki
-> 
-> On 1/31/23 17:09, Sascha Hauer wrote:
-> > Heiko, Sandy,
-> > 
-> > Ok to apply these patches?
-> > 
-> > Sascha
-> > 
-> > On Wed, Jan 18, 2023 at 02:22:10PM +0100, Sascha Hauer wrote:
-> > > It's been some time since I last sent this series. This version fixes
-> > > a regression Dan Johansen reported. The reason turned out to be simple,
-> > > I used the YUV420 register values instead of the RGB ones.
-> > > 
-> > > I realized that we cannot achieve several modes offered by my monitor
-> > > as these require pixelclocks that are slightly below the standard
-> > > pixelclocks. As these are lower than the standard clock rates the PLL
-> > > driver offers the clk driver falls back to a way lower frequency
-> > > which results in something the monitor can't display, so this series
-> > > now contains a patch to discard these unachievable modes.
-> > > 
-> > > Sascha
-> > > 
-> > > Changes since v2:
-> > > - Use correct register values for mpll_cfg
-> > > - Add patch to discard modes we cannot achieve
-> > > 
-> > > Changes since v1:
-> > > - Allow non standard clock rates only on Synopsys phy as suggested by
-> > >    Robin Murphy
-> > > 
-> > > Sascha Hauer (3):
-> > >    drm/rockchip: dw_hdmi: relax mode_valid hook
-> > >    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
-> > >    drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
-> > > 
-> > >   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 40 ++++++++++++++++-----
-> > >   1 file changed, 32 insertions(+), 8 deletions(-)
-> > > 
-> > > -- 
-> > > 2.30.2
-> > > 
-> > > 
-> > 
-> 
-> 
+> diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> deleted file mode 100644
+> index 148191b0fc158..0000000000000
+> --- a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> +++ /dev/null
+> @@ -1,18 +0,0 @@
+> -
+> -* Rockchip rk3399 DFI device
+> -
+> -Required properties:
+> -- compatible: Must be "rockchip,rk3399-dfi".
+> -- reg: physical base address of each DFI and length of memory mapped region
+> -- rockchip,pmu: phandle to the syscon managing the "pmu general register files"
+> -- clocks: phandles for clock specified in "clock-names" property
+> -- clock-names : the name of clock used by the DFI, must be "pclk_ddr_mon";
+> -
+> -Example:
+> -	dfi: dfi@ff630000 {
+> -		compatible = "rockchip,rk3399-dfi";
+> -		reg = <0x00 0xff630000 0x00 0x4000>;
+> -		rockchip,pmu = <&pmugrf>;
+> -		clocks = <&cru PCLK_DDR_MON>;
+> -		clock-names = "pclk_ddr_mon";
+> -	};
+> diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
+> new file mode 100644
+> index 0000000000000..e082a0df7895a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+rockchip,dfi.yaml
+
+> @@ -0,0 +1,38 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/devfreq/event/rockchip-dfi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip DFI
+> +
+> +maintainers:
+> +  - Sascha Hauer <s.hauer@pengutronix.de>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rk3399-dfi
+> +      - rk3568-dfi
+
+These are not correct compatibles.
+
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  rockchip,pmu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the syscon managing the "PMU general register files".
+> +
+> +required:
+> +  - compatible
+> +  - reg
+
+clocks were required
+
+> +
+> +additionalProperties: false
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
