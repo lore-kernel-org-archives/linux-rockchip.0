@@ -4,65 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D7EC05027
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Feb 2023 20:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5438FC636CD
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Feb 2023 04:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IRqOIujSqwGJZ/rSE02RUp/HcIdGKv6bqNvtyWgJzAY=; b=0/srmk6AAdX7lh
-	sSmrO7prqaEJ4SBJLqSUMs+oy/32/ZtLsovoLWw0hQL+zwlghU4MBY/oQ4TO9TgcvqfftRdCFdtDS
-	ta71K/Gal0oVc5ZWDuBHB8i/nNyoHt9LA9Ew92TxJ325HpBs3vMQzPn9OeneQQpQqqdhvQ59TA+FU
-	h1ffxtICLaPiKwhQHfmcejd94gXwehjQCA13tIgAg2YHOwlq1ce6cnhe41KmbWVM5Y6uW0lWWGv61
-	L4OSUm+T0P3nfblVEzMuY5QxPl//DDLjHX192WTdYNUuHc5PRdW0jND8J3nk4/qVsJFAmHP78uY6s
-	eS3iqTNvDEsqXKeXf43g==;
+	List-Owner; bh=OaWp0FXMv3n9yNTGT+OUplXCpVNvwZJmrcXvb1LOIXM=; b=WzM3Y2axn3YGCU
+	CYlDhLpGZ/IEqvXjsKrv7Ak7tizi2Z+0BmVyIL2szYW6pwGT7ZMQvXfNtpEeHh6daK4yzf7Fj5Ofh
+	lT2hJ5FORknO4oQ3UgeH+Ii3LGrtOBAdYU3iv+l4MzE4LDkzlUXS4kbPWV3ZKbsAd448lBTZWBwi8
+	eViSivhrm9jMU2O8xxAkpD+/sotIo97zMrwCtoDPMZpp6nXZ0Dw6dEZ65RoIj/TTOQOQCwTJnlf0B
+	4XrhzRzs/QazeW0DmpRbVibiA1gqZwQYBhqMAH11cK9sHuzOAXQ+bFzla/uspG4yUOP913gmSMjnJ
+	WHKr3R7FWZmFWH5Dc62Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO2Vn-003Tbd-72; Fri, 03 Feb 2023 20:18:19 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1pOAVf-004SLN-S2; Sat, 04 Feb 2023 04:50:43 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pO2Vj-003Ta2-41; Fri, 03 Feb 2023 20:18:17 +0000
-Received: by mail-oo1-f43.google.com with SMTP id y17-20020a4ade11000000b0051762fdf955so610317oot.3;
-        Fri, 03 Feb 2023 12:18:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=oV7cKs+Szf31+vVz6WWua+p5h+0X4GhPfD48jKFPFWA=;
-        b=AAtZNtada2BJro6BGKNFKX4fB20b/+rD0mrHu/1ItGZBoLxoSVPuQkYmIsYnqWLmj3
-         AAkBR5ZWOcPhPkq1CxnLwu/jAiEwg0Zs1pVEdTX3tuYQfSDMxtGpLN/nJ1P7tnFoY+4K
-         lfovlEv45LYxTTLyobkTS/GSI6FZCfIBXhokQ8J+SAAc9INZ9uquRHjOL+EdVh9zCsf5
-         NfmZR1kuQyt9aQTTrhH/uR8prTQg5+J/joA/bCC24g2Kz0FtAVjWVSyIu5ef8D41i9h9
-         othzKQ4aTQFnHb/P6PgEBzbprRjUBsJoFTArDCDk46iFxFnAejzbnHQhdbsBeDC/1TNQ
-         25pw==
-X-Gm-Message-State: AO0yUKUtANNgfZYvBCT9C1ctNGXSDYqglFgimzSSbw1RJiGD+5BCCpxy
-	LgsGLk5x2YZ9j+t838PADQ==
-X-Google-Smtp-Source: AK7set/S0Ap+7JFi+KM1s+lEfgy4prFJ9nFrDC3/Ra/Hwq/IY1xtmriuQVpTYL7NYOw7MMPFZBRU6g==
-X-Received: by 2002:a4a:3915:0:b0:51a:2fe9:2a8f with SMTP id m21-20020a4a3915000000b0051a2fe92a8fmr3877690ooa.7.1675455490941;
-        Fri, 03 Feb 2023 12:18:10 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id w1-20020a4a2741000000b004f269f9b8f3sm810690oow.25.2023.02.03.12.18.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Feb 2023 12:18:10 -0800 (PST)
-Received: (nullmailer pid 825646 invoked by uid 1000);
-	Fri, 03 Feb 2023 20:18:09 -0000
+	id 1pOAVc-004SKa-By; Sat, 04 Feb 2023 04:50:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1675486240; x=1707022240;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=eqgGciLsAYrfeY4BTuA+7hyygKm5BHIi0UdbiRPqWrw=;
+  b=h4hQUZY+m2ykwA2v5EX5T0yEkV7CAWcZqPZLGhZBN0TQazZ0ZBRmqI2D
+   t85unwRfHZA1MxwIEtRB6BUSstFLv7IHwlgBXbq976S1va/x4LBnnKNgT
+   u+ldX3+KhdVHRxZwqatojxPBpyFEBKRTptzeBknkAwVpvsPE750SmWj46
+   +nU5jkMd48yPussIwxg6zYqMooD7DkmtVm5N5b1bHDF6AhZdAhJZ9jGcw
+   n6FvwHn2uEqjRxv8sFjLU1/wT4BIVE8hSZ9tYIvhdff4uVgXDkFm5CbUd
+   ytl8qNuRfAS4cnOhyU6qnCcupLdSXRFZRYdwbnC4Sb3LDk/0yk33alf1p
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="327553177"
+X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; 
+   d="scan'208";a="327553177"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Feb 2023 20:50:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="839822123"
+X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; 
+   d="scan'208";a="839822123"
+Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
+  by orsmga005.jf.intel.com with ESMTP; 03 Feb 2023 20:50:32 -0800
+Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pOAVT-00013J-2X;
+	Sat, 04 Feb 2023 04:50:31 +0000
+Date: Sat, 4 Feb 2023 12:49:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	kernel@pegutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip DFI
+ binding to yaml
+Message-ID: <202302041211.DPhrQayE-lkp@intel.com>
+References: <20230203125012.3804008-19-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-rockchip@lists.infradead.org, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-arm-kernel@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, linux-pm@vger.kernel.org, kernel@pegutronix.de, devicetree@vger.kernel.org, Michael Riesch <michael.riesch@wolfvision.net>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will@kernel.org>
+Content-Disposition: inline
 In-Reply-To: <20230203125012.3804008-19-s.hauer@pengutronix.de>
-References: <20230203125012.3804008-1-s.hauer@pengutronix.de>
- <20230203125012.3804008-19-s.hauer@pengutronix.de>
-Message-Id: <167545520027.820286.11574503514985446223.robh@kernel.org>
-Subject: Re: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip
- DFI binding to yaml
-Date: Fri, 03 Feb 2023 14:18:09 -0600
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_121815_247365_6CF2A057 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20230203_205040_485507_BDA7D2A5 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +90,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Sascha,
 
-On Fri, 03 Feb 2023 13:50:12 +0100, Sascha Hauer wrote:
-> Convert the Rockchip DFI binding to yaml. While at it add the newly
-> supported rk3568-dfi to the binding.
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ---------
->  .../bindings/devfreq/event/rockchip-dfi.yaml  | 38 +++++++++++++++++++
->  2 files changed, 38 insertions(+), 18 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
->  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
-> 
+I love your patch! Perhaps something to improve:
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on arm/for-next arm/fixes arm64/for-next/core clk/clk-next kvmarm/next shawnguo/for-next soc/for-next xilinx-xlnx/master linus/master v6.2-rc6 next-20230203]
+[cannot apply to chanwoo/devfreq-testing]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-yamllint warnings/errors:
+url:    https://github.com/intel-lab-lkp/linux/commits/Sascha-Hauer/PM-devfreq-rockchip-dfi-Embed-desc-into-private-data-struct/20230203-205252
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20230203125012.3804008-19-s.hauer%40pengutronix.de
+patch subject: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
+reproduce:
+        # https://github.com/intel-lab-lkp/linux/commit/b6385ff60bdb4b1b2895d87a7f294fde81f10ee9
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Sascha-Hauer/PM-devfreq-rockchip-dfi-Embed-desc-into-private-data-struct/20230203-205252
+        git checkout b6385ff60bdb4b1b2895d87a7f294fde81f10ee9
+        make menuconfig
+        # enable CONFIG_COMPILE_TEST, CONFIG_WARN_MISSING_DOCUMENTS, CONFIG_WARN_ABI_ERRORS
+        make htmldocs
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.example.dtb: /example-0/dfi@fe230000: failed to match any schema with compatible: ['rockchip,rk3568-dfi']
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
 
-doc reference errors (make refcheckdocs):
-Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml: Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+All warnings (new ones prefixed by >>):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230203125012.3804008-19-s.hauer@pengutronix.de
+>> Warning: Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml references a file that doesn't exist: Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
 _______________________________________________
 Linux-rockchip mailing list
