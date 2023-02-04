@@ -4,76 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5438FC636CD
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Feb 2023 04:50:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 925FFC636CC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Feb 2023 08:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OaWp0FXMv3n9yNTGT+OUplXCpVNvwZJmrcXvb1LOIXM=; b=WzM3Y2axn3YGCU
-	CYlDhLpGZ/IEqvXjsKrv7Ak7tizi2Z+0BmVyIL2szYW6pwGT7ZMQvXfNtpEeHh6daK4yzf7Fj5Ofh
-	lT2hJ5FORknO4oQ3UgeH+Ii3LGrtOBAdYU3iv+l4MzE4LDkzlUXS4kbPWV3ZKbsAd448lBTZWBwi8
-	eViSivhrm9jMU2O8xxAkpD+/sotIo97zMrwCtoDPMZpp6nXZ0Dw6dEZ65RoIj/TTOQOQCwTJnlf0B
-	4XrhzRzs/QazeW0DmpRbVibiA1gqZwQYBhqMAH11cK9sHuzOAXQ+bFzla/uspG4yUOP913gmSMjnJ
-	WHKr3R7FWZmFWH5Dc62Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fK9UykpN02fj8BcBISN6kFP+qddCKxcwo8BKXglpWFc=; b=fYaIHsDzlhWojt
+	Rf7806HLo9LnjSamAj4HNUEaLcv3sQVPHuMO4Pa2M76WdIIkLCWIQWUwaySqUCqw9WjdmXiO/imy/
+	EQEOKZ3Fmn8X7HhbjXXr6Shm+9P9LTAVKq4ux0VPARZSwsuumAMdgwSUOjP5bVIjKItN+uRKE0lzR
+	3R3/5e/oP2wBK7zNJWqeyYmNi16aqHs7SPg/sol0lLC4FvcGaaJ8hMJE8SMgJjg87sqv1PSk0TWPX
+	1bIFfqTfzMd54rdZFRjguYxkTBus6cRnpKANWevQWIakRxrtt6pdAmmqli/dpg5pEZ3Xiaye2PjY3
+	bbEskwVMryYDGiABP69g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOAVf-004SLN-S2; Sat, 04 Feb 2023 04:50:43 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1pOEE1-004kM1-2e; Sat, 04 Feb 2023 08:48:45 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOAVc-004SKa-By; Sat, 04 Feb 2023 04:50:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1675486240; x=1707022240;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=eqgGciLsAYrfeY4BTuA+7hyygKm5BHIi0UdbiRPqWrw=;
-  b=h4hQUZY+m2ykwA2v5EX5T0yEkV7CAWcZqPZLGhZBN0TQazZ0ZBRmqI2D
-   t85unwRfHZA1MxwIEtRB6BUSstFLv7IHwlgBXbq976S1va/x4LBnnKNgT
-   u+ldX3+KhdVHRxZwqatojxPBpyFEBKRTptzeBknkAwVpvsPE750SmWj46
-   +nU5jkMd48yPussIwxg6zYqMooD7DkmtVm5N5b1bHDF6AhZdAhJZ9jGcw
-   n6FvwHn2uEqjRxv8sFjLU1/wT4BIVE8hSZ9tYIvhdff4uVgXDkFm5CbUd
-   ytl8qNuRfAS4cnOhyU6qnCcupLdSXRFZRYdwbnC4Sb3LDk/0yk33alf1p
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="327553177"
-X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; 
-   d="scan'208";a="327553177"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Feb 2023 20:50:36 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="839822123"
-X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; 
-   d="scan'208";a="839822123"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
-  by orsmga005.jf.intel.com with ESMTP; 03 Feb 2023 20:50:32 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pOAVT-00013J-2X;
-	Sat, 04 Feb 2023 04:50:31 +0000
-Date: Sat, 4 Feb 2023 12:49:49 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
-	kernel@pegutronix.de,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip DFI
- binding to yaml
-Message-ID: <202302041211.DPhrQayE-lkp@intel.com>
-References: <20230203125012.3804008-19-s.hauer@pengutronix.de>
+	id 1pOEDi-004kGR-El; Sat, 04 Feb 2023 08:48:28 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 527A338287;
+	Sat,  4 Feb 2023 08:48:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1675500501; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=Stm/m2B/9hUfLU25PcD4DccBXwZ4/L08ExZxt8Kx59E=;
+	b=okhQadyX20tUNehggjaD80fQahhsHpA+0fRtcBW9lKjtO3OxNVpUuwbAy1QMeBU/AfbNjI
+	LSkgluKiaJSKtIrR0Vr27xfjRD55s1bRQjSv/0atClBXufDDnC95mOqYcbIW3ris3fAmY0
+	0ykwU+9tMgb4pbML5CL0mF4vJnpo/AQ=
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 0F60D133F5;
+	Sat,  4 Feb 2023 08:48:19 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id vRikNNMb3mMKLAAAMHmgww
+	(envelope-from <wqu@suse.com>); Sat, 04 Feb 2023 08:48:19 +0000
+From: Qu Wenruo <wqu@suse.com>
+To: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: sebastian.reichel@collabora.com,
+	heiko@sntech.de
+Subject: [PATCH RFC 0/5] arm64: rockchip: enable PCIE3 controller and its phy for Rock5B boards
+Date: Sat,  4 Feb 2023 16:47:57 +0800
+Message-Id: <cover.1675498628.git.wqu@suse.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230203125012.3804008-19-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230203_205040_485507_BDA7D2A5 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20230204_004826_691594_94D89A1C 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,40 +77,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
+This series is based on the existing upstream work from Sebastian
+Reichel:
+https://git.kernel.org/pub/scm/linux/kernel/git/sre/linux-misc.git/log/?h=rk3588
 
-I love your patch! Perhaps something to improve:
+And I'm a completely newbie to arm64 world, thus if there is something
+wrong, feel free to point out and I'm pretty happy to learn from the
+failure.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on arm/for-next arm/fixes arm64/for-next/core clk/clk-next kvmarm/next shawnguo/for-next soc/for-next xilinx-xlnx/master linus/master v6.2-rc6 next-20230203]
-[cannot apply to chanwoo/devfreq-testing]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+[BACKGROUND]
+RK3588S and RK3588 have PCIE supports, it's done by the following 3
+controllers:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sascha-Hauer/PM-devfreq-rockchip-dfi-Embed-desc-into-private-data-struct/20230203-205252
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20230203125012.3804008-19-s.hauer%40pengutronix.de
-patch subject: [PATCH 18/18] dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
-reproduce:
-        # https://github.com/intel-lab-lkp/linux/commit/b6385ff60bdb4b1b2895d87a7f294fde81f10ee9
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Sascha-Hauer/PM-devfreq-rockchip-dfi-Embed-desc-into-private-data-struct/20230203-205252
-        git checkout b6385ff60bdb4b1b2895d87a7f294fde81f10ee9
-        make menuconfig
-        # enable CONFIG_COMPILE_TEST, CONFIG_WARN_MISSING_DOCUMENTS, CONFIG_WARN_ABI_ERRORS
-        make htmldocs
+- PCIE2.0x1 lane @fe180000 (both RK3588S and RK3588)
+- PCIE2.0x1 lane @fe190000 (both RK3588S and RK3588)
+  Thes two are all connected to a naneng combo phy each, normally shared
+  with SATA or USB.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
+- PCIE2.0x1 lane @fe170000 (RK3588 exlusive)
+  This one is also connected to a naneng combo phy, normally shared
+  with SATA or USB.
 
-All warnings (new ones prefixed by >>):
+- PCIE3.0x4 lanes @fe15000 (RK3588 exclusive)
 
->> Warning: Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml references a file that doesn't exist: Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+And unlike other boards, ROCK5B is utilizing PCIE extensively, its
+network controller (RTL8125 2.5Gbps Ethernet) is connected to the
+PCIE2.0 lane at fe190000, and an M.2 slot is attached to the PCIE3.0x4
+lanes.
+
+[WORKING]
+Currently the series is able to bring up the PCIE3.0x4 lanes and
+properly boot from an NVME at that M.2 slot of Rock5B boards.
+
+[NOT WORKING]
+All PCIE2.0 lanes connected to naneng combo phy are not working.
+I tried forward porting the extra handling from downstream, but it only
+results hanging at probing (causing RCU stall).
+
+[EXTRA WANRING]
+- PCI MSI initialization warning
+  WARNING: CPU: 7 PID: 1 at drivers/pci/msi/msi.h:121 pci_msi_setup_msi_irqs+0x38/0x4c
+
+  This seems to be caused by the fact that we are still using legcacy
+  msi irqs?
+
+  I checked up the gic and its dts, can not figure out why (all pretty
+  the same just like rk3399 and rk3568).
+  Any help would be appreciated.
+
+- pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f] (conflicts with (null) [bus 00-0f])
+  The vendoer kernel also has this problem, but my RK3399 board with
+  upstream kernel didn't trigger this at all, but something else like:
+
+    pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+
+  Then:
+
+    pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
+
+  Not sure if it's something missing or can be just ignored.
+
+[PCI DMESG]
+With this patchset, the PCI initialization and nvme would look like this:
+
+[    0.142984] rockchip-dw-pcie fe150000.pcie: host bridge /pcie@fe150000 ranges:
+[    0.143653] rockchip-dw-pcie fe150000.pcie:       IO 0x00f0100000..0x00f01fffff -> 0x00f0100000
+[    0.144463] rockchip-dw-pcie fe150000.pcie:      MEM 0x00f0200000..0x00f0ffffff -> 0x00f0200000
+[    0.145261] rockchip-dw-pcie fe150000.pcie:      MEM 0x0900000000..0x093fffffff -> 0x0900000000
+[    0.154022] rockchip-dw-pcie fe150000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
+[    0.360415] rockchip-dw-pcie fe150000.pcie: PCIe Gen.3 x4 link up
+[    0.361099] rockchip-dw-pcie fe150000.pcie: PCI host bridge to bus 0000:00
+[    0.361731] pci_bus 0000:00: root bus resource [bus 00-0f]
+[    0.362236] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0xf0100000-0xf01fffff])
+[    0.363113] pci_bus 0000:00: root bus resource [mem 0xf0200000-0xf0ffffff]
+[    0.363744] pci_bus 0000:00: root bus resource [mem 0x900000000-0x93fffffff pref]
+[    0.364450] pci 0000:00:00.0: [1d87:3588] type 01 class 0x060400
+[    0.365005] pci 0000:00:00.0: reg 0x10: [mem 0x00000000-0x3fffffff]
+[    0.365583] pci 0000:00:00.0: reg 0x14: [mem 0x00000000-0x3fffffff]
+[    0.366159] pci 0000:00:00.0: reg 0x38: [mem 0x00000000-0x0000ffff pref]
+[    0.366801] pci 0000:00:00.0: supports D1 D2
+[    0.367193] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+[    0.368647] pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f] (conflicts with (null) [bus 00-0f])
+[    0.369681] pci 0000:01:00.0: [1d97:5216] type 00 class 0x010802
+[    0.370277] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x0000ffff 64bit]
+[    0.370975] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0001ffff pref]
+[    0.372130] pci 0000:00:00.0: BAR 0: no space for [mem size 0x40000000]
+[    0.372742] pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x40000000]
+[    0.373381] pci 0000:00:00.0: BAR 1: no space for [mem size 0x40000000]
+[    0.373988] pci 0000:00:00.0: BAR 1: failed to assign [mem size 0x40000000]
+[    0.374628] pci 0000:00:00.0: BAR 14: assigned [mem 0xf0200000-0xf02fffff]
+[    0.375259] pci 0000:00:00.0: BAR 6: assigned [mem 0xf0300000-0xf030ffff pref]
+[    0.375923] pci 0000:01:00.0: BAR 6: assigned [mem 0xf0200000-0xf021ffff pref]
+[    0.376590] pci 0000:01:00.0: BAR 0: assigned [mem 0xf0220000-0xf022ffff 64bit]
+[    0.377281] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+[    0.377762] pci 0000:00:00.0:   bridge window [mem 0xf0200000-0xf02fffff]
+[    0.426841] pcieport 0000:00:00.0: PME: Signaling with IRQ 33
+[    0.427487] pcieport 0000:00:00.0: AER: enabled with IRQ 33
+[    0.625353] nvme nvme0: pci function 0000:01:00.0
+[    0.625774] nvme 0000:01:00.0: enabling device (0000 -> 0002)
+[    0.717069] nvme nvme0: Shutdown timeout set to 8 seconds
+[    0.723025] nvme nvme0: allocated 64 MiB host memory buffer.
+[    0.816820] nvme nvme0: 1/0/0 default/read/poll queues
+[    0.818079] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.820678]  nvme0n1: p1 p2
+
+Qu Wenruo (5):
+  drivers: phy: rockhip: remove 24M and 25M clock handling for naneng
+    combphy
+  dt-bindings: pci: controller: add pcie controller binding for RK3588
+  drivers: pci: controller: add PCIE controller driver for RK3588
+  arm64: dts: rockchip: add PCIE3 controller and phy for RK3588
+  arm64: dts: rockchip: enable PCIE3 controller and phy for Rock5B
+    boards
+
+ .../bindings/pci/rockchip-dw-pcie.yaml        |   5 +-
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |  22 +++
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 128 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  16 +++
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c |   1 +
+ .../rockchip/phy-rockchip-naneng-combphy.c    |  17 ---
+ 6 files changed, 170 insertions(+), 19 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.39.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
