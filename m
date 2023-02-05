@@ -4,70 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6280FC636CC
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Feb 2023 14:10:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53912C636CC
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Feb 2023 14:13:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i+Op+1hohZkQXbjm//aXQOCT3snBmBeUwN9zPKcFlN8=; b=NmK882Z324H792
-	al2hsQnkfMQl1cYzz3q0CK0ZAsvlsEBgWSvnIkqKee+hvDJ946uvkltBPeMblojDeTYhSyOk54coP
-	LRXj4JcfAwe0XsL2+agz7r2eZwO/2QApSwe45DpVrknA3Q8+gJ6oGuNPTWaJ6nBKKnvWkQdtPJX+F
-	Hb7eed6Vnfm6RpZ6k9jkvntk27oYJrXUGFlbExaZ1bDfUFVz5LGD/D1i6fIHkDcLTAUEIxKnPHB6g
-	b5MMkDoaURh6lNwF7xOJ+Q8u9TNfbe545xDBF8zo3d8Mqg5qZ/IF49Lrz/8KJ6O+Q/Fhd+dcx+lyO
-	JwInYgkFl6HHgRrQlG8A==;
+	List-Owner; bh=WhRHHjc0D8KSIkVQRNG7TJgrvI6gryaHB8M+xW2YIMA=; b=12geu7C4nPGaW9
+	Iz/eL8mbPldBKjf3qwwHRKgouaEaqv0pIn1wnU5oN+YK8BkpoDajhlXHclKadXmyszgK2UcD0pf04
+	ty3UtY7BCSQh7wWb/hfD4u9UzKzfRj6hyhyC+YNkViQaGnnEQcZzlqcOMNGYk5HxpjTkCOASCSG/k
+	/3TeHyHRCURqi7IjfeD9XvCzF2yX1pJHnuIb1rsf+rJc8BLLsM9m3/jvhTszuhmwRZOuaXE8FBnGL
+	DueaaJG4DS8K+ULXa048Uh6BeTDxrx9KAIK3B6/aewyp1AeS9TMIQPxQMXAR1Vma2TZtyXYx00ocK
+	T9d8Nn6KbJVFYYDGNwpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOfiQ-006OMc-OO; Sun, 05 Feb 2023 14:09:58 +0000
+	id 1pOflH-006Ofp-4A; Sun, 05 Feb 2023 14:12:55 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOfiN-006OLu-T6; Sun, 05 Feb 2023 14:09:57 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
+	id 1pOfl6-006Odh-O7; Sun, 05 Feb 2023 14:12:46 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pOfi4-00075Q-6S; Sun, 05 Feb 2023 15:09:36 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Robert Foss <rfoss@kernel.org>,
-	dri-devel@lists.freedesktop.org,
-	kyungmin.park@samsung.com,
-	linux-kernel@vger.kernel.org,
-	jernej.skrabec@gmail.com,
-	hjc@rock-chips.com,
-	philippe.cornu@foss.st.com,
-	jonas@kwiboo.se,
-	krzysztof.kozlowski+dt@linaro.org,
-	Laurent.pinchart@ideasonboard.com,
-	alim.akhtar@samsung.com,
-	neil.armstrong@linaro.org,
-	robh+dt@kernel.org,
-	linus.walleij@linaro.org,
-	gregkh@linuxfoundation.org,
-	linux-rockchip@lists.infradead.org,
-	inki.dae@samsung.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	daniel@ffwll.ch,
-	airlied@gmail.com,
-	devicetree@vger.kernel.org,
-	andrzej.hajda@intel.com,
-	linux-usb@vger.kernel.org,
-	sw0312.kim@samsung.com
-Subject: Re: (subset) [PATCH v6 01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
-Date: Sun,  5 Feb 2023 15:09:34 +0100
-Message-Id: <167560616167.854266.15581661831063028156.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
-References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
+	id 1pOfks-00077L-Ly; Sun, 05 Feb 2023 15:12:30 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Johan Jonker <jbx6244@gmail.com>
+Cc: hjc@rock-chips.com, krzysztof.kozlowski+dt@linaro.org,
+ gregkh@linuxfoundation.org, airlied@gmail.com, daniel@ffwll.ch,
+ andrzej.hajda@intel.com, neil.armstrong@linaro.org, robert.foss@linaro.org,
+ Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@gmail.com,
+ philippe.cornu@foss.st.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-usb@vger.kernel.org, linus.walleij@linaro.org, inki.dae@samsung.com,
+ sw0312.kim@samsung.com, kyungmin.park@samsung.com, alim.akhtar@samsung.com,
+ linux-samsung-soc@vger.kernel.org
+Subject:  Re: [PATCH v6 01/17] dt-bindings: display: rockchip: convert
+ rockchip-lvds.txt to YAML
+Date: Sun, 05 Feb 2023 15:12:29 +0100
+Message-ID: <5647788.DvuYhMxLoT@diego>
+In-Reply-To: <87f5097d-1cd0-e09f-e759-8592a9165ea6@gmail.com>
+References:  <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
+ <20230203182119.GA615242-robh@kernel.org>
+ <87f5097d-1cd0-e09f-e759-8592a9165ea6@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230205_060955_941955_8B3D32A0 
-X-CRM114-Status: UNSURE (   7.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230205_061244_814719_C6A41C67 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,36 +69,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Dec 2022 15:22:14 +0100, Johan Jonker wrote:
-> Convert rockchip-lvds.txt to YAML.
-> 
-> Changed:
->   Add power-domains property.
->   Requirements between PX30 and RK3288
-> 
-> 
-> [...]
+Hi,
 
-Applied, thanks!
+Am Freitag, 3. Februar 2023, 20:02:54 CET schrieb Johan Jonker:
+> 
+> On 2/3/23 19:21, Rob Herring wrote:
+> > On Thu, Dec 22, 2022 at 03:22:14PM +0100, Johan Jonker wrote:
+> >> Convert rockchip-lvds.txt to YAML.
+> >>
+> >> Changed:
+> >>   Add power-domains property.
+> >>   Requirements between PX30 and RK3288
+> >>
+> >> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> >> Reviewed-by: Rob Herring <robh@kernel.org>
+> >> ---
+> >>
+> >> Changed V3:
+> >>   Filename matching compatible style
+> >>   Drop "Regulator phandle for "
+> >>   Specify properties and requirements per SoC
+> >>   Sort order and restyle
+> >>
+> >> Changed V2:
+> >>   Fix title
+> >> ---
+> >>  .../display/rockchip/rockchip,lvds.yaml       | 170 ++++++++++++++++++
+> >>  .../display/rockchip/rockchip-lvds.txt        |  92 ----------
+> >>  2 files changed, 170 insertions(+), 92 deletions(-)
+> >>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+> >>  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> > 
+> 
+> > What's the plan for these patches? Don't see them in linux-next still. 
+> > Do you want me to take patches 1-8?
+> 
+> Hi,
+> 
+> The display patches normally go through the DRM git.
+> Patch 2 must merge with grf.yaml.
+> Heiko has merged now 3 PHY related patches to grf.yaml first.
+> 
+> [PATCH v6 02/17] dt-bindings: soc: rockchip: grf: add rockchip,lvds.yaml
+> 
+> See current
+> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=for-next&qt=grep&q=jonker
+> 
+> Not sure what Heiko's plans are.
+> Patch 2 replaces  only a description text and some accolades removal, so not "too" important.
+> 
+> I urgent then you could merge without conflict:
+> 1, 3-8
 
-[01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
-        commit: d567ca6ed9fd5fe594bca5e29717ff9e9631efba
-[02/17] dt-bindings: soc: rockchip: grf: add rockchip,lvds.yaml
-        commit: cbfc73a3febdf14395ecdd738decd53835166662
-[03/17] dt-bindings: display: dsi-controller: move clock-master property
-        commit: a1b7455dc4a399a565353ceb7cce605b4b9db41a
-[04/17] dt-bindings: display: bridge: snps,dw-mipi-dsi: fix clock properties
-        commit: a90fa0adbeb07f11c08635364d206678d9e1b938
-[05/17] dt-bindings: display: rockchip: convert dw_mipi_dsi_rockchip.txt to yaml
-        commit: 0dac2102cf6baacba0d9d7804b0c163337f69839
-[06/17] dt-bindings: display: bridge: convert analogix_dp.txt to yaml
-        commit: 440112adadd3e273d2a2ff6e5d4b969ee03fda47
-[07/17] dt-bindings: display: rockchip: convert analogix_dp-rockchip.txt to yaml
-        commit: 9bb35d4c3230803345d5218676a7325b26823209
+So I've applied patches 1-7 to the drm-tree now.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+For the GRF-patch, I've dropped the quotes changes, as they are somewhat
+unrelated to the lvds inclusion and so prevented any conflicts when applying
+the rest to the DRM tree.
+
+@Rob, if you could pick the fusb302 patch (number8), that would be great
+
+Thanks
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
