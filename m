@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B106DC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Feb 2023 10:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF1BC05027
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Feb 2023 11:27:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nFa9/0EYmIPm/MGcRrCsh+g3P7bk8yjOqGCm8grNISg=; b=u+DTDgDtUzSSCB
-	EWmcyxUZvC8F6tHeEZlfv0zSek/b3WvPh8igLasqfSyPjz57X9MZrbkUzzP+1nRJch4VlpsORSzjd
-	JtZki5DCsC/2LNGxB4FkAXAbHf1QVOPFLX20zZusQ9RMWiIBkoXhy6KDRnso3OiTEfsaSoQaWSLBO
-	lTSWiDPXaBcNf4iT6Ag41YXdaITqJlVeQC7hcOD77Kz5tNXmL5FuG3cM779mzYbMMfL25PbJ3aabU
-	oVCW5TGyVwuo5BPEzmR5stRyGK7wZr6shA0Oww07aXoRiopkXIBRHtIYNBimqB61DfhacfPJ2ZpWr
-	k/vIRA+gYkpE3hsCX8UA==;
+	List-Owner; bh=FQiGGN/R1GllBdTYJLV3J7oC2vI8wknWcEx1OwB30wM=; b=s4dcaw1oVDlI0M
+	3Hm1QN7KwJrEGDFYYaDS1is1iYwpWxhGu/wBTkLegkGg9CCepM0XTYICptW6CQZxNIQBg1u+98aUV
+	guZ3uMetSGRE4vIXG2+SSNI1i0NI+lOlbmriWblUQoeAqcPG60wAT4Mvsyy48WwbrUTCc5ZqT3hmT
+	lPB6EAR+Fh9sKT7jyyeClkei43xBtqP+Q6Nyg5LyHOQuIq1Pd/DBG1Hi/s7ihiLBtiidQoa9NT8m7
+	YhuXE61ohiZMcyrrH6d5vBjfuPL/KryyyvzMBldmeHIAdygUKvYOFmHySv31+crBPIP3Wl834wFcW
+	TanEeNCpf04S3aOXEJ+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyyB-008Adz-LH; Mon, 06 Feb 2023 10:43:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pOzeQ-008Hrq-7l; Mon, 06 Feb 2023 11:27:10 +0000
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pOyxz-008AZh-7t; Mon, 06 Feb 2023 10:43:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A780B60DFE;
-	Mon,  6 Feb 2023 10:43:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4457CC433EF;
-	Mon,  6 Feb 2023 10:43:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1675680197;
-	bh=mV/5QJoC95AQLIkKkSeULKOsYtE490OaOy68ZuGrL0Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SajHniSBI5PihrEClgXmzujN7YMxW3wDG1mOw74TQ4aJsgDGY1eLavzcRMgCu3QsN
-	 XAM9UAVbrH56c/SW+Vf0Xif5D4c0HAgEDXgZFkTZ2IW/FTDVxPcGjqy1sH67k+Gnjh
-	 r8LoI7AGyiZuEp8DEbbOi6TsleGUwXB1LVRa6rqiY4ovw2BHu0BNYwAQYS5AlsfRek
-	 b++mWFWtJz5Un8rUSO8itVe4cA7PfwnnmTWvUHNYxAYmS+C56vOKgQixxJILFLwao5
-	 9Z2krfSgmbI7aJIeIaw75gLJ7sA/2KsOSZ5xlr7c5UHTGNAmLqXJC14jEZ/2Re8xW7
-	 6Lm6AVwsb6mWg==
-Message-ID: <1d6e7f32-fde1-5233-7edd-bf8b39509a3f@kernel.org>
-Date: Mon, 6 Feb 2023 11:43:10 +0100
+	id 1pOzeN-008Hpm-AI
+	for linux-rockchip@lists.infradead.org; Mon, 06 Feb 2023 11:27:08 +0000
+Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-52a849206adso5373787b3.4
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Feb 2023 03:27:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GJR7iIBYxeHMKeEYc9yJlmGGl4YAGtrHLk1xmdfWkjY=;
+        b=cEiqbsgShNHfgqVqwAK88z6dPmS5LNgW4KwIyRVk3eWmxUXP0lv1ECQABJxp4IuAW4
+         08SmBAO/PDsRaPrMqDLjT3iOOCqXXb/OLe791QjQFGztN3jDiPclnERlhhuQg37GtVIK
+         uruJuMVn/c+RFufhHvA1+2oVj6SHkahm3MvAtdj2UdPrjz981YKz03DmWmA/Mml3Ebo2
+         vgLuq6z4a1wu8/LSs5sn3+RErEjRdU1L1PTnIJqzqC0aArFJrsaTANiqN1TlCwSK+P+p
+         k+lZZZF0sQH3lVORlgXpVQUkbl1FE8R1/ZFV35uUjtD4VSBn4jrBaeuXzuqVkGAB60uh
+         pFeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GJR7iIBYxeHMKeEYc9yJlmGGl4YAGtrHLk1xmdfWkjY=;
+        b=BBnKaRMjeF48/b1Did2VthmkbmSmGJLJb9LeAXU89yZWl+2P5gzRixl1N1UWdCRqa6
+         qBg8ghJMmaFOld5lew+JAm1cf1or2gPMymiV0FSUeW7Vk7mbGgCia4C1R5t49p1b7Qxx
+         DEtDXmpRaBz2d7whUBkcPfrqQo5AVmvkfk9bZWTtNvFCNvCOEuln2sF8JdWftMWfgOVd
+         Vbvwn4AfQP+V7RUjfM8nkwSlkmBwiuDA48pf5ix050ulRGFQ/NoRaU7AT+EWwanQx1nn
+         HCuvo8VHfOc3XWe1AJRYZAFMQc8XehRZfUhFqlNG4pz1VN1fZkRyg77kvtRtctGnTCzN
+         MSZA==
+X-Gm-Message-State: AO0yUKWZ7xpKe08i8Bs6d/7OTQCn+zeuIFdiMmSHvnEvCqPMCIXHxV3+
+	jo0rh0o3QILgU4MgPl4vx/k0TZRFqKMNdKjaEYIVAg==
+X-Google-Smtp-Source: AK7set8L3VLeOObm9qWRrIhVr41MTYoDvVibtG9Ay2RHWLmtjUwNSvhhckk7653hSCZoO5nkPQYJMfhJ+CrdMrR5rTM=
+X-Received: by 2002:a05:690c:b18:b0:4f3:8d0e:edce with SMTP id
+ cj24-20020a05690c0b1800b004f38d0eedcemr1702307ywb.185.1675682822071; Mon, 06
+ Feb 2023 03:27:02 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH RFC 2/5] dt-bindings: pci: controller: add pcie controller
- binding for RK3588
-Content-Language: en-US
-To: Qu Wenruo <wqu@suse.com>, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Cc: sebastian.reichel@collabora.com, heiko@sntech.de
-References: <cover.1675498628.git.wqu@suse.com>
- <fe221481f4df1b552183648489a02ab5ac3216e6.1675498628.git.wqu@suse.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <fe221481f4df1b552183648489a02ab5ac3216e6.1675498628.git.wqu@suse.com>
+References: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com> <137b56f0-8e86-f705-4ba7-d5dfe3c0b477@gmail.com>
+In-Reply-To: <137b56f0-8e86-f705-4ba7-d5dfe3c0b477@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 6 Feb 2023 12:26:50 +0100
+Message-ID: <CACRpkda3TNyLqy5ZSKMsp8E+Tzys8o1h=q6qSoBCta+08BYZ_w@mail.gmail.com>
+Subject: Re: [PATCH v2 2/8] dt-bindings: pinctrl: rockchip,pinctrl: mark gpio
+ sub nodes of pinctrl as deprecated
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: brgl@bgdev.pl, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	heiko@sntech.de, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org, 
+	philipp.tomsich@vrull.eu, john@metanate.com, 
+	quentin.schulz@theobroma-systems.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_024319_391005_5513702D 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20230206_032707_382847_F36114AC 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +91,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/02/2023 09:47, Qu Wenruo wrote:
-> All the properties are the same with RK3568 PCIE controllers, and in
+On Sat, Jan 21, 2023 at 12:08 PM Johan Jonker <jbx6244@gmail.com> wrote:
 
-Subject: drop second/last, redundant "binding". The "dt-bindings" prefix
-is already stating that these are bindings.
+> Mark gpio sub nodes of pinctrl as deprecated.
+> Gpio nodes are now placed in the root of the device tree.
+> The relation to pinctrl is now described with the
+> "gpio-ranges" property.
+>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
+This patch applied to the pinctrl tree.
 
-> fact the driver can also be reused between RK3568 and RK3588
-> PCIE controllers.
-
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC.  It might happen, that command when run on an older
-kernel, gives you outdated entries.  Therefore please be sure you base
-your patches on recent Linux kernel.
-
-> 
-> Signed-off-by: Qu Wenruo <wqu@suse.com>
-> ---
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
