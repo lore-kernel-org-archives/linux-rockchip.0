@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A6F6C636CD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 10:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C06CDC636CC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 11:01:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H2T90DPiYnCwaf4JrJ6Ue96/xmNndV1XJXJ/w6sYHI8=; b=5BnZy5mBc/Ew5C
-	pKE0PJYQTZ8Yt9I42ZEWN0REZMjdkWJEzUJHVrawEvSRZ4yAhDW52oW0duX8MLVY2V35Cm2jnAW6N
-	KfUhoFmb/qiJkucQIApuphKFTJH3/wXJmNGdjH4EdYlMweGin5BQRIiCJLTqPVgrsgpGHdBIDmUk+
-	L4zv7oAeOUX7dRrATXws4PQrv00MNEYj4nt0LaVLfW9bz/L0vagJBLVR43M26Z93YjxSd+K4z+/TS
-	WbKUkP55fC5LN5+eMRChWjQH6Kpm6H1FxKnDqHLXKIGc+P1Gluq96Xg86hwYlW/e/sz0kyNkxFLhT
-	kAuioeNUibJNOcrBcZJA==;
+	List-Owner; bh=lx67EaumUDdNLPsOc8VL6gi0YKLpI9cEoqlNCJatybM=; b=WDfp7lW27PwIn9
+	T+BaxHHOXkTfKw1hnoIV03qjSv61uXcmSDMkFtp4NfVpU+EF8upkhMTJmQJLFKbg2/Eyl0WYc3P3e
+	uI5IlfFr3sD7O5xnI+1a/34ItHB9fM5ynH/HkUjQ2jRiodhLXoM8ogHQqGOYtet5JPWQeOL5Dokdr
+	5damsL4aWF3uqBb+2dBNiDchqH0ESESCbXrTj7ualB7rYjMqUcIjq7numzUekXhnUR/r7EhM4EglP
+	4Mw+5gWhBoXTSLzadV+ATCcYRuG6tqeO9jcAG+nvGTYYMAZJtevWt2PR3EQSfZvQ2LFFLd3dQIpl/
+	ZdrW0KRd+iLItZeu6FLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPLVC-00Bnd1-4o; Tue, 07 Feb 2023 10:47:06 +0000
-Received: from xvfrqvdb.outbound-mail.sendgrid.net ([168.245.72.219])
+	id 1pPLjA-00Br8Z-A6; Tue, 07 Feb 2023 11:01:32 +0000
+Received: from xtrwsqbh.outbound-mail.sendgrid.net ([167.89.100.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPLV4-00Bnav-Nv
-	for linux-rockchip@lists.infradead.org; Tue, 07 Feb 2023 10:47:04 +0000
+	id 1pPLj7-00Br71-Cx
+	for linux-rockchip@lists.infradead.org; Tue, 07 Feb 2023 11:01:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
 	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
 	content-transfer-encoding:cc:content-type:from:subject:to;
-	s=s1; bh=TeAdhsuUySgsdqKZYCpqGccwXzV0io+AS8hRGWmXEzg=;
-	b=OJeVZ2XCYIMUjXnQCZCRtKi4uAIA+R8R3U6KzwNTBEeTnNpW0vbX4f7xLaJvbG1X78Jp
-	+rI2B45lH2O1lnHI0gqxWNscrSWpXY95mhX/69wPFNOyaVkXj3jOrpfTqbQYEuR7IN5C91
-	I6VDJ0ffuSBI8OmzcbzhCwRmjvRqtwN89mDpy6QpfgcZN6P1NTlT1RT4llyZYcQaJ2YR1v
-	vZXJHdGXxW33pIju5Y6t265z52XH+mRPJ6/hdL/LluQvRhsL1TNZucAb1gvbzj2tKkEN8Z
-	Qm4jeVnqi1c5Q1MsihIDEuUPbQGFNJNiZ51/MSxKaN0LBHLU/5kNs5+j77gZpPwA==
-Received: by filterdrecv-canary-675586c97f-ljfkn with SMTP id filterdrecv-canary-675586c97f-ljfkn-1-63E22C19-13
-        2023-02-07 10:46:49.664940703 +0000 UTC m=+7040478.176689283
+	s=s1; bh=HenSMTrgrLKplahvcFifYdl9RBoK9/xvCtUuvoh3/VA=;
+	b=cff0ebB4AliNsBNAS1MHiES4piW7wS94irZwQFOzlQm61xOz2rhHOf1tiZoPdT7BeAD1
+	b+5vp6+SfC6IUyggBjSvMK2RKwrsDjDPzH8AxlglM7ftGfN5Sndq/KkB/BJG+MuvcaIbtm
+	PrAJc6Hqy3Llvt+znPpEnrarlY9KU0w163U2HC0HwpshOztRKle5xtwB52gXrE3g6f+3h6
+	WDw2k5+Mgj266F8vKCGXWs+MeVOX6HuTFAELyUFWIr2y96ITd1t2ByHeubGxyw8a74T6h2
+	yhmygi/Yx69BjOhGsvt0lBvL5Ebi2NT9V7Hjf2Cxhg29TIv8vayoynBkDm9CoYRA==
+Received: by filterdrecv-557d69979-492mf with SMTP id filterdrecv-557d69979-492mf-1-63E22F85-12A
+        2023-02-07 11:01:26.136761726 +0000 UTC m=+7041333.050952024
 Received: from [192.168.1.50] (unknown)
-	by geopod-ismtpd-2-2 (SG) with ESMTP
-	id zrmb6FtdQoGbFyn2IO06qw
-	Tue, 07 Feb 2023 10:46:49.253 +0000 (UTC)
-Message-ID: <547c8e94-f2eb-2125-24fe-0dc035f9d6d2@kwiboo.se>
-Date: Tue, 07 Feb 2023 10:46:49 +0000 (UTC)
+	by geopod-ismtpd-canary-0 (SG)
+	with ESMTP
+	id z0wMd4_PSK2AY2B5rCg9wQ
+	Tue, 07 Feb 2023 11:01:25.718 +0000 (UTC)
+Message-ID: <0bec1f06-9fad-60ad-19eb-3d54135031f7@kwiboo.se>
+Date: Tue, 07 Feb 2023 11:01:26 +0000 (UTC)
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v4 1/4] drm/rockchip: vop: limit maximium resolution to
- hardware capabilities
-References: <20230207084452.1069656-1-s.hauer@pengutronix.de>
- <20230207084452.1069656-2-s.hauer@pengutronix.de>
+Subject: Re: [PATCH v4 4/4] drm/rockchip: dw_hdmi: discard modes with
+ unachievable pixelclocks
 Content-Language: en-US
+References: <20230207084452.1069656-1-s.hauer@pengutronix.de>
+ <20230207084452.1069656-5-s.hauer@pengutronix.de>
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20230207084452.1069656-2-s.hauer@pengutronix.de>
+In-Reply-To: <20230207084452.1069656-5-s.hauer@pengutronix.de>
 X-SG-EID:  =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hxdinM3QjwPf5Tzoe?=
- =?us-ascii?Q?092bIWsa6F9TrIo12o=2FbuD3lC=2FgSK+MsYP54WjZ?=
- =?us-ascii?Q?GGClw8SG2ioUs4Xs1J4lRZbmfuYk6e6Oz9u0+z3?=
- =?us-ascii?Q?7rvUjHg7ag1EqWPRJJbPAzO3SgSHUgfrcTau0Ps?=
- =?us-ascii?Q?tYW9hkilKL=2F9+6t=2FtFkefAiAwjGQaIICHorcEZI?=
- =?us-ascii?Q?Z22GgvAcvX3floIFJFShg=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hxKYDk3Ndxut4dHrI?=
+ =?us-ascii?Q?uunN5BgBTdaYVpq6jUWEiTITcxjpRSSL7mu7WcP?=
+ =?us-ascii?Q?=2FTUdEwxOt7yXJphabgNF=2FKgQ3c4IrxGYMxyuxxr?=
+ =?us-ascii?Q?OdGFF8TEadPT5NthcopwAL+xm=2FfYHmeOQWQYOeb?=
+ =?us-ascii?Q?8uZYHVIVtZ52UBBReEKkeBQLO2U=2FshYPVaiuNi1?=
+ =?us-ascii?Q?Z3Z7EmX9kEFSOzKqlVp3w=3D=3D?=
 To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
 Cc: Dan Johansen <strit@manjaro.org>, Sandy Huang <hjc@rock-chips.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>,
 	Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
 	Robin Murphy <robin.murphy@arm.com>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_024659_575517_29C00B42 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20230207_030129_505069_59D5F78E 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,210 +87,48 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Hi Sascha,
+
 On 2023-02-07 09:44, Sascha Hauer wrote:
-> The different VOP variants support different maximum resolutions. Reject
-> resolutions that are not supported by a specific variant.
+> The Rockchip PLL drivers are currently table based and support only
+> the most common pixelclocks. Discard all modes we cannot achieve
+> at all. Normally the desired pixelclocks have an exact match in the
+> PLL driver, nevertheless allow for a 0.1% error just in case.
 > 
-> This hasn't been a problem in the upstream driver so far as 1920x1080
-> has been the maximum resolution supported by the HDMI driver and that
-> resolution is supported by all VOP variants. Now with higher resolutions
-> supported in the HDMI driver we have to limit the resolutions to the
-> ones supported by the VOP.
-> 
-> The actual maximum resolutions are taken from the Rockchip downstream
-> Kernel.
-> 
+> Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Tested-by: Dan Johansen <strit@manjaro.org>
+> Link: https://lore.kernel.org/r/20230118132213.2911418-4-s.hauer@pengutronix.de
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 > 
-> Notes:
->     Changes since v3:
->     - new patch
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 15 ++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  2 ++
->  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 31 +++++++++++++++++++++
->  3 files changed, 48 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index fa1f4ee6d1950..96b6bd8d17803 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1174,6 +1174,20 @@ static void vop_crtc_disable_vblank(struct drm_crtc *crtc)
->  	spin_unlock_irqrestore(&vop->irq_lock, flags);
->  }
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index feba6b9becd6c..725952811752b 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -256,10 +256,14 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
+>  {
+>  	struct rockchip_hdmi *hdmi = data;
+>  	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
+> -	int pclk = mode->clock * 1000;
+> +	int rpclk, pclk = mode->clock * 1000;
+>  	bool exact_match = hdmi->plat_data->phy_force_vendor;
+>  	int i;
 >  
-> +static enum drm_mode_status vop_crtc_mode_valid(struct drm_crtc *crtc,
-> +						const struct drm_display_mode *mode)
-> +{
-> +	struct vop *vop = to_vop(crtc);
-> +
-> +	if (vop->data->max_xres && mode->hdisplay > vop->data->max_xres)
-> +		return MODE_BAD_HVALUE;
-> +
-> +	if (vop->data->max_yres && mode->vdisplay > vop->data->max_yres)
-> +		return MODE_BAD_VVALUE;
-> +
-> +	return MODE_OK;
-> +}
-> +
->  static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
->  				const struct drm_display_mode *mode,
->  				struct drm_display_mode *adjusted_mode)
-> @@ -1585,6 +1599,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
->  }
->  
->  static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
-> +	.mode_valid = vop_crtc_mode_valid,
->  	.mode_fixup = vop_crtc_mode_fixup,
->  	.atomic_check = vop_crtc_atomic_check,
->  	.atomic_begin = vop_crtc_atomic_begin,
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> index 8502849833d93..5c4875ca3f270 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> @@ -225,6 +225,8 @@ struct vop_data {
->  	const struct vop_win_data *win;
->  	unsigned int win_size;
->  	unsigned int lut_size;
-> +	unsigned int max_xres;
-> +	unsigned int max_yres;
+> +	rpclk = clk_round_rate(hdmi->ref_clk, pclk);
+> +	if (abs(rpclk - pclk) > pclk / 1000)
+> +		return MODE_NOCLOCK;
 
-I would suggest using the same struct vop_rect max_input/output as the
-vop2 driver instead of handling this differently between the two.
+The ref_clk is optional and rk3228/rk3328 dts do not supply a ref or vpll clock.
 
 Regards,
 Jonas
 
->  
->  #define VOP_FEATURE_OUTPUT_RGB10	BIT(0)
->  #define VOP_FEATURE_INTERNAL_RGB	BIT(1)
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> index 014f99e8928e3..dc1a703d9d1a8 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> @@ -181,6 +181,8 @@ static const struct vop_data rk3036_vop = {
->  	.output = &rk3036_output,
->  	.win = rk3036_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3036_vop_win_data),
-> +	.max_xres = 1920,
-> +	.max_yres = 1080,
->  };
->  
->  static const struct vop_win_phy rk3126_win1_data = {
-> @@ -213,6 +215,8 @@ static const struct vop_data rk3126_vop = {
->  	.output = &rk3036_output,
->  	.win = rk3126_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3126_vop_win_data),
-> +	.max_xres = 1920,
-> +	.max_yres = 1080,
->  };
->  
->  static const int px30_vop_intrs[] = {
-> @@ -340,6 +344,8 @@ static const struct vop_data px30_vop_big = {
->  	.output = &px30_output,
->  	.win = px30_vop_big_win_data,
->  	.win_size = ARRAY_SIZE(px30_vop_big_win_data),
-> +	.max_xres = 1920,
-> +	.max_yres = 1080,
->  };
->  
->  static const struct vop_win_data px30_vop_lit_win_data[] = {
-> @@ -356,6 +362,8 @@ static const struct vop_data px30_vop_lit = {
->  	.output = &px30_output,
->  	.win = px30_vop_lit_win_data,
->  	.win_size = ARRAY_SIZE(px30_vop_lit_win_data),
-> +	.max_xres = 1920,
-> +	.max_yres = 1080,
->  };
->  
->  static const struct vop_scl_regs rk3066_win_scl = {
-> @@ -479,6 +487,8 @@ static const struct vop_data rk3066_vop = {
->  	.output = &rk3066_output,
->  	.win = rk3066_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3066_vop_win_data),
-> +	.max_xres = 1920,
-> +	.max_yres = 1080,
->  };
->  
->  static const struct vop_scl_regs rk3188_win_scl = {
-> @@ -585,6 +595,8 @@ static const struct vop_data rk3188_vop = {
->  	.win = rk3188_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3188_vop_win_data),
->  	.feature = VOP_FEATURE_INTERNAL_RGB,
-> +	.max_xres = 2048,
-> +	.max_yres = 1536,
->  };
->  
->  static const struct vop_scl_extension rk3288_win_full_scl_ext = {
-> @@ -732,6 +744,13 @@ static const struct vop_data rk3288_vop = {
->  	.win = rk3288_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
->  	.lut_size = 1024,
-> +	/*
-> +	 * This is the maximum resolution for the VOPB, the VOPL can only do
-> +	 * 2560x1600, but we can't distinguish them as they have the same
-> +	 * compatible.
-> +	 */
-> +	.max_xres = 3840,
-> +	.max_yres = 2160,
->  };
->  
->  static const int rk3368_vop_intrs[] = {
-> @@ -833,6 +852,8 @@ static const struct vop_data rk3368_vop = {
->  	.misc = &rk3368_misc,
->  	.win = rk3368_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3368_vop_win_data),
-> +	.max_xres = 4096,
-> +	.max_yres = 2160,
->  };
->  
->  static const struct vop_intr rk3366_vop_intr = {
-> @@ -854,6 +875,8 @@ static const struct vop_data rk3366_vop = {
->  	.misc = &rk3368_misc,
->  	.win = rk3368_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3368_vop_win_data),
-> +	.max_xres = 4096,
-> +	.max_yres = 2160,
->  };
->  
->  static const struct vop_output rk3399_output = {
-> @@ -984,6 +1007,8 @@ static const struct vop_data rk3399_vop_big = {
->  	.win_size = ARRAY_SIZE(rk3399_vop_win_data),
->  	.win_yuv2yuv = rk3399_vop_big_win_yuv2yuv_data,
->  	.lut_size = 1024,
-> +	.max_xres = 4096,
-> +	.max_yres = 2160,
->  };
->  
->  static const struct vop_win_data rk3399_vop_lit_win_data[] = {
-> @@ -1010,6 +1035,8 @@ static const struct vop_data rk3399_vop_lit = {
->  	.win_size = ARRAY_SIZE(rk3399_vop_lit_win_data),
->  	.win_yuv2yuv = rk3399_vop_lit_win_yuv2yuv_data,
->  	.lut_size = 256,
-> +	.max_xres = 2560,
-> +	.max_yres = 1600,
->  };
->  
->  static const struct vop_win_data rk3228_vop_win_data[] = {
-> @@ -1029,6 +1056,8 @@ static const struct vop_data rk3228_vop = {
->  	.misc = &rk3368_misc,
->  	.win = rk3228_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3228_vop_win_data),
-> +	.max_xres = 4096,
-> +	.max_yres = 2160,
->  };
->  
->  static const struct vop_modeset rk3328_modeset = {
-> @@ -1100,6 +1129,8 @@ static const struct vop_data rk3328_vop = {
->  	.misc = &rk3328_misc,
->  	.win = rk3328_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3328_vop_win_data),
-> +	.max_xres = 4096,
-> +	.max_yres = 2160,
->  };
->  
->  static const struct of_device_id vop_driver_dt_match[] = {
+> +
+>  	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
+>  		/*
+>  		 * For vendor specific phys force an exact match of the pixelclock
 
 
 _______________________________________________
