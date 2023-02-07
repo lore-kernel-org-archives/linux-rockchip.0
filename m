@@ -4,50 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B19CC636CD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 05:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F78C64EC4
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 08:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1FEVWgjyjVicLMMNCVndy1v6KdV1Xm3QTNQLVbcdw8o=; b=b2p5dUWaABqZcO
-	YiUqVW1gEupZCJ6DU51vi/TTlYlloY21clCHSeWHCVWx5cZJIzj/4Rbeh1D2UIHvqlUbp7azdNXpP
-	IXYMvKlCXHdLA3+4zwLOjUoryM43Cvz+e+2AinOR99Gt/QA9+XHxdu1A5lVZBylTrwM/FDXMbYr6x
-	RV8kdq4U3ukvrw+vINcRn10SuNKBlJ9Vd/4RHh2hyBDQ9hRx3GrYgToI/irY6q3QX6lXZdhsQ+1y2
-	yY2XHlXDLwZABDoSU/3UU8BbcWwB4egX6qDgcbqrAHSNo6dBs2JRNiUove90tUDN+naMJX1q1n7ja
-	R2aLIJW69Jw4Qa+7BvtQ==;
+	List-Owner; bh=bB1phgOeYdUlfoYvY0gaxEXcdueQzLFa1/hBnnPBtJw=; b=aouzMbKdGiZL2A
+	o+n++rPRVOcvK8jzdUcdfM+Pptmg2GTCYxQGec0VAZMCODAGR7SOaAwEwb4wrcODVG5ZSpAu5XOfa
+	2N77pZFBkWJNxPlAMT3TLi85gkadvSv3zM6icbLclLtNytbdJP9Frj67XlLTIY/r6wmAkp33qh0Jn
+	WEw3Im22M8Avb3ZSn6C8YZFOumFisK7kLa4Qr8cS/tioUyq1o9TPkTx0NQ4A+Q9IP90uRJr20QMi/
+	nK1F7gblvCcXHjVHm5e/BeBCx4zDzDtenLt8x4CXWrKB86xRG2NIMfSpMSp85SLjFM41MgrobvRfP
+	hiG2YVChnYiLm2P1fOzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPGUv-00Arpm-4U; Tue, 07 Feb 2023 05:26:29 +0000
-Received: from out30-113.freemail.mail.aliyun.com ([115.124.30.113])
+	id 1pPJc4-00BJoR-7H; Tue, 07 Feb 2023 08:46:04 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPGUk-00Arnf-LO; Tue, 07 Feb 2023 05:26:20 +0000
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R211e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018045176;MF=jiapeng.chong@linux.alibaba.com;NM=1;PH=DS;RN=10;SR=0;TI=SMTPD_---0Vb5fT1I_1675747568;
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com fp:SMTPD_---0Vb5fT1I_1675747568)
-          by smtp.aliyun-inc.com;
-          Tue, 07 Feb 2023 13:26:14 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: vkoul@kernel.org
-Cc: kishon@kernel.org,
-	heiko@sntech.de,
-	p.zabel@pengutronix.de,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1pPJbs-00BJiF-MO
+	for linux-rockchip@lists.infradead.org; Tue, 07 Feb 2023 08:45:55 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pPJbj-0002Pn-5l; Tue, 07 Feb 2023 09:45:43 +0100
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pPJbc-003FF3-Pt; Tue, 07 Feb 2023 09:45:38 +0100
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pPJbd-004UPv-BO; Tue, 07 Feb 2023 09:45:37 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: dri-devel@lists.freedesktop.org
+Cc: Sandy Huang <hjc@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
-	Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH] phy: rockchip-typec: Fix unsigned comparison with less than zero
-Date: Tue,  7 Feb 2023 13:26:06 +0800
-Message-Id: <20230207052606.29506-1-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	kernel@pengutronix.de,
+	Robin Murphy <robin.murphy@arm.com>,
+	Dan Johansen <strit@manjaro.org>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v4 0/4] drm/rockchip: dw_hdmi: Add 4k@30 support
+Date: Tue,  7 Feb 2023 09:44:48 +0100
+Message-Id: <20230207084452.1069656-1-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230206_212619_053421_2A458194 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230207_004552_755777_A622A073 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,37 +75,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The dp is defined as bool type, the return value type of function
-extcon_get_state should be int, at the same time,if(dp>0) is used as the
-conditional statement, so the type of dp is modified to int.
+Another round of these patches. Only change this time is the addition
+of a patch to limit the resolutions to the ones supported by the VOP
+driver which should resolve the regression reported by FUKAUMI Naoki.
 
-./drivers/phy/rockchip/phy-rockchip-typec.c:827:12-14: WARNING: Unsigned expression compared with zero: dp > 0.
+Sascha
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Link: https://bugzilla.openanolis.cn/show_bug.cgi?id=3962
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/phy/rockchip/phy-rockchip-typec.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes since v3:
+- Add patch to limit VOP resolutions to hardware capabilities
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 6aea512e5d4e..85ed7d510cbf 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -808,9 +808,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
- 	struct extcon_dev *edev = tcphy->extcon;
- 	union extcon_property_value property;
- 	unsigned int id;
--	bool ufp, dp;
-+	bool ufp;
- 	u8 mode;
--	int ret;
-+	int ret, dp;
- 
- 	if (!edev)
- 		return MODE_DFP_USB;
+Changes since v2:
+- Use correct register values for mpll_cfg
+- Add patch to discard modes we cannot achieve
+
+Changes since v1:
+- Allow non standard clock rates only on Synopsys phy as suggested by
+  Robin Murphy
+
+Sascha Hauer (4):
+  drm/rockchip: vop: limit maximium resolution to hardware capabilities
+  drm/rockchip: dw_hdmi: relax mode_valid hook
+  drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
+  drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
+
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 40 ++++++++++++++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 15 ++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  2 ++
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 31 ++++++++++++++++
+ 4 files changed, 80 insertions(+), 8 deletions(-)
+
 -- 
-2.20.1.7.g153144c
+2.30.2
 
 
 _______________________________________________
