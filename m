@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C06CDC636CC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 11:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C440FC636CD
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Feb 2023 12:34:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lx67EaumUDdNLPsOc8VL6gi0YKLpI9cEoqlNCJatybM=; b=WDfp7lW27PwIn9
-	T+BaxHHOXkTfKw1hnoIV03qjSv61uXcmSDMkFtp4NfVpU+EF8upkhMTJmQJLFKbg2/Eyl0WYc3P3e
-	uI5IlfFr3sD7O5xnI+1a/34ItHB9fM5ynH/HkUjQ2jRiodhLXoM8ogHQqGOYtet5JPWQeOL5Dokdr
-	5damsL4aWF3uqBb+2dBNiDchqH0ESESCbXrTj7ualB7rYjMqUcIjq7numzUekXhnUR/r7EhM4EglP
-	4Mw+5gWhBoXTSLzadV+ATCcYRuG6tqeO9jcAG+nvGTYYMAZJtevWt2PR3EQSfZvQ2LFFLd3dQIpl/
-	ZdrW0KRd+iLItZeu6FLQ==;
+	List-Owner; bh=/ZK9qMmZE+Dt38LI4SBFbV3tZaqO5CPlrN7d7yyUH+E=; b=hez5qda1r+4Ofl
+	8Xc8Eg/mWi/O3b/KPG7EgY1lWLk8q1hPOm/Zmif7o+56hCroZp1O0f5KnBmxNUKTOSUPyE85ciE3A
+	kshVp8na/LwcMJV7hO2fNQ3azSi3vFi10nAZP8rNaU/3uCnGg/SEDeg7umZfiBr5hubM8c3BWcxZB
+	li/aMyVTj1AulFS6mlfba0YB/RJqRqBib73L1p89wMzdukriG7b0BenFcVDEUvfTOV46Db4bka6aX
+	1gnji8YkZLyTungd6/yqBKYukUzujO1Ekk1mp3z/bqi4vHqLQUYU4VX1AT/iBjClwG/uP4b3k6qyB
+	WnZqpI98JpO9ReU81bdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPLjA-00Br8Z-A6; Tue, 07 Feb 2023 11:01:32 +0000
-Received: from xtrwsqbh.outbound-mail.sendgrid.net ([167.89.100.176])
+	id 1pPNBF-00C6dQ-4b; Tue, 07 Feb 2023 12:34:37 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPLj7-00Br71-Cx
-	for linux-rockchip@lists.infradead.org; Tue, 07 Feb 2023 11:01:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
-	content-transfer-encoding:cc:content-type:from:subject:to;
-	s=s1; bh=HenSMTrgrLKplahvcFifYdl9RBoK9/xvCtUuvoh3/VA=;
-	b=cff0ebB4AliNsBNAS1MHiES4piW7wS94irZwQFOzlQm61xOz2rhHOf1tiZoPdT7BeAD1
-	b+5vp6+SfC6IUyggBjSvMK2RKwrsDjDPzH8AxlglM7ftGfN5Sndq/KkB/BJG+MuvcaIbtm
-	PrAJc6Hqy3Llvt+znPpEnrarlY9KU0w163U2HC0HwpshOztRKle5xtwB52gXrE3g6f+3h6
-	WDw2k5+Mgj266F8vKCGXWs+MeVOX6HuTFAELyUFWIr2y96ITd1t2ByHeubGxyw8a74T6h2
-	yhmygi/Yx69BjOhGsvt0lBvL5Ebi2NT9V7Hjf2Cxhg29TIv8vayoynBkDm9CoYRA==
-Received: by filterdrecv-557d69979-492mf with SMTP id filterdrecv-557d69979-492mf-1-63E22F85-12A
-        2023-02-07 11:01:26.136761726 +0000 UTC m=+7041333.050952024
-Received: from [192.168.1.50] (unknown)
-	by geopod-ismtpd-canary-0 (SG)
-	with ESMTP
-	id z0wMd4_PSK2AY2B5rCg9wQ
-	Tue, 07 Feb 2023 11:01:25.718 +0000 (UTC)
-Message-ID: <0bec1f06-9fad-60ad-19eb-3d54135031f7@kwiboo.se>
-Date: Tue, 07 Feb 2023 11:01:26 +0000 (UTC)
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 4/4] drm/rockchip: dw_hdmi: discard modes with
- unachievable pixelclocks
-Content-Language: en-US
-References: <20230207084452.1069656-1-s.hauer@pengutronix.de>
- <20230207084452.1069656-5-s.hauer@pengutronix.de>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20230207084452.1069656-5-s.hauer@pengutronix.de>
-X-SG-EID:  =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hxKYDk3Ndxut4dHrI?=
- =?us-ascii?Q?uunN5BgBTdaYVpq6jUWEiTITcxjpRSSL7mu7WcP?=
- =?us-ascii?Q?=2FTUdEwxOt7yXJphabgNF=2FKgQ3c4IrxGYMxyuxxr?=
- =?us-ascii?Q?OdGFF8TEadPT5NthcopwAL+xm=2FfYHmeOQWQYOeb?=
- =?us-ascii?Q?8uZYHVIVtZ52UBBReEKkeBQLO2U=2FshYPVaiuNi1?=
- =?us-ascii?Q?Z3Z7EmX9kEFSOzKqlVp3w=3D=3D?=
-To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: Dan Johansen <strit@manjaro.org>, Sandy Huang <hjc@rock-chips.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	id 1pPNBA-00C6ch-Rs
+	for linux-rockchip@lists.infradead.org; Tue, 07 Feb 2023 12:34:35 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pPNB1-00022X-R0; Tue, 07 Feb 2023 13:34:23 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pPNAx-0007P7-0E; Tue, 07 Feb 2023 13:34:19 +0100
+Date: Tue, 7 Feb 2023 13:34:18 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: dri-devel@lists.freedesktop.org, Dan Johansen <strit@manjaro.org>,
+	Sandy Huang <hjc@rock-chips.com>,
 	linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
-	Robin Murphy <robin.murphy@arm.com>
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	kernel@pengutronix.de, Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v4 1/4] drm/rockchip: vop: limit maximium resolution to
+ hardware capabilities
+Message-ID: <20230207123418.GF10447@pengutronix.de>
+References: <20230207084452.1069656-1-s.hauer@pengutronix.de>
+ <20230207084452.1069656-2-s.hauer@pengutronix.de>
+ <547c8e94-f2eb-2125-24fe-0dc035f9d6d2@kwiboo.se>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <547c8e94-f2eb-2125-24fe-0dc035f9d6d2@kwiboo.se>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230207_030129_505069_59D5F78E 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20230207_043432_935227_029F3CA5 
+X-CRM114-Status: GOOD (  34.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,50 +78,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
-
-On 2023-02-07 09:44, Sascha Hauer wrote:
-> The Rockchip PLL drivers are currently table based and support only
-> the most common pixelclocks. Discard all modes we cannot achieve
-> at all. Normally the desired pixelclocks have an exact match in the
-> PLL driver, nevertheless allow for a 0.1% error just in case.
+On Tue, Feb 07, 2023 at 10:46:49AM +0000, Jonas Karlman wrote:
+> Hi Sascha,
+> On 2023-02-07 09:44, Sascha Hauer wrote:
+> > The different VOP variants support different maximum resolutions. Reject
+> > resolutions that are not supported by a specific variant.
+> > 
+> > This hasn't been a problem in the upstream driver so far as 1920x1080
+> > has been the maximum resolution supported by the HDMI driver and that
+> > resolution is supported by all VOP variants. Now with higher resolutions
+> > supported in the HDMI driver we have to limit the resolutions to the
+> > ones supported by the VOP.
+> > 
+> > The actual maximum resolutions are taken from the Rockchip downstream
+> > Kernel.
+> > 
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> > 
+> > Notes:
+> >     Changes since v3:
+> >     - new patch
+> > 
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 15 ++++++++++
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  2 ++
+> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 31 +++++++++++++++++++++
+> >  3 files changed, 48 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > index fa1f4ee6d1950..96b6bd8d17803 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > @@ -1174,6 +1174,20 @@ static void vop_crtc_disable_vblank(struct drm_crtc *crtc)
+> >  	spin_unlock_irqrestore(&vop->irq_lock, flags);
+> >  }
+> >  
+> > +static enum drm_mode_status vop_crtc_mode_valid(struct drm_crtc *crtc,
+> > +						const struct drm_display_mode *mode)
+> > +{
+> > +	struct vop *vop = to_vop(crtc);
+> > +
+> > +	if (vop->data->max_xres && mode->hdisplay > vop->data->max_xres)
+> > +		return MODE_BAD_HVALUE;
+> > +
+> > +	if (vop->data->max_yres && mode->vdisplay > vop->data->max_yres)
+> > +		return MODE_BAD_VVALUE;
+> > +
+> > +	return MODE_OK;
+> > +}
+> > +
+> >  static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
+> >  				const struct drm_display_mode *mode,
+> >  				struct drm_display_mode *adjusted_mode)
+> > @@ -1585,6 +1599,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+> >  }
+> >  
+> >  static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
+> > +	.mode_valid = vop_crtc_mode_valid,
+> >  	.mode_fixup = vop_crtc_mode_fixup,
+> >  	.atomic_check = vop_crtc_atomic_check,
+> >  	.atomic_begin = vop_crtc_atomic_begin,
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> > index 8502849833d93..5c4875ca3f270 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> > @@ -225,6 +225,8 @@ struct vop_data {
+> >  	const struct vop_win_data *win;
+> >  	unsigned int win_size;
+> >  	unsigned int lut_size;
+> > +	unsigned int max_xres;
+> > +	unsigned int max_yres;
 > 
-> Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
-> Tested-by: Dan Johansen <strit@manjaro.org>
-> Link: https://lore.kernel.org/r/20230118132213.2911418-4-s.hauer@pengutronix.de
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index feba6b9becd6c..725952811752b 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -256,10 +256,14 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
->  {
->  	struct rockchip_hdmi *hdmi = data;
->  	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
-> -	int pclk = mode->clock * 1000;
-> +	int rpclk, pclk = mode->clock * 1000;
->  	bool exact_match = hdmi->plat_data->phy_force_vendor;
->  	int i;
->  
-> +	rpclk = clk_round_rate(hdmi->ref_clk, pclk);
-> +	if (abs(rpclk - pclk) > pclk / 1000)
-> +		return MODE_NOCLOCK;
+> I would suggest using the same struct vop_rect max_input/output as the
+> vop2 driver instead of handling this differently between the two.
 
-The ref_clk is optional and rk3228/rk3328 dts do not supply a ref or vpll clock.
+As it was me who introduced struct vop_rect in the vop2 driver I
+probably have to agree ;)
 
-Regards,
-Jonas
+Sascha
 
-> +
->  	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
->  		/*
->  		 * For vendor specific phys force an exact match of the pixelclock
-
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
