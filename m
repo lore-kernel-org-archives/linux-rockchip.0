@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B17C6379F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA2E5C636CC
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ruPGHNtYQvzx5DQO/jAzzLQChsSs2jAZvg0+4O+i2Do=; b=2Nj5Xk1r1AcC+M
-	69GqUPudk51Tkfm6cXYV954d7mqju3OhkgnpRchQVpZ4FFQLdzuJdUq60Kx+fCXz8DxUZyW95b4hk
-	yRkD3e+hd/zltDX/YytYiTmHeq9gX91/ovBA3/0+uefxZtEiTPOm7jm13/6B/7C5GpvAIf7sFa9kn
-	KKSfD4z63j/E40aXNdweNIsakLZhl6eK6SZyLvQnOltGudgtUyVO5Xhk0zWekrkD9SCRtSMXJGj9Q
-	wT+DgDex7bEp6qR0uDrW/LkVOFzSZzza5nVY5FtyABz4t22JoecMaVQkTVgsz6Q5fN/DhwXLY4oDv
-	HgDPDlNEAak7uP55I9jA==;
+	List-Owner; bh=JN0v6ceBPwJ/Yx3n/EdqncZjuGTkxOd+32IYuYMq28I=; b=KM84nO0IXpU4XD
+	W+QGPhozs4ClD9dBMzNyqaCheBFVofWcYcaMnGaHVMYf+kJHz6ANMIVIwxqO3c/ET3FrxKphp7lsz
+	AH5IKqq5vDSqGndAqwmrN87LAh/2QgzQY3yGhmr68HPnbABnTAdIt+kKS/oPIlgBx5Zjl+9k3EFu+
+	frTIWv1cxMsZqcqqLekQcq3KEh/EAs6Jj/X7GhBQ0l/7/3WitT5EwbmNCE/r8ABXU7YeJ4KlS4Esf
+	iU5DNLu/465QrGRlsoobXRN9CaHaRwv522ArAKumH9M6m5xCqB8WqW6E5sQoy7ggurISXOegj9+Y9
+	JHNyPNNmFsB2HWdwPyng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgud-00Ev7k-Sy; Wed, 08 Feb 2023 09:38:48 +0000
+	id 1pPgwk-00Ew1w-0W; Wed, 08 Feb 2023 09:40:58 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPguW-00Ev1j-KK
-	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:38:42 +0000
+	id 1pPguW-00Ev1Y-K8
+	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:38:44 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguU-00039N-Hs; Wed, 08 Feb 2023 10:38:38 +0100
+	id 1pPguU-00039c-Ig; Wed, 08 Feb 2023 10:38:38 +0100
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguR-003UAO-W9; Wed, 08 Feb 2023 10:38:37 +0100
+	id 1pPguS-003UAe-HL; Wed, 08 Feb 2023 10:38:37 +0100
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguQ-000s8T-Jr; Wed, 08 Feb 2023 10:38:34 +0100
+	id 1pPguQ-000s8d-Kz; Wed, 08 Feb 2023 10:38:34 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-pm@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -52,9 +52,9 @@ Cc: linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v2 07/19] PM / devfreq: rockchip-dfi: introduce channel mask
-Date: Wed,  8 Feb 2023 10:38:18 +0100
-Message-Id: <20230208093830.143284-8-s.hauer@pengutronix.de>
+Subject: [PATCH v2 08/19] PM / devfreq: rk3399_dmc,dfi: generalize DDRTYPE defines
+Date: Wed,  8 Feb 2023 10:38:19 +0100
+Message-Id: <20230208093830.143284-9-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230208093830.143284-1-s.hauer@pengutronix.de>
 References: <20230208093830.143284-1-s.hauer@pengutronix.de>
@@ -64,8 +64,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_013840_819198_4DAF6A1F 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20230208_013840_837265_1628F552 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,83 +82,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Different Rockchip SoC variants have a different number of channels.
-Introduce a channel mask to make the number of channels configurable
-from SoC initialization code.
+The DDRTYPE defines are named to be RK3399 specific, but they can be
+used for other Rockchip SoCs as well, so replace the RK3399_PMUGRF_
+prefix with ROCKCHIP_. They are defined in a SoC specific header
+file, so when generalizing the prefix also move the new defines to
+a SoC agnostic header file. While at it use GENMASK to define the
+DDRTYPE bitfield and give it a name including the full register name.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 10 ++++++----
+ drivers/devfreq/rk3399_dmc.c         | 10 +++++-----
+ include/soc/rockchip/rk3399_grf.h    |  7 +------
+ include/soc/rockchip/rockchip_grf.h  | 15 +++++++++++++++
+ 4 files changed, 27 insertions(+), 15 deletions(-)
+ create mode 100644 include/soc/rockchip/rockchip_grf.h
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 25d64d9166a9a..18d578730fd0c 100644
+index 18d578730fd0c..7896cd8beb143 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -21,7 +21,7 @@
+@@ -18,7 +18,10 @@
+ #include <linux/list.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
++#include <linux/bitfield.h>
++#include <linux/bits.h>
  
++#include <soc/rockchip/rockchip_grf.h>
  #include <soc/rockchip/rk3399_grf.h>
  
--#define RK3399_DMC_NUM_CH	2
-+#define DMC_MAX_CHANNELS	2
+ #define DMC_MAX_CHANNELS	2
+@@ -74,9 +77,9 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
  
- /* DDRMON_CTRL */
- #define DDRMON_CTRL	0x04
-@@ -44,7 +44,7 @@ struct dmc_count_channel {
- };
+ 	/* set ddr type to dfi */
+-	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
++	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
+ 		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+-	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
++	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
+ 		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
  
- struct dmc_count {
--	struct dmc_count_channel c[RK3399_DMC_NUM_CH];
-+	struct dmc_count_channel c[DMC_MAX_CHANNELS];
- };
+ 	/* enable count, use software mode */
+@@ -191,8 +194,7 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
  
- /*
-@@ -62,6 +62,7 @@ struct rockchip_dfi {
- 	struct regmap *regmap_pmu;
- 	struct clk *clk;
- 	u32 ddr_type;
-+	unsigned int channel_mask;
- };
+ 	/* get ddr type */
+ 	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+-	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+-			RK3399_PMUGRF_DDRTYPE_MASK;
++	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
  
- static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
-@@ -96,7 +97,9 @@ static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dm
- 	u32 i;
- 	void __iomem *dfi_regs = dfi->regs;
+ 	dfi->channel_mask = 3;
  
--	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
-+	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
-+		if (!(dfi->channel_mask & BIT(i)))
-+			continue;
- 		count->c[i].access = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
- 		count->c[i].total = readl_relaxed(dfi_regs +
-@@ -146,9 +149,14 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 	rockchip_dfi_read_counters(edev, &count);
+diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
+index daff407026157..fd2c5ffedf41e 100644
+--- a/drivers/devfreq/rk3399_dmc.c
++++ b/drivers/devfreq/rk3399_dmc.c
+@@ -22,6 +22,7 @@
+ #include <linux/suspend.h>
  
- 	/* We can only report one channel, so find the busiest one */
--	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
--		u32 a = count.c[i].access - last->c[i].access;
--		u32 t = count.c[i].total - last->c[i].total;
-+	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
-+		u32 a, t;
+ #include <soc/rockchip/pm_domains.h>
++#include <soc/rockchip/rockchip_grf.h>
+ #include <soc/rockchip/rk3399_grf.h>
+ #include <soc/rockchip/rockchip_sip.h>
+ 
+@@ -381,17 +382,16 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+-	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+-		    RK3399_PMUGRF_DDRTYPE_MASK;
++	ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
+ 
+ 	switch (ddr_type) {
+-	case RK3399_PMUGRF_DDRTYPE_DDR3:
++	case ROCKCHIP_DDRTYPE_DDR3:
+ 		data->odt_dis_freq = data->ddr3_odt_dis_freq;
+ 		break;
+-	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
++	case ROCKCHIP_DDRTYPE_LPDDR3:
+ 		data->odt_dis_freq = data->lpddr3_odt_dis_freq;
+ 		break;
+-	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
++	case ROCKCHIP_DDRTYPE_LPDDR4:
+ 		data->odt_dis_freq = data->lpddr4_odt_dis_freq;
+ 		break;
+ 	default:
+diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
+index 3eebabcb28123..775f8444bea8d 100644
+--- a/include/soc/rockchip/rk3399_grf.h
++++ b/include/soc/rockchip/rk3399_grf.h
+@@ -11,11 +11,6 @@
+ 
+ /* PMU GRF Registers */
+ #define RK3399_PMUGRF_OS_REG2		0x308
+-#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
+-#define RK3399_PMUGRF_DDRTYPE_MASK	7
+-#define RK3399_PMUGRF_DDRTYPE_DDR3	3
+-#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
+-#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
+-#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
++#define RK3399_PMUGRF_OS_REG2_DDRTYPE		GENMASK(15, 13)
+ 
+ #endif
+diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
+new file mode 100644
+index 0000000000000..dc77bb762a05a
+--- /dev/null
++++ b/include/soc/rockchip/rockchip_grf.h
+@@ -0,0 +1,15 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * Rockchip General Register Files definitions
++ */
 +
-+		if (!(dfi->channel_mask & BIT(i)))
-+			continue;
++#ifndef __SOC_ROCKCHIP_GRF_H
++#define __SOC_ROCKCHIP_GRF_H
 +
-+		a = count.c[i].access - last->c[i].access;
-+		t = count.c[i].total - last->c[i].total;
- 
- 		if (a > access) {
- 			access = a;
-@@ -186,6 +194,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
- 			RK3399_PMUGRF_DDRTYPE_MASK;
- 
-+	dfi->channel_mask = 3;
++/* Rockchip DDRTYPE defines */
++#define ROCKCHIP_DDRTYPE_DDR3	3
++#define ROCKCHIP_DDRTYPE_LPDDR2	5
++#define ROCKCHIP_DDRTYPE_LPDDR3	6
++#define ROCKCHIP_DDRTYPE_LPDDR4	7
 +
- 	return 0;
- };
- 
++#endif /* __SOC_ROCKCHIP_GRF_H */
 -- 
 2.30.2
 
