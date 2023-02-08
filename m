@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E00CC636CC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E94C05027
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=liaOT6bZloG/qEqn3fsWDR3+0XMq9ri6L8ACfIj9oaY=; b=iQ70m2Va8YIl67
-	YVdscjFEMhaJooMXxbId34U/lZYENuVd25EFAf1HTlSWPAf2CNUe1zB193dkvosdLvSbQHXBqPGc6
-	J0IKA6SZYNNbKLnC1CrH8w+vYibu9UKKYAuvKjOzNtDwsjcjKxoY+vfINPuWDQ9Y4bVSXF/Fs6XPD
-	oA4HCktj1jCmGGDAFBtMHLuKNShG38/Gz6jt8JVge5JjD3f+f0pHJ+TyCWdSq6cwJt0GC010a2F+g
-	IxGmUG7E82XpijjInQLK3+AMIbmdYqdT1FAyD8LD8ZGx8ACOtIqbIsmoaVoO3jKLHi5t3Z0tEUsPW
-	gs5XktMPkaU7NO6+7c4g==;
+	List-Owner; bh=Ns1DjseDzAwbA+XMi0xmjznt9DJSY9Nyh9FbSc/LmwQ=; b=M+wjzpKdHftl14
+	xFu9FjZOv7YrU2ChXkBRq+e6/79R3KB5mtNPvb8PBcL9urVujXpwQ0I2HF7od3cmB4PEjTQUV0x6o
+	bsP97ParHJ29inhGl3TxIztfhuDC4/jV8zRhg/dtqlPoNekkqZSi2JVoA9jQHkfaFt7KVWz8w8qaO
+	KZOcXPyUm1WHBDT0kPW0l0/VEMcO+iOZJKSiELUB2x3jy+bep1091QYQcdD5fYR9+T0jRzFuyfSp2
+	sOobCMADpzaOF81UcvD2f8ZQcxxY2VnKK4h0A8P4EKiQ/DCMscNh4bXcLVgF2x2O7RYQ4WoSAY4Bu
+	hC4XCMsp8101BbkN/ixw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgRR-00Egy2-Fk; Wed, 08 Feb 2023 09:08:37 +0000
+	id 1pPgRN-00EgvV-Mc; Wed, 08 Feb 2023 09:08:33 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgRO-00EgvS-1C
-	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:08:35 +0000
+	id 1pPgRL-00Egsf-1l
+	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:08:32 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPgRC-0004ef-Rg; Wed, 08 Feb 2023 10:08:23 +0100
+	id 1pPgRC-0004ei-Rg; Wed, 08 Feb 2023 10:08:22 +0100
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPgR6-003TfL-VW; Wed, 08 Feb 2023 10:08:18 +0100
+	id 1pPgR7-003TfU-H2; Wed, 08 Feb 2023 10:08:18 +0100
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPgR7-00GG89-Bz; Wed, 08 Feb 2023 10:08:17 +0100
+	id 1pPgR7-00GG7w-9O; Wed, 08 Feb 2023 10:08:17 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: Sandy Huang <hjc@rock-chips.com>,
@@ -48,9 +48,9 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
 	FUKAUMI Naoki <naoki@radxa.com>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
 	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v5 4/4] drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
-Date: Wed,  8 Feb 2023 10:08:16 +0100
-Message-Id: <20230208090816.3810589-5-s.hauer@pengutronix.de>
+Subject: [PATCH v5 2/4] drm/rockchip: dw_hdmi: relax mode_valid hook
+Date: Wed,  8 Feb 2023 10:08:14 +0100
+Message-Id: <20230208090816.3810589-3-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230208090816.3810589-1-s.hauer@pengutronix.de>
 References: <20230208090816.3810589-1-s.hauer@pengutronix.de>
@@ -60,8 +60,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_010834_094993_ACCE55BD 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20230208_010831_120001_BDB681B5 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +78,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip PLL drivers are currently table based and support only
-the most common pixelclocks. Discard all modes we cannot achieve
-at all. Normally the desired pixelclocks have an exact match in the
-PLL driver, nevertheless allow for a 0.1% error just in case.
+The driver checks if the pixel clock of the given mode matches an entry
+in the mpll config table. At least for the Synopsys phy the frequencies
+in the mpll table are meant as a frequency range up to which the entry
+works, not as a frequency that must match the pixel clock. Return
+MODE_OK when the pixelclock is smaller than one of the mpll frequencies
+to allow for more display resolutions.
+Limit this behaviour to the Synopsys phy at the moment and keep the
+current behaviour of forcing exact pixelclock rates for the other phys
+until it has been sorted out how and if the vendor specific phys work
+with non standard clock rates.
 
-Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+Link: https://lore.kernel.org/r/20220926080435.259617-2-s.hauer@pengutronix.de
+Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 Tested-by: Dan Johansen <strit@manjaro.org>
-Link: https://lore.kernel.org/r/20230118132213.2911418-4-s.hauer@pengutronix.de
+Link: https://lore.kernel.org/r/20230118132213.2911418-2-s.hauer@pengutronix.de
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
-
-Notes:
-    Changes since v3:
-    - only check for rate when clk != NULL
-    
-    Changes since v2:
-    - new patch
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 26 +++++++++++++++------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index feba6b9becd6c..293dcf0f05931 100644
+index 2f4b8f64cbad3..7d8bf292fedce 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -260,6 +260,13 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 	bool exact_match = hdmi->plat_data->phy_force_vendor;
+@@ -74,6 +74,7 @@ struct rockchip_hdmi {
+ 	struct regmap *regmap;
+ 	struct rockchip_encoder encoder;
+ 	const struct rockchip_hdmi_chip_data *chip_data;
++	const struct dw_hdmi_plat_data *plat_data;
+ 	struct clk *ref_clk;
+ 	struct clk *grf_clk;
+ 	struct dw_hdmi *hdmi;
+@@ -241,23 +242,32 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ }
+ 
+ static enum drm_mode_status
+-dw_hdmi_rockchip_mode_valid(struct dw_hdmi *hdmi, void *data,
++dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
+ 			    const struct drm_display_info *info,
+ 			    const struct drm_display_mode *mode)
+ {
++	struct rockchip_hdmi *hdmi = data;
+ 	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
+ 	int pclk = mode->clock * 1000;
+-	bool valid = false;
++	bool exact_match = hdmi->plat_data->phy_force_vendor;
  	int i;
  
-+	if (hdmi->ref_clk) {
-+		int rpclk = clk_round_rate(hdmi->ref_clk, pclk);
-+
-+		if (abs(rpclk - pclk) > pclk / 1000)
-+			return MODE_NOCLOCK;
-+	}
-+
  	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
- 		/*
- 		 * For vendor specific phys force an exact match of the pixelclock
+-		if (pclk == mpll_cfg[i].mpixelclock) {
+-			valid = true;
+-			break;
+-		}
++		/*
++		 * For vendor specific phys force an exact match of the pixelclock
++		 * to preserve the original behaviour of the driver.
++		 */
++		if (exact_match && pclk == mpll_cfg[i].mpixelclock)
++			return MODE_OK;
++		/*
++		 * The Synopsys phy can work with pixelclocks up to the value given
++		 * in the corresponding mpll_cfg entry.
++		 */
++		if (!exact_match && pclk <= mpll_cfg[i].mpixelclock)
++			return MODE_OK;
+ 	}
+ 
+-	return (valid) ? MODE_OK : MODE_BAD;
++	return MODE_BAD;
+ }
+ 
+ static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
+@@ -546,8 +556,10 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return -ENOMEM;
+ 
+ 	hdmi->dev = &pdev->dev;
++	hdmi->plat_data = plat_data;
+ 	hdmi->chip_data = plat_data->phy_data;
+ 	plat_data->phy_data = hdmi;
++	plat_data->priv_data = hdmi;
+ 	encoder = &hdmi->encoder.encoder;
+ 
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
 -- 
 2.30.2
 
