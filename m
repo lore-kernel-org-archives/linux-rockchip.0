@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B0A6C05027
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F5AC636CC
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 09:46:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jn1yVuynnUJ6RGGVvfutjB1ubeoAYz1r97nmKqViUhA=; b=Ajq3GouTuaqDS7
-	/5UvSl4vWxTseEU9T7g8F1dUZqQgWt2a9R5vojoFDR4OKeTcS/TbMMAwVA2Vd//u5k+20LNgx/LMw
-	wINegOU/gLLQ0bjGSJX7DuBdXSse6jm7VcqvetACT5k2sKjikCs0EjR2E2tgpRuKsf1Ve37LMAeIS
-	QZdxAnMr9E1cJgCQ9jqYVknisS8pDV3Bobzezm5hKrDkRuB0h6vgew0MNZA5/cF9+dLahuER1JwJ1
-	jMUhHpiic73tb6a/yJeCkM/yBY/lve51ktun5uqWIc6DSr6SI1ZQsj0KQffsqRlNAg9W7M7hXjfof
-	gYxVTxQQAnU2d1CVMM+w==;
+	List-Owner; bh=5u4gxghzgAykYMsAC5ekt/RscVtgo4tfV1vkeJxVAUo=; b=eCUq6+N6h6a5Ps
+	ALxwkIw9Lo3UcaYEqfzmll0Blh96RbOjtin9Au4qo4rakHH/YBqylCu+eS9IWRTdkin1f3+V7k9gK
+	53QedmVGuXCupSy0ssIEU/0k/22KSqsvaqYnABhjF1z4jrmvLZIXeFM8WNlu23rI3p3pDvw5vdWc1
+	3N/MOMlkEfpVF5+dCqMVOg/EMGI0wCoEdto99/GFSp5DpcjEL1Sc40cmwT+QGuUgcY9Nd62D6syTo
+	aY7SS9uYCGsHIn5JGHcMRm/uzlV0pMZRbO68AXDpPKaUGsezKiZ0o2syPDWYCWTP5IjtyWFi9wNew
+	4iOTQZvqQZH/LVwTtReg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPh1g-00EyK7-AB; Wed, 08 Feb 2023 09:46:04 +0000
+	id 1pPh2P-00EyhA-7b; Wed, 08 Feb 2023 09:46:49 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPgue-00Ev86-9H
-	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:38:50 +0000
+	id 1pPgue-00Ev83-9W
+	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 09:38:51 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguU-00039S-Hp; Wed, 08 Feb 2023 10:38:38 +0100
+	id 1pPguU-00039P-Hw; Wed, 08 Feb 2023 10:38:38 +0100
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguS-003UAb-DB; Wed, 08 Feb 2023 10:38:37 +0100
+	id 1pPguS-003UAV-7g; Wed, 08 Feb 2023 10:38:37 +0100
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pPguQ-000s92-Pg; Wed, 08 Feb 2023 10:38:34 +0100
+	id 1pPguQ-000s9e-U9; Wed, 08 Feb 2023 10:38:34 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-pm@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -52,9 +52,9 @@ Cc: linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v2 12/19] PM / devfreq: rockchip-dfi: Handle LPDDR4X
-Date: Wed,  8 Feb 2023 10:38:23 +0100
-Message-Id: <20230208093830.143284-13-s.hauer@pengutronix.de>
+Subject: [PATCH v2 17/19] arm64: dts: rockchip: rk356x: Add DFI
+Date: Wed,  8 Feb 2023 10:38:28 +0100
+Message-Id: <20230208093830.143284-18-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230208093830.143284-1-s.hauer@pengutronix.de>
 References: <20230208093830.143284-1-s.hauer@pengutronix.de>
@@ -64,8 +64,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_013848_463589_258BA6C1 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20230208_013848_552667_CB787837 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +82,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the DFI driver LPDDR4X can be handled in the same way as LPDDR4. Add
-the missing case.
+The DFI unit can be used to measure DRAM utilization using perf. Add the
+node to the device tree.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 1 +
- include/soc/rockchip/rockchip_grf.h  | 1 +
- 2 files changed, 2 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 92ee61c96a1a9..dc48d9c26f599 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -89,6 +89,7 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
- 			       dfi_regs + DDRMON_CTRL);
- 		break;
- 	case ROCKCHIP_DDRTYPE_LPDDR4:
-+	case ROCKCHIP_DDRTYPE_LPDDR4X:
- 		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
- 			       dfi_regs + DDRMON_CTRL);
- 		break;
-diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-index dc77bb762a05a..7150a3362b142 100644
---- a/include/soc/rockchip/rockchip_grf.h
-+++ b/include/soc/rockchip/rockchip_grf.h
-@@ -11,5 +11,6 @@
- #define ROCKCHIP_DDRTYPE_LPDDR2	5
- #define ROCKCHIP_DDRTYPE_LPDDR3	6
- #define ROCKCHIP_DDRTYPE_LPDDR4	7
-+#define ROCKCHIP_DDRTYPE_LPDDR4X	8
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 5706c3e24f0a0..7464077a32efa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -947,6 +947,13 @@ qos_vop_m1: qos@fe1a8100 {
+ 		reg = <0x0 0xfe1a8100 0x0 0x20>;
+ 	};
  
- #endif /* __SOC_ROCKCHIP_GRF_H */
++	dfi: dfi@fe230000 {
++		compatible = "rockchip,rk3568-dfi";
++		reg = <0x00 0xfe230000 0x00 0x400>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		rockchip,pmu = <&pmugrf>;
++	};
++
+ 	pcie2x1: pcie@fe260000 {
+ 		compatible = "rockchip,rk3568-pcie";
+ 		reg = <0x3 0xc0000000 0x0 0x00400000>,
 -- 
 2.30.2
 
