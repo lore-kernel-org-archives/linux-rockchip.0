@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C68C636CC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 11:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7217C05027
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Feb 2023 13:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d5+76TgKFti9ssC8gCXoE4VU8SwfZ4Vx5eGXhzX9n5U=; b=1l8ZTbQSFbveLK
-	T+kt8egtZucM0Rwj83UJ4ghVgrQ0UlraA9/Z7OIr61pjIO2cjSWCxWxaTMV7judQKGaC+PZXiPvSX
-	bKAju0AATG7JZkAN01Y2J5zdGfVMC8ltke11R3n6UJ91vvtH7aULd7hGCQLKIDSI1dHw9kmU+U+fy
-	HC4VX1GiuYfF8HHMqZucKSPNPWuhgzrgO8J0afXraVX28GzJONvFOzPiALrjb03TvP7GyxPagJ+gd
-	7qY7l/cQjEVie7jMCLYIuKX4mIlIgUAUM/29VuWR+6I7SurLHlqqFwMbjDP9tsH523kLxnoIfN6Np
-	pkhZG69BCxH6FMqHaCNA==;
+	List-Owner; bh=2aVFX5lRsoR2RaWDcNocQwG/BAaskzuLY1Tp24N7yaM=; b=HkDbY6mgFzX3lW
+	b7DjCEAyzHrYKyL94tsAfOK7zt4lVPSUq9xYFMTtN+fy9r0cADT3YWfCb2TasINaZxo7Ib5j1FL/y
+	2RwuuBLTFfJS2eeK0Co2tv1jrN3SO/N9rpMH5a1dkpaNJpXpO5+T9YExk8AyVp5lgPQLFaw8BR8P2
+	UBXbNncdO3OalBPEOtl1GpjjxWyTMTSDr/lpM7PuDCf9uu5F8MsJLNs0lgfOBZdqLksWGL71KUUMH
+	mC5DCFGTNa5hwAIuFaMSC0vUtjIyTYGR5UID10PNlqqXJkMfVdxHB1KLUtpOW35LyptVq8TB41qGb
+	rWwwf9Sk0siKlGQGJX4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPiJT-00FQHG-1M; Wed, 08 Feb 2023 11:08:31 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1pPkCZ-00FhCD-Cp; Wed, 08 Feb 2023 13:09:31 +0000
+Received: from mail-oo1-f49.google.com ([209.85.161.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pPiJK-00FQF0-On
-	for linux-rockchip@lists.infradead.org; Wed, 08 Feb 2023 11:08:23 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id g2so21712956ybk.8
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Feb 2023 03:08:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=H3UlESeBgDciAANYrbDYeDSe/nLTXzJWVU7vv0QvjTQ=;
-        b=FpTH+5SNG50VekrvfskE3miwhfUFl+CWP4tBydhtVNcsbNGeVvYDyBR45eJn3DiqC+
-         RQApd/xtzL6xrDBazYsmciFcRnbB+A+8EVTN8uOr7YbtjfTyCkvhpbSYs9PYUQzNPSQ+
-         IfAjUFG3UrAWy7KH515p6NiHKTERG1xLCsjZitWwrn4hpUHG5myGgFUyqkjcNszyelPE
-         4XgiaA3YlvBsYmYmJDOhzWb/jXN3mRFaOwqmiLTMVWotEINHmsZT4XlDLf7+pEaAhLRX
-         zUmDirZkeX7gifq04Zt9YgA443YIJ8UBXd7fFsMj2naruVfbTHXO0x/comBGG06fqMed
-         fMqg==
+	id 1pPkCV-00FhBZ-De; Wed, 08 Feb 2023 13:09:30 +0000
+Received: by mail-oo1-f49.google.com with SMTP id h12-20020a4a940c000000b004fa81915b1cso1715633ooi.4;
+        Wed, 08 Feb 2023 05:09:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=H3UlESeBgDciAANYrbDYeDSe/nLTXzJWVU7vv0QvjTQ=;
-        b=DAloXP1bEqiz2ZIfl/GOZnYPF52dcE9dY+asyQtguc25Yr/PRhD606GGh/fAEhI6tX
-         8ugZDMJyd0COHZi6z46L5a2MQq21txp+is2nBrGM/K98NzEM9vcwiV+6H8Q8apkHeZ2i
-         ZCZ4Sfb5qQ/731DIUOAbUXSLBfFuKbiqLPxgWs+anPx8T0jhCjkp7m31pjegkFAFdrfH
-         Q3SKTisaqSTH93gmHPpUyqCXvbqZlbiJBoRvbj4C5UR80CgiG87mAbDuwvCsIK0dI2u0
-         4DgDTBiqtM+0e+OasviIY/Eh4H8QltzjeJzp33KtvesVMyrsL7EnBJ369PdIDA7mv0WB
-         zY/g==
-X-Gm-Message-State: AO0yUKVPhxMAvOhRTO3j00Ro4R6AGlHC+JS/PURVD1y2htsY3TkXrx5m
-	cyCYhE+HUctGKpo0aZQlwmo6XxREO8WTL2qBmGq5zQ==
-X-Google-Smtp-Source: AK7set8xHbCP+Q2iJNCuxgj4D+UrE9o+1uWIfbVQJLQpwO5h1x/YO2XK51m0DHdQHHPEJpJ0k7HEhsu/xE2qaEsRvws=
-X-Received: by 2002:a5b:85:0:b0:8c0:638c:74c6 with SMTP id b5-20020a5b0085000000b008c0638c74c6mr252977ybp.341.1675854499608;
- Wed, 08 Feb 2023 03:08:19 -0800 (PST)
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=sKctfRFevEGzylkJxSTY3VRpoj1hZvHSm640h9Em5z4=;
+        b=ujDqtrKZx/h5lzN7GBsPvtDVnKG0yzLzTweVf1R2aNzDPZGfy8OQdK2ZUokmmqQh3H
+         U0AawpgynE7ZMvoTTEm0EeRceo+LpFb5H3G4kMW6fYq7/BvbnRim+TFK+eCEHm5d8RMo
+         Y9Ud4F8IGYd+GKr+4Gv+saznY+b8xg/VwzzIR2xbG7gw/6DY+EYeaVhWes1s1GZi+HsR
+         o6zWrSoMTIxmy7ZaEmEDRsoj2v+5HFzcD7/7beuh8xRBNsmN7877HUFoZwqD6Hc6i8NF
+         S4Kz4dxzKu5qKa/Tm1q2tTnirVEnmGP96FYM5Pas/pEMLB0xso4AX7Dl54g+0g3JEyg3
+         PYOA==
+X-Gm-Message-State: AO0yUKVRohPODjqCXkCmJZ+6QkUCQjL+nNljoTjhxIanZO9940Fhrrtd
+	BKGhSrhl4GV4nYlPsqwlSQ==
+X-Google-Smtp-Source: AK7set92nRxfqLhEo6VH3xIGRC1voySix/Y+GAklX6sGfkt1mG8OhseTlmNN7FZBChOHr6TFaCdmIw==
+X-Received: by 2002:a4a:e091:0:b0:51a:4c5d:fd1e with SMTP id w17-20020a4ae091000000b0051a4c5dfd1emr3445841oos.9.1675861765298;
+        Wed, 08 Feb 2023 05:09:25 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id m14-20020a9d6ace000000b0068bce0cd4e1sm8000848otq.9.2023.02.08.05.09.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Feb 2023 05:09:24 -0800 (PST)
+Received: (nullmailer pid 1735857 invoked by uid 1000);
+	Wed, 08 Feb 2023 13:09:24 -0000
 MIME-Version: 1.0
-References: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
-In-Reply-To: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 8 Feb 2023 12:08:07 +0100
-Message-ID: <CACRpkdbmXri1vtRShm7a3N0sRA7Qg_ni5FpAtiEv+72a6g9Wng@mail.gmail.com>
-Subject: Re: [PATCH v2 1/8] dt-bindings: gpio: rockchip,gpio-bank: add
- compatible string per SoC
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: brgl@bgdev.pl, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	heiko@sntech.de, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, sjg@chromium.org, 
-	philipp.tomsich@vrull.eu, john@metanate.com, 
-	quentin.schulz@theobroma-systems.com
+From: Rob Herring <robh@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, kernel@pengutronix.de, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Will Deacon <will@kernel.org>
+In-Reply-To: <20230208093830.143284-19-s.hauer@pengutronix.de>
+References: <20230208093830.143284-1-s.hauer@pengutronix.de>
+ <20230208093830.143284-19-s.hauer@pengutronix.de>
+Message-Id: <167586156991.1727589.15971216744751237430.robh@kernel.org>
+Subject: Re: [PATCH v2 18/19] dt-bindings: devfreq: event: convert Rockchip
+ DFI binding to yaml
+Date: Wed, 08 Feb 2023 07:09:24 -0600
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230208_030822_812070_6F2A6E6D 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230208_050927_475852_5C0B38E6 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,18 +79,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 21, 2023 at 12:06 PM Johan Jonker <jbx6244@gmail.com> wrote:
 
-> Currently all Rockchip gpio nodes have the same compatible.
-> Compatible strings should be SoC related.
->
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+On Wed, 08 Feb 2023 10:38:29 +0100, Sascha Hauer wrote:
+> Convert the Rockchip DFI binding to yaml.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  .../bindings/devfreq/event/rockchip,dfi.yaml  | 61 +++++++++++++++++++
+>  .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ------
+>  2 files changed, 61 insertions(+), 18 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> 
 
-Bartosz can you merge this one patch and keep the rest back
-so we get a more defined DT binding baseline?
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Yours,
-Linus Walleij
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+
+
+doc reference errors (make refcheckdocs):
+Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml: Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230208093830.143284-19-s.hauer@pengutronix.de
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
 _______________________________________________
 Linux-rockchip mailing list
