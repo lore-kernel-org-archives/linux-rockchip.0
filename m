@@ -4,58 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F475C636CC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 07:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4480EC636D7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 09:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MtNxu1xqVMQR/HQ9bY0+bVq/O0yXCwd+jMbUblts85M=; b=0LnlyhZIBrPY3E
-	1ny8+apGJkC+Ck/41uCKHkkSXKyrHAFHIIqqyIOg28MVJk3ozQ2beUcGEcWNA6h5QzwaMZPvB06rD
-	DKQC9NplYvozVD6edlaC0JDYg77Ety6tK1uWM/EdOZwmII1fg3ABiOnf/lypqxTeDGxaYgxWHF5xd
-	Kp9suB6mrywf20oUFswGdDcSo86fwUhO+6WoZgUCyB7FoXNsq4ZwzE2X7M0PMDdk8vMiNFBTn0rhU
-	qf28ZLEwBrga8OdezvFKlnTlrlxBGLYf2CkVC4FExHPJlrzrQj9V7SFv3OptZKkfC0fhaldGjlKjx
-	uRXEb7oTg2ce4uQUdbtQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HRRDZZ9kk/VcO7mwDJ0tQPrmMVvwWGRLOcO5KrDNomo=; b=QWPw8eiHO+RWl2
+	VhRAB/LbBpcv4v0eCvfuxRuxZ31aEF8pcHAPgp5BIFBdWpx4fsA1PQ8B22UP6kXDe2rQihtYuh5iB
+	sYS9BuPTFaGBuGaQk5/3h/p6SJNhC3RNa4d3rBztjp57BFhSeJzhd4GjT3XKkrK0Cuw+OQVeFaWCg
+	oJeerpeUPsg3EGo2OrQsuaaA7EMrVWgZkYNZvyDdC4ghLPR5Eld/7i70HSAKTgWj0YVxuatqBFuQF
+	doYhZN4cu3UuGLuZHWXCyMDsGK4fi0vVXW09PpSduZshiwAGrTIZDRFUh8JdF1APFYYQ61ByN0mBr
+	7CH3wFsth32voWoAXjcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRT1Z-00DQ24-2R; Mon, 13 Feb 2023 07:13:17 +0000
-Received: from smtpbgbr1.qq.com ([54.207.19.206])
+	id 1pRUx0-00DmPu-Fe; Mon, 13 Feb 2023 09:16:42 +0000
+Received: from mail.tryweryn.pl ([5.196.29.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRT1V-00DPxN-Jv
-	for linux-rockchip@lists.infradead.org; Mon, 13 Feb 2023 07:13:16 +0000
-X-QQ-mid: bizesmtp70t1676272308tfgfr02l
-Received: from [192.168.30.129] ( [92.202.159.105])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 13 Feb 2023 15:11:46 +0800 (CST)
-X-QQ-SSF: 01100000002000B0E000B00A0000000
-X-QQ-FEAT: CR3LFp2JE4lDSCIU1cfFU98cvix/eiTofwryXjxR0CGSihdDvPFb5smRIwM9x
-	c/mbifTe/bM8YQqOGm9YhmVqEeSXpR7nDQ8oxPBWV6Ys6DNdiqjSev4FHQq3i6LQte5hP/V
-	wqmrQ+YJHxyST2lpuBPYGFL4oolei2CxcjigXKLum5PVsQd78KLv7+2GCu4lzn9mttUQ4iS
-	kIDAseMINAes/4q8gpQEH+D1w+Zpd8rMeHh+N0Wa8Kw0i8iaFjx/KpAbbHWM7A6/lNQP0N9
-	5hCePHxgw5h/5ibnNVM2QSoFR726G1lW+wPO4IyXOCBJbl6hm19FxTkKTKi4BzKpPUxcNwY
-	y01S05cJLcjn7IXPqkMw+06dAVqWB3vaWl1re950TOfER8bI+g=
-X-QQ-GoodBg: 0
-Message-ID: <43BFE269C2D3B94A+72719122-bfdd-8e99-9176-a6f5e30abfb2@radxa.com>
-Date: Mon, 13 Feb 2023 16:11:46 +0900
+	id 1pRUwi-00DmGt-R4
+	for linux-rockchip@lists.infradead.org; Mon, 13 Feb 2023 09:16:28 +0000
+Received: by mail.tryweryn.pl (Postfix, from userid 1002)
+	id 68941A2E56; Mon, 13 Feb 2023 09:15:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tryweryn.pl; s=mail;
+	t=1676279777; bh=Bo+/jg3TCpOeS79PpZREuOWEeqJV//jojylD9dSrSik=;
+	h=Date:From:To:Subject:From;
+	b=PEgDVHR7HWB6gMubsoQ2oMUdBQYpMQyTh9fOBDPmG/fwzpgGb2NXJaEPc2UurY3MI
+	 cPYQHXYsAHLTJDFWgjfws1L5QjHaCJuUn0CQEsOxIvjA9qyxxRKfdKWQnwY3w+vNnD
+	 8SYi3oNDVSBVWnY8UbXYDgPHShV17MOWvU1ZjKm8MoRPOREjibFpbgQmzsrwrvtfqx
+	 MML0WcUeGdWegGfBKlIFdSC5nIzJXeNqJNQkWcObtUOlc/0H9FCBDNR3mHopQDwQxz
+	 OfIFRDjGOY5LoiWSan9OaSvNDXc2dRoFRSV8XfDFZv/gxvDygEbcWRhN5R+u9r2pPb
+	 RHk67xa3IWjOg==
+Received: by mail.tryweryn.pl for <linux-rockchip@lists.infradead.org>; Mon, 13 Feb 2023 09:15:46 GMT
+Message-ID: <20230213074500-0.1.84.2y8iq.0.e4ejeo7c4l@tryweryn.pl>
+Date: Mon, 13 Feb 2023 09:15:46 GMT
+From: "Karol Michun" <karol.michun@tryweryn.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Prezentacja
+X-Mailer: mail.tryweryn.pl
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v5 0/4] drm/rockchip: dw_hdmi: Add 4k@30 support
-To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- Robin Murphy <robin.murphy@arm.com>, Dan Johansen <strit@manjaro.org>
-References: <20230208090816.3810589-1-s.hauer@pengutronix.de>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20230208090816.3810589-1-s.hauer@pengutronix.de>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvr:qybglogicsvr5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230212_231314_500219_B9C2A37B 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20230213_011626_780552_3C4E4F57 
+X-CRM114-Status: UNSURE (   1.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,54 +59,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-hi,
-
-on my rk3399 boards(ROCK Pi 4B+ and ROCK 4C+), fb0 is configured as 
-1920x1080, and nothing is displayed... "no signal" on display.
-
---
-FUKAUMI Naoki
-
-On 2/8/23 18:08, Sascha Hauer wrote:
-> Some more small changes to this series, see changelog.
-> 
-> Sascha
-> 
-> Changes since v4:
-> - Use struct vop_reg to store resolutions
-> - Only check for valid clock rates when clock != NULL
-> 
-> Changes since v3
-> - Add patch to limit VOP resolutions to hardware capabilitie
-> 
-> Changes since v2:
-> - Use correct register values for mpll_cfg
-> - Add patch to discard modes we cannot achieve
-> 
-> Changes since v1:
-> - Allow non standard clock rates only on Synopsys phy as suggested by
->    Robin Murphy
-> 
-> Sascha Hauer (4):
->    drm/rockchip: vop: limit maximium resolution to hardware capabilities
->    drm/rockchip: dw_hdmi: relax mode_valid hook
->    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
->    drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
-> 
->   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c  | 41 ++++++++++++++++----
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 15 +++++++
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.h  |  6 +++
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  5 ---
->   drivers/gpu/drm/rockchip/rockchip_vop_reg.c  | 18 +++++++++
->   5 files changed, 73 insertions(+), 12 deletions(-)
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5IQoKQ3p5IG3Ds2fFgmJ5bSBwcnplZHN0YXdpxIcgcm96d2nEhXphbmllLCBr
+dMOzcmUgdW1vxbxsaXdpYSBtb25pdG9yaW5nIGthxbxkZWdvIGF1dGEgdyBjemFzaWUgcnplY3p5
+d2lzdHltIHcgdHltIGplZ28gcG96eWNqxJksIHp1xbx5Y2llIHBhbGl3YSBpIHByemViaWVnPwoK
+RG9kYXRrb3dvIG5hc3plIG5hcnrEmWR6aWUgbWluaW1hbGl6dWplIGtvc3p0eSB1dHJ6eW1hbmlh
+IHNhbW9jaG9kw7N3LCBza3JhY2EgY3phcyBwcnplamF6ZMOzdywgYSB0YWvFvGUgdHdvcnplbmll
+IHBsYW51IHRyYXMgY3p5IGRvc3Rhdy4KClogbmFzemVqIHdpZWR6eSBpIGRvxZt3aWFkY3plbmlh
+IGtvcnp5c3RhIGp1xbwgcG9uYWQgNDkgdHlzLiBLbGllbnTDs3cuIE1vbml0b3J1amVteSA4MDkg
+MDAwIHBvamF6ZMOzdyBuYSBjYcWCeW0gxZt3aWVjaWUsIGNvIGplc3QgbmFzesSFIG5hamxlcHN6
+xIUgd2l6eXTDs3drxIUuCgpCYXJkem8gcHJvc3rEmSBvIGUtbWFpbGEgendyb3RuZWdvLCBqZcWb
+bGkgbW9nbGliecWbbXkgd3Nww7NsbmllIG9tw7N3acSHIHBvdGVuY2phxYIgd3lrb3J6eXN0YW5p
+YSB0YWtpZWdvIHJvendpxIV6YW5pYSB3IFBhxYRzdHdhIGZpcm1pZS4KCgpQb3pkcmF3aWFtCkth
+cm9sIE1pY2h1bgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
