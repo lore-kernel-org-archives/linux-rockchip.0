@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F9FFC636CC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 15:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97118C636CC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 15:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3w6gc/OxtS61kQeoaX8RLAP7QGfmVvtHqK4dlus9XIY=; b=L24PUaRShshxZw
-	9nWuh0ffKUSJ6OMy0R9owskGxbUNzRujEiH0fspEwmbeFlHWjhhIoBcvTlkhYqr5ysYsaMTUFNuZC
-	hXmNg67xuB/Jw3sdPOKxXyyp5qFIIx9AcAELZJJh9uIqCqT58jE0tkwYTTgPJ98bPqv4U3ge06jDp
-	7dLBk7yM+t4Qej/tyjABakiziaAFsgG7oK7zoiQe/+25aeevbIe8z+kXcFCAFSQnhRYrwDDnIOXVX
-	NKEg2jJykCOCruPUjcHp6IsxXIDeYPxg2zfXK7hu1QKPTatHJl64Zx7LmAE7tfciKhz4W82f5yIEA
-	M0sVNZXAe8i/e73vhudA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aJ7vdkPkkgJPqdXnVeisnqKSsyb6/Rznkml0eyBjCos=; b=Td0ubboWFY7ZtI
+	WnBXujkAfEvq2Lez77SsGeMTMCg1Qg1o95fdX6HUNN4dP85fZVgfCKPp8bxJnMmH0sxZ26n2eEXHy
+	njxVJCuww2rfqTPqpxoUoqMcPS2BuoNelOoAh1rnnm2wOhkloageXYfAO+Oz+bQrJJHCFzmdWe76M
+	UX2Y5vDN0YENcX5J/HtyyAkeeqgwUvgrrkYmEVg12L6SMk/2dcw+Q9wyLHR3CwYXGfaobfUHq8nAm
+	IPubgaysPuozRPOtm19c4QBulqFOPSkD0hna6t6xFJ96xefRJA7O5zb0ET3dnKmo/rT2zbEdG8Wb8
+	uFl50KTM7KSMSL4U4DyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRaki-00FCRo-0f; Mon, 13 Feb 2023 15:28:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pRauX-00FEzb-9w; Mon, 13 Feb 2023 15:38:33 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRakJ-00FCH2-TS; Mon, 13 Feb 2023 15:28:01 +0000
-Received: from cryzen.lan (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: tanureal)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B475D6602143;
-	Mon, 13 Feb 2023 15:27:55 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676302076;
-	bh=p76gdDIYlAnUqSc9v+byWyTo408BlynhGQi7WPDp8Dg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CLPehRF3s20xu8SgedRdcWrPcpeiVox2kYhFzikI+xHLD9B8V1YDF/P/1phdgv+Ak
-	 zOGd7/dpwkdB01+0r66aceIopm9AgaiFVFGxGzanDy7OSdZqLgce4Lc4F7ghX3/Bpb
-	 neGnPKN4/5d1g335x0seDbOxD/YNA2HrOGq1+8Kh7ExMZVuDnHdpcQ8xeA8gUtLW1U
-	 YTeSqU7WOt6u5kVu0v1XjqeGJFPpxV0uIiQQc+oD2dvdUkY0YgwndUDgLaGgADlc7K
-	 mQkYGso/UrFX0qd78CLdMFK94aDgbcwArn2Ze3ey3xe2EdqRmTraCnplbvvwv0y7cE
-	 bIwwOrSjm3uQw==
-From: Lucas Tanure <lucas.tanure@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-mmc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Lucas Tanure <lucas.tanure@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3588: Add sdmmc node
-Date: Mon, 13 Feb 2023 15:27:40 +0000
-Message-Id: <20230213152740.359055-2-lucas.tanure@collabora.com>
+	id 1pRauU-00FExJ-FN
+	for linux-rockchip@lists.infradead.org; Mon, 13 Feb 2023 15:38:31 +0000
+Received: by mail-ej1-x629.google.com with SMTP id hx15so32815727ejc.11
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Feb 2023 07:38:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=62gBWaG5EaS8ZL331hizoMVfyfG7akdXmH5GJyg9PAY=;
+        b=n7VPT2wd+BmLyIaPggH+MhL6iJxw+nt0ZsOMra6oOFTOabvjE9PO700QJi+a2fqT+p
+         qltpyAqHVm8xodQCwQHguUa2tZdcH3SoOf4Er7ekUySayTzMmcNz9+X49wWQRr40vSvj
+         8GiGpvdTBaW8kGlTOp36bANOAt+6iuwwFfb+UsS9kcWCf22AOXLD15voPzgsMH8uVV9L
+         xGnAFa9SQxWVlYrp4X5YDnIwpRDwXrAgPgdNFRO7LNkXFb4khJHq/XFuA0XE+nREc2HP
+         0W8ULJi+IDUU2RZB9iDbBepAVK09/6AkLFxLbcXmBXkgdGMbqFpc+bGNp471Rqpx4CpY
+         lCqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=62gBWaG5EaS8ZL331hizoMVfyfG7akdXmH5GJyg9PAY=;
+        b=AiRDcCCmRGE3+bHDJA9cdQyQDWpEjIe+BsywDX/Az6tm+ZVycG86AIo2jnW8DFSh54
+         LfyUTMYum6gGCUQpEdAyt1iRrNGv1Q67qG0hW710Z5JmOcWW/cptYfvlUK5t8hFxje2o
+         9j1bNr8TF7NPfR9mX2Xe34lmU/hbV8O3yWUIEaQESj1+y+6q0bc1jwYL0GvhUxliiOKC
+         2sucg5696/ckMvj/ocp4HGYQ3pDoI9+vGTwBKaU9Byi4z/JNCBLl7u4oZnCtTfbMbiR2
+         TRi6xFidiEQmx6b3KpGrSQYbQC9MUeWYqbhPozqZrhN8b2fh+Ja0AEi3fKbaRPzBlH1w
+         rLUw==
+X-Gm-Message-State: AO0yUKXMX3XXHDRggVGLb6ToDnepTcbd2LHwU6XMCGB/b4pqT/hKzLal
+	NUZFTL0tejwuTNUMd28ClOTMDivvgtw=
+X-Google-Smtp-Source: AK7set90koQ8q4/n7OJQxFhGJvoHNjIAO3IQT9PRcdHIBPYDHI4o/DR8WQ0fsquwcEdiqWC+zxrU/Q==
+X-Received: by 2002:a17:906:1e8f:b0:870:baa6:6762 with SMTP id e15-20020a1709061e8f00b00870baa66762mr22994750ejj.14.1676302706391;
+        Mon, 13 Feb 2023 07:38:26 -0800 (PST)
+Received: from localhost.localdomain (83.24.145.108.ipv4.supernova.orange.pl. [83.24.145.108])
+        by smtp.gmail.com with ESMTPSA id gf17-20020a170906e21100b008b12614ee06sm115901ejb.161.2023.02.13.07.38.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Feb 2023 07:38:26 -0800 (PST)
+From: Maya Matuszczyk <maccraft123mc@gmail.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Maya Matuszczyk <maccraft123mc@gmail.com>
+Subject: [PATCH v2 0/4] Add internal display support to Odroid Go Super
+Date: Mon, 13 Feb 2023 16:38:12 +0100
+Message-Id: <20230213153816.213526-1-maccraft123mc@gmail.com>
 X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230213152740.359055-1-lucas.tanure@collabora.com>
-References: <20230213152740.359055-1-lucas.tanure@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_072800_120941_7001F531 
-X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-CacheID: sfid-20230213_073830_550368_20209033 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,41 +88,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add SD Card node for RK3588s and RK3588.
+This patch series introduces internal display to Odroid Go Super, which
+shares panel with Odroid Go Ultra and several clone devices.
 
-Co-developed-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 005cde61b4b2..fca8503aed8c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1099,6 +1099,21 @@ gmac1_mtl_tx_setup: tx-queues-config {
- 		};
- 	};
- 
-+	sdmmc: mmc@fe2c0000 {
-+		compatible = "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
-+		reg = <0x0 0xfe2c0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&scmi_clk SCMI_HCLK_SD>, <&scmi_clk SCMI_CCLK_SD>,
-+			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-+		fifo-depth = <0x100>;
-+		max-frequency = <200000000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
-+		power-domains = <&power RK3588_PD_SDMMC>;
-+		status = "disabled";
-+	};
-+
- 	sdhci: mmc@fe2e0000 {
- 		compatible = "rockchip,rk3588-dwcmshc";
- 		reg = <0x0 0xfe2e0000 0x0 0x10000>;
+Changes from v1:
+- Changed commit message of dt-bindings patch to conform to standards
+- Made dt-bindings patch add compatible in alphabetical order
+- Added support for orientation in st7701 driver
+
+Maya Matuszczyk (4):
+  dt-bindings: display: panel: sitronix,st7701: Add Elida KD50T048A
+    Panel
+  drm: panel: Add Elida KD50T048A to Sitronix ST7701 driver
+  drm: panel: Add orientation support for st7701
+  arm64: dts: rockchip: Add display support to Odroid Go Super
+
+ .../display/panel/sitronix,st7701.yaml        |   1 +
+ .../boot/dts/rockchip/rk3326-odroid-go3.dts   |   4 +-
+ drivers/gpu/drm/panel/panel-sitronix-st7701.c | 144 ++++++++++++++++++
+ 3 files changed, 148 insertions(+), 1 deletion(-)
+
 -- 
 2.39.1
 
