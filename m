@@ -4,49 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4480EC636D7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 09:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3603C636D4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Feb 2023 15:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HRRDZZ9kk/VcO7mwDJ0tQPrmMVvwWGRLOcO5KrDNomo=; b=QWPw8eiHO+RWl2
-	VhRAB/LbBpcv4v0eCvfuxRuxZ31aEF8pcHAPgp5BIFBdWpx4fsA1PQ8B22UP6kXDe2rQihtYuh5iB
-	sYS9BuPTFaGBuGaQk5/3h/p6SJNhC3RNa4d3rBztjp57BFhSeJzhd4GjT3XKkrK0Cuw+OQVeFaWCg
-	oJeerpeUPsg3EGo2OrQsuaaA7EMrVWgZkYNZvyDdC4ghLPR5Eld/7i70HSAKTgWj0YVxuatqBFuQF
-	doYhZN4cu3UuGLuZHWXCyMDsGK4fi0vVXW09PpSduZshiwAGrTIZDRFUh8JdF1APFYYQ61ByN0mBr
-	7CH3wFsth32voWoAXjcA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DQeiH85IrbTOUzH42dB1WxMNyHLGhJx+DvG58TqYTOY=; b=3QiH2Yp8EBnNCH
+	o0pONEw+kJJ6b+sFJyom2qy1rkR1kocDyqLocWoZfNxwWRMNs2xOkqk9bYcoDelcQsSUQI3ynaabP
+	oPtqHOnC6QavwrdBVBe6ejyQYztLjmL/qWEo06/iiKuU+HFMD7mlZYjr85uay+WiO2QZHh43hxqhH
+	qKvsaTPsbHOvJsG4a3xNX5hDXNjO/srVUx3fMTGIFgu0MSoIpHfAzM8khdpwPygEL6S4DmRJi2cDT
+	DPeTrGt696a2jQ/D+PSaIrKaebkhuCj1hpdSWjZ4dXfs1hCKCtpY2r1xYsSG31MLzYOeJzq7Ml0yh
+	bZ9b8pADCZUoX9b4AEgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRUx0-00DmPu-Fe; Mon, 13 Feb 2023 09:16:42 +0000
-Received: from mail.tryweryn.pl ([5.196.29.197])
+	id 1pRaki-00FCS6-DV; Mon, 13 Feb 2023 15:28:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRUwi-00DmGt-R4
-	for linux-rockchip@lists.infradead.org; Mon, 13 Feb 2023 09:16:28 +0000
-Received: by mail.tryweryn.pl (Postfix, from userid 1002)
-	id 68941A2E56; Mon, 13 Feb 2023 09:15:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tryweryn.pl; s=mail;
-	t=1676279777; bh=Bo+/jg3TCpOeS79PpZREuOWEeqJV//jojylD9dSrSik=;
-	h=Date:From:To:Subject:From;
-	b=PEgDVHR7HWB6gMubsoQ2oMUdBQYpMQyTh9fOBDPmG/fwzpgGb2NXJaEPc2UurY3MI
-	 cPYQHXYsAHLTJDFWgjfws1L5QjHaCJuUn0CQEsOxIvjA9qyxxRKfdKWQnwY3w+vNnD
-	 8SYi3oNDVSBVWnY8UbXYDgPHShV17MOWvU1ZjKm8MoRPOREjibFpbgQmzsrwrvtfqx
-	 MML0WcUeGdWegGfBKlIFdSC5nIzJXeNqJNQkWcObtUOlc/0H9FCBDNR3mHopQDwQxz
-	 OfIFRDjGOY5LoiWSan9OaSvNDXc2dRoFRSV8XfDFZv/gxvDygEbcWRhN5R+u9r2pPb
-	 RHk67xa3IWjOg==
-Received: by mail.tryweryn.pl for <linux-rockchip@lists.infradead.org>; Mon, 13 Feb 2023 09:15:46 GMT
-Message-ID: <20230213074500-0.1.84.2y8iq.0.e4ejeo7c4l@tryweryn.pl>
-Date: Mon, 13 Feb 2023 09:15:46 GMT
-From: "Karol Michun" <karol.michun@tryweryn.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Prezentacja
-X-Mailer: mail.tryweryn.pl
+	id 1pRakJ-00FCGx-SR; Mon, 13 Feb 2023 15:28:01 +0000
+Received: from cryzen.lan (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: tanureal)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 636096602142;
+	Mon, 13 Feb 2023 15:27:55 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1676302075;
+	bh=5lrCTf6kSd29WBCzueCplh1nvsxxYZtH+v0sT1pv80Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=eWvcSBBVzsjxLYb8ItSb/FEw9EEIyGoB4mnreHIYP6E5mULPzFDgCLhFvv1X8FhRW
+	 gUZE2ogEeINAHFfqaeS5S+B1JTUaxwWmPO5hYmdLq8JirMIOM0suWOOgJrH2HfwWjY
+	 nwYYX5V9UUGU9IPAAnV5z24urOl/6lgjOQuOy0tsLiKupLIAFPOfD7AOYUFi2j5dgF
+	 f66eGDeqNUwfTUnTMMIwMbRaSJwLzLmIQAoMmvcIrWu3nvfumefJBccFZkMsxn55Kq
+	 UkRs+76uqI7UF5GFBfXbQUPywyqouXymChyVoG+sMf4pG9KeZNn1Nydu1N1wlXVjPs
+	 HDSSURPGXlREQ==
+From: Lucas Tanure <lucas.tanure@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-mmc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Lucas Tanure <lucas.tanure@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 1/2] dt-bindings: mmc: rockchip-dw-mshc: Add RK3588 compatible string
+Date: Mon, 13 Feb 2023 15:27:39 +0000
+Message-Id: <20230213152740.359055-1-lucas.tanure@collabora.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230213_011626_780552_3C4E4F57 
-X-CRM114-Status: UNSURE (   1.07  )
+X-CRM114-CacheID: sfid-20230213_072800_122009_021ABC35 
+X-CRM114-Status: UNSURE (   8.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -59,23 +74,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5IQoKQ3p5IG3Ds2fFgmJ5bSBwcnplZHN0YXdpxIcgcm96d2nEhXphbmllLCBr
-dMOzcmUgdW1vxbxsaXdpYSBtb25pdG9yaW5nIGthxbxkZWdvIGF1dGEgdyBjemFzaWUgcnplY3p5
-d2lzdHltIHcgdHltIGplZ28gcG96eWNqxJksIHp1xbx5Y2llIHBhbGl3YSBpIHByemViaWVnPwoK
-RG9kYXRrb3dvIG5hc3plIG5hcnrEmWR6aWUgbWluaW1hbGl6dWplIGtvc3p0eSB1dHJ6eW1hbmlh
-IHNhbW9jaG9kw7N3LCBza3JhY2EgY3phcyBwcnplamF6ZMOzdywgYSB0YWvFvGUgdHdvcnplbmll
-IHBsYW51IHRyYXMgY3p5IGRvc3Rhdy4KClogbmFzemVqIHdpZWR6eSBpIGRvxZt3aWFkY3plbmlh
-IGtvcnp5c3RhIGp1xbwgcG9uYWQgNDkgdHlzLiBLbGllbnTDs3cuIE1vbml0b3J1amVteSA4MDkg
-MDAwIHBvamF6ZMOzdyBuYSBjYcWCeW0gxZt3aWVjaWUsIGNvIGplc3QgbmFzesSFIG5hamxlcHN6
-xIUgd2l6eXTDs3drxIUuCgpCYXJkem8gcHJvc3rEmSBvIGUtbWFpbGEgendyb3RuZWdvLCBqZcWb
-bGkgbW9nbGliecWbbXkgd3Nww7NsbmllIG9tw7N3acSHIHBvdGVuY2phxYIgd3lrb3J6eXN0YW5p
-YSB0YWtpZWdvIHJvendpxIV6YW5pYSB3IFBhxYRzdHdhIGZpcm1pZS4KCgpQb3pkcmF3aWFtCkth
-cm9sIE1pY2h1bgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+Add RK3588 compatible string for SD interface.
+
+Co-developed-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
+---
+ Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+index 67d7223f74da..211cd0b0bc5f 100644
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
++++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+@@ -39,6 +39,7 @@ properties:
+               - rockchip,rk3368-dw-mshc
+               - rockchip,rk3399-dw-mshc
+               - rockchip,rk3568-dw-mshc
++              - rockchip,rk3588-dw-mshc
+               - rockchip,rv1108-dw-mshc
+               - rockchip,rv1126-dw-mshc
+           - const: rockchip,rk3288-dw-mshc
+-- 
+2.39.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
