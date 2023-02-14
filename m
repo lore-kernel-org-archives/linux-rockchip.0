@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11F8FC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 14:30:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8327BC05027
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 14:30:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y/jBfetwDExz1peX/UwmYMuhLsphvDBgDAsEHtREzg4=; b=Wn7BGJGCW9+xc/
-	J4WgTAKe4di1EpI1EYo2n8uQsMBtbLJlhvFxSjgrSHn3qIqgAAV8pOYqFMGGDYnfcMLYSSRVyBk21
-	h6ilHspdyRcv4vDARDfn1T5REmqUR/IqRL4xN7Bo8kTYxNBCaQYHhuv/oTcVcRymLMm19lazPxX60
-	M8eOYH8y4uSWpSP/C1SKy8448KiZZMI19aq5+GJ1vu2DPD120y1NZ3f0vGzSE0H/T35Of4YmulFcR
-	KJ6Hq7e+Fr71Khe6/ync5t7OGnAMNGXhleKEGnn9ApRDtTSygwPEqNFLdnI2INt6fjcDU/qqcENKF
-	/QO4yGe7sAU0vzukagYA==;
+	List-Owner; bh=g+1I6GRXh7hyvDvPCTEFg3b1d+tNSDbtQ/aJESDyXuc=; b=R6szBV4IWO0dGw
+	kUXkQG3Ddf3vQZ1MUgB2OM1LBt2l/GPq7DrtttP492IzvYO7IuH1Hb0J2pI4c2vQ1D2TEHobQ/26+
+	Wxn0g3EMxx/KRi5VxkZLDkJsSY6Wj09dGDvcWRi9U/aVY8Ajdf9UPgWQZVi47LoVVgLn8CLsRoGUG
+	3qhePRwj3F7ztfPFfE5u/TIAPE5t9h0Wr8qD4axZcdwLFBY7KZqwNswSK+Jm3IwqT/0R4fGr7JXF1
+	jwysPUJYT8DL3uv8VqqUbfksqEeFtjaZWC7YhQ/ArEbt7grSCmpT8U8h7CN+3Yb2XfnmVCqWGWR0G
+	hcCsxwv0EhfLxy/r9ecA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRwKH-002Ao9-5Y; Tue, 14 Feb 2023 14:30:33 +0000
+	id 1pRwKK-002Aq4-9k; Tue, 14 Feb 2023 14:30:36 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRvwh-001z3m-0Y; Tue, 14 Feb 2023 14:06:15 +0000
+	id 1pRvwh-001z3l-87; Tue, 14 Feb 2023 14:06:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:37c0:9b2b:ec16:1f37])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BD7256602176;
-	Tue, 14 Feb 2023 14:06:06 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3460D660216E;
+	Tue, 14 Feb 2023 14:06:07 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1676383567;
-	bh=1J6gaKNxcimhdWSFcWstzO2+uNE/ZcIodiO3cvBPmQA=;
+	bh=e7TTDcNv6HNZsFtnX0uLj6NxhVdB/6sO+gP4Rydq98M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F4I0T8L1LDF3wByEw0kvP3jgFzwYqf1LjzntNSpMNf1iPv5d3mKkQrtysf5gefwmW
-	 C21Xg/mCAvo6yBl6jnwV2Gzg4wq7ZhMgty8PRPj9AwRNMbg5GrkeHTntSDb5ciVY58
-	 coi7HQS9gaPdJdmuXRa4r4y+34vr/f5u9IkfVdPMdf4uhh9U94M2ZIE1DE3+npgEyy
-	 cTfjYK2M29Chkz5QKnkIE1Tgxt0DlDmDC9j6+dkdBe4rTANVhExI3tp1V/NzXQSpQh
-	 KtRK8sIimPLWNACA5BwgRuU9YesDL5kfgaZ4bEESCjs+YFGu0qinWBf4LvfpFbTsiT
-	 ghfbMZC2FXOhg==
+	b=hcycjUOmm1kHlf9Eeks85/apHhYWGfsE4zDV0zWFlQv0aPMhoUwzX7fCfqL5Md/TB
+	 oqPTuQxOUJCM9iO7b2XvkCMArcdSAm2G22pMCXyrc4TcE3NPdw2XCOU/oVF/MsbysR
+	 FEL4akvdZ0NG8mx5B8a1JR9Lj9UOF58K41mqLHrE/pZZ6/eAjuVmV7SXudzUZqFqg1
+	 U9GYdQfCSwIIJZ/jFUEP45FTsbwre0Y+X3catQC35SETzSmSUXPEafsBI9OSZHPbh1
+	 ssRnB8hlagFkAXNSP6Sd+WNIgXnQwmi+Rl6OdyePDgIiVGb8BdvjD7apa8IjWkKsvs
+	 kpmPhJ4G4SgEg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -58,16 +58,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 05/12] media: verisilicon: Add AV1 decoder mode and controls
-Date: Tue, 14 Feb 2023 15:05:50 +0100
-Message-Id: <20230214140557.537984-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 06/12] media: verisilicon: Check AV1 bitstreams bit depth
+Date: Tue, 14 Feb 2023 15:05:51 +0100
+Message-Id: <20230214140557.537984-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230214140557.537984-1-benjamin.gaignard@collabora.com>
 References: <20230214140557.537984-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_060611_257010_456AC771 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20230214_060611_491216_DE900896 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +84,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add AV1 decoder as new decoder mode to Hantro driver.
-Register needed AV1 controls for the decoder.
+The driver supports 8 and 10 bits bitstreams, make sure to discard
+other cases.
+It could happens that userland test if V4L2_CID_STATELESS_AV1_SEQUENCE
+exists without setting bit_depth field in this case use
+HANTRO_DEFAULT_BIT_DEPTH value.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro.h   |  3 +++
- .../media/platform/verisilicon/hantro_drv.c   | 21 +++++++++++++++++++
- 2 files changed, 24 insertions(+)
+version 4:
+- This patch is the result of squashing "Save bit depth for AV1 decoder"
+  and "Check AV1 bitstreams bit depth" of version 3 + adapation to 
+  "[PATCH v8 0/6] media: verisilicon: HEVC: fix 10bits handling" series.
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 2989ebc631cc..61480825b856 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -38,6 +38,7 @@ struct hantro_postproc_ops;
- #define HANTRO_H264_DECODER	BIT(18)
- #define HANTRO_HEVC_DECODER	BIT(19)
- #define HANTRO_VP9_DECODER	BIT(20)
-+#define HANTRO_AV1_DECODER	BIT(21)
- #define HANTRO_DECODERS		0xffff0000
- 
- /**
-@@ -111,6 +112,7 @@ struct hantro_variant {
-  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
-  * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
-  * @HANTRO_MODE_VP9_DEC: VP9 decoder.
-+ * @HANTRO_MODE_AV1_DEC: AV1 decoder
-  */
- enum hantro_codec_mode {
- 	HANTRO_MODE_NONE = -1,
-@@ -120,6 +122,7 @@ enum hantro_codec_mode {
- 	HANTRO_MODE_VP8_DEC,
- 	HANTRO_MODE_HEVC_DEC,
- 	HANTRO_MODE_VP9_DEC,
-+	HANTRO_MODE_AV1_DEC,
- };
- 
- /*
+ .../media/platform/verisilicon/hantro_drv.c   | 36 +++++++++++++++++++
+ .../media/platform/verisilicon/hantro_v4l2.c  |  4 +++
+ 2 files changed, 40 insertions(+)
+
 diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 1c4b90c905ea..bc1a85456142 100644
+index bc1a85456142..666cd46902da 100644
 --- a/drivers/media/platform/verisilicon/hantro_drv.c
 +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -527,6 +527,27 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR,
- 		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_FRAME,
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY,
-+			.dims = { V4L2_AV1_MAX_TILE_COUNT },
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_FILM_GRAIN,
-+		},
- 	},
+@@ -275,7 +275,13 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		/* We only support profile 0 */
+ 		if (dec_params->profile != 0)
+ 			return -EINVAL;
++	} else if (ctrl->id == V4L2_CID_STATELESS_AV1_SEQUENCE) {
++		const struct v4l2_ctrl_av1_sequence *sequence = ctrl->p_new.p_av1_sequence;
++
++		if (sequence->bit_depth != 8 && sequence->bit_depth != 10)
++			return -EINVAL;
+ 	}
++
+ 	return 0;
+ }
+ 
+@@ -348,6 +354,30 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
+ 
++static int hantro_av1_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_AV1_SEQUENCE:
++	{
++		int bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
++
++		if (ctx->bit_depth == bit_depth)
++			return 0;
++
++		return hantro_reset_raw_fmt(ctx, bit_depth);
++	}
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+ 	.try_ctrl = hantro_try_ctrl,
+ };
+@@ -365,6 +395,11 @@ static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
+ 	.s_ctrl = hantro_hevc_s_ctrl,
  };
  
++static const struct v4l2_ctrl_ops hantro_av1_ctrl_ops = {
++	.try_ctrl = hantro_try_ctrl,
++	.s_ctrl = hantro_av1_s_ctrl,
++};
++
+ #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
+ 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
+ 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
+@@ -542,6 +577,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_AV1_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
++			.ops = &hantro_av1_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_AV1_DECODER,
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 992c5baa929f..7e74e47c9a89 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -86,6 +86,10 @@ hantro_check_depth_match(const struct hantro_fmt *fmt, int bit_depth)
+ 	if (!fmt->match_depth && !fmt->postprocessed)
+ 		return true;
+ 
++	/* 0 means default depth, which is 8 */
++	if (!bit_depth)
++		bit_depth = HANTRO_DEFAULT_BIT_DEPTH;
++
+ 	fmt_depth = hantro_get_format_depth(fmt->fourcc);
+ 
+ 	/*
 -- 
 2.34.1
 
