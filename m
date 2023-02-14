@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1790C05027
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 14:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42273C64EC7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 14:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YSmAPcExC7pkp5YKzOzT2zsFrJfSadR+FJEyty6q4SY=; b=keCQFmk+SIdaXP
-	V/opq5xZaRe0k8SxuabScI73Xb4eB8E8CyVixD7D2FJBFtz5vJCY7GZFXoN07+SfdHwNU1ur1KSmM
-	HTczPlsuz63MW5l3QZqi76l5Bbmg0wbosAUqg3C7nHLM3UwLIs9Lepjs/yy8MXV7EavmlhWAI2ibW
-	PdUpaIxHjpoLtPtvbZ4GiV8ENj5eTrLBRTyFewV7yjAj38+TfNWycKL2VQfPaZlBfd1IeBKCx0OSw
-	OT0BmT9iBeJObtq4KJnHXjgqqeOj/oEWdtJvwjxCMWPcMaiYSLcXGqmOve9/n2YggceLfcAV/tx9I
-	8M3hp6J84u8TnZ9Mr5PA==;
+	List-Owner; bh=ZGb2vTiV+5UBy5C9N72VskB5WX0rwL9J7Bxvh8sE0Cc=; b=4fmtayrWcxR3p8
+	i43+B2U+S+wSOqg3B73w4OPZlGuBjJsQ8EoMPe2z1LFlDBYT9ETer85VODAnxC7iLTxiyqmtTHDi2
+	9Ca4rMIoz5fe/mmBmwixJZPM4yeyvBUihvByqsU+NWqOgJX2n9tfvpNgkp8KBvsiaaHJwLtn6sUlH
+	XjNVkCRtjpK1JsO8dtEdL+zS790iMxWWoYiKZOT1GbtUi8H5QWwNILrrhk41sepOV73lEMqVLL03d
+	zm6yU+pQBC+bMqy3wxGgRlm4qR83e+jmPB6m64eBTj57pYH8QVOuNxtSfU4ysEog3L+xSVG/AdLs0
+	VQ87K+TMVZASlVONeyzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRwKE-002Amx-Q1; Tue, 14 Feb 2023 14:30:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pRwKI-002Aos-Mm; Tue, 14 Feb 2023 14:30:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pRvwf-001yzw-3L; Tue, 14 Feb 2023 14:06:12 +0000
+	id 1pRvwj-001z6K-4z; Tue, 14 Feb 2023 14:06:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:37c0:9b2b:ec16:1f37])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C7FB16602172;
-	Tue, 14 Feb 2023 14:06:05 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A13A7660217C;
+	Tue, 14 Feb 2023 14:06:07 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676383566;
-	bh=G7EbYqzzKPwX7xpqO9DZV8LtV7c0Hlez9HUiWRVZSXw=;
+	s=mail; t=1676383568;
+	bh=gGoMGrYnSHhhO3aHJYJGSTnXU+/tx3NyQMBEgbM6JvM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jNBUSaxLuCb9s7IPPazbObUXmKwq8TrTqFn6CaKkmqv4GPJo6pO0tBGPUS/ltp50O
-	 Tm5Vs/6qKP4sSlEK3z8EQchSPe6MdU8ExDbBetdA6ffU2jOceP0nAkLFtBfi+cAjrJ
-	 H4sBqgzGl3mpuz/wPKIBV2X2d6Rc1p9lcFM3MysBE0pO0G5SERVsRbW11P7fu+yVx0
-	 SXyVsGcoVKMhfKYPNx44rgEyZeg10oi/4AeQGyy8FnsYXe7XGXY06BHtc9Qny3wYGg
-	 iVv2vOa+3UXd734WGttemZU0ecIK1LOGIlf7kN08/+qo8LwOTQ1/G1mTlAQeYDYtto
-	 ORrP/mnoCnpTA==
+	b=WhBHl2JXB+qRwDZF6A6n5UpU4kTEcX/+CbHcTN9ZAZI+7wbSRp2/NAY56dXCZ7xDa
+	 2dWXsBJ2NAGP0RrkkZ/KkLv+qk5UlCeslCIrqSIuH5e34hzcomr4x/DUderYIpM9E7
+	 f2d4ZimNAO5miving3fvisNJCQqNNhyyFduPTW9M+3dnuHI9nifIT7JZoOHAyjwkTz
+	 QrC+rR1AC1iQd21Oo5kIPbjTO8CHXD5PyZ5z+Ubxpy7GADADu7Zp/howxx+844W5r5
+	 c6zGdLby4QMnDuqdaQ5ZAifqTnuVhjhIypBS5Md8ikYZC0u1fLmiG3Gd+okEYIXkTV
+	 j//X+6pRTWTwQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -58,16 +58,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 03/12] media: Add NV12_10LE40_4L4 pixel format
-Date: Tue, 14 Feb 2023 15:05:48 +0100
-Message-Id: <20230214140557.537984-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 07/12] media: verisilicon: Compute motion vectors size for AV1 frames
+Date: Tue, 14 Feb 2023 15:05:52 +0100
+Message-Id: <20230214140557.537984-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230214140557.537984-1-benjamin.gaignard@collabora.com>
 References: <20230214140557.537984-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_060609_434834_0D120B16 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20230214_060613_360737_ECFF5B45 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +84,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-NV12_10LE40_4L4 is the 10-bits per component version of
-NV12_4L4 pixel format.
+Compute the additional space required to store motion vectors at
+the end of the frames buffers.
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst | 4 ++++
- drivers/media/v4l2-core/v4l2-common.c                       | 1 +
- drivers/media/v4l2-core/v4l2-ioctl.c                        | 1 +
- include/uapi/linux/videodev2.h                              | 1 +
- 4 files changed, 7 insertions(+)
+version 4:
+- Double motion vectors buffer size.
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-index f1d5bb7b806d..8805213a75f8 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-@@ -270,6 +270,7 @@ of the luma plane.
- .. _V4L2-PIX-FMT-NV12MT:
- .. _V4L2-PIX-FMT-NV12MT-16X16:
- .. _V4L2-PIX-FMT-NV12-4L4:
-+.. _V4L2-PIX-FMT-NV12-10LE40-4L4:
- .. _V4L2-PIX-FMT-NV12-16L16:
- .. _V4L2-PIX-FMT-NV12-32L32:
- .. _V4L2-PIX-FMT-NV12M-8L128:
-@@ -306,6 +307,9 @@ tiles linearly in memory. The line stride and image height must be
- aligned to a multiple of 4. The layouts of the luma and chroma planes are
- identical.
+ drivers/media/platform/verisilicon/hantro_hw.h      | 13 +++++++++++++
+ .../media/platform/verisilicon/hantro_postproc.c    |  3 +++
+ drivers/media/platform/verisilicon/hantro_v4l2.c    |  5 +++++
+ 3 files changed, 21 insertions(+)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index e83f0c523a30..bc61d4e051c7 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -417,6 +417,19 @@ hantro_hevc_mv_size(unsigned int width, unsigned int height)
+ 	return width * height / 16;
+ }
  
-+``V4L2_PIX_FMT_NV12_10LE40_4L4`` is similar to ``V4L2_PIX_FMT_NV12_4L4``
-+and stores 10 bits pixels in 4x4 tiles.
++static inline unsigned short hantro_av1_num_sbs(unsigned short dimension)
++{
++	return DIV_ROUND_UP(dimension, 64);
++}
 +
- ``V4L2_PIX_FMT_NV12_16L16`` stores pixels in 16x16 tiles, and stores
- tiles linearly in memory. The line stride and image height must be
- aligned to a multiple of 16. The layouts of the luma and chroma planes are
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 9cb0895dea1c..7f46c45982d6 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -278,6 +278,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
++static inline size_t
++hantro_av1_mv_size(unsigned int width, unsigned int height)
++{
++	size_t num_sbs = hantro_av1_num_sbs(width) * hantro_av1_num_sbs(height);
++
++	return ALIGN(num_sbs * 384, 16) * 2 + 512;
++}
++
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 6437423ccf3a..bb16af50719d 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -213,6 +213,9 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
+ 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
+ 		buf_size += hantro_hevc_mv_size(pix_mp.width,
+ 						pix_mp.height);
++	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME)
++		buf_size += hantro_av1_mv_size(pix_mp.width,
++					       pix_mp.height);
  
- 		/* Tiled YUV formats */
- 		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-+		{ .format = V4L2_PIX_FMT_NV12_10LE40_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 		{ .format = V4L2_PIX_FMT_P010_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 
- 		/* YUV planar formats, non contiguous variant */
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 1fd9b0041554..ea8afc8c9250 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1351,6 +1351,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/UV 4:2:0 (16x16 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/UV 4:2:0 (32x32 Linear)"; break;
-+	case V4L2_PIX_FMT_NV12_10LE40_4L4: descr = "10-bit YUV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_P010_4L4:	descr = "10-bit Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12M:	descr = "Y/UV 4:2:0 (N-C)"; break;
- 	case V4L2_PIX_FMT_NV21M:	descr = "Y/VU 4:2:0 (N-C)"; break;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 3dec002cb420..f034cf3a6e6d 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -653,6 +653,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV12_4L4 v4l2_fourcc('V', 'T', '1', '2')   /* 12  Y/CbCr 4:2:0  4x4 tiles */
- #define V4L2_PIX_FMT_NV12_16L16 v4l2_fourcc('H', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 16x16 tiles */
- #define V4L2_PIX_FMT_NV12_32L32 v4l2_fourcc('S', 'T', '1', '2') /* 12  Y/CbCr 4:2:0 32x32 tiles */
-+#define V4L2_PIX_FMT_NV12_10LE40_4L4 v4l2_fourcc('V', 'T', '1', '5')
- #define V4L2_PIX_FMT_P010_4L4 v4l2_fourcc('T', '0', '1', '0') /* 12  Y/CbCr 4:2:0 10-bit 4x4 macroblocks */
- #define V4L2_PIX_FMT_NV12_8L128       v4l2_fourcc('A', 'T', '1', '2') /* Y/CbCr 4:2:0 8x128 tiles */
- #define V4L2_PIX_FMT_NV12_10BE_8L128  v4l2_fourcc_be('A', 'X', '1', '2') /* Y/CbCr 4:2:0 10-bit 8x128 tiles */
+ 	for (i = 0; i < num_buffers; ++i) {
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 7e74e47c9a89..9adca9b7ef24 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -336,6 +336,11 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 			pix_mp->plane_fmt[0].sizeimage +=
+ 				hantro_hevc_mv_size(pix_mp->width,
+ 						    pix_mp->height);
++		else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME &&
++			 !hantro_needs_postproc(ctx, fmt))
++			pix_mp->plane_fmt[0].sizeimage +=
++				hantro_av1_mv_size(pix_mp->width,
++						   pix_mp->height);
+ 	} else if (!pix_mp->plane_fmt[0].sizeimage) {
+ 		/*
+ 		 * For coded formats the application can specify
 -- 
 2.34.1
 
