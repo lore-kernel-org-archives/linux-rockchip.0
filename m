@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9B9C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 23:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB3CDC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Feb 2023 23:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iZV2aMcZgJzug9aU01eJkQZra9bkNnPQ9jLLaxQovIE=; b=ssnVTiZcvvar8D
-	KCjh0iP9YpKmZ2/E9qxHIikCy4aGX0KkCckEkiUMiTxAqhthww8aWZz2nRg0pH4/1kL9/+cqc99fu
-	IKPOUqDGT1g24BNOJd2ylTvWha3j46ukG1zgQX+WyzTmGtwDDXhXsz+Y4DShGATR2DrMeQISQHThk
-	sKNj4/mMBFY7T9njJP2YcW9GEVssPlvfv+XaG2wH64pZXS+fH6f8rAfSYuHitfJc4Hl1bCbOYSgwY
-	X453anPlD1q8aeZyHmWPgU6LeMUt+ib0+SIKqsqcPdTqnCxjnTL4q7ml6ABbt2DtVB9xUy7rkmpgN
-	Hfk69Y8U5lGocNJzDzNg==;
+	List-Owner; bh=de+hj91LkJT0FBWzXL401tEt5cQZy2Yy1xZePuM5A5A=; b=QNCfIHgj6GCb3y
+	tVsSpf66h8egnrRkTCYoEGMzvbuISuhqJomh8a7/wf2vZU9kK/Y/01dWZM3MANahmz7OI8n89uU/q
+	m2EPEAdAlnQznYv30vuv7AvcKaudg5O6PK3FXO3Nf16JgoqMf3nAJ28P5iXhoBwfVn/3EdjR8oA/7
+	1nFl8treKUWb85XYcebGC25fARjn1WfoJViP2hGVlpAt0aV/nVZZzuAvUby3rRykDwbqYM2RJI+7+
+	FTqTXtz6tAbmg69hxG3uvjEsJFBGHqbxeT5gpdAsxfKP7S5UDtt5F6eY6S/85AhfHu0xmOmeaRtJo
+	+b+FXTBSKy240Mem/k8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS5At-003xkO-Ml; Tue, 14 Feb 2023 23:57:27 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1pS5C0-003yFk-G9; Tue, 14 Feb 2023 23:58:36 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS5Aq-003xiQ-Qp
-	for linux-rockchip@lists.infradead.org; Tue, 14 Feb 2023 23:57:26 +0000
+	id 1pS5Bn-003y7k-My
+	for linux-rockchip@lists.infradead.org; Tue, 14 Feb 2023 23:58:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
   d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1676419044; x=1707955044;
+  t=1676419103; x=1707955103;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=kzhGYJXOf306NmlEn5opNfn1hoJ34kE37xo2DHXERFc=;
-  b=Wf4Y64Jg6Yc+EVSHKZiLhJd/7gN7QXXTKL1qhia/pmI5dLHjB4QX8g/w
-   DqmJk0so+bkrhCRhpbWI5U8yf1FkzQIDHz4oAU3jpIFMnUHAznPHJyhVU
-   ohGUXlx57bdt+KAE35wJgqvBTA4qn1dQHcO2Vk5KsCWtkh+Ov5RairBro
-   qGPBQjMF3s4xkrdd+hq1Ht6/QrVDO4eM75c21uqr893QY7rUK8zPLOs/t
-   k0dan1+pKCn5Ko+PzJgGHgFDFrm+treJpwGTYjLh9RWNwTQSf7ZQN3S1y
-   6GTO2J/W2KCFgi+Trro+vP27EJw2wgGxqa4koCouq5KXbXU+7qxceHXDr
+  bh=0wzbE5dbKeg6zwPSACvcz44HHBT+V6cdN+UmWihI6ko=;
+  b=AiqAtm7AXPLjWy51w8fXMXM1bvbzLgd1yCjBUEbaaPKGNn0dFmkoVp2z
+   bq2f5z3gIklxKTWkn0J3s+Fsfa7Zm4tljp2o/t7KjX7LGKFc9AikuimL0
+   C2/o1sWhjHMHfJT7tHyG/fDpYoa8G0DK/PaUjhzBhXzek2x6tMoNtbDkf
+   oOOTmZfy3z7bMrLEalFWBNG254xHOfCP2ifOGVouvu4hureQiAD1clXWf
+   pwVx/Fw0MBccfIBvMDAsI6q5K6tgHq/dBzt55jHbhS4kNWotqfuQKhFhz
+   SJ8ewdWOqExOmHIyIQNAMG+03tu5RO2cPJz3ODi8MVB3atcF+nNm/P2WK
    A==;
 X-IronPort-AV: E=Sophos;i="5.97,298,1669046400"; 
-   d="scan'208";a="223337676"
+   d="scan'208";a="327615890"
 Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
-  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 07:57:21 +0800
-IronPort-SDR: wpkpznQ5EknyWEwsRqhL27eIeTtxyMcXQd7+S3+J3rQSkmT4+iWKY3CVU2xAA6xYKp7/JvGI4F
- PsDwQLnnmaVp54h8QV/rKAkulVrLaf3HIPwbKNRK+P4CGtiMhHAIz9uCXTUP3yeF80DqSazlXi
- jWTrdh6xTquTL68D8drRrz+d1KjQ/yQW4GN1pNd5JMN4uN6axWeQY3NZGiHBMh/zD70frcS7ao
- LG73p8INnr4lgU+IUYSoWXZ7b822pzSwMPsZm5M0FF72eNoWqBWvKAJSNFbNgMw5Dg79fBh3Rg
- 8qA=
+  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 07:58:21 +0800
+IronPort-SDR: H7+Hef6F7Ck4viJQkWWO9VkUjoK5+AYL2ecGPt8NfO0VV7n0xNvIzSnRYjT/GHldOarqKt8h3y
+ hlz9jeDkBVecrhWYj1DdzdXOCRTCuuP4X0jhaq+FS7nJokbn463abu3FUBHmnvkA3pWyTXpmk0
+ Gwry8uS41pJYYR/Y+i9DTnSNtEies+c5m6Kcv0dgxAkZQLvEIP6WBPliFv0K+Yn/x9asSq45nV
+ P5TH3kZkYxYvaGi8s7cQzsSiIdQXPzFYoZMfzfllwr7TFUm2Ju5XXeo1MoPa5A/z1Yn5A5BHA4
+ quo=
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
-  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 15:14:28 -0800
-IronPort-SDR: NVme7NQId/46GJiuo3dF93UQirksTesd4scRTkZla6K0rpzGcqOCaHthbO/CaFoIBRZWvzqFTh
- 9qqGWEV7IzSzl9yjkEQlaXD438uSHEczpR+jEOREKIwMwcSLp6jPDorF4Mcv+q5HpWqWO4DviT
- s8gAL4u4mSHBGWslL8ge/hHxHCx5O60xIyAbgZQFWYgS16gDQF2qyr9LzCxAdqeT9cSawuXQkN
- /1OW+jmUi1gKVg4de7DR8qSlStanUWi9PmSCQUi03IcwzQK30TgO2rHTvBjGHaF18oRO3mDD1n
- DEI=
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 15:15:29 -0800
+IronPort-SDR: WRJPEmoT9biVti//D1uOLRrgxlM6GNlLEMaNaIik7+qE/yAmhYLA28Cuqmz7dI1G8h+kpNa0Mn
+ Ubqj8idVVtxZCW9eTVBId6zM0/0zyZc8HNvD7gOjl8r0HeQa4GdK6rlAB2We50irVm/1fowbqA
+ ZAljw+XdtytYQq6DLPazTDq45XLUNYcfDPKZjiOAy0jON4mR52bTskZVUeWbv3snSu2pJCtLpX
+ +uFY0WGwnnXIuKyMRYZm48zEgsQuMZFdRsQpyXoVLH0rKgLCQRSm7HWSowmhpI2iYkUkxXctwi
+ fUQ=
 WDCIronportException: Internal
 Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 15:57:22 -0800
+  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 15:58:22 -0800
 Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGdRj0HyWz1RwtC
-	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 15:57:21 -0800 (PST)
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGdSs1C8jz1RvTp
+	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 15:58:21 -0800 (PST)
 Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
 	reason="pass (just generated, assumed good)"
 	header.d=opensource.wdc.com
@@ -67,28 +67,28 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
 	opensource.wdc.com; h=content-transfer-encoding:content-type
 	:in-reply-to:organization:from:references:to:content-language
 	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1676419040; x=1679011041; bh=kzhGYJXOf306NmlEn5opNfn1hoJ34kE37xo
-	2DHXERFc=; b=qtkNz2Wpym57AeM1b+K40tUtO/VGjSmC/pa1V1esQDXbhLvdyNK
-	KCxWZ30JUzdT2KyvLu/W4vsdZdU8LQZqmUsA+OsmmypSyNYILWQ+qHV5aRo3I8hk
-	nsevRGb0wKA29ZVCKMO9SdPSd7yX77sEqAdQTQJTP5Y6etLUINbTCfzXs74T+5he
-	nDk70r765uIM5/Wtorgc8G7qMvfSQVI1QfYPkAd6prG3s7FC6XnHLHP8nsEGHEDa
-	8p344hbSMQfLiezuVqdxOquyLD21qHSGp35EJj34jZsB7HBozt47ZybM1X9n7NHt
-	F9QRJy9witvlnydLDUtHB1YEzkGAnnYc1Og==
+	1676419100; x=1679011101; bh=0wzbE5dbKeg6zwPSACvcz44HHBT+V6cdN+U
+	mWihI6ko=; b=nhXWsH1w2yUI7rcUShKvBVvquthT7csOKjfHohg73oprsbOPmZJ
+	Trnzjb3ZgU+4gk8qjDRxw2Tv+ixOPtvRt8n7rLaJzbqMg/3thVaZ7sZBr18jZUA/
+	z0bg3UCtvtxN0rm793uev6UJIGaHtwItlwcdvZM0vEr9zq58xCQ4raacivhrKfUN
+	HGA1RE6kMSO631u9NgPoqWoqxW17YH3kPmumVgmdLn0SAPWnqCb2QBrIREBy6oBJ
+	836YHVC4u7NF6G4re+p0Twqs9a1IsJVL53mo8JU++ISQiEPHdMDhmby5ryWH4vS2
+	qY0DzbxL0XEGslkDq817CK8CfgyFUqrMfdg==
 X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
 Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
 	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id p8FTkWp301LJ for <linux-rockchip@lists.infradead.org>;
-	Tue, 14 Feb 2023 15:57:20 -0800 (PST)
+	with ESMTP id fgm_sr7q2GzX for <linux-rockchip@lists.infradead.org>;
+	Tue, 14 Feb 2023 15:58:20 -0800 (PST)
 Received: from [10.225.163.116] (unknown [10.225.163.116])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGdRd292Tz1RvLy;
-	Tue, 14 Feb 2023 15:57:17 -0800 (PST)
-Message-ID: <b6a27883-5d79-1125-70a7-ba987b397bcc@opensource.wdc.com>
-Date: Wed, 15 Feb 2023 08:57:16 +0900
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGdSn36S3z1RvLy;
+	Tue, 14 Feb 2023 15:58:17 -0800 (PST)
+Message-ID: <f8db1d50-5771-44e0-cb39-64425966f35f@opensource.wdc.com>
+Date: Wed, 15 Feb 2023 08:58:16 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v2 2/9] PCI: rockchip: Write PCI Device ID to correct
- register
+Subject: Re: [PATCH v2 3/9] PCI: rockchip: Assert PCI Configuration Enable bit
+ after probe
 Content-Language: en-US
 To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
 Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org,
@@ -99,18 +99,18 @@ Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org,
  =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
  Mikko Kovanen <mikko.kovanen@aavamobile.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
 References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-3-rick.wertenbroek@gmail.com>
+ <20230214140858.1133292-4-rick.wertenbroek@gmail.com>
 From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
 Organization: Western Digital Research
-In-Reply-To: <20230214140858.1133292-3-rick.wertenbroek@gmail.com>
+In-Reply-To: <20230214140858.1133292-4-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_155724_963112_9EAC732D 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20230214_155823_835626_57226112 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,10 +128,12 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2/14/23 23:08, Rick Wertenbroek wrote:
-> Write PCI Device ID (DID) to the correct register. The Device ID was not
-> updated through the correct register. Device ID was written to a read-only
-> register and therefore did not work. The Device ID is now set through the
-> correct register. This is documented in the RK3399 TRM section 17.6.6.1.1
+> Assert PCI Configuration Enable bit after probe. When this bit is left to
+> 0 in the endpoint mode, the RK3399 PCIe endpoint core will generate
+> configuration request retry status (CRS) messages back to the root complex.
+> Assert this bit after probe to allow the RK3399 PCIe endpoint core to reply
+> to configuration requests from the root complex.
+> This is documented in section 17.5.8.1.2 of the RK3399 TRM.
 > 
 > Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
 > Cc: stable@vger.kernel.org
