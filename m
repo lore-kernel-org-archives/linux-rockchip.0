@@ -4,114 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774F5C636CC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 09:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7840C636D4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 10:24:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bu6nYaKOkXlPKIdc4n4OzNwaRziGbIEohwl0FujkVQM=; b=kP1k0R1EzujaG5
-	i5nPh1lrxH9Jsv1f+zyasyaanwBZqTkOlhtlYbtJZPOF76EULpM/S7etvn+vCSiTGPj+JpN8e3sLj
-	YRdvBqT/5BlZTl7RrPJMcvxDzyJJgm260ToFM5AdSNNVK6xczdawAQsk8iVsUIPAyj9VA1vVT3Kk5
-	ovNkT7gmeSM4uwPxP0wrjOBYjas9gUoXWzqClAgTIWIWg3csZovAtMsays2JLKsm7HH4x3rniucQ+
-	3/zilK47kD5rHxhMfElG5QbY4HDwhFuqALtFEh9s8VhAzAqquBzeLqg42D51JYRHEOF9bD2ibqqtP
-	MuXod98WhBukUDW/sXpw==;
+	List-Archive:List-Unsubscribe:List-Id:From:In-Reply-To:MIME-Version:
+	References:Message-ID:Subject:Cc:To:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=QhmZtgxZQYTZCfdd0vltCgcam7vvqDvo474rj4E+afo=; b=ZSOR+TsFqrjHP3a6RHisP1syRE
+	tVBJ8ZU7+tB5PwDAk8wS+eSlqIp17OvlxOu1ytwFEjoBm/HbyTgnLyYHsh1+A7emwWUkW2qwbK/5I
+	pX10vdWaHt2Y7qi8Vpk+sikI4JR641avXXyPdRzZYP6rnjmcx75g7gdh/Y/YyD2X+IEfG4eYCkFvD
+	XIdXElI+/kYBBXxXIZ61Zn07pbe18s4A1RRaT4e3+CMZU9Me8/tbEUg7z4b4kg6Zlu64MFb7iLrrO
+	0++0obZ+rH/nI1bFSZlLORgi+lD5A6XNhHxk1Pp5D33zgo0DSovg4FWMEnm6VUL6i+uJdYgPtXai1
+	bQsyF3Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSEZC-005NZ6-9w; Wed, 15 Feb 2023 09:59:10 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1pSEwt-005RTm-Dl; Wed, 15 Feb 2023 10:23:39 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSEZ8-005NXF-Qw
-	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 09:59:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1676455146; x=1707991146;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=WTkXI4W+MKwwJycy7cbo2GbIsg58uAfo8wCSpFIsYak=;
-  b=WjteQSinG2T1VNs6UqvhYDtre0sQWOhrBeBignvYht7rQDhAhsTpVA3l
-   QPOBjyoeS4duVZb6X3Z/foKH4+9tIXBhP9pHo4tAhKJ9OZVxrQPWT+num
-   3anF2NVrqOmIIWwwnLVLLE4D/Ty6aRckJP+7q2JG6iZ7OdIJTVbM6bdYV
-   ATGqldUTwHwxJnS3mNeHlrdjoPC2X5UKPNciljZkQjr4fzJ1NJnL7K3Id
-   fajNEwrH1zmNrZIkM0jII6pA88/zFN9o8T08AAdrg1NYX+dg4felOt/6a
-   +/n2gddD2avkHRDKQmNQAQhOQ3AnLw0qaAbj80sl524H2i8DNRoK3GwET
-   w==;
-X-IronPort-AV: E=Sophos;i="5.97,299,1669046400"; 
-   d="scan'208";a="221655208"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
-  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 17:59:01 +0800
-IronPort-SDR: Km24/iD86OkD0q8I0t1ZewNaa3LDnPe10BHl/SZ7+MTavNJCpXss8GfTSj9NOuastKpsZRTJZE
- P+oEu5+cpkGCR4ZVXpCsda6JNTI/9SEmQ4udBGOZsAWQ3/R3+D7PBzGjin5AqQ3yqE6Mj5HzIL
- vL/pXUY6s4me/rI5ANKDIPKJcQ/d6wHGUfy7bwbqqr7b4FjBxMHLEpsc4SSY5AKcCGQTHGFopA
- oIAzo8Fe2LAvz28Zb4FsZbRSPRDsNZ+2CxOZ4ma5uIZ2Zj/Zq1iMG3y60SQ1T7i1aBP15ZVz6y
- 8Ag=
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
-  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 01:16:08 -0800
-IronPort-SDR: U7HMgZhizw1Ofd6tMgRxDLRwV0CpZtY6oBeqIDuytkoouo4/bQuigxCBpe1JctV+jPK+Nkbc0o
- fplFmMDa9Qe3EiN0q0O2l2Dq6ByNqRaxr1TlUdRi04afY0HS+qJnXZKicHaHQF9g7CBrgkAqNo
- b7kA/0e9oMQL19Bu3Nvyc7Xxb9WyvaomNzJurMrmZydKYl1bNlTECJ2bPSHrv8bJg2xixNwzIV
- SjtFM79UjJn/HrmGEq2WOKGzZp65xEyBi3FNcYraJV84+d9dJv17M2DglVf3YBdyIbg8uYbdg+
- 0uw=
-WDCIronportException: Internal
-Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 01:59:03 -0800
-Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGtnx0lKLz1RwvL
-	for <linux-rockchip@lists.infradead.org>; Wed, 15 Feb 2023 01:59:00 -0800 (PST)
-Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
-	reason="pass (just generated, assumed good)"
-	header.d=opensource.wdc.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
-	opensource.wdc.com; h=content-transfer-encoding:content-type
-	:in-reply-to:organization:from:references:to:content-language
-	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1676455138; x=1679047139; bh=WTkXI4W+MKwwJycy7cbo2GbIsg58uAfo8wC
-	SpFIsYak=; b=PJZxYfrKRw5XUinlQGXvfZTe3KKu/Pb7k6M6mo9VoygA9BCRL8P
-	CmYgtrhmCbWSof5IaNZ8DvwAJRu850zMvm4dueIboWgQIeIVQqo+u+ewop3IsAy5
-	ploWhU9Bc7LMDxcr81yCVuMSwVHJKNUGX0ZrbH74PLD3zRKzL+zI8kRNdsMIQrTu
-	URdww+2DEp8ij+FlBh1R5nBEFaHBSznzLxr2nemsrLThWaXNzR+qhR6QREVJzz7g
-	wl+oNtf2qJxgu97EvdrdKMkB0cC+XIFkBVkqvPbysEQci44SFwkFZF2lY7JImr/x
-	vAQQmj3UVM2hyFEXoW1Bj06/3zk+hzfbIqA==
-X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
-Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
-	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id wEWfBHAjoaP4 for <linux-rockchip@lists.infradead.org>;
-	Wed, 15 Feb 2023 01:58:58 -0800 (PST)
-Received: from [10.225.163.116] (unknown [10.225.163.116])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGtnq2Qlbz1RvLy;
-	Wed, 15 Feb 2023 01:58:55 -0800 (PST)
-Message-ID: <559bdd8c-9cc8-d7ae-a937-ffee9cfbb8a6@opensource.wdc.com>
-Date: Wed, 15 Feb 2023 18:58:54 +0900
+	id 1pSEwo-005RSV-TZ
+	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 10:23:37 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pSEwk-0001Fl-8Y; Wed, 15 Feb 2023 11:23:30 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1pSEwi-0008M5-Dp; Wed, 15 Feb 2023 11:23:28 +0100
+Date: Wed, 15 Feb 2023 11:23:28 +0100
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: linus.walleij@linaro.org, heiko@sntech.de, linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [RFC PATCH 1/1] pinctrl: rockchip: add support for per-pinmux
+ io-domain dependency
+Message-ID: <20230215102328.GB13829@pengutronix.de>
+References: <20220802095252.2486591-1-foss+kernel@0leil.net>
+ <20220802095252.2486591-2-foss+kernel@0leil.net>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v2 1/9] PCI: rockchip: Remove writes to unused registers
-Content-Language: en-US
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
- rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
-References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-2-rick.wertenbroek@gmail.com>
- <2ebd33e2-46ef-356d-ff4c-81b74950d02f@opensource.wdc.com>
- <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
-From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Organization: Western Digital Research
-In-Reply-To: <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20220802095252.2486591-2-foss+kernel@0leil.net>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+From: Sascha Hauer <sha@pengutronix.de>
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_015906_994280_86A6D6EB 
-X-CRM114-Status: GOOD (  35.34  )
+X-CRM114-CacheID: sfid-20230215_022335_018719_1DB82A50 
+X-CRM114-Status: GOOD (  36.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,172 +78,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/15/23 18:04, Rick Wertenbroek wrote:
-> On Wed, Feb 15, 2023 at 12:56 AM Damien Le Moal
-> <damien.lemoal@opensource.wdc.com> wrote:
->>
->> I checked the TRM and indeed these registers are listed as unused.
->> However, with this patch, nothing work for me using a Pine rockpro64
->> board. Keeping this patch, your series (modulo some other fixes, more
->> emails coming) is making things work !
+
+Hi Quentin,
+
+On Tue, Aug 02, 2022 at 11:52:52AM +0200, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 > 
-> Hello, Thank you for testing the driver and commenting, I'll incorporate your
-> suggestions in the next version of this series.
+> On some Rockchip SoCs, some SoC pins are split in what are called IO
+> domains.
 > 
-> This patch alone does not make the driver work. Without the fixes to the
-> address windows and translation found in [PATCH v2 6/9] ("PCI: rockchip:
-> Fix window mapping and address translation for endpoint") transfers will not
-> work. However, as you said, with the patch series, the driver works.
-> Good to see that you have the driver working on the rockpro64 which is a
-> very similar but different board than the one I used (FriendlyElec NanoPC-T4).
+> An IO domain is supplied power externally, by regulators from a PMIC for
+> example. This external power supply is then used by the IO domain as
+> "supply" for the IO pins if they are outputs.
 > 
->> So I think the bug is with the TRM, not the code. THinking logically about
->> htis, it makes sense: this is programming the address translation unit to
->> translate mmio & dma between host PCI address and local CPU space address.
->> If we never set the PU address, how can that unit possibly ever translate
->> anything ?
+> Each IO domain can configure which voltage the IO pins will be operating
+> on (1.8V or 3.3V).
 > 
-> No, the bug is not in the TRM:
-> The RK3399 PCIe endpoint core has the physical address space of 64MB
-> @ 0xF800'0000 to access the PCIe address space (TRM 17.5.4).
-> This space is split into 33 windows, one of 32MBytes and 32 of 1MByte.
-> Read-write accesses by the CPU to that region will be translated. Each
-> window has a mapping that is configured through the ATR Configuration
-> Register Address Map (TRM 17.6.8) and the registers addr0 and addr1
-> will dictate the translation between the window (a physical CPU addr)
-> into a PCI space address (with this the unit can translate). The other
-> registers are for the PCIe header descriptor.
-> The translation process is documented in TRM 17.5.5.1.1
-> The core will translate all read-write accesses to the windows that fall
-> in the 64MB space @ 0xF800'0000 and generate the PCIe addresses
-> and headers according to the values in the registers in the ATR
-> Configuration Register Address Map (@ 0xFDC0'0000).
+> There already exists an IO domain driver for Rockchip SoCs[1]. This
+> driver allows to explicit the relationship between the external power
+> supplies and IO domains[2]. This makes sure the regulators are enabled
+> by the Linux kernel so the IO domains are supplied with power and
+> correctly configured as per the supplied voltage.
+> This driver is a regulator consumer and does not offer any other
+> interface for device dependency.
 > 
-> Translation does indeed take place and works
-> but requires the changes in [PATCH v2 6/9] ("PCI: rockchip:
-> Fix window mapping and address translation for endpoint")
-> because it was broken from the start...
+> However, IO pins belonging to an IO domain need to have this IO domain
+> correctly configured before they are being used otherwise they do not
+> operate correctly (in our case, a pin configured as output clock was
+> oscillating between 0 and 150mV instead of the expected 1V8).
 > 
-> The two writes that were removed are to unused (read-only) registers.
-> The writes don't do anything, manually writing and reading back these
-> addresses will always lead to 0 (they are read-only). So they are removed.
+> In order to make this dependency transparent to the consumer of those
+> pins and not add Rockchip-specific code to third party drivers (a camera
+> driver in our case), it is hooked into the pinctrl driver which is
+> Rockchip-specific obviously.
 
-OK. Tested again and it is working-ish...
+I don't know the status of this patch, but I haven't found anything
+newer, so please point me to newer patches if the discussion has
+continued somewhere else. Anyway, here are some thoughts about this
+patch
 
-./pcitest.sh
-## Loading pci_endpoint_test
-## BAR tests
-BAR0:		OKAY
-BAR1:		OKAY
-BAR2:		OKAY
-BAR3:		OKAY
-BAR4:		OKAY
-BAR5:		OKAY
+I think the general approach is fine but could be improved. Right now we
+have one io-domain device with several supplies. That means once one
+consumer needs an io-domain, the supplies for all domains need to be
+probed beforehand.  We could relax this requirement by adding a subnode
+for each domain, so instead of doing this:
 
-## Legacy interrupt tests
-SET IRQ TYPE TO LEGACY:		OKAY
-LEGACY IRQ:	OKAY
+pmu_io_domains: io-domains {
+	compatible = "rockchip,rk3568-pmu-io-voltage-domain";
+	pmuio1-supply = <&vcc3v3_pmu>;
+	pmuio2-supply = <&vcc3v3_pmu>;
+	vccio1-supply = <&vccio_acodec>;
+	vccio2-supply = <&vcc_1v8>;
+	vccio3-supply = <&vccio_sd>;
+	vccio4-supply = <&vcc_1v8>;
+	vccio5-supply = <&vcc_3v3>;
+	vccio6-supply = <&vcc_1v8>;
+	vccio7-supply = <&vcc_3v3>;
+};
 
-## MSI interrupt tests
-SET IRQ TYPE TO MSI:		OKAY
-MSI1:		OKAY
-MSI2:		OKAY
-MSI3:		OKAY
-MSI4:		OKAY
-MSI5:		OKAY
-MSI6:		OKAY
-MSI7:		OKAY
-MSI8:		OKAY
-MSI9:		OKAY
-MSI10:		OKAY
-MSI11:		OKAY
-MSI12:		OKAY
-MSI13:		OKAY
-MSI14:		OKAY
-MSI15:		OKAY
-MSI16:		OKAY
+We could do this:
 
-## Read Tests (DMA)
-READ (      1 bytes):		OKAY
-READ (   1024 bytes):		OKAY
-READ (   1025 bytes):		OKAY
-READ (   4096 bytes):		OKAY
-READ ( 131072 bytes):		OKAY
-READ (1024000 bytes):		OKAY
-READ (1024001 bytes):		OKAY
-READ (1048576 bytes):		OKAY
+pmu_io_domains: io-domains {
+	compatible = "rockchip,rk3568-pmu-io-voltage-domain";
 
-## Write Tests (DMA)
-WRITE (      1 bytes):		OKAY
-WRITE (   1024 bytes):		OKAY
-WRITE (   1025 bytes):		OKAY
-WRITE (   4096 bytes):		OKAY
-WRITE ( 131072 bytes):		OKAY
-WRITE (1024000 bytes):		OKAY
+	io_domain_pmuio1: io-domain@ {
+		reg = <0>;
+		supply = <&vcc3v3_pmu>;
+	};
 
-Then stops here doing the 1024001 B case. The host waits for a completion that
-does not come. On the EP side, I see:
+	io_domain_pmuio2: io-domain@1 {
+		reg = <1>;
+		supply = <&vcc3v3_pmu>;
+	};
 
-[   94.307215] pci_epf_test pci_epf_test.0: READ src addr 0xffd00000, 1024001 B
-[   94.307960] pci_epc fd000000.pcie-ep: Map region 1 phys addr 0xfa100000 to
-pci addr 0xffd00000, 1024001 B
-[   94.308924] rockchip-pcie-ep fd000000.pcie-ep: Set atu: region 1, cpu addr
-0xfa100000, pci addr 0xffd00000, 1024001 B
-[  132.309645] dma-pl330 ff6e0000.dma-controller: Reset Channel-2
-CS-20000e FTC-40000
+	...
+};
 
-                                                  ^^^^^^^^^^^^^^^
-The DMA engine does not like something at all. Back to where I was when I tried
-your series initially, which is why I tried removing patch 1 to see what happens...
+This way we could put a driver on each io-domain. When another device
+needs an io-domain we no longer have to wait for all regulators to
+appear, but only for the regulator that actually supplies that domain.
 
-[  132.370479] pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES,
-Time: 38.059623935 s, Rate: 26 KB/s
-[  132.372152] pci_epc fd000000.pcie-ep: Unmap region 1
-[  132.372780] pci_epf_test pci_epf_test.0: RAISE MSI IRQ 1
-[  132.373312] rockchip-pcie-ep fd000000.pcie-ep: Send MSI IRQ 1
-[  132.373844] rockchip-pcie-ep fd000000.pcie-ep: MSI disabled
-[  132.374388] pci_epf_test pci_epf_test.0: Raise IRQ failed -22
+With that we could specify the io-domain dependencies at dtsi or core
+level. A board would only have to make sure that the io-domain that is
+needed to access the PMIC does not itself need a supply from the very
+same PMIC to not get into circular dependencies. The supplies for the
+io-domains are specified at board level anyway, so all that a board
+would have to do is to skip (or replace with a fixed-regulator) the
+supply for the io-domain that provides access to the I2C port the PMIC
+is on. That is not too bad I guess as the regulator that supplies the
+io-domain to access the PMIC needs to be always-on anyway. In the end if
+we would turn that regulator off, we would no longer be able to turn it
+on again.
 
-And it looks like the PCI core crashed or something because MSI does not work
-anymore as well (note that this is wheat I see with my nvme epf driver too, but
-I do not have that DMA channel reset message...)
+One thing about putting the "rockchip,io-domains" property into the
+pingroups. We would have to put this property into each and every
+existing pingroup in all dts[i] files and new files would have to be
+reviewed in this regard as well. The pinctrl driver already has
+knowledge about all pins, so I think that would be the natural place to
+also add the knowledge about which io-domain a pin is in. With that in
+place we would get the knowledge if a io-domain is in use and could
+disable unused io-domains. I am afraid that the "rockchip,io-domains"
+property would only be added in places where it actually hurts someone.
 
-If I run the tests without DMA (mmio only), everything seems fine:
-
-## Read Tests (No DMA)
-READ (      1 bytes):		OKAY
-READ (   1024 bytes):		OKAY
-READ (   1025 bytes):		OKAY
-READ (1024000 bytes):		OKAY
-READ (1024001 bytes):		OKAY
-
-## Write Tests (No DMA)
-WRITE (      1 bytes):		OKAY
-WRITE (   1024 bytes):		OKAY
-WRITE (   1025 bytes):		OKAY
-WRITE (1024000 bytes):		OKAY
-WRITE (1024001 bytes):		OKAY
-
-## Copy Tests (No DMA)
-COPY (      1 bytes):		OKAY
-COPY (   1024 bytes):		OKAY
-COPY (   1025 bytes):		OKAY
-COPY (1024000 bytes):		OKAY
-COPY (1024001 bytes):		OKAY
-
-So it looks like translation is working with your patch, but that the driver is
-still missing something for DMA to work correctly...
-
-Will keep digging.
-
-Note that this is all tested with the patch series fixing pci-epf-test and
-pci_endpoint_test drivers that I posted earlier today. As mentioned, my host is
-an AMD Ryzen PC.
+Sascha
 
 -- 
-Damien Le Moal
-Western Digital Research
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
