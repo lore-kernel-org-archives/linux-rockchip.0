@@ -4,62 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D19C636D4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 09:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774F5C636CC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 09:59:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xvHp5Tc6RS9swAtJ9IGBRC2iz/2Xd63Raf68yAjORBA=; b=kji8XbMpcXIAKI
-	935LIVGWyEYMkgZ14vvLdWzP7jKgIkRtLDSL+EQle/ta4POWETnyOCsHmLi3Yvi4RsdaSCmjApCvM
-	tkVvN2KOiQ1Xq7nc7DpBuCXQNEIDUujmjP6MYANv1WUnEJneyFoGkfTem5t/jc4Pf8hG2XYWHuFt5
-	hksRVXvQlVOzTU02A4GqDxsof4t75tv5emH6cp+thtZWAxGsB0IYipUjccX3qDIWDDf2AqqF2PwA3
-	js7iNLceGR2Au2Z0yl9UQ1Y3hfTsBodSgq9JGUllybmkPykV5QxzD1aO3wTwg+QUsyk1IAgMXENrO
-	2RLhYUKpNVdGePbZQX1w==;
+	List-Owner; bh=bu6nYaKOkXlPKIdc4n4OzNwaRziGbIEohwl0FujkVQM=; b=kP1k0R1EzujaG5
+	i5nPh1lrxH9Jsv1f+zyasyaanwBZqTkOlhtlYbtJZPOF76EULpM/S7etvn+vCSiTGPj+JpN8e3sLj
+	YRdvBqT/5BlZTl7RrPJMcvxDzyJJgm260ToFM5AdSNNVK6xczdawAQsk8iVsUIPAyj9VA1vVT3Kk5
+	ovNkT7gmeSM4uwPxP0wrjOBYjas9gUoXWzqClAgTIWIWg3csZovAtMsays2JLKsm7HH4x3rniucQ+
+	3/zilK47kD5rHxhMfElG5QbY4HDwhFuqALtFEh9s8VhAzAqquBzeLqg42D51JYRHEOF9bD2ibqqtP
+	MuXod98WhBukUDW/sXpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSE1D-005JjL-K7; Wed, 15 Feb 2023 09:24:03 +0000
-Received: from smtpbgeu2.qq.com ([18.194.254.142])
+	id 1pSEZC-005NZ6-9w; Wed, 15 Feb 2023 09:59:10 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSE17-005Jfl-9h
-	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 09:24:02 +0000
-X-QQ-mid: bizesmtp71t1676452965t41009ye
-Received: from [192.168.30.129] ( [92.202.159.105])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 15 Feb 2023 17:22:42 +0800 (CST)
-X-QQ-SSF: 01100000002000B0E000B00A0000000
-X-QQ-FEAT: Sq1LnYMfAwmoBjvnIEJmOxVDAemDz55fYRmB6YOuB1tKSy1DRFCkQgobhe8M8
-	KsF940IXOM3qfjLczBQEfwPzckdszYlUYYmwrCTTDtAKakYR+Yeu52Bwy4nUj32ja7nIGQf
-	wnaZl1nsgHKTXwDI3cKp5xCCVNdvFgSnGEJvys+68fsASRZZGumXt0GeDCdPYnjUWR+Mo+Q
-	wCQrp5ClXxmazZ7StkPRVa8fC825A6ZJp1qxuNxS7wE1DEhWWeaGX6nDMgjUPcOpUcEolEG
-	4zEHu33/r8KtKSd89PAg28Z6coBx8whahqkNFINNxWoH2bJ1uHO2GLsQp8qQ1GWOBXyj7ud
-	SRveQWxefBDunOe80SD72II8pxrmKdILoZrv/G+X75LE/Kcja+1t/Lu6Ed6ig==
-X-QQ-GoodBg: 0
-Message-ID: <07B52E90388B2C3C+dce2736d-7976-a3ce-d805-28997dee7b18@radxa.com>
-Date: Wed, 15 Feb 2023 18:22:42 +0900
+	id 1pSEZ8-005NXF-Qw
+	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 09:59:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1676455146; x=1707991146;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=WTkXI4W+MKwwJycy7cbo2GbIsg58uAfo8wCSpFIsYak=;
+  b=WjteQSinG2T1VNs6UqvhYDtre0sQWOhrBeBignvYht7rQDhAhsTpVA3l
+   QPOBjyoeS4duVZb6X3Z/foKH4+9tIXBhP9pHo4tAhKJ9OZVxrQPWT+num
+   3anF2NVrqOmIIWwwnLVLLE4D/Ty6aRckJP+7q2JG6iZ7OdIJTVbM6bdYV
+   ATGqldUTwHwxJnS3mNeHlrdjoPC2X5UKPNciljZkQjr4fzJ1NJnL7K3Id
+   fajNEwrH1zmNrZIkM0jII6pA88/zFN9o8T08AAdrg1NYX+dg4felOt/6a
+   +/n2gddD2avkHRDKQmNQAQhOQ3AnLw0qaAbj80sl524H2i8DNRoK3GwET
+   w==;
+X-IronPort-AV: E=Sophos;i="5.97,299,1669046400"; 
+   d="scan'208";a="221655208"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
+  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 17:59:01 +0800
+IronPort-SDR: Km24/iD86OkD0q8I0t1ZewNaa3LDnPe10BHl/SZ7+MTavNJCpXss8GfTSj9NOuastKpsZRTJZE
+ P+oEu5+cpkGCR4ZVXpCsda6JNTI/9SEmQ4udBGOZsAWQ3/R3+D7PBzGjin5AqQ3yqE6Mj5HzIL
+ vL/pXUY6s4me/rI5ANKDIPKJcQ/d6wHGUfy7bwbqqr7b4FjBxMHLEpsc4SSY5AKcCGQTHGFopA
+ oIAzo8Fe2LAvz28Zb4FsZbRSPRDsNZ+2CxOZ4ma5uIZ2Zj/Zq1iMG3y60SQ1T7i1aBP15ZVz6y
+ 8Ag=
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 01:16:08 -0800
+IronPort-SDR: U7HMgZhizw1Ofd6tMgRxDLRwV0CpZtY6oBeqIDuytkoouo4/bQuigxCBpe1JctV+jPK+Nkbc0o
+ fplFmMDa9Qe3EiN0q0O2l2Dq6ByNqRaxr1TlUdRi04afY0HS+qJnXZKicHaHQF9g7CBrgkAqNo
+ b7kA/0e9oMQL19Bu3Nvyc7Xxb9WyvaomNzJurMrmZydKYl1bNlTECJ2bPSHrv8bJg2xixNwzIV
+ SjtFM79UjJn/HrmGEq2WOKGzZp65xEyBi3FNcYraJV84+d9dJv17M2DglVf3YBdyIbg8uYbdg+
+ 0uw=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+  by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 01:59:03 -0800
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGtnx0lKLz1RwvL
+	for <linux-rockchip@lists.infradead.org>; Wed, 15 Feb 2023 01:59:00 -0800 (PST)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)"
+	header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+	opensource.wdc.com; h=content-transfer-encoding:content-type
+	:in-reply-to:organization:from:references:to:content-language
+	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
+	1676455138; x=1679047139; bh=WTkXI4W+MKwwJycy7cbo2GbIsg58uAfo8wC
+	SpFIsYak=; b=PJZxYfrKRw5XUinlQGXvfZTe3KKu/Pb7k6M6mo9VoygA9BCRL8P
+	CmYgtrhmCbWSof5IaNZ8DvwAJRu850zMvm4dueIboWgQIeIVQqo+u+ewop3IsAy5
+	ploWhU9Bc7LMDxcr81yCVuMSwVHJKNUGX0ZrbH74PLD3zRKzL+zI8kRNdsMIQrTu
+	URdww+2DEp8ij+FlBh1R5nBEFaHBSznzLxr2nemsrLThWaXNzR+qhR6QREVJzz7g
+	wl+oNtf2qJxgu97EvdrdKMkB0cC+XIFkBVkqvPbysEQci44SFwkFZF2lY7JImr/x
+	vAQQmj3UVM2hyFEXoW1Bj06/3zk+hzfbIqA==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id wEWfBHAjoaP4 for <linux-rockchip@lists.infradead.org>;
+	Wed, 15 Feb 2023 01:58:58 -0800 (PST)
+Received: from [10.225.163.116] (unknown [10.225.163.116])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGtnq2Qlbz1RvLy;
+	Wed, 15 Feb 2023 01:58:55 -0800 (PST)
+Message-ID: <559bdd8c-9cc8-d7ae-a937-ffee9cfbb8a6@opensource.wdc.com>
+Date: Wed, 15 Feb 2023 18:58:54 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v5 0/4] drm/rockchip: dw_hdmi: Add 4k@30 support
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- Robin Murphy <robin.murphy@arm.com>, Dan Johansen <strit@manjaro.org>,
- Daniel Stone <daniel@fooishbar.org>
-References: <20230208090816.3810589-1-s.hauer@pengutronix.de>
- <43BFE269C2D3B94A+72719122-bfdd-8e99-9176-a6f5e30abfb2@radxa.com>
- <20230214154304.GK10447@pengutronix.de>
+Subject: Re: [PATCH v2 1/9] PCI: rockchip: Remove writes to unused registers
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20230214154304.GK10447@pengutronix.de>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvr:qybglogicsvr5
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
+ rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
+ <20230214140858.1133292-2-rick.wertenbroek@gmail.com>
+ <2ebd33e2-46ef-356d-ff4c-81b74950d02f@opensource.wdc.com>
+ <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
+From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Organization: Western Digital Research
+In-Reply-To: <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_012357_890960_FD147FD5 
-X-CRM114-Status: GOOD (  24.12  )
+X-CRM114-CacheID: sfid-20230215_015906_994280_86A6D6EB 
+X-CRM114-Status: GOOD (  35.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,94 +123,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-hi,
-
-On 2/15/23 00:43, Sascha Hauer wrote:
-> On Mon, Feb 13, 2023 at 04:11:46PM +0900, FUKAUMI Naoki wrote:
->> hi,
+On 2/15/23 18:04, Rick Wertenbroek wrote:
+> On Wed, Feb 15, 2023 at 12:56 AM Damien Le Moal
+> <damien.lemoal@opensource.wdc.com> wrote:
 >>
->> on my rk3399 boards(ROCK Pi 4B+ and ROCK 4C+), fb0 is configured as
->> 1920x1080, and nothing is displayed... "no signal" on display.
+>> I checked the TRM and indeed these registers are listed as unused.
+>> However, with this patch, nothing work for me using a Pine rockpro64
+>> board. Keeping this patch, your series (modulo some other fixes, more
+>> emails coming) is making things work !
 > 
-> I can confirm this.
+> Hello, Thank you for testing the driver and commenting, I'll incorporate your
+> suggestions in the next version of this series.
 > 
-> First of all there is a stupid bug in my patch:
+> This patch alone does not make the driver work. Without the fixes to the
+> address windows and translation found in [PATCH v2 6/9] ("PCI: rockchip:
+> Fix window mapping and address translation for endpoint") transfers will not
+> work. However, as you said, with the patch series, the driver works.
+> Good to see that you have the driver working on the rockpro64 which is a
+> very similar but different board than the one I used (FriendlyElec NanoPC-T4).
 > 
->> +       if (vop->data->max_output.width && mode->hdisplay > vop->data->max_output.height)
->> +               return MODE_BAD_HVALUE;
+>> So I think the bug is with the TRM, not the code. THinking logically about
+>> htis, it makes sense: this is programming the address translation unit to
+>> translate mmio & dma between host PCI address and local CPU space address.
+>> If we never set the PU address, how can that unit possibly ever translate
+>> anything ?
 > 
-> The comparison should be against the width here of course, not against
-> the height. Fixing this should at least allow you to display something
-> when a 1080p display is connected.
+> No, the bug is not in the TRM:
+> The RK3399 PCIe endpoint core has the physical address space of 64MB
+> @ 0xF800'0000 to access the PCIe address space (TRM 17.5.4).
+> This space is split into 33 windows, one of 32MBytes and 32 of 1MByte.
+> Read-write accesses by the CPU to that region will be translated. Each
+> window has a mapping that is configured through the ATR Configuration
+> Register Address Map (TRM 17.6.8) and the registers addr0 and addr1
+> will dictate the translation between the window (a physical CPU addr)
+> into a PCI space address (with this the unit can translate). The other
+> registers are for the PCIe header descriptor.
+> The translation process is documented in TRM 17.5.5.1.1
+> The core will translate all read-write accesses to the windows that fall
+> in the 64MB space @ 0xF800'0000 and generate the PCIe addresses
+> and headers according to the values in the registers in the ATR
+> Configuration Register Address Map (@ 0xFDC0'0000).
+> 
+> Translation does indeed take place and works
+> but requires the changes in [PATCH v2 6/9] ("PCI: rockchip:
+> Fix window mapping and address translation for endpoint")
+> because it was broken from the start...
+> 
+> The two writes that were removed are to unused (read-only) registers.
+> The writes don't do anything, manually writing and reading back these
+> addresses will always lead to 0 (they are read-only). So they are removed.
 
-with above fix, and modified dts either VOPL or VOPB enabled, I could 
-get expected resolution on the display.
+OK. Tested again and it is working-ish...
 
-thank you so much for your nice work :)
+./pcitest.sh
+## Loading pci_endpoint_test
+## BAR tests
+BAR0:		OKAY
+BAR1:		OKAY
+BAR2:		OKAY
+BAR3:		OKAY
+BAR4:		OKAY
+BAR5:		OKAY
 
---
-FUKAUMI Naoki
+## Legacy interrupt tests
+SET IRQ TYPE TO LEGACY:		OKAY
+LEGACY IRQ:	OKAY
 
-> The other problem comes with the legacy fbdev emulation. I think failure
-> is pretty much expected here. The fbdev emulation happens to use the
-> VOPL to display a 4k picture, but the VOPL can only do up to 2560x1600
-> and so the mode is denied in vop_crtc_mode_valid(). Quoting Daniel Stone
-> on this topic:
-> 
->> You've done the right thing. Userspace should detect this and try with
->> alternative CRTC routing. The kernel shouldn't be trying to solve this
->> problem.
-> 
-> Trying an alternative CRTC routing is exactly what the fbdev emulation
-> doesn't do. Now my "userspace" is in kernel and the kernel shouldn't try
-> to solve this problem. We're trapped :-/
-> 
-> Sascha
-> 
->>
->> --
->> FUKAUMI Naoki
->>
->> On 2/8/23 18:08, Sascha Hauer wrote:
->>> Some more small changes to this series, see changelog.
->>>
->>> Sascha
->>>
->>> Changes since v4:
->>> - Use struct vop_reg to store resolutions
->>> - Only check for valid clock rates when clock != NULL
->>>
->>> Changes since v3
->>> - Add patch to limit VOP resolutions to hardware capabilitie
->>>
->>> Changes since v2:
->>> - Use correct register values for mpll_cfg
->>> - Add patch to discard modes we cannot achieve
->>>
->>> Changes since v1:
->>> - Allow non standard clock rates only on Synopsys phy as suggested by
->>>     Robin Murphy
->>>
->>> Sascha Hauer (4):
->>>     drm/rockchip: vop: limit maximium resolution to hardware capabilities
->>>     drm/rockchip: dw_hdmi: relax mode_valid hook
->>>     drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
->>>     drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
->>>
->>>    drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c  | 41 ++++++++++++++++----
->>>    drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 15 +++++++
->>>    drivers/gpu/drm/rockchip/rockchip_drm_vop.h  |  6 +++
->>>    drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  5 ---
->>>    drivers/gpu/drm/rockchip/rockchip_vop_reg.c  | 18 +++++++++
->>>    5 files changed, 73 insertions(+), 12 deletions(-)
->>>
->>
-> 
+## MSI interrupt tests
+SET IRQ TYPE TO MSI:		OKAY
+MSI1:		OKAY
+MSI2:		OKAY
+MSI3:		OKAY
+MSI4:		OKAY
+MSI5:		OKAY
+MSI6:		OKAY
+MSI7:		OKAY
+MSI8:		OKAY
+MSI9:		OKAY
+MSI10:		OKAY
+MSI11:		OKAY
+MSI12:		OKAY
+MSI13:		OKAY
+MSI14:		OKAY
+MSI15:		OKAY
+MSI16:		OKAY
+
+## Read Tests (DMA)
+READ (      1 bytes):		OKAY
+READ (   1024 bytes):		OKAY
+READ (   1025 bytes):		OKAY
+READ (   4096 bytes):		OKAY
+READ ( 131072 bytes):		OKAY
+READ (1024000 bytes):		OKAY
+READ (1024001 bytes):		OKAY
+READ (1048576 bytes):		OKAY
+
+## Write Tests (DMA)
+WRITE (      1 bytes):		OKAY
+WRITE (   1024 bytes):		OKAY
+WRITE (   1025 bytes):		OKAY
+WRITE (   4096 bytes):		OKAY
+WRITE ( 131072 bytes):		OKAY
+WRITE (1024000 bytes):		OKAY
+
+Then stops here doing the 1024001 B case. The host waits for a completion that
+does not come. On the EP side, I see:
+
+[   94.307215] pci_epf_test pci_epf_test.0: READ src addr 0xffd00000, 1024001 B
+[   94.307960] pci_epc fd000000.pcie-ep: Map region 1 phys addr 0xfa100000 to
+pci addr 0xffd00000, 1024001 B
+[   94.308924] rockchip-pcie-ep fd000000.pcie-ep: Set atu: region 1, cpu addr
+0xfa100000, pci addr 0xffd00000, 1024001 B
+[  132.309645] dma-pl330 ff6e0000.dma-controller: Reset Channel-2
+CS-20000e FTC-40000
+
+                                                  ^^^^^^^^^^^^^^^
+The DMA engine does not like something at all. Back to where I was when I tried
+your series initially, which is why I tried removing patch 1 to see what happens...
+
+[  132.370479] pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES,
+Time: 38.059623935 s, Rate: 26 KB/s
+[  132.372152] pci_epc fd000000.pcie-ep: Unmap region 1
+[  132.372780] pci_epf_test pci_epf_test.0: RAISE MSI IRQ 1
+[  132.373312] rockchip-pcie-ep fd000000.pcie-ep: Send MSI IRQ 1
+[  132.373844] rockchip-pcie-ep fd000000.pcie-ep: MSI disabled
+[  132.374388] pci_epf_test pci_epf_test.0: Raise IRQ failed -22
+
+And it looks like the PCI core crashed or something because MSI does not work
+anymore as well (note that this is wheat I see with my nvme epf driver too, but
+I do not have that DMA channel reset message...)
+
+If I run the tests without DMA (mmio only), everything seems fine:
+
+## Read Tests (No DMA)
+READ (      1 bytes):		OKAY
+READ (   1024 bytes):		OKAY
+READ (   1025 bytes):		OKAY
+READ (1024000 bytes):		OKAY
+READ (1024001 bytes):		OKAY
+
+## Write Tests (No DMA)
+WRITE (      1 bytes):		OKAY
+WRITE (   1024 bytes):		OKAY
+WRITE (   1025 bytes):		OKAY
+WRITE (1024000 bytes):		OKAY
+WRITE (1024001 bytes):		OKAY
+
+## Copy Tests (No DMA)
+COPY (      1 bytes):		OKAY
+COPY (   1024 bytes):		OKAY
+COPY (   1025 bytes):		OKAY
+COPY (1024000 bytes):		OKAY
+COPY (1024001 bytes):		OKAY
+
+So it looks like translation is working with your patch, but that the driver is
+still missing something for DMA to work correctly...
+
+Will keep digging.
+
+Note that this is all tested with the patch series fixing pci-epf-test and
+pci_endpoint_test drivers that I posted earlier today. As mentioned, my host is
+an AMD Ryzen PC.
+
+-- 
+Damien Le Moal
+Western Digital Research
+
 
 _______________________________________________
 Linux-rockchip mailing list
