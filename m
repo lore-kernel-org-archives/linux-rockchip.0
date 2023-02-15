@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999FCC05027
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 01:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BF6C05027
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 01:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rtvkkk1i3PUMEAX6pOmlnnifDl51paOpVIMROkyzE+8=; b=FnpFt79OvlKQz8
-	A99+P7wTzBQamFpnLlXoEdtrz+OTHKmPDsAvq3wxu+snifRZiKLPg7hf6QAtrdBOTXNmt1p2i4hRz
-	wShxnPKtmJSQ65mRK8FlGdN9C4O2NqM71l60r7BQKUI7Cr2RMSl+gDdk7v8V10wzd2CYdWR5hB5ax
-	zdfPrAhAWfwWIEyWTkLa9Zenaqbc4cfCPvw7jDMx44MIR9lSjS4GNMvcty02eihVRG0wJ4TQeXvNs
-	/eJkIVQXzr5ERafS4ArTmGpU5ukHQW7YuCwetPfPNA724UiyTGXIkwcctt3qG/JWICYLv3nf9BhR8
-	OjCpmus/hJIw0ShMXKmQ==;
+	List-Owner; bh=YRHx6CHbXlzZXZBZ64KJmItLsSU/oXA+HyUOY+tlld8=; b=nZn6dghJxJ9DN8
+	SYcB6w3eOjSKuweMySYJLqrRMAo2vKUAYGC678EUaipHAqh/Kw+niceLM+/gntXJljNpqjRMRSlsT
+	Aznil6Rsmj0PRdpijC29Tl43CEHzQaMBR36in4jrfTti7NdwcEeqk/sQZRniA2lQYyr3hUucuuY7o
+	H5ScnrZr+O9h0muiBAtCRtKFqBLUgpJW2RWL2C1eKhXWawjne1geTuimamQ4zeO9zaEYEUCJTWF7C
+	d/Fj36WmA7F9Cm+t/L8/dc7ywTujRzUGnNUJwWLaUiqpSctNBN0bR0FkFvwquJnRThl/E2RoWJqYi
+	NMTjjMSLDP8r+o37Yqwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS6Zi-004GYa-MG; Wed, 15 Feb 2023 01:27:10 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1pS6hE-004HdQ-ET; Wed, 15 Feb 2023 01:34:56 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS6ZZ-004GW5-Eu
-	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 01:27:03 +0000
+	id 1pS6h1-004HYO-Jm
+	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 01:34:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
   d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1676424421; x=1707960421;
+  t=1676424883; x=1707960883;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=rvloK5ngdtPCbJug6sOHC6AFBm+SqF5jOZbIHY27apo=;
-  b=O3INH7ESdD7Y3z7R1e9X++7YYwhoyDFtdBy07nklKMLrzucSpJgD9FfH
-   cFrjjbvPo4Ikk9mfAZsXoyIm130Ad2qmHZH1iaUm9JEcKnoCGKye6eh/C
-   BJJqOXEcoS2hpw8de9IBvFN/h9d6WUkVKGPybUOZjuSz28wNdTKZe9Vkg
-   5sJhZLLv/DRCbBl9A7kqvPYFcEsag+7NYNMxOpaGhsOTWJ6IT3t3GKxMv
-   261mfx+NcYQ9IDwnsJ/gCFIUxPu6U9/1cy4HWNOdNP6JlMnqGsQRPCZoe
-   wTyhXWLQ3frzpsBUZS3q1ueoQE8AFGorjlSjdnLQOQmTDCfrc/0KWN7hs
+  bh=924sFE1g2peLp9NKsKxgM5DmB2kwoPIL6ZPhHqjTmPs=;
+  b=Ci0rXTlK6ZVMy53VT5Sm4Nk4SRitwbhFD67WY+9Hs3Rb6euY3AP8j6Ou
+   BVKQT6zZWyNY5Jo7JHRL4UMUzUpUZ+SqxwhsSSL9hpc6oEXzroBYmW950
+   xO4YOwCXOvnttWSepvHsl6fqXg6k+amPI/vc/oWqmjnh8bf0IqtOKr1EZ
+   fhr+2F4sJlElaqaAa9+TKWRDnGMaqwDf0cpDxnQC2vI8wb53XP71hD669
+   s+lIDF/AASmIClgYNqaGWdbvZpgZ7ko88ciWvFk19B2Ebx1VLrpyA2fsv
+   +yI3idx+Vp3+VuMiZltFLcJ0Mba7QsZM27+pg5m56fVKv0XwSwHsITOhf
    g==;
 X-IronPort-AV: E=Sophos;i="5.97,298,1669046400"; 
-   d="scan'208";a="228296235"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
-  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 09:26:59 +0800
-IronPort-SDR: 0CDMIB33wq8oiWA51SFOlPPojZrJCW4rxjCuSvX6o335M9Lsh76AuiNQd+k3BOpQonYSdTMqvP
- yshWawH5KzsFhIw3NrukT5V8zJzzJ04mRsrsqlVglys0KfEXiCVnI2r5QyZnQRoG5ByH1eFwX2
- OqmVIbF0sUHdgGIP+gaHGl+wxzDYlT4Z8usRkiE6B2M6hv0zCJ+n/8xoaQ3n2xq7yVph53BMgg
- yXGQAjNkVW22oZB2MkdFm0k0Gcsbsrrzgg3BQYGtxkw7+NLhX9Dz1pkl+BQVBTnpIV5QyAu+po
- cF8=
+   d="scan'208";a="223117706"
+Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com) ([199.255.45.15])
+  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 09:34:35 +0800
+IronPort-SDR: GFCLCPiVnwTFGS8rT3HDdhm3XjF9Oiuy8UeUHRSaXZ5crRvZqfdgz9vidUTlu7MYiBZFGYJ3sG
+ ukWMRg3duxWI35IjYrfLsXeAO0x0bVfueEBVQLpvRik6V10mwJAOx922rdUZJoMEtJ09WlWsMM
+ Q5xm9D3G26DX8NxX63KJY2PuBqLLQQ69N2uRPhj7BL1UMByrkQsQ00m751/OLVmzV6K2+d0gYZ
+ Ibycm5EC7T8RnhlFlbeg2xvQt7QCvTL7BR2SAldkiIW2VOZTkMZ5GrHZh59jO3xD1avqw9Xojq
+ TNI=
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
-  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 16:44:06 -0800
-IronPort-SDR: jF0/BQwdpPoH5vzSGGau5pF8HICJPRimGl+PCH/RrGiY3i7YRoepXfvgpsMftWV6BsaXhOEMQ9
- uoKRnus+BiEoOL741gEMNqmOMOBAha17vtW0n+HAR42lQn+KzJwBNhzGDjTzAD2P7AOkU/gW7b
- VeCipeKxfB5/tB0dt18PbY5uUMh4FSeTxiQ3qdnOCP1PctzfNVigY4OL7FrGYnMaaO1Y7vU0q4
- qLuujwYq1Pj+AYMkQ6e8vAz1y10+BP6IFq5cIVWDd/V0jAUfR47iM/qp/l5uVUBrzIzeQCtSmW
- jF0=
+  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 16:45:57 -0800
+IronPort-SDR: /NkUlZ599AEbTOl0YqZMJ4f2CgdMlg2nOmtCcFHFFUhe8hbEO4EEm+vc4sMGIMzStW3ZX1SHPt
+ KA7WX6v5E0EcTGUh2NzOj13J7jKWLz854xHR7b4AW50bLs+i9P/7CPbC9Qn6VR8vaO9u0ePTQD
+ cCXX/UmJ2K5Jn3OfiwaPGJA7KmpB8y7Yom5JzcsvuDR0nc4AEd9bIIYOjHel87awnN1wOvxAuD
+ JDqmrBiQL0Oyce3UPW9XaZk8L7g6RNz24kdpBHZTCYfNl7ENkvu/6yQIx7YjWdvGCNdPJhptRg
+ I+g=
 WDCIronportException: Internal
 Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 17:26:59 -0800
+  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 17:34:35 -0800
 Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGgR71qV7z1RvTr
-	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 17:26:59 -0800 (PST)
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGgbt5K27z1RWxq
+	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 17:34:34 -0800 (PST)
 Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
 	reason="pass (just generated, assumed good)"
 	header.d=opensource.wdc.com
@@ -67,28 +67,28 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
 	opensource.wdc.com; h=content-transfer-encoding:content-type
 	:in-reply-to:organization:from:references:to:content-language
 	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1676424417; x=1679016418; bh=rvloK5ngdtPCbJug6sOHC6AFBm+SqF5jOZb
-	IHY27apo=; b=XROi/FN9X2gcoDt8oVw1OMORiTAwQFNEE2nYYXOd0EwCWAdf1Z3
-	4p1O4qn0lqAlbnmL1rz3FlOi4yfBD8I0ck7c4yn3Wlt+/oTj7EHGSkWW/vOfntyU
-	eNZavmZ9BWy66mJQ7x4sjzozwiqsR9rfMbbrtpAqb+K7uLlM8RI5zk4ESTC0Wj0/
-	4kq39GdDjT9YRXEwh/FeajOcOkYuAL9dewJD66hqlXUao7ucyi3RmAdsL8KMtOc9
-	j8DQUrhWMTPWiFFAmwpMaFxFgrSo1JpDp2yTREjxPKBmFuChSr03MtIlLajaa7fk
-	Kwpt3AAMS+0JKDQONC9gB7HGYpWLLnVcNpQ==
+	1676424873; x=1679016874; bh=924sFE1g2peLp9NKsKxgM5DmB2kwoPIL6ZP
+	hHqjTmPs=; b=ijswNdQtEpnSj3rZ7vW8jwqI2i0ajTwkqJ8RRkCo5E3CBgPoEwu
+	44cpXVamtM19QJuNsgxKE4HyUh5WdOTFTVQHjGU29E5xifdfLdPciyzMQ6ijGDt7
+	/VgzVJc+fKdETixifpMU2X7R7MhrJw74aTHjwtyMvPs9LYWtW/Ay84ROojq34DDl
+	rCbkDXPwbvGfx9G40KYK4/IE5TCuvACfppMJns8SbnZv6qQZ/xjJTiVaTyUqplET
+	9zpCYpaEShHr5D+zvqXhvujcAGurgcZz5fV/Slcyjgu5H+nalFrHki9Udmq4nXUY
+	82Ct92oTgvFj7jP9EXnfuL9/+a9LudX+cOw==
 X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
 Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
 	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id 6E3S16IE-Hyw for <linux-rockchip@lists.infradead.org>;
-	Tue, 14 Feb 2023 17:26:57 -0800 (PST)
+	with ESMTP id PegvZj5J-poW for <linux-rockchip@lists.infradead.org>;
+	Tue, 14 Feb 2023 17:34:33 -0800 (PST)
 Received: from [10.225.163.116] (unknown [10.225.163.116])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGgR14p3Jz1RvLy;
-	Tue, 14 Feb 2023 17:26:53 -0800 (PST)
-Message-ID: <67d08dce-4610-5e34-853a-1d09c5389607@opensource.wdc.com>
-Date: Wed, 15 Feb 2023 10:26:52 +0900
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGgbn6kStz1RvLy;
+	Tue, 14 Feb 2023 17:34:29 -0800 (PST)
+Message-ID: <0fa5cef4-7096-7f59-422a-98011d01437c@opensource.wdc.com>
+Date: Wed, 15 Feb 2023 10:34:28 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v2 7/9] PCI: rockchip: Fix legacy IRQ generation for
- RK3399 PCIe endpoint core
+Subject: Re: [PATCH v2 8/9] PCI: rockchip: Use u32 variable to access 32-bit
+ registers
 Content-Language: en-US
 To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
 Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org,
@@ -98,19 +98,19 @@ Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org,
  Lorenzo Pieralisi <lpieralisi@kernel.org>,
  =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Mikko Kovanen <mikko.kovanen@aavamobile.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mikko Kovanen <mikko.kovanen@aavamobile.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
 References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-8-rick.wertenbroek@gmail.com>
+ <20230214140858.1133292-9-rick.wertenbroek@gmail.com>
 From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
 Organization: Western Digital Research
-In-Reply-To: <20230214140858.1133292-8-rick.wertenbroek@gmail.com>
+In-Reply-To: <20230214140858.1133292-9-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_172701_538007_63009C4B 
-X-CRM114-Status: GOOD (  26.51  )
+X-CRM114-CacheID: sfid-20230214_173443_684519_FE3232F3 
+X-CRM114-Status: GOOD (  23.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,153 +128,91 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2/14/23 23:08, Rick Wertenbroek wrote:
-> Fix legacy IRQ generation for RK3399 PCIe endpoint core according to
-> the technical reference manual (TRM). Assert and deassert legacy
-> interrupt (INTx) through the legacy interrupt control register
-> ("PCIE_CLIENT_LEGACY_INT_CTRL") instead of manually generating a PCIe
-> message. The generation of the legacy interrupt was tested and validated
-> with the PCIe endpoint test driver.
+> Previously u16 variables were used to access 32-bit registers, this
+> resulted in not all of the data being read from the registers. Also
+> the left shift of more than 16-bits would result in moving data out
+> of the variable. Use u32 variables to access 32-bit registers
 > 
 > Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-
-Some nits below. But otherwise works fine for me.
-
 > ---
->  drivers/pci/controller/pcie-rockchip-ep.c | 38 +++++------------------
->  drivers/pci/controller/pcie-rockchip.h    |  6 ++++
->  2 files changed, 14 insertions(+), 30 deletions(-)
+>  drivers/pci/controller/pcie-rockchip-ep.c | 10 +++++-----
+>  drivers/pci/controller/pcie-rockchip.h    |  1 +
+>  2 files changed, 6 insertions(+), 5 deletions(-)
 > 
 > diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-> index cbc281a6a..ca5b363ba 100644
+> index ca5b363ba..b7865a94e 100644
 > --- a/drivers/pci/controller/pcie-rockchip-ep.c
 > +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -328,45 +328,23 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
->  					 u8 intx, bool is_asserted)
+> @@ -292,15 +292,15 @@ static int rockchip_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
+>  {
+>  	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+>  	struct rockchip_pcie *rockchip = &ep->rockchip;
+> -	u16 flags;
+> +	u32 flags;
+>  
+>  	flags = rockchip_pcie_read(rockchip,
+>  				   ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+>  				   ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
+>  	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK;
+>  	flags |=
+> -	   ((multi_msg_cap << 1) <<  ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
+> -	   PCI_MSI_FLAGS_64BIT;
+> +	   (multi_msg_cap << ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
+
+ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET is 17 and multi_msg_cap is a u8...
+Not nice.
+
+Locally, I added the local variable:
+
+u32 mmc = multi_msg_cap;
+
+And use mmc instead of multi_msg_cap to avoid issues. Also,
+
+> +	   (PCI_MSI_FLAGS_64BIT << ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET);
+>  	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP;
+>  	rockchip_pcie_write(rockchip, flags,
+>  			    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+> @@ -312,7 +312,7 @@ static int rockchip_pcie_ep_get_msi(struct pci_epc *epc, u8 fn, u8 vfn)
+>  {
+>  	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+>  	struct rockchip_pcie *rockchip = &ep->rockchip;
+> -	u16 flags;
+> +	u32 flags;
+>  
+>  	flags = rockchip_pcie_read(rockchip,
+>  				   ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+> @@ -374,7 +374,7 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
+>  					 u8 interrupt_num)
 >  {
 >  	struct rockchip_pcie *rockchip = &ep->rockchip;
-> -	u32 r = ep->max_regions - 1;
-> -	u32 offset;
-> -	u32 status;
-> -	u8 msg_code;
-> -
-> -	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
-> -		     ep->irq_pci_fn != fn)) {
-> -		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
-> -					     AXI_WRAPPER_NOR_MSG,
-> -					     ep->irq_phys_addr, 0, 0);
-> -		ep->irq_pci_addr = ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR;
-> -		ep->irq_pci_fn = fn;
-> -	}
->  
->  	intx &= 3;
->  	if (is_asserted) {
->  		ep->irq_pending |= BIT(intx);
-> -		msg_code = ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA + intx;
->  	} else {
->  		ep->irq_pending &= ~BIT(intx);
-> -		msg_code = ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA + intx;
->  	}
->  
-> -	status = rockchip_pcie_read(rockchip,
-> -				    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
-> -				    ROCKCHIP_PCIE_EP_CMD_STATUS);
-> -	status &= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
-> -
-> -	if ((status != 0) ^ (ep->irq_pending != 0)) {
-> -		status ^= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
-> -		rockchip_pcie_write(rockchip, status,
-> -				    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
-> -				    ROCKCHIP_PCIE_EP_CMD_STATUS);
-> +	if (is_asserted) {
-> +		rockchip_pcie_write(rockchip,
-> +			PCIE_CLIENT_INT_IN_ASSERT | PCIE_CLIENT_INT_PEND_ST_PEND,
-> +			PCIE_CLIENT_LEGACY_INT_CTRL);
-> +	} else {
-> +		rockchip_pcie_write(rockchip,
-> +			PCIE_CLIENT_INT_IN_DEASSERT | PCIE_CLIENT_INT_PEND_ST_NORMAL,
-> +			PCIE_CLIENT_LEGACY_INT_CTRL);
->  	}
-
-With this change, you have now twice "if (is_asserted) {", which is not
-necessary. You can simplify the code a bit:
-
-static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep,
-					 u8 fn, u8 intx, bool do_assert)
-{
-
-        u8 msg_code;
-
-
-
-        intx &= 3;
-
-        if (do_assert) {
-
-                ep->irq_pending |= BIT(intx);
-
-                msg_code = ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA + intx;
-
-                rockchip_pcie_write(&ep->rockchip,
-
-                        PCIE_CLIENT_INT_IN_ASSERT |
-
-                        PCIE_CLIENT_INT_PEND_ST_PEND,
-
-                        PCIE_CLIENT_LEGACY_INT_CTRL);
-
-                return;
-
-        }
-
-
-
-        ep->irq_pending &= ~BIT(intx);
-
-        msg_code = ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA + intx;
-
-        rockchip_pcie_write(&ep->rockchip,
-
-                            PCIE_CLIENT_INT_IN_DEASSERT |
-
-                            PCIE_CLIENT_INT_PEND_ST_NORMAL,
-
-                            PCIE_CLIENT_LEGACY_INT_CTRL);
-
-}
-
-Note also the renaming of the argument "is_asserted" to "do_assert". The
-name is_asserted is badly misleading considering the english meaning given
-that it is true when we *must* do the assert and false when we must
-deassert. So do_assert as a name better match the use of that argument I
-think.
-
-> -
-> -	offset =
-> -	   ROCKCHIP_PCIE_MSG_ROUTING(ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX) |
-> -	   ROCKCHIP_PCIE_MSG_CODE(msg_code) | ROCKCHIP_PCIE_MSG_NO_DATA;
-> -	writel(0, ep->irq_cpu_addr + offset);
->  }
->  
->  static int rockchip_pcie_ep_send_legacy_irq(struct rockchip_pcie_ep *ep, u8 fn,
+> -	u16 flags, mme, data, data_mask;
+> +	u32 flags, mme, data, data_mask;
+>  	u8 msi_count;
+>  	u64 pci_addr, pci_addr_mask = 0xff;
+>  	u32 r;
 > diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index 72e427a0f..e90c2a2b8 100644
+> index e90c2a2b8..11dbf53cd 100644
 > --- a/drivers/pci/controller/pcie-rockchip.h
 > +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -39,6 +39,12 @@
->  #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
->  #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
->  #define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
-> +#define PCIE_CLIENT_LEGACY_INT_CTRL		(PCIE_CLIENT_BASE + 0x0c)
-> +#define   PCIE_CLIENT_INT_IN_ASSERT		HIWORD_UPDATE_BIT(0x0002)
-> +#define   PCIE_CLIENT_INT_IN_DEASSERT	HIWORD_UPDATE(0x0002, 0)
-> +#define   PCIE_CLIENT_INT_PEND_ST_PEND	HIWORD_UPDATE_BIT(0x0001)
-> +#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HIWORD_UPDATE(0x0001, 0)
-> +#define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
->  #define   PCIE_CLIENT_PHY_ST			BIT(12)
->  #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
->  #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
+> @@ -227,6 +227,7 @@
+>  #define ROCKCHIP_PCIE_EP_CMD_STATUS			0x4
+>  #define   ROCKCHIP_PCIE_EP_CMD_STATUS_IS		BIT(19)
+>  #define ROCKCHIP_PCIE_EP_MSI_CTRL_REG			0x90
+> +#define   ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET			16
+
+You are not using this macro anywhere. The name is also not very
+descriptive. Better have it as:
+
+#define   ROCKCHIP_PCIE_EP_MSI_CTRL_ME		BIT(16)
+
+to match the TRM name and be clear that the bit indicates if MSI is
+enabled or not.
+
+>  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET		17
+>  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK		GENMASK(19, 17)
+>  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MME_OFFSET		20
 
 -- 
 Damien Le Moal
