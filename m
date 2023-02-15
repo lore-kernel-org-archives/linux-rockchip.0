@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D2BCC636CC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1390C636D4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JRr6K1JUyw1tEdzGfO0SL7ThThq6DjKpssH6/5XC8ck=; b=LF/QBefoAFP9z0
-	4cEGTMm3WMDX1f0w+Ygw3p1uJofd4oSwMFXNWP5EG2saDviHvzNJ6VtBd5PWr9nDLcZ/9ple73Z7I
-	KeHwIC65iV9KwSjQurD+redenjTGwgcmUB1dJ30neLWTxkPH5A2sVuOXIx09N988DBzv2/J96VqYO
-	fGnLN5aS1gz8EAQOmoRucI4hDryfCgTmnYG5NbExzrQJSAtQnifYUll518xHPcsGxNJjZ0pyvXiMV
-	BVz0/fTJsm1Jwju61w8tL0LQF+Z80kIlYAzYChkHQPxS5otjyz0cIiWAyLTca4lAm1U2DY/hpUGtr
-	TLozR4AgCO8WP95qAqBQ==;
+	List-Owner; bh=JhK7IXd3gnV5bfPPDnwa+/fKzJIFj3bSGWCdKARj4DU=; b=ieJ9GveepAkVjl
+	4rC4up4m/0G+oVIbJEBbNTetJLh0KbOlh3nFBtnjcR4Og2bcRczshUoKgLgppz3lGO1/tSYdAsEAU
+	oqrOw5hy2ynMG5guy4pcAwsJtLJ3knoDlVr0jQ0m/vGR+PLLskvzgGv7B+wNDma04DnafFikYoDUj
+	BaYwOhi6IIs5BwMJOZmnk2iaFDB8kvfVYBKfGXxbBUUi+oOpGPzxvWuPWoVOLqcwo6ve4zDzEYyJ7
+	vO2FkYH7ErRG26nTLVQBsi5YdupHPn05XPq4iS76EDtujWdibGCJdrpdHT4vai9lnqeeqv/UtktVw
+	kh5FhIWPVbX6zrVGGz0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOgb-007Dfk-ME; Wed, 15 Feb 2023 20:47:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pSOh3-007Dwv-Ii; Wed, 15 Feb 2023 20:47:57 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOfA-007CoG-4U; Wed, 15 Feb 2023 20:46:01 +0000
+	id 1pSOfG-007Cqm-4y; Wed, 15 Feb 2023 20:46:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8477261D77;
-	Wed, 15 Feb 2023 20:45:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08E10C4339B;
-	Wed, 15 Feb 2023 20:45:59 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id DAC48B823AF;
+	Wed, 15 Feb 2023 20:46:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F752C433EF;
+	Wed, 15 Feb 2023 20:46:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676493959;
-	bh=8J7t5UF5+5NksKzsY0+cwQgm8IdQtufSH5utrjhKLpw=;
+	s=k20201202; t=1676493961;
+	bh=lhAXS7hXbodllx8n7UqUkj4H6xj4JSId1r6/xza38kE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AQp6mcKVgm99y9UDJ2mPpt9TVhP8Y4moCFaq1ikP0aVwTBV8T6sylQYYSzSallJXw
-	 A1mks/XPas5QP1eAbizIEA2vqifiDYD35b9uwS77/Zs1zsUqovtPD4YXAWpY9G06jY
-	 p7Y0gcACKcZt35yRdARY1ok7g2w+8eYwUl92/NX2m7uBfc69mtrfxSEtEqQ3Z66h8K
-	 nycnH0Qw6OqtyLcBWGzvJwj9UQLqSx/MlOQJoZcEiZ4FfmmXuJyebFFHVcFfp5OV9D
-	 W3ne9gZa4PZUYdsOVBFh72CCsw6ZqA71BNNJzRvRiqVsNNmYBR44YxjZeiK6UrbUls
-	 bk88nYevQUcaA==
+	b=QmOMZj4Z8ML7Uywrx6YkRPp+3zO3GVCOffEeOJcXeGJNrbHcX2DWPWHvXxLdp0e73
+	 bLh3d5Anmv58vxEssPamPjWPR427EYUNbGKIDnFeh0QHBcUyaLSrPUlas/e9zGVr7R
+	 qPGOGsjtpJoS0FscAqXrqJx4/rOdMXyEPg/XbDQvU4drrjZPz1RrgHv5FbJenYRvHR
+	 0IzUt4wOomZXJidFQqizGmaR1qKGaN9UWxyBORro6TS0B3fC6b3oP5d6r8FGqkR4kr
+	 oGGkh+Xasy0Wmm7/pP7IwCcJjREW7OGTsEuGi1rpW/2K4pjzPPenzkcJ1UGbEmdZrD
+	 DlDQCjRUaQ9Sg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>,
+Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
+	pgwipeout@gmail.com,
+	michael.riesch@wolfvision.net,
+	s.hauer@pengutronix.de,
+	frattaroli.nicolas@gmail.com,
+	macromorgan@hotmail.com,
+	yifeng.zhao@rock-chips.com,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.1 04/24] ARM: dts: rockchip: add power-domains property to dp node on rk3288
-Date: Wed, 15 Feb 2023 15:45:27 -0500
-Message-Id: <20230215204547.2760761-4-sashal@kernel.org>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.1 05/24] arm64: dts: rockchip: add missing #interrupt-cells to rk356x pcie2x1
+Date: Wed, 15 Feb 2023 15:45:28 -0500
+Message-Id: <20230215204547.2760761-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230215204547.2760761-1-sashal@kernel.org>
 References: <20230215204547.2760761-1-sashal@kernel.org>
@@ -62,8 +68,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_124600_239560_50C81DEB 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20230215_124606_382654_CA7AFECD 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +86,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+From: Jensen Huang <jensenhuang@friendlyarm.com>
 
-[ Upstream commit 80422339a75088322b4d3884bd12fa0fe5d11050 ]
+[ Upstream commit a323e6b5737bb6e3d3946369b97099abb7dde695 ]
 
-The clocks in the Rockchip rk3288 DisplayPort node are
-included in the power-domain@RK3288_PD_VIO logic, but the
-power-domains property in the dp node is missing, so fix it.
+This fixes the following issue:
+  pcieport 0000:00:00.0: of_irq_parse_pci: failed with rc=-22
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/dab85bfb-9f55-86a1-5cd5-7388c43e0ec5@gmail.com
+Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
+Link: https://lore.kernel.org/r/20230113064457.7105-1-jensenhuang@friendlyarm.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 487b0e03d4b43..2ca76b69add78 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -1181,6 +1181,7 @@ edp: dp@ff970000 {
- 		clock-names = "dp", "pclk";
- 		phys = <&edp_phy>;
- 		phy-names = "dp";
-+		power-domains = <&power RK3288_PD_VIO>;
- 		resets = <&cru SRST_EDP>;
- 		reset-names = "dp";
- 		rockchip,grf = <&grf>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 164708f1eb674..1d423daae971b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -966,6 +966,7 @@ pcie2x1: pcie@fe260000 {
+ 		clock-names = "aclk_mst", "aclk_slv",
+ 			      "aclk_dbi", "pclk", "aux";
+ 		device_type = "pci";
++		#interrupt-cells = <1>;
+ 		interrupt-map-mask = <0 0 0 7>;
+ 		interrupt-map = <0 0 0 1 &pcie_intc 0>,
+ 				<0 0 0 2 &pcie_intc 1>,
 -- 
 2.39.0
 
