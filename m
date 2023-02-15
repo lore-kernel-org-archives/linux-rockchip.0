@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84DF5C6379F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE0F5C636D4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:50:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QunzPtmpr8VLmLW2gawEzu4r4ZewuXGfXULml44PN88=; b=K55MBG0nCptAd5
-	XOlRGKRRb5R8wZlSefyZUrbz424DSnfjratJr/IEKjhIogxAevAKhTgNAbztd+GUKD5cV4s2ymA2Z
-	MOCcJb+hYWmvCEFC8r0e62GDUL1YfD7P39LrVXWj9Xp8HmTaIqILxzM3fSVkRkxIcEsxNx4Y6ueRm
-	b7nAZeoP2o5eR5YFIGj/EY2s408eyzZZTnUl5ab2h+k8/OEd4FYeUBHW72rmoggkAkUhxMhownaex
-	861AuCrukzZ/Qb0ZdrqolEhY0LdJhsDB88hu5ettaAnKTaw5z+K53I9wIYFKNfJWOqduvVLf3w0i+
-	4PTzE6x3YV74uJnsc1jg==;
+	List-Owner; bh=f5HhHEoD1PHHQ4xbCvAvK9cej+aBLOr0nfvAm842RFI=; b=2qnagcXqbrqmYM
+	f2VXjeel4iLxf2XNKSg0Oca2YiPfDYZCrUpxxKfAmvu0cXlvCTs8UPnSGRb7PXuJTGA9SbZ4oBLdb
+	QZMGW4T6CbPHXGyULYjRMbv4yDk3m4Md6t0/9LngQ/mz1x8SfKcy4etAnJ13tMlgUBhq1Yz9h0O5r
+	A7o+tEL5glvfYQs+HN7VO8fk1zgjwhCJDAVnlP2a5gUrbVhEOvJNEZiOodnufzkwQ5+5FrJ2P8DR5
+	H9plV5SvvmjJHUPm/eCJMv7IjirbEOmFoDCmprUiQX4IRlX3329Qrp7X4xhvcDheCA3AsVuOn6IVG
+	En2czaME6WcqNI7tPyZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOhv-007EXF-1U; Wed, 15 Feb 2023 20:48:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pSOjU-007FaZ-RA; Wed, 15 Feb 2023 20:50:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOfO-007Cw6-FD; Wed, 15 Feb 2023 20:46:17 +0000
+	id 1pSOfq-007DBQ-Iv; Wed, 15 Feb 2023 20:46:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E9BD961D92;
-	Wed, 15 Feb 2023 20:46:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E932BC433D2;
-	Wed, 15 Feb 2023 20:46:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2AF5561D9B;
+	Wed, 15 Feb 2023 20:46:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44993C433D2;
+	Wed, 15 Feb 2023 20:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676493973;
-	bh=VtfQylg4Sji3mmCW+kI8RMSb3CPJyWuTWEmqD+l2E6o=;
+	s=k20201202; t=1676494001;
+	bh=t8U8QoDWUAMqTQvuZn2SdMB6UARQXCHE/bK/scimVwU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YNUliMIqgJgbZQaPGCwJMs5Pg1E11b9vTpU4hNCK8Ib8YJMXJK8jyKY8/Lyea0oVs
-	 V5tC5HtZcJ/AGwSAW5IG8nb98Ry3ZHq0PAVmIgmmiLc628MWk0cE7Soh0ft/Nt3H5C
-	 Z1ZPRgOhuOMSFogKTGDBWeVMxi+rol8AFR9jWr8sjoNAShnXM47jvhfOzci7EF3uQw
-	 NPu01ALLatlPISYktV4+kzUr6084DHKuncVdLevLIU56aAVdfxF+983Cv8V/JRqtCd
-	 DQuYpFRYM2J8QhBRimAocVSZFMAgvJCyEkjhZNldnFlasn5CNfLrgShwew2VoCe9Zo
-	 z6Fg5l/OqvwoQ==
+	b=CaJ18mBiW11ALJASSX0sOeIpvomm/N6l0/oq/mVrWKqN/P9Zn8SgN6yRfN4MCuM2X
+	 F29Z5bouJuESfhdUdhf8o+SNF1f03qfow1PSWe9pLThWtzmK/U23m1gAaBo5IdGH5L
+	 n5tXqeszuvbAMKb5Vg63GZOXKAJ4PCZnCRIhHTuKZaUuXCshaC8sqYIfQQywkQq/tF
+	 aEageWLzxZn/kteu7Fwz012ua8vY4r8BK593Q0R6fVKDcY1+ljzy3YfeqtZq5O5q90
+	 L0xCs1fqqna0yePPFFYnylix+2Zm0WcLAzna58awqc4yudcbocH89/ia4s+Y2SgmLH
+	 N6/0if97Drbmw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,24 +49,21 @@ Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Sasha Levin <sashal@kernel.org>,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	enric.balletbo@collabora.com,
-	hl@rock-chips.com,
-	gael.portay@collabora.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 12/24] arm64: dts: rockchip: align rk3399 DMC OPP table with bindings
-Date: Wed, 15 Feb 2023 15:45:35 -0500
-Message-Id: <20230215204547.2760761-12-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 03/12] arm64: dts: rockchip: drop unused LED mode property from rk3328-roc-cc
+Date: Wed, 15 Feb 2023 15:46:25 -0500
+Message-Id: <20230215204637.2761073-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230215204547.2760761-1-sashal@kernel.org>
-References: <20230215204547.2760761-1-sashal@kernel.org>
+In-Reply-To: <20230215204637.2761073-1-sashal@kernel.org>
+References: <20230215204637.2761073-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_124614_614766_DEFAD134 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20230215_124642_684340_F854BBC7 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,34 +82,40 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[ Upstream commit b67b09733d8a41eec33d5d37be2f8cff8af82a5e ]
+[ Upstream commit 1692bffec674551163a7a4be32f59fdde04ecd27 ]
 
-Bindings expect certain pattern for OPP table node name and underscores
-are not allowed:
+GPIO LEDs do not have a 'mode' property:
 
-  rk3399-rock-pi-4a-plus.dtb: dmc_opp_table: $nodename:0: 'dmc_opp_table' does not match '^opp-table(-[a-z0-9]+)?$'
+  rockchip/rk3328-roc-pc.dtb: leds: led-0: Unevaluated properties are not allowed ('mode' was unexpected)
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Link: https://lore.kernel.org/r/20230119124631.91080-1-krzysztof.kozlowski@linaro.org
+Link: https://lore.kernel.org/r/20221125144135.477144-1-krzysztof.kozlowski@linaro.org
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-index 6e29e74f6fc68..783120e9cebeb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
-@@ -111,7 +111,7 @@ opp05 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index aa22a0c222655..5d5d9574088ca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -96,7 +96,6 @@ power_led: led-0 {
+ 			linux,default-trigger = "heartbeat";
+ 			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
+ 			default-state = "on";
+-			mode = <0x23>;
+ 		};
+ 
+ 		user_led: led-1 {
+@@ -104,7 +103,6 @@ user_led: led-1 {
+ 			linux,default-trigger = "mmc1";
+ 			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
+ 			default-state = "off";
+-			mode = <0x05>;
  		};
  	};
- 
--	dmc_opp_table: dmc_opp_table {
-+	dmc_opp_table: opp-table-3 {
- 		compatible = "operating-points-v2";
- 
- 		opp00 {
+ };
 -- 
 2.39.0
 
