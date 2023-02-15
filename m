@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FB6C677F1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:46:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B84C636D4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 20:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L581xPc4m94UbCKKUeFhdukAATQLySfoz0NiNMio7kw=; b=4ibRL0v2dZf5Ae
-	Zor8FM0CEJVAbBSZB/2TDTAPjdGbZCG7hjBJuBMFE59Ny1IQ2itb6kCg7cS2xaoFqmcTb4syFklX1
-	Bmk1+73ki3Ju4ADXX44gRjM3OFZ/k9a+STk8puvCDX0SDO9bDM7LeMlrJLjdmI3Jepa4ywYkAlTX3
-	VL2TfdOsIndL2XDHYPL54yo0uG5QHtPsZQhBDsAjbRKD0St58AYYMd1BtWprEzL7Cr8PHGD4+vz3U
-	Ge2Snsr2aUUA+cKBrvjdfBnKzYK5tumXjKfAnV8HFUJZKMv0RM41fSUFs3JsobkX1gOyG6kTJ/B8g
-	TA1/Yo2fJ6Q7lFSpsSFA==;
+	List-Owner; bh=f5HhHEoD1PHHQ4xbCvAvK9cej+aBLOr0nfvAm842RFI=; b=FkQ2Hk28H4+XVr
+	rEF8mmMhQkW6G+8ZL3yNn4FURNOYxJTfOvE0Y8WwKAGueZbkpvCDAZjkplz0IfUWI4eFipNoRrcLx
+	SCXDOAH8hZqEL8VWnJnPv/zH5Jn6RmOsu3oN8p81pS/UzoPPpbBOLyHNch9vfJg+mOew9x/sVzasb
+	wW3P3bWDYPbwOUWNNiK9Fqz4dskm3BSLmzB0gdxNpTlbAmmg1j/jc4uQrELpOvUov+KQbp665wRGr
+	lWVIDFRYD9eEuGMRejCY3lDrXiC+Qnh5N8HaBd6B6+nAFdWzzevkgMBLH2sSvQ2rhrtVVvm3BWC4f
+	7lcoEDWQbIaBxwE5TDMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOfZ-007D1h-9W; Wed, 15 Feb 2023 20:46:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pSOft-007DEM-Ix; Wed, 15 Feb 2023 20:46:45 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSOf8-007CmW-If; Wed, 15 Feb 2023 20:45:59 +0000
+	id 1pSOf9-007Cnl-LG; Wed, 15 Feb 2023 20:46:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C0AD561D96;
-	Wed, 15 Feb 2023 20:45:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24757C433EF;
-	Wed, 15 Feb 2023 20:45:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D458061D92;
+	Wed, 15 Feb 2023 20:45:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54A6AC433D2;
+	Wed, 15 Feb 2023 20:45:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1676493956;
-	bh=Cs+M07axfazicUtMljub5Y2DDqCfcNlViF85M3SkxYY=;
+	s=k20201202; t=1676493958;
+	bh=t8U8QoDWUAMqTQvuZn2SdMB6UARQXCHE/bK/scimVwU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lZix+C/JCvxLWp5WrpHivRydRyw7ww+YcHkWVAsf5dj0qG43RIsbqC2a5DcXSk2P7
-	 /b1T+w6RQxd3UAhXNvqN6kN3ZTgMhr7Cs0DQDYwEU+83c86/Z8vEhHshIjUejVbCfQ
-	 oSlJN+9u/gSoMqHLPf0IxDbDWq/22/TEuccqxC34UbVhjmtattqeadGBep2+qM/JXv
-	 63GBNf3EwP1dA7Pj1Fpi3wQlqSem0RHweiidIIB9KsA4XiH3ZsaSqhUv0q2PqD8ngN
-	 fsJSmovdwTGirOLTA4HQnlpy1ok+/mS0O/DWADyQd1hbVu8EIh+7pxrncknWFmseXR
-	 0cUOqDX3D13Vg==
+	b=pF0j+AB1XAWCpu/1dUL4j82Eef0u7ZFUdYC4X1S2B2nDy2Hbw95/L6i3nD6kvXh/I
+	 WmvTqYyp9snxhfEriJ+tDOJ9qhlnaT5Y0/dUblcKGvW2NBussynb4EiP3NHazHfv00
+	 wPA/xHy61lmQFAmZ+rcYPsyI+V8rdIuj2gcHTkgzP84FV9mhVWv0Rv0jOfsr7O+JGg
+	 QUq/4uHfYhJHFGLczKVi/Ecen/1QyGUSZRoyCU+tNCD10aB6qFVdWm6VRJwJzv6Z73
+	 C90/5xep1O8XI34cFt40ozR5NImJf6wW0uFQ5sy1UYQOGga33Y9ZIm6s6Zsnklw3C3
+	 E+ikumK0OVfRQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Jarrah Gosbell <kernel@undef.tools>,
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	tom@tom-fitzhenry.me.uk,
-	megi@xff.cz,
-	kc@postmarketos.org,
-	martijn@brixit.nl,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 02/24] arm64: dts: rockchip: reduce thermal limits on rk3399-pinephone-pro
-Date: Wed, 15 Feb 2023 15:45:25 -0500
-Message-Id: <20230215204547.2760761-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 03/24] arm64: dts: rockchip: drop unused LED mode property from rk3328-roc-cc
+Date: Wed, 15 Feb 2023 15:45:26 -0500
+Message-Id: <20230215204547.2760761-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230215204547.2760761-1-sashal@kernel.org>
 References: <20230215204547.2760761-1-sashal@kernel.org>
@@ -66,8 +62,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_124558_678341_A42F5BD9 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20230215_124559_758034_D3436B27 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +80,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jarrah Gosbell <kernel@undef.tools>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[ Upstream commit 33e24f0738b922b6f5f4118dbdc26cac8400d7b9 ]
+[ Upstream commit 1692bffec674551163a7a4be32f59fdde04ecd27 ]
 
-While this device uses the rk3399 it is also enclosed in a tight package
-and cooled through the screen and back case. The default rk3399 thermal
-limits can result in a burnt screen.
+GPIO LEDs do not have a 'mode' property:
 
-These lower limits have resulted in the existing burn not expanding and
-will hopefully result in future devices not experiencing the issue.
+  rockchip/rk3328-roc-pc.dtb: leds: led-0: Unevaluated properties are not allowed ('mode' was unexpected)
 
-Signed-off-by: Jarrah Gosbell <kernel@undef.tools>
-Link: https://lore.kernel.org/r/20221207113212.8216-1-kernel@undef.tools
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Link: https://lore.kernel.org/r/20221125144135.477144-1-krzysztof.kozlowski@linaro.org
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 2e058c3150256..fccc2b2f327df 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -83,6 +83,13 @@ vcc1v8_codec: vcc1v8-codec-regulator {
- 	};
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index aa22a0c222655..5d5d9574088ca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -96,7 +96,6 @@ power_led: led-0 {
+ 			linux,default-trigger = "heartbeat";
+ 			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
+ 			default-state = "on";
+-			mode = <0x23>;
+ 		};
  
-+&cpu_alert0 {
-+	temperature = <65000>;
-+};
-+&cpu_alert1 {
-+	temperature = <68000>;
-+};
-+
- &cpu_l0 {
- 	cpu-supply = <&vdd_cpu_l>;
+ 		user_led: led-1 {
+@@ -104,7 +103,6 @@ user_led: led-1 {
+ 			linux,default-trigger = "mmc1";
+ 			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
+ 			default-state = "off";
+-			mode = <0x05>;
+ 		};
+ 	};
  };
 -- 
 2.39.0
