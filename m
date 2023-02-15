@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B51C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 01:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82516C05027
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Feb 2023 01:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iGbXT6vuBCJQ3m17FOuA3s/bRxnd4zI+lO8PDOGUBzc=; b=U1gyVRAYDHSf5Z
-	OcmTSRtiPyDriyePgKrBxNVZVTSH9TMPTsTWXQ0QMZcokD7JrbiCCoEwcLw0u4RFwBTxKyT/bC7er
-	yhOuTtrnwtjLUd6kE7fFQOmEMnJLxoczQNTVoAM7RIWaJTdlSjXV3NzzIgRd4o7qcOSgOB5HudqK9
-	NpV6Lf4/vnoiDCtX8BQXEI00uCtbtzBC1M35yUBZ3cdj2BUivTsw1JXtL/Ro57at/egLhX94tIP4t
-	XZ+XrQLDA9p+3DqzEWWo9gE4dFRnzsUiY1KCMfXwOv0XCDr2TP5OPvPMkIQHkIroWpoP6MHMHqrFA
-	xX+tE7vm+IQ03i2zf5gw==;
+	List-Owner; bh=xY/GNc6YKyqvoc7KvK5F7m5A9W3ZKAnX17FXyo4Sfh0=; b=UaV60imH3E8/4Y
+	sBdrdlyTLZlrcLpdJsnzgO8AwkQwP01SJEuuOIB76nF3h8mtf7CIc3BgphqeWSLAx4RECQd+c3dl3
+	aAZqhFOIXvgMpJlAwg2yDrAyCzK9dBeeOEO3i/N7mkXd8ncPZhvqw1hb81eoXTSq/uAylZQ+94Np5
+	P+YgUBJbo8XS/CjTptC5s5d/iLF2a4MDCSsnitkIlUaV3ag1VPY5JnwTVf0hVl4daJuj45UMEPSxn
+	4zOop7OXiWW3fhQxw5u3420ILJd8TE3M/1yW4zh7ek6QgUyKVTSQQYpKf920l1BedIZI2FDI69DFG
+	hnqTxetZE9NqZLdakjIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS6Aj-0047PS-HM; Wed, 15 Feb 2023 01:01:21 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1pS6Dj-0048FE-En; Wed, 15 Feb 2023 01:04:27 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pS6Ag-0047Ne-1B
-	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 01:01:20 +0000
+	id 1pS6DZ-0048Ab-Hf
+	for linux-rockchip@lists.infradead.org; Wed, 15 Feb 2023 01:04:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
   d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1676422877; x=1707958877;
+  t=1676423057; x=1707959057;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=XOcFePDBSO8jCjv36R6D31rgCgrBpc9VWxAmEMfwpY4=;
-  b=d3ExIEqi1V+j0zyRhKMirqA9HhNvRK7jlfB5jdtkxlkLEJgiYCgBK69w
-   BkK9Ou3jqBl1tIp0frOoKEnSjmbwQo8rXSTk94Fm7wdRko0aSNc/o0udZ
-   64gD/mvJDzkoGGGtJFQp7mMiDNGF1gWrcuBiYr0Xr6HGA6S8hOeg3MF55
-   VINldJpfkVFHZFNdasoIyWDw1KNWOjqJBMtw4SJstrnHlznQRLeUgyEWB
-   BrX1x3GFtfvwYeUMakQjZlDFrQ7izRHkyWvaHpArFUB5qenXmfvUrJsRS
-   Cux/fKAgkPWnZwO3O7Q1e1lKq4bTIOv+QEljfNCDZN6eeeITCAiWYdCDK
-   w==;
+  bh=IL5gc63/fDsz5QiSOYrQinbaMAqccro2o4wNnnC1ado=;
+  b=j3ZYefMX7H04Squ/5HVvofriUOT/Ezph1B0QyLqxeyN+Tscnq+GdQoaK
+   sIB3ovOICIDpS7Ay79aPY7QLWePwu0N4bAWAZMEXLzB/yYNta9sOg9sA3
+   9Er8OO8JouqYgFsSEp47inlR34T0lsrcKE65WetK3/wQZBbARK2VHxr1t
+   dcb909ii5H7x9QV6uQmz/iaXqx4s/YhNHuEDLz6yEodR6mN3RZoOwzKEv
+   SEHlus7MMkN9GfRNxUbZtdqNaeFMO/ddTcAIHRAn5Q3sIq4kLpGYGySau
+   hdeN7D+FZJWuaEQjFSK9d/L1rllRETyLp1iPRF09Y//xD17t+0mngqf4q
+   A==;
 X-IronPort-AV: E=Sophos;i="5.97,298,1669046400"; 
-   d="scan'208";a="335288769"
+   d="scan'208";a="327620443"
 Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
-  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 09:01:10 +0800
-IronPort-SDR: NFfSYa7sodhZuQbC2rIsPQVLosvUsA0j64cawEPFKo/FPLr2ZsVd9Ijs9An3VWEZAaWzuBiP53
- HF/WltU2Sp65Fzx+i/NJ7DJGiIG7buxPwKSIRjNW7FH5F1s5K3y+rwhSwPqd7Vp77qqGwf0aTw
- uUXbMc5fCNLp+8RCzd0I5wINNs/x4CzSRfBGxBq6DNs87TZh99CywRZtyNVnBEtzvrEkpFkpo9
- penr2HA60ANnLyGsZtotZbo5bFFhfRSh9yL9OKXD0AMXQY/r1k33Y6aL9RikcyX56qhv+afiKZ
- e7A=
+  by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2023 09:04:02 +0800
+IronPort-SDR: nru8pbVhP7Ucpq5Y1f1AcrgYdlH3zD1RFT4r2ffsVB1Krx9BxDgzWzFvcKAMWCBFz8yf1/QcyG
+ +2ePg12xksEHfgz3txNlPt5RHh0ephXmbFKiF98LOFRev/Hl3iViOBK1+DQcP/jj+9lFV/iz2t
+ tm6Ib4pCfN/BOUouWMT0BRk/GiWWqm9Db0F3t2EaTvwdrcEv8MptGCbj/bMFuJhiavlj5aUY9A
+ YBuwAdVYi1ET9OoPbrboazo0dSH94uFIXyraV/ryvCl4jfJriVGUn7sKl9sAGfKSEOUGsHWnsF
+ Ybs=
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
-  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 16:18:17 -0800
-IronPort-SDR: JD1MZ9F+s/al8XJRKXEaEGHlU55ZSFTIRxvBmUl9gHTcMTQ51f5AYTxGUd1qJ7AdfAwGwXemyD
- HY9cpnhHRaNTxzDLCMQQOLd9qGRjoF2a4bBFGNc7a/E+tHsedYnlFGyp2t6wDTkl9B4zQBRmRD
- zHvlSygxDbXdPyZGD2LHPfbQyKlCCtbF0pQfCrqoktCi1sAGtDxwEFC/HqBD3ukoVAB7EPx1FR
- wBx+Bjf9P09joAjJWAfeODGDffJ3xFhMosHPEElXGAAaSHDTNJ9hXYGntR/SEVh7HeJTdyod8z
- rv4=
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 16:21:09 -0800
+IronPort-SDR: KrUHE8sK5ijBy03Wtgw7h0pe8TEjWTq5A3zDpbnZIYpvr/pr09vqp6j2+Re009BkjSww7sMfZM
+ b4c4QSLLIlg1PZDOTsBNNeCxBrYdcg/cnZbv8Q31kN65CqwOexxeVsN6kG6mlRehNm3iTvcgYx
+ 5g9APRB2YI7IzHlOKeYG9iLBW8G3gP3m4SZmHFN92eqnC8GhIn/lcVcYwPGFKonqm+QoJcgob1
+ bPz6qX/TXLemkzh2wM9FMRJEWHD6XXXS0yB0A+VmCQrO5j/AINhdiHFqwHwJ70rZtdSmv24LaM
+ YPU=
 WDCIronportException: Internal
 Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 17:01:11 -0800
+  by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Feb 2023 17:04:03 -0800
 Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGfsK2ml8z1RwvL
-	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 17:01:09 -0800 (PST)
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PGfwd5jzgz1RWy3
+	for <linux-rockchip@lists.infradead.org>; Tue, 14 Feb 2023 17:04:01 -0800 (PST)
 Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
 	reason="pass (just generated, assumed good)"
 	header.d=opensource.wdc.com
@@ -67,50 +67,50 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
 	opensource.wdc.com; h=content-transfer-encoding:content-type
 	:in-reply-to:organization:from:references:to:content-language
 	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1676422868; x=1679014869; bh=XOcFePDBSO8jCjv36R6D31rgCgrBpc9VWxA
-	mEMfwpY4=; b=CWyGVs8vvV8V9TroMGTaXUrq6Dk5LKKI05WQCVteluiqIHuQR3/
-	KipJSou78EOtFXvraqsQfwe3sXXpfCfDnlzWxEKHgGxMSo7a+uHIRToYKdNN6OZP
-	mgkERlXieonQr5tNTcfwecodSCCjr5yV/KxlbEjzc6Gg+09u6eR1fyZjZcs+mmOb
-	IJUiceCuMikYRvouEdxoKNS7q/a30gK1wj51E8y8NIQaN94u2CYOx12zLJJQDMFv
-	dEO/CdCQnKqXn28iAA7Y0MYiGtjNSeOgBDL8raHjVMxkmK0NGL0ypF7IgoBKzzpY
-	JrSQWeqzyoPkBxSkCaWwrx1pFFDRSOuwhnA==
+	1676423040; x=1679015041; bh=IL5gc63/fDsz5QiSOYrQinbaMAqccro2o4w
+	NnnC1ado=; b=Agj6HOTfciGHKemaC/kKz7iwb6CDxRZwvQyJXZ4r8/Wi/iu/Y5x
+	CTHrTb+EYd1DfG81IRn+J5CowQcgNzU1UKMaSDpRmLucwnr0O/xoD9HuTSMt/y5n
+	v0DHHwlbDtB0Y9RGwLVWfbNN0OXginU5IkqIA+wNb6wubkR4SonTbnAvEjNFwr6E
+	Kt2dhee0G2LAQxBksA/ZC+A9yzPK87kxbzXPYEwwj6ZEukAmZFo9iqNMPblIx/TB
+	HExIgo5b8PRezGXV0HLOTck0/6XCBpFIAA7mca8M2bDhHCXYHI4RXs/SQKs1vVfQ
+	QLDkDMoKI9VONS4oU/tZrzHOGztVTmacCUw==
 X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
 Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
 	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id TfLJHIL282mG for <linux-rockchip@lists.infradead.org>;
-	Tue, 14 Feb 2023 17:01:08 -0800 (PST)
+	with ESMTP id EThuPY8OZOEq for <linux-rockchip@lists.infradead.org>;
+	Tue, 14 Feb 2023 17:04:00 -0800 (PST)
 Received: from [10.225.163.116] (unknown [10.225.163.116])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGfsD4tpXz1RvLy;
-	Tue, 14 Feb 2023 17:01:04 -0800 (PST)
-Message-ID: <adfcf9a9-8607-9778-1c83-de0092c70e0b@opensource.wdc.com>
-Date: Wed, 15 Feb 2023 10:01:03 +0900
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PGfwY4pZ0z1RvLy;
+	Tue, 14 Feb 2023 17:03:57 -0800 (PST)
+Message-ID: <a0a2afa5-e364-b7af-958f-3d4a34672337@opensource.wdc.com>
+Date: Wed, 15 Feb 2023 10:03:56 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v2 4/9] PCI: rockchip: Add poll and timeout to wait for
- PHY PLLs to be locked
+Subject: Re: [PATCH v2 5/9] arm64: dts: rockchip: Add dtsi entry for RK3399
+ PCIe endpoint core
 Content-Language: en-US
 To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
-Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org,
+Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
  Lorenzo Pieralisi <lpieralisi@kernel.org>,
  =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
 References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-5-rick.wertenbroek@gmail.com>
+ <20230214140858.1133292-6-rick.wertenbroek@gmail.com>
 From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
 Organization: Western Digital Research
-In-Reply-To: <20230214140858.1133292-5-rick.wertenbroek@gmail.com>
+In-Reply-To: <20230214140858.1133292-6-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230214_170118_114292_A6DDBFAC 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20230214_170417_655355_08407984 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,50 +128,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2/14/23 23:08, Rick Wertenbroek wrote:
-> The RK3399 PCIe controller should wait until the PHY PLLs are locked.
-> Add poll and timeout to wait for PHY PLLs to be locked. If they cannot
-> be locked generate error message and jump to error handler. Accessing
-> registers in the PHY clock domain when PLLs are not locked causes hang
-> The PHY PLLs status is checked through a side channel register.
-> This is documented in the TRM section 17.5.8.1 "PCIe Initialization
-> Sequence".
+> Add dtsi entry for RK3399 PCIe endpoint core in the device tree.
+> The status is "disabled" by default, so it will not be loaded unless
+> explicitly chosen to. The RK3399 PCIe endpoit core should be enabled
+> with the RK3399 PCIe root complex disabled because the RK3399 PCIe
+> controller can only work one mode at the time, either in "root complex"
+> mode or in "endpoint" mode.
 > 
-> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> Cc: stable@vger.kernel.org
 > Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 
-A couple of nits below. Otherwise:
+You should also update the file:
 
-Reviewed-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Tested-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
 
-> ---
->  drivers/pci/controller/pcie-rockchip.c | 16 ++++++++++++++++
->  drivers/pci/controller/pcie-rockchip.h |  2 ++
->  2 files changed, 18 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-> index 990a00e08..5f2e2dd5d 100644
-> --- a/drivers/pci/controller/pcie-rockchip.c
-> +++ b/drivers/pci/controller/pcie-rockchip.c
+The example there is broken...
 
-[...]
-
-> +	err = readx_poll_timeout(rockchip_pcie_read_addr, PCIE_CLIENT_SIDE_BAND_STATUS,
-
-Nit: long line. Split it after the first comma.
-
-> +		regs, !(regs & PCIE_CLIENT_PHY_ST), RK_PHY_PLL_LOCK_SLEEP_US,
-> +		RK_PHY_PLL_LOCK_TIMEOUT_US);
-> +
-
-Nit: no need for this blank line.
-
-> +	if (err) {
-> +		dev_err(dev, "PHY PLLs could not lock, %d\n", err);
-> +		goto err_power_off_phy;
-> +	}
-> +
+Otherwise, this works great for me.
 
 -- 
 Damien Le Moal
