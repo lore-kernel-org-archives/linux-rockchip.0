@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D39CFC636CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DE1C636CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=liaOT6bZloG/qEqn3fsWDR3+0XMq9ri6L8ACfIj9oaY=; b=nHk9wtDPD295PZ
-	0ptDwmoZP+wWCtkRqESHfe9UWf7Wu49rFCj1ZQDLtEHXch4QkHUW5leJ3Mj9xfnei0NxtoRMluBAx
-	8QGV+95u/vWOTeJ0BUv0jNKDhNsOTAJ+njWo+UwOqAaUoSgiILNRADPCBne9hgceBDBGZJeuat0IC
-	gPU5rTTPP+Yg8FgM57vrKR6dVy+riGihdcvDR/Tg5jYgU04sOUOrmYhEKviUGo9XMMbRmVR8AK/jU
-	gUIIBefxO4cVFk7uRTtotS72nv42Spn1qm3Op7MrjhBmtFLFaAsvy2Usy6MYnQapcfs9hTEeGoPIp
-	nbOHD4eMdZ//mFPRNnUg==;
+	List-Owner; bh=5rm8pWpTPRMVv/ozHqPB5y/9e5VopuibZE2UgdE/WPE=; b=xLJSO8Y/Jq3ZMd
+	6vtQSTma1QUcURvpWAGGpW17rA8TgeJu/t8d6iCG5rD0tBxMI5ib2x/yk1a+5nqUoPIfFK+MdvzK8
+	uNcAIskoL+p6Fo1WwslM22oI9BQgWKhkTt+ust/ueYYgNr97IH4MbAJFCJz+HwB9H+LzhVFdAHeeK
+	RHAubFHsqn+Z65NSoXcty2qqgtnGaJYw1yA0y9RMqiGLQCZsJYpKR9qYXeS3H6PAFMcYM5GbWriej
+	4c/lRO7PKrPma6HryACWNa/QW4hNCW9Flii1Yc8dFslRsA1+rq4zVIAkaxu3kc/jbbt7iq7Dcha73
+	H04iA6MSG8Z3Q6o926Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbSG-009YGm-D3; Thu, 16 Feb 2023 10:25:32 +0000
+	id 1pSbdK-009bCs-Hk; Thu, 16 Feb 2023 10:36:58 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbSC-009YDX-Ql
-	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:25:30 +0000
+	id 1pSbcu-009awT-Cz
+	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:36:35 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbRd-0001Qk-Od; Thu, 16 Feb 2023 11:24:53 +0100
+	id 1pSbcs-0003dD-23; Thu, 16 Feb 2023 11:36:30 +0100
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbRY-005Kiy-N5; Thu, 16 Feb 2023 11:24:49 +0100
+	id 1pSbcp-005Kmv-6z; Thu, 16 Feb 2023 11:36:28 +0100
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbRY-002Sfn-RS; Thu, 16 Feb 2023 11:24:48 +0100
+	id 1pSbco-002Wik-6K; Thu, 16 Feb 2023 11:36:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
-To: dri-devel@lists.freedesktop.org
-Cc: Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	Michael Riesch <michael.riesch@wolfvision.net>,
+To: linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>,
+	Mark Rutland <mark.rutland@arm.com>,
 	kernel@pengutronix.de,
-	Robin Murphy <robin.murphy@arm.com>,
-	Dan Johansen <strit@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v6 4/4] drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
-Date: Thu, 16 Feb 2023 11:24:47 +0100
-Message-Id: <20230216102447.582905-5-s.hauer@pengutronix.de>
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v3 16/19] arm64: dts: rockchip: rk3399: Enable DFI
+Date: Thu, 16 Feb 2023 11:36:21 +0100
+Message-Id: <20230216103624.591901-17-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230216102447.582905-1-s.hauer@pengutronix.de>
-References: <20230216102447.582905-1-s.hauer@pengutronix.de>
+In-Reply-To: <20230216103624.591901-1-s.hauer@pengutronix.de>
+References: <20230216103624.591901-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_022528_911736_D15BA2D3 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20230216_023632_541944_C1B73B78 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +82,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip PLL drivers are currently table based and support only
-the most common pixelclocks. Discard all modes we cannot achieve
-at all. Normally the desired pixelclocks have an exact match in the
-PLL driver, nevertheless allow for a 0.1% error just in case.
+the DFI unit can provide useful data for measuring DDR utilization
+and works without any configuration from the board, so enable it in the
+dtsi file directly.
 
-Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
-Tested-by: Dan Johansen <strit@manjaro.org>
-Link: https://lore.kernel.org/r/20230118132213.2911418-4-s.hauer@pengutronix.de
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-Notes:
-    Changes since v3:
-    - only check for rate when clk != NULL
-    
-    Changes since v2:
-    - new patch
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index feba6b9becd6c..293dcf0f05931 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -260,6 +260,13 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 	bool exact_match = hdmi->plat_data->phy_force_vendor;
- 	int i;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 1881b4b71f91d..4806afb8fd8ae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1331,7 +1331,6 @@ dfi: dfi@ff630000 {
+ 		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		clocks = <&cru PCLK_DDR_MON>;
+ 		clock-names = "pclk_ddr_mon";
+-		status = "disabled";
+ 	};
  
-+	if (hdmi->ref_clk) {
-+		int rpclk = clk_round_rate(hdmi->ref_clk, pclk);
-+
-+		if (abs(rpclk - pclk) > pclk / 1000)
-+			return MODE_NOCLOCK;
-+	}
-+
- 	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
- 		/*
- 		 * For vendor specific phys force an exact match of the pixelclock
+ 	vpu: video-codec@ff650000 {
 -- 
 2.30.2
 
