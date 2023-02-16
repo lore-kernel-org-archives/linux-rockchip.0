@@ -4,58 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C5AC636D4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 00:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58691C636CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 07:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z8lzRcFsOhgAFj5X2IBfaZMKGgREzCqLr2YLODSvnT0=; b=d/UOaNrLQZ4ZwR
-	L4VFH6XXxTYgFAqygcDYf1Kb6yRLDKI+35vFSlowlb/+jtqrUK1MJ8IGjRA9kyD9jwNh1uzB7mm13
-	tbI7462wMWFkzhWgh46uZG8cE11XsD9VPi228erYfEvqZE91XWHo/ibozvx0bSut0CJfrDRb9/zFH
-	nzeoW6koEwaiIIqM4m0SOyklZvZAoRxeeoIL183kSBgdJBxVMUHqg8LhnbEk6x3ylEnpJ4NANVX3j
-	ul0cGVBW+wtlFvIxxCI2gPutQaZMDvnuoz6NALBr6T69NJ6bmCFFQn59K0pbIi2U2ktNqAUJhdAew
-	u2BMn7su8shcjWt+Jk2Q==;
+	List-Owner; bh=u4vcorxXiDHrpMTtsJ0kv23bapDAycrVnzQF5qVDeic=; b=1tChsIalaSZrgj
+	nRiBk3b5SX/2DqeE0uQrMCqonbZ9gkAoz4oSItJHcISjcbsJzKzgIN1otfVq7igegPKT+6G2j9Tq/
+	wVIOPMgbbVp3k8xXHxjoqXfNvl+0tqm62G5ZCfwX4kn4SDj7EizUF0LlZYTXhLH9csvik6aST9pkE
+	Qd2zjy4cmZdocHYjMlvovHhSx2LkTSmSuma1H4VGiO7Tdf8c6AgXHG6d2h7VpQwCxeqe3oPhQmh41
+	bchyv6+RFrkK4fVWKDopF2hGuypfBlraiWFJ5j5F+IlrNnQfaL3htGSKxPDJRUq49henBco1AhLOx
+	PgrzWoDnXdTiuOzTHNCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSRlA-0083LE-U9; Thu, 16 Feb 2023 00:04:24 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pSYhM-008nwO-DI; Thu, 16 Feb 2023 07:28:56 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSRcz-0080X7-FR; Wed, 15 Feb 2023 23:55:59 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 72CE510B;
-	Thu, 16 Feb 2023 00:55:55 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1676505355;
-	bh=xk5vBg/Iz8a0qsDOR7HVUgH7GHTgpabQoQX9UvpnwQQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RnCQ7g1HJ7UDnweuIrJb5hOmkxgrbwvyCESUQoL5/RRyCDaVRMnpgLFc1j7U6waP4
-	 i2U0QzMD9Kg/ud5VJh+Q5Y+P7QFtuPu5GB5olUm3bmhs8djJC0nzwnVd6HmKyHQ39g
-	 PXp39l1vaPYBElxfeVolTI3zOUOIHzaqUeCak8O8=
-Date: Thu, 16 Feb 2023 01:55:54 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Adam Ford <aford173@gmail.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
-Message-ID: <Y+1xCtdxIoPtnOws@pendragon.ideasonboard.com>
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
- <CAHCN7x+9E8qcBVOQZKTKagDkvkKVnqDtjvpNX-iNFYwCLRoYug@mail.gmail.com>
+	id 1pSYhJ-008nuX-9h
+	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 07:28:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1676532533; x=1708068533;
+  h=message-id:date:mime-version:subject:from:to:cc:
+   references:in-reply-to:content-transfer-encoding;
+  bh=/+KnIJGVAtqOq1Y5Tt7uoivGVLcBx2ntfW6kgLZW5DA=;
+  b=fjOmKEyVm+QLwgUEFP/7D0mUFaaKmeCFaFtHmbZUSS9UvWV6Q8kB+rqv
+   N4bZvFbSTmOrdcnnJqKZ969hAxf99LSRTKlR4NX6gvVtDmv43k4TFHzbm
+   IJBKv2puvRlp9GfgvU7p4piEZsyrN1BPcpJhMomejdMXL1G7vrRrGMuB+
+   BqU5sywk7SGeMKAn82ehmVMoezTzzoEH8Qx3cEKPnHR5QoPZ15ZOP07Us
+   4fFUR+I0eRpVb0LhJSzfHrwlpdMpGAvo5S2RM/quL+1J0sE57sHMdhCNZ
+   03kz8qkFEBeJucCYbVgLgeAxGKDlzWPBtLXVzIX+5nVyhe+r5X6yar66/
+   Q==;
+X-IronPort-AV: E=Sophos;i="5.97,301,1669046400"; 
+   d="scan'208";a="223454822"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
+  by ob1.hgst.iphmx.com with ESMTP; 16 Feb 2023 15:28:46 +0800
+IronPort-SDR: N3xWP+hluhLhza6VBket9gDjge4DZbehANT8rX0jo+W9vgonRoJKAlEtjKSKykLuq9rO+Hr9/T
+ XVbk1E+q/jtHwaeEejhxvEBhGIZTs/3bnH7fj88QXpyFsKtgq/m18R2oV36m81jXNLOn9pR/+t
+ hmok7Gb+cDq2lMlwAJ/g5mZRkRuM5sUzimYodCpZo70p0Gnjq/3/YkuzXDq4nEFO0ohUpUcRRl
+ 275sVz/BRPqVMexswx43ks3wcRaTiC7ZxruZp+IEI8A1xxjgHDImOH2q0qbjfw10oVbjknYE97
+ sPc=
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 22:45:51 -0800
+IronPort-SDR: KIgaBL2dJY59Nawz1QvIzdvrvwj1wjFK+EFcj0oFVmM7XqJ7s/iFxryoPUo0qGK0rHTveAVR4n
+ Ek8r83rY7jHtJjU63j+AKOcRWwvqNR1sESGglx7xgkNa8XUMUfYy7EX3OoI2GUg1eJ8ytBNAJJ
+ nhL90PdQPekJxBEVAw1fHvnOEXykUnba7qujRD+kVKdeT9IAB1yvYp0qFHZmeuXkuRqr/miWc0
+ N271J3Ie3qFFujm3EZ/1AdJ8MJCj1r3Q7rYlH7XdDNm/v4ahOAaZhgBdIQAzrx7fWaFBNrRVJR
+ g+4=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 15 Feb 2023 23:28:46 -0800
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PHRQ55pvkz1Rwtm
+	for <linux-rockchip@lists.infradead.org>; Wed, 15 Feb 2023 23:28:45 -0800 (PST)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)"
+	header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+	opensource.wdc.com; h=content-transfer-encoding:content-type
+	:in-reply-to:organization:references:to:from:content-language
+	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
+	1676532524; x=1679124525; bh=/+KnIJGVAtqOq1Y5Tt7uoivGVLcBx2ntfW6
+	kgLZW5DA=; b=qnGuXw6K2mg5650j+W6ekah5dDEmwrdW4vmEBS7rqpeAVKAMpQX
+	I7Q7k3KGzNSCovEaHlnUuoWDjCX/cXHuzu2q4H8+xqWtH7CGFor/wmSVpnkUIUCT
+	e7kSLvHYYs3Y4QTR1+SNrWY4eruCTX3VprMoXUb5/IeMPqpBx0E13VQgrqs2HjWz
+	6EH/m/DckD9GICJz0TdQ0DrB+n72kUBDvzS5xluc6C6uW1CRL10zUtgm+ptfcINQ
+	Yy06KF6p6jleuzvSgLM8c24i9BpEWrjeBD0EdIlU6KhZzG+AyZNJy2Y8yC/5tnYe
+	mzO1PCVrrVHaP8wjTC0ssjzLF0gar8zVFXw==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id YOSadKu0T4Ik for <linux-rockchip@lists.infradead.org>;
+	Wed, 15 Feb 2023 23:28:44 -0800 (PST)
+Received: from [10.225.163.121] (unknown [10.225.163.121])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PHRQ03dv3z1RvLy;
+	Wed, 15 Feb 2023 23:28:40 -0800 (PST)
+Message-ID: <5c15e1d1-c7e9-0b7c-9b14-f95543c70383@opensource.wdc.com>
+Date: Thu, 16 Feb 2023 16:28:38 +0900
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHCN7x+9E8qcBVOQZKTKagDkvkKVnqDtjvpNX-iNFYwCLRoYug@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 1/9] PCI: rockchip: Remove writes to unused registers
+Content-Language: en-US
+From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
+ rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
+ <20230214140858.1133292-2-rick.wertenbroek@gmail.com>
+ <2ebd33e2-46ef-356d-ff4c-81b74950d02f@opensource.wdc.com>
+ <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
+ <559bdd8c-9cc8-d7ae-a937-ffee9cfbb8a6@opensource.wdc.com>
+Organization: Western Digital Research
+In-Reply-To: <559bdd8c-9cc8-d7ae-a937-ffee9cfbb8a6@opensource.wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230215_155557_704780_FEE3610B 
-X-CRM114-Status: GOOD (  37.82  )
+X-CRM114-CacheID: sfid-20230215_232853_462293_5F58A935 
+X-CRM114-Status: GOOD (  24.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,102 +129,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Adam,
-
-On Wed, Feb 15, 2023 at 07:57:53AM -0600, Adam Ford wrote:
-> On Fri, Nov 18, 2022 at 3:44 AM Paul Elder wrote:
+On 2/15/23 18:58, Damien Le Moal wrote:
+[...]
+> WRITE ( 131072 bytes):		OKAY
+> WRITE (1024000 bytes):		OKAY
 > 
-> > This series depends on v3 of "dt-bindings: media: Add macros for video
-> > interface bus types" [1].
-> >
-> > This series extends the rkisp1 driver to support the ISP found in the
-> > NXP i.MX8MP SoC.
+> Then stops here doing the 1024001 B case. The host waits for a completion that
+> does not come. On the EP side, I see:
 > 
-> I'm going to spend some time testing this over the weekend.  Is there a V4
-> pending, or should I just test whatever is in Laurent's repo?
-
-I've updated all the v6.2-based branches on
-https://gitlab.com/ideasonboard/nxp/linux.git (and renamed them to
-v6.2/*). Beside a rebase, the v6.2/isp branch contains (at the bottom) 6
-additional patches that I've previously posted to the linux-media
-mailing list (feel free to review them ;-)).
-
-My only concern with this series is with patch "media: rkisp1: Add match
-data for i.MX8MP ISP", and in particular with the following hunk:
-
- enum rkisp1_cif_isp_version {
- 	RKISP1_V10 = 10,
- 	RKISP1_V11,
- 	RKISP1_V12,
- 	RKISP1_V13,
-+	IMX8MP_V10,
- };
-
-It's not a very nice versioning scheme :-S I'll see if I can find
-something better, but regardless of that, I'll post v4 with the goal of
-merging it in v6.4.
-
-> I have an IMX219 camera with 4-lane support and an i.MX8M Plus kit from
-> Beacon, and I want to test the RGGB bayer conversion to see how well it
-> works.
+> [   94.307215] pci_epf_test pci_epf_test.0: READ src addr 0xffd00000, 1024001 B
+> [   94.307960] pci_epc fd000000.pcie-ep: Map region 1 phys addr 0xfa100000 to
+> pci addr 0xffd00000, 1024001 B
+> [   94.308924] rockchip-pcie-ep fd000000.pcie-ep: Set atu: region 1, cpu addr
+> 0xfa100000, pci addr 0xffd00000, 1024001 B
+> [  132.309645] dma-pl330 ff6e0000.dma-controller: Reset Channel-2
+> CS-20000e FTC-40000
 > 
-> > The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> > and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> > over time as they are now independently developed (afaik) by Rockchip
-> > and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> > and is close enough to the RK3399 ISP that it can easily be supported by
-> > the same driver.
->
-> Is there a reason the driver cannot be renamed to a more generic name than
-> rkisp1 if the Rockchip and VeriSilicon had similar origins?  Having the
-> name Rockchip referenced from an NXP i.MX8M Plus seems odd to me.
+>                                                   ^^^^^^^^^^^^^^^
+> The DMA engine does not like something at all. Back to where I was when I tried
+> your series initially, which is why I tried removing patch 1 to see what happens...
+> 
+> [  132.370479] pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES,
+> Time: 38.059623935 s, Rate: 26 KB/s
+> [  132.372152] pci_epc fd000000.pcie-ep: Unmap region 1
+> [  132.372780] pci_epf_test pci_epf_test.0: RAISE MSI IRQ 1
+> [  132.373312] rockchip-pcie-ep fd000000.pcie-ep: Send MSI IRQ 1
+> [  132.373844] rockchip-pcie-ep fd000000.pcie-ep: MSI disabled
+> [  132.374388] pci_epf_test pci_epf_test.0: Raise IRQ failed -22
+> 
+> And it looks like the PCI core crashed or something because MSI does not work
+> anymore as well (note that this is wheat I see with my nvme epf driver too, but
+> I do not have that DMA channel reset message...)
+> 
+> If I run the tests without DMA (mmio only), everything seems fine:
+> 
+> ## Read Tests (No DMA)
+> READ (      1 bytes):		OKAY
+> READ (   1024 bytes):		OKAY
+> READ (   1025 bytes):		OKAY
+> READ (1024000 bytes):		OKAY
+> READ (1024001 bytes):		OKAY
+> 
+> ## Write Tests (No DMA)
+> WRITE (      1 bytes):		OKAY
+> WRITE (   1024 bytes):		OKAY
+> WRITE (   1025 bytes):		OKAY
+> WRITE (1024000 bytes):		OKAY
+> WRITE (1024001 bytes):		OKAY
+> 
+> ## Copy Tests (No DMA)
+> COPY (      1 bytes):		OKAY
+> COPY (   1024 bytes):		OKAY
+> COPY (   1025 bytes):		OKAY
+> COPY (1024000 bytes):		OKAY
+> COPY (1024001 bytes):		OKAY
+> 
+> So it looks like translation is working with your patch, but that the driver is
+> still missing something for DMA to work correctly...
 
-The common roots of the IP core predate both Rockchip and VeriSilicon.
-Those two implementations have now diverged (as with all forks), so
-either name would be wrong in some cases :-S
+I kept testing this and realized that I was not getting a consistent behavior.
+Sometimes all tests passed, but would not repeat (running again would fail
+everything), sometimes NMIs from bad accesses, and other times "hang" (test not
+completing but no real machine hang/crash). So it started to hint at something
+randomly initialized...
 
-> > The last two patches add support for UYVY output format, which can be
-> > implemented on the ISP version in the i.MX8MP but not in the one in the
-> > RK3399.
-> >
-> > This version of the series specifically has been tested on a Polyhex
-> > Debix model A with an imx219 (Raspberry Pi cam v2).
-> >
-> > [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
-> >
-> > Laurent Pinchart (3):
-> >   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
-> >   media: rkisp1: Add and use rkisp1_has_feature() macro
-> >   media: rkisp1: Configure gasket on i.MX8MP
-> >
-> > Paul Elder (11):
-> >   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-> >   media: rkisp1: Add match data for i.MX8MP ISP
-> >   media: rkisp1: Add and set registers for crop for i.MX8MP
-> >   media: rkisp1: Add and set registers for output size config on i.MX8MP
-> >   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
-> >   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
-> >   media: rkisp1: Add register definitions for the test pattern generator
-> >   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-> >   media: rkisp1: Support devices without self path
-> >   media: rkisp1: Add YC swap capability
-> >   media: rkisp1: Add UYVY as an output format
-> >
-> >  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
-> >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
-> >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
-> >  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
-> >  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
-> >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
-> >  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
-> >  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
-> >  include/uapi/linux/rkisp1-config.h            |   2 +
-> >  9 files changed, 509 insertions(+), 40 deletions(-)
+Re-reading the TRM, particularly section 17.5.5.1.1, I realized that the lower
+16 bits of the desc2 register are used for the translation, but we never set
+them with the current code. Only desc0 and desc1... So I added a write(0) to
+desc2 and now it is finally working well. Running the tests in a loop, they all
+pass and no bad behavior is observed.
+
+My cleaned-up rockchip_pcie_prog_ep_ob_atu() function now looks like this:
+
+static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
+                                         u32 r, u32 type, u64 phys_addr,
+                                         u64 pci_addr, size_t size)
+{
+        u64 sz = 1ULL << fls64(size - 1);
+        int num_pass_bits = ilog2(sz);
+        u32 addr0, addr1, desc0;
+
+        /* Sanity checks */
+        if (WARN_ON_ONCE(type == AXI_WRAPPER_NOR_MSG))
+                return;
+        if (WARN_ON_ONCE(ALIGN_DOWN(phys_addr, SZ_1M) != phys_addr))
+                return;
+        if (WARN_ON_ONCE(rockchip_ob_region(phys_addr + size - 1) != r))
+                return;
+
+        /* We must pass at least 8 bits of PCI bus address */
+        if (num_pass_bits < 8)
+                num_pass_bits = 8;
+
+        /* PCI bus address region */
+        addr0 = ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+                (lower_32_bits(pci_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+        addr1 = upper_32_bits(pci_addr);
+        desc0 = ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN(fn) | type;
+
+        rockchip_pcie_write(rockchip, addr0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r));
+        rockchip_pcie_write(rockchip, addr1,
+                            ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r));
+        rockchip_pcie_write(rockchip, desc0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC2(r));
+}
+
+And the function rockchip_pcie_clear_ep_ob_atu() also clears desc2:
+
+static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
+                                          u32 region)
+{
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(region));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(region));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC0(region));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC1(region));
+        rockchip_pcie_write(rockchip, 0,
+                            ROCKCHIP_PCIE_AT_OB_REGION_DESC2(region));
+}
+
+Thoughts ?
 
 -- 
-Regards,
+Damien Le Moal
+Western Digital Research
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
