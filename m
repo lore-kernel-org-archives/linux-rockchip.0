@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DE1C636CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7366C64ED6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:37:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5rm8pWpTPRMVv/ozHqPB5y/9e5VopuibZE2UgdE/WPE=; b=xLJSO8Y/Jq3ZMd
-	6vtQSTma1QUcURvpWAGGpW17rA8TgeJu/t8d6iCG5rD0tBxMI5ib2x/yk1a+5nqUoPIfFK+MdvzK8
-	uNcAIskoL+p6Fo1WwslM22oI9BQgWKhkTt+ust/ueYYgNr97IH4MbAJFCJz+HwB9H+LzhVFdAHeeK
-	RHAubFHsqn+Z65NSoXcty2qqgtnGaJYw1yA0y9RMqiGLQCZsJYpKR9qYXeS3H6PAFMcYM5GbWriej
-	4c/lRO7PKrPma6HryACWNa/QW4hNCW9Flii1Yc8dFslRsA1+rq4zVIAkaxu3kc/jbbt7iq7Dcha73
-	H04iA6MSG8Z3Q6o926Rw==;
+	List-Owner; bh=YdaH1iYCBPMdvVbop1Xwud3pB22jbowM82CaCKPN0xo=; b=kPgLqEjFm7c11O
+	w1LeJ2BtuV3Xa5NSqIoDFN3DMeOTWp9dasyX7DDtlTo7VAZK6Okd3FAHJrM89cuhOYpSsQzKPruCr
+	0ID2YXf5skw8Wwrs8Enq/tF/PvWAPNNbquSINVPXDhP6z2MbfTZO6PTgzmhhpSM6Qc4flQc4z11qB
+	ldrMtB+DO7szLYLCCFHL+HAu2FtW6llBJXDyx/SJ9/qf5CEqsTKckvhLQEkSsxXe+7BxmDEh9mOy0
+	OU3dZq+NG6+CjFUDmEUv6ZLnqDuMEyfLVhxmwKeiK55U5bp3dM8nkFMWP9EZXJ7AJg6LQIjAKXBUl
+	FTvEcXp6mGV7mxTZis1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbdK-009bCs-Hk; Thu, 16 Feb 2023 10:36:58 +0000
+	id 1pSbdC-009b8k-2N; Thu, 16 Feb 2023 10:36:50 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbcu-009awT-Cz
-	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:36:35 +0000
+	id 1pSbcu-009awN-D4
+	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:36:34 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbcs-0003dD-23; Thu, 16 Feb 2023 11:36:30 +0100
+	id 1pSbcs-0003d1-1w; Thu, 16 Feb 2023 11:36:30 +0100
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbcp-005Kmv-6z; Thu, 16 Feb 2023 11:36:28 +0100
+	id 1pSbco-005Kmj-Ih; Thu, 16 Feb 2023 11:36:27 +0100
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pSbco-002Wik-6K; Thu, 16 Feb 2023 11:36:26 +0100
+	id 1pSbco-002Win-6u; Thu, 16 Feb 2023 11:36:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-pm@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -52,9 +52,9 @@ Cc: linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v3 16/19] arm64: dts: rockchip: rk3399: Enable DFI
-Date: Thu, 16 Feb 2023 11:36:21 +0100
-Message-Id: <20230216103624.591901-17-s.hauer@pengutronix.de>
+Subject: [PATCH v3 17/19] arm64: dts: rockchip: rk356x: Add DFI
+Date: Thu, 16 Feb 2023 11:36:22 +0100
+Message-Id: <20230216103624.591901-18-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230216103624.591901-1-s.hauer@pengutronix.de>
 References: <20230216103624.591901-1-s.hauer@pengutronix.de>
@@ -64,8 +64,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_023632_541944_C1B73B78 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20230216_023632_518393_D8274291 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +82,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-the DFI unit can provide useful data for measuring DDR utilization
-and works without any configuration from the board, so enable it in the
-dtsi file directly.
+The DFI unit can be used to measure DRAM utilization using perf. Add the
+node to the device tree.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 1881b4b71f91d..4806afb8fd8ae 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1331,7 +1331,6 @@ dfi: dfi@ff630000 {
- 		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru PCLK_DDR_MON>;
- 		clock-names = "pclk_ddr_mon";
--		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index c27f1c7f072da..16a2fba2449c0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -947,6 +947,13 @@ qos_vop_m1: qos@fe1a8100 {
+ 		reg = <0x0 0xfe1a8100 0x0 0x20>;
  	};
  
- 	vpu: video-codec@ff650000 {
++	dfi: dfi@fe230000 {
++		compatible = "rockchip,rk3568-dfi";
++		reg = <0x00 0xfe230000 0x00 0x400>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		rockchip,pmu = <&pmugrf>;
++	};
++
+ 	pcie2x1: pcie@fe260000 {
+ 		compatible = "rockchip,rk3568-pcie";
+ 		reg = <0x3 0xc0000000 0x0 0x00400000>,
 -- 
 2.30.2
 
