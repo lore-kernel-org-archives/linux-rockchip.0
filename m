@@ -4,81 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D319C6379F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 08:44:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9432FC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 08:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9BPynEyIxXQrEN/0yRFps7oSRyt3BTrDU5qEKeBKu0=; b=Nmxn4vl6AsMoIq
-	n0jwaHiIpEgXCQVe27ci/DGQwxnZ7kByIOWwq+0FzFkb8kfsm8uzz+HGSwDpNmzSW7aW4u2j6ae6e
-	3oR3GSnB7Ovobi/+us6tH+iKwd8FoYRe1pEjQfe1tmYERI7QbbM+c95QNNU9nPxnIGYyVo0U5RuYG
-	VkYo9NTx02itn4wEEhEXriz3/QPp3VioSpB8LpPmZyyiIhgtg0GRQo53siU7wCtq7xzdmNdhTZRml
-	HWyusNDnwiQo8Cp3tQ6mQFTmV61z31O7FM4vfca2kw6Jh2BBpU4u+gIBnK66RVL8Hc7SgBQ5oAUIn
-	hvY9iLoLK1ea8emeU8zA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jO1Lu48mWa3W3UTqG5u+TDKAVSLBdHSS+zn1EQVep8o=; b=cubi0cbg7m3RMgeWvqOwGBC0gA
+	HBBRr+7yn+Dh+3GhyiPYtsWW4dxw/Mh0fSFhGqgvSUuVoqHSPCv9yOTnns6f8arOxRcx570OFu+jz
+	lyxt9dwYB8ac9yl8iCD/kZgsRy7/Ub1OatUwqRQe5gMxp4HoC/plMZq4r7w2YzF/JuHVOZnS2L9HI
+	vXRIMICQ7YpB2MUIv9CISZlFIr+At0rxrWc6iWHorbBqtrpjBNas3LUKDf4OytRXoJEi9aOzaCqXP
+	uWuPTiIx0lQ3xtP3ufBTbRaiXK9BnxMP64CKjb8C5ZJTm7tLjgu0sJqGCPBFS1W9cyqytp7oSDyWf
+	kwvlF0Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSZs3-00963F-Qz; Thu, 16 Feb 2023 08:44:03 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1pSa5j-0098ya-Ei; Thu, 16 Feb 2023 08:58:11 +0000
+Received: from mail-mw2nam10on2060c.outbound.protection.outlook.com ([2a01:111:f400:7e89::60c] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSZrq-0095z3-T0; Thu, 16 Feb 2023 08:43:52 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id w11so1027130oiv.5;
-        Thu, 16 Feb 2023 00:43:49 -0800 (PST)
+	id 1pSa5f-0098ws-Pe
+	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 08:58:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=K9aOZ5rWlmTBlWgB5zXK2MTPYVm6pYW4NPy5P1tMj58c0mlgCbt+zc/eqJNqivUCXzBNC97D3dXDJ7bIb72uguamJ/RMMq7r6gDVm0rvDt1k+SLfu88aAf9Uspne0RuiaBWMjt+luHQUXmAklyGq1NnojxSqVoC+jBid7M7MZuuRkRG4if3zbS8FmiM9V6B+Xg2cLaRQwKK66ViSqayHhckYKvJ8WG7qsl+6Ox1So0szwf/i2rTHZTpzThtbQDT6w+ypz/maLoHXFgG6ZYYrgejK5qqZgIlP25abjmSfCwAk+EVkEbZ4dM4ZKOr6xP7/GZmz3wVJQdz5ArApvqsZMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5vAWESRYC7z9byeLEW4568Xup2R4G1JpP4IXHmUqN+w=;
+ b=Lgj5xZUJjDdv3zXtGhRWdaByM/uflp1bSkDwfTmPoqKYSlSR+4uFqALStRKsfoC8/2gE4aOc27PkV3H7nfQ5L82FvSJnrZIYOiM3hnkhBd6mtWoBLFLR0cVWNnZkeyQ6mw8e29YCtKEtAHLuKf6Rnh46rVDyYGSzOO4z3vI6H9x2dEKu1ONud45QJy0Bsnh9DCdVrGipfvILi7LEjrMb6X8MkRpeekTyDe9RzlzQmXsxTkV3PhlA2vxtOFmHu4NIPOy0XWJ6IP9T1bsgio4VKApD+QXou2HbV8+QgHjlu+VoRIYhij4zLpIoIBxKfbJP0RPR2AH33davsFHOrI6dPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=synaptics.com; dmarc=pass action=none
+ header.from=synaptics.com; dkim=pass header.d=synaptics.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=EamPuDVvAthaFSPtPQTP6d/TW+jd6Xl4r6dyhl+tFN8=;
-        b=IWOXGOyYGogASerkqpz52CjY9D9qF0P9Znq9/xS9hJT+r0JM+f3pkyuIgskE2q4oWI
-         mGpJXDZusVDIiGz6zyOq1NBdCmE1Bd0qdlQjhKJXRzD7yH8ofWoutO+2LmEhlFOly/NB
-         mjhUIqdex14hTJRd9Y9CXG/C7mwk2KguJqLfydzal5b+FuvNDHxOc8/Lm39EcpU9D6mb
-         A4Xf0MNblMx/Aux1snV+NZq9ySusRx+mjnksjHHul3YbcxJHrCR1kpZ2z9/ViGhzukFj
-         e7MUqlcHu2V95vrprCDYHmLYEFBRrGt2a9O73W0pJgdSdxo4d0nuLPOr3lMWR1zeeOsj
-         +I7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EamPuDVvAthaFSPtPQTP6d/TW+jd6Xl4r6dyhl+tFN8=;
-        b=pt3zfQWLRt6H5aeGaJwNM4GhOq/WmSLbMqoyk0WANI9qe0NWRd+Z+8QgKtURXrIrir
-         JuaNXu44dmihkTj1NUhCXNGGTlm212oQ4Z1InG+/U7HP3XCHQDk50QHiWZSvCDGKBmnm
-         FxRUAhGMwXDB/Gmyw4zfFwFM2vsUlQGJW8ARWvWJyIFdhvJzmcbTkYqp6Ge133HadQM4
-         KaRdIfubcnZB3Q46DQ9bCb9G2NRewiPmRRDjgpXaKOnnENFA+63v2Ctr4EFrNlObQjxm
-         M6YM78SFHhRbMJSvGU+e1U2Ity7yqMTT15K6XwdJhfZWMoozBPdfERhHrTpy1OlTjxg8
-         aOjg==
-X-Gm-Message-State: AO0yUKU13xuJpHpKn4lO9a1iOnbVLUN6wZYGNKsnNaTgVWZoIkyiF+IX
-	i3hxWkqMqsuoIloWL57AfDaDHLoOc73fKJ1Wn+w=
-X-Google-Smtp-Source: AK7set+wR6OnNXRx2oggQTNNXpK9f8Mi7Lx4b124Os3jSjPJ+2ZRlfq2dK+VWr/ic8IulJBDOglJ2bh8q4/VpuuN6JU=
-X-Received: by 2002:a05:6808:2117:b0:37f:7c14:5599 with SMTP id
- r23-20020a056808211700b0037f7c145599mr153855oiw.265.1676537029282; Thu, 16
- Feb 2023 00:43:49 -0800 (PST)
+ d=Synaptics.onmicrosoft.com; s=selector2-Synaptics-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5vAWESRYC7z9byeLEW4568Xup2R4G1JpP4IXHmUqN+w=;
+ b=UQftEVVKTtjnmCvQIxIHdvJ0WIFGNPq7xzzQ1GXxPJ+hGPBzH8VGkjPgj20jQGDulvsRE+7p6HqYCf5AlwyipSaDCrKGnvlJjeTQU4y1eWE2xKsDLlaRYuOyZkooBT9eAMo56kujCw5g480GQNU9YD4+vv/AdhQNfvL3RQ/2V9o=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=synaptics.com;
+Received: from DM6PR03MB5196.namprd03.prod.outlook.com (2603:10b6:5:24a::19)
+ by CO3PR03MB6792.namprd03.prod.outlook.com (2603:10b6:303:164::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.26; Thu, 16 Feb
+ 2023 08:58:01 +0000
+Received: from DM6PR03MB5196.namprd03.prod.outlook.com
+ ([fe80::10e9:e275:9f10:67cc]) by DM6PR03MB5196.namprd03.prod.outlook.com
+ ([fe80::10e9:e275:9f10:67cc%8]) with mapi id 15.20.6111.013; Thu, 16 Feb 2023
+ 08:58:00 +0000
+Message-ID: <aa85c526-da32-d108-f85e-5dcd2cc8c846@synaptics.com>
+Date: Thu, 16 Feb 2023 16:57:49 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2 01/12] media: v4l2: Add NV15 pixel format
+Content-Language: en-GB
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ Jonas Karlman <jonas@kwiboo.se>, Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel-domain <kernel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Robert Beckett <bob.beckett@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+References: <20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com>
+ <20230101-patch-series-v2-6-2-rc1-v2-1-fa1897efac14@collabora.com>
+From: Hsia-Jun Li <Randy.Li@synaptics.com>
+In-Reply-To: <20230101-patch-series-v2-6-2-rc1-v2-1-fa1897efac14@collabora.com>
+X-ClientProxiedBy: BYAPR11CA0082.namprd11.prod.outlook.com
+ (2603:10b6:a03:f4::23) To DM6PR03MB5196.namprd03.prod.outlook.com
+ (2603:10b6:5:24a::19)
 MIME-Version: 1.0
-References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-2-rick.wertenbroek@gmail.com> <2ebd33e2-46ef-356d-ff4c-81b74950d02f@opensource.wdc.com>
- <CAAEEuhr273bKFBWiTVyTjhHhxjuTK=TVd+5K2B07WfWMD+N7mA@mail.gmail.com>
- <559bdd8c-9cc8-d7ae-a937-ffee9cfbb8a6@opensource.wdc.com> <5c15e1d1-c7e9-0b7c-9b14-f95543c70383@opensource.wdc.com>
-In-Reply-To: <5c15e1d1-c7e9-0b7c-9b14-f95543c70383@opensource.wdc.com>
-From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Date: Thu, 16 Feb 2023 09:43:13 +0100
-Message-ID: <CAAEEuhoYjq9WythKJdLbXL3H_927wbJScWrdbU-tHHvysBg_tQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/9] PCI: rockchip: Remove writes to unused registers
-To: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com, 
-	rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR03MB5196:EE_|CO3PR03MB6792:EE_
+X-MS-Office365-Filtering-Correlation-Id: 02b28fe3-b173-4199-550e-08db0ffbe817
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	HJAfGx5bR9oWsAsggP6hDtJwOkEB+IZBGKhoIedlhnYesRrWx2XwqWtQWkLgomBjG4a7lbaTkUnWnwhyV0kwfISo7C4Y33OgNfWmDQcSNq+jGFI2J/L2Lvf+U4kLsH+7M05jc5N2LfAGtAK6pvPO6dlU/ob8Yb5k85hQn1Z8elfHM2Q1UHEVGJAq5yDESdVYfYhT7x35lsgTb95BpkDCQYXRmlA3P1JeWS1Q8Rk7nSVVvnfsxiX8hGWRDhKFWEZx0dZutH4cEqmfX0mo6off/tzzchKNZKNAeyFnBgzUZ0f1TBG9UoN/VulBNll5XPSauPmov0oIcRxzoTMbCQLdoFBFbCONcxzU2mQcSiBWIenM7JnSLAS4gDf9nPXUdM4rCWmCKVCcUxt8sQMkDpUlF6csoXsaOr68Wa59+ugkVxlEhekmeVEEJgWx2U6MWB6YySfoiYLjjsXdyoAU/+MiLAdCMafGunbjUHqtAtl9YzZR7nUDAUJ2pP/s0rLe7VbrQ8KabnOv/uYKKubKx8xzf0KD0VR7YYGBy1cF3tvaYga/v5GlOoOKbECkXK4qizPQpLexv9vC3oVIREtmZkvzuf5uF9RDxmMJFyo5uG9Dnx+DN01vQk5TY+040jcctlii2+aWOjg/1rPDDN7e8WqmNr4NH+oPAWh/zQPlb+FkUXK8h6zsjtKI6bjyLJ3SjFncKg1UbCNdHAe5xgEj4TB6hdW9uX+Bg2JOiGn5RnUMPXdQhHrlUW/vcJ0TCmEZG3aNWXncu/9FH3stygyBwSm30Q==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR03MB5196.namprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(396003)(346002)(376002)(39860400002)(366004)(136003)(451199018)(4326008)(5660300002)(316002)(31686004)(54906003)(2906002)(41300700001)(66556008)(8676002)(6916009)(8936002)(7416002)(66476007)(66946007)(6486002)(52116002)(478600001)(36756003)(26005)(6506007)(186003)(53546011)(6512007)(2616005)(83380400001)(6666004)(31696002)(38100700002)(38350700002)(86362001)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?UTdTSmU3Vy9oUm5ocFEvaS90RmdDcmtCRGMyU3k4Yk9TQ1VJS3d2OEFWeVJw?=
+ =?utf-8?B?Qm5sWGhsT2VvZjRPTzJ6ZUttVDJNMEUxQnBXeUROQWJHSllIOWh1cjdKWlZS?=
+ =?utf-8?B?K2dDK25NU1dxN0pha1pJQm1pVjJCcUNmdiswWFFtd1d0Rkg1d0pIcXhzazBD?=
+ =?utf-8?B?RFBFQUpVMHUxQ1h4YkliTGl4cFpsQkJUdUZvQTV6ZEQ2L1ZRVVl5OVBvcW4w?=
+ =?utf-8?B?M2hKYm9QOFhwU1NCSWk3dS9xUCtjdkFCVXk4TnIxU3NDZlk1cm9TZnlxTTBx?=
+ =?utf-8?B?UnlBL3JFdE1ILzF6OVBQcHowZ1ZKZFJWaXZQek1VVXloSGE5ZFBjenQ4T3lp?=
+ =?utf-8?B?UFFUSkwrRlNPdHZuUlV2bUhwZjBSRmt5U1Vhc2VFNGFaNHAvbnNXVE1RMUc0?=
+ =?utf-8?B?T3RSeCtwQi9GbmJYWCtxUXBVd1dFdmMxWlZqVDViKzNYYmhOdklNQkI3YnhL?=
+ =?utf-8?B?ZVNWdlNUOTMzc1V0UTFiZ1FrSFFlQXBXWm9PTE9uTGZRV1BlY3RjSXJERjVX?=
+ =?utf-8?B?bytrK2NkZUpQaGpxRkNPQmZYZjJzcFQ0b0IralIybmZYT3BON2xXazE4NFJl?=
+ =?utf-8?B?ZHUrb1FpRHBUVFFTb05rZGt6akN0VlllS2JTMUQySmw3c1l5QWVObS9vY1BJ?=
+ =?utf-8?B?UFZkcFNGaHlJMVV4RUMwZXJSVW02dzc1bWJpaURaWk13Rm1uWktqNnRRcUpM?=
+ =?utf-8?B?M0drM1FEQ3llQ0tZREhpMVJnUUlEeUJ1bXZMa1ZkSDJ2eGd0Y2xqR0NUdGI3?=
+ =?utf-8?B?TFRXUk9Yd3BxSjR0eVUzVzljT2djOHJJeXM1RnFJZmxrRnNabkdKaGJmR3Vy?=
+ =?utf-8?B?V2hibnFtTkFWTEZVYnhjUHBuRlB4RWhvUnhiZGFlQ2dBaWttMG5UUWVvNVQ5?=
+ =?utf-8?B?TnBJcGdSR0Z6Q0oveFFIUkp2S3Q2YkErbjQ4LzdmWlVpYkdHam4zMjV6dzY4?=
+ =?utf-8?B?anNjZFJYTnRtejBVdEtCTHpjZjBrdFBGN1k1dnl5eXAvUWwvRnJjRnMyREM3?=
+ =?utf-8?B?MDY0enJnUmc5SXlES0ZkTUpKTXNJcS9Ic1A4Ynd2MmlxczFqUjJSVHFoaFZ1?=
+ =?utf-8?B?RGtJWnBCV2tXeVkwa3R2T2FoOWVKT282ZGxVTytqVStnRmN1dERxNUl0cWUw?=
+ =?utf-8?B?UDQ3elhNU3VDdzhMVU52eENMdE1FTmhVdmUvc0o5UkNDcDl4YzRlTjVYaWZv?=
+ =?utf-8?B?OHVNZWZBT1BFVHk1TWdvWUJpVkhYZkgyRU0rQWFYeEgzcGkxTkpLdzY0azFO?=
+ =?utf-8?B?SDNPUVNpU2tyL3g5VG9PTFFFelByVkFaZ1M0K242dlVRWGYvdWdET3NQZXYx?=
+ =?utf-8?B?VDVaSy81NlhFdzNCMTNNTWtTdlk1WnRtUkNMTXhzRVkrSnhqemdzbEJXWTVL?=
+ =?utf-8?B?T0RibHkxV0ZnV21hL2R4UFRrN01uaXJQc1EyYXRQVDN1aVpRcnVhYitaWUxx?=
+ =?utf-8?B?bG9GRnJ6TC9nMXk4REVzdjJRU3NsY0MzYmZpc2lDYWxaaUxHazJoOGlLcHha?=
+ =?utf-8?B?ZG9NOHpidGU0NEQwN2Q2YVNER25KeHJrS0xLTGhYdjNQVVdWQ2g0djRwSXpH?=
+ =?utf-8?B?YUNIV0VyTW9QNCtlVzRDUVB6TXZFdmdNbTBXSTBWK25HOWFQQ0FnVWErZ0lW?=
+ =?utf-8?B?NlZRRDQ0M3NzbEorakQxZnNTUE92aHFhM2dvUVdia2ZaR0lKbm9OS2VRWWFu?=
+ =?utf-8?B?V0dqbnN1WlQzQTI3SFloNHAydFlJQk8wUEIzeTlZSVVMazNzL2U2dCtyTVhz?=
+ =?utf-8?B?eHhZOFI0aEt2NXR6d05kN3VicHUzMm9ueHcvUVVvR20vVVZybjNrWjJ3WGF0?=
+ =?utf-8?B?ZHhrTlpOTzJYMStlYWU2VzNPREtGMXQ3ZFVOU2xma1FWOENDWDBQcGtsVkdT?=
+ =?utf-8?B?MFpneStSNXF2WTdpdG5vNnFucnZsYmlxemRNbi9kcVk1R2EyOW1Vb0RHRVVh?=
+ =?utf-8?B?ek01WXdPanUzSXFobmo1Z3I3RGxFRDlhWHNCZklOVElsSTFCa3VzSWtKMUV5?=
+ =?utf-8?B?N1N5UXZ1d2J0ZVIwaVk0WFd6TUc4SmNnV21adTZFdlhzYzNYOEFtbkdyZW52?=
+ =?utf-8?B?SkVqSnFXdWJSN3U1R1hLTnhSM2JvRjRxUG5MY0ZrVy9wa21TaUpoSWllMnlk?=
+ =?utf-8?Q?nBMNjKeKBoOlpkE65/pEl1X3d?=
+X-OriginatorOrg: synaptics.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 02b28fe3-b173-4199-550e-08db0ffbe817
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR03MB5196.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Feb 2023 08:58:00.9044
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 335d1fbc-2124-4173-9863-17e7051a2a0e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: p0+Lzn+FusPsU9G7fR+8C8gmD8kUcAh7lqvsH2kMU/PQLbP2Gbduk8rFs9DxqFigjKpFmss0t9uAKdvirEixgA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO3PR03MB6792
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_004350_977857_C326B53E 
-X-CRM114-Status: GOOD (  30.04  )
+X-CRM114-CacheID: sfid-20230216_005808_074247_8B95A842 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,157 +148,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 16, 2023 at 8:28 AM Damien Le Moal
-<damien.lemoal@opensource.wdc.com> wrote:
->
-> On 2/15/23 18:58, Damien Le Moal wrote:
-> [...]
-> > WRITE ( 131072 bytes):                OKAY
-> > WRITE (1024000 bytes):                OKAY
-> >
-> > Then stops here doing the 1024001 B case. The host waits for a completion that
-> > does not come. On the EP side, I see:
-> >
-> > [   94.307215] pci_epf_test pci_epf_test.0: READ src addr 0xffd00000, 1024001 B
-> > [   94.307960] pci_epc fd000000.pcie-ep: Map region 1 phys addr 0xfa100000 to
-> > pci addr 0xffd00000, 1024001 B
-> > [   94.308924] rockchip-pcie-ep fd000000.pcie-ep: Set atu: region 1, cpu addr
-> > 0xfa100000, pci addr 0xffd00000, 1024001 B
-> > [  132.309645] dma-pl330 ff6e0000.dma-controller: Reset Channel-2
-> > CS-20000e FTC-40000
-> >
-> >                                                   ^^^^^^^^^^^^^^^
-> > The DMA engine does not like something at all. Back to where I was when I tried
-> > your series initially, which is why I tried removing patch 1 to see what happens...
-> >
-> > [  132.370479] pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES,
-> > Time: 38.059623935 s, Rate: 26 KB/s
-> > [  132.372152] pci_epc fd000000.pcie-ep: Unmap region 1
-> > [  132.372780] pci_epf_test pci_epf_test.0: RAISE MSI IRQ 1
-> > [  132.373312] rockchip-pcie-ep fd000000.pcie-ep: Send MSI IRQ 1
-> > [  132.373844] rockchip-pcie-ep fd000000.pcie-ep: MSI disabled
-> > [  132.374388] pci_epf_test pci_epf_test.0: Raise IRQ failed -22
-> >
-> > And it looks like the PCI core crashed or something because MSI does not work
-> > anymore as well (note that this is wheat I see with my nvme epf driver too, but
-> > I do not have that DMA channel reset message...)
-> >
-> > If I run the tests without DMA (mmio only), everything seems fine:
-> >
-> > ## Read Tests (No DMA)
-> > READ (      1 bytes):         OKAY
-> > READ (   1024 bytes):         OKAY
-> > READ (   1025 bytes):         OKAY
-> > READ (1024000 bytes):         OKAY
-> > READ (1024001 bytes):         OKAY
-> >
-> > ## Write Tests (No DMA)
-> > WRITE (      1 bytes):                OKAY
-> > WRITE (   1024 bytes):                OKAY
-> > WRITE (   1025 bytes):                OKAY
-> > WRITE (1024000 bytes):                OKAY
-> > WRITE (1024001 bytes):                OKAY
-> >
-> > ## Copy Tests (No DMA)
-> > COPY (      1 bytes):         OKAY
-> > COPY (   1024 bytes):         OKAY
-> > COPY (   1025 bytes):         OKAY
-> > COPY (1024000 bytes):         OKAY
-> > COPY (1024001 bytes):         OKAY
-> >
-> > So it looks like translation is working with your patch, but that the driver is
-> > still missing something for DMA to work correctly...
->
-> I kept testing this and realized that I was not getting a consistent behavior.
-> Sometimes all tests passed, but would not repeat (running again would fail
-> everything), sometimes NMIs from bad accesses, and other times "hang" (test not
-> completing but no real machine hang/crash). So it started to hint at something
-> randomly initialized...
->
-> Re-reading the TRM, particularly section 17.5.5.1.1, I realized that the lower
-> 16 bits of the desc2 register are used for the translation, but we never set
-> them with the current code. Only desc0 and desc1... So I added a write(0) to
-> desc2 and now it is finally working well. Running the tests in a loop, they all
-> pass and no bad behavior is observed.
->
-> My cleaned-up rockchip_pcie_prog_ep_ob_atu() function now looks like this:
->
-> static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
->                                          u32 r, u32 type, u64 phys_addr,
->                                          u64 pci_addr, size_t size)
-> {
->         u64 sz = 1ULL << fls64(size - 1);
->         int num_pass_bits = ilog2(sz);
->         u32 addr0, addr1, desc0;
->
->         /* Sanity checks */
->         if (WARN_ON_ONCE(type == AXI_WRAPPER_NOR_MSG))
->                 return;
->         if (WARN_ON_ONCE(ALIGN_DOWN(phys_addr, SZ_1M) != phys_addr))
->                 return;
->         if (WARN_ON_ONCE(rockchip_ob_region(phys_addr + size - 1) != r))
->                 return;
->
->         /* We must pass at least 8 bits of PCI bus address */
->         if (num_pass_bits < 8)
->                 num_pass_bits = 8;
->
->         /* PCI bus address region */
->         addr0 = ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
->                 (lower_32_bits(pci_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
->         addr1 = upper_32_bits(pci_addr);
->         desc0 = ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN(fn) | type;
->
->         rockchip_pcie_write(rockchip, addr0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r));
->         rockchip_pcie_write(rockchip, addr1,
->                             ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r));
->         rockchip_pcie_write(rockchip, desc0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC2(r));
-> }
->
-> And the function rockchip_pcie_clear_ep_ob_atu() also clears desc2:
->
-> static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
->                                           u32 region)
-> {
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(region));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(region));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC0(region));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC1(region));
->         rockchip_pcie_write(rockchip, 0,
->                             ROCKCHIP_PCIE_AT_OB_REGION_DESC2(region));
-> }
->
-> Thoughts ?
->
+
+
+On 1/12/23 20:56, Sebastian Fricke wrote:
+> CAUTION: Email originated externally, do not click links or open attachments unless you recognize the sender and know the content is safe.
+> 
+> 
+> From: Jonas Karlman <jonas@kwiboo.se>
+> 
+> Add the NV15 pixel format used by the Rockchip Video Decoder for 10-bit buffers.
+> 
+I think this pixel format in the Rockchip platform supports multiple 
+planes buffers. It is all right not to add more variant until the ext 
+pixel format and buffer APIs are merged.
+
+I just want to mention the need of this.
+> NV15 is a packed 10-bit 4:2:0 Y/CbCr format similar to P010 and P210 but has no
+> padding between components. Instead, luminance and chrominance samples are grouped
+> into 4s so that each group is packed into an integer number of bytes:
+> 
+> YYYY = UVUV = 4 * 10 bits = 40 bits = 5 bytes
+> 
+> The '15' suffix refers to the optimum effective bits per pixel
+> which is achieved when the total number of luminance samples is a multiple
+> of 8 for NV15.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+> ---
+>   .../userspace-api/media/v4l/pixfmt-yuv-planar.rst  | 75 ++++++++++++++++++++++
+>   drivers/media/v4l2-core/v4l2-common.c              |  2 +
+>   drivers/media/v4l2-core/v4l2-ioctl.c               |  1 +
+>   include/uapi/linux/videodev2.h                     |  1 +
+>   4 files changed, 79 insertions(+)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> index f1d5bb7b806d..7d8d228f8063 100644
+> --- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> +++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> @@ -79,6 +79,13 @@ All components are stored with the same number of bits per component.
+>         - Cr, Cb
+>         - Yes
+>         - Linear
+> +    * - V4L2_PIX_FMT_NV15
+> +      - 'NV15'
+> +      - 15
+> +      - 4:2:0
+> +      - Cb, Cr
+> +      - Yes
+> +      - Linear
+>       * - V4L2_PIX_FMT_NV12M
+>         - 'NM12'
+>         - 8
+> @@ -183,6 +190,7 @@ horizontally.
+> 
+>   .. _V4L2-PIX-FMT-NV12:
+>   .. _V4L2-PIX-FMT-NV21:
+> +.. _V4L2-PIX-FMT-NV15:
+>   .. _V4L2-PIX-FMT-NV12M:
+>   .. _V4L2-PIX-FMT-NV21M:
+>   .. _V4L2-PIX-FMT-P010:
+> @@ -586,6 +594,73 @@ Data in the 10 high bits, zeros in the 6 low bits, arranged in little endian ord
+>         - Cb\ :sub:`11`
+>         - Cr\ :sub:`11`
+> 
+> +.. _V4L2_PIX_FMT_NV15:
+> +
+> +NV15
+> +----
+> +
+> +Similar to P010, a semi-planar 10-bit Y/CbCr format, but all components are
+> +packed without any padding between each other. As a side-effect, each group of
+> +4 components are stored over 5 bytes (YYYY or UVUV = 4 * 10 bits = 40 bits = 5
+> +bytes).
+> +
+> +.. flat-table:: Sample 4x4 NV15 Image
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +
+> +    * - start + 0:
+> +      - Y'\ :sub:`00`
+> +      - Y'\ :sub:`01`
+> +      - Y'\ :sub:`02`
+> +      - Y'\ :sub:`03`
+> +    * - start + 8:
+> +      - Y'\ :sub:`04`
+> +      - Y'\ :sub:`10`
+> +      - Y'\ :sub:`11`
+> +      - Y'\ :sub:`12`
+> +    * - start + 16:
+> +      - Y'\ :sub:`13`
+> +      - Y'\ :sub:`14`
+> +      - Y'\ :sub:`20`
+> +      - Y'\ :sub:`21`
+> +    * - start + 24:
+> +      - Y'\ :sub:`22`
+> +      - Y'\ :sub:`23`
+> +      - Y'\ :sub:`24`
+> +      - Y'\ :sub:`30`
+> +    * - start + 32:
+> +      - Y'\ :sub:`31`
+> +      - Y'\ :sub:`32`
+> +      - Y'\ :sub:`33`
+> +      - Y'\ :sub:`34`
+> +
+> +    * - start + 0:
+> +      - Cb\ :sub:`00`
+> +      - Cr\ :sub:`00`
+> +      - Cb\ :sub:`01`
+> +      - Cr\ :sub:`01`
+> +    * - start + 8:
+> +      - Cb\ :sub:`02`
+> +      - Cr\ :sub:`02`
+> +      - Cb\ :sub:`03`
+> +      - Cr\ :sub:`03`
+> +    * - start + 16:
+> +      - Cb\ :sub:`04`
+> +      - Cr\ :sub:`04`
+> +      - Cb\ :sub:`10`
+> +      - Cr\ :sub:`10`
+> +    * - start + 24:
+> +      - Cb\ :sub:`11`
+> +      - Cr\ :sub:`11`
+> +      - Cb\ :sub:`12`
+> +      - Cr\ :sub:`12`
+> +    * - start + 32:
+> +      - Cb\ :sub:`13`
+> +      - Cr\ :sub:`13`
+> +      - Cb\ :sub:`14`
+> +      - Cr\ :sub:`14`
+> +
+> +.. raw:: latex
+> 
+>   Fully Planar YUV Formats
+>   ========================
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 40f56e044640..be23e319fb3a 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -262,6 +262,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+>                  /* YUV planar formats */
+>                  { .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+>                  { .format = V4L2_PIX_FMT_NV21,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +               { .format = V4L2_PIX_FMT_NV15,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 5, 0, 0 }, .hdiv = 2, .vdiv = 2,
+> +                 .block_w = { 4, 2, 0, 0 }, .block_h = { 1, 1, 0, 0 } },
+>                  { .format = V4L2_PIX_FMT_NV16,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+>                  { .format = V4L2_PIX_FMT_NV61,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+>                  { .format = V4L2_PIX_FMT_NV24,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index 8e0a0ff62a70..1c80ad78ef00 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -1343,6 +1343,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>          case V4L2_PIX_FMT_M420:         descr = "YUV 4:2:0 (M420)"; break;
+>          case V4L2_PIX_FMT_NV12:         descr = "Y/UV 4:2:0"; break;
+>          case V4L2_PIX_FMT_NV21:         descr = "Y/VU 4:2:0"; break;
+> +       case V4L2_PIX_FMT_NV15:         descr = "10-bit Y/UV 4:2:0 (Packed)"; break;
+>          case V4L2_PIX_FMT_NV16:         descr = "Y/UV 4:2:2"; break;
+>          case V4L2_PIX_FMT_NV61:         descr = "Y/VU 4:2:2"; break;
+>          case V4L2_PIX_FMT_NV24:         descr = "Y/UV 4:4:4"; break;
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 1befd181a4cc..e9731286dc77 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -621,6 +621,7 @@ struct v4l2_pix_format {
+>   /* two planes -- one Y, one Cr + Cb interleaved  */
+>   #define V4L2_PIX_FMT_NV12    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/CbCr 4:2:0  */
+>   #define V4L2_PIX_FMT_NV21    v4l2_fourcc('N', 'V', '2', '1') /* 12  Y/CrCb 4:2:0  */
+> +#define V4L2_PIX_FMT_NV15    v4l2_fourcc('N', 'V', '1', '5') /* 15  Y/CbCr 4:2:0 10-bit packed */
+>   #define V4L2_PIX_FMT_NV16    v4l2_fourcc('N', 'V', '1', '6') /* 16  Y/CbCr 4:2:2  */
+>   #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
+>   #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
+> 
 > --
-> Damien Le Moal
-> Western Digital Research
->
+> 2.25.1
 
-desc2 dictates the bits [79-64] of the PCIe header descriptor.
-These bits are for the PF TLP Processing hints.
-I did not set them because I thought the default value (0) would be fine.
-The TRM section 17.6.8.2.5 says that this register values are reset
-to 0, therefore, the write here (0) to desc2 should not change anything unless
-that register is written somewhere (I don't think it is).
-Anyways, it's not a bad idea to set desc2 to 0 in those two functions.
-
-Rick
+-- 
+Hsia-Jun(Randy) Li
 
 _______________________________________________
 Linux-rockchip mailing list
