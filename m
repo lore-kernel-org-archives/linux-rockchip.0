@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 709C6C64EC4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 474E7C636CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Feb 2023 10:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ozR3bf5qaZ16RC4KudsrHNE3BvJKIbCyYS8cVLKH5zU=; b=Zy8T3X3SOemT9J
-	dkOvjexOp/k3N7bouRemxZ2s48niJ85Eia7i0BaQHuA+9Q+Pn7Ra9oFwLBZzHPviY7c1CY+T7ouDh
-	0PTB5I5LXLOi9GZUytdVi5gEwnUF6J/63tVloZbLEH0e52TmLWfEwTAY0+6PRzbXCNbJH3IJt0l+3
-	pIjRDhf/bI64Ir5noyZuIn06fh6ixYLRi0ZCadUBC1f8ex/RPa+AVZrG1smoB9pdT+uJmAYARPWSS
-	RlKQ14+nYKRq5xGUP6nznySXGThPt/Wyq93wluz/qOCxyzUDIosFjMWzG/RaYbB9yVrDVvR296n5E
-	Vi5KQxY56MVeSSw3kR+A==;
+	List-Owner; bh=jRNW27gLKApNXJmtJEmckXmJFitfPaqzWyg8RJvyDd0=; b=uAK/LtB+l8Lri6
+	QhylRhPziDi5LZMUzbO/MWnQlm9Tx7LkKknAx9cbxNpqDp4/CGb0TCvvwuzIMSGmTl2qA+Shi/TuA
+	jE+nMW0nboJuU5FgQqJ/EjxNQOLadKiX5CkmxfVqsoBpLxtaXX1ip5fVr6KDGZVwWH+JsJb8YJkwt
+	b+ryq/zu7xEtJeT7ceKqMOo1Zx1ivD9afc/6WEPr2Ge7/lL0tyEX6DvaZW1hw+B5t/ioQnFdbVfwY
+	FWOs+TGRYJjDjFLyaxcvjSYhyaKy7F4DkqMEWZCm/hkZbOzepI2yONAd/AK3+GC9P/rknHUuYkkAm
+	ICCfUhkGpA9mA08GGuJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbm4-009gXh-T4; Thu, 16 Feb 2023 10:46:01 +0000
-Received: from metis.ext.pengutronix.de ([85.220.165.71])
+	id 1pSbpJ-009i6n-TS; Thu, 16 Feb 2023 10:49:21 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pSbdQ-009bHK-2p
-	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:37:05 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pSbcs-0003dj-1u; Thu, 16 Feb 2023 11:36:30 +0100
-Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pSbcp-005Kn7-Q0; Thu, 16 Feb 2023 11:36:29 +0100
-Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pSbco-002Wib-3U; Thu, 16 Feb 2023 11:36:26 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: linux-pm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Will Deacon <will@kernel.org>,
-	Mark Rutland <mark.rutland@arm.com>,
-	kernel@pengutronix.de,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v3 13/19] PM / devfreq: rockchip-dfi: Pass private data struct to internal functions
-Date: Thu, 16 Feb 2023 11:36:18 +0100
-Message-Id: <20230216103624.591901-14-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230216103624.591901-1-s.hauer@pengutronix.de>
-References: <20230216103624.591901-1-s.hauer@pengutronix.de>
+	id 1pSbi6-009eMM-Rt
+	for linux-rockchip@lists.infradead.org; Thu, 16 Feb 2023 10:41:57 +0000
+Received: by mail-ed1-x534.google.com with SMTP id eq11so2155327edb.6
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Feb 2023 02:41:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VEu9tYl9ixT0RlhKmk5fLsaHMUiQpUecJLWHV/pC3Vw=;
+        b=DKbXymnOtF1XMHNi83FzONMNiNoqYbtL7TmCr1PS+KGak8EsrVXSsL0NNRcgyZGpal
+         6ascZ91tN9Yb+ngczhbwHLNNLoucV1ocvvIrT+9AYzjFYmMPnvWu2lbd2jElDsQ2tMLj
+         AF9zkCKZdpf6Jv9vbw1dikIeJ/Wr35mGPS4NgfdtUTxpPthlw6Xfofb+dIw0Spe1tVfD
+         o/YPPzvsYXb/W89QkRqqxnpZ4wmcgtRjqTnwP5eJF0ntjaue1RRwYQmYIh432uHJDTlu
+         OYblgom9b+A0JlF+iVuh5I18gr911j7CEZfh7SVhMgN6OLn4NuUNMZEnZZa7TR2Qt0rw
+         O+fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VEu9tYl9ixT0RlhKmk5fLsaHMUiQpUecJLWHV/pC3Vw=;
+        b=Axzs1xIW5UOMvc9Hv50sQ6MEOfJzo65dDeTdTqfUHAYmsGduJ3mQJwtomGAJa8gbrS
+         ZecFFsbRzmtIhDF9eNWknfxyfwbB2G25/J3mkxe8FcprfyAxlN1iZeNo+unRSmTBSarJ
+         oYVEeSXP6C92CFVzDAQ9S3IyByhu12ow+P+BqKlwudXpbJ7Gj4emrMz7UrP/K77A+S/z
+         WxIKA7xrWgRxQWHYdg2/GqDNwtZsZYIP9pWYXLSRlimZDu+5XVQrHaODtqFL/2kPBgSD
+         +KOsuOHA9aXkotHIa816icPGqJuqTqYUpC1bBYLOrlWnNrWJXV1z8u6QjpLlkKacgHlY
+         fN7Q==
+X-Gm-Message-State: AO0yUKVBj7x8VZDd9rgjVFrsY+vf0Ef8z4SxeyrznVQaH/tYd19eh5ac
+	ho4BR0aLLvxqnXZFc31ZZZuwkg==
+X-Google-Smtp-Source: AK7set8vXxoTnXCznhpP6QpzCw4O9JO6x+mEM/Snm10J14uNMw42kLP4DGVtoqnjUdjsyMeSGP2GQA==
+X-Received: by 2002:aa7:df99:0:b0:4ac:c5c1:e1ed with SMTP id b25-20020aa7df99000000b004acc5c1e1edmr5914411edy.12.1676544107911;
+        Thu, 16 Feb 2023 02:41:47 -0800 (PST)
+Received: from [192.168.1.109] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id v30-20020a50a45e000000b004acbf563d88sm657183edb.15.2023.02.16.02.41.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Feb 2023 02:41:47 -0800 (PST)
+Message-ID: <d94a8e7b-1c1e-34dc-5262-f16a260d813a@linaro.org>
+Date: Thu, 16 Feb 2023 11:41:45 +0100
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v3] dt-bindings: gpio: rockchip,gpio-bank: add compatible
+ string per SoC
+Content-Language: en-US
+To: Johan Jonker <jbx6244@gmail.com>, brgl@bgdev.pl
+Cc: linus.walleij@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <03627216-54b5-5d9b-f91d-adcd637819e3@gmail.com>
+ <038585bd-7226-b28b-93a5-e1676a57298e@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <038585bd-7226-b28b-93a5-e1676a57298e@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230216_023704_182149_CCA3A1D2 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20230216_024154_926743_365CF29B 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,80 +98,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The internal functions do not need the struct devfreq_event_dev *,
-so pass them the struct rockchip_dfi *. This is a preparation for
-adding perf support later which doesn't have a struct devfreq_event_dev *.
+On 15/02/2023 22:01, Johan Jonker wrote:
+> Currently all Rockchip gpio nodes have the same compatible.
+> Compatible strings should be SoC related.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- drivers/devfreq/event/rockchip-dfi.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index dc48d9c26f599..c0b7b1e9805e9 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -73,9 +73,8 @@ struct rockchip_dfi {
- 	unsigned int channel_mask;
- };
- 
--static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
-+static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
- {
--	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 	void __iomem *dfi_regs = dfi->regs;
- 
- 	/* clear DDRMON_CTRL setting */
-@@ -102,18 +101,16 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
- 		       dfi_regs + DDRMON_CTRL);
- }
- 
--static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
-+static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
- {
--	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 	void __iomem *dfi_regs = dfi->regs;
- 
- 	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
- 		       dfi_regs + DDRMON_CTRL);
- }
- 
--static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
-+static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
- {
--	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 	u32 i;
- 	void __iomem *dfi_regs = dfi->regs;
- 
-@@ -131,7 +128,7 @@ static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 
--	rockchip_dfi_stop_hardware_counter(edev);
-+	rockchip_dfi_stop_hardware_counter(dfi);
- 	clk_disable_unprepare(dfi->clk);
- 
- 	return 0;
-@@ -148,7 +145,7 @@ static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
- 		return ret;
- 	}
- 
--	rockchip_dfi_start_hardware_counter(edev);
-+	rockchip_dfi_start_hardware_counter(dfi);
- 	return 0;
- }
- 
-@@ -166,7 +163,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 	u32 access = 0, total = 0;
- 	int i;
- 
--	rockchip_dfi_read_counters(edev, &count);
-+	rockchip_dfi_read_counters(dfi, &count);
- 
- 	/* We can only report one channel, so find the busiest one */
- 	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
--- 
-2.30.2
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
