@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CF9C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Feb 2023 12:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA7BC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Feb 2023 12:56:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
 	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OZyKC4RDZWRRaGFZtSTaGDQ54AJ9SD0bfsLENryd1lY=; b=zUW8F4axI0uJOfVOm2VE3TzQWj
-	DmAqqGSgTB+zrWlHkguR2+ldsMHMbpQcp4Jt2fN54Ayw6srg2AfQ4ksPPm8HONfQ5JdObBGXRpwHQ
-	HggXhlgNbEv/DKhfN1ekKfGI/MOtYmYTDeypLPKC3WG/vHHxoML5qNVMHYd/azUUxcuhr4kEFOFbO
-	me37mgGScd7bxB9/ird/cq8pOI0CV0+Vza7HFR+CtcoxUTSq1F2PC9MBSfFRoOZdOW49Tuy4VpKaK
-	tWUwka0t2safy31sR7mIOmQxjGpolMrFxeJboU6Ev/VmHZaNtZyb/BWxE+fWYSf3fejikSxHqR4TB
-	T8OLtoPg==;
+	bh=HcDM/n4pZCkxxQ7v4RjLmWGyfDgjz/4Ppb5sQrcx/ng=; b=e0VdYVaVCZTAHv8aCsQLkE7CMi
+	ObSHQlwP5LpZx6cEL310vGbKlYFj4OZeHdzSulS4VHSA2uwzxuQfLOzhd0zekYZT4usxbN0K/nbcZ
+	ikjINlRTIgj/KvKTOVs83inRT8YZrCH9bprJ/dA3CHNrXdTlRXMNgE5FQKePmlq8CjcvEd0g2fzld
+	+g7ylCsI9jnSqLNu5wczbGZyWeRMLelpgv9Xsx2/kb1tSd2KqSfwuDPZKwH2f2RmfndXE0Urm5/l1
+	cDPpRFwYI7SnC/nWveoYz4oL5CggMPBaSuexj7OU/9k5b+wP2uYHrwuhrqdRglEDPfQ0591YtH1bU
+	zqv+vnyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTMjn-00H0nB-5E; Sat, 18 Feb 2023 12:54:47 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1pTMlW-00H16c-Ni; Sat, 18 Feb 2023 12:56:34 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pTMjb-00H0kU-Rm
-	for linux-rockchip@lists.infradead.org; Sat, 18 Feb 2023 12:54:38 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id 10so736842oiz.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 18 Feb 2023 04:54:34 -0800 (PST)
+	id 1pTMlM-00H13l-I2
+	for linux-rockchip@lists.infradead.org; Sat, 18 Feb 2023 12:56:26 +0000
+Received: by mail-oi1-x236.google.com with SMTP id bk33so71468oib.10
+        for <linux-rockchip@lists.infradead.org>; Sat, 18 Feb 2023 04:56:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112; t=1676724872;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112; t=1676724983;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=//sb/NYNvOOxKrp04fWS+VMUo3F1GFZIyJCs1w1+uek=;
-        b=I7P7JsNGzgkMCPgCrqRXdA9ZpA9DOa2tP8KSY8Oy5dWp3x2KJ4cANa9ZYZ+uhdtv58
-         wKz1ZkawqpIBakGgBvuy9Idg+QjE+JGuiG9uHqzZjFFqbjjt+C217c/Ce+UuCMAWMmAm
-         oHY2nZOtM86GH0FJExXKnPgRP2nbL0/LXrX186H4WcFk+43wXGFVLMPLrOkjw04KJJTg
-         1ScetLzsQ7qy7EILdSksGllAL+nqO7DNZycJ25QY7+IWBlQYWEJwZiPyB45M/ZnCVlBW
-         ajx6M9qAjtLPy3YN/3om3eRPyv23USb/4PR9j+GCAaSRwV7y63Z5v2faAKGAF2YSH62N
-         y1KA==
+        bh=B4T/3VjZ2wUE2kiltfp+IEnD9NbcnF/4jn4QQsLwaKQ=;
+        b=WFUutkwQzJllOyCFl9Tyt7c/8C1QB8tGsITnK6uGdRDVGT89Qb2gvLDjJTqHdqbERm
+         O1tgIm2GRydG5xAtQIq7fzmGRdLlHSkhVmwHNWVGsn3cTaaH10X1aLWx1g9Ca0TJpQ5s
+         13bE9b8pvo6mNhvEa0GpyawCPzWE6gyQCMZbZdK6CjoEGktQB5WBwOJCBLRYGS3niNpH
+         ita6/hfL7rvhIpfu0UIMp8fadhGLrW03XniCzlrB5FUqAWMIzf8Y3OdOEPxvoUqHVbY/
+         lcIYIGjOReCACIMFdDY524OJziMs3E40n4Xs4FhPM73MTbDWVLdEgOJrBsnpHDMugxht
+         0jug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1676724872;
+        d=1e100.net; s=20210112; t=1676724983;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=//sb/NYNvOOxKrp04fWS+VMUo3F1GFZIyJCs1w1+uek=;
-        b=dk+YzZ1M9dGYnsk0SM6HhS1QYfAABAjp/J0Z+pc7w5h1Ay1yzwu5ifhO8skSH4IFOM
-         tpiLT9q2Crj2mrSGB/BVgd05bHxmuqJtuNjIPCy1q3SlF1m0IGMT5eARZsFtsQj9gV9V
-         Eh6cfmFijfEyNxSa15v85vc6g5gPpiZoczBvQPnX6wk6MjVEywcJnewxofg/AvL95Qut
-         vl8UkC7T+PqG3dWbZUdOIIrb9891WIuIBHq8KcZuXdo9M6n9bgj4labGOQ6oyMETX1cw
-         GqOODyVcKsiYRDVW/vyV/zaxJd/eiULJiDulRSqn1+hxuEo/vZOt0gycifNmJWohpdBN
-         vx/A==
-X-Gm-Message-State: AO0yUKUjh+Hj1NVdCcYvzwI3D6R/nJtYWHLnzL/I8/TzfBM/MniOI3rm
-	PhTjCAxzU/KhXCbPBrUZp7by6EjddXL/cDM1
-X-Google-Smtp-Source: AK7set8hgUotSkKUQWpkFmsCbsIrZ1DR8W4XyJ/l7M9d1e2GFLgZ0l2Xw76LWIUq6qL4UMbVzzM/jQ==
-X-Received: by 2002:a05:6808:1a1e:b0:367:163e:a0e with SMTP id bk30-20020a0568081a1e00b00367163e0a0emr2039035oib.4.1676724872484;
-        Sat, 18 Feb 2023 04:54:32 -0800 (PST)
+        bh=B4T/3VjZ2wUE2kiltfp+IEnD9NbcnF/4jn4QQsLwaKQ=;
+        b=XzouzWL91+HQYwQX1Tv29iRvPAE+JivYTYA0Pgu6kgPYJPzKf4tWLdLA8sHi6d1tNB
+         vLeSSJTyYaK4aMURWgFEEtlZeRozgerUUlbs6e6KCkDXX8rRBtws+wU+Yxev0DAQ4VUu
+         ueob76Rgi+B6t9q7C9exM7SfskZFSz6FYHnV8gJWHNvVp3mve+1A3unB1phb+7TNCbeC
+         faGlxHKokOtX2r8qu9rpCV3KdAEGFTal39VUAQQ20dl9l4kDv0i/oFCEqhr5nXOVLih3
+         l48ouE+3iRRnLezvWrH75q6rSBREBWqIQrOomTkVzn5POcY9vOwjnMFUKq5ynGAKhLEc
+         mjuw==
+X-Gm-Message-State: AO0yUKWbcdv3W/ipMnzVA09gExGNvDO2iuaWdkQgeIE2uFZlA4e3D18r
+	O9SsVOoe84ILP5PK3fRvfTB5AQ==
+X-Google-Smtp-Source: AK7set+eMXV7537L5Whj6keT9oGEqRHiBF5BCK2/XFF63eFpDJ+bIyReLkdZb0jCLH19KzS79utdZA==
+X-Received: by 2002:a05:6808:21a1:b0:37f:acb8:cd8f with SMTP id be33-20020a05680821a100b0037facb8cd8fmr3108272oib.0.1676724983375;
+        Sat, 18 Feb 2023 04:56:23 -0800 (PST)
 Received: from [192.168.10.175] ([190.11.59.127])
-        by smtp.gmail.com with ESMTPSA id q132-20020acac08a000000b0037d813cd612sm2868122oif.43.2023.02.18.04.54.27
+        by smtp.gmail.com with ESMTPSA id w13-20020a9d538d000000b00690e6d56670sm2150969otg.25.2023.02.18.04.56.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Feb 2023 04:54:31 -0800 (PST)
-Date: Sat, 18 Feb 2023 09:54:20 -0300
+        Sat, 18 Feb 2023 04:56:22 -0800 (PST)
+Date: Sat, 18 Feb 2023 09:56:11 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [PATCH v8 0/6] media: verisilicon: HEVC: fix 10bits handling
+Subject: Re: [PATCH v8 2/6] media: verisilicon: Do not use ctx fields as
+ format storage when resetting
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: robert.mader@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
-	shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
-	festevam@gmail.com, linux-imx@nxp.com, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.co.uk, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Message-Id: <K61AQR.89JE1N9UODFT2@vanguardiasur.com.ar>
-In-Reply-To: <20230203091622.127279-1-benjamin.gaignard@collabora.com>
+Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+	linux-imx@nxp.com, hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.co.uk,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Message-Id: <N91AQR.BQFKAM8JI9HC2@vanguardiasur.com.ar>
+In-Reply-To: <20230203091622.127279-3-benjamin.gaignard@collabora.com>
 References: <20230203091622.127279-1-benjamin.gaignard@collabora.com>
+	<20230203091622.127279-3-benjamin.gaignard@collabora.com>
 X-Mailer: geary/43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230218_045436_280182_53A57780 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20230218_045624_620270_012F4DC5 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,78 +96,102 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Benjamin,
 
-We are almost there, just some minor comments.
-
-On Fri, Feb 3 2023 at 10:16:16 AM +0100, Benjamin Gaignard 
+On Fri, Feb 3 2023 at 10:16:18 AM +0100, Benjamin Gaignard 
 <benjamin.gaignard@collabora.com> wrote:
-> When decoding a 10bits bitstreams HEVC driver should only expose 
-> 10bits pixel formats.
-> To fulfill this requirement it is needed to call 
-> hantro_reset_raw_fmt()
-> and to only change driver internal state in case of success.
+> Source and destination pixel formats fields of context structure 
+> should
+> not be used as storage when resetting the format.
+> Use local variables instead and let hantro_set_fmt_out() and
+> hantro_set_fmt_cap() set them correctly later.
 > 
-> Fluster score for HEVC (140/147) doesn't change after this series.
-> Fluster score for VP9 is 146/303.
+> Fixes: dc39473d0340 ("media: hantro: imx8m: Enable 10bit decoding")
 > 
 
-Given the series is changing the format negotation which affects
-all codecs, can you test MPEG-2, VP8, H.264 and JPEG encoding?
+The above Fixes tag looks incorrect. I am unsure what would be the
+right Fixes, perhaps we can avoid putting any?
 
-Can you also run v4l2-compliance on all the /dev/videoX devices?
-
-(Adding Robert Mader, who recently helped test the JPEG encoder).
+Same for all the other patches, the Fixes tag look wrong.
 
 Thanks,
 Ezequiel
 
-> version 8:
-> - Correct patch 4.
-> - Add a patch for VP9.
-> 
-> version 7:
-> - Remove unused ctx variable in hantro_try_ctrl().
-> - Change HANTRO_DEFAULT_BIT_DEPTH value to 8.
-> - Simplify hantro_check_depth_match logic.
-> - Keep ctx->bit_depth as integer value because it is use
->   to compute buffers size for hevc.
-> 
-> version 6:
-> - Split the patches in multiple sub-patches.
-> - Rework hantro_reset_encoded_fmt() usage.
-> 
-> version 5:
-> - Add Nicolas's review tags
-> - Add Fixes tags
-> 
-> version 4:
-> - Split the change in 2 patches.
-> - Change hantro_check_depth_match() prototype to avoid using
->   ctx->bit_depth
-> - Return the result of hantro_reset_raw_fmt() to the caller.
-> - Only set ctx->bit_depth when hantro_reset_raw_fmt() returns is ok.
-> 
-> Benjamin Gaignard (6):
->   media: verisilicon: Do not set context src/dst formats in reset
->     functions
->   media: verisilicon: Do not use ctx fields as format storage when
->     resetting
->   media: verisilicon: Do not set ctx->bit_depth in hantro_try_ctrl()
->   media: verisilicon: Do not change context bit depth before 
-> validating
->     the format
->   media: verisilicon: HEVC: Only propose 10 bits compatible pixels
->     formats
->   media: verisilicon: VP9: Only propose 10 bits compatible pixels
->     formats
-> 
->  .../media/platform/verisilicon/hantro_drv.c   | 49 +++++++---
->  .../platform/verisilicon/hantro_postproc.c    |  2 +-
->  .../media/platform/verisilicon/hantro_v4l2.c  | 90 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/platform/verisilicon/hantro_v4l2.c  | 40 
 > +++++++++----------
->  .../media/platform/verisilicon/hantro_v4l2.h  |  3 +-
->  .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 +
->  5 files changed, 86 insertions(+), 60 deletions(-)
+>  1 file changed, 18 insertions(+), 22 deletions(-)
 > 
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c 
+> b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> index 33cb865238de..e60151a8a401 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -377,47 +377,43 @@ static void
+>  hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_fmt *vpu_fmt;
+> -	struct v4l2_pix_format_mplane *fmt;
+> +	struct v4l2_pix_format_mplane fmt;
+> 
+>  	vpu_fmt = hantro_get_default_fmt(ctx, true);
+> +	if (!vpu_fmt)
+> +		return;
+> 
+> +	hantro_reset_fmt(&fmt, vpu_fmt);
+> +	fmt.width = vpu_fmt->frmsize.min_width;
+> +	fmt.height = vpu_fmt->frmsize.min_height;
+>  	if (ctx->is_encoder)
+> -		fmt = &ctx->dst_fmt;
+> -	else
+> -		fmt = &ctx->src_fmt;
+> -
+> -	hantro_reset_fmt(fmt, vpu_fmt);
+> -	fmt->width = vpu_fmt->frmsize.min_width;
+> -	fmt->height = vpu_fmt->frmsize.min_height;
+> -	if (ctx->is_encoder)
+> -		hantro_set_fmt_cap(ctx, fmt);
+> +		hantro_set_fmt_cap(ctx, &fmt);
+>  	else
+> -		hantro_set_fmt_out(ctx, fmt);
+> +		hantro_set_fmt_out(ctx, &fmt);
+>  }
+> 
+>  static void
+>  hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_fmt *raw_vpu_fmt;
+> -	struct v4l2_pix_format_mplane *raw_fmt, *encoded_fmt;
+> +	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
+> 
+>  	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
+> +	if (!raw_vpu_fmt)
+> +		return;
+> 
+> -	if (ctx->is_encoder) {
+> -		raw_fmt = &ctx->src_fmt;
+> +	if (ctx->is_encoder)
+>  		encoded_fmt = &ctx->dst_fmt;
+> -	} else {
+> -		raw_fmt = &ctx->dst_fmt;
+> +	else
+>  		encoded_fmt = &ctx->src_fmt;
+> -	}
+> 
+> -	hantro_reset_fmt(raw_fmt, raw_vpu_fmt);
+> -	raw_fmt->width = encoded_fmt->width;
+> -	raw_fmt->height = encoded_fmt->height;
+> +	hantro_reset_fmt(&raw_fmt, raw_vpu_fmt);
+> +	raw_fmt.width = encoded_fmt->width;
+> +	raw_fmt.height = encoded_fmt->height;
+>  	if (ctx->is_encoder)
+> -		hantro_set_fmt_out(ctx, raw_fmt);
+> +		hantro_set_fmt_out(ctx, &raw_fmt);
+>  	else
+> -		hantro_set_fmt_cap(ctx, raw_fmt);
+> +		hantro_set_fmt_cap(ctx, &raw_fmt);
+>  }
+> 
+>  void hantro_reset_fmts(struct hantro_ctx *ctx)
 > --
 > 2.34.1
 > 
