@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D239CC05027
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Feb 2023 10:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 938F8C05027
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Feb 2023 10:51:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TpxKqKZo8gCpkgZpSAU6+7C8x5fi941qnuE1ZD9OyAQ=; b=c1xqFf+KZU+18H
-	O1QxLpOpVe76H6cpeBrCOmVmZWOFDaOhbgmaUXMnSrNEcF+ssxo0ha9gQn64SQ5nfckSXF4oJa/jG
-	j6NdDnn+SuQZrDSJ98YJeZnC9hdf72DZOb8jzBi1W0o3kgzPkbfJ0FWpGAHsVDzX0MpEot0yOzzFP
-	q4Z3VMk8ergrO+OM/RHI0co/wYHZWXDhMRp5aTuYUBiHN92U8NHEU/EEzJVbXS8c/Yue5Ar+ToUuk
-	mhGbv0mQluE38dx6/62dgZJoMkGY7+Ua4KdKQdW9qPKx4nv3ByVSxKD1cVCFnO+yFqDhGVq0vOX8e
-	iYMzXJdeg5kluVzOhbng==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yHRNx1twFz3qnzoyjd0DQujO/q8x+NQ+Tfhrfh7yRv4=; b=2D9r5N+kDijL5G
+	iLHSO3v220dKeaTSJbuzc231Eg+oJNKYcEyf2yB5bdqMotDB3H2bVAUNauX1yMDyKAs1DV6yvW/zM
+	GhhHihe+Yh32OAerla5fB8rivBmLnZLx51HppPqaGzRtd/Pu5s8z8vclJJyC4VVCFTLDgICyySH5I
+	bZD1aRN3BqHVGZf0muEpYck9dMby9VHVc2tMS1Y0+a3vwPZbN43GGyrHg7VFJGh5RPAz8kwHDOaOE
+	Pu0MryiOfmae/Wl6tZkF3KL3dMyBKh8zBNqCGw8T7uacKkHBj8K2FjugFiws6Y6Zdd6kbsFJdyA2T
+	ycbqFYahA87coZyDYYCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU3kp-003iic-M2; Mon, 20 Feb 2023 10:50:43 +0000
+	id 1pU3kr-003ijn-5z; Mon, 20 Feb 2023 10:50:45 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU3jC-003i0t-0B; Mon, 20 Feb 2023 10:49:04 +0000
+	id 1pU3jA-003i0h-Ln; Mon, 20 Feb 2023 10:49:04 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:d30c:b155:96fb:dcc])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1E046602165;
-	Mon, 20 Feb 2023 10:48:58 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 12D246602122;
+	Mon, 20 Feb 2023 10:48:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676890139;
-	bh=Qylc8lXBZUribdIoDlAmLesNbqqMKmI6fMRr3vIkG8E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RTS9a73wcPX9uhMzv6NCAE206e9RJ/YFkz5NBcy2CCC36Lf3d9YYmafphVugIkBsU
-	 zuPq1m2nx4sHw9IGMwPoAerygmBjVzzZXzOOfbMf01BFAHRcg2tOs12DzfBTz6XuRM
-	 wtP94UOj9U1zrqsEsChXB3a0UJsL8DOK4faVjr7VtTh1yhe5XB3vIs7Niv5cCZHP9A
-	 kdHCKxeqZbS/KeLx1OWsD47xDniYkyojHRkuLnROtqqE3OlJzLGp3dtFOgWu0+gRPa
-	 CwL31tTSltEwAd0zf9edW4FR314xL+LhJ9vXCHqB9c8aGOzqOHnztWisNDqfRAFlUH
-	 rdJE7Wdi+VqRg==
+	s=mail; t=1676890137;
+	bh=85vs88cR5sK6SskbvScfJohz4c11X4nglqVcDqSI9zE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=SvWPYeThrOHHmkMjOi0L0K+fzpHCbJDXCWyy+dWPx9Kxm6HDwmByh5ujVZ8eoMT92
+	 auUfzRhM6/99YPcG/X5c1zQi4YGCiWWDEfkha174gQuRhZ+OUAr0+5p4oWX0q4VPtG
+	 QmwXGxCQ+ss9TsLu64ORDcd6xH/DyIk8o9rkyhgovzMz0eFeaAFzO5CKtEFARGqdLo
+	 kEtMxtjtR5wPhCNDlzSiJ3Ex3e3Pi7dGply3fQZeUzbtn7gp517RrJ+r6+z9M8znzu
+	 QGRzjezRGCvhAjaoFq8ahqZ9NItrNCh+RNVvncydOGzWPwaQJAevFnNUs0J/rEgpz8
+	 HFxeHF5R7mB8A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -59,16 +59,14 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 3/6] media: verisilicon: Do not set ctx->bit_depth in hantro_try_ctrl()
-Date: Mon, 20 Feb 2023 11:48:46 +0100
-Message-Id: <20230220104849.398203-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 0/6] media: verisilicon: HEVC: fix 10bits handling
+Date: Mon, 20 Feb 2023 11:48:43 +0100
+Message-Id: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
-References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_024902_210182_D2B62716 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20230220_024901_014165_6725437B 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,88 +83,285 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In hantro_try_ctrl() we should only check the values inside
-control parameters and not set ctx->bit_depth. That must
-be done in controls set function.
-Create a set control function for hevc where ctx->bit_depth is
-set at the right time.
+When decoding a 10bits bitstreams HEVC driver should only expose 10bits pixel formats.
+To fulfill this requirement it is needed to call hantro_reset_raw_fmt()
+and to only change driver internal state in case of success.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_drv.c   | 32 ++++++++++++++-----
- 1 file changed, 24 insertions(+), 8 deletions(-)
+Fluster score for HEVC (140/147) doesn't change after this series.
+Fluster score for VP9 is 146/303.
+Fluster score for VP8 is 59/61.
+Fluster score for H.264 is 129/135.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index b0aeedae7b65..c237253803f4 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -251,11 +251,6 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+v4l2-compliance SHA: not available, 64 bits, 64-bit time_t
+
+Compliance test for hantro-vpu device /dev/video0:
+
+Driver Info:
+	Driver name      : hantro-vpu
+	Card type        : nxp,imx8mq-vpu-g1-dec
+	Bus info         : platform:38300000.video-codec
+	Driver version   : 6.2.0
+	Capabilities     : 0x84204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : hantro-vpu
+	Model            : hantro-vpu
+	Serial           : 
+	Bus info         : platform:38300000.video-codec
+	Media version    : 6.2.0
+	Hardware revision: 0x00000000 (0)
+	Driver version   : 6.2.0
+Interface Info:
+	ID               : 0x0300000c
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000001 (1)
+	Name             : nxp,imx8mq-vpu-g1-dec-source
+	Function         : V4L2 I/O
+	Pad 0x01000002   : 0: Source
+	  Link 0x02000008: to remote pad 0x1000004 of entity 'nxp,imx8mq-vpu-g1-dec-proc': Data, Enabled, Immutable
+
+Required ioctls:
+	test MC information (see 'Media Driver Info' above): OK
+	test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+	test second /dev/video0 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
+
+	test invalid ioctls: OK
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+	test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Control ioctls:
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 13 Private Controls: 0
+
+Format ioctls:
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK (Not Supported)
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK (Not Supported)
+	test Composing: OK (Not Supported)
+	test Scaling: OK (Not Supported)
+
+Codec ioctls:
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls:
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK
+
+Total for hantro-vpu device /dev/video0: 46, Succeeded: 46, Failed: 0, Warnings: 0
+
+v4l2-compliance -d 1 
+v4l2-compliance SHA: not available
+, 64 bits, 64-bit time_t
+
+Compliance test for hantro-vpu device /dev/video1:
+
+Driver Info:
+	Driver name      : hantro-vpu
+	Card type        : nxp,imx8mq-vpu-g2-dec
+	Bus info         : platform:38310000.video-codec
+	Driver version   : 6.2.0
+	Capabilities     : 0x84204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : hantro-vpu
+	Model            : hantro-vpu
+	Serial           : 
+	Bus info         : platform:38310000.video-codec
+	Media version    : 6.2.0
+	Hardware revision: 0x00000000 (0)
+	Driver version   : 6.2.0
+Interface Info:
+	ID               : 0x0300000c
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000001 (1)
+	Name             : nxp,imx8mq-vpu-g2-dec-source
+	Function         : V4L2 I/O
+	Pad 0x01000002   : 0: Source
+	  Link 0x02000008: to remote pad 0x1000004 of entity 'nxp,imx8mq-vpu-g2-dec-proc': Data, Enabled, Immutable
+
+Required ioctls:
+	test MC information (see 'Media Driver Info' above): OK
+	test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+	test second /dev/video1 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
+
+	test invalid ioctls: OK
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+	test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Control ioctls:
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 12 Private Controls: 0
+
+Format ioctls:
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK (Not Supported)
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK (Not Supported)
+	test Composing: OK (Not Supported)
+	test Scaling: OK (Not Supported)
+
+Codec ioctls:
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls:
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK
+
+Total for hantro-vpu device /dev/video1: 46, Succeeded: 46, Failed: 0, Warnings: 0
+
+version 9:
+- Fix brackets
+- Remove Fixes tags
+- Run fluster for VP8, H264.
+- Add compliance tests results.
+- Rebased on v6.2-rc7
+- My hardware doesn't support JPEG encoder so I can't test it.
+
+version 8:
+- Correct patch 4.
+- Add a patch for VP9.
+
+version 7:
+- Remove unused ctx variable in hantro_try_ctrl().
+- Change HANTRO_DEFAULT_BIT_DEPTH value to 8.
+- Simplify hantro_check_depth_match logic.
+- Keep ctx->bit_depth as integer value because it is use
+  to compute buffers size for hevc.
+
+version 6:
+- Split the patches in multiple sub-patches.
+- Rework hantro_reset_encoded_fmt() usage.
+
+version 5:
+- Add Nicolas's review tags
+- Add Fixes tags
+
+version 4:
+- Split the change in 2 patches.
+- Change hantro_check_depth_match() prototype to avoid using
+  ctx->bit_depth
+- Return the result of hantro_reset_raw_fmt() to the caller.
+- Only set ctx->bit_depth when hantro_reset_raw_fmt() returns is ok.
  
- static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- {
--	struct hantro_ctx *ctx;
--
--	ctx = container_of(ctrl->handler,
--			   struct hantro_ctx, ctrl_handler);
--
- 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
- 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
- 
-@@ -274,8 +269,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
- 			/* Only 8-bit and 10-bit are supported */
- 			return -EINVAL;
--
--		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
- 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
- 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
- 
-@@ -324,6 +317,24 @@ static int hantro_vp9_s_ctrl(struct v4l2_ctrl *ctrl)
- 	return 0;
- }
- 
-+static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
-+{
-+	struct hantro_ctx *ctx;
-+
-+	ctx = container_of(ctrl->handler,
-+			   struct hantro_ctx, ctrl_handler);
-+
-+	switch (ctrl->id) {
-+	case V4L2_CID_STATELESS_HEVC_SPS:
-+		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
- 	.try_ctrl = hantro_try_ctrl,
- };
-@@ -336,6 +347,11 @@ static const struct v4l2_ctrl_ops hantro_vp9_ctrl_ops = {
- 	.s_ctrl = hantro_vp9_s_ctrl,
- };
- 
-+static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
-+	.try_ctrl = hantro_try_ctrl,
-+	.s_ctrl = hantro_hevc_s_ctrl,
-+};
-+
- #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
- 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
- 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-@@ -470,7 +486,7 @@ static const struct hantro_ctrl controls[] = {
- 		.codec = HANTRO_HEVC_DECODER,
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_HEVC_SPS,
--			.ops = &hantro_ctrl_ops,
-+			.ops = &hantro_hevc_ctrl_ops,
- 		},
- 	}, {
- 		.codec = HANTRO_HEVC_DECODER,
+Benjamin Gaignard (6):
+  media: verisilicon: Do not set context src/dst formats in reset
+    functions
+  media: verisilicon: Do not use ctx fields as format storage when
+    resetting
+  media: verisilicon: Do not set ctx->bit_depth in hantro_try_ctrl()
+  media: verisilicon: Do not change context bit depth before validating
+    the format
+  media: verisilicon: HEVC: Only propose 10 bits compatible pixels
+    formats
+  media: verisilicon: VP9: Only propose 10 bits compatible pixels
+    formats
+
+ .../media/platform/verisilicon/hantro_drv.c   | 49 +++++++---
+ .../platform/verisilicon/hantro_postproc.c    |  2 +-
+ .../media/platform/verisilicon/hantro_v4l2.c  | 90 +++++++++----------
+ .../media/platform/verisilicon/hantro_v4l2.h  |  3 +-
+ .../media/platform/verisilicon/imx8m_vpu_hw.c |  2 +
+ 5 files changed, 85 insertions(+), 61 deletions(-)
+
 -- 
 2.34.1
 
