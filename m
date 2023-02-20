@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4676C636CC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Feb 2023 10:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D239CC05027
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Feb 2023 10:50:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d/HHGwTd/7U4pW7/ERdXaxcXiaPTW9n6cGdvASjDsXA=; b=pSjL6aja8FDuYN
-	pTJj7p5NIPzV8HU34o52L8ag4RhdQCEn8MnKj5nIFYJeoPWBhQ4pUgv2L7C4t92JBBTH/CrDFGTcu
-	5e/cOFYPvn/di+WatLkYvN1Wv+BMVSpHeR5c16bcMxr3B/LcBEQ0Gk5bl9/k3gcojJYVP2CUhVk7r
-	7KifV/yx1E31VhQ6sMHURtsrEPy3z6gzigvomSGr+OdxuRCCt+nAiLEVhb7c9tnBoom4ZWM9mP1l/
-	C3KWRozam8WiKJ4cpbfQF5bnX+c/x5XgeO+GY8DF02vRaxwM1aUPglGA1PjHhm9RckdBCxhu3ufi4
-	Qz/Gddif9wDtCOxbNtnQ==;
+	List-Owner; bh=TpxKqKZo8gCpkgZpSAU6+7C8x5fi941qnuE1ZD9OyAQ=; b=c1xqFf+KZU+18H
+	O1QxLpOpVe76H6cpeBrCOmVmZWOFDaOhbgmaUXMnSrNEcF+ssxo0ha9gQn64SQ5nfckSXF4oJa/jG
+	j6NdDnn+SuQZrDSJ98YJeZnC9hdf72DZOb8jzBi1W0o3kgzPkbfJ0FWpGAHsVDzX0MpEot0yOzzFP
+	q4Z3VMk8ergrO+OM/RHI0co/wYHZWXDhMRp5aTuYUBiHN92U8NHEU/EEzJVbXS8c/Yue5Ar+ToUuk
+	mhGbv0mQluE38dx6/62dgZJoMkGY7+Ua4KdKQdW9qPKx4nv3ByVSxKD1cVCFnO+yFqDhGVq0vOX8e
+	iYMzXJdeg5kluVzOhbng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU3kC-003iME-3C; Mon, 20 Feb 2023 10:50:04 +0000
+	id 1pU3kp-003iic-M2; Mon, 20 Feb 2023 10:50:43 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pU3jA-003i0m-Vy; Mon, 20 Feb 2023 10:49:03 +0000
+	id 1pU3jC-003i0t-0B; Mon, 20 Feb 2023 10:49:04 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:d30c:b155:96fb:dcc])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A41796602135;
-	Mon, 20 Feb 2023 10:48:57 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1E046602165;
+	Mon, 20 Feb 2023 10:48:58 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1676890138;
-	bh=mU6dx4hn+cwCgHPnwybSeD67XSVlGhz85RqJ+3iMsW4=;
+	s=mail; t=1676890139;
+	bh=Qylc8lXBZUribdIoDlAmLesNbqqMKmI6fMRr3vIkG8E=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hAfqO2zphslE1XZvxsSv+wFSwQhqwzKxh9Q7tQbrLqNKyvhEdb81v1OPRszY8PjRP
-	 hVTDcMTwz2MRa7IrTbdz9G152y1AI8h5F9wAljx/fKMskyczSQX4zeZtM2REANUFgv
-	 hEp4dXxdLy+/UMN9v9+w/COy6OdT1XUcvFLfvd8Y8nYcuccYdgIoQ2ynV+m4aO4gA4
-	 fVDzIp3VCY9476oE36M/61O70q1iYTHWV10wGduc5M6oGvjDeSXRDi664JPbibvpcK
-	 VTZvyYMvag6I1XF+aPzKRfdx5Wk855nDnx1KMlyekOGrnVaXfaCH+B4CE589MAewaP
-	 NichsQwCaqt2w==
+	b=RTS9a73wcPX9uhMzv6NCAE206e9RJ/YFkz5NBcy2CCC36Lf3d9YYmafphVugIkBsU
+	 zuPq1m2nx4sHw9IGMwPoAerygmBjVzzZXzOOfbMf01BFAHRcg2tOs12DzfBTz6XuRM
+	 wtP94UOj9U1zrqsEsChXB3a0UJsL8DOK4faVjr7VtTh1yhe5XB3vIs7Niv5cCZHP9A
+	 kdHCKxeqZbS/KeLx1OWsD47xDniYkyojHRkuLnROtqqE3OlJzLGp3dtFOgWu0+gRPa
+	 CwL31tTSltEwAd0zf9edW4FR314xL+LhJ9vXCHqB9c8aGOzqOHnztWisNDqfRAFlUH
+	 rdJE7Wdi+VqRg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -59,17 +59,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 1/6] media: verisilicon: Do not set context src/dst formats in reset functions
-Date: Mon, 20 Feb 2023 11:48:44 +0100
-Message-Id: <20230220104849.398203-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 3/6] media: verisilicon: Do not set ctx->bit_depth in hantro_try_ctrl()
+Date: Mon, 20 Feb 2023 11:48:46 +0100
+Message-Id: <20230220104849.398203-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
 References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230220_024901_194285_9A9E839C 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230220_024902_210182_D2B62716 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,49 +85,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Setting context source and destination formats should only be done
-in hantro_set_fmt_out() and hantro_set_fmt_cap() after check that
-the targeted queue is not busy.
-Remove these calls from hantro_reset_encoded_fmt() and
-hantro_reset_raw_fmt() to clean the driver.
+In hantro_try_ctrl() we should only check the values inside
+control parameters and not set ctx->bit_depth. That must
+be done in controls set function.
+Create a set control function for hevc where ctx->bit_depth is
+set at the right time.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro_v4l2.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ .../media/platform/verisilicon/hantro_drv.c   | 32 ++++++++++++++-----
+ 1 file changed, 24 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index c0d427956210..d8aa42bd4cd4 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -382,13 +382,10 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index b0aeedae7b65..c237253803f4 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -251,11 +251,6 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
  
- 	vpu_fmt = hantro_get_default_fmt(ctx, true);
+ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
+-	struct hantro_ctx *ctx;
+-
+-	ctx = container_of(ctrl->handler,
+-			   struct hantro_ctx, ctrl_handler);
+-
+ 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+ 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
  
--	if (ctx->is_encoder) {
--		ctx->vpu_dst_fmt = vpu_fmt;
-+	if (ctx->is_encoder)
- 		fmt = &ctx->dst_fmt;
--	} else {
--		ctx->vpu_src_fmt = vpu_fmt;
-+	else
- 		fmt = &ctx->src_fmt;
--	}
+@@ -274,8 +269,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
+ 			/* Only 8-bit and 10-bit are supported */
+ 			return -EINVAL;
+-
+-		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
+ 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
  
- 	hantro_reset_fmt(fmt, vpu_fmt);
- 	fmt->width = vpu_fmt->frmsize.min_width;
-@@ -408,11 +405,9 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
- 	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
+@@ -324,6 +317,24 @@ static int hantro_vp9_s_ctrl(struct v4l2_ctrl *ctrl)
+ 	return 0;
+ }
  
- 	if (ctx->is_encoder) {
--		ctx->vpu_src_fmt = raw_vpu_fmt;
- 		raw_fmt = &ctx->src_fmt;
- 		encoded_fmt = &ctx->dst_fmt;
- 	} else {
--		ctx->vpu_dst_fmt = raw_vpu_fmt;
- 		raw_fmt = &ctx->dst_fmt;
- 		encoded_fmt = &ctx->src_fmt;
- 	}
++static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
++	switch (ctrl->id) {
++	case V4L2_CID_STATELESS_HEVC_SPS:
++		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+ 	.try_ctrl = hantro_try_ctrl,
+ };
+@@ -336,6 +347,11 @@ static const struct v4l2_ctrl_ops hantro_vp9_ctrl_ops = {
+ 	.s_ctrl = hantro_vp9_s_ctrl,
+ };
+ 
++static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
++	.try_ctrl = hantro_try_ctrl,
++	.s_ctrl = hantro_hevc_s_ctrl,
++};
++
+ #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
+ 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
+ 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
+@@ -470,7 +486,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_HEVC_SPS,
+-			.ops = &hantro_ctrl_ops,
++			.ops = &hantro_hevc_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
 -- 
 2.34.1
 
