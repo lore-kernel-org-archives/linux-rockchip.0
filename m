@@ -4,118 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0214FC64EC4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Feb 2023 22:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67920C61DA3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Feb 2023 22:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dbh+WOtvdJzDtyLw/avEsoc60CZ+3xhEafLgi1mWvQc=; b=CDuGHP10SghhdR
-	KvlsrzAmoOykgLrPgzbLVVtG1WQdXpVX8fC3H+JodpmCESCUu3HneGlchtp4ppI2mrs9qLA6SmJKH
-	yXCStefG7LvLIdZibbyuRMPI7H9ExFMx7gZsWCX9vUhOwl+LI8+RiyEjXOKS+InplM7nMUanfF7Jy
-	9ae2+geT7lARgqyz/W2DUadVtcCEBXlRiKI7eGr0H3YaplhJWABbu7UbY4Tq5x46yuuJgtTOrpGEz
-	JSAEDNvDpRcdcd8NjLE7hFLrnOLS+Y7DcnZeKieTzqMqlC42XzIXpzqRqe5scfX6wUSxD0wQfdbmW
-	NEy4YeH6PlLZFTrJWWLg==;
+	List-Owner; bh=XqJhRs3gpbJGuaErEt/zsXDbVnEiargX1fic9cJMnp0=; b=hPF0Wb/R05B6Co
+	TOLTfHMxiMWDt+YJFvs2pnv87+8QSY/N8kCmzeFr9b5vJszSf0Ne8CTI8AHpqtZFOFrjMfvcdUYKx
+	1dmyrX0r5O/gCEq4JJa9Zw2/PpbQiylky9pvG0+09B0elUC8VbmNa8B3tFYbH38j6ysyiz5FldWY4
+	PAtIafgMT0xymaq4nGC9lWH9LT5Sy4B+PXrxl5gH4TSHuOzYQ7kME726C8CmUne4Ok5DL201F+qlf
+	MgS/Per7f0WLo5kk7WuExsVt7nyl8tuPigfkxlvLWEC4JjXRNHOLnc/gN/SR6LL7DsziSo1v1oZya
+	fxyq4XAccQ0xiJLp2yPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUahy-009ub3-CX; Tue, 21 Feb 2023 22:01:58 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1pUb97-009zOt-Uh; Tue, 21 Feb 2023 22:30:01 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUaho-009uWc-4V
-	for linux-rockchip@lists.infradead.org; Tue, 21 Feb 2023 22:01:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1677016908; x=1708552908;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=Qg8gwLNpEVZ/vS7KRtMF6qf8aQbtNuIsSDPzlOtBJ4E=;
-  b=gfQBLRBwJuleMcbi5G7C1+Jd5df3bxN404fCH9u+iWyxqwpL8hYtb4Qj
-   v89PjBzEGwW2e/dQ1Td9n/KNvzRKkCLHFgxU97kZFBNBsF0AiC0Zc3DYK
-   Vi0kVpyDcDqdYSvoU0vcOwjf6g4Amf1a9vidQ7ZBcixzgH3avWLOPbPwn
-   PS0ytO8zHDGojrlXnri4JTrf10SbVghTRNCfXc/qVRviK45Dkm58wt9Mz
-   DPcTHM07W5o5q5YA78ASkLMVSh/svaEXbW8tN71t7aWj7OAFFCdeK+iqP
-   q2IogcI/tHBjMCSeW84Uf7cUsQXhorEdATH0DvVp34orUIEVv74ItuSai
-   Q==;
-X-IronPort-AV: E=Sophos;i="5.97,317,1669046400"; 
-   d="scan'208";a="222134357"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com) ([199.255.45.15])
-  by ob1.hgst.iphmx.com with ESMTP; 22 Feb 2023 06:01:43 +0800
-IronPort-SDR: wwFfiGHs5VkfKt5+5v7zY/hHBYOWzQYwZt9PV5i4pAocuibqbB+q66XDZIQgWR02OA0h2Bve6U
- Zp3w2TLQtxrnfPlOwPTf5Raqw5Ycbsj2BYV6w30IA4pBbkgYYVjq7o9JIyybImDkyqDAKvUnhk
- c3Wz0xaIEW3jWXrXeL/Gxn4jgV9JNlGpOO4hEhOz8AQzsHdQBN+7pi8WdLInpj8v5lMSCM72IG
- 6WoULQ94ygltPjyfVoGUDR0ht9YGv/p0ebahrn/xag6TMAaM7mPzddkCcIeOLEN6PjqMvjs7nt
- gO0=
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
-  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 21 Feb 2023 13:12:57 -0800
-IronPort-SDR: V4DkjEe/JxDQbRLbkPrmJ7rPc+o9ofXP/LznkmUHHTTm6Y/A8TcGkJe6yHdXcc5O4kTdKJpwV/
- uLMtyld297wt/a8rlhxHoZ3A8aMN+ab682rIy1SuAi0WLiNG17DkODbQ4OBJGHA0FOpgxbyHNE
- ZWRlH2WNz1Wy3dhJmqGsNlREZF+a065wdaRzgczQjGJa5wa7kyrPtVMun586dCcHBmhke/JcY9
- DMTwRrODM3FocXADoRqkOoyN8UVyIL570mZe/zB0XaX5Lkb1LLcUm/u8I9wpG532/H4GZQEWOM
- NTg=
-WDCIronportException: Internal
-Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 21 Feb 2023 14:01:43 -0800
-Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PLtY23RgBz1RvTp
-	for <linux-rockchip@lists.infradead.org>; Tue, 21 Feb 2023 14:01:42 -0800 (PST)
-Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
-	reason="pass (just generated, assumed good)"
-	header.d=opensource.wdc.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
-	opensource.wdc.com; h=content-transfer-encoding:content-type
-	:in-reply-to:organization:from:references:to:content-language
-	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1677016899; x=1679608900; bh=Qg8gwLNpEVZ/vS7KRtMF6qf8aQbtNuIsSDP
-	zlOtBJ4E=; b=hpaO95mn/qhY5RcibhaStJecB/gf5yH1dnIBzyrVyIbjEgg6sG9
-	ujyLPNGk0Qx5xssERzFOBnINeKKqhAe3S0hdTuzY7TFm2l+42S5BTfHIrv9wxmrW
-	SoOmUDXdnf4Joy8hVKyvmkWgLRY9e2TMgR7boXz7B65UVdlXDp5wML98THtRLte9
-	OVD6mbIncRt+zCw5bnsFGxWdymskt5zSN73TM5fNnf9S/BhoD5wjXw5yr3qSOnp0
-	JC+9VnMFmDQjoo5dQ/62tms6ffHoKJJnRGc/ktqTF7aTGxfz0SMkPaXSwAE5RzWz
-	oFnIefKFkVJd7lvGksLnZhp+wlQGS5T8zMg==
-X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
-Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
-	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id uOwPHM0FoBtD for <linux-rockchip@lists.infradead.org>;
-	Tue, 21 Feb 2023 14:01:39 -0800 (PST)
-Received: from [10.225.163.21] (unknown [10.225.163.21])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PLtXv6cS4z1RvLy;
-	Tue, 21 Feb 2023 14:01:35 -0800 (PST)
-Message-ID: <bba67239-fb4c-7ab5-c0e8-1df37b39bfac@opensource.wdc.com>
-Date: Wed, 22 Feb 2023 07:01:34 +0900
+	id 1pUb91-009zMR-Hd; Tue, 21 Feb 2023 22:29:57 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id x24so7773036lfr.1;
+        Tue, 21 Feb 2023 14:29:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rRskwuzUoTseJ7UhE/XiQ/ajutHbx9Jd0AO9KzeF2SA=;
+        b=aKFAgFAHiqsL++CU0NQXI3ge3qCJTJWe9hhri5lPXhyFoAESWMM21NLBBPU5G6cNJY
+         35lsLXaqrC6Mb6smUaE+WcAfzrsm9gqxGTNY/iMY66IU87+YokTiPTcPT4MAg1ufPqqN
+         fQ16flQ0OJ/1LjzFEPXttIEaZA+BGgA59wa2q62W00rcvD7z7rqT3ayvBS5tl0ppMcJn
+         IkWVdlg7bPBPCodv4v7h8EVO01zPwNKlvuZ5IwuJgkB8t2e6se9vm3VG4j3pdft/mnmu
+         U8Eefz5MvvrPId0lV3ihpW8DC9KN/oUDLeqrl8gAIQSSSvZLw+145WXRdzkKwlM3xuel
+         UKeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=rRskwuzUoTseJ7UhE/XiQ/ajutHbx9Jd0AO9KzeF2SA=;
+        b=1s/2n18NEhIZAqBBpQM103pgkxPcDPDkJFOn1mtcGWI3ep2DytEHYkW6HTf7O0f1Yx
+         9HQo+TLhibV8w6EMeIMYDzb6C0eCjQt9Mwbta9omooX0uohPRRIVTzYKdFtwBbIRExKf
+         byMB+zhjTVb64QbmkumYFFqwsq6TZsyuFktEhLmzNsCTOHTKqa2lu892XWkHQC962rs6
+         7q7WCCQHlXhO2k77/PmDqbV8ckzPAby4LRFE1Bzl5BzeUliCMyS7Q25LbzEnZHFAdEBo
+         2O1ltRSOQUJg3R0Gyj1x4Fsxj0sookIXXjUc3LoZ6ynQO954GOd45aLuStWQXo3EVaYx
+         I68g==
+X-Gm-Message-State: AO0yUKU8fCeY/zj+9kfNfSg73FCQudfS1Q9RMrujWmZzMaq1wN4CdVUa
+	0+7NYCXTOXt4Nvm85bB02+g=
+X-Google-Smtp-Source: AK7set+yBQHNb9hSkW8dFReCGvYH5kUaeuCwO556jqZU4gWvC3OnNb7bh1PGOn5AYoyDdgoJfAwP7w==
+X-Received: by 2002:a05:6512:14b:b0:4db:5122:2099 with SMTP id m11-20020a056512014b00b004db51222099mr1807349lfo.32.1677018591920;
+        Tue, 21 Feb 2023 14:29:51 -0800 (PST)
+Received: from [192.168.26.149] (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
+        by smtp.googlemail.com with ESMTPSA id x25-20020ac259d9000000b004caf992bba9sm1957069lfn.268.2023.02.21.14.29.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 21 Feb 2023 14:29:51 -0800 (PST)
+Message-ID: <101a5bdf-870a-a1bb-954d-1d675ecad5a7@gmail.com>
+Date: Tue, 21 Feb 2023 23:29:48 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 9/9] PCI: rockchip: Add parameter check for RK3399 PCIe
- endpoint core set_msi()
-Content-Language: en-US
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
- rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Mikko Kovanen <mikko.kovanen@aavamobile.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
-References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-10-rick.wertenbroek@gmail.com>
- <ebbddcfa-99e5-efda-0eab-fbd61a33e2c3@opensource.wdc.com>
- <CAAEEuhpDTmAvBZhC9RCueOvqbLb=AttV1KxJrOUBcjHQrpVXmA@mail.gmail.com>
- <38ae72c9-0f0b-1a94-d2e0-f4ea80e94705@opensource.wdc.com>
- <CAAEEuhoQV1A8o_2jb1Qfq5d7dj9HpHL+mkDs8K4vs8v=-81zng@mail.gmail.com>
- <CAAEEuhrnz-u1wUe2OVBawSvrsze+rNObSqhb+SEcAqfc-n2c_g@mail.gmail.com>
-From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Organization: Western Digital Research
-In-Reply-To: <CAAEEuhrnz-u1wUe2OVBawSvrsze+rNObSqhb+SEcAqfc-n2c_g@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:96.0) Gecko/20100101
+ Thunderbird/96.0
+Subject: Re: [PATCH] nvmem: add explicit config option to read OF fixed cells
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-rtc@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20230221145021.31993-1-zajec5@gmail.com>
+ <CAFBinCDxB=xtz9mtZupBC7J5oxknN1ENHzJ-cFxX4FTDSgZeFQ@mail.gmail.com>
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+In-Reply-To: <CAFBinCDxB=xtz9mtZupBC7J5oxknN1ENHzJ-cFxX4FTDSgZeFQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230221_140148_254008_F40DCCD1 
-X-CRM114-Status: GOOD (  59.88  )
+X-CRM114-CacheID: sfid-20230221_142955_612666_66157D8E 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,228 +119,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/22/23 01:37, Rick Wertenbroek wrote:
-> On Tue, Feb 21, 2023 at 2:19 PM Rick Wertenbroek
-> <rick.wertenbroek@gmail.com> wrote:
->>
->> On Tue, Feb 21, 2023 at 11:55 AM Damien Le Moal
->> <damien.lemoal@opensource.wdc.com> wrote:
->>>
->>> On 2/21/23 19:47, Rick Wertenbroek wrote:
->>>> On Wed, Feb 15, 2023 at 2:39 AM Damien Le Moal
->>>> <damien.lemoal@opensource.wdc.com> wrote:
->>>>>
->>>>> On 2/14/23 23:08, Rick Wertenbroek wrote:
->>>>>> The RK3399 PCIe endpoint core supports only a single PCIe physcial
->>>>>> function (function number 0), therefore return -EINVAL if set_msi() is
->>>>>> called with a function number greater than 0.
->>>>>> The PCIe standard only allows the multi message capability (MMC) value
->>>>>> to be up to 0x5 (32 messages), therefore return -EINVAL if set_msi() is
->>>>>> called with a MMC value of over 0x5.
->>>>>>
->>>>>> Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
->>>>>> ---
->>>>>>  drivers/pci/controller/pcie-rockchip-ep.c | 10 ++++++++++
->>>>>>  1 file changed, 10 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
->>>>>> index b7865a94e..80634b690 100644
->>>>>> --- a/drivers/pci/controller/pcie-rockchip-ep.c
->>>>>> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
->>>>>> @@ -294,6 +294,16 @@ static int rockchip_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
->>>>>>       struct rockchip_pcie *rockchip = &ep->rockchip;
->>>>>>       u32 flags;
->>>>>>
->>>>>> +     if (fn) {
->>>>>> +             dev_err(&epc->dev, "This endpoint controller only supports a single physical function\n");
->>>>>> +             return -EINVAL;
->>>>>> +     }
->>>>>
->>>>> Checking this here is late... Given that at most only one physical
->>>>> function is supported, the check should be in rockchip_pcie_parse_ep_dt().
->>>>> Something like:
->>>>>
->>>>>         err = of_property_read_u8(dev->of_node, "max-functions",
->>>>>                                   &ep->epc->max_functions);
->>>>>
->>>>>         if (err < 0 || ep->epc->max_functions > 1)
->>>>>
->>>>>                 ep->epc->max_functions = 1;
->>>>>
->>>>
->>>> Yes, this could be moved to the probe, thanks.
->>>>
->>>>> And all the macros with the (fn) argument could also be simplified
->>>>> (argument fn removed) since fn will always be 0.
->>>>
->>>> These functions cannot be simplified because they have to follow the signature
->>>> given by "pci_epc_ops" (include/linux/pci-epc.h). And this signature has the
->>>> function number as a parameter. If we change the function signature we won't
->>>> be able to assign these functions to the pc_epc_ops structure
->>>
->>> I was not suggesting to change the functions signature. I was suggesting
->>> dropping the fn argument for the *macros*, e.g.
->>>
->>> ROCKCHIP_PCIE_EP_FUNC_BASE(fn) -> ROCKCHIP_PCIE_EP_FUNC_BASE
->>>
->>> since fn is always 0.
->>>
->>> That said, I am not entirely sure if the limit really is 1 function at most. The
->>> TRM seems to be suggesting that up to 4 functions can be supported...
->>>
->>> [...]
->>>
->>>>> Another nice cleanup: define ROCKCHIP_PCIE_EP_MSI_CTRL_REG to include the
->>>>> ROCKCHIP_PCIE_EP_FUNC_BASE(fn) addition so that we do not have to do it
->>>>> here all the time.
->>>>
->>>> Yes, this could be an improvement but this is the way it is written
->>>> everywhere in this
->>>> driver, I chose to keep it so as to remain coherent with the rest of the driver.
->>>> Cleaning this is not so important since this code will not be
->>>> rewritten / changed so
->>>> often. But I agree that it might be nicer. But, on the other side if
->>>> at some point
->>>> support for virtual functions would be added, the offsets would need
->>>> to be computed
->>>> based on the virtual function number and the code would be written
->>>> like it is now,
->>>> so I suggest keeping this the way it is for now.
->>>
->>> Yes, sure, this can be cleaned later.
->>>
->>> A more pressing problem is the lack of support for MSIX despite the fact that
->>> the controller supports that *and* advertize it as a capability. That is what
->>> was causing my problem with the Linux nvme driver and my prototype nvme epf
->>> function driver: the host driver was seeing MSIX support (1 vector supported by
->>> default), and so was allocating one MSIX for the device probe. But on the EP
->>> end, it is MSI or INTX only... Working on adding that to solve this issue.
->>>
->>
->> I have seen this too, the controller advertises the capability. However, the TRM
->> (section 17.5.9) says that MSI-X is not supported (MSI / INTx only as you said).
->> So the solution should be to modify the probe function of the endpoint
->> controller
->> so that the MSI-X capability would not be advertised, this should fix
->> your problem.
->>
->> I wonder if one could still implement MSI-X because from the endpoint we would
->> just need to implement it as a message (TLP) over PCIe (because the space for
->> the vectors is allocated and written, so that part should be ok). I am
->> not an expert
->> on MSI-X, but the reason the endpoint cannot send them could be because MSI-X
->> requires some fields in the PCIe header descriptor to be filled with values that
->> cannot be set through the "desc0-3" registers of the RK3399 PCIe endpoint core.
->>
->> Anyways, the endpoint should not advertise the MSI-X capabilities when it cannot
->> send such interrupts. Once this is fixed you should be able to have your NVMe
->> function running.
->>
->> Regards.
->> Rick
->>
-> 
-> It is possible to disable MSI-X by skipping the MSI-X capability
-> structure in the PCIe
-> capabilities structures linked-list.
-> The current linked list is MSI cap (0x90) -> MSI-X cap (0xb0) -> PCIe
-> Device cap (0xc0)
-> So we want to set MSI (0x90) -> PCIe Device cap (0xc0)
-> 
-> This can be done by writing 0xc0 to bits 15-8 of 0xFDA0'0090 (MSI cap).
-> I tested this quickly through devmem2 before loading the endpoint
-> function driver
-> and it fixes the issue of MSI-X capabilities being advertised to the host.
-> 
-> In the driver the changes would look like this;
-> In the probe function you can disable MSI-X as follows:
-> 
-> @@ -631,6 +618,28 @@ static int rockchip_pcie_ep_probe(struct
-> platform_device *pdev)
-> 
->         ep->irq_pci_addr = ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR;
-> 
-> +       /*
-> +        * Disable MSI-X because the controller is not capable of MSI-X
-> +        * This requires to skip the MSI-X capabilities entry in the
-
-s/capabilities/capability
-
-> +        * chain of PCIe capabilities, we get the next pointer from the
-> +        * MSI-X entry and set that in the MSI capability entry, this way
-> +        * the MSI-X entry is skipped (left out of the linked-list)
-> +        */
-> +       cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
-> +               ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
-> +
-> +       cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
-> +
-> +       cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
-> +               ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
-> ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
-> +
-> +       cfg_msi |= cfg_msix_cp;
-> +
-> +       rockchip_pcie_write(rockchip, cfg_msi,
-> +               PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
-> +
->         rockchip_pcie_write(rockchip, PCIE_CLIENT_CONF_ENABLE,
-> PCIE_CLIENT_CONFIG);
-> 
->         return 0;
->  err_epc_mem_exit:
->         pci_epc_mem_exit(epc);
-> 
-> In the pcie-rockchip.h add the following #defines:
-> 
-> @@ -216,21 +227,28 @@
->  #define ROCKCHIP_PCIE_EP_CMD_STATUS                    0x4
->  #define   ROCKCHIP_PCIE_EP_CMD_STATUS_IS               BIT(19)
->  #define ROCKCHIP_PCIE_EP_MSI_CTRL_REG                  0x90
-> +#define   ROCKCHIP_PCIE_EP_MSI_CP1_OFFSET                      8
-> +#define   ROCKCHIP_PCIE_EP_MSI_CP1_MASK                        GENMASK(15, 8)
-> +#define   ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET                    16
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET         17
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK           GENMASK(19, 17)
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MME_OFFSET         20
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MME_MASK           GENMASK(22, 20)
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_ME                         BIT(16)
->  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP       BIT(24)
-> +#define ROCKCHIP_PCIE_EP_MSIX_CAP_REG                  0xb0
-> +#define   ROCKCHIP_PCIE_EP_MSIX_CAP_CP_OFFSET          8
-> +#define   ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK            GENMASK(15, 8)
->  #define ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR                                0x1
->  #define ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR           0x3
-> 
-> I will add this to the next version of the patch set.
-> Thank you Damien for pointing this out ! This should solve the issues
-> you have with
-> your NVMe endpoint function regarding MSI-X interrupts.
-
-OK. I replied to your previous mail with the same idea. Looks good :)
-Will test that instead of my dirty hack that puts 0 in the MSIX capability ID.
-
-> 
-> Regards
-> Rick
-> 
->>
->>> --
->>> Damien Le Moal
->>> Western Digital Research
->>>
-
--- 
-Damien Le Moal
-Western Digital Research
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjEuMDIuMjAyMyAyMjozOCwgTWFydGluIEJsdW1lbnN0aW5nbCB3cm90ZToKPiBPbiBUdWUs
+IEZlYiAyMSwgMjAyMyBhdCAzOjUwIFBNIFJhZmHFgiBNacWCZWNraSA8emFqZWM1QGdtYWlsLmNv
+bT4gd3JvdGU6Cj4+Cj4+IEZyb206IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4K
+Pj4KPj4gTlZNRU0gc3Vic3lzdGVtIGxvb2tzIGZvciBmaXhlZCBOVk1FTSBjZWxscyAoc3BlY2lm
+aWVkIGluIERUKSBieQo+PiBkZWZhdWx0LiBUaGlzIGJlaGF2aW91ciBtYWRlIHNlbnNlIGluIGVh
+cmx5IGRheXMgYmVmb3JlIGFkZGluZyBzdXBwb3J0Cj4+IGZvciBkeW5hbWljIGNlbGxzLgo+Pgo+
+PiBXaXRoIGV2ZXJ5IG5ldyBzdXBwb3J0ZWQgTlZNRU0gZGV2aWNlIHdpdGggZHluYW1pYyBjZWxs
+cyBjdXJyZW50Cj4+IGJlaGF2aW91ciBiZWNvbWVzIG5vbi1vcHRpbWFsLiBJdCByZXN1bHRzIGlu
+IHVubmVlZGVkIGl0ZXJhdGluZyBvdmVyIERUCj4+IG5vZGVzIGFuZCBtYXkgcmVzdWx0IGluIGZh
+bHNlIGRpc2NvdmVyeSBvZiBjZWxscyAoZGVwZW5kaW5nIG9uIHVzZWQgRFQKPj4gcHJvcGVydGll
+cykuCj4gSSBhbSBub3QgZmFtaWxpYXIgd2l0aCB0aGUgcmVjZW50IGNoYW5nZXMgYXJvdW5kIGR5
+bmFtaWMgY2VsbHMuCj4gSXMgdGhlcmUgYW55IGRpc2N1c3Npb24vc3VtbWFyeSB0aGF0IEkgY2Fu
+IHJlYWQgdG8gZ2V0IHVwIHRvIHNwZWVkPwoKU29tZSBOVk1FTSBkZXZpY2VzIGRvbid0IHN0b3Jl
+IHNwZWNpZmljIGRhdGEgYXQgaGFyZGNvZGVkIG9mZnNldHMuIEZvcgpzdWNoIGRldmljZXMgd2Ug
+aGF2ZSBkcml2ZXJzICh0byBiZWNvbWU6IGxheW91dHMpIHRoYXQgcGFyc2UgdGhlaXIgbWFnaWMK
+Y29udGVudC4gVGhleSBkaXNjb3ZlciBjZWxscyBhbmQgcmVnaXN0ZXIgdGhlbSBhbmQgcHJvdmlk
+ZSBtYXRjaGluZyB3aXRoCnByb3BlciBEVCBub2Rlcy4KCkZvciBiaW5kaW5ncyBzZWU6Cmh0dHBz
+Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4
+LmdpdC9jb21taXQvP2lkPTA4NDk3M2U5NDRiZWMyMTgwNGY4YWZiMDUxNWIyNTQzNDQzODY5OWEK
+aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMv
+bGludXguZ2l0L2NvbW1pdC8/aWQ9YTYwN2E4NTBiYTFmYTk2NmNiYjAzNTU0NGMxNTg4ZTI0YTYz
+MDdkZgoKRm9yIGV4YW1wbGUgZHJpdmVyIHNlZToKaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIv
+c2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC8/aWQ9NmU5Nzdl
+YWE4MjgwZTk1N2I4NzkwNGI1MzY2NjE1NTBmMmE2YjNlOApodHRwczovL2dpdC5rZXJuZWwub3Jn
+L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvY29tbWl0Lz9pZD0y
+MDc3NzVmN2UxN2I4ZmQwNDI2YTJhYzRhNWI4MWU0ZTFkNzE4NDllCgpGb3IgdXNhZ2Ugc2VlOgpo
+dHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9s
+aW51eC5naXQvY29tbWl0Lz9pZD1jODQ0MmYwZmIwOWNhM2Q4NDJiOWIyM2QxZDA2NTBmNjQ5ZmQx
+MGY4CgoKPiBNeSBtYWluIHRob3VnaHQgaXM6IGlmIHRoZXJlIGFyZSBtYW55ICJmaXhlZCBPRiBj
+ZWxscyIgaW1wbGVtZW50YXRpb25zCj4gYW5kIG9ubHkgYSBmZXcgImR5bmFtaWMiIG9uZXMgLSBk
+b2VzIGl0IG1ha2Ugc2Vuc2UgdG8gZmxpcCB0aGUgbG9naWMKPiBhbmQgaW50cm9kdWNlIGEgbmV3
+ICJ1c2VfZHluYW1pY19vZl9jZWxscyIgZmxhZyBpbnN0ZWFkPwoKVGhlIHByb2JsZW0gaXMgdGhh
+dCB0aGVyZSBhcmUgbW9yZSBjYXNlcyB0aGFuIGp1c3QgdHdvLiBXZSBjYW4gaGF2ZToKMS4gTm8g
+Y2VsbHMgYXQgYWxsCjIuIEZpeGVkIGNlbGxzIGluIERUCjMuIER5bmFtaWMgY2VsbHMgd2l0aCBy
+ZWZlcmVuY2VzIGluIERUCjQuIERyaXZlciBzcGVjaWZpZWQgY2VsbHMgKHNwZWNpZmllZCB3aXRo
+aW4gY29uZmlnKQo1LiBDZWxscyBkZWZpbmVkIGluIGEgZ2xvYmFsIHRhYmxlCgpTbyB3ZSBuZWVk
+IHRvIHJlZmVyZW5jZSBEVCBjZWxscyBleHBsaWNpdGx5ICh3ZSBjYW4ndCBqdXN0IGNvbmZpcm0g
+LwpkZW55ICpkeW5hbWljKiBjZWxscykuCgpBbm90aGVyIHNvbHV0aW9uIHdvdWxkIGJlIHRvIGhh
+dmUgIm5vX2ZpeGVkX29mX2NlbGxzIiBidXQ6CgoxLiBQZXJzb25hbGx5IEkgdGhpbmsgbmVnYXRp
+b24gaXMgbGVzcyBjbGVhciAvIGVhc3kgdG8gZm9sbG93CgoyLiBUaGVyZSBtYXkgYmUgYWN0dWFs
+bHkgbW9yZSBkcml2ZXJzIHdpdGggbm8gZml4ZWQgY2VsbHMuCkkgdGhpbmsgSSBtb2RpZmllZCAx
+OCBkcml2ZXJzLiBJdCBzZWVtcyBkZXZtX252bWVtX3JlZ2lzdGVyKCkgaXMKcmVmZXJlbmNlZCBp
+biA0NCBwbGFjZXMuIEZldyBvZiB0aGVtIG1heSBiZSBub3QgYWN0dWFsIHVzZXJzIGJ1dCBpdApz
+dGlsbCBzZWVtcyB0byBiZSBhYm91dCBlcXVhbC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
