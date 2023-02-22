@@ -4,65 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1525C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Feb 2023 12:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E03BBC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Feb 2023 19:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QUTmNk+N1cTidWFtcCnjb79Xew0zY0o4VENxZrn/zPg=; b=CHHaaiVU1nILJ4
-	oChD270JH9+/1fS91Fmo6Qou4Ynzja+G7B3Ql5+36qhxeEINTEPfjXcfr8xGeIilkxSCr1VhngvHz
-	n7KAx5LDcxSLVjRaP9skuZvYU1xdyNmK4LbA7MflzG1f7+/fe4pAVcFqbxsYuwGgb4hWu9AhR3+gX
-	dippRKcLBcpCEJhJSNqfV+9SAVqpifzcMxTU+raw+Jl/YwdETVnw8vsoBLGZ24XjdF2CduyniY/bC
-	yg+bSBYRre7xwh5/HywhyUceG8P08GtFY/KsksuXtl95rE11gcUO7F8/ItET/vPbokX4W/E9apiBC
-	2LgFG5nPeSmezWt4oJDA==;
+	List-Owner; bh=+KuPJvQxb2DCt/gdresZ25r4uaSHyHOg1y+v7h61pT0=; b=gGc8WWuohGQCC5
+	TJazDVQlc49gFlTVNBd3kFfi0x2Giv52lAMUGP5ILZ9opJd3/Jx57BUZVmJIeT1lyOHDU5+Lx0Oqt
+	uRjsu0DxkIo1Aw8uL3nmbAfh2cCExEgEXFtUSiSr23AvCNMKkuzpHubWAuUDJjZq0lvv1h3I9/rdF
+	Bt4H1sSwcdbJ2QYnOrg1Z0qLMcVHQst6wvypGNGGbW0BJnwz8GXfC4eqrUAZDnGcAY2VPUSwP0gsv
+	5Y3CihjFymtfxiJ5LPjO1EAeMAtGueB0p5nathkEmFsLpE8rokAeu51Kcuf1NMbcFd68mgvjRH0Kt
+	SdY5d7QeYVXow9132jkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUnsv-00CHBh-Ut; Wed, 22 Feb 2023 12:06:09 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pUui4-00DpPV-EI; Wed, 22 Feb 2023 19:23:24 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUnsl-00CH9D-8X
-	for linux-rockchip@lists.infradead.org; Wed, 22 Feb 2023 12:06:01 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pUnsh-0007JK-Dq; Wed, 22 Feb 2023 13:05:55 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pUnse-0006aE-Ov; Wed, 22 Feb 2023 13:05:52 +0100
-Date: Wed, 22 Feb 2023 13:05:52 +0100
-From: Sascha Hauer <sha@pengutronix.de>
-To: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Cc: Quentin Schulz <foss+kernel@0leil.net>, linus.walleij@linaro.org,
-	heiko@sntech.de, linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [RFC PATCH 1/1] pinctrl: rockchip: add support for per-pinmux
- io-domain dependency
-Message-ID: <20230222120552.GL10447@pengutronix.de>
-References: <20220802095252.2486591-1-foss+kernel@0leil.net>
- <20220802095252.2486591-2-foss+kernel@0leil.net>
- <20230215102328.GB13829@pengutronix.de>
- <85e042b3-1b59-5ef0-8510-50372cefa197@theobroma-systems.com>
+	id 1pUuhu-00DpNA-JW; Wed, 22 Feb 2023 19:23:15 +0000
+Received: by mail-pl1-x634.google.com with SMTP id z2so10172089plf.12;
+        Wed, 22 Feb 2023 11:23:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/+MihbsfqNGbC8V1xZOT+sAmGSmrwYI74wB0NYPcrY4=;
+        b=fgYbRBRouct5e35X/XBZCKpGh+JCXlFLESgc2L0lObjuiPt48EkY+XTx8CEeZYGplk
+         jPqiT77bsTikevGF8OG6yDpc5gghp6FrKp5tL3k+fA8aqqluCdTEyGSBCUVudJorCzcL
+         CA/YjM0LPdaRA/sn1aFPEMYAW35RG1RXOJeQdAbu2R4kSXy9DwC5Rxv0xNycLmMB0jB/
+         uz8dqanVZJ0Fd6FdlLbKlraLYGaW0HP1CWqIKn0nmiWzOklEJpMMWxlZnhkOkJy+PsR6
+         14C5nf+RqD0XKBkY4qv9QPY/jpTRqGDlW2mbUKD0OG3ByJoVNB+MrEG37blWg36kCu3q
+         9kUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/+MihbsfqNGbC8V1xZOT+sAmGSmrwYI74wB0NYPcrY4=;
+        b=l7ZuHwuxkusUTGIS3fcBYAOImkPeCAeasq+WGGbo0kaiEiWBZAAprsA7iu0ftOHTK5
+         6bQZK+orJCylGyeHMdcpNqddV+CHd30q3P0CAW8w6rImPmatiYoMPIX2KOKfyBUkYnl5
+         cm2HflQ/RJZYBmVap8kGquGzdmeLRQT8yOH+5giwWeXrn6KHsZtCBGTdbPF6AWC8TduO
+         RIq5RtQesCfqTklLojU4/Sl4AjUp7h6ZYdD+ui663hMTyajQd1oC6vweONzTiw5jTXlS
+         1cT8xx9m6vtmOZviMNN/0NwzmroddNk0JRORo1YR0BdMiOvz+QVOqz6qhSxMFGWHofaj
+         wfvw==
+X-Gm-Message-State: AO0yUKVNRCvBN4zBLbJfSFA6GudDKhPEU97uQvmbYjzV7jPFs+R2EqzW
+	0tXHVVkHmzv9etHXvgD5Pmo=
+X-Google-Smtp-Source: AK7set/0gigFPfWa6WnvSP0ECmk5QxKjVdXFrdckGdG+TDf0jf0PALdCxm+gyHLawinpwHxOF+3Oyw==
+X-Received: by 2002:a17:90b:164f:b0:234:6df2:3b4e with SMTP id il15-20020a17090b164f00b002346df23b4emr10335522pjb.6.1677093793145;
+        Wed, 22 Feb 2023 11:23:13 -0800 (PST)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id i6-20020a17090a138600b0022be36be19asm4875234pja.53.2023.02.22.11.23.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Feb 2023 11:23:12 -0800 (PST)
+Message-ID: <57d37b74-a295-373c-16d4-644c4fa14e86@gmail.com>
+Date: Wed, 22 Feb 2023 11:23:06 -0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <85e042b3-1b59-5ef0-8510-50372cefa197@theobroma-systems.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v2 03/16] thermal: Remove debug or error messages in
+ get_temp() ops
+Content-Language: en-US
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, rafael@kernel.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ "moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+References: <20230221180710.2781027-1-daniel.lezcano@linaro.org>
+ <20230221180710.2781027-4-daniel.lezcano@linaro.org>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20230221180710.2781027-4-daniel.lezcano@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_040559_486477_AD5D1FF9 
-X-CRM114-Status: GOOD (  71.37  )
+X-CRM114-CacheID: sfid-20230222_112314_669889_FDB2AA82 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,185 +99,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 21, 2023 at 01:14:28PM +0100, Quentin Schulz wrote:
-> Hi Sascha,
+On 2/21/23 10:06, Daniel Lezcano wrote:
+> Some get_temp() ops implementation are showing an error or a debug
+> message if the reading of the sensor fails.
 > 
-> On 2/15/23 11:23, Sascha Hauer wrote:
-> > 
-> > Hi Quentin,
-> > 
-> > On Tue, Aug 02, 2022 at 11:52:52AM +0200, Quentin Schulz wrote:
-> > > From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> > > 
-> > > On some Rockchip SoCs, some SoC pins are split in what are called IO
-> > > domains.
-> > > 
-> > > An IO domain is supplied power externally, by regulators from a PMIC for
-> > > example. This external power supply is then used by the IO domain as
-> > > "supply" for the IO pins if they are outputs.
-> > > 
-> > > Each IO domain can configure which voltage the IO pins will be operating
-> > > on (1.8V or 3.3V).
-> > > 
-> > > There already exists an IO domain driver for Rockchip SoCs[1]. This
-> > > driver allows to explicit the relationship between the external power
-> > > supplies and IO domains[2]. This makes sure the regulators are enabled
-> > > by the Linux kernel so the IO domains are supplied with power and
-> > > correctly configured as per the supplied voltage.
-> > > This driver is a regulator consumer and does not offer any other
-> > > interface for device dependency.
-> > > 
-> > > However, IO pins belonging to an IO domain need to have this IO domain
-> > > correctly configured before they are being used otherwise they do not
-> > > operate correctly (in our case, a pin configured as output clock was
-> > > oscillating between 0 and 150mV instead of the expected 1V8).
-> > > 
-> > > In order to make this dependency transparent to the consumer of those
-> > > pins and not add Rockchip-specific code to third party drivers (a camera
-> > > driver in our case), it is hooked into the pinctrl driver which is
-> > > Rockchip-specific obviously.
-> > 
-> > I don't know the status of this patch, but I haven't found anything
-> > newer, so please point me to newer patches if the discussion has
-> > continued somewhere else. Anyway, here are some thoughts about this
-> > patch
+> The debug message is already displayed from the call site of this
+> ops. So we can remove it.
 > 
-> No new version, a bit drowning in work but we are dependent on this patchset
-> for an adapter board we want to upstream so I'll have to get back to it in
-> the next few weeks/months.
+> On the other side, the error should not be displayed because in
+> production that can raise tons of messages.
 > 
-> > 
-> > I think the general approach is fine but could be improved. Right now we
-> > have one io-domain device with several supplies. That means once one
-> > consumer needs an io-domain, the supplies for all domains need to be
-> > probed beforehand.  We could relax this requirement by adding a subnode
-> > for each domain, so instead of doing this:
-> > 
-> > pmu_io_domains: io-domains {
-> > 	compatible = "rockchip,rk3568-pmu-io-voltage-domain";
-> > 	pmuio1-supply = <&vcc3v3_pmu>;
-> > 	pmuio2-supply = <&vcc3v3_pmu>;
-> > 	vccio1-supply = <&vccio_acodec>;
-> > 	vccio2-supply = <&vcc_1v8>;
-> > 	vccio3-supply = <&vccio_sd>;
-> > 	vccio4-supply = <&vcc_1v8>;
-> > 	vccio5-supply = <&vcc_3v3>;
-> > 	vccio6-supply = <&vcc_1v8>;
-> > 	vccio7-supply = <&vcc_3v3>;
-> > };
-> > 
-> > We could do this:
-> > 
-> > pmu_io_domains: io-domains {
-> > 	compatible = "rockchip,rk3568-pmu-io-voltage-domain";
-> > 
-> > 	io_domain_pmuio1: io-domain@ {
-> > 		reg = <0>;
-> > 		supply = <&vcc3v3_pmu>;
-> > 	};
-> > 
-> > 	io_domain_pmuio2: io-domain@1 {
-> > 		reg = <1>;
-> > 		supply = <&vcc3v3_pmu>;
-> > 	};
-> > 
-> > 	...
-> > };
-> > 
-> > This way we could put a driver on each io-domain. When another device
-> > needs an io-domain we no longer have to wait for all regulators to
-> > appear, but only for the regulator that actually supplies that domain.
-> > 
+> Finally, some drivers are showing a debug message with the
+> temperature, this is also accessible through the trace from the core
+> code in the temperature_update() function.
 > 
-> Mmm, that's something I indeed hadn't thought about. We'd need to handle
-> pmu_io_domains probing (and making available) **some** io-domains devices
-> and not unregister them if other io-domains devices aren't able to probe
-> (e.g. EPROBE_DEFER or invalid configuration for some reason; missing supply
-> in board DTSI). Nothing impossible, haven't developed such a thing yet (I
-> guess it's just kind of a bus mechanism then).
+> Another benefit is the dev_* messages are accessing the thermal zone
+> device field from the structure, so we encapsulate even more the code
+> by preventing these accesses.
 > 
-> The other issue I'm thinking about ATM is whether we should support upward
-> compatibility (i.e. old io-domain driver with newer dts) and backward
-> compatibility (i.e. new io-domain driver with older dts). This may make
-> things a lot more complex. This is a maintainer choice though.
+> Remove those messages.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com> #Armada
 
-New io-domain driver with older dts is easy enough to handle as the new
-io-domain driver could fall back to old behaviour when the io-domains
-node doesn't have subnodes.
-Old io-domain driver with new dts doesn't work though, but I think is
-also less important.
-
-> 
-> > With that we could specify the io-domain dependencies at dtsi or core
-> > level. A board would only have to make sure that the io-domain that is
-> > needed to access the PMIC does not itself need a supply from the very
-> > same PMIC to not get into circular dependencies. The supplies for the
-> > io-domains are specified at board level anyway, so all that a board
-> > would have to do is to skip (or replace with a fixed-regulator) the
-> > supply for the io-domain that provides access to the I2C port the PMIC
-> > is on. That is not too bad I guess as the regulator that supplies the
-> > io-domain to access the PMIC needs to be always-on anyway. In the end if
-> > we would turn that regulator off, we would no longer be able to turn it
-> > on again.
-> > 
-> 
-> Correct.
-> 
-> > One thing about putting the "rockchip,io-domains" property into the
-> > pingroups. We would have to put this property into each and every
-> > existing pingroup in all dts[i] files and new files would have to be
-> > reviewed in this regard as well. The pinctrl driver already has
-> > knowledge about all pins, so I think that would be the natural place to
-> > also add the knowledge about which io-domain a pin is in. With that in
-> > place we would get the knowledge if a io-domain is in use and could
-> > disable unused io-domains. I am afraid that the "rockchip,io-domains"
-> > property would only be added in places where it actually hurts someone.
-> > 
-> 
-> The Device Tree is here to explicit the dependencies between HW blocks,
-> which is what io-domains and pinctrl devices are and rockchip,io-domains the
-> relations between the both of them.
-> 
-> While we know which pin is assigned to which io-domain because it's fixed in
-> the silicon, this information is linking two different HW blocks and linux
-> drivers (and linux devices actually). I'm wondering how exactly you think we
-> should get this link in code without reading the Device Tree? Because we'll
-> have to traverse the list of io-domains devices and find a way to identify
-> them. This very much seems like something DT wanted to avoid? Can you tell
-> me what I'm missing from the big picture?
-
-We could add a rockchip,io-domains property to the rockchip,rk3xxx-pinctrl
-node pointing to the io-domain driver (the toplevel driver, not the
-subnodes), like:
-
-	pinctrl: pinctrl {
-		compatible = "rockchip,rk3568-pinctrl";
-		rockchip,io-domains = <&pmu_io_domains>;
-		...
-	};
-
-With that the pinctrl driver could call into the io-domain driver with
-something like:
-
-	rockchip_iodomain_get(struct device_node *io_domain_toplevel_node, int num);
-
-'num' would map to the subnode providing the domain. Alternatively this
-could be a const char *name instead. rockchip_iodomain_get() would then
-either return some cookie or -EPROBE_DEFER when the regulator is not yet
-available.
-
-Sascha
-
+Acked-by: Florian Fainelli <f.fainelli@gmail.com> #brcmstb_thermal.c
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Florian
+
 
 _______________________________________________
 Linux-rockchip mailing list
