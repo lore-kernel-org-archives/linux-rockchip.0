@@ -4,95 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58FAC636D6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Feb 2023 21:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C1BC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Feb 2023 23:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W6BwKvhB6C+X7FF4lhu6/88NgVtzLGBH4aP3TFcetPU=; b=f6vQHq3LXH8LpL
-	f1cl69I2maZZsO65PwAjLWYjZz+6JFp9gDPXYPlanCu40R5AJcEAwISyjCH/Y0RmQLKizwNxFa9vs
-	eEwtcjnx6fo3qmPQcwqPQ3p2J8rjzpqJkO7CVHPxZS+eJr1i6wcZDkf2ag3pYmOLTOyD3xICPQBQu
-	xOpL6Qb7Ne1rJ+ZYVIwQNsSUZY/1FbNtmzXlxYJpe5As6Ni0ZSPM1E8rxR0Q+qFnJUkkdOTqOxtAG
-	D2NP5ENE51JC3ibTud9rywRziXIRKSRuwUs3dLaBHuFfGRj7D2CFm6Oxvo6RwUK6OmkjpWcvNa0o8
-	jZ+KErP3vGXRyf1zrpvA==;
+	List-Owner; bh=M4/KUxLlT1kpd7H2KYcrWbruoDPAu56rRefkhKndxjk=; b=vfgn51I5xzgmIS
+	bqnlwj05S8iUYI+0ZXEJc1T0DaDf2YAepssmcNFQAHHHNZr/72xi1LFsyCmUZklIr7ijerAP8JPCj
+	GrEpHhDbfKHJRxGNs9HmMm8BowpN/eOgiOLUWhzlY0IWX4rJZf47UTs14ubnj4d99Rse2rLTL62hF
+	FI3N4TGtS0Fzo+KM9rzL8IRsWxCzkLlN2SlsacofLrVxLxVdD0NJQ1GbhfjTIpGYF1q/VBciJsLcy
+	SXfbDuv5W5fvOxmwYeNIRUpF4HCrAXUfiXoRsddH3Euuez9PI9tCv1Q8SZblHi9Nx1K9fQq5VitSW
+	08UtQNuIweDEIz5sPvXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUwSL-00E999-GF; Wed, 22 Feb 2023 21:15:17 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1pUyiC-00ESCe-Jk; Wed, 22 Feb 2023 23:39:48 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pUwSE-00E96V-Tn; Wed, 22 Feb 2023 21:15:12 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eg37so32060472edb.12;
-        Wed, 22 Feb 2023 13:15:07 -0800 (PST)
+	id 1pUyi9-00ESBM-KR; Wed, 22 Feb 2023 23:39:47 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id l1so530682pjt.2;
+        Wed, 22 Feb 2023 15:39:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1hpkcdj31Kp+64I0H+8QjpzTiuX76hZTeMvrWdpVOt4=;
-        b=Y95tEBQTvJnja0wiaBFlONHEPFFpg4E5Aidd7Wxu88GO6+Efw9s32CSm6Qrv+mXXKE
-         i5+x1nQprf7tfF0IcJzKPjG26LQSm8lVS+CQndNmsIeuLxTz3Zws+u23ldaG3K54+WIL
-         IKeo6NJCJ7WchtpfymyIpeNWai8L7kAy3lwcxu51e9DNdYZrZ0f3D1Sw8ivAk+CfDKS3
-         Ek4oq62+5hOyx3h0ySU4oZmDiESIURoGhUvHFCUOXpdaqhWIldAEFOJmG9Rfku2zdt2S
-         XHD98cqCLTBp5a+c55IWJPbpd06egfIFbD37YQMjJACS4ZlT8leLyYR4DAvtMaXLTN/X
-         IY6g==
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=7OTEdY8D3K+c7NVOVJW3QT3u26pZNUIP6ACrNCbW69s=;
+        b=pVe/fkikWvouVy1IOchUQ0cUTjGsBGBlzLS6fZ7/aq7eSzmvdDtwnevpuvi+/CG/OU
+         fY6D0pNuS1iHU2Jv4VKm5A9NLWYWTpqrKGcy+EGeMdXh4/IowmGl/OwHlyP3qeMOQqAm
+         A5bAazhehCMOjUDegumobdOq3bMyC7bcH8LfvTLKqh1Ca78zHEF77TuRRW8KICS17HFE
+         u+0H7RTe83eLK3Yi1Xh6CaS/5+8wIJLqlrMAoA0igyY8pqG7+yjFopqejqHfJQVNk9Tp
+         LHe27SNwB7jgtzT8XY2a1bRoOaTEi8LfcKoUksq+WCatgLjUnMpveq8rO69mJ2WRZxrH
+         h5LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1hpkcdj31Kp+64I0H+8QjpzTiuX76hZTeMvrWdpVOt4=;
-        b=ESzvGo2YbvD9LkdPZngcUgPHxKJHJ11ML7/WfBdKFcxFjShY0Cg7AHlZ+t5/7ZkBRO
-         bRgczKqzjlpebS6eCV6yaDCjdwuwmw8hbJUhwhDoFM4EbfEHf6MdWrD93vGGv38vVCNw
-         Pt8ABVBZyiVcx5NObesb1koQjM6Z7iICBI2I6CofEKzQNmlnyopcSNdocw2hhHKWbmVM
-         Wj0sRZw86o2KEUrEd+dkZYA/VnKwMzW2JdWTvw9Yya/MBCOMHTGl/nSODbYojH0aSTOs
-         LTef2Wz9WItTcVQd/d7966NXo54PTBwopnF2mLx9oMkChnXe/MS1FnuMKpA2l70azBxJ
-         jLoA==
-X-Gm-Message-State: AO0yUKVu+6q8GGYg54UdQxtMYeLW6Y4q1xtF/XYb0p7x+Ghd9pNDjpvt
-	uK6eP+6iWbJvoDPsVbgL+SI30gkqRESBAm3PyZ0=
-X-Google-Smtp-Source: AK7set8TXb46bTmDPfzW/xczn6QfGU7MdMXPRf/CaO6cyWdNx+3X84yvibHTXzLWWA/EAH5iiZY+OShEAAHjsEGwRMc=
-X-Received: by 2002:a50:f611:0:b0:4ac:b7c1:9109 with SMTP id
- c17-20020a50f611000000b004acb7c19109mr4476929edn.6.1677100506156; Wed, 22 Feb
- 2023 13:15:06 -0800 (PST)
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7OTEdY8D3K+c7NVOVJW3QT3u26pZNUIP6ACrNCbW69s=;
+        b=bL48TvZ5eWM4OUwjM8rycjQ+TdaYAZiXVB3xYQ3HUxcCIhxHMuCeuDSauZalYDh40n
+         neCxckgLlVJ/F1Icy0qaxNOIk9oOJPvN3mUzVMQnnHF0qQa1dDwxW+6B653vfCjO0R+N
+         ffeNBFKFzDWdNoN/FLfXRNUELPaRrCWCco3IM8FHVIJydboRlqRoaZQXCvH4XpVkqJus
+         h23A4nGAGRWbEBP6lMJEAlji/schKJH8QRf5R7SQEzQKcZ7xsGNUEtqCmC+IQn2Mu7gg
+         Kxg50/un5P89vpEWEmZQcISrSpRK2VDk7kkgQ6DJIkrBFPaJVbJ1sI04wWXzgOoA/8Ah
+         3Plg==
+X-Gm-Message-State: AO0yUKVChxh2IdKONBnFOl4+ITSh0xufoBmONxF2amU0Qm8oJVmk2NDo
+	dMhdmELKNQ67bTfVjuvLM1lnT4/MQMZHGCO+/Ts=
+X-Google-Smtp-Source: AK7set+s7zMICQMRVeWypsMN+kqFJG2xOdsEjmeAU8sA6FB9C6Be47XBki+H/ZTs9MXv9ydDIk10YDOkbV/Jyqcez5g=
+X-Received: by 2002:a17:902:eb8c:b0:19a:7f9c:66e3 with SMTP id
+ q12-20020a170902eb8c00b0019a7f9c66e3mr1965518plg.5.1677109182000; Wed, 22 Feb
+ 2023 15:39:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20230221145021.31993-1-zajec5@gmail.com> <CAFBinCDxB=xtz9mtZupBC7J5oxknN1ENHzJ-cFxX4FTDSgZeFQ@mail.gmail.com>
- <101a5bdf-870a-a1bb-954d-1d675ecad5a7@gmail.com>
-In-Reply-To: <101a5bdf-870a-a1bb-954d-1d675ecad5a7@gmail.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Wed, 22 Feb 2023 22:14:55 +0100
-Message-ID: <CAFBinCDcDYtdOdikc2ieXjRUkrjgwNKaPYvYZb_v84gh66q=bw@mail.gmail.com>
-Subject: Re: [PATCH] nvmem: add explicit config option to read OF fixed cells
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
-	Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Alessandro Zummo <a.zummo@towertech.it>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Evgeniy Polyakov <zbr@ioremap.net>, 
-	linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-rtc@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+In-Reply-To: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+From: Adam Ford <aford173@gmail.com>
+Date: Wed, 22 Feb 2023 17:39:30 -0600
+Message-ID: <CAHCN7xKbL+g5ZaPe3a50fUEe4AU3a6asCqWFSE8d7DCzWZO=qg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Helen Koike <helen.koike@collabora.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230222_131510_988749_858D027B 
-X-CRM114-Status: GOOD (  23.40  )
+X-CRM114-CacheID: sfid-20230222_153945_699873_7772682B 
+X-CRM114-Status: GOOD (  26.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,53 +84,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gUmFmYcWCLAoKT24gVHVlLCBGZWIgMjEsIDIwMjMgYXQgMTE6MjkgUE0gUmFmYcWCIE1p
-xYJlY2tpIDx6YWplYzVAZ21haWwuY29tPiB3cm90ZToKWy4uLl0KPiA+IEkgYW0gbm90IGZhbWls
-aWFyIHdpdGggdGhlIHJlY2VudCBjaGFuZ2VzIGFyb3VuZCBkeW5hbWljIGNlbGxzLgo+ID4gSXMg
-dGhlcmUgYW55IGRpc2N1c3Npb24vc3VtbWFyeSB0aGF0IEkgY2FuIHJlYWQgdG8gZ2V0IHVwIHRv
-IHNwZWVkPwo+Cj4gU29tZSBOVk1FTSBkZXZpY2VzIGRvbid0IHN0b3JlIHNwZWNpZmljIGRhdGEg
-YXQgaGFyZGNvZGVkIG9mZnNldHMuIEZvcgo+IHN1Y2ggZGV2aWNlcyB3ZSBoYXZlIGRyaXZlcnMg
-KHRvIGJlY29tZTogbGF5b3V0cykgdGhhdCBwYXJzZSB0aGVpciBtYWdpYwo+IGNvbnRlbnQuIFRo
-ZXkgZGlzY292ZXIgY2VsbHMgYW5kIHJlZ2lzdGVyIHRoZW0gYW5kIHByb3ZpZGUgbWF0Y2hpbmcg
-d2l0aAo+IHByb3BlciBEVCBub2Rlcy4KPgo+IEZvciBiaW5kaW5ncyBzZWU6Cj4gaHR0cHM6Ly9n
-aXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0
-L2NvbW1pdC8/aWQ9MDg0OTczZTk0NGJlYzIxODA0ZjhhZmIwNTE1YjI1NDM0NDM4Njk5YQo+IGh0
-dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xp
-bnV4LmdpdC9jb21taXQvP2lkPWE2MDdhODUwYmExZmE5NjZjYmIwMzU1NDRjMTU4OGUyNGE2MzA3
-ZGYKPgo+IEZvciBleGFtcGxlIGRyaXZlciBzZWU6Cj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9w
-dWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC8/aWQ9NmU5
-NzdlYWE4MjgwZTk1N2I4NzkwNGI1MzY2NjE1NTBmMmE2YjNlOAo+IGh0dHBzOi8vZ2l0Lmtlcm5l
-bC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQv
-P2lkPTIwNzc3NWY3ZTE3YjhmZDA0MjZhMmFjNGE1YjgxZTRlMWQ3MTg0OWUKPgo+IEZvciB1c2Fn
-ZSBzZWU6Cj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQv
-dG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC8/aWQ9Yzg0NDJmMGZiMDljYTNkODQyYjliMjNkMWQw
-NjUwZjY0OWZkMTBmOApUaGFua3MsIHRoYXQgbWFrZXMgdGhpbmdzIGNsZWFyZXIgZm9yIG1lIQoK
-PiA+IE15IG1haW4gdGhvdWdodCBpczogaWYgdGhlcmUgYXJlIG1hbnkgImZpeGVkIE9GIGNlbGxz
-IiBpbXBsZW1lbnRhdGlvbnMKPiA+IGFuZCBvbmx5IGEgZmV3ICJkeW5hbWljIiBvbmVzIC0gZG9l
-cyBpdCBtYWtlIHNlbnNlIHRvIGZsaXAgdGhlIGxvZ2ljCj4gPiBhbmQgaW50cm9kdWNlIGEgbmV3
-ICJ1c2VfZHluYW1pY19vZl9jZWxscyIgZmxhZyBpbnN0ZWFkPwo+Cj4gVGhlIHByb2JsZW0gaXMg
-dGhhdCB0aGVyZSBhcmUgbW9yZSBjYXNlcyB0aGFuIGp1c3QgdHdvLiBXZSBjYW4gaGF2ZToKPiAx
-LiBObyBjZWxscyBhdCBhbGwKPiAyLiBGaXhlZCBjZWxscyBpbiBEVAo+IDMuIER5bmFtaWMgY2Vs
-bHMgd2l0aCByZWZlcmVuY2VzIGluIERUCj4gNC4gRHJpdmVyIHNwZWNpZmllZCBjZWxscyAoc3Bl
-Y2lmaWVkIHdpdGhpbiBjb25maWcpCj4gNS4gQ2VsbHMgZGVmaW5lZCBpbiBhIGdsb2JhbCB0YWJs
-ZQo+Cj4gU28gd2UgbmVlZCB0byByZWZlcmVuY2UgRFQgY2VsbHMgZXhwbGljaXRseSAod2UgY2Fu
-J3QganVzdCBjb25maXJtIC8KPiBkZW55ICpkeW5hbWljKiBjZWxscykuCj4KPiBBbm90aGVyIHNv
-bHV0aW9uIHdvdWxkIGJlIHRvIGhhdmUgIm5vX2ZpeGVkX29mX2NlbGxzIiBidXQ6Cj4KPiAxLiBQ
-ZXJzb25hbGx5IEkgdGhpbmsgbmVnYXRpb24gaXMgbGVzcyBjbGVhciAvIGVhc3kgdG8gZm9sbG93
-Cj4KPiAyLiBUaGVyZSBtYXkgYmUgYWN0dWFsbHkgbW9yZSBkcml2ZXJzIHdpdGggbm8gZml4ZWQg
-Y2VsbHMuCj4gSSB0aGluayBJIG1vZGlmaWVkIDE4IGRyaXZlcnMuIEl0IHNlZW1zIGRldm1fbnZt
-ZW1fcmVnaXN0ZXIoKSBpcwo+IHJlZmVyZW5jZWQgaW4gNDQgcGxhY2VzLiBGZXcgb2YgdGhlbSBt
-YXkgYmUgbm90IGFjdHVhbCB1c2VycyBidXQgaXQKPiBzdGlsbCBzZWVtcyB0byBiZSBhYm91dCBl
-cXVhbC4KVGhhbmtzIGZvciB0aGlzIG92ZXJ2aWV3IG9mIGFsbCB0aGUgc3BlY2lhbCBjYXNlcy4g
-UGxlYXNlIGFkZCBteToKQWNrZWQtYnk6IE1hcnRpbiBCbHVtZW5zdGluZ2wgPG1hcnRpbi5ibHVt
-ZW5zdGluZ2xAZ29vZ2xlbWFpbC5jb20+CmZvciB0aGUgZm9sbG93aW5nIHR3byBkcml2ZXJzOgot
-IGRyaXZlcnMvbnZtZW0vbWVzb24tZWZ1c2UuYwotIGRyaXZlcnMvbnZtZW0vbWVzb24tbXgtZWZ1
-c2UuYwoKCkJlc3QgcmVnYXJkcywKTWFydGluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Fri, Nov 18, 2022 at 3:44 AM Paul Elder <paul.elder@ideasonboard.com> wrote:
+>
+> This series depends on v3 of "dt-bindings: media: Add macros for video
+> interface bus types" [1].
+>
+> This series extends the rkisp1 driver to support the ISP found in the
+> NXP i.MX8MP SoC.
+>
+> The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
+> and in the NXP i.MX8MP have the same origin, and have slightly diverged
+> over time as they are now independently developed (afaik) by Rockchip
+> and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
+> and is close enough to the RK3399 ISP that it can easily be supported by
+> the same driver.
+>
+> The last two patches add support for UYVY output format, which can be
+> implemented on the ISP version in the i.MX8MP but not in the one in the
+> RK3399.
+>
+> This version of the series specifically has been tested on a Polyhex
+> Debix model A with an imx219 (Raspberry Pi cam v2).
+>
+> [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
+>
+> Laurent Pinchart (3):
+>   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
+>   media: rkisp1: Add and use rkisp1_has_feature() macro
+>   media: rkisp1: Configure gasket on i.MX8MP
+>
+> Paul Elder (11):
+>   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+>   media: rkisp1: Add match data for i.MX8MP ISP
+>   media: rkisp1: Add and set registers for crop for i.MX8MP
+>   media: rkisp1: Add and set registers for output size config on i.MX8MP
+>   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
+>   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
+>   media: rkisp1: Add register definitions for the test pattern generator
+>   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
+>   media: rkisp1: Support devices without self path
+>   media: rkisp1: Add YC swap capability
+>   media: rkisp1: Add UYVY as an output format
+>
+
+Paul / Laurent,
+
+I noticed an unexpected behaviour on the imx8mp.
+
+If I setup my pipeline for 640x480, it works just fine using an imx219
+camera configured for SRGGB10_1X10.
+
+However, when I try to configure the pipeline to use the same camera
+at 1920x1080 (no resizing), the ISP source keeps defaulting to 640x480
+
+Media device information
+------------------------
+driver          rkisp1
+model           rkisp1
+serial
+bus info        platform:rkisp1
+hw revision     0xe
+driver version  6.2.0
+
+Device topology
+- entity 1: rkisp1_isp (4 pads, 4 links)
+            type V4L2 subdev subtype Unknown flags 0
+            device node name /dev/v4l-subdev0
+pad0: Sink
+[fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none
+ycbcr:601 quantization:full-range
+crop.bounds:(0,0)/1920x1080
+crop:(0,0)/640x480]
+<- "csis-32e40000.csi":1 [ENABLED]
+pad1: Sink
+[fmt:unknown/0x0 field:none]
+<- "rkisp1_params":0 [ENABLED,IMMUTABLE]
+pad2: Source
+[fmt:YUYV8_2X8/640x480 field:none colorspace:raw xfer:none ycbcr:601
+quantization:lim-range
+crop.bounds:(0,0)/640x480
+crop:(0,0)/640x480]
+-> "rkisp1_resizer_mainpath":0 [ENABLED]
+pad3: Source
+[fmt:unknown/0x0 field:none]
+-> "rkisp1_stats":0 [ENABLED,IMMUTABLE]
+
+- entity 6: rkisp1_resizer_mainpath (2 pads, 2 links)
+            type V4L2 subdev subtype Unknown flags 0
+            device node name /dev/v4l-subdev1
+pad0: Sink
+[fmt:YUYV8_2X8/1920x1080 field:none colorspace:srgb xfer:srgb
+ycbcr:601 quantization:lim-range
+crop.bounds:(0,0)/1920x1080
+crop:(0,0)/640x480]
+<- "rkisp1_isp":2 [ENABLED]
+pad1: Source
+[fmt:YUYV8_2X8/1920x1080 field:none colorspace:srgb xfer:srgb
+ycbcr:601 quantization:lim-range]
+-> "rkisp1_mainpath":0 [ENABLED,IMMUTABLE]
+
+- entity 9: rkisp1_mainpath (1 pad, 1 link)
+            type Node subtype V4L flags 0
+            device node name /dev/video0
+pad0: Sink
+<- "rkisp1_resizer_mainpath":1 [ENABLED,IMMUTABLE]
+
+- entity 13: rkisp1_stats (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video1
+pad0: Sink
+<- "rkisp1_isp":3 [ENABLED,IMMUTABLE]
+
+- entity 17: rkisp1_params (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video2
+pad0: Source
+-> "rkisp1_isp":1 [ENABLED,IMMUTABLE]
+
+- entity 29: csis-32e40000.csi (2 pads, 2 links)
+             type V4L2 subdev subtype Unknown flags 0
+             device node name /dev/v4l-subdev2
+pad0: Sink
+[fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb
+ycbcr:601 quantization:full-range]
+<- "imx219 1-0010":0 [ENABLED]
+pad1: Source
+[fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb
+ycbcr:601 quantization:full-range]
+-> "rkisp1_isp":0 [ENABLED]
+
+- entity 34: imx219 1-0010 (1 pad, 1 link)
+             type V4L2 subdev subtype Sensor flags 0
+             device node name /dev/v4l-subdev3
+pad0: Source
+[fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb
+ycbcr:601 quantization:full-range
+crop.bounds:(8,8)/3280x2464
+crop:(688,700)/1920x1080]
+-> "csis-32e40000.csi":0 [ENABLED]
+
+It's at this point that everything except the ISP source is 1920x1080.
+
+When I try to set the ISP sink to 1080, it ends up being 640x480 and
+the resizer sink is also changed to 640x480
+
+root@beacon-imx8mp-kit:~# media-ctl -v -V "'rkisp1_isp':2
+[fmt:YUYV8_2X8/1920x1080 field:none]"
+Opening media device /dev/media0
+Enumerating entities
+looking up device: 81:3
+looking up device: 81:4
+looking up device: 81:0
+looking up device: 81:1
+looking up device: 81:2
+looking up device: 81:5
+looking up device: 81:6
+Found 7 entities
+Enumerating pads and links
+Setting up format YUYV8_2X8 1920x1080 on pad rkisp1_isp/2
+Format set: YUYV8_2X8 640x480
+Setting up format YUYV8_2X8 640x480 on pad rkisp1_resizer_mainpath/0
+Format set: YUYV8_2X8 640x480
+
+
+It's my understanding that the ISP should be able to handle 1920x1080,
+and the resizer sink should match the ISP source.
+
+With the pipeline improperly setup, the capture fails.
+
+adam
+
+
+>  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
+>  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
+>  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
+>  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
+>  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
+>  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
+>  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
+>  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
+>  include/uapi/linux/rkisp1-config.h            |   2 +
+>  9 files changed, 509 insertions(+), 40 deletions(-)
+>
+> --
+> 2.35.1
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
