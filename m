@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35017C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 19:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 143BDC64ED8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 19:46:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qOu6fngJlUl8C7zBF/4U68PZrupt+wELj5gajEj4KMU=; b=u3m8sU0Atx/+dy
-	36rJOkneVEhasAfievdCYPC+pNKCrjIjeL5kO/XP0PhtoJ+c8m0avK2EGI0l+bVxiyXX+OIFkZ/0b
-	5B/nptfj6kgGHWKDuGQJHOSULKqYaw5qIaqiRtALIYiQCAf33v3dwKoRYOu8T4Bxklq0mgArr8yiX
-	s7/Iz8Wgv3Q7gwhvQY4veO/SZd6gA94m7oVLrtSf2qnPADw2E3chWpCDmaNNI8uus5RrGg/rMZ+Xa
-	BUypP3Ui5rI7DnyfJEAspeVW4Q50B/8I+7HiIY8HV6LHC0eONXW59jYAYogDGdh3R4HcwfqA1SSqI
-	u9Ju+ovrCkwRALhGK4Fg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=agrIEIPf46lTIQuEr7VX5V+0j0Ok/fosDoL9CoMg4AU=; b=VqpUwCADHecpTR
+	bu0T18bc8bmPQ0MiMotv8qZHKom3mxXm8/bUegxc0ZYXwFbCXGSMTdbc7/x6s3woHfTIBP3+3Buqw
+	6rmuDFs8osNMoxpN8nusEvonApSiX3hZI/PGmuibDEnHUIu5EY6yhoremRYapvt5tvnS3yKotW+oU
+	b+9AhEMZMKPkjNo/0J1MuRvxotZV2e/bVFgiJSVF1kk7oPUWhhia3d0InwnZrLiZCRhj0HW+7gIhe
+	2xaVoj1OXpjyJrHALnSxLZakN1dmQpeddzcxiwWcpQciUo8cZVNl3kdYOJ/eCdekfC0PxGde5Pn5P
+	wWgSVCFgUUPDp2Qsq3Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVHUL-00080R-8L; Thu, 23 Feb 2023 19:42:45 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pVHYG-00091C-MT; Thu, 23 Feb 2023 19:46:48 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVHUA-0007wz-Ox; Thu, 23 Feb 2023 19:42:36 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id o12so46735849edb.9;
-        Thu, 23 Feb 2023 11:42:28 -0800 (PST)
+	id 1pVHY1-0008xj-UC; Thu, 23 Feb 2023 19:46:35 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id o12so46775954edb.9;
+        Thu, 23 Feb 2023 11:46:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8BXWAwPXU4gL7NDBNH5IiDYMBbcpymX6jA+XKQ4A+7Y=;
-        b=Z9qIIeH4K2XaOajUagHIDfr3qHg6UXZN8iDBhj6FFX0dIjfQCBvZnks9KcNGHHY19G
-         ldGQ9mahmCf7kjx2w1OPaz4kn6RnIsQC2dYq6V3Pby6VVovYfUveaWaBMaYGGj90m54q
-         xOe9VekczEw87U22eyuTextgD4lzevi8ETHyOkm3ySyTAl0OtGv4jfqzDRDtKIhOO0+S
-         21Df/7kwahDs6AbQ2P3SP4JS8Ipm6YUYhZscMNwa7+WcNpkVz0xD9QxfkCrSbuJkPrDO
-         dwKvak9Ck8GAKMCuwVgpk1sf63ERU9F9bxOzeBJvQs3DbJtG8mJMcd7+JDw9U/oMftjH
-         j/Gg==
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=7LRpyWijqVyBIlwSuNRfzUQ+ZyqaAsfdjoJlUPAZASg=;
+        b=eiKKSe9UeePiVEO64ojOtxKiPLmGaZ/nMjseZGtFE1mHQ/dw/eAfDtPDodcqVozXUA
+         8ouHsxCJDV/s9IRvv4PDdc+v3FSNXivEqL48uYolADGle5prCL6/1cVeB+2iC4rY2Qtg
+         ju8Tb28IBNNKtcX810XhnsoV33LxMT/2YBLUVwr90z6SHsyB0XxvEWB4mjy6l5ZS2B5u
+         8imWQ5oG70AF5JpbyjhPLKN/9aO2P0QFL4zqltsEVWFAtji6yf+9IuJS2t+K1YQFIy4M
+         yaexE1Dk/dyUSLhc0m4Wn7nXEEEYmxSy22sJYCXYK8vmuuVlpFT6hCwMeJCERZYrFFAY
+         UGxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=8BXWAwPXU4gL7NDBNH5IiDYMBbcpymX6jA+XKQ4A+7Y=;
-        b=0p712RVql9R4cM8SS6T523s7k5CkcHuW3KjgwVlwQyWOaA/AS1T9/XeNORAoz9A1HS
-         aHjOcLzYc7EnyWrKk8bdUfkQrF4ANKc5y5TLdXbYMjvid4tC8Zte5ym+NhPY8Fe0MQ6E
-         S59tjvb7uYo168yQnncsyJFWI87GEZkJtWFtu12Sty2+rwXs0w25dH8yt50+eRqbxgW9
-         mqIk0G7mRHWdB8B5SF3YPkiD4cKZ8UYEw1SppWdjj8w4Z5aKcoA8ZEKzoiZVk4meoseU
-         7i/1al0eV7opvpgr1oIeTPvOUc9iyht7vL/wy3qU2TPj8oAru8UEA71HaZNVb8Pf7uZz
-         s0mg==
-X-Gm-Message-State: AO0yUKXG2dMkRK8wRXETXDyS1DYyAXLqTKYjTeZxDfVosRzj9J+rl1L9
-	k6Aym+PXcMBr1P19/v0r9xw=
-X-Google-Smtp-Source: AK7set/x32vBkRksysZ8SuzBqjVeMXtXLVaQQBia6jjruTfaGG5eWsPI6iBac7ydZdrGPp4yl+5qcQ==
-X-Received: by 2002:a17:906:9bc3:b0:8a5:3d1e:6302 with SMTP id de3-20020a1709069bc300b008a53d1e6302mr19527041ejc.56.1677181347149;
-        Thu, 23 Feb 2023 11:42:27 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7LRpyWijqVyBIlwSuNRfzUQ+ZyqaAsfdjoJlUPAZASg=;
+        b=gRBxS6j55bjzspbFy4DwIzzJyRFOXW3OuWdtiZkw7mv2YA156+S4JGl+rHLiHI0ciw
+         aZTk5gPe65OzRw6ZTmVJ8tAZsKytAQTagTCOXz0z60sIhtQ2mmcavQa4kiIO1QOUglSw
+         5tfUPRJUvPe//vz55zrci0/pA7EGndembzXegwG+mRi4e589my3hlcCVKbVpLwFFRbg4
+         t/VHFGVEz+PiOD7r4z1l0CU7DADM8xOCSZeCvg1Kcf0yZqClBeDYkkeKGplv/7VsqOFR
+         q+PoI+9iwjjX+4kJ2b0/1jF6iSM5HqR3jsTLTr9jODzQA7tfsbs2PVCJ2RJUsvi7QXbv
+         vGZQ==
+X-Gm-Message-State: AO0yUKVaCA9T+5uEBmZg4Pc16OxAYg6qeRxnxUuXaUeU2SAEv+RqbOtO
+	RVh5EYL9Qnj6X9MXEtXswRU=
+X-Google-Smtp-Source: AK7set/L1t843g5XkUkLOvox4r8KPibycedF4hiL/gNFQX5exFdwNgcdM0cnvDhKLdr/jDZ0jWjWcw==
+X-Received: by 2002:a17:906:44b:b0:839:74cf:7c4f with SMTP id e11-20020a170906044b00b0083974cf7c4fmr20087502eja.8.1677181591729;
+        Thu, 23 Feb 2023 11:46:31 -0800 (PST)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id bk15-20020a170906b0cf00b008f398f25beesm19079ejb.189.2023.02.23.11.42.26
+        by smtp.gmail.com with ESMTPSA id mi10-20020a1709071a8a00b008e938e98046sm1960676ejc.223.2023.02.23.11.46.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Feb 2023 11:42:26 -0800 (PST)
-Message-ID: <3eeaa940-9d40-5e33-bc36-c9b0449ded9f@gmail.com>
-Date: Thu, 23 Feb 2023 20:42:25 +0100
+        Thu, 23 Feb 2023 11:46:28 -0800 (PST)
+Message-ID: <774d712d-bcdf-677a-2d9c-a49ed829e965@gmail.com>
+Date: Thu, 23 Feb 2023 20:46:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v4 1/7] dt-bindings: gpio: rockchip,gpio-bank: add compatible
- string per SoC
+Subject: [PATCH v4 2/7] dt-bindings: gpio: rockchip,gpio-bank: add unique
+ hardware GPIO ID
 To: linus.walleij@linaro.org, brgl@bgdev.pl
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
  linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
+References: <3eeaa940-9d40-5e33-bc36-c9b0449ded9f@gmail.com>
 Content-Language: en-US
+In-Reply-To: <3eeaa940-9d40-5e33-bc36-c9b0449ded9f@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_114234_845575_CC052075 
-X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-CacheID: sfid-20230223_114634_005180_AE81A5C9 
+X-CRM114-Status: UNSURE (   7.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,65 +95,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently all Rockchip gpio nodes have the same compatible.
-Compatible strings should be SoC related.
+Add a unique hardware GPIO ID to the Rockchip GPIO nodes with
+the "rockchip,gpio-controller" property to be independent from aliases
+and probe order. "gpio-ranges" can't be used for that, because there is
+no semantic restrictions on how they are set up.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
 
-Changed V3:
-  Keep enum
+See discussion:
+https://lore.kernel.org/u-boot/CACRpkdZx8EaSFLeh4vruRsdC+Sx_ieBiKmuE7t37zhiYqtS3WQ@mail.gmail.com/
 ---
- .../bindings/gpio/rockchip,gpio-bank.yaml     | 27 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 4 deletions(-)
+ .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml        | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-index affd823c8..2e9a5179c 100644
+index 2e9a5179c..39ac41e9d 100644
 --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
 +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-@@ -11,9 +11,28 @@ maintainers:
+@@ -52,6 +52,12 @@ properties:
 
- properties:
-   compatible:
--    enum:
--      - rockchip,gpio-bank
--      - rockchip,rk3188-gpio-bank0
-+    oneOf:
-+      - enum:
-+          - rockchip,gpio-bank
-+          - rockchip,rk3188-gpio-bank0
-+      - items:
-+          - enum:
-+              - rockchip,px30-gpio-bank
-+              - rockchip,rk3036-gpio-bank
-+              - rockchip,rk3066a-gpio-bank
-+              - rockchip,rk3128-gpio-bank
-+              - rockchip,rk3188-gpio-bank
-+              - rockchip,rk3228-gpio-bank
-+              - rockchip,rk3288-gpio-bank
-+              - rockchip,rk3328-gpio-bank
-+              - rockchip,rk3308-gpio-bank
-+              - rockchip,rk3368-gpio-bank
-+              - rockchip,rk3399-gpio-bank
-+              - rockchip,rk3568-gpio-bank
-+              - rockchip,rk3588-gpio-bank
-+              - rockchip,rv1108-gpio-bank
-+              - rockchip,rv1126-gpio-bank
-+          - const: rockchip,gpio-bank
+   gpio-line-names: true
 
-   reg:
-     maxItems: 1
-@@ -75,7 +94,7 @@ examples:
-       };
++  rockchip,gpio-controller:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    maximum: 8
++    description:
++      Unique hardware GPIO ID.
++
+   "#gpio-cells":
+     const: 2
 
-       gpio1: gpio@2003c000 {
--        compatible = "rockchip,gpio-bank";
-+        compatible = "rockchip,rk3188-gpio-bank", "rockchip,gpio-bank";
-         reg = <0x2003c000 0x100>;
-         interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
-         clocks = <&clk_gates8 10>;
 --
 2.20.1
 
