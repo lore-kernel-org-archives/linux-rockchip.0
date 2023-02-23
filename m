@@ -4,50 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE11C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 08:51:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859E8C636D6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 10:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R9bK/j5vr8XQ3TRw7RFc5iwP1pZgOMqg8dJdRiZbe1U=; b=gxV7dxpRaYjdid
-	pPwIuPiCQGYlRMrmu6h3xiNypY48GEomissU5498m8ylwUcrK3/lWFOTLvSkEH+GeDl1uQGU6M7ZP
-	32nZFDWEApa6QRMaE3DkcdFkF95TjxsOPAmNpEzjPG2+QWnIlyYivWwGQBBZ6z/BQp8SjoYJ4zZE5
-	gksfaxky7jNNGiiTsM5w3WOjXHM0hwM2m++Q+ltpIJZQBDOpeuUcaYIQShHfO88aCo14rvRPThBOa
-	8YPNAnnb3qFPW4GQ0sO/5SNzEI6s91GHqVZbFvLfOMxkEcVI9eP3/DVYMAaE9NIrhrqWbbCK62Du9
-	x3s+cOTtZN7HoVln0GTw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NnsHUk/+jaru77+LeqGAJieEM6Fp0RJ20JMeC1VDst0=; b=Tao9217ibnzNqE
+	x8tsi8bHN2/cofst/jkG3gAnRrLZy+z0t0fW7TmURzqMdNbnpu4yVfQ/53MQF4aSFvWnV0MLyt/KC
+	UNx0e2fNPmbXCwLRcT5lP/5jf5WUjFE34HgI2vJk33reR7o9ebCyYprWS0hZB75QxUAkmSw50NaWK
+	orfZ3u8aTrHhb/OHVXJS6NrND/hlP9VF0wFu/Z7cHh6nBFJfFo4u05TDyVcWIbOPRMpaMeaSJ9UQD
+	plizRbPSavR4iwcM7q8FCKswGz5TdTRWmjFBq+tENz0dEOiEWVd2jqBMODrNbX5C+EoGeA/Rm7lOC
+	GqKiW6ylpYvcmw1jC+/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV7KA-00Fagd-Bd; Thu, 23 Feb 2023 08:51:34 +0000
-Received: from mail.corrib.pl ([185.58.226.145])
+	id 1pV9JZ-00G40Y-Ur; Thu, 23 Feb 2023 10:59:05 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pV7K7-00Faf0-AE
-	for linux-rockchip@lists.infradead.org; Thu, 23 Feb 2023 08:51:32 +0000
-Received: by mail.corrib.pl (Postfix, from userid 1001)
-	id 74660A269C; Thu, 23 Feb 2023 08:51:20 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=corrib.pl; s=mail;
-	t=1677142291; bh=X6IEpSISwJiYlJ3uA866lskXve3r+4o2hf4z7VM6m5o=;
-	h=Date:From:To:Subject:From;
-	b=KjLfKX0bQ5zmRtcw7baOIIbfVW7CRSacWOOaiHPLEwy2biTovhrWSsf8JndoxIliq
-	 4M2ErzgbfNFXhMPqlvV1QPDQNeLZrbf0VlZ5v6K8brpu5GuD7nmfbbISBkX73Ahnn6
-	 8rjLs1rrax2LTnY+YP+VytjJMG+RkVpiAeMYx3w5YCrM/jgZpDfC0bsBp/2ZmYsbeC
-	 QM8ctXVrUnhHiQptfA0n9+dZQeBJvI1qFKfMkBagBjqXeC9f9tZeZzhpbvyb/one2y
-	 3eenNPZAnYV09dX+2iR/wPTcTK9qT/RQrcssAuqwQ4XNgPsuaitfM54/Ly/cG51GWJ
-	 J+5c31koE3ZPw==
-Received: by mail.corrib.pl for <linux-rockchip@lists.infradead.org>; Thu, 23 Feb 2023 08:51:03 GMT
-Message-ID: <20230223074501-0.1.5o.fihp.0.aquqofo8e2@corrib.pl>
-Date: Thu, 23 Feb 2023 08:51:03 GMT
-From: =?UTF-8?Q?"Szczepan_Kie=C5=82basa"?= <szczepan.kielbasa@corrib.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Faktoring
-X-Mailer: mail.corrib.pl
+	id 1pV9JO-00G3v5-L7; Thu, 23 Feb 2023 10:58:56 +0000
+Received: from ideasonboard.com (host-87-16-53-160.retail.telecomitalia.it [87.16.53.160])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 84A7C4DE;
+	Thu, 23 Feb 2023 11:58:46 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1677149926;
+	bh=ykZ6O0AnbceQWgdSWq/0czBCFAMEGPVFDYg0sfPzC3Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fgRFMMmDgBZA68w4BeUm4PB3UMouz8nrE4xJZ95Zhmp080fiW+ysN9PHonUqWUjzI
+	 31ZB0f+7At4L2miOxZcc98q9rt2ayPUJ0UBgO6Tx2M6x2vKRVITuXjZuKfBI4jLe2T
+	 giztLAVOND5z5sRRPBiK45Y/uTrjPrZqbUoFeLF0=
+Date: Thu, 23 Feb 2023 11:58:44 +0100
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Adam Ford <aford173@gmail.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Helen Koike <helen.koike@collabora.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
+Message-ID: <20230223105844.cqhkxoypkl5v24h2@uno.localdomain>
+References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+ <CAHCN7x+9E8qcBVOQZKTKagDkvkKVnqDtjvpNX-iNFYwCLRoYug@mail.gmail.com>
+ <Y+1xCtdxIoPtnOws@pendragon.ideasonboard.com>
+ <CAHCN7xLQ2+EuwByr_S9LJjPOtNJncDEHJmBkiLqfEdG4P7gTkw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAHCN7xLQ2+EuwByr_S9LJjPOtNJncDEHJmBkiLqfEdG4P7gTkw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_005131_516072_5A2845A2 
-X-CRM114-Status: UNSURE (   0.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230223_025854_870805_A584E3C5 
+X-CRM114-Status: GOOD (  58.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,20 +70,182 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKcm96d2HFvGFsaSBQYcWEc3R3byB3eWLDs3IgZmluYW5zb3dhbmlhLCBr
-dMOzcmUgc3BlxYJuaSBwb3RyemVieSBmaXJteSwgemFwZXduaWFqxIVjIG5hdHljaG1pYXN0b3d5
-IGRvc3TEmXAgZG8gZ290w7N3a2ksIGJleiB6YsSZZG55Y2ggcHJ6ZXN0b2rDs3c/IAoKUHJ6eWdv
-dG93YWxpxZtteSByb3p3acSFemFuaWEgZmFrdG9yaW5nb3dlIGRvcGFzb3dhbmUgZG8gUGHFhHN0
-d2EgYnJhbsW8eSBpIHdpZWxrb8WbY2kgZmlybXksIGR6acSZa2kga3TDs3J5bSwgbmllIG11c3rE
-hSBQYcWEc3R3byBtYXJ0d2nEhyBzacSZIG8gbmlld3lwxYJhY2Fsbm/Fm8SHIGtvbnRyYWhlbnTD
-s3csIHBvbmlld2HFvCB0cmFuc2FrY2plIHPEhSB6YWJlenBpZWN6b25lIGkgcG9zaWFkYWrEhSBn
-d2FyYW5jasSZIHNwxYJhdHkuIApDaGPEhSBQYcWEc3R3byBwcnplYW5hbGl6b3dhxIcgZG9zdMSZ
-cG5lIG9wY2plPwoKClBvemRyYXdpYW0KU3pjemVwYW4gS2llxYJiYXNhCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Adam
+   sorry to jump up without being involved in the conversation
+
+On Sat, Feb 18, 2023 at 10:14:08AM -0600, Adam Ford wrote:
+> On Wed, Feb 15, 2023 at 5:55 PM Laurent Pinchart
+> <laurent.pinchart@ideasonboard.com> wrote:
+> >
+> > Hi Adam,
+> >
+> > On Wed, Feb 15, 2023 at 07:57:53AM -0600, Adam Ford wrote:
+> > > On Fri, Nov 18, 2022 at 3:44 AM Paul Elder wrote:
+> > >
+> > > > This series depends on v3 of "dt-bindings: media: Add macros for video
+> > > > interface bus types" [1].
+> > > >
+> > > > This series extends the rkisp1 driver to support the ISP found in the
+> > > > NXP i.MX8MP SoC.
+> > >
+> > > I'm going to spend some time testing this over the weekend.  Is there a V4
+> > > pending, or should I just test whatever is in Laurent's repo?
+> >
+> > I've updated all the v6.2-based branches on
+> > https://gitlab.com/ideasonboard/nxp/linux.git (and renamed them to
+> > v6.2/*). Beside a rebase, the v6.2/isp branch contains (at the bottom) 6
+> > additional patches that I've previously posted to the linux-media
+> > mailing list (feel free to review them ;-)).
+>
+> I grabbed your v6.2 series, and applied some updates to enable an
+> imx219 camera and routed it through the ISP and configured the camera
+> to SRGGB10_1X10/640x480 and had the ISP convert to YUYV8_2X8/640x480
+> and it captured just fine.
+>
+> With that, I think you can add
+>
+> Tested-by: Adam Ford <aford173@gmail.com> #imx8mp-beacon
+>
+> I haven't experimented with the resizer yet,but  I did have some
+> questions on the AWB.  The AWB appears to be available on the 8MP per
+> the TRM, and  I see reference to AWB in the driver, but when I query
+> the subdev via yavta, I didn't see anything obvious on how to enable
+> it.  My pipeline (attached) shows klisp1_params as video2 and
+> rkisp1_stats as video1.  I attempted to query both without much
+> success.
+
+As you might be aware there's no magic button to "turn AWB on". The
+ISP enables the implementation of AWB algorithms that consumes the
+statistics the ISP produces on the raw images it is fed with and
+allows to program the color gains to realize colors balancing.
+
+The implementation of such algorithms doesn't live in the driver but
+rather in a separate component usually running in user space. With
+libcamera we're creating a userspace camera stack where it is possible
+to implement such algorithms, and the i.MX8MP is fairly well supported
+by the "rkisp1" component.
+https://git.libcamera.org/libcamera/libcamera.git/tree/src/libcamera/pipeline/rkisp1
+https://git.libcamera.org/libcamera/libcamera.git/tree/src/ipa/rkisp1/algorithms
+
+There's probably one single patch still out of tree in libcamera to flip
+the switch and enable i.MX8MP support through the RkISP1 component.
+
+If you're willing to give it a spin let me know and I can try
+support you in testing it.
+
+
+>
+> root@beacon-imx8mp-kit:~# yavta -l /dev/video2
+> Device /dev/video2 opened.
+> Device `rkisp1_params' on `platform:rkisp1' (driver 'rkisp1') supports
+> meta-data, output, without mplanes.
+> unable to query control 0xc0000000: Inappropriate ioctl for device (25).
+> Meta-data format: RK1P (50314b52) buffer size 3048
+> root@beacon-imx8mp-kit:~# yavta -l /dev/video1
+> Device /dev/video1 opened.
+> Device `rkisp1_stats' on `platform:rkisp1' (driver 'rkisp1') supports
+> meta-data, capture, without mplanes.
+> unable to query control 0xc0000000: Inappropriate ioctl for device (25).
+> Meta-data format: RK1S (53314b52) buffer size 260
+> root@beacon-imx8mp-kit:~#
+>
+> Is there documentation somewhere on where to test the AWB?  This is of
+> particular interest to me, because the RGGB format of the camera comes
+> across with a green tint.  I am able to remove this green-ness on a
+> different platform using some AWB on the ARM, but I'd rather do it in
+> hardware if possible.
+>
+> Thanks
+>
+> adam
+>
+>
+> >
+> > My only concern with this series is with patch "media: rkisp1: Add match
+> > data for i.MX8MP ISP", and in particular with the following hunk:
+> >
+> >  enum rkisp1_cif_isp_version {
+> >         RKISP1_V10 = 10,
+> >         RKISP1_V11,
+> >         RKISP1_V12,
+> >         RKISP1_V13,
+> > +       IMX8MP_V10,
+> >  };
+> >
+> > It's not a very nice versioning scheme :-S I'll see if I can find
+> > something better, but regardless of that, I'll post v4 with the goal of
+> > merging it in v6.4.
+> >
+> > > I have an IMX219 camera with 4-lane support and an i.MX8M Plus kit from
+> > > Beacon, and I want to test the RGGB bayer conversion to see how well it
+> > > works.
+> > >
+> > > > The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
+> > > > and in the NXP i.MX8MP have the same origin, and have slightly diverged
+> > > > over time as they are now independently developed (afaik) by Rockchip
+> > > > and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
+> > > > and is close enough to the RK3399 ISP that it can easily be supported by
+> > > > the same driver.
+> > >
+> > > Is there a reason the driver cannot be renamed to a more generic name than
+> > > rkisp1 if the Rockchip and VeriSilicon had similar origins?  Having the
+> > > name Rockchip referenced from an NXP i.MX8M Plus seems odd to me.
+> >
+> > The common roots of the IP core predate both Rockchip and VeriSilicon.
+> > Those two implementations have now diverged (as with all forks), so
+> > either name would be wrong in some cases :-S
+> >
+> > > > The last two patches add support for UYVY output format, which can be
+> > > > implemented on the ISP version in the i.MX8MP but not in the one in the
+> > > > RK3399.
+> > > >
+> > > > This version of the series specifically has been tested on a Polyhex
+> > > > Debix model A with an imx219 (Raspberry Pi cam v2).
+> > > >
+> > > > [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
+> > > >
+> > > > Laurent Pinchart (3):
+> > > >   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
+> > > >   media: rkisp1: Add and use rkisp1_has_feature() macro
+> > > >   media: rkisp1: Configure gasket on i.MX8MP
+> > > >
+> > > > Paul Elder (11):
+> > > >   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+> > > >   media: rkisp1: Add match data for i.MX8MP ISP
+> > > >   media: rkisp1: Add and set registers for crop for i.MX8MP
+> > > >   media: rkisp1: Add and set registers for output size config on i.MX8MP
+> > > >   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
+> > > >   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
+> > > >   media: rkisp1: Add register definitions for the test pattern generator
+> > > >   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
+> > > >   media: rkisp1: Support devices without self path
+> > > >   media: rkisp1: Add YC swap capability
+> > > >   media: rkisp1: Add UYVY as an output format
+> > > >
+> > > >  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
+> > > >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
+> > > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
+> > > >  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
+> > > >  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
+> > > >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
+> > > >  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
+> > > >  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
+> > > >  include/uapi/linux/rkisp1-config.h            |   2 +
+> > > >  9 files changed, 509 insertions(+), 40 deletions(-)
+> >
+> > --
+> > Regards,
+> >
+> > Laurent Pinchart
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
