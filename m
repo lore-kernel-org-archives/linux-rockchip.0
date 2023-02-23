@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 171F1C636D6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 16:26:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35017C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Feb 2023 19:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yWkxz7lOs6n7FS7Fg4ggdUgKnkBPfuDVT73qc2RDpLs=; b=Dcm5fveP+WkKWN
-	E9XYzRaIz01TlJWEALuxS1Qd4qQnVb0SvZhYtHorp/iT/cyhx2XOWTR2qL2WtOf9MRZiJO8t7SlLz
-	y/mkNmakCe5aJaPV+wiZf6qfZjnvs6hRLOADHVq3UQ8cQrU7MpNmTFHpRvFTY/xzDsO3YeqbQ5FHp
-	kqxeyn+1CGXn91nvqvehpKE30d2LOfU52kiPduWrHST7KgfFrRhK29eAXtNe5AD2FDvXKxFaZMgen
-	scmDBgyjGtruSdjPe5oc6YXkErcQjnlxYeFi+MQ1sVWWXazXkis4MVlKNAG+Ojk6/cY4P9m6MXCIf
-	4oqGzBkOQ+N/vOnPNxWA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qOu6fngJlUl8C7zBF/4U68PZrupt+wELj5gajEj4KMU=; b=u3m8sU0Atx/+dy
+	36rJOkneVEhasAfievdCYPC+pNKCrjIjeL5kO/XP0PhtoJ+c8m0avK2EGI0l+bVxiyXX+OIFkZ/0b
+	5B/nptfj6kgGHWKDuGQJHOSULKqYaw5qIaqiRtALIYiQCAf33v3dwKoRYOu8T4Bxklq0mgArr8yiX
+	s7/Iz8Wgv3Q7gwhvQY4veO/SZd6gA94m7oVLrtSf2qnPADw2E3chWpCDmaNNI8uus5RrGg/rMZ+Xa
+	BUypP3Ui5rI7DnyfJEAspeVW4Q50B/8I+7HiIY8HV6LHC0eONXW59jYAYogDGdh3R4HcwfqA1SSqI
+	u9Ju+ovrCkwRALhGK4Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVEPg-00HEKA-6o; Thu, 23 Feb 2023 16:25:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1pVHUL-00080R-8L; Thu, 23 Feb 2023 19:42:45 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVEPN-00HEDJ-GG; Thu, 23 Feb 2023 16:25:27 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5A31F496;
-	Thu, 23 Feb 2023 17:25:20 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1677169520;
-	bh=aTAR+o2z2yIy1YVhXBoJgds3EXIGbPLW0Ro/odGL89k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CMNIqxJImVAu3FRmkBTDVJsz1Dgqg8a1dyWHh6tkO2NQ4MtW4Ya7D08mYWU0UC749
-	 gHhLWGNxG+FYVVRv1tk0CdUYTnqyWbahr4rHLJpOmPoGDFXzNyiX42cDwu/+5vIqXy
-	 oUkn4IBJHVOf9BEeKij/9K5EunTVFo20cuLMMlWw=
-Date: Thu, 23 Feb 2023 18:25:18 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Adam Ford <aford173@gmail.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
-Message-ID: <Y/eTbnfsq2VtgK3q@pendragon.ideasonboard.com>
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
- <CAHCN7xKbL+g5ZaPe3a50fUEe4AU3a6asCqWFSE8d7DCzWZO=qg@mail.gmail.com>
- <Y/d3m78NgmuuXOH8@pendragon.ideasonboard.com>
- <CAHCN7xLXz4iSKcTQgyW=E0c4eLZSAYAiuoTKpQBWz8GsfZ2GCA@mail.gmail.com>
+	id 1pVHUA-0007wz-Ox; Thu, 23 Feb 2023 19:42:36 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id o12so46735849edb.9;
+        Thu, 23 Feb 2023 11:42:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8BXWAwPXU4gL7NDBNH5IiDYMBbcpymX6jA+XKQ4A+7Y=;
+        b=Z9qIIeH4K2XaOajUagHIDfr3qHg6UXZN8iDBhj6FFX0dIjfQCBvZnks9KcNGHHY19G
+         ldGQ9mahmCf7kjx2w1OPaz4kn6RnIsQC2dYq6V3Pby6VVovYfUveaWaBMaYGGj90m54q
+         xOe9VekczEw87U22eyuTextgD4lzevi8ETHyOkm3ySyTAl0OtGv4jfqzDRDtKIhOO0+S
+         21Df/7kwahDs6AbQ2P3SP4JS8Ipm6YUYhZscMNwa7+WcNpkVz0xD9QxfkCrSbuJkPrDO
+         dwKvak9Ck8GAKMCuwVgpk1sf63ERU9F9bxOzeBJvQs3DbJtG8mJMcd7+JDw9U/oMftjH
+         j/Gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=8BXWAwPXU4gL7NDBNH5IiDYMBbcpymX6jA+XKQ4A+7Y=;
+        b=0p712RVql9R4cM8SS6T523s7k5CkcHuW3KjgwVlwQyWOaA/AS1T9/XeNORAoz9A1HS
+         aHjOcLzYc7EnyWrKk8bdUfkQrF4ANKc5y5TLdXbYMjvid4tC8Zte5ym+NhPY8Fe0MQ6E
+         S59tjvb7uYo168yQnncsyJFWI87GEZkJtWFtu12Sty2+rwXs0w25dH8yt50+eRqbxgW9
+         mqIk0G7mRHWdB8B5SF3YPkiD4cKZ8UYEw1SppWdjj8w4Z5aKcoA8ZEKzoiZVk4meoseU
+         7i/1al0eV7opvpgr1oIeTPvOUc9iyht7vL/wy3qU2TPj8oAru8UEA71HaZNVb8Pf7uZz
+         s0mg==
+X-Gm-Message-State: AO0yUKXG2dMkRK8wRXETXDyS1DYyAXLqTKYjTeZxDfVosRzj9J+rl1L9
+	k6Aym+PXcMBr1P19/v0r9xw=
+X-Google-Smtp-Source: AK7set/x32vBkRksysZ8SuzBqjVeMXtXLVaQQBia6jjruTfaGG5eWsPI6iBac7ydZdrGPp4yl+5qcQ==
+X-Received: by 2002:a17:906:9bc3:b0:8a5:3d1e:6302 with SMTP id de3-20020a1709069bc300b008a53d1e6302mr19527041ejc.56.1677181347149;
+        Thu, 23 Feb 2023 11:42:27 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id bk15-20020a170906b0cf00b008f398f25beesm19079ejb.189.2023.02.23.11.42.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Feb 2023 11:42:26 -0800 (PST)
+Message-ID: <3eeaa940-9d40-5e33-bc36-c9b0449ded9f@gmail.com>
+Date: Thu, 23 Feb 2023 20:42:25 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHCN7xLXz4iSKcTQgyW=E0c4eLZSAYAiuoTKpQBWz8GsfZ2GCA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v4 1/7] dt-bindings: gpio: rockchip,gpio-bank: add compatible
+ string per SoC
+To: linus.walleij@linaro.org, brgl@bgdev.pl
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230223_082525_749168_1E2F12EE 
-X-CRM114-Status: GOOD (  41.77  )
+X-CRM114-CacheID: sfid-20230223_114234_845575_CC052075 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,186 +93,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Adam,
+Currently all Rockchip gpio nodes have the same compatible.
+Compatible strings should be SoC related.
 
-On Thu, Feb 23, 2023 at 10:10:28AM -0600, Adam Ford wrote:
-> On Thu, Feb 23, 2023 at 8:26 AM Laurent Pinchart wrote:
-> > On Wed, Feb 22, 2023 at 05:39:30PM -0600, Adam Ford wrote:
-> > > On Fri, Nov 18, 2022 at 3:44 AM Paul Elder wrote:
-> > > >
-> > > > This series depends on v3 of "dt-bindings: media: Add macros for video
-> > > > interface bus types" [1].
-> > > >
-> > > > This series extends the rkisp1 driver to support the ISP found in the
-> > > > NXP i.MX8MP SoC.
-> > > >
-> > > > The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> > > > and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> > > > over time as they are now independently developed (afaik) by Rockchip
-> > > > and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> > > > and is close enough to the RK3399 ISP that it can easily be supported by
-> > > > the same driver.
-> > > >
-> > > > The last two patches add support for UYVY output format, which can be
-> > > > implemented on the ISP version in the i.MX8MP but not in the one in the
-> > > > RK3399.
-> > > >
-> > > > This version of the series specifically has been tested on a Polyhex
-> > > > Debix model A with an imx219 (Raspberry Pi cam v2).
-> > > >
-> > > > [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
-> > > >
-> > > > Laurent Pinchart (3):
-> > > >   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
-> > > >   media: rkisp1: Add and use rkisp1_has_feature() macro
-> > > >   media: rkisp1: Configure gasket on i.MX8MP
-> > > >
-> > > > Paul Elder (11):
-> > > >   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-> > > >   media: rkisp1: Add match data for i.MX8MP ISP
-> > > >   media: rkisp1: Add and set registers for crop for i.MX8MP
-> > > >   media: rkisp1: Add and set registers for output size config on i.MX8MP
-> > > >   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
-> > > >   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
-> > > >   media: rkisp1: Add register definitions for the test pattern generator
-> > > >   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-> > > >   media: rkisp1: Support devices without self path
-> > > >   media: rkisp1: Add YC swap capability
-> > > >   media: rkisp1: Add UYVY as an output format
-> > >
-> > > Paul / Laurent,
-> > >
-> > > I noticed an unexpected behaviour on the imx8mp.
-> > >
-> > > If I setup my pipeline for 640x480, it works just fine using an imx219
-> > > camera configured for SRGGB10_1X10.
-> > >
-> > > However, when I try to configure the pipeline to use the same camera
-> > > at 1920x1080 (no resizing), the ISP source keeps defaulting to 640x480
-> > >
-> > > Media device information
-> > > ------------------------
-> > > driver          rkisp1
-> > > model           rkisp1
-> > > serial
-> > > bus info        platform:rkisp1
-> > > hw revision     0xe
-> > > driver version  6.2.0
-> > >
-> > > Device topology
-> > > - entity 1: rkisp1_isp (4 pads, 4 links)
-> > >             type V4L2 subdev subtype Unknown flags 0
-> > >             device node name /dev/v4l-subdev0
-> > > pad0: Sink [fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range crop.bounds:(0,0)/1920x1080 crop:(0,0)/640x480]
-> >
-> > You're cropping the image to 640x480 here. You need to set the crop
-> > rectangle to 1920x1080.
-> >
-> > As Jacopo mentioned, I wouldn't recommend exercising the ISP directly.
-> > Not only do you need to setup the pipeline, but you would also need to
-> > implement all the imaging algorithms in userspace. libcamera will do all
-> > this for you.
-> 
-> I'll give that a try.  My current employer has a v4l2src requirement,
-> but I can likely make an argument to switch to libcamera.  I didn't
-> catch the cropping part. Thanks for that.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
 
-libcamera has a GStreamer source element called libcamerasrc which is
-aimed to be a drop-in replacement for v4l2src. Some features may be
-missing, let us know and we can discuss how to add them.
+Changed V3:
+  Keep enum
+---
+ .../bindings/gpio/rockchip,gpio-bank.yaml     | 27 ++++++++++++++++---
+ 1 file changed, 23 insertions(+), 4 deletions(-)
 
-> > > <- "csis-32e40000.csi":1 [ENABLED]
-> > > pad1: Sink [fmt:unknown/0x0 field:none]
-> > > <- "rkisp1_params":0 [ENABLED,IMMUTABLE]
-> > > pad2: Source [fmt:YUYV8_2X8/640x480 field:none colorspace:raw xfer:none ycbcr:601 quantization:lim-range crop.bounds:(0,0)/640x480 crop:(0,0)/640x480]
-> > > -> "rkisp1_resizer_mainpath":0 [ENABLED]
-> > > pad3: Source [fmt:unknown/0x0 field:none]
-> > > -> "rkisp1_stats":0 [ENABLED,IMMUTABLE]
-> > >
-> > > - entity 6: rkisp1_resizer_mainpath (2 pads, 2 links)
-> > >             type V4L2 subdev subtype Unknown flags 0
-> > >             device node name /dev/v4l-subdev1
-> > > pad0: Sink [fmt:YUYV8_2X8/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:lim-range crop.bounds:(0,0)/1920x1080 crop:(0,0)/640x480]
-> > > <- "rkisp1_isp":2 [ENABLED]
-> > > pad1: Source [fmt:YUYV8_2X8/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:lim-range]
-> > > -> "rkisp1_mainpath":0 [ENABLED,IMMUTABLE]
-> > >
-> > > - entity 9: rkisp1_mainpath (1 pad, 1 link)
-> > >             type Node subtype V4L flags 0
-> > >             device node name /dev/video0
-> > > pad0: Sink
-> > > <- "rkisp1_resizer_mainpath":1 [ENABLED,IMMUTABLE]
-> > >
-> > > - entity 13: rkisp1_stats (1 pad, 1 link)
-> > >              type Node subtype V4L flags 0
-> > >              device node name /dev/video1
-> > > pad0: Sink
-> > > <- "rkisp1_isp":3 [ENABLED,IMMUTABLE]
-> > >
-> > > - entity 17: rkisp1_params (1 pad, 1 link)
-> > >              type Node subtype V4L flags 0
-> > >              device node name /dev/video2
-> > > pad0: Source
-> > > -> "rkisp1_isp":1 [ENABLED,IMMUTABLE]
-> > >
-> > > - entity 29: csis-32e40000.csi (2 pads, 2 links)
-> > >              type V4L2 subdev subtype Unknown flags 0
-> > >              device node name /dev/v4l-subdev2
-> > > pad0: Sink [fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range]
-> > > <- "imx219 1-0010":0 [ENABLED]
-> > > pad1: Source [fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range]
-> > > -> "rkisp1_isp":0 [ENABLED]
-> > >
-> > > - entity 34: imx219 1-0010 (1 pad, 1 link)
-> > >              type V4L2 subdev subtype Sensor flags 0
-> > >              device node name /dev/v4l-subdev3
-> > > pad0: Source [fmt:SRGGB10_1X10/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range crop.bounds:(8,8)/3280x2464 crop:(688,700)/1920x1080]
-> > > -> "csis-32e40000.csi":0 [ENABLED]
-> > >
-> > > It's at this point that everything except the ISP source is 1920x1080.
-> > >
-> > > When I try to set the ISP sink to 1080, it ends up being 640x480 and
-> > > the resizer sink is also changed to 640x480
-> > >
-> > > root@beacon-imx8mp-kit:~# media-ctl -v -V "'rkisp1_isp':2
-> > > [fmt:YUYV8_2X8/1920x1080 field:none]"
-> > > Opening media device /dev/media0
-> > > Enumerating entities
-> > > looking up device: 81:3
-> > > looking up device: 81:4
-> > > looking up device: 81:0
-> > > looking up device: 81:1
-> > > looking up device: 81:2
-> > > looking up device: 81:5
-> > > looking up device: 81:6
-> > > Found 7 entities
-> > > Enumerating pads and links
-> > > Setting up format YUYV8_2X8 1920x1080 on pad rkisp1_isp/2
-> > > Format set: YUYV8_2X8 640x480
-> > > Setting up format YUYV8_2X8 640x480 on pad rkisp1_resizer_mainpath/0
-> > > Format set: YUYV8_2X8 640x480
-> > >
-> > >
-> > > It's my understanding that the ISP should be able to handle 1920x1080,
-> > > and the resizer sink should match the ISP source.
-> > >
-> > > With the pipeline improperly setup, the capture fails.
-> > >
-> > > >  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
-> > > >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
-> > > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
-> > > >  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
-> > > >  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
-> > > >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
-> > > >  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
-> > > >  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
-> > > >  include/uapi/linux/rkisp1-config.h            |   2 +
-> > > >  9 files changed, 509 insertions(+), 40 deletions(-)
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index affd823c8..2e9a5179c 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -11,9 +11,28 @@ maintainers:
 
--- 
-Regards,
+ properties:
+   compatible:
+-    enum:
+-      - rockchip,gpio-bank
+-      - rockchip,rk3188-gpio-bank0
++    oneOf:
++      - enum:
++          - rockchip,gpio-bank
++          - rockchip,rk3188-gpio-bank0
++      - items:
++          - enum:
++              - rockchip,px30-gpio-bank
++              - rockchip,rk3036-gpio-bank
++              - rockchip,rk3066a-gpio-bank
++              - rockchip,rk3128-gpio-bank
++              - rockchip,rk3188-gpio-bank
++              - rockchip,rk3228-gpio-bank
++              - rockchip,rk3288-gpio-bank
++              - rockchip,rk3328-gpio-bank
++              - rockchip,rk3308-gpio-bank
++              - rockchip,rk3368-gpio-bank
++              - rockchip,rk3399-gpio-bank
++              - rockchip,rk3568-gpio-bank
++              - rockchip,rk3588-gpio-bank
++              - rockchip,rv1108-gpio-bank
++              - rockchip,rv1126-gpio-bank
++          - const: rockchip,gpio-bank
 
-Laurent Pinchart
+   reg:
+     maxItems: 1
+@@ -75,7 +94,7 @@ examples:
+       };
+
+       gpio1: gpio@2003c000 {
+-        compatible = "rockchip,gpio-bank";
++        compatible = "rockchip,rk3188-gpio-bank", "rockchip,gpio-bank";
+         reg = <0x2003c000 0x100>;
+         interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
+         clocks = <&clk_gates8 10>;
+--
+2.20.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
