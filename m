@@ -4,93 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14AACC61DA3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Feb 2023 13:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B834AC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Feb 2023 15:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ye8D3EVihSn8u+SCf7RVJ9ObgI52kYoQoXOzIp3LCjA=; b=m0BT+XiE8ois6g
-	Zmqw9JUzQTmc2P1IlrKkU3T3imMnnB/co4lc/pDJ7go5eYBPI0DpakVVtQ0B8nAeIyjdQiQDHSCsQ
-	3HnbASQeLhvJIURf1xJyvGVZ5zFcFojjLxW6DJxIL+fG76FAOvg3ybR/PGSqPwA0O1rnkEFQf/ybs
-	SyHQ0C88nCIw4VSMgxTT2U/o/FrzkMWSDr2/EfJJ8gA4bcBD2rN7aX5lce79m0l3To1w6pOyLzBzT
-	U9S+g+GaVh2nWpEXBnDsmrQ9FPZHfGprRb7Nd54U00mjEtZCLzSmU/QY5NojS8BBl/w/89fN9a/N/
-	E79v+pnbjs2dGBxJLU4A==;
+	List-Owner; bh=GuaqYXDo9o2cKUwGG38TfWw2GLc4j68qz1iuZfl2vwk=; b=seDwD7ozXJuNg7
+	c0Ef770YSkeNGy5Qkblt252v1Zk0xiMoWITmBZwi5nMAGbAiS4jj1uush3Xfe+kevPuNzkBNgemoA
+	ONm0ZqLnN9Xs54m03rPjZji3UAQQ7+J7TlgwFu6sNbGzXO/jhhlntSJ00zyBn9aIykIH9G20L1jjN
+	wzBxszaCHEQ/aqGtWk1DRxKHPn6GFiMiGCPSyXpCO9dMVmig0ko5Ttci+DXLv4+c0yTBq/j9yajOE
+	WO7zQLEh4UPFXhcQ/nqfSDZhR1X0anV9+61tnKaLHTPKPQDnQKmSqGqT/0xEp8ypiEE7Dfs8mVywn
+	K+8duXLE7EeMWQsWFtGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVXts-002aW4-8b; Fri, 24 Feb 2023 13:14:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pVZi1-002rt0-W2; Fri, 24 Feb 2023 15:10:06 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pVXtl-002aT6-1Q; Fri, 24 Feb 2023 13:14:07 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 65D7D6602FB6;
-	Fri, 24 Feb 2023 13:14:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677244443;
-	bh=Okn4gS1gr349hyYSKqFPtphNu9lynSCGwrmaUsYAV7k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Gm+baLq2JEYoErHccOrY+sq6UkDE63wM7blUSKo5+RWdViPYvsPewvBWLj6KK/Klp
-	 mX0JPGD4xhg/6yWU++Nzbmfnl82cF9liwmH7/V49AdT0JhjKn/9qFXL/MGmI+iFB67
-	 kEGGWDZczMu1ApL71HWexGJDHuCekPnec8VhOqK/IaN4Ec18oW5lZJK5IMSXZwaONx
-	 pW0CUQ3NXQdomYvAUVtmuLd3Bvdsg8AvWF57+1ZZ3pSrcDOBQdPK7V6n01YRtKSLUa
-	 bKRbQR8cYQ9XXXp8GWwxsBTRfmoO71Bj6gti3TX4MnkShBZEDgDb+fHdBMjgfzYc9q
-	 hsCnVl7kz1jdg==
-Message-ID: <c17f94a6-c710-f80e-c2af-9e450f144157@collabora.com>
-Date: Fri, 24 Feb 2023 14:13:59 +0100
+	id 1pVZhP-002raA-Aq; Fri, 24 Feb 2023 15:09:28 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 31OEoRAF007465;
+	Fri, 24 Feb 2023 15:09:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references :
+ content-transfer-encoding : content-type : mime-version; s=corp-2022-7-12;
+ bh=uD4Cm7onBRqrJ0SMiRRvSqHMQQFPr+vOdtYmLM4NMT0=;
+ b=2tyIEJG/MdW9VvBvM09JBwkxi8DYGwtZ19whVW1/nwQ+UfLplmqzZrZjdIQ7IaNegb2v
+ PJp364jQwf8PrvulCX8Z7o7WwpOSUtQG6I8ghL11UubpkhxQOI9SV3ltos0WCYgCdrZ1
+ rJzZRLH4wkG9hd8mh76AVvhJynmdOKdRWeMuNIWUXy68q/+f3zldmB5o+Ib5GbyNphtr
+ HsxiR/+nY9RlcneQPzBU3p/zaHhU98vbnSM+nujK1fZ0ZwXlKvSm/HeY6LmoWId9/+k+
+ dDpHGUZc2OqLlnWPYyu9Z38xX3Wfwsa9FutKwAAQ5M2OjdWpx4qKhTZFcO+DjiH+0QwT YA== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3ntn90wb43-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 24 Feb 2023 15:09:18 +0000
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 31ODh9Mf031681;
+	Fri, 24 Feb 2023 15:09:17 GMT
+Received: from nam02-dm3-obe.outbound.protection.outlook.com (mail-dm3nam02lp2048.outbound.protection.outlook.com [104.47.56.48])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3ntn49qna1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 24 Feb 2023 15:09:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZdnNEVONbu/x795MbggFvaqz5g4PXfBZTM120wNcORaVUsSVYfkIeXnFgER1E38YJ8BhgJJzKi7iBzwONCoh25JDWnVWlBKb8lsesRushTyePZs+yPzm/8UiWej0SoPZQnToYnFpxQY6YS7qvvIvODJJtjQ4ZiNOZ5/zrzBY4sksidyvxztuwPJoVFjhL1QnNHWpqxz+NFk17WpvF32QFq8f+avLgUOm6EWETWjj+GOLvzT1N5esfpW4pyPY6mxRcbpahAVQxfOg2PjHjNWzJl+Wntv/oRRDshMApn4isZK9On3eXUBa2Z6xwcOA2UvK7B6nlp5wZa3bjabowZjV9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uD4Cm7onBRqrJ0SMiRRvSqHMQQFPr+vOdtYmLM4NMT0=;
+ b=EmnDftrS20PUet2j/aGmrixIf8p/++4Qd4iikFkfsAH7741rqPq+uGd0dmbBfZ6yzJ47/wIQAVa+e5j2mjBKCZ9OCgkqGRvViMMpugetnOfifMoULBHgEJRQcw2Je2aMhLcTFLicNnJ4PW3YCRbKwyJVHbyeWx8bXpYMb/SFhXshOsuWtZ7/dF9cTnDokp3eg/vq0ALugQUXVyhKG5SOkGgDh+c/JB1N7r3k2AvvAx9TteaiJig4JXZeDsMa1dBPtC8OYdBXO1Po4bmtcC00PMtr1wJKOHrszdKV/zmwyfgrtt+NYcd4eTT6SckNESCQXAgZ7aTERayMqBpgcgwMkw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uD4Cm7onBRqrJ0SMiRRvSqHMQQFPr+vOdtYmLM4NMT0=;
+ b=uOmNbjqVjjgyXjsvFFDS3JhnifU6BjQK/XZcf/r7RHyS2V/vcMN8/wh7MCUXfPweIwdlIesqMWA7jGy9O01G62H/r5e1o2qMVQded3v0Bcfki8eeT8ZuhxJWQr2s8kghey3oE0M73OSeIQGtCG1el0V8njs64VuV4UG8AV5BUaI=
+Received: from DS0PR10MB6798.namprd10.prod.outlook.com (2603:10b6:8:13c::20)
+ by BN0PR10MB5303.namprd10.prod.outlook.com (2603:10b6:408:125::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.11; Fri, 24 Feb
+ 2023 15:09:15 +0000
+Received: from DS0PR10MB6798.namprd10.prod.outlook.com
+ ([fe80::d0f7:e4fd:bd4:b760]) by DS0PR10MB6798.namprd10.prod.outlook.com
+ ([fe80::d0f7:e4fd:bd4:b760%3]) with mapi id 15.20.6134.019; Fri, 24 Feb 2023
+ 15:09:15 +0000
+From: Nick Alcock <nick.alcock@oracle.com>
+To: mcgrof@kernel.org
+Cc: linux-modules@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>,
+        Jassi Brar <jassisinghbrar@gmail.com>,
+        Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org
+Subject: [PATCH 11/27] mailbox: rockchip: remove MODULE_LICENSE in non-modules
+Date: Fri, 24 Feb 2023 15:07:55 +0000
+Message-Id: <20230224150811.80316-12-nick.alcock@oracle.com>
+X-Mailer: git-send-email 2.39.1.268.g9de2f9a303
+In-Reply-To: <20230224150811.80316-1-nick.alcock@oracle.com>
+References: <20230224150811.80316-1-nick.alcock@oracle.com>
+X-ClientProxiedBy: LO0P123CA0006.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:354::8) To DS0PR10MB6798.namprd10.prod.outlook.com
+ (2603:10b6:8:13c::20)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH V2] nvmem: add explicit config option to read OF fixed
- cells
-Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20230224072903.20945-1-zajec5@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230224072903.20945-1-zajec5@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR10MB6798:EE_|BN0PR10MB5303:EE_
+X-MS-Office365-Filtering-Correlation-Id: 29b6b5a1-812a-4c90-7db7-08db167917de
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	wHGnuOztv+wQWWbI/IgZbNXNa7ThcPSIkbQvZX3i8e2nrYm9zXgg1OECpbG0gihNHb8W1md79vSowY+0OpzZa4de58qmzCeSAle73KmUgJbUUDZfqNuryGcE6cmkefAjZ9SMBZIBQb72/tYR1rpUJ0KYCNjHCf1fKa3w+yS+RgVECINJMihj08v9Dve8/m62Q+N1IctVVJX+l68fdGU88xKJWYM8nBWFUJtWC+COgJ83s5QrtTpQod5f3jfO5dLvQGwQZg6XPtesNifRBES/ONmpwe4i05p75cA9q76uC4gX2eJXZ8Vi4tTY7b9433Atu90xuwU/TyJSs+YSX281InBtXA2viDtq+h9PUp7B5/snQlzJxgryn5Nlsgy/Z6gDXR/iS2CsRUY2WikFZc6B7/ARTQNwOrh680T0KZ7Y+w+7scGxBwJhfZPw3NzbLFzFhCwwVy2mpQahOg6rYhe5VMReksMcxIiHaBD5tgrgAXYLdP3hCJtYf6GzibQNF6y91Fg+08WKl7+Hi37+et0rSNXBdZZYU5GpL8jJ1m+vVRrKifxTKP/YppBiIOlScYVw4d+uaLBg5icO7GJR26q4ja03N0/mTCTAcqNJGYEpu2SH2gRUiAAHihHNZib6FoetEKoglIW7AOjqG6zFxLVLpA==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR10MB6798.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(396003)(136003)(376002)(366004)(39860400002)(346002)(451199018)(36756003)(6506007)(83380400001)(2616005)(1076003)(6512007)(6666004)(186003)(15650500001)(8936002)(41300700001)(6916009)(4326008)(44832011)(8676002)(5660300002)(2906002)(6486002)(478600001)(66946007)(66556008)(66476007)(54906003)(316002)(86362001)(38100700002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?uECHE4ovAeLUffAOzw4dMIiA52D1l7hHcHXbprCWWABTVv7CdeH/bmqX3q56?=
+ =?us-ascii?Q?eU8Kprz38JimDJDuFmhyXxpmrcEWLsTn6CIQrIrKKhohw/O1IHFZwIXCL883?=
+ =?us-ascii?Q?OXoGHblgTVfpV9+ssgw3umVvX1Q43TVsuWZVgTZ6u2gDRx93MC/bfY8GEqzZ?=
+ =?us-ascii?Q?afDCbN9rYSTBhqszskfCNZse7NYD1JMNe9EN61cPv5T2vROHRINhXp4plxUQ?=
+ =?us-ascii?Q?pWNH1YqJWKXcjwph1W6mCE66c3j/5R0/A0ncS0mqEik3AeOKfunX1IrLZbfL?=
+ =?us-ascii?Q?13TGBVAcXnG4M+bgm+0UdD0mwiQqbGFku+zt67AxdvGwH4TNSTVF3D7KbdJi?=
+ =?us-ascii?Q?lVAHp/ebAcHDiHH4r1otstUsMqZCC81LQ9o94gKULgkONspMtNWALbytPnwk?=
+ =?us-ascii?Q?Gr4IhlMlKEVUFCIdyrie7jH/AJUa/kZj7h9esZlWhMRJ+DRnPN1M8TK7rJOj?=
+ =?us-ascii?Q?nicd5jtWiTPI5FsbIx3Rj93cb5judUL/3LjKftXgSnz97fRZ8sYHA54LGG6u?=
+ =?us-ascii?Q?apNYRyqtIXofizMtEYhAWziZDxaQTDXXHZVRe6Oofb5HmbV32RZjknI2ui4x?=
+ =?us-ascii?Q?EwLK0TwSed0lBN+SrEU1wqZ2og53u0gXjalDbePd39te9nQujEGTGdbYJPBU?=
+ =?us-ascii?Q?dLD0YNBQDoBlfwc6qpcOdTEhuPDMjEfygiJ13OZnUeNZ73mt/URMLbE2tkHg?=
+ =?us-ascii?Q?MFu0g9RBGKKIX9i0eaOPVB52X9ilgMSiM06Hr+HXoAZIJ5ubIztdrUTl8SuN?=
+ =?us-ascii?Q?tQLSTCZgtUyoF0xk+Lrc37BrnTdaHSIc1RZX/vSnnHm8Qth1vP1IqxttnFbX?=
+ =?us-ascii?Q?ud9EqErs77TK9FSLZVwmE9lkngfoj/0ZFwcvsE2IKG/bwo9t1UHjUMkMBM02?=
+ =?us-ascii?Q?WsxSgA17YEo+NhcLyRpKPM3ib3O/+ZA9nCbqgu8OKLnhoEfmJ8Dzp05WjyuZ?=
+ =?us-ascii?Q?N8KHBZh/wuib/NoZpqx9OzCKqSRgeYEMT/lwKGyHFOXEwqYHlj6vmwTcED86?=
+ =?us-ascii?Q?ipES3KAHvae5auXuh9HUI/RnWdOi168gIhXSQAV7w0Ni568uiAuRS44iRe/Q?=
+ =?us-ascii?Q?/WQN8Td4n5eg3vXKUMO8iekd7Mle+B+HRtJUW+Njd64/vL9F6iVU6qkHWGaF?=
+ =?us-ascii?Q?fGs3T5RL+428WEO/sdB/1aEfFmmcnnFGOLNOMhi+8MwOMb2O5AhtZItCy4r9?=
+ =?us-ascii?Q?0hadYQJslCPSKc09HUkp1aWH7akryGcA14XWzOpin2q8DSOLcIfqXXcNE63M?=
+ =?us-ascii?Q?J3NbCt3F7Z+5fJT7MiPmH67CHyleEUvJI3WnqHVmKoCZ5H0OSvUqgBbsMU02?=
+ =?us-ascii?Q?AIRMLuVcqi4wCrzQxM+s4np7cCu3zPUo5375494o6uyeT0woEVBe/uzwTDJ/?=
+ =?us-ascii?Q?z2qaBaYUU1u5oTFm0gbJtu3bBNsdYiOE63sDbL4ZaiGa3UmSMVY8gIoKPPmE?=
+ =?us-ascii?Q?yl0kW8id9iFORcLa4hshGHUXGTfemEBLcjBRR66bxdyvzZDPOBQNwTZjoJOs?=
+ =?us-ascii?Q?F+JFJS3mC9gsK0af9YFqNCBROAj+QjO3GueyUiV4EZeKWkgGyn+kKzKVZkto?=
+ =?us-ascii?Q?aFP0nrJwm5Y5MdQ1LNYAk2Moi+bQT0tWBgHhZ1Z3XArsC5//kEo4k15RA9Ct?=
+ =?us-ascii?Q?4RrscMWYPX5ex+ldDvR/ZhA=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 	wsV1c0iGq+RYlp8Bz06SNjx5+yky5X19YVEh9TR0127rASwnByuYWIUkMFa1Hvl7C3KBDq5QmKbZAG+UdVzm8d0a6iyqz8do0F0Dc9RTAKT5HNvHB5cuaIm7ysLsSb0KOjJO3m2i9D0pL4IS/nNvBqo7PSNLTogRCYvR+cpTVqilVrq0xz8dFsLxlAvhXCBo06OPXla08T31uGvRk0nz1sRHEU8cdhpBKpfHxappix1cpbcC6UmY0Xqq8VdT8pKzHmry0CcKCJRcu8YJi6fGbBlKNxdXrYNmSL9ZwZQW9+UZIhxpymr4AZjkkk672LB83m6YFTPGO3QpXnn4SBconBv6n0Pc1YYp2KBBF04Gg95X/n5x4CWjwGHMMrs1rloWG7goTr2gSC0ZPGZKQ8Q7e0J6Ryg/2xrIKVMIyxdWARhwdQLjdbqniGdbXecNOvUidJA+7POhLyYNu72H+VpGJLfbAW1Ja4Iz141Qb5Kk5R3DPFk9d7xhvYyzfNuTOL0cuC0Rsugk7aOX0YMCjId9PSEGxlQneYelzBhmVeBqcNgSK05Hv/U5TI8obGM+J06s/9c9X1BaCSw42OywZLDE18ZAphi/Epsaxe5t+tPWPZyC7oKhqD97D/W6fBJIASNMJadQFG886jBNraWA3VBG8AUFfr+6MhLwVXk+/015yQ0UvBXP7OUGB+x0n2IIus9AJVzdDEPLo1MWQU7CMyEHcu+sFAmuFGI5a9E5LlLhajwyNtAsxloTFBQR3ksiQHtITCsYUprgrNw2uefOPZM2nEIvV9b+ud66aDFX6BXh4XNZMs3iw+3xUrPWWqSD2tWCxAZoy3Z8egXATsDRId5/K3ozJUSvmHFR2pW80LQgh1Laf6EpF+g0NxOLY3FqO9mmn9yMaQ2FCJr3c1FD8t1Bdy1SkbOl7UFGdq7skOUMBeU=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 29b6b5a1-812a-4c90-7db7-08db167917de
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR10MB6798.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Feb 2023 15:09:15.1462
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: nEZFaO7Y48aWIPU/Eh6MPiKgCocgml29sZPqfTN4Y+xzVicww7WaUdScMnBp1sM0A1jgbSeSAp0cflb6HOCFag==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB5303
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.170.22
+ definitions=2023-02-24_10,2023-02-24_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 phishscore=0
+ malwarescore=0 mlxscore=0 spamscore=0 adultscore=0 bulkscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302240118
+X-Proofpoint-ORIG-GUID: agZWTMsE4WXcnbZXykDGEQWgGBY3dZyQ
+X-Proofpoint-GUID: agZWTMsE4WXcnbZXykDGEQWgGBY3dZyQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230224_051405_230804_D9F4575F 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20230224_070927_489286_C9592FC7 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,37 +161,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SWwgMjQvMDIvMjMgMDg6MjksIFJhZmHFgiBNacWCZWNraSBoYSBzY3JpdHRvOgo+IEZyb206IFJh
-ZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiAKPiBOVk1FTSBzdWJzeXN0ZW0gbG9v
-a3MgZm9yIGZpeGVkIE5WTUVNIGNlbGxzIChzcGVjaWZpZWQgaW4gRFQpIGJ5Cj4gZGVmYXVsdC4g
-VGhpcyBiZWhhdmlvdXIgbWFkZSBzZW5zZSBpbiBlYXJseSBkYXlzIGJlZm9yZSBhZGRpbmcgc3Vw
-cG9ydAo+IGZvciBkeW5hbWljIGNlbGxzLgo+IAo+IFdpdGggZXZlcnkgbmV3IHN1cHBvcnRlZCBO
-Vk1FTSBkZXZpY2Ugd2l0aCBkeW5hbWljIGNlbGxzIGN1cnJlbnQKPiBiZWhhdmlvdXIgYmVjb21l
-cyBub24tb3B0aW1hbC4gSXQgcmVzdWx0cyBpbiB1bm5lZWRlZCBpdGVyYXRpbmcgb3ZlciBEVAo+
-IG5vZGVzIGFuZCBtYXkgcmVzdWx0IGluIGZhbHNlIGRpc2NvdmVyeSBvZiBjZWxscyAoZGVwZW5k
-aW5nIG9uIHVzZWQgRFQKPiBwcm9wZXJ0aWVzKS4KPiAKPiBUaGlzIGJlaGF2aW91ciBoYXMgYWN0
-dWFsbHkgY2F1c2VkIGEgcHJvYmxlbSBhbHJlYWR5IHdpdGggdGhlIE1URAo+IHN1YnN5c3RlbS4g
-TVREIHN1YnBhcnRpdGlvbnMgd2VyZSBpbmNvcnJlY3RseSB0cmVhdGVkIGFzIE5WTUVNIGNlbGxz
-Lgo+IAo+IEFsc28gd2l0aCB1cGNvbWluZyBzdXBwb3J0IGZvciBOVk1FTSBsYXlvdXRzIG5vIG5l
-dyBiaW5kaW5nIG9yIGRyaXZlcgo+IHNob3VsZCBzdXBwb3J0IGZpeGVkIGNlbGxzIGRlZmluZWQg
-aW4gZGV2aWNlIG5vZGUuCj4gCj4gU29sdmUgdGhpcyBieSBtb2RpZnlpbmcgZHJpdmVycyBmb3Ig
-YmluZGluZ3MgdGhhdCBzdXBwb3J0IHNwZWNpZnlpbmcKPiBmaXhlZCBOVk1FTSBjZWxscyBpbiBE
-VC4gTWFrZSB0aGVtIGV4cGxpY2l0bHkgdGVsbCBOVk1FTSBzdWJzeXN0ZW0gdG8KPiByZWFkIGNl
-bGxzIGZyb20gRFQuCj4gCj4gSXQgd2Fzbid0IGNsZWFyICh0byBtZSkgaWYgcnRjIGFuZCB3MSBj
-b2RlIGFjdHVhbGx5IHVzZXMgZml4ZWQgY2VsbHMuIEkKPiBlbmFibGVkIHRoZW0gdG8gZG9uJ3Qg
-cmlzayBhbnkgYnJlYWthZ2UuCj4gCj4gU2lnbmVkLW9mZi1ieTogUmFmYcWCIE1pxYJlY2tpIDxy
-YWZhbEBtaWxlY2tpLnBsPgo+IFtmb3IgZHJpdmVycy9udm1lbS9tZXNvbi17ZWZ1c2UsbXgtZWZ1
-c2V9LmNdCj4gQWNrZWQtYnk6IE1hcnRpbiBCbHVtZW5zdGluZ2wgPG1hcnRpbi5ibHVtZW5zdGlu
-Z2xAZ29vZ2xlbWFpbC5jb20+CgpbZm9yIG10ay1lZnVzZS5jLCBudm1lbS9jb3JlLmMsIG52bWVt
-LXByb3ZpZGVyLmhdClJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5n
-ZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgoKW01UODE5MiwgTVQ4MTk1IENo
-cm9tZWJvb2tzXQpUZXN0ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9n
-aW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+CgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Since commit 8b41fc4454e ("kbuild: create modules.builtin without
+Makefile.modbuiltin or tristate.conf"), MODULE_LICENSE declarations
+are used to identify modules. As a consequence, uses of the macro
+in non-modules will cause modprobe to misidentify their containing
+object file as a module when it is not (false positives), and modprobe
+might succeed rather than failing with a suitable error message.
+
+So remove it in the files in this commit, none of which can be built as
+modules.
+
+Signed-off-by: Nick Alcock <nick.alcock@oracle.com>
+Suggested-by: Luis Chamberlain <mcgrof@kernel.org>
+Cc: Luis Chamberlain <mcgrof@kernel.org>
+Cc: linux-modules@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+---
+ drivers/mailbox/rockchip-mailbox.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index e02d3c9e3693..28d7bfee2641 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -254,7 +254,6 @@ static struct platform_driver rockchip_mbox_driver = {
+ 
+ module_platform_driver(rockchip_mbox_driver);
+ 
+-MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("Rockchip mailbox: communicate between CPU cores and MCU");
+ MODULE_AUTHOR("Addy Ke <addy.ke@rock-chips.com>");
+ MODULE_AUTHOR("Caesar Wang <wxt@rock-chips.com>");
+-- 
+2.39.1.268.g9de2f9a303
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
