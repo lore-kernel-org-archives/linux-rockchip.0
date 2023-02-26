@@ -4,93 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9660C7EE2D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 22:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE685C7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 22:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ex7Q2T276TQr7tBLptq8Z7jmlnY6VWOnkfF+ksZV+is=; b=bLgPx0KRH/pE+d
-	0uHaAv3466RH8sRl7CxqHQ/1E0JVpdOlpnbegp726h+uM4Vq8/oq7p2QLsk35eELUAYJ6NxAfHe03
-	sFyz+bl8MZQdWqniXLEfJdr/YXOYZNyma3evI1hICrXAt3CegPBksscq9K0nLeDvfbtyF7+7qjKLs
-	o50Ij9dcxeyrOuM3zTnL5rqsiHjGnfxw8GYClCITc1S/DH+adNm1jbf5LG8B8O5SvMu0obhHqwvyt
-	N5vlKa7UpvHNLIL1zpsbWt7S7RbrQF9FBHsq9J+ijfBrQhDP6Ky6EYXAzJhK9jxsQ/bN8H9hh10Xh
-	kQQJSqrLSYq6mJFG91kw==;
+	List-Owner; bh=Ucr7J1/mDZW4Ka7nhbrVn8FT0ozr+vRvQLaIZmxxx6c=; b=qXe4c5gVrC35PQ
+	AxzJlQ9AQJZEZmG6k0Hla7U7HnX1Qsofb8LozFK+BH9DhDaAkISFOUCaEDrxnBEP+mTDAvMFVyUYq
+	HB2iL680CY8v5Hv2M6Ga1X3d0NoCXOMX7oK0BJq25sEju36+YxKnLhJo/xkT0U1z5zQ6OqXKdkIUr
+	TE0FBlh3jCyHwgS9DQfHHoAae9G7xPTBnSMtpMIA5+p49aAa86a+bsYXDxT4tS6xNHka0V2oTZ67N
+	ZY9NPH4CUd6AWcHnPbtCJvc8g+Hz1fjEq0E34imNz2Go0NjzHne4PqEpO0CDFzKaw+gFmzHKbLb3j
+	otZ+xJyjdem29Tyccdkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWPvB-007x42-NC; Sun, 26 Feb 2023 22:55:09 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1pWPvE-007x4z-3O; Sun, 26 Feb 2023 22:55:12 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWPuu-007wom-QB
-	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 22:54:56 +0000
-Received: by mail-wm1-x334.google.com with SMTP id m25-20020a7bcb99000000b003e7842b75f2so2783943wmi.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 14:54:52 -0800 (PST)
+	id 1pWPux-007wt3-Tf
+	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 22:54:58 +0000
+Received: by mail-wm1-x330.google.com with SMTP id d41-20020a05600c4c2900b003e9e066550fso2781778wmp.4
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 14:54:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mJAcPQCfOIHAL+8wWJqUVZlzdFUPTSOR65Nvh+pIwYw=;
-        b=Ck0GBCWFUKvZcM8aMAvmQ1gmDDRzcNfhxuTh4fijR6uuJeBz/N5Y0jmlM98ori2M5u
-         ZB+BVuT63iSLQ68pSEwgxzc2TASacYu4p2ejGbp0rpG1UibvnmTzGSL0a/zAbTIhZR/4
-         XpoQYS0Z67YQQDQy7L9ObLVARiCN3R0TFGenN61sgcGnXYmDfoky93/BUDcmU6zjYrf7
-         ULTV3nGedqzM9w4ZZPOJ7oRNuc0HjWoLct9vffDwCI5UR1N/BALSHpKycHgMeE8n1Kha
-         d6akWud9oT3mXbAhOFW4fNq4/XPi619Va+fl06hQZhPX+rDp1Snh6WfcgfU1QQG9Mo/z
-         SfmQ==
+        bh=l/7e8N8b7gEax6Mp/tnE3jBK1MXlLnukXxRJZ25cEfk=;
+        b=LV1q16a8ufrWjrmUJWYiSM4vEBzFe69sHVoWSyIy6D8gP9rVoeaZ8SGGg4yMAwhBuf
+         sC3dmJ92HjERa9/xr/Npl0xlO/JnqfdENLQ6LoHuJxWUxuXf+vQEHug3HSgqaSrA1l/v
+         tZ3yPw9HmNxE0Vjn3QCZ+tTAETRcV0qpdurISi9lJAMaBJ/JJC7bxTEeffYmaNI0sVvU
+         MxQ5jxSuO4kgZbC0JhwKprVOU6jtjcopKJBF4OODGpcPO2ERLidTZnlyiWV1vDIZ9+Km
+         IhrWVvwE0drF0YPzEg23GNQI8/y76u8qGdPeuTCht9kuLqmNdjo6vr8z7+5pcqawQ7zv
+         rbOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mJAcPQCfOIHAL+8wWJqUVZlzdFUPTSOR65Nvh+pIwYw=;
-        b=po+kUyDOSWmMXv7q26ivU7gTuWGRtZEPKNopppj313QfC6qaPaFtyAcJ/M8VstIX4e
-         //hBqvQrUI+K98F4gDv7JXNLI9yc1ew9vYY5QytiWgl/CulmbF22eJ+i6GgnDw59vAH0
-         cOrPqJrrj3CJR2Ebk9u48sR2wVHTPyxuF0q7Bm48zMqem0IUNjeK6PEjtgrn2YJ5+7VI
-         rrjI52sb41oLeonZIG82wqXBVSBN54g7KU6RBpWzF7OdJBiSxZMAmhsc3Nq8WAwkNX+i
-         BqwAUjS4sXOBoZXHPfNd14kQIMQdKBBaRBZgRvR5ilKJKF5pjFoENvPFktxnUPHe6l9h
-         s0jg==
-X-Gm-Message-State: AO0yUKVV6fw01oMSp2u0yStg/iLy0fIOgHnbseoV/ZyNB5K3hIcEVCQd
-	ZKqsSAaKn+0MB7HQZ3UpVyGjow==
-X-Google-Smtp-Source: AK7set9mJWhkxG/R4yNBhdFtGnKyllgVWmQ/6MwOjjrJxHW7VANKFZtnh5QcFhL9gCHtV+B1FmDqtg==
-X-Received: by 2002:a05:600c:990:b0:3eb:2f3b:4478 with SMTP id w16-20020a05600c099000b003eb2f3b4478mr4596101wmp.15.1677452092274;
-        Sun, 26 Feb 2023 14:54:52 -0800 (PST)
+        bh=l/7e8N8b7gEax6Mp/tnE3jBK1MXlLnukXxRJZ25cEfk=;
+        b=m3GeZ93NfYoLINAmuwMO4v2AyFinzns5N3zVl9pHy0IfSl+yjWNMQExBiBPynptaL8
+         x2deMK8GGQZgjbqSoJHQW3dKg8j+SI/QMvWHjtBmx/H48AaHiuGubSdYsEal2D4Grxn9
+         oqH2wxHzvO52LOfooLo04goUszQccAmQwLGpe9B2JWCRONgWKWdXmGTXG0V0tuLhP0po
+         L5xuT1h8VOf4QymXBA+suZRAlYj/YAjTKaPb1fHEjzG7a+dbZtWsmyy82kdANrEYGO4s
+         LDvhSazBL6w506zeUr5aoB1wmnG3MSv57cuH/7iQfYxzM0UWrXbI7qiW7OXG5iNLLVBS
+         sSmw==
+X-Gm-Message-State: AO0yUKXNve2bj8Xc/9Hd/ukZwyankMr4S0+Xac+Ra8HmHHenqj9W1P4O
+	ns0VlAeeldF7sGkmasdauvjRdA==
+X-Google-Smtp-Source: AK7set80D2zPi6oQEBIGV6VRNx/VqWw+rceKH346DWpgXGWll/2GQxrFvQxdW7vR7vQ3ffM0+8JuJw==
+X-Received: by 2002:a05:600c:a692:b0:3db:2858:db84 with SMTP id ip18-20020a05600ca69200b003db2858db84mr17311911wmb.34.1677452095318;
+        Sun, 26 Feb 2023 14:54:55 -0800 (PST)
 Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:8baa:6b32:391b:62de])
-        by smtp.gmail.com with ESMTPSA id d10-20020a05600c3aca00b003eb369abd92sm6138074wms.2.2023.02.26.14.54.50
+        by smtp.gmail.com with ESMTPSA id d10-20020a05600c3aca00b003eb369abd92sm6138074wms.2.2023.02.26.14.54.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 14:54:51 -0800 (PST)
+        Sun, 26 Feb 2023 14:54:54 -0800 (PST)
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
 To: rafael@kernel.org,
 	daniel.lezcano@linaro.org
 Cc: linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Amit Kucheria <amitk@kernel.org>,
 	Zhang Rui <rui.zhang@intel.com>,
-	Markus Mayer <mmayer@broadcom.com>,
 	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
 	Heiko Stuebner <heiko@sntech.de>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
+	Stefan Wahren <stefan.wahren@i2se.com>,
+	Balsam CHIHI <bchihi@baylibre.com>,
 	Adam Ward <DLG-Adam.Ward.opensource@dm.renesas.com>,
-	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE),
+	ye xingchen <ye.xingchen@zte.com.cn>,
+	linux-rpi-kernel@lists.infradead.org (moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE),
+	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE),
+	linux-renesas-soc@vger.kernel.org (open list:RENESAS R-CAR THERMAL DRIVERS),
 	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
-Subject: [PATCH v3 06/20] thermal: Remove debug or error messages in get_temp() ops
-Date: Sun, 26 Feb 2023 23:53:52 +0100
-Message-Id: <20230226225406.979703-7-daniel.lezcano@linaro.org>
+Subject: [PATCH v3 07/20] thermal/hwmon: Do not set no_hwmon before calling thermal_add_hwmon_sysfs()
+Date: Sun, 26 Feb 2023 23:53:53 +0100
+Message-Id: <20230226225406.979703-8-daniel.lezcano@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230226225406.979703-1-daniel.lezcano@linaro.org>
 References: <20230226225406.979703-1-daniel.lezcano@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_145452_954192_EA9B8900 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20230226_145456_002168_AFB83995 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,239 +105,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some get_temp() ops implementation are showing an error or a debug
-message if the reading of the sensor fails.
-
-The debug message is already displayed from the call site of this
-ops. So we can remove it.
-
-On the other side, the error should not be displayed because in
-production that can raise tons of messages.
-
-Finally, some drivers are showing a debug message with the
-temperature, this is also accessible through the trace from the core
-code in the temperature_update() function.
-
-Another benefit is the dev_* messages are accessing the thermal zone
-device field from the structure, so we encapsulate even more the code
-by preventing these accesses.
-
-Remove those messages.
-
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com> #Armada
-Acked-by: Florian Fainelli <f.fainelli@gmail.com> #brcmstb_thermal.c
----
- drivers/thermal/armada_thermal.c           | 10 ++--------
- drivers/thermal/broadcom/brcmstb_thermal.c |  4 +---
- drivers/thermal/dove_thermal.c             |  5 +----
- drivers/thermal/hisi_thermal.c             |  3 ---
- drivers/thermal/imx_sc_thermal.c           |  5 +----
- drivers/thermal/imx_thermal.c              |  4 +---
- drivers/thermal/kirkwood_thermal.c         |  5 +----
- drivers/thermal/max77620_thermal.c         |  4 +---
- drivers/thermal/rockchip_thermal.c         |  3 ---
- drivers/thermal/st/st_thermal.c            |  2 --
- drivers/thermal/thermal-generic-adc.c      |  5 ++---
- 11 files changed, 10 insertions(+), 40 deletions(-)
-
-diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
-index ebd606861a61..0e8dfa6a7757 100644
---- a/drivers/thermal/armada_thermal.c
-+++ b/drivers/thermal/armada_thermal.c
-@@ -360,11 +360,8 @@ static int armada_select_channel(struct armada_thermal_priv *priv, int channel)
- 	 * we must absolutely wait for the sensor validity bit to ensure we read
- 	 * actual data.
- 	 */
--	if (armada_wait_sensor_validity(priv)) {
--		dev_err(priv->dev,
--			"Temperature sensor reading not valid\n");
-+	if (armada_wait_sensor_validity(priv))
- 		return -EIO;
--	}
- 
- 	return 0;
- }
-@@ -402,11 +399,8 @@ static int armada_get_temp_legacy(struct thermal_zone_device *thermal,
- 	int ret;
- 
- 	/* Valid check */
--	if (!armada_is_valid(priv)) {
--		dev_err(priv->dev,
--			"Temperature sensor reading not valid\n");
-+	if (!armada_is_valid(priv))
- 		return -EIO;
--	}
- 
- 	/* Do the actual reading */
- 	ret = armada_read_sensor(priv, temp);
-diff --git a/drivers/thermal/broadcom/brcmstb_thermal.c b/drivers/thermal/broadcom/brcmstb_thermal.c
-index 60173cc83c46..72d1dbe60b8f 100644
---- a/drivers/thermal/broadcom/brcmstb_thermal.c
-+++ b/drivers/thermal/broadcom/brcmstb_thermal.c
-@@ -158,10 +158,8 @@ static int brcmstb_get_temp(struct thermal_zone_device *tz, int *temp)
- 
- 	val = __raw_readl(priv->tmon_base + AVS_TMON_STATUS);
- 
--	if (!(val & AVS_TMON_STATUS_valid_msk)) {
--		dev_err(priv->dev, "reading not valid\n");
-+	if (!(val & AVS_TMON_STATUS_valid_msk))
- 		return -EIO;
--	}
- 
- 	val = (val & AVS_TMON_STATUS_data_msk) >> AVS_TMON_STATUS_data_shift;
- 
-diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
-index 6db1882e8229..9954040d1d2c 100644
---- a/drivers/thermal/dove_thermal.c
-+++ b/drivers/thermal/dove_thermal.c
-@@ -91,11 +91,8 @@ static int dove_get_temp(struct thermal_zone_device *thermal,
- 
- 	/* Valid check */
- 	reg = readl_relaxed(priv->control + PMU_TEMP_DIOD_CTRL1_REG);
--	if ((reg & PMU_TDC1_TEMP_VALID_MASK) == 0x0) {
--		dev_err(&thermal->device,
--			"Temperature sensor reading not valid\n");
-+	if ((reg & PMU_TDC1_TEMP_VALID_MASK) == 0x0)
- 		return -EIO;
--	}
- 
- 	/*
- 	 * Calculate temperature. According to Marvell internal
-diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
-index f3a374266fa0..0d135b8a5b62 100644
---- a/drivers/thermal/hisi_thermal.c
-+++ b/drivers/thermal/hisi_thermal.c
-@@ -436,9 +436,6 @@ static int hisi_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
- 
- 	*temp = data->ops->get_temp(sensor);
- 
--	dev_dbg(&data->pdev->dev, "tzd=%p, id=%d, temp=%d, thres=%d\n",
--		sensor->tzd, sensor->id, *temp, sensor->thres_temp);
--
- 	return 0;
- }
- 
-diff --git a/drivers/thermal/imx_sc_thermal.c b/drivers/thermal/imx_sc_thermal.c
-index ddde4bdfc94a..2d7a6bd2846b 100644
---- a/drivers/thermal/imx_sc_thermal.c
-+++ b/drivers/thermal/imx_sc_thermal.c
-@@ -58,11 +58,8 @@ static int imx_sc_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
- 	hdr->size = 2;
- 
- 	ret = imx_scu_call_rpc(thermal_ipc_handle, &msg, true);
--	if (ret) {
--		dev_err(&sensor->tzd->device, "read temp sensor %d failed, ret %d\n",
--			sensor->resource_id, ret);
-+	if (ret)
- 		return ret;
--	}
- 
- 	*temp = msg.data.resp.celsius * 1000 + msg.data.resp.tenths * 100;
- 
-diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
-index a22b8086a209..a0b8de269986 100644
---- a/drivers/thermal/imx_thermal.c
-+++ b/drivers/thermal/imx_thermal.c
-@@ -265,10 +265,8 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
- 
- 	regmap_read(map, soc_data->temp_data, &val);
- 
--	if ((val & soc_data->temp_valid_mask) == 0) {
--		dev_dbg(&tz->device, "temp measurement never finished\n");
-+	if ((val & soc_data->temp_valid_mask) == 0)
- 		return -EAGAIN;
--	}
- 
- 	n_meas = (val & soc_data->temp_value_mask)
- 		>> soc_data->temp_value_shift;
-diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
-index 92b3ce426b9d..668747bd86ef 100644
---- a/drivers/thermal/kirkwood_thermal.c
-+++ b/drivers/thermal/kirkwood_thermal.c
-@@ -33,11 +33,8 @@ static int kirkwood_get_temp(struct thermal_zone_device *thermal,
- 
- 	/* Valid check */
- 	if (!((reg >> KIRKWOOD_THERMAL_VALID_OFFSET) &
--	    KIRKWOOD_THERMAL_VALID_MASK)) {
--		dev_err(&thermal->device,
--			"Temperature sensor reading not valid\n");
-+	    KIRKWOOD_THERMAL_VALID_MASK))
- 		return -EIO;
--	}
- 
- 	/*
- 	 * Calculate temperature. According to Marvell internal
-diff --git a/drivers/thermal/max77620_thermal.c b/drivers/thermal/max77620_thermal.c
-index bf1679765f1b..61c7622d9945 100644
---- a/drivers/thermal/max77620_thermal.c
-+++ b/drivers/thermal/max77620_thermal.c
-@@ -51,10 +51,8 @@ static int max77620_thermal_read_temp(struct thermal_zone_device *tz, int *temp)
- 	int ret;
- 
- 	ret = regmap_read(mtherm->rmap, MAX77620_REG_STATLBT, &val);
--	if (ret < 0) {
--		dev_err(mtherm->dev, "Failed to read STATLBT: %d\n", ret);
-+	if (ret < 0)
- 		return ret;
--	}
- 
- 	if (val & MAX77620_IRQ_TJALRM2_MASK)
- 		*temp = MAX77620_TJALARM2_TEMP;
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 8a51eb26e798..71e533df563a 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1233,9 +1233,6 @@ static int rockchip_thermal_get_temp(struct thermal_zone_device *tz, int *out_te
- 
- 	retval = tsadc->get_temp(&tsadc->table,
- 				 sensor->id, thermal->regs, out_temp);
--	dev_dbg(&thermal->pdev->dev, "sensor %d - temp: %d, retval: %d\n",
--		sensor->id, *out_temp, retval);
--
- 	return retval;
- }
- 
-diff --git a/drivers/thermal/st/st_thermal.c b/drivers/thermal/st/st_thermal.c
-index 6ed393218eb8..42fa0b80e149 100644
---- a/drivers/thermal/st/st_thermal.c
-+++ b/drivers/thermal/st/st_thermal.c
-@@ -127,8 +127,6 @@ static int st_thermal_get_temp(struct thermal_zone_device *th, int *temperature)
- 	temp += sensor->cdata->temp_adjust_val;
- 	temp = mcelsius(temp);
- 
--	dev_dbg(dev, "temperature: %d\n", temp);
--
- 	*temperature = temp;
- 
- 	return 0;
-diff --git a/drivers/thermal/thermal-generic-adc.c b/drivers/thermal/thermal-generic-adc.c
-index 2c283e762d81..017b0ce52122 100644
---- a/drivers/thermal/thermal-generic-adc.c
-+++ b/drivers/thermal/thermal-generic-adc.c
-@@ -59,10 +59,9 @@ static int gadc_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
- 	int ret;
- 
- 	ret = iio_read_channel_processed(gti->channel, &val);
--	if (ret < 0) {
--		dev_err(gti->dev, "IIO channel read failed %d\n", ret);
-+	if (ret < 0)
- 		return ret;
--	}
-+
- 	*temp = gadc_thermal_adc_to_temp(gti, val);
- 
- 	return 0;
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIHRoZXJtYWwtPnR6cC0+bm9faHdtb24gcGFyYW1ldGVyIGlzIG9ubHkgdXNlZCB3aGVuIGNh
+bGxpbmcKdGhlcm1hbF96b25lX2RldmljZV9yZWdpc3RlcigpLgoKU2V0dGluZyBpdCB0byAnZmFs
+c2UnIGJlZm9yZSBjYWxsaW5nIHRoZXJtYWxfYWRkX2h3bW9uX3N5c2ZzKCkgaGFzIG5vCmVmZmVj
+dC4KClJlbW92ZSB0aGUgY2FsbCBhbmQgYWdhaW4gcHJldmVudCB0aGUgZHJpdmVycyB0byBhY2Nl
+c3MgdGhlIHRoZXJtYWwKaW50ZXJuYWxzLgoKUmV2aWV3ZWQtYnk6IE5pa2xhcyBTw7ZkZXJsdW5k
+IDxuaWtsYXMuc29kZXJsdW5kK3JlbmVzYXNAcmFnbmF0ZWNoLnNlPiAjUi1DYXIKU2lnbmVkLW9m
+Zi1ieTogRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+CkFja2VkLWJ5
+OiBGbG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4gI0Jyb2FkY29tCi0tLQog
+ZHJpdmVycy90aGVybWFsL2Jyb2FkY29tL2JjbTI3MTFfdGhlcm1hbC5jIHwgMSAtCiBkcml2ZXJz
+L3RoZXJtYWwvYnJvYWRjb20vYmNtMjgzNV90aGVybWFsLmMgfCAxIC0KIGRyaXZlcnMvdGhlcm1h
+bC9yY2FyX2dlbjNfdGhlcm1hbC5jICAgICAgICB8IDEgLQogZHJpdmVycy90aGVybWFsL3JjYXJf
+dGhlcm1hbC5jICAgICAgICAgICAgIHwgNSAtLS0tLQogZHJpdmVycy90aGVybWFsL3JvY2tjaGlw
+X3RoZXJtYWwuYyAgICAgICAgIHwgMSAtCiBkcml2ZXJzL3RoZXJtYWwvcnpnMmxfdGhlcm1hbC5j
+ICAgICAgICAgICAgfCAxIC0KIDYgZmlsZXMgY2hhbmdlZCwgMTAgZGVsZXRpb25zKC0pCgpkaWZm
+IC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL2Jyb2FkY29tL2JjbTI3MTFfdGhlcm1hbC5jIGIvZHJp
+dmVycy90aGVybWFsL2Jyb2FkY29tL2JjbTI3MTFfdGhlcm1hbC5jCmluZGV4IGZjZmNiYmYwNDRh
+NC4uYzI0M2E3NmEzNDcxIDEwMDY0NAotLS0gYS9kcml2ZXJzL3RoZXJtYWwvYnJvYWRjb20vYmNt
+MjcxMV90aGVybWFsLmMKKysrIGIvZHJpdmVycy90aGVybWFsL2Jyb2FkY29tL2JjbTI3MTFfdGhl
+cm1hbC5jCkBAIC05OCw3ICs5OCw2IEBAIHN0YXRpYyBpbnQgYmNtMjcxMV90aGVybWFsX3Byb2Jl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAKIAlwcml2LT50aGVybWFsID0gdGhlcm1h
+bDsKIAotCXRoZXJtYWwtPnR6cC0+bm9faHdtb24gPSBmYWxzZTsKIAlyZXR1cm4gdGhlcm1hbF9h
+ZGRfaHdtb25fc3lzZnModGhlcm1hbCk7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1h
+bC9icm9hZGNvbS9iY20yODM1X3RoZXJtYWwuYyBiL2RyaXZlcnMvdGhlcm1hbC9icm9hZGNvbS9i
+Y20yODM1X3RoZXJtYWwuYwppbmRleCA4NmFhZjQ1OWRlMzcuLmEyMTdkODMyZjI0ZSAxMDA2NDQK
+LS0tIGEvZHJpdmVycy90aGVybWFsL2Jyb2FkY29tL2JjbTI4MzVfdGhlcm1hbC5jCisrKyBiL2Ry
+aXZlcnMvdGhlcm1hbC9icm9hZGNvbS9iY20yODM1X3RoZXJtYWwuYwpAQCAtMjY3LDcgKzI2Nyw2
+IEBAIHN0YXRpYyBpbnQgYmNtMjgzNV90aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
+Y2UgKnBkZXYpCiAJICogVGhlcm1hbF96b25lIGRvZXNuJ3QgZW5hYmxlIGh3bW9uIGFzIGRlZmF1
+bHQsCiAJICogZW5hYmxlIGl0IGhlcmUKIAkgKi8KLQl0ei0+dHpwLT5ub19od21vbiA9IGZhbHNl
+OwogCWVyciA9IHRoZXJtYWxfYWRkX2h3bW9uX3N5c2ZzKHR6KTsKIAlpZiAoZXJyKQogCQlnb3Rv
+IGVycl90ejsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1hbC9yY2FyX2dlbjNfdGhlcm1hbC5j
+IGIvZHJpdmVycy90aGVybWFsL3JjYXJfZ2VuM190aGVybWFsLmMKaW5kZXggMmI3NTM3ZWYxNDFk
+Li4zZGYwMGM5ZDU1YWIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yY2FyX2dlbjNfdGhl
+cm1hbC5jCisrKyBiL2RyaXZlcnMvdGhlcm1hbC9yY2FyX2dlbjNfdGhlcm1hbC5jCkBAIC01Mjcs
+NyArNTI3LDYgQEAgc3RhdGljIGludCByY2FyX2dlbjNfdGhlcm1hbF9wcm9iZShzdHJ1Y3QgcGxh
+dGZvcm1fZGV2aWNlICpwZGV2KQogCQl9CiAJCXRzYy0+em9uZSA9IHpvbmU7CiAKLQkJdHNjLT56
+b25lLT50enAtPm5vX2h3bW9uID0gZmFsc2U7CiAJCXJldCA9IHRoZXJtYWxfYWRkX2h3bW9uX3N5
+c2ZzKHRzYy0+em9uZSk7CiAJCWlmIChyZXQpCiAJCQlnb3RvIGVycm9yX3VucmVnaXN0ZXI7CmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3RoZXJtYWwvcmNhcl90aGVybWFsLmMgYi9kcml2ZXJzL3RoZXJt
+YWwvcmNhcl90aGVybWFsLmMKaW5kZXggZTA0NDBmNjNhZTc3Li5iODU3MWY3MDkwYWEgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yY2FyX3RoZXJtYWwuYworKysgYi9kcml2ZXJzL3RoZXJt
+YWwvcmNhcl90aGVybWFsLmMKQEAgLTUwOSwxMSArNTA5LDYgQEAgc3RhdGljIGludCByY2FyX3Ro
+ZXJtYWxfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJfQogCiAJCWlmIChj
+aGlwLT51c2Vfb2ZfdGhlcm1hbCkgewotCQkJLyoKLQkJCSAqIHRoZXJtYWxfem9uZSBkb2Vzbid0
+IGVuYWJsZSBod21vbiBhcyBkZWZhdWx0LAotCQkJICogYnV0LCBlbmFibGUgaXQgaGVyZSB0byBr
+ZWVwIGNvbXBhdGlibGUKLQkJCSAqLwotCQkJcHJpdi0+em9uZS0+dHpwLT5ub19od21vbiA9IGZh
+bHNlOwogCQkJcmV0ID0gdGhlcm1hbF9hZGRfaHdtb25fc3lzZnMocHJpdi0+em9uZSk7CiAJCQlp
+ZiAocmV0KQogCQkJCWdvdG8gZXJyb3JfdW5yZWdpc3RlcjsKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+dGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMgYi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhl
+cm1hbC5jCmluZGV4IDcxZTUzM2RmNTYzYS4uYmIyNTRiZGZmMDQzIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCisrKyBiL2RyaXZlcnMvdGhlcm1hbC9yb2Nr
+Y2hpcF90aGVybWFsLmMKQEAgLTE0NTEsNyArMTQ1MSw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
+dGhlcm1hbF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCiAJZm9yIChpID0g
+MDsgaSA8IHRoZXJtYWwtPmNoaXAtPmNobl9udW07IGkrKykgewogCQlyb2NrY2hpcF90aGVybWFs
+X3RvZ2dsZV9zZW5zb3IoJnRoZXJtYWwtPnNlbnNvcnNbaV0sIHRydWUpOwotCQl0aGVybWFsLT5z
+ZW5zb3JzW2ldLnR6ZC0+dHpwLT5ub19od21vbiA9IGZhbHNlOwogCQllcnJvciA9IHRoZXJtYWxf
+YWRkX2h3bW9uX3N5c2ZzKHRoZXJtYWwtPnNlbnNvcnNbaV0udHpkKTsKIAkJaWYgKGVycm9yKQog
+CQkJZGV2X3dhcm4oJnBkZXYtPmRldiwKZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1hbC9yemcy
+bF90aGVybWFsLmMgYi9kcml2ZXJzL3RoZXJtYWwvcnpnMmxfdGhlcm1hbC5jCmluZGV4IDc2MzE0
+MzBjZThhOS4uYjU2OTgxZjg1MzA2IDEwMDY0NAotLS0gYS9kcml2ZXJzL3RoZXJtYWwvcnpnMmxf
+dGhlcm1hbC5jCisrKyBiL2RyaXZlcnMvdGhlcm1hbC9yemcybF90aGVybWFsLmMKQEAgLTIxNiw3
+ICsyMTYsNiBAQCBzdGF0aWMgaW50IHJ6ZzJsX3RoZXJtYWxfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldikKIAl9CiAKIAlwcml2LT56b25lID0gem9uZTsKLQlwcml2LT56b25lLT50
+enAtPm5vX2h3bW9uID0gZmFsc2U7CiAJcmV0ID0gdGhlcm1hbF9hZGRfaHdtb25fc3lzZnMocHJp
+di0+em9uZSk7CiAJaWYgKHJldCkKIAkJZ290byBlcnI7Ci0tIAoyLjM0LjEKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
