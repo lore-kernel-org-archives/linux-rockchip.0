@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DFE1C6FA8E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 12:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D027EC6FA8E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 12:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
 	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+6X0K99jqDyPR1mxmri1AU3TFvhS6vEwNK9/WMd+wFU=; b=zR+ESYDog2EPEeTVXH5St1BMPq
-	QbZl09/TbN3cDRG0L13AjRFuF8a/amz+PzJ07PKr+uO6dexclKw9hkz/XTcTvjvYNvU9yuZxyR5lV
-	3q95SZmJDxG7IV2QZBlaZlXgRF3JL85H8l7K0kGHf4aU7dtYV7HFSiYZf8tJYxd5WYsO/v9dJnK8s
-	TCmkoKdskCjP4+fM9tT46R3eAg643KbysqF/4lV3Xw2Nv6Dq6woL/YAEm8/MjLSSmIfgVq0rIMAUe
-	+9E7clvX1/G/nR3GMe1ZQio+h4PfI4nm1Sdx4UgkMte+CJOwslYut9FW6X/b0jv/DGO7Y4ChzYnK6
-	vEDaF/jw==;
+	bh=luEqHTq7+XzXiRbtCiJJS727dpE4f+jdp4EqwqkabFM=; b=pmxP7JdUg1KlzlQ8c5AZweCDlX
+	VFceB4755W00O4yv9qplr8fGgP9U39xZXd81ShD4XbwMdlwakDSHrXqN1w5NGAcAzw89VRe8ix9F8
+	24hC2pLR5v8ccmKoDtEz0uecAGMAC1FTy4jCYDm7sYZFElyCExULt0aiSuOs/VvmSz5EB5M6h2uzR
+	JaIlczT9G8zR3H26KnvFqSynnn4N8tLpwdVhqUAcIs7zJ+dumJcji+29r/yDqfQUr4HcWKHAukvxI
+	T+wWa1QIyJvOIbS332UnlohHOBfLMk85HSNROl4aR7tT9IS+yfPAcbFzrhuthYQwdMK0Yw1O9e7tW
+	Ir6I4jZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGbh-007FRB-8M; Sun, 26 Feb 2023 12:58:25 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1pWGcJ-007FYk-30; Sun, 26 Feb 2023 12:59:03 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGbc-007FQ5-Ov
-	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 12:58:22 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-17227cba608so4903503fac.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 04:58:18 -0800 (PST)
+	id 1pWGcG-007FXK-9i
+	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 12:59:01 +0000
+Received: by mail-ot1-x331.google.com with SMTP id f19-20020a9d5f13000000b00693ce5a2f3eso2164534oti.8
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 04:58:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ffpsrszCFOl/BRtjybTqoxE9P3nhS9dZXtxaImYO5vg=;
-        b=dqWOW2St4aVLEJLqa5JmQOlmCybBIZA05/zyaD7QHodPgszD+bv2NM1b4x9e+N8BeW
-         yiz/6m9ss3+lutNumjFDpzCsJrBMJbfDeUEqmLd4lyQI13q9rw4fysXxvL8IoFFeffs/
-         MmR6s0s3q1ZLy9uIzUzH8Pt4m+vJ2fcxKi5o4ZJBUqBFpiyfdWRKiBJ37SM05VJ/yIew
-         GRznlkLZRHufEUixSffqcSTqC2DsceBnBPjIuFErxHQf3+zPdjZvqFZo95fvXbVcd0Jj
-         NQteUnsiwDLA526NHKeMWupv3qTJRCKJf5f4rw1UYJUWfyQCUs61fJAjUJxOqGE0HL3z
-         dg6w==
+        bh=xU2OW9b85rVHMCoQmN+vBOcqQqQ6/K7t9dGl9R42A6I=;
+        b=4fIVpSHDVNIQ0r88f46kz+NnERZrjK9/Nhc/cxBrGIntIe8RjuD3O9v1DCNNFuws8m
+         6H3jRVkyZ7FabGfG0xxoO4bZiO96MZW7zy8+O30cg8+v8NpXgxDVQ2ok/pI819pXjqAV
+         uDrrVweItV1qixLTHxPogaveel567Wr2yahjYbetowht8jzk4DIHfpkkgZ+9DyAX1TpF
+         nDGT/pazv0vMDG/xFccPk9WDDlmOAXHUKw83O6h8AtaTOLnd243wPwz4BupwRqT43HG5
+         IjMHZOJ4vcyW9oq0Hl/gh9SbnzpMHBZJwZEwTYo8b/Zo4GvXQgPxEvwrCvu2gowQq/ZI
+         ziNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ffpsrszCFOl/BRtjybTqoxE9P3nhS9dZXtxaImYO5vg=;
-        b=wuzsWNg46CmodS+JRBIgVSAs14t9yaan243KFixhDIVPDGFnKdwAhasNaq6MTKJfGf
-         SwBf4qV3hexUPYVDcowNEvsY9uxYej2ifMrChLMCpM58E95qC9Sr0xfAne6lZbvlSZaM
-         Bmj/vxadM9BYLp+v26aIPpTz1H/Za8cZ/BYNzf2BmAc+89t2cdQJU2NlvYG9/6S8eKvi
-         ZmKMzhdA1k5d7EoXA5q3aV2sRTu2cEYeCN5bOKGe7DweGIGawxc634Utb6Pm+7n9o9wa
-         OoKV992VTBEbnQl9iTlKyCSMuqTPrTAfnN8C+bE2k8gBgnUOh7fj77o3G+lQWfrkIq9X
-         rilQ==
-X-Gm-Message-State: AO0yUKXIFzGWt8IbfdGQ9nZ/KnPU/Me7nPOQE+Svu2vhF0TKlntCxKl/
-	SxC5efwAJP/CWB7SKcA6YUth+g==
-X-Google-Smtp-Source: AK7set+3UDCiggks2X3Rf7tQ3w77M+xHmsbg68aKU3wQvTH0XSCtd2I15hi7ZekOgbUm1XvQ3siNyg==
-X-Received: by 2002:a05:6870:b627:b0:171:e1c8:41e with SMTP id cm39-20020a056870b62700b00171e1c8041emr11742580oab.5.1677416295033;
-        Sun, 26 Feb 2023 04:58:15 -0800 (PST)
+        bh=xU2OW9b85rVHMCoQmN+vBOcqQqQ6/K7t9dGl9R42A6I=;
+        b=uLqNo3F+iNXVGWaxLINI2nHvKagEhT+8X50APY+IyONOTRQaW0mpNjvRbifmBrFWOL
+         JX6pxVui4FkBDh6PJLQt5s2SFwd1l8x/qsC1PlWJSNZpDOrpjfLdjHFmyRbA9K4mePz0
+         LMrkQvHqOdEFr8i3vvI+jpav9QXgP/Xrv8IzYymqrzofvhkTmAMmG6hTfNZKFKwVpRVn
+         YYiGwI37XWOZnDR/nhD+e14qbif5S0eINTsHLvBO+TaQvMe+QFtfWK6VJxh4mxxTA7fb
+         V3cDi9T2YttaiI6JLlQn94fDa5GtGG4WtnzrLODXaz/zY2E/UuU0E84J8rRh32R2vGh6
+         IkxQ==
+X-Gm-Message-State: AO0yUKVAFIg41o8dDcWf1/0bS4zrHTBlI01oPbHd0sOSoV/+EAoKlXgy
+	6uzkRSSRuPxbSJ7l5GfXdv2U2w==
+X-Google-Smtp-Source: AK7set/8fqgkojKXCsfLPehtswAr1bPNfmLFCKRTN5FsAKnf51p72+FZXgPWNWIkOhGUT60DoFpQiA==
+X-Received: by 2002:a05:6830:2470:b0:686:40e1:2bf3 with SMTP id x48-20020a056830247000b0068640e12bf3mr10316085otr.0.1677416339082;
+        Sun, 26 Feb 2023 04:58:59 -0800 (PST)
 Received: from [192.168.10.175] ([190.106.125.26])
-        by smtp.gmail.com with ESMTPSA id a16-20020a9d6e90000000b0068bdfa56717sm1556902otr.36.2023.02.26.04.58.09
+        by smtp.gmail.com with ESMTPSA id w11-20020a9d70cb000000b0068bb3a9e2b9sm1533016otj.77.2023.02.26.04.58.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 04:58:13 -0800 (PST)
-Date: Sun, 26 Feb 2023 09:58:01 -0300
+        Sun, 26 Feb 2023 04:58:58 -0800 (PST)
+Date: Sun, 26 Feb 2023 09:58:47 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [PATCH v9 1/6] media: verisilicon: Do not set context src/dst
- formats in reset functions
+Subject: Re: [PATCH v9 2/6] media: verisilicon: Do not use ctx fields as
+ format storage when resetting
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
 	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
@@ -69,15 +69,15 @@ Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
 	robert.mader@collabora.com, linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Message-Id: <POUOQR.U8N7XH00WJ8U3@vanguardiasur.com.ar>
-In-Reply-To: <20230220104849.398203-2-benjamin.gaignard@collabora.com>
+Message-Id: <ZPUOQR.4QD6IOKPPRQ@vanguardiasur.com.ar>
+In-Reply-To: <20230220104849.398203-3-benjamin.gaignard@collabora.com>
 References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
-	<20230220104849.398203-2-benjamin.gaignard@collabora.com>
+	<20230220104849.398203-3-benjamin.gaignard@collabora.com>
 X-Mailer: geary/43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_045821_115476_5CFD6126 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20230226_045900_366312_FF4D9841 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +96,94 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 
-On Mon, Feb 20 2023 at 11:48:44 AM +0100, Benjamin Gaignard 
+On Mon, Feb 20 2023 at 11:48:45 AM +0100, Benjamin Gaignard 
 <benjamin.gaignard@collabora.com> wrote:
-> Setting context source and destination formats should only be done
-> in hantro_set_fmt_out() and hantro_set_fmt_cap() after check that
-> the targeted queue is not busy.
-> Remove these calls from hantro_reset_encoded_fmt() and
-> hantro_reset_raw_fmt() to clean the driver.
+> Source and destination pixel formats fields of context structure 
+> should
+> not be used as storage when resetting the format.
+> Use local variables instead and let hantro_set_fmt_out() and
+> hantro_set_fmt_cap() set them correctly later.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
 > ---
->  drivers/media/platform/verisilicon/hantro_v4l2.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
+>  .../media/platform/verisilicon/hantro_v4l2.c  | 40 
+> +++++++++----------
+>  1 file changed, 18 insertions(+), 22 deletions(-)
 > 
 > diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c 
 > b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index c0d427956210..d8aa42bd4cd4 100644
+> index d8aa42bd4cd4..d94c99f875c8 100644
 > --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
 > +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -382,13 +382,10 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+> @@ -378,47 +378,43 @@ static void
+>  hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_fmt *vpu_fmt;
+> -	struct v4l2_pix_format_mplane *fmt;
+> +	struct v4l2_pix_format_mplane fmt;
 > 
 >  	vpu_fmt = hantro_get_default_fmt(ctx, true);
+> +	if (!vpu_fmt)
+> +		return;
+> 
+> +	hantro_reset_fmt(&fmt, vpu_fmt);
+> +	fmt.width = vpu_fmt->frmsize.min_width;
+> +	fmt.height = vpu_fmt->frmsize.min_height;
+>  	if (ctx->is_encoder)
+> -		fmt = &ctx->dst_fmt;
+> -	else
+> -		fmt = &ctx->src_fmt;
+> -
+> -	hantro_reset_fmt(fmt, vpu_fmt);
+> -	fmt->width = vpu_fmt->frmsize.min_width;
+> -	fmt->height = vpu_fmt->frmsize.min_height;
+> -	if (ctx->is_encoder)
+> -		hantro_set_fmt_cap(ctx, fmt);
+> +		hantro_set_fmt_cap(ctx, &fmt);
+>  	else
+> -		hantro_set_fmt_out(ctx, fmt);
+> +		hantro_set_fmt_out(ctx, &fmt);
+>  }
+> 
+>  static void
+>  hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_fmt *raw_vpu_fmt;
+> -	struct v4l2_pix_format_mplane *raw_fmt, *encoded_fmt;
+> +	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
+> 
+>  	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
+> +	if (!raw_vpu_fmt)
+> +		return;
 > 
 > -	if (ctx->is_encoder) {
-> -		ctx->vpu_dst_fmt = vpu_fmt;
+> -		raw_fmt = &ctx->src_fmt;
 > +	if (ctx->is_encoder)
->  		fmt = &ctx->dst_fmt;
+>  		encoded_fmt = &ctx->dst_fmt;
 > -	} else {
-> -		ctx->vpu_src_fmt = vpu_fmt;
+> -		raw_fmt = &ctx->dst_fmt;
 > +	else
->  		fmt = &ctx->src_fmt;
+>  		encoded_fmt = &ctx->src_fmt;
 > -	}
 > 
->  	hantro_reset_fmt(fmt, vpu_fmt);
->  	fmt->width = vpu_fmt->frmsize.min_width;
-> @@ -408,11 +405,9 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
->  	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
+> -	hantro_reset_fmt(raw_fmt, raw_vpu_fmt);
+> -	raw_fmt->width = encoded_fmt->width;
+> -	raw_fmt->height = encoded_fmt->height;
+> +	hantro_reset_fmt(&raw_fmt, raw_vpu_fmt);
+> +	raw_fmt.width = encoded_fmt->width;
+> +	raw_fmt.height = encoded_fmt->height;
+>  	if (ctx->is_encoder)
+> -		hantro_set_fmt_out(ctx, raw_fmt);
+> +		hantro_set_fmt_out(ctx, &raw_fmt);
+>  	else
+> -		hantro_set_fmt_cap(ctx, raw_fmt);
+> +		hantro_set_fmt_cap(ctx, &raw_fmt);
+>  }
 > 
->  	if (ctx->is_encoder) {
-> -		ctx->vpu_src_fmt = raw_vpu_fmt;
->  		raw_fmt = &ctx->src_fmt;
->  		encoded_fmt = &ctx->dst_fmt;
->  	} else {
-> -		ctx->vpu_dst_fmt = raw_vpu_fmt;
->  		raw_fmt = &ctx->dst_fmt;
->  		encoded_fmt = &ctx->src_fmt;
->  	}
+>  void hantro_reset_fmts(struct hantro_ctx *ctx)
 > --
 > 2.34.1
 > 
