@@ -4,59 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3168DC6FA8E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 06:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DFE1C6FA8E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 12:58:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=A0Gu0S2czGGGHJqaGgc/yzd2k+pwGZtbWLyM/lgVzgI=; b=2mwz15o9vWdHN+
-	g5mwa7xN4iuFF7FaMBXS2cqusTgi9Ixh5uu9yHV5c09D2+G3gAKqfaS4JHjtyyvyxsKX/rCcCpE+e
-	AVsYnysI1/cPqDJug+cjMyyUbyzpBvAo8opTqjmXaKspG40kjXPxw4wV27+TvwVLUGq2gnsB9O1VM
-	B1OeKmDGLJTt3kzoea5Tki0TOC9P/mNJPMAEQtIq3yw1Wdb8+wfEz8QoCcQ7rQoQn0q+uz/65Tb7O
-	CVqZC0eCCr4qYDfAWek8EUOSwp+8cLfAOHIGNInJ2t9GlS2HEE5C9XGDJRteHYiY+Ty+kUeWVCaur
-	6C2TVaMDRvKdpo58D0Mw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+6X0K99jqDyPR1mxmri1AU3TFvhS6vEwNK9/WMd+wFU=; b=zR+ESYDog2EPEeTVXH5St1BMPq
+	QbZl09/TbN3cDRG0L13AjRFuF8a/amz+PzJ07PKr+uO6dexclKw9hkz/XTcTvjvYNvU9yuZxyR5lV
+	3q95SZmJDxG7IV2QZBlaZlXgRF3JL85H8l7K0kGHf4aU7dtYV7HFSiYZf8tJYxd5WYsO/v9dJnK8s
+	TCmkoKdskCjP4+fM9tT46R3eAg643KbysqF/4lV3Xw2Nv6Dq6woL/YAEm8/MjLSSmIfgVq0rIMAUe
+	+9E7clvX1/G/nR3GMe1ZQio+h4PfI4nm1Sdx4UgkMte+CJOwslYut9FW6X/b0jv/DGO7Y4ChzYnK6
+	vEDaF/jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWAti-006vin-Tr; Sun, 26 Feb 2023 06:52:38 +0000
-Received: from m12.mail.163.com ([220.181.12.198])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWAtX-006vgo-Nd; Sun, 26 Feb 2023 06:52:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=CgKfI
-	DTe7iV4Ey58WdGr3+soXUsjSl47zqi0NmIEK+E=; b=UZTcm52Seih1hSUrqYgeY
-	5WR+ajYOaTkT8TkjjZRMcqF2IUgyTwNuHeicuhlDtI74r8dUrcSQbSSoFFenZFus
-	SHTeFTBuUuaOJws5nox2AHtJXC+ASJJvGHz8Rh9ZCAzrV7aIscWHfybr59qaXZXe
-	y7h/Tn/pPRPZeTacv7h05g=
-Received: from lizhe.. (unknown [120.245.132.180])
-	by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wAXpb1vAftjDbgABQ--.19532S4;
-	Sun, 26 Feb 2023 14:52:10 +0800 (CST)
-From: Lizhe <sensor1010@163.com>
-To: broonie@kernel.org,
-	heiko@sntech.de
-Cc: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Lizhe <sensor1010@163.com>
-Subject: [PATCH v1] drivers/spi-rockchip.c : Use devm_platform_get_and_ioremap_resource makes code better
-Date: Sun, 26 Feb 2023 14:51:25 +0800
-Message-Id: <20230226065125.14086-1-sensor1010@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1pWGbh-007FRB-8M; Sun, 26 Feb 2023 12:58:25 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pWGbc-007FQ5-Ov
+	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 12:58:22 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-17227cba608so4903503fac.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 04:58:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ffpsrszCFOl/BRtjybTqoxE9P3nhS9dZXtxaImYO5vg=;
+        b=dqWOW2St4aVLEJLqa5JmQOlmCybBIZA05/zyaD7QHodPgszD+bv2NM1b4x9e+N8BeW
+         yiz/6m9ss3+lutNumjFDpzCsJrBMJbfDeUEqmLd4lyQI13q9rw4fysXxvL8IoFFeffs/
+         MmR6s0s3q1ZLy9uIzUzH8Pt4m+vJ2fcxKi5o4ZJBUqBFpiyfdWRKiBJ37SM05VJ/yIew
+         GRznlkLZRHufEUixSffqcSTqC2DsceBnBPjIuFErxHQf3+zPdjZvqFZo95fvXbVcd0Jj
+         NQteUnsiwDLA526NHKeMWupv3qTJRCKJf5f4rw1UYJUWfyQCUs61fJAjUJxOqGE0HL3z
+         dg6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ffpsrszCFOl/BRtjybTqoxE9P3nhS9dZXtxaImYO5vg=;
+        b=wuzsWNg46CmodS+JRBIgVSAs14t9yaan243KFixhDIVPDGFnKdwAhasNaq6MTKJfGf
+         SwBf4qV3hexUPYVDcowNEvsY9uxYej2ifMrChLMCpM58E95qC9Sr0xfAne6lZbvlSZaM
+         Bmj/vxadM9BYLp+v26aIPpTz1H/Za8cZ/BYNzf2BmAc+89t2cdQJU2NlvYG9/6S8eKvi
+         ZmKMzhdA1k5d7EoXA5q3aV2sRTu2cEYeCN5bOKGe7DweGIGawxc634Utb6Pm+7n9o9wa
+         OoKV992VTBEbnQl9iTlKyCSMuqTPrTAfnN8C+bE2k8gBgnUOh7fj77o3G+lQWfrkIq9X
+         rilQ==
+X-Gm-Message-State: AO0yUKXIFzGWt8IbfdGQ9nZ/KnPU/Me7nPOQE+Svu2vhF0TKlntCxKl/
+	SxC5efwAJP/CWB7SKcA6YUth+g==
+X-Google-Smtp-Source: AK7set+3UDCiggks2X3Rf7tQ3w77M+xHmsbg68aKU3wQvTH0XSCtd2I15hi7ZekOgbUm1XvQ3siNyg==
+X-Received: by 2002:a05:6870:b627:b0:171:e1c8:41e with SMTP id cm39-20020a056870b62700b00171e1c8041emr11742580oab.5.1677416295033;
+        Sun, 26 Feb 2023 04:58:15 -0800 (PST)
+Received: from [192.168.10.175] ([190.106.125.26])
+        by smtp.gmail.com with ESMTPSA id a16-20020a9d6e90000000b0068bdfa56717sm1556902otr.36.2023.02.26.04.58.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 26 Feb 2023 04:58:13 -0800 (PST)
+Date: Sun, 26 Feb 2023 09:58:01 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH v9 1/6] media: verisilicon: Do not set context src/dst
+ formats in reset functions
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+	linux-imx@nxp.com, hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.co.uk,
+	robert.mader@collabora.com, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Message-Id: <POUOQR.U8N7XH00WJ8U3@vanguardiasur.com.ar>
+In-Reply-To: <20230220104849.398203-2-benjamin.gaignard@collabora.com>
+References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
+	<20230220104849.398203-2-benjamin.gaignard@collabora.com>
+X-Mailer: geary/43.0
 MIME-Version: 1.0
-X-CM-TRANSID: _____wAXpb1vAftjDbgABQ--.19532S4
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Xw1UAF1kZF18CFyrXF1DZFb_yoWfGFX_ua
-	1Uur4xGr48ArsYya1Ykw13CFWIvanYgr97GF4jqFZxtF4DXr12vrWrurn5JF1UZwsrAr9r
-	Gr9Fqr1avF98AjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRM5l8UUUUUU==
-X-Originating-IP: [120.245.132.180]
-X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/xtbBlwAiq2I0YM1zuQAAsv
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230225_225228_947246_29043FBA 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230226_045821_115476_5CFD6126 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,35 +89,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-use devm_platform_get_and_ioremap replace platform_get_resource()
-and devm_ioremap_resource()
 
-Signed-off-by: Lizhe <sensor1010@163.com>
----
- drivers/spi/spi-rockchip.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 79242dc5272d..4f69c38d5a67 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -775,8 +775,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	ctlr->slave = slave_mode;
- 
- 	/* Get basic io resource and map it */
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	rs->regs = devm_ioremap_resource(&pdev->dev, mem);
-+	rs->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &mem);
- 	if (IS_ERR(rs->regs)) {
- 		ret =  PTR_ERR(rs->regs);
- 		goto err_put_ctlr;
--- 
-2.34.1
+On Mon, Feb 20 2023 at 11:48:44 AM +0100, Benjamin Gaignard 
+<benjamin.gaignard@collabora.com> wrote:
+> Setting context source and destination formats should only be done
+> in hantro_set_fmt_out() and hantro_set_fmt_cap() after check that
+> the targeted queue is not busy.
+> Remove these calls from hantro_reset_encoded_fmt() and
+> hantro_reset_raw_fmt() to clean the driver.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+
+> ---
+>  drivers/media/platform/verisilicon/hantro_v4l2.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c 
+> b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> index c0d427956210..d8aa42bd4cd4 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -382,13 +382,10 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+> 
+>  	vpu_fmt = hantro_get_default_fmt(ctx, true);
+> 
+> -	if (ctx->is_encoder) {
+> -		ctx->vpu_dst_fmt = vpu_fmt;
+> +	if (ctx->is_encoder)
+>  		fmt = &ctx->dst_fmt;
+> -	} else {
+> -		ctx->vpu_src_fmt = vpu_fmt;
+> +	else
+>  		fmt = &ctx->src_fmt;
+> -	}
+> 
+>  	hantro_reset_fmt(fmt, vpu_fmt);
+>  	fmt->width = vpu_fmt->frmsize.min_width;
+> @@ -408,11 +405,9 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
+>  	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
+> 
+>  	if (ctx->is_encoder) {
+> -		ctx->vpu_src_fmt = raw_vpu_fmt;
+>  		raw_fmt = &ctx->src_fmt;
+>  		encoded_fmt = &ctx->dst_fmt;
+>  	} else {
+> -		ctx->vpu_dst_fmt = raw_vpu_fmt;
+>  		raw_fmt = &ctx->dst_fmt;
+>  		encoded_fmt = &ctx->src_fmt;
+>  	}
+> --
+> 2.34.1
+> 
+
 
 
 _______________________________________________
