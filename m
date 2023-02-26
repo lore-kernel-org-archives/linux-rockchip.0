@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37800C6FA8E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 13:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F526C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 13:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
 	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1U46fC57yRyVmTkNS4JquAuWmuMLb9RYF6Cf+PaeF5w=; b=Lh/6t2I18Jmr5YsjqQN85Sc4yU
-	6coobT7iAMifPMNCnUWCJdeWkymvLy2anFe02cCyh5i/dD4BZEgncCLQc6tx4bWnWr9y6gPTbY5vt
-	FxdHr5TNzZTMWxxHGJUveFO8eI+PJadsrfNnu0xgz5daXik5Glo7BIAGbwzQJRfCQEM22VWGK2QFK
-	Ga43RD5/yJkVDmhI+F2E5CZ1iTKl4aTzOZfGngshnYQtTf0Np+KwSLnCbIHSywA+krNlyIVITxB7y
-	RTw8Eqez/txk2/2K3XYYFK7QtkzEMTyE123FWO05xuzjmDjQF7MOnV4EDeRLuTyfsFpyKsfMYdBSD
-	UoeHEbMw==;
+	bh=4YbqyMqu94HjWJM7XJ72UazFzJoVR6eijb/kk96zWkE=; b=dD6XjXddI+Nti8H+g0JUnGkyLE
+	4NJEeUmGTLWXudo4e+lyMhddb70WPI9XlmzEobS3VCGpj3H2OKVXoH/LzmGPb0xvIpy98DzUZIVhq
+	mQ8au8VGDIMq8EBjKhaVxIdt8t5x0gjiPIDI+3B0IRggeZPMnwQ+0gFGi2H/qsq1C4OFqK25Bm/N/
+	8/JC1U+00gxxxK+j+3OHfKOwj7TbfY3ws8Qdvc1tSvMVhDJao2cQoAbPtwm79gTWcvQ8u8E4n+rcH
+	cDDMszJWDj2aFYzW8tDF463SUe6A6NCgb5kKdbuyfSRGNn1eb2zYHIC6Z6LD5cUdKrkzznzCNqNCg
+	x0hvn+CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGdN-007G10-GP; Sun, 26 Feb 2023 13:00:09 +0000
+	id 1pWGdl-007GCt-9N; Sun, 26 Feb 2023 13:00:33 +0000
 Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGdK-007Fju-MS
-	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 13:00:08 +0000
-Received: by mail-ot1-x330.google.com with SMTP id q11-20020a056830440b00b00693c1a62101so2210718otv.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 05:00:06 -0800 (PST)
+	id 1pWGdb-007Fju-1j
+	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 13:00:24 +0000
+Received: by mail-ot1-x330.google.com with SMTP id q11-20020a056830440b00b00693c1a62101so2210965otv.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 05:00:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112; t=1677416406;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=BgwAft76MVKJ3JIww+0YZ/avvsUKs+QoEtHd96JJENw=;
-        b=l2QADTu+ttG1Fi4+KkCEtnfdL+mLfOO5txaNhNMXVC1i5x4mIaw8jhCGoqM5T9kSoP
-         MKNlEG3gs7XzGB8yFAESPpvs0nBY1fKQ4u+MTuEIcXIm1sMsaJMM69FobbpCcPtA0Aie
-         /Ks0fyO5TJySE3k+sMOugkCi7ByQ92+WZScFZFVefHRIwUKsae7Vdyf0KjKmEDk8vSec
-         Z8bmjWXM+7pa6JdbQLAYkUE+LY9XyapR7+LjylLsSv5m/ShHjSy1fqiplV7ltG6NomOJ
-         wFJLTuR8gcZBfiKZu2C9Vcy4L1aUTvmc3WwyJ+Ncwc13EkUvA/Qp2Y8mCrUG8b2bcEe4
-         a69g==
+        bh=lLGsk+gLJxcCRY4U0sKJyCu/BebhluGO1o8XNKetb1U=;
+        b=hAzwHKJna3H3ETr470mU3Z5x24+loDNyEc9nPknLoLVwMIsBp3LaFheflZvhkCPELS
+         z6YPthe9EQBpTvZWUBP0O5y12q8CAqh1E1lB7mMoDPXOnsCSwiqTjljJX/yHU6scPxM+
+         mIaWHCKSe/PM5IU9wb9EAHI6VPsK4mcPVA6g87Hp9RMTArnarGeF3P6oiOvlCbHZ+/18
+         PXKxQS9LwsUwa7FITcno/sTY/xfTnJt0hx8OMIvUelABzzVQu7D89bIieRlILEerrhw2
+         523Gk3ohxrbT/CWarn82DlZqvH5QNFSjwYCl55Y8F/9QLvmGklJAo5iLCRDVX5085zAd
+         X45Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677416406;
+        d=1e100.net; s=20210112;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BgwAft76MVKJ3JIww+0YZ/avvsUKs+QoEtHd96JJENw=;
-        b=qDu3BLtkA4GWj5G+W8iExtYq6SLESzEm0lEcXOvjRYL1MRMxxAYtsGOe9aMiCazYAj
-         nkVn5AFVXsxzeuJCpekUu8x/P25FED8Ba3a7Uf2zMD5pS+G4arOFUvKeIZzzP6U8+UYk
-         unI3SKqKPXS0cXFVKddgkbVKhX6lsdoHkZeCjw1FJr4oqGj3GSEGQ9wi/y0PeR6ufjvV
-         BbXerc+bmOv8ZKoii4wWqmnJuH//HM9IEqbjm34peFPNVqoJvdWYuzSGlnqD8lFCBfKL
-         WV46rSX16IIr1szSt3M8wtOeqOU5IrmPDJysFsc8s8imygyEVTHN4EI1MKzlIU5XCTWI
-         k8zA==
-X-Gm-Message-State: AO0yUKWClX00vucJJVkgAo/gj09DVgCsJI3a/5l2u2t/W6aS2n/FGyZz
-	aNRTxbmGIunMQZZ98R3A3Z9Avg==
-X-Google-Smtp-Source: AK7set/1fWvGNlxMxr9og7qWJd450CA2axI6QC3mjPLsW6OkHhpMtz/40zz7xsgNfnHcxHpPbqypHQ==
-X-Received: by 2002:a05:6830:104a:b0:68b:df1f:7713 with SMTP id b10-20020a056830104a00b0068bdf1f7713mr9813989otp.0.1677416406310;
-        Sun, 26 Feb 2023 05:00:06 -0800 (PST)
+        bh=lLGsk+gLJxcCRY4U0sKJyCu/BebhluGO1o8XNKetb1U=;
+        b=M+JqRD3OKaAIsMMeFujgS8yXGYs8WJtM54CfclkYDez7I/b2CEjQcecTE+ysA3mwM5
+         oRIn5pT/r3/z3ZuP2pbjpAc232DHa8MhA1nK8g+ID2Pea2B7O9juQAxobUqtskstGcK3
+         By2g336iadoIjTEbjIIO/OWEOKJxqo0V6jMgqJExRmEVbfAsp1BgP4EqFce6mVMnyWMR
+         KSML+Y8pndGRPVIIBS7sd6swNKq2vrBdgfFnx/ABE3do+lpLcKkxgsb4myXSwtCHy9hO
+         8dDFheooaLk1WN/pSM5e7ZsqF2aMa3hoF94mI9JQPIBpN0asoZoZr+RZFDkVTzrQiQN8
+         vCJA==
+X-Gm-Message-State: AO0yUKV4CpnOXw5jJFJJmsV/hxgB64QT7apduoRMmcEuFhOeyDTxUke2
+	WhsMG7Q2sbZypmr+YhuDsgbRwQ==
+X-Google-Smtp-Source: AK7set9V7t43YFTiwn5bhCTvhloWETeAoltvYJJMWDKxj/SdeWxdHqLtkJCEUVQ7uJ/+a0U7TJ4dig==
+X-Received: by 2002:a05:6830:30a0:b0:68b:d092:e784 with SMTP id g32-20020a05683030a000b0068bd092e784mr11175389ots.1.1677416422716;
+        Sun, 26 Feb 2023 05:00:22 -0800 (PST)
 Received: from [192.168.10.175] ([190.106.125.26])
-        by smtp.gmail.com with ESMTPSA id e23-20020a9d5617000000b00693c9f984b4sm1539780oti.70.2023.02.26.05.00.00
+        by smtp.gmail.com with ESMTPSA id t12-20020a05683014cc00b0068bcc902b82sm1539924otq.71.2023.02.26.05.00.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 05:00:05 -0800 (PST)
-Date: Sun, 26 Feb 2023 09:59:54 -0300
+        Sun, 26 Feb 2023 05:00:21 -0800 (PST)
+Date: Sun, 26 Feb 2023 10:00:11 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [PATCH v9 5/6] media: verisilicon: HEVC: Only propose 10 bits
+Subject: Re: [PATCH v9 6/6] media: verisilicon: VP9: Only propose 10 bits
  compatible pixels formats
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
@@ -68,17 +68,16 @@ Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
 	linux-imx@nxp.com, hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.co.uk,
 	robert.mader@collabora.com, linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>
-Message-Id: <URUOQR.DFWFJPPFZKJS3@vanguardiasur.com.ar>
-In-Reply-To: <20230220104849.398203-6-benjamin.gaignard@collabora.com>
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Message-Id: <BSUOQR.VGJZUEF5E1XC1@vanguardiasur.com.ar>
+In-Reply-To: <20230220104849.398203-7-benjamin.gaignard@collabora.com>
 References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
-	<20230220104849.398203-6-benjamin.gaignard@collabora.com>
+	<20230220104849.398203-7-benjamin.gaignard@collabora.com>
 X-Mailer: geary/43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_050006_766351_B84E6780 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20230226_050023_151121_87D774BE 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,9 +96,9 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 
-On Mon, Feb 20 2023 at 11:48:48 AM +0100, Benjamin Gaignard 
+On Mon, Feb 20 2023 at 11:48:49 AM +0100, Benjamin Gaignard 
 <benjamin.gaignard@collabora.com> wrote:
-> When decoding a 10bits bitstreams HEVC driver should only expose
+> When decoding a 10bits bitstreams VP9 driver should only expose
 > 10bits pixel formats.
 > To fulfill this requirement it is needed to call 
 > hantro_reset_raw_fmt()
@@ -108,7 +107,6 @@ On Mon, Feb 20 2023 at 11:48:48 AM +0100, Benjamin Gaignard
 > enumeration.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
@@ -116,26 +114,24 @@ Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 > version 9:
 > - Fix brackets
 > 
->  drivers/media/platform/verisilicon/hantro_drv.c   | 12 +++++++++---
->  drivers/media/platform/verisilicon/imx8m_vpu_hw.c |  2 ++
->  2 files changed, 11 insertions(+), 3 deletions(-)
+>  drivers/media/platform/verisilicon/hantro_drv.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
 > 
 > diff --git a/drivers/media/platform/verisilicon/hantro_drv.c 
 > b/drivers/media/platform/verisilicon/hantro_drv.c
-> index c237253803f4..7d452f1afaae 100644
+> index 7d452f1afaae..d20e62c025ae 100644
 > --- a/drivers/media/platform/verisilicon/hantro_drv.c
 > +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -325,9 +325,15 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl 
+> @@ -307,9 +307,14 @@ static int hantro_vp9_s_ctrl(struct v4l2_ctrl 
 > *ctrl)
 >  			   struct hantro_ctx, ctrl_handler);
 > 
 >  	switch (ctrl->id) {
-> -	case V4L2_CID_STATELESS_HEVC_SPS:
-> -		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
+> -	case V4L2_CID_STATELESS_VP9_FRAME:
+> -		ctx->bit_depth = ctrl->p_new.p_vp9_frame->bit_depth;
 > -		break;
-> +	case V4L2_CID_STATELESS_HEVC_SPS: {
-> +		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
-> +		int bit_depth = sps->bit_depth_luma_minus8 + 8;
+> +	case V4L2_CID_STATELESS_VP9_FRAME: {
+> +		int bit_depth = ctrl->p_new.p_vp9_frame->bit_depth;
 > +
 > +		if (ctx->bit_depth == bit_depth)
 > +			return 0;
@@ -145,29 +141,6 @@ Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 >  	default:
 >  		return -EINVAL;
 >  	}
-> diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c 
-> b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> index b390228fd3b4..f850d8bddef6 100644
-> --- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> @@ -152,6 +152,7 @@ static const struct hantro_fmt 
-> imx8m_vpu_g2_postproc_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV12,
->  		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
->  		.postprocessed = true,
->  		.frmsize = {
->  			.min_width = FMT_MIN_WIDTH,
-> @@ -165,6 +166,7 @@ static const struct hantro_fmt 
-> imx8m_vpu_g2_postproc_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_P010,
->  		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
->  		.postprocessed = true,
->  		.frmsize = {
->  			.min_width = FMT_MIN_WIDTH,
 > --
 > 2.34.1
 > 
