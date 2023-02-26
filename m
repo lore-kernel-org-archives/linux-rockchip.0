@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8731BC7EE2D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 13:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37800C6FA8E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Feb 2023 13:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
 	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G1lpXtj0fqFmxFCHe8eEWMIdAF73TZ961T9EYYhIM54=; b=DbW1TY+DgWiBR4NpiS737l6ykm
-	rdZUEr1aOXN4dWcC+qrjOkwn12qvi0FmUu6M0C2KCJA56j9XjO6xOcUVPRbmiNYd9L4D+lZ/Dy0Qb
-	+6XqIdYTgYZ7zlBo2Q9RmfHZPYDittM9f3WmohJNLPvSU8S5o1rPLnMzE0fpXr6lYlP7+8X27zkq2
-	qEkyD9Ddlw87ef0wlRWUlhFOnrzjGFNKpBjXwUYUW9rOLhDBdbO49+eVV+LXjKsUCTM8Lmfv48zeZ
-	FG+R33QLZYVuPRt1SEVPu5kU3V2XJtRiUmVER5RqIqu4TMGeadFUmEBxMpAiRQIq3GYv6VvTkabcw
-	d/TrMpuQ==;
+	bh=1U46fC57yRyVmTkNS4JquAuWmuMLb9RYF6Cf+PaeF5w=; b=Lh/6t2I18Jmr5YsjqQN85Sc4yU
+	6coobT7iAMifPMNCnUWCJdeWkymvLy2anFe02cCyh5i/dD4BZEgncCLQc6tx4bWnWr9y6gPTbY5vt
+	FxdHr5TNzZTMWxxHGJUveFO8eI+PJadsrfNnu0xgz5daXik5Glo7BIAGbwzQJRfCQEM22VWGK2QFK
+	Ga43RD5/yJkVDmhI+F2E5CZ1iTKl4aTzOZfGngshnYQtTf0Np+KwSLnCbIHSywA+krNlyIVITxB7y
+	RTw8Eqez/txk2/2K3XYYFK7QtkzEMTyE123FWO05xuzjmDjQF7MOnV4EDeRLuTyfsFpyKsfMYdBSD
+	UoeHEbMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGcx-007FmW-Py; Sun, 26 Feb 2023 12:59:43 +0000
+	id 1pWGdN-007G10-GP; Sun, 26 Feb 2023 13:00:09 +0000
 Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWGcu-007Fjt-3a
-	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 12:59:42 +0000
-Received: by mail-ot1-x330.google.com with SMTP id e18-20020a0568301e5200b00690e6abbf3fso2148406otj.13
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 04:59:39 -0800 (PST)
+	id 1pWGdK-007Fju-MS
+	for linux-rockchip@lists.infradead.org; Sun, 26 Feb 2023 13:00:08 +0000
+Received: by mail-ot1-x330.google.com with SMTP id q11-20020a056830440b00b00693c1a62101so2210718otv.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Feb 2023 05:00:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112; t=1677416406;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DW3nkP0pOQJnDemoTdr9m+O5gWpfXFzJ/39exQqJRaA=;
-        b=uaRh19DJLS/ThLLVmWAy5yYBhRnqxQaxK5w0ZNduU94/Qq7MnxvA+MLymmQW6PXE88
-         VtOxGZhKDrwY+SLRWgF6dGMOwM5O2xdYGRav4yxBBVhZ5bcwxiUiLVLi2KXn4gyuO1uU
-         v8p+PB61XlJgEv9BkbxM6xMERcSSeXavy/mwL2mDaskZo3+SfP3l7Bqj0sWq+T6j5rxA
-         2Vbh3sVPmVYPCO7eyUFyzmVGQx40PrpJWn1IGOMaa+bY+2XxRmvvLWe1ZAvkqPrq2Lnp
-         HxEaEPhBxlN95DGhH/jsySUBttyqmYM4x7A4wfA0fEaFh8njKzM4droIcwK84YZuEU8e
-         h3VQ==
+        bh=BgwAft76MVKJ3JIww+0YZ/avvsUKs+QoEtHd96JJENw=;
+        b=l2QADTu+ttG1Fi4+KkCEtnfdL+mLfOO5txaNhNMXVC1i5x4mIaw8jhCGoqM5T9kSoP
+         MKNlEG3gs7XzGB8yFAESPpvs0nBY1fKQ4u+MTuEIcXIm1sMsaJMM69FobbpCcPtA0Aie
+         /Ks0fyO5TJySE3k+sMOugkCi7ByQ92+WZScFZFVefHRIwUKsae7Vdyf0KjKmEDk8vSec
+         Z8bmjWXM+7pa6JdbQLAYkUE+LY9XyapR7+LjylLsSv5m/ShHjSy1fqiplV7ltG6NomOJ
+         wFJLTuR8gcZBfiKZu2C9Vcy4L1aUTvmc3WwyJ+Ncwc13EkUvA/Qp2Y8mCrUG8b2bcEe4
+         a69g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
+        d=1e100.net; s=20210112; t=1677416406;
         h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DW3nkP0pOQJnDemoTdr9m+O5gWpfXFzJ/39exQqJRaA=;
-        b=NdhCob/tGme4sTMuRXtyrPlcilAQJw3zhPkFahec1fnDsjxGLpQA9jKtwxbGNS12GW
-         xNmvQciEWFhAePcRkeGe1jyH8A/m8jyuCRBT0QAQfkvfs+BEqg1jRtK5BMS+inQDO7iS
-         B3rdhu4XrFyLQ3PH5dy9BCKN2tP07YRn6dxDYJ+aO1u9wEJkrSQ+IpOJHpiSfUW55AMj
-         nZxLBvkYXaXyYT8iyNroOmjHSyBqIkNf4MZcLe9W7RRGRAcaD+JPsofJepuGnJMbc4DJ
-         PrqCWbna5GzmFlEtFV0AgPM+B10RgU7TsY0qxJsxlrWj0LA5bZC8IEwxDmdTiJi+iLtj
-         Jq3g==
-X-Gm-Message-State: AO0yUKW3brjKAtdtGloAtMLEhPZ4HGs3M7g9oGwTguHBw+GDJgYl3vMb
-	aN3THBs3cQ9mK2WNEUusdw4mwQ==
-X-Google-Smtp-Source: AK7set8ICehBwDksb4lgfEZjpxNUaz1kfIOZ+u5dQeDv6QsTqIfCaMBty4w8gZDsqmJSIhsG97oFAA==
-X-Received: by 2002:a05:6830:2470:b0:686:40e1:2bf3 with SMTP id x48-20020a056830247000b0068640e12bf3mr10316722otr.0.1677416378983;
-        Sun, 26 Feb 2023 04:59:38 -0800 (PST)
+        bh=BgwAft76MVKJ3JIww+0YZ/avvsUKs+QoEtHd96JJENw=;
+        b=qDu3BLtkA4GWj5G+W8iExtYq6SLESzEm0lEcXOvjRYL1MRMxxAYtsGOe9aMiCazYAj
+         nkVn5AFVXsxzeuJCpekUu8x/P25FED8Ba3a7Uf2zMD5pS+G4arOFUvKeIZzzP6U8+UYk
+         unI3SKqKPXS0cXFVKddgkbVKhX6lsdoHkZeCjw1FJr4oqGj3GSEGQ9wi/y0PeR6ufjvV
+         BbXerc+bmOv8ZKoii4wWqmnJuH//HM9IEqbjm34peFPNVqoJvdWYuzSGlnqD8lFCBfKL
+         WV46rSX16IIr1szSt3M8wtOeqOU5IrmPDJysFsc8s8imygyEVTHN4EI1MKzlIU5XCTWI
+         k8zA==
+X-Gm-Message-State: AO0yUKWClX00vucJJVkgAo/gj09DVgCsJI3a/5l2u2t/W6aS2n/FGyZz
+	aNRTxbmGIunMQZZ98R3A3Z9Avg==
+X-Google-Smtp-Source: AK7set/1fWvGNlxMxr9og7qWJd450CA2axI6QC3mjPLsW6OkHhpMtz/40zz7xsgNfnHcxHpPbqypHQ==
+X-Received: by 2002:a05:6830:104a:b0:68b:df1f:7713 with SMTP id b10-20020a056830104a00b0068bdf1f7713mr9813989otp.0.1677416406310;
+        Sun, 26 Feb 2023 05:00:06 -0800 (PST)
 Received: from [192.168.10.175] ([190.106.125.26])
-        by smtp.gmail.com with ESMTPSA id do11-20020a0568300e0b00b0068bcef4f543sm1584023otb.21.2023.02.26.04.59.33
+        by smtp.gmail.com with ESMTPSA id e23-20020a9d5617000000b00693c9f984b4sm1539780oti.70.2023.02.26.05.00.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Feb 2023 04:59:38 -0800 (PST)
-Date: Sun, 26 Feb 2023 09:59:24 -0300
+        Sun, 26 Feb 2023 05:00:05 -0800 (PST)
+Date: Sun, 26 Feb 2023 09:59:54 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [PATCH v9 4/6] media: verisilicon: Do not change context bit
- depth before validating the format
+Subject: Re: [PATCH v9 5/6] media: verisilicon: HEVC: Only propose 10 bits
+ compatible pixels formats
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
 	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
@@ -70,15 +70,15 @@ Cc: p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, Nicolas Dufresne
 	<nicolas.dufresne@collabora.com>
-Message-Id: <0RUOQR.EG49FVA79PZJ1@vanguardiasur.com.ar>
-In-Reply-To: <20230220104849.398203-5-benjamin.gaignard@collabora.com>
+Message-Id: <URUOQR.DFWFJPPFZKJS3@vanguardiasur.com.ar>
+In-Reply-To: <20230220104849.398203-6-benjamin.gaignard@collabora.com>
 References: <20230220104849.398203-1-benjamin.gaignard@collabora.com>
-	<20230220104849.398203-5-benjamin.gaignard@collabora.com>
+	<20230220104849.398203-6-benjamin.gaignard@collabora.com>
 X-Mailer: geary/43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230226_045940_201597_94D12039 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20230226_050006_766351_B84E6780 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,12 +97,15 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 
-On Mon, Feb 20 2023 at 11:48:47 AM +0100, Benjamin Gaignard 
+On Mon, Feb 20 2023 at 11:48:48 AM +0100, Benjamin Gaignard 
 <benjamin.gaignard@collabora.com> wrote:
-> It is needed to check if the proposed pixels format is valid before
-> updating context bit depth and other internal states.
-> Stop using ctx->bit_depth to check format depth match and return
-> result to the caller.
+> When decoding a 10bits bitstreams HEVC driver should only expose
+> 10bits pixel formats.
+> To fulfill this requirement it is needed to call 
+> hantro_reset_raw_fmt()
+> when bit depth change and to correctly set match_depth in pixel 
+> formats
+> enumeration.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
@@ -110,219 +113,61 @@ On Mon, Feb 20 2023 at 11:48:47 AM +0100, Benjamin Gaignard
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
 > ---
->  .../platform/verisilicon/hantro_postproc.c    |  2 +-
->  .../media/platform/verisilicon/hantro_v4l2.c  | 51 
-> ++++++++++---------
->  .../media/platform/verisilicon/hantro_v4l2.h  |  3 +-
->  3 files changed, 30 insertions(+), 26 deletions(-)
+> version 9:
+> - Fix brackets
 > 
-> diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c 
-> b/drivers/media/platform/verisilicon/hantro_postproc.c
-> index 09d8cf942689..6437423ccf3a 100644
-> --- a/drivers/media/platform/verisilicon/hantro_postproc.c
-> +++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-> @@ -197,7 +197,7 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
->  	unsigned int i, buf_size;
+>  drivers/media/platform/verisilicon/hantro_drv.c   | 12 +++++++++---
+>  drivers/media/platform/verisilicon/imx8m_vpu_hw.c |  2 ++
+>  2 files changed, 11 insertions(+), 3 deletions(-)
 > 
->  	/* this should always pick native format */
-> -	fmt = hantro_get_default_fmt(ctx, false);
-> +	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth);
->  	if (!fmt)
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c 
+> b/drivers/media/platform/verisilicon/hantro_drv.c
+> index c237253803f4..7d452f1afaae 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -325,9 +325,15 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl 
+> *ctrl)
+>  			   struct hantro_ctx, ctrl_handler);
+> 
+>  	switch (ctrl->id) {
+> -	case V4L2_CID_STATELESS_HEVC_SPS:
+> -		ctx->bit_depth = ctrl->p_new.p_hevc_sps->bit_depth_luma_minus8 + 8;
+> -		break;
+> +	case V4L2_CID_STATELESS_HEVC_SPS: {
+> +		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+> +		int bit_depth = sps->bit_depth_luma_minus8 + 8;
+> +
+> +		if (ctx->bit_depth == bit_depth)
+> +			return 0;
+> +
+> +		return hantro_reset_raw_fmt(ctx, bit_depth);
+> +	}
+>  	default:
 >  		return -EINVAL;
->  	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c 
-> b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index d94c99f875c8..d238d407f986 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -28,6 +28,8 @@
->  #include "hantro_hw.h"
->  #include "hantro_v4l2.h"
-> 
-> +#define  HANTRO_DEFAULT_BIT_DEPTH 8
-> +
->  static int hantro_set_fmt_out(struct hantro_ctx *ctx,
->  			      struct v4l2_pix_format_mplane *pix_mp);
->  static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
-> @@ -76,18 +78,13 @@ int hantro_get_format_depth(u32 fourcc)
->  }
-> 
->  static bool
-> -hantro_check_depth_match(const struct hantro_ctx *ctx,
-> -			 const struct hantro_fmt *fmt)
-> +hantro_check_depth_match(const struct hantro_fmt *fmt, int bit_depth)
->  {
-> -	int fmt_depth, ctx_depth = 8;
-> +	int fmt_depth;
-> 
->  	if (!fmt->match_depth && !fmt->postprocessed)
->  		return true;
-> 
-> -	/* 0 means default depth, which is 8 */
-> -	if (ctx->bit_depth)
-> -		ctx_depth = ctx->bit_depth;
-> -
->  	fmt_depth = hantro_get_format_depth(fmt->fourcc);
-> 
->  	/*
-> @@ -95,9 +92,9 @@ hantro_check_depth_match(const struct hantro_ctx 
-> *ctx,
->  	 * It may be possible to relax that on some HW.
->  	 */
->  	if (!fmt->match_depth)
-> -		return fmt_depth <= ctx_depth;
-> +		return fmt_depth <= bit_depth;
-> 
-> -	return fmt_depth == ctx_depth;
-> +	return fmt_depth == bit_depth;
->  }
-> 
->  static const struct hantro_fmt *
-> @@ -119,7 +116,7 @@ hantro_find_format(const struct hantro_ctx *ctx, 
-> u32 fourcc)
->  }
-> 
->  const struct hantro_fmt *
-> -hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream)
-> +hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, 
-> int bit_depth)
->  {
->  	const struct hantro_fmt *formats;
->  	unsigned int i, num_fmts;
-> @@ -128,7 +125,7 @@ hantro_get_default_fmt(const struct hantro_ctx 
-> *ctx, bool bitstream)
->  	for (i = 0; i < num_fmts; i++) {
->  		if (bitstream == (formats[i].codec_mode !=
->  				  HANTRO_MODE_NONE) &&
-> -		    hantro_check_depth_match(ctx, &formats[i]))
-> +		    hantro_check_depth_match(&formats[i], bit_depth))
->  			return &formats[i];
 >  	}
->  	return NULL;
-> @@ -204,7 +201,7 @@ static int vidioc_enum_fmt(struct file *file, 
-> void *priv,
-> 
->  		if (skip_mode_none == mode_none)
->  			continue;
-> -		if (!hantro_check_depth_match(ctx, fmt))
-> +		if (!hantro_check_depth_match(fmt, ctx->bit_depth))
->  			continue;
->  		if (j == f->index) {
->  			f->pixelformat = fmt->fourcc;
-> @@ -224,7 +221,7 @@ static int vidioc_enum_fmt(struct file *file, 
-> void *priv,
->  	for (i = 0; i < num_fmts; i++) {
->  		fmt = &formats[i];
-> 
-> -		if (!hantro_check_depth_match(ctx, fmt))
-> +		if (!hantro_check_depth_match(fmt, ctx->bit_depth))
->  			continue;
->  		if (j == f->index) {
->  			f->pixelformat = fmt->fourcc;
-> @@ -292,7 +289,7 @@ static int hantro_try_fmt(const struct hantro_ctx 
-> *ctx,
-> 
->  	fmt = hantro_find_format(ctx, pix_mp->pixelformat);
->  	if (!fmt) {
-> -		fmt = hantro_get_default_fmt(ctx, coded);
-> +		fmt = hantro_get_default_fmt(ctx, coded, HANTRO_DEFAULT_BIT_DEPTH);
->  		pix_mp->pixelformat = fmt->fourcc;
->  	}
-> 
-> @@ -380,7 +377,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
->  	const struct hantro_fmt *vpu_fmt;
->  	struct v4l2_pix_format_mplane fmt;
-> 
-> -	vpu_fmt = hantro_get_default_fmt(ctx, true);
-> +	vpu_fmt = hantro_get_default_fmt(ctx, true, 
-> HANTRO_DEFAULT_BIT_DEPTH);
->  	if (!vpu_fmt)
->  		return;
-> 
-> @@ -393,15 +390,16 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
->  		hantro_set_fmt_out(ctx, &fmt);
->  }
-> 
-> -static void
-> -hantro_reset_raw_fmt(struct hantro_ctx *ctx)
-> +int
-> +hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
->  {
->  	const struct hantro_fmt *raw_vpu_fmt;
->  	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
-> +	int ret;
-> 
-> -	raw_vpu_fmt = hantro_get_default_fmt(ctx, false);
-> +	raw_vpu_fmt = hantro_get_default_fmt(ctx, false, bit_depth);
->  	if (!raw_vpu_fmt)
-> -		return;
-> +		return -EINVAL;
-> 
->  	if (ctx->is_encoder)
->  		encoded_fmt = &ctx->dst_fmt;
-> @@ -412,15 +410,20 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
->  	raw_fmt.width = encoded_fmt->width;
->  	raw_fmt.height = encoded_fmt->height;
->  	if (ctx->is_encoder)
-> -		hantro_set_fmt_out(ctx, &raw_fmt);
-> +		ret = hantro_set_fmt_out(ctx, &raw_fmt);
->  	else
-> -		hantro_set_fmt_cap(ctx, &raw_fmt);
-> +		ret = hantro_set_fmt_cap(ctx, &raw_fmt);
-> +
-> +	if (!ret)
-> +		ctx->bit_depth = bit_depth;
-> +
-> +	return ret;
->  }
-> 
->  void hantro_reset_fmts(struct hantro_ctx *ctx)
->  {
->  	hantro_reset_encoded_fmt(ctx);
-> -	hantro_reset_raw_fmt(ctx);
-> +	hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH);
->  }
-> 
->  static void
-> @@ -520,7 +523,7 @@ static int hantro_set_fmt_out(struct hantro_ctx 
-> *ctx,
->  	 * changes to the raw format.
->  	 */
->  	if (!ctx->is_encoder)
-> -		hantro_reset_raw_fmt(ctx);
-> +		hantro_reset_raw_fmt(ctx, 
-> hantro_get_format_depth(pix_mp->pixelformat));
-> 
->  	/* Colorimetry information are always propagated. */
->  	ctx->dst_fmt.colorspace = pix_mp->colorspace;
-> @@ -583,7 +586,7 @@ static int hantro_set_fmt_cap(struct hantro_ctx 
-> *ctx,
->  	 * changes to the raw format.
->  	 */
->  	if (ctx->is_encoder)
-> -		hantro_reset_raw_fmt(ctx);
-> +		hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH);
-> 
->  	/* Colorimetry information are always propagated. */
->  	ctx->src_fmt.colorspace = pix_mp->colorspace;
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h 
-> b/drivers/media/platform/verisilicon/hantro_v4l2.h
-> index 64f6f57e9d7a..9ea2fef57dcd 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.h
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
-> @@ -21,9 +21,10 @@
->  extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
->  extern const struct vb2_ops hantro_queue_ops;
-> 
-> +int hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth);
->  void hantro_reset_fmts(struct hantro_ctx *ctx);
->  int hantro_get_format_depth(u32 fourcc);
->  const struct hantro_fmt *
-> -hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream);
-> +hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, 
-> int bit_depth);
-> 
->  #endif /* HANTRO_V4L2_H_ */
+> diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c 
+> b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+> index b390228fd3b4..f850d8bddef6 100644
+> --- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+> @@ -152,6 +152,7 @@ static const struct hantro_fmt 
+> imx8m_vpu_g2_postproc_fmts[] = {
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_NV12,
+>  		.codec_mode = HANTRO_MODE_NONE,
+> +		.match_depth = true,
+>  		.postprocessed = true,
+>  		.frmsize = {
+>  			.min_width = FMT_MIN_WIDTH,
+> @@ -165,6 +166,7 @@ static const struct hantro_fmt 
+> imx8m_vpu_g2_postproc_fmts[] = {
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_P010,
+>  		.codec_mode = HANTRO_MODE_NONE,
+> +		.match_depth = true,
+>  		.postprocessed = true,
+>  		.frmsize = {
+>  			.min_width = FMT_MIN_WIDTH,
 > --
 > 2.34.1
 > 
