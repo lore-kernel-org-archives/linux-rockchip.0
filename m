@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D8ACC64ED6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 15:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 700FFC64ED8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 16:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lckF1EADwmrB782KpKbMa7X42nJYG2+UlniPl/MI4XE=; b=1EVQVsKYv/aCGG
-	DDrPr4qmqoh4Lzdt4dJPFQ2ZnWqBLvK0/vT8Y/kDGOLlDyXUHi+LHT+LuX6VLx17mW0RdsjUrrI3r
-	ypcHrHfjxCjK2krwMpovCv0sd4myROr9fPBfLvEwGN3k2Z7litTL62JJah949gQcriUpbKXIq5g+b
-	iOybvysZy+1na11GT0Q7vsOwXINR1korCgC6WMfvA4s3QQCfoulivVWAyoQmL+qryMWx+wUP2O70s
-	NJpbxp4X/RS5OGc5IddM5iT+94q+i05AwsunQUuaLBKVIYJU2C2GS2yXoNw+WIM/pmMPqgGXXruCe
-	vjfRt9M6V9ZdaOB8tVYA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=waxuTESrjxEwM1b+tedvhdT3xxO0rQgHutgsbavUEpg=; b=fcLRCdC/YbPzcP
+	RpEN4T+LvbVUufiWD303JKPBN6kZj2FbZdsFEuH8pWYWSF7yaaDrK6UrvLGNGdbBSLNM+eD9fZeE2
+	+/sBU4qb4XLseNIKxHr1qvjzuf/NyAuj9uPlP+0pbZG5YPkW5L6WlDn0pQxcu0to+DYLandudsI3u
+	cF+UYKzF00rIlX3323e8p6wDpRsrepuoSFOOPq3XEuxKJEe17j/1ZbhTCVpTplCfcDjWqcf+CXbVk
+	p/Yq3XUNAj5UJtG9ZxAQDRXe5r4Lj9X/DQVlwiv41qIscVsZtVmNG3DDz2L1ke+5QmpJlp7j0yAdp
+	kS2JBQ7u8gr8dSzhOeDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWfHa-00ABEg-Nm; Mon, 27 Feb 2023 15:19:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pWgOc-00AMuq-Gv; Mon, 27 Feb 2023 16:30:38 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWfHG-00AB7z-Ir; Mon, 27 Feb 2023 15:19:00 +0000
-Received: from cryzen.lan (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: tanureal)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 062296602FA1;
-	Mon, 27 Feb 2023 15:18:53 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1677511133;
-	bh=cMHt6PnmCwdV3HhU5FSZOVL8khQ8AWB90bFY2XZ9v2M=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YrLRYYZChK0AcN2rUlWOS7rMf2AfNrpLRua+3uqUjrfxJTpoU5sAVSn54q+IR9fwT
-	 noB2/BZ/PtgGz9RapVsxqL12vX5h0jBtWtbA+osulnHj6+r6Mm7xfRRT12seOPfB7n
-	 u7SYQdGK0GMvPak9fr5vZsjgkBJ9Rlj3+VGXIDAiX7PCyhJretK2Ioh5hJQHRym2MR
-	 0yWIrhnwtfqUJ+0V9Y5zSbDIrIw3EpQoYd1hy7ncBRC6z/3+qfc7BmTcCEa9JhPU1b
-	 azHpkURaTga2f8iYQZADsVRxNdLETencPClZu94mssB5oXPkotqJmTdM1gtvnaDPdK
-	 9tnPrM0M06Deg==
-From: Lucas Tanure <lucas.tanure@collabora.com>
-To: Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Marc Zyngier <maz@kernel.org>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Kever Yang <kever.yang@rock-chips.com>
+	id 1pWgOY-00AMt5-K6
+	for linux-rockchip@lists.infradead.org; Mon, 27 Feb 2023 16:30:36 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id bg11so5633681oib.5
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Feb 2023 08:30:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=J+zoHpM2jDyPYbTfFjPKgZiwYudVWnE9jnnXLooJWxc=;
+        b=F/f1TRdA0LKyjJ8XblFp9wHjSjlnuPA2HRM371S0R2O0MctGDnX+jt21qDT/0Vk6wF
+         b0jfXANvxAnYfzcfLQCmcuqsXiYhgKE8O3HqxJisyAAkN+7VQljIQcyra7O0ZhNc+ey4
+         A5q6cvXyUF5kSyX9S536N4hqQ8Y2ak96+GxHusdCIeuMnBawT1jz8tDci3h43FgC7LOX
+         jyN1L10uhIhiDc48KzvUQrEP2kEDB+rS7FFMniVxOFJWlY736jsewpv5pajWsNqoFPPJ
+         Vvnbhswi+XvD9+9TzVS/3nMZsuGNFDi8J4cgKdlSr+gcuIS2KO7JQ78hdl+R6IM01R8N
+         ZvVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J+zoHpM2jDyPYbTfFjPKgZiwYudVWnE9jnnXLooJWxc=;
+        b=AqyQtp3jfaYOv45GG3flE+X5utc4HUjQeEJGb4QfgK/9t5tysVNXr/Cw078vGt6jck
+         Zzkg4O8enS8QtpLLrNYXvKBAgO8P7JJYNzZ0ZkFOUM7axCAWMUa+soJf8kq2p3p3I+8c
+         zTuFNfxozgZrnG7RY000rDIsHcMAz/HqQYl6pJQuUkHXXVoCEyxy3yNdRSioNRZjDzO/
+         ZS3ic2WaDeXOq28G8dE27AI0hR+W3Bf2/1EfkCw4cu36DtiFo/dV5HK6ImEDQHehOwVT
+         MoHiKmp1jd35RhpkXjySW+75odOIh60f4iEE2cayPNapfJ0+msgiAmsWDP0qDjX2a7MK
+         aL7g==
+X-Gm-Message-State: AO0yUKV3C3oKxtsQkFUVBuOzFono/xBSV5wTelMe+OwRQCMMbAxEIybP
+	0YpcWR96Kpy7j9qg/dBIlD4=
+X-Google-Smtp-Source: AK7set9bY2E0brjz88T3I1wKjaM9d4j80UKoTf654F49pk5OIhL/cBdpuQMfYIit6rS52Uf78vbi3Q==
+X-Received: by 2002:aca:1314:0:b0:384:126a:204e with SMTP id e20-20020aca1314000000b00384126a204emr4064282oii.5.1677515432472;
+        Mon, 27 Feb 2023 08:30:32 -0800 (PST)
+Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id ex16-20020a056808299000b0037fcc1fd34bsm3267713oib.13.2023.02.27.08.30.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Feb 2023 08:30:32 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-bluetooth@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Lucas Tanure <lucas.tanure@collabora.com>,
-	kernel@collabora.com
-Subject: [RFC 1/1] irqchip/gic-v3: Add RK3588 GICR and GITS no share workaround
-Date: Mon, 27 Feb 2023 15:18:47 +0000
-Message-Id: <20230227151847.207922-2-lucas.tanure@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230227151847.207922-1-lucas.tanure@collabora.com>
-References: <20230227151847.207922-1-lucas.tanure@collabora.com>
+	devicetree@vger.kernel.org,
+	alistair@alistair23.me,
+	anarsoul@gmail.com,
+	luiz.dentz@gmail.com,
+	johan.hedberg@gmail.com,
+	marcel@holtmann.org,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/3 V3] Bluetooth: Add support for RTL8821CS
+Date: Mon, 27 Feb 2023 10:30:24 -0600
+Message-Id: <20230227163027.130292-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_071858_930232_874DE27A 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20230227_083034_685902_39ECC56B 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,160 +96,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The GIC600 integration in RK356x, used in rk3588, doesn't support
-any of the shareability or cacheability attributes, and requires
-both values to be set to 0b00 for all the ITS and Redistributor
-tables.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Based on work of Peter Geis for the Quartz64 board.
+This patch series is to add support for the RTL8821CS Bluetooth
+controller found on the RTL8821CS WiFi/Bluetooth combo chip.
 
-Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
----
- Documentation/arm64/silicon-errata.rst |  4 +++
- arch/arm64/Kconfig                     | 13 ++++++++
- drivers/irqchip/irq-gic-v3-its.c       | 42 ++++++++++++++++++++++++++
- 3 files changed, 59 insertions(+)
+This has been tested with firmware version 0x75b8f098 which has been
+submitted by Realtek for inclusion in linux-firmware.
 
-diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arm64/silicon-errata.rst
-index ec5f889d7681..b26cf8ca7d5c 100644
---- a/Documentation/arm64/silicon-errata.rst
-+++ b/Documentation/arm64/silicon-errata.rst
-@@ -209,3 +209,7 @@ stable kernels.
- +----------------+-----------------+-----------------+-----------------------------+
- | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
- +----------------+-----------------+-----------------+-----------------------------+
-+
-++----------------+-----------------+-----------------+-----------------------------+
-+| RockChip       | RK3588          | N/A             | ROCKCHIP_NO_SHARE           |
-++----------------+-----------------+-----------------+-----------------------------+
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index 27b2592698b0..ad3f1742052b 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -1150,6 +1150,19 @@ config NVIDIA_CARMEL_CNP_ERRATUM
- 
- 	  If unsure, say Y.
- 
-+config ROCKCHIP_NO_SHARE
-+	bool "Rockchip RK3588 GIC6000 No shareability or cacheability attributes"
-+	default y
-+	help
-+	  The GIC600 integration in RK356x doesn't support any of the shareability or
-+	  cacheability attributes, and requires both values to be set to 0b00 for all 
-+	  the ITS and Redistributor tables.
-+
-+	  Work around the issue by clearing the GICR_PROPBASER_SHAREABILITY_MASK from
-+	  register reads at GICR and GITS.
-+
-+	  If unsure, say Y.
-+
- config SOCIONEXT_SYNQUACER_PREITS
- 	bool "Socionext Synquacer: Workaround for GICv3 pre-ITS"
- 	default y
-diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-index 586271b8aa39..637e2e2a1ab1 100644
---- a/drivers/irqchip/irq-gic-v3-its.c
-+++ b/drivers/irqchip/irq-gic-v3-its.c
-@@ -42,6 +42,7 @@
- #define ITS_FLAGS_CMDQ_NEEDS_FLUSHING		(1ULL << 0)
- #define ITS_FLAGS_WORKAROUND_CAVIUM_22375	(1ULL << 1)
- #define ITS_FLAGS_WORKAROUND_CAVIUM_23144	(1ULL << 2)
-+#define ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE	(1ULL << 3)
- 
- #define RDIST_FLAGS_PROPBASE_NEEDS_FLUSHING	(1 << 0)
- #define RDIST_FLAGS_RD_TABLES_PREALLOCATED	(1 << 1)
-@@ -2359,6 +2360,15 @@ static int its_setup_baser(struct its_node *its, struct its_baser *baser,
- 	its_write_baser(its, baser, val);
- 	tmp = baser->val;
- 
-+#if CONFIG_ROCKCHIP_NO_SHARE
-+	if (its->flags & ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE) {
-+		if (tmp & GITS_BASER_SHAREABILITY_MASK)
-+			tmp &= ~GITS_BASER_SHAREABILITY_MASK;
-+		else
-+			gic_flush_dcache_to_poc(base, PAGE_ORDER_TO_SIZE(order));
-+	}
-+#endif
-+
- 	if ((val ^ tmp) & GITS_BASER_SHAREABILITY_MASK) {
- 		/*
- 		 * Shareability didn't stick. Just use
-@@ -3057,6 +3067,7 @@ static void its_cpu_init_lpis(void)
- {
- 	void __iomem *rbase = gic_data_rdist_rd_base();
- 	struct page *pend_page;
-+	struct its_node *its;
- 	phys_addr_t paddr;
- 	u64 val, tmp;
- 
-@@ -3096,6 +3107,12 @@ static void its_cpu_init_lpis(void)
- 	gicr_write_propbaser(val, rbase + GICR_PROPBASER);
- 	tmp = gicr_read_propbaser(rbase + GICR_PROPBASER);
- 
-+#if CONFIG_ROCKCHIP_NO_SHARE
-+	its = list_first_entry(&its_nodes, struct its_node, entry);
-+	if (its->flags & ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE)
-+		tmp &= ~GICR_PROPBASER_SHAREABILITY_MASK;
-+#endif
-+
- 	if ((tmp ^ val) & GICR_PROPBASER_SHAREABILITY_MASK) {
- 		if (!(tmp & GICR_PROPBASER_SHAREABILITY_MASK)) {
- 			/*
-@@ -3120,6 +3137,11 @@ static void its_cpu_init_lpis(void)
- 	gicr_write_pendbaser(val, rbase + GICR_PENDBASER);
- 	tmp = gicr_read_pendbaser(rbase + GICR_PENDBASER);
- 
-+#if CONFIG_ROCKCHIP_NO_SHARE
-+	if (its->flags & ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE)
-+		tmp &= ~GICR_PENDBASER_SHAREABILITY_MASK;
-+#endif
-+
- 	if (!(tmp & GICR_PENDBASER_SHAREABILITY_MASK)) {
- 		/*
- 		 * The HW reports non-shareable, we must remove the
-@@ -4710,6 +4732,14 @@ static bool __maybe_unused its_enable_quirk_hip07_161600802(void *data)
- 	return true;
- }
- 
-+static bool __maybe_unused its_enable_quirk_rk356x(void *data)
-+{
-+	struct its_node *its = data;
-+
-+	its->flags |= ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE;
-+	return true;
-+}
-+
- static const struct gic_quirk its_quirks[] = {
- #ifdef CONFIG_CAVIUM_ERRATUM_22375
- 	{
-@@ -4755,6 +4785,14 @@ static const struct gic_quirk its_quirks[] = {
- 		.mask	= 0xffffffff,
- 		.init	= its_enable_quirk_hip07_161600802,
- 	},
-+#endif
-+#ifdef CONFIG_ROCKCHIP_NO_SHARE
-+	{
-+		.desc	= "ITS: Rockchip RK356X/RK3588 doesn't support shareability",
-+		.iidr	= 0x0201743b,
-+		.mask	= 0xffffffff,
-+		.init	= its_enable_quirk_rk356x,
-+	},
- #endif
- 	{
- 	}
-@@ -5096,6 +5134,10 @@ static int __init its_probe_one(struct resource *res,
- 	gits_write_cbaser(baser, its->base + GITS_CBASER);
- 	tmp = gits_read_cbaser(its->base + GITS_CBASER);
- 
-+#if CONFIG_ROCKCHIP_NO_SHARE
-+	if (its->flags & ITS_FLAGS_WORKAROUND_ROCKCHIP_NOSHARE)
-+		tmp &= ~GITS_CBASER_SHAREABILITY_MASK;
-+#endif
- 	if ((tmp ^ baser) & GITS_CBASER_SHAREABILITY_MASK) {
- 		if (!(tmp & GITS_CBASER_SHAREABILITY_MASK)) {
- 			/*
+https://lore.kernel.org/linux-firmware/20230223062453.181239-1-max.chou@realtek.com/
+
+Changes from V2:
+ - Corrected devicetree documentation to change compatible from const
+   back to enum.
+ - Removed "reviewed-by" from Alistair Francis as binding documentation
+   updated with changes.
+
+Changes from V1:
+ - Switched to use a fallback string for the rtl8822cs so as to not add
+   an extra entry to the of_device_id table. The driver is capable of
+   selecting the correct firmware blob to load.
+ - Updated the messages to note a new version of the firmware was
+   tested and that Realtek has submitted this firmware upstream.
+ - Updated the devicetree node on the Anbernic RGxx3 series to use the
+   fallback string of realtek,rtl8822cs-bt.
+
+Chris Morgan (3):
+  dt-bindings: net: realtek-bluetooth: Add RTL8821CS
+  Bluetooth: hci_h5: btrtl: Add support for RTL8821CS
+  arm64: dts: rockchip: Update compatible for bluetooth
+
+ .../bindings/net/realtek-bluetooth.yaml       | 25 ++++++++++++-------
+ .../dts/rockchip/rk3566-anbernic-rgxx3.dtsi   |  2 +-
+ drivers/bluetooth/btrtl.c                     |  8 ++++++
+ 3 files changed, 25 insertions(+), 10 deletions(-)
+
 -- 
-2.39.2
+2.34.1
 
 
 _______________________________________________
