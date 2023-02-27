@@ -4,86 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7313AC64ED8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 16:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93492C64ED8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 16:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c//0/Kv8SM+TI3RR9oL4MF/MnPkzLjtWIAAApAauggA=; b=HA77U9AObiMF8Q
-	9c0cC5U3oTzjCo9usC6pSQNESXRrSNDk9SITSUbk18Q9Yztk1VwX5J4DTYlYipIY2soD3rk2JOLYW
-	GA+qDiFrqdeZ+dNkOoLIPfpLs+p2xtJnZPVQtNozZ3JQB9yJcc0OzO09SgfEmuTwl8i8xzqX6eBQ2
-	SRMX3ow7YdrrJUfdxCqP8IzzhmxICptWWWWOy8VFv1RtAeN+XPO4s3v4VFqKbbeqy2wLI1nRRZ/z4
-	Crxtt1dzxTJOkKdyhfchVLk3XOW4ZwX5i8sB/B8mLRFgfBSkg1OJ6/Cdj1QcCxlbpclyKPNBWQhzC
-	LK4BD3i7kNKNjGxu43iQ==;
+	List-Owner; bh=VdIdRzRGo6SEgCXJaAgUiPfFbYpRZhb4X0Eeh6oL0Qw=; b=27FRcjCMAXfFnj
+	jTFNbGEPUJEh/gtu3ZoLe7uXCehi/mZiz8nBMIouyJst2HSLFD36Ig85W9ciwems5i6KR829rr/2T
+	KhZcyMqntRx+MezZuQz1aEPIt+jJnAHQlpa+YzmTwMEGXXyirPdjyLP0xgDYqiEfmlXDfCxF5K3vt
+	1HhZUvZIHLP1c6QXuV3OZqySVcLVD1cgisdo/XmjB5rbUp09KNdTl/+hmq4XWaoGSn/oRX5+dzO46
+	fVDLDS0wIJUzEoch3zIr+bfUWCqf3fZpJxyA++2xo6N1ntHiNO6MTYe4QUTJap0kJoIDxxl7xhV7e
+	78Mg+ecoS95inYIph08Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWgOf-00AMwE-9L; Mon, 27 Feb 2023 16:30:41 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1pWgXP-00AOCO-VM; Mon, 27 Feb 2023 16:39:43 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWgOZ-00AMtS-Ap
-	for linux-rockchip@lists.infradead.org; Mon, 27 Feb 2023 16:30:37 +0000
-Received: by mail-oi1-x231.google.com with SMTP id o12so5630694oik.6
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Feb 2023 08:30:35 -0800 (PST)
+	id 1pWgXN-00AOAo-85
+	for linux-rockchip@lists.infradead.org; Mon, 27 Feb 2023 16:39:42 +0000
+Received: by mail-wm1-x335.google.com with SMTP id d41-20020a05600c4c2900b003e9e066550fso4212487wmp.4
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Feb 2023 08:39:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SAWhW5/ZnWeHEgpd0MyQefc2epsEeOvOGaibb4+S/Vk=;
-        b=qL2SUOx8PeNpTXVu+f52nmeJL6R8pZRkKLzh1AHBRTAMZai+ZekvT8aiIeb2q1FCcw
-         yek2PZ3YHEmLYh8E1QI1zHldFcdY/+DZPIqcE1RTtJnqssm7utvIm7Ihi8RXGWVXHFrx
-         rSLoc6MRKyArAb2q3BJJPwHFHo4FMrDxjuDYRWOtZR9zm4e5WD9jWMkCFLUoQF06sMvb
-         hSYgt8ouMIVejwZy13CSoDh6pZzryPY6wEwuGv4/ZhyROc9gjJaAQn2FoNX3I9WCVD9i
-         pd6BBBZ51/r5WNE6W+h9hVlz2KnxcaEhtW7Iy9nT690DeEUu8kl/jKTDz3hfdpd4fvP/
-         RQig==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=crbERNB/KRiPX3Ns+MACGOaRXuvcwQ4dJP1SUBpCJ8g=;
+        b=Gdw1WjhW8fLA8jwW+s+geHgS3eG/p54KN9TXeayWH39nZnfmEv52LDFWQV2UBRD57L
+         I6H+KGeaboGegcC363z2APwz2ABZuqCQ7ksqMdNcciFAQ5Fxik6FVfgCQytgljyejMAJ
+         /R9av1khB9IWzoQMmBD+IF9MYWZWrQEvVEFLcE5dd/LNNEJGIOstujWzpT8gxWkYkVHD
+         BzoUvkxWKR3w2N0J/FE+9p9NpZ0Ho0h5eaCm/LRXD9We7FYL5nfkHkA8kOKVM6zuE156
+         AbZOtSR+Zm8FIZPdyTQrqU7U3ZdCg+9cHIICwLjzGp47OGEtuiUqTPFDHmxBBWdyDUn5
+         T1kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SAWhW5/ZnWeHEgpd0MyQefc2epsEeOvOGaibb4+S/Vk=;
-        b=hXaj+Rg0DRoPf6zenK4HFjpXyz1rbzNOUvu3bM6CUv898rKUx6kVW6NeV4NCclzB2a
-         biqM1Jn7O/0/AwX/H2U5zzIdpiJJ3xtoiFUdZBtkVmBnQKI6sUKuYJH9XNuwwG6WsyaF
-         SCmlfDRJ3dHRtppsnm7+4/vLr/UYckHHXzQ+hlxnz7JSzAR/tjM3sH2sfXw2nLwkNUT/
-         1XcOO3PLAIi391UBem6FHxV4OQCh7RRDQhroi/oSR44YyuYfXnCC/Uq+a3hTCHjIDPKS
-         ojslsZBCgLFs5qNBLZ8+O4eCuoTp5FwUNbzfmzSeQuPZaWIHoZCIqAJWMzmMecMPhh23
-         dOrw==
-X-Gm-Message-State: AO0yUKWe3wlBcK1U5cHHYArj9+PbE/LXEGd7HR0bPBfR4RUPz2sIqHp4
-	oNwC9UMhTDKruTEGJT56GE4=
-X-Google-Smtp-Source: AK7set8MAAPsyxbCcn+KGnghPgtS15u+x3K++bHUAQn4v6dHOQphWDyh24Fogc0pw/iteaRUlCRScA==
-X-Received: by 2002:a05:6808:8ea:b0:37e:aa97:4660 with SMTP id d10-20020a05680808ea00b0037eaa974660mr12136016oic.16.1677515433231;
-        Mon, 27 Feb 2023 08:30:33 -0800 (PST)
-Received: from localhost.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id ex16-20020a056808299000b0037fcc1fd34bsm3267713oib.13.2023.02.27.08.30.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Feb 2023 08:30:32 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-bluetooth@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	alistair@alistair23.me,
-	anarsoul@gmail.com,
-	luiz.dentz@gmail.com,
-	johan.hedberg@gmail.com,
-	marcel@holtmann.org,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/3 V3] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
-Date: Mon, 27 Feb 2023 10:30:25 -0600
-Message-Id: <20230227163027.130292-2-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230227163027.130292-1-macroalpha82@gmail.com>
-References: <20230227163027.130292-1-macroalpha82@gmail.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=crbERNB/KRiPX3Ns+MACGOaRXuvcwQ4dJP1SUBpCJ8g=;
+        b=AFJatavolUoMn1fQutZeveCgpoh64GzfUYhOlKap0D9r0uElwQDGFR3iTLXwmwreQh
+         QGG6uQJfHWP+Pg29FfISNFnd0mgMg87uIA1Z697yQVCjOw8DFuL1IPMP7jDi2K2jqBIu
+         JceT1RQ4sqtg6YSqLCHJEZvSSX/d2Mv6PhXJDNI+CidsdZBt7ro08nUpxbgzXPmqYcgG
+         yGgMQKYWGYAfdOmjiSCrSds7geYEFV411EiGiYej4Lynu4k/dnM9tsspQ2MfzC/qOZbd
+         9Y/IK6ZFjjKhr+AnNwvdZVmt8zVAuCnp1tTMFXfI8y09JPmzsBlfVdeTCKA4Qz166OVZ
+         mv8A==
+X-Gm-Message-State: AO0yUKWBvcmhWeqywH7RVZUuPOHU7a4QynHWK7Qq5KZmGrxRGUzux7j2
+	c88bXjsyx8a3wpR6ao0YtlmvBw==
+X-Google-Smtp-Source: AK7set8klad7bCsER3tYb5FwPiD6RW3fkao5lu6U9BHq6wZUQtRDDX+xscy8gxmRafyasXusCVWgcA==
+X-Received: by 2002:a05:600c:3586:b0:3df:9858:c039 with SMTP id p6-20020a05600c358600b003df9858c039mr6870854wmq.14.1677515977564;
+        Mon, 27 Feb 2023 08:39:37 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.216.144])
+        by smtp.gmail.com with ESMTPSA id c20-20020a7bc854000000b003dd1bd66e0dsm9630740wml.3.2023.02.27.08.39.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 Feb 2023 08:39:37 -0800 (PST)
+Message-ID: <a90451df-0191-a2fb-060d-66ce5afb55d2@linaro.org>
+Date: Mon, 27 Feb 2023 17:39:35 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 1/3 V3] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
+Content-Language: en-US
+To: Chris Morgan <macroalpha82@gmail.com>, linux-bluetooth@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ alistair@alistair23.me, anarsoul@gmail.com, luiz.dentz@gmail.com,
+ johan.hedberg@gmail.com, marcel@holtmann.org, heiko@sntech.de,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20230227163027.130292-1-macroalpha82@gmail.com>
+ <20230227163027.130292-2-macroalpha82@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230227163027.130292-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_083035_403437_AAFB213D 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230227_083941_341164_FE08BD69 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,63 +96,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On 27/02/2023 17:30, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add compatible string for RTL8821CS for existing Realtek Bluetooth
+> driver.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../bindings/net/realtek-bluetooth.yaml       | 25 ++++++++++++-------
+>  1 file changed, 16 insertions(+), 9 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
+> index 143b5667abad..198c5dd1f257 100644
+> --- a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
+> +++ b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
+> @@ -4,24 +4,31 @@
+>  $id: http://devicetree.org/schemas/net/realtek-bluetooth.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+> -title: RTL8723BS/RTL8723CS/RTL8822CS Bluetooth
+> +title: RTL8723BS/RTL8723CS/RTL8821CS/RTL8822CS Bluetooth
+>  
+>  maintainers:
+>    - Vasily Khoruzhick <anarsoul@gmail.com>
+>    - Alistair Francis <alistair@alistair23.me>
+>  
+>  description:
+> -  RTL8723CS/RTL8723CS/RTL8822CS is WiFi + BT chip. WiFi part is connected over
+> -  SDIO, while BT is connected over serial. It speaks H5 protocol with few
+> -  extra commands to upload firmware and change module speed.
+> +  RTL8723CS/RTL8723CS/RTL8821CS/RTL8822CS is a WiFi + BT chip. WiFi part
+> +  is connected over SDIO, while BT is connected over serial. It speaks
+> +  H5 protocol with few extra commands to upload firmware and change
+> +  module speed.
+>  
+>  properties:
+>    compatible:
+> -    enum:
+> -      - realtek,rtl8723bs-bt
+> -      - realtek,rtl8723cs-bt
+> -      - realtek,rtl8723ds-bt
+> -      - realtek,rtl8822cs-bt
+> +    oneOf:
+> +      - items:
 
-Add compatible string for RTL8821CS for existing Realtek Bluetooth
-driver.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../bindings/net/realtek-bluetooth.yaml       | 25 ++++++++++++-------
- 1 file changed, 16 insertions(+), 9 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-index 143b5667abad..198c5dd1f257 100644
---- a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-+++ b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-@@ -4,24 +4,31 @@
- $id: http://devicetree.org/schemas/net/realtek-bluetooth.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: RTL8723BS/RTL8723CS/RTL8822CS Bluetooth
-+title: RTL8723BS/RTL8723CS/RTL8821CS/RTL8822CS Bluetooth
- 
- maintainers:
-   - Vasily Khoruzhick <anarsoul@gmail.com>
-   - Alistair Francis <alistair@alistair23.me>
- 
- description:
--  RTL8723CS/RTL8723CS/RTL8822CS is WiFi + BT chip. WiFi part is connected over
--  SDIO, while BT is connected over serial. It speaks H5 protocol with few
--  extra commands to upload firmware and change module speed.
-+  RTL8723CS/RTL8723CS/RTL8821CS/RTL8822CS is a WiFi + BT chip. WiFi part
-+  is connected over SDIO, while BT is connected over serial. It speaks
-+  H5 protocol with few extra commands to upload firmware and change
-+  module speed.
- 
- properties:
-   compatible:
--    enum:
--      - realtek,rtl8723bs-bt
--      - realtek,rtl8723cs-bt
--      - realtek,rtl8723ds-bt
--      - realtek,rtl8822cs-bt
-+    oneOf:
-+      - items:
-+          - enum:
-+              - realtek,rtl8723bs-bt
-+              - realtek,rtl8723cs-bt
-+              - realtek,rtl8723ds-bt
-+              - realtek,rtl8822cs-bt
-+      - items:
-+          - enum:
-+              - realtek,rtl8821cs-bt
-+          - const: realtek,rtl8822cs-bt
- 
-   device-wake-gpios:
-     maxItems: 1
--- 
-2.34.1
+Now you added items which were never here... You have only one item, so
+no need for items.
+Best regards,
+Krzysztof
 
 
 _______________________________________________
