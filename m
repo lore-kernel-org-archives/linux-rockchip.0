@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93492C64ED8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 16:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D9BC64ED8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Feb 2023 21:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VdIdRzRGo6SEgCXJaAgUiPfFbYpRZhb4X0Eeh6oL0Qw=; b=27FRcjCMAXfFnj
-	jTFNbGEPUJEh/gtu3ZoLe7uXCehi/mZiz8nBMIouyJst2HSLFD36Ig85W9ciwems5i6KR829rr/2T
-	KhZcyMqntRx+MezZuQz1aEPIt+jJnAHQlpa+YzmTwMEGXXyirPdjyLP0xgDYqiEfmlXDfCxF5K3vt
-	1HhZUvZIHLP1c6QXuV3OZqySVcLVD1cgisdo/XmjB5rbUp09KNdTl/+hmq4XWaoGSn/oRX5+dzO46
-	fVDLDS0wIJUzEoch3zIr+bfUWCqf3fZpJxyA++2xo6N1ntHiNO6MTYe4QUTJap0kJoIDxxl7xhV7e
-	78Mg+ecoS95inYIph08Q==;
+	List-Owner; bh=wtubT412w2FvS9mkkib/I28LUH6bp47nrnZsPSC44sY=; b=vDm9ejPHVDtKKd
+	rU0ssQz77IQwSoZH6GFxf4qcUKmVG5R/3eQLZprymJbZZMoJm12/KKc60NN6LfXbLp6XhPH+/N+1G
+	VhkxB+lio/lAHOwIfXH1DtxEQZmWiPVLc4y4XIyfXDeZZY2ul8NsfSI43G9lBXbl6/hjr+VnvBG73
+	vN1f+6vbLfS9d/PbZvbdiX1B0iLKp/NKP/M0bBQzX/VkuNshA6VWHjk/xPqwOz3k8kn+uRu2q47pw
+	eP3vGfnCQtFiBH7o9a3Y37ZUFaiafFfW9Y/tRHdnv4p6VgA1ZSIOvRX2SciXomeX7QM6Pvgu6fAg4
+	g1e2e91T/1vFy78l1Onw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWgXP-00AOCO-VM; Mon, 27 Feb 2023 16:39:43 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1pWkxN-00BJOd-W1; Mon, 27 Feb 2023 21:22:50 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pWgXN-00AOAo-85
-	for linux-rockchip@lists.infradead.org; Mon, 27 Feb 2023 16:39:42 +0000
-Received: by mail-wm1-x335.google.com with SMTP id d41-20020a05600c4c2900b003e9e066550fso4212487wmp.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Feb 2023 08:39:38 -0800 (PST)
+	id 1pWkxK-00BJKz-L3; Mon, 27 Feb 2023 21:22:48 +0000
+Received: by mail-wr1-x432.google.com with SMTP id r7so7670600wrz.6;
+        Mon, 27 Feb 2023 13:22:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=crbERNB/KRiPX3Ns+MACGOaRXuvcwQ4dJP1SUBpCJ8g=;
-        b=Gdw1WjhW8fLA8jwW+s+geHgS3eG/p54KN9TXeayWH39nZnfmEv52LDFWQV2UBRD57L
-         I6H+KGeaboGegcC363z2APwz2ABZuqCQ7ksqMdNcciFAQ5Fxik6FVfgCQytgljyejMAJ
-         /R9av1khB9IWzoQMmBD+IF9MYWZWrQEvVEFLcE5dd/LNNEJGIOstujWzpT8gxWkYkVHD
-         BzoUvkxWKR3w2N0J/FE+9p9NpZ0Ho0h5eaCm/LRXD9We7FYL5nfkHkA8kOKVM6zuE156
-         AbZOtSR+Zm8FIZPdyTQrqU7U3ZdCg+9cHIICwLjzGp47OGEtuiUqTPFDHmxBBWdyDUn5
-         T1kg==
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=uirSLB3F9Zb+PTXXeLN0MPijsyHCQ2xWrITr0wlr88I=;
+        b=em1V+lmvXOiXWqqGeAQ2IjGFqdAYg++TzAYPyddFCk1yvxJVYBcPgfgXN9g4P0axNn
+         P4KLkVkBYvYpuOsXySp7nDPzjMSAQqBYLHcamLew9fzaR781fkBCt3i/CsN/hXGUuf33
+         dFztapH6nIeAADdZo5yWhT2ErYWEjTRsC/cvP+ms0WC+8IWB/5Y6MJ9dZ2K2P/aajRSh
+         3Z2jWmroWtD4hQXKbRnmnsjCnEdqyTWzn4YrdPPxR/vCA9nmFolM2J5nnNffSin1VF17
+         XTbPQ92H9tVBVUOtShGCLaqxTWKxfr+roLG6yUJ63d5GyIY3/AFkfTlVfX5DSdj7a00v
+         cOJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=crbERNB/KRiPX3Ns+MACGOaRXuvcwQ4dJP1SUBpCJ8g=;
-        b=AFJatavolUoMn1fQutZeveCgpoh64GzfUYhOlKap0D9r0uElwQDGFR3iTLXwmwreQh
-         QGG6uQJfHWP+Pg29FfISNFnd0mgMg87uIA1Z697yQVCjOw8DFuL1IPMP7jDi2K2jqBIu
-         JceT1RQ4sqtg6YSqLCHJEZvSSX/d2Mv6PhXJDNI+CidsdZBt7ro08nUpxbgzXPmqYcgG
-         yGgMQKYWGYAfdOmjiSCrSds7geYEFV411EiGiYej4Lynu4k/dnM9tsspQ2MfzC/qOZbd
-         9Y/IK6ZFjjKhr+AnNwvdZVmt8zVAuCnp1tTMFXfI8y09JPmzsBlfVdeTCKA4Qz166OVZ
-         mv8A==
-X-Gm-Message-State: AO0yUKWBvcmhWeqywH7RVZUuPOHU7a4QynHWK7Qq5KZmGrxRGUzux7j2
-	c88bXjsyx8a3wpR6ao0YtlmvBw==
-X-Google-Smtp-Source: AK7set8klad7bCsER3tYb5FwPiD6RW3fkao5lu6U9BHq6wZUQtRDDX+xscy8gxmRafyasXusCVWgcA==
-X-Received: by 2002:a05:600c:3586:b0:3df:9858:c039 with SMTP id p6-20020a05600c358600b003df9858c039mr6870854wmq.14.1677515977564;
-        Mon, 27 Feb 2023 08:39:37 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id c20-20020a7bc854000000b003dd1bd66e0dsm9630740wml.3.2023.02.27.08.39.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Feb 2023 08:39:37 -0800 (PST)
-Message-ID: <a90451df-0191-a2fb-060d-66ce5afb55d2@linaro.org>
-Date: Mon, 27 Feb 2023 17:39:35 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uirSLB3F9Zb+PTXXeLN0MPijsyHCQ2xWrITr0wlr88I=;
+        b=VjWDhJrsVcXc6ZUawf6u9Ux9CRNOA5vG95/pkjKHDsaHw5l5F8a0bxDJVv/x1B8U9d
+         BB/t+JqxP9XJh2k/lUO01mW3TUE3JVuDGcWN+lnTDMu/QZ9Znb6faw7OMUQZEoxbZChe
+         Vem8DzQFN72IzHkmMLahKM8tev88lJkOVyMOIbANrH0RHa+rxm+eXOoOQVGJTFmOWQqd
+         hFllK4+329VSW1qwPtYvAeYca+eGVy9G//hh8O6Yob5Qw65q3KsIgWIJjANHhx0n8rsF
+         dIiUdStMTzc/1X6M3Wrr16e4I2k8n5rDq929q5BX5G+5q/qaJoQFzFhsRwaKxyt9OT7D
+         GJnQ==
+X-Gm-Message-State: AO0yUKWsFGHyc611LWlsyBH2aZrZDbkQkK+/nRWj48ELT4Sf9B2EfvRB
+	6ObjhfrT6Ts9X7i+EqTqHFJIv+P38bacmSGFSFg=
+X-Google-Smtp-Source: AK7set8ADg0kdUtzpW9qrUsTBlfAGHGWVV37/V1prUR1shzO/2nhTvB+GPKFW2eS1wh/uaj4v+GfSVYbARZ+xcmxqnM=
+X-Received: by 2002:adf:d4c3:0:b0:2cc:4ed1:f849 with SMTP id
+ w3-20020adfd4c3000000b002cc4ed1f849mr120657wrk.8.1677532956794; Mon, 27 Feb
+ 2023 13:22:36 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 1/3 V3] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, linux-bluetooth@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- alistair@alistair23.me, anarsoul@gmail.com, luiz.dentz@gmail.com,
- johan.hedberg@gmail.com, marcel@holtmann.org, heiko@sntech.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20230227163027.130292-1-macroalpha82@gmail.com>
- <20230227163027.130292-2-macroalpha82@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230227163027.130292-2-macroalpha82@gmail.com>
+References: <20230227151847.207922-1-lucas.tanure@collabora.com>
+In-Reply-To: <20230227151847.207922-1-lucas.tanure@collabora.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 27 Feb 2023 16:22:23 -0500
+Message-ID: <CAMdYzYrmq1ftBaBj1XHVWWXUQ4Prr1VpTpunyNOQ2ha-DkXMjQ@mail.gmail.com>
+Subject: Re: [RFC 0/1] ITS fails to allocate on rk3588
+To: Lucas Tanure <lucas.tanure@collabora.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+	Jonathan Corbet <corbet@lwn.net>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>, 
+	Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230227_083941_341164_FE08BD69 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20230227_132246_713494_D9A0DF7C 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,56 +87,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 27/02/2023 17:30, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add compatible string for RTL8821CS for existing Realtek Bluetooth
-> driver.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../bindings/net/realtek-bluetooth.yaml       | 25 ++++++++++++-------
->  1 file changed, 16 insertions(+), 9 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> index 143b5667abad..198c5dd1f257 100644
-> --- a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> +++ b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> @@ -4,24 +4,31 @@
->  $id: http://devicetree.org/schemas/net/realtek-bluetooth.yaml#
->  $schema: http://devicetree.org/meta-schemas/core.yaml#
->  
-> -title: RTL8723BS/RTL8723CS/RTL8822CS Bluetooth
-> +title: RTL8723BS/RTL8723CS/RTL8821CS/RTL8822CS Bluetooth
->  
->  maintainers:
->    - Vasily Khoruzhick <anarsoul@gmail.com>
->    - Alistair Francis <alistair@alistair23.me>
->  
->  description:
-> -  RTL8723CS/RTL8723CS/RTL8822CS is WiFi + BT chip. WiFi part is connected over
-> -  SDIO, while BT is connected over serial. It speaks H5 protocol with few
-> -  extra commands to upload firmware and change module speed.
-> +  RTL8723CS/RTL8723CS/RTL8821CS/RTL8822CS is a WiFi + BT chip. WiFi part
-> +  is connected over SDIO, while BT is connected over serial. It speaks
-> +  H5 protocol with few extra commands to upload firmware and change
-> +  module speed.
->  
->  properties:
->    compatible:
-> -    enum:
-> -      - realtek,rtl8723bs-bt
-> -      - realtek,rtl8723cs-bt
-> -      - realtek,rtl8723ds-bt
-> -      - realtek,rtl8822cs-bt
-> +    oneOf:
-> +      - items:
+On Mon, Feb 27, 2023 at 10:18 AM Lucas Tanure
+<lucas.tanure@collabora.com> wrote:
+>
+> I am assisting with PCIe and networking bring-up for Rock Pi 5B (RK3588).
+> This chip uses the same GICv3 as RK356X but has fixed the previous
+> limitation of GIC only supporting 32-bit addresses.
+>
+> But the implementation decision for shareability in GICR and GITS is
+> still the same.
+>
+> I read the previous thread about this topic:
+> https://lore.kernel.org/lkml/2791594e-db60-e1d0-88e5-7e5bbd98ae4d@rock-chips.com/T/#m5dbc70ff308d81e98dd0d797e23d3fbf9c353245
+>
+> From my understanding, the errata numbers Marc Zyngier is referring to
+> are found in Arm errata documents at developer.arm.com/documentation.
+> But I could not find Cavium or Broadcom pages for errata with those
+> numbers in Documentation/arm64/silicon-errata.rst
+>
+> I could not find an errata document about this shareability issue,
+> and by what Kever said in the previous thread this could be a
+> RockChip design decision.
+>
+> Marc, as I could only find ARM errata numbers, is the errata number
+> you were expecting generated by ARM only, or RockChip should issue
+> a document like Arm to detail the issue?
+>
+> Can this shareability issue be seen as a quirk without an
+> errata number?
+>
+> The following patch is based on the work of Peter Geis for the
+> Quartz64 board and the previous thread feedback.
 
-Now you added items which were never here... You have only one item, so
-no need for items.
-Best regards,
-Krzysztof
+I see you have included rk356x in this as well. This will only work on
+rk356x boards that do not exceed 4GB of ram as the on chip devices are
+only 32bit addressable and the kernel by default allocates this in
+highmem.
 
+Very Respectfully,
+Peter Geis
+
+>
+> Lucas Tanure (1):
+>   irqchip/gic-v3: Add RK3588 GICR and GITS no share workaround
+>
+>  Documentation/arm64/silicon-errata.rst |  4 +++
+>  arch/arm64/Kconfig                     | 13 ++++++++
+>  drivers/irqchip/irq-gic-v3-its.c       | 42 ++++++++++++++++++++++++++
+>  3 files changed, 59 insertions(+)
+>
+> --
+> 2.39.2
+>
 
 _______________________________________________
 Linux-rockchip mailing list
