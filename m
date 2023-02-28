@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BCFAC6FA8E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Feb 2023 15:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C28DC64ED6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Feb 2023 16:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p6HPmYYGVb3cjMkdisemr5yhL5fwI8q5lC29f9tMRb8=; b=n5LmQPWLfhC1T9
-	5qu4YEC79K1leYu6zgM1SzDyAUWnzfvMPK870uIwvVGijaOwSiA6TF3T/1DyZyPOJNt54LzDRaNnS
-	83MI0k1jaR4h45XLPx3r0jCqhR827aK4r2kpWf6iUqBvILq8AmkQv/c1rm69+ehkLf7UTxlxs/Onk
-	mufApN3nBvNYD9T38wwQr1dkg8GisvyGqjAg5VOq5mrSlkEIH33FCnOCDyppnwvUv4TmU3SAvdfpI
-	iVVMPVtzeFOla6X3DefoMwWmODasUoby6/W/EWO/DmRB5t6KFry5n5v1amnd8nCrryL1+u+rhKuPo
-	rCLqzAJ8lXpTGAmzADuw==;
+	List-Owner; bh=bw96/oq8kQreDhYLa9vBVDWQGsw4d6ylKFDrTf3FnGw=; b=OARNebMDFEd62S
+	UzXwRrEhuuXmmubUuKg7cUQogtPPscRPtghM6QUYngD50s/ukLgJn5Y4E/0VZv9gyTQuKjWSRj3JN
+	bNwZhIAPqbIFBLBSHh8zDKcNB3c9DWau09WvdzMCC3GhYpO1JlfNOS5heKpYNIwowV41UCGs8Qh0R
+	G1wJIkYkDFxtVuzZvieieAEhrjOfuUt4xjOw64+R9Lsm4wNrUMC7gCWfptjBJTo8cq5qOf21Rmt06
+	1/VP3Ho/TfYMqZuA/khily8MACxAel9oif9nqqHH3S0eK2W7S+cCEWbzDSUASr65e27eFvUWFsjEN
+	x6cdpc+xCz+HMqFn9T1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX1rA-00De6L-8L; Tue, 28 Feb 2023 15:25:32 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX1r8-00De4y-4E
-	for linux-rockchip@lists.infradead.org; Tue, 28 Feb 2023 15:25:31 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id o38-20020a05600c512600b003e8320d1c11so1054591wms.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Feb 2023 07:25:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1677597925;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gIFCjFemZc/gnj7ICZYhdDftYGP5figYg0g5fTPNeTw=;
-        b=LIVWIyTGzTBjBpwDGxSOtz2Y7+CLoKbkR1x2Gbj4+Ij0RxmXMzoyMMslo0RdfXodZ/
-         3r8hass89maPnpLnUnd4LF5uMN5V6ka6UXghDmocE9Lc9olsNfMPX11R1ivIShCiAHj2
-         TY3Gs+k+wiGK40DAvmYoD3KNDx9FA84ZYZBknICVEYctQjLR6UVSPXK0pPumRBY0r0xm
-         IIiH7Mo4hmrbpcZDw21Jz6LA0dsLeA2dJ6yd5FaibLtOJSOzy2vdaPTvZf8vBRE12Co9
-         UR5FvvoIFsZWT2NTXR4Dn5Xgdj3wWcw3O3JxEuL0V9GRIW3YIgQCQp4TFvrbseMG87jg
-         iG8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677597925;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gIFCjFemZc/gnj7ICZYhdDftYGP5figYg0g5fTPNeTw=;
-        b=x5iJrYnXEoOW0BLTKcMcOkKFDyPrZghTHLmzkZtd2YJGj0LoQMWT9+ZDqWBdfAu53a
-         w5vzmjq+xSAuIS2bgPEqwjPbSW7H6z0QjCqMMs5rqaUmHNuvupMXCqm/Bw4JRVRvXC6F
-         pQIogf9aadEuReOVaWMWhWFNHExM86TxmWUJagdACeoLVpQjuxKOoLE7TAUZ+KKsoN3U
-         IU2ifybBkd2yDuMlD5V9nniNhk32KYBUw9QXt6G6DbuhaTKdQN6u/eyXqxXIUR5E3Ypr
-         HrnbBxLVTT2QKVf0PZR7lPf7pcI5bQmCzrx8q+Lu5pn4CuCx/8nzhQxBw4KyqfSrN7yz
-         tBWA==
-X-Gm-Message-State: AO0yUKU7t7OpdhVkyvsywxAsBV8GaeSUtkMHDT7WuSQtS2jydeqZ4cD+
-	yTdo96fGLDnj4E1acAQ0MFY/2w==
-X-Google-Smtp-Source: AK7set/K4l+xYcE5378bcbvSHyaphz8hiqb+3QqaW38tDT0j7mqQBm0kpoUx1ZkQgB0shFS5bdO8Qw==
-X-Received: by 2002:a05:600c:491d:b0:3e2:6ec:7fb7 with SMTP id f29-20020a05600c491d00b003e206ec7fb7mr2453066wmp.0.1677597924827;
-        Tue, 28 Feb 2023 07:25:24 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.216.144])
-        by smtp.gmail.com with ESMTPSA id o19-20020a05600c379300b003e2052bad94sm16134455wmr.33.2023.02.28.07.25.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 07:25:24 -0800 (PST)
-Message-ID: <9f03c575-a11e-3125-cb07-e0434c517e25@linaro.org>
-Date: Tue, 28 Feb 2023 16:25:22 +0100
+	id 1pX34a-00Dmfn-GW; Tue, 28 Feb 2023 16:43:28 +0000
+Received: from post.baikalelectronics.com ([213.79.110.86])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pX34P-00Dmem-NX; Tue, 28 Feb 2023 16:43:20 +0000
+Received: from post.baikalelectronics.com (localhost.localdomain [127.0.0.1])
+	by post.baikalelectronics.com (Proxmox) with ESMTP id AC854E0EB4;
+	Tue, 28 Feb 2023 19:35:03 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	baikalelectronics.ru; h=cc:cc:content-type:content-type:date
+	:from:from:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=post; bh=CuNkOupsAqXo74CzsFjX
+	z2B4PdfP8UnQM9Atgh14Tdc=; b=Pm5ly4gnRYRRSuGzuxynxW5677hdqTiDpDYl
+	gY7BT0wOUqg399GqVjmw3gYAr5UQxWAZ+ht65BYEyec5fOy1kFNWaGaH2D5fNW/b
+	TQXzLsiI1Kpd3m9DJrXyPPsuen0QblaiyBK2OWtfwBEkLU6iFrb1kpU3xPv/2yYy
+	C9PVhRw=
+Received: from mail.baikal.int (mail.baikal.int [192.168.51.25])
+	by post.baikalelectronics.com (Proxmox) with ESMTP id 90EB3E0E1D;
+	Tue, 28 Feb 2023 19:35:03 +0300 (MSK)
+Received: from mobilestation (10.8.30.22) by mail (192.168.51.25) with
+ Microsoft SMTP Server (TLS) id 15.0.1395.4; Tue, 28 Feb 2023 19:35:02 +0300
+Date: Tue, 28 Feb 2023 19:35:01 +0300
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Bjorn Helgaas <helgaas@kernel.org>, Anton <smalltalk@swismail.com>
+CC: Serge Semin <fancer.lancer@gmail.com>, Simon Xue <xxm@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>, <smalltalk@swismail.com>, Kever Yang
+	<kever.yang@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner
+	<heiko@sntech.de>, <linux-rockchip@lists.infradead.org>,
+	<linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [Bug 217100] New: Bifurcation between pcie3x1 & pcie3x2 doesn't
+ work in RK3568J.
+Message-ID: <20230228163420.e4tskh3bwposkxji@mobilestation>
+References: <bug-217100-41252@https.bugzilla.kernel.org/>
+ <20230228124427.GA114786@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 1/3 V4] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, linux-bluetooth@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- alistair@alistair23.me, anarsoul@gmail.com, luiz.dentz@gmail.com,
- johan.hedberg@gmail.com, marcel@holtmann.org, heiko@sntech.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20230228152205.133582-1-macroalpha82@gmail.com>
- <20230228152205.133582-2-macroalpha82@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230228152205.133582-2-macroalpha82@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20230228124427.GA114786@bhelgaas>
+X-Originating-IP: [10.8.30.22]
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_072530_194258_DCC0028A 
-X-CRM114-Status: UNSURE (   7.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230228_084318_339257_357825A2 
+X-CRM114-Status: GOOD (  36.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,19 +77,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/02/2023 16:22, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+* Cc += Linux ARM mailing list
+
+Hi Anton
+
+On Tue, Feb 28, 2023 at 06:44:27AM -0600, Bjorn Helgaas wrote:
+> On Tue, Feb 28, 2023 at 08:53:50AM +0000, bugzilla-daemon@kernel.org wrote:
+> > https://bugzilla.kernel.org/show_bug.cgi?id=217100
+> > 
+> >            Summary: Bifurcation between pcie3x1 & pcie3x2 doesn't work in
+> >                     RK3568J.
+> > ...
 > 
-> Add compatible string for RTL8821CS for existing Realtek Bluetooth
-> driver.
+> > Hello.
+> > 
+> > First, I want to say that pcie3x1 crashes if started before pcie3x2 . Driver
+> > > pcie-designware.c 
+> > 
+> > in function 
+> > 
+> > > void dw_pcie_version_detect(struct dw_pcie *pci)
+> > 
+> > tries to read parameter from dbi register (PCIE_VERSION_NUMBER) and fails on
+> > it.
+
+Could you give more details what crashes? Log/Stack-trace would be
+nice to see.
+
+Do you know the DW PCIe IP-core version? Could you try to manually get the
+content of the PCIE_VERSION_NUMBER and PCIE_VERSION_TYPE registers after
+the system successfully boots up?
+
+On the first glance what you see here might be caused by the DBI
+reference clock race condition/malfunction. The
+dw_pcie_version_detect() function doesn't do much. It just reads the
+IP-core version/type registers content. So if the reference clock
+isn't enabled by the time of the function call then the system bus may
+return an error, which could be caught by the system errors handler
+module, which driver can cause the kernel crash. Though the LLDD
+enables all the supplied clocks before calling dw_pcie_host_init(). So
+what you've discovered seems unexpected and most likely caused by some
+other place. Thereby here are several questions:
+
+1. Are you sure your DT-file has all the required reference clocks
+specified for all the Rockchip PCIe DT-nodes?
+
+2. Are you sure there were no updates in the platform-clock
+driver(s) which could cause a possible clock malfunction?
+
+3. Could you have a look whether the pcie3x1 and pcie3x2 reference/DBI
+clock sources are unrelated? That might give a clue to the problem
+solution and could confirm the race.
+
+4. Are you sure that the problem is in the dw_pcie_version_detect()
+function? Could you try to replace all the dw_pcie_readl_dbi() calls
+with the actual content of the PCIE_VERSION_NUMBER and PCIE_VERSION_TYPE
+registers and then have a look whether the crash still happens?
+
+Anyway Log/Stack-trace would give better understanding of the problem.
+
+> > So I changed sequence of declaration PCIE in rk3568.dtsi: first - pcie3x2 next
+> > pcie3x1. Now Linux first starts pcie3x2, then successfully starts pcie3x1.
+> > 
+> > But main problem is that bifurcation in phy driver 
+> > > phy-rockchip-snps-pcie3.c 
+> > 
+> > doesn't work. I tried add next lines in function
+
+It seems to me that this problem and the problem above might be weakly
+related. Let's dive deeper in the first problem. Then we can go
+towards the second problem if it will be actual by that time.
+
+> > 
+> > > static int rockchip_p3phy_probe(struct platform_device *pdev)
+> > 
+> > right after block check
+> > 
+> > > if (priv->num_lanes == -EINVAL) {
+> > > }
+> > 
+> > > priv->num_lanes = 2;
+> > > priv->lanes[0] = 1;
+> > > priv->lanes[1] = 2
+> > 
+> > And driver writes during Linux boot process that bifurcation is enabled, but
+> > 
+> > lspci
+> > 
+> > does't show second device.
+> > 
+> > Best regards,
+> > Anton.
 > 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Thanks much for your report, Anton.  People don't really pay attention
+> to the bugzilla, so I'm forwarding this to the mailing list and to
+> some folks who've worked on that driver in the past.
+> 
 
+> MAINTAINERS doesn't list an entry for pcie-dw-rockchip.c; I'm not sure
+> if that's an oversight or if nobody cares enough to actually maintain
+> it.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hi Bjorn
 
-Best regards,
-Krzysztof
+It seems that the driver is currently supported by the Rockchip SoC maintainer:
+ARM/Rockchip SoC support
+F:      drivers/*/*/*rockchip*
+F:      drivers/*/*rockchip*
+So @Heiko might give a more experienced advice about the bug.
+
+-Serge(y)
+
+> 
+> Bjorn
+> 
 
 
 _______________________________________________
