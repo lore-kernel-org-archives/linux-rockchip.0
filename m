@@ -4,95 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F7D7C64EC4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Feb 2023 22:39:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E685C7EE33
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Mar 2023 20:15:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Date:References:
-	In-Reply-To:Message-Id:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Jl3hpJa2gDtlhoSc3vlvhJ2WA6vcgZoDTUJnZJtTgc=; b=uv3kIZmiXeC17x
-	6WJJ3sSYAOGj9nOkpG0CyEsGPtxDmS5IB0kSU48Qg3bzz+qUXQ8rpbh0opwv7idWxb7MKSHdmzIw5
-	sTD2d6p5X9NwDEXFe4dv0XeblJzCShfPFsKdGA/Vf715H/eRZg27QuqMLynue64CljPd36+pvQQfy
-	VTQ1sf3FEz8bSOktb6Z9ZI9RRdFne28ozzkkCq5rK2ziymUL0bmMGIZBD9XBeiagINIY+VFPICZlS
-	KUBuLrCQta76C3scJCeP8jA5h1KyXUg3kHVUg9+Qp8AV+cWpQHwsNQXn278/zM926oHrw6eFbPfm6
-	X6ALKFF3u16cSCIRJjQA==;
+	List-Owner; bh=CY0mr3hYyc1bWFPg3FNm72pCWU3T+Hmsf77lgvcpHMU=; b=QR56zq/Cs6T04V
+	qg/6fWwf3sdjsoXr7eMj/A1os8uAPlc6FCyrmWLBsqWuVNXeP+i4LoKNlFOUKkIxt4uq5uEh8qqBt
+	/FXbjPCjacpZAANUOLgwnRkIqHrhmPVgd1chDtuVTPoPWrumCDqH07PP7cu+coJpxaIoCoindd4ej
+	Crl5tdgLoK2aJWA3TuiWWVSEcaf7ZcbtgTxYX/fXwJqeq311QbtOVjTXDi+vcQ+5rCMvbC7PBYdEs
+	0kmlVA6ITfp/1rtGdxvaS4W9cORts5rJTjpAa66WMwOUaJFN40YA1NdUN0Id4/cGlB+LviJ0Ijanv
+	P01+iQL6ggWWESlKdxWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX8dE-00EV6f-8b; Tue, 28 Feb 2023 22:39:36 +0000
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+	id 1pXSrW-00HTBs-CM; Wed, 01 Mar 2023 20:15:42 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pX8dB-00EV5S-Fl
-	for linux-rockchip@lists.infradead.org; Tue, 28 Feb 2023 22:39:35 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id B0DA13200954;
-	Tue, 28 Feb 2023 17:39:25 -0500 (EST)
-Received: from imap43 ([10.202.2.93])
-  by compute5.internal (MEProxy); Tue, 28 Feb 2023 17:39:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
-	 h=cc:cc:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm1; t=1677623965; x=1677710365; bh=hx
-	VjkJn7zqJxqfQH01xBcClvQ5vUJ3mcknplStIuuKA=; b=pHFItyyQPOnxzEqrkL
-	CWWve+XidER5QUkJYRsWOkQioN9rSaumKJEkPVj2FLb1yITTnjdoT+RQnHHN2NrC
-	4eotblEm6nltCTcRVYc4A+CmLVgyi6wzYLIXys/IUoqyyNncioL410qSExsNqXzb
-	mlcMyl68A85+WDmSYaZAF6YlBB/Q2OkvSYCM5Ic5AnE6r45v2tjP+h+uZcT824kP
-	knz6UT94sIyVgj1dVWAHXFSoGrLctv1mKddaY/3i4xSsZEo2WGF1Q1MtmpcY7IjD
-	bC8V/8eCFHKJpVysqX5abtwkj8s283zC4e2pdGPe0kGINTXERsSdHaqCritCVkub
-	GP1A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; t=1677623965; x=1677710365; bh=hxVjkJn7zqJxqfQH01xBcClvQ5vU
-	J3mcknplStIuuKA=; b=GmgWreykv+Mw4IoOvmTDGGGRXBiS9e9do5VqMypJOvrt
-	ODzkefPcDIDFaf13ITHVhlCDy592uTyNHU3K3txgXtj4labH86+mX4morZAi2eS/
-	0wrLYV4xOuCQxVP7/kd2J7dGtRGjNeiMp2L0NsiBPWKlNsSlK8510uD3xV5LqaQf
-	RWt2D/vo5rp43pkF9wB0njDuSuTfvNdu5VLOFNw8WbwI7Mp5z4pyfMUqCnUC0Yzz
-	MEsYvOHptbrIpB4GQqzy5+35dl05nzJnpB6QArpq/ktJFmd6XgiRE+w9fS48500n
-	kf3FFMgHZOd/qzsB5FjbC0nZSdy+onoyOdixMTw3Sg==
-X-ME-Sender: <xms:nIL-Y4xhMPpwqOKiBAFDb7Tdk3Mid68GdNVEcpmp7PV8XeZtSy5nZw>
-    <xme:nIL-Y8RsQ5tCvgdHsy1-8qGan74n4ijBe0bpI-wK1CLfT8JWZG6YVJf_P3qkLiiiZ
-    qBCwLlqLnUaO9O7zLQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudelfedguddtudcutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomheptehl
-    ihhsthgrihhruceorghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvqeenucggtf
-    frrghtthgvrhhnpedujeejledtgfejtdeiieeludfhfedthfehhfffheeihfdtiedutddv
-    keekjeffhfenucffohhmrghinhepuggvvhhitggvthhrvggvrdhorhhgnecuvehluhhsth
-    gvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghlihhsthgrihhrsegr
-    lhhishhtrghirhdvfedrmhgv
-X-ME-Proxy: <xmx:nYL-Y6W_feM8HDHi1cMlnAau_TKCc9Mr8gktmfS-SIpZNxEwWETLBA>
-    <xmx:nYL-Y2hDuN2qdvU3a5dbGR1zK2_LAvTBR1cWaQIhUVCSIP3DYePSAQ>
-    <xmx:nYL-Y6DnJ4SGY2m_29c-dflAylidQGWG5ezoVCjh9OBC38g5gHkUig>
-    <xmx:nYL-YysOhWRpXfSyDpGUzIPiVtumwFyWrA6Dizn8nUgHTO5ywqPiRg>
-Feedback-ID: ifd214418:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id F276D2D40074; Tue, 28 Feb 2023 17:39:24 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-183-gbf7d00f500-fm-20230220.001-gbf7d00f5
-Mime-Version: 1.0
-Message-Id: <e209c4dd-c4da-4f02-bbb0-40cb473d8275@app.fastmail.com>
-In-Reply-To: <20230228152205.133582-2-macroalpha82@gmail.com>
-References: <20230228152205.133582-1-macroalpha82@gmail.com>
- <20230228152205.133582-2-macroalpha82@gmail.com>
-Date: Wed, 01 Mar 2023 08:39:04 +1000
-From: Alistair <alistair@alistair23.me>
-To: "Chris Morgan" <macroalpha82@gmail.com>, linux-bluetooth@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- "Vasily Khoruzhick" <anarsoul@gmail.com>,
- "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>,
- "Johan Hedberg" <johan.hedberg@gmail.com>,
- "Marcel Holtmann" <marcel@holtmann.org>, "Heiko Stuebner" <heiko@sntech.de>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
- "Rob Herring" <robh+dt@kernel.org>, "Chris Morgan" <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/3 V4] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
+	id 1pXSrJ-00HT24-GC
+	for linux-rockchip@lists.infradead.org; Wed, 01 Mar 2023 20:15:31 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id d41-20020a05600c4c2900b003e9e066550fso256818wmp.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Mar 2023 12:15:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1677701725;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QZORbJEC0KXh3smLya7JMCOQlYUfz0b2RxRCc6FiOfI=;
+        b=w2UyotQBOPnPIAhlCOUiER9zhQqCH46TqU0CF9HwS7QbTpIYPzAjo739J6E6Y4Xbbr
+         3GkHyyQede5+mr7z6WWDVYr/j2LDgBfKIoZeYOFBrx/tdh93aSfoo82Pm2chHsXNTAQg
+         mEn2oHoSXhE1nUX1R7xwSKWGrDQZgsaG7luLmFFkXlIjBwJddYTdTA8ECkDhyAxbGWe0
+         ZYpLeF9ng699Gt1Qw7xB4W+O+hI42kY2PRizitbmBnwKG/REk9RwrvWRUhycvPxaygWV
+         FWKlgG1dwX2mcOlofJwfXkaqoEufelrOUXG3B45eVDBxC8Mj+/UvLPeNKNSCjdpONWsO
+         K32w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677701725;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=QZORbJEC0KXh3smLya7JMCOQlYUfz0b2RxRCc6FiOfI=;
+        b=77ms6fVIRuwTZeAblO0iPL1DTrLfO/jQ3rlPQPey87QPr/iBJLQohwQRddSR4hOvy4
+         XXL4hBh//oMUcK7VWLt94L0wwwrDz7j7Muk6gHr+oXbMKyBLgPHlCnnFt1JrG6+H9aFZ
+         cLC9Fq92KvoHiCclL0Jehp1L3ATffa0SmOwCpwL4JDNz5o36xCOM4tkk1ntrPkmJDwBD
+         GtZXBjeBE01+V77AowCZqUeVqhUIgu9GSt4mEOlxxmFW6K1Bt7afgCqtMwKGWr2qfP7k
+         ff9PfNmeFsf6enY3Q56UokM7sczX6+zGwk84XR79cKYMxTBDt+0iTohJlv13O9ssoKmg
+         EYtg==
+X-Gm-Message-State: AO0yUKVZdwJZ2nfxdhFtTgBKh6ebi21iM2MC3VYX+rtJxXsYQAW73c2+
+	fZwFMwTaWIUiWJcWBXOq4YN+5z4BCEXxrJ3Zft25Yw==
+X-Google-Smtp-Source: AK7set82igQXDXQLDcQgalm3MHFmvQbYALKZpjviajKLfGYMlP4HXvFpebv/Sk6+euW4zOjEPAZ1mQ==
+X-Received: by 2002:a05:600c:4da3:b0:3ea:e4f8:be09 with SMTP id v35-20020a05600c4da300b003eae4f8be09mr5851796wmp.30.1677701724687;
+        Wed, 01 Mar 2023 12:15:24 -0800 (PST)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:6ffe:ce4f:bd31:1e6d])
+        by smtp.gmail.com with ESMTPSA id x16-20020a1c7c10000000b003e70a7c1b73sm576546wmc.16.2023.03.01.12.15.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Mar 2023 12:15:24 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: rafael@kernel.org,
+	daniel.lezcano@linaro.org
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH v5 06/18] thermal: Remove debug or error messages in get_temp() ops
+Date: Wed,  1 Mar 2023 21:14:34 +0100
+Message-Id: <20230301201446.3713334-7-daniel.lezcano@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230301201446.3713334-1-daniel.lezcano@linaro.org>
+References: <20230301201446.3713334-1-daniel.lezcano@linaro.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230228_143933_904693_B0AD27E7 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20230301_121529_592564_CD5DB781 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,70 +107,240 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 1 Mar 2023, at 1:22 AM, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add compatible string for RTL8821CS for existing Realtek Bluetooth
-> driver.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Some get_temp() ops implementation are showing an error or a debug
+message if the reading of the sensor fails.
 
-Reviewed-by: Alistair Francis <alistair@alistair23.me>
+The debug message is already displayed from the call site of this
+ops. So we can remove it.
 
-Alistair
+On the other side, the error should not be displayed because in
+production that can raise tons of messages.
 
-> ---
-> .../bindings/net/realtek-bluetooth.yaml       | 24 ++++++++++++-------
-> 1 file changed, 15 insertions(+), 9 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> index 143b5667abad..8cc2b9924680 100644
-> --- a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> +++ b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-> @@ -4,24 +4,30 @@
-> $id: http://devicetree.org/schemas/net/realtek-bluetooth.yaml#
-> $schema: http://devicetree.org/meta-schemas/core.yaml#
->  
-> -title: RTL8723BS/RTL8723CS/RTL8822CS Bluetooth
-> +title: RTL8723BS/RTL8723CS/RTL8821CS/RTL8822CS Bluetooth
->  
-> maintainers:
->    - Vasily Khoruzhick <anarsoul@gmail.com>
->    - Alistair Francis <alistair@alistair23.me>
->  
-> description:
-> -  RTL8723CS/RTL8723CS/RTL8822CS is WiFi + BT chip. WiFi part is connected over
-> -  SDIO, while BT is connected over serial. It speaks H5 protocol with few
-> -  extra commands to upload firmware and change module speed.
-> +  RTL8723CS/RTL8723CS/RTL8821CS/RTL8822CS is a WiFi + BT chip. WiFi part
-> +  is connected over SDIO, while BT is connected over serial. It speaks
-> +  H5 protocol with few extra commands to upload firmware and change
-> +  module speed.
->  
-> properties:
->    compatible:
-> -    enum:
-> -      - realtek,rtl8723bs-bt
-> -      - realtek,rtl8723cs-bt
-> -      - realtek,rtl8723ds-bt
-> -      - realtek,rtl8822cs-bt
-> +    oneOf:
-> +      - enum:
-> +          - realtek,rtl8723bs-bt
-> +          - realtek,rtl8723cs-bt
-> +          - realtek,rtl8723ds-bt
-> +          - realtek,rtl8822cs-bt
-> +      - items:
-> +          - enum:
-> +              - realtek,rtl8821cs-bt
-> +          - const: realtek,rtl8822cs-bt
->  
->    device-wake-gpios:
->      maxItems: 1
-> -- 
-> 2.34.1
-> 
-> 
+Finally, some drivers are showing a debug message with the
+temperature, this is also accessible through the trace from the core
+code in the temperature_update() function.
+
+Another benefit is the dev_* messages are accessing the thermal zone
+device field from the structure, so we encapsulate even more the code
+by preventing these accesses.
+
+Remove those messages.
+
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com> #Armada
+Acked-by: Florian Fainelli <f.fainelli@gmail.com> #brcmstb_thermal.c
+---
+ drivers/thermal/armada_thermal.c           | 10 ++--------
+ drivers/thermal/broadcom/brcmstb_thermal.c |  4 +---
+ drivers/thermal/dove_thermal.c             |  5 +----
+ drivers/thermal/hisi_thermal.c             |  3 ---
+ drivers/thermal/imx_sc_thermal.c           |  5 +----
+ drivers/thermal/imx_thermal.c              |  4 +---
+ drivers/thermal/kirkwood_thermal.c         |  5 +----
+ drivers/thermal/max77620_thermal.c         |  4 +---
+ drivers/thermal/rockchip_thermal.c         |  3 ---
+ drivers/thermal/st/st_thermal.c            |  3 ---
+ drivers/thermal/thermal-generic-adc.c      |  5 ++---
+ 11 files changed, 10 insertions(+), 41 deletions(-)
+
+diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
+index ebd606861a61..0e8dfa6a7757 100644
+--- a/drivers/thermal/armada_thermal.c
++++ b/drivers/thermal/armada_thermal.c
+@@ -360,11 +360,8 @@ static int armada_select_channel(struct armada_thermal_priv *priv, int channel)
+ 	 * we must absolutely wait for the sensor validity bit to ensure we read
+ 	 * actual data.
+ 	 */
+-	if (armada_wait_sensor_validity(priv)) {
+-		dev_err(priv->dev,
+-			"Temperature sensor reading not valid\n");
++	if (armada_wait_sensor_validity(priv))
+ 		return -EIO;
+-	}
+ 
+ 	return 0;
+ }
+@@ -402,11 +399,8 @@ static int armada_get_temp_legacy(struct thermal_zone_device *thermal,
+ 	int ret;
+ 
+ 	/* Valid check */
+-	if (!armada_is_valid(priv)) {
+-		dev_err(priv->dev,
+-			"Temperature sensor reading not valid\n");
++	if (!armada_is_valid(priv))
+ 		return -EIO;
+-	}
+ 
+ 	/* Do the actual reading */
+ 	ret = armada_read_sensor(priv, temp);
+diff --git a/drivers/thermal/broadcom/brcmstb_thermal.c b/drivers/thermal/broadcom/brcmstb_thermal.c
+index 60173cc83c46..72d1dbe60b8f 100644
+--- a/drivers/thermal/broadcom/brcmstb_thermal.c
++++ b/drivers/thermal/broadcom/brcmstb_thermal.c
+@@ -158,10 +158,8 @@ static int brcmstb_get_temp(struct thermal_zone_device *tz, int *temp)
+ 
+ 	val = __raw_readl(priv->tmon_base + AVS_TMON_STATUS);
+ 
+-	if (!(val & AVS_TMON_STATUS_valid_msk)) {
+-		dev_err(priv->dev, "reading not valid\n");
++	if (!(val & AVS_TMON_STATUS_valid_msk))
+ 		return -EIO;
+-	}
+ 
+ 	val = (val & AVS_TMON_STATUS_data_msk) >> AVS_TMON_STATUS_data_shift;
+ 
+diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
+index 6db1882e8229..9954040d1d2c 100644
+--- a/drivers/thermal/dove_thermal.c
++++ b/drivers/thermal/dove_thermal.c
+@@ -91,11 +91,8 @@ static int dove_get_temp(struct thermal_zone_device *thermal,
+ 
+ 	/* Valid check */
+ 	reg = readl_relaxed(priv->control + PMU_TEMP_DIOD_CTRL1_REG);
+-	if ((reg & PMU_TDC1_TEMP_VALID_MASK) == 0x0) {
+-		dev_err(&thermal->device,
+-			"Temperature sensor reading not valid\n");
++	if ((reg & PMU_TDC1_TEMP_VALID_MASK) == 0x0)
+ 		return -EIO;
+-	}
+ 
+ 	/*
+ 	 * Calculate temperature. According to Marvell internal
+diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
+index f3a374266fa0..0d135b8a5b62 100644
+--- a/drivers/thermal/hisi_thermal.c
++++ b/drivers/thermal/hisi_thermal.c
+@@ -436,9 +436,6 @@ static int hisi_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
+ 
+ 	*temp = data->ops->get_temp(sensor);
+ 
+-	dev_dbg(&data->pdev->dev, "tzd=%p, id=%d, temp=%d, thres=%d\n",
+-		sensor->tzd, sensor->id, *temp, sensor->thres_temp);
+-
+ 	return 0;
+ }
+ 
+diff --git a/drivers/thermal/imx_sc_thermal.c b/drivers/thermal/imx_sc_thermal.c
+index ddde4bdfc94a..2d7a6bd2846b 100644
+--- a/drivers/thermal/imx_sc_thermal.c
++++ b/drivers/thermal/imx_sc_thermal.c
+@@ -58,11 +58,8 @@ static int imx_sc_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	hdr->size = 2;
+ 
+ 	ret = imx_scu_call_rpc(thermal_ipc_handle, &msg, true);
+-	if (ret) {
+-		dev_err(&sensor->tzd->device, "read temp sensor %d failed, ret %d\n",
+-			sensor->resource_id, ret);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	*temp = msg.data.resp.celsius * 1000 + msg.data.resp.tenths * 100;
+ 
+diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
+index a22b8086a209..a0b8de269986 100644
+--- a/drivers/thermal/imx_thermal.c
++++ b/drivers/thermal/imx_thermal.c
+@@ -265,10 +265,8 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
+ 
+ 	regmap_read(map, soc_data->temp_data, &val);
+ 
+-	if ((val & soc_data->temp_valid_mask) == 0) {
+-		dev_dbg(&tz->device, "temp measurement never finished\n");
++	if ((val & soc_data->temp_valid_mask) == 0)
+ 		return -EAGAIN;
+-	}
+ 
+ 	n_meas = (val & soc_data->temp_value_mask)
+ 		>> soc_data->temp_value_shift;
+diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
+index 92b3ce426b9d..668747bd86ef 100644
+--- a/drivers/thermal/kirkwood_thermal.c
++++ b/drivers/thermal/kirkwood_thermal.c
+@@ -33,11 +33,8 @@ static int kirkwood_get_temp(struct thermal_zone_device *thermal,
+ 
+ 	/* Valid check */
+ 	if (!((reg >> KIRKWOOD_THERMAL_VALID_OFFSET) &
+-	    KIRKWOOD_THERMAL_VALID_MASK)) {
+-		dev_err(&thermal->device,
+-			"Temperature sensor reading not valid\n");
++	    KIRKWOOD_THERMAL_VALID_MASK))
+ 		return -EIO;
+-	}
+ 
+ 	/*
+ 	 * Calculate temperature. According to Marvell internal
+diff --git a/drivers/thermal/max77620_thermal.c b/drivers/thermal/max77620_thermal.c
+index bf1679765f1b..61c7622d9945 100644
+--- a/drivers/thermal/max77620_thermal.c
++++ b/drivers/thermal/max77620_thermal.c
+@@ -51,10 +51,8 @@ static int max77620_thermal_read_temp(struct thermal_zone_device *tz, int *temp)
+ 	int ret;
+ 
+ 	ret = regmap_read(mtherm->rmap, MAX77620_REG_STATLBT, &val);
+-	if (ret < 0) {
+-		dev_err(mtherm->dev, "Failed to read STATLBT: %d\n", ret);
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	if (val & MAX77620_IRQ_TJALRM2_MASK)
+ 		*temp = MAX77620_TJALARM2_TEMP;
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 8a51eb26e798..71e533df563a 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1233,9 +1233,6 @@ static int rockchip_thermal_get_temp(struct thermal_zone_device *tz, int *out_te
+ 
+ 	retval = tsadc->get_temp(&tsadc->table,
+ 				 sensor->id, thermal->regs, out_temp);
+-	dev_dbg(&thermal->pdev->dev, "sensor %d - temp: %d, retval: %d\n",
+-		sensor->id, *out_temp, retval);
+-
+ 	return retval;
+ }
+ 
+diff --git a/drivers/thermal/st/st_thermal.c b/drivers/thermal/st/st_thermal.c
+index 6ed393218eb8..2d3042098445 100644
+--- a/drivers/thermal/st/st_thermal.c
++++ b/drivers/thermal/st/st_thermal.c
+@@ -109,7 +109,6 @@ static int st_thermal_calibration(struct st_thermal_sensor *sensor)
+ static int st_thermal_get_temp(struct thermal_zone_device *th, int *temperature)
+ {
+ 	struct st_thermal_sensor *sensor = thermal_zone_device_priv(th);
+-	struct device *dev = sensor->dev;
+ 	unsigned int temp;
+ 	unsigned int overflow;
+ 	int ret;
+@@ -127,8 +126,6 @@ static int st_thermal_get_temp(struct thermal_zone_device *th, int *temperature)
+ 	temp += sensor->cdata->temp_adjust_val;
+ 	temp = mcelsius(temp);
+ 
+-	dev_dbg(dev, "temperature: %d\n", temp);
+-
+ 	*temperature = temp;
+ 
+ 	return 0;
+diff --git a/drivers/thermal/thermal-generic-adc.c b/drivers/thermal/thermal-generic-adc.c
+index 2c283e762d81..017b0ce52122 100644
+--- a/drivers/thermal/thermal-generic-adc.c
++++ b/drivers/thermal/thermal-generic-adc.c
+@@ -59,10 +59,9 @@ static int gadc_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	int ret;
+ 
+ 	ret = iio_read_channel_processed(gti->channel, &val);
+-	if (ret < 0) {
+-		dev_err(gti->dev, "IIO channel read failed %d\n", ret);
++	if (ret < 0)
+ 		return ret;
+-	}
++
+ 	*temp = gadc_thermal_adc_to_temp(gti, val);
+ 
+ 	return 0;
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
