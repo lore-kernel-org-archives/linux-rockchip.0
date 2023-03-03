@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2C2C7EE32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Mar 2023 21:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D481AC7EE32
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Mar 2023 21:52:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TWR1B+dWQ2DTsG2mpN6rIct85A66X/qabfo2ingDWJ0=; b=PL2qKEqXxxusnS
-	iRFWsqPXaQV373pT3VosS0Be5XLJJuxSl5hBkNAIr2iqeMwdLvoASHJFE8aLksVGG9lW/2vBq+QRW
-	dErOiwPa+fKz6JkFaMtBrfg9AnZOWnbOB/F8DWP/ejkiatVpolaol6GcITO+SqI531D1b982mMPVH
-	sATZ3JWh2w2ELxMqlhP/gLpMd5t13Wg6KROSGTeFvgivS6N4CNJ7Sjf72fyY9IXs7ez0ecdE2p336
-	0p7KzY9krX3D8QgBzCHHAy5jQz1mVfDB07ljx2AKJiIBBzg2pUn5Z6uKbQmPVW7B819ei1d65D+8e
-	nSp1stLzIqexnyxqN+xw==;
+	List-Owner; bh=vdqdwPlRGICpYxFFNH5Ti6ULx+53BaEscPdpPbeob9w=; b=Z3sBSER6mcNHhN
+	Bgs4qMKAlx8RBLOWsbuhy7usI6eKKZpyda69ha4KO55dwX2YaveTCS8rtHJfozzE7tj/qtMmgTcMR
+	49834dAArq849aZJhcnHN4G7FGou/FF787cvt6e1Ur/dQZj0610jY1cqWzbFBK379ors+IUThOlNn
+	zQ4rk+/CJXTFAIqWhF81YruQxAjI7z6XnE1tI+0pumybB3lHIQ5YZWGMBw+1lL8jfAHcxjhkM2MvT
+	DOZoQBFEB+DHH7GihW1F5sQohI8FutWscH9mIa9mHMy+HOn5FjejL2Qv3CVvHw+TY59Gp0tyGrKQh
+	vPjNtTprAvnYRfWYjo5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDJc-007aqW-1Z; Fri, 03 Mar 2023 21:51:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pYDKI-007bGO-27; Fri, 03 Mar 2023 21:52:30 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDHV-007Zb0-Gk; Fri, 03 Mar 2023 21:49:40 +0000
+	id 1pYDHy-007Zsm-Q2; Fri, 03 Mar 2023 21:50:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id ED8706194C;
-	Fri,  3 Mar 2023 21:49:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5802C4339C;
-	Fri,  3 Mar 2023 21:49:35 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 553E3B81A34;
+	Fri,  3 Mar 2023 21:50:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD7B3C433EF;
+	Fri,  3 Mar 2023 21:50:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677880176;
-	bh=3yGipkpIGv9K2wFPL1P5L0Ahphnp0zM8j8TTRic2RUI=;
+	s=k20201202; t=1677880205;
+	bh=rxUMK70MvtSzuzWFte5GlKjbu70mteuFz1d4DXEHADo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tQLhBwp1/npZDW618DPnlBy0D/Hnr1jz0Zal/ii4rnDW7K1kVnDjkGgu3TW1Z5krX
-	 s4h6rSn69GiC0JET9+TfR4nsx7hCJSay1UK7Fq2/2VUt1ebAmdsLFTZ1cPNvlISHZq
-	 flpiCa2r9C8/jnYzTrrXHEbjzTG+XmE3IYzAHdEv/qZEJau/CvN4Ah495fLCugvBTC
-	 nRejrkaVWfdh4GYW4n8ggbzemBamMJw7ktwdv04tBhaTMTRNnEYzIV+Hx6b3q6GsCJ
-	 XVRKpsVguIqoqA/luzaUMp/hR3B22UO+MBxEXUeubBy3VAO/1IvNSdETYYHOLnOFwt
-	 7U6M4CNbs8/OA==
+	b=niyo2FfoI/uigNoJv/tvFzviPhWihQwMjf9eKdX3gfNEm9gP+C9NBRL6JOfzuDYeC
+	 znCoEfpoKyhpTzr1B6n1bPtxFIklaSiV+bya0O0QHIm7Z+dSnePTFxHpw2c4fTJzuH
+	 +yBPavbU03KWs9HU5KGfxn5oFsQRnjrdqD/3Z1OdSNDXQWRXJJ6lu3UbD3BXElGOme
+	 rsUq5z2FZ2DYVCa/EEz9nZtDndeX2rYA2RB8XAtVTLe+NhWFApOsMkCCSWtizVbKuY
+	 P/ngRHSs6ISSR0eTz4if9gHlBzV8JLlwLkOIj7OMF2Fa+n3ljMxNcyfn8UA9VgQeKW
+	 n9/VaIFdscm4w==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,18 +53,18 @@ Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
 	linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 16/16] phy: rockchip-typec: Fix unsigned comparison with less than zero
-Date: Fri,  3 Mar 2023 16:48:49 -0500
-Message-Id: <20230303214849.1454002-16-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 11/11] phy: rockchip-typec: Fix unsigned comparison with less than zero
+Date: Fri,  3 Mar 2023 16:49:37 -0500
+Message-Id: <20230303214938.1454767-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230303214849.1454002-1-sashal@kernel.org>
-References: <20230303214849.1454002-1-sashal@kernel.org>
+In-Reply-To: <20230303214938.1454767-1-sashal@kernel.org>
+References: <20230303214938.1454767-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_134937_654492_7BD361A1 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20230303_135007_073415_17048513 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,10 +102,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 76a4b58ec7717..ca4b80d0d8b78 100644
+index a958c9bced019..6e3916424012a 100644
 --- a/drivers/phy/rockchip/phy-rockchip-typec.c
 +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -817,9 +817,8 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+@@ -645,9 +645,8 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
  	struct extcon_dev *edev = tcphy->extcon;
  	union extcon_property_value property;
  	unsigned int id;
@@ -114,8 +114,8 @@ index 76a4b58ec7717..ca4b80d0d8b78 100644
 -	int ret;
 +	int ret, ufp, dp;
  
- 	if (!edev)
- 		return MODE_DFP_USB;
+ 	ufp = extcon_get_state(edev, EXTCON_USB);
+ 	dp = extcon_get_state(edev, EXTCON_DISP_DP);
 -- 
 2.39.2
 
