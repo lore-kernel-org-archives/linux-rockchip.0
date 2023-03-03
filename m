@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A0FAC64EC4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Mar 2023 21:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7733EC64EC4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Mar 2023 21:51:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5QJhkVa463Mv3OkVdCnLbrRfo6NqMbs5dCDmlwrCeKs=; b=zQUhz2VW+0aK+a
-	EGqwlb/s03w74hjFpnRDyHwy1G8JEtmp0/YOZ2lgE60ICGeS0Sa/88M3WQW7NF1KbvIH5MMGDyueG
-	M5p8t1vmySP2m7D8//siGBmIj7NmitL2WVZbOKoP8ycFhj3FQ+LZQDBE9ryYwUQEr4fIvGBo40iS4
-	NC3kgN1OCuf4vAvOz2HfezfRcRThlC8vDG73BLluNTMremjhBuTtZVLDHdIKD9xLayMvoYiSCwDmz
-	WIIUC2oCaCUOE6Wu8Sgo/5fnvZHXYNSwJDLRzZnBYgf6N8HNx4lWgMJh7SZEIHeAAywFmfqTC3koJ
-	MW1qS8NrSJIySCJSYB6Q==;
+	List-Owner; bh=PLUMACaDCNbc+buDtjfeiY7P0RYxaJg2IK1SMgGHRVo=; b=ydw7NWTsnce3xE
+	rBSoN++cvUTasr77CJ62bqMho72jyygNs7gxqWuhEMRWwvBZ4uPzD5r8Vu0k1pOxoui0vz8K0A4lO
+	FbN0GmdtnV4LPl47Ik+HTfqA7bSJV+y/zGa0NiaVKeO1gZ6vqvI7sn5PdpOq4015olwZTeyzVfsaL
+	jMc65XtOUR1ngQ3e14Umu97LGMK0MWGgwbSBnolrvJzzvpluIFlXQi66XI140s29+D9wNy1Ery0nX
+	DRBpC3SQZktjt29wXBi5jjMkXAbomdXeSuTNDV1gZFHraghf9xLGis962dJk4xtIah6y7eu3nuzi8
+	sTxubCnVc/fl8HZRyPjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDIH-007a21-G2; Fri, 03 Mar 2023 21:50:25 +0000
+	id 1pYDIq-007aLY-KF; Fri, 03 Mar 2023 21:51:00 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDG1-007YhZ-HW; Fri, 03 Mar 2023 21:48:08 +0000
+	id 1pYDGl-007Z8E-Hc; Fri, 03 Mar 2023 21:48:53 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 170E3B81A46;
-	Fri,  3 Mar 2023 21:48:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCB85C433A0;
-	Fri,  3 Mar 2023 21:48:01 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id E0F90B81A26;
+	Fri,  3 Mar 2023 21:48:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A83F9C433D2;
+	Fri,  3 Mar 2023 21:48:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677880082;
-	bh=AcUeaZ5u33CmXMBFHG0u/+HaGtroRQCtse3ILQH54nk=;
+	s=k20201202; t=1677880128;
+	bh=Q7GN1C1Ku0/LoFstXzIDGUQwzwKCHcF5ZS4mrewWO34=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XCYolguzBfVHhlL/swH9pXLMMucpaQBpimWR1fGG6GsQeIu0rMZvbKG1H/ZxJp/D2
-	 Uq00J7wGnavZWZ7guyZwBtCrzUH0Baqfq/r8RdLnD+AU03kYC+MZLtztSbkC5CxvX/
-	 X0sFJ/1mQzSrDbVQ1mQe4koEgWxAUEwGnyfPyX78o6dyyd5sdVpoTtQg1u4PmkJ/LM
-	 lKolThV4yABwLoaGkxNEFpARWNGYhSjmr0s/AIwM8um2sAQCK38l28W9em5aKlJsNk
-	 a9zE3kDXmuZVBfYJPypoVcn4a7IlOwnPB+Yx81UXfmKe4o/Mof1E6HE1oMRSziVmnd
-	 F25v4PdMPQ7Cw==
+	b=ssDQ4ucDuJxdJ/7if8hVf+dfyWxhQUAJlnt7TRLG8GA/2GmgUa1vcUcnP9wef039i
+	 bIRQiCuWwqR4yWgktr0hQn7NFr+jF2hh/ZyjyhUy/lm0LTsnP4r64LF77WIv7BrBfO
+	 MsEbMAbOsR0Jij5VyhPMbh0fPiq5REVl4UcZwmDMPsoVTULBYq9+y+XNj0ZN/aruKw
+	 8gMAM2prAPhoJrmsX+XGnWMnC8bDMhaCLJqYbVRFBrkFmtYG6dc5fQbzpVbADMOki6
+	 X0BvZgI54ZK29eb0v1iWBIATuvlq0Wn7venkgQHKL8uFQajDZZRZFgU4iJKbsauzaa
+	 Tso5sqhB9a6dA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,18 +53,18 @@ Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
 	linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 28/30] phy: rockchip-typec: Fix unsigned comparison with less than zero
-Date: Fri,  3 Mar 2023 16:47:13 -0500
-Message-Id: <20230303214715.1452256-28-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 20/20] phy: rockchip-typec: Fix unsigned comparison with less than zero
+Date: Fri,  3 Mar 2023 16:48:06 -0500
+Message-Id: <20230303214806.1453287-20-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230303214715.1452256-1-sashal@kernel.org>
-References: <20230303214715.1452256-1-sashal@kernel.org>
+In-Reply-To: <20230303214806.1453287-1-sashal@kernel.org>
+References: <20230303214806.1453287-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_134805_784365_8A6BAC02 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20230303_134851_790549_F824985B 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,7 +102,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 70a31251b202b..20f787d5ec581 100644
+index 24563160197f5..ba805f1d4f6a8 100644
 --- a/drivers/phy/rockchip/phy-rockchip-typec.c
 +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
 @@ -808,9 +808,8 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
