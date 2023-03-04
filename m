@@ -4,91 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE55AC678D5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Mar 2023 06:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6618C678D5
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Mar 2023 16:42:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yjp+9c4zD49pPhQyRJPJ5TDI158q/ZVdOqeRoy98pQw=; b=vJo+LpFG49bDoS
-	xLYCGXJoXwivsskk5095sHwY0wr8tqVB/OybETf69YOw1rdtGauOX/xU4SHO1u0lEKJ6NLc09OCfS
-	v8IeieLVn1e0xBBlGkcooYuCj+ntX+D59d1xWrT9PhJQFmOuva5Uyie9a0hxXCzHnWDTxZSvDAtyF
-	9L0Rah/1wDo+kU8kfPSjd+GDQQbc+uOJ8+Crz/2f2xBr6s1pPnbfqVuH5mX9dS0PBq8JQW8Ta2O+G
-	Thy8ev+GwH2IxsWNzXdphKco9NJmfODlxi9pGni4Ii6TSALNo1NPeMafFPyc0/9qLfZRDGS+mG1WH
-	U3QBtGi8kf3JW+itGTgw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NsfFrDzQOM5YL1unjHjjcwKhonaUU41tX4rR5YzLr0w=; b=IKCPZumjAFKrtT
+	7ggv5NdNYkkN3RlvBb5RF1fyoQIKAg4V3Uo5bDoui7v/jmB9S2hMppUrz03x88+H57iy9uLJoRY3A
+	GKarcbixVYy8hO/Sn3Ug5IyrBtLGGXZ4kC9/t0LG/JcaPZXOMuPf/lOtf6ViVc6+guWJFaY2s8KTa
+	bAaPgV7DJU4jgUydh15KPhrYuqmprBo5mMH/95Ikz69CVKyZCE0dwlhZHFtIHHgVTUEOTdlMzQ/DP
+	DQzOh3qmn28pI8iMFrRVNKgtFuGIRiFqrvbuv5d6N5/ZAeAyu5fRIPYgJXP0Ex5kMNJQEc8oFAolB
+	mJfcAw89gGvXn4qn29Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYKvh-008OYL-OV; Sat, 04 Mar 2023 05:59:37 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pYUxN-009Fkr-QE; Sat, 04 Mar 2023 16:42:01 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYKvU-008OWZ-Ha; Sat, 04 Mar 2023 05:59:25 +0000
-Received: by mail-ed1-x534.google.com with SMTP id o15so18262381edr.13;
-        Fri, 03 Mar 2023 21:59:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
-        b=Spc5p3ovs3CEvWjvB15Lsxi3xGjMUIlNSYNFAcggChHEqyh1XQIV3ghzRysFCQdwot
-         B+Pzk25ozrx9jxO/cugIqFD/r06/RjYzQnBpUsHfl/0KYoxab8FIKN/6rnu8co2Z7lxk
-         Mz/CVbIsMog2abpNbYK7pFe96zz3t3Rm2GralvuU2HiegQXFXYRGe79tiCnlqDK3Rrl6
-         8VS8m3lEou653ypRcub4hORgngyVE/4CfwaI/6Ymv9PPP20xwlEC+gP0A5TBq1L9JjQx
-         WqrbysUxMMTh2VK+L+GDogxIkZBJXxBrm5+58547IY4AFuOrd0rJYXORJ4HKz5lJfuqe
-         f6og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cZdOR2mQrM2Yh/ZdXBDU9hVL0HlZsZVueh/CEeqYueU=;
-        b=q/QsZwObnFgpAJiPaWXwdcOTDuzr9UN057xeiqlTQ5o3r43+hQCf3AbY8xFRFZaipW
-         qjSAgDt4gawTYaLplWejiZB4a6QLvoKG0lqURqQ2GjHwxVReC/yUz262n1Jdy4P2DDrH
-         903u4sLkP17D+09B7Izd/ZsPuXTMPLUrbaoQ/5v3YR0UVZRKgeVvuVi6XF4/wIGEg9ED
-         MWO378c0JIjgGUhB/Tn3im0S4TSbmQxyceW61dZ1KxYRnHAHI9a0jqZ+9aZhC5dhwH8u
-         YWmudV8haT1Ycbvg5q5Y+kEOHiTXvJm/PJiErzQVP2xOnU46q+tKjYuf37VUXGfmqWOV
-         sAtQ==
-X-Gm-Message-State: AO0yUKXm8K1nczHbsuvtevNuSvXA03dTqXIwv//WxHPhqpzSwxfaKHKc
-	iGCHP3hIkJs/VMwSIiej9co=
-X-Google-Smtp-Source: AK7set8UXUFWR2ui/AgXkHFAvLBJPzNPX6LhnlTox4YZzu7Cyy9qpwNmgZWB6VYga3nqRk1K4I90aA==
-X-Received: by 2002:a05:6402:510:b0:4bb:83fa:5e83 with SMTP id m16-20020a056402051000b004bb83fa5e83mr4125414edv.12.1677909561087;
-        Fri, 03 Mar 2023 21:59:21 -0800 (PST)
-Received: from [192.168.0.173] ([79.115.63.78])
-        by smtp.gmail.com with ESMTPSA id v12-20020a50c40c000000b004bb810e0b87sm2030841edf.39.2023.03.03.21.59.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Mar 2023 21:59:20 -0800 (PST)
-Message-ID: <5bd48f09-f7ba-e5b3-60ba-49ecd1493e36@gmail.com>
-Date: Sat, 4 Mar 2023 07:59:16 +0200
+	id 1pYUxK-009Fjl-54
+	for linux-rockchip@lists.infradead.org; Sat, 04 Mar 2023 16:42:00 +0000
+From: Dan Johansen <strit@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1677948112;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=nCt+QIc9MNau1NmsRIbyQqcwYHXUBS41L6l58VlrIDs=;
+	b=bpBy4XfR864bE3MoO9fXYFb7HlHi5lySc/furIKmIEWMZyQGUoNP7CFzeNptUe9WmI4jtY
+	5fQCa9/ewcfdXR5iW7PBQJ/YpbtsK8MzuAWHhb5OnuJqf9xV46IQWsjxqiR/1IbliRH9uA
+	DK3aS0L1fqRmistzy/kVEanob7UHkbGDb8IQ/TLknWUTxnMvyYSC14IBKGlPkrQENAsrlr
+	PZFLYT0V7NS67HWiCDjtB4s9O46lcoUrp/PL2WkKc6FV0rVB9koH5WsC9n+v81b7/nl+aF
+	dE2bzSMu52EmUUD/LZ59t4Ci4z8sd8q6s18AP3UbXUJIU1vppscZ41JnrG3t9w==
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Dan Johansen <strit@manjaro.org>
+Subject: [PATCH] arm64: dts: rockchip: Lower sd speed on soquartz
+Date: Sat,  4 Mar 2023 17:41:35 +0100
+Message-Id: <20230304164135.28430-1-strit@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-To: Sergiu Moga <sergiu.moga@microchip.com>, pratyush@kernel.org,
- michael@walle.cc, miquel.raynal@bootlin.com, richard@nod.at,
- vigneshr@ti.com, broonie@kernel.org, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
- chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au, andrew@aj.id.au,
- kdasu.kdev@gmail.com, fancer.lancer@gmail.com, han.xu@nxp.com,
- john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
- tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
- yuenn@google.com, benjaminfair@google.com, haibo.chen@nxp.com,
- yogeshgaur.83@gmail.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, michal.simek@xilinx.com, tkuw584924@gmail.com,
- Takahiro Kuwano <Takahiro.Kuwano@infineon.com>, tudor.ambarus@linaro.org
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
-From: Tudor Ambarus <tudor.ambarus@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20220911174551.653599-1-sergiu.moga@microchip.com>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_215924_634065_C6D8EEC3 
-X-CRM114-Status: UNSURE (   6.46  )
+X-CRM114-CacheID: sfid-20230304_084158_700775_57E075FD 
+X-CRM114-Status: UNSURE (   8.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,19 +64,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Just like the Quartz64 Model B the previously stated speed of sdr-104
+in soquartz is too high for the hardware to reliably communicate with
+some fast SD cards.
+Especially on some carrierboards.
 
-Sergiu changed his interests, I'm going to send a new version of this
-patch. We really need the conversion in SPI NOR as there are flashes
-that require a number of dummy cycles that is not multiple of 8.
+Lower this to sd-uhs-sdr50 to fix this.
 
-Cheers,
-ta
+Fixes: 5859b5a9c3ac ("arm64: dts: rockchip: add SoQuartz CM4IO dts")
+
+Signed-off-by: Dan Johansen <strit@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+index ce7165d7f1a1..102e448bc026 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+@@ -598,7 +598,7 @@ &sdmmc1 {
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+-	sd-uhs-sdr104;
++	sd-uhs-sdr50;
+ 	vmmc-supply = <&vcc3v3_sys>;
+ 	vqmmc-supply = <&vcc_1v8>;
+ 	status = "okay";
+-- 
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
