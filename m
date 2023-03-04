@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D481AC7EE32
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Mar 2023 21:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53910C61DA3
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Mar 2023 00:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vdqdwPlRGICpYxFFNH5Ti6ULx+53BaEscPdpPbeob9w=; b=Z3sBSER6mcNHhN
-	Bgs4qMKAlx8RBLOWsbuhy7usI6eKKZpyda69ha4KO55dwX2YaveTCS8rtHJfozzE7tj/qtMmgTcMR
-	49834dAArq849aZJhcnHN4G7FGou/FF787cvt6e1Ur/dQZj0610jY1cqWzbFBK379ors+IUThOlNn
-	zQ4rk+/CJXTFAIqWhF81YruQxAjI7z6XnE1tI+0pumybB3lHIQ5YZWGMBw+1lL8jfAHcxjhkM2MvT
-	DOZoQBFEB+DHH7GihW1F5sQohI8FutWscH9mIa9mHMy+HOn5FjejL2Qv3CVvHw+TY59Gp0tyGrKQh
-	vPjNtTprAvnYRfWYjo5g==;
+	List-Owner; bh=jBF4WwUcR/yxLbao3KZjMjU3i4sSaMMXo8iKxITpZgA=; b=f7TutrTu1yraH1
+	yctvRluhhCN0w/RUnhzu7jV2mpRxpRzhM5XXdyQ0MOs4JII4xGqDfy75kZStko0icBhUn+YdraNM2
+	bLhj3jZ0ySuz5Ymg00fNOCbTfniknknrejd287Fm9bDg00Wgq14+63xMZ3QF46tgRXA6aDfiqAmrR
+	sD4Klid2TVoEsBFpoCziZbhFCtMepBQyOsVlBNv2zNASagAdRwhBDCxFpuHgfSRtJ7kMaDCd5k8wH
+	LUxZ9tkCMqxP7rAz25EFEVMJ3TKunZ48/J/Uf1Nj5BFnMzE8oIXp3hU4XAZdcgR201rEc/JPYJDYZ
+	KC5nd9kZzBTomT3vXVjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDKI-007bGO-27; Fri, 03 Mar 2023 21:52:30 +0000
+	id 1pYG6V-007wK6-EE; Sat, 04 Mar 2023 00:50:27 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYDHy-007Zsm-Q2; Fri, 03 Mar 2023 21:50:08 +0000
+	id 1pYG6T-007wJH-4i
+	for linux-rockchip@lists.infradead.org; Sat, 04 Mar 2023 00:50:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 553E3B81A34;
-	Fri,  3 Mar 2023 21:50:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD7B3C433EF;
-	Fri,  3 Mar 2023 21:50:03 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 9843EB81A0F;
+	Sat,  4 Mar 2023 00:50:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4966DC433EF;
+	Sat,  4 Mar 2023 00:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1677880205;
-	bh=rxUMK70MvtSzuzWFte5GlKjbu70mteuFz1d4DXEHADo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=niyo2FfoI/uigNoJv/tvFzviPhWihQwMjf9eKdX3gfNEm9gP+C9NBRL6JOfzuDYeC
-	 znCoEfpoKyhpTzr1B6n1bPtxFIklaSiV+bya0O0QHIm7Z+dSnePTFxHpw2c4fTJzuH
-	 +yBPavbU03KWs9HU5KGfxn5oFsQRnjrdqD/3Z1OdSNDXQWRXJJ6lu3UbD3BXElGOme
-	 rsUq5z2FZ2DYVCa/EEz9nZtDndeX2rYA2RB8XAtVTLe+NhWFApOsMkCCSWtizVbKuY
-	 P/ngRHSs6ISSR0eTz4if9gHlBzV8JLlwLkOIj7OMF2Fa+n3ljMxNcyfn8UA9VgQeKW
-	 n9/VaIFdscm4w==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
-	Abaci Robot <abaci@linux.alibaba.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	kishon@kernel.org,
-	heiko@sntech.de,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.14 11/11] phy: rockchip-typec: Fix unsigned comparison with less than zero
-Date: Fri,  3 Mar 2023 16:49:37 -0500
-Message-Id: <20230303214938.1454767-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230303214938.1454767-1-sashal@kernel.org>
-References: <20230303214938.1454767-1-sashal@kernel.org>
+	s=k20201202; t=1677891020;
+	bh=rVcauREmGmmQhQT6XeByGl7eoUGolgEpVbV3+QvEZEI=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=U3UE4Tek4mroXX3oKxCGw23OL2tPUkWiy7Kz684lj4s0OOcNulWQe5xcPbmThex9M
+	 qfVrrpSBcu0mqArjhbszDRdlt7kRgIolGmPdHPvz+tK9ZpUsesnA5elFK3BUuAsu9Y
+	 B2fyqi39Ppspuu5g/HDYsc1cQfMW+Vw4u4SnK+qmZ6k48Ikxdc3bl6BFvG6cWi1r8P
+	 ay2kNfbD+L9CrBJX5oBRD57F75tDqjSBi1yPM36MU7u2oilfePYuAp963u9ARlSte3
+	 mQxtLtuZXXztrcSsNRDdKbRJrWjNayC6BToyBllSOu4zpu8fGLvusC59IfkrH+1ByM
+	 VuxkETT+GJV5g==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 30C70C00445;
+	Sat,  4 Mar 2023 00:50:20 +0000 (UTC)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Subject: Re: [PATCH 0/3 V4] Bluetooth: Add support for RTL8821CS
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id:  <167789102019.19976.12427542691000246930.git-patchwork-notify@kernel.org>
+Date: Sat, 04 Mar 2023 00:50:20 +0000
+References: <20230228152205.133582-1-macroalpha82@gmail.com>
+In-Reply-To: <20230228152205.133582-1-macroalpha82@gmail.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, alistair@alistair23.me, anarsoul@gmail.com,
+ luiz.dentz@gmail.com, johan.hedberg@gmail.com, marcel@holtmann.org,
+ heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ macromorgan@hotmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230303_135007_073415_17048513 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20230303_165025_363410_823926AC 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +77,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Hello:
 
-[ Upstream commit f765c59c5a72546a2d74a92ae5d0eb0329d8e247 ]
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-The dp and ufp are defined as bool type, the return value type of
-function extcon_get_state should be int, so the type of dp and ufp
-are modified to int.
+On Tue, 28 Feb 2023 09:22:02 -0600 you wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> This patch series is to add support for the RTL8821CS Bluetooth
+> controller found on the RTL8821CS WiFi/Bluetooth combo chip.
+> 
+> This has been tested with firmware version 0x75b8f098 which has been
+> submitted by Realtek for inclusion in linux-firmware.
+> 
+> [...]
 
-./drivers/phy/rockchip/phy-rockchip-typec.c:827:12-14: WARNING: Unsigned expression compared with zero: dp > 0.
+Here is the summary with links:
+  - [1/3,V4] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
+    https://git.kernel.org/bluetooth/bluetooth-next/c/b564bad5b54d
+  - [2/3,V4] Bluetooth: hci_h5: btrtl: Add support for RTL8821CS
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8b449db459d9
+  - [3/3,V4] arm64: dts: rockchip: Update compatible for bluetooth
+    https://git.kernel.org/bluetooth/bluetooth-next/c/d305437d4d2a
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Link: https://bugzilla.openanolis.cn/show_bug.cgi?id=3962
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Link: https://lore.kernel.org/r/20230213035709.99027-1-jiapeng.chong@linux.alibaba.com
-Signed-off-by: Vinod Koul <vkoul@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/phy/rockchip/phy-rockchip-typec.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index a958c9bced019..6e3916424012a 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -645,9 +645,8 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
- 	struct extcon_dev *edev = tcphy->extcon;
- 	union extcon_property_value property;
- 	unsigned int id;
--	bool ufp, dp;
- 	u8 mode;
--	int ret;
-+	int ret, ufp, dp;
- 
- 	ufp = extcon_get_state(edev, EXTCON_USB);
- 	dp = extcon_get_state(edev, EXTCON_DISP_DP);
+You are awesome, thank you!
 -- 
-2.39.2
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
