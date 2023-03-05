@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F5BC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Mar 2023 10:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E05B7C678DB
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Mar 2023 13:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LdNyggfXvKU1iw0y7vJgt5OfY5zzu2ufPh8YY/OlaBc=; b=UfUT45ds4enVBK
-	bO9rH1lv1pydFTIxHPQZNntHFU5Rn/SHRRcwWcxFrBvC8xPSJ+OS9krVM3jzHnTAuCT5bcvdSrSeD
-	D6glNe427aKCjTzxnyEl7xA15xnIc3i6oj9nx8l+VP91FTuR9PiTnPnAL9ClET5A0tDWoGyZ/NSUd
-	AtBUeDIj3UwXgCi0X13nAmXCZPKSKFc65kmjixG8RaFqgW5iJWn1lIq/FyyOU5GgvLNloUraw94c9
-	GHvlEFG7fnrPGPjHgF/tlMMz5EGnLhECOI+Flh1vWvSL2ohubbUpLUn9IlEHJ5lEbPzBYRXJmhdqU
-	9njCvb/Xuq1vQ6P5bTGA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LPNnG38Cw7pN3ABbDNPSGltpBdFWsdsIrpqrRNjYuvg=; b=jB2waC9SuDnNaM
+	GlU7ohXajCaSJY0Uq9R9H/8i+ITliXWFUbXNpM10xK0Sy0ManQ2lGf7mmRgXcmlH3tjUczn2a8Z1T
+	+vVIUd1hzBNhaZ15Ffo8Ouq4nCxVL+PSBQCfyprKlTOtoeOREGpsGkOV0sdnLH1DSUt7rpf68KUQd
+	6pAzMs1/TiSyKzjSmUZ7+msDnBjKSup06ODRqL0Ep1zAFB84nw1adzTayvCXT6kO1xQtfjDj3HpDI
+	vXUrHX54r+tIov7m2VAhSMcseWuDdMEUduaY3WUzOI7gycdhq0LSuhkNGwMa2ZnDyC67z37NnatYr
+	SSI2gzJDZjJzO6IEA16A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYlwO-00A7Jr-7u; Sun, 05 Mar 2023 10:50:08 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1pYoeo-00AHMo-Jp; Sun, 05 Mar 2023 13:44:10 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYlwL-00A7JX-UK
-	for linux-rockchip@lists.infradead.org; Sun, 05 Mar 2023 10:50:07 +0000
-From: Dan Johansen <strit@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1678013403;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=5DJskEL05NR4ieEa7hFABiq66V9dMrQQrA+FqflsJs0=;
-	b=qZGBzKPimGcXv9WtygwRAhOLG019nAdipIx6VwEmKjRjWkjd0qvKgbOqJN95URybAdsoh9
-	gEcIjw08S3lZBEGSfmax9yBm/CcWmOZHksHwpfjh/YkaKQx+d90FI/jiHpJOZtBYrP5sJI
-	2Q0h3eZGr2jNfp8vAZ9HWtjwMTPrpR/NKqoaX4/jUmzDD+7ycc8UItHEKDbpBnW+w0sYyY
-	LKMIr7bghQjB9OrO80jHVzmEkpeMBNu5AS4QoNLpIzCw/Xh3+ux06uigHsOrqiU9rSlNZQ
-	O/PnUGESHuig5sD3BBJMqNWADnIhIHStjzd1YA+Xukkgnsd1ej88BZ9nwbXXFA==
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de
-Cc: devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Dan Johansen <strit@manjaro.org>,
-	Dragan Simic <dragan.simic@gmail.com>,
-	JR Gonzalez <jrg@scientiam.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Lower SD card speed on 
-Date: Sun,  5 Mar 2023 11:47:31 +0100
-Message-Id: <20230305104730.15849-1-strit@manjaro.org>
+	id 1pYoem-00AHML-0D
+	for linux-rockchip@lists.infradead.org; Sun, 05 Mar 2023 13:44:09 +0000
+Received: by mail-ed1-x532.google.com with SMTP id o12so28174888edb.9
+        for <linux-rockchip@lists.infradead.org>; Sun, 05 Mar 2023 05:44:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678023845;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=y1SgqfrtDVGQPAzb2J+1WJCdpCcTnMueLvLPfe9hIh8=;
+        b=lqVeGEmPeWwVvpebdZVQow5Hop2TgcPziwE/c70C6Z0miRvkT8z67GKMIMNzeoyzU4
+         7pcl6buYqWjII2iOsSFNqQJ2+sPp1RqLlQRN7SSk6kIjHRf0IxeYMZyq/xloenebMWsW
+         z2KK7d6+/gvVvRMJ0qAmpDJ/6VDl/cIfe1sNM303j9fCr5kKoAvaxgj4e2D9NKvhCNx+
+         BsrOSj91dKq7qZFJhvcb4n2jQLjTYcQcNqcfumP+gZI3wKiG/6E4C/s8ciyGsAlg8dng
+         tDxcRqK9G/KJi6wFc9/Lg5Wu8neSq0FXsSUWl9ED/6MHKJFp3XF4sazMt3DVu3ZK2OH9
+         kkQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678023845;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=y1SgqfrtDVGQPAzb2J+1WJCdpCcTnMueLvLPfe9hIh8=;
+        b=xGpMM/C0HwzmJD3lJwTJ+hSmNgHiq5MFGsVJ0ddhrm7UJXGHePXTYIn8BLQjuGbcbg
+         cardzCkwx49J1SsnyAQNykJbY+iX+1KLUc9+OD4omutxn0muoQbn6DaAd6mfrrXOn0lk
+         HAkjJLckXoFRdnPAQgIEJKy644oyQG/J6lZDgzig+686KorKQNiGs+6dAgr+NMrQVece
+         +mctpiJs31V5hHw6RBzGTbydm0JbOnQ+MZ3e1MyRIOT7C2+gm7b1x+t5HSE2Q+AsDmXf
+         O1EynD/++/zWlLB2uqGepgW48F7cZkyVk+QnWqvEa0RMCQ20Ea56A7iGnli7MW4p0bb1
+         rEUw==
+X-Gm-Message-State: AO0yUKXjSvdHHtxXEC/34V2ilB0tQJONSQU/MtQ9msAKlLAT/cW/zdih
+	wb03k6KYI3ULZNhuKciWb2QW1d9jNcCWyVoLtnM=
+X-Google-Smtp-Source: AK7set/D0QwDOOXy8GsQrk0nIiCLFDLIhwInpOhvfEZjHG8lHOxtrWwFdPapvil2lBBKVJ4MHrPnL5uHXvft3cxRo9E=
+X-Received: by 2002:a17:906:7cc6:b0:8b1:7682:3181 with SMTP id
+ h6-20020a1709067cc600b008b176823181mr3236282ejp.9.1678023845564; Sun, 05 Mar
+ 2023 05:44:05 -0800 (PST)
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
+References: <20230304164135.28430-1-strit@manjaro.org>
+In-Reply-To: <20230304164135.28430-1-strit@manjaro.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sun, 5 Mar 2023 08:43:52 -0500
+Message-ID: <CAMdYzYoxti1ZU-xvc66bVx5TmRfUJK=Zx17pHSvaEELuRE95Uw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Lower sd speed on soquartz
+To: Dan Johansen <strit@manjaro.org>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, 
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230305_025006_173072_B0D648EB 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230305_054408_083521_3C60C8E1 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,42 +85,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-MicroSD card slot in the Pinebook Pro is located on a separate
-daughterboard that's connected to the mainboard using a rather
-long flat cable.  The resulting signal degradation causes many
-perfectly fine microSD cards not to work in the Pinebook Pro,
-which is a common source of frustration among the owners.
+On Sat, Mar 4, 2023 at 11:42 AM Dan Johansen <strit@manjaro.org> wrote:
+>
+> Just like the Quartz64 Model B the previously stated speed of sdr-104
+> in soquartz is too high for the hardware to reliably communicate with
+> some fast SD cards.
+> Especially on some carrierboards.
+>
+> Lower this to sd-uhs-sdr50 to fix this.
+>
+> Fixes: 5859b5a9c3ac ("arm64: dts: rockchip: add SoQuartz CM4IO dts")
+>
+> Signed-off-by: Dan Johansen <strit@manjaro.org>
 
-Changing the mode and lowering the speed reportedly fixes this
-issue and makes many microSD cards work as expected.
+Makes sense, considering the problems we're having with other boards.
+We should probably stop using sdr104 altogether on Rockchip, at least
+until they release a chip that improves on the limitations of pinctrl
+speed. Considering the frequency cap it isn't that much of a hit.
 
-Co-developed-by: Dragan Simic <dragan.simic@gmail.com>
-Signed-off-by: Dragan Simic <dragan.simic@gmail.com>
-Tested-by: JR Gonzalez <jrg@scientiam.org>
-Signed-off-by: Dan Johansen <strit@manjaro.org>
----
-Changes since v1:
-  Use correct Co-developed-by and add missing Signed-off-by.
+Acked-by: Peter Geis <pgwipeout@gmail.com>
 
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 194e48c755f6..54bb0398128f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -943,7 +943,7 @@ &sdmmc {
- 	disable-wp;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
--	sd-uhs-sdr104;
-+	sd-uhs-sdr50;
- 	vmmc-supply = <&vcc3v0_sd>;
- 	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
--- 
-2.39.2
-
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+> index ce7165d7f1a1..102e448bc026 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+> @@ -598,7 +598,7 @@ &sdmmc1 {
+>         non-removable;
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+> -       sd-uhs-sdr104;
+> +       sd-uhs-sdr50;
+>         vmmc-supply = <&vcc3v3_sys>;
+>         vqmmc-supply = <&vcc_1v8>;
+>         status = "okay";
+> --
+> 2.39.2
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
