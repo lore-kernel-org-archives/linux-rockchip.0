@@ -4,57 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD4DC61DA4
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Mar 2023 15:24:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2A9C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Mar 2023 12:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oiiHn9b/xuUsgr62aDaKF265yqgu2P5k5f/DL/65mKM=; b=InYlSrSUA0nYLd
-	bATuD3BePIscsiBq2wEINjgY3PDSjAIcFAUlLHCLvYz5krubw2xFvfu/HhIQps6t2wX4+eLeprzMq
-	nGf8BUnhdqgqYqw21MbBAIPPWw/9pG6Q4EgJ1hRSiUaQ6ysz+Pnu9HwYrj3Do9jKiMc5qweWfZchx
-	/3+wGsYwUUh31u36JZe0oXoyXELNgwvrGMN9Yby0pRo3qiRnybsvHtzSuffk4wX+l1BMRZSmFZdRi
-	lL7tzM333Ln3/5wf568vU6BoyeLXpbkj1ujp7892Ao1zBSDdKyTQcX/YnwzwVDCxeUqqCU0VFQdZ2
-	e9/2Di7YpWWZMqFf59NA==;
+	List-Owner; bh=VYhTgZLG9jynJJqtZ58C5Pq22/Cpfmm5mt8grzDqu8g=; b=jlZTO18xiadTdS
+	ImHm5dxxLh6DwVuVZApBvII3iOKfDY+4lu/HuSNYBCcMWyBGh5zkraDfZLBenGoJ8Kdo+IsTbhTj2
+	kC18ocNt5OY18eI5wVvLPtc5vUQ8QR1vxafyguUQBYRyRGDIBTtajqCT3g6Fh647G1E+Oa0/P5ZLc
+	Wbakk2wDWlFhqsCh88P/uVONbcDWR8+JK7lX7QlIXD5fDjlGTNBg0EgGkOjGMi7r0+NSl1VrBIQxg
+	MP5VQcYlwOi46IYnkGFKkHcuuUw2fTzp59swC+5s/iixW8yh4u2AAHRJ+H6ZR/Af+loUxOwg62Pox
+	0N59pVrfX2lDv2hrAn4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYqDW-00AOde-DU; Sun, 05 Mar 2023 15:24:06 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1pZA65-00CikL-8Q; Mon, 06 Mar 2023 12:37:45 +0000
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pYqDT-00AOdC-CB
-	for linux-rockchip@lists.infradead.org; Sun, 05 Mar 2023 15:24:05 +0000
-Message-ID: <32cb5f8e-7e50-af63-ae27-5eda91b66c11@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1678029840;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LILnWwT+X01TlcMDNKt57y/oun3eaRS2/bsTMJ/7RMk=;
-	b=X/rsn9XKlZjsL0EN4667M8P5xeWi+KUzcZU5hXoVasvXhgOsMWt0pduNhbPWuTv0EBGrGF
-	s1Yyfv4ljOGFjmRHhj5mKMMjeULrUrwNM13CU9Tuolzey8wXpuQweLGcJ1GFe6b+SE/mjZ
-	7ADtiAyNtFFzQw4nDJLOmVaj5e6PA63WbC4GeOEFT5+sGexsTf2ilMFX2Ph7jjU6ImGxVE
-	qG8+PTi+vLna1DMfFWJdaMZwZaHwJrqlmu/2D5RoHM5bCtrtT4OGEE7dM3P7ZquCIVgNaB
-	PmELKn78WZPjZY1V6Yls0bLE9V7/gmAfNXb9XgC/w7k4v4aykWxCURGvDavkCQ==
-Date: Sun, 5 Mar 2023 16:23:58 +0100
+	id 1pZA62-00Cigp-BG
+	for linux-rockchip@lists.infradead.org; Mon, 06 Mar 2023 12:37:43 +0000
+Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-536bf92b55cso180375317b3.12
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Mar 2023 04:37:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678106244;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=B1fqN+Osai6CCo/4uAM/DIM6+3uZVeAU3x7P6Nh+AL4=;
+        b=kgXWRALfBwicLyIj2AHvNJ5gg1ibq5RRNApO/nCtrsRirMEDwTI5eh0fJAvmB/ndck
+         HwNhtV3anhcNQD7++OC5LilGZx5ixD8Glg2v8x99OigvY9zxcftolFR22ghvZSq51nXP
+         AnAJms+vpoaILeIY9Va4Bz8ba0ZgAKj8lkgtfdbX+3hcp6kJbXeR6LJlulkzZ+qj8xnT
+         TvI52p1HkQ0EmO3dncEs0eR6HsvnOLN0qLgRZeBzztmea9TImX1bef/+VidIUmCxcGgZ
+         2cFej9kS7yRFYwSC2/Pa4B/KJAszeeav8VcqOKl7UcF7ZQto/dlPsfU+tRrHrNB6Jmt7
+         R1mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678106244;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B1fqN+Osai6CCo/4uAM/DIM6+3uZVeAU3x7P6Nh+AL4=;
+        b=iowH95iOoZqBNv2XugIhO+0cQKlvQhS56R0ZTerLGX7/QY68GexrD7g8Uqt7pAhl6a
+         IqrMi/89WHU0EGd3HhO528Qg6+tDdV9nmfYPgwS7HvgNoj6ayx1mWc1gvqiJzElZilGG
+         jyInh55sUxNeP9EWd7jWLVig3OJJwx44Nmrmm2GIxPVFuuhs+76tSKeFpTYyyeOL0wLe
+         ucP8RrM34sZ/dpU7WhXHOYuaQDLCVEqXae3szmY6DI1416C9tUoYB8KN1n90bUqE1Mg+
+         oTvLb/Vrtsbl9aMZmCfnWud5SMxGDReyxUORyg/ScI3BFyjxf+mAHwA2MXJDGZ9vbA/g
+         sQtA==
+X-Gm-Message-State: AO0yUKWBvLUkGn1dHp2Nw00lN+SGjeQjPCpJXky7Xozf4w2dWIU8o6CY
+	/i14vfbnj9zeu673JXFH8vN6zYEyBjZK+ciOyJAPjw==
+X-Google-Smtp-Source: AK7set9JqmeLzn+ZpNjBjlBik7FoHGXFdpiI5Z4ulz0J2fN04dJzku/RxjI5AxZT8fYCWSsV9AXnTrQu1Y6OPL7lPX0=
+X-Received: by 2002:a81:ad24:0:b0:52e:bb2d:2841 with SMTP id
+ l36-20020a81ad24000000b0052ebb2d2841mr6245708ywh.10.1678106243865; Mon, 06
+ Mar 2023 04:37:23 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [PATCH] arm64: dts: rockchip: Lower sd speed on soquartz
-Content-Language: en-US
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20230304164135.28430-1-strit@manjaro.org>
- <CAMdYzYoxti1ZU-xvc66bVx5TmRfUJK=Zx17pHSvaEELuRE95Uw@mail.gmail.com>
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <CAMdYzYoxti1ZU-xvc66bVx5TmRfUJK=Zx17pHSvaEELuRE95Uw@mail.gmail.com>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
+References: <20230127181244.160887-1-sebastian.reichel@collabora.com>
+ <20230127181244.160887-10-sebastian.reichel@collabora.com>
+ <CACRpkdbQfaCX=ZbFQh3p_T3biWEex-QZofXTrbVKd5hYOzMAug@mail.gmail.com> <ZADNS9dqqbBE9Ohb@google.com>
+In-Reply-To: <ZADNS9dqqbBE9Ohb@google.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 6 Mar 2023 13:37:12 +0100
+Message-ID: <CACRpkdbPHnzLBsg6RkFi7AA3ZfHMergXkdPhvx1DQKWRBJ1GUA@mail.gmail.com>
+Subject: Re: [PATCHv6 09/11] pinctrl: rk805: add rk806 pinctrl support
+To: Lee Jones <lee@kernel.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	shengfei Xu <xsf@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230305_072403_932217_1AAA6376 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20230306_043742_410049_A2E794B3 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,67 +89,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, Mar 2, 2023 at 5:22 PM Lee Jones <lee@kernel.org> wrote:
+> On Mon, 30 Jan 2023, Linus Walleij wrote:
+> > On Fri, Jan 27, 2023 at 7:13 PM Sebastian Reichel
+> > <sebastian.reichel@collabora.com> wrote:
+> >
+> > > Add support for rk806 dvs pinctrl to the existing rk805
+> > > driver.
+> > >
+> > > This has been implemented using shengfei Xu's rk806
+> > > specific driver from the vendor tree as reference.
+> > >
+> > > Co-Developed-by: shengfei Xu <xsf@rock-chips.com>
+> > > Signed-off-by: shengfei Xu <xsf@rock-chips.com>
+> > > Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> >
+> > Is this something I can just apply? I haven't had Heiko's review
+> > on it but it looks innocent enough.
+>
+> Ack please. :)
 
-Den 05.03.2023 kl. 14.43 skrev Peter Geis:
-> On Sat, Mar 4, 2023 at 11:42 AM Dan Johansen <strit@manjaro.org> wrote:
->> Just like the Quartz64 Model B the previously stated speed of sdr-104
->> in soquartz is too high for the hardware to reliably communicate with
->> some fast SD cards.
->> Especially on some carrierboards.
->>
->> Lower this to sd-uhs-sdr50 to fix this.
->>
->> Fixes: 5859b5a9c3ac ("arm64: dts: rockchip: add SoQuartz CM4IO dts")
->>
->> Signed-off-by: Dan Johansen <strit@manjaro.org>
-> Makes sense, considering the problems we're having with other boards.
-> We should probably stop using sdr104 altogether on Rockchip, at least
-> until they release a chip that improves on the limitations of pinctrl
-> speed. Considering the frequency cap it isn't that much of a hit.
-I agree, better have a safe default.
->
-> Acked-by: Peter Geis <pgwipeout@gmail.com>
-Thank you for the Ack.
->
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
->> index ce7165d7f1a1..102e448bc026 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
->> @@ -598,7 +598,7 @@ &sdmmc1 {
->>          non-removable;
->>          pinctrl-names = "default";
->>          pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
->> -       sd-uhs-sdr104;
->> +       sd-uhs-sdr50;
->>          vmmc-supply = <&vcc3v3_sys>;
->>          vqmmc-supply = <&vcc_1v8>;
->>          status = "okay";
->> --
->> 2.39.2
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
--- 
-Kind regards
-*Dan Johansen*
-Project lead of the *Manjaro ARM* project
-Manjaro-ARM <https://manjaro.org>
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
