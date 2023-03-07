@@ -4,79 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3CCAC6FD1B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 16:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD2D5C678D4
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 17:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SFgoLml3O7D2+I5ORoALsR83mY/J2oV994I8vK/RoTk=; b=FgetdDsMAJF8Hg
-	86r5NUCirg+gCVUfIigKux8BqhSPed+0omeQF46cQtlDIOdcqHYcPjO2ms6iJj/wM8ZM4Y34Zj3cK
-	mc4PWo5p4cxhDl0lJwdl2P1FLEr0rkU2TAEMJlFof02co7xJ0wkw0vpKMFp9j+tG1PYX9ERdPkihb
-	6SznIT3CmVXXOU/9t5m2TPST4fzuXCnCbzSA+D62VfrzomyV3AmshcKYjj+w+Lp95YYnO8qjSoQ8d
-	RBfba6cgc5MC93EbbTC9Hv0mxUtdUwzKKCz/wlawDgSS9HAtziNlkrNdrh/Gcci4+4NmcTUXPc26+
-	UtKfpeT64i18m1h215pw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2Oso8l1V+FGbEnptm/aKZ/b+EXENAypD/rbvzjamYuM=; b=bK9veiGD5HycAm
+	FiU9zZUwZ7BPysEfzlS5M8fJSxRjK+yjNEjBOrGHHq0D/5x6e41gutJAPjdTWUhhSt5HvPNIEPxf8
+	ZVbQlZrytyuqCpwrXmDJH4Og8Rx50SCyTjWjt4pLP7PDffpy8Cx09CutyF9Xlut7H4AK+/ie3UuSC
+	4LqbnUujEcvY3HBPT3egR/fmHWJbz5vUjabP6sR7L5kT6gHZkPcV39CrRxZCNDPh6kVVNIdVrwoqp
+	U/9bFyU1ABLEdrytcOvhnl04nz+VvEgpNbGUWrPlNACo2UE8fuQHhtEXWkUYGua/ga1xYub1zNUFK
+	eGpeTbATfG3hucQm3rAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZaJS-001a5e-8C; Tue, 07 Mar 2023 16:37:18 +0000
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZaJC-001ZwL-IT
-	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 16:37:05 +0000
-Received: by mail-il1-x12a.google.com with SMTP id w4so4507748ilv.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Mar 2023 08:36:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1678207017;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ux+HwDDquJHkOY/OMFVQ579Sl0VkYcKa5LT1wJs7xN4=;
-        b=BnFLUAjUOkKd62/QQGDXYegmnAWNcOT/4lVqtfFTEC1OELACehy6GuNtB9U7g3Xf1m
-         gzS5HgoemwNlSiTtaP3XdBlxlnU+11cHis3C2u1T8cg4SzXXIbPM7RKa1TyBQEFuQUWo
-         uJKs2DNjKNd8/3qJtdZXTJwJENRCP0jh79z8M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678207017;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ux+HwDDquJHkOY/OMFVQ579Sl0VkYcKa5LT1wJs7xN4=;
-        b=q0umGRjMtbzDFnchjnGTuNFwolIBqv0VqPQc0oVHRc/jvbuDyskLgytPOvfBralfyA
-         wEa0AcD0gmKenZxjiAtvKmzIxUxPyTOc0ufY+d2+EDQ8WaE1udl+hPjoJGXIbz13l1c1
-         6CUmYkJYS7ZGuvoBZGfOR4yKYfi26IVJ6cxj2j7lBzSf8MJCinXPA4kws3HYdp/pVIyY
-         XxAPJS6sqAJ2KQTJHLmNItw1PzSMkLRkXuWD1g0qfZjAjBH2iGoJ3cn8GezZXD9kJPrv
-         cZuNfJO9t9xeYpxoHvLOAKfa/bgSfCTTm8zU12A0WFkpKq/vxcAqOhhLw9act9+vWRoq
-         W3sw==
-X-Gm-Message-State: AO0yUKUKeojB/Pkxx/bGsu+lSq05FA/HW+qaSROfSC+vdbhf1wINODrP
-	v6n3K4Pu3pKRnmfIJ40mZIhEkCCE+j8FMu3afsg=
-X-Google-Smtp-Source: AK7set95ZPMFgSYcnky3/kWNsIIGPQ4GcxCAW/FzM3YKJQ0Oo6ZJ5HqHU6noQ+7cGoWaPlFSEbzFGg==
-X-Received: by 2002:a05:6e02:174b:b0:316:f0e9:e136 with SMTP id y11-20020a056e02174b00b00316f0e9e136mr13886129ill.18.1678207017469;
-        Tue, 07 Mar 2023 08:36:57 -0800 (PST)
-Received: from mail-il1-f176.google.com (mail-il1-f176.google.com. [209.85.166.176])
-        by smtp.gmail.com with ESMTPSA id t19-20020a02c493000000b003a2cb2937cdsm4188920jam.31.2023.03.07.08.36.56
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Mar 2023 08:36:56 -0800 (PST)
-Received: by mail-il1-f176.google.com with SMTP id b12so5127370ilf.9
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Mar 2023 08:36:56 -0800 (PST)
-X-Received: by 2002:a92:c5c1:0:b0:310:a298:1c95 with SMTP id
- s1-20020a92c5c1000000b00310a2981c95mr6900094ilt.6.1678207016401; Tue, 07 Mar
- 2023 08:36:56 -0800 (PST)
+	id 1pZbI1-001ra4-Kn; Tue, 07 Mar 2023 17:39:53 +0000
+Received: from m12.mail.163.com ([220.181.12.196])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pZbHy-001rY6-DX
+	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 17:39:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=4L/vO
+	yAA0sQq/vaIuPvACeaXWgWX0UFxKoUhXSbG0m0=; b=UzIwnVEV5JDj95YxrljJP
+	px9MzX/E86TxlvUDOBNHJoO4maH5IvOrEBbtrywVYxF/b3vpNhesxv2YSyImi0lm
+	P6QndSMRkTzSHwD/8k9WkqVhMQIjVfLgeIA2vUc05imGf4zoe2KW1f5413exLwNQ
+	IkUoC41VPZ5Dp1aBTkwtWw=
+Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
+	by zwqz-smtp-mta-g2-1 (Coremail) with SMTP id _____wCHjdG2dgdkm7_iCQ--.13674S2;
+	Wed, 08 Mar 2023 01:39:02 +0800 (CST)
+From: Zheng Wang <zyytlz.wz@163.com>
+To: ezequiel@vanguardiasur.com.ar
+Cc: mchehab@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	hackerzheng666@gmail.com,
+	1395428693sheep@gmail.com,
+	alex000young@gmail.com,
+	Zheng Wang <zyytlz.wz@163.com>
+Subject: [PATCH] media: rkvdec: fix use after free bug in rkvdec_remove
+Date: Wed,  8 Mar 2023 01:39:00 +0800
+Message-Id: <20230307173900.1299387-1-zyytlz.wz@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230307095516.4116827-1-heiko@sntech.de>
-In-Reply-To: <20230307095516.4116827-1-heiko@sntech.de>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 7 Mar 2023 08:36:44 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=V0fZaD=ptgbUrq-2ai=md08q4cEDLGbLiXb_ec42w4EQ@mail.gmail.com>
-Message-ID: <CAD=FV=V0fZaD=ptgbUrq-2ai=md08q4cEDLGbLiXb_ec42w4EQ@mail.gmail.com>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add mmc aliases for rk3288-veyron devices
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	devicetree@vger.kernel.org, briannorris@chromium.org
+X-CM-TRANSID: _____wCHjdG2dgdkm7_iCQ--.13674S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7GF4xAFy8uw17XryxtryxXwb_yoW8JF1fpr
+	W7ta4UCa15GF4jgF47tw4xZ3WrG345KF95Kr9rXa43ZryfJrnrJ3sYyF1UAFZ7trZ3Z3y3
+	CFyYgw1rXw4DtrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi-eOJUUUUU=
+X-Originating-IP: [111.206.145.21]
+X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXQArU1WBo1XSVAAAsB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_083702_643409_69D83CC8 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20230307_093950_869221_191D4E80 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,20 +72,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBUdWUsIE1hciA3LCAyMDIzIGF0IDE6NTXigK9BTSBIZWlrbyBTdHVlYm5lciA8aGVp
-a29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEFsbCBvZiB0aGVtIGhhdmUgYW4gaW50ZXJuYWwgZW1t
-YyB0aGF0IGJlY29tZXMgbW1jMCBhbmQKPiBkZXZpY2VzIGluY2x1ZGluZyB0aGUgc2RtbWMgc25p
-cHBldCBnZXQgbW1jMSBmb3IgdGhlIGV4dGVybmFsCj4gc2Qgc2xvdCBvbiBzdWl0YWJsZSBkZXZp
-Y2VzLgo+Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4K
-PiAtLS0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zZG1tYy5kdHNpIHwgNiAr
-KysrKysKPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi5kdHNpICAgICAgIHwgNCAr
-KysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQoKUmV2aWV3ZWQtYnk6IERv
-dWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+In rkvdec_probe, rkvdec->watchdog_work is bound with
+rkvdec_watchdog_func. Then rkvdec_vp9_run may
+be called to start the work.
+
+If we remove the module which will call rkvdec_remove
+ to make cleanup, there may be a unfinished work.
+ The possible sequence is as follows, which will
+ cause a typical UAF bug.
+
+Fix it by canceling the work before cleanup in rkvdec_remove.
+
+CPU0                  CPU1
+
+                    |rkvdec_watchdog_func
+rkvdec_remove       |
+ rkvdec_v4l2_cleanup|
+  v4l2_m2m_release  |
+    kfree(m2m_dev); |
+                    |
+                    | v4l2_m2m_get_curr_priv
+                    |   m2m_dev->curr_ctx //use
+
+Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 7bab7586918c..6b14655a8e2c 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -1066,6 +1066,7 @@ static int rkvdec_remove(struct platform_device *pdev)
+ {
+ 	struct rkvdec_dev *rkvdec = platform_get_drvdata(pdev);
+ 
++	cancel_delayed_work(&rkvdec->watchdog_work);
+ 	rkvdec_v4l2_cleanup(rkvdec);
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
