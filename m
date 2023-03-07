@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA6A3C678D5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 22:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75509C678D5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 23:35:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XplTkmpgudgWIdNmbJkMbO9Y1WkaTN1bJmppFfhHGCw=; b=c6aUjnW1mIVbwA
-	MuztTEZvmhGJxDiSdONF5xv/D6EhJLNH495MlWzmyPs3+6Pjl9lVC/iNZ05PsrAGeXoTKNMIAV6IL
-	GEJRGFenFv/W/ZSqR+m8EhM+YZJck29cKM+dhdSSipC4yBWtE+BYiU1HIGh5XQPt74BG2w6cslLYb
-	6iimfHRXxM1Ni9QJPe8zRaKAckjqaTnYVhrq/9CiJgNBVaDj3nRVXA3sQliarJ6rtGuALsP3wsxLv
-	R4+cs+t3h6LK5KQPzM6RGOMR85yo3iB68FMK0grG5aOHr+46T3GuAtwFqOPHqFIxdSSUE6vXUJwtd
-	S0N87Ut8ot6Gqlm2ISIw==;
+	List-Owner; bh=Bj+wSr+d9i/bHJuZ+txg62mA4tyR2bG0sOEs7RDo4Q8=; b=gH3cGgrwVzU9ih
+	8ba8n4hNKGtPZ799M8eYK2+kt5tuTuBrV58lLb+/FtYqLAmylMOU33CidbTk7oq8ap+xxDOS/TarP
+	E2w1RgowwPFg6t2nIYsc/hSOYauaTsWFisBPUC5pJd/2MBLkj7+1uimN2ziVthKo50BSNkIGOLdW5
+	KncngI1p5THvsZOrvrMmlGwIkSnSli4VA5et0sk1dUK5zO8SqXPa1ry/HRvtWCGCuxVuip3fqg/Kl
+	oqbKoyQVLr5whThp1it4ytqwL0uL7IriIwvkvTIzZOmNwI4a8/hNpM8ovmun2YIlAGZzmUT+FmvN/
+	EjOp0umZuisIZ0fgTTtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZfjy-002elJ-GH; Tue, 07 Mar 2023 22:25:02 +0000
+	id 1pZgqV-002tBX-HC; Tue, 07 Mar 2023 23:35:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZfjv-002ekP-JC
-	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 22:25:00 +0000
+	id 1pZgqT-002t9f-KH
+	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 23:35:50 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pZfju-0001hq-4a; Tue, 07 Mar 2023 23:24:58 +0100
+	id 1pZgqP-00025h-Jz; Wed, 08 Mar 2023 00:35:45 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Maya Matuszczyk <maccraft123mc@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org
 Subject: Re: (subset) [PATCH v2 0/4] Add internal display support to Odroid Go Super
-Date: Tue,  7 Mar 2023 23:24:52 +0100
-Message-Id: <167822787429.200624.6513384240605380879.b4-ty@sntech.de>
+Date: Wed,  8 Mar 2023 00:35:36 +0100
+Message-Id: <167823207790.205469.9629635802550886611.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230213153816.213526-1-maccraft123mc@gmail.com>
 References: <20230213153816.213526-1-maccraft123mc@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_142459_652804_B78C76FF 
-X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-CacheID: sfid-20230307_153549_708134_A024AA5F 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,12 +68,8 @@ On Mon, 13 Feb 2023 16:38:12 +0100, Maya Matuszczyk wrote:
 
 Applied, thanks!
 
-[1/4] dt-bindings: display: panel: sitronix,st7701: Add Elida KD50T048A Panel
-      commit: 441e129cbf81fa7365963141040814cee8ed94d6
-[2/4] drm: panel: Add Elida KD50T048A to Sitronix ST7701 driver
-      commit: e89838968ee4446073faa718e9303bd6341ee0d1
-[3/4] drm: panel: Add orientation support for st7701
-      commit: 5a2854e577dc2b4538711afb9d788a6fb835b640
+[4/4] arm64: dts: rockchip: Add display support to Odroid Go Super
+      commit: f94c11ade1461b9cbae1e8d2e03efa7d4dc178f0
 
 Best regards,
 -- 
