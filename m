@@ -4,62 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCE8FC678D5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 15:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 979F2C678D5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 15:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QqD6AgNtMnm/BIRtvshb9oO5W9sO71fAGhM6W4fXRxo=; b=GKR8MmwlS0HSo1
-	uGtDrTfqKXAGb0FqH0ywOh9I2NFOflbWhSJFBeDM9Uhi2qbt3QHG2VE5eq93jXB06FLMhq5OY3wt9
-	1rFoyeL4Mil4ZbA1hTOmt5a99NZz0yVAHTSzOfoTL0ttQ+CmqbEYCijL0WvtLlGItzwjAWwlRWg9z
-	1LNLOfK49pOIG0aet5/87LAOoOQfKkdg9IP/FmPjF4/jmxyn0G9Sbm8bQ9qrJ9VZFXT7BrIjUCieb
-	IsHE3V6/Xuxm8rOalm4OMP/YjecrreEi+cNdVPQsvHC7HKwQgjet2NPo7/OJNJekZ5Ybnhk0zyrYM
-	/aT6Bxp89dHNLWkUxgGw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ilX29SzRlSLsp7ZvdlGb5O+NDAQgv571FqcGtGBJwis=; b=TWxrPKjJh5Zd3N
+	64+UKg9huCKZe3lY3VccHbsF0wCCnTByuduaLu8cfmdn8UGExmg2Smcm4d+0+g8w5W0kmN6+6Vkql
+	sZ+YyWYiFbBYXNNLON0t94HVxDgmR7FJHtEegB7gOOuXbeZKjIOLflsQi7YqnLxdeSCYj+tsVLxYi
+	bGKHkvUjfV7tiNyiR4unEvaS+WQixuy0kfkc7JmojopXrDEIrjAsuNgxUNjaH5+D1JSUoKPe449gB
+	V6YAVZYSSNc21nLaQE7AcqYddzAgxWDbq89COgX1CHJjieACJCUsDRZ2i2JmK6zS7OgK3muRtGeed
+	sfE1JL+1uvqQq7PYs0kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZSA-001I1g-HJ; Tue, 07 Mar 2023 15:42:14 +0000
-Received: from m12.mail.163.com ([123.126.96.233])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZS7-001I0r-Iw
-	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 15:42:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=sUgc1
-	Ip6cph68cI1VgRBJ11BMagx1vc6BYllZnRAv3w=; b=WyvczoL1xuThhrxy0sLmV
-	ggpzJmFx998EVhMmDw2cJPLllv24/k9rLP7GuUMxht55hhronISquD/Y8c6it3Rg
-	SKBPLmkQ8XE4ETluHitderHr0BXJ3wTO4y6pJq7tFS/KWvYZDGhn3VXlAfdwX521
-	UQGOFWcpxw5ptqZeV4vQDU=
-Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
-	by smtp20 (Coremail) with SMTP id H91pCgDnsbZHWwdkkSMIGw--.40718S2;
-	Tue, 07 Mar 2023 23:41:59 +0800 (CST)
-From: Zheng Wang <zyytlz.wz@163.com>
-To: ezequiel@vanguardiasur.com.ar
-Cc: p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	hackerzheng666@gmail.com,
-	1395428693sheep@gmail.com,
-	alex000young@gmail.com,
-	Zheng Wang <zyytlz.wz@163.com>
-Subject: [PATCH] media: hantro: fix use after free bug in hantro_remove due to race condition
-Date: Tue,  7 Mar 2023 23:41:57 +0800
-Message-Id: <20230307154157.1184826-1-zyytlz.wz@163.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pZZVh-001Icq-W4; Tue, 07 Mar 2023 15:45:54 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pZZVf-001Ibu-VU
+	for linux-rockchip@bombadil.infradead.org; Tue, 07 Mar 2023 15:45:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=8cVcU6vf3P7tWIhm0kR1cSYxiLWDb4NZaw72d9YIG+c=; b=KP3oiRDVUXDJ0Osg6oyjSoBwgy
+	eByPNP7lI7laf5UfMeJSytXWhG9yeFBHP9yGJsj1GLMmb7nARBPr5FBWi1T5oT1ip2VLRjC/Cqprj
+	8RroW6OqlDZc0I28pDrqNOKr3TUVOJM5fed9wUlRNDm4dMFqE7L9y7RfBsGg+Iz0UMqZiHfVDpDyT
+	+aO1/aIELRbl0cwKmFBuWhl3jc/3ZxT9PImiVCaX+OmLzyIt2qgsw3VYd6YmD5K2t9Zc0awZ1rItZ
+	nNdea1dqIalvYm0UnbBnFe27YQqcjoPpvsne6UY/WGIfdRlwYEGI3AWPYqRcqKVjU1vDgR+NYW62y
+	18JGtwlg==;
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pZZVb-00H4so-39
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 Mar 2023 15:45:50 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id qa18-20020a17090b4fd200b0023750b675f5so16924582pjb.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Mar 2023 07:45:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678203944;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8cVcU6vf3P7tWIhm0kR1cSYxiLWDb4NZaw72d9YIG+c=;
+        b=MAJbiaw/YQxz2rySEgttJx/i+zXTARQZ5RSihtSZwrSmfkqXLt2RosawTii4vCT9Wo
+         2+Hb9ZC0rkVVlk04Ej6eexSFRnBBwaZSsGBTt25QEz8mtERoxzWtV/Hn7lIC2JnSnZMV
+         nPU/rjGcFD6fM9I3dj8XpNCF/OAx/Yl+YzxFg6zLgtHO97RmayDltOqZLedIajlCbDKQ
+         xAUhIZh8fphkbv+ENlyexWDzr8CmgQ3vSK2wXNdLlRBPOS1V9JzmkhhVf2Y+kD+V6hkZ
+         gVV4rZmjgu9wCMunP45jyZ4knPqu7QnnVklG8kGseQYxcKYP8QH0KvWcpvxJDSI4eiTF
+         ueIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678203944;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8cVcU6vf3P7tWIhm0kR1cSYxiLWDb4NZaw72d9YIG+c=;
+        b=29GTUW3C4bFM56Kefsu1q336D2G0dNFGrfqDuTh8AIHTg5z+VmqhMHxRSIGaZftDyN
+         mqBcgQRghgcBCdhNaBvqqm+Sl3Uy8f54g+ptVPEf5piSfV7dvxDEUxFCIZ0yETlqmZHM
+         Uj5gI+OtgWzaeg6cenaVs9twehRSiibl3fSur+516xdc7Qaf0aP2eFqi0Y7W9FDJD2IC
+         uXvGES7mu42xIG+Vlr4HZP7HLKBK8VDWyRoWbdCgOctU0r6lZotl7IqZWCD8hjsBghlE
+         140dyaG7c190rIfoqkf1GKSkNzJQSgcrYTqraoSZguICj1D4yCRn/CT4UqNaU9ttfIhk
+         CAZQ==
+X-Gm-Message-State: AO0yUKU0cpbeFvSVx8ViBKYRTouqbA/zHOkX7cOY5bgNgOOzzoD73tAf
+	LVGZwQGhGBFBaG7agV8DONkvbUXNCCtgROg0X23uCe7/w07ZVpehX1I=
+X-Google-Smtp-Source: AK7set/r9LOOqLZZ3FGrgI738xX+9fXxQSSUCeyv2SmEXVuf0zQ3G39Cr1UPfWdgTiJmA/aTP2anc3Kisdhg7Gj6XBI=
+X-Received: by 2002:a17:903:2c1:b0:19c:d414:fe6e with SMTP id
+ s1-20020a17090302c100b0019cd414fe6emr5734357plk.12.1678203944402; Tue, 07 Mar
+ 2023 07:45:44 -0800 (PST)
 MIME-Version: 1.0
-X-CM-TRANSID: H91pCgDnsbZHWwdkkSMIGw--.40718S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Wry3Xw4kJw47Jr4rWr4kZwb_yoW8GF4rpF
-	W7trW3CrWjqr42gFn7Jw409ayrCa4agF4xWrZruw13AF9xtr9rGry0y3W8AF98JrZ3ZFWa
-	qF48Kr48X3y2vFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziID73UUUUU=
-X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXBErU1Xl52W08AABsC
+References: <20230307154157.1184826-1-zyytlz.wz@163.com>
+In-Reply-To: <20230307154157.1184826-1-zyytlz.wz@163.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Tue, 7 Mar 2023 23:45:33 +0800
+Message-ID: <CAJedcCwMDyM6rwNNJq1OL=UxUy2e0yH9RxJNmuJWS3k7zkYRvQ@mail.gmail.com>
+Subject: Re: [PATCH] media: hantro: fix use after free bug in hantro_remove
+ due to race condition
+To: Zheng Wang <zyytlz.wz@163.com>
+Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 1395428693sheep@gmail.com, 
+	alex000young@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_074212_126622_E731F14C 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20230307_154548_310074_9EA99A24 
+X-CRM114-Status: GOOD (  19.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,57 +99,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In hantro_probe, vpu->watchdog_work is bound with
-hantro_watchdog. Then hantro_end_prepare_run may
-be called to start the work.
-
-If we close the file or remove the module which will
-call hantro_release and hantro_remove to make cleanup,
-there may be a unfinished work. The possible sequence
-is as follows, which will cause a typical UAF bug.
-
-The same thing will happen in hantro_release, and use
-ctx after freeing it.
-
-Fix it by canceling the work before cleanup in hantro_release.
-
-CPU0                  CPU1
-
-                    |hantro_watchdog
-hantro_remove     |
-  v4l2_m2m_release  |
-    kfree(m2m_dev); |
-                    |
-                    | v4l2_m2m_get_curr_priv
-                    |   m2m_dev->curr_ctx //use
-
-Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
----
- drivers/media/platform/verisilicon/hantro_drv.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index b0aeedae7b65..80bd856a4da9 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1099,6 +1099,7 @@ static int hantro_remove(struct platform_device *pdev)
- 
- 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
- 
-+	cancel_delayed_work(&vpu->watchdog_work);
- 	media_device_unregister(&vpu->mdev);
- 	hantro_remove_dec_func(vpu);
- 	hantro_remove_enc_func(vpu);
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpUaGlzIHBhdGNoIGp1c3QgZml4IHRoZSByYWNlIGNvbmRpdGlvbiBpbiBoYW50cm9fcmVt
+b3ZlLiBBbGwgb2YgdGhlCmFuYWx5c2lzIGlzIG1hZGUgYnkgc3RhdGljIGFuYWx5c2lzLgpTbyBp
+dCBtYXkgYmUgZmFsc2UgcG9zaXRpdmVzLgpQbGVhc2UgZmVlbCBmcmVlIHRvIGxldCBtZSBrbm93
+IGlmIHRoZXJlIGlzIHNvbWV0aGluZyBJJ3ZlIG1pc3NlZC4KClJlZ2FyZHMsClpoZW5nCgpaaGVu
+ZyBXYW5nIDx6eXl0bHoud3pAMTYzLmNvbT4g5LqOMjAyM+W5tDPmnIg35pel5ZGo5LqMIDIzOjQz
+5YaZ6YGT77yaCj4KPiBJbiBoYW50cm9fcHJvYmUsIHZwdS0+d2F0Y2hkb2dfd29yayBpcyBib3Vu
+ZCB3aXRoCj4gaGFudHJvX3dhdGNoZG9nLiBUaGVuIGhhbnRyb19lbmRfcHJlcGFyZV9ydW4gbWF5
+Cj4gYmUgY2FsbGVkIHRvIHN0YXJ0IHRoZSB3b3JrLgo+Cj4gSWYgd2UgY2xvc2UgdGhlIGZpbGUg
+b3IgcmVtb3ZlIHRoZSBtb2R1bGUgd2hpY2ggd2lsbAo+IGNhbGwgaGFudHJvX3JlbGVhc2UgYW5k
+IGhhbnRyb19yZW1vdmUgdG8gbWFrZSBjbGVhbnVwLAo+IHRoZXJlIG1heSBiZSBhIHVuZmluaXNo
+ZWQgd29yay4gVGhlIHBvc3NpYmxlIHNlcXVlbmNlCj4gaXMgYXMgZm9sbG93cywgd2hpY2ggd2ls
+bCBjYXVzZSBhIHR5cGljYWwgVUFGIGJ1Zy4KPgo+IFRoZSBzYW1lIHRoaW5nIHdpbGwgaGFwcGVu
+IGluIGhhbnRyb19yZWxlYXNlLCBhbmQgdXNlCj4gY3R4IGFmdGVyIGZyZWVpbmcgaXQuCj4KPiBG
+aXggaXQgYnkgY2FuY2VsaW5nIHRoZSB3b3JrIGJlZm9yZSBjbGVhbnVwIGluIGhhbnRyb19yZWxl
+YXNlLgo+Cj4gQ1BVMCAgICAgICAgICAgICAgICAgIENQVTEKPgo+ICAgICAgICAgICAgICAgICAg
+ICAgfGhhbnRyb193YXRjaGRvZwo+IGhhbnRyb19yZW1vdmUgICAgIHwKPiAgIHY0bDJfbTJtX3Jl
+bGVhc2UgIHwKPiAgICAga2ZyZWUobTJtX2Rldik7IHwKPiAgICAgICAgICAgICAgICAgICAgIHwK
+PiAgICAgICAgICAgICAgICAgICAgIHwgdjRsMl9tMm1fZ2V0X2N1cnJfcHJpdgo+ICAgICAgICAg
+ICAgICAgICAgICAgfCAgIG0ybV9kZXYtPmN1cnJfY3R4IC8vdXNlCj4KPiBTaWduZWQtb2ZmLWJ5
+OiBaaGVuZyBXYW5nIDx6eXl0bHoud3pAMTYzLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMgfCAxICsKPiAgMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92
+ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxp
+Y29uL2hhbnRyb19kcnYuYwo+IGluZGV4IGIwYWVlZGFlN2I2NS4uODBiZDg1NmE0ZGE5IDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2Rydi5j
+Cj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMK
+PiBAQCAtMTA5OSw2ICsxMDk5LDcgQEAgc3RhdGljIGludCBoYW50cm9fcmVtb3ZlKHN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4KPiAgICAgICAgIHY0bDJfaW5mbygmdnB1LT52NGwyX2Rl
+diwgIlJlbW92aW5nICVzXG4iLCBwZGV2LT5uYW1lKTsKPgo+ICsgICAgICAgY2FuY2VsX2RlbGF5
+ZWRfd29yaygmdnB1LT53YXRjaGRvZ193b3JrKTsKPiAgICAgICAgIG1lZGlhX2RldmljZV91bnJl
+Z2lzdGVyKCZ2cHUtPm1kZXYpOwo+ICAgICAgICAgaGFudHJvX3JlbW92ZV9kZWNfZnVuYyh2cHUp
+Owo+ICAgICAgICAgaGFudHJvX3JlbW92ZV9lbmNfZnVuYyh2cHUpOwo+IC0tCj4gMi4yNS4xCj4K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
