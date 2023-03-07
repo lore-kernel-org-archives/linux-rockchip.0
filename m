@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869FCC6FD1E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 15:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1782C6FD1B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 15:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lqt95xpvXDWJTOWD5vJPioVC0t58T84nZD4ACk8FksY=; b=Vzppjy9oEOGgi7
-	xt+eIbQDSp7MH5n0ti6JmhGPneSimsLh0GhRgtEwcMwHh5WPIX+KXhp9sPQ8pik5qnq27EB/3jMKO
-	xN4gcaumoDK/x5t12kDXlsnX6DBjXZ2oZoa4WdOmkTXLP9019L/jaerAcZApzhzqTYcLj+bW4MAZV
-	mFXyIfjX1Dm2DJDZ4LkGpHZR7hvgKLt1Jcli/SgNxzfzlg31ZmbVOmiy8gi0Gypg+TJ0oi5R5fKss
-	Y4wS+Q3rKUwSPn8eq5Lm25nxmWTzzDU7ezzU9nSD/L/4ecFOa4BkEwPyR+r78Lwh9Pskw/pFcC2vr
-	waku0w2sAtxl+yWhuZNg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JN7W4O6nho3+oNNKVD/p7f5GcMXxgVtpz7HWSs7Tt64=; b=bm5ENyW60+pzQR
+	zST+9hgfCH95P83/Gp/9paKZNhMuSog/EWCgMNwbc3GX1VaExGnj1xXW8CwLp8Pup1rIYZnkmZAMm
+	OdUKNwl3BfxXSNBsUG46F/86dCMD/gV0lEvSZ5bp0k8XvArG1Cbvis+AlxJEnycB4HfdOH8nHjOsF
+	OAm1XWrjeNJW03IiV+XgKEgnpJ4V7wVdpCC3yDZpOC+SehCbo1C02Ap4f1PE2hQGevZxz6rvdToEU
+	47JBvQwCpF68mwhNp/niSNjKjRS5nJ+t1GT0kteQ9DrruSn8RYojWKeqDSqN2CPb2QiiMoo7GxTmN
+	a573tyW8aNhvOjfgFbhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZMg-001GRt-0j; Tue, 07 Mar 2023 15:36:34 +0000
+	id 1pZZMf-001GRD-7p; Tue, 07 Mar 2023 15:36:33 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZZMZ-001GN0-UH
-	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 15:36:31 +0000
+	id 1pZZMX-001GKY-3q
+	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 15:36:28 +0000
 Received: from jupiter.universe (dyndsl-091-248-189-073.ewe-ip-backbone.de [91.248.189.73])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A9B916602FEB;
-	Tue,  7 Mar 2023 15:36:23 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 160D966003AC;
+	Tue,  7 Mar 2023 15:36:21 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678203383;
-	bh=564l3WGAORurb/WvqPnweL63+s5Hi9qqK6QdPsqoKNo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AHkJWqXr8nTHwl07g2gpouO6iiwKEZXE6D0MtOf5v4wO9Ec2fNMLa1DQQ3ZDHDsY/
-	 RHs7jjIWpDtLteWCmdVChKeKx/FgTZzCenylKIPeZgmRYpMBdt2Bk078ZcIW3snx5Z
-	 4RLofhV5wIkcqM2X9MNsxbR0IMG7/dzTQICYfZ+iTdKtZ04xF+co/hYGTaIrhmrtfi
-	 H/+3XAvSXNINAmFuuAaENy/Yufti068C55rqq4WSyBoKsg7NZ5NKab9KKHcHQlLIi4
-	 CV0iFbC9ANAunFl717TqFtwtYM4nasvpp0i3G7mCgMGG345+b7bSwOxNjAMBBZRpzu
-	 QClofWeGFSAwA==
+	s=mail; t=1678203381;
+	bh=/cm+7vcUIl0ZGAO+fxHlSvD7Rq1Txcv5uS1nOXjAm4s=;
+	h=From:To:Cc:Subject:Date:From;
+	b=mNx5Jer5Us1/AeqV9cYkxKHE2nmDFAPBK/YrjY5U5zza5RqOI56FrIuYM890MVTcd
+	 7m+P5km9Ma0lUZpsVpBMNRN6iFlKbuspQnuI3uKr32kQErwpdZ8aU8S7eVags0gn84
+	 qP36+3caUrxis2pvh9esXteX7oeYh7Qfnh+i8za95vGdgZdEvhGJ27kQKm2kuReO/b
+	 EYkG0ArI7GEg9nPJ/is0ddfA7xkTPdiF8Xrndqzb5P1Jb0y58gJVM/PEfXk2Ehs5+A
+	 Vk2FfFmae8Uxz+1ah8IYKkd8kKtNhI5NVT6E7tTo06qCX9cTtjfGo+tjBMqzWFwFBF
+	 H7z2mXGYs817w==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 2C59248011E; Tue,  7 Mar 2023 16:36:19 +0100 (CET)
+	id 1D36248010E; Tue,  7 Mar 2023 16:36:19 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -61,16 +61,14 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCHv7 06/11] mfd: rk8xx-i2c: use device_get_match_data
-Date: Tue,  7 Mar 2023 16:36:12 +0100
-Message-Id: <20230307153617.643260-7-sebastian.reichel@collabora.com>
+Subject: [PATCHv7 00/11] Introduce RK806 Support
+Date: Tue,  7 Mar 2023 16:36:06 +0100
+Message-Id: <20230307153617.643260-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230307153617.643260-1-sebastian.reichel@collabora.com>
-References: <20230307153617.643260-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_073628_278143_F74E3EB9 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20230307_073625_436602_5E1CBCF9 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,160 +85,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify the device identification logic by supplying the relevant
-information via of_match_data. This also removes the dev_info()
-printing the chip version, since that's supplied by the match data
-now.
+Hi,
 
-Due to lack of hardware this change is compile-tested only.
+The Rockchip RK3588 Evaluation Boards as well as the Rock 5
+boards and probably most other RK3588 boards use SPI connected
+RK806 PMICs. Downstream this is handled by a new driver, but
+apart from being SPI connected this chip is quite similar to
+the other Rockchip PMICs (and RK806 is promoted to also support
+I2C). Thus this series instead updates the RK808 driver(s).
 
-Acked-for-MFD-by: Lee Jones <lee@kernel.org>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/mfd/rk8xx-core.c |  2 -
- drivers/mfd/rk8xx-i2c.c  | 89 +++++++++++++++++-----------------------
- 2 files changed, 37 insertions(+), 54 deletions(-)
+Changelog since PATCHv6:
+ * https://lore.kernel.org/all/20230127181244.160887-1-sebastian.reichel@collabora.com/
+ * rebased to v6.3-rc1
+ * add Lee Jones' Acked-by-for-MFD to patches 5 & 6
+ * add Linus Walleij Acked-by to patch 9
+ * fix review comments provided by Lee Jones
+   - remove spaces around ## in RK806_CMD_WITH_SIZE
+   - add spaces around - in RK806_CMD_WITH_SIZE
+   - change regmap init error message
+   - further improve readability of buffer handling in rk806_spi_bus_write
+   - use define for maximum buffer size
+ * add .max_register to regmap_config, so that they can be analyzed in debugfs
+ * switch to 16 bit register addresses to further simplify the code
+ * fix max. buffer size by using RK806_CMD_LEN_MSK,
+   which is 4 bit (max. 16 bytes) instead of 7 bit (max. 128 bytes)
+ * add RK806_CMD_CRC_DIS to RK806_CMD_WITH_SIZE define to explicitly
+   initialize all bits of the command byte
 
-diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
-index 5c0a5acef34c..ddf2052c5190 100644
---- a/drivers/mfd/rk8xx-core.c
-+++ b/drivers/mfd/rk8xx-core.c
-@@ -597,8 +597,6 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
- 		return -EINVAL;
- 	}
- 
--	dev_info(dev, "chip id: 0x%x\n", (unsigned int)rk808->variant);
--
- 	if (!irq)
- 		return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
- 
-diff --git a/drivers/mfd/rk8xx-i2c.c b/drivers/mfd/rk8xx-i2c.c
-index 6d121b589fec..2822bfa8a04a 100644
---- a/drivers/mfd/rk8xx-i2c.c
-+++ b/drivers/mfd/rk8xx-i2c.c
-@@ -16,6 +16,11 @@
- #include <linux/of.h>
- #include <linux/regmap.h>
- 
-+struct rk8xx_i2c_platform_data {
-+	const struct regmap_config *regmap_cfg;
-+	int variant;
-+};
-+
- static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
- {
- 	/*
-@@ -103,66 +108,46 @@ static const struct regmap_config rk817_regmap_config = {
- 	.volatile_reg = rk817_is_volatile_reg,
- };
- 
--static int rk8xx_i2c_get_variant(struct i2c_client *client)
--{
--	u8 pmic_id_msb, pmic_id_lsb;
--	int msb, lsb;
--
--	if (of_device_is_compatible(client->dev.of_node, "rockchip,rk817") ||
--	    of_device_is_compatible(client->dev.of_node, "rockchip,rk809")) {
--		pmic_id_msb = RK817_ID_MSB;
--		pmic_id_lsb = RK817_ID_LSB;
--	} else {
--		pmic_id_msb = RK808_ID_MSB;
--		pmic_id_lsb = RK808_ID_LSB;
--	}
-+static const struct rk8xx_i2c_platform_data rk805_data = {
-+	.regmap_cfg = &rk805_regmap_config,
-+	.variant = RK805_ID,
-+};
-+
-+static const struct rk8xx_i2c_platform_data rk808_data = {
-+	.regmap_cfg = &rk808_regmap_config,
-+	.variant = RK808_ID,
-+};
- 
--	/* Read chip variant */
--	msb = i2c_smbus_read_byte_data(client, pmic_id_msb);
--	if (msb < 0)
--		return dev_err_probe(&client->dev, msb, "failed to read the chip id MSB\n");
-+static const struct rk8xx_i2c_platform_data rk809_data = {
-+	.regmap_cfg = &rk817_regmap_config,
-+	.variant = RK809_ID,
-+};
- 
--	lsb = i2c_smbus_read_byte_data(client, pmic_id_lsb);
--	if (lsb < 0)
--		return dev_err_probe(&client->dev, lsb, "failed to read the chip id LSB\n");
-+static const struct rk8xx_i2c_platform_data rk817_data = {
-+	.regmap_cfg = &rk817_regmap_config,
-+	.variant = RK817_ID,
-+};
- 
--	return ((msb << 8) | lsb) & RK8XX_ID_MSK;
--}
-+static const struct rk8xx_i2c_platform_data rk818_data = {
-+	.regmap_cfg = &rk818_regmap_config,
-+	.variant = RK818_ID,
-+};
- 
- static int rk8xx_i2c_probe(struct i2c_client *client)
- {
--	const struct regmap_config *regmap_cfg;
-+	const struct rk8xx_i2c_platform_data *data;
- 	struct regmap *regmap;
--	int variant;
- 
--	variant = rk8xx_i2c_get_variant(client);
--	if (variant < 0)
--		return variant;
--
--	switch (variant) {
--	case RK805_ID:
--		regmap_cfg = &rk805_regmap_config;
--		break;
--	case RK808_ID:
--		regmap_cfg = &rk808_regmap_config;
--		break;
--	case RK818_ID:
--		regmap_cfg = &rk818_regmap_config;
--		break;
--	case RK809_ID:
--	case RK817_ID:
--		regmap_cfg = &rk817_regmap_config;
--		break;
--	default:
--		return dev_err_probe(&client->dev, -EINVAL, "Unsupported RK8XX ID %x\n", variant);
--	}
-+	data = device_get_match_data(&client->dev);
-+	if (!data)
-+		return -ENODEV;
- 
--	regmap = devm_regmap_init_i2c(client, regmap_cfg);
-+	regmap = devm_regmap_init_i2c(client, data->regmap_cfg);
- 	if (IS_ERR(regmap))
- 		return dev_err_probe(&client->dev, PTR_ERR(regmap),
- 				     "regmap initialization failed\n");
- 
--	return rk8xx_probe(&client->dev, variant, client->irq, regmap);
-+	return rk8xx_probe(&client->dev, data->variant, client->irq, regmap);
- }
- 
- static void rk8xx_i2c_shutdown(struct i2c_client *client)
-@@ -173,11 +158,11 @@ static void rk8xx_i2c_shutdown(struct i2c_client *client)
- static SIMPLE_DEV_PM_OPS(rk8xx_i2c_pm_ops, rk8xx_suspend, rk8xx_resume);
- 
- static const struct of_device_id rk8xx_i2c_of_match[] = {
--	{ .compatible = "rockchip,rk805" },
--	{ .compatible = "rockchip,rk808" },
--	{ .compatible = "rockchip,rk809" },
--	{ .compatible = "rockchip,rk817" },
--	{ .compatible = "rockchip,rk818" },
-+	{ .compatible = "rockchip,rk805", .data = &rk805_data },
-+	{ .compatible = "rockchip,rk808", .data = &rk808_data },
-+	{ .compatible = "rockchip,rk809", .data = &rk809_data },
-+	{ .compatible = "rockchip,rk817", .data = &rk817_data },
-+	{ .compatible = "rockchip,rk818", .data = &rk818_data },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, rk8xx_i2c_of_match);
+Changelog since PATCHv5:
+ * https://lore.kernel.org/all/20230109172723.60304-1-sebastian.reichel@collabora.com/
+ * add Reviewed-by from Rob Herring to the rk806 DT binding patch
+ * drop useless wrapper functions for rk8xx_i2c_suspend and rk8xx_i2c_resume
+ * put .num_resources after .resources for rk806_pwrkey_resources
+ * simplify dual_support logic by storing IRQF_SHARED or 0 instead of bool
+ * add missing spaces around + and - in rk806
+ * add new patch using device_get_match_data() in rk8xx-i2c and removing
+   the pointless dev_info printing the chip version
+ * call devm_mfd_add_devices() with id=0 and rely on mfd_cell to have the .id
+   field configured to either PLATFORM_DEVID_AUTO or PLATFORM_DEVID_NONE
+ * add check if more than 128 bytes are tried to be received/sent, which would
+   overflow the command register
+ * add RK806_CMD_WITH_SIZE() define
+
+Changelog since PATCHv4:
+ * https://lore.kernel.org/all/20221020204251.108565-1-sebastian.reichel@collabora.com/
+ * rebase to v6.2-rc1
+   - dropped 'regulator: rk808: reduce 'struct rk808' usage' (queued to 6.2-rc1)
+   - dropped 'regulator: rk808: Use dev_err_probe' (queued to 6.2-rc1)
+   - dropped 'rtc: rk808: reduce 'struct rk808' usage' (queued to 6.2-rc1)
+ * use 'MFD_RK8XX' for the MFD driver supporting all the MFD8XX chips
+ * added author tags to drivers/mfd/rk8xx-core.c. They were missing because
+   I moved the original header over to the i2c specific file and wrote the
+   new header from scratch. I suppose it's better to have the author tags
+   in both files.
+ * fix Rob's comments for the rk806 YAML binding
+ * add defines for rk806 command indexes
+ * modify rk806 code, so that it is capable of mult-write
+
+Changelog since PATCHv3:
+ * https://lore.kernel.org/all/20220909175522.179175-1-sebastian.reichel@collabora.com/
+ * Dropped removing REGMAP_I2C dependency from RK817 ASoC driver (applied)
+ * Rename MFD_RK808 to MFD_RK8XX to be consistent. It makes sense to do this now,
+   since the patchset touches all the child drivers anyways.
+ * rebase to v6.1-rc1
+ * collected a couple of Acks
+ * update rk806 DT binding according to DT maintainer feedback
+ * add missing pinmux config to the rk806 DT binding
+ * update rk806_spi_bus_write and rk806_spi_bus_read
+ * replaced some constants with sizeof or defines
+ * used capitalized comments
+ * rename regmap_find_closest_bigger to regulator_find_closest_bigger, not sure
+   why I prefixed it with regmap_ in the first place
+ * use rk8xx_is_enabled_wmsk_regmap instead of regulator_is_enabled_regmap for
+   the switching regulators to correctly report the state
+ * reordered the first few patches grouping the MFD patches together
+
+Changelog since PATCHv2:
+ * https://lore.kernel.org/all/20220908003107.220143-1-sebastian.reichel@collabora.com/
+ * Change DT binding to not allow nldo-reg6
+ * Fix DT binding to check for [np]ldo-reg instead of [np]ldo_reg
+ * remove rk806_get_voltage_sel_regmap in favour of regulator_get_voltage_sel_regmap
+ * drop rk806_set_voltage in favour of regulator_set_voltage_sel_regmap
+ * use regulator_set_ramp_delay_regmap
+ * drop possibly incorrect printing of chip id register address in case of errors
+
+Changelog since PATCHv1:
+ * https://lore.kernel.org/all/20220831215437.117880-1-sebastian.reichel@collabora.com/
+ * Collect Acked-by
+ * Avoid if/else checks for regulator id in rk806 regulator driver
+ * Fix indentation in DTS example section of the rk806 binding
+ * Use absolute path for regulator.yaml referencing in the rk806 binding
+ * Reduce pattern for DCDC regulators to only allow 1-10
+ * replace uppercase name with lowercase ones in regulator names
+ * replace _ with - in regulator names
+
+-- Sebastian
+
+Sebastian Reichel (11):
+  clk: RK808: reduce 'struct rk808' usage
+  mfd: rk808: convert to device managed resources
+  mfd: rk808: use dev_err_probe
+  mfd: rk808: replace 'struct i2c_client' with 'struct device'
+  mfd: rk808: split into core and i2c
+  mfd: rk8xx-i2c: use device_get_match_data
+  dt-bindings: mfd: add rk806 binding
+  mfd: rk8xx: add rk806 support
+  pinctrl: rk805: add rk806 pinctrl support
+  regulator: expose regulator_find_closest_bigger
+  regulator: rk808: add rk806 support
+
+ .../bindings/mfd/rockchip,rk806.yaml          | 406 +++++++++++++++++
+ drivers/clk/Kconfig                           |   2 +-
+ drivers/clk/clk-rk808.c                       |  34 +-
+ drivers/input/misc/Kconfig                    |   2 +-
+ drivers/mfd/Kconfig                           |  21 +-
+ drivers/mfd/Makefile                          |   4 +-
+ drivers/mfd/{rk808.c => rk8xx-core.c}         | 352 +++++----------
+ drivers/mfd/rk8xx-i2c.c                       | 185 ++++++++
+ drivers/mfd/rk8xx-spi.c                       | 124 ++++++
+ drivers/pinctrl/Kconfig                       |   2 +-
+ drivers/pinctrl/pinctrl-rk805.c               | 189 +++++++-
+ drivers/power/supply/Kconfig                  |   2 +-
+ drivers/regulator/Kconfig                     |   2 +-
+ drivers/regulator/helpers.c                   |  22 +-
+ drivers/regulator/rk808-regulator.c           | 383 ++++++++++++++++
+ drivers/rtc/Kconfig                           |   2 +-
+ include/linux/mfd/rk808.h                     | 417 +++++++++++++++++-
+ include/linux/regulator/driver.h              |   2 +
+ sound/soc/codecs/Kconfig                      |   2 +-
+ 19 files changed, 1867 insertions(+), 286 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+ rename drivers/mfd/{rk808.c => rk8xx-core.c} (71%)
+ create mode 100644 drivers/mfd/rk8xx-i2c.c
+ create mode 100644 drivers/mfd/rk8xx-spi.c
+
 -- 
 2.39.2
 
