@@ -4,47 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D237C678D5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 12:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFC1DC678D5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Mar 2023 15:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cbnwe2WPefTcXLUn474hGDPCZmnDzW71IHXI63mlqro=; b=guNmbc6vYQk7rk
-	FtEXHjAyGkXLQjItd3RQ6B6ZNTXANthZk6aIUJgJaY31+mOHnjozXvUgj9meUzyvWMdNBOhVh35/F
-	y/iEqODUjtMeTw4JMxyODglMcPlmOzg0JwR+cA7QuKEHLMfs5RmOecDwAFoDnN0QnVWFhpLgNgItc
-	hyk+1n+LhvmiH+pvtTZeVv/wtQtf0dXePfNOaE8Q9hkBlPNYDM5CM1Myze3JySrnEM9SZ3hwWhZPL
-	FVc0tD1+DqgAW2QcDEKJMom9ZOPBHK0wVstGsZTTgLcGfkMfMGuXPZHTv4uSrZAr+z8IastW5xtUf
-	PTP8Oxt9W2CjfCxqsXXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wGb3mcEla/avVTbVwob0dSN3Bydqn+KZwrNHQMHsEYM=; b=qQA7Li5rcZR1S/
+	wrxFGRPJ3CYsQREu6mLRfAyFAn//Hl1ke355hXDrB1ECHPlcBCE7IZbdcHamfW4zr7uhXYiyTdwKX
+	so+5KEPpmpQL18VCfJl83ny78uc7HxaKUfDW44PdZj/C+T13qOFPXIu4x0uXDUkyrsx7hkrC8e7HA
+	Q7WjrTC9gQs1rLSzB2hbl9WaBa4o3DuvqKJ/ONYqenKVhiwFKnih96JNizePeNL3YP5sSEg6QMpVU
+	iwOJn2WGH3LF1KQbt7+yAGWQ7nXeW7RHWnlTWps0zefOviJ1I98xpTz2QtuZmfJWsKDm0NQL8zs+/
+	bhFxOh/L3crDTlW+kruA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZW4J-0001aQ-PN; Tue, 07 Mar 2023 12:05:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZW1l-00Hb5h-Aq; Tue, 07 Mar 2023 12:02:46 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pZW1k-00058F-0n; Tue, 07 Mar 2023 13:02:44 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@pengutronix.de
-Subject:  Re: [PATCH 22/31] phy: rockchip: phy-rockchip-typec: Convert to platform
- remove callback returning void
-Date: Tue, 07 Mar 2023 13:02:51 +0100
-Message-ID: <3668300.MHq7AAxBmi@diego>
-In-Reply-To: <20230307115900.2293120-23-u.kleine-koenig@pengutronix.de>
-References:  <20230307115900.2293120-1-u.kleine-koenig@pengutronix.de>
- <20230307115900.2293120-23-u.kleine-koenig@pengutronix.de>
+	id 1pZZML-001GIb-7V; Tue, 07 Mar 2023 15:36:13 +0000
+Received: from m12.mail.163.com ([220.181.12.215])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pZZMH-001GGc-30
+	for linux-rockchip@lists.infradead.org; Tue, 07 Mar 2023 15:36:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=iL0BA
+	0gE4EmKLeYtSSOEBUD0N390Hz2s7HW1XrquUFw=; b=BoNuXBr1Y5eer5pvkhVcA
+	LBwFwIfMzogGFEbGCTI3atjdmrC+c8i6c9Tg3NtyRAn03LR/7oYbEcqQmu9OTR1a
+	y/gwPpVN+o065CVRdYkm63SH66BpRDmFFzYAbKIY5oFKM036X4cZ8apvSf5rG2KP
+	G5xpPkfbuL5wCD1RUNi/t0=
+Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
+	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wD3LifPWQdkZzrLCQ--.14702S2;
+	Tue, 07 Mar 2023 23:35:43 +0800 (CST)
+From: Zheng Wang <zyytlz.wz@163.com>
+To: ezequiel@vanguardiasur.com.ar
+Cc: p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	hackerzheng666@gmail.com,
+	1395428693sheep@gmail.com,
+	alex000young@gmail.com,
+	Zheng Wang <zyytlz.wz@163.com>
+Subject: [PATCH] media: hantro: fix use after free bug in hantro_release due to race condition
+Date: Tue,  7 Mar 2023 23:35:42 +0800
+Message-Id: <20230307153542.1178065-1-zyytlz.wz@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-CM-TRANSID: _____wD3LifPWQdkZzrLCQ--.14702S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Wry3Xw4kJw47Jr4rWr4kZwb_yoW8GF13pF
+	W7GrW7CrWjqF42gFnrJw409ayrCa4YgFW3Wrsru343AF9xtrnrGrW0y3W8AF9rtrZ3ZF45
+	XF48KrWrX39FvFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi-eOJUUUUU=
+X-Originating-IP: [111.206.145.21]
+X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXBErU1Xl52W07wAAsc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230307_040245_412479_37122541 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20230307_073610_033199_E0F3E1E3 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,29 +71,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 7. M=E4rz 2023, 12:58:51 CET schrieb Uwe Kleine-K=F6nig:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
-> =
+In hantro_probe, vpu->watchdog_work is bound with
+hantro_watchdog. Then hantro_end_prepare_run may
+be called to start the work.
 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> =
+If we close the file or remove the module which will
+call hantro_release and hantro_remove to make cleanup,
+there may be a unfinished work. The possible sequence
+is as follows, which will cause a typical UAF bug.
 
-> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+The same thing will happen in hantro_release, and use
+ctx after freeing it.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Fix it by canceling the work before cleanup in hantro_release.
 
+CPU0                  CPU1
+
+                    |hantro_watchdog
+hantro_remove     |
+  v4l2_m2m_release  |
+    kfree(m2m_dev); |
+                    |
+                    | v4l2_m2m_get_curr_priv
+                    |   m2m_dev->curr_ctx //use
+
+Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+---
+ drivers/media/platform/verisilicon/hantro_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index b0aeedae7b65..cf00ccaa7829 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -601,6 +601,7 @@ static int hantro_release(struct file *filp)
+ 	 * No need for extra locking because this was the last reference
+ 	 * to this file.
+ 	 */
++	cancel_delayed_work(&vpu->watchdog_work);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ 	v4l2_fh_del(&ctx->fh);
+ 	v4l2_fh_exit(&ctx->fh);
+-- 
+2.25.1
 
 
 _______________________________________________
