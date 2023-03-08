@@ -4,70 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 425E7C742A7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:23:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39CA6C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y4h3bTtcz9MhzmwkJhwnVpBTQjP3ErWGlOjoCmmfm0Y=; b=0scDz3Kgrvtx/G
-	rAEzRpjs2nNuZ15QoBzk7fKdPXm0z2gXV/PSXMBZIJwo3RVrMAuV0Ulr51t112Shp4Eqybrada2oN
-	vofxd4tRyyDHFa1yO4EcAAtiNVofzj7FlKlR5YgWly1svbqgUPk5Hn+7QPgNZGAhm7c0wf+mPHkxH
-	bSvaEnGmZpn7Kwya/uBxr/AbtI1rSpMnVyFVrwwxJqME9kqL5CAPS43nxOPPE2qEtWQjsKJSq/Lye
-	x6DsXt6iGSGSjrl2IG65tFh9mKXMdUlhO9s90+DyCeGXmh5p3LX1uq1wySEVCZ0cOjPZ/VCq3j+L9
-	0tRWbojqp49Hzlb73ZpA==;
+	List-Owner; bh=S3a1VQvX/I9bqlv8RRSaO3Tuyk1aSCqsFVDxwVJwz6k=; b=HDpLZedP+cnypg
+	DH2BlnIUX+tcyAhg8dXkuYI30ydYBNJIk3hiOkd4mrMbuhsqClRAC+hRHvVsHs8a8InT+LcL/Njbq
+	VDp5w/N8qBaKVC40a41wQH1Q6J+ripPKd/QvUkzubsM4TBoc9D+EhEyaJOhNHn4S1S+yelnSocFUu
+	i26ezg/He6e07NEb44DE2UM/eIoUFFzuF/fXnEqgh2vCP/+M1yoSBxCyGiV0jhYsG2xa35/f2EJMZ
+	k/ZySGB9BDs3/Ft+hhnEZNEorBKHjIYhY+Plbfo7odBXJCzvk7m9YsW6SwZLUdN6p/qHqfdpHPaAh
+	yKNRaVLQNOy06jIwx1Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrsy-004ayg-Fb; Wed, 08 Mar 2023 11:23:08 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pZs1G-004cSu-LL; Wed, 08 Mar 2023 11:31:42 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrsr-004auf-3q
-	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:04 +0000
-Received: from jupiter.universe (dyndsl-091-248-211-125.ewe-ip-backbone.de [91.248.211.125])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7F1A36602FF2;
-	Wed,  8 Mar 2023 11:22:58 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678274578;
-	bh=qSZu4GeYB35cIFw6Mtc0Jdg9WdkZ5tVGO28WFkq5qBI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=avtGrxg/xCE4caR877C7vbCOyXwqMwBxyB4V0H6tZ/NE2DqQTLPFDWYgCwjoeSbyg
-	 nYg661HXpTxR0gf0Sy1mgXgW3m8Xpc9NC98haeOLzpC/LG3lRzzVQBM2H/U1T1sZ9G
-	 JTGwy/Il6+Nrc2unpXszx3q85yvWIUfWr4PFFaESHefcMGc3uPMtJ84eEhkL2paOes
-	 di8eVy+FbVxwEYiaKJby/pbDiTcYnDxWxG1yVK9k4PousmzhaivlyYtAyFXlS6LiWE
-	 wMG7QAygTh1AhfPDEva88kbFMmiNLHEetD+nx1WcWzcHVhLAhWMo1g/XCBefPF3sw4
-	 mg42Wj5jPrVGA==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7338848011C; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [RESEND] [PATCHv3 4/7] thermal: rockchip: Simplify channel id logic
-Date: Wed,  8 Mar 2023 12:22:50 +0100
-Message-Id: <20230308112253.15659-5-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230308112253.15659-1-sebastian.reichel@collabora.com>
-References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
+	id 1pZs1E-004cRl-LW
+	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:31:42 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id j11so44890887edq.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 08 Mar 2023 03:31:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678275099;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=SlEPc3hcrmapBm9NauxvzSjilndCIvXC382t1TVmJ6w=;
+        b=yrXqGP4vYmpFUk6t4mwR+2OQS943kWX0+q9ngxezl5yW+dv3aIvRnye8fIHWujpoKV
+         Y/dw9uVzHqTEwJtjpoK54vX58BApIurr5vNmHTSlOwtYTqH3Z4ruQ8+V5sfQkBg3fl0t
+         lJ0rKK9VO1LosNr8QGSieZf949tzYhEcUUhXg2ly6E/dxMchlkgNyfN+rsvKBNtwt7oe
+         oqybiYwJVH0bUSiEJY0p0CsPw+VwHJ4eUN3jJdvW5JLwV3Z3mJRmExL82oHi7k7C1mJx
+         6JZTg+dg1qfsnI3l3eTNcERj72RurlTNKGBpOP4w7ABTf1m21rLGArARA2RkAs5xqd0v
+         mVDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678275099;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=SlEPc3hcrmapBm9NauxvzSjilndCIvXC382t1TVmJ6w=;
+        b=dKxSizyFqyLCBmDawcfZSf607kJtzQtu8NIdiBslj7tf0kmVo6HgRhE6WJIUorOxDY
+         XVYynJHquUGKzqTa9XHqnndlyGwUzWTFPFviN8ra08mdASpYZxHVimai/fKcLvmChB2r
+         D0D2+lt/tUlv0XZQ0ozn9PKad6VExU82h+bY36AfqI5yEVHokuxad5IrMI8I7eHnZn/9
+         LHNHl58Car2A20oUvU1SgR5N65AubmebMRJzI+gctOKJ01srneXPSTUCA/+lv/NqEPTc
+         oUeQBQ9oaG5cOPZLph5rS99n81n3q+oOqUqmJgClY9cvPGyP9B//viHQDTwFve3gRxDT
+         cvqw==
+X-Gm-Message-State: AO0yUKXmwoZoRt91T82CZePdXDhzk6MnUvsicnWDoAlgvzQL3R0dk58C
+	92xtXvDcc0rQkBpqyiZe0Rq13g==
+X-Google-Smtp-Source: AK7set+avemZThhDRSso8zHgwhY4mcE82Opsw6cakNWEKQlVoJSZxxbxy34TPwRQ/xGFmLTADrekIg==
+X-Received: by 2002:a17:906:64d:b0:8b1:77bf:3be6 with SMTP id t13-20020a170906064d00b008b177bf3be6mr17141027ejb.10.1678275099075;
+        Wed, 08 Mar 2023 03:31:39 -0800 (PST)
+Received: from ?IPV6:2a02:810d:15c0:828:ff33:9b14:bdd2:a3da? ([2a02:810d:15c0:828:ff33:9b14:bdd2:a3da])
+        by smtp.gmail.com with ESMTPSA id s15-20020a170906454f00b008d8f1b238fdsm7480048ejq.149.2023.03.08.03.31.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 08 Mar 2023 03:31:38 -0800 (PST)
+Message-ID: <4204317f-6715-cdeb-343d-611aea0d554a@linaro.org>
+Date: Wed, 8 Mar 2023 12:31:36 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R5S
+Content-Language: en-US
+To: Vasily Khoruzhick <anarsoul@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>,
+ Peter Geis <pgwipeout@gmail.com>, Andy Yan <andyshrk@163.com>,
+ Chris Morgan <macromorgan@hotmail.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Brian Norris <briannorris@chromium.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Andrew Lunn <andrew@lunn.ch>, Michael Riesch
+ <michael.riesch@wolfvision.net>, Maya Matuszczyk <maccraft123mc@gmail.com>,
+ Chukun Pan <amadeus@jmu.edu.cn>, Sascha Hauer <s.hauer@pengutronix.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Tianling Shen <cnsztl@gmail.com>
+References: <20230308063240.107178-1-anarsoul@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230308063240.107178-1-anarsoul@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_032301_479067_7CD6E9A7 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20230308_033140_761665_30ACDB6B 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,159 +102,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the channel ID lookup table by a simple offset, since
-the channel IDs are consecutive.
+On 08/03/2023 07:32, Vasily Khoruzhick wrote:
+> Add devicetree binding documentation for the FriendlyARM NanoPi R5S.
+> 
+> Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 35f74eda30ae..0813ad22dc76 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -201,6 +201,11 @@ properties:
+>                - friendlyarm,nanopi-r4s-enterprise
+>            - const: rockchip,rk3399
+>  
+> +      - description: FriendlyElec NanoPi R5S board
+> +
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/thermal/rockchip_thermal.c | 48 +++++++++++++-----------------
- 1 file changed, 21 insertions(+), 27 deletions(-)
+Does not look like ordered alphabetically. Are you sure this is correct
+place for it?
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 9ed45b318344..bcbdd618daae 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -39,15 +39,6 @@ enum tshut_polarity {
- 	TSHUT_HIGH_ACTIVE,
- };
- 
--/*
-- * The system has two Temperature Sensors.
-- * sensor0 is for CPU, and sensor1 is for GPU.
-- */
--enum sensor_id {
--	SENSOR_CPU = 0,
--	SENSOR_GPU,
--};
--
- /*
-  * The conversion table has the adc value and temperature.
-  * ADC_DECREMENT: the adc value is of diminishing.(e.g. rk3288_code_table)
-@@ -82,7 +73,7 @@ struct chip_tsadc_table {
- 
- /**
-  * struct rockchip_tsadc_chip - hold the private data of tsadc chip
-- * @chn_id: array of sensor ids of chip corresponding to the channel
-+ * @chn_offset: the channel offset of the first channel
-  * @chn_num: the channel number of tsadc chip
-  * @tshut_temp: the hardware-controlled shutdown temperature value
-  * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPIO)
-@@ -98,7 +89,7 @@ struct chip_tsadc_table {
-  */
- struct rockchip_tsadc_chip {
- 	/* The sensor id of chip correspond to the ADC channel */
--	int chn_id[SOC_MAX_SENSORS];
-+	int chn_offset;
- 	int chn_num;
- 
- 	/* The hardware-controlled tshut property */
-@@ -925,8 +916,8 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
- }
- 
- static const struct rockchip_tsadc_chip px30_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
--	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	/* cpu, gpu */
-+	.chn_offset = 0,
- 	.chn_num = 2, /* 2 channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_CRU, /* default TSHUT via CRU */
-@@ -949,7 +940,8 @@ static const struct rockchip_tsadc_chip px30_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rv1108_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-+	/* cpu */
-+	.chn_offset = 0,
- 	.chn_num = 1, /* one channel for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -973,7 +965,8 @@ static const struct rockchip_tsadc_chip rv1108_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3228_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-+	/* cpu */
-+	.chn_offset = 0,
- 	.chn_num = 1, /* one channel for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -997,8 +990,8 @@ static const struct rockchip_tsadc_chip rk3228_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 1, /* cpu sensor is channel 1 */
--	.chn_id[SENSOR_GPU] = 2, /* gpu sensor is channel 2 */
-+	/* cpu, gpu */
-+	.chn_offset = 1,
- 	.chn_num = 2, /* two channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -1022,7 +1015,8 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3328_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-+	/* cpu */
-+	.chn_offset = 0,
- 	.chn_num = 1, /* one channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_CRU, /* default TSHUT via CRU */
-@@ -1045,8 +1039,8 @@ static const struct rockchip_tsadc_chip rk3328_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3366_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
--	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	/* cpu, gpu */
-+	.chn_offset = 0,
- 	.chn_num = 2, /* two channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -1070,8 +1064,8 @@ static const struct rockchip_tsadc_chip rk3366_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3368_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
--	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	/* cpu, gpu */
-+	.chn_offset = 0,
- 	.chn_num = 2, /* two channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -1095,8 +1089,8 @@ static const struct rockchip_tsadc_chip rk3368_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
--	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	/* cpu, gpu */
-+	.chn_offset = 0,
- 	.chn_num = 2, /* two channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -1120,8 +1114,8 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
- };
- 
- static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
--	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
--	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	/* cpu, gpu */
-+	.chn_offset = 0,
- 	.chn_num = 2, /* two channels for tsadc */
- 
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-@@ -1404,7 +1398,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	for (i = 0; i < thermal->chip->chn_num; i++) {
- 		error = rockchip_thermal_register_sensor(pdev, thermal,
- 						&thermal->sensors[i],
--						thermal->chip->chn_id[i]);
-+						thermal->chip->chn_offset + i);
- 		if (error)
- 			return dev_err_probe(&pdev->dev, error,
- 				"failed to register sensor[%d].\n", i);
--- 
-2.39.2
+Best regards,
+Krzysztof
 
 
 _______________________________________________
