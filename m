@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B9F0C76188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96690C74A44
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9yUUssFwqXH9U59cbfcB9e0w0rNMDDf+Ax35D3JQq3I=; b=aTaw8BTrA9Rtp7
-	IO7gdLk5peBtcb7M1DO4rfedtBqkY1iuhzCbNkMGD2dYngX0L317u6P1d8ORl2lVEO6Mz46+IXKlo
-	O/tyaEruGrkzogRik3tejSpngfyQroDlEnPRjLth0MJ11cbYZ/01Y/5mrs2/0EuUJedpqB8qT6nwE
-	7nbdU9wz5qnA0rGPEp8bDv+XnrjqwbVho0gvi1R0mBkqwpFlr+FLIEkPt/T9sMt9EG/F3GsVw00JI
-	BCdZIgIvmo7rSeC7qDvt8BVSwOPCCmvc87koraP9WG6Sq40LbvE0P2alyHqP2FuhrqoobT78jIMxZ
-	uTV5BTQHlajc/IaRSWvQ==;
+	List-Owner; bh=qX/awn6uWdTSgxPxHANESgEUhWByGuhnU56XoKEYhRA=; b=muMSrLCafAuDWW
+	xv1j48YoD5PiyycQcANlVDErDGAmkipBz5CVoD8Oiuef+hX/DqZ6txrzqz7342Xeauw4cPo5+1LGY
+	lHLJsaNLn+NA6O4u2SVZ9HyTEHn0Ju8u/c5ma3JyXzTYFc290hCVjx5oOOVNGMBpggXFrQsp8rS7f
+	ZwMlYXbTAWad2t9YOlG6mDyf7uQx+uQe+7PtP7bIghh3fYQVwt2dy90XD+LyWhKYv7gnEYzKTr1I0
+	kZt41ANEIe4cdKMWPvo80oZdp6IxiaLQMJh4t/3upeeTeSx9FwdgXX6ZM+OZhA4SoZFp5j10T7yQi
+	x8KsVTHtuNn9LRhv3cAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrsy-004ayx-PV; Wed, 08 Mar 2023 11:23:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pZrst-004awE-Td; Wed, 08 Mar 2023 11:23:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrst-004awB-TT
-	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:05 +0000
+	id 1pZrsr-004auZ-3s
+	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:02 +0000
 Received: from jupiter.universe (dyndsl-091-248-211-125.ewe-ip-backbone.de [91.248.211.125])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 57CC66602FFC;
-	Wed,  8 Mar 2023 11:23:00 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 54A666602FEF;
+	Wed,  8 Mar 2023 11:22:58 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678274580;
-	bh=P2ft93FWXTemxzQ8C/EHp+Dj03svT31iQWu2KAbnX0g=;
+	s=mail; t=1678274578;
+	bh=zBbVvDeuWMNfmUh52W1XZgduf0xZ4UgsGRTcx/DthA8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HykMhQRXq7pyOp2K5r4lUDxZ726rxWMK9gw8yXIf2xFFt6cY5dt3V6qneeWF/84Ud
-	 bR/I85tuCkQffZ8QRSWqxYS6G0AG8iw5XHHTYg6jF7zBUObqQoRqdFJkLYfUwW+Wl1
-	 +TGCPe1gMa9aMarJol3tHhIICIvkwJsGFueMkhG0BGF40tnLF/7KGBqaIJw3sohal5
-	 JCKbxJkO5Sns0OqqGxDU42tD0NRvK60rkhd/YtLUzBJuXsLIx9PVu3ErHdPApflQD5
-	 aksipwBNC7mn/rrvu2kiUeAPkTn5f/6vzDTqvQxph3v8ANGM/mtFQh67HxoCfpDyVd
-	 qZ/JslmJW00jA==
+	b=ZWQXMK4fD5rz7S1SLeS7mPWnuKPUIf/m/+XtfPvn7/5lU4QKPnAdv3sRHnlwUhlio
+	 aqUjUQzxat5OU5Bua/a46TEzV8fF0vx1kOaDcHJf+zhl7sNOJUNa1AT9aEPUsUVJJH
+	 5ttKoLPbJGI/hLKLqejgGI8zClNmQFV1enXpXEjtmJSyQ6UoCiU1tE1JH/SW31/wqr
+	 smvZ8y50RaQAjCq4TcepCETVTS7ky2hbMGel2X3N7LlDxY7Bt49q1/sLpGAmcUQFG5
+	 XamejIer7gNy/Xa9qmpJKzABJ1KT6OQ9155GbbTFoSbwGJ/VZO5x3M0WOj61NbPU8N
+	 lxxFR4plqhBWg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7563F48011D; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
+	id 6F161480117; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	"Rafael J. Wysocki" <rafael@kernel.org>,
@@ -58,16 +58,16 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [RESEND] [PATCHv3 5/7] thermal: rockchip: Support dynamic sized sensor array
-Date: Wed,  8 Mar 2023 12:22:51 +0100
-Message-Id: <20230308112253.15659-6-sebastian.reichel@collabora.com>
+Subject: [RESEND] [PATCHv3 2/7] thermal: rockchip: Simplify clock logic
+Date: Wed,  8 Mar 2023 12:22:48 +0100
+Message-Id: <20230308112253.15659-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230308112253.15659-1-sebastian.reichel@collabora.com>
 References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_032304_136282_B8C345C9 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20230308_032301_421589_7E057B5C 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,54 +84,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dynamically allocate the sensors array based on the amount
-of platform sensors in preparation for rk3588 support, which
-needs 7 sensors.
+By using devm_clk_get_enabled() the clock acquisition and
+enabling can be done in one step with automatic error
+handling.
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/thermal/rockchip_thermal.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/thermal/rockchip_thermal.c | 33 +++++-------------------------
+ 1 file changed, 5 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index bcbdd618daae..1a1435a2836b 100644
+index 7e88525fe8d0..6235c033995b 100644
 --- a/drivers/thermal/rockchip_thermal.c
 +++ b/drivers/thermal/rockchip_thermal.c
-@@ -51,12 +51,6 @@ enum adc_sort_mode {
+@@ -1383,14 +1383,14 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		return error;
+ 	}
  
- #include "thermal_hwmon.h"
+-	thermal->clk = devm_clk_get(&pdev->dev, "tsadc");
++	thermal->clk = devm_clk_get_enabled(&pdev->dev, "tsadc");
+ 	if (IS_ERR(thermal->clk)) {
+ 		error = PTR_ERR(thermal->clk);
+ 		dev_err(&pdev->dev, "failed to get tsadc clock: %d\n", error);
+ 		return error;
+ 	}
  
--/*
-- * The max sensors is two in rockchip SoCs.
-- * Two sensors: CPU and GPU sensor.
-- */
--#define SOC_MAX_SENSORS	2
+-	thermal->pclk = devm_clk_get(&pdev->dev, "apb_pclk");
++	thermal->pclk = devm_clk_get_enabled(&pdev->dev, "apb_pclk");
+ 	if (IS_ERR(thermal->pclk)) {
+ 		error = PTR_ERR(thermal->pclk);
+ 		dev_err(&pdev->dev, "failed to get apb_pclk clock: %d\n",
+@@ -1398,26 +1398,13 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		return error;
+ 	}
+ 
+-	error = clk_prepare_enable(thermal->clk);
+-	if (error) {
+-		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+-			error);
+-		return error;
+-	}
 -
- /**
-  * struct chip_tsadc_table - hold information about chip-specific differences
-  * @id: conversion table
-@@ -147,7 +141,7 @@ struct rockchip_thermal_data {
- 	struct platform_device *pdev;
- 	struct reset_control *reset;
+-	error = clk_prepare_enable(thermal->pclk);
+-	if (error) {
+-		dev_err(&pdev->dev, "failed to enable pclk: %d\n", error);
+-		goto err_disable_clk;
+-	}
+-
+ 	rockchip_thermal_reset_controller(thermal->reset);
  
--	struct rockchip_thermal_sensor sensors[SOC_MAX_SENSORS];
-+	struct rockchip_thermal_sensor *sensors;
+ 	error = rockchip_configure_from_dt(&pdev->dev, np, thermal);
+ 	if (error) {
+ 		dev_err(&pdev->dev, "failed to parse device tree data: %d\n",
+ 			error);
+-		goto err_disable_pclk;
++		return error;
+ 	}
  
- 	struct clk *clk;
- 	struct clk *pclk;
-@@ -1366,6 +1360,11 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	if (!thermal->chip)
- 		return -EINVAL;
+ 	thermal->chip->initialize(thermal->grf, thermal->regs,
+@@ -1431,7 +1418,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 			dev_err(&pdev->dev,
+ 				"failed to register sensor[%d] : error = %d\n",
+ 				i, error);
+-			goto err_disable_pclk;
++			return error;
+ 		}
+ 	}
  
-+	thermal->sensors = devm_kcalloc(&pdev->dev, thermal->chip->chn_num,
-+					sizeof(*thermal->sensors), GFP_KERNEL);
-+	if (!thermal->sensors)
-+		return -ENOMEM;
-+
- 	thermal->regs = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
- 	if (IS_ERR(thermal->regs))
- 		return PTR_ERR(thermal->regs);
+@@ -1442,7 +1429,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	if (error) {
+ 		dev_err(&pdev->dev,
+ 			"failed to request tsadc irq: %d\n", error);
+-		goto err_disable_pclk;
++		return error;
+ 	}
+ 
+ 	thermal->chip->control(thermal->regs, true);
+@@ -1460,13 +1447,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, thermal);
+ 
+ 	return 0;
+-
+-err_disable_pclk:
+-	clk_disable_unprepare(thermal->pclk);
+-err_disable_clk:
+-	clk_disable_unprepare(thermal->clk);
+-
+-	return error;
+ }
+ 
+ static int rockchip_thermal_remove(struct platform_device *pdev)
+@@ -1483,9 +1463,6 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
+ 
+ 	thermal->chip->control(thermal->regs, false);
+ 
+-	clk_disable_unprepare(thermal->pclk);
+-	clk_disable_unprepare(thermal->clk);
+-
+ 	return 0;
+ }
+ 
 -- 
 2.39.2
 
