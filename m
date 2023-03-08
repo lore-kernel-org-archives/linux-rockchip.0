@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE9DC678D5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 10:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83DD4C742A7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QwEHsLugFh9+ThqMla3CW1c6GgX1EE9sCFNxKrKD73M=; b=pYQlgZPa3HcK/a
-	nbfsszIiNqsm+E/1QUbhLPrZKSdYAgLT/DXWf05YaY0rqFB58r1Jqp+obsBkviEG0OOIkUXN93gtO
-	25jbcDFfP3sZ70w0Qq9qOZXb0ifoJkGoQbbkDVStvWrG4gaElWNBItjoip3KIetBD7i1XPaJyoMtC
-	fgZ/NIC1gz7MTeJAzjZmiGNdUT4ToAwy5Wp3+5fc3spkRVimnzOT7iMWA7+xOlnjWcrowQa04GK+K
-	fCCi7cWWXYYfCyfTQu5OmZuWSC5/HebU8G5M6vgEty7xdPzfvhAjDesuQi8HhDdTWU09k21Lu42S8
-	1Fq+917UbY5SKamr/EtQ==;
+	List-Owner; bh=nGTo5c9Kk4Itxsq9cR1ndFXhpZt+QAC1/l5L1S/yvYk=; b=ZkJo1wAJ4EsRt5
+	LNjLiPgxL4jdzhCh0s6yzK2GSjbL/cW7Brg6faPygUT/jKpLpTC/JkKihZ54IV2C0GJfHkczKK02q
+	JYpOtRbDP9XgaHm/yujklOfaFLQu4bcI3mObob5P71TBGQ3IhVoN1K+7+PD6lSq8Euk+K3DuveHYM
+	/i6IqZnBLUANit+TmP+wrl3Er1OyemjjfVB/dehAr8YyXok0dV2Vm/t5mXAVoBgpTHcoCnsPQFOwt
+	wNt8mpcSp4eEbgH2FPC83nw2ZaQPwb8g82NXbuMlYULEhybm5u6PAuZJZqeqhd47PgtWJ1x2ye0DU
+	Yzwz5f4XnQiZcexVkG2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZqgv-004KaW-16; Wed, 08 Mar 2023 10:06:37 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pZrsz-004azk-DO; Wed, 08 Mar 2023 11:23:09 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZqgs-004KYp-6V
-	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 10:06:35 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pZqgq-0006CJ-3o; Wed, 08 Mar 2023 11:06:32 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pZqgi-0007e3-JO; Wed, 08 Mar 2023 11:06:24 +0100
-Date: Wed, 8 Mar 2023 11:06:24 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	kernel@pengutronix.de, Robin Murphy <robin.murphy@arm.com>,
-	Dan Johansen <strit@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH v6 1/4] drm/rockchip: vop: limit maximium resolution to
- hardware capabilities
-Message-ID: <20230308100624.GF27249@pengutronix.de>
-References: <20230216102447.582905-1-s.hauer@pengutronix.de>
- <20230216102447.582905-2-s.hauer@pengutronix.de>
- <839117967.0ifERbkFSE@diego>
+	id 1pZrst-004awA-TS
+	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:06 +0000
+Received: from jupiter.universe (dyndsl-091-248-211-125.ewe-ip-backbone.de [91.248.211.125])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 633636603018;
+	Wed,  8 Mar 2023 11:23:00 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678274580;
+	bh=H/C4Ad4e0L92Li6FMC/s/XtsnuLyO8abq2eFPyhpSDo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BOLEEQLLtVIDovtXxdd5cPbnSJ/g0Owl0KEJvgaeMg/881EBrHvguQoQFIjkKi9sP
+	 1ghdwhYNDD6+np1GkkTYn2eZn83jz/KEvNa8DwSI21VoSV/xxPeDKxEO4gwmKArZ9c
+	 rNNo3QqS5zTDG3F/CBn0ExvL9RwrcGIhabLeysY4Q58nhg7Rcpu5jFwNpYbuHE0l4S
+	 eReu5baDyLMWBbSPuiAn6YbLHew6Alk1g5FhKKHjzRPLVDBvJ8fHaf154m/bTLyAkd
+	 vy71i2FSdjf2DQQECNj6ShWAs8KFYZUQhcqy9+V4BxpwZw6wlSXyTn7+OdWIwGQ/Em
+	 Me7FFmOugVYpw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 7799148011E; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [RESEND] [PATCHv3 6/7] thermal: rockchip: Support RK3588 SoC in the thermal driver
+Date: Wed,  8 Mar 2023 12:22:52 +0100
+Message-Id: <20230308112253.15659-7-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230308112253.15659-1-sebastian.reichel@collabora.com>
+References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <839117967.0ifERbkFSE@diego>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_020634_259642_6274BE51 
-X-CRM114-Status: GOOD (  44.05  )
+X-CRM114-CacheID: sfid-20230308_032304_268278_EECB40A7 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,126 +80,329 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 07, 2023 at 11:21:16PM +0100, Heiko St=FCbner wrote:
-> Hi Sascha,
-> =
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-> Am Donnerstag, 16. Februar 2023, 11:24:44 CET schrieb Sascha Hauer:
-> > The different VOP variants support different maximum resolutions. Reject
-> > resolutions that are not supported by a specific variant.
-> > =
+The RK3588 SoC has seven temperature sensor ADC channels:
 
-> > This hasn't been a problem in the upstream driver so far as 1920x1080
-> > has been the maximum resolution supported by the HDMI driver and that
-> > resolution is supported by all VOP variants. Now with higher resolutions
-> > supported in the HDMI driver we have to limit the resolutions to the
-> > ones supported by the VOP.
-> > =
+- Chip Center
+- CPU Cluster 1 (Dual A76 "Big" Cores)
+- CPU Cluster 2 (Dual A76 "Big" Cores)
+- CPU Cluster 0 (Quad A55 "Little" Cores)
+- Power Domain Center
+- Graphics Processing Unit
+- Neural Processing Unit
 
-> > The actual maximum resolutions are taken from the Rockchip downstream
-> > Kernel.
-> > =
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+[rebase, squash fixes]
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/thermal/rockchip_thermal.c | 177 +++++++++++++++++++++++++++++
+ 1 file changed, 177 insertions(+)
 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> > =
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 1a1435a2836b..e69c10a2a748 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -165,29 +165,49 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_CON			0x04
+ #define TSADCV2_INT_EN				0x08
+ #define TSADCV2_INT_PD				0x0c
++#define TSADCV3_AUTO_SRC_CON			0x0c
++#define TSADCV3_HT_INT_EN			0x14
++#define TSADCV3_HSHUT_GPIO_INT_EN		0x18
++#define TSADCV3_HSHUT_CRU_INT_EN		0x1c
++#define TSADCV3_INT_PD				0x24
++#define TSADCV3_HSHUT_PD			0x28
+ #define TSADCV2_DATA(chn)			(0x20 + (chn) * 0x04)
+ #define TSADCV2_COMP_INT(chn)		        (0x30 + (chn) * 0x04)
+ #define TSADCV2_COMP_SHUT(chn)		        (0x40 + (chn) * 0x04)
++#define TSADCV3_DATA(chn)			(0x2c + (chn) * 0x04)
++#define TSADCV3_COMP_INT(chn)		        (0x6c + (chn) * 0x04)
++#define TSADCV3_COMP_SHUT(chn)		        (0x10c + (chn) * 0x04)
+ #define TSADCV2_HIGHT_INT_DEBOUNCE		0x60
+ #define TSADCV2_HIGHT_TSHUT_DEBOUNCE		0x64
++#define TSADCV3_HIGHT_INT_DEBOUNCE		0x14c
++#define TSADCV3_HIGHT_TSHUT_DEBOUNCE		0x150
+ #define TSADCV2_AUTO_PERIOD			0x68
+ #define TSADCV2_AUTO_PERIOD_HT			0x6c
++#define TSADCV3_AUTO_PERIOD			0x154
++#define TSADCV3_AUTO_PERIOD_HT			0x158
+ 
+ #define TSADCV2_AUTO_EN				BIT(0)
++#define TSADCV2_AUTO_EN_MASK			BIT(16)
+ #define TSADCV2_AUTO_SRC_EN(chn)		BIT(4 + (chn))
++#define TSADCV3_AUTO_SRC_EN(chn)		BIT(chn)
++#define TSADCV3_AUTO_SRC_EN_MASK(chn)		BIT(16 + chn)
+ #define TSADCV2_AUTO_TSHUT_POLARITY_HIGH	BIT(8)
++#define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
+ 
+ #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
+ 
+ #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
++#define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
+ #define TSADCV2_SHUT_2GPIO_SRC_EN(chn)		BIT(4 + (chn))
+ #define TSADCV2_SHUT_2CRU_SRC_EN(chn)		BIT(8 + (chn))
+ 
+ #define TSADCV2_INT_PD_CLEAR_MASK		~BIT(8)
+ #define TSADCV3_INT_PD_CLEAR_MASK		~BIT(16)
++#define TSADCV4_INT_PD_CLEAR_MASK		0xffffffff
+ 
+ #define TSADCV2_DATA_MASK			0xfff
+ #define TSADCV3_DATA_MASK			0x3ff
++#define TSADCV4_DATA_MASK			0x1ff
+ 
+ #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
+ #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
+@@ -198,6 +218,8 @@ struct rockchip_thermal_data {
+ 
+ #define TSADCV5_AUTO_PERIOD_TIME		1622 /* 2.5ms */
+ #define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
++#define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
++#define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
+ 
+ #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
+ #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
+@@ -214,6 +236,12 @@ struct rockchip_thermal_data {
+ #define RK3568_GRF_TSADC_ANA_REG2		(0x10001 << 2)
+ #define RK3568_GRF_TSADC_TSEN			(0x10001 << 8)
+ 
++#define RK3588_GRF0_TSADC_CON			0x0100
++
++#define RK3588_GRF0_TSADC_TRM			(0xff0077 << 0)
++#define RK3588_GRF0_TSADC_SHUT_2CRU		(0x30003 << 10)
++#define RK3588_GRF0_TSADC_SHUT_2GPIO		(0x70007 << 12)
++
+ #define GRF_SARADC_TESTBIT_ON			(0x10001 << 2)
+ #define GRF_TSADC_TESTBIT_H_ON			(0x10001 << 2)
+ #define GRF_TSADC_VCM_EN_L			(0x10001 << 7)
+@@ -508,6 +536,15 @@ static const struct tsadc_table rk3568_code_table[] = {
+ 	{TSADCV2_DATA_MASK, 125000},
+ };
+ 
++static const struct tsadc_table rk3588_code_table[] = {
++	{0, -40000},
++	{215, -40000},
++	{285, 25000},
++	{350, 85000},
++	{395, 125000},
++	{TSADCV4_DATA_MASK, 125000},
++};
++
+ static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
+ 				   int temp)
+ {
+@@ -778,6 +815,25 @@ static void rk_tsadcv7_initialize(struct regmap *grf, void __iomem *regs,
+ 	}
+ }
+ 
++static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
++				  enum tshut_polarity tshut_polarity)
++{
++	writel_relaxed(TSADCV6_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
++	writel_relaxed(TSADCV6_AUTO_PERIOD_HT_TIME,
++		       regs + TSADCV3_AUTO_PERIOD_HT);
++	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
++	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
++	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
++			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++	else
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++}
++
+ static void rk_tsadcv2_irq_ack(void __iomem *regs)
+ {
+ 	u32 val;
+@@ -794,6 +850,17 @@ static void rk_tsadcv3_irq_ack(void __iomem *regs)
+ 	writel_relaxed(val & TSADCV3_INT_PD_CLEAR_MASK, regs + TSADCV2_INT_PD);
+ }
+ 
++static void rk_tsadcv4_irq_ack(void __iomem *regs)
++{
++	u32 val;
++
++	val = readl_relaxed(regs + TSADCV3_INT_PD);
++	writel_relaxed(val & TSADCV4_INT_PD_CLEAR_MASK, regs + TSADCV3_INT_PD);
++	val = readl_relaxed(regs + TSADCV3_HSHUT_PD);
++	writel_relaxed(val & TSADCV3_INT_PD_CLEAR_MASK,
++		       regs + TSADCV3_HSHUT_PD);
++}
++
+ static void rk_tsadcv2_control(void __iomem *regs, bool enable)
+ {
+ 	u32 val;
+@@ -829,6 +896,18 @@ static void rk_tsadcv3_control(void __iomem *regs, bool enable)
+ 	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
+ }
+ 
++static void rk_tsadcv4_control(void __iomem *regs, bool enable)
++{
++	u32 val;
++
++	if (enable)
++		val = TSADCV2_AUTO_EN | TSADCV2_AUTO_EN_MASK;
++	else
++		val = TSADCV2_AUTO_EN_MASK;
++
++	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
++}
++
+ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
+ 			       int chn, void __iomem *regs, int *temp)
+ {
+@@ -839,6 +918,16 @@ static int rk_tsadcv2_get_temp(const struct chip_tsadc_table *table,
+ 	return rk_tsadcv2_code_to_temp(table, val, temp);
+ }
+ 
++static int rk_tsadcv4_get_temp(const struct chip_tsadc_table *table,
++			       int chn, void __iomem *regs, int *temp)
++{
++	u32 val;
++
++	val = readl_relaxed(regs + TSADCV3_DATA(chn));
++
++	return rk_tsadcv2_code_to_temp(table, val, temp);
++}
++
+ static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+ 				 int chn, void __iomem *regs, int temp)
+ {
+@@ -873,6 +962,33 @@ static int rk_tsadcv2_alarm_temp(const struct chip_tsadc_table *table,
+ 	return 0;
+ }
+ 
++static int rk_tsadcv3_alarm_temp(const struct chip_tsadc_table *table,
++				 int chn, void __iomem *regs, int temp)
++{
++	u32 alarm_value;
++
++	/*
++	 * In some cases, some sensors didn't need the trip points, the
++	 * set_trips will pass {-INT_MAX, INT_MAX} to trigger tsadc alarm
++	 * in the end, ignore this case and disable the high temperature
++	 * interrupt.
++	 */
++	if (temp == INT_MAX) {
++		writel_relaxed(TSADCV2_INT_SRC_EN_MASK(chn),
++			       regs + TSADCV3_HT_INT_EN);
++		return 0;
++	}
++	/* Make sure the value is valid */
++	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
++	if (alarm_value == table->data_mask)
++		return -ERANGE;
++	writel_relaxed(alarm_value & table->data_mask,
++		       regs + TSADCV3_COMP_INT(chn));
++	writel_relaxed(TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn),
++		       regs + TSADCV3_HT_INT_EN);
++	return 0;
++}
++
+ static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+ 				 int chn, void __iomem *regs, int temp)
+ {
+@@ -892,6 +1008,25 @@ static int rk_tsadcv2_tshut_temp(const struct chip_tsadc_table *table,
+ 	return 0;
+ }
+ 
++static int rk_tsadcv3_tshut_temp(const struct chip_tsadc_table *table,
++				 int chn, void __iomem *regs, int temp)
++{
++	u32 tshut_value;
++
++	/* Make sure the value is valid */
++	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
++	if (tshut_value == table->data_mask)
++		return -ERANGE;
++
++	writel_relaxed(tshut_value, regs + TSADCV3_COMP_SHUT(chn));
++
++	/* TSHUT will be valid */
++	writel_relaxed(TSADCV3_AUTO_SRC_EN(chn) | TSADCV3_AUTO_SRC_EN_MASK(chn),
++		       regs + TSADCV3_AUTO_SRC_CON);
++
++	return 0;
++}
++
+ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 				  enum tshut_mode mode)
+ {
+@@ -909,6 +1044,22 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	writel_relaxed(val, regs + TSADCV2_INT_EN);
+ }
+ 
++static void rk_tsadcv3_tshut_mode(int chn, void __iomem *regs,
++				  enum tshut_mode mode)
++{
++	u32 val_gpio, val_cru;
++
++	if (mode == TSHUT_MODE_GPIO) {
++		val_gpio = TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn);
++		val_cru = TSADCV2_INT_SRC_EN_MASK(chn);
++	} else {
++		val_cru = TSADCV2_INT_SRC_EN(chn) | TSADCV2_INT_SRC_EN_MASK(chn);
++		val_gpio = TSADCV2_INT_SRC_EN_MASK(chn);
++	}
++	writel_relaxed(val_gpio, regs + TSADCV3_HSHUT_GPIO_INT_EN);
++	writel_relaxed(val_cru, regs + TSADCV3_HSHUT_CRU_INT_EN);
++}
++
+ static const struct rockchip_tsadc_chip px30_tsadc_data = {
+ 	/* cpu, gpu */
+ 	.chn_offset = 0,
+@@ -1132,6 +1283,28 @@ static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
+ 	},
+ };
+ 
++static const struct rockchip_tsadc_chip rk3588_tsadc_data = {
++	/* top, big_core0, big_core1, little_core, center, gpu, npu */
++	.chn_offset = 0,
++	.chn_num = 7, /* seven channels for tsadc */
++	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
++	.tshut_temp = 95000,
++	.initialize = rk_tsadcv8_initialize,
++	.irq_ack = rk_tsadcv4_irq_ack,
++	.control = rk_tsadcv4_control,
++	.get_temp = rk_tsadcv4_get_temp,
++	.set_alarm_temp = rk_tsadcv3_alarm_temp,
++	.set_tshut_temp = rk_tsadcv3_tshut_temp,
++	.set_tshut_mode = rk_tsadcv3_tshut_mode,
++	.table = {
++		.id = rk3588_code_table,
++		.length = ARRAY_SIZE(rk3588_code_table),
++		.data_mask = TSADCV4_DATA_MASK,
++		.mode = ADC_INCREMENT,
++	},
++};
++
+ static const struct of_device_id of_rockchip_thermal_match[] = {
+ 	{	.compatible = "rockchip,px30-tsadc",
+ 		.data = (void *)&px30_tsadc_data,
+@@ -1168,6 +1341,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
+ 		.compatible = "rockchip,rk3568-tsadc",
+ 		.data = (void *)&rk3568_tsadc_data,
+ 	},
++	{
++		.compatible = "rockchip,rk3588-tsadc",
++		.data = (void *)&rk3588_tsadc_data,
++	},
+ 	{ /* end */ },
+ };
+ MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
+-- 
+2.39.2
 
-> > Notes:
-> >     Changes since v5:
-> >     - fix wrong check height vs. width
-> >     =
-
-> >     Changes since v4:
-> >     - Use struct vop_rect for storing resolution
-> >     =
-
-> >     Changes since v3:
-> >     - new patch
-> > =
-
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 15 +++++++++++++++
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h  |  6 ++++++
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  5 -----
-> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c  | 18 ++++++++++++++++++
-> >  4 files changed, 39 insertions(+), 5 deletions(-)
-> > =
-
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_vop.c
-> > index fa1f4ee6d1950..40c688529d44e 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -1174,6 +1174,20 @@ static void vop_crtc_disable_vblank(struct drm_c=
-rtc *crtc)
-> >  	spin_unlock_irqrestore(&vop->irq_lock, flags);
-> >  }
-> >  =
-
-> > +static enum drm_mode_status vop_crtc_mode_valid(struct drm_crtc *crtc,
-> > +						const struct drm_display_mode *mode)
-> > +{
-> > +	struct vop *vop =3D to_vop(crtc);
-> > +
-> > +	if (vop->data->max_output.width && mode->hdisplay > vop->data->max_ou=
-tput.width)
-> > +		return MODE_BAD_HVALUE;
-> > +
-> > +	if (vop->data->max_output.height && mode->vdisplay > vop->data->max_o=
-utput.height)
-> > +		return MODE_BAD_VVALUE;
-> > +
-> > +	return MODE_OK;
-> > +}
-> =
-
-> I'm very much in favor of codifying the possible resolutions. Hopefully
-> this will also enable better vop-selection down the road.
-> =
-
-> But ...
-> =
-
-> The above does break the px30-minievb display.
-> While the px30 TRM does say it supports a 1920x1080 resolution only, the
-> px30-minievb comes with a 720x1280 DSI display and normally runs just
-> fine with it.
-> =
-
-> Looking at the vendor-code [0], it seems they only seem to check for the
-> hvalue. Looking deeper, the height-check was present in the beginning [1],
-> but then was removed later on.
-> =
-
-> Looking a bit more, I find [2] which says that
-> 	"Actually vop hardware has no output height limit"
-> =
-
-> I re-checked this on both px30+dsi and rock64+1080p-hdmi and with
-> > +	if (vop->data->max_output.height && mode->vdisplay > vop->data->max_o=
-utput.height)
-> > +		return MODE_BAD_VVALUE;
-> line gone, rock64 is still happy and the px30 works correctly again.
-> =
-
-> So, do you see an issue with removing the output-height check?
-
-I just added the height checks for the sake of completeness. For what I
-am trying to achieve the width check is sufficient. If there is no
-height limitation in hardware anyway then we should just drop the check.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
