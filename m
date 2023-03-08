@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF774C74A4B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96B0C678D5
 	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Mar 2023 11:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0Van8olytU6bm21BHs9XRxVwsScTrRnHAOtuQ5EGEkg=; b=FuDrZnul3AEfJx
-	p/L49lUrLamI6/8utxgiQJyMYzuoWBDzsG6wI8ICBMJYJ7g4Zo2qhAAHktY0v+jk/JilkFikpzpzS
-	7S+SYw3Tu0NmwePEO1XQc6qplYm2zdo9bNcWKjpG/NmulST++KNpGm8zCvFsPmlLAqwXJwIQH2mil
-	X7HpNWMR16BMgamvv+bYoMwAY6r/gxzsQI7ZV7yBmvMd8KPLSqFd44LR6xEbojpzNbfEM7QI9y936
-	xX8O4MxJY2oCxdfK+xww5HE8qK7T3lS8RP+zUwQ/PHm2NtkI059kbM5G7UR1W4fW+oxUl7KLp5Iok
-	H6/jW4cyOCiaqfatrhCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DE8WTI2M6wazUcYHfWb0I2DGmGtU9vmxtlpgNxO1/Lk=; b=wwLPIAg/v/Gv3T
+	bKp0UG4cZZwVHgkECMNc7Jir8ICIL7MGPrRc0ByugbJlmLzT4HP6E7mfYJyHuF8h944ECmirM3/R7
+	imK5M1/ve87yrCPlRONFuVKngX7q4EWsSSH/HFsQ0h3F33ezWZRgqjEDNMWgpIkA8iyFNgf6Qp+zw
+	qNqCbMAGvKW5mYWHSIql4h2fRsYvnO+4ZfRdjwiMe2MHZ9DwGH/EGPE25Szpfi6B/XBptc/Kk7dEa
+	iyUUnYQ9ifYMZ/bjvi8yxMbqwLd6l+1qTYONawLlLcq/B9ciUgJ91JYBVwsvYCpqoTLA12omp5Dmm
+	jvaJSimr7YyhBBr3rPqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrsv-004axI-9p; Wed, 08 Mar 2023 11:23:05 +0000
+	id 1pZrsw-004axg-1E; Wed, 08 Mar 2023 11:23:06 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pZrsr-004aud-3r
-	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:02 +0000
+	id 1pZrsr-004aue-3t
+	for linux-rockchip@lists.infradead.org; Wed, 08 Mar 2023 11:23:04 +0000
 Received: from jupiter.universe (dyndsl-091-248-211-125.ewe-ip-backbone.de [91.248.211.125])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 572AC6602FF0;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 64C606602FF1;
 	Wed,  8 Mar 2023 11:22:58 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1678274578;
-	bh=2C4HJnfnDAEoc5caRpklugf01GZjHVXbn+TxwWV+gzY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ROHIm+VmXKZWgZhOUQXawvDne46n/lx49mzVgCwwflfO6nMYCM8o0/G/t5c1AOk6z
-	 2FT03hmqMMvYJb7al1HJqP6CVugSc0WaBUH/glc/tHSVB3lHQGDy65UaumWZOECSg5
-	 tOtM8iaFh/HJxYUStY8ucsvkK/mhAyBAIBvk0MBJjJxfaiq2T41idbZmIkOfpP/bzK
-	 0tGnasOT33Xs3BKT3IVPl++BT5CmfFlBzZrl6zIou78IT76mEP8ZAXbZJZ+L4uuJul
-	 0TGZ2pszpHO+CEdChf5uzspqbQNms52Y5+nQ53NYrc4cBbql9CgJHFK4LAcjT152Rw
-	 IN5W17mRGAz5A==
+	bh=s2e12H1E4UhSPpqxDNG9lVL6rQq63K8jTcBFhbky8Dg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=PWDBwQd7lPom216y2V5hxcOsCbaNr5I4ZREz/oIk/xw/3lmH6sd71T6839LvZ/87A
+	 7hObMp9lOWAX+VcSGikHY5tBBNSds6Q+zJYxuTckZVIt7PdpvX1k+bj3c5waE1NHV/
+	 3iA5ATYKnA3vzlTrnZ2eUecaf3IUEw0NZ//mkx5BJc7LJkGr9h8TU0xipwQwHka/L8
+	 +kisnpikbmL4h+Qnl0bvHn60rRW6wBYRNVX1NsC0Pv0YuOX8YS1qyxfabBT833mmbc
+	 vX29t8Tm3ja7lX5vJ/nW2GslMgM30fcjg3TbfPLGkUrmYc923TkJoWUfRnm8MyHaIZ
+	 wK18alJ9nTRfQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6ADF248010E; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
+	id 712CD48011B; Wed,  8 Mar 2023 12:22:55 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	"Rafael J. Wysocki" <rafael@kernel.org>,
@@ -58,15 +58,16 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [RESEND] [PATCHv3 0/7] RK3588 Thermal Support
-Date: Wed,  8 Mar 2023 12:22:46 +0100
-Message-Id: <20230308112253.15659-1-sebastian.reichel@collabora.com>
+Subject: [RESEND] [PATCHv3 3/7] thermal: rockchip: Use dev_err_probe
+Date: Wed,  8 Mar 2023 12:22:49 +0100
+Message-Id: <20230308112253.15659-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230308112253.15659-1-sebastian.reichel@collabora.com>
+References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_032301_416268_DDAF6466 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230308_032301_419469_F10E5549 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,50 +84,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Use dev_err_probe to simplify error printing in the driver's probe
+routine.
 
-This adds thermal support for the new RK3588(s) SoC series. The
-series has been tested on the RK3588 EVB1 board.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/thermal/rockchip_thermal.c | 50 +++++++++++-------------------
+ 1 file changed, 18 insertions(+), 32 deletions(-)
 
-Can this be applied? The series received absolutely no feedback
-for a full release cycle.
-
-Changes since PATCHv3:
- * https://lore.kernel.org/all/20230105180340.29140-1-sebastian.reichel@collabora.com/
- * rebased against v6.3-rc1
-
-Changes since PATCHv2:
- * https://lore.kernel.org/all/20221031175058.175698-1-sebastian.reichel@collabora.com/
- * rebased against v6.2-rc1
- * drop useless cast from patch 1
- * add Heiko's reviewed-by to patches 1-3 & 5
- * The discussion around patch 4 died, so I kept it unchanged
-
-Changes since PATCHv1:
- * https://lore.kernel.org/all/20221021174721.92468-1-sebastian.reichel@collabora.com/
- * Collect Reviewed-by/Acked-by
- * Use TRM channel info in commit message (Daniel Lezcano)
- * Add patch removing channel id lookup table (Daniel Lezcano)
- * Add patch allocating sensors array dynamiccaly (Daniel Lezcano)
- * I also added patches simplifying up the probe routine a bit
-
--- Sebastian
-
-Finley Xiao (1):
-  thermal: rockchip: Support RK3588 SoC in the thermal driver
-
-Sebastian Reichel (6):
-  thermal: rockchip: Simplify getting match data
-  thermal: rockchip: Simplify clock logic
-  thermal: rockchip: Use dev_err_probe
-  thermal: rockchip: Simplify channel id logic
-  thermal: rockchip: Support dynamic sized sensor array
-  dt-bindings: rockchip-thermal: Support the RK3588 SoC compatible
-
- .../bindings/thermal/rockchip-thermal.yaml    |   1 +
- drivers/thermal/rockchip_thermal.c            | 322 ++++++++++++------
- 2 files changed, 226 insertions(+), 97 deletions(-)
-
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 6235c033995b..9ed45b318344 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1377,35 +1377,26 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		return PTR_ERR(thermal->regs);
+ 
+ 	thermal->reset = devm_reset_control_array_get(&pdev->dev, false, false);
+-	if (IS_ERR(thermal->reset)) {
+-		error = PTR_ERR(thermal->reset);
+-		dev_err(&pdev->dev, "failed to get tsadc reset: %d\n", error);
+-		return error;
+-	}
++	if (IS_ERR(thermal->reset))
++		return dev_err_probe(&pdev->dev, PTR_ERR(thermal->reset),
++				     "failed to get tsadc reset.\n");
+ 
+ 	thermal->clk = devm_clk_get_enabled(&pdev->dev, "tsadc");
+-	if (IS_ERR(thermal->clk)) {
+-		error = PTR_ERR(thermal->clk);
+-		dev_err(&pdev->dev, "failed to get tsadc clock: %d\n", error);
+-		return error;
+-	}
++	if (IS_ERR(thermal->clk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(thermal->clk),
++				     "failed to get tsadc clock.\n");
+ 
+ 	thermal->pclk = devm_clk_get_enabled(&pdev->dev, "apb_pclk");
+-	if (IS_ERR(thermal->pclk)) {
+-		error = PTR_ERR(thermal->pclk);
+-		dev_err(&pdev->dev, "failed to get apb_pclk clock: %d\n",
+-			error);
+-		return error;
+-	}
++	if (IS_ERR(thermal->pclk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(thermal->pclk),
++				     "failed to get apb_pclk clock.\n");
+ 
+ 	rockchip_thermal_reset_controller(thermal->reset);
+ 
+ 	error = rockchip_configure_from_dt(&pdev->dev, np, thermal);
+-	if (error) {
+-		dev_err(&pdev->dev, "failed to parse device tree data: %d\n",
+-			error);
+-		return error;
+-	}
++	if (error)
++		return dev_err_probe(&pdev->dev, error,
++				"failed to parse device tree data\n");
+ 
+ 	thermal->chip->initialize(thermal->grf, thermal->regs,
+ 				  thermal->tshut_polarity);
+@@ -1414,23 +1405,18 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		error = rockchip_thermal_register_sensor(pdev, thermal,
+ 						&thermal->sensors[i],
+ 						thermal->chip->chn_id[i]);
+-		if (error) {
+-			dev_err(&pdev->dev,
+-				"failed to register sensor[%d] : error = %d\n",
+-				i, error);
+-			return error;
+-		}
++		if (error)
++			return dev_err_probe(&pdev->dev, error,
++				"failed to register sensor[%d].\n", i);
+ 	}
+ 
+ 	error = devm_request_threaded_irq(&pdev->dev, irq, NULL,
+ 					  &rockchip_thermal_alarm_irq_thread,
+ 					  IRQF_ONESHOT,
+ 					  "rockchip_thermal", thermal);
+-	if (error) {
+-		dev_err(&pdev->dev,
+-			"failed to request tsadc irq: %d\n", error);
+-		return error;
+-	}
++	if (error)
++		return dev_err_probe(&pdev->dev, error,
++				     "failed to request tsadc irq.\n");
+ 
+ 	thermal->chip->control(thermal->regs, true);
+ 
 -- 
 2.39.2
 
