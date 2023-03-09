@@ -4,75 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50921C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Mar 2023 15:57:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339EDC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Mar 2023 15:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Myrn7GZHEUE/GAplMyEAPgjPRD2VRlgc7fdJYYZNhQk=; b=SiYdv5vyM1RRY+
-	Jngt3uUtNx4V1SHkrKekbtbfl1ZhF5HJvNrcoqiPaBmMQt2MrFKcDliKxx3sPNSm2pIWmGlLSKG1a
-	MwAONjmBXBgHWQD3F28e9Ff6kX4I+KpnE4bQJsaIMWe2nShPCRyyZh6p86Eq6cHMk/iRm4OqmN/18
-	nCrVA3enpvOzoKXgJvE9nAzRJy5oSIWxJ9e/GQW1HBfdrImv0bTkK4W1rrvL/by8HfUEkjGN8y2qA
-	3T//x+GovCXaRQ3PAadK9zXwU02pNv7rSvhjiNc9I54DRDrgp3rQXSgyuYrBCOf7nwFc8imuyLO3A
-	iItG2t+X2qMPnTYsNqeQ==;
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Qtlil8s7sMPcTYFBbzJxDPvJC3jdOvT+7hwAunRLqn4=; b=ZgDQSVs8B5XS7+zxVK9DD7RpWL
+	7zHethqOuFEoaOMgx5ySw5ZXJSuLw5kPw9qO22nUBGbsYeg9n8B3WMB7gq0GZjD66aw2CMG+wsQ19
+	suuy5Xkx16CyfaSoCecdwA78c1+MLbJ/AVvZ8bNRdhsIk/GMBsUz1+YN6bI8ETTTJD74UXddOEvJq
+	2FRu5JDd2kokKn0AFYDMKjIZcFAr28TFKDHjaeerOFiMA+PW+JF1rz+0n869FaAaUMKnFCQ3U1Cvd
+	triuZAHleJf+wboW1XW6In0/kKMtNGJGGF571bQQS8LwKZys8jEDAkHrjrPc+L7+viqtSswQXj+st
+	9t595yVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paIdd-00B5EY-4W; Thu, 09 Mar 2023 15:57:05 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1paIfC-00B62t-9n; Thu, 09 Mar 2023 15:58:42 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paIOH-00Aydf-Od
-	for linux-rockchip@lists.infradead.org; Thu, 09 Mar 2023 15:41:18 +0000
-Received: by mail-wm1-x334.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso3934598wmb.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Mar 2023 07:41:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678376469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=thHKQQTXmNqo7+agzCDK9DfO3aLKYlwKu3AriL3BjPg=;
-        b=gJ2r1RFLFeBfkIT/MugmSb5mkRuueMrpeZW9ljS6WJwcDSNGf609jDWEGhUDaHEezx
-         cZ2rzK8O84Ns9L3RtlsXsMJRPxISQd1EIm/PK9KtKi5sy/DnsXChGUZ+rDKG6diE8pR1
-         bvqxe64DPNRU+Y3LVE795yrOjPTh/8LMBVj/AFkzsYU6KDhfcV18n1doWjxTyXqEyBrA
-         xdb5EG61TWJtW1P5i7IQkl6EAZy5htVaEvuJJZhD92utvd6odYUZwwcIcRg7H2ZYWCkt
-         sN8F8s+f/2dKAKUwUrpJ19SobSCbYCghvKAu424U1Jj7fh2YzZxH3g7DP6XiW1U2c1T/
-         LT1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678376469;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=thHKQQTXmNqo7+agzCDK9DfO3aLKYlwKu3AriL3BjPg=;
-        b=wsQfJU/OHpyEBIhSdzYWa1mtfXoUvRiYvQg5rmBpNDxaU4o1Bzfy8mnH5QYvfFhZJa
-         oUILNOkNJDYndYC1eGfYNggBSlpfxBsDb5NOdJYmJMyn8onGYzhOSYwJA7upsuJLO2hb
-         bnyiBRH4Ws5gWy18/d1X2fox08sWPqRwHQvqBQVjhEpdsPRf3tcZ1VX02RSMPd/vgSLU
-         hRK70VyfuKCGX9OOIBioypsR+JOG10TAvkyykTOFYe3f4+QvHFPg1IzSQ4o0AN3AQVk+
-         jYqChZ8tGqYCi9aVlnrarzvCSUkFY6T+L+mbZwNRBeCwkwCpCGXrAExd6OaVb3W/BZ0W
-         Pu/A==
-X-Gm-Message-State: AO0yUKXZjSDkrIPNCvxrg7qzFxevlaj0r1FmD1610OOqnKbyxBzG0tHL
-	21teeW8j+ITqqWImZcPbxkng3Q==
-X-Google-Smtp-Source: AK7set85qnSSVIK+/VfxFa63URER6rmyYNQB/XVwahWExbs8/RUsgm9XOIYiq9V5NrA4EQ+yUhQcHA==
-X-Received: by 2002:a05:600c:4ecf:b0:3eb:399d:ab1a with SMTP id g15-20020a05600c4ecf00b003eb399dab1amr19180672wmq.21.1678376469612;
-        Thu, 09 Mar 2023 07:41:09 -0800 (PST)
-Received: from [192.168.0.173] ([79.115.63.78])
-        by smtp.gmail.com with ESMTPSA id 18-20020a05600c229200b003dc4a47605fsm257344wmf.8.2023.03.09.07.41.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Mar 2023 07:41:09 -0800 (PST)
-Message-ID: <99ff644b-7734-44a4-6b3e-493dab843334@linaro.org>
-Date: Thu, 9 Mar 2023 17:41:06 +0200
+	id 1paIOe-00Aylc-Ek; Thu, 09 Mar 2023 15:41:38 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 4B77970;
+	Thu,  9 Mar 2023 16:41:31 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1678376491;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r60XWQKaLUS5jZxaKx7MYiskgFp+zOaGglaYs+jZpB4=;
+	b=yw+qp48S48+4FOgaRHiANfTm+xvcoCzUGV9aYe37Jj3gd+iyXZkSHEY3ajTl1gOkq7oO5u
+	znQsK6gjuSZJQmV9F723h6LSh+Ua5//e2bDncUPygUzT8hsi83CTGF4SyHwJFvXkV3bxwp
+	CSxbPy6deUetvisKRLNhwMhMdvwvdcvcYWMFmvpQcTXWm1tYcUpnfbR5h0X1c4xBJ/n99t
+	LlDhNRFLCLOUgkU31/Pfsu4T4OopSDPVFJL45qWT2crt5QCwG9zx+Pib9gs+m5W6j+K4DE
+	k5NJkQtIMfNPp2V0U7zXvNaTeoF7LpJdtWjywMe7UMb6WsgT4EKOB7vyOtTqeA==
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-Content-Language: en-US
-To: Michael Walle <michael@walle.cc>
-Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
- Mark Brown <broonie@kernel.org>, Tudor Ambarus
- <tudor.ambarus@microchip.com>, Pratyush Yadav <pratyush@kernel.org>,
- miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
- Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
+Date: Thu, 09 Mar 2023 16:41:31 +0100
+From: Michael Walle <michael@walle.cc>
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: Tudor Ambarus <tudor.ambarus@linaro.org>, Serge Semin
+ <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com, Mark Brown
+ <broonie@kernel.org>, Tudor Ambarus <tudor.ambarus@microchip.com>, Pratyush
+ Yadav <pratyush@kernel.org>, miquel.raynal@bootlin.com, richard@nod.at,
+ vigneshr@ti.com, Nicolas.Ferre@microchip.com, alexandre.belloni@bootlin.com,
  Claudiu.Beznea@microchip.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
  joel@jms.id.au, andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
  john.garry@huawei.com, matthias.bgg@gmail.com, avifishman70@gmail.com,
@@ -85,6 +63,8 @@ Cc: Serge Semin <fancer.lancer@gmail.com>, Sergiu.Moga@microchip.com,
  linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
  openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+In-Reply-To: <CAJsYDVJ_UtGqOm_HsN4X4nAuy9svXe4XV6aeG_fg8cWDrgrHMQ@mail.gmail.com>
 References: <20220911174551.653599-1-sergiu.moga@microchip.com>
  <20220925220304.buk3yuqoh6vszfci@mobilestation>
  <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
@@ -99,11 +79,13 @@ References: <20220911174551.653599-1-sergiu.moga@microchip.com>
  <460ef5ff3846b409b322ca53559e2476@walle.cc>
  <b8b61fc0-1e4f-146b-2036-03fda5359585@linaro.org>
  <bf57f3aafc3e0a02c81dab905ce9497e@walle.cc>
-From: Tudor Ambarus <tudor.ambarus@linaro.org>
-In-Reply-To: <bf57f3aafc3e0a02c81dab905ce9497e@walle.cc>
+ <CAJsYDVJ_UtGqOm_HsN4X4nAuy9svXe4XV6aeG_fg8cWDrgrHMQ@mail.gmail.com>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <844d3d6807106a78767607327e2ec0d5@walle.cc>
+X-Sender: michael@walle.cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230309_074113_935462_53E5C72B 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230309_074136_697133_9BB8BC87 
+X-CRM114-Status: GOOD (  19.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,86 +97,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 09.03.2023 16:01, Michael Walle wrote:
-> Am 2023-03-09 14:54, schrieb Tudor Ambarus:
->> On 09.03.2023 15:33, Michael Walle wrote:
->>>>>> The controllers that can talk in dummy ncycles don't need the
->>>>>> dummy.{buswidth, dtr} fields.
->>>>>>
->>>>>> The controllers that can't talk in dummy cycles, but only on a "byte"
->>>>>> boundary need both buswidth and dtr fields. Assume a flash needs 32
->>>>>> dummy cycles for an op on 8D-8D-8D mode. If the controller does 
->>>>>> not have
->>>>>> the buswidth and dtr info, it can't convert the dummy ncycles to 
->>>>>> nbytes.
->>>>>> If he knows only that buswidth is 8, it will convert ncycles to 4 
->>>>>> bytes.
->>>>>> If dtr is also specified it converts ncycles to 2 bytes.
->>>>>
->>>>> No they don't need it. Lets take your semper flash and assume it needs
->>>>> 12 latency cycles. SPI-NOR will set ncycles to 12 *regardless of 
->>>>> the mode
->>>>> or dtr setting*. The controller then knows we need 12 clock cycles. 
->>>>> It has
->>>>> then to figure out how that can be achieved. E.g. if it can only do 
->>>>> the
->>>>> "old" byte programming and is in quad mode, good for it. It will 
->>>>> send 6
->>>>> dummy bytes, which will result in 12 dummy clock cycles, because 1 
->>>>> byte
->>>>> takes two clock cycles in quad SDR mode. If its in octal mode, send 12
->>>>> bytes. If its in dual mode, send 3 bytes. Obiously, it cannot be in
->>>>> single bit mode, because it cannot send 1.5 bytes..
->>>>>
->>>>
->>>> You miss the fact that you can have 1-1-4. What buswidth do you use
->>>> for dummy, the address buswidth or the data buswidth?
->>>
->>> Doesn't matter, does it? The driver is free to chose, 1, 4, or anything
->>> else. You don't sample any data during the dummy phase.
->>> To answer your question: single for instruction, single for address,
->>> whatever you choose for dummy as long as there are ncycles space between
->>> address and data, and quad for data.
->>
->> Huh? How does the controller chose, based on what?
-> 
-> Based on its own capabilities. It can choose either way. In the end
-
-Okay, I'll go again through all the spi controllers and check if we can
-determine the dummy nbytes based on controller caps. Thanks!
-
-> what matters is how many clock cycles there are between the address
-> and data phase. And you only need to convey that information to the
-> SPI controller - your new ncycles.
-> 
-> -michael
-> 
->>> Depending on the capabilites of the hardware it will likely be 1 or 4.
->>>
->>>> What happens if crazy protocols like 1S-1S-8D appear? What buswidth
->>>> and transfer mode are you going to use for dummy?
->>>
->>> Also doesn't matter. What matters is how many dummy clock cycles you
->>> do. Again, they don't depent on the mode. You just have to count
->>> the clock cycles between the address and the data phase (and that is
->>> what your ncycle parameter will tell the controller).
->>>
->>>> And please don't tell me that "we're going to assume that
->>>> dummy.buswidth = address.buswidth because that's what we currently do
->>>> in SPI NOR", because I'm not convinced that the assumption is correct.
->>>
->>> No, it doesn't matter :)
->>>
->>> -michael
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gMjAyMy0wMy0wOSAxNToxOSwgc2NocmllYiBDaHVhbmhvbmcgR3VvOgo+IEhpIQo+IAo+IE9u
+IFRodSwgTWFyIDksIDIwMjMgYXQgMTA6MDTigK9QTSBNaWNoYWVsIFdhbGxlIDxtaWNoYWVsQHdh
+bGxlLmNjPiB3cm90ZToKPj4gCj4+IEFtIDIwMjMtMDMtMDkgMTQ6NTQsIHNjaHJpZWIgVHVkb3Ig
+QW1iYXJ1czoKPj4gPiBPbiAwOS4wMy4yMDIzIDE1OjMzLCBNaWNoYWVsIFdhbGxlIHdyb3RlOgo+
+PiA+Pj4+PiBUaGUgY29udHJvbGxlcnMgdGhhdCBjYW4gdGFsayBpbiBkdW1teSBuY3ljbGVzIGRv
+bid0IG5lZWQgdGhlCj4+ID4+Pj4+IGR1bW15LntidXN3aWR0aCwgZHRyfSBmaWVsZHMuCj4+ID4+
+Pj4+Cj4+ID4+Pj4+IFRoZSBjb250cm9sbGVycyB0aGF0IGNhbid0IHRhbGsgaW4gZHVtbXkgY3lj
+bGVzLCBidXQgb25seSBvbiBhCj4+ID4+Pj4+ICJieXRlIgo+PiA+Pj4+PiBib3VuZGFyeSBuZWVk
+IGJvdGggYnVzd2lkdGggYW5kIGR0ciBmaWVsZHMuIEFzc3VtZSBhIGZsYXNoIG5lZWRzIDMyCj4+
+ID4+Pj4+IGR1bW15IGN5Y2xlcyBmb3IgYW4gb3Agb24gOEQtOEQtOEQgbW9kZS4gSWYgdGhlIGNv
+bnRyb2xsZXIgZG9lcyBub3QKPj4gPj4+Pj4gaGF2ZQo+PiA+Pj4+PiB0aGUgYnVzd2lkdGggYW5k
+IGR0ciBpbmZvLCBpdCBjYW4ndCBjb252ZXJ0IHRoZSBkdW1teSBuY3ljbGVzIHRvCj4+ID4+Pj4+
+IG5ieXRlcy4KPj4gPj4+Pj4gSWYgaGUga25vd3Mgb25seSB0aGF0IGJ1c3dpZHRoIGlzIDgsIGl0
+IHdpbGwgY29udmVydCBuY3ljbGVzIHRvIDQKPj4gPj4+Pj4gYnl0ZXMuCj4+ID4+Pj4+IElmIGR0
+ciBpcyBhbHNvIHNwZWNpZmllZCBpdCBjb252ZXJ0cyBuY3ljbGVzIHRvIDIgYnl0ZXMuCj4+ID4+
+Pj4KPj4gPj4+PiBObyB0aGV5IGRvbid0IG5lZWQgaXQuIExldHMgdGFrZSB5b3VyIHNlbXBlciBm
+bGFzaCBhbmQgYXNzdW1lIGl0Cj4+ID4+Pj4gbmVlZHMKPj4gPj4+PiAxMiBsYXRlbmN5IGN5Y2xl
+cy4gU1BJLU5PUiB3aWxsIHNldCBuY3ljbGVzIHRvIDEyICpyZWdhcmRsZXNzIG9mIHRoZQo+PiA+
+Pj4+IG1vZGUKPj4gPj4+PiBvciBkdHIgc2V0dGluZyouIFRoZSBjb250cm9sbGVyIHRoZW4ga25v
+d3Mgd2UgbmVlZCAxMiBjbG9jayBjeWNsZXMuCj4+ID4+Pj4gSXQgaGFzCj4+ID4+Pj4gdGhlbiB0
+byBmaWd1cmUgb3V0IGhvdyB0aGF0IGNhbiBiZSBhY2hpZXZlZC4gRS5nLiBpZiBpdCBjYW4gb25s
+eSBkbwo+PiA+Pj4+IHRoZQo+PiA+Pj4+ICJvbGQiIGJ5dGUgcHJvZ3JhbW1pbmcgYW5kIGlzIGlu
+IHF1YWQgbW9kZSwgZ29vZCBmb3IgaXQuIEl0IHdpbGwKPj4gPj4+PiBzZW5kIDYKPj4gPj4+PiBk
+dW1teSBieXRlcywgd2hpY2ggd2lsbCByZXN1bHQgaW4gMTIgZHVtbXkgY2xvY2sgY3ljbGVzLCBi
+ZWNhdXNlIDEKPj4gPj4+PiBieXRlCj4+ID4+Pj4gdGFrZXMgdHdvIGNsb2NrIGN5Y2xlcyBpbiBx
+dWFkIFNEUiBtb2RlLiBJZiBpdHMgaW4gb2N0YWwgbW9kZSwgc2VuZAo+PiA+Pj4+IDEyCj4+ID4+
+Pj4gYnl0ZXMuIElmIGl0cyBpbiBkdWFsIG1vZGUsIHNlbmQgMyBieXRlcy4gT2Jpb3VzbHksIGl0
+IGNhbm5vdCBiZSBpbgo+PiA+Pj4+IHNpbmdsZSBiaXQgbW9kZSwgYmVjYXVzZSBpdCBjYW5ub3Qg
+c2VuZCAxLjUgYnl0ZXMuLgo+PiA+Pj4+Cj4+ID4+Pgo+PiA+Pj4gWW91IG1pc3MgdGhlIGZhY3Qg
+dGhhdCB5b3UgY2FuIGhhdmUgMS0xLTQuIFdoYXQgYnVzd2lkdGggZG8geW91IHVzZQo+PiA+Pj4g
+Zm9yIGR1bW15LCB0aGUgYWRkcmVzcyBidXN3aWR0aCBvciB0aGUgZGF0YSBidXN3aWR0aD8KPj4g
+Pj4KPj4gPj4gRG9lc24ndCBtYXR0ZXIsIGRvZXMgaXQ/IFRoZSBkcml2ZXIgaXMgZnJlZSB0byBj
+aG9zZSwgMSwgNCwgb3IKPj4gPj4gYW55dGhpbmcKPj4gPj4gZWxzZS4gWW91IGRvbid0IHNhbXBs
+ZSBhbnkgZGF0YSBkdXJpbmcgdGhlIGR1bW15IHBoYXNlLgo+PiA+PiBUbyBhbnN3ZXIgeW91ciBx
+dWVzdGlvbjogc2luZ2xlIGZvciBpbnN0cnVjdGlvbiwgc2luZ2xlIGZvciBhZGRyZXNzLAo+PiA+
+PiB3aGF0ZXZlciB5b3UgY2hvb3NlIGZvciBkdW1teSBhcyBsb25nIGFzIHRoZXJlIGFyZSBuY3lj
+bGVzIHNwYWNlCj4+ID4+IGJldHdlZW4KPj4gPj4gYWRkcmVzcyBhbmQgZGF0YSwgYW5kIHF1YWQg
+Zm9yIGRhdGEuCj4+ID4KPj4gPiBIdWg/IEhvdyBkb2VzIHRoZSBjb250cm9sbGVyIGNob3NlLCBi
+YXNlZCBvbiB3aGF0Pwo+PiAKPj4gQmFzZWQgb24gaXRzIG93biBjYXBhYmlsaXRpZXMuIEl0IGNh
+biBjaG9vc2UgZWl0aGVyIHdheS4gSW4gdGhlIGVuZAo+PiB3aGF0IG1hdHRlcnMgaXMgaG93IG1h
+bnkgY2xvY2sgY3ljbGVzIHRoZXJlIGFyZSBiZXR3ZWVuIHRoZSBhZGRyZXNzCj4+IGFuZCBkYXRh
+IHBoYXNlLiBBbmQgeW91IG9ubHkgbmVlZCB0byBjb252ZXkgdGhhdCBpbmZvcm1hdGlvbiB0byB0
+aGUKPj4gU1BJIGNvbnRyb2xsZXIgLSB5b3VyIG5ldyBuY3ljbGVzLgo+IAo+IEl0IGRvZXMgbWF0
+dGVyLiBDb250cm9sbGVyIG1heSBiZSBkZXNpZ25lZCB0byBhY3RpdmVseSBkcml2ZQo+IE1PU0kv
+V1AvSE9MRCBkdXJpbmcgc2luZ2xlLXNwaSBkdW1teSBjeWNsZXMgYW5kIFdQL0hPTEQKPiBkdXJp
+bmcgZHVhbC1zcGkgZHVtbXkgY3ljbGVzLiBJZiB0aGUgcGluIG1vZGVzIGJldHdlZW4gdGhlCj4g
+Y29udHJvbGxlciBhbmQgZGV2aWNlIG1pc21hdGNoZWQsIHdvcnN0IGNhc2Ugc2NlbmFyaW8KPiB0
+aGUgY2hpcCBtYXkgZ2V0IGZyaWVkLgoKSW50ZXJlc3RpbmcuIEJ1dCBtb3N0IG9mIHRoZSB0aW1l
+IHlvdSdsbCBoYXZlIHRvIGRvIHdoYXQgdGhlCnNwaSBjb250cm9sbGVyIHN1cHBvcnRzLiBPbmx5
+IGlmIGl0cyBmcmVlbHkgcHJvZ3JhbW1hYmxlLAp0aGVuIGFjY29yZGluZyB0byB5b3VyIGNvbW1l
+bnQgeW91J2QgY2hvb3NlIHRoZSBidXN3aWR0aCBvZgp0aGUgZGF0YSBwaGFzZSB0byBiZSBvbiB0
+aGUgc2FmZSBzaWRlLgoKQnR3LiB0aGlzIGlzIG5vdCB3aGF0IHNwaS1ub3IgaXMgZG9pbmcgcmln
+aHQgbm93LgoKLW1pY2hhZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
