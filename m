@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C736C64EC4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Mar 2023 01:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A06C64EC4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Mar 2023 01:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R/3msbWrlzvkBHy6SNEGeER8HAQeA48AcsSR/b4y2Iw=; b=prq1MZOu7E8j/A
-	xMuhZjbavrlmJJNmGpvdA82a3QilfUz0Usp4Om94Ls90excmIrZrTSW1MjWRD1A6FzSG8rwngzUQ5
-	7WBGNBByNHINc5BlaQTFKMXZeQbA889q/GXjxo7HrDqtY5L5Ecqozcx1vS0ORYnf1Q18C8cM+asui
-	LtdKdx04hasY7FYI1A7eFX1FJ/znrZ1qxEFwGLTFqNnsbhIJBqoU4bKHZUKNZ58/pejrvutQ1b5NQ
-	kbH61KuRSY1vUjt9so5msW1z0s0aFS6RoKKZiMFV0SNA46w89k4Va/p9U0o6hl6MxNBkET0NAt3r5
-	LvnLhr/HAysWM0OCiFmA==;
+	List-Owner; bh=zVveLv5EwZqBNlEtNAvZecUVpXs5O3h3pkSBmTiU8Sw=; b=pjt6ve6STwE9T/
+	Iu7C84wz9WrMO4s7ZTDv9o4gLyJgADym+oaKhd+Cenn23kGsyiOHiUrczlVRuOFoLDc2PWRdU5Qse
+	vj99zZOCRseudZcATzzpN4iD6UYLol5FOwhsJFeU2Ns41NdRJTnIt2ZQppxhV7nv1VnQfexmASYSg
+	pChlyBzntQppvFGYAh9n0k629n5CLTp95+MvcnOSsEVwF5Sjh/OW+tmeUu9NNuse1EeKWHCIS8kVA
+	UYQvU1Al/REAkjE5NyJGHDnAUjTb7afLMa6xlFKr9enhaoYPr47smnzPmoMYH1mL4N5ZKcN5nRVbH
+	g4tCUusbDNo7BQ6gUc0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa4ky-007MdV-Jg; Thu, 09 Mar 2023 01:07:44 +0000
+	id 1pa4ky-007Mdb-TA; Thu, 09 Mar 2023 01:07:44 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pa4ko-007MZO-6y
-	for linux-rockchip@lists.infradead.org; Thu, 09 Mar 2023 01:07:35 +0000
+	id 1pa4ko-007MYu-72; Thu, 09 Mar 2023 01:07:35 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pa4ke-00041d-8q; Thu, 09 Mar 2023 02:07:24 +0100
+	id 1pa4kd-00041d-LT; Thu, 09 Mar 2023 02:07:23 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sascha Hauer <s.hauer@pengutronix.de>,
-	dri-devel@lists.freedesktop.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
+To: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Dan Johansen <strit@manjaro.org>,
+	dri-devel@lists.freedesktop.org,
+	Gerald Loacker <gerald.loacker@wolfvision.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	David Airlie <airlied@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Daniel Vetter <daniel@ffwll.ch>,
 	Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v6 0/4] drm/rockchip: dw_hdmi: Add 4k@30 support
-Date: Thu,  9 Mar 2023 02:07:21 +0100
-Message-Id: <167832398243.362678.10460061288778589921.b4-ty@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: vop2: add polarity flags to RGB output
+Date: Thu,  9 Mar 2023 02:07:19 +0100
+Message-Id: <167832398246.362678.16304848436685688668.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230216102447.582905-1-s.hauer@pengutronix.de>
-References: <20230216102447.582905-1-s.hauer@pengutronix.de>
+In-Reply-To: <20230302123949.957998-1-gerald.loacker@wolfvision.net>
+References: <20230302123949.957998-1-gerald.loacker@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230308_170734_270974_E5556699 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20230308_170734_273267_23F44519 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,31 +67,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Feb 2023 11:24:43 +0100, Sascha Hauer wrote:
-> One small fix compared to the last version, when checking for valid
-> resolutions I accidently compared the current mode width with the
-> maximum allowed height which resulted in wrong resolutions being
-> discarded.
+On Thu, 2 Mar 2023 13:39:49 +0100, Gerald Loacker wrote:
+> Use h/v-sync and pixel clock polarity flags for RGB output. For all other
+> outputs this is already implemented.
 > 
-> Changes since v5:
-> - Fix wrong check width vs. height
 > 
-> [...]
 
 Applied, thanks!
 
-[1/4] drm/rockchip: vop: limit maximium resolution to hardware capabilities
-      commit: 8e140cb60270ee8b5b41e80806323c668d8d4da9
-
-Dropped the height check from the mode_valid function
-and adding a suitable comment to the commit message.
-
-[2/4] drm/rockchip: dw_hdmi: relax mode_valid hook
-      commit: de13db32b0f89a040b50a51d129b9443159a660a
-[3/4] drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
-      commit: 83b61f817f43ed67572d1e241c9f552e0a8bfff4
-[4/4] drm/rockchip: dw_hdmi: discard modes with unachievable pixelclocks
-      commit: d13b10ec6696b0c523fa21b65c7ff6f246a49560
+[1/1] drm/rockchip: vop2: add polarity flags to RGB output
+      commit: 66ab57574f2c8233550f641ecdc34fd0ef61341d
 
 Best regards,
 -- 
