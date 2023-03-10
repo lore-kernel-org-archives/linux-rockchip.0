@@ -4,92 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 794B7C64EC4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 10:45:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E667C64EC4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 11:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tlDctNbMGm9wGx0dhGexWJJXUWIQg2xpHdxSrkgghIA=; b=rdVyOCJ/hOzTEx
-	rpI7WLw6jn7zpEQn4VJJVfpTodVGxBol/Mw4feBr+SZMhtIcTAGOBeJX2ELT/eTyZOW7cn68Ywt4M
-	nVluotROjbstJ8+56td+u9gMixQhmnYPUWSMpcRp/ZDNniS9dcU5K7Us7NuGWg2AOIWHK/1GuXbAx
-	wuo13/wYX8uCIu9+knFN771jdwxe1+afWQo6YQHcuh/8VuSrrEZpN/Me7uSz4uGoH6POb51yrembF
-	+PZDYPI8kepqnTjwoytdqMRiCD/qo0S2FtKwgS74sTm5tpq13cHWT1XLCI89GyaGhmEBYEUHiPyDk
-	ujVNGL8UHFDd0Qs6r5Gg==;
+	List-Owner; bh=EX3qWyTWXu4Z3KPWrPIVf4LL9ZOZRNsvEop4xEgePpk=; b=zbpKKC7pBpN07C
+	oCNLY+XCLnRjPCzLaz92hv3/VzRVSGd4cYXRuBZ5wbhZyqsCBPtNgpsIG/iHM9NsEdkMcX0NXFPf9
+	4K/uusG1BCUdU4ePzK4Tw15LjVMN3O5mBIW1jR9o6hMbSFKITL9k8qr2UagcZDfqDZgc9fshRW3B3
+	TB2etbksLIubCmopMaogGvmsrVf5dSvB1ouXJy0vn8pCEcjOC2q0jzCMV2yLTsLIasDuaKPENkNEc
+	RYYORnEMSncTfDj+ynzgG/dtY92/7bIvZluVuw23DFXJJRg9T7+LTcum0sVzySicC4JHxFDNU5QmE
+	rtdzvjAwEmb5ulql477w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paaFI-00EEWr-VI; Fri, 10 Mar 2023 10:45:08 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pab8V-00EP9g-PO; Fri, 10 Mar 2023 11:42:11 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paaF8-00EETc-J3; Fri, 10 Mar 2023 10:45:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0108F61355;
-	Fri, 10 Mar 2023 10:44:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64D3FC4339C;
-	Fri, 10 Mar 2023 10:44:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678445097;
-	bh=TPxM6KK9/OyA82h8iJjmd8WFZT103NQH+ETqZREhhgY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=D+j9smyxvtBK/Ms2aaaY40QVCvRcaB8b1yBg1H4n9IxI+4YZ+OundcY1FnH7GGKj9
-	 1Y++jlWf55aSc0fGF+NGC5U/G62ZYKXcY1suUMO9Xl0QKzlrrhuxMzOx38PmLNnF+f
-	 dmI8fERezRXUDAo9olrN9xjbRVuyZgvbIwn3qxFwlXmq6nA4ZnvulzrwMqu6yOeT0g
-	 aBFTHdmP4lK2b1F3Uvmv75el+7byuqVbIdu+ROydahT4xaP5gZDqMVyDieAgNvPlSO
-	 wb3YiZdhuJocqzHnLtUGu3ny+auNY5PrS/grMaumTePFWohmwFbhPuhIkJd1LjOqmg
-	 b9c6nP1DTlLuw==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1paaF4-00GZyH-VJ;
-	Fri, 10 Mar 2023 10:44:55 +0000
-Date: Fri, 10 Mar 2023 10:44:54 +0000
-Message-ID: <86wn3oyjfd.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Lucas Tanure <lucas.tanure@collabora.com>
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I
- <kishon@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof Wilczynski <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Qu Wenruo <wqu@suse.com>,
-	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	kernel@collabora.com,
-	Robin Murphy <robin.murphy@arm.com>
+	id 1pab8L-00EP7p-4B; Fri, 10 Mar 2023 11:42:02 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id i34so19239099eda.7;
+        Fri, 10 Mar 2023 03:42:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678448519;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=DOPcC/2QksUl/n+7no9y2cjpF4ZKKO4ov/Ft85Eli70=;
+        b=KK3MTstlBvwQJp3hkC+WWq7Q8LsLEA86B9IO7jTrSArp1MMzXDu+jUwwEQc7hd+Jqi
+         MxXm1s0mWYmLo0SfTccmPzkspQHxBEW6V36oPTIm5vuAdV6BqOSXsPvdsV5eVNlz3EQ3
+         ZPs+4YjHWB2O5155xrbCsYJCEDjQOdcaJGWexLVsaQe8HhivXObhMxJZHINQ9jpwdjQW
+         w41A0XAje2m17Dg6yG6f9t7Khevv6eeaAMaN4h2tJGfCWF0gG3WsQjAz/gnxD6X6wWma
+         gYrBUvhcR8oWbD3OGHchHzhCOvQgMP3XA4Zi0NpGn0MFnuQTiSt7dQTXvePQEYwXTlbm
+         vXbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678448519;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DOPcC/2QksUl/n+7no9y2cjpF4ZKKO4ov/Ft85Eli70=;
+        b=gm2wPnYan9P2D+8ww8zOy7sYxOYWQKONuaV2fbp1LSYZV6lBs+vobookuyCLlvvG33
+         8JKNbicTO5bZOSiXi6CW8cKk1Ah9N2hBs1yq6YYTWYwIF4TNifOoqB8+Hf5WM3eJ47hk
+         mPK/Cqy7U8MwciFPeLo8tlxLdjMqbistawxgIhPbz9G6eIxUOhFLMiuNPUzolPZxdEAL
+         K7W6i1+8hnWuO12oWPM7mnm/xsb6u/yVGo4vte1vJWORZqJodCd+77XanJapKE62QCKJ
+         H18T9L5TlYX/vKHCiz3ZTquKINKe0UqfTJ59oiWjZ9sfF6IXppVG/7s8rY0lLVzkEHco
+         fdZA==
+X-Gm-Message-State: AO0yUKUzuwkwbvnHD/LfCsaUWAtIoNjQ4/YMtJyQ6WBXY0XmzoRhI8gG
+	oSoBWSq+pwtVBB0wttA8yYcOKRbWQ9KmxsXzB8M=
+X-Google-Smtp-Source: AK7set/XQR6yt41xZ570LX5BYhbDlEkXTOEyVF2u4VCGa7EDXGSRMJeaZ7RnJuZBW0EOTgORjUsm7+YhLxfOkIg/vWo=
+X-Received: by 2002:a50:bae1:0:b0:4ad:7439:cec7 with SMTP id
+ x88-20020a50bae1000000b004ad7439cec7mr13785284ede.7.1678448518643; Fri, 10
+ Mar 2023 03:41:58 -0800 (PST)
+MIME-Version: 1.0
+References: <20230310080518.78054-1-lucas.tanure@collabora.com> <20230310080518.78054-2-lucas.tanure@collabora.com>
+In-Reply-To: <20230310080518.78054-2-lucas.tanure@collabora.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 10 Mar 2023 06:41:46 -0500
+Message-ID: <CAMdYzYpL7V6udw=T7ZChTFi0xOj1tb-5CVHb84u1pL4kj3eDZA@mail.gmail.com>
 Subject: Re: [PATCH 1/7] irqchip/gic-v3: Add a DMA Non-Coherent flag
-In-Reply-To: <37adba14-1add-187c-01b5-5109be38018e@collabora.com>
-References: <20230310080518.78054-1-lucas.tanure@collabora.com>
-	<20230310080518.78054-2-lucas.tanure@collabora.com>
-	<a43dee4ef0e72c393dea6ce924347f81@kernel.org>
-	<37adba14-1add-187c-01b5-5109be38018e@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: lucas.tanure@collabora.com, vkoul@kernel.org, kishon@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, tglx@linutronix.de, lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com, wqu@suse.com, piotr.oniszczuk@gmail.com, pgwipeout@gmail.com, kever.yang@rock-chips.com, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com, robin.murphy@arm.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+To: Lucas Tanure <lucas.tanure@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof Wilczynski <kw@linux.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Qu Wenruo <wqu@suse.com>, 
+	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com, 
+	Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_024458_719385_65035B50 
-X-CRM114-Status: GOOD (  21.37  )
+X-CRM114-CacheID: sfid-20230310_034201_211907_48264325 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,32 +93,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Mar 2023 09:53:16 +0000,
-Lucas Tanure <lucas.tanure@collabora.com> wrote:
-> 
-> On 10-03-2023 08:56, Marc Zyngier wrote:
-> > On 2023-03-10 08:05, Lucas Tanure wrote:
-> >> The GIC600 integration in RK356x, used in rk3588, doesn't support
-> >> any of the shareability or cacheability attributes, and requires
-> >> both values to be set to 0b00 for all the ITS and Redistributor
-> >> tables.
-> >> 
-> >> This is loosely based on prior work from XiaoDong Huang and
-> >> Peter Geis fixing this issue specifically for Rockchip 356x.
-> > 
-> > No.
-> > 
-> > If we are going to do *anything* about this thing, it is by
-> > describing the actual topology.
-> What do you mean by describe the topology?
+On Fri, Mar 10, 2023 at 3:05 AM Lucas Tanure <lucas.tanure@collabora.com> wrote:
+>
+> The GIC600 integration in RK356x, used in rk3588, doesn't support
+> any of the shareability or cacheability attributes, and requires
+> both values to be set to 0b00 for all the ITS and Redistributor
+> tables.
+>
+> This is loosely based on prior work from XiaoDong Huang and
+> Peter Geis fixing this issue specifically for Rockchip 356x.
 
-Exactly what it means. Describe which shareability domains the GIC is
-in w.r.t the whole SoC. Do it consistently over the whole SoC.
+Good Morning,
 
-	M.
+Since the gic is using dma, would it be reasonable to have all memory
+allocations be requested with the GFP_DMA flag? Otherwise this doesn't
+fully solve the problem for rk356x, where only the lower 4GB range is
+DMA capable, but this tends to get allocated in the upper 4GB on 8GB
+boards.
 
--- 
-Without deviation from the norm, progress is not possible.
+Very Respectfully,
+Peter Geis
+
+>
+> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
+> ---
+>  drivers/irqchip/irq-gic-v3-its.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>
+> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
+> index 973ede0197e3..1c334dfeb647 100644
+> --- a/drivers/irqchip/irq-gic-v3-its.c
+> +++ b/drivers/irqchip/irq-gic-v3-its.c
+> @@ -42,6 +42,7 @@
+>  #define ITS_FLAGS_CMDQ_NEEDS_FLUSHING          (1ULL << 0)
+>  #define ITS_FLAGS_WORKAROUND_CAVIUM_22375      (1ULL << 1)
+>  #define ITS_FLAGS_WORKAROUND_CAVIUM_23144      (1ULL << 2)
+> +#define ITS_FLAGS_DMA_NON_COHERENT             (1ULL << 3)
+>
+>  #define RDIST_FLAGS_PROPBASE_NEEDS_FLUSHING    (1 << 0)
+>  #define RDIST_FLAGS_RD_TABLES_PREALLOCATED     (1 << 1)
+> @@ -2359,6 +2360,13 @@ static int its_setup_baser(struct its_node *its, struct its_baser *baser,
+>         its_write_baser(its, baser, val);
+>         tmp = baser->val;
+>
+> +       if (its->flags & ITS_FLAGS_DMA_NON_COHERENT) {
+> +               if (tmp & GITS_BASER_SHAREABILITY_MASK)
+> +                       tmp &= ~GITS_BASER_SHAREABILITY_MASK;
+> +               else
+> +                       gic_flush_dcache_to_poc(base, PAGE_ORDER_TO_SIZE(order));
+> +       }
+> +
+>         if ((val ^ tmp) & GITS_BASER_SHAREABILITY_MASK) {
+>                 /*
+>                  * Shareability didn't stick. Just use
+> @@ -3055,6 +3063,7 @@ static u64 its_clear_vpend_valid(void __iomem *vlpi_base, u64 clr, u64 set)
+>
+>  static void its_cpu_init_lpis(void)
+>  {
+> +       struct its_node *its = list_first_entry(&its_nodes, struct its_node, entry);
+>         void __iomem *rbase = gic_data_rdist_rd_base();
+>         struct page *pend_page;
+>         phys_addr_t paddr;
+> @@ -3096,6 +3105,9 @@ static void its_cpu_init_lpis(void)
+>         gicr_write_propbaser(val, rbase + GICR_PROPBASER);
+>         tmp = gicr_read_propbaser(rbase + GICR_PROPBASER);
+>
+> +       if (its->flags & ITS_FLAGS_DMA_NON_COHERENT)
+> +               tmp &= ~GICR_PROPBASER_SHAREABILITY_MASK;
+> +
+>         if ((tmp ^ val) & GICR_PROPBASER_SHAREABILITY_MASK) {
+>                 if (!(tmp & GICR_PROPBASER_SHAREABILITY_MASK)) {
+>                         /*
+> @@ -3120,6 +3132,9 @@ static void its_cpu_init_lpis(void)
+>         gicr_write_pendbaser(val, rbase + GICR_PENDBASER);
+>         tmp = gicr_read_pendbaser(rbase + GICR_PENDBASER);
+>
+> +       if (its->flags & ITS_FLAGS_DMA_NON_COHERENT)
+> +               tmp &= ~GICR_PENDBASER_SHAREABILITY_MASK;
+> +
+>         if (!(tmp & GICR_PENDBASER_SHAREABILITY_MASK)) {
+>                 /*
+>                  * The HW reports non-shareable, we must remove the
+> @@ -5005,6 +5020,7 @@ static int __init its_compute_its_list_map(struct resource *res,
+>  static int __init its_probe_one(struct resource *res,
+>                                 struct fwnode_handle *handle, int numa_node)
+>  {
+> +       struct device_node *np = to_of_node(handle);
+>         struct its_node *its;
+>         void __iomem *its_base;
+>         u64 baser, tmp, typer;
+> @@ -5076,6 +5092,9 @@ static int __init its_probe_one(struct resource *res,
+>         its->get_msi_base = its_irq_get_msi_base;
+>         its->msi_domain_flags = IRQ_DOMAIN_FLAG_MSI_REMAP;
+>
+> +       if (np && !of_dma_is_coherent(np))
+> +               its->flags |= ITS_FLAGS_DMA_NON_COHERENT;
+> +
+>         its_enable_quirks(its);
+>
+>         err = its_alloc_tables(its);
+> @@ -5095,6 +5114,9 @@ static int __init its_probe_one(struct resource *res,
+>         gits_write_cbaser(baser, its->base + GITS_CBASER);
+>         tmp = gits_read_cbaser(its->base + GITS_CBASER);
+>
+> +       if (its->flags & ITS_FLAGS_DMA_NON_COHERENT)
+> +               tmp &= ~GITS_CBASER_SHAREABILITY_MASK;
+> +
+>         if ((tmp ^ baser) & GITS_CBASER_SHAREABILITY_MASK) {
+>                 if (!(tmp & GITS_CBASER_SHAREABILITY_MASK)) {
+>                         /*
+> --
+> 2.39.2
+>
 
 _______________________________________________
 Linux-rockchip mailing list
