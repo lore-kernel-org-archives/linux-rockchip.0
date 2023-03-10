@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672D6C6FA99
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 11:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED56C6FD1E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 12:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=blqFKZP9QQ3O1VXpr1BgXr/ED/EezbFf6zi5Yu+gtZ4=; b=mrTyaoHImJGYSo
-	o8HgS61imjprLa4bq6ZGpyLwwaaGM6Oh6NKuDqaxFaIErmMaqnv70RL3mPcpmn6JsG5ceR8bEPyhR
-	8hHzFTwLVeJ2akuYdnJ4+Y64dMMP6s00mbkvc+vqS/27JidjJqVdslbX6mjepRq9/Paldupslfh5r
-	rnipMuunLRlKvuuse28LFjlBcxGNIz/GuqMz57jy1z0ELimL9/i1fGFAPVNqeqQRKVIJ5zQe7pjIt
-	+Z9u8Zr1jMaab770Chdr0rJZkoC5IO8o/DmL1kufzzJo4+2BwYJDPiMh1zoERDdaUhOOLQGKFWIlS
-	7EVetKDOds8VmUMUGlKg==;
+	List-Owner; bh=DuWGtrc2E8srhcQCTC0MQN0SGdRaIZryx458x7vPSO0=; b=BT6pfnxPCjb9AM
+	XafSQ1id2lnODmvdgASts5hMr7yk8WUK4ROnePk2G0fByXNASduksS7iAiS4VnWxL27L/GnfUBY+Z
+	x4IFS8GQ93Z64prWwvZZ2yBjungHNQZ4RPJhjk0WCrvmyh5g9ru3Z8VQf2vPxgpIOEJ51IkD1xvW4
+	RA6/PbHuLEUW2PA57no6G04ARxPD0kYWXHLg8OTyCFSB8VBt1taNXwzEv53pOuyIZg/46wbwzLAU/
+	h+vkszLfDRKca1AhGqkMnHb6rg8LKJZrD8VY8LM4J/FAO+TeUg/nxsh15eLRykKxb8QgL2YcDDAnM
+	01SelpRqNwiqaq+gVHCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pabNi-00ER8t-7d; Fri, 10 Mar 2023 11:57:54 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1pabUJ-00ESmF-CS; Fri, 10 Mar 2023 12:04:43 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pabNX-00ER4E-QU; Fri, 10 Mar 2023 11:57:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678449463; x=1709985463;
-  h=message-id:date:mime-version:subject:to:references:from:
-   in-reply-to:content-transfer-encoding;
-  bh=DKnah2lkCe7jHy6Hgj2T8tYgTJ+V9U36AQfst+0kVpM=;
-  b=FfGtALclZTRp36PWnbRGt8j0z+SRV2n/W4qeDf2deyVPvY2Z++P1n6xr
-   U24TondyQQtKDkcctgFyJwoK4YO/wuX1dFoEE5IgmsdEQ+YUqwkXyyt1n
-   Ck0+enotyAWC/jZX/ua4/vRFFEbCy6DcwIM+cjrbMpdCsrMNxNv5Fiehl
-   mV/kzA5rFX5R3WI1MCbt2gh95fcJ3WpKG7PldIFl+mtGna1argwgeXXwt
-   pVrpcwWupCgtFLoTSChyDo3fI1jxwTeECj/gucJHFV7iJ3Lq143qHpKm0
-   q0Mya+tYCFGjgJtrEGfv7YZnRhDEXPmFf13BHjM80PRpTXsmgshAYrDcQ
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="399309928"
-X-IronPort-AV: E=Sophos;i="5.98,249,1673942400"; 
-   d="scan'208";a="399309928"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2023 03:57:42 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="710260075"
-X-IronPort-AV: E=Sophos;i="5.98,249,1673942400"; 
-   d="scan'208";a="710260075"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.60.222])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2023 03:57:40 -0800
-Message-ID: <3a0bf35d-779b-b611-aee0-57d1f926537b@intel.com>
-Date: Fri, 10 Mar 2023 13:57:35 +0200
+	id 1pabU7-00EShV-R6; Fri, 10 Mar 2023 12:04:33 +0000
+Received: by mail-ed1-x531.google.com with SMTP id u9so19552238edd.2;
+        Fri, 10 Mar 2023 04:04:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678449868;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=7JxCDIVzx63/0USvlw4b2PiFBo7GGlMiiEoXtp1Amu4=;
+        b=kqp/fj0uASTKrAmvf0lTJGWGKD9gFQlxmnqqS5X5AGk2553pxdR8KZp5V0XwHtybS7
+         2b3kqVkJThJ2G0PPuq9QoR2dPpVJU0SXpW601F1iydUt1zPutR3O1dinA0F1ADXPlnzF
+         ZrZCgfTNa3NwIDI9Bh2JErYh2ah738xo3qxQp6QniFND9su9bS0BQnBE+PEZQTjJdegp
+         vB7oKe3w1A5C7f5kKeODVg/B7rkdPJmwespxAUn7x6sHcdVJ35X1LCRoNR4Q7u7MRmIy
+         FGAk65pKIkPXaYFDOPNB7yVABgqfXka4n6BF8UEl7BcM2uKqr9Bl0zwsp4FtMcSG+Kru
+         P/Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678449868;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7JxCDIVzx63/0USvlw4b2PiFBo7GGlMiiEoXtp1Amu4=;
+        b=iME0Q8LFqvK2ic/s4G6so7mQtpcBFLWeSQAzEQiZSsi7ClwlSzVfjkD8DvoM+a9xqF
+         PUIUIkUa1P+vr97q2VOjb8OL9TBAFc1tgxp6mfdC2BmeCDH+wR042kSZP2NoP+IE/EK+
+         5scXPycxf4DjjCwxRlWjN0XC4/qAQ/IbodCARoD3FXF6E9wO5D9j6+6CtPgQRCtt4hDv
+         1avR4rfI2yQesDYa3h+korWmWMqTJwYdGat+A+Iophg/XeGQQ5CvZDh+ivJqoj86ZOQz
+         D8xSxvHgW8q9D0TpImgkZ9yJmpdSmqRYo1jdugauDweWEKiQ4eJhZsg4hTzmMCC4S78a
+         v9oQ==
+X-Gm-Message-State: AO0yUKXPrbpbhpnPpwROeuIeAAZcME8vIYJyx2jv20S/8Yt1p4upz6PE
+	wIzugOD2ldp6jGe/R1JgRns5MRrtp7/AVK1Gg8k=
+X-Google-Smtp-Source: AK7set8NexWLnnznp47X6iexl2bquKGhMUmpmcoFxaD97rzeEbBrsEdy4xTtZDpmQ5EjrulWwvs76lPRcjQUNCkG/yg=
+X-Received: by 2002:a50:9b53:0:b0:4ae:f648:950b with SMTP id
+ a19-20020a509b53000000b004aef648950bmr13917661edj.7.1678449867835; Fri, 10
+ Mar 2023 04:04:27 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.8.0
-Subject: Re: [PATCH] mmc: sdhci-of-dwcmshc: properly determine max clock on
- Rockchip
-Content-Language: en-US
-To: Vasily Khoruzhick <anarsoul@gmail.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20230310010349.509132-1-anarsoul@gmail.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20230310010349.509132-1-anarsoul@gmail.com>
+References: <20230310080518.78054-1-lucas.tanure@collabora.com>
+ <20230310080518.78054-2-lucas.tanure@collabora.com> <CAMdYzYpL7V6udw=T7ZChTFi0xOj1tb-5CVHb84u1pL4kj3eDZA@mail.gmail.com>
+ <86v8j8yg3d.wl-maz@kernel.org>
+In-Reply-To: <86v8j8yg3d.wl-maz@kernel.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 10 Mar 2023 07:04:16 -0500
+Message-ID: <CAMdYzYo5FW6NT8zj8+4meAV-HVve+rVYybibVHy4GONC_PJ-6Q@mail.gmail.com>
+Subject: Re: [PATCH 1/7] irqchip/gic-v3: Add a DMA Non-Coherent flag
+To: Marc Zyngier <maz@kernel.org>
+Cc: Lucas Tanure <lucas.tanure@collabora.com>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Thomas Gleixner <tglx@linutronix.de>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof Wilczynski <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Qu Wenruo <wqu@suse.com>, 
+	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com, 
+	Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_035743_965281_ADDEAD34 
-X-CRM114-Status: GOOD (  20.26  )
+X-CRM114-CacheID: sfid-20230310_040431_900096_B2EA5735 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,56 +94,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/03/23 03:03, Vasily Khoruzhick wrote:
-> Currently .get_max_clock returns the current clock rate for cclk_emmc
-> on rk35xx, thus max clock gets set to whatever bootloader set it to.
-> 
-> In case of u-boot, it is intentionally reset to 50 MHz if it boots
-> from eMMC, see mmc_deinit() in u-boot sources. As a result, HS200 and
-> HS400 modes are never selected by Linux, because dwcmshc_rk35xx_postinit
-> clears appropriate caps if host->mmc->f_max is < 52MHz
-> 
-> cclk_emmc is not a fixed clock on rk35xx, so using
-> sdhci_pltfm_clk_get_max_clock is not appropriate here.
-> 
-> Implement rk35xx_get_max_clock that returns actual max clock for cclk_emmc.
-> 
-> Signed-off-by: Vasily Khoruzhick <anarsoul@gmail.com>
+On Fri, Mar 10, 2023 at 6:57 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> On Fri, 10 Mar 2023 11:41:46 +0000,
+> Peter Geis <pgwipeout@gmail.com> wrote:
+> >
+> > On Fri, Mar 10, 2023 at 3:05 AM Lucas Tanure <lucas.tanure@collabora.com> wrote:
+> > >
+> > > The GIC600 integration in RK356x, used in rk3588, doesn't support
+> > > any of the shareability or cacheability attributes, and requires
+> > > both values to be set to 0b00 for all the ITS and Redistributor
+> > > tables.
+> > >
+> > > This is loosely based on prior work from XiaoDong Huang and
+> > > Peter Geis fixing this issue specifically for Rockchip 356x.
+> >
+> > Good Morning,
+> >
+> > Since the gic is using dma, would it be reasonable to have all memory
+> > allocations be requested with the GFP_DMA flag? Otherwise this doesn't
+> > fully solve the problem for rk356x, where only the lower 4GB range is
+> > DMA capable, but this tends to get allocated in the upper 4GB on 8GB
+> > boards.
+>
+> That's an erratum. Please treat as such.
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Good Morning,
 
-> ---
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index d1490469184b..e68cd87998c8 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -126,6 +126,13 @@ static unsigned int dwcmshc_get_max_clock(struct sdhci_host *host)
->  		return pltfm_host->clock;
->  }
->  
-> +static unsigned int rk35xx_get_max_clock(struct sdhci_host *host)
-> +{
-> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +
-> +	return clk_round_rate(pltfm_host->clk, ULONG_MAX);
-> +}
-> +
->  static void dwcmshc_check_auto_cmd23(struct mmc_host *mmc,
->  				     struct mmc_request *mrq)
->  {
-> @@ -343,7 +350,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk35xx_ops = {
->  	.set_clock		= dwcmshc_rk3568_set_clock,
->  	.set_bus_width		= sdhci_set_bus_width,
->  	.set_uhs_signaling	= dwcmshc_set_uhs_signaling,
-> -	.get_max_clock		= sdhci_pltfm_clk_get_max_clock,
-> +	.get_max_clock		= rk35xx_get_max_clock,
->  	.reset			= rk35xx_sdhci_reset,
->  	.adma_write_desc	= dwcmshc_adma_write_desc,
->  };
+Yes, believe me I'm fully aware of how broken rk356x is. I'm asking an
+educational question from a kernel standards point of view, absent the
+rk356x issues. Would it be reasonable that since the gic uses dma
+memory, allocations for the gic should be made with the GFP_DMA flag?
+Or is that a misuse of the flag?
 
+Very Respectfully,
+Peter Geis
+
+>
+>         M.
+>
+> --
+> Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
