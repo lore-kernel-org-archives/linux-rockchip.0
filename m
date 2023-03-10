@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A49C6FA99
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 08:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B00C6FA99
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Mar 2023 08:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OfqxSyhBJhHAHpWrKkbBJYsPg9qcA+CHJvPQDFLHk1E=; b=uFXKgnppXgvNhC
-	9gX2G4tVamoq8AHhL9XDNn4xYUoM1VO/kqO5iJa/cgYlYVVf3AwSWjpJNAFKZwFDCxmc9o/ydT9ks
-	cqpJTSMtT2De1kADtDhTvd2LezyLibvbD1H7rO2r1yN4MMEG3t6UqWr3ppCtsy/5L6W9Z1PA7fdpn
-	yFZZblnffsVaANCGc0UwGhJDDo5955aFqZ8QnjQyWWQ0Lky3C9AATZcUp1JHHM5BUGvRskpl8ZOcQ
-	3Bno0QNnI4ekTJBwITYBfTQeHNPH3yIq96TIHgjCEMIugsEfyGgpbvycPFlkoUVvjesJOB8UcA/xl
-	bacu7VTMs88+fSe/vHhw==;
+	List-Owner; bh=3PTYQJ+u/Myw+2INef4eidDc7mT/UndzYsPqLYVsg4I=; b=Z9px5W0SJXL33q
+	Z6HPNo4UEGKMsC5tzfBH9fy5brO3TbygGaTY3VjgnO2sSJG998uvayS02SEfx3t+5cNLfqlt4u7oi
+	vdtLrPxj3XKxGMosaSfWDeMfP1JV1HCMl8BNBf9YHYGAgPTdAADnRjEvy+QefeSO+HUV3KmG4i01s
+	y+u+swqupNqTY5Tji8wRQLH/ZBOcGeokgZYDjZYmgzwv5SuwQU9NTs3YHHLfakcbqcGrAIgaImBGa
+	+D1FnaBK+g88UggrOvTxTzaspfhhwM2qey0Tdm9GbtsDA4RgKHlnW/C5MzcxWumRTg7uKdlMwG06s
+	CpmnTXg/nn9KTMMBvHqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXlc-00DWJM-Mf; Fri, 10 Mar 2023 08:06:20 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1paXln-00DWQJ-LC; Fri, 10 Mar 2023 08:06:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1paXl2-00DW2L-T1; Fri, 10 Mar 2023 08:05:47 +0000
+	id 1paXl3-00DW2N-Cq; Fri, 10 Mar 2023 08:05:47 +0000
 Received: from cryzen.lan (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: tanureal)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E55AB6603064;
-	Fri, 10 Mar 2023 08:05:42 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D95BB66030A1;
+	Fri, 10 Mar 2023 08:05:43 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678435543;
-	bh=aXDW9FM3v6N1gp/G6svdu0Iv9rfB/0Z8Inu2S3xCf4E=;
+	s=mail; t=1678435544;
+	bh=Ugt/cIk2aYivDAu6VNt7dUsTeai7krVEsAmcZ9e7wWs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Fh+3hbrZX63tbEgCu8QMhiNdvHIvJ5tdpSdE3dTMSQQ1IHv3G/OkOYp587KeXjw0H
-	 Wte5VVGJez2NsEGK//ZaFmtSdyvqpRqlNGd7BxI2OxdywTkzTBcj2qWXu9Zc8hBS1t
-	 FyczdNcZcgqYA4btHApUzWydm858U28q8YtAtjFDOVpP+MyWBBJRQ2i0NqHit/qcBX
-	 VSzsvPi0sDRbrE9J3wtfLgV23V7UUqmjgl/pv5JkKll+vXESPsWGCTLuVCjr9ieAfb
-	 VC2gm6t8YHh6OfxNeo0Ldu2Q55JyQ43MM23j7Cjmc0ZF8JdZLn183AXvtbY8sI+t2/
-	 /QBgzL9dAMtFg==
+	b=CevpKLSirdoo2LRhQoamcTSJtt7F++p/wpiqgJW7eBklKIdW4EJ4vfYNY0kUZClX9
+	 +YMt0O23e8kqR31xxPwcmoiFvvJXoIc9U/dugfsZhmhU4+RDxSARFdSC+s1tO8ai2n
+	 WsAfeDzQm+E/bbgdbS8v441+Mm0LGU5WnpGtGFRDOPVeE4jAsfA7yKtJm8bWlkKSPf
+	 VbB8Oq6kBpIQGe0gqCi1SYUzJO7HE/8Y2OCQxU64oj8TjCcVeyJCymwiEBb0gKrl7W
+	 qlO8JCZ0PM5V+j0xXwXmmDzCQk/87w4aAM9fzYmxij1wS3Rx1LsfFom03zQojeSx3/
+	 3JgO9x9VrouMA==
 From: Lucas Tanure <lucas.tanure@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -63,18 +63,18 @@ Cc: Qu Wenruo <wqu@suse.com>,
 	linux-kernel@vger.kernel.org,
 	linux-pci@vger.kernel.org,
 	Lucas Tanure <lucas.tanure@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH 2/7] PCI: rockchip-dwc: Add rk3588 compatible line
-Date: Fri, 10 Mar 2023 08:05:13 +0000
-Message-Id: <20230310080518.78054-3-lucas.tanure@collabora.com>
+	kernel@collabora.com,
+	Andrew Powers-Holmes <aholmes@omnom.net>
+Subject: [PATCH 4/7] phy: rockchip: Add naneng combo phy support for RK3588
+Date: Fri, 10 Mar 2023 08:05:15 +0000
+Message-Id: <20230310080518.78054-5-lucas.tanure@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230310080518.78054-1-lucas.tanure@collabora.com>
 References: <20230310080518.78054-1-lucas.tanure@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230310_000545_081747_EB521601 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230310_000545_716578_B22A3E3A 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,25 +91,233 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 can use the same PCIe driver as rk3568
+Add support for RK3588 combo phy
 
+This is based on prior work from XiaoDong Huang and
+Peter Geis fixing this issue specifically for Rockchip 356x.
+
+Co-developed-by: Andrew Powers-Holmes <aholmes@omnom.net>
+Signed-off-by: Andrew Powers-Holmes <aholmes@omnom.net>
 Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../rockchip/phy-rockchip-naneng-combphy.c    | 184 ++++++++++++++++++
+ 1 file changed, 184 insertions(+)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index c1e7653e508e..435b717e5bc6 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -354,6 +354,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+index 7b213825fb5d..7b8b001e4f9e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -63,6 +63,9 @@
+ #define PHYREG18			0x44
+ #define PHYREG18_PLL_LOOP		0x32
  
- static const struct of_device_id rockchip_pcie_of_match[] = {
- 	{ .compatible = "rockchip,rk3568-pcie", },
-+	{ .compatible = "rockchip,rk3588-pcie", },
- 	{},
++#define PHYREG27			0x6C
++#define PHYREG27_RX_TRIM_RK3588		0x4C
++
+ #define PHYREG32			0x7C
+ #define PHYREG32_SSC_MASK		GENMASK(7, 4)
+ #define PHYREG32_SSC_DIR_SHIFT		4
+@@ -114,7 +117,10 @@ struct rockchip_combphy_grfcfg {
+ 	struct combphy_reg con2_for_sata;
+ 	struct combphy_reg con3_for_sata;
+ 	struct combphy_reg pipe_con0_for_sata;
++	struct combphy_reg pipe_con1_for_sata;
+ 	struct combphy_reg pipe_xpcs_phy_ready;
++	struct combphy_reg pipe_pcie1l0_sel;
++	struct combphy_reg pipe_pcie1l1_sel;
  };
  
+ struct rockchip_combphy_cfg {
+@@ -559,11 +565,189 @@ static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
+ 	.combphy_cfg	= rk3568_combphy_cfg,
+ };
+ 
++static int rk3588_combphy_cfg(struct rockchip_combphy_priv *priv)
++{
++	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
++	unsigned long rate;
++	u32 val;
++
++	switch (priv->type) {
++	case PHY_TYPE_PCIE:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_pcie, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_pcie1l0_sel, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_pcie1l1_sel, true);
++		break;
++	case PHY_TYPE_USB3:
++		/* Set SSC downward spread spectrum */
++		rockchip_combphy_updatel(priv, PHYREG32_SSC_MASK,
++					 PHYREG32_SSC_DOWNWARD << PHYREG32_SSC_DIR_SHIFT,
++					 PHYREG32);
++
++		/* Enable adaptive CTLE for USB3.0 Rx. */
++		val = readl(priv->mmio + PHYREG15);
++		val |= PHYREG15_CTLE_EN;
++		writel(val, priv->mmio + PHYREG15);
++
++		/* Set PLL KVCO fine tuning signals. */
++		rockchip_combphy_updatel(priv, PHYREG33_PLL_KVCO_MASK,
++					 PHYREG33_PLL_KVCO_VALUE << PHYREG33_PLL_KVCO_SHIFT,
++					 PHYREG33);
++
++		/* Enable controlling random jitter. */
++		writel(PHYREG12_PLL_LPF_ADJ_VALUE, priv->mmio + PHYREG12);
++
++		/* Set PLL input clock divider 1/2. */
++		rockchip_combphy_updatel(priv, PHYREG6_PLL_DIV_MASK,
++					 PHYREG6_PLL_DIV_2 << PHYREG6_PLL_DIV_SHIFT,
++					 PHYREG6);
++
++		writel(PHYREG18_PLL_LOOP, priv->mmio + PHYREG18);
++		writel(PHYREG11_SU_TRIM_0_7, priv->mmio + PHYREG11);
++
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txcomp_sel, false);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txelec_sel, false);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->usb_mode_set, true);
++		break;
++	case PHY_TYPE_SATA:
++		/* Enable adaptive CTLE for SATA Rx. */
++		val = readl(priv->mmio + PHYREG15);
++		val |= PHYREG15_CTLE_EN;
++		writel(val, priv->mmio + PHYREG15);
++		/*
++		 * Set tx_rterm=50ohm and rx_rterm=44ohm for SATA.
++		 * 0: 60ohm, 8: 50ohm 15: 44ohm (by step abort 1ohm)
++		 */
++		val = PHYREG7_TX_RTERM_50OHM << PHYREG7_TX_RTERM_SHIFT;
++		val |= PHYREG7_RX_RTERM_44OHM << PHYREG7_RX_RTERM_SHIFT;
++		writel(val, priv->mmio + PHYREG7);
++
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_sata, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con0_for_sata, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con1_for_sata, true);
++		break;
++	case PHY_TYPE_SGMII:
++	case PHY_TYPE_QSGMII:
++	default:
++		dev_err(priv->dev, "incompatible PHY type\n");
++		return -EINVAL;
++	}
++
++	rate = clk_get_rate(priv->refclk);
++
++	switch (rate) {
++	case REF_CLOCK_24MHz:
++		if (priv->type == PHY_TYPE_USB3 || priv->type == PHY_TYPE_SATA) {
++			/* Set ssc_cnt[9:0]=0101111101 & 31.5KHz. */
++			val = PHYREG15_SSC_CNT_VALUE << PHYREG15_SSC_CNT_SHIFT;
++			rockchip_combphy_updatel(priv, PHYREG15_SSC_CNT_MASK,
++						 val, PHYREG15);
++
++			writel(PHYREG16_SSC_CNT_VALUE, priv->mmio + PHYREG16);
++		}
++		break;
++
++	case REF_CLOCK_25MHz:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_25m, true);
++		break;
++	case REF_CLOCK_100MHz:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
++		if (priv->type == PHY_TYPE_PCIE) {
++			/* PLL KVCO fine tuning. */
++			val = 4 << PHYREG33_PLL_KVCO_SHIFT;
++			rockchip_combphy_updatel(priv, PHYREG33_PLL_KVCO_MASK,
++						 val, PHYREG33);
++
++			/* Enable controlling random jitter. */
++			writel(PHYREG12_PLL_LPF_ADJ_VALUE, priv->mmio + PHYREG12);
++
++			/* Set up rx_trim: PLL LPF C1 85pf R1 1.25kohm */
++			writel(PHYREG27_RX_TRIM_RK3588, priv->mmio + PHYREG27);
++
++			/* Set up su_trim:  */
++			writel(PHYREG11_SU_TRIM_0_7, priv->mmio + PHYREG11);
++		} else if (priv->type == PHY_TYPE_SATA) {
++			/* downward spread spectrum +500ppm */
++			val = PHYREG32_SSC_DOWNWARD << PHYREG32_SSC_DIR_SHIFT;
++			val |= PHYREG32_SSC_OFFSET_500PPM << PHYREG32_SSC_OFFSET_SHIFT;
++			rockchip_combphy_updatel(priv, PHYREG32_SSC_MASK, val, PHYREG32);
++		}
++		break;
++	default:
++		dev_err(priv->dev, "Unsupported rate: %lu\n", rate);
++		return -EINVAL;
++	}
++
++	if (priv->ext_refclk) {
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_ext, true);
++		if (priv->type == PHY_TYPE_PCIE && rate == REF_CLOCK_100MHz) {
++			val = PHYREG13_RESISTER_HIGH_Z << PHYREG13_RESISTER_SHIFT;
++			val |= PHYREG13_CKRCV_AMP0;
++			rockchip_combphy_updatel(priv, PHYREG13_RESISTER_MASK, val, PHYREG13);
++
++			val = readl(priv->mmio + PHYREG14);
++			val |= PHYREG14_CKRCV_AMP1;
++			writel(val, priv->mmio + PHYREG14);
++		}
++	}
++
++	if (priv->enable_ssc) {
++		val = readl(priv->mmio + PHYREG8);
++		val |= PHYREG8_SSC_EN;
++		writel(val, priv->mmio + PHYREG8);
++	}
++
++	return 0;
++}
++
++static const struct rockchip_combphy_grfcfg rk3588_combphy_grfcfgs = {
++	/* pipe-phy-grf */
++	.pcie_mode_set		= { 0x0000, 5, 0, 0x00, 0x11 },
++	.usb_mode_set		= { 0x0000, 5, 0, 0x00, 0x04 },
++	.pipe_rxterm_set	= { 0x0000, 12, 12, 0x00, 0x01 },
++	.pipe_txelec_set	= { 0x0004, 1, 1, 0x00, 0x01 },
++	.pipe_txcomp_set	= { 0x0004, 4, 4, 0x00, 0x01 },
++	.pipe_clk_25m		= { 0x0004, 14, 13, 0x00, 0x01 },
++	.pipe_clk_100m		= { 0x0004, 14, 13, 0x00, 0x02 },
++	.pipe_rxterm_sel	= { 0x0008, 8, 8, 0x00, 0x01 },
++	.pipe_txelec_sel	= { 0x0008, 12, 12, 0x00, 0x01 },
++	.pipe_txcomp_sel	= { 0x0008, 15, 15, 0x00, 0x01 },
++	.pipe_clk_ext		= { 0x000c, 9, 8, 0x02, 0x01 },
++	.pipe_phy_status	= { 0x0034, 6, 6, 0x01, 0x00 },
++	.con0_for_pcie		= { 0x0000, 15, 0, 0x00, 0x1000 },
++	.con1_for_pcie		= { 0x0004, 15, 0, 0x00, 0x0000 },
++	.con2_for_pcie		= { 0x0008, 15, 0, 0x00, 0x0101 },
++	.con3_for_pcie		= { 0x000c, 15, 0, 0x00, 0x0200 },
++	.con0_for_sata		= { 0x0000, 15, 0, 0x00, 0x0129 },
++	.con1_for_sata		= { 0x0004, 15, 0, 0x00, 0x0000 },
++	.con2_for_sata		= { 0x0008, 15, 0, 0x00, 0x80c1 },
++	.con3_for_sata		= { 0x000c, 15, 0, 0x00, 0x0407 },
++	/* pipe-grf */
++	.pipe_con0_for_sata	= { 0x0000, 11, 5, 0x00, 0x22 },
++	.pipe_con1_for_sata	= { 0x0000, 2, 0, 0x00, 0x2 },
++	.pipe_pcie1l0_sel	= { 0x0100, 0, 0, 0x01, 0x0 },
++	.pipe_pcie1l1_sel	= { 0x0100, 1, 1, 0x01, 0x0 },
++};
++
++static const struct rockchip_combphy_cfg rk3588_combphy_cfgs = {
++	.grfcfg		= &rk3588_combphy_grfcfgs,
++	.combphy_cfg	= rk3588_combphy_cfg,
++};
++
+ static const struct of_device_id rockchip_combphy_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3568-naneng-combphy",
+ 		.data = &rk3568_combphy_cfgs,
+ 	},
++	{
++		.compatible = "rockchip,rk3588-naneng-combphy",
++		.data = &rk3588_combphy_cfgs,
++	},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_combphy_of_match);
 -- 
 2.39.2
 
