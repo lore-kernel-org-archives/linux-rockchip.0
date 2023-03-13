@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AD3C6FD19
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 15:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C04C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 15:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iv2f/Ewxy9tSupyZ8xFOZt/rk14xAeSvt0/IEo/ydxw=; b=F8VsMcba/zd+NV
-	qrw8+G/YHtTQEAMIie01MDn4lu1ufo9Xl4OWYqcpYXl9sXWdjBElEa2/hsPW7t+P1103VTnJRWkGz
-	8MtmfCnce0eSDTVXqzjewIUrkfgYTAvxaGji1qo7Y2nNs0bPWadmjtZ49B4IlNGCKWZEToKJYh0tJ
-	Ypr7P+hLci4HLUkbTmeHd1u6HXNsnmFSeGP5RiyoeLN/lvwA66FU9BomDHtamtpZ+us7INZxWJpzO
-	RdikiY2R1wkNrafahcSbSGu69KyZACIPngiK3a67RcD9sEs1lqFQICDuL00+DDi58Fdrf7ix2421R
-	43r1XkDcCNMO/CZxOuuA==;
+	List-Owner; bh=upi8rppZ1iofPrVyvQk1G/bCg+vHBFTRzlaeqRItNGI=; b=xq4E56oUdNP/eV
+	0H/bwLOUiwGRjLtJaDLLsDBLCHOQZv+13rYxXN/DSPTiIT8MMgW9/quml3inXaVVlOtJGVHL3utjI
+	pvIbLw4xRFPI69RtCG/V6pUSdByeLCX1QVHisTL9TAeojNw4qTFyHhTNYKns256UHcGHYjNs2iJSj
+	LvnMTw4v6gsAmQCm6DNQkn8IgbGF0oSRnPnOP9HHd4JKGXgpu9wk0uEQIqSo0IrSzJCerTsscFIGA
+	OQEwEWIo++W2reVf+wrJX0EcQIBNvg9857NwiBZRJ0u/8fmI9Mcu25SpOLLkx3AmhWPHbby/DxAAv
+	DebZmxeAj6aYFBD6an1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbkJ9-006SWT-2P; Mon, 13 Mar 2023 15:41:55 +0000
-Received: from m12.mail.163.com ([123.126.96.234])
+	id 1pbkQP-006UnU-5W; Mon, 13 Mar 2023 15:49:25 +0000
+Received: from m12.mail.163.com ([220.181.12.197])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbkJ5-006SUA-Fr
-	for linux-rockchip@lists.infradead.org; Mon, 13 Mar 2023 15:41:53 +0000
+	id 1pbkQL-006Ulq-BC
+	for linux-rockchip@lists.infradead.org; Mon, 13 Mar 2023 15:49:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=NMeHq
-	c9vEtUERKAOCOKjGmVkf5YkMepOMEfhtaswEhc=; b=em7N6x0m+8FcZgIVUSuhU
-	HnWkEZhrTFz+w29FDBYiesKxWe2N5jlOOVn09DuSUMytcqnF4H1qqS7iWTZ5evNM
-	OwyRpJDpK7FBbt97Eu24mZFq9vEpchwN3RErZboGOkViLFU8wIG1YCIW6ydh/G1E
-	YBdeRU+aC1FoaJB0JglJ9M=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=zZIaX
+	bZODM+Wxzq0HHWHcgsRoTtcQ0oqs1PXU9bdNqE=; b=c9O4uZyeymy4ozAsWeZ+9
+	tH+ZJXubx0BfuhAl/F2uSdKaNYBIXIo/Y+NHm1pgT3HIJ65McCAiNfYqMPp2Om6h
+	7F3oitdwkm4jYc8QdH2ad/zSELs5v12rhY0iJQKy4LCPM/tZJnl5gYQgbQusxA2X
+	wIOpKmkTOxgEILYJLiB6ec=
 Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
-	by smtp19 (Coremail) with SMTP id R9xpCgD3_rItRA9kgCPoHQ--.36544S2;
-	Mon, 13 Mar 2023 23:41:33 +0800 (CST)
+	by zwqz-smtp-mta-g3-2 (Coremail) with SMTP id _____wAnHYLqRQ9kDrURAA--.16196S2;
+	Mon, 13 Mar 2023 23:48:58 +0800 (CST)
 From: Zheng Wang <zyytlz.wz@163.com>
 To: ezequiel@vanguardiasur.com.ar
 Cc: p.zabel@pengutronix.de,
@@ -46,21 +46,21 @@ Cc: p.zabel@pengutronix.de,
 	alex000young@gmail.com,
 	hverkuil@xs4all.nl,
 	Zheng Wang <zyytlz.wz@163.com>
-Subject: [PATCH v3] media: hantro: fix use after free bug in hantro_remove  due to race condition
-Date: Mon, 13 Mar 2023 23:41:32 +0800
-Message-Id: <20230313154132.3684181-1-zyytlz.wz@163.com>
+Subject: [PATCH v4] media: hantro: fix use after free bug in hantro_remove  due to race condition
+Date: Mon, 13 Mar 2023 23:48:56 +0800
+Message-Id: <20230313154856.3691660-1-zyytlz.wz@163.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-CM-TRANSID: R9xpCgD3_rItRA9kgCPoHQ--.36544S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Wry3Xw4kJw47Jr4rWr4kZwb_yoW8Cw1DpF
-	W3G3y5KrWjqr47KFn7tay09ayfCasFqF4jgrZruw13JF9xtr9rurySyF48AF98JrZ3ZF4a
-	vF4jqrW8Z3y2vFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziaZXrUUUUU=
+X-CM-TRANSID: _____wAnHYLqRQ9kDrURAA--.16196S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Wry3Xw4kJw47Jr4rWr4kZwb_yoW8Zw13pF
+	W3KrW5KrWjqF47KFn7tay09ayfCasFqF4UXrZruw13AF9xtry7urySya18CF98JrZ3ZF4a
+	qF4jqrWrZw42vFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi-eOJUUUUU=
 X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/xtbBzgsxU2I0XntM5AADs-
+X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXA4xU1Xl56OqKgABsF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_084152_036798_37E390E4 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20230313_084921_932016_D88D7B10 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,7 +102,11 @@ hantro_remove     |
                     |   m2m_dev->curr_ctx //use
 
 Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+Fixes: 932a9317ac49 ("media: hantro: Add helpers to prepare/finish a run")
 ---
+v4:
+- add Fixes label to help with the fix
+
 v3:
 - use cancel_delayed_work_sync instead of cancel_delayed_work and add it to
 hantro_release suggested by Hans Verkuil
