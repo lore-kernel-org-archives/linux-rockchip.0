@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D887C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 15:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16BBBC6FD19
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 15:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+S2+5aT4C20YjX1mwmX/l7xsp+8nVu9fXzH/oKaM+oo=; b=OLi5+ryfy1QMAV
-	sBXDOSye4yPwvKXJEZxyyueJocWV85y/nLCKKucCcf1GqsI8KVHsQBBqy2ZSwZ8P0IZ2wdcTYJvfx
-	MYGegbcQfdFaH7X0cSqmas+OLxt/lQDBogoMpzDDkDbK0RYclA5QX7cseU+6CWOun3E2zf+5LZ7Y7
-	99NWVYCew74vHR/h1KTen9cJCfjetQ/BCUHDhusMzzLOjJGeJy3UsXBgUDz0d83Ic9Dp4tV4GH4L4
-	GHaSCzYmcM+965xPX8VSN8NFdadJYA0st7J97vtX0Th5BJnPCjcxjVk5qXv0IjTmRJjHFd18Mzwpw
-	XwpNc8bT6sUYGCbtNmfw==;
+	List-Owner; bh=OfqxSyhBJhHAHpWrKkbBJYsPg9qcA+CHJvPQDFLHk1E=; b=TWOWEOm98mfIkT
+	tKaga2mMKO84rYA3S2MLGSdJMPpNNDbZkJRhcTz4HXGmiA8BSPryFdMLHlSx71bhkeu0W3H3HiT8B
+	JpKJL3/0/Jq09lYjE4um+mJD63ACu8VsJ/+39ZHDh6McqN2QCYJJhF7NY7U+Gb2kN0aYwIEFr/hMj
+	44KWQwPi42Ns3CsalTnAF1y8Z4NpCKunJhxiSQXOvvlVqaOD/bpLPa8uzQ+AOTdnmIqh5bFq7rimP
+	Q4M9Fbb6GdtkU123T02//Zr69gn4qr3cr8tHZeDiUY0VuCE2JJRuw/w2D5g+bNR8Qy+NRkcPUxPPA
+	JqQ+Md67H0nlCewSwlfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbkHe-006Rg7-K0; Mon, 13 Mar 2023 15:40:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pbkIO-006S32-7r; Mon, 13 Mar 2023 15:41:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbkHJ-006RWS-BD; Mon, 13 Mar 2023 15:40:02 +0000
+	id 1pbkHK-006RWX-4t; Mon, 13 Mar 2023 15:40:04 +0000
 Received: from cryzen.lan (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: tanureal)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 414026602FEE;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AFF9F6603092;
 	Mon, 13 Mar 2023 15:39:57 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678721997;
-	bh=EBzQO1aDaZOCz1GihKXNPLk8JJ1NYG5yY+HuX+tadyQ=;
+	s=mail; t=1678721998;
+	bh=aXDW9FM3v6N1gp/G6svdu0Iv9rfB/0Z8Inu2S3xCf4E=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XVtT14hXPtIfXLGpHQEs9llmrqOXokXC3GhdUfYOOYSrhegv2TynsZ7XE5RkI4Q/e
-	 NKu+3yGLhBAXm2BLVdBhfToTGIrR9e7ZlNFJzitz7LtVOJLpuOl2YBHKEMhWTDnZi6
-	 j84XQSanSgmQ7hsq7e5f1VfAbf/sK1fq9cOu0sgXOPPWPFl7/6aQW7Up79Atm8HiY8
-	 hbWC8N5GyKfgOpBl6VTKL5S97zQiv1yhfnCVYrYcDimMggd9cjwTPqUiwKYY306rNh
-	 Qg3DujqFUxSbWai2j9oZFjbou5Ut7r2Z/9uh1S3QoHFqpQ30lXJx99VPOkBDxnCwuJ
-	 KSMQf3z1e6WKw==
+	b=GObnw6wuln56XPqZzOOSWhzx9HxF1N3/BTjIqphEZoggiGAlUhxsJoctRFyLDvtkj
+	 xK/b+AZ9tPYnt/8IXrpzAvZUAEoa2McLDDxsVt4XwFmu59agzGdoZ+Y8A9woxA9TzP
+	 AaIM7LcvtyNNt+7UPCS+rExxIgMhnLdaakL9b9qFWgsrHMXPAqK0wuqZlisK1GFluq
+	 ROH9veDDu9dN91Y6vKECKeUTz0ffyG92a/yezCG1rLhG4Y4QLeMCIaKzRKJgU3jRRy
+	 nTy0QSVg4QKb869mjKH17rS8+xFt4PwElHVjqKJ926Ta2CWa2w0LAkKJp30AgKJlN2
+	 qD+kiVkVgjScw==
 From: Lucas Tanure <lucas.tanure@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -64,16 +64,16 @@ Cc: Qu Wenruo <wqu@suse.com>,
 	linux-pci@vger.kernel.org,
 	Lucas Tanure <lucas.tanure@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH 1/4] dt-bindings: PCI: dwc: Add rk3588 compatible line
-Date: Mon, 13 Mar 2023 15:39:50 +0000
-Message-Id: <20230313153953.422375-2-lucas.tanure@collabora.com>
+Subject: [PATCH 2/4] PCI: rockchip-dwc: Add rk3588 compatible line
+Date: Mon, 13 Mar 2023 15:39:51 +0000
+Message-Id: <20230313153953.422375-3-lucas.tanure@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230313153953.422375-1-lucas.tanure@collabora.com>
 References: <20230313153953.422375-1-lucas.tanure@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_084001_534738_70417EAF 
-X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-CacheID: sfid-20230313_084002_516233_816D97ED 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,25 +91,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 uses the same driver as RK3568
+RK3588 can use the same PCIe driver as rk3568
 
 Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
 ---
- Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 1 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 2be72ae1169f..91aa9070ee31 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -23,6 +23,7 @@ properties:
-   compatible:
-     items:
-       - const: rockchip,rk3568-pcie
-+      - const: rockchip,rk3588-pcie
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index c1e7653e508e..435b717e5bc6 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -354,6 +354,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  
-   reg:
-     items:
+ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 	{ .compatible = "rockchip,rk3568-pcie", },
++	{ .compatible = "rockchip,rk3588-pcie", },
+ 	{},
+ };
+ 
 -- 
 2.39.2
 
