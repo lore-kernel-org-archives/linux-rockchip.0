@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A9DC6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 02:59:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99298C6FD19
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 08:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YFU9K001mu14ERJljp/ZROugf0h9wI3SBQHE/vyWstw=; b=WPe3UczBMQ8jLW
-	vOgGDVAypbyDWRhWgYSAKIKxyJ84Env8jKVV8BdSjW3gS9aKoIlLfrzXQrJz/dxHJqq8MjwoiQEKr
-	cGG3AQJZDCoSCS0LnJv+7dc9saJf096ijBCh6E6b5UOTWxiEiFPVPEG7Su3NJO5maHO8TwDrkVLj0
-	MWXDK9/xt5RxDhHeuGHZPiXJ/jLoqm5reQGQ8NlK7w0XrFaBDlcP5RpZ8WTKv8Zh4Ycej4Lm7Dd8O
-	AiluYoC9a+SDKCublqa2LteIeccfQQ15WkzPAANs1UQTYJ2ZSGReE8RaFNzgeAOaG8N5QNwh8KntN
-	+ug9hiJ1pm7gmwIPZgsA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x4FUsECrh/iK/Vw88DZ5AoHBgqnfY5bHf+X/HO6RFr0=; b=1oVdJnFja7dz6rQl25c14PUvY9
+	MhMOmkEqCkfPfEzJpgewpgQE64QzolArG2MT9uZRiTlyj0uemtpRz710bAREUEkDhvT1wBnK9SP8i
+	2tRVj/AszYMUv3QXjxv1xa1nB7x+jrzjuIbGn/NYorlLCE3wYURZNbyP1bAaHyJXOJ0CZ7zJ8nMUj
+	re4KwqgDIVVLXKpvplNzijT4l26hGag1r01zBMcTBPKBK0go/4n3u1vBrnB8BCJ6ETOfCM++lJWa8
+	U9WounCFjHXHHkQ1RbYkxlcZVvU33rwr/EOXoZ5kkho6+w7+yI079HvQFc7lyaCp36uznixSQUpp/
+	n34voUPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbYP2-0045Uo-KF; Mon, 13 Mar 2023 02:59:12 +0000
-Received: from mail-m11879.qiye.163.com ([115.236.118.79])
+	id 1pbdpS-004pST-FD; Mon, 13 Mar 2023 08:46:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbYOo-0045Q6-Kt
-	for linux-rockchip@lists.infradead.org; Mon, 13 Mar 2023 02:59:02 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id EC7F368054C;
-	Mon, 13 Mar 2023 10:58:47 +0800 (CST)
-From: Frank Wang <frank.wang@rock-chips.com>
-To: linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	gregkh@linuxfoundation.org,
-	heiko@sntech.de
-Cc: linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	huangtao@rock-chips.com,
-	william.wu@rock-chips.com,
-	jianwei.zheng@rock-chips.com,
-	yubing.zhang@rock-chips.com,
-	wmc@rock-chips.com,
-	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH 4/4] usb: typec: tcpm: fix source caps may lost after soft reset
-Date: Mon, 13 Mar 2023 10:58:43 +0800
-Message-Id: <20230313025843.17162-5-frank.wang@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20230313025843.17162-1-frank.wang@rock-chips.com>
-References: <20230313025843.17162-1-frank.wang@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0fGlYYHhkeTB5ISExPHk5VEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpMVUpLS1VLWQ
-	Y+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NE06Hyo*GT0JIS9MURw0TzI*
-	TCNPFBdVSlVKTUxDTUxNSElDQ0hJVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFITk1ONwY+
-X-HM-Tid: 0a86d8e7ff4c2eb5kusnec7f368054c
-X-HM-MType: 1
+	id 1pbdpC-004pLB-Ap; Mon, 13 Mar 2023 08:46:35 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E15D96603084;
+	Mon, 13 Mar 2023 08:46:31 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678697193;
+	bh=8yx6yY1hIFnSlFOt6Ae/ktF810mVDMO69d3Xgz1ediQ=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=FcT6YiIXHxAYJSYrlm4aaFdR2JA24hnL8IUtQdKCVmff1DL67YegZk1nql04DEP4f
+	 E/v2btPWLLruhXJhQ3RqEkiDh4FyA4yd3bHFkpd5qNQL+s9WKVvVJHTVPsl3cJPEs3
+	 tQQHwCWvek2Sneg1P+SIt428A7kkigFChZOy6SgZRrDxUDgZB+ODxp4GqpeIki3pAn
+	 jcie3DnrSywuoSRPFVTAY2a2LiWftozT9jxtOvHFTAmPQp8HQOKJt1RorGWqk1jXCz
+	 yZrUHyznrSqogLhUmVGPOEK6t3K7CFYTQAtt2k4Ty+YkRdHd1JMX12nLavWu2JYlm1
+	 RKacX3+wG/Y5A==
+Message-ID: <436b3285-0166-61f0-7c0d-fa6ff1c21c5e@collabora.com>
+Date: Mon, 13 Mar 2023 09:46:29 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 02/16] spi: mtk-pmif: Drop of_match_ptr for ID table
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Mark Brown <broonie@kernel.org>, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Andi Shyti <andi@etezian.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+ <20230310222857.315629-2-krzysztof.kozlowski@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230310222857.315629-2-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230312_195858_907196_06A117F5 
+X-CRM114-CacheID: sfid-20230313_014634_526048_D15D72F0 
 X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -72,71 +82,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Invoke set_pd_rx() may flush the RX FIFO of PD controller, so do
-set_pd_rx() before sending Soft Reset in case Source caps may be flushed
-at debounce time between SOFT_RESET_SEND and SNK_WAIT_CAPABILITIES state.
-
-Without this patch, in PD charger stress test, the FUSB302 driver may
-occur the following exceptions in power negotiation stage.
-
-[ ...]
-[ 4.512252] fusb302_irq_intn
-[ 4.512260] AMS SOFT_RESET_AMS finished
-[ 4.512269] state change SOFT_RESET_SEND ->SNK_WAIT_CAPABILITIES [rev3 NONE_AMS]
-[ 4.514511] pd := on
-[ 4.514516] pending state change SNK_WAIT_CAPABILITIES ->HARD_RESET_SEND @ 310 ms [rev3 NONE_AMS]
-[ 4.515428] IRQ: 0x51, a: 0x00, b: 0x01, status0: 0x93
-[ 4.515431] IRQ: BC_LVL, handler pending
-[ 4.515435] IRQ: PD sent good CRC
-[ 4.516434] PD message header: 0
-[ 4.516437] PD message len: 0
-[ 4.516444] PD RX, header: 0x0 [1]
-
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
----
- drivers/usb/typec/tcpm/tcpm.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-index 9e583060e64fc..ba6bf71838eed 100644
---- a/drivers/usb/typec/tcpm/tcpm.c
-+++ b/drivers/usb/typec/tcpm/tcpm.c
-@@ -4321,10 +4321,12 @@ static void run_state_machine(struct tcpm_port *port)
- 		tcpm_set_state(port, unattached_state(port), 0);
- 		break;
- 	case SNK_WAIT_CAPABILITIES:
--		ret = port->tcpc->set_pd_rx(port->tcpc, true);
--		if (ret < 0) {
--			tcpm_set_state(port, SNK_READY, 0);
--			break;
-+		if (port->prev_state != SOFT_RESET_SEND) {
-+			ret = port->tcpc->set_pd_rx(port->tcpc, true);
-+			if (ret < 0) {
-+				tcpm_set_state(port, SNK_READY, 0);
-+				break;
-+			}
- 		}
- 		/*
- 		 * If VBUS has never been low, and we time out waiting
-@@ -4603,6 +4605,7 @@ static void run_state_machine(struct tcpm_port *port)
- 	case SOFT_RESET_SEND:
- 		port->message_id = 0;
- 		port->rx_msgid = -1;
-+		port->tcpc->set_pd_rx(port->tcpc, true);
- 		if (tcpm_pd_send_control(port, PD_CTRL_SOFT_RESET))
- 			tcpm_set_state_cond(port, hard_reset_state(port), 0);
- 		else
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SWwgMTAvMDMvMjMgMjM6MjgsIEtyenlzenRvZiBLb3psb3dza2kgaGEgc2NyaXR0bzoKPiBUaGUg
+ZHJpdmVyIGNhbiBtYXRjaCBvbmx5IHZpYSB0aGUgRFQgdGFibGUgc28gdGhlIHRhYmxlIHNob3Vs
+ZCBiZSBhbHdheXMKPiB1c2VkIGFuZCB0aGUgb2ZfbWF0Y2hfcHRyIGRvZXMgbm90IGhhdmUgYW55
+IHNlbnNlICh0aGlzIGFsc28gYWxsb3dzIEFDUEkKPiBtYXRjaGluZyB2aWEgUFJQMDAwMSwgZXZl
+biB0aG91Z2ggaXQgaXMgbm90IHJlbGV2YW50IGhlcmUpLgo+IAo+ICAgIGRyaXZlcnMvc3BtaS9z
+cG1pLW10ay1wbWlmLmM6NTE3OjM0OiBlcnJvcjog4oCYbXRrX3NwbWlfbWF0Y2hfdGFibGXigJkg
+ZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLWNvbnN0LXZhcmlhYmxlPV0KPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tp
+QGxpbmFyby5vcmc+CgpSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFu
+Z2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4KCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
