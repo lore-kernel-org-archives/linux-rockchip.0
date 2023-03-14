@@ -4,83 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E91B7C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 15:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847DCC7618A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 16:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J6DItApbPvm2YXP2W5f+PB7mADazE1WY+mjAenttb/w=; b=M97d+pEfVtd8xc
-	LaoHibbulMyWVvFupQyDUFexE4msTTHEwcI7IJavAKGdBJ1LefiSiaXKVD/cgdA48COK7Lj8xKjFV
-	rM0/uShV31LnK5Avu1TOnz1phfYSmI/acFXd2HeN7DbMg4LsMgd5dLUFKpNE/fUKDc6wxcycDaQ7y
-	u9FQn8SXjFy8cnZOfQEQ9yrobq7C2R8xKSzHoO4qSq4UtZyrk84Lkqwy0kKHFsECHpkTvDStuOgYu
-	gybC1QQEb1UGuosCguqqRGi7DMHXr2HUiWw79yidmIro2FH8UaxvrsomFjR2Z3NeZc1D3jAKwE6uN
-	LxTD5vEBtdekEN5VlPqQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xAA8OuXp1OypU5x12ip419q0ldEvAGgNH3jCtD1++5w=; b=QKwnKwxd90Hzb8VKcOdV88LXfv
+	ToSqnZxs2D+SBbln/teQUbcd7o8RvI+aXWjBQE15avClYmYVO4OJ5FUHL9tQNn4UZ7zYKg8dB5Uu+
+	XnyonEBM30A+aNSUrnBwS8ET4BzfWxUqCrwNXg9Lj4nw2IaK1vYXcFyNERRjmHFMB1eunrTfQSOgw
+	G35s0CPhwm6eb8lsm83FWGkJpwHBmsDSfw0zG1og7nkbR6QCCsRXgTfLjeg427dretxacACRIAfJu
+	1nB//cf6eGxH2Yh+jGRJH9BNJmunR3Z3bKA4K2F6HmBridYvEf3aPh9kktn7Q9AbVszlmPBJ7TqqV
+	M9C8i0ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc6rK-00Ag1j-1q;
-	Tue, 14 Mar 2023 15:46:42 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1pc77Q-00Aipp-2b;
+	Tue, 14 Mar 2023 16:03:20 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc6rG-00Ag0G-09;
-	Tue, 14 Mar 2023 15:46:39 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id o4-20020a9d6d04000000b00694127788f4so8634963otp.6;
-        Tue, 14 Mar 2023 08:46:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678808796;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9wkL7da/Rc4tgZfDJba08p3nQBvevz/W1pJs6r+8hiM=;
-        b=Xk1kWqkuxArLQPy905x/qDLlkMqO7O6fXOJNAlhMsW4KcZ9MZi/d1Kx7hW8EjH56nG
-         NLQcbcSRYEeNZavdv07TciYk9foYjygVSg9VDrgrAb61HOnXiDu4QE7RaQmtsNwO/v46
-         O4y27pdeWcLr8Z5u/AWf36lUT2VZhYNUiNUazPNFci0a1ukjqzT3nF7lscwiTBdA0xM6
-         QpIrqqxaUXk2tQZPbIysxaJ0QrEPoz1gEJnOHBY17d3/WCfPgXOHVBrCqrbTQpn6i+oz
-         6gsnm8hNyWKHqEpQ77MiJdDWU8Lplf7IoQgZf2qnuN4Zwggit4zpeUEfJFSaEi1EnfZA
-         4U/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678808796;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9wkL7da/Rc4tgZfDJba08p3nQBvevz/W1pJs6r+8hiM=;
-        b=23Uwo2YHV6bDZmdCF7zkHsuDUMMTOgs9AoxMQVZL39vq8n/Bk+6lljrhCiASKKLYNs
-         0mVjzdVD/Bs/CXZx8UPg4uouL9YGUuTzlb13bbeFI3xgTypEfYBvHIEA+PRF6oan74dy
-         d6imGHfsj70nirvjgFlXRjx4+I9D+AsokSJMrun3mQ8+lMFB1VQ5vli06jABQZO09iyF
-         iU+Ar1nCjjVNeD49AUaB0g1Cr0rAvUzwu5EZZZWIxZVFPojCx+GusLTjTNuQbdYwME5e
-         Os53yTyD+dr4TQOIU88U9uToMq4437fZNa8yYHXKyAKVXDxDhFZbQ89wmXG9/dTuWFM5
-         AVsg==
-X-Gm-Message-State: AO0yUKUxn+6jDIjZAXnDZAmnlk3hf/vVquGo1NVR5rHOtcasGLKomun5
-	jQLV2s0aWaq50m3MzOR/Z0cnNh/MG9b8nxz0HwU=
-X-Google-Smtp-Source: AK7set//Z2qMLoNwWnbRcQ8l+8WelU3TiH20TsphZ7N50Gfa09Xj34+xbWP1VnWe3BCEG+e271UZKcGXir1lYpLxCZk=
-X-Received: by 2002:a9d:5a90:0:b0:688:cf52:6e18 with SMTP id
- w16-20020a9d5a90000000b00688cf526e18mr12756257oth.4.1678808792329; Tue, 14
- Mar 2023 08:46:32 -0700 (PDT)
+	id 1pc77I-00Aike-2d;
+	Tue, 14 Mar 2023 16:03:15 +0000
+Received: (Authenticated sender: paul.kocialkowski@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 02D474000A;
+	Tue, 14 Mar 2023 16:02:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1678809787;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PfjFZ5rXzr3BIOF/GtTdCC+o1HvEGjF/qwaSlO3r/Sk=;
+	b=Sf8NBWQgwLcalyizQeDgcbWTJBfhbNu7MgV+yCyqYvr7LR05IJHLkXzBdrWUIumTxANHn+
+	hB2lPIAKzi7PvefYp99DwN8aiv6h6xV84w1Z29T02/TP3Z/1CoDzcU/bFRHCZs0SWhsz2N
+	BhCaPOG/prYzw8L5sgOQMkCl+63t9qSqxMcHFEs+O8k1jdyCuZ+C0saia/3u12WSv1LMHF
+	ZFr1XpWb4UCCE8eYDePcW5uZtlAtB+j3qPKWw2aBAQiJIRucxMto3eeBgeDn10TFk9xtTh
+	H931WYtAY7hVHHwBcZoKAzGdAAp678EK8Juf6ZsL5nqnuoAnLe1pE+od7WFhKQ==
+Date: Tue, 14 Mar 2023 17:02:56 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Rui Miguel Silva <rmfrfs@gmail.com>,
+	Wenyou Yang <wenyou.yang@microchip.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Yong Deng <yong.deng@magewell.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 16/28] media: platform: sun6i-csi: drop of_match_ptr for
+ ID table
+Message-ID: <ZBCasA/J2Ci6OEZw@aptenodytes>
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <20230312131318.351173-16-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <20230214140858.1133292-9-rick.wertenbroek@gmail.com> <0fa5cef4-7096-7f59-422a-98011d01437c@opensource.wdc.com>
-In-Reply-To: <0fa5cef4-7096-7f59-422a-98011d01437c@opensource.wdc.com>
-From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Date: Tue, 14 Mar 2023 16:45:56 +0100
-Message-ID: <CAAEEuhpiQDRy6EQwwf0e+e6MVv893YU6+Sbyz5k+Owp2vAi-nQ@mail.gmail.com>
-Subject: Re: [PATCH v2 8/9] PCI: rockchip: Use u32 variable to access 32-bit registers
-To: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com, 
-	rick.wertenbroek@heig-vd.ch, stable@vger.kernel.org, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>, 
-	Rodrigo Vivi <rodrigo.vivi@intel.com>, Mikko Kovanen <mikko.kovanen@aavamobile.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+In-Reply-To: <20230312131318.351173-16-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_084638_088991_393AB5FD 
-X-CRM114-Status: GOOD (  27.54  )
+X-CRM114-CacheID: sfid-20230314_090313_259387_0F2FFB4D 
+X-CRM114-Status: GOOD (  18.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,89 +102,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3462098275086238018=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBGZWIgMTUsIDIwMjMgYXQgMjozNOKAr0FNIERhbWllbiBMZSBNb2FsCjxkYW1pZW4u
-bGVtb2FsQG9wZW5zb3VyY2Uud2RjLmNvbT4gd3JvdGU6Cj4KPiBPbiAyLzE0LzIzIDIzOjA4LCBS
-aWNrIFdlcnRlbmJyb2VrIHdyb3RlOgo+ID4gUHJldmlvdXNseSB1MTYgdmFyaWFibGVzIHdlcmUg
-dXNlZCB0byBhY2Nlc3MgMzItYml0IHJlZ2lzdGVycywgdGhpcwo+ID4gcmVzdWx0ZWQgaW4gbm90
-IGFsbCBvZiB0aGUgZGF0YSBiZWluZyByZWFkIGZyb20gdGhlIHJlZ2lzdGVycy4gQWxzbwo+ID4g
-dGhlIGxlZnQgc2hpZnQgb2YgbW9yZSB0aGFuIDE2LWJpdHMgd291bGQgcmVzdWx0IGluIG1vdmlu
-ZyBkYXRhIG91dAo+ID4gb2YgdGhlIHZhcmlhYmxlLiBVc2UgdTMyIHZhcmlhYmxlcyB0byBhY2Nl
-c3MgMzItYml0IHJlZ2lzdGVycwo+ID4KPiA+IEZpeGVzOiBjZjU5MGIwNzgzOTEgKCJQQ0k6IHJv
-Y2tjaGlwOiBBZGQgRVAgZHJpdmVyIGZvciBSb2NrY2hpcCBQQ0llIGNvbnRyb2xsZXIiKQo+ID4g
-Q2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKPiA+IFNpZ25lZC1vZmYtYnk6IFJpY2sgV2VydGVu
-YnJvZWsgPHJpY2sud2VydGVuYnJvZWtAZ21haWwuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9w
-Y2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWVwLmMgfCAxMCArKysrKy0tLS0tCj4gPiAgZHJp
-dmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmggICAgfCAgMSArCj4gPiAgMiBmaWxl
-cyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCj4gPgo+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1lcC5jIGIvZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWVwLmMKPiA+IGluZGV4IGNhNWIzNjNiYS4u
-Yjc4NjVhOTRlIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJv
-Y2tjaGlwLWVwLmMKPiA+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hp
-cC1lcC5jCj4gPiBAQCAtMjkyLDE1ICsyOTIsMTUgQEAgc3RhdGljIGludCByb2NrY2hpcF9wY2ll
-X2VwX3NldF9tc2koc3RydWN0IHBjaV9lcGMgKmVwYywgdTggZm4sIHU4IHZmbiwKPiA+ICB7Cj4g
-PiAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZV9lcCAqZXAgPSBlcGNfZ2V0X2RydmRhdGEoZXBj
-KTsKPiA+ICAgICAgIHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9ICZlcC0+cm9ja2No
-aXA7Cj4gPiAtICAgICB1MTYgZmxhZ3M7Cj4gPiArICAgICB1MzIgZmxhZ3M7Cj4gPgo+ID4gICAg
-ICAgZmxhZ3MgPSByb2NrY2hpcF9wY2llX3JlYWQocm9ja2NoaXAsCj4gPiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBST0NLQ0hJUF9QQ0lFX0VQX0ZVTkNfQkFTRShmbikgKwo+ID4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUk9DS0NISVBfUENJRV9FUF9NU0lfQ1RS
-TF9SRUcpOwo+ID4gICAgICAgZmxhZ3MgJj0gflJPQ0tDSElQX1BDSUVfRVBfTVNJX0NUUkxfTU1D
-X01BU0s7Cj4gPiAgICAgICBmbGFncyB8PQo+ID4gLSAgICAgICAgKChtdWx0aV9tc2dfY2FwIDw8
-IDEpIDw8ICBST0NLQ0hJUF9QQ0lFX0VQX01TSV9DVFJMX01NQ19PRkZTRVQpIHwKPiA+IC0gICAg
-ICAgIFBDSV9NU0lfRkxBR1NfNjRCSVQ7Cj4gPiArICAgICAgICAobXVsdGlfbXNnX2NhcCA8PCBS
-T0NLQ0hJUF9QQ0lFX0VQX01TSV9DVFJMX01NQ19PRkZTRVQpIHwKPgo+IFJPQ0tDSElQX1BDSUVf
-RVBfTVNJX0NUUkxfTU1DX09GRlNFVCBpcyAxNyBhbmQgbXVsdGlfbXNnX2NhcCBpcyBhIHU4Li4u
-Cj4gTm90IG5pY2UuCj4KPiBMb2NhbGx5LCBJIGFkZGVkIHRoZSBsb2NhbCB2YXJpYWJsZToKPgo+
-IHUzMiBtbWMgPSBtdWx0aV9tc2dfY2FwOwo+Cj4gQW5kIHVzZSBtbWMgaW5zdGVhZCBvZiBtdWx0
-aV9tc2dfY2FwIHRvIGF2b2lkIGlzc3Vlcy4gQWxzbywKPgo+ID4gKyAgICAgICAgKFBDSV9NU0lf
-RkxBR1NfNjRCSVQgPDwgUk9DS0NISVBfUENJRV9FUF9NU0lfRkxBR1NfT0ZGU0VUKTsKPiA+ICAg
-ICAgIGZsYWdzICY9IH5ST0NLQ0hJUF9QQ0lFX0VQX01TSV9DVFJMX01BU0tfTVNJX0NBUDsKPiA+
-ICAgICAgIHJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIGZsYWdzLAo+ID4gICAgICAgICAg
-ICAgICAgICAgICAgICAgICBST0NLQ0hJUF9QQ0lFX0VQX0ZVTkNfQkFTRShmbikgKwo+ID4gQEAg
-LTMxMiw3ICszMTIsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfZXBfZ2V0X21zaShzdHJ1
-Y3QgcGNpX2VwYyAqZXBjLCB1OCBmbiwgdTggdmZuKQo+ID4gIHsKPiA+ICAgICAgIHN0cnVjdCBy
-b2NrY2hpcF9wY2llX2VwICplcCA9IGVwY19nZXRfZHJ2ZGF0YShlcGMpOwo+ID4gICAgICAgc3Ry
-dWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwID0gJmVwLT5yb2NrY2hpcDsKPiA+IC0gICAgIHUx
-NiBmbGFnczsKPiA+ICsgICAgIHUzMiBmbGFnczsKPiA+Cj4gPiAgICAgICBmbGFncyA9IHJvY2tj
-aGlwX3BjaWVfcmVhZChyb2NrY2hpcCwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIFJPQ0tDSElQX1BDSUVfRVBfRlVOQ19CQVNFKGZuKSArCj4gPiBAQCAtMzc0LDcgKzM3NCw3
-IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9lcF9zZW5kX21zaV9pcnEoc3RydWN0IHJvY2tj
-aGlwX3BjaWVfZXAgKmVwLCB1OCBmbiwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHU4IGludGVycnVwdF9udW0pCj4gPiAgewo+ID4gICAgICAgc3RydWN0IHJvY2tj
-aGlwX3BjaWUgKnJvY2tjaGlwID0gJmVwLT5yb2NrY2hpcDsKPiA+IC0gICAgIHUxNiBmbGFncywg
-bW1lLCBkYXRhLCBkYXRhX21hc2s7Cj4gPiArICAgICB1MzIgZmxhZ3MsIG1tZSwgZGF0YSwgZGF0
-YV9tYXNrOwo+ID4gICAgICAgdTggbXNpX2NvdW50Owo+ID4gICAgICAgdTY0IHBjaV9hZGRyLCBw
-Y2lfYWRkcl9tYXNrID0gMHhmZjsKPiA+ICAgICAgIHUzMiByOwo+ID4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oIGIvZHJpdmVycy9wY2kvY29udHJv
-bGxlci9wY2llLXJvY2tjaGlwLmgKPiA+IGluZGV4IGU5MGMyYTJiOC4uMTFkYmY1M2NkIDEwMDY0
-NAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmgKPiA+ICsr
-KyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCj4gPiBAQCAtMjI3LDYg
-KzIyNyw3IEBACj4gPiAgI2RlZmluZSBST0NLQ0hJUF9QQ0lFX0VQX0NNRF9TVEFUVVMgICAgICAg
-ICAgICAgICAgICAweDQKPiA+ICAjZGVmaW5lICAgUk9DS0NISVBfUENJRV9FUF9DTURfU1RBVFVT
-X0lTICAgICAgICAgICAgIEJJVCgxOSkKPiA+ICAjZGVmaW5lIFJPQ0tDSElQX1BDSUVfRVBfTVNJ
-X0NUUkxfUkVHICAgICAgICAgICAgICAgICAgICAgICAgMHg5MAo+ID4gKyNkZWZpbmUgICBST0NL
-Q0hJUF9QQ0lFX0VQX01TSV9GTEFHU19PRkZTRVQgICAgICAgICAgICAgICAgICAxNgo+Cj4gWW91
-IGFyZSBub3QgdXNpbmcgdGhpcyBtYWNybyBhbnl3aGVyZS4gVGhlIG5hbWUgaXMgYWxzbyBub3Qg
-dmVyeQo+IGRlc2NyaXB0aXZlLiBCZXR0ZXIgaGF2ZSBpdCBhczoKPgo+ICNkZWZpbmUgICBST0NL
-Q0hJUF9QQ0lFX0VQX01TSV9DVFJMX01FICAgICAgICAgIEJJVCgxNikKPgo+IHRvIG1hdGNoIHRo
-ZSBUUk0gbmFtZSBhbmQgYmUgY2xlYXIgdGhhdCB0aGUgYml0IGluZGljYXRlcyBpZiBNU0kgaXMK
-PiBlbmFibGVkIG9yIG5vdC4KPgoKVGhpcyBpcyBhbHJlYWR5IHRoZSBjYXNlLCB0aGUgI2RlZmlu
-ZSBpcyBhbHJlYWR5IHRoZXJlLgojZGVmaW5lIFJPQ0tDSElQX1BDSUVfRVBfTVNJX0NUUkxfTUUg
-QklUKDE2KQpUaGUgb3RoZXIgb2Zmc2V0IGlzIGZvciBhbGwgdGhlIE1TSSBmbGFncyB0b2dldGhl
-ciwgdGhpcyBvZmZzZXQgaXMgdXNlZAp3aGVuIHRoZSBmbGFncyBhcmUgcmV0cmlldmVkIGFsdG9n
-ZXRoZXIsIHNlZSByb2NrY2hpcF9wY2llX2VwX3NldF9tc2koKQpUaGUgTUUgYml0IGlzIGFsc28g
-dXNlZCB3aGVuIHdlIG5lZWQgdG8gY2hlY2sgdGhlIGJpdCBzcGVjaWZpY2FsbHksIHNlZQpyb2Nr
-Y2hpcF9wY2llX2VwX2dldF9tc2koKS4KCj4gPiAgI2RlZmluZSAgIFJPQ0tDSElQX1BDSUVfRVBf
-TVNJX0NUUkxfTU1DX09GRlNFVCAgICAgICAgICAgICAgIDE3Cj4gPiAgI2RlZmluZSAgIFJPQ0tD
-SElQX1BDSUVfRVBfTVNJX0NUUkxfTU1DX01BU0sgICAgICAgICBHRU5NQVNLKDE5LCAxNykKPiA+
-ICAjZGVmaW5lICAgUk9DS0NISVBfUENJRV9FUF9NU0lfQ1RSTF9NTUVfT0ZGU0VUICAgICAgICAg
-ICAgICAgMjAKPgo+IC0tCj4gRGFtaWVuIExlIE1vYWwKPiBXZXN0ZXJuIERpZ2l0YWwgUmVzZWFy
-Y2gKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+
+--===============3462098275086238018==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Il/EvjUmeeGoz4+Y"
+Content-Disposition: inline
+
+
+--Il/EvjUmeeGoz4+Y
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Krzysztof,
+
+On Sun 12 Mar 23, 14:13, Krzysztof Kozlowski wrote:
+> The driver can match only via the DT table so the table should be always
+> used and the of_match_ptr does not have any sense (this also allows ACPI
+> matching via PRP0001, even though it might not be relevant here).  This
+> also fixes !CONFIG_OF error:
+>=20
+>   drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c:401:34: error: =E2=
+=80=98sun6i_csi_of_match=E2=80=99 defined but not used [-Werror=3Dunused-co=
+nst-variable=3D]
+>=20
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Looks good to me:
+Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+
+Thanks !
+
+Paul
+
+> ---
+>  drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c b/drivers=
+/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> index e3e6650181c8..187a2419da96 100644
+> --- a/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> +++ b/drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.c
+> @@ -429,7 +429,7 @@ static struct platform_driver sun6i_csi_platform_driv=
+er =3D {
+>  	.remove	=3D sun6i_csi_remove,
+>  	.driver	=3D {
+>  		.name		=3D SUN6I_CSI_NAME,
+> -		.of_match_table	=3D of_match_ptr(sun6i_csi_of_match),
+> +		.of_match_table	=3D sun6i_csi_of_match,
+>  		.pm		=3D &sun6i_csi_pm_ops,
+>  	},
+>  };
+> --=20
+> 2.34.1
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--Il/EvjUmeeGoz4+Y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmQQmrAACgkQ3cLmz3+f
+v9G0UQgAgqkiTU6DCCn3MAsOxs7XlE6PTVir0WIBXYAO1uUS6eNKjIyBKLCVmKwL
+iTgalBnhTb3SW6j5kYlUmMY0FdvMgQfM1W7uAX52Vk/O0NF2DHSHVLje/jSCbwR+
+DqCCHKeVGRqWZxpPtb4GcbMEtY7xwooPm0SwEGeVcXo9sT9LUght/zJ3Pa6Eet2O
+sSo4BVIZvlqDPwSEuiB4SLH0QJDUI8rzrtYBa2bEzstHwimw0reAtAFpT/g/QnI/
+t+URgXSvKsMgPMaiOtQmsOG5c9mUKipHQVUdeIMxe4KGcIxCWz1DWXgE1FUqHaB9
+1MO6S1SgXwRmWZDToL97PcRr9fqX5A==
+=aAGN
+-----END PGP SIGNATURE-----
+
+--Il/EvjUmeeGoz4+Y--
+
+
+--===============3462098275086238018==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3462098275086238018==--
+
