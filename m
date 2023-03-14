@@ -4,87 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB382C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Mar 2023 23:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8216DC6FD19
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 00:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JA5IC0kh1YsaUPVGoRJVCWAtMu5IFuCRqzl0BKmanbw=; b=EXiscH2YGwRgjT
-	dfAOUmuMX9ykRbahpn07D6/LN4+G0mcjLhQxx08eywNBa0miav9w+ZOQcdjsYPYQTw7KnLhJ/Fzx4
-	D5UlyVtEYq6zLXHRCszKp/otgrB3GnrkLAsIgQFTCqfdJQTrLLjx+FYybFU820xDZrF+eDNncO8lh
-	P4sz9W0Y+1J6+gTjZwLU5ZdZLuXrcpwZ3Mmi3B0hyU/xZDcc5TVHmH2ENN8IZh5xK00o+WyJyl03C
-	o+1vWMqW/4X+mtX7hbKnQ6ux0fDy/tqu9lQDOpCWpP8tfFhF0SG1Wcxg0ustqh6E2TAEnFut67Gtr
-	U1lGKVLUg/1zIE8oK8Hg==;
+	List-Owner; bh=sl93X58H1YKVqA65ukfUvfCuY3DIl7Y7m7tMVT09t0Y=; b=nXgCSmB6UwPz/f
+	9DL8lQv0Jf4imv1McuyHyo/OLfD/HqJO2ysdYqYIGdX8nXe/3bGZPkcssgk0yLLaM7s8ZSTP1q9vg
+	r5eqkD8rTcNpHBK+CwBVk2fvvdlckq6Ufj9yfOxjfBiG34twF7iAMJDNykf5OUl1WDm6qszUpX3OF
+	2SOzjrDHwQHqFkkVYRn7+JLB2uVW2v+q/Dmw2djRAoXmUp4R4nJi/qSLWuIg2EeBOemb9x/IJDx7r
+	Je21GJp1tpzbJVG2rmRUz+6MQUxVRQtJXMzgBJThKE0vfC9zK2FG8M1uzrLDTdqg8hFUz9QCrEo2L
+	kwyXTHBMD+0enZNKB+UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrPH-008J2S-Px; Mon, 13 Mar 2023 23:16:43 +0000
-Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
+	id 1pbs87-008NHD-63; Tue, 14 Mar 2023 00:03:03 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pbrPE-008J0H-GH
-	for linux-rockchip@lists.infradead.org; Mon, 13 Mar 2023 23:16:42 +0000
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with both STARTTLS and AUTH (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-180-8ouOqbSxPl2e6lYMDXaiTw-1; Mon, 13 Mar 2023 23:16:33 +0000
-X-MC-Unique: 8ouOqbSxPl2e6lYMDXaiTw-1
-Received: from AcuMS.Aculab.com (10.202.163.4) by AcuMS.aculab.com
- (10.202.163.4) with Microsoft SMTP Server (TLS) id 15.0.1497.47; Mon, 13 Mar
- 2023 23:16:31 +0000
-Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
- id 15.00.1497.047; Mon, 13 Mar 2023 23:16:31 +0000
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Laurent Pinchart' <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>
-CC: "tfiga@chromium.org" <tfiga@chromium.org>, "m.szyprowski@samsung.com"
-	<m.szyprowski@samsung.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"ming.qian@nxp.com" <ming.qian@nxp.com>, "shijie.qin@nxp.com"
-	<shijie.qin@nxp.com>, "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
-	"bin.liu@mediatek.com" <bin.liu@mediatek.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "tiffany.lin@mediatek.com"
-	<tiffany.lin@mediatek.com>, "andrew-ct.chen@mediatek.com"
-	<andrew-ct.chen@mediatek.com>, "yunfei.dong@mediatek.com"
-	<yunfei.dong@mediatek.com>, "stanimir.k.varbanov@gmail.com"
-	<stanimir.k.varbanov@gmail.com>, "quic_vgarodia@quicinc.com"
-	<quic_vgarodia@quicinc.com>, "agross@kernel.org" <agross@kernel.org>,
-	"andersson@kernel.org" <andersson@kernel.org>, "konrad.dybcio@linaro.org"
-	<konrad.dybcio@linaro.org>, "ezequiel@vanguardiasur.com.ar"
-	<ezequiel@vanguardiasur.com.ar>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "daniel.almeida@collabora.com"
-	<daniel.almeida@collabora.com>, "hverkuil-cisco@xs4all.nl"
-	<hverkuil-cisco@xs4all.nl>, "jerbel@kernel.org" <jerbel@kernel.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "kernel@collabora.com"
-	<kernel@collabora.com>
-Subject: RE: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Thread-Topic: [RFC 2/4] media: videobuf2: Replace bufs array by a list
-Thread-Index: AQHZVddlMXgQQm2s8UOyg8hXE6z+xq75Vx6A
-Date: Mon, 13 Mar 2023 23:16:31 +0000
-Message-ID: <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
- <20230313135916.862852-3-benjamin.gaignard@collabora.com>
- <20230313181155.GC22646@pendragon.ideasonboard.com>
-In-Reply-To: <20230313181155.GC22646@pendragon.ideasonboard.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+	id 1pbs7v-008NEv-U5
+	for linux-rockchip@lists.infradead.org; Tue, 14 Mar 2023 00:02:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1678752171; x=1710288171;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=o1OcbpYDtCn8bpuI1Yx89Ke9JS/q7gUoWBOKl0Pp9qw=;
+  b=TTaTGhA5PF5QJwM84XO+DrSdoHWnITLxY+0hVnXgs2nnBFP71oDUlyTe
+   L8chl/kgb/X5ZWykcb0iI/Q1c6hLLjmhlgw1DtsldVpzEEed3A3o0MTLt
+   YjNT2BCpZXm1BgZplr5i3tZLNEa/Q25X8zOm1PC37Uuz1htJRfx2tfKZg
+   5TsguIspGS5aOoDjVNYP3xGVbYrfwZcEJv7NQLwDZStUh1QlYHrMDWIi5
+   A1JtQEbkeoPlIDEYbj9ohYDpL6SRRk7ar2JKBvQsBY0377cGkiDo9oYR0
+   RkmfYB9TsdkpcoLFxAXAHlcCWOaPyDwD/kpPStg+LsuNFqmg7qQhyCf31
+   g==;
+X-IronPort-AV: E=Sophos;i="5.98,258,1673884800"; 
+   d="scan'208";a="223833700"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
+  by ob1.hgst.iphmx.com with ESMTP; 14 Mar 2023 08:02:44 +0800
+IronPort-SDR: n9cfaKB17QPDa3x96LKTFFmLehHDeaWpOltxFjIbLvTnUi78d/3kgJmaVIkVtSMxzQY0sfFGhj
+ 39sqYnPWasvT1RpmdyaBQsqDkf0KfL9a4odawfu2uNerOCkj0VA6QqpuLCK6Y/h8PzYu/YpF2c
+ m8QarMB+DKl0jZMC1SR7l6CDs/SdlEGZnujGinks/R5oSqZg5/HrraEYuDl+nqt9QX/8qadY51
+ tu3bYMmkxtPL5efRW/4wMGLhMTmGWMZO02n0z0h9kkexuKULSHeOg3+3lH7GPWePRU3RNKzMjA
+ zKw=
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 13 Mar 2023 16:19:13 -0700
+IronPort-SDR: nNsy+HBPxSUI6xqi12sIKf0o77WpYpIkKRUGik4FAY0P1HDw5Zirge9oGSsTvC3o4qYt+1LiO1
+ pmvPb8HWsOC9y4ki5rOlZ1+pAcP6CUy+m5mlGB9OBGjFkoF+c46HSNGT8EWwTUK0xJJWBVYzBE
+ NaZRn2s0PAOLMOdoCUHRPxNFL9W/oAPgb6ZN/i9aBeT7hfixr0ULLZgj5/xF3aEu+nuc8VI1LR
+ fsQ7r+4B6HmmqOn1hPiFo8UsfHaxcizRQyODwSmrKtS5LbP4KYZMkADmiiaXIxWNqXJ4ZaX+1b
+ /tk=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+  by uls-op-cesaip01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 13 Mar 2023 17:02:45 -0700
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4PbDHR5XJqz1RtW7
+	for <linux-rockchip@lists.infradead.org>; Mon, 13 Mar 2023 17:02:43 -0700 (PDT)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)"
+	header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+	opensource.wdc.com; h=content-transfer-encoding:content-type
+	:in-reply-to:organization:from:references:to:content-language
+	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
+	1678752161; x=1681344162; bh=o1OcbpYDtCn8bpuI1Yx89Ke9JS/q7gUoWBO
+	Kl0Pp9qw=; b=SatjSK8UV4tyc+1gOKxDsVyOfogZW3dAittYCXEVgJcBm96edDe
+	6CvYXUTfYiS/LojYiGUQN4oD9WGoKHQIQ0SjGyw9A+vNlyiIs8a67gFcMXBKyGIj
+	wUb76qc2/hkigWUxraqkL6CzMu/NtpXaO6+L0hArRA7JHD9ZNsgasH1HNqs3IyHz
+	W6Q3e7044qqwnPHU/zLSq39j7Xfo7eDDZvoOaxLiWZ2uVii//Yk1/l8k1ljJmi5A
+	DVpE6navX8oZjkeuMuXVtRo7r0IjqL/sR5T3qg6TeRxg9GkJhBv4MGJi/noGm9XT
+	uUAEB5PabPD3fEmwuRd+Ldgk9bJZYNbhtQQ==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id 2VLP-bsiJhVX for <linux-rockchip@lists.infradead.org>;
+	Mon, 13 Mar 2023 17:02:41 -0700 (PDT)
+Received: from [10.149.53.254] (washi.fujisawa.hgst.com [10.149.53.254])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4PbDHK3zdTz1RtVm;
+	Mon, 13 Mar 2023 17:02:37 -0700 (PDT)
+Message-ID: <ecd09f27-b799-4741-2c5a-a2de99776c51@opensource.wdc.com>
+Date: Tue, 14 Mar 2023 09:02:36 +0900
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 0/9] PCI: rockchip: Fix RK3399 PCIe endpoint controller
+ driver
 Content-Language: en-US
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
+Cc: xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mikko Kovanen <mikko.kovanen@aavamobile.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
+From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Organization: Western Digital Research
+In-Reply-To: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230313_161640_843538_687DBFAE 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20230313_170252_102935_D35DBF2D 
+X-CRM114-Status: GOOD (  55.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,46 +126,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Laurent Pinchart
-> Sent: 13 March 2023 18:12
+On 2/14/23 23:08, Rick Wertenbroek wrote:
+> This is a series of patches that fixes the PCIe endpoint controller driver
+> for the Rockchip RK3399 SoC. The driver was introduced in
+> cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+> The original driver had issues and would not allow for the RK3399 to
+> operate in PCIe endpoint mode correctly. This patch series fixes that so
+> that the PCIe core controller of the RK3399 SoC can now act as a PCIe
+> endpoint. This is v2 of the patch series and addresses the concerns that
+> were raised during the review of the first version.
+
+Rick,
+
+Are you going to send a rebased V3 soon ? I have a couple of additional
+patches to add on top of your series...
+
+
 > 
-> Hi Benjamin,
+> Thank you in advance for reviewing these changes and hopefully
+> getting this merged. Having a functional PCIe endpoint controller
+> driver for the RK3399 would allow to develop further PCIe endpoint
+> functions through the Linux PCIe endpoint framework using this SoC.
 > 
-> Thank you for the patch.
+> Problem: The Rockchip RK3399 PCIe endpoint controller driver introduced in
+> cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+> did not work.
 > 
-> On Mon, Mar 13, 2023 at 02:59:14PM +0100, Benjamin Gaignard wrote:
-> > Replacing bufs array by a list allows to remove the 32 buffers
-> > limit per queue.
+> Summary of problems with the driver :
+> 
+> * Missing dtsi entry
+> * Could not update Device ID (DID)
+> * The endpoint could not be configured by a host computer because the
+>   endpoint kept sending Configuration Request Retry Status (CRS) messages
+> * The kernel would sometimes hang on probe due to access to registers in
+>   a clock domain of which the PLLs were not locked
+> * The memory window mapping and address translation mechanism had
+>   conflicting mappings and did not follow the technical reference manual
+>   as to how the address translation should be done
+> * Legacy IRQs were not generated by the endpoint
+> * Message Signaled interrupts (MSI) were not generated by the endpoint
+> 
+> The problems have been addressed and validated through tests (see below).
+> 
+> Summary of changes :
+> 
+> This patch series is composed of 9 patches that do the following :
+> * Remove writes to unused registers in the PCIe core register space.
+>   The registers that were written to is marked "unused" and read
+>   only in the technical reference manual of the RK3399 SoC.
+> * Write PCI Device ID (DID) to correct register, the DID was written to
+>   a read only register and therefore would not update the DID.
+> * Assert PCI Configuration Enable bit after probe so that it would stop
+>   sending Configuration Request Retry Status (CRS) messages to the
+>   host once configured, without this the host would retry until
+>   timeout and cancel the PCI configuration.
+> * Add poll and timeout to wait for PHY PLLs to be locked, this
+>   is the only patch that also applies to the root complex function
+>   of the PCIe core controller, without this the kernel would
+>   sometimes access registers in the PHY PLL clock domain when the PLLs
+>   were not yet locked and the system would hang. This was hackily solved
+>   in other non mainline patches (e.g., in armbian) with a "msleep()"
+>   that was added after PHY PLL configuration but without realizing
+>   why it was needed. A poll with timeout seems like a sane approach.
+> * Add dtsi entry for RK3399 PCIe endpoint core. The new entry is
+>   in "disabled" status by default, so unless it is explicitly enabled
+>   it will not conflict with the PCIe root complex controller entry.
+>   Developers that will enable it would know that the root complex function
+>   then must be disabled, this can be done in the board level DTS.
+> * Fix window mapping and address translation for endpoint. The window
+>   mapping and address translation did not follow the technical reference
+>   manual and a single memory region was used which resulted in conflicting
+>   address translations for memory allocated in that region. The current
+>   patch allows to allocate up to 32 memory windows with 1MB pages.
+> * Fix legacy IRQ generation for RK3399 PCIe endpoint core, the legacy IRQs
+>   were not sent by the device because their generation did not follow the
+>   instructions in the technical reference manual. They now work.
+> * Use u32 variable to access 32-bit registers, u16 variables were used to
+>   access and manipulate data of 32-bit registers, this would lead to
+>   overflows e.g., when left shifting more than 16 bits.
+> * Add parameter check for RK3399 PCIe endpoint core set_msi(), return
+>   -EINVAL when incompatible parameters are passed.
+> 
+> Validation on real hardware:
+> 
+> This patch series has been tested with kernel 6.0.19 (and 5.19)
+> on real hardware, a FriendlyElec NanoPC-T4 RK3399 based single computer
+> board connected to a host computer through PCIe x1 and x4. The PCIe
+> endpoint test function driver was loaded on the SoC and the PCIe endpoint
+> test driver was loaded on the host computer. The following tests were
+> executed through this setup :
+> 
+> * enumeration of the PCIe endpoint device (lspci)
+>   lspci -vvv
+> * validation of PCI header and capabilities
+>   setpci and lspci -xxxx
+> * device was recognized by host computer dans PCIe endpoint test driver
+>   was loaded
+>   lspci -v states "Kernel modules: pci_endpoint_test"
+> * tested the BARs 0-5
+>   sudo /usr/bin/pcitest -b 0
+>   ...
+>   sudo /usr/bin/pcitest -b 5
+> * tested legacy interrupt through the test driver
+>   sudo /usr/bin/pcitest -i 0
+>   sudo /usr/bin/pcitest -l
+> * tested MSI interrupt through the test driver
+>   sudo /usr/bin/pcitest -i 1
+>   sudo /usr/bin/pcitest -m 1
+> * tested read/write to and from host through the test driver with checksum
+>   sudo /usr/bin/pcitest -r -s 1024
+>   sudo /usr/bin/pcitest -w -s 1024
+> * tested read/write with DMA enabled (all read/write tests also did IRQ)
+>   sudo /usr/bin/pcitest -r -d -s 8192
+>   sudo /usr/bin/pcitest -w -d -s 8192
+> 
+> Commands used on the SoC to launch the endpoint function (configfs) :
+> 
+> modprobe -i pci-epf-test
+> mkdir -p /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0
+> echo 0xb500 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/deviceid
+> echo 0x104c > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/vendorid
+> echo 16 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/msi_interrupts 
+> ln -s /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0 \
+> /sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/
+> echo 1 > /sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/start
+> 
+> Note: to enable the endpoint controller on the board the file :
+> arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+> Was edited to set the status of &pcie0 to "disabled" and &pcie0_ep
+> to "okay". This is not submitted as a patch because most users
+> will use the PCIe core controller in host (root complex) mode
+> rather than endpoint mode.
+> 
+> I have tested and confirmed all basic functionality required for the
+> endpoint with the test driver and tools. With the previous state of
+> the driver the device would not even be enumerated by the host
+> computer (mainly because of CRS messages being sent back to the root
+> complex) and tests would not pass (driver would not even be loaded
+> because DID was not set correctly) and then only the BAR test would
+> pass. Now all tests pass as stated above.
+> 
+> Best regards
+> Rick
+> 
+> Rick Wertenbroek (9):
+>   PCI: rockchip: Remove writes to unused registers
+>   PCI: rockchip: Write PCI Device ID to correct register
+>   PCI: rockchip: Assert PCI Configuration Enable bit after probe
+>   PCI: rockchip: Add poll and timeout to wait for PHY PLLs to be locked
+>   arm64: dts: rockchip: Add dtsi entry for RK3399 PCIe endpoint core
+>   PCI: rockchip: Fix window mapping and address translation for endpoint
+>   PCI: rockchip: Fix legacy IRQ generation for RK3399 PCIe endpoint core
+>   PCI: rockchip: Use u32 variable to access 32-bit registers
+>   PCI: rockchip: Add parameter check for RK3399 PCIe endpoint core
+>     set_msi()
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi  |  23 ++++
+>  drivers/pci/controller/pcie-rockchip-ep.c | 143 ++++++++++------------
+>  drivers/pci/controller/pcie-rockchip.c    |  16 +++
+>  drivers/pci/controller/pcie-rockchip.h    |  36 ++++--
+>  4 files changed, 128 insertions(+), 90 deletions(-)
+> 
 
-Is the limit actually a problem?
-Arrays of pointers have locking and caching advantages over
-linked lists.
+-- 
+Damien Le Moal
+Western Digital Research
 
-...
-> > @@ -1239,8 +1242,12 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
-> >  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
-> >  						unsigned int index)
-> >  {
-> > -	if (index < q->num_buffers)
-> > -		return q->bufs[index];
-> > +	struct vb2_buffer *vb;
-> > +
-> > +	list_for_each_entry(vb, &q->allocated_bufs, allocated_entry)
-> > +		if (vb->index == index)
-> > +			return vb;
-> > +
-> >  	return NULL;
 
-You really don't want to be doing that....
-
-There are schemes for unbounded arrays.
-Scanning a linked list isn't a very good one.
-
-	David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
