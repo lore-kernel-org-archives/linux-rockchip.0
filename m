@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79411C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 14:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 719C3C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 14:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TKUrEnMyxSN/m9skJXA0ne9b2y7X0oERQNbgCRitNFU=; b=OBAmyDj/0fn+2o
-	YvcDk7aetoo28onfcLdl8AHtZSFqIRoSeoaaTiLv1Y76MBUbuXJGz/PdQY6nIGHN++ycCDFiu0+5T
-	HaiXdt8GoiSGv0CoNk2SR0LKRVZtV4qTWsAFd8wZjJ2V+925nUBbCUhtouIjVVBknlAv08VvRE1MM
-	1BKMMYHFHLd2oYKxkiGiwYSYJOO15gbQ93eCOxZGrKAWCxFXlXgMgeP/2hH2ap3+R25QGxeyHyeKw
-	2EM8MscwvwNDe1/rtubV3HhC+990CavM40/kc/CWfj8K0nm/fXCeffR4yCmRuw6016SVVA4Xl7Q6g
-	Z6L1BuGXXhW0JWy8ph3Q==;
+	List-Owner; bh=VUhEUY1d65E//STIcVCqhB1BnO21jHUHSfY3sYe2Gps=; b=YO2oysEcUzwSv5
+	ESMQXD8hyitEpmN8BuLb6UOw3ucJ9YGxR7Al/aYVZ/qNbrbDJbpBnOxC2Da5TZ52SMvr5PO/RlBxV
+	UO1LRQVbROrTBaMXpqdcYCOfiGRM19KKIwVH51Rq+wEpYl1Kb7xIZDht2bP8OWF7uk66uYzYfCKfZ
+	ik69p7Gz/GHoOq2tbuwwimnmFaQOzpTLojkPQ8H/j7G86w/f2KdcHu820gjLzRTM1IdvBlTqZ6b/y
+	IbLsZbDawCbMkDjOp6mDgGuPwsYFMuqOf27sICV3ie7YIDtbww6E0mWRV3DUWVB3djDuEJUNbdR5r
+	KFtGWKB5hTTtsVoioleg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc5QC-00AQeL-1Z;
-	Tue, 14 Mar 2023 14:14:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pc5ev-00ASuq-1B;
+	Tue, 14 Mar 2023 14:29:49 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc5Q8-00AQcX-06;
-	Tue, 14 Mar 2023 14:14:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DAF7B6179C;
-	Tue, 14 Mar 2023 14:14:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42195C433D2;
-	Tue, 14 Mar 2023 14:14:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1678803270;
-	bh=qhXwhy6Cl+s9k6JRE6nqU7xp7VBDDJnS951Dvre7bkg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=LY7gjSiuMUB5pPGHUjwLNoTDLnJO+/gmKbfcmqDFZktVM1oJ9unB1E8ayT2zcQyXS
-	 sWKlUqkLFdIq2shgcuntAcjnnGwtd34ns6fr0Y8j2RsQZUw3e2jNeR6Se39qlfr2NE
-	 F9uGpnbiPsDwmnhlv3xu2EQukcSHeAmH0imBHjUxgEZmpq+G7buXq1QAsIYvT/rHZm
-	 ZzQ2ig3GxB2CNjWHt/9PR6kvEQoERyVkcK5sAIm9UhUNNqvpAhmxll6r1/0dBVES9U
-	 oxyDZp/yvpkMJiQacmf0ss4/5vvW3zDMoqnUSTirLxKXK79QLT4wOeVWYRnGmV4GX7
-	 XSqJLv4C3XyAA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pc5Q3-00HaSl-PZ;
-	Tue, 14 Mar 2023 14:14:27 +0000
-Date: Tue, 14 Mar 2023 14:14:27 +0000
-Message-ID: <86h6unxvwc.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Lucas Tanure <lucas.tanure@collabora.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I
- <kishon@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof Wilczynski <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Qu Wenruo <wqu@suse.com>,
-	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH 1/7] irqchip/gic-v3: Add a DMA Non-Coherent flag
-In-Reply-To: <93e4d83d-9559-c987-d93b-c49572413275@collabora.com>
-References: <20230310080518.78054-1-lucas.tanure@collabora.com>
-	<20230310080518.78054-2-lucas.tanure@collabora.com>
-	<CAMdYzYpL7V6udw=T7ZChTFi0xOj1tb-5CVHb84u1pL4kj3eDZA@mail.gmail.com>
-	<3db23e11-5fac-f36e-c89e-93c4e8ac2d98@arm.com>
-	<93e4d83d-9559-c987-d93b-c49572413275@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: lucas.tanure@collabora.com, robin.murphy@arm.com, pgwipeout@gmail.com, vkoul@kernel.org, kishon@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, tglx@linutronix.de, lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com, wqu@suse.com, piotr.oniszczuk@gmail.com, kever.yang@rock-chips.com, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	id 1pc5er-00ASt5-2d
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Mar 2023 14:29:48 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id ek18so31672676edb.6
+        for <linux-rockchip@lists.infradead.org>; Tue, 14 Mar 2023 07:29:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678804181;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ElHjwIeT7npoxRMCw2nu+jmWqBva4+bKaapSz/mECSU=;
+        b=TwVSJKTA35/n7SvFYUMIlB1ti+ObmERDISpugC0l5FukjPltxsLMTim+fYoqzITV48
+         Trw+IaBTNH1Tc9uawQC+HZo+5oPJTqFty35G1Umuv/dmjPrqA7Eqneu1dZxeABPqSIRD
+         0f2MjRjrXYt7GZEGmmhaPIVxnGU/zIf6NCHbYcuZXxOkybmaJvexGSBxykK//oLP3mPE
+         5NK/nUYaWU/eyPRFiOcLoaP2qNqxVsCFrGcsGYdmIXXdLU2b9X7Pw9KMtNQM3D8xMqkt
+         mJvuya1ZYDXNI2zXQb+o408sxCZy1cUeWmQTOZO9EjYw5CFdtzAhPMdhEg8f4Sqa6N5w
+         Hc1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678804181;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ElHjwIeT7npoxRMCw2nu+jmWqBva4+bKaapSz/mECSU=;
+        b=rA6eZwUAC8MPW/KEenXoRP5Cjd+g+lLV3W1SNZDTU8V/823nUyZeWszDlsqDwP0fxy
+         9hlsrlxCvn7EGoyIjQ1LkzexmHIYKlDMXXo3d4mjJgAJvsbNX6g2LUaeHZwfJ4GA0upV
+         +8JtlYCQW3Ov2tQzw8ElOsFOqQweeCHZO7Kfz8zIHs1PE65hRlCPzCAKcyypN+d1weDo
+         BRp2nvzLNuGbVthbuj1KwUNqp+clslpR7cIusDN+ajv1mWBtPBEE+9u7b2SjvSuKRRGo
+         XO/J+gBgpcp7uJtRwTmrr6DV12ALrU1AHnPP7/+8hIOtge5jO1XYzAbu8FvYPbqd7FU/
+         wQTg==
+X-Gm-Message-State: AO0yUKX92QVtR7J9sZXA3AGL+K4g8+Mb1XXNXP8plZSPNji0PBxf9zpR
+	4dPry1oQkmNBDHmZb/KSPWtkwA==
+X-Google-Smtp-Source: AK7set8BTJKzs7H5rL6iH9MVtKlcHgRUHKBlpQX+UW1cWD83NcyG/8r94I7ANT1OFh2CKPgR9hQNTQ==
+X-Received: by 2002:a05:6402:202e:b0:4fd:c862:b3b7 with SMTP id ay14-20020a056402202e00b004fdc862b3b7mr2490284edb.20.1678804181215;
+        Tue, 14 Mar 2023 07:29:41 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:59be:4b3f:994b:e78c? ([2a02:810d:15c0:828:59be:4b3f:994b:e78c])
+        by smtp.gmail.com with ESMTPSA id s23-20020a50ab17000000b004f1e91c9f87sm1147798edc.3.2023.03.14.07.29.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Mar 2023 07:29:40 -0700 (PDT)
+Message-ID: <9756a5ae-a5f9-c2e0-1bb4-cdcc4373b891@linaro.org>
+Date: Tue, 14 Mar 2023 15:29:38 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCHv2 1/3] dt-bindings: PCI: dwc: Add rk3588 compatible
+Content-Language: en-US
+To: Lucas Tanure <lucas.tanure@collabora.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof Wilczynski <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Qu Wenruo <wqu@suse.com>, Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com
+References: <20230314135555.44162-1-lucas.tanure@collabora.com>
+ <20230314135555.44162-2-lucas.tanure@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230314135555.44162-2-lucas.tanure@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_071432_164368_8076162A 
-X-CRM114-Status: GOOD (  28.60  )
+X-CRM114-CacheID: sfid-20230314_072945_858978_416ED6F1 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,60 +105,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 14 Mar 2023 13:25:28 +0000,
-Lucas Tanure <lucas.tanure@collabora.com> wrote:
+On 14/03/2023 14:55, Lucas Tanure wrote:
+> PCIe for RK3588 is the same as RK3568.
 > 
-> On 10-03-2023 12:04, Robin Murphy wrote:
-> > On 2023-03-10 11:41, Peter Geis wrote:
-> >> On Fri, Mar 10, 2023 at 3:05 AM Lucas Tanure
-> >> <lucas.tanure@collabora.com> wrote:
-> >>> 
-> >>> The GIC600 integration in RK356x, used in rk3588, doesn't support
-> >>> any of the shareability or cacheability attributes, and requires
-> >>> both values to be set to 0b00 for all the ITS and Redistributor
-> >>> tables.
-> >>> 
-> >>> This is loosely based on prior work from XiaoDong Huang and
-> >>> Peter Geis fixing this issue specifically for Rockchip 356x.
-> >> 
-> >> Good Morning,
-> >> 
-> >> Since the gic is using dma, would it be reasonable to have all memory
-> >> allocations be requested with the GFP_DMA flag? Otherwise this doesn't
-> >> fully solve the problem for rk356x, where only the lower 4GB range is
-> >> DMA capable, but this tends to get allocated in the upper 4GB on 8GB
-> >> boards.
-> > 
-> > Not really, because there's no fixed definition of what GFP_DMA
-> > actually means, and it may mean nothing (same for GFP_DMA32, which
-> > may or may not be meaningful depending on kernel config and platform
-> > topology). Drivers should really use the DMA API allocation
-> > functions if they care about what they get, which comes back round
-> > to the notion from years ago of converting the ITS driver to a
-> > regular platform driver, so it can benefit from regular DT concepts
-> > like "dma-ranges" automatically.
-> > 
-> > Thanks,
-> > Robin.
-> > 
-> I am looking how to do that conversion to platform driver.
-> But about the communication between irq-gic-v3-its and irq-gic-v3.
-> Should irq-gic-v3-its be a MFD child of irq-gic-v3?
+> Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
+> ---
 
-MFD? I'd rather suggest an VME bus driver. ;-)
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Seriously, this is an interrupt controller. Nothing else. It should
-probe the parent irqdomain, and stack onto that. No parent? Probe
-deferral.
+Best regards,
+Krzysztof
 
-> Or use the component bind/unbind framework?
-
-I don't understand what you mean here.
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
