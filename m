@@ -4,111 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51017C74A44
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 19:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2B6C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 22:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XVde3WB5FoMzwTymoItAbIM8jMLvwf4sPIaAW995bJ4=; b=U+nj7uqHbqsSE7
-	YphcQSb4VeZ5Zf5lsC4jKByoslhB3rJ6vaALOban9FPzqm703IVQZ4e0RcOw6Dsvx1moRpH66k07r
-	uvd0zVafX+umoVcnnawOrsyJurrWEzTQygZv85dcZy08k6FQXWA6nZY7AbEmyZClHNC03G9HU0zmJ
-	bpYCld+BxGngdjLzzYONw52zXRlVpls/pM3qbuAK96tcBUyt3N3mr7HnVpTgolIYNDs/WOmOEWUl5
-	x9g1cdxe11SKXgVGTK85UTCyfHf/wvWdcsQipPTbWQjsR+2wC2kfNFH53Tr14JLL6Us4nWmlTosN3
-	oL4LFdIu4/mjTS1FgbLQ==;
+	List-Owner; bh=XnDcEhxD3WebiCqV71AX5eDvsSih8Jf52eQ4ZR2bNwE=; b=NJx1EyCITajmeM
+	FDozyK6nGX7YpZ03KhgW/RAmAC/L18clvKsx54/jfRMeSt6tfZobPykYYwXU7aYwMBSbUKFrN0xZG
+	C4xVRmiwBdLIEuyVVJuD2eFOBa4Pi853my8L+qfiNQN3HGhSpFYQeaQbMExydcHMgWancL5RgkRHl
+	KDnLOvC+4mboNwipjVIsJMzHnRd5fTicJhGlXG0b3CDuX8NmzVAwXl7/1By+QwMQKHu0/hE9em3rl
+	XpKdarl4vChgvxmZOrkG8MhJMvp3HAi/403ZR1e24TpC8AVwwTE49Ejm38wY/OlTtvKLJEbVgTdGp
+	ItF0df8axCrVIERZ32jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAhb-00BNyv-0u;
-	Tue, 14 Mar 2023 19:52:55 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1pcDXJ-00BjpP-1V;
+	Tue, 14 Mar 2023 22:54:29 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcAhP-00BNrs-2M;
-	Tue, 14 Mar 2023 19:52:45 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id z21so1423559edb.4;
-        Tue, 14 Mar 2023 12:52:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678823561;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=84n+oQ302Lrrw4Xj5iionDKBc2AXr3E7Vl/qNdfFHag=;
-        b=jtMqk3VJbrkKpAHPz/4m10k3iyx5QewNEjy33UoSDCoiTp8RD6GFTQmtaqMT8czpXw
-         +Uk+DEy81/sRL+3LcFriMiCaGN+2szqqX4YISqDiRotNme1tvGk59RHvoSOnTXZ41+H4
-         2fXlBn+jPV377GGy9kXTImtKGbB3Q9yjIbbmPTWqafGJvuomVcnaxDMFP4Kn1LwZ9/Qh
-         6tnk8G5PpSbXhsYwd0NwrROnOAQ3aDVqRWTfN9O+J/cafAD/5ixh9w63wF1MEzxsGni6
-         Q3WwEbB1tZrj6RlW+hV5MrOK4tSO9IEydQF34bmg1ZSZQZNeRAl2iM9Tz9aIGfGnJlAv
-         hIIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678823561;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=84n+oQ302Lrrw4Xj5iionDKBc2AXr3E7Vl/qNdfFHag=;
-        b=VrOly0Kn6WezorT+E28ZPXzXtAgw74D65zxeupCJzmsLCpkRBZfvOSq8ypSZz+XaO6
-         1dB4jKVdhILH1RagLfPXWJ+jOGACNjYdTDmjN17yY0X2gzsgoym/9EDRNZOiNQ9nKxX5
-         arLyBZbygeCccXfK0LkA5VbChJ8lMfYNnOYDNOSigEq0G/ufEXmfmkbyrPNVe6w1xlrN
-         en5umtAc2sssJZxYu9rSHaxNKKQ1JY/yob+ygiyVXZ1lu9FodKlV/tSwMJrZ38RTMok7
-         6vjKLuZdiF64ioLxISUmX4jwDSSsZuW45nhnVWdMmALui3A3K5NbjhxLEPgivPgJvf93
-         BQdw==
-X-Gm-Message-State: AO0yUKW5Tos7k+8Mns6z360tprC13lOxQYZK0BdETHJf1oRoW2MIHoAD
-	HP6euZTY6XPPyhVdAmLzPTU=
-X-Google-Smtp-Source: AK7set9vnDgs0zNzFk64fSk03ZwJbehhJo01RTpV7gmR2nsQclFdjqoiygwh42ihvzlFoYsvReQjWA==
-X-Received: by 2002:a17:907:20f1:b0:924:943d:7181 with SMTP id rh17-20020a17090720f100b00924943d7181mr3347932ejb.51.1678823561589;
-        Tue, 14 Mar 2023 12:52:41 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
-        by smtp.gmail.com with ESMTPSA id ot10-20020a170906ccca00b008e51a1fd7bfsm1538555ejb.172.2023.03.14.12.52.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Mar 2023 12:52:41 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Michael Tretter <m.tretter@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jacopo Mondi <jacopo+renesas@jmondi.org>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang <wenyou.yang@microchip.com>,
- Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Yong Deng <yong.deng@magewell.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject:  Re: [PATCH 18/28] media: platform: sun8i-a83t-mipi-csi2: drop of_match_ptr
- for ID table
-Date: Tue, 14 Mar 2023 20:52:38 +0100
-Message-ID: <4812650.31r3eYUQgx@jernej-laptop>
-In-Reply-To: <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
-References:  <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
+	id 1pcDXF-00Bjnd-1y
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Mar 2023 22:54:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1678834465; x=1710370465;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=4mWBwFLpOe+3Lg11FkokGIfBuGEGGfu3AKmmd26Q/z8=;
+  b=ekeACVuFKY+bpghAdBhj0wxyWyEa9eu8Xx0c9vvJQeFw2LKDeyO+5taE
+   yUmhaIku8GGn3kRRTVguOub8gjySZGSoMOU4UXP+C4e7KPD0gwYpY/oK/
+   PdymhxHTqhXHFhSO/qDdZUW1dMbi4n5zab34ywLxrGjm7rCmU7gSwwcQ/
+   1YILJPWF+EidlwEH/ViV0ZhReEhSwpXU/WKZxllt+5hZQgGyAMw10XIbh
+   3iL0OJDzQ6bOEnyE3Qkrov7uagR3NmpjQnwCVORbJjOOFszbAD0qYBgw4
+   iegvZOzPI6LQsLiIzKrGp8OwcqHDIrWr0/CYCFeUdvtN+vxcwHl8hHb8n
+   g==;
+X-IronPort-AV: E=Sophos;i="5.98,261,1673884800"; 
+   d="scan'208";a="225424643"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
+  by ob1.hgst.iphmx.com with ESMTP; 15 Mar 2023 06:54:20 +0800
+IronPort-SDR: fQZKxUGRS0Wmi5LaffvAuIAtyBuVpRLJamlAX2r4QWRoQan2Olvfa3V+3c7KrVdf5qDzxQ+fJY
+ pFbRuTdGxTkEA7edmBSRsFQDFuhcc3KGDc8p96WxqOUIYLvYNy6ivhAvKR9OzwgS5T1ttxvSs6
+ mqEAq00flzTgwj5tglP1k8Nn1V0OaakAYCzXCre535hMTFOecW4dn8dQhF6LnpkyOlsjDMT3Fu
+ LUaZlFLhrHfo/hxumx6gvLwNVtX9sHS9H3Kf4DkkNTtqsOVnVbYHOnh1ux8yN79AmJprWaciL7
+ mS4=
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Mar 2023 15:10:48 -0700
+IronPort-SDR: DVIpsTvQPjdMXMjatRcOcrpcLqIz8DNtiu0aaabvQEoh1cvSfXnjZgMtlyGoDrfjj9DXeDnzAL
+ aFReEvL7bVbwri4gJyupqdHaoTtxu/c8AAw/0YGH1P4G7JfrQsxtY71VNAK6vxCo7vNHmj6J7+
+ fiRbSwBwnvDKiSjqBIK4jJ9sBUqA6bk9sYpbIWyCdJy6V8xwbII775DkNr4RoJtj6Hm0S7/BYI
+ s5arVePgCcFTjKIzktoRrGa1pIWAoN6Oqkao4joJucZyYzz4X19IDHgpYiKqwIE/fFR/no+65u
+ O1E=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 14 Mar 2023 15:54:21 -0700
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4Pbpk42F6bz1RtW2
+	for <linux-rockchip@lists.infradead.org>; Tue, 14 Mar 2023 15:54:20 -0700 (PDT)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)"
+	header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+	opensource.wdc.com; h=content-transfer-encoding:content-type
+	:in-reply-to:organization:from:references:to:content-language
+	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
+	1678834458; x=1681426459; bh=4mWBwFLpOe+3Lg11FkokGIfBuGEGGfu3AKm
+	md26Q/z8=; b=L3dZG1sWWAikqJiWmwg5q3YwNB+cbQ4rqZ2QbvfzfRdZou7SOQr
+	78lip1o4qHhDVm7kyyner0SSRoqWjsYLH9H8cgGIn5HxkY0fNeF5q6bUFTSAgg/e
+	DPZL2Djv2bF9/ce4aFgHx8SmSBe0TKRUZB9OxwqgoCRBoPbxSSgMRDeY4pn1ERzd
+	sXGtkzEQQXn6SWVRFRVXszUI6m9kkE8LHyn5nsakjNJrSdp30gZhwOW3BXQSiCEP
+	kMmCQKFtfhvxidNbdVQdBS2wsBmdRiFhAvJWeU0f411vGq+h9zZb8TA/XTSEHcKL
+	7d3P0WxkB0lWqwQGWF9bdKC0o288HlyG3xw==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id A54eLQi-8c8i for <linux-rockchip@lists.infradead.org>;
+	Tue, 14 Mar 2023 15:54:18 -0700 (PDT)
+Received: from [10.225.163.84] (unknown [10.225.163.84])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4Pbpjz2ZH9z1RtVm;
+	Tue, 14 Mar 2023 15:54:15 -0700 (PDT)
+Message-ID: <8392a7de-666a-bce6-dc9f-b60d6dd93013@opensource.wdc.com>
+Date: Wed, 15 Mar 2023 07:54:14 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2 0/9] PCI: rockchip: Fix RK3399 PCIe endpoint controller
+ driver
+Content-Language: en-US
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
+ rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mikko Kovanen <mikko.kovanen@aavamobile.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
+ <ecd09f27-b799-4741-2c5a-a2de99776c51@opensource.wdc.com>
+ <CAAEEuhrk4cSC312UiAL3UwoDZ=urrdDcBThcNHd1dqnAuJTzAw@mail.gmail.com>
+ <3c4ed614-f088-928f-2807-deaa5e4b668a@opensource.wdc.com>
+ <CAAEEuhqk0scWd3wFbVb9fSgHxPBKotpEPNi+YPG4GD9vLO94mw@mail.gmail.com>
+From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Organization: Western Digital Research
+In-Reply-To: <CAAEEuhqk0scWd3wFbVb9fSgHxPBKotpEPNi+YPG4GD9vLO94mw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_125243_885884_EA74E5D4 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20230314_155425_786949_E0A1559B 
+X-CRM114-Status: GOOD (  37.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,39 +127,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RG5lIG5lZGVsamEsIDEyLiBtYXJlYyAyMDIzIG9iIDE0OjEzOjA4IENFVCBqZSBLcnp5c3p0b2Yg
-S296bG93c2tpIG5hcGlzYWwoYSk6Cj4gVGhlIGRyaXZlciBjYW4gbWF0Y2ggb25seSB2aWEgdGhl
-IERUIHRhYmxlIHNvIHRoZSB0YWJsZSBzaG91bGQgYmUgYWx3YXlzCj4gdXNlZCBhbmQgdGhlIG9m
-X21hdGNoX3B0ciBkb2VzIG5vdCBoYXZlIGFueSBzZW5zZSAodGhpcyBhbHNvIGFsbG93cyBBQ1BJ
-Cj4gbWF0Y2hpbmcgdmlhIFBSUDAwMDEsIGV2ZW4gdGhvdWdoIGl0IG1pZ2h0IG5vdCBiZSByZWxl
-dmFudCBoZXJlKS4gIFRoaXMKPiBhbHNvIGZpeGVzICFDT05GSUdfT0YgZXJyb3I6Cj4gCj4gIAo+
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3VueGkvc3VuOGktYTgzdC1taXBpLWNzaTIvc3VuOGlf
-YTgzdF9taXBpX2NzaTIuYzo4MQo+IDg6MzQ6IGVycm9yOiDigJhzdW44aV9hODN0X21pcGlfY3Np
-Ml9vZl9tYXRjaOKAmSBkZWZpbmVkIGJ1dCBub3QgdXNlZAo+IFstV2Vycm9yPXVudXNlZC1jb25z
-dC12YXJpYWJsZT1dCj4gCj4gU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6
-eXN6dG9mLmtvemxvd3NraUBsaW5hcm8ub3JnPgo+IC0tLQo+ICAuLi4vcGxhdGZvcm0vc3VueGkv
-c3VuOGktYTgzdC1taXBpLWNzaTIvc3VuOGlfYTgzdF9taXBpX2NzaTIuYyAgfCAyICstCj4gIDEg
-ZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAoKQWNrZWQtYnk6
-IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+CgpCZXN0IHJlZ2FyZHMs
-Ckplcm5lagoKPiBkaWZmIC0tZ2l0Cj4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3N1bnhpL3N1
-bjhpLWE4M3QtbWlwaS1jc2kyL3N1bjhpX2E4M3RfbWlwaV9jc2kyLmMKPiBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vc3VueGkvc3VuOGktYTgzdC1taXBpLWNzaTIvc3VuOGlfYTgzdF9taXBpX2Nz
-aTIuYwo+IGluZGV4IGNkMmU5MmFlMjI5My4uMWYwY2M3YjFiYTQ3IDEwMDY0NAo+IC0tLQo+IGEv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zdW54aS9zdW44aS1hODN0LW1pcGktY3NpMi9zdW44aV9h
-ODN0X21pcGlfY3NpMi5jCj4gKysrCj4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3N1bnhpL3N1
-bjhpLWE4M3QtbWlwaS1jc2kyL3N1bjhpX2E4M3RfbWlwaV9jc2kyLmMKPiBAQCAtODI2LDcgKzgy
-Niw3IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyCj4gc3VuOGlfYTgzdF9taXBpX2Nz
-aTJfcGxhdGZvcm1fZHJpdmVyID0geyAucmVtb3ZlCT0KPiBzdW44aV9hODN0X21pcGlfY3NpMl9y
-ZW1vdmUsCj4gIAkuZHJpdmVyCT0gewo+ICAJCS5uYW1lCQk9IFNVTjhJX0E4M1RfTUlQSV9DU0ky
-X05BTUUsCj4gLQkJLm9mX21hdGNoX3RhYmxlCT0gCm9mX21hdGNoX3B0cihzdW44aV9hODN0X21p
-cGlfY3NpMl9vZl9tYXRjaCksCj4gKwkJLm9mX21hdGNoX3RhYmxlCT0gc3VuOGlfYTgzdF9taXBp
-X2NzaTJfb2ZfbWF0Y2gsCj4gIAkJLnBtCQk9ICZzdW44aV9hODN0X21pcGlfY3NpMl9wbV9vcHMs
-Cj4gIAl9LAo+ICB9OwoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On 3/14/23 23:53, Rick Wertenbroek wrote:
+> Hello Damien,
+> I also noticed random issues I suspect to be related to link status or power
+> state, in my case it sometimes happens that the BARs (0-6) in the config
+> space get reset to 0. This is not due to the driver because the driver never
+> ever accesses these registers (@0xfd80'0010 to 0xfd80'0024 TRM
+> 17.6.4.1.5-17.6.4.1.10).
+> I don't think the host rewrites them because lspci shows the BARs as
+> "[virtual]" which means they have been assigned by host but have 0
+> value in the endpoint device (when lspci rereads the PCI config header).
+> See https://github.com/pciutils/pciutils/blob/master/lspci.c#L422
+> 
+> So I suspect the controller detects something related to link status or
+> power state and internally (in hardware) resets those registers. It's not
+> the kernel code, it never accesses these regs. The problem occurs
+> very randomly, sometimes in a few seconds, sometimes I cannot see
+> it for a whole day.
+> 
+> Is this similar to what you are experiencing ?
+
+Yes. I sometimes get NMIs after starting the function driver, when my function
+driver starts probing the bar registers after seeing the host changing one
+register. And the link also comes up with 4 lanes or 2 lanes, random.
+
+> Do you have any idea as to what could make these registers to be reset
+> (I could not find anything in the TRM, also nothing in the driver seems to
+> cause it).
+
+My thinking is that since we do not have a linkup notifier, the function driver
+starts setting things up without the link established (e.g. when the host is
+still powered down). Once the host start booting and pic link is established,
+things may be reset in the hardware... That is the only thing I can think of.
+
+And yes, there are definitely something going on with the power states too I
+think: if I let things idle for a few minutes, everything stops working: no
+activity seen on the endpoint over the BARs. I tried enabling the sys and client
+interrupts to see if I can see power state changes, or if clearing the
+interrupts helps (they are masked by default), but no change. And booting the
+host with pci_aspm=off does not help either. Also tried to change all the
+capabilities related to link & power states to "off" (not supported), and no
+change either. So currently, I am out of ideas regarding that one.
+
+I am trying to make progress on my endpoint driver (nvme function) to be sure it
+is not a bug there that breaks things. I may still have something bad because
+when I enable the BIOS native NVMe driver on the host, either the host does not
+boot, or grub crashes with memory corruptions. Overall, not yet very stable and
+still trying to sort out the root cause of that.
+
+
+> Do you want me to include this patch in the V3 series or will you
+> submit another patch series for the changes you applied on the RK3399 PCIe
+> endpoint controller ? I don't know if you prefer to build the V3
+> together or if you
+> prefer to submit another patch series on top of mine. Let me know.
+
+If it is no trouble, please include it with your series. Will be easier to
+retest everything together :)
+
+-- 
+Damien Le Moal
+Western Digital Research
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
