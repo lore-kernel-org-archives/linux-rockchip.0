@@ -4,93 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 394A0C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 16:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E7A5C6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 16:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kky8ywhYMhLKZmWbyl3xXGBA+n7G86jLUGvSPseZQE0=; b=njlONwemZxAzEpi3/0pjRpja7B
-	J+RD7EF1hUofHvgdi5Pg7Eifi3HfyfBu4wgXKYBX4w0n7ea8ZqZkH5GygEHkW8NAHdS4AsS5C6NxP
-	6vKkv3qKc14jg7814tAjkKh5iCI0UjFyqiSjhiJirywoLGwTB0mTbTmYiQ76zkRFxUYHN8ajPKJpu
-	uYZP1yKSH0x3HcJWPp8fQGGEyJ0qJXnjUe9EF4ZGXLX+UtiLt/KgjfNCuU4WD5M/VgfO/hoZrbqx9
-	n6eqHXVhpGAYZMQHYMirIBxdypn055cZZr1FwWmpTSIGkBxHSdLv1pSUSzsGVnYxM+Xkd4EWJsPZ7
-	Im5BaTjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lLzj0biRAu8llc90PPgc/6SxE9Wdcb3nfsWf/l5sYqI=; b=gcyxM7oXtLFfWt
+	/25O+znXDoJPJ/DNeNZM7SHAeUI/C0k/uABJib6lgs8++ycWJbxZJmXe8yAqmTHTEzWth8RvF49Ys
+	Ia86Szz640myMexrOo8Ntp5pptJt0M8Roha20692kTCzK4yXnfntZe2IxPtxvFaTqfhNY3GbRY2yr
+	a6sX/08XyZv3D2HgzLQqjgqE7Oe6f4qSlZV7vANIz7fe2RpQrc4ihXqL2kUEr2voC0fiD8u4G9QNJ
+	AA6LBzzQRYs+xKXrpjT5JfQfExtzYiCSBEeGk+MVEKbRqo4goFRFqdHN+Tzkxic7QlxxbrXuEsNSr
+	gYrHt5VPXfpthNBe/fUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc795-00AjWP-2R;
-	Tue, 14 Mar 2023 16:05:03 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1pc7CT-00AkQ1-03;
+	Tue, 14 Mar 2023 16:08:33 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc78z-00AjQf-0g;
-	Tue, 14 Mar 2023 16:04:58 +0000
-Received: (Authenticated sender: paul.kocialkowski@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 5259EE000A;
-	Tue, 14 Mar 2023 16:04:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1678809893;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=c2+H7wt3YGMoJy1kI08Oezx1jFQC9X+jtLDpoYMlXss=;
-	b=ohgih14REmXqm2YF0JReNRyzYFa6p8DeLxCOosBOjCP69WgwLl4SrXk9XakcXKF0kd9xwy
-	iMCvNea8EW5AtPT1hqpXjAuy/hc08syMWVHptjb3t3f/VlI/gwsFTpM/GkF3gADXnCx7Sa
-	heStzYo3ZsO4uFShLISuSNrbNPDvvUn/SwHvbVuXlTsShQXYB2aIQPMGAR3hifMfAzym1f
-	vvExPpy3d7rvd/a5XYG/A7SnTG3bNwlMZpT47oWKVFLprwab4fy8qdRnSHXwrSrhA3RsMQ
-	HriELQR7raePfh3IEayUhBeiw+dLQhEZAA6NXmgA3hYX14DWwAULtDN/5eNAeg==
-Date: Tue, 14 Mar 2023 17:04:48 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Rui Miguel Silva <rmfrfs@gmail.com>,
-	Wenyou Yang <wenyou.yang@microchip.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Yong Deng <yong.deng@magewell.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	"Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 18/28] media: platform: sun8i-a83t-mipi-csi2: drop
- of_match_ptr for ID table
-Message-ID: <ZBCbIILFhcDMIg+h@aptenodytes>
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
- <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
+	id 1pc7CN-00AkO2-2G;
+	Tue, 14 Mar 2023 16:08:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id EE023B81A1F;
+	Tue, 14 Mar 2023 16:08:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F2D7C4339B;
+	Tue, 14 Mar 2023 16:08:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678810104;
+	bh=wA9DCnSggZ7AMT9yojgtSsTiqRDWjhLpUyEUud8IvmE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dAbWryZpUw6TZWSzeXV/L6G7XErOuD5W4Xe6WLiyuLNeL5oEXrwhuvOWjDanp/69q
+	 hgoQeZ5BmogcMEB440DbybHqh9Egk7TDdok25Z9tVdHbNLFe3es76W8aPjqv6FZ0wq
+	 kUmqHRPOsl67nHr1DQqXGxnXQcqheiprkRAhmfm6xlwY6nN/6z4kGsPjPhaACjCjHk
+	 cbEtMPzPOssPONhgcuAWztD9X5JkNuK+AN/wX3wPmtVss/ayeNF1dBIqjd8YBZoe+k
+	 BdIy+OoFmSKUHA0dV4YWkvvGdkLgebsG+aJ8geyRfS4suXrOTRHAlII9BwhvPH6i+o
+	 sBBgS3bHSLV9g==
+Date: Tue, 14 Mar 2023 09:08:21 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Sascha Hauer <sha@pengutronix.de>,
+	kernel test robot <lkp@intel.com>,
+	Dan Carpenter <error27@gmail.com>, llvm@lists.linux.dev
+Subject: Re: [PATCH v3 1/6] drm/rockchip: vop2: initialize possible_crtcs
+ properly
+Message-ID: <20230314160821.GA13416@dev-arch.thelio-3990X>
+References: <20230124054706.3921383-1-michael.riesch@wolfvision.net>
+ <20230124054706.3921383-2-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
-In-Reply-To: <20230312131318.351173-18-krzysztof.kozlowski@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20230124054706.3921383-2-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_090457_517618_24996FC7 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20230314_090828_028951_79590039 
+X-CRM114-Status: GOOD (  27.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,102 +77,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0023351925714535355=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Michael,
 
---===============0023351925714535355==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VxKfudML6kIseEz3"
-Content-Disposition: inline
-
-
---VxKfudML6kIseEz3
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Krzysztof,
-
-On Sun 12 Mar 23, 14:13, Krzysztof Kozlowski wrote:
-> The driver can match only via the DT table so the table should be always
-> used and the of_match_ptr does not have any sense (this also allows ACPI
-> matching via PRP0001, even though it might not be relevant here).  This
-> also fixes !CONFIG_OF error:
->=20
->   drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.=
-c:818:34: error: =E2=80=98sun8i_a83t_mipi_csi2_of_match=E2=80=99 defined bu=
-t not used [-Werror=3Dunused-const-variable=3D]
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Looks good to me:
-Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-
-Thanks !
-
-Paul
-
+On Tue, Jan 24, 2023 at 06:47:01AM +0100, Michael Riesch wrote:
+> The variable possible_crtcs is only initialized for primary and
+> overlay planes. Since the VOP2 driver only supports these plane
+> types at the moment, the current code is safe. However, in order
+> to provide a future-proof solution, fix the initialization of
+> the variable.
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reported-by: Dan Carpenter <error27@gmail.com>
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 > ---
->  .../platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_csi2.c  | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t=
-_mipi_csi2.c b/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t=
-_mipi_csi2.c
-> index cd2e92ae2293..1f0cc7b1ba47 100644
-> --- a/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_c=
-si2.c
-> +++ b/drivers/media/platform/sunxi/sun8i-a83t-mipi-csi2/sun8i_a83t_mipi_c=
-si2.c
-> @@ -826,7 +826,7 @@ static struct platform_driver sun8i_a83t_mipi_csi2_pl=
-atform_driver =3D {
->  	.remove	=3D sun8i_a83t_mipi_csi2_remove,
->  	.driver	=3D {
->  		.name		=3D SUN8I_A83T_MIPI_CSI2_NAME,
-> -		.of_match_table	=3D of_match_ptr(sun8i_a83t_mipi_csi2_of_match),
-> +		.of_match_table	=3D sun8i_a83t_mipi_csi2_of_match,
->  		.pm		=3D &sun8i_a83t_mipi_csi2_pm_ops,
->  	},
->  };
-> --=20
-> 2.34.1
->=20
+> v3:
+>  - no changes
+> v2:
+>  - new patch
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 8cecf81a5ae0..374ef821b453 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -2322,10 +2322,11 @@ static int vop2_create_crtc(struct vop2 *vop2)
+>  				/* change the unused primary window to overlay window */
+>  				win->type = DRM_PLANE_TYPE_OVERLAY;
+>  			}
+> -		}
+> -
+> -		if (win->type == DRM_PLANE_TYPE_OVERLAY)
+> +		} else if (win->type == DRM_PLANE_TYPE_OVERLAY) {
+>  			possible_crtcs = (1 << nvps) - 1;
+> +		} else {
+> +			possible_crtcs = 0;
+> +		}
+>  
+>  		ret = vop2_plane_init(vop2, win, possible_crtcs);
+>  		if (ret) {
+> -- 
+> 2.30.2
+> 
 
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+This patch is now in -next as commit 368419a2d429 ("drm/rockchip: vop2:
+initialize possible_crtcs properly") and it actually appears to
+introduce a path where possible_crtcs could be used uninitialized.
 
---VxKfudML6kIseEz3
-Content-Type: application/pgp-signature; name="signature.asc"
+  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2316:8: error: variable 'possible_crtcs' is used uninitialized whenever 'if' condition is false [-Werror,-Wsometimes-uninitialized]
+                          if (vp) {
+                              ^~
+  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2330:36: note: uninitialized use occurs here
+                  ret = vop2_plane_init(vop2, win, possible_crtcs);
+                                                   ^~~~~~~~~~~~~~
+  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2316:4: note: remove the 'if' if its condition is always true
+                          if (vp) {
+                          ^~~~~~~~
+  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2298:21: note: initialize the variable 'possible_crtcs' to silence this warning
+                  u32 possible_crtcs;
+                                    ^
+                                     = 0
+  1 error generated.
 
------BEGIN PGP SIGNATURE-----
+Prior to this change, if that else path was hit, clang recognized based on
+the assignment that the next if statement would always be true. Now, if
+the else path is taken, the possible_crtcs assignment will be missed. Is
+that intentional?
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmQQmyAACgkQ3cLmz3+f
-v9FJ+wf/Vs+zvL4HtIgKv1HYr45R/bI+XzRQ4edLJ+86siTyMIe6/xFs4hPJqnc/
-Kuop0jFCkE6h2zK7PLMPUxXZrLAThJRzd6YcMHKFN2JutU93IMSmu5Uz6R7NvnOd
-a0EpxMMQ8VZw+1bth4K5ttM6ZOI7uNuhD6ipUvXq7QLifzs9UJ7392zOtafnn0Sd
-vHbZ+ADRZzdCYpp4MjkR5rMxMyxBUpQ8PchA4eANo+Uq+gCKQWkoWGW9DSQ84eJN
-I8+xB1hddqMNyazPRNC+r01B6GydbodK+KdDjbE8xgLGy7Q1V4NPbmV1UkH+p+Oa
-pO1TUIhFzI6T+zb/bNmkmLiKPBkdmA==
-=crX/
------END PGP SIGNATURE-----
-
---VxKfudML6kIseEz3--
-
-
---===============0023351925714535355==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Cheers,
+Nathan
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0023351925714535355==--
-
