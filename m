@@ -4,73 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FCB3C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 13:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C89EC6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 13:27:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fjec0xb7eA0jf1WCAst6ljaCeNlH5Btuj2JbFg0fyn4=; b=lPnUnWqK4tyd5W
-	R1qi5ZDmlA1D2daaIBl1vKz4eZByuUcQ4wMBbYXbUcdEvxtsaz014o62MJLuTx4rYdaGrB8q3EwM/
-	9G4Rx4PbChcmPipAriIC2Zj0KA5REd/1DdYtBohFvGW4fXu3j7W5puHUU94ratIa87PLcJXwAZC6S
-	KabIjLwDR6JO/OBuFpTPD+QR8qdX+QkmdQFmz/Vla59VbLCL0GKOXB1Y2R56wfsD/4WEZoScFXaVy
-	oqCGPexNMo2dZ6xkfaCk+YrQcxUq5LvXkQz7doKNOeCOovEFGjdJyr/0HLPjU0Rp5aq4NnBKVe2BE
-	mEVg0vzg83VR3X6caj6w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/zm4BW3CGWxj5UuBO045kXp2+xlqa/c2KX/kEpgCr2o=; b=DF89RlUzkX/kERGldCcYQAWfSD
+	tSa7n1kaTEzmaZ75rA9PslJ/G7CpiNnCznvaHFXSXjReh5RocMZGn+rE1s8LP/afl4RGVFeA20eNm
+	u/jfwHkMqwga92c1BONweQcOa/XueoLFENU0k9GTE8hX6gfgLOn9JYQKhlcAltrhOoBFuY2AzrBp/
+	F/zsi1mFBZEJ7UbUISS8tEekcDs9ycare+VAJK1TUvfJ7leycaqP6e7mvm5P+A/EV2osuEEEbvVto
+	6jfLu61TDa95x/bw7vHR2BigyZ9F7M5hkVVQo1j2B16Z2qPmCO51/mI8IsfVSGxu63hPU0MJ/Eyb9
+	UEr8J0+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc4ep-00AHpS-0S;
-	Tue, 14 Mar 2023 13:25:39 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pc4g0-00AI9L-0g;
+	Tue, 14 Mar 2023 13:26:52 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc4ek-00AHmj-1G;
-	Tue, 14 Mar 2023 13:25:36 +0000
-Received: from [192.168.86.246] (cpc87451-finc19-2-0-cust61.4-2.cable.virginm.net [82.11.51.62])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1pc4ft-00AI6C-31;
+	Tue, 14 Mar 2023 13:26:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: tanureal)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6C51C660036A;
-	Tue, 14 Mar 2023 13:25:30 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678800330;
-	bh=3Q9Wk1fkKtkxc1DaKV294b/HrXukUV6KK5bXqHC2FLQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Yhq4ySgX78GYfKdhwkJ4cf+2fmyAhwykSsKt51YyCkCKw4x2zGEnFzMme38fWlbEQ
-	 0k+opx9wQfa+7o0Z9w95XUbbOy/1dq8Z1rwY+e47dwsZqKfQpCY8nu+jymSUawLqxP
-	 ohqk6g9CQmZUY0sW4OSUbTVOzDeJf6ygS3AW32qN6iEN/KmQdznlpC5PdFUjr7k/bD
-	 D7YYvFn4bzsKAQLD2ETwiLvF/IL78rg+dG93m9ZhWAWnA6aVYbKaM8gNdex5nxnjPh
-	 DWG+9OKAArr1ikA0myJ6WAaSnO5OuGnXO2L+ZiT9X905vkugTZNbeOtMit77e3EoTF
-	 IeDkeL3BFYZYw==
-Message-ID: <93e4d83d-9559-c987-d93b-c49572413275@collabora.com>
-Date: Tue, 14 Mar 2023 13:25:28 +0000
+	by ams.source.kernel.org (Postfix) with ESMTPS id C3FD6B811F5;
+	Tue, 14 Mar 2023 13:26:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68B5C433EF;
+	Tue, 14 Mar 2023 13:26:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1678800402;
+	bh=rfEnNx/AtmKQ6+j2cB2Tu1ghvgv+nXYlVjsWMHYFeWs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HQdvzfIbZzXtrHVHeJg8joac91CkFNUhUzka7UIgOQ3I0FVOwkfTcWeroLJ31/N7O
+	 01OIfdO5oayYpm8+UDO0/KWpqhZlwRH++bOxN+0CTXQ6T/vAaAhHIWq3PWORYgNdu+
+	 z8HPP+L3vWZpC3QqInApRRu4W0ND12eVv9xd3zqw9nh3ErFL+dJoUC2MTlBkeIT8mz
+	 yRgg+BoDNQO8M885SHiRpZ4NlCsM74IxZcOG+swSKa0mEd8MzUkgN3Wh2np3OsVUhq
+	 wKWf8t4NW/4d/W9C03p5tiQl8tBdkxFnmud7ENuSVhpviYrfKxe4rpki0XfhGzz31+
+	 O0suXgkmHMBgg==
+Date: Tue, 14 Mar 2023 13:26:34 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kamal Dasu <kdasu.kdev@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi@etezian.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 01/16] spi: armada-3700: Drop of_match_ptr for ID table
+Message-ID: <5782b7a2-3942-4bed-9a70-55a43833f69c@sirena.org.uk>
+References: <20230310222857.315629-1-krzysztof.kozlowski@linaro.org>
+ <7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk>
+ <08e98d1d-e79b-fe7e-0d59-827f72277fc5@linaro.org>
+ <9bf3dd37-71c2-4118-a8da-40e656b42d10@sirena.org.uk>
+ <ed293caf-e787-a29e-f1c5-bdcaf1aa483a@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 1/7] irqchip/gic-v3: Add a DMA Non-Coherent flag
-To: Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Thomas Gleixner <tglx@linutronix.de>,
- Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Krzysztof Wilczynski <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Qu Wenruo <wqu@suse.com>, Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, kernel@collabora.com
-References: <20230310080518.78054-1-lucas.tanure@collabora.com>
- <20230310080518.78054-2-lucas.tanure@collabora.com>
- <CAMdYzYpL7V6udw=T7ZChTFi0xOj1tb-5CVHb84u1pL4kj3eDZA@mail.gmail.com>
- <3db23e11-5fac-f36e-c89e-93c4e8ac2d98@arm.com>
-Content-Language: en-US
-From: Lucas Tanure <lucas.tanure@collabora.com>
-In-Reply-To: <3db23e11-5fac-f36e-c89e-93c4e8ac2d98@arm.com>
+In-Reply-To: <ed293caf-e787-a29e-f1c5-bdcaf1aa483a@linaro.org>
+X-Cookie: For office use only.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_062534_775118_379F2349 
-X-CRM114-Status: GOOD (  23.86  )
+X-CRM114-CacheID: sfid-20230314_062646_282644_0DBA498E 
+X-CRM114-Status: GOOD (  24.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,125 +90,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6782341931116316778=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTAtMDMtMjAyMyAxMjowNCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9uIDIwMjMtMDMtMTAg
-MTE6NDEsIFBldGVyIEdlaXMgd3JvdGU6Cj4+IE9uIEZyaSwgTWFyIDEwLCAyMDIzIGF0IDM6MDUg
-QU0gTHVjYXMgVGFudXJlIAo+PiA8bHVjYXMudGFudXJlQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+
-Pj4KPj4+IFRoZSBHSUM2MDAgaW50ZWdyYXRpb24gaW4gUkszNTZ4LCB1c2VkIGluIHJrMzU4OCwg
-ZG9lc24ndCBzdXBwb3J0Cj4+PiBhbnkgb2YgdGhlIHNoYXJlYWJpbGl0eSBvciBjYWNoZWFiaWxp
-dHkgYXR0cmlidXRlcywgYW5kIHJlcXVpcmVzCj4+PiBib3RoIHZhbHVlcyB0byBiZSBzZXQgdG8g
-MGIwMCBmb3IgYWxsIHRoZSBJVFMgYW5kIFJlZGlzdHJpYnV0b3IKPj4+IHRhYmxlcy4KPj4+Cj4+
-PiBUaGlzIGlzIGxvb3NlbHkgYmFzZWQgb24gcHJpb3Igd29yayBmcm9tIFhpYW9Eb25nIEh1YW5n
-IGFuZAo+Pj4gUGV0ZXIgR2VpcyBmaXhpbmcgdGhpcyBpc3N1ZSBzcGVjaWZpY2FsbHkgZm9yIFJv
-Y2tjaGlwIDM1NnguCj4+Cj4+IEdvb2QgTW9ybmluZywKPj4KPj4gU2luY2UgdGhlIGdpYyBpcyB1
-c2luZyBkbWEsIHdvdWxkIGl0IGJlIHJlYXNvbmFibGUgdG8gaGF2ZSBhbGwgbWVtb3J5Cj4+IGFs
-bG9jYXRpb25zIGJlIHJlcXVlc3RlZCB3aXRoIHRoZSBHRlBfRE1BIGZsYWc/IE90aGVyd2lzZSB0
-aGlzIGRvZXNuJ3QKPj4gZnVsbHkgc29sdmUgdGhlIHByb2JsZW0gZm9yIHJrMzU2eCwgd2hlcmUg
-b25seSB0aGUgbG93ZXIgNEdCIHJhbmdlIGlzCj4+IERNQSBjYXBhYmxlLCBidXQgdGhpcyB0ZW5k
-cyB0byBnZXQgYWxsb2NhdGVkIGluIHRoZSB1cHBlciA0R0Igb24gOEdCCj4+IGJvYXJkcy4KPiAK
-PiBOb3QgcmVhbGx5LCBiZWNhdXNlIHRoZXJlJ3Mgbm8gZml4ZWQgZGVmaW5pdGlvbiBvZiB3aGF0
-IEdGUF9ETUEgYWN0dWFsbHkgCj4gbWVhbnMsIGFuZCBpdCBtYXkgbWVhbiBub3RoaW5nIChzYW1l
-IGZvciBHRlBfRE1BMzIsIHdoaWNoIG1heSBvciBtYXkgbm90IAo+IGJlIG1lYW5pbmdmdWwgZGVw
-ZW5kaW5nIG9uIGtlcm5lbCBjb25maWcgYW5kIHBsYXRmb3JtIHRvcG9sb2d5KS4gRHJpdmVycyAK
-PiBzaG91bGQgcmVhbGx5IHVzZSB0aGUgRE1BIEFQSSBhbGxvY2F0aW9uIGZ1bmN0aW9ucyBpZiB0
-aGV5IGNhcmUgYWJvdXQgCj4gd2hhdCB0aGV5IGdldCwgd2hpY2ggY29tZXMgYmFjayByb3VuZCB0
-byB0aGUgbm90aW9uIGZyb20geWVhcnMgYWdvIG9mIAo+IGNvbnZlcnRpbmcgdGhlIElUUyBkcml2
-ZXIgdG8gYSByZWd1bGFyIHBsYXRmb3JtIGRyaXZlciwgc28gaXQgY2FuIAo+IGJlbmVmaXQgZnJv
-bSByZWd1bGFyIERUIGNvbmNlcHRzIGxpa2UgImRtYS1yYW5nZXMiIGF1dG9tYXRpY2FsbHkuCj4g
-Cj4gVGhhbmtzLAo+IFJvYmluLgo+IApJIGFtIGxvb2tpbmcgaG93IHRvIGRvIHRoYXQgY29udmVy
-c2lvbiB0byBwbGF0Zm9ybSBkcml2ZXIuCkJ1dCBhYm91dCB0aGUgY29tbXVuaWNhdGlvbiBiZXR3
-ZWVuIGlycS1naWMtdjMtaXRzIGFuZCBpcnEtZ2ljLXYzLgpTaG91bGQgaXJxLWdpYy12My1pdHMg
-YmUgYSBNRkQgY2hpbGQgb2YgaXJxLWdpYy12Mz8KT3IgdXNlIHRoZSBjb21wb25lbnQgYmluZC91
-bmJpbmQgZnJhbWV3b3JrPwoKPj4KPj4gVmVyeSBSZXNwZWN0ZnVsbHksCj4+IFBldGVyIEdlaXMK
-Pj4KPj4+Cj4+PiBTdWdnZXN0ZWQtYnk6IFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5QGFybS5j
-b20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBMdWNhcyBUYW51cmUgPGx1Y2FzLnRhbnVyZUBjb2xsYWJv
-cmEuY29tPgo+Pj4gLS0tCj4+PiDCoCBkcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My1pdHMuYyB8
-IDIyICsrKysrKysrKysrKysrKysrKysrKysKPj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCAyMiBpbnNl
-cnRpb25zKCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaXJxY2hpcC9pcnEtZ2ljLXYz
-LWl0cy5jIAo+Pj4gYi9kcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My1pdHMuYwo+Pj4gaW5kZXgg
-OTczZWRlMDE5N2UzLi4xYzMzNGRmZWI2NDcgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2lycWNo
-aXAvaXJxLWdpYy12My1pdHMuYwo+Pj4gKysrIGIvZHJpdmVycy9pcnFjaGlwL2lycS1naWMtdjMt
-aXRzLmMKPj4+IEBAIC00Miw2ICs0Miw3IEBACj4+PiDCoCAjZGVmaW5lIElUU19GTEFHU19DTURR
-X05FRURTX0ZMVVNISU5HwqDCoMKgwqDCoMKgwqDCoMKgICgxVUxMIDw8IDApCj4+PiDCoCAjZGVm
-aW5lIElUU19GTEFHU19XT1JLQVJPVU5EX0NBVklVTV8yMjM3NcKgwqDCoMKgwqAgKDFVTEwgPDwg
-MSkKPj4+IMKgICNkZWZpbmUgSVRTX0ZMQUdTX1dPUktBUk9VTkRfQ0FWSVVNXzIzMTQ0wqDCoMKg
-wqDCoCAoMVVMTCA8PCAyKQo+Pj4gKyNkZWZpbmUgSVRTX0ZMQUdTX0RNQV9OT05fQ09IRVJFTlTC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKDFVTEwgPDwgMykKPj4+Cj4+PiDCoCAjZGVmaW5lIFJE
-SVNUX0ZMQUdTX1BST1BCQVNFX05FRURTX0ZMVVNISU5HwqDCoMKgICgxIDw8IDApCj4+PiDCoCAj
-ZGVmaW5lIFJESVNUX0ZMQUdTX1JEX1RBQkxFU19QUkVBTExPQ0FURUTCoMKgwqDCoCAoMSA8PCAx
-KQo+Pj4gQEAgLTIzNTksNiArMjM2MCwxMyBAQCBzdGF0aWMgaW50IGl0c19zZXR1cF9iYXNlcihz
-dHJ1Y3QgaXRzX25vZGUgCj4+PiAqaXRzLCBzdHJ1Y3QgaXRzX2Jhc2VyICpiYXNlciwKPj4+IMKg
-wqDCoMKgwqDCoMKgwqAgaXRzX3dyaXRlX2Jhc2VyKGl0cywgYmFzZXIsIHZhbCk7Cj4+PiDCoMKg
-wqDCoMKgwqDCoMKgIHRtcCA9IGJhc2VyLT52YWw7Cj4+Pgo+Pj4gK8KgwqDCoMKgwqDCoCBpZiAo
-aXRzLT5mbGFncyAmIElUU19GTEFHU19ETUFfTk9OX0NPSEVSRU5UKSB7Cj4+PiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAodG1wICYgR0lUU19CQVNFUl9TSEFSRUFCSUxJVFlfTUFT
-SykKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB0bXAg
-Jj0gfkdJVFNfQkFTRVJfU0hBUkVBQklMSVRZX01BU0s7Cj4+PiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBlbHNlCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgZ2ljX2ZsdXNoX2RjYWNoZV90b19wb2MoYmFzZSwgCj4+PiBQQUdFX09SREVSX1RP
-X1NJWkUob3JkZXIpKTsKPj4+ICvCoMKgwqDCoMKgwqAgfQo+Pj4gKwo+Pj4gwqDCoMKgwqDCoMKg
-wqDCoCBpZiAoKHZhbCBeIHRtcCkgJiBHSVRTX0JBU0VSX1NIQVJFQUJJTElUWV9NQVNLKSB7Cj4+
-PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKgo+Pj4gwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCAqIFNoYXJlYWJpbGl0eSBkaWRuJ3Qgc3RpY2suIEp1c3QgdXNl
-Cj4+PiBAQCAtMzA1NSw2ICszMDYzLDcgQEAgc3RhdGljIHU2NCBpdHNfY2xlYXJfdnBlbmRfdmFs
-aWQodm9pZCBfX2lvbWVtIAo+Pj4gKnZscGlfYmFzZSwgdTY0IGNsciwgdTY0IHNldCkKPj4+Cj4+
-PiDCoCBzdGF0aWMgdm9pZCBpdHNfY3B1X2luaXRfbHBpcyh2b2lkKQo+Pj4gwqAgewo+Pj4gK8Kg
-wqDCoMKgwqDCoCBzdHJ1Y3QgaXRzX25vZGUgKml0cyA9IGxpc3RfZmlyc3RfZW50cnkoJml0c19u
-b2Rlcywgc3RydWN0IAo+Pj4gaXRzX25vZGUsIGVudHJ5KTsKPj4+IMKgwqDCoMKgwqDCoMKgwqAg
-dm9pZCBfX2lvbWVtICpyYmFzZSA9IGdpY19kYXRhX3JkaXN0X3JkX2Jhc2UoKTsKPj4+IMKgwqDC
-oMKgwqDCoMKgwqAgc3RydWN0IHBhZ2UgKnBlbmRfcGFnZTsKPj4+IMKgwqDCoMKgwqDCoMKgwqAg
-cGh5c19hZGRyX3QgcGFkZHI7Cj4+PiBAQCAtMzA5Niw2ICszMTA1LDkgQEAgc3RhdGljIHZvaWQg
-aXRzX2NwdV9pbml0X2xwaXModm9pZCkKPj4+IMKgwqDCoMKgwqDCoMKgwqAgZ2ljcl93cml0ZV9w
-cm9wYmFzZXIodmFsLCByYmFzZSArIEdJQ1JfUFJPUEJBU0VSKTsKPj4+IMKgwqDCoMKgwqDCoMKg
-wqAgdG1wID0gZ2ljcl9yZWFkX3Byb3BiYXNlcihyYmFzZSArIEdJQ1JfUFJPUEJBU0VSKTsKPj4+
-Cj4+PiArwqDCoMKgwqDCoMKgIGlmIChpdHMtPmZsYWdzICYgSVRTX0ZMQUdTX0RNQV9OT05fQ09I
-RVJFTlQpCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB0bXAgJj0gfkdJQ1JfUFJP
-UEJBU0VSX1NIQVJFQUJJTElUWV9NQVNLOwo+Pj4gKwo+Pj4gwqDCoMKgwqDCoMKgwqDCoCBpZiAo
-KHRtcCBeIHZhbCkgJiBHSUNSX1BST1BCQVNFUl9TSEFSRUFCSUxJVFlfTUFTSykgewo+Pj4gwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKCEodG1wICYgR0lDUl9QUk9QQkFTRVJf
-U0hBUkVBQklMSVRZX01BU0spKSB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgLyoKPj4+IEBAIC0zMTIwLDYgKzMxMzIsOSBAQCBzdGF0aWMgdm9p
-ZCBpdHNfY3B1X2luaXRfbHBpcyh2b2lkKQo+Pj4gwqDCoMKgwqDCoMKgwqDCoCBnaWNyX3dyaXRl
-X3BlbmRiYXNlcih2YWwsIHJiYXNlICsgR0lDUl9QRU5EQkFTRVIpOwo+Pj4gwqDCoMKgwqDCoMKg
-wqDCoCB0bXAgPSBnaWNyX3JlYWRfcGVuZGJhc2VyKHJiYXNlICsgR0lDUl9QRU5EQkFTRVIpOwo+
-Pj4KPj4+ICvCoMKgwqDCoMKgwqAgaWYgKGl0cy0+ZmxhZ3MgJiBJVFNfRkxBR1NfRE1BX05PTl9D
-T0hFUkVOVCkKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHRtcCAmPSB+R0lDUl9Q
-RU5EQkFTRVJfU0hBUkVBQklMSVRZX01BU0s7Cj4+PiArCj4+PiDCoMKgwqDCoMKgwqDCoMKgIGlm
-ICghKHRtcCAmIEdJQ1JfUEVOREJBU0VSX1NIQVJFQUJJTElUWV9NQVNLKSkgewo+Pj4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLyoKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgKiBUaGUgSFcgcmVwb3J0cyBub24tc2hhcmVhYmxlLCB3ZSBtdXN0IHJlbW92
-ZSB0aGUKPj4+IEBAIC01MDA1LDYgKzUwMjAsNyBAQCBzdGF0aWMgaW50IF9faW5pdCAKPj4+IGl0
-c19jb21wdXRlX2l0c19saXN0X21hcChzdHJ1Y3QgcmVzb3VyY2UgKnJlcywKPj4+IMKgIHN0YXRp
-YyBpbnQgX19pbml0IGl0c19wcm9iZV9vbmUoc3RydWN0IHJlc291cmNlICpyZXMsCj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHN0cnVjdCBmd25vZGVfaGFuZGxlICpoYW5kbGUsIGludCAKPj4+IG51bWFfbm9kZSkKPj4+
-IMKgIHsKPj4+ICvCoMKgwqDCoMKgwqAgc3RydWN0IGRldmljZV9ub2RlICpucCA9IHRvX29mX25v
-ZGUoaGFuZGxlKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IGl0c19ub2RlICppdHM7Cj4+
-PiDCoMKgwqDCoMKgwqDCoMKgIHZvaWQgX19pb21lbSAqaXRzX2Jhc2U7Cj4+PiDCoMKgwqDCoMKg
-wqDCoMKgIHU2NCBiYXNlciwgdG1wLCB0eXBlcjsKPj4+IEBAIC01MDc2LDYgKzUwOTIsOSBAQCBz
-dGF0aWMgaW50IF9faW5pdCBpdHNfcHJvYmVfb25lKHN0cnVjdCByZXNvdXJjZSAKPj4+ICpyZXMs
-Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIGl0cy0+Z2V0X21zaV9iYXNlID0gaXRzX2lycV9nZXRfbXNp
-X2Jhc2U7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIGl0cy0+bXNpX2RvbWFpbl9mbGFncyA9IElSUV9E
-T01BSU5fRkxBR19NU0lfUkVNQVA7Cj4+Pgo+Pj4gK8KgwqDCoMKgwqDCoCBpZiAobnAgJiYgIW9m
-X2RtYV9pc19jb2hlcmVudChucCkpCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBp
-dHMtPmZsYWdzIHw9IElUU19GTEFHU19ETUFfTk9OX0NPSEVSRU5UOwo+Pj4gKwo+Pj4gwqDCoMKg
-wqDCoMKgwqDCoCBpdHNfZW5hYmxlX3F1aXJrcyhpdHMpOwo+Pj4KPj4+IMKgwqDCoMKgwqDCoMKg
-wqAgZXJyID0gaXRzX2FsbG9jX3RhYmxlcyhpdHMpOwo+Pj4gQEAgLTUwOTUsNiArNTExNCw5IEBA
-IHN0YXRpYyBpbnQgX19pbml0IGl0c19wcm9iZV9vbmUoc3RydWN0IHJlc291cmNlIAo+Pj4gKnJl
-cywKPj4+IMKgwqDCoMKgwqDCoMKgwqAgZ2l0c193cml0ZV9jYmFzZXIoYmFzZXIsIGl0cy0+YmFz
-ZSArIEdJVFNfQ0JBU0VSKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqAgdG1wID0gZ2l0c19yZWFkX2Ni
-YXNlcihpdHMtPmJhc2UgKyBHSVRTX0NCQVNFUik7Cj4+Pgo+Pj4gK8KgwqDCoMKgwqDCoCBpZiAo
-aXRzLT5mbGFncyAmIElUU19GTEFHU19ETUFfTk9OX0NPSEVSRU5UKQo+Pj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgdG1wICY9IH5HSVRTX0NCQVNFUl9TSEFSRUFCSUxJVFlfTUFTSzsK
-Pj4+ICsKPj4+IMKgwqDCoMKgwqDCoMKgwqAgaWYgKCh0bXAgXiBiYXNlcikgJiBHSVRTX0NCQVNF
-Ul9TSEFSRUFCSUxJVFlfTUFTSykgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgaWYgKCEodG1wICYgR0lUU19DQkFTRVJfU0hBUkVBQklMSVRZX01BU0spKSB7Cj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLyoKPj4+IC0tIAo+
-Pj4gMi4zOS4yCj4+PgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+
+--===============6782341931116316778==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="elD8KD6t7+wRv3Op"
+Content-Disposition: inline
+
+
+--elD8KD6t7+wRv3Op
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Tue, Mar 14, 2023 at 07:44:04AM +0100, Krzysztof Kozlowski wrote:
+> On 13/03/2023 20:22, Mark Brown wrote:
+
+> > If that's the case then why are you adding maybe unused annotations for
+> > half the drivers rather than removing their of_match_ptr() usages?
+> > There doesn't seem to be any logic here, it's just randomly making
+> > changes as far as I can tell.
+
+> These are not random but depend on whether OF is the only matching
+> method or one of few. Although for IIO all of my patches would be
+> dropping the of_match_ptr... For some cases in other patchsets I added
+> __maybe_unused also because of_match_node(), when the table is not used
+> in driver of_match_table.
+
+This logic is both not apparent when looking at the patches and doesn't
+move us in any particular direction - I'd expect this stuff to be
+written the same way for all drivers, there's no reason for it to vary.
+That just adds complication, it's more random obscure rules people have
+to learn.
+
+> > The PRP0001 stuff isn't an issue, of_match_ptr() can just be changed to
+> > do the right thing for CONFIG_ACPI.
+
+> That's actually interesting idea, kind of obvious so I wonder why it
+> wasn't done like this in the first place in 886ca88be6b3 ("ACPI / bus:
+> Respect PRP0001 when retrieving device match data"). Maybe not to
+> populate OF device ID tables for the ACPI systems which do not care
+> about PRP0001?
+
+Or just it didn't occur to anyone at the time.
+
+--elD8KD6t7+wRv3Op
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQQdgoACgkQJNaLcl1U
+h9Anagf/THfRG/RbMsHxaqKJsYsu8z++5R15gbuBbWAl1XHrOE03sdWawbw9nx6/
+7FjyWP0YguU7o9glL92CdGxV9CSl2mMJw06/Mvasde/AqKVs1hIrTEBLc8esfnmK
+y/l3de8OGXwYRz7UontPhCtwqNjdwza95hPCqQNLi1LhQ8DwEK9TIRvpfsD15NfI
+p+M8l80hFu85Hz+2LrWrmgcbQwuvowzOGYminHMypypU2qkEka6P8Avhuz9sB6Jj
+H1qukPGKGE02cXrtNfCG6DPdWzp2vPcIzeyFSendbDtHhlOets4W06I02bN3bFD8
+VlVyWgaICjPC/DjVXOuTe1yovomvig==
+=lrkL
+-----END PGP SIGNATURE-----
+
+--elD8KD6t7+wRv3Op--
+
+
+--===============6782341931116316778==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6782341931116316778==--
+
