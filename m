@@ -4,103 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52009C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 10:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C695AC6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Mar 2023 11:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FNUjnztwqqPBBdX11DNzsOaH4Gzs9uiUwDgbO0sbwZI=; b=QiUDRtM8e9fssy
-	DwzROcVpwbF95jtMj9hJnelF+71d069/NVe2//EZW0T0Nk+HWraVuiVD4PM+olBx6apaQo4KZCjYn
-	cNrAHpvZTGpdU6+OHN+esL1yYvaNbjlLPb+IFKyH7BakBUYH6Z7CzE3oMOMXTU6EPhwyhqGV2/kWd
-	yZs51ynw5c3dsUBFkHkJwtXekRCfmGiZmQfLbdVFc3JpALKLhDyyXKJFBWwROy2S+f2flzAsQRgE/
-	+kDE+qXf0n+kHjJqOlk6MMHLguSrtFFpqhmMj5BRsIMVP5qv6LvdGZZk9qX0IT7MJ6d08wd14UKjk
-	qR3po0D/rUPUV0bZIABA==;
+	List-Owner; bh=8Ocaie/lTRRTnOLOURwzOh/pWs3zlK8MWAuQlpkvGrk=; b=SQPsBhwJOziDpJ
+	swdBmNOCtNtyEHDzoAZMU88YE0O+RRcjpa9YDN9v6VyadPbDudpyFxUbsi7QgMrhRdAY14PatV5gK
+	93ACTNOIVPoGb9c7TF5y/N4bx6Rfl4Rxw/qwudNFvaUZt6JD5Z+zHG6wp5x4IzyRFLP3+PlOO6m5r
+	pF/5EVESGYyMbAJWnaajbYU96jA/PexJiotZydfu1SSOvv/zrjDflznNwz3NuTLGZijrLcOpYXPrd
+	2w9BWHpbZ5wwc2yhcLvO9Uiay9hoOO681DNLuPXXRxNZaIyGLVJwmWU1W2OMCNH3s/63MwLm4AWLY
+	4G1ngWM0OeYOyjNZg7rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc27R-009nBc-2J;
-	Tue, 14 Mar 2023 10:43:01 +0000
-Received: from ewsoutbound.kpnmail.nl ([195.121.94.186])
+	id 1pc2ec-009sY2-1O;
+	Tue, 14 Mar 2023 11:17:18 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pc27M-009n8C-2e
+	id 1pc2eZ-009sTL-0J
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Mar 2023 10:42:59 +0000
-X-KPN-MessageId: f4436f54-c254-11ed-be37-00505699b430
-Received: from smtp.kpnmail.nl (unknown [10.31.155.7])
-	by ewsoutbound.so.kpn.org (Halon) with ESMTPS
-	id f4436f54-c254-11ed-be37-00505699b430;
-	Tue, 14 Mar 2023 11:42:44 +0100 (CET)
+	Tue, 14 Mar 2023 11:17:16 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id eh3so4576440edb.11
+        for <linux-rockchip@lists.infradead.org>; Tue, 14 Mar 2023 04:17:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xs4all.nl; s=xs4all01;
-	h=content-type:from:to:subject:mime-version:date:message-id;
-	bh=MblS3wPiejH8wWKzPlRNHbipiWFCA8kFaj7hsvg8aIw=;
-	b=IC1Bek6tsLB+ZBUNcDl3p2uU4adHKFJTNwb/AKrs331rzK40Mv+EgCYHoIV0e1MNHxxRNVpKdOH1u
-	 4fu5XN5lv+mLFusQyNzts9Ul1OSCejTm+DL3yNa3jm+QZHPySDS1h5Ck/lEINQUxl6QFNeLl71zcgk
-	 bi7ykaaHDON3BrkiYGV2eFa+GZaMJMBHiIS3We+44p9xpkzwLCy/0NIxxx2phxbKzkK3XuWzE060H9
-	 3M6iGSBP5aEEt2s6WULeFnfSNdDcmXrfTJjDdP8sh16nPPoLkukaSgxJaL3zkdlDCxUso3P540aHLa
-	 bvLdn0oCfNbUDnoIV4Ti0A8uR+4N5fg==
-X-KPN-MID: 33|FkStRVpM6778JWRbee5ORbKlr5uso33caDVGRFqX+YdM2ajMXig/EgK1pUqjMB2
- ZvpFy22o4lZ02rXeesS5Bkw==
-X-KPN-VerifiedSender: Yes
-X-CMASSUN: 33|b6x6ba6BbG6VwHaXfZoELLAJBsMWVu0BpjvVbFinw6bBbG9MWR/C5kVxOti2FHv
- KdyqhcYeHZREjXLMFQDHNlQ==
-X-Originating-IP: 173.38.220.44
-Received: from [10.47.77.214] (unknown [173.38.220.44])
-	by smtp.xs4all.nl (Halon) with ESMTPSA
-	id f52d4607-c254-11ed-a8eb-005056998788;
-	Tue, 14 Mar 2023 11:42:49 +0100 (CET)
-Message-ID: <cbf34cf1-e065-8136-8344-89ca1864f637@xs4all.nl>
-Date: Tue, 14 Mar 2023 11:42:46 +0100
+        d=linaro.org; s=google; t=1678792621;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VyMYTE8eRVWxXGxDN3qi6ovP5SN8DKhbGCFcirh8c68=;
+        b=gYVni5rS+U0D3XPXroPjMejaXjUCgJYQue+8nXmM0hbi6lhCI1VcxmbnKS+hiuTamt
+         RC2WeKXamlUyZ8HLt6b+G0enmZvwqk34qKNb2OswI1SlizapZY242VV4VpdgRK2zAfGm
+         Wr2hX1BB0yOy6KvMaF0CtOVuzxY4Pxpyn6Yi/IXic4Pfs27QQ29/aw/aXjdOlXJsS6XF
+         JR2T3I/DsYGTkVk5dy6Owqkm9qjkNtBoeJboMe3C6LDW2Q+//sYbFPpyxOlJ012bCxzT
+         86j+GjQy7rhOi7RAshikVzvFiXBYiXWy/rP0RFyb3t8vqfU+XR3xdCR0X3D0bfnDKuTu
+         +Gyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678792621;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VyMYTE8eRVWxXGxDN3qi6ovP5SN8DKhbGCFcirh8c68=;
+        b=pXaOBoaaN/FL4r4p30SGSc6IYpj7EtZi4mszRkPhG+OyUeIEC1i/e45//arFs9qpG+
+         uLiolux3lnGBSXYcun+TPedXhgqW5Fj67CWkM3TikbOacj+8+qvg/NBzG5N65gho5JXg
+         f0ZCvuniAw0b4BkwV502T5KCKqkxZ0zHE6744QxJEaPqOWi01leLnyt8zlysAkmxpfRj
+         fct7CB38JMTTcj0mGPNub9naIE+K6mBPYIax3HiZ4O3SKLnq/WsjTVXODn+TIuqGZcIt
+         ozckuEsf5zxpmM09UUzJx2j3mMVtIqe1JWvjpPpC/XTlryuu5Po6xiL9KzogVKFjLiI/
+         kkYQ==
+X-Gm-Message-State: AO0yUKXgBsD/C9vgwpyJi4a0kyxUP5BduJ9ij5eEwudzVRpuexlxms9U
+	jdnbhkkTwvUTH4aBTJj/+GypvQ==
+X-Google-Smtp-Source: AK7set/G4w6NSTJvqWAmj5mHdKpnG7SBlJNvbb8K+gxbWYCEVR2R0MuarC2DZo6U0jwmmUYaFYUcug==
+X-Received: by 2002:a17:907:b9d4:b0:8b1:7eb4:6bea with SMTP id xa20-20020a170907b9d400b008b17eb46beamr2029236ejc.38.1678792620771;
+        Tue, 14 Mar 2023 04:17:00 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:59be:4b3f:994b:e78c? ([2a02:810d:15c0:828:59be:4b3f:994b:e78c])
+        by smtp.gmail.com with ESMTPSA id r9-20020a50c009000000b004c13fe8fabfsm855903edb.84.2023.03.14.04.16.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Mar 2023 04:16:56 -0700 (PDT)
+Message-ID: <d9f5a8da-575e-40b7-4871-b73374421245@linaro.org>
+Date: Tue, 14 Mar 2023 12:16:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [RFC 2/4] media: videobuf2: Replace bufs array by a list
+Subject: Re: [PATCH 2/4] PCI: rockchip-dwc: Add rk3588 compatible line
+To: Lucas Tanure <lucas.tanure@collabora.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof Wilczynski <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Qu Wenruo <wqu@suse.com>, Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, kernel@collabora.com
+References: <20230313153953.422375-1-lucas.tanure@collabora.com>
+ <20230313153953.422375-3-lucas.tanure@collabora.com>
 Content-Language: en-US
-To: David Laight <David.Laight@ACULAB.COM>,
- 'Laurent Pinchart' <laurent.pinchart@ideasonboard.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: "tfiga@chromium.org" <tfiga@chromium.org>,
- "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "ming.qian@nxp.com" <ming.qian@nxp.com>,
- "shijie.qin@nxp.com" <shijie.qin@nxp.com>,
- "eagle.zhou@nxp.com" <eagle.zhou@nxp.com>,
- "bin.liu@mediatek.com" <bin.liu@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "tiffany.lin@mediatek.com" <tiffany.lin@mediatek.com>,
- "andrew-ct.chen@mediatek.com" <andrew-ct.chen@mediatek.com>,
- "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>,
- "stanimir.k.varbanov@gmail.com" <stanimir.k.varbanov@gmail.com>,
- "quic_vgarodia@quicinc.com" <quic_vgarodia@quicinc.com>,
- "agross@kernel.org" <agross@kernel.org>,
- "andersson@kernel.org" <andersson@kernel.org>,
- "konrad.dybcio@linaro.org" <konrad.dybcio@linaro.org>,
- "ezequiel@vanguardiasur.com.ar" <ezequiel@vanguardiasur.com.ar>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "daniel.almeida@collabora.com" <daniel.almeida@collabora.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "kernel@collabora.com" <kernel@collabora.com>
-References: <20230313135916.862852-1-benjamin.gaignard@collabora.com>
- <20230313135916.862852-3-benjamin.gaignard@collabora.com>
- <20230313181155.GC22646@pendragon.ideasonboard.com>
- <86df05244d974416903e919d387a0a0b@AcuMS.aculab.com>
- <e704b505-86d8-c6f2-8546-adccdab72622@xs4all.nl>
- <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <dc04d48e34ed40e58f43badd001a81d0@AcuMS.aculab.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230313153953.422375-3-lucas.tanure@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_034257_406667_A3D53035 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20230314_041715_136898_BE613C56 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,43 +104,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi David,
-
-On 3/14/23 11:11, David Laight wrote:
-> From: Hans Verkuil
->> Sent: 14 March 2023 08:55
-> ...
->> Why not start with a dynamically allocated array of 32 vb2_buffer pointers?
->> And keep doubling the size (reallocing) whenever more buffers are needed,
->> up to some maximum (1024 would be a good initial value for that, I think).
->> This max could be even a module option.
+On 13/03/2023 16:39, Lucas Tanure wrote:
+> RK3588 can use the same PCIe driver as rk3568
 > 
-> I don't know the typical uses (or the code at all).
-> But it might be worth having a small array in the structure itself.
-> Useful if there are typically always (say) less than 8 buffers.
-> For larger sizes use the (IIRC) kmalloc_size() to find the actual
-> size of the structure that will be allocate and set the array
-> size appropriately.
-
-The typical usage is that applications allocate N buffers with the
-VIDIOC_REQBUFS ioctl, and in most cases that's all they use. The
-current max is 32 buffers, so allocating that initially (usually
-during probe()) will cover all current cases with a single one-time
-kzalloc.
-
-Only if the application wants to allocate more than 32 buffers will
-there be a slight overhead.
-
-Regards,
-
-	Hans
-
+> Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> 	David
-> 
-> -
-> Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-> Registration No: 1397386 (Wales)
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index c1e7653e508e..435b717e5bc6 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -354,6 +354,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  
+>  static const struct of_device_id rockchip_pcie_of_match[] = {
+>  	{ .compatible = "rockchip,rk3568-pcie", },
+> +	{ .compatible = "rockchip,rk3588-pcie", },
+
+Why do you need new entry then?
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
