@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90454C7618A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 11:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76E71C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 11:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qeKy+k2ZLMxuw9qFvYUbPewqitX6sHtvXakxxHsx2m8=; b=fqsmFGy3n54onK
-	W+oR5Y//7I4aV/nev+w42keHT4Zg9z5N1IK3vsBcGNV7C3lwCgr5D/MKaniWLhENIQqW/pvcADcKi
-	Uy+4+Gnl8smxHMTwkDfnzI/V8Uqxosr73rKoge5QUOnqAKr42xFhbhpBECr7vdQFkIAXz/oh6fJRC
-	CXu9vb0FDMHDx2wV5+kq26Weeazo3STy9SDAxthcRsASkvGAJT+KYOg5kbinRI6wmOlRB5dzL1FsE
-	ayd9LKQWNB7qziRGyDLk/38QEPbTE+1lOCqBXh10UP+fjskLkeCy8GlEDKhfrpp0UVhc+g/Q8NisK
-	omIcHUjyI64ht9E8qQXA==;
+	List-Owner; bh=BLG/Up2TKyjO/JEeceVf1KbRVI5LdEctFYi8WVNw4LU=; b=ZqBz5+plUhvxy1
+	ItDnJ+7HGILS3hRIR35gjPeMMGP26QAmUgzpgC0wOw3Rm8fljoqlc50/XKndbebXzmHvnBZjXekuM
+	MI/si4tzjRgwh06nRlfZUKzvHwyz9Fx3PcO+n+dUZmxvHwzrlttRduykIKwd0UoaPsF/63lY0TcnH
+	Wx93f21ldtAciAeVw9LgDUAVRjFzdhDy3dwX16TiSr12743D3Jlq8aRfwjZKvfTeMzw0l5PBZC63Z
+	TXLmCLsmYikeZgofjIlj6gaWENvX2/b1SPaoWFSxuKWUiwi/0Ky4EMK36eFF+tcHJcEUcu9rxj08x
+	jzBel6SqRqMPBzIT9mdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcPca-00DEF4-1e;
-	Wed, 15 Mar 2023 11:48:44 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pcPcX-00DEBZ-06;
+	Wed, 15 Mar 2023 11:48:41 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcPcH-00DDzy-0w;
-	Wed, 15 Mar 2023 11:48:26 +0000
+	id 1pcPcE-00DDyp-1O;
+	Wed, 15 Mar 2023 11:48:23 +0000
 Received: from localhost (unknown [188.24.156.231])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E48736603096;
-	Wed, 15 Mar 2023 11:48:23 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2435D660305A;
+	Wed, 15 Mar 2023 11:48:21 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678880904;
-	bh=YwZI6+CLTozcM4IgrIwS1wTY3wwS+KWhUpPNYpE/v00=;
+	s=mail; t=1678880901;
+	bh=ZuudVlc08qJkqAcQq3C5hE5Igxbt5HAMhYKp817ykE8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Qropq4Q+2KIPDKb8oulyDdLLdKidkeIaxE6cEqGDobvYvZJSicrbKSejWC57Akq4y
-	 3+C3mUOFhLb/hZFq7zC9h9SwXbMmdqcsaPmDbwW9JLebFmfIuAfUSFYbQwQReRJIsB
-	 QdvFJ/y+TS6DpMqpCcY9QN/0Lg044+VLJJ7WoXieurU7FgmQrCoMzSihT2iajfCVot
-	 NZyozTqz3IZgUnlD7E4A/oC+5MctDSwbb61qrUD3EY/8nBtRRaSRX7unMhT+lXZQ9e
-	 z2ebjHd5Ps8s2HejE1/GHliq+XQ3IAhJeR79AAgou2IuqxasHfsl/6zMRMAo+b2YWg
-	 Df9+S2Tn/U4tA==
+	b=QnqfcjIpg5gttJFa+xtfCRjgiVBae3/YzdOmBS16b1OuDD46PK8oVxkSaACkGJBkk
+	 klYXjhs5023D3QNkXny0M6lJuOwWsNPun8rClZlYAdehPDXHxPvdlylk+okNUiD4jt
+	 VonMl5KJLV4eHNeiAeDOyl8S2jbBFcBcLZ31s8LtByhkGkzSsG8+vcHHyHIgb0euJE
+	 Ca0t2/7YsZJ2dzSAUcIOy0EDddNaCpnfSI/7lrXovZOsMqsZEo7uE9B1UuAj/APL+Z
+	 zuvAQ+GUXLkWOWrRzq8l5cEpPfnYqRXer+uUnUTOD2uryVHe9qzwLoFn6SwidkBm2u
+	 NlxzqTnfY4y0w==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Sudeep Holla <sudeep.holla@arm.com>,
 	Cristian Marussi <cristian.marussi@arm.com>,
@@ -68,16 +68,16 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-riscv@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 04/11] ASoC: dt-bindings: rockchip: Document audio graph port
-Date: Wed, 15 Mar 2023 13:47:59 +0200
-Message-Id: <20230315114806.3819515-5-cristian.ciocaltea@collabora.com>
+Subject: [PATCH 03/11] ASoC: dt-bindings: everest,es8316: Document audio graph port
+Date: Wed, 15 Mar 2023 13:47:58 +0200
+Message-Id: <20230315114806.3819515-4-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
 References: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_044825_460921_DDC66C29 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20230315_044822_597675_D81A4122 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,36 +94,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip I2S controller is currently used in conjunction with
-audio-graph-card to provide an endpoint for binding with the other side
-of the audio link.
+The ES8316 codec is currently used in conjunction with audio-graph-card
+to provide an endpoint for binding with the other side of the audio
+link.
 
 This is achieved via the 'port' property, which is not allowed:
 
-  rk3399-rockpro64.dtb: i2s@ff890000: Unevaluated properties are not allowed ('port' was unexpected)
+  rk3399-rockpro64.dtb: codec@11: Unevaluated properties are not allowed ('port' was unexpected)
 
 Fix the issue by documenting the missing property.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 4 ++++
+ Documentation/devicetree/bindings/sound/everest,es8316.yaml | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-index 1cb4da300607..c32b4750651c 100644
---- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-+++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-@@ -82,6 +82,10 @@ properties:
-   resets:
-     maxItems: 2
+diff --git a/Documentation/devicetree/bindings/sound/everest,es8316.yaml b/Documentation/devicetree/bindings/sound/everest,es8316.yaml
+index d9f8f0c7f6bb..80cd81ecae6f 100644
+--- a/Documentation/devicetree/bindings/sound/everest,es8316.yaml
++++ b/Documentation/devicetree/bindings/sound/everest,es8316.yaml
+@@ -28,6 +28,10 @@ properties:
+     items:
+       - const: mclk
  
 +  port:
 +    $ref: audio-graph-port.yaml#
 +    unevaluatedProperties: false
 +
-   rockchip,capture-channels:
-     $ref: /schemas/types.yaml#/definitions/uint32
-     default: 2
+   "#sound-dai-cells":
+     const: 0
+ 
 -- 
 2.39.1
 
