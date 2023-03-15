@@ -4,126 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DED0C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 09:03:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2547BC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 11:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7Xmcs+p/G9vjRm+xqOGcii7mdRBnihHZ7AdybRDOQeI=; b=g3PveABmC1d9Oo
-	QGEIf0yxSfuGijNT0hScclNfM3uMcMxE8CIPH4jrKmbvJ27C/JvoTAB/54vCYgRjJ4+79fNsRZcTd
-	ScXsb10Jq7oeocYDdYMxNEJY9Gn3u46yeQ8iugnMfCxSP4IyY7fhUCrT5WjQcXzY0/77+l7ytazrr
-	bmePbNvcojPqMJ2WJKSBw9a/i/WsY8/NSH83E81U08N++b2vMkNzI/kTUhm9RkXrnA6LZUhuU+o5a
-	pprr1x1ObIra8MKDCxEHU6LYTyHMNx7MuBM5E6k6YP214MWKYazAi0yuWQS93y4peEwFkARLfgwK4
-	Z+6sX7PaN7ZcZ/MYDyDg==;
+	List-Owner; bh=Cd3Ibo0sSFFx2vh2uvqAjEurD9TgDRiAZTeB8cL6XaU=; b=WNspZ/7HCk7s26
+	7Ru6K+jDIsa09XwALVne9hoikppMN3xf5F8GMfiTemOYTU4qGfEC5THYJ1YhvrwSp/Q+2Gz0dF6uz
+	mvEiW+tqDEK3fZkvDucdWKM1JTHuNHOi9C6A/d2iVXUtWWmPGGuIc7SNCFVp6iXMT5u06O2nmZYhB
+	SLpSLbOaZkb1mWXMe4TzBnlNiwdWM144A69TsUPSO9RbMSi+gFeWo7cLUpKNHnkvBCR44s6rWRmUE
+	PwpfV9TOaJlrXpWCx47JAns8bdREQ+kkkqevPdJgS420mHYE0puvmwdG8G+4hNikFshkijla3rRzM
+	sw2Qd8GvFdjw1DaSS8cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcN27-00CrSD-1h;
-	Wed, 15 Mar 2023 09:02:55 +0000
-Received: from mail-vi1eur05on2060e.outbound.protection.outlook.com ([2a01:111:f400:7d00::60e] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1pcPcC-00DDyi-3C;
+	Wed, 15 Mar 2023 11:48:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcN23-00CrQJ-1d;
-	Wed, 15 Mar 2023 09:02:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SptzClbNMKOQhyRvvEtskaM2xqTx6jPcKKRl52NfuRgr6Cg95M3cnlYltDh8HuDevZtOthGxC/9mrXUqQyM9CXSmhsH9GAfz9wlSH4XtLCKO4VQuO/T+YzkqVLils+1yntwnhTYscmWVClChmgZ1/t+U5iEljNrCEUqFPzLR8FhPz44iVQNZl3AA/ProoMIPgdBkrPjb7Ku/XsxFGYtuuMlReRH5xZo12u7xI6HfXMgyIPjuxf/QaCCmOD9hSAzYyNf4bP2+zBCKxNMQ2Lk+tOMFZuVemQNvsVK/cAGfN9swfffElfIMlTZEiYys44BreMhP7/kvgALik7VQDOj9Yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Yq0umAmUPl9tT/qdthTgg+GTSYvNtb7u+7kP+f4Kwxk=;
- b=kQYElQ9IJXi88oANIfn3wpDaeeAWEV5cMvChEc9dtoVXa9jupAszjVhweoZqhdGvGvoiHpXOPIBjTfT0Kwho3Eo6fAs3Hmf44s8/Vw+4KrUzuSTt/rI/G0w7AuTZiaDx1VL5HW1fcQlU1unInOYXiQWHRQMGNBtwUWjjkAB9Inqs5jmUBEyfy5TfpzttM7MLb5wGSey9vRSzV30cIhO0pO4v1qX9WtTFoBjY5qPh2eVMUN3sR+s2il7a+or8TD81VHievJ0LCaF814M9jX+hjqfLePB6SrqjbEA1zOZh5P+LY4TKcm79ovjhorOWnMqQq7ZhWtsMjacuEcfuHraE5g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Yq0umAmUPl9tT/qdthTgg+GTSYvNtb7u+7kP+f4Kwxk=;
- b=squHl0/JMU9GqkzhyIi4vp7U99Q8aOA/0aQ0WfZ3OVekkD824amVXLsj1PRP/wZiyLHt2l7t7EBDeuEcEwbunSnBUwG0hq9a9XG2LWClFJnOLenoXWzUbXl7+utc6uxUDJCkesj+471imJbL8Pu3LCarFYvP/9cy3mNFaTTff4o=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by AS8PR08MB9932.eurprd08.prod.outlook.com (2603:10a6:20b:562::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Wed, 15 Mar
- 2023 09:02:47 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::6f4d:f868:c89:4db1]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::6f4d:f868:c89:4db1%5]) with mapi id 15.20.6178.026; Wed, 15 Mar 2023
- 09:02:47 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1pcPc8-00DDwg-24;
+	Wed, 15 Mar 2023 11:48:18 +0000
+Received: from localhost (unknown [188.24.156.231])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9185666003AC;
+	Wed, 15 Mar 2023 11:48:11 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1678880891;
+	bh=QMdRoHZDA4Dzb4ZItQ6gCETIH96B+vuVwaf66nkbnMQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=bj2xu6gGH92QEICLrGXFl386kUFglMAxEePZm/i3SmcJEKbpiM06LNDvC992CaPby
+	 NM5t+sCRjcezTbr2NabWD08SWWwBmtibVsTapQxEK5mmB3qBMqm6A3ZR3zGvTqK2X/
+	 kq1tpf4ei/myrqWjdSjmx33y1vbA3Buej4dDpK5R58c44aTHtliZQbl8QPa5lGIgMm
+	 1Wde+f/mne8pQmnJ8dV2Z1/44cIZWLAcw0wV8eDw5pqm2mchbH57paOvrdGTazIPO3
+	 Haypn6anq0fRgT56oE4lMtcT9wJBSs1PwqkREBZoFgiIm6TTJ8E18JZQyaJqgJ6+sB
+	 vwoxdhZxRe/tA==
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Sudeep Holla <sudeep.holla@arm.com>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Daniel Drake <drake@endlessm.com>,
+	Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-serial@vger.kernel.org,
+	alsa-devel@alsa-project.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	kernel test robot <lkp@intel.com>,
-	Nathan Chancellor <nathan@kernel.org>
-Subject: [PATCH] drm/rockchip: vop2: fix initialization of possible_crtcs variable
-Date: Wed, 15 Mar 2023 10:01:58 +0100
-Message-Id: <20230315090158.2442771-1-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-X-ClientProxiedBy: VI1PR09CA0098.eurprd09.prod.outlook.com
- (2603:10a6:803:78::21) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	linux-riscv@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH 00/11] Enable I2S support for RK3588/RK3588S SoCs
+Date: Wed, 15 Mar 2023 13:47:55 +0200
+Message-Id: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS8PR08MB9932:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3a311ea6-62cb-400f-a0c7-08db25340c09
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	uThRqHTCOLoHcRoUqAfYzRDF0eDWDcHAvhiZPmkRMOwUUir0eskuQIYFO7aZ2HoMdIXJ3m2A12qewPT3EAVpGpSaqEPCXZ9iSIWn2a0YqgFLVXQWRQUwYpwjR/chDxMC1YK6fK1LJxDtW7xUfWw9JE0/EOiYCJRLewgbQUuZCEV0LTDECqilPEsL5Ch/7sNSppuE5EeKTucshdUFfqHX9S60e2UYSCupeJW9ys7j4H8jBKDB0J0Y/U0xMSOu2x9+i3oswN7xsDUqzNAbg1x3WOuCJueywVYz4fxlyQ2gScBWD3P939lydMOYOPpzA47mdWufMlJCBDgaoFw9vSPUz7pyhw/M03dHBZOKnJEEL2xyRfppGZ7HvQJUDsYnBLsDNdnddOi4KROB1+Pk7Wc3bXg9Qj3reuxXTXXvI2Z+DHRVt3hUTLEd5t+7hAco032w6zpDeKX9jb5sjWxEZsgd5IwRVBZE6+WyQLRnaKDIbdV9JSeLNpUdfEcDiPS0qE1xUWPs+nybGOzNDXWBVx8IaGMwoQlFiiSo8dz4GyytO+0fF67lFA+Rkhr2+lJ/V7/6qpfPB5zqU3PCSPx0kcgo5m9z2pjTAvDJoLz0dytYIJxZmqWNQjxS8g358CNRlh2hxr1rcXOwPtxzqCJV5CoeTcZ0pjyOJE74yCjH46PAnS0ezts1LeqNRD/0CCQyf4s4oSvdekkHNkdfC3mMhvjUNQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(376002)(346002)(136003)(366004)(39850400004)(396003)(451199018)(36756003)(83380400001)(54906003)(316002)(38100700002)(26005)(6666004)(52116002)(478600001)(8936002)(186003)(6506007)(5660300002)(7416002)(41300700001)(66556008)(66476007)(86362001)(44832011)(6512007)(2906002)(1076003)(4326008)(38350700002)(8676002)(2616005)(6486002)(66946007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?AKCAsoQFGNOTDDBTlEIXXTcCq6TIFi0qVkeR1kEuHuWN0v41SR3KNa01w3Kl?=
- =?us-ascii?Q?b+vP/UmTI9fH5vKy6OxvvtX+wneq0+AkvigFS1DhPYjwcGUVhkAL12Jj6yEV?=
- =?us-ascii?Q?iNhr93NxHcAkjhWa43cLN3VdCnJNMtt17fFPFm4dZBlUqKuy4GGfH2JfI8l8?=
- =?us-ascii?Q?Mh501322vUY8wqGI53dMnJW+p0I4Rnu3OjCXrZ5CbrrZIOXuZw0kldo9qwQb?=
- =?us-ascii?Q?ECOmPDfmST7vhv0Boxx/yaHMOULGr/XOKd73lct9BroplsIAVO7xiPzEQkL4?=
- =?us-ascii?Q?5H9zVGH1B/0Ej+kQNspOIKQMXflBNSUiGlN6H9f9rrac4ZsrCRq7xYe8LFHD?=
- =?us-ascii?Q?Iaggfbp/OkkWY1JLgzOwvd/KV1Sksw9EdlB8DSvdvzq0xKRb0myH8WmAMH20?=
- =?us-ascii?Q?S+s48DjZDbPRrObWKaWQpfLK3Kz5wDVfY2z7WSqiFLXdCOOfK+cFboMy1F9r?=
- =?us-ascii?Q?omrPBi6wjXPr5LhCkmt3iLfo3oPJ5zhDN0hJzK4KT3LHr6UlEre6L/0V5Fpw?=
- =?us-ascii?Q?WuL1BHEpBzLA6s/UoLhsNJrFVVHikIX0aEoOU3h6MZ74ftf3d8gMpd9P7WZr?=
- =?us-ascii?Q?kwONplJzATzPVstSN6+Z3mucRFNzZpBznZjJACrHwKTnQ5fmHnTNHa2SB3hU?=
- =?us-ascii?Q?gT46k7cdlKDKfPy2FQHYdD5MPIcEkeWEV08J5ltN4PaDRflXYm8iKN0fr/Fi?=
- =?us-ascii?Q?VANi72D3pLFlhiVpkRNK644unaFWt7rQIJYMRaUZmegM32uAZq1LoKa3vmjb?=
- =?us-ascii?Q?Tnuta5FB1EtCBUzt0V6JtoDY1w9GSgEdIOgEP5XTNbmOZTQe0kaHkWLqpKrF?=
- =?us-ascii?Q?2OGhPq0IvOVZ27i4795UvexqYAIEjRS3Ghy6X7Dx6UY2I2R5oKOmC9AmW5kX?=
- =?us-ascii?Q?9ms/VkUy03pKEQK08xb8X3e+eD4A4HnxD3vh+b8YH6k8eUGk2bleLBkqwWfq?=
- =?us-ascii?Q?aIh6WqgWyMBzNB/+YnDPNsJ0dZEqGiEoKC22+7e2Ng0hL1YQZCigBXuToHrs?=
- =?us-ascii?Q?oFadQsiOQYkovfO7Vxy8qHF02edHJXOtANGwAStEh9hRo2aCOrGgoM9vYeAS?=
- =?us-ascii?Q?ChvPYDdjxQxjyvD4LjsbLGjLGLeNUdZqnD6tuE5ubLWvgdh9oN7XSugf/VmC?=
- =?us-ascii?Q?bKUoYeZkdX2qedB+droAVxm9yikOWgVxfTyMQIjJ47Clqkj2vUXgEQEc5uuR?=
- =?us-ascii?Q?c2agDn4C4K22BBNcwa/l7kxECrFzeTg6drflnJt/H6NYvBdThCmPA8kXYrAx?=
- =?us-ascii?Q?pjWf/sBLidK1g8FhZQTEj7fDEisQQ2OmgaPngQgJNrZkf+5qYeL+ir4q/Byr?=
- =?us-ascii?Q?X65DyFRkYJgV/1/yWiiDQusUhijTwrwH5Cclwx+fhiMPZlLMPIOWiXeZMLuo?=
- =?us-ascii?Q?gqxYAqc3tzvgyCdeRKUma3KDbBPUJ9AWGClZfxNDbI9rT8ttRuHB91vEKMQp?=
- =?us-ascii?Q?yc23PYbMbSzGsJtwgIiP8u2mLfBw3tmd8FNLzBfO1u0/dm7pMxx2oC2ykXLG?=
- =?us-ascii?Q?6Yjec5tJCAQda831WCahy2+HjozxYbP81MFH7KEybWO+wMLri8SX0eYb0E+e?=
- =?us-ascii?Q?DFczF3rorMYMBKxrE4UFQtDq6C+grgQvgcFl1mdm8W3pfl478FoFEAfPU7Xr?=
- =?us-ascii?Q?WkFK6eHIuce0aIEo3L6ZI/4=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3a311ea6-62cb-400f-a0c7-08db25340c09
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2023 09:02:47.4479
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pNzcpwfRjHFFaFHvv3iabw2N1BoyZvoDyKRZFdg/knyLY2yDBkRgPeI5xgt0S55v+yvX8iGXm3VX2Paoo8aBYa76MR/XDA/ImS2g9hHpEuQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB9932
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_020251_552245_20FD3549 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20230315_044816_911642_01DECB24 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,44 +92,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The variable possible_crtcs is not initialized properly since commit
-604be85547ce ("drm/rockchip: Add VOP2 driver"). A first attempt to fix this
-issue has been made in commit 368419a2d429 ("drm/rockchip: vop2: initialize
-possible_crtcs properly") but turned out to be incomplete. Initialize the
-variable with zero to cover all possible paths.
+There are five I2S/PCM/TDM controllers and two I2S/PCM controllers embedded 
+in the RK3588 and RK3588S SoCs. Furthermore, RK3588 provides four additional
+I2S/PCM/TDM controllers.
 
-Fixes: 368419a2d429 ("drm/rockchip: vop2: initialize possible_crtcs properly")
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Nathan Chancellor <nathan@kernel.org>
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+This patch series adds the required device tree nodes to support all the above.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 1667e5324b29..0569f1211d9b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2301,7 +2301,7 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 	nvp = 0;
- 	for (i = 0; i < vop2->registered_num_wins; i++) {
- 		struct vop2_win *win = &vop2->win[i];
--		u32 possible_crtcs;
-+		u32 possible_crtcs = 0;
- 
- 		if (vop2->data->soc_id == 3566) {
- 			/*
-@@ -2329,8 +2329,6 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 			}
- 		} else if (win->type == DRM_PLANE_TYPE_OVERLAY) {
- 			possible_crtcs = (1 << nvps) - 1;
--		} else {
--			possible_crtcs = 0;
- 		}
- 
- 		ret = vop2_plane_init(vop2, win, possible_crtcs);
+Additionally, it enables analog audio support for the Rock 5B SBC, which has
+been used to test both audio playback and recording.
+
+Note that some of the DT bindings fixes in this series are not particularly
+related to I2S, but are required for a proper dtbs_check validation.
+
+Cristian Ciocaltea (11):
+  dt-bindings: firmware: arm,scmi: Document assigned-clocks and
+    assigned-clock-rates
+  dt-bindings: serial: snps-dw-apb-uart: Relax dma-names order
+    constraint
+  ASoC: dt-bindings: everest,es8316: Document audio graph port
+  ASoC: dt-bindings: rockchip: Document audio graph port
+  ASoC: dt-bindings: rockchip: i2s-tdm: Document audio graph port
+  ASoC: dt-bindings: rockchip: i2s-tdm: Document power-domains
+  ASoC: dt-bindings: rockchip: Add compatible for RK3588
+  ASoC: rockchip: i2s: Add compatible for RK3588
+  arm64: dts: rockchip: rk3588s: Add I2S nodes
+  arm64: dts: rockchip: rk3588: Add I2S nodes
+  arm64: dts: rockchip: rk3588-rock-5b: Add analog audio
+
+ .../bindings/firmware/arm,scmi.yaml           |   3 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |  10 +-
+ .../bindings/sound/everest,es8316.yaml        |   4 +
+ .../bindings/sound/rockchip,i2s-tdm.yaml      |   7 +
+ .../bindings/sound/rockchip-i2s.yaml          |   5 +
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |  62 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |  68 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 148 ++++++++++++++++++
+ sound/soc/rockchip/rockchip_i2s.c             |   1 +
+ 9 files changed, 305 insertions(+), 3 deletions(-)
+
 -- 
-2.30.2
+2.39.1
 
 
 _______________________________________________
