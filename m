@@ -4,57 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D784FC6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 03:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60D77C61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 03:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b68aDg9IXSA8OhuJ/8zAMq2z0cN6xcwagnVClfh27Ow=; b=SYqkj3T0oWTkmC
-	woumnPXoQnuF9MbixqJNQPY89mZfylcGwpHQwheDD+Uu20WkuEJPoTly+d4Yn86AoHhbKK+7w7TFM
-	01k9FNc0xQimjTogDRaV25iDPjbq2MblA3saXU2QHO7kFbfrBLD2hU3oo/imTRBmqK6wHgK+aSNIh
-	DnqTqA3qq1ZiQv8yseZUrvOv2wu3jRg1IcOB9MCEhYOQJXhGBwOEH/C2ParaB+rQYcKnIjQ/buZ61
-	4+zqmR9TAaLUmbYAAA63lgHiHrtp1jM+FvjrXyE3QHl3Q5tvrLkMskxG2ECrZQ+zsE8267uXcUVkI
-	g9lsqrZ7SdbSRi9zn27Q==;
+	List-Owner; bh=P+EQ5LLOsEvcPTFfB5HZA8KMHCkOm+PW3aGbOSZIr6c=; b=E81VQEzJBRue9U
+	yf6L+bYHhnjUYv3dgJeiN6Usnv72jYJCHOoM0Y+lm02IYQHGdaEbS8wcg4fkv4ji3ocpeHQObKNkB
+	ZMOQ4utYblehaz5AMkS503bKDS89Sq2WzwKvCeuuBfZpOxFgtdHniNw+MI8k5JQrEzBnmddoBH5EM
+	kqehKAaQUFAMJD/ytfjzdLcsk5k2lFsDYbz0KYnvo4shRsykXbByTWSSPxBJwB17PGZe2GXH0bwUd
+	Og4ni3z8D2DMgSJUEcz6P/wC0itu/VpMgClKLUwN52WrHhgWKsfRCr31s+lKzT4W8eTYehvQrLOqW
+	jdKXeHa+uuiQpaRW7CTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHOB-00C6NY-0G;
-	Wed, 15 Mar 2023 03:01:19 +0000
-Received: from fd01.gateway.ufhost.com ([61.152.239.71])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHO6-00C6Kk-0W
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Mar 2023 03:01:16 +0000
-Received: from EXMBX166.cuchost.com (unknown [175.102.18.54])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(Client CN "EXMBX166", Issuer "EXMBX166" (not verified))
-	by fd01.gateway.ufhost.com (Postfix) with ESMTP id 6045924E2E7;
-	Wed, 15 Mar 2023 11:00:42 +0800 (CST)
-Received: from EXMBX073.cuchost.com (172.16.6.83) by EXMBX166.cuchost.com
- (172.16.6.76) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Wed, 15 Mar
- 2023 11:00:42 +0800
-Received: from xiaofei.localdomain (180.164.60.184) by EXMBX073.cuchost.com
- (172.16.6.83) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Wed, 15 Mar
- 2023 11:00:42 +0800
-From: Jack Zhu <jack.zhu@starfivetech.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>
-CC: <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <jack.zhu@starfivetech.com>
-Subject: [PATCH v2] media: admin-guide: Update rkisp1.rst
-Date: Wed, 15 Mar 2023 11:00:40 +0800
-Message-ID: <20230315030040.107901-1-jack.zhu@starfivetech.com>
-X-Mailer: git-send-email 2.34.1
+	id 1pcHv5-00CADG-2G;
+	Wed, 15 Mar 2023 03:35:19 +0000
+Received: from dev.gentoo.org ([2001:470:ea4a:1:5054:ff:fec7:86e4] helo=smtp.gentoo.org)
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pcHv2-00CACX-03;
+	Wed, 15 Mar 2023 03:35:17 +0000
+From: Yixun Lan <dlan@gentoo.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Jagan Teki <jagan@amarulasolutions.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Yixun Lan <dlan@gentoo.org>,
+	Nick Xie <nick@khadas.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] arm64: rockchip: Add Khadas edge2 board
+Date: Wed, 15 Mar 2023 11:34:39 +0800
+Message-Id: <20230315033441.32719-1-dlan@gentoo.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-X-Originating-IP: [180.164.60.184]
-X-ClientProxiedBy: EXCAS061.cuchost.com (172.16.6.21) To EXMBX073.cuchost.com
- (172.16.6.83)
-X-YovoleRuleAgent: yovoleflag
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_200114_379197_6322529C 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20230314_203516_120893_51A1D897 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +64,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update Rockchip ISP1 driver file path
+In this patch series, we will try to add basic support for 
+Khadas Edge2 board, currently only UART and eMMC are enabled.
+The ethernet connect to Pads expansion board via USB which will need extra
+effort, so no ethernet for now.
 
-Signed-off-by: Jack Zhu <jack.zhu@starfivetech.com>
+The first patch introduce a dt-bindings for Edge2 board,
+the second patch will add basic device tree.
 
----
-Changes in v2:
-- keep that the number of characters in the line is within 80.
----
- Documentation/admin-guide/media/rkisp1.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Yixun Lan (2):
+  dt-bindings: arm: rockchip: Add Khadas Edge2 board
+  arm64: dts: rockchip: Add Khadas edge2 board
 
-diff --git a/Documentation/admin-guide/media/rkisp1.rst b/Documentation/admin-guide/media/rkisp1.rst
-index ccf418713623..6f14d9561fa5 100644
---- a/Documentation/admin-guide/media/rkisp1.rst
-+++ b/Documentation/admin-guide/media/rkisp1.rst
-@@ -10,8 +10,8 @@ Introduction
- ============
- 
- This file documents the driver for the Rockchip ISP1 that is part of RK3288
--and RK3399 SoCs. The driver is located under drivers/staging/media/rkisp1
--and uses the Media-Controller API.
-+and RK3399 SoCs. The driver is located under drivers/media/platform/rockchip/
-+rkisp1 and uses the Media-Controller API.
- 
- Revisions
- =========
+ .../devicetree/bindings/arm/rockchip.yaml     |  5 +++
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3588s-khadas-edge2.dts     | 37 +++++++++++++++++++
+ 3 files changed, 43 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+
 -- 
-2.34.1
+2.39.2
 
 
 _______________________________________________
