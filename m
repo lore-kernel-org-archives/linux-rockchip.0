@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BF53C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 11:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90454C7618A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 11:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MJm/0aWHgPDAZlVBokpz1MtAaorbh+57fIqEEcyqrCU=; b=Z3paLQe6EzyrjB
-	nt5xRX1kmt0r7sjTsQVjrUKjfViQ1NcFVhMPasCaxMe2nrGLyWYkpr+GC5aaXNjE7FIvg9yVJFHlT
-	6T/l9Aaly+fJVstWwpey8PtXp8/Zh0uaE1DpDzF8HA1ztdQb6Vw/xkwI9W4YuOFvlsgYnO2Vwlf/H
-	RPHyi0yNtQZo+YpxmsIsjiOb2yNZz3REbfYdXg5xP5U2FTWJZms+aJkcpAO70zdZmN7smpdIzMxDW
-	erB4sX0ddN0iIUtyRjaH1uIVKcDgJQBWaXCUwwcgEdDkoJBThcEYanwVIinf75hv4+1j2dvx44NqK
-	y6PgiWw3kceBGmm7ftfQ==;
+	List-Owner; bh=qeKy+k2ZLMxuw9qFvYUbPewqitX6sHtvXakxxHsx2m8=; b=fqsmFGy3n54onK
+	W+oR5Y//7I4aV/nev+w42keHT4Zg9z5N1IK3vsBcGNV7C3lwCgr5D/MKaniWLhENIQqW/pvcADcKi
+	Uy+4+Gnl8smxHMTwkDfnzI/V8Uqxosr73rKoge5QUOnqAKr42xFhbhpBECr7vdQFkIAXz/oh6fJRC
+	CXu9vb0FDMHDx2wV5+kq26Weeazo3STy9SDAxthcRsASkvGAJT+KYOg5kbinRI6wmOlRB5dzL1FsE
+	ayd9LKQWNB7qziRGyDLk/38QEPbTE+1lOCqBXh10UP+fjskLkeCy8GlEDKhfrpp0UVhc+g/Q8NisK
+	omIcHUjyI64ht9E8qQXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcPcP-00DE5p-21;
-	Wed, 15 Mar 2023 11:48:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pcPca-00DEF4-1e;
+	Wed, 15 Mar 2023 11:48:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcPcC-00DDxY-1v;
-	Wed, 15 Mar 2023 11:48:22 +0000
+	id 1pcPcH-00DDzy-0w;
+	Wed, 15 Mar 2023 11:48:26 +0000
 Received: from localhost (unknown [188.24.156.231])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 57B026603058;
-	Wed, 15 Mar 2023 11:48:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E48736603096;
+	Wed, 15 Mar 2023 11:48:23 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1678880898;
-	bh=C+CkBCBIxEIFOAjzgyNm1268qn0Q1m0JZg82+SgLbSc=;
+	s=mail; t=1678880904;
+	bh=YwZI6+CLTozcM4IgrIwS1wTY3wwS+KWhUpPNYpE/v00=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X58SfGRMKG9NMnROtcQIsHKPqTiN3hEwxxvjMK1CBZAuNkvJZzsUYX46U7ZK9w6S6
-	 dF4cWgtlSfBpB8jUa/4djaWG13TVCtFcT45OS/83t3Yw6fakhmegMNTgKGABCsilX/
-	 wHS2lvwEUTbpSNOotY3XW9z1pVo7f5vlTrQWiLpSupOFiyAOoNrA8OYMPLMmr5TPyN
-	 JcBcMmqRoAFaPZMBUMUwP7t2IyoYiSr8EtaBYoSFn2xK3I5BULLPfOYbfOu6Wk2QXq
-	 wcRNhblusYn5BaeQW5QYIAVEuJsdJVOaqvBKDSUpfN1l8nBSghvjXURdUp51ZFH4+v
-	 PCS7fq1RtkfSA==
+	b=Qropq4Q+2KIPDKb8oulyDdLLdKidkeIaxE6cEqGDobvYvZJSicrbKSejWC57Akq4y
+	 3+C3mUOFhLb/hZFq7zC9h9SwXbMmdqcsaPmDbwW9JLebFmfIuAfUSFYbQwQReRJIsB
+	 QdvFJ/y+TS6DpMqpCcY9QN/0Lg044+VLJJ7WoXieurU7FgmQrCoMzSihT2iajfCVot
+	 NZyozTqz3IZgUnlD7E4A/oC+5MctDSwbb61qrUD3EY/8nBtRRaSRX7unMhT+lXZQ9e
+	 z2ebjHd5Ps8s2HejE1/GHliq+XQ3IAhJeR79AAgou2IuqxasHfsl/6zMRMAo+b2YWg
+	 Df9+S2Tn/U4tA==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Sudeep Holla <sudeep.holla@arm.com>,
 	Cristian Marussi <cristian.marussi@arm.com>,
@@ -68,16 +68,16 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-riscv@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 02/11] dt-bindings: serial: snps-dw-apb-uart: Relax dma-names order constraint
-Date: Wed, 15 Mar 2023 13:47:57 +0200
-Message-Id: <20230315114806.3819515-3-cristian.ciocaltea@collabora.com>
+Subject: [PATCH 04/11] ASoC: dt-bindings: rockchip: Document audio graph port
+Date: Wed, 15 Mar 2023 13:47:59 +0200
+Message-Id: <20230315114806.3819515-5-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
 References: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_044820_771154_FB3C2541 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20230315_044825_460921_DDC66C29 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,59 +94,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 370f696e4474 ("dt-bindings: serial: snps-dw-apb-uart: add dma &
-dma-names properties") documented dma-names property to handle Allwiner
-D1 dtbs_check warnings, but relies on a strict rx->tx ordering, which is
-the reverse of what a different board expects:
+The Rockchip I2S controller is currently used in conjunction with
+audio-graph-card to provide an endpoint for binding with the other side
+of the audio link.
 
-  rk3326-odroid-go2.dtb: serial@ff030000: dma-names:0: 'rx' was expected
+This is achieved via the 'port' property, which is not allowed:
 
-A quick and incomplete check shows the inconsistency is present in many
-other DT files:
+  rk3399-rockpro64.dtb: i2s@ff890000: Unevaluated properties are not allowed ('port' was unexpected)
 
-$ git grep -A10 snps,dw-apb-uart | grep dma-names | sort -u
-arch/arm64/boot/dts/rockchip/px30.dtsi-         dma-names = "tx", "rx";
-arch/arm64/boot/dts/rockchip/rk3328.dtsi-       dma-names = "tx", "rx";
-arch/arm64/boot/dts/rockchip/rk3588s.dtsi-      dma-names = "tx", "rx";
-arch/arm/boot/dts/rk3066a.dtsi-                 dma-names = "tx", "rx";
-arch/arm/boot/dts/rk3128.dtsi-                  dma-names = "tx", "rx";
-arch/arm/boot/dts/rk3288.dtsi-                  dma-names = "tx", "rx";
-arch/arm/boot/dts/rv1126.dtsi-                  dma-names = "tx", "rx";
-arch/arm/boot/dts/socfpga.dtsi-                 dma-names = "tx", "rx";
-arch/arm/boot/dts/sun6i-a31.dtsi-               dma-names = "rx", "tx";
-arch/arm/boot/dts/sun8i-a23-a33.dtsi-           dma-names = "rx", "tx";
-arch/arm/boot/dts/sun8i-v3s.dtsi-               dma-names = "rx", "tx";
-arch/arm/boot/dts/sunxi-h3-h5.dtsi-             dma-names = "rx", "tx";
-arch/riscv/boot/dts/allwinner/sunxi-d1s-t113.dtsi-  dma-names = "rx", "tx";
-
-Do not enforce the order of the dma-names items.
+Fix the issue by documenting the missing property.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../devicetree/bindings/serial/snps-dw-apb-uart.yaml   | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-index 2becdfab4f15..d374844a61a5 100644
---- a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-@@ -71,9 +71,13 @@ properties:
-     minItems: 2
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+index 1cb4da300607..c32b4750651c 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+@@ -82,6 +82,10 @@ properties:
+   resets:
+     maxItems: 2
  
-   dma-names:
--    items:
--      - const: rx
--      - const: tx
-+    oneOf:
-+      - items:
-+          - const: tx
-+          - const: rx
-+      - items:
-+          - const: rx
-+          - const: tx
- 
-   snps,uart-16550-compatible:
-     description: reflects the value of UART_16550_COMPATIBLE configuration
++  port:
++    $ref: audio-graph-port.yaml#
++    unevaluatedProperties: false
++
+   rockchip,capture-channels:
+     $ref: /schemas/types.yaml#/definitions/uint32
+     default: 2
 -- 
 2.39.1
 
