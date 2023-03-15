@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64204C61DA4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 16:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE90AC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 16:03:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mApDV4YxYCJsIS60dgJTNSLMl4QRMqIl+tPbnj0kalc=; b=fbOrDssYkQVe+X
-	K4F6bsFH33ESfwAAzbt/btL816eH6lVvGC5MbMpZCAbH0mjRW4VfatWzgZSxRov3SfelkMeF2pnkv
-	5FXAqt2GO8HhTtZ0+o/8VjWfCJycrtOwIXu/UAc+jYh+20XzaZu7GAfxolBaBvxxrXR5TsHkP3/wu
-	+spWNxS/aZ/DQgXKaiVrdGjqwyy8Ma82yHY9DJWmTFl5DvAp9FZ2kPXgulezHXA88RvED5GUye3gI
-	VhvtWG6gsm5+ZBPLJSng/h7d61qDPuPWFLiS3Mfx6p184OpPjLfxbvkGpAE8g1xqifsy+QIq4v52X
-	XYPFyd2qKwc+hNg2f24g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BJme4xfALI9btAWQBJ7bdVyBhezWSlrHcnxO8BQJLhA=; b=m09sGMjGnuNNS3
+	mcCl4WDn3mCj/nCsV3oJspI+ETnNV5rg9oIks0eVQKggVjz31kZXKssg5UlVfF0vsASgkz865dDjI
+	qqWNJJ/JIAX+aoBJJeXyYzFU0h4o9xPN9c2/cH3a4kjjntXcpoxW09EI82/eqci3OTJRWtNiPqiR7
+	ht1m55zgY7T8pLQsOnELI6NxFC7k57I2189KaxLvIxK5PSzFUNyiZzyEAcuEzOYIJyDpD5HvyFwHO
+	KFxKkoPxo2IIy8lwJnv8xZV1sn38h63ZCKSb3TKOX/+BL0aP1oN++c9Oj3RlfuWb5ldoxBeq0jCbd
+	AsIcjckbHMCKvgkPmJPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcTac-00DzGP-28;
-	Wed, 15 Mar 2023 16:02:58 +0000
+	id 1pcTan-00DzLF-0A;
+	Wed, 15 Mar 2023 16:03:09 +0000
 Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcTaY-00DzDr-0W;
-	Wed, 15 Mar 2023 16:02:55 +0000
-Received: by mail-il1-x12c.google.com with SMTP id r4so4618636ilt.8;
-        Wed, 15 Mar 2023 09:02:52 -0700 (PDT)
+	id 1pcTac-00DzGH-22;
+	Wed, 15 Mar 2023 16:02:59 +0000
+Received: by mail-il1-x12c.google.com with SMTP id l9so7496595iln.1;
+        Wed, 15 Mar 2023 09:02:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678896172;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=2aBbm9JNzxZf/5Es771aqwdKA5ulU2AUAgnhTScsKOU=;
-        b=JPGLRbfw0oafn4hqfinB+/WmSXcV0r+6HKtrkuWKTdX0HMpqs7eluX/l9vosleBaxe
-         c5+gnJzRwQlm97NMXrjv5VuC9OTwZWBjLJttJF7YOyVbKwV1N4GCIJyy1ZiO1h18yJet
-         zv5XwngUxFvJz2CDWdp+Ua/2XNJZkA0+E7JiUCATy8kg7yh5y955v5LeQEtgU6Vmh3/5
-         5Bc5qFavb/GNE6McR8YcYHvORLXLicVPK8twYgQs0plsyNYu+PImaU4ey5x6gGZiG76n
-         IL9TkjuUP28MQ0NWH9zm52q7H2c6sfj2g6+4tWE23Fe67498TEf9046iSuPXCYlSUkrF
-         /aVA==
+        d=gmail.com; s=20210112; t=1678896178;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wRz/HSIpijcdIS7EAx/rH+emYIVog1BleYIOJz3yCDA=;
+        b=n2+4Zg0ywjblhdc4TgC2ZkT8MSD58Ub8tdekflwI7COtFuQOL37HsaU3PoS1ySWHwC
+         w93SLcgIK5nWxlfu8hIDE479eCzRBN0weYm/OO+2iMNcENQX66xk01prC80LGT4D3nnQ
+         0DC6k0F2sKe9R150SZKKdJMGVhln2Nx550iOSXXFh8fon3RPwJZdIBdFhieaplNkdVdu
+         A9LXf1I2kizqFUZPZY5RDUJWko/stAPQ5EImnFgkLYtTPnhHEwcuXhU+Oml0CyMbPYuK
+         lzs9FyI+fQiCxYDR7ujLj7OswVtL/DAQeQIggH96e0I305ly026hnVOUJQLajPl5353A
+         K9fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678896172;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2aBbm9JNzxZf/5Es771aqwdKA5ulU2AUAgnhTScsKOU=;
-        b=atGgwSg/zunVATnaY/gAdXbkg/lIWfVmK94ytDN74vUQKcunZM74l2jbinDT8tr0Y6
-         7hgESfZH/Gchr+gVEboOpm4a/hICgnFMVdemR9QUMpdGnQBZE/GnrBbfj3vnJwdWFdyz
-         yXgTcXa5CcKXRxFUDOq3cmfstVlEToFpY/xJktulp/oojtV4BZlHZVLa724J4/6U0GLB
-         7cqK6hidjJjFDI5IA5vTJAbdec/+mm65J5BIKL09/CkzrhzTiy/B8jDQcpRs1ggM1Ffx
-         ao7A8ObiHSGKzvfMJSFrQHYbuUodJNPA6kE3wpOukIZoflR2P2M1W9qiaT+g+v7khhS0
-         Kubg==
-X-Gm-Message-State: AO0yUKXC7WAeuuFYMJUsPhicEhI0WyKUtlqjeEndVBQm/9B47YpprDTD
-	Wt6ssl49DifVAGTp3PXN3B4=
-X-Google-Smtp-Source: AK7set+s4R8QTN//+CuBe3wKC8Ujg7F8GXkcQBVQ+aIUzuMvegvUyczAeH/+Jwvl7uY4FGKz8pZ7ig==
-X-Received: by 2002:a92:db06:0:b0:323:38b:549b with SMTP id b6-20020a92db06000000b00323038b549bmr5131486iln.31.1678896171989;
-        Wed, 15 Mar 2023 09:02:51 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1678896178;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wRz/HSIpijcdIS7EAx/rH+emYIVog1BleYIOJz3yCDA=;
+        b=AR2cFIU5dJ4u9JfDk3TrIU4XqlM+FE374d4KP5o9BuagIE1KT4Ts7XmFitQIf34As/
+         sJMfIWE77zbIIaFtY0ne14f2MNGRe6LWIjY226AQtkn8UtZK3ewQaRu1HgrKj+IsaC3m
+         HfCnVxbADmJujSrlIunAH5aOkdr7l4LIl///UiM6LTP7e2+3MMNq9TDijMdwqmYKy1ir
+         i5YmyLYls5RTCPlqCmvFrskFIYU4dM6UuhOkvkqgdBM2tI4hdztKvZOZk4UKT+JNlU6j
+         guAgULYQHHP4Tt4dqu6kSvUWI+Unogll75CvQshy4ul00TeCTst/O9YIQ2mJJqOm6i0i
+         mVSA==
+X-Gm-Message-State: AO0yUKVBcNJ+OIYH+wN7purNWViUI+vvSSvlkz/kvSpSEW90MYufdA+y
+	bP5vppo1zfG+bnuxyFETV4s=
+X-Google-Smtp-Source: AK7set9XPptg+3RJGT4hYzH5sV/zhxw6eSuTRF1kBECbAXdXVGwoiEHP06XLHG4jqEVWYwsfIuCmLA==
+X-Received: by 2002:a92:cb90:0:b0:318:a974:ab52 with SMTP id z16-20020a92cb90000000b00318a974ab52mr4847649ilo.21.1678896178065;
+        Wed, 15 Mar 2023 09:02:58 -0700 (PDT)
 Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
-        by smtp.googlemail.com with ESMTPSA id l2-20020a92d942000000b00313fa733bcasm1730725ilq.25.2023.03.15.09.02.50
+        by smtp.googlemail.com with ESMTPSA id l2-20020a92d942000000b00313fa733bcasm1730725ilq.25.2023.03.15.09.02.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 09:02:51 -0700 (PDT)
+        Wed, 15 Mar 2023 09:02:57 -0700 (PDT)
 From: Tianling Shen <cnsztl@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -81,14 +82,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/5] arm64: dts: rockchip: improve support for NanoPi R5 series
-Date: Thu, 16 Mar 2023 00:02:23 +0800
-Message-Id: <20230315160228.2362-1-cnsztl@gmail.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: fix gmac support for NanoPi R5S
+Date: Thu, 16 Mar 2023 00:02:27 +0800
+Message-Id: <20230315160228.2362-5-cnsztl@gmail.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20230315160228.2362-1-cnsztl@gmail.com>
+References: <20230315160228.2362-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230315_090254_202443_6F959A3D 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20230315_090258_672343_B5642EE5 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,26 +108,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-- Added NanoPi R5C support
-- Enable rk809 support for NanoPi R5 series
-- Minor fixes for NanoPi R5S gmac
+- Changed phy-mode to rgmii.
 
-Tianling Shen (5):
-  arm64: dts: rockchip: create common dtsi for NanoPi R5 series
-  dt-bindings: Add doc for FriendlyARM NanoPi R5C
-  arm64: dts: rockchip: Add FriendlyElec NanoPi R5C
-  arm64: dts: rockchip: fix gmac support for NanoPi R5S
-  arm64: dts: rockchip: enable rk809 audio codec on the NanoPi R5 series
+- Fixed pull type in pinctrl for gmac0.
 
- .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-nanopi-r5c.dts   | 112 ++++
- .../boot/dts/rockchip/rk3568-nanopi-r5s.dts   | 582 +----------------
- .../boot/dts/rockchip/rk3568-nanopi-r5s.dtsi  | 611 ++++++++++++++++++
- 5 files changed, 731 insertions(+), 581 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
+- Removed duplicate properties in mdio node.
+  These properties are defined in the gmac0 node already.
 
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+index e9adf5e66529..2a1118f15c29 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+@@ -57,7 +57,7 @@
+ 	assigned-clock-rates = <0>, <125000000>;
+ 	clock_in_out = "output";
+ 	phy-handle = <&rgmii_phy0>;
+-	phy-mode = "rgmii-id";
++	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac0_miim
+ 		     &gmac0_tx_bus2
+@@ -79,9 +79,6 @@
+ 		reg = <1>;
+ 		pinctrl-0 = <&eth_phy0_reset_pin>;
+ 		pinctrl-names = "default";
+-		reset-assert-us = <10000>;
+-		reset-deassert-us = <50000>;
+-		reset-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_LOW>;
+ 	};
+ };
+ 
+@@ -115,7 +112,7 @@
+ &pinctrl {
+ 	gmac0 {
+ 		eth_phy0_reset_pin: eth-phy0-reset-pin {
+-			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
 -- 
 2.17.1
 
