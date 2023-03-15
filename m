@@ -4,51 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB703C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 03:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D8DC61DA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 07:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q19sHJ+ogb7JSRyFG0tUvcja7GULLu7/jWZHvr5lI2E=; b=bkYoeW3ELNIBiz
-	hcRBrkaWTSvoEOZgh3VCUtjgaVYT+mhfUBWKby8i7S0Kp8ImDyt0sMNqLurjqkg/l9lc1h/KuiGQP
-	v4KIcOB7TB1QvXAG4CEkUThZKy8ytpoMJqz6SjRl4suedUGIxZCtWuLmVtMDNyEMobuc7ED55qn5O
-	PkZxF3RvcsvEe8CZ2n7lLnI7BfpePibVZQE8Mr2uodpds62Cr8G3zqSM91WOJnzt2bDxtQypRa5b0
-	Luh5y4wF9x5DDHNgXgyRpXGBp8eAe6FEL076b4QrbiUFW9fLaMCK+rqnU1BzREefXyNBKBwvohGjL
-	N4USnNmNAlbKR74Ca0Ig==;
+	List-Owner; bh=++XUADvvE/mN4VTm0ZOTKIwGjWs5/4N0zEWRMIpSB3c=; b=iMGf19OOjIxdLG
+	MeqTShU+vhL/inKS4tKZUeijuZoWidQik8fr6+dWe/0rFSMtucSIXoGTxDT/4HkeVVeqx7/El2b7r
+	CYNh3P23v5yAjnvB/S42IgqjS9wzNJrrNPNgU6ucOa3vBcdiND8DdlKdETi0GOMCz0wrzPMeoZqgS
+	r1kRjQiFiAxQn07W/gRlNp7SqFZF9+48Cuckp/JeXfn1wQgF20psz1uGHz3v2EF0f42Kyk8yFzE95
+	wo0mpEuHCUNmFgNnqAgQrsmz4G7Tb7eMrBxs22QhvhqB6mg0xIjhAd56aOljeJ5CY+LkUpn+a5eZs
+	vbDFwTiDiihNox33YXdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHvB-00CAFW-26;
-	Wed, 15 Mar 2023 03:35:25 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1pcLNk-00CdIW-0u;
+	Wed, 15 Mar 2023 07:17:08 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHv5-00CADC-2b;
-	Wed, 15 Mar 2023 03:35:21 +0000
-From: Yixun Lan <dlan@gentoo.org>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Jagan Teki <jagan@amarulasolutions.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Yixun Lan <dlan@gentoo.org>,
-	Nick Xie <nick@khadas.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add Khadas Edge2 board
-Date: Wed, 15 Mar 2023 11:34:40 +0800
-Message-Id: <20230315033441.32719-2-dlan@gentoo.org>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230315033441.32719-1-dlan@gentoo.org>
-References: <20230315033441.32719-1-dlan@gentoo.org>
+	id 1pcLNh-00CdDF-0J
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Mar 2023 07:17:06 +0000
+Received: by mail-ed1-x532.google.com with SMTP id r11so20028093edd.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 15 Mar 2023 00:16:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678864611;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=l12j+5DZPIr3CM2plc1IPPLtAzb+IPIK3UVC9/MBJgA=;
+        b=Salfcnwr7cE3680LEI6UokKNQ23hdAFfxBkXrk9OgvhcU7KAr2nZaOfrWy4aD19rc3
+         WVFdvRJ4PhHH88B9nj8sBQc3sfeI+DyQWYi4o+HFGp43wAT7n1XsMPd3uKioTlz1FY0/
+         Y69J1H6q+OGPmVT8f9gYmtVgsbdOFoJPIsoini5Rd0rQDjOJGWC+hcKKq3qdcRYv+z3g
+         Q2dOlIuRxfejp40fuDIXjGE/NTvS3RRVpccmql11Rr0I41Cm0+rMqn/FzVlH0geas9kf
+         83Wot/qXX9/5BN0nFnq1Z3S0Nfcf4+iXTMDImerQaoJEuNxbb38CT7KuJY1OF5EK6BXh
+         +ZyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678864611;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=l12j+5DZPIr3CM2plc1IPPLtAzb+IPIK3UVC9/MBJgA=;
+        b=5gwCbpc+ygzfMFY31Eh5A+5k0WxJciIWnvqHgUgFCv/CGIZcSi4mAoQr6R/OYRqXF+
+         +c2MhJqJKhkLRfHiw7hGIHqwd+tVwlhoXx9y3W3EnLTQsKngI9xgUA6s97VtUUbU0UWR
+         2F3F6hHqKWOubB4Zggqy4cy85uc33mJT47Stso8xp6z+GdDWZYwZ7UE+OkmtqV6ppyld
+         Jq88b5OO/mchMMoPYHBxLMconQQTJMERhNgWcMEMtXZ69yTTjGjqMpDY2KYB/IHaqcRz
+         xTGVCu2VD0UHb0Bt1Z6u+C4GFkGwBqs+8akmwAXDy5XvzXAhAH+BUh9BFiypKY0fkt/Y
+         BQ7w==
+X-Gm-Message-State: AO0yUKWgCBCLdqd6ir2WJW7jSJeeNx4bXgAg3RkXUOKr02+1BsAPwU4u
+	pz/iNtm3Y33BLyybAYQqcZwtaw==
+X-Google-Smtp-Source: AK7set+Cw/lpF35VCg0jANWxJglVMzoNi7c/Kjdm3hf/RwhjGB4/m0AFAUdJGGQ4tg4dqD1K2Oyidg==
+X-Received: by 2002:a17:907:c78a:b0:91f:5f9c:5db6 with SMTP id tz10-20020a170907c78a00b0091f5f9c5db6mr442065ejc.52.1678864610933;
+        Wed, 15 Mar 2023 00:16:50 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:940e:8615:37dc:c2bd? ([2a02:810d:15c0:828:940e:8615:37dc:c2bd])
+        by smtp.gmail.com with ESMTPSA id qq11-20020a17090720cb00b008c6c47f59c1sm2105301ejb.48.2023.03.15.00.16.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Mar 2023 00:16:50 -0700 (PDT)
+Message-ID: <b1e0cc91-4a67-6417-eb4e-e044ce6dd03b@linaro.org>
+Date: Wed, 15 Mar 2023 08:16:49 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Khadas Edge2 board
+Content-Language: en-US
+To: Yixun Lan <dlan@gentoo.org>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Jagan Teki <jagan@amarulasolutions.com>,
+ Christopher Obbard <chris.obbard@collabora.com>, Nick Xie <nick@khadas.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230315033441.32719-1-dlan@gentoo.org>
+ <20230315033441.32719-2-dlan@gentoo.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230315033441.32719-2-dlan@gentoo.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_203520_029630_DC028A51 
-X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-CacheID: sfid-20230315_001705_147798_10F47F2F 
+X-CRM114-Status: UNSURE (   7.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,46 +101,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edge2 is an ultraslim, credit-card sized ARM PC designed by Khadas.
-It has quite a few rich peripherals.
+On 15/03/2023 04:34, Yixun Lan wrote:
+> Edge2 is an ultraslim, credit-card sized ARM PC designed by Khadas.
+> It has quite a few rich peripherals.
+> 
 
-Specification:
-- Rockchip RK3588s
-- 8/16GB LPDDR4
-- 32/64GB eMMC 5.1
-- AP6275P WiFi6 LAN
-- HDMI2.1 Type-A
-- MIPI-CSI x3
-- MIPI-DSI x2
-- usb3.1; usb2.0
-- RTC clock
-- PWM fan
-- SPI Flash
-- Pads expansion board (UART, USB)
 
-Signed-off-by: Yixun Lan <dlan@gentoo.org>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 35f74eda30ae..ff663797291c 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -533,6 +533,11 @@ properties:
-               - khadas,edge-v
-           - const: rockchip,rk3399
- 
-+      - description: Khadas Edge2 series boards
-+        items:
-+          - const: khadas,edge2
-+          - const: rockchip,rk3588s
-+
-       - description: Kobol Helios64
-         items:
-           - const: kobol,helios64
--- 
-2.39.2
+Best regards,
+Krzysztof
 
 
 _______________________________________________
