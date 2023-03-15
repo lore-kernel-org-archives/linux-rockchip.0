@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5275AC6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 03:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB703C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Mar 2023 03:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FnnHyvB0hD/mKWM2EPIsrHhSHKYAOeJjG55kUN9RWB0=; b=rkQ+JxWdGUr3JE
-	OI1PEyIbK7RyiVs8ThOXBvnBPIqGujQK1l5J2FrdBRWzQd6+oyf+JsNKp070j3Z02i05UZHVUflRU
-	ba0W7F9zZGIJk9UfKeWsaaponl57ejkqwBY62Dj5+8o/OBgh85j+hmDCfArXXtskc+sdfy/dWgPIw
-	lpeLkUiNCNUJBdWlVSBSgMVMWY0bSaMWsXYVafc5xo1pIzXw7idVVNcwwdp2JYQmcVpjAEv7g58Hl
-	69+STButVH9CMYQdksi4k7z/FBlfGFc/OgiMRgZMAcBDMM7vs1f/D693G847CLel8U3Ng8IPi1ryz
-	zgTevW243L9UXd8g5CRg==;
+	List-Owner; bh=Q19sHJ+ogb7JSRyFG0tUvcja7GULLu7/jWZHvr5lI2E=; b=bkYoeW3ELNIBiz
+	hcRBrkaWTSvoEOZgh3VCUtjgaVYT+mhfUBWKby8i7S0Kp8ImDyt0sMNqLurjqkg/l9lc1h/KuiGQP
+	v4KIcOB7TB1QvXAG4CEkUThZKy8ytpoMJqz6SjRl4suedUGIxZCtWuLmVtMDNyEMobuc7ED55qn5O
+	PkZxF3RvcsvEe8CZ2n7lLnI7BfpePibVZQE8Mr2uodpds62Cr8G3zqSM91WOJnzt2bDxtQypRa5b0
+	Luh5y4wF9x5DDHNgXgyRpXGBp8eAe6FEL076b4QrbiUFW9fLaMCK+rqnU1BzREefXyNBKBwvohGjL
+	N4USnNmNAlbKR74Ca0Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHvD-00CAGf-2S;
-	Wed, 15 Mar 2023 03:35:27 +0000
+	id 1pcHvB-00CAFW-26;
+	Wed, 15 Mar 2023 03:35:25 +0000
 Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcHv7-00CADq-0g;
-	Wed, 15 Mar 2023 03:35:22 +0000
+	id 1pcHv5-00CADC-2b;
+	Wed, 15 Mar 2023 03:35:21 +0000
 From: Yixun Lan <dlan@gentoo.org>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -39,16 +39,17 @@ Cc: Jagan Teki <jagan@amarulasolutions.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add Khadas edge2 board
-Date: Wed, 15 Mar 2023 11:34:41 +0800
-Message-Id: <20230315033441.32719-3-dlan@gentoo.org>
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add Khadas Edge2 board
+Date: Wed, 15 Mar 2023 11:34:40 +0800
+Message-Id: <20230315033441.32719-2-dlan@gentoo.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230315033441.32719-1-dlan@gentoo.org>
 References: <20230315033441.32719-1-dlan@gentoo.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230314_203521_329178_68BB2D32 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20230314_203520_029630_DC028A51 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,71 +67,43 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Edge2 is an ultraslim, credit-card sized ARM PC designed by Khadas.
+It has quite a few rich peripherals.
 
-In this patch, we will add basic device tree support for this board,
-Only eMMC, UART are enabled, so it's capable of booting into
-a basic linux system from eMMC via serial console.
+Specification:
+- Rockchip RK3588s
+- 8/16GB LPDDR4
+- 32/64GB eMMC 5.1
+- AP6275P WiFi6 LAN
+- HDMI2.1 Type-A
+- MIPI-CSI x3
+- MIPI-DSI x2
+- usb3.1; usb2.0
+- RTC clock
+- PWM fan
+- SPI Flash
+- Pads expansion board (UART, USB)
 
 Signed-off-by: Yixun Lan <dlan@gentoo.org>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3588s-khadas-edge2.dts     | 37 +++++++++++++++++++
- 2 files changed, 38 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 99a44c400d6a..1743e9e14426 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -90,4 +90,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-new file mode 100644
-index 000000000000..93b4a0c4ed0f
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -0,0 +1,37 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 35f74eda30ae..ff663797291c 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -533,6 +533,11 @@ properties:
+               - khadas,edge-v
+           - const: rockchip,rk3399
+ 
++      - description: Khadas Edge2 series boards
++        items:
++          - const: khadas,edge2
++          - const: rockchip,rk3588s
 +
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3588s.dtsi"
-+
-+/ {
-+	model = "Khadas Edge2";
-+	compatible = "khadas,edge2", "rockchip,rk3588s";
-+
-+	aliases {
-+		mmc0 = &sdhci;
-+		serial2 = &uart2;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
+       - description: Kobol Helios64
+         items:
+           - const: kobol,helios64
 -- 
 2.39.2
 
