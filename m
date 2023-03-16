@@ -4,122 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F93C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Mar 2023 22:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD49CC6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Mar 2023 22:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x8cCZPYhZlWQnEOy6Yw+X4hGXZuopuUBlIPBrwRO2m0=; b=MW1TtyOVVCkhOA
-	quUaP3elsLrr3DHiD9K7Gu5WJdWz9GUife8wFqATg5Yj93ysEGE54gVQsMHLxzd3rFKV2Y2ZrcB8r
-	EJdXFVrDKu1xYDhjCw/W/mTZSw/RczkNo8lTlJbwJAWw61YxGOLvShKfE9OxAhHddTLOEPHOFAEe0
-	Y8RWjwkuPsxKNyBEGfMTwTWFtjZBPYtFbr2PRTODLqDARZP9kM00MF6tMau7uNTTiX5IBGKSIdHhT
-	Sr50P8d6hdbUsBZqPT0qbaCqnfesA+7SwguBCrGGv3NeOeMYjob2GM+MjKi0ryK5HBWVMIB+T2vhG
-	/ihFHchwb+eYGsbIZ2HQ==;
+	List-Owner; bh=5kJfWIH7Y9+Wd2RBSXGKu2O4diRbcNLxIiIRND0wsWA=; b=VrhGiUlO2nEpzW
+	oAD8Muu9HNmacaN9cWAiPGQx3gH+xpWmNPUFuI4qAlbnTKDoW13Eb3YqJBk69l0M/aTrHy5JNorOz
+	ivBNIo/a2KpDkod72bXWNq7DZjaetv6ZKaOIEfLpHSDCfpUdPhqfRUeLt3Ve97w6aGrLD/uDlqAMg
+	cx4liLN5//HQC6ON4RIE2URpuobdxmsURUyd/l8r/gwF9oRtbJ3GH80r0XbZzlVdQlMpmcbdhdli5
+	FR83RaRbP1+FuLJfdLhBDBJq0lBy5SHJu8e2ni/XNPsJ7MJddgjfDfi0VDlxIedBDbTPZVRh+ZwYA
+	Aw2BFNiNn/wh7+BLYb4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcvmn-00096J-1l;
-	Thu, 16 Mar 2023 22:09:25 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pcvmk-00093j-2u
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Mar 2023 22:09:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1679004562; x=1710540562;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=BwhFewWBTGHcR2L3lWIABhEO48EgoTHYXLzjzl/RGDE=;
-  b=X2gYKN8dbTWBf1TEXdSMULpMFyRV0byCFozOCyQkJowjzGac6Z4PuKYo
-   ZBJSEuab09vbkgRPf66MMVR1nU8K7dDMW5+SysY6RxgKg+3dRPxW7eFuq
-   M8MjVv0ShgoDC227rO0uTzdgYqBmQH79+L7WlivV0l5o+BJ6evEUjvZG7
-   BhOLfH/0vajDmwJp4PBJ6CdQrzt/p0AUm9fUACjZurwRq7y1J62gmTy1P
-   rTbtPlsegQ7BJlOmGbLo9BZcIbG53d8J5QKNNz8t8h4HRbzRKTBDjNC71
-   4Ff66hRkewud04ezLWMwSC4cN0xVjjtc2Mmtu/Y6zAmu1kJvyEmNVjMkC
-   A==;
-X-IronPort-AV: E=Sophos;i="5.98,265,1673884800"; 
-   d="scan'208";a="225814597"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com) ([199.255.45.15])
-  by ob1.hgst.iphmx.com with ESMTP; 17 Mar 2023 06:09:10 +0800
-IronPort-SDR: yrn0YzFnj261X2cf42t6BybLdaEaZ+etQ9sqxmlks22RQc/rf3K4Py5l0MvuY2gBamxjHmi034
- B2cHg19YcO/AKfd+MT90MNPvN2pCGcxS9AW+3vN0EuJoVzMn1np3G5PJpHr11QxGFB+g9RmWZM
- sz98vToFoD9BBjFsUZY2J2BquV5+Ebhq29ljcF6TmyifAQ9LVZGMGH80VOTEdGSwP4qu6PaGdz
- H8/HMSuvhGg2p2/K0LMCASYLiDFlfQKKbTe1tV6vSDdzyCLy1WHfNSlN7033+f86TXbTxxeWGr
- giU=
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
-  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 16 Mar 2023 14:19:54 -0700
-IronPort-SDR: 7H5dXuRLkdfJcfNBU/yD7TG+h57DF0mB/t5ldlK6TYL81tWgEFj/pzGvGUcqcT/GrRtAgnYj2/
- y3Z2zy1cNjKZRQhIyJe5v2aD6mcPd3+NNtZTBe/o4rZxFU57tjdHZY/U2NznIZMHPjBGeGrAAJ
- WNLSGVfo6hOkHN/yHqfOoT3il5/ScfhY4KuQ2HT2Oo4xYS4RFcJvuUCFlLgkqdr05vfg6LaCON
- Mf7I/BDZlp1gJLJYMrOBRH9MyJgLbGQpzQ3SteiD/Kv7QR0opjxCXdgq1isyeXPvGx58oGMQbx
- a3M=
-WDCIronportException: Internal
-Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
-  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 16 Mar 2023 15:09:11 -0700
-Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4Pd1d22zz0z1RtVp
-	for <linux-rockchip@lists.infradead.org>; Thu, 16 Mar 2023 15:09:10 -0700 (PDT)
-Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
-	reason="pass (just generated, assumed good)"
-	header.d=opensource.wdc.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
-	opensource.wdc.com; h=content-transfer-encoding:content-type
-	:in-reply-to:organization:from:content-language:references:to
-	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
-	1679004549; x=1681596550; bh=BwhFewWBTGHcR2L3lWIABhEO48EgoTHYXLz
-	jzl/RGDE=; b=VTvMSOt1n+xg5pbYHSTNHomXjUGmowXAasyPPtvTRHlgOelErZJ
-	TGhjpcBC1h2GltIkCHIJf3t9kTAKCbnzUHGkgPF/gBZ+FYJ9vLBswyjaiNBpvIxM
-	3oeiImJn/VVeXIsOwH6eyzbk4RoLbw2k8AaryDznQyD6aapbK2iDTFu3aIbJcWv4
-	D20kAgaw2yiZoJf8dhyHtNBcMew0ve5Qn31/2eNV73xbrqHIieI7Ohqz4yLEuHiL
-	78mMGJ2RJWmWscjVLS7uK6r3gfnKWZEhm7+Ai1qeJs5c4x0Mkw75nYAzXW6DnKuX
-	JuSobZVuicvUIjxZwQbF3X6I38yPAoap6QQ==
-X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
-Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
-	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id WwSddaVuEkEO for <linux-rockchip@lists.infradead.org>;
-	Thu, 16 Mar 2023 15:09:09 -0700 (PDT)
-Received: from [10.225.163.88] (unknown [10.225.163.88])
-	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4Pd1cx56X6z1RtVm;
-	Thu, 16 Mar 2023 15:09:05 -0700 (PDT)
-Message-ID: <15208569-b3d7-b9f7-6676-9d9122cac84a@opensource.wdc.com>
-Date: Fri, 17 Mar 2023 07:09:04 +0900
+	id 1pcw3y-000BMv-1r;
+	Thu, 16 Mar 2023 22:27:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1pcw3t-000BKd-2w;
+	Thu, 16 Mar 2023 22:27:07 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B00701FB;
+	Thu, 16 Mar 2023 15:27:40 -0700 (PDT)
+Received: from bogus (unknown [10.57.52.173])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 774083F64C;
+	Thu, 16 Mar 2023 15:26:52 -0700 (PDT)
+Date: Thu, 16 Mar 2023 22:26:19 +0000
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>,
+	Daniel Drake <drake@endlessm.com>,
+	Katsuhiro Suzuki <katsuhiro@katsuster.net>,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 01/11] dt-bindings: firmware: arm,scmi: Document
+ assigned-clocks and assigned-clock-rates
+Message-ID: <20230316222619.r4jzk3lzdxzamr2s@bogus>
+References: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
+ <20230315114806.3819515-2-cristian.ciocaltea@collabora.com>
+ <20230316203417.GA3833267-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 0/9] PCI: rockchip: Fix RK3399 PCIe endpoint controller
- driver
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
- rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Mikko Kovanen <mikko.kovanen@aavamobile.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
-References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <ecd09f27-b799-4741-2c5a-a2de99776c51@opensource.wdc.com>
- <CAAEEuhrk4cSC312UiAL3UwoDZ=urrdDcBThcNHd1dqnAuJTzAw@mail.gmail.com>
- <3c4ed614-f088-928f-2807-deaa5e4b668a@opensource.wdc.com>
- <CAAEEuhqk0scWd3wFbVb9fSgHxPBKotpEPNi+YPG4GD9vLO94mw@mail.gmail.com>
- <8392a7de-666a-bce6-dc9f-b60d6dd93013@opensource.wdc.com>
- <1e8184e9-7e0b-2598-cc5a-e46d6c2f152a@opensource.wdc.com>
- <CAAEEuhoB2LqL=B_BQ0X2T-E+Yt83kPUiv-R9dgU0O-f22ukcWg@mail.gmail.com>
- <CAAEEuhp5WTkaPDRLa8frc9Sc43A3HwApW647v-E9Bse6p5Df5Q@mail.gmail.com>
-Content-Language: en-US
-From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Organization: Western Digital Research
-In-Reply-To: <CAAEEuhp5WTkaPDRLa8frc9Sc43A3HwApW647v-E9Bse6p5Df5Q@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20230316203417.GA3833267-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230316_150923_000074_BB861F92 
-X-CRM114-Status: GOOD (  33.21  )
+X-CRM114-CacheID: sfid-20230316_152706_030163_EDF52B1C 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,61 +82,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/17/23 01:34, Rick Wertenbroek wrote:
->>> By the way, enabling the interrupts to see the error notifications, I do see a
->>> lot of retry timeout and other recoverable errors. So the issues I am seeing
->>> could be due to my PCI cable setup that is not ideal (bad signal, ground loops,
->>> ... ?). Not sure. I do not have a PCI analyzer handy :)
+On Thu, Mar 16, 2023 at 03:34:17PM -0500, Rob Herring wrote:
+> +Stephen
 > 
-> I have enabled the IRQs and messages thanks to your patches but I don't get
-> messages from the IRQs (it seems no IRQs are fired). My PCIe link seems stable.
-> The main issue I face is still that after a random amount of time, the BARs are
-> reset to 0, I don't have a PCIe analyzer so I cannot chase config space TLPs
-> (e.g., host writing the BAR values to the config header), but I don't think that
-> the problem comes from a TLP issued from the host. (it might be).
+> On Wed, Mar 15, 2023 at 01:47:56PM +0200, Cristian Ciocaltea wrote:
+> > Since commit df4fdd0db475 ("dt-bindings: firmware: arm,scmi: Restrict
+> > protocol child node properties") the following dtbs_check warning is
+> > shown:
+> > 
+> >   rk3588-rock-5b.dtb: scmi: protocol@14: Unevaluated properties are not allowed ('assigned-clock-rates', 'assigned-clocks' were unexpected)
+> 
+> I think that's a somewhat questionable use of assigned-clock-rates. It 
+> should be located with the consumer rather than the provider IMO. The 
+> consumers of those 2 clocks are the CPU nodes.
+> 
 
-Hmmm... I am getting lots of IRQs, especially the ones signaling "replay timer
-timed out" and "replay timer rolled over after 4 transmissions of the same TLP"
-but also some "phy error detected on receive side"... Need to try to rework my
-cable setup I guess.
-
-As for the BARs being reset to 0, I have not checked, but it may be why I see
-things not working after some inactivity. Will check that. We may be seeing the
-same regarding that.
-
-> I don't think it's a buffer overflow / out-of-bounds access by kernel
-> code for two reasons
-> 1) The values in the config space around the BARs is coherent and unchanged
-> 2) The bars are reset to 0 and not a random value
-> 
-> I suspect a hardware reset of those registers issued internally in the
-> PCIe controller,
-> I don't know why (it might be a link related event or power state
-> related event).
-> 
-> I have also experienced very slow behavior with the PCI endpoint test driver,
-> e.g., pcitest -w 1024 -d would take tens of seconds to complete. It seems to
-> come from LCRC errors, when I check the "LCRC Error count register"
-> @0xFD90'0214 I can see it drastically increase between two calls of pcitest
-> (when I mean drastically it means by 6607 (0x19CF) for example).
-> 
-> The "ECC Correctable Error Count Register" @0xFD90'0218 reads 0 though.
-> 
-> I have tried to shorten the cabling by removing one of the PCIe extenders, that
-> didn't change the issues much.
-> 
-> Any ideas as to why I see a large number of TLPs with LCRC errors in them ?
-> Do you experience the same ? What are your values in 0xFD90'0214 when
-> running e.g., pcitest -w 1024 -d (note: you can reset the counter by writing
-> 0xFFFF to it in case it reaches the maximum value of 0xFFFF).
-
-I have not checked. But I will look at these counters to see what I have there.
-
+Agreed. We definitely don't use those in the scmi clk provider driver.
+So NACK for the generic SCMI binding change.
 
 -- 
-Damien Le Moal
-Western Digital Research
-
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-rockchip mailing list
