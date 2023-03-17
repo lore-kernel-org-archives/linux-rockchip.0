@@ -4,82 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F0B4C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Mar 2023 14:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E489FC74A5B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Mar 2023 15:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yVV3f+NP10pUaIokpMGOE9qQoYB9fqrm6Zc0jJEEO+g=; b=0yvbHAq2/I9ouP
-	cSm7kLzSlBaF/dl0V4IkFOFr1k4dMuTKteTKUUKDynCJbRX/hTevrZMM+c2IWNcGN0nBL6O2xEwGr
-	OcnHdViDuIV6+cddYGVl65cyisInFfYJnti8rm72KoKVzjFxpqlaCZzrbrqr/bwVVqQg5+KlIL7yu
-	6Oxn/37cBi4IVSekcw7Hj1rfoQYlGVLDNGJF+xaSsH1KCVPW2N2eUMVIaf7cfeTnYMc+CPBF9utgs
-	iP/KBNKsmhLQBMqyeEkRw3v0t4MZMMa1I2hXtvBQwkyb06/lT7im4dNGDjRhkIXlRd1q3BdSCZ75G
-	D1W9LowIkOQniXd4ZqFA==;
+	List-Owner; bh=khcYyqKrSqCQfLhJeC9bcpmjyjwg4ZyPcDdKGoi4z0c=; b=rmj++Iz8SufQ9N
+	WIW2NZgznvDQbNvF1+8RH+447INIsybC8KpfRtV3EvzrLYBnewgLprT48oprsv6m8+tN6OFJc4KPb
+	2dPfePG4pSk73U6IEDQDUtbqXk8cVMWgC3P8e1ejbBfoNGfrhScYMEW5BbeHfbgh949iaqDoGT0pW
+	RpaaTPB+IfUqXOxfcbOR5zGqphWS5SAarunEGlP3kS26g+eokyh+jzWO4PnlTJq5E8RO3dGc6wR1y
+	OSvM8iUM8lsL0sdq9YQTwlEWRWbdCO83TMEPEJXKjSAMn1yHpl5QcogkfP1+yinDAcWaTWmtvwwPo
+	3SPxTqHMTOSAgpUKGIBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdB3r-002SS5-1S;
-	Fri, 17 Mar 2023 14:28:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pdCPw-002gEp-2I;
+	Fri, 17 Mar 2023 15:54:56 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdB3n-002SQl-27;
-	Fri, 17 Mar 2023 14:28:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2EA06622CE;
-	Fri, 17 Mar 2023 14:27:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BC1EC43442;
-	Fri, 17 Mar 2023 14:27:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679063277;
-	bh=Ja0gXd3YfBR6uYrUbXl92wXVqvLZJFGUpGHdiwj+ROI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=mdwCqXGqNep4EKAupw8jzfhWRrjq79YWH/MMQgK3tQSZC3hiyuYvbCWPTxwxLwpHJ
-	 FhfR3yNKFqj/NDBbszx/GvZ/J3/VMSeXoWCDwzES0AjdQiL1tvLD0BBMZ//FgxkrFf
-	 rRZHPmusSP2wcH9FuRjE8NFAqd7RVcTHkYI4fFrxuBQTLwnCSup5sz3Pq3dyCuOkyy
-	 Yi4E+sbyIKDivzUMuGYa8qkS9ILxgOwMjxYArHb//UyvvSyvqI8tHbgy89AH02HhIV
-	 agzW+EDeGvYcmM54DsDVhSg7ETaaEAxyM6Q15ke0yOFXafWjNuoaAIC7GScvP7ngF8
-	 BGyMe2skQ+W4w==
-Received: by mail-ua1-f43.google.com with SMTP id m5so3438455uae.11;
-        Fri, 17 Mar 2023 07:27:57 -0700 (PDT)
-X-Gm-Message-State: AO0yUKXcTRB33esrBdMWhRnLTFLnRidcr6ugxii0k5Wzy/q/ao8V99qN
-	UMCmTUiOx0mezMfczuTHb+HGchICxMJXc4k1EA==
-X-Google-Smtp-Source: AK7set+opXfvV0KuRUWrTn9+KJEXDQa7roIGehinVec3htJJWc+YaBCYf2jrEie3nmO3df834BaxB7f6VqlHHcNfwWw=
-X-Received: by 2002:a1f:2cd7:0:b0:401:73f4:dfe with SMTP id
- s206-20020a1f2cd7000000b0040173f40dfemr8088vks.3.1679063276330; Fri, 17 Mar
- 2023 07:27:56 -0700 (PDT)
+	id 1pdCPs-002gCL-1F
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Mar 2023 15:54:54 +0000
+Received: by mail-ed1-x529.google.com with SMTP id y4so22272583edo.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Mar 2023 08:54:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679068490;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=a6MfDM7+OPKEruVq5Qw+tL9foQplTG2gH4LeyrZ6K0I=;
+        b=J3OI5NGj9npu+foP+NF4EKylYoqNwBGWTTFoaBFl/rtJptvgmBqbgaaNwy0O7xtBZV
+         OoRN0BmTI0Vf421lNAAHbcxY37muIyEDCYlutZBnnT5RsycZvFq/PuFUBlELpOocRsuJ
+         K0xbCzcc3REibeoG9AcCeLCc+b1sQocdX11eHVM8JkPs4x/rdJcow6Ii+OL2asqAn6zf
+         rFPh/33gn2hrfP6UFSb8aYJBRoSxMyXd5IrQNX/xxa37k91f2ZMBbsDpnJJM7Oepr39r
+         v3SYngKEeCsRngXiYqXXSOEwTxlT71jNY/ehg8AgbVg5CxUKjNiBr60b6cJpnHThX7pf
+         CoKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679068490;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=a6MfDM7+OPKEruVq5Qw+tL9foQplTG2gH4LeyrZ6K0I=;
+        b=UCY2s9l4a/exYrZWTD/X4tpemKOeYDsajsCmeNAHwnXckaf5aJWTZLI9mGt6zzR999
+         3piIbnqVn61Dhlwg37zP3XrhZkvTYLROrUCtvyCXuOtQQKZjEv+fs0J1PgExupShj+vk
+         Eja5jSwzzdWwVrDEQCf7vEbiF5+Pq/EpJxzMbWiBEBaEx/gpfv0whpB8st5hdNdmouAI
+         CKOZAo9OvOC22Sl3BbODEvRLpmgzxWD9B1myvvADZ8l41UJjiSjwQz6bRB8b+XdeTWPk
+         5UGR5mHcTUDounpVnu+IsyFvNGzWrsLUDZl3b7FgV72PMlwuehYRpcUItYgqOWu/jFi/
+         OF0Q==
+X-Gm-Message-State: AO0yUKUSdXKNXcouFPPvbvoQM5Cqg0QVy5ycvic/f5lAx+KevP6xTG4n
+	FnDMCAlbyoxaoLqIg37Gaaswyw==
+X-Google-Smtp-Source: AK7set+MZ5pmlFpN+w8RxZMV5gSssYKuD9NQ8ZrDbPdbH6ontcivRAhcm8upFtI00t/Upa7xjOUp1Q==
+X-Received: by 2002:a17:907:cf88:b0:92f:7c42:8631 with SMTP id ux8-20020a170907cf8800b0092f7c428631mr10502230ejc.16.1679068489976;
+        Fri, 17 Mar 2023 08:54:49 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:d013:3eeb:7658:cec? ([2a02:810d:15c0:828:d013:3eeb:7658:cec])
+        by smtp.gmail.com with ESMTPSA id kx1-20020a170907774100b0091fdd2ee44bsm1112929ejc.197.2023.03.17.08.54.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Mar 2023 08:54:49 -0700 (PDT)
+Message-ID: <80796828-7b38-184a-2e8e-3cfe9158b67f@linaro.org>
+Date: Fri, 17 Mar 2023 16:54:47 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 02/11] dt-bindings: serial: snps-dw-apb-uart: Relax
+ dma-names order constraint
+Content-Language: en-US
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Daniel Drake <drake@endlessm.com>, Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+ alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, kernel@collabora.com
 References: <20230315114806.3819515-1-cristian.ciocaltea@collabora.com>
- <20230315114806.3819515-2-cristian.ciocaltea@collabora.com>
- <20230316203417.GA3833267-robh@kernel.org> <20230316222619.r4jzk3lzdxzamr2s@bogus>
- <d5881d9f-90cc-f7a2-72a3-0701348a03fe@collabora.com>
-In-Reply-To: <d5881d9f-90cc-f7a2-72a3-0701348a03fe@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 17 Mar 2023 09:27:44 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqL_EogoKOQ1xwU75=rJSC4o7yV3Jej4vadtacX2Pt3-hw@mail.gmail.com>
-Message-ID: <CAL_JsqL_EogoKOQ1xwU75=rJSC4o7yV3Jej4vadtacX2Pt3-hw@mail.gmail.com>
-Subject: Re: [PATCH 01/11] dt-bindings: firmware: arm,scmi: Document
- assigned-clocks and assigned-clock-rates
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sudeep Holla <sudeep.holla@arm.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Cristian Marussi <cristian.marussi@arm.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Albert Ou <aou@eecs.berkeley.edu>, Daniel Drake <drake@endlessm.com>, 
-	Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-arm-kernel@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-serial@vger.kernel.org, alsa-devel@alsa-project.org, 
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	kernel@collabora.com
+ <20230315114806.3819515-3-cristian.ciocaltea@collabora.com>
+ <3679f2d0-55f0-1710-abc2-b268b6fc6969@linaro.org>
+ <8ae57fe3-56aa-7e50-3eaa-a12a40657baf@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <8ae57fe3-56aa-7e50-3eaa-a12a40657baf@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230317_072759_774056_BAC424DB 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20230317_085452_426257_B41D5210 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,38 +106,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBNYXIgMTcsIDIwMjMgYXQgNDo1OeKAr0FNIENyaXN0aWFuIENpb2NhbHRlYQo8Y3Jp
-c3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gT24gMy8xNy8yMyAwMDoy
-NiwgU3VkZWVwIEhvbGxhIHdyb3RlOgo+ID4gT24gVGh1LCBNYXIgMTYsIDIwMjMgYXQgMDM6MzQ6
-MTdQTSAtMDUwMCwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gPj4gK1N0ZXBoZW4KPiA+Pgo+ID4+IE9u
-IFdlZCwgTWFyIDE1LCAyMDIzIGF0IDAxOjQ3OjU2UE0gKzAyMDAsIENyaXN0aWFuIENpb2NhbHRl
-YSB3cm90ZToKPiA+Pj4gU2luY2UgY29tbWl0IGRmNGZkZDBkYjQ3NSAoImR0LWJpbmRpbmdzOiBm
-aXJtd2FyZTogYXJtLHNjbWk6IFJlc3RyaWN0Cj4gPj4+IHByb3RvY29sIGNoaWxkIG5vZGUgcHJv
-cGVydGllcyIpIHRoZSBmb2xsb3dpbmcgZHRic19jaGVjayB3YXJuaW5nIGlzCj4gPj4+IHNob3du
-Ogo+ID4+Pgo+ID4+PiAgICByazM1ODgtcm9jay01Yi5kdGI6IHNjbWk6IHByb3RvY29sQDE0OiBV
-bmV2YWx1YXRlZCBwcm9wZXJ0aWVzIGFyZSBub3QgYWxsb3dlZCAoJ2Fzc2lnbmVkLWNsb2NrLXJh
-dGVzJywgJ2Fzc2lnbmVkLWNsb2Nrcycgd2VyZSB1bmV4cGVjdGVkKQo+ID4+Cj4gPj4gSSB0aGlu
-ayB0aGF0J3MgYSBzb21ld2hhdCBxdWVzdGlvbmFibGUgdXNlIG9mIGFzc2lnbmVkLWNsb2NrLXJh
-dGVzLiBJdAo+ID4+IHNob3VsZCBiZSBsb2NhdGVkIHdpdGggdGhlIGNvbnN1bWVyIHJhdGhlciB0
-aGFuIHRoZSBwcm92aWRlciBJTU8uIFRoZQo+ID4+IGNvbnN1bWVycyBvZiB0aG9zZSAyIGNsb2Nr
-cyBhcmUgdGhlIENQVSBub2Rlcy4KPiA+Pgo+ID4KPiA+IEFncmVlZC4gV2UgZGVmaW5pdGVseSBk
-b24ndCB1c2UgdGhvc2UgaW4gdGhlIHNjbWkgY2xrIHByb3ZpZGVyIGRyaXZlci4KPiA+IFNvIE5B
-Q0sgZm9yIHRoZSBnZW5lcmljIFNDTUkgYmluZGluZyBjaGFuZ2UuCj4KPiBBY2NvcmRpbmcgdG8g
-WzFdLCAiY29uZmlndXJhdGlvbiBvZiBjb21tb24gY2xvY2tzLCB3aGljaCBhZmZlY3QgbXVsdGlw
-bGUKPiBjb25zdW1lciBkZXZpY2VzIGNhbiBiZSBzaW1pbGFybHkgc3BlY2lmaWVkIGluIHRoZSBj
-bG9jayBwcm92aWRlciBub2RlIi4KClRydWUsIGJ1dCBpbiB0aGlzIGNhc2UgaXQncyByZWFsbHkg
-YSBzaW5nbGUgY29uc3VtZXIgYmVjYXVzZSBpdCdzIGFsbApDUFUgbm9kZXMgd2hpY2ggYXJlIG1h
-bmFnZWQgdG9nZXRoZXIuCgo+IFRoYXQgd291bGQgYXZvaWQgZHVwbGljYXRpbmcgYXNzaWduZWQt
-Y2xvY2stcmF0ZXMgaW4gdGhlIENQVSBub2Rlcy4KCldvdWxkbid0IG9uZSBub2RlIGJlIHN1ZmZp
-Y2llbnQ/CgpUaGlua2luZyBtb3JlIGFib3V0IHRoaXMsIHdoeSBhcmVuJ3QgeW91IHVzaW5nIE9Q
-UCB0YWJsZXMgdG8gZGVmaW5lCkNQVSBmcmVxdWVuY2llcy4gQXNzaWduZWQtY2xvY2tzIGxvb2tz
-IGxpa2UgYSB0ZW1wb3JhcnkgaGFjayBiZWNhdXNlCnlvdSBoYXZlbid0IGRvbmUgcHJvcGVyIE9Q
-UCB0YWJsZXMuCgpSb2IKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On 17/03/2023 11:21, Cristian Ciocaltea wrote:
+> On 3/17/23 10:31, Krzysztof Kozlowski wrote:
+>> On 15/03/2023 12:47, Cristian Ciocaltea wrote:
+>>> Commit 370f696e4474 ("dt-bindings: serial: snps-dw-apb-uart: add dma &
+>>> dma-names properties") documented dma-names property to handle Allwiner
+>>> D1 dtbs_check warnings, but relies on a strict rx->tx ordering, which is
+>>> the reverse of what a different board expects:
+>>>
+>>>    rk3326-odroid-go2.dtb: serial@ff030000: dma-names:0: 'rx' was expected
+>>>
+>>> A quick and incomplete check shows the inconsistency is present in many
+>>> other DT files:
+>>
+>> Why not fixing the DTS? The properties should have fixed order.
+> 
+> I was initially concerned about the risk of a potential ABI breakage, 
+> but I think that's not really a problem since dma-names is not directly 
+> accessed in the driver and DT Kernel API doesn't rely on a particular order.
+> 
+> If there are no objections, I would switch the order in the binding to 
+> tx->rx, since that's what most of the DTS use, and fix the remaining ones.
+
+Since we added the order recently, I rather assume it is the correct or
+preferred one.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
