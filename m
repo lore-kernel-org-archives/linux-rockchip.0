@@ -4,99 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A308C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Mar 2023 08:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFC3C76195
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Mar 2023 08:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HFVnCN/rGi3RheL2V6SgYHKtqp2IwNjJZReSTKlp2Bc=; b=g/RYixPc+GwxWY
-	DDvzJUPULKO507EBAlx0/vIMImvFEl9EDI86K0FxDgg7xgjKTSptodQWKE8U+WyJYdxuAFkVEPlHB
-	wRnzKnoq3j/mqFnPnySpoabXt6ucb8wanmNKCakftmB95bIFtEdVaIgYINR//XqGA4FBv6KiLPuEx
-	QX7JtllRsRvsWtcPTKYAL3t2V7OCTlZdJS73cSH2IQhbVunNA+iqGoQyj+3rnQj8lfTFeRg38HVci
-	inqS8o7yGHZVAUkcLAsJs3E/o25YLKblvUk/WtdgPhqCx7FYdVoFbq9ROITUm+XPuW6iNb5mL3tqf
-	bul/DhdUKAjm0jJMS1gg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eRaD5MYPMGFPfTsJqoLcI0zXBqRAFXfMuw2kk4K3a5U=; b=LLkzaD13v5VD5I
+	rC2Ku59tjgovWk827xlyfSZ7Jsd81KJMvtGNuVO9l4kDiOHAKaVolt8qKv4aQKclifvqjdNMPcsWS
+	Ivz1+1lECv3ao6I7nlZ9JukmXsi/tiWEiRn7VSn2Xbsu9cCDnm4DW/8zPnV7AC62p3GwzY9/oGplz
+	wwHcbVqk/4njcBx44fI5X/WPZiRzPR1tkocEYtihBUkDulhBd8bPVjpJd5nKdwSRo7EOS1EkrXAkg
+	N1HacqMDDwuMeaiL2In6XdE6sLt9m8dn4eLwC0wxloaOlXhgyoeXIcxiJZBfygOu44E/NtejrjEEW
+	n+JgnElfvwhWZ5lXFqhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdRoR-004QBt-2T;
-	Sat, 18 Mar 2023 08:21:15 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1pdS4Y-004S2B-00;
+	Sat, 18 Mar 2023 08:37:54 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdRoM-004QAd-2Y;
-	Sat, 18 Mar 2023 08:21:12 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-17aeb49429eso7788879fac.6;
-        Sat, 18 Mar 2023 01:21:08 -0700 (PDT)
+	id 1pdS4U-004S10-1M;
+	Sat, 18 Mar 2023 08:37:51 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id o14so3333371ioa.3;
+        Sat, 18 Mar 2023 01:37:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679128669;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Uj5y3Q4bbaamaIyxx6XTYPdTTmcpPBcLA68lxFuK26s=;
+        b=eqsU7mQnCU1oCif1caT2y8sIPcuMf0EDImnoZXbeye6yPxrfwiGnbEjzrczpFxXA27
+         vCH8RdmkPzEdtdRNadxPzuS9ljOda0vH/AvAlvM5JciF01m+7dUMJceZLjmYm+1T6zTg
+         Hn+Oeq7BkpYN7tih24v8HUwUBfQpUjQK1I2Hqs2bKPC9teKYHk5qNs4mPpMFpJFlHyyo
+         gRd8Vts13+DyNRfy66MIAsX3NfizOcVgW7zRgkUG8Eoi9m7RVUA0NkBYxBZsHqU1pUNO
+         p/7IofjzS9NyLIoyditHN9RhXjb82GWMxfX9OXvlvO0GHpjiUw1uptk9AVe9o9TYEGGe
+         YYmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679127667;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ok0/fcUUjYf3VJvre1cNZ96FcwH4JhSJwBxsOnlRNhc=;
-        b=kwX+dpk8Jc9yaRpyfiKLSp9Xi1yQqY502rMhXVtzxHbX1DPIYKhnazr3t13HTqlPgk
-         IcupCCF9SeJwjwvbY1AvFu5sI6xDMn9AExz5NEJ/bHK02mMsIbL8KDvq3jYkatmjwaRZ
-         QXBfPUc+P0r9FMKISaNOvkcOeObQbdLINQY74gymPIFEfciqgmVLWMlNx3kwQLvcFQCd
-         z2YeP7aXhE9CSP7ggi2RhduQN7TakbnQ6EZltB9uOHeRJnAIb05mEh4WOI6RUCXMoi15
-         7plc3/OIElWDTsZNXf7mLFVvUlC0Dwlec6b8dgkB5svX3P9WFxTIIS6L5djd0p02w8PB
-         1PMg==
-X-Gm-Message-State: AO0yUKWM7kTlUukdVIYSkoaSZ+V76xaFgo0E/b3lMz91Y5kQNheGkYE6
-	QcoMy7Q5qK7IVIoiYdzMNXEMvnA2HhcxLA==
-X-Google-Smtp-Source: AK7set8QswN+mb6qv57xD2wBNEn2vqUt11QmKyOt6AIwt7UXLi8yLG/uzze83w4vz325o0tfmi4AhQ==
-X-Received: by 2002:a05:6871:892:b0:17a:d4f9:4c77 with SMTP id r18-20020a056871089200b0017ad4f94c77mr756912oaq.55.1679127666983;
-        Sat, 18 Mar 2023 01:21:06 -0700 (PDT)
-Received: from mail-oo1-f49.google.com (mail-oo1-f49.google.com. [209.85.161.49])
-        by smtp.gmail.com with ESMTPSA id aw8-20020a0568707f8800b001762d1bf6a9sm1577760oac.45.2023.03.18.01.21.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 18 Mar 2023 01:21:06 -0700 (PDT)
-Received: by mail-oo1-f49.google.com with SMTP id h1-20020a4aa741000000b0053acdd3325bso17396oom.11;
-        Sat, 18 Mar 2023 01:21:06 -0700 (PDT)
-X-Received: by 2002:a5b:c47:0:b0:b56:1f24:7e9f with SMTP id
- d7-20020a5b0c47000000b00b561f247e9fmr897441ybr.12.1679127645593; Sat, 18 Mar
- 2023 01:20:45 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679128669;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Uj5y3Q4bbaamaIyxx6XTYPdTTmcpPBcLA68lxFuK26s=;
+        b=lJuuju1/DMLUPpAtiZITetJSDb61oMAn/Ta7BGvjGMt5NLyK7Wmh+aWWGcugDUrUFK
+         PBf1mVs3kCUyPVWGzVpvv9cOYHCEouIJ9xCcDBCnCAJpg61hfgtI2HW7CPJuujfb9F4b
+         0S/zwspzlb+Unl9tKtOsRtADqbSBAnGDnyxC8KTk/P83xlPYrVWO7/lx/UxLiVsLUjJY
+         +BRIwoeEopayUMupqO3bBLzpJ+KhtZlWlYlvzfw7k842vKOPKNnPBXLlMhxBZ4HsAp2n
+         qqU2rGk7ca5BhhaqZR+Hctw79UhWI/d1bQruu4RwGned3rlbtKsBelDE2rSNPskI2M0C
+         ILyw==
+X-Gm-Message-State: AO0yUKW0kQbYgLbnM3VRtNd/9X9UI5Bprrd6we/BbXoTxdGMvfpL7ejL
+	hxHPQLUXwCs95qfALAxh22A=
+X-Google-Smtp-Source: AK7set/4EcmtmNA4FIZASjWPhDetnke0wB4EEkQW/9c3Re/qzQHjJSrKhIOwnrev5Kn5CdG91I38uQ==
+X-Received: by 2002:a6b:441a:0:b0:752:ed8f:2e9f with SMTP id r26-20020a6b441a000000b00752ed8f2e9fmr941373ioa.13.1679128668822;
+        Sat, 18 Mar 2023 01:37:48 -0700 (PDT)
+Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
+        by smtp.googlemail.com with ESMTPSA id h8-20020a6b7a08000000b00746041ecbf9sm1174834iom.39.2023.03.18.01.37.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Mar 2023 01:37:48 -0700 (PDT)
+From: Tianling Shen <cnsztl@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Andy Yan <andyshrk@163.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Andrew Powers-Holmes <aholmes@omnom.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Vasily Khoruzhick <anarsoul@gmail.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/5] arm64: dts: rockchip: improve support for NanoPi R5 series
+Date: Sat, 18 Mar 2023 16:37:40 +0800
+Message-Id: <20230318083745.6181-1-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20230317233623.3968172-1-robh@kernel.org>
-In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Sat, 18 Mar 2023 09:20:34 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdU8uu=2EZ1dmtY-eGj+ORGdepsKgpNcL7qKfW3FkVJw7g@mail.gmail.com>
-Message-ID: <CAMuHMdU8uu=2EZ1dmtY-eGj+ORGdepsKgpNcL7qKfW3FkVJw7g@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
-To: Rob Herring <robh@kernel.org>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
-	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
-	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230318_012110_831933_07C8148F 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20230318_013750_464297_E5ACE89E 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,30 +100,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBNYXIgMTgsIDIwMjMgYXQgMTI6MzfigK9BTSBSb2IgSGVycmluZyA8cm9iaEBrZXJu
-ZWwub3JnPiB3cm90ZToKPgo+IENsZWFudXAgYmluZGluZ3MgZHJvcHBpbmcgdW5uZWVkZWQgcXVv
-dGVzLiBPbmNlIGFsbCB0aGVzZSBhcmUgZml4ZWQsCj4gY2hlY2tpbmcgZm9yIHRoaXMgY2FuIGJl
-IGVuYWJsZWQgaW4geWFtbGxpbnQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9i
-aEBrZXJuZWwub3JnPgoKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvcGluY3RybC9yZW5lc2Fz
-LHBmYy55YW1sICAgICAgIHwgIDIgKy0KPiAgLi4uL2JpbmRpbmdzL3BpbmN0cmwvcmVuZXNhcyxy
-emExLXBvcnRzLnlhbWwgICAgICAgICAgIHwgIDIgKy0KPiAgLi4uL2JpbmRpbmdzL3BpbmN0cmwv
-cmVuZXNhcyxyemEyLXBpbmN0cmwueWFtbCAgICAgICAgIHwgIDIgKy0KPiAgLi4uL2JpbmRpbmdz
-L3BpbmN0cmwvcmVuZXNhcyxyemcybC1waW5jdHJsLnlhbWwgICAgICAgIHwgIDIgKy0KPiAgLi4u
-L2JpbmRpbmdzL3BpbmN0cmwvcmVuZXNhcyxyem4xLXBpbmN0cmwueWFtbCAgICAgICAgIHwgIDIg
-Ky0KPiAgLi4uL2JpbmRpbmdzL3BpbmN0cmwvcmVuZXNhcyxyenYybS1waW5jdHJsLnlhbWwgICAg
-ICAgIHwgIDIgKy0KCkFja2VkLWJ5OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0K3JlbmVzYXNA
-Z2xpZGVyLmJlPgoKR3J7b2V0amUsZWV0aW5nfXMsCgogICAgICAgICAgICAgICAgICAgICAgICBH
-ZWVydAoKLS0gCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBUaGVyZSdzIGxvdHMgb2YgTGludXggYmV5
-b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcKCkluIHBlcnNvbmFsIGNvbnZlcnNhdGlv
-bnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwgbXlzZWxmIGEgaGFja2VyLiBCdXQKd2hl
-biBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1c3Qgc2F5ICJwcm9ncmFtbWVyIiBvciBz
-b21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tIExp
-bnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi, this patchset added new device NanoPi R5C and some minor fixes
+(gmac, i2s1) for the NanoPi R5S.
+
+Changes since v1:
+- https://lore.kernel.org/linux-rockchip/20230315160228.2362-1-cnsztl@gmail.com/
+- Added Fixes tag
+- Collected Acked-by tag
+- Fixed a typo error in dt-bindings (board -> boards)
+- Removed non-existent audio node for NanoPi R5 series
+- Updated my E-mail in NanoPi R5C dts
+
+Tianling Shen (5):
+  arm64: dts: rockchip: create common dtsi for NanoPi R5 series
+  dt-bindings: Add doc for FriendlyARM NanoPi R5C
+  arm64: dts: rockchip: Add FriendlyARM NanoPi R5C
+  arm64: dts: rockchip: fix gmac support for NanoPi R5S
+  arm64: dts: rockchip: remove I2S1 TDM node for the NanoPi R5 series
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-nanopi-r5c.dts   | 112 ++++
+ .../boot/dts/rockchip/rk3568-nanopi-r5s.dts   | 582 +----------------
+ .../boot/dts/rockchip/rk3568-nanopi-r5s.dtsi  | 590 ++++++++++++++++++
+ 5 files changed, 710 insertions(+), 581 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
+
+-- 
+2.40.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
