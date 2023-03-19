@@ -4,80 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60825C7618A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Mar 2023 19:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF75C76195
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Mar 2023 21:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EvkFX97ejTER9RCmL0IV41AqfTo0myexDd8njKifeqg=; b=MVQogwTpiUiqTA
-	2iKMvc7uxPJUSkAcNBlw+JoBSqGuRZtRJPkTlB8oi59fLDj1Ni6G9r++gTj/zy1tDap3ekHzJJ75x
-	LsRlOpzQsLj3LNHZo7LtKTXaxIbPjFNq5i7B7joPq2K/3lJ2JKTWdqr6omVnFkbeIfv3IgXdi4y7i
-	wADE0eXQV12PC9zfennMdcD5uLT6n2iWSb+POZyfNA6BD9Mgqg5i4YTJdnibFNsGFchd8lIo4uKn3
-	jG5LNz9b6vUS9/sQ47JUWeqKoOCrxXDgqsTsNjJhE2hqw3HdCqOHbGIuKQZ1d46yrOX1uw1iwD7Dm
-	cj6cH3kOgyPqYHIBuaZQ==;
+	List-Owner; bh=RAT0coCz4z1wTQcHTbclwMRTh5QIO+No4IJWR04aYK0=; b=a/4pkNvMMelD+W
+	EU+hnfWOcQ25mtAq8CCVvxJKVBDObEuzCO6AGz7QS+EKwQNRRu6u6pJ+6vc+1HdGh2VfAOqBDlz7b
+	jkMe2tlxbPDDO1tbAq/V/1RKWAyfOzcorBu7HWxr39T1SsXE7SFI0akz3uc+QcrIvrajoW5r74zKk
+	omYercbWnOp0gkPyeodoNQxkRyrjmcJi9tWV7k/hvIc+ElKRdls523lwVa9QT3KniAF790n1Ccs9w
+	eAu6neDujX/4vbiWEfw5xO9Y3yx1umpvQAmgV6fcgur8dfNdPRYBbJUDX5VhLyZtdtPvWgx6r7aqk
+	bkK4dH+RQ+gG9px3KYZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdypS-007Iiq-2b;
-	Sun, 19 Mar 2023 19:36:30 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pe0Mp-007SLK-1a;
+	Sun, 19 Mar 2023 21:15:03 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pdypO-007IhB-0H;
-	Sun, 19 Mar 2023 19:36:27 +0000
-Received: by mail-ed1-x532.google.com with SMTP id z21so39181023edb.4;
-        Sun, 19 Mar 2023 12:36:22 -0700 (PDT)
+	id 1pe0Mm-007SIj-2y
+	for linux-rockchip@lists.infradead.org;
+	Sun, 19 Mar 2023 21:15:02 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id n125so10858696ybg.7
+        for <linux-rockchip@lists.infradead.org>; Sun, 19 Mar 2023 14:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679254582;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=V7L1LqFV6h0eVxcrS19DAAOXoiewf/UfXtUU8YR+EZ8=;
-        b=VXK8qKk8Qgt8PyfEPszQSWYU35fN9eomwlpIhaShMc1cvh/KyLq9zLQ3trY9ePHsyN
-         zJfErAwUceFATZ/j4aquZTRnWXhOhtR0RaNUxKm8VbuJMzp68eqiINuDVZf76uSzY8n7
-         0hkbxIqxt+Z2Ss8+L7/KaaXXZbT0uhX3h31MFu6/0x+NkvGpoKH/RZTtckBhAeMK3sxs
-         GE73JIP+uo0HcczFU+Y8pWqs2K+8sOqQRZUBnWXS9VQztT5XfqVcA6wyUF2FgAsZ7L7S
-         BO8AL9lkqzYJ9J5AdD8brCwPa7QxkvjSWsAhBGt9pcr7qEhQT45Bq2NQsqhH2HCH+oc9
-         +pVg==
+        d=linaro.org; s=google; t=1679260500;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
+        b=PqJlDX0gTYbEtn8Inp0Uq9s7u/HTYqGjD1dgyn2nK1HN81qzYpJ9YK87P3/GK9pyjS
+         NIox5xD6dYqMCgOx32vaNV7CStlqriTHBcn+xVBoWVHv64f9OkeU7yqIs+ePEjrucDlf
+         hLYQeSFr+uU2/M2tfVJ5lrNZIIQBGZMUOQR/x/Pb64/87ScadQHktjIXmYzf0soAd8Cm
+         1/vXcIPIvmyXhvwjyg9zJXzO53/CrLg2sarThltEBai116bRrT//SIC4+loKJSCgmFoX
+         qFt40qfje7rzwaijTzBX1bDxUpXmUPSUnzUEnrOEFINsNM2XFX8efE0qIlI4ANoUsKOX
+         jQCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679254582;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=V7L1LqFV6h0eVxcrS19DAAOXoiewf/UfXtUU8YR+EZ8=;
-        b=jpsfHt/apSmPhJEpRFNrly7/NSJwcmsriTgtscliirGv38SpmhTMOU97dN41K3SpW/
-         X7s4G/JaobXNrVkOY8iN7KkVLUm5PMboKa81Tu2ngH4taPZMt749dp2JoL605QUwfW37
-         EQ3awXpBH4BpQbUBgrw6Mcq7WOXgHFbs56RHCzOJY6SCN8KcK9eIcxhAd6CNIybEN/hN
-         adrjkCRvT0jfQY/Um4qqvQM0fQY9EFswXr7qqFKdFcuYapANQ8zj+RAZ3KWWBxf+t7kE
-         5sHBQVT7QEdbGLvHqtGKu/z/LeCDvgi97VxpPXchIYgQnKyrzRd2BwYGdCCecXfeffl2
-         5EqQ==
-X-Gm-Message-State: AO0yUKVwu5xG2fi2HKxgfsQMGlMp/GLsLEd4kNmd4nBrg30FO1bIncOV
-	GnqKGyQ/vm4gnch+ll7A/Hg=
-X-Google-Smtp-Source: AK7set+K/7xKEFbJZW+IljzIrB1qb3ySKS9W32jzKyfVll8cr0qtIl0DsdZbSYQLF2fM7ect5yrT2w==
-X-Received: by 2002:aa7:c948:0:b0:4bf:5981:e59f with SMTP id h8-20020aa7c948000000b004bf5981e59fmr8940849edt.6.1679254581675;
-        Sun, 19 Mar 2023 12:36:21 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id u3-20020a50d503000000b004fcd78d1215sm3916868edi.36.2023.03.19.12.36.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 Mar 2023 12:36:21 -0700 (PDT)
-Message-ID: <591bf126-1ab7-8a5d-0d3a-1cac4cd9b112@gmail.com>
-Date: Sun, 19 Mar 2023 20:36:20 +0100
+        d=1e100.net; s=20210112; t=1679260500;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=o0iorqXQgWfUsmZ323+Wyn0oeyKtqb16TQ+B351+3qA=;
+        b=2K4ByrSQfUhtTQiJ2WOGZmjodCKZAtBkmYH9/uyD4cX4f5bWCWZAlaDD1Tu4MH4MtW
+         nsl/tP8d5BaB5lrn6L5vI5VOHpVqFkvLKedHISaXqnuerKeQlP72pjSB3HCdmJce7M60
+         9WGZoZmTZyvakBLthI3LOj7Bn6Bjw9SKTo40GUTH8kfLDUMAIiAzdHWWbvk4ozQDNKVb
+         gh62ntKHVh1WVqGH/rUH2dXMazWzz+4gFtj+7MBge/aWaTNE12q0MY6qWNoE0+twifSn
+         48Fvha7pE3MgP6tQ/6MQ7W4ad26CFWOrRfog54+N35ZeSNSY0e8JFkPMQHzyywZ0fNT3
+         wZYg==
+X-Gm-Message-State: AO0yUKVEfjhfVKrDKrIRpSqKZXpgP9vFpFG3VRw40ib7KgEKS04FcY2m
+	DorahQnmZDA32IdTyfs8ae27tz7GLRZNoz8I9CeIWA==
+X-Google-Smtp-Source: AK7set88lgxJVA166ieuR2TTLZeS1J0rp7AfomiAt3xMAZzNkfr7DVMxQnogtWZ9zBjTSPGk/rTQReVq7hLkbmXRmbU=
+X-Received: by 2002:a05:6902:1143:b0:aa9:bd2e:3746 with SMTP id
+ p3-20020a056902114300b00aa9bd2e3746mr2997588ybu.4.1679260499808; Sun, 19 Mar
+ 2023 14:14:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] arm64/arm: dts: rockchip: Fix DSI node names
-To: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20230319174105.43978-1-robh@kernel.org>
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20230319174105.43978-1-robh@kernel.org>
+References: <20230317233623.3968172-1-robh@kernel.org>
+In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sun, 19 Mar 2023 22:14:48 +0100
+Message-ID: <CACRpkdYFJ-q9OT2b7U-CP08XGfdoD-qN3k3C2KBHhnuBdfSi7A@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
+	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230319_123626_170306_6DD0D39C 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20230319_141501_024803_BF41B81F 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,70 +112,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 3/19/23 18:41, Rob Herring wrote:
-> DSI bus/controller nodes should be named 'dsi' rather than 'mipi'.
-
-There's already a serie that does that.
-Lack of communication becomes common. 
-More thing must be fixed to comply then this patch alone.
-
-[PATCH v6 09/17] ARM: dts: rockchip: rk3288: fix dsi node
-https://lore.kernel.org/linux-rockchip/f3edcbff-4aef-1d24-8d65-e519c9451cda@gmail.com/
-
-[PATCH v6 15/17] arm64: dts: rockchip: rk3399: fix dp node
-https://lore.kernel.org/linux-rockchip/f6008819-db9b-0944-3f5b-5522b7cd8a8d@gmail.com/
-
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  arch/arm/boot/dts/rk3288.dtsi            | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index 2ca76b69add7..d401b850583c 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -1114,7 +1114,7 @@ vopl_mmu: iommu@ff940300 {
->  		status = "disabled";
->  	};
->  
-> -	mipi_dsi: mipi@ff960000 {
-> +	mipi_dsi: dsi@ff960000 {
->  		compatible = "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi";
->  		reg = <0x0 0xff960000 0x0 0x4000>;
->  		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 1881b4b71f91..e44e1c40c0ba 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1954,7 +1954,7 @@ hdmi_in_vopl: endpoint@1 {
->  		};
->  	};
->  
-> -	mipi_dsi: mipi@ff960000 {
-> +	mipi_dsi: dsi@ff960000 {
->  		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
->  		reg = <0x0 0xff960000 0x0 0x8000>;
->  		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH 0>;
-> @@ -1990,7 +1990,7 @@ mipi_in_vopl: endpoint@1 {
->  		};
->  	};
->  
-> -	mipi_dsi1: mipi@ff968000 {
-> +	mipi_dsi1: dsi@ff968000 {
->  		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
->  		reg = <0x0 0xff968000 0x0 0x8000>;
->  		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH 0>;
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBNYXIgMTgsIDIwMjMgYXQgMTI6MzbigK9BTSBSb2IgSGVycmluZyA8cm9iaEBrZXJu
+ZWwub3JnPiB3cm90ZToKCj4gQ2xlYW51cCBiaW5kaW5ncyBkcm9wcGluZyB1bm5lZWRlZCBxdW90
+ZXMuIE9uY2UgYWxsIHRoZXNlIGFyZSBmaXhlZCwKPiBjaGVja2luZyBmb3IgdGhpcyBjYW4gYmUg
+ZW5hYmxlZCBpbiB5YW1sbGludC4KPgo+IFNpZ25lZC1vZmYtYnk6IFJvYiBIZXJyaW5nIDxyb2Jo
+QGtlcm5lbC5vcmc+CgpMZXNzIGJhZCBleGFtcGxlcyA9IGdvb2QuCgpSZXZpZXdlZC1ieTogTGlu
+dXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBsaW5hcm8ub3JnPgoKWW91cnMsCkxpbnVzIFdhbGxl
+aWoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
