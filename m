@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF82C7618A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 10:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47AF1C7618D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 10:07:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G72X/ijxFF+oMNEt0d//Uu3lABQNOGhbxhKa0+I4wkA=; b=gjE6c9Ud/AxxmY
-	6x/dxgLJ3G9hVNxQcMld6ae1iz5CaHIjSqXktY9951eeNLeR0br7xnF/H8Fnv9QWwcP+P+leMLWWM
-	3mWEyg4+1nav29103HP+kZIT3IjrrmHKIaN2lIaFtCWnnYlUoRgc3TSGH3wSMFkcvu+zwspJWiO7W
-	JEE6ybs6XgH1FMHIgkk2qan3Fw2D5xQTk72K6qyLeGjLCiPau7yWVXUz8Li5OFhFcfbJoNy8w9RRS
-	HPudV5v5jni7eeUSppDa6YmIyH8WvoL7x9+xE/MMyFFok1mcUGMQzq2XC3zpSRTD7NtSFv8jizKFY
-	qI5bTWgg7QAc06RNMKtg==;
+	List-Owner; bh=kGr6NhCoBcCOFV8FF17LJuUpbl5K4Ueh4dax/vv/sQo=; b=PThP7j2zEkjf+s
+	adOlxBK1q6L2okVQ6ajOrteYBAjjjE6DhB6Qe6hNTErrfTQh2a+k9l0QnmD8H/iRedi5C2y0V9+ey
+	i5fyUiwyTwo+PIIgezaDaFCmNyTFgNaOcUQHYc+qhOXwI+CReuHP3dB1tD809lPq68eaAyH5Q7lzS
+	tcamkCHs32Okhm47g6nqxYyr/eUCaMiRO8Hf0SP6dMj2F8ulm6ySSrP8VOxidebhAXg+NGlWHRqQu
+	xSBEr2SYfl1aIj0rBZFFx1EMqaa59CubgvL5AQXxq4XULS7IU5ribQK/qem5TNjqz01KpPPwhAXW/
+	kA607uP1GHVzYn9gO/pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peCQI-008ZbZ-2p;
-	Mon, 20 Mar 2023 10:07:26 +0000
+	id 1peCQM-008Zcq-0g;
+	Mon, 20 Mar 2023 10:07:30 +0000
 Received: from mail-m11879.qiye.163.com ([115.236.118.79])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peCQG-008ZZ5-0Z
+	id 1peCQG-008ZZG-0Z
 	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Mar 2023 10:07:26 +0000
+	Mon, 20 Mar 2023 10:07:27 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id E7AA06808CC;
-	Mon, 20 Mar 2023 18:07:13 +0800 (CST)
+	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id C8F326806C9;
+	Mon, 20 Mar 2023 18:07:14 +0800 (CST)
 From: Frank Wang <frank.wang@rock-chips.com>
 To: linux@roeck-us.net,
 	heikki.krogerus@linux.intel.com,
@@ -44,25 +44,24 @@ Cc: linux-usb@vger.kernel.org,
 	yubing.zhang@rock-chips.com,
 	wmc@rock-chips.com,
 	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v2 1/3] usb: typec: tcpm: fix cc role at port reset
-Date: Mon, 20 Mar 2023 18:07:09 +0800
-Message-Id: <20230320100711.3708-2-frank.wang@rock-chips.com>
+Subject: [RESEND PATCH v2 2/3] usb: typec: tcpm: fix multiple times discover svids error
+Date: Mon, 20 Mar 2023 18:07:10 +0800
+Message-Id: <20230320100711.3708-3-frank.wang@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20230320100711.3708-1-frank.wang@rock-chips.com>
 References: <20230320100711.3708-1-frank.wang@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUIfT1YeHk5NHUwZS05JTE9VEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpDVUpLS1VLWQ
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUlPTlZLH0xCGhkaTksYSh5VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpMVUpLS1VLWQ
 	Y+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OUk6Sio*ED0LDxE2MzMTHzQu
-	ETkKCkhVSlVKTUxCSEtNQ0hPTExLVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJSExLNwY+
-X-HM-Tid: 0a86fe7cc1342eb5kusne7aa06808cc
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PFE6HDo6Kz0TExE2Mz1MHzxM
+	VhUaCjpVSlVKTUxCSEtNQ0hNT0JPVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFISEJNNwY+
+X-HM-Tid: 0a86fe7cc49d2eb5kusnc8f326806c9
 X-HM-MType: 1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_030724_359940_40B58721 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_030724_361450_D43E8210 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +79,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the current implementation, the tcpm set CC1/CC2 role to open when
-it do port reset would cause the VBUS removed by the Type-C partner.
+PD3.0 Spec 6.4.4.3.2 say that only Responder supports 12 or more SVIDs,
+the Discover SVIDs Command Shall be executed multiple times until a
+Discover SVIDs VDO is returned ending either with a SVID value of
+0x0000 in the last part of the last VDO or with a VDO containing two
+SVIDs with values of 0x0000.
 
-This sets CC1/CC2 according to the default state of port to fix it.
+In the current implementation, if the last VDO does not find that the
+Discover SVIDs Command would be executed multiple times even if the
+Responder SVIDs are less than 12, and we found some odd dockers just
+meet this case. So fix it.
 
 Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 ---
- drivers/usb/typec/tcpm/tcpm.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/usb/typec/tcpm/tcpm.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-index a0d943d785800..56782dd05e2ec 100644
+index 56782dd05e2ec..13830b5e2d09f 100644
 --- a/drivers/usb/typec/tcpm/tcpm.c
 +++ b/drivers/usb/typec/tcpm/tcpm.c
-@@ -4851,7 +4851,8 @@ static void run_state_machine(struct tcpm_port *port)
- 		break;
- 	case PORT_RESET:
- 		tcpm_reset_port(port);
--		tcpm_set_cc(port, TYPEC_CC_OPEN);
-+		tcpm_set_cc(port, tcpm_default_state(port) == SNK_UNATTACHED ?
-+			    TYPEC_CC_RD : tcpm_rp_cc(port));
- 		tcpm_set_state(port, PORT_RESET_WAIT_OFF,
- 			       PD_T_ERROR_RECOVERY);
- 		break;
+@@ -1515,7 +1515,21 @@ static bool svdm_consume_svids(struct tcpm_port *port, const u32 *p, int cnt)
+ 		pmdata->svids[pmdata->nsvids++] = svid;
+ 		tcpm_log(port, "SVID %d: 0x%x", pmdata->nsvids, svid);
+ 	}
+-	return true;
++
++	/*
++	 * PD3.0 Spec 6.4.4.3.2: The SVIDs are returned 2 per VDO (see Table
++	 * 6-43), and can be returned maximum 6 VDOs per response (see Figure
++	 * 6-19). If the Respondersupports 12 or more SVID then the Discover
++	 * SVIDs Command Shall be executed multiple times until a Discover
++	 * SVIDs VDO is returned ending either with a SVID value of 0x0000 in
++	 * the last part of the last VDO or with a VDO containing two SVIDs
++	 * with values of 0x0000.
++	 *
++	 * However, some odd dockers support SVIDs less than 12 but without
++	 * 0x0000 in the last VDO, so we need to break the Discover SVIDs
++	 * request and return false here.
++	 */
++	return cnt == 7;
+ abort:
+ 	tcpm_log(port, "SVID_DISCOVERY_MAX(%d) too low!", SVID_DISCOVERY_MAX);
+ 	return false;
 -- 
 2.17.1
 
