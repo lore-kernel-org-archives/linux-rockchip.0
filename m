@@ -4,70 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE45CC7618A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 17:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE64C7618A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 18:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=oR3lxLUB1nTv5T2k0Jvop1xE+H4rrwXpoEqpIB8+gBw=; b=Z26
-	fcccpSpQ7/eh3T0K7ii51ne9+hkJ1q1UmhZKtvyFtmKzxrxkhoVzUjDCcA0Gk3Hnw6UEvWQiIUea9
-	8ciVwzFUo7AF0sPYELDWSEBrzX6g4mTJ3FTG51r2R2NBEcFeSGQLvPvhmIBAHtbTzrbBpoUGOjj9N
-	oelfzkVdFscPwPVWGSXa7+uVQnUEQAoTlWeOCyDu3oeQTmTS24dL930VbvERz9GbVsRj4KVyDvzcx
-	AEBIwMD9O9OlB0cbsdgbma7GoOFTGSe3sq0xHZxW4/La0OKFP+VuoDltuc16zcdR2kzCiRxaFsQd2
-	2LSrALi7h7Lm3RMNsJvqIcqhLmJqIyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Kz0e4pGwVPGz6WAI4CZGnXGd1AuNW+4WkRRsl+eCo20=; b=0hbe2jIbfRr99M
+	rXcKw8tCtwjpOppZJCNQUpcRkJCfO11XmX/s/kjO1Y8xyswa/QaNeCeV/0BvB79xiYzwmRj0GAcQ0
+	v0odoqk42S3Yw9qXgMqd8eIO5elr5IdxN8qLaVX3cXGIFDmUZ/uhum7DF2at9QiEWsvSMgY5XbX7x
+	zLs2EM1I/C7ZlKhiH4vfx1X/ZGVQuIUoCrQfWKoHkK66B1UB7LnAkoc1Ezo9Y0ZYtNMIXIJykeXzJ
+	fItVHz2lUg1xscvggEA3w2O2RZObEWXyTu5+4Bp8UNIOJrKEwZcWuGW5mj45ssvKEIYyK8nKGD+8F
+	1WgK8cMX2AiSdGSTpaAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peJGd-009ykg-16;
-	Mon, 20 Mar 2023 17:25:55 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1peJwm-00A5tl-0C;
+	Mon, 20 Mar 2023 18:09:28 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peJGa-009yjw-2u
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Mar 2023 17:25:54 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id w11so7000524wmo.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 20 Mar 2023 10:25:46 -0700 (PDT)
+	id 1peJwi-00A5s2-1f;
+	Mon, 20 Mar 2023 18:09:25 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id c18so14163840qte.5;
+        Mon, 20 Mar 2023 11:09:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679333145;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=gNmkCzJZkkv5eOsnKFRe3ayPoUnRqKfsx+CXhmbKgsc=;
-        b=aMAhIpaycXv8EPhlZNCvVIlHOP3g8tB/CPSQDobIFEh1LFu1YJNfh/VdwmcuLFNUFP
-         9/odcLimBrXIW1ASkqV0tgE1S5ULxgGxlaVOwafLdaaX1SSMkzkWaynKfRgXn00T5W0X
-         mMp2Ykh+R0OXL9qTCaoiY8p29OAKrh+/4pMnST7PS9ZtFaXG8U2qg6bwV/Mpaa1KHJQx
-         AtmPh7GMttjBTXCChxKQ0cJrfUVLEwg+kMfORg/QwfvJ9xBu8xM43QFOpiLOLOixzeLm
-         NUdgdwqFZZNJ9gig3Dq0PSp+OUad5Qkd+Wjb2ouMQes1YtIdeh6Vwpar1M2jpDUHCPs9
-         2Q4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679333145;
-        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+        d=gmail.com; s=20210112; t=1679335763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=gNmkCzJZkkv5eOsnKFRe3ayPoUnRqKfsx+CXhmbKgsc=;
-        b=Q3/7pgGrx3tN/+wEtJlfkUYlgmeNQqRsKHYt40wTx3MXLPgzpFyuYxCF3ndMgijlIv
-         O6991rIn495A28GM3KgTUu4eYqcLp4AA64JzysFBEmZnWlbI4NiiF+6LwzDo/Mn/Guc5
-         tHK1SrLVX88ug0gfJOR5hKxzX5svT3gZaKD/Haa9/RVwhMFK4tBPewoqF7uh1305en1z
-         uobCfogK0OFSPRyjjcKmEd+Pw/orHqagtWx0wis/NIYmrtK+DG0k0Md9o8qGSlAdzL5S
-         ldTSp45dpTDiJ6ys7x47h23z2Z1WlWgA5dEFzZxcMXVWGqb8RNlMsxhCpyNxL2nfOtK7
-         nJ6g==
-X-Gm-Message-State: AO0yUKVg7hwwNDLJQVzf/Vo49Pj4t13zqezNunlGV6Wsc5VDR3rvEZPQ
-	XcjhQ/U3hlC17wi5ADWktnVUNeRWTBrFHRccal6VpFNmua5jw2Zx
-X-Google-Smtp-Source: AK7set9XA7AYKqq/B7T2mT/zyJ4DhkrotEMXa637CqBXiJSW0WVqyKK5arGq5u1wVs3MNoN9G/snOEwf7UHckOYWzOg=
-X-Received: by 2002:a7b:c409:0:b0:3ea:8ed9:5f3e with SMTP id
- k9-20020a7bc409000000b003ea8ed95f3emr76319wmi.4.1679333145280; Mon, 20 Mar
- 2023 10:25:45 -0700 (PDT)
+        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
+        b=jV+wT9G9dMq++VXoHOITcaMwSKfT7Ne8l6voVfiCeH20VK0uzRJIf9CA2v8jn1mE42
+         9De/qJTXiN3NlwKDdk7NArH7WT5H+4m7s71wZTV+2BygDTiQuwk+mRLMpRhBukxFua9x
+         67hE9fL+3OgJ1dTRBMXtTwDXEznGIlnqEuoH6BXNz+DtDWm5LZSaKbCnlxFhePXKvQQw
+         biWPqZK1eoCZ6HeXFY1w+DmsNHS4W090fENE/el13ZE/cuRLHNVC7Li/p30/Ai1N8xhv
+         3ejM9NTyAoTh9dtKbufIgtWOwd6srKtNAzDZ9KiKE0PTE7Lb1wYokPUbe9HLqHLVnTp7
+         mdLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679335763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9Ym0Aa6IJr35fCbX8wJyITkzyONp9K1eXcn9gLrMKEM=;
+        b=sFkUNlnrkHnFnvMNZ3QRDc2FcexzBNm1/jeMvqxqccCPvSSjiAZW9QWB3PUOTikTBz
+         4+7qgU4D7iapSYX1uRnN3sZ94tU3CQFc/+I0LlJdRUJpAcmY/UM5sWttEMVWXv6BBv23
+         +LDIJXqUFPwPwv1kYA3Pi10vbicTeK4MD3J/CtGju10Sxs+RDpMOL/98CXElAMdyaxNi
+         kpG0WZLFegNmdYkDgbJjPV6nvEMk3m207WHKWLEQEIcDmnw8EOimBijBWfzEIQU0ITYW
+         jifXRmGB5TY3B0/iV1Tq5S+gI46WX0ZMywWtfJp2Bhdzb9v7Bb1+tBCag2EDEJmYCqO5
+         1VCQ==
+X-Gm-Message-State: AO0yUKVGtYxi9GyZuPJiiiBTuLvzf9KG+GafxvonnoLxC7lwMs7yLfCE
+	2anSK/t3UIxRavOgyZq1Gno=
+X-Google-Smtp-Source: AK7set/rOHA8qVlayMALPx0FGjCcSWh/Kq1WvV8aodxfR3XsSBymHa1dS0evHblRHeVucdEeSCUF5g==
+X-Received: by 2002:a05:622a:190e:b0:3d7:1979:829e with SMTP id w14-20020a05622a190e00b003d71979829emr125230qtc.27.1679335763440;
+        Mon, 20 Mar 2023 11:09:23 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id l16-20020ac84a90000000b003d4ee7879d0sm2042741qtq.56.2023.03.20.11.09.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 11:09:22 -0700 (PDT)
+Message-ID: <82ae9fd5-a4f9-89a6-8040-c64d22a85ebb@gmail.com>
+Date: Mon, 20 Mar 2023 11:08:56 -0700
 MIME-Version: 1.0
-From: Shane Francis <bigbeeshane@gmail.com>
-Date: Mon, 20 Mar 2023 17:25:34 +0000
-Message-ID: <CABnpCuAXrbfRNpvESJiGn4fyzK5-zUcqbs7bQQJY=JhTN-w=YA@mail.gmail.com>
-Subject: ARM : RK3588S : NET / Ethernet: Not TX traffic from mdio1
-To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	"heiko@sntech.de" <heiko@sntech.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] dt-bindings: net: Drop unneeded quotes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>,
+ Naga Sureshkumar Relli <naga.sureshkumar.relli@xilinx.com>,
+ Wolfgang Grandegger <wg@grandegger.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>,
+ Michal Simek <michal.simek@xilinx.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Tobias Waldekranz <tobias@waldekranz.com>,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-aspeed@lists.ozlabs.org, linux-can@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-mediatek@lists.infradead.org
+References: <20230317233605.3967621-1-robh@kernel.org>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20230317233605.3967621-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_102552_960077_AFE69947 
-X-CRM114-Status: UNSURE (   7.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_110924_552642_4D45A56E 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,57 +120,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I am currently working on enabling a RK3588S SBC (NanoPi R6S) within
-mainline Linux
+On 3/17/23 16:36, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   .../devicetree/bindings/net/actions,owl-emac.yaml  |  2 +-
+>   .../bindings/net/allwinner,sun4i-a10-emac.yaml     |  2 +-
+>   .../bindings/net/allwinner,sun4i-a10-mdio.yaml     |  2 +-
+>   .../devicetree/bindings/net/altr,tse.yaml          |  2 +-
+>   .../bindings/net/aspeed,ast2600-mdio.yaml          |  2 +-
+>   .../devicetree/bindings/net/brcm,amac.yaml         |  2 +-
+>   .../devicetree/bindings/net/brcm,systemport.yaml   |  2 +-
 
-However I am hitting an issue with the mdio attached RTL8211F, the
-device initializes correctly
-but there seems to be no TX traffic sent from the RTL8211F (confirmed
-with TCPDUMP on an attached router)
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
-RX traffic is working as expected (see below)
-
-===============================================
-listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-00:03:34.282286 ARP, Request who-has 192.168.1.229 tell 192.168.1.154, length 46
-00:03:35.648448 ARP, Reply 192.168.1.234 is-at 1c:53:f9:1a:ba:3a (oui
-Unknown), length 46
-00:03:43.220916 ARP, Request who-has 192.168.1.226 tell 192.168.1.218, length 46
-===============================================
-
-I have noticed that the TX irqs seem to be fewer than expected (and
-some eee wake errors are seen)
-===============================================
-
-     tx_pkt_n: 218
-     rx_pkt_n: 1014
-     normal_irq_n: 944
-     rx_normal_irq_n: 936
-     napi_poll: 3044
-     tx_normal_irq_n: 8
-...
-     irq_tx_path_in_lpi_mode_n: 49
-     irq_tx_path_exit_lpi_mode_n: 49
-     irq_rx_path_in_lpi_mode_n: 2
-     irq_rx_path_exit_lpi_mode_n: 2
-     phy_eee_wakeup_error_n: 1
-==============================================
-
-I have validated that the TX are RX delays for both the phy and gmac
-match what the OEM kernels are setting.
-
-This behavior is seen on both 6.1 and latest RC
-
-I am looking for any information on if this behavior can be seen on
-other RK3588S devices using the RTL8211F and pointers on where to look
-next.
-
-Thanks in advance.
 
 _______________________________________________
 Linux-rockchip mailing list
