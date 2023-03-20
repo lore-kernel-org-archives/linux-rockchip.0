@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F8EC7618D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 10:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212C6C7618A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Mar 2023 10:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5pxeqkEpTYOcUJn0LTDD/IaB8vInV7f+rCPk25vYUd4=; b=sTqT4cz3AqLKvU
-	VgHa/eF8ZXKRxNexhx8M801NPBIQAwNTgx8kP4q17CLycfYn4SeefuUVFQnYWAQB4WYPMHumk3KNE
-	Tep8ywMbWe5RDxAc9mNWmsFaAIq+KiGPf19kgsq8RiI569W4EveoIxVJNgPO2VUPTFrtMt6OdgZJg
-	BxvDkNurYsA3k5wrscx/8D0RlnjYp4tsQ+vrAyZskXiTXO4oB6zSvm1Y9jkphfjxllza/5m7BVgJO
-	rdmcDQeczU/P9WnG2XWP92sumAdfxXZHpwapGD3Iyge08Jm/bpRljCBIB0kBolHDkbZpCpyIKin0U
-	ny4sLQwEeYTd932X8C9Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9EH/UdsLamIrbEJl0Aa/z8z1EobykjdFRyRPkRk/ZWA=; b=04fkgeFgD5iygX
+	JBe714ee2UkgCxBWBjY1ltj/5wv6r5F73gAnUKXrEQCwh4qFF9WZQVCoPOr7FhIznOhigImglWx/b
+	27bEGGkkelGhMFduGHF+6drse/b9uzRAuiGtCG1uqzm/E/4L8aKxBC0KwujVFBLkUF5vhu2L20447
+	Tbhb10h5wn8jlb/rZfSGacnT/4IC4TlNDZ1IGKYcgjo6M88Rsk+KGHGohQ00lQ6LWHkEYxI8s2NTf
+	lzK3PXcqnOP/ciuRwS1ArBgZYcjxra4Ra8zEgHDU006rEkLNwMkeg90/2AwAmCRJB7MKpGediItyC
+	5QL+wGncfIw2BohSsYFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peCQJ-008Zbg-0j;
-	Mon, 20 Mar 2023 10:07:27 +0000
-Received: from mail-m11879.qiye.163.com ([115.236.118.79])
+	id 1peCpg-008dTb-1f;
+	Mon, 20 Mar 2023 10:33:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peCQG-008ZZ6-0Z
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Mar 2023 10:07:26 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id 19B9D6801EE;
-	Mon, 20 Mar 2023 18:07:13 +0800 (CST)
-From: Frank Wang <frank.wang@rock-chips.com>
-To: linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	gregkh@linuxfoundation.org,
-	heiko@sntech.de
-Cc: linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	huangtao@rock-chips.com,
-	william.wu@rock-chips.com,
-	jianwei.zheng@rock-chips.com,
-	yubing.zhang@rock-chips.com,
-	wmc@rock-chips.com,
-	Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v2 0/3] Fix some defects related Type-C TCPM
-Date: Mon, 20 Mar 2023 18:07:08 +0800
-Message-Id: <20230320100711.3708-1-frank.wang@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0MdTVZITkIfGEodGkpCGUpVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpMVUpLS1VLWQ
-	Y+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MAw6GQw6Mz0RFxEzIzw3GFEB
-	A1EKCghVSlVKTUxCSEtNQ0hIQ0JNVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFKQ0lONwY+
-X-HM-Tid: 0a86fe7cbde52eb5kusn19b9d6801ee
-X-HM-MType: 1
+	id 1peCpa-008dRI-1P;
+	Mon, 20 Mar 2023 10:33:38 +0000
+Received: from [192.168.0.192] (unknown [194.146.248.75])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 51416660308E;
+	Mon, 20 Mar 2023 10:33:30 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679308410;
+	bh=L+CGbnJ6J7Ytj/Wx4PJF44kzKsWq/OYxHHuaz5SrlXI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TVlzEZvcAk6GmtCCb2KGTNGd7hwd99mCTK6vkNfxaVviyyf5RXCHkHJ+PpdeYqI/X
+	 1RG5lEb83dujIUNTbJX31aBnQgPJeFEafIIxeJ/KWinCga2VTiE0ieDSCghJxn270Q
+	 5LQqaA4LIsxw8AyNw250fdauYFWXl9ov0CAIG5Gode9EwpRYWNGt1wf9WHM8RyTHsh
+	 T33Dt2S7aaN/8X71lB6Y7FMpsC0DrXitabzecw8+WyDWErssf/XKkYEOwQczQ4qbLN
+	 VzdS18dPjiLxokhq5ghh8Y9mSz1XyJJ6cxBTT0IpoS72+OAFKWVOtDRgIMmaz2K2+o
+	 VUWEI+HjxpYjA==
+Message-ID: <defe43a2-0521-a8f4-9575-4aa0a370a29e@collabora.com>
+Date: Mon, 20 Mar 2023 11:33:28 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [RFC 2/2] media: rkvdec: Add VP8 encoder
+Content-Language: en-US
+To: Daniel Almeida <daniel.almeida@collabora.com>, linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
+ kernel@collabora.com
+References: <20230309125651.23911-1-andrzej.p@collabora.com>
+ <20230309125651.23911-3-andrzej.p@collabora.com>
+ <a142c30ab49a8ff65c59bdc9bc0e4552c48bac68.camel@collabora.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <a142c30ab49a8ff65c59bdc9bc0e4552c48bac68.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_030724_362879_12C4BE7A 
-X-CRM114-Status: UNSURE (   4.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230320_033334_685582_EABE2CF9 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +75,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series fix some defects of TCPM like port reset error, SVIDs
-discover error and etc.
-
-Tested on Rockchip EVB board integrated with FUSB302 or HUSB311 Type-C
-controller.
-
-Changes in v2:
- - Make some tweaking based on Guenter and Heikki's comments for [PATCH 1/3] and [PATCH 2/3].
- - Abandon [PATCH 4/4] in v1.
-
-Frank Wang (3):
-  usb: typec: tcpm: fix cc role at port reset
-  usb: typec: tcpm: fix multiple times discover svids error
-  usb: typec: tcpm: add get max power support
-
- drivers/usb/typec/tcpm/tcpm.c | 43 +++++++++++++++++++++++++++++++++--
- 1 file changed, 41 insertions(+), 2 deletions(-)
-
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFuaWVsLAoKVyBkbml1IDE5LjAzLjIwMjMgb8KgMDA6MjMsIERhbmllbCBBbG1laWRhIHBp
+c3plOgo+IEhpIEFuZHJ6ZWosIG9uZSB0aGluZyBJIG5vdGljZWQgd2hpbGUgbG9va2luZyBhdCB0
+aGlzOgoKVGhhbmtzIGZvciBsb29raW5nIQoKPiAKPj4gK3N0cnVjdCBoYW50cm9fdnA4X2VudHJv
+cHkgewo+PiArCS8qIFRPRE86IGludDMyX3Q/ICovCj4+ICsJaW50MzJfdCBjb2VmZl9wcm9iWzRd
+WzhdWzNdWzExXTsKPj4gKwlpbnQzMl90IGNvZWZmX3Byb2Jfb2xkWzRdWzhdWzNdWzExXTsKPj4g
+KwlpbnQzMl90IG12X3Byb2JbMl1bMTldOwo+PiArCWludDMyX3QgbXZfcHJvYl9vbGRbMl1bMTld
+Owo+PiArCWludDMyX3QgeV9tb2RlX3Byb2JbNF07Cj4+ICsJaW50MzJfdCB1dl9tb2RlX3Byb2Jb
+M107Cj4+ICt9Owo+PiA+Cj4gCj4gSW4gVlA5LCBwcm9iYWJpbGl0aWVzIGFyZSBjb2RlZCBpbiB0
+aGUgMC4uMjU1IHJhbmdlLCBzbyBpZiB5b3Ugd2FudCB0bwo+IHNhdmUgc3BhY2UgaGVyZSwgeW91
+IGNhbiBnbyB3aXRoIHVpbnQ4X3QuCgpQbGVhc2Ugbm90ZSB0aGF0IHRoaXMgaXMgYSBoYXJkd2Fy
+ZS1zcGVjaWZpYy9kcml2ZXItc3BlY2lmaWMgc3RydWN0dXJlLgpBbmQsIGluIHBhcnRpY3VsYXIs
+IHRoaXMgaXMgbm90IGEgdUFQSSBzdHJ1Y3QuIFRoZSByZWZlcmVuY2UgY29kZSB1c2VzCjMyLWJp
+dCBxdWFudGl0aWVzIGhlbmNlIGludDMyX3QgaGVyZS4KCkFuZHJ6ZWoKCj4gCj4gLS0gRGFuaWVs
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
