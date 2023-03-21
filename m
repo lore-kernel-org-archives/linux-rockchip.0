@@ -4,56 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE154C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 13:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D93C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 14:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nu6WmO9rQyQA74kiB1iLckWm333hdKyk46P1J4vB7dQ=; b=SfNk+dlrwaRJYc
-	cFvLiSKg6RrE+CfqbeA4vUGUOvNTCj8HbJa1YiO0UyxxezX+ZJgAqy3u3Bu5AF4H7AzMXzA4tl7CX
-	f4ikLm8rFKeTDU6cJBlqNGBdWNVIfni0MP7YsQ0IwR9Wj/KUlRhmRoGpw34EAcF7H24iAkXnFFfUG
-	/lOxyKN7VSNx/ta6gTevZXx2UCHF4Heh5fvkNfziYSkQ2GDaVB/jD44vuFys4ZA+av/1gOdI3BNvt
-	BdUkac7nTqCYgHhQep1vyIgiabcXzGNwVUy+bQFuBh9J66BGw926VuPtM/E9d/jWYhDy82/zZyviq
-	MdClnz+hVt96U6EPGwjw==;
+	List-Owner; bh=DwP6u000fFgz5wr/a0wcKniHzz0vf34Kk2GDhZxhckk=; b=sS7igxtpkcovGO
+	w7VGnBQcyc+oK68Fewgxxo7z3bHlB8ljKVjB6j69mFqNWzvjbaPcLj3Ko/IFCfxEQPcMTmG6nMVMM
+	0PaALWZdI0eAl27HH3dCuCtdqHcyjXSOg8YMrtn8ekgWzoH7Y7sQsT4n93z8EA9NxwVAr0IMUakYJ
+	moAiRj5wHFXqP9R3+fUUWiwCzQbdC/D4akNjq7ztbeJN2jaaVw+sG1RorhfDDhBqsGnTaY+tW5a8b
+	61ZPchVSipZzJ/kR1yW4GFbKH+oWxJ7QCUu7UVRL+DFQScUn7lOfsTY2ZjkHKpE2YUaZyuiTgWbq9
+	zTLbGPLJX9cKwxqJhMAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pecDk-00CZOA-0H;
-	Tue, 21 Mar 2023 13:40:12 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1ped7z-00Clu1-05;
+	Tue, 21 Mar 2023 14:38:19 +0000
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pecDf-00CZLp-0R;
-	Tue, 21 Mar 2023 13:40:09 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id D048DCE18D3;
-	Tue, 21 Mar 2023 13:40:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9916FC433EF;
-	Tue, 21 Mar 2023 13:40:01 +0000 (UTC)
-Message-ID: <e0410a7a-250c-851b-147f-a93652e0a131@xs4all.nl>
-Date: Tue, 21 Mar 2023 14:39:59 +0100
+	id 1ped7v-00Cls6-25
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Mar 2023 14:38:17 +0000
+Received: by mail-qt1-x833.google.com with SMTP id c19so18050985qtn.13
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Mar 2023 07:38:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1679409493;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=9DVlCgRoSZ9XdR+Dy6Lh3PgMM9vzKokhgsg4QRxt5Aw=;
+        b=Ii9vwY2OjmyAvNnxf+T08UQB+cF+jbbCZtE+3u0iN3aU/0+jauV4ZjMJebbSFttUPK
+         hUYsjvQ0kbH3NJZhESF3Tr2JFGUWH80Hd9GG9kJSplusYknJKi2MeLejFpoZG4Fws6j7
+         aYnqUk750Lm2vq5fA/R+jrxF8qvilvSThOZGCz/dsmgHeLlax1X4TErUYAbb5gK8Eexq
+         lC/ZHY1ZIvfZRi7wpzKm0MIMuKGlgcJUiVXuvKLMhGgi+jWlT40mrIl6Zj6B1XoLBuyF
+         aWBUOoty+Rxmw9HWXoMmA731Vj07RBjHP4lhxsZP/fxvbEr8xjH+MO4HXIzjTa0HSSMd
+         015g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679409493;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9DVlCgRoSZ9XdR+Dy6Lh3PgMM9vzKokhgsg4QRxt5Aw=;
+        b=wsAZSX+GBP96N96itNMbRLWWxGf1SrNLcYkElvSVG/yHETL66smHfuCJY/fHHsxfx/
+         kEU3CYyZ+Niivy+4X6NpSaSvP3sI+CHm+SLJcsCmaEezghqSwaT2ALL949clSIo/kPfO
+         OKPfC9fTHVNdo6hfnRCc38D0JiJqPHYKtPhyIVOuLUw/e925mNoxHIAxHZfcQquaFjBs
+         RweyJzTBH2g95Y699FRRV97+YlmL0qD2bbtbt3RBVabdXD3kEoIz1R8Y94cUvXKvtxgv
+         sOAoiZIIBghvkMQj0osjO4UkFdkEZquI4pOfE0bEOPeCyLGB95/zHPcdafYD3QtSgXjH
+         oi3A==
+X-Gm-Message-State: AO0yUKXuyoHsXVlgTOn1P1Fy8T7t9txuycWzQXEspWQNJoCHK6Esbvf4
+	MzcsIqfdQLIXzKj0DNgymqAvPA==
+X-Google-Smtp-Source: AK7set+5mApLIf05UV9lI1WrSUTLqjn2u3xMtQ0MG3GtGOXeh/M+a5iOeRv/Y1L8h+HxYiW3FbYnTQ==
+X-Received: by 2002:ac8:7d15:0:b0:3dc:ce21:6f87 with SMTP id g21-20020ac87d15000000b003dcce216f87mr191326qtb.11.1679409493048;
+        Tue, 21 Mar 2023 07:38:13 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id z9-20020a376509000000b0074283b87a4esm2198697qkb.90.2023.03.21.07.38.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Mar 2023 07:38:12 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1ped7r-000VWi-TM;
+	Tue, 21 Mar 2023 11:38:11 -0300
+Date: Tue, 21 Mar 2023 11:38:11 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Steven Price <steven.price@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Lu Baolu <baolu.lu@linux.intel.com>
+Subject: Re: [PATCH] iommu/rockchip: Add missing set_platform_dma_ops callback
+Message-ID: <ZBnBU9OU4iV6CV0W@ziepe.ca>
+References: <20230315164152.333251-1-steven.price@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [RFC 1/2] media: uapi: Add VP8 stateless encoder controls
-Content-Language: en-US
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
- kernel@collabora.com
-References: <20230309125651.23911-1-andrzej.p@collabora.com>
- <20230309125651.23911-2-andrzej.p@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20230309125651.23911-2-andrzej.p@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20230315164152.333251-1-steven.price@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_064007_554986_4D779017 
-X-CRM114-Status: GOOD (  27.82  )
+X-CRM114-CacheID: sfid-20230321_073815_705454_2A1C56EA 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,238 +99,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrzej,
-
-On 09/03/2023 13:56, Andrzej Pietrasiewicz wrote:
-> Add uAPI for stateless VP8 encoders.
+On Wed, Mar 15, 2023 at 04:41:52PM +0000, Steven Price wrote:
+> Similar to exynos, we need a set_platform_dma_ops() callback for proper
+> operation on ARM 32 bit after recent changes in the IOMMU framework
+> (detach ops removal).
 > 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> Fixes: c1fe9119ee70 ("iommu: Add set_platform_dma_ops callbacks")
+> Signed-off-by: Steven Price <steven.price@arm.com>
 > ---
->  drivers/media/v4l2-core/v4l2-ctrls-core.c | 16 ++++
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c |  5 ++
->  include/media/v4l2-ctrls.h                |  1 +
->  include/uapi/linux/v4l2-controls.h        | 91 +++++++++++++++++++++++
->  include/uapi/linux/videodev2.h            |  3 +
->  5 files changed, 116 insertions(+)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> index 29169170880a..5055e75d37bb 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -335,6 +335,9 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl *ctrl)
->  	case V4L2_CTRL_TYPE_VP9_FRAME:
->  		pr_cont("VP9_FRAME");
->  		break;
-> +	case V4L2_CTRL_TYPE_VP8_ENCODE_PARAMS:
-> +		pr_cont("VP8_ENCODE_PARAMS");
-> +		break;
->  	case V4L2_CTRL_TYPE_HEVC_SPS:
->  		pr_cont("HEVC_SPS");
->  		break;
-> @@ -568,6 +571,7 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
->  	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
->  	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
-> +	struct v4l2_ctrl_vp8_encode_params *p_vp8_encode_params;
->  	struct v4l2_area *area;
->  	void *p = ptr.p + idx * ctrl->elem_size;
->  	unsigned int i;
-> @@ -918,6 +922,15 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  			return -EINVAL;
->  		break;
->  
-> +	case V4L2_CTRL_TYPE_VP8_ENCODE_PARAMS:
-> +		p_vp8_encode_params = p;
-> +		if (p_vp8_encode_params->loop_filter_level > 63)
-> +			return -EINVAL;
-> +
-> +		if (p_vp8_encode_params->sharpness_level > 7)
-> +			return -EINVAL;
-> +		break;
-> +
->  	default:
->  		return -EINVAL;
->  	}
-> @@ -1602,6 +1615,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->  	case V4L2_CTRL_TYPE_VP9_FRAME:
->  		elem_size = sizeof(struct v4l2_ctrl_vp9_frame);
->  		break;
-> +	case V4L2_CTRL_TYPE_VP8_ENCODE_PARAMS:
-> +		elem_size = sizeof(struct v4l2_ctrl_vp8_encode_params);
-> +		break;
->  	case V4L2_CTRL_TYPE_AREA:
->  		elem_size = sizeof(struct v4l2_area);
->  		break;
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> index 564fedee2c88..935bd9a07bad 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> @@ -1182,6 +1182,8 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_STATELESS_MPEG2_QUANTISATION:		return "MPEG-2 Quantisation Matrices";
->  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:	return "VP9 Probabilities Updates";
->  	case V4L2_CID_STATELESS_VP9_FRAME:			return "VP9 Frame Decode Parameters";
-> +	case V4L2_CID_STATELESS_VP8_ENCODE_PARAMS:		return "VP8 Encode Parameters";
-> +	case V4L2_CID_STATELESS_VP8_ENCODE_QP:			return "VP8 Encode QP";
->  	case V4L2_CID_STATELESS_HEVC_SPS:			return "HEVC Sequence Parameter Set";
->  	case V4L2_CID_STATELESS_HEVC_PPS:			return "HEVC Picture Parameter Set";
->  	case V4L2_CID_STATELESS_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
-> @@ -1531,6 +1533,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_STATELESS_VP9_FRAME:
->  		*type = V4L2_CTRL_TYPE_VP9_FRAME;
->  		break;
-> +	case V4L2_CID_STATELESS_VP8_ENCODE_PARAMS:
-> +		*type = V4L2_CTRL_TYPE_VP8_ENCODE_PARAMS;
-> +		break;
+> This fixes a splat I was seeing on a Firefly-RK3288, more details here:
+> https://lore.kernel.org/all/26a5d1b8-40b3-b1e4-bc85-740409c26838@arm.com/
 
-Why isn't V4L2_CID_STATELESS_VP8_ENCODE_QP added here as well? I assume it is of
-type INTEGER?
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-I also wonder if VP9 would have the same control, so that this could be called
-V4L2_CID_STATELESS_VPX_ENCODE_QP. On the other hand, that might be overkill.
+Do you know what state the iommu is left in after
+rk_iommu_detach_device()? Ie is it blocking DMA or doing identity or
+something else?
 
-Regards,
-
-	Hans
-
->  	case V4L2_CID_UNIT_CELL_SIZE:
->  		*type = V4L2_CTRL_TYPE_AREA;
->  		*flags |= V4L2_CTRL_FLAG_READ_ONLY;
-> diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
-> index e59d9a234631..2c4d5d293872 100644
-> --- a/include/media/v4l2-ctrls.h
-> +++ b/include/media/v4l2-ctrls.h
-> @@ -81,6 +81,7 @@ union v4l2_ctrl_ptr {
->  	struct v4l2_ctrl_hdr10_cll_info *p_hdr10_cll;
->  	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
->  	struct v4l2_area *p_area;
-> +	struct v4l2_ctrl_vp8_encode_params *p_vp8_encode_params;
->  	void *p;
->  	const void *p_const;
->  };
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> index b73a8ba7df6c..8b4795a601a5 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -2750,6 +2750,97 @@ struct v4l2_ctrl_vp9_compressed_hdr {
->  	struct v4l2_vp9_mv_probs mv;
->  };
->  
-> +#define V4L2_CID_STATELESS_VP8_ENCODE_PARAMS	(V4L2_CID_CODEC_STATELESS_BASE + 501)
-> +
-> +#define V4L2_VP8_FRAME_FLAG_SHOWFRAME			0x1
-> +#define V4L2_VP8_FRAME_FLAG_GOLDEN_REFRESH		0x2
-> +#define V4L2_VP8_FRAME_FLAG_ALTREF_REFRESH		0x4
-> +#define V4L2_VP8_FRAME_FLAG_SEGMENT_ENABLED		0x8
-> +#define V4L2_VP8_FRAME_FLAG_LOOP_FILTER_ADJ_ENABLED	0x10
-> +#define V4L2_VP8_FRAME_FLAG_REFRESH_ENTROPY_PROBS	0x20
-> +
-> +#define V4L2_VP8_FRAME_TYPE_KEYFRAME	0
-> +#define V4L2_VP8_FRAME_TYPE_INTER	1
-> +
-> +#define V4L2_VP8_FRAME_COLOR_SPACE_YUV		0
-> +#define V4L2_VP8_FRAME_COLOR_SPACE_RESERVED	1
-> +
-> +#define V4L2_VP8_FRAME_CLAMPING_REQUIRED	0
-> +#define V4L2_VP8_FRAME_CLAMPING_NO		1
-> +
-> +#define V4L2_VP8_FRAME_FILTER_TYPE_NORMAL	0
-> +#define V4L2_VP8_FRAME_FILTER_TYPE_SIMPLE	1
-> +
-> +#define V4L2_VP8_FRAME_NBR_DCT_PARTITIONS_1	0
-> +#define V4L2_VP8_FRAME_NBR_DCT_PARTITIONS_2	1
-> +#define V4L2_VP8_FRAME_NBR_DCT_PARTITIONS_4	2
-> +#define V4L2_VP8_FRAME_NBR_DCT_PARTITIONS_8	3
-> +
-> +#define V4L2_VP8_FRAME_GOLDEN_KEEP		0
-> +#define V4L2_VP8_FRAME_GOLDEN_LASTFRAME		1
-> +#define V4L2_VP8_FRAME_GOLDEN_ALTREF		2
-> +
-> +#define V4L2_VP8_FRAME_ALTREF_KEEP		0
-> +#define V4L2_VP8_FRAME_ALTREF_LASTFRAME		1
-> +#define V4L2_VP8_FRAME_ALTREF_GOLDEN		2
-> +
-> +#define V4L2_VP8_FRAME_REF_LAST		0
-> +#define V4L2_VP8_FRAME_REF_GOLDEN	1
-> +#define V4L2_VP8_FRAME_REF_ALT		2
-> +
-> +/**
-> + * struct v4l2_ctrl_vp8_encode_params - VP8 encode parameters
-> + * @flags: combination of V4L2_VP8_FRAME_FLAG_{} flags.
-> + * @frame_type: specifies the frame type (key or inter).
-> + *		Set to one of V4L2_VP8_FRAME_TYPE_{}.
-> + * @color_space: defines the YUV color space of the sequence.
-> + *		 V4L2_VP8_FRAME_TYPE_INTER frames shall set this field to zero.
-> + *		 Set to one of V4L2_VP8_FRAME_COLOR_SPACE_{}.
-> + * @clamping_type: defines pixel value clamping type.
-> + *		   V4L2_VP8_FRAME_TYPE_INTER frames shall set this field to zero.
-> + *		   Set to one of V4L2_VP8_FRAME_CLAMPING_{}.
-> + * @loop_filter_type: selects the type of loop filter applied.
-> + *		      Set to one of V4L2_VP8_FRAME_FILTER_TYPE_{}.
-> + * @loop_filter_level: sets the strength of the applied loop filter.
-> + *		       Set to a value from the rage 0..63.
-> + * @sharpness_level: sets the sharpness of the applied loop filter.
-> + *		     Set to a value from the range 0..7.
-> + * @log2_nbr_of_dct_partitions: determines the number of separate partitions
-> + *				containing the DCT coefficients of macroblocks.
-> + *				Set to one of V4L2_VP8_FRAME_NBR_DCT_PARTITIONS_{}.
-> + * @prob_intra: indicates the probability of an intra macroblock.
-> + *		Set to a value from the range 0..255.
-> + * @prob_last: indicates the probability that the last reference frame is used for inter-prediction.
-> + *	       Set to a value from the range 0..255.
-> + * @prob_gf: indicates the probability that the golden reference frame is used for inter-prediction.
-> + *	     Set to a value from the range 0..255.
-> + * @copy_buffer_to_golden: specifies the golden frame refresh strategy.
-> + *			   Set to one of V4L2_VP8_FRAME_FLAG_GOLDEN_{}.
-> + * @copy_buffer_to_alternate: specifies the atlref frame refresh strategy.
-> + *			      Set to one of V4L2_VP8_FRAME_FLAG_ALTREF_{}.
-> + * @reference_type: specifies what kind of reference to use for current inter frame.
-> + *		    V4L2_VP8_FRAME_TYPE_KEYFRAME shall set this field to zero.
-> + *		    Set to one of V4L2_VP8_FRAME_REF_{}.
-> + */
-> +struct v4l2_ctrl_vp8_encode_params {
-> +	__u32 flags;
-> +	__u8 frame_type;
-> +	__u8 color_space;
-> +	__u8 clamping_type;
-> +	__u8 loop_filter_type;
-> +	__u8 loop_filter_level;
-> +	__u8 sharpness_level;
-> +	__u8 log2_nbr_of_dct_partitions;
-> +	__u8 prob_intra;
-> +	__u8 prob_last;
-> +	__u8 prob_gf;
-> +	__u8 copy_buffer_to_golden;
-> +	__u8 copy_buffer_to_alternate;
-> +	__u8 reference_type;
-> +};
-> +
-> +#define V4L2_CID_STATELESS_VP8_ENCODE_QP	(V4L2_CID_CODEC_STATELESS_BASE + 502)
-> +
->  /* MPEG-compression definitions kept for backwards compatibility */
->  #ifndef __KERNEL__
->  #define V4L2_CTRL_CLASS_MPEG            V4L2_CTRL_CLASS_CODEC
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index 1befd181a4cc..71932ceba248 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -1804,6 +1804,7 @@ struct v4l2_ext_control {
->  		struct v4l2_ctrl_hevc_slice_params __user *p_hevc_slice_params;
->  		struct v4l2_ctrl_hevc_scaling_matrix __user *p_hevc_scaling_matrix;
->  		struct v4l2_ctrl_hevc_decode_params __user *p_hevc_decode_params;
-> +		struct v4l2_ctrl_vp8_encode_params __user *p_vp8_encode_params;
->  		void __user *ptr;
->  	};
->  } __attribute__ ((packed));
-> @@ -1877,6 +1878,8 @@ enum v4l2_ctrl_type {
->  	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
->  	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
->  	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
-> +
-> +	V4L2_CTRL_TYPE_VP8_ENCODE_PARAMS	= 0x0280,
->  };
->  
->  /*  Used in the VIDIOC_QUERYCTRL ioctl for querying controls */
-
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
