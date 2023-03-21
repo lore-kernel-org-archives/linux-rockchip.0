@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD51C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 09:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17680C7618D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 10:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6EEH0QYC9XpaTBIL6kLYtBW2KjSGBViV8edEDZLw8Aw=; b=ZZm+LqSPUGacmc
-	0dIRcMb4Ub9CfIsf2TcK989WTMAj66Y5c63jiXX2j9I/N9DVEAggF1a4dC1ZoJVDR4QzZnqiU00rB
-	NvmIewoDA4VL6I8MREGomo5MSzUUQS1TE7JQ+hdVF34ncMxxqmtNP24rNWVqAvIk3s4XEIm5VEIZd
-	UOhrBL5KAeZBJqxooSJUejsDTSgnxVtBZNRUugTvTcOxqj0V0KiHd/pQBE9S/hMuILRTyJyXazLtg
-	Evfi5Pj9b8iLFwv7AFhnrHZjJtoQL41Li8Ui0N1o2HC8GA2w5JlfDMOZVb+H95AxCt3+UvjgdoTJZ
-	he2GtMPasfIUqxeKfUZw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EXIGjLzRUhj71t1qhaJP9UIm783iZUGGfxmt0wHnOb4=; b=xXew2AWgbcQOnc
+	TqNCMvvSkbxutDp6c6THk/2PjwvlmrqMS7RhIdD7Ogf3Nk3aIGT2kkrDrXP46x+Ti1iSwUDHSQxi+
+	/LGPDKZQWO0Y7REt3n3KJ8tu8byvQT/DKfymCPlyFdIKlhZZu4jalDsxwNiSdW15NIllkRYErDs5d
+	rXPrNwZ7ayM53cV7DW81PhBrljzByDwrHahAHciPW7Yk0q1Fj1VxBlRf+gfu6XaYGncIVpzZdj3fz
+	YcG4BfDlbvPBsr9toIHaODH0kgPXBZfiq6qmmNIi7BSrdVOcYXs47/fxfRYYsTSKgU9rqgRR94KNJ
+	3FgkPZ6m4WAwLwpgZWRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peYhc-00BwnU-0m;
-	Tue, 21 Mar 2023 09:54:48 +0000
-Received: from mail-m11879.qiye.163.com ([115.236.118.79])
+	id 1peZF2-00C1ns-1v;
+	Tue, 21 Mar 2023 10:29:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peYhY-00Bwka-00
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Mar 2023 09:54:46 +0000
-Received: from [172.16.12.33] (unknown [58.22.7.114])
-	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id 17150680B61;
-	Tue, 21 Mar 2023 17:54:31 +0800 (CST)
-Message-ID: <6d7a4677-de1a-8851-026a-b180fca34632@rock-chips.com>
-Date: Tue, 21 Mar 2023 17:54:30 +0800
+	id 1peZEt-00C1g2-0v;
+	Tue, 21 Mar 2023 10:29:12 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f5ef:1040:e3c1:3d00])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6900266030DA;
+	Tue, 21 Mar 2023 10:29:07 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1679394548;
+	bh=thP50rZe85eKdLn09P/bJZIXTEK1LuBUDkCFuB2KNec=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WANier/NNPyE0Tv/3S9lJSi5ZYSmzU0VgJo+nRTJVSmYgRQ7lVfT014TDpr5IZxDe
+	 Ekzaiy1mtjb/2ANsIToKpM8WO7QfkSspjxYUj4JUoY/Cov+A6nkJLafapGCI8PcFWO
+	 m8uM6LMu3dRbEC2h5lsGhKz3sJ4zRt0QE+YQso0OtHxhIBnPvB89xcAdbjLH17BsLi
+	 9EAC/w+2NIaN2gCS12NwzyF15MXCVZ/Qwls8e0n52FNRbm9b5M6zmR85n3eZfd8Lt7
+	 CWDq1ix3An5x04XiwjW4SfVMhUqFeUmVVbLXAenVCYC42YkdyOEiPKPBS0fiJ+taMH
+	 c/Jg7F9DXYEsA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	mchehab@kernel.org,
+	ming.qian@nxp.com,
+	shijie.qin@nxp.com,
+	eagle.zhou@nxp.com,
+	bin.liu@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com,
+	agross@kernel.org,
+	andersson@kernel.org,
+	konrad.dybcio@linaro.org,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl,
+	laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 0/8] Add DELETE_BUF ioctl
+Date: Tue, 21 Mar 2023 11:28:47 +0100
+Message-Id: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 3/3] usb: typec: tcpm: add get max power support
-Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux@roeck-us.net, heikki.krogerus@linux.intel.com,
- gregkh@linuxfoundation.org, heiko@sntech.de, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- huangtao@rock-chips.com, william.wu@rock-chips.com,
- jianwei.zheng@rock-chips.com, yubing.zhang@rock-chips.com, wmc@rock-chips.com
-References: <20230320100711.3708-1-frank.wang@rock-chips.com>
- <20230320100711.3708-4-frank.wang@rock-chips.com>
- <20230320203139.quld3gmoo6esu56i@mercury.elektranox.org>
- <19b39d82-8510-2717-cf3b-71cb955373d0@rock-chips.com>
- <20230321050048.3p7xtyikf2lkqwrg@mercury.elektranox.org>
-From: Frank Wang <frank.wang@rock-chips.com>
-In-Reply-To: <20230321050048.3p7xtyikf2lkqwrg@mercury.elektranox.org>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRoeSVYZTx8fTUsfQkhKQ0tVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpMVUpLS1VLWQ
-	Y+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NUk6Txw6Qj0PORYyDEI#Dj4P
-	TDUaFFZVSlVKTUxCSEJJT0xJS0lDVTMWGhIXVR0JGhUQVQwaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFPTENINwY+
-X-HM-Tid: 0a87039779f72eb5kusn17150680b61
-X-HM-MType: 1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_025444_196004_69E97256 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230321_032911_484982_04647443 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,55 +94,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ViYXN0aWFuLAoKT24gMjAyMy8zLzIxIDEzOjAwLCBTZWJhc3RpYW4gUmVpY2hlbCB3cm90
-ZToKPiBIaSwKPgo+IE9uIFR1ZSwgTWFyIDIxLCAyMDIzIGF0IDA5OjMyOjUzQU0gKzA4MDAsIEZy
-YW5rIFdhbmcgd3JvdGU6Cj4+IE9uIDIwMjMvMy8yMSA0OjMxLCBTZWJhc3RpYW4gUmVpY2hlbCB3
-cm90ZToKPj4+IE9uIE1vbiwgTWFyIDIwLCAyMDIzIGF0IDA2OjA3OjExUE0gKzA4MDAsIEZyYW5r
-IFdhbmcgd3JvdGU6Cj4+Pj4gVHJhdmVyc2UgZml4ZWQgcGRvcyB0byBjYWxjdWxhdGUgdGhlIG1h
-eGltdW0gcG93ZXIgdGhhdCB0aGUgY2hhcmdlcgo+Pj4+IGNhbiBwcm92aWRlLCBhbmQgaXQgY2Fu
-IGJlIGdldCBieSBQT1dFUl9TVVBQTFlfUFJPUF9JTlBVVF9QT1dFUl9MSU1JVAo+Pj4+IHByb3Bl
-cnR5Lgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogRnJhbmsgV2FuZyA8ZnJhbmsud2FuZ0Byb2Nr
-LWNoaXBzLmNvbT4KPj4+PiAtLS0KPj4+PiAgICBkcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcG0u
-YyB8IDI0ICsrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAy
-NCBpbnNlcnRpb25zKCspCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvdHlwZWMv
-dGNwbS90Y3BtLmMgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcG0uYwo+Pj4+IGluZGV4IDEz
-ODMwYjVlMmQwOWYuLmQ2YWQzY2RmOWU0YWYgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy91c2Iv
-dHlwZWMvdGNwbS90Y3BtLmMKPj4+PiArKysgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcG0u
-Ywo+Pj4+IEBAIC02MzIwLDYgKzYzMjAsMjcgQEAgc3RhdGljIGludCB0Y3BtX3BzeV9nZXRfY3Vy
-cmVudF9ub3coc3RydWN0IHRjcG1fcG9ydCAqcG9ydCwKPj4+PiAgICAJcmV0dXJuIDA7Cj4+Pj4g
-ICAgfQo+Pj4+ICtzdGF0aWMgaW50IHRjcG1fcHN5X2dldF9pbnB1dF9wb3dlcl9saW1pdChzdHJ1
-Y3QgdGNwbV9wb3J0ICpwb3J0LAo+Pj4+ICsJCQkJCSAgdW5pb24gcG93ZXJfc3VwcGx5X3Byb3B2
-YWwgKnZhbCkKPj4+PiArewo+Pj4+ICsJdW5zaWduZWQgaW50IHNyY19tdiwgc3JjX21hLCBtYXhf
-c3JjX213ID0gMDsKPj4+PiArCXVuc2lnbmVkIGludCBpLCB0bXA7Cj4+Pj4gKwo+Pj4+ICsJZm9y
-IChpID0gMDsgaSA8IHBvcnQtPm5yX3NvdXJjZV9jYXBzOyBpKyspIHsKPj4+PiArCQl1MzIgcGRv
-ID0gcG9ydC0+c291cmNlX2NhcHNbaV07Cj4+Pj4gKwo+Pj4+ICsJCWlmIChwZG9fdHlwZShwZG8p
-ID09IFBET19UWVBFX0ZJWEVEKSB7Cj4+Pj4gKwkJCXNyY19tdiA9IHBkb19maXhlZF92b2x0YWdl
-KHBkbyk7Cj4+Pj4gKwkJCXNyY19tYSA9IHBkb19tYXhfY3VycmVudChwZG8pOwo+Pj4+ICsJCQl0
-bXAgPSBzcmNfbXYgKiBzcmNfbWEgLyAxMDAwOwo+Pj4+ICsJCQltYXhfc3JjX213ID0gdG1wID4g
-bWF4X3NyY19tdyA/IHRtcCA6IG1heF9zcmNfbXc7Cj4+Pj4gKwkJfQo+Pj4+ICsJfQo+Pj4+ICsK
-Pj4+PiArCXZhbC0+aW50dmFsID0gbWF4X3NyY19tdzsKPj4+IFRoZSBwb3dlci1zdXBwbHkgc3Vi
-c3lzdGVtIGV4cGVjdHMgTWljcm93YXR0cyBhbmQgbm90IE1pbGxpd2F0dHMuCj4+IFllcywgYnV0
-IEkgc2VlIHRoZSAncG93ZXJfc3VwcGx5X3Byb3B2YWwnIG1lbWJlciAnaW50dmFsJyBpcyBhbiBp
-bnRlZ2VyCj4+IHR5cGUsIEkgd29ycnkgYWJvdXQgaXQgbWF5IGJlIG92ZXJmbG93ZWQgdGhhdCB1
-c2VzIE1pY3Jvd2F0dHMuCj4gRGF0YSBiZWluZyBlbmNvZGVkIGluIE1pY3Jvd2F0dHMgaXMgcGFy
-dCBvZiB0aGUgQUJJLiBUaGUgZGF0YQo+IHlvdSBhcmUgc3VwcGx5aW5nIHdpbGwgYmUgaW50ZXJw
-cmV0ZWQgaW4gwrVXLiBJZiB5b3Ugc3VibWl0IHlvdXIKPiBkYXRhIGluIG1XIGl0IGlzIGJhc2lj
-YWxseSBhbHdheXMgd3JvbmcgZXZlbiB3aXRob3V0IGFuIG92ZXJmbG93Lgo+Cj4gTm93IHJlZ2Fy
-ZGluZyB0aGUgb3ZlcmZsb3c6IEEgc2lnbmVkIGludCBjYW4gc3RvcmUgMl4zMSBiaXQsIHNvCj4g
-MiwxNDcsNDgzLDY0OCDCtVcgPSAyMTQ3IFcuIExvb2tpbmcgYXQgeW91ciBjb2RlIHlvdSBlZmZl
-Y3RpdmVseQo+IGNhbGN1bGF0ZSBNaWNyb3dhdHRzIGluIGFuIHVuc2lnbmVkIGludCBhbmQgdGhl
-biBkaXZpZGUgYnkgMTAwMC4KPiBTaW5jZSB0aGUgaW50ZXJtZWRpYXRlIHZhbHVlIChiZWZvcmUg
-ZGl2aWRpbmcgYnkgMTAwMCkgbmVlZHMgdG8gYmUKPiBzdG9yZWQgeW91IGdhaW4gb25seSBvbmUg
-Yml0LiBUaGF0IHJhaXNlcyB0aGUgcXVlc3Rpb246IFdoeSBkbyB5b3UKPiBleHBlY3QgZGF0YSB0
-byBiZSBiZXR3ZWVuIDIxNDcgVyBhbmQgNDI5NCBXIHdoZW4gdGhlIGxhdGVzdCByZWxlYXNlZAo+
-IFVTQiBQRCBzcGVjIGFsbG93cyA1QUA0OFYgPSAyNDBXPwo+Cj4gLS0gU2ViYXN0aWFuCgpPa2F5
-LCBnb3QgaXQsIEkgc2hhbGwgZGVsZXRlIGNvbnZlcnNpb24gY29kZXMgKCBkaXZpZGUgYnkgMTAw
-MCApIGluIHRoZSAKbmV4dCB2ZXJzaW9uLgoKCkJSLgpGcmFuawoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+VP9 dynamic resolution change use case requires to change resolution
+without doing stream off/on to keep references frames.
+In consequence the numbers of buffers increase until all 'old'
+reference frames are deprecated.
+To make it possible this series remove the 32 buffers limit per queue
+and introduce DELETE_BUF ioctl to delete buffers from a queue without
+doing stream off/on sequence.
+
+change in version 2:
+- Use a dynamic array and not a list to keep trace of allocated buffers.
+  Not use IDR interface because it is marked as deprecated in kernel
+  documentation.
+- Add a module parameter to limit the number of buffer per queue.
+- Add DELETE_BUF ioctl and m2m helpers.
+
+Benjamin Gaignard (8):
+  media: videobuf2: Access vb2_queue bufs array through helper functions
+  media: videobuf2: Make bufs array dynamic allocated
+  media: videobuf2: Add a module param to limit vb2 queue buffer storage
+  media: videobuf2: Stop define VB2_MAX_FRAME as global
+  media: v4l2: Add DELETE_BUF ioctl
+  media: v4l2: Add mem2mem helpers for DELETE_BUF ioctl
+  media: vim2m: Use v4l2-mem2mem helpers for VIDIOC_DELETE_BUF ioctl
+  media: verisilicon: Use v4l2-mem2mem helpers for VIDIOC_DELETE_BUF
+    ioctl
+
+ .../userspace-api/media/v4l/user-func.rst     |   1 +
+ .../media/v4l/vidioc-delete-buf.rst           |  51 ++++++
+ .../media/common/videobuf2/videobuf2-core.c   | 168 +++++++++++++-----
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  23 ++-
+ drivers/media/platform/amphion/vdec.c         |   1 +
+ drivers/media/platform/amphion/vpu_dbg.c      |   4 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   2 +-
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         |   4 +-
+ drivers/media/platform/qcom/venus/hfi.h       |   2 +
+ .../media/platform/verisilicon/hantro_hw.h    |   2 +
+ .../media/platform/verisilicon/hantro_v4l2.c  |   1 +
+ drivers/media/test-drivers/vim2m.c            |   1 +
+ drivers/media/test-drivers/visl/visl-dec.c    |  16 +-
+ drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  10 ++
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +++
+ .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
+ drivers/staging/media/ipu3/ipu3-v4l2.c        |   2 +
+ include/media/v4l2-ioctl.h                    |   4 +
+ include/media/v4l2-mem2mem.h                  |  12 ++
+ include/media/videobuf2-core.h                |  84 ++++++++-
+ include/media/videobuf2-v4l2.h                |  15 +-
+ include/uapi/linux/videodev2.h                |   1 +
+ 23 files changed, 353 insertions(+), 74 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
+
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
