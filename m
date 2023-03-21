@@ -4,68 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB8AC74A5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 05:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39B86C74A5B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 06:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5t8+Ha3+lz4nDFVWtbDr+6Oy8UWkW3m2efJJMtEPc8w=; b=THv6Wl1pXWvgDKEHo3ZzvPL73E
-	sX5jn/h00YSdP/t+YVMGGPm0rmbMwyRaalNoNvo7SZe2B4Ulyy8S71dfdD07GfuaZSgfy8j43u4av
-	QTWkRahJdy0z4svWgEzyGcY/IykStqnmxOGzC6fTrQ1UfiH4yWXFqD9mefQtHkaA9leD8dpqg/U9l
-	GM/0PIDIZCpQspcHqc6TLV+mKIKFupz8cIm7OZVFZ3zsSg7rhnX2VdHQsQGLNUyA65NIDhHLc8WZY
-	5s7yWFZKRieJtiOvJ/3aSi7lz3vqb9QGiFOpKEVnmLwZSULlh1XP+szt9LZM4mPks8VAvp5p5UKqB
-	307eGIAg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x49s6jyS5j/ka/uh5uHajpmr7mkwD11Nx/TXULJl8gE=; b=RJggF5gLsrUgb4
+	gimSJo47+TPOG0KiT/8irJSH1GVr4Qt8T1GpvG27vKjvimkCD+6fjS0opdo2fQgo07o/krVL2e/S9
+	R1A/uYm5REvwxaTpBOthnhZ1XRbcDv1kXsy2/fMTOjt4fLmag3tKuTAdrKm1I3NW3YAew9rBM31ba
+	v2dN/CommJ1XKecaKOmndqRunOj6ojNfO4mOvjmtnZ5U2R/BD3b0bQYEsKlTff4rkHgJV05Rndy/o
+	DCUpCN95VnYhvVyxaUSYLF30U5ov6R/6oGqafj2EEn29u3++JW2A7fjgHCK9fwzpmcb1aPaA7j3pZ
+	reC22JXnGFCgGEmFuKDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peU7I-00BDpm-0a;
-	Tue, 21 Mar 2023 05:01:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1peVot-00BQzr-2e;
+	Tue, 21 Mar 2023 06:50:07 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peU7E-00BDog-2u
+	id 1peVoq-00BQq2-39
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Mar 2023 05:00:58 +0000
-Received: from mercury (dyndsl-091-248-215-171.ewe-ip-backbone.de [91.248.215.171])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CCEC9660304E;
-	Tue, 21 Mar 2023 05:00:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679374850;
-	bh=BnvyoteHKI9wY48ZjZ0iqWIQKPL57OZHpv/A2dQoasg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QyPhBokC0aPOnFnEZN3nuB9BOQziiQ4D6TZ016KmwguKWy5u+/AZKmnYQYoK91pKy
-	 Lvb9VZwmxQVGO+WHI6xT7P89g7uhGuF5YIR0xwacZ7XaIztXwVinByXdsa4Hrod8Pr
-	 6vciMxJln75EQt1feWGmN7o0C/yLRCbDZQkY/IKMyqEryMcYi9IjzeIQhVbayYC4h9
-	 mdN/RlP8RiWI+fEXeG1xgHD8Pv4dBA9goRrqCIoQsX1LMlCdAhXwhuTzSPCyzTnGLb
-	 KzWIL512wG9aYCrBK/QMdys6DQlBE/3UlL0sdZgD/0zIsILHr3G4VOJgn8oOQgRL4U
-	 LQVXHior7eheg==
-Received: by mercury (Postfix, from userid 1000)
-	id 3E2EC1060FAB; Tue, 21 Mar 2023 06:00:48 +0100 (CET)
-Date: Tue, 21 Mar 2023 06:00:48 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: linux@roeck-us.net, heikki.krogerus@linux.intel.com,
-	gregkh@linuxfoundation.org, heiko@sntech.de,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, huangtao@rock-chips.com,
-	william.wu@rock-chips.com, jianwei.zheng@rock-chips.com,
-	yubing.zhang@rock-chips.com, wmc@rock-chips.com
-Subject: Re: [PATCH v2 3/3] usb: typec: tcpm: add get max power support
-Message-ID: <20230321050048.3p7xtyikf2lkqwrg@mercury.elektranox.org>
-References: <20230320100711.3708-1-frank.wang@rock-chips.com>
- <20230320100711.3708-4-frank.wang@rock-chips.com>
- <20230320203139.quld3gmoo6esu56i@mercury.elektranox.org>
- <19b39d82-8510-2717-cf3b-71cb955373d0@rock-chips.com>
+	Tue, 21 Mar 2023 06:50:06 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id x3so55656060edb.10
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Mar 2023 23:50:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679381404;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AVZ6hZGV1be7TstieJ1z6Us2bdyl2vfl7ifo76jUCuw=;
+        b=yfBGAkzYkRznU9Ng945BSIqo31Bk5T0PtagdkfIHR2Q1BeqH5OnMJ4fsG1zFEiehiS
+         KZ3/pYphUZP+d7j+TETF5ibJ22qi8JxUtbeR5/rMsVWBLbLtVafpphEGHOgtkfufvthr
+         kfFqq23RxghjFGHcvf7wzurvqXl77TX0lreCe4zdMXibkctRdAIFIHy2nFlymDviILbG
+         cJHWfu2Mf2f0H4Zek7CU3vs712CDHZtYrkN+Dnj8r9iTZ3wsTUFj2dPI9y02J/EmUF03
+         XuUbrwNwkbxeyyaBiz152Yt33fiVzez/AHc3FxXutFCupBB3a+cT+4yKOMj9xOon+xKG
+         WmsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679381404;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AVZ6hZGV1be7TstieJ1z6Us2bdyl2vfl7ifo76jUCuw=;
+        b=YMvgz3Qnxm+naBZidc6v0rAgCWt77FNonRyanww98g3Xagky6BPbzwRAjp4pFVtzxq
+         VW4O1Po6ZSpxrOTqAt5rGbXsFOwxKGEWOKBKWbpPIn0foAFdNXEcMza+PwcsjkRqcYoj
+         rsGFhIJMYpNHSwq09aR+i3qyG4BhvTQcSadiVVtMm9EJi0SPYe5j36T+Dxc3o4uJmS1B
+         zIjm2JqdS5fK9qvvn0YM48v7m1l1x+dbwYBMLHKWqQQAysXRsTKNoSz09V4+RfcoXj/o
+         SmyB/hPcTuvSt5sKrTzo/yOOsqq3f9Wvs8J7WViByYauMYiCvJ6p8i0Lw4WXbDDHAgBH
+         tYSw==
+X-Gm-Message-State: AO0yUKXjnyz335Vij8ux6FQQaRNNMl1QAt5PW6hNsPlypaJAz7U5W4zX
+	rCLT+Fjx5IgTdYKyfU3dk0LY3A==
+X-Google-Smtp-Source: AK7set8eB3GSlawOodRmMBJ+h20F9+s+seoY5Xp11h5THWtKB+BDrw+xLcE75DD32t4gpHpf4nRxYg==
+X-Received: by 2002:a17:906:6449:b0:8b2:abcd:624 with SMTP id l9-20020a170906644900b008b2abcd0624mr1888422ejn.0.1679381404434;
+        Mon, 20 Mar 2023 23:50:04 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:2142:d8da:5ae4:d817? ([2a02:810d:15c0:828:2142:d8da:5ae4:d817])
+        by smtp.gmail.com with ESMTPSA id z16-20020a170906715000b00930894eb708sm5361112ejj.223.2023.03.20.23.50.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 23:50:03 -0700 (PDT)
+Message-ID: <c9365b87-3cd5-9df6-7f2c-e4e848165062@linaro.org>
+Date: Tue, 21 Mar 2023 07:50:01 +0100
 MIME-Version: 1.0
-In-Reply-To: <19b39d82-8510-2717-cf3b-71cb955373d0@rock-chips.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] media: dt-bindings: Drop unneeded quotes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Joe Tessler <jrt@google.com>, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+ Vikash Garodia <quic_vgarodia@quicinc.com>, Heiko Stuebner
+ <heiko@sntech.de>, Benoit Parrot <bparrot@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230320233944.2920964-1-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230320233944.2920964-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230320_220057_155935_410E5731 
-X-CRM114-Status: GOOD (  24.36  )
+X-CRM114-CacheID: sfid-20230320_235005_018864_BD40F4DB 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,115 +121,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2810645886950818613=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 21/03/2023 00:39, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
 
---===============2810645886950818613==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="w2wopulsblcnnvo7"
-Content-Disposition: inline
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
+Best regards,
+Krzysztof
 
---w2wopulsblcnnvo7
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue, Mar 21, 2023 at 09:32:53AM +0800, Frank Wang wrote:
-> On 2023/3/21 4:31, Sebastian Reichel wrote:
-> > On Mon, Mar 20, 2023 at 06:07:11PM +0800, Frank Wang wrote:
-> > > Traverse fixed pdos to calculate the maximum power that the charger
-> > > can provide, and it can be get by POWER_SUPPLY_PROP_INPUT_POWER_LIMIT
-> > > property.
-> > >=20
-> > > Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-> > > ---
-> > >   drivers/usb/typec/tcpm/tcpm.c | 24 ++++++++++++++++++++++++
-> > >   1 file changed, 24 insertions(+)
-> > >=20
-> > > diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/t=
-cpm.c
-> > > index 13830b5e2d09f..d6ad3cdf9e4af 100644
-> > > --- a/drivers/usb/typec/tcpm/tcpm.c
-> > > +++ b/drivers/usb/typec/tcpm/tcpm.c
-> > > @@ -6320,6 +6320,27 @@ static int tcpm_psy_get_current_now(struct tcp=
-m_port *port,
-> > >   	return 0;
-> > >   }
-> > > +static int tcpm_psy_get_input_power_limit(struct tcpm_port *port,
-> > > +					  union power_supply_propval *val)
-> > > +{
-> > > +	unsigned int src_mv, src_ma, max_src_mw =3D 0;
-> > > +	unsigned int i, tmp;
-> > > +
-> > > +	for (i =3D 0; i < port->nr_source_caps; i++) {
-> > > +		u32 pdo =3D port->source_caps[i];
-> > > +
-> > > +		if (pdo_type(pdo) =3D=3D PDO_TYPE_FIXED) {
-> > > +			src_mv =3D pdo_fixed_voltage(pdo);
-> > > +			src_ma =3D pdo_max_current(pdo);
-> > > +			tmp =3D src_mv * src_ma / 1000;
-> > > +			max_src_mw =3D tmp > max_src_mw ? tmp : max_src_mw;
-> > > +		}
-> > > +	}
-> > > +
-> > > +	val->intval =3D max_src_mw;
-> > The power-supply subsystem expects Microwatts and not Milliwatts.
->=20
-> Yes, but I see the 'power_supply_propval' member 'intval' is an integer
-> type, I worry about it may be overflowed that uses Microwatts.
-
-Data being encoded in Microwatts is part of the ABI. The data
-you are supplying will be interpreted in =B5W. If you submit your
-data in mW it is basically always wrong even without an overflow.
-
-Now regarding the overflow: A signed int can store 2^31 bit, so
-2,147,483,648 =B5W =3D 2147 W. Looking at your code you effectively
-calculate Microwatts in an unsigned int and then divide by 1000.
-Since the intermediate value (before dividing by 1000) needs to be
-stored you gain only one bit. That raises the question: Why do you
-expect data to be between 2147 W and 4294 W when the latest released
-USB PD spec allows 5A@48V =3D 240W?
-
--- Sebastian
-
---w2wopulsblcnnvo7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmQZOfsACgkQ2O7X88g7
-+pojhBAAhgzwQSDfENO6eGtWR2yQMwgG0jOd4CTCv9Cp3UuxB60XUdp9lDcRosz3
-T5InXJ/FMWUhEiHoo/pq/95CsrKW7ybUylCTbhWaiWmipBsKURaJGiJWUopdYN01
-M2zhd78L0nGghRkF/vJcBxl4TPoQtp2YUr+oEmKGcar4+cNaVAYOuzChOKx61H+/
-J7U06yL3GcrGu00upnbY49prr5lJIWHV7zinHFpx79y9joYYh9Nh6766y2EQCo7g
-iMj5LxYyxLtPMJLTl0eS1U0hQb3l9AvJLUoDaAU92x9+CEbpTczk2XBrpBJfHJQc
-/x0PtQ+xlaxdABsN62RdwPiUCQOs1FqPMbLNr2oqwbmiY4caj8uogJl0nnhMYz34
-HMUtHgZL/O+Hlrd/bVliGabySpgUQjZKfvk03E7nNRyNygscUSpNGSPMCqhFLfkW
-FY8quL01XZIEyCfgHoxKAv6geKAtmZ5TfJdGw68V/8z3FJJHZ3/Gun6sqewc+RCe
-J0lM3M2htBeV8lsMua+PhRDnHDr/6FMxAM4eMmRqVXgIsfFkwjnwQJyjQUEpD8na
-wJCEufjleDMfkBLwet9C4SclnGgGOTWw+dsF6CYfnY9kZM7r/zed1znyWrsXm58i
-fTqzppOzwPzLtoUXO9Si4fCxZeoZrdav0JqoKyI026D9y+v6e0k=
-=do4N
------END PGP SIGNATURE-----
-
---w2wopulsblcnnvo7--
-
-
---===============2810645886950818613==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2810645886950818613==--
-
