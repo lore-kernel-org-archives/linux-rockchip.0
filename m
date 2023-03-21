@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF2D2C74A5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 14:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDC6C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 17:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FJs2+D8TAXDfknfBbvJaZepqEOmO4PI6j/GXPVT+Yco=; b=IDp4A+RoVYWNkt
-	+SJXtGDbdq/+oLkfhxqFKNqD9wlejKr8I13Kj/7w/tB6x0nWT3k5e0H0VR2L0kx/wCZlQpr0qenQq
-	COjOLMMDVPZAkZCFbgCVRzppmbq1b5Rx6F5FGTNRfT5ga1nAjwtUhBlC2Rkvo7mVYCwxx2y2GNAAU
-	0WL5KOIU8mthlxInYRhmwZVswYNgoKVxqOHdZsDxyI2m0sbgfjn7cX0/Mo1xlEpiFCxRwUXHmJnmR
-	HTeSA59a+gaon8YPwoYaoN6n2JDu3rS93EFDSnh+7Z39MVfjnOk8m7vnRXfF/viqDJehM4BVWmS13
-	fk/TkXDVngq4cu5ub+Ag==;
+	List-Owner; bh=OFiQFoqzsuXrIBX1/ojmhIoiHBJUOZyVOTunAG72I9g=; b=ELaorefVfincrB
+	A/H23HCYlJ0HaRdOjECZIvlE8GUAmhTdhSflLI3gjPZouBgTXLmd9QXmja/6LRt3KVtPOKSJOb1D+
+	UX3X/ZernEwcENngk7dgbQ/rLTFUz5owuSIfphwMyYo5EYXCr/9mfP1jtRK7UIqjDX5RgrfCe7WBl
+	artlrtqWh6ZlsfSZdfqHHmbzmabKDZfShVtZhwL+k+8xl+Do/eETVgU5FiOhvBZ+pU2reXr5M+YCL
+	WFnyaawb1PWhatVRZgTCXyTZt0YshzE4QxQFCY057GOF+EyiBqwi9oi3uAfhqUkNWfacXUMagsHd8
+	KH3NoSaBCfKlW6Ebokow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pedCw-00Cmh0-2w;
-	Tue, 21 Mar 2023 14:43:26 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1pefNa-00D9sv-2V;
+	Tue, 21 Mar 2023 17:02:34 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pedCu-00CmgJ-25;
-	Tue, 21 Mar 2023 14:43:26 +0000
-Received: by mail-ed1-x534.google.com with SMTP id b20so27681386edd.1;
-        Tue, 21 Mar 2023 07:43:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679409802;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=O7ubpTBwCGfHItDX77/xDDLQ0Emp6svnzclBDAs6qyE=;
-        b=T1s8Ngl+RkVIvxNZpvZnMH7cqodpqineB22YWtIv/fCGFj7joV/a1TjSRUm2pJJHHt
-         MUKxqDn5xKWt1O5LBWVnUBgDu7rGLfa03O5Y9FcuEHowG/SlkK7LqP23ZwmrwM0e7Teq
-         QIWIwFG8FsQIjgobJ5zpK1KmBtp960ybNTL2lY/5bEB4xvS7cnm3kjiyyk9z2xzet73f
-         gBH4RPumKKnXgn8OfdTuNLjHTY1ctiMA2fIGN5fpsiI7phP1firJvEgcgRL6RMRFv9B6
-         rxvXVlonIb+2hM/XbpELgBCHVQG3Fb65I6yc1FlE/etUE3C5BrDKrCvP1Dd5HFv5cDVd
-         3S5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679409802;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O7ubpTBwCGfHItDX77/xDDLQ0Emp6svnzclBDAs6qyE=;
-        b=Ut1dwXDNPBjW7klaVFsmTJM0xnDuW8a9m8hwctGfaAW6WZX7UY+bZj8KbpaBg1vE8e
-         tmvBWh2TtxtICwat4xs0oyJwvtI0SNIRudt1mLmwqPOJFdz55LvKbbwsjLhOoVNYslOH
-         NFDjrSSkB5H0a5Y3C9Q+VmudVx3jptC4T8ZtulhYIvvWjhpNhk8WoQlWm6b8oFfWxdfN
-         gkbj0qEyENZmgSnxDqCs7bMdxFRj8GxY17/gQp+tGxBGqmuYuljcdRY/WlMYsbZeQE1n
-         1gpIMZG5QdqM2tZiX9vDfdL0AH717B2Z9KoNzHvpNT9HcVHK/s9B3DiW1D94+vayHFAa
-         PtIA==
-X-Gm-Message-State: AO0yUKVfuJKurxLiIc1FepyZcnLWk+MlorNZYKP3rwoQDOYEFIitZ7Sm
-	mn7e0ewRwaOzW7j7QhHKhas=
-X-Google-Smtp-Source: AK7set96Is0TLe0fndXxjNYCDYYIIwKDzHB+KNPQfBa3bfvxoMA0iLVPglnQVrqgXhUacHz1wyNEXg==
-X-Received: by 2002:a05:6402:1116:b0:4ac:b528:5727 with SMTP id u22-20020a056402111600b004acb5285727mr3772779edv.1.1679409802207;
-        Tue, 21 Mar 2023 07:43:22 -0700 (PDT)
-Received: from tom-HP-ZBook-Fury-15-G7-Mobile-Workstation ([5.170.200.163])
-        by smtp.gmail.com with ESMTPSA id q28-20020a50aa9c000000b004fb556e905fsm6386755edc.49.2023.03.21.07.43.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Mar 2023 07:43:21 -0700 (PDT)
-Date: Tue, 21 Mar 2023 15:43:18 +0100
-From: Tommaso Merciai <tomm.merciai@gmail.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
-Message-ID: <ZBnChlWq5RTI8U8h@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+	id 1pefNS-00D9pp-1m;
+	Tue, 21 Mar 2023 17:02:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679418146; x=1710954146;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=d+hlpp3Zd9LOfPprBhu8Y574GqlBNBa7l4yvc+7zCA4=;
+  b=iNeCd9nVuPX/7+2g1FQLB6BfNCTx+Jqlhyo+bhlDR7wQMFsm1sWRMjsg
+   KE4R3xDZ54OSk9009z3HqdQM/sVjyX/VXU/oB0qXDvrXSIku8cUuDJXyq
+   oe8N9yylhmZQH10B1r/v7xgj2nAdMCV4dS9VjXTXm9Md8aXtsx7q998il
+   BmdXCRdsiMpIEznZ67bINReLhvnv1y2iNwaUq28FjALEkwi5F5WtB3R7/
+   kAOMcQnTuy1wyc3PCic9h3cEq4sBQDCoPiNdnnNMCjSXvQjaZnU1GXmXM
+   Bs6cEkOwB52erR6tvojLMGJGgme4DPNuoxFK7VYdX62RaccZGT8eZE/lT
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="322846094"
+X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
+   d="scan'208";a="322846094"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 10:01:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="631664574"
+X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
+   d="scan'208";a="631664574"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 21 Mar 2023 10:01:41 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pefMi-000CBa-0v;
+	Tue, 21 Mar 2023 17:01:40 +0000
+Date: Wed, 22 Mar 2023 01:01:05 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
+	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
+ queue buffer storage
+Message-ID: <202303220057.J83sWVI1-lkp@intel.com>
+References: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+In-Reply-To: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_074324_690758_482D56F3 
-X-CRM114-Status: GOOD (  23.91  )
+X-CRM114-CacheID: sfid-20230321_100227_077977_DD5053E8 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,73 +97,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Paul,
+Hi Benjamin,
 
-On Fri, Nov 18, 2022 at 06:39:17PM +0900, Paul Elder wrote:
-> This series depends on v3 of "dt-bindings: media: Add macros for video
-> interface bus types" [1].
-> 
-> This series extends the rkisp1 driver to support the ISP found in the
-> NXP i.MX8MP SoC.
-> 
-> The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> over time as they are now independently developed (afaik) by Rockchip
-> and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> and is close enough to the RK3399 ISP that it can easily be supported by
-> the same driver.
-> 
-> The last two patches add support for UYVY output format, which can be
-> implemented on the ISP version in the i.MX8MP but not in the one in the
-> RK3399.
-> 
-> This version of the series specifically has been tested on a Polyhex
-> Debix model A with an imx219 (Raspberry Pi cam v2).
-> 
-> [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
+I love your patch! Yet something to improve:
 
-I tested your series on imx274 on imx8mp-evk csi0.
-All looks good on my side.
-Thanks for your work!
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.3-rc3 next-20230321]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Tested-by: Tommaso Merciai <tomm.merciai@gmail.com>
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230321102855.346732-4-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2 queue buffer storage
+config: i386-randconfig-a001 (https://download.01.org/0day-ci/archive/20230322/202303220057.J83sWVI1-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/aab64e29070dfec3a043b5020399f79554d6cae4
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
+        git checkout aab64e29070dfec3a043b5020399f79554d6cae4
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        make W=1 O=build_dir ARCH=i386 olddefconfig
+        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash
 
-Regards,
-Tommaso
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303220057.J83sWVI1-lkp@intel.com/
 
-> 
-> Laurent Pinchart (3):
->   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
->   media: rkisp1: Add and use rkisp1_has_feature() macro
->   media: rkisp1: Configure gasket on i.MX8MP
-> 
-> Paul Elder (11):
->   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
->   media: rkisp1: Add match data for i.MX8MP ISP
->   media: rkisp1: Add and set registers for crop for i.MX8MP
->   media: rkisp1: Add and set registers for output size config on i.MX8MP
->   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
->   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
->   media: rkisp1: Add register definitions for the test pattern generator
->   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
->   media: rkisp1: Support devices without self path
->   media: rkisp1: Add YC swap capability
->   media: rkisp1: Add UYVY as an output format
-> 
->  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
->  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
->  include/uapi/linux/rkisp1-config.h            |   2 +
->  9 files changed, 509 insertions(+), 40 deletions(-)
-> 
-> -- 
-> 2.35.1
->
+All errors (new ones prefixed by >>):
+
+   In file included from include/linux/module.h:22,
+                    from drivers/media/common/videobuf2/videobuf2-core.c:21:
+   drivers/media/common/videobuf2/videobuf2-core.c: In function '__check_max_vb_buffer_per_queue':
+>> include/linux/moduleparam.h:150:34: error: returning 'size_t *' {aka 'unsigned int *'} from a function with incompatible return type 'long unsigned int *' [-Werror=incompatible-pointer-types]
+     150 |         param_check_##type(name, &(value));                                \
+         |                                  ^
+   include/linux/moduleparam.h:409:75: note: in definition of macro '__param_check'
+     409 |         static inline type __always_unused *__check_##name(void) { return(p); }
+         |                                                                           ^
+   include/linux/moduleparam.h:150:9: note: in expansion of macro 'param_check_ulong'
+     150 |         param_check_##type(name, &(value));                                \
+         |         ^~~~~~~~~~~~
+   include/linux/moduleparam.h:127:9: note: in expansion of macro 'module_param_named'
+     127 |         module_param_named(name, name, type, perm)
+         |         ^~~~~~~~~~~~~~~~~~
+   drivers/media/common/videobuf2/videobuf2-core.c:37:1: note: in expansion of macro 'module_param'
+      37 | module_param(max_vb_buffer_per_queue, ulong, 0644);
+         | ^~~~~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +150 include/linux/moduleparam.h
+
+^1da177e4c3f415 Linus Torvalds  2005-04-16  100  
+546970bc6afc7fb Rusty Russell   2010-08-11  101  /**
+546970bc6afc7fb Rusty Russell   2010-08-11  102   * module_param - typesafe helper for a module/cmdline parameter
+e2854a1054ab171 Zhenzhong Duan  2019-11-04  103   * @name: the variable to alter, and exposed parameter name.
+546970bc6afc7fb Rusty Russell   2010-08-11  104   * @type: the type of the parameter
+546970bc6afc7fb Rusty Russell   2010-08-11  105   * @perm: visibility in sysfs.
+546970bc6afc7fb Rusty Russell   2010-08-11  106   *
+e2854a1054ab171 Zhenzhong Duan  2019-11-04  107   * @name becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
+546970bc6afc7fb Rusty Russell   2010-08-11  108   * ".") the kernel commandline parameter.  Note that - is changed to _, so
+546970bc6afc7fb Rusty Russell   2010-08-11  109   * the user can use "foo-bar=1" even for variable "foo_bar".
+546970bc6afc7fb Rusty Russell   2010-08-11  110   *
+c6a8b84da4c28bd Randy Dunlap    2020-07-17  111   * @perm is 0 if the variable is not to appear in sysfs, or 0444
+546970bc6afc7fb Rusty Russell   2010-08-11  112   * for world-readable, 0644 for root-writable, etc.  Note that if it
+b51d23e4e9fea6f Dan Streetman   2015-06-17  113   * is writable, you may need to use kernel_param_lock() around
+546970bc6afc7fb Rusty Russell   2010-08-11  114   * accesses (esp. charp, which can be kfreed when it changes).
+546970bc6afc7fb Rusty Russell   2010-08-11  115   *
+546970bc6afc7fb Rusty Russell   2010-08-11  116   * The @type is simply pasted to refer to a param_ops_##type and a
+546970bc6afc7fb Rusty Russell   2010-08-11  117   * param_check_##type: for convenience many standard types are provided but
+546970bc6afc7fb Rusty Russell   2010-08-11  118   * you can create your own by defining those variables.
+546970bc6afc7fb Rusty Russell   2010-08-11  119   *
+546970bc6afc7fb Rusty Russell   2010-08-11  120   * Standard types are:
+7d8365771ffb0ed Paul Menzel     2020-07-03  121   *	byte, hexint, short, ushort, int, uint, long, ulong
+546970bc6afc7fb Rusty Russell   2010-08-11  122   *	charp: a character pointer
+546970bc6afc7fb Rusty Russell   2010-08-11  123   *	bool: a bool, values 0/1, y/n, Y/N.
+546970bc6afc7fb Rusty Russell   2010-08-11  124   *	invbool: the above, only sense-reversed (N = true).
+546970bc6afc7fb Rusty Russell   2010-08-11  125   */
+546970bc6afc7fb Rusty Russell   2010-08-11  126  #define module_param(name, type, perm)				\
+546970bc6afc7fb Rusty Russell   2010-08-11  127  	module_param_named(name, name, type, perm)
+546970bc6afc7fb Rusty Russell   2010-08-11  128  
+3baee201b06cfaf Jani Nikula     2014-08-27  129  /**
+3baee201b06cfaf Jani Nikula     2014-08-27  130   * module_param_unsafe - same as module_param but taints kernel
+b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  131   * @name: the variable to alter, and exposed parameter name.
+b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  132   * @type: the type of the parameter
+b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  133   * @perm: visibility in sysfs.
+3baee201b06cfaf Jani Nikula     2014-08-27  134   */
+3baee201b06cfaf Jani Nikula     2014-08-27  135  #define module_param_unsafe(name, type, perm)			\
+3baee201b06cfaf Jani Nikula     2014-08-27  136  	module_param_named_unsafe(name, name, type, perm)
+3baee201b06cfaf Jani Nikula     2014-08-27  137  
+546970bc6afc7fb Rusty Russell   2010-08-11  138  /**
+546970bc6afc7fb Rusty Russell   2010-08-11  139   * module_param_named - typesafe helper for a renamed module/cmdline parameter
+546970bc6afc7fb Rusty Russell   2010-08-11  140   * @name: a valid C identifier which is the parameter name.
+546970bc6afc7fb Rusty Russell   2010-08-11  141   * @value: the actual lvalue to alter.
+546970bc6afc7fb Rusty Russell   2010-08-11  142   * @type: the type of the parameter
+546970bc6afc7fb Rusty Russell   2010-08-11  143   * @perm: visibility in sysfs.
+546970bc6afc7fb Rusty Russell   2010-08-11  144   *
+546970bc6afc7fb Rusty Russell   2010-08-11  145   * Usually it's a good idea to have variable names and user-exposed names the
+546970bc6afc7fb Rusty Russell   2010-08-11  146   * same, but that's harder if the variable must be non-static or is inside a
+546970bc6afc7fb Rusty Russell   2010-08-11  147   * structure.  This allows exposure under a different name.
+546970bc6afc7fb Rusty Russell   2010-08-11  148   */
+546970bc6afc7fb Rusty Russell   2010-08-11  149  #define module_param_named(name, value, type, perm)			   \
+546970bc6afc7fb Rusty Russell   2010-08-11 @150  	param_check_##type(name, &(value));				   \
+546970bc6afc7fb Rusty Russell   2010-08-11  151  	module_param_cb(name, &param_ops_##type, &value, perm);		   \
+546970bc6afc7fb Rusty Russell   2010-08-11  152  	__MODULE_PARM_TYPE(name, #type)
+546970bc6afc7fb Rusty Russell   2010-08-11  153  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
 _______________________________________________
 Linux-rockchip mailing list
