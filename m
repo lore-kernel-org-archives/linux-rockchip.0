@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDC6C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 17:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F449C74A5B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 17:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OFiQFoqzsuXrIBX1/ojmhIoiHBJUOZyVOTunAG72I9g=; b=ELaorefVfincrB
-	A/H23HCYlJ0HaRdOjECZIvlE8GUAmhTdhSflLI3gjPZouBgTXLmd9QXmja/6LRt3KVtPOKSJOb1D+
-	UX3X/ZernEwcENngk7dgbQ/rLTFUz5owuSIfphwMyYo5EYXCr/9mfP1jtRK7UIqjDX5RgrfCe7WBl
-	artlrtqWh6ZlsfSZdfqHHmbzmabKDZfShVtZhwL+k+8xl+Do/eETVgU5FiOhvBZ+pU2reXr5M+YCL
-	WFnyaawb1PWhatVRZgTCXyTZt0YshzE4QxQFCY057GOF+EyiBqwi9oi3uAfhqUkNWfacXUMagsHd8
-	KH3NoSaBCfKlW6Ebokow==;
+	List-Owner; bh=oug2DradLck/y8sFtGHiFiWAnoCanmQLG5xDI+LOK3I=; b=AOa/BKnF/8dNUx
+	WOqhB7EBAK0AjWqTipedt081rT8dh1VHfYLK/z6x1dYLIf/qu7GSrfVJ9aP0t962K0OPkivl+mFE3
+	XPjNse1HRHJaz0YwiNLPMveC7UZckPCU6LhfzvnRNKMb9dYt9HvF1ksL7mN9GEFjqIZoM0j6phXcC
+	W22ReH+d6rv/r03q36kEJrs9vgFlSJtoUvv15R5nhr8fw4u+TASBigFj4jxmx6RJLi+rrA1O68YO7
+	/sGYKcAqXyZP/Mm8cddlxf3wMJgulCanQMAuUfrzk9fVdZlm1mDkvTXQAtUlYRT4NA45E1g8s6VDT
+	8ik4FgLrcmveID0LrgNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pefNa-00D9sv-2V;
-	Tue, 21 Mar 2023 17:02:34 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1peg0o-00DGRu-2F;
+	Tue, 21 Mar 2023 17:43:06 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pefNS-00D9pp-1m;
-	Tue, 21 Mar 2023 17:02:30 +0000
+	id 1peg0j-00DGQB-1x;
+	Tue, 21 Mar 2023 17:43:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679418146; x=1710954146;
+  t=1679420581; x=1710956581;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=d+hlpp3Zd9LOfPprBhu8Y574GqlBNBa7l4yvc+7zCA4=;
-  b=iNeCd9nVuPX/7+2g1FQLB6BfNCTx+Jqlhyo+bhlDR7wQMFsm1sWRMjsg
-   KE4R3xDZ54OSk9009z3HqdQM/sVjyX/VXU/oB0qXDvrXSIku8cUuDJXyq
-   oe8N9yylhmZQH10B1r/v7xgj2nAdMCV4dS9VjXTXm9Md8aXtsx7q998il
-   BmdXCRdsiMpIEznZ67bINReLhvnv1y2iNwaUq28FjALEkwi5F5WtB3R7/
-   kAOMcQnTuy1wyc3PCic9h3cEq4sBQDCoPiNdnnNMCjSXvQjaZnU1GXmXM
-   Bs6cEkOwB52erR6tvojLMGJGgme4DPNuoxFK7VYdX62RaccZGT8eZE/lT
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="322846094"
+  bh=+pjwBEmDe+T56Sgwt4qimQ2CIBOYEqSjWw1uHZNKv6U=;
+  b=i6AFaOoN5+fIUaLSrvnXyodqWbWNNM9n6wBcIwMf3VSZVLrvkEhvJIW8
+   KcxWr0DPFyX5jVlMveArrocm9HgehlSWA78OElm5D5cRPD8Qm/kRA/36n
+   /yfxR4YKQMPs3hmwJa25L3lwIdZMPfeNuVOKqoVkOUIQ87phtxlaxwGgh
+   IrcZg4gSmIy6ncyWmMUUnOe681RzjCsNHrheOQ7NcNeLNRKHQWcEDQ4fv
+   jfsQ5K2Oohlm4xI1iUMp6OEavl1Q4sXTN+mJDohCgW/M+VMqK1gJLbQZI
+   IQLqWoOKTJiwKutQp3wrEqO2OlLZ8e6ntothFgBMbZ3VhtGhwQQNV6iAi
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="340553600"
 X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="322846094"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 10:01:50 -0700
+   d="scan'208";a="340553600"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 10:42:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="631664574"
+X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="805503023"
 X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="631664574"
+   d="scan'208";a="805503023"
 Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 21 Mar 2023 10:01:41 -0700
+  by orsmga004.jf.intel.com with ESMTP; 21 Mar 2023 10:42:43 -0700
 Received: from kbuild by b613635ddfff with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1pefMi-000CBa-0v;
-	Tue, 21 Mar 2023 17:01:40 +0000
-Date: Wed, 22 Mar 2023 01:01:05 +0800
+	id 1peg0Q-000CDT-1d;
+	Tue, 21 Mar 2023 17:42:42 +0000
+Date: Wed, 22 Mar 2023 01:42:34 +0800
 From: kernel test robot <lkp@intel.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
 	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
@@ -71,16 +71,16 @@ Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <202303220057.J83sWVI1-lkp@intel.com>
-References: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v2 1/8] media: videobuf2: Access vb2_queue bufs array
+ through helper functions
+Message-ID: <202303220154.ioaH1XLM-lkp@intel.com>
+References: <20230321102855.346732-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230321102855.346732-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_100227_077977_DD5053E8 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20230321_104301_706016_E395CDE8 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,103 +109,83 @@ https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
 base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230321102855.346732-4-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2 queue buffer storage
-config: i386-randconfig-a001 (https://download.01.org/0day-ci/archive/20230322/202303220057.J83sWVI1-lkp@intel.com/config)
+patch link:    https://lore.kernel.org/r/20230321102855.346732-2-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v2 1/8] media: videobuf2: Access vb2_queue bufs array through helper functions
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20230322/202303220154.ioaH1XLM-lkp@intel.com/config)
 compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
 reproduce (this is a W=1 build):
-        # https://github.com/intel-lab-lkp/linux/commit/aab64e29070dfec3a043b5020399f79554d6cae4
+        # https://github.com/intel-lab-lkp/linux/commit/625d46c1c1fe8e3229a780134d21bcd4a017cfdd
         git remote add linux-review https://github.com/intel-lab-lkp/linux
         git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-        git checkout aab64e29070dfec3a043b5020399f79554d6cae4
+        git checkout 625d46c1c1fe8e3229a780134d21bcd4a017cfdd
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=i386 olddefconfig
-        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash
+        make W=1 O=build_dir ARCH=x86_64 olddefconfig
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/staging/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303220057.J83sWVI1-lkp@intel.com/
+| Link: https://lore.kernel.org/oe-kbuild-all/202303220154.ioaH1XLM-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
-   In file included from include/linux/module.h:22,
-                    from drivers/media/common/videobuf2/videobuf2-core.c:21:
-   drivers/media/common/videobuf2/videobuf2-core.c: In function '__check_max_vb_buffer_per_queue':
->> include/linux/moduleparam.h:150:34: error: returning 'size_t *' {aka 'unsigned int *'} from a function with incompatible return type 'long unsigned int *' [-Werror=incompatible-pointer-types]
-     150 |         param_check_##type(name, &(value));                                \
-         |                                  ^
-   include/linux/moduleparam.h:409:75: note: in definition of macro '__param_check'
-     409 |         static inline type __always_unused *__check_##name(void) { return(p); }
-         |                                                                           ^
-   include/linux/moduleparam.h:150:9: note: in expansion of macro 'param_check_ulong'
-     150 |         param_check_##type(name, &(value));                                \
-         |         ^~~~~~~~~~~~
-   include/linux/moduleparam.h:127:9: note: in expansion of macro 'module_param_named'
-     127 |         module_param_named(name, name, type, perm)
-         |         ^~~~~~~~~~~~~~~~~~
-   drivers/media/common/videobuf2/videobuf2-core.c:37:1: note: in expansion of macro 'module_param'
-      37 | module_param(max_vb_buffer_per_queue, ulong, 0644);
-         | ^~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+   drivers/staging/media/atomisp/pci/atomisp_ioctl.c: In function 'atomisp_dqbuf_wrapper':
+>> drivers/staging/media/atomisp/pci/atomisp_ioctl.c:1098:33: error: incompatible type for argument 1 of 'vb2_get_buffer'
+    1098 |         vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+         |                             ~~~~^~~~~~~~~~
+         |                                 |
+         |                                 struct vb2_queue
+   In file included from include/media/videobuf2-v4l2.h:16,
+                    from drivers/staging/media/atomisp//pci/ia_css_frame_public.h:23,
+                    from drivers/staging/media/atomisp/pci/sh_css_legacy.h:22,
+                    from drivers/staging/media/atomisp/pci/atomisp_internal.h:34,
+                    from drivers/staging/media/atomisp/pci/atomisp_cmd.h:30,
+                    from drivers/staging/media/atomisp/pci/atomisp_ioctl.c:27:
+   include/media/videobuf2-core.h:1239:67: note: expected 'struct vb2_queue *' but argument is of type 'struct vb2_queue'
+    1239 | static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+         |                                                 ~~~~~~~~~~~~~~~~~~^
 
 
-vim +150 include/linux/moduleparam.h
+vim +/vb2_get_buffer +1098 drivers/staging/media/atomisp/pci/atomisp_ioctl.c
 
-^1da177e4c3f415 Linus Torvalds  2005-04-16  100  
-546970bc6afc7fb Rusty Russell   2010-08-11  101  /**
-546970bc6afc7fb Rusty Russell   2010-08-11  102   * module_param - typesafe helper for a module/cmdline parameter
-e2854a1054ab171 Zhenzhong Duan  2019-11-04  103   * @name: the variable to alter, and exposed parameter name.
-546970bc6afc7fb Rusty Russell   2010-08-11  104   * @type: the type of the parameter
-546970bc6afc7fb Rusty Russell   2010-08-11  105   * @perm: visibility in sysfs.
-546970bc6afc7fb Rusty Russell   2010-08-11  106   *
-e2854a1054ab171 Zhenzhong Duan  2019-11-04  107   * @name becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
-546970bc6afc7fb Rusty Russell   2010-08-11  108   * ".") the kernel commandline parameter.  Note that - is changed to _, so
-546970bc6afc7fb Rusty Russell   2010-08-11  109   * the user can use "foo-bar=1" even for variable "foo_bar".
-546970bc6afc7fb Rusty Russell   2010-08-11  110   *
-c6a8b84da4c28bd Randy Dunlap    2020-07-17  111   * @perm is 0 if the variable is not to appear in sysfs, or 0444
-546970bc6afc7fb Rusty Russell   2010-08-11  112   * for world-readable, 0644 for root-writable, etc.  Note that if it
-b51d23e4e9fea6f Dan Streetman   2015-06-17  113   * is writable, you may need to use kernel_param_lock() around
-546970bc6afc7fb Rusty Russell   2010-08-11  114   * accesses (esp. charp, which can be kfreed when it changes).
-546970bc6afc7fb Rusty Russell   2010-08-11  115   *
-546970bc6afc7fb Rusty Russell   2010-08-11  116   * The @type is simply pasted to refer to a param_ops_##type and a
-546970bc6afc7fb Rusty Russell   2010-08-11  117   * param_check_##type: for convenience many standard types are provided but
-546970bc6afc7fb Rusty Russell   2010-08-11  118   * you can create your own by defining those variables.
-546970bc6afc7fb Rusty Russell   2010-08-11  119   *
-546970bc6afc7fb Rusty Russell   2010-08-11  120   * Standard types are:
-7d8365771ffb0ed Paul Menzel     2020-07-03  121   *	byte, hexint, short, ushort, int, uint, long, ulong
-546970bc6afc7fb Rusty Russell   2010-08-11  122   *	charp: a character pointer
-546970bc6afc7fb Rusty Russell   2010-08-11  123   *	bool: a bool, values 0/1, y/n, Y/N.
-546970bc6afc7fb Rusty Russell   2010-08-11  124   *	invbool: the above, only sense-reversed (N = true).
-546970bc6afc7fb Rusty Russell   2010-08-11  125   */
-546970bc6afc7fb Rusty Russell   2010-08-11  126  #define module_param(name, type, perm)				\
-546970bc6afc7fb Rusty Russell   2010-08-11  127  	module_param_named(name, name, type, perm)
-546970bc6afc7fb Rusty Russell   2010-08-11  128  
-3baee201b06cfaf Jani Nikula     2014-08-27  129  /**
-3baee201b06cfaf Jani Nikula     2014-08-27  130   * module_param_unsafe - same as module_param but taints kernel
-b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  131   * @name: the variable to alter, and exposed parameter name.
-b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  132   * @type: the type of the parameter
-b6d0531ec7e2ae9 Fabien Dessenne 2019-12-02  133   * @perm: visibility in sysfs.
-3baee201b06cfaf Jani Nikula     2014-08-27  134   */
-3baee201b06cfaf Jani Nikula     2014-08-27  135  #define module_param_unsafe(name, type, perm)			\
-3baee201b06cfaf Jani Nikula     2014-08-27  136  	module_param_named_unsafe(name, name, type, perm)
-3baee201b06cfaf Jani Nikula     2014-08-27  137  
-546970bc6afc7fb Rusty Russell   2010-08-11  138  /**
-546970bc6afc7fb Rusty Russell   2010-08-11  139   * module_param_named - typesafe helper for a renamed module/cmdline parameter
-546970bc6afc7fb Rusty Russell   2010-08-11  140   * @name: a valid C identifier which is the parameter name.
-546970bc6afc7fb Rusty Russell   2010-08-11  141   * @value: the actual lvalue to alter.
-546970bc6afc7fb Rusty Russell   2010-08-11  142   * @type: the type of the parameter
-546970bc6afc7fb Rusty Russell   2010-08-11  143   * @perm: visibility in sysfs.
-546970bc6afc7fb Rusty Russell   2010-08-11  144   *
-546970bc6afc7fb Rusty Russell   2010-08-11  145   * Usually it's a good idea to have variable names and user-exposed names the
-546970bc6afc7fb Rusty Russell   2010-08-11  146   * same, but that's harder if the variable must be non-static or is inside a
-546970bc6afc7fb Rusty Russell   2010-08-11  147   * structure.  This allows exposure under a different name.
-546970bc6afc7fb Rusty Russell   2010-08-11  148   */
-546970bc6afc7fb Rusty Russell   2010-08-11  149  #define module_param_named(name, value, type, perm)			   \
-546970bc6afc7fb Rusty Russell   2010-08-11 @150  	param_check_##type(name, &(value));				   \
-546970bc6afc7fb Rusty Russell   2010-08-11  151  	module_param_cb(name, &param_ops_##type, &value, perm);		   \
-546970bc6afc7fb Rusty Russell   2010-08-11  152  	__MODULE_PARM_TYPE(name, #type)
-546970bc6afc7fb Rusty Russell   2010-08-11  153  
+  1083	
+  1084	static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer *buf)
+  1085	{
+  1086		struct video_device *vdev = video_devdata(file);
+  1087		struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
+  1088		struct atomisp_sub_device *asd = pipe->asd;
+  1089		struct atomisp_device *isp = video_get_drvdata(vdev);
+  1090		struct ia_css_frame *frame;
+  1091		struct vb2_buffer *vb;
+  1092		int ret;
+  1093	
+  1094		ret = vb2_ioctl_dqbuf(file, fh, buf);
+  1095		if (ret)
+  1096			return ret;
+  1097	
+> 1098		vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+  1099		frame = vb_to_frame(vb);
+  1100	
+  1101		buf->reserved = asd->frame_status[buf->index];
+  1102	
+  1103		/*
+  1104		 * Hack:
+  1105		 * Currently frame_status in the enum type which takes no more lower
+  1106		 * 8 bit.
+  1107		 * use bit[31:16] for exp_id as it is only in the range of 1~255
+  1108		 */
+  1109		buf->reserved &= 0x0000ffff;
+  1110		if (!(buf->flags & V4L2_BUF_FLAG_ERROR))
+  1111			buf->reserved |= frame->exp_id;
+  1112		buf->reserved2 = pipe->frame_config_id[buf->index];
+  1113	
+  1114		dev_dbg(isp->dev,
+  1115			"dqbuf buffer %d (%s) for asd%d with exp_id %d, isp_config_id %d\n",
+  1116			buf->index, vdev->name, asd->index, buf->reserved >> 16,
+  1117			buf->reserved2);
+  1118		return 0;
+  1119	}
+  1120	
 
 -- 
 0-DAY CI Kernel Test Service
