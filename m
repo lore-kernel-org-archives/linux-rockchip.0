@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6F7C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 19:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0F4C761AF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 19:33:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EFrOwAZhOWzEpLNu6c4LYwGS0SF6YQIvTCbpsmGDjvU=; b=0SUqFEQ5x9rksV
-	hbKnyu4BbsuPLEOYar1q1PN2rGFhOiYoZ3Gz9fuYRQmvkOl/Sve+02HIYxvJ9ivvVoQizqIHcVsW9
-	+53WTGl0M3qayVT7pF9sJSrEX9FdnOmS5OG3cz4M8ghs/HfzieNXmshXNQHP4xGzwv287Sp6nbSQR
-	19cD0UjZGlFk7MngTRrVbh9w3Pf6W35rv0g4VGtRTS6FKHulg8l3G/xdQRaTu5y4nJDHhEfnyc2Ja
-	MCX+H3G0UT1+H8l7DgQi78ULDZhp1fkWCwhC1k9DhBxeGc7uU3XRnoJ87QaPmeNK3wYiJcmrscxH6
-	X3gw9UjqTJzXRZ62vkkQ==;
+	List-Owner; bh=kdvOihNtFKYuM/c33qDxcuTU6+CYq/VcRAUkgBHZYeo=; b=CMw72SdmB2CKKw
+	rV3PjEAgOfiuoUbHKkbqC++Q8XVp8JvzgArMjbPnmLJ2BNpuGzagwgce+cWV82hYVKTfLk/vjPTbf
+	rOWA830LPyVlDqEmT6y6t5FE6Phw1Jc5FWkBhzYAFA84lKpXv4X9uhkUW/LmO+Vakx2xq93OqHfgh
+	zV22aCJHF6vnCGHCgfzGNI4oOzUCWawv3GODfd2MGk/psAv5hfmehveO3WHqP//OsD4lK2k6jXJxM
+	QETrAL5etfSPqMS8YzZvuEL5oe4bOTk/9clEagDyEtv6K/eClz5xl9fqt7Uu/HHVWp7NQLUhAVwOz
+	tnpZ0jCruidK47VM5prw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pehSp-00DRlU-0i;
-	Tue, 21 Mar 2023 19:16:07 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1pehjR-00DV4S-0S;
+	Tue, 21 Mar 2023 19:33:17 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pehSk-00DRjV-1H;
-	Tue, 21 Mar 2023 19:16:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679426162; x=1710962162;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=IqD4xidHyUJU/zSXxeaPq4TjqmZevMWxlbR1cEzIV9M=;
-  b=XbdB27hIJSwj5yq8IybAy8wc64llM2sy1OcNZiSmufdKZoIvrxvbf1pX
-   Ox4xwhaC5c5H63dFdueBuRvbOa/UGN6lTKjjLbM+8HeNG4YrSp1RVDFjX
-   xEpqgDV2pC90JgA6h0m+dHyNSCJAKrvv70rHm9bMYlsaYBXMv9LBxfbP8
-   t7iq52AJYocvUnwBmhjy/0Nwpi3cWC9XhW9knm1aqMyy7PGO7Taa7iqGc
-   0Cq9dkkdp/j08bS9CMuQkQ3KeYY8Y/yJwpwn+OMfaGH8aVkx0H/M2wYz5
-   szTxcsYBBf9Wciw9iz8ijWDxIECvG/IotZirBqrJv52294K4CcIgywkGV
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="340577089"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="340577089"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 12:15:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="631716433"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="631716433"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 21 Mar 2023 12:15:51 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pehSY-000CKu-1m;
-	Tue, 21 Mar 2023 19:15:50 +0000
-Date: Wed, 22 Mar 2023 03:15:19 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
-	jernel@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1pehij-00DUhC-13
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Mar 2023 19:32:35 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pehiZ-0008H0-Li; Tue, 21 Mar 2023 20:32:23 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pehiX-005l6g-9d; Tue, 21 Mar 2023 20:32:21 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1pehiW-006qyT-H9; Tue, 21 Mar 2023 20:32:20 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <202303220301.fby6vJcX-lkp@intel.com>
-References: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+	kernel@pengutronix.de
+Subject: [PATCH 13/15] PCI: rockchip-host: Convert to platform remove callback returning void
+Date: Tue, 21 Mar 2023 20:32:06 +0100
+Message-Id: <20230321193208.366561-14-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
+References: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1911; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=ofg5jFyTz9TdBxGAvLkoTuHqV4U6+M5kLCVHC2oN85w=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkGgYaEVenR+PbZmv1vqyaQaldvtjlCJf2NK7Xb RzAKqhDjLiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZBoGGgAKCRCPgPtYfRL+ To+OB/9fjegMCZsidNokCfKIS2VY0NiiY64ungPOLTfd4v+zmDT8anQS2ZlnmQuywnWUBiyM2ci MwGV2W8/hjaRK4VxmreBZBm2lGRhAKS11SqwkmKojJTTxSHJirKrBDtu6tg/IlcBS6dOgboFG81 qkLTxU0KZAdC23KCxQSluDJQfkVq/h3nuwRgSIejPDe5te/p9f2iH4spXS/fWWeU1YK7Up+liLp UGGiDWgK2Np2MZ0x8DGnNi/Z69xN4zP/D65UFRAvCHPbKnjpdGP1kiULJHbzXyRHLzfbrN+50+V 9k5vXDKt/Ol4Sh+R8eolaLfWP9XZvi1GyHI5dkmBWJvU04BR
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_121602_474578_61978FC9 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20230321_123233_463552_1339009B 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,119 +77,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-I love your patch! Yet something to improve:
-
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.3-rc3 next-20230321]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230321102855.346732-4-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2 queue buffer storage
-config: hexagon-randconfig-r015-20230319 (https://download.01.org/0day-ci/archive/20230322/202303220301.fby6vJcX-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/aab64e29070dfec3a043b5020399f79554d6cae4
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-        git checkout aab64e29070dfec3a043b5020399f79554d6cae4
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash drivers/media/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303220301.fby6vJcX-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/media/common/videobuf2/videobuf2-core.c:29:
-   In file included from include/media/videobuf2-core.h:19:
-   In file included from include/linux/dma-buf.h:16:
-   In file included from include/linux/iosys-map.h:10:
-   In file included from include/linux/io.h:13:
-   In file included from arch/hexagon/include/asm/io.h:334:
-   include/asm-generic/io.h:547:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           val = __raw_readb(PCI_IOBASE + addr);
-                             ~~~~~~~~~~ ^
-   include/asm-generic/io.h:560:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
-                                                           ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:37:51: note: expanded from macro '__le16_to_cpu'
-   #define __le16_to_cpu(x) ((__force __u16)(__le16)(x))
-                                                     ^
-   In file included from drivers/media/common/videobuf2/videobuf2-core.c:29:
-   In file included from include/media/videobuf2-core.h:19:
-   In file included from include/linux/dma-buf.h:16:
-   In file included from include/linux/iosys-map.h:10:
-   In file included from include/linux/io.h:13:
-   In file included from arch/hexagon/include/asm/io.h:334:
-   include/asm-generic/io.h:573:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
-                                                           ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/little_endian.h:35:51: note: expanded from macro '__le32_to_cpu'
-   #define __le32_to_cpu(x) ((__force __u32)(__le32)(x))
-                                                     ^
-   In file included from drivers/media/common/videobuf2/videobuf2-core.c:29:
-   In file included from include/media/videobuf2-core.h:19:
-   In file included from include/linux/dma-buf.h:16:
-   In file included from include/linux/iosys-map.h:10:
-   In file included from include/linux/io.h:13:
-   In file included from arch/hexagon/include/asm/io.h:334:
-   include/asm-generic/io.h:584:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           __raw_writeb(value, PCI_IOBASE + addr);
-                               ~~~~~~~~~~ ^
-   include/asm-generic/io.h:594:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
-                                                         ~~~~~~~~~~ ^
-   include/asm-generic/io.h:604:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-           __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
-                                                         ~~~~~~~~~~ ^
->> drivers/media/common/videobuf2/videobuf2-core.c:37:1: error: incompatible pointer types returning 'size_t *' (aka 'unsigned int *') from a function with result type 'unsigned long *' [-Werror,-Wincompatible-pointer-types]
-   module_param(max_vb_buffer_per_queue, ulong, 0644);
-   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/moduleparam.h:127:2: note: expanded from macro 'module_param'
-           module_param_named(name, name, type, perm)
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/moduleparam.h:150:2: note: expanded from macro 'module_param_named'
-           param_check_##type(name, &(value));                                \
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   <scratch space>:65:1: note: expanded from here
-   param_check_ulong
-   ^
-   include/linux/moduleparam.h:446:36: note: expanded from macro 'param_check_ulong'
-   #define param_check_ulong(name, p) __param_check(name, p, unsigned long)
-                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/moduleparam.h:409:67: note: expanded from macro '__param_check'
-           static inline type __always_unused *__check_##name(void) { return(p); }
-                                                                            ^~~
-   6 warnings and 1 error generated.
-
-
-vim +37 drivers/media/common/videobuf2/videobuf2-core.c
-
-    36	
-  > 37	module_param(max_vb_buffer_per_queue, ulong, 0644);
-    38	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIC5yZW1vdmUoKSBjYWxsYmFjayBmb3IgYSBwbGF0Zm9ybSBkcml2ZXIgcmV0dXJucyBhbiBp
+bnQgd2hpY2ggbWFrZXMKbWFueSBkcml2ZXIgYXV0aG9ycyB3cm9uZ2x5IGFzc3VtZSBpdCdzIHBv
+c3NpYmxlIHRvIGRvIGVycm9yIGhhbmRsaW5nIGJ5CnJldHVybmluZyBhbiBlcnJvciBjb2RlLiBI
+b3dldmVyIHRoZSB2YWx1ZSByZXR1cm5lZCBpcyAobW9zdGx5KSBpZ25vcmVkCmFuZCB0aGlzIHR5
+cGljYWxseSByZXN1bHRzIGluIHJlc291cmNlIGxlYWtzLiBUbyBpbXByb3ZlIGhlcmUgdGhlcmUg
+aXMgYQpxdWVzdCB0byBtYWtlIHRoZSByZW1vdmUgY2FsbGJhY2sgcmV0dXJuIHZvaWQuIEluIHRo
+ZSBmaXJzdCBzdGVwIG9mIHRoaXMKcXVlc3QgYWxsIGRyaXZlcnMgYXJlIGNvbnZlcnRlZCB0byAu
+cmVtb3ZlX25ldygpIHdoaWNoIGFscmVhZHkgcmV0dXJucwp2b2lkLgoKVHJpdmlhbGx5IGNvbnZl
+cnQgdGhpcyBkcml2ZXIgZnJvbSBhbHdheXMgcmV0dXJuaW5nIHplcm8gaW4gdGhlIHJlbW92ZQpj
+YWxsYmFjayB0byB0aGUgdm9pZCByZXR1cm5pbmcgdmFyaWFudC4KClNpZ25lZC1vZmYtYnk6IFV3
+ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Ci0tLQogZHJp
+dmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYyB8IDYgKystLS0tCiAxIGZp
+bGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMgYi9kcml2ZXJzL3Bj
+aS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jCmluZGV4IGM5NmMwZjQ1NDU3MC4uMjQz
+OGJjOWIzYTFhIDEwMDY0NAotLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2No
+aXAtaG9zdC5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0
+LmMKQEAgLTEwMDksNyArMTAwOSw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9wcm9iZShz
+dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXJldHVybiBlcnI7CiB9CiAKLXN0YXRpYyBp
+bnQgcm9ja2NoaXBfcGNpZV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKK3N0
+YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYpCiB7CiAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKIAlzdHJ1Y3Qgcm9ja2No
+aXBfcGNpZSAqcm9ja2NoaXAgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKQEAgLTEwMjksOCArMTAy
+OSw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rl
+dmljZSAqcGRldikKIAkJcmVndWxhdG9yX2Rpc2FibGUocm9ja2NoaXAtPnZwY2llM3YzKTsKIAly
+ZWd1bGF0b3JfZGlzYWJsZShyb2NrY2hpcC0+dnBjaWUxdjgpOwogCXJlZ3VsYXRvcl9kaXNhYmxl
+KHJvY2tjaGlwLT52cGNpZTB2OSk7Ci0KLQlyZXR1cm4gMDsKIH0KIAogc3RhdGljIGNvbnN0IHN0
+cnVjdCBkZXZfcG1fb3BzIHJvY2tjaGlwX3BjaWVfcG1fb3BzID0gewpAQCAtMTA1MSw3ICsxMDQ5
+LDcgQEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfcGNpZV9kcml2ZXIg
+PSB7CiAJCS5wbSA9ICZyb2NrY2hpcF9wY2llX3BtX29wcywKIAl9LAogCS5wcm9iZSA9IHJvY2tj
+aGlwX3BjaWVfcHJvYmUsCi0JLnJlbW92ZSA9IHJvY2tjaGlwX3BjaWVfcmVtb3ZlLAorCS5yZW1v
+dmVfbmV3ID0gcm9ja2NoaXBfcGNpZV9yZW1vdmUsCiB9OwogbW9kdWxlX3BsYXRmb3JtX2RyaXZl
+cihyb2NrY2hpcF9wY2llX2RyaXZlcik7CiAKLS0gCjIuMzkuMgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
