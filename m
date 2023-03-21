@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7814C761A6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 10:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7339BC6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Mar 2023 10:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WL5sSuQLIE2cpLUCOXZx6IIFj5pcbsDVw9hEqT7HSM0=; b=cSiPsAN/QRbvG4
-	23G22onB2BxIu2FVofRGK1QlNWrGQU2LOhYWeBgPXy5PevX1jDNX/kBZe7d9K6gZkUX4SCil7KrQm
-	n81JUc3WP5P68JAk4bkWJ1lVOf4CNwHIT3gcaKy76ndR1BkKrPtbLfc/i2pll3vqRKXHUxqziyhD6
-	8qegWQQ4D01ZI1FpEEtDgJ6deVfLNaa9mkBXMXRvJc6M1IlVGz/B0fgO8ISFp9zSoV52iXLIKrZ2G
-	wjyvApc9Ai+8+t5xmRlS4NBGX9HpgaevneDGzFy7Wf1PxQwdqYc85/xO56HW0Md8PIncYNSAHOWfl
-	cUo+RPOn9yb8pJArxPzg==;
+	List-Owner; bh=omLFHqG4UfhuPteV+AuqahHzPYH7F2GWjljOJ8OLpwo=; b=tRo43aKQO3a+B3
+	5Jzls/EITcKACKmrQUOijv9UG+y1WgFUxCmDOOnn5tr4ZeMzta5/8ojNGmqYVNAyIYfwG5bIFLuXi
+	gIg6lKssK6r4jd39QkqFBgh/P/nE+xQFKYXjSgn9q0zBlWBPMDSLrOvypRaIK//OEBNzfsY0JltQR
+	76N2ia3GfUJVyOI5oK8/UMsdxC5mf1qSMQwQ2EkIxPquoR/KnEsywGEiMD3cQJgo1co4wN4Zbv0Y7
+	k0LAMOAoPU7HtaRYnM7RRAfOgPc59SFFEBVxQdkGolAUhuMuecNGIujMdEdhjrBMbyymUL5991L+e
+	9ndb22YhWEta5iJOWLfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1peZFd-00C2A4-1B;
-	Tue, 21 Mar 2023 10:29:57 +0000
+	id 1peZFf-00C2Bg-0r;
+	Tue, 21 Mar 2023 10:29:59 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1peZEu-00C1gD-1B;
-	Tue, 21 Mar 2023 10:29:15 +0000
+	id 1peZEw-00C1ht-0N;
+	Tue, 21 Mar 2023 10:29:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f5ef:1040:e3c1:3d00])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E461D66030E0;
-	Tue, 21 Mar 2023 10:29:08 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E27B666030E9;
+	Tue, 21 Mar 2023 10:29:11 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1679394549;
-	bh=eIuM4kCS5F3a2Rxq9DyQKfGuVUFqbcr15Idj0US/azY=;
+	s=mail; t=1679394552;
+	bh=B0Rfbtcd7Lj6Gt4LwrxhZy0EbZHQ5j8h6KrandWni6M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PD/X8nh1b3Ue2u3mok3/JTtJB5D1X+UkYlY960HEl60ISY44M1fcbYXIh7110eTlu
-	 Q6f0LZAFFB2owr71LFgQJf8KrJy012xlc0eWRbKm1DjFPC5L3ZILSBpAa0xQ/2QELf
-	 ZdHxG6lxzY6hxz4wrIMgR7dgDcre2uZrBuNhj4wqarkOtgI6hmej4U1QxkcDf9ToMg
-	 lP3Z1r/NZVhVTVN0PswPmrW3isg4sJo4j8nrr7rR88BDkxxfbHhlNq6Q//2MRC0HFa
-	 +nQOz3PBXiUkIkUenY4Q7qILJNZ8t79swB76ULnsqKNAT7UeQL7fCKTf8ac7/rTC82
-	 jw0QHHQ1/7Y9w==
+	b=U7ybreOdVzDSiHTzKZh1y3KSBMBFwimkHYkkSq/PYEu0qP70tXr1PdbsOoPEhW08E
+	 kmw3KFdN7WwfDalciAutik2Q9MFIgEV1NQjlMXlZHzuhAyAo6gV4ShLd7mWg6yeaup
+	 6UETgFv2/3RzfMQLjjAbvlG+AT8E+hRBLjKjiDlSAielO9/FuAtP2bO5wfcBltixR8
+	 SdNTY2r/6XhkgpE9msAKGD0zYVu2+PTelJ9U7tDefT0uw2xhOl4LDfjWyu596D5HwH
+	 cDVPmRoAxZuuWFGu2KO/PMoXC7aGxYj0qBzN1lAKFerJkURxEIzJRYJNQbwVmMt+PW
+	 wdP9KV3p8RI0Q==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: tfiga@chromium.org,
 	m.szyprowski@samsung.com,
@@ -75,16 +75,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic allocated
-Date: Tue, 21 Mar 2023 11:28:49 +0100
-Message-Id: <20230321102855.346732-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 6/8] media: v4l2: Add mem2mem helpers for DELETE_BUF ioctl
+Date: Tue, 21 Mar 2023 11:28:53 +0100
+Message-Id: <20230321102855.346732-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
 References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230321_032912_683719_69EAB0A8 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20230321_032914_297240_11C1445A 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,135 +102,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of a static array change bufs to a dynamically allocated array.
-This will allow to store more video buffer if needed.
-Protect the array with a spinlock.
+Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUF ioctl.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   |  8 +++
- include/media/videobuf2-core.h                | 49 ++++++++++++++++---
- 2 files changed, 49 insertions(+), 8 deletions(-)
+ drivers/media/v4l2-core/v4l2-mem2mem.c | 20 ++++++++++++++++++++
+ include/media/v4l2-mem2mem.h           | 12 ++++++++++++
+ 2 files changed, 32 insertions(+)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 79e90e338846..ae9d72f4d181 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -2452,6 +2452,13 @@ int vb2_core_queue_init(struct vb2_queue *q)
- 	mutex_init(&q->mmap_lock);
- 	init_waitqueue_head(&q->done_wq);
- 
-+	q->max_num_bufs = 32;
-+	q->bufs = kmalloc_array(q->max_num_bufs, sizeof(*q->bufs), GFP_KERNEL | __GFP_ZERO);
-+	if (!q->bufs)
-+		return -ENOMEM;
-+
-+	spin_lock_init(&q->bufs_lock);
-+
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 
- 	if (q->buf_struct_size == 0)
-@@ -2479,6 +2486,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	mutex_lock(&q->mmap_lock);
- 	__vb2_queue_free(q, q->num_buffers);
- 	mutex_unlock(&q->mmap_lock);
-+	kfree(q->bufs);
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 0cc30397fbad..42f51ca25379 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
  }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+ EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
  
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 5b1e3d801546..397dbf6e61e1 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -558,6 +558,8 @@ struct vb2_buf_ops {
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-  * @num_buffers: number of allocated/used buffers
-+ * @bufs_lock: lock to protect bufs access
-+ * @max_num_bufs: max number of buffers storable in bufs
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-  * @owned_by_drv_count: number of buffers owned by the driver
-@@ -619,8 +621,10 @@ struct vb2_queue {
- 	struct mutex			mmap_lock;
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
--	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-+	struct vb2_buffer		**bufs;
- 	unsigned int			num_buffers;
-+	spinlock_t			bufs_lock;
-+	size_t				max_num_bufs;
- 
- 	struct list_head		queued_list;
- 	unsigned int			queued_count;
-@@ -1239,9 +1243,16 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
++int v4l2_m2m_delete_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			struct v4l2_buffer *buf)
++{
++	struct vb2_queue *vq;
++
++	vq = v4l2_m2m_get_vq(m2m_ctx, buf->type);
++
++	return vb2_delete_buf(vq, buf);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_delete_buf);
++
+ int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_create_buffers *create)
  {
--	if (index < q->num_buffers)
--		return q->bufs[index];
--	return NULL;
-+	struct vb2_buffer *vb = NULL;
-+
-+	spin_lock(&q->bufs_lock);
-+
-+	if (index < q->max_num_bufs)
-+		vb = q->bufs[index];
-+
-+	spin_unlock(&q->bufs_lock);
-+
-+	return vb;
+@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
  }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
  
++int v4l2_m2m_ioctl_delete_buf(struct file *file, void *priv,
++			      struct v4l2_buffer *buf)
++{
++	struct v4l2_fh *fh = file->private_data;
++
++	return v4l2_m2m_delete_buf(file, fh->m2m_ctx, buf);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_buf);
++
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
+ 				struct v4l2_buffer *buf)
+ {
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index bb9de6a899e0..96f1b1f3b840 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_buffer *buf);
+ 
++/**
++ * v4l2_m2m_delete_buf() - delete buffer from the queue
++ *
++ * @file: pointer to struct &file
++ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
++ * @buf: pointer to struct &v4l2_buffer
++ */
++int v4l2_m2m_delete_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			struct v4l2_buffer *buf);
++
  /**
-@@ -1251,12 +1262,30 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
-  */
- static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
- {
--	if (vb->index < VB2_MAX_FRAME) {
-+	bool ret = false;
-+
-+	spin_lock(&q->bufs_lock);
-+
-+	if (vb->index >= q->max_num_bufs) {
-+		struct vb2_buffer **tmp;
-+
-+		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
-+		if (!tmp)
-+			goto realloc_failed;
-+
-+		q->max_num_bufs *= 2;
-+		q->bufs = tmp;
-+	}
-+
-+	if (vb->index < q->max_num_bufs) {
- 		q->bufs[vb->index] = vb;
--		return true;
-+		ret = true;
- 	}
- 
--	return false;
-+realloc_failed:
-+	spin_unlock(&q->bufs_lock);
-+
-+	return ret;
- }
- 
- /**
-@@ -1266,8 +1295,12 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
-  */
- static inline void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
- {
--	if (vb->index < VB2_MAX_FRAME)
-+	spin_lock(&q->bufs_lock);
-+
-+	if (vb->index < q->max_num_bufs)
- 		q->bufs[vb->index] = NULL;
-+
-+	spin_unlock(&q->bufs_lock);
- }
- 
- /*
+  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
+  * on the type
+@@ -846,6 +856,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
+ 				struct v4l2_requestbuffers *rb);
+ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
+ 				struct v4l2_create_buffers *create);
++int v4l2_m2m_ioctl_delete_buf(struct file *file, void *priv,
++				struct v4l2_buffer *buf);
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
+ 				struct v4l2_buffer *buf);
+ int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
 -- 
 2.34.1
 
