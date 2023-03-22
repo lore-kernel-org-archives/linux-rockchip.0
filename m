@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5080DC6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B46C6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ex7NrI+fhu1A8dYxUOMlu6EEkOgL/60thQGiOJi9D/k=; b=SERvVmh6TJFEI4
-	rVbVpzjWesY1IKQ4J3F4cYgkhNGdMucKHEdVam+mp5fbzn3acnFoGMy5iv0RTD2h+3SG/rHNh6Kp2
-	BrZ53mS3EuyWMAmjfKE8DzbMXd/CzdFEJi9J+qqThSsl0r7XdYmQO8cZArB+7JYr6c1sZN8eMztdO
-	H/oLp2JVLyDTUfPz27/tyL8dQxvy07Wz/3tm5sKNmsSCkPIsi0NRdMRWdR82om38XfQZguHSeGbpa
-	B9813nqJmRYdYYJOgCleEZVfY9oEtumI9gMYgChpO9cxDicIiGYaXsPqwlZxWZQITxrwtie/zOb6+
-	MXrSM2TdoIqlR5Anpr+A==;
+	List-Owner; bh=7x+fIskTJF38g3uMmplT8mv/4DgDbrYRRn7d6WlhDaM=; b=gCr0MmkjEHRuYJ
+	xs0QW1q6cmRpqDixZFsdT+bFfnHKPExoGx7c9VkCfVqCceMid0wGKVZZ5sIfE1BbE+6/86ScIoY5f
+	BPxjBxXVumFG71T6sfcYIDzbSYUcYtaKRAlS1RsZaKSiM+uKgcSTLZneeI+O3tYzFR6pAG/6uyBEh
+	58/v43TAu6TpJR4lxBJzAYT5Ll8+4tI7+ZgHX+oZLqtHwUhBTXHKSseoG5lhyQUWC2k/9/YOGZrm+
+	B4hwYpeG8o3OGzMhA3L7HQlHNQnTstaUEwV4DPpFi2HkjJeQsDGoIuVn8EH9fh8WqREKr8RSbKhfG
+	xqAI0x9jrrOMxtxGakFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf84n-000BPa-0Z;
-	Wed, 22 Mar 2023 23:41:05 +0000
+	id 1pf84k-000BOG-2u;
+	Wed, 22 Mar 2023 23:41:02 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf84d-000BKp-1A;
-	Wed, 22 Mar 2023 23:40:56 +0000
+	id 1pf84a-000BJc-17;
+	Wed, 22 Mar 2023 23:40:53 +0000
 Received: from p508fd58e.dip0.t-ipconnect.de ([80.143.213.142] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pf84R-0005ZV-7W; Thu, 23 Mar 2023 00:40:43 +0100
+	id 1pf84R-0005ZV-Td; Thu, 23 Mar 2023 00:40:43 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Andrew Powers-Holmes <aholmes@omnom.net>,
-	Andy Yan <andyshrk@163.com>,
-	Vasily Khoruzhick <anarsoul@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>
+To: Johan Jonker <jbx6244@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	Robert Foss <rfoss@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	jonas@kwiboo.se,
+	neil.armstrong@linaro.org,
+	alim.akhtar@samsung.com,
+	gregkh@linuxfoundation.org,
 	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: improve support for NanoPi R5 series
-Date: Thu, 23 Mar 2023 00:40:39 +0100
-Message-Id: <167952842629.1588125.15840907021514918930.b4-ty@sntech.de>
+	sw0312.kim@samsung.com,
+	philippe.cornu@foss.st.com,
+	linux-rockchip@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	kyungmin.park@samsung.com,
+	hjc@rock-chips.com,
+	jernej.skrabec@gmail.com,
+	linus.walleij@linaro.org,
+	inki.dae@samsung.com,
+	robh+dt@kernel.org,
+	Laurent.pinchart@ideasonboard.com,
+	daniel@ffwll.ch,
+	linux-usb@vger.kernel.org,
+	airlied@gmail.com,
+	andrzej.hajda@intel.com
+Subject: Re: (subset) [PATCH v6 01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
+Date: Thu, 23 Mar 2023 00:40:40 +0100
+Message-Id: <167952842636.1588125.15379043637737791314.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230318083745.6181-1-cnsztl@gmail.com>
-References: <20230318083745.6181-1-cnsztl@gmail.com>
+In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
+References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_164055_400543_A3D604E9 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20230322_164052_408510_F15A1FF4 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +86,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 18 Mar 2023 16:37:40 +0800, Tianling Shen wrote:
-> (gmac, i2s1) for the NanoPi R5S.
+On Thu, 22 Dec 2022 15:22:14 +0100, Johan Jonker wrote:
+> Convert rockchip-lvds.txt to YAML.
 > 
-> Changes since v1:
-> - https://lore.kernel.org/linux-rockchip/20230315160228.2362-1-cnsztl@gmail.com/
-> - Added Fixes tag
-> - Collected Acked-by tag
-> - Fixed a typo error in dt-bindings (board -> boards)
-> - Removed non-existent audio node for NanoPi R5 series
-> - Updated my E-mail in NanoPi R5C dts
+> Changed:
+>   Add power-domains property.
+>   Requirements between PX30 and RK3288
+> 
 > 
 > [...]
 
 Applied, thanks!
 
-[1/5] arm64: dts: rockchip: create common dtsi for NanoPi R5 series
-      commit: c8ec73b05a95d9f0969ae0f28dd8799a54fcdfc7
-[2/5] dt-bindings: Add doc for FriendlyARM NanoPi R5C
-      commit: 7d4fc70351d155699fe41949d16ce696885a4ca8
-[3/5] arm64: dts: rockchip: Add FriendlyARM NanoPi R5C
-      commit: 05620031408ac6cfc6d5c048431827e49aa0ade1
-[4/5] arm64: dts: rockchip: fix gmac support for NanoPi R5S
-      commit: 31425b1fadb2040b359e52ffc24c049a78d56c96
-[5/5] arm64: dts: rockchip: remove I2S1 TDM node for the NanoPi R5 series
-      commit: 975e9bbad11950fc8276f1fa260d8bf2c341aa41
+[09/17] ARM: dts: rockchip: rk3288: fix dsi node
+        commit: ea2d16f90629e3158307d0183cad5c40aa55c995
+[10/17] ARM: dts: rockchip: rk3288: fix lvds node
+        commit: 8a19e4c74d17ed8d1e6bc06b32c5b7b7c3b9fcfb
+[11/17] ARM: dts: rockchip: rk3288: fix dp node
+        commit: 95e2ac6ae9f2330557a6aef70bf15173e1dd9714
+[12/17] arm64: dts: rockchip: px30: fix lvds node
+        commit: 0d5e24918976edffffee006e07730434a36d264a
+[13/17] arm64: dts: rockchip: px30: fix dsi node
+        commit: 30322f812d4e0e75e2488c1d45aba94e51dd19bb
+[14/17] arm64: dts: rockchip: rk3399: fix dsi node
+        commit: f82fe7ad31530b38d2f61aa6ae68bd35c33f4ad0
+[15/17] arm64: dts: rockchip: rk3399: fix dp node
+        commit: d94024bd6342c6f3e88c5fac785a685c1974d48e
+[16/17] arm64: dts: rockchip: rename vbus-supply to phy-supply in rk3566-box-demo.dts
+        commit: fc440ea1732abb714150bb8f3d90672ccc679e2d
+[17/17] arm64: dts: rockchip: rk356x: remove hclk from dsi node
+        commit: cadda005961cd6a202ae6f8ff99f2bba35a31dc8
 
 Best regards,
 -- 
