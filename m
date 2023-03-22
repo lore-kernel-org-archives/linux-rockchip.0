@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B46C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3A6C6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7x+fIskTJF38g3uMmplT8mv/4DgDbrYRRn7d6WlhDaM=; b=gCr0MmkjEHRuYJ
-	xs0QW1q6cmRpqDixZFsdT+bFfnHKPExoGx7c9VkCfVqCceMid0wGKVZZ5sIfE1BbE+6/86ScIoY5f
-	BPxjBxXVumFG71T6sfcYIDzbSYUcYtaKRAlS1RsZaKSiM+uKgcSTLZneeI+O3tYzFR6pAG/6uyBEh
-	58/v43TAu6TpJR4lxBJzAYT5Ll8+4tI7+ZgHX+oZLqtHwUhBTXHKSseoG5lhyQUWC2k/9/YOGZrm+
-	B4hwYpeG8o3OGzMhA3L7HQlHNQnTstaUEwV4DPpFi2HkjJeQsDGoIuVn8EH9fh8WqREKr8RSbKhfG
-	xqAI0x9jrrOMxtxGakFA==;
+	List-Owner; bh=eOmMwwZ8nYhj6SJ8nKql2/a0+GV3FN8TktmZZz3iJVg=; b=PmWbg2lncxvKyw
+	9/lp7Q4c3kAFYhADUdMPjmIbtyTeE5OFtb6JufqrjIbp+k0gMkNvwbYcWP4qpmllcnKseJ0Gi7IkD
+	X8XQJJzfFo6E0KuAt+T0zSd57EhILiegI7+AH9JI/+j79k5VQlhZLrI4jKzkU/zDHIV1rQnaKPsUg
+	aWsuZTuqE2Pq7jP6F27Qd9YrLIXFG9/cVzvx/WHVN1oNsU809RRixddWhvKAXg9zh0MzO+ckPzatT
+	MUBJWVdYrEiQh+kjF/7/srO9N94CiZ9R8lyAEha3Sgfexrpi3ciP7UOgoxtECBVYW6cJdVGZvwNK/
+	+uYtibiOe65T81YGXa/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf84k-000BOG-2u;
-	Wed, 22 Mar 2023 23:41:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pf88G-000CG5-2E;
+	Wed, 22 Mar 2023 23:44:40 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf84a-000BJc-17;
-	Wed, 22 Mar 2023 23:40:53 +0000
-Received: from p508fd58e.dip0.t-ipconnect.de ([80.143.213.142] helo=phil.fritz.box)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pf84R-0005ZV-Td; Thu, 23 Mar 2023 00:40:43 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
-	Robert Foss <rfoss@kernel.org>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	jonas@kwiboo.se,
-	neil.armstrong@linaro.org,
-	alim.akhtar@samsung.com,
-	gregkh@linuxfoundation.org,
-	devicetree@vger.kernel.org,
-	sw0312.kim@samsung.com,
-	philippe.cornu@foss.st.com,
-	linux-rockchip@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	kyungmin.park@samsung.com,
-	hjc@rock-chips.com,
-	jernej.skrabec@gmail.com,
-	linus.walleij@linaro.org,
-	inki.dae@samsung.com,
-	robh+dt@kernel.org,
-	Laurent.pinchart@ideasonboard.com,
-	daniel@ffwll.ch,
-	linux-usb@vger.kernel.org,
-	airlied@gmail.com,
-	andrzej.hajda@intel.com
-Subject: Re: (subset) [PATCH v6 01/17] dt-bindings: display: rockchip: convert rockchip-lvds.txt to YAML
-Date: Thu, 23 Mar 2023 00:40:40 +0100
-Message-Id: <167952842636.1588125.15379043637737791314.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
-References: <67771143-fd83-383d-41b2-68e8707134e8@gmail.com>
+	id 1pf88E-000CEi-0M
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Mar 2023 23:44:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 55979B81E9F;
+	Wed, 22 Mar 2023 23:44:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 156F3C433EF;
+	Wed, 22 Mar 2023 23:44:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1679528675;
+	bh=X0T3MzV72DC3xsS/BzUx423vl2zXQuHSu+yzIyuL82w=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=RCHAuZ8+cJJARHXGI+dpKAFV4q2baBzE328b7YD0UOY02PVuvIv88UlBwT4HK5I26
+	 peLgac+q269msGYmbjkf+GtqnpMTffG/r0BEaEWxaeTazk92R3iKeSs94NTCiAMXtl
+	 2FVj+ySE9KjU9zc1cggLf2IPUy5SO/S1lsqnb20P4tKFfCDbBA1vx5tl0a2fKdijP+
+	 B9I2tDXy+lihutNwcOsMd/9Gksqb4u+vpFzJ+cJ37yqmmL7n9LTnIHuGU3gTrSCAXK
+	 fGFLEuPDE+9S5YcV/ZOYOu5N/4Udyo5+y9ve8xruxqw0GSSk6zOec5vl/7+4U8eCj3
+	 KPA77uIfH1cCA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id ED14FE52513;
+	Wed, 22 Mar 2023 23:44:34 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH 0/3 V5] Bluetooth: Add support for RTL8821CS
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id:  <167952867496.26660.4065106798245519325.git-patchwork-notify@kernel.org>
+Date: Wed, 22 Mar 2023 23:44:34 +0000
+References: <20230315173657.28692-1-macroalpha82@gmail.com>
+In-Reply-To: <20230315173657.28692-1-macroalpha82@gmail.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, alistair@alistair23.me, anarsoul@gmail.com,
+ luiz.dentz@gmail.com, johan.hedberg@gmail.com, marcel@holtmann.org,
+ heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ macromorgan@hotmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_164052_408510_F15A1FF4 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230322_164438_306647_B9D3A3CE 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +79,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Dec 2022 15:22:14 +0100, Johan Jonker wrote:
-> Convert rockchip-lvds.txt to YAML.
+Hello:
+
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+
+On Wed, 15 Mar 2023 12:36:54 -0500 you wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Changed:
->   Add power-domains property.
->   Requirements between PX30 and RK3288
+> This patch series is to add support for the RTL8821CS Bluetooth
+> controller found on the RTL8821CS WiFi/Bluetooth combo chip.
 > 
+> This has been tested with firmware version 0x75b8f098 which has been
+> submitted by Realtek for inclusion in linux-firmware.
 > 
 > [...]
 
-Applied, thanks!
+Here is the summary with links:
+  - [1/3,V5] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
+    (no matching commit)
+  - [2/3,V5] Bluetooth: hci_h5: btrtl: Add support for RTL8821CS
+    https://git.kernel.org/bluetooth/bluetooth-next/c/60f8c67d065a
+  - [3/3,V5] arm64: dts: rockchip: Update compatible for bluetooth
+    (no matching commit)
 
-[09/17] ARM: dts: rockchip: rk3288: fix dsi node
-        commit: ea2d16f90629e3158307d0183cad5c40aa55c995
-[10/17] ARM: dts: rockchip: rk3288: fix lvds node
-        commit: 8a19e4c74d17ed8d1e6bc06b32c5b7b7c3b9fcfb
-[11/17] ARM: dts: rockchip: rk3288: fix dp node
-        commit: 95e2ac6ae9f2330557a6aef70bf15173e1dd9714
-[12/17] arm64: dts: rockchip: px30: fix lvds node
-        commit: 0d5e24918976edffffee006e07730434a36d264a
-[13/17] arm64: dts: rockchip: px30: fix dsi node
-        commit: 30322f812d4e0e75e2488c1d45aba94e51dd19bb
-[14/17] arm64: dts: rockchip: rk3399: fix dsi node
-        commit: f82fe7ad31530b38d2f61aa6ae68bd35c33f4ad0
-[15/17] arm64: dts: rockchip: rk3399: fix dp node
-        commit: d94024bd6342c6f3e88c5fac785a685c1974d48e
-[16/17] arm64: dts: rockchip: rename vbus-supply to phy-supply in rk3566-box-demo.dts
-        commit: fc440ea1732abb714150bb8f3d90672ccc679e2d
-[17/17] arm64: dts: rockchip: rk356x: remove hclk from dsi node
-        commit: cadda005961cd6a202ae6f8ff99f2bba35a31dc8
-
-Best regards,
+You are awesome, thank you!
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
