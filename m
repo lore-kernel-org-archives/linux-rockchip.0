@@ -4,58 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9895C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 20:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8708CC76196
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 20:32:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6b9uZqMQutU3YzDLUXW+7xGMt2PS63iDf4PKyi1ATN8=; b=Uci7++O9QBFMih
-	CkhdscgU+HvryUxH3pcL5AK7SQdL3oSeQihXtTdAC5pVOxDzCXDYCcn/i7c3s6gNV+S6LfqquNaJe
-	n8QViHwRpfeZBP2/v4JZpxCTZVpwNZMfEqeH2LkhzEIudQ9hxL30N9gqtOsN8urLLgemKfA1nYaz6
-	5ToPOKqjXbcOqR7xykbkHpucrkzhvnpujGlHmkwaVJcNqfHgMe0n5s9huZo4EXkG2+8J6496UYH6o
-	CFGWSws7pXL/UTHshboTeocAho7H/J4auQTqohhBn5sCg+/oMexB7KXF9Fb6D9w1jH9ZgiEWqfi6o
-	7XJ9LVc/yPQb5j/jktcg==;
+	List-Owner; bh=3Yv6d52NjG6+wE8DxfQDSficC8aHx9ZTd0kKqmGKo30=; b=apSnHGv12h+FVH
+	CZuFwuMluTdjRCebxqYGGthLdxJ7CAosPRl36xDDMCG83Jx0kFUnYqwwD0ISvXTw49sM8BMu1Pafg
+	I1H6g17XhnqZokbtx9lXShsmajd4a974fyNdNathUvnwI+sXV8+jMJtAzTNAr4B6uWybU/orIWKdI
+	Mk5sqxa91i/MR4/Fu3+5EeKmUyLRA6O/f+i2mzP6d9lCVsqe24hwUsB1A+YTtJF7JkKniDGwzwqQN
+	aJgHX2o9gNefauonsPGjkWeqmtlOe6SWFQ/yL6MzA+jN+YKzXKjYWaVaz3+jYW8GwSOq8yuMN29HB
+	zgfAFYfERk9OITkEgAIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf4md-00HIkD-1H;
-	Wed, 22 Mar 2023 20:10:07 +0000
+	id 1pf58E-00HLuj-2h;
+	Wed, 22 Mar 2023 20:32:26 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf4mV-00HIiw-3B;
-	Wed, 22 Mar 2023 20:10:05 +0000
-Received: from p508fd58e.dip0.t-ipconnect.de ([80.143.213.142] helo=phil.fritz.box)
+	id 1pf583-00HLro-1X;
+	Wed, 22 Mar 2023 20:32:22 +0000
+Received: from p508fd58e.dip0.t-ipconnect.de ([80.143.213.142] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pf4mJ-0004Ps-T8; Wed, 22 Mar 2023 21:09:47 +0100
+	id 1pf56y-0004XT-Oa; Wed, 22 Mar 2023 21:31:08 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: daniel@ffwll.ch,
-	Tom Rix <trix@redhat.com>,
-	hjc@rock-chips.com,
-	nathan@kernel.org,
-	s.hauer@pengutronix.de,
-	airlied@gmail.com,
-	ndesaulniers@google.com,
-	michael.riesch@wolfvision.net
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	llvm@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: vop2: fix uninitialized variable possible_crtcs
-Date: Wed, 22 Mar 2023 21:09:45 +0100
-Message-Id: <167951576826.1541042.11962083782525897631.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230316132302.531724-1-trix@redhat.com>
-References: <20230316132302.531724-1-trix@redhat.com>
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Damien Le Moal <damien.lemoal@wdc.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
+ Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Tomasz Figa <tomasz.figa@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Emil Renner Berthing <kernel@esmil.dk>,
+ Jianlong Huang <jianlong.huang@starfivetech.com>,
+ Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-riscv@lists.infradead.org,
+ patches@opensource.cirrus.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
+Date: Wed, 22 Mar 2023 21:31:06 +0100
+Message-ID: <14697371.uLZWGnKmhe@phil>
+In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
+References: <20230317233623.3968172-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_131002_284459_21BEA6A2 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20230322_133221_112186_84AF63F7 
+X-CRM114-Status: UNSURE (   9.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,37 +94,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Mar 2023 09:23:02 -0400, Tom Rix wrote:
-> clang reportes this error
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2322:8: error:
->   variable 'possible_crtcs' is used uninitialized whenever 'if'
->   condition is false [-Werror,-Wsometimes-uninitialized]
->                         if (vp) {
->                             ^~
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2336:36: note:
->   uninitialized use occurs here
->                 ret = vop2_plane_init(vop2, win, possible_crtcs);
->                                                  ^~~~~~~~~~~~~~
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:2322:4:
->   note: remove the 'if' if its condition is always true
->                         if (vp) {
->                         ^~~~~~~~
-> 
-> [...]
+Am Samstag, 18. M=E4rz 2023, 00:36:18 CET schrieb Rob Herring:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> =
 
-Applied, thanks!
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-[1/1] drm/rockchip: vop2: fix uninitialized variable possible_crtcs
-      commit: e88adb4ac27a37de4167150b8a6a736d40cf7018
+>  .../devicetree/bindings/pinctrl/rockchip,pinctrl.yaml  | 10 +++++-----
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
