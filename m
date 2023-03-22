@@ -4,65 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3A6C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:44:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E35EC6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 23:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eOmMwwZ8nYhj6SJ8nKql2/a0+GV3FN8TktmZZz3iJVg=; b=PmWbg2lncxvKyw
-	9/lp7Q4c3kAFYhADUdMPjmIbtyTeE5OFtb6JufqrjIbp+k0gMkNvwbYcWP4qpmllcnKseJ0Gi7IkD
-	X8XQJJzfFo6E0KuAt+T0zSd57EhILiegI7+AH9JI/+j79k5VQlhZLrI4jKzkU/zDHIV1rQnaKPsUg
-	aWsuZTuqE2Pq7jP6F27Qd9YrLIXFG9/cVzvx/WHVN1oNsU809RRixddWhvKAXg9zh0MzO+ckPzatT
-	MUBJWVdYrEiQh+kjF/7/srO9N94CiZ9R8lyAEha3Sgfexrpi3ciP7UOgoxtECBVYW6cJdVGZvwNK/
-	+uYtibiOe65T81YGXa/Q==;
+	List-Owner; bh=lOo4WZgCJzS83o/H0Tv67WZ0DhZaDybcju5x7MNPJWs=; b=G8MxW25/8KbMce
+	Yyt1D+G7YMBldM0bSttIuueQdp8jJzaBI2gogh4UNrV5Kz5Hv6MyJL9/YtI8hp8wcQU7rMkvSeYp0
+	enVGY97nT17UNHHYEM3z0pL5W+kqXn6Ophd7owV8r9Hhc61ByFDr3yDak9rl7zUeNfZhv5Nu5fxAj
+	1scrcsbL4/XQ+EVNSuKHFyc3MBgViF8Wbz/akuk2owCG+0vbInKVuv09WZyTHvR+HHN8+JzEX4W3i
+	xU3W+4G487AvynIFZjQnKVHJ7qQDXFtgG3Pp6LlDcfZlPK6MGuzWaYjKXGko7SyAF4wZ3XtQTKXC7
+	tIqoYp1W1sRkq+TCkKNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf88G-000CG5-2E;
-	Wed, 22 Mar 2023 23:44:40 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pf88h-000CM2-2o;
+	Wed, 22 Mar 2023 23:45:07 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf88E-000CEi-0M
-	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Mar 2023 23:44:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 55979B81E9F;
-	Wed, 22 Mar 2023 23:44:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 156F3C433EF;
-	Wed, 22 Mar 2023 23:44:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679528675;
-	bh=X0T3MzV72DC3xsS/BzUx423vl2zXQuHSu+yzIyuL82w=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=RCHAuZ8+cJJARHXGI+dpKAFV4q2baBzE328b7YD0UOY02PVuvIv88UlBwT4HK5I26
-	 peLgac+q269msGYmbjkf+GtqnpMTffG/r0BEaEWxaeTazk92R3iKeSs94NTCiAMXtl
-	 2FVj+ySE9KjU9zc1cggLf2IPUy5SO/S1lsqnb20P4tKFfCDbBA1vx5tl0a2fKdijP+
-	 B9I2tDXy+lihutNwcOsMd/9Gksqb4u+vpFzJ+cJ37yqmmL7n9LTnIHuGU3gTrSCAXK
-	 fGFLEuPDE+9S5YcV/ZOYOu5N/4Udyo5+y9ve8xruxqw0GSSk6zOec5vl/7+4U8eCj3
-	 KPA77uIfH1cCA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id ED14FE52513;
-	Wed, 22 Mar 2023 23:44:34 +0000 (UTC)
+	id 1pf88d-000CKo-2y;
+	Wed, 22 Mar 2023 23:45:05 +0000
+Received: from p508fd58e.dip0.t-ipconnect.de ([80.143.213.142] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pf88b-0005eN-AT; Thu, 23 Mar 2023 00:45:01 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Johan Jonker <jbx6244@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64/arm: dts: rockchip: Fix DSI node names
+Date: Thu, 23 Mar 2023 00:45:00 +0100
+Message-ID: <5196838.kQq0lBPeGt@phil>
+In-Reply-To: <591bf126-1ab7-8a5d-0d3a-1cac4cd9b112@gmail.com>
+References:  <20230319174105.43978-1-robh@kernel.org>
+ <591bf126-1ab7-8a5d-0d3a-1cac4cd9b112@gmail.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH 0/3 V5] Bluetooth: Add support for RTL8821CS
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id:  <167952867496.26660.4065106798245519325.git-patchwork-notify@kernel.org>
-Date: Wed, 22 Mar 2023 23:44:34 +0000
-References: <20230315173657.28692-1-macroalpha82@gmail.com>
-In-Reply-To: <20230315173657.28692-1-macroalpha82@gmail.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, alistair@alistair23.me, anarsoul@gmail.com,
- luiz.dentz@gmail.com, johan.hedberg@gmail.com, marcel@holtmann.org,
- heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- macromorgan@hotmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_164438_306647_B9D3A3CE 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20230322_164503_959730_D1DC0C06 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,39 +59,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Am Sonntag, 19. M=E4rz 2023, 20:36:20 CET schrieb Johan Jonker:
+> =
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+> On 3/19/23 18:41, Rob Herring wrote:
+> > DSI bus/controller nodes should be named 'dsi' rather than 'mipi'.
+> =
 
-On Wed, 15 Mar 2023 12:36:54 -0500 you wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> This patch series is to add support for the RTL8821CS Bluetooth
-> controller found on the RTL8821CS WiFi/Bluetooth combo chip.
-> 
-> This has been tested with firmware version 0x75b8f098 which has been
-> submitted by Realtek for inclusion in linux-firmware.
-> 
-> [...]
+> There's already a serie that does that.
 
-Here is the summary with links:
-  - [1/3,V5] dt-bindings: net: realtek-bluetooth: Add RTL8821CS
-    (no matching commit)
-  - [2/3,V5] Bluetooth: hci_h5: btrtl: Add support for RTL8821CS
-    https://git.kernel.org/bluetooth/bluetooth-next/c/60f8c67d065a
-  - [3/3,V5] arm64: dts: rockchip: Update compatible for bluetooth
-    (no matching commit)
+I've now applied Johan's patches that fixed a lot of these
+naming issues and also the other things uncovered after the
+yaml conversion.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Heiko
 
 
 
