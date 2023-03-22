@@ -4,56 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67680C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 16:04:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7C5C6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Mar 2023 16:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vp5Z245hcZZBygixfIZnLW1HKaxFQ0C0cGx48cU16Yk=; b=1SkWXRZNeEuTik
-	I7OQg2m7MKxRta7RYnWzEjFWJs6B52tzMvdpLLZOuTM3OpMynsGCRZvzgeVZLrYpQql9grdS6oQSQ
-	wSkHLc5sOSPpm+Zwy0OiqXaalAfEq4V9Nj2nxaw38bdKaTssQcubw7x0jeQxLEJ8suiBElbfyFJCc
-	1jPtD+oDHhdHPSe9vYAhxV/msPUYh3sIyLCpMR6qgZ4+mys0hfs8WDa21bi7im9TB7ax/TpNtyl3u
-	soIB+l82jNBfhqPZOpc/j8RHjzGBAtyWapwVFO0fLKu0T0Ltz8gBgNUzjGGgPPJjfLUB08kYqryfj
-	ae3e5sj1CCmB8P7ExCyA==;
+	List-Owner; bh=pKkpnSoscY/Ibjv5k0GC3VuVhxAaGoacxVwONDugrJk=; b=JzWSQF6PE5AyBY
+	D4bEraLZILQdATY4y4h1tsxncNtn3eG7jKoAh0Eyi6fKzoRG5Mn09hZ57ZLdwyzs0vABCIC11lxaa
+	ux/izf1I/UyGX5f3uUOBrJh04mq9BrTjLycaSuUr2RV++w5leGpcjkURAa2yqMZipA61xNEB9Us2m
+	cdbt8hXXXliGZN6HQ+ywlF1m909uiMr/3PLsLscb/Oa/6MPGtyx2MJ6Pq8pL7kXtsjOlpvAUxi09v
+	BVthkm2fNUrCCKy1MT7n1VaeO/coAimb0XY/JZu5A5tvcIhw0rpqMTTPC3tMOIKdBNiSgQGJQXa7F
+	5LpwQmIgToD8Gy491BCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf0x2-00GaXc-30;
-	Wed, 22 Mar 2023 16:04:36 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf0wz-00GaVi-2s;
-	Wed, 22 Mar 2023 16:04:35 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 851724B3;
-	Wed, 22 Mar 2023 09:05:13 -0700 (PDT)
-Received: from [10.57.53.137] (unknown [10.57.53.137])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B0C013F67D;
-	Wed, 22 Mar 2023 09:04:27 -0700 (PDT)
-Message-ID: <bee3e168-3fc3-89e8-6b10-a830f052cf55@arm.com>
-Date: Wed, 22 Mar 2023 16:04:25 +0000
+	id 1pf110-00GbdC-0t;
+	Wed, 22 Mar 2023 16:08:42 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pf10j-00GbNO-1R;
+	Wed, 22 Mar 2023 16:08:28 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 6C9E1E0002;
+	Wed, 22 Mar 2023 16:08:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1679501300;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mVIf0xBR1dhGg/rt0kkDl4rNkivAG+axMpXPPBjw85M=;
+	b=owCwyVQhPVV5yGruQwAfTRLhAW7by3LXFlI9h3IDn+DN63T27PK5gW84sP1IULijqCStO5
+	+6S/lYq4NGyuna9nY8rl8tEF7fNsAjv1Ia6Za62sPMj+/BzZPVdIf8ijjwDra39BG997iC
+	/R62Z+s6BP4Ku/ZV34WTPt6yx96fhD4fzFUfwbMwujUG3q1VIsYTcuUTGFwapbgpq7E0qV
+	5wxL6L42lvurv2YeqsqEcjTk1opWrN2isiK6jDwICPHf2wBsv7z06Gjr0SMLBC24sqYX4c
+	kBAWVMkXPV0s5PQiRdsRXlbk9qrBVsAgWE0C1QD3VyZWx2+FgphikFaPpkKOcw==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Rob Herring <robh@kernel.org>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Naga Sureshkumar Relli <nagasure@xilinx.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: linux-mtd@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] dt-bindings: mtd: Drop unneeded quotes
+Date: Wed, 22 Mar 2023 17:08:12 +0100
+Message-Id: <20230322160812.2232713-1-miquel.raynal@bootlin.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230317233631.3968509-1-robh@kernel.org>
+References: 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] iommu/rockchip: Add missing set_platform_dma_ops callback
-Content-Language: en-GB
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Lu Baolu <baolu.lu@linux.intel.com>
-References: <20230315164152.333251-1-steven.price@arm.com>
- <ZBnBU9OU4iV6CV0W@ziepe.ca> <85607806-b888-2d5e-67a4-e9d63ebd1976@arm.com>
- <ZBr5e6tn1i7EE/16@ziepe.ca> <a5b946f0-5be8-a656-a8d5-1cd75399f0c4@arm.com>
- <ZBsb01emBJJMZIt0@ziepe.ca>
-From: Steven Price <steven.price@arm.com>
-In-Reply-To: <ZBsb01emBJJMZIt0@ziepe.ca>
+X-linux-mtd-patch-notification: thanks
+X-linux-mtd-patch-commit: b'85ef1236fb6915aba83d156ec02c14b6b378298b'
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230322_090433_986593_7186A718 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20230322_090825_669077_CBD3BD4C 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,57 +100,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 22/03/2023 15:16, Jason Gunthorpe wrote:
-> On Wed, Mar 22, 2023 at 03:08:41PM +0000, Steven Price wrote:
->> @@ -1035,8 +1055,9 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
->>  	if (iommu->domain == domain)
->>  		return 0;
->>  
->> -	if (iommu->domain)
->> -		rk_iommu_detach_device(iommu->domain, dev);
->> +	ret = rk_iommu_identity_attach(&rk_identity_domain, dev);
->> +	if (ret)
->> +		return ret;
+On Fri, 2023-03-17 at 23:36:30 UTC, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
 > 
->>  
->>  	iommu->domain = domain;
->>  
->> @@ -1049,8 +1070,6 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
->>  		return 0;
->>  
->>  	ret = rk_iommu_enable(iommu);
->> -	if (ret)
->> -		rk_iommu_detach_device(iommu->domain, dev);
-> 
-> I think this still needs error handling, it should put it back to the
-> identity domain and return an error code if it fails to attach to the
-> requested domain.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-What confused me here is that there's already a call to
-rk_iommu_identity_attach() just above. But I can obviously add a...
+Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git mtd/next, thanks.
 
-       if (ret)
-               rk_iommu_identity_attach(&rk_identity_domain, dev);
-
-... in here. But I don't know how to handle an error from
-rk_iommu_identity_attach() at this point. Does it need handling - is a
-WARN_ON sufficient?
-
-> It should also initlaize iommu->domain to the identity domain when the
-> iommu struct is allocated. The iommu->domain should never be
-> NULL. identity domain means the IOMMU is turned off which was
-> previously called "detached".
-
-I presume you mean in rk_iommu_probe()?
-
-> Otherwise it looks like I would expect, thanks
-
-Ok, I'll give it a spin with the above changes and post a v2 of this patch.
-
-Thanks,
-
-Steve
-
+Miquel
 
 _______________________________________________
 Linux-rockchip mailing list
