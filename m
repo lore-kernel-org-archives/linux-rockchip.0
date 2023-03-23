@@ -4,58 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BDEDC76196
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Mar 2023 07:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED5AC6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Mar 2023 08:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=JxLK6NZ91bcHgyHptxbHa7P0wDVSovQNwxMCgx6zfyw=; b=zoa
-	Wwj/fNTK+94cGCxIkY9J+FN3vMhgPALjve/yfHuwINLZjmK8uwLRGXud2dPvV9Lu5fi0q/IHekUof
-	p+lS5eediC2pGrqnzky+eB550cuqGrJmhrr1CcWh7Gpfsg7L78lTVCQiQa6Ae/iqdkXbMUPgF6gXV
-	R9oDYMsZUIOUEnYO1BGoKfOQVqlB8HWxFgvQrXqwqYZws0opGIj4Q8WbRhyuJXclvqx+HZqU9Uq0T
-	D4ke9ssUxoYT0Tq6IAN8jRUOPSZPW0sagnnlOgBuQ69pwp7/MoY6WjsRUuK90vD3pJAvX99Fc+4zq
-	tX94W0Sw4OIDGR4mHeyjkKHsmG/9xPA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Vvup7Kv5CtoLPLbDlp+UlRmOI0pRJEkOEHjUv0ewgxU=; b=f94TzgB7g4RHvR
+	BMbSO4CMHbfJvnVH1s6fw8X/jxwU/0hCI1H/QfCSce12TIL3So/laQSpUh9kRhvONEud6aVJ/1G4i
+	6/4e4VHySqyDNYVeUKMaShT0O3e5VXDJjMDu9xKqlsiUjFA5H3L2goVYB0L0ASAetiFDR8Xb5YQ+z
+	FCKPAGVmFaiBzjjGX44I5DZ6zUmy8iA/UN6t72V5YWx+Bna92Hs3SKi/EdPXZRfRACLutnG5Zpf8P
+	C752q8TS2SaVDHDo2O8TrP44FETFXYgSNYBtbYgQR0I0OwcFgdEb9QAaX6KbceeBgX2byLQcpQecM
+	mEoLVVAKelDc42gpC0vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfFjA-0019hV-2U;
-	Thu, 23 Mar 2023 07:51:16 +0000
-Received: from mxhk.zte.com.cn ([63.216.63.35])
+	id 1pfGUY-001Is1-35;
+	Thu, 23 Mar 2023 08:40:14 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfFj6-0019fn-2r;
-	Thu, 23 Mar 2023 07:51:14 +0000
-Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4PhyFq2JT2z6FK2g;
-	Thu, 23 Mar 2023 15:51:11 +0800 (CST)
-Received: from xaxapp02.zte.com.cn ([10.88.97.241])
-	by mse-fl2.zte.com.cn with SMTP id 32N7orob099158;
-	Thu, 23 Mar 2023 15:50:54 +0800 (+08)
-	(envelope-from ye.xingchen@zte.com.cn)
-Received: from mapi (xaxapp02[null])
-	by mapi (Zmail) with MAPI id mid31;
-	Thu, 23 Mar 2023 15:50:56 +0800 (CST)
-Date: Thu, 23 Mar 2023 15:50:56 +0800 (CST)
-X-Zmail-TransId: 2afa641c04e0ffffffffe29-9500b
-X-Mailer: Zmail v1.0
-Message-ID: <202303231550560132407@zte.com.cn>
-Mime-Version: 1.0
-From: <ye.xingchen@zte.com.cn>
-To: <vkoul@kernel.org>
-Cc: <kishon@kernel.org>, <heiko@sntech.de>, <linux-phy@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: =?UTF-8?B?W1BBVENIXSBwaHk6IHJvY2tjaGlwLXR5cGVjOiBVc2UgZGV2X2Vycl9wcm9iZSgp?=
-X-MAIL: mse-fl2.zte.com.cn 32N7orob099158
-X-Fangmail-Gw-Spam-Type: 0
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 641C04EF.000/4PhyFq2JT2z6FK2g
+	id 1pfGUV-001IoW-1Q
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Mar 2023 08:40:12 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id y5so23917184ybu.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Mar 2023 01:40:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679560808;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LVdvufZV56apmT3wmD9ncMcsijkg1/WCzRLjEqhYbYk=;
+        b=jt0T1kyTzkSVHHCl6C3RepTUHJHJMJwp3E7PBrhT2/xYa5EtksiTTG/c8wwIzIU4Z/
+         SP6qSrUD+NxMXZX1bTG8PCQpgfuHP59u0Np8wiu0KUJPXSqAJzXQDAgAhdBdm4ERqTZu
+         W1iU/UXMn4o+x12ZfA1TbzzlGle1mhqc6+pCFoTYeSycXLH0chaeh9w1eBTkD2vOP8sA
+         vAdlNnAtJbu1a1BYoccU9GKqHc2Cvh+aARoS6g2QyjguTZ3KI+BylBNheh9Xg9t4NtTd
+         2k3OHgvwLC4ljAJqFRZ+gv0eOvpjcGObjDM/uBGal3iyuErBjVTwBqdgO9KbDxL+mVt4
+         VMjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679560808;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LVdvufZV56apmT3wmD9ncMcsijkg1/WCzRLjEqhYbYk=;
+        b=TCKmuaegerbLGC8tM77/dE/e4C1UdzNDb8Y9OqCNSyTs8FUGc8l3dzaOkVcQYJddt8
+         EMLWwPZBd1h2EshshEmKZU52P62qFIP936paOsKB2d7XdhZYnFFeoTQmg+A9+501kLLH
+         7TxQiY5tWBi6ZEyBY1TZzqPWZnAXiA9sbqnIBnRtCk2LisBCWEihEO78CZIWESiNZUfL
+         ehE7HkMoMN4AhsiWtTCk99hONjpAKQj4duH5Q+P8kUXnS3aqmrMFjrmqXl407Ilm73Ph
+         MPHwufHfzsJi95Q46vuxUndSf4tMkTebY57G/R57OrWzA0EwwtOFertG+yfDXNQxvQWP
+         5sEw==
+X-Gm-Message-State: AAQBX9d0cQXHxlIDqh/9QzNXMGZcVz9VZ30QlcgfugzwxysXx6Rolgvt
+	SG9hY255V6bQhBPh1iGwDua1F8SchYJ8h4NWB+WPAg==
+X-Google-Smtp-Source: AKy350aSyoiWihVzfFCCUghPO+0y8OTXazqo59ZooJtguYITdbyYyykALVgXcFtgTaOhhPAE83rDbJuRGMjWP7pJT3I=
+X-Received: by 2002:a25:8712:0:b0:b26:47f3:6cb with SMTP id
+ a18-20020a258712000000b00b2647f306cbmr1346675ybl.4.1679560808264; Thu, 23 Mar
+ 2023 01:40:08 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230317233623.3968172-1-robh@kernel.org>
+In-Reply-To: <20230317233623.3968172-1-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 23 Mar 2023 09:39:57 +0100
+Message-ID: <CACRpkdYq4jE7Qn1w8iPeGz7vxj_CeZ+H48B0TVYmeF4Tt=kHgA@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Drop unneeded quotes
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	Damien Le Moal <damien.lemoal@wdc.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
+	Wells Lu <wellslutw@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-actions@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, 
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-riscv@lists.infradead.org, patches@opensource.cirrus.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_005113_072558_21084443 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20230323_014011_487787_7D782BEB 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,40 +111,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ye Xingchen <ye.xingchen@zte.com.cn>
-
-Replace the open-code with dev_err_probe() to simplify the code.
-
-Signed-off-by: Ye Xingchen <ye.xingchen@zte.com.cn>
----
- drivers/phy/rockchip/phy-rockchip-typec.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 8b1667be4915..c2e554e0a611 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -1153,9 +1153,8 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
- 		if (PTR_ERR(tcphy->extcon) == -ENODEV) {
- 			tcphy->extcon = NULL;
- 		} else {
--			if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
--				dev_err(dev, "Invalid or missing extcon\n");
--			return PTR_ERR(tcphy->extcon);
-+			return dev_err_probe(dev, PTR_ERR(tcphy->extcon),
-+					     "Invalid or missing extcon\n");
- 		}
- 	}
-
--- 
-2.25.1
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBNYXIgMTgsIDIwMjMgYXQgMTI6MzbigK9BTSBSb2IgSGVycmluZyA8cm9iaEBrZXJu
+ZWwub3JnPiB3cm90ZToKCj4gQ2xlYW51cCBiaW5kaW5ncyBkcm9wcGluZyB1bm5lZWRlZCBxdW90
+ZXMuIE9uY2UgYWxsIHRoZXNlIGFyZSBmaXhlZCwKPiBjaGVja2luZyBmb3IgdGhpcyBjYW4gYmUg
+ZW5hYmxlZCBpbiB5YW1sbGludC4KPgo+IFNpZ25lZC1vZmYtYnk6IFJvYiBIZXJyaW5nIDxyb2Jo
+QGtlcm5lbC5vcmc+CgpTaG91bGQgSSBxdWV1ZSB0aGlzIHBhdGNoIGJ5IHRoZSB3YXksIG9yIGRv
+IHlvdSBuZWVkIGl0IHRvIGdvIGludG8gc29tZQpEVC1yZWxhdGVkIHRyZWU/CgpZb3VycywKTGlu
+dXMgV2FsbGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
