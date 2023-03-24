@@ -4,47 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C28C6FD20
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Mar 2023 07:11:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2310C6FD20
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Mar 2023 08:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PXKRyaShfsNOPKHVnFSOYnlgFNTvmfp47FDLZ/xuC3k=; b=VbTxnevyI1TZ4n
-	be7tV5tWmG7gXrwsC7QD0olhbCljVHjWmZdoxHDlWtbrHCkp4hZ5jCZqdXEEtWiavXRL/eoeiU1ZF
-	Ag8e7AZh+27zxVRfpQbQXHq6hjXEJmWoJOKuJqq8MMfpruPtYIL2vJWBOmg7iEhrhnPLwdzVU53Lj
-	XyNV0hECF9dP3Ji1nL8NPKLX4QjZXSg5N24jkZsGkihStge+Hin7bZK6sxTc7B57Tc9XgAj483hHZ
-	unfkP3aXRD7Rv80EhFDp3A4XaaWHIa5Xd1ntWdzGaevLIyf71ihQcmi27K8FMmjdJSBTBSRYarKgS
-	W4Af9LtvqLvHSQcyn1XQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zQqK6kWEu2WsnwslZFJ1g7qxG2nbDvtKsvXVzYWFWQ8=; b=U1uvBV8utT2kyg
+	+S4jT0ADkSZJPs5UIyUk57dT/UDzN9/P3umHcD0crvTmhLszAS7UNmG/Ve+CjQfqHmMNa6vPcsAZi
+	vBv6I3wPJ9rkjMn2oBXfFTh9D5lteJSgh6e0JGszVGWxEZxlZYjajmIq/CGbDBGQhJsSLplvVqYHv
+	rjBUh1EtsPpv4SREyq7LK3+7ix8zJzpRDCLabh9FKUGi6QiV9dKGsRe1NOuVykbo5Dck0UUooaA6X
+	TkGupDNI1yfUvuRz7I7D1gAYyFz4h3uYhgEqpyRdidZswsFBdkCk8/xipzZcTMbvC05EFPbLAPUUm
+	g3g5CLM2ulGEH2DWYWZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfbaH-003jTp-19;
-	Fri, 24 Mar 2023 07:11:33 +0000
-Received: from out30-111.freemail.mail.aliyun.com ([115.124.30.111])
+	id 1pfcP2-003pH1-16;
+	Fri, 24 Mar 2023 08:04:00 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfbaC-003jSH-2u;
-	Fri, 24 Mar 2023 07:11:30 +0000
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R161e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046060;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=6;SR=0;TI=SMTPD_---0VeWr-7k_1679641881;
-Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0VeWr-7k_1679641881)
-          by smtp.aliyun-inc.com;
-          Fri, 24 Mar 2023 15:11:22 +0800
-From: Yang Li <yang.lee@linux.alibaba.com>
-To: srinivas.kandagatla@linaro.org,
-	heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Yang Li <yang.lee@linux.alibaba.com>
-Subject: [PATCH -next] nvmem: rockchip-efuse: Use devm_platform_get_and_ioremap_resource()
-Date: Fri, 24 Mar 2023 15:11:20 +0800
-Message-Id: <20230324071120.18853-1-yang.lee@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+	id 1pfcOy-003pFT-2P;
+	Fri, 24 Mar 2023 08:03:57 +0000
+Received: by mail-ed1-x529.google.com with SMTP id w9so4620466edc.3;
+        Fri, 24 Mar 2023 01:03:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679645032;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xdPfVznn1+cmnWLd3joAMKzC5IL6oKT3yPikotdBwTo=;
+        b=ZDGfVVLCGkWZUzZiCRqGteeqkaKWetao4CofMCmxQWl+nVuqaKJ9Z853VpC11tQPrP
+         2fCpJLLFPKHOuevz60rn2UNBgDKrZhPrXTZYZFt8V/IG6gaDVo6ammZ4M0Cpo31pdqN8
+         macbIvU41vGNWiqA2gF89srr85ROsTkdx2G5I3l9Y/Wl8Q+zQrv+Y//lVTlMPr9M+Kux
+         sPAgl9D7dIpVwAkvszwIS2Le6nz22kiGcdOQjqIE9bM5d/64chSiaDtzcyGWKvSCbuEU
+         dai1mQ8ezO6sT40rNeh/MA652xJ3oJ055fWPXKu258MQcbAQq/eIYl2JRJBCmkimsFc+
+         J5uQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679645032;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xdPfVznn1+cmnWLd3joAMKzC5IL6oKT3yPikotdBwTo=;
+        b=qYbqEjOc8B+Q/H+x7H3ISk+POzMQujbAS4Azm5kfxQ6DzGZjxQzqa/ZGIr1FDcfg2E
+         OeYy5CuoxlxMfaMpvNmrSn0nl6viC/5iP4p83vMgBmkxxAhccD7X4zQ5ETX3vQeOcKl5
+         7kG6sVS/ngGg0nH76Ywqw++kcaiKnvvkdUokK197ailSkSaUrZyiPPZO/18ujuawdvP1
+         shoV6dtGMAly90oPDrzjKsCyszqqS0zLxCORZ+Rxs5cw6uSVCKgjmvxMMwswpePD/NZe
+         iO+dv5mIHaHzJ/kSPTpO18yEO4blbqXKG22dvO+ZkfdCqaOnsryB6xWI4819dER2OoRn
+         mB0w==
+X-Gm-Message-State: AAQBX9fgHaO8jk1V+Xlv8o8K2xlp5syeZgNh9W/pchAymq2poj9oorhF
+	3N9BjRkdpJKEWqa0RXL+50rdy9OBgFs/ElusbIc=
+X-Google-Smtp-Source: AKy350ZsgN9BqoCkjFLRhe/ETXRYHC7790A78K2S00e9Slpv5Upu4pOEf20dq2DZFMQhGRN0grToelfSXDUJdHXvQlY=
+X-Received: by 2002:a17:906:1744:b0:930:4944:c2c with SMTP id
+ d4-20020a170906174400b0093049440c2cmr952299eje.12.1679645031882; Fri, 24 Mar
+ 2023 01:03:51 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230323123807.11882-1-cnsztl@gmail.com> <20230323123807.11882-2-cnsztl@gmail.com>
+ <CAEwRq=pwWrXAuHMBaWzZE7cxmVMGuX=eqi5Esjxpe-jPXWF+0w@mail.gmail.com>
+In-Reply-To: <CAEwRq=pwWrXAuHMBaWzZE7cxmVMGuX=eqi5Esjxpe-jPXWF+0w@mail.gmail.com>
+From: Tianling Shen <cnsztl@gmail.com>
+Date: Fri, 24 Mar 2023 16:03:39 +0800
+Message-ID: <CAOP2_ThsN9O8su2MMFVZRMC6SQ-MQ6qxwXeGXmK2ySMxSGfMRw@mail.gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: Add doc for FriendlyARM NanoPi R2C
+To: Vincent Legoll <vincent.legoll@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Jagan Teki <jagan@amarulasolutions.com>, Andy Yan <andyshrk@163.com>, 
+	Peter Geis <pgwipeout@gmail.com>, Brian Norris <briannorris@chromium.org>, 
+	Chris Morgan <macromorgan@hotmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Maya Matuszczyk <maccraft123mc@gmail.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230324_001129_302247_B6BDA475 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20230324_010356_781165_25D54A57 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -57,41 +90,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to commit 890cc39a8799 ("drivers: provide
-devm_platform_get_and_ioremap_resource()"), convert
-platform_get_resource(), devm_ioremap_resource() to a single
-call to devm_platform_get_and_ioremap_resource(), as this is exactly
-what this function does.
-
-Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
----
- drivers/nvmem/rockchip-efuse.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index e4579de5d014..4004c5bece42 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -267,8 +267,7 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 	if (!efuse)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	efuse->base = devm_ioremap_resource(dev, res);
-+	efuse->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
- 	if (IS_ERR(efuse->base))
- 		return PTR_ERR(efuse->base);
- 
--- 
-2.20.1.7.g153144c
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgVmluY2VudCwKCk9uIFRodSwgTWFyIDIzLCAyMDIzIGF0IDg6NDTigK9QTSBWaW5jZW50IExl
+Z29sbCA8dmluY2VudC5sZWdvbGxAZ21haWwuY29tPiB3cm90ZToKPgo+IEhlbGxvLAo+Cj4gT24g
+VGh1LCBNYXIgMjMsIDIwMjMgYXQgMTozOOKAr1BNIFRpYW5saW5nIFNoZW4gPGNuc3p0bEBnbWFp
+bC5jb20+IHdyb3RlOgo+ID4gLSAgICAgIC0gZGVzY3JpcHRpb246IEZyaWVuZGx5RWxlYyBOYW5v
+UGkgUjJTCj4gPiArICAgICAgLSBkZXNjcmlwdGlvbjogRnJpZW5kbHlFbGVjIE5hbm9QaSBSMkMv
+Uwo+Cj4gTWF5YmUgZG8gbGlrZSBmb3IgdGhlIGZvbGxvd2luZyBvbmU6Cj4KPiA+ICAgICAgICAt
+IGRlc2NyaXB0aW9uOiBGcmllbmRseUVsZWMgTmFub1BpNCBzZXJpZXMgYm9hcmRzCj4KPiAtIGRl
+c2NyaXB0aW9uOiBGcmllbmRseUVsZWMgTmFub1BpIFIyIHNlcmllcyBib2FyZHMKClNvdW5kcyBn
+b29kISBJIHdpbGwgYXBwbHkgeW91ciBzdWdnZXN0aW9uIGluIHYyLgoKVGhhbmtzLApUaWFubGlu
+Zy4KCj4KPiBSZWdhcmRzCj4KPiAtLQo+IFZpbmNlbnQgTGVnb2xsCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
