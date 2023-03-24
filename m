@@ -4,90 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C92EC6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Mar 2023 05:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56785C6FD20
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Mar 2023 06:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=C1dD2zjnzAejA8uUfEA3LuaOvxkwgIg8nVVwPVem/jc=; b=Iw8O0+bhtdlVgd
-	Q47XW2kLwIeJWg8hqlvMPQs7Ys3nnEAyjR4Y6FlyqV95ur09Qx+Hq4QZsMUeQkcp6ISSQ0/NP/poI
-	hWn79tn5bumnl601LWSrB7xT+GOWNTo6C5LeTg2pfCb5+ZvmlqLorSiZ4WBM4NRn0anUaO68b0jEI
-	PbTDgkwSMasL3fDvzFlLAM18B5aw/5jo9KBJAKT5ib9pRcoXwqkE9R1uiQK4vU20svaqm90cgxdR1
-	c/F9SKjG0oVkKJ84N4IVsbPgDx+q4EIhmmkVPqunmw92VsN0Yenuc4Q7rfLHs6Leor0aRlxHttwFF
-	ce1zZLWBulda3BWboijA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZAkdNwPT632SpPv1wJH8C/simvMx3pRxk84r3N75JFU=; b=vUhogksabOaduO
+	gQo6Uz8tMmmZymS3eDZNheUaXKG+xoeQfn8HiCg6OvKeAqDkRNZOU0JzFw0nnwK7e7fda0SJB5/DI
+	dg3dpF6VPNmIRVZTVERgpOkHRIhV+hf9l9YPFbP4lGHB7Kzzu8FpnA55tlNotpLRURdfPm/RUf/Iu
+	1f/jQ9F+YWWN3+Y7XGeU2yr64wZ4MUL1qsCbIFBcDGW1boPDEFOLE8oAVoIndYz2RWkiV46RZg1zF
+	yN0b0KXL2UMpiP2ej0ry+vWptLJ68bZb/QHSMBgvfddagOWtzIRwQoYFPwiuUFJG/+BGSUliOMqUl
+	C0dANcJi5sLlJhLo0yiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfZYI-003Xiq-2v;
-	Fri, 24 Mar 2023 05:01:22 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1pfb3o-003gwB-0w;
+	Fri, 24 Mar 2023 06:38:00 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfZYE-003XhC-0y;
-	Fri, 24 Mar 2023 05:01:19 +0000
-Received: by mail-ed1-x536.google.com with SMTP id i5so3490552eda.0;
-        Thu, 23 Mar 2023 22:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679634074;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=qjRWCU/VLQErX2z0uvL/aL2jDlqWYNpnjGy6qbEOGGE=;
-        b=AV4afuHsts3hAqNjn+9LdAhIgZ+Zdmq1EJCCmlG/TdZACcSB8wehdUwVsHhv/Dopjp
-         RTph8NS7MUsrtZ+Ev++hdhIOfeWehOCfOIUWSVtYW+uK0vaIPqUYPxuffx6LMoIXSNOz
-         5SaDg2awjB3Bdo2P0vjaJHPPrMIRZIaUZnRD1Vfpb69yaq96zT/2rXIpk2EvucvO+aNV
-         HBT40USzBCx+QgLCahLeo9aFpJ+igenZMfPloCpeBZK3bUsAfR+2LFmLSJ/EuHxaBLDk
-         bGbsEr6dFrTrDeMWRxE69GUfgXTX4AJXn6YIuA7BWne11xTaWAPULAXH/wzrufLxu+i0
-         dxgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679634074;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qjRWCU/VLQErX2z0uvL/aL2jDlqWYNpnjGy6qbEOGGE=;
-        b=i9ocaYn9X51UTOngu5MdKUvUNcvGWrB2rXBjYEN3oQ6Is5PEPZJKmYH1GZr0T6vitp
-         NhjCf9fqBdTeNdyhkhMFkiwQe3cLFanLV/rhQ0EX5nLI5gLsLX9gwktNqjyU/fNkr1uz
-         5Pg1diJdwB91+HcFI8ZgfIUJfciGQ7UIEKm3sTlB21RZU6aw/2K/CY7wK9NjkznG0uvz
-         yt3dvARgqE7WyalwqMLuHsEG6LdvpghnwvmQ750z/PQSv/ZD1gRZcmFoqaWweeuprLU3
-         hu42VAxypO+FJt5AcDZSE6tCAYXNygXiFEsZuuEE1MhOnyFukU+2WhXnZXwQ3ouIwteK
-         Zl6w==
-X-Gm-Message-State: AAQBX9f/jlWeNss8mrkv2IyuopljDiVE+UnxRq6yt2WoMVay/wC8oI4L
-	wkbx+NVWaaWCbz6IrobkIXE=
-X-Google-Smtp-Source: AKy350Z6AhniQxuCsI+BdYd/geEC5/fUia7TructKG3W3ffPTO5hgdA9jsSFB3KZs+E/YxUvVP/DzA==
-X-Received: by 2002:a05:6402:1503:b0:4fd:2b0e:ce87 with SMTP id f3-20020a056402150300b004fd2b0ece87mr1438213edw.24.1679634073874;
-        Thu, 23 Mar 2023 22:01:13 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id c24-20020a50d658000000b00501d5432f2fsm5249889edj.60.2023.03.23.22.01.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Mar 2023 22:01:13 -0700 (PDT)
-Date: Fri, 24 Mar 2023 08:01:09 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: oe-kbuild@lists.linux.dev,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	tfiga@chromium.org, m.szyprowski@samsung.com, mchehab@kernel.org,
-	ming.qian@nxp.com, shijie.qin@nxp.com, eagle.zhou@nxp.com,
-	bin.liu@mediatek.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
-	stanimir.k.varbanov@gmail.com, quic_vgarodia@quicinc.com,
-	agross@kernel.org, andersson@kernel.org, konrad.dybcio@linaro.org,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	daniel.almeida@collabora.com, hverkuil-cisco@xs4all.nl,
-	laurent.pinchart@ideasonboard.com, jernel@kernel.org
-Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic
- allocated
-Message-ID: <4e2cb832-de83-4ba6-bd8a-119a19038cfe@kili.mountain>
+	id 1pfb3l-003gvp-2q
+	for linux-rockchip@lists.infradead.org;
+	Fri, 24 Mar 2023 06:37:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
+	t=1679639870; i=markus.elfring@web.de;
+	bh=7CtjB1QGe7Czwsffh1TLFcUErEMc1CiXqIwFOA2vKLE=;
+	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=DmQpMLAv6hupH8Bi0Uz/soUMq0gHTcJgdl21BqO4qBKdPPjeD8XpvZ2o1Ia6plYfY
+	 GqMINO0E2GjcUiNx7cjwNJtR+nq9Z8R34kd59jWTYyoA+mCox06WWuqqXfDTf9lHJ2
+	 o83eAp20zrGBjHKMRdVpgLo87iRJ55yYZoCzIzlfZYavGU/FbVb9wIwxuOvEFiG/eF
+	 T7Atln/pNV4GD4R15jlrC5YjycCbFfaRl4iO3r5HtUXT+YOt0r2SR4FpC/0WsTX/vC
+	 6quk/EB9gHtzi0hP5bHvxjcP1mbWAHU9e0amu0C52Jh7TzoZZu6Z2bEPS2vG8u7aJt
+	 PK/iIZeQnH60Q==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.81.83]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MLARU-1pxgAm11gQ-00IAaO; Fri, 24
+ Mar 2023 07:37:50 +0100
+Message-ID: <69159492-dced-a082-5f7e-3d8d0e880f58@web.de>
+Date: Fri, 24 Mar 2023 07:37:37 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230321102855.346732-3-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] media: verisilicon: Simplify error handling in
+ tile_buffer_reallocate()
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, kernel-janitors@vger.kernel.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230323131704.414281-1-benjamin.gaignard@collabora.com>
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20230323131704.414281-1-benjamin.gaignard@collabora.com>
+X-Provags-ID: V03:K1:xSWA8/yQRtCDdl375aoFbBiMrpeqVN77ZDe438gLFbRy7uOpEVl
+ xGOGIy3vHLoLZ06KRAHjvVCqF6HLrYbK2EN2WtftFbCwP2oCLY6DY5MEVJ1zeDqUkVbTkaO
+ qC7GPmUe2G0mOuqxhaBKqc3Ucfgq1E++zWoAGZU4+y7qJsroLdljT6Vb+AAeB5f2nEnl2o8
+ ZF9uD7zGQHDlSmjB3qFxQ==
+UI-OutboundReport: notjunk:1;M01:P0:CfKlGHVzK9M=;ilyKDRLAtbLIor0K6MoDPDk7Izf
+ jW+dhUrj2svceeUAe8c7e975NrsMmQgMIsu5Shddczk550rZoXsBhB6a4WIhxLfs/dgoA7fRa
+ M66VcVGW7gHwwD3N0RCsMgTObsofmHet9sCt3aZK3LXvGzl1MMOC4MtOMQ8lB4qR7SH0/Mscd
+ /c0ZDJ+6we3SLZUqlVir3DRzfMDRiyHIILSPWX767eDewXknGQuVAHWB+TLa+ZleTVP4PimJy
+ do2TQRrIl8geFKXu/kiRlbR/SLtGVpn5drh26QOSkT2BB+hTHRLdgokho7LzCazMNTtXerUB/
+ O/srilhdb/xtGq9kOa56shdbflN1PQCXEp5hl2WGggyFuAIJG8VefP2CEmTI6n9bG4zDJRyEa
+ SIiaC/w2jBJ3VoMexideMytFmhVDkvXWVlWnfz99ig6tv6pgKJqoWmjdWiAB4l/A2v+Y/1mHp
+ v02RMzAVFNz6EwEhAmsVL5xoUfoCEnXcFzWwoEPAcTcPCcjsSjQxKx0CmhiHtcAcjDM8mdK3e
+ /fcQ+2vIRED1RlH6LAxZAMCcVCgbYUKA6qR/Gzz6JwuxbLbtnJGY53zS/Eq2CtVuCLqc//6QR
+ 4+Kx6GDx0yPgegGgDuhWUr1yexIgnJcE96rc9gJertPyL70CQQ6kE2o+d3XytJn4YxQqGsK95
+ Cf1JNRAGkBVmP8UDtOIjlVegUWp2BvbBA2X0SMUgIFWZXG1abR41HZKh9YroSM/OT/NOURO+T
+ C3vOK0pfd542KlMhQcjUaFK3chkdjgkle7SVSOqx395s7TdiqgGbnaY/YTcR4zHCg1pefyHZu
+ JGyjV8K3jRgkd/MnT4Fl6ByYtabE5EYWM0zgQNvUwyrSjYiosQ5x3sNy/DJA1M2+nEP0qKteB
+ 7J6ecGd9D9reqnmO/FLuKDsf8vlXU8Vokt50MbeorNPzEqtjWznlKCGSa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230323_220118_381035_A9E3F0A9 
-X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-CacheID: sfid-20230323_233758_388520_97B69E6E 
+X-CRM114-Status: UNSURE (   6.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,74 +91,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230321-183154
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230321102855.346732-3-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v2 2/8] media: videobuf2: Make bufs array dynamic allocated
-config: arm64-randconfig-m041-20230319 (https://download.01.org/0day-ci/archive/20230324/202303240148.lKRnUqW9-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.1.0
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <error27@gmail.com>
-| Link: https://lore.kernel.org/r/202303240148.lKRnUqW9-lkp@intel.com/
-
-smatch warnings:
-include/media/videobuf2-core.h:1272 vb2_queue_add_buffer() warn: sleeping in atomic context
-drivers/media/common/videobuf2/videobuf2-core.c:2456 vb2_core_queue_init() warn: Please consider using kcalloc instead of kmalloc_array
-
-vim +1272 include/media/videobuf2-core.h
-
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1263  static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1264  {
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1265  	bool ret = false;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1266  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1267  	spin_lock(&q->bufs_lock);
-                                                        ^^^^^^^^^^^^^^^^^^^^^^^
-Holding a spin lock.
-
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1268  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1269  	if (vb->index >= q->max_num_bufs) {
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1270  		struct vb2_buffer **tmp;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1271  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21 @1272  		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
-                                                                                                                                     ^^^^^^^^^^
-Sleeping allocation.  GFP_ATOMIC?  Or is there a way to move the
-allocation outside the lock?
-
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1273  		if (!tmp)
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1274  			goto realloc_failed;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1275  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1276  		q->max_num_bufs *= 2;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1277  		q->bufs = tmp;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1278  	}
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1279  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1280  	if (vb->index < q->max_num_bufs) {
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1281  		q->bufs[vb->index] = vb;
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1282  		ret = true;
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1283  	}
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1284  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1285  realloc_failed:
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1286  	spin_unlock(&q->bufs_lock);
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1287  
-487d3f14d12ecf Benjamin Gaignard 2023-03-21  1288  	return ret;
-625d46c1c1fe8e Benjamin Gaignard 2023-03-21  1289  }
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cj4gUmV3b3JrIGFsbG9jYXRpb24gZXJyb3JzIGNhc2VzIGhhbmRsaW5nIHRvIHNpbXBseSBpdAo+
+IGJ5IHJlbW92aW5nIHVzZWxlc3MgdGVzdHMuCgpIb3cgZG8geW91IHRoaW5rIGFib3V0IHRvIHVz
+ZSBhIHdvcmRpbmcgbGlrZSDigJxTaW1wbGlmeSBoYW5kbGluZyBvZiBhbGxvY2F0aW9uCmVycm9y
+IGNhc2VzIGJ5IHJlbW92aW5nIHVzZWxlc3MgdGVzdHMu4oCdIGZvciB5b3VyIGNoYW5nZSBkZXNj
+cmlwdGlvbj8KCgo+IFJlcG9ydGVkLWJ5OiDigKYKPiAtLS0KPiAgLi4uL21lZGlhL3BsYXRmb3Jt
+L3ZlcmlzaWxpY29uL2hhbnRyb19oZXZjLmMgIHwgMjMgKysrKysrKystLS0tLS0tLS0tLQoKV291
+bGQgeW91IGxpa2UgdG8gYWRkIGFueSBsaW5rcyBmb3IgY29ycmVzcG9uZGluZyBpbmZvcm1hdGlv
+bj8KClJlZ2FyZHMsCk1hcmt1cwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
