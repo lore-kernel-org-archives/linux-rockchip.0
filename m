@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68FC2C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Mar 2023 07:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB545C6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Mar 2023 07:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jL4ekkN7OtEh1SSbL+Hq8NAYH8P3UhZ6K1QZKueau1w=; b=FCios2hozZsUjY
-	kRdth7tTBtbEnY7QsHIUG6gMmSixHdkiKslxSQKd3qR71vRhI+8FhHa/cddC5yzuDwIHH+b145fyk
-	yPPN4DYueL+BLq8fHVsbBirygyh4/0kvfzhhVAFWQHYXEhstlAuNeS1k4ym+erL3/YVXlQBBflo6A
-	kwnKkvP1S3Hk3n8oSQUjiAmoElsD/Thmq3DGx8T4gIMFwNdSvYTR5DFBC4/EYrMoOexyeHbvELnnV
-	YUWymuAqWS9wdFg2Jrm5MY+MG5y076XX5EKPsgIF+85iqaya8aXFSmgrv6OMxyA0DDtyl0/i1pdAA
-	XjjYBdfjOsMjwaYB8Tfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zPu1rHa6PHXpexYM3LOsmJlXQC40TE2Jl9lgfrizI4Q=; b=OZxmob2Fg81eji
+	EOp1NljS3jE6osS5/2nOX6fEUnlVHxCzxeA2+WlvMTDiDkrfHW3BNB7w5hgDFWHshw/AOOFWkVkkE
+	rVFUQCOA76kdKWUQoGEbCYAaEsz0x8nn0oBKTtmBFkyNUGc7SeSOgvc5h2WOlwglOwTNAREtWqasm
+	2hCBAVrqYR57VU3VQPdmSIpDmzKxeU8K1lR1cBTt2XqEsK17arWXzbC2+Y47i4t5M9Sa6KAS3GmWB
+	Ip0GF2P16+DPI9lKA/kA/YTse3FR+aIM7pMKrMP79PiGbUgKvwT/Sr89ncr3vZHnaH4JkBV6hZO/K
+	Xwq3kFJvW6oS4dlVn69A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfyVt-006NSM-1J;
-	Sat, 25 Mar 2023 07:40:33 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1pfyWJ-006NcW-1V;
+	Sat, 25 Mar 2023 07:40:59 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pfyVo-006NPr-2c;
-	Sat, 25 Mar 2023 07:40:30 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id k17so4826640ybm.11;
-        Sat, 25 Mar 2023 00:40:27 -0700 (PDT)
+	id 1pfyVt-006NRm-0D;
+	Sat, 25 Mar 2023 07:40:34 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id r187so4844428ybr.6;
+        Sat, 25 Mar 2023 00:40:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679730026;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=rYsDanyFIFeDSw0nKRS4qdlqbTjBz25V3/PJAUjnPhI=;
-        b=cJ2pOCHq2roMIGE7y56sK4+Y1Ez+n9X9FjvFc4STQcE4BnhdVBB8vN/5gGZwYB5z4T
-         n2ueTvW4Qjdv2inJf9st+Wj9r7u4pQAL0vELkFaNfVFuS+KH13hrM69ChquyHgud+wyk
-         UZM54S+QjlVUTC1bov2L1EUuEYY1frv7k2sL6LzPpF0OfoAuQJBFtp18iPH9tOBIgVoZ
-         JUs53gityYzkL85dAMd/CjHIXi3LJmunY4z2jGXKxfDoQi5FyjC03ngWZ7zmERpjMG3R
-         l7910vJbctm4yWM6Oxn+oSD64k1wiY5JqSlIOJE7X/b/eiOfLXPs3hw91GYR5WCbnCEz
-         akYg==
+        d=gmail.com; s=20210112; t=1679730031;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3ENFbyVo6ntDOx+QsNQdjIvn/5kMh1BsTEjEJ3xCsmA=;
+        b=ex/GczeP++ovZupQ3HqNy/MkN7HsVMa286tPtX0GrLD7Ds+ia9eNEyltaSDKqsF86P
+         87Tt9nc5bAbOzPuKG92VXQn+8gjjA2190hqm/GCuUFHhNkRQjVhsizRW8UPrd30ny8Vr
+         pZ0xmsT4Iv3P7V8hAs05kwy9TcvXx0FSBoDfRS4mWyql1+IBUZ8BotngWsujRK22k5o+
+         6r9XTenmqUx3Lhnw6k/+rQAPVEKlHZLj2IsSduDihxy1/FMwJAI0cttfKGxGzjyUuSy/
+         2Ma0KXEjnLCbm8/SBDSIl5e98ksZ8M4Qr6J9c6GbcZF1rhOr6q3H/oDaNxiopgVf7pYS
+         8vEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679730026;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rYsDanyFIFeDSw0nKRS4qdlqbTjBz25V3/PJAUjnPhI=;
-        b=0h9UpzulBqBq5dP7HRHuriZzM9kovK1MGoMhQmT+mnDE4o0g2frzYa73dt+vOO9U+J
-         9i4JL4R1MyZ+7sRgj6+IcuWIXknYhDyktpurPGU5y84oH2PaBxgwPi56/zb+W6Krf70Q
-         1NZcVSOAQHIUHUTk5DI307jP3iOzIo8RqMvvyAuBCXjl9wb43NvJ/rxwwD7azKzhiu80
-         Dy4uNBuFEVHOtoqDsTvX4jZ4RG0zZhNVU2r8t8d4pJYHlIu9+3YJ73u4unglR0hUIyF/
-         cOsX+OPfaFHoawQi6vQ5IZMpAJJVnhjxsU4F/SBxT2WsZGofqKkkcNoh2whqynpjkJf8
-         Ln9w==
-X-Gm-Message-State: AAQBX9fFCI3ly5haGEkDOC6NmLlOQGu483fSbuPk/5l1QL/VIloJvNNc
-	Ysk21nROafp2MAhIepuTvug=
-X-Google-Smtp-Source: AKy350YBztxmYOrO82qvnRcnyHLBYIfQ+edDVxGjdeutSueof48FJ8pb1sKRae6EsG8leonu3IRT7Q==
-X-Received: by 2002:a25:db4b:0:b0:b6a:51c9:d7ba with SMTP id g72-20020a25db4b000000b00b6a51c9d7bamr4845084ybf.20.1679730026306;
-        Sat, 25 Mar 2023 00:40:26 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679730031;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3ENFbyVo6ntDOx+QsNQdjIvn/5kMh1BsTEjEJ3xCsmA=;
+        b=xHOg+JrNpjkVB63WoYP32N5yyfdSh2MY3uu6OkDIeNXnW6Zo3W2z0phbqF7+JqFIuU
+         9isffQcufdx8m+MwJTjUiWLUQG9oRnUKoiLqCpeS3w/71UJFZ9A6K1gXrdXJJGthQN6T
+         RQE3jKe3b2Q7BJTDsq1mqpMfQBahuNCqJ7NpNw0cbNFnMdGU2S8t9vD2cYiW6aoeGSE3
+         vVLm5Tie9EqR9soyMLXJssB25n+L3IWrpdpa0KIndvvWkXjtuU1Av00mh2dt3d5P4C9y
+         /j+POdCyqbAdLt0UF8ydwt9LolvxcLHkB6lXhTt1kE1YC9jy4s09GLmJ/zwRAh3W7TiN
+         o1XA==
+X-Gm-Message-State: AAQBX9c9ieS+HDiX0Wz9QOtNOvmsKrETwV3YlZ+B7Nh6BZs8YAlZwuBy
+	UpELapaJi8qF962JXLZXiOU=
+X-Google-Smtp-Source: AKy350aV8Slwn420heuYfAiUsnb7FYpKpCpimHVxcbyjyQTUtydCvA9ErH1v7wPW9p19HECCceqFgg==
+X-Received: by 2002:a05:6902:1108:b0:aee:c71c:1845 with SMTP id o8-20020a056902110800b00aeec71c1845mr6924755ybu.19.1679730031503;
+        Sat, 25 Mar 2023 00:40:31 -0700 (PDT)
 Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
-        by smtp.googlemail.com with ESMTPSA id w20-20020a25c714000000b00b7767ca7498sm969629ybe.53.2023.03.25.00.40.24
+        by smtp.googlemail.com with ESMTPSA id w20-20020a25c714000000b00b7767ca7498sm969629ybe.53.2023.03.25.00.40.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Mar 2023 00:40:25 -0700 (PDT)
+        Sat, 25 Mar 2023 00:40:31 -0700 (PDT)
 From: Tianling Shen <cnsztl@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -78,14 +79,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/4] Add support for NanoPi R2C and OrangePi R1 Plus LTS
-Date: Sat, 25 Mar 2023 15:40:18 +0800
-Message-Id: <20230325074022.9818-1-cnsztl@gmail.com>
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: Add Xunlong OrangePi R1 Plus LTS
+Date: Sat, 25 Mar 2023 15:40:22 +0800
+Message-Id: <20230325074022.9818-5-cnsztl@gmail.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230325074022.9818-1-cnsztl@gmail.com>
+References: <20230325074022.9818-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230325_004028_890461_7E29F210 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20230325_004033_114354_AF6A2540 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +105,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi, this patchset adds two new boards using the Motorcomm NIC which
-got supported/fixed in kernel v6.3:
+The OrangePi R1 Plus LTS is a minor variant of OrangePi R1 Plus with
+the on-board NIC chip changed from rtl8211e to yt8531c, and otherwise
+identical to OrangePi R1 Plus.
 
-* FriendlyARM NanoPi R2C - yt8521s
-* Xunlong OrangePi R1 Plus LTS - yt8531c
-
-Changes since v1:
-* https://lore.kernel.org/linux-rockchip/20230323123807.11882-1-cnsztl@gmail.com/
-* Updated dt-binding description for NanoPi R2C
-
-Tianling Shen (4):
-  dt-bindings: Add doc for FriendlyARM NanoPi R2C
-  arm64: dts: rockchip: Add FriendlyARM NanoPi R2C
-  dt-bindings: Add doc for Xunlong OrangePi R1 Plus LTS
-  arm64: dts: rockchip: Add Xunlong OrangePi R1 Plus LTS
-
- .../devicetree/bindings/arm/rockchip.yaml     | 12 ++++--
- arch/arm64/boot/dts/rockchip/Makefile         |  2 +
- .../boot/dts/rockchip/rk3328-nanopi-r2c.dts   | 40 +++++++++++++++++++
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
  .../rockchip/rk3328-orangepi-r1-plus-lts.dts  | 40 +++++++++++++++++++
- 4 files changed, 90 insertions(+), 4 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dts
+ 2 files changed, 41 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
 
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 0bdcddd221f8..2d585bbb8f3a 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -17,6 +17,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-orangepi-r1-plus-lts.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
+new file mode 100644
+index 000000000000..5d7d567283e5
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
+@@ -0,0 +1,40 @@
++// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
++/*
++ * Copyright (c) 2016 Xunlong Software. Co., Ltd.
++ * (http://www.orangepi.org)
++ *
++ * Copyright (c) 2021-2023 Tianling Shen <cnsztl@gmail.com>
++ */
++
++/dts-v1/;
++#include "rk3328-orangepi-r1-plus.dts"
++
++/ {
++	model = "Xunlong Orange Pi R1 Plus LTS";
++	compatible = "xunlong,orangepi-r1-plus-lts", "rockchip,rk3328";
++};
++
++&gmac2io {
++	phy-handle = <&yt8531c>;
++	tx_delay = <0x19>;
++	rx_delay = <0x05>;
++
++	mdio {
++		/delete-node/ ethernet-phy@1;
++
++		yt8531c: ethernet-phy@0 {
++			compatible = "ethernet-phy-ieee802.3-c22";
++			reg = <0>;
++
++			motorcomm,clk-out-frequency-hz = <125000000>;
++			motorcomm,keep-pll-enabled;
++			motorcomm,auto-sleep-disabled;
++
++			pinctrl-0 = <&eth_phy_reset_pin>;
++			pinctrl-names = "default";
++			reset-assert-us = <15000>;
++			reset-deassert-us = <50000>;
++			reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
++		};
++	};
++};
 -- 
 2.40.0
 
