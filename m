@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB47C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Mar 2023 11:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BFD7C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Mar 2023 19:25:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1RazBo4W7H5kxgFH1bEGnDC0hd8WYLimRBOonE7LxCk=; b=hRSdVkjf3r0PGe
-	fw+sIjPGjL14nmYps+o3W9Sqxp9USIegC7jK1Mq0FpX2pSpq0of2Z2zN0h2JQ5XRZfgxVE0MVYzCR
-	AZ3RBooieqe8XgsgIt+eUqUnHvT8cQqZixI/vlKwou1mupjjTtfEckSVX2ugDmWNxr+QLZLtVlTIc
-	qg5gOcrvfOCJlWvd391GK9if/kjvGXGPNJCR0sXcEpx8pOtH+rXf+iLXWt03eorVS8k7yuwbxp2ml
-	9EgPxL6tJdz07m5b2t4zFkwj19UBfpbNzoHzERVCbEVFGqzesZD7mqnnWw3m2wbFmAoPloUFhrCG6
-	reJ9dIFSRXAwV/CBiRNA==;
+	List-Owner; bh=zyU3BVm9YtnSQDj/fxDYcvtYwOCAr07A0DzrkGlEhYk=; b=aDl+hcdQsU0gi9
+	bNtSYJLf0+d/JM6c7ltA42aRugweBB8haRnSVg5zfMCQ8wtSvHQ6dPQ+V28n4Kb1meo8JyetX7qUI
+	EB4jTWoALTaDZh4+N39s3qDqC2NvPrHAAOBsHuCK/q8y4LUWjrBBVaRQx9QUoI+TlxM5uT5+Ncllj
+	vnXiRWDRZBCMskLu22SJuZC4f5QAc+zhkFlXq5XxsTAdXMltcA38iYGIzkGZ05hnZ+Qh2j2f9pM5q
+	cT3WaGjsAQn/NaoMRWpwEgoUWUIZ5hSqv0585GoGQyALMcXemAqfiWA5HnRjuFVb7oYYxissayKOT
+	nWykPRHB3M1CWMi8qHTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pg2SP-006dlM-3B;
-	Sat, 25 Mar 2023 11:53:13 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pg9VY-007Dhb-1M;
+	Sat, 25 Mar 2023 19:24:56 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pg2SN-006dk7-0B;
-	Sat, 25 Mar 2023 11:53:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id EA5ECB801B9;
-	Sat, 25 Mar 2023 11:53:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13F31C433EF;
-	Sat, 25 Mar 2023 11:53:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1679745185;
-	bh=FFBB5Qbytv/2GhipRMImzTvlxCw1uCSobBjuA0Yniqs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iaCm8xHG0OLKDna6iEpAcJOZQ5gAYYo2lIHjr0T9zFwpCN+15+sEBDcSsvwSGlGil
-	 JKiQkOeBmRCCGdwyJTQJa1mbowpZrlm+6vdXUK8z/T2e2MqXvy/DuMEMweYsblZBjF
-	 UGGXTzK1GK/J5z5WYGXaWmPVUnnTy6GObPfZJKsy89R4A5xxke+Xyfd5zHZbTY9Co5
-	 Lzil0pPwVlwRyUcRFNRH28WtLcbIZLtpjflrntxjogojeUuqlwpWCnPfjSEFaBCCGI
-	 xOM2QvZ6KaTBgMmBqpMkFZqlT6+jHJ+IhMeXxndYGoa4ivUC3gNPDj0dkP7OTTYp0R
-	 0UGlzHMz3N56A==
-Message-ID: <c6390182-8624-35c9-746b-f76e4987777c@kernel.org>
-Date: Sat, 25 Mar 2023 12:52:59 +0100
+	id 1pg9VU-007DgX-0d;
+	Sat, 25 Mar 2023 19:24:53 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1CE7789F;
+	Sat, 25 Mar 2023 20:24:50 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1679772290;
+	bh=tG8wxnDoKhE6wm3AvyjW+76dHK/YLCiCysUyipc/yhU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AWjPw8uONxngtUjdrdiW6BYpT8VyfZWnbPubrTVOw9IaNipY+6kwvaZQdi6cA3m3L
+	 N+t3QDVjYdSwNg9ghdL9KU3VJWMY1bVV0wkl/yDaKc49CyXXfuKdPb+dXhC7QYjWsF
+	 Gth9J41F+BXyOopFAiqzTFz4mLlwj+piAmrgzCTA=
+Date: Sat, 25 Mar 2023 21:24:56 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	linux-media@vger.kernel.org,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/3] media: rkisp1: Make local immutable array
+ variables static const
+Message-ID: <20230325192456.GE9876@pendragon.ideasonboard.com>
+References: <20221117084217.3892680-1-paul.elder@ideasonboard.com>
+ <20221117084217.3892680-3-paul.elder@ideasonboard.com>
+ <Y3lYcRySWnrLKpWe@pendragon.ideasonboard.com>
+ <Y9MMhSVrWujmfgCR@pendragon.ideasonboard.com>
+ <20230324103744.ww67j3di73xg4ois@uno.localdomain>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2 3/4] dt-bindings: Add doc for Xunlong OrangePi R1 Plus
- LTS
-Content-Language: en-US
-To: Tianling Shen <cnsztl@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>,
- Andy Yan <andyshrk@163.com>, Peter Geis <pgwipeout@gmail.com>,
- Brian Norris <briannorris@chromium.org>,
- Chris Morgan <macromorgan@hotmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Maya Matuszczyk <maccraft123mc@gmail.com>,
- Vincent Legoll <vincent.legoll@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230325074022.9818-1-cnsztl@gmail.com>
- <20230325074022.9818-4-cnsztl@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <20230325074022.9818-4-cnsztl@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20230324103744.ww67j3di73xg4ois@uno.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230325_045311_240753_3F2FDC45 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230325_122452_400563_1AA40135 
+X-CRM114-Status: GOOD (  29.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,16 +76,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/03/2023 08:40, Tianling Shen wrote:
-> Add devicetree binding documentation for the
-> Xunlong OrangePi R1 Plus LTS.
+Hi Jacopo,
 
+On Fri, Mar 24, 2023 at 11:37:44AM +0100, Jacopo Mondi wrote:
+> Hello
+>    the change seems trivial, do we need an explicit ack from Dafna ?
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+An alternative patch has been merged in commit 4ee8191c7c9f ("media:
+rkisp1: make a few const arrays static").
 
-Best regards,
-Krzysztof
+> Dafna are you comfortable being listed as maintainer of this driver or
+> do you think you won't be able to dedicate time to it and need help ?
+> 
+> Thanks
+>    j
+> 
+> On Fri, Jan 27, 2023 at 01:28:05AM +0200, Laurent Pinchart wrote:
+> > On Sun, Nov 20, 2022 at 12:28:01AM +0200, Laurent Pinchart wrote:
+> > > Hi Dafna,
+> > >
+> > > Are you fine with this patch, can I include it in my next pull request
+> > > along with the other ones from the series ?
+> >
+> > Ping.
+> >
+> > > On Thu, Nov 17, 2022 at 05:42:16PM +0900, Paul Elder wrote:
+> > > > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > >
+> > > > The max_widths and max_heights variables in rkisp1_try_fmt() are
+> > > > immutable and don't need to be allocated on the stack every time the
+> > > > function is called. Make them static.
+> > > >
+> > > > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > > Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+> > > > ---
+> > > >  .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 ++++++++----
+> > > >  1 file changed, 8 insertions(+), 4 deletions(-)
+> > > >
+> > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> > > > index 7695ef134908..91e685fdbbe9 100644
+> > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> > > > @@ -1150,13 +1150,17 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+> > > >  			   const struct rkisp1_capture_fmt_cfg **fmt_cfg,
+> > > >  			   const struct v4l2_format_info **fmt_info)
+> > > >  {
+> > > > +	static const unsigned int max_widths[] = {
+> > > > +		RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+> > > > +		RKISP1_RSZ_SP_SRC_MAX_WIDTH,
+> > > > +	};
+> > > > +	static const unsigned int max_heights[] = {
+> > > > +		RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+> > > > +		RKISP1_RSZ_SP_SRC_MAX_HEIGHT,
+> > > > +	};
+> > > >  	const struct rkisp1_capture_config *config = cap->config;
+> > > >  	const struct rkisp1_capture_fmt_cfg *fmt;
+> > > >  	const struct v4l2_format_info *info;
+> > > > -	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+> > > > -					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
+> > > > -	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+> > > > -					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
+> > > >
+> > > >  	fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
+> > > >  	if (!fmt) {
 
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
