@@ -4,84 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDFAC74A5B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 20:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3953FC77B60
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 20:45:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Aqo8jXOo5PL5PVPjGck66X+jM5dRPlONIrhpw6BDhgw=; b=nDxyJ/u78dgo7M
-	yPLt2GVfGok+hKy1q9On0L9lCmWpI4Bs3wv/p2X7EGwF9yFp0d6wU5nnqPY85j4KnT5k5u5IXMpN3
-	2nib0bhOpkM9deCiW6dYINyGHP6facTH5KZP/CIgGI0iSJTo7+RHZRsWAnXqCpMWfnV4id5ws2fbK
-	8imTnLx/AVUDB7IQxUbJLJYnrON0eu8oCuoXeDigDQG6h8qz47QSI+rwECtJGDMNUfZmtIIwvURTo
-	f8JSKGxOTpugDwvogrEgapqcRB8sIouM1gLieviAmvVlziG6IW2ADKs8yci8+fxn+q9nhrbCFVF1q
-	8+SlF/0xmwdqf51NS6+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=w3nJDeTQu6B1Bw+T7QtLwSSFWohDlisu1ptknU1yjkI=; b=rnMiUodHJsc207
+	d/EKKJE+yzKxqyb4MTuPdF5fDgZlXyMPEDYRwiNTl1x3RQzIBPFqNPEfWBPMakF7kjEHKppM9Mv/6
+	P1uwh5DBY7rTh7i0TzEB7i9Tek0Fe3SaGYmTBu5uliFVyBaFBobD8PaGvod52jXY7PGGSg6xbmC57
+	x4/X9qxnAyn0gXuBrLHBNfUByoniQyz1n9v5fpM0a3opJCUDisMy7MEkYpwYRXnBBLTt8rhGPC3vn
+	qbaIRXmX5QVamMdZM3+tUogzZ2Hm3HqSl4kSNN66TGo8eYFiSjTHKTp6e+Ov1wdXqOlYAe1XlELui
+	Xhs9SIznrB/XHXQZ9PWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgWbD-0098eZ-1i;
-	Sun, 26 Mar 2023 20:04:19 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pgXF2-009BTg-2h;
+	Sun, 26 Mar 2023 20:45:28 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgWb9-0098bc-16
+	id 1pgXEy-009BQK-0l
 	for linux-rockchip@lists.infradead.org;
-	Sun, 26 Mar 2023 20:04:18 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id y4so27780454edo.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Mar 2023 13:04:11 -0700 (PDT)
+	Sun, 26 Mar 2023 20:45:25 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id y4so28037985edo.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Mar 2023 13:45:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679861050;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hJ2zmqBiWF8xNxlF2DpfPiHluVhEuG/NqmcIKEjOERw=;
-        b=aA1Pja6WvB4X3aGFSLK6pweg7xRHG//dRUY2v3rdNu5Y1ZhUUSYy/RgXn22Es92AQZ
-         2q7dirvzy+f8ToVEzoojz08UmnKi4yFzH5wN14F6odYDjT+ETB3pBIcscVN7ZBkmhIdr
-         dkNjOK/KYVWX+rcZAjjQ6p1Jz1g4DNSpvBsUStPqHPXhP6BtqrM79oCJ4aLpeFtnE5Rd
-         79Xtglom4SxxEjG9X9nAsz5CvV8YfEbvZSzh2Z3sbC7qoxzojxjpHc7+wS4018IHgdL1
-         9vtiLa7PMS87L+cTAlM3z1pd+pWSlOFiO7RFQAtOHx/krweFaONZ5xYFmmBA9LS1JiQi
-         E4uQ==
+        d=linaro.org; s=google; t=1679863522;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zKeqvPxm46B8O4W9qzQW2dMP+9bNVOZP8XOxlGMFt78=;
+        b=e/6HJAScT4RiWqlfn8XQ3KWA+0e55h9JsVVPIYhIF6NSHAAYuUJuqqAqIgZaBJjKIY
+         jDcWTFbI34Cq08FT/AW+ngu6EivgEN5dU2Zr2Pj00tDLi5qNQlNFmJYFTR/SB3WHvjqT
+         O0kikH5paSq8UX1KK8TnNwD4bOVmyszHMO/kPW9e15vCg/ct/UHRDKw/NIT2Z8i9IQg6
+         NmM9FDONp2kW8xo01KPwUWxShJDzHdjErq0HYWq2OdGQ+pwDNIH8GrT4r0uNHuIb0vIm
+         2pAcpzz85qCnHTIJAOn+0pdH3N2QWYfB/29FpoL4sXi2MM7+oiJ4kOMb275bwd6axEnm
+         Urlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679861050;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hJ2zmqBiWF8xNxlF2DpfPiHluVhEuG/NqmcIKEjOERw=;
-        b=NCeExAhza9uC+vD7q1tcam1dVEeqMT7FIR7RMSik9tablH/y8HcHF3gJ6KSFgDjz03
-         Ly74CSviNXzUm42KHrC7oVIpvsCwHZ2VlONF6hE4I16sqYq+kn/W47nDpHvbIw+qHPqn
-         +7eH4mSjoqNvYWfFLoFZfUNADk0X26dK3n0v3+YljfUmYMu6ArrCs+caviwCYO6GHDd0
-         BoW4tXmAa9n6utODZW7wBVluT4a1+vxyhb7EUAzQLJW8ve4N5cvidZNXFORIFlQENx8G
-         pfIL06oG4BYoxzQj4ddiZQjKK7r+pRVSHbDvuLRgF7FSQBdr87Ym94AlWOzJSaCBHHFk
-         bTgQ==
-X-Gm-Message-State: AAQBX9dlb0vozKqteG2Va9BaBnUbeuQ0C6zjSxadE4jSA6aou3Dk0JnN
-	UvdglnLejm0/YBySOT86t4Wy1g==
-X-Google-Smtp-Source: AKy350Zfn2lQrBVjODwHJamrQ0D0o0vR3gzPm6WK58ij2lWqCQGKKtUZrfYQZlXrfdUA9IXOarxj8A==
-X-Received: by 2002:aa7:ce0f:0:b0:502:24a4:b0ad with SMTP id d15-20020aa7ce0f000000b0050224a4b0admr8629955edv.4.1679861049845;
-        Sun, 26 Mar 2023 13:04:09 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:6b51:4748:3f3f:ffcf? ([2a02:810d:15c0:828:6b51:4748:3f3f:ffcf])
-        by smtp.gmail.com with ESMTPSA id u22-20020a50d516000000b004ad601533a3sm13970070edi.55.2023.03.26.13.04.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Mar 2023 13:04:09 -0700 (PDT)
-Message-ID: <0711b320-6c36-6564-70d2-35fc76ac1ebc@linaro.org>
-Date: Sun, 26 Mar 2023 22:04:08 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2 2/3] dt-bindings: clock: update rk3588 clock
- definitions
-Content-Language: en-US
-To: Shane Francis <bigbeeshane@gmail.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230326001535.149539-1-bigbeeshane@gmail.com>
- <20230326184040.33008-1-bigbeeshane@gmail.com>
- <20230326184040.33008-2-bigbeeshane@gmail.com>
+        d=1e100.net; s=20210112; t=1679863522;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zKeqvPxm46B8O4W9qzQW2dMP+9bNVOZP8XOxlGMFt78=;
+        b=4WZk0bUngFZIkNeCCACoG1GTUCbKLtHzm84jri63eI3CAtqSg30a8RRuHnnPwFfd2+
+         zMZcCtqlFjPCvUVsRRnxcl96Y0sm+IdMh8y0tes3hcH87bmVKPq343ZKQnx61YI7D3di
+         rtI0dzs1+YJWpofnhdOaJTz1C+wWGSQDvXl94vAIIZl2IlUj0GZS401SdVQkxB2CGGMk
+         6qnmgLzFXA8qbOfsnPDoJkO8Ao4jI40r2CxEOvZ3jiMwjeeaQykLAYmSMW0gjxACpoVb
+         QOjQhK7hkrtBv3eJLnmsXLXKoWbSbDa8Qa0kMnu7ZaHq0BEmhMdvHYMw1TkT1GrjHsLG
+         4DCg==
+X-Gm-Message-State: AAQBX9efBwz/fk8XR46nVJ37uXL9OiTaAaqNe218RpRybKSQvOBjwHKd
+	F1hFlYMoAMsHN9yvXpyJ6TMPkA==
+X-Google-Smtp-Source: AKy350YvH7Ps1wazgDh82qJwbf2I7lTAQe/OGi0P5E2EuabFszjUkUyN/w0BWr357mArwQ7wiKJ2Aw==
+X-Received: by 2002:a17:907:724d:b0:93f:3027:ee5f with SMTP id ds13-20020a170907724d00b0093f3027ee5fmr7636908ejc.70.1679863522281;
+        Sun, 26 Mar 2023 13:45:22 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:6b51:4748:3f3f:ffcf])
+        by smtp.gmail.com with ESMTPSA id ga5-20020a170906b84500b0093e23d03d72sm4090982ejb.177.2023.03.26.13.45.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 26 Mar 2023 13:45:21 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230326184040.33008-2-bigbeeshane@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/3] arm64: dts: rockchip: correct panel supplies
+Date: Sun, 26 Mar 2023 22:45:18 +0200
+Message-Id: <20230326204520.80859-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_130415_378482_A98F2184 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20230326_134524_274898_57CBBCA7 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,39 +94,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/03/2023 20:40, Shane Francis wrote:
-> Some vendor uboot bootloaders use the target kernels DTB image to
-> determine the target clock speeds for some PLLs, currently this can cause
-> uboot to set the clock rate for gpll incorrectly on to cpll (breaking)
-> RGMII.
+The Anbernic and Odroid Go have different panels and take differently
+named supplies, so move all the supplies to DTS defining actual panel to
+fix warnings like:
 
-Do not attach (thread) your patchsets to some other threads (unrelated
-or older versions). This buries them deep in the mailbox and might
-interfere with applying entire sets.
+  rk3326-odroid-go3.dtb: panel@0: 'IOVCC-supply' is a required property
+  rk3326-odroid-go3.dtb: panel@0: 'iovcc-supply', 'vdd-supply' do not match any of the regexes: 'pinctrl-[0-9]+'
 
-> 
-> This change starts the PLL clock definitions from 1 to correct this
-> miss-match
-> 
-> This could be handled by uboot bu updating mappings in that code base
-> however not all devices will have a replaceable uboot (in cases such as
-> when a secure boot chain is implemented)
-> 
-> Signed-off-by: Shane Francis <bigbeeshane@gmail.com>
-> ---
->  .../dt-bindings/clock/rockchip,rk3588-cru.h   | 1442 ++++++++---------
->  1 file changed, 721 insertions(+), 721 deletions(-)
-> 
-> diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> index b5616bca7b44..d63b07d054b7 100644
-> --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi      | 2 --
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts  | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts      | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts      | 1 +
+ 5 files changed, 7 insertions(+), 2 deletions(-)
 
-We did not finish discussion yet, so sending new version 50 minutes
-after your last reply does not give me chance to respond.
-
-Best regards,
-Krzysztof
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
+index 61b31688b469..ce318e05f0a6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts
+@@ -24,6 +24,8 @@ vibrator {
+ 
+ &internal_display {
+ 	compatible = "elida,kd35t133";
++	iovcc-supply = <&vcc_lcd>;
++	vdd-supply = <&vcc_lcd>;
+ };
+ 
+ &pwm0 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
+index 04eba432fb0e..80fc53c807a4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi
+@@ -235,10 +235,8 @@ mipi_out_panel: endpoint {
+ 	internal_display: panel@0 {
+ 		reg = <0>;
+ 		backlight = <&backlight>;
+-		iovcc-supply = <&vcc_lcd>;
+ 		reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
+ 		rotation = <270>;
+-		vdd-supply = <&vcc_lcd>;
+ 
+ 		port {
+ 			mipi_in_panel: endpoint {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
+index 139c898e590e..d94ac81eb4e6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts
+@@ -83,6 +83,8 @@ button-sw21 {
+ 
+ &internal_display {
+ 	compatible = "elida,kd35t133";
++	iovcc-supply = <&vcc_lcd>;
++	vdd-supply = <&vcc_lcd>;
+ };
+ 
+ &rk817 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 4702183b673c..aa6f5b12206b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -59,6 +59,8 @@ battery: battery {
+ 
+ &internal_display {
+ 	compatible = "elida,kd35t133";
++	iovcc-supply = <&vcc_lcd>;
++	vdd-supply = <&vcc_lcd>;
+ };
+ 
+ &rk817_charger {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+index 1b9769ccfdeb..35bbaf559ca3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts
+@@ -144,6 +144,7 @@ button-sw22 {
+ &internal_display {
+ 	compatible = "elida,kd50t048a", "sitronix,st7701";
+ 	reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
++	IOVCC-supply = <&vcc_lcd>;
+ 	VCC-supply = <&vcc_lcd>;
+ };
+ 
+-- 
+2.34.1
 
 
 _______________________________________________
