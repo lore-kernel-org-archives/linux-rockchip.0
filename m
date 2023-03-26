@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F2DCC6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 09:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D271FC6FD1C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 12:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1t82kCV1wiOtIFdHWB8bKAUt4RC1bVR3MDKXgNooMWk=; b=Nuf0HAZa68vnA4
-	mlcUl3auKzWrEfS/6oM1VklqTphvhxkuDYg/5nYo1GZmNcbHNGxvA7fqWxl65Eb+AmuE5gvHbPCZG
-	XpNFBTFDqmZzEgahWNsK9SNCBf6AvqFBIepUUEp43OsSG3owQUSQZRG+kaC8f8J8uOlKiC5xg2LNa
-	Ee8by1xKqtucHyOwoZexOvkYZHgNDgMFIguJKBcJacdiAGI0ytykVEp031RxABZPfp66z5ntsJOiS
-	/3yavPN8XuFq7DDHxXkvIJyOiRBQ6kQKHUpObevmXClqhp4YnUQD87gyKcR4wqFvLtfrGdAB3W2Bc
-	Q7vnMrZW4HFmY7nV2QsA==;
+	List-Owner; bh=ZpDOi692gpAtjM+gRobVYaflkRnL8G+/kemKm2nKqdI=; b=e/i9CAYkxcbCOH
+	cPOUlAJZiiL8J9oMJW4b48t9fMoHNVESt/Ly4Opl/KzzFmOpjk1jDhyCrkC8e+TpPIYNQJDLtBKQX
+	6mc9UIR2YEIQc+ORPk4NZEq9I1TW8L9/Yx/vYNjo5tqeDRmYjIm7m9UHTnXQx0ob/EPTDadlLOdkE
+	F4H+17bcxiFy2pshhbislS8jLsfomeaiViY/muA1SoAH005Cv7ccmJSZi/c14GH2RIJRTUj1il65O
+	J5z+pgxaCDsi3FKqf440v5GTXhgcI7sf+9YVYIEhd0z2nv6gQ2KeTKruzY2uQRieMLKojtrAD+oKK
+	L447AWux9zvyKH/Evbew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgMpK-008FMO-0z;
-	Sun, 26 Mar 2023 09:38:14 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pgPHZ-008OVR-37;
+	Sun, 26 Mar 2023 12:15:33 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgMpG-008FKh-2V
-	for linux-rockchip@lists.infradead.org;
-	Sun, 26 Mar 2023 09:38:12 +0000
-Received: by mail-ed1-x532.google.com with SMTP id eg48so24224866edb.13
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Mar 2023 02:38:09 -0700 (PDT)
+	id 1pgPHW-008OUB-21;
+	Sun, 26 Mar 2023 12:15:32 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id v1so5942992wrv.1;
+        Sun, 26 Mar 2023 05:15:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679823488;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3ZrBuJiIoQK2v1CW9coA2UE02/s0G06cmU89tU/gP2E=;
-        b=jMBSiE/53ZDBTd2s3jj2WfxJQOtKbHxGyPe3PymEn3WvXUiVT1DMVDD/LGE2BuHPZz
-         TEaEGjsmeDpUoSRCc4ArK1WMdYMaGEiPK2KNPLnOrkPWPVOj3J8UnYES6TU6KrDODsGo
-         hNKQK/AM8KOkqTg5X7S06SjRXOEF3Wntp0mcnkaamSK1GJwu3hETvJDHEbk7dLv5tg2l
-         QirjaXfdHM5gQV4QfDuar1aicPjBuHd/OGltjwMGcMh/BZI3uw7eiGw/cfSqtay9sdXj
-         kVcLDdNh0jQvvbKHR8R4pNQTfZJGvesQBinBQqNfrRHCtcLx2ji9ly3qrlaUfIrzgf9b
-         yw+Q==
+        d=gmail.com; s=20210112; t=1679832926;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z0X0IVqjnE4GWpoQcuqF7rO1/hOAXNdvp0AiJjukc3U=;
+        b=qVxt62xawSEhPWFgEX0PQW7ZAi7jWK9MHmWhc2MHtIrtxqXQvIojSpFrn8uDw2SbaG
+         t/lb8nXS9CAqv6a6XdUMV8xbUHt75f+t5Kx1+8iuR9az6odwTS4Bkynr1iBvEi8t2QhV
+         ejpoV5ip/bGRoANzpc2zxEgyFzAfPhCtXDwt2b78UYxgGEicMJbN4UVobm2Iehz/73iR
+         8UkusbgQGJ3fjyc9jUC8s1H9wsG0N3xpbZjNqyUw8WrzRHWdsAnEhJL+26eyYFPSSWDC
+         RqJjhejyLjwcC2mp0PPB9+7bOtitH0XBG9xE96+nMwghH5rh98yU3kTB1MFPOAnxajhn
+         zN0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679823488;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3ZrBuJiIoQK2v1CW9coA2UE02/s0G06cmU89tU/gP2E=;
-        b=moCE2z+u0sZsaLwES+RmcSotr9vLcpAN363AeJgdTnuGsEHrdQMnJtX3t/jmia0nnq
-         214fYogBFp2KRtl4zTR68x5OuxzeRCQdyPSbndY/D/C1qvBdpOtaDNPS5MEv0vNglV9F
-         hRTSovyyifiIbm4/phTBFrlW7busR5jegYB+I2Y1X9sRAZ9i1UeQE4LOXUzLXJORmZXo
-         NcwxTvmAISaDma70xfGcgQHj9weWvskw+rXPYkwXYPsv0kppk1MnnU4KwZpkPzAxR6t8
-         AqCGboFFKenSOTPAVi3wN2NbKwvsroHSJFTr5TXlxtd7Qtu6jHnWLbBrZ+OKAIc1yT9W
-         Rf1Q==
-X-Gm-Message-State: AO0yUKWOX8/6zX4CHsJ8EjVvgYWaE7AbQL6/SSariLd+fwhGHGRK4Iz0
-	APHvZyfxU4JjM/ZDkku4Ni8lEw==
-X-Google-Smtp-Source: AK7set9Wdnq4Hya0KycQsDYZzYTaBke37/nQ5a3vtW+4Iv/3ZShUaYWQ/4+8D8cBldBVx7qAB5rhJw==
-X-Received: by 2002:a17:906:c781:b0:8b1:2eef:154c with SMTP id cw1-20020a170906c78100b008b12eef154cmr15293793ejb.0.1679823488416;
-        Sun, 26 Mar 2023 02:38:08 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:6cac:926d:a4f2:aa09? ([2a02:810d:15c0:828:6cac:926d:a4f2:aa09])
-        by smtp.gmail.com with ESMTPSA id o12-20020a170906358c00b0093b6d1db84asm6384747ejb.120.2023.03.26.02.38.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Mar 2023 02:38:08 -0700 (PDT)
-Message-ID: <a5966d2b-3e8f-3518-8f71-a4ed8de4b725@linaro.org>
-Date: Sun, 26 Mar 2023 11:38:07 +0200
+        d=1e100.net; s=20210112; t=1679832926;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Z0X0IVqjnE4GWpoQcuqF7rO1/hOAXNdvp0AiJjukc3U=;
+        b=MXJD9flQ/9E+bv40MW+IFrUxOiwA6zf+jNlxxha0hp12XWJCoz+L9/KCQYORtXJ7ll
+         z2XKuoFI7EFuL/FqgwtN17w/CkRrAWb3PSqHgyqnZ6wUSlgLGi59rBTbsdFK1Uofp9bS
+         wtOn98pqdGyxF1esfgzfC4uCFWClP6z3hy+h+PxK0pVVRVIDh0uESE1s/UT+jaksimb4
+         BF5kVwtReiF0k6HvGrJxphmYfCHoZWhApqIWKjevZQWPmUOaXVIeFgPeUsErdaGL+zOg
+         K+ijvcUiuqZ0ukdaUb1eGf+HIb9nivNE9GbPpkxX1fREm54OBAc26YRsVY6TpOXFfOVP
+         IRhQ==
+X-Gm-Message-State: AAQBX9dUW7CkEGeF8dyOkXX1O8iOZy9Vr1sMSWWAt0kLog29bhcIgzdP
+	VtCl2bA5IyaYFu4Vp9dm7UXHQzBTmFQjkgKHsyE=
+X-Google-Smtp-Source: AKy350ZyC1hmbCAqH2PE38tVkcOijPvTEjTrk6Bbob5z53kn/8egAoCIB4tn2r+qQLb2/2kGaO5z5XUWHXg5jmLzpuc=
+X-Received: by 2002:adf:f4c2:0:b0:2ce:ad3a:551d with SMTP id
+ h2-20020adff4c2000000b002cead3a551dmr1361058wrp.2.1679832925722; Sun, 26 Mar
+ 2023 05:15:25 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 1/2] arm64: dts: Add basic NanoPi R6S (RK3588S) Support
-Content-Language: en-US
-To: Shane Francis <bigbeeshane@gmail.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20230326001535.149539-1-bigbeeshane@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230326001535.149539-1-bigbeeshane@gmail.com>
+ <20230326001535.149539-2-bigbeeshane@gmail.com> <10930783-e1dd-5e75-a2cc-a09af862d949@linaro.org>
+In-Reply-To: <10930783-e1dd-5e75-a2cc-a09af862d949@linaro.org>
+From: Shane Francis <bigbeeshane@gmail.com>
+Date: Sun, 26 Mar 2023 13:15:15 +0100
+Message-ID: <CABnpCuCh2kmvTRrmsY0cwNqjFR6nv1xwxrZPJieM4_Ph8qEGeA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] dt-bindings: clock: update rk3588 clock definitions
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_023810_815042_9F73276E 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20230326_051530_667041_61C10961 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,63 +84,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/03/2023 01:15, Shane Francis wrote:
-> This adds basic support for the NanoPi R6S SBC
-> 
-> Currently working :
->   - UART
->   - mmc storage (internal)
->   - RGMII / GMAC 1Gb ethernet
->   - SYS LED
-> 
-> Signed-off-by: Shane Francis <bigbeeshane@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 126 ++++++++++++++++++
->  2 files changed, 127 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 99a44c400d6a..39cad757d29d 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -91,3 +91,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
-> new file mode 100644
-> index 000000000000..21b26539a855
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
-> @@ -0,0 +1,126 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include "rk3588s.dtsi"
-> +
-> +/ {
-> +	model = "NanoPi R6S - RK3588S";
-> +	compatible = "friendlyelec,nanopi6", "rockchip,rk3588";
-
-Missing bindings documentation.
-
-Please run scripts/checkpatch.pl and fix reported warnings.
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+PiBQbGVhc2Ugd3JhcCBjb21taXQgbWVzc2FnZSBhY2NvcmRpbmcgdG8gTGludXggY29kaW5nIHN0
+eWxlIC8gc3VibWlzc2lvbgo+IHByb2Nlc3MgKG5laXRoZXIgdG9vIGVhcmx5IG5vciBvdmVyIHRo
+ZSBsaW1pdCk6CgpXaWxsIGRvLCBJIGhhdmVuJ3Qgc3VibWl0dGVkIHBhdGNoZXMgZm9yIGEgd2hp
+bGUgdG90YWxseSBmb3Jnb3QgdGhlCndyYXBwaW5nIGd1aWRlbGluZXMKCj4gVW5mb3J0dW5hdGVs
+eSB0aGUgcmVhc29uIGlzIG5vdCBnb29kIGVub3VnaCBmb3IgQUJJIGJyZWFrLiBSZXBsYWNlCj4g
+dmVuZG9yIGJvb3QgdWJvb3RzIHdpdGggb3Blbi1zb3VyY2Ugb25lIG9yIGp1c3QgY29ycmVjdCB0
+aGVtIChpdCdzIHN0aWxsCj4gVS1Cb290IHNvIGV2ZW4gZm9yIHZlbmRvciBvbmUgeW91IGhhdmUg
+dGhlIHNvdXJjZSkuCgpSZXBsYWNpbmcgdWJvb3QgaXMgZmluZSBmb3IgdGhpcyBjYXNlLCBob3dl
+dmVyIEkgY2FuIGZvcmVzZWUgdGhhdCBjYW4KY2F1c2UgaXNzdWVzIGZ1cnRoZXIgZG93biB0aGUg
+bGluZS4KCgoxLiBObyB1Ym9vdCBzb3VyY2UgZnJvbSB0aGUgdmVuZG9yLCB3ZSBhbGwga25vdyBu
+byBldmVyeW9uZSByZXNwZWN0cwpjb2RlIGxpY2VuY2luZwoKMi4gU2VjdXJlIGVudmlyb25tZW50
+cyAobGlrZSBhbmRyb2lkIHRhYmxlcyksIHRoaXMgY2hpcHNldCB3aWxsIGxpa2VseQplbmQgdXAg
+aW4gYW5kcm9pZCB0YWJsZXRzIHRoYXQgaGF2ZSB0aGUgc2VjdXJlIGJvb3QgY2hhaW4gZW5hYmxl
+LgpUaGVzZSB3aWxsIGJlIHVuYWJsZSB0byByZXBsYWNlIHVib290IGV2ZW4gaWYgc291cmNlIGlz
+IGF2YWlsYWJsZS4KCkFzIHRoaXMgU29DIGlzIG5ldyB0byB0aGUgTGludXgga2VybmVsIChub3Qg
+ZXZlbiB1c2VhYmxlIGZvciBtdWNoIGl0J3MKY3VycmVudCBzdGF0ZSkgd291bGQgaXQgbm90IGJl
+IGJldHRlciB0byBhbGluZyBvbiB0aGlzIHNvIHZlbmRvciBhbmQKbWFpbmxpbmUgRFRTICJhZ3Jl
+ZSIgbm93IHJhdGhlciB0aGFuIHBvc3NpYmx5IGhhdmUgdG8gYWRkcmVzcyBpcyBpbgp0aGUgZnV0
+dXJlID8KCkkgaGF2ZSBhbHNvIGludmVzdGlnYXRlZCBzZXR0aW5nIHRoZXNlIGNsb2NrIHJhdGVz
+IGR1cmluZyBrZXJuZWwgYm9vdCwKYnV0IHRoZSBTb0MgbG9ja3MgdXAuCgoKT24gU3VuLCBNYXIg
+MjYsIDIwMjMgYXQgMTA6MzfigK9BTSBLcnp5c3p0b2YgS296bG93c2tpCjxrcnp5c3p0b2Yua296
+bG93c2tpQGxpbmFyby5vcmc+IHdyb3RlOgo+Cj4gT24gMjYvMDMvMjAyMyAwMToxNSwgU2hhbmUg
+RnJhbmNpcyB3cm90ZToKPiA+IFNvbWUgdmVuZG9yIHVib290IGJvb3Rsb2FkZXJzIHVzZSB0aGUg
+dGFyZ2V0IGtlcm5lbHMKPiA+IERUQiBpbWFnZSB0byBkZXRlcm1pbmUgdGhlIHRhcmdldCBjbG9j
+ayBzcGVlZHMgZm9yCj4gPiBzb21lIFBMTHMsIGN1cnJlbnRseSB0aGlzIGNhbiBjYXVzZSB1Ym9v
+dCB0byBzZXQgdGhlCj4gPiBjbG9jayByYXRlIGZvciBncGxsIGluY29ycmVjdGx5IG9uIHRvIGNw
+bGwgKGJyZWFraW5nKQo+Cj4gUGxlYXNlIHdyYXAgY29tbWl0IG1lc3NhZ2UgYWNjb3JkaW5nIHRv
+IExpbnV4IGNvZGluZyBzdHlsZSAvIHN1Ym1pc3Npb24KPiBwcm9jZXNzIChuZWl0aGVyIHRvbyBl
+YXJseSBub3Igb3ZlciB0aGUgbGltaXQpOgo+IGh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xp
+bnV4L3Y1LjE4LXJjNC9zb3VyY2UvRG9jdW1lbnRhdGlvbi9wcm9jZXNzL3N1Ym1pdHRpbmctcGF0
+Y2hlcy5yc3QjTDU4Ngo+Cj4gPiBSR01JSS4KPiA+Cj4gPiBUaGlzIGNoYW5nZSBzdGFydHMgdGhl
+IFBMTCBjbG9jayBkZWZpbml0aW9ucyBmcm9tIDEKPiA+IHRvIGNvcnJlY3QgdGhpcyBtaXNzLW1h
+dGNoCj4KPiBVbmZvcnR1bmF0ZWx5IHRoZSByZWFzb24gaXMgbm90IGdvb2QgZW5vdWdoIGZvciBB
+QkkgYnJlYWsuIFJlcGxhY2UKPiB2ZW5kb3IgYm9vdCB1Ym9vdHMgd2l0aCBvcGVuLXNvdXJjZSBv
+bmUgb3IganVzdCBjb3JyZWN0IHRoZW0gKGl0J3Mgc3RpbGwKPiBVLUJvb3Qgc28gZXZlbiBmb3Ig
+dmVuZG9yIG9uZSB5b3UgaGF2ZSB0aGUgc291cmNlKS4KPgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6
+IFNoYW5lIEZyYW5jaXMgPGJpZ2JlZXNoYW5lQGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4gIC4uLi9k
+dC1iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazM1ODgtY3J1LmggICB8IDE0NDIgKysrKysrKyst
+LS0tLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgNzIxIGluc2VydGlvbnMoKyksIDcyMSBkZWxl
+dGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9y
+b2NrY2hpcCxyazM1ODgtY3J1LmggYi9pbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JvY2tjaGlw
+LHJrMzU4OC1jcnUuaAo+ID4gaW5kZXggYjU2MTZiY2E3YjQ0Li5kNjNiMDdkMDU0YjcgMTAwNjQ0
+Cj4gPiAtLS0gYS9pbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzU4OC1jcnUu
+aAo+ID4gKysrIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazM1ODgtY3J1
+LmgKPiA+IEBAIC0xMiw3MjcgKzEyLDcyNyBAQAo+ID4KPiA+ICAvKiBjcnUtY2xvY2tzIGluZGlj
+ZXMgKi8KPiA+Cj4gPiAtI2RlZmluZSBQTExfQjBQTEwgICAgICAgICAgICAgICAgICAgIDAKPgo+
+Cj4gQmVzdCByZWdhcmRzLAo+IEtyenlzenRvZgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
