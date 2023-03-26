@@ -4,78 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23872C6FD1C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 17:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BB2C7619A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 18:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JcIAVbU/1kZa90Sagu+Et6i/zKPDrkH/ipxkPwAUtVY=; b=hQIFpsllJL9AIo
-	ew01wJ4dgp1zVDi7K/OYJe8LYeEZlSRGUEhU8pgz7yZuFX1nLagI91n8Wed6sdQ8mFpbsoTibOMFz
-	S35+jWLrbMsXmdemnQEfL7kbGFPROEG7CBuk9J8U7T6Vt5evz+I/I+XOo1vvbt37PwagghDcyIVfu
-	DnMu1NNR5c0T73+uZKTo7A9CIj+3Kh5noYCQDbalyg1e4d9VGl6TWiBSzR1F3Xu8v97z8CuQPVaD4
-	famyi/Kyaw1a/9zLIAorF9JvrA1LG1QDFdSGOZUogbcfqCIFPpf4BNYkSMhesnlFML7KgxVQmr/1e
-	b+V+sUoYjxCQ6lJrgGrg==;
+	List-Owner; bh=MFmcU8jCPDxGEzeys6+qYk4byLBzKjqblZphoFYH6e4=; b=lFUG0kITpsxOF8
+	MCGzu/8X0+N+FOOgjaF+GIl7UC8aF/yRMiA1TsZONbbNwNVmg2U4XD8ayIVqWxnus9BcpNryzJsJx
+	4GQoQeKgd2Jo+FR79INmqol2sQo1JrQ+/fb0qkwO8g6nLNfFXq4wn39xF5A27U8lWllyQMLjREFue
+	dXTQAytLa8hCntV1FI324S1BSZh6/BlIgxF1bQj7QKnQZuh76iiBDQovThjmEfLbq4agIrNkWVwks
+	AAtyZO7MFEk/5AWiPtzBzD9FBIf/Fu9XkatrMWW+Wlyg86UekCfYYDrz//oQbflPYfWYX/JMrTbmy
+	n2ahYIzxR1ucdCPCL1cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgUWx-008vXK-0t;
-	Sun, 26 Mar 2023 17:51:47 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1pgVJx-0091sY-0K;
+	Sun, 26 Mar 2023 18:42:25 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgUWs-008vWW-2H;
-	Sun, 26 Mar 2023 17:51:44 +0000
-Received: by mail-wr1-x435.google.com with SMTP id l12so6369370wrm.10;
-        Sun, 26 Mar 2023 10:51:42 -0700 (PDT)
+	id 1pgVJt-0091rH-0p;
+	Sun, 26 Mar 2023 18:42:22 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id v1so6498302wrv.1;
+        Sun, 26 Mar 2023 11:42:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679853101;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20210112; t=1679856139;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SQtHwxLiaWLJIGykUiHYl89Ngg0txqbdaptvAgwczSA=;
-        b=HXRiXeGKYFyN1HdxGyEvmo3qTxzeR0tZQcIjFMCsO11EiMdZiOyyx/7sM4Jqkwyfmi
-         BaZnw3Sc1LnonaCyGsfkKUfw0Tg3CL+Sce7ORpAGOuxj8/Es3j7RuPZulMuOMaNZLWwB
-         ZFP8sbKwfJ6KX4UavGrcQcWfCJlDoHBm1jCeP/w56ebqBJjIGysPoJNsc1kGo7BcWfJG
-         0JKylT+TRSMTCr/8Le7S2wwcxnOOPZbEC2i04Q04NoJjZ0YE/3NiItMvY2oeABpyjOKq
-         lx+HNM7Zz2jpF4XdfFJx9S0wxS11Fs1Rv7zVKbp5x39yH6BPAzgpard02kkI8pC9MJs5
-         464A==
+        bh=wgqnsrfkL76jzLCKncLrfF0GPI0QEM+cSOxrzCexZZU=;
+        b=hC22Y0WScJ9Cj6pJ2gJ2fMMG5IJh8x48S8c1+WLaEYj56YSt9sc96yd3bblaj8g0AA
+         r+2BEE8KlRM9pxoyqu/lb/RFWeu4Uzet1mL/tZ3xSnlBwpJgs+bfG3L6gWRaV/qDrqRZ
+         i8fOYQmzft2IAfllxnl8+PirkVkpHxADSRptcvQbYa9C4uS/pHAqP5lLenK8N0puSpeZ
+         Q/UBoqHxReAriskymU+VgABR+085MnYKz2rKjfoNcdIKLjFkTTecZn2PBca07WM8Gx+F
+         H10Rb2PMYFG3F8AimsGLuD+43Q0JIlz8I3g7VlUZ6/iwbstEPJCEbY/EQZaiB+oXNYt2
+         gfuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679853101;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1679856139;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SQtHwxLiaWLJIGykUiHYl89Ngg0txqbdaptvAgwczSA=;
-        b=6T4qwSsEV//F38eP6/SNp7kc6j8kTUwSmF6nm3LVZ2rgVLsaN98bX6p1FBfNOLpVoq
-         UhdcxCnuG5zGVtXlGZrPSgfADItLZhPlxyPBQb9FXQt2IWDSY4mhYJiodX1V0/woXUAd
-         NPutBhkqnsoZoZL3R8JLaSSYsjaVFQOpgE2V2I1cwb9cdHmhhV7kSWt4R9/ch/m+5NUB
-         64UAA8npagpbVG0KXFZRWWxghYeicuwKLKqnsAT5hwjyhiXbnsxGRuYru29l4fWv/Q9m
-         +g61QpnsozgPJPWcqDWDCOiq7K5hU/GzCSOBdNJAGqBkl/9H2vkdis3ldERVFwNpN8jw
-         2sjw==
-X-Gm-Message-State: AAQBX9eJT5p2t/f7e2tHZ5xJ/IaYoYo6otHn2kdLpWaVMnrjerzaei4t
-	3sg4QH+3Oz23sTrngr2fwQaO8cPp80GILLzYFAdqqwgH8FMheA==
-X-Google-Smtp-Source: AKy350YEtmZvkRKbrZP0JupwIckeH8jk6XHajX9oLrJNa6AiLb+Tt3Djt4A71mPRRZcRxRb6OCxsuHXjxN4KaG5dqv4=
-X-Received: by 2002:adf:ec82:0:b0:2ce:56eb:5892 with SMTP id
- z2-20020adfec82000000b002ce56eb5892mr1486107wrn.2.1679853100837; Sun, 26 Mar
- 2023 10:51:40 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230326001535.149539-1-bigbeeshane@gmail.com>
- <20230326001535.149539-2-bigbeeshane@gmail.com> <10930783-e1dd-5e75-a2cc-a09af862d949@linaro.org>
- <CABnpCuCzdbWTTp1Gc6wWPsB80J5GYw1QzKtZzzyEYU456E=1JA@mail.gmail.com>
- <1b9c8e19-10f2-824d-9b50-51e7a9287bb1@linaro.org> <CABnpCuAWm7jh19JKukOquPnZCwHoJispgDPGJzjYy6T_BZSnbg@mail.gmail.com>
- <717bfba9-1d70-ef09-9193-853a57117926@linaro.org>
-In-Reply-To: <717bfba9-1d70-ef09-9193-853a57117926@linaro.org>
+        bh=wgqnsrfkL76jzLCKncLrfF0GPI0QEM+cSOxrzCexZZU=;
+        b=1Z6REsMgVVi3A6sxxruDOW19Q8algvzShX3L0V9QKv2nwiBpGYNDKBX+tj67ensebt
+         tEcfKkruIdJnxnVCX/mZyqAiocsgYkpAgHcq88ZIpfgaaWZ87Ny1xTAMWBYcPBtwM1qh
+         afnx9v2CZwCeedmwkJi66/GLbIkkdWLCJUX2DCRWTvkTM8sfBw2vQqOAEwyMwYkAPg4A
+         2zmld075XzxdCqLooMSrTkxS8eB2X9RWa6BzfqU1EwxDXQjHkWsO2a9GwnPqZk6JZ6Bd
+         dRFlUxr7jeJzLMpwKrNZFPPUbOkEhVqUrPmI3sC6Fy42ZDRLU7fD55k3dgop89MQ7fZz
+         tY/Q==
+X-Gm-Message-State: AAQBX9cEGW0Zo+lrQmIhw6ufwNdq0zeCaMJVsOWH/eycbIj6vf0OoXcE
+	SRSFfFHNa2fCLFfVXukMCrtqN3YQhRqsew==
+X-Google-Smtp-Source: AKy350YSItVYu2768t2b/EWfC5QuV3MRJMX9O0GqKeFGuDCXabJgUE/oz5TTL5YU+uHD0hv75IDl/Q==
+X-Received: by 2002:a5d:4e90:0:b0:2ce:a85d:5319 with SMTP id e16-20020a5d4e90000000b002cea85d5319mr8434686wru.39.1679856139274;
+        Sun, 26 Mar 2023 11:42:19 -0700 (PDT)
+Received: from wasp.lan (cpc126518-gtya5-2-0-cust190.4-4.cable.virginm.net. [86.19.196.191])
+        by smtp.googlemail.com with ESMTPSA id a6-20020a056000100600b002c8ed82c56csm23194725wrx.116.2023.03.26.11.42.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 26 Mar 2023 11:42:19 -0700 (PDT)
 From: Shane Francis <bigbeeshane@gmail.com>
-Date: Sun, 26 Mar 2023 18:51:29 +0100
-Message-ID: <CABnpCuA7V9ti6BOoz+3Mq-f=PwgxL2K7rOhjo6tJ4QquSZbaSA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] dt-bindings: clock: update rk3588 clock definitions
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: 
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de,
+	bigbeeshane@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/3] arm64: dts: Add basic NanoPi R6S (RK3588S) Support
+Date: Sun, 26 Mar 2023 19:40:38 +0100
+Message-Id: <20230326184040.33008-1-bigbeeshane@gmail.com>
+X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230326001535.149539-1-bigbeeshane@gmail.com>
+References: <20230326001535.149539-1-bigbeeshane@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_105142_783369_D382E3AB 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230326_114221_317979_DAA77040 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +92,172 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PiBCb290bG9hZGVyIGFsc28gZG9lcyBub3QgdXNlIG1haW5saW5lIERUUywgc28gd2hlcmUgaXMg
-ZXhhY3RseSB0aGUgcHJvYmxlbT8KCkluIHRoaXMgY2FzZSB1Ym9vdCBkb2VzIGxvYWQgdGhlIHRh
-cmdldCBEVEIsIGFuZCBpdCBzZWVtcyBhIGNvbW1vbgpmdW5jdGlvbiBpbiByb2NrY2hpcHMKZG93
-bnN0cmVhbSBib290IHByb2Nlc3MsIHNlZSA6CgpodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAt
-bGludXgvdS1ib290L2Jsb2IvZWYxZGQ2NTAwNDJmNjE5MTVjNDg1OWVjYzk0NjIzYTA5YTM1Mjlm
-YS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL2tlcm5lbF9kdGIuYyNMNzAKCkl0J3MgYSBwcmV0dHkg
-bmFzdHkgcHJvY2VzcywgYnV0IHVuZm9ydHVuYXRlbHkgc29tZSBkZXZpY2VzIHdpbGwgYmUKc3R1
-Y2sgd2l0aCBpdCBJIGd1ZXNzLCBhbmQgaW4KdGhvc2UgY2FzZXMgdGhleSB3aWxsIGhhdmUgaXNz
-dWVzIGJvb3RpbmcgYSBtYWlubGluZSBrZXJuZWwuCgoKUmVnYXJkcwoKCk9uIFN1biwgTWFyIDI2
-LCAyMDIzIGF0IDY6MjPigK9QTSBLcnp5c3p0b2YgS296bG93c2tpCjxrcnp5c3p0b2Yua296bG93
-c2tpQGxpbmFyby5vcmc+IHdyb3RlOgo+Cj4gT24gMjYvMDMvMjAyMyAxODo1OSwgU2hhbmUgRnJh
-bmNpcyB3cm90ZToKPiA+IEhpIEtyenlzenRvZgo+ID4KPiA+Cj4gPj4gU28gbWVudGlvbiB0aGlz
-IGluIHRoZSBjb21taXQgbXNnLgo+ID4KPiA+PiBUaGVuIGNvbW1pdCBtc2cgc2hvdWxkIGFsc28g
-bWVudGlvbiBpdC4KPiA+Cj4gPiBTb3JyeSBmb3Igbm90IGV4cGFuZGluZyBvbiB0aGlzIG1vcmUg
-aW4gdGhlIGluaXRpYWwgY29tbWl0IG1lc3NhZ2UsIEkgd2lsbAo+ID4gZXhwYW5kIG9uIHRoaXMg
-aW4gdGhlIG5leHQgcGF0Y2ggc2V0Lgo+ID4KPiA+IEhvd2V2ZXIgSSB0aGluayBpbiBnZW5lcmFs
-IGZvciBtb3N0IG1vZGVybiBwbGF0Zm9ybXMgaXQgY2FuIGJlIGFzc3VtZWQKPiA+IHRoYXQgcmVw
-bGFjaW5nIHRoZSBib290bG9hZGVyIGlzIG5vdCBhbHdheXMgc29tZXRoaW5nIHRoYXQgaXMgYWNo
-aWV2YWJsZQo+ID4gZm9yIG9uZSByZWFzb24gb3IgYW5vdGhlcgo+Cj4gQm9vdGxvYWRlciBhbHNv
-IGRvZXMgbm90IHVzZSBtYWlubGluZSBEVFMsIHNvIHdoZXJlIGlzIGV4YWN0bHkgdGhlIHByb2Js
-ZW0/Cj4KPiBCZXN0IHJlZ2FyZHMsCj4gS3J6eXN6dG9mCj4KCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+This adds basic support for the NanoPi R6S SBC
+
+Currently working :
+  - UART
+  - mmc storage (internal)
+  - RGMII / GMAC 1Gb ethernet
+  - SYS LED
+
+Signed-off-by: Shane Francis <bigbeeshane@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 126 ++++++++++++++++++
+ 2 files changed, 127 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 99a44c400d6a..39cad757d29d 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -91,3 +91,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+new file mode 100644
+index 000000000000..c9e9df669e11
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+@@ -0,0 +1,126 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/gpio/gpio.h>
++#include "rk3588s.dtsi"
++
++/ {
++	model = "NanoPi R6S - RK3588S";
++	compatible = "friendlyarm,nanopi6", "rockchip,rk3588";
++
++	aliases {
++		mmc0 = &sdhci;
++		serial2 = &uart2;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	gpio_leds: gpio-leds {
++		compatible = "gpio-leds";
++
++		sys_led: led-0 {
++			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++			label = "sys_led";
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++
++		wan_led: led-1 {
++			gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
++			label = "wan_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&wan_led_pin>;
++		};
++
++		lan1_led: led-2 {
++			gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
++			label = "lan1_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan1_led_pin>;
++		};
++
++		lan2_led: led-3 {
++			gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
++			label = "lan2_led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan2_led_pin>;
++		};
++	};
++};
++
++&pinctrl {
++	gpio-leds {
++		sys_led_pin: sys-led-pin {
++			rockchip,pins =
++				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wan_led_pin: wan-led-pin {
++			rockchip,pins =
++				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan1_led_pin: lan1-led-pin {
++			rockchip,pins =
++				<1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan2_led_pin: lan2-led-pin {
++			rockchip,pins =
++				<1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	rtl8211f {
++		rtl8211f_rst: rtl8211f-rst {
++			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&gmac1 {
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii-rxid";
++	pinctrl-0 = <&gmac1_miim
++		     &gmac1_tx_bus2
++		     &gmac1_rx_bus2
++		     &gmac1_rgmii_clk
++		     &gmac1_rgmii_bus>;
++	pinctrl-names = "default";
++	tx_delay = <0x42>;
++	status = "okay";
++};
++
++&mdio1 {
++	rgmii_phy1: ethernet-phy@1 {
++		compatible = "ethernet-phy-id001c.c916";
++		reg = <0x1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rtl8211f_rst>;
++		reset-assert-us = <20000>;
++		reset-deassert-us = <100000>;
++		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	no-sdio;
++	no-sd;
++	non-removable;
++	max-frequency = <200000000>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
+-- 
+2.40.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
