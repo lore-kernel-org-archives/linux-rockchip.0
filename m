@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B82DCC7619A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 20:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDFAC74A5B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Mar 2023 20:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FIeZyPWKSkTXz2AKHeoaj1v5OymBkPI2mYTpWA/HKX0=; b=ruUIxUmV+GctkM
-	oQA2kKH0ZxDcsBmvMf/uvwdIK46ANKi9ucidumRkH4Ob2RWri2XMTKTP/x6PFj0VaHXc6KH9tdgID
-	E3aoYNcCOBS87vbcNYu7jKgqiEdYsItPeRnaebFE6jYFw+g7MEhdwSK2sfjb8aJ+Bj0EpSI4WMNTG
-	oHL4Usbrpn96QfBEN3CtGZPKrM6YSOz3CZo2EXPppQY4bTe3nQjQ9oEix/uixT93PNTuefzDfQVne
-	LlHlqOmTGD1VOSFw7f4a0V7W8AkuoqFp7aaJU/wrvJL0pjoswkMcVH51rLcTcMDfJ0I4+TnZPoi0G
-	DoC5a+6IYfUQjD0sysEg==;
+	List-Owner; bh=Aqo8jXOo5PL5PVPjGck66X+jM5dRPlONIrhpw6BDhgw=; b=nDxyJ/u78dgo7M
+	yPLt2GVfGok+hKy1q9On0L9lCmWpI4Bs3wv/p2X7EGwF9yFp0d6wU5nnqPY85j4KnT5k5u5IXMpN3
+	2nib0bhOpkM9deCiW6dYINyGHP6facTH5KZP/CIgGI0iSJTo7+RHZRsWAnXqCpMWfnV4id5ws2fbK
+	8imTnLx/AVUDB7IQxUbJLJYnrON0eu8oCuoXeDigDQG6h8qz47QSI+rwECtJGDMNUfZmtIIwvURTo
+	f8JSKGxOTpugDwvogrEgapqcRB8sIouM1gLieviAmvVlziG6IW2ADKs8yci8+fxn+q9nhrbCFVF1q
+	8+SlF/0xmwdqf51NS6+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgWZi-0098Tc-2j;
-	Sun, 26 Mar 2023 20:02:46 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pgWbD-0098eZ-1i;
+	Sun, 26 Mar 2023 20:04:19 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgWZf-0098Sq-2g
+	id 1pgWb9-0098bc-16
 	for linux-rockchip@lists.infradead.org;
-	Sun, 26 Mar 2023 20:02:45 +0000
-Received: by mail-ed1-x532.google.com with SMTP id cn12so27730099edb.4
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Mar 2023 13:02:42 -0700 (PDT)
+	Sun, 26 Mar 2023 20:04:18 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id y4so27780454edo.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Mar 2023 13:04:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679860961;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=linaro.org; s=google; t=1679861050;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=DazWKebj2lRWg1ObnAajvsy7M56gUmUMIv5qbvT2CDw=;
-        b=bNPB4Ccy5XCkx+8QAyX+sorKadLmeYghLCv8V3BcQyOu5LuL0hC5ZQB2AXH4pE75pT
-         SI4pHWQve+h+TrgjM2jk7fNq/OAgs5d1mX6gu2U9CIN4T7lPJqAYilpSqehZx1OaQa4w
-         QHha9kr/LML1UYrEaZ513YUlVs8LRlv3CUz+4lCLLYk6ISVaO0rVWCScM/xXLY3xUyiU
-         iaQ9QWBSmmO8PtLUqQrUx1iDaqLF9In0Ng97C+HVcJHS0gWVgE2xZ650ZqKftB88fC6J
-         u2QK0x2BxTsO08EkaU9N2O+zUKC+3r1vgUcIrjGOMXlmHH+VON8snF9Ety9gwuKK01NH
-         AJ3A==
+        bh=hJ2zmqBiWF8xNxlF2DpfPiHluVhEuG/NqmcIKEjOERw=;
+        b=aA1Pja6WvB4X3aGFSLK6pweg7xRHG//dRUY2v3rdNu5Y1ZhUUSYy/RgXn22Es92AQZ
+         2q7dirvzy+f8ToVEzoojz08UmnKi4yFzH5wN14F6odYDjT+ETB3pBIcscVN7ZBkmhIdr
+         dkNjOK/KYVWX+rcZAjjQ6p1Jz1g4DNSpvBsUStPqHPXhP6BtqrM79oCJ4aLpeFtnE5Rd
+         79Xtglom4SxxEjG9X9nAsz5CvV8YfEbvZSzh2Z3sbC7qoxzojxjpHc7+wS4018IHgdL1
+         9vtiLa7PMS87L+cTAlM3z1pd+pWSlOFiO7RFQAtOHx/krweFaONZ5xYFmmBA9LS1JiQi
+         E4uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679860961;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20210112; t=1679861050;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DazWKebj2lRWg1ObnAajvsy7M56gUmUMIv5qbvT2CDw=;
-        b=PJsZ/TqfWnsR3QNIKweQtWTMlxAs0S8PFJLX72dEMiJeqDhk6ypPL9/i11yiBPD21C
-         iTYibhDUyWsVFTH16uMBBHb/AKS9htXJNPjBpaHzS6sbIHt/ZijHbIXycYg1Gl4rjATL
-         y6ZgxJWcF3/hJWkJAfWBHPMLkaycHJoWFXwQjr08J0+1vwm9cT1mP8N1EwkC/GI4BUe1
-         HpVAWBS/rE+4kTYS0F0uYuv3mwwxLb8oYvofujei/uv2iVE9Kf/YLyqYd/Qp3i4sFGeX
-         V54cZpmMsaqz3z4WCu9J2ZRXe6otVVDKQTHimlGvOk73yI4rVyiSyHj/RTaXw2j+S19j
-         MpHg==
-X-Gm-Message-State: AAQBX9fkzgxlQ7A1aINhGm+QN0KVqCgLvIHe93M7pRFQApzSjRAVsZkn
-	e4//nUcJ93bbcDDziIWOz551Ig==
-X-Google-Smtp-Source: AKy350YQZLA++IfD8sdPFP7K0HlbhI49hKZfioV/qHbnQRL1p2eTf8fgPRmFffJsdIe++eCT8OHahA==
-X-Received: by 2002:a05:6402:1285:b0:4fb:6523:2b37 with SMTP id w5-20020a056402128500b004fb65232b37mr10926401edv.15.1679860961614;
-        Sun, 26 Mar 2023 13:02:41 -0700 (PDT)
+        bh=hJ2zmqBiWF8xNxlF2DpfPiHluVhEuG/NqmcIKEjOERw=;
+        b=NCeExAhza9uC+vD7q1tcam1dVEeqMT7FIR7RMSik9tablH/y8HcHF3gJ6KSFgDjz03
+         Ly74CSviNXzUm42KHrC7oVIpvsCwHZ2VlONF6hE4I16sqYq+kn/W47nDpHvbIw+qHPqn
+         +7eH4mSjoqNvYWfFLoFZfUNADk0X26dK3n0v3+YljfUmYMu6ArrCs+caviwCYO6GHDd0
+         BoW4tXmAa9n6utODZW7wBVluT4a1+vxyhb7EUAzQLJW8ve4N5cvidZNXFORIFlQENx8G
+         pfIL06oG4BYoxzQj4ddiZQjKK7r+pRVSHbDvuLRgF7FSQBdr87Ym94AlWOzJSaCBHHFk
+         bTgQ==
+X-Gm-Message-State: AAQBX9dlb0vozKqteG2Va9BaBnUbeuQ0C6zjSxadE4jSA6aou3Dk0JnN
+	UvdglnLejm0/YBySOT86t4Wy1g==
+X-Google-Smtp-Source: AKy350Zfn2lQrBVjODwHJamrQ0D0o0vR3gzPm6WK58ij2lWqCQGKKtUZrfYQZlXrfdUA9IXOarxj8A==
+X-Received: by 2002:aa7:ce0f:0:b0:502:24a4:b0ad with SMTP id d15-20020aa7ce0f000000b0050224a4b0admr8629955edv.4.1679861049845;
+        Sun, 26 Mar 2023 13:04:09 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:6b51:4748:3f3f:ffcf? ([2a02:810d:15c0:828:6b51:4748:3f3f:ffcf])
-        by smtp.gmail.com with ESMTPSA id v2-20020a1709064e8200b008d9ddd2da88sm13292289eju.6.2023.03.26.13.02.40
+        by smtp.gmail.com with ESMTPSA id u22-20020a50d516000000b004ad601533a3sm13970070edi.55.2023.03.26.13.04.08
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Mar 2023 13:02:41 -0700 (PDT)
-Message-ID: <03ec1aac-3c6d-892f-fad9-f386a5d4d10e@linaro.org>
-Date: Sun, 26 Mar 2023 22:02:39 +0200
+        Sun, 26 Mar 2023 13:04:09 -0700 (PDT)
+Message-ID: <0711b320-6c36-6564-70d2-35fc76ac1ebc@linaro.org>
+Date: Sun, 26 Mar 2023 22:04:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH 2/2] dt-bindings: clock: update rk3588 clock definitions
+Subject: Re: [PATCH v2 2/3] dt-bindings: clock: update rk3588 clock
+ definitions
+Content-Language: en-US
 To: Shane Francis <bigbeeshane@gmail.com>
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20230326001535.149539-1-bigbeeshane@gmail.com>
- <20230326001535.149539-2-bigbeeshane@gmail.com>
- <10930783-e1dd-5e75-a2cc-a09af862d949@linaro.org>
- <CABnpCuCzdbWTTp1Gc6wWPsB80J5GYw1QzKtZzzyEYU456E=1JA@mail.gmail.com>
- <1b9c8e19-10f2-824d-9b50-51e7a9287bb1@linaro.org>
- <CABnpCuAWm7jh19JKukOquPnZCwHoJispgDPGJzjYy6T_BZSnbg@mail.gmail.com>
- <717bfba9-1d70-ef09-9193-853a57117926@linaro.org>
- <CABnpCuA7V9ti6BOoz+3Mq-f=PwgxL2K7rOhjo6tJ4QquSZbaSA@mail.gmail.com>
-Content-Language: en-US
+ <20230326184040.33008-1-bigbeeshane@gmail.com>
+ <20230326184040.33008-2-bigbeeshane@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CABnpCuA7V9ti6BOoz+3Mq-f=PwgxL2K7rOhjo6tJ4QquSZbaSA@mail.gmail.com>
+In-Reply-To: <20230326184040.33008-2-bigbeeshane@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230326_130243_937844_F1E0EA65 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230326_130415_378482_A98F2184 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,24 +98,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/03/2023 19:51, Shane Francis wrote:
->> Bootloader also does not use mainline DTS, so where is exactly the problem?
-> 
-> In this case uboot does load the target DTB, and it seems a common
-> function in rockchips
-> downstream boot process, see :
-> 
-> https://github.com/rockchip-linux/u-boot/blob/ef1dd650042f61915c4859ecc94623a09a3529fa/arch/arm/mach-rockchip/kernel_dtb.c#L70
-> 
+On 26/03/2023 20:40, Shane Francis wrote:
+> Some vendor uboot bootloaders use the target kernels DTB image to
+> determine the target clock speeds for some PLLs, currently this can cause
+> uboot to set the clock rate for gpll incorrectly on to cpll (breaking)
+> RGMII.
 
-U-Boot comes with its own DTB, so what does it means "loads the target
-DTB"? From where? The one appended to the kernel zImage? No, it cannot...
+Do not attach (thread) your patchsets to some other threads (unrelated
+or older versions). This buries them deep in the mailbox and might
+interfere with applying entire sets.
 
-Any component which operates on mainline DTB must conform to the
-bindings (with respect to the ABI), thus your arguments here mean you
-are not allowed to change ABI in the future. Never. This change,
-assuming original binding was broken, could be warranted.
+> 
+> This change starts the PLL clock definitions from 1 to correct this
+> miss-match
+> 
+> This could be handled by uboot bu updating mappings in that code base
+> however not all devices will have a replaceable uboot (in cases such as
+> when a secure boot chain is implemented)
+> 
+> Signed-off-by: Shane Francis <bigbeeshane@gmail.com>
+> ---
+>  .../dt-bindings/clock/rockchip,rk3588-cru.h   | 1442 ++++++++---------
+>  1 file changed, 721 insertions(+), 721 deletions(-)
+> 
+> diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> index b5616bca7b44..d63b07d054b7 100644
+> --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
 
+We did not finish discussion yet, so sending new version 50 minutes
+after your last reply does not give me chance to respond.
 
 Best regards,
 Krzysztof
