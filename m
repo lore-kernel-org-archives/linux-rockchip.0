@@ -4,98 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61AFBC6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 16:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E71C76195
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 16:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CrY+9vbPO0QVasI/fPzXBsVO4Y7oGBrRqZPN5lERieM=; b=4dadL8kvqM/r21
-	RAc5d22DSBaQoJWPsRbwPrJhQxEyA3MCtMVmdzXWW7AgDsgK1KYhKjxD4/tL340Pkz41pI+Axn1Rb
-	ixQVR2NkjaFL/uwTpzmwnDGOpVSJd5qYtZBeVuzM5CNWTmwvNt0482RKldG+YpkqVIrqtZJ4OYF1S
-	zUPFJV1QnCG366a+IouQKZ8zyKx85BtC81XZG9EKRNUw18RVgVXb3MPUBhIkEKvHsrHeNVqrCkuvh
-	F9gdF+8y+ts1ABdOdJLKz6unT0WfqpQEtreeQRZas4clbA999CzoiktHbGSqOdyqR8jPEcLdJL77j
-	EKwfaCPmJOrk0Gpl/v5Q==;
+	List-Owner; bh=Z+EXktxBlhuBgHucBxoHRCcpjOoXMVFC3SDTCu35ucg=; b=aKAuMnEiJRR0TU
+	zRyasbcMOQa4VYZxseR74dPWmLVe/4kWPmDfA+OwaHNAYwyyJAW+eQPNdAv1RNy4mvII+f2mlPNbG
+	ES5HGxOwXKfjiAOx6ZtPq0Ou9i72OeO7rH1oeX86JjFLQkWSkXHjz/j0vRDlR7mt02PKSMELoo5yi
+	3GeNya9zZsO0egG614slbUiIimC6sJE7rXKLHYrQ77BRoH66ZLoJWG8b1zKej2MWU/yuha0rOWuOs
+	0phPXpsCcMLLGUQsO9+bmzFMyoYUAEFtIBx3FJYNxcDIMdNETtf0wlWKS1sVz4xHg7cfk7Go2k++5
+	ST6m+66/M6C+icPWwGQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgpVr-00BgSj-0v;
-	Mon, 27 Mar 2023 16:16:03 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1pgq3T-00BlRu-04;
+	Mon, 27 Mar 2023 16:50:47 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgpVo-00BgRo-1x
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Mar 2023 16:16:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1679933759;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G0nuHdhiHtoR5ysf1vkwELutiA1y5BU1zh9hoJTI0uw=;
-	b=SxBejHfy4yEMczm02Pbp5Br3ydim4QDAswicn+9SezLEGJ7dH19OA+cJpvtdV7TBqnJalH
-	jpK/imTkEKfDyOMI9sUsVsLHw2lBvbwAGv8H5iPQh6LffQsD7iTX+cnjwZh8yPxCrFDJr1
-	UhutYb+00trj7tZrDfssBn+B0ipOhos=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-539-Qnn9xxk1OGyzk9SS5tPulw-1; Mon, 27 Mar 2023 12:15:58 -0400
-X-MC-Unique: Qnn9xxk1OGyzk9SS5tPulw-1
-Received: by mail-wm1-f70.google.com with SMTP id n19-20020a05600c3b9300b003ef63ef4519so3483507wms.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Mar 2023 09:15:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679933757;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tr+WD6+CTYSVy+3bIJpQprNnSLspmj5WbXleE2+KZLo=;
-        b=i322E1PJ9veR8UaxevxxnrHt2CnJHU91gBh7KJ7v3DeikYkfE85+G7B08+zuCBY6zj
-         3PHgVw/cMI2uWRgwBzgMJ1dJPHxuhNPRLWAGB234O3a8BB3nAhD1sYz93dRyZtJjqfD/
-         gLp3VUNglIQPwsRDBQiM9B6acHpeXmLt5ViA/hX1dYF6lPIaukgKchWfd7r1rUhu2mDZ
-         59Myw+AbdytxJXDBPOZuq4Ut1xzhSeh5p360z19LzoXWN1zYK+iUmVnG5i81bRFB0BwU
-         Yy11dOaM1pK/+xozMBV6XAKWfoqen08VKiZPVrGm9aLDndJIcv0rgoZfDSblR86LdYwK
-         MfiQ==
-X-Gm-Message-State: AO0yUKW4D4Gj7V9tMluNKm7/t5iQSGp+nyuudbGHWwdpGAeveTg82004
-	8+6cWX7k/At4Xhe2pYW9QvTzwOpT0lVAGjVPd8h+3FT1hTDst7FwWE88HdF6y/R66MlRMV2qofQ
-	uU+EXmekpXNuV0wP/ASQWyQ+34JOAx5Xu
-X-Received: by 2002:a05:600c:2114:b0:3ed:492f:7f37 with SMTP id u20-20020a05600c211400b003ed492f7f37mr9156570wml.10.1679933757079;
-        Mon, 27 Mar 2023 09:15:57 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9k+XPb+CPOEQbw1BrWiSX82Db3GJ1LZxPLDOINlpFxnu2WxagxZuxwLYswHAaRRCivF3Rkbw==
-X-Received: by 2002:a05:600c:2114:b0:3ed:492f:7f37 with SMTP id u20-20020a05600c211400b003ed492f7f37mr9156549wml.10.1679933756765;
-        Mon, 27 Mar 2023 09:15:56 -0700 (PDT)
-Received: from localhost (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id t9-20020a1c7709000000b003ed1ff06faasm14048979wmi.19.2023.03.27.09.15.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Mar 2023 09:15:56 -0700 (PDT)
-From: Javier Martinez Canillas <javierm@redhat.com>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, =?utf-8?Q?Ond=C5=99e?=
- =?utf-8?Q?j?= Jirman <megi@xff.cz>
-Cc: linux-kernel@vger.kernel.org, Robert Mader <robert.mader@collabora.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Peter Robinson
- <pbrobinson@gmail.com>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Martijn Braam <martijn@brixit.nl>, Kamil =?utf-8?Q?Trzci=C5=84ski?=
- <ayufan@ayufan.eu>,
- Caleb Connolly <kc@postmarketos.org>, Jarrah Gosbell <kernel@undef.tools>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
+	id 1pgq3N-00BlLC-0V;
+	Mon, 27 Mar 2023 16:50:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1679935835; bh=0b6vVlYAyh5z7fdaNDqWVNg+I6CkcXsuoksujna/tzw=;
+	h=Date:From:To:Subject:X-My-GPG-KeyId:References:From;
+	b=pmarkM+/OZc5OTi6iMA5S8Y17L7nGwnIcGzPlZKDWPUUrPCpqkcOwE2lru+q14ty0
+	 rnPmMWBKXaaKRQesS6Jte9hq+nfXdfQ9NGJFNmQvuyhof1Rkw3aJ8/XEXRBY62ctsx
+	 YoELERSyoCzH9p6Db06LlLzgI7SNCNzLI1GLl7II=
+Date: Mon, 27 Mar 2023 18:50:35 +0200
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Javier Martinez Canillas <javierm@redhat.com>,
+	linux-kernel@vger.kernel.org,
+	Robert Mader <robert.mader@collabora.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Martijn Braam <martijn@brixit.nl>,
+	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>,
+	Caleb Connolly <kc@postmarketos.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jarrah Gosbell <kernel@undef.tools>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v2] arm64: dts: rk3399-pinephone-pro: Add internal
  display support
-In-Reply-To: <1924921.PYKUYFuaPT@diego>
+Message-ID: <20230327165035.uc2etuxypehjnrp6@core>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
+	Javier Martinez Canillas <javierm@redhat.com>,
+	linux-kernel@vger.kernel.org,
+	Robert Mader <robert.mader@collabora.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Martijn Braam <martijn@brixit.nl>,
+	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>,
+	Caleb Connolly <kc@postmarketos.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jarrah Gosbell <kernel@undef.tools>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
 References: <20230327074136.1459212-1-javierm@redhat.com>
  <20230327130147.wgxl2qayhzsi2xak@core>
- <87wn32rynm.fsf@minerva.mail-host-address-is-not-set>
- <1924921.PYKUYFuaPT@diego>
-Date: Mon, 27 Mar 2023 18:15:55 +0200
-Message-ID: <87mt3yrwzo.fsf@minerva.mail-host-address-is-not-set>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+In-Reply-To: <20230327130147.wgxl2qayhzsi2xak@core>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_091600_725277_1353D93C 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20230327_095041_662237_6143DACD 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,37 +91,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JpdGVzOgoKSGVsbG8gSGVpa28sCgo+
-IEFtIE1vbnRhZywgMjcuIE3DpHJ6IDIwMjMsIDE3OjM5OjU3IENFU1Qgc2NocmllYiBKYXZpZXIg
-TWFydGluZXogQ2FuaWxsYXM6Cj4+IE9uZMWZZWogSmlybWFuIDxtZWdpQHhmZi5jej4gd3JpdGVz
-Ogo+PiAKPj4gSGVsbCBPbmTFmWVqLAo+PiAKPj4gPiBIaSBKYXZpZXIsCj4+ID4KPj4gPiBJJ3Zl
-IHRyaWVkIHRoZSBwYXRjaCBvbiB0b3Agb2YgbGludXMvbWFzdGVyIGFuZCBpdCB3b3JrcyBhcyBl
-eHBlY3RlZC4gTXkKPj4gPiBEUk0gdGVzdCBhcHAgc2hvd3MgMTYuNjY5bXMgYmV0d2VlbiBmcmFt
-ZXMuIFRoZSBkaXNwbGF5IG91dHB1dCBpcyBvayBvbgo+PiA+IGRldmVsb3BlciBiYXRjaCBwaW5l
-cGhvbmUgcHJvLCBhbmQgaXMgY29ycnVwdGVkIG9uIHByb2R1Y3Rpb24gdmVyc2lvbi4KPj4gPiBE
-aXNwbGF5IGFsc28gZG9lc24ndCBjb21lIGJhY2sgYWZ0ZXIgYmxhbmtpbmcuIEFsbCBhcyBleHBl
-Y3RlZC4KPj4gPgo+PiA+IFRlc3RlZC1ieTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Cj4+
-ID4KPj4gCj4+IFRoYW5rcyBmb3IgdGVzdGluZy4KPj4gCj4+ID4gQSBmZXcgbW9yZSBjb21tZW50
-cyBiZWxvdy4KPj4gPgo+PiAKPj4gSSdtIE9LIHdpdGggdGhlc2UgY29tbWVudHMgYnV0IEkgZGlk
-IGEgZ2l0IGRpZmYgd2l0aCB5b3VyIG9yYW5nZS1waS02LjMKPj4gYnJhbmNoIGp1c3QgYmVmb3Jl
-IHBvc3RpbmcgYW5kIHRoaXMgd2FzIHRoZSBsYXRlc3QgdGhhdCdzIGluIHlvdXIgdHJlZS4KPj4g
-Cj4+IFNvIGZlZWwgZnJlZSB0byBlaXRoZXIgcG9zdCBhIHYzIGFkZHJlc3NpbmcgdGhlIHRoaW5n
-cyB5b3UgYXJlIHBvaW50aW5nCj4+IG91dCBvciBsZXRzIGxhbmQgdGhpcyBhbmQgd2UgY2FuIHBv
-c3QgYW55IGZ1cnRoZXIgY2xlYW51cHMgb24gdG9wIElNTy4KPgo+IEkgd291bGQgcmVhbGx5IGxp
-a2UgdG8gX25vdF8gYXBwbHkgZXNzZW50aWFsbHkgYnJva2VuIGNvZGUsIHNvIHJlYWxseQo+IHdv
-dWxkIHByZWZlciB0aGUgdjMtYXBwcm9hY2guCj4KCkl0IGlzIGJyb2tlbiB0aG91Z2g/IFRoaXMg
-aXMgd2hhdCBpcyBpbiBPbmRyZWogZG93bnN0cmVhbSB0cmVlIGFuZCBJIHNlZQpubyBpc3N1ZXMg
-b24gbXkgUGluZXBob25lIFByby4gSGUgbWVudGlvbmVkIHNvbWUgZmxpY2tlciB3aGVuIGxvb2tp
-bmcgYXQKdGhlIHNpZ25hbHMgd2l0aCBhIHNjb3BlIGFuZCBob29raW5nIGEgcGhvdG9yZXNpc3Rv
-ci4KCkJ1dCB0aGF0J3MgZmFpci4gSSdsbCBsZXQgT25kcmVqIHRoZW4gcG9zdCBhIHYzIGlmIGhl
-IHdhbnRzIHRvIGFkZHJlc3MgdGhlCmlzc3VlcyBoZSBwb2ludGVkIG91dCwgc2luY2UgaXMgaGlz
-IHBhdGNoIGFmdGVyIGFsbC4KCi0tIApCZXN0IHJlZ2FyZHMsCgpKYXZpZXIgTWFydGluZXogQ2Fu
-aWxsYXMKQ29yZSBQbGF0Zm9ybXMKUmVkIEhhdAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+One small note...
+
+On Mon, Mar 27, 2023 at 03:01:48PM +0200, megi xff wrote:
+> Hi Javier,
+> 
+> [...]
+>
+> This (1 kHz) seems to be outside of the range of recommended dimming frequency
+> of SY7203: https://megous.com/dl/tmp/fb79af4023a5f102.png It's too low.
+> 
+> The consequence is that there's a large ripple on the positive input of the
+> feedback comparator https://megous.com/dl/tmp/e155900fecb0323f.png which
+> will cause similar instability in backlight brightness.
+> 
+> I've hooked up a photoresistor to a scope, and the display is indeed varying the
+> brightness at 1 kHz https://megous.com/dl/tmp/09cb95c7b4b2892b.png
+> 
+> There are two variants of SY7203 which differ by ouput regulation technique.
+> One with this internal integrator, and other with direct PWM control of the
+> output. My guess is that PPP uses the integrator variant.
+> 
+> I switched PWM period to 50000 (20 kHz recommended by the datasheet and the
+> flicker is gone https://megous.com/dl/tmp/31b6bfc51badde3b.png
+> 
+> So I think higher PWM frequency will be better suited here, and this may really
+> be the LED driver variant with the integrator.
+> 
+> (Photoresistors are not that fast, but I've hooked a LED to signal generator,
+> to simulate 20kHz blinking backlight, and I was still able to catch the pattern
+> on the scope via a photoresistor, so it looks like this verifies that it
+> would still be possible to measure some flicker at 20 kHz using this technique.
+> I guess I should buy a PIN diode for the next time. :))
+
+Experimentally SY7203 will only start up with duty cycle of 250ns or more.
+
+So this means that default curve generated by the kernel will not work at 20 kHz
+at low ranges, because cie1931 -> pwm duty cycle covnersion done by the
+kernel will result in too small duty cycle at brightness < 5%, because that
+translates to duty cycle of 250ns or less. In other words, kernel will generate
+3124 brightness steps for PWM period of 50us, with bottom ~150 steps being
+unusable and behaving weirdly (sometimes some of them work sometimes not,
+depending whether the LED regulator is already running or not).
+
+So the cie1931 curve may need a bit of a Y shift, by specifying a minimum duty
+cycle usable by the hardware.
+
+Something like these 50 brightness levels work nicely, starting from minimum
+250ns and going up:
+
+	brightness-levels =
+		<0 250 360 470 580 690 810 949 1110 1294 1502
+		1737 1998 2289 2610 2964 3351 3774 4233 4731
+		5268 5847 6467 7133 7845 8604 9412 10271 11182
+		12146 13164 14239 15374 16568 17822 19140 20521
+		21969 23483 25068 26722 28447 30247 32121 34071
+		36099 38210 40400 42669 45026 47468 50000>;
+	default-brightness-level = <17>;
+
+when put into backlight node.
+
+Or if we want 100 steps, then this curve would work, too:
+
+brightness-levels = <250 304 360 414 470 524 580 634 690 747 810 877
+	949 1027 1110 1199 1294 1395 1502 1616 1737 1864 1998 2140 2289
+	2446 2610 2783 2964 3154 3351 3559 3774 3999 4233 4477 4731 4994
+	5268 5552 5847 6152 6467 6795 7133 7483 7845 8219 8604 9002 9412
+	9835 10271 10719 11182 11656 12146 12648 13164 13695 14239 14799
+	15374 15963 16568 17186 17822 18474 19140 19822 20521 21236 21969
+	22717 23483 24267 25068 25885 26722 27575 28447 29338 30247 31173
+	32121 33087 34071 35077 36099 37145 38210 39292 40400 41523 42669
+	43839 45026 46237 47468 48722 50000>;
+
+
+> > +		pwm-delay-us = <10000>;
+
+Also this doesn't seem to be documented anywhere or used in the kernel code...
+So we should remove it.
+
+kind regards,
+	o.
+
+> > +	};
+> > +
+> >  	gpio-keys {
+> >  		compatible = "gpio-keys";
+> >  		pinctrl-names = "default";
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
