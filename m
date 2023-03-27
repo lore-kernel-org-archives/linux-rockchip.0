@@ -4,37 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E71C76195
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 16:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F72C76195
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 17:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z+EXktxBlhuBgHucBxoHRCcpjOoXMVFC3SDTCu35ucg=; b=aKAuMnEiJRR0TU
-	zRyasbcMOQa4VYZxseR74dPWmLVe/4kWPmDfA+OwaHNAYwyyJAW+eQPNdAv1RNy4mvII+f2mlPNbG
-	ES5HGxOwXKfjiAOx6ZtPq0Ou9i72OeO7rH1oeX86JjFLQkWSkXHjz/j0vRDlR7mt02PKSMELoo5yi
-	3GeNya9zZsO0egG614slbUiIimC6sJE7rXKLHYrQ77BRoH66ZLoJWG8b1zKej2MWU/yuha0rOWuOs
-	0phPXpsCcMLLGUQsO9+bmzFMyoYUAEFtIBx3FJYNxcDIMdNETtf0wlWKS1sVz4xHg7cfk7Go2k++5
-	ST6m+66/M6C+icPWwGQw==;
+	List-Owner; bh=0CQD5w1bNXDW+Wuto+aJmHVo5Ib9dttYy8vxLFbJKrY=; b=djLijcX868HW4I
+	7wZ5Wjw6WRSZ7PF+9ikeVI5Wq6FhaCrEe2ELaIm+iYphO4nR+f+eLbyg/gbekHLnETD5BEU8aPhY8
+	gALx6tP1anFzvjpUwISccZBHfVFjzc/34T4ZaMv/ZmTaRwxQD8bkj0GvSM4ov+DZc/JtdNFe0fJvp
+	B2ptdaIZuuTXmWDw1+BsJcCmztw/vRkL+ecbUSW05UBH+6j1Y0x5pM6w2VGBe/A6u7GlAT7oT4Gv/
+	jfLNNfrp+kl0SsiIkKDttHKcefIXxOa1TfAau/duQBwa/9kHYLmkbMiZR0GIE5NQwE0NmdD53wAjG
+	ZomABt9Pp7kr7FRAdjpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgq3T-00BlRu-04;
-	Mon, 27 Mar 2023 16:50:47 +0000
+	id 1pgqxq-00Bwhz-1t;
+	Mon, 27 Mar 2023 17:49:02 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgq3N-00BlLC-0V;
-	Mon, 27 Mar 2023 16:50:43 +0000
+	id 1pgqxm-00Bwga-1s;
+	Mon, 27 Mar 2023 17:49:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1679935835; bh=0b6vVlYAyh5z7fdaNDqWVNg+I6CkcXsuoksujna/tzw=;
-	h=Date:From:To:Subject:X-My-GPG-KeyId:References:From;
-	b=pmarkM+/OZc5OTi6iMA5S8Y17L7nGwnIcGzPlZKDWPUUrPCpqkcOwE2lru+q14ty0
-	 rnPmMWBKXaaKRQesS6Jte9hq+nfXdfQ9NGJFNmQvuyhof1Rkw3aJ8/XEXRBY62ctsx
-	 YoELERSyoCzH9p6Db06LlLzgI7SNCNzLI1GLl7II=
-Date: Mon, 27 Mar 2023 18:50:35 +0200
+	t=1679939336; bh=PipWPWkBFS1GgoXZt9XVYf8bnGqWk6b5DvNg8L6icis=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=oFt0UzfsxU3d6jLwx+2Zz5OB3qb6w3eIp31DHUKAgjTJRfQKpvpIXEsHuh1X3JNQ3
+	 IH3jQRfELvITxHZHpaHL2+yHL3UOqsMKAqNKORvCcmzpaGN34IeAAHpvjKFA0pnvix
+	 RlRFbNITTZr0fKwMeVHgBE3KKB5ATx7gRwsdjBu4=
+Date: Mon, 27 Mar 2023 19:48:55 +0200
 From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Javier Martinez Canillas <javierm@redhat.com>,
+To: Javier Martinez Canillas <javierm@redhat.com>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	Robert Mader <robert.mader@collabora.com>,
 	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
@@ -43,7 +44,6 @@ To: Javier Martinez Canillas <javierm@redhat.com>,
 	Martijn Braam <martijn@brixit.nl>,
 	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>,
 	Caleb Connolly <kc@postmarketos.org>,
-	Heiko Stuebner <heiko@sntech.de>,
 	Jarrah Gosbell <kernel@undef.tools>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -52,9 +52,10 @@ To: Javier Martinez Canillas <javierm@redhat.com>,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v2] arm64: dts: rk3399-pinephone-pro: Add internal
  display support
-Message-ID: <20230327165035.uc2etuxypehjnrp6@core>
+Message-ID: <20230327174855.xpxrdfldqcxk463r@core>
 Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
 	Javier Martinez Canillas <javierm@redhat.com>,
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	Robert Mader <robert.mader@collabora.com>,
 	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
@@ -63,7 +64,6 @@ Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
 	Martijn Braam <martijn@brixit.nl>,
 	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>,
 	Caleb Connolly <kc@postmarketos.org>,
-	Heiko Stuebner <heiko@sntech.de>,
 	Jarrah Gosbell <kernel@undef.tools>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -74,12 +74,15 @@ X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
  <https://xff.cz/key.txt>
 References: <20230327074136.1459212-1-javierm@redhat.com>
  <20230327130147.wgxl2qayhzsi2xak@core>
+ <87wn32rynm.fsf@minerva.mail-host-address-is-not-set>
+ <1924921.PYKUYFuaPT@diego>
+ <87mt3yrwzo.fsf@minerva.mail-host-address-is-not-set>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230327130147.wgxl2qayhzsi2xak@core>
+In-Reply-To: <87mt3yrwzo.fsf@minerva.mail-host-address-is-not-set>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_095041_662237_6143DACD 
-X-CRM114-Status: GOOD (  25.13  )
+X-CRM114-CacheID: sfid-20230327_104859_068762_67AAE751 
+X-CRM114-Status: GOOD (  28.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,99 +94,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-One small note...
-
-On Mon, Mar 27, 2023 at 03:01:48PM +0200, megi xff wrote:
-> Hi Javier,
-> 
-> [...]
->
-> This (1 kHz) seems to be outside of the range of recommended dimming frequency
-> of SY7203: https://megous.com/dl/tmp/fb79af4023a5f102.png It's too low.
-> 
-> The consequence is that there's a large ripple on the positive input of the
-> feedback comparator https://megous.com/dl/tmp/e155900fecb0323f.png which
-> will cause similar instability in backlight brightness.
-> 
-> I've hooked up a photoresistor to a scope, and the display is indeed varying the
-> brightness at 1 kHz https://megous.com/dl/tmp/09cb95c7b4b2892b.png
-> 
-> There are two variants of SY7203 which differ by ouput regulation technique.
-> One with this internal integrator, and other with direct PWM control of the
-> output. My guess is that PPP uses the integrator variant.
-> 
-> I switched PWM period to 50000 (20 kHz recommended by the datasheet and the
-> flicker is gone https://megous.com/dl/tmp/31b6bfc51badde3b.png
-> 
-> So I think higher PWM frequency will be better suited here, and this may really
-> be the LED driver variant with the integrator.
-> 
-> (Photoresistors are not that fast, but I've hooked a LED to signal generator,
-> to simulate 20kHz blinking backlight, and I was still able to catch the pattern
-> on the scope via a photoresistor, so it looks like this verifies that it
-> would still be possible to measure some flicker at 20 kHz using this technique.
-> I guess I should buy a PIN diode for the next time. :))
-
-Experimentally SY7203 will only start up with duty cycle of 250ns or more.
-
-So this means that default curve generated by the kernel will not work at 20 kHz
-at low ranges, because cie1931 -> pwm duty cycle covnersion done by the
-kernel will result in too small duty cycle at brightness < 5%, because that
-translates to duty cycle of 250ns or less. In other words, kernel will generate
-3124 brightness steps for PWM period of 50us, with bottom ~150 steps being
-unusable and behaving weirdly (sometimes some of them work sometimes not,
-depending whether the LED regulator is already running or not).
-
-So the cie1931 curve may need a bit of a Y shift, by specifying a minimum duty
-cycle usable by the hardware.
-
-Something like these 50 brightness levels work nicely, starting from minimum
-250ns and going up:
-
-	brightness-levels =
-		<0 250 360 470 580 690 810 949 1110 1294 1502
-		1737 1998 2289 2610 2964 3351 3774 4233 4731
-		5268 5847 6467 7133 7845 8604 9412 10271 11182
-		12146 13164 14239 15374 16568 17822 19140 20521
-		21969 23483 25068 26722 28447 30247 32121 34071
-		36099 38210 40400 42669 45026 47468 50000>;
-	default-brightness-level = <17>;
-
-when put into backlight node.
-
-Or if we want 100 steps, then this curve would work, too:
-
-brightness-levels = <250 304 360 414 470 524 580 634 690 747 810 877
-	949 1027 1110 1199 1294 1395 1502 1616 1737 1864 1998 2140 2289
-	2446 2610 2783 2964 3154 3351 3559 3774 3999 4233 4477 4731 4994
-	5268 5552 5847 6152 6467 6795 7133 7483 7845 8219 8604 9002 9412
-	9835 10271 10719 11182 11656 12146 12648 13164 13695 14239 14799
-	15374 15963 16568 17186 17822 18474 19140 19822 20521 21236 21969
-	22717 23483 24267 25068 25885 26722 27575 28447 29338 30247 31173
-	32121 33087 34071 35077 36099 37145 38210 39292 40400 41523 42669
-	43839 45026 46237 47468 48722 50000>;
-
-
-> > +		pwm-delay-us = <10000>;
-
-Also this doesn't seem to be documented anywhere or used in the kernel code...
-So we should remove it.
-
-kind regards,
-	o.
-
-> > +	};
-> > +
-> >  	gpio-keys {
-> >  		compatible = "gpio-keys";
-> >  		pinctrl-names = "default";
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBNYXIgMjcsIDIwMjMgYXQgMDY6MTU6NTVQTSArMDIwMCwgSmF2aWVyIE1hcnRpbmV6
+IENhbmlsbGFzIHdyb3RlOgo+IEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyaXRl
+czoKPiAKPiBIZWxsbyBIZWlrbywKPiAKPiA+IEFtIE1vbnRhZywgMjcuIE3DpHJ6IDIwMjMsIDE3
+OjM5OjU3IENFU1Qgc2NocmllYiBKYXZpZXIgTWFydGluZXogQ2FuaWxsYXM6Cj4gPj4gT25kxZll
+aiBKaXJtYW4gPG1lZ2lAeGZmLmN6PiB3cml0ZXM6Cj4gPj4gCj4gPj4gSGVsbCBPbmTFmWVqLAo+
+ID4+IAo+ID4+ID4gSGkgSmF2aWVyLAo+ID4+ID4KPiA+PiA+IEkndmUgdHJpZWQgdGhlIHBhdGNo
+IG9uIHRvcCBvZiBsaW51cy9tYXN0ZXIgYW5kIGl0IHdvcmtzIGFzIGV4cGVjdGVkLiBNeQo+ID4+
+ID4gRFJNIHRlc3QgYXBwIHNob3dzIDE2LjY2OW1zIGJldHdlZW4gZnJhbWVzLiBUaGUgZGlzcGxh
+eSBvdXRwdXQgaXMgb2sgb24KPiA+PiA+IGRldmVsb3BlciBiYXRjaCBwaW5lcGhvbmUgcHJvLCBh
+bmQgaXMgY29ycnVwdGVkIG9uIHByb2R1Y3Rpb24gdmVyc2lvbi4KPiA+PiA+IERpc3BsYXkgYWxz
+byBkb2Vzbid0IGNvbWUgYmFjayBhZnRlciBibGFua2luZy4gQWxsIGFzIGV4cGVjdGVkLgo+ID4+
+ID4KPiA+PiA+IFRlc3RlZC1ieTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Cj4gPj4gPgo+
+ID4+IAo+ID4+IFRoYW5rcyBmb3IgdGVzdGluZy4KPiA+PiAKPiA+PiA+IEEgZmV3IG1vcmUgY29t
+bWVudHMgYmVsb3cuCj4gPj4gPgo+ID4+IAo+ID4+IEknbSBPSyB3aXRoIHRoZXNlIGNvbW1lbnRz
+IGJ1dCBJIGRpZCBhIGdpdCBkaWZmIHdpdGggeW91ciBvcmFuZ2UtcGktNi4zCj4gPj4gYnJhbmNo
+IGp1c3QgYmVmb3JlIHBvc3RpbmcgYW5kIHRoaXMgd2FzIHRoZSBsYXRlc3QgdGhhdCdzIGluIHlv
+dXIgdHJlZS4KPiA+PiAKPiA+PiBTbyBmZWVsIGZyZWUgdG8gZWl0aGVyIHBvc3QgYSB2MyBhZGRy
+ZXNzaW5nIHRoZSB0aGluZ3MgeW91IGFyZSBwb2ludGluZwo+ID4+IG91dCBvciBsZXRzIGxhbmQg
+dGhpcyBhbmQgd2UgY2FuIHBvc3QgYW55IGZ1cnRoZXIgY2xlYW51cHMgb24gdG9wIElNTy4KPiA+
+Cj4gPiBJIHdvdWxkIHJlYWxseSBsaWtlIHRvIF9ub3RfIGFwcGx5IGVzc2VudGlhbGx5IGJyb2tl
+biBjb2RlLCBzbyByZWFsbHkKPiA+IHdvdWxkIHByZWZlciB0aGUgdjMtYXBwcm9hY2guCj4gPgo+
+IAo+IEl0IGlzIGJyb2tlbiB0aG91Z2g/IFRoaXMgaXMgd2hhdCBpcyBpbiBPbmRyZWogZG93bnN0
+cmVhbSB0cmVlIGFuZCBJIHNlZQo+IG5vIGlzc3VlcyBvbiBteSBQaW5lcGhvbmUgUHJvLiBIZSBt
+ZW50aW9uZWQgc29tZSBmbGlja2VyIHdoZW4gbG9va2luZyBhdAo+IHRoZSBzaWduYWxzIHdpdGgg
+YSBzY29wZSBhbmQgaG9va2luZyBhIHBob3RvcmVzaXN0b3IuCgpMRUQgcmVndWxhdG9yIGlzIGRy
+aXZlbiBvdXQgb2Ygc3BlYyBieSBhIGZyZXF1ZW5jeSB0aGF0J3MgMjB4IGxvd2VyIHRoYW4KcmVj
+b21tZW5kZWQsIGlmIHlvdSB3YW50IHNob3J0IHZlcnNpb24gb2Ygd2hhdCdzIGJyb2tlbiBhYm91
+dCB0aGUgRFQgcGF0Y2guCgo+IEJ1dCB0aGF0J3MgZmFpci4gSSdsbCBsZXQgT25kcmVqIHRoZW4g
+cG9zdCBhIHYzIGlmIGhlIHdhbnRzIHRvIGFkZHJlc3MgdGhlCj4gaXNzdWVzIGhlIHBvaW50ZWQg
+b3V0LCBzaW5jZSBpcyBoaXMgcGF0Y2ggYWZ0ZXIgYWxsLgoKSXQncyBub3QgbXkgcGF0Y2guIE9y
+aWdpbmFsIGF1dGhvciBvZiB0aGUgRFQgaXMgTWFydGlqbiBvciBLYW1pbC4gSSBqdXN0IGNhcnJ5
+CnRoZWlyIERUIHdvcmsgaW4gc3BsaXQtdXAgcGF0Y2hlcyBpbiBteSB0cmVlLCBhbmQgSSBzb21l
+dGltZXMgdHJ5IHRvIGZpbmQgc29sdXRpb25zCnRvIGJ1Z3MgSSBmaW5kIHdoZW4gdXNpbmcgUFBQ
+LiBUaGF0J3MgdGhlIHN0b3J5IG9mIHRoZXNlIERUIGNoYW5nZXMgeW91J3JlIHBvc3RpbmcuCgpT
+aW5jZSB5b3UgcG9zdGVkIHRoaXMgRFQgcGF0Y2ggZm9yIHVwc3RyZWFtaW5nLCBJIHdhbnRlZCB0
+byBoZWxwIHlvdSBieSByZXZpZXdlZAppdCBtb3JlIGNvbXBsZXRlbHksIHNvIEkgb3BlbmVkIHRo
+ZSBzY2hlbWF0aWMgYW5kIGRhdGFzaGVldHMgZm9yIHRoZSBjb21wb25lbnRzCnRoYXQgYXJlIGRl
+c2NyaWJlZCBpbiB0aGlzIHBhdGNoLCBhbmQgZGlzY292ZXJlZCB0aGVzZSBuZXcgaXNzdWVzIEkg
+Y29tbWVudGVkCmFib3V0LiBBbmQgSSBhbHNvIHRlc3RlZCBpdCBvbiB0b3Agb2YgbGludXMvbWFz
+dGVyLgoKSnVzdCBiZWNhdXNlIHNvbWV0aGluZyBpcyBpbiBteSB0cmVlIGRvZXNuJ3QgbWVhbiBp
+dCdzIG1pbmUsIG9yIHRoYXQgSSByZXZpZXdlZAppdCBpbiBkZXRhaWwgYW5kIHByZXBhcmVkIGl0
+IGZvciB1cHN0cmVhbWluZywgb3IgdGhhdCBJJ20gaW50ZXJlc3RlZCBpbgp1cHN0cmVhbWluZyBp
+dC4gSSdtIGp1c3QgdHJ5aW5nIHRvIGhlbHAgeW91IHdpdGggeW91ciB1cHN0cmVhbWluZyBlZmZv
+cnQgYnkKdGVzdGluZyBhbmQgcmV2aWV3IHNpbmNlIEkgZ290IHRvIGtub3cgdGhlIGhhcmR3YXJl
+IHF1aXRlIHdlbGwgb3ZlciB0aGUgbGFzdAp5ZWFycyBhbmQgY2FuIGNoZWNrIHRoZSBzY2hlbWF0
+aWNzIGFuZCBkYXRhc2hlZXRzIHF1aWNrbHksIGFuZCBJIGxpa2UgdG8gdGhpbmsKdXBzdHJlYW0g
+Y29kZSBpcyBoZWxkIHRvIGhpZ2hlciBzdGFuZGFyZC4gVGhhdCdzIGFsbC4KCmtpbmQgcmVnYXJk
+cywKCW8uCgoKPiAtLSAKPiBCZXN0IHJlZ2FyZHMsCj4gCj4gSmF2aWVyIE1hcnRpbmV6IENhbmls
+bGFzCj4gQ29yZSBQbGF0Zm9ybXMKPiBSZWQgSGF0Cj4gCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
