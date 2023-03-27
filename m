@@ -4,55 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66F5C7619A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 13:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B84AC76195
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Mar 2023 14:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=61FIn8aI2ossrhtAACARdAOnOW6KDFHmbjjrlL2QlFY=; b=yq7hQJOhyXVEt9
-	QQ4VsCFT5WWTswFBVtaJusRL4svArO82S6AemuNVb1PkFvBkyxeTHpULtBW6gfqzmdsBKrF3pjL6k
-	JE3kiMwyU47jhkQhKMJAeJGu+HnwVDYr3F3TEhvM/VuGsGhpgPcaVX2xDjah7vPvc1+eEJ+NK0chM
-	91v/qF0GtuRWpx/7CJLmmcvFM6V3XR9m0DLt+z7impQM2TH1ccfTvsCOrJgIkK4QNiiMk7Nqt3egX
-	TtwLDZfK9d+HL/5YkXsUEejgqIUSYu3Rc0fvBZ3NouGwA85XM310efOiHhpaNLMAeLJwnGGkxTEYT
-	2a9CQY0FmwA+hWFCJT8A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6Uf/5HWi8eybxylWtkFcG20s0OEOt95GDGhCbULMurg=; b=qeePzSu2oxV+2Y
+	eTXG5YnCnstH4DXcXbltYnhttKDUxjhUn/aSuK5X3dJCVq8+Xs+kK8dfpIKAJzBviNJMr4SycSjz1
+	hkd7OdIu3m8BUY/kNsvgvTVyaFwGibEadtyKD6DfnaquqZ3wDn3dds4hQli4bCes4Lpb+/mHZ6Ft9
+	ihiEVje7jURfm7vt88NfW2OYE8Gbi/GBAYw/FpaQypyb/KlS5h7o1meQs3VoHnfXMNX1PBFC0z8ef
+	w7n3Iw5HxZ5kYmLJgfuTDpb4p/gwXtkKTPHE7JNqwK1tFMlqJ4ITOqb3VApiVBv7pJhEL6R6a5VwU
+	t/y4z5t+S1LrDLkKPoGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgmp1-00B6QJ-2V;
-	Mon, 27 Mar 2023 13:23:39 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pgnwf-00BL1Z-2s;
+	Mon, 27 Mar 2023 14:35:37 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pgmoz-00B6O3-12
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Mar 2023 13:23:38 +0000
-Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
-	by metis.ext.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <m.tretter@pengutronix.de>)
-	id 1pgmop-00060J-Ql; Mon, 27 Mar 2023 15:23:27 +0200
-From: Michael Tretter <m.tretter@pengutronix.de>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	hverkuil-cisco@xs4all.nl,
-	linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@pengutronix.de,
-	mtr@pengutronix.de
-Subject: [RFC PATCH] media: hantro: respect data_offset in vb2_plane
-Date: Mon, 27 Mar 2023 15:23:24 +0200
-Message-Id: <20230327132324.1781416-1-m.tretter@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
+	id 1pgnwb-00BKzz-37;
+	Mon, 27 Mar 2023 14:35:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description; bh=TQEVb06h33yxhmY3vu7gB3cHE9jPWdXlacdCPPkILAc=; b=IwhJp
+	YsIGR9unG81YdDeSnR/hdUO6PGgiMyenAT4ayTFuFiZR5n8fDLQ6iRze6QZR9WL2/eenMWYXV20le
+	V+nIYlDCY3SuwUb+qszBvqR2wLHP2/HeRUQDF28DtnChs7upds7rIoWfzoQFX9I8Eq1bzWarXRGgV
+	tBVJ5luBiyukT2IMGQOIffFfHd4qlfJzmdgHUstZlgu+/vLz4BH3W8wUzy2hDzw3dSJmCfZGaw+Nc
+	FZnJ2uTLCIMgXHpg2kLO8D9SvQgLRRoPicS5D127FQodRFfVfLfcpQojf4jp8VH8h+D2AVeyzSEyP
+	duZxbP19lR4hhQf7awKT3mZVmOHVQ==;
+Received: from [81.174.171.191] (helo=donbot)
+	by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <john@metanate.com>)
+	id 1pgnw8-00031z-WD;
+	Mon, 27 Mar 2023 15:35:06 +0100
+Date: Mon, 27 Mar 2023 15:35:04 +0100
+From: John Keeping <john@metanate.com>
+To: Steven Price <steven.price@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+	Jason Gunthorpe <jgg@ziepe.ca>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] iommu/rockchip: Add missing set_platform_dma_ops
+ callback
+Message-ID: <ZCGpmHUWyZVaeIIx@donbot>
+References: <20230324111127.221640-1-steven.price@arm.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:1101:1d::54
-X-SA-Exim-Mail-From: m.tretter@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20230324111127.221640-1-steven.price@arm.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230327_062337_362109_168957D5 
-X-CRM114-Status: GOOD (  19.40  )
+X-CRM114-CacheID: sfid-20230327_073534_002798_8E36BBB0 
+X-CRM114-Status: GOOD (  21.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,95 +76,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vb2_plane in the vb2_v4l2_buffer may have a data_offset, which is
-written by user space to tell the driver that the data starts at an
-offset into the buffer. Currently the hantro driver assumes that the
-data starts directly at the base address of the buffer.
+On Fri, Mar 24, 2023 at 11:11:27AM +0000, Steven Price wrote:
+> Similar to exynos, we need a set_platform_dma_ops() callback for proper
+> operation on ARM 32 bit after recent changes in the IOMMU framework
+> (detach ops removal). But also the use of a NULL domain is confusing.
+> 
+> Rework the code to have a singleton rk_identity_domain which is assigned
+> to domain when using an identity mapping rather than "detaching". This
+> makes the code easier to reason about.
+> 
+> Signed-off-by: Steven Price <steven.price@arm.com>
+> ---
+> Changes since v1[1]:
+> 
+>  * Reworked the code to avoid a NULL domain, instead a singleton
+>    rk_identity_domain is used instead. The 'detach' language is no
+>    longer used.
+> 
+> [1] https://lore.kernel.org/r/20230315164152.333251-1-steven.price%40arm.com
+> 
+>  drivers/iommu/rockchip-iommu.c | 50 ++++++++++++++++++++++++++--------
+>  1 file changed, 39 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index f30db22ea5d7..437541004994 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+[snip]
+> +static struct iommu_domain rk_identity_domain = {
+> +	.type = IOMMU_DOMAIN_IDENTITY,
+> +	.ops = &rk_identity_ops,
+> +};
+> +
+> +#ifdef CONFIG_ARM
 
-Add the data_offset to the plane dma_address to make sure that the
-encoder actually reads the plane data if the user space put the plane
-data at an offset into the buffer. Otherwise the encoded data may not be
-the data that userspace expected to be encoded.
+Is this #ifdef needed?  I can't see anything ARM-specific about this
+function or .set_platform_dma_ops.
 
-Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
----
-Hi,
+> +static void rk_iommu_set_platform_dma(struct device *dev)
+> +{
+> +	WARN_ON(rk_iommu_identity_attach(&rk_identity_domain, dev));
+>  }
+> +#endif
 
-Most other drivers also assume that the address returned by
-vb2_dma_contig_plane_dma_addr() is the start of the plane data. Maybe it
-would be better to change vb2_dma_contig_plane_dma_addr() to already add
-the data_offset to the plane address. However, there are a few drivers
-that already have a helper that respects the data_offset, but that seems
-to be the exception rather than the rule.
+Not shown in the patch are the pm_runtime hooks.  Do they need to
+change like this?
 
-What I am actually trying to achieve is to import a V4L2_PIX_FMT_NV12
-buffer from a Rockchip RGA2 (which doesn't support the multi-planar API)
-as a V4L2_PIX_FMT_NV12M buffer into the Hantro JPEG encoder (which
-doesn't support V4L2_PIX_FMT_NV12). Solving this by importing the same
-FD for each plane with a respective offset is how one would import such
-a buffer with the DRM API. Please tell me, if my approach is wrong and,
-if so, how I should solve it differently.
-
-Michael
----
- .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c   | 24 +++++++++++++------
- 1 file changed, 17 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-index 8395c4d48dd0..05df7768187d 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-@@ -32,6 +32,16 @@
- 
- #define VEPU_JPEG_QUANT_TABLE_COUNT 16
- 
-+static dma_addr_t rockchip_vpu2_plane_dma_addr(struct vb2_buffer *vb,
-+					       unsigned int plane_no)
-+{
-+	struct vb2_v4l2_buffer *v4l2_buf = to_vb2_v4l2_buffer(vb);
-+	dma_addr_t base = vb2_dma_contig_plane_dma_addr(vb, plane_no);
-+	unsigned int offset = v4l2_buf->planes[plane_no].data_offset;
-+
-+	return base + offset;
-+}
-+
- static void rockchip_vpu2_set_src_img_ctrl(struct hantro_dev *vpu,
- 					   struct hantro_ctx *ctx)
+ static int __maybe_unused rk_iommu_suspend(struct device *dev)
  {
-@@ -79,23 +89,23 @@ static void rockchip_vpu2_jpeg_enc_set_buffers(struct hantro_dev *vpu,
+ 	struct rk_iommu *iommu = dev_get_drvdata(dev);
  
- 	WARN_ON(pix_fmt->num_planes > 3);
+-	if (!iommu->domain)
++	if (iommu->domain == &rk_identity_domain)
+ 		return 0;
  
--	vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
-+	vepu_write_relaxed(vpu, rockchip_vpu2_plane_dma_addr(dst_buf, 0) +
- 				ctx->vpu_dst_fmt->header_size,
- 			   VEPU_REG_ADDR_OUTPUT_STREAM);
- 	vepu_write_relaxed(vpu, size_left, VEPU_REG_STR_BUF_LIMIT);
+ 	rk_iommu_disable(iommu);
+ 	return 0;
+ }
  
- 	if (pix_fmt->num_planes == 1) {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
-+		src[0] = rockchip_vpu2_plane_dma_addr(src_buf, 0);
- 		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
- 	} else if (pix_fmt->num_planes == 2) {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
--		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
-+		src[0] = rockchip_vpu2_plane_dma_addr(src_buf, 0);
-+		src[1] = rockchip_vpu2_plane_dma_addr(src_buf, 1);
- 		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
- 		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
- 	} else {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
--		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
--		src[2] = vb2_dma_contig_plane_dma_addr(src_buf, 2);
-+		src[0] = rockchip_vpu2_plane_dma_addr(src_buf, 0);
-+		src[1] = rockchip_vpu2_plane_dma_addr(src_buf, 1);
-+		src[2] = rockchip_vpu2_plane_dma_addr(src_buf, 2);
- 		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
- 		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
- 		vepu_write_relaxed(vpu, src[2], VEPU_REG_ADDR_IN_PLANE_2);
--- 
-2.30.2
-
+ static int __maybe_unused rk_iommu_resume(struct device *dev)
+ {
+ 	struct rk_iommu *iommu = dev_get_drvdata(dev);
+ 
+-	if (!iommu->domain)
++	if (iommu->domain == &rk_identity_domain)
+ 		return 0;
+ 
+ 	return rk_iommu_enable(iommu);
+ }
 
 _______________________________________________
 Linux-rockchip mailing list
