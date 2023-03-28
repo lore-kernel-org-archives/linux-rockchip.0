@@ -4,69 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1734C76196
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 21:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D507CC6FD18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 21:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jFR0ZgiLtRWvdd+rc3HSB524/Np5eAV3verfoNR/O68=; b=UGm6l8ncr1mqkC
-	fk9DXMwoeV4fatxH3c0D4mofin4GnM411RuTs+RFBkkJArl91Wq3aaaW3Y9XvSPsamSzmzGBGWQm3
-	DNWrnsKduLJuFDe97a7CFRkzX/yLPKN9G5c2EE4EjsOIfyPjDD/jQ425aYKp76nnlS4NaSBWDSiFd
-	NKe4I8ApYF/cjmnP0LJahOCX+AJJiLAXaDM3w32xd2HVzAayHpQwLxB5iLslaCwH8ceTT9vcQxa97
-	3VCSRP2Jyk6/+hH68wH/LxmXrAXt3doJbJ39yIJlMP3wcatYQkq42kVdtO0dqyp99q8VjXu1BooyW
-	e1cW8nqE25VsZloIDYvA==;
+	List-Owner; bh=TOd5Z1pBeGD8qaPVY3F8OkiEPdeTqvnN3hRctQNvYjc=; b=WPelihfeDXbzjg
+	yQ1uxwE2CaS0aw6N+agHnoHWWlaUV7ZA0ncFRg/5OuHZreiZLgNxtXVPLCCelWI9C0rcBzT5jSdk/
+	WmmTtGhdpxLyk0a6AR3urdq2/m+7+6xsARWDBsJ+KRKpwtwZpMJOyuCJrOKuznHebd+2z0beXEz2F
+	e/CwUV7KyXfbmMnjlY/6VbTl0pXxAf28d3DXNUj3xGby5plBHb+FZ9Btr1it68dwSKwzyiq+I6YyE
+	lxCfhbh/P81SpfwJskaQkZFbbGyDnHJ0YgDpt2tpppgVJ46F85a9zsBGfbKZgKuXiE0Bsk7zu3r3E
+	hdguqU7ap737Pa/n74bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phGSY-00FrDC-00;
-	Tue, 28 Mar 2023 21:02:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1phGfs-00FtJT-11;
+	Tue, 28 Mar 2023 21:16:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phGSU-00FrB6-1D;
-	Tue, 28 Mar 2023 21:02:23 +0000
-Received: from localhost.localdomain (unknown [IPv6:2405:201:0:21ea:73f6:2283:f432:3936])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: shreeya)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3342660316C;
-	Tue, 28 Mar 2023 22:02:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680037338;
-	bh=IkBViQkMrsp3U7hL5tvqsx/UtD7E86JvMjAnDOuW9eM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F88qULeTjTL5NdUCnjTdUvOd0c8p4IxUVoDA39dmYM6w29LLpDYXL4GMDPtBObICC
-	 sMd4JzMRpU+hh7tlK+IvO7nGLxUv7IKBXRzvCKEyhrBzNfPbJwaEnVMVbBb04mrPLp
-	 qsjKbrlshAzEKWP5mBetROaiSbn+wL84pI0j26zzcJVOt8BNtqrqn6O3l6W7vYmpX6
-	 0URWP9QBHTyoWfgblCxZNvju8BLUjLSKbdRro/+HQb5w9L6sAGvJZAoM7N1fbpRtcz
-	 Rb8i2TnnAnoPhKbJq8IY9JmKD8zqe7TvJA0lypQRG5kDQuACvYFxhWy+9KpUtnKhkH
-	 VSCfio/WrT3GQ==
-From: Shreeya Patel <shreeya.patel@collabora.com>
-To: wim@linux-watchdog.org,
-	linux@roeck-us.net,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	jamie@jamieiles.com,
-	heiko@sntech.de
-Cc: linux-watchdog@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Shreeya Patel <shreeya.patel@collabora.com>
-Subject: [PATCH 2/2] dt-bindings: watchdog: rockchip: Add rockchip,rk3588-wdt string
-Date: Wed, 29 Mar 2023 02:30:48 +0530
-Message-Id: <20230328210048.195124-3-shreeya.patel@collabora.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230328210048.195124-1-shreeya.patel@collabora.com>
-References: <20230328210048.195124-1-shreeya.patel@collabora.com>
+	id 1phGfe-00FtFJ-02;
+	Tue, 28 Mar 2023 21:15:59 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1phGfI-0007kP-CV; Tue, 28 Mar 2023 23:15:36 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: wim@linux-watchdog.org, linux@roeck-us.net, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, jamie@jamieiles.com,
+ Shreeya Patel <shreeya.patel@collabora.com>
+Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ Shreeya Patel <shreeya.patel@collabora.com>
+Subject:  Re: [PATCH 2/2] dt-bindings: watchdog: rockchip: Add rockchip,rk3588-wdt
+ string
+Date: Tue, 28 Mar 2023 23:15:35 +0200
+Message-ID: <3410587.QJadu78ljV@diego>
+In-Reply-To: <20230328210048.195124-3-shreeya.patel@collabora.com>
+References:  <20230328210048.195124-1-shreeya.patel@collabora.com>
+ <20230328210048.195124-3-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_140222_540619_D2AADA86 
-X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-CacheID: sfid-20230328_141558_048191_AB7BF590 
+X-CRM114-Status: UNSURE (   6.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,32 +62,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,rk3588-wdt compatible string.
+Am Dienstag, 28. M=E4rz 2023, 23:00:48 CEST schrieb Shreeya Patel:
+> Add rockchip,rk3588-wdt compatible string.
+> =
 
-Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
----
- Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
- 1 file changed, 1 insertion(+)
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 
-diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-index 92df6e453f64..e7a87ce94772 100644
---- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-@@ -29,6 +29,7 @@ properties:
-               - rockchip,rk3368-wdt
-               - rockchip,rk3399-wdt
-               - rockchip,rk3568-wdt
-+              - rockchip,rk3588-wdt
-               - rockchip,rv1108-wdt
-           - const: snps,dw-wdt
- 
--- 
-2.30.2
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
 
 
 _______________________________________________
