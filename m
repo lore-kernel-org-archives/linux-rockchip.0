@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C49C761A6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 07:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44BBAC76195
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 07:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w5dIQlqHhB/49zm1fPlTbgtMuru/QWyxc+7dnNkrLcU=; b=Cu8LVWxxw7ca9T
-	DptFIGRDc3Dztn0dHVPVYHsuNTsyV+hbGvqtmw0K9liQx6Ft0kmMYlLj5FBp9CSHcsbEuDIVzG+U/
-	fQLKIUSQ3KomIK1j6DbmpttHMOB510WgkzSsbRrgMzUzCYtVlfyeHJTBgnVRN1j8Z46C8MleAl9y1
-	+XyxLa5jh4HWbDtptc8iEvucQ7QEZP6+yFFUx+fjNBjTsQMFBzvdt9H37eelKk03r18R9bJcgIUOP
-	lLk6Hd63q1DwWSEiGkNfHwVIxQ7vfmiAM9MLOavs2/6ZvFjPXWYzcyl/r0AO5Or9rQhz4XYg67Azn
-	f3MmNg+fKbQyYy2Hb+PA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eWEogXuDjLITY/qky0jO8IVKSiwHLl+fEepvbtLOi3g=; b=aUhPX68ELemt1l
+	O2WkFPHNFAFBu2QmBKAua7lW2bCzuZISmXXWjimC9pI+Lb7MZnWHAPK7fTgSLZCrk3iALPDSQbL0V
+	ndmjzTbphOK0M+DfU+sEVT9z3k20Z2BnKlTGNkpUiJ+kYcFgr4tHVSUhCT9OcJEsJ+BTuGG+GepU2
+	PORfrITNQGVCXps7k9iGNJwhfHGB8CWMe4ObiqnCLlVAZTpg/Q+yG1n2rvtB1n0frPpIbgLWxRBRh
+	xnKfnvc66TC/NE56UTECZkqNFY14PZv14ajSQ1tWjmvXGUmCXZ6DohHSZZwHs/uN7vs0GM/d3G4kj
+	Rcei3Y6ga/O+h1xGNYDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3ps-00DSNK-1s;
-	Tue, 28 Mar 2023 07:33:40 +0000
+	id 1ph3pb-00DSHP-1W;
+	Tue, 28 Mar 2023 07:33:23 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3pb-00DSGh-0n
+	id 1ph3pX-00DSEX-1o
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Mar 2023 07:33:26 +0000
+	Tue, 28 Mar 2023 07:33:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1679988802;
+	s=mimecast20190719; t=1679988798;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nNdM7KSyRgCrr4mbIGjnmBDUe48JVTbvN2evKlFTHYo=;
-	b=XtEtvIPK2RO7cjbVkPPDP3fifMoM+Ssy4zkcRGnL6dOTMS35ctjGKAI7E1ecUet3RldUWQ
-	bUEDsZChasgQVsMKEcXBNtA12eCtlvlQJSNEq6TwTP9VUrQdA5X1TIMf/D4VeO7CxaMabH
-	CgtVgAoz0bYaud/ssCQsi7s10yORIS8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=RbISS+/27S6jW4bDHr8lk+wvnbdcYB3f6YGIVizM/3Y=;
+	b=Ik0bt+BCMtNh4bBB9xzBPgz6f28Vf9vvWOu+pIYaOe1x97dnPMrLgIVIRJXVeDnn4DvGEf
+	oKqkM0E5awRoOTjRTfLkHhfFmy8sLbI6bfyk+PVslKgXxntzvinOouQXT2dXKQpiywtPSK
+	gkfiHTryeZFpYPPzVWx9BAWlnhFbmew=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-582-lhhshQmqN6qhWTB00VC_NA-1; Tue, 28 Mar 2023 03:33:19 -0400
-X-MC-Unique: lhhshQmqN6qhWTB00VC_NA-1
-Received: by mail-wm1-f69.google.com with SMTP id bi27-20020a05600c3d9b00b003ef6ee937b8so2630511wmb.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Mar 2023 00:33:18 -0700 (PDT)
+ us-mta-536-n8XcsWOiNk2Tvg68AzneyQ-1; Tue, 28 Mar 2023 03:33:16 -0400
+X-MC-Unique: n8XcsWOiNk2Tvg68AzneyQ-1
+Received: by mail-wm1-f70.google.com with SMTP id m7-20020a05600c4f4700b003ee7e120bdfso5837948wmq.6
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Mar 2023 00:33:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679988798;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nNdM7KSyRgCrr4mbIGjnmBDUe48JVTbvN2evKlFTHYo=;
-        b=rZJZ8UhSKtWxQahVFsNK23IJLUesE2w679UPXmnwQKfWa1xFm2T7p7Ujwgn6c2hzK/
-         eHkb9G1b8y2BpSAO/NgLLQeMWPh2jKUhkd/hvk1kmOdZNIZJ8ASDyHD0vHslf85Vv9QA
-         r87Oka/zPtcACpwpNvgI2W5NswzV4/lvExm13YB8MHFlQZ7NsbaZ/UYTMgKe2H97Enmg
-         BVMWP7nSBQhEeGDe+/sZh3VV19s8yuCnmK5NlRllObYGxKJ3G0ssdy83f5g1kamdPA24
-         wrm5CmJmvkbAD4JaGRDuTC37LrnmBeYMNsAvwkDEwArp8bj/G+jInEEcmHgO65thXaN5
-         EvQg==
-X-Gm-Message-State: AO0yUKVCizMQuLPOLBLH1hCAPbY6dmIEiT/0n9HaaPs8v+iXOvtyhXRl
-	L4GNuYqjxphNbdULL0jSb4m0KV5eJtEbolxHJH43PP6m55tqrEMozKd503A0kbgUBM49oIrBaPH
-	zrUC5hMtqDEqsujhZVyxf/e/fAV2fsgFI
-X-Received: by 2002:a05:600c:c6:b0:3ef:df3:1693 with SMTP id u6-20020a05600c00c600b003ef0df31693mr11393762wmm.32.1679988798071;
-        Tue, 28 Mar 2023 00:33:18 -0700 (PDT)
-X-Google-Smtp-Source: AK7set98gCyXpnG4Ha5cE59btAVfSKxfqXI1RJYKrRZnSKKWGrx+Oi6U2VNaI7A9EVKO8nI+cTTlEQ==
-X-Received: by 2002:a05:600c:c6:b0:3ef:df3:1693 with SMTP id u6-20020a05600c00c600b003ef0df31693mr11393735wmm.32.1679988797783;
-        Tue, 28 Mar 2023 00:33:17 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679988795;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RbISS+/27S6jW4bDHr8lk+wvnbdcYB3f6YGIVizM/3Y=;
+        b=yAfTsj/qAf2cAX7U8i/w/3tzcMLgXKnZzs4YTkSEbtohdqhN9CDSMNDTLZUTafiDuu
+         crlnIjLwXoVerzG2SHQzRVdbUUXDcIfnpMU7OUohZz0k5lyR6yS9xBlkl/DdOhmRacDp
+         z6/BYfQr1XasEEy2G/3cfwadI8FkzUTJGInvZQibWozk69Ufjhn3yCZadnpIfY+xJ+wE
+         uWGtJiVYgpX1QfAFB2/L3VtLQSSjzPmRjGUCYvmA1jvcG92kCyyqi9ofrmfukICjKhw/
+         M5uxMUicFjHnOWaLUako95cKTkmUPUEBR61v3lO3Ya7MWZacElDLv5eBlGFc7WUWGvt/
+         X2Lw==
+X-Gm-Message-State: AO0yUKWOacnBSgjzfY3zjy1rWgMBOVUHADfVmZzuagMaTJh8PPC0WaTd
+	uYqOsJayxP5b1lxTRFIlCrOO2DO4ug5nAF4t4N+P6JwLbVWpR7SDIwYmF4QN2FQgTxcGrXtdglG
+	pmdy4urn+rRfxGiH/sQWmjoiq3Pm4KTBY
+X-Received: by 2002:a7b:c5c8:0:b0:3eb:2de8:b739 with SMTP id n8-20020a7bc5c8000000b003eb2de8b739mr11276043wmk.37.1679988795169;
+        Tue, 28 Mar 2023 00:33:15 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8lfOmpR2nW3HTghmY7jK4kUsb4kpoMtbF8MSqpuG8HfIm5O5jbiNwx/SnjQsKsrFOF8ZJmmQ==
+X-Received: by 2002:a7b:c5c8:0:b0:3eb:2de8:b739 with SMTP id n8-20020a7bc5c8000000b003eb2de8b739mr11276026wmk.37.1679988794856;
+        Tue, 28 Mar 2023 00:33:14 -0700 (PDT)
 Received: from minerva.home (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id j6-20020a05600c190600b003ef6bc71cccsm7527075wmq.27.2023.03.28.00.33.16
+        by smtp.gmail.com with ESMTPSA id j6-20020a05600c190600b003ef6bc71cccsm7527075wmq.27.2023.03.28.00.33.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Mar 2023 00:33:17 -0700 (PDT)
+        Tue, 28 Mar 2023 00:33:14 -0700 (PDT)
 From: Javier Martinez Canillas <javierm@redhat.com>
 To: linux-kernel@vger.kernel.org
 Cc: Peter Robinson <pbrobinson@gmail.com>,
@@ -87,18 +86,16 @@ Cc: Peter Robinson <pbrobinson@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 2/2] arm64: dts: rk3399-pinephone-pro: Add touchscreen support
-Date: Tue, 28 Mar 2023 09:33:09 +0200
-Message-Id: <20230328073309.1743112-3-javierm@redhat.com>
+Subject: [PATCH v3 0/2] arm64: dts: rk3399-pinephone-pro: Add display and touchscreen support
+Date: Tue, 28 Mar 2023 09:33:07 +0200
+Message-Id: <20230328073309.1743112-1-javierm@redhat.com>
 X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230328073309.1743112-1-javierm@redhat.com>
-References: <20230328073309.1743112-1-javierm@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_003323_355136_7271057C 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20230328_003319_688085_F9E74946 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,39 +107,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+CgpUaGUgcGhvbmUgaGFzIGEg
-R29vZGl4IEdUMTE1OCB0b3VjaHNjcmVlbiwgYWRkIGEgRFQgbm9kZSBmb3IgaXQuCgpTaWduZWQt
-b2ZmLWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJyaXhpdC5ubD4KQ28tZGV2ZWxvcGVkLWJ5
-OiBLYW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1PgpTaWduZWQtb2ZmLWJ5OiBLYW1p
-bCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1PgpDby1kZXZlbG9wZWQtYnk6IE9uZHJlaiBK
-aXJtYW4gPG1lZ2lAeGZmLmN6PgpTaWduZWQtb2ZmLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhm
-Zi5jej4KU2lnbmVkLW9mZi1ieTogSmF2aWVyIE1hcnRpbmV6IENhbmlsbGFzIDxqYXZpZXJtQHJl
-ZGhhdC5jb20+Ci0tLQoKQ2hhbmdlcyBpbiB2MzoKLSBVc2UgdGhlIGNvcnJlY3QgImdvb2RpeCxn
-dDExNTgiIGNvbXBhdGlibGUgc3RyaW5nIChPbmRyZWogSmlybWFuKS4KLSBSZW1vdmUgInBvd2Vy
-b2ZmLWluLXN1c3BlbmQiIG5vdCBzdXBwb3J0ZWQgaW4gbWFpbmxpbmUgKE9uZHJlaiBKaXJtYW4p
-LgoKIC4uLi9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1wcm8uZHRzICAgICB8IDE5ICsr
-KysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspCgpkaWZm
-IC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXBy
-by5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJv
-LmR0cwppbmRleCA1MzliMzZlOGJmZjUuLjQ3NWJhNzhhY2MwOSAxMDA2NDQKLS0tIGEvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMKKysrIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMKQEAgLTM2
-Nyw2ICszNjcsMjUgQEAgcmVndWxhdG9yLXN0YXRlLW1lbSB7CiAJfTsKIH07CiAKKyZpMmMzIHsK
-KwlpMmMtc2NsLXJpc2luZy10aW1lLW5zID0gPDQ1MD47CisJaTJjLXNjbC1mYWxsaW5nLXRpbWUt
-bnMgPSA8MTU+OworCXN0YXR1cyA9ICJva2F5IjsKKworCXRvdWNoc2NyZWVuQDE0IHsKKwkJY29t
-cGF0aWJsZSA9ICJnb29kaXgsZ3QxMTU4IjsKKwkJcmVnID0gPDB4MTQ+OworCQlpbnRlcnJ1cHQt
-cGFyZW50ID0gPCZncGlvMz47CisJCWludGVycnVwdHMgPSA8UktfUEI1IElSUV9UWVBFX0VER0Vf
-UklTSU5HPjsKKwkJaXJxLWdwaW9zID0gPCZncGlvMyBSS19QQjUgR1BJT19BQ1RJVkVfSElHSD47
-CisJCXJlc2V0LWdwaW9zID0gPCZncGlvMyBSS19QQjQgR1BJT19BQ1RJVkVfSElHSD47CisJCUFW
-REQyOC1zdXBwbHkgPSA8JnZjYzN2MF90b3VjaD47CisJCVZERElPLXN1cHBseSA9IDwmdmNjM3Yw
-X3RvdWNoPjsKKwkJdG91Y2hzY3JlZW4tc2l6ZS14ID0gPDcyMD47CisJCXRvdWNoc2NyZWVuLXNp
-emUteSA9IDwxNDQwPjsKKwl9OworfTsKKwogJmNsdXN0ZXIwX29wcCB7CiAJb3BwMDQgewogCQlz
-dGF0dXMgPSAiZGlzYWJsZWQiOwotLSAKMi40MC4wCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello,
+
+This series adds support for the display and touchscreen found in the
+PinePhone Pro. It's a third version that addresses issues pointed out
+by Ondrej Jirman in v2:
+
+http://lists.infradead.org/pipermail/linux-rockchip/2023-March/037889.html
+
+Best regards,
+Javier
+
+Changes in v3:
+- Fix some ./scripts/checkpatch.pl --strict warnings.
+- Add Ondrej Jirman Tested-by tag.
+- Change PWM period to 50000 since 20 kHz is recommended (Ondrej Jirman).
+- Remove useless comments for the panel regulators (Ondrej Jirman).
+- Drop unneeded pinctrl pull down conf for pins that either already have
+  a pull-down resistor or are already driven by the SoC (Ondrej Jirman).
+- Remove "pwm-delay-us" property not supported in mainline (Ondrej Jirman).
+- Use the correct "goodix,gt1158" compatible string (Ondrej Jirman).
+- Remove "poweroff-in-suspend" not supported in mainline (Ondrej Jirman).
+
+Changes in v2:
+- Drop touchscreen node because used the wrong compatible (Ondrej Jirman).
+- Fix assigned-clock-parents in vopb node (Ondrej Jirman).
+- Add vopl and vopl nodes.
+
+Martijn Braam (2):
+  arm64: dts: rk3399-pinephone-pro: Add internal display support
+  arm64: dts: rk3399-pinephone-pro: Add touchscreen support
+
+ .../dts/rockchip/rk3399-pinephone-pro.dts     | 114 ++++++++++++++++++
+ 1 file changed, 114 insertions(+)
+
+
+base-commit: 3a93e40326c8f470e71d20b4c42d36767450f38f
+-- 
+2.40.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
