@@ -4,51 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 870E6C76196
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 07:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE08C76195
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Mar 2023 08:47:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fGiRy+xT5u9VHCr9af72PaePowhZUijgJhhgj8eGdhc=; b=zWiF9qo3Rpbohy
-	wAqZKEg1hcc/DprzrTPJvu3NrMoLeB/HIvdF8oL7IbHRnhfH8N7TnQQ9jlRk76JwC9DCtQBeEzyhv
-	heiZxy973x+1wwCdjR5l8nH+bQ5Jmh22nGGwct5mRvB6Xk/xFG4mJVH6gFQ2NHslMss1DpsHk1K1O
-	NepdYIua7ohvNI/AoAwbUp6AlgMxyN6bs197/f+k6NyvUTPTWhM64ISBUR3CtOXBLoyhx85Aoua2o
-	xnP7Fl+fFFAr24OC3RoZ7nvHY0aoe4I+HZpkLoWiP937Qd8sk55j5B+nKzoP3i+8unQ24CMsTXtFM
-	NwIjt3kotb4CoZ9vEftg==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:From:
+	Date:Subject:To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=onS+3UMLg/eKAXGKTPmsMM9Kh+hlgmItBvxrbrl93LM=; b=xBmTGO1ZrijSdt
+	ujrQxukhNcz+95pgg4Vx1X8RD//mAhBkdfgcFHQilcw5reEs0hN+sutOE1WlUG3gQuq52CJgIsqUE
+	PMymdxhCJBm2DKnmVXtPfccOYq/txdurvdbcdLUzf5J+tmWG0+P9LVdjrzfCTAEd9MghkomBdpvwo
+	WCT7Ei6EhwjLHgH3ji6A1kuOShex8+XlmWvgqSKvZ5TaZEJaaTqfoyGsLo5bKiov1QVMXyU0Xr+L3
+	vPRE0AZZXm5bslL5Z+WrtGAXJDhsa7zQJIB46bwBCgscf53hwxiFNR/rWWYwOS/WsTug4jLFj3tON
+	qIkhBRlD+KzuC76gQtXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3zY-00DVwI-1t;
-	Tue, 28 Mar 2023 07:43:40 +0000
-Received: from mail.lokoho.com ([217.61.105.98])
+	id 1ph4zN-00Ddba-2X;
+	Tue, 28 Mar 2023 08:47:33 +0000
+Received: from us402.directrouter.com ([72.249.48.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ph3zV-00DVvW-2h
+	id 1ph4zK-00Dda4-2G
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Mar 2023 07:43:39 +0000
-Received: by mail.lokoho.com (Postfix, from userid 1001)
-	id 0536D841FF; Tue, 28 Mar 2023 08:41:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
-	t=1679989416; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
-	h=Date:From:To:Subject:From;
-	b=haRmw165Cr3Xl5wa7KJ5wIjwD2ifnDsYW/zAZ9+vTZftQ9x8UiLJDetqbi8/+ZNvI
-	 uCnf5rd4ZYGJnJOIkfAbQ/dNSfEHFgSfBD4A6GajuSzxBN6JibywBLCqpGsse/T1ZU
-	 YafHFymGxlT4YStXI9TAA2c5uGbcfDTZjhGtGSSWBr1NPg65Wv9Qjbo/LQgFdBoaqx
-	 f8TuPB1bun+SmtYqUcLsLcsEE1+nUGGY7C/6fspg3a/x/ZjcSJ+PPhhxlEXL1bp4hY
-	 P2J/k1Bx+QTt02/DaV6c9o1tNyvFHMnl4aT95IZDPuQk+q2Yj0fKDjcjN3XV4w3Uys
-	 vPdCcemYCor3w==
-Received: by mail.lokoho.com for <linux-rockchip@lists.infradead.org>; Tue, 28 Mar 2023 07:40:50 GMT
-Message-ID: <20230328074501-0.1.4x.1mztq.0.gyi6kina50@lokoho.com>
-Date: Tue, 28 Mar 2023 07:40:50 GMT
-From: "Adam Charachuta" <adam.charachuta@lokoho.com>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
-X-Mailer: mail.lokoho.com
+	Tue, 28 Mar 2023 08:47:32 +0000
+Received: from creative by us402.directrouter.com with local (Exim 4.95)
+	(envelope-from <john.downie@saba.org.uk>)
+	id 1ph4yy-001b0X-Bc
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Mar 2023 03:47:08 -0500
+To: linux-rockchip@lists.infradead.org
+Subject: Account Details for THE`BEST`SLOT`MACHINES. `WIN`1302068`USD`CLICK` https://malko6.page.link/uUhL at Creative Inclusion
+X-PHP-Script: creativeinclusion.org.uk/index.php for 195.123.208.148
+X-PHP-Filename: /home/creative/public_html/index.php REMOTE_ADDR: 195.123.208.148
+Date: Tue, 28 Mar 2023 08:47:08 +0000
+From: Creative Inclusion <john.downie@saba.org.uk>
+Message-ID: <8e9ebdaa790b21fbb5f7fbd0196375f9@creativeinclusion.org.uk>
+X-Priority: 3
+X-Mailer: PHPMailer 5.2 (http://code.google.com/a/apache-extras.org/p/phpmailer/)
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - us402.directrouter.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [733 497] / [47 12]
+X-AntiAbuse: Sender Address Domain - saba.org.uk
+X-Get-Message-Sender-Via: us402.directrouter.com: authenticated_id: creative/only user confirmed/virtual account not confirmed
+X-Authenticated-Sender: us402.directrouter.com: creative
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: creativeinclusion.org.uk:/public_html
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230328_004338_015313_5AFCA10E 
-X-CRM114-Status: UNSURE (   1.73  )
+X-CRM114-CacheID: sfid-20230328_014730_800635_7F6AC982 
+X-CRM114-Status: UNSURE (   1.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -61,19 +67,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Creative Inclusion <john.downie@saba.org.uk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKemFwb3puYcWCZW0gc2nEmSB6IFBhxYRzdHdhIG9mZXJ0xIUgaSB6IHBy
-enlqZW1ub8WbY2nEhSBwcnp5em5hasSZLCDFvGUgcHJ6eWNpxIVnYSB1d2FnxJkgaSB6YWNoxJlj
-YSBkbyBkYWxzenljaCByb3ptw7N3LiAKClBvbXnFm2xhxYJlbSwgxbxlIG1vxbxlIG3Ds2fFgmJ5
-bSBtaWXEhyBzd8OzaiB3a8WCYWQgdyBQYcWEc3R3YSByb3p3w7NqIGkgcG9tw7NjIGRvdHJ6ZcSH
-IHogdMSFIG9mZXJ0xIUgZG8gd2nEmWtzemVnbyBncm9uYSBvZGJpb3Jjw7N3LiBQb3p5Y2pvbnVq
-xJkgc3Ryb255IHd3dywgZHppxJlraSBjemVtdSBnZW5lcnVqxIUgxZt3aWV0bnkgcnVjaCB3IHNp
-ZWNpLgoKTW/FvGVteSBwb3Jvem1hd2lhxIcgdyBuYWpibGnFvHN6eW0gY3phc2llPwoKClBvemRy
-YXdpYW0KQWRhbSBDaGFyYWNodXRhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello THE`BEST`SLOT`MACHINES. `WIN`1302068`USD`CLICK` https://malko6.page.link/uUhL,
+
+Thank you for registering at Creative Inclusion. Your account is created and must be activated before you can use it.
+To activate the account click on the following link or copy-paste it in your browser:
+http://creativeinclusion.org.uk/index.php?option=com_users&task=registration.activate&token=d25a630e1178b6987a2cd779a689824d 
+
+After activation you may login to http://creativeinclusion.org.uk/ using the following username and password:
+
+Username: THE`BEST`SLOT`MACHINES. `WIN`1302068`USD`CLICK` https://malko6.page.link/uUhL
+Password: qj58ynW3^oW
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
