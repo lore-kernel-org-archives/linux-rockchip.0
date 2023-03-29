@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAFCDC74A5B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Mar 2023 08:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EFA9C74A5B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Mar 2023 12:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UOmzsEtoI5qspx3U9CfMrc6r1YYXatXV/d+RJU4exQg=; b=hS4G1zl9xkcYAF
-	ir+cN0HWXPkXsAEPoCnsXTDcqTgNHGrUj7wIu6Uavk0QEW50Wf/eOgaqVG279cfl/4cZXLRVTY9z7
-	MCuugXfDyOSq9Il7LkPkp7Tm3XWx28ugCiCRJxMjAkF3LofmBxlonuRmKgMmM7b66udqzICZmUPLF
-	+SVIGKutAS+SiiAVsvJ9mrvC0g9PnbLU+j0+tqFmEmL8KDGGG5v0jFeKW5CjxC742P0sCFfgT1rNB
-	GLeHgwJxNFr+4Vxx+BczlbrBCpOJJ5U6QQ8d9xquJxcPvucwrgpSu4LU75QazX76vjCCsAMMNfVVV
-	p/Ec+/yDhuZOdv2F5wJg==;
+	List-Owner; bh=xljfNr5S1hw9EGuZXKgTxP1kmryg6t3Gtto0841J22k=; b=QotmuWt6RFtphD
+	H6fBAHoHMehQU2cJYUC26OznINuD/5Dhjpb5TOqINPjXM7j1d5I5KF2LgIhLbtzPIuLbUiEnPV53U
+	x/TDgXgnVA7Uv+xH1Mzzskm2R58Y8U3QbvdmDs7Iv3j+3Csa9XIkCSVth68j0EgWqtuIcafQBwyd/
+	nK2SenAOODyrV/s4L0duRC8MvA9M/d3rDueilYDxIi3kmxt05e0+z6wZCh/d5FzXwTyiFHUzZ5Q//
+	6N1GJ5eDFfd5hJW4aCCfkqXx9+ArJdDJIebKNG3TsgYIs49kTuKV57Pxr3DWIXtyPCj+i2KCEMe4M
+	G4MyM9xzQtlPe95G6QoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phRHE-00H7zU-1d;
-	Wed, 29 Mar 2023 08:35:28 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1phVDN-000ETj-2y;
+	Wed, 29 Mar 2023 12:47:45 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phRHC-00H7yb-2G
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Mar 2023 08:35:27 +0000
-Received: by mail-lj1-x231.google.com with SMTP id t14so15267507ljd.5
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Mar 2023 01:35:25 -0700 (PDT)
+	id 1phVDK-000ES8-2B;
+	Wed, 29 Mar 2023 12:47:43 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id r187so19111675ybr.6;
+        Wed, 29 Mar 2023 05:47:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680078924;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=8n6H02kYmd8gwvoaq31SqGY+BRAc0v4qQoRYdY6sZnE=;
-        b=VPMdksRMaakDYMc+JCTrhyek8dDo2DhMdiPf1p7ECaK5PYJLpj69nRPbl/N40FJgvj
-         ZX7zujtuLD4QePT3VEOQBMeQQOgJk2A9ZE403xwdFUVMKmVqwNx9Bw8fm1jEw2aal14g
-         1AsfdXeO+rI2Vo0zEEpvwfP4910kbKIB/PKcIpGIp00CYFx8AAR7BIVsNwzxV64MwwrV
-         n4KRtr1GpNtuae5LRWyxFnJqnvP65i1sjRO33jeLPOjzLTUsnZccT0wDU+MnWsrkrKgE
-         ZWTafX9FCdZ7TJNyElwOxJpf6v8p/lV9IQHNa7b9mNwVnhH1dnrRqKq1yTvSZonV9ian
-         pd7g==
+        d=gmail.com; s=20210112; t=1680094057;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Xb99Pt1hWl4SYTj2pTt8Ket8kJPM1kuDudhRju4oMSo=;
+        b=boK22f1D5yOHT9BRDDK/J+eZemdoM5AnfhXXt692riVq7GFzD/0cjPfuFcFiucbMB6
+         k7+kyc1MCAgTNdliyC7Km9/lxTNcdRbz5NoG1pWZZ+9FYuxjHgVy+gFqiOheInrOqsNo
+         a3U97Dg8skUXV80IYjlGfdPoGUTxCCvwb8m9+E591WAHG5aaRh1MKShWiY2T1A/6rOr6
+         MJUteRvYrRYhCJNz6gdhLXXxD3VephikSObXgLKpmlmwl/yBg8vNS++DH6+VLmQIlk/B
+         tgOJNHtK2LWkCmDa0C4hpA9eF6EVgCUWFTgyz57984cKTvzXVDkXeNIUJW9uxni+Uprm
+         J9ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680078924;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8n6H02kYmd8gwvoaq31SqGY+BRAc0v4qQoRYdY6sZnE=;
-        b=VM0SAYOuiuGq/NKllwjrwA/C23agBGubKOGfhCokIPCAReFBVmD09KvlN/e0HYnng6
-         q2mbjRfnQoQzggm6ifosduWuns/lxHWrVlVhQdPIGpjRZ0so0x0t3A4ZaojtqpMZZ24x
-         0ens0Sj+z5/x71jHnPm31LiMgyfpuJBj+aaeithGA1FHB7WWmgukJ1PFP1IWgxSAC9f3
-         9S9OR/YDBt4ytm/V6ohN0jUcIaKMP5/LPu9Wgzzo1wAuurqY0eTlZaohtaehIwclLOHz
-         xvNjHy5d7pk4JvF2kCd3+FI7P+MA37SvsfE2D6FwPaNvF8kt2wGVWL/BCqOrU5K4Rjfd
-         zhiA==
-X-Gm-Message-State: AAQBX9dKCTWsJrXhgxFGIPvhKX+4Z9ikubTTLF4un9Ma0za/kY3wfA9n
-	cjpVcvjJIdSAnfbbYJ7oDeOiLg==
-X-Google-Smtp-Source: AKy350YTSR8X1/RiTJ1meCrfQSilvlZ5ZdA39iG6PqjvRZxaJwRfrUJGIdyjXbE9qVKd8aeYas4npg==
-X-Received: by 2002:a2e:884b:0:b0:2a6:13c:30c8 with SMTP id z11-20020a2e884b000000b002a6013c30c8mr1972059ljj.33.1680078924640;
-        Wed, 29 Mar 2023 01:35:24 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id l18-20020a2e9092000000b002986d9bdecesm5427078ljg.129.2023.03.29.01.35.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Mar 2023 01:35:24 -0700 (PDT)
-Message-ID: <80e926e1-28aa-eb9b-9ab4-9bc3b349a5e4@linaro.org>
-Date: Wed, 29 Mar 2023 10:35:23 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
+        d=1e100.net; s=20210112; t=1680094057;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Xb99Pt1hWl4SYTj2pTt8Ket8kJPM1kuDudhRju4oMSo=;
+        b=qyjrAtfDq9be8rEC5zQKA7Cpe5xjdFN6XIb6tMaB1OMdZ7d6My1ONs8O0nxzfVtRqa
+         tzC/2pxVIoTzFTbtamV3rrZ1GnKcdCQ7+S8A1JGCFSmrDkKwwfmmaalVTMLlI+IKIp8m
+         nZ1BHjFXyjU5bZe15dr3xN65KbgBH6W/Q6oGSmg6u3HI9pbbSV+/VMiappVpdW4MH+ZV
+         H9HNFEd/SdzRwOFSGrTJL1U+DGP3Dsv216stDpLv0naaPbc69WXobTNhS6dE5P+v7QY4
+         3YwLrJ9wGBr1gSGVfUWMc78zSJyaSNUrfPeUVQAXizLrBtqxJ2fMuAe6YgKYsZqRboRO
+         2orQ==
+X-Gm-Message-State: AAQBX9dmHtleRWIM1bImxfpQjgTucRbqm0Mqc1pe2BkPE8WFD7bhOmFi
+	a+FJfhhCOLMM+SeZAPTDcUY=
+X-Google-Smtp-Source: AKy350bdEGZMDJpYSMuq9BOMZO56hoZIdt+J3okid1AES5sc6vMNacBimV7YbYHIobiway90BPZy7g==
+X-Received: by 2002:a05:6902:1201:b0:b72:4127:68a with SMTP id s1-20020a056902120100b00b724127068amr24732924ybu.19.1680094056338;
+        Wed, 29 Mar 2023 05:47:36 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id p142-20020a25d894000000b00b7767ca746fsm3454472ybg.12.2023.03.29.05.47.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Mar 2023 05:47:36 -0700 (PDT)
+Date: Wed, 29 Mar 2023 05:47:34 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Shreeya Patel <shreeya.patel@collabora.com>
+Cc: wim@linux-watchdog.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, jamie@jamieiles.com,
+	heiko@sntech.de, linux-watchdog@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
 Subject: Re: [PATCH 2/2] dt-bindings: watchdog: rockchip: Add
  rockchip,rk3588-wdt string
-Content-Language: en-US
-To: Shreeya Patel <shreeya.patel@collabora.com>, wim@linux-watchdog.org,
- linux@roeck-us.net, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- jamie@jamieiles.com, heiko@sntech.de
-Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
+Message-ID: <157937fd-0af7-4ff5-8430-2f956c7aafba@roeck-us.net>
 References: <20230328210048.195124-1-shreeya.patel@collabora.com>
  <20230328210048.195124-3-shreeya.patel@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <20230328210048.195124-3-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_013526_773019_3F3A3856 
-X-CRM114-Status: UNSURE (   6.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230329_054742_714829_132A1969 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,17 +97,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2023 23:00, Shreeya Patel wrote:
+On Wed, Mar 29, 2023 at 02:30:48AM +0530, Shreeya Patel wrote:
 > Add rockchip,rk3588-wdt compatible string.
 > 
 > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+
 > ---
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
+>  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> index 92df6e453f64..e7a87ce94772 100644
+> --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> @@ -29,6 +29,7 @@ properties:
+>                - rockchip,rk3368-wdt
+>                - rockchip,rk3399-wdt
+>                - rockchip,rk3568-wdt
+> +              - rockchip,rk3588-wdt
+>                - rockchip,rv1108-wdt
+>            - const: snps,dw-wdt
+>  
+> -- 
+> 2.30.2
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
