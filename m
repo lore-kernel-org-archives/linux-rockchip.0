@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DF44C6FD18
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Mar 2023 21:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD66C6FD18
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Mar 2023 23:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IbcGkX4Wzd0/lXqxQ+otR6vKJbQxyqdxs9iFUXqV/+4=; b=45C0kSuvcBRBV1
-	WPSov8ZtQAN534pZy0jjOuLC9xf5VMsyesKLbdWcyBU/zebv1Z9TIof18WYrMICwXsHrMtuuqBAla
-	kNYSkTzFUqL+dQj+xjdTMfnIF7Bl2Fi5daB7dRtdIyo+V2+42UsgNIBVv5AFVQGzenVWtY5F+8Ukd
-	oevV8LZpr4WIeXgnwo6MQKNEpMEwosRfsiGCg6lzMe56yqLQcwrKPBGxDcq5EqL7nTPQS3dRGOwzA
-	KIyJQLuGf23fsSkWlnZByOP0QOabAMFeN/DwPbLeKQZaTfAToXtlUP58yZj7haRaSo8VLy9m4beFl
-	J2UZb/zj40DdSH7gmlPw==;
+	List-Owner; bh=zKe8UJCeKFHnk4+o76XAMu9r/QeyGSPILunM6Jp9qsw=; b=RsaulLOntYprSl
+	2ZpNP9C71v1Kqwdo6Vkx9lj/7o7Mr/txmVj3EVvMLUIYt0ZVC6MKoNvuwdqFNpZ1U/50sLsr+yw5R
+	tl9eCiVbPIugMQcz9yePhL7wg4IQBuhU4lfj3wu5/++0VRZ9LF/oR2qDm+JPn5R3mGs4ZIaqx03sQ
+	42de2XtjxBM/Cl1PsAZ4UNSDj/EgNp8EyJRwlcsk14t3v+YPIprqimMTzg1vo+Fv7NIMKEO7yaSTq
+	gwgWfy9XTo8icJmeSJhKbRGhaKAmqjW3JBWg3Rb/koLWzNy308/bZkH7SMoeYKYPoRBLMGJNpYStA
+	fJo99ZmrbebwspQAjOCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phdiS-001vcg-0w;
-	Wed, 29 Mar 2023 21:52:24 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1phfQh-0025Po-0q;
+	Wed, 29 Mar 2023 23:42:11 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phdiH-001vY3-31;
-	Wed, 29 Mar 2023 21:52:15 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id cf7so21268035ybb.5;
-        Wed, 29 Mar 2023 14:52:11 -0700 (PDT)
+	id 1phfQb-0025NI-2g
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 Mar 2023 23:42:07 +0000
+Received: by mail-qt1-x831.google.com with SMTP id t19so16736190qta.12
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Mar 2023 16:42:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680126731;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Wh1B0599Qis1A5KRvW2arbaj6Q9+dYZeQ7c/+45Fju4=;
-        b=PtV8HQIdwUFDt74n8e5c6Q2benaGSLK0mtdGGhQKbgzaTBKH4NN74bLPdx/6Hf39bB
-         /S/q00tjqZwETDscT3yb3X7cqI06LMq4LfxQVT8LexgvRC8e+8StVXtc3gJD/7Qr8Hi8
-         J0U92283Z1S8xuUf26T7Ao0r1ORsSmofG4ebMYJlwxfRSrGO5HMZH1l2flfqmux/+eTQ
-         HzTEfqcOaptBh8p2R+TvJJW9GH9uOe0jzPu/Pj1uNJsgc1vil9v/8goS2LOjdfuDyps1
-         4wm8p9Y+ya1dMYw3wI0EBiXtK9ygbZq3m3xZsmhY4ptKpjHwJiqVFJezk1gpo8x7il6p
-         rdXw==
+        d=ziepe.ca; s=google; t=1680133321;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=M7C+py6MtCoeCMOtw25BrlCO3RIdyKIetyPlMUWcAxQ=;
+        b=or5zOdb0THcrHSRrNF/aWpqr5y5XACt17c51B2fuOW5sIxoj2mxKk9QPCHXd0weuMi
+         hnjPrhDD9X00VxhDRyGWzEdQaeUnYGGNVBIvm9NdJ0z50h4PG9uK/AbqfIt+KuEViqwk
+         JMM5cDJ2p6Ibr/BwfCk3C1SKBmRh1EslZACPJQ899Ch1m4XCYwbv+spFie8OO9H1NGMd
+         dSWXfMR537z5wT9f+bGJgtTobSqzNyVbAqczhBYbiJ434wSDGKN+LAwp1+ntSjG3vP2F
+         N7qWsyB3f+eC4E5HMMZTbKMLErH/sElNNBOzKtXz/YGwiDkAtAAhK+4KWLoTciVd0//H
+         yxpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680126731;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Wh1B0599Qis1A5KRvW2arbaj6Q9+dYZeQ7c/+45Fju4=;
-        b=D3L+5EHHukCg3LFMtaFfbuvIbyyO0VVDWhyh4Psob8YnCmVJV9/vBew57DQ5FhdbgL
-         TRn4u5cno12WcAkfPOBQ14PQuLJ85XlkXOus1Q2qS4dIvoi7vvcJBhVxs2/PVX9z4zJc
-         Hfz9Og6yvKElDOqtMnDb3fB6NK8npeSnbqtCMPK01C03kG+oJVePyXtTf7zfruHPanSS
-         Fr/GoVZvo2ddC9veG3W7tQp0BY4hmmpIYLTiUqXMtnKkKVlo83rWYjynN3k2bsEn2l5b
-         viWSVCztSbWzFNamDi+bB2EKrbDEJobf10nwwrb9vzVz8nAjnFWukQTMGtkMbj2S4BI/
-         9f9A==
-X-Gm-Message-State: AAQBX9fSVSAxMAz7cGsMOHk8ZdmtZqxnv/v+Xf4K2+pqFvXEXT73wp7F
-	Ru5TNrjrv/TPhOttN2BjpsQ=
-X-Google-Smtp-Source: AKy350bi4OXB1GzOB9yXEI/9SI7hN/blDYvOoj9AynOzMz7+0VnDJGXWeYDXayBQznPtopkd6xXdQg==
-X-Received: by 2002:a25:f826:0:b0:b6d:5e86:7ed2 with SMTP id u38-20020a25f826000000b00b6d5e867ed2mr18841698ybd.36.1680126729127;
-        Wed, 29 Mar 2023 14:52:09 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id v130-20020a252f88000000b00b7767ca7490sm3721007ybv.45.2023.03.29.14.52.08
+        d=1e100.net; s=20210112; t=1680133321;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M7C+py6MtCoeCMOtw25BrlCO3RIdyKIetyPlMUWcAxQ=;
+        b=VK35J+ekI8c5QUVNT33fNUj2hWc4QQNB2Ek5ciURkwf7U/4QizZJCudJbBCXo4HTjA
+         tVQ+PMTo2YIjA8tbC62KowzRSqd8WtkYW+rTSdpngExTL2OBxubjJNNA1lRhXgFJA4da
+         R0UMdXHExOoG9PmsSrf6uOmhSrpiR2LHMw7WzFxXLKaMgEWTzPZ4C3qscBHVd6A5fNvV
+         6gXqfZ7YHevP2Qf0FOz1hz3ypvz5UC65a51bPlycnGZwOuScQA2xa5zhCpCNHsLYVQLN
+         RAMgu8wWtOrQLwTgqJbW4arsqvx8unKmhdQU0vyCULh+kLjBHxlrOINXDo/T/T8H67XZ
+         USyQ==
+X-Gm-Message-State: AO0yUKUMf5bECZEqFZrbynDZGTlYg8Gp2KF5uOdCJJ2J2GskL0V+NIHx
+	zfOiCvDZ9McUUZ59hhF5QR2+uA==
+X-Google-Smtp-Source: AK7set/r+pGsJrPMn0D9D6pkZb7SUCn2k/XDNs/gApUMrPEx0RFz+B78D/mL8S9HzmDoO+y4IPCuSQ==
+X-Received: by 2002:a05:622a:1ba3:b0:3e3:98b5:69c2 with SMTP id bp35-20020a05622a1ba300b003e398b569c2mr26020425qtb.62.1680133321368;
+        Wed, 29 Mar 2023 16:42:01 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id h22-20020ac85056000000b003d5aae2182dsm8863730qtm.29.2023.03.29.16.42.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 14:52:08 -0700 (PDT)
-Date: Wed, 29 Mar 2023 14:52:07 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Shreeya Patel <shreeya.patel@collabora.com>, wim@linux-watchdog.org,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	jamie@jamieiles.com, linux-watchdog@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 2/2] dt-bindings: watchdog: rockchip: Add
- rockchip,rk3588-wdt string
-Message-ID: <b3bfec84-b8b4-437c-82e8-37c6812deeeb@roeck-us.net>
-References: <20230328210048.195124-1-shreeya.patel@collabora.com>
- <20230328210048.195124-3-shreeya.patel@collabora.com>
- <157937fd-0af7-4ff5-8430-2f956c7aafba@roeck-us.net>
- <4256207.ejJDZkT8p0@diego>
+        Wed, 29 Mar 2023 16:42:00 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1phfQW-004hQQ-86;
+	Wed, 29 Mar 2023 20:42:00 -0300
+Date: Wed, 29 Mar 2023 20:42:00 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Steven Price <steven.price@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] iommu/rockchip: Add missing set_platform_dma_ops
+ callback
+Message-ID: <ZCTMyHifYJfGZqRg@ziepe.ca>
+References: <20230324111127.221640-1-steven.price@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4256207.ejJDZkT8p0@diego>
+In-Reply-To: <20230324111127.221640-1-steven.price@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_145213_991335_4B2ADE33 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20230329_164206_168252_28A7CB79 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,38 +93,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 29, 2023 at 03:04:52PM +0200, Heiko St=FCbner wrote:
-> Hi Guenter,
-> =
+On Fri, Mar 24, 2023 at 11:11:27AM +0000, Steven Price wrote:
+> Similar to exynos, we need a set_platform_dma_ops() callback for proper
+> operation on ARM 32 bit after recent changes in the IOMMU framework
+> (detach ops removal). But also the use of a NULL domain is confusing.
+> 
+> Rework the code to have a singleton rk_identity_domain which is assigned
+> to domain when using an identity mapping rather than "detaching". This
+> makes the code easier to reason about.
+> 
+> Signed-off-by: Steven Price <steven.price@arm.com>
+> ---
+> Changes since v1[1]:
+> 
+>  * Reworked the code to avoid a NULL domain, instead a singleton
+>    rk_identity_domain is used instead. The 'detach' language is no
+>    longer used.
+> 
+> [1] https://lore.kernel.org/r/20230315164152.333251-1-steven.price%40arm.com
+> 
+>  drivers/iommu/rockchip-iommu.c | 50 ++++++++++++++++++++++++++--------
+>  1 file changed, 39 insertions(+), 11 deletions(-)
 
-> Am Mittwoch, 29. M=E4rz 2023, 14:47:34 CEST schrieb Guenter Roeck:
-> > On Wed, Mar 29, 2023 at 02:30:48AM +0530, Shreeya Patel wrote:
-> > > Add rockchip,rk3588-wdt compatible string.
-> > > =
+Aside from the pm stuff this looks OK to me
 
-> > > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > =
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-> > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> =
-
-> just the usual question who is expected to pick up the binding patch?
-> Should I just take it together with the dts-patch or do we wait for
-> a watchdog-maintainer to pick up the binding alone?
-
-
-I am ok with you taking both patches.
-
-FTR:
-
-Acked-by: Guenter Roeck <linux@roeck-us.net>
-
-Guenter
+Thanks,
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
