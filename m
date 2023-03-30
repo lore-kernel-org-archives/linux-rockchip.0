@@ -4,84 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8ECC761A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 14:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA5EC761A6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 14:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3wcwoojP8alczpfv/6wsYbQP+Q7tAX7NNCVg5Wg3bNQ=; b=dsXV1fBAKc5GiB
-	/kDtBzjnaFOyF/W+z1dS0PdT2TzLv4+YYiVB9n6NQ9mdm/JO6AYQEP/8tR9u8b2AtakJ4VPdhopD5
-	/IDwNjVlEujYcLCRr0Z2KTUk5kzApNOSfYafCiEv5dtrjTtK+V7UdOctmfpNeO+CEXZ1n/JddLZd+
-	UJ+qSBUroFzEC6HsodowjavMegXsZF1SPVfgy1QGIokQVHZOba3yvOBO3FQEaoToCtyeXB6TZ7O1r
-	zbfc3h0wnWa9FI49kIaKw2Pdy9Fi9j+7mhW+rWqBs7Q3ZsdaY+N41IuGtKdwlHf2+UlE1L3oYfDyF
-	sIwgQD+EZ2nePzDtrqiw==;
+	List-Owner; bh=TxOIRqDkvUZiMBShN1TdBVr5oSQPCsgptgwfketc+GU=; b=wOuxqXwCqPx9ky
+	Gwyk6A4LdHhPBHt2AjyWACbLGCgUfd22viJ3v2p/7yiFSMY6n5L4bCyqzrOBjtLIrLYleTZbPBhSd
+	7MW26p0m7EcUgfYgwHPzMQ38jyfEFdXzO7+vE1/vf9vqXkWoetkxREiszzEw2l4t0XxFuqrp8214J
+	IEuWnP6a0dCIy7NA4Ewp4xg41+28cJalyFdbGTfBJy25qCPWLW9FmyHm5sS3lphv1wbH7SmJYZlga
+	F7Z/pJHf154x00+jR7lL7MyLgE+50XAiIQlo6Rv5vE26OXF0IPe0z5LCUU/8AuxdFa7lRcArkqRgH
+	keyT+z32jq2tIXy+0LIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phtIb-0045bn-1q;
-	Thu, 30 Mar 2023 14:30:45 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phsBx-003rcX-1V
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Mar 2023 13:19:52 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id e15-20020a17090ac20f00b0023d1b009f52so21911086pjt.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Mar 2023 06:19:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google; t=1680182388;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sRHEgyUwDyzDOzARH/KbUIOIYBwk/M3j51CvYnIlMgs=;
-        b=oRmW925Xm5WyLdVxo8qlbOXP2Zjh4XarIC07Gvgljqxr6pl+SS4Pwoy1OJI/Sto6hn
-         0G4Vhb2MCwW1GTKA238m/M+Wk0aNCnZOi6+W0YBHfzWnF2k3dn5TwmqNyVhhgiU5lvuj
-         fA+2lzdvbcAIKVrmPaxAdVnbEveKjqhC5g188=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680182388;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sRHEgyUwDyzDOzARH/KbUIOIYBwk/M3j51CvYnIlMgs=;
-        b=Mo7452FhYRwvd0yccGjkrOpEMHRuKQ6o3gq60jx5Xijd5W6GK1R1mIwMP3a9yUX5uC
-         zkp/hfKRSjxSJI48OoKF1Ikfosa8sWMGJTFds1ukToTa3AvlumONzgb8saJbjv/FAGni
-         ZNsi0AKcV2rmQO/8qOL9DtsSqM9TkSSy0SD6+M/WuMK6Bxi7RMbSOhVu1I5qQKkJk8j+
-         FffsdwKuu+7kwrYxg49FHUogLG74cSqXVHRpLJpUQIks0YV38b0AykVd9SlZ184LhXpD
-         yKQvBVMxNav8rJLOG63ZkB5WenknwdRCvu8E3Z4V+UfSnO3KwS/L1ohmgy/jE7fMuMl/
-         npQg==
-X-Gm-Message-State: AO0yUKWfvH3PW1DYslX7kXgdJt7JTangLiav89Hn3ZmFCH4nvi4G2irH
-	gPeDcU+ICRFN0SX7+D6qGzeOSQ==
-X-Google-Smtp-Source: AK7set/se186QNK4y8v2yF6M9tADOW5OdPNi17wkM/FKlIdKOpYWorRygvlG2Iu9dU18QwSIZE6joQ==
-X-Received: by 2002:a05:6a20:8b82:b0:d9:7fcf:1076 with SMTP id m2-20020a056a208b8200b000d97fcf1076mr22802629pzh.25.1680182388082;
-        Thu, 30 Mar 2023 06:19:48 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c00a:a047:8bc3:c2fc:8dab:d912])
-        by smtp.gmail.com with ESMTPSA id e15-20020a62aa0f000000b006259e883ee9sm22473622pff.189.2023.03.30.06.19.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Mar 2023 06:19:47 -0700 (PDT)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: iommu@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-amarula <linux-amarula@amarulasolutions.com>,
-	Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Disable device link for RK3328 VOP
-Date: Thu, 30 Mar 2023 18:47:46 +0530
-Message-Id: <20230330131746.1475514-3-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230330131746.1475514-1-jagan@amarulasolutions.com>
-References: <20230330131746.1475514-1-jagan@amarulasolutions.com>
+	id 1phtKR-0045rA-3A;
+	Thu, 30 Mar 2023 14:32:39 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1phtKN-0045q1-33;
+	Thu, 30 Mar 2023 14:32:37 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9203B12FC;
+	Thu, 30 Mar 2023 07:33:16 -0700 (PDT)
+Received: from [10.1.35.23] (e122027.cambridge.arm.com [10.1.35.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DB1073F663;
+	Thu, 30 Mar 2023 07:32:30 -0700 (PDT)
+Message-ID: <864ef90a-c235-1e72-7941-6766541bb199@arm.com>
+Date: Thu, 30 Mar 2023 15:32:29 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2] iommu/rockchip: Add missing set_platform_dma_ops
+ callback
+Content-Language: en-GB
+To: Jason Gunthorpe <jgg@ziepe.ca>, John Keeping <john@metanate.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20230324111127.221640-1-steven.price@arm.com>
+ <ZCGpmHUWyZVaeIIx@donbot> <ZCG1v9hRybc/951e@ziepe.ca>
+From: Steven Price <steven.price@arm.com>
+In-Reply-To: <ZCG1v9hRybc/951e@ziepe.ca>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_061949_533382_B6A67833 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20230330_073236_031563_5474DADC 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,50 +68,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip iommu is trying to enable the VOP device at runtime resume
-however VOP device might enable the iommu during their pm runtime resume
-operation which indeed leads iommu to use the wrong domain and this
-leads to VOP iommu page fault.
+On 27/03/2023 16:26, Jason Gunthorpe wrote:
+> On Mon, Mar 27, 2023 at 03:35:04PM +0100, John Keeping wrote:
+>> On Fri, Mar 24, 2023 at 11:11:27AM +0000, Steven Price wrote:
+>>> Similar to exynos, we need a set_platform_dma_ops() callback for proper
+>>> operation on ARM 32 bit after recent changes in the IOMMU framework
+>>> (detach ops removal). But also the use of a NULL domain is confusing.
+>>>
+>>> Rework the code to have a singleton rk_identity_domain which is assigned
+>>> to domain when using an identity mapping rather than "detaching". This
+>>> makes the code easier to reason about.
+>>>
+>>> Signed-off-by: Steven Price <steven.price@arm.com>
+>>> ---
+>>> Changes since v1[1]:
+>>>
+>>>  * Reworked the code to avoid a NULL domain, instead a singleton
+>>>    rk_identity_domain is used instead. The 'detach' language is no
+>>>    longer used.
+>>>
+>>> [1] https://lore.kernel.org/r/20230315164152.333251-1-steven.price%40arm.com
+>>>
+>>>  drivers/iommu/rockchip-iommu.c | 50 ++++++++++++++++++++++++++--------
+>>>  1 file changed, 39 insertions(+), 11 deletions(-)
+>>>
+>>> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+>>> index f30db22ea5d7..437541004994 100644
+>>> --- a/drivers/iommu/rockchip-iommu.c
+>>> +++ b/drivers/iommu/rockchip-iommu.c
+>> [snip]
+>>> +static struct iommu_domain rk_identity_domain = {
+>>> +	.type = IOMMU_DOMAIN_IDENTITY,
+>>> +	.ops = &rk_identity_ops,
+>>> +};
+>>> +
+>>> +#ifdef CONFIG_ARM
+>>
+>> Is this #ifdef needed?  I can't see anything ARM-specific about this
+>> function or .set_platform_dma_ops.
+> 
+> set_platform_dma_ops is never called on ARM64.
 
-This issue is reproduced if we enable the display in U-Boot however
-U-Boot is not even touched any iommu register as the U-Boot display
-uses the simple frame buffer like other Rockchip platforms RK3399,
-and RK3328 do.
+I have to admit this was somewhat cargo-culted from the exynos-iommu
+change. This is only needed for Arm, but I'm not sure if there's any
+real harm including it for other arches.
 
-rockchip-drm display-subsystem: bound ff370000.vop (ops vop_component_ops)
-dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using dummy regulator
-rk_iommu ff373f00.iommu: Enable stall request timed out, status: 0x00004b
-dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using dummy regulator
-rk_iommu ff373f00.iommu: Disable paging request timed out, status: 0x00004b
-dwhdmi-rockchip ff3c0000.hdmi: Detected HDMI TX controller v2.11a with HDCP (inno_dw_hdmi_phy2)
-dwhdmi-rockchip ff3c0000.hdmi: registered DesignWare HDMI I2C bus driver
-rockchip-drm display-subsystem: bound ff3c0000.hdmi (ops dw_hdmi_rockchip_ops)
-[drm] Initialized rockchip 1.0.0 20140818 for display-subsystem on minor 0
+>> Not shown in the patch are the pm_runtime hooks.  Do they need to
+>> change like this?
+> 
+> Most likely yes
 
-So, prevent this by enabling rockchip,disable-device-link-resume in VOP
-node so that VOP enablement for that iommu domain ignored during the
-rk_iommu_resume call as it assumes it handled iommu device attachment in
-the VOP itself.
+Good spot - I'll send a v3 with this fixed.
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Thanks,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 6d7a7bf72ac7..7ca83bc844c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -718,6 +718,7 @@ vop_mmu: iommu@ff373f00 {
- 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
- 		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
-+		rockchip,disable-device-link-resume;
- 		status = "disabled";
- 	};
- 
--- 
-2.25.1
+Steve
 
 
 _______________________________________________
