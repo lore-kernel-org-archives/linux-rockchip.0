@@ -4,54 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F38C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 15:09:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E139C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 15:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gObQWwDtiPPv0j6uXlvuM5bnkZQCF4yx1F25Bq/2BqI=; b=u7Jo97tuG7Z9vi
-	egJjosJVKXSQH0j3kK26/C/RdcLI5gKib/NHAubR/0qYt2E4RVo/F0DtPZL+lLn5VfpBPm9P1icUi
-	76KV8Imi4Z6l2pCU9t3Edh4g+TX+6rPBJyYbu2LvB0cbZI46NVoOfJ+Ut0VkZy95Qigrc5G3iNnKG
-	vH1g650slCtXTtpKV1u6e0HP29YASptdVClrGT5oScVrfgWftcCFxIeuP2dTSI+ZINc1tKtOoS6ei
-	AWdgbVx1GNp1DYr/GArBsnKvXXpYOLGdW6vcHZfALB2soNHdryUcxDB9u52w9pqtSrYcB8LjGMTB/
-	Hx9xejCx0oTLnTU9VCIA==;
+	List-Owner; bh=63gRN3f5BVupPK1UXKUv2jqbaSyik+ZR+D0Uty4S0SE=; b=ECHgkl094JCLUL
+	lElEz6OXYyxL2HWQxI4D2CM8h2v0PSi3ABtdga7jiLnIWQPlAfxfahf3J74TNwVi0Vv54XylQRaVl
+	socQSC1xsTnNZ7RweL67Dc+BPg/hWahBVtQ9eMZhPuvtNkUEwYmv1heKKKJuU6SxKyVmBfWn0TbJs
+	naTR/8TV40Ex/jvED7oB2EfHoG2qjXdFouhTzKilEC6ipHJXpMyMtmA/h8ByilLFprbZJxE4z8MAk
+	MJWgnMqM+0r5HukXkCbI75TqogGPi8cFL+7pTi2SoXNQtaa3z5ylzrEMgh6Csu2jNKhCJLRN/XfzA
+	vOpng0Q9F9siQbS2+dqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phttw-004BN8-2a;
-	Thu, 30 Mar 2023 15:09:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phttn-004BK0-2k;
-	Thu, 30 Mar 2023 15:09:17 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 989CF2F4;
-	Thu, 30 Mar 2023 08:09:54 -0700 (PDT)
-Received: from [10.57.54.254] (unknown [10.57.54.254])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 988113F6C4;
-	Thu, 30 Mar 2023 08:09:08 -0700 (PDT)
-Message-ID: <3356d18f-d1ce-4995-2b95-16938df1b7d6@arm.com>
-Date: Thu, 30 Mar 2023 16:09:03 +0100
+	id 1phuCy-004Hkh-0o;
+	Thu, 30 Mar 2023 15:29:00 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1phuCw-004HhJ-0a
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Mar 2023 15:28:59 +0000
+Received: by mail-wm1-x332.google.com with SMTP id bg13-20020a05600c3c8d00b003ef90adc168so4284657wmb.5
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Mar 2023 08:28:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680190132;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dGsCmW7EUS3nfy+7BnW+WgqTabyFkZU2nitm+ST7mKI=;
+        b=gfO4wBAMcJ8t0kHqH3xynuzyyJtZvI+YL4+NG4UxqIGIKLSk/xeTl9+QRt0iGEMX78
+         lQuRe1xmTJx/kG4vG/MRGVaWIzpRw4kxDOewTMPZ3zQZOrnYPQUv1elti0HcD6zry7iE
+         QpFJlXVAw/c0/QOdVRskbll0h55wlArViYWeAxqpnFZaq14KttfJuCEzqqL4Ic+KdNeZ
+         vGMKORaRMZUmXug8ZScqebP7bntofChz5sdm1Y8o+Q+ojC8BcpbzprXgt3Zr45HhqhW6
+         Uo51KawFOXgSypTUNxCjaszoGWxh05pyb1jB5kL7NQM7g+ZHZv3Ri7ISt/sK7ZvPadGS
+         xFZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680190132;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dGsCmW7EUS3nfy+7BnW+WgqTabyFkZU2nitm+ST7mKI=;
+        b=n9/tUhMpdFJVgbhsQwPHmWDeygNb+oBu7fwLWH6THalQThLylVkgQcs8SBw5XXpsqc
+         MgnD12s+BWTNcU4mnXH2MRHzalkpr3TYNJQp7D/8701PIyT/7WyfU6Bjwzc8Xd00o4M6
+         Rz/hod5tsEgDEclPFTYkLOW6mswhU4uyYw9GaSsNzb0vjSTwaGNFdNIE8HnAiu9CFtkA
+         LZ8Ibp1uifNV7nGBAWIsOSn3x3MDGZtEwOsQTLqJtDsQZqc0HTk4GIAzD0OgOgZwYH7P
+         3PQDSU2jfgI83jRKHhCUJnOtPyUdH5CgkYa0mzNBGn27Wl2I8Q+DLBmqITgWRpLrvqLS
+         pl0A==
+X-Gm-Message-State: AO0yUKVdwffHG0xryzeAxsantiugOmobCdm2aCEBhjIfg60Pyfnv4hnK
+	N2xVDnddkKFEXKcx50+7MFI+Dw==
+X-Google-Smtp-Source: AK7set9JBCqQOXk+u/rw68P8YwukfO3REwzC5Umey4FtmvcIbY6E6CbTxzim81BNiRT8Js8+wSeCng==
+X-Received: by 2002:a7b:cc98:0:b0:3ed:2702:feea with SMTP id p24-20020a7bcc98000000b003ed2702feeamr16821936wma.41.1680190132118;
+        Thu, 30 Mar 2023 08:28:52 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:9ee7:40a0:eee0:62cc? ([2a05:6e02:1041:c10:9ee7:40a0:eee0:62cc])
+        by smtp.googlemail.com with ESMTPSA id s15-20020a05600c45cf00b003eb2e33f327sm13485297wmo.2.2023.03.30.08.28.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Mar 2023 08:28:51 -0700 (PDT)
+Message-ID: <95fce357-87f5-93b2-c57f-f561a79dfc34@linaro.org>
+Date: Thu, 30 Mar 2023 17:28:50 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH v3] iommu/rockchip: Add missing set_platform_dma_ops
- callback
-Content-Language: en-GB
-To: Steven Price <steven.price@arm.com>, Heiko Stuebner <heiko@sntech.de>,
- Joerg Roedel <joro@8bytes.org>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Will Deacon <will@kernel.org>, iommu@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>,
- Jason Gunthorpe <jgg@nvidia.com>
-References: <20230330144604.2431436-1-steven.price@arm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230330144604.2431436-1-steven.price@arm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [RESEND] [PATCHv3 1/7] thermal: rockchip: Simplify getting match
+ data
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
+ <20230308112253.15659-2-sebastian.reichel@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230308112253.15659-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_080911_983134_F0FE32B8 
-X-CRM114-Status: GOOD (  26.97  )
+X-CRM114-CacheID: sfid-20230330_082858_252001_F1B6153F 
+X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,196 +97,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-03-30 15:46, Steven Price wrote:
-> Similar to exynos, we need a set_platform_dma_ops() callback for proper
-> operation on ARM 32 bit after recent changes in the IOMMU framework
-> (detach ops removal). But also the use of a NULL domain is confusing.
-> 
-> Rework the code to have a singleton rk_identity_domain which is assigned
-> to domain when using an identity mapping rather than "detaching". This
-> makes the code easier to reason about.
-
-Really this is adding complete support for IOMMU_DOMAIN_IDENTITY in 
-general, which will also be visible on arm64. The part then using it to 
-bodge a pseudo-default-domain for Arm seems more incidental ;)
-
-> Signed-off-by: Steven Price <steven.price@arm.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
-> Changes since v2[1]:
-> 
->   * Fixed suspend/resume handlers to check against rk_identity_domain
->     rather than NULL (thanks John).
-> 
-> [1] https://lore.kernel.org/r/20230324111127.221640-1-steven.price%40arm.com
-> 
->   drivers/iommu/rockchip-iommu.c | 56 +++++++++++++++++++++++++---------
->   1 file changed, 42 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index f30db22ea5d7..4f97af471671 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -124,6 +124,7 @@ struct rk_iommudata {
->   
->   static struct device *dma_dev;
->   static const struct rk_iommu_ops *rk_ops;
-> +static struct iommu_domain rk_identity_domain;
->   
->   static inline void rk_table_flush(struct rk_iommu_domain *dom, dma_addr_t dma,
->   				  unsigned int count)
-> @@ -646,7 +647,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
->   			 * Ignore the return code, though, since we always zap cache
->   			 * and clear the page fault anyway.
->   			 */
-> -			if (iommu->domain)
-> +			if (iommu->domain != &rk_identity_domain)
->   				report_iommu_fault(iommu->domain, iommu->dev, iova,
->   						   flags);
->   			else
-> @@ -980,26 +981,27 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
->   	return ret;
->   }
->   
-> -static void rk_iommu_detach_device(struct iommu_domain *domain,
-> -				   struct device *dev)
-> +static int rk_iommu_identity_attach(struct iommu_domain *identity_domain,
-> +				    struct device *dev)
->   {
->   	struct rk_iommu *iommu;
-> -	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-> +	struct rk_iommu_domain *rk_domain;
->   	unsigned long flags;
->   	int ret;
->   
->   	/* Allow 'virtual devices' (eg drm) to detach from domain */
->   	iommu = rk_iommu_from_dev(dev);
->   	if (!iommu)
-> -		return;
-> +		return -ENODEV;
-> +
-> +	rk_domain = to_rk_domain(iommu->domain);
->   
->   	dev_dbg(dev, "Detaching from iommu domain\n");
->   
-> -	/* iommu already detached */
-> -	if (iommu->domain != domain)
-> -		return;
-> +	if (iommu->domain == identity_domain)
-> +		return 0;
->   
-> -	iommu->domain = NULL;
-> +	iommu->domain = identity_domain;
->   
->   	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
->   	list_del_init(&iommu->node);
-> @@ -1011,7 +1013,25 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
->   		rk_iommu_disable(iommu);
->   		pm_runtime_put(iommu->dev);
->   	}
-> +
-> +	return 0;
-> +}
-> +
-> +static struct iommu_domain_ops rk_identity_ops = {
-> +	.attach_dev = rk_iommu_identity_attach,
-
-Since it's going to behave like a regular identity domain and be treated 
-as one, it needs to support .free as well.
-
-Thanks,
-Robin.
-
-> +};
-> +
-> +static struct iommu_domain rk_identity_domain = {
-> +	.type = IOMMU_DOMAIN_IDENTITY,
-> +	.ops = &rk_identity_ops,
-> +};
-> +
-> +#ifdef CONFIG_ARM
-> +static void rk_iommu_set_platform_dma(struct device *dev)
-> +{
-> +	WARN_ON(rk_iommu_identity_attach(&rk_identity_domain, dev));
->   }
-> +#endif
->   
->   static int rk_iommu_attach_device(struct iommu_domain *domain,
->   		struct device *dev)
-> @@ -1035,8 +1055,9 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
->   	if (iommu->domain == domain)
->   		return 0;
->   
-> -	if (iommu->domain)
-> -		rk_iommu_detach_device(iommu->domain, dev);
-> +	ret = rk_iommu_identity_attach(&rk_identity_domain, dev);
-> +	if (ret)
-> +		return ret;
->   
->   	iommu->domain = domain;
->   
-> @@ -1050,7 +1071,7 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
->   
->   	ret = rk_iommu_enable(iommu);
->   	if (ret)
-> -		rk_iommu_detach_device(iommu->domain, dev);
-> +		WARN_ON(rk_iommu_identity_attach(&rk_identity_domain, dev));
->   
->   	pm_runtime_put(iommu->dev);
->   
-> @@ -1061,6 +1082,9 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
->   {
->   	struct rk_iommu_domain *rk_domain;
->   
-> +	if (type == IOMMU_DOMAIN_IDENTITY)
-> +		return &rk_identity_domain;
-> +
->   	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
->   		return NULL;
->   
-> @@ -1176,6 +1200,7 @@ static int rk_iommu_of_xlate(struct device *dev,
->   	iommu_dev = of_find_device_by_node(args->np);
->   
->   	data->iommu = platform_get_drvdata(iommu_dev);
-> +	data->iommu->domain = &rk_identity_domain;
->   	dev_iommu_priv_set(dev, data);
->   
->   	platform_device_put(iommu_dev);
-> @@ -1188,6 +1213,9 @@ static const struct iommu_ops rk_iommu_ops = {
->   	.probe_device = rk_iommu_probe_device,
->   	.release_device = rk_iommu_release_device,
->   	.device_group = rk_iommu_device_group,
-> +#ifdef CONFIG_ARM
-> +	.set_platform_dma_ops = rk_iommu_set_platform_dma,
-> +#endif
->   	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
->   	.of_xlate = rk_iommu_of_xlate,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
-> @@ -1343,7 +1371,7 @@ static int __maybe_unused rk_iommu_suspend(struct device *dev)
->   {
->   	struct rk_iommu *iommu = dev_get_drvdata(dev);
->   
-> -	if (!iommu->domain)
-> +	if (iommu->domain == &rk_identity_domain)
->   		return 0;
->   
->   	rk_iommu_disable(iommu);
-> @@ -1354,7 +1382,7 @@ static int __maybe_unused rk_iommu_resume(struct device *dev)
->   {
->   	struct rk_iommu *iommu = dev_get_drvdata(dev);
->   
-> -	if (!iommu->domain)
-> +	if (iommu->domain == &rk_identity_domain)
->   		return 0;
->   
->   	return rk_iommu_enable(iommu);
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDgvMDMvMjAyMyAxMjoyMiwgU2ViYXN0aWFuIFJlaWNoZWwgd3JvdGU6Cj4gSXQncyBwb3Nz
+aWJsZSB0byBkaXJlY3RseSBnZXQgdGhlIG1hdGNoIGRhdGEgaW4gYSBnZW5lcmljCj4gd2F5IG5v
+d2FkYXlzLgo+IAo+IFJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
+Pgo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBj
+b2xsYWJvcmEuY29tPgo+IC0tLQoKQXBwbGllZCwgdGhhbmtzCgoKLS0gCjxodHRwOi8vd3d3Lmxp
+bmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNv
+Q3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9vay5jb20vcGFnZXMvTGluYXJv
+PiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGluYXJvb3JnPiBUd2l0dGVyIHwK
+PGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJsb2cKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
