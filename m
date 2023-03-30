@@ -4,85 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00CD8C761A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 15:43:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3544FC761A6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 17:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qqIDF4Du4LRGWFv6maaC0PMf0Bq1VGoq2KAacJIipUM=; b=eXd3vGLBv24UTA
-	FTxyr5sKWR5zi4X1tNzwwy/+doqWbm/tdt2n4Txd5JRxqB8FEmK7n5pgZTd3qWesR1EYDqPTWE90q
-	U2mtoCkUXDPOq5D4lul3fIad3mpnRMbSdaecQ0u+9mC/u6d3LbOFsoz2FEbuxwBUfocylGrsFgFuD
-	/GJvM4VXZLdbJO6ftrHqZN9+/+viQX3BP7OLURyJlZo2DpA/8TpWOPlALZh0TO3BQtQ7+ZpBFj8pC
-	Uu9B9H2eJskmNNRbc9F8ooAboAgjnErKRcdSfa+iotq3fkBW5aFsqtUZao2s4b6GJA2XIQti1a0wL
-	PVZF5+BeMThbTUhaigKg==;
+	List-Owner; bh=DILz8OrL4nXSG85OkhsmWyxzGasj9awMQn/1q0wjUSo=; b=a6UMzKYAJu1A5N
+	AnicNvONn5BdZvGsdBAAg0RmNWFlhivOJnTCvtKy6GKeF5w/eJozhpV6wzvOJqlxHv0CwEiQjpZAW
+	wbURePm6qVqOWTZ0Zzts7mrenKVFaPW+XleamEbcgnL+ZXIA6ls+3PVokClv9xReJ3ekG39Lg6/I5
+	aPN7MPdlkj2YEeNct5VJLUqdYx3D7kMeWbvhmvUgcz6GQpjX4m/Bh6Yx+TB+czGKK5cSi06AjiIPr
+	E71qPpKq/Kh6DsPFtmG3AvRzXGZcZVaZMGZh5fyA4SXAt1OKY84V2UFbickP8OE9lYMMs6ws8wqnB
+	2F1dCOw5PqfJke7Vhzpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuQR-004LN4-0d;
-	Thu, 30 Mar 2023 15:42:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1phvkF-004a0M-2S;
+	Thu, 30 Mar 2023 17:07:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuOo-004KGK-1m;
-	Thu, 30 Mar 2023 15:41:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=eLINWgtqyFjZYSeQi4tktOhHt65EZNqx9Ms5BNRgaI0=; b=Mte77c40jLlvNEoUWRyL4flPyB
-	25PkctoiHd7FJYohxODzDG0oE78ngW+SE4yRveLsg5jAbps9Gfx9H2t5mpbJg7aXz5u2A972m+ABz
-	sT/utTXUXqc4vD9MJhdcCgpSmc9kgTCG0Y5LMijzVmIBDw+qQuSE6SbMTB0qcWLiALyo2aLwVsF7Q
-	5hwtk0HjERMJeQWkiO788oMnOCNbUDaqcYTq7Keb0ateX0QWd4/K/lYcsjN33asIVtCyWvkmn63uj
-	lMqrqh6lvKHssPsddPRAuonnB9yILtrAoK6uE2eRMMwU7kw1B3E8eKq9hJ5J/v1LnSCYxGzNFxQpN
-	klM8LU0w==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuOh-007FC4-0w;
-	Thu, 30 Mar 2023 15:41:11 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:792c:96d5:14:366a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7A8B8660319B;
-	Thu, 30 Mar 2023 16:40:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680190856;
-	bh=PG5l58ThTnueeRQ6ayx94s5AaKQkwia9nX7hjwlo9dQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Sqkh7gxjWlLRtGINBg35H4podqeJqVaTBV/ofIP5NDA7ljVLC64MSIMAAS3t6OfzD
-	 NXCAfUOWyikllKAR72ZOeEvalyiYDADHgcxNSK6eECUJGhYhmRwr+cPpVZWEchhvoi
-	 sDsHaDXKbuH5CjWBX6rsyPTi83Xh/BxcnVQjXA2uTWRxlpmv5wbowkjIhJ8XXXn1a9
-	 Gz7iL2IGMvWDSNUzEVGj2mlvsjuiQpC8gjQmKuqnyVqZEu9PLH1wdv2fhqCFNgj6Ih
-	 Zg6B9RbRQTrj3ZesvDsOvXVxQmTjrmF8mylPyzO95Fw/0UqwTJizUwzxhjQct4r2TN
-	 MpzdwID3rrH3A==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 11/13] media: verisilicon: Enable AV1 decoder on rk3588
-Date: Thu, 30 Mar 2023 17:40:41 +0200
-Message-Id: <20230330154043.1250736-12-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230330154043.1250736-1-benjamin.gaignard@collabora.com>
-References: <20230330154043.1250736-1-benjamin.gaignard@collabora.com>
+	id 1phvkC-004Zyd-1I
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Mar 2023 17:07:26 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1phvjz-0005WC-Tv; Thu, 30 Mar 2023 19:07:11 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject:  Re: [RESEND] [PATCHv3 4/7] thermal: rockchip: Simplify channel id logic
+Date: Thu, 30 Mar 2023 19:07:11 +0200
+Message-ID: <2066924.KlZ2vcFHjT@diego>
+In-Reply-To: <bae80282-cb80-462d-e554-1934d090e216@linaro.org>
+References:  <20230308112253.15659-1-sebastian.reichel@collabora.com>
+ <ec66d4e7-cb82-46c6-84ae-bd51df7cab7c@mercury.local>
+ <bae80282-cb80-462d-e554-1934d090e216@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_164107_505906_D5C0729E 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20230330_100724_580254_8464ABE7 
+X-CRM114-Status: GOOD (  31.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,263 +63,229 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rk3588 AV1 decoder to Hantro variant.
-The hardware support image from 64x64 up to 7680x4320
-by steps of 16 pixels.
+Am Donnerstag, 16. M=E4rz 2023, 11:05:25 CEST schrieb Daniel Lezcano:
+> =
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_drv.c   |   1 +
- .../media/platform/verisilicon/hantro_hw.h    |   6 +
- .../platform/verisilicon/rockchip_vpu_hw.c    | 134 ++++++++++++++++++
- 3 files changed, 141 insertions(+)
+> Hi Heiko,
+> =
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 71bd68e63859..aef1de20fc5e 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -713,6 +713,7 @@ static const struct of_device_id of_hantro_match[] = {
- 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
- 	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
- 	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
-+	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index e3d303cea7f6..7f33f7b07ce4 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -403,11 +403,13 @@ extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3399_vpu_variant;
- extern const struct hantro_variant rk3568_vepu_variant;
- extern const struct hantro_variant rk3568_vpu_variant;
-+extern const struct hantro_variant rk3588_vpu981_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- extern const struct hantro_variant sunxi_vpu_variant;
- 
- extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
- extern const struct hantro_postproc_ops hantro_g2_postproc_ops;
-+extern const struct hantro_postproc_ops rockchip_vpu981_postproc_ops;
- 
- extern const u32 hantro_vp8_dec_mc_filter[8][6];
- 
-@@ -444,6 +446,10 @@ void hantro_hevc_ref_init(struct hantro_ctx *ctx);
- dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
- int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
- 
-+int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx);
-+void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx);
-+int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx);
-+void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx);
- 
- static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
- {
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 8de6fd2e8eef..fd05e3e2080e 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -13,9 +13,13 @@
- #include "hantro_g1_regs.h"
- #include "hantro_h1_regs.h"
- #include "rockchip_vpu2_regs.h"
-+#include "rockchip_vpu981_regs.h"
- 
- #define RK3066_ACLK_MAX_FREQ (300 * 1000 * 1000)
- #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
-+#define RK3588_ACLK_MAX_FREQ (300 * 1000 * 1000)
-+
-+#define ROCKCHIP_VPU981_MIN_SIZE 64
- 
- /*
-  * Supported formats.
-@@ -74,6 +78,37 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
- 	},
- };
- 
-+static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+};
-+
- static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
-@@ -277,6 +312,48 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 	},
- };
- 
-+static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12_10LE40_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_AV1_FRAME,
-+		.codec_mode = HANTRO_MODE_AV1_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+};
-+
- static irqreturn_t rockchip_vpu1_vepu_irq(int irq, void *dev_id)
- {
- 	struct hantro_dev *vpu = dev_id;
-@@ -331,6 +408,24 @@ static irqreturn_t rockchip_vpu2_vepu_irq(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
-+static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
-+{
-+	struct hantro_dev *vpu = dev_id;
-+	enum vb2_buffer_state state;
-+	u32 status;
-+
-+	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
-+	state = (status & AV1_REG_INTERRUPT_DEC_RDY_INT) ?
-+		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-+
-+	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
-+	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
-+
-+	hantro_irq_done(vpu, state);
-+
-+	return IRQ_HANDLED;
-+}
-+
- static int rk3036_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	/* Bump ACLK to max. possible freq. to improve performance. */
-@@ -346,6 +441,13 @@ static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
- 	return 0;
- }
- 
-+static int rk3588_vpu981_hw_init(struct hantro_dev *vpu)
-+{
-+	/* Bump ACLKs to max. possible freq. to improve performance. */
-+	clk_set_rate(vpu->clocks[0].clk, RK3588_ACLK_MAX_FREQ);
-+	return 0;
-+}
-+
- static int rockchip_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	/* Bump ACLK to max. possible freq. to improve performance. */
-@@ -498,6 +600,14 @@ static const struct hantro_codec_ops rk3568_vepu_codec_ops[] = {
- 	},
- };
- 
-+static const struct hantro_codec_ops rk3588_vpu981_codec_ops[] = {
-+	[HANTRO_MODE_AV1_DEC] = {
-+		.run = rockchip_vpu981_av1_dec_run,
-+		.init = rockchip_vpu981_av1_dec_init,
-+		.exit = rockchip_vpu981_av1_dec_exit,
-+		.done = rockchip_vpu981_av1_dec_done,
-+	},
-+};
- /*
-  * VPU variant.
-  */
-@@ -529,10 +639,18 @@ static const char * const rk3066_vpu_clk_names[] = {
- 	"aclk_vepu", "hclk_vepu"
- };
- 
-+static const struct hantro_irq rk3588_vpu981_irqs[] = {
-+	{ "vdpu", rk3588_vpu981_irq },
-+};
-+
- static const char * const rockchip_vpu_clk_names[] = {
- 	"aclk", "hclk"
- };
- 
-+static const char * const rk3588_vpu981_vpu_clk_names[] = {
-+	"aclk", "hclk", "aclk_vdpu_root", "hclk_vdpu_root"
-+};
-+
- /* VDPU1/VEPU1 */
- 
- const struct hantro_variant rk3036_vpu_variant = {
-@@ -678,3 +796,19 @@ const struct hantro_variant px30_vpu_variant = {
- 	.clk_names = rockchip_vpu_clk_names,
- 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
- };
-+
-+const struct hantro_variant rk3588_vpu981_variant = {
-+	.dec_offset = 0x0,
-+	.dec_fmts = rockchip_vpu981_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rockchip_vpu981_dec_fmts),
-+	.postproc_fmts = rockchip_vpu981_postproc_fmts,
-+	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu981_postproc_fmts),
-+	.postproc_ops = &rockchip_vpu981_postproc_ops,
-+	.codec = HANTRO_AV1_DECODER,
-+	.codec_ops = rk3588_vpu981_codec_ops,
-+	.irqs = rk3588_vpu981_irqs,
-+	.num_irqs = ARRAY_SIZE(rk3588_vpu981_irqs),
-+	.init = rk3588_vpu981_hw_init,
-+	.clk_names = rk3588_vpu981_vpu_clk_names,
-+	.num_clocks = ARRAY_SIZE(rk3588_vpu981_vpu_clk_names)
-+};
--- 
-2.34.1
+> On 08/03/2023 19:42, Sebastian Reichel wrote:
+> > Hi Daniel,
+> > =
+
+> > On Wed, Mar 08, 2023 at 07:13:22PM +0100, Daniel Lezcano wrote:
+> >> On 08/03/2023 12:22, Sebastian Reichel wrote:
+> >>> Replace the channel ID lookup table by a simple offset, since
+> >>> the channel IDs are consecutive.
+> >>>
+> >>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> >>
+> >> As all the other patches are reviewed by Heiko, is the tag missing her=
+e?
+> > =
+
+> > Heiko was not happy with this in PATCHv2, when he reviewed most
+> > of the patches:
+> > =
+
+> > https://lore.kernel.org/all/3601039.e9J7NaK4W3@phil/
+> > =
+
+> > I replied, but never got a response, so I kept it as is:
+> > =
+
+> > https://lore.kernel.org/all/20221206170232.xsm4kcbfwrmlrriw@mercury.ele=
+ktranox.org/
+> > =
+
+> > FWIW it is essential for the series and cannot be dropped, because
+> > RK3588 has more than 2 channels.
+> =
+
+> Do you have a suggestion to improve the proposed change ?
+
+I guess it's fine after all.
+
+Sebastian's response makes sense and there is not really a reason to keep
+infrastructure around for a hypothetical case that may never happen.
+
+If that really changes with some SoC in the far future we can always
+re-evaluate.
+
+
+So,
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Sorry for dropping the ball on this
+Heiko
+
+
+> >>> ---
+> >>>    drivers/thermal/rockchip_thermal.c | 48 +++++++++++++-------------=
+----
+> >>>    1 file changed, 21 insertions(+), 27 deletions(-)
+> >>>
+> >>> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/roc=
+kchip_thermal.c
+> >>> index 9ed45b318344..bcbdd618daae 100644
+> >>> --- a/drivers/thermal/rockchip_thermal.c
+> >>> +++ b/drivers/thermal/rockchip_thermal.c
+> >>> @@ -39,15 +39,6 @@ enum tshut_polarity {
+> >>>    	TSHUT_HIGH_ACTIVE,
+> >>>    };
+> >>> -/*
+> >>> - * The system has two Temperature Sensors.
+> >>> - * sensor0 is for CPU, and sensor1 is for GPU.
+> >>> - */
+> >>> -enum sensor_id {
+> >>> -	SENSOR_CPU =3D 0,
+> >>> -	SENSOR_GPU,
+> >>> -};
+> >>> -
+> >>>    /*
+> >>>     * The conversion table has the adc value and temperature.
+> >>>     * ADC_DECREMENT: the adc value is of diminishing.(e.g. rk3288_cod=
+e_table)
+> >>> @@ -82,7 +73,7 @@ struct chip_tsadc_table {
+> >>>    /**
+> >>>     * struct rockchip_tsadc_chip - hold the private data of tsadc chip
+> >>> - * @chn_id: array of sensor ids of chip corresponding to the channel
+> >>> + * @chn_offset: the channel offset of the first channel
+> >>>     * @chn_num: the channel number of tsadc chip
+> >>>     * @tshut_temp: the hardware-controlled shutdown temperature value
+> >>>     * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPI=
+O)
+> >>> @@ -98,7 +89,7 @@ struct chip_tsadc_table {
+> >>>     */
+> >>>    struct rockchip_tsadc_chip {
+> >>>    	/* The sensor id of chip correspond to the ADC channel */
+> >>> -	int chn_id[SOC_MAX_SENSORS];
+> >>> +	int chn_offset;
+> >>>    	int chn_num;
+> >>>    	/* The hardware-controlled tshut property */
+> >>> @@ -925,8 +916,8 @@ static void rk_tsadcv2_tshut_mode(int chn, void _=
+_iomem *regs,
+> >>>    }
+> >>>    static const struct rockchip_tsadc_chip px30_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 2, /* 2 channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+> >>> @@ -949,7 +940,8 @@ static const struct rockchip_tsadc_chip px30_tsad=
+c_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rv1108_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> +	/* cpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 1, /* one channel for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -973,7 +965,8 @@ static const struct rockchip_tsadc_chip rv1108_ts=
+adc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3228_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> +	/* cpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 1, /* one channel for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -997,8 +990,8 @@ static const struct rockchip_tsadc_chip rk3228_ts=
+adc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3288_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 1, /* cpu sensor is channel 1 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 2, /* gpu sensor is channel 2 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 1,
+> >>>    	.chn_num =3D 2, /* two channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -1022,7 +1015,8 @@ static const struct rockchip_tsadc_chip rk3288_=
+tsadc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3328_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> +	/* cpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 1, /* one channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+> >>> @@ -1045,8 +1039,8 @@ static const struct rockchip_tsadc_chip rk3328_=
+tsadc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3366_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 2, /* two channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -1070,8 +1064,8 @@ static const struct rockchip_tsadc_chip rk3366_=
+tsadc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3368_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 2, /* two channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -1095,8 +1089,8 @@ static const struct rockchip_tsadc_chip rk3368_=
+tsadc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3399_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 2, /* two channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -1120,8 +1114,8 @@ static const struct rockchip_tsadc_chip rk3399_=
+tsadc_data =3D {
+> >>>    };
+> >>>    static const struct rockchip_tsadc_chip rk3568_tsadc_data =3D {
+> >>> -	.chn_id[SENSOR_CPU] =3D 0, /* cpu sensor is channel 0 */
+> >>> -	.chn_id[SENSOR_GPU] =3D 1, /* gpu sensor is channel 1 */
+> >>> +	/* cpu, gpu */
+> >>> +	.chn_offset =3D 0,
+> >>>    	.chn_num =3D 2, /* two channels for tsadc */
+> >>>    	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give P=
+MIC */
+> >>> @@ -1404,7 +1398,7 @@ static int rockchip_thermal_probe(struct platfo=
+rm_device *pdev)
+> >>>    	for (i =3D 0; i < thermal->chip->chn_num; i++) {
+> >>>    		error =3D rockchip_thermal_register_sensor(pdev, thermal,
+> >>>    						&thermal->sensors[i],
+> >>> -						thermal->chip->chn_id[i]);
+> >>> +						thermal->chip->chn_offset + i);
+> >>>    		if (error)
+> >>>    			return dev_err_probe(&pdev->dev, error,
+> >>>    				"failed to register sensor[%d].\n", i);
+> >>
+> >>
+> >> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> >> <http://twitter.com/#!/linaroorg> Twitter |
+> >> <http://www.linaro.org/linaro-blog/> Blog
+> >>
+> =
+
+> =
+
+
+
+
 
 
 _______________________________________________
