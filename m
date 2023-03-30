@@ -4,89 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D524C7619A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 21:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF59C7619A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 22:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TtqGAczUB/fVxk1ACggsjMg8qmNtyo3UA5p0gHs1rlE=; b=YZ+blgJaFJyxBO
-	ZpHTACxtBiL4t+BDhLHx/WIR/L49cDdUu3pLgHzs3pKhVlxU4ny6cwCr9S/o7jIQmdQHfjCJ/J28U
-	URUc6qpl/oK8viuclPYg9lRUNfhSRlkhetn0oWJZ9DQ23U15XBaXslfqM3wp9piIUH/lH3cFbbZ54
-	dyGmQAp3qFzYYveZ6NYymKELm1OkIttI0FAezdVoEod/sKTATOjoI4fP7GVqLZGHLOu+oFTFzs2G8
-	QZmzdBYrWrVHJqkAEBK1wb3bN3ocHK+VIlvJFJgDOJA2/bFb39FExNrJfOTAs+d5vPh9uVYtqXoD1
-	dX3xS/joz3RNLNGg3Jpg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1w+JZjpbKNAnMJtMuLg0q3XOaeALhnn4S8/UoViXuAU=; b=tk5dq3Tolmq+L/
+	ZbEBrC9v5XRaxdi+MHwbtcukILenlTctVASV6vgaQg5rJjggu+vFdAX7sf6CcJwqg4a7HwtwOwBRN
+	hlLDiXjkjxKVFGLrviVaimr8//9nbXrp8eh5Kn3N4rZ+A/YQGAtVBFMO0N+CtEm3bn6l8e8QhokC2
+	KefKoqokvJlGKnb5olsM7dl9aocpXnLr+5Nj+MRGx0boexOemuzbCVjObnSI29NwN8SWr1WQxRoo1
+	dIcF9tbRoZczdzmMSOaNVAHtoNZVwDKGiIxj6m9cLbYi85VmRpm6Ulq9mxGWY42ZpIiJ3OKAi9rQX
+	oeDL+Z+qBZntJhk+fubg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phzai-0056Qk-39;
-	Thu, 30 Mar 2023 21:13:52 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1pi0MP-005Ak3-0I;
+	Thu, 30 Mar 2023 22:03:09 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phzag-0056Q5-2M
+	id 1pi0ML-005Aib-08
 	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Mar 2023 21:13:52 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id l15-20020a05600c4f0f00b003ef6d684102so8846263wmq.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Mar 2023 14:13:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680210826;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=xYJ7UCsO7F5A7GpXsRX+DRI450uHDvtid0ji5HrtybQ=;
-        b=TIOuMwmc+8BXKmxoFMV87oMywgcK9gX6n7HKYcIRNQi1qfrrh4vWceK117IiKCBCRl
-         /C3RSxWGKAi3MXa9Zq0Ijm8ydELmAe76IJ5Bc+7xX6iqj+yXUxbvQh5MDAo6wjVgSvmh
-         sHjDwMm2UP/yiZcOdJekZwww5sxrrPH4jCobUFUm36ZarX3aQ7fG6HfXSr1PkrcXd1ZM
-         tfYKHp4DmRrkytK3zstli4lpNVTtBicxQHPnEyi5fOP5UhfS4lTAv9rHOzx1aDSbxxGX
-         22zMxMyHp1Jtp6+NPKJKKF6Emzw89VShKFj44OeI+CqNUIb7vaOlUYZJIzYL07KOC3Wx
-         cJMw==
+	Thu, 30 Mar 2023 22:03:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1680213781;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=+accSwBqAoktxjFKHOVQ5nhVitWw2RmW/ogboNO6PkE=;
+	b=Of6u3ObyDyDwqve1pApwBjStj5YaYcTm4zEYVAaUlk6kyE1JrNyFlH0wy3FgsJWPuSJUXr
+	5BiJxlD2NnK3oZyzuPpCv5sys2J9AXKqKi3vFEZjs4vVCPZ6wrAs181dDHtyqBf2QI2BP6
+	xBipXClJqTC8jWcJyQI7FYc3qgo65Fc=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-21-2tJuQffVOauZC5HB5y2LIw-1; Thu, 30 Mar 2023 18:03:00 -0400
+X-MC-Unique: 2tJuQffVOauZC5HB5y2LIw-1
+Received: by mail-wm1-f72.google.com with SMTP id i4-20020a05600c354400b003ef649aa8c7so8877624wmq.6
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Mar 2023 15:03:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680210826;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xYJ7UCsO7F5A7GpXsRX+DRI450uHDvtid0ji5HrtybQ=;
-        b=OjQeMHizZ9f07wogAR5qzE/sZvaO7lJojXGd4TPZS8atuLPJQsbD52halZMZGnnpKT
-         m0lu5dKcrgkR7zSQZC3X8VITn0mugVgDGAJwOywwbLdtYy3h/3K2yTeAvhZIVxhlT9Wg
-         SbwzfqwSyITYZX3izYia+MEaog5NQtn1iZKjZnvEsGiEffHjNB7OdTWSe8CnV8xWZjtY
-         jBXLO8ixikA9NzZpktH578Ovw4rqTihV+17EjIId56FERZt1Cb/yLs165x/KrQIknNSM
-         aWPxhoxz0r8Y3FVf/yo6jY95YZ6bfJ7Z4uXIEWeo1IEO1eJFPMf6OrAlcx0ll49bqINg
-         WDsA==
-X-Gm-Message-State: AO0yUKW6ROZG4npSL2Cx74cTm4eBSoX4twoX9glUyAH8QqG2PjokM1qE
-	kla+s1xtX45BNU4qAW1yqXm8Cg==
-X-Google-Smtp-Source: AK7set/RF9lEynbBcbIUXZaNxVwOwSMZ+BeXGxObXH50aHsfuSIlJxKeFMBWVKZjvnItHxnhRNWXzA==
-X-Received: by 2002:a7b:c381:0:b0:3ed:4627:ed09 with SMTP id s1-20020a7bc381000000b003ed4627ed09mr18481456wmj.28.1680210826323;
-        Thu, 30 Mar 2023 14:13:46 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:17ff:909e:1b73:8366? ([2a05:6e02:1041:c10:17ff:909e:1b73:8366])
-        by smtp.googlemail.com with ESMTPSA id hg13-20020a05600c538d00b003ed793d9de0sm11413067wmb.1.2023.03.30.14.13.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Mar 2023 14:13:45 -0700 (PDT)
-Message-ID: <3e9154df-bae4-23a6-7c5d-d42477800b19@linaro.org>
-Date: Thu, 30 Mar 2023 23:13:45 +0200
+        d=1e100.net; s=20210112; t=1680213779;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+accSwBqAoktxjFKHOVQ5nhVitWw2RmW/ogboNO6PkE=;
+        b=4grvdKjQX7NVyVg9txIPoZPpIoEk9qd3WhY6n2rXeG8Sg12h6wIi22pfuSQuM/QV2A
+         j+SE1ezpzmWzYgjkEEqtepceXD5jexCcjbwlIcqHZIpyDV43YcweEYrykyYam6HgQoBD
+         lsv4SY4vdc5bFCMX6ZLGX+GBdnV3+si08nuvezq/G2WnkDn/3f27ou6C0keDq1qHFd44
+         AqT/DlHVijKATipP6y3lc8fJ/t9sZJ/pAUdC95Asdhok9t2gyd7aYc0U7nYe39As2ZI/
+         3LFc4C8fC1IhrajAo8pHPliM9qnu0RgFT0ndp6G2/6G2NA906kdmbva6ZEBocJ6Mat1l
+         qHYA==
+X-Gm-Message-State: AAQBX9cAnbpUfzKbKhHA8UnfGrXVcZIdrRrMjBXMSmBS+MQ9gLhoS61o
+	ohVPvd3dRpSJS6fS7JhMuJBy7LAM+jEwPSxhD9jEQn11ohD3cCNB9kSoom4U2c4dKoENj94I5Dz
+	vIyKKcL7/v36tpCMT8M4FfnzwCaDAZ1/r
+X-Received: by 2002:adf:e70c:0:b0:2ce:9f35:59c7 with SMTP id c12-20020adfe70c000000b002ce9f3559c7mr17075845wrm.45.1680213779110;
+        Thu, 30 Mar 2023 15:02:59 -0700 (PDT)
+X-Google-Smtp-Source: AKy350b31TNBPqPj39e+fe++ArpC9hrzqebqcnE01Owm77OMMqIbVzdWSh+zdJEPLJOUUvu9L4ZKRQ==
+X-Received: by 2002:adf:e70c:0:b0:2ce:9f35:59c7 with SMTP id c12-20020adfe70c000000b002ce9f3559c7mr17075830wrm.45.1680213778776;
+        Thu, 30 Mar 2023 15:02:58 -0700 (PDT)
+Received: from minerva.home (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
+        by smtp.gmail.com with ESMTPSA id y11-20020adffa4b000000b002c7066a6f77sm449363wrr.31.2023.03.30.15.02.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Mar 2023 15:02:58 -0700 (PDT)
+From: Javier Martinez Canillas <javierm@redhat.com>
+To: linux-kernel@vger.kernel.org
+Cc: Javier Martinez Canillas <javierm@redhat.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Douglas Anderson <dianders@chromium.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lin Huang <hl@rock-chips.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	zain wang <wzz@rock-chips.com>
+Subject: [PATCH] arm64: dts: rockchip: Remove non-existing pwm-delay-us DT property
+Date: Fri, 31 Mar 2023 00:02:51 +0200
+Message-Id: <20230330220251.2388494-1-javierm@redhat.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [RESEND] [PATCHv3 4/7] thermal: rockchip: Simplify channel id
- logic
-Content-Language: en-US
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20230308112253.15659-1-sebastian.reichel@collabora.com>
- <ec66d4e7-cb82-46c6-84ae-bd51df7cab7c@mercury.local>
- <bae80282-cb80-462d-e554-1934d090e216@linaro.org> <2066924.KlZ2vcFHjT@diego>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <2066924.KlZ2vcFHjT@diego>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_141350_798330_38BC740E 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20230330_150305_155061_C54CB60F 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +104,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMzAvMDMvMjAyMyAxOTowNywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gRG9ubmVyc3Rh
-ZywgMTYuIE3DpHJ6IDIwMjMsIDExOjA1OjI1IENFU1Qgc2NocmllYiBEYW5pZWwgTGV6Y2FubzoK
-Pj4KPj4gSGkgSGVpa28sCj4+Cj4+IE9uIDA4LzAzLzIwMjMgMTk6NDIsIFNlYmFzdGlhbiBSZWlj
-aGVsIHdyb3RlOgo+Pj4gSGkgRGFuaWVsLAo+Pj4KPj4+IE9uIFdlZCwgTWFyIDA4LCAyMDIzIGF0
-IDA3OjEzOjIyUE0gKzAxMDAsIERhbmllbCBMZXpjYW5vIHdyb3RlOgo+Pj4+IE9uIDA4LzAzLzIw
-MjMgMTI6MjIsIFNlYmFzdGlhbiBSZWljaGVsIHdyb3RlOgo+Pj4+PiBSZXBsYWNlIHRoZSBjaGFu
-bmVsIElEIGxvb2t1cCB0YWJsZSBieSBhIHNpbXBsZSBvZmZzZXQsIHNpbmNlCj4+Pj4+IHRoZSBj
-aGFubmVsIElEcyBhcmUgY29uc2VjdXRpdmUuCj4+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFNl
-YmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgo+Pj4+Cj4+
-Pj4gQXMgYWxsIHRoZSBvdGhlciBwYXRjaGVzIGFyZSByZXZpZXdlZCBieSBIZWlrbywgaXMgdGhl
-IHRhZyBtaXNzaW5nIGhlcmU/Cj4+Pgo+Pj4gSGVpa28gd2FzIG5vdCBoYXBweSB3aXRoIHRoaXMg
-aW4gUEFUQ0h2Miwgd2hlbiBoZSByZXZpZXdlZCBtb3N0Cj4+PiBvZiB0aGUgcGF0Y2hlczoKPj4+
-Cj4+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMzYwMTAzOS5lOUo3TmFLNFczQHBoaWwv
-Cj4+Pgo+Pj4gSSByZXBsaWVkLCBidXQgbmV2ZXIgZ290IGEgcmVzcG9uc2UsIHNvIEkga2VwdCBp
-dCBhcyBpczoKPj4+Cj4+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMjEyMDYxNzAy
-MzIueHNtNGtjYmZ3cm1scnJpd0BtZXJjdXJ5LmVsZWt0cmFub3gub3JnLwo+Pj4KPj4+IEZXSVcg
-aXQgaXMgZXNzZW50aWFsIGZvciB0aGUgc2VyaWVzIGFuZCBjYW5ub3QgYmUgZHJvcHBlZCwgYmVj
-YXVzZQo+Pj4gUkszNTg4IGhhcyBtb3JlIHRoYW4gMiBjaGFubmVscy4KPj4KPj4gRG8geW91IGhh
-dmUgYSBzdWdnZXN0aW9uIHRvIGltcHJvdmUgdGhlIHByb3Bvc2VkIGNoYW5nZSA/Cj4gCj4gSSBn
-dWVzcyBpdCdzIGZpbmUgYWZ0ZXIgYWxsLgo+IAo+IFNlYmFzdGlhbidzIHJlc3BvbnNlIG1ha2Vz
-IHNlbnNlIGFuZCB0aGVyZSBpcyBub3QgcmVhbGx5IGEgcmVhc29uIHRvIGtlZXAKPiBpbmZyYXN0
-cnVjdHVyZSBhcm91bmQgZm9yIGEgaHlwb3RoZXRpY2FsIGNhc2UgdGhhdCBtYXkgbmV2ZXIgaGFw
-cGVuLgo+IAo+IElmIHRoYXQgcmVhbGx5IGNoYW5nZXMgd2l0aCBzb21lIFNvQyBpbiB0aGUgZmFy
-IGZ1dHVyZSB3ZSBjYW4gYWx3YXlzCj4gcmUtZXZhbHVhdGUuCgpUaGFua3MsIEkndmUgYWRkZWQg
-eW91ciB0YWcKCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9w
-ZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8v
-d3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVy
-LmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFy
-by1ibG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+There is no neither a driver that parses this nor a DT binding schema that
+documents it so let's remove it from the DTS files that make use of this.
+
+The properties that exist are post-pwm-on-delay-ms and pwm-off-delay-ms,
+defined in the pwm-backlight DT binding. So probably what these DTS want
+is something like following:
+
+        backlight: backlight {
+                compatible = "pwm-backlight";
+                enable-gpios = <&gpio4 21 GPIO_ACTIVE_HIGH>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&bl_en>;
+                pwms = <&pwm1 0 1000000 0>;
+                post-pwm-on-delay-ms = <10>;
+                pwm-off-delay-ms = <10>;
+        };
+
+But that should be follow-up change if that is the case. Because otherwise
+it would be change in behaviour, since currently pwm-delay-us is a no-op.
+
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi            | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi    | 1 -
+ 3 files changed, 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
+index 083452c67711..e47d1398aeca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
+@@ -61,7 +61,6 @@ backlight: backlight {
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bl_en>;
+ 		pwms = <&pwm0 0 1000000 PWM_POLARITY_INVERTED>;
+-		pwm-delay-us = <10000>;
+ 	};
+ 
+ 	emmc_pwrseq: emmc-pwrseq {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index ee6095baba4d..5c1929d41cc0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -198,7 +198,6 @@ backlight: backlight {
+ 		power-supply = <&pp3300_disp>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bl_en>;
+-		pwm-delay-us = <10000>;
+ 	};
+ 
+ 	gpio_keys: gpio-keys {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index a47d9f758611..c5e7de60c121 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -167,7 +167,6 @@ backlight: backlight {
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bl_en>;
+ 		pwms = <&pwm1 0 1000000 0>;
+-		pwm-delay-us = <10000>;
+ 	};
+ 
+ 	dmic: dmic {
+
+base-commit: ffe78bbd512166e0ef1cc4858010b128c510ed7d
+prerequisite-patch-id: ab73fde77786baf8fa44882125c5ce864771371c
+-- 
+2.40.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
