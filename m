@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD66C6FD18
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Mar 2023 23:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC676C74A5B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 00:15:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKe8UJCeKFHnk4+o76XAMu9r/QeyGSPILunM6Jp9qsw=; b=RsaulLOntYprSl
-	2ZpNP9C71v1Kqwdo6Vkx9lj/7o7Mr/txmVj3EVvMLUIYt0ZVC6MKoNvuwdqFNpZ1U/50sLsr+yw5R
-	tl9eCiVbPIugMQcz9yePhL7wg4IQBuhU4lfj3wu5/++0VRZ9LF/oR2qDm+JPn5R3mGs4ZIaqx03sQ
-	42de2XtjxBM/Cl1PsAZ4UNSDj/EgNp8EyJRwlcsk14t3v+YPIprqimMTzg1vo+Fv7NIMKEO7yaSTq
-	gwgWfy9XTo8icJmeSJhKbRGhaKAmqjW3JBWg3Rb/koLWzNy308/bZkH7SMoeYKYPoRBLMGJNpYStA
-	fJo99ZmrbebwspQAjOCg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IXDdZHs8jzJYN1lRkq1M0YbHBKzlohaeyCrYbmjFKSI=; b=B4DXrj8GVj0N4Hsl9UwCdgvAdR
+	N2lHd7DuiocFnkRZSouQzsLPmMVP3FP5T3fIQ30Lg7B+wMYtMbNcBGNi5E7iFMtnNpvyjqqoy84w6
+	A+HQLoOd4gXxSnsk0jmpUITpKlgQkvv6TXTDsd0l6CjL+6nLmWMqS64AyzYh06qtjpWhc7ET7i+OX
+	eC0MVhMDMPNPJWjeZr8fxTjGZ9iHeJEOCd2qC3iKDFvg0snz5fCmH7qlID8Uiw+Lg3Sih1py+Hidu
+	eYgZbXc8ERTb3/xm6TeFf+9jPHLhNyLOoEWH8EO/EbhywSjV94OVu6YgTVfUqeVnrbrBuyCcav+HS
+	dnTLFqSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phfQh-0025Po-0q;
-	Wed, 29 Mar 2023 23:42:11 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1phfww-0028Wn-0P;
+	Thu, 30 Mar 2023 00:15:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phfQb-0025NI-2g
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Mar 2023 23:42:07 +0000
-Received: by mail-qt1-x831.google.com with SMTP id t19so16736190qta.12
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Mar 2023 16:42:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1680133321;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=M7C+py6MtCoeCMOtw25BrlCO3RIdyKIetyPlMUWcAxQ=;
-        b=or5zOdb0THcrHSRrNF/aWpqr5y5XACt17c51B2fuOW5sIxoj2mxKk9QPCHXd0weuMi
-         hnjPrhDD9X00VxhDRyGWzEdQaeUnYGGNVBIvm9NdJ0z50h4PG9uK/AbqfIt+KuEViqwk
-         JMM5cDJ2p6Ibr/BwfCk3C1SKBmRh1EslZACPJQ899Ch1m4XCYwbv+spFie8OO9H1NGMd
-         dSWXfMR537z5wT9f+bGJgtTobSqzNyVbAqczhBYbiJ434wSDGKN+LAwp1+ntSjG3vP2F
-         N7qWsyB3f+eC4E5HMMZTbKMLErH/sElNNBOzKtXz/YGwiDkAtAAhK+4KWLoTciVd0//H
-         yxpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680133321;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=M7C+py6MtCoeCMOtw25BrlCO3RIdyKIetyPlMUWcAxQ=;
-        b=VK35J+ekI8c5QUVNT33fNUj2hWc4QQNB2Ek5ciURkwf7U/4QizZJCudJbBCXo4HTjA
-         tVQ+PMTo2YIjA8tbC62KowzRSqd8WtkYW+rTSdpngExTL2OBxubjJNNA1lRhXgFJA4da
-         R0UMdXHExOoG9PmsSrf6uOmhSrpiR2LHMw7WzFxXLKaMgEWTzPZ4C3qscBHVd6A5fNvV
-         6gXqfZ7YHevP2Qf0FOz1hz3ypvz5UC65a51bPlycnGZwOuScQA2xa5zhCpCNHsLYVQLN
-         RAMgu8wWtOrQLwTgqJbW4arsqvx8unKmhdQU0vyCULh+kLjBHxlrOINXDo/T/T8H67XZ
-         USyQ==
-X-Gm-Message-State: AO0yUKUMf5bECZEqFZrbynDZGTlYg8Gp2KF5uOdCJJ2J2GskL0V+NIHx
-	zfOiCvDZ9McUUZ59hhF5QR2+uA==
-X-Google-Smtp-Source: AK7set/r+pGsJrPMn0D9D6pkZb7SUCn2k/XDNs/gApUMrPEx0RFz+B78D/mL8S9HzmDoO+y4IPCuSQ==
-X-Received: by 2002:a05:622a:1ba3:b0:3e3:98b5:69c2 with SMTP id bp35-20020a05622a1ba300b003e398b569c2mr26020425qtb.62.1680133321368;
-        Wed, 29 Mar 2023 16:42:01 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
-        by smtp.gmail.com with ESMTPSA id h22-20020ac85056000000b003d5aae2182dsm8863730qtm.29.2023.03.29.16.42.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 16:42:00 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1phfQW-004hQQ-86;
-	Wed, 29 Mar 2023 20:42:00 -0300
-Date: Wed, 29 Mar 2023 20:42:00 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Steven Price <steven.price@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] iommu/rockchip: Add missing set_platform_dma_ops
- callback
-Message-ID: <ZCTMyHifYJfGZqRg@ziepe.ca>
-References: <20230324111127.221640-1-steven.price@arm.com>
+	id 1phfwt-0028Vp-1A;
+	Thu, 30 Mar 2023 00:15:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B474661E96;
+	Thu, 30 Mar 2023 00:15:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC3AAC4339B;
+	Thu, 30 Mar 2023 00:15:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680135326;
+	bh=SaIyAyIEWPkCOiTbcEAAhLZPQpGrVicNNzSuEc0r0CQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W5aAij/ePqjFcpoij5+qOeXhFYRUXzZzThXwXjkLGT0WGbKycfH+EqBxDxLFth0Mx
+	 uq5l+kRLWvX31xJw4UXGMAnfv9RY5Ob9bj0pfDEguNQk3rxWLrukyYi39qtAW+/9VK
+	 IwbbUdVPUdKO0pNnJwG35WhpZ7KWFxP8Gg/Tvety1vIpNBXtiFO8LORMMAMmmS2We3
+	 aN5htjW3vCMMYYlQWRP3mrdCTvw0RkxdHkDjx3BcM7Hr9N9thBNyL5to3yrcktUkSZ
+	 15yOMjgVOTSRmzy+RTE/00Tj8tNjKwEcp4oq4D6lDJoaeoxakm1qiCZT8lTnCSBWvk
+	 b7YDGp4rP1OGQ==
+Date: Thu, 30 Mar 2023 01:15:23 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Tudor Ambarus <tudor.ambarus@linaro.org>
+Cc: "Yang.Lee" <yang.lee@linux.alibaba.com>, heiko <heiko@sntech.de>,
+	linux-spi <linux-spi@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+	linux-rockchip <linux-rockchip@lists.infradead.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH -next] spi: rockchip-sfc: Use
+ devm_platform_get_and_ioremap_resource()
+Message-ID: <ZCTUm7XRKwTotda8@sirena.org.uk>
+References: <20230328062118.86336-1-yang.lee@linux.alibaba.com>
+ <48f1ee32-a030-8188-3a9d-612888b9678f@linaro.org>
+ <e6d8f4ce-8b3b-4cce-be94-cd5902c676ae.yang.lee@linux.alibaba.com>
+ <e01a753e-aea2-5489-e436-2ec0f3fedb64@linaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230324111127.221640-1-steven.price@arm.com>
+In-Reply-To: <e01a753e-aea2-5489-e436-2ec0f3fedb64@linaro.org>
+X-Cookie: Single tasking: Just Say No.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230329_164206_168252_28A7CB79 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20230329_171527_439486_6C10F925 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,41 +75,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6756751531656557586=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 24, 2023 at 11:11:27AM +0000, Steven Price wrote:
-> Similar to exynos, we need a set_platform_dma_ops() callback for proper
-> operation on ARM 32 bit after recent changes in the IOMMU framework
-> (detach ops removal). But also the use of a NULL domain is confusing.
-> 
-> Rework the code to have a singleton rk_identity_domain which is assigned
-> to domain when using an identity mapping rather than "detaching". This
-> makes the code easier to reason about.
-> 
-> Signed-off-by: Steven Price <steven.price@arm.com>
-> ---
-> Changes since v1[1]:
-> 
->  * Reworked the code to avoid a NULL domain, instead a singleton
->    rk_identity_domain is used instead. The 'detach' language is no
->    longer used.
-> 
-> [1] https://lore.kernel.org/r/20230315164152.333251-1-steven.price%40arm.com
-> 
->  drivers/iommu/rockchip-iommu.c | 50 ++++++++++++++++++++++++++--------
->  1 file changed, 39 insertions(+), 11 deletions(-)
 
-Aside from the pm stuff this looks OK to me
+--===============6756751531656557586==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="voc5FpAxHeBmyvcz"
+Content-Disposition: inline
 
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-Thanks,
-Jason
+--voc5FpAxHeBmyvcz
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Mar 29, 2023 at 08:18:27AM +0100, Tudor Ambarus wrote:
+> On 3/29/23 07:06, Yang.Lee wrote:
+
+> > Because=A0the=A0maintainer=A0list=A0of=A0each=A0SPI=A0driver=A0file=A0i=
+s=A0not=A0identical,=A0I=A0am=A0worried=A0about=A0causing=A0trouble=A0for=
+=A0too=A0many=A0people,=A0so=A0I=A0split=A0it=A0into=A0multiple=A0patches=
+=A0based=A0on=A0this.
+
+> The change is trivial enough to don't bother at all. Here's an example:
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commi=
+t/?id=3D4b23603a251d24022f2fa48ee67610eb245a4115
+
+No, it's fine - it doesn't really get in the way and can be
+helpful to people doing backports.
+
+--voc5FpAxHeBmyvcz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmQk1JoACgkQJNaLcl1U
+h9AkrQf/X5y8FOFpN9XpUUUQDvbu/UJFxu6wK5iAYMpdiS1tcPNdyOKXEOfOGbjz
+OFBNsc/UWQPllZqggDyemxNw7x2WAKcF6JWCV2uRn2ptzYrEr+zQMeO3k83I3Eam
+Ji35vaalvmXG92tSk70DOrJIGmC6yL5OMkSnZU2dWM+eIgiLxjJos/8sShx3zd5d
+ODoO2h1qsUetCkrz9uw9yGU6yWYuZRLkP9kJETwF5AVgjVhrDkt2CtJMKQC8nNzE
+LHkMmIRLAIQm6KIjivd4jGYdBOhw5TRWszIFdrNWLcUgAJEZ2YOadZFClwhhthT7
+GKogxOITZyeUdFT/a5sG2HDCMoapkA==
+=UTll
+-----END PGP SIGNATURE-----
+
+--voc5FpAxHeBmyvcz--
+
+
+--===============6756751531656557586==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6756751531656557586==--
+
