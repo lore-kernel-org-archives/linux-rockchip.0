@@ -4,62 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD12C761A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 11:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E3F4C77B6E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 11:45:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P5y0R/fxYeq22h3p1mrINWw6NZCEYOATQ99BoghTlFw=; b=Y3vcR4hMf+gtE/
-	uiulsM1vS3Nk6vSY1AqJtOfnvoJMKWc5HEWja5Vl5tYe8tZGiBM0s6fWYan/ynisHe6IXMSWGPiDx
-	rNWV9/K6QH6G+lKF8vvjfPQXgZMUN9Lcs8yOSOlCXxnyUGJh3Bymij5CfV6EdyHvfbzuiawKrKY1z
-	1iPbCTbhWt48nUzQKJcLOQaVGR8RtLwhT6aDwkXj/3YNnZ2jeAmBi/V6rHgfqd8wmsDF4fQyCGoxA
-	WQtaGzinRCPCoarhqgNq+OpO5QKDmemT02Zp8RJfC18SRl15UzKkI/kY8pWKmJ7y66k6SdgYJ672/
-	FLYFtqm+EZq9dnRT3bQQ==;
+	List-Owner; bh=+Zm9mxriRG/MPWFEska0P7la8S7PatdLCzB1cgbiRFs=; b=05r+BSEj0HBl9n
+	siRvk76OMuFRzD9djvb7m6wEGvFJPlkzbNrejy2qVCNjB8s/4ikdf5JrSqZf1DspGCuaVJeAolb26
+	MmciZ1v/aaWzUBOMz0iRBhZ6DK4X/ENSoqjSPoqwIBRcGLnEDu+HAHUgO+Gc9j18j7ttHgP0sBvM+
+	Hfe0u85YQg7Mg/gJ+4r3icpCU9cRmphKC24Dpkm97ecblJKxXUg7EYEPzr2ZiNKyVAgbTkFniPVhq
+	6HlSlJeMKjQf1Hk+e/Kva8YWFCmGQpGrnWZYKptbMO/fOCluRhoNMYVFMouRfpfCr5Sy6eEzys9Sb
+	l8iy9gx4TWJtCyn7HNXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phqiG-003fP4-1G;
-	Thu, 30 Mar 2023 11:45:04 +0000
+	id 1phqiF-003fO8-36;
+	Thu, 30 Mar 2023 11:45:03 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phqi8-003fLU-0l;
+	id 1phqi7-003fKp-2x
+	for linux-rockchip@lists.infradead.org;
 	Thu, 30 Mar 2023 11:45:01 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1phqi2-0003YZ-6H; Thu, 30 Mar 2023 13:44:50 +0200
+	id 1phqi2-0003YZ-GU; Thu, 30 Mar 2023 13:44:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Javier Martinez Canillas <javierm@redhat.com>,
-	linux-kernel@vger.kernel.org
+To: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Robert Mader <robert.mader@collabora.com>,
-	Jarrah Gosbell <kernel@undef.tools>,
-	linux-rockchip@lists.infradead.org,
-	Tom <tom@tom-fitzhenry.me.uk>,
-	Rob Herring <robh+dt@kernel.org>,
-	Martijn Braam <martijn@brixit.nl>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	linux-arm-kernel@lists.infradead.org,
+	jonas@kwiboo.se,
+	krzysztof.kozlowski+dt@linaro.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Ondrej Jirman <megi@xff.cz>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	=?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>,
-	Caleb Connolly <kc@postmarketos.org>
-Subject: Re: [PATCH v3 0/2] arm64: dts: rk3399-pinephone-pro: Add display and touchscreen support
-Date: Thu, 30 Mar 2023 13:44:45 +0200
-Message-Id: <168017666941.2380317.10565826137192421162.b4-ty@sntech.de>
+	maccraft123mc@gmail.com
+Subject: Re: [PATCH] arm64: dts: rockchip: Add clk_rtc_32k to Anbernic xx3 Devices
+Date: Thu, 30 Mar 2023 13:44:46 +0200
+Message-Id: <168017666944.2380317.10324183466461610424.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230328073309.1743112-1-javierm@redhat.com>
-References: <20230328073309.1743112-1-javierm@redhat.com>
+In-Reply-To: <20230327153547.821822-1-macroalpha82@gmail.com>
+References: <20230327153547.821822-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_044456_278373_C226FF84 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20230330_044455_961721_9DA582BB 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +68,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Mar 2023 09:33:07 +0200, Javier Martinez Canillas wrote:
-> This series adds support for the display and touchscreen found in the
-> PinePhone Pro. It's a third version that addresses issues pointed out
-> by Ondrej Jirman in v2:
+On Mon, 27 Mar 2023 10:35:47 -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> http://lists.infradead.org/pipermail/linux-rockchip/2023-March/037889.html
-> 
-> Best regards,
-> Javier
+> For the Anbernic devices to display properly, we need to specify the
+> clock frequency of the PLL_VPLL. Adding the parent clock in the
+> rk356x.dtsi requires us to update our clock definitions to accomplish
+> this.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rk3399-pinephone-pro: Add internal display support
-      commit: 3e987e1f22b9b9fdb652a5f3f4aff24265c9af05
-[2/2] arm64: dts: rk3399-pinephone-pro: Add touchscreen support
-      commit: 17a23ce930e35d5a84889441efd9208d0445bf18
+[1/1] arm64: dts: rockchip: Add clk_rtc_32k to Anbernic xx3 Devices
+      commit: 87891399d9883ed823ba58c2be3ac20cc499ad7d
 
 Best regards,
 -- 
