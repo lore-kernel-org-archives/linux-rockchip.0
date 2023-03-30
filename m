@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71E5C761A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 15:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5639C77B60
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 15:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t6BXKbOAjEkMiwDNRiUdE03QDaLFGBMhFw34MLo/8e4=; b=c5uoOhcuLlHQsU
-	RCG3jbfX7fxGL/SuZo59qxTje6FlJ+U1K4pPNnwhQQVF4Rq9C0w51bVJ8yYj6UYqYlCaXMZ6FYuOX
-	b/Fooho8Pi7DabcDlt837Hhmg3XDhgXmAtfCYaHocp8eV2zOQRYCUljsnp5L2da4zwBTFyNvCf4en
-	A4c3XvmqssP1Qo00pRPhhRX6yCTm78oLtvpZgZFUPGcgfC+OiONt0p39HyCaSrW8l/8s14zY1/dUL
-	ggd8jyt98IkLxkHHw8ZvHHoI8oBeqgM1J2oTSid3yWrzasaI3EYs3QJf5GMnNStMrqM+d+LmIgw2c
-	McHcXrS7QI6qYSdr/VBg==;
+	List-Owner; bh=xB4ncqr69wSqOydXMIfEZ7YJ3wQA3SR9z7lYNz6nX1U=; b=ZpjO1dMG7qbU1j
+	s1uA9Q3VeCiDwAeE4c+M2yAOjduSJRnbu6lVbu+y60ZEdsXDOZhNBdjKblq5HtoPWP+xFTXA7QCim
+	nxYkbaaH5PqgYWaj7j1EgJDiinhkUsWO8Dvo5Y2SNYFCmyV059aRkHi3pKn0Eo6nOyCTpOVd3tfFl
+	C0QXfV7mc+1uPs4rxyLKd23oS8rSwaH5KDcDGmrov6oAY2HjCbFQvgIhckISK+Navvcfu/cXkYDUh
+	b1lbWx9SSFJ3skR1KHD+M4EYg4i/r9DVU7hakh3zP2cE/wXJwY4m2zUbS8Ge+QOuiiOiPS07qREa0
+	xE5aDIKisnmCxQ073l2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuPW-004KjO-0K;
+	id 1phuPW-004Kjg-2R;
 	Thu, 30 Mar 2023 15:41:58 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1phuOZ-004K7J-0r;
+	id 1phuOa-004K8p-1y;
 	Thu, 30 Mar 2023 15:41:06 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:792c:96d5:14:366a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A5303660318B;
-	Thu, 30 Mar 2023 16:40:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 87DA06603193;
+	Thu, 30 Mar 2023 16:40:54 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1680190854;
-	bh=efIIMyuWo/5TTgMlaw7lz63p4NVD+adWtS/yB46zFOY=;
+	bh=bQOfFeqoqCXSqQ11dHdmp90ArqJFyswk/HJjMlkGbwo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OfdxxC+PZyphPhkUv8UEJwGHpSxjKIPN5vAOxujOJHCbcSsAfbtek04Vl7EfqDbvZ
-	 zuyrFok6ET642Av6lLoEKNatP4WMC25RXAmCYedIJd6YO9+jOAb1ymvbeVzAVeXPAl
-	 7Ub0lv/GJNsxGYp40qBCsEiTPVnnQm+4FVZ3+oAkIyNzPtZp8ASanGmE+1mwfbAZcR
-	 PtPSl80khfwpq9FqSIxrA64D0xHDTKe0ElY0JAtexJkQhqdCGwAxMHkBp9LALI7ir7
-	 XGvNejSFY5iAltychEIKI75ZPOck5UbtKm4SaJ+xNtg1Hb+aAWV3drQYx3VOxRqYrN
-	 9sUoBgJFXak/A==
+	b=lYX4FGLNEj9mOxBw9O84U0WQuaMrzwWt3vk12jOZ951mRcwsqMre/kHi+c11xJEyu
+	 wnbvIOOSIEdq5H+Evs5rfu0en5OsAITllxEAXGpgxbRsxPCRdbCw1+JucV1ATr9tuv
+	 5+Z+hiexA/gBPhl4uFfdjL3cZUuFOUuq29FUH3Cdwc8TNFqylozPk+UrAbbIZJ7Nxy
+	 MGr4iZjFlBxFn6gEuhbtBfJWt5onvvl83pt8jnsosdwIaHzTkSQj1Jkj5EYeKKcdYh
+	 GMUtWsh5ck2cNzbJMXvXnteLio0ivGoT+4cj4vhNTscUftuahv24YzJlH+f7v5tz6O
+	 rsTT4TAc3w9tQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -59,16 +59,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 05/13] media: verisilicon: Add AV1 decoder mode and controls
-Date: Thu, 30 Mar 2023 17:40:35 +0200
-Message-Id: <20230330154043.1250736-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 07/13] media: verisilicon: Compute motion vectors size for AV1 frames
+Date: Thu, 30 Mar 2023 17:40:37 +0200
+Message-Id: <20230330154043.1250736-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230330154043.1250736-1-benjamin.gaignard@collabora.com>
 References: <20230330154043.1250736-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_084059_462835_0AC9BBB7 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20230330_084100_822733_C5A9FD2D 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +85,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add AV1 decoder as new decoder mode to Hantro driver.
-Register needed AV1 controls for the decoder.
+Compute the additional space required to store motion vectors at
+the end of the frames buffers.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro.h   |  3 +++
- .../media/platform/verisilicon/hantro_drv.c   | 21 +++++++++++++++++++
- 2 files changed, 24 insertions(+)
+ drivers/media/platform/verisilicon/hantro_hw.h      | 13 +++++++++++++
+ .../media/platform/verisilicon/hantro_postproc.c    |  3 +++
+ drivers/media/platform/verisilicon/hantro_v4l2.c    |  5 +++++
+ 3 files changed, 21 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 2989ebc631cc..61480825b856 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -38,6 +38,7 @@ struct hantro_postproc_ops;
- #define HANTRO_H264_DECODER	BIT(18)
- #define HANTRO_HEVC_DECODER	BIT(19)
- #define HANTRO_VP9_DECODER	BIT(20)
-+#define HANTRO_AV1_DECODER	BIT(21)
- #define HANTRO_DECODERS		0xffff0000
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index e83f0c523a30..bc61d4e051c7 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -417,6 +417,19 @@ hantro_hevc_mv_size(unsigned int width, unsigned int height)
+ 	return width * height / 16;
+ }
  
- /**
-@@ -111,6 +112,7 @@ struct hantro_variant {
-  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
-  * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
-  * @HANTRO_MODE_VP9_DEC: VP9 decoder.
-+ * @HANTRO_MODE_AV1_DEC: AV1 decoder
-  */
- enum hantro_codec_mode {
- 	HANTRO_MODE_NONE = -1,
-@@ -120,6 +122,7 @@ enum hantro_codec_mode {
- 	HANTRO_MODE_VP8_DEC,
- 	HANTRO_MODE_HEVC_DEC,
- 	HANTRO_MODE_VP9_DEC,
-+	HANTRO_MODE_AV1_DEC,
- };
++static inline unsigned short hantro_av1_num_sbs(unsigned short dimension)
++{
++	return DIV_ROUND_UP(dimension, 64);
++}
++
++static inline size_t
++hantro_av1_mv_size(unsigned int width, unsigned int height)
++{
++	size_t num_sbs = hantro_av1_num_sbs(width) * hantro_av1_num_sbs(height);
++
++	return ALIGN(num_sbs * 384, 16) * 2 + 512;
++}
++
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 6437423ccf3a..bb16af50719d 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -213,6 +213,9 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
+ 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
+ 		buf_size += hantro_hevc_mv_size(pix_mp.width,
+ 						pix_mp.height);
++	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME)
++		buf_size += hantro_av1_mv_size(pix_mp.width,
++					       pix_mp.height);
  
- /*
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index d20e62c025ae..74641c972f1e 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -525,6 +525,27 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR,
- 		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_FRAME,
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY,
-+			.dims = { V4L2_AV1_MAX_TILE_COUNT },
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
-+		},
-+	}, {
-+		.codec = HANTRO_AV1_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_STATELESS_AV1_FILM_GRAIN,
-+		},
- 	},
- };
- 
+ 	for (i = 0; i < num_buffers; ++i) {
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index e2a8838f75f0..c218c9781e73 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -337,6 +337,11 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 			pix_mp->plane_fmt[0].sizeimage +=
+ 				hantro_hevc_mv_size(pix_mp->width,
+ 						    pix_mp->height);
++		else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_AV1_FRAME &&
++			 !hantro_needs_postproc(ctx, fmt))
++			pix_mp->plane_fmt[0].sizeimage +=
++				hantro_av1_mv_size(pix_mp->width,
++						   pix_mp->height);
+ 	} else if (!pix_mp->plane_fmt[0].sizeimage) {
+ 		/*
+ 		 * For coded formats the application can specify
 -- 
 2.34.1
 
