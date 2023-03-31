@@ -4,49 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF3FC761A6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 21:49:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9468FC761A6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 22:38:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V2xViv8SVZ20x3M8jXHu34Le4uXGjCmT6BBkn13TDiY=; b=i2PIMHdqY52yRE
-	T/LrPV6hHxzSBXNowppBPcegpLOLvjMnkGUqku/02btMbiAUMg0codHGvIm3p9kGavMxje7r4t0Up
-	4uCRPHSDt0A5KwkaT2cEdB1BX3tsyeiTK5U8uthfmknYq/bqtuLA0mWLQML4o7yxd8pU0uhT5yKQd
-	e2Pohut+6MbNzYnyXIA2f6md3WkrgXbheRETTeb9ktPRPS7a9csXqb+U1xlyP1VlMklfd6wBoB2lu
-	XwQOi0e2SENNBIhxXNRdOj3IiYkxSy3KgoCyTtBBaUwzLeyzipPb8+Hk2Lc54sjaXOR+KweUGcrh6
-	hSvnF1FyEsiNsgpPJTDA==;
+	List-Owner; bh=2wAY78Q6w4+/Xqw4h93ZQ8VfV5bjU+pYmbQuXISE5UA=; b=WVj8KEwHEuyfSa
+	HO6tnTAx5bPgwZfJ4KT/E8UJrB+i9e9THxhqfa/yWsEyImAYboT7UfBm9LWRtdZVnCOxlljGnyKh1
+	ZS+cfr7qaWaf63D8Y+kjQulQB7+nc8YoRvJMCX5ze8YOxVFaNH3Yb+MvUIC/XrhDCqw496jiQONU0
+	vaFVR2jW1FVBz1yRQ1NwAod2q5b1jkADXApQnnsI03TFf5WZ1wXxVJ+yKh8Mq2Z/ShuRuYDcQi7aR
+	Wz86nzS9Qb+PKabzZ5U1q/DR4hsa3P87qDLyefXC6b5hIEj/EufLWLwKlhhhNY277bnbrx5nRKfxo
+	FnKRe3rvJjJlQbM9dLCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piMcm-008yiF-22;
-	Fri, 31 Mar 2023 21:49:32 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1piNNo-0094dF-29;
+	Fri, 31 Mar 2023 22:38:08 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piMcj-008yfF-0q;
-	Fri, 31 Mar 2023 21:49:30 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1piMcK-0006Di-Gz; Fri, 31 Mar 2023 23:49:04 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Joerg Roedel <joro@8bytes.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- Steven Price <steven.price@arm.com>
-Cc: Steven Price <steven.price@arm.com>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>
-Subject:  Re: [PATCH v4] iommu/rockchip: Add missing set_platform_dma_ops callback
-Date: Fri, 31 Mar 2023 23:49:03 +0200
-Message-ID: <2077066.bB369e8A3T@diego>
-In-Reply-To: <20230331095154.2671129-1-steven.price@arm.com>
-References: <20230331095154.2671129-1-steven.price@arm.com>
+	id 1piNNl-0094cc-2e;
+	Fri, 31 Mar 2023 22:38:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1680302285; x=1711838285;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=bAdgdM9qxWwNUygkEZ9jWDGPYJInba7mW77utGzoikU=;
+  b=fxIw8Eo5rApnj1YW60P+9cOaxDURZY2ZMGU3nBoCIrxTRad1enn+3nX0
+   Lw9FBio6T8Qs7FrMwbEn42pm2ccljy73EKnZ9WgDtayParF1hB29cfLoQ
+   Oh7R3tR6ZSs7plJih/JU993JdnD2TNb/Dy6Y6DmaY4/5i2Nh41adWzzdj
+   1VYELekwuwgz3teX4kL7O+b45OP70hI1rWJvvOnUH/SyG7tPBnBNWdGmG
+   uBrJNxTqbLRGRm4RwJy6tOSI9zjM4j7rhADxQae7Gb7P9oE7+omURKW9t
+   ofzCfi50ARqws3mAwKuhuUx2eIOVhOA6i5I9EWb0WKRA9asf8EI/T+S1H
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10666"; a="321964642"
+X-IronPort-AV: E=Sophos;i="5.98,307,1673942400"; 
+   d="scan'208";a="321964642"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2023 15:38:04 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10666"; a="1015003336"
+X-IronPort-AV: E=Sophos;i="5.98,307,1673942400"; 
+   d="scan'208";a="1015003336"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by fmsmga005.fm.intel.com with ESMTP; 31 Mar 2023 15:38:00 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1piNNf-000MEf-2L;
+	Fri, 31 Mar 2023 22:37:59 +0000
+Date: Sat, 1 Apr 2023 06:37:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Peter Geis <pgwipeout@gmail.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Boris Brezillon <bbrezillon@kernel.org>, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCHv1 2/2] soc: rockchip: power-domain: add rk3588 mem module
+ support
+Message-ID: <202304010627.ugL7o7Ct-lkp@intel.com>
+References: <20230331163058.5688-3-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230331163058.5688-3-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_144929_312003_3A5E84E9 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20230331_153805_891086_91023A8C 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,35 +91,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 31. M=E4rz 2023, 11:51:54 CEST schrieb Steven Price:
-> Similar to exynos, we need a set_platform_dma_ops() callback for proper
-> operation on ARM 32 bit after recent changes in the IOMMU framework
-> (detach ops removal). But also the use of a NULL domain is confusing.
-> =
+Hi Sebastian,
 
-> Rework the code to add support for IOMMU_DOMAIN_IDENTITY and a singleton
-> rk_identity_domain which is assigned to domain when using an identity
-> mapping rather than "detaching". This makes the code easier to reason abo=
-ut.
-> =
+I love your patch! Yet something to improve:
 
-> Signed-off-by: Steven Price <steven.price@arm.com>
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on linus/master v6.3-rc4 next-20230331]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-My knowledge of IOMMU magic is not that deep. Nevertheless I do believe
-to mostly understand the change and the splats on my rk3288-pinky are gone
-now with this patch:
+url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/clk-rockchip-rk3588-make-gate-linked-clocks-ignore-unused/20230401-003605
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20230331163058.5688-3-sebastian.reichel%40collabora.com
+patch subject: [PATCHv1 2/2] soc: rockchip: power-domain: add rk3588 mem module support
+config: riscv-randconfig-r042-20230329 (https://download.01.org/0day-ci/archive/20230401/202304010627.ugL7o7Ct-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install riscv cross compiling tool for clang build
+        # apt-get install binutils-riscv64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/8a9b7bc14bff10030ef40e0350429490ff984f26
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Sebastian-Reichel/clk-rockchip-rk3588-make-gate-linked-clocks-ignore-unused/20230401-003605
+        git checkout 8a9b7bc14bff10030ef40e0350429490ff984f26
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/soc/rockchip/
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202304010627.ugL7o7Ct-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/soc/rockchip/pm_domains.c:462:2: error: call to undeclared function 'dsb'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+           dsb(sy);
+           ^
+>> drivers/soc/rockchip/pm_domains.c:462:6: error: use of undeclared identifier 'sy'
+           dsb(sy);
+               ^
+   drivers/soc/rockchip/pm_domains.c:475:6: error: use of undeclared identifier 'sy'
+           dsb(sy);
+               ^
+   3 errors generated.
 
 
+vim +/dsb +462 drivers/soc/rockchip/pm_domains.c
 
+   441	
+   442	static int rockchip_pmu_domain_mem_reset(struct rockchip_pm_domain *pd)
+   443	{
+   444		struct rockchip_pmu *pmu = pd->pmu;
+   445		struct generic_pm_domain *genpd = &pd->genpd;
+   446		bool is_on;
+   447		int ret = 0;
+   448	
+   449		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_chain_on, pd, is_on,
+   450						is_on == true, 0, 10000);
+   451		if (ret) {
+   452			dev_err(pmu->dev,
+   453				"failed to get chain status '%s', target_on=1, val=%d\n",
+   454				genpd->name, is_on);
+   455			goto error;
+   456		}
+   457	
+   458		udelay(20);
+   459	
+   460		regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
+   461			     (pd->info->pwr_mask | pd->info->pwr_w_mask));
+ > 462		dsb(sy);
+   463	
+   464		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
+   465						is_on == false, 0, 10000);
+   466		if (ret) {
+   467			dev_err(pmu->dev,
+   468				"failed to get mem status '%s', target_on=0, val=%d\n",
+   469				genpd->name, is_on);
+   470			goto error;
+   471		}
+   472	
+   473		regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
+   474			     pd->info->pwr_w_mask);
+   475		dsb(sy);
+   476	
+   477		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
+   478						is_on == true, 0, 10000);
+   479		if (ret) {
+   480			dev_err(pmu->dev,
+   481				"failed to get mem status '%s', target_on=1, val=%d\n",
+   482				genpd->name, is_on);
+   483		}
+   484	
+   485	error:
+   486		return ret;
+   487	}
+   488	
 
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 
 _______________________________________________
 Linux-rockchip mailing list
