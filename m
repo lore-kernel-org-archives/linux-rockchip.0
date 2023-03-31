@@ -4,94 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C162C7619A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Mar 2023 23:19:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C4ABC7619A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 00:46:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AA4gY3CQ1GP+r7cFQ5x3REfzPhjPI3D5tMwORdcPOno=; b=SS6Sk3JaMk/qWr
-	JJX30RtKdwT4TaaGok/4A6XlIT064SNkqiNWSyIEqN/xhvWgsCYRhX2gQlGzPaBoeLNqGcs5Ned7D
-	l47U47O6l59X6dawb1VUufEEQzIOW2LxBZdM6q0/cQu9fnYenEga2Yej84wlyouXcAovTRSWreKqJ
-	8iL8zl8WRfA4lwt+ubUSVFLncaogC9ZwLjFnJboU+8usUL9pGrL4fYtUpLCOE9+YBtnZkcEXZzG7Q
-	zIKXmu7yTowu61zzfwi5wa6XpiVYlL4apXCaRXiX3PQO1i30T/Z6fDfkj/SYfxoyIKOy04XPOeqcc
-	exyMMy37lVgGebKV4mBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YD8Pgf4wU9UF2DfpgI94L8E48rimfNYm99kq665doZU=; b=g7RyFW9OnU6Xy4
+	Z/M1R1m/7VaYoFnSf0adiYY2iEuTJdxDLNugWUgcq/TbxB3aI1kxP25kTSgnK9UProj1THV5Gw+qo
+	7axB0BgcxDFmOm5rqGA9Uo/wK6q+N16upJZWNXsVx10NFlloW+blEh8KR6rzsoh3sIyZhCqJ7YdCb
+	gd0AiAtxHFY0S1PNPyWfmTIkazdYbZRN39p1hjUM9tdqgAim3xa6S0zfD1avn7ZeV6Qg+cJoOqVgG
+	pC/UJUlnfz6/pSrUKqSq1/fR9q8UIgGg/yDcOTWPlzUS2iSFMGd5+2Bd2JGQnoXZsl4Zfvr21EMyc
+	FJSXA2bpoNK8tm154PXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi1YO-005JQt-1T;
-	Thu, 30 Mar 2023 23:19:36 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1pi2uI-005T7m-2j;
+	Fri, 31 Mar 2023 00:46:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi1YJ-005JPQ-12
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Mar 2023 23:19:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1680218369;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=Lx021jiSXTc6pYyl7LmIv03tfyJDHewW1CEauW0rIQw=;
-	b=QoxI4bYdHUkDc1Y8HjE96rc719nXbbursL1Tp1cgaHREJYC4rh+JsAwU9aREw7UuEuOXIz
-	T/0LgDSxTiT9eW+fdcXHxQtBKd5MJz54o7kFMlpzSd9Ol62y7X878riGIXs7KU7GzC6iX5
-	M1v7bBEfPSS+8BnZr4uBKNHcMBs+F30=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-36-qtZnOvlJNtif1qNhMVe9CA-1; Thu, 30 Mar 2023 19:19:28 -0400
-X-MC-Unique: qtZnOvlJNtif1qNhMVe9CA-1
-Received: by mail-wm1-f72.google.com with SMTP id u14-20020a05600c19ce00b003f0331154b1so2217683wmq.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Mar 2023 16:19:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680218367;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Lx021jiSXTc6pYyl7LmIv03tfyJDHewW1CEauW0rIQw=;
-        b=F3htIsH8spGpRY3xB4ppCUYHahB0j2Ef6hUz6w6Tu/HHtPCOSmu7niwY2eWD+CKtsj
-         n7ZPc2VcbQmZsL2rWAgfz1UBJqX4G8wr1Yuy3bss3IFaNbZdfIeXo1pKAT1d1QCtD95t
-         y4jmbK9YgTAZfqe86Sdc3UiDdMfcZ1D2t8Vd0Dq2CJJTr4TFtxzeoOJVt/+UTulgSFxL
-         wsMYBmw1OFcxG7g05Q8TATbtU2KY4VtzaSPDoj+zq78VXS/aTvfEQyutNIfxuqsUiEAo
-         XbXLzx6o3AuWQVS48NkL/Kl8Aibed/XzNfLNS8CKPa2TJWV0/bL/rPA5o+2MxuqPS4Jr
-         qkrA==
-X-Gm-Message-State: AAQBX9f/7Xo/+d+T2OF2Z+4C3YB9PUYdramFGhpnaQdPjUfECJLJG0SR
-	tBeYTjxo6mo+j3KMpy60EvzwCeXpncXVGQ/EEa+OX+yI7iFn7MLPeUtxHW6VdZNkvk8oBuqSdrd
-	7pMd5nCtlxWuJtFLAbcoy4nZW23gh80Kf
-X-Received: by 2002:adf:d4cc:0:b0:2d0:2d4:958c with SMTP id w12-20020adfd4cc000000b002d002d4958cmr18784588wrk.60.1680218367551;
-        Thu, 30 Mar 2023 16:19:27 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YIJANJD5ndsOw5e6X1tNl3/XEP4RjGZCkemP4f0WMNIUtUXUh4J/Z7TRhR6CnBmTTGwrSw1g==
-X-Received: by 2002:adf:d4cc:0:b0:2d0:2d4:958c with SMTP id w12-20020adfd4cc000000b002d002d4958cmr18784568wrk.60.1680218367087;
-        Thu, 30 Mar 2023 16:19:27 -0700 (PDT)
-Received: from minerva.home (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id f9-20020adfe909000000b002c7163660a9sm536059wrm.105.2023.03.30.16.19.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Mar 2023 16:19:26 -0700 (PDT)
-From: Javier Martinez Canillas <javierm@redhat.com>
-To: linux-kernel@vger.kernel.org
-Cc: Javier Martinez Canillas <javierm@redhat.com>,
+	id 1pi2uG-005T6k-2K;
+	Fri, 31 Mar 2023 00:46:18 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pi2u9-00085a-Vg; Fri, 31 Mar 2023 02:46:10 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org,
+	Javier Martinez Canillas <javierm@redhat.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	zain wang <wzz@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Lin Huang <hl@rock-chips.com>,
 	Brian Norris <briannorris@chromium.org>,
+	linux-arm-kernel@lists.infradead.org,
 	Daniel Lezcano <daniel.lezcano@linaro.org>,
 	Douglas Anderson <dianders@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Judy Hsiao <judyhsiao@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Lin Huang <hl@rock-chips.com>,
-	Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	zain wang <wzz@rock-chips.com>
-Subject: [PATCH v2] arm64: dts: rockchip: Remove non-existing pwm-delay-us property
-Date: Fri, 31 Mar 2023 01:19:23 +0200
-Message-Id: <20230330231924.2404747-1-javierm@redhat.com>
-X-Mailer: git-send-email 2.40.0
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Remove non-existing pwm-delay-us property
+Date: Fri, 31 Mar 2023 02:46:03 +0200
+Message-Id: <168022355549.2421590.10536271143101805673.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230330231924.2404747-1-javierm@redhat.com>
+References: <20230330231924.2404747-1-javierm@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230330_161931_997084_94FE76B0 
+X-CRM114-CacheID: sfid-20230330_174616_757981_E665F16F 
 X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,73 +73,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is neither a driver that parses this nor a DT binding schema that
-documents it, so let's remove from the DTS files that make use of this.
+On Fri, 31 Mar 2023 01:19:23 +0200, Javier Martinez Canillas wrote:
+> There is neither a driver that parses this nor a DT binding schema that
+> documents it, so let's remove from the DTS files that make use of this.
+> 
+> The properties that exist are post-pwm-on-delay-ms and pwm-off-delay-ms,
+> defined in the pwm-backlight DT binding. If the delays are really needed
+> then those properties should be used instead.
+> 
+> [...]
 
-The properties that exist are post-pwm-on-delay-ms and pwm-off-delay-ms,
-defined in the pwm-backlight DT binding. If the delays are really needed
-then those properties should be used instead.
+Applied, thanks!
 
-Brian Norris mentioned though that looking at the first downstream usage
-of the pwm-delay-us property for RK3399 Gru systems in ChromiumOS tree,
-he couldn't find a spec reference that said that this was really needed.
+[1/1] arm64: dts: rockchip: Remove non-existing pwm-delay-us property
+      commit: 3adf89324a2b2a9dbc2c12d8895021e7e34e3346
 
-So perhaps it was unnecessary added and a simple removal would be enough.
-
-Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
-Reviewed-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v2:
-- Update commit message with the information provided by Brian Norries.
-- Add Reviewed-by tag from Brian Norries.
-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi            | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi    | 1 -
- 3 files changed, 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-index 083452c67711..e47d1398aeca 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-@@ -61,7 +61,6 @@ backlight: backlight {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&bl_en>;
- 		pwms = <&pwm0 0 1000000 PWM_POLARITY_INVERTED>;
--		pwm-delay-us = <10000>;
- 	};
- 
- 	emmc_pwrseq: emmc-pwrseq {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index ee6095baba4d..5c1929d41cc0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -198,7 +198,6 @@ backlight: backlight {
- 		power-supply = <&pp3300_disp>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&bl_en>;
--		pwm-delay-us = <10000>;
- 	};
- 
- 	gpio_keys: gpio-keys {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index a47d9f758611..c5e7de60c121 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -167,7 +167,6 @@ backlight: backlight {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&bl_en>;
- 		pwms = <&pwm1 0 1000000 0>;
--		pwm-delay-us = <10000>;
- 	};
- 
- 	dmic: dmic {
-
-base-commit: b2bc47e9b2011a183f9d3d3454a294a938082fb9
+Best regards,
 -- 
-2.40.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
