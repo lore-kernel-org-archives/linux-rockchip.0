@@ -4,87 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA5E8C76196
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 08:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E743C76196
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 09:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wrvD81XAoUQK0WJHPaMwRl16eaXS1EVEUKciOOyns+Y=; b=fs+BllI/OM/sSR
-	3PshLPNoc1zO0QVjGjAeLxKG2KmlZV61f4uO91CWv2iMR8gMqXAE+jZKrNVXoJ49wZ3tlET6t4vIB
-	UBPOYPeYZW1SqIYm9FA61J2Ft0nH1SA6LRE+yHgCGZQZyRmiakufMyBLQgpZkygoiPVRLGQIWH56F
-	j4/cnpoHi63NWf5DXwlcMG361bODMM4/VqhegjDktL0BvwP/bQkrRLh0QGQksYjLacA71lScP6+X4
-	OI73ENjiR2kT8N7sKCAEHEJxRwxPCYdvulx9jPow2XFvXlG1EOsBZD7QzSr2wKWNL2p69E80Q9Sew
-	LgqJZM1XhdIgtRP6p8HA==;
+	List-Owner; bh=3+ECnaVqs3I8AtwhTTJbkZjS5BEIyrTpFlROqhQs9ho=; b=hWXjobkRMVVc+0
+	935wTVDF38oPCMcFLuUpNGBh8lOnut7ijaa6lbhmI76Y1D+PPdUWSwTkO8fyv4T+eEtJKKTXucneH
+	UqeqhGxfxEE4sqtQyjqKf4RzueCCbR+wd5bzNVRe1yn7k5uu4bwzIcgDsA2VEaTNWin6fQrOH9QPH
+	wtbfCzGdkVWh3EtwNMkWvGU2qxmk5A63Jurbx4xqRGVgcfKZN60HJFHSz+f5QGFBqLtjlmPU8k/HV
+	RD7ETyC0pYyt6TClPEpFVV630oL4zPOxCj/oP82qcbUCynhPiwsJ5bPfp9l020Q+c4/VOaPXZjw/F
+	/R+g76+H+mrhwyMToFJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piAGl-006Sbc-0e;
-	Fri, 31 Mar 2023 08:37:59 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1piB8i-006hHw-0e;
+	Fri, 31 Mar 2023 09:33:44 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piAEb-006QpT-03
-	for linux-rockchip@lists.infradead.org;
-	Fri, 31 Mar 2023 08:35:50 +0000
-Received: by mail-lj1-x234.google.com with SMTP id q14so22236994ljm.11
-        for <linux-rockchip@lists.infradead.org>; Fri, 31 Mar 2023 01:35:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680251743;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tkRYc2zjcEMTlLfWoSafrc84uzK9JDYRl9kYpG33h9E=;
-        b=VDtYvpS72Cb8trEdZVmOD4XrZGTI0kgWf9WAirmYAqK6YXUnVdbBn7gj/IO2OKTFMX
-         awun/DZKunVF7yFL/NqDphNreCz9VxqbyYMCF7ql9WgGuC7y0RN1peGeCe0PPyLga5c7
-         BZ6tUgHyw6X7uxVpo8xxqAcNIHvIbY41ndFtvBqZEa6Em626CPuObX1Cwu7mYtJUtcU+
-         2J4Y5KwVcOR1ufbnbEJ9pJr37KFGNqI1BJ/BUmjyd3mzvaQxEPIDD9A4rlK/Uo22kdik
-         KN4jn7SuA+Yz9+i0bytGyuoa9xckYg4hAOhUp1YsfMUEY9LwZ6tip9uSwTJouX3bHfRJ
-         /Ylw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680251743;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tkRYc2zjcEMTlLfWoSafrc84uzK9JDYRl9kYpG33h9E=;
-        b=hUalmBYfwvKmFM4FR9M/bADJPgTUhbG5FjfF4YmZa50wG9BpCkLQQm0iuLsCMIp3z2
-         QD/oN30ea3qclOaGf+PaUlmSjwav9DWeyj8t5RZEOgqpUUkjAKyHY5EN9CL1fmLheyyO
-         rtMe0X7ERvp2dZaKF7V3akM7kBpq8TvfKE+lYArP3bM7uoteRrGJG4o1DQHPuhBZ/eRN
-         gTPQJ/We+jDnMb4YYCo4+hT3ifDBSEM9YWwIG/pwYl0n27Qes9waqvzVg/6M9ro13oxa
-         Ll6ZsgaC9j3AH/8s4RjhVXehzxYgzstOa4lbL9AXKQbsJnRp92bAYBO62sIBKfL49SBp
-         MiOQ==
-X-Gm-Message-State: AAQBX9cOkV+DlqHZ9oH+2vxgq9f8tFIQbVpvtfav2+xT7xKmUfekkNCq
-	Go8PDcfUo4V4VQvYoF9/jzRyyA==
-X-Google-Smtp-Source: AKy350biiEiYoHvXX4oy8SYpu5pCoC47zLNvMj4u1cmjiV2eNr3bJd7RLJ2vrzmFKZJOHU5xx0I7dw==
-X-Received: by 2002:a2e:aa8b:0:b0:2a1:ed00:4b9e with SMTP id bj11-20020a2eaa8b000000b002a1ed004b9emr2503411ljb.1.1680251742960;
-        Fri, 31 Mar 2023 01:35:42 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id f25-20020a2e6a19000000b002a03f9ffecesm262405ljc.89.2023.03.31.01.35.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 31 Mar 2023 01:35:42 -0700 (PDT)
-Message-ID: <7a81fe59-7076-9ebd-d574-e4f2d55c8ebe@linaro.org>
-Date: Fri, 31 Mar 2023 10:35:41 +0200
+	id 1piB8Y-006hD5-36;
+	Fri, 31 Mar 2023 09:33:38 +0000
+Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4Pnw7y6y75z49QHd;
+	Fri, 31 Mar 2023 12:33:18 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1680255203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3gdxuNf+Axr67LtZ9uJ4KzAt1BhlIlNW7JVJbQsQ2a4=;
+	b=uXy9sQTh/lvsZhI8D39u2L7eRoKWTZqYrBObxWhgUi19wSqbDOo4bkQAA+JNPylXaevKjR
+	wX/cLSrqWnxfqJwi4d4ID9rAxNsHIQ112pOwbAz1+s30nbtRPb6oqSXDqy0o4h7CfBdn81
+	s1JlPIRZe3B6HLaH92Oc2D9xJ34xUDkPrP/OS869Ave1kMhR/xsCCUgB4wRAPKdfbzqn8Q
+	4NBmnKpHUV3JDk48b1eihaTahad1sEMxctjY6q+Mq3Mf/JTxKV3XBLkyiQBlnv++n6jGvW
+	yezJnJeADvPG6kYbfW+aVWBXvLybXRjXRe60kZFJgPe2xX0mMZR7Lch8VRNzcg==
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1680255203; a=rsa-sha256;
+	cv=none;
+	b=Y2mZwfIhcSXk29ca9bHqTLn/zar/UzrZyA15qi7nfy1qho/19EEqw6j7C++olU6O/EUuKU
+	B73TSoLjdSUX5WFyBllNzObNCbJXuRpOSRgBgBK3g8xAchzvJOMYNwAh/cO0vFbwaSOjLO
+	W57CeqdPyNDzZMbFKXxktS6jOQQf77Ed8EhR3rB1SsZFqGMfgZ1PCVbGLAnhW41lId6jf7
+	IB8nQDQboFRYhBKJR5eC2GYQbfmhaCsdtitIvOYg3sNpbt5sLSVuLlgp1bElmbkenu+2rB
+	oFaropMfL/y7VZmCxvcb3bmKAx/tUBavgkBuB4pwuJyqT4vlrmiCXgXks7v1EQ==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1680255203;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3gdxuNf+Axr67LtZ9uJ4KzAt1BhlIlNW7JVJbQsQ2a4=;
+	b=E2uOv63ikqvai+QjOg9zREzxnZCJkC84meEtQzTTa7nzCuzXVI/dbifCOExzIHLQM+BepV
+	EhNPoaAmQE2hr0gXNblU6SPC5ScIEEimrRd6DPY63TxoJS0wWHczl2ukMPynVMubfz6EpD
+	+T6xspQJ+7wT8ELSfD0u8gPTVc0hH6hzm3iHcSdXGG24mqVNCEDwlhgjnLaH+fGLfKAhaa
+	JmbkXn/Bp2/+tNw6qjbUHnekPOVMDTR/SQcDPFtlSFpR8xDynoJrmaIN2I5J4xnWeLb3wS
+	U/KGktAh2MVh6tv7vpwbCl7mMQXJIK4IMlAWJDRshfxdjuNAysNfaJKHXHR4xg==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id D0C70634C99;
+	Fri, 31 Mar 2023 12:31:03 +0300 (EEST)
+Date: Fri, 31 Mar 2023 12:31:03 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Rob Herring <robh@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Joe Tessler <jrt@google.com>,
+	Dongchun Zhu <dongchun.zhu@mediatek.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, Robert Foss <rfoss@kernel.org>,
+	Todor Tomov <todor.too@gmail.com>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Heiko Stuebner <heiko@sntech.de>, Benoit Parrot <bparrot@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Drop unneeded quotes
+Message-ID: <ZCaoVwRuxVOTZdI4@valkosipuli.retiisi.eu>
+References: <20230320233944.2920964-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 1/3] dt-bindings: iommu: rockchip: Add
- rockchip,disable-device-link-resume
-Content-Language: en-US
-To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
- <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: iommu@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-amarula <linux-amarula@amarulasolutions.com>
-References: <20230330131746.1475514-1-jagan@amarulasolutions.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230330131746.1475514-1-jagan@amarulasolutions.com>
+Content-Disposition: inline
+In-Reply-To: <20230320233944.2920964-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_013545_835644_1A101991 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230331_023335_208557_78D17EAB 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,20 +137,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 30/03/2023 15:17, Jagan Teki wrote:
-> Rockchip iommu is trying to enable the associated device at runtime
-> resume however some devices might enable the iommu during their pm
-> runtime resume operation which indeed leads iommu to use the wrong
-> domain and this leads to device iommu page fault.
+Hi Rob,
 
-That's not a DT property. You now described system behavior and want to
-encode policy in DT.
+On Mon, Mar 20, 2023 at 06:39:42PM -0500, Rob Herring wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
+This patch contains changes to Qualcomm bindings that have been already
+made by other patches by Krzysztof. I think these took some time to get
+merged to the media tree.
 
+I've dropped those, the result is here:
 
-Best regards,
-Krzysztof
+<URL:https://git.linuxtv.org/sailus/media_tree.git/commit/?id=d75cae0884e80bba486f85e82b33a1dae3c9c976>
 
+-- 
+Kind regards,
+
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
