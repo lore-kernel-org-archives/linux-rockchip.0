@@ -4,65 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC47EC76196
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 08:13:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA5E8C76196
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 08:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+NLcp0ZtOWWXUZiIbC7kdnVIAqc+ErSR2hxzyEfwip8=; b=3EQETPMReo0iUt
-	RP/nmW4OSF1IoTxIX5xCwIC1fPP0jeoS81esSAUqrlwI2SAgBU5IC085dvalENu7eFg2ruEGdts/A
-	Neju0+Dxz0lzBXl+5HbYNkYQ7XD23GPLj9EiOr+2C2mLmJis0cSrz8GXJTQ3EGFA3He/S7keD5Ts8
-	Xqn+f4ICu4Lq4Bu0lW/f5tipokJT1UCMntZ4iHKNTKoIxcL5DudqnSPLiW6ZyKuwTLO6fLB4tJQNO
-	oqe6vRW4larGgKXgwqKVFCh8v6rnLCLQoNI5So2qIFJDhtPTL/V/oJKh8llV1USiV1ILZ3QnQPNN3
-	d3d4h0ayAeoYO4wVmljw==;
+	List-Owner; bh=wrvD81XAoUQK0WJHPaMwRl16eaXS1EVEUKciOOyns+Y=; b=fs+BllI/OM/sSR
+	3PshLPNoc1zO0QVjGjAeLxKG2KmlZV61f4uO91CWv2iMR8gMqXAE+jZKrNVXoJ49wZ3tlET6t4vIB
+	UBPOYPeYZW1SqIYm9FA61J2Ft0nH1SA6LRE+yHgCGZQZyRmiakufMyBLQgpZkygoiPVRLGQIWH56F
+	j4/cnpoHi63NWf5DXwlcMG361bODMM4/VqhegjDktL0BvwP/bQkrRLh0QGQksYjLacA71lScP6+X4
+	OI73ENjiR2kT8N7sKCAEHEJxRwxPCYdvulx9jPow2XFvXlG1EOsBZD7QzSr2wKWNL2p69E80Q9Sew
+	LgqJZM1XhdIgtRP6p8HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi9ss-006J9g-0J;
-	Fri, 31 Mar 2023 08:13:18 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1piAGl-006Sbc-0e;
+	Fri, 31 Mar 2023 08:37:59 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pi9sJ-006Its-0r;
-	Fri, 31 Mar 2023 08:12:44 +0000
-Received: from localhost (unknown [188.27.34.213])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC8286603190;
-	Fri, 31 Mar 2023 09:12:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680250362;
-	bh=kJdtSesynjBrpuEEDEDtpj5X9IcAxkUH0Y/1s8Txv6c=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KRHNEPxXJgDW42ZL6xjOam7Ng8ZJw4lK/reZfB2L5MsVxAu9TC26eSxzVdWgU71K7
-	 mwYRRanAjSsDcDNsPcmin6l5+Aix7vCZt36Kcui37k6UkgiOTbYE6o9GnyGsICcKjw
-	 PQMHm1SJxANqY6vzt3Nuyd4r1j8ZvnSbI3DVzsQwSjz7BQ/R2BSdkGBhpCO8TJ1AmP
-	 ZjufTnfLbT+Vyi4wxd0MfRdAqSo6SuyjsV5xc4bTiQVvU2FtzNYvr4SLxhGfjpJJf3
-	 XWKbWkOYNmkfVKbGjqXIBthX2QuATSRrorSFBlbGDoGuSzdK6aDWr0ajYIabf9v+Av
-	 O43jUxd+W/Y5w==
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v3 4/4] arm64: dts: rockchip: rk3588-rock-5b: Add analog audio
-Date: Fri, 31 Mar 2023 11:12:26 +0300
-Message-Id: <20230331081226.245881-5-cristian.ciocaltea@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230331081226.245881-1-cristian.ciocaltea@collabora.com>
-References: <20230331081226.245881-1-cristian.ciocaltea@collabora.com>
+	id 1piAEb-006QpT-03
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Mar 2023 08:35:50 +0000
+Received: by mail-lj1-x234.google.com with SMTP id q14so22236994ljm.11
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 Mar 2023 01:35:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1680251743;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tkRYc2zjcEMTlLfWoSafrc84uzK9JDYRl9kYpG33h9E=;
+        b=VDtYvpS72Cb8trEdZVmOD4XrZGTI0kgWf9WAirmYAqK6YXUnVdbBn7gj/IO2OKTFMX
+         awun/DZKunVF7yFL/NqDphNreCz9VxqbyYMCF7ql9WgGuC7y0RN1peGeCe0PPyLga5c7
+         BZ6tUgHyw6X7uxVpo8xxqAcNIHvIbY41ndFtvBqZEa6Em626CPuObX1Cwu7mYtJUtcU+
+         2J4Y5KwVcOR1ufbnbEJ9pJr37KFGNqI1BJ/BUmjyd3mzvaQxEPIDD9A4rlK/Uo22kdik
+         KN4jn7SuA+Yz9+i0bytGyuoa9xckYg4hAOhUp1YsfMUEY9LwZ6tip9uSwTJouX3bHfRJ
+         /Ylw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680251743;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tkRYc2zjcEMTlLfWoSafrc84uzK9JDYRl9kYpG33h9E=;
+        b=hUalmBYfwvKmFM4FR9M/bADJPgTUhbG5FjfF4YmZa50wG9BpCkLQQm0iuLsCMIp3z2
+         QD/oN30ea3qclOaGf+PaUlmSjwav9DWeyj8t5RZEOgqpUUkjAKyHY5EN9CL1fmLheyyO
+         rtMe0X7ERvp2dZaKF7V3akM7kBpq8TvfKE+lYArP3bM7uoteRrGJG4o1DQHPuhBZ/eRN
+         gTPQJ/We+jDnMb4YYCo4+hT3ifDBSEM9YWwIG/pwYl0n27Qes9waqvzVg/6M9ro13oxa
+         Ll6ZsgaC9j3AH/8s4RjhVXehzxYgzstOa4lbL9AXKQbsJnRp92bAYBO62sIBKfL49SBp
+         MiOQ==
+X-Gm-Message-State: AAQBX9cOkV+DlqHZ9oH+2vxgq9f8tFIQbVpvtfav2+xT7xKmUfekkNCq
+	Go8PDcfUo4V4VQvYoF9/jzRyyA==
+X-Google-Smtp-Source: AKy350biiEiYoHvXX4oy8SYpu5pCoC47zLNvMj4u1cmjiV2eNr3bJd7RLJ2vrzmFKZJOHU5xx0I7dw==
+X-Received: by 2002:a2e:aa8b:0:b0:2a1:ed00:4b9e with SMTP id bj11-20020a2eaa8b000000b002a1ed004b9emr2503411ljb.1.1680251742960;
+        Fri, 31 Mar 2023 01:35:42 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id f25-20020a2e6a19000000b002a03f9ffecesm262405ljc.89.2023.03.31.01.35.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 31 Mar 2023 01:35:42 -0700 (PDT)
+Message-ID: <7a81fe59-7076-9ebd-d574-e4f2d55c8ebe@linaro.org>
+Date: Fri, 31 Mar 2023 10:35:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 1/3] dt-bindings: iommu: rockchip: Add
+ rockchip,disable-device-link-resume
+Content-Language: en-US
+To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
+ <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: iommu@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-amarula <linux-amarula@amarulasolutions.com>
+References: <20230330131746.1475514-1-jagan@amarulasolutions.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230330131746.1475514-1-jagan@amarulasolutions.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_011243_449545_EFA4F9A7 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20230331_013545_835644_1A101991 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,103 +101,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the necessary DT nodes for the Rock 5B board to enable the analog
-audio support provided by the Everest Semi ES8316 codec.
+On 30/03/2023 15:17, Jagan Teki wrote:
+> Rockchip iommu is trying to enable the associated device at runtime
+> resume however some devices might enable the iommu during their pm
+> runtime resume operation which indeed leads iommu to use the wrong
+> domain and this leads to device iommu page fault.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 62 +++++++++++++++++++
- 1 file changed, 62 insertions(+)
+That's not a DT property. You now described system behavior and want to
+encode policy in DT.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 95805cb0adfa..a9e12e098d48 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -2,6 +2,7 @@
- 
- /dts-v1/;
- 
-+#include <dt-bindings/gpio/gpio.h>
- #include "rk3588.dtsi"
- 
- / {
-@@ -17,6 +18,23 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	sound {
-+		compatible = "audio-graph-card";
-+		label = "Analog";
-+
-+		widgets = "Microphone", "Mic Jack",
-+			  "Headphone", "Headphones";
-+
-+		routing = "MIC2", "Mic Jack",
-+			  "Headphones", "HPOL",
-+			  "Headphones", "HPOR";
-+
-+		dais = <&i2s0_8ch_p0>;
-+		hp-det-gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hp_detect>;
-+	};
-+
- 	vcc5v0_sys: vcc5v0-sys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_sys";
-@@ -27,6 +45,50 @@ vcc5v0_sys: vcc5v0-sys-regulator {
- 	};
- };
- 
-+&i2c7 {
-+	status = "okay";
-+
-+	es8316: es8316@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		clock-names = "mclk";
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0_8ch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	sound {
-+		hp_detect: hp-detect {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	no-sdio;
--- 
-2.40.0
+
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
