@@ -4,82 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9468FC761A6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Mar 2023 22:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA398C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Apr 2023 14:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2wAY78Q6w4+/Xqw4h93ZQ8VfV5bjU+pYmbQuXISE5UA=; b=WVj8KEwHEuyfSa
-	HO6tnTAx5bPgwZfJ4KT/E8UJrB+i9e9THxhqfa/yWsEyImAYboT7UfBm9LWRtdZVnCOxlljGnyKh1
-	ZS+cfr7qaWaf63D8Y+kjQulQB7+nc8YoRvJMCX5ze8YOxVFaNH3Yb+MvUIC/XrhDCqw496jiQONU0
-	vaFVR2jW1FVBz1yRQ1NwAod2q5b1jkADXApQnnsI03TFf5WZ1wXxVJ+yKh8Mq2Z/ShuRuYDcQi7aR
-	Wz86nzS9Qb+PKabzZ5U1q/DR4hsa3P87qDLyefXC6b5hIEj/EufLWLwKlhhhNY277bnbrx5nRKfxo
-	FnKRe3rvJjJlQbM9dLCw==;
+	List-Owner; bh=9cvqb2E/MxnS+PbzEyhK0+so+7vqKBiRsJISnaGHMgw=; b=XnroTthWMi5c1o
+	ahHcR/ESorp2uH78NfgqiEQ1g2YPRbyotnpDNMLOHwmUMMZlZ7vRPRFcZUvwyr5A0v2nD3yHJW876
+	/D0K4JtBQZXnASR6X5u3c1JtFOJ5Rknmz3Oj1/Z8XNYwyONUsNBOGs+lCeCxO1QDSnxUVxvKcsfSw
+	OHlV+xumid/wcQvmqBDoYEuBhBlx8QaDDHI0ky71Amd+ganr+3tkZ7eS6aYboYGcoTQB0sk5r9OwL
+	/JmAf6GHYJ8WGJH4YQvqi4HIZzVsTptQttTfn4fWEJjOTro4TI+dCky+HzWZYvweXg+qq1cozPDTb
+	s8Tghk0ezMb8rBSIAqDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piNNo-0094dF-29;
-	Fri, 31 Mar 2023 22:38:08 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1picIX-00Ah7U-1C;
+	Sat, 01 Apr 2023 14:33:41 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piNNl-0094cc-2e;
-	Fri, 31 Mar 2023 22:38:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1680302285; x=1711838285;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=bAdgdM9qxWwNUygkEZ9jWDGPYJInba7mW77utGzoikU=;
-  b=fxIw8Eo5rApnj1YW60P+9cOaxDURZY2ZMGU3nBoCIrxTRad1enn+3nX0
-   Lw9FBio6T8Qs7FrMwbEn42pm2ccljy73EKnZ9WgDtayParF1hB29cfLoQ
-   Oh7R3tR6ZSs7plJih/JU993JdnD2TNb/Dy6Y6DmaY4/5i2Nh41adWzzdj
-   1VYELekwuwgz3teX4kL7O+b45OP70hI1rWJvvOnUH/SyG7tPBnBNWdGmG
-   uBrJNxTqbLRGRm4RwJy6tOSI9zjM4j7rhADxQae7Gb7P9oE7+omURKW9t
-   ofzCfi50ARqws3mAwKuhuUx2eIOVhOA6i5I9EWb0WKRA9asf8EI/T+S1H
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10666"; a="321964642"
-X-IronPort-AV: E=Sophos;i="5.98,307,1673942400"; 
-   d="scan'208";a="321964642"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2023 15:38:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10666"; a="1015003336"
-X-IronPort-AV: E=Sophos;i="5.98,307,1673942400"; 
-   d="scan'208";a="1015003336"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 31 Mar 2023 15:38:00 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1piNNf-000MEf-2L;
-	Fri, 31 Mar 2023 22:37:59 +0000
-Date: Sat, 1 Apr 2023 06:37:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Peter Geis <pgwipeout@gmail.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Boris Brezillon <bbrezillon@kernel.org>, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCHv1 2/2] soc: rockchip: power-domain: add rk3588 mem module
- support
-Message-ID: <202304010627.ugL7o7Ct-lkp@intel.com>
-References: <20230331163058.5688-3-sebastian.reichel@collabora.com>
+	id 1picIV-00Ah6K-1z;
+	Sat, 01 Apr 2023 14:33:40 +0000
+Received: by mail-pl1-x632.google.com with SMTP id u10so24062012plz.7;
+        Sat, 01 Apr 2023 07:33:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680359616;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=XVMCxKkdAj5G/sHqBJwRjfivjb3c00JzonL5QvYBrDc=;
+        b=oorS77R7MIzVP0hceo91ptJHWN9iXoA1WQeFlSuZGUdTpqzzj+6KEWHDb9EvFJioJB
+         s7Yk/litLZVKfdHl2yWdlE2pKQ3qC3Aw3v7reTboKin+yD1gkIBCODUAYsLsZ6kMdDM+
+         d7E/3CR/y4+dI3crXmJE/IC5fqv8XTyyK51Qn2x28S/dfqrqty9m6QyLUPLeOjvQSabB
+         o71Lrwk67YDTb17v79gPk94omHSRIKPnRsXaQBmPEZxvNRa5W0R0NBTCs+SEx1tqU4Q5
+         dSgxXViMUO5Tj6yXlV2tnPu1nCSNXT7TQOQYK0Y2WWhZkna0tkn7H+MzFuTHhWu0fti1
+         q0tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680359616;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XVMCxKkdAj5G/sHqBJwRjfivjb3c00JzonL5QvYBrDc=;
+        b=0tqbZWi088bikO1GRICgAX0avrq0HnEpGwWhh/vVXR8HwUWzp/7Gt6C1kzw0sV2VZ5
+         JABoXJS7Sd3OjAHwHEj0GJ51rPol1mcrXNZJ5w3Jxb7jdyyrPbgTNzrp6QI+2Iep92SF
+         cevjVdfAzqtlfpXVah8wLgKVbLL90aoQtiIVsVoTrGYJoREWtST2Z1pY2djp6IuPeGeQ
+         AjH2JauKjV6lFZk/Wm5jXI8uwLdjw9n55QUo+GjckzgaCJO1+VRXcmJwfM9Bb1DrDpg/
+         X5kswE8aPENsirBoQ9YQW5hcEHub6iWZNaNv/EDPUkOT+utedzfA4ougYY9ewsbo3OrJ
+         glHw==
+X-Gm-Message-State: AAQBX9en5dAKA1rGMMWBMCKE5OvI8FuZx9QproG6fw3hEolwSqCXQcxn
+	MVgC8hdDJ5C94TYS/HRMuMXLqu7wYLHhAnPzVKE=
+X-Google-Smtp-Source: AKy350bWY76S1g8Vj/Huvn7WWZ45nm5q5e7cFRBykceGGzehIhVjpEW9LM82jjc/w8x69HUL9jxGeorEgerr+yx+Blo=
+X-Received: by 2002:a17:902:d70b:b0:1a2:8940:6da8 with SMTP id
+ w11-20020a170902d70b00b001a289406da8mr3191541ply.13.1680359616143; Sat, 01
+ Apr 2023 07:33:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230331163058.5688-3-sebastian.reichel@collabora.com>
+References: <20230331163058.5688-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20230331163058.5688-1-sebastian.reichel@collabora.com>
+From: Vincent Legoll <vincent.legoll@gmail.com>
+Date: Sat, 1 Apr 2023 16:30:53 +0200
+Message-ID: <CAEwRq=q=W57W33nYe_uUDQb0cf7QkFoa0rO+EWdsuUGTN7k_Vg@mail.gmail.com>
+Subject: Re: [PATCHv1 0/2] Improve RK3588 clocks and power domains support
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+	Peter Geis <pgwipeout@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230331_153805_891086_91023A8C 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20230401_073339_674790_7AFAB17F 
+X-CRM114-Status: UNSURE (   6.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,108 +92,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+Hello,
 
-I love your patch! Yet something to improve:
+I'm running a QuartzPro64 with this patch set applied, everything(*)
+works properly.
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on linus/master v6.3-rc4 next-20230331]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+(*) eMMC, SD, LED, ethernet, serial, watchdog.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/clk-rockchip-rk3588-make-gate-linked-clocks-ignore-unused/20230401-003605
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20230331163058.5688-3-sebastian.reichel%40collabora.com
-patch subject: [PATCHv1 2/2] soc: rockchip: power-domain: add rk3588 mem module support
-config: riscv-randconfig-r042-20230329 (https://download.01.org/0day-ci/archive/20230401/202304010627.ugL7o7Ct-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install riscv cross compiling tool for clang build
-        # apt-get install binutils-riscv64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/8a9b7bc14bff10030ef40e0350429490ff984f26
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Sebastian-Reichel/clk-rockchip-rk3588-make-gate-linked-clocks-ignore-unused/20230401-003605
-        git checkout 8a9b7bc14bff10030ef40e0350429490ff984f26
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/soc/rockchip/
+Are there any tests I can do to help with this ?
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202304010627.ugL7o7Ct-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/soc/rockchip/pm_domains.c:462:2: error: call to undeclared function 'dsb'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-           dsb(sy);
-           ^
->> drivers/soc/rockchip/pm_domains.c:462:6: error: use of undeclared identifier 'sy'
-           dsb(sy);
-               ^
-   drivers/soc/rockchip/pm_domains.c:475:6: error: use of undeclared identifier 'sy'
-           dsb(sy);
-               ^
-   3 errors generated.
-
-
-vim +/dsb +462 drivers/soc/rockchip/pm_domains.c
-
-   441	
-   442	static int rockchip_pmu_domain_mem_reset(struct rockchip_pm_domain *pd)
-   443	{
-   444		struct rockchip_pmu *pmu = pd->pmu;
-   445		struct generic_pm_domain *genpd = &pd->genpd;
-   446		bool is_on;
-   447		int ret = 0;
-   448	
-   449		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_chain_on, pd, is_on,
-   450						is_on == true, 0, 10000);
-   451		if (ret) {
-   452			dev_err(pmu->dev,
-   453				"failed to get chain status '%s', target_on=1, val=%d\n",
-   454				genpd->name, is_on);
-   455			goto error;
-   456		}
-   457	
-   458		udelay(20);
-   459	
-   460		regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
-   461			     (pd->info->pwr_mask | pd->info->pwr_w_mask));
- > 462		dsb(sy);
-   463	
-   464		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
-   465						is_on == false, 0, 10000);
-   466		if (ret) {
-   467			dev_err(pmu->dev,
-   468				"failed to get mem status '%s', target_on=0, val=%d\n",
-   469				genpd->name, is_on);
-   470			goto error;
-   471		}
-   472	
-   473		regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
-   474			     pd->info->pwr_w_mask);
-   475		dsb(sy);
-   476	
-   477		ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
-   478						is_on == true, 0, 10000);
-   479		if (ret) {
-   480			dev_err(pmu->dev,
-   481				"failed to get mem status '%s', target_on=1, val=%d\n",
-   482				genpd->name, is_on);
-   483		}
-   484	
-   485	error:
-   486		return ret;
-   487	}
-   488	
+Regards
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Vincent Legoll
 
 _______________________________________________
 Linux-rockchip mailing list
