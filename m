@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2706FC7619A
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Apr 2023 09:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1C70C76196
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Apr 2023 09:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lSKsWsIEvgwTWHW7xajXyEupeTK2z9TDeRNcncQPkc8=; b=z4gJsOL/20qEEJ
-	NbG2qzTyZcpAzZL9EGZFMDdXBUBXYXPadLLJ/eMmWHmIqFp4JdC8LvymI2yUhOypT59cP+fiz5Qz8
-	4fZsqliT2ocPnNT1OxSa0h1DdGXtI7cg8/zl6pM0jGm6ofYcm3UP6sh9PSUBf8SinjDeYK2K/wgYY
-	0vahIARjICZ+DoSYIxH7f/RWQnhM5/EMPWr8bO4lNIHqI9j5B3VjDI0KqE23cXqBOhD3T783aV7a2
-	vuaWEiVWclYByjXc/PFSB7Ebzl2vo8s88F0x0mqkvc1/OwTeAxgo2i8/oaMhIK1b+Ag2dO7voYDJc
-	y8OJcPOOifYeL1F4lJVA==;
+	List-Owner; bh=l4QnVycJ6E+D1fqY46fs29n8/eV6Jy4pkqaKRI6o7ng=; b=th+rIsGg1XSPdQ
+	M39HVI7oWIqA6yjOKqBamSfEQU/TRFYaQgXqC87gB+35H6CRkS7y6pO0T8mRhS6GISE83upDeGQsP
+	mmk63v3Z1sHkjUVtqLXrBxwbGBSnj5oO9/27UweMuXYtdsUgepCEc82W2bOZc3u6ILF90hyMVR2Db
+	cBajN7wmf7n39kI5BUJLz8YDSeYhX1/N89oPJxuRGzzsEnUWKv/6lJrk7RezlrgavzKlb4LM8XXOI
+	jFT7mMpbMNX1nzNJauh9aR4MHz9pgNoYBVtePzmdSKMBjcxP6erNBinHlippOTCzx4j41InASYN2P
+	e/JKr3CSIQtR9Dtto2jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1piuMj-00CBvw-0z;
-	Sun, 02 Apr 2023 09:51:13 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1piuMf-00CBtt-2g;
+	Sun, 02 Apr 2023 09:51:09 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1piuMd-00CBry-1a;
-	Sun, 02 Apr 2023 09:51:08 +0000
+	id 1piuMb-00CBrC-1t;
+	Sun, 02 Apr 2023 09:51:06 +0000
 Received: from localhost (unknown [188.27.34.213])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AA5BE660313D;
-	Sun,  2 Apr 2023 10:51:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CF83D660312D;
+	Sun,  2 Apr 2023 10:51:02 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680429065;
-	bh=otwKTZ+LUzkWr51HoDAAyTXvgoa041tRNRUmqfxmfo4=;
+	s=mail; t=1680429063;
+	bh=SvocWMiVjKrI7HollcLDxvyJtaFIB6bgp0o82PWqs70=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DpvJMONWIUvQWf/Pz9uUmvEgABMS/2S1rppOj3+jUUu39V/rxYeVArTa5QS46wSpd
-	 I0m6Lz60eeCxZ3/lP3LNl5lRLSEwa18qlhLe0NW/JiL+fIfREKsF6x/xrWcI7AsWHt
-	 ROV6ZYdp9OVgx8AN2hhdEneFJHqQ8X7tqHLNPkpNRZoMZUqBXevDS5Sw2e1il/LI3X
-	 rZyyHWa7zIzAVAXtYVTOMCpT0GvdutwRXbEw2wveUj7voH8ZTuE8SxCMHS/RMucY28
-	 wToN5ELgGariQp6SHSaT3874opD0gZUJ+WurAoZgYGLgR4iVYIO9nrpPt/46JrWB9s
-	 bj/fVoSisjGLA==
+	b=QIo9uK7+AH7ROGJvnguRB1/dtbxQviEQzGpzG1Y6HUMwCYqSyeiMJr8qk5c3+sT64
+	 M/8o4CFuIfXFDXhARCPHDoGq9beaSCPe55liYqH7R5NuZ5iebo+DJvvvawDU4qqHK4
+	 7/wiPV/7IIeX3f0vX8dggrqWSZarwAejtu03J2ouqKjPnoMMr/rYcAhgPiEXzuD4Hm
+	 Yy26n7XIWbt/jLt7GsGyPiBJpoHqjgn58zyXUIcBTI2GKU/8qmUxwvc00iT7QY7g5E
+	 2W11StE3PCPPTHsMeWc3IVukwpgaZosXovx0aHLeoPoZv0CNtYN5neJ0epyoJut/RJ
+	 kAuLb0Sbcrqfg==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -58,16 +58,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v4 2/5] arm64: dts: rockchip: rk3588s: Assign PLL_PPLL clock rate to 1.1 GHz
-Date: Sun,  2 Apr 2023 12:50:51 +0300
-Message-Id: <20230402095054.384739-3-cristian.ciocaltea@collabora.com>
+Subject: [PATCH v4 1/5] arm64: dts: rockchip: rk3588s: Fix SCMI assigned clocks
+Date: Sun,  2 Apr 2023 12:50:50 +0300
+Message-Id: <20230402095054.384739-2-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230402095054.384739-1-cristian.ciocaltea@collabora.com>
 References: <20230402095054.384739-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230402_025107_657306_7932D355 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230402_025105_772908_8DA94762 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,29 +84,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clock rate for PLL_PPLL has been wrongly initialized to 100 MHz
-instead of 1.1 GHz. Fix it.
+Since commit df4fdd0db475 ("dt-bindings: firmware: arm,scmi: Restrict
+protocol child node properties") the following dtbs_check warning is
+shown:
 
-Fixes: c9211fa2602b ("arm64: dts: rockchip: Add base DT for rk3588 SoC")
-Reported-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+  rk3588-rock-5b.dtb: scmi: protocol@14: Unevaluated properties are not
+  allowed ('assigned-clock-rates', 'assigned-clocks' were unexpected)
+
+Because adding the missing properties to firmware/arm,scmi.yaml binding
+document was not an acceptable solution, move SCMI_CLK_CPUB01 and
+SCMI_CLK_CPUB23 assigned clocks to the related CPU nodes and also add
+the missing SCMI_CLK_CPUL.
+
+Additionally, adjust frequency to 816 MHz for all the above mentioned
+assigned clocks, in order to match the firmware defaults.
+
+Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 028dc62f63ce..e3546cfacc88 100644
+index 7840767dfcd8..028dc62f63ce 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -425,7 +425,7 @@ cru: clock-controller@fd7c0000 {
- 			<&cru ACLK_BUS_ROOT>, <&cru CLK_150M_SRC>,
- 			<&cru CLK_GPU>;
- 		assigned-clock-rates =
--			<100000000>, <786432000>,
-+			<1100000000>, <786432000>,
- 			<850000000>, <1188000000>,
- 			<702000000>,
- 			<400000000>, <500000000>,
+@@ -60,6 +60,8 @@ cpu_l0: cpu@0 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <530>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
++			assigned-clocks = <&scmi_clk SCMI_CLK_CPUL>;
++			assigned-clock-rates = <816000000>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <32768>;
+ 			i-cache-line-size = <64>;
+@@ -136,6 +138,8 @@ cpu_b0: cpu@400 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB01>;
++			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB01>;
++			assigned-clock-rates = <816000000>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -174,6 +178,8 @@ cpu_b2: cpu@600 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB23>;
++			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB23>;
++			assigned-clock-rates = <816000000>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -313,10 +319,6 @@ scmi: scmi {
+ 
+ 			scmi_clk: protocol@14 {
+ 				reg = <0x14>;
+-				assigned-clocks = <&scmi_clk SCMI_CLK_CPUB01>,
+-						  <&scmi_clk SCMI_CLK_CPUB23>;
+-				assigned-clock-rates = <1200000000>,
+-						       <1200000000>;
+ 				#clock-cells = <1>;
+ 			};
+ 
 -- 
 2.40.0
 
