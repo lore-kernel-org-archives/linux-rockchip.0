@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4B7C761A6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 10:51:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EAA4C76196
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 13:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5xVKLMpv/r6bBQg4HDtBuHNsE+iaTiNMdzqC8COhq/s=; b=nN5XSN2wGdXhXm
-	gMNdZPPlGbgDLR7Lgf83pWS2VBp5YCXiSALebkh3TEt4ZEvrBQKspoj4l2U2sFJkug5rHMhOHNjCN
-	ChJt7jFPNGjugFih8OGWkWczcNKmUToAI7WslLJccuFGBu+VHEYBGlmK1uBCE8kGc+oOvUZYy9wQ4
-	kq+XhV2nnJJRXSWQS1aL9KcsWyvEaqfhL8A/Kajojz8GO/yNIHBlEzdFVH9Debgym66I5QmFf1Fu4
-	BAuX+F5Pt17/WnLAOzK20ZlgrBKiwqbZ0s18FDQsE9YAWG2/LRo2fgtT4ivcmzX2/Iskn65EDRKSh
-	OD17fjj5Ntuu9/4fhVZg==;
+	List-Owner; bh=Y39OGNNSiVA09wJ4PzoMT7y0JbaPaMdh44f4AiHDIV4=; b=OW2cUKXt535fZf
+	0JR9iWogDMXRG+Vn+GpcLv17MxVSP+XuHrSCPh5fvraOL09rBZZDrbKvyIQ8VB14vcHdL7Ty8Fjg3
+	nTvGwxjbjZ6E/uQxSEpqJtUl0MF18v0neCMNFCplYPtgt7NNxtYawrIRrlHzcSZm+CBM2S4H6gXay
+	uKJvdHiroaY/hFSkfEW5H4hZlokiJi/kBZEyppcJCqNuxWqGEp7iNUnwYcpDikj2VfOwTxjQqqPeL
+	QFX+dYDE6OC8S/fzQ4EO48b5ZR6PfOwOCdQvpbbt/UAj3luZS3ux6CG7NdJXNxeCPWBRLj5KvPspK
+	lD7sKahXVQXqJeH+Lsrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHmO-00F0N7-0d;
-	Mon, 03 Apr 2023 10:51:16 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pjJxM-00FPPs-0c;
+	Mon, 03 Apr 2023 13:10:44 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHmE-00F0HT-2Z;
-	Mon, 03 Apr 2023 10:51:11 +0000
-Received: from localhost (unknown [188.27.34.213])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C2CA6601F5E;
-	Mon,  3 Apr 2023 11:50:59 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680519059;
-	bh=3p6JM3yd+WNtA17Lh4gwyYervmzfd8F94ozGs1R5ndg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AM6QdN55bibFuOhSGSqDXnGJ/x/2UP38lGYkrJph8AcpokSGG68FR7mJ+qFxbRoPv
-	 /yUpWdzsscPfJ5kGt3enNjNiyellhBMCZqWl3oykS0mhE4Engzmhp6Rqg4ih5Micro
-	 5OD73v/HMboooby22jVWDbG8oNyMnF0FcIxOaqYcXPfkNhAjc8SnJPzFdPOJwQHcdU
-	 mGSJxSoSXHkuMQ4zwvONnA6iqGSfX/+Hjgw/g/x4aGNyW03TFwFi76KE5onUcwvH3t
-	 ynn82IAaAgRp+SQQuxewqr2hrzQc1IxZBY2QOCP4n9E5RveTXezF8FfIhwT6BXIltx
-	 6KioWqEmb1vCg==
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Jean Delvare <jdelvare@suse.com>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-hwmon@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Convert to DT schema
-Date: Mon,  3 Apr 2023 13:50:51 +0300
-Message-Id: <20230403105052.426135-2-cristian.ciocaltea@collabora.com>
-X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
-References: <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
+	id 1pjJxJ-00FPMW-0T;
+	Mon, 03 Apr 2023 13:10:42 +0000
+Received: by mail-ot1-f45.google.com with SMTP id f19-20020a9d5f13000000b00693ce5a2f3eso15562492oti.8;
+        Mon, 03 Apr 2023 06:10:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680527439;
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=0c6y0klJZIlR38JQvtzWomooCiiJ+Ub0Wtb8gTfWb6E=;
+        b=QE1KacelVqWlKsTzp+5ASo0hSf8XU1vmAv04SfbiHfvtPF+1MINQ1AhIZRtyYxIy7j
+         Ub4+miB7X2kcJVO2IKbxam/kwav5r0z1b2csXu808whJIQHlNAADj+tVi3BsHempaRYX
+         xagu7ggBv7FaPKiON+ZPCkyqWOIACXWvoq+6L1C2ee2KzVlwbiC0vlHjktvPJ1ds+E+M
+         9Tw8LU1wzmYaoWoA/a9emwaR/oYqYS1D8Reo8BCRPsGS2LBl51nVFFipOhEhscmfFkxf
+         peMCVgsIJBBvRT81L2Wm7nVuW0y9RX85UTXwpBeDGmpzxlDOLEr3/lnnUTKaCYdsSBA7
+         b+dQ==
+X-Gm-Message-State: AO0yUKXFnio7wMmXro4GKvh4ndQpaHhVcJn9QXLdaWYjanHm6kUtrT5e
+	MAIzJ8BBXLob3sG9c7GjBA==
+X-Google-Smtp-Source: AK7set9uze4lqSyJ3xkKEcHa56jWK0pv1GNxAJixs2X/EkgOgvxyRgyidMAPmlj6kHkuggnQE4xfMw==
+X-Received: by 2002:a05:6830:1bcf:b0:69b:7f5b:c657 with SMTP id v15-20020a0568301bcf00b0069b7f5bc657mr17464458ota.14.1680527434129;
+        Mon, 03 Apr 2023 06:10:34 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id x5-20020a056830114500b006a2fd720f82sm3067379otq.7.2023.04.03.06.10.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Apr 2023 06:10:33 -0700 (PDT)
+Received: (nullmailer pid 522012 invoked by uid 1000);
+	Mon, 03 Apr 2023 13:10:30 -0000
 MIME-Version: 1.0
+From: Rob Herring <robh@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-hwmon@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jean Delvare <jdelvare@suse.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+In-Reply-To: <20230403105052.426135-2-cristian.ciocaltea@collabora.com>
+References: <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
+ <20230403105052.426135-2-cristian.ciocaltea@collabora.com>
+Message-Id: <168052514639.463695.9544022277060710805.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Convert to DT schema
+Date: Mon, 03 Apr 2023 08:10:30 -0500
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_035107_094137_909C862B 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20230403_061041_188808_72242BA5 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,205 +80,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the PWM fan bindings to DT schema format.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- .../devicetree/bindings/hwmon/pwm-fan.txt     |  68 +----------
- .../devicetree/bindings/hwmon/pwm-fan.yaml    | 109 ++++++++++++++++++
- 2 files changed, 110 insertions(+), 67 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+On Mon, 03 Apr 2023 13:50:51 +0300, Cristian Ciocaltea wrote:
+> Convert the PWM fan bindings to DT schema format.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  .../devicetree/bindings/hwmon/pwm-fan.txt     |  68 +----------
+>  .../devicetree/bindings/hwmon/pwm-fan.yaml    | 109 ++++++++++++++++++
+>  2 files changed, 110 insertions(+), 67 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+> 
 
-diff --git a/Documentation/devicetree/bindings/hwmon/pwm-fan.txt b/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
-index 4509e688623a..48886f0ce415 100644
---- a/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
-+++ b/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
-@@ -1,67 +1 @@
--Bindings for a fan connected to the PWM lines
--
--Required properties:
--- compatible	: "pwm-fan"
--- pwms		: the PWM that is used to control the PWM fan
--- cooling-levels      : PWM duty cycle values in a range from 0 to 255
--			which correspond to thermal cooling states
--
--Optional properties:
--- fan-supply		: phandle to the regulator that provides power to the fan
--- interrupts		: This contains an interrupt specifier for each fan
--			  tachometer output connected to an interrupt source.
--			  The output signal must generate a defined number of
--			  interrupts per fan revolution, which require that
--			  it must be self resetting edge interrupts. See
--			  interrupt-controller/interrupts.txt for the format.
--- pulses-per-revolution : define the number of pulses per fan revolution for
--			  each tachometer input as an integer (default is 2
--			  interrupts per revolution). The value must be
--			  greater than zero.
--
--Example:
--	fan0: pwm-fan {
--		compatible = "pwm-fan";
--		#cooling-cells = <2>;
--		pwms = <&pwm 0 10000 0>;
--		cooling-levels = <0 102 170 230>;
--	};
--
--	thermal-zones {
--		cpu_thermal: cpu-thermal {
--			     thermal-sensors = <&tmu 0>;
--			     polling-delay-passive = <0>;
--			     polling-delay = <0>;
--			     trips {
--					cpu_alert1: cpu-alert1 {
--						    temperature = <100000>; /* millicelsius */
--						    hysteresis = <2000>; /* millicelsius */
--						    type = "passive";
--					};
--			     };
--			     cooling-maps {
--					map0 {
--						    trip = <&cpu_alert1>;
--						    cooling-device = <&fan0 0 1>;
--					};
--			     };
--		};
--
--Example 2:
--	fan0: pwm-fan {
--		compatible = "pwm-fan";
--		pwms = <&pwm 0 40000 0>;
--		fan-supply = <&reg_fan>;
--		interrupt-parent = <&gpio5>;
--		interrupts = <1 IRQ_TYPE_EDGE_FALLING>;
--		pulses-per-revolution = <2>;
--	};
--
--Example 3:
--	fan0: pwm-fan {
--		compatible = "pwm-fan";
--		pwms = <&pwm1 0 25000 0>;
--		interrupts-extended = <&gpio1 1 IRQ_TYPE_EDGE_FALLING>,
--			<&gpio2 5 IRQ_TYPE_EDGE_FALLING>;
--		pulses-per-revolution = <2>, <1>;
--	};
-+This file has moved to pwm-fan.yaml.
-diff --git a/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
-new file mode 100644
-index 000000000000..448b48ec5d73
---- /dev/null
-+++ b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
-@@ -0,0 +1,109 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/hwmon/pwm-fan.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Fan connected to PWM lines
-+
-+maintainers:
-+  - Jean Delvare <jdelvare@suse.com>
-+  - Guenter Roeck <linux@roeck-us.net>
-+
-+properties:
-+  compatible:
-+    const: pwm-fan
-+
-+  cooling-levels:
-+    description:
-+      PWM duty cycle values in a range from 0 to 255 which correspond to
-+      thermal cooling states.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  fan-supply:
-+    description: Phandle to the regulator that provides power to the fan.
-+
-+  interrupts:
-+    description:
-+      This contains an interrupt specifier for each fan tachometer output
-+      connected to an interrupt source. The output signal must generate a
-+      defined number of interrupts per fan revolution, which require that
-+      it must be self resetting edge interrupts.
-+
-+  pulses-per-revolution:
-+    description:
-+      Define the number of pulses per fan revolution for each tachometer
-+      input as an integer (default is 2 interrupts per revolution).
-+      The value must be greater than zero.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  pwms:
-+    description: The PWM that is used to control the fan.
-+    maxItems: 1
-+
-+  pwm-names: true
-+
-+  "#cooling-cells":
-+    description: The PWM fan can be referenced as a cooling-device.
-+    const: 2
-+
-+required:
-+  - compatible
-+  - pwms
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    pwm-fan {
-+      compatible = "pwm-fan";
-+      cooling-levels = <0 102 170 230>;
-+      pwms = <&pwm 0 10000 0>;
-+      #cooling-cells = <2>;
-+    };
-+
-+    thermal-zones {
-+      cpu_thermal: cpu-thermal {
-+        thermal-sensors = <&tmu 0>;
-+        polling-delay-passive = <0>;
-+        polling-delay = <0>;
-+
-+        trips {
-+          cpu_alert1: cpu-alert1 {
-+            temperature = <100000>; /* millicelsius */
-+            hysteresis = <2000>; /* millicelsius */
-+            type = "passive";
-+          };
-+        };
-+
-+        cooling-maps {
-+          map0 {
-+            trip = <&cpu_alert1>;
-+            cooling-device = <&fan0 0 1>;
-+          };
-+        };
-+      };
-+    };
-+
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    pwm-fan {
-+      compatible = "pwm-fan";
-+      pwms = <&pwm 0 40000 0>;
-+      fan-supply = <&reg_fan>;
-+      interrupt-parent = <&gpio5>;
-+      interrupts = <1 IRQ_TYPE_EDGE_FALLING>;
-+      pulses-per-revolution = <2>;
-+    };
-+
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    pwm-fan {
-+      compatible = "pwm-fan";
-+      pwms = <&pwm1 0 25000 0>;
-+      interrupts-extended = <&gpio1 1 IRQ_TYPE_EDGE_FALLING>,
-+                            <&gpio2 5 IRQ_TYPE_EDGE_FALLING>;
-+      pulses-per-revolution = <2>, <1>;
-+    };
--- 
-2.40.0
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
+
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
+
+Full log is available here: https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230403105052.426135-2-cristian.ciocaltea@collabora.com
+
+
+pwm-fan: 'cooling-max-state', 'cooling-min-state' do not match any of the regexes: 'pinctrl-[0-9]+'
+	arch/arm64/boot/dts/amlogic/meson-sm1-odroid-hc4.dtb
+	arch/arm64/boot/dts/freescale/fsl-ls1028a-kontron-sl28-var3-ads2.dtb
 
 
 _______________________________________________
