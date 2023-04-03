@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A64C77B6C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 20:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D8F8C76196
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 20:23:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J8kXam2V4MWSewyi9o8iZygJxVE8YgBX/CrwlsbyEbY=; b=zSzAk+tcSb7AiY
-	fXZ+R4NAy6JJYw6u1akHyMPpqGYp+iVB7iQV8mesNLCT2VpPu6Fn5dQBaUsH5/mcThhWXzbguqiUW
-	51gd7bxEquR9IyJ4W8eiiH7rAzRm6062GXjcuqKZI5QsUrXynQINMBavGEWFkN7xYwECJY+jCIoqT
-	bzVJQ+nALrW/DDpPEWfcRU4vDRB6B5pv2ULRiZIlZC6SJ/EFJp59v4Fb82PC+rROyLmLuy0wCNiGG
-	tTdg/oCJVhXGDG/0M6rNp9NETZzMuwivsJR+j5GPH+xYQ0jMnGMoxiE2v8Pn5LlokkyAApcOwlhZy
-	3ZkaqFVeTqbYdmSl8N4w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6pMO5TQ8pb0Ysl7BrfWs7zzrMQyCKE2E+seoKwCdovM=; b=kLhmRQXsUCXb2n
+	glc8QnC06KFu69DKawvPF8ih+gycjaIeNwSJPA4uwbbNvxE7kT6kjsf4Y/NKI/ESCURUITBorKvF3
+	ZGHSy26NcsU+K4YnPzNtHnhFpxbdacVb3nShfHSnXDW/uSMPmyAliRnml+fqfAE+Q3smmyoZXNjHL
+	BYDZp517SbZb2T+SFpocqEeaV7NgqtVr9iE8EBqqt4cA+PTSRx1t1mIx1lOAmjC1gZPM3gzxGDbUa
+	9KyMxWcrVvgUjVEW7DhCH76NbSxWl+BzuUJo2eQ/klYXOEV7Gl4CM6P3820gaeLJWDcJOtNhvEqJb
+	Svhfn6tFAnK1B1IZGj+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQi9-00Gayn-0H;
-	Mon, 03 Apr 2023 20:23:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pjQhz-00Gap6-0p;
+	Mon, 03 Apr 2023 20:23:19 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQi1-00GalO-2w;
-	Mon, 03 Apr 2023 20:23:23 +0000
+	id 1pjQht-00GalP-2d;
+	Mon, 03 Apr 2023 20:23:15 +0000
 Received: from jupiter.universe (dyndsl-091-248-212-192.ewe-ip-backbone.de [91.248.212.192])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A86EB660312D;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB7496603149;
 	Mon,  3 Apr 2023 21:23:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1680553391;
-	bh=sQ6dRJmgA+DiW2bmxGnApVDBaMlLaTvrDqylSpALvFc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=EoITfGwZIX9Zfs4sZSAl39HzDrn0fzFHU1fHHb9y5O114oaC5djzz+xfH0OUjtuBb
-	 KOfM5zPFjgtv0nSq7KmJn7wXHcEGev33Whs72/o8cL+EauuQ/EAlOYA+HN0f8U37oJ
-	 vgVR0jPlMFfmB3M5lgJRcwZ5kzUgNhlrazeBDTEdX2CrpycNRoIzO3LzlC0ZahvHxO
-	 llifpkvFfN5PQbLHgpNC19Nco+HTyHFqKcHkUX9hMl4gZC5+WmmhkKWKYdM+xmTW1g
-	 wnUgdmEnNzj+Y955LL85RhYAnCyuQYVXS+A1JQxs05oDBu1mvybT+GJ9H9h6gCozRL
-	 TRV8zIyaCeePg==
+	bh=IanGuFMtYNipnpczUMLMr5LoVeF2LYQjoKAV5cNfhuo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WUpvjl1ss2oluxK5zvxqtZpfvXkEAtId7rxHtQ5Vf/O51UwIpp5e0+LzHiHPKlBHU
+	 tpHYfih9d9ynIUxarUGlH7OSEj/1iRV7B2fmkURzOFR9yfGT3jdQrtrjWwpnK+RuIQ
+	 OSqreK1g7xMIWucaXq9iiI3U5xGr4cgUkRHpjPa+uINLfP36TsKyufjoK7/t3M0iVz
+	 LrEfRH2w6KlUx7VUKT3igeqv3pv9nNAuaePbyL4RGbUWBN2ne650oiptfehXWeN0hd
+	 /kNFBkpWK/GHsfzcGiVxee5xTQIC6s0TXer8eAoZI2ipJp6uq2B2XV8hXzYgFQNALZ
+	 1NJU78lhx6Yyw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 08AF74807E1; Mon,  3 Apr 2023 22:23:09 +0200 (CEST)
+	id 0D3FE4807E3; Mon,  3 Apr 2023 22:23:09 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -58,14 +58,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCHv2 0/7] phy-rockchip-inno-usb2: add RK3588 support
-Date: Mon,  3 Apr 2023 22:23:00 +0200
-Message-Id: <20230403202307.120562-1-sebastian.reichel@collabora.com>
+Subject: [PATCHv2 2/7] dt-bindings: phy: rockchip,inno-usb2phy: add rk3588
+Date: Mon,  3 Apr 2023 22:23:02 +0200
+Message-Id: <20230403202307.120562-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230403202307.120562-1-sebastian.reichel@collabora.com>
+References: <20230403202307.120562-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_132322_113806_F1A81E2A 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20230403_132313_982996_180DC1C9 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,37 +85,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add compatible for the USB2 phy in the Rockchip RK3588 SoC.
 
-This adds RK3588 to the Rockchip Inno USB2 PHY driver. I have tested this
-with USB2_0 and USB2_1.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../bindings/phy/rockchip,inno-usb2phy.yaml   | 21 ++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
-Changes since PATCHv1:
- * https://lore.kernel.org/all/20230331163812.6124-1-sebastian.reichel@collabora.com/
- * Added patch simplifying phyclk handling
- * Added patch simplifying matchdata handling
- * Added patches for reset handling and PHY tuning; after doing more
-   testing I noticed my previous patchset does not support hotplug and
-   USB devices need to be plugged in at boot time (more specifically
-   in PATCHv1 it had to be plugged before the PHY is suspended). This
-   fixes the issue.
-
--- Sebastian
-
-Sebastian Reichel (7):
-  dt-bindings: soc: rockchip: add rk3588 usb2phy syscon
-  dt-bindings: phy: rockchip,inno-usb2phy: add rk3588
-  phy: phy-rockchip-inno-usb2: add rk3588 support
-  phy: phy-rockchip-inno-usb2: add reset support
-  phy: phy-rockchip-inno-usb2: add rk3588 phy tuning support
-  phy: phy-rockchip-inno-usb2: simplify phy clock handling
-  phy: phy-rockchip-inno-usb2: simplify getting match data
-
- .../bindings/phy/rockchip,inno-usb2phy.yaml   |  21 +-
- .../devicetree/bindings/soc/rockchip/grf.yaml |   2 +
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 352 ++++++++++++++++--
- 3 files changed, 339 insertions(+), 36 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+index 0d6b8c28be07..5254413137c6 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+@@ -20,6 +20,7 @@ properties:
+       - rockchip,rk3366-usb2phy
+       - rockchip,rk3399-usb2phy
+       - rockchip,rk3568-usb2phy
++      - rockchip,rk3588-usb2phy
+       - rockchip,rv1108-usb2phy
+ 
+   reg:
+@@ -56,6 +57,14 @@ properties:
+     description: Muxed interrupt for both ports
+     maxItems: 1
+ 
++  resets:
++    maxItems: 2
++
++  reset-names:
++    items:
++      - const: phy
++      - const: apb
++
+   rockchip,usbgrf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -120,15 +129,21 @@ required:
+   - reg
+   - clock-output-names
+   - "#clock-cells"
+-  - host-port
+-  - otg-port
++
++anyOf:
++  - required:
++      - otg-port
++  - required:
++      - host-port
+ 
+ allOf:
+   - if:
+       properties:
+         compatible:
+           contains:
+-            const: rockchip,rk3568-usb2phy
++            enum:
++              - rockchip,rk3568-usb2phy
++              - rockchip,rk3588-usb2phy
+ 
+     then:
+       properties:
 -- 
 2.39.2
 
