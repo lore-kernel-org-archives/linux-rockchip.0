@@ -4,84 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80B95C76188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 21:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4370EC761AF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 21:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t5QZX+B0YH1Xh73Wtey3BW9O/QgebNJu3QzKiuOrf1g=; b=nU8PLUGZsAY5gs
-	u5k8gIXdnbSmI/sNu0BGpLjkYyeq9t/gmhJ0kEFK3qffIVf9BtQ3tZaif4aX7R+smUMFNRrJVFdhi
-	ZL5PJDdfF4ZVNDw5YDfrVn069oQQJjf7qGlgTl2VIJRBQcBetTk0EfeF5sXOWQkznsUXjtJ875L6v
-	cWXPtsPbtbifREveCjtZ1ActqEKr9ERfEF3Fr7FyuXZ4FxvGKqmWJKAwWNmCbyzfAtQmxg9yZyUYb
-	KdciP6Tr8dtGtH/MepwpJAbd26tA3qiBbaDfRnQzxZnGiqw+PQhkiit2hVHp7gYK4i/fSSDua/dXu
-	80M5NNocIw06hJf7xftQ==;
+	List-Owner; bh=ILd1GaIPUp2BgtlSvta+jxCjENwdScUmvbJYC4wckIo=; b=Ei2xsVpOgmnRyj
+	s+xFy0+OctbqCtEnRmt0jTp3ymQinSLso+8yvi6w+Ts6RhSgfQbVB20TaDJB9M1JBb7zUVy9ZRHfY
+	JMkluIeNPYgXwYj2c7JHsd+YKyQsptunNpIq+J65XSI4a4LzAZLo2yqpKoyPFvlB+ye+5lfFoLIGd
+	CLGx8IJmlTIPjgWudG8wYrnjnBwoo4bjLfzswBPWRE8VWfmGXBqo2FiOoTWANSKIS0FSgu3zkM9C4
+	WxG3LsXyydoMnbNZLUI4xcmgUzC5jDiumpL4fmTIqdsUJLuQ95ZGUNHc+x7b//QW7R2bC3u97C4wF
+	v68cvCkQ1BhZtdc0OO1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjRzg-00Gxil-1f;
-	Mon, 03 Apr 2023 21:45:40 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1pjS9X-00Gzuk-0s;
+	Mon, 03 Apr 2023 21:55:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQxT-00GgE1-2t
-	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Apr 2023 20:39:21 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id y14so30690620wrq.4
-        for <linux-rockchip@lists.infradead.org>; Mon, 03 Apr 2023 13:39:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680554354;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8W33znYIAl2DMyLncbJoqCopj/H6Dvst/McCNbNede4=;
-        b=aqN6rHZLCar/09kDSX23dhRO9TE6+zp5ZBhXizjjLoiA2bJ8NgApcvuPz1q2WwsZrD
-         2kFRTjggRG1o9yQaYJuN8bOA10f3SiClaNt99XjI5bWqN7GyPlCf+JjsN7om6K3+lRHC
-         v58+eBgq6Dy/iUV4YZOdWEWbPIpGUlaii/2QSbIuafUr9uJH1s2VaDHLv2xRug/yB69u
-         KQ01ulzTWkt3yGK+I7CRag0Zo/a5tz/L7JFav860fGdUj9GK6wEJ4oxS9j0DANQmBL/E
-         8EDSid2M8ryO4aPHomrjVUF97O8amMTeBRrBai12ixdDITAsCMJ/honqoFEZjsXKi0jw
-         Owug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680554354;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8W33znYIAl2DMyLncbJoqCopj/H6Dvst/McCNbNede4=;
-        b=4fyKaCX61IrAq3bpl9iltonDzA4QGr7vquuqplqxBMKm9mzuaCYBqyIqkxkMsRK7RH
-         P6kF5jSvzAaYITUAJuqn42oxQOMM6VkIivj5a+mq7PLx30qR9P6yZuRUGbN0lZ+3ACsB
-         URitY+ret+aXIsZGUoOqIOsdvs6AMp58H4xg1s8s33A0uCt7Yw2hcrw4VRx0hd/tuKMa
-         vGiAO7aYbc7sVmusWIl/1j/k1Mn2TaXi5t+nsHbayphA7Kz8A5jqutgU8vhc6tzxYbFF
-         jO3Y03TKvjHK9V/GOp+oIDaslzwdLT0TSqiNEXT7+kLpHVHk3cV+iDuXvCGq5Ed2Q+RT
-         5F2g==
-X-Gm-Message-State: AAQBX9e1XGVh9mgrCSMQ8dr3waFD8M9IjLuTrrnMYrJIzYlq+B/UQ7ze
-	m3jHGfQ23T7YqCtq97+7loGTJA==
-X-Google-Smtp-Source: AKy350YyFexgg+NYJQCh9I/uLB6xaL4WoSYOUrK8XcxLQm3830fqtBhPHXAE9Y7PxeJU7wWXoNVzhQ==
-X-Received: by 2002:adf:fa4c:0:b0:2da:75c5:e127 with SMTP id y12-20020adffa4c000000b002da75c5e127mr25515578wrr.23.1680554353766;
-        Mon, 03 Apr 2023 13:39:13 -0700 (PDT)
-Received: from linaro.org ([94.52.112.99])
-        by smtp.gmail.com with ESMTPSA id z6-20020a5d4d06000000b002e6d4ac31a3sm8183664wrt.72.2023.04.03.13.39.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Apr 2023 13:39:13 -0700 (PDT)
-Date: Mon, 3 Apr 2023 23:39:11 +0300
-From: Abel Vesa <abel.vesa@linaro.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, abelvesa@kernel.org,
-	peng.fan@nxp.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
-	heiko@sntech.de, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH v2 2/4] clk: imx: Remove values for mmask and nmask in
- struct clk_fractional_divider
-Message-ID: <ZCs5bwy63l8E91AM@linaro.org>
-References: <cover.1680423909.git.christophe.jaillet@wanadoo.fr>
- <187a2266c3a034a593a151d6e5e6b21118043b5d.1680423909.git.christophe.jaillet@wanadoo.fr>
+	id 1pjS9T-00Gzrc-1S;
+	Mon, 03 Apr 2023 21:55:48 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pjS8z-00025Z-W2; Mon, 03 Apr 2023 23:55:18 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Chris Morgan <macroalpha82@gmail.com>
+Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rk3588-rock-5b: Add pwm-fan
+Date: Mon, 03 Apr 2023 23:55:17 +0200
+Message-ID: <4981873.LvFx2qVVIh@diego>
+In-Reply-To: <642b134c.4a0a0220.1d01a.5990@mx.google.com>
+References:  <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
+ <20230403105052.426135-3-cristian.ciocaltea@collabora.com>
+ <642b134c.4a0a0220.1d01a.5990@mx.google.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <187a2266c3a034a593a151d6e5e6b21118043b5d.1680423909.git.christophe.jaillet@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_133919_933170_286FA378 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20230403_145547_487169_BB0DB606 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,47 +67,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23-04-02 11:42:05, Christophe JAILLET wrote:
-> Now that fractional_divider clk computes mmask and nmask when needed, there
-> is no more need to provide them explicitly anymore.
+Am Montag, 3. April 2023, 19:56:26 CEST schrieb Chris Morgan:
+> On Mon, Apr 03, 2023 at 01:50:52PM +0300, Cristian Ciocaltea wrote:
+> > Add the necessary DT changes for the Rock 5B board to enable support for
+> > the PWM controlled heat sink fan.
 > 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Honest question, but should we be adding this to the board file if not
+> every device has a PWM fan (they all have the socket for the fan, but
+> not the fan)? For example I have a passively cooled case that doesn't
+> include a fan.
 
-Reviewed-by: Abel Vesa <abel.vesa@linaro.org>
+We also set up the sdmmc host without knowing if the user will plug in
+an sd-card ;-) .
 
-> ---
->  drivers/clk/imx/clk-composite-7ulp.c | 4 ----
->  1 file changed, 4 deletions(-)
-> 
-> diff --git a/drivers/clk/imx/clk-composite-7ulp.c b/drivers/clk/imx/clk-composite-7ulp.c
-> index 4eedd45dbaa8..e208ddc51133 100644
-> --- a/drivers/clk/imx/clk-composite-7ulp.c
-> +++ b/drivers/clk/imx/clk-composite-7ulp.c
-> @@ -19,10 +19,8 @@
->  #define PCG_CGC_SHIFT	30
->  #define PCG_FRAC_SHIFT	3
->  #define PCG_FRAC_WIDTH	1
-> -#define PCG_FRAC_MASK	BIT(3)
->  #define PCG_PCD_SHIFT	0
->  #define PCG_PCD_WIDTH	3
-> -#define PCG_PCD_MASK	0x7
->  
->  #define SW_RST		BIT(28)
->  
-> @@ -102,10 +100,8 @@ static struct clk_hw *imx_ulp_clk_hw_composite(const char *name,
->  		fd->reg = reg;
->  		fd->mshift = PCG_FRAC_SHIFT;
->  		fd->mwidth = PCG_FRAC_WIDTH;
-> -		fd->mmask  = PCG_FRAC_MASK;
->  		fd->nshift = PCG_PCD_SHIFT;
->  		fd->nwidth = PCG_PCD_WIDTH;
-> -		fd->nmask = PCG_PCD_MASK;
->  		fd->flags = CLK_FRAC_DIVIDER_ZERO_BASED;
->  		if (has_swrst)
->  			fd->lock = &imx_ccm_lock;
-> -- 
-> 2.34.1
-> 
+So especially in the case where there is a dedicated socket for it,
+as you write, we should definitly add it for the board.
+
+By the way, am I correct in thinking that patch 1 and 2 are actually
+independent of each other? So I'd just pick patch2 for the Rockchip tree
+(as we do have a text-binding) and you can handle the yaml conversion
+in a followup or whatever?
+
+Thanks
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
