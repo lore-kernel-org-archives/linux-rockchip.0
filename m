@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F3A2C76196
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 20:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCEFC761AF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 20:23:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3UNuZh85VKDVzUgjIGDHhFlepSTf/SERvRsUBjnEO5g=; b=eofMgiU0uuqGWj
-	0lNwkqx5YWGk9qUmXR9GFEoazSjEEOESuOjUnnP3Q/VpdWuDNA+amOm+7wf1PdplA/X5cJIdE/7sS
-	clZTX3Zqv0w0sWJcZdMR1lbNteRUCVSvDTESfRtl1+FyUHSF2GhLnlcj4G509ZDlTls7Hr3ZCz8ms
-	BSwl5gc93x8SLpluLRomgSrg1mAq/xe+4N9GtxBvpj4G+M3HBpbQPgsOZKHD1t2wmTOZIrsXkff3o
-	mTOwfG+M9WnXSUdrhqnpdkdGoAYclzvM1lNV/XvbP3iFI2MtG4iznuoRHL+oFBfj8q4lMxVHtLgYx
-	ZR6hnB0fhqtmwn0TdZXw==;
+	List-Owner; bh=f2X4RYOTJBljYk2cMRBz0fVkclONIlMeWoA+xCX65L4=; b=pQsbI2RVHWqPx0
+	75/2oXObyDiYi2icYqa5adwOVEtl+5Gk2BPIpbfmwNnoYgOBfnxuT1pRIV1jnd5UL1AWhBfbHyA3Z
+	heqs5vsqZGYoGZSxaa9gZqhsHel3qEehb2mYR0oCfGPOcl+V5aFyNaAnGyNe4/6ijnVyCgPgh9RPw
+	Kxsf/aXcUcXh38DFBX3iTtK8llrUkRHVomEbPNiSc0YlcDKw9wgP1Hu6AfBSksNQRzC0TiaOZoHbZ
+	kDO0TSi2VNblHN0pVqhLzCs2lsSD/DLF+nMRAattASax2XLlXmvT5aQPAPgitPlMq4SsyVAR9eGeZ
+	o+u79ierTg5x8bP30/rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQi7-00Gaxq-2z;
-	Mon, 03 Apr 2023 20:23:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pjQi1-00Gaqv-33;
+	Mon, 03 Apr 2023 20:23:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjQi1-00Gami-2x;
-	Mon, 03 Apr 2023 20:23:23 +0000
+	id 1pjQht-00GalQ-2d;
+	Mon, 03 Apr 2023 20:23:17 +0000
 Received: from jupiter.universe (dyndsl-091-248-212-192.ewe-ip-backbone.de [91.248.212.192])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3A316603162;
-	Mon,  3 Apr 2023 21:23:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CA3FD660314A;
+	Mon,  3 Apr 2023 21:23:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680553395;
-	bh=0AvnUkLP+KMEub7LlbfJLBC/RaxG7cnldhb+34NFfeU=;
+	s=mail; t=1680553391;
+	bh=3LKZQQ+gqpR5IajTL91vextPDhkJjnEV1EMOd8BF0QI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kqT8QSd5xC5Zn0kxCvSR4k+bV5Mwq/AX6a3Esoh79VDC6EvNEl7QC07blK6+R5/AI
-	 Pj5sj5tTks1PhbhhLT3NqBjB6oNf8B5BST4g5XZl+4zzGn8RE0xzn7+ya3OBH0E+QH
-	 0ovrdHQ6Ok1XLtALq3T7Fwn+QMgJP5U1gQ8ChzTbkqvYrN03mXtEFSOdK8dIuNL+Az
-	 QHh04QCYqdPLmVp5zxq3ZcCTr0CIMONCxUxSjoQunoW0ayIa+2beS0ebtOWflpnpWw
-	 8hIkgPL3iKYUrfU/h+oh4GxYvKFv7wqFTKrFd8E05cbWPKglpXXlFpFfVQcTd+1NOF
-	 iIBaCwSIY0YGA==
+	b=AKiutNoXyslkDdG21I3ELIL3aGfIyPrKMQNeMIHnyd9HlEsDQcbIqvOENhROqR2/T
+	 /JO8n1qGntpMekI01ZYmUgjT/fcZX6Ne8h1pinSzlK+yuwVlhcBVOWFZ2WtyTRwALb
+	 XqbM8+CdNkvgPoVXOM9KlPRxpqndukdHDiCp/eREcN9qMMHvFEE09yGcgtgtAi0xsZ
+	 oySO9qx+YFBsuYkrIuq5645ACM5rJ8ojYIVbfAsrPhnKWc+0K2kWxAbGMeAKPYlt7t
+	 qQ9E2O7NAkg4BMDXpOTLd/KcbV5AQuQWkEzSNOD3Fy2szsVWZht+fiKYQItWT8HHGI
+	 Z+t4Mqc2UeMPg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 14F3F4807F2; Mon,  3 Apr 2023 22:23:09 +0200 (CEST)
+	id 0F6B34807EF; Mon,  3 Apr 2023 22:23:09 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -57,17 +57,18 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv2 6/7] phy: phy-rockchip-inno-usb2: simplify phy clock handling
-Date: Mon,  3 Apr 2023 22:23:06 +0200
-Message-Id: <20230403202307.120562-7-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	William Wu <william.wu@rock-chips.com>
+Subject: [PATCHv2 3/7] phy: phy-rockchip-inno-usb2: add rk3588 support
+Date: Mon,  3 Apr 2023 22:23:03 +0200
+Message-Id: <20230403202307.120562-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230403202307.120562-1-sebastian.reichel@collabora.com>
 References: <20230403202307.120562-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_132322_114250_943083AF 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20230403_132314_117496_71852F58 
+X-CRM114-Status: GOOD (  23.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,62 +85,343 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify phyclk handling by using devm_clk_get_optional_enabled to
-acquire and enable the optional clock. This also fixes a resource
-leak in driver remove path and adds proper error handling.
+Add basic support for the USB2 PHY found in the Rockchip RK3588.
 
+Co-developed-by: William Wu <william.wu@rock-chips.com>
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 224 ++++++++++++++++--
+ 1 file changed, 210 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 9f6d09da7fbd..2de1408eaa60 100644
+index a0bc10aa7961..b75712bd20c9 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1390,24 +1390,22 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (IS_ERR(rphy->phy_reset))
- 		return PTR_ERR(rphy->phy_reset);
+@@ -116,6 +116,12 @@ struct rockchip_chg_det_reg {
+  * @bvalid_det_en: vbus valid rise detection enable register.
+  * @bvalid_det_st: vbus valid rise detection status register.
+  * @bvalid_det_clr: vbus valid rise detection clear register.
++ * @disfall_en: host disconnect fall edge detection enable.
++ * @disfall_st: host disconnect fall edge detection state.
++ * @disfall_clr: host disconnect fall edge detection clear.
++ * @disrise_en: host disconnect rise edge detection enable.
++ * @disrise_st: host disconnect rise edge detection state.
++ * @disrise_clr: host disconnect rise edge detection clear.
+  * @id_det_en: id detection enable register.
+  * @id_det_st: id detection state register.
+  * @id_det_clr: id detection clear register.
+@@ -133,6 +139,12 @@ struct rockchip_usb2phy_port_cfg {
+ 	struct usb2phy_reg	bvalid_det_en;
+ 	struct usb2phy_reg	bvalid_det_st;
+ 	struct usb2phy_reg	bvalid_det_clr;
++	struct usb2phy_reg      disfall_en;
++	struct usb2phy_reg      disfall_st;
++	struct usb2phy_reg      disfall_clr;
++	struct usb2phy_reg      disrise_en;
++	struct usb2phy_reg      disrise_st;
++	struct usb2phy_reg      disrise_clr;
+ 	struct usb2phy_reg	id_det_en;
+ 	struct usb2phy_reg	id_det_st;
+ 	struct usb2phy_reg	id_det_clr;
+@@ -168,6 +180,7 @@ struct rockchip_usb2phy_cfg {
+  * @port_id: flag for otg port or host port.
+  * @suspended: phy suspended flag.
+  * @vbus_attached: otg device vbus status.
++ * @host_disconnect: usb host disconnect status.
+  * @bvalid_irq: IRQ number assigned for vbus valid rise detection.
+  * @id_irq: IRQ number assigned for ID pin detection.
+  * @ls_irq: IRQ number assigned for linestate detection.
+@@ -187,6 +200,7 @@ struct rockchip_usb2phy_port {
+ 	unsigned int	port_id;
+ 	bool		suspended;
+ 	bool		vbus_attached;
++	bool            host_disconnect;
+ 	int		bvalid_irq;
+ 	int		id_irq;
+ 	int		ls_irq;
+@@ -405,6 +419,27 @@ static int rockchip_usb2phy_extcon_register(struct rockchip_usb2phy *rphy)
+ 	return 0;
+ }
  
--	rphy->clk = of_clk_get_by_name(np, "phyclk");
--	if (!IS_ERR(rphy->clk)) {
--		clk_prepare_enable(rphy->clk);
--	} else {
--		dev_info(&pdev->dev, "no phyclk specified\n");
--		rphy->clk = NULL;
-+	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
-+	if (IS_ERR(rphy->clk)) {
-+		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
-+				     "failed to get phyclk\n");
- 	}
- 
- 	ret = rockchip_usb2phy_clk480m_register(rphy);
- 	if (ret) {
- 		dev_err(dev, "failed to register 480m output clock\n");
--		goto disable_clks;
++static int rockchip_usb2phy_enable_host_disc_irq(struct rockchip_usb2phy *rphy,
++						 struct rockchip_usb2phy_port *rport,
++						 bool en)
++{
++	int ret;
++
++	ret = property_enable(rphy->grf, &rport->port_cfg->disfall_clr, true);
++	if (ret)
 +		return ret;
- 	}
++
++	ret = property_enable(rphy->grf, &rport->port_cfg->disfall_en, en);
++	if (ret)
++		return ret;
++
++	ret = property_enable(rphy->grf, &rport->port_cfg->disrise_clr, true);
++	if (ret)
++		return ret;
++
++	return property_enable(rphy->grf, &rport->port_cfg->disrise_en, en);
++}
++
+ static int rockchip_usb2phy_init(struct phy *phy)
+ {
+ 	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
+@@ -449,6 +484,15 @@ static int rockchip_usb2phy_init(struct phy *phy)
+ 			dev_dbg(&rport->phy->dev, "mode %d\n", rport->mode);
+ 		}
+ 	} else if (rport->port_id == USB2PHY_PORT_HOST) {
++		if (rport->port_cfg->disfall_en.offset) {
++			rport->host_disconnect = true;
++			ret = rockchip_usb2phy_enable_host_disc_irq(rphy, rport, true);
++			if (ret) {
++				dev_err(rphy->dev, "failed to enable disconnect irq\n");
++				goto out;
++			}
++		}
++
+ 		/* clear linestate and enable linestate detect irq */
+ 		ret = property_enable(rphy->grf,
+ 				      &rport->port_cfg->ls_det_clr, true);
+@@ -810,9 +854,7 @@ static void rockchip_usb2phy_sm_work(struct work_struct *work)
+ 	struct rockchip_usb2phy_port *rport =
+ 		container_of(work, struct rockchip_usb2phy_port, sm_work.work);
+ 	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
+-	unsigned int sh = rport->port_cfg->utmi_hstdet.bitend -
+-			  rport->port_cfg->utmi_hstdet.bitstart + 1;
+-	unsigned int ul, uhd, state;
++	unsigned int sh, ul, uhd, state;
+ 	unsigned int ul_mask, uhd_mask;
+ 	int ret;
  
- 	if (rphy->phy_cfg->phy_tuning) {
- 		ret = rphy->phy_cfg->phy_tuning(rphy);
- 		if (ret)
--			goto disable_clks;
-+			return ret;
- 	}
+@@ -822,18 +864,26 @@ static void rockchip_usb2phy_sm_work(struct work_struct *work)
+ 	if (ret < 0)
+ 		goto next_schedule;
  
- 	index = 0;
-@@ -1470,11 +1468,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+-	ret = regmap_read(rphy->grf, rport->port_cfg->utmi_hstdet.offset, &uhd);
+-	if (ret < 0)
+-		goto next_schedule;
+-
+-	uhd_mask = GENMASK(rport->port_cfg->utmi_hstdet.bitend,
+-			   rport->port_cfg->utmi_hstdet.bitstart);
+ 	ul_mask = GENMASK(rport->port_cfg->utmi_ls.bitend,
+ 			  rport->port_cfg->utmi_ls.bitstart);
  
- put_child:
- 	of_node_put(child_np);
--disable_clks:
--	if (rphy->clk) {
--		clk_disable_unprepare(rphy->clk);
--		clk_put(rphy->clk);
--	}
+-	/* stitch on utmi_ls and utmi_hstdet as phy state */
+-	state = ((uhd & uhd_mask) >> rport->port_cfg->utmi_hstdet.bitstart) |
+-		(((ul & ul_mask) >> rport->port_cfg->utmi_ls.bitstart) << sh);
++	if (rport->port_cfg->utmi_hstdet.offset) {
++		ret = regmap_read(rphy->grf, rport->port_cfg->utmi_hstdet.offset, &uhd);
++		if (ret < 0)
++			goto next_schedule;
++
++		uhd_mask = GENMASK(rport->port_cfg->utmi_hstdet.bitend,
++				   rport->port_cfg->utmi_hstdet.bitstart);
++
++		sh = rport->port_cfg->utmi_hstdet.bitend -
++		     rport->port_cfg->utmi_hstdet.bitstart + 1;
++		/* stitch on utmi_ls and utmi_hstdet as phy state */
++		state = ((uhd & uhd_mask) >> rport->port_cfg->utmi_hstdet.bitstart) |
++			(((ul & ul_mask) >> rport->port_cfg->utmi_ls.bitstart) << sh);
++	} else {
++		state = ((ul & ul_mask) >> rport->port_cfg->utmi_ls.bitstart) << 1 |
++			rport->host_disconnect;
++	}
+ 
+ 	switch (state) {
+ 	case PHY_STATE_HS_ONLINE:
+@@ -966,6 +1016,31 @@ static irqreturn_t rockchip_usb2phy_otg_mux_irq(int irq, void *data)
  	return ret;
  }
  
++static irqreturn_t rockchip_usb2phy_host_disc_irq(int irq, void *data)
++{
++	struct rockchip_usb2phy_port *rport = data;
++	struct rockchip_usb2phy *rphy = dev_get_drvdata(rport->phy->dev.parent);
++
++	if (!property_enabled(rphy->grf, &rport->port_cfg->disfall_st) &&
++	    !property_enabled(rphy->grf, &rport->port_cfg->disrise_st))
++		return IRQ_NONE;
++
++	mutex_lock(&rport->mutex);
++
++	/* clear disconnect fall or rise detect irq pending status */
++	if (property_enabled(rphy->grf, &rport->port_cfg->disfall_st)) {
++		property_enable(rphy->grf, &rport->port_cfg->disfall_clr, true);
++		rport->host_disconnect = false;
++	} else if (property_enabled(rphy->grf, &rport->port_cfg->disrise_st)) {
++		property_enable(rphy->grf, &rport->port_cfg->disrise_clr, true);
++		rport->host_disconnect = true;
++	}
++
++	mutex_unlock(&rport->mutex);
++
++	return IRQ_HANDLED;
++}
++
+ static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
+ {
+ 	struct rockchip_usb2phy *rphy = data;
+@@ -978,6 +1053,10 @@ static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
+ 		if (!rport->phy)
+ 			continue;
+ 
++		if (rport->port_id == USB2PHY_PORT_HOST &&
++		    rport->port_cfg->disfall_en.offset)
++			ret |= rockchip_usb2phy_host_disc_irq(irq, rport);
++
+ 		switch (rport->port_id) {
+ 		case USB2PHY_PORT_OTG:
+ 			if (rport->mode != USB_DR_MODE_HOST &&
+@@ -1254,14 +1333,14 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 
+ 	/* find out a proper config which can be matched with dt. */
+ 	index = 0;
+-	while (phy_cfgs[index].reg) {
++	do {
+ 		if (phy_cfgs[index].reg == reg) {
+ 			rphy->phy_cfg = &phy_cfgs[index];
+ 			break;
+ 		}
+ 
+ 		++index;
+-	}
++	} while (phy_cfgs[index].reg);
+ 
+ 	if (!rphy->phy_cfg) {
+ 		dev_err(dev, "no phy-config can be matched with %pOFn node\n",
+@@ -1664,6 +1743,122 @@ static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
+ 	{ /* sentinel */ }
+ };
+ 
++static const struct rockchip_usb2phy_cfg rk3588_phy_cfgs[] = {
++	{
++		.reg = 0x0000,
++		.num_ports	= 1,
++		.clkout_ctl	= { 0x0000, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x000c, 11, 11, 0, 1 },
++				.bvalid_det_en	= { 0x0080, 1, 1, 0, 1 },
++				.bvalid_det_st	= { 0x0084, 1, 1, 0, 1 },
++				.bvalid_det_clr = { 0x0088, 1, 1, 0, 1 },
++				.ls_det_en	= { 0x0080, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x0084, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x0088, 0, 0, 0, 1 },
++				.disfall_en	= { 0x0080, 6, 6, 0, 1 },
++				.disfall_st	= { 0x0084, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x0088, 6, 6, 0, 1 },
++				.disrise_en	= { 0x0080, 5, 5, 0, 1 },
++				.disrise_st	= { 0x0084, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x0088, 5, 5, 0, 1 },
++				.utmi_avalid	= { 0x00c0, 7, 7, 0, 1 },
++				.utmi_bvalid	= { 0x00c0, 6, 6, 0, 1 },
++				.utmi_ls	= { 0x00c0, 10, 9, 0, 1 },
++			}
++		},
++		.chg_det = {
++			.cp_det		= { 0x00c0, 0, 0, 0, 1 },
++			.dcp_det	= { 0x00c0, 0, 0, 0, 1 },
++			.dp_det		= { 0x00c0, 1, 1, 1, 0 },
++			.idm_sink_en	= { 0x0008, 5, 5, 1, 0 },
++			.idp_sink_en	= { 0x0008, 5, 5, 0, 1 },
++			.idp_src_en	= { 0x0008, 14, 14, 0, 1 },
++			.rdm_pdwn_en	= { 0x0008, 14, 14, 0, 1 },
++			.vdm_src_en	= { 0x0008, 7, 6, 0, 3 },
++			.vdp_src_en	= { 0x0008, 7, 6, 0, 3 },
++		},
++	},
++	{
++		.reg = 0x4000,
++		.num_ports	= 1,
++		.clkout_ctl	= { 0x0000, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x000c, 11, 11, 0, 1 },
++				.bvalid_det_en	= { 0x0080, 1, 1, 0, 1 },
++				.bvalid_det_st	= { 0x0084, 1, 1, 0, 1 },
++				.bvalid_det_clr = { 0x0088, 1, 1, 0, 1 },
++				.ls_det_en	= { 0x0080, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x0084, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x0088, 0, 0, 0, 1 },
++				.disfall_en	= { 0x0080, 6, 6, 0, 1 },
++				.disfall_st	= { 0x0084, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x0088, 6, 6, 0, 1 },
++				.disrise_en	= { 0x0080, 5, 5, 0, 1 },
++				.disrise_st	= { 0x0084, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x0088, 5, 5, 0, 1 },
++				.utmi_avalid	= { 0x00c0, 7, 7, 0, 1 },
++				.utmi_bvalid	= { 0x00c0, 6, 6, 0, 1 },
++				.utmi_ls	= { 0x00c0, 10, 9, 0, 1 },
++			}
++		},
++		.chg_det = {
++			.cp_det		= { 0x00c0, 0, 0, 0, 1 },
++			.dcp_det	= { 0x00c0, 0, 0, 0, 1 },
++			.dp_det		= { 0x00c0, 1, 1, 1, 0 },
++			.idm_sink_en	= { 0x0008, 5, 5, 1, 0 },
++			.idp_sink_en	= { 0x0008, 5, 5, 0, 1 },
++			.idp_src_en	= { 0x0008, 14, 14, 0, 1 },
++			.rdm_pdwn_en	= { 0x0008, 14, 14, 0, 1 },
++			.vdm_src_en	= { 0x0008, 7, 6, 0, 3 },
++			.vdp_src_en	= { 0x0008, 7, 6, 0, 3 },
++		},
++	},
++	{
++		.reg = 0x8000,
++		.num_ports	= 1,
++		.clkout_ctl	= { 0x0000, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_HOST] = {
++				.phy_sus	= { 0x0008, 2, 2, 0, 1 },
++				.ls_det_en	= { 0x0080, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x0084, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x0088, 0, 0, 0, 1 },
++				.disfall_en	= { 0x0080, 6, 6, 0, 1 },
++				.disfall_st	= { 0x0084, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x0088, 6, 6, 0, 1 },
++				.disrise_en	= { 0x0080, 5, 5, 0, 1 },
++				.disrise_st	= { 0x0084, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x0088, 5, 5, 0, 1 },
++				.utmi_ls	= { 0x00c0, 10, 9, 0, 1 },
++			}
++		},
++	},
++	{
++		.reg = 0xc000,
++		.num_ports	= 1,
++		.clkout_ctl	= { 0x0000, 0, 0, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_HOST] = {
++				.phy_sus	= { 0x0008, 2, 2, 0, 1 },
++				.ls_det_en	= { 0x0080, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x0084, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x0088, 0, 0, 0, 1 },
++				.disfall_en	= { 0x0080, 6, 6, 0, 1 },
++				.disfall_st	= { 0x0084, 6, 6, 0, 1 },
++				.disfall_clr	= { 0x0088, 6, 6, 0, 1 },
++				.disrise_en	= { 0x0080, 5, 5, 0, 1 },
++				.disrise_st	= { 0x0084, 5, 5, 0, 1 },
++				.disrise_clr	= { 0x0088, 5, 5, 0, 1 },
++				.utmi_ls	= { 0x00c0, 10, 9, 0, 1 },
++			}
++		},
++	},
++	{ /* sentinel */ }
++};
++
+ static const struct rockchip_usb2phy_cfg rv1108_phy_cfgs[] = {
+ 	{
+ 		.reg = 0x100,
+@@ -1714,6 +1909,7 @@ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
+ 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
++	{ .compatible = "rockchip,rk3588-usb2phy", .data = &rk3588_phy_cfgs },
+ 	{ .compatible = "rockchip,rv1108-usb2phy", .data = &rv1108_phy_cfgs },
+ 	{}
+ };
 -- 
 2.39.2
 
