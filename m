@@ -4,53 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57DDAC761A6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 10:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE453C761A6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 10:41:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LYsep39m3zKfCJ67vFHzoehEdxrZJhIP5AYvegSWluo=; b=kdHf3mbK3K9cgZ
-	aqdgjS7IKzhQEw7GzdHeXTDXirp0R2U0ogP7EKvRs2FwZuaanViTwzx8dFGWdCKvgoyqT0DkeW/xG
-	9YGQ0s3BR+5WKJzhwtkm/ogMLPy+PIiqxxEckIK1A4VI3akPYZSw/oX6B2XPArf1uJCi8R4+Jgts3
-	oncZMdTGB709awaXI6ZzONqMCCOKLAyD/uG9BfxXSKjfQ2GyefAK+qbyg/YmPAs9hwHYrHkCIaia5
-	1V3dGtVaJpfWZU1eb8USnDq576tP0eLZFW80KKivMCvDHM+ThDlnOX7/8w+zy/hu8uBBTcs6XkOCz
-	aVzb1HYFnV6pH3yTzHSw==;
+	List-Owner; bh=l7dStrZ4qpuN0vxIxONSJ2hv0swEai3zsFxGlsXJVqw=; b=AbTPWffJaLvaa3
+	TIC45y4iRc++7i/kPjDWqNczuWzAze24db6lxEbQiU1lgvCB3hVFfRUVrUayEDwto8PWvMvn+h3Zd
+	f9B1Vn6X6XSx5xn7BnrLOmD2MYTEkZv2MXoCbZmhb212jQ7XfEYvl4em94eoGmP+QPApZEXGPIpKK
+	cAyyCJUrCddFrP5TEDZ6dqvpA1sZi8nWWYnU0bk+JzWLjX95yx2Ve6sKxn0mt7qJQQLK6SdIZkvaM
+	lPcxhlnnUMQ9sq+5Jg/4pHO8QiVjyYVvJHA5vM51FAajjQOb95vpSOjHT+a9wRVi9cM5bE8/HeZzI
+	182/mXLZbgIbwdvFbn6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHLU-00Euue-32;
-	Mon, 03 Apr 2023 10:23:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pjHcc-00EyQA-0b;
+	Mon, 03 Apr 2023 10:41:10 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjHLS-00Eusr-2K;
-	Mon, 03 Apr 2023 10:23:27 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pjHLI-0006VW-Dh; Mon, 03 Apr 2023 12:23:16 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Vincent Legoll <vincent.legoll@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Boris Brezillon <boris.brezillon@collabora.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCHv1 0/2] Improve RK3588 clocks and power domains support
-Date: Mon, 03 Apr 2023 12:22:39 +0200
-Message-ID: <22215580.EfDdHjke4D@diego>
-In-Reply-To:  <CAEwRq=q=W57W33nYe_uUDQb0cf7QkFoa0rO+EWdsuUGTN7k_Vg@mail.gmail.com>
-References:  <20230331163058.5688-1-sebastian.reichel@collabora.com>
- <CAEwRq=q=W57W33nYe_uUDQb0cf7QkFoa0rO+EWdsuUGTN7k_Vg@mail.gmail.com>
+	id 1pjHcT-00EyMM-07;
+	Mon, 03 Apr 2023 10:41:02 +0000
+Received: by mail-pf1-x436.google.com with SMTP id y2so18812136pfw.9;
+        Mon, 03 Apr 2023 03:40:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680518459;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AFuL6ChpVUUgBPgyIo4zUUMh6LlZPDJPlmBW1Q5qZg8=;
+        b=ddMKekAjo8HdAcsOLoioX/xPvxdrkFFaA0B/cyLzxbLFI8Ln0goCY8ygu65HhlUsB1
+         ikjJVip5ACJzg1hqxGMkAU79CDtu6uNxFUGwCW9t2MFWBjL28chDTjBMnyO10xZN3Htv
+         i1pa0Euntl5mXtZiTBfPpS4MCQf83EDcDWNILPcC9R/baVe7S3zyJEicYsOGqAjEEVnT
+         rgXZkcuvEWsJMFA3797m7ITbF8XPjs7lK/rVFnkVVIf+0zE+w3GIR5JviqkxlAlgaDeN
+         fRei51a+S/c0lArUA/F7hsZ6Lh7aovQBggoEMhYqdh4N+w474XbXYbwwlIbZVSxEkd8q
+         9Khw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680518459;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AFuL6ChpVUUgBPgyIo4zUUMh6LlZPDJPlmBW1Q5qZg8=;
+        b=tcIlmWuWInE1V9bZKe3xypmq8noGMGwgdqintKPK3ocmaJH3YadZiFVduOvTdeCZsO
+         qezMrc283kzuRpdJTgW5yy/T0QU8/Nek9KdNYyseW8qlshV1HILwFQQSSlnMCaEF6rqN
+         uFtNeoO9WQxcFbMZot+F/3NYS4b0ucoUHu6VGfplWL6oe88CW39kTCJ4mQZCxdawCbIW
+         XFBvAofID9mtyxb9G2J3HNNdwxCsKHTMCbnMxcSKZ4t8IR9EaXHCi/XNTktKpgmY1cKw
+         xFe9qdlW5j1AVJqWeoZuDP9h2ypA4W6ciVkE1ThhiJ1G1EXDBfD7i2n/2xg9M8tvfkvZ
+         qLFg==
+X-Gm-Message-State: AAQBX9dnOKtUShbnqUOTDzWqCRDAqM+zP91/wBicVpXGPS7Y28Pj8LOE
+	bTqznLQHHEJfBizGF6DTQbD8NdH6nJR1M+YQs19uD3+tXHQ=
+X-Google-Smtp-Source: AKy350ZgcbNdLWCD2SElCx52IwknONkFSjpKh+B1fGuP38l/SArhy1jlY2KFg4e89kIFLn72ByaxCAoDab+K4//dXV8=
+X-Received: by 2002:a05:6a00:99f:b0:62b:113b:72d7 with SMTP id
+ u31-20020a056a00099f00b0062b113b72d7mr16244491pfg.3.1680518458919; Mon, 03
+ Apr 2023 03:40:58 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230331163058.5688-1-sebastian.reichel@collabora.com>
+ <CAEwRq=q=W57W33nYe_uUDQb0cf7QkFoa0rO+EWdsuUGTN7k_Vg@mail.gmail.com> <22215580.EfDdHjke4D@diego>
+In-Reply-To: <22215580.EfDdHjke4D@diego>
+From: Vincent Legoll <vincent.legoll@gmail.com>
+Date: Mon, 3 Apr 2023 12:38:12 +0200
+Message-ID: <CAEwRq=rmd=m1YybLYU9zTLGjwkvQze9fkX3WQhF+2RWWWfAKig@mail.gmail.com>
+Subject: Re: [PATCHv1 0/2] Improve RK3588 clocks and power domains support
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, 
+	Peter Geis <pgwipeout@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	Finley Xiao <finley.xiao@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_032326_757298_69D8F0EB 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20230403_034101_073127_0B4EF07B 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,48 +89,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Samstag, 1. April 2023, 16:30:53 CEST schrieb Vincent Legoll:
-> Hello,
-> 
-> I'm running a QuartzPro64 with this patch set applied, everything(*)
-> works properly.
-> 
-> (*) eMMC, SD, LED, ethernet, serial, watchdog.
-> 
-> Are there any tests I can do to help with this ?
-
-gmac1 and sdmmc do reference power-domains in the dts, so things should
-be fine and I guess if your system boots successfully this might be enough.
-
-If you want to check more, try
-# mkdir /debug
-# mount none /debug -t debugfs
-[or do this to a location of your choice, I guess the standard is under /proc]
-
-# cat /debug/pm_genpd/pm_genpd_summary
-
-and check the runtime_status field.
-
-
-Also you could provide a email-reply with a
-
-Tested-by: Your Name <your-email>
-
-line in it :-)
-
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBBcHIgMywgMjAyMyBhdCAxMjoyM+KAr1BNIEhlaWtvIFN0w7xibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+IHdyb3RlOgo+IElmIHlvdSB3YW50IHRvIGNoZWNrIG1vcmUsIHRyeQo+ICMgbWtk
+aXIgL2RlYnVnCj4gIyBtb3VudCBub25lIC9kZWJ1ZyAtdCBkZWJ1Z2ZzCj4gW29yIGRvIHRoaXMg
+dG8gYSBsb2NhdGlvbiBvZiB5b3VyIGNob2ljZSwgSSBndWVzcyB0aGUgc3RhbmRhcmQgaXMgdW5k
+ZXIgL3Byb2NdCj4KPiAjIGNhdCAvZGVidWcvcG1fZ2VucGQvcG1fZ2VucGRfc3VtbWFyeQo+Cj4g
+YW5kIGNoZWNrIHRoZSBydW50aW1lX3N0YXR1cyBmaWVsZC4KCkhlcmUgaXQgaXM6Cgpkb21haW4g
+ICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXR1cyAgICAgICAgICBjaGlsZHJlbgogICAgICAg
+ICAgICBwZXJmb3JtYW5jZQogICAgL2RldmljZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHJ1bnRpbWUgc3RhdHVzCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0Kc2RtbWMgICAgICAgICAgICAgICAgICAgICAgICAgICBvZmYtMAogICAgICAg
+ICAgICAwCiAgICAvZGV2aWNlcy9wbGF0Zm9ybS9mZTJjMDAwMC5tbWMgICAgICAgICAgICAgICAg
+ICAgICAgc3VzcGVuZGVkCiAgICAgICAgICAgIDAKYXVkaW8gICAgICAgICAgICAgICAgICAgICAg
+ICAgICBvZmYtMAogICAgICAgICAgICAwCnNkaW8gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+b2ZmLTAKICAgICAgICAgICAgMApwY2llICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0w
+CiAgICAgICAgICAgIDAKZ21hYyAgICAgICAgICAgICAgICAgICAgICAgICAgICBvbgogICAgICAg
+ICAgICAwCiAgICAvZGV2aWNlcy9wbGF0Zm9ybS9mZTFiMDAwMC5ldGhlcm5ldCAgICAgICAgICAg
+ICAgICAgYWN0aXZlCiAgICAgICAgICAgIDAKdXNiICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBvZmYtMAogICAgICAgICAgICAwCnJnYTMxICAgICAgICAgICAgICAgICAgICAgICAgICAgb2Zm
+LTAKICAgICAgICAgICAgMApmZWMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0wCiAg
+ICAgICAgICAgIDAKaXNwMSAgICAgICAgICAgICAgICAgICAgICAgICAgICBvZmYtMAogICAgICAg
+ICAgICAwCnZpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2ZmLTAKICAgICAgICAgICAg
+MAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpc3AxLCBm
+ZWMKdm8xICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvZmYtMAogICAgICAgICAgICAwCnZv
+MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2ZmLTAKICAgICAgICAgICAgMAp2b3AgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0wCiAgICAgICAgICAgIDAKICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdm8wCnJnYTMwICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgb2ZmLTAKICAgICAgICAgICAgMAphdjEgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIG9mZi0wCiAgICAgICAgICAgIDAKdmRwdSAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBvZmYtMAogICAgICAgICAgICAwCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGF2MSwgcmt2ZGVjMCwgcmt2ZGVjMSwgcmdhMzAKdmVuYzEgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBvZmYtMAogICAgICAgICAgICAwCnZlbmMwICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgb2ZmLTAKICAgICAgICAgICAgMAogICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICB2ZW5jMQpya3ZkZWMxICAgICAgICAgICAgICAgICAg
+ICAgICAgIG9mZi0wCiAgICAgICAgICAgIDAKcmt2ZGVjMCAgICAgICAgICAgICAgICAgICAgICAg
+ICBvZmYtMAogICAgICAgICAgICAwCnZjb2RlYyAgICAgICAgICAgICAgICAgICAgICAgICAgb2Zm
+LTAKICAgICAgICAgICAgMAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBya3ZkZWMwLCBya3ZkZWMxLCB2ZW5jMApncHUgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIG9mZi0wCiAgICAgICAgICAgIDAKbnB1MiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBvZmYtMAogICAgICAgICAgICAwCm5wdTEgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2Zm
+LTAKICAgICAgICAgICAgMApucHV0b3AgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0wCiAg
+ICAgICAgICAgIDAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgbnB1MSwgbnB1MgpucHUgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0wCiAgICAg
+ICAgICAgIDAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+bnB1dG9wCgpEb24ndCBrbm93IGhvdyB0byBpbnRlcnByZXQgdGhpcyB0aG91Z2guLi4KCj4gQWxz
+byB5b3UgY291bGQgcHJvdmlkZSBhIGVtYWlsLXJlcGx5IHdpdGggYQo+Cj4gVGVzdGVkLWJ5OiBZ
+b3VyIE5hbWUgPHlvdXItZW1haWw+CgpZb3UgY2FuIGFkZCBteToKClRlc3RlZC1ieTogVmluY2Vu
+dCBMZWdvbGwgPHZpbmNlbnQubGVnb2xsQGdtYWlsLmNvbT4KClJlZ2FyZHMKCi0tIApWaW5jZW50
+IExlZ29sbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
