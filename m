@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39DFDC76188
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 19:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D68FCC76188
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Apr 2023 19:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7XSWFI3+lmcb0kGzPcGkVmn3d3cENhR97xxt+JVLRkE=; b=pWdx5j34yZbR3d
-	FPk0WAzKMJklmhTCb1hUbgMYtQpzQvo5NqTbyfyamasKgUIA1sMkdJeNZJh+ASeEiw224YZLxAjhZ
-	0duuLINK1hjsqMy+ofiQSrowp7nFYKEKUhcOs92wk8FHEYi0wBJlVmXChjp3PF7p1/x9q/WaNSa5e
-	wNyhdYcFtQ2Q8PNANVtC1XzLcGdU3RPWyUfhVlU5yz3K2FR5mU9Agbe2Y80491ZzW76ah1PI4gtyv
-	vtPjIk9mi7p0PvlY7fKKuY8z7rWTNKZ+JPKVpyCeau9DUGtcKRQ/MzcRIbbB96WnPSe419klrjOaq
-	xXfAx0BndhA/lH7kCwtw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5F+spfPdAPYZHEzfI/grT/ilPTuNygZ7PsVhtVtry50=; b=MZcZWTKsicWRTh
+	cmKT/peuSjZc8b+dwkIXcGOKmRWG1VQD6egmdXg8J7ihcQH8TsiY85UOHAfN5FnJcAzxKYwOpaw+o
+	2XlDWPuQLOybA4BTanJ26YJaZXGUALCI7wvYuzA3zQ8mPo3IB66JBJOZj2AigxpmqICU/ny3GWJXG
+	FsC0g2sIDGbaj81sQ4vW8+6PRSPUl/VVDc7Y3E4lfAXh7E/VhMAQ/e5sc7IwRP7U0BVW58pAdyn2u
+	Ma4RTLUNY92KpM+vwRZcEReTX3pvuvRVCzwqS8MTYYq6XRoCSblm3UIoQgVlwwEiJse8+6duQaFJi
+	rMyvl4tpydsh9ZR4ETIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPw9-00GPbw-0I;
-	Mon, 03 Apr 2023 19:33:53 +0000
+	id 1pjPwB-00GPcm-1v;
+	Mon, 03 Apr 2023 19:33:55 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjPw5-00GPZx-1p;
+	id 1pjPw5-00GPZw-1k;
 	Mon, 03 Apr 2023 19:33:51 +0000
 Received: from jupiter.universe (dyndsl-091-248-212-192.ewe-ip-backbone.de [91.248.212.192])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E45D66603145;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DE785660313D;
 	Mon,  3 Apr 2023 20:33:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1680550424;
-	bh=HLxZp58uZbh2yKGMAwWX3x4hnxJ2g4oYtgD1TCqt/kg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=VVtMjOm2de/pqu93Ktnc8dm6IlqYc4FUDpl3YWVMDRgs5NXajAihZBIgY1f6UeRXI
-	 eeS+Tzsh69AyhBM0K50OaH+44B7GVzNdKRVag/qCW8L/dL/puPQXiDwxXmhPjI+2AV
-	 I8+G3l7v0aQORqAg79+cvdLvB1lCTD4eDa+2SDTqcpwLSp7kdsYUS0jQVdJuhCWEhm
-	 1uIt8U1uJH5ykw+k61TuwdueN6w3xfBAm1GAh4r0ACClME2tMnfFmkO6X7moOMGepQ
-	 ppc1egirmYlM4v7kQA1O1/5zpl89AQOmY+EWL3ewZHUpD9Lk0AijFts2vEjyb4Zn+t
-	 4r6DAGyM4JQRg==
+	bh=N/cNKrsvkjXxZ3Cgmxcn9TFhixbf9GdSPlug1xbzESs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=lfDHpUFkm2wyKlnufwvl47YSnBkluFHTEBRXtU5e3qYMXpwg0TKuFqYbOX6x7mx6x
+	 HUKYQk3CL4OnEi20UbgYyewnVlEYQNQc3Qub1prPxuHPfDrhp1qhF0D2EpWfGVuvyt
+	 /dOHKvDy3byqNNGi/3bYYkxiHB27Iq7wblhCjVuAqnPnGokCcOYTRQ6WsYMWIPm5gr
+	 vdMrppHaUM2clvmm68ip7mc8Gua8AluiUcX8d8ckFJubVZAncsWLr2B9I/yiJodyoy
+	 wphUKr8imhzdFIOeZKok8fyRVa5PnOaqnuiQsqdmexxWgVj3OCXyepzf0IW8eK9TzU
+	 lBF7n+pRAfy7Q==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 4B2FC4807E1; Mon,  3 Apr 2023 21:33:41 +0200 (CEST)
+	id 5039E4807E3; Mon,  3 Apr 2023 21:33:41 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org
@@ -58,17 +58,19 @@ Cc: Peter Geis <pgwipeout@gmail.com>,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv2 0/2] Improve RK3588 clocks and power domains support
-Date: Mon,  3 Apr 2023 21:32:48 +0200
-Message-Id: <20230403193250.108693-1-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv2 2/2] soc: rockchip: power-domain: add rk3588 mem module support
+Date: Mon,  3 Apr 2023 21:32:50 +0200
+Message-Id: <20230403193250.108693-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230403193250.108693-1-sebastian.reichel@collabora.com>
+References: <20230403193250.108693-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230403_123349_830683_09CFA404 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230403_123349_857488_1C6559A0 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +87,265 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Boris Brezillon <boris.brezillon@collabora.com>
 
-After this patchset the power-domain support for RK3588 is basically on par
-with the downstream implementation. More importantly the clock controller
-change unblocks support for any IP blocks using linked clocks. The clock
-controller change must be applied before the power-domain change to avoid
-accessing unclocked registers.
+On RK3588 it's also possible to power down the memory used by the
+particular power domains via PMU_MEM_PWR_GATE_SFTCON. This adds
+support for this feature.
 
-Changes since PATCHv1:
- * https://lore.kernel.org/all/20230331163058.5688-1-sebastian.reichel@collabora.com/
- * Replace dsb(sy) with wmb() to fix COMPILE_TEST build on !arm64; direct replacement
-   would be mb(), but write memory barrier should be enough here as far as I can tell
- * Added Tested-by from Vincent Legoll
-
--- Sebastian
-
-Boris Brezillon (1):
-  soc: rockchip: power-domain: add rk3588 mem module support
-
-Sebastian Reichel (1):
-  clk: rockchip: rk3588: make gate linked clocks ignore unused
-
- drivers/clk/rockchip/clk-rk3588.c |  42 +++++---
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com>
+Co-Developed-by: Finley Xiao <finley.xiao@rock-chips.com>
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
  drivers/soc/rockchip/pm_domains.c | 160 +++++++++++++++++++++++-------
- 2 files changed, 151 insertions(+), 51 deletions(-)
+ 1 file changed, 125 insertions(+), 35 deletions(-)
 
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 84bc022f9e5b..e3de49e671dc 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -43,8 +43,10 @@ struct rockchip_domain_info {
+ 	bool active_wakeup;
+ 	int pwr_w_mask;
+ 	int req_w_mask;
++	int mem_status_mask;
+ 	int repair_status_mask;
+ 	u32 pwr_offset;
++	u32 mem_offset;
+ 	u32 req_offset;
+ };
+ 
+@@ -54,6 +56,9 @@ struct rockchip_pmu_info {
+ 	u32 req_offset;
+ 	u32 idle_offset;
+ 	u32 ack_offset;
++	u32 mem_pwr_offset;
++	u32 chain_status_offset;
++	u32 mem_status_offset;
+ 	u32 repair_status_offset;
+ 
+ 	u32 core_pwrcnt_offset;
+@@ -119,13 +124,15 @@ struct rockchip_pmu {
+ 	.active_wakeup = wakeup,			\
+ }
+ 
+-#define DOMAIN_M_O_R(_name, p_offset, pwr, status, r_status, r_offset, req, idle, ack, wakeup)	\
++#define DOMAIN_M_O_R(_name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, ack, wakeup)	\
+ {							\
+ 	.name = _name,					\
+ 	.pwr_offset = p_offset,				\
+ 	.pwr_w_mask = (pwr) << 16,			\
+ 	.pwr_mask = (pwr),				\
+ 	.status_mask = (status),			\
++	.mem_offset = m_offset,				\
++	.mem_status_mask = (m_status),			\
+ 	.repair_status_mask = (r_status),		\
+ 	.req_offset = r_offset,				\
+ 	.req_w_mask = (req) << 16,			\
+@@ -269,8 +276,8 @@ void rockchip_pmu_unblock(void)
+ }
+ EXPORT_SYMBOL_GPL(rockchip_pmu_unblock);
+ 
+-#define DOMAIN_RK3588(name, p_offset, pwr, status, r_status, r_offset, req, idle, wakeup)	\
+-	DOMAIN_M_O_R(name, p_offset, pwr, status, r_status, r_offset, req, idle, idle, wakeup)
++#define DOMAIN_RK3588(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, wakeup)	\
++	DOMAIN_M_O_R(name, p_offset, pwr, status, m_offset, m_status, r_status, r_offset, req, idle, idle, wakeup)
+ 
+ static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
+ {
+@@ -408,17 +415,92 @@ static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
+ 	return !(val & pd->info->status_mask);
+ }
+ 
++static bool rockchip_pmu_domain_is_mem_on(struct rockchip_pm_domain *pd)
++{
++	struct rockchip_pmu *pmu = pd->pmu;
++	unsigned int val;
++
++	regmap_read(pmu->regmap,
++		    pmu->info->mem_status_offset + pd->info->mem_offset, &val);
++
++	/* 1'b0: power on, 1'b1: power off */
++	return !(val & pd->info->mem_status_mask);
++}
++
++static bool rockchip_pmu_domain_is_chain_on(struct rockchip_pm_domain *pd)
++{
++	struct rockchip_pmu *pmu = pd->pmu;
++	unsigned int val;
++
++	regmap_read(pmu->regmap,
++		    pmu->info->chain_status_offset + pd->info->mem_offset, &val);
++
++	/* 1'b1: power on, 1'b0: power off */
++	return val & pd->info->mem_status_mask;
++}
++
++static int rockchip_pmu_domain_mem_reset(struct rockchip_pm_domain *pd)
++{
++	struct rockchip_pmu *pmu = pd->pmu;
++	struct generic_pm_domain *genpd = &pd->genpd;
++	bool is_on;
++	int ret = 0;
++
++	ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_chain_on, pd, is_on,
++					is_on == true, 0, 10000);
++	if (ret) {
++		dev_err(pmu->dev,
++			"failed to get chain status '%s', target_on=1, val=%d\n",
++			genpd->name, is_on);
++		goto error;
++	}
++
++	udelay(20);
++
++	regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
++		     (pd->info->pwr_mask | pd->info->pwr_w_mask));
++	wmb();
++
++	ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
++					is_on == false, 0, 10000);
++	if (ret) {
++		dev_err(pmu->dev,
++			"failed to get mem status '%s', target_on=0, val=%d\n",
++			genpd->name, is_on);
++		goto error;
++	}
++
++	regmap_write(pmu->regmap, pmu->info->mem_pwr_offset + pd->info->pwr_offset,
++		     pd->info->pwr_w_mask);
++	wmb();
++
++	ret = readx_poll_timeout_atomic(rockchip_pmu_domain_is_mem_on, pd, is_on,
++					is_on == true, 0, 10000);
++	if (ret) {
++		dev_err(pmu->dev,
++			"failed to get mem status '%s', target_on=1, val=%d\n",
++			genpd->name, is_on);
++	}
++
++error:
++	return ret;
++}
++
+ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 					     bool on)
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	struct generic_pm_domain *genpd = &pd->genpd;
+ 	u32 pd_pwr_offset = pd->info->pwr_offset;
+-	bool is_on;
++	bool is_on, is_mem_on = false;
+ 
+ 	if (pd->info->pwr_mask == 0)
+ 		return;
+-	else if (pd->info->pwr_w_mask)
++
++	if (on && pd->info->mem_status_mask)
++		is_mem_on = rockchip_pmu_domain_is_mem_on(pd);
++
++	if (pd->info->pwr_w_mask)
+ 		regmap_write(pmu->regmap, pmu->info->pwr_offset + pd_pwr_offset,
+ 			     on ? pd->info->pwr_w_mask :
+ 			     (pd->info->pwr_mask | pd->info->pwr_w_mask));
+@@ -428,6 +510,9 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 
+ 	wmb();
+ 
++	if (is_mem_on && rockchip_pmu_domain_mem_reset(pd))
++		return;
++
+ 	if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
+ 				      is_on == on, 0, 10000)) {
+ 		dev_err(pmu->dev,
+@@ -645,7 +730,9 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
+ 	if (pd_info->active_wakeup)
+ 		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
+-	pm_genpd_init(&pd->genpd, NULL, !rockchip_pmu_domain_is_on(pd));
++	pm_genpd_init(&pd->genpd, NULL,
++		      !rockchip_pmu_domain_is_on(pd) ||
++		      (pd->info->mem_status_mask && !rockchip_pmu_domain_is_mem_on(pd)));
+ 
+ 	pmu->genpd_data.domains[id] = &pd->genpd;
+ 	return 0;
+@@ -1024,35 +1111,35 @@ static const struct rockchip_domain_info rk3568_pm_domains[] = {
+ };
+ 
+ static const struct rockchip_domain_info rk3588_pm_domains[] = {
+-	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       BIT(1),  0x0, BIT(0),  BIT(0),  false),
+-	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0,       0x0, 0,       0,       false),
+-	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0,       0x0, 0,       0,       false),
+-	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       BIT(2),  0x0, BIT(1),  BIT(1),  false),
+-	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       BIT(3),  0x0, BIT(2),  BIT(2),  false),
+-	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       BIT(4),  0x0, BIT(3),  BIT(3),  false),
+-	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       BIT(5),  0x0, BIT(4),  BIT(4),  false),
+-	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       BIT(6),  0x0, BIT(5),  BIT(5),  false),
+-	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       BIT(7),  0x0, BIT(6),  BIT(6),  false),
+-	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       BIT(8),  0x0, BIT(7),  BIT(7),  false),
+-	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       BIT(9),  0x0, BIT(8),  BIT(8),  false),
+-	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       BIT(10), 0x0, 0,       0,       false),
+-	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       BIT(11), 0x0, BIT(9),  BIT(9),  false),
+-	[RK3588_PD_VI]		= DOMAIN_RK3588("vi",      0x0, BIT(13), 0,       BIT(12), 0x0, BIT(10), BIT(10), false),
+-	[RK3588_PD_FEC]		= DOMAIN_RK3588("fec",     0x0, BIT(14), 0,       BIT(13), 0x0, 0,       0,       false),
+-	[RK3588_PD_ISP1]	= DOMAIN_RK3588("isp1",    0x0, BIT(15), 0,       BIT(14), 0x0, BIT(11), BIT(11), false),
+-	[RK3588_PD_RGA31]	= DOMAIN_RK3588("rga31",   0x4, BIT(0),  0,       BIT(15), 0x0, BIT(12), BIT(12), false),
+-	[RK3588_PD_VOP]		= DOMAIN_RK3588("vop",     0x4, BIT(1),  0,       BIT(16), 0x0, BIT(13) | BIT(14), BIT(13) | BIT(14), false),
+-	[RK3588_PD_VO0]		= DOMAIN_RK3588("vo0",     0x4, BIT(2),  0,       BIT(17), 0x0, BIT(15), BIT(15), false),
+-	[RK3588_PD_VO1]		= DOMAIN_RK3588("vo1",     0x4, BIT(3),  0,       BIT(18), 0x4, BIT(0),  BIT(16), false),
+-	[RK3588_PD_AUDIO]	= DOMAIN_RK3588("audio",   0x4, BIT(4),  0,       BIT(19), 0x4, BIT(1),  BIT(17), false),
+-	[RK3588_PD_PHP]		= DOMAIN_RK3588("php",     0x4, BIT(5),  0,       BIT(20), 0x4, BIT(5),  BIT(21), false),
+-	[RK3588_PD_GMAC]	= DOMAIN_RK3588("gmac",    0x4, BIT(6),  0,       BIT(21), 0x0, 0,       0,       false),
+-	[RK3588_PD_PCIE]	= DOMAIN_RK3588("pcie",    0x4, BIT(7),  0,       BIT(22), 0x0, 0,       0,       true),
+-	[RK3588_PD_NVM]		= DOMAIN_RK3588("nvm",     0x4, BIT(8),  BIT(24), 0,       0x4, BIT(2),  BIT(18), false),
+-	[RK3588_PD_NVM0]	= DOMAIN_RK3588("nvm0",    0x4, BIT(9),  0,       BIT(23), 0x0, 0,       0,       false),
+-	[RK3588_PD_SDIO]	= DOMAIN_RK3588("sdio",    0x4, BIT(10), 0,       BIT(24), 0x4, BIT(3),  BIT(19), false),
+-	[RK3588_PD_USB]		= DOMAIN_RK3588("usb",     0x4, BIT(11), 0,       BIT(25), 0x4, BIT(4),  BIT(20), true),
+-	[RK3588_PD_SDMMC]	= DOMAIN_RK3588("sdmmc",   0x4, BIT(13), 0,       BIT(26), 0x0, 0,       0,       false),
++	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false),
++	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x0, 0,       0,       0x0, 0,       0,       false),
++	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0x0, 0,       0,       0x0, 0,       0,       false),
++	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false),
++	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false),
++	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false),
++	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false),
++	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false),
++	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false),
++	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false),
++	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       0x0, BIT(18), BIT(9),  0x0, BIT(8),  BIT(8),  false),
++	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       0x0, BIT(19), BIT(10), 0x0, 0,       0,       false),
++	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       0x0, BIT(20), BIT(11), 0x0, BIT(9),  BIT(9),  false),
++	[RK3588_PD_VI]		= DOMAIN_RK3588("vi",      0x0, BIT(13), 0,       0x0, BIT(21), BIT(12), 0x0, BIT(10), BIT(10), false),
++	[RK3588_PD_FEC]		= DOMAIN_RK3588("fec",     0x0, BIT(14), 0,       0x0, BIT(22), BIT(13), 0x0, 0,       0,       false),
++	[RK3588_PD_ISP1]	= DOMAIN_RK3588("isp1",    0x0, BIT(15), 0,       0x0, BIT(23), BIT(14), 0x0, BIT(11), BIT(11), false),
++	[RK3588_PD_RGA31]	= DOMAIN_RK3588("rga31",   0x4, BIT(0),  0,       0x0, BIT(24), BIT(15), 0x0, BIT(12), BIT(12), false),
++	[RK3588_PD_VOP]		= DOMAIN_RK3588("vop",     0x4, BIT(1),  0,       0x0, BIT(25), BIT(16), 0x0, BIT(13) | BIT(14), BIT(13) | BIT(14), false),
++	[RK3588_PD_VO0]		= DOMAIN_RK3588("vo0",     0x4, BIT(2),  0,       0x0, BIT(26), BIT(17), 0x0, BIT(15), BIT(15), false),
++	[RK3588_PD_VO1]		= DOMAIN_RK3588("vo1",     0x4, BIT(3),  0,       0x0, BIT(27), BIT(18), 0x4, BIT(0),  BIT(16), false),
++	[RK3588_PD_AUDIO]	= DOMAIN_RK3588("audio",   0x4, BIT(4),  0,       0x0, BIT(28), BIT(19), 0x4, BIT(1),  BIT(17), false),
++	[RK3588_PD_PHP]		= DOMAIN_RK3588("php",     0x4, BIT(5),  0,       0x0, BIT(29), BIT(20), 0x4, BIT(5),  BIT(21), false),
++	[RK3588_PD_GMAC]	= DOMAIN_RK3588("gmac",    0x4, BIT(6),  0,       0x0, BIT(30), BIT(21), 0x0, 0,       0,       false),
++	[RK3588_PD_PCIE]	= DOMAIN_RK3588("pcie",    0x4, BIT(7),  0,       0x0, BIT(31), BIT(22), 0x0, 0,       0,       true),
++	[RK3588_PD_NVM]		= DOMAIN_RK3588("nvm",     0x4, BIT(8),  BIT(24), 0x4, 0,       0,       0x4, BIT(2),  BIT(18), false),
++	[RK3588_PD_NVM0]	= DOMAIN_RK3588("nvm0",    0x4, BIT(9),  0,       0x4, BIT(1),  BIT(23), 0x0, 0,       0,       false),
++	[RK3588_PD_SDIO]	= DOMAIN_RK3588("sdio",    0x4, BIT(10), 0,       0x4, BIT(2),  BIT(24), 0x4, BIT(3),  BIT(19), false),
++	[RK3588_PD_USB]		= DOMAIN_RK3588("usb",     0x4, BIT(11), 0,       0x4, BIT(3),  BIT(25), 0x4, BIT(4),  BIT(20), true),
++	[RK3588_PD_SDMMC]	= DOMAIN_RK3588("sdmmc",   0x4, BIT(13), 0,       0x4, BIT(5),  BIT(26), 0x0, 0,       0,       false),
+ };
+ 
+ static const struct rockchip_pmu_info px30_pmu = {
+@@ -1207,6 +1294,9 @@ static const struct rockchip_pmu_info rk3588_pmu = {
+ 	.req_offset = 0x10c,
+ 	.idle_offset = 0x120,
+ 	.ack_offset = 0x118,
++	.mem_pwr_offset = 0x1a0,
++	.chain_status_offset = 0x1f0,
++	.mem_status_offset = 0x1f8,
+ 	.repair_status_offset = 0x290,
+ 
+ 	.num_domains = ARRAY_SIZE(rk3588_pm_domains),
 -- 
 2.39.2
 
