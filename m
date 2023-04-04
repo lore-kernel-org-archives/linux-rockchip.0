@@ -4,100 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E501C761A6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 294E9C761AF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X492oqCNXgBHHUcM0bAqzGXm5qZTrI1PC9poY3Berr0=; b=wSS9pQ4V6kgX+d
-	pzxNHwWn0JItJetQr++7CVxzMc3vqdz1QAwc6JJBg8wjHWotvD2RbFmmm6AaI1WOdiAk+JHaKY3qQ
-	IL0kcoDO5ujfi99UsaTh2sATlRc8c/uEjL2Y4ZqnColMtQSQlhFBynZdvJOAD9y1y4CItKViNuWVI
-	NvfhZnvSEJHa5NzSmhiZtwV7udB9Ip61SURm+fQ1YoZg+BkslYw+QAQXw5WwZeCb+b4uaUfVS/MGG
-	gBkDeNy8UUmbfsqCh2VKxNBYmIsMVf7mT7L3HEo5Vytb63uI3hOtkMMfZ2k/CcfvPurxOnSNNp+js
-	7Kb+yHhMGT48RheREfkg==;
+	List-Owner; bh=NgkGIg3T/iAVmNxl5ikfIlpwG92jxyrHp7x8EmywOi4=; b=esIoj8dejJLgTk
+	BYCigB5MLfcC9F3XWfJtssqOD9NyOfAx5OjcwruG2DzIioZf1mk1CrLACFUF4Ok1q2Roh93sDboGm
+	aXGKGWQCEho1wVgzTxSehOri1v4f9RVpbCLd5u+EBW2S01SkzOGb6sCywfls0DXr4228An6KIhmzG
+	viPOMJSd+l6kk7t8ZoS2A0LPNCj2NqJJQlXl5d2v8d9AJ09zuSjqgFAisDKuZ+MzMpoyWEKbsSJ8I
+	enwQvbUVBkZLzHfIgFHXvccoAftqc6kZh8Te187NiYHNVbOaRWxT4BL88mJsVrOYva3awb/5dVM6O
+	CHHCGS7TFKwGx8tau19Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjc71-000VZ9-02;
-	Tue, 04 Apr 2023 08:33:58 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1pjc9d-000WHt-0V;
+	Tue, 04 Apr 2023 08:36:40 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbyp-000TDo-1c;
-	Tue, 04 Apr 2023 08:25:40 +0000
-Received: by mail-ed1-x532.google.com with SMTP id ew6so127183939edb.7;
-        Tue, 04 Apr 2023 01:25:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680596723;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YMOuHcpOtvN2Vos7+WkyUoQhNIDMZLfD7nUQJQoM+mI=;
-        b=pVppU3a0PdLWIHGdL7m0UT+/f7hfM4JMmYsvNGCD8CiAWXScwKhNZ0mkgeK7ol0Z+d
-         S5Xk81m0touXMg4xxXOYGgw1jCaKugWiT2PsAq6080EnSlTq9vMaYaGd/M64uFmQmvdN
-         5djw2i0/VywNrLXHAT6Uxo+BnOGzz4nfLoFTFMdFzAl1eJttd3+ZoKFJHpYUNWO9R1Xy
-         mcuPPdmwDlcJwREGFMD2zdV+MO8voIhuHtpb/SwnDSo/idg+wRwEH88RskTlxXrfnMH7
-         2dF3rwOaJgaEDnJEp/0b0rm+0c7g4As+ykfoDLVCiOJ3bdm+9TihLnRc4crqKRKYCjcR
-         KMlg==
+	id 1pjbzK-000TNl-2n
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Apr 2023 08:26:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1680596758;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wH4tevsU+8OYlBB4O8no0eUhUFdANjDH5IldhU/Tbvc=;
+	b=iAjpeRfBN3t1Gh7xo1rUyA08HCqRpbj27/nWM76CvplGmjUSCS8zwOUF/kJC/Y77mMKzRn
+	Acx3cuTn4syJqHw8+g02AUDPFfRnRP43q9hnLHOEQlpjBqlZibw1zOlnmE3Ivy6v73g/0g
+	chgAO2PA3k6jstJwDtdNDAToTj2ZPmk=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-338-Nifzqgg3ONyyvj2jrS0ShA-1; Tue, 04 Apr 2023 04:25:56 -0400
+X-MC-Unique: Nifzqgg3ONyyvj2jrS0ShA-1
+Received: by mail-wr1-f71.google.com with SMTP id h18-20020adfa4d2000000b002cea098a651so3509766wrb.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Apr 2023 01:25:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680596723;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1680596755;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YMOuHcpOtvN2Vos7+WkyUoQhNIDMZLfD7nUQJQoM+mI=;
-        b=tNfL1fD+bo5L2+tsyusMHNO1Rq5hYpgXcMgdIxVBimIjJ0sMssMB+fo97SRA2SeSTH
-         rzJFQQFBP1vveHz/oOX4DIc3IIgrIWTsp6rrLTr3aYo54ElqGQ5mcys58SbKHuZYm7Ps
-         PoovmTL8TomxL1HOVNOvln1Javcn4KnZN+nHxoSx5KwInq60mDWf/OvXpU6bCxubDgoE
-         IEHCtEXZ8MIaTQMZZIfw7z4lMzdpHWLIK5Xndxypl9jC6hCOUpSZeK1wKsLrvrgphV8o
-         OKeRas7/jYMbwmCCKq4oSemomnSRt4S+8VZU+JN/cPn2MNEaWJ0/PtodTbX843VltP9o
-         Q7IA==
-X-Gm-Message-State: AAQBX9cFkiChlDj6ysKxqaFI0QRcXitGmAJycd/AUqJ2TJYPWMqk3GmW
-	EGrlpQb9s6+Es/BN4iOPu6U=
-X-Google-Smtp-Source: AKy350bshUiIZxT54qrvAjQMPVs6ektUN+zdeXnmDQ6O2Bysx+xuNgnRGmxA4V/c/HGT+dYVm6L8Vg==
-X-Received: by 2002:a17:907:119e:b0:933:be1:8f4f with SMTP id uz30-20020a170907119e00b009330be18f4fmr1529889ejb.9.1680596722695;
-        Tue, 04 Apr 2023 01:25:22 -0700 (PDT)
-Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
-        by smtp.googlemail.com with ESMTPSA id s5-20020a170906454500b008e54ac90de1sm5640652ejq.74.2023.04.04.01.25.21
+        bh=DLHxW7OoQshnacuWjV5juyoD/NSSMgV+DMSPL4rEmJE=;
+        b=4VcauIaxwCvctUSlF3B/cT1Z3JFRQPDKOYo+Xj/TqXTemI6df6dMf/afEFwcannKuU
+         4WEnVwCbSCIduoiVZJbF2xb7r83L8W34WMVKlOaTFmsHy8cNsA7AQK6NsE2Y28PXoyCz
+         irXSehl1rXXLM2dwgh35a6mI9YMIz+IJmh5v/maj1t9nQAofGbCIPKFRZ+mNYah+LBCQ
+         x5/eaAcMWdSqNHeWBKLNKiUuM7B+387ShYtTCLgQMGON4r0BaGG6F3CfM9uDGdhgvaiC
+         gUnAU0Jt2wornj7HE1t8ZR8xRWtBbhBJqct1Q6HTjVCgUw7kHBOi+Yg3tuSQlFBkTxhj
+         y4UA==
+X-Gm-Message-State: AAQBX9dl0Nv2OfFILbmTXfNCNT83EhZdsO9/+4TW43CZ3Iserz6Ag6dF
+	z8BLs4Q1PEGPRoDU4T0RsC3aztzmbQJkaPwCqOIaN9NMrCzAoF0AKLGXicEIbpwfw0FyMoQoZ4Q
+	M8YMrLSOVO7enrMUggbThg7wBuYy/flld
+X-Received: by 2002:a05:600c:1d01:b0:3ee:93d2:c915 with SMTP id l1-20020a05600c1d0100b003ee93d2c915mr15093493wms.6.1680596755415;
+        Tue, 04 Apr 2023 01:25:55 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ba7DBVeDjGlRx+Sx2kJBGjDFAgosCIOA4m76so9y/3HTIEUU7Q81F0CA4kOqiE8YLARn5ztA==
+X-Received: by 2002:a05:600c:1d01:b0:3ee:93d2:c915 with SMTP id l1-20020a05600c1d0100b003ee93d2c915mr15093483wms.6.1680596755128;
+        Tue, 04 Apr 2023 01:25:55 -0700 (PDT)
+Received: from localhost (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
+        by smtp.gmail.com with ESMTPSA id u21-20020a05600c00d500b003ee4e99a8f6sm14389362wmm.33.2023.04.04.01.25.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Apr 2023 01:25:22 -0700 (PDT)
-From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-To: alberto.dassatti@heig-vd.ch
-Cc: damien.lemoal@opensource.wdc.com,
-	xxm@rock-chips.com,
-	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
-	stable@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Judy Hsiao <judyhsiao@chromium.org>,
-	Lin Huang <hl@rock-chips.com>,
-	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
-	Hugh Cole-Baker <sigmaris@gmail.com>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 09/11] PCI: rockchip: Use u32 variable to access 32-bit registers
-Date: Tue,  4 Apr 2023 10:24:22 +0200
-Message-Id: <20230404082426.3880812-10-rick.wertenbroek@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
-References: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
+        Tue, 04 Apr 2023 01:25:54 -0700 (PDT)
+From: Javier Martinez Canillas <javierm@redhat.com>
+To: Peter Robinson <pbrobinson@gmail.com>, Jarrah <kernel@undef.tools>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, Caleb
+ Connolly <kc@postmarketos.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Martijn Braam <martijn@brixit.nl>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh+dt@kernel.org>, Tom
+ Fitzhenry <tom@tom-fitzhenry.me.uk>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Change serial baud rate for
+ Pinephone Pro to 1.5 MB
+In-Reply-To: <CALeDE9OVq8ys9Ymx6Na+a0oK6R8CpfD=fbM6FTtWGnJQn_SR5Q@mail.gmail.com>
+References: <20230403175937.2842085-1-javierm@redhat.com>
+ <3738011.44csPzL39Z@diego>
+ <d7efebcc-5b5b-185e-bec8-b6b9d5d27d93@undef.tools>
+ <CALeDE9OVq8ys9Ymx6Na+a0oK6R8CpfD=fbM6FTtWGnJQn_SR5Q@mail.gmail.com>
+Date: Tue, 04 Apr 2023 10:25:53 +0200
+Message-ID: <87edp0dpf2.fsf@minerva.mail-host-address-is-not-set>
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_012536_588514_847CE8D4 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20230404_012607_709440_28DA2FA3 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,82 +103,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Previously u16 variables were used to access 32-bit registers, this
-resulted in not all of the data being read from the registers. Also
-the left shift of more than 16-bits would result in moving data out
-of the variable. Use u32 variables to access 32-bit registers
-
-Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-Cc: stable@vger.kernel.org
-Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
----
- drivers/pci/controller/pcie-rockchip-ep.c | 10 +++++-----
- drivers/pci/controller/pcie-rockchip.h    |  1 +
- 2 files changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index f366846ad77c..924b95bd736c 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -274,15 +274,15 @@ static int rockchip_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
- {
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
--	u16 flags;
-+	u32 flags;
- 
- 	flags = rockchip_pcie_read(rockchip,
- 				   ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
- 				   ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
- 	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK;
- 	flags |=
--	   ((multi_msg_cap << 1) <<  ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
--	   PCI_MSI_FLAGS_64BIT;
-+	   (multi_msg_cap << ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
-+	   (PCI_MSI_FLAGS_64BIT << ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET);
- 	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP;
- 	rockchip_pcie_write(rockchip, flags,
- 			    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
-@@ -294,7 +294,7 @@ static int rockchip_pcie_ep_get_msi(struct pci_epc *epc, u8 fn, u8 vfn)
- {
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
--	u16 flags;
-+	u32 flags;
- 
- 	flags = rockchip_pcie_read(rockchip,
- 				   ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
-@@ -355,7 +355,7 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
- 					 u8 interrupt_num)
- {
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
--	u16 flags, mme, data, data_mask;
-+	u32 flags, mme, data, data_mask;
- 	u8 msi_count;
- 	u64 pci_addr, pci_addr_mask = 0xff;
- 	u32 r;
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 5797ba73bb6b..1558eae298ae 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -226,6 +226,7 @@
- #define ROCKCHIP_PCIE_EP_CMD_STATUS			0x4
- #define   ROCKCHIP_PCIE_EP_CMD_STATUS_IS		BIT(19)
- #define ROCKCHIP_PCIE_EP_MSI_CTRL_REG			0x90
-+#define   ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET		16
- #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET		17
- #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK		GENMASK(19, 17)
- #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MME_OFFSET		20
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+UGV0ZXIgUm9iaW5zb24gPHBicm9iaW5zb25AZ21haWwuY29tPiB3cml0ZXM6Cgo+IE9uIFR1ZSwg
+QXByIDQsIDIwMjMgYXQgOToxM+KAr0FNIEphcnJhaCA8a2VybmVsQHVuZGVmLnRvb2xzPiB3cm90
+ZToKPj4KPj4gSGksCj4+Cj4+IE9uIDQvNC8yMyAxNzo1MSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
+Cj4+ID4gVGhlIGludGVyZXN0aW5nIHF1ZXN0aW9uIGlzIGFsd2F5cyBpZiB0aGlzIHdpbGwgYnJl
+YWsgc29tZW9uZSBlbHNlJ3Mgc2V0dXAuCj4+ID4gSSd2ZSBuZXZlciByZWFsbHkgdW5kZXJzdG9v
+ZCB0aGUgc3RyYW5nZSBzZXR0aW5nIG9mIDEuNU1CcHMsIGJ1dCBvbiB0aGUKPj4gPiBvdGhlciBo
+YW5kIGl0IF9pc18gYSByZWFsaXR5IG9uIG1vc3QgYm9hcmRzLgo+PiA+Cj4+ID4gUGVyc29uYWxs
+eSBJIGRvbid0IGNhcmUgdGhhdCBtdWNoIGVpdGhlciB3YXksIGJ1dCB3b3VsZCBsaWtlIGEgY29t
+bWVudAo+PiA+IGZyb20gdGhlIG90aGVyIHBlb3BsZSB3b3JraW5nIG9uIHRoYXQgZGV2aWNlIC0g
+aWYgcG9zc2libGUuCj4+Cj4+Cj4+IEkgZG9uJ3QgaGF2ZSBhIHN0cm9uZyBvcGluaW9uIGVpdGhl
+ciB3YXksIGJ1dCBJIHdvdWxkIG5vdGUgdGhhdAo+PiBUb3ctQm9vdFswXSB3aGljaCBsYXRlciBt
+b2RlbHMgb2YgdGhpcyBkZXZpY2Ugc2hpcCB3aXRoIHVzZXMgMTE1MjAwLAo+PiBtZWFuaW5nIHRo
+YXQgdGhpcyB3b3VsZCBwdXQgdGhlIGRldmljZSBvdXQgb2Ygc3luYyB3aXRoIHRoZSBkZWZhdWx0
+Cj4+IHUtYm9vdCBpbXBsZW1lbnRhdGlvbiBmcm9tIHRoZSBmYWN0b3J5Lgo+Cj4gVXBzdHJlYW0g
+VS1Cb290IHN1cHBvcnQgdXNlcyB0aGUgMS41bSB0aGF0IGFsbCB0aGUgb3RoZXIgcm9ja2NoaXAg
+ZGV2aWNlcyB1c2UuCj4KClRoYXQncyB0cnVlIHRvby4gSW4gZmFjdCwgdGhlIFBpbmVib29rIFBy
+byBhbHNvIHVzZXMgMS41bSBzbyBwZW9wbGUgdXNpbmcKVG93LUJvb3QgYWxyZWFkeSB3aWxsIGhh
+dmUgYSBtaXNtYXRjaCB3aGVuIHVzaW5nIHRoYXQgZGV2aWNlLiBUaGUgUFBQIGlzCnRoZSBkZXZp
+Y2UgdGhhdCBpcyBub3QgY29uc2lzdGVudCB3aXRoIGFsbCB0aGUgb3RoZXIgcmszMzk5IGJvYXJk
+cy4KCi0tIApCZXN0IHJlZ2FyZHMsCgpKYXZpZXIgTWFydGluZXogQ2FuaWxsYXMKQ29yZSBQbGF0
+Zm9ybXMKUmVkIEhhdAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
