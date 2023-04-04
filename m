@@ -4,87 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 510DFC761A6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 14:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD97C761A6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 14:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZZehROvuANER40JVd34+MZlVpND/8zcGp1aYRdmrr24=; b=ji5VlBQeMto8u6
-	kGeX9I4NvfAUy2dT2AVIT+rJ4+qxrTXJ5AOWoWTgf8bYmIRETOlqp3K8reIHmd9wsAyWilauXbdNj
-	NydFNv/S4CDqpDZIf9xnv2Afaa/dwKlzKpdPjaBnsRAhDG3oO46xZMvmGzHMOi9W5Dg6lyUOCn5mW
-	Y9EdovWu+J164k3F4a/tHhzrSOItZTDlpXtGMIk1BC9lFpa/nMC1Ge1vlkrczZrXZVO0z2hjb9itD
-	2dFcOf+LOf893iLmxfzR5VYsI6D3POFwJtLkT3sBbU9PhNUc22avQgnOW7xg3x0ZldiQR99q32LlX
-	Nku5925MSbXSFqXQuDwg==;
+	List-Owner; bh=eqfG3L61b36LI4WyV7DqQRhjh2kuGVziteidBjAxtuE=; b=fZvic/MtdG2QlS
+	i/v1K9lFH5dnWhmYCuSElXiqRELT/rJJY6l++vWQubdqVs994W4kKwzycnMbrCyXoCBMC5Xd8PhSE
+	PHfiFJjc30FAcqrRsFv6b9El7+Q0METY2dSJn5PwzZ5zUBt6zUZ11baBpgJghGO+XQyCUl/kXSBDY
+	+9F/chgi6MtO+LGE9frebgB3MziyOgjboehTGtuIZZ1kfHH0yuCYMcGTDLqi21FRBrniZKXb2ejn0
+	0GWSKTv9P6MilmIQ/V8o5JXqAOR2GTTItSX8RqtGAYyvYE6dHC5HbWgJFtCZRroB7HQDbAG+LpzGl
+	e2hVQZORTrRPqJ6zzrsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhYD-001mOl-0t;
-	Tue, 04 Apr 2023 14:22:21 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1pjhcm-001nmQ-11;
+	Tue, 04 Apr 2023 14:27:04 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjhY8-001mMm-1L;
-	Tue, 04 Apr 2023 14:22:17 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-17aeb49429eso34725072fac.6;
-        Tue, 04 Apr 2023 07:22:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680618134;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=818uoQcqFpRfOwtGiVH6lha3tDNbDaxb6v/S7UADaBU=;
-        b=nD8tMq24jTMTPUcgwZF+n5Q1p9OUS0rdreKR9FMa1uks4hiyeeLlz6m24RLr4OVa3Y
-         M89HEipjKy44w9X4hhmz0zhVdQnhAJ3fRIzxO3N7tQlaoOPu1BlViJx3sL4w0TCTA6mH
-         Jv3/P/twetrSm7lU4bR7Preu1a2GVd2SqtZbQmQjphVgejbDsHE4PXNFFV9QtFmvy5g0
-         AVlue76+Cwc4ezdgW3fmauQ/lJVTBYbSKMRTczFeLlY8CAGkUaYm1pFbN928jfRiFeVi
-         pqmt4bgo8XLlUVzBVUU9EcSORff1tNIGsQIyI3fsYMAJhume7Qjc7m1GRFyyODydY8rM
-         MxhQ==
+	id 1pjhci-001nkM-26;
+	Tue, 04 Apr 2023 14:27:01 +0000
+Received: by mail-oi1-f177.google.com with SMTP id bx42so8775434oib.6;
+        Tue, 04 Apr 2023 07:26:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680618134;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=818uoQcqFpRfOwtGiVH6lha3tDNbDaxb6v/S7UADaBU=;
-        b=irudXngcJ9OSbJPpeNwEmeizVpzr/PTpU8GvPl5i/4Y57bkm2k2PZNbbKOyQ5mXatC
-         DvQSOcGvUpoIBcVlnXwOnT/7tLgwNILMY3f791qoEzXmlv5+RX/7GmqbnLzkoWFPi8Ag
-         0hu8QS7VxcJe/K/FjnUZiMs74Evnfi392rimdzei5Z1eXIoSsylKOnhnKCJ5TTKQOs6H
-         hPv64N3i2JC465pFOsg0cR3sQBObSBxY6KN4BtoMCHFD3mTkB/uKRYMfBeNFqekYVAtU
-         2frOiJ5pnbHhRyEkxuBWRHuuMDgXsAJi4RZ2HXjVYTzEnjji3SW487DX6ydKiZaJCkrS
-         c6qA==
-X-Gm-Message-State: AAQBX9cMsDpHj6mkNtbFEB8KTc53ZckFQ+wJwIxMAyt3HrlMFD+J4YbL
-	z9tQhpiUr/Wc5Ah4IrlIRNo=
-X-Google-Smtp-Source: AKy350bk7R/QlO6ayN2c9pBOUWWppaiidy1pXwEJUzHZrvPXrkcdz0oQVNFc6Sj9wXilZSNTdyiunA==
-X-Received: by 2002:a05:6870:ac10:b0:17a:d9b2:ab70 with SMTP id kw16-20020a056870ac1000b0017ad9b2ab70mr1717804oab.7.1680618133811;
-        Tue, 04 Apr 2023 07:22:13 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id a4-20020a05680802c400b00383ef58c15bsm5150639oid.28.2023.04.04.07.22.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 04 Apr 2023 07:22:13 -0700 (PDT)
-Message-ID: <6441032d-d641-c00c-5c1b-66f65af6e6b9@roeck-us.net>
-Date: Tue, 4 Apr 2023 07:22:11 -0700
+        d=1e100.net; s=20210112; t=1680618419;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GepwDY8pY6IPiy+4YgNweyquxm2+4jucNmXEMIhff7Y=;
+        b=lmibMvxsjVKWRWIPVvStSKlqcpaizSyz4FD8jIGSbtkIQnZUZj+vWpdKhP7oI8PXMb
+         Olpjd6sj7vUGmfWI3FyBkcFmp7raWtZM4AXoe9FGMTMoHwAOPz0RjHH6tnKnxhtwYcuG
+         /LhDGUnjLFg4GByZnF0jswq0TuuwBtfhLyxVjotJNmK15ezxKOWkMehzzboiGdjeJug3
+         nPVFLgEtMgnuMw/X8mHG3xP4llZdbeg+DPFYF3f+rpl3g7cqBzbN4T6leqnz60sy9xfh
+         G2z+jYw1KMDh8+XrLdn+1/gJj6KyWxFBsFhEvfGMzBCwF4ZKnmpmgqqx9qjYDpis+MTE
+         94pA==
+X-Gm-Message-State: AAQBX9eI6XB5BrlD/NdYOeHOK+jDN7vCm4oNtXPUfkFin0BWRU6rGfux
+	abBO+DtjKgCARON3aM88dg==
+X-Google-Smtp-Source: AKy350ZFLMdWujtv62S9b2atoWj5/+Ipi68c5D8aVR0u5Kg9UKFRTqw5ZWlxRl3ioOihcP+8ZlLrbg==
+X-Received: by 2002:aca:1702:0:b0:387:cfb5:98f1 with SMTP id j2-20020aca1702000000b00387cfb598f1mr1230525oii.27.1680618418614;
+        Tue, 04 Apr 2023 07:26:58 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id a4-20020a4aae44000000b00524faf3d2d7sm5392916oon.41.2023.04.04.07.26.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Apr 2023 07:26:58 -0700 (PDT)
+Received: (nullmailer pid 3835522 invoked by uid 1000);
+	Tue, 04 Apr 2023 14:26:57 -0000
+Date: Tue, 4 Apr 2023 09:26:57 -0500
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, kernel@collabora.com, Kishon Vijay Abraham I <kishon@kernel.org>, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCHv2 1/7] dt-bindings: soc: rockchip: add rk3588 usb2phy
+ syscon
+Message-ID: <168061841610.3835454.11500113945951398690.robh@kernel.org>
+References: <20230403202307.120562-1-sebastian.reichel@collabora.com>
+ <20230403202307.120562-2-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Convert to DT schema
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Jean Delvare <jdelvare@suse.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-hwmon@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
- <20230403105052.426135-2-cristian.ciocaltea@collabora.com>
- <20230404141749.GB3793612-robh@kernel.org>
-From: Guenter Roeck <linux@roeck-us.net>
-In-Reply-To: <20230404141749.GB3793612-robh@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20230403202307.120562-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_072216_460716_F0830142 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230404_072700_686977_E120B40A 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,41 +78,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/4/23 07:17, Rob Herring wrote:
-> On Mon, Apr 03, 2023 at 01:50:51PM +0300, Cristian Ciocaltea wrote:
->> Convert the PWM fan bindings to DT schema format.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>   .../devicetree/bindings/hwmon/pwm-fan.txt     |  68 +----------
->>   .../devicetree/bindings/hwmon/pwm-fan.yaml    | 109 ++++++++++++++++++
->>   2 files changed, 110 insertions(+), 67 deletions(-)
->>   create mode 100644 Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
-...
->> +
->> +  pulses-per-revolution:
->> +    description:
->> +      Define the number of pulses per fan revolution for each tachometer
->> +      input as an integer (default is 2 interrupts per revolution).
+
+On Mon, 03 Apr 2023 22:23:01 +0200, Sebastian Reichel wrote:
+> The usb2phy is accessible via a syscon registers on RK3588, similar
+> to rk3399.
 > 
-> default: 2
-> 
->> +      The value must be greater than zero.
-> 
-> minimum: 1
-> 
-> maximum: ??? I assume there's some practical limit here much less than
-> 2^32.
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
-Should be 1 to 4.
-
-Guenter
+Acked-by: Rob Herring <robh@kernel.org>
 
 
 _______________________________________________
