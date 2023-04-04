@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B19C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36F8C761A6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:31:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qE2C3d+IMttU0DJgGhazLz7gmc1C+I9KNB0rFXwz7NU=; b=EBEGpdTXzAr3Fd
-	YQxs3G8zggfN/LuqsWoRnhDa6Ng4LaQibX8Hyhv9MJILWVbX7lytWy9PtRt3CqerJHHhvsFZ8SXEt
-	sduIbQtHFmlRIrM2L6BlRy71rT6kYmMYgjmLbI3i3WH83lOLiioZ/OQl59vPeexXMJ5V77BBW/zhO
-	tr+eLufnq2AxpPi8VVj6dgNg9f/78WZT0JTQd5oZTu2ynskDgXymdUTqTe8jSMBGkKNL3hLXStw/I
-	+pCCsVvvPbgjNjDvHjZfZ3b3QB+EoZhfmSBgHDOU3At9PeEE0pZz5qRwmh9dOlpt0VsOgpHEyM1Uq
-	H9TSD1cH1SmofMyy/Z2Q==;
+	List-Owner; bh=Uzx26um0c9TmM0WXgw+kJ5W9dRhKXSTcVNjLQYzYRpo=; b=Wm0zhpVtpgscVt
+	JZ6vMvWicyh++CQ7UTCJhgqFqsjrLZ/8OajNw9KUSQIDnlfvgJM9+YtCPvJEBm85SGj79DHjROFVt
+	UqBakG+u+8PsJTugXHuQBxaIjYsdzUIBymF+g0RI6JDlP0BkTpjth175G8YaY0EtGR5ccjGVm1W8Q
+	Nzsv4LP9CltG8HGE/N6Xi5qKS4KlIUcWV8i82FDeB/G9INRPq41QP5NUCV+qO3Rh6iFc8QxuysPXq
+	ZfAZ+mi8b9Iw2jtCPsMjgd0vatd2X/d7XyPdCPiCfoQ4SjhuYLbxKvBwQWyoIOLbfrVpRVSWj1jos
+	EtU2SCJNIVWRRhcO4Tmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjc4H-000UYN-1O;
-	Tue, 04 Apr 2023 08:31:05 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1pjc4E-000UVX-17;
+	Tue, 04 Apr 2023 08:31:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbya-000SyN-0J;
-	Tue, 04 Apr 2023 08:25:15 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id w9so127285903edc.3;
-        Tue, 04 Apr 2023 01:25:11 -0700 (PDT)
+	id 1pjbye-000TBk-1a;
+	Tue, 04 Apr 2023 08:25:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=1KieLp2SnNCkcNVzhL5on0X9p6T2oILFqI3zJbVKVE0=; b=mDS1f9btPIM9XaaOxrc1KdBruB
+	sJUPAus3TttRDu7x95v5F0VLmId8X4B99WUglhVeXKrio/uviI6G5dsVbwiwoppLUQk3mOjCyJOgd
+	y0v3wnwSw+rNNBKbYDTG60jI+5RN2ZQ64qORtkp2iuRWJ8eQBtVcMgah+Es1Fex7LVvVdjQ+Y1Sn6
+	UGtLGrDjJ6vGVBJoTcTRowhGt8mYvdb3DgfCKuPDGarOM23oEo+hfGnD8413yONUVZI4F7rXNKQi8
+	F7wOfE1PDcbvE5dkj/pO1omU/rGUyre1goy6y2cb2GpTkWUWfYpsHhpgnAR8lOWCenjtnYlf4yj95
+	O7oYovWQ==;
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pjbya-009Cgw-1z;
+	Tue, 04 Apr 2023 08:25:14 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id ek18so127305869edb.6;
+        Tue, 04 Apr 2023 01:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680596711;
+        d=gmail.com; s=20210112; t=1680596708;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RW4xQc3ikP0AK8TIDBwhgtC3jzWZc1PY5oJEvurirtM=;
-        b=BQSCnClFnlxwWlNN3DOSoyRfgI2NVmn+NdADPC/2aHdYSzkKKHUTthLZBipKUbLxCR
-         PrbrL8Mh683vzUiBtIuApELulhpDYzAE8x80zypjk0+ZaS9xrbjHcewQwoHw2GydXfh4
-         ZLeljBSxSYlzbR3omrSk7/IwdNXMXy7eNs2wb0SFVknNsk63gHpo6/9LcK5s9PDrDLTi
-         r7visnoeg8LIUkpMZ67/4hs71ss2XvzsesgKAewcLz9xcfTBeAHjxbazGV/M99lverDx
-         QawVtzx9RFZQBTuLlDp3zeURb4e2JDDer6Fez0OgAqvO/ChrGhqskYpUVlink3iCmEjG
-         xIXg==
+        bh=1KieLp2SnNCkcNVzhL5on0X9p6T2oILFqI3zJbVKVE0=;
+        b=DfuQveiBa0LxS77gl+Rl1CWKORlrqkFw6RqoDjxce+ccxFFAs9L/hPnx7e5uk1tznA
+         WmvqfJPHWR3TvxPic7IcX1TvoymUXUygNdM4itenRL5bWRclKqs7gTWUt3dqs84EI52s
+         0UjpYft+7w6xENZfZaH8dq/ktQuJC1cQP37tabVSoDUQ8LbJGanwPWIu29Qs7kAccR5f
+         6O/LajzOKeNpPVcn/a4KOcZQNAkZq2oAaX5RVvSdLfyrsFPP+r5CSljYvt9yI6y0EdvL
+         2s3p3FrPikJ4Cjj3meQimnQjIDw3dpfVnX8uzdBKKrx3XtL6UZJSyeOGmQ87lo7G058w
+         OgBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680596711;
+        d=1e100.net; s=20210112; t=1680596708;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RW4xQc3ikP0AK8TIDBwhgtC3jzWZc1PY5oJEvurirtM=;
-        b=q0Ad/Kj/ChdQtDwr4Y6Oab6rSyYBts1VJHy4EpwZdjS8ddrQaoiUhS0CcPOv2W4iaM
-         wkh58s3VZpJ9XrrG1+a465MKhAuyJ4qMhDDy2e9S2iOYilJePVYiQchf2PC8km3UGCyQ
-         6uu/zvj9bJLdpIXf1uQp5HRXF04ErXw3+HF4qQ7wQ61Grljb7WCGDIb3JqHlgLhj5rIW
-         ehsR91d3+VinmaeMSxSs8u1V1K5DoHsI8ZsxUXQkpooNa1DqYeXZXCOecdzPSr+KDQ/Q
-         PMaj/ijcFWOXEj0oOzuSFI47IxfYnkzgM8IXJDpVdyG+JAcIVZkVQbLqv1IKrOsnwwyj
-         lxhQ==
-X-Gm-Message-State: AAQBX9ezssm/2NDvJqoShvdqewz/mhciGT0+ZxG/6nLCtGx+4bdeyeZT
-	HtxgVFDu7F1xC/OiXdnub0A=
-X-Google-Smtp-Source: AKy350ZtH/tPJlarxTbHi8MVZ4f+XMBRlz6L67phf+7sEXOHB2MWF3l6wyRM7erwq8A1xjNY6hXS5g==
-X-Received: by 2002:a17:906:408e:b0:931:af6a:ad0f with SMTP id u14-20020a170906408e00b00931af6aad0fmr1328999ejj.76.1680596711395;
-        Tue, 04 Apr 2023 01:25:11 -0700 (PDT)
+        bh=1KieLp2SnNCkcNVzhL5on0X9p6T2oILFqI3zJbVKVE0=;
+        b=7XUrGMQJqldpiWBQgHJCzJuKYa/9/NUfkYb3bKX0CocZpMb2+qOJNsN1IzL24jYrp8
+         x98YFtZrCdmTCiseZrXCFx9cU3EAkcs2geBPxj/yjqgzel4ns2Nrqmuie0/cwdEYKq21
+         1+8Qya2iAVP6wKPx+9f9W3NP6ciof7JBW8V3EBTWSg9/p04dNA0bxlPFwUnwqipXUUot
+         cZ4gRbRkAMin+ivv9luBYw9Jp4K9lBaAdjrmGgZc0hkdWo7G6nj5cNzU49yDHas2gIde
+         1M07Pj2lbHTM6OTJfEd3Hftin0qusMv6mIYzv8kbPMpLUrNxrpy6SayjBncXmPdL9Xbg
+         SunA==
+X-Gm-Message-State: AAQBX9fw38IzpwXy1EqBwazrbK8maPZahEDimzDdf8hCz/m1twefurXz
+	rP+9Yjz4dzW9dMha+LF+cv8=
+X-Google-Smtp-Source: AKy350YOQwqlb1+ARj72z2o90Q5PEeI1B0Q03zcNEyWeTwo7YTYxTPKGar1Kccq2New8JxSwG4BZhQ==
+X-Received: by 2002:a17:906:3b95:b0:926:8f9:735c with SMTP id u21-20020a1709063b9500b0092608f9735cmr1784857ejf.32.1680596708617;
+        Tue, 04 Apr 2023 01:25:08 -0700 (PDT)
 Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
-        by smtp.googlemail.com with ESMTPSA id s5-20020a170906454500b008e54ac90de1sm5640652ejq.74.2023.04.04.01.25.10
+        by smtp.googlemail.com with ESMTPSA id s5-20020a170906454500b008e54ac90de1sm5640652ejq.74.2023.04.04.01.25.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Apr 2023 01:25:11 -0700 (PDT)
+        Tue, 04 Apr 2023 01:25:08 -0700 (PDT)
 From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 To: alberto.dassatti@heig-vd.ch
 Cc: damien.lemoal@opensource.wdc.com,
 	xxm@rock-chips.com,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	stable@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>,
 	Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -75,28 +90,27 @@ Cc: damien.lemoal@opensource.wdc.com,
 	Heiko Stuebner <heiko@sntech.de>,
 	Johan Jonker <jbx6244@gmail.com>,
 	Brian Norris <briannorris@chromium.org>,
-	Caleb Connolly <kc@postmarketos.org>,
 	Corentin Labbe <clabbe@baylibre.com>,
-	Hugh Cole-Baker <sigmaris@gmail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Judy Hsiao <judyhsiao@chromium.org>,
+	Caleb Connolly <kc@postmarketos.org>,
 	Lin Huang <hl@rock-chips.com>,
 	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	Hugh Cole-Baker <sigmaris@gmail.com>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 05/11] arm64: dts: rockchip: Add dtsi entry for RK3399 PCIe endpoint core
-Date: Tue,  4 Apr 2023 10:24:18 +0200
-Message-Id: <20230404082426.3880812-6-rick.wertenbroek@gmail.com>
+Subject: [PATCH v3 04/11] PCI: rockchip: Add poll and timeout to wait for PHY PLLs to be locked
+Date: Tue,  4 Apr 2023 10:24:17 +0200
+Message-Id: <20230404082426.3880812-5-rick.wertenbroek@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
 References: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_012513_797080_A3DD9C04 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20230404_092512_840594_7C55B4EA 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,56 +127,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add dtsi entry for RK3399 PCIe endpoint core in the device tree.
-The status is "disabled" by default, so it will not be loaded unless
-explicitly chosen to. The RK3399 PCIe endpoit core should be enabled
-with the RK3399 PCIe root complex disabled because the RK3399 PCIe
-controller can only work one mode at the time, either in "root complex"
-mode or in "endpoint" mode.
+The RK3399 PCIe controller should wait until the PHY PLLs are locked.
+Add poll and timeout to wait for PHY PLLs to be locked. If they cannot
+be locked generate error message and jump to error handler. Accessing
+registers in the PHY clock domain when PLLs are not locked causes hang
+The PHY PLLs status is checked through a side channel register.
+This is documented in the TRM section 17.5.8.1 "PCIe Initialization
+Sequence".
 
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
 Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Reviewed-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Tested-by: Damien Le Moal <damien.lemoal@opensource.wdc.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 27 ++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ drivers/pci/controller/pcie-rockchip.c | 17 +++++++++++++++++
+ drivers/pci/controller/pcie-rockchip.h |  2 ++
+ 2 files changed, 19 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 928948e7c7bb..c16c6176cffc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -265,6 +265,33 @@ pcie0_intc: interrupt-controller {
- 		};
- 	};
+diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+index 990a00e08bc5..1aa84035a8bc 100644
+--- a/drivers/pci/controller/pcie-rockchip.c
++++ b/drivers/pci/controller/pcie-rockchip.c
+@@ -14,6 +14,7 @@
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/iopoll.h>
+ #include <linux/of_pci.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+@@ -153,6 +154,12 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ }
+ EXPORT_SYMBOL_GPL(rockchip_pcie_parse_dt);
  
-+	pcie0_ep: pcie-ep@f8000000 {
-+		compatible = "rockchip,rk3399-pcie-ep";
-+		rockchip,max-outbound-regions = <32>;
-+		clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
-+			 <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
-+		clock-names = "aclk", "aclk-perf",
-+			      "hclk", "pm";
-+		max-functions = /bits/ 8 <8>;
-+		num-lanes = <4>;
-+		reg = <0x0 0xfd000000 0x0 0x1000000>,
-+		      <0x0 0xfa000000 0x0 0x2000000>;
-+		reg-names = "apb-base", "mem-base";
-+		resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
-+			 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>,
-+			 <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>,
-+			 <&cru SRST_A_PCIE>;
-+		reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
-+			      "pm", "pclk", "aclk";
-+		phys = <&pcie_phy 0>, <&pcie_phy 1>,
-+		       <&pcie_phy 2>, <&pcie_phy 3>;
-+		phy-names = "pcie-phy-0", "pcie-phy-1",
-+			    "pcie-phy-2", "pcie-phy-3";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie_clkreqnb_cpm>;
-+		status = "disabled";
-+	};
++#define rockchip_pcie_read_addr(addr) rockchip_pcie_read(rockchip, addr)
++/* 100 ms max wait time for PHY PLLs to lock */
++#define RK_PHY_PLL_LOCK_TIMEOUT_US 100000
++/* Sleep should be less than 20ms */
++#define RK_PHY_PLL_LOCK_SLEEP_US 1000
 +
- 	gmac: ethernet@fe300000 {
- 		compatible = "rockchip,rk3399-gmac";
- 		reg = <0x0 0xfe300000 0x0 0x10000>;
+ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ {
+ 	struct device *dev = rockchip->dev;
+@@ -254,6 +261,16 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		}
+ 	}
+ 
++	err = readx_poll_timeout(rockchip_pcie_read_addr,
++				 PCIE_CLIENT_SIDE_BAND_STATUS,
++				 regs, !(regs & PCIE_CLIENT_PHY_ST),
++				 RK_PHY_PLL_LOCK_SLEEP_US,
++				 RK_PHY_PLL_LOCK_TIMEOUT_US);
++	if (err) {
++		dev_err(dev, "PHY PLLs could not lock, %d\n", err);
++		goto err_power_off_phy;
++	}
++
+ 	/*
+ 	 * Please don't reorder the deassert sequence of the following
+ 	 * four reset pins.
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 51a123e5c0cf..f3a5ff1cf7f4 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -38,6 +38,8 @@
+ #define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
+ #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
++#define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
++#define   PCIE_CLIENT_PHY_ST			BIT(12)
+ #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+ #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
+ #define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
 -- 
 2.25.1
 
