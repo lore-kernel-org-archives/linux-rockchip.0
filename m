@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A74AC6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 07:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F7DC7618D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 07:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xEJ4srxiYWNM1U9vxiORbQuTrS32yPlxvMb+lYJjBqM=; b=VWqZ8V0jiqN6Xk
-	R83yOuL/7dTXb/k3BWx0tS6Tg4f53aXA8OMeecIJTZ7dGziuHYeDkxxNUX8WD0azXufIcKpptJaTA
-	B59exwzX3RAnB4XNpOqSRMoJjoPuWe2UagPfXgyAWYi/VbuhnWiDSjovKQoNCeVdYQ+ZDCidFegJY
-	Kd+AMu6hyKq0AykG1G8DQdtMSxyTF7b4HAvNpnoAEMJQG+86TdAbzy/ollnVjyK3WyzhWJrxjDJUU
-	R2kZjcAEYEy1PS9dc+JXHkmTFbCuNRGvuaK+nrClu8tzuZd00hinfxEZvBaN5IZC4tgsCOqkjWTKo
-	P/I8BmXF8FcI5QDq9y3A==;
+	List-Owner; bh=FQRLnkYXE0vjgeKSdrKDKMfHnSfg80Xp0t78yTbVtt4=; b=2khrPSXzTn1OQd
+	TEOohiFV65SzLjA81TjVppQejTwr6Ga2PbPqAk1GOmq/uWJBxb5x+pJoJHHH9lbvA0ZmUZmWFTedW
+	tRn6tstBcFshsq8q7kMADH3Ru1ob880m93JZmVktR4kOjtvTd+JOMZNxZcPHE0D6E+ClBbryQ4w6e
+	YPOeQS2ckOnxpbdMNyJOp9rW6tXVxxBDICNHP0YcgqYgJ5NFW/osYtuSTcME5zWoQVd76XGM1yXNt
+	x67wYOvSGlaMegRADok2Nu25+il2z97fAE9GAKv9w12DOwWXSSmVt793lRAjOwkniG08z+JEvl3Xv
+	ImSDj5gaOEPmQ2OHIZeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbSj-000Mtw-1I;
-	Tue, 04 Apr 2023 07:52:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pjbSi-000Mtq-2n;
+	Tue, 04 Apr 2023 07:52:16 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbSK-000MnV-1q;
-	Tue, 04 Apr 2023 07:52:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=0GfWR++YzLDNzMoRJqQDCE2tL0zNiAj+mShJ5J30wnI=; b=h479f0u8P+Q+eXv3062OtsUbVt
-	4yFjCw2x7nrCPig9eNU5uEZW8+xe8IF6GpsrQCJEXhhsRZuwMirX84LaFfBL3lSMG9a8oc5BE0s/5
-	Exy5Ob8epdyt8BVQV3w7l5+WUJZKzaRiqqNF+OlK2BvvzySaXl9dlXgHsHvqCfeLf6C4u4njwcRLI
-	Nt+ZdxsYGffQkpRCi6aTO3prWt3iJrLDu9ieQOn95UmT4bF3x8V0lEXALIJ0FtxQ10CFh80PDCWs/
-	8EMSumDfwclTbEAy4Y9n+VRExKGvcEhRB+UCGd+iqCFh9Lrg98i9YGlB9/IMd36r1bj9EoD4iuyBo
-	LYJb3oEQ==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjbSE-009CEY-0V;
-	Tue, 04 Apr 2023 07:51:49 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pjbRg-0004x9-HG; Tue, 04 Apr 2023 09:51:12 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Javier Martinez Canillas <javierm@redhat.com>
-Cc: Peter Robinson <pbrobinson@gmail.com>,
- Javier Martinez Canillas <javierm@redhat.com>,
- Caleb Connolly <kc@postmarketos.org>, Jarrah Gosbell <kernel@undef.tools>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Martijn Braam <martijn@brixit.nl>, Ondrej Jirman <megi@xff.cz>,
- Rob Herring <robh+dt@kernel.org>, Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject:  Re: [PATCH] arm64: dts: rockchip: Change serial baud rate for Pinephone Pro
- to 1.5 MB
-Date: Tue, 04 Apr 2023 09:51:11 +0200
-Message-ID: <3738011.44csPzL39Z@diego>
-In-Reply-To: <20230403175937.2842085-1-javierm@redhat.com>
-References: <20230403175937.2842085-1-javierm@redhat.com>
+	id 1pjbSC-000Mie-2G
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Apr 2023 07:51:55 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-544f7c176easo598362237b3.9
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Apr 2023 00:51:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amarulasolutions.com; s=google; t=1680594672;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cVraZ9OiQ2LG500yR9oFq3EcoKtDUlYAiG0JiN0f9o4=;
+        b=SOU/Xh8ng2VuJeMrr4Ksoco6qKlH4HKZ2DqScfxkz8i04SduPXQUdqhUtaVehcKRNH
+         TOLUqQYjITBN+JzrwHTrYcS5YTt4HyLSQ6jrXq9rxDEyCpGeRaSdxdROiVOqqflUJ2/S
+         XrTuKCGIVZa1BedFmr5j8RNEXv7vZvMye1VsA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680594672;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cVraZ9OiQ2LG500yR9oFq3EcoKtDUlYAiG0JiN0f9o4=;
+        b=e0MPJ3ysd8ZaIsluiJExnc4MrDsgy6DU6ZdOdy/B2Gm38KZWIGUyGZ+XTrGkDBcYJ0
+         PGZNjKnfiSE4jN1YjT1cvpSCSJooEWu2SppBBynU3VTk4rR0N8K4/VP5LFuzQP5fPEAl
+         vD3eIU3AcAUx+Ab3rBIZTPHWIhUrWxMaVDL3Z+kY7n9tr0MTy4n5lNf7blCRxsb72i7a
+         xhSBBfY0r+tIDXt/v5Jq7h3oMWPEdO3aciQGhyHtI7iZYct9h9gbwYAlUNephYmBYhki
+         4+cT5WuJfKpHTYJdMZiWHEsZxLxcH88vTm1Yg1IuJXBgiEUKH3z5zCTBISc/B/70x54k
+         ymtA==
+X-Gm-Message-State: AAQBX9eiS+OOJZfQGkWMwKoii1RbMG2dT7VLbVev0hXfKAmlwuJY5vMx
+	2dVyRaFQiGdyye3PBn9bM+JzGVQTY89bkdh8Dv3SCA==
+X-Google-Smtp-Source: AKy350YZcUbpacC1MbMakGRPTFlCxf28GFXRT3ao56yRtydrha4wgp3YCMO5vP77rYF8l1UQOjO8XLbejlZFZMAROFM=
+X-Received: by 2002:a81:c509:0:b0:52e:e095:d840 with SMTP id
+ k9-20020a81c509000000b0052ee095d840mr1078880ywi.0.1680594672257; Tue, 04 Apr
+ 2023 00:51:12 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230330131746.1475514-1-jagan@amarulasolutions.com>
+ <20230330131746.1475514-2-jagan@amarulasolutions.com> <beae35a5-b094-087a-8443-5f669a2a37c6@arm.com>
+In-Reply-To: <beae35a5-b094-087a-8443-5f669a2a37c6@arm.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Date: Tue, 4 Apr 2023 13:21:00 +0530
+Message-ID: <CAMty3ZBD8Eca4ECd03c1WD_tKTrd_=Tx1FF3KeihLAXySTVL8A@mail.gmail.com>
+Subject: Re: [PATCH 2/3] iommu/rockchip: Disable the device link during resume
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, iommu@lists.linux.dev, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	devicetree@vger.kernel.org, 
+	linux-amarula <linux-amarula@amarulasolutions.com>, Simon Xue <xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_085146_420068_47DA9882 
-X-CRM114-Status: GOOD (  27.82  )
+X-CRM114-CacheID: sfid-20230404_005151_176225_4BA3CE80 
+X-CRM114-Status: GOOD (  26.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +85,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Montag, 3. April 2023, 19:59:37 CEST schrieb Javier Martinez Canillas:
-> This baud rate is set for the device by mainline u-boot and is also what
-> is set in the Pinebook Pro Device Tree, which is a device similar to the
-> PinePhone Pro but with a different form factor.
-> 
-> Otherwise, the baud rate of the firmware and Linux don't match by default
-> and a 'console=ttyS2,1500000n8' kernel command line parameter is required
-> to have proper output for both.
-
-The interesting question is always if this will break someone else's setup.
-I've never really understood the strange setting of 1.5MBps, but on the
-other hand it _is_ a reality on most boards.
-
-Personally I don't care that much either way, but would like a comment
-from the other people working on that device - if possible.
-
-I guess if we don't hear anything, I'll apply it nevertheless at some point
-
-
-Heiko
-
-
-> Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
-> ---
-> 
-> I tried to instead get rid of the baud rate altogether, as suggested by
-> Peter Robinson. AFAIU that should just pick whatever bad rate has been
-> using by the early console.
-> 
-> But neither using 'stdout-path = "serial2" nor 'stdout-path = &uart2'
-> worked for me.
-> 
-> In both cases I didn't have any output unless setting a baud rate using
-> the 'console='param.
-> 
->  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index a0795a2b1cb1..6bbe65bd5bd4 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -26,7 +26,7 @@ aliases {
->  	};
->  
->  	chosen {
-> -		stdout-path = "serial2:115200n8";
-> +		stdout-path = "serial2:1500000n8";
->  	};
->  
->  	gpio-keys {
-> 
-> base-commit: 3adf89324a2b2a9dbc2c12d8895021e7e34e3346
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBNYXIgMzAsIDIwMjMgYXQgNzoxM+KAr1BNIFJvYmluIE11cnBoeSA8cm9iaW4ubXVy
+cGh5QGFybS5jb20+IHdyb3RlOgo+Cj4gT24gMjAyMy0wMy0zMCAxNDoxNywgSmFnYW4gVGVraSB3
+cm90ZToKPiA+IFJvY2tjaGlwIGlvbW11IGlzIHRyeWluZyB0byBlbmFibGUgdGhlIGFzc29jaWF0
+ZWQgZGV2aWNlIGF0IHJ1bnRpbWUKPiA+IHJlc3VtZSBob3dldmVyIHNvbWUgZGV2aWNlcyBtaWdo
+dCBlbmFibGUgdGhlIGlvbW11IGR1cmluZyB0aGVpciBwbQo+ID4gcnVudGltZSByZXN1bWUgb3Bl
+cmF0aW9uIHdoaWNoIGluZGVlZCBsZWFkcyBpb21tdSB0byB1c2UgdGhlIHdyb25nCj4gPiBkb21h
+aW4gYW5kIHRoaXMgbGVhZHMgdG8gZGV2aWNlIGlvbW11IHBhZ2UgZmF1bHQuCj4gPgo+ID4gQW4g
+ZXhhbXBsZSBvZiB0aGlzIGJlaGF2aW9yIGhhcyBiZWVuIG9ic2VydmVkIGluIFJvY2tjaGlwIFJL
+MzMyOCwgd2hlcmUKPiA+IGlvbW11IHN0YWxscyByZXF1ZXN0IHRpbWVvdXQgZHJpbmcgVk9QIGRl
+dmljZSBlbmFibGVtZW50Lgo+ID4KPiA+IEhlcmUgaXMgdGhlIGRtZXNnIGxvZyBmb3IgdGhlIHNh
+bWU6Cj4gPgo+ID4gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCBmZjM3MDAw
+MC52b3AgKG9wcyB2b3BfY29tcG9uZW50X29wcykKPiA+IGR3aGRtaS1yb2NrY2hpcCBmZjNjMDAw
+MC5oZG1pOiBzdXBwbHkgYXZkZC0wdjkgbm90IGZvdW5kLCB1c2luZyBkdW1teSByZWd1bGF0b3IK
+PiA+IHJrX2lvbW11IGZmMzczZjAwLmlvbW11OiBFbmFibGUgc3RhbGwgcmVxdWVzdCB0aW1lZCBv
+dXQsIHN0YXR1czogMHgwMDAwNGIKPiA+IGR3aGRtaS1yb2NrY2hpcCBmZjNjMDAwMC5oZG1pOiBz
+dXBwbHkgYXZkZC0xdjggbm90IGZvdW5kLCB1c2luZyBkdW1teSByZWd1bGF0b3IKPiA+IHJrX2lv
+bW11IGZmMzczZjAwLmlvbW11OiBEaXNhYmxlIHBhZ2luZyByZXF1ZXN0IHRpbWVkIG91dCwgc3Rh
+dHVzOiAweDAwMDA0Ygo+ID4gZHdoZG1pLXJvY2tjaGlwIGZmM2MwMDAwLmhkbWk6IERldGVjdGVk
+IEhETUkgVFggY29udHJvbGxlciB2Mi4xMWEgd2l0aCBIRENQIChpbm5vX2R3X2hkbWlfcGh5MikK
+PiA+IGR3aGRtaS1yb2NrY2hpcCBmZjNjMDAwMC5oZG1pOiByZWdpc3RlcmVkIERlc2lnbldhcmUg
+SERNSSBJMkMgYnVzIGRyaXZlcgo+ID4gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBi
+b3VuZCBmZjNjMDAwMC5oZG1pIChvcHMgZHdfaGRtaV9yb2NrY2hpcF9vcHMpCj4gPiBbZHJtXSBJ
+bml0aWFsaXplZCByb2NrY2hpcCAxLjAuMCAyMDE0MDgxOCBmb3IgZGlzcGxheS1zdWJzeXN0ZW0g
+b24gbWlub3IgMAo+ID4KPiA+IFRoaXMgaXNzdWUgaXMgcmVwcm9kdWNlZCBpZiB3ZSBlbmFibGUg
+dGhlIGRpc3BsYXkgaW4gVS1Cb290IGhvd2V2ZXIKPiA+IFUtQm9vdCBpcyBub3QgZXZlbiB0b3Vj
+aGVkIGFueSBpb21tdSByZWdpc3RlciBhcyB0aGUgVS1Cb290IGRpc3BsYXkKPiA+IHVzZXMgdGhl
+IHNpbXBsZSBmcmFtZSBidWZmZXIgbGlrZSBvdGhlciBSb2NrY2hpcCBwbGF0Zm9ybXMgUkszMzk5
+LAo+ID4gYW5kIFJLMzMyOCBkby4KPiA+Cj4gPiBXaGVuIFZPUCBpcyB0cnlpbmcgdG8gZW5hYmxl
+IHRoZSBpb21tdSB1c2luZyBydW50aW1lIHJlc3VtZSBjYWxsCj4gPiBwbV9ydW50aW1lX3Jlc3Vt
+ZV9hbmRfZ2V0IGZyb20gQHZvcF9lbmFibGUgdGhlbiB0aGUgaW9tbXUgcnVudGltZQo+ID4gcmVz
+dW1lIGNhbGwgQHJrX2lvbW11X3Jlc3VtZSB3aWxsIHRyeSB0byBhdHRhY2ggdGhlIFZPUCBpbiB0
+aGUgd3JvbmcKPiA+IGRvbWFpbiB2aWEgQHJrX2lvbW11X2VuYWJsZSB3aWxsIGxlYWQgdG8gdGhl
+IHZvcCBpb21tdSBwYWdlIGZhdWx0Lgo+Cj4gVGhhdCBzb3VuZHMgbGlrZSBhIGRyaXZlciBidWcu
+IFRoZSB3aG9sZSBwb2ludCBvZiB0aGUgZGV2aWNlIGxpbmsgaXMKCkRvIHlvdSBtZWFuIHRoZSBi
+dWcgaW4gcm9ja2NoaXAtaW9tbXUuYyBvciB2b3A/Cgo+IHN1cHBvc2VkIHRvIGJlIHRoYXQgdGhl
+IElPTU1VIGdldHMgc3VzcGVuZGVkIGFmdGVyIHRoZSBWT1AsIGFuZCByZXN1bWVkCj4gYmVmb3Jl
+IGl0LCBzbyBpdCBjYW4gbWFrZSBzdXJlIHRoYXQgd2hhdGV2ZXIgdHJhbnNsYXRpb25zIHRoZSBW
+T1Agd2FzCj4gdXNpbmcgYXJlIHJlc3RvcmVkICpiZWZvcmUqIHRoZSBWT1Agc3RhcnRzIHRyeWlu
+ZyB0byBhY2Nlc3MgdGhlbSBhZ2Fpbi4KPiBJZiB0aGUgSU9NTVUgZHJpdmVyIGlzIGZhaWxpbmcg
+dG8gcmVzdG9yZSB0aGUgY29ycmVjdCBzdGF0ZSBvbiByZXN1bWUsCj4gbm8gYW1vdW50IG9mIERU
+IGFidXNlIGlzIHRoZSByaWdodCBhbnN3ZXIuCgpUaGVuIGhvdyBjYW4gd2UgaGFuZGxlIHRoZSBj
+by1yZWxhdGlvbiBiL3cgdGhlbSBhcyBWT1AgYWxyZWFkeQphdHRhY2hpbmcgdGhlIGlvbW11IGFu
+ZCBhdCB0aGUgc2FtZSB0aW1lIElPTU1VIHRyeWluZyB0byBlbmFibGUgVk9QCmRldmljZSBidXQg
+cmVmZXJyaW5nIHRvIHRoZSB3cm9uZyBkb21haW4/IEFueSBzdWdnZXN0aW9ucz8KCj4KPiBJIGNh
+biB1bmRlcnN0YW5kIGlmIHRoZSBJT01NVSBpdHNlbGYgZXhwZWN0cyB0byBiZSBpZGxlIGZvciB0
+aGUgaW5pdGlhbAo+IGNvbmZpZ3VyYXRpb24gYXQgcHJvYmUgdGltZSwgYW5kIGdldHMgdW5oYXBw
+eSBpZiB3ZSB0cnkgdG8gcmVzZXQgaXQKPiB3aGlsZSAoYnlwYXNzKSBWT1AgdHJhZmZpYyBmb3Ig
+dGhlIGJvb3Rsb2FkZXIgZnJhbWVidWZmZXIgaXMgc3RpbGwgZ29pbmcKPiB0aHJvdWdoLCBidXQg
+dGhhdCdzIGFuIGVudGlyZWx5IGRpZmZlcmVudCBpc3N1ZSwgYW5kIGFnYWluIGhhY2tpbmcKCkRv
+ZXMgaXQgbWVhbiBhY2Nlc3NpbmcgVk9QIHRyYWZmaWMgYXQgdGhlIGJvb3Rsb2FkZXIgc3RhZ2Ug
+ZWZmZWN0aW5nCmlvbW11IGV2ZW4gdGhvdWdoIHRoZSBWT1AgZHJpdmVycyBpbiB0aGUgYm9vdGxv
+YWRlciBhcmUgbm90IHVzaW5nCmlvbW11IGF0IGFsbD8KClRoYW5rcywKSmFnYW4uCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
