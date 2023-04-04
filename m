@@ -4,79 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C8F3C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE80EC761A6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 08:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jQxsimWlUnRFHhmseBwPBmRRaVT5kdWt4cUvBz0l5tE=; b=JfF/C9RCjBxZBc
-	Z20F+wOfSwOHXLN8rR60SHs8F6T3GJiBSDvKfkGcUuUnLXc1OA8sKBrmKnJFDBSlMPPXLYfFiXIt3
-	GgYrX9caavu4iriyax3UNUp9J2dUTlewGIf3ojrS5KZBTjhYWUGaUB/BVhARisrOJUF/YLUmNqk3B
-	PgACpuGBbvUelqtYEhBIsZT8X7gi039C5tt9XAXaJPtGEcI70IVSW8W227bk/qpHOqCWYv0e0qbv9
-	6bbPMot2edmUDuTOrtFZlEJEPqR/F/tD9bjvY1SZ6I4a9tW7YPMTasvoPdHUZerVxVNyNWTHXknkF
-	nP/g0OuWW+7w9b/yNzsw==;
+	List-Owner; bh=urFUsp899cf7jWaYWxFTYDDFijozhtAVXFCtIJgR/uo=; b=H2wPHWkGg7/zaT
+	tTsYSyq9zDe2sdXVFeKZ8io0thndR5SplGNB/HEmx7PoXK6dV+Tk2hvIsWhm9uD8rjdlxjAMwEsnY
+	CS18LuzmQFrnEnGKhEFYbJs247Wyp3dGJzPctuH93CXA+eGy/rCznPWWKwy6/KKji2RZecCuh26B+
+	eR+m+nmhMBYeAdPJgdnozkPa12uarRF3Usjc0doTId4NPoVOflp5E6U770xBjoBGMG6vjBqF5ax/H
+	R0cPkmLo+egr6x0S5PUX0LToWO0qC6DuEG0LWJE1gMmBCRV/BVQzCR0lV4wZmUjgS6LDBdIGMHwHD
+	BhjQvLBjmVPhSdecjQ6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjcJN-000Ygz-1d;
-	Tue, 04 Apr 2023 08:46:41 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1pjcJZ-000YrP-11;
+	Tue, 04 Apr 2023 08:46:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjcBv-000Whb-29;
-	Tue, 04 Apr 2023 08:39:09 +0000
-Received: by mail-lj1-x235.google.com with SMTP id bx10so14653890ljb.8;
-        Tue, 04 Apr 2023 01:38:57 -0700 (PDT)
+	id 1pjcI9-000Y89-38;
+	Tue, 04 Apr 2023 08:45:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=RMaukyB75YQHIXMj12zxrY0cCVSP/TBv/PhCLD+5RBQ=; b=dE6YlI3TyT5pP2Uwof4BE4POPe
+	F3IAFbefVBWIoOmGn+wt/zyISo3laozWpdZ+EKKFbhPpd9omjbYhatd1V911EzoyVNITlsQwt8Uj5
+	G83rJaahMuISc2ikINut6cg80Cy1lguzVzc6OpX0mamSQKxFmTMKaROI6ho7XeFmeDNP1LoQzepaa
+	VaEtyh1OZsrLg1+w7Ckt50vJYYoHnKuc7permozMHQo0M7QqNw6cUqZWn18kzjuaFCMNzOxz16zEq
+	FF401u68cEKWZPZhlEpnV7xmcJcFLry9rJW+MqK6FaMczfg2VEl68XNQuQ4LTw+e/YaWJBqO0iIPj
+	CM3+/MVQ==;
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pjbyh-009Chn-0g;
+	Tue, 04 Apr 2023 08:25:21 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id eg48so127155397edb.13;
+        Tue, 04 Apr 2023 01:25:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680597536;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20210112; t=1680596717;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MrdlODl0H5+PHsF6BIcaDQCeLLNaLHz3VtBPnGOz2PM=;
-        b=P0REh2WHl1EKDfiroTLCUjD8DYaPTCETRF2VE6q/v0KXm1MRsyL2PPEr8IZ1EyjEsJ
-         f3pvaaiZqU37OTrWSWjfughTHizj1fTrSP4rmWk3/HSpEpuUnuqR7ZWT84NFeh++RL8G
-         RYsROggoSa/r34SF2Zo+u5Fc2dZZc2OS5ap1g9ttg7gvSaZzrjzmYD+jc4dSkiWVvp43
-         28CTxNr2658fyb1Qzitz8a8VFRCQoD+jt5sQAhzYINMPMZH+i8zh/bk2dRp2diRjTeXQ
-         ZkwA5kOx7WGdVgf6lQJqMWTdRt6eNuDp+VqtLWpXmaS9vtKJFSqcNvUV5YqWxzk5JOm4
-         bvMg==
+        bh=RMaukyB75YQHIXMj12zxrY0cCVSP/TBv/PhCLD+5RBQ=;
+        b=WfHwPkzir63d7KSfSDng4E4DQe0mVebL7Hnd3QSOT3OZtucF6PaEwhDwBmP5MzY253
+         /f8Q+m7tEftciR3m4da1SBj1Rllb1BoANlMqNlptX5Nu1az6GkyBF+/LQ/brADGXyHuw
+         4X17KZy0ekOD5csvMDd6cxHG1psblj0snZooKP6BHbyvHW8PRqhexI4dVcUdRakrt1+c
+         0KJyG0e5ybAghf/+wpuqFncSwmlGBSTQOl49UO4+eR3t49AohqwBgDi1ofShW0JB58jr
+         l96RZWwm1MsqSNC/+1MIGAwQYTISJwHYwg8i4Ypbl2Ky1juiXJtZmIKkFw8ONQ1CDYV7
+         uIhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680597536;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1680596717;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MrdlODl0H5+PHsF6BIcaDQCeLLNaLHz3VtBPnGOz2PM=;
-        b=yphEsiVwAPscgfTe1q+u/oallKcJ4LwAmkXbnyRNMrDVCNbycWRBiiWIxEGKEXGQGz
-         n6T2+CkyzBYF2fYjYaZ6Myxe7SQqhDWAbO0ati8Vtas6svOsfFDeyyStlqb9OSA/GqDX
-         ZtuwpwcHfBKdoXQyKJRre4bKaNu5XwvC4xHbgSeq53ApSQaxLth006bh9m9SiIE0gX3S
-         bfLubeTqutCaJJNNVFBZYXSncrmPHLyOHLThbd0t7uh/fRVVqHIfck8a8LOMZfKX4h/c
-         Tnyl6H+qTFS76tar63sUhndG1Hqp+9j7VBUT2RRC8zmIoRoCO5yNMcAMMUE4sRabXqst
-         0vBg==
-X-Gm-Message-State: AAQBX9eTFx2tdZIArShj9ACHaymO+2qvwhHZUHtgQtCzAt8poU4am5eQ
-	SrogfZg2Z4+21KZlenOFYuvYQ1F8nNkwYOnxTxQf/NyHKK4=
-X-Google-Smtp-Source: AKy350YRWO8o83HonQhxyVR1qlxipGouFXslbqo/1KCmYgWBSiIBPGp83XNapgz6XMi3g+DZj0t5McHHLhoEyS/hIwA=
-X-Received: by 2002:a2e:a307:0:b0:295:93eb:bab1 with SMTP id
- l7-20020a2ea307000000b0029593ebbab1mr743896lje.1.1680597536075; Tue, 04 Apr
- 2023 01:38:56 -0700 (PDT)
+        bh=RMaukyB75YQHIXMj12zxrY0cCVSP/TBv/PhCLD+5RBQ=;
+        b=giwmOc5Md5mySCa89vO3nDSqQhSrUgVAHp/chMUyEadqL2iDGdy+fsHtf3Y9yHOBH2
+         BPyxWo8//lmIuIeEl/iu0OxZzwW/oxi9p42i09qct14WPZaU1LxLy3rkjSR+xQNIUFXI
+         u8+yFlxBPfzC+7AVHAr5c+04vCsV2uYfYAiEa6UwL4rZPlV+xR1j+kTveXmiNT/+2ZlX
+         Cs1O2/Owzy8SI4gd3iTcJMRb2ZQTLvLEZ49m8M6wDC0vilSksH25ulyOzHnQfv6Dcq5P
+         1cWATAYkwTqmKcd/8mW1uRbghq5uU07lSL2jtiM+QTBZm2VZwDnatloFOmKT1LJlu49Z
+         /MXA==
+X-Gm-Message-State: AAQBX9eOPJo/3JypMoQg/WXwGK6xqN54OSmTlcMf/QLmMyQOLKMWd+lj
+	s/lu4wfgUSQ0t5GX5p+BFxs=
+X-Google-Smtp-Source: AKy350anx1HWqArG7QFrghO8oNLz5VzJ9tW2zUJtRfbo2K4CMDvfSb0W/R5+O0653Y0LDCHyLzN+/w==
+X-Received: by 2002:a05:6402:164b:b0:4aa:a280:55b5 with SMTP id s11-20020a056402164b00b004aaa28055b5mr1668600edx.20.1680596716958;
+        Tue, 04 Apr 2023 01:25:16 -0700 (PDT)
+Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
+        by smtp.googlemail.com with ESMTPSA id s5-20020a170906454500b008e54ac90de1sm5640652ejq.74.2023.04.04.01.25.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Apr 2023 01:25:16 -0700 (PDT)
+From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+To: alberto.dassatti@heig-vd.ch
+Cc: damien.lemoal@opensource.wdc.com,
+	xxm@rock-chips.com,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	stable@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Corentin Labbe <clabbe@baylibre.com>,
+	Caleb Connolly <kc@postmarketos.org>,
+	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	Lin Huang <hl@rock-chips.com>,
+	Hugh Cole-Baker <sigmaris@gmail.com>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 07/11] PCI: rockchip: Fix legacy IRQ generation for RK3399 PCIe endpoint core
+Date: Tue,  4 Apr 2023 10:24:20 +0200
+Message-Id: <20230404082426.3880812-8-rick.wertenbroek@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
+References: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
-References: <20230403175937.2842085-1-javierm@redhat.com> <3738011.44csPzL39Z@diego>
- <d7efebcc-5b5b-185e-bec8-b6b9d5d27d93@undef.tools> <87h6twdpi7.fsf@minerva.mail-host-address-is-not-set>
-In-Reply-To: <87h6twdpi7.fsf@minerva.mail-host-address-is-not-set>
-From: Peter Robinson <pbrobinson@gmail.com>
-Date: Tue, 4 Apr 2023 09:38:44 +0100
-Message-ID: <CALeDE9M4eNq1sfQ-UcNZr8naYThmLFxDpt=zj8WkCSzHPUY8ug@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Change serial baud rate for
- Pinephone Pro to 1.5 MB
-To: Javier Martinez Canillas <javierm@redhat.com>
-Cc: Jarrah <kernel@undef.tools>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	linux-kernel@vger.kernel.org, Caleb Connolly <kc@postmarketos.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Martijn Braam <martijn@brixit.nl>, 
-	Ondrej Jirman <megi@xff.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_013901_467043_8EE3348A 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20230404_092519_426871_61623A51 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +122,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBcHIgNCwgMjAyMyBhdCA5OjI04oCvQU0gSmF2aWVyIE1hcnRpbmV6IENhbmlsbGFz
-CjxqYXZpZXJtQHJlZGhhdC5jb20+IHdyb3RlOgo+Cj4gSmFycmFoIDxrZXJuZWxAdW5kZWYudG9v
-bHM+IHdyaXRlczoKPgo+ID4gSGksCj4gPgo+ID4gT24gNC80LzIzIDE3OjUxLCBIZWlrbyBTdMO8
-Ym5lciB3cm90ZToKPiA+PiBUaGUgaW50ZXJlc3RpbmcgcXVlc3Rpb24gaXMgYWx3YXlzIGlmIHRo
-aXMgd2lsbCBicmVhayBzb21lb25lIGVsc2UncyBzZXR1cC4KPiA+PiBJJ3ZlIG5ldmVyIHJlYWxs
-eSB1bmRlcnN0b29kIHRoZSBzdHJhbmdlIHNldHRpbmcgb2YgMS41TUJwcywgYnV0IG9uIHRoZQo+
-ID4+IG90aGVyIGhhbmQgaXQgX2lzXyBhIHJlYWxpdHkgb24gbW9zdCBib2FyZHMuCj4gPj4KPiA+
-PiBQZXJzb25hbGx5IEkgZG9uJ3QgY2FyZSB0aGF0IG11Y2ggZWl0aGVyIHdheSwgYnV0IHdvdWxk
-IGxpa2UgYSBjb21tZW50Cj4gPj4gZnJvbSB0aGUgb3RoZXIgcGVvcGxlIHdvcmtpbmcgb24gdGhh
-dCBkZXZpY2UgLSBpZiBwb3NzaWJsZS4KPiA+Cj4gPgo+ID4gSSBkb24ndCBoYXZlIGEgc3Ryb25n
-IG9waW5pb24gZWl0aGVyIHdheSwgYnV0IEkgd291bGQgbm90ZSB0aGF0Cj4gPiBUb3ctQm9vdFsw
-XSB3aGljaCBsYXRlciBtb2RlbHMgb2YgdGhpcyBkZXZpY2Ugc2hpcCB3aXRoIHVzZXMgMTE1MjAw
-LAo+ID4gbWVhbmluZyB0aGF0IHRoaXMgd291bGQgcHV0IHRoZSBkZXZpY2Ugb3V0IG9mIHN5bmMg
-d2l0aCB0aGUgZGVmYXVsdAo+ID4gdS1ib290IGltcGxlbWVudGF0aW9uIGZyb20gdGhlIGZhY3Rv
-cnkuCj4gPgo+Cj4gUHJvYmFibHkgd2UgY2FuJ3QgY2hhbmdlIHRoZW4gYmVjYXVzZSBpdCB3b3Vs
-ZCBicmVhayB0aGUgc2V0dXAgb2YgcGVvcGxlCj4gdXNpbmcgVG93LUJvb3QgYXMgYSBib290bG9h
-ZGVyLgo+Cj4gPiBBdCBsZWFzdCBmb3IgbWUgaXQncyBiZWVuIGNvbnZlbmllbnQgdG8gaGF2ZSBi
-b3RoIHRoZSBQUCBhbmQgUFBQIHVzZSB0aGUKPiA+IHNhbWUgc2V0dGluZ3Mgd2hpbGUgZGVidWdn
-aW5nLgo+ID4KPgo+IEFncmVlZCwgYWxsIG15IG90aGVyIGJvYXJkcyB1c2UgMTE1MjAwIGFzIHdl
-bGwsIHRoZSBvbmx5IGV4Y2VwdGlvbnMgYXJlCj4gdGhlIFJvY2twcm82NCBhbmQgUGluZVBob25l
-IFBybyBmb3IgbWUuCgpBbGwgUm9ja2NoaXBzIGRldmljZXMgdXNlIDEuNW0gZXhjZXB0IGEgY2hy
-b21lYm9vayBhbmQgdGhlIFB1bWEsIGFuZAp0aGlzIGRldmljZS4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Fix legacy IRQ generation for RK3399 PCIe endpoint core according to
+the technical reference manual (TRM). Assert and deassert legacy
+interrupt (INTx) through the legacy interrupt control register
+("PCIE_CLIENT_LEGACY_INT_CTRL") instead of manually generating a PCIe
+message. The generation of the legacy interrupt was tested and validated
+with the PCIe endpoint test driver.
+
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
+Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+---
+ drivers/pci/controller/pcie-rockchip-ep.c | 45 ++++++-----------------
+ drivers/pci/controller/pcie-rockchip.h    |  6 ++-
+ 2 files changed, 16 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index 4c84e403e155..7591a7be78e0 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -337,48 +337,25 @@ static int rockchip_pcie_ep_get_msi(struct pci_epc *epc, u8 fn, u8 vfn)
+ }
+ 
+ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
+-					 u8 intx, bool is_asserted)
++					 u8 intx, bool do_assert)
+ {
+ 	struct rockchip_pcie *rockchip = &ep->rockchip;
+-	u32 r = ep->max_regions - 1;
+-	u32 offset;
+-	u32 status;
+-	u8 msg_code;
+-
+-	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
+-		     ep->irq_pci_fn != fn)) {
+-		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
+-					     AXI_WRAPPER_NOR_MSG,
+-					     ep->irq_phys_addr, 0, 0);
+-		ep->irq_pci_addr = ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR;
+-		ep->irq_pci_fn = fn;
+-	}
+ 
+ 	intx &= 3;
+-	if (is_asserted) {
++
++	if (do_assert) {
+ 		ep->irq_pending |= BIT(intx);
+-		msg_code = ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA + intx;
++		rockchip_pcie_write(rockchip,
++				    PCIE_CLIENT_INT_IN_ASSERT |
++				    PCIE_CLIENT_INT_PEND_ST_PEND,
++				    PCIE_CLIENT_LEGACY_INT_CTRL);
+ 	} else {
+ 		ep->irq_pending &= ~BIT(intx);
+-		msg_code = ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA + intx;
++		rockchip_pcie_write(rockchip,
++				    PCIE_CLIENT_INT_IN_DEASSERT |
++				    PCIE_CLIENT_INT_PEND_ST_NORMAL,
++				    PCIE_CLIENT_LEGACY_INT_CTRL);
+ 	}
+-
+-	status = rockchip_pcie_read(rockchip,
+-				    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+-				    ROCKCHIP_PCIE_EP_CMD_STATUS);
+-	status &= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
+-
+-	if ((status != 0) ^ (ep->irq_pending != 0)) {
+-		status ^= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
+-		rockchip_pcie_write(rockchip, status,
+-				    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+-				    ROCKCHIP_PCIE_EP_CMD_STATUS);
+-	}
+-
+-	offset =
+-	   ROCKCHIP_PCIE_MSG_ROUTING(ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX) |
+-	   ROCKCHIP_PCIE_MSG_CODE(msg_code) | ROCKCHIP_PCIE_MSG_NO_DATA;
+-	writel(0, ep->irq_cpu_addr + offset);
+ }
+ 
+ static int rockchip_pcie_ep_send_legacy_irq(struct rockchip_pcie_ep *ep, u8 fn,
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index f3a5ff1cf7f4..ffc68a3a5fee 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -38,6 +38,11 @@
+ #define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
+ #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+ #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
++#define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
++#define   PCIE_CLIENT_INT_IN_ASSERT		HIWORD_UPDATE_BIT(0x0002)
++#define   PCIE_CLIENT_INT_IN_DEASSERT		HIWORD_UPDATE(0x0002, 0)
++#define   PCIE_CLIENT_INT_PEND_ST_PEND		HIWORD_UPDATE_BIT(0x0001)
++#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HIWORD_UPDATE(0x0001, 0)
+ #define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
+ #define   PCIE_CLIENT_PHY_ST			BIT(12)
+ #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+@@ -227,7 +232,6 @@
+ #define   ROCKCHIP_PCIE_EP_MSI_CTRL_ME				BIT(16)
+ #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP	BIT(24)
+ #define ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR				0x1
+-#define ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR		0x3
+ #define ROCKCHIP_PCIE_EP_FUNC_BASE(fn)	(((fn) << 12) & GENMASK(19, 12))
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar) \
+ 	(PCIE_RC_RP_ATS_BASE + 0x0840 + (fn) * 0x0040 + (bar) * 0x0008)
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
