@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9551C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 15:45:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35CB5C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 16:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b6m8FsmBJH9St4mafY8Bt6mRJFobmpbTCXvIe1bPnuM=; b=p24xAneVDphN97
-	g060qMqJ15VsEWyVtJqJCqHD/BIkn0Bp422Qer0JfhrxWstkUxOdK85dYNIDgFm4B/+GTFPfb+ayh
-	1EtVGDhbx9cDHE4+hnHtqMuQcTjKoX0lN82e4D0VT7jTEnIB5xmFLVwQqlIJCpuk1vRZZi+unICW3
-	4xMadJw8cvBQvds1DvxpPvx/HbS3zIWqiB5RWAZDJNfWb1VOARldfyx35MGAiXP/gdqCGaG/nDnLV
-	3/4k9yIuWXMKeCMdAy/fHPRzmHO2K3jBda7/V6VdrJYN4+qadp9PNgN+OT0MzvizYT+l0J9EO/z3m
-	92aDbOu36ruQEW3+xflw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=a9EE4LkwaQ06smWu1IMU5VxZfJURj50lAPirdU5QX68=; b=0VT4/xYq9JFsJx
+	GKFUGV4L/5ysyuD7XF3HgdZ9K8t7lKzMtJ8iiEWzXKQcWldfQnrXkut5rwdJ3/XfUJAqAegVSzly2
+	2rMediF2UvPqx7gi6exGpqK81QBUDO1Q8RFCOXqdrh6GUHMlUm84a3H2+xfrKaHWWJGVwRHFnfsnm
+	VlPvN75Q4zI45KzkJpvpHvlbouLwTzfFUVOKEWTz8K+YPOmD1+BjfwRK+Slu2jBJXcz+XCBmSfwpy
+	OVF/7+BEKmDMGC+WLLUz64wnGb+n7tXTn/o5SKSulLsLZCOmjdwcoXX/uASRr+Fa0VD9sqpUKpNKs
+	3q6Wxatv2h/ujkxG5kNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjipy-00238O-14;
-	Tue, 04 Apr 2023 15:44:46 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pjja4-002DdI-34;
+	Tue, 04 Apr 2023 16:32:24 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjipw-002373-07
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Apr 2023 15:44:45 +0000
-Received: from jupiter.universe (dyndsl-091-248-190-097.ewe-ip-backbone.de [91.248.190.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1pjja1-002Dag-0H;
+	Tue, 04 Apr 2023 16:32:22 +0000
+Received: from [192.168.1.90] (unknown [188.27.34.213])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C274B660316D;
-	Tue,  4 Apr 2023 16:44:39 +0100 (BST)
+	(Authenticated sender: cristicc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2725F6603174;
+	Tue,  4 Apr 2023 17:32:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1680623079;
-	bh=mn9mvLqb9JfD/v2GbIwIPsZvL+PY+ToYp17NbyJwa6Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lbnmZukKs0voBA2Q6TmJGE9i4FaDZ+rTZ1ouyCAtNtMsDj5dbLP/Pu46k5QbUyerc
-	 DbxIq42KxDPoEqEJqGysbE7dcPRa3Hb9vBu3gDsEDpX95TmWNrd45e2fySOuE4qak+
-	 4mcj0uDVW77QrkBXCaLEEuM85QMs7gvpYD1KvSLdDBlaJzsbke1M+FLwxOtxC1uVhr
-	 aVYU99IcxD5VtwW3g0rHFtZd+4dgqUitBnqw+aeFC5cAXfMP9aQiIJdNaCm8dzYgyU
-	 Xqc7aVJe8hqRHp7NE8yHHK0mpuhYdu8QXyd1u8o/21LOm2tfP00NiVHmMF3VQOfVaO
-	 ALTXflyczEb8Q==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8386E4807E1; Tue,  4 Apr 2023 17:44:37 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv1 1/1] arm64: dts: rockchip: rk3588: add thermal sensor
-Date: Tue,  4 Apr 2023 17:44:29 +0200
-Message-Id: <20230404154429.51601-1-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.39.2
+	s=mail; t=1680625935;
+	bh=KuXltiexUNkpyNJrQkX/ulGpUOXgGazP2UPpdbEwY4A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LkmnNId6+hvIzALLF0eDx8nofhPV1wtsWAyQk9McBRARSAkQVYbcKgiKph3emWI+n
+	 Eg/p3YL9ALg5e6DiPMnwfLV/1+7PP+vuoqfrAYFzbyL27PewiJU01at8amx+YbWi5+
+	 epJSePU/a0SWvTPNudhSHzJ6kwOQeRrIhxciokKUa4V1I2ULxzXh/12NEi1vRJMD+v
+	 +cfE5n9wJQOvq8ehLBeEa5bKVcDRiOMyLP1Itr1q7D1X6oaf+tj9hXhwZBx0iuTzH/
+	 1kLEA+CItIKh+bKSuTJwZ4f+GSnp8r+2WQfQjeu+iJCTTr83KTJS5HnXq78SL7la9N
+	 IKPvXYIv+hChw==
+Message-ID: <3eba05be-a836-d362-4e06-2d9f102c4113@collabora.com>
+Date: Tue, 4 Apr 2023 19:32:11 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Convert to DT schema
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-hwmon@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20230403105052.426135-1-cristian.ciocaltea@collabora.com>
+ <20230403105052.426135-2-cristian.ciocaltea@collabora.com>
+ <20230404141749.GB3793612-robh@kernel.org>
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20230404141749.GB3793612-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_084444_204199_E774EB22 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230404_093221_360213_CF739900 
+X-CRM114-Status: GOOD (  23.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,59 +81,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add thermal sensor IP, which allows monitoring temperatures at
-seven different places in the SoC:
+On 4/4/23 17:17, Rob Herring wrote:
+> On Mon, Apr 03, 2023 at 01:50:51PM +0300, Cristian Ciocaltea wrote:
+>> Convert the PWM fan bindings to DT schema format.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  .../devicetree/bindings/hwmon/pwm-fan.txt     |  68 +----------
+>>  .../devicetree/bindings/hwmon/pwm-fan.yaml    | 109 ++++++++++++++++++
+>>  2 files changed, 110 insertions(+), 67 deletions(-)
+>>  create mode 100644 Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+>>
 
-* Chip Center
-* CPU Cluster 1 (Dual A76 "Big" Cores)
-* CPU Cluster 2 (Dual A76 "Big" Cores)
-* CPU Cluster 0 (Quad A55 "Little" Cores)
-* Power Domain Center
-* Graphics Processing Unit
-* Neural Processing Unit
+[...]
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-The driver + dt-binding part has been merged by Daniel Lezcano,
-so let's add the DT node.
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+>> diff --git a/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+>> new file mode 100644
+>> index 000000000000..448b48ec5d73
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+>> @@ -0,0 +1,109 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/hwmon/pwm-fan.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Fan connected to PWM lines
+>> +
+>> +maintainers:
+>> +  - Jean Delvare <jdelvare@suse.com>
+>> +  - Guenter Roeck <linux@roeck-us.net>
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: pwm-fan
+>> +
+>> +  cooling-levels:
+>> +    description:
+>> +      PWM duty cycle values in a range from 0 to 255 which correspond to
+> 
+> Don't put constraints in plain text:
+> 
+> items:
+>   maximum: 255
+> 
+>> +      thermal cooling states.
+>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> 
+> Unfortunately, looks like we've wound up with same property with 2 
+> differing types. A problem for another day...
+> 
+>> +
+>> +  fan-supply:
+>> +    description: Phandle to the regulator that provides power to the fan.
+>> +
+>> +  interrupts:
+>> +    description:
+>> +      This contains an interrupt specifier for each fan tachometer output
+>> +      connected to an interrupt source. The output signal must generate a
+>> +      defined number of interrupts per fan revolution, which require that
+>> +      it must be self resetting edge interrupts.
+> 
+> How many entries? I'm not sure how more than 1 makes sense.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 7840767dfcd8..c51f766cbd2e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1589,6 +1589,26 @@ pwm15: pwm@febf0030 {
- 		status = "disabled";
- 	};
- 
-+	tsadc: tsadc@fec00000 {
-+		compatible = "rockchip,rk3588-tsadc";
-+		reg = <0x0 0xfec00000 0x0 0x400>;
-+		interrupts = <GIC_SPI 397 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_TSADC>, <&cru PCLK_TSADC>;
-+		clock-names = "tsadc", "apb_pclk";
-+		assigned-clocks = <&cru CLK_TSADC>;
-+		assigned-clock-rates = <2000000>;
-+		resets = <&cru SRST_P_TSADC>, <&cru SRST_TSADC>;
-+		reset-names = "tsadc-apb", "tsadc";
-+		rockchip,hw-tshut-temp = <120000>;
-+		rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
-+		rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-+		pinctrl-0 = <&tsadc_gpio_func>;
-+		pinctrl-1 = <&tsadc_shut>;
-+		pinctrl-names = "gpio", "otpout";
-+		#thermal-sensor-cells = <1>;
-+		status = "disabled";
-+	};
-+
- 	i2c6: i2c@fec80000 {
- 		compatible = "rockchip,rk3588-i2c", "rockchip,rk3399-i2c";
- 		reg = <0x0 0xfec80000 0x0 0x1000>;
--- 
-2.39.2
+The 3rd example taken from the original binding uses 2 entries. So far
+it seems there are no use cases requiring more than one, so I'm going to
+limit this to 5 (the driver doesn't enforce a limit).
 
+>> +
+>> +  pulses-per-revolution:
+>> +    description:
+>> +      Define the number of pulses per fan revolution for each tachometer
+>> +      input as an integer (default is 2 interrupts per revolution).
+> 
+> default: 2
+> 
+>> +      The value must be greater than zero.
+> 
+> minimum: 1
+> 
+> maximum: ??? I assume there's some practical limit here much less than 
+> 2^32.
+
+Will set it to 4, as suggested by Guenter.
+
+>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> 
+> Isn't this a scalar? 
+
+As in the case of interrupts, the 3rd example uses 2 entries. Will set
+the same limit (5).
+
+>> +
+>> +  pwms:
+>> +    description: The PWM that is used to control the fan.
+>> +    maxItems: 1
+>> +
+>> +  pwm-names: true
+>> +
+>> +  "#cooling-cells":
+>> +    description: The PWM fan can be referenced as a cooling-device.
+> 
+> Not that useful. What would be is what's in the 2 cells.
+
+Will describe its usage according to thermal-cooling-devices binding.
+
+Thanks for reviewing,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
