@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410CCC6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Apr 2023 20:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61886C7619A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 08:28:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Subject:References:In-Reply-To:
-	Message-ID:To:From:MIME-Version:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CroyzZC0JeSYI28KT7JwqZOe6r2e0J5q13AxKUXDl2U=; b=0ojHCyES4e78Sg
-	UZOhstJ8shkMjYvedDHv21DaW2cM/UHDFdIlwRGiC7PXRO7aqALr98ns1Qcne34zMpgzv+TUJgDL8
-	CP2tXDomFtARmSvxY73+EQ3FcmNfDNcKOWB+OMvr7jfJdlcFPArznYkqdNiRYV8WNhKZpM3mXbY7d
-	8hoMf37D75P+GQ44gCnYxunK0awwrnusYovj2AsCP1IflWsRdAFexIkmRPAoGWBwYAL3PbMKOwxzs
-	+ZIcViAPnv8T2xlrWPo+fpKM09gEGRLHxW4gI/qWinpv9adNj6U6a+8dDoqdaO06w5spiyPe83pMU
-	ISxJ2IZ4k3Dnze2G56GA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+okYhpXItEnucoUiGLI3yW9emY4bzCogLJPQSKaMcQs=; b=Tr6GGJMzev3UIN
+	XOWuj0QbWV45Xc2psZ1l9mT/4HDiyMR36sb2bIWQl+IFS/7QPZRYs20XNzyCW9WyxEx2MYe3UW56j
+	HoNdkg48+/4p1DYD+G2gz44VaNHbvVLExfjUSi0OGbdvUrgqv2gsd4udagOPB7DwlmsrK7Jllt2Ma
+	UwP3q68hHraisMxa82lWkpqOQ9VV95Gmze4AjTgaxYf65VxV4NBg3qasH3u3XgDJn4E8MCWKs4g4X
+	cfLrlyXUfxfhpordFLBY34F6RH+XTfevupnFLZNtA0tbLP8b1iW2JAZhdnyuHHCSaR0ONjP48IIPu
+	Wts5uSFg7kDoa27Pnchw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjmqR-002lP7-1s;
-	Tue, 04 Apr 2023 20:01:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pjyUd-003mdS-28;
+	Wed, 05 Apr 2023 08:27:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjmqN-002lNz-1l;
-	Tue, 04 Apr 2023 20:01:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pjyUZ-003mbL-2A;
+	Wed, 05 Apr 2023 08:27:45 +0000
+Received: from localhost.localdomain (unknown [IPv6:2405:201:0:21ea:73f6:2283:f432:3936])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 266B46346E;
-	Tue,  4 Apr 2023 20:01:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 88FA3C433EF;
-	Tue,  4 Apr 2023 20:01:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680638485;
-	bh=rCdo7Uzp26R9Y0y5u5Xtz/JGD2lAQBywE0PagiehKkU=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=PBZUuPbHfslB9ZYUrrd9ezrtMJW3GdsEZ3rcG1v5yVlgoweRFkLxuDUoMQrZgHsWD
-	 Vbe9XVNRgqFN3x45rfyF+ZVVdHLuCw2GZnhHMBoNByNhtCtzBCIG/2oRTm+bWVwIC3
-	 PcUuqIf7f8XYD/l8k89/L857o1TUqi1yD2UIMeEK+KELWr1NjJBrqscj3EPDbVw/OI
-	 WE7oRwriS9I9PaPRJzY+U0/zeXg0mGi2xPGj+eZElD2AFACEHuPWGVkUZE5rxRaxjC
-	 619J0ZoA8xoVA+jxNGrDnOwFdmHgvDBQ1UnybrPhokKr72el83Runim3KSkxzkIm5i
-	 KK5HHr5yZlrUA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 6A4B4C395C5;
-	Tue,  4 Apr 2023 20:01:25 +0000 (UTC)
+	(Authenticated sender: shreeya)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B3B26603112;
+	Wed,  5 Apr 2023 09:27:36 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1680683259;
+	bh=PZ1ID2Zw3PwezwwvcnYi3Nauvrfa7qCQvMEH4PdczCQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QcVBuLpvczD59XicL2WXQBYFR4gr0aeRvE0uqJVBzmC6RUm5JzFq5QGtHUvCgksFA
+	 x+dpafbaEOS7Pt8RmuWS1KAXu9OEedmsLUdDwFDg49DyxUX2VMjD2obIqZ1nKx/s2G
+	 eTkpAEzrRHP/UWdRPKIZQDu6FhbsyhniKJXBgZN75sbcRjDajA1H+c72ESWZQu1n4p
+	 Tq4fewmEqXuiP6dvXZdDcSSYQsXlf/3YD60CoOHgXPGdFeMbX5s+nSKNeZjFgJxNxt
+	 fGHC+qTfeLBo3F5m+T+eOAwvgfh0CGxng4/112U1ScVsrjfPuI8dKhUnpdxfPwaoBg
+	 pePa7Jd/bQ0qQ==
+From: Shreeya Patel <shreeya.patel@collabora.com>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	Christopher Obbard <chris.obbard@collabora.com>
+Subject: [PATCH v3] arm64: dts: rockchip: Enable RTC support for Rock 5B
+Date: Wed,  5 Apr 2023 13:57:11 +0530
+Message-Id: <20230405082711.46303-1-shreeya.patel@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-From: "Kernel.org Bugbot" <bugbot@kernel.org>
-To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- bugs@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- clabbe.montjoie@gmail.com, heiko@sntech.de
-Message-ID: <20230404-b217298-17108437c21e@bugzilla.kernel.org>
-In-Reply-To: <ZCx5eVJvXaE1dDvt@Red>
-References: <ZCx5eVJvXaE1dDvt@Red>
-Subject: Re: missing crypto power domain on rk3588 ?
-X-Bugzilla-Product: Linux
-X-Bugzilla-Component: Kernel
-X-Mailer: peebz 0.1
-Date: Tue,  4 Apr 2023 20:01:25 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230404_130127_645838_175C159A 
-X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-CacheID: sfid-20230405_012743_844070_7E0E77A0 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,15 +79,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add DT node to enable RTC support for Rock 5B board.
 
-This conversation is now tracked by Kernel.org Bugzilla:
-https://bugzilla.kernel.org/show_bug.cgi?id=217298
+Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+Reviewed-by: Christopher Obbard <chris.obbard@collabora.com>
+---
 
-There is no need to do anything else, just keep talking.
+Changes in v3:
+  - Use a generic node name.
+
+Changes in v2:
+  - Make the subject and commit message  more descriptive.
+  - Add a Reviewed-by tag.
+
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index 95805cb0adfa..e63138eb7e8d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -27,6 +27,31 @@ vcc5v0_sys: vcc5v0-sys-regulator {
+ 	};
+ };
+ 
++&i2c6 {
++	status = "okay";
++
++	hym8563: rtc@51 {
++		compatible = "haoyu,hym8563";
++		reg = <0x51>;
++		#clock-cells = <0>;
++		clock-frequency = <32768>;
++		clock-output-names = "hym8563";
++		pinctrl-names = "default";
++		pinctrl-0 = <&hym8563_int>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
++		wakeup-source;
++	};
++};
++
++&pinctrl {
++	hym8563 {
++		hym8563_int: hym8563-int {
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	no-sdio;
 -- 
-Deet-doot-dot, I am a bot.
-Kernel.org Bugzilla (peebz 0.1)
+2.30.2
 
 
 _______________________________________________
