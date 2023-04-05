@@ -4,85 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C56C76188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 19:04:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D2AC7619A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 19:13:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
+	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4pLay9dJtkzFP8DZnvy1Sp68PdXsP87NjbFQAWmhcSc=; b=Doo716I4tVl4oz
-	00lsN+daioQbNuawa3kvakWERmeiHSpVvF6i4DChaRbqL+uwhKVSiceFnwvDHrlVIeLxlCSUPj4tK
-	D1w0FR7aB7zaCfT8Gdc7iqWqqG14BuU8Nu+EwC/EhpvwobbY3eZBA18ILrioIs386xSv8eWhGGFz8
-	EcLOgtEo8dLY3w8HMETSdRhH9s0sSR/I/dTT13OBnu3Ek3R4zFnAC2XxqgiZHFtGCn4Xxh7tsJcuQ
-	iYyY0cO6fpKImegfTNUapT1Y0ev0hSEl1TPxDAUFKOzW5Uys6Fvrq9ZCBd0nmnVpRke5tbgqyVi4y
-	2AWpnjp7At30R5xWlnwg==;
+	List-Owner; bh=fljnysL6FlZKzDes0aRNtCp8U+4m+CMS8KSHYoGPUHI=; b=J/YYqhkYeaUz5l
+	X32Eyaau2xWJD3U8evo64CFoCJBhZAbjaPaGBW+oGbfjYghHyawKbcseaWf9qqWmvmtcfDGNVuz4I
+	g36fBIgBYvoxHtduLHWP+P1LHtmtWmcwvCUktFvJb+HDZRRsx8+pjLmqsK8wAcr1wHxMPO0IaHVhS
+	KSitS5RwiTRwEyli5diD/ImKNGR8Zc5ZpwB4wKYW2dTQYj3HoeJNJuotbOTuRwPpyuqxUdfiZSm9g
+	SeihOg2/Acc1vzmmt/wMh9a8nB8Lg5+U9HkVRC+YPj3fraaGCvewgAeACahb/BBRLb/c+fb/FTPoW
+	kkCYUOsDNYW7YpYOFo+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk8QX-005Sxh-2d;
-	Wed, 05 Apr 2023 19:04:13 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1pk8Yo-005TkR-0o;
+	Wed, 05 Apr 2023 19:12:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk8QT-005Swj-2y;
-	Wed, 05 Apr 2023 19:04:11 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id l18so27376053oic.13;
-        Wed, 05 Apr 2023 12:04:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680721448;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=f2PHQcp6j+fOB0wOWpZhgTKBcLCw1aqfvMVgCTudii0=;
-        b=Blh1+p9JnizMWNsizP4LG04uOuW/nGAceNKeEqSmP/vmiQkIeZNM45BNgQJzJj623B
-         LEV/mVGUyYh1Smy5SRjfQ8AjWlAMG6n4JqjcdwaPNt6tD3Q5uYn+u94IIauzf3Gn3Ma0
-         rUW2pLwfZApoHB119cRYceb8HKkjHx3BbR9BkJEHCxUMrl8d4lqcPP/xkgI76GXrfC+e
-         BSoHKits0j0Qr659ize08DpQSxIFHqp0H6Q0DnTED9I60X9znJOjaCdD2H2vtANDlBpR
-         bdL+hTkAzm/xufVhyxuuS9KbIJ5J+5Qy41xnzvEsWDW/ByA1nb8hlQAJtlEUVYLK2KHH
-         8mEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680721448;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f2PHQcp6j+fOB0wOWpZhgTKBcLCw1aqfvMVgCTudii0=;
-        b=vhkmmS1blWH3NgNgsu9d/QhXayN1A4nl656mraCmQ3h+ygasV782ldhw+ny0k2t/UA
-         mTxjG3wyCM5Yw9QcDAGeFbEj0ELLv6EEkzqTLvTNAOtaWMX7ArxW2Lu+zPhbqTh79nIM
-         NFKEZvr5Fag8OQlcWUPyMnno0iRvZdyg2ekmiTMJNS+hz78pEZyCK+OAWPQg9n0mA2FF
-         bKPX6lvK1O2f7VhfCCs32yU2qI88kwz2QbXcro3mBRAMkRham198dkIaaPZcCyv13wGP
-         hPDTaXZY9aKYxmGyOOfstUcy3ay9+nxCt5t/xZng7fOyMnEeq90zhy6bcdZ83O6+8TRv
-         yUgg==
-X-Gm-Message-State: AAQBX9e2Me0EdNXyX1wHWhWXhms1fjQYXnQVJxaCfia69jFEGxE0sVcP
-	01Dec7vlrtaMS16B+R1bXv+sW8TzZPE=
-X-Google-Smtp-Source: AKy350YEv9MdPEl3n9VRLhEeklhy8ACWem+NigjVwgr7lXnx4zWfNnLSr4Kmw1u5p5gZ7I9O1/P/pw==
-X-Received: by 2002:a05:6808:638e:b0:386:bcc9:fe99 with SMTP id ec14-20020a056808638e00b00386bcc9fe99mr2988908oib.5.1680721447212;
-        Wed, 05 Apr 2023 12:04:07 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id u13-20020a056808150d00b0038413a012dasm6474916oiw.4.2023.04.05.12.04.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Apr 2023 12:04:06 -0700 (PDT)
-Message-ID: <1a914522-8780-febd-7224-121b1f1fc2ba@roeck-us.net>
-Date: Wed, 5 Apr 2023 12:04:04 -0700
+	id 1pk8Yk-005Tju-36;
+	Wed, 05 Apr 2023 19:12:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8076362B4E;
+	Wed,  5 Apr 2023 19:12:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3E91C433EF;
+	Wed,  5 Apr 2023 19:12:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1680721961;
+	bh=f6Za8lkRKG4F7M3+X7pyY5YOrHQRCTJaJ7vE+LTT95s=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=nvLCAzQ1nsjrckSeCd6yLxKqowcUMYhXDCpw22tS4g75ARQGcZCKvTjyZZxqLnDGd
+	 3zH6E1nen/7mYLe9k8UxWVpVEi/du/W7duYogiVcB2aSvYuuoAQocTxp9uLnJVeQZL
+	 W4EkgK2i8R+QI6aiHhrSpLvBQ9KdF2nizxiHaCly6nbm/rWbSQBSNKufgnYrbfmX0P
+	 a25+MuxBvcOqfrmp55phrzH1pTGfFQ1knV4AfxGAh4evLibgieMEY0EPFMwpM2NY5b
+	 S1eHh+U7dHT69vhZURefgBZyl2lEzV9OWDF4FtnnVn8nob7wzvCqXS5bS0fzTRA8G6
+	 5Qpbj7XIKQOug==
+Message-ID: <a934cd700d03416b386245c1d91502ae.sboyd@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: (subset) [PATCH v2 0/2] Add PWM fan support to Rock 5B board
-Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Jean Delvare <jdelvare@suse.com>
-Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20230404173807.490520-1-cristian.ciocaltea@collabora.com>
- <168071663557.3186456.17606522894011578076.b4-ty@sntech.de>
-From: Guenter Roeck <linux@roeck-us.net>
-In-Reply-To: <168071663557.3186456.17606522894011578076.b4-ty@sntech.de>
+In-Reply-To: <680357e5acb338433bfc94114b65b4a4ce2c99e2.1680423909.git.christophe.jaillet@wanadoo.fr>
+References: <cover.1680423909.git.christophe.jaillet@wanadoo.fr> <680357e5acb338433bfc94114b65b4a4ce2c99e2.1680423909.git.christophe.jaillet@wanadoo.fr>
+Subject: Re: [PATCH v2 4/4] clk: Remove mmask and nmask fields in struct clk_fractional_divider
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, abelvesa@kernel.org, festevam@gmail.com, heiko@sntech.de, kernel@pengutronix.de, linux-imx@nxp.com, mturquette@baylibre.com, peng.fan@nxp.com, s.hauer@pengutronix.de, shawnguo@kernel.org
+Date: Wed, 05 Apr 2023 12:12:39 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_120409_956485_DF25A1C5 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20230405_121243_056768_9D918405 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,32 +68,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/5/23 10:45, Heiko Stuebner wrote:
-> On Tue, 4 Apr 2023 20:38:05 +0300, Cristian Ciocaltea wrote:
->> This patch series enables support for the PWM controlled heat sink fan
->> on the Rock 5B SBC and, additionally, converts the hwmon PWM fan bindings
->> to DT schema format.
->>
->> Changes in v2:
->>   - Updated PATCH 1/2 according to Rob's review
->>   - Added Reviewed-by from Christopher to PATCH 2/2
->>   - v1: https://lore.kernel.org/lkml/20230403105052.426135-1-cristian.ciocaltea@collabora.com/
->>
->> [...]
+Quoting Christophe JAILLET (2023-04-02 02:42:07)
+> All users of these fields have been removed.
+> They are now computed when needed with [mn]shift and [mn]width.
 > 
-> Applied, thanks!
+> This shrinks the size of struct clk_fractional_divider from 72 to 56 bytes.
 > 
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
 
-Both patches or only the second one ?
-
-Thanks,
-Guenter
-
+Applied to clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
