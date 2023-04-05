@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA82C761AF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C78C7619A
 	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 17:46:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=65e7QIwmJS+2RMRCjPTpgeIq12x7jTHhs4r51rrQlzo=; b=ZlpXWfDhcHj2tR
-	JIB+lSCEkWm1ON7iLeoSciMZxrG5VBFsGuiv7q1d855oBEWBO0pl4PsDdllUMO6q46LJTC1QUE8vh
-	u3rjPEz1F3uGN2Z44Lke2o+C+BCz7vlKT9hMhqfXFPkM42ZKuDryUs6FvqBGZR8m35CxTmpfI1/U2
-	Rw7lt1DzBCSy0s3GTVyqR953hq8oRH4OQZ2G83XtoRkJS6mjIeXj72wwegxluPtyGMOZCv0BL5oeU
-	fwfBLcvfYB3MCBpG580cw7imOY/7wJ0l+QR9aKQEjQ4MylW5ESdr/634bjDkJUFGyAG6YuKOGI4VT
-	BJiOgjHluughXoFH/3Sg==;
+	List-Owner; bh=26jh1sqEEnZYGyTQuM8hgxvpfnQEbInEDaWNdXULMFQ=; b=wifHtx2EXHALRv
+	6wDAZqtZ082YndaTXq9u3K/37ONIHBR32o91SEra89mmRA9gtlX7KB2Xd7J3uTdBDNpfsDw/Q85QV
+	9bIUR0BOxfAF5DbPcLME3k4fME5TBUcBuzKtuIH8b211G107TM5rQbqbrB4pl3x8YahpdmwHIqfqk
+	Ox3Q4eOYGKo62Gc/8YOWQkiQOPHi81bz32wyztiE/8NNaevUHC0R9tccz2yOaEcMCdK63EZWZ4LDB
+	3cxtNljqEkVPGsS/Jd+Kzwx8IL88sNe0gfrRPGl6sEU79Bvc+WSZHR1REuSTzVeWkoGuYjiv8S8yE
+	8JNLiyveUlJSV6OyYCRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk7D7-005IBY-0J;
-	Wed, 05 Apr 2023 17:46:17 +0000
+	id 1pk7DA-005IDo-1v;
+	Wed, 05 Apr 2023 17:46:20 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk7D1-005I7s-2i;
-	Wed, 05 Apr 2023 17:46:12 +0000
+	id 1pk7D1-005I7k-2h
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Apr 2023 17:46:14 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pk7Cu-0000Me-Qh; Wed, 05 Apr 2023 19:46:04 +0200
+	id 1pk7Cu-0000Me-Eh; Wed, 05 Apr 2023 19:46:04 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	Shreeya Patel <shreeya.patel@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
-	Christopher Obbard <chris.obbard@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	kernel@collabora.com,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] arm64: dts: rockchip: Enable RTC support for Rock 5B
-Date: Wed,  5 Apr 2023 19:46:01 +0200
-Message-Id: <168071663556.3186456.192019947395019850.b4-ty@sntech.de>
+Subject: Re: [PATCHv1 1/1] arm64: dts: rockchip: rk3588: add thermal sensor
+Date: Wed,  5 Apr 2023 19:46:00 +0200
+Message-Id: <168071663558.3186456.6497656083450780396.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230405082711.46303-1-shreeya.patel@collabora.com>
-References: <20230405082711.46303-1-shreeya.patel@collabora.com>
+In-Reply-To: <20230404154429.51601-1-sebastian.reichel@collabora.com>
+References: <20230404154429.51601-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_104611_876204_2BA6D094 
-X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-CacheID: sfid-20230405_104611_875242_04C78BEE 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,15 +69,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 5 Apr 2023 13:57:11 +0530, Shreeya Patel wrote:
-> Add DT node to enable RTC support for Rock 5B board.
+On Tue, 4 Apr 2023 17:44:29 +0200, Sebastian Reichel wrote:
+> Add thermal sensor IP, which allows monitoring temperatures at
+> seven different places in the SoC:
 > 
+> * Chip Center
+> * CPU Cluster 1 (Dual A76 "Big" Cores)
+> * CPU Cluster 2 (Dual A76 "Big" Cores)
+> * CPU Cluster 0 (Quad A55 "Little" Cores)
+> * Power Domain Center
+> * Graphics Processing Unit
+> * Neural Processing Unit
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable RTC support for Rock 5B
-      commit: 1e9c2404d8870ec08bfc338ae7113c3f7fe0b171
+[1/1] arm64: dts: rockchip: rk3588: add thermal sensor
+      commit: 32641b8ab1a5bd08e898cec3d46a8ecb4b4e895e
 
 Best regards,
 -- 
