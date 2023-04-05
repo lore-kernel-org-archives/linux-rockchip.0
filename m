@@ -4,59 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DCACC76188
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 19:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B075C77B6C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 21:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FiZbeYM6Xz1sc2ZSEipiQx7eu31Okczs/VlyIYJ9kCM=; b=PVPx/QjuU1XqKF
-	ZKkWA8T0L+zk7VPk0NIiJDD10FkRymmQ528LMCkEcrwHhEEgU5I5U3cjvR7rFQVCsRtHXcYjbRuq5
-	fbRhz04d5zftGkjN7+Qf2Ygn8dIpszGrBxKLOiwarhx14m54aDMrFtkw8a5SGLfQxG9njRk6b5y2W
-	aV4/T4P+3oziPdl1GvyNwfAVmiIFpigEk8bzPlnpNQVnkTRnIbNQ3QZ0xeshotVv8OPu5GuIANnBl
-	MlwugB3MGNmZmZ3y3a3vX2jIgAUXTIGNM/hNFtM0lyveGmA+MTedpeACJmMq/LOQ+THOi3U6iWNg2
-	FGoRa1HGIeJU2oZHlotA==;
+	List-Owner; bh=+0yrSJuGnBRAzrkeuRFqUKwEX5ZMYXaJjeHPdH7IF/8=; b=LfBdVKr9/Nd2k2
+	utlhvcUicJoGavJFJ4QBrvK90jsBtfgvzzjC6j9zYqvU4VLJf7EuvCXgCsSnFXkRY8nxIfFxxhEGH
+	MJ+FOScXfqg43dDS3RrHnwdbyxg4M6IeOHwhSX5xOdnWrAd9AQJyY+BTq+wXq/jmlyXBlCLczzWr7
+	b0Czh3zFooRUYjBVqEUWaDA5QIu3NIO59IqClXxK50I6n6kw24BM/HJ1swFzdw4C+josVC87Y+MI6
+	cPuA0KeNMBkoI1KdX2ZyXs29x1pVKFjZfd/BNso1a+rkx9zYO+zxpYPHUJXYZ8X83Z5QaL8B7LDTP
+	qxNcCvGIA6BvsEmflY+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk8ZJ-005Tvf-0u;
-	Wed, 05 Apr 2023 19:13:17 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pkAmq-005k7F-16;
+	Wed, 05 Apr 2023 21:35:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pk8ZF-005Tts-1G;
-	Wed, 05 Apr 2023 19:13:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EEB3164072;
-	Wed,  5 Apr 2023 19:13:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 944D4C4339C;
-	Wed,  5 Apr 2023 19:13:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1680721992;
-	bh=g7YM6++deJJ1OVDShMe3rsNwkCW83YRBl4vJieZdUCY=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=rQv93tAAdfe032Ci5oj4n+5Jaap71RV6OuYnH92ZGdIwyu84R1zY7KY9Ev7sQqGB+
-	 7d24pSgGWbu0lwCLiYjEei3qh6ZUUTYT+txsTM3sqWc1+fQ+Ez6/pN5OxI2yTiE9AD
-	 VSTPLYu2np21SZbd4MvsHSHFkiKg0WyzIm7FXrHuE4w/HNcHIpPjNumCJwA48Q6ZEu
-	 3y+ErvubNKMVKFdWcFMXHFKtIjPYOqG2PWmpTctxhbst/956SpWuTXVwijT0jVcvNx
-	 4eV8Rp0S/RRf1fb/PKcbKLYYOnTmnPRp8l+mZSEvJ0yGQzF+WjVYiWom3VCXjqW+5l
-	 rS+fdocoMV7ag==
-Message-ID: <eb9db30505b469e44ffbc98bcfccdb85.sboyd@kernel.org>
+	id 1pkAmm-005k5O-02;
+	Wed, 05 Apr 2023 21:35:21 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pkAmX-0001hG-Ps; Wed, 05 Apr 2023 23:35:05 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>
+Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: (subset) [PATCH v2 0/2] Add PWM fan support to Rock 5B board
+Date: Wed, 05 Apr 2023 23:35:04 +0200
+Message-ID: <840877554.0ifERbkFSE@diego>
+In-Reply-To: <1a914522-8780-febd-7224-121b1f1fc2ba@roeck-us.net>
+References:  <20230404173807.490520-1-cristian.ciocaltea@collabora.com>
+ <168071663557.3186456.17606522894011578076.b4-ty@sntech.de>
+ <1a914522-8780-febd-7224-121b1f1fc2ba@roeck-us.net>
 MIME-Version: 1.0
-In-Reply-To: <0fd6357242c974259c9e034c6e28a0391c480bf0.1680423909.git.christophe.jaillet@wanadoo.fr>
-References: <cover.1680423909.git.christophe.jaillet@wanadoo.fr> <0fd6357242c974259c9e034c6e28a0391c480bf0.1680423909.git.christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH v2 1/4] clk: Compute masks for fractional_divider clk when needed.
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, abelvesa@kernel.org, festevam@gmail.com, heiko@sntech.de, kernel@pengutronix.de, linux-imx@nxp.com, mturquette@baylibre.com, peng.fan@nxp.com, s.hauer@pengutronix.de, shawnguo@kernel.org
-Date: Wed, 05 Apr 2023 12:13:10 -0700
-User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_121313_468304_E50D98CB 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230405_143520_048982_43E581D1 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,16 +66,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Christophe JAILLET (2023-04-02 02:42:04)
-> There is no real need to pre-compute mmask and nmask when handling
-> fractional_divider clk.
+Am Mittwoch, 5. April 2023, 21:04:04 CEST schrieb Guenter Roeck:
+> On 4/5/23 10:45, Heiko Stuebner wrote:
+> > On Tue, 4 Apr 2023 20:38:05 +0300, Cristian Ciocaltea wrote:
+> >> This patch series enables support for the PWM controlled heat sink fan
+> >> on the Rock 5B SBC and, additionally, converts the hwmon PWM fan bindings
+> >> to DT schema format.
+> >>
+> >> Changes in v2:
+> >>   - Updated PATCH 1/2 according to Rob's review
+> >>   - Added Reviewed-by from Christopher to PATCH 2/2
+> >>   - v1: https://lore.kernel.org/lkml/20230403105052.426135-1-cristian.ciocaltea@collabora.com/
+> >>
+> >> [...]
+> > 
+> > Applied, thanks!
+> > 
 > 
-> They can be computed when needed.
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
+> Both patches or only the second one ?
 
-Applied to clk-next
+only the second one of course. According to earlier talks the dts patch
+does already follow the text binding, so the yaml conversion is actually
+not a requirement for it.
+
+So I picked the dts patch let the binding sort itself when people have
+time for it :-) .
+
+
+Looking at the mail b4 created, I guessed this would also be visible
+with the subject saying (subset) and the listed commits only showing
+
+[2/2] arm64: dts: rockchip: rk3588-rock-5b: Add pwm-fan
+      commit: f36bb17653e4b9e26bbdb1224027d20614e77636
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
