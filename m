@@ -4,106 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B3EC7619A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 09:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71176C761A6
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 11:44:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BK973YOvdau6tUDSIbl+M0y8fy+QddFEhRPcN7LdaJ8=; b=urhzFNQY8ZuJZq
-	+LVP622gnqm1uz5Ki90jnUUDpWwmw0Xr5gqC2fvm9djl6+4cOo/ozuAdCsdVBKv1Ta9YvS5dQPE3L
-	LYmKQF9X4wmrxZEYB4XpVmciUpo++pnbNsQ84EaCII3oKanfgfr9CjpIBm6zKY+mTexcLCw8KmOGo
-	8n4nyW8Qcd7V+B1INS1NFvuSuxF5SdTBCtbRWVq263LEkgFPuYJeiz4NyL9/IJM/Tj0P2Qxn510jY
-	s4IWdqCFLmMZyzChWB+6pSF09p7cvc96IPjFfrJnvhQb/P6zQy60mr770q8zPgny9tOUncnWMdS5W
-	SkCvgjyzgb73jooCwclQ==;
+	List-Owner; bh=O8ceo9s7DMPp2bpg/1ro8/QNJc3BOAaeBg+d3v3SK4o=; b=Vs2VMxY3mwMWj/
+	eEyCi510TMDo2kFGrfRMvCbKtarYA86XDNKcJtp1lPwmT6FTx99gAh/UPDuZ0+rQP7hQlzNLh+WGt
+	1OSiNXx0co/FLB67aqx1a7oG2S/qgEEpr4y7rmUUvgYo2QpJRD1n93TlLJPoVz1V1WHrO4ebjqnmQ
+	NAgT1KPWpES6o8xZuiEpQeUJV0xDwySlH8Bp78VTvlG9D5gom3klQkw8bdqQID9Rlt3jGeDl4k916
+	qIQV+UJmzKdblHBIc0mHT4xRYH9NEnGWsG3JUtNp6JJV+7na8hwBrO7ik5Aw+O9i9DOEcNBNxr/Ar
+	NI7/wzX1eHEZToiIjs2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjzNL-003wBB-2l;
-	Wed, 05 Apr 2023 09:24:20 +0000
-Received: from new2-smtp.messagingengine.com ([66.111.4.224])
+	id 1pk1YK-004Itk-2f;
+	Wed, 05 Apr 2023 11:43:48 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pjzNG-003w9j-1g;
-	Wed, 05 Apr 2023 09:24:17 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.nyi.internal (Postfix) with ESMTP id C3F2D5823A4;
-	Wed,  5 Apr 2023 05:24:07 -0400 (EDT)
+	id 1pk1YF-004Iqj-11;
+	Wed, 05 Apr 2023 11:43:45 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 406A35821F4;
+	Wed,  5 Apr 2023 07:43:38 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute2.internal (MEProxy); Wed, 05 Apr 2023 05:24:07 -0400
+  by compute3.internal (MEProxy); Wed, 05 Apr 2023 07:43:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
 	cc:cc:content-transfer-encoding:content-type:content-type:date
 	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to; s=fm2; t=
-	1680686647; x=1680690247; bh=WxqE12iPo4iuJMKHR9c3upfoqJnMRSFiAuV
-	XqTKJZlM=; b=Kbpl/NR3BqdZ3LSKWGfqtg56f5ru9FAw1wPBRNpCHiqUxhmHEER
-	YL/64IIS4HY9J/5Ad04tmrXUHnkvNWYjxsuZV/SuewSSCOpySFB85JdHjU5nGV/T
-	69N3ScAdrPy9M//bzaJ7BRHNJlGgXahx6DVJmTemqmmaZWU/6CbvyBTxf1TAlZ+/
-	gIIo23gcuPYlMDVTV3yEoU6iLDxfMO+uYpKCdaWmDXsU6pHJgepWfmakFR+3/Qcr
-	53ibHiskzF3VStlPFSGjdMgC3LPAYIr/TqAn6stdgXRGIEBib6diid5rh07Ylacy
-	K033kt2qwB5QaZSpL7OFS3In/caUlN9rLDg==
+	1680695018; x=1680698618; bh=BvuQB3YrSy/XsrAgLKIr85mggyxf9SOUTW/
+	mTPUnfq4=; b=LZ4LiyiopyJetN+aebdKjNTWDrB9z3MuQ37R6s+1JQb5gXtaNQN
+	TtQhZMyeysezVhbINrrJFtk72mPxyLMbtTcT8nY4NJblnwyc4+v/OBtCYPg81+bi
+	ymd5P1rOrSJ0zA5X3Fpb+BpwI8+gVADE/wcwhD2Ceq4KwuMvKsbnIyP7lHZiFLaU
+	zlhskDYauCnkwzoFgIEPqxYIS9AjngpQT58MaiZrQQChqEq4eu4E6nhS+9LknEq2
+	1/NWfb6ub3JVhyTMl6WdFH9mZAqI8R0RHoHJTGVdZivz7WcTqVGxYnE6YBetGT8F
+	yvPSGVoNJi03xFUc/NdB1m5aFYAdYBwdGOg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:content-type:date:date:feedback-id:feedback-id
 	:from:from:in-reply-to:in-reply-to:message-id:mime-version
 	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
 	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i3db14652.fm2;
-	 t=1680686647; x=1680690247; bh=WxqE12iPo4iuJMKHR9c3upfoqJnMRSFi
-	AuVXqTKJZlM=; b=i6Z8lvsTKQSwNDBarIvbZ5JO7De6Q9pLzSmiWOOBtdf+1yQX
-	OSG2gtbzAqwqCp4SKZNE7jv1oA5rxIQ4eaRFetYIYATvVInGlwr1+ySDOgCC4ltU
-	bVtqclknuDWTKR/LoXbA42ZR5kaWDZx1kLe4GWjS6HxaREpyREw/CyNCGpsTdMmf
-	knPet+rAn8hnTHVdZZiVe0w0Sugic5VPeM1QITuD/gFyEyMmKOBJHY5O7KB7kvrj
-	RAiUBk81BUyD8qJYvaT7MycHK1QU/zGLUJCrAp4kVtCQyJLlSUEnsukCnvm1oXJR
-	eFNS+ed5QAxzvFq/0U6Qqam+0WI42wKTDg4LHA==
-X-ME-Sender: <xms:Nj4tZE24w5--hnk8DmD0sU7vETAStNh8vgKWU9NUzZPtApn6TRRxbg>
-    <xme:Nj4tZPHC3NLCrL8UbdRmYewNReaI0kuz9FZnUrywScnpftMdKgjuG7Q80iLdffZzf
-    dC2UFeWvlIETMfmVi4>
-X-ME-Received: <xmr:Nj4tZM7er8rqYNrxfG7f6cXWhCMipxTtYrKD7BSaAbE017Ln-TQZHaIjgbmDXyx2UVm3CA8nqx7iifEIxqikeQ4nxBRcJFB7>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdejuddgudehucetufdoteggodetrfdotf
+	 t=1680695018; x=1680698618; bh=BvuQB3YrSy/XsrAgLKIr85mggyxf9SOU
+	TW/mTPUnfq4=; b=h+gPM1X9IKsm6KmPXyYAU3qKp1UfxUWsqjmDKWzTq74nL7bL
+	WoqUWWrfo9cdC23acx1hgfoxK4dkgjmLN4NJ8nQAZWiYTn5WRhJ4W+IY6DqJRx5n
+	oSd1RkQOw+ZZOy9+ImK+u9AGbK8ReBT58VyyOAlgeGzdThpcw+a3hPvLI4GexNcz
+	0WatuUVno2t4+ITT6flCxcoDet/gTOG4DGx5y+C1Hd6VwIabzOii6zG9G6jR85QC
+	li6Guiz8nhgIy7jhkaiK+gkTTYv0EhMaT9OCIPEAfkecwayrHLWIpIRNOPY0qcZb
+	TtUnzyWQIm08wcgTHv5fo6y2K4rRvg5NILLT6w==
+X-ME-Sender: <xms:6F4tZBkAKvRQYotVW5W-x7uzCqsuSajY1x8nguexPBFVaVpPKY8lPg>
+    <xme:6F4tZM2c-r4dyXFleZcWw001GswYTm3k1vbzw1DcicZa2Qdv5Wg2eQQKi7m92zYjz
+    YH0ZStBtWkxPB3Lud4>
+X-ME-Received: <xmr:6F4tZHpJ8cNHM3Vi5MtZNc6jzgivDPcqSg8EBWFOgNuxfUmy4Gdzx40IEbspx5iVaStqvDjhNy74clDA92p8H-k5dVPHVm8X>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdejuddggeegucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepkfffgggfuffvvehfhfgjtgfgsehtjeertddtfeejnecuhfhrohhmpeffrghm
     ihgvnhcunfgvucfoohgrlhcuoegulhgvmhhorghlsehfrghsthhmrghilhdrtghomheqne
-    cuggftrfgrthhtvghrnhepgfevteegtedtueevvdefffevtedvveelffeihfeghfeuveet
-    geeuffefhfelffehnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvg
-    hrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegulhgvmhhorghlsehfrghs
-    thhmrghilhdrtghomh
-X-ME-Proxy: <xmx:Nj4tZN1d2p0yMoa0hq050mDZZ8BuZIFQtULiAQw1A2AXILPp_BJVEg>
-    <xmx:Nj4tZHFJTtBCqBik_oY5_W3IbE-dPF8q8s2LJoH3q5DBf9STr_ROVg>
-    <xmx:Nj4tZG9nYzr7ej6CoUSmv7woN3pInYJcZa6hrQdKdNso0OQsJHYgkQ>
-    <xmx:Nz4tZA39Q7mid2I-Vb9k42xBGIQxQVA5JuloUmC3igKKNpectIGeJoK5AUI>
+    cuggftrfgrthhtvghrnhepteefiefhieetgfevhfegfeehffetteduieetudfgleetvdff
+    udelveejfefhfeejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+    hfrhhomhepughlvghmohgrlhesfhgrshhtmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:6F4tZBlRGwMdE5g9Juckwn8r_yQRaMjdZ_9hEglceZ1agmQFcWtosw>
+    <xmx:6F4tZP3BzYrX33WZIrExKk-w12e6_gcnbLXIR3EcfMyjzyHfiXLpSA>
+    <xmx:6F4tZAuDB7Lx5RR5Ae5fryAIKzTzNh7wetTs3Jy_3zfVrMTvH2uYXA>
+    <xmx:6V4tZEX3FsEzIZpyLZiAICgyGPg2jht9wTVVVfgS4fn959nIXDbCqXzhz1g>
 Feedback-ID: i3db14652:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 5 Apr 2023 05:24:01 -0400 (EDT)
-Message-ID: <29a5ccc3-d2c8-b844-a333-28bc20657942@fastmail.com>
-Date: Wed, 5 Apr 2023 18:23:59 +0900
+ 5 Apr 2023 07:43:31 -0400 (EDT)
+Message-ID: <43be59ed-fd35-b4d3-4dc4-99a6727632e2@fastmail.com>
+Date: Wed, 5 Apr 2023 20:43:28 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v3 00/11] PCI: rockchip: Fix RK3399 PCIe endpoint
- controller driver
+Subject: Re: [PATCH v3 08/11] PCI: rockchip: Fix window mapping and address
+ translation for endpoint
 Content-Language: en-US
 To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
 Cc: damien.lemoal@opensource.wdc.com, xxm@rock-chips.com,
- Shawn Lin <shawn.lin@rock-chips.com>,
+ stable@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lpieralisi@kernel.org>,
  =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
- Brian Norris <briannorris@chromium.org>, Caleb Connolly
- <kc@postmarketos.org>, Corentin Labbe <clabbe@baylibre.com>,
+ Brian Norris <briannorris@chromium.org>, Corentin Labbe
+ <clabbe@baylibre.com>, Caleb Connolly <kc@postmarketos.org>,
  Arnaud Ferraris <arnaud.ferraris@collabora.com>,
  Judy Hsiao <judyhsiao@chromium.org>, Lin Huang <hl@rock-chips.com>,
  Hugh Cole-Baker <sigmaris@gmail.com>, linux-pci@vger.kernel.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
+ <20230404082426.3880812-9-rick.wertenbroek@gmail.com>
 From: Damien Le Moal <dlemoal@fastmail.com>
-In-Reply-To: <20230404082426.3880812-1-rick.wertenbroek@gmail.com>
+In-Reply-To: <20230404082426.3880812-9-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_022415_213148_586858A0 
-X-CRM114-Status: GOOD (  53.94  )
+X-CRM114-CacheID: sfid-20230405_044343_841438_ECAC6A9D 
+X-CRM114-Status: GOOD (  35.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,197 +122,300 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 4/4/23 17:24, Rick Wertenbroek wrote:
-> This is a series of patches that fixes the PCIe endpoint controller driver
-> for the Rockchip RK3399 SoC. The driver was introduced in commit
-> cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> The original driver had issues and would not allow for the RK3399 to
-> operate in PCIe endpoint mode correctly. This patch series fixes that so
-> that the PCIe core controller of the RK3399 SoC can now act as a PCIe
-> endpoint. This is v3 of the patch series and addresses the concerns that
-> were raised during the review of the V2.
+> The RK3399 PCI endpoint core has 33 windows for PCIe space, now in the
+> driver up to 32 fixed size (1M) windows are used and pages are allocated
+> and mapped accordingly. The driver first used a single window and allocated
+> space inside which caused translation issues (between CPU space and PCI
+> space) because a window can only have a single translation at a given
+> time, which if multiple pages are allocated inside will cause conflicts.
+> Now each window is a single region of 1M which will always guarantee that
+> the translation is not in conflict.
 > 
-> Thank you in advance for reviewing these changes and hopefully
-> getting this merged. Having a functional PCIe endpoint controller
-> driver for the RK3399 would allow to develop further PCIe endpoint
-> functions through the Linux PCIe endpoint framework using this SoC.
+> Set the translation register addresses for physical function. As documented
+> in the technical reference manual (TRM) section 17.5.5 "PCIe Address
+> Translation" and section 17.6.8 "Address Translation Registers Description"
 > 
-> Summary of changes to V2 :
+> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+> ---
+>  drivers/pci/controller/pcie-rockchip-ep.c | 110 +++++++++-------------
+>  drivers/pci/controller/pcie-rockchip.h    |  30 +++---
+>  2 files changed, 64 insertions(+), 76 deletions(-)
 > 
-> * Fix issue with memory mapping from PCIe space to physical space
->   There was a small mistake with the number of bits passed from the AXI
->   physical address to the PCIe space address.
-> * Disable the advertisement of MSI-X capabilities by the endpoint
->   According to the technical reference manual the controller cannot
->   generate MSI-X, so the controller should not advertise this capability.
-> * Add the alignment value to the endpoint attributes.
-> * [minor] Clean code (line length, variable names, small refactorings).
->   As pointed out by reviews on the V2.
-> * [minor] Fix error in variable name.
-> * [minor] Remove a patch that introduced unnecessary late parameter checks.
-> 
-> General problem statement and overview of the patch series :
-> 
-> Problem: The Rockchip RK3399 PCIe endpoint controller driver introduced in
-> commit cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe
-> controller") did not work.
-> 
-> Summary of problems with the driver :
-> 
-> * Missing dtsi entry
-> * Could not update Device ID (DID)
-> * The endpoint could not be configured by a host computer because the
->   endpoint kept sending Configuration Request Retry Status (CRS) messages
-> * The kernel would sometimes hang on probe due to access to registers in
->   a clock domain of which the PLLs were not locked
-> * The memory window mapping and address translation mechanism had
->   conflicting mappings and did not follow the technical reference manual
->   as to how the address translation should be done
-> * Legacy IRQs were not generated by the endpoint
-> * Message Signaled interrupts (MSI) were not generated by the endpoint
-> * MSI-X capabilities were advertised but the controller cannot generate
->   them according to the technical reference manual
-> 
-> The problems have been addressed and validated through tests (see below).
-> 
-> Summary of patches :
-> 
-> This patch series is composed of 11 patches that do the following :
-> * Remove writes to unused registers in the PCIe core register space.
->   The registers that were written to is marked "unused" and read
->   only in the technical reference manual of the RK3399 SoC.
-> * Write PCI Device ID (DID) to correct register, the DID was written to
->   a read only register and therefore would not update the DID.
-> * Assert PCI Configuration Enable bit after probe so that it would stop
->   sending Configuration Request Retry Status (CRS) messages to the
->   host once configured, without this the host would retry until
->   timeout and cancel the PCI configuration.
-> * Add poll and timeout to wait for PHY PLLs to be locked, this
->   is the only patch that also applies to the root complex function
->   of the PCIe core controller, without this the kernel would
->   sometimes access registers in the PHY PLL clock domain when the PLLs
->   were not yet locked and the system would hang. This was hackily solved
->   in other non mainline patches (e.g., in armbian) with a "msleep()"
->   that was added after PHY PLL configuration but without realizing
->   why it was needed. A poll with timeout seems like a sane approach.
-> * Add dtsi entry for RK3399 PCIe endpoint core. The new entry is
->   in "disabled" status by default, so unless it is explicitly enabled
->   it will not conflict with the PCIe root complex controller entry.
->   Developers that will enable it would know that the root complex function
->   then must be disabled, this can be done in the board level DTS.
-> * Update the RK3399 example in the documentation to a valid one.
-> * Fix legacy IRQ generation for RK3399 PCIe endpoint core, the legacy IRQs
->   were not sent by the device because their generation did not follow the
->   instructions in the technical reference manual. They now work.
-> * Fix window mapping and address translation for endpoint. The window
->   mapping and address translation did not follow the technical reference
->   manual and a single memory region was used which resulted in conflicting
->   address translations for memory allocated in that region. The current
->   patch allows to allocate up to 32 memory windows with 1MB pages.
-> * Use u32 variable to access 32-bit registers, u16 variables were used to
->   access and manipulate data of 32-bit registers, this would lead to
->   overflows e.g., when left shifting more than 16 bits.
-> * Don't advertise MSI-X in PCIe capabilities because according to the TRM
->   the controller is not capable of generating them.
-> * Set address alignment for the endpoint mode.
-> 
-> Validation on real hardware:
-> 
-> This patch series has been tested by me with kernels 6.0.19, 6.1.21,
-> and 5.19 on real hardware, a FriendlyElec NanoPC-T4 RK3399 based single
-> computer board connected to a host computer through PCIe x1 and x4. The
-> driver was also tested by Damien Le Moal <damien.lemoal@opensource.wdc.com>
-> on a Pine Rockpro64 board [1].
+> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+> index 7591a7be78e0..f366846ad77c 100644
+> --- a/drivers/pci/controller/pcie-rockchip-ep.c
+> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
+> @@ -64,52 +64,30 @@ static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
+>  }
+>  
+>  static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
+> -					 u32 r, u32 type, u64 cpu_addr,
+> -					 u64 pci_addr, size_t size)
+> +					 u32 r, u64 cpu_addr, u64 pci_addr,
+> +					 size_t size)
+>  {
+>  	u64 sz = 1ULL << fls64(size - 1);
+>  	int num_pass_bits = ilog2(sz);
+> -	u32 addr0, addr1, desc0, desc1;
+> -	bool is_nor_msg = (type == AXI_WRAPPER_NOR_MSG);
+> +	u32 addr0, addr1, desc0;
+>  
+> -	/* The minimal region size is 1MB */
+>  	if (num_pass_bits < 8)
+>  		num_pass_bits = 8;
+>  
+> -	cpu_addr -= rockchip->mem_res->start;
+> -	addr0 = ((is_nor_msg ? 0x10 : (num_pass_bits - 1)) &
+> -		PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+> -		(lower_32_bits(cpu_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+> -	addr1 = upper_32_bits(is_nor_msg ? cpu_addr : pci_addr);
+> -	desc0 = ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN(fn) | type;
+> -	desc1 = 0;
+> -
+> -	if (is_nor_msg) {
+> -		rockchip_pcie_write(rockchip, 0,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r));
+> -		rockchip_pcie_write(rockchip, 0,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r));
+> -		rockchip_pcie_write(rockchip, desc0,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r));
+> -		rockchip_pcie_write(rockchip, desc1,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r));
+> -	} else {
+> -		/* PCI bus address region */
+> -		rockchip_pcie_write(rockchip, addr0,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r));
+> -		rockchip_pcie_write(rockchip, addr1,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r));
+> -		rockchip_pcie_write(rockchip, desc0,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r));
+> -		rockchip_pcie_write(rockchip, desc1,
+> -				    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r));
+> -
+> -		addr0 =
+> -		    ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+> -		    (lower_32_bits(cpu_addr) &
+> -		     PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+> -		addr1 = upper_32_bits(cpu_addr);
+> -	}
+> +	addr0 = ((num_pass_bits - 1) & PCIE_CORE_OB_REGION_ADDR0_NUM_BITS) |
+> +		(lower_32_bits(pci_addr) & PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
+> +	addr1 = upper_32_bits(pci_addr);
+> +	desc0 = ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN(fn) | AXI_WRAPPER_MEM_WRITE;
+> +
+> +	/* PCI bus address region */
+> +	rockchip_pcie_write(rockchip, addr0,
+> +			    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r));
+> +	rockchip_pcie_write(rockchip, addr1,
+> +			    ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r));
+> +	rockchip_pcie_write(rockchip, desc0,
+> +			    ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r));
+> +	rockchip_pcie_write(rockchip, 0,
+> +			    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r));
+>  }
+>  
+>  static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn, u8 vfn,
+> @@ -248,6 +226,11 @@ static void rockchip_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn, u8 vfn,
+>  			    ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar));
+>  }
+>  
+> +static inline u32 rockchip_ob_region(phys_addr_t addr)
+> +{
+> +	return (addr >> ilog2(SZ_1M)) & 0x1f;
+> +}
+> +
+>  static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+>  				     phys_addr_t addr, u64 pci_addr,
+>  				     size_t size)
+> @@ -256,18 +239,9 @@ static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+>  	struct rockchip_pcie *pcie = &ep->rockchip;
+>  	u32 r;
+>  
+> -	r = find_first_zero_bit(&ep->ob_region_map, BITS_PER_LONG);
+> -	/*
+> -	 * Region 0 is reserved for configuration space and shouldn't
+> -	 * be used elsewhere per TRM, so leave it out.
+> -	 */
+> -	if (r >= ep->max_regions - 1) {
+> -		dev_err(&epc->dev, "no free outbound region\n");
+> -		return -EINVAL;
+> -	}
+> +	r = rockchip_ob_region(addr);
 
-I retested this series on top of rc5 with the patched epf-test RC & EP drivers
-with a Pine Rockpro64 board. All good, no issues detected.
+Nit: you can move this together with the decalration:
 
-Feel free to add:
+	u32 r = rockchip_ob_region(addr);
 
-Tested-by: Damien Le Moal <dlemoal@fastmail.com>
+>  
+> -	rockchip_pcie_prog_ep_ob_atu(pcie, fn, r, AXI_WRAPPER_MEM_WRITE, addr,
+> -				     pci_addr, size);
+> +	rockchip_pcie_prog_ep_ob_atu(pcie, fn, r, addr, pci_addr, size);
+>  
+>  	set_bit(r, &ep->ob_region_map);
+>  	ep->ob_addr[r] = addr;
+> @@ -282,15 +256,11 @@ static void rockchip_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+>  	struct rockchip_pcie *rockchip = &ep->rockchip;
+>  	u32 r;
+>  
+> -	for (r = 0; r < ep->max_regions - 1; r++)
+> +	for (r = 0; r < ep->max_regions; r++)
+>  		if (ep->ob_addr[r] == addr)
+>  			break;
+>  
+> -	/*
+> -	 * Region 0 is reserved for configuration space and shouldn't
+> -	 * be used elsewhere per TRM, so leave it out.
+> -	 */
+> -	if (r == ep->max_regions - 1)
+> +	if (r == ep->max_regions)
+>  		return;
+>  
+>  	rockchip_pcie_clear_ep_ob_atu(rockchip, r);
+> @@ -388,6 +358,7 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
+>  	u16 flags, mme, data, data_mask;
+>  	u8 msi_count;
+>  	u64 pci_addr, pci_addr_mask = 0xff;
 
-> 
-> [1] https://lore.kernel.org/linux-pci/20230330085357.2653599-1-damien.lemoal@opensource.wdc.com/
-> 
-> The PCIe endpoint test function driver was loaded on the SoC and the PCIe
-> endpoint test driver was loaded on the host computer. The following tests were
-> executed through this setup :
-> 
-> * enumeration of the PCIe endpoint device (lspci)
->   lspci -vvv
-> * validation of PCI header and capabilities
->   setpci and lspci -xxxx
-> * device was recognized by host computer dans PCIe endpoint test driver
->   was loaded
->   lspci -v states "Kernel modules: pci_endpoint_test"
-> * tested the BARs 0-5
->   sudo /usr/bin/pcitest -b 0
->   ...
->   sudo /usr/bin/pcitest -b 5
-> * tested legacy interrupt through the test driver
->   sudo /usr/bin/pcitest -i 0
->   sudo /usr/bin/pcitest -l
-> * tested MSI interrupt through the test driver
->   sudo /usr/bin/pcitest -i 1
->   sudo /usr/bin/pcitest -m 1
-> * tested read/write to and from host through the test driver with checksum
->   sudo /usr/bin/pcitest -r -s 1024
->   sudo /usr/bin/pcitest -w -s 1024
-> * tested read/write with DMA enabled (all read/write tests also did IRQ)
->   sudo /usr/bin/pcitest -r -d -s 8192
->   sudo /usr/bin/pcitest -w -d -s 8192
-> * tested larged transfers e.g., 100kB with and without DMA
-> 
-> Commands used on the SoC to launch the endpoint function (configfs) :
-> 
-> modprobe -i pci-epf-test
-> mkdir -p /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0
-> echo 0xb500 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/deviceid
-> echo 0x104c > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/vendorid
-> echo 16 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/msi_interrupts 
-> ln -s /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0 \
-> /sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/
-> echo 1 > /sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/start
-> 
-> Note: to enable the endpoint controller on the board the file :
-> arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-> Was edited to set the status of &pcie0 to "disabled" and &pcie0_ep
-> to "okay". This is not submitted as a patch because most users
-> will use the PCIe core controller in host (root complex) mode
-> rather than endpoint mode.
-> 
-> I have tested and confirmed all functionality required for the
-> endpoint with the test driver and tools. With the initial driver commit
-> cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> the device would not even be enumerated by the host computer (mainly because
-> of CRS messages being sent back to the root complex) and tests would not pass
-> (driver would not even be loaded because DID was not set correctly)
-> and then only the BAR test would pass. Now all tests pass as stated above.
-> 
-> Best regards
-> Rick
-> 
-> Damien Le Moal (1):
->   PCI: rockchip: Set address alignment for endpoint mode
-> 
-> Rick Wertenbroek (10):
->   PCI: rockchip: Remove writes to unused registers
->   PCI: rockchip: Write PCI Device ID to correct register
->   PCI: rockchip: Assert PCI Configuration Enable bit after probe
->   PCI: rockchip: Add poll and timeout to wait for PHY PLLs to be locked
->   arm64: dts: rockchip: Add dtsi entry for RK3399 PCIe endpoint core
->   dt-bindings: PCI: Update the RK3399 example to a valid one
->   PCI: rockchip: Fix legacy IRQ generation for RK3399 PCIe endpoint core
->   PCI: rockchip: Fix window mapping and address translation for endpoint
->   PCI: rockchip: Use u32 variable to access 32-bit registers
->   PCI: rockchip: Don't advertise MSI-X in PCIe capabilities
-> 
->  .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |   8 +-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  27 +++
->  drivers/pci/controller/pcie-rockchip-ep.c     | 193 ++++++++----------
->  drivers/pci/controller/pcie-rockchip.c        |  17 ++
->  drivers/pci/controller/pcie-rockchip.h        |  44 ++--
->  5 files changed, 162 insertions(+), 127 deletions(-)
-> 
+Nit: pci_addr_mask is constant and never changed, so we could get rid of this
+variable and use a macro instead.
+
+> +	u32 r;
+>  
+>  	/* Check MSI enable bit */
+>  	flags = rockchip_pcie_read(&ep->rockchip,
+> @@ -421,13 +392,12 @@ static int rockchip_pcie_ep_send_msi_irq(struct rockchip_pcie_ep *ep, u8 fn,
+>  				       ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+>  				       ROCKCHIP_PCIE_EP_MSI_CTRL_REG +
+>  				       PCI_MSI_ADDRESS_LO);
+> -	pci_addr &= GENMASK_ULL(63, 2);
+>  
+>  	/* Set the outbound region if needed. */
+>  	if (unlikely(ep->irq_pci_addr != (pci_addr & ~pci_addr_mask) ||
+>  		     ep->irq_pci_fn != fn)) {
+> -		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, ep->max_regions - 1,
+> -					     AXI_WRAPPER_MEM_WRITE,
+> +		r = rockchip_ob_region(ep->irq_phys_addr);
+> +		rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
+>  					     ep->irq_phys_addr,
+>  					     pci_addr & ~pci_addr_mask,
+>  					     pci_addr_mask + 1);
+> @@ -516,6 +486,8 @@ static int rockchip_pcie_parse_ep_dt(struct rockchip_pcie *rockchip,
+>  	if (err < 0 || ep->max_regions > MAX_REGION_LIMIT)
+>  		ep->max_regions = MAX_REGION_LIMIT;
+>  
+> +	ep->ob_region_map = 0;
+> +
+>  	err = of_property_read_u8(dev->of_node, "max-functions",
+>  				  &ep->epc->max_functions);
+>  	if (err < 0)
+> @@ -536,7 +508,8 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+>  	struct rockchip_pcie *rockchip;
+>  	struct pci_epc *epc;
+>  	size_t max_regions;
+> -	int err;
+> +	struct pci_epc_mem_window *windows = NULL;
+> +	int err, i;
+>  
+>  	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+>  	if (!ep)
+> @@ -583,15 +556,26 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+>  	/* Only enable function 0 by default */
+>  	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
+>  
+> -	err = pci_epc_mem_init(epc, rockchip->mem_res->start,
+> -			       resource_size(rockchip->mem_res), PAGE_SIZE);
+> +	windows = devm_kcalloc(dev, ep->max_regions, sizeof(struct pci_epc_mem_window), GFP_KERNEL);
+
+Nit: long line. Please split it at sizeof(...).
+
+> +	if (!windows) {
+> +		err = -ENOMEM;
+> +		goto err_uninit_port;
+> +	}
+> +	for (i = 0; i < ep->max_regions; i++) {
+> +		windows[i].phys_base = rockchip->mem_res->start + (SZ_1M * i);
+> +		windows[i].size = SZ_1M;
+> +		windows[i].page_size = SZ_1M;
+> +	}
+> +	err = pci_epc_multi_mem_init(epc, windows, ep->max_regions);
+> +	devm_kfree(dev, windows);
+> +
+>  	if (err < 0) {
+>  		dev_err(dev, "failed to initialize the memory space\n");
+>  		goto err_uninit_port;
+>  	}
+>  
+>  	ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
+> -						  SZ_128K);
+> +						  SZ_1M);
+>  	if (!ep->irq_cpu_addr) {
+>  		dev_err(dev, "failed to reserve memory space for MSI\n");
+>  		err = -ENOMEM;
+> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+> index ffc68a3a5fee..5797ba73bb6b 100644
+> --- a/drivers/pci/controller/pcie-rockchip.h
+> +++ b/drivers/pci/controller/pcie-rockchip.h
+> @@ -139,6 +139,7 @@
+>  
+>  #define PCIE_RC_RP_ATS_BASE		0x400000
+>  #define PCIE_RC_CONFIG_NORMAL_BASE	0x800000
+> +#define PCIE_EP_PF_CONFIG_REGS_BASE	0x800000
+>  #define PCIE_RC_CONFIG_BASE		0xa00000
+>  #define PCIE_EP_CONFIG_BASE		0xa00000
+>  #define PCIE_EP_CONFIG_DID_VID		(PCIE_EP_CONFIG_BASE + 0x00)
+> @@ -232,13 +233,15 @@
+>  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_ME				BIT(16)
+>  #define   ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP	BIT(24)
+>  #define ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR				0x1
+> -#define ROCKCHIP_PCIE_EP_FUNC_BASE(fn)	(((fn) << 12) & GENMASK(19, 12))
+> +#define ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR		0x3
+> +#define ROCKCHIP_PCIE_EP_FUNC_BASE(fn) \
+> +	(PCIE_EP_PF_CONFIG_REGS_BASE + (((fn) << 12) & GENMASK(19, 12)))
+> +#define ROCKCHIP_PCIE_EP_VIRT_FUNC_BASE(fn) \
+> +	(PCIE_EP_PF_CONFIG_REGS_BASE + 0x10000 + (((fn) << 12) & GENMASK(19, 12)))
+>  #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar) \
+> -	(PCIE_RC_RP_ATS_BASE + 0x0840 + (fn) * 0x0040 + (bar) * 0x0008)
+> +	(PCIE_CORE_AXI_CONF_BASE + 0x0828 + (fn) * 0x0040 + (bar) * 0x0008)
+>  #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar) \
+> -	(PCIE_RC_RP_ATS_BASE + 0x0844 + (fn) * 0x0040 + (bar) * 0x0008)
+> -#define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r) \
+> -	(PCIE_RC_RP_ATS_BASE + 0x0000 + ((r) & 0x1f) * 0x0020)
+> +	(PCIE_CORE_AXI_CONF_BASE + 0x082c + (fn) * 0x0040 + (bar) * 0x0008)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0_DEVFN_MASK	GENMASK(19, 12)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0_DEVFN(devfn) \
+>  	(((devfn) << 12) & \
+> @@ -246,20 +249,21 @@
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0_BUS_MASK	GENMASK(27, 20)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0_BUS(bus) \
+>  		(((bus) << 20) & ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0_BUS_MASK)
+> +#define PCIE_RC_EP_ATR_OB_REGIONS_1_32 (PCIE_CORE_AXI_CONF_BASE + 0x0020)
+> +#define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR0(r) \
+> +		(PCIE_RC_EP_ATR_OB_REGIONS_1_32 + 0x0000 + ((r) & 0x1f) * 0x0020)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_PCI_ADDR1(r) \
+> -		(PCIE_RC_RP_ATS_BASE + 0x0004 + ((r) & 0x1f) * 0x0020)
+> +		(PCIE_RC_EP_ATR_OB_REGIONS_1_32 + 0x0004 + ((r) & 0x1f) * 0x0020)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_DESC0_HARDCODED_RID	BIT(23)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN_MASK	GENMASK(31, 24)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN(devfn) \
+>  		(((devfn) << 24) & ROCKCHIP_PCIE_AT_OB_REGION_DESC0_DEVFN_MASK)
+>  #define ROCKCHIP_PCIE_AT_OB_REGION_DESC0(r) \
+> -		(PCIE_RC_RP_ATS_BASE + 0x0008 + ((r) & 0x1f) * 0x0020)
+> -#define ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r)	\
+> -		(PCIE_RC_RP_ATS_BASE + 0x000c + ((r) & 0x1f) * 0x0020)
+> -#define ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR0(r) \
+> -		(PCIE_RC_RP_ATS_BASE + 0x0018 + ((r) & 0x1f) * 0x0020)
+> -#define ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR1(r) \
+> -		(PCIE_RC_RP_ATS_BASE + 0x001c + ((r) & 0x1f) * 0x0020)
+> +		(PCIE_RC_EP_ATR_OB_REGIONS_1_32 + 0x0008 + ((r) & 0x1f) * 0x0020)
+> +#define ROCKCHIP_PCIE_AT_OB_REGION_DESC1(r) \
+> +		(PCIE_RC_EP_ATR_OB_REGIONS_1_32 + 0x000c + ((r) & 0x1f) * 0x0020)
+> +#define ROCKCHIP_PCIE_AT_OB_REGION_DESC2(r) \
+> +		(PCIE_RC_EP_ATR_OB_REGIONS_1_32 + 0x0010 + ((r) & 0x1f) * 0x0020)
+>  
+>  #define ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG0(fn) \
+>  		(PCIE_CORE_CTRL_MGMT_BASE + 0x0240 + (fn) * 0x0008)
 
 
 _______________________________________________
