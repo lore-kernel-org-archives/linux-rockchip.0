@@ -4,52 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B075C77B6C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Apr 2023 21:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6814BC76196
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Apr 2023 16:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+0yrSJuGnBRAzrkeuRFqUKwEX5ZMYXaJjeHPdH7IF/8=; b=LfBdVKr9/Nd2k2
-	utlhvcUicJoGavJFJ4QBrvK90jsBtfgvzzjC6j9zYqvU4VLJf7EuvCXgCsSnFXkRY8nxIfFxxhEGH
-	MJ+FOScXfqg43dDS3RrHnwdbyxg4M6IeOHwhSX5xOdnWrAd9AQJyY+BTq+wXq/jmlyXBlCLczzWr7
-	b0Czh3zFooRUYjBVqEUWaDA5QIu3NIO59IqClXxK50I6n6kw24BM/HJ1swFzdw4C+josVC87Y+MI6
-	cPuA0KeNMBkoI1KdX2ZyXs29x1pVKFjZfd/BNso1a+rkx9zYO+zxpYPHUJXYZ8X83Z5QaL8B7LDTP
-	qxNcCvGIA6BvsEmflY+w==;
+	List-Owner; bh=7r6P+o0hcKJuNfEkvgY5+MFs5iKcIZzUEvt+xKC74CM=; b=25kaqHbfcW/93t
+	Sl0WHpv1fNxaTbUgLEJEuLvCSrqsEx4e/KbB1eMtTj5ojxPMC10vXwu0uG/OHj31UQwwbLRohr9p9
+	jtqJBpagjP7tJZ0FGTmx6CSqNbbeBFEaE3pycpnVrTenqV/Ta9MX71qJDZ2/zwnQWJI6hj4SLBE39
+	GAAfTnaI8X2VWGswQ7YiT70Da7YpXtozqEbEKvDErYHvgqytwiWDZnoyAuDbV9vFl+WX4+EBxmDDo
+	vkmqnqjJ6UTF6XNNo2WdDWyZMN45GIkfzXn5UPWVe5RameulYp+uFcI2JULmyQNh0L0n3abbAY0KM
+	mceVL6pGOarjjUY1UScg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkAmq-005k7F-16;
-	Wed, 05 Apr 2023 21:35:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pkSjw-0082kU-29;
+	Thu, 06 Apr 2023 16:45:36 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkAmm-005k5O-02;
-	Wed, 05 Apr 2023 21:35:21 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pkAmX-0001hG-Ps; Wed, 05 Apr 2023 23:35:05 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>
-Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 0/2] Add PWM fan support to Rock 5B board
-Date: Wed, 05 Apr 2023 23:35:04 +0200
-Message-ID: <840877554.0ifERbkFSE@diego>
-In-Reply-To: <1a914522-8780-febd-7224-121b1f1fc2ba@roeck-us.net>
-References:  <20230404173807.490520-1-cristian.ciocaltea@collabora.com>
- <168071663557.3186456.17606522894011578076.b4-ty@sntech.de>
- <1a914522-8780-febd-7224-121b1f1fc2ba@roeck-us.net>
+	id 1pkSjr-0082jD-2z;
+	Thu, 06 Apr 2023 16:45:33 +0000
+Received: by mail-oi1-f175.google.com with SMTP id w133so29502811oib.1;
+        Thu, 06 Apr 2023 09:45:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680799528; x=1683391528;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=okuqTE+nvv4kmh8nE7QP2fpvb7kyUn3ojSbnwLLBqII=;
+        b=mmFbvpPWjyhK5w9bz5brN1R3DjWfS+BvOH/ec+vgQMajeikdmpLZ4amhJjs2Yhwc9i
+         8hkNZ3Y7e29McL4vKcPXw84bp/POMYk3O3H7g5pb62SrYLi0bX3QZq8Hd3PvP9XgCFmz
+         ke+hTTFOjMH7nFQk6xbGNkvMU0vLi/YHu10E9YJSypfi0FjfUB23PI2aqR0QakRj5nZr
+         cyOXfhzj5NoKMIMQYgHCwQBilGN0+FXY3Jyj2RFXG55j/NBs/x9bBj51UCCmSFRCxTBZ
+         fl3t8iDMysvsXD6+GS8VylR72cLUi9MHLY3x7OUUZUTymwEELDKFLq4J4zStJiPsnQWz
+         SsWQ==
+X-Gm-Message-State: AAQBX9efqBSl+leeQH74X6vn7wqrkzSjTLLUcycWpBYnnahS1gsR252N
+	86RkaV4/r9j+tzrrYe8Hkg==
+X-Google-Smtp-Source: AKy350bDAm/OI6lhG2rX/8wo60zHeGQhQM0V+MfK/nUW0KAC7GHqFW1OHbvJ9G8jYHlAKBWmHJFcTA==
+X-Received: by 2002:a05:6808:2a8d:b0:38b:5e4:9d3b with SMTP id fc13-20020a0568082a8d00b0038b05e49d3bmr4665449oib.4.1680799528229;
+        Thu, 06 Apr 2023 09:45:28 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id l64-20020acabb43000000b00383ef58c15bsm847001oif.28.2023.04.06.09.45.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Apr 2023 09:45:27 -0700 (PDT)
+Received: (nullmailer pid 3280156 invoked by uid 1000);
+	Thu, 06 Apr 2023 16:45:27 -0000
+Date: Thu, 6 Apr 2023 11:45:27 -0500
+From: Rob Herring <robh@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: hwmon: pwm-fan: Convert to DT schema
+Message-ID: <20230406164527.GA3263961-robh@kernel.org>
+References: <20230404173807.490520-1-cristian.ciocaltea@collabora.com>
+ <20230404173807.490520-2-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230404173807.490520-2-cristian.ciocaltea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230405_143520_048982_43E581D1 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20230406_094531_962178_D3B18995 
+X-CRM114-Status: GOOD (  32.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,42 +81,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 5. April 2023, 21:04:04 CEST schrieb Guenter Roeck:
-> On 4/5/23 10:45, Heiko Stuebner wrote:
-> > On Tue, 4 Apr 2023 20:38:05 +0300, Cristian Ciocaltea wrote:
-> >> This patch series enables support for the PWM controlled heat sink fan
-> >> on the Rock 5B SBC and, additionally, converts the hwmon PWM fan bindings
-> >> to DT schema format.
-> >>
-> >> Changes in v2:
-> >>   - Updated PATCH 1/2 according to Rob's review
-> >>   - Added Reviewed-by from Christopher to PATCH 2/2
-> >>   - v1: https://lore.kernel.org/lkml/20230403105052.426135-1-cristian.ciocaltea@collabora.com/
-> >>
-> >> [...]
-> > 
-> > Applied, thanks!
-> > 
+On Tue, Apr 04, 2023 at 08:38:06PM +0300, Cristian Ciocaltea wrote:
+> Convert the PWM fan bindings to DT schema format.
 > 
-> Both patches or only the second one ?
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  .../devicetree/bindings/hwmon/pwm-fan.txt     |  68 +---------
+>  .../devicetree/bindings/hwmon/pwm-fan.yaml    | 119 ++++++++++++++++++
+>  2 files changed, 120 insertions(+), 67 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/hwmon/pwm-fan.txt b/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
+> index 4509e688623a..48886f0ce415 100644
+> --- a/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
+> +++ b/Documentation/devicetree/bindings/hwmon/pwm-fan.txt
+> @@ -1,67 +1 @@
+> -Bindings for a fan connected to the PWM lines
+> -
+> -Required properties:
+> -- compatible	: "pwm-fan"
+> -- pwms		: the PWM that is used to control the PWM fan
+> -- cooling-levels      : PWM duty cycle values in a range from 0 to 255
+> -			which correspond to thermal cooling states
+> -
+> -Optional properties:
+> -- fan-supply		: phandle to the regulator that provides power to the fan
+> -- interrupts		: This contains an interrupt specifier for each fan
+> -			  tachometer output connected to an interrupt source.
+> -			  The output signal must generate a defined number of
+> -			  interrupts per fan revolution, which require that
+> -			  it must be self resetting edge interrupts. See
+> -			  interrupt-controller/interrupts.txt for the format.
+> -- pulses-per-revolution : define the number of pulses per fan revolution for
+> -			  each tachometer input as an integer (default is 2
+> -			  interrupts per revolution). The value must be
+> -			  greater than zero.
+> -
+> -Example:
+> -	fan0: pwm-fan {
+> -		compatible = "pwm-fan";
+> -		#cooling-cells = <2>;
+> -		pwms = <&pwm 0 10000 0>;
+> -		cooling-levels = <0 102 170 230>;
+> -	};
+> -
+> -	thermal-zones {
+> -		cpu_thermal: cpu-thermal {
+> -			     thermal-sensors = <&tmu 0>;
+> -			     polling-delay-passive = <0>;
+> -			     polling-delay = <0>;
+> -			     trips {
+> -					cpu_alert1: cpu-alert1 {
+> -						    temperature = <100000>; /* millicelsius */
+> -						    hysteresis = <2000>; /* millicelsius */
+> -						    type = "passive";
+> -					};
+> -			     };
+> -			     cooling-maps {
+> -					map0 {
+> -						    trip = <&cpu_alert1>;
+> -						    cooling-device = <&fan0 0 1>;
+> -					};
+> -			     };
+> -		};
+> -
+> -Example 2:
+> -	fan0: pwm-fan {
+> -		compatible = "pwm-fan";
+> -		pwms = <&pwm 0 40000 0>;
+> -		fan-supply = <&reg_fan>;
+> -		interrupt-parent = <&gpio5>;
+> -		interrupts = <1 IRQ_TYPE_EDGE_FALLING>;
+> -		pulses-per-revolution = <2>;
+> -	};
+> -
+> -Example 3:
+> -	fan0: pwm-fan {
+> -		compatible = "pwm-fan";
+> -		pwms = <&pwm1 0 25000 0>;
+> -		interrupts-extended = <&gpio1 1 IRQ_TYPE_EDGE_FALLING>,
+> -			<&gpio2 5 IRQ_TYPE_EDGE_FALLING>;
+> -		pulses-per-revolution = <2>, <1>;
+> -	};
+> +This file has moved to pwm-fan.yaml.
+> diff --git a/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+> new file mode 100644
+> index 000000000000..048b6ea794c7
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/hwmon/pwm-fan.yaml
+> @@ -0,0 +1,119 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/hwmon/pwm-fan.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Fan connected to PWM lines
+> +
+> +maintainers:
+> +  - Jean Delvare <jdelvare@suse.com>
+> +  - Guenter Roeck <linux@roeck-us.net>
+> +
+> +properties:
+> +  compatible:
+> +    const: pwm-fan
+> +
+> +  cooling-levels:
+> +    description: PWM duty cycle values corresponding to thermal cooling states.
+> +    items:
+> +      maximum: 255
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +
+> +  fan-supply:
+> +    description: Phandle to the regulator that provides power to the fan.
+> +
+> +  interrupts:
+> +    description:
+> +      This contains an interrupt specifier for each fan tachometer output
+> +      connected to an interrupt source. The output signal must generate a
+> +      defined number of interrupts per fan revolution, which require that
+> +      it must be self resetting edge interrupts.
+> +    minItems: 1
+> +    maxItems: 5
 
-only the second one of course. According to earlier talks the dts patch
-does already follow the text binding, so the yaml conversion is actually
-not a requirement for it.
+I'm not so sure I'd allow for more than 1 if the example is the only 
+case we can find. More than 1 implies you have multiple fans controlled 
+by 1 PWM. What do you do with the tach data other than display it or 
+detect a stuck fan. You can't really implement any control loop unless 
+you average the rpm's? I suppose there could be h/w, so okay.
 
-So I picked the dts patch let the binding sort itself when people have
-time for it :-) .
+> +
+> +  pulses-per-revolution:
+> +    description:
+> +      Define the number of pulses per fan revolution for each tachometer
+> +      input as an integer.
+> +    items:
+> +      minimum: 1
+> +      maximum: 4
+> +      default: 2
+> +    minItems: 1
+> +    maxItems: 5
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +
+> +  pwms:
+> +    description: The PWM that is used to control the fan.
+> +    maxItems: 1
+> +
+> +  pwm-names: true
 
+Not part of the original binding. It's not that useful in general if 
+there's only 1 entry. It's completely useless if the name is not defined 
+for the OS to use. So drop it.
 
-Looking at the mail b4 created, I guessed this would also be visible
-with the subject saying (subset) and the listed commits only showing
+> +
+> +  "#cooling-cells":
+> +    description:
+> +      Must be 2, in order to specify minimum and maximum cooling state used in
+> +      the cooling-maps reference. The first cell is the minimum cooling state
+> +      and the second cell is the maximum cooling state requested.
 
-[2/2] arm64: dts: rockchip: rk3588-rock-5b: Add pwm-fan
-      commit: f36bb17653e4b9e26bbdb1224027d20614e77636
+Just duplicating the same text from thermal-cooling-devices.yaml is 
+pointless.
 
+> +    const: 2
 
-Heiko
+As this is globally the only allowed value, you don't need to duplicate 
+this either.
 
+'"#cooling-cells": true"' is sufficient.
+
+Rob
 
 
 _______________________________________________
