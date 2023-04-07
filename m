@@ -4,52 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F5E3C7618D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Apr 2023 18:41:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0312C6FD1D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Apr 2023 08:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yo3hZENuPuYJPCLrkAqAhtRsUeVfjVrofadc1vu7ago=; b=YNh+5Wo1z81/0W
-	kCcRiLsUu6t/jiLxQf7BVA0aCRk96z9L7/FV/Abr1WjGUQvQR94tlsOPfRKpsKdmtbVhylFA5fi6u
-	AXvWR558YUAxIPkzj3wS/XFJRszv3RocEueknAd31zCD++0N8qbodws1Akou8fraOHqNSHzwLWQCS
-	5phx8Jt4sJHqS8ycdOxhW13+CKMYLwzjUsComNpWOMgvKZO3HTUW0XMMHlbb6gs6TKG1frdf9QND+
-	YNV+RMF5zyxbfcp/cpYHHJtucHT5kwEyKvlgTDuTY976jHMXZ3RpKbEfzbH0wzsVRJX6pww/XaKBt
-	Wetth2T35cR/yX5RxGiw==;
+	List-Owner; bh=ctyJDwbNSQbRHY2Foy3Bovol3yZlOH8cbudDWaAlysU=; b=btdch8D65u80NV
+	cyJ4sYbH7y2hiRMDwlndk0s12Lc/PSngLBkbSHAr7FZUg0L3v+aLThnpBtpLE79e+lGpan9LDyLBt
+	5ooHDnvGW+UxUWU9UtgSOH+uNk/l34UL4d6zn5It1XyjYKeoAc0QsV9Gkj9XuDWG9hoW/U7hoR3iH
+	Pg2P57f+xpuHCzQ5yW8HWHT7EIgaXZ/wjOLOf0wKxgZibOm/kGVCoYGD4mU0hkKSjO16H6UjZl8ZW
+	trp69F9RFZHnUimAeAvE11GI/LxFPb9sd+ox0gp/x53/hk9xQRaYNJoW1otAHC5vGs4mXO87E8+fH
+	jthFB4hFjcvN9qS3yWnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkUXz-008Hjn-17;
-	Thu, 06 Apr 2023 18:41:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pkhBf-009SBR-2n;
+	Fri, 07 Apr 2023 08:11:12 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkUXu-008HiO-2k;
-	Thu, 06 Apr 2023 18:41:20 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pkUXX-0000O3-65; Thu, 06 Apr 2023 20:40:55 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>
-Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 0/2] Add PWM fan support to Rock 5B board
-Date: Thu, 06 Apr 2023 20:40:53 +0200
-Message-ID: <2446486.yKVeVyVuyW@diego>
-In-Reply-To: <31a5bd88-4121-ac5c-0d8d-eee6b221f1db@roeck-us.net>
-References:  <20230404173807.490520-1-cristian.ciocaltea@collabora.com>
- <840877554.0ifERbkFSE@diego>
- <31a5bd88-4121-ac5c-0d8d-eee6b221f1db@roeck-us.net>
+	id 1pkhBZ-009S8w-2Y;
+	Fri, 07 Apr 2023 08:11:08 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id D70776000C;
+	Fri,  7 Apr 2023 08:10:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1680855059;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=k62lE0Z84brwUbN0RTewMQPHSeeiOVUlnJEgkCzQsvo=;
+	b=R9CLiy5G5LdE9BO36N204fuspyAxiiF7TmcabLrbwrQPeoEl5Pn0pcw2pa9LFURAj+yhqS
+	Ku6ulo+yoPDqo0ywa6hZxIhfMa2hfrKY6oIoCe+v26HM6BlIqcgn8p8u0WJDFU+gYVyAOT
+	iWOVTokLobBTMlDhc5L2oqSRq3pJIdqQ+s5IqSFwu1iEWL1rH1J0xX63ZpwsrUgxYtF5VC
+	JMA7zniKULdwaW97f/g6p4Ec2AzETlg0EBYuF+OIU67+xs5aqnBUa8bo0FWsfGskdfArda
+	sO7wxwa4nSLUU/oHmfv/0zUTbea+upPaTGkKYKQ1Sq0BSBr1Ah5yUIuIzPRbHA==
+Date: Fri, 7 Apr 2023 10:10:43 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>
+Cc: Vignesh Raghavendra <vigneshr@ti.com>, Kyungmin Park
+ <kyungmin.park@samsung.com>, Naga Sureshkumar Relli <nagasure@xilinx.com>,
+ Tudor Ambarus <tudor.ambarus@linaro.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Yang Yingliang <yangyingliang@huawei.com>,
+ ye xingchen <ye.xingchen@zte.com.cn>, Valentin Korenblit
+ <vkorenblit@sequans.com>, Wang Weiyang <wangweiyang2@huawei.com>, Pali
+ =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>, Marek =?UTF-8?B?QmVow7pu?=
+ <kabel@kernel.org>, Han Xu <han.xu@nxp.com>, Harvey Hunt
+ <harveyhuntnexus@gmail.com>, Paul Cercueil <paul@crapouillou.net>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>, Vladimir Zapolskiy
+ <vz@mleia.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Liang Yang <liang.yang@amlogic.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>, Phil Edworthy
+ <phil.edworthy@renesas.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chuanhong Guo <gch981213@gmail.com>, Roger Quadros <rogerq@kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Manivannan Sadhasivam
+ <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Linus
+ Walleij <linus.walleij@linaro.org>, Stephen Boyd <sboyd@kernel.org>,
+ Miaoqian Lin <linmq006@gmail.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Christophe Kerello
+ <christophe.kerello@foss.st.com>, Jack Wang <jinpu.wang@ionos.com>, Chen-Yu
+ Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel
+ Holland <samuel@sholland.org>, Stefan Agner <stefan@agner.ch>, Lucas Stach
+ <dev@lynxeye.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan
+ Hunter <jonathanh@nvidia.com>, Richard Weinberger <richard@nod.at>,
+ linux-mtd@lists.infradead.org, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, Jerome
+ Brunet <jbrunet@baylibre.com>, linux-amlogic@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, linux-oxnas@groups.io,
+ linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 00/49] mtd: nand: Convert to platform remove callback
+ returning void
+Message-ID: <20230407101043.299f5e22@xps-13>
+In-Reply-To: <20230401161938.2503204-1-u.kleine-koenig@pengutronix.de>
+References: <20230401161938.2503204-1-u.kleine-koenig@pengutronix.de>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230406_114118_892430_10D6025E 
-X-CRM114-Status: GOOD (  24.67  )
+X-CRM114-CacheID: sfid-20230407_011106_135204_BF8CB17C 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,70 +105,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 6. April 2023, 20:27:33 CEST schrieb Guenter Roeck:
-> On 4/5/23 14:35, Heiko St=FCbner wrote:
-> > Am Mittwoch, 5. April 2023, 21:04:04 CEST schrieb Guenter Roeck:
-> >> On 4/5/23 10:45, Heiko Stuebner wrote:
-> >>> On Tue, 4 Apr 2023 20:38:05 +0300, Cristian Ciocaltea wrote:
-> >>>> This patch series enables support for the PWM controlled heat sink f=
-an
-> >>>> on the Rock 5B SBC and, additionally, converts the hwmon PWM fan bin=
-dings
-> >>>> to DT schema format.
-> >>>>
-> >>>> Changes in v2:
-> >>>>    - Updated PATCH 1/2 according to Rob's review
-> >>>>    - Added Reviewed-by from Christopher to PATCH 2/2
-> >>>>    - v1: https://lore.kernel.org/lkml/20230403105052.426135-1-cristi=
-an.ciocaltea@collabora.com/
-> >>>>
-> >>>> [...]
-> >>>
-> >>> Applied, thanks!
-> >>>
-> >>
-> >> Both patches or only the second one ?
-> > =
-
-> > only the second one of course. According to earlier talks the dts patch
-> > does already follow the text binding, so the yaml conversion is actually
-> > not a requirement for it.
-> > =
-
-> > So I picked the dts patch let the binding sort itself when people have
-> > time for it :-) .
-> > =
-
-> > =
-
-> > Looking at the mail b4 created, I guessed this would also be visible
-> > with the subject saying (subset) and the listed commits only showing
-> > =
-
-> > [2/2] arm64: dts: rockchip: rk3588-rock-5b: Add pwm-fan
-> >        commit: f36bb17653e4b9e26bbdb1224027d20614e77636
-> > =
-
-> =
-
-> Kind of, sure, but I figured it doesn't hurt asking to avoid the situation
-> (again) where I apply a patch and then get a nice e-mail telling me that
-> some other branch also applied the same patch.
-
-no worries and yes better save than sorry.
-Though you had me worried for a bit that somehow the mail b4 generated
-for me was faulty ;-)
-
-Heiko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgVXdlLAoKdS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlIHdyb3RlIG9uIFNhdCwgIDEg
+QXByIDIwMjMgMTg6MTg6NDkgKzAyMDA6Cgo+IEhlbGxvLAo+IAo+IHRoaXMgc2VyaWVzIGFkYXB0
+cyB0aGUgcGxhdGZvcm0gZHJpdmVycyBiZWxvdyBkcml2ZXJzL210ZC9uYW5kIHRvIHVzZSB0aGUK
+PiAucmVtb3ZlX25ldygpIGNhbGxiYWNrLiBDb21wYXJlZCB0byB0aGUgdHJhZGl0aW9uYWwgLnJl
+bW92ZSgpIGNhbGxiYWNrCj4gLnJlbW92ZV9uZXcoKSByZXR1cm5zIG5vIHZhbHVlLiBUaGlzIGlz
+IGEgZ29vZCB0aGluZyBiZWNhdXNlIHRoZSBkcml2ZXIgY29yZQo+IGRvZXNuJ3QgKGFuZCBjYW5u
+b3QpIGNvcGUgZm9yIGVycm9ycyBkdXJpbmcgcmVtb3ZlLiBUaGUgb25seSBlZmZlY3Qgb2YgYQo+
+IG5vbi16ZXJvIHJldHVybiB2YWx1ZSBpbiAucmVtb3ZlKCkgaXMgdGhhdCB0aGUgZHJpdmVyIGNv
+cmUgZW1pdHMgYSB3YXJuaW5nLiBUaGUKPiBkZXZpY2UgaXMgcmVtb3ZlZCBhbnlob3cgYW5kIGFu
+IGVhcmx5IHJldHVybiBmcm9tIC5yZW1vdmUoKSB1c3VhbGx5IHlpZWxkcyBhCj4gcmVzb3VyY2Ug
+bGVhay4KPiAKPiBCeSBjaGFuZ2luZyB0aGUgcmVtb3ZlIGNhbGxiYWNrIHRvIHJldHVybiB2b2lk
+IGRyaXZlciBhdXRob3JzIGNhbm5vdAo+IHJlYXNvbmFibHkgYXNzdW1lIGFueSBtb3JlIHRoYXQg
+dGhlcmUgaXMgc29tZSBraW5kIG9mIGNsZWFudXAgbGF0ZXIuCj4gCj4gQXMgYWxsIGRyaXZlcnMg
+YWxyZWFkeSByZXR1cm4gMCBpbiB0aGVpciAucmVtb3ZlIGNhbGxiYWNrLCB0aGV5IGNhbiBiZQo+
+IGNvbnZlcnRlZCB0cml2aWFsbHkuCgpJJ3ZlIGxvb2tlZCBhdCB0aGUgZGlmZmVyZW50IHBhdGNo
+ZXMsIHRoZXkgbG9vayBnb29kIHRvIG1lIGJ1dCBhcyB0aGV5CmFyZSBhbGwgdHJpdmlhbCBhbmQg
+ZXhhY3RseSBpZGVudGljYWwsIHdvdWxkIHlvdSBtaW5kIHNlbmRpbmcgdGhpcwphZ2FpbiBhbGwg
+c3F1YXNoZWQgaW4gYSBzaW5nbGUgcGF0Y2g/IEEgc3Vic3lzdGVtLXdpZGUgY29udmVyc2lvbiBz
+ZWVtcwphcHByb3ByaWF0ZS4gSW4gYWxsIGNhc2VzIEkgcGxhbiB0byB0YWtlIHRoaXMgZm9yIHRo
+ZSBuZXh0IG1lcmdlCndpbmRvdy4KCkkndmUgY29sbGVjdGVkIHRoZSB0YWdzIHJlY2VpdmVkIHNv
+IGZhciBpZiB5b3Ugd2FudDoKCkFja2VkLWJ5OiBOaWNvbGFzIEZlcnJlIDxuaWNvbGFzLmZlcnJl
+QG1pY3JvY2hpcC5jb20+ICMgYXRtZWwKUmV2aWV3ZWQtYnk6IFBhdWwgQ2VyY3VlaWwgPHBhdWxA
+Y3JhcG91aWxsb3UubmV0PiAjIGluZ2VuaWMKUmV2aWV3ZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUt
+RGF1ZMOpIDxwaGlsbWRAbGluYXJvLm9yZz4gIyBpbmdlbmljCkFja2VkLWJ5OiBNYXJ0aW4gQmx1
+bWVuc3RpbmdsIDxtYXJ0aW4uYmx1bWVuc3RpbmdsQGdvb2dsZW1haWwuY29tPiAjIGludGVsClJl
+dmlld2VkLWJ5OiBNYXJ0aW4gQmx1bWVuc3RpbmdsIDxtYXJ0aW4uYmx1bWVuc3RpbmdsQGdvb2ds
+ZW1haWwuY29tPiAjIG1lc29uCkFja2VkLWJ5OiBSb2dlciBRdWFkcm9zIDxyb2dlcnFAa2VybmVs
+Lm9yZz4gIyBvbWFwClJldmlld2VkLWJ5OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0K3JlbmVz
+YXNAZ2xpZGVyLmJlPiAjIHJlbmVzYXMKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlr
+b0BzbnRlY2guZGU+ICMgcm9ja2NoaXAKQWNrZWQtYnk6IEplcm5laiBTa3JhYmVjIDxqZXJuZWou
+c2tyYWJlY0BnbWFpbC5jb20+ICMgc3VueGkKQWNrZWQtYnk6IFRoaWVycnkgUmVkaW5nIDx0cmVk
+aW5nQG52aWRpYS5jb20+ICMgdGVncmEKCkJUVywgdGhhbmtzIHRvIGFsbCBvZiB5b3Ugd2hvIHJl
+dmlld2VkIGFuZCBhbnN3ZXJlZCB0byB0aGlzIHRocmVhZCEKVGhpcyBpcyBoaWdobHkgYXBwcmVj
+aWF0ZWQuIAoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
