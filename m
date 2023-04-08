@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D20C6FD1D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Apr 2023 17:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 287ECC77B61
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Apr 2023 12:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/PBAYo0xiUyGoyFzSqGfmAtknHeuEjAXs/Igd2vb2es=; b=aA8TqrPUs89RbH
-	4vd9/VEM1x8rfLeo9uw1iizYDb2jGNZZ7YEdKp1lYcY5fi4AiPhTxUWb1VpWxRtX9h7WpSiNmKyUo
-	oEZ+l4HwNviHtVeoNcpf0Dd/mKuE6RuHj9ICJW8vc6nIwa1Or7ZrBhAvkrF+MdzUizOk80040/RUX
-	hMmEiuO2HLq80K+45wizJWNL2xxU3U3O7xSjuX8Ifhcy20dNfoub7fnvPe4khUAchYuwB2okVNK9x
-	1vI/653TLHosKB827V/1T54Q5rvt9FxWuHHGtOecxDbPRNQMB6hEZHeT48L/jGcyf/9sJ2wfBHU4X
-	NAwATl3X+7YTpKNeojPg==;
+	List-Owner; bh=KB3+s2MraEdtp6j7C/zgG5bTQLsU5iPNtuZQ8EdJthU=; b=WU3+RhGLFrMXmJ
+	68NTfVE2h16mYmVfM24Ms+2UtBAtHOZrxVbZWZf+ZlZ+gO4laj9dKsALYBDwNM1YrqP1C+cjTVg8a
+	tOQP/L+yDhlsNz9u/02VUH4RFacKb4Fi1IS7sJx1p7KgAdwn56v3OH+ejB9pK5G6l0LnSokk8wBxs
+	Ypzs4HLkXWMoxSNZExICeaz+UO//4aNlQur8SfHa4nFqjHFfvy1UkYGlW2y6EYNv1/ZFXjxNI6Zpn
+	FYTJLgxJa4JjC05GB9m6pGWwJwrOdRtXPzZFVDbX5SCv1Zt0u5EaT77DSzmMsndzm8yNQ6Wug7gUD
+	/E2r5YI5LLRCSlxyV7vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkq6E-00ApiI-2q;
-	Fri, 07 Apr 2023 17:42:10 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1pl7Qa-00CGh2-2E;
+	Sat, 08 Apr 2023 12:12:20 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pkq6C-00Aphi-1a
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Apr 2023 17:42:09 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-62e102cadc7so236004b3a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Apr 2023 10:42:04 -0700 (PDT)
+	id 1pl7QX-00CGgL-08;
+	Sat, 08 Apr 2023 12:12:18 +0000
+Received: by mail-ej1-x634.google.com with SMTP id ud9so2226551ejc.7;
+        Sat, 08 Apr 2023 05:12:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112; t=1680889324; x=1683481324;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20210112; t=1680955934;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CCJBn+LV6Sw7OAfizOJEGae3D9tERqlvcOUfu0w0v9w=;
-        b=f2Hy+gUmypC61FZjpBgjNc/XgvxTOME7kxHD5CgsiiLONDJ0uGaPOd0VsvyK9IAcKM
-         YCMZlfDwqFaEOSmOdtSE2HeLW/0quTgY7Ny0dhk8px8kavE9LUIYdthXog1GIX+rq2fE
-         g8QS73QBlzrsxk6gaJ+O/XLCA2rqxISinXTYyUthkLmBrbZM7ZIFXt9S38ACofBHt7P+
-         dptOeElYK2OgQ0wNuuT3DfiVwL3MzQyLTRnlUE0+IB/r4ycxDRicgexH0w6MJtyetQ1+
-         IGrOxD8aNU79hee5zjeh76EgzLJ6mJ4Ruz4wxkM/ZC6EOIWhplr5BfzYNq6f2EmnRqac
-         A5zg==
+        bh=gsp6bAaqdkC+3l7L0QU9gWWFuWF86YUu16J9MyhyV3E=;
+        b=Vzms7iQnafiqUkeMs1GMmPsw583bn+6RhHpsqKO6zfkfU10NzcwiOfy+EMZesNx5vb
+         W+YGKbjYybKIxFFaYXDNotsBdrMm6NKOWtzAu6Yvjv3USDondpL9Ns2QsTGtrVTgd0Wg
+         stS2FNX2Z3XSzrNDITuRIme9HfeIEahuuNLWvC06exD1Qjg1lv9/wjHLnb+arT4M2mtH
+         g8w9lhCldDRNFrIV5VY1w98FYZKIwEDJqt0SUy2epVSqNrUkcsKdQfGAsgRMuDcVrFBi
+         dhkdgQDTnRXFVF3EEBUsF5hphK0cX6AdpsOQoyHLUCyAiZ4sEQgNlvshf4rmgrD1cXEI
+         ReZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680889324; x=1683481324;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20210112; t=1680955934;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CCJBn+LV6Sw7OAfizOJEGae3D9tERqlvcOUfu0w0v9w=;
-        b=MajLQ7uCuCxfB8p36AgLv3gmL3cN/7FfYOnId0NrY3V0ifTRqcgiMaZVxQ8rZU6Tpe
-         wZJPEmhKJ2PF0mf/yLYzTDyvSIGCLGyAqJqRsUr+X3W/hDSTRVI36rH7pl7uTYt2+5C2
-         PKMNgdYhpYbaa/GNdOfiPEMhT1UHojuVQ8SobE6aQSw6qZimJUfkhAE5AGqBz2A3m6cA
-         3qaq71jG2EVrYXPU7vw9+Nh1qA/ByiP51WKVt0UPBisHJf/K6KzTbXRcBJESVZjaRs7w
-         UcH8H4dFQZZstPMjajGXqn+IBLCss3A3SG5IT3yqg8aYUAGgvAZU930zA7hjpIWtdCV5
-         8yZA==
-X-Gm-Message-State: AAQBX9fFHLmRZMLKUIInSg/TmMYliExHoQJcOpXKh19dG5baRN68++Qc
-	nvBN/F80LL5ukDG3JGdIC8TEUrLmyfnMLSwzbjQKG4Jnqi+LJE0L4JA=
-X-Google-Smtp-Source: AKy350aUCyZLaAV21BNIhr8D01YQwfaMcMC3ERAqD6aKrlIBdnYZELskAEaom95VFSvRH3V0KPE/o9w3eCEDFaZkXdI=
-X-Received: by 2002:a05:6a00:2d88:b0:625:c832:6a10 with SMTP id
- fb8-20020a056a002d8800b00625c8326a10mr1525908pfb.4.1680889324079; Fri, 07 Apr
- 2023 10:42:04 -0700 (PDT)
+        bh=gsp6bAaqdkC+3l7L0QU9gWWFuWF86YUu16J9MyhyV3E=;
+        b=BSw5xn1sWWAyXU7QUv2g7d0is5fLzTm+VYud7rsVFOLLAAWqG++YuQOWu3yNCvirjD
+         pAlGTLjAoBkR4fDXgyRH8za8TDxkS4xC1MF+modExffFMnYRnUtqYMsyJkXbIE37s7EC
+         8OdhV9cvz2YnWzIAptBzD1kRBAqeLThNoBYELQgtYKltU5qmH1bj4CqGMdpmZBt86+1W
+         XsYq93lWyz3sM/IXZIwcmfOZ8iXPZNpcZPRR31OIpRL1Tiie0pyfS4YKJobjAzvNtUF3
+         ErPrUykI0HsxodjNJvMZwsNZFZrTRXEBJ5vR9BtoFGvFTEpOvZp51B2JJCMN9mLbWIOP
+         d2Fw==
+X-Gm-Message-State: AAQBX9fhrK3sv4jU+X13wSh44F7zVuxT+mdzyHG2uj5OlskHhr7J1dQl
+	NvZLW9PoZALc7jDCI1Rl/bs=
+X-Google-Smtp-Source: AKy350ZoljWQmJaFYZYXyiATILTnWWThGxROLCrvBR/uFCN9linJDLlNU8p8TFP9b2zvbHhV1DPxfg==
+X-Received: by 2002:a17:907:e91:b0:920:254c:1e2d with SMTP id ho17-20020a1709070e9100b00920254c1e2dmr2670313ejc.39.1680955934385;
+        Sat, 08 Apr 2023 05:12:14 -0700 (PDT)
+Received: from jernej-laptop.localnet (89-212-118-115.static.t-2.net. [89.212.118.115])
+        by smtp.gmail.com with ESMTPSA id m2-20020a1709062ac200b008b176df2899sm3072135eje.160.2023.04.08.05.12.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 08 Apr 2023 05:12:13 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, kernel@collabora.com
+Subject:  Re: [PATCH v2 02/10] ARM: dts: sun6i: a31: Switch dma-names order for
+ snps,dw-apb-uart nodes
+Date: Sat, 08 Apr 2023 14:12:12 +0200
+Message-ID: <7505967.EvYhyI6sBW@jernej-laptop>
+In-Reply-To: <20230321215624.78383-3-cristian.ciocaltea@collabora.com>
+References:  <20230321215624.78383-1-cristian.ciocaltea@collabora.com>
+ <20230321215624.78383-3-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
-References: <20230324132649.2649166-1-trix@redhat.com>
-In-Reply-To: <20230324132649.2649166-1-trix@redhat.com>
-From: Nick Desaulniers <ndesaulniers@google.com>
-Date: Fri, 7 Apr 2023 10:41:52 -0700
-Message-ID: <CAKwvOd=rjd6+Di4GSm2kfKRdBmrMyyL-VdQ+CR28NX_G5p0AGQ@mail.gmail.com>
-Subject: Re: [PATCH] phy: rockchip: remove unused hw_to_inno function
-To: Tom Rix <trix@redhat.com>
-Cc: vkoul@kernel.org, kishon@kernel.org, heiko@sntech.de, nathan@kernel.org, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	llvm@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230407_104208_532967_38B4500C 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20230408_051217_122648_A8D3AD71 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +97,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBNYXIgMjQsIDIwMjMgYXQgNjoyN+KAr0FNIFRvbSBSaXggPHRyaXhAcmVkaGF0LmNv
-bT4gd3JvdGU6Cj4KPiBjbGFuZyB3aXRoIFc9MSByZXBvcnRzCj4gZHJpdmVycy9waHkvcm9ja2No
-aXAvcGh5LXJvY2tjaGlwLWlubm8tZHNpZHBoeS5jOjI4NDozNjogZXJyb3I6Cj4gICB1bnVzZWQg
-ZnVuY3Rpb24gJ2h3X3RvX2lubm8nIFstV2Vycm9yLC1XdW51c2VkLWZ1bmN0aW9uXQo+IHN0YXRp
-YyBpbmxpbmUgc3RydWN0IGlubm9fZHNpZHBoeSAqaHdfdG9faW5ubyhzdHJ1Y3QgY2xrX2h3ICpo
-dykKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4KPiBUaGlzIGZ1bmN0aW9u
-IGlzIG5vdCB1c2VkIHNvIHJlbW92ZSBpdC4KPgo+IFNpZ25lZC1vZmYtYnk6IFRvbSBSaXggPHRy
-aXhAcmVkaGF0LmNvbT4KClRoYW5rcyBmb3IgdGhlIHBhdGNoIQpSZXZpZXdlZC1ieTogTmljayBE
-ZXNhdWxuaWVycyA8bmRlc2F1bG5pZXJzQGdvb2dsZS5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL3Bo
-eS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5uby1kc2lkcGh5LmMgfCA1IC0tLS0tCj4gIDEgZmls
-ZSBjaGFuZ2VkLCA1IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGh5L3Jv
-Y2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLWRzaWRwaHkuYyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlw
-L3BoeS1yb2NrY2hpcC1pbm5vLWRzaWRwaHkuYwo+IGluZGV4IDcyNjkyOGZmMTI3My4uNDAxYjBh
-YWJiMTU5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1p
-bm5vLWRzaWRwaHkuYwo+ICsrKyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1p
-bm5vLWRzaWRwaHkuYwo+IEBAIC0yODEsMTEgKzI4MSw2IEBAIHN0cnVjdCBpbm5vX21pcGlfZHBo
-eV90aW1pbmcgaW5ub19taXBpX2RwaHlfdGltaW5nX3RhYmxlX21heF8yXzVnaHpbXSA9IHsKPiAg
-ICAgICAgIHsyNTAwMDAwMDAwLCAweDE1LCAweDU0LCAweDdmLCAweDE1LCAweDZhfSwKPiAgfTsK
-Pgo+IC1zdGF0aWMgaW5saW5lIHN0cnVjdCBpbm5vX2RzaWRwaHkgKmh3X3RvX2lubm8oc3RydWN0
-IGNsa19odyAqaHcpCj4gLXsKPiAtICAgICAgIHJldHVybiBjb250YWluZXJfb2YoaHcsIHN0cnVj
-dCBpbm5vX2RzaWRwaHksIHBsbC5odyk7Cj4gLX0KPiAtCj4gIHN0YXRpYyB2b2lkIHBoeV91cGRh
-dGVfYml0cyhzdHJ1Y3QgaW5ub19kc2lkcGh5ICppbm5vLAo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICB1OCBmaXJzdCwgdTggc2Vjb25kLCB1OCBtYXNrLCB1OCB2YWwpCj4gIHsKPiAtLQo+
-IDIuMjcuMAo+CgoKLS0gClRoYW5rcywKfk5pY2sgRGVzYXVsbmllcnMKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Dne torek, 21. marec 2023 ob 22:56:16 CEST je Cristian Ciocaltea napisal(a):
+> Commit 370f696e4474 ("dt-bindings: serial: snps-dw-apb-uart: add dma &
+> dma-names properties") documented dma-names property to handle Allwinner
+> D1 dtbs_check warnings, but relies on the rx->tx ordering, which is the
+> reverse of what a bunch of different boards expect.
+> 
+> The initial proposed solution was to allow a flexible dma-names order in
+> the binding, due to potential ABI breakage concerns after fixing the DTS
+> files. But luckily the Allwinner boards are not affected, since they are
+> using a shared DMA channel for rx and tx.
+> 
+> Hence, the first step in fixing the inconsistency was to change
+> dma-names order in the binding to tx->rx.
+> 
+> Do the same for the snps,dw-apb-uart nodes in the DTS file.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+Best regards,
+Jernej
+
+> ---
+>  arch/arm/boot/dts/sun6i-a31.dtsi | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/sun6i-a31.dtsi
+> b/arch/arm/boot/dts/sun6i-a31.dtsi index 6cdadba6a3ac..5cce4918f84c 100644
+> --- a/arch/arm/boot/dts/sun6i-a31.dtsi
+> +++ b/arch/arm/boot/dts/sun6i-a31.dtsi
+> @@ -822,7 +822,7 @@ uart0: serial@1c28000 {
+>  			clocks = <&ccu CLK_APB2_UART0>;
+>  			resets = <&ccu RST_APB2_UART0>;
+>  			dmas = <&dma 6>, <&dma 6>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+> 
+> @@ -835,7 +835,7 @@ uart1: serial@1c28400 {
+>  			clocks = <&ccu CLK_APB2_UART1>;
+>  			resets = <&ccu RST_APB2_UART1>;
+>  			dmas = <&dma 7>, <&dma 7>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+> 
+> @@ -848,7 +848,7 @@ uart2: serial@1c28800 {
+>  			clocks = <&ccu CLK_APB2_UART2>;
+>  			resets = <&ccu RST_APB2_UART2>;
+>  			dmas = <&dma 8>, <&dma 8>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+> 
+> @@ -861,7 +861,7 @@ uart3: serial@1c28c00 {
+>  			clocks = <&ccu CLK_APB2_UART3>;
+>  			resets = <&ccu RST_APB2_UART3>;
+>  			dmas = <&dma 9>, <&dma 9>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+> 
+> @@ -874,7 +874,7 @@ uart4: serial@1c29000 {
+>  			clocks = <&ccu CLK_APB2_UART4>;
+>  			resets = <&ccu RST_APB2_UART4>;
+>  			dmas = <&dma 10>, <&dma 10>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+> 
+> @@ -887,7 +887,7 @@ uart5: serial@1c29400 {
+>  			clocks = <&ccu CLK_APB2_UART5>;
+>  			resets = <&ccu RST_APB2_UART5>;
+>  			dmas = <&dma 22>, <&dma 22>;
+> -			dma-names = "rx", "tx";
+> +			dma-names = "tx", "rx";
+>  			status = "disabled";
+>  		};
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
