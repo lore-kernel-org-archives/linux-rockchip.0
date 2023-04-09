@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D396EC77B61
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Apr 2023 00:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD1DC77B70
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Apr 2023 10:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Jd3OpBXAd2HelgmPlfqbdxnM3JTNb8pPmjht6D+DAR4=; b=HBUZcfh29xn6yS
-	XSYW3RT2PyT7ISDcXTGHpPpnfsjVk0OsQ5wJeR0EOj7Fk9LHUS3LXjO2xwW2tziClSCV8I58gzUsE
-	dmRvODcxiEuOoswB0Q83YqagAb7ltjtca7HmFt5Njr6o2sh2iTPb6PU5eDykE33fJgNm6ZXGMlvmU
-	z6bsLLb8va+rigg0EPgR7/sL/FvX5DgEwTahwzUwVwX0wJCR3zpBgFjgoaMEiu2fcThqHYLhdu48g
-	XX2DxO+A4TUx3jAisKIlEUAOCdoIw/8+GYusohgWpLx7KejrnDgMouFyT5jArQ56l0VoROhuLEBR5
-	ka4z3m0I53Ekb3Xk04zg==;
+	List-Owner; bh=vZews3donFJlZqDepam/lHSOGQDLdfjDjEhEyAY2J/I=; b=uIW5duP9Xjrsvf
+	Hn6JJTFJMYoZc3+6cnA5nTvr7pHh8oa6xlgqhWlk7IKWHH+XtevIlHGJTeKHmX7fEjyzX7QCRrjsg
+	gVEzJ3Ks2U9EvTtAUEJ3uj46SIQbwcQoR8OUtxR7s3LUGsml2lIPxabB91Vv4xYzAPKWTiav9J1OS
+	EtIKHyUQ8RIjalpy7gdxXLR4KIs4X1WR/mENiIxajVdstWWwkKPoO3Q36hd54uwYk8++s6UatExyN
+	ACZJtSy6ezHJL4TIVZynJjDM2l/QASGptvSQ7Ig0LAtAZ6z1LWjTM8au+tMK9QY3o9a7prc07E1cK
+	LsdtguKmdtFC3pCvUPHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1plIUl-00Cwd6-20;
-	Sun, 09 Apr 2023 00:01:23 +0000
+	id 1plSLg-00DPjn-16;
+	Sun, 09 Apr 2023 10:32:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1plIUi-00CwcO-2s;
-	Sun, 09 Apr 2023 00:01:22 +0000
+	id 1plSLc-00DPjG-2g;
+	Sun, 09 Apr 2023 10:32:38 +0000
 Received: from p57b77242.dip0.t-ipconnect.de ([87.183.114.66] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1plIUe-0006zQ-22; Sun, 09 Apr 2023 02:01:16 +0200
+	id 1plSLZ-0001KY-O3; Sun, 09 Apr 2023 12:32:33 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 6.3
-Date: Sun, 09 Apr 2023 02:01:14 +0200
-Message-ID: <10559306.CDJkKcVGEf@phil>
+Subject: [GIT PULL] Rockchip dts64 changes for 6.4 #1
+Date: Sun, 09 Apr 2023 12:32:32 +0200
+Message-ID: <7289562.MhkbZ0Pkbq@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230408_170120_945863_D4F52BAD 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20230409_033236_892333_2A204DF2 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,14 +60,17 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Arnd, Kevin, Olof,
 
-please find a below a collection of fixes for the current release 6.3
-cycle.
+please find below and in subsequent pull-request
+Rockchip changes for for 6.4
 
-Please pull
+As always the 64bit DTS part is the big one, with some new boards and
+a lot of added support for rk3588 peripherals.
+
+
+Please pull!
 
 Thanks
 Heiko
-
 
 The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
 
@@ -75,58 +78,105 @@ The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.3-rockchip-dtsfixes1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.4-rockchip-dts64-1
 
-for you to fetch changes up to 60a655debd36e3278a46872accc1a51a54f94f02:
+for you to fetch changes up to 07099a551803e05d3ee42fae152bf404f8dc21f9:
 
-  arm64: dts: rockchip: correct panel supplies on some rk3326 boards (2023-04-05 19:38:03 +0200)
-
-----------------------------------------------------------------
-Lower sd card speeds for two boards to make them run more reliable,
-missing 32k clock definition for Anbric xx3 devices, missing cache-levels
-for rk3588, fixed rk3326-board display supplies and more dt-schema fixes.
+  arm64: dts: rockchip: correct panel supplies on Odroid Go Super (2023-04-05 19:39:39 +0200)
 
 ----------------------------------------------------------------
-Chris Morgan (1):
-      arm64: dts: rockchip: Add clk_rtc_32k to Anbernic xx3 Devices
+New boards: OrangePi R1 Plus, NanoPi R2C + R5C + R5S, Khadas Edge2.
+General RK3588 additions: audio, thermal management, sdmmc, clock fixes,
+watchdog; RK3588-Rock5b: rtc, pwm, audio.
+Display support for Odroid Go Super and PinephonePro.
+And some misc adaptions for recently merged yaml binding conversions.
 
-Dan Johansen (2):
-      arm64: dts: rockchip: Lower sd speed on rk3566-soquartz
-      arm64: dts: rockchip: Lower SD card speed on rk3399 Pinebook Pro
+----------------------------------------------------------------
+Cristian Ciocaltea (6):
+      arm64: dts: rockchip: Add pwm-fan to rk3588-rock-5b
+      arm64: dts: rockchip: Fix SCMI assigned clocks on rk3588s
+      arm64: dts: rockchip: Assign PLL_PPLL clock rate to 1.1 GHz on rk3588s
+      arm64: dts: rockchip: Add rk3588s I2S nodes
+      arm64: dts: rockchip: Add I2S rk3588 nodes
+      arm64: dts: rockchip: Add rk3588-rock-5b analog audio
 
-Javier Martinez Canillas (1):
-      arm64: dts: rockchip: Remove non-existing pwm-delay-us property
+Johan Jonker (6):
+      arm64: dts: rockchip: fix px30 lvds node
+      arm64: dts: rockchip: fix px30 dsi node
+      arm64: dts: rockchip: fix rk3399 dsi node
+      arm64: dts: rockchip: fix rk3399 dp node
+      arm64: dts: rockchip: rename vbus-supply to phy-supply in rk3566-box-demo.dts
+      arm64: dts: rockchip: remove hclk from dsi node on rk356x
 
-Jianqun Xu (1):
-      ARM: dts: rockchip: fix a typo error for rk3288 spdif node
+Krzysztof Kozlowski (1):
+      arm64: dts: rockchip: correct panel supplies on Odroid Go Super
 
-Krzysztof Kozlowski (3):
-      arm64: dts: rockchip: use just "port" in panel on Pinebook Pro
-      arm64: dts: rockchip: use just "port" in panel on RockPro64
-      arm64: dts: rockchip: correct panel supplies on some rk3326 boards
+Lucas Tanure (1):
+      arm64: dts: rockchip: Add sdmmc node to rk3588
 
-Rob Herring (1):
-      arm64: dts: rockchip: Fix rk3399 GICv3 ITS node name
+Manoj Sai (1):
+      arm64: dts: rockchip: Enable USB OTG for rk3566 Radxa CM3
+
+Martijn Braam (2):
+      arm64: dts: rockchip: Add internal display support to rk3399-pinephone-pro
+      arm64: dts: rockchip: Add touchscreen support to rk3399-pinephone-pro
+
+Maya Matuszczyk (1):
+      arm64: dts: rockchip: Add display support to Odroid Go Super
 
 Sebastian Reichel (1):
-      arm64: dts: rockchip: add rk3588 cache level information
+      arm64: dts: rockchip: add rk3588 thermal sensor
 
- arch/arm/boot/dts/rk3288.dtsi                          |  2 +-
- .../arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dts |  2 ++
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi     |  2 --
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2-v11.dts |  2 ++
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts     |  2 ++
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi           |  1 -
- .../arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi |  1 -
- arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi   |  1 -
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts   | 18 ++++--------------
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi     | 12 +++---------
- arch/arm64/boot/dts/rockchip/rk3399.dtsi               |  2 +-
- .../boot/dts/rockchip/rk3566-anbernic-rg353x.dtsi      |  6 ++++--
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts |  6 ++++--
- arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi              |  9 +++++++++
- 15 files changed, 33 insertions(+), 35 deletions(-)
+Shreeya Patel (3):
+      arm64: dts: rockchip: Enable watchdog support for RK3588
+      dt-bindings: watchdog: rockchip: Add rockchip,rk3588-wdt string
+      arm64: dts: rockchip: Enable RTC support for Rock 5B
+
+Tianling Shen (9):
+      arm64: dts: rockchip: create common dtsi for NanoPi R5 series
+      dt-bindings: Add doc for FriendlyARM NanoPi R5C
+      arm64: dts: rockchip: Add FriendlyARM NanoPi R5C
+      arm64: dts: rockchip: fix gmac support for NanoPi R5S
+      arm64: dts: rockchip: remove I2S1 TDM node for the NanoPi R5 series
+      dt-bindings: Add doc for FriendlyARM NanoPi R2C
+      arm64: dts: rockchip: Add FriendlyARM NanoPi R2C
+      dt-bindings: Add doc for Xunlong OrangePi R1 Plus LTS
+      arm64: dts: rockchip: Add Xunlong OrangePi R1 Plus LTS
+
+Vasily Khoruzhick (2):
+      dt-bindings: Add doc for FriendlyARM NanoPi R5S
+      arm64: dts: rockchip: Add FriendlyElec Nanopi R5S
+
+Yixun Lan (2):
+      dt-bindings: arm: rockchip: Add Khadas Edge2 board
+      arm64: dts: rockchip: Add Khadas edge2 board
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  24 +-
+ .../devicetree/bindings/watchdog/snps,dw-wdt.yaml  |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |  12 +-
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts |   5 +-
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dts |  40 ++
+ .../dts/rockchip/rk3328-orangepi-r1-plus-lts.dts   |  40 ++
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 114 ++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  20 +-
+ arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts   |   2 +-
+ .../boot/dts/rockchip/rk3566-radxa-cm3-io.dts      |   8 +
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts | 112 ++++
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 137 +++++
+ .../arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi | 590 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi           |   8 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  97 ++++
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi           |  68 +++
+ .../boot/dts/rockchip/rk3588s-khadas-edge2.dts     |  37 ++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi          | 203 ++++++-
+ 19 files changed, 1503 insertions(+), 20 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus-lts.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
 
 
 
