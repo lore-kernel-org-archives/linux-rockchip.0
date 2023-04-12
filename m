@@ -4,56 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67192C77B6E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Apr 2023 12:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDF8C7619A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Apr 2023 13:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mrT2HWdIN6TVrC2lRM0IM/I/WU7M3QEjlr7vw3wqrpo=; b=HsqdxcKYDKtBBE
-	DNWPKW0CrB5IihmRBEQuNsfRrZsz26rxxLnpDr8ZdImncUJRq15+Ub/hWaxF+tH97ZGGtmOD7659U
-	G818LWs+tem3xzwrxQYWAjzZKXetoz5wkYXIGJr7c9MtonCbQxaIlVuSZaCGVaA9wrVft8FCEuY5s
-	7JePdeZapXui3BVh9xg6AWFYl4ImNAI8VAyxfHjvJgVcNSApl2uKCpShlWZR/sAO7V5FgLfIt+FPU
-	1xitpY6TYGatHu0Z6g3W0pBKXdkBqwOTY/OzMkgP74OiNkAUV86cJdPlh5p/KbcenfnVKKFblVbOs
-	PYrUBjOyrItIgzJYiCTQ==;
+	List-Owner; bh=NPunezC9KJeQd7fXmsSivSqawT49gB9dMo1QHYVDngg=; b=TW9aDyW9XjsmhB
+	/kivkVNft9VTEHFYygMpz4JKDSewomlyXbj9Gg9ZHgMHFRC6hsAx3aqeNLdRJ/LyiHvNMWYjP+RUh
+	0AYAckjMkpNd2EWoICD3XaLPDh9lgFR4JK5VwbF2M5BG02T9gldAgxgYVZ3PI42Wuq+7kcoJDglGQ
+	43jgPpBa/fx8Od2+518jiiLTiBC5mCb2lyIEgkxU0tchWdCi4++aftaj84BV7gArhOBsBMj+18UR/
+	Gwll+O7M9VcbmuujamWvFBcUf0WSPZE5NL4sV08pRKf3GgOrNp84qcpgXrwG1ITrHyViXTwoPI9+q
+	wRVj18GfKonAmELW66HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZpA-003Bkx-0l;
-	Wed, 12 Apr 2023 12:43:44 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pma5Q-003FJN-27;
+	Wed, 12 Apr 2023 13:00:32 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZp0-003Bgr-3D;
-	Wed, 12 Apr 2023 12:43:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1pmZ62-002ytw-04;
+	Wed, 12 Apr 2023 11:57:08 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c2e:89bd:4b8e:9e98])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7938363445;
-	Wed, 12 Apr 2023 12:43:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D209C4339B;
-	Wed, 12 Apr 2023 12:43:31 +0000 (UTC)
-Message-ID: <2f946887-6d4b-782b-d186-13b184207be3@xs4all.nl>
-Date: Wed, 12 Apr 2023 14:43:29 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v6 12/13] media: verisilicon: Enable AV1 decoder on rk3588
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 84E266603216;
+	Wed, 12 Apr 2023 12:57:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681300624;
+	bh=7bTQ885Lf7fJe0LhySXOychmfiOBST4o2pY/rZ1W8Qk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Biu6xNX8ak8hTu1MQB+uTsePEPlYxmKvP2f54GSbyMjUgt8zxGNJ1s3sPFe9kqFts
+	 IZjluMjTWwiCA1+7FUO58gRDVF3ngQG0UKGbEZ+4JElO+RI2X1yuj1zmevBTvuHfxk
+	 rQrMNqVE1NWnlhb14k7AqXgg4eBsSZO5Fo+tz1PSxIpaUNJmpcvAypkyDn6Xk2zbtQ
+	 aNK/b0OQk91magqhr5v3sSTb+d0RAhfTOSEJoHsZGX4u/bBhkRBOFtR4KlYjyy28GU
+	 Od/7jUK5FxyG/fXqw/TceeOHPjBE6ulUzNhwq969/Er2t3S8GNQ6pBl4iKQ28OgqQO
+	 yiRlB+ROnCqCg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 02/13] media: AV1: Make sure that bit depth in correctly initialize
+Date: Wed, 12 Apr 2023 13:56:41 +0200
+Message-Id: <20230412115652.403949-3-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
 References: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
- <20230412115652.403949-13-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230412115652.403949-13-benjamin.gaignard@collabora.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_054335_112159_682E9729 
-X-CRM114-Status: GOOD (  26.04  )
+X-CRM114-CacheID: sfid-20230412_045706_186542_ECC66B69 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,271 +86,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+Make sure that bit_depth field of V4L2_CTRL_TYPE_AV1_SEQUENCE
+is initialized correctly before using it.
 
-On 12/04/2023 13:56, Benjamin Gaignard wrote:
-> Add rk3588 AV1 decoder to Hantro variant.
-> The hardware support image from 64x64 up to 7680x4320
-> by steps of 16 pixels.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Nicolas reviewed this patch in v5. Is there a reason that tag was dropped,
-or did you just forget? If it is the latter, then I can add it back.
-
-Just checking.
-
-This series now passes my tests.
-
-Regards,
-
-	Hans
-
-> ---
->  .../media/platform/verisilicon/hantro_drv.c   |   1 +
->  .../media/platform/verisilicon/hantro_hw.h    |   6 +
->  .../platform/verisilicon/rockchip_vpu_hw.c    | 134 ++++++++++++++++++
->  3 files changed, 141 insertions(+)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index 71bd68e63859..aef1de20fc5e 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -713,6 +713,7 @@ static const struct of_device_id of_hantro_match[] = {
->  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
->  	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
->  	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
-> +	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
->  #endif
->  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
->  	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-> index e3d303cea7f6..7f33f7b07ce4 100644
-> --- a/drivers/media/platform/verisilicon/hantro_hw.h
-> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
-> @@ -403,11 +403,13 @@ extern const struct hantro_variant rk3328_vpu_variant;
->  extern const struct hantro_variant rk3399_vpu_variant;
->  extern const struct hantro_variant rk3568_vepu_variant;
->  extern const struct hantro_variant rk3568_vpu_variant;
-> +extern const struct hantro_variant rk3588_vpu981_variant;
->  extern const struct hantro_variant sama5d4_vdec_variant;
->  extern const struct hantro_variant sunxi_vpu_variant;
->  
->  extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
->  extern const struct hantro_postproc_ops hantro_g2_postproc_ops;
-> +extern const struct hantro_postproc_ops rockchip_vpu981_postproc_ops;
->  
->  extern const u32 hantro_vp8_dec_mc_filter[8][6];
->  
-> @@ -444,6 +446,10 @@ void hantro_hevc_ref_init(struct hantro_ctx *ctx);
->  dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
->  int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
->  
-> +int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx);
-> +void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx);
-> +int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx);
-> +void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx);
->  
->  static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
->  {
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> index 8de6fd2e8eef..816ffa905a4b 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> @@ -13,9 +13,13 @@
->  #include "hantro_g1_regs.h"
->  #include "hantro_h1_regs.h"
->  #include "rockchip_vpu2_regs.h"
-> +#include "rockchip_vpu981_regs.h"
->  
->  #define RK3066_ACLK_MAX_FREQ (300 * 1000 * 1000)
->  #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
-> +#define RK3588_ACLK_MAX_FREQ (300 * 1000 * 1000)
-> +
-> +#define ROCKCHIP_VPU981_MIN_SIZE 64
->  
->  /*
->   * Supported formats.
-> @@ -74,6 +78,37 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
->  	},
->  };
->  
-> +static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV12,
-> +		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
-> +		.postprocessed = true,
-> +		.frmsize = {
-> +			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_width = FMT_UHD_WIDTH,
-> +			.step_width = MB_DIM,
-> +			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_height = FMT_UHD_HEIGHT,
-> +			.step_height = MB_DIM,
-> +		},
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_P010,
-> +		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
-> +		.postprocessed = true,
-> +		.frmsize = {
-> +			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_width = FMT_UHD_WIDTH,
-> +			.step_width = MB_DIM,
-> +			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_height = FMT_UHD_HEIGHT,
-> +			.step_height = MB_DIM,
-> +		},
-> +	},
-> +};
-> +
->  static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV12,
-> @@ -277,6 +312,48 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
->  	},
->  };
->  
-> +static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV12_4L4,
-> +		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
-> +		.frmsize = {
-> +			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_width = FMT_UHD_WIDTH,
-> +			.step_width = MB_DIM,
-> +			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_height = FMT_UHD_HEIGHT,
-> +			.step_height = MB_DIM,
-> +		},
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV15_4L4,
-> +		.codec_mode = HANTRO_MODE_NONE,
-> +		.match_depth = true,
-> +		.frmsize = {
-> +			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_width = FMT_UHD_WIDTH,
-> +			.step_width = MB_DIM,
-> +			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_height = FMT_UHD_HEIGHT,
-> +			.step_height = MB_DIM,
-> +		},
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_AV1_FRAME,
-> +		.codec_mode = HANTRO_MODE_AV1_DEC,
-> +		.max_depth = 2,
-> +		.frmsize = {
-> +			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_width = FMT_UHD_WIDTH,
-> +			.step_width = MB_DIM,
-> +			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
-> +			.max_height = FMT_UHD_HEIGHT,
-> +			.step_height = MB_DIM,
-> +		},
-> +	},
-> +};
-> +
->  static irqreturn_t rockchip_vpu1_vepu_irq(int irq, void *dev_id)
->  {
->  	struct hantro_dev *vpu = dev_id;
-> @@ -331,6 +408,24 @@ static irqreturn_t rockchip_vpu2_vepu_irq(int irq, void *dev_id)
->  	return IRQ_HANDLED;
->  }
->  
-> +static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
-> +{
-> +	struct hantro_dev *vpu = dev_id;
-> +	enum vb2_buffer_state state;
-> +	u32 status;
-> +
-> +	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
-> +	state = (status & AV1_REG_INTERRUPT_DEC_RDY_INT) ?
-> +		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-> +
-> +	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
-> +	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
-> +
-> +	hantro_irq_done(vpu, state);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
->  static int rk3036_vpu_hw_init(struct hantro_dev *vpu)
->  {
->  	/* Bump ACLK to max. possible freq. to improve performance. */
-> @@ -346,6 +441,13 @@ static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
->  	return 0;
->  }
->  
-> +static int rk3588_vpu981_hw_init(struct hantro_dev *vpu)
-> +{
-> +	/* Bump ACLKs to max. possible freq. to improve performance. */
-> +	clk_set_rate(vpu->clocks[0].clk, RK3588_ACLK_MAX_FREQ);
-> +	return 0;
-> +}
-> +
->  static int rockchip_vpu_hw_init(struct hantro_dev *vpu)
->  {
->  	/* Bump ACLK to max. possible freq. to improve performance. */
-> @@ -498,6 +600,14 @@ static const struct hantro_codec_ops rk3568_vepu_codec_ops[] = {
->  	},
->  };
->  
-> +static const struct hantro_codec_ops rk3588_vpu981_codec_ops[] = {
-> +	[HANTRO_MODE_AV1_DEC] = {
-> +		.run = rockchip_vpu981_av1_dec_run,
-> +		.init = rockchip_vpu981_av1_dec_init,
-> +		.exit = rockchip_vpu981_av1_dec_exit,
-> +		.done = rockchip_vpu981_av1_dec_done,
-> +	},
-> +};
->  /*
->   * VPU variant.
->   */
-> @@ -529,10 +639,18 @@ static const char * const rk3066_vpu_clk_names[] = {
->  	"aclk_vepu", "hclk_vepu"
->  };
->  
-> +static const struct hantro_irq rk3588_vpu981_irqs[] = {
-> +	{ "vdpu", rk3588_vpu981_irq },
-> +};
-> +
->  static const char * const rockchip_vpu_clk_names[] = {
->  	"aclk", "hclk"
->  };
->  
-> +static const char * const rk3588_vpu981_vpu_clk_names[] = {
-> +	"aclk", "hclk", "aclk_vdpu_root", "hclk_vdpu_root"
-> +};
-> +
->  /* VDPU1/VEPU1 */
->  
->  const struct hantro_variant rk3036_vpu_variant = {
-> @@ -678,3 +796,19 @@ const struct hantro_variant px30_vpu_variant = {
->  	.clk_names = rockchip_vpu_clk_names,
->  	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
->  };
-> +
-> +const struct hantro_variant rk3588_vpu981_variant = {
-> +	.dec_offset = 0x0,
-> +	.dec_fmts = rockchip_vpu981_dec_fmts,
-> +	.num_dec_fmts = ARRAY_SIZE(rockchip_vpu981_dec_fmts),
-> +	.postproc_fmts = rockchip_vpu981_postproc_fmts,
-> +	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu981_postproc_fmts),
-> +	.postproc_ops = &rockchip_vpu981_postproc_ops,
-> +	.codec = HANTRO_AV1_DECODER,
-> +	.codec_ops = rk3588_vpu981_codec_ops,
-> +	.irqs = rk3588_vpu981_irqs,
-> +	.num_irqs = ARRAY_SIZE(rk3588_vpu981_irqs),
-> +	.init = rk3588_vpu981_hw_init,
-> +	.clk_names = rk3588_vpu981_vpu_clk_names,
-> +	.num_clocks = ARRAY_SIZE(rk3588_vpu981_vpu_clk_names)
-> +};
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 9fd37e94db17..a662fb60f73f 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -111,6 +111,7 @@ static void std_init_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	struct v4l2_ctrl_vp9_frame *p_vp9_frame;
+ 	struct v4l2_ctrl_fwht_params *p_fwht_params;
+ 	struct v4l2_ctrl_h264_scaling_matrix *p_h264_scaling_matrix;
++	struct v4l2_ctrl_av1_sequence *p_av1_sequence;
+ 	void *p = ptr.p + idx * ctrl->elem_size;
+ 
+ 	if (ctrl->p_def.p_const)
+@@ -157,6 +158,10 @@ static void std_init_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 		p_vp9_frame->flags |= V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING |
+ 			V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING;
+ 		break;
++	case V4L2_CTRL_TYPE_AV1_SEQUENCE:
++		p_av1_sequence = p;
++		p_av1_sequence->bit_depth = 8;
++		break;
+ 	case V4L2_CTRL_TYPE_FWHT_PARAMS:
+ 		p_fwht_params = p;
+ 		p_fwht_params->version = V4L2_FWHT_VERSION;
+-- 
+2.34.1
 
 
 _______________________________________________
