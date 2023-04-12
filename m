@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99D80C77B6E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Apr 2023 11:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11029C77B72
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Apr 2023 11:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Js7+XFB+3WKzVDcHVB7KM8lSukb7B84nsTRv1QdcDCA=; b=REP+qI+aaxfbXU
-	ctGweC4BrTPNY3w4RHmg+3df+XmqFKNj0UWTUfaCb/UMphdzcg3RYk5ZqOzAgmPGZRCAJ0ydkcTlm
-	YDEouYjXPJ42nMbst4HawbnqSqq2E8ECGSQJiysjo9XQbGzDMjx6APPgUksAWZ1CFi/pA48QODuXZ
-	35vAD5++lsuSZS8rPh0SeXr4bO+VIur/x7J2Cd4iyfdnJMO6U8//e0mS7NSsH9Irrw/koNKuXA9wP
-	WbOxtOsbfTFcklnxiE7TFvJHNZ8DurUi0diZ37d69/rkBXAREeCptLk9sa93MRUpWxQGWff61UjaX
-	V1WSTDaOo7LfUPnEIDRA==;
+	List-Owner; bh=ZMO4+0AW5uQXVjzrcSKLee2Zi/b5L2Q6ys5N4dinOFE=; b=R8bu2NoD+JcqhS
+	dpzQKamh07URRFM/URPZYkCD8if08sUn0gmULMpIvbHi2TBa2dXGdP66f/dYO3rqCpU1HzrJ6AEF0
+	d5+g8QRRg8QG64Ar5CAQW8xud/XAVOB7IMaZLxH1Kjhk/P4ktJtEAmiq+MxnOjQI7VzXsFSHyDgQX
+	iG9uPKAqGsqz2Yq0WsfNY6SV/j+I7kBv7JV5Ua0QhRxAaVUoxlLqBgofJCF1M0GvPGlhCTc/dfwug
+	xy47qaUx18oSLqOVZ+ZAR/QI5tpRxshNzM9pxEr5RbBfmmJCG7JFmdeUKMRIcOMFa2WHN1ju3qkSq
+	5m+YJ+lGog+YD5K1zm5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZ73-002zh7-0V;
-	Wed, 12 Apr 2023 11:58:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pmZ70-002zeO-0l;
+	Wed, 12 Apr 2023 11:58:06 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmZ67-002yyr-1t;
-	Wed, 12 Apr 2023 11:57:21 +0000
+	id 1pmZ67-002yyU-0H;
+	Wed, 12 Apr 2023 11:57:17 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c2e:89bd:4b8e:9e98])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DDF1166056E0;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6C787660563B;
 	Wed, 12 Apr 2023 12:57:09 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681300630;
-	bh=U8R2rRav8Jn6Fnweglmf5plZoy2ewPezrTTOwywp7zc=;
+	s=mail; t=1681300629;
+	bh=X3aQI5//lYAMP1r5y6HgzacwB2AZwzhCJSGRCHuI+ng=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=d15M8jPXLN3TBQ2zeZrulq/ZhGxZo98N5B7X/Wq29m5PQj+zIZaec01CpmV/k5ZYy
-	 sHfSJyAH6B8bDo5/4aRS1suO2BoQ0fMGZcROfKarQcCDXF/1myehFQqslg/QpR7aJ+
-	 CEEVDQQij8ewWunmYk8fekPOK+n0meLLiDT/gnpSwH0NAgwUNEtskWHvd3wISWu9Pa
-	 zFMrCkfsiy2DZlqzdYMEed37uVJqyF5VybBEuMXaFV0V4O0FgwrijcD1LMi3us5f2s
-	 C+4QSJJhrsmahjuGhUJWdf6Q+dc+rngBKPA0tsjOE/24mWv1LSqt9w3ALKPK25QksQ
-	 xYujqXJsgL0Fw==
+	b=dY0mZydpfTtAEWZ8RF8kpQBrP/mXSASZ92aWvml9WjCh1UqD4haxi4457sLWmG9eQ
+	 wuJQIAwskDK5Ifl7yZawyHVs2eLOrOU5yn/dFyiJ6C+l52Ra/ty5xx5hmlw/PRmmAX
+	 n9UO36sFp3uo2w5O3r64BCw7ueov+K9HXjNFTg3ThAqyOskoR6kl1ok5itWZvatMrz
+	 hjei7+bezIXfQmxhwAvBA9papzM3wBfXaivSTkJ5QLPheaKe5/kodqVTbyjak0KaZY
+	 WS0wervNOwmOU+wmqPNnDvT1pxADmzfqc/Px442CJwPA/on/eZvp8VEolq6ZxVJqKk
+	 +ws8Y7tRSmhKQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -59,16 +59,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 13/13] media: verisilicon: Conditionally ignore native formats
-Date: Wed, 12 Apr 2023 13:56:52 +0200
-Message-Id: <20230412115652.403949-14-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 12/13] media: verisilicon: Enable AV1 decoder on rk3588
+Date: Wed, 12 Apr 2023 13:56:51 +0200
+Message-Id: <20230412115652.403949-13-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
 References: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230412_045711_903409_45FA3428 
-X-CRM114-Status: GOOD (  22.70  )
+X-CRM114-CacheID: sfid-20230412_045711_424632_8816DB60 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,317 +85,256 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-AV1 film grain feature requires to use the postprocessor to produce
-valid frames. In such case the driver shouldn't propose native pixels
-format but only post-processed pixels format.
-Additionally if when setting a control a value could change capture
-queue pixels formats it is needed to call hantro_reset_raw_fmt().
+Add rk3588 AV1 decoder to Hantro variant.
+The hardware support image from 64x64 up to 7680x4320
+by steps of 16 pixels.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-Changes in v6:
-- Add defines for post-proc selection.
+ .../media/platform/verisilicon/hantro_drv.c   |   1 +
+ .../media/platform/verisilicon/hantro_hw.h    |   6 +
+ .../platform/verisilicon/rockchip_vpu_hw.c    | 134 ++++++++++++++++++
+ 3 files changed, 141 insertions(+)
 
- drivers/media/platform/verisilicon/hantro.h   |  3 +
- .../media/platform/verisilicon/hantro_drv.c   | 14 +++--
- .../platform/verisilicon/hantro_postproc.c    |  6 +-
- .../media/platform/verisilicon/hantro_v4l2.c  | 57 +++++++++++++------
- .../media/platform/verisilicon/hantro_v4l2.h  |  8 ++-
- 5 files changed, 63 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index a98cb40a8d3b..6523ffb74881 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -231,6 +231,8 @@ struct hantro_dev {
-  * @ctrl_handler:	Control handler used to register controls.
-  * @jpeg_quality:	User-specified JPEG compression quality.
-  * @bit_depth:		Bit depth of current frame
-+ * @need_postproc:	Set to true if the bitstream features require to
-+ *			use the post-processor.
-  *
-  * @codec_ops:		Set of operations related to codec mode.
-  * @postproc:		Post-processing context.
-@@ -261,6 +263,7 @@ struct hantro_ctx {
- 
- 	const struct hantro_codec_ops *codec_ops;
- 	struct hantro_postproc_ctx postproc;
-+	bool need_postproc;
- 
- 	/* Specific for particular codec modes. */
- 	union {
 diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index aef1de20fc5e..e011449f6e4e 100644
+index 71bd68e63859..aef1de20fc5e 100644
 --- a/drivers/media/platform/verisilicon/hantro_drv.c
 +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -319,7 +319,7 @@ static int hantro_vp9_s_ctrl(struct v4l2_ctrl *ctrl)
- 		if (ctx->bit_depth == bit_depth)
- 			return 0;
+@@ -713,6 +713,7 @@ static const struct of_device_id of_hantro_match[] = {
+ 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+ 	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
+ 	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
++	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+ 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index e3d303cea7f6..7f33f7b07ce4 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -403,11 +403,13 @@ extern const struct hantro_variant rk3328_vpu_variant;
+ extern const struct hantro_variant rk3399_vpu_variant;
+ extern const struct hantro_variant rk3568_vepu_variant;
+ extern const struct hantro_variant rk3568_vpu_variant;
++extern const struct hantro_variant rk3588_vpu981_variant;
+ extern const struct hantro_variant sama5d4_vdec_variant;
+ extern const struct hantro_variant sunxi_vpu_variant;
  
--		return hantro_reset_raw_fmt(ctx, bit_depth);
-+		return hantro_reset_raw_fmt(ctx, bit_depth, HANTRO_AUTO_POSTPROC);
- 	}
- 	default:
- 		return -EINVAL;
-@@ -343,7 +343,7 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
- 		if (ctx->bit_depth == bit_depth)
- 			return 0;
+ extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
+ extern const struct hantro_postproc_ops hantro_g2_postproc_ops;
++extern const struct hantro_postproc_ops rockchip_vpu981_postproc_ops;
  
--		return hantro_reset_raw_fmt(ctx, bit_depth);
-+		return hantro_reset_raw_fmt(ctx, bit_depth, HANTRO_AUTO_POSTPROC);
- 	}
- 	default:
- 		return -EINVAL;
-@@ -363,11 +363,17 @@ static int hantro_av1_s_ctrl(struct v4l2_ctrl *ctrl)
- 	case V4L2_CID_STATELESS_AV1_SEQUENCE:
+ extern const u32 hantro_vp8_dec_mc_filter[8][6];
+ 
+@@ -444,6 +446,10 @@ void hantro_hevc_ref_init(struct hantro_ctx *ctx);
+ dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
+ int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
+ 
++int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx);
++void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx);
++int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx);
++void rockchip_vpu981_av1_dec_done(struct hantro_ctx *ctx);
+ 
+ static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
+ {
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 8de6fd2e8eef..816ffa905a4b 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -13,9 +13,13 @@
+ #include "hantro_g1_regs.h"
+ #include "hantro_h1_regs.h"
+ #include "rockchip_vpu2_regs.h"
++#include "rockchip_vpu981_regs.h"
+ 
+ #define RK3066_ACLK_MAX_FREQ (300 * 1000 * 1000)
+ #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
++#define RK3588_ACLK_MAX_FREQ (300 * 1000 * 1000)
++
++#define ROCKCHIP_VPU981_MIN_SIZE 64
+ 
+ /*
+  * Supported formats.
+@@ -74,6 +78,37 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
+ 	},
+ };
+ 
++static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12,
++		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
++		.postprocessed = true,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_UHD_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_UHD_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_P010,
++		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
++		.postprocessed = true,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_UHD_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_UHD_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
++};
++
+ static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
  	{
- 		int bit_depth = ctrl->p_new.p_av1_sequence->bit_depth;
-+		bool need_postproc = HANTRO_AUTO_POSTPROC;
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+@@ -277,6 +312,48 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
+ 	},
+ };
  
--		if (ctx->bit_depth == bit_depth)
-+		if (ctrl->p_new.p_av1_sequence->flags
-+		    & V4L2_AV1_SEQUENCE_FLAG_FILM_GRAIN_PARAMS_PRESENT)
-+			need_postproc = HANTRO_FORCE_POSTPROC;
++static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12_4L4,
++		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_UHD_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_UHD_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV15_4L4,
++		.codec_mode = HANTRO_MODE_NONE,
++		.match_depth = true,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_UHD_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_UHD_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_AV1_FRAME,
++		.codec_mode = HANTRO_MODE_AV1_DEC,
++		.max_depth = 2,
++		.frmsize = {
++			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_width = FMT_UHD_WIDTH,
++			.step_width = MB_DIM,
++			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
++			.max_height = FMT_UHD_HEIGHT,
++			.step_height = MB_DIM,
++		},
++	},
++};
 +
-+		if (ctx->bit_depth == bit_depth &&
-+		    ctx->need_postproc == need_postproc)
- 			return 0;
- 
--		return hantro_reset_raw_fmt(ctx, bit_depth);
-+		return hantro_reset_raw_fmt(ctx, bit_depth, need_postproc);
- 	}
- 	default:
- 		return -EINVAL;
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index bb16af50719d..c977d64105b1 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -57,6 +57,10 @@ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
+ static irqreturn_t rockchip_vpu1_vepu_irq(int irq, void *dev_id)
  {
- 	if (ctx->is_encoder)
- 		return false;
+ 	struct hantro_dev *vpu = dev_id;
+@@ -331,6 +408,24 @@ static irqreturn_t rockchip_vpu2_vepu_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
 +
-+	if (ctx->need_postproc)
-+		return true;
++	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
++	state = (status & AV1_REG_INTERRUPT_DEC_RDY_INT) ?
++		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
 +
- 	return fmt->postprocessed;
- }
- 
-@@ -197,7 +201,7 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	unsigned int i, buf_size;
- 
- 	/* this should always pick native format */
--	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth);
-+	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth, HANTRO_AUTO_POSTPROC);
- 	if (!fmt)
- 		return -EINVAL;
- 	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index e31cbe56779a..b02f74f6dcf7 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -31,15 +31,21 @@
- #define  HANTRO_DEFAULT_BIT_DEPTH 8
- 
- static int hantro_set_fmt_out(struct hantro_ctx *ctx,
--			      struct v4l2_pix_format_mplane *pix_mp);
-+			      struct v4l2_pix_format_mplane *pix_mp,
-+			      bool need_postproc);
- static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
- 			      struct v4l2_pix_format_mplane *pix_mp);
- 
- static const struct hantro_fmt *
--hantro_get_formats(const struct hantro_ctx *ctx, unsigned int *num_fmts)
-+hantro_get_formats(const struct hantro_ctx *ctx, unsigned int *num_fmts, bool need_postproc)
- {
- 	const struct hantro_fmt *formats;
- 
-+	if (need_postproc) {
-+		*num_fmts = 0;
-+		return NULL;
-+	}
++	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
++	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
 +
- 	if (ctx->is_encoder) {
- 		formats = ctx->dev->variant->enc_fmts;
- 		*num_fmts = ctx->dev->variant->num_enc_fmts;
-@@ -108,7 +114,7 @@ hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
- 	const struct hantro_fmt *formats;
- 	unsigned int i, num_fmts;
- 
--	formats = hantro_get_formats(ctx, &num_fmts);
-+	formats = hantro_get_formats(ctx, &num_fmts, HANTRO_AUTO_POSTPROC);
- 	for (i = 0; i < num_fmts; i++)
- 		if (formats[i].fourcc == fourcc)
- 			return &formats[i];
-@@ -121,18 +127,28 @@ hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
- }
- 
- const struct hantro_fmt *
--hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, int bit_depth)
-+hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream,
-+		       int bit_depth, bool need_postproc)
- {
- 	const struct hantro_fmt *formats;
- 	unsigned int i, num_fmts;
- 
--	formats = hantro_get_formats(ctx, &num_fmts);
-+	formats = hantro_get_formats(ctx, &num_fmts, need_postproc);
-+	for (i = 0; i < num_fmts; i++) {
-+		if (bitstream == (formats[i].codec_mode !=
-+				  HANTRO_MODE_NONE) &&
-+		    hantro_check_depth_match(&formats[i], bit_depth))
-+			return &formats[i];
-+	}
++	hantro_irq_done(vpu, state);
 +
-+	formats = hantro_get_postproc_formats(ctx, &num_fmts);
- 	for (i = 0; i < num_fmts; i++) {
- 		if (bitstream == (formats[i].codec_mode !=
- 				  HANTRO_MODE_NONE) &&
- 		    hantro_check_depth_match(&formats[i], bit_depth))
- 			return &formats[i];
- 	}
++	return IRQ_HANDLED;
++}
 +
- 	return NULL;
- }
- 
-@@ -199,7 +215,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
- 	 */
- 	skip_mode_none = capture == ctx->is_encoder;
- 
--	formats = hantro_get_formats(ctx, &num_fmts);
-+	formats = hantro_get_formats(ctx, &num_fmts, HANTRO_AUTO_POSTPROC);
- 	for (i = 0; i < num_fmts; i++) {
- 		bool mode_none = formats[i].codec_mode == HANTRO_MODE_NONE;
- 		fmt = &formats[i];
-@@ -294,7 +310,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 
- 	fmt = hantro_find_format(ctx, pix_mp->pixelformat);
- 	if (!fmt) {
--		fmt = hantro_get_default_fmt(ctx, coded, HANTRO_DEFAULT_BIT_DEPTH);
-+		fmt = hantro_get_default_fmt(ctx, coded, HANTRO_DEFAULT_BIT_DEPTH, HANTRO_AUTO_POSTPROC);
- 		pix_mp->pixelformat = fmt->fourcc;
- 	}
- 
-@@ -387,7 +403,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
- 	const struct hantro_fmt *vpu_fmt;
- 	struct v4l2_pix_format_mplane fmt;
- 
--	vpu_fmt = hantro_get_default_fmt(ctx, true, HANTRO_DEFAULT_BIT_DEPTH);
-+	vpu_fmt = hantro_get_default_fmt(ctx, true, HANTRO_DEFAULT_BIT_DEPTH, HANTRO_AUTO_POSTPROC);
- 	if (!vpu_fmt)
- 		return;
- 
-@@ -397,17 +413,17 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
- 	if (ctx->is_encoder)
- 		hantro_set_fmt_cap(ctx, &fmt);
- 	else
--		hantro_set_fmt_out(ctx, &fmt);
-+		hantro_set_fmt_out(ctx, &fmt, HANTRO_AUTO_POSTPROC);
- }
- 
- int
--hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
-+hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth, bool need_postproc)
+ static int rk3036_vpu_hw_init(struct hantro_dev *vpu)
  {
- 	const struct hantro_fmt *raw_vpu_fmt;
- 	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
- 	int ret;
- 
--	raw_vpu_fmt = hantro_get_default_fmt(ctx, false, bit_depth);
-+	raw_vpu_fmt = hantro_get_default_fmt(ctx, false, bit_depth, need_postproc);
- 	if (!raw_vpu_fmt)
- 		return -EINVAL;
- 
-@@ -420,12 +436,14 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
- 	raw_fmt.width = encoded_fmt->width;
- 	raw_fmt.height = encoded_fmt->height;
- 	if (ctx->is_encoder)
--		ret = hantro_set_fmt_out(ctx, &raw_fmt);
-+		ret = hantro_set_fmt_out(ctx, &raw_fmt, need_postproc);
- 	else
- 		ret = hantro_set_fmt_cap(ctx, &raw_fmt);
- 
--	if (!ret)
-+	if (!ret) {
- 		ctx->bit_depth = bit_depth;
-+		ctx->need_postproc = need_postproc;
-+	}
- 
- 	return ret;
- }
-@@ -433,7 +451,7 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
- void hantro_reset_fmts(struct hantro_ctx *ctx)
- {
- 	hantro_reset_encoded_fmt(ctx);
--	hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH);
-+	hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH, HANTRO_AUTO_POSTPROC);
+ 	/* Bump ACLK to max. possible freq. to improve performance. */
+@@ -346,6 +441,13 @@ static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
+ 	return 0;
  }
  
- static void
-@@ -480,7 +498,8 @@ hantro_update_requires_hold_capture_buf(struct hantro_ctx *ctx, u32 fourcc)
- }
- 
- static int hantro_set_fmt_out(struct hantro_ctx *ctx,
--			      struct v4l2_pix_format_mplane *pix_mp)
-+			      struct v4l2_pix_format_mplane *pix_mp,
-+			      bool need_postproc)
- {
- 	struct vb2_queue *vq;
- 	int ret;
-@@ -533,7 +552,9 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
- 	 * changes to the raw format.
- 	 */
- 	if (!ctx->is_encoder)
--		hantro_reset_raw_fmt(ctx, hantro_get_format_depth(pix_mp->pixelformat));
-+		hantro_reset_raw_fmt(ctx,
-+				     hantro_get_format_depth(pix_mp->pixelformat),
-+				     need_postproc);
- 
- 	/* Colorimetry information are always propagated. */
- 	ctx->dst_fmt.colorspace = pix_mp->colorspace;
-@@ -596,7 +617,7 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
- 	 * changes to the raw format.
- 	 */
- 	if (ctx->is_encoder)
--		hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH);
-+		hantro_reset_raw_fmt(ctx, HANTRO_DEFAULT_BIT_DEPTH, HANTRO_AUTO_POSTPROC);
- 
- 	/* Colorimetry information are always propagated. */
- 	ctx->src_fmt.colorspace = pix_mp->colorspace;
-@@ -616,7 +637,7 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
- static int
- vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- {
--	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp);
-+	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp, HANTRO_AUTO_POSTPROC);
- }
- 
- static int
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.h b/drivers/media/platform/verisilicon/hantro_v4l2.h
-index 9ea2fef57dcd..fca7e3a690e5 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.h
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.h
-@@ -18,13 +18,17 @@
- 
- #include "hantro.h"
- 
-+#define HANTRO_FORCE_POSTPROC	true
-+#define HANTRO_AUTO_POSTPROC	false
++static int rk3588_vpu981_hw_init(struct hantro_dev *vpu)
++{
++	/* Bump ACLKs to max. possible freq. to improve performance. */
++	clk_set_rate(vpu->clocks[0].clk, RK3588_ACLK_MAX_FREQ);
++	return 0;
++}
 +
- extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
- extern const struct vb2_ops hantro_queue_ops;
+ static int rockchip_vpu_hw_init(struct hantro_dev *vpu)
+ {
+ 	/* Bump ACLK to max. possible freq. to improve performance. */
+@@ -498,6 +600,14 @@ static const struct hantro_codec_ops rk3568_vepu_codec_ops[] = {
+ 	},
+ };
  
--int hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth);
-+int hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth, bool need_postproc);
- void hantro_reset_fmts(struct hantro_ctx *ctx);
- int hantro_get_format_depth(u32 fourcc);
- const struct hantro_fmt *
--hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream, int bit_depth);
-+hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream,
-+		       int bit_depth, bool need_postproc);
++static const struct hantro_codec_ops rk3588_vpu981_codec_ops[] = {
++	[HANTRO_MODE_AV1_DEC] = {
++		.run = rockchip_vpu981_av1_dec_run,
++		.init = rockchip_vpu981_av1_dec_init,
++		.exit = rockchip_vpu981_av1_dec_exit,
++		.done = rockchip_vpu981_av1_dec_done,
++	},
++};
+ /*
+  * VPU variant.
+  */
+@@ -529,10 +639,18 @@ static const char * const rk3066_vpu_clk_names[] = {
+ 	"aclk_vepu", "hclk_vepu"
+ };
  
- #endif /* HANTRO_V4L2_H_ */
++static const struct hantro_irq rk3588_vpu981_irqs[] = {
++	{ "vdpu", rk3588_vpu981_irq },
++};
++
+ static const char * const rockchip_vpu_clk_names[] = {
+ 	"aclk", "hclk"
+ };
+ 
++static const char * const rk3588_vpu981_vpu_clk_names[] = {
++	"aclk", "hclk", "aclk_vdpu_root", "hclk_vdpu_root"
++};
++
+ /* VDPU1/VEPU1 */
+ 
+ const struct hantro_variant rk3036_vpu_variant = {
+@@ -678,3 +796,19 @@ const struct hantro_variant px30_vpu_variant = {
+ 	.clk_names = rockchip_vpu_clk_names,
+ 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
+ };
++
++const struct hantro_variant rk3588_vpu981_variant = {
++	.dec_offset = 0x0,
++	.dec_fmts = rockchip_vpu981_dec_fmts,
++	.num_dec_fmts = ARRAY_SIZE(rockchip_vpu981_dec_fmts),
++	.postproc_fmts = rockchip_vpu981_postproc_fmts,
++	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu981_postproc_fmts),
++	.postproc_ops = &rockchip_vpu981_postproc_ops,
++	.codec = HANTRO_AV1_DECODER,
++	.codec_ops = rk3588_vpu981_codec_ops,
++	.irqs = rk3588_vpu981_irqs,
++	.num_irqs = ARRAY_SIZE(rk3588_vpu981_irqs),
++	.init = rk3588_vpu981_hw_init,
++	.clk_names = rk3588_vpu981_vpu_clk_names,
++	.num_clocks = ARRAY_SIZE(rk3588_vpu981_vpu_clk_names)
++};
 -- 
 2.34.1
 
