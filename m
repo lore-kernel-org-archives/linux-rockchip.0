@@ -4,82 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3923C77B61
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 13:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B96C77B73
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 14:35:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OYAXiwNVfztnAx+0uSY2gXe4hTMxD9X8LJyPxW2F1YA=; b=G4dPZV3TlOYEYN
-	YAgSEDj1Htso2n/09mCeF48Rqc96y7VSDFQ5cjiqND7g/orYuyXodKG7wpgonaxRCHycRThnHrrqX
-	PJ/ZyiuDo0+wBre+Z1WG0nbXBh+9Kp4D5bV5dtNDqFs6jLmqdtBjzMTg1oOKu7VdGk5Bs/BLYivlW
-	B5vNcBVTCwx1eOzbsQjrCB6RQeiJ79mUvb8aGaGEwUSEx05dFWGBNE3ffZ5ZT7gVTAvf3OJl7aoDr
-	xvONI4zCY5NFkGqR3EpvobTp4o6TvfY6TQD856u1t+Lx0hTGsEWguUrGgA5v6KpN5uy/o0PzZImEm
-	dNBVoRAv0fd4IxxGKOdg==;
+	List-Owner; bh=+UUZjdirQ7Ce5nscIJGDKmkLkBEk7vRTEZFiSSvmNSc=; b=cptxfNPICVvvgI
+	7Sud5pRbU2FuuIZ58rBzUc+czHdMChiZtIF1wFF/W2M5RMhpu2KBa/sHNG826gssXTVsfSLZbR2XI
+	0U6SgB47eN0MFmMP30eOOJNHKujztDROOnXoWZDUk7QWvl6IBb1OePPESdkGatQIHwGNSJgliGWL0
+	ct/ID/i+CSDFuzOy0dZqmvYf1NrWQL/uxAi/OVSz8AHgia+VoZvZLpXxOtqw2cT/+mNSh/f7o6BAs
+	Z6BXU2T10zAbfM+FHFAjoWF4QO4Vf9pCbNfgBVQtzQV5Wi/9CAZsDfceGeEpGF8oyyJSyzlp2Bn9R
+	Oac/l2o1eHXYX92Qb64g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxKX-006JGd-2M;
-	Thu, 13 Apr 2023 13:49:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pmy2k-006PUt-2p;
+	Thu, 13 Apr 2023 14:35:22 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmxKT-006JFk-1q;
-	Thu, 13 Apr 2023 13:49:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E6705614CD;
-	Thu, 13 Apr 2023 13:49:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85363C433EF;
-	Thu, 13 Apr 2023 13:49:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681393776;
-	bh=PIQWxC9aTPIf5rBky0brQiHVlrCXX748Hlc0qxobWWk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ssbDb/ROcuAm1lbADBnLEOxZ36OxR1HvuPA7vufkKTMh7dVHBN21dNyd1wjTTlj9i
-	 tIk1B1bFxpgUr77LDJ2BzuTsGKsS/KeI25HuF8pGbii4YJPTMl0w2pyKxZRfYBEFkA
-	 n9zs07dhFigJJBJKJV9wL9AJLcigMIDtqBRlWyESwHs9JZD2UigsL06MFKUn4I1oFj
-	 sPogYgWbE+6mLu9nac0AZAhuxmObCJ12UUPqfCGaz6lde1d36zuqsEhLq/QIwTnXt9
-	 10BQnh+JOdJ35LsdtYzwMcA2KNui53jnvbGgpYYMbzucJTwPYsgICkfAl77oICevxB
-	 TcJgwPClp/8mA==
-Date: Thu, 13 Apr 2023 15:49:26 +0200
-From: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Damien Le Moal <damien.lemoal@opensource.wdc.com>
-Cc: Rick Wertenbroek <rick.wertenbroek@gmail.com>,
-	alberto.dassatti@heig-vd.ch, xxm@rock-chips.com,
-	rick.wertenbroek@heig-vd.ch, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Jani Nikula <jani.nikula@intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Mikko Kovanen <mikko.kovanen@aavamobile.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pci@vger.kernel.org
-Subject: Re: [PATCH v2 0/9] PCI: rockchip: Fix RK3399 PCIe endpoint
- controller driver
-Message-ID: <ZDgIZmCgLoC/uieX@lpieralisi>
+	id 1pmy2g-006PTU-2J;
+	Thu, 13 Apr 2023 14:35:20 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-1879502e2afso1958551fac.5;
+        Thu, 13 Apr 2023 07:35:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1681396516; x=1683988516;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cP1l0y4cD5yKB1hePqZclJ5kk1fyrn0MXx0ITLwG3DY=;
+        b=lSjxDXA8pv9ruHAzrKSK+AgBNOx5sPVcSb1NuYft4l06BYSf+lducvV84LnIhGUf+n
+         URr/dzeEpv2R4bs+TgLnuMbMwkXEcBBKDMOAQTyoFcpF62Opu8kZ7vxMVoYoh+QIIc9P
+         Ke+iVPNT+W7F5Pv0f8A5xdPHZHe2gcNxfJJ2fM5XJ6jqteEznPgHxB5chSpOrf1Sib0m
+         aHejbNbD/2Bj5dEJ+p3zv4CpGN6PpilHrPrQP0w0SO1xiqB16zmPzJ5Kc9/P6iIdQ26b
+         SJfR4JaqFYoI++TxhE+W5GwdIjiNmBWZGbN8Y8b1dl/2qdRFVor1AJtwxqm9/3eeVUwL
+         wSuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681396516; x=1683988516;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cP1l0y4cD5yKB1hePqZclJ5kk1fyrn0MXx0ITLwG3DY=;
+        b=HBXQJdgvae9FgqPHsXI9a+tT9BSUfM3k70FWa5jdDb1z7Rx5iZz2nw/+6JOrH2F+re
+         /wjt8zu7/H9Bghdd2Ol5CwK3n4dOZ6j+4crYxfLqN/iT8Z7rVLb7rjUkteENJj57S1uh
+         v9kHHXm5NeEnoDHrWYboVimRDvFG0OJa511aoKxCWZBRHDMB13Cd5Cf9d7rlpJcim0Ej
+         jTqII1hqQjX8GVTRv0MeWBjKNW8E+ch7o/O7kDjwMRbAQcjPY41FUk0jfNaSCIsG+waE
+         xQE7aTAF60JsRYgQaj/rWodU8BcRfud8+gNjU/RZQiWC+6nVH+R1XwW/DwUS4A6xyfQ8
+         kY8Q==
+X-Gm-Message-State: AAQBX9fyVcR5IS09/q4gE37/P7lseNmE1EGhW22vNZXymy0+H3WN7jtv
+	Ehi1IjQn5XFfFnmrJTm0L8pSw01Anc5p/ff3iPQ=
+X-Google-Smtp-Source: AKy350ZifiwgVFIFHHCxOfDLu7eQ6z0WhZE63KnFK+OlGp74DjjsP6/VEb8ragWGy9qRyK+pT+WNCbaI7yCyE9KpaxY=
+X-Received: by 2002:a05:6870:3326:b0:17e:5bc4:9ac9 with SMTP id
+ x38-20020a056870332600b0017e5bc49ac9mr1314902oae.10.1681396516540; Thu, 13
+ Apr 2023 07:35:16 -0700 (PDT)
+MIME-Version: 1.0
 References: <20230214140858.1133292-1-rick.wertenbroek@gmail.com>
- <ecd09f27-b799-4741-2c5a-a2de99776c51@opensource.wdc.com>
- <CAAEEuhrk4cSC312UiAL3UwoDZ=urrdDcBThcNHd1dqnAuJTzAw@mail.gmail.com>
- <3c4ed614-f088-928f-2807-deaa5e4b668a@opensource.wdc.com>
- <CAAEEuhqk0scWd3wFbVb9fSgHxPBKotpEPNi+YPG4GD9vLO94mw@mail.gmail.com>
- <8392a7de-666a-bce6-dc9f-b60d6dd93013@opensource.wdc.com>
- <1e8184e9-7e0b-2598-cc5a-e46d6c2f152a@opensource.wdc.com>
+ <ecd09f27-b799-4741-2c5a-a2de99776c51@opensource.wdc.com> <CAAEEuhrk4cSC312UiAL3UwoDZ=urrdDcBThcNHd1dqnAuJTzAw@mail.gmail.com>
+ <3c4ed614-f088-928f-2807-deaa5e4b668a@opensource.wdc.com> <CAAEEuhqk0scWd3wFbVb9fSgHxPBKotpEPNi+YPG4GD9vLO94mw@mail.gmail.com>
+ <8392a7de-666a-bce6-dc9f-b60d6dd93013@opensource.wdc.com> <1e8184e9-7e0b-2598-cc5a-e46d6c2f152a@opensource.wdc.com>
  <CAAEEuhoB2LqL=B_BQ0X2T-E+Yt83kPUiv-R9dgU0O-f22ukcWg@mail.gmail.com>
  <CAAEEuhp5WTkaPDRLa8frc9Sc43A3HwApW647v-E9Bse6p5Df5Q@mail.gmail.com>
- <15208569-b3d7-b9f7-6676-9d9122cac84a@opensource.wdc.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <15208569-b3d7-b9f7-6676-9d9122cac84a@opensource.wdc.com>
+ <15208569-b3d7-b9f7-6676-9d9122cac84a@opensource.wdc.com> <ZDgIZmCgLoC/uieX@lpieralisi>
+In-Reply-To: <ZDgIZmCgLoC/uieX@lpieralisi>
+From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Date: Thu, 13 Apr 2023 16:34:40 +0200
+Message-ID: <CAAEEuhocJpmtAQPCxgnsEbkqe9yyK1-p0ZpwuZBJxHVbMukiYQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/9] PCI: rockchip: Fix RK3399 PCIe endpoint controller driver
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>
+Cc: Damien Le Moal <damien.lemoal@opensource.wdc.com>, alberto.dassatti@heig-vd.ch, 
+	xxm@rock-chips.com, rick.wertenbroek@heig-vd.ch, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Jani Nikula <jani.nikula@intel.com>, 
+	Rodrigo Vivi <rodrigo.vivi@intel.com>, Mikko Kovanen <mikko.kovanen@aavamobile.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, 
+	Damien Le Moal <dlemoal@fastmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_064937_972072_73FC083F 
-X-CRM114-Status: GOOD (  37.80  )
+X-CRM114-CacheID: sfid-20230413_073518_757413_5726A698 
+X-CRM114-Status: GOOD (  42.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,71 +97,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 17, 2023 at 07:09:04AM +0900, Damien Le Moal wrote:
-> On 3/17/23 01:34, Rick Wertenbroek wrote:
-> >>> By the way, enabling the interrupts to see the error notifications, I do see a
-> >>> lot of retry timeout and other recoverable errors. So the issues I am seeing
-> >>> could be due to my PCI cable setup that is not ideal (bad signal, ground loops,
-> >>> ... ?). Not sure. I do not have a PCI analyzer handy :)
-> > 
-> > I have enabled the IRQs and messages thanks to your patches but I don't get
-> > messages from the IRQs (it seems no IRQs are fired). My PCIe link seems stable.
-> > The main issue I face is still that after a random amount of time, the BARs are
-> > reset to 0, I don't have a PCIe analyzer so I cannot chase config space TLPs
-> > (e.g., host writing the BAR values to the config header), but I don't think that
-> > the problem comes from a TLP issued from the host. (it might be).
-> 
-> Hmmm... I am getting lots of IRQs, especially the ones signaling "replay timer
-> timed out" and "replay timer rolled over after 4 transmissions of the same TLP"
-> but also some "phy error detected on receive side"... Need to try to rework my
-> cable setup I guess.
-> 
-> As for the BARs being reset to 0, I have not checked, but it may be why I see
-> things not working after some inactivity. Will check that. We may be seeing the
-> same regarding that.
-> 
-> > I don't think it's a buffer overflow / out-of-bounds access by kernel
-> > code for two reasons
-> > 1) The values in the config space around the BARs is coherent and unchanged
-> > 2) The bars are reset to 0 and not a random value
-> > 
-> > I suspect a hardware reset of those registers issued internally in the
-> > PCIe controller,
-> > I don't know why (it might be a link related event or power state
-> > related event).
-> > 
-> > I have also experienced very slow behavior with the PCI endpoint test driver,
-> > e.g., pcitest -w 1024 -d would take tens of seconds to complete. It seems to
-> > come from LCRC errors, when I check the "LCRC Error count register"
-> > @0xFD90'0214 I can see it drastically increase between two calls of pcitest
-> > (when I mean drastically it means by 6607 (0x19CF) for example).
-> > 
-> > The "ECC Correctable Error Count Register" @0xFD90'0218 reads 0 though.
-> > 
-> > I have tried to shorten the cabling by removing one of the PCIe extenders, that
-> > didn't change the issues much.
-> > 
-> > Any ideas as to why I see a large number of TLPs with LCRC errors in them ?
-> > Do you experience the same ? What are your values in 0xFD90'0214 when
-> > running e.g., pcitest -w 1024 -d (note: you can reset the counter by writing
-> > 0xFFFF to it in case it reaches the maximum value of 0xFFFF).
-> 
-> I have not checked. But I will look at these counters to see what I have there.
-
-Hi,
-
-checking where are we with this thread and whether there is something to
-consider for v6.4, if testing succeeds.
-
-Thanks,
-Lorenzo
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBBcHIgMTMsIDIwMjMgYXQgMzo0OeKAr1BNIExvcmVuem8gUGllcmFsaXNpIDxscGll
+cmFsaXNpQGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gT24gRnJpLCBNYXIgMTcsIDIwMjMgYXQgMDc6
+MDk6MDRBTSArMDkwMCwgRGFtaWVuIExlIE1vYWwgd3JvdGU6Cj4gPiBPbiAzLzE3LzIzIDAxOjM0
+LCBSaWNrIFdlcnRlbmJyb2VrIHdyb3RlOgo+ID4gPj4+IEJ5IHRoZSB3YXksIGVuYWJsaW5nIHRo
+ZSBpbnRlcnJ1cHRzIHRvIHNlZSB0aGUgZXJyb3Igbm90aWZpY2F0aW9ucywgSSBkbyBzZWUgYQo+
+ID4gPj4+IGxvdCBvZiByZXRyeSB0aW1lb3V0IGFuZCBvdGhlciByZWNvdmVyYWJsZSBlcnJvcnMu
+IFNvIHRoZSBpc3N1ZXMgSSBhbSBzZWVpbmcKPiA+ID4+PiBjb3VsZCBiZSBkdWUgdG8gbXkgUENJ
+IGNhYmxlIHNldHVwIHRoYXQgaXMgbm90IGlkZWFsIChiYWQgc2lnbmFsLCBncm91bmQgbG9vcHMs
+Cj4gPiA+Pj4gLi4uID8pLiBOb3Qgc3VyZS4gSSBkbyBub3QgaGF2ZSBhIFBDSSBhbmFseXplciBo
+YW5keSA6KQo+ID4gPgo+ID4gPiBJIGhhdmUgZW5hYmxlZCB0aGUgSVJRcyBhbmQgbWVzc2FnZXMg
+dGhhbmtzIHRvIHlvdXIgcGF0Y2hlcyBidXQgSSBkb24ndCBnZXQKPiA+ID4gbWVzc2FnZXMgZnJv
+bSB0aGUgSVJRcyAoaXQgc2VlbXMgbm8gSVJRcyBhcmUgZmlyZWQpLiBNeSBQQ0llIGxpbmsgc2Vl
+bXMgc3RhYmxlLgo+ID4gPiBUaGUgbWFpbiBpc3N1ZSBJIGZhY2UgaXMgc3RpbGwgdGhhdCBhZnRl
+ciBhIHJhbmRvbSBhbW91bnQgb2YgdGltZSwgdGhlIEJBUnMgYXJlCj4gPiA+IHJlc2V0IHRvIDAs
+IEkgZG9uJ3QgaGF2ZSBhIFBDSWUgYW5hbHl6ZXIgc28gSSBjYW5ub3QgY2hhc2UgY29uZmlnIHNw
+YWNlIFRMUHMKPiA+ID4gKGUuZy4sIGhvc3Qgd3JpdGluZyB0aGUgQkFSIHZhbHVlcyB0byB0aGUg
+Y29uZmlnIGhlYWRlciksIGJ1dCBJIGRvbid0IHRoaW5rIHRoYXQKPiA+ID4gdGhlIHByb2JsZW0g
+Y29tZXMgZnJvbSBhIFRMUCBpc3N1ZWQgZnJvbSB0aGUgaG9zdC4gKGl0IG1pZ2h0IGJlKS4KPiA+
+Cj4gPiBIbW1tLi4uIEkgYW0gZ2V0dGluZyBsb3RzIG9mIElSUXMsIGVzcGVjaWFsbHkgdGhlIG9u
+ZXMgc2lnbmFsaW5nICJyZXBsYXkgdGltZXIKPiA+IHRpbWVkIG91dCIgYW5kICJyZXBsYXkgdGlt
+ZXIgcm9sbGVkIG92ZXIgYWZ0ZXIgNCB0cmFuc21pc3Npb25zIG9mIHRoZSBzYW1lIFRMUCIKPiA+
+IGJ1dCBhbHNvIHNvbWUgInBoeSBlcnJvciBkZXRlY3RlZCBvbiByZWNlaXZlIHNpZGUiLi4uIE5l
+ZWQgdG8gdHJ5IHRvIHJld29yayBteQo+ID4gY2FibGUgc2V0dXAgSSBndWVzcy4KPiA+Cj4gPiBB
+cyBmb3IgdGhlIEJBUnMgYmVpbmcgcmVzZXQgdG8gMCwgSSBoYXZlIG5vdCBjaGVja2VkLCBidXQg
+aXQgbWF5IGJlIHdoeSBJIHNlZQo+ID4gdGhpbmdzIG5vdCB3b3JraW5nIGFmdGVyIHNvbWUgaW5h
+Y3Rpdml0eS4gV2lsbCBjaGVjayB0aGF0LiBXZSBtYXkgYmUgc2VlaW5nIHRoZQo+ID4gc2FtZSBy
+ZWdhcmRpbmcgdGhhdC4KPiA+Cj4gPiA+IEkgZG9uJ3QgdGhpbmsgaXQncyBhIGJ1ZmZlciBvdmVy
+ZmxvdyAvIG91dC1vZi1ib3VuZHMgYWNjZXNzIGJ5IGtlcm5lbAo+ID4gPiBjb2RlIGZvciB0d28g
+cmVhc29ucwo+ID4gPiAxKSBUaGUgdmFsdWVzIGluIHRoZSBjb25maWcgc3BhY2UgYXJvdW5kIHRo
+ZSBCQVJzIGlzIGNvaGVyZW50IGFuZCB1bmNoYW5nZWQKPiA+ID4gMikgVGhlIGJhcnMgYXJlIHJl
+c2V0IHRvIDAgYW5kIG5vdCBhIHJhbmRvbSB2YWx1ZQo+ID4gPgo+ID4gPiBJIHN1c3BlY3QgYSBo
+YXJkd2FyZSByZXNldCBvZiB0aG9zZSByZWdpc3RlcnMgaXNzdWVkIGludGVybmFsbHkgaW4gdGhl
+Cj4gPiA+IFBDSWUgY29udHJvbGxlciwKPiA+ID4gSSBkb24ndCBrbm93IHdoeSAoaXQgbWlnaHQg
+YmUgYSBsaW5rIHJlbGF0ZWQgZXZlbnQgb3IgcG93ZXIgc3RhdGUKPiA+ID4gcmVsYXRlZCBldmVu
+dCkuCj4gPiA+Cj4gPiA+IEkgaGF2ZSBhbHNvIGV4cGVyaWVuY2VkIHZlcnkgc2xvdyBiZWhhdmlv
+ciB3aXRoIHRoZSBQQ0kgZW5kcG9pbnQgdGVzdCBkcml2ZXIsCj4gPiA+IGUuZy4sIHBjaXRlc3Qg
+LXcgMTAyNCAtZCB3b3VsZCB0YWtlIHRlbnMgb2Ygc2Vjb25kcyB0byBjb21wbGV0ZS4gSXQgc2Vl
+bXMgdG8KPiA+ID4gY29tZSBmcm9tIExDUkMgZXJyb3JzLCB3aGVuIEkgY2hlY2sgdGhlICJMQ1JD
+IEVycm9yIGNvdW50IHJlZ2lzdGVyIgo+ID4gPiBAMHhGRDkwJzAyMTQgSSBjYW4gc2VlIGl0IGRy
+YXN0aWNhbGx5IGluY3JlYXNlIGJldHdlZW4gdHdvIGNhbGxzIG9mIHBjaXRlc3QKPiA+ID4gKHdo
+ZW4gSSBtZWFuIGRyYXN0aWNhbGx5IGl0IG1lYW5zIGJ5IDY2MDcgKDB4MTlDRikgZm9yIGV4YW1w
+bGUpLgo+ID4gPgo+ID4gPiBUaGUgIkVDQyBDb3JyZWN0YWJsZSBFcnJvciBDb3VudCBSZWdpc3Rl
+ciIgQDB4RkQ5MCcwMjE4IHJlYWRzIDAgdGhvdWdoLgo+ID4gPgo+ID4gPiBJIGhhdmUgdHJpZWQg
+dG8gc2hvcnRlbiB0aGUgY2FibGluZyBieSByZW1vdmluZyBvbmUgb2YgdGhlIFBDSWUgZXh0ZW5k
+ZXJzLCB0aGF0Cj4gPiA+IGRpZG4ndCBjaGFuZ2UgdGhlIGlzc3VlcyBtdWNoLgo+ID4gPgo+ID4g
+PiBBbnkgaWRlYXMgYXMgdG8gd2h5IEkgc2VlIGEgbGFyZ2UgbnVtYmVyIG9mIFRMUHMgd2l0aCBM
+Q1JDIGVycm9ycyBpbiB0aGVtID8KPiA+ID4gRG8geW91IGV4cGVyaWVuY2UgdGhlIHNhbWUgPyBX
+aGF0IGFyZSB5b3VyIHZhbHVlcyBpbiAweEZEOTAnMDIxNCB3aGVuCj4gPiA+IHJ1bm5pbmcgZS5n
+LiwgcGNpdGVzdCAtdyAxMDI0IC1kIChub3RlOiB5b3UgY2FuIHJlc2V0IHRoZSBjb3VudGVyIGJ5
+IHdyaXRpbmcKPiA+ID4gMHhGRkZGIHRvIGl0IGluIGNhc2UgaXQgcmVhY2hlcyB0aGUgbWF4aW11
+bSB2YWx1ZSBvZiAweEZGRkYpLgo+ID4KPiA+IEkgaGF2ZSBub3QgY2hlY2tlZC4gQnV0IEkgd2ls
+bCBsb29rIGF0IHRoZXNlIGNvdW50ZXJzIHRvIHNlZSB3aGF0IEkgaGF2ZSB0aGVyZS4KPgo+IEhp
+LAo+Cj4gY2hlY2tpbmcgd2hlcmUgYXJlIHdlIHdpdGggdGhpcyB0aHJlYWQgYW5kIHdoZXRoZXIg
+dGhlcmUgaXMgc29tZXRoaW5nIHRvCj4gY29uc2lkZXIgZm9yIHY2LjQsIGlmIHRlc3Rpbmcgc3Vj
+Y2VlZHMuCj4KPiBUaGFua3MsCj4gTG9yZW56bwoKSGVsbG8sClRoYW5rIHlvdSBmb3IgY29uc2lk
+ZXJpbmcgdGhpcy4KClRoZXJlIGlzIGEgVjMgb2YgdGhpcyBwYXRjaCBzZXJpZXMgWzF8LCB0aGF0
+IGZpeGVzIHRoZSBpc3N1ZXMKZW5jb3VudGVyZWQgd2l0aCB0aGUgVjIuClRoZSBkZWJ1Z2dpbmcg
+Zm9sbG93aW5nIHRoaXMgdGhyZWFkIHdhcyBkaXNjdXNzZWQgb2ZmLWxpc3Qgd2l0aCBEYW1pZW4g
+TGUgTW9hbC4KVGhlIFYzIGhhcyBiZWVuIHRlc3RlZCBzdWNjZXNzZnVsbHkgYnkgRGFtaWVuIExl
+IE1vYWwgWzJdCgpJIHdpbGwgc3VibWl0IGEgVjQgbmV4dCB3ZWVrLCBzaW5jZSB0aGVyZSBhcmUg
+bWlub3IgY2hhbmdlcyB0aGF0IHdlcmUKc3VnZ2VzdGVkIGluCnRoZSB0aHJlYWRzIGZvciB0aGUg
+VjMgKG1vc3RseSBtaW5vciBjaGFuZ2VzIGluIGNvZGUgc3R5bGUsIG1hY3JvcywgY29tbWVudHMp
+LgoKSSBob3BlIGl0IGNhbiBiZSBjb25zaWRlcmVkIGZvciB2Ni40LCB0aGFuayB5b3UuCgpbMV0g
+aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtcGNpLzI5YTVjY2MzLWQyYzgtYjg0NC1hMzMz
+LTI4YmMyMDY1Nzk0MkBmYXN0bWFpbC5jb20vVC8jbWM4ZjI1ODlmZjA0ODYyMTc1Y2IwYzkwNmIz
+OGNiMzdhOTBkYjBlNDIKWzJdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBjaS8yOWE1
+Y2NjMy1kMmM4LWI4NDQtYTMzMy0yOGJjMjA2NTc5NDJAZmFzdG1haWwuY29tLwoKCk5vdGVzIG9u
+IHdoYXQgd2FzIGRpc2NvdmVyZWQgb2ZmLWxpc3QgOgoKVGhlIGlzc3VlcyByZWdhcmRpbmcgQkFS
+IHJlc2V0IHdlcmUgZHVlIHRvIHBvd2VyIHN1cHBseSBpc3N1ZXMgKFBDSSBjYWJsZQpqdW1waW5n
+IGhvc3QgM1YzIHN1cHBseSB0byBTb0MgM1YzIHN1cHBseSwgYW5kIGFyZSBmaXhlZCB3aXRoIHBy
+b3BlciBjYWJsaW5nKS4KYSBmZXcgTENSQyBlcnJvcnMgYXJlIG5vcm1hbCB3aXRoIFBDSWUsIHRo
+ZSBudW1iZXIgd2lsbCBkZXBlbmQgb24Kc2lnbmFsIGludGVncml0eQphdCB0aGUgcGh5c2ljYWwg
+bGF5ZXIgKGNhYmxpbmcpLgoKCkJlc3QgcmVnYXJkcywKUmljawoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
