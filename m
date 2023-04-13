@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E0EC77B6E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 15:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 301E6C77B6E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 16:12:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Subject:Cc:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XbOYMEaBiTmb+hbg634KMJ6wcIFjkGVq1yhPQsRU7xI=; b=sxrunFYeGeVeo7
-	Mfo1RBl5c3ItpjnjDuYRM5dJDjhr321EvcROyBQLfJnH65O+jdJHkZflUw5zbX/js44yJ1Tsl8bEY
-	ULPirc+hdZ/b8FFH02KvM8FfJADOvtJhqNQABUABbk7UszwMF+YlgzHSioySiZL3IySTAHIotRai5
-	KrMaxf4ReS5RddCZfnK2erpLLbYzsJFdwgWYfWSdSEXXeG93/CmKWuqSp7Bkc7xpbOqUC3rVhbaqN
-	mPUDATnDl6vMbQ0sWRMLwPU6XR34j3JNfnIhO8GyvupbCEJuVMCMKkznpb1nT8NBTxlKKb+FnseS8
-	I+CKqJHnX7lrbxn7zWLA==;
+	List-Owner; bh=14qTKeluuSdNzqOUGZPpf7GXqfS1aYlACPCOm5uTFSs=; b=YyY54X6FHTDtc5
+	Wumy7L6gj9/djiARhJ+3ulU82OXVwcUwpX3Q7IBCGUCEa26A9jq99GcA5eLA0QRs7CYMxXMcGeeGD
+	yxUVY2xfwb4lmXIHjbnHMO5FOW5JZizP3w/RfnvnyLOMQDg7w4VcMOLXAPk0hsfIX9AenjhC40eDl
+	c8hHfA7Vtm6kf504pjGKG3eE5z8M2yjvMmuPJ5CAkh0KTXNh9itgTXxKMOoeFCJXYHY5eytpO72LV
+	qGyUdIq7LqAzEO1anO2vtUjUecB7DeI4Zsa5t7/iHzNaKZ5o8zEvSLV8RW+243P5j9pc3/Av0o5m8
+	qliIb0WylPhPk2wiupgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmyrD-006Vbw-2y;
-	Thu, 13 Apr 2023 15:27:31 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1pmzYE-006bYa-0v;
+	Thu, 13 Apr 2023 16:11:58 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmyrB-006VZt-0f
+	id 1pmzY8-006bU2-0C
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Apr 2023 15:27:30 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-1878504c22aso4767395fac.8
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Apr 2023 08:27:24 -0700 (PDT)
+	Thu, 13 Apr 2023 16:11:53 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id xd13so4819666ejb.4
+        for <linux-rockchip@lists.infradead.org>; Thu, 13 Apr 2023 09:11:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681399644; x=1683991644;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=CUK8UGSHUoiocToUShwFZ6IjnlM5/4ZHnGe4gLnESU0=;
-        b=aeAwlhfbuxDEmGLzmr4qn1sIPbcsAKVCFKFu5pGfong4RuRbDlQ09tEYt4hkfk40Ey
-         cpSkNpSfAF+AbEEbTQeftznc0uVFDpip6Uo1L16NAnp98MBcBEtetImhHGqCiZ8g5pez
-         cD5FrL8Fol+jaO0r9YMWrQiZbQRnXPRStccPuQo1yX5GvLjv03fZPRegLUpQOELRFZWM
-         cPRpK3Ln+iUCDTrPCFr2Q4dkfO18MoGSPcY8fWCCuKpjMC/KlzYU8kNTryN3FMyFZWZb
-         RrfFxTJGoZx2Le2OwVbcCEyAwdtgr1WB1zn7Tdl9EzsG6dlCnOswkKdx6yoFoGlIjLZP
-         PqHw==
+        d=linaro.org; s=google; t=1681402309; x=1683994309;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=SbVnJjK+PB772pYnknlZK9wnUbYBaN9qse3IlUBuCzs=;
+        b=UahYXf0feyrrLrSXPnMPRxws4s0dn3vMlu9FYF4QFhxTW44A/T/t05a5yaOPQ3IBT3
+         CiiX8sX9J4c19T0iOl6JzjcrRaqhdTvgmMH3WxghBQUz7jWQi6akMxcBDYfK4jcaBsaZ
+         mQhXAifS6W8lI+r+UeWAapTvEFoyes/gFx32Jhco+hvAojjURtsj+wkBd5Rh1sCuEBOl
+         7I5hkBPYGQGaK+M4zatZsiplLruusP2qhtFm+VQcBxrGM1mlpkzBkBSDP/FUtkhd8sE1
+         8t++hScZrntWfvlxiAO/kIBRndgQtJL3oxX0HPoKd3dGmgLCSHVBwehLfTcnhN5T/xPZ
+         mKhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681399644; x=1683991644;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CUK8UGSHUoiocToUShwFZ6IjnlM5/4ZHnGe4gLnESU0=;
-        b=ensrvKvybYyKq8XRqfbUpu1lilQR2RRKXU+1bBumu0DfePW3gQHW3nR0fGtb6AvrRQ
-         s8ggggAhv+bEYVMLv8gULsxlARnZt1qJrThYB0UvoXOueJEDOzhd8ddgDCZ83R5ZZpeZ
-         /WDNU/U4OUE7Cn1+PbmPBhHoA98KRf++nO7J1aWiUyFrwo068Dd3E5+yyOlnJcs2GAKl
-         RqqRJ07hOVr1SSrFqCKGNYZn4VbuRqNJpoz49k1y5CARvKY5Ue8JX+nTEYv9nlEWjj7q
-         Uytn27GxluT43s33TPypdJ90Eg6v2cdiVMElGRcGt+uDYeTVPDDmKNyJEDhCYOWnEPPI
-         BKrw==
-X-Gm-Message-State: AAQBX9eNX6GcLSpgELhKhujFM4XIXCu4PH4WYwKxgH5wbfknNBxEUPvW
-	tJeiB9uhxxYa6E2fB/chB+c=
-X-Google-Smtp-Source: AKy350bz179FxBnltSYj2CIpmACrhB4CeMl7xmLodBy6+1eemMwFHEBVzU8OfoLpGLRd7geQvNvWqg==
-X-Received: by 2002:a05:6870:210:b0:187:87e3:1247 with SMTP id j16-20020a056870021000b0018787e31247mr2186944oad.43.1681399643830;
-        Thu, 13 Apr 2023 08:27:23 -0700 (PDT)
-Received: from neuromancer. (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id r4-20020a056870414400b0017ae909afe8sm793608oad.34.2023.04.13.08.27.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Apr 2023 08:27:23 -0700 (PDT)
-Message-ID: <64381f5b.050a0220.1533e.41e2@mx.google.com>
-X-Google-Original-Message-ID: <ZDgfWQKFBMeDrqVu@neuromancer.>
-Date: Thu, 13 Apr 2023 10:27:21 -0500
-From: Chris Morgan <macroalpha82@gmail.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	=?iso-8859-1?Q?K=F6ry?= Maincent <kory.maincent@bootlin.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: vop2: fix suspend/resume
-References: <20230413144347.3506023-1-s.hauer@pengutronix.de>
+        d=1e100.net; s=20221208; t=1681402309; x=1683994309;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=SbVnJjK+PB772pYnknlZK9wnUbYBaN9qse3IlUBuCzs=;
+        b=f4ctmA850CnzIbBRMk9+rRVeoOJN/NJMR9LMXn/urE3ymCu7ZjzHIb2X5zK1dT3Ugh
+         ZC68H31pdfVZ+QoCOphotgdMrQlxjCgViJYGKH7Sz+xNawlRYYF3MP9i3i4VtrISejVF
+         dCQ6gK/k1tPt3lVnoV1pBmoTws517Xia8M2pAdD2uETkzFgq+kGUGAO3tzpJFq/yq1Vy
+         WdLWyqgWnOQ6sOtUBYQ38El9BLPI6PIvW6fIWCrJaTOVMtZtCb/7i5u+n3oeVxIhfVyB
+         SZZwXtrn6r1eVvnCmIIgOdUES2qulzgz8Mh4UKWewYR/Pzgb7eywp8ir0Lm8rHbdQJGq
+         Ig5Q==
+X-Gm-Message-State: AAQBX9css83Ai+EoeAl11kDGYVhyRXwR4VgHMaVcoGKiG5zBDptIGfuk
+	TsVMyQhXY+d0qBxet4Tb0EmI4Q==
+X-Google-Smtp-Source: AKy350aLhdVzeZnAveuwnehn2FcS0a//QQGJZJFK26Vetabdq21GE3OUskbeU5SKq9Xj1qW3+lXcmg==
+X-Received: by 2002:a17:906:7109:b0:931:85f8:6d00 with SMTP id x9-20020a170906710900b0093185f86d00mr3328716ejj.47.1681402309228;
+        Thu, 13 Apr 2023 09:11:49 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:5032:d2d4:ece5:b035? ([2a02:810d:15c0:828:5032:d2d4:ece5:b035])
+        by smtp.gmail.com with ESMTPSA id gv16-20020a1709072bd000b0094a785e362dsm1203912ejc.141.2023.04.13.09.11.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Apr 2023 09:11:48 -0700 (PDT)
+Message-ID: <93a34302-282e-0d3a-e7bb-b692eb2d78c6@linaro.org>
+Date: Thu, 13 Apr 2023 18:11:47 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230413144347.3506023-1-s.hauer@pengutronix.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH] arm64: dts: rockchip: Add pinctrl gpio-ranges for rk356x
+Content-Language: en-US
+To: John Clark <inindev@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Peter Geis <pgwipeout@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230413144316.4247-1-inindev@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230413144316.4247-1-inindev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_082729_295839_ECAB1126 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20230413_091152_150252_4C7928F5 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +97,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 13, 2023 at 04:43:47PM +0200, Sascha Hauer wrote:
-> During a suspend/resume cycle the VO power domain will be disabled and
-> the VOP2 registers will reset to their default values. After that the
-> cached register values will be out of sync and the read/modify/write
-> operations we do on the window registers will result in bogus values
-> written. Fix this by re-initializing the register cache each time we
-> enable the VOP2. With this the VOP2 will show a picture after a
-> suspend/resume cycle whereas without this the screen stays dark.
+On 13/04/2023 16:43, John Clark wrote:
+> Add gpio-range properties to the pinctrl gpio nodes in rk356x.dtsi
 > 
-> Fixes: 604be85547ce4 ("drm/rockchip: Add VOP2 driver")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Signed-off-by: John Clark <inindev@gmail.com>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index ba3b817895091..d9daa686b014d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -215,6 +215,8 @@ struct vop2 {
->  	struct vop2_win win[];
->  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> index 802fcc96384e..793dbcb981dc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -1796,11 +1796,11 @@ usb2phy1_otg: otg-port {
 >  
-> +static const struct regmap_config vop2_regmap_config;
-> +
->  static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
->  {
->  	return container_of(crtc, struct vop2_video_port, crtc);
-> @@ -839,6 +841,12 @@ static void vop2_enable(struct vop2 *vop2)
->  		return;
->  	}
->  
-> +	ret = regmap_reinit_cache(vop2->map, &vop2_regmap_config);
-> +	if (ret) {
-> +		drm_err(vop2->drm, "failed to reinit cache: %d\n", ret);
-> +		return;
-> +	}
-> +
->  	if (vop2->data->soc_id == 3566)
->  		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
->  
-> -- 
-> 2.39.2
-> 
+>  	pinctrl: pinctrl {
+>  		compatible = "rockchip,rk3568-pinctrl";
+> +		ranges;
+>  		rockchip,grf = <&grf>;
+>  		rockchip,pmu = <&pmugrf>;
+>  		#address-cells = <2>;
+>  		#size-cells = <2>;
+> -		ranges;
 
-I confirmed this works on my Anbernic RG353P which uses the rk3566 SOC.
-Before applying the patch I displayed a color pattern with modetest
-before suspend and it appeared correctly. Then I suspended and resumed
-the device, attempted to display the same color pattern, and only got
-a single pixel on an otherwise blank display. After applying the patch
-I performed the same test and the color pattern appeared correctly
-both before and after suspend (and the display was no longer blank
-after resume from suspend).
+Not related to your patch.
 
-Tested-by: Chris Morgan <macromorgan@hotmail.com>
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
