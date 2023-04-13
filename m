@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AB8C77B71
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 18:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A65C77B61
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 18:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ONwxrMJB9Agvcz1Nw6O7Hzzi+dWWWhlnFJXhbyVWMxw=; b=erAYyacEV3OeOM
-	bQD4/dLbtXc35orDwawoAGAHTS9/QlkHO/KrmFPivumgGRKWSaKo8/lVWGBLp5aJKOPEOd+4m5EsT
-	7uF+jk3JS3qEdfKLslLKC/MGy5X+Yas4aNtl7k69n9CDjF1fkfQufxWT/VmjzFGe4UjQpPMxDjUu+
-	xSXin4/WezY3DS7jCN86Y9A22H8bR4DULj3GOiqUjRSW8RPtl8PedbaWqWXGyJjieDrr3kA2o7LYA
-	QqBF/DA0GRL1JktWpwOUimrqm3TV74zRrAuC1Nnxcoa09u89INIRUeTP4FruxbaYUITRmTRWHzZmp
-	P23pboWQrkxykwRmjC2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=drZE1rlHwM0BWnCeWM3ohSgdvuaiKfvNt1j2e7DXB/U=; b=bwLIEiMDEwbucT
+	iw0twrGb7BlDBeDYBqA2SxkjjpQJ67OrrjVTbH8Y6WUs5y4DjaKBAJFbIImBDx9v71G9glWGpME/9
+	7WESkEE1FKPFpPDnAn3u5Zjz8t1KTvPnXmkkf/bKUKtOSPAXazSbal1mrHsofXEwZi7xk2CZAF34u
+	5C8lmhbzYrPLD12KfRfxsK2zOhEuWTwVDzNLwnoHmSyoJz1ChuZIINsoPLgONDPIqVK9MdJXeZAYE
+	/D2Fl726HacG7woBXZV2G7zjQKuWd9ji1xPS8UpsmWSBqwovkXgHZ7K10DO4QMN6U/TBg9E1vZiZQ
+	1ZlTKFbyjr4+ExphWx0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn1c5-006twJ-39;
-	Thu, 13 Apr 2023 18:24:05 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pn1bz-006toR-1M;
+	id 1pn1c2-006tts-2z;
 	Thu, 13 Apr 2023 18:24:02 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pn1bz-006toS-1C;
+	Thu, 13 Apr 2023 18:24:00 +0000
 Received: from jupiter.universe (dyndsl-091-248-212-251.ewe-ip-backbone.de [91.248.212.251])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 57910660321D;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 64B11660321F;
 	Thu, 13 Apr 2023 19:23:51 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1681410231;
-	bh=KE/Qh2dz/391cip/CPeIBTyPxaiySIGR7XU//jF9HQ0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BLL+poNly6f3IBlk3AcHxjpOJ8gIQE2cGE4I6Xg1ZFICMpx1DyZUTlpHA+IUtO4hJ
-	 kCZbWdMjfXNjAgcx/JbDOatnmGbyWSZXPW5qG54p7HUJHRqE4deVIBld/FouDB2Ki0
-	 M0uO0E06O/+8f+ROutsz3y42AeShpdj/HORVnBWjn/5K9k91zRQ/TC//tvP8w11COD
-	 HKG7PivvGp93lzC9lqw6xk+mIOIX7gaIG1/yBJQ3XVUWflmgBdxsASaN2clW4zfaq3
-	 sxyPYMDcFM80u21UXU2UzLqLucuLRXRoCz2siDHI/1q5EvtMuOCp9dd4xROp6dRgGK
-	 68pN6ewd0rHMA==
+	bh=ceCvJVoRaeOT7KtfXBOMzQenfXD9/YcDHtgkd0grO5I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=V7dptM9E0HGv6p1NV98J9w4RK9Ya0ZECp3BZfgwBAI6ZXkHy+BswJiqcA1ruuNVr8
+	 9GuybvbDaFC2+Jd2RsxTK1lsIAmqAjxkxSoql56znB+2eE1/T9Ru5EQR9wIMt9vlRh
+	 tdAyw1bwnHZfDWrQ7RumJ3ncS6ov4lHh9qnvFdEH9d27+hhr/bPV5pi6M3gskuWXBS
+	 7Xy/uv40SUvVjFZwliogCmO9pUCpIJ5MFKOTObDRbMK+670ka6XmKDDyFIJa/b2ynJ
+	 Lv+JDFimRO/ymRIeOiRhafdAGgQEEZj+lCTwsBQuP96uwheTtzXz0W+vYacLp4Jh3O
+	 gjXrv/TvSaIgg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8CA424807EF; Thu, 13 Apr 2023 20:23:48 +0200 (CEST)
+	id 8812A4807E2; Thu, 13 Apr 2023 20:23:48 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -60,16 +60,14 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCHv1 2/5] dt-bindings: ata: ahci: add RK3588 AHCI controller
-Date: Thu, 13 Apr 2023 20:23:42 +0200
-Message-Id: <20230413182345.92557-3-sebastian.reichel@collabora.com>
+Subject: [PATCHv1 0/5] Add RK3588 SATA support
+Date: Thu, 13 Apr 2023 20:23:40 +0200
+Message-Id: <20230413182345.92557-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230413182345.92557-1-sebastian.reichel@collabora.com>
-References: <20230413182345.92557-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_112359_631489_4686E7B8 
-X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-CacheID: sfid-20230413_112359_559667_489A6D2A 
+X-CRM114-Status: UNSURE (   8.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,62 +85,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Just like RK3568, the RK3588 has a DWC based AHCI controller.
+Hi,
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-FWIW IDK what exactly the ASIC clock is. The TRM does not provide any
-details unfortunately. It is required for functional SATA, though.
----
- .../devicetree/bindings/ata/snps,dwc-ahci-common.yaml       | 6 ++++--
- Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml    | 6 ++++--
- 2 files changed, 8 insertions(+), 4 deletions(-)
+This enables SATA support for RK3588.
 
-diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-index c1457910520b..0df8f49431eb 100644
---- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-+++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-@@ -31,11 +31,11 @@ properties:
-       PM-alive clock, RxOOB detection clock, embedded PHYs reference (Rx/Tx)
-       clock, etc.
-     minItems: 1
--    maxItems: 4
-+    maxItems: 5
- 
-   clock-names:
-     minItems: 1
--    maxItems: 4
-+    maxItems: 5
-     items:
-       oneOf:
-         - description: Application APB/AHB/AXI BIU clock
-@@ -50,6 +50,8 @@ properties:
-           const: rxoob
-         - description: SATA Ports reference clock
-           const: ref
-+        - description: Rockchip ASIC clock
-+          const: asic
- 
-   resets:
-     description:
-diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
-index 5afa4b57ce20..c6a0d6c8b62c 100644
---- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
-+++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
-@@ -23,9 +23,11 @@ properties:
-         const: snps,dwc-ahci
-       - description: SPEAr1340 AHCI SATA device
-         const: snps,spear-ahci
--      - description: Rockhip RK3568 AHCI controller
-+      - description: Rockhip AHCI controller
-         items:
--          - const: rockchip,rk3568-dwc-ahci
-+          - enum:
-+              - rockchip,rk3568-dwc-ahci
-+              - rockchip,rk3588-dwc-ahci
-           - const: snps,dwc-ahci
- 
- patternProperties:
+-- Sebastian
+
+Sebastian Reichel (5):
+  dt-bindings: soc: rockchip: add rk3588 pipe-phy syscon
+  dt-bindings: ata: ahci: add RK3588 AHCI controller
+  dt-bindings: phy: rockchip: rk3588 has two reset lines
+  arm64: dts: rockchip: rk3588: add combo PHYs
+  arm64: dts: rockchip: rk3588: add SATA support
+
+ .../bindings/ata/snps,dwc-ahci-common.yaml    |  6 +-
+ .../bindings/ata/snps,dwc-ahci.yaml           |  6 +-
+ .../phy/phy-rockchip-naneng-combphy.yaml      |  7 +-
+ .../devicetree/bindings/soc/rockchip/grf.yaml |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 44 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 90 +++++++++++++++++++
+ 6 files changed, 149 insertions(+), 5 deletions(-)
+
 -- 
 2.39.2
 
