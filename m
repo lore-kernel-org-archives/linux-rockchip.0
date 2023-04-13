@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ECA9C77B76
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 09:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04840C77B76
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 09:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RfkGbQXX7J5B9rm19W0VL2p+BuKHRNp/uiKzS0VHt4s=; b=byYZJeK07y6kph
-	ywlGcf6k3g0IXhpe6M4s/fcbpfOwrDXJ6mTBA5qbQ7XBCce5D2Gm5hENBdiXYdjONaBd4w1Lnqpw7
-	gw2jpoWt8Wiyc8mJvsuJqWxPCmAw4TgVQdKyh5iSNYcnW3ojmQupBXWj1oJ/izCJiHe7SJ+REs+GL
-	YV8D3tjxFQbN62AwXuNnkNuuWXOtsdwJQ/WEor5f9EwZB/55XANvccX5dlNkcO+ITu31Ao+doWxQA
-	NnAyEtLYHkXNFg2x8BsXJpyCXxsAd+8slBURXJ+CuGIRgzqIwMsYiHqqxhjoSYrU5Zj6bpRDm+kFg
-	KSY1hPMmrK2+PQ6OnZwA==;
+	List-Owner; bh=3nJscudM+Mtek8v0f8SgwE7/SOo1g8VVcvcsJq3Z/dQ=; b=uqWfohLKCDQU62
+	GO0d8P8dMktrQVRjQWUKy0kZ4iMUlgKfSAI2VoBHCbFiM7o4XcHHtM31VPJk5k8Yk31gZAwVQEj0z
+	rflFxFSKFOxhfZu5oJu0r8/6R7Q5X5wL0b2xVuhyY86AKs/QkKc+e4RIONDLbRSs8Iv/IVSADqHK8
+	k7iY8tFS6nlWRimaLVUyTztEYHLApBEh6Bi2Lnz3FC+TnlEws699GWOY4gt0lwRhFxAVSLEFm1PW7
+	SLihI8cJAXbwQVnKhTUTzdwb1i7Z4HvPpG27TVcFwKr1LS+EBDNuTwgafKlNMrhG/lFj3U+ALMdDu
+	Ke0uFCpiXwo2AJ/NqnyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmt3z-005Yqm-2A;
-	Thu, 13 Apr 2023 09:16:19 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pmt3u-005YmJ-22;
+	Thu, 13 Apr 2023 09:16:14 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmt3r-005Yhg-0m;
-	Thu, 13 Apr 2023 09:16:13 +0000
+	id 1pmt3m-005YgP-37;
+	Thu, 13 Apr 2023 09:16:08 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 38488660324E;
-	Thu, 13 Apr 2023 10:16:08 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 686856603214;
+	Thu, 13 Apr 2023 10:16:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681377369;
-	bh=a2I5H+WB1TxkrH1dm3ImGJqhxgziFp5hG0P83Gvt+Uc=;
+	s=mail; t=1681377365;
+	bh=qah/T196BBIHxHtwXK40dRiVKbEiqh7RkQIU3gbUUsM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q18crtWI1odfN366x9o53ws3e+MnEQT6FIvedD5i+VWR2vewrdGKlf43dVcGqw04t
-	 XznBqqroiZ8YTSeaDFxRrXyyeKj2l/H4y36pduD2W1FtgBxd+W7/CO8aVoEYShCyRm
-	 BvOvsQUIiL9KiE+GhwtlXWBrWaSQSGQt7KCxERrPJ7XEwbDa5fOl3PSxo5vay2ETCX
-	 u0Trze7n+HKY78/tDkgeuG6wK8PdVACZnnzR2aha9NYcNJP7rQ+Vl1ullBDWQAFngZ
-	 Cp/EHk9Xzbgb59oXGVEYYucZK3NLHMLOzA7A0z6OQus8PnSYkQbIeomblE+hRBL3+B
-	 t3Rp8qUJKpBaw==
-Message-ID: <c0ed53c9-0a52-f4e9-eb37-e4ebfda6e4ed@collabora.com>
-Date: Thu, 13 Apr 2023 11:16:06 +0200
+	b=Jc1+AQBL2TvYa0Qw4gP+JH+WlYX8F85rIMRgmuIDaHiPogKRrsnjuzp+KDjghSt4W
+	 6Uo5CDIsoGkLwEeYUMxOBZF4CkGPt8v7/xe2zJ9y2ALgkGAQ3TyyOvFy1Jo6QCne+r
+	 FSDDWAj42ApXQq/Rfc3hlnf2Ku9ioOh1fBf/A7NznDr2EOcAXyXrHYTZ9DLU6N03mj
+	 egDDO8IJDViAzItFMFbrtOt02jUrknP9r6pw5h0dxsjy3uKHjo5sdoaC7n8KED3IOa
+	 zf/q3DpjWWwDVAFDRNb4FI0tPchaboIXvUFUKLYNyQCtg0S6nRX+n3Us+c0+Cvh/jt
+	 2x3Y3vH8HBcPg==
+Message-ID: <a4811a5e-704f-6b66-9f1c-3e40f54a462b@collabora.com>
+Date: Thu, 13 Apr 2023 11:16:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v6 05/13] media: verisilicon: Get bit depth for
- V4L2_PIX_FMT_NV15_4L4
+Subject: Re: [PATCH v6 07/13] media: verisilicon: Check AV1 bitstreams bit
+ depth
 Content-Language: en-US
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
@@ -59,12 +59,12 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com
 References: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
- <20230412115652.403949-6-benjamin.gaignard@collabora.com>
+ <20230412115652.403949-8-benjamin.gaignard@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230412115652.403949-6-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230412115652.403949-8-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_021611_411706_2F6F09F3 
-X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-CacheID: sfid-20230413_021607_145574_10646275 
+X-CRM114-Status: UNSURE (   7.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,8 +83,11 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Il 12/04/23 13:56, Benjamin Gaignard ha scritto:
-> Let's the driver knows that V4L2_PIX_FMT_NV15_4L4 is a 10bits
-> pixel format.
+> The driver supports 8 and 10 bits bitstreams, make sure to discard
+> other cases.
+> It could happens that userland test if V4L2_CID_STATELESS_AV1_SEQUENCE
+> exists without setting bit_depth field in this case use
+> HANTRO_DEFAULT_BIT_DEPTH value.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
