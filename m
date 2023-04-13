@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 983A7C77B61
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 08:03:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B7ECC77B6C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Apr 2023 09:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qfjdvfu9IQu6sYr2NzQtWXIsW3gT09t8gYAVic6ia6Q=; b=0VWOyMOdY2vXK3
-	5idc2abCcGLHvY67MgaBRmJ9f3G0RmLoGgYkfBgevsIFKO0lwAVoArJi6+UdcgqkuXg4kdX3Q+tQ/
-	3y0FMyA8gK+zQrRl79f9kYi7b9Mc5fBWw177VUI2TvjYWz9isRpBkK4S8wLNbZXtHePwGPLRZoUMi
-	M0w9hh6zAFRCFWCo7t1zxWtpeQdeqcIHe0Ae2IBff3kEAaIbYDdnFvLgt8w091IQJPHzz5jNWuITk
-	8awaEB2FkmiuEBWCDqJ99KsC3ETG2CPrQH2nJgd3cDqqI9OHE+SQKirahsNzSjbQ3kFWUJ6J9paoh
-	VV3xWDtJ+4df1sSFMMpA==;
+	List-Owner; bh=3u/jmweEHEUAL+oNCwVmT2VABtGTJKWWHCKM4uhs8bU=; b=n2dgHefs51O8L/
+	LRTmL0AyTy8WxEIyF6tntRHQVR7o1RT4xrCig9QbW+pXg2/CoaKKG98aWLb6xL5cdWXYMVAoX99Dq
+	ncyIe9DgLx6WSvIM5P1Rqec/R5GQWQJ39vNMDOJt6IcgyWrvrqxDPy6SV3NFFNWkpTSl0Mu1buAh7
+	OW8oYyilMlYQEofFP/JosP4ynebMneY18jF7TaDCZONXUr36MUXH7wl3wde4n4XIafzrBsY/kPEIJ
+	FPawKZHtrpFI595wqhYOCi3ylQNR+1bI7jNqLpmucXIOJjcMP6pGl5vvJmHM+sGWj8uBIELp5FAVo
+	RAOXD/rd3qiqAYXp+FUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmruv-005MDk-1f;
-	Thu, 13 Apr 2023 08:02:53 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1pmt3m-005YgT-2P;
+	Thu, 13 Apr 2023 09:16:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pmrus-005MD7-01
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Apr 2023 08:02:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1681372962; i=frank-w@public-files.de;
-	bh=mZlPDgocA8VTA9B5DWXq1skvgTTMqptaY2EqKSTXcgM=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=JdSCKoNyYEzc86GW2u8ylByGug0UTQgjYACcH3fUImXEWcJwdYLDzIIGrH7hh1atd
-	 CgAirhYm3BgFYrt8Umyh69/0NYPaSCD94UPxDsIpHeoDFsqWwuy2zKW2ahq14HSnme
-	 ITakW6rSaGXwnJ7V9+jJnqSaJ97AEqWC/Pegx+C95itoLN7RXvly00g7nPfp75yVN3
-	 dfYBa2kkvKuYAZ4ABWBVEARFI1wFK+GcLN3OWYalA/0kKEl6cc+xVVDbXGnqcL3oO4
-	 V/p3GoFSyyxGUN2hgmpRk1W5MDki9FEts2kH8UHnxa745jonK7Dv3kYiXiLrJyXfyE
-	 Z6f1SxLlSUInA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.77.65] ([80.245.77.65]) by web-mail.gmx.net
- (3c-app-gmx-bs48.server.lan [172.19.170.101]) (via HTTP); Thu, 13 Apr 2023
- 10:02:42 +0200
+	id 1pmt3i-005Yds-21;
+	Thu, 13 Apr 2023 09:16:04 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8D14A6603207;
+	Thu, 13 Apr 2023 10:15:59 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681377360;
+	bh=Wt9eQea6Ljg+YXnJ8eD/gvOlKDFcwoBLOrVG37MEhnI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NxnKfE3lF95+Q80F4uOtnJx/PctJKJP14ZNpTb7X2SaIKLgdyvBrecyljqmSEXXMR
+	 KiIqKbYXa+JMIMaFhMWjWuPlSyUiC0JQ7eF2Ju1mRpruw6d++1D9NIcl6XznYMVH+c
+	 hjuK9iDsW0VJKoCNAGv9tFoDZreqbJJHby/MKyKbg+4GFK+6X54LrEOv7lR6iA3BFC
+	 KcS2DJyZjk7DEeRRM0cGO+oyteSRgqTWjCT8YGnF2wDFAoY8MDqyEvXN+qZqBMlEp6
+	 AfGsuYuq4znHxfjyd8Dvp6UsRYl2jBXx6AXqZapbKqXbPXw7nIDa5B3lRcZNkh3mrm
+	 iYaIs1lPmfDRQ==
+Message-ID: <f70e622c-9202-b0da-fa62-fda6db5b5173@collabora.com>
+Date: Thu, 13 Apr 2023 11:15:56 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-e69c6c48-49c2-4100-a241-af7fc413decb-1681372962162@3c-app-gmx-bs48>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Johannes Zink <j.zink@pengutronix.de>, brewer.doug@gmail.com
-Cc: linux-rockchip@lists.infradead.org
-Subject: Aw: Re: Problems about NIC, PCIe and usb on RK3568 EVB
-Date: Thu, 13 Apr 2023 10:02:42 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <57c88a52-c051-4297-22e0-2188cc65a058@pengutronix.de>
-References: <ZDeZTWWIW2I4H7Sc@www.com>
- <57c88a52-c051-4297-22e0-2188cc65a058@pengutronix.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:TFXeBEV3DA50YNv/+/Q76SKUSC8yPdruk/G/oYuIdxyGbFzj0tmA/1F0O453rLYpD/cm+
- G/BHhfx1LEExttUkSsyfHRJlzAiOc1BbcAZuAjucWeODPZy7YCHSuA7F8iMzqANhC9EejkGFxSHr
- pMOAIcDOuQhwX4Zw64DsnSwS3I0s23UmBQFkofFKes33F+2+OCc+MMXVRwHCWNYckwUcov+B5BW8
- kG+qftv/vxJKQpnEY4Ug6VXMn8kmLIAiFZ6/5T4hXslCxMDu0WpnRiq4bZcdUCda46euYGIWJslL
- oU=
-UI-OutboundReport: notjunk:1;M01:P0:q362nWhJL70=;wNjGf67xYXuRuqehcj1f85fGD97
- D+c6DLG8JxIBBFl0+y/7BMsUKAgORm+ziF7NgvRHGou5RwzfZyzdk0ECbw4tRuDxfWo7+f/Jj
- 2yeMLyVkjB/QcP49cBW5HUiTh+0kZ5VQO7VtfSx2PoSPHBPFXOdRKK9D1qcYsmjkodwHWiWXJ
- lulcZ6WdeMPjOYg6YuYk5vAlVvT40vmusV+OWEuajAAZOjRSzMGr52gvixQN0jnRiQYGs5GSc
- Pll5uJEzn65g1JN9ImqBHTZC82RS692jA16ncxW7OPvuaJPKD0nVz5lcI1jb8my4yz6vlEwgn
- un92gQ+mv/JmwhvZtQq/bfw6mN3x/fRdSkBKmfMNd0IZb79YAyYp7YWxAELhKJvckwwScYLTR
- hrGEvfjVaVK6+XzEvjMGkok90KWh26EL0J2B+0be61kmz2PutY0uc+lcBxFjxPxhlAlv/VTyf
- Yr45O5zB8AOTyilf9XMLCa1Pnb9RpQ6XJOpfSmoYtu+RfgrnmAKfhmCKQQnlcbJwWxfohRiKh
- FugwLVudT4Y+lthTrRuYK/acQHuFgWx2dkAnAsq6Z76sK7QpRRi7kU/Xg1rd1XW3tQ0b6SJcs
- SCOeWoJ0aLFdAoxZue4k3pe71Gz6dFt+Bs885jmLTwCuh6g8JP84Kn+bVVnVXlbe2xvTBRPqu
- 4RgpXxh59FBs9y8D+LKhI5oUAX9JWVgtgpRyPeB6h5xX8kZZ0NHs2nD/mjaxPrB6mW22OSEvm
- 4FvT0pHAnI9qJlkFKtfhsiPJEnClIVoT5YlVRV45cAppdApYxgBOSV4JSD44tF0vhBnITrs83
- EdoUtWldRwAM7zyqk07gXX9ixgdcF41wUNwP69pJhyStU=
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH v6 08/13] media: verisilicon: Compute motion vectors size
+ for AV1 frames
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20230412115652.403949-1-benjamin.gaignard@collabora.com>
+ <20230412115652.403949-9-benjamin.gaignard@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230412115652.403949-9-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230413_010250_353290_DA641466 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20230413_021602_869483_8B3856C5 
+X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,182 +77,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
-> Gesendet: Donnerstag, 13. April 2023 um 08:28 Uhr
-> Von: "Johannes Zink" <j.zink@pengutronix.de>
-> An: linux-rockchip@lists.infradead.org
-> Betreff: Re: Problems about NIC, PCIe and usb on RK3568 EVB
->
-> Hi Doug,
->
-> On 4/13/23 07:55, Doug Brewer wrote:
-> > Hi,
-> >
-> > I tested Linux kernel 6.3-rc6 on my rk3568 evaluation board, it seems there
-> > are problems with Ethernet, PCIe and usb devices.
-> >
-> > First, NICs doesn't work.
-> >
-> > rk_gmac-dwmac fe010000.ethernet: IRQ eth_lpi not found
-> > rk_gmac-dwmac fe010000.ethernet: no regulator found
-> > rk_gmac-dwmac fe010000.ethernet: clock input or output? (output).
-> > rk_gmac-dwmac fe010000.ethernet: Can not read property: tx_delay.
-> > rk_gmac-dwmac fe010000.ethernet: set tx_delay to 0x30
-> > rk_gmac-dwmac fe010000.ethernet: Can not read property: rx_delay.
-> > rk_gmac-dwmac fe010000.ethernet: set rx_delay to 0x10
-> > rk_gmac-dwmac fe010000.ethernet: integrated PHY? (no).
-> > rk_gmac-dwmac fe010000.ethernet: init for RGMII_ID
-> > rk_gmac-dwmac fe010000.ethernet: User ID: 0x30, Synopsys ID: 0x51
-> > rk_gmac-dwmac fe010000.ethernet:         DWMAC4/5
-> > rk_gmac-dwmac fe010000.ethernet: DMA HW capability register suppd
-> > rk_gmac-dwmac fe010000.ethernet: RX Checksum Offload Engine suppd
-> > rk_gmac-dwmac fe010000.ethernet: TX Checksum insertion supported
-> > rk_gmac-dwmac fe010000.ethernet: Wake-Up On Lan supported
-> > rk_gmac-dwmac fe010000.ethernet: TSO supported
-> > rk_gmac-dwmac fe010000.ethernet: Enable RX Mitigation via HW Watr
-> > rk_gmac-dwmac fe010000.ethernet: Enabled RFS Flow TC (entries=10)
-> > rk_gmac-dwmac fe010000.ethernet: TSO feature enabled
-> > rk_gmac-dwmac fe010000.ethernet: Using 32/32 bits DMA host/devich
-> > mdio_bus stmmac-1: MDIO device at address 0 is missing.
-> > rk_gmac-dwmac fe2a0000.ethernet: IRQ eth_lpi not found
-> > rk_gmac-dwmac fe2a0000.ethernet: no regulator found
-> > rk_gmac-dwmac fe2a0000.ethernet: clock input or output? (output).
-> > rk_gmac-dwmac fe2a0000.ethernet: Can not read property: tx_delay.
-> > rk_gmac-dwmac fe2a0000.ethernet: set tx_delay to 0x30
-> > rk_gmac-dwmac fe2a0000.ethernet: Can not read property: rx_delay.
-> > rk_gmac-dwmac fe2a0000.ethernet: set rx_delay to 0x10
-> > rk_gmac-dwmac fe2a0000.ethernet: integrated PHY? (no).
-> > rk_gmac-dwmac fe2a0000.ethernet: init for RGMII_ID
-> > rk_gmac-dwmac fe2a0000.ethernet: User ID: 0x30, Synopsys ID: 0x51
-> > rk_gmac-dwmac fe2a0000.ethernet:         DWMAC4/5
-> > rk_gmac-dwmac fe2a0000.ethernet: DMA HW capability register suppd
-> > rk_gmac-dwmac fe2a0000.ethernet: RX Checksum Offload Engine suppd
-> > rk_gmac-dwmac fe2a0000.ethernet: TX Checksum insertion supported
-> > rk_gmac-dwmac fe2a0000.ethernet: Wake-Up On Lan supported
-> > rk_gmac-dwmac fe2a0000.ethernet: TSO supported
-> > rk_gmac-dwmac fe2a0000.ethernet: Enable RX Mitigation via HW Watr
-> > rk_gmac-dwmac fe2a0000.ethernet: Enabled RFS Flow TC (entries=10)
-> > rk_gmac-dwmac fe2a0000.ethernet: TSO feature enabled
-> > rk_gmac-dwmac fe2a0000.ethernet: Using 32/32 bits DMA host/devich
-> > mdio_bus stmmac-0: MDIO device at address 0 is missing.
-> > rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POO0
-> > rk_gmac-dwmac fe010000.ethernet eth0: __stmmac_open: Cannot atta)
-> >
-> > Second, running 'lspci' and 'lsusb' doesn't see any devices on PCIe and USB.
-> > I guess the device tree might be updated.  Anyone has idea how to fix it?
-> > Thanks.
-> >
-> > - Doug
->
-> I've seen similar errors on other boards when the phy is not powered or
-> does not have a clock supplied. Could you check your DT if there is any
-> diffs in the phy-supply or any gpio-Hog pulling the enable of a
-> regulator that might enable the phy? Also you could check if you have
-> all the required regulator drivers available and probed.
->
-> Best regards
-> Johannes
+Il 12/04/23 13:56, Benjamin Gaignard ha scritto:
+> Compute the additional space required to store motion vectors at
+> the end of the frames buffers.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-i tested 6.3.0-rc4 on my banaanpi r2pro and there it seem no problem...do you have the issue on rc4 too?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-root@bpi-r2pro:~# dmesg | grep rk_gmac-dwmac
-[    3.033681] rk_gmac-dwmac fe010000.ethernet: IRQ eth_lpi not found
-[    3.034528] rk_gmac-dwmac fe010000.ethernet: Looking up phy-supply from devie
-[    3.035243] rk_gmac-dwmac fe010000.ethernet: Looking up phy-supply property d
-[    3.036170] rk_gmac-dwmac fe010000.ethernet: no regulator found
-[    3.036713] rk_gmac-dwmac fe010000.ethernet: clock input or output? (output).
-[    3.037361] rk_gmac-dwmac fe010000.ethernet: TX delay(0x3c).
-[    3.037877] rk_gmac-dwmac fe010000.ethernet: RX delay(0x2f).
-[    3.038398] rk_gmac-dwmac fe010000.ethernet: integrated PHY? (no).
-[    3.044063] rk_gmac-dwmac fe010000.ethernet: init for RGMII
-[    3.044896] rk_gmac-dwmac fe010000.ethernet: User ID: 0x30, Synopsys ID: 0x51
-[    3.045559] rk_gmac-dwmac fe010000.ethernet:         DWMAC4/5
-[    3.046033] rk_gmac-dwmac fe010000.ethernet: DMA HW capability register suppd
-[    3.046747] rk_gmac-dwmac fe010000.ethernet: RX Checksum Offload Engine suppd
-[    3.047428] rk_gmac-dwmac fe010000.ethernet: TX Checksum insertion supported
-[    3.048062] rk_gmac-dwmac fe010000.ethernet: Wake-Up On Lan supported
-[    3.048725] rk_gmac-dwmac fe010000.ethernet: TSO supported
-[    3.049229] rk_gmac-dwmac fe010000.ethernet: Enable RX Mitigation via HW Watr
-[    3.049954] rk_gmac-dwmac fe010000.ethernet: Enabled RFS Flow TC (entries=10)
-[    3.050628] rk_gmac-dwmac fe010000.ethernet: TSO feature enabled
-[    3.051176] rk_gmac-dwmac fe010000.ethernet: Using 32/32 bits DMA host/devich
-[    3.189988] rk_gmac-dwmac fe2a0000.ethernet: IRQ eth_lpi not found
-[    3.190982] rk_gmac-dwmac fe2a0000.ethernet: Looking up phy-supply from devie
-[    3.191715] rk_gmac-dwmac fe2a0000.ethernet: Looking up phy-supply property d
-[    3.192636] rk_gmac-dwmac fe2a0000.ethernet: no regulator found
-[    3.193180] rk_gmac-dwmac fe2a0000.ethernet: clock input or output? (input).
-[    3.193818] rk_gmac-dwmac fe2a0000.ethernet: TX delay(0x4f).
-[    3.194336] rk_gmac-dwmac fe2a0000.ethernet: RX delay(0xf).
-[    3.194885] rk_gmac-dwmac fe2a0000.ethernet: integrated PHY? (no).
-[    3.195499] rk_gmac-dwmac fe2a0000.ethernet: clock input from PHY
-[    3.201067] rk_gmac-dwmac fe2a0000.ethernet: init for RGMII
-[    3.201885] rk_gmac-dwmac fe2a0000.ethernet: User ID: 0x30, Synopsys ID: 0x51
-[    3.202575] rk_gmac-dwmac fe2a0000.ethernet:         DWMAC4/5
-[    3.203052] rk_gmac-dwmac fe2a0000.ethernet: DMA HW capability register suppd
-[    3.203730] rk_gmac-dwmac fe2a0000.ethernet: RX Checksum Offload Engine suppd
-[    3.204405] rk_gmac-dwmac fe2a0000.ethernet: TX Checksum insertion supported
-[    3.205039] rk_gmac-dwmac fe2a0000.ethernet: Wake-Up On Lan supported
-[    3.205702] rk_gmac-dwmac fe2a0000.ethernet: TSO supported
-[    3.206207] rk_gmac-dwmac fe2a0000.ethernet: Enable RX Mitigation via HW Watr
-[    3.206969] rk_gmac-dwmac fe2a0000.ethernet: Enabled RFS Flow TC (entries=10)
-[    3.207621] rk_gmac-dwmac fe2a0000.ethernet: TSO feature enabled
-[    3.208167] rk_gmac-dwmac fe2a0000.ethernet: Using 32/32 bits DMA host/devich
-[   80.517694] rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POO0
-[   80.520178] rk_gmac-dwmac fe010000.ethernet eth0: PHY [stmmac-1:00] driver [)
-[   80.520230] rk_gmac-dwmac fe010000.ethernet eth0: No Safety Features supportd
-[   80.520258] rk_gmac-dwmac fe010000.ethernet eth0: IEEE 1588-2008 Advanced Tid
-[   80.520514] rk_gmac-dwmac fe010000.ethernet eth0: registered PTP clock
-[   80.520898] rk_gmac-dwmac fe010000.ethernet eth0: configuring for phy/rgmii e
-[   84.615184] rk_gmac-dwmac fe010000.ethernet eth0: Link is Up - 1Gbps/Full - x
-root@bpi-r2pro:~# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group defau0
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group def0
-    link/ether 76:95:00:96:b3:89 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.0.12/24 scope global eth0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::7495:ff:fe96:b389/64 scope link
-       valid_lft forever preferred_lft forever
-3: eth1: <BROADCAST,MULTICAST> mtu 1504 qdisc noop state DOWN group default qle0
-    link/ether 76:95:00:96:b3:88 brd ff:ff:ff:ff:ff:ff
-4: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
-    link/sit 0.0.0.0 brd 0.0.0.0
-5: lan0@eth1: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN group0
-    link/ether 76:95:00:96:b3:88 brd ff:ff:ff:ff:ff:ff
-6: lan1@eth1: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN group0
-    link/ether 76:95:00:96:b3:88 brd ff:ff:ff:ff:ff:ff
-7: lan2@eth1: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN group0
-    link/ether 76:95:00:96:b3:88 brd ff:ff:ff:ff:ff:ff
-8: lan3@eth1: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN group0
-    link/ether 76:95:00:96:b3:88 brd ff:ff:ff:ff:ff:ff
-root@bpi-r2pro:~# lsusb
-Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
-Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 005 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-root@bpi-r2pro:~# lspci
-0001:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3568 Remote Signal Pro)
-0002:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3568 Remote Signal Pro)
-root@bpi-r2pro:~# uname -a
-Linux bpi-r2pro 6.3.0-rc4-bpi-r2pro #1 SMP PREEMPT Mon Apr 10 13:39:18 CEST 202x
-root@bpi-r2pro:~#
 
-tested eth1 too...also working. so maybe "only" a evb related dts-change or between rc4 and rc6
-
-regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
