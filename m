@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79579C77B78
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Apr 2023 11:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11CB9C77B6E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Apr 2023 11:29:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W7eYrqbNYWJ2QiX7UVlhwIfegjn3WmHC+PBgUd8KVEg=; b=O/umtEw57KPxCr
-	CvxbS03c8CjAA/ME/CfCtct4+4B+uPzXM8YINuiF2cSycofjCZE4PfuW+ZiTfcocmp+I0jE66Js2p
-	+TtgRJOUbs54NEO+FxH4pbxfk1zaPChiaHrnVCbJhtD4f6a55WaXvp0EZMy+ARIhEROaI/pYQ7ETZ
-	aOIIgyVdkYL4Vk3jfQdugbr1aew6m2v3jagSmDzzxYuMGTT5KGTwV16vJlZ7FSgzTHM8RwHReNVs8
-	XfUtAUhhcjK19dXDgrOFvrSThUcrQznmWVI1BeicLaQ97+Na1jrkiUmytBbCPm6WM5YaOw4HA3Hzn
-	FoaimTnpcWuz926u3oHw==;
+	List-Owner; bh=yi5AiV07MKefV7NVdzUja+t08YWi14ayUY1mfZniWR4=; b=ST92vlxdwsKGaI
+	k99U2LTZLN+Bu6MkXVsriiZaqbXMFA0DgGgrpMZ/B0Avs1J/TQm5M/1c8Qtkac2xO9J8twINPZNOW
+	LVRi3gJ2PhrGMYud0HyJdyxC5a3DIOiwW6emnAIgSBgC1JiRfxY38GVYS6f9LR32BR8AYo2KdrOOk
+	6BNo+iqb1hTh9oBeq4xJc+dI0KhFk+CCJ2PNFIO+w9QVaFGSkWAq/a+Ugaa4rzBre09Ks/SpJ6nee
+	2DmDzYNrlgUe8f8VbpFlTlNn7r4j7woTIGJgK3DmmaY5d3QDSZDrsF+hNOMRD5rd6F8deLxD9LL3K
+	FYAOjKMJE47+rERWC7OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnHbi-009M0X-1J;
-	Fri, 14 Apr 2023 11:28:46 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1pnHck-009MYv-0m;
+	Fri, 14 Apr 2023 11:29:50 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pnHbe-009Lyk-1Q
+	id 1pnHcd-009MRe-1n
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Apr 2023 11:28:43 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-50674656309so1034942a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 14 Apr 2023 04:28:39 -0700 (PDT)
+	Fri, 14 Apr 2023 11:29:47 +0000
+Received: by mail-ej1-x635.google.com with SMTP id qb20so44347411ejc.6
+        for <linux-rockchip@lists.infradead.org>; Fri, 14 Apr 2023 04:29:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681471719; x=1684063719;
+        d=linaro.org; s=google; t=1681471780; x=1684063780;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=4aiRpESCbLxQk+SHaAMEqLmff7Uno7K02X/hy0RYyko=;
-        b=dl3Hg++Qv6HfQT/L9JjS5DV2rWbm0glWZt1wU9yWmWgajcJZlOzZzJLa+8AONcugzk
-         7pS5VpouSIAQ3edfaPssbx5NVRdQbtCjDh5YISgKCabxnDoLPq93amDKmL1mQpOjIBBN
-         MFwdFn2f6zQ9PDGvEDiM5GVPXZqzMJUQPrnSHVeMPzIlC7mUptjMKlEe0ZXHFK5PMFGV
-         zznUTSnKxEmIjt01wKa0FyQdcdD5Apmo+kePLjt0EysiN+++oq5u/8XfOZl9wVmn70WK
-         5qw+oPQCyJpbo5IO0ML3LsNRW11hsI19uepOIwSn2ZZjQh3cVKslxbKkUHGVXWoq7EDd
-         Qg5g==
+        bh=H0+Edrx0IM9690oJV8Q5R/N22PJKrT3awy24PGbymbg=;
+        b=iEpoZfnjMjWNe/FxgVABg/VGFxzuvc5MIzmMp5t/+o3/cdZaHLhmurtA60Tgz6hrDI
+         P7Qw5OW6143M9PNO87mSQjXbu1e5RgseQKFsonNHrdg0G625+tFh0DMEfWP4W1R+6eOT
+         Sqrq7cjLBbP+eXnAFMsJ1tmA1HqnCSF8WUuYEQaz1m3g3qr1Spt3ho4y50HUnduAgN7B
+         SOj6pCWILzHlg7vk663+HvPWSY25UVc4JpM1U3dAzGYVppOSORERjTbhLFE1qRMCfXHE
+         JmEpI9WHshZDwy1XuBsvVyNZxrcy7clbKREvNVrxm8GEo407wqUmJnQvCmvXLSwWCb2v
+         92Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681471719; x=1684063719;
+        d=1e100.net; s=20221208; t=1681471780; x=1684063780;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4aiRpESCbLxQk+SHaAMEqLmff7Uno7K02X/hy0RYyko=;
-        b=DBuprBw8rL2LExE2Y0tjz7kk7PIVy+RzwLre3QdSrHnKJ+PXPwD73PzRGKvqTAIuch
-         g7go1WYZaO2sO6349+cTRZaDrnJe3SYNTZWxi2CSaLR+FuWHCipRZ7Skn8WizjGoi0xy
-         2qkR3isSYNGHx21RNHQKeW0fYUev67db1cC1YYrM/eVav61RK9bz/1L60tSOIRGCjqRl
-         ybK/Vkv7WW1Z/ZQos2XsXdbzzVd9wP5fuz8iBVgXuD7Yp0hehk1PqPXWB5DsRhXEx7Jh
-         xRvJSsTpgA4i8nx5m1lTZZV8Oz2lB1/+CB7srcLQIdZ8mrYhkA+AZYkO0gqAeirCgoKB
-         5Lhg==
-X-Gm-Message-State: AAQBX9faaEBzjvXYtvjIqnPfJfxwCjQ/DcfFQvkeFRNEIhUnV49jb9H+
-	AW8bwf5BgwCqy/0Llakh4hs9FQ==
-X-Google-Smtp-Source: AKy350a3Sy2CqykR/sk8IhliNFf2Djv54ny9JClOEK+yPtCZ5o7ogUd06Gii/jIrfmuVUmcNljWjSw==
-X-Received: by 2002:aa7:d7d4:0:b0:504:8c1a:70db with SMTP id e20-20020aa7d7d4000000b005048c1a70dbmr6581398eds.32.1681471718716;
-        Fri, 14 Apr 2023 04:28:38 -0700 (PDT)
+        bh=H0+Edrx0IM9690oJV8Q5R/N22PJKrT3awy24PGbymbg=;
+        b=GDpzRsdh5elOlZt3vFqPV2BPhGpTa9w78dDqjTkxpH2TRgE6YBasvFlK0iwBQBY7Se
+         TGPob6L/bRP+9onjGvnF7APtTkNKxlGB1g/6J38GbI4+gofNP8+pkRo0u/VnBOVnAclw
+         USTM3dzePHCdRlGyUddi8o2tyJpcMS136mM6yLxjuuMjNITTK5G3tJ9DhUcbL8/rSU5z
+         I+yFuk0wp9Kk5InmtfuwSY2ZTbixFPYeoR2+n5oPKlbWHcB7AqQaE1RlSGt6Um2+VwzZ
+         kFKyj+IHTeXYcwEXYT8/UvmHJyMrExdWz7X4+qNeCWpEmJodJSdPwNTRWNSes/8KtlfP
+         JkZQ==
+X-Gm-Message-State: AAQBX9ckoK9LKDyT7X/KXglOTRBvgbJf64cReVSPhYDXhYTyNCJBR24T
+	6zkwSLrMJSbkTMItAUzLA3vGyw==
+X-Google-Smtp-Source: AKy350ZIlAwLnIME/qmELmFYpYuNLEsNvTy22tLzGhqysgrUd2eT9uwUn/0SUdgGv9Xc+5fCGwgB4A==
+X-Received: by 2002:a17:906:7b4a:b0:8a0:7158:15dc with SMTP id n10-20020a1709067b4a00b008a0715815dcmr5088574ejo.74.1681471779819;
+        Fri, 14 Apr 2023 04:29:39 -0700 (PDT)
 Received: from ?IPV6:2a02:810d:15c0:828:40b9:8c57:b112:651d? ([2a02:810d:15c0:828:40b9:8c57:b112:651d])
-        by smtp.gmail.com with ESMTPSA id w15-20020aa7da4f000000b00504890a0de5sm2023467eds.34.2023.04.14.04.28.37
+        by smtp.gmail.com with ESMTPSA id a5-20020a170906684500b0094d7bc8e9aasm2332787ejs.94.2023.04.14.04.29.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Apr 2023 04:28:38 -0700 (PDT)
-Message-ID: <3f6d77cc-5a9b-47b4-db41-5fd172d2ecb6@linaro.org>
-Date: Fri, 14 Apr 2023 13:28:37 +0200
+        Fri, 14 Apr 2023 04:29:39 -0700 (PDT)
+Message-ID: <b75a846c-63be-9f30-e786-f34292cfeaf4@linaro.org>
+Date: Fri, 14 Apr 2023 13:29:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Use generic name for es8316 on
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add vdd_cpu_big regulators to
  rk3588-rock-5b
 Content-Language: en-US
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -82,14 +82,14 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com
 References: <20230414093411.113787-1-cristian.ciocaltea@collabora.com>
- <20230414093411.113787-3-cristian.ciocaltea@collabora.com>
- <fe746692-fed3-6635-8658-4e91d30f2aa8@linaro.org>
- <4d66fb01-76da-be30-26dd-908ee1a22eb1@collabora.com>
+ <20230414093411.113787-4-cristian.ciocaltea@collabora.com>
+ <0cbafc31-9b46-54df-f569-810a8781743c@linaro.org>
+ <36d8050b-0636-2b30-f3fc-7f7d96bec253@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <4d66fb01-76da-be30-26dd-908ee1a22eb1@collabora.com>
+In-Reply-To: <36d8050b-0636-2b30-f3fc-7f7d96bec253@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230414_042842_482502_EB11B32D 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20230414_042944_353896_719223AE 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,37 +106,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/04/2023 12:53, Cristian Ciocaltea wrote:
-> On 4/14/23 13:26, Krzysztof Kozlowski wrote:
+On 14/04/2023 12:40, Cristian Ciocaltea wrote:
+> On 4/14/23 13:27, Krzysztof Kozlowski wrote:
 >> On 14/04/2023 11:34, Cristian Ciocaltea wrote:
->>> Use generic 'audio-codec' name for es8316 node on Rock 5B board.
+>>> The RK8602 and RK8603 voltage regulators on the Rock 5B board provide
+>>> the power lines vdd_cpu_big0 and vdd_cpu_big1, respectively.
+>>>
+>>> Add the necessary device tree nodes and bind them to the corresponding
+>>> CPU big core nodes.
 >>>
 >>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 >>> ---
->>>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>  .../boot/dts/rockchip/rk3588-rock-5b.dts      | 56 +++++++++++++++++++
+>>>  1 file changed, 56 insertions(+)
 >>>
 >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->>> index 62750beb12aa..8cc97d146a73 100644
+>>> index 8cc97d146a73..3e4aee8f70c1 100644
 >>> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 >>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->>> @@ -72,7 +72,7 @@ hym8563: rtc@51 {
->>>  &i2c7 {
->>>  	status = "okay";
+>>> @@ -53,6 +53,62 @@ vcc5v0_sys: vcc5v0-sys-regulator {
+>>>  	};
+>>>  };
 >>>  
->>> -	es8316: es8316@11 {
->>> +	es8316: audio-codec@11 {
+>>> +&cpu_b0 {
+>>> +	cpu-supply = <&vdd_cpu_big0_s0>;
+>>> +};
+>>> +
+>>> +&cpu_b1 {
+>>> +	cpu-supply = <&vdd_cpu_big0_s0>;
+>>> +};
+>>> +
+>>> +&cpu_b2 {
+>>> +	cpu-supply = <&vdd_cpu_big1_s0>;
+>>> +};
+>>> +
+>>> +&cpu_b3 {
+>>> +	cpu-supply = <&vdd_cpu_big1_s0>;
+>>> +};
+>>> +
+>>> +&i2c0 {
+>>> +	pinctrl-names = "default";
+>>> +	pinctrl-0 = <&i2c0m2_xfer>;
+>>> +	status = "okay";
+>>> +
+>>> +	vdd_cpu_big0_s0: regulator@42 {
+>>> +		compatible = "rockchip,rk8602";
 >>
->> This is a trivial change. Fix all instances in all subarch/platform DTS.
->> Not board-per-board.
+>> Looking at your next node, this is surprising... Double check if you
+>> have correct compatibles everywhere.
+>>
+>>> +		reg = <0x42>;
+>>> +		fcs,suspend-voltage-selector = <1>;
+>>
+>> Does not look like you tested the DTS against bindings. Please run `make
+>> dtbs_check` (see Documentation/devicetree/bindings/writing-schema.rst
+>> for instructions).
+>>
+>>> +		regulator-name = "vdd_cpu_big0_s0";
+>>> +		regulator-always-on;
+>>> +		regulator-boot-on;
+>>> +		regulator-min-microvolt = <550000>;
+>>> +		regulator-max-microvolt = <1050000>;
+>>> +		regulator-ramp-delay = <2300>;
+>>> +		vin-supply = <&vcc5v0_sys>;
+>>> +
+>>> +		regulator-state-mem {
+>>> +			regulator-off-in-suspend;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	vdd_cpu_big1_s0: regulator@43 {
+>>> +		compatible = "rockchip,rk8603", "rockchip,rk8602";
+>>> +		reg = <0x43>;
+>>> +		fcs,suspend-voltage-selector = <1>;
+>>
+>> Does not look like you tested the DTS against bindings. Please run `make
+>> dtbs_check` (see Documentation/devicetree/bindings/writing-schema.rst
+>> for instructions).
 > 
-> Looks like only the rockchip DTS are affected, but not quite sure how to 
-> proceed in the case of 'es8316: codec@', should I change them to 
-> 'es8316: audio-codec@' as well?
-> 
-> arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts:   es8316: es8316@11 {
+> I mentioned in the cover letter that the support for the RK860X 
+> regulators has been recently merged via [1]. The patches in this 
+> series have been verified on next-20230413.
 
-No, fix only this.
+OK. The question about compatibles still stays - but maybe you have
+indeed 8603 and 8602 in the same time.
 
 Best regards,
 Krzysztof
