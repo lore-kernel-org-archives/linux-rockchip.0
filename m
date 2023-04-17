@@ -4,54 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78539C77B77
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 09:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FF0C77B76
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 09:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ufwYXtWmpk70MXeLTTVNOhOE+9gUap+4ZT9+N2mI9Rg=; b=dbAqQ2xidYkZnJ
-	bgMBDunTas0GtH3XHujaLrUR6e2uv8/Awf8Sz4fh0lBEDmUJvjhxX/rgaI51Hm4OyC88J+4Y3RNyL
-	KByShJmvw3G5R6UCoJYGj9+cD+UYtZ3Hr4UKuhJTUF9L8w6P65VIC/9oeNdw4+sgaZTrkU2I7rspk
-	ZNFV3CXqxWo1YVfhHoN19WNog80cXUowgwVqYMzCjN3MD5VHzJjujsZuVY4r99WG7p8YSM83RrUqL
-	WAACUi13z9bNYLpMqOH7CLF+7tSFy79M/+/3bAY+tKpDummkxNspcM5H4oAf5xwP83Id95BHM/uRs
-	fgje5z4do1/2dk/cmD5Q==;
+	List-Owner; bh=Qfhhw9VISw0tKDlvzJIt46VoI9qSos/pKKIu2dviZ0g=; b=vXXIuwcyWcgTtF
+	vtFaBP7T1FCX9NO7JCZqL8HKyb5RcNU8SNTt9oKu7UDt/Rte6VVvZD6tPVp/BXy5VRcgeSYaU8DhZ
+	02X7bC1V0vF2GYUKOeAY2jn6IA55HfCx8LRsecNTfWDI/DFaoqZy8SpT0MfA6YwsvBeitmIwIZUY5
+	z69Fu/4RSR9N59fzK+irx/ToBU4NuwHuoozgoShTpkH5ebkEgAIe2+fM2TP8LFIY8pGvWvc6qNLVR
+	aJk6Z4I3YIWCrw3hFcStD3nEoY7CGV2F/T30ZJvICDQqZxh6zLjB0eJf/laSRWkbhRrVK9Sg4bZ0t
+	NmoTdhzSYMhAJCKRxnrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHH-00Fapf-3B;
-	Mon, 17 Apr 2023 09:36:03 +0000
+	id 1poLHJ-00FaqW-26;
+	Mon, 17 Apr 2023 09:36:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHF-00Fant-1r;
+	id 1poLHF-00FaoI-2L;
 	Mon, 17 Apr 2023 09:36:02 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1poLHB-00027c-PJ; Mon, 17 Apr 2023 11:35:57 +0200
+	id 1poLHB-00027c-EW; Mon, 17 Apr 2023 11:35:57 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>,
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Peter Geis <pgwipeout@gmail.com>,
-	John Clark <inindev@gmail.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Shreeya Patel <shreeya.patel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	kernel@collabora.com,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [v2] arm64: dts: rockchip: Add pinctrl gpio-ranges for rk356x
-Date: Mon, 17 Apr 2023 11:35:55 +0200
-Message-Id: <168172146375.3844162.11356343846845712762.b4-ty@sntech.de>
+Subject: Re: [PATCH v2 0/3] Add regulators to Rock 5B's CPU big cores
+Date: Mon, 17 Apr 2023 11:35:54 +0200
+Message-Id: <168172146374.3844162.4496409077876685871.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230413170337.6815-1-inindev@gmail.com>
-References: <20230413144316.4247-1-inindev@gmail.com> <20230413170337.6815-1-inindev@gmail.com>
+In-Reply-To: <20230414125425.124994-1-cristian.ciocaltea@collabora.com>
+References: <20230414125425.124994-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_023601_614476_1DFFE4E9 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230417_023601_760926_4289D6A0 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,15 +71,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Apr 2023 13:03:37 -0400, John Clark wrote:
-> Add gpio-range properties to the pinctrl gpio nodes in rk356x.dtsi
+On Fri, 14 Apr 2023 15:54:22 +0300, Cristian Ciocaltea wrote:
+> The CPU big cores on the Rock 5B board are powered by the RK8602/RK8603
+> regulators. Since the support for those regulators has been recently
+> merged via [1], add the necessary device tree nodes and bind them to
+> the corresponding CPU nodes.
 > 
+> Additionally, provide a couple of unrelated DTS fixes/improvements.
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add pinctrl gpio-ranges for rk356x
-      commit: 6f5ab8fa33238fdf6cb28dac7bc2f650db2caf08
+[1/3] arm64: dts: rockchip: Drop RTC clock-frequency on rk3588-rock-5b
+      commit: d7f5e83913d1bcd50968972a7b50e49c9a14b2af
+[2/3] arm64: dts: rockchip: Use generic name for es8316 on Pinebook Pro and Rock 5B
+      commit: 0af7164cb0e076dbfeed28956658a1ad94bd5927
+[3/3] arm64: dts: rockchip: Add vdd_cpu_big regulators to rk3588-rock-5b
+      commit: 1bb69cd4a344299a382695a2de1a84c0b23fe6da
 
 Best regards,
 -- 
