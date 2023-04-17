@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BD0C77B76
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 14:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75171C77B7D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 15:00:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k48uTz1axq36bZsUu4KE4tsOgapNRg23dAfqvV3odpY=; b=oXKP5b7PSdQyRQ
-	0AbsmFMYvG0ZajdNnyeuEFBE6+l+ATJiG7S5taLupI8QhX6KNH49bjew6bxt7zThF+7Q6Hbie8fNF
-	7/Xr6JzJWzli4DGi+d+3fNBPo/SqWdbJYPrGy+CyMF8oNpdlhbFOb/LltnV/q9Z7LAqc/Dn/zFBSY
-	T04mcWJ1ZLmX6PlWqQGs1AbeLY3DHWXZWmJibjOU/X2nB7NYWjiPlFUBPpCvoYzYkEpVEXO01wxgN
-	hEyNKDxF51WqdSmcAKAjLtbnHc7JOdW0HPan691PJyzzAp6NC2Z8+mxLcuL+ZN87Je3ikQAxS9gN0
-	gMkC4/opAfiE2xVP+SPQ==;
+	List-Owner; bh=lJrPToDmD05QxCoOguUYGvjDs43nuc8d6GXAzOGfl6E=; b=U+KJ2mYfsNf11Z
+	P/LGI4Z1n+TihI8srZQWb/9HMZuGwWY7kOv4TV1vEowDkHeLI0KpvIGNkYNDX3z2SkOC6IJYpBQVw
+	qXELyFRN9zGZJg8aSiQy7oAYVda3nD9kl3PiFwwtYwycgF8UeiYN07OWtrIH3Nd5oyjlTj1ZEbwVz
+	FcUZpOQ8G7AcjI+qjCncfEun/adtMePirdbHlyH9x1VRIuvtO3tbhqqkBwj14TCRGiOTIJfty3T+z
+	RHisANC4Qz+hD0CPPJx2/xzq5WNXDbgCx/Rq1FYeK173T7YRxmvmYdDx/pss1t6qpL0YAYxUcxpG3
+	ZqNOV2BIfrvajRNKvUyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQ9s-00GgeH-29;
-	Mon, 17 Apr 2023 14:48:44 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1poQLa-00GkTl-2D;
+	Mon, 17 Apr 2023 15:00:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQ9o-00GgbQ-0c;
-	Mon, 17 Apr 2023 14:48:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1681742913; bh=4HgJy/9pgR5i7nOeu9T/kRgJucpwOG5H6WnHdafmXds=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=F2+V25Y/lcgTUJ0TSehImQO5zuQDt7mjzOFAoz1skMM+7Vv2weeCPDLWZzN1l0HrZ
-	 XwpGoXe1CD6rjWAP/G//ZQDCFYxu96PFlGDGMBHqJtE4NIzlvs2vfY4D6RsyA3VI8q
-	 t2t1ffBRRrfFOkz85jyNg8Wkv4QAoD8I29qDvFjc=
-Date: Mon, 17 Apr 2023 16:48:33 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	id 1poQLV-00GkRH-2B
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Apr 2023 15:00:48 +0000
+Received: from jupiter.universe (dyndsl-091-248-191-155.ewe-ip-backbone.de [91.248.191.155])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A4DB06603223;
+	Mon, 17 Apr 2023 16:00:41 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681743641;
+	bh=uM3PWO3IQObscBohW7QPL9pguhEFNiexqSSj/2QsykE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ONSf76mjLn0RMj50BOw6eqXwnjJms8Pgk1OcxbjaNuQvOai9JcudMN+9bTGf04gk4
+	 dq3Xz7oTHmGWq0D1dIt8ToEnJ3cX2QhAnQDXGIU6YcPNfkuyta6buZEiI11jrJW+hO
+	 WhgwqLi/ZWI4ec9R4aWc0rtTHOHRgavit3148PyeobgJ5UotqoO9l3LzhzX0sfKaUm
+	 rsmtXoJ4wlzS0g4skHGX0LvBCIrg+d9pwuVN8UasSwKlM9pARTYXcVinWtGnPNblxM
+	 77jd3njA9Uzj14yaW9bCtB7/4wyyvIgsTXaSNc1nsiVNvHy/YUZXy26lI8+gmMPbhi
+	 ecLIocrr26jXg==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id DC9334807EF; Mon, 17 Apr 2023 17:00:38 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Marc Zyngier <maz@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	Martijn Braam <martijn@brixit.nl>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Jarrah Gosbell <kernel@undef.tools>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rk3399-pinephone-pro: Add support for volume
- keys
-Message-ID: <20230417144833.gqvzaqurpgi7rbof@core>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	Martijn Braam <martijn@brixit.nl>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Jarrah Gosbell <kernel@undef.tools>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20230405123813.2272919-1-pbrobinson@gmail.com>
- <4152389.RUnXabflUD@diego>
- <20230417123716.c23izju4ezjrzytn@core>
- <3377280.SvYEEZNnvj@diego>
+	Thomas Gleixner <tglx@linutronix.de>,
+	Peng Fan <peng.fan@nxp.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	XiaoDong Huang <derrick.huang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: rk3588: add MSI support
+Date: Mon, 17 Apr 2023 17:00:38 +0200
+Message-Id: <20230417150038.51698-3-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230417150038.51698-1-sebastian.reichel@collabora.com>
+References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3377280.SvYEEZNnvj@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_074840_689489_6E295B0A 
-X-CRM114-Status: GOOD (  30.45  )
+X-CRM114-CacheID: sfid-20230417_080045_848730_3795A0F8 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,58 +84,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBBcHIgMTcsIDIwMjMgYXQgMDQ6MzY6NTVQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gQW0gTW9udGFnLCAxNy4gQXByaWwgMjAyMywgMTQ6Mzc6MTYgQ0VTVCBzY2hyaWVi
-IE9uZMWZZWogSmlybWFuOgo+ID4gSGVsbG8gSGVpa28sCj4gPiAKPiA+IE9uIE1vbiwgQXByIDE3
-LCAyMDIzIGF0IDEwOjM0OjIwQU0gKzAyMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gPiBI
-aSBQZXRlciwgT25kcmVqLAo+ID4gPiAKPiA+ID4gQW0gTWl0dHdvY2gsIDUuIEFwcmlsIDIwMjMs
-IDE1OjUzOjM5IENFU1Qgc2NocmllYiBPbmTFmWVqIEppcm1hbjoKPiA+ID4gPiBbLi4uXQo+ID4g
-PiA+Cj4gPiA+ID4gKEkgaGF2ZSB0byBwcmVzcyBxdWl0ZSBoYXJkIHRvIGdldCBiZWxsb3cgMzAw
-IGFuZCB0byBnZXQgcmVsaWFibGUgZGV0ZWN0aW9uCj4gPiA+ID4gb2Ygdm9sdW1lIGRvd24ga2V5
-IHByZXNzKQo+ID4gPiA+IAo+ID4gPiA+IE9uIGRldmVsb3BtZW50IHZlcnNpb24gb2YgdGhlIHBo
-b25lLCB0aGUgdmFsdWUgcmV0dXJuZWQgYnkgc2FyZGFjIGlzIGxlc3MKPiA+ID4gPiB2YXJpYWJs
-ZS4gQmFzaWNhbGx5IGVpdGhlciAyOTguODI4MTI1IG9yIDMwMC41ODU5Mzc1IGJ1dCBpdCdzIGFs
-c28gb24KPiA+ID4gPiB0aGUgZWRnZS4KPiA+ID4gPiAKPiA+ID4gPiBJIHN1Z2dlc3QgcmFpc2lu
-ZyB0aGUgdGhyZXNob2xkIHRvIHNvbWV0aGluZyBsaWtlIDYwMCBhbmQgdG8gZG8geW91ciBvd24K
-PiA+ID4gPiB0ZXN0aW5nLCB0byBnZXQgbW9yZSBkYXRhIHBvaW50cy4gVW5wcmVzc2VkIHZhbHVl
-IGlzIH4xNzkxLjIxMDkzNzUgb24gYm90aAo+ID4gPiA+IHBob25lcywgc28gNDAwIHN0aWxsIGdl
-dHMgYSBsb3Qgb2YgaGVhZHJvb20uIEFuZCB2b2x1bWUgdXAgaXMgYWx3YXlzIDwgMTUKPiA+ID4g
-PiBpbiBteSB0ZXN0cy4KPiA+ID4gCj4gPiA+IGRpZCB0aGlzIGdldCBtb3JlIGF0dGVudGlvbiBt
-ZWFud2hpbGU/Cj4gPiA+IAo+ID4gPiBJIGRvbid0IGhhdmUgYSBQaW5lcGhvbmUgUHJvIG15c2Vs
-Ziwgc28geW91J2xsIG5lZWQgdG8gZGVjaWRlIGJldHdlZW4geW91Cj4gPiA+IGFib3V0IHRoZSB2
-YWx1ZSBhbmQgdGhlIGNvbmNlcm4gT25kcmVqIHJhaXNlZCBoZXJlIGZvciB0aGUgdmFsdWUuCj4g
-PiAKPiA+IEl0J3Mgc2FmZSBhbmQgbmVlZGVkIHRvIHVzZSBhIGhpZ2hlciB2YWx1ZS4KPiAKPiBz
-byBpbiBhIG51dHNoZWxsLCBpZiBJIGNoYW5nZSAiVm9sdW1lIERvd24iIHRvIHNheSA0MDAwMDAg
-aW5zdGVhZCBvZiB0aGUKPiBjdXJyZW50IDMwMDAwMCwgdGhlIHBhdGNoIGlzIGdvb2QgdG8gZ28/
-CgpNeSBzdWdnZXN0aW9uIHdhcyA2MDAgbVYgc28gNjAwMDAwLiA6KSBPdGhlcndpc2UsIHllcy4K
-CmtpbmQgcmVnYXJkcywKCW8uCgo+IEkuZS4gdGhhdCB3YXMgbXkgbWFpbiBxdWVzdGlvbiA6LSks
-IGFzIHlvdSByYWlzZWQgdGhlIG9iamVjdGlvbiB0byB0aGUgdmFsdWUKPiBpbiB5b3VyIGluaXRp
-YWwgcmVwbHkKPiAKPiBUaGFua3MKPiBIZWlrbwo+IAo+IAo+IAo+ID4gU0FSIEFEQyBpbnB1dCBp
-cyBwdWxsZWQgaGlnaCB0byAxLjhWIHVubGVzcyBzb21lIGtleSBpcyBwcmVzc2VkLCBzbyB1bnBy
-ZXNzZWQKPiA+IHZhbHVlIHdpbGwgYWx3YXlzIGJlIGFyb3VuZCAxODAwIG9uIGFsbCBQaW5lcGhv
-bmVzLCBhbmQgcHJlc3NlZCB2YWx1ZSB3aWxsCj4gPiBkZXBlbmQgb24gY29udGFjdCBxdWFsaXR5
-IGFuZCB0b2xlcmFuY2VzLiBGb3Igdm9sdW1lIGRvd24sIFNBUiBBREMgaW5wdXQgaXMgZmVkCj4g
-PiBmcm9tIGEgcmVzaXN0b3IgZGl2aWRlciBvZiAoMTBrT2htICsgMmtPaG0pIGZyb20gMS44ViBw
-b3dlciByYWlsLiBTbyB0aGF0IGdpdmVzCj4gPiAyLzEyKjEuOCA9IDAuM1YuIFdlIGNhbid0IGhh
-dmUgdGhlIHByZXNzIGRldGVjdGlvbiB0aHJlc2hvbGQgcmlnaHQgYXQgdGhpcwo+ID4gdm9sdGFn
-ZSwgYmVjYXVzZToKPiA+IAo+ID4gMSkgdGhlc2UgcmVzaXN0b3JzIGhhdmUgdG9sZXJhbmNlcyB0
-aGF0IHdpbGwgcmFuZG9tbHkgcmVzdWx0IGluIG1lYXN1cmVkIHZvbHRhZ2UKPiA+ICAgIGJlaW5n
-IGFib3ZlIG9yIGJlbG93IHRoZSAwLjNWIG9uIHJlYWwgZGV2aWNlcyAoLTElIG9uIDEwayBhbmQg
-KzElIG9uIDJrID0KPiA+ICAgIDIqMS4wMS8oMTAqMC45OSsyKjEuMDEpKjEuOCA9IDMwNSBtViAt
-IGFscmVhZHkgdG9vIGhpZ2ggZXZlbiB3aXRob3V0Cj4gPiAgICBjb25zaWRlcmluZyBzd2l0Y2gg
-Y29udGFjdCBxdWFsaXR5KSwgYW5kCj4gPiAKPiA+IDIpIHRob3NlIHBpZGRseSBtZW1icmFuZSBz
-d2l0Y2hlcyBhcHBhcmVudGx5IGhhdmUgdGhlaXIgb3duIHJhbmRvbSByZXNpc3RhbmNlCj4gPiAg
-ICB0aGF0IGlzIGFkZGVkIHRvIHRoZSBib3R0b20gbGVnIG9mIHRoZSByZXNpc3RvciBkaXZpZGVy
-LCBhbmQgZGVwZW5kcyBvbgo+ID4gICAgc3RyZW5naHQgb2YgdGhlIHByZXNzIG9uIHNvbWUgZGV2
-aWNlcyAoYW5kIHN3aXRjaGVzIG1heSBkZXZlbG9wIGhpZ2hlcgo+ID4gICAgcmVzaXN0YW5jZSB3
-aXRoIGFnZS91c2UpLgo+ID4gCj4gPiBTY2hlbWF0aWM6IGh0dHBzOi8vbWVnb3VzLmNvbS9kbC90
-bXAvMTEyNWQ5MjQ4YTgyMTNiMy5wbmcKPiA+IAo+ID4ga2luZCByZWdhcmRzLAo+ID4gCW8uCj4g
-PiAKPiA+ID4gVGhhbmtzCj4gPiA+IEhlaWtvCj4gPiAKPiAKPiAKPiAKPiAKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Add the two Interrupt Translation Service (ITS) IPs that are part of the
+GIC-600, which are required for message signalled interrupts (MSI). This
+is required for PCIe, which fully relies on MSI for interrupts.
+
+Enabling the ITS nodes requires an operating system, that has a
+workaround for Rockchip errata #3588001 (GIC600 can not support
+shareable attribute).
+
+Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 2124c654f665..62204b96b0b4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1741,7 +1741,24 @@ gic: interrupt-controller@fe600000 {
+ 		mbi-alias = <0x0 0xfe610000>;
+ 		mbi-ranges = <424 56>;
+ 		msi-controller;
++		ranges;
++		#address-cells = <2>;
+ 		#interrupt-cells = <4>;
++		#size-cells = <2>;
++
++		its0: msi-controller@fe640000 {
++			compatible = "arm,gic-v3-its";
++			msi-controller;
++			#msi-cells = <1>;
++			reg = <0x0 0xfe640000 0x0 0x20000>;
++		};
++
++		its1: msi-controller@fe660000 {
++			compatible = "arm,gic-v3-its";
++			msi-controller;
++			#msi-cells = <1>;
++			reg = <0x0 0xfe660000 0x0 0x20000>;
++		};
+ 
+ 		ppi-partitions {
+ 			ppi_partition0: interrupt-partition-0 {
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
