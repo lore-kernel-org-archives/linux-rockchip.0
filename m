@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F42C77B72
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 12:39:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC110C77B76
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 14:37:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=friOC0cZ3jDcqGNBbUy9FSgamgRXXmjE3cAezXBqHxg=; b=OZ1nROacj84NS2
-	TIXhOf0MMCQaPxdFzz6qbIWjMsUuD3BdaffdcP8BzmqHcL2QqjcoKIPTrmpso9s4v/YmyALb8B13o
-	1j8wUZErac+A4lkjRXujMMfgfhj6IEM81UF/2JSY/EokPxYtVK21IWclebEr2N1Muv6E2npLLhAK3
-	rD1MCqAVXx85iXjgabhs4omHr7cBidYDdgY8mEMisy6/6a3LJWHUs72uemnNCWJ+Yt2yLPZmS/PHd
-	jGko3i/BP9eYtTpQCb2R0LAnPnyjhg/MNvsXH2rmAceUtS/Gd6lPvZgPA3Y4SzmFrxJPJcydgeS1u
-	KqOXWSzKXs1dOhlTOg4g==;
+	List-Owner; bh=PwShWXpOyJDyLEN+EQQ/B4yOU08XWzdyw0/VAdnmE7o=; b=4MJ03l/DkGpQMJ
+	uEPx7ta8xJQZOSQwEjZv6ka3tg6sPs8S2KiIT38QcOvuR8mycavc+vIsyGD49PWHzdXgzvdR7gT5z
+	gYNYjDSzaooCXiKnrFzA6uh5o1l5ddBLfmgntt1ZSRSZrfdPRWQY8/EOILPZc8A/dfUyPDWdFeLQU
+	BtggnZIVH9OfJQ+g5auZH2lHQ5GtnHm9GSIUDevQeSxnVKnoVFTluCDOcacA7Xnp78N9ctYCtpl1i
+	ljkO0Dt/Lcowuoc+V1CMSCbWyGWoothCgj+rCkqP6GxYPkvP4z5dvk42dQBkPZScPsGJBFCx1RWBV
+	YNZO+FNwuyvnhlyCNIew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poO8E-00GAIn-2E;
-	Mon, 17 Apr 2023 12:38:54 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1poPyi-00GemM-2e;
+	Mon, 17 Apr 2023 14:37:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poO8B-00GAHr-2C
-	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Apr 2023 12:38:53 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1poO88-0006IW-KR; Mon, 17 Apr 2023 14:38:48 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1poO88-0001gy-2e; Mon, 17 Apr 2023 14:38:48 +0200
-Date: Mon, 17 Apr 2023 14:38:48 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Chris Morgan <macroalpha82@gmail.com>,
-	=?iso-8859-15?Q?K=F6ry?= Maincent <kory.maincent@bootlin.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: vop2: fix suspend/resume
-Message-ID: <20230417123848.GN15436@pengutronix.de>
-References: <20230417094215.2049231-1-s.hauer@pengutronix.de>
- <7404631.18pcnM708K@diego>
+	id 1poPyf-00Gejm-23;
+	Mon, 17 Apr 2023 14:37:11 +0000
+Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1poPyS-0004Nw-FW; Mon, 17 Apr 2023 16:36:56 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: =?utf-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
+ Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Martijn Braam <martijn@brixit.nl>,
+ Caleb Connolly <kc@postmarketos.org>, Jarrah Gosbell <kernel@undef.tools>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject:  Re: [PATCH] arm64: dts: rk3399-pinephone-pro: Add support for volume keys
+Date: Mon, 17 Apr 2023 16:36:55 +0200
+Message-ID: <3377280.SvYEEZNnvj@diego>
+In-Reply-To: <20230417123716.c23izju4ezjrzytn@core>
+References:  <20230405123813.2272919-1-pbrobinson@gmail.com> <4152389.RUnXabflUD@diego>
+ <20230417123716.c23izju4ezjrzytn@core>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7404631.18pcnM708K@diego>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_053851_721616_0837A4C1 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20230417_073709_677121_B7DE5525 
+X-CRM114-Status: GOOD (  28.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,50 +60,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 17, 2023 at 12:46:05PM +0200, Heiko St=FCbner wrote:
-> Hi Sascha,
-> =
-
-> Am Montag, 17. April 2023, 11:42:15 CEST schrieb Sascha Hauer:
-> > During a suspend/resume cycle the VO power domain will be disabled and
-> > the VOP2 registers will reset to their default values. After that the
-> > cached register values will be out of sync and the read/modify/write
-> > operations we do on the window registers will result in bogus values
-> > written. Fix this by marking the regcache as dirty each time we disable
-> > the VOP2 and call regcache_sync() each time we enable it again. With
-> > this the VOP2 will show a picture after a suspend/resume cycle whereas
-> > without this the screen stays dark.
-> > =
-
-> > Fixes: 604be85547ce4 ("drm/rockchip: Add VOP2 driver")
-> > Cc: stable@vger.kernel.org
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> =
-
-> somehow we overlapped with this v2 and me applying the original one [0]
-> to drm-misc. With drm-misc being a shared tree there is also no way back.
-> =
-
-> So if this v2 is better suited, could do a follow-up patch instead - on
-> top of your original one?
-
-Alright, just did that. You should find it in your inbox.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAxNy4gQXByaWwgMjAyMywgMTQ6Mzc6MTYgQ0VTVCBzY2hyaWViIE9uZMWZZWog
+SmlybWFuOgo+IEhlbGxvIEhlaWtvLAo+IAo+IE9uIE1vbiwgQXByIDE3LCAyMDIzIGF0IDEwOjM0
+OjIwQU0gKzAyMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gSGkgUGV0ZXIsIE9uZHJlaiwK
+PiA+IAo+ID4gQW0gTWl0dHdvY2gsIDUuIEFwcmlsIDIwMjMsIDE1OjUzOjM5IENFU1Qgc2Nocmll
+YiBPbmTFmWVqIEppcm1hbjoKPiA+ID4gWy4uLl0KPiA+ID4KPiA+ID4gKEkgaGF2ZSB0byBwcmVz
+cyBxdWl0ZSBoYXJkIHRvIGdldCBiZWxsb3cgMzAwIGFuZCB0byBnZXQgcmVsaWFibGUgZGV0ZWN0
+aW9uCj4gPiA+IG9mIHZvbHVtZSBkb3duIGtleSBwcmVzcykKPiA+ID4gCj4gPiA+IE9uIGRldmVs
+b3BtZW50IHZlcnNpb24gb2YgdGhlIHBob25lLCB0aGUgdmFsdWUgcmV0dXJuZWQgYnkgc2FyZGFj
+IGlzIGxlc3MKPiA+ID4gdmFyaWFibGUuIEJhc2ljYWxseSBlaXRoZXIgMjk4LjgyODEyNSBvciAz
+MDAuNTg1OTM3NSBidXQgaXQncyBhbHNvIG9uCj4gPiA+IHRoZSBlZGdlLgo+ID4gPiAKPiA+ID4g
+SSBzdWdnZXN0IHJhaXNpbmcgdGhlIHRocmVzaG9sZCB0byBzb21ldGhpbmcgbGlrZSA2MDAgYW5k
+IHRvIGRvIHlvdXIgb3duCj4gPiA+IHRlc3RpbmcsIHRvIGdldCBtb3JlIGRhdGEgcG9pbnRzLiBV
+bnByZXNzZWQgdmFsdWUgaXMgfjE3OTEuMjEwOTM3NSBvbiBib3RoCj4gPiA+IHBob25lcywgc28g
+NDAwIHN0aWxsIGdldHMgYSBsb3Qgb2YgaGVhZHJvb20uIEFuZCB2b2x1bWUgdXAgaXMgYWx3YXlz
+IDwgMTUKPiA+ID4gaW4gbXkgdGVzdHMuCj4gPiAKPiA+IGRpZCB0aGlzIGdldCBtb3JlIGF0dGVu
+dGlvbiBtZWFud2hpbGU/Cj4gPiAKPiA+IEkgZG9uJ3QgaGF2ZSBhIFBpbmVwaG9uZSBQcm8gbXlz
+ZWxmLCBzbyB5b3UnbGwgbmVlZCB0byBkZWNpZGUgYmV0d2VlbiB5b3UKPiA+IGFib3V0IHRoZSB2
+YWx1ZSBhbmQgdGhlIGNvbmNlcm4gT25kcmVqIHJhaXNlZCBoZXJlIGZvciB0aGUgdmFsdWUuCj4g
+Cj4gSXQncyBzYWZlIGFuZCBuZWVkZWQgdG8gdXNlIGEgaGlnaGVyIHZhbHVlLgoKc28gaW4gYSBu
+dXRzaGVsbCwgaWYgSSBjaGFuZ2UgIlZvbHVtZSBEb3duIiB0byBzYXkgNDAwMDAwIGluc3RlYWQg
+b2YgdGhlCmN1cnJlbnQgMzAwMDAwLCB0aGUgcGF0Y2ggaXMgZ29vZCB0byBnbz8KCkkuZS4gdGhh
+dCB3YXMgbXkgbWFpbiBxdWVzdGlvbiA6LSksIGFzIHlvdSByYWlzZWQgdGhlIG9iamVjdGlvbiB0
+byB0aGUgdmFsdWUKaW4geW91ciBpbml0aWFsIHJlcGx5CgpUaGFua3MKSGVpa28KCgoKPiBTQVIg
+QURDIGlucHV0IGlzIHB1bGxlZCBoaWdoIHRvIDEuOFYgdW5sZXNzIHNvbWUga2V5IGlzIHByZXNz
+ZWQsIHNvIHVucHJlc3NlZAo+IHZhbHVlIHdpbGwgYWx3YXlzIGJlIGFyb3VuZCAxODAwIG9uIGFs
+bCBQaW5lcGhvbmVzLCBhbmQgcHJlc3NlZCB2YWx1ZSB3aWxsCj4gZGVwZW5kIG9uIGNvbnRhY3Qg
+cXVhbGl0eSBhbmQgdG9sZXJhbmNlcy4gRm9yIHZvbHVtZSBkb3duLCBTQVIgQURDIGlucHV0IGlz
+IGZlZAo+IGZyb20gYSByZXNpc3RvciBkaXZpZGVyIG9mICgxMGtPaG0gKyAya09obSkgZnJvbSAx
+LjhWIHBvd2VyIHJhaWwuIFNvIHRoYXQgZ2l2ZXMKPiAyLzEyKjEuOCA9IDAuM1YuIFdlIGNhbid0
+IGhhdmUgdGhlIHByZXNzIGRldGVjdGlvbiB0aHJlc2hvbGQgcmlnaHQgYXQgdGhpcwo+IHZvbHRh
+Z2UsIGJlY2F1c2U6Cj4gCj4gMSkgdGhlc2UgcmVzaXN0b3JzIGhhdmUgdG9sZXJhbmNlcyB0aGF0
+IHdpbGwgcmFuZG9tbHkgcmVzdWx0IGluIG1lYXN1cmVkIHZvbHRhZ2UKPiAgICBiZWluZyBhYm92
+ZSBvciBiZWxvdyB0aGUgMC4zViBvbiByZWFsIGRldmljZXMgKC0xJSBvbiAxMGsgYW5kICsxJSBv
+biAyayA9Cj4gICAgMioxLjAxLygxMCowLjk5KzIqMS4wMSkqMS44ID0gMzA1IG1WIC0gYWxyZWFk
+eSB0b28gaGlnaCBldmVuIHdpdGhvdXQKPiAgICBjb25zaWRlcmluZyBzd2l0Y2ggY29udGFjdCBx
+dWFsaXR5KSwgYW5kCj4gCj4gMikgdGhvc2UgcGlkZGx5IG1lbWJyYW5lIHN3aXRjaGVzIGFwcGFy
+ZW50bHkgaGF2ZSB0aGVpciBvd24gcmFuZG9tIHJlc2lzdGFuY2UKPiAgICB0aGF0IGlzIGFkZGVk
+IHRvIHRoZSBib3R0b20gbGVnIG9mIHRoZSByZXNpc3RvciBkaXZpZGVyLCBhbmQgZGVwZW5kcyBv
+bgo+ICAgIHN0cmVuZ2h0IG9mIHRoZSBwcmVzcyBvbiBzb21lIGRldmljZXMgKGFuZCBzd2l0Y2hl
+cyBtYXkgZGV2ZWxvcCBoaWdoZXIKPiAgICByZXNpc3RhbmNlIHdpdGggYWdlL3VzZSkuCj4gCj4g
+U2NoZW1hdGljOiBodHRwczovL21lZ291cy5jb20vZGwvdG1wLzExMjVkOTI0OGE4MjEzYjMucG5n
+Cj4gCj4ga2luZCByZWdhcmRzLAo+IAlvLgo+IAo+ID4gVGhhbmtzCj4gPiBIZWlrbwo+IAoKCgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
