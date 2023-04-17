@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98EB3C77B7C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 16:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F6EC77B7A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 16:39:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fU4DrceZrCE/FSgiqcPyLlMW5QnrEz4DflEjOLu7jlQ=; b=RU2isvpVaVHsU3
-	doXEWrWPaY9w6ultLNHpNYW8iM3mcOzh5bGk7kA3JyrhsjLShqU+wRKAJi1TEQ/EbXNK/dcfNZcEO
-	uQ6QmdzFmWjLJdoaBoUTJ1QETvA3xTqi81Cf2H6/nFJzTxZ7LsFe9KMQN8wrlad3n4HKqjWuHrcH+
-	M3/bl8jnjnK1IRNdMErwEKppVMMkfbuTAH99lgon5KzzCCn1h5V3oZW2H56dDsxDGNTnck/7QOYLa
-	A3hieHElZici+GL7QGNrLh+ZfASbf7eISxarCn3ufpa640MGG4+/E53Ba7ZxUnmoOhdJgpfqzDHQd
-	mld2s1TYGTQC8GiWTqlw==;
+	List-Owner; bh=RiUUYe9jTTtDLFmLg1GB0UQ5X4/sBBp0gzOaZntAwkQ=; b=xJiJ31kf4ajITM
+	9W/R8QDeF49fwHAjgK8yievDQ5j08YheoYvlGY9CBYxirrIZvda1F0/5a6h6f/LN/CxnKWEuakHqr
+	v3fseMneoTeUnLqUWVVSgb4TqIPtTt6IA0RIehqxG37DAwuo090tg/xHJt4XGz9n4/TvO7l0cnG51
+	kCGqizyYU3HkXDqM1XG5Sfz8qzWR0gXuWD8MDZy+gRqfxAxsF3ClkQRHxovatYtb8xoj8eMqdvE+T
+	wmXcEa+vbik126KtUVI6zIEQAnBDNsQiEJYjJMKDUM6FpfjTtC6XyR6bSWKwYc1ElkMYUhYh+3Ko4
+	MaPGoUdUtZBPPzg3T3yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poRaS-00H2Cc-1B;
-	Mon, 17 Apr 2023 16:20:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1poRsu-00H5MB-0z;
+	Mon, 17 Apr 2023 16:39:20 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poRaO-00H2BN-20
+	id 1poRsq-00H5L7-2O
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Apr 2023 16:20:14 +0000
+	Mon, 17 Apr 2023 16:39:17 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1D0B661AA0;
-	Mon, 17 Apr 2023 16:20:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AE52C433EF;
-	Mon, 17 Apr 2023 16:20:11 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DA9B561A11;
+	Mon, 17 Apr 2023 16:39:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C1DCC433D2;
+	Mon, 17 Apr 2023 16:39:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681748411;
-	bh=ovq0dAe9YExxWLPtp/LtdQybTaTI7PMbidkz/BffUyQ=;
+	s=k20201202; t=1681749553;
+	bh=cjNKKMHdrHO2WstsJosUdEUm+sLD/6tKUreVY2xuCjg=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=WSjzx2SS1PjYxNfmKc5AUJ9T4VFmlE2eRXQxkmpluE/0Be/wnsf9cGeBAJ2j0vz/5
-	 oROf1CGCgSgT5SrQf97vwbmDssKuVmXCeMIGMNo4ieapjhtInUWxp+ZFvsdIRLhkdN
-	 ihVQMV1HD9fRlIFy10SmmJZyNqm7CpOKwvtRzoVjoOD7FHbUzMAV1q8vJfE7qdLhEl
-	 CJel4ol0hig38bwaflMP++jQXHpURGZwqKfkMPpbPF3MRHG9kP8QdC8dQZzKaLHQX7
-	 QnHWkLcozPzHxEuEq0GpdtOVov+BiyjsMze4t7tOJEzUbUJsCrPt03Do4m1mlio7Ag
-	 QrfR6XC3M5CTg==
+	b=KdX1cd9ljXqYNZsfAbNsWfoSGDGQwRVAp7W3ZcCtdqzr3pGppXmB9Cfqm4m3qVlW2
+	 443tmXPoreI6N8B808WkUW5fRXk8vftd/AoWRIAnYPIJNKiEl/F/C37o6msNVSXaf3
+	 wsrtdEu2PpgD7Z+bAmNYuAnKQDEW90HVQEeu2m2Sml341AYOZrVnkecdu09OPVPOKG
+	 GSLmXZx4tjyvgTlT0FoGwSkyud43Heu5qQ33DWDYne2pCr3SJFzNMLBelL717LLv9L
+	 QlssVszIufxHY0OKo46qVWmPGsOO2qrpLvXYg+QXsiyVe/6Rj/ibTKg6vQCfeRrmbR
+	 FHsJ2g/Le3Yyw==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
 	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.95)
 	(envelope-from <maz@kernel.org>)
-	id 1poRaK-0094tX-Q6;
-	Mon, 17 Apr 2023 17:20:08 +0100
-Date: Mon, 17 Apr 2023 17:20:08 +0100
-Message-ID: <86a5z6lbuv.wl-maz@kernel.org>
+	id 1poRsk-00956z-Pn;
+	Mon, 17 Apr 2023 17:39:10 +0100
+Date: Mon, 17 Apr 2023 17:39:10 +0100
+Message-ID: <868reqlaz5.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -67,10 +67,10 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] irqchip/gic-v3: Add Rockchip 3588001 errata workaround
-In-Reply-To: <20230417150038.51698-2-sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: rk3588: add MSI support
+In-Reply-To: <20230417150038.51698-3-sebastian.reichel@collabora.com>
 References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
-	<20230417150038.51698-2-sebastian.reichel@collabora.com>
+	<20230417150038.51698-3-sebastian.reichel@collabora.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
  (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -80,8 +80,8 @@ X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, heiko@sntech.de, robh+dt@ker
 X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_092012_744893_224D0398 
-X-CRM114-Status: GOOD (  41.61  )
+X-CRM114-CacheID: sfid-20230417_093916_819275_2120E2C8 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,293 +98,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Apr 2023 16:00:37 +0100,
+On Mon, 17 Apr 2023 16:00:38 +0100,
 Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
 > 
-> Rockchip RK3588/RK3588s GIC600 integration is not cache coherent. Thus
-> even though the GIC600 itself supports the sharability feature, it may
-> not be used. Rockchip assigned Errata ID #3588001 for this issue.
+> Add the two Interrupt Translation Service (ITS) IPs that are part of the
+> GIC-600, which are required for message signalled interrupts (MSI). This
+> is required for PCIe, which fully relies on MSI for interrupts.
 > 
-> The RK3588's GIC600 IP is using ARM's ID in the IIDR register
-> (0x0201743b), so it cannot be used to apply the quirk. Thus I used the
-> machine compatible instead.
+> Enabling the ITS nodes requires an operating system, that has a
+> workaround for Rockchip errata #3588001 (GIC600 can not support
+> shareable attribute).
 
-These are not incompatible requirements, see below.
-
-> 
-> I named the flag ITS_FLAGS_BROKEN_SHAREABILITY to be vendor agnostic,
-> since apparently similar integration design errors exist in other
-> platforms and they can reuse the same flag.
-> 
-> Co-developed-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Signed-off-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Co-developed-by: Lucas Tanure <lucas.tanure@collabora.com>
-> Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  Documentation/arm64/silicon-errata.rst |  3 +++
->  arch/arm64/Kconfig                     | 10 ++++++++++
->  drivers/irqchip/irq-gic-v3-its.c       | 25 +++++++++++++++++++++++++
->  3 files changed, 38 insertions(+)
-> 
-> diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arm64/silicon-errata.rst
-> index ec5f889d7681..46d06ed3e4f4 100644
-> --- a/Documentation/arm64/silicon-errata.rst
-> +++ b/Documentation/arm64/silicon-errata.rst
-> @@ -205,6 +205,9 @@ stable kernels.
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Qualcomm Tech. | Kryo4xx Gold    | N/A             | ARM64_ERRATUM_1286807       |
->  +----------------+-----------------+-----------------+-----------------------------+
-> ++----------------+-----------------+-----------------+-----------------------------+
-> +| Rockchip       | RK3588          | #3588001        | ROCKCHIP_ERRATUM_3588001    |
-> ++----------------+-----------------+-----------------+-----------------------------+
-
-Finally. It only took two years... :-/
-
->
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
-> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-> index 1023e896d46b..640619459648 100644
-> --- a/arch/arm64/Kconfig
-> +++ b/arch/arm64/Kconfig
-> @@ -1150,6 +1150,16 @@ config NVIDIA_CARMEL_CNP_ERRATUM
->  
->  	  If unsure, say Y.
->  
-> +config ROCKCHIP_ERRATUM_3588001
-> +	bool "Rockchip 3588001: GIC600 can not support shareable attribute"
-
-s/shareable attributes/shareability attributes/
-
-> +	default y
-> +	help
-> +	  The Rockchip RK3588 GIC600 SoC integration does not support ACE/ACE-lite
-> +	  and thus is not cache coherent. This means, that the GIC600 may not use
-> +	  the sharability feature even though it is supported by the IP itself.
-
-Shareability and cache coherence are not the same thing. The latter
-derive from the former, but not the other way around. So please drop
-any reference to cache coherency, because that's not the problem at
-hand.
-
-> +
-> +	  If unsure, say Y.
-> +
->  config SOCIONEXT_SYNQUACER_PREITS
->  	bool "Socionext Synquacer: Workaround for GICv3 pre-ITS"
->  	default y
-> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-> index 586271b8aa39..0701d0b67690 100644
-> --- a/drivers/irqchip/irq-gic-v3-its.c
-> +++ b/drivers/irqchip/irq-gic-v3-its.c
-> @@ -42,6 +42,7 @@
->  #define ITS_FLAGS_CMDQ_NEEDS_FLUSHING		(1ULL << 0)
->  #define ITS_FLAGS_WORKAROUND_CAVIUM_22375	(1ULL << 1)
->  #define ITS_FLAGS_WORKAROUND_CAVIUM_23144	(1ULL << 2)
-> +#define ITS_FLAGS_BROKEN_SHAREABILITY		(1ULL << 3)
->  
->  #define RDIST_FLAGS_PROPBASE_NEEDS_FLUSHING	(1 << 0)
->  #define RDIST_FLAGS_RD_TABLES_PREALLOCATED	(1 << 1)
-> @@ -2359,6 +2360,13 @@ static int its_setup_baser(struct its_node *its, struct its_baser *baser,
->  	its_write_baser(its, baser, val);
->  	tmp = baser->val;
->  
-> +	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY) {
-> +		if (tmp & GITS_BASER_SHAREABILITY_MASK)
-> +			tmp &= ~GITS_BASER_SHAREABILITY_MASK;
-> +		else
-> +			gic_flush_dcache_to_poc(base, PAGE_ORDER_TO_SIZE(order));
-> +	}
-
-Hmmm. This doesn't really make much sense: why only clear the
-shareability if it is set? You know, by definition, that it is not
-working anyway.
-
-Also, why the clean to PoC? We already have it a few lines below...
-
-> +
->  	if ((val ^ tmp) & GITS_BASER_SHAREABILITY_MASK) {
->  		/*
->  		 * Shareability didn't stick. Just use
-> @@ -3055,6 +3063,7 @@ static u64 its_clear_vpend_valid(void __iomem *vlpi_base, u64 clr, u64 set)
->  
->  static void its_cpu_init_lpis(void)
->  {
-> +	struct its_node *its = list_first_entry(&its_nodes, struct its_node, entry);
->  	void __iomem *rbase = gic_data_rdist_rd_base();
->  	struct page *pend_page;
->  	phys_addr_t paddr;
-> @@ -3096,6 +3105,9 @@ static void its_cpu_init_lpis(void)
->  	gicr_write_propbaser(val, rbase + GICR_PROPBASER);
->  	tmp = gicr_read_propbaser(rbase + GICR_PROPBASER);
->  
-> +	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-> +		tmp &= ~GICR_PROPBASER_SHAREABILITY_MASK;
-> +
-
-Why treat ITS and redistributor the same way? We have redistributor
-flags already.
-
->  	if ((tmp ^ val) & GICR_PROPBASER_SHAREABILITY_MASK) {
->  		if (!(tmp & GICR_PROPBASER_SHAREABILITY_MASK)) {
->  			/*
-> @@ -3120,6 +3132,9 @@ static void its_cpu_init_lpis(void)
->  	gicr_write_pendbaser(val, rbase + GICR_PENDBASER);
->  	tmp = gicr_read_pendbaser(rbase + GICR_PENDBASER);
->  
-> +	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-> +		tmp &= ~GICR_PENDBASER_SHAREABILITY_MASK;
-> +
->  	if (!(tmp & GICR_PENDBASER_SHAREABILITY_MASK)) {
->  		/*
->  		 * The HW reports non-shareable, we must remove the
-> @@ -4765,6 +4780,13 @@ static void its_enable_quirks(struct its_node *its)
->  	u32 iidr = readl_relaxed(its->base + GITS_IIDR);
->  
->  	gic_enable_quirks(iidr, its_quirks, its);
-> +
-> +#ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
-> +	if (of_machine_is_compatible("rockchip,rk3588")) {
-> +		its->flags |= ITS_FLAGS_BROKEN_SHAREABILITY;
-> +		pr_info("GIC: enabling workaround for Rockchip #3588001\n");
-> +	}
-> +#endif
-
-What prevents you from implementing this as a standard quirk and apply
-further filtering inside the callback?
-
->  }
->  
->  static int its_save_disable(void)
-> @@ -5096,6 +5118,9 @@ static int __init its_probe_one(struct resource *res,
->  	gits_write_cbaser(baser, its->base + GITS_CBASER);
->  	tmp = gits_read_cbaser(its->base + GITS_CBASER);
->  
-> +	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-> +		tmp &= ~GITS_CBASER_SHAREABILITY_MASK;
-> +
-
-And here, you correctly deal with the masking of the attributes. Why
-the lack of consistency?
-
-Please see below for an untested diff against your patch, addressing
-most of the issues mentioned here.
-
-Also, I don't see anything here addressing the *other* bug this
-platform suffers from, which is the 32bit limit to the allocations.
-Without a fix for it, this patch is pointless as the GIC may end-up
-with memory it cannot reach.
-
-What;s the plan for that?
+$SUBJECT is inaccurate. This adds the descriptions of the ITSs, but
+doesn't wire any MSI support at all (nobody even refers these
+nodes, so the whole thing is pretty pointless).
 
 	M.
-
-diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-index 0701d0b67690..dcdcffb4ca86 100644
---- a/drivers/irqchip/irq-gic-v3-its.c
-+++ b/drivers/irqchip/irq-gic-v3-its.c
-@@ -46,6 +46,7 @@
- 
- #define RDIST_FLAGS_PROPBASE_NEEDS_FLUSHING	(1 << 0)
- #define RDIST_FLAGS_RD_TABLES_PREALLOCATED	(1 << 1)
-+#define RDIST_FLAGS_BROKEN_SHAREABILITY		(1 << 2)
- 
- #define RD_LOCAL_LPI_ENABLED                    BIT(0)
- #define RD_LOCAL_PENDTABLE_PREALLOCATED         BIT(1)
-@@ -2360,12 +2361,8 @@ static int its_setup_baser(struct its_node *its, struct its_baser *baser,
- 	its_write_baser(its, baser, val);
- 	tmp = baser->val;
- 
--	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY) {
--		if (tmp & GITS_BASER_SHAREABILITY_MASK)
--			tmp &= ~GITS_BASER_SHAREABILITY_MASK;
--		else
--			gic_flush_dcache_to_poc(base, PAGE_ORDER_TO_SIZE(order));
--	}
-+	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-+		tmp &= ~GITS_BASER_SHAREABILITY_MASK;
- 
- 	if ((val ^ tmp) & GITS_BASER_SHAREABILITY_MASK) {
- 		/*
-@@ -3063,7 +3060,6 @@ static u64 its_clear_vpend_valid(void __iomem *vlpi_base, u64 clr, u64 set)
- 
- static void its_cpu_init_lpis(void)
- {
--	struct its_node *its = list_first_entry(&its_nodes, struct its_node, entry);
- 	void __iomem *rbase = gic_data_rdist_rd_base();
- 	struct page *pend_page;
- 	phys_addr_t paddr;
-@@ -3105,7 +3101,7 @@ static void its_cpu_init_lpis(void)
- 	gicr_write_propbaser(val, rbase + GICR_PROPBASER);
- 	tmp = gicr_read_propbaser(rbase + GICR_PROPBASER);
- 
--	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-+	if (gic_rdists->flags & RDIST_FLAGS_BROKEN_SHAREABILITY)
- 		tmp &= ~GICR_PROPBASER_SHAREABILITY_MASK;
- 
- 	if ((tmp ^ val) & GICR_PROPBASER_SHAREABILITY_MASK) {
-@@ -3132,7 +3128,7 @@ static void its_cpu_init_lpis(void)
- 	gicr_write_pendbaser(val, rbase + GICR_PENDBASER);
- 	tmp = gicr_read_pendbaser(rbase + GICR_PENDBASER);
- 
--	if (its->flags & ITS_FLAGS_BROKEN_SHAREABILITY)
-+	if (gic_rdists->flags & RDIST_FLAGS_BROKEN_SHAREABILITY)
- 		tmp &= ~GICR_PENDBASER_SHAREABILITY_MASK;
- 
- 	if (!(tmp & GICR_PENDBASER_SHAREABILITY_MASK)) {
-@@ -4725,6 +4721,19 @@ static bool __maybe_unused its_enable_quirk_hip07_161600802(void *data)
- 	return true;
- }
- 
-+static bool __maybe_unused its_enable_rk3388001(void *data)
-+{
-+	struct its_node *its = data;
-+
-+	if (!of_machine_is_compatible("rockchip,rk3588"))
-+		return false;
-+
-+	its->flags |= ITS_FLAGS_BROKEN_SHAREABILITY;
-+	gic_rdists->flags |= RDIST_FLAGS_BROKEN_SHAREABILITY;
-+
-+	return true;
-+}
-+
- static const struct gic_quirk its_quirks[] = {
- #ifdef CONFIG_CAVIUM_ERRATUM_22375
- 	{
-@@ -4770,6 +4779,14 @@ static const struct gic_quirk its_quirks[] = {
- 		.mask	= 0xffffffff,
- 		.init	= its_enable_quirk_hip07_161600802,
- 	},
-+#endif
-+#ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
-+	{
-+		.desc	= "ITS: Rockchip erratum RK3588001",
-+		.iidr	= 0x0201743b,
-+		.mask	= 0xffffffff,
-+		.init	= its_enable_rk3388001,
-+	},
- #endif
- 	{
- 	}
-@@ -4780,13 +4797,6 @@ static void its_enable_quirks(struct its_node *its)
- 	u32 iidr = readl_relaxed(its->base + GITS_IIDR);
- 
- 	gic_enable_quirks(iidr, its_quirks, its);
--
--#ifdef CONFIG_ROCKCHIP_ERRATUM_3588001
--	if (of_machine_is_compatible("rockchip,rk3588")) {
--		its->flags |= ITS_FLAGS_BROKEN_SHAREABILITY;
--		pr_info("GIC: enabling workaround for Rockchip #3588001\n");
--	}
--#endif
- }
- 
- static int its_save_disable(void)
-
 
 -- 
 Without deviation from the norm, progress is not possible.
