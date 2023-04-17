@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D039AC77B72
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 21:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0635DC77B76
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 22:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0vzN3ZMJIYYJj5Q/i8xfQu3NwluwmRdyXCI26sf63qM=; b=Hit598eci7kWie
-	ILNCbtEtDLLDKOxBzq/ct33duGBjQOjI0/q1RzzNlwCZDAC5mYUtnaHNjfsbF4HVB6vcZ9saHIKnt
-	M1Al7AOB3loH2ZGVKWYr/kmoxbqwV4GQKdgct1k3IIVV7ubPwlgQ44diinGdm4ZQGVWMLuTeEVt83
-	hn7XxSYqDo4PkcdkdD/cPKL38bQZNhqRbC7fIQdlNGOxPdFPoNqBcYfPpi8Sig2w8Haf5X5T8oaEr
-	Dw+IiuU5/mlWQzNHDYlE6llneAVK4VGojyZ3pAil+1DKQ/Sx46DfBsNyh/oQt1jKgtPPneRBGhJe9
-	ResGwGH59iZXMtEkcqLQ==;
+	List-Owner; bh=jE6c47dzN6+ihT9idk21tE+ZZuTTEcmGHTHkEQ+3w4g=; b=YLYYRcIiWq6I5v
+	+7XnPVAUTU+2HCCtGhgZ2rwIMTQbXvbhsHsZxkzxgDTW5I3YUuOrq+qAi2+mFc8CEdFEgCoUr5roc
+	jnJH4wEPm8AKSE8ZQO68w6YXDGQTky3QLo2rQ0vbcRLAzqC2p0dFqkOXvMzJhD8UYPJejOQvykREV
+	+78deIOJ6FYwHd+MgiKJX1RkksqTYxPRYc7lCVp8Y6CwAZv8jKi5ANL6kMTDgmy5qcIWnDI1RQzIt
+	F9Xs6jMOrNtgpoLRmExJlIbJ17s/fZLeTTzcDSboxRsc2BL0YXfFgEEeGzInGNaDUsWs1WRlIKvlr
+	QkoC8xHP3k/CFXUHPl6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poWeD-0008FY-0o;
-	Mon, 17 Apr 2023 21:44:29 +0000
+	id 1poXZr-000JHM-23;
+	Mon, 17 Apr 2023 22:44:03 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poWeA-0008EF-3C
-	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Apr 2023 21:44:28 +0000
+	id 1poXZp-000JGd-12;
+	Mon, 17 Apr 2023 22:44:02 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1poWe0-0006wK-FQ; Mon, 17 Apr 2023 23:44:16 +0200
+	id 1poXZf-0007IA-MH; Tue, 18 Apr 2023 00:43:51 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	stable@vger.kernel.org,
-	=?UTF-8?q?K=C3=B6ry=20Maincent?= <kory.maincent@bootlin.com>,
-	Chris Morgan <macroalpha82@gmail.com>,
+To: Martijn Braam <martijn@brixit.nl>,
+	Rob Herring <robh+dt@kernel.org>,
+	Caleb Connolly <kc@postmarketos.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
 	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de
-Subject: Re: [PATCH] drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume
-Date: Mon, 17 Apr 2023 23:44:14 +0200
-Message-Id: <168176784870.3951774.15858460527087012477.b4-ty@sntech.de>
+	Peter Robinson <pbrobinson@gmail.com>,
+	Ondrej Jirman <megi@xff.cz>,
+	linux-arm-kernel@lists.infradead.org,
+	Jarrah Gosbell <kernel@undef.tools>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	=?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>
+Subject: Re: [PATCH] arm64: dts: rk3399-pinephone-pro: Add support for volume keys
+Date: Tue, 18 Apr 2023 00:43:50 +0200
+Message-Id: <168177137686.3957008.3968889356953831815.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230417123747.2179695-1-s.hauer@pengutronix.de>
-References: <20230417123747.2179695-1-s.hauer@pengutronix.de>
+In-Reply-To: <20230405123813.2272919-1-pbrobinson@gmail.com>
+References: <20230405123813.2272919-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_144427_023440_D9361AB6 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20230417_154401_360176_17E71977 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,20 +72,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Apr 2023 14:37:47 +0200, Sascha Hauer wrote:
-> afa965a45e01 ("drm/rockchip: vop2: fix suspend/resume") uses
-> regmap_reinit_cache() to fix the suspend/resume issue with the VOP2
-> driver. During discussion it came up that we should rather use
-> regcache_sync() instead. As the original patch is already applied
-> fix this up in this follow-up patch.
+On Wed, 5 Apr 2023 13:38:13 +0100, Peter Robinson wrote:
+> From: Ondrej Jirman <megi@xff.cz>
+> 
+> These are implemented via regular ADC, so regular polling is needed,
+> for these keys to work.
 > 
 > 
-> [...]
 
 Applied, thanks!
 
-[1/1] drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume
-      commit: b63a553e8f5aa6574eeb535a551817a93c426d8c
+[1/1] arm64: dts: rk3399-pinephone-pro: Add support for volume keys
+      commit: d3150ed535805403291b95fd84b00b0b5ef41096
+
+With Volume Down increased to 600mV as suggested by Ondrej
 
 Best regards,
 -- 
