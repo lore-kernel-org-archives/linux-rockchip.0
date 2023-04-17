@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FF0C77B76
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 09:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AC9DC77B72
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 09:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qfhhw9VISw0tKDlvzJIt46VoI9qSos/pKKIu2dviZ0g=; b=vXXIuwcyWcgTtF
-	vtFaBP7T1FCX9NO7JCZqL8HKyb5RcNU8SNTt9oKu7UDt/Rte6VVvZD6tPVp/BXy5VRcgeSYaU8DhZ
-	02X7bC1V0vF2GYUKOeAY2jn6IA55HfCx8LRsecNTfWDI/DFaoqZy8SpT0MfA6YwsvBeitmIwIZUY5
-	z69Fu/4RSR9N59fzK+irx/ToBU4NuwHuoozgoShTpkH5ebkEgAIe2+fM2TP8LFIY8pGvWvc6qNLVR
-	aJk6Z4I3YIWCrw3hFcStD3nEoY7CGV2F/T30ZJvICDQqZxh6zLjB0eJf/laSRWkbhRrVK9Sg4bZ0t
-	NmoTdhzSYMhAJCKRxnrg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IDAqEOQaVECow9pj3LAaSklyYRjFtBi0fEvk9bg95ZM=; b=ROwf66UyHAcILA
+	pvzuODw9jK5AIBdUc5amNyG7YI0bd1OmAn3X58EwtR+/mACdN3ZHN2rl7PwxV86413aFMMXSg4mZc
+	eSapWdTP2EdhdknpQSijqWq+Sd4RJjVidi3+YNBBxWv3babhafgvXTGhAqaMqudArUnJxFCVPNxm/
+	6IUU+pEy/HQ569fDXVq3Vq3g/OzlYyPkYREls3gtLekhfk04OaMFlkp0mfKdR4CohmDSx1QUZUOcr
+	eq7KmGENRpp2JOOZVHrNDzmK4TmBPOrmfBT7ge4JfteFA0HxYMtT6dIOZRNPuQsWRRaVp9NdZ+4BK
+	9pCKizpMzQj0g7izsBaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHJ-00FaqW-26;
-	Mon, 17 Apr 2023 09:36:05 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1poLNd-00Fc5x-0U;
+	Mon, 17 Apr 2023 09:42:37 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poLHF-00FaoI-2L;
-	Mon, 17 Apr 2023 09:36:02 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1poLHB-00027c-EW; Mon, 17 Apr 2023 11:35:57 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Shreeya Patel <shreeya.patel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	linux-kernel@vger.kernel.org,
+	id 1poLNa-00Fc54-1r
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Apr 2023 09:42:36 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poLNS-0005ME-3r; Mon, 17 Apr 2023 11:42:26 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poLNN-00BqNa-LE; Mon, 17 Apr 2023 11:42:21 +0200
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poLNM-008b6M-Sb; Mon, 17 Apr 2023 11:42:20 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: dri-devel@lists.freedesktop.org
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 0/3] Add regulators to Rock 5B's CPU big cores
-Date: Mon, 17 Apr 2023 11:35:54 +0200
-Message-Id: <168172146374.3844162.4496409077876685871.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230414125425.124994-1-cristian.ciocaltea@collabora.com>
-References: <20230414125425.124994-1-cristian.ciocaltea@collabora.com>
+	kernel@pengutronix.de,
+	Chris Morgan <macroalpha82@gmail.com>,
+	=?UTF-8?q?K=C3=B6ry=20Maincent?= <kory.maincent@bootlin.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/rockchip: vop2: fix suspend/resume
+Date: Mon, 17 Apr 2023 11:42:15 +0200
+Message-Id: <20230417094215.2049231-1-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_023601_760926_4289D6A0 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20230417_024234_617669_74360148 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,28 +79,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Apr 2023 15:54:22 +0300, Cristian Ciocaltea wrote:
-> The CPU big cores on the Rock 5B board are powered by the RK8602/RK8603
-> regulators. Since the support for those regulators has been recently
-> merged via [1], add the necessary device tree nodes and bind them to
-> the corresponding CPU nodes.
-> 
-> Additionally, provide a couple of unrelated DTS fixes/improvements.
-> 
-> [...]
+During a suspend/resume cycle the VO power domain will be disabled and
+the VOP2 registers will reset to their default values. After that the
+cached register values will be out of sync and the read/modify/write
+operations we do on the window registers will result in bogus values
+written. Fix this by marking the regcache as dirty each time we disable
+the VOP2 and call regcache_sync() each time we enable it again. With
+this the VOP2 will show a picture after a suspend/resume cycle whereas
+without this the screen stays dark.
 
-Applied, thanks!
+Fixes: 604be85547ce4 ("drm/rockchip: Add VOP2 driver")
+Cc: stable@vger.kernel.org
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
 
-[1/3] arm64: dts: rockchip: Drop RTC clock-frequency on rk3588-rock-5b
-      commit: d7f5e83913d1bcd50968972a7b50e49c9a14b2af
-[2/3] arm64: dts: rockchip: Use generic name for es8316 on Pinebook Pro and Rock 5B
-      commit: 0af7164cb0e076dbfeed28956658a1ad94bd5927
-[3/3] arm64: dts: rockchip: Add vdd_cpu_big regulators to rk3588-rock-5b
-      commit: 1bb69cd4a344299a382695a2de1a84c0b23fe6da
+Changes since v1:
+- Use regcache_mark_dirty()/regcache_sync() instead of regmap_reinit_cache()
 
-Best regards,
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index ba3b817895091..293c228a83f90 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -839,6 +839,8 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
+ 	}
+ 
++	regcache_sync(vop2->map);
++
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+ 
+@@ -867,6 +869,8 @@ static void vop2_disable(struct vop2 *vop2)
+ 
+ 	pm_runtime_put_sync(vop2->dev);
+ 
++	regcache_mark_dirty(vop2->map);
++
+ 	clk_disable_unprepare(vop2->aclk);
+ 	clk_disable_unprepare(vop2->hclk);
+ }
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
