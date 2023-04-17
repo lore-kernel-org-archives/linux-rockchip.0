@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0CD4C77B72
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 12:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A32F3C77B70
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 12:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9YMzEzFdhLFp2YkvPS1exdcHtrwvmKDdWS3mdUMwNSc=; b=dkWPafCfqLPLgj
-	W7SMWFDo5kNDp2vAoR2fgX+hmsJmY5xSA6wILQPS/ZhZF3QqNk6nPRiMcNmPCov76b6azRsZmzOrH
-	fydnlp//WuXvu4lJcQnii9Wi3NjP189zmA3fr9ExkfflcK7gcfUAeXO4f1kbe/C6ykJVriTzJsITh
-	cFJUbc+BSFyq5zVqpuN0Sv9O+NNHrMfZBT9iKqe+uld4uSDhyp42GZeKXkIhVC4n9DCNTpb/nI2hn
-	wIkfhu+e13kUEDiPaOK36SlWJDEatITFhS47TGminxu0QT8+h4mtaY4Ag4zuwvagDXpBLGvhkDlVX
-	k2dKUapo6M7fdVyq3+UA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0VusdGqyHKv4nRbR5x/Y8k1xoXq/QuTy8+mUsE9pfcs=; b=LeuxxTgQRD2RaE
+	4Dw9Yuk/s1h1xHaRuiXtlaDVZBojSxoYwF9ucH3X9SsDE7W1YlgTHBywq7iFL2a5LSYukAg+8UJ/f
+	yWW/poZhiBDdmLHb/TiTlAVUjnxbkLeCg88sST8u6mhkgJhTsf1vJAOU2KfAmxFqYjseZEr9msh2d
+	Dn3NrbGf6h5hioZDYgJf5uNLUxsZbtGroMFKIr7mymXiITtr9sFPp6BN0Pa9j/LlQZADd2bvpQafd
+	2qTVR6Zv+hkjnuNs+HA7yH/76AkfgThFQC8l8rtZCiMfrgkPooMoh/H8sS1NmB6QuiqrXaKy2cXMt
+	K+2dleydlE0c5qEBow0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poO6r-00GA2j-0R;
-	Mon, 17 Apr 2023 12:37:29 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1poO7n-00GAD0-0A;
+	Mon, 17 Apr 2023 12:38:27 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poO6m-00GA1B-2B;
-	Mon, 17 Apr 2023 12:37:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1681735036; bh=gJesLtiDnccwIC0RA7jikU/NZ0vOLBaI0EL8Y7OHrAI=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=SKQOE09xi6VRiW3rlypNrv35XlLjZcT1LxzPDOJaBEQcesmiGmOqr67+WxIoTRmZu
-	 NubFRUhbrg8yv0kIQWVlY5mn1HUL+NGM34mBpLBiH7bwGgbCaOr6VPJHtxKI6UQXxS
-	 U3rc5iLWiNyqO0OKKDbwpyQBbfDzFmcyNfiYcE6s=
-Date: Mon, 17 Apr 2023 14:37:16 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	Martijn Braam <martijn@brixit.nl>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Jarrah Gosbell <kernel@undef.tools>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rk3399-pinephone-pro: Add support for volume
- keys
-Message-ID: <20230417123716.c23izju4ezjrzytn@core>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	Martijn Braam <martijn@brixit.nl>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Jarrah Gosbell <kernel@undef.tools>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20230405123813.2272919-1-pbrobinson@gmail.com>
- <20230405135339.bcdyjdbtynuwf5yz@core>
- <4152389.RUnXabflUD@diego>
+	id 1poO7k-00GAB8-1X
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Apr 2023 12:38:25 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poO7b-0006Br-ME; Mon, 17 Apr 2023 14:38:15 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poO7T-00BseC-Rd; Mon, 17 Apr 2023 14:38:07 +0200
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1poO7T-00993Y-4i; Mon, 17 Apr 2023 14:38:07 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: dri-devel@lists.freedesktop.org
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	kernel@pengutronix.de,
+	Chris Morgan <macroalpha82@gmail.com>,
+	=?UTF-8?q?K=C3=B6ry=20Maincent?= <kory.maincent@bootlin.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume
+Date: Mon, 17 Apr 2023 14:37:47 +0200
+Message-Id: <20230417123747.2179695-1-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4152389.RUnXabflUD@diego>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_053725_199151_D025CB67 
-X-CRM114-Status: GOOD (  19.95  )
+X-CRM114-CacheID: sfid-20230417_053824_512704_9635DD07 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +74,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gSGVpa28sCgpPbiBNb24sIEFwciAxNywgMjAyMyBhdCAxMDozNDoyMEFNICswMjAwLCBI
-ZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBIaSBQZXRlciwgT25kcmVqLAo+IAo+IEFtIE1pdHR3b2No
-LCA1LiBBcHJpbCAyMDIzLCAxNTo1MzozOSBDRVNUIHNjaHJpZWIgT25kxZllaiBKaXJtYW46Cj4g
-PiBbLi4uXQo+ID4KPiA+IChJIGhhdmUgdG8gcHJlc3MgcXVpdGUgaGFyZCB0byBnZXQgYmVsbG93
-IDMwMCBhbmQgdG8gZ2V0IHJlbGlhYmxlIGRldGVjdGlvbgo+ID4gb2Ygdm9sdW1lIGRvd24ga2V5
-IHByZXNzKQo+ID4gCj4gPiBPbiBkZXZlbG9wbWVudCB2ZXJzaW9uIG9mIHRoZSBwaG9uZSwgdGhl
-IHZhbHVlIHJldHVybmVkIGJ5IHNhcmRhYyBpcyBsZXNzCj4gPiB2YXJpYWJsZS4gQmFzaWNhbGx5
-IGVpdGhlciAyOTguODI4MTI1IG9yIDMwMC41ODU5Mzc1IGJ1dCBpdCdzIGFsc28gb24KPiA+IHRo
-ZSBlZGdlLgo+ID4gCj4gPiBJIHN1Z2dlc3QgcmFpc2luZyB0aGUgdGhyZXNob2xkIHRvIHNvbWV0
-aGluZyBsaWtlIDYwMCBhbmQgdG8gZG8geW91ciBvd24KPiA+IHRlc3RpbmcsIHRvIGdldCBtb3Jl
-IGRhdGEgcG9pbnRzLiBVbnByZXNzZWQgdmFsdWUgaXMgfjE3OTEuMjEwOTM3NSBvbiBib3RoCj4g
-PiBwaG9uZXMsIHNvIDQwMCBzdGlsbCBnZXRzIGEgbG90IG9mIGhlYWRyb29tLiBBbmQgdm9sdW1l
-IHVwIGlzIGFsd2F5cyA8IDE1Cj4gPiBpbiBteSB0ZXN0cy4KPiAKPiBkaWQgdGhpcyBnZXQgbW9y
-ZSBhdHRlbnRpb24gbWVhbndoaWxlPwo+IAo+IEkgZG9uJ3QgaGF2ZSBhIFBpbmVwaG9uZSBQcm8g
-bXlzZWxmLCBzbyB5b3UnbGwgbmVlZCB0byBkZWNpZGUgYmV0d2VlbiB5b3UKPiBhYm91dCB0aGUg
-dmFsdWUgYW5kIHRoZSBjb25jZXJuIE9uZHJlaiByYWlzZWQgaGVyZSBmb3IgdGhlIHZhbHVlLgoK
-SXQncyBzYWZlIGFuZCBuZWVkZWQgdG8gdXNlIGEgaGlnaGVyIHZhbHVlLgoKU0FSIEFEQyBpbnB1
-dCBpcyBwdWxsZWQgaGlnaCB0byAxLjhWIHVubGVzcyBzb21lIGtleSBpcyBwcmVzc2VkLCBzbyB1
-bnByZXNzZWQKdmFsdWUgd2lsbCBhbHdheXMgYmUgYXJvdW5kIDE4MDAgb24gYWxsIFBpbmVwaG9u
-ZXMsIGFuZCBwcmVzc2VkIHZhbHVlIHdpbGwKZGVwZW5kIG9uIGNvbnRhY3QgcXVhbGl0eSBhbmQg
-dG9sZXJhbmNlcy4gRm9yIHZvbHVtZSBkb3duLCBTQVIgQURDIGlucHV0IGlzIGZlZApmcm9tIGEg
-cmVzaXN0b3IgZGl2aWRlciBvZiAoMTBrT2htICsgMmtPaG0pIGZyb20gMS44ViBwb3dlciByYWls
-LiBTbyB0aGF0IGdpdmVzCjIvMTIqMS44ID0gMC4zVi4gV2UgY2FuJ3QgaGF2ZSB0aGUgcHJlc3Mg
-ZGV0ZWN0aW9uIHRocmVzaG9sZCByaWdodCBhdCB0aGlzCnZvbHRhZ2UsIGJlY2F1c2U6CgoxKSB0
-aGVzZSByZXNpc3RvcnMgaGF2ZSB0b2xlcmFuY2VzIHRoYXQgd2lsbCByYW5kb21seSByZXN1bHQg
-aW4gbWVhc3VyZWQgdm9sdGFnZQogICBiZWluZyBhYm92ZSBvciBiZWxvdyB0aGUgMC4zViBvbiBy
-ZWFsIGRldmljZXMgKC0xJSBvbiAxMGsgYW5kICsxJSBvbiAyayA9CiAgIDIqMS4wMS8oMTAqMC45
-OSsyKjEuMDEpKjEuOCA9IDMwNSBtViAtIGFscmVhZHkgdG9vIGhpZ2ggZXZlbiB3aXRob3V0CiAg
-IGNvbnNpZGVyaW5nIHN3aXRjaCBjb250YWN0IHF1YWxpdHkpLCBhbmQKCjIpIHRob3NlIHBpZGRs
-eSBtZW1icmFuZSBzd2l0Y2hlcyBhcHBhcmVudGx5IGhhdmUgdGhlaXIgb3duIHJhbmRvbSByZXNp
-c3RhbmNlCiAgIHRoYXQgaXMgYWRkZWQgdG8gdGhlIGJvdHRvbSBsZWcgb2YgdGhlIHJlc2lzdG9y
-IGRpdmlkZXIsIGFuZCBkZXBlbmRzIG9uCiAgIHN0cmVuZ2h0IG9mIHRoZSBwcmVzcyBvbiBzb21l
-IGRldmljZXMgKGFuZCBzd2l0Y2hlcyBtYXkgZGV2ZWxvcCBoaWdoZXIKICAgcmVzaXN0YW5jZSB3
-aXRoIGFnZS91c2UpLgoKU2NoZW1hdGljOiBodHRwczovL21lZ291cy5jb20vZGwvdG1wLzExMjVk
-OTI0OGE4MjEzYjMucG5nCgpraW5kIHJlZ2FyZHMsCglvLgoKPiBUaGFua3MKPiBIZWlrbwoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+afa965a45e01 ("drm/rockchip: vop2: fix suspend/resume") uses
+regmap_reinit_cache() to fix the suspend/resume issue with the VOP2
+driver. During discussion it came up that we should rather use
+regcache_sync() instead. As the original patch is already applied
+fix this up in this follow-up patch.
+
+Fixes: afa965a45e01 ("drm/rockchip: vop2: fix suspend/resume")
+Cc: stable@vger.kernel.org
+Link: https://lore.kernel.org/r/20230417094215.2049231-1-s.hauer@pengutronix.de
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index d9daa686b014d..293c228a83f90 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -215,8 +215,6 @@ struct vop2 {
+ 	struct vop2_win win[];
+ };
+ 
+-static const struct regmap_config vop2_regmap_config;
+-
+ static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
+ {
+ 	return container_of(crtc, struct vop2_video_port, crtc);
+@@ -841,11 +839,7 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
+ 	}
+ 
+-	ret = regmap_reinit_cache(vop2->map, &vop2_regmap_config);
+-	if (ret) {
+-		drm_err(vop2->drm, "failed to reinit cache: %d\n", ret);
+-		return;
+-	}
++	regcache_sync(vop2->map);
+ 
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+@@ -875,6 +869,8 @@ static void vop2_disable(struct vop2 *vop2)
+ 
+ 	pm_runtime_put_sync(vop2->dev);
+ 
++	regcache_mark_dirty(vop2->map);
++
+ 	clk_disable_unprepare(vop2->aclk);
+ 	clk_disable_unprepare(vop2->hclk);
+ }
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
