@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75171C77B7D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 15:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB8D9C77B76
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Apr 2023 15:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lJrPToDmD05QxCoOguUYGvjDs43nuc8d6GXAzOGfl6E=; b=U+KJ2mYfsNf11Z
-	P/LGI4Z1n+TihI8srZQWb/9HMZuGwWY7kOv4TV1vEowDkHeLI0KpvIGNkYNDX3z2SkOC6IJYpBQVw
-	qXELyFRN9zGZJg8aSiQy7oAYVda3nD9kl3PiFwwtYwycgF8UeiYN07OWtrIH3Nd5oyjlTj1ZEbwVz
-	FcUZpOQ8G7AcjI+qjCncfEun/adtMePirdbHlyH9x1VRIuvtO3tbhqqkBwj14TCRGiOTIJfty3T+z
-	RHisANC4Qz+hD0CPPJx2/xzq5WNXDbgCx/Rq1FYeK173T7YRxmvmYdDx/pss1t6qpL0YAYxUcxpG3
-	ZqNOV2BIfrvajRNKvUyw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=i4t+W8C0w7i914eN/6rvBAqeffCvOsRWYR1iQPZScyI=; b=ugY8/fBh7fd7op
+	Br5EpW8R6hOqU6xtYR7GJMM4KDRSZLRRgCxvdqUbNdr1TS+X9JIPB6iPUcQISo7DW+lWsimW+ty0Q
+	szGhyU9bUJEGo6tUt6JD/tmf/JaSZArzdEAEAeJRe8DzMsZyntufPVsVYRR/pJqAGJvxTQQlsz8CM
+	vOnbX6ySmyL8YFzx7Fs5q3S6f7VILNmTksQMX/xGeuJyTJ8sHM7+TULcfD7PQMiVOPt48aXZ632Qj
+	bVEAMC23/6BOiB+X97ZlwCjEW1TpS54g3l4fYzbKAYcDhBbJlvSjelo3RLXrofYP7+6+erkQPWGdx
+	EFsNcU5reiIZsRMAixGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQLa-00GkTl-2D;
+	id 1poQLa-00GkTd-0w;
 	Mon, 17 Apr 2023 15:00:50 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poQLV-00GkRH-2B
+	id 1poQLV-00GkRE-2J
 	for linux-rockchip@lists.infradead.org;
 	Mon, 17 Apr 2023 15:00:48 +0000
 Received: from jupiter.universe (dyndsl-091-248-191-155.ewe-ip-backbone.de [91.248.191.155])
@@ -32,20 +32,20 @@ Received: from jupiter.universe (dyndsl-091-248-191-155.ewe-ip-backbone.de [91.2
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A4DB06603223;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 97CE566031F9;
 	Mon, 17 Apr 2023 16:00:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1681743641;
-	bh=uM3PWO3IQObscBohW7QPL9pguhEFNiexqSSj/2QsykE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ONSf76mjLn0RMj50BOw6eqXwnjJms8Pgk1OcxbjaNuQvOai9JcudMN+9bTGf04gk4
-	 dq3Xz7oTHmGWq0D1dIt8ToEnJ3cX2QhAnQDXGIU6YcPNfkuyta6buZEiI11jrJW+hO
-	 WhgwqLi/ZWI4ec9R4aWc0rtTHOHRgavit3148PyeobgJ5UotqoO9l3LzhzX0sfKaUm
-	 rsmtXoJ4wlzS0g4skHGX0LvBCIrg+d9pwuVN8UasSwKlM9pARTYXcVinWtGnPNblxM
-	 77jd3njA9Uzj14yaW9bCtB7/4wyyvIgsTXaSNc1nsiVNvHy/YUZXy26lI8+gmMPbhi
-	 ecLIocrr26jXg==
+	bh=LnwQ/90N7oiIQMOpIlGj+WTHvxq19y4J7oSF8At74eY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fZXRMKTW1byrUO3FKVHAiPUFO6ZaTTJN1Qsjoz+zKYXm6LfSfvADoM+z+pYNmcjL4
+	 QC+hwjCMod7vhdr8g+akj8X/Fp2fw0+yPsdP8QegsdiCTbXiysyiyy+giiSwxrdgKb
+	 YhJvqBs4l3c2YqsX/vIBnmcAwnwNS++KULhLtqG3l7fH3nxrkDuo13/FMjM3a5nayj
+	 +5ecCtEQTzDZZS2x37nD9SyVrDa62J3RWUKDoaJDhgpGQZPcjSIWH0oMZKXpWtzOJK
+	 l3kcWLjmUGl+uiztmG4o4TI5tFNKVEJEYt0UFaZ2UxH9Rd9kC01LiRBEAWCQ4+kJQb
+	 vn5JjI52RzHtg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id DC9334807EF; Mon, 17 Apr 2023 17:00:38 +0200 (CEST)
+	id D7BB04807E2; Mon, 17 Apr 2023 17:00:38 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Marc Zyngier <maz@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>
@@ -62,16 +62,14 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: rk3588: add MSI support
-Date: Mon, 17 Apr 2023 17:00:38 +0200
-Message-Id: <20230417150038.51698-3-sebastian.reichel@collabora.com>
+Subject: [PATCH v2 0/2] Add Rockchip RK3588 GIC ITS support
+Date: Mon, 17 Apr 2023 17:00:36 +0200
+Message-Id: <20230417150038.51698-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230417150038.51698-1-sebastian.reichel@collabora.com>
-References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_080045_848730_3795A0F8 
-X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-CacheID: sfid-20230417_080045_899935_918951E8 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,50 +87,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the two Interrupt Translation Service (ITS) IPs that are part of the
-GIC-600, which are required for message signalled interrupts (MSI). This
-is required for PCIe, which fully relies on MSI for interrupts.
+Hi,
 
-Enabling the ITS nodes requires an operating system, that has a
-workaround for Rockchip errata #3588001 (GIC600 can not support
-shareable attribute).
+We got an Errata # from Rockchip for the GIC600 integration issue in
+RK3588, so here is another try adding upstream ITS support for that
+platform. I noticed
+https://lore.kernel.org/lkml/DU0PR04MB9417388F9BDD73080294FA8E88889@DU0PR04MB9417.eurprd04.prod.outlook.com/
+so I kept the flag name itself generic.
 
-Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+P.S.: I'm taking over from Lucas Tanure, who no longer works for
+Collabora.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 2124c654f665..62204b96b0b4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1741,7 +1741,24 @@ gic: interrupt-controller@fe600000 {
- 		mbi-alias = <0x0 0xfe610000>;
- 		mbi-ranges = <424 56>;
- 		msi-controller;
-+		ranges;
-+		#address-cells = <2>;
- 		#interrupt-cells = <4>;
-+		#size-cells = <2>;
-+
-+		its0: msi-controller@fe640000 {
-+			compatible = "arm,gic-v3-its";
-+			msi-controller;
-+			#msi-cells = <1>;
-+			reg = <0x0 0xfe640000 0x0 0x20000>;
-+		};
-+
-+		its1: msi-controller@fe660000 {
-+			compatible = "arm,gic-v3-its";
-+			msi-controller;
-+			#msi-cells = <1>;
-+			reg = <0x0 0xfe660000 0x0 0x20000>;
-+		};
- 
- 		ppi-partitions {
- 			ppi_partition0: interrupt-partition-0 {
+List of previous attempts / changelog:
+ * PATCHv1
+  - https://lore.kernel.org/lkml/20230227151847.207922-1-lucas.tanure@collabora.com/
+  - uses of_dma_is_coherent() instead of providing errata info from kernel
+ * RFCv1
+  - https://lore.kernel.org/lkml/20230310080518.78054-1-lucas.tanure@collabora.com/
+  - uses 0x0201743b IIDR for quirk detection and misses errata #
+
+Greetings,
+
+-- Sebastian
+
+Sebastian Reichel (2):
+  irqchip/gic-v3: Add Rockchip 3588001 errata workaround
+  arm64: dts: rockchip: rk3588: add MSI support
+
+ Documentation/arm64/silicon-errata.rst    |  3 +++
+ arch/arm64/Kconfig                        | 10 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 17 +++++++++++++++
+ drivers/irqchip/irq-gic-v3-its.c          | 25 +++++++++++++++++++++++
+ 4 files changed, 55 insertions(+)
+
 -- 
 2.39.2
 
