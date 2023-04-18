@@ -4,98 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09258C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B66FC77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3tta0BUi1ylXyVlIZsNVN6o5X+s6ZyZRSUpVLTmIekw=; b=htQqneacg9ko65
-	/J1FNybSI+YCKxq1l+kFdtyK6d8a60JtyR3GmDVQIn08/GC/+LuXCoxfABFhNY4JoYh308LYobzRl
-	rjxgkmm5chHcHX14YZ5DdjXf5YIR2mI73BxsZH7MzSUgFmUAsDE5maU23YP0l/k+EqlKf5DT58WOD
-	6O9wYssNkI+aTW24EbBBl2NtIQwPa7LaTm8vEN/+U4eZaiYG2SRf7WGYKHxpEUkyL4slrYk5EBAcZ
-	6U4B9GDiIfZiKMrL7DT2e0yTDULAWSUmuIjFeN2iP4O0o3ZRy17QfN2vwtU0AheTHRgxmDAehHYY9
-	ASvmru5oofmz5gsR3iCw==;
+	List-Owner; bh=tqzD9RWk7sLG6dn+oAGRMoP8F3eddGZALENxuIQDurM=; b=nkWgFD4UVjedbL
+	xx4OBJq/UJ57B3dfdexMNmdivRDYk+85NJkljrX33vBtwao2xRSsXJ5WglXXlXT41GF/Vz24pGwmK
+	JbYjlx/KLFS01TqJNwbM0Yipx6Jb4ktQh/HfVLNNK6sr7rd4ftbImPIhEktbdMikcnYxbKicHl0AD
+	7d8IhWyFPLx9932/P3k8iYJBpLJ7lbYqFSyYPAhl3CjR1cD720fnjxU7uUFuKseTPk37obCxTm1FQ
+	eq/BY4Vz3BjyKZ8SjSZXwN9nZ2FQuclUpF9io7eEkfv5SLQf0zSOALInUIvxx1pyFWipKKqGspkw0
+	srJOu51Y8QuOB0a6zDrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog4I-001Bal-2q;
-	Tue, 18 Apr 2023 07:48:02 +0000
+	id 1pog4O-001Bez-1X;
+	Tue, 18 Apr 2023 07:48:08 +0000
 Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog4E-001BVq-1z;
-	Tue, 18 Apr 2023 07:48:00 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id fw30so18034848ejc.5;
-        Tue, 18 Apr 2023 00:47:55 -0700 (PDT)
+	id 1pog4H-001BVq-20;
+	Tue, 18 Apr 2023 07:48:03 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id fw30so18035459ejc.5;
+        Tue, 18 Apr 2023 00:48:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681804075; x=1684396075;
+        d=gmail.com; s=20221208; t=1681804081; x=1684396081;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8ZCZ5e5bMUuiLuVoL5OvscU41DtPpM74Tn58tXxWzas=;
-        b=SaVyeU4Y/Xfw7a284ug9kXFgGGV9R70EM5r9/R6vLGR50D+F2O5lnksM3orQQ9KUPs
-         5fOuzhV5KAG44vpsCHdWPRpxtCkOMiJBF7I71YimKWnC/0p8jj99AI8IFgjyv8Uxa5PQ
-         jvYESH1hZ26IgBju+L+WNC9tyI+sOQSQxvboGfu3TKG1kwd/rSJl7E6aa0PuW3ewmuZ9
-         lNHkiA8XKJVMn6Z6HgIvsQqroo11H2TQv2PkskCweHtkcG4ew4etoS3FOHA4xvwYsrp5
-         rmdW4jaq5L8iPqaVwXYYrnl5Dtj7nCaCrxhCo9iZqhfjJ+FGggmAd8o177jOdbaE3QSo
-         Yiew==
+        bh=gXA2hp0m2ISM3D3+h81RjtKD9xln/dgRYjKYAUjtQ4k=;
+        b=HeGTxBf5hkXgKM82MTFMBD1JwNMaS+brmpfjsfyAc/stReV+zQGDm3L7DAFgXeeV/a
+         JtGc6oQfx9gdPrOTAtI99+AoIKG+35GFkwZfzG6YDvdSU/mynPuBMOHZvkK53auXYliz
+         ec+/swgcYT4LWcH5qRDffWJRufhEc6tNZs8U24Aj9/vaL05AIuG+Yt8zKiszNDfHzPUi
+         MKo8UkMoryGjbln11/5vjBmCsZx9MnGDVWD+SnXY0WIC+Qfw9PgT3zi+J8FUpN//gIrF
+         uW4wlOC8bCTrcluf6WSaT1qvljqzMAiDARCbgrSDPq6eL1CYedPFG/W5lfdzCO34MYCS
+         yfJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681804075; x=1684396075;
+        d=1e100.net; s=20221208; t=1681804081; x=1684396081;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8ZCZ5e5bMUuiLuVoL5OvscU41DtPpM74Tn58tXxWzas=;
-        b=QwMK4m2egpHUdEv8hGaImgDtFagh0LZj8GSPtHKa6N7laAAQOw8vjW0NDxZWYkI6EO
-         rROhXtHeD5wAQKl84aAf1edtcLYZPrKUxyCLKpuf7KsseZwfoi5GLDQT6S/UgX4pzgu4
-         iWGK4f0bkxvmNaFb4+60xY6o2rAlQ1E/L4Bk/SP0xPzZKI1ill+Qh5tqVQNivVoIW3o8
-         sGDjSb6LykBqejmHsJ5JWhZz2bCKzUxREw6gpfEKaUDkHQspImNBxB+g5XfsmUSyAMnv
-         H0696b/c/ZFhU3leKevwYTj+XhVDU4sU65Z3AkPZdETD551jJn8K0844smfIONwyqmJW
-         3WtQ==
-X-Gm-Message-State: AAQBX9fu4SyZ383chHE45l6S02YsVeC8hUdQ5T8vrGIfkZpXMY3Sueqi
-	XsMTC3wK3h1Sk2+5gwS6T+s=
-X-Google-Smtp-Source: AKy350a6u35FLS9g3OrEFPFpy2W/guflwSS1XgidmyoL8Cj5s+O+s8QIC6mK4KWF+ct2yxETvhEcdw==
-X-Received: by 2002:a17:906:b242:b0:931:cd1b:3c0 with SMTP id ce2-20020a170906b24200b00931cd1b03c0mr8232669ejb.3.1681804074814;
-        Tue, 18 Apr 2023 00:47:54 -0700 (PDT)
+        bh=gXA2hp0m2ISM3D3+h81RjtKD9xln/dgRYjKYAUjtQ4k=;
+        b=bMtenAvxYxZJGMA4lZ3TIQpROr6jJHFszfu0UDGU8bveewrTGQf+FRaZrP2C27N5OV
+         IB64hQIV+th9zyRu8Ulms++ldZrkv5DjfRwSm9VrVxDWMDMrIqnSGVaUkY4GH3CreK7Q
+         57cDBjOWeNlX3O54at7iE/F3diD5YRVqaXR3+s6H2NVH8t9o1n3Sfk4u3KamUcwSQEoO
+         KfmOWA7INkr1DJk4lBomF5vq7z2iMIt4+nmYRz4bJuW1Iydt/3bzXJT3cZcjMD5Lljp8
+         apITfIIUf1ILN6w1WuCwZ359hE++1EwZUbXzH0Vzi2oLQJ8E4A94wcpIPu+WRYwnuycR
+         2roQ==
+X-Gm-Message-State: AAQBX9fPa9jkeq/KA7sWF2aa+usox57sqWyTKc9Fas04cpKzydOG4qC1
+	LEqUYllgSLs/4MbE9BsdjZU=
+X-Google-Smtp-Source: AKy350b3uvf3QU6Pks+6V6f07eNS+rVQtEMVNNrUYXPONdsugq3XZKDH6diqvWA5xXyFg9/1QyqaPQ==
+X-Received: by 2002:a17:907:7f04:b0:94b:7743:3971 with SMTP id qf4-20020a1709077f0400b0094b77433971mr11033815ejc.63.1681804081136;
+        Tue, 18 Apr 2023 00:48:01 -0700 (PDT)
 Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
-        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.53
+        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 00:47:54 -0700 (PDT)
+        Tue, 18 Apr 2023 00:48:00 -0700 (PDT)
 From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 To: alberto.dassatti@heig-vd.ch
 Cc: xxm@rock-chips.com,
 	dlemoal@kernel.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
-	stable@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
 	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Corentin Labbe <clabbe@baylibre.com>,
 	Caleb Connolly <kc@postmarketos.org>,
+	Corentin Labbe <clabbe@baylibre.com>,
 	Brian Norris <briannorris@chromium.org>,
 	Johan Jonker <jbx6244@gmail.com>,
-	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
 	Judy Hsiao <judyhsiao@chromium.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
 	Hugh Cole-Baker <sigmaris@gmail.com>,
+	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 04/11] PCI: rockchip: Add poll and timeout to wait for PHY PLLs to be locked
-Date: Tue, 18 Apr 2023 09:46:51 +0200
-Message-Id: <20230418074700.1083505-5-rick.wertenbroek@gmail.com>
+Subject: [PATCH v5 06/11] dt-bindings: PCI: Update the RK3399 example to a valid one
+Date: Tue, 18 Apr 2023 09:46:53 +0200
+Message-Id: <20230418074700.1083505-7-rick.wertenbroek@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
 References: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_004758_679903_5128AA8D 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20230418_004801_730352_A0FE6894 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,79 +112,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3399 PCIe controller should wait until the PHY PLLs are locked.
-Add poll and timeout to wait for PHY PLLs to be locked. If they cannot
-be locked generate error message and jump to error handler. Accessing
-registers in the PHY clock domain when PLLs are not locked causes hang
-The PHY PLLs status is checked through a side channel register.
-This is documented in the TRM section 17.5.8.1 "PCIe Initialization
-Sequence".
+Update the example in the documentation to a valid example.
+Address for mem-base was invalid, it pointed to address
+0x8000'0000 which is the upper region of the DDR which
+is not necessarily populated depending on the board.
+This address should point to the base of the memory
+window region of the controller which is 0xfa00'0000.
+Add missing pinctrl.
 
-Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-Cc: stable@vger.kernel.org
-Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
-Tested-by: Damien Le Moal <dlemoal@kernel.org>
 Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 ---
- drivers/pci/controller/pcie-rockchip.c | 17 +++++++++++++++++
- drivers/pci/controller/pcie-rockchip.h |  2 ++
- 2 files changed, 19 insertions(+)
+ .../devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml      | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 990a00e08bc5..1aa84035a8bc 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -14,6 +14,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/iopoll.h>
- #include <linux/of_pci.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -153,6 +154,12 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- }
- EXPORT_SYMBOL_GPL(rockchip_pcie_parse_dt);
+diff --git a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+index 88386a6d7011..6b62f6f58efe 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+@@ -47,7 +47,7 @@ examples:
  
-+#define rockchip_pcie_read_addr(addr) rockchip_pcie_read(rockchip, addr)
-+/* 100 ms max wait time for PHY PLLs to lock */
-+#define RK_PHY_PLL_LOCK_TIMEOUT_US 100000
-+/* Sleep should be less than 20ms */
-+#define RK_PHY_PLL_LOCK_SLEEP_US 1000
-+
- int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = rockchip->dev;
-@@ -254,6 +261,16 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		}
- 	}
- 
-+	err = readx_poll_timeout(rockchip_pcie_read_addr,
-+				 PCIE_CLIENT_SIDE_BAND_STATUS,
-+				 regs, !(regs & PCIE_CLIENT_PHY_ST),
-+				 RK_PHY_PLL_LOCK_SLEEP_US,
-+				 RK_PHY_PLL_LOCK_TIMEOUT_US);
-+	if (err) {
-+		dev_err(dev, "PHY PLLs could not lock, %d\n", err);
-+		goto err_power_off_phy;
-+	}
-+
- 	/*
- 	 * Please don't reorder the deassert sequence of the following
- 	 * four reset pins.
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 51a123e5c0cf..f3a5ff1cf7f4 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -38,6 +38,8 @@
- #define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
- #define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
- #define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
-+#define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
-+#define   PCIE_CLIENT_PHY_ST			BIT(12)
- #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
- #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
- #define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
+         pcie-ep@f8000000 {
+             compatible = "rockchip,rk3399-pcie-ep";
+-            reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0x80000000 0x0 0x20000>;
++            reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0xfa000000 0x0 0x2000000>;
+             reg-names = "apb-base", "mem-base";
+             clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
+               <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
+@@ -63,6 +63,8 @@ examples:
+             phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
+             phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
+             rockchip,max-outbound-regions = <16>;
++            pinctrl-names = "default";
++            pinctrl-0 = <&pcie_clkreqnb_cpm>;
+         };
+     };
+ ...
 -- 
 2.25.1
 
