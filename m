@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EBD9C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 16:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A77C6FD18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 16:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gz26H+UqiycidHd/VNLE1O+CN/cQiG6DD4P/cYn7GFg=; b=q73SMlZ6RT2z1C
-	WEn/V+XwIEVkaBv/DhXvKSHak2asv8PMbeLfCfZUW79mWramsTzhlDGe8HS3ruyJKikqKdB/flmAA
-	fPxxBrQqBAesmvlWznb4ZzhX6BuZb82gnrSVBbQMR+aSNkW4BnNEsBiUl9eP+KGEaP4SNKNTo8HHH
-	eGHAAw5PWx06tEQ8ljTuehJMRWmmEOqhEqn9MI/QDOpDFs/ag5zV012iimpspj8Q/Y3f3kTLHvont
-	dfyFKm4lRCjZlG5UElrouhaiDM/XsQwU2UpHxO16wsW5PSINS0+9M2tsv5VFf7hvQv7hHYazHdJCT
-	Rk/sM+PIk/1DXzdSCLZg==;
+	List-Owner; bh=K45IkKdYSW73blS4n3qczQhBVm96bFEb2aFDcDNLyhc=; b=kIYcXN20AGdLHX
+	TE8oMD6ePhddraCJUabMnWdUA1MKSuiMmd7ealFqb1r25l88dl6A5oKPukytjzmLxvvB+bVtOL2cU
+	TtLChJTCorexmuDYYtfkeX4BnqF5puq0dplmzl4XBB6H//83Nx+K5jxOuSJuhjoYKdxxwc9MgBIqW
+	omXIsYn3+bmqaIIw5Lg4QMxh0cetiJ8AC6SQNGOR4vowm9uH4e+0TE1yYU1dHjrhjmdUHX2lzaYWs
+	A39ifzpnMA6drq4fH24R6WRtPGzIQpM6eosHquZBKJv7intw97C1hjkBRwDTUvc+TXguNcgZwUbku
+	hqYpWw439lFkqnihIK3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooCL-002mGS-0j;
-	Tue, 18 Apr 2023 16:28:53 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1pooIR-002nEI-0k;
+	Tue, 18 Apr 2023 16:35:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooCH-002mCd-2v
+	id 1pooIO-002nDf-2X
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Apr 2023 16:28:52 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id vc20so19778141ejc.10
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Apr 2023 09:28:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681835324; x=1684427324;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=O1izybgkMQUv0KTZ7YUu7PpN/DThKjHSmFy8njwpB1c=;
-        b=X8Ey7dsXee/yR992EOF1qafczskzajgK8aFDKxqtfkXTxWYc8uaP/XuMS9H0A3G5tv
-         3kTEz9+1Z6LOeYKHEZhVU1LveHkTxwzVtlzH15y7MgvrqXji6nqomuIJakAV//iNHh+u
-         9GFj8faUSKqt5Crr2sa9eBDogCBMymWnJEi2oC42aa++dD/WAuvPMoxvaFwa657oyY+g
-         zSoVXCNVQtAvORQcYpD3yCfpu4ZgxGjqZ9fYu5wfticR61IdbB+OkbkxBlGW/3lEEVjN
-         VFE4eGNHw5Hb180xJ8ZK0gHR0dK2+pWrkahxOAY6q4+dvPfwYawXBIwt9oSMTQC45EmL
-         r+hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681835324; x=1684427324;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=O1izybgkMQUv0KTZ7YUu7PpN/DThKjHSmFy8njwpB1c=;
-        b=QMu/Wyeh9F+C/xCLZaAOVrQuvK5M6eaUcKnsuImEykjN/SBfaZij8nELtsBtFCH1wk
-         SJFB+FvpTwS1HYgnLbmVnT2SUwIxTiJXpvWwG4YycoPsVjgPdhquUMcla+tZQ1qNt5oC
-         zSMNbEFns+C+oh+xZYgfTVfNaLzCrNIYUplRgQgMdHyTVINf96AOBvdImS2TNADLPQCT
-         eRR5pw6fQGAeJtER1hPp/TXtCEpUaUsYW8Tfti85WVg8yKEnB3xVy16SiHJQ/tORrOFn
-         2tSAkEIoDfrT2dOKkyXvC6ksNCRk2GMgmcEezs9zsskuS9rbkk74WWzPaxWhU2uH2G+F
-         nXig==
-X-Gm-Message-State: AAQBX9eT9E9BO6vfzfRhh1W8lVjtTw7xBo1rmA9QVGuiiBzL+fNRo+74
-	eG6lMRgTZm1FCftXbmEN4HXtqQ==
-X-Google-Smtp-Source: AKy350ZT/VNF6S77XnDwAlGAQQrnfDmKzogv1WdK+lyOcAFAAwcnhCm6pUEJv1P0LOWRQ4MDvnlNFA==
-X-Received: by 2002:a17:906:dc8c:b0:94f:2927:1f0d with SMTP id cs12-20020a170906dc8c00b0094f29271f0dmr10575212ejc.53.1681835324273;
-        Tue, 18 Apr 2023 09:28:44 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:a276:7d35:5226:1c77? ([2a02:810d:15c0:828:a276:7d35:5226:1c77])
-        by smtp.gmail.com with ESMTPSA id wt10-20020a170906ee8a00b0094f225c0cd3sm5160756ejb.86.2023.04.18.09.28.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Apr 2023 09:28:43 -0700 (PDT)
-Message-ID: <98c66dd5-2621-b194-d49c-b03047f52cc1@linaro.org>
-Date: Tue, 18 Apr 2023 18:28:42 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 2/3] dt-bindings: timer: rockchip: Add rk3588
- compatible
-Content-Language: en-US
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Sugar Zhang <sugar.zhang@rock-chips.com>,
- Shreeya Patel <shreeya.patel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230418120624.284551-1-cristian.ciocaltea@collabora.com>
- <20230418120624.284551-3-cristian.ciocaltea@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230418120624.284551-3-cristian.ciocaltea@collabora.com>
+	Tue, 18 Apr 2023 16:35:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E8D9A62B66;
+	Tue, 18 Apr 2023 16:35:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D1A3C433D2;
+	Tue, 18 Apr 2023 16:35:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1681835707;
+	bh=UZ3otDZYWeF/w43FQjhBIJ5ljIHXUzVu+VF1tABkQWQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=jKHuw19bU9fHDqJq5mgJKv+YTLtMwJcpaXetYMbpID0/C8Dppt0wwqLLBLfDTvDfk
+	 gdKlspvOr1RTqLhMkwtkRS0ltqc96sdYG9nZ6hdEVPX677uvI5SIZzwzub5YGf51Zm
+	 pnkW5Q0LT+IhX0CP0q1FZ2TPx8GinCj9Pw4dEYtz0B9ieBXrgkttjA5BhaF01Jfvpk
+	 0Nswag4uU8AebEaedxq4MPUDXZm2wvIu6pPf4abWs4XD5ZToqXmhbfNfw13X229gNI
+	 bfrRt7H+EU4Xi3C5WOpUw6gw9RDEAK6QYdC8YJxjuRlzPMTE0gVw4ZfZm7iSlDf/0w
+	 6p7XW3zXtNAxg==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1pooIK-009M8i-Sj;
+	Tue, 18 Apr 2023 17:35:04 +0100
+Date: Tue, 18 Apr 2023 17:35:04 +0100
+Message-ID: <864jpdkv2f.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Peng Fan <peng.fan@nxp.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	XiaoDong Huang <derrick.huang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v4 0/2] Add Rockchip RK3588 GIC ITS support
+In-Reply-To: <20230418142109.49762-1-sebastian.reichel@collabora.com>
+References: <20230418142109.49762-1-sebastian.reichel@collabora.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de, peng.fan@nxp.com, robin.murphy@arm.com, pgwipeout@gmail.com, derrick.huang@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_092849_966463_456EA8D6 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230418_093508_859780_6F4FD837 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,20 +97,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/04/2023 14:06, Cristian Ciocaltea wrote:
-> Add compatible string for Rockchip RK3588 timer.
+On Tue, 18 Apr 2023 15:21:07 +0100,
+Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
 > 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Hi,
+> 
+> This adds GIC ITS support to Rockchip RK3588, which is affected
+> by an integration issue effectively breaking shareability support.
+> PCIe2 support will follow in its own series.
 
+I've applied the first patch to irqchip-next. Please route the second
+one via the SoC tree.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Thanks,
 
-(Wait 24h before sending new version for fix in 1st patch)
+	M.
 
-Best regards,
-Krzysztof
-
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
