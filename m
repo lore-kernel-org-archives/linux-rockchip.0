@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E34C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 08:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC2FC77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 08:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3AW7/SDCHEcTXhmPN/wMOPTNFwCKfe30SB2qbeiyr3s=; b=h1GB0SEZDGucmZ
-	iK60NexT5COaA6TWYH2cGkeNpeEQ07jfD47BXehZ8yzwRXiyKQTTXSQb91IIcsVgzSQ4g0NXaMAaa
-	yUFVfYbxNneH/9j/8HBGcGctLvjxgOCBTzckW9TD3aNYlckEfUVKnWa74X5aRdoYR70lNDN0Yen7P
-	BcgqjFXksqUPByYt7XfKNn0pLVXMdgT9q18AYy7aQsRvk5nXLW7Rq3PyHAFZjKLBv7+/8sOXcFNlG
-	eyDJvkPs+DQ0qj7s9r6umoHi6JWwfQ0o6/DMezqWw91MV21V89cil4K4UkRK8ZGUCzHsolIu8OKuw
-	v4popaxx5YJLT98/PMnA==;
+	List-Owner; bh=YbbZ1i33DJymkR6Y7D0JsAAuG1fdQg0OICfA3ndwvA4=; b=zVdDH1Sw3HvvAQ
+	bvxoDL6CagVFoOPSxNtpQJTJMVUH9cj/gDZZJ4wES4ibG0awkBUBBkMMs/26RRqDuqhc0odHhm9oO
+	mDz5pLyJRecXEdTT8Pv6HvoVq1y+AKfPsu9f6XITOT+ln8AA8MPDeeJMhTc8MDnBtL2BojDZGATDJ
+	dd1zBnI21CXEBPGiMga1e/DnVmgsgrO5HBzZ7/rQu7goiqwizjOpg06XIoFI9FL0j9yvXhkiFq0SX
+	cDSxnSd8U7pHgvZspriDxDvytYUCSmdnSgYuaFi1MOW2KcacyT5Dn/PxGhC2PfzXWd84RqkQ2/12N
+	qBF7ogB9G1Hx6sRo8uMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poh53-001Nl6-20;
-	Tue, 18 Apr 2023 08:52:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pohAP-001OU4-2I;
+	Tue, 18 Apr 2023 08:58:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poh51-001Nk8-0S
+	id 1pohAN-001OTZ-02
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Apr 2023 08:52:52 +0000
+	Tue, 18 Apr 2023 08:58:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 73552618EC;
-	Tue, 18 Apr 2023 08:52:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1DD8C433EF;
-	Tue, 18 Apr 2023 08:52:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2B33962BB3;
+	Tue, 18 Apr 2023 08:58:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87CA8C4339B;
+	Tue, 18 Apr 2023 08:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681807969;
-	bh=70xPBbsh44oN1k6erbly3OaVLsKVZbbBoVAm3vD2DdI=;
+	s=k20201202; t=1681808300;
+	bh=6EWDuT9BK2t/NojfkXHhe5k4tKvwwjUp3xxUbWkwuQg=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=b8ll9dxckioE9A0c1+ZgHz+sHWGOxwF/CQfkqv1VmqjNAmoCZDkuWKmwqUVedQ+v0
-	 a7dX0RBxjSeQ9/9nb24+CEmtwK2/4z9qHxJ63a5OAvLZhn9kc4LH9WghBgeSsBgW/V
-	 Ne2MD40ZYo0g/KsoVsVrBB8dwaHddXfpqhuCCYv6M7kLLxlZ1najAIcUl94MglNQq9
-	 fDhroZE4J1O7KcGp5S7estYGZIwgHMmrXHKgDSGxFxViWWdu8Q2FLWYJJGIfzMXtS+
-	 I9OH4KOoycgqvu23rmYmV2eLp9tGyUUr5yAKX8JyF8f2DBFOQrnm0LTtrda370YOPo
-	 qk3YHeQ+tRHhw==
+	b=Ice0nWwUnip0G6hrEh+4jPXMmTf9k3GNigbkBnQ/XojK2JTU4zFHlEg4Z3Tza02iS
+	 OJ+++I5+ebRxtWE6TXA0xjXjeeX8b2oQcvG+O2ZwtSb7GHLEo5LWSnOH3f3xHMssug
+	 6dDV5HUjgLWXzcX85K2FDvSOhPlu1wX3ZpdCgt1XtYzDbQUMYRCUEsAkpq/zhyFkGU
+	 7pDmw07eX3pEzfyA7ND8V6gmo0JJSyFid0RXu879RZpE8J1QZMWqhIuYGPaPIYjz5m
+	 Y1889lVnIgMZJfk3AM4jCVFKsV//e0q5EQPQtrfIRagd4irl+gSchm5iYKRz3HH5eB
+	 PwUIAkpQGdV/Q==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
 	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.95)
 	(envelope-from <maz@kernel.org>)
-	id 1poh4x-009FZV-Fa;
-	Tue, 18 Apr 2023 09:52:47 +0100
-Date: Tue, 18 Apr 2023 09:52:47 +0100
-Message-ID: <867cu9lggw.wl-maz@kernel.org>
+	id 1pohAI-009Fdf-9g;
+	Tue, 18 Apr 2023 09:58:18 +0100
+Date: Tue, 18 Apr 2023 09:58:17 +0100
+Message-ID: <865y9tlg7q.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -67,10 +67,12 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: Re: [PATCH v3 1/2] irqchip/gic-v3: Add Rockchip 3588001 errata workaround
-In-Reply-To: <20230417214035.101190-2-sebastian.reichel@collabora.com>
-References: <20230417214035.101190-1-sebastian.reichel@collabora.com>
-	<20230417214035.101190-2-sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v2 1/2] irqchip/gic-v3: Add Rockchip 3588001 errata workaround
+In-Reply-To: <20230417214033.25ckpswkjj6twfot@mercury.elektranox.org>
+References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
+	<20230417150038.51698-2-sebastian.reichel@collabora.com>
+	<86a5z6lbuv.wl-maz@kernel.org>
+	<20230417214033.25ckpswkjj6twfot@mercury.elektranox.org>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
  (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -80,8 +82,8 @@ X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, heiko@sntech.de, robh+dt@ker
 X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_015251_255020_53F67E5B 
-X-CRM114-Status: GOOD (  27.35  )
+X-CRM114-CacheID: sfid-20230418_015823_085583_DE34A260 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,100 +100,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Apr 2023 22:40:34 +0100,
+On Mon, 17 Apr 2023 22:40:33 +0100,
 Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
 > 
-> Rockchip RK3588/RK3588s GIC600 integration does not support the
-> sharability feature. Rockchip assigned Errata ID #3588001 for this
-> issue.
-
-s/Errata/Erratum/ (here and in the subject).
-
+> Hi,
 > 
-> Note, that the 0x0201743b ID is not Rockchip specific and thus
-> there is an extra of_machine_is_compatible() check.
+> On Mon, Apr 17, 2023 at 05:20:08PM +0100, Marc Zyngier wrote:
+> >> [...]
+> > Please see below for an untested diff against your patch, addressing
+> > most of the issues mentioned here.
 > 
-> The flag are named BROKEN_SHAREABILITY to be vendor agnostic,
-
-Either "the flag is" or "the flags are".
-
-> since apparently similar integration design errors exist in other
-> platforms and they can reuse the same flag.
+> Thanks, looks good. I integrated the changes into v3.
 > 
-> Co-developed-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Signed-off-by: XiaoDong Huang <derrick.huang@rock-chips.com>
-> Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Co-developed-by: Lucas Tanure <lucas.tanure@collabora.com>
-> Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  Documentation/arm64/silicon-errata.rst |  3 +++
->  arch/arm64/Kconfig                     | 10 ++++++++
->  drivers/irqchip/irq-gic-v3-its.c       | 35 ++++++++++++++++++++++++++
->  3 files changed, 48 insertions(+)
+> > Also, I don't see anything here addressing the *other* bug this
+> > platform suffers from, which is the 32bit limit to the allocations.
+> > Without a fix for it, this patch is pointless as the GIC may end-up
+> > with memory it cannot reach.
+> >
+> > What;s the plan for that?
 > 
-> diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arm64/silicon-errata.rst
-> index ec5f889d7681..46d06ed3e4f4 100644
-> --- a/Documentation/arm64/silicon-errata.rst
-> +++ b/Documentation/arm64/silicon-errata.rst
-> @@ -205,6 +205,9 @@ stable kernels.
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Qualcomm Tech. | Kryo4xx Gold    | N/A             | ARM64_ERRATUM_1286807       |
->  +----------------+-----------------+-----------------+-----------------------------+
-> ++----------------+-----------------+-----------------+-----------------------------+
-> +| Rockchip       | RK3588          | #3588001        | ROCKCHIP_ERRATUM_3588001    |
-> ++----------------+-----------------+-----------------+-----------------------------+
->  
->  +----------------+-----------------+-----------------+-----------------------------+
->  | Fujitsu        | A64FX           | E#010001        | FUJITSU_ERRATUM_010001      |
-> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-> index 1023e896d46b..1bc43faef10a 100644
-> --- a/arch/arm64/Kconfig
-> +++ b/arch/arm64/Kconfig
-> @@ -1150,6 +1150,16 @@ config NVIDIA_CARMEL_CNP_ERRATUM
->  
->  	  If unsure, say Y.
->  
-> +config ROCKCHIP_ERRATUM_3588001
-> +	bool "Rockchip 3588001: GIC600 can not support shareability attributes"
-> +	default y
-> +	help
-> +	  The Rockchip RK3588 GIC600 SoC integration does not support ACE/ACE-lite.
-> +	  This means, that the GIC600 may not use the GIC600 sharability feature
+> It got fixed in RK3588.
 
-This sentence makes little sense. It is the GIC driver that cannot
-make use of the shareability attributes.
-
-> +	  even though it is supported by the IP itself.
-> +
-> +	  If unsure, say Y.
-> +
->  config SOCIONEXT_SYNQUACER_PREITS
->  	bool "Socionext Synquacer: Workaround for GICv3 pre-ITS"
->  	default y
-> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-> index 586271b8aa39..5b7aa48dde25 100644
-> --- a/drivers/irqchip/irq-gic-v3-its.c
-> +++ b/drivers/irqchip/irq-gic-v3-its.c
-> @@ -42,9 +42,11 @@
->  #define ITS_FLAGS_CMDQ_NEEDS_FLUSHING		(1ULL << 0)
->  #define ITS_FLAGS_WORKAROUND_CAVIUM_22375	(1ULL << 1)
->  #define ITS_FLAGS_WORKAROUND_CAVIUM_23144	(1ULL << 2)
-> +#define ITS_FLAGS_BROKEN_SHAREABILITY		(1ULL << 3)
-
-Having slept on it, I'd rather this is renamed as
-"FORCE_NON_SHAREABLE", as it better describes what we are doing. The
-brokenness is an attribute of the platform, not of the flag.
-
->
->  #define RDIST_FLAGS_PROPBASE_NEEDS_FLUSHING	(1 << 0)
->  #define RDIST_FLAGS_RD_TABLES_PREALLOCATED	(1 << 1)
-> +#define RDIST_FLAGS_BROKEN_SHAREABILITY		(1 << 2)
-
-Same thing here.
-
-Thanks,
+So what's the plan for the affected SoCs? It might be a good idea to
+address it too, unless there are none of them in the wild?
 
 	M.
 
