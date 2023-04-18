@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E2A7C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 00:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65CE8C77B72
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 02:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KzlIv/sR2kUS8xTIjkqgaE9BWCC3ewHWje8VNBPRWeE=; b=vExrUJPvmfERor
-	4INh3sicb//bkW4QlmCXKC+DZKd3A94dxfAjit/SBfvz44vrcKCA53RQnbXzV/I9LRxLTEuBe/pgG
-	ki3fhO4CQpWnTL0qR+LXQJTfa367pL7e+QhwOmVYDJLKvE56j0a5m3ebireT7EMrKu70Kf3nrWCiI
-	phcnRQkkTMnneTmvoEA8TYxnyy9GVJiPiuL0wmnbozsaZ4Rbwc5fsDtGjTf35LeRyr6GBPtRHi7ym
-	JTO5NPG6+S/fo7J4r67fazu5myMY30BEQPKgTqESV8EaeCSDJH1IJmb8ZXpMiFTGlFP0/hRvymxv9
-	4bU7j5jqngYsVO227bCQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=0A0T0J5si6AJLGG+OLyd1wySvxoS/VucaKlXpwlrobA=; b=tTB
+	PibAJvK8XpzNe3JtGi80khGt+3pWtBj2oKQT3WRpf9uoDihbnEInsOd9X6cMNj2DtdHRGxCFUNyUo
+	/UbQK8HZhNZzWbyieaL5E6KSEgXJzLMejjfBXAZmNJkHNCNyUUqoHtJYv2PRcxcekdgAh823fseO5
+	yT6movVRALyG/XW+8FNNH4pRgncVqkeQBeaZLkwFVkMhl41NavzolPHbBo6O/PnQcy0Mne/KXskX0
+	4jUczsLywU603UoyGQFHP1zbroT+vAxKEV2o9ifLW8RlQFBbFWeysH2JkzM5yyFtIJlGuzPQD+6PM
+	eV/5T1GiJlB5PkQeiJ7HOf6kppGCRAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1poYuQ-000T9E-1z;
-	Tue, 18 Apr 2023 00:09:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1poawo-000fGt-0G;
+	Tue, 18 Apr 2023 02:19:58 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1poYuM-000T8f-25;
-	Tue, 18 Apr 2023 00:09:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 09C3762475;
-	Tue, 18 Apr 2023 00:09:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44E44C433D2;
-	Tue, 18 Apr 2023 00:09:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681776557;
-	bh=b71MwB1GPHPGUGJNYm/USXjO8vdrSbhJfyNLXt/caJk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mWOwpl9xJtkdrH9tLNqKB6OsMG+6PTWKD7b5eyaeARTd0g8XoMdsxLi9++Jyl34kj
-	 w9teMIc8GVbmeBD7NbCBX8K+c+HUVQNlPv/SfSdus5l9qkKqUFP8xjXRchJYIUeBKH
-	 LP8t71q9iSLOM0q5g9vGJtighGEcOt7UdUpk1FyUMwtQ0Yfryh+G8auiEhgGJqZzrJ
-	 rm8QQoSWnKoUdtL3RqkuhLca/s77+4/ahVRhHuSj0wWt18cCdMEb4Kt0pvJ+n05luv
-	 11Ka5G1Uud0dhING8D2xJGP2vKC5/3LSAU1LjPiT91j9k74SmVLdD+C/vtxJjidMJS
-	 PXHhTnQY5fXkA==
-Message-ID: <ea29e339-6f61-5bbb-7290-03df629d5b11@kernel.org>
-Date: Tue, 18 Apr 2023 09:09:12 +0900
+	id 1poawl-000fFW-1z
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Apr 2023 02:19:56 +0000
+Received: by mail-ej1-x634.google.com with SMTP id sz19so12261419ejc.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Apr 2023 19:19:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1681784392; x=1684376392;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=sLp1HZnlgPSvHgBiHvDqWBYSYkw5NGpdiarsGJcfed4=;
+        b=CT5wxernkD+4xw0e3l3fFvv3o9Ce4KQEiyEQxpVAN3g8pbDU3P4WXxIqQQEpTPv7Kv
+         seuHikYGbeHD9mv0yAwGwLHXCoe85pvOXyBbvwCjvrUf8HrIzEFNR78XH/K66YA0cBI9
+         fQEZIP0xkxI/2gwyWb7Eihx/D5T7fRfsSqygr3P7/Y23lBssPV77lbvMyEkPk4CP+9bq
+         NkLi0cqmzJsR3FictnfAfnS9XRSH4qv08hGrTenX/lMHBPDGYC7T6q0yspRXxW8ZK4pD
+         shqX2Sr6AldO2sgabBXoqOIQ8+2I04R3b2f1w9uigCr23qDyUD73nWng2MZyaaI3efB0
+         snDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681784392; x=1684376392;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sLp1HZnlgPSvHgBiHvDqWBYSYkw5NGpdiarsGJcfed4=;
+        b=MiyKguYOIlsKzRd8eHTkt15EGExrU+TWvtp5nbkp/II4bs4l06XdryhT76m8Sjn1FU
+         6ftzcgCPMwVZV1mIN0O4DI3pJUINqmNwespce+YAeorPckH+6wnfaE9WGaaYT3sa3q0s
+         YW1/KbVC+Q2rZLz7BTQHJQFf6ahjQ/yPrgeZqQyc80XxNxLV1zf3uMGCQuBgpH+z3IBJ
+         cueUe7QUQeCWfTjLj4hTF4HOaMSicl4nT8ZW7EBMg1LlKvAm3o/2IkMfyeJWBHz/uMjU
+         RtJx/yPzCCwG7rP02XF7lw359hvC4LsptNY5uqOJHlJyPtQHch6HojJWDXCcXsw/2Mh5
+         2qdA==
+X-Gm-Message-State: AAQBX9d85lK5bzTcIFaFHaLYvp7t8vLixihwkfJpbdniie0E60hAXCVj
+	3szzUPXGilTw7mnBSD8pWlOhZLTFUGbjQ3EKyU6RDUeLHps=
+X-Google-Smtp-Source: AKy350YKEaTbYs7sJ477+YjXVa2Ix76otfP+Lwt7XLfRMZkOdOoQsyg657WpJo6FHw3NLxYB+rtQ6EqwThyGc08dl9c=
+X-Received: by 2002:a17:907:7d9e:b0:94f:8f46:b286 with SMTP id
+ oz30-20020a1709077d9e00b0094f8f46b286mr1912179ejc.15.1681784391893; Mon, 17
+ Apr 2023 19:19:51 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v4 00/11] PCI: rockchip: Fix RK3399 PCIe endpoint
- controller driver
-Content-Language: en-US
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>, alberto.dassatti@heig-vd.ch
-Cc: xxm@rock-chips.com, Shawn Lin <shawn.lin@rock-chips.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>,
- Johan Jonker <jbx6244@gmail.com>, Caleb Connolly <kc@postmarketos.org>,
- Corentin Labbe <clabbe@baylibre.com>, Judy Hsiao <judyhsiao@chromium.org>,
- Arnaud Ferraris <arnaud.ferraris@collabora.com>,
- Hugh Cole-Baker <sigmaris@gmail.com>, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230417092631.347976-1-rick.wertenbroek@gmail.com>
-From: Damien Le Moal <dlemoal@kernel.org>
-Organization: Western Digital Research
-In-Reply-To: <20230417092631.347976-1-rick.wertenbroek@gmail.com>
+From: Doug Brewer <brewer.doug@gmail.com>
+Date: Tue, 18 Apr 2023 10:19:40 +0800
+Message-ID: <CAG0V13RUkKn1TPfa3DSeXDeBfJrYVXaouP2WMKrCdX-h0Xqrog@mail.gmail.com>
+Subject: PCIe problem on RK3568 EVB
+To: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230417_170918_766277_C5A101DC 
-X-CRM114-Status: GOOD (  25.05  )
+X-CRM114-CacheID: sfid-20230417_191955_654587_E7392719 
+X-CRM114-Status: UNSURE (   4.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +83,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/17/23 18:26, Rick Wertenbroek wrote:
-> This is a series of patches that fixes the PCIe endpoint controller driver
-> for the Rockchip RK3399 SoC. The driver was introduced in commit
-> cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> The original driver had issues and would not allow for the RK3399 to
-> operate in PCIe endpoint mode correctly. This patch series fixes that so
-> that the PCIe core controller of the RK3399 SoC can now act as a PCIe
-> endpoint. This is v4 of the patch series and addresses the comments received
-> during the review of the v3 [1]. The changes to the v3 are minor and none of
-> them change the logic of the driver.
-> 
-> Thank you in advance for reviewing this patch series and hopefully
-> getting this merged. Having a functional PCIe endpoint controller
-> driver for the RK3399 would allow to develop further PCIe endpoint
-> functions through the Linux PCIe endpoint framework using this SoC.
-> 
-> [1] https://lore.kernel.org/linux-pci/20230404082426.3880812-1-rick.wertenbroek@gmail.com/
-> 
-> Summary of changes to V3 :
-> 
-> * Set the fields in the standard order in the dtsi and removed unnecessary
->   change in associated documentation, thanks to Krzysztof for pointing this out.
-> * Added comment to explain how MSI-X capabilities advertisement was removed.
-> * Changed Damien Le Moal <damien.lemoal@opensource.wdc.com> address to his
->   kernel.org address Damien Le Moal <dlemoal@kernel.org> in tags.
-> * [minor] Simplified code where a power of 2 was applied followed by a ilog2
->   operation.
-> * [minor] Small code changes, replaced constant variable by macro, split
->   remaining long lines.
+Hello,
 
-I retested this series, all good. So my Tested-by tag stands.
+I added the following lines in rk3568-evb1-v10.dts:
 
-Lorenzo, Krzysztof, Bjorn,
+pcie30_avdd0v9: pcie30-avdd0v9 {
+       compatible = "regulator-fixed";
+       regulator-name = "pcie30_avdd0v9";
+       regulator-always-on;
+       regulator-boot-on;
+       regulator-min-microvolt = <900000>;
+       regulator-max-microvolt = <900000>;
+       vin-supply = <&vcc3v3_sys>;
+};
 
-Let's please get this series queued for 6.4 ASAP as otherwise the rockchip EP
-controller is unusable.
+pcie30_avdd1v8: pcie30-avdd1v8 {
+       compatible = "regulator-fixed";
+       regulator-name = "pcie30_avdd1v8";
+       regulator-always-on;
+       regulator-boot-on;
+       regulator-min-microvolt = <1800000>;
+       regulator-max-microvolt = <1800000>;
+       vin-supply = <&vcc3v3_sys>;
+};
 
-Also please note that working with Rick off-list, we found out that more fixes
-are in fact needed for the PCI address mapping (ATU programming) on top of this
-series. But the problems detected are subtle and harder to trigger. The fixes
-needed involve changes to the EPC core API so we are still working on the best
-way to do that. We'll work on another series on top of this one for addressing
-these issues.
+vcc3v3_pcie: gpio-regulator {
+       compatible = "regulator-fixed";
+       regulator-name = "vcc3v3_pcie";
+       regulator-min-microvolt = <3300000>;
+       regulator-max-microvolt = <3300000>;
+       enable-active-high;
+       gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
+       startup-delay-us = <5000>;
+       vin-supply = <&dc_12v>;
+};
 
+&pcie30phy {
+       status = "okay";
+};
 
+&pcie3x2 {
+       reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
+       vpcie3v3-supply = <&vcc3v3_pcie>;
+       status = "okay";
+};
+
+lspci produces no output (literally nothing), even with -vvvv.
+Any idea how to debug this?  Thanks.
+
+- Doug
 
 _______________________________________________
 Linux-rockchip mailing list
