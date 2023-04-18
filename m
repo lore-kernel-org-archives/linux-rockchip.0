@@ -4,73 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA42BC6FD18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 14:34:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A256C77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 16:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sqA/n39hZ5vJZ5weEoSTXGl8f4X7a/e3KscCAnjRuvU=; b=RNXZKNzicWXzOdQjI2OnhemSn9
-	lcGweK6rwiRkavYWOUxs7myjeQbFv58o36iiEew+IbpBXCATSX+42oJcuyFlSFDh0MSKUe90eFCvY
-	8lNV9PrTmbrX4SGiNoPJa3ylYHI9zBSS7tei2Ee9tfvunGqx848YHb3cNexC9D+GSF7adK1KJ6mJH
-	y5w6bPWzjNRr54Q98iY5QC+BEGhN/yTWqjJN6LObU80+8lBP9LSTSU8muf4sa+LI3KzqirxIgpxeB
-	QFLUwiuuAZ3iKQsZYPlXFZ7u4qftXdE+Lqm+RuXyBFO9OnDCTx6tfp/5/IoxbC4OOBlZqd+/h1TS8
-	95NUfYvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jqSSr3/nqVSc2gghVVPqUApCCjHveGsJNapCNO2nanc=; b=tC5fU+FPT3zjHR
+	V27PVHp9iVzVitumc5pK129hMcsXACwgOUdX1A3Pbn28NrO3lBIfsTBBz3kgMdw5y9eTnhCkRzGKG
+	81Fp45n8WVFNBAsoRRNO2+WrZZMjFz8wcVFKl/EytyusYy9m8TL2p6s94nj7JdLnTerlWAJIVJn05
+	M5a1sTBH76AIEIiuv0wmhdnXScBZiQ2siCUtvkhWc+0obFJfou8e9NI1UgB1Iq9IPjO/ZsbbbN9G/
+	todC9DfxVxwRa3AipJIM0tkeqf1xabFQEvAgCmy7hW8rYaryS25w4HE00T/yELJ2zV6PolMHWAFWI
+	z2mppSrrYau096Eo8dig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomPq-002SLK-0D;
-	Tue, 18 Apr 2023 14:34:42 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pooBk-002m4x-0T;
+	Tue, 18 Apr 2023 16:28:16 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomPn-002SKV-0D
+	id 1pooBh-002m3G-29
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Apr 2023 14:34:40 +0000
-Received: from mercury (unknown [91.248.213.255])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CCB166030AB;
-	Tue, 18 Apr 2023 15:34:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681828477;
-	bh=YVhZnKJ5ECxtU4C6qrisrswyDM2gDfxNK8VZem9eeZo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=caxVnhAI8c9INieG9RyP2ZeqAO25TKzDcS2YHHJ0T+x8c06O1Xx4p6coX9H0j+Lf0
-	 wm6EHVg8E6mXQ7+Q02N5f18n3jrSAo7kAvUJQlJKpPLq2klNxFpJ8S2sXF/KRuERSn
-	 K0MgsaiS2dQtYkBIqluAqor7Tol1c4t3+OPaA6zqbgi+HY3YbB2a6rj9JLKW+HxnUp
-	 UFXkw8mFVoQ+DjkS265F0We0RuYpPDErE31Eynvn1xUeoVZD+L9AYF+cSAvxRRWYf7
-	 elUKUpqbuNQknCfiU0xD4ugvu4kr5Gx+jNACshChnG6o1uh6ybk6lDg+kLeOB9W2wi
-	 DrMJzt4mZNCaw==
-Received: by mercury (Postfix, from userid 1000)
-	id 25A481066F0C; Tue, 18 Apr 2023 16:34:35 +0200 (CEST)
-Date: Tue, 18 Apr 2023 16:34:35 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>, Peng Fan <peng.fan@nxp.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	XiaoDong Huang <derrick.huang@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] irqchip/gic-v3: Add Rockchip 3588001 errata
- workaround
-Message-ID: <20230418143435.th22y4thv5vinwqq@mercury.elektranox.org>
-References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
- <20230417150038.51698-2-sebastian.reichel@collabora.com>
- <86a5z6lbuv.wl-maz@kernel.org>
- <20230417214033.25ckpswkjj6twfot@mercury.elektranox.org>
- <865y9tlg7q.wl-maz@kernel.org>
+	Tue, 18 Apr 2023 16:28:14 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9514ac7c8cfso71745766b.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 18 Apr 2023 09:28:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681835289; x=1684427289;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bJlWGu+2bQtbqWA973Suq+EwkurQD+u5p2hnYjezJq8=;
+        b=vv4dJ7uJKbOE+JhO+/5j8nJXF1CxEI2XsKRxzV3q+siggej4sDDk1smkZ+DmgjmiG3
+         anjf3zz5wFjLrjuBZpfetK4dewEBUxHKZ9Aj26Jemf2bdfwjx6wCwM1qL1zwr8ar+56y
+         Kt9IS8wPX46yvHpkFfNJp/KdANvr058YVUxAbFKW24AzORpNUD4P2aWLo0as+dkWyQgc
+         h215sM45EUqr1s0cJVLRusWX/OyTzY9nFD7RMSktgvvi6lMRrpeUdMOnbaTuBvowbdVC
+         hqQ1lx3cMz3y+RybL6yX8ahNQIXccfxQk18K80ra56ywXqBKV3wLnZf/EOPQHV5jsIsE
+         IWWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681835289; x=1684427289;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bJlWGu+2bQtbqWA973Suq+EwkurQD+u5p2hnYjezJq8=;
+        b=dw+P+JpAGqv8nCsmtDO+SP2Bcs0DLzwN3xW9DD9FIdpvluQrLi+dvt0ZP6OP9SDCr1
+         yiuD8sZsZs/SIAiBldEoSphwWKLiVAcb8K/fhIxQ8LyLkDWhgILPxfFCo7kihBZ86AVD
+         qDlqG/zZMpBTOqLjWn79VWsvuPgylkXYVKTbHrEdtq24nIvH+o7r15G4GzMcecPLo2Zw
+         6JpO1HUStS+29smimBsEz1nF94fo2UP5ai5m9+VfN/UJJGcO6phJ9L/0SrQumz2Z+ygh
+         MYUxnL9Z0eV3MWxOYcIyluWNjXdlyfOqW6C3T6HCN1li5mc1o44Wv0RN3q+uj8+UzMZ5
+         jniA==
+X-Gm-Message-State: AAQBX9f6mgqEU7/VEJIIhc/Zw6igEND2Xtv3A6glGRiJYBSOV5ZuT/A1
+	XbimnEBoVnAez7z+gk4RSURO7Q==
+X-Google-Smtp-Source: AKy350Y/3IgBgDv4R48Q63JLX5Uidf6WHyS26p9iorYJyBkECnJNn3F9M9a7PLWNGg3ixsvhOmHD1w==
+X-Received: by 2002:aa7:d691:0:b0:502:7d3f:1f04 with SMTP id d17-20020aa7d691000000b005027d3f1f04mr3245803edr.19.1681835288562;
+        Tue, 18 Apr 2023 09:28:08 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:a276:7d35:5226:1c77? ([2a02:810d:15c0:828:a276:7d35:5226:1c77])
+        by smtp.gmail.com with ESMTPSA id v26-20020aa7dbda000000b00506b0b80786sm2028340edt.36.2023.04.18.09.28.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Apr 2023 09:28:08 -0700 (PDT)
+Message-ID: <c8013f4d-5567-824f-53c0-03c2816447c4@linaro.org>
+Date: Tue, 18 Apr 2023 18:28:06 +0200
 MIME-Version: 1.0
-In-Reply-To: <865y9tlg7q.wl-maz@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 1/3] dt-bindings: timer: rockchip: Drop superfluous
+ rk3288 compatible
+Content-Language: en-US
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20230418120624.284551-1-cristian.ciocaltea@collabora.com>
+ <20230418120624.284551-2-cristian.ciocaltea@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230418120624.284551-2-cristian.ciocaltea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_073439_239187_63D19297 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20230418_092813_709097_9264F346 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +100,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2719924330831913236=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 18/04/2023 14:06, Cristian Ciocaltea wrote:
+> The compatible string for Rockchip RK3288 is provided in both the 'enum'
+> and the subsequent 'const' item. Drop the unnecessary entry from the
+> enum.
 
---===============2719924330831913236==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kbbhwx4mrkobsids"
-Content-Disposition: inline
+It's in three places, not two. The one which you remove is actually
+rk3288+rk3288 which is obviously wrong. The commit msg could be
+rephrased to point actual mistake being fixed + Fixes tag.
 
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
---kbbhwx4mrkobsids
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Best regards,
+Krzysztof
 
-Hi,
-
-On Tue, Apr 18, 2023 at 09:58:17AM +0100, Marc Zyngier wrote:
-> On Mon, 17 Apr 2023 22:40:33 +0100,
-> Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
-> > On Mon, Apr 17, 2023 at 05:20:08PM +0100, Marc Zyngier wrote:
-> > > Also, I don't see anything here addressing the *other* bug this
-> > > platform suffers from, which is the 32bit limit to the allocations.
-> > > Without a fix for it, this patch is pointless as the GIC may end-up
-> > > with memory it cannot reach.
-> > >
-> > > What;s the plan for that?
-> >=20
-> > It got fixed in RK3588.
->=20
-> So what's the plan for the affected SoCs? It might be a good idea to
-> address it too, unless there are none of them in the wild?
-
-The previous generation (RK3566 and RK3568) is affected by the 32
-bit issue as well as the shareability issue. I'm currently focusing
-on the RK3588 and that's the only Rockchip platform I have on my
-desk. Missing PCIe support is a lot more critical on RK3588, because
-multiple board designers decided to use a 2.5G PCIe network card
-instead of using the 1G network MAC from the SoC.
-
-Anyways, I will try to help out with RK356x once I find some time.
-
--- Sebastian
-
---kbbhwx4mrkobsids
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmQ+qmoACgkQ2O7X88g7
-+poOaxAAqLmebbW7CWZLqCIVVAxM/6dngT5X14eY2x27bNNmSsJGucNlvYJT6se+
-GGAUWMm66joQZ81Zr3u5ioCXrpJrdmXoiNCy3A2RBEtSiJ0A7Yi2z1yRezHuXmLd
-e38IrxQu/EbW+p3hXVetbdrrp39AiE8Rm734D/xFDbfUrwemQscfVj76Wg7EXyu3
-LNbebiGtfMPXcH2328mIIE8MaiK0jgQlkNPDQLMA749SRLxGE8TdGweHLW3dOQys
-0iY66CCRzzduB0jUnYyh+H8sVb3YVXzS31mD5+ONzdNjvA67Wz6hXmw2XLjVh+zx
-IUEzb09CH61huvjx8RQz7RLzWTjowFLORpB/ZcNnlLmMcrM8pw49x1BZZaYPzLqc
-KQcA6AcEQTRoISaVcFvRkiwDANJMCrrimuTIZV8GrTCxXoYqtH1tkEiB1VvJyTo2
-XfIAzlw+dATucraNBVHvpoi1UlL7hrJ6ltykv0TVw0oeX3OwGPSwxrkr7BwwMHu/
-8a35QogKik+uaJUBjENgjDmSa+IxyZAs7zIZmD8DcFe6Mod+VAM650iq2U8I3quv
-7tbnp8V1P56Uh348WIYiPyBvuGEJhPeopxhu455w/j+xQJHC/IHdH9B8ig1zKpRd
-cHPf8PP3N3fDSf68T5I1edptd/44fOgb6lkIOOqaqpqNglxhS50=
-=zajV
------END PGP SIGNATURE-----
-
---kbbhwx4mrkobsids--
-
-
---===============2719924330831913236==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2719924330831913236==--
-
