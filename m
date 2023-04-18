@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BD3C77B76
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B485EC77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Xvo4iYgE6+O2Mu0/EmhTPi7WkJuP8/bzNdSFfW2labs=; b=W58NN3sABCcn8S
-	29a/PpZbOj8MYJ6/CgGL4obPAIRiqTvaAmrVoj+Ry9x9nzSe9Oe9CYNyXRzFz6GPHCPp7WjEdYOaV
-	mg1hWTIzID7r0WY+0SE+dsmpZaOrulcKIvcURxWlrYf182H88s0zbiXTgNajTNxWjhWERcn/AZXaY
-	jYxG7yRDJVq50Ieuv1RfjugizxVwUUhb/EFqZHRmf34GhIhFCGo/gZwZTEtI1VcFnHAT4usENjUe/
-	gGmAcW6v0tz4h/08bgDTcm0mLMDpSr9YwG885ecjHjUnz3IcRJtdpnfmo++3asfvb7V/EB03O1ffG
-	zSnrlIUEqZ3LNaSYDP4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rKYlHGPTcUr07RL3vCsy/uFaMjMOBF2deGjTharppZA=; b=dIEwovP+Zu5jY0
+	YuzHyAuvwd5/1sbh/yPP0GraRYkUteOmRvy1oNWx1g+9tIfiLQ00F2jJ3n2QnGk05/eloecBn5Gx2
+	8nCdDoXaspXprgWyFzu5BjoYeom03DJ8z6/nVdD0AxHaSTyaDkZa/ap65YRtcrXARfQUJFfpL89/D
+	WM3+5F/X7piSxBDxtNVG/oV9BiTM+J0raBD18wHV9mPMBHNTHIK54hoQQUEd9kj4kjXSU7z1Ad42/
+	ZoCrfKKM08KvOTTsNsl3nD6k/Pe5pox1aYu6Q5TQCjfTqDJoE+e7QPJlSIxfjB9ldxtHd+Sa9vhFO
+	UQjYxvrRlKyu1eZ06O7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog46-001BTp-1z;
-	Tue, 18 Apr 2023 07:47:50 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1pog4E-001BXU-23;
+	Tue, 18 Apr 2023 07:47:58 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog42-001BSk-3B;
-	Tue, 18 Apr 2023 07:47:49 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id c9so31980635ejz.1;
-        Tue, 18 Apr 2023 00:47:44 -0700 (PDT)
+	id 1pog48-001BTg-1Y;
+	Tue, 18 Apr 2023 07:47:53 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id xd13so36907342ejb.4;
+        Tue, 18 Apr 2023 00:47:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681804063; x=1684396063;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=slOsWP9dy0zTlu7ombkr/cRCckFIfTiMBYYVFS3qfQo=;
-        b=gmi9fGZmBcEBdIgLF5KVDMoX76tDEIAGXPtEyAmT/R5wxZ9UUxjTTJ07IAlVBXh+ah
-         RtC8mQ7qepF/w+ibQLXKAHXzI6iHIf2WdvI/WYWyB1Utj9QiGi8+jitp0Pefv0XMtD1R
-         VSevoddk9k7IvFthUse5QN9DfWKhKUjey0ll1i/w8tafG0AMJ6Jax+A2ZWj74Behk1OB
-         bhPab33ThF6Yw85xZ94wct6koTL/uEzLPlAlhxf9ahUPiWGoAD7bWFSg2ztgmWtoHske
-         /pfxbVVFQMwg5Hnspynhm8VhMdpbgHgZGBieLIzy4GdCuSM1Q739rpj4NbEYv+ZJ3d5M
-         h2wA==
+        d=gmail.com; s=20221208; t=1681804068; x=1684396068;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LB/hBZR8yZjvvma1XgK2soZdHK9U46eqjW0k2u2qdaw=;
+        b=VvPmODTRSWxRQw4z5PuphOXjk9QKXdVuOolVhs0pLbWpGo5OrxV1SiE/G7BVu39CLc
+         SFeHjPqqce1UwUjn8luF8/WxJ3kkJgdgiWP/T7S1MDpiO2rxruY4dyRzOxj3Vhb0YJjc
+         uJoWIIyQKVFjrR9ORY72jCos/xlMCdkZ9wsQyBm1pwZJxYIqbwvA9FSUNwydHZoOl6An
+         hdU+tBwtgJZz0Kwm0Nyl/PZthI/X2I4rK84fKwNDpzmSZ0gVt+yLjAoLYvVycGq97l7q
+         YD5K0nYhfHIHdLY13LvrsfNZ6rjUNqlv5FqbMPBoyydFC/j0OmW9gaeUtXjcSapjxIVr
+         i0Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681804063; x=1684396063;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=slOsWP9dy0zTlu7ombkr/cRCckFIfTiMBYYVFS3qfQo=;
-        b=epskiNJ+503JkZigyOsAOBgdQ8F6qkIYnwt/MPddXtS2E5vKPfv56r0NMOHZFsPkwm
-         q8dTNAei4htjGRJ2QRumS/JSMd1e6uAPY9JImXJzoYQHA33Vs/yFa6yLX1oD7I9fT4H8
-         YSY0eahYQ3Juazotc5DdjjOvns2iWGbUreaOTBgLph/Mh43KKDKJr/GBGZQGABGB3ZHo
-         omPyRD3FRleD/6snZHIKLUHhbvzv/BDGHiJAX+VHUYDeLiHN3Bw91Z9E/AXg+B9UUGoa
-         LCdUzbeyV23c8LamA2D2ttJP9VJd/VpvfimsOWwFGQPuy6bRQjd0ag0Pe/EU61hW/lCL
-         aA/Q==
-X-Gm-Message-State: AAQBX9cugtboCOfS9gqpQ0ezMqZ18Rf1xndOJQsAEOkbKSIcxvFaTTvg
-	FZItPhtNYKOXzBApCn6t0H4=
-X-Google-Smtp-Source: AKy350YgkNlI6WP3hpYR8IbVNvNmINGaN965qYF1GSX6dnaXIDKE+CGE4249jxd6RkEGubYgVbGeRA==
-X-Received: by 2002:a17:906:1e4c:b0:94e:c926:ae6b with SMTP id i12-20020a1709061e4c00b0094ec926ae6bmr9642545ejj.16.1681804062865;
-        Tue, 18 Apr 2023 00:47:42 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681804068; x=1684396068;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LB/hBZR8yZjvvma1XgK2soZdHK9U46eqjW0k2u2qdaw=;
+        b=NwLB0UAI/bdTulLtlyNfaBaHkxNy+Dw3g0BbJOwg07zYPMRPuYev3KRaN657RRpgz8
+         1+Wlj835j0OpUVfHlKPsaUvwHpTCWOr6Hw0+3INzJwauUwYFy41pXCfWXAZ25N56R971
+         hXpd/28xn/q7vzAEc8vLERfipYpqRPv5wZX/LwybCa2AdlP+EfM456QmRWlk3GAZFXRE
+         jJUZ4muqJxD0zt62gpoDIDLY5owwv+REkzYRAw13a/KTUIdI+nFX3nIxwjbMdnQOWHsj
+         lhcYPDi1yxfyvw6iBHwaP9v+RUZF92IMzcCArf8+kkRU33bYUAdxEY099v21oV56Rflx
+         IEug==
+X-Gm-Message-State: AAQBX9fW5MZa+hF4+wY1QNgrolGGZR22SREAuiOokNMTYm+P3iCRy9nz
+	98Xdq0eDuuavploDVIj81tA=
+X-Google-Smtp-Source: AKy350aYQU0ctOk0PyP74jWCcA9w/O/pwliRjBYZUKfvc0UrcfFPuvvj54f9Lt7AKK2eUMbuFoUQ8A==
+X-Received: by 2002:a17:906:350d:b0:94a:8f3a:1a77 with SMTP id r13-20020a170906350d00b0094a8f3a1a77mr9390578eja.8.1681804068555;
+        Tue, 18 Apr 2023 00:47:48 -0700 (PDT)
 Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
-        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.39
+        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 00:47:40 -0700 (PDT)
+        Tue, 18 Apr 2023 00:47:48 -0700 (PDT)
 From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 To: alberto.dassatti@heig-vd.ch
 Cc: xxm@rock-chips.com,
 	dlemoal@kernel.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	stable@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -72,26 +74,28 @@ Cc: xxm@rock-chips.com,
 	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Brian Norris <briannorris@chromium.org>,
 	Caleb Connolly <kc@postmarketos.org>,
-	Johan Jonker <jbx6244@gmail.com>,
+	Brian Norris <briannorris@chromium.org>,
 	Corentin Labbe <clabbe@baylibre.com>,
+	Johan Jonker <jbx6244@gmail.com>,
 	Hugh Cole-Baker <sigmaris@gmail.com>,
-	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
 	Judy Hsiao <judyhsiao@chromium.org>,
+	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 00/11] PCI: rockchip: Fix RK3399 PCIe endpoint controller driver
-Date: Tue, 18 Apr 2023 09:46:47 +0200
-Message-Id: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
+Subject: [PATCH v5 02/11] PCI: rockchip: Write PCI Device ID to correct register
+Date: Tue, 18 Apr 2023 09:46:49 +0200
+Message-Id: <20230418074700.1083505-3-rick.wertenbroek@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
+References: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_004747_026047_274B4F91 
-X-CRM114-Status: GOOD (  40.20  )
+X-CRM114-CacheID: sfid-20230418_004752_516209_9E5B091E 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,213 +112,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a series of patches that fixes the PCIe endpoint controller driver
-for the Rockchip RK3399 SoC. The driver was introduced in commit
-cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-The original driver had issues and would not allow for the RK3399 to
-operate in PCIe endpoint mode correctly. This patch series fixes that so
-that the PCIe core controller of the RK3399 SoC can now act as a PCIe
-endpoint. This is v5 of the patch series and addresses the comments received
-during the review of the v4 [1]. The changes to the v4 are minor and none of
-them change the logic of the driver.
+Write PCI Device ID (DID) to the correct register. The Device ID was not
+updated through the correct register. Device ID was written to a read-only
+register and therefore did not work. The Device ID is now set through the
+correct register. This is documented in the RK3399 TRM section 17.6.6.1.1
 
-Thank you in advance for reviewing this patch series and hopefully
-getting this merged. Having a functional PCIe endpoint controller
-driver for the RK3399 would allow to develop further PCIe endpoint
-functions through the Linux PCIe endpoint framework using this SoC.
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
+Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
+Tested-by: Damien Le Moal <dlemoal@kernel.org>
+Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+---
+ drivers/pci/controller/pcie-rockchip-ep.c | 6 ++++--
+ drivers/pci/controller/pcie-rockchip.h    | 2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-[1] https://lore.kernel.org/linux-pci/20230417092631.347976-1-rick.wertenbroek@gmail.com/
-
-Summary of changes to V4 :
-
-* [minor] Added "reviewed-by" tags from the mailing list to patches 1,7,8,9,10
-* [minor] Added missing "fixes" tag in patches 10,11
-* [minor] Added missing "signed-off-by" tag to patch 11
-* [minor] Moved split of long line from patch 8 to 3 where it was introduced
-
-Summary of changes to V3 :
-
-* Set the fields in the standard order in the dtsi and removed unnecessary
-  change in associated documentation, thanks to Krzysztof for pointing this out.
-* Added comment to explain how MSI-X capabilities advertisement was removed.
-* Changed Damien Le Moal <damien.lemoal@opensource.wdc.com> address to his
-  kernel.org address Damien Le Moal <dlemoal@kernel.org> in tags.
-* [minor] Simplified code where a power of 2 was applied followed by a ilog2
-  operation.
-* [minor] Small code changes, replaced constant variable by macro, splitted
-  remaining long lines.
-
-Summary of changes to V2 :
-
-* Fix issue with memory mapping from PCIe space to physical space
-  There was a small mistake with the number of bits passed from the AXI
-  physical address to the PCIe space address.
-* Disable the advertisement of MSI-X capabilities by the endpoint
-  According to the technical reference manual the controller cannot
-  generate MSI-X, so the controller should not advertise this capability.
-* Add the alignment value to the endpoint attributes.
-* [minor] Clean code (line length, variable names, small refactorings).
-  As pointed out by reviews on the V2.
-* [minor] Fix error in variable name.
-* [minor] Remove a patch that introduced unnecessary late parameter checks.
-
-General problem statement and overview of the patch series :
-
-Problem: The Rockchip RK3399 PCIe endpoint controller driver introduced in
-commit cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe
-controller") did not work.
-
-Summary of problems with the driver :
-
-* Missing dtsi entry
-* Could not update Device ID (DID)
-* The endpoint could not be configured by a host computer because the
-  endpoint kept sending Configuration Request Retry Status (CRS) messages
-* The kernel would sometimes hang on probe due to access to registers in
-  a clock domain of which the PLLs were not locked
-* The memory window mapping and address translation mechanism had
-  conflicting mappings and did not follow the technical reference manual
-  as to how the address translation should be done
-* Legacy IRQs were not generated by the endpoint
-* Message Signaled interrupts (MSI) were not generated by the endpoint
-* MSI-X capabilities were advertised but the controller cannot generate
-  them according to the technical reference manual
-
-The problems have been addressed and validated through tests (see below).
-
-Summary of patches :
-
-This patch series is composed of 11 patches that do the following :
-1) Remove writes to unused registers in the PCIe core register space.
-   The registers that were written to is marked "unused" and read
-   only in the technical reference manual of the RK3399 SoC.
-2) Write PCI Device ID (DID) to correct register, the DID was written to
-   a read only register and therefore would not update the DID.
-3) Assert PCI Configuration Enable bit after probe so that it would stop
-   sending Configuration Request Retry Status (CRS) messages to the
-   host once configured, without this the host would retry until
-   timeout and cancel the PCI configuration.
-4) Add poll and timeout to wait for PHY PLLs to be locked, this
-   is the only patch that also applies to the root complex function
-   of the PCIe core controller, without this the kernel would
-   sometimes access registers in the PHY PLL clock domain when the PLLs
-   were not yet locked and the system would hang. This was hackily solved
-   in other non mainline patches (e.g., in armbian) with a "msleep()"
-   that was added after PHY PLL configuration but without realizing
-   why it was needed. A poll with timeout seems like a sane approach.
-5) Add dtsi entry for RK3399 PCIe endpoint core. The new entry is
-   in "disabled" status by default, so unless it is explicitly enabled
-   it will not conflict with the PCIe root complex controller entry.
-   Developers that will enable it would know that the root complex function
-   then must be disabled, this can be done in the board level DTS.
-6) Update the RK3399 example in the documentation to a valid one.
-7) Fix legacy IRQ generation for RK3399 PCIe endpoint core, the legacy IRQs
-   were not sent by the device because their generation did not follow the
-   instructions in the technical reference manual. They now work.
-8) Fix window mapping and address translation for endpoint. The window
-   mapping and address translation did not follow the technical reference
-   manual and a single memory region was used which resulted in conflicting
-   address translations for memory allocated in that region. The current
-   patch allows to allocate up to 32 memory windows with 1MB pages.
-9) Use u32 variable to access 32-bit registers, u16 variables were used to
-   access and manipulate data of 32-bit registers, this would lead to
-   overflows e.g., when left shifting more than 16 bits.
-10) Don't advertise MSI-X in PCIe capabilities because according to the TRM
-    the controller is not capable of generating them.
-11) Set address alignment for the endpoint mode.
-
-Validation on real hardware:
-
-This patch series has been tested by me with kernels 6.0.19, 6.1.21-24,
-and 5.19 on real hardware, a FriendlyElec NanoPC-T4 RK3399 based single
-computer board connected to a host computer through PCIe x1 and x4. The
-driver was also tested by Damien Le Moal <damien.lemoal@opensource.wdc.com>
-on a Pine Rockpro64 board [2,3,4].
-
-[2] https://lore.kernel.org/linux-pci/20230330085357.2653599-1-damien.lemoal@opensource.wdc.com/
-[3] https://lore.kernel.org/linux-pci/29a5ccc3-d2c8-b844-a333-28bc20657942@fastmail.com/
-[4] https://lore.kernel.org/linux-pci/ea29e339-6f61-5bbb-7290-03df629d5b11@kernel.org/
-
-The PCIe endpoint test function driver was loaded on the SoC and the PCIe
-endpoint test driver was loaded on the host computer. The following tests were
-executed through this setup :
-
-* enumeration of the PCIe endpoint device (lspci)
-  lspci -vvv
-* validation of PCI header and capabilities
-  setpci and lspci -xxxx
-* device was recognized by host computer dans PCIe endpoint test driver
-  was loaded
-  lspci -v states "Kernel modules: pci_endpoint_test"
-* tested the BARs 0-5
-  sudo /usr/bin/pcitest -b 0
-  ...
-  sudo /usr/bin/pcitest -b 5
-* tested legacy interrupt through the test driver
-  sudo /usr/bin/pcitest -i 0
-  sudo /usr/bin/pcitest -l
-* tested MSI interrupt through the test driver
-  sudo /usr/bin/pcitest -i 1
-  sudo /usr/bin/pcitest -m 1
-* tested read/write to and from host through the test driver with checksum
-  sudo /usr/bin/pcitest -r -s 1024
-  sudo /usr/bin/pcitest -w -s 1024
-* tested read/write with DMA enabled (all read/write tests also did IRQ)
-  sudo /usr/bin/pcitest -r -d -s 8192
-  sudo /usr/bin/pcitest -w -d -s 8192
-* tested larged transfers e.g., 100kB with and without DMA
-
-Commands used on the SoC to launch the endpoint function (configfs) :
-
-modprobe -i pci-epf-test
-mkdir -p /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0
-echo 0xb500 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/deviceid
-echo 0x104c > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/vendorid
-echo 16 > /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0/msi_interrupts 
-ln -s /sys/kernel/config/pci_ep/functions/pci_epf_test/pci_epf_test.0 \
-/sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/
-echo 1 > /sys/kernel/config/pci_ep/controllers/fd000000.pcie-ep/start
-
-Note: to enable the endpoint controller on the board the file :
-arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-Was edited to set the status of &pcie0 to "disabled" and &pcie0_ep
-to "okay". This is not submitted as a patch because most users
-will use the PCIe core controller in host (root complex) mode
-rather than endpoint mode.
-
-I have tested and confirmed all functionality required for the
-endpoint with the test driver and tools. With the initial driver commit
-cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-the device would not even be enumerated by the host computer (mainly because
-of CRS messages being sent back to the root complex) and tests would not pass
-(driver would not even be loaded because DID was not set correctly)
-and then only the BAR test would pass. Now all tests pass as stated above.
-
-Best regards
-Rick
-
-Damien Le Moal (1):
-  PCI: rockchip: Set address alignment for endpoint mode
-
-Rick Wertenbroek (10):
-  PCI: rockchip: Remove writes to unused registers
-  PCI: rockchip: Write PCI Device ID to correct register
-  PCI: rockchip: Assert PCI Configuration Enable bit after probe
-  PCI: rockchip: Add poll and timeout to wait for PHY PLLs to be locked
-  arm64: dts: rockchip: Add dtsi entry for RK3399 PCIe endpoint core
-  dt-bindings: PCI: Update the RK3399 example to a valid one
-  PCI: rockchip: Fix legacy IRQ generation for RK3399 PCIe endpoint core
-  PCI: rockchip: Fix window mapping and address translation for endpoint
-  PCI: rockchip: Use u32 variable to access 32-bit registers
-  PCI: rockchip: Don't advertise MSI-X in PCIe capabilities
-
- .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |   4 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  27 +++
- drivers/pci/controller/pcie-rockchip-ep.c     | 221 ++++++++----------
- drivers/pci/controller/pcie-rockchip.c        |  17 ++
- drivers/pci/controller/pcie-rockchip.h        |  49 ++--
- 5 files changed, 181 insertions(+), 137 deletions(-)
-
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index d5c477020417..9b835377bd9e 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -115,6 +115,7 @@ static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
+ static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn, u8 vfn,
+ 					 struct pci_epf_header *hdr)
+ {
++	u32 reg;
+ 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+ 	struct rockchip_pcie *rockchip = &ep->rockchip;
+ 
+@@ -127,8 +128,9 @@ static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn, u8 vfn,
+ 				    PCIE_CORE_CONFIG_VENDOR);
+ 	}
+ 
+-	rockchip_pcie_write(rockchip, hdr->deviceid << 16,
+-			    ROCKCHIP_PCIE_EP_FUNC_BASE(fn) + PCI_VENDOR_ID);
++	reg = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_DID_VID);
++	reg = (reg & 0xFFFF) | (hdr->deviceid << 16);
++	rockchip_pcie_write(rockchip, reg, PCIE_EP_CONFIG_DID_VID);
+ 
+ 	rockchip_pcie_write(rockchip,
+ 			    hdr->revid |
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 32c3a859c26b..51a123e5c0cf 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -133,6 +133,8 @@
+ #define PCIE_RC_RP_ATS_BASE		0x400000
+ #define PCIE_RC_CONFIG_NORMAL_BASE	0x800000
+ #define PCIE_RC_CONFIG_BASE		0xa00000
++#define PCIE_EP_CONFIG_BASE		0xa00000
++#define PCIE_EP_CONFIG_DID_VID		(PCIE_EP_CONFIG_BASE + 0x00)
+ #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
+ #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
+ #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
 -- 
 2.25.1
 
