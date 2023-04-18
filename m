@@ -4,54 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 418F7C6FD18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 14:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA42BC6FD18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 14:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9BQLM7jORYRqyz8rXDbhdbOlSXqWBTgFVwOEQKiUIFI=; b=Ypff2w52lXma5K
-	5eHSFji3dSOWGT/8FBruVAiL8QVUyMz6KsUY3byo0+CQdpXt0Zb8+mMIZYseWFbu+JbCYKIMJJlDJ
-	sM91hdOkgi+KZG/BStVbwVtONE7G7+eI1HwmvbcLHL+eh+ueWhvtziCqT3thz9XuR9uvHMsqcGIXU
-	9289P0vVdXj3xWPKUclZJXJ0c/z4o8HV4AyrW4GBVaxgaqtR9EwW8kPZ3g0KGwWi2O/thmx3aaRrn
-	EB28eD11QrSnMQgSMw8F5ydsRBXDDmYKsvwDE7zoV+Ozajmgr473wfozUdf/gi2zEdLbyafd6T74O
-	n3Sp69OYvb2wJ5NKvhHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sqA/n39hZ5vJZ5weEoSTXGl8f4X7a/e3KscCAnjRuvU=; b=RNXZKNzicWXzOdQjI2OnhemSn9
+	lcGweK6rwiRkavYWOUxs7myjeQbFv58o36iiEew+IbpBXCATSX+42oJcuyFlSFDh0MSKUe90eFCvY
+	8lNV9PrTmbrX4SGiNoPJa3ylYHI9zBSS7tei2Ee9tfvunGqx848YHb3cNexC9D+GSF7adK1KJ6mJH
+	y5w6bPWzjNRr54Q98iY5QC+BEGhN/yTWqjJN6LObU80+8lBP9LSTSU8muf4sa+LI3KzqirxIgpxeB
+	QFLUwiuuAZ3iKQsZYPlXFZ7u4qftXdE+Lqm+RuXyBFO9OnDCTx6tfp/5/IoxbC4OOBlZqd+/h1TS8
+	95NUfYvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomI3-002QpW-2S;
-	Tue, 18 Apr 2023 14:26:39 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1pomPq-002SLK-0D;
+	Tue, 18 Apr 2023 14:34:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pomHz-002QnX-21;
-	Tue, 18 Apr 2023 14:26:36 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pomHo-0003qq-MP; Tue, 18 Apr 2023 16:26:24 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Peter Geis <pgwipeout@gmail.com>,
- Javier Martinez Canillas <javierm@redhat.com>
-Cc: linux-kernel@vger.kernel.org, Peter Robinson <pbrobinson@gmail.com>,
- Caleb Connolly <kc@postmarketos.org>, Jarrah Gosbell <kernel@undef.tools>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Martijn Braam <martijn@brixit.nl>, Ondrej Jirman <megi@xff.cz>,
- Rob Herring <robh+dt@kernel.org>, Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject:  Re: [PATCH] arm64: dts: rockchip: Change serial baud rate for Pinephone Pro
- to 1.5 MB
-Date: Tue, 18 Apr 2023 16:26:23 +0200
-Message-ID: <3797122.KgjxqYA5nG@diego>
-In-Reply-To: <87h6tdie46.fsf@minerva.mail-host-address-is-not-set>
-References:  <20230403175937.2842085-1-javierm@redhat.com> <3999080.iIbC2pHGDl@diego>
- <87h6tdie46.fsf@minerva.mail-host-address-is-not-set>
+	id 1pomPn-002SKV-0D
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Apr 2023 14:34:40 +0000
+Received: from mercury (unknown [91.248.213.255])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CCB166030AB;
+	Tue, 18 Apr 2023 15:34:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1681828477;
+	bh=YVhZnKJ5ECxtU4C6qrisrswyDM2gDfxNK8VZem9eeZo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=caxVnhAI8c9INieG9RyP2ZeqAO25TKzDcS2YHHJ0T+x8c06O1Xx4p6coX9H0j+Lf0
+	 wm6EHVg8E6mXQ7+Q02N5f18n3jrSAo7kAvUJQlJKpPLq2klNxFpJ8S2sXF/KRuERSn
+	 K0MgsaiS2dQtYkBIqluAqor7Tol1c4t3+OPaA6zqbgi+HY3YbB2a6rj9JLKW+HxnUp
+	 UFXkw8mFVoQ+DjkS265F0We0RuYpPDErE31Eynvn1xUeoVZD+L9AYF+cSAvxRRWYf7
+	 elUKUpqbuNQknCfiU0xD4ugvu4kr5Gx+jNACshChnG6o1uh6ybk6lDg+kLeOB9W2wi
+	 DrMJzt4mZNCaw==
+Received: by mercury (Postfix, from userid 1000)
+	id 25A481066F0C; Tue, 18 Apr 2023 16:34:35 +0200 (CEST)
+Date: Tue, 18 Apr 2023 16:34:35 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Marc Zyngier <maz@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Thomas Gleixner <tglx@linutronix.de>, Peng Fan <peng.fan@nxp.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	XiaoDong Huang <derrick.huang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/2] irqchip/gic-v3: Add Rockchip 3588001 errata
+ workaround
+Message-ID: <20230418143435.th22y4thv5vinwqq@mercury.elektranox.org>
+References: <20230417150038.51698-1-sebastian.reichel@collabora.com>
+ <20230417150038.51698-2-sebastian.reichel@collabora.com>
+ <86a5z6lbuv.wl-maz@kernel.org>
+ <20230417214033.25ckpswkjj6twfot@mercury.elektranox.org>
+ <865y9tlg7q.wl-maz@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <865y9tlg7q.wl-maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_072635_662828_3A1F866A 
-X-CRM114-Status: GOOD (  34.10  )
+X-CRM114-CacheID: sfid-20230418_073439_239187_63D19297 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,56 +82,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============2719924330831913236=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBEaWVuc3RhZywgMTguIEFwcmlsIDIwMjMsIDE0OjExOjUzIENFU1Qgc2NocmllYiBK
-YXZpZXIgTWFydGluZXogQ2FuaWxsYXM6Cj4gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4gd3JpdGVzOgo+IAo+IEhlbGxvIEhlaWtvLAo+IAo+ID4gSGkgUGV0ZXIsCj4gPgo+ID4gQW0g
-RGllbnN0YWcsIDQuIEFwcmlsIDIwMjMsIDE0OjUyOjAyIENFU1Qgc2NocmllYiBQZXRlciBHZWlz
-Ogo+ID4+IE9uIFR1ZSwgQXByIDQsIDIwMjMgYXQgMzo1NeKAr0FNIEhlaWtvIFN0w7xibmVyIDxo
-ZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4+ID4KPiA+PiA+IEhpLAo+ID4+ID4KPiA+PiA+IEFt
-IE1vbnRhZywgMy4gQXByaWwgMjAyMywgMTk6NTk6MzcgQ0VTVCBzY2hyaWViIEphdmllciBNYXJ0
-aW5leiBDYW5pbGxhczoKPiA+PiA+ID4gVGhpcyBiYXVkIHJhdGUgaXMgc2V0IGZvciB0aGUgZGV2
-aWNlIGJ5IG1haW5saW5lIHUtYm9vdCBhbmQgaXMgYWxzbyB3aGF0Cj4gPj4gPiA+IGlzIHNldCBp
-biB0aGUgUGluZWJvb2sgUHJvIERldmljZSBUcmVlLCB3aGljaCBpcyBhIGRldmljZSBzaW1pbGFy
-IHRvIHRoZQo+ID4+ID4gPiBQaW5lUGhvbmUgUHJvIGJ1dCB3aXRoIGEgZGlmZmVyZW50IGZvcm0g
-ZmFjdG9yLgo+ID4+ID4gPgo+ID4+ID4gPiBPdGhlcndpc2UsIHRoZSBiYXVkIHJhdGUgb2YgdGhl
-IGZpcm13YXJlIGFuZCBMaW51eCBkb24ndCBtYXRjaCBieSBkZWZhdWx0Cj4gPj4gPiA+IGFuZCBh
-ICdjb25zb2xlPXR0eVMyLDE1MDAwMDBuOCcga2VybmVsIGNvbW1hbmQgbGluZSBwYXJhbWV0ZXIg
-aXMgcmVxdWlyZWQKPiA+PiA+ID4gdG8gaGF2ZSBwcm9wZXIgb3V0cHV0IGZvciBib3RoLgo+ID4+
-ID4KPiA+PiA+IFRoZSBpbnRlcmVzdGluZyBxdWVzdGlvbiBpcyBhbHdheXMgaWYgdGhpcyB3aWxs
-IGJyZWFrIHNvbWVvbmUgZWxzZSdzIHNldHVwLgo+ID4+ID4gSSd2ZSBuZXZlciByZWFsbHkgdW5k
-ZXJzdG9vZCB0aGUgc3RyYW5nZSBzZXR0aW5nIG9mIDEuNU1CcHMsIGJ1dCBvbiB0aGUKPiA+PiA+
-IG90aGVyIGhhbmQgaXQgX2lzXyBhIHJlYWxpdHkgb24gbW9zdCBib2FyZHMuCj4gPgo+ID4+IFRo
-ZSAxLjVNIGJhdWQgaXMgZGVmYXVsdCBiZWNhdXNlIHRoZSBjbG9jayBzdHJ1Y3R1cmUgb24gcm9j
-a2NoaXAKPiA+PiBkZXZpY2VzIGRvZXMgbm90IGFsbG93IGEgY2xlYW4gMTE1MjAwIGJhdWQuIEJ5
-IGF0dGVtcHRpbmcgdG8gZm9yY2UKPiA+PiAxMTUyMDAsIGl0IHdpbGwgYWx3YXlzIGJlIHNsaWdo
-dGx5IG9mZiAoZWl0aGVyIGxvdyBvciBoaWdoIGRlcGVuZGluZwo+ID4+IG9uIGhvdyB0aGUgZHJp
-dmVyIGRlY2lkZWQgdG8gcm91bmQpLiBJZiB0aGlzIGFjdHVhbGx5IGNhdXNlcyBhbnkKPiA+PiBw
-cm9ibGVtcyBpcyB0aGUgc3ViamVjdCBvZiBtdWNoIGRlYmF0ZS4KPiA+Cj4gPiB0aGFua3Mgc28g
-bXVjaCBmb3IgdGhpcyBwaWVjZSBvZiBjbG9jay1kZXRhaWwuIEFzIEkgd3JvdGUsIEkgbmV2ZXIg
-cmVhbGx5Cj4gPiB1bmRlcnN0b29kIHRoZSB3aHkgX2JlZm9yZV8gYnV0IGFsc28gbmV2ZXIgY2Fy
-ZWQgdGhhdCBtdWNoIHRvIGRpdmUKPiA+IGludG8gaXQgYW5kIGZpbmQgb3V0Lgo+ID4KPiA+IFNv
-IHlvdXIgZXhwbGFuYXRpb24gY2xvc2VzIG9uZSBrbm93bGVkZ2UgZ2FwIGluIG15IGhlYWQuCj4g
-Pgo+ID4gVGhhbmtzIGEgbG90IDotKQo+IAo+IERpZCB5b3UgbWFrZSBhIGRlY2lzaW9uIGFib3V0
-IHRoaXM/IEkgZ3Vlc3MgdGhlIGNsb2NrIGV4cGxhbmF0aW9uIGlzIHlldAo+IGFub3RoZXIgYXJn
-dW1lbnQgaW4gZmF2b3VyIG9mIHN3aXRjaGluZyB0aGUgUFBQIHRvIGEgMS41IE1icHMgYmF1ZCBy
-YXRlID8KClNvcnJ5LCBidXQgbm8gZGVjaXNpb24gbWFkZSBoZXJlLiBFaXRoZXIgd2F5IGl0J3Mg
-YnJlYWtpbmcgZm9yIHNvbWVvbmUsCndoaWNoIG1ha2VzIHRoaXMgcXVpdGUgaGFyZC4KClRoZSBy
-YXRlIGFjY3VyYWN5IGlzIHRoZSBvbmUgc2lkZSwgdGhlIHR3by1ib290IGlzc3VlIGlzIHRoZSBv
-dGhlciBzaWRlLgpBbmQgbWFpbmxpbmUgdS1ib290IChhbmQgbGV2aW5ib290IC0gd2hhdGV2ZXIg
-dGhhdCBpcykgcHJvdmlkZXMgYSAzcmQgc2lkZS4KClBlb3BsZSBzdGFydGluZyB3aXRoIHRoZSBw
-aG9uZSBwcm9iYWJseSB3b24ndCByZXBsYWNlIHRoZSBib290bG9hZGVyCmluIGEgZmlyc3Qgc3Rl
-cCBidXQgaW5zdGVhZCBtaWdodCBwbGF5IHdpdGggYSBzeXN0ZW0gaW1hZ2Ugb3IgbmV3ZXIga2Vy
-bmVsLgpTbyBpZiB0aGUgdWFydCB3aWxsIGJyZWFrIGZvciBldmVyeW9uZSB1c2luZyB0aGUgZGVm
-YXVsdCBib290bG9hZGVyIGZyb20KdGhlIGZhY3RvcnkgdGhhdCBpcyBzb21ld2hhdCBiYWQuCgpJ
-IGRvbid0IGhhdmUgYSBQaW5lcGhvbmUgUHJvIG15c2VsZiwgc28gSSByZWFsbHkgaG9wZWQgZm9y
-IHNvbWUgQWNrcwpvciBzaW1pbGFyIHRvIGFwcGVhciBpbiB0aGUgbWVhbnRpbWUuCgpEbyB3ZSBo
-YXZlIHNvbWVvbmUgd2l0aCBhbiBhY3R1YWwgUGluZTY0IGFmZmlsaWF0aW9uIGluIHRoaXMgbG9v
-cD8KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+
+--===============2719924330831913236==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="kbbhwx4mrkobsids"
+Content-Disposition: inline
+
+
+--kbbhwx4mrkobsids
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue, Apr 18, 2023 at 09:58:17AM +0100, Marc Zyngier wrote:
+> On Mon, 17 Apr 2023 22:40:33 +0100,
+> Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+> > On Mon, Apr 17, 2023 at 05:20:08PM +0100, Marc Zyngier wrote:
+> > > Also, I don't see anything here addressing the *other* bug this
+> > > platform suffers from, which is the 32bit limit to the allocations.
+> > > Without a fix for it, this patch is pointless as the GIC may end-up
+> > > with memory it cannot reach.
+> > >
+> > > What;s the plan for that?
+> >=20
+> > It got fixed in RK3588.
+>=20
+> So what's the plan for the affected SoCs? It might be a good idea to
+> address it too, unless there are none of them in the wild?
+
+The previous generation (RK3566 and RK3568) is affected by the 32
+bit issue as well as the shareability issue. I'm currently focusing
+on the RK3588 and that's the only Rockchip platform I have on my
+desk. Missing PCIe support is a lot more critical on RK3588, because
+multiple board designers decided to use a 2.5G PCIe network card
+instead of using the 1G network MAC from the SoC.
+
+Anyways, I will try to help out with RK356x once I find some time.
+
+-- Sebastian
+
+--kbbhwx4mrkobsids
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmQ+qmoACgkQ2O7X88g7
++poOaxAAqLmebbW7CWZLqCIVVAxM/6dngT5X14eY2x27bNNmSsJGucNlvYJT6se+
+GGAUWMm66joQZ81Zr3u5ioCXrpJrdmXoiNCy3A2RBEtSiJ0A7Yi2z1yRezHuXmLd
+e38IrxQu/EbW+p3hXVetbdrrp39AiE8Rm734D/xFDbfUrwemQscfVj76Wg7EXyu3
+LNbebiGtfMPXcH2328mIIE8MaiK0jgQlkNPDQLMA749SRLxGE8TdGweHLW3dOQys
+0iY66CCRzzduB0jUnYyh+H8sVb3YVXzS31mD5+ONzdNjvA67Wz6hXmw2XLjVh+zx
+IUEzb09CH61huvjx8RQz7RLzWTjowFLORpB/ZcNnlLmMcrM8pw49x1BZZaYPzLqc
+KQcA6AcEQTRoISaVcFvRkiwDANJMCrrimuTIZV8GrTCxXoYqtH1tkEiB1VvJyTo2
+XfIAzlw+dATucraNBVHvpoi1UlL7hrJ6ltykv0TVw0oeX3OwGPSwxrkr7BwwMHu/
+8a35QogKik+uaJUBjENgjDmSa+IxyZAs7zIZmD8DcFe6Mod+VAM650iq2U8I3quv
+7tbnp8V1P56Uh348WIYiPyBvuGEJhPeopxhu455w/j+xQJHC/IHdH9B8ig1zKpRd
+cHPf8PP3N3fDSf68T5I1edptd/44fOgb6lkIOOqaqpqNglxhS50=
+=zajV
+-----END PGP SIGNATURE-----
+
+--kbbhwx4mrkobsids--
+
+
+--===============2719924330831913236==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2719924330831913236==--
+
