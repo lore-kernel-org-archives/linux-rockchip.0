@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C4BAC77B76
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE989C77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 07:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Heb5hTE7W+9KC22OA5RCXhT6lpj2lOyUxXViXJp1zTY=; b=c+jzhXaW5/1NRM
-	J9JU/C5IDM54MTufsP9XDjKeC1HiEtFHMt2WUa2EKXiCeRfAkqvdMyAvC+qeoGD60jGa+wPlTG7gE
-	ALWnLi5bt+TdCgvbsiTxbVRq49v9mWCMO66argyMx+u1VTelyG3yVquGX4GXGYGQ48welrG+7Xgyh
-	uq70XzXtDvZaF7mSrGGI2KZdGrRQq8k5A03oKa+erprDFQmxpZUMRpBWX4nCoyHAFg7qerPX7A81w
-	sUR1VMM3gZVuA2v44ILodeZXgZycKHz/aoDXYiTrStGyXvkeIbXw6ngJNamOJwsupU+lfueB3IeQP
-	tnokpbQRoJNQJqBQIL4A==;
+	List-Owner; bh=bBDO9Z5ETtqZU5kuSFQlpPxRSUZSUjYzZftJD+64HoM=; b=bP4r5+DXJZVeid
+	EnvKBLOfZN+6OxCwgLlk65bNa1DHK4BYsPXDP2fU6ibew/T7oYLcHt5ADE0K+HZaUHqmK5bvyjNg1
+	aUQUW8oymmqFn9IdHP/Wl7mCLQGDkjjVJSnB8N0yB/kEBcWT81oyejOQk3ZBpgz2RCSAQ/lBk+PsT
+	Sj7L/gZubpQhEwhpmZ4T++SSNbDy/eU6P/aM6eo+UxEA0bb5S+sFGYLva7yeUQJhD10e6Yw7JWba/
+	30oyxvf66e72E/6KsbyQdMa7Z48MJzs3s/IwSczsOdBY+QX3TzUJ2WoU8gbsUi4ejl5w/+SbHDjX3
+	yHBWi2iUQpILCfwMy3kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog49-001BV5-1X;
-	Tue, 18 Apr 2023 07:47:53 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1pog4G-001BYv-2C;
+	Tue, 18 Apr 2023 07:48:00 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pog45-001BSw-09;
-	Tue, 18 Apr 2023 07:47:50 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a5so14292334ejb.6;
-        Tue, 18 Apr 2023 00:47:46 -0700 (PDT)
+	id 1pog4B-001BUo-0y;
+	Tue, 18 Apr 2023 07:47:56 +0000
+Received: by mail-ej1-x634.google.com with SMTP id dx24so26803547ejb.11;
+        Tue, 18 Apr 2023 00:47:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681804066; x=1684396066;
+        d=gmail.com; s=20221208; t=1681804072; x=1684396072;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=qaDb5cHcj0sq9Nv0eUzX1LbgrLSdfw3K6Yu7Lv5vb5M=;
-        b=iy8MkyX0C205CH/ZIQg6+jYo8nDDTIv1sn0cJgbUnPNG9JbLRGoe/uEXFDZlL5Mo9x
-         s6CQav2nfSqQex7hEzXscd6l+6dI0RW31sdgGzjzGJsyIUuBdG3j/wUAd95/uGq8AOzV
-         Ev2a2CFHv12V4WohFnoFxCN9ASBiXwkwg90kRK0E1lVL6M7cOkK56qgMHGOI+MI1awv0
-         fI+OqwIeJ5b+g3R1N3hJKPWqtw6dt0/siAmRea5EI5xaLF71f4vXZJ6nCD3L2C4U8pCT
-         ZSv9GtB7tXucMPRQ9EWqtDNsvDjb7y250QP4Q+mU9ckasqmjxRk2VbkL5wukF0EhGEEH
-         Y3VA==
+        bh=2z2R80OMli9rIgGN+Ri0ZIDvyCO42RC0Zf1krQq6+rI=;
+        b=LpqzbLwkRO1auyk7jpK72HLpuMMWEBAc+xnrjZ0AGw0NjBYJW0ZSdyvFNERhcoU8mn
+         Ox1TOa26VhjZEifW9eAmjemdpSzndaCGu9lpwskDUde5tQap+inZaI7a9a9GM0/Y9/cL
+         N7Keu6ZeROEmBwj2XdiqOnje4gUFyry3jn4Gr+380t1VNV923CdtDj64k08E7XatYHLc
+         vH2rm2czqruIatSwbzBFBNJ5zYk0N+qBwACkbJOZ1L5FWPSHdBXUKH1qMuBDQNeD2wXX
+         MSRaHYYaaK2FDekzIHarewfJJvxEj5nRFNNohP4Z7e+wVV/Fysi/sKtkXEXHg1dsvizF
+         7FLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681804066; x=1684396066;
+        d=1e100.net; s=20221208; t=1681804072; x=1684396072;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qaDb5cHcj0sq9Nv0eUzX1LbgrLSdfw3K6Yu7Lv5vb5M=;
-        b=af+IYA661y+zf2yRvAPOX0/ZL8I+Hh6FgrFo8Vv8KzdsUxOzhQHb29t+PbCJmAzTJz
-         PMEO4MYQz3NEGkch4qKb4Gt4aCwyvXv377dKDMyAm/uFA6gmmWOGLgz/+QmnmYzROZNZ
-         /WNr+VOJyeTIW1T94GlOR8Xp0Xz+IozF7xICXFNr8G4tr9a3Z0xyA44zcWAI8Awn9Ly9
-         W2yMxe39n7JOqD7jypFbSNrOzIB+6YRFqSvE5eg3Fx96vou+gm6QqQp4ASkcD9BaoXiB
-         VqLNDDr8xI0yF7XtYKBKfc/R1US8cvp0al/IrRKUbzpG5miAMJvfpJ282yVIJTumwT51
-         Cx/w==
-X-Gm-Message-State: AAQBX9c2eT7NdX3n5mE31IF5H+1/0tAILz7bMcIUaoQ0nGinilCSLS9l
-	W5EQz1sWBUDHCXqG/kmJB4E=
-X-Google-Smtp-Source: AKy350aEw4nobnCvQETROqWtNOjoNa5NoUTEONLCrQUYQCkCbsJM3x3G1cs6LR0LZcZrJwIe+He5Gg==
-X-Received: by 2002:a17:906:f6c5:b0:94a:74b8:7a79 with SMTP id jo5-20020a170906f6c500b0094a74b87a79mr9871917ejb.59.1681804065737;
-        Tue, 18 Apr 2023 00:47:45 -0700 (PDT)
+        bh=2z2R80OMli9rIgGN+Ri0ZIDvyCO42RC0Zf1krQq6+rI=;
+        b=kVhd0AiqMvM+RzOtzQrQfhy97xUVS1F8fyvEJEbK5Chj0OWvNVg8hZmeh8K1KoPopv
+         GZrMYCaPw3oW1MMXf2YA/a2WNhRhWOeUD3ju4zwjKgWxenBFdRuimv/+wd5yxUSqR2kS
+         iruXlTetQwQdQqstRE6sZn0HS7VF4WpqZV+s6uCE/cpKX2uwIA1frBIekSnTpzFMZmpf
+         cDpuZxAAxh1YNjsR+BR4mZm4TG+FYk5kG699LB7P7VyVOLc6p+Epd9HJIVeSqvuZEYGr
+         Gvsfv7l/U1JU4V8ms2hcMQpqina8JOGYjzNOqzOBG4f/v30L1Oe5yVO0tx9gpFZu/8tO
+         RU4Q==
+X-Gm-Message-State: AAQBX9fOVNpAaKM1G1v9iPuJxxcfCAsotYBnIG7ZknPslxuk60HZofpa
+	Paj18smxJudSoCjK4dREApY=
+X-Google-Smtp-Source: AKy350am/zry1AdYQTC1umJP8nQYB9WSA9fwlD9GorRS9Knzt10w4q4IXGXAo5cpWB+w2c+eaW6ZCw==
+X-Received: by 2002:a17:906:af9a:b0:94e:e6b9:fef2 with SMTP id mj26-20020a170906af9a00b0094ee6b9fef2mr10101019ejb.67.1681804071970;
+        Tue, 18 Apr 2023 00:47:51 -0700 (PDT)
 Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
-        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.44
+        by smtp.googlemail.com with ESMTPSA id gs8-20020a1709072d0800b0094f694e4ecbsm3048545ejc.146.2023.04.18.00.47.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Apr 2023 00:47:45 -0700 (PDT)
+        Tue, 18 Apr 2023 00:47:51 -0700 (PDT)
 From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 To: alberto.dassatti@heig-vd.ch
 Cc: xxm@rock-chips.com,
 	dlemoal@kernel.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	stable@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -73,28 +74,29 @@ Cc: xxm@rock-chips.com,
 	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Corentin Labbe <clabbe@baylibre.com>,
 	Johan Jonker <jbx6244@gmail.com>,
-	Brian Norris <briannorris@chromium.org>,
 	Caleb Connolly <kc@postmarketos.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Corentin Labbe <clabbe@baylibre.com>,
+	Hugh Cole-Baker <sigmaris@gmail.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
 	Judy Hsiao <judyhsiao@chromium.org>,
 	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
-	Hugh Cole-Baker <sigmaris@gmail.com>,
 	linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 01/11] PCI: rockchip: Remove writes to unused registers
-Date: Tue, 18 Apr 2023 09:46:48 +0200
-Message-Id: <20230418074700.1083505-2-rick.wertenbroek@gmail.com>
+Subject: [PATCH v5 03/11] PCI: rockchip: Assert PCI Configuration Enable bit after probe
+Date: Tue, 18 Apr 2023 09:46:50 +0200
+Message-Id: <20230418074700.1083505-4-rick.wertenbroek@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
 References: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_004749_082425_942D417C 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20230418_004755_336994_71E36112 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,45 +113,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove write accesses to registers that are marked "unused" (and
-therefore read-only) in the technical reference manual (TRM)
-(see RK3399 TRM 17.6.8.1)
+Assert PCI Configuration Enable bit after probe. When this bit is left to
+0 in the endpoint mode, the RK3399 PCIe endpoint core will generate
+configuration request retry status (CRS) messages back to the root complex.
+Assert this bit after probe to allow the RK3399 PCIe endpoint core to reply
+to configuration requests from the root complex.
+This is documented in section 17.5.8.1.2 of the RK3399 TRM.
 
-Tested-by: Damien Le Moal <dlemoal@kernel.org>
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Cc: stable@vger.kernel.org
 Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
+Tested-by: Damien Le Moal <dlemoal@kernel.org>
 Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 10 ----------
- 1 file changed, 10 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index d1a200b93b2b..d5c477020417 100644
+index 9b835377bd9e..d00baed65eba 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -61,10 +61,6 @@ static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
- 			    ROCKCHIP_PCIE_AT_OB_REGION_DESC0(region));
- 	rockchip_pcie_write(rockchip, 0,
- 			    ROCKCHIP_PCIE_AT_OB_REGION_DESC1(region));
--	rockchip_pcie_write(rockchip, 0,
--			    ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR0(region));
--	rockchip_pcie_write(rockchip, 0,
--			    ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR1(region));
- }
+@@ -623,6 +623,9 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
  
- static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
-@@ -114,12 +110,6 @@ static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
- 		     PCIE_CORE_OB_REGION_ADDR0_LO_ADDR);
- 		addr1 = upper_32_bits(cpu_addr);
- 	}
--
--	/* CPU bus address region */
--	rockchip_pcie_write(rockchip, addr0,
--			    ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR0(r));
--	rockchip_pcie_write(rockchip, addr1,
--			    ROCKCHIP_PCIE_AT_OB_REGION_CPU_ADDR1(r));
- }
+ 	ep->irq_pci_addr = ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR;
  
- static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn, u8 vfn,
++	rockchip_pcie_write(rockchip, PCIE_CLIENT_CONF_ENABLE,
++			    PCIE_CLIENT_CONFIG);
++
+ 	return 0;
+ err_epc_mem_exit:
+ 	pci_epc_mem_exit(epc);
 -- 
 2.25.1
 
