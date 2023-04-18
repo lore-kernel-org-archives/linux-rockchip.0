@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A77C6FD18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 16:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 865D6C77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Apr 2023 19:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
+	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K45IkKdYSW73blS4n3qczQhBVm96bFEb2aFDcDNLyhc=; b=kIYcXN20AGdLHX
-	TE8oMD6ePhddraCJUabMnWdUA1MKSuiMmd7ealFqb1r25l88dl6A5oKPukytjzmLxvvB+bVtOL2cU
-	TtLChJTCorexmuDYYtfkeX4BnqF5puq0dplmzl4XBB6H//83Nx+K5jxOuSJuhjoYKdxxwc9MgBIqW
-	omXIsYn3+bmqaIIw5Lg4QMxh0cetiJ8AC6SQNGOR4vowm9uH4e+0TE1yYU1dHjrhjmdUHX2lzaYWs
-	A39ifzpnMA6drq4fH24R6WRtPGzIQpM6eosHquZBKJv7intw97C1hjkBRwDTUvc+TXguNcgZwUbku
-	hqYpWw439lFkqnihIK3A==;
+	List-Owner; bh=wRyoVqwUgtCOKclqOIhbe880jt7pwommw9WN5Rpdgag=; b=2gGmp1Ah2/cxoV
+	ZKILhe2T9iK+BlfDtTK681ruHpqs1jU9znxBxzZpNTIPlWDwVRXL5szvEHd4P4O6LLu/npHjIPvvZ
+	2fSOX++UDA5C+zgB5QlqeClm7+RGJE98aLrdIEtoGBsed2vrroCW+HlP95EvH+C5k7dLN4qwTr30c
+	tIVJxDQ8ijF8qMJIOS9ho/49zEcX/iGQ8Kv+d3EiVGUfUqG3RD1SziDoSiY32aj4LpzEiQIHiW5ig
+	KxsTOWQ10Wp4C0d6w+NPf8xR9GT9FPSwMYMtVNRMX0k7XmiddFfZgzH7O/LclCuRIOM2j6QG3UvD7
+	yS2cR61P32wZkqGLBINg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooIR-002nEI-0k;
-	Tue, 18 Apr 2023 16:35:11 +0000
+	id 1porNP-003DXe-0T;
+	Tue, 18 Apr 2023 19:52:31 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pooIO-002nDf-2X
+	id 1porNM-003DWP-2n
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Apr 2023 16:35:09 +0000
+	Tue, 18 Apr 2023 19:52:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E8D9A62B66;
-	Tue, 18 Apr 2023 16:35:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D1A3C433D2;
-	Tue, 18 Apr 2023 16:35:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C589462E69;
+	Tue, 18 Apr 2023 19:52:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D9F2C433D2;
+	Tue, 18 Apr 2023 19:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1681835707;
-	bh=UZ3otDZYWeF/w43FQjhBIJ5ljIHXUzVu+VF1tABkQWQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=jKHuw19bU9fHDqJq5mgJKv+YTLtMwJcpaXetYMbpID0/C8Dppt0wwqLLBLfDTvDfk
-	 gdKlspvOr1RTqLhMkwtkRS0ltqc96sdYG9nZ6hdEVPX677uvI5SIZzwzub5YGf51Zm
-	 pnkW5Q0LT+IhX0CP0q1FZ2TPx8GinCj9Pw4dEYtz0B9ieBXrgkttjA5BhaF01Jfvpk
-	 0Nswag4uU8AebEaedxq4MPUDXZm2wvIu6pPf4abWs4XD5ZToqXmhbfNfw13X229gNI
-	 bfrRt7H+EU4Xi3C5WOpUw6gw9RDEAK6QYdC8YJxjuRlzPMTE0gVw4ZfZm7iSlDf/0w
-	 6p7XW3zXtNAxg==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1pooIK-009M8i-Sj;
-	Tue, 18 Apr 2023 17:35:04 +0100
-Date: Tue, 18 Apr 2023 17:35:04 +0100
-Message-ID: <864jpdkv2f.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Peng Fan <peng.fan@nxp.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	XiaoDong Huang <derrick.huang@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v4 0/2] Add Rockchip RK3588 GIC ITS support
-In-Reply-To: <20230418142109.49762-1-sebastian.reichel@collabora.com>
-References: <20230418142109.49762-1-sebastian.reichel@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de, peng.fan@nxp.com, robin.murphy@arm.com, pgwipeout@gmail.com, derrick.huang@rock-chips.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	s=k20201202; t=1681847545;
+	bh=QasSaerAtohg7ykreL21ffqcC+7SvICpzBMcX8ZdkA0=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=XuslHpNzXY2xmqlQ4PlmaTwTOJZwZ9CFEeSfukfQTbI/NxA9GOdxlBSBKAWvi+LDI
+	 iA7Qy08SpiN2VRnWXBiowzovDpwNslABKmInOPYD+tqPCpUrJ9WL76EL0UyQ18RVyJ
+	 rU2BzEnjnJrJxicH00JyoOyi/lGJcd/qAJyPwyW4d0LHGo20b9KTfqVqZWCmp617c3
+	 f1lohOO4H9QsA0Ra0m2hIROf99tet4ZNsuWVpc12rVfY85t7EKpzQ084++lAY5MqQy
+	 E1B2qDIFQI8dMljLHWzj3JryUcBbQnuPsc+iin23FQDlnKQxu6pIiTpcsIT+RtuSP8
+	 FfE+eSyR99jbA==
+Message-ID: <56408ef68eff1456426ef0e62fdb3b99.sboyd@kernel.org>
+MIME-Version: 1.0
+In-Reply-To: <3292931.atdPhlSkOF@phil>
+References: <3292931.atdPhlSkOF@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 6.4 #1
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Tue, 18 Apr 2023 12:52:22 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230418_093508_859780_6F4FD837 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20230418_125228_962489_1513C3F3 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,24 +74,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 18 Apr 2023 15:21:07 +0100,
-Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+Quoting Heiko Stuebner (2023-04-17 16:46:35)
+> Hi Mike, Stephen,
 > 
-> Hi,
+> please find below a pull-request with some small Rockchip stuff.
 > 
-> This adds GIC ITS support to Rockchip RK3588, which is affected
-> by an integration issue effectively breaking shareability support.
-> PCIe2 support will follow in its own series.
+> Please pull.
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit fe15c26ee26efa11741a7b632e9f23b01aca4cc6:
+> 
+>   Linux 6.3-rc1 (2023-03-05 14:52:03 -0800)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.4-rockchip-clk1
+> 
+> for you to fetch changes up to 64042c28c3bb6729df8e2fda89bc7ebbe3790907:
+> 
+>   clk: rockchip: rk3588: make gate linked clocks critical (2023-04-18 00:54:04 +0200)
+> 
+> ----------------------------------------------------------------
 
-I've applied the first patch to irqchip-next. Please route the second
-one via the SoC tree.
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+Thanks. Pulled into clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
