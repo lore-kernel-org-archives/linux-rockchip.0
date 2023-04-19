@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DB04C77B73
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Apr 2023 18:13:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4770BC6FD18
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Apr 2023 18:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HN5HNmlGxDTeNfDmfsnu2CLPAr811QeDJyTHtPUJy+8=; b=cLLw7TebeADtKv
-	6aRZAzG5zu8KpxYAIILupg/sEkG5KNP4WfmOJOfVmACk2ng7Am8/aGnWZ34NZEvAhl29wXpIT1Hc2
-	FMC+oXVm1k5+v9R3tgIKSsEfvReYl5/53yrjvsR2ClMAvktlrHfYm+Im+O43jjjNzueqitdDX0/2j
-	03YJ67nfKvt/cgzp5PWh7DzdSYvUjosgVI1WVXhdN2xmCkteYUwSqgg6cn3eFJTu1k/hzYRokM3+P
-	UhgkiGSAaMizPta5wd/uQYWDa4eANbck86OG2OQmMrAY9IDpd4DDPFb3t7UgwYjYj9Sbu02per4Le
-	3/S+P96FiJhnm4iUZ7Sg==;
+	List-Owner; bh=1+f6eQ7kUy1jfQIiFtcB/te0OXmGOLoKftNXe1idLIQ=; b=wrJ16epsPuoheZ
+	BgKHnbMaLs7bXAJau9Gf/gSbolGHxHarm4yA9AhyjUj3i0IS5YTYRfEGwUJOMbz/+Derr0Xh+UVAF
+	kZz1fugFL+NUa/m4O0a+WqdWcfcPMStj4Y+SGyY1IDNgQlb0xs66XmVmdiKeQv0SMBMTyQUpgpzjZ
+	2qIkI1j+/IEa351bTjvX6YT1asTVhP4pX4uMFIhfVcOear//W4uDflwAUAe+G/xkMeeLbV1lq3pSM
+	MfnQLhqx/HZWupK7iZ4YANgRqhHUkghpDfa8Vcfrlm8M6IN38c9EVTNjUlieWwUOhnPk1dYbWFxZo
+	Dc+teaBos+J3u6/uUiZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppCJ6-0067lb-26;
-	Wed, 19 Apr 2023 18:13:28 +0000
+	id 1ppCJA-0067nm-0m;
+	Wed, 19 Apr 2023 18:13:32 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppCIy-0067hw-0Y;
-	Wed, 19 Apr 2023 18:13:21 +0000
+	id 1ppCJ1-0067jf-2S;
+	Wed, 19 Apr 2023 18:13:25 +0000
 Received: from localhost (unknown [188.27.34.213])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 712CB6603263;
-	Wed, 19 Apr 2023 19:13:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 74CEC6603278;
+	Wed, 19 Apr 2023 19:13:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1681927996;
-	bh=8mHiEdYtricQtv90csR7aHt5nQURoxkm/vNcQ2Jjvuc=;
+	s=mail; t=1681928002;
+	bh=TQcB5X4iZIViJGyWOJ/d+KxnISkUh4MekvbHwYmTdXk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IBT1CQEILyBN0EEzhGCls1OHWD15cIh3MfKOIPM0Gh8smhtu7RENdRlnruPiiXctX
-	 TNXWLGkEneBGxGs/nmjvpLf5qu7pdCWEfy/Qn86NJO68JcEEOC6jYfP+EOayL9RO2O
-	 hE6J2mobMF72cy9itk/qrb3sEi1Iclw9arYXUukMDC+4h6NX7d4itoiMRK93Waw2hW
-	 EEDKGIL3J4wx+e4UB+byFFt+08Kb+Pvo67/zmWEtjq+5wM+rQnOAwbFqHyIQ51EFpo
-	 jCg+BSb9jkpZhFtoRx2E90e0xuN5FIf7KoZepqn37sSFLRmJnaSCpsShSCI7/RPR02
-	 21XLSQVbeQqIQ==
+	b=EPHgdn9xYEw+TX61HqfarA0k01TqnECySqCCmWkz3UmAaDCrMvYF6LjC8aB4T5qck
+	 1oKz31mHEYnIUdMTn0BHWz1C40TL9BZL286XofQrvMK3/qgIBFad5UEtATGU9CNjHy
+	 U1qVrKOyLM6ivpzWQUWxiHvZmkpc+xbjPy9OZQjOR6xGTnGa2MfRsLhBA3FItQz33b
+	 Fm0LlYDAMHqq1CKtsji1uSBrVW1OfQRvSaSFZ6cJeDU7TLQKw4PbD2uvRXQp9Rj6WN
+	 pABD7bQuKmdlu7nl0/Do1gB8jd7SODIZzjd9YqV+U5vbmFFZAsxluiad9ySuWaU63J
+	 X66EgPO5uW9fA==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>,
 	Thomas Gleixner <tglx@linutronix.de>,
@@ -59,16 +59,16 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v3 1/3] dt-bindings: timer: rockchip: Drop superfluous rk3288 compatible
-Date: Wed, 19 Apr 2023 21:13:07 +0300
-Message-Id: <20230419181309.338354-2-cristian.ciocaltea@collabora.com>
+Subject: [PATCH v3 3/3] arm64: dts: rockchip: Add rk3588 timer
+Date: Wed, 19 Apr 2023 21:13:09 +0300
+Message-Id: <20230419181309.338354-4-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230419181309.338354-1-cristian.ciocaltea@collabora.com>
 References: <20230419181309.338354-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_111320_354551_DB8CFEE3 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20230419_111323_926512_44C758ED 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +85,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The compatible string for Rockchip RK3288 is wrongly provided in the
-'enum' item, in addition to the subsequent 'const', which allows the
-usage of an incorrect specification:
+Add DT node for Rockchip RK3588/RK3588S SoC timer.
 
-  compatible = "rockchip,rk3288-timer", "rockchip,rk3288-timer";
-
-As the rk3288 string is also specified in the top-most 'const' item, the
-binding already allows the usage of the correct variant:
-
-  compatible = "rockchip,rk3288-timer";
-
-Drop the unwanted rk3288 entry from the enum.
-
-Fixes: faa186adbd06 ("dt-bindings: timer: convert rockchip,rk-timer.txt to YAML")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
- Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
-index 65e59836a660..2bdb6e6bdb21 100644
---- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
-+++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
-@@ -23,7 +23,6 @@ properties:
-               - rockchip,rk3188-timer
-               - rockchip,rk3228-timer
-               - rockchip,rk3229-timer
--              - rockchip,rk3288-timer
-               - rockchip,rk3368-timer
-               - rockchip,px30-timer
-           - const: rockchip,rk3288-timer
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 657c019d27fa..767084a1ec43 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1400,6 +1400,14 @@ i2c5: i2c@fead0000 {
+ 		status = "disabled";
+ 	};
+ 
++	timer0: timer@feae0000 {
++		compatible = "rockchip,rk3588-timer", "rockchip,rk3288-timer";
++		reg = <0x0 0xfeae0000 0x0 0x20>;
++		interrupts = <GIC_SPI 289 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru PCLK_BUSTIMER0>, <&cru CLK_BUSTIMER0>;
++		clock-names = "pclk", "timer";
++	};
++
+ 	wdt: watchdog@feaf0000 {
+ 		compatible = "rockchip,rk3588-wdt", "snps,dw-wdt";
+ 		reg = <0x0 0xfeaf0000 0x0 0x100>;
 -- 
 2.40.0
 
