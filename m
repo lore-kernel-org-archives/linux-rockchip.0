@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EA05C77B72
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Apr 2023 04:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FCCEC77B73
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Apr 2023 08:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AR1iZsFDdMefw0yhUmP4IY/OEYtJkJEDAXuv5xGzRAI=; b=nWHIdoCLcRVp31
-	DBBvhaYoXXzX++/O8ZGlu8/WRTGNXPI4uumRJQi34gzAFA7veu9vjb4SheH8TkqejEmguqVBVUtmn
-	RuDHhZhTzcCteURpYjY0H0Zg15VganTD7fLKIQHtrqh4FGU79mVs98lokuNy8/1TWp7OBJ1eJdbpK
-	UUlVHcAaqDYgIz3RNOWEQ+12aot6hsv2c+MXPFpA09lfw5+OJbR1Bt306DwRifsHlGfiFpsp1nj2k
-	30O6SMGCJXHP4gc5VynmutI+AP6avUSJmvupgbFCfKYyQ4+HjUI6pSi797ng9MrS0bkKX5zKWIX1K
-	mCkFanYJV/73yH1UBHPw==;
+	List-Owner; bh=qQgbl7kFeFVjHxt3K686qqqpIZuyy9n9CG0VsR4nkJE=; b=04my4uVmWwm03A
+	3VorJtpWDRkOq+5P77V49btK8qVnXjcskunRcXVYpl/kcMvgraB4Tec0NtUNDyzFKa7/lEbqJ674/
+	jUFL7cEQuetPP1V7/iVa4eCzS0zyDC5/gmqS90d1mO5ygfG/G0Xi4Iq9z8djdtF8Y/4v6oKC0nCG7
+	L3adulkaDA2HahHhPf4fsCUXVEGdxwMlxBiWIELaU+rPk2jkvSvooLjIIM5tDwiadjS3e3fsDXZnW
+	JxrT2qoLBGixLv+Qm2VkWNSvS4IS6SObignfoTt02k7yXtKvnXXX0ccE+Ds5EujAcZ/S4GRFw3vVF
+	ms6Y2hdA2EJUKRsGSDMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppLcZ-0070Ci-1C;
-	Thu, 20 Apr 2023 04:10:11 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1ppPLr-007M70-2Q;
+	Thu, 20 Apr 2023 08:09:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppLcW-0070C9-0j
+	id 1ppPLo-007M6C-1q
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Apr 2023 04:10:10 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-94f3cd32799so41545866b.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Apr 2023 21:10:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681963804; x=1684555804;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6Iwe4Di075zEMGmynfIq8ZAk4l7gyvyz12C5pnwsqjs=;
-        b=Qp6BMTpvqxKbRxrXXXHaN76ajTd/Pc4fl8vBOZM4+V3Tpdghs7NVJBB9UGj4Z8vaDa
-         oq0k760pCM37kPIb2zIXffu3wHt9iVJgN0sBWqbxDYv8mfQShpTW1pfcM4P7nax6mbdv
-         6bEERlalrTcmQ006SkpvleWMhhu9j/Z6eqEJag5hYSo8WmitHvQIjgikmEml5ouLg2CY
-         /JcrY7Qj0jRjotGRoUBVytt83kq3BW0mIfZ1cD51AAHaVTXFYHc5oDSrWRCXHKaqQ65H
-         wLIP1dVkIsKrsX0WnbanlUKplgaJSpFdCgs+tLBfjgqM1gb60VKgHH0smE5ILckvUG38
-         jAsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681963804; x=1684555804;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6Iwe4Di075zEMGmynfIq8ZAk4l7gyvyz12C5pnwsqjs=;
-        b=U+vOANc2V4A1iJgWjyRK5fgBzvaRtrsYd6kO/Os4C9JME4wgx4baSwWXb8y2PYv4Wg
-         f9tZ5g/6oR1ryCR2V9VfRhVqWrAgIjGYLXKGqzNpSSAtdYQORSPtNUIvAzBoU6v0r8LP
-         Azo9xk3+2u0ph4r3GDJf2KbVMsQZwEyrP8JVuFUP5cdujq4Cwit1FJeGI9RRJOzHfjUi
-         8+c1K6mR01TVOG0xRWTPc4c+QT2gcTasvqvHtfSwS1mdSpZAhe4CVI6nYFQjAOHADBS5
-         sXKiPfDRegfrDLLdwKQeiJCdG7GZv62MFUi0oULZbjGAFU7J6A78HQiJcv29JKH74ujI
-         mZDg==
-X-Gm-Message-State: AAQBX9ca4/oCKbP8i2tFAkE+PX/mlqPzQT5toGvHhqncOyPDeAE7Qz0J
-	KgHtPC2xNZNeeizP+2ZhQ3GeCB4ZYKkytfLLvuI=
-X-Google-Smtp-Source: AKy350ZOWoZbyu8KeJHK/OACDNZJKbLskhD+asKLSJDTIaX464e407xJ6c+eawBPYpAkptW+G1K4RjbhYn01D/w1K9Q=
-X-Received: by 2002:aa7:d444:0:b0:506:b90e:bb0 with SMTP id
- q4-20020aa7d444000000b00506b90e0bb0mr294984edr.16.1681963803778; Wed, 19 Apr
- 2023 21:10:03 -0700 (PDT)
+	Thu, 20 Apr 2023 08:09:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2735764155;
+	Thu, 20 Apr 2023 08:09:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 911D1C433EF;
+	Thu, 20 Apr 2023 08:09:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1681978147;
+	bh=ImzOYmQ4yUAimeoREYTG/Ic4X9E0mCDibkc7vPhya5g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Gm2KDvefKPiwYxUSqqIQl5ioJOzO0AcVRlCaKwSP1rY1ZyadRI8dF/Ce3WkKJQRSs
+	 Sc5BXlTLKFHYQwrzFGZOKgV2aR12u/kZ4Dw9hUXt8WZ8IAZh+a33VypEYXIwETMJT4
+	 RtiSofNBctrEcmE2qu2FroRvVRTLpqw8hK4BzQmQ=
+Date: Thu, 20 Apr 2023 10:08:59 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Frank Wang <frank.wang@rock-chips.com>, linux@roeck-us.net,
+	heiko@sntech.de, linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	huangtao@rock-chips.com, william.wu@rock-chips.com,
+	jianwei.zheng@rock-chips.com, yubing.zhang@rock-chips.com,
+	wmc@rock-chips.com
+Subject: Re: [PATCH v2] usb: typec: tcpm: fix multiple times discover svids
+ error
+Message-ID: <ZEDzGydXbbpekeaB@kroah.com>
+References: <20230316081149.24519-1-frank.wang@rock-chips.com>
+ <ZBROkdOFAP4GPPU6@kuha.fi.intel.com>
 MIME-Version: 1.0
-References: <CAG0V13RUkKn1TPfa3DSeXDeBfJrYVXaouP2WMKrCdX-h0Xqrog@mail.gmail.com>
- <9c8e6503-632c-b5f7-1e3c-620cbab7b220@wolfvision.net> <CAG0V13SbdQX0NxkJWRxAf9bVFaMuZof9P2vJ8Qczis63TYVZMQ@mail.gmail.com>
-In-Reply-To: <CAG0V13SbdQX0NxkJWRxAf9bVFaMuZof9P2vJ8Qczis63TYVZMQ@mail.gmail.com>
-From: Doug Brewer <brewer.doug@gmail.com>
-Date: Thu, 20 Apr 2023 12:09:51 +0800
-Message-ID: <CAG0V13QzzjVYKtBt=8wM5aSvN46wxqYurMUgPv5ea-GkxZs7EQ@mail.gmail.com>
-Subject: Re: PCIe problem on RK3568 EVB
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <ZBROkdOFAP4GPPU6@kuha.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230419_211008_291586_84C39C9B 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20230420_010908_655113_04BC7BAF 
+X-CRM114-Status: GOOD (  24.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,104 +72,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBBcHIgMTksIDIwMjMgYXQgMjozOOKAr1BNIERvdWcgQnJld2VyIDxicmV3ZXIuZG91
-Z0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4gT24gVHVlLCBBcHIgMTgsIDIwMjMgYXQgNToyMuKAr1BN
-IE1pY2hhZWwgUmllc2NoCj4gPG1pY2hhZWwucmllc2NoQHdvbGZ2aXNpb24ubmV0PiB3cm90ZToK
-PiA+Cj4gPiBIaSBEb3VnLAo+Cj4gSGkgTWljaGFlbCwKPgo+ID4gT24gNC8xOC8yMyAwNDoxOSwg
-RG91ZyBCcmV3ZXIgd3JvdGU6Cj4gPiA+IEhlbGxvLAo+ID4gPgo+ID4gPiBJIGFkZGVkIHRoZSBm
-b2xsb3dpbmcgbGluZXMgaW4gcmszNTY4LWV2YjEtdjEwLmR0czoKPiA+ID4KPiA+ID4gcGNpZTMw
-X2F2ZGQwdjk6IHBjaWUzMC1hdmRkMHY5IHsKPiA+ID4gICAgICAgIGNvbXBhdGlibGUgPSAicmVn
-dWxhdG9yLWZpeGVkIjsKPiA+ID4gICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInBjaWUzMF9hdmRk
-MHY5IjsKPiA+ID4gICAgICAgIHJlZ3VsYXRvci1hbHdheXMtb247Cj4gPiA+ICAgICAgICByZWd1
-bGF0b3ItYm9vdC1vbjsKPiA+ID4gICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDkw
-MDAwMD47Cj4gPiA+ICAgICAgICByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw5MDAwMDA+Owo+
-ID4gPiAgICAgICAgdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gPiA+IH07Cj4gPiA+Cj4g
-PiA+IHBjaWUzMF9hdmRkMXY4OiBwY2llMzAtYXZkZDF2OCB7Cj4gPiA+ICAgICAgICBjb21wYXRp
-YmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gPiA+ICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJw
-Y2llMzBfYXZkZDF2OCI7Cj4gPiA+ICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4gPiAg
-ICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiA+ICAgICAgICByZWd1bGF0b3ItbWluLW1pY3Jv
-dm9sdCA9IDwxODAwMDAwPjsKPiA+ID4gICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0g
-PDE4MDAwMDA+Owo+ID4gPiAgICAgICAgdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gPiA+
-IH07Cj4gPiA+Cj4gPiA+IHZjYzN2M19wY2llOiBncGlvLXJlZ3VsYXRvciB7Cj4gPiA+ICAgICAg
-ICBjb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gPiA+ICAgICAgICByZWd1bGF0b3It
-bmFtZSA9ICJ2Y2MzdjNfcGNpZSI7Cj4gPiA+ICAgICAgICByZWd1bGF0b3ItbWluLW1pY3Jvdm9s
-dCA9IDwzMzAwMDAwPjsKPiA+ID4gICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMz
-MDAwMDA+Owo+ID4gPiAgICAgICAgZW5hYmxlLWFjdGl2ZS1oaWdoOwo+ID4gPiAgICAgICAgZ3Bp
-byA9IDwmZ3BpbzAgUktfUEQ0IEdQSU9fQUNUSVZFX0hJR0g+Owo+ID4gPiAgICAgICAgc3RhcnR1
-cC1kZWxheS11cyA9IDw1MDAwPjsKPiA+ID4gICAgICAgIHZpbi1zdXBwbHkgPSA8JmRjXzEydj47
-Cj4gPiA+IH07Cj4gPiA+Cj4gPiA+ICZwY2llMzBwaHkgewo+ID4gPiAgICAgICAgc3RhdHVzID0g
-Im9rYXkiOwo+ID4gPiB9Owo+ID4gPgo+ID4gPiAmcGNpZTN4MiB7Cj4gPiA+ICAgICAgICByZXNl
-dC1ncGlvcyA9IDwmZ3BpbzIgUktfUEQ2IEdQSU9fQUNUSVZFX0hJR0g+Owo+ID4KPiA+IFNob3Vs
-ZG4ndCB0aGVyZSBiZSBhIHBpbmN0cmw/IEl0IHNlZW1zIHRoZSBwY2llM3gyIGhhcyB0byBwb3Nz
-aWJsZSBwaW5vdXRzPyEKPiA+Cj4gPiA+ICAgICAgICB2cGNpZTN2My1zdXBwbHkgPSA8JnZjYzN2
-M19wY2llPjsKPiA+ID4gICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPiA+ID4gfTsKPiA+ID4KPiA+
-IE1heWJlIHlvdSBjYW4gdGFrZSB0aGUgUmFkeGEgUk9DSzMgTW9kZWwgQSBhcyBtYWlubGluZSBy
-ZWZlcmVuY2Ugc29sdXRpb24uCj4KPiBJIGFkZGVkIHRoZSBmb2xsb3dpbmcgbGluZXM6Cj4KPiAm
-cGNpZTN4MiB7Cj4gICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gICAgICAgIHBp
-bmN0cmwtMCA9IDwmcGNpZTMweDJtMV9waW5zPjsKPiAgICAgICAgcmVzZXQtZ3Bpb3MgPSA8Jmdw
-aW8yIFJLX1BENiBHUElPX0FDVElWRV9ISUdIPjsKPiAgICAgICAgdnBjaWUzdjMtc3VwcGx5ID0g
-PCZ2Y2MzdjNfcGNpZT47Cj4gICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPiB9Owo+Cj4gU2FtZSBy
-ZXN1bHQsIGxzcGNpIHNob3dzIG5vdGhpbmcuCj4KPiA+ID4gbHNwY2kgcHJvZHVjZXMgbm8gb3V0
-cHV0IChsaXRlcmFsbHkgbm90aGluZyksIGV2ZW4gd2l0aCAtdnZ2di4KPiA+ID4gQW55IGlkZWEg
-aG93IHRvIGRlYnVnIHRoaXM/ICBUaGFua3MuCj4gPgo+ID4gQWdhaW4sIHBsZWFzZSBzaG93IHVz
-IHRoZSBmdWxsIGRtZXNnIGxvZyBhbmQgeW91ciBjdXJyZW50IC5jb25maWcuCj4KPiBIZXJlJ3Mg
-bXkga2VybmVsIGNvbmZpZyBmaWxlOiBodHRwOi8vc3BydW5nZS51cy9MdEVyUW0KPgo+ID4gQWRk
-aXRpb25hbGx5LCB0aGUgb3V0cHV0IG9mCj4gPgo+ID4gICBjYXQgL3N5cy9rZXJuZWwvZGVidWcv
-ZGV2aWNlc19kZWZlcnJlZAo+ID4KPiA+IG1heSBiZSBoZWxwZnVsIHRvIGZpbmQgYW55IGRldmlj
-ZXMgdGhhdCBjb3VsZCBub3QgYmUgcHJvYmVkIGR1ZSB0bwo+ID4gbWlzc2luZyBkZXBlbmRlbmNp
-ZXMuCj4KPiAjIGNhdCAvc3lzL2tlcm5lbC9kZWJ1Zy9kZXZpY2VzX2RlZmVycmVkCj4gIwo+Cj4g
-U2VlbXMgdGhlcmUncyBubyBtaXNzaW5nIGRlcGVuZGVuY2llcy4KCkl0IHNlZW1zIHRoYXQgUENJ
-ZSB3b3JrcyBmaW5lOgoKWyAgICAwLjk3MTIwNl0gcm9ja2NoaXAtZHctcGNpZSAzYzA4MDAwMDAu
-cGNpZTogaG9zdCBicmlkZ2UgL3BjaWVAZmUyODAwMDAgcmFuZ2UKczoKWyAgICAwLjk3MjAwMF0g
-cm9ja2NoaXAtZHctcGNpZSAzYzA4MDAwMDAucGNpZTogICAgICAgSU8gMHgwM2JlZjAwMDAwLi4w
-eDAzYmVmZmYKZmZmIC0+IDB4MDAzZWYwMDAwMApbICAgIDAuOTcyOTUzXSByb2NrY2hpcC1kdy1w
-Y2llIDNjMDgwMDAwMC5wY2llOiAgICAgIE1FTSAweDAzODAwMDAwMDAuLjB4MDNiZWVmZgpmZmYg
-LT4gMHgwMDAwMDAwMDAwClsgICAgMC45ODI1MDddIHJvY2tjaGlwLWR3LXBjaWUgM2MwODAwMDAw
-LnBjaWU6IGlBVFU6IHVucm9sbCBULCA4IG9iLCA4IGliLCBhbGlnCm4gNjRLLCBsaW1pdCA4Rwpb
-ICAgIDEuMTg4NDQ1XSByb2NrY2hpcC1kdy1wY2llIDNjMDgwMDAwMC5wY2llOiBQQ0llIEdlbi4z
-IHgxIGxpbmsgdXAKWyAgICAxLjE4OTQ2Nl0gcm9ja2NoaXAtZHctcGNpZSAzYzA4MDAwMDAucGNp
-ZTogUENJIGhvc3QgYnJpZGdlIHRvIGJ1cyAwMDAyOjAwClsgICAgMS4xOTAxODBdIHBjaV9idXMg
-MDAwMjowMDogcm9vdCBidXMgcmVzb3VyY2UgW2J1cyAwMC0wZl0KWyAgICAxLjE5MDc0M10gcGNp
-X2J1cyAwMDAyOjAwOiByb290IGJ1cyByZXNvdXJjZSBbaW8gIDB4MDAwMC0weGZmZmZmXSAoYnVz
-IGFkZHIKZXNzIFsweDNlZjAwMDAwLTB4M2VmZmZmZmZdKQpbICAgIDEuMTkxNzAxXSBwY2lfYnVz
-IDAwMDI6MDA6IHJvb3QgYnVzIHJlc291cmNlIFttZW0gMHgzODAwMDAwMDAtMHgzYmVlZmZmZmZd
-CihidXMgYWRkcmVzcyBbMHgwMDAwMDAwMC0weDNlZWZmZmZmXSkKWyAgICAxLjE5MjgzMF0gcGNp
-IDAwMDI6MDA6MDAuMDogWzFkODc6MzU2Nl0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMApbICAgIDEu
-MTkzNDYxXSBwY2kgMDAwMjowMDowMC4wOiByZWcgMHgxMDogW21lbSAweDAwMDAwMDAwLTB4M2Zm
-ZmZmZmZdClsgICAgMS4xOTQxMDZdIHBjaSAwMDAyOjAwOjAwLjA6IHJlZyAweDE0OiBbbWVtIDB4
-MDAwMDAwMDAtMHgzZmZmZmZmZl0KWyAgICAxLjE5NDc0N10gcGNpIDAwMDI6MDA6MDAuMDogcmVn
-IDB4Mzg6IFttZW0gMHgzODAwMDAwMDAtMHgzODAwMGZmZmYgcHJlZl0KWyAgICAxLjE5NTU2NV0g
-cGNpIDAwMDI6MDA6MDAuMDogc3VwcG9ydHMgRDEgRDIKWyAgICAxLjE5NjAwNF0gcGNpIDAwMDI6
-MDA6MDAuMDogUE1FIyBzdXBwb3J0ZWQgZnJvbSBEMCBEMSBEM2hvdApbICAgIDEuMjAyMTg3XSBw
-Y2lfYnVzIDAwMDI6MDE6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDAxLWZmXSB1bmRl
-ciBbYnVzCjAwLTBmXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgMDAtMGZdKQpbICAgIDEu
-MjAzMzg5XSBwY2kgMDAwMjowMTowMC4wOiBbMTdjYjoxMTA0XSB0eXBlIDAwIGNsYXNzIDB4MDI4
-MDAwClsgICAgMS4yMDQwOTFdIHBjaSAwMDAyOjAxOjAwLjA6IHJlZyAweDEwOiBbbWVtIDB4Mzgw
-MDAwMDAwLTB4MzgwMWZmZmZmIDY0Yml0XQpbICAgIDEuMjA1MzcwXSBwY2kgMDAwMjowMTowMC4w
-OiBQTUUjIHN1cHBvcnRlZCBmcm9tIEQwIEQzaG90IEQzY29sZApbICAgIDEuMjA2MjM1XSBwY2kg
-MDAwMjowMTowMC4wOiA3Ljg3NiBHYi9zIGF2YWlsYWJsZSBQQ0llIGJhbmR3aWR0aCwgbGltaXRl
-ZCBieQogOC4wIEdUL3MgUENJZSB4MSBsaW5rIGF0IDAwMDI6MDA6MDAuMCAoY2FwYWJsZSBvZiAx
-NS43NTIgR2IvcyB3aXRoIDguMCBHVC9zIFBDSQplIHgyIGxpbmspClsgICAgMS4yMTY1ODNdIHBj
-aSAwMDAyOjAwOjAwLjA6IEJBUiAwOiBubyBzcGFjZSBmb3IgW21lbSBzaXplIDB4NDAwMDAwMDBd
-ClsgICAgMS4yMTcyNjJdIHBjaSAwMDAyOjAwOjAwLjA6IEJBUiAwOiBmYWlsZWQgdG8gYXNzaWdu
-IFttZW0gc2l6ZSAweDQwMDAwMDAwXQpbICAgIDEuMjE3OTY3XSBwY2kgMDAwMjowMDowMC4wOiBC
-QVIgMTogbm8gc3BhY2UgZm9yIFttZW0gc2l6ZSAweDQwMDAwMDAwXQpbICAgIDEuMjE4NjMzXSBw
-Y2kgMDAwMjowMDowMC4wOiBCQVIgMTogZmFpbGVkIHRvIGFzc2lnbiBbbWVtIHNpemUgMHg0MDAw
-MDAwMF0KWyAgICAxLjIxOTMzOV0gcGNpIDAwMDI6MDA6MDAuMDogQkFSIDE0OiBhc3NpZ25lZCBb
-bWVtIDB4MzgwMDAwMDAwLTB4MzgwMWZmZmZmXQpbICAgIDEuMjIwMDUwXSBwY2kgMDAwMjowMDow
-MC4wOiBCQVIgNjogYXNzaWduZWQgW21lbSAweDM4MDIwMDAwMC0weDM4MDIwZmZmZiBwcgplZl0K
-WyAgICAxLjIyMDg0MF0gcGNpIDAwMDI6MDE6MDAuMDogQkFSIDA6IGFzc2lnbmVkIFttZW0gMHgz
-ODAwMDAwMDAtMHgzODAxZmZmZmYgNjQKYml0XQpbICAgIDEuMjIxNjQ2XSBwY2kgMDAwMjowMDow
-MC4wOiBQQ0kgYnJpZGdlIHRvIFtidXMgMDEtZmZdClsgICAgMS4yMjIxODVdIHBjaSAwMDAyOjAw
-OjAwLjA6ICAgYnJpZGdlIHdpbmRvdyBbbWVtIDB4MzgwMDAwMDAwLTB4MzgwMWZmZmZmXQpbICAg
-IDEuMjI1NjcxXSBwY2llcG9ydCAwMDAyOjAwOjAwLjA6IFBNRTogU2lnbmFsaW5nIHdpdGggSVJR
-IDI2ClsgICAgMS4yMjY3ODFdIHBjaWVwb3J0IDAwMDI6MDA6MDAuMDogQUVSOiBlbmFibGVkIHdp
-dGggSVJRIDI2CgpUaGFua3MgTWljaGFlbC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Fri, Mar 17, 2023 at 01:27:13PM +0200, Heikki Krogerus wrote:
+> On Thu, Mar 16, 2023 at 04:11:49PM +0800, Frank Wang wrote:
+> > PD3.0 Spec 6.4.4.3.2 say that only Responder supports 12 or more SVIDs,
+> > the Discover SVIDs Command Shall be executed multiple times until a
+> > Discover SVIDs VDO is returned ending either with a SVID value of
+> > 0x0000 in the last part of the last VDO or with a VDO containing two
+> > SVIDs with values of 0x0000.
+> > 
+> > In the current implementation, if the last VDO does not find that the
+> > Discover SVIDs Command would be executed multiple times even if the
+> > Responder SVIDs are less than 12, and we found some odd dockers just
+> > meet this case. So fix it.
+> > 
+> > Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> > ---
+> >  drivers/usb/typec/tcpm/tcpm.c | 16 +++++++++++++++-
+> >  1 file changed, 15 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
+> > index 66de02a56f512..a3ae2c79f3540 100644
+> > --- a/drivers/usb/typec/tcpm/tcpm.c
+> > +++ b/drivers/usb/typec/tcpm/tcpm.c
+> > @@ -1515,7 +1515,21 @@ static bool svdm_consume_svids(struct tcpm_port *port, const u32 *p, int cnt)
+> >  		pmdata->svids[pmdata->nsvids++] = svid;
+> >  		tcpm_log(port, "SVID %d: 0x%x", pmdata->nsvids, svid);
+> >  	}
+> > -	return true;
+> > +
+> > +	/*
+> > +	 * PD3.0 Spec 6.4.4.3.2: The SVIDs are returned 2 per VDO (see Table
+> > +	 * 6-43), and can be returned maximum 6 VDOs per response (see Figure
+> > +	 * 6-19). If the Respondersupports 12 or more SVID then the Discover
+> > +	 * SVIDs Command Shall be executed multiple times until a Discover
+> > +	 * SVIDs VDO is returned ending either with a SVID value of 0x0000 in
+> > +	 * the last part of the last VDO or with a VDO containing two SVIDs
+> > +	 * with values of 0x0000.
+> > +	 *
+> > +	 * However, some odd dockers support SVIDs less than 12 but without
+> > +	 * 0x0000 in the last VDO, so we need to break the Discover SVIDs
+> > +	 * request and return false here.
+> > +	 */
+> > +	return cnt == 7;
+> >  abort:
+> >  	tcpm_log(port, "SVID_DISCOVERY_MAX(%d) too low!", SVID_DISCOVERY_MAX);
+> >  	return false;
+> 
+> This is OK by men, but let's wait for Guenter.
+
+What ever happened to this patch?
+
+thanks,
+
+greg k-h
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
