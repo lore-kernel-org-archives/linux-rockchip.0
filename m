@@ -4,80 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50BDEC7618E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 15:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01B61C7618E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 16:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LMTN+7KHh2zbdh3rM3OcY2iWTne7V6Z/tTowLGzL/u4=; b=jBi8TU1LnhaYTe
-	Ol9Q79fZHVJ1UZAqBBj+H9kSPyCz4D4aLwvTpy/gIxkwtSnQRjgN1Cn28QUCNh1pojuhuUwE5yCOu
-	r94V9ujLFYsFE6e9q/PZlYJW4CMWnjPyLU8nfo67uTyodqI9KhY7tCHDQr5n8pUltLfnWOKkNAWe4
-	8WoMAaYQsBy7a454QwTF5itUARNot+j+RnrTprC1J8yC4yc99R6bQItk8MCXgg6gcTX8Bou7kokwB
-	N+HuTIfaHPS9CzEB2EDIQw44rbuiAvI319FEsLU/85Avu+m9KQBxVMsaDYHqqtSelgoTDs59mBN11
-	lo0xlkueZEZIvw7A1/Uw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Thlv2VR/4fNvAX/JRdyFfdy8bTglZ3YDzEFBN28EuEA=; b=dM6RiGtBotqtpb
+	y75G54qUxXuscXm3NWXbo797mPyFNVQod3nRnOMIGWMo7LvO0LJzAVGFxbPLhBbkce2RshJ1qFEVx
+	de1MsTcQr46ELR+VCL4V9asHoFFqa34KrV9kLriRgEUXt/HCO8Az/I4eHx0+AaEg4QbeP0uGXTt/6
+	kqWXGaokLLI/XgCHzPeQAu9iShsKQvEvf4YlKikaEhHZKHe7leKE4uP1p5PdALvWnxubBl/HGkskt
+	/fRXMCEnAUvUwR4MkouLmjrZeYoBxUVRttOixukx1TNIGGIySXEhIx9CFGDCJaeRQSzvCaKKkw1q5
+	gi1otznh6I0fWdm/VA0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppsek-00BH75-0p;
-	Fri, 21 Apr 2023 15:26:38 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1ppter-00BO29-2x;
+	Fri, 21 Apr 2023 16:30:49 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppseg-00BH5q-29;
-	Fri, 21 Apr 2023 15:26:36 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3f1728c2a57so19615675e9.0;
-        Fri, 21 Apr 2023 08:26:33 -0700 (PDT)
+	id 1ppteo-00BO1J-2b
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Apr 2023 16:30:48 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5050491cb04so2776216a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Apr 2023 09:30:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682090792; x=1684682792;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Sj/J7bBG6FjM8tAyQNQhnbZ2Rmtu2/+gz7MFzMP1cA8=;
-        b=MHvBTVrIttJbs0SZk5eiJLxbUaG74Sfr1EvU0Edd7JVzcuWZvu9RcVyYv6JxRZDfzP
-         f9YEQo1Okn+muqR7g6/eg7VcWVTy9NGGRiuRLlafK08Bpf8F3XyKf8LaxGul7OiTECaO
-         5oKzQwe7R9xqU35OEJ/8qALhWkKSNK1ogkbb1oIT19oZbj+s/Ayx5oWA5F9Ls1IBS//8
-         ZDL5UW2TId5MgsixOw6CiW2hvkuNAiHZX3bCsdV4ytX67STBSNEOVudgmyy+Ep8sRSGM
-         uzm0Is0qWofMsM5wDLWadusSdtn64uKwK0gwZSGzTEBio4rnkxNRND34+QrTwb7m/eiQ
-         TBlg==
+        d=linaro.org; s=google; t=1682094645; x=1684686645;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UVr8lLzVps9ZuMV0XAHw4eg8z7YXbZGCdlhpUNWCutQ=;
+        b=DwM7MXIKKSfaUMu1eJSCloBjXJpaWHmzbVeI7uMDb7pgL26Yroz/mrZnf+4gtrdE32
+         zExJo/fxP73tyLq655HHLTKrCsFatO34nBhRbfiVIMhlyj/+r8Eh8yx8N2ZaXNRi8oAF
+         IW2kt7uZzpCSSmxDo54dDanjtAMdz0KucVKX6OLZf8iP/KTVxB496RNWBL2q4r+SmEK5
+         TcvtGvBBuW919Awdq2NozfHd2fEMp7na72TSuKyqiu8JdDpk42iHW1YO+ljs8J15VAIg
+         TtU2RWkt0B0KOfnYkux1+LEVI3q2cepzBD1Brn1hT4Qa/4hYdAaJ1ygI60RyEZLy3GtJ
+         aCHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682090792; x=1684682792;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Sj/J7bBG6FjM8tAyQNQhnbZ2Rmtu2/+gz7MFzMP1cA8=;
-        b=BRjXcNKi5bjCv5Jeh1umVE19zSS34C5EERtyP4c2UwoXcsxzA/5z7tZD2Pp0vbN1FD
-         JcTKrL7FxRdQq0luRuxHJYP3bavqJ6EOFz9423hqR27q1+M+SxFhCg/Pg0UL5T36H0NF
-         daZwZMuzgPFLXOKWGdsWxownuPxdLABq3rGFTC4PD8JdIIQaWnBgmhjLxH48psLM+gnn
-         o/FxLVnHOcaClmseaGINiTEDHEXtVltJx8VvrPURDXNOfQRZd/v3kAQzNBG++nJojlTf
-         OMzH0l8FMKYJJdb4EriQ37063rp1RQfayAXt2aop1nLYfylepszMpYLSJtbdiYOMYiJ+
-         9xOg==
-X-Gm-Message-State: AAQBX9ffqUTNvyHAXG/lNW16FM2Pq9fukPnavCzVzzmhGbO6DAAXjMTb
-	P+UGcJd3OHgIZRhSvnMo5AA=
-X-Google-Smtp-Source: AKy350Yxinw9SGq3XrBKhx6z7PPrrBznT5wZk4Zl9gpfkCIh1CtMRhsQD2QqD1qHq6nHgxWbSXUeZQ==
-X-Received: by 2002:a1c:cc04:0:b0:3f0:9f9b:1665 with SMTP id h4-20020a1ccc04000000b003f09f9b1665mr2276223wmb.3.1682090791749;
-        Fri, 21 Apr 2023 08:26:31 -0700 (PDT)
-Received: from archbox.v.cablecom.net (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id a12-20020a05600c224c00b003f1788eeffesm8363153wmm.43.2023.04.21.08.26.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 08:26:31 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Peter Geis <pgwipeout@gmail.com>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: fix nEXTRST on SOQuartz
-Date: Fri, 21 Apr 2023 17:26:10 +0200
-Message-Id: <20230421152610.21688-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.40.0
+        d=1e100.net; s=20221208; t=1682094645; x=1684686645;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UVr8lLzVps9ZuMV0XAHw4eg8z7YXbZGCdlhpUNWCutQ=;
+        b=llqc4GsMXRUgjPepQ+xOHb+za2BAN2XIIS10wXQjIA9ej4bcFyh0515CyMCeKA8aaW
+         4BKcatdUucN6AlVn07Gu+AD6hkJo8Z3f4cYeamUVqZ+ZzXyiZ8chWqPijfX9issFdBla
+         4fK4Tp4n52xDP921aYIwhSP3TnSoPHNlfuLWw4JBby2SQ0nQRFZxngncnwWfa7bL9+4y
+         kebeM3eFgnxHRwwWZtw/JBhO8TNZvxf6TjT4PFokOS34LD9O3BasrOvU13zUNUKaqTRq
+         J2i5a8Anq5n82GF8EsalMWmCE5yeWAOaZF5qWgRLlmpuIYXl8awZkBt3YZQLxYNjjWPu
+         ma1g==
+X-Gm-Message-State: AAQBX9dGGt8g7kAKVd/w9O1y9fWbCO4U7tNxY6RJnwfNfPnZNupNKpbY
+	9EwHdymwMHTGxS1J0UBjsggHSg==
+X-Google-Smtp-Source: AKy350aa+VFT9KWufyYZvoi2qVl9Wo73hJiODISOMGd6i4if1G9OIE1Qj4FNQLJhsvAngpdIWqI+Pg==
+X-Received: by 2002:aa7:c592:0:b0:506:c288:118 with SMTP id g18-20020aa7c592000000b00506c2880118mr5598942edq.39.1682094645408;
+        Fri, 21 Apr 2023 09:30:45 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:687d:8c5:41cb:9883? ([2a02:810d:15c0:828:687d:8c5:41cb:9883])
+        by smtp.gmail.com with ESMTPSA id d12-20020a50fb0c000000b004bf999f8e57sm1963884edq.19.2023.04.21.09.30.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Apr 2023 09:30:44 -0700 (PDT)
+Message-ID: <44e54d54-9a6d-ba49-c0db-f9de81743f64@linaro.org>
+Date: Fri, 21 Apr 2023 18:30:43 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v5 06/11] dt-bindings: PCI: Update the RK3399 example to a
+ valid one
+Content-Language: en-US
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>
+Cc: Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+ alberto.dassatti@heig-vd.ch, xxm@rock-chips.com, dlemoal@kernel.org,
+ Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?=
+ <kw@linux.com>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Caleb Connolly <kc@postmarketos.org>,
+ Corentin Labbe <clabbe@baylibre.com>, Brian Norris
+ <briannorris@chromium.org>, Johan Jonker <jbx6244@gmail.com>,
+ Judy Hsiao <judyhsiao@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Hugh Cole-Baker <sigmaris@gmail.com>,
+ Arnaud Ferraris <arnaud.ferraris@collabora.com>, linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230418074700.1083505-1-rick.wertenbroek@gmail.com>
+ <20230418074700.1083505-7-rick.wertenbroek@gmail.com>
+ <172c46b7-256e-b09d-3940-880fa8989b49@linaro.org>
+ <ZEJW0giyXAlNMYTz@lpieralisi>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ZEJW0giyXAlNMYTz@lpieralisi>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_082634_701972_DE49A13D 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20230421_093046_843372_A87EEB65 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,122 +110,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In pre-production prototypes (of which I only know one person
-having one, Peter Geis), GPIO0 pin A5 was tied to the SDMMC
-power enable pin on the CM4 connector. On all production models,
-this is not the case; instead, this pin is used for the nEXTRST
-signal, and the SDMMC power enable pin is always pulled high.
+On 21/04/2023 11:26, Lorenzo Pieralisi wrote:
+> On Wed, Apr 19, 2023 at 10:01:25PM +0200, Krzysztof Kozlowski wrote:
+>> On 18/04/2023 09:46, Rick Wertenbroek wrote:
+>>> Update the example in the documentation to a valid example.
+>>> Address for mem-base was invalid, it pointed to address
+>>> 0x8000'0000 which is the upper region of the DDR which
+>>> is not necessarily populated depending on the board.
+>>> This address should point to the base of the memory
+>>> window region of the controller which is 0xfa00'0000.
+>>> Add missing pinctrl.
+>>>
+>>> Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+>>> ---
+>>>  .../devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml      | 4 +++-
+>>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+>>> index 88386a6d7011..6b62f6f58efe 100644
+>>> --- a/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+>>> +++ b/Documentation/devicetree/bindings/pci/rockchip,rk3399-pcie-ep.yaml
+>>> @@ -47,7 +47,7 @@ examples:
+>>>  
+>>>          pcie-ep@f8000000 {
+>>>              compatible = "rockchip,rk3399-pcie-ep";
+>>> -            reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0x80000000 0x0 0x20000>;
+>>> +            reg = <0x0 0xfd000000 0x0 0x1000000>, <0x0 0xfa000000 0x0 0x2000000>;
+>>>              reg-names = "apb-base", "mem-base";
+>>>              clocks = <&cru ACLK_PCIE>, <&cru ACLK_PERF_PCIE>,
+>>>                <&cru PCLK_PCIE>, <&cru SCLK_PCIE_PM>;
+>>> @@ -63,6 +63,8 @@ examples:
+>>>              phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
+>>>              phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
+>>>              rockchip,max-outbound-regions = <16>;
+>>> +            pinctrl-names = "default";
+>>> +            pinctrl-0 = <&pcie_clkreqnb_cpm>;
+>>
+>> This is just example of the binding, you do not need to fill all
+>> unrelated (generic) properties like pinctrl.
+> 
+> Should I merge it as-is ?
 
-Since everyone currently using the SOQuartz device trees will
-want this change, it is made to the tree without splitting the
-trees into two separate ones of which users will then inevitably
-choose the wrong one.
+Yeah, go ahead. That was the note for the future that generic properties
+are not always needed or even helpful in the example.
 
-This fixes USB and PCIe on a wide variety of CM4IO-compatible
-boards which use the nEXTRST signal.
-
-Fixes: 5859b5a9c3ac ("arm64: dts: rockchip: add SoQuartz CM4IO dts")
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
-Changes in v2:
- - use GPIO hog instead of a fake regulator
-
- .../boot/dts/rockchip/rk3566-soquartz-cm4.dts | 18 +++++++-----
- .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 29 +++++++++----------
- 2 files changed, 24 insertions(+), 23 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-index 263ce40770dd..cddf6cd2fecb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-@@ -28,6 +28,16 @@ vcc_5v: vcc-5v-regulator {
- 		regulator-max-microvolt = <5000000>;
- 		vin-supply = <&vcc12v_dcin>;
- 	};
-+
-+	vcc_sd_pwr: vcc-sd-pwr-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sd_pwr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
- };
- 
- /* phy for pcie */
-@@ -130,13 +140,7 @@ &saradc {
- };
- 
- &sdmmc0 {
--	vmmc-supply = <&sdmmc_pwr>;
--	status = "okay";
--};
--
--&sdmmc_pwr {
--	regulator-min-microvolt = <3300000>;
--	regulator-max-microvolt = <3300000>;
-+	vmmc-supply = <&vcc_sd_pwr>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-index ce7165d7f1a1..3036985e2567 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-@@ -104,16 +104,6 @@ vcc3v3_sys: vcc3v3-sys-regulator {
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
--
--	sdmmc_pwr: sdmmc-pwr-regulator {
--		compatible = "regulator-fixed";
--		enable-active-high;
--		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&sdmmc_pwr_h>;
--		regulator-name = "sdmmc_pwr";
--		status = "disabled";
--	};
- };
- 
- &cpu0 {
-@@ -155,6 +145,19 @@ &gmac1m0_clkinout
- 	status = "disabled";
- };
- 
-+&gpio0 {
-+	nextrst-hog {
-+		gpio-hog;
-+		/*
-+		 * GPIO_ACTIVE_LOW + output-low here means that the pin is set
-+		 * to high, because output-low decides the value pre-inversion.
-+		 */
-+		gpios = <RK_PA5 GPIO_ACTIVE_LOW>;
-+		output-low;
-+		line-name = "nEXTRST";
-+	};
-+};
-+
- &gpu {
- 	mali-supply = <&vdd_gpu>;
- 	status = "okay";
-@@ -538,12 +541,6 @@ wifi_enable_h: wifi-enable-h {
- 			rockchip,pins = <2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
--
--	sdmmc-pwr {
--		sdmmc_pwr_h: sdmmc-pwr-h {
--			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
- };
- 
- &pmu_io_domains {
--- 
-2.40.0
+Best regards,
+Krzysztof
 
 
 _______________________________________________
