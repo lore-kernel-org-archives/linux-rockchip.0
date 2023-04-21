@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B52C77B76
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 22:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A594C77B76
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 23:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n5NcHJYbrAlSv4AMom4Jn/ggxuaamKzz2dnAo6aKrCg=; b=u7zFruO2Yox9Pz
-	PUkfjnXGu5B9fBfKPUyYAOhh2l2mFEE/tGPbEMbEanS7HpIUFT1jTLQI6SNg6E7hdVdiWbBLW6r+t
-	udhPQQBKRprv2jQT4rOFkMYWdXj5bNbFJAJj1gZX4MEsT/dNgnAJG9URHbN2oD4nXvzbwvOrBJrLb
-	2R8SSjWqbyRvGdGGsggssIkPUTxSDDumMj/suuXiSArYnZQIUjupW54HWuxNJdogSYeDP1lu9fzgC
-	I71SRAe47M3b+pJ5xoVXWJ742A3yCMZOJBNYlOIhkNdfIkVpDtcTGUBuTBVyETqosXcHvLQdLO9qM
-	GIEI4BGNAt3mA1B9rGPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5yrZ8a+H4gM2WkwosxS6BMJ5R3aBmT6SRT6hLYZWmMU=; b=KEPUxi5qnn7zt0
+	RKC0epqHGSalguX8nFIoMNd71FlfNT3BVKA+pC47FF7okZu33cgH85+bDRaFMYf9TSQanFtc7LQdf
+	cjAUFgrrpAcuMo6xAvnDkv1i7/wlIFhpO8khiav9YUtgfdkRoaXNSiGNL1FK4AHzuOSgW7HLCBtlD
+	wC5AS7sXcpS4eXRSph46fQbbfjX3N9LrKJUKM6cop1X+0oyxFvpLQZPN5i4WpRIer9sXR9+W0cYh5
+	Rrn9skDdJiVXxcyX15rf3Sm+0rkHC9+KmuUpd2VRBwfw4wUjG95cNGj0IH9j3g1Zjc6tB/G0QGXn7
+	u+nQNKnSYKY45tEcNGPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppzIT-00BxR6-2A;
-	Fri, 21 Apr 2023 22:32:05 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1ppzxz-00C34P-0i;
+	Fri, 21 Apr 2023 23:14:59 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppzIF-00BxJq-2c
+	id 1ppzxv-00C2wu-2l
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Apr 2023 22:31:53 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-94f3cd32799so376804366b.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 21 Apr 2023 15:31:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682116310; x=1684708310;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7v4mG2PrvGHT4HWW2aD7kz/Jo5VqruKafQcmH0GEdHQ=;
-        b=LRwxYnYte61pFMXBNA4fGK8jUs7j4rOkyOV4DdeP+ttViOoqcp1tzRcSM8sa6ZXXhX
-         vhWQAmT5hkJY2mOlU7tXY5f/L/K/EhmJJrJrZ4+133xDbLq8LjeQ5pIfF+PvofBirVJ6
-         bC59k8XvlJTnxagd5d1KHmr826EoFOSYDtlUPT12aCyD5RNHsKsg3vG7wPuvougchO8p
-         0ZoczI3MB6arJx/H5gLkYcuv3bqEBBGwuz5XsLPqaSbQVmoI5anSkmBjrMQWKK47VdJw
-         B6W++SAaY+DJSV8Z2ZCU7l0i2h7Qck4sB4jUnR24mbutUri2h/jAGjXx/ihbfCO7M3pU
-         Elbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682116310; x=1684708310;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7v4mG2PrvGHT4HWW2aD7kz/Jo5VqruKafQcmH0GEdHQ=;
-        b=bAXHEDNlycFJhOw/76m5a+yBl4jtJrxt/7i9NYaJ4g5/b9ko8/N4EWhYU8qteYcXh6
-         HSG0rXV3iBmmEiXZKkbkInFZU2ZKIrHIciMNQ4haA3ER/BLWXhhflLjvvTsDdzxtvezf
-         AgOD1fcE/MYukyeG2dyg4t4RahoJCaSGD2V4+tUgFb1c3oIyvke0TycryPA4dQeoa/QU
-         AQ74uooSj/rSRN1RzKQPXz4VpwmEVY0CnyDZUPMe6zMyUug9qTKMHguel9WS4NZfE4Xz
-         GZE6ikJzRhc9K2dWfkCjnD5TzqrYnVSU+UF8rxA28zATYoirkxeq/mwiqWMTzqwLt0sz
-         vlTA==
-X-Gm-Message-State: AAQBX9cJ5+4iKdvV3zxDn5LvojIgynOt9S5D8ndIZ898Gqv0X0vHKGUm
-	9QscYDO5zwXhxzt+zgh/ecp1+Q==
-X-Google-Smtp-Source: AKy350ZToStdpI3/6McxwF83TbNvU0TpEGKWh9SGPOim56WxkraHbbPATz3MtaW9Xt/+n4pzC+JJtg==
-X-Received: by 2002:a17:907:7845:b0:957:12b7:30b0 with SMTP id lb5-20020a170907784500b0095712b730b0mr3566568ejc.18.1682116310636;
-        Fri, 21 Apr 2023 15:31:50 -0700 (PDT)
-Received: from krzk-bin.. ([2a02:810d:15c0:828:687d:8c5:41cb:9883])
-        by smtp.gmail.com with ESMTPSA id aa21-20020a170907355500b00957dad777c1sm308173ejc.107.2023.04.21.15.31.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 15:31:50 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] arm64: dts: rockchip: add missing cache properties
-Date: Sat, 22 Apr 2023 00:31:48 +0200
-Message-Id: <20230421223149.115185-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	Fri, 21 Apr 2023 23:14:58 +0000
+X-QQ-mid: bizesmtp65t1682118861tmo6nky7
+Received: from [192.168.30.129] ( [106.150.157.219])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Sat, 22 Apr 2023 07:14:19 +0800 (CST)
+X-QQ-SSF: 01100000000000B0F000000A0000000
+X-QQ-FEAT: +ynUkgUhZJm9MO0hB0Dc/uruRhQTpGsFJzR0DW3Mcxi3ED8A4/bDsIWLXK3aP
+	ex2OhRjAYlXALpdfzH5zGPQejMWk+X+SDTpbvNygk2VWe4D1VamwDHYmFIIgq4Z/EIGVkAP
+	7JIvS6k+O8Um3ijyyhIIcR31CH6yBIE4FdWPWWBH1CZHYBEC/SHZXktM6QKWV6BN27VXLB9
+	d8zQAY1gkzA06ahyS0bcfIORSjSvvuo9WziMGMlYI4nuzd/9YepkQHRVvQBmpP08vcWjm80
+	gHfSRN1wuZ9KwdOAb9WgZk5Dt9gi4SiJs2jzjkldcUXxvdAVV+1+KlQ5wDuebpP6HoETvEX
+	TBNLneMgdpNi6t771EevNY+ZpKJ5aM/zvmW+yNoBBx5D0eSwj69nVCiW62hxQ==
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 8451665007315853366
+Message-ID: <289455C2138BA5B6+73e871df-8467-718a-6b39-cb4b87c4caef@radxa.com>
+Date: Sat, 22 Apr 2023 08:14:19 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] arm64: dts: rockchip: radxa-e25: fix typo in
+ vcc3v3-pi6c-05-regulator
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org
+References: <20230420101555.2980-1-naoki@radxa.com> <9785919.DvuYhMxLoT@phil>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <9785919.DvuYhMxLoT@phil>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz6a-0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_153151_852304_03B157F9 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230421_161456_377356_1F3D3D36 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,130 +69,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As all level 2 and level 3 caches are unified, add required
-cache-unified properties to fix warnings like:
+hi,
 
-  rk3588s-khadas-edge2.dtb: l3-cache: 'cache-unified' is a dependency of 'cache-size'
+On 4/21/23 20:48, Heiko Stuebner wrote:
+> Hi,
+> 
+> Am Donnerstag, 20. April 2023, 12:15:55 CEST schrieb FUKAUMI Naoki:
+>> "gpios" should be "gpio"
+> 
+> I don't see this.
+> 
+> The fixed-regulator binding does specify both "gpios" and "gpio" as valid.
+> And the code also tries both [0].
+> 
+> So this change really isn't necessary.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+I see. it seems I referred old document... sorry for bothering you.
 
----
+--
+FUKAUMI Naoki
 
-Please take the patch via sub-arch SoC tree.
----
- arch/arm64/boot/dts/rockchip/rk3308.dtsi  | 1 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi  | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 9 +++++++++
- 3 files changed, 11 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index dd228a256a32..2ae4bb7d5e62 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -97,6 +97,7 @@ CPU_SLEEP: cpu-sleep {
- 		l2: l2-cache {
- 			compatible = "cache";
- 			cache-level = <2>;
-+			cache-unified;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 6d7a7bf72ac7..e729e7a22b23 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -103,6 +103,7 @@ CPU_SLEEP: cpu-sleep {
- 		l2: l2-cache0 {
- 			compatible = "cache";
- 			cache-level = <2>;
-+			cache-unified;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 657c019d27fa..5badc68fe9f0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -230,6 +230,7 @@ l2_cache_l0: l2-cache-l0 {
- 			cache-sets = <512>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_l1: l2-cache-l1 {
-@@ -239,6 +240,7 @@ l2_cache_l1: l2-cache-l1 {
- 			cache-sets = <512>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_l2: l2-cache-l2 {
-@@ -248,6 +250,7 @@ l2_cache_l2: l2-cache-l2 {
- 			cache-sets = <512>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_l3: l2-cache-l3 {
-@@ -257,6 +260,7 @@ l2_cache_l3: l2-cache-l3 {
- 			cache-sets = <512>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_b0: l2-cache-b0 {
-@@ -266,6 +270,7 @@ l2_cache_b0: l2-cache-b0 {
- 			cache-sets = <1024>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_b1: l2-cache-b1 {
-@@ -275,6 +280,7 @@ l2_cache_b1: l2-cache-b1 {
- 			cache-sets = <1024>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_b2: l2-cache-b2 {
-@@ -284,6 +290,7 @@ l2_cache_b2: l2-cache-b2 {
- 			cache-sets = <1024>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l2_cache_b3: l2-cache-b3 {
-@@ -293,6 +300,7 @@ l2_cache_b3: l2-cache-b3 {
- 			cache-sets = <1024>;
- 			cache-level = <2>;
- 			next-level-cache = <&l3_cache>;
-+			cache-unified;
- 		};
- 
- 		l3_cache: l3-cache {
-@@ -301,6 +309,7 @@ l3_cache: l3-cache {
- 			cache-line-size = <64>;
- 			cache-sets = <4096>;
- 			cache-level = <3>;
-+			cache-unified;
- 		};
- 	};
- 
--- 
-2.34.1
-
+> Heiko
+> 
+> [0] https://elixir.bootlin.com/linux/latest/source/drivers/gpio/gpiolib.h#L86
+> 
+>> Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
+>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+>> ---
+>>   arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+>> index 63c4bd873188..bde43c4a5bb1 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+>> @@ -89,7 +89,7 @@ vcc3v3_pcie30x1: vcc3v3-pcie30x1-regulator {
+>>   	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
+>>   		compatible = "regulator-fixed";
+>>   		enable-active-high;
+>> -		gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
+>> +		gpio = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
+>>   		pinctrl-names = "default";
+>>   		pinctrl-0 = <&pcie_enable_h>;
+>>   		regulator-name = "vcc3v3_pcie";
+>>
+> 
+> 
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
