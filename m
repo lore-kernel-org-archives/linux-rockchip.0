@@ -4,132 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ABE3C77B75
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 11:41:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D68C77B76
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 11:48:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=ugAKjulx+34SQwH5P9HAlsQu54l9Jq6g8xLdo1xG0Gk=; b=EdPre520ZK4bbV
-	GR9gcDGsnQHi1mvXltdR0AqnkVQiwAY4xuviAklYVcGRstynDxVN+AqUQ9nVEytFFbBi3nDtM7a+T
-	WZzDHSsuoaTW3RKt5Ayy/F7SBPJZ3W267W4HIlmjNfxka3LpR3/+7L+f+/cQGplBmTZyGpDF4nwqd
-	uyHWZL1FUGZxEPSsvRfgsbd0a9/scqKz1Ez9KbNBA0j+yKC/bXTw/gmeD8USON6kakxkebj+VWOZc
-	oAQvAR/akREvwJF/dR+iFf+pM9ZA+HmMgWd19FQHVUVbthOOjeQXE+SPopaCLjJxEMHTmr6mIve3g
-	HlQ/9QMc9CQceNmHPCWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/Q5vfbMo/Xz48utYEInXAhoB/Rr+6ViOPeTyP0oUumQ=; b=pIdLdUI2l76Dzb
+	YFVUs5tMITGrjxZrIs9bGregkFBmopUTGP0tC5/pkncJCTLUVu0JhhplFRoqTjrSh6/flqY2TFwKW
+	jltzuSJ9zvONhAa1c+nYv1BmUGAl/sbLdOfY9+x1x1SzRmLWN///hxY7tx1Vp46rukcWEIJstPisQ
+	iRaKy6VDD/HrrzVFkBF5DpGrmtM3oIYPF1SpOT029bLmuC4wrTiEjZS/10nUBcMQAjfUeK3qBbD/D
+	RETwax384oUb5Tg1iYNqkgjxuLZTJuaSk+8l4sGK5Uvn+9xrIgJp32lQSsUDm5/IMMGsieYuJeApr
+	sm6+HMaX88h+7mFDtp+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppp8M-00AkLl-0G;
-	Fri, 21 Apr 2023 11:40:58 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pppFg-00Amv8-1J;
+	Fri, 21 Apr 2023 11:48:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppp8B-00AkHr-1a
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 21 Apr 2023 11:40:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=References:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description:In-Reply-To;
-	bh=3IVe5wvWCmXLbIud3fw5nK6JC+GZnbaEh4zDHD92gPA=; b=VAXRuuZH6ylwxDYGN04n9ilv/u
-	ywVMO2yH5bKOgn835v8MXE6hDYjBnvj6Ydcrbn6/y8uEtGUFW4rsnZwGP1oaXVMEzTrVTiHqlVy62
-	7lPzfSP7pn+19joxQ96N5x+SPWsr5W+1JCUARYlHrQ5CazR/1nmmdL+z7Ytdw50oNICvMk545rOW4
-	huYTl3dsqY+j2l12mD9DMC591fDngqgogPe2lA2AUWZCDtQBGvd65k4jX0UnOE0iINLvjVMy4muB6
-	8HH6BJklPW/cVwszBRbUjt3km03Cuh0fcGphbw8TJUcL2XHYcSmSZbHLGMt88Dg8k6KvHBefOfBJS
-	TgnMzHyg==;
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppoJT-005GR2-0A
+	id 1pppFc-00Amrt-2I
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Apr 2023 10:48:26 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230421104811euoutp0233b24feb2f888ea3d4db022361aba566~X7Xl7voIM1669816698euoutp02d
-	for <linux-rockchip@lists.infradead.org>; Fri, 21 Apr 2023 10:48:11 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230421104811euoutp0233b24feb2f888ea3d4db022361aba566~X7Xl7voIM1669816698euoutp02d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1682074091;
-	bh=3IVe5wvWCmXLbIud3fw5nK6JC+GZnbaEh4zDHD92gPA=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=lQy0H6Zq5ppAAZa7j4hQKlEtlyezDcvSPPDJOeR062m3EnaQjN+hcl8eNHOojvJiC
-	 Qd2Ui8bThlm68nO1KHVMp0xf0JHio6eWgNl/YsZHopRperB1f99J+NOdwAA0WTo3ZC
-	 ZxmQn2xM10M8w+oBrVNpbZeq3SL7yI07x0DNqFzY=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTP id
-	20230421104811eucas1p13e1c7ecc5c891481c6aea637fe7460c3~X7Xlw7pwx1801918019eucas1p13;
-	Fri, 21 Apr 2023 10:48:11 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
-	eusmges3new.samsung.com (EUCPMTA) with SMTP id 16.0B.10014.BE962446; Fri, 21
-	Apr 2023 11:48:11 +0100 (BST)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1~X7XlceEIL2353023530eucas1p1K;
-	Fri, 21 Apr 2023 10:48:11 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
-	eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
-	20230421104811eusmtrp2e8a8cc0f3512d7f27a3fc68d35ca40ad~X7XlZwxeF2894528945eusmtrp2d;
-	Fri, 21 Apr 2023 10:48:11 +0000 (GMT)
-X-AuditID: cbfec7f5-b8bff7000000271e-db-644269ebeb7d
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
-	eusmgms2.samsung.com (EUCPMTA) with SMTP id FD.E8.34412.BE962446; Fri, 21
-	Apr 2023 11:48:11 +0100 (BST)
-Received: from AMDC4653.eu.corp.samsungelectronics.net (unknown
-	[106.120.51.32]) by eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20230421104810eusmtip243b20c2a7d17fdb0d71817bccc3afcab~X7Xk5-UHC2978729787eusmtip2Y;
-	Fri, 21 Apr 2023 10:48:10 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Ezequiel Garcia
-	<ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>
-Subject: [PATCH] media: verisilicon: Final fix for the crash when opening
- the driver
-Date: Fri, 21 Apr 2023 12:47:59 +0200
-Message-Id: <20230421104759.2236463-1-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.34.1
+	Fri, 21 Apr 2023 11:48:30 +0000
+Received: from [194.95.143.137] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1pppFY-0002Gu-3B; Fri, 21 Apr 2023 13:48:24 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject:  Re: [PATCH] arm64: dts: rockchip: radxa-e25: fix typo in
+ vcc3v3-pi6c-05-regulator
+Date: Fri, 21 Apr 2023 13:48:23 +0200
+Message-ID: <9785919.DvuYhMxLoT@phil>
+In-Reply-To: <20230420101555.2980-1-naoki@radxa.com>
+References: <20230420101555.2980-1-naoki@radxa.com>
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrGKsWRmVeSWpSXmKPExsWy7djPc7qvM51SDNZuULXYcmU2s8XGF59Z
-	LC7OvMti0bNhK6vFpwf/mS3WHrnLbrFs0x8mi7v3TrA4cHjsuLuE0WPTqk42j81L6j36/xp4
-	9G1ZxejRdeQ6m8fnTXIep75+Zg/giOKySUnNySxLLdK3S+DK2HPhA3PBNtmK9s4e5gbGVsku
-	Rk4OCQETiXOzD7F3MXJxCAmsYJTo6u9ig3C+MErcWzMTKvOZUWLR0n4WmJZZC78yQSSWM0rs
-	WfmMBcJpZZL4cPQnG0gVm4ChRNfbLjBbRMBZ4uy+dcwgRcwCs5gk9s29xgySEBYIk+jpX8wI
-	YrMIqEpsWHQObAWvgL3E97+3oNbJS+w/eJYZIi4ocXLmE7A4M1C8eetssKESAgc4JLYueAjV
-	4CJx8OF/KFtY4tXxLewQtozE/53zmSAa2hklFvy+D+VMYJRoeH6LEaLKWuLOuV9Ad3MArdCU
-	WL9LHyLsKDH/zSOwsIQAn8SNt4IQR/BJTNo2nRkizCvR0SYEUa0mMev4Ori1By9cYoawPSRO
-	nFjMCmILCcRKzN58nHkCo8IsJK/NQvLaLIQbFjAyr2IUTy0tzk1PLTbOSy3XK07MLS7NS9dL
-	zs/dxAhMSqf/Hf+6g3HFq496hxiZOBgPMUpwMCuJ8L43cEoR4k1JrKxKLcqPLyrNSS0+xCjN
-	waIkzqttezJZSCA9sSQ1OzW1ILUIJsvEwSnVwCSr2v/YZ+MKL4XIEnaBn+E7wpz/J21U2aPv
-	sr9kBu/Fb0nPqrv67yQUHxSebcn9PfFyhEqtpYtfyc3D9QtsVCODjDt+1UtGbrzFkRmduf34
-	/9cSvIG56UrGjFuXnvv+r6BTbE7Hh0//fm9V/fmzsnwRo+CUKV26z69/6Ip/KJd3/NPO5Vxz
-	DYufOR1tEb72YP//5Qwt2s+ZXjtm+rU94/HYvC7+OpvGjgk3ZFmPn/584mR0VO7LJR2Xpmaz
-	OnYs2t1ZpBW85uy1K78XLG13XX75eHOryQfnWfKtb1wtnwRHHuyR626oeXXD8nhgaMxSabGA
-	6L8G65d+Mvgkc4TRxfqYmv7pE1/+PT69sPzBhQ4lluKMREMt5qLiRAAThcU2uQMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrNLMWRmVeSWpSXmKPExsVy+t/xe7qvM51SDNY/57HYcmU2s8XGF59Z
-	LC7OvMti0bNhK6vFpwf/mS3WHrnLbrFs0x8mi7v3TrA4cHjsuLuE0WPTqk42j81L6j36/xp4
-	9G1ZxejRdeQ6m8fnTXIep75+Zg/giNKzKcovLUlVyMgvLrFVija0MNIztLTQMzKx1DM0No+1
-	MjJV0rezSUnNySxLLdK3S9DL2HPhA3PBNtmK9s4e5gbGVskuRk4OCQETiVkLvzJ1MXJxCAks
-	ZZT4P3cBI0RCRuLktAZWCFtY4s+1LjaIomYmie67u9hBEmwChhJdb0ESnBwiAq4SvV0nmEGK
-	mAXmMEncXX0HLCEsECLx6uFSsKksAqoSGxadYwGxeQXsJb7/vcUCsUFeYv/Bs8wQcUGJkzOf
-	gMWZgeLNW2czT2Dkm4UkNQtJagEj0ypGkdTS4tz03GIjveLE3OLSvHS95PzcTYzAWNh27OeW
-	HYwrX33UO8TIxMF4iFGCg1lJhPe9gVOKEG9KYmVValF+fFFpTmrxIUZToPsmMkuJJucDozGv
-	JN7QzMDU0MTM0sDU0sxYSZzXs6AjUUggPbEkNTs1tSC1CKaPiYNTqoGp1e/eCpdS0db5c47+
-	WSaf5PDl+S/PXXUfGk+VT5xzmXFt8NfLc9tt+GeJmU9gYNs8JyDh9JaJOtOCopo3PFfkrH6y
-	ek+IdtW9lnKfzXv/i1gLi+swX9UKOqvfffBO2ZmHqz4If7TMkgqf8/+zY7cX++2vLzZkv1og
-	+N+NfZv0If3FTbmN65LnFjzkTSrK9m9LcFH5eXTVNv/Vh7WyZ76fKD/zw64VHvdnxU/YbtAs
-	fG3FE9l4w0WfZrr62mTPWWznL/l5iv+fGyyqcqdr2pKUbHP29++7VuGh++7VCf99m7hzyh4/
-	9H5UIfDq0AwZ7W9PNkqsvFTw+me1csaVQ6d3GrxsPPtZ6YRM0LvsaatU3iixFGckGmoxFxUn
-	AgDJBE3HDgMAAA==
-X-CMS-MailID: 20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1
-X-Msg-Generator: CA
-X-RootMTR: 20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1
-References: <CGME20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_114823_257513_4BBE95AF 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20230421_044828_766656_4B5B436E 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,86 +61,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ctx->vpu_src_fmt is no more initialized before calling hantro_try_fmt()
-so checking it led to crash the kernel. Simply use the provided 'fmt' as
-a format for those checks.
+Hi,
 
-This fixes the following issue observed on Odroid-M1 board:
+Am Donnerstag, 20. April 2023, 12:15:55 CEST schrieb FUKAUMI Naoki:
+> "gpios" should be "gpio"
 
- Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
- Mem abort info:
- ...
- Modules linked in: crct10dif_ce hantro_vpu snd_soc_simple_card snd_soc_simple_card_utils v4l2_vp9 v4l2_h264 rockchip_saradc v4l2_mem2mem videobuf2_dma_contig videobuf2_memops rtc_rk808 videobuf2_v4l2 industrialio_triggered_buffer rockchip_thermal dwmac_rk stmmac_platform stmmac videodev kfifo_buf display_connector videobuf2_common pcs_xpcs mc rockchipdrm analogix_dp dw_mipi_dsi dw_hdmi drm_display_helper panfrost drm_shmem_helper gpu_sched ip_tables x_tables ipv6
- CPU: 3 PID: 176 Comm: v4l_id Not tainted 6.3.0-rc7-next-20230420 #13481
- Hardware name: Hardkernel ODROID-M1 (DT)
- pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
- pc : hantro_try_fmt+0xa0/0x278 [hantro_vpu]
- lr : hantro_try_fmt+0x94/0x278 [hantro_vpu]
- ...
- Call trace:
-  hantro_try_fmt+0xa0/0x278 [hantro_vpu]
-  hantro_set_fmt_out+0x3c/0x298 [hantro_vpu]
-  hantro_reset_raw_fmt+0x98/0x128 [hantro_vpu]
-  hantro_set_fmt_cap+0x240/0x254 [hantro_vpu]
-  hantro_reset_encoded_fmt+0x94/0xcc [hantro_vpu]
-  hantro_reset_fmts+0x18/0x38 [hantro_vpu]
-  hantro_open+0xd4/0x20c [hantro_vpu]
-  v4l2_open+0x80/0x120 [videodev]
-  chrdev_open+0xc0/0x22c
-  do_dentry_open+0x13c/0x48c
-  vfs_open+0x2c/0x38
-  path_openat+0x550/0x934
-  do_filp_open+0x80/0x12c
-  do_sys_openat2+0xb4/0x168
-  __arm64_sys_openat+0x64/0xac
-  invoke_syscall+0x48/0x114
-  el0_svc_common+0x100/0x120
-  do_el0_svc+0x3c/0xa8
-  el0_svc+0x40/0xa8
-  el0t_64_sync_handler+0xb8/0xbc
-  el0t_64_sync+0x190/0x194
- Code: 97fc8a7f f940aa80 52864a61 72a686c1 (b9400800) 
- ---[ end trace 0000000000000000 ]---
+I don't see this.
 
-Fixes: db6f68b51e5c ("media: verisilicon: Do not set context src/dst formats in reset functions")
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-It looks that I've missed the fact that the first fix merged as commit
-f100ce3bbd6a ("media: verisilicon: Fix crash when probing encoder") did
-not fix all the issues introduced by db6f68b51e5c ("media: verisilicon:
-Do not set context src/dst formats in reset functions"). I'm really sorry
-for that.
----
- drivers/media/platform/verisilicon/hantro_v4l2.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+The fixed-regulator binding does specify both "gpios" and "gpio" as valid.
+And the code also tries both [0].
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 835518534e3b..618ea23a7d49 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -313,17 +313,17 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 		/* Fill remaining fields */
- 		v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, pix_mp->width,
- 				    pix_mp->height);
--		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE &&
-+		if (fmt->fourcc == V4L2_PIX_FMT_H264_SLICE &&
- 		    !hantro_needs_postproc(ctx, fmt))
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				hantro_h264_mv_size(pix_mp->width,
- 						    pix_mp->height);
--		else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME &&
-+		else if (fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME &&
- 			 !hantro_needs_postproc(ctx, fmt))
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				hantro_vp9_mv_size(pix_mp->width,
- 						   pix_mp->height);
--		else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE &&
-+		else if (fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE &&
- 			 !hantro_needs_postproc(ctx, fmt))
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				hantro_hevc_mv_size(pix_mp->width,
--- 
-2.34.1
+So this change really isn't necessary.
+
+
+Heiko
+
+[0] https://elixir.bootlin.com/linux/latest/source/drivers/gpio/gpiolib.h#L86
+
+> Fixes: 2bf2f4d9f673 ("arm64: dts: rockchip: Add Radxa CM3I E25")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+> index 63c4bd873188..bde43c4a5bb1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts
+> @@ -89,7 +89,7 @@ vcc3v3_pcie30x1: vcc3v3-pcie30x1-regulator {
+>  	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+> -		gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
+> +		gpio = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&pcie_enable_h>;
+>  		regulator-name = "vcc3v3_pcie";
+> 
+
+
+
 
 
 _______________________________________________
