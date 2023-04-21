@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8517AC77B72
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Apr 2023 13:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1209C77B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 07:24:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kJKvQvUBoqigZe8g2hX13JtpzStBHgTlTR7uM/zyzf0=; b=sKZQ5C18kD518q
-	Bz/O0Drz7c6SwuzPYJPw+fiMiUkuiJXec98vKfM9HAtlpWtGyAwu+K0PS8eQ69Rdm9BFOaMheOJJQ
-	01SBQi8fbRRVP5aA8vgBpKeQlT7j15x2vHN5OiCgxr4axEQPyT6Geln+/Z88qxZClyMRjRVVWd2pE
-	nX9Njn2hJcqcP9YlFg0l5CfAermArp5KDxXlrv1pSBXRwPoe8GFrHdV+vOxWImAR9PYLQjx8mi4nB
-	iIT3xthQYbfvt2e8EX1y5VvhJO96HOwG1YhUPbdj0LETVcVVObB5CZPoBc5cPYp67PylnnnrtRsI/
-	RwLVhJTJMHU/PbzY4smg==;
+	List-Owner; bh=xn0g3vdVSNSIt+VftHDblJHBnL1fZau5tGE7UT+4JU4=; b=3e4lFuKHGEu0Tl
+	IrWGMMjj8k45L415tdPhZzhSzw12vmg4+bjfsVYSZhBQlG0j9ptsBNFQfyzLIKtkET6cCN74nx1iN
+	BGeQ8F3apERWx/tRIFSgeOqK/Zgp0OssoH9wXFVVm30b0cR3Q3POWcK56XUy2mZvNJ82tw1NBs7dw
+	8GdYVKcjsEPIZMra3F71ayM5RodBrpIUxDuFAF1BnxZcymoB0s9KaHkc+ALkIfX06rD6hiupUG9XB
+	v14mXa1elYEULNmjFCq7c6wQlEZL7g+vSDkwYX3v+nGRTs/kz10GVa1RSi5IFGeylX4O+VeZ3NxVk
+	Rzxo5pWtV2sCxFNYcZcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppUev-008EhT-0t;
-	Thu, 20 Apr 2023 13:49:13 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1ppl7e-009xN1-38;
+	Fri, 21 Apr 2023 07:23:58 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppUer-008Egl-25
+	id 1ppl7c-009xLt-1B
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Apr 2023 13:49:11 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-51f597c97c5so783775a12.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Apr 2023 06:49:07 -0700 (PDT)
+	Fri, 21 Apr 2023 07:23:57 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-504ecbfddd5so1908894a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Apr 2023 00:23:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1681998547; x=1684590547;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=wnjUcH5y1Pb8R4/f3gZ/CX/Eqa1ZM5qT0lnDQJSddVI=;
-        b=ppBsWpCXOkPI9VqP8f0CZnLVdZL6ouH7XsmTPYI2heigN9JKfbVzxPgw5dA17iUhDA
-         8g1djWzw5GXkFikwzYddWzDRYS9hDRMhWXqly6PRWF4z3cfzFTmpUFUm9aeQ1pRKAX0H
-         JRH/zWEA0R9MPsBUCdF0fGRZe4uRkQG0AIdoD1TfB7x4ufQ/sM0+TplNeWvfCBLdkcPy
-         TEvJfY3x8aHbyB4VEdJaCGy5p5PDua+7O0Psq/TmbZxgd0cuJs9fV0Ev42zNLYlzwz0Y
-         OqlkUjGi6YmUq9ily1EzjFuYrHYxusN8+X732ZCMRpQP3xE1QoJGSqN87RzJrgeAUYqM
-         PBCg==
+        d=linaro.org; s=google; t=1682061835; x=1684653835;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=prqrfzm1qDAOCB1S3DlddybXVErcXD5n4O11g8gCXdo=;
+        b=JOhZ1ATLNeARFmRj1IkbfMUpPFUJqheOPyhwJrivu5pBziPkUWx4NHgk6fBcn6UpaL
+         O2kTcHxJX/OxXzbzZQzmj8B/TzJV0rxP6indgTWrKY8AISZYvGRbKmiNWk2AJLgah1In
+         7lwROoMppcQ1K0viXlTcAfs9JrdJh85wSTaTE9ZsMDBHag7C/qkMye15gNIhCJBGns+m
+         WgH1RbTGGqrI5wJAyXBvMBVwkrQMnfNLU15XIEOxdLhmlu5tqmhrfiOLbtX1hNzliICe
+         zdt79G9r9fH7Gc5+qbg54SdFCmRI3IidR1p3wxveNw7ZAqC1t4ErfUWc0mA7z4x8YOJU
+         Pmdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681998547; x=1684590547;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wnjUcH5y1Pb8R4/f3gZ/CX/Eqa1ZM5qT0lnDQJSddVI=;
-        b=B2z5sX6NsAH807wlg8w2IQPu1LNetZ8rv1VynH0W9TsGuWtpEeeeKtqnTfwlLi4YyV
-         YanoEnwaFG2XhVW/8P/J9MvzZhzeNGGIxEOIdJ0hNEgB1YF+7BRzuxa+ucXsn1kMTorz
-         Mn1pOS1DVoXraSFz/SkMQypprVDDpix/qlLLbD8aOTYYmySyXQIcDitMU9m9G1QrW4dr
-         sopK1KGag2c+JxW4zh8seaN9bhR97fdv0ezH8scYjxNy5eqIaCQZqlYa+EZUm9FVTNdG
-         quzYtKBS7i8ECOC1xzaqHDw0uuqpjtrz+d4QOL6u8VQeYMwnVnr8ekcp5ixsZyTn8ob0
-         dGvw==
-X-Gm-Message-State: AAQBX9cw9qkGFZdFZIACNxXPt0JvpiJqcWwM80YB6DGYDMqbX7VnUyXm
-	nCOdfaIznLEpdoGi3OrUvSA=
-X-Google-Smtp-Source: AKy350b4gVTrT0jdEJyTAOLAle1O9HpAQ2FZJ2O2eMbVOAtJVpzK7840rFjgpPtYWntiYEt7eg6fFg==
-X-Received: by 2002:a17:90b:3904:b0:246:ee10:cb5d with SMTP id ob4-20020a17090b390400b00246ee10cb5dmr1795004pjb.14.1681998547069;
-        Thu, 20 Apr 2023 06:49:07 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id l5-20020a17090a598500b00247a2498075sm1188313pji.48.2023.04.20.06.49.04
+        d=1e100.net; s=20221208; t=1682061835; x=1684653835;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=prqrfzm1qDAOCB1S3DlddybXVErcXD5n4O11g8gCXdo=;
+        b=TnxukvcfFvc2puGZ1b53UPSNj48G7HCELkhHl5+AVxCi0ll9tVXti3W/C5oyk9KW2U
+         VH6VPYBCZ/z2k9Pr4hWEHmFfZkTSKzPbgW4bVY3rGbp9g9YsD/0KGhL+0QqFL/zrY/Oi
+         /wGfW2UVJ3/u+Rj9/jb0hD0vdx6+j22CV564WOEWsxebHBCWW4Ot12X28Xch3sVfqj96
+         khzLDUuiVcgCjegqansSFYe7jG5d41WNcPAktc4MQBoYwcKvWw9LQkd0zTRyijzp8AVF
+         OC4j+Qg8CaArLxBXFB6lH4QpvdmzzgZ0IXBQS9GT9MgJ6zZBDQ3i/vmT3rCtPU8JwyMn
+         XW8g==
+X-Gm-Message-State: AAQBX9cnVDSK9TEnekI4lM8Dvr65aAwDzE792k47Rrg6PTM98l2eKFSF
+	MpkhHtLvLaxxijodm2gECZ/egQ==
+X-Google-Smtp-Source: AKy350YgcUsXsalWPaVeSw5M0+bkcudrenAyULZM13pxyUXbMr7Y9HVWrdBHEXIxeyZssdARWUhEaA==
+X-Received: by 2002:a17:907:3ac3:b0:94e:70bb:5f8a with SMTP id fi3-20020a1709073ac300b0094e70bb5f8amr1119505ejc.66.1682061834884;
+        Fri, 21 Apr 2023 00:23:54 -0700 (PDT)
+Received: from ?IPV6:2a02:810d:15c0:828:668b:1e57:3caa:4d06? ([2a02:810d:15c0:828:668b:1e57:3caa:4d06])
+        by smtp.gmail.com with ESMTPSA id gz19-20020a170907a05300b0095076890fc1sm1721175ejc.1.2023.04.21.00.23.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Apr 2023 06:49:06 -0700 (PDT)
-Message-ID: <dff23f7b-86a4-6984-5ce0-70aa6dbfad8e@roeck-us.net>
-Date: Thu, 20 Apr 2023 06:49:03 -0700
+        Fri, 21 Apr 2023 00:23:54 -0700 (PDT)
+Message-ID: <ee5e2621-36db-864d-bdde-885232381a23@linaro.org>
+Date: Fri, 21 Apr 2023 09:23:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2] usb: typec: tcpm: fix multiple times discover svids
- error
-To: Greg KH <gregkh@linuxfoundation.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, huangtao@rock-chips.com,
- william.wu@rock-chips.com, jianwei.zheng@rock-chips.com,
- yubing.zhang@rock-chips.com, wmc@rock-chips.com
-References: <20230316081149.24519-1-frank.wang@rock-chips.com>
- <ZBROkdOFAP4GPPU6@kuha.fi.intel.com> <ZEDzGydXbbpekeaB@kroah.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: timer: rockchip: Drop superfluous
+ rk3288 compatible
 Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-In-Reply-To: <ZEDzGydXbbpekeaB@kroah.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20230419181309.338354-1-cristian.ciocaltea@collabora.com>
+ <20230419181309.338354-2-cristian.ciocaltea@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230419181309.338354-2-cristian.ciocaltea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230420_064909_682051_C6E31E14 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20230421_002356_406041_5B0F0959 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,68 +100,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/20/23 01:08, Greg KH wrote:
-> On Fri, Mar 17, 2023 at 01:27:13PM +0200, Heikki Krogerus wrote:
->> On Thu, Mar 16, 2023 at 04:11:49PM +0800, Frank Wang wrote:
->>> PD3.0 Spec 6.4.4.3.2 say that only Responder supports 12 or more SVIDs,
->>> the Discover SVIDs Command Shall be executed multiple times until a
->>> Discover SVIDs VDO is returned ending either with a SVID value of
->>> 0x0000 in the last part of the last VDO or with a VDO containing two
->>> SVIDs with values of 0x0000.
->>>
->>> In the current implementation, if the last VDO does not find that the
->>> Discover SVIDs Command would be executed multiple times even if the
->>> Responder SVIDs are less than 12, and we found some odd dockers just
->>> meet this case. So fix it.
->>>
->>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->>> ---
->>>   drivers/usb/typec/tcpm/tcpm.c | 16 +++++++++++++++-
->>>   1 file changed, 15 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
->>> index 66de02a56f512..a3ae2c79f3540 100644
->>> --- a/drivers/usb/typec/tcpm/tcpm.c
->>> +++ b/drivers/usb/typec/tcpm/tcpm.c
->>> @@ -1515,7 +1515,21 @@ static bool svdm_consume_svids(struct tcpm_port *port, const u32 *p, int cnt)
->>>   		pmdata->svids[pmdata->nsvids++] = svid;
->>>   		tcpm_log(port, "SVID %d: 0x%x", pmdata->nsvids, svid);
->>>   	}
->>> -	return true;
->>> +
->>> +	/*
->>> +	 * PD3.0 Spec 6.4.4.3.2: The SVIDs are returned 2 per VDO (see Table
->>> +	 * 6-43), and can be returned maximum 6 VDOs per response (see Figure
->>> +	 * 6-19). If the Respondersupports 12 or more SVID then the Discover
->>> +	 * SVIDs Command Shall be executed multiple times until a Discover
->>> +	 * SVIDs VDO is returned ending either with a SVID value of 0x0000 in
->>> +	 * the last part of the last VDO or with a VDO containing two SVIDs
->>> +	 * with values of 0x0000.
->>> +	 *
->>> +	 * However, some odd dockers support SVIDs less than 12 but without
->>> +	 * 0x0000 in the last VDO, so we need to break the Discover SVIDs
->>> +	 * request and return false here.
->>> +	 */
->>> +	return cnt == 7;
->>>   abort:
->>>   	tcpm_log(port, "SVID_DISCOVERY_MAX(%d) too low!", SVID_DISCOVERY_MAX);
->>>   	return false;
->>
->> This is OK by men, but let's wait for Guenter.
+On 19/04/2023 20:13, Cristian Ciocaltea wrote:
+> The compatible string for Rockchip RK3288 is wrongly provided in the
+> 'enum' item, in addition to the subsequent 'const', which allows the
+> usage of an incorrect specification:
 > 
-> What ever happened to this patch?
+>   compatible = "rockchip,rk3288-timer", "rockchip,rk3288-timer";
 > 
+> As the rk3288 string is also specified in the top-most 'const' item, the
+> binding already allows the usage of the correct variant:
+> 
+>   compatible = "rockchip,rk3288-timer";
+> 
+> Drop the unwanted rk3288 entry from the enum.
+> 
+> Fixes: faa186adbd06 ("dt-bindings: timer: convert rockchip,rk-timer.txt to YAML")
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> ---
 
-It got lost in space.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
-Guenter
+Best regards,
+Krzysztof
 
 
 _______________________________________________
