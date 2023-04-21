@@ -4,58 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39795C77B76
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 21:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B52C77B76
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Apr 2023 22:32:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jsn82/9etot1eVex078Cs2K+edG4aSFZ1T5gSgtQPu4=; b=ih5iCSBT9FdniG
-	zilMnpv6ikZLy776aXX9xDNBo5D4wV0HiPDTSfpW91+LN5ciMesAJfokW7lzCEzn9tlUyelRnefjh
-	+6cLOuOqb/IQaHDH7+KucIwCQGuRugpJKqEsgYKlZT1QcUUJLls7RiVBFz0Fpb32J1w0H2TyzfeNG
-	+Y3ILr9XAcYrq8q2lKihOR9w3XZaj6V3OWYAaL76qdGGZFOGZLdAL0O8jn/12oO4oOGP7bIpwPY2o
-	sCibA7TaWfYGnJOYicUZ0tA0fhNfFz2o3IfNq2Di8nDCLqTytXSSXPu0BFGtD35csrWUpkdo9j+iE
-	TaEjqksg96gTJdCEItuA==;
+	List-Owner; bh=n5NcHJYbrAlSv4AMom4Jn/ggxuaamKzz2dnAo6aKrCg=; b=u7zFruO2Yox9Pz
+	PUkfjnXGu5B9fBfKPUyYAOhh2l2mFEE/tGPbEMbEanS7HpIUFT1jTLQI6SNg6E7hdVdiWbBLW6r+t
+	udhPQQBKRprv2jQT4rOFkMYWdXj5bNbFJAJj1gZX4MEsT/dNgnAJG9URHbN2oD4nXvzbwvOrBJrLb
+	2R8SSjWqbyRvGdGGsggssIkPUTxSDDumMj/suuXiSArYnZQIUjupW54HWuxNJdogSYeDP1lu9fzgC
+	I71SRAe47M3b+pJ5xoVXWJ742A3yCMZOJBNYlOIhkNdfIkVpDtcTGUBuTBVyETqosXcHvLQdLO9qM
+	GIEI4BGNAt3mA1B9rGPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppyTH-00BtDE-2Z;
-	Fri, 21 Apr 2023 21:39:11 +0000
-Received: from s2.dolansoft.org ([212.51.146.245] helo=mx.dolansoft.org)
+	id 1ppzIT-00BxR6-2A;
+	Fri, 21 Apr 2023 22:32:05 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ppyTD-00BtBa-2C;
-	Fri, 21 Apr 2023 21:39:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=brun.one;
-	s=s1; h=MIME-Version:Message-Id:Date:Subject:Cc:To:From:In-Reply-To:
-	References:From:To:Subject:Date:Message-ID:Reply-To;
-	bh=WqDR0GeRDjCmeGfB4Fz7AUgP7inOrXaAMKhLUK+zsKo=; b=OKeZGgK8rz/gd/z9Un26pCgh2c
-	CjKEUk7Txai2yQYlLvih+G/wjpz75nD22kAsIJTTHjp0JKWDCaMFHtg4YDgxAC3a0yZCGkNUv2l0n
-	sE/olz9qcde+OBN74YjhwWKQgopGHxLZboy+lvlMnhhtDkV77q2TIO/n98m6/mhc+F0lYP2dd2z+e
-	KA0VFT1yM4gMfd9ulUb3myCIHNefNHEfBxf2YjVsZRoT6i1IUugXYQhiNRrOWZi3xdRFL3Z3ylHUT
-	TljMoSOTRWpWLxu8o8/rK1eZwELXAt2HnoD/JZtWfS5qGOUJ5wMgBgAwDfV+h9MasEgZ5zFK/YvrX
-	nLnfzfJg==;
-Received: from [212.51.153.89] (helo=blacklava.cluster.local)
-	by mx.dolansoft.org with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <lorenz@dolansoft.org>)
-	id 1ppyT3-0009hE-1x;
-	Fri, 21 Apr 2023 21:38:57 +0000
-From: Lorenz Brun <lorenz@brun.one>
+	id 1ppzIF-00BxJq-2c
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Apr 2023 22:31:53 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-94f3cd32799so376804366b.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Apr 2023 15:31:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682116310; x=1684708310;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7v4mG2PrvGHT4HWW2aD7kz/Jo5VqruKafQcmH0GEdHQ=;
+        b=LRwxYnYte61pFMXBNA4fGK8jUs7j4rOkyOV4DdeP+ttViOoqcp1tzRcSM8sa6ZXXhX
+         vhWQAmT5hkJY2mOlU7tXY5f/L/K/EhmJJrJrZ4+133xDbLq8LjeQ5pIfF+PvofBirVJ6
+         bC59k8XvlJTnxagd5d1KHmr826EoFOSYDtlUPT12aCyD5RNHsKsg3vG7wPuvougchO8p
+         0ZoczI3MB6arJx/H5gLkYcuv3bqEBBGwuz5XsLPqaSbQVmoI5anSkmBjrMQWKK47VdJw
+         B6W++SAaY+DJSV8Z2ZCU7l0i2h7Qck4sB4jUnR24mbutUri2h/jAGjXx/ihbfCO7M3pU
+         Elbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682116310; x=1684708310;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7v4mG2PrvGHT4HWW2aD7kz/Jo5VqruKafQcmH0GEdHQ=;
+        b=bAXHEDNlycFJhOw/76m5a+yBl4jtJrxt/7i9NYaJ4g5/b9ko8/N4EWhYU8qteYcXh6
+         HSG0rXV3iBmmEiXZKkbkInFZU2ZKIrHIciMNQ4haA3ER/BLWXhhflLjvvTsDdzxtvezf
+         AgOD1fcE/MYukyeG2dyg4t4RahoJCaSGD2V4+tUgFb1c3oIyvke0TycryPA4dQeoa/QU
+         AQ74uooSj/rSRN1RzKQPXz4VpwmEVY0CnyDZUPMe6zMyUug9qTKMHguel9WS4NZfE4Xz
+         GZE6ikJzRhc9K2dWfkCjnD5TzqrYnVSU+UF8rxA28zATYoirkxeq/mwiqWMTzqwLt0sz
+         vlTA==
+X-Gm-Message-State: AAQBX9cJ5+4iKdvV3zxDn5LvojIgynOt9S5D8ndIZ898Gqv0X0vHKGUm
+	9QscYDO5zwXhxzt+zgh/ecp1+Q==
+X-Google-Smtp-Source: AKy350ZToStdpI3/6McxwF83TbNvU0TpEGKWh9SGPOim56WxkraHbbPATz3MtaW9Xt/+n4pzC+JJtg==
+X-Received: by 2002:a17:907:7845:b0:957:12b7:30b0 with SMTP id lb5-20020a170907784500b0095712b730b0mr3566568ejc.18.1682116310636;
+        Fri, 21 Apr 2023 15:31:50 -0700 (PDT)
+Received: from krzk-bin.. ([2a02:810d:15c0:828:687d:8c5:41cb:9883])
+        by smtp.gmail.com with ESMTPSA id aa21-20020a170907355500b00957dad777c1sm308173ejc.107.2023.04.21.15.31.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Apr 2023 15:31:50 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: fix USB regulator on ROCK64
-Date: Fri, 21 Apr 2023 23:38:41 +0200
-Message-Id: <20230421213841.3079632-1-lorenz@brun.one>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: rockchip: add missing cache properties
+Date: Sat, 22 Apr 2023 00:31:48 +0200
+Message-Id: <20230421223149.115185-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230421_143907_723895_4CE16B07 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20230421_153151_852304_03B157F9 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,65 +95,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the ROCK64 device tree specifies two regulators, vcc_host_5v
-and vcc_host1_5v for USB VBUS on the device. Both of those are however
-specified with RK_PA2 as the GPIO enabling them, causing the following
-error when booting:
+As all level 2 and level 3 caches are unified, add required
+cache-unified properties to fix warnings like:
 
-  rockchip-pinctrl pinctrl: pin gpio0-2 already requested by vcc-host-5v-regulator; cannot claim for vcc-host1-5v-regulator
-  rockchip-pinctrl pinctrl: pin-2 (vcc-host1-5v-regulator) status -22
-  rockchip-pinctrl pinctrl: could not request pin 2 (gpio0-2) from group usb20-host-drv  on device rockchip-pinctrl
-  reg-fixed-voltage vcc-host1-5v-regulator: Error applying setting, reverse things back
+  rk3588s-khadas-edge2.dtb: l3-cache: 'cache-unified' is a dependency of 'cache-size'
 
-Looking at the schematic, there are in fact three USB regulators,
-vcc_host_5v, vcc_host1_5v and vcc_otg_v5. But the enable signal for all
-three is driven by Q2604 which is in turn driven by GPIO_A2/PA2.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Since these three regulators are not controllable separately, I removed
-the second one which was causing the error and added labels for all
-rails to the single regulator.
-
-Signed-off-by: Lorenz Brun <lorenz@brun.one>
 ---
-v1 -> v2: add labels for all rails, change description to match
----
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index f69a38f42d2d..5d608e2776e9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -37,7 +37,8 @@ vcc_sd: sdmmc-regulator {
- 		vin-supply = <&vcc_io>;
+Please take the patch via sub-arch SoC tree.
+---
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi  | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi  | 1 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 9 +++++++++
+ 3 files changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index dd228a256a32..2ae4bb7d5e62 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -97,6 +97,7 @@ CPU_SLEEP: cpu-sleep {
+ 		l2: l2-cache {
+ 			compatible = "cache";
+ 			cache-level = <2>;
++			cache-unified;
+ 		};
  	};
  
--	vcc_host_5v: vcc-host-5v-regulator {
-+	// Common enable line for all of the rails mentioned in the labels.
-+	vcc_host_5v: vcc_host1_5v: vcc_otg_5v: vcc-host-5v-regulator {
- 		compatible = "regulator-fixed";
- 		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
-@@ -48,17 +49,6 @@ vcc_host_5v: vcc-host-5v-regulator {
- 		vin-supply = <&vcc_sys>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 6d7a7bf72ac7..e729e7a22b23 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -103,6 +103,7 @@ CPU_SLEEP: cpu-sleep {
+ 		l2: l2-cache0 {
+ 			compatible = "cache";
+ 			cache-level = <2>;
++			cache-unified;
+ 		};
  	};
  
--	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
--		compatible = "regulator-fixed";
--		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&usb20_host_drv>;
--		regulator-name = "vcc_host1_5v";
--		regulator-always-on;
--		regulator-boot-on;
--		vin-supply = <&vcc_sys>;
--	};
--
- 	vcc_sys: vcc-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 657c019d27fa..5badc68fe9f0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -230,6 +230,7 @@ l2_cache_l0: l2-cache-l0 {
+ 			cache-sets = <512>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_l1: l2-cache-l1 {
+@@ -239,6 +240,7 @@ l2_cache_l1: l2-cache-l1 {
+ 			cache-sets = <512>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_l2: l2-cache-l2 {
+@@ -248,6 +250,7 @@ l2_cache_l2: l2-cache-l2 {
+ 			cache-sets = <512>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_l3: l2-cache-l3 {
+@@ -257,6 +260,7 @@ l2_cache_l3: l2-cache-l3 {
+ 			cache-sets = <512>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_b0: l2-cache-b0 {
+@@ -266,6 +270,7 @@ l2_cache_b0: l2-cache-b0 {
+ 			cache-sets = <1024>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_b1: l2-cache-b1 {
+@@ -275,6 +280,7 @@ l2_cache_b1: l2-cache-b1 {
+ 			cache-sets = <1024>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_b2: l2-cache-b2 {
+@@ -284,6 +290,7 @@ l2_cache_b2: l2-cache-b2 {
+ 			cache-sets = <1024>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l2_cache_b3: l2-cache-b3 {
+@@ -293,6 +300,7 @@ l2_cache_b3: l2-cache-b3 {
+ 			cache-sets = <1024>;
+ 			cache-level = <2>;
+ 			next-level-cache = <&l3_cache>;
++			cache-unified;
+ 		};
+ 
+ 		l3_cache: l3-cache {
+@@ -301,6 +309,7 @@ l3_cache: l3-cache {
+ 			cache-line-size = <64>;
+ 			cache-sets = <4096>;
+ 			cache-level = <3>;
++			cache-unified;
+ 		};
+ 	};
+ 
 -- 
-2.39.2
+2.34.1
 
 
 _______________________________________________
