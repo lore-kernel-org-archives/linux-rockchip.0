@@ -4,52 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51BACC6FD18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Apr 2023 07:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1CB1C6FD18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Apr 2023 08:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=y+PCb3mWIlo2vJr2EPv34n3/Na6OUpBmYfnJG5tuG4U=; b=IAvFY9GquplQ6T
-	cgNJJcRDMIX/mCkH+gZidMt/s8Z/i2arfwrczmfiN5iBCLNC3vHy70KMrwn87SK5jjvJxtSNkta1b
-	JOi23tm08/x7Qs7WfT91NtMR/ZKygHqAcub9LrQvGH6cBD3/lH5x77Wky7S27NcKwngerK3mCzcoO
-	shYo8e+ZJ8fib8Epjq45gA4Ei3tYzfWaVXlXen4IhVFP186xazFTSOkfkab0Cmp1UeC/+JQXtW3L3
-	r8UlVpyKj7xxRKRf8ZxtaySBGUW7MWTTkg4+Qz3DxosE9O20ULVmp3I3ie7fbqMrBr+GDju3Y19q3
-	efuqDVUyrGBRCvY6K13Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/ypWnzGb4Odhpc5xhFGHFeRgIZ78bDN8hqmD2MdhQp4=; b=E9Mi5Tx4MGjhdC
+	8iWhhTyU2Lk9bIayYNkVvww2fimAjfmu+REkIu9v35NddQGjrZ0bI9AOtzO1SaP17UarbGuEUD4o0
+	BkA3lNDcoa5eiOtCKWbz00aFRvq1bMEIx2j2CpuCPy0DUJv2YrRCT0F18cP6J5z970uDZIKt4YrNB
+	y8BzUoz1roKgKZ+9Q3o8kvuJFfbhP5dgLEUjqA7Vk5p5QHsS8vUAJyMW6HjQDBZn2I07mLyjtAgL1
+	M0Sp3EiIDzPOoNWVJj0U2f+Ne08jccF89wpDVfl1XYt4LVj08eg73u2Kwc+0o00unCxSja0xQ2hB9
+	7F+9znHZkT9cgrAn3zxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1prDJl-000PFq-0A;
-	Tue, 25 Apr 2023 07:42:29 +0000
-Received: from mail.camacfoy.pl ([195.231.80.120])
+	id 1prDbN-000RDG-2m;
+	Tue, 25 Apr 2023 08:00:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1prDJi-000PFI-35
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Apr 2023 07:42:28 +0000
-Received: by mail.camacfoy.pl (Postfix, from userid 1001)
-	id E8CD2A4154; Tue, 25 Apr 2023 08:36:20 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=camacfoy.pl; s=mail;
-	t=1682408209; bh=0DnDcjJl846YrSvLcp0W7cMkWp4Lfhp/OZAq4oBoaY8=;
-	h=Date:From:To:Subject:From;
-	b=bef50J6Oa99NKDB6GvQJVAumrK5c5CvA0wyz55h8LWXxLqmDV64/6T9rkZMwd/sPi
-	 hVxWCR2AiGegwXm0Jj3s5hoqLmEJ7U/yoJ9w6B5QDmZnsoiLW+xatv9xQyF7SsIxes
-	 3ldQpyVp9rT19fg1cE0UTC4XFcOTEk+7RP8Ub8AFk9iw+75Gllq4tfKmfpCcvRAPam
-	 WEhUFxb7seQPLJ6YX9IZAbeco6/Y4rsWXAcPTGAxwIupAtbdvDZolhpAf+dI7PcIKJ
-	 c9Avmd/Nl0h5VipFC5fhpd2dX43OLcGGLKG5/s05R4LkL3TBlBS43q9yUef5E+4JPM
-	 zi8WOc9RNfrwA==
-Received: by mail.camacfoy.pl for <linux-rockchip@lists.infradead.org>; Tue, 25 Apr 2023 07:36:05 GMT
-Message-ID: <20230425074502-0.1.83.bzjc.0.q0p5k5n1op@camacfoy.pl>
-Date: Tue, 25 Apr 2023 07:36:05 GMT
-From: "Krzysztof Maj" <krzysztof.maj@camacfoy.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: biznesowy angielski 
-X-Mailer: mail.camacfoy.pl
+	id 1prDbI-000RBi-1X;
+	Tue, 25 Apr 2023 08:00:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A3CF061E7F;
+	Tue, 25 Apr 2023 08:00:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B19AC4339B;
+	Tue, 25 Apr 2023 08:00:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682409635;
+	bh=cDv3M/1s+tjOQjJbPUGblM4x/VHbLIoWAfEO3RoBZLM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=t8tVDcisi1Ua1xsK0eh4wXd6TRl8zqRR065VHttovC11XtMZF6D/4bba5k+B9QVcD
+	 wosEZN7on9/BZBObgZeW4zV919V5Z45lRsX9k7Fm3mqp0kUE89nHF/t0zlqhvF9+dB
+	 2h6Dz3k0IgtGd470zSwjfCJivMhODaPf9YsDcjkg014i+ABYaNR22jfQS6VgIFy5WX
+	 vVhV9/8kPwppHz662OIcc0AhHtcKwYVCwvnfRzqmvB8PESp/To9CcsNdaTVKSHAQ9+
+	 fTB2q5Cbai6xwkIifbnmNyaVCEpLHdO8kzBQU4MtjB0kPYGm2MS/weEHAZC22lIJik
+	 7OelZpaQThsmg==
+Message-ID: <7fe274df-6bcd-5993-d6cc-8fbcef435866@kernel.org>
+Date: Tue, 25 Apr 2023 10:00:26 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Content-Language: en-US
+To: Rob Herring <robh+dt@kernel.org>, Ansuel Smith <ansuelsmth@gmail.com>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+ linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org,
+ linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-realtek-soc@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>,
+ Olof Johansson <olof@lixom.net>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230425_004227_183033_B0E9AB7F 
-X-CRM114-Status: UNSURE (   1.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230425_010036_594243_33DF702A 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,26 +85,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LCAKCmN6eSByb3p3YcW8YWxpIFBhxYRzdHdvIHJvenfDs2oga3dhbGlmaWth
-Y2ppIGrEmXp5a293eWNoIHN3b2ljaCBwcmFjb3duaWvDs3c/CgpPcHJhY293YWxpxZtteSBrdXJz
-eSBqxJl6eWtvd2UgZGxhIHLDs8W8bnljaCBicmFuxbwsIHcga3TDs3J5Y2gga29uY2VudHJ1amVt
-eSBzacSZIG5hIHBvZG5pZXNpZW5pdSBwb3ppb211IHPFgm93bmljdHdhIGkgamFrb8WbY2kga29t
-dW5pa2Fjamkgd3lrb3J6eXN0dWrEhWMgYXV0b3Jza8SFIG1ldG9kxJksIHN0d29yem9uxIUgc3Bl
-Y2phbG5pZSBkbGEgd3ltYWdhasSFY2VnbyBiaXpuZXN1LiAKCk5pZXN0YW5kYXJkb3d5IGt1cnMg
-b24tbGluZSwgZG9wYXNvd2FueSBkbyBwcm9maWx1IGZpcm15IGkgb2JzemFyw7N3IMWbd2lhZGN6
-b255Y2ggdXPFgnVnLCB3IHN6eWJraW0gY3phc2llIHByenluaWVzaWUgZWZla3R5LCBrdMOzcmUg
-endpxJlrc3rEhSBrb21mb3J0IGkgamFrb8WbxIcgcHJhY3ksIHJvendpamFqxIVjIG1vxbxsaXdv
-xZtjaSBiaXpuZXNvd2UuIAoKWmRhbG5lIHN6a29sZW5pZSBqxJl6eWtvd2UgdG8gbS5pbi4gemFq
-xJljaWEgeiBuYXRpdmUgc3BlYWtlcmFtaSwga3TDs3JlIHcgc3p5YmtpbSBjemFzaWUgbmF1Y3rE
-hSBwcmFjb3duaWvDs3cgcm96bWF3aWHEhyB6YSBwb21vY8SFIGphc25lZ28gaSB6d2nEmXrFgmVn
-byBqxJl6eWthIEJ1c2luZXNzIEVuZ2xpc2guCgpDenkgbcOzZ8WCYnltIHByemVkc3Rhd2nEhyB3
-acSZY2VqIHN6Y3plZ8OzxYLDs3cgaSBvcG93aWVkemllxIcgamFrIGR6aWHFgmFteT8KCgpQb3pk
-cmF3aWFtCktyenlzenRvZiBNYWoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On 25/04/2023 00:10, Rob Herring wrote:
+>> I had some problem with gmail and sending mail too much users. I put Rob
+>> and You and all the various list to try to workaround the "gmail spam
+>> protection"
+>>
+>>> I am pretty sure we were discussing such split idea in the past and it
+>>> did not get traction, but I cannot recall the exact discussion.
+>>>
+>>
+>> I think the main issue here is how to handle bot and how problematic is
+>> to merge this. As written in the cover letter the final version of this
+>> should be a big series of 50+ patch with every commit specific to each
+>> oem. In theory we should be able to merge the different oem separately
+>> and try to at least start the categorization.
+>> Another idea I got to at least have a "migration path" is to convert
+>> every dts in the dts/ directory to a symbolic link that target the dts
+>> in the correct oem. But I assume that would fix only part of the problem
+>> and git am will still be problematic.
+> 
+> I have a script[1] that does the conversion written the last time this
+> came up. Just have to agree on directory names. I think the easiest
+> would be for Arnd/Olof to run it at the end of a merge window before
+> rc1.
+> 
+> I'm very much in favor of this happening especially before *any*
+> overlays are added to add to the mess (it's probably already
+> happened).
+> 
+> Rob
+> 
+> [1] https://lore.kernel.org/all/20181204183649.GA5716@bogus/
+
+This is the thread I was thinking about. Looks good for me (the original
+script with exynos->samsung).
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
