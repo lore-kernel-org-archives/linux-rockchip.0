@@ -4,67 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40132C77B61
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Apr 2023 09:58:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6662CC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Apr 2023 01:38:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iYfUahE+vveC2gO0BCvvMsFyr/Iwnp54T9iLBexuQNQ=; b=CE3E6zFeU+7l8l
-	szNYuw8iJtKvN3ntCl/g0/wNVpaY2gH9O9mN7sZMWUMLGd94IzggyJTCWoFim0QDAvxtLA7ETdJ1U
-	XlU4EU3xUaMfgR7Kdt73B/7kU8yW2Xgbhf7jyuE7ETJORViL8gBlUH1K7tnv1FrzhZMeG3zYC/hzc
-	Cg/9POxnB+W4BqtXvn79Nr6GwOlSuOs0kxlyDRXtuNPXtBA0HmeyV0lM+27rzbDFK3INOjEB28FVI
-	9VhztKRHyL+Jg8qNYWd1YLkV51qkvsJhHKnx8nxEhEn6TE5nYN1YTtGWDinAcPZOaJRt4ZP3W9O73
-	nocH13tKp/aB0+MrBZ+A==;
+	List-Owner; bh=2aO130w5TRe90rVNoNAMjvzHJFzMNFYPnpeqMoQUhvY=; b=y7ZgSPJfC8WoeV
+	DCTiI8RGIrrcrW8nyTFiEJTIKXaoWjB8cFFhKBPef8E20gkQWqHY6oFDPHFaD70Dhc4M66ksm5rH7
+	bpf2F1X9empijrschYaSYbnyoOv3aTsNo+w9YsPvpo5c/OpiCTv5S7YAMYRGgUgcX53/oD1+2mG50
+	KaKXn9yB5deSTUhPHFV3aWsOaYUr+ANmIactbMln/H5JYdD6VQhJ+CkwRa+ljvyFJtgJSJnNm7uaX
+	W7k+kViVfTsep5MbzUjcUoNsk3XTczQU6qfOjAZfKCMRkASQi/5M7F++JWC/gYb6S9ZzA8sCINOK4
+	qKhGDh7M0O448RW7HcqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pryOR-00655B-2J;
-	Thu, 27 Apr 2023 09:58:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1psD3c-007x9O-1b;
+	Fri, 28 Apr 2023 01:37:56 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pryOQ-00654s-0z;
-	Thu, 27 Apr 2023 09:58:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=FRoWDN4JpsW0C17r1F/5/kJhG2h4U7/CWuCT0UehfvE=; b=eaaflKEaYOVa52SKHclliDg1Pk
-	UADoWfYCFGDQZVRaDqE3piH680Qehn9wiXWrfgq9XaAXOMoH5Ny3NGGZ9Ej4er37gSv91srBWbUfp
-	uSfmQu8ajEkRbQkZNtHBtnoIytCXXjJ9ST/H7yso/l2hmpgo7Qwso7crsmi19tvZzFDr/Es6j6mA7
-	gb3k8d9BbtRbtNaCSUEW4Xy/x66NlTC/oOwQYkF8sJu2b9lWCbSqGmdTIAJJwaHe6da3zjlXP10Zo
-	6ypZkx5wEXwmB81/0OasFrfyKAMfHXzF10tfPg080tJqYw4QICuEzdVLCjZs6Q87pyjj7uUkPdlDD
-	D4Qqg+6Q==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pryOL-00CKST-1u;
-	Thu, 27 Apr 2023 09:58:24 +0000
-Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1pryOG-0003kL-9j; Thu, 27 Apr 2023 11:58:16 +0200
-From: Heiko Stuebner <heiko@sntech.de>
+	id 1psD3Q-007x5c-2A;
+	Fri, 28 Apr 2023 01:37:46 +0000
+Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-763c3429a8cso136697539f.2;
+        Thu, 27 Apr 2023 18:37:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1682645863; x=1685237863;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IBlsfYRcfNCvWQm+tNlM6wnN1+cUZoVI21i6dB14UUE=;
+        b=MotL70hKr90ykbBg8oHodTHXoM4EJ2G6IMYXZWjGJB1lAqFQ4aa/K0A961vMyzVh2I
+         eb5dDQI9Gad47W/L91rsPEfgRS8nTX0/YhvLyDK/BSOMq8oL81AUzegjq022WxLdN47i
+         WWen+4wISTrVo/slIO6JbmdvRaeNxRM7Xv206xJylkyuDHi+hQgBFTsxkWgPpyK2zY/j
+         chjhckUUJxJzeTsy19tuqoijD39+gfRZVFdtSwiMZIJkiJK4gW5fLa4pZQwYMLt9l6AE
+         usRluVJ883ZUxgLob4RXSNPeUUNLH/OyVFHuXsWXEg/6nlW3M7CG45Q5ImI7yMgy1DM9
+         uZtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682645863; x=1685237863;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IBlsfYRcfNCvWQm+tNlM6wnN1+cUZoVI21i6dB14UUE=;
+        b=ZVIUfN+IHsoMHRNifBDnY9Asaaf9xCLSgJcgnk1p4t2jQHgLZ5qFxtLegUiMbDt1Q9
+         pnfD0875BoMhXT7Eg/EWa9glCuoYmXW1XTaEr/En6QuKP/DqUW8JC7UcZaORpwxuFf6V
+         Up/EtU044HojZ3pm87AoV2UtXFNvmXxb8g3qjFXUBXChumuLqQb5E9/I1w9FHYFCRjxj
+         4Ykvk9ga4qEaSx30hvpLhmkCR2dUW2sLtRi2MLmn8nXJ47NLOBT6z87LewKLfG3YiC63
+         Lh1OJYUrANcpFsgtGNXqYroFkcQr7VzOyf4YZMhFjczhpfp4qk/lDOawTkZBl++VLMYL
+         JGjw==
+X-Gm-Message-State: AC+VfDxnxJynWvNmS2b8qBfXj2p/5tbYmut8DZwj10gP4vcG4iNWSTB1
+	W4PEm7fiav2vtYvI7sZYAZA=
+X-Google-Smtp-Source: ACHHUZ5u7VlPx/XZmTgZQbmfDHVl7L+ewhW4oh7ro3S2whHoS7DrPFlvIQ1cS79h18FTkvFG6KIqKA==
+X-Received: by 2002:a5d:9a11:0:b0:764:1ed4:8889 with SMTP id s17-20020a5d9a11000000b007641ed48889mr2531981iol.11.1682645863308;
+        Thu, 27 Apr 2023 18:37:43 -0700 (PDT)
+Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
+        by smtp.googlemail.com with ESMTPSA id u11-20020a02230b000000b00411a1373aa5sm4985431jau.155.2023.04.27.18.37.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Apr 2023 18:37:42 -0700 (PDT)
+From: Tianling Shen <cnsztl@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Peter Geis <pgwipeout@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Andy Yan <andyshrk@163.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Vasily Khoruzhick <anarsoul@gmail.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix nEXTRST on SOQuartz
-Date: Thu, 27 Apr 2023 11:58:08 +0200
-Message-Id: <168258947019.413434.3793815124340047357.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230421152610.21688-1-frattaroli.nicolas@gmail.com>
-References: <20230421152610.21688-1-frattaroli.nicolas@gmail.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add Lunzn Fastrhino R68S
+Date: Fri, 28 Apr 2023 09:37:38 +0800
+Message-Id: <20230428013738.30735-3-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230428013738.30735-1-cnsztl@gmail.com>
+References: <20230428013738.30735-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230427_105823_115438_0E550748 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20230427_183744_719758_DAB482F2 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,30 +109,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 21 Apr 2023 17:26:10 +0200, Nicolas Frattaroli wrote:
-> In pre-production prototypes (of which I only know one person
-> having one, Peter Geis), GPIO0 pin A5 was tied to the SDMMC
-> power enable pin on the CM4 connector. On all production models,
-> this is not the case; instead, this pin is used for the nEXTRST
-> signal, and the SDMMC power enable pin is always pulled high.
-> 
-> Since everyone currently using the SOQuartz device trees will
-> want this change, it is made to the tree without splitting the
-> trees into two separate ones of which users will then inevitably
-> choose the wrong one.
-> 
-> [...]
+It's similar to Fastrhino R66S with the following changes:
++ 2/4GB LPDDR4 RAM
++ 2x 1000 Base-T (native, RTL8211f)
++ ADC button
++ 16GB eMMC on-board
+- No SD card slot
 
-Applied, thanks!
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3568-fastrhino-r68s.dts    | 112 ++++++++++++++++++
+ 2 files changed, 113 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
 
-[1/1] arm64: dts: rockchip: fix nEXTRST on SOQuartz
-      commit: e5d8752e957872a844ed46736b15f30b08af6591
-
-As fix for 6.4
-
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 15089a78555a..1cf105d7407f 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -86,6 +86,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-lubancat-1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r66s.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r68s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-lubancat-2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+new file mode 100644
+index 000000000000..6e972796f691
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r68s.dts
+@@ -0,0 +1,112 @@
++// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
++
++#include "rk3568-fastrhino-r66s.dtsi"
++
++/ {
++	model = "Lunzn FastRhino R68S";
++	compatible = "lunzn,fastrhino-r68s", "rockchip,rk3568";
++
++	aliases {
++		ethernet0 = &gmac0;
++		ethernet1 = &gmac1;
++		mmc0 = &sdhci;
++	};
++
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 0>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++
++		button-recovery {
++			label = "Recovery";
++			linux,code = <KEY_VENDOR>;
++			press-threshold-microvolt = <1750>;
++		};
++	};
++};
++
++&gmac0 {
++	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
++	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>;
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy0>;
++	phy-mode = "rgmii-id";
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac0_miim
++		     &gmac0_tx_bus2
++		     &gmac0_rx_bus2
++		     &gmac0_rgmii_clk
++		     &gmac0_rgmii_bus>;
++	snps,reset-gpio = <&gpio0 RK_PB0 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 15ms, 50ms for rtl8211f */
++	snps,reset-delays-us = <0 15000 50000>;
++	tx_delay = <0x3c>;
++	rx_delay = <0x2f>;
++	status = "okay";
++};
++
++&gmac1 {
++	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
++	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii-id";
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac1m1_miim
++		     &gmac1m1_tx_bus2
++		     &gmac1m1_rx_bus2
++		     &gmac1m1_rgmii_clk
++		     &gmac1m1_rgmii_bus>;
++	snps,reset-gpio = <&gpio0 RK_PB1 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 15ms, 50ms for rtl8211f */
++	snps,reset-delays-us = <0 15000 50000>;
++	tx_delay = <0x4f>;
++	rx_delay = <0x26>;
++	status = "okay";
++};
++
++&mdio0 {
++	rgmii_phy0: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0>;
++		pinctrl-0 = <&eth_phy0_reset_pin>;
++		pinctrl-names = "default";
++	};
++};
++
++&mdio1 {
++	rgmii_phy1: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0>;
++		pinctrl-0 = <&eth_phy1_reset_pin>;
++		pinctrl-names = "default";
++	};
++};
++
++&pinctrl {
++	gmac0 {
++		eth_phy0_reset_pin: eth-phy0-reset-pin {
++			rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
++	gmac1 {
++		eth_phy1_reset_pin: eth-phy1-reset-pin {
++			rockchip,pins = <1 RK_PB1 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
++	status = "okay";
++};
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
