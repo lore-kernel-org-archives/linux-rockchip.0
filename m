@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A9BC77B60
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Apr 2023 13:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89D5C77B60
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Apr 2023 13:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h9eh/2ai4C/mbQ5O4gPUaxJnKYHpTtAOl1ODtm/BbfM=; b=jqatcOSTRplOAW
-	oWYB2NMURMAu5rNRtRW/APR9nOTa0mE//bga0Q2ck0RrEUD8EayU7xQ6cgFVRnq/cjSf/sD4+Eyq2
-	CEU4kaLadGrRPLTwPQesWNfvz9YJio8K1ZMo1APRJgV/oLUCjktVOMyjcNNBFPnFHDgI/o6QhmL2V
-	WaMGx7DJi1tjhbGgLhmb8j7VesvBBxeCJ6XfQAuRfzGJd/LbgJJtVx44E85XAgxCXrlKQPmYwrsJ/
-	ToP1S7cZtWuu66ADlr+iJ1H0msdrcgLTPtm0oDUK96mhtszgsv94JJFGC70MMnOhFeDczvJTGklXG
-	wvO2aAnRBYMnsBD8/cyg==;
+	List-Owner; bh=I4vZ+pQbiFWt8cweZ8JnmAITxqhGM/JCVJgRMOXmwuY=; b=RrkzLSjbyypemd
+	qDveBl08oID9pNY2ri8ANPAubVsI+CUiHPHxeNHh5RtFeNxW3FXlc8LP/iSv0PkaJXZIrUxAe4qkR
+	Q80/jEUymZywz0nq4KtTrrvT1+OSvgvJlt0Pl1K/3f6oZXMtCSKdFJmaCBt8+KRe4PQxXu8GQTS5i
+	HeOdM1lnbmWs+vddX2aups6bNHbAzERgAnSn4OxPsq4sqaFJ3kB7SeMzie0MN2EGnLI5pxQYIWbUU
+	5a/DxwVwijqBIswIu1yQNEzF/ND8/05oiZceg0lLqQI/w6RHSMIH5Pivyvf18brmvDOh67Km8HS+P
+	PGhfsVOxYO86pQlomPdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1psOEO-00ASoM-1K;
-	Fri, 28 Apr 2023 13:33:48 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1psOFZ-00ATbl-2o;
+	Fri, 28 Apr 2023 13:35:01 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1psOEL-00ASjh-2j
+	id 1psOFW-00ATYR-2g
 	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Apr 2023 13:33:47 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-2fc3f1d6f8cso6270921f8f.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 28 Apr 2023 06:33:43 -0700 (PDT)
+	Fri, 28 Apr 2023 13:35:00 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3f315712406so61429915e9.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 28 Apr 2023 06:34:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682688822; x=1685280822;
+        d=linaro.org; s=google; t=1682688897; x=1685280897;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=DKl2QXN/TOBQAoCAOBqwrjWHK7KbPJL/dw8lPZ3RGtI=;
-        b=xLeBQIrC7o4aczohLPASe6lZ5dnbwR82k2+gkdXjyWAjUOX9+6aUfK8Uql+HFOTTVa
-         RDuZl5IWobYrD2VBvg3u2krkhDX3bd9FWQcKtpNBSXINT1Aah4W7wvO5boFShS5kCoBY
-         Hg6iblu0e1LwNzd/DMbjKN3PhzNfpVE+CtlHxIKX8xhpM9yVBuC6isOyi4jFltxhJ+yk
-         NBj2evqX9+bg/qWiOVGUfN7nLUmYPaD/UO/uH4/rKRKCDT4pV9dyCd4tmTtjkVMvKcYN
-         0dwKR9S190QzZJ2utoF/9hD2GndTUss7p23zR5o+EMFDDjPEcIL09g7e400aSJ2+DDwe
-         WUlA==
+        bh=0mmAAEtOPUAr1bd+bTw4cvKl1TPg5Xn9TRA7Ti52FfU=;
+        b=OQcSidFEQtSbCNHlInufClZsAvwSkpY1FQYDH+WYqwGzfBtvyGtTMtDvdTFaW1XrR5
+         Tx3tl5PtUfZUrWklSSN5UvxJ15d4MgE9KWeH026UynnZY3dMmAs8aoUAmBylQZFyQjKp
+         LzXIWdiEmYcA3S4bpwtLsi2/9sZdPHuObDVZ5lcFB20/+JT1pShjl7YPOpC2kQmYNv9A
+         A4BF/52Y4THhbEt3wx9gRDGV5ZEVSPyIaDjM3gNbDZ5Pn3dHJIyaKr6E1SItmij0MaM5
+         j621PTbJ3MRnluBQHBauXPevQBuMAFXHcuqnnABSRCMFK34BGLlciTZOS/R+YUTfO8B5
+         /sOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682688822; x=1685280822;
+        d=1e100.net; s=20221208; t=1682688897; x=1685280897;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DKl2QXN/TOBQAoCAOBqwrjWHK7KbPJL/dw8lPZ3RGtI=;
-        b=jF7LNXeOeIfKIFECoXZI77w+t23T87A/yrGkzNqu9INUBZHWU9GE88loZLNig7IqTW
-         G2HTeQ5BIpzrNhPiKb/uAzdZbAHXB+uP3oogUHCHEjKKYZ5ouTc5Vntf8mF65m47uv0I
-         SZXjUiDGwuN/oph2Gp4KycsCN8RTGBwRCNJHcmNpCTmZ9qZzcyDuAmtGaXDWv5770RYF
-         6TLkb+pQ+U428snh5DpLzHUMBSW2gS5t+b7/rpBVoNdVNKiTmHkb75WTzYuGYMSfytER
-         OzoXYzJhgnHic8pGi/c9X6iqnffTVbmdhJgc2TwRO320t8mHzzxlbojltMRKRA7kw0Ef
-         sMgQ==
-X-Gm-Message-State: AC+VfDyxGRCLXCQjJlWPg2WpmL9atQlo7KzdmyBw28m8ncgZU95mkBET
-	0h12BMxOUKIo1TmUR5rmG3T5AQ==
-X-Google-Smtp-Source: ACHHUZ43L157CwSGw6Na5Q7NJGMnqU5gjHlGSRY1CebXuBJrA3YfFCo9C1/OO5x2rqksRdEF54TlBA==
-X-Received: by 2002:a5d:6690:0:b0:2fa:6e37:3d97 with SMTP id l16-20020a5d6690000000b002fa6e373d97mr3908964wru.54.1682688821907;
-        Fri, 28 Apr 2023 06:33:41 -0700 (PDT)
+        bh=0mmAAEtOPUAr1bd+bTw4cvKl1TPg5Xn9TRA7Ti52FfU=;
+        b=ksDBZx9NJZM61uMfCLfv6y/5+e1OogOfWv66tt37/6NCaI7U/C+QxImS8KFJ8IQ/ni
+         DQql/PRx9D3WKmy9EUuZCsibDMAbPs4ViTmiMTbFMFRBDosAYn6W39DY/1+1UEves9pj
+         KSxGUWDgHQHuYZ6qkp52I0xK3HuYkNQDvUnIOsLdMPPONcLNKpHZqrlLk3KX54D08eyY
+         Gv1FMt9BI0hf89ITBtFEEAKlz7rljwshnr9VWgFFXd18GzvldtnELHoEnjLSzgqEbIBj
+         H502nlg579syat+4VTUKTgrSdh5Hto1k01OjSjXKutkFeJeit0PQNIS32ReVq+Ebly+X
+         nK5Q==
+X-Gm-Message-State: AC+VfDwCqCe6FvLlTiM1a1BIZr2m3oRRJCv0AxuBoSiT7/py1CR3mHHU
+	8ClwC3Qtwqa8uTz2SEw5cA3rxg==
+X-Google-Smtp-Source: ACHHUZ50NyQZaa4YfPHncp8v3Q2ICEDpU1JVTtxWjO4UOvR08Zk0+e/uit7Me/trCaa7Pmi1ZQ+dyw==
+X-Received: by 2002:a05:600c:2101:b0:3f1:7848:6740 with SMTP id u1-20020a05600c210100b003f178486740mr4078764wml.8.1682688897162;
+        Fri, 28 Apr 2023 06:34:57 -0700 (PDT)
 Received: from [172.23.2.142] ([195.167.132.10])
-        by smtp.gmail.com with ESMTPSA id f8-20020a5d4dc8000000b002f9e04459desm21068192wru.109.2023.04.28.06.33.40
+        by smtp.gmail.com with ESMTPSA id l18-20020a05600c4f1200b003f07ef4e3e0sm36176284wmq.0.2023.04.28.06.34.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Apr 2023 06:33:41 -0700 (PDT)
-Message-ID: <7ff135ab-9173-af63-5717-07d099eb9802@linaro.org>
-Date: Fri, 28 Apr 2023 15:33:39 +0200
+        Fri, 28 Apr 2023 06:34:56 -0700 (PDT)
+Message-ID: <32911b1c-7f32-7078-27e8-7b168d295993@linaro.org>
+Date: Fri, 28 Apr 2023 15:34:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH 1/3] dt-bindings: Add doc for Fastrhino R66S / R68S
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add Lunzn Fastrhino R66S
 Content-Language: en-US
 To: Tianling Shen <cnsztl@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -83,12 +83,12 @@ To: Tianling Shen <cnsztl@gmail.com>, Rob Herring <robh+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20230428013738.30735-1-cnsztl@gmail.com>
+ <20230428013738.30735-2-cnsztl@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230428013738.30735-1-cnsztl@gmail.com>
+In-Reply-To: <20230428013738.30735-2-cnsztl@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230428_063345_894933_083DFA3F 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230428_063458_880087_3C1FCC4E 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +106,96 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 28/04/2023 03:37, Tianling Shen wrote:
-> Add devicetree binding documentation for the
-> Lunzn Fastrhino R66S and R68S boards.
+> Lunzn Fastrhino R66S is a high-performance mini router.
+> 
+> Specification:
+> - Rockchip RK3568
+> - 1/2GB LPDDR4 RAM
+> - SD card slot
+> - M.2 Connector
+> - 2x USB 3.0 Port
+> - 2x 2500 Base-T (PCIe, r8125b)
+> - 12v DC Jack
 > 
 > Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 > ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../dts/rockchip/rk3568-fastrhino-r66s.dts    |  27 +
+>  .../dts/rockchip/rk3568-fastrhino-r66s.dtsi   | 507 ++++++++++++++++++
+>  3 files changed, 535 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 2d585bbb8f3a..15089a78555a 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -85,6 +85,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-box-demo.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-lubancat-1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r66s.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-lubancat-2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5c.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> new file mode 100644
+> index 000000000000..fc9e1bdab128
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> @@ -0,0 +1,27 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+> +
+> +#include "rk3568-fastrhino-r66s.dtsi"
+> +
+> +/ {
+> +	model = "Lunzn FastRhino R66S";
+> +	compatible = "lunzn,fastrhino-r66s", "rockchip,rk3568";
+> +
+> +	aliases {
+> +		mmc0 = &sdmmc0;
+> +	};
+> +};
+> +
+> +&sdmmc0 {
+> +	max-frequency = <150000000>;
+> +	no-sdio;
+> +	no-mmc;
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	vmmc-supply = <&vcc3v3_sd>;
+> +	vqmmc-supply = <&vccio_sd>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
+> +	status = "okay";
+> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> new file mode 100644
+> index 000000000000..a58592b2f13b
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
+> @@ -0,0 +1,507 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+> +#include "rk3568.dtsi"
+> +
+> +/ {
+> +	aliases {
+> +		led-boot = &status_led;
+> +		led-failsafe = &status_led;
+> +		led-running = &status_led;
+> +		led-upgrade = &status_led;
 
+Why do you need these? Which upstream kernel driver parses these?
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
