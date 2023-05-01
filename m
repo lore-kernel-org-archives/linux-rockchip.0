@@ -4,40 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E2BC77B60
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 02:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB064C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 02:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6pQ7sugi4EHXBMBjvPxZFC/ClLo+FmWOC/++UA9fvVA=; b=0KIqUv8kkRT0TR
-	EtDOsEAeC1vZkCXz1cETvrJeXNlLcCG8lhMENTZnSdahlVF+8oOyA+Gp9RQoqsq2PQb855MtVFyql
-	uqsU0lDvhUFBZs6Qk6QX2n/bKOu4YjT11IhYrgZ8/UsQJ+XDKikvlzD04giYiL+vOhHJHPR5545zY
-	YgURm6J0j696SWUg/jKawioRtW9OqsWHEWbPHwjlA3gZazILE1g/bu5PRJe2f7+P/V1T9saBlVZ96
-	b5j71/bVfWr2f+leMr7S1FkVyDkpIMuWev9++6QiPOsm95pxMl1dC9jK0TdivsSodrbW18ngvgi9s
-	Pf/xIo6kfV72kKKyrRYg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JL6j17TJI63q0SS3EWCviS9hWRD+NKE+260KNBya3/k=; b=gWDdHJ3uB51fWz
+	VwP9u6WLpXFJTVXDsirmw1eLqKujztK98F/zOdWhz1qbIa2i5hbRVPQzHzJtDczrMIaeVucIV/Jaa
+	eQ9SylucCTA46FhYUzrIf12XQ2kBG2ZgQsPs5jdnCySbQrI4tK32aIUZi+6H3KCzIRq35xfTMyDTK
+	Xh7f4tEHGPGrasUL9SnA+XLtcI0mDIwdbVCQDDym6vdjcu/p5OjQOmq7clSmBpmNzvDhg5KGzG2dj
+	G6FdjzcW0UGgaFF4sN1nd1i3fd9WgyqSLG8VUJplp6HsQaUZ3SZuyxGH2SCHm+nAQEdkpPaXZUDwv
+	cFmD+60MU7bPjspOVC5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJbu-00F3SN-1d;
-	Mon, 01 May 2023 02:49:54 +0000
-Received: from [2601:1c2:980:9ec0::2764] (helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJbr-00F3Rs-2W;
-	Mon, 01 May 2023 02:49:51 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-arm-kernel@lists.infradead.org
-Cc: patches@lists.linux.dev,
-	Randy Dunlap <rdunlap@infradead.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	id 1ptJjn-00F4Ir-1N;
+	Mon, 01 May 2023 02:58:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1ptJjj-00F4Gc-2b;
+	Mon, 01 May 2023 02:58:01 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 42C0560EC9;
+	Mon,  1 May 2023 02:57:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AA0CC4339B;
+	Mon,  1 May 2023 02:57:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1682909879;
+	bh=Vu0+qWqefyWhMzSESBgfYJzPeVchKVsuZgJb+f4X4Z8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=LFj1930RxJJ+02gvE3QlyOc7gtlzKOK0uwWOElk816ihKdy81OzlM/ZAlDIdai5mZ
+	 ZsDOz+NFewAuExD4rBa8nqS7GaQB6njiYuwq1kRsTuTgytVoIWljJTU4P1YHTFoCRY
+	 TaWnSwmk38tRflVzWgIIbDUADielGyG4qWJKdmeWUOoHbT6BtUwns+WMO/AsgrS8aK
+	 R3aNqymW2XSUoPgI5DRGkNhqPPix55Qc1oqnqeI5I4hooWQ4la4eGrrUeM1GEtw8Bq
+	 eRrr/31oKgi53RCnwTIM2wKwpnjQWbSnCPclLQLhvruJEWpw5YhRkr8mpbN1lqcmMP
+	 4pldsAyh8MEZg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Toby Chen <tobyc@nvidia.com>,
 	Heiko Stuebner <heiko@sntech.de>,
+	Sasha Levin <sashal@kernel.org>,
+	hjc@rock-chips.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH] soc/rockchip: dtpm: use C99 array init syntax
-Date: Sun, 30 Apr 2023 19:49:50 -0700
-Message-Id: <20230501024950.31518-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.40.1
+Subject: [PATCH AUTOSEL 6.3 19/44] drm/rockchip: dw_hdmi: cleanup drm encoder during unbind
+Date: Sun, 30 Apr 2023 22:56:07 -0400
+Message-Id: <20230501025632.3253067-19-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230501025632.3253067-1-sashal@kernel.org>
+References: <20230501025632.3253067-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20230430_195759_883618_E02F0B9F 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -54,92 +83,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Eliminate sparse warnings in soc/rockchip/dtpm.c:
+From: Toby Chen <tobyc@nvidia.com>
 
-drivers/soc/rockchip/dtpm.c:15:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:17:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:20:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:23:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:26:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:29:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:32:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:35:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:38:12: sparse: warning: obsolete array initializer, use C99 syntax
-drivers/soc/rockchip/dtpm.c:41:12: sparse: warning: obsolete array initializer, use C99 syntax
+[ Upstream commit b5af48eedcb53491c02ded55d5991e03d6da6dbf ]
 
-Fixes: b9d6c47a2be8 ("rockchip/soc/drivers: Add DTPM description for rk3399")
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
+This fixes a use-after-free crash during rmmod.
+
+The DRM encoder is embedded inside the larger rockchip_hdmi,
+which is allocated with the component. The component memory
+gets freed before the main drm device is destroyed. Fix it
+by running encoder cleanup before tearing down its container.
+
+Signed-off-by: Toby Chen <tobyc@nvidia.com>
+[moved encoder cleanup above clk_disable, similar to bind-error-path]
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://patchwork.freedesktop.org/patch/msgid/20230317005126.496-1-tobyc@nvidia.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/soc/rockchip/dtpm.c |   54 +++++++++++++++++-----------------
- 1 file changed, 27 insertions(+), 27 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff -- a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
---- a/drivers/soc/rockchip/dtpm.c
-+++ b/drivers/soc/rockchip/dtpm.c
-@@ -12,33 +12,33 @@
- #include <linux/platform_device.h>
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 2f4b8f64cbad3..ae857bf8bd624 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -640,6 +640,7 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
  
- static struct dtpm_node __initdata rk3399_hierarchy[] = {
--	[0]{ .name = "rk3399",
--	     .type = DTPM_NODE_VIRTUAL },
--	[1]{ .name = "package",
--	     .type = DTPM_NODE_VIRTUAL,
--	     .parent = &rk3399_hierarchy[0] },
--	[2]{ .name = "/cpus/cpu@0",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[3]{ .name = "/cpus/cpu@1",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[4]{ .name = "/cpus/cpu@2",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[5]{ .name = "/cpus/cpu@3",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[6]{ .name = "/cpus/cpu@100",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[7]{ .name = "/cpus/cpu@101",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[8]{ .name = "/gpu@ff9a0000",
--	     .type = DTPM_NODE_DT,
--	     .parent = &rk3399_hierarchy[1] },
--	[9]{ /* sentinel */ }
-+	[0] = { .name = "rk3399",
-+		.type = DTPM_NODE_VIRTUAL },
-+	[1] = { .name = "package",
-+		.type = DTPM_NODE_VIRTUAL,
-+		.parent = &rk3399_hierarchy[0] },
-+	[2] = { .name = "/cpus/cpu@0",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[3] = { .name = "/cpus/cpu@1",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[4] = { .name = "/cpus/cpu@2",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[5] = { .name = "/cpus/cpu@3",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[6] = { .name = "/cpus/cpu@100",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[7] = { .name = "/cpus/cpu@101",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[8] = { .name = "/gpu@ff9a0000",
-+		.type = DTPM_NODE_DT,
-+		.parent = &rk3399_hierarchy[1] },
-+	[9] = { /* sentinel */ }
- };
+ 	dw_hdmi_unbind(hdmi->hdmi);
++	drm_encoder_cleanup(&hdmi->encoder.encoder);
+ 	clk_disable_unprepare(hdmi->ref_clk);
  
- static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
+ 	regulator_disable(hdmi->avdd_1v8);
+-- 
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
