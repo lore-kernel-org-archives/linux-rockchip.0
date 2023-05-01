@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A703DC77B60
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 03:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E77C77B60
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 03:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JL6j17TJI63q0SS3EWCviS9hWRD+NKE+260KNBya3/k=; b=Q1tGseMocE0Mw2
-	dXaVrvKTjYUEA8F52iuABplJVNKuF0Ci/BjNyKGb24CNPzoJhnuILceJQMYh/mlKevDadALDHob0k
-	Ad3CefyE2lSGzDc/JzO7244pQWJEN7TDUF9cSqbkguccOVsIFWfWvkD7G/0zlzTDnSt3aUiWzT7A0
-	czmQqDQHbwFGgeLdyXsGJYcSIpRRRzuav6zZ8Jx12DTLiH/isvPg8EBjlr8mcEbkm7IJOiw9wJVbZ
-	FD1rGspJjllzOyBJWa/zNWzVrFSKHDHc265TeJAfkeRccWYdMxgfvuysJqFIczyv+iuAA1igXtuv1
-	yok3xLNYtByXS9jfA5RQ==;
+	List-Owner; bh=JL6j17TJI63q0SS3EWCviS9hWRD+NKE+260KNBya3/k=; b=UOEe6O3MDmn236
+	kT4zHbhC8YhUnOpDWunPqZSYJc60UZrLgisw3fiCgWRNwWRYATtWn8Od43MApTCWKLagGh7AvOWyv
+	SPkl0IDIA757rlsOUNyTqrB820YATv/NXUpJnhsxo5Cq2ulLCebgOkKWak0jZOLXSaOkoEjaV4FAr
+	ezUMFgUcpzIfPhzhjRYGDu+usgcJZFKQS35uVkyI3Ty7DNlot03UV8d7S/YEAA+n4/nMbmfCqVhtR
+	jSuG7LZnWBTRkQZcHeyZE2NTJxWVs+ySPGf2BKMeCRbQrEgbXqrN5f3PiJNdN2LWefU6oGm8BypYq
+	07p3YDx+5KgLWua+wflA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJmh-00F5ls-2u;
-	Mon, 01 May 2023 03:01:03 +0000
+	id 1ptJov-00F7G2-21;
+	Mon, 01 May 2023 03:03:21 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptJmY-00F5gE-2u;
-	Mon, 01 May 2023 03:00:58 +0000
+	id 1ptJoq-00F7Bv-1N;
+	Mon, 01 May 2023 03:03:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 762EE61766;
-	Mon,  1 May 2023 03:00:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCD92C433D2;
-	Mon,  1 May 2023 03:00:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E4E4161765;
+	Mon,  1 May 2023 03:03:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49F94C4339E;
+	Mon,  1 May 2023 03:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1682910053;
+	s=k20201202; t=1682910195;
 	bh=Vu0+qWqefyWhMzSESBgfYJzPeVchKVsuZgJb+f4X4Z8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KEdT22B/xKhfM7svq/Jkcgx8p+aW4rRrwZNezCDf0AXRztmWGa2wKN9tLDPJ6OzNH
-	 ltmHf8N5BfNP3SoVV0aY4lKgvNCA0gi6u+XNqYRr3BM0R94XPBsuEIFoJgZdrrMn4i
-	 3HHyeF+Ouq0C8LXq8cH2fxxBXkwfUyUdqrVo02DKASF68yd2aNj64mO9wr6D3one5f
-	 5WCuPqkXbmhB/BRnrITyPgGE4pVPv+6sbulzyKcHVbHpsD8vVQX9+okmMaZ88aA7IP
-	 GHsDjPTqGKvY8to68YcXRcSpt+9GHecZNiJC2kU+w/J5fgwd1OHLCuCgiqtUAQTVVv
-	 kup1QPXLrVWcg==
+	b=Up/kAcEXyytPtDbikzK7XzccVS/AFcFMfPzbMKBOcecY1Aw0QXH7NRbxE/+IO8Noq
+	 Sr+IdMOafxmupd8l13B2/mVP7LD+H+JJY5CVKqeAiBg9CI4z7fhn9yVL6Xw/MahvZX
+	 5xcmudgopRfV6joBr5/q01+E6Eh+2TG9JUlRMFJBA+3x7nrFBZBEmANLllvkSS49VL
+	 uwM4O9TvehxfpKuCRpv4XHRj2XJ2XJEdNwMRG8dglh4h9vPY6TVxq1NabhNsWkApZZ
+	 UtNfMP8sX2EzVOIBjkSnz6mIAYp3gRfNONkTMpQczXWat0zF9kPBqnHHcCyoTEE43I
+	 KshEZeDzQccTg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,17 +55,17 @@ Cc: Toby Chen <tobyc@nvidia.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.2 17/37] drm/rockchip: dw_hdmi: cleanup drm encoder during unbind
-Date: Sun, 30 Apr 2023 22:59:25 -0400
-Message-Id: <20230501025945.3253774-17-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 14/33] drm/rockchip: dw_hdmi: cleanup drm encoder during unbind
+Date: Sun, 30 Apr 2023 23:02:08 -0400
+Message-Id: <20230501030227.3254266-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230501025945.3253774-1-sashal@kernel.org>
-References: <20230501025945.3253774-1-sashal@kernel.org>
+In-Reply-To: <20230501030227.3254266-1-sashal@kernel.org>
+References: <20230501030227.3254266-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230430_200054_990302_83D4C43B 
+X-CRM114-CacheID: sfid-20230430_200316_511204_B559032C 
 X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
