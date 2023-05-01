@@ -4,81 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6AB4C77B61
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 12:30:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B7E5C7EE3A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 18:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZT6+P1FD0q5/UokE8GgSCZET3fUvXEVt5X+4mq2aAHw=; b=u8zbBwLP3inw81
-	4JJ1FECGWeRQOhrmfwLGSwo6hpWHhapdouJ8YU/8h7/xEgW0KAcS2ws+YZZE1r6hBQlh5h271Emw5
-	kaQPrn6d4scj2BL7MqjRGw5QQXhm/SLPuMdoMxxJq5D79Css60vk1Hau+x9mlHEQAN4TQTz1df7L0
-	JTBlMmj1tLWrR2QmzOcvLBK8VIpXysfJawwCMKwWkA8ilV4N8N6EnmwIYHDIi3ofG69+BnaKsuQNN
-	Ffuc8xJlYpeyLJfNY0QbgUveLTT9ZkBGhXhzfUZidKg8cE4OLVRKBin2xConEQ4QuWLWhxJJGoosf
-	MKUCSm/xlKpSpWBnKPmg==;
+	List-Owner; bh=oKfT+q6QSJ0NVzL0ut2F8Wj5jbVBY4+9Ocb/etmcmlA=; b=E9ghk+bHaw0CwU
+	ABUjbKwXYv+6FwTymP63OpI8nl5wr4rCcg/G0zjjh5gpopz/0kLWkjyvHRGd3YdTPWFo+jj2vO65r
+	6dKwpYYZxxH+s4nc2JAWea3jJ3hn+ZVdvHYFbq8NWwCg4fgl2WeP6TQOHdQNTP9+PC3XeSeACuBwX
+	yfFhoLlFt56W+Vn/5u3LeYPrK7K3OUdUrt28nmRt7yGk5nMH+4CEd+PbRD+54fRnsfquGXgJhymW4
+	R2XtjjTpfXaphrbrFJArrAIyE66Sx2+xeOpAI86ZvzDjvne5rXmHGziNAUD/SqnkMhwAr09KwiCCp
+	5SfepBg+9PimICROpuRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptSfY-00Fxr5-1P;
-	Mon, 01 May 2023 12:30:16 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1ptXrs-00GS8D-0j;
+	Mon, 01 May 2023 18:03:20 +0000
+Received: from mail-mw2nam10on20623.outbound.protection.outlook.com ([2a01:111:f400:7e89::623] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptSKy-00Fpk2-2B
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 May 2023 12:09:02 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3f178da21afso14383875e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 01 May 2023 05:08:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682942938; x=1685534938;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vUdzf3IvEdsxulw0zrmzJtlZgtzcorWmwsr5oTBgspM=;
-        b=yqgRWU3yM9bRw+uA0Y9/HD9qijSv2+UeJZvq2k02CwctK0NGULzDsHbDN2u7d+niop
-         fCSv60Fh0cNlH+EfXfbe78rXGb/KYAu+tsx92E9NikV0hgnuCeVpYdbWiOKMdAKEKQko
-         i6jNWeMa6lm6/KQg2mZje9mZZqPcagqsINJQ3QBmK9IHJwZi6zuT0ZttriADi1fnhBn+
-         ifaVnQXOMCF9iAm8cMYCfna8LsZ0uAw5McQr7C7jcEBr1JTTmCiUSMZJu/DiGcEZ3gLj
-         DDBDqeN/xYmEH285DjzyDeAGbNdh6srvuvXakQCjeZOoXi7n5TNa5lSkjPpGwp5P6AVm
-         ocYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682942938; x=1685534938;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vUdzf3IvEdsxulw0zrmzJtlZgtzcorWmwsr5oTBgspM=;
-        b=H/KUAhRcsJuprRulcL0Je0pzWadTRWURApmw/z8fqCeMXEmecJfPLA3PKQJdYk6esQ
-         woWbPVsT3EojlyFXg2tMgUpbdokrvbtgy9ewqZtpT1VLaOcWi+kkPwwAqNpLySwMTOFr
-         5NDMMEFcBap6/hzhbzxf6NB8eTPkb4xLuMuxeKHsnC1JeuEacQzn9i/bqU50FkCJaF2s
-         8Uo2VBKlwnvEcYWDYOLWJIq9vVUaMjs65jftqOUcaOYDgi7d/FMYS6n0G40YUtUveaW9
-         uvobIWI74ndFcrEn9XrFyjyAiGmbzcaXM/y3iu02ZqqgVDWPt8vBQQaruq36xCh34OVC
-         ib/Q==
-X-Gm-Message-State: AC+VfDzgnrvT+iHjH5Ad7jFjUUenX5YMg6cfSPWTzYeAf9LbisM5D6fK
-	/EALqb6RGFdTHaAxg578zOEtSw==
-X-Google-Smtp-Source: ACHHUZ54tiiVMytDtdZbk+O+s1aS7DXww0a8qsgFqay4XxReSxz3IOKsL6LnMUBSO1RrgEU3WOXjCQ==
-X-Received: by 2002:a7b:c8c3:0:b0:3f1:6f53:7207 with SMTP id f3-20020a7bc8c3000000b003f16f537207mr9467082wml.17.1682942937646;
-        Mon, 01 May 2023 05:08:57 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:492d:9712:4f67:3b93? ([2a05:6e02:1041:c10:492d:9712:4f67:3b93])
-        by smtp.googlemail.com with ESMTPSA id d9-20020a5d6dc9000000b00304adbeeabbsm11417548wrz.99.2023.05.01.05.08.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 01 May 2023 05:08:57 -0700 (PDT)
-Message-ID: <db038749-253b-cafc-2346-d684c81461be@linaro.org>
-Date: Mon, 1 May 2023 14:08:56 +0200
+	id 1ptXrk-00GS1w-1Z;
+	Mon, 01 May 2023 18:03:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=N+QYeZ/TzrG8aiuGz+aPXMxbw1gFBp4Eil7+6GgruLu4yKORXHkM50GJOBdUuwLAU8oxwBoav30HvuWnbQ10JEleKq/9mSY7bVB9I6+VoitdYSmGKfxdq4kfP5MQZkIueRFBWAgN+3fAFfHdUxQ+K0jgTRZ9l+b10TciRhhNP54RB38CEIosnzG1hixJ1fZR6V4idP/Diwxl6XafCa4QJDiEfPVJsvE4w0rUuRPqEuXJ5OFuwEVtTeEd8iWjfeZIW+mhUwA4YLhOLbHtU3ry62xpPXJmXLwkBIepaFoK+7dNbauopeqPCr8NcVhHq5ESIlPQM8XIIDfwrDif4ivRDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xknJqFhASn/4agduoYXueJ6BdwXbF1MQIUJUFXVhUH8=;
+ b=KKCSXUCVdDlkkASDrivuuqwTBuGYGuzG3p7E9kg/CfFx3nOVBOs00sQ69teB9HTVLTMzTc9CtM1uC3vMt0qzkMpq/6j38nl4kKG3DSpWD5mFq3fFtZx3bbGTKejmSm9+tFJN0sBVYNddLnwg9lAk0JYHjwK1605SItRZ67dr0DJKpaImNAC36CvLHMaaZTAj5a5B9QB/PyK6OPfaOPujHuHBoVAkhUJuOQSZjWq9P2FO48rddx0Cx2vWdLWTyxQSZYwEjCQo/F5NxivuOQnTcC8PvWpJheB06P68XrWa+TySn/kVsRlUsOsdjU0GAQA1D0PzU9aRa1Dc/HwdqCwGNQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xknJqFhASn/4agduoYXueJ6BdwXbF1MQIUJUFXVhUH8=;
+ b=PZaznm/qMXJuqJpQgfX3ApgXARarFhgxD/FD2FO2xzKy8jcJqrnaWK3OpMMJSbOaPOvofqwaZ0UZfBMzvCI33CxMybwdbD8y/3VNhoq8h2Bm1ES0dtyGoa/9On7OgkxfcpujDMtd1n/oMMhFRz6S4iWxYSvTuaquiZdR1RCwlq2aXuLBavpAxORU29SMi4L2CFU2SsWZ2Uj67W7BL2ELg0slcHGzcDmGQB9YpuzPKpj6aswNPMYmi7Xj7b9ysjCoO5cY54YkgKGnTSHpolFdjkDJs8Q96+TkJeHHz1kAX0NHpAM/4IRZJI8suY3R7H+BpHOkznXCI2FSQAVQ16FBtA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by IA1PR12MB6457.namprd12.prod.outlook.com (2603:10b6:208:3ab::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6340.30; Mon, 1 May
+ 2023 18:03:06 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6340.030; Mon, 1 May 2023
+ 18:03:06 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Steven Price <steven.price@arm.com>
+Subject: [PATCH 07/20] iommu/tegra-smmu: Implement an IDENTITY domain
+Date: Mon,  1 May 2023 15:02:51 -0300
+Message-Id: <7-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: MN2PR18CA0014.namprd18.prod.outlook.com
+ (2603:10b6:208:23c::19) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] soc/rockchip: dtpm: use C99 array init syntax
-Content-Language: en-US
-To: Randy Dunlap <rdunlap@infradead.org>, linux-arm-kernel@lists.infradead.org
-Cc: patches@lists.linux.dev, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org
-References: <20230501024950.31518-1-rdunlap@infradead.org>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230501024950.31518-1-rdunlap@infradead.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6457:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01a95472-c511-40b8-c911-08db4a6e5035
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	rbeZdLbPfLqyIV2E6L3iTjE/zdIrAoPWJPN8sq/vKDaT0t15WSYrIzPxgUBfYq7DzNHpbK0NKIepNbqQcvkJZOUdrBNJA3XV3oKKrWjYuEY/FPvk2jRKbC3ztUmvyQIDTl8R22foJieNjcX3yGgwzvsPqBZyKnJMpv7jPI5d41fFH0fQV2K3eMYQvmdGeOxzCz+zAM9GvJ9kesOFC/1aSz9TLiod6EF/lFpP/CizxamuA2suWjEyAT//D5GCDETdQjiUS5u1z9uN2TV05tQbwZvKu/KF3w6UCWZG2izRyKR3cPrIAAo5p+wj2lKbuhU5xXTzr7eB9A0T8bsvqF83jTlHmktbJqrhBdB31eBcvmlY/AWi49rkTWGcLJFTYcpQmR2gZKx2vSJEZuAsr7XumNU22NhjllrnaPWFDr+AjuqznZ7lxiKSNumLmqTRpTRrdX9iaVIhgkQRIoRyx+5aLh0M+3pvAj7IUPBYFMylJuwNMOhUmNM1xSNVBh6X63gFxKbYdly2E/lyOv8XS00AUAGQDtKM6hoCEpCKHKoZc8i9PS/f1eC18aIqzDJKRoe1I7+ZJnnPH7xIKuu1sL+6uw1sED03H6riOr3WmCnmXKk6ZP9TWP1HD/kbeDLmXpJ0
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(39860400002)(366004)(346002)(136003)(376002)(451199021)(6506007)(186003)(6486002)(26005)(83380400001)(2616005)(4326008)(5660300002)(316002)(66476007)(66556008)(66946007)(6512007)(41300700001)(8676002)(8936002)(7406005)(54906003)(478600001)(6666004)(2906002)(110136005)(36756003)(7416002)(86362001)(38100700002)(921005)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?AD3aoS0JNdc0owfrl6ClZh+3NiSP4vTJbYQqj/mfEmBfMox9OtNd+RZVCmN2?=
+ =?us-ascii?Q?GehGbqBRt/CbqUwtoV3jDQ4bF+0+MdIQ6Leyj64U6FUL+l+DWD7tdfSwm35E?=
+ =?us-ascii?Q?o20SGQ1QpNxHJYuG+7UIeazivRb9/DWWUzcVcOEQJ8b7J6Gs7BRjrU7uj68o?=
+ =?us-ascii?Q?0cuel1F3uSO+mirMdIdEmv7EyVFgKXxuUASpke/W6itUuavYy6HfxCoZ4lr3?=
+ =?us-ascii?Q?Wq9QwIbPIJgh0GUO9SuUZvrJhHnWCAdMFKTBCNNpLktibebdFJLsc1CCXBpi?=
+ =?us-ascii?Q?Z+4AKrwjyzHUZ3HcCNDAWMxg5QU2CRh7mq1DE2BqmFUybNldbhYulr8Pvs7g?=
+ =?us-ascii?Q?Pd4wb05xa2J5gBrZwZOBSSH6KKZ4pSCPw0gJx4RrmV9KunEwktuY4BHiyE96?=
+ =?us-ascii?Q?dr1hf/s7GuE/gM729ywVn4JT+p5xQTQOte+M0oakqLY/tT8ndmG8K8+6ZmAs?=
+ =?us-ascii?Q?91gGLsM9pPyW3t4CTZcXAFgT3stGyuH7jvAMQlfuGkyC6yao81LzcJgjpQu+?=
+ =?us-ascii?Q?RLsPPvE8IsZFKoeaPvJmmz8YHN3rSIn9YYb7w63t39SiZRPVBUf5HH7msLmC?=
+ =?us-ascii?Q?nX1yimaHfzYga6wPGNRH3MKiThc3lbBLo4pD3IgdEXxzS1f6Z17KC5xy98uf?=
+ =?us-ascii?Q?7rccC42flHKNEVreZ7aS8qO6e4ksXl6PUVcTMJDj3pOoEPR5QQkqcw4ndj9q?=
+ =?us-ascii?Q?fDldJXlUPwqH+dzakw2xM/CQIpWXHWLUlMB0ytFdTm5vLnVaWwIdbOddbvaY?=
+ =?us-ascii?Q?zlwq67sqhJ4HGZmdB4ktjgWST2xqIefZt4Cf//ahi2V43H2fhmBXHnIYL6s2?=
+ =?us-ascii?Q?Mg7l5ykWQ+s5eqYJ1UQJH23QLfsDBjkfVVGcGpYYzYawamBVmgs8lJpvxNIE?=
+ =?us-ascii?Q?MIx4FpJlBdreQXDbMtfCW8BeHerHcnYibqIpb5xPCuq0XSGehLaPzaRQF/53?=
+ =?us-ascii?Q?dkag7kVKUGi+0CDi7WZ/vLIL6UCEAPrT2chNofPebucKJ2v+xd9fBuDVoAc5?=
+ =?us-ascii?Q?GQzd+NcIeIktrjLhsutDr+IJRn0RhvXrMzqKjaD/JhRRPBIWpSD+uX3mFwsX?=
+ =?us-ascii?Q?mw2UpOSarf71l+7A6Zpfl8NUE5fJ3qP3fAmnSgfQpktB2IPDNf/Hlf+pBV9N?=
+ =?us-ascii?Q?31HxbvK/F7EJmzUhmF1niQKhP4fjWFzhbQHDhrgYIVqdea42Js8EF+niNzhm?=
+ =?us-ascii?Q?/tGp0LZdiVfYxsRP4Tu+0CU6B8UimBUfYlN6pkjE1k7LI8Uk9OrSJTE2cMbA?=
+ =?us-ascii?Q?RCqVBggLHQOk4Ph7ZjeSYWzAC1+/zlq3QI6Mb/BK59pMbb7ZZ3VjzrEapqCt?=
+ =?us-ascii?Q?Ld3Q3bSwBv08lNra7G75NE2Bih993THY1mXwg8GPwCFg5RAu0lCP+e4brO3g?=
+ =?us-ascii?Q?YONL98WY91fHJloJO95gVLV52wse2m2pmOmDfQICaPoI5zG8K33SZHlfaoQf?=
+ =?us-ascii?Q?GOqrCEBXBfg8VeZHCC53xE6mIytxJYgUXRNGOQ9+tR4zdAGDlDNg5DXERHQr?=
+ =?us-ascii?Q?LIqkNomaU7XDN8FIdnkenctwIeCSvuKJZXYtWI9K76zK6ibcSQ/OBfSrhRkp?=
+ =?us-ascii?Q?Lu8n8mcdUCaXvss1fvpzoBwx/uFGqgbjRGC5IlKJ?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01a95472-c511-40b8-c911-08db4a6e5035
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2023 18:03:05.7623
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: D73iNRCgZHLfufA6CWjU3R3w34/+U7G6PDS/JTyXOJ36b9dK/77NiFQaUwEm59QX
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6457
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_050900_744153_FEB6EDCA 
-X-CRM114-Status: UNSURE (   7.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230501_110312_528388_538E95A9 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,40 +162,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDEvMDUvMjAyMyAwNDo0OSwgUmFuZHkgRHVubGFwIHdyb3RlOgo+IEVsaW1pbmF0ZSBzcGFy
-c2Ugd2FybmluZ3MgaW4gc29jL3JvY2tjaGlwL2R0cG0uYzoKPiAKPiBkcml2ZXJzL3NvYy9yb2Nr
-Y2hpcC9kdHBtLmM6MTU6MTI6IHNwYXJzZTogd2FybmluZzogb2Jzb2xldGUgYXJyYXkgaW5pdGlh
-bGl6ZXIsIHVzZSBDOTkgc3ludGF4Cj4gZHJpdmVycy9zb2Mvcm9ja2NoaXAvZHRwbS5jOjE3OjEy
-OiBzcGFyc2U6IHdhcm5pbmc6IG9ic29sZXRlIGFycmF5IGluaXRpYWxpemVyLCB1c2UgQzk5IHN5
-bnRheAo+IGRyaXZlcnMvc29jL3JvY2tjaGlwL2R0cG0uYzoyMDoxMjogc3BhcnNlOiB3YXJuaW5n
-OiBvYnNvbGV0ZSBhcnJheSBpbml0aWFsaXplciwgdXNlIEM5OSBzeW50YXgKPiBkcml2ZXJzL3Nv
-Yy9yb2NrY2hpcC9kdHBtLmM6MjM6MTI6IHNwYXJzZTogd2FybmluZzogb2Jzb2xldGUgYXJyYXkg
-aW5pdGlhbGl6ZXIsIHVzZSBDOTkgc3ludGF4Cj4gZHJpdmVycy9zb2Mvcm9ja2NoaXAvZHRwbS5j
-OjI2OjEyOiBzcGFyc2U6IHdhcm5pbmc6IG9ic29sZXRlIGFycmF5IGluaXRpYWxpemVyLCB1c2Ug
-Qzk5IHN5bnRheAo+IGRyaXZlcnMvc29jL3JvY2tjaGlwL2R0cG0uYzoyOToxMjogc3BhcnNlOiB3
-YXJuaW5nOiBvYnNvbGV0ZSBhcnJheSBpbml0aWFsaXplciwgdXNlIEM5OSBzeW50YXgKPiBkcml2
-ZXJzL3NvYy9yb2NrY2hpcC9kdHBtLmM6MzI6MTI6IHNwYXJzZTogd2FybmluZzogb2Jzb2xldGUg
-YXJyYXkgaW5pdGlhbGl6ZXIsIHVzZSBDOTkgc3ludGF4Cj4gZHJpdmVycy9zb2Mvcm9ja2NoaXAv
-ZHRwbS5jOjM1OjEyOiBzcGFyc2U6IHdhcm5pbmc6IG9ic29sZXRlIGFycmF5IGluaXRpYWxpemVy
-LCB1c2UgQzk5IHN5bnRheAo+IGRyaXZlcnMvc29jL3JvY2tjaGlwL2R0cG0uYzozODoxMjogc3Bh
-cnNlOiB3YXJuaW5nOiBvYnNvbGV0ZSBhcnJheSBpbml0aWFsaXplciwgdXNlIEM5OSBzeW50YXgK
-PiBkcml2ZXJzL3NvYy9yb2NrY2hpcC9kdHBtLmM6NDE6MTI6IHNwYXJzZTogd2FybmluZzogb2Jz
-b2xldGUgYXJyYXkgaW5pdGlhbGl6ZXIsIHVzZSBDOTkgc3ludGF4Cj4gCj4gRml4ZXM6IGI5ZDZj
-NDdhMmJlOCAoInJvY2tjaGlwL3NvYy9kcml2ZXJzOiBBZGQgRFRQTSBkZXNjcmlwdGlvbiBmb3Ig
-cmszMzk5IikKPiBTaWduZWQtb2ZmLWJ5OiBSYW5keSBEdW5sYXAgPHJkdW5sYXBAaW5mcmFkZWFk
-Lm9yZz4KPiBDYzogRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+Cj4g
-Q2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKCkFja2VkLWJ5OiBEYW5pZWwgTGV6Y2FubyA8ZGFuaWVsLmxl
-emNhbm9AbGluYXJvLm9yZz4KCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5v
-cmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzog
-IDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6
-Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8u
-b3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+What tegra-smmu does during tegra_smmu_set_platform_dma() is actually
+putting the iommu into identity mode.
+
+Move to the new core support for ARM_DMA_USE_IOMMU by defining
+ops->identity_domain.
+
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/tegra-smmu.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+index 1cbf063ccf147a..153ea0b5de8db4 100644
+--- a/drivers/iommu/tegra-smmu.c
++++ b/drivers/iommu/tegra-smmu.c
+@@ -511,23 +511,39 @@ static int tegra_smmu_attach_dev(struct iommu_domain *domain,
+ 	return err;
+ }
+ 
+-static void tegra_smmu_set_platform_dma(struct device *dev)
++static int tegra_smmu_identity_attach(struct iommu_domain *identity_domain,
++				      struct device *dev)
+ {
+ 	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+-	struct tegra_smmu_as *as = to_smmu_as(domain);
+-	struct tegra_smmu *smmu = as->smmu;
++	struct tegra_smmu_as *as;
++	struct tegra_smmu *smmu;
+ 	unsigned int index;
+ 
+ 	if (!fwspec)
+-		return;
++		return -ENODEV;
+ 
++	if (domain == identity_domain || !domain)
++		return 0;
++
++	as = to_smmu_as(domain);
++	smmu = as->smmu;
+ 	for (index = 0; index < fwspec->num_ids; index++) {
+ 		tegra_smmu_disable(smmu, fwspec->ids[index], as->id);
+ 		tegra_smmu_as_unprepare(smmu, as);
+ 	}
++	return 0;
+ }
+ 
++static struct iommu_domain_ops tegra_smmu_identity_ops = {
++	.attach_dev = tegra_smmu_identity_attach,
++};
++
++static struct iommu_domain tegra_smmu_identity_domain = {
++	.type = IOMMU_DOMAIN_IDENTITY,
++	.ops = &tegra_smmu_identity_ops,
++};
++
+ static void tegra_smmu_set_pde(struct tegra_smmu_as *as, unsigned long iova,
+ 			       u32 value)
+ {
+@@ -963,10 +979,10 @@ static int tegra_smmu_of_xlate(struct device *dev,
+ }
+ 
+ static const struct iommu_ops tegra_smmu_ops = {
++	.identity_domain = &tegra_smmu_identity_domain,
+ 	.domain_alloc = tegra_smmu_domain_alloc,
+ 	.probe_device = tegra_smmu_probe_device,
+ 	.device_group = tegra_smmu_device_group,
+-	.set_platform_dma_ops = tegra_smmu_set_platform_dma,
+ 	.of_xlate = tegra_smmu_of_xlate,
+ 	.pgsize_bitmap = SZ_4K,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+-- 
+2.40.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
