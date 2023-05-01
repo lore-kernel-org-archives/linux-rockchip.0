@@ -4,33 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B9AC77B73
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 May 2023 21:35:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18269C77B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 May 2023 01:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1F4w5Z77FtKApRfrQAMccSPpICRtebLOZ7Cy3Va5zLM=; b=JH/D9sWWpy/7hK
-	1xezT+sjpxgqJXnttzhVCcVNZit9ffX7jiCiTQ64Xr4xkl2l7AsOl28U1pe4Yxyrj1CndsrsALnsx
-	kKMEZAwjaxzkAOZZIZE+FkywU++vEx3S/CMxReUFzCLa/jOyIgHLfqz0cQaxEcXTPtUYWesoeANvr
-	weJze8INq9H5545D30ev7sIJDJNY6SMmtVt6qA/4NGeVf/SVSdtMNqzq0ZWSnsD0D1rw/5CoAdaJv
-	oWyF0eEwV6y85svzkhfoccqep1ZTzuW87t/fMtpn5hMZMLZVQRlHxXojVFOuEqNDxclZOQlRfcqcY
-	SFdLEh42HzgMMuF5+f5w==;
+	List-Owner; bh=Bd9y95nr55PXZxG5RlD4SD7RAYIEq8auglA0ant/If4=; b=NU2ly15zUGguMt
+	Z0IlvdPwvr4K3V4sfTqqbpYBh4nIN6700bxycbwYXxjaAp4J+HSjWJ2C1J3AFzzQ2EoCRpxJBDlbc
+	VW8TVC7EcxWis9X8bZ/heHDZMMEYb6IkJwuLULifHOSsMSvVupJ2i7ES0KVH1/Cf96giKLpmm2Wz1
+	y7k2kN4OiVCuZcZSUk9IkkKXwEg/pf18xpVUbN65/lVXxpnTMEI1yFiZ686bSxNsJ67kO/Dq5+PlV
+	xY/hxvYMopqwTqRF9Ele9ImqMVS3OqJfvJE5pIH1+1JI3zjCFL3imc/33+lqzongaaLAfhJjY3TT/
+	LuiiCIA7OBQtF4XDlVKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptbAs-00H0BF-1t;
-	Mon, 01 May 2023 21:35:10 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ptf0O-00HOLP-11;
+	Tue, 02 May 2023 01:40:36 +0000
+Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptbAo-00H09s-27;
-	Mon, 01 May 2023 21:35:07 +0000
+	id 1ptf0L-00HOKU-2Z;
+	Tue, 02 May 2023 01:40:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=g3esF2aOLBq2htXZcTUP0V/4H9dct4mXjRkT9JcNQEI=; b=XGNIw81+ht6dcS7BqWHzGTh4ha
+	QY42VF48iXFoE+EYXbfuMFmGq0h/5bsbQnVYqUhnc8V/Ll6ztxkgscR9iv9Z4asimSBMs5GfiIls8
+	9/JDVXhday0mK3uM14PhRDo5WBnsyK7ce91sJcvmzM6Bi4GoJGp5XR6KtWrOE4CTTeHT2o70nF6D9
+	RpMpdoHU4cYr72kFVrGPSw7DJ5lbkwNoS0CE0DJw8ZUs32kfOfkRZ+ZJlYDJ8qOQ1xQCOLoIZxUes
+	Gu4fcgEZJi7eNapQHrfQ/7A1OXrh2Ejiwk1Cd0Qhflx+9+xiXjZ7Dgguo2jFgLXFxB5ulP5dxUzVQ
+	ZDCpGxPw==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1ptbj1-00F1dU-2g;
+	Mon, 01 May 2023 22:10:30 +0000
 Received: from [77.22.52.211] (helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ptbAV-0002yo-Hz; Mon, 01 May 2023 23:34:47 +0200
+	id 1ptbid-0003BI-1U; Tue, 02 May 2023 00:10:03 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
  Bjorn Andersson <andersson@kernel.org>,
@@ -58,14 +72,14 @@ To: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
 Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
 Subject: Re: [PATCH 00/20] iommu: Make default_domain's mandatory
-Date: Mon, 01 May 2023 23:34:45 +0200
-Message-ID: <7005781.1IzOArtZ34@diego>
+Date: Tue, 02 May 2023 00:10:01 +0200
+Message-ID: <7763083.0VBMTVartN@diego>
 In-Reply-To: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 References: <0-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230501_143506_714101_AEA1CDCE 
-X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-CacheID: sfid-20230501_231028_191878_F7CE030A 
+X-CRM114-Status: UNSURE (   9.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,19 +97,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
 Am Montag, 1. Mai 2023, 20:02:44 CEST schrieb Jason Gunthorpe:
-> This follows the prior series:
-> 
-> https://lore.kernel.org/r/0-v4-79d0c229580a+650-iommu_err_unwind_jgg@nvidia.com
+> Jason Gunthorpe (20):
+>   iommu: Add IOMMU_DOMAIN_PLATFORM
+>   iommu/terga-gart: Replace set_platform_dma_ops() with
+>     IOMMU_DOMAIN_PLATFORM
+>   iommu/s390: Replace set_platform_dma_ops() with IOMMU_DOMAIN_PLATFORM
+>   iommu/fsl_pamu: Replace set_platform_dma_ops() with
+>     IOMMU_DOMAIN_PLATFORM
+>   iommu: Allow an IDENTITY domain as the default_domain in ARM32
+>   iommu/exynos: Implement an IDENTITY domain
+>   iommu/tegra-smmu: Implement an IDENTITY domain
+>   iommu/tegra-smmu: Support DMA domains in tegra
+>   iommu/omap: Implement an IDENTITY domain
+>   iommu/msm: Implement an IDENTITY domain
+>   iommu/mtk_iommu_v1: Implement an IDENTITY domain
+>   iommu: Remove ops->set_platform_dma_ops()
+>   iommu/qcom_iommu: Add an IOMMU_IDENTITIY_DOMAIN
+>   iommu/ipmmu: Add an IOMMU_IDENTITIY_DOMAIN
+>   iommu/mtk_iommu: Add an IOMMU_IDENTITIY_DOMAIN
+>   iommu/sun50i: Add an IOMMU_IDENTITIY_DOMAIN
+>   iommu: Require a default_domain for all iommu drivers
+>   iommu: Add ops->domain_alloc_paging()
+>   iommu: Convert simple drivers with DOMAIN_DMA to domain_alloc_paging()
+>   iommu: Convert remaining simple drivers to domain_alloc_paging()
 
-which probably will need an update for Greg's recent
+Also needs an update for Greg's
 b18d0a0f92a8 ("iommu: make the pointer to struct bus_type constant")
 
-I've fixed that locally for me for testing
+With that fixed, both my rk3288-pinky (arm32) and px30-minievb (arm64)
+Rockchip boards keep their display working before and after applying this
+series (on top of the previous), so
 
-Heiko
+
+Tested-by: Heiko Stuebner <heiko@sntech.de>
 
 
 
