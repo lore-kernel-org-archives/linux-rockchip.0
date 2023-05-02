@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65373C7EE24
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 May 2023 08:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D41C7EE21
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 May 2023 08:56:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fZaEnBep0GR9koA3nsKVPqijk8SLuLVS8nys7ATX47U=; b=gvhsYAESNt+87G
-	bnH8IboBqOaPmM0cf4efgdNuc+2kopEuUuhszvNVpHi4RV/bc2u/E0WZ7vgPdPELFycjAYCkoS10o
-	aeU9glAKVa6J9RU/bCrqBsJvVLPeflmeHOANPP/2smsYgoD4+TMNE3mBY0ct2XfhEbbBWybWA1X1E
-	Bo7CvOb83c5EhBEs659zdEzvdPhp+CjxF6OU1QP3NTQoNOGH1+wHsbJwNslrzi2kLcsMP2BOds6y/
-	rpH7kfLFKepN1AN1IR9oh3xXpEy/7qnu9cTw7k24pnyM7fa3ssHzTOneli9PnVl6iOEdKCnxH7kjT
-	y14jWY85bfnGpMvu4naA==;
+	List-Owner; bh=8FJQgx9TAsgLoKwFsxCtUaJuh16ppbAl1pQJrMQn5eM=; b=4rZXi0YTcVYue2
+	49GT8izy8hZi2ewbcXWq6b5jCUwOm2VWQqQi4xFE60FuI+bXOvCdCB8GkKyEsNr2zq329Zu5d+MwB
+	22uBc2MWM0/lNZAu6y1CUjeOe2ijEY49mu6hD5ScYs5yXL0D/+cNh+nB9wR4BLBnyr9oHjv8zSjmd
+	8S8yKzcM+nx75Z2TN0a6ovCnglg0Epl3e9UrGGhtnO8TXLNvnQbRgQZ/pTQsxx/CuVyEJ0G8Nw4Dt
+	VbCa8L4L+AivM5TG17Nwz5qlCUdjM2NRsdkE/Xv5kgmiZmu4/WCnvsQf8gY3ASsbPGGqdc9+UPkyY
+	odGt9AZJtlOBhkIzXsZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptlkN-000gXx-0F;
-	Tue, 02 May 2023 08:52:31 +0000
+	id 1ptlnt-000h6q-0b;
+	Tue, 02 May 2023 08:56:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptlkI-000gWt-2o;
-	Tue, 02 May 2023 08:52:27 +0000
+	id 1ptlnp-000h5c-0Z;
+	Tue, 02 May 2023 08:56:06 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ptlkE-0006Sv-Q9; Tue, 02 May 2023 10:52:22 +0200
+	id 1ptlnk-0006UF-1A; Tue, 02 May 2023 10:56:00 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -44,16 +44,16 @@ To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com
-Subject: Re: [PATCH 6/8] nvmem: rockchip-otp: Improve probe error handling
-Date: Tue, 02 May 2023 10:52:22 +0200
-Message-ID: <6406454.LM0AJKV5NW@diego>
-In-Reply-To: <20230501084401.765169-7-cristian.ciocaltea@collabora.com>
+Subject: Re: [PATCH 7/8] nvmem: rockchip-otp: Add support for RK3588
+Date: Tue, 02 May 2023 10:55:59 +0200
+Message-ID: <4584570.QkHrqEjB74@diego>
+In-Reply-To: <20230501084401.765169-8-cristian.ciocaltea@collabora.com>
 References:  <20230501084401.765169-1-cristian.ciocaltea@collabora.com>
- <20230501084401.765169-7-cristian.ciocaltea@collabora.com>
+ <20230501084401.765169-8-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_015226_907181_FF9F5124 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20230502_015605_213954_3A95A945 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,11 +70,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 1. Mai 2023, 10:43:58 CEST schrieb Cristian Ciocaltea:
-> Enhance error handling in the probe function by making use of
-> dev_err_probe(), which ensures the error code is always printed, in
-> addition to the specified error message.
+Am Montag, 1. Mai 2023, 10:43:59 CEST schrieb Cristian Ciocaltea:
+> Add support for the OTP memory device found on the Rockchip RK3588 SoC.
 > 
+> While here, remove the unnecessary 'void *' casts in the OF device ID
+> table.
+> 
+> Co-developed-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
