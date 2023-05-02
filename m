@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84A90C77B73
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 May 2023 09:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00110C7EE24
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 May 2023 09:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DaNPNAsypZrpUAZ1A+sqhJmRQHhSix84HSqUGUNTCCc=; b=iuupLbSOeJtEq2
-	6/E05oc8kbaE925s1oPR1fY47Dp41MV1XAtCaUlZxHk3LiC70AQszo6ieE13UkvGrBs4AsdZP6Cg3
-	04TdXmpOR7UC+MJlD1SHeBm9zXrpKI+N/aHlXNdkDzaygzdkziUbNhn65PqdnQ0wGx96jgy7ASzl7
-	IFqwWxMnMat10F1l6g/KP5oCntpqk0Xbk6Egfbxs2VXEBU0McV1NeikhHSHdITPWYPCSPSRZlrXqE
-	xwdqVm16Po+995EHnOkIsO5tRgcB6EHaV988MyK7PnJf1kS4WYJzCNIe/FTQiA1vt5dX1XprFsWIk
-	jSZuEN2igSTbrlVzMWqg==;
+	List-Owner; bh=2CgYgVvijSd83UhY0zKkC9ctIMnNjreTc9rNiNi7u+I=; b=5AQh8OYsH/IWyR
+	wAeuw6COr1sMS9T4JJgtWxOLtoBLCGBrfhesxUz0/O6OFxP9X2cya9TQMys9M3SrXiDBJfS2yQI2S
+	61YgdR97K5gJkR3gsD90Mu49tzZac2At6gFELPPpMj6KOzBJxY5cMl9qklMPWspU+Voe84PE4sv28
+	3pBrIdYwu8KY2DScMm61L8vEis+il6kFKXf2i/KoZk7uk+3KW1v1NWKAaf4U8nW49vXiz5/ViDNj+
+	GkMf2hd/CZuP+juJWJOgixAIdMfZJNTnouusPT8av7PKdMcPZ3g48MOHNzNh31H7BjOQ7e/bRMZe3
+	olAA0jPhL95Q1al0X/xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptmJP-000m14-2r;
-	Tue, 02 May 2023 09:28:43 +0000
+	id 1ptmLH-000mHp-2v;
+	Tue, 02 May 2023 09:30:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ptmJM-000m0B-0W;
-	Tue, 02 May 2023 09:28:41 +0000
+	id 1ptmLE-000mGT-36;
+	Tue, 02 May 2023 09:30:38 +0000
 Received: from ip4d1634d3.dynamic.kabel-deutschland.de ([77.22.52.211] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ptmJ5-0006fd-IQ; Tue, 02 May 2023 11:28:23 +0200
+	id 1ptmL5-0006gj-Ni; Tue, 02 May 2023 11:30:27 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -47,15 +47,15 @@ To: Rob Herring <robh+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add Lunzn Fastrhino R66S
-Date: Tue, 02 May 2023 11:28:22 +0200
-Message-ID: <5782501.VdNmn5OnKV@diego>
-In-Reply-To: <20230428013738.30735-2-cnsztl@gmail.com>
+Date: Tue, 02 May 2023 11:30:26 +0200
+Message-ID: <4763863.6tgchFWduM@diego>
+In-Reply-To: <5782501.VdNmn5OnKV@diego>
 References:  <20230428013738.30735-1-cnsztl@gmail.com>
- <20230428013738.30735-2-cnsztl@gmail.com>
+ <20230428013738.30735-2-cnsztl@gmail.com> <5782501.VdNmn5OnKV@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230502_022840_221760_A0255401 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20230502_023036_996724_44F2F125 
+X-CRM114-Status: GOOD (  20.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,86 +67,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Am Dienstag, 2. Mai 2023, 11:28:22 CEST schrieb Heiko St=FCbner:
+> Hi,
+> =
 
-Am Freitag, 28. April 2023, 03:37:37 CEST schrieb Tianling Shen:
-> Lunzn Fastrhino R66S is a high-performance mini router.
-> 
-> Specification:
-> - Rockchip RK3568
-> - 1/2GB LPDDR4 RAM
-> - SD card slot
-> - M.2 Connector
-> - 2x USB 3.0 Port
-> - 2x 2500 Base-T (PCIe, r8125b)
-> - 12v DC Jack
-> 
-> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3568-fastrhino-r66s.dts    |  27 +
->  .../dts/rockchip/rk3568-fastrhino-r66s.dtsi   | 507 ++++++++++++++++++
->  3 files changed, 535 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 2d585bbb8f3a..15089a78555a 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -85,6 +85,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-box-demo.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-lubancat-1.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r66s.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-lubancat-2.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5c.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
-> new file mode 100644
-> index 000000000000..fc9e1bdab128
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
-> @@ -0,0 +1,27 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
-> +
-> +#include "rk3568-fastrhino-r66s.dtsi"
-> +
-> +/ {
-> +	model = "Lunzn FastRhino R66S";
-> +	compatible = "lunzn,fastrhino-r66s", "rockchip,rk3568";
-> +
-> +	aliases {
-> +		mmc0 = &sdmmc0;
-> +	};
-> +};
-> +
-> +&sdmmc0 {
+> Am Freitag, 28. April 2023, 03:37:37 CEST schrieb Tianling Shen:
+> > Lunzn Fastrhino R66S is a high-performance mini router.
+> > =
 
-that whole element seems to be duplicated from rk3568-fastrhino-r66s.dtsi?
-I don't think we need to declare that twice. If something really changes,
-please only declare the new properties when going from dtsi to dts.
+> > Specification:
+> > - Rockchip RK3568
+> > - 1/2GB LPDDR4 RAM
+> > - SD card slot
+> > - M.2 Connector
+> > - 2x USB 3.0 Port
+> > - 2x 2500 Base-T (PCIe, r8125b)
+> > - 12v DC Jack
+> > =
 
-> +	max-frequency = <150000000>;
-> +	no-sdio;
-> +	no-mmc;
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	disable-wp;
-> +	vmmc-supply = <&vcc3v3_sd>;
-> +	vqmmc-supply = <&vccio_sd>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
-> +	status = "okay";
-> +};
+> > Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> >  .../dts/rockchip/rk3568-fastrhino-r66s.dts    |  27 +
+> >  .../dts/rockchip/rk3568-fastrhino-r66s.dtsi   | 507 ++++++++++++++++++
+> >  3 files changed, 535 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.=
+dts
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.=
+dtsi
+> > =
 
-Thanks
+> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dt=
+s/rockchip/Makefile
+> > index 2d585bbb8f3a..15089a78555a 100644
+> > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > @@ -85,6 +85,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-box-demo.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-lubancat-1.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-bpi-r2-pro.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-evb1-v10.dtb
+> > +dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-fastrhino-r66s.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-lubancat-2.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-nanopi-r5c.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3568-nanopi-r5s.dtb
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts b/a=
+rch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> > new file mode 100644
+> > index 000000000000..fc9e1bdab128
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dts
+> > @@ -0,0 +1,27 @@
+> > +// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+> > +
+> > +#include "rk3568-fastrhino-r66s.dtsi"
+> > +
+> > +/ {
+> > +	model =3D "Lunzn FastRhino R66S";
+> > +	compatible =3D "lunzn,fastrhino-r66s", "rockchip,rk3568";
+> > +
+> > +	aliases {
+> > +		mmc0 =3D &sdmmc0;
+> > +	};
+> > +};
+> > +
+> > +&sdmmc0 {
+> =
+
+> that whole element seems to be duplicated from rk3568-fastrhino-r66s.dtsi?
+> I don't think we need to declare that twice. If something really changes,
+> please only declare the new properties when going from dtsi to dts.
+
+Looking at patch3 I see the explanation :-) .
+
+The base dtsi should not contain the &sdmmc0 node, and it should
+only be included in the rk3568-fastrhino-r66s.dts, right?
+
+
 Heiko
 
 
