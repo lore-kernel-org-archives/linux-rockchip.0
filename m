@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB7BEC7EE2C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 May 2023 08:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9B67C7EE22
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 May 2023 08:35:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qjituyjNBePyMjepQxRJrHADDvmXvJsqjhsnyfP2taY=; b=Chzy9gXqyUDSZw
-	/Z3QBV0CUYnjHG3RR3P+2nag+dE4QOG3Ma4pnXIfTCLX/r7JUOVft+XH3LzkuTjtFxzkRu0ZQc9V2
-	RXrbs4QdgN+kJqErRbd5FAISt4vUVOKYtHU1Jndya469GoJHiTKuVuFzssTB+x/LqcJNxeiCeghHV
-	UNpNTuf7jxyllT5eu5TpqV6FnttQLh+cMoqYy2zninfKuGWSWzV3pNLT1dF22/MJmHSf4lBOie+DX
-	qwo/2v/cE6MFtrFb9nQItOiG7jynrDsrvM0Eq8La48WQPJ2Clk2RgQMzH5gDWkuaAEaF3qHufKyLj
-	4CzrbMKHIdUUwpHSJ+GA==;
+	List-Owner; bh=KOgbZmG32bOhm3DhkZFoynjrUTfPEAR+lZHWbwAlcq4=; b=cd687EBHwsFaLg
+	oXLfQnXwUixyqY3SWtfnn0gsoestCm4EBDTWE2sHnFq1b0Z6bF7FJm+6mQWGhz6JcUdTYBrW5Kxwz
+	b6ZOBIB7S/Fcg/Lm8D/xz9XGa2MLrj25NbK4Ph5KEcVzIFYC0ziGfmJDSQS59mERr2uQMS3qXZuHo
+	QhZz0SaKGgBnEXOCZbOYSQYmQGjCyI1eyVziD2j1PVFPLdphU/7br4U0CrVOawEsXVaro+LSsz+iN
+	nP1wm+tVAYRtA3BWlpZwWwg85vTtLtw3uxDJ+OPo10LbCaDPaButaIyYXxU5IliP3A8YqoQKfT81n
+	4u1F3M1m3NEGCuGFDf3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu7x2-003rJi-0Z;
-	Wed, 03 May 2023 08:35:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pu7x9-003rPN-22;
+	Wed, 03 May 2023 08:35:11 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pu7wo-003r5z-1O;
-	Wed, 03 May 2023 08:34:52 +0000
+	id 1pu7wq-003r7V-0d;
+	Wed, 03 May 2023 08:34:54 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:8234:977e:ebbe:d70b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9700066056D2;
-	Wed,  3 May 2023 09:34:47 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C11366056CE;
+	Wed,  3 May 2023 09:34:48 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683102887;
-	bh=HvCUV5rosPThl8cD3jr79LtJ3uKFRE7IxvD56lg3Oxg=;
+	s=mail; t=1683102888;
+	bh=ncuqSM6O6qhIHvgsB71afvMuTjYUGa/008nA7UDQKR4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MkvFnOwIeHLZ+xlRCdYwuuaAsSIsP4O0CGhgA8FqlW44dpNJguwQj1r3pK71X/NHp
-	 yHDsgNuxs4hT+3zjWwrrDnpRm3y/XNCcRC2BliJw0T/E1O7PlnlbPv5F5w1obW/rHq
-	 ah6Yw1cKDeE+AWDK3McSlHFj0I8PB0dKXWyM/pUIuQGE+/OoXSIY5E3dUVMS121z0K
-	 v57zb2eWFUGVdmsGpp8GLkZL3tTuVWU3dOcQLNiy6bJ+i4zUM2FWvgTdFyb7WyEVtl
-	 rz0UBnaEjHhRh675urCZVkwMSNh1tFon3cEmARQC/bqZFQSXNbWhqn5cGnYmkIFopM
-	 RlgqYPeDHtCww==
+	b=ItXXzXM9h6E+32sPgWfcMbotC5XCT1XWhhwW4BiBbGmWCxK9GoRGAQiZZpw5ojax5
+	 TGvnfiedfPizsv/noXaFX4uGzGIR49SRZY14FvJHCq8WiYqIb+xd5W93g/M6UpETi8
+	 5ZFTTgPuQx4nyoPvJuhbUHBQHwFwatJqN1074n09f8K4bGde1NPxMWxX2CkRY3sDz+
+	 DMGkBCqlgOARbfjIs3Cq16Umc0PrcnlK78Ru6jImfLSI5RuDQ9Uyfpmu0pQHTeWoyJ
+	 vv7Jt0ttC0EAFU/2xXn/j+03HYkNCUO+vAi5/mQPXt86cMI3gf59Y8l7XjDEGVe/QI
+	 +AgOb4h+niNww==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
@@ -59,16 +59,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 04/13] media: Add NV15_4L4 pixel format
-Date: Wed,  3 May 2023 10:34:29 +0200
-Message-Id: <20230503083438.85139-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 06/13] media: verisilicon: Add AV1 decoder mode and controls
+Date: Wed,  3 May 2023 10:34:31 +0200
+Message-Id: <20230503083438.85139-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230503083438.85139-1-benjamin.gaignard@collabora.com>
 References: <20230503083438.85139-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_013450_740054_1BE6F610 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230503_013452_368036_B3882386 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,88 +85,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-NV15_4L4 is the 10-bits per component 4x4 tiled format.
+Add AV1 decoder as new decoder mode to Hantro driver.
+Register needed AV1 controls for the decoder.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../media/v4l/pixfmt-yuv-planar.rst              | 16 ++++++++++++++++
- drivers/media/v4l2-core/v4l2-common.c            |  2 ++
- drivers/media/v4l2-core/v4l2-ioctl.c             |  1 +
- include/uapi/linux/videodev2.h                   |  1 +
- 4 files changed, 20 insertions(+)
+ drivers/media/platform/verisilicon/hantro.h   |  3 +++
+ .../media/platform/verisilicon/hantro_drv.c   | 21 +++++++++++++++++++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-index 72324274f20c..989b94c46288 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-@@ -137,6 +137,13 @@ All components are stored with the same number of bits per component.
-       - Cb, Cr
-       - No
-       - Linear
-+    * - V4L2_PIX_FMT_NV15_4L4
-+      - 'VT15'
-+      - 15
-+      - 4:2:0
-+      - Cb, Cr
-+      - Yes
-+      - 4x4 tiles
-     * - V4L2_PIX_FMT_NV16
-       - 'NV16'
-       - 8
-@@ -378,6 +385,15 @@ two non-contiguous planes.
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 2989ebc631cc..61480825b856 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -38,6 +38,7 @@ struct hantro_postproc_ops;
+ #define HANTRO_H264_DECODER	BIT(18)
+ #define HANTRO_HEVC_DECODER	BIT(19)
+ #define HANTRO_VP9_DECODER	BIT(20)
++#define HANTRO_AV1_DECODER	BIT(21)
+ #define HANTRO_DECODERS		0xffff0000
  
-     Example V4L2_PIX_FMT_NV12MT memory layout of tiles
+ /**
+@@ -111,6 +112,7 @@ struct hantro_variant {
+  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
+  * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
+  * @HANTRO_MODE_VP9_DEC: VP9 decoder.
++ * @HANTRO_MODE_AV1_DEC: AV1 decoder
+  */
+ enum hantro_codec_mode {
+ 	HANTRO_MODE_NONE = -1,
+@@ -120,6 +122,7 @@ enum hantro_codec_mode {
+ 	HANTRO_MODE_VP8_DEC,
+ 	HANTRO_MODE_HEVC_DEC,
+ 	HANTRO_MODE_VP9_DEC,
++	HANTRO_MODE_AV1_DEC,
+ };
  
-+.. _V4L2-PIX-FMT-NV15-4L4:
-+
-+Tiled NV15
-+----------
-+
-+Semi-planar 10-bit YUV 4:2:0 formats, using 4x4 tiling.
-+All components are packed without any padding between each other.
-+As a side-effect, each group of 4 components are stored over 5 bytes 
-+(YYYY or UVUV = 4 * 10 bits = 40 bits = 5 bytes).
+ /*
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 09c74a573ddb..8f6021e3953c 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -525,6 +525,27 @@ static const struct hantro_ctrl controls[] = {
+ 		.cfg = {
+ 			.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR,
+ 		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_FRAME,
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY,
++			.dims = { V4L2_AV1_MAX_TILE_COUNT },
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
++		},
++	}, {
++		.codec = HANTRO_AV1_DECODER,
++		.cfg = {
++			.id = V4L2_CID_STATELESS_AV1_FILM_GRAIN,
++		},
+ 	},
+ };
  
- .. _V4L2-PIX-FMT-NV16:
- .. _V4L2-PIX-FMT-NV61:
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 4b3faec14f69..145db7ab7397 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -283,6 +283,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 
- 		/* Tiled YUV formats */
- 		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-+		{ .format = V4L2_PIX_FMT_NV15_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2, 
-+		  .block_w = { 4, 2, 0, 0 }, .block_h = { 1, 1, 0, 0 }},
- 		{ .format = V4L2_PIX_FMT_P010_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 
- 		/* YUV planar formats, non contiguous variant */
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 41d7a8e3712a..01ba27f2ef87 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1356,6 +1356,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/UV 4:2:0 (16x16 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/UV 4:2:0 (32x32 Linear)"; break;
-+	case V4L2_PIX_FMT_NV15_4L4:	descr = "10-bit Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_P010_4L4:	descr = "10-bit Y/UV 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12M:	descr = "Y/UV 4:2:0 (N-C)"; break;
- 	case V4L2_PIX_FMT_NV21M:	descr = "Y/VU 4:2:0 (N-C)"; break;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index e3d83b59b25f..2b04cf20345f 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -672,6 +672,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV12_4L4 v4l2_fourcc('V', 'T', '1', '2')   /* 12  Y/CbCr 4:2:0  4x4 tiles */
- #define V4L2_PIX_FMT_NV12_16L16 v4l2_fourcc('H', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 16x16 tiles */
- #define V4L2_PIX_FMT_NV12_32L32 v4l2_fourcc('S', 'T', '1', '2') /* 12  Y/CbCr 4:2:0 32x32 tiles */
-+#define V4L2_PIX_FMT_NV15_4L4 v4l2_fourcc('V', 'T', '1', '5') /* 15 Y/CbCr 4:2:0 10-bit 4x4 tiles */
- #define V4L2_PIX_FMT_P010_4L4 v4l2_fourcc('T', '0', '1', '0') /* 12  Y/CbCr 4:2:0 10-bit 4x4 macroblocks */
- #define V4L2_PIX_FMT_NV12_8L128       v4l2_fourcc('A', 'T', '1', '2') /* Y/CbCr 4:2:0 8x128 tiles */
- #define V4L2_PIX_FMT_NV12_10BE_8L128  v4l2_fourcc_be('A', 'X', '1', '2') /* Y/CbCr 4:2:0 10-bit 8x128 tiles */
 -- 
 2.34.1
 
