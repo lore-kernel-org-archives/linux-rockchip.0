@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D13D1C7EE2F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C07C7EE2C
 	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 17:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,40 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BrTWon0Z3PPvSe/gqJGT2tWqRfvR2KRMkar7jsPJHeQ=; b=eUkbTLx6F9fusW
-	pDIlSR4UNLEzlPiajeUs+54eoBkn+b3ObffBwi0y3ecycYQpKVkp2oXJbHik7DJFgQUF014+F0jo7
-	8LTcHllAiT55ttMj8jYFfci9DPbGHA0FiXUGtICh8wKvhS3muOt64AtoQgbjDHCq9Q+NllZPZcDKC
-	ph2cpTrxlBqCL+gI6Z9Z9Hh0wAIYqgTliXLNRGmXW6kIDRcxFGBDMscjtmhF8KLvr+wBxgSw0tGVs
-	6BoMcRxBR9+5XZPNljHycQRU0qpqgCVdrMco2SXzW0oeK9QG36CtI7s6XovP4kPGpjNz3aoz8lYS7
-	4s+mhPHZKRx00Hqkxhtw==;
+	List-Owner; bh=k/lL+EyR+G9+8iXBeWlFbKqjAdK0c3Wp43OBCL/kj4o=; b=k0itpbVL8jpxtc
+	45jrEzCKH/7HFrMvGWxSEYTaJNi1DL1cy/jKTFBLz7YMDiL0RlVwTteDlnDzJgMewVmtfyRqYqcgy
+	EoMGUqmmG6FFcEXTiwUIxod2V8BdtXgt3bD8WL+vcoeGhGstHoetJAORFhAUc8aOiWAqi1KOwKP20
+	TcQNOxZKouocRDkcQfEehLP1wz1KrbgUEwvsk2YJYa7y0VBhWBOtZRUlyz+/42BxO4MnNPOCXOvbj
+	1Q2yPLDSOX3Xx1dnDd45YI5sgRk1uYFKQEXYmCSmsdj+9bWgM6jzFFp4+cTPbPl9Rb1cDPQFWhrmJ
+	9SvkQUVquCGt7yttWSIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pucse-008R6P-1O;
-	Thu, 04 May 2023 17:36:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pucsl-008REf-0H;
+	Thu, 04 May 2023 17:36:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pucsX-008Qzg-2O
+	id 1pucsZ-008R1i-2p
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 May 2023 17:36:33 +0000
+	Thu, 04 May 2023 17:36:38 +0000
 Received: from jupiter.universe (dyndsl-091-248-211-176.ewe-ip-backbone.de [91.248.211.176])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1ADCB6605708;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5335E660570E;
 	Thu,  4 May 2023 18:36:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1683221785;
-	bh=fdyAe7nIfN3rrCxcXk+9N+Frkojy72QgCF7OgKcRKuM=;
+	bh=60Y7YTh22DAGVb71vPmtJ4P/GVSH6Pe6RA0eO+OtKtg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b7KqjywrtkH9QXsy8wzfGzdxLAbvZAYrrxGmXUB2tEKgNjIvGjrgnavgBTnmeiHg2
-	 WWdjgTwHSXTgadSOqfw6UmVaYt2PkkGqIuWG1a8tDLDExfcNi+NUDwlQXH459WJOJQ
-	 8WsCTssnADgn1S5I2znjNrAjWKjnpdwnVpoyP9cuV/FXWOVkHmw3b2uzpcFG0OC1kf
-	 n4gcxXBqW2ViOuAUDsF7hyzErqx6vD1OnoPavAkthQgLnDGK0kUe5+t8W0gxk05k8c
-	 1UcpgmTFqE2fKBbi+9s0zY3Pp8NkauUiU5oXg5mO6HEzS97+ASCpNH3GE4KcHb84Sg
-	 M2dLmwyHJq8qQ==
+	b=DwtaiMCPmVhILnffAQPc2cwgkVYnY+wFGAT0f22SxUC1mJEs05a6Ol5cFpA/PEGs+
+	 2DI/1723JK/pyCYN54DBL8VtA+GcvMSV4qtg4mPLtTTqFfySVAlQ0wyuMPfx6CpTqZ
+	 WVxwNzHpaWSOnBwHEZ73/v+Ym9UZh3DvBYauly36r+FtEgoKkVvXuDhQlZiB0ZRN6y
+	 yuD8rkagtThCMISJCr2kKzevpugpyV4Hig0sIALXNQ+xrrHTSkFZGaoZ/dWu/Nfocm
+	 xwlBCSG8uOw9pNaVEhGTwEOgSis2GO7vq2jaEbCHCykUsh/L04q0Mxbww7CBmhdA81
+	 9FFMg05byjNFg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id DFA6C4807F1; Thu,  4 May 2023 19:36:20 +0200 (CEST)
+	id EA1214807F9; Thu,  4 May 2023 19:36:20 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -63,17 +63,20 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v8 07/14] dt-bindings: mfd: add rk806 binding
-Date: Thu,  4 May 2023 19:36:11 +0200
-Message-Id: <20230504173618.142075-8-sebastian.reichel@collabora.com>
+	shengfei Xu <xsf@rock-chips.com>,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Vincent Legoll <vincent.legoll@gmail.com>
+Subject: [PATCH v8 14/14] regulator: rk808: add rk806 support
+Date: Thu,  4 May 2023 19:36:18 +0200
+Message-Id: <20230504173618.142075-15-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230504173618.142075-1-sebastian.reichel@collabora.com>
 References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_103630_066157_1EE70D8D 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20230504_103632_192269_1110B1B7 
+X-CRM114-Status: GOOD (  21.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,427 +93,483 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DT binding document for Rockchip's RK806 PMIC.
+Add rk806 support to the existing rk808 regulator
+driver.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+This has been implemented using shengfei Xu's rk806
+specific driver from the vendor tree as reference.
+
+Co-developed-by: shengfei Xu <xsf@rock-chips.com>
+Signed-off-by: shengfei Xu <xsf@rock-chips.com>
+Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
+Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/mfd/rockchip,rk806.yaml          | 406 ++++++++++++++++++
- 1 file changed, 406 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+ drivers/regulator/rk808-regulator.c | 385 ++++++++++++++++++++++++++++
+ 1 file changed, 385 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-new file mode 100644
-index 000000000000..cf2500f2e9a0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-@@ -0,0 +1,406 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index 5f14d6dd4593..460525ed006c 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -3,9 +3,11 @@
+  * Regulator driver for Rockchip RK805/RK808/RK818
+  *
+  * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+  *
+  * Author: Chris Zhong <zyw@rock-chips.com>
+  * Author: Zhang Qing <zhangqing@rock-chips.com>
++ * Author: Xu Shengfei <xsf@rock-chips.com>
+  *
+  * Copyright (C) 2016 PHYTEC Messtechnik GmbH
+  *
+@@ -39,6 +41,13 @@
+ #define RK818_LDO3_ON_VSEL_MASK		0xf
+ #define RK818_BOOST_ON_VSEL_MASK	0xe0
+ 
++#define RK806_DCDC_SLP_REG_OFFSET	0x0A
++#define RK806_NLDO_SLP_REG_OFFSET	0x05
++#define RK806_PLDO_SLP_REG_OFFSET	0x06
 +
-+title: RK806 Power Management Integrated Circuit
++#define RK806_BUCK_SEL_CNT		0xff
++#define RK806_LDO_SEL_CNT		0xff
 +
-+maintainers:
-+  - Sebastian Reichel <sebastian.reichel@collabora.com>
+ /* Ramp rate definitions for buck1 / buck2 only */
+ #define RK808_RAMP_RATE_OFFSET		3
+ #define RK808_RAMP_RATE_MASK		(3 << RK808_RAMP_RATE_OFFSET)
+@@ -117,6 +126,34 @@
+ 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
+ 	_vmask, _ereg, _emask, 0, 0, _etime, &rk805_reg_ops)
+ 
++#define RK806_REGULATOR(_name, _supply_name, _id, _ops,\
++			_n_voltages, _vr, _er, _lr, ctrl_bit,\
++			_rr, _rm, _rt)\
++[_id] = {\
++		.name = _name,\
++		.supply_name = _supply_name,\
++		.of_match = of_match_ptr(_name),\
++		.regulators_node = of_match_ptr("regulators"),\
++		.id = _id,\
++		.ops = &_ops,\
++		.type = REGULATOR_VOLTAGE,\
++		.n_voltages = _n_voltages,\
++		.linear_ranges = _lr,\
++		.n_linear_ranges = ARRAY_SIZE(_lr),\
++		.vsel_reg = _vr,\
++		.vsel_mask = 0xff,\
++		.enable_reg = _er,\
++		.enable_mask = ENABLE_MASK(ctrl_bit),\
++		.enable_val = ENABLE_MASK(ctrl_bit),\
++		.disable_val = DISABLE_VAL(ctrl_bit),\
++		.of_map_mode = rk8xx_regulator_of_map_mode,\
++		.ramp_reg = _rr,\
++		.ramp_mask = _rm,\
++		.ramp_delay_table = _rt, \
++		.n_ramp_values = ARRAY_SIZE(_rt), \
++		.owner = THIS_MODULE,\
++	}
 +
-+description:
-+  Rockchip RK806 series PMIC. This device consists of an spi or
-+  i2c controlled MFD that includes multiple switchable regulators.
+ #define RK8XX_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
+ 	_vmask, _ereg, _emask, _etime)					\
+ 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
+@@ -153,6 +190,17 @@
+ 	RKXX_DESC_SWITCH_COM(_id, _match, _supply, _ereg, _emask,	\
+ 	0, 0, &rk808_switch_ops)
+ 
++struct rk8xx_register_bit {
++	u8 reg;
++	u8 bit;
++};
 +
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk806
++#define RK8XX_REG_BIT(_reg, _bit)					\
++	{								\
++		.reg = _reg,						\
++		.bit = BIT(_bit),						\
++	}
 +
-+  reg:
-+    maxItems: 1
+ struct rk808_regulator_data {
+ 	struct gpio_desc *dvs_gpio[2];
+ };
+@@ -216,6 +264,133 @@ static const unsigned int rk817_buck1_4_ramp_table[] = {
+ 	3000, 6300, 12500, 25000
+ };
+ 
++static int rk806_set_mode_dcdc(struct regulator_dev *rdev, unsigned int mode)
++{
++	int rid = rdev_get_id(rdev);
++	int ctr_bit, reg;
 +
-+  interrupts:
-+    maxItems: 1
++	reg = RK806_POWER_FPWM_EN0 + rid / 8;
++	ctr_bit = rid % 8;
 +
-+  gpio-controller: true
++	switch (mode) {
++	case REGULATOR_MODE_FAST:
++		return regmap_update_bits(rdev->regmap, reg,
++					  PWM_MODE_MSK << ctr_bit,
++					  FPWM_MODE << ctr_bit);
++	case REGULATOR_MODE_NORMAL:
++		return regmap_update_bits(rdev->regmap, reg,
++					  PWM_MODE_MSK << ctr_bit,
++					  AUTO_PWM_MODE << ctr_bit);
++	default:
++		dev_err(rdev_get_dev(rdev), "mode unsupported: %u\n", mode);
++		return -EINVAL;
++	}
 +
-+  '#gpio-cells':
-+    const: 2
++	return 0;
++}
 +
-+  vcc1-supply:
-+    description:
-+      The input supply for dcdc-reg1.
++static unsigned int rk806_get_mode_dcdc(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
++	int ctr_bit, reg;
++	unsigned int val;
++	int err;
 +
-+  vcc2-supply:
-+    description:
-+      The input supply for dcdc-reg2.
++	reg = RK806_POWER_FPWM_EN0 + rid / 8;
++	ctr_bit = rid % 8;
 +
-+  vcc3-supply:
-+    description:
-+      The input supply for dcdc-reg3.
++	err = regmap_read(rdev->regmap, reg, &val);
++	if (err)
++		return err;
 +
-+  vcc4-supply:
-+    description:
-+      The input supply for dcdc-reg4.
++	if ((val >> ctr_bit) & FPWM_MODE)
++		return REGULATOR_MODE_FAST;
++	else
++		return REGULATOR_MODE_NORMAL;
++}
 +
-+  vcc5-supply:
-+    description:
-+      The input supply for dcdc-reg5.
++static const struct rk8xx_register_bit rk806_dcdc_rate2[] = {
++	RK8XX_REG_BIT(0xEB, 0),
++	RK8XX_REG_BIT(0xEB, 1),
++	RK8XX_REG_BIT(0xEB, 2),
++	RK8XX_REG_BIT(0xEB, 3),
++	RK8XX_REG_BIT(0xEB, 4),
++	RK8XX_REG_BIT(0xEB, 5),
++	RK8XX_REG_BIT(0xEB, 6),
++	RK8XX_REG_BIT(0xEB, 7),
++	RK8XX_REG_BIT(0xEA, 0),
++	RK8XX_REG_BIT(0xEA, 1),
++};
 +
-+  vcc6-supply:
-+    description:
-+      The input supply for dcdc-reg6.
++static const unsigned int rk806_ramp_delay_table_dcdc[] = {
++	50000, 25000, 12500, 6250, 3125, 1560, 961, 390
++};
 +
-+  vcc7-supply:
-+    description:
-+      The input supply for dcdc-reg7.
++static int rk806_set_ramp_delay_dcdc(struct regulator_dev *rdev, int ramp_delay)
++{
++	int rid = rdev_get_id(rdev);
++	int regval, ramp_value, ret;
 +
-+  vcc8-supply:
-+    description:
-+      The input supply for dcdc-reg8.
++	ret = regulator_find_closest_bigger(ramp_delay, rdev->desc->ramp_delay_table,
++					    rdev->desc->n_ramp_values, &ramp_value);
++	if (ret) {
++		dev_warn(rdev_get_dev(rdev),
++			 "Can't set ramp-delay %u, setting %u\n", ramp_delay,
++			 rdev->desc->ramp_delay_table[ramp_value]);
++	}
 +
-+  vcc9-supply:
-+    description:
-+      The input supply for dcdc-reg9.
++	regval = ramp_value << (ffs(rdev->desc->ramp_mask) - 1);
 +
-+  vcc10-supply:
-+    description:
-+      The input supply for dcdc-reg10.
++	ret = regmap_update_bits(rdev->regmap, rdev->desc->ramp_reg,
++				 rdev->desc->ramp_mask, regval);
++	if (ret)
++		return ret;
 +
-+  vcc11-supply:
-+    description:
-+      The input supply for pldo-reg1, pldo-reg2 and pldo-reg3.
++	/*
++	 * The above is effectively a copy of regulator_set_ramp_delay_regmap(),
++	 * but that only stores the lower 2 bits for rk806 DCDC ramp. The MSB must
++	 * be stored in a separate register, so this open codes the implementation
++	 * to have access to the ramp_value.
++	 */
 +
-+  vcc12-supply:
-+    description:
-+      The input supply for pldo-reg4 and pldo-reg5.
++	regval = (ramp_value >> 2) & 0x1 ? rk806_dcdc_rate2[rid].bit : 0;
++	return regmap_update_bits(rdev->regmap, rk806_dcdc_rate2[rid].reg,
++				  rk806_dcdc_rate2[rid].bit,
++				  regval);
++}
 +
-+  vcc13-supply:
-+    description:
-+      The input supply for nldo-reg1, nldo-reg2 and nldo-reg3.
++static const unsigned int rk806_ramp_delay_table_ldo[] = {
++	100000, 50000, 25000, 12500, 6280, 3120, 1900, 780
++};
 +
-+  vcc14-supply:
-+    description:
-+      The input supply for nldo-reg4 and nldo-reg5.
++static int rk806_set_suspend_voltage_range(struct regulator_dev *rdev, int reg_offset, int uv)
++{
++	int sel = regulator_map_voltage_linear_range(rdev, uv, uv);
++	unsigned int reg;
 +
-+  vcca-supply:
-+    description:
-+      The input supply for pldo-reg6.
++	if (sel < 0)
++		return -EINVAL;
 +
-+  regulators:
-+    type: object
-+    additionalProperties: false
-+    patternProperties:
-+      "^(dcdc-reg([1-9]|10)|pldo-reg[1-6]|nldo-reg[1-5])$":
-+        type: object
-+        $ref: /schemas/regulator/regulator.yaml#
-+        unevaluatedProperties: false
++	reg = rdev->desc->vsel_reg + reg_offset;
 +
-+patternProperties:
-+  '-pins$':
-+    type: object
-+    additionalProperties: false
-+    $ref: /schemas/pinctrl/pinmux-node.yaml
++	return regmap_update_bits(rdev->regmap, reg, rdev->desc->vsel_mask, sel);
++}
 +
-+    properties:
-+      function:
-+        enum: [pin_fun0, pin_fun1, pin_fun2, pin_fun3, pin_fun4, pin_fun5]
++static int rk806_set_suspend_voltage_range_dcdc(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_DCDC_SLP_REG_OFFSET, uv);
++}
 +
-+      pins:
-+        $ref: /schemas/types.yaml#/definitions/string
-+        enum: [gpio_pwrctrl1, gpio_pwrctrl2, gpio_pwrctrl3]
++static int rk806_set_suspend_voltage_range_nldo(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_NLDO_SLP_REG_OFFSET, uv);
++}
 +
-+allOf:
-+  - $ref: /schemas/spi/spi-peripheral-props.yaml
++static int rk806_set_suspend_voltage_range_pldo(struct regulator_dev *rdev, int uv)
++{
++	return rk806_set_suspend_voltage_range(rdev, RK806_PLDO_SLP_REG_OFFSET, uv);
++}
 +
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
+ static int rk808_buck1_2_get_voltage_sel_regmap(struct regulator_dev *rdev)
+ {
+ 	struct rk808_regulator_data *pdata = rdev_get_drvdata(rdev);
+@@ -393,6 +568,47 @@ static int rk805_set_suspend_disable(struct regulator_dev *rdev)
+ 				  0);
+ }
+ 
++static const struct rk8xx_register_bit rk806_suspend_bits[] = {
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 0),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 5),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 6),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN0, 7),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 6),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 7),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 0),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN1, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 1),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 2),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 3),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 4),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 5),
++	RK8XX_REG_BIT(RK806_POWER_SLP_EN2, 0),
++};
 +
-+unevaluatedProperties: false
++static int rk806_set_suspend_enable(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
 +
-+examples:
-+  - |
-+    #include <dt-bindings/pinctrl/rockchip.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/gpio/gpio.h>
-+    spi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
++	return regmap_update_bits(rdev->regmap, rk806_suspend_bits[rid].reg,
++				  rk806_suspend_bits[rid].bit,
++				  rk806_suspend_bits[rid].bit);
++}
 +
-+        pmic@0 {
-+            compatible = "rockchip,rk806";
-+            reg = <0x0>;
++static int rk806_set_suspend_disable(struct regulator_dev *rdev)
++{
++	int rid = rdev_get_id(rdev);
 +
-+            interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
++	return regmap_update_bits(rdev->regmap, rk806_suspend_bits[rid].reg,
++				  rk806_suspend_bits[rid].bit, 0);
++}
 +
-+            vcc1-supply = <&vcc5v0_sys>;
-+            vcc2-supply = <&vcc5v0_sys>;
-+            vcc3-supply = <&vcc5v0_sys>;
-+            vcc4-supply = <&vcc5v0_sys>;
-+            vcc5-supply = <&vcc5v0_sys>;
-+            vcc6-supply = <&vcc5v0_sys>;
-+            vcc7-supply = <&vcc5v0_sys>;
-+            vcc8-supply = <&vcc5v0_sys>;
-+            vcc9-supply = <&vcc5v0_sys>;
-+            vcc10-supply = <&vcc5v0_sys>;
-+            vcc11-supply = <&vcc_2v0_pldo_s3>;
-+            vcc12-supply = <&vcc5v0_sys>;
-+            vcc13-supply = <&vcc5v0_sys>;
-+            vcc14-supply = <&vcc_1v1_nldo_s3>;
-+            vcca-supply = <&vcc5v0_sys>;
+ static int rk808_set_suspend_enable(struct regulator_dev *rdev)
+ {
+ 	unsigned int reg;
+@@ -561,6 +777,64 @@ static const struct regulator_ops rk805_switch_ops = {
+ 	.set_suspend_disable    = rk805_set_suspend_disable,
+ };
+ 
++static const struct regulator_ops rk806_ops_dcdc = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
++	.set_mode		= rk806_set_mode_dcdc,
++	.get_mode		= rk806_get_mode_dcdc,
 +
-+            regulators {
-+                vdd_gpu_s0: dcdc-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_gpu_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= rk8xx_is_enabled_wmsk_regmap,
 +
-+                vdd_npu_s0: dcdc-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_npu_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	.set_suspend_mode	= rk806_set_mode_dcdc,
++	.set_ramp_delay		= rk806_set_ramp_delay_dcdc,
 +
-+                vdd_log_s0: dcdc-reg3 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_log_s0";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <750000>;
-+                    };
-+                };
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_dcdc,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
 +
-+                vdd_vdenc_s0: dcdc-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_vdenc_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++static const struct regulator_ops rk806_ops_nldo = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
 +
-+                vdd_gpu_mem_s0: dcdc-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_gpu_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
 +
-+                vdd_npu_mem_s0: dcdc-reg6 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_npu_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	.set_ramp_delay		= regulator_set_ramp_delay_regmap,
 +
-+                vcc_2v0_pldo_s3: dcdc-reg7 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <2000000>;
-+                    regulator-max-microvolt = <2000000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_2v0_pldo_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <2000000>;
-+                    };
-+                };
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_nldo,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
 +
-+                vdd_vdenc_mem_s0: dcdc-reg8 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_vdenc_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++static const struct regulator_ops rk806_ops_pldo = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
 +
-+                vdd2_ddr_s3: dcdc-reg9 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-name = "vdd2_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                    };
-+                };
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel        = regulator_set_voltage_sel_regmap,
++	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
 +
-+                vcc_1v1_nldo_s3: dcdc-reg10 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1100000>;
-+                    regulator-max-microvolt = <1100000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_1v1_nldo_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1100000>;
-+                    };
-+                };
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
 +
-+                avcc_1v8_s0: pldo-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "avcc_1v8_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	.set_ramp_delay		= regulator_set_ramp_delay_regmap,
 +
-+                vdd1_1v8_ddr_s3: pldo-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd1_1v8_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
++	.set_suspend_voltage	= rk806_set_suspend_voltage_range_pldo,
++	.set_suspend_enable	= rk806_set_suspend_enable,
++	.set_suspend_disable	= rk806_set_suspend_disable,
++};
 +
-+                vcc_1v8_s3: pldo-reg3 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_1v8_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
+ static const struct regulator_ops rk808_buck1_2_ops = {
+ 	.list_voltage		= regulator_list_voltage_linear,
+ 	.map_voltage		= regulator_map_voltage_linear,
+@@ -743,6 +1017,112 @@ static const struct regulator_desc rk805_reg[] = {
+ 		BIT(2), 400),
+ };
+ 
++static const struct linear_range rk806_buck_voltage_ranges[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 160, 6250), /* 500mV ~ 1500mV */
++	REGULATOR_LINEAR_RANGE(1500000, 161, 237, 25000), /* 1500mV ~ 3400mV */
++	REGULATOR_LINEAR_RANGE(3400000, 238, 255, 0),
++};
 +
-+                vcc_3v3_s0: pldo-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <3300000>;
-+                    regulator-max-microvolt = <3300000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_3v3_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++static const struct linear_range rk806_ldo_voltage_ranges[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 232, 12500), /* 500mV ~ 3400mV */
++	REGULATOR_LINEAR_RANGE(3400000, 233, 255, 0), /* 500mV ~ 3400mV */
++};
 +
-+                vccio_sd_s0: pldo-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <3300000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vccio_sd_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++static const struct regulator_desc rk806_reg[] = {
++	RK806_REGULATOR("dcdc-reg1", "vcc1", RK806_ID_DCDC1, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK1_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK1_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg2", "vcc2", RK806_ID_DCDC2, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK2_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK2_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg3", "vcc3", RK806_ID_DCDC3, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK3_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 2,
++			RK806_BUCK3_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg4", "vcc4", RK806_ID_DCDC4, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK4_ON_VSEL,
++			RK806_POWER_EN0, rk806_buck_voltage_ranges, 3,
++			RK806_BUCK4_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
 +
-+                master_pldo6_s3: pldo-reg6 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-name = "master_pldo6_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
++	RK806_REGULATOR("dcdc-reg5", "vcc5", RK806_ID_DCDC5, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK5_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK5_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg6", "vcc6", RK806_ID_DCDC6, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK6_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK6_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg7", "vcc7", RK806_ID_DCDC7, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK7_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 2,
++			RK806_BUCK7_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg8", "vcc8", RK806_ID_DCDC8, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK8_ON_VSEL,
++			RK806_POWER_EN1, rk806_buck_voltage_ranges, 3,
++			RK806_BUCK8_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
 +
-+                vdd_0v75_s3: nldo-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_0v75_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <750000>;
-+                    };
-+                };
++	RK806_REGULATOR("dcdc-reg9", "vcc9", RK806_ID_DCDC9, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK9_ON_VSEL,
++			RK806_POWER_EN2, rk806_buck_voltage_ranges, 0,
++			RK806_BUCK9_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
++	RK806_REGULATOR("dcdc-reg10", "vcc10", RK806_ID_DCDC10, rk806_ops_dcdc,
++			RK806_BUCK_SEL_CNT, RK806_BUCK10_ON_VSEL,
++			RK806_POWER_EN2, rk806_buck_voltage_ranges, 1,
++			RK806_BUCK10_CONFIG, 0xc0, rk806_ramp_delay_table_dcdc),
 +
-+                vdd2l_0v9_ddr_s3: nldo-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <900000>;
-+                    regulator-max-microvolt = <900000>;
-+                    regulator-name = "vdd2l_0v9_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <900000>;
-+                    };
-+                };
++	RK806_REGULATOR("nldo-reg1", "vcc13", RK806_ID_NLDO1, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO1_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg2", "vcc13", RK806_ID_NLDO2, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO2_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg3", "vcc13", RK806_ID_NLDO3, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO3_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("nldo-reg4", "vcc14", RK806_ID_NLDO4, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO4_ON_VSEL,
++			RK806_POWER_EN3, rk806_ldo_voltage_ranges, 3,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
 +
-+                master_nldo3: nldo-reg3 {
-+                    regulator-name = "master_nldo3";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	RK806_REGULATOR("nldo-reg5", "vcc14", RK806_ID_NLDO5, rk806_ops_nldo,
++			RK806_LDO_SEL_CNT, RK806_NLDO5_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
 +
-+                avdd_0v75_s0: nldo-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-name = "avdd_0v75_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
++	RK806_REGULATOR("pldo-reg1", "vcc11", RK806_ID_PLDO1, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO1_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg2", "vcc11", RK806_ID_PLDO2, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO2_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 2,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg3", "vcc11", RK806_ID_PLDO3, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO3_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 3,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
 +
-+                vdd_0v85_s0: nldo-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <850000>;
-+                    regulator-max-microvolt = <850000>;
-+                    regulator-name = "vdd_0v85_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+            };
-+        };
-+    };
++	RK806_REGULATOR("pldo-reg4", "vcc12", RK806_ID_PLDO4, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO4_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++	RK806_REGULATOR("pldo-reg5", "vcc12", RK806_ID_PLDO5, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO5_ON_VSEL,
++			RK806_POWER_EN5, rk806_ldo_voltage_ranges, 1,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++
++	RK806_REGULATOR("pldo-reg6", "vcca", RK806_ID_PLDO6, rk806_ops_pldo,
++			RK806_LDO_SEL_CNT, RK806_PLDO6_ON_VSEL,
++			RK806_POWER_EN4, rk806_ldo_voltage_ranges, 0,
++			0xEA, 0x38, rk806_ramp_delay_table_ldo),
++};
++
++
+ static const struct regulator_desc rk808_reg[] = {
+ 	{
+ 		.name = "DCDC_REG1",
+@@ -1313,6 +1693,10 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+ 		regulators = rk805_reg;
+ 		nregulators = RK805_NUM_REGULATORS;
+ 		break;
++	case RK806_ID:
++		regulators = rk806_reg;
++		nregulators = ARRAY_SIZE(rk806_reg);
++		break;
+ 	case RK808_ID:
+ 		regulators = rk808_reg;
+ 		nregulators = RK808_NUM_REGULATORS;
+@@ -1366,5 +1750,6 @@ MODULE_AUTHOR("Tony xie <tony.xie@rock-chips.com>");
+ MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
+ MODULE_AUTHOR("Zhang Qing <zhangqing@rock-chips.com>");
+ MODULE_AUTHOR("Wadim Egorov <w.egorov@phytec.de>");
++MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
+ MODULE_LICENSE("GPL");
+ MODULE_ALIAS("platform:rk808-regulator");
 -- 
 2.39.2
 
