@@ -4,45 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 890F9C7EE2E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 21:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92D2FC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 21:16:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tXaLBgTeVdoyLXw4pRmxfk5boguoq4sLdDUcK1MbKbQ=; b=THc7RmdVpAeD7V
-	jCVQS9fovXUHXIt1l0FwBeKH9U3uXVndim30MwHVBYmdmj8vcnHA2d/lMWcEouV3YU74oOQzuAN+q
-	bs5n2lhUoQ0aVOTzH016SbmZX/EUlQosARdtxhnoh+WiSNYJUlwbxAgx/uf0xR45tEbZC18zy3Bcb
-	cZ3YynDzCOoIVkxYC1Aisls9BgHw5ZhpmgsNTiQbmltz/PfBME9K5oUwIW0aSa04d5mGjysCfd1Ee
-	0yRKcGGhfTEiIDimj/rTJuh7jgFMfKgjTddNPhfjUuRw4wC+Y+J3hR8u4iM/sHFKWwJvLhM4txNUa
-	j3L9lxVq3YOKiUGBtK1A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7tAtiZPhlzFFnXZZl930J70i9+bQ0D9VlIuWFYoIFCM=; b=SXjX+8E7FKDryW
+	NtHdv3Xbb7f/XgJxEzJgsBygJQhCgeVvUGApeb8IzJzoMDXyia2uARTDgZNpNfEhq4PgcXrJKTHjS
+	dhmqVRB1UKezt5YYExpw7BQCgDghBJy0feBbGuLTHy5DdI7lBW/6gUtY6MBh1w/R9jRhTHa/7Ofkx
+	ZXR4ieCQTQ1hHge2zSBuKjvEkXL2xqJVMr3ObZGlP6CXdl1wyg3FHgyFeFgtowOeCin7Q8N1Wa3IK
+	zpHF5tGFiv8ndXVZnjzcUvIZPGufpXU/rOt3TM2XOvQ5CHUcurO17sydJ6PPaxlgo2/mCdT2/paoa
+	EwVOdF5uUfrC6tpkiTQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pugIv-00911Z-0t;
-	Thu, 04 May 2023 21:15:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pugIy-00914A-0Z;
+	Thu, 04 May 2023 21:16:00 +0000
+Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pufEC-008tBk-0h;
-	Thu, 04 May 2023 20:07:01 +0000
+	id 1pufJb-008tlT-2P;
+	Thu, 04 May 2023 20:12:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=yL2k7/HAHDyyNgrl1iAhxlgb9ms7e7E/tFMo9NbqJ9E=; b=Ea8UPot8M2GF2YCdC9+quZgVKi
+	1y+p3DZYbAV6ed/3DofglEfnJAuMXZcgmEr+UFmEqs1IiJxxxbXX8kUV9CJFPtYu31NpxKJYDIYFX
+	i4nS8z6Iv1n9jMFKsJ+OJakKas/Gf5LFhcLizgRF1adGx8f/oULZ3L9R99K76PPMhFvdbCmksm/Mk
+	DhuDpJxGtgCx+N9q81Z7RJBvAKHmyIDHJrnqOlNlUk9DmleEPwaIUfd3Y/AnnfVAyFp19ux+MY8y4
+	IL9JHmrr7BnLGQmxO5LhbottuV4yjLxwagTDsh7Ms2Go1qTuKlxW96XfRuBcurXyEaLzTlIXsvU+d
+	X/pguWrQ==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pufET-00Aw5Q-Gs; Thu, 04 May 2023 20:07:19 +0000
 Received: from localhost (unknown [188.27.34.213])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 499596601F54;
-	Thu,  4 May 2023 21:06:56 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 60EA866056FF;
+	Thu,  4 May 2023 21:07:14 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1683230816;
-	bh=5R1AIP1C8/sZhgM+e+W1QCHOVzm+rALCBEYDFotBSzc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=NubI2CAhpfrk5Vkj5jePnt0O0S0mN8VxWn6NBr0xioj1eMAMVzcuVCH1keYw9Kdit
-	 DgfX6jyv2OWVTu0Q9HzOJRKklRpFdm4zbsHYccq6npbU3OHYkmzF56SN6fU1DJNO8r
-	 r1Og3N7ssWzlAQ/4eADOt1sqq9a0dHr42no338IFzux7XTClvaJYlp7LBS2vIl+Jx9
-	 6rJxnCZzkPN7LjyiwKO+h2HULhbCo28N+S1nUCuD6hbYNyQp2rffM8Fp2lMzhHbpb9
-	 qP/umiugDzshJsAKzCn9HvMi7UjIBJQuB8/rLsG63HNtcRY7/9WI0cwrkXSMUzBO4X
-	 m9rfP48C2iSjA==
+	s=mail; t=1683230834;
+	bh=liP+soMrPQDOXxG2SMtxGxRaMcIPp5ZaL+QpnsunI+8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Mog/gRj1ztd5K51jKBGYdqmuisZiPHDnvVb5L5W0/NkdTgORXgtK2QJ29Rov0kYQP
+	 7dcSIu/NYIixTxqqAaljb1XMfnBGfY5giCriXv+sKPrVy0FfRtSlABBG9X8tysw5yZ
+	 8wzCHbvT9l84lc5cq96B4ax0XwxlClSGkBhmbky+fYLVTcNVvMdxwI0s2Xv/pc3TfL
+	 K0I8AhLvAzIKIHdacgqJY3n5wbpa0QukcYmipZbefRAy66o8fCaunv8MVGT4zXdwdQ
+	 bXTmiTONhmJe8jZE2dK4Bfn8YxjtEh3erIyoZewTqSWDafVguO4i2M0/4iPuM4Uybf
+	 57OYJEmZ9UVkg==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -59,14 +72,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v2 0/8] Add RK3588 OTP memory support
-Date: Thu,  4 May 2023 23:06:40 +0300
-Message-Id: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
+Subject: [PATCH v2 6/8] nvmem: rockchip-otp: Improve probe error handling
+Date: Thu,  4 May 2023 23:06:46 +0300
+Message-Id: <20230504200648.1119866-7-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.40.0
+In-Reply-To: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
+References: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_130700_452184_283A3FED 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20230504_210717_736396_FBDCF27B 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,39 +98,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds OTP memory support for Rockchip RK3588 SoC, 
-while also providing a few improvements to the existing rockchip-otp 
-driver, in addition to converting the bindings to dt-schema.
+Enhance error handling in the probe function by making use of
+dev_err_probe(), which ensures the error code is always printed, in
+addition to the specified error message.
 
-Changes in v2:
- - Renamed rockchip-otp.yaml to rockchip,otp.yaml and removed clock's minItems 
-   in PATCH 1/8, according to the review from Krzysztof
- - Updated commit message in PATCH 2/8, per Heiko's suggestion
- - Renamed rockchip_data's clocks to clks in PATCH 3/8, per Heiko's review
- - Preserved clocks order/names from older SoC variants in PATCH 2/8, according
-   to Krzysztof's review; updated accordingly patches 7/8 and 8/8
- - Added Tested-by tags from Vincent
- - Added Reviewed-by tags from Heiko
- - v1: https://lore.kernel.org/lkml/20230501084401.765169-1-cristian.ciocaltea@collabora.com/
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/nvmem/rockchip-otp.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
-Cristian Ciocaltea (8):
-  dt-bindings: nvmem: Convert rockchip-otp.txt to dt-schema
-  dt-bindings: nvmem: rockchip,otp: Add compatible for RK3588
-  nvmem: rockchip-otp: Add clks and reg_read to rockchip_data
-  nvmem: rockchip-otp: Generalize rockchip_otp_wait_status()
-  nvmem: rockchip-otp: Use devm_reset_control_array_get_exclusive()
-  nvmem: rockchip-otp: Improve probe error handling
-  nvmem: rockchip-otp: Add support for RK3588
-  arm64: dts: rockchip: Add rk3588 OTP node
-
- .../bindings/nvmem/rockchip,otp.yaml          | 122 +++++++++++
- .../bindings/nvmem/rockchip-otp.txt           |  25 ---
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  54 +++++
- drivers/nvmem/rockchip-otp.c                  | 191 +++++++++++++-----
- 4 files changed, 320 insertions(+), 72 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
- delete mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-otp.txt
-
+diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
+index 439aea1f8874..84bf956cc4e1 100644
+--- a/drivers/nvmem/rockchip-otp.c
++++ b/drivers/nvmem/rockchip-otp.c
+@@ -235,10 +235,8 @@ static int rockchip_otp_probe(struct platform_device *pdev)
+ 	int ret, i;
+ 
+ 	data = of_device_get_match_data(dev);
+-	if (!data) {
+-		dev_err(dev, "failed to get match data\n");
+-		return -EINVAL;
+-	}
++	if (!data)
++		return dev_err_probe(dev, -EINVAL, "failed to get match data\n");
+ 
+ 	otp = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_otp),
+ 			   GFP_KERNEL);
+@@ -249,7 +247,8 @@ static int rockchip_otp_probe(struct platform_device *pdev)
+ 	otp->dev = dev;
+ 	otp->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(otp->base))
+-		return PTR_ERR(otp->base);
++		return dev_err_probe(dev, PTR_ERR(otp->base),
++				     "failed to ioremap resource\n");
+ 
+ 	otp->clks = devm_kcalloc(dev, data->num_clks, sizeof(*otp->clks),
+ 				 GFP_KERNEL);
+@@ -261,18 +260,22 @@ static int rockchip_otp_probe(struct platform_device *pdev)
+ 
+ 	ret = devm_clk_bulk_get(dev, data->num_clks, otp->clks);
+ 	if (ret)
+-		return ret;
++		return dev_err_probe(dev, ret, "failed to get clocks\n");
+ 
+ 	otp->rst = devm_reset_control_array_get_exclusive(dev);
+ 	if (IS_ERR(otp->rst))
+-		return PTR_ERR(otp->rst);
++		return dev_err_probe(dev, PTR_ERR(otp->rst),
++				     "failed to get resets\n");
+ 
+ 	otp_config.size = data->size;
+ 	otp_config.priv = otp;
+ 	otp_config.dev = dev;
+-	nvmem = devm_nvmem_register(dev, &otp_config);
+ 
+-	return PTR_ERR_OR_ZERO(nvmem);
++	nvmem = devm_nvmem_register(dev, &otp_config);
++	if (IS_ERR(nvmem))
++		return dev_err_probe(dev, PTR_ERR(nvmem),
++				     "failed to register nvmem device\n");
++	return 0;
+ }
+ 
+ static struct platform_driver rockchip_otp_driver = {
 -- 
 2.40.0
 
