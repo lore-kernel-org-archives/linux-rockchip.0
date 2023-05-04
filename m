@@ -4,64 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DE3C77B78
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 01:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464FFC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 07:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=edSkWaXMYhSnARURbeFMC3E6nAwHRU2z0GcuWg9815c=; b=KcxeeJfNUJnmnvfIiTWWZloTsr
-	BwCFPT3nYvc3iZOEVUTLjyS14tSybTRavmDFbjv9bD0hNPrt45YAPxo2XkoC6HLuI+/8W4O1C6fL/
-	pMZBfTNkt9/FO3hYGsi9WTkqB8oIGUAdn/AhH37jk86YWtm/VHfTVbKRU/uXa0SM+2y5nFxunS/MQ
-	75TkV5m/xIzxOfYJV1gzxSCh/HYn0Bi8kuWpii3lSIXwZb+yIs9Jx30630axk8tLCW5Jj75lzdT/n
-	/xCyvzFRAMlE4DT/deqkf2ZWd5+TWmwJFFfsK1Oe+xqq2/XFHLx8efT4+N8Okcet1ShbApTg9Rq38
-	6fNE8rvw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LdE5G3l7JBQwkDgk8uiFKOjcaWlU5/lkQ4LGZwRu+LI=; b=XUJ8LsnEwjfAFs
+	HTfvoWfeJWoCxfstOnwGsik2q6tvdZ8ikgiVERbsCg7HFb5ASV+/5754xbyKfHkYvIhazn3zcf56v
+	oD19x4q8WFrZO08OT+KkUprvf/HYXANRTpLcaJpUnEBF9stTRwxeUePVicAWHF8Ri+L1KWkQM9uQD
+	0BxjQyK9uCCtSVcePXiFOjVr/i8Bd5gNbozkXEYeJuyEKMOaaU7s5N0i24NVRptnyFVboVRgp93Td
+	oz3nue4lKzz6u+viVrBSt2jtkRp8hFRtu6OTrMPHrFrLBkrKHnT9dKO6V2sKAZLPMKUsX5POrr8g5
+	OVuMAbfGKnmNc8HU28qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puNm7-006IBY-0d;
-	Thu, 04 May 2023 01:28:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1puT6A-006qqM-2h;
+	Thu, 04 May 2023 07:09:54 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puNm3-006IAW-0Y
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 May 2023 01:28:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1F62762B33;
-	Thu,  4 May 2023 01:28:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F856C433EF;
-	Thu,  4 May 2023 01:28:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683163725;
-	bh=bGE2VvFwZIMtME1pqkI8jaO3IJdVwzo+V0rUgYb9ILQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tfoVrI+nwEbC+LLZ01rpwjRZpN+MeuI3k8sE1fm7pXqwEZdVHf0bJ4MKvzzkF6cOO
-	 QCLvSgGc7zmB/EwyKyLtnpDovYuryg78V+R6Z42QbslWnM8qNBQN53mJtz/teNpMPE
-	 XpfBW5i17mTgNIzDNmU6CU+35hI5xV0YynZ45033RkH5vqmPPDKfT94kIY4cUbRt2D
-	 HjqYTc+rgbe9vmOc3aR6SHbKG0P390bYEqGV1T1Ug+Yh6AR2TpjtKaJmnSGj29U/Rc
-	 ZhF+de8uzJ2PtnmYe4BmRTtnkCjcoLfS3WyDOgGHGyY7z4/SVM2WvFtiHYdH2bBZEv
-	 RHu+coi5gMPgw==
-Date: Thu, 4 May 2023 10:28:38 +0900
-From: Mark Brown <broonie@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: kernelci-results@groups.io, bot@kernelci.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: mainline/master bisection: baseline.dmesg.alert on
- rk3399-gru-kevin
-Message-ID: <ZFMKRgPdgWoedjqk@finisterre.sirena.org.uk>
-References: <64521df9.170a0220.24317.c9f2@mx.google.com>
+	id 1puT66-006qoq-2P;
+	Thu, 04 May 2023 07:09:52 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3445knZ4015912;
+	Thu, 4 May 2023 09:09:19 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=selector1;
+ bh=BdevYqMi76NwKC3zRXAgy5PN3WHuWUsGRFi5mAmNrPU=;
+ b=diBkdS5cAS1F6aGRwKb+ZnpjXcLvvpzZASwgoOP/4T8WkojTtCRd77G8y0wSpK265DFf
+ 5SRXoIc/CY5v7rG7eBolJXEjxs5ZNy928g9ffgPPkIG0/TUSRBSkZ69nPsngOZ/qKR6R
+ Dc+Duyu4G38L9DAJuDKUVJ6ZFi6zwRDwUa2XBGJ9YcUUsZ7jKuPAExnDi3F2gWKNlaiV
+ lGX9W7eGu6apovH/vVztA94SREXjCBuLXZ1Ef+IcSl/mQmGRz5U83sXo5yh+4sPvoItI
+ nXSuhuHXKRPRxWD3ghAGp+VdxBVGEfJFlyDZ2TPVqtOzUXuqFoZcaBR526anQtwoamsn 5g== 
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3qc6uw8hjs-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 04 May 2023 09:09:19 +0200
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id DCD5210002A;
+	Thu,  4 May 2023 09:09:16 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id F0066210F61;
+	Thu,  4 May 2023 09:09:15 +0200 (CEST)
+Received: from [10.201.21.93] (10.201.21.93) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Thu, 4 May
+ 2023 09:09:15 +0200
+Message-ID: <95076d3b-5667-8cb3-c09a-e0b7dc2b03c3@foss.st.com>
+Date: Thu, 4 May 2023 09:09:14 +0200
 MIME-Version: 1.0
-In-Reply-To: <64521df9.170a0220.24317.c9f2@mx.google.com>
-X-Cookie: Avoid contact with eyes.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [Linux-stm32] [RFC PATCH 0/1] Categorize ARM dts directory
+Content-Language: en-US
+To: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh+dt@kernel.org>
+CC: <linux-aspeed@lists.ozlabs.org>, <linux-realtek-soc@lists.infradead.org>,
+        <linux-arm-kernel@axis.com>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <chrome-platform@lists.linux.dev>, <linux-samsung-soc@vger.kernel.org>,
+        <openbmc@lists.ozlabs.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        Geert Uytterhoeven
+	<geert@linux-m68k.org>,
+        <linux-sunxi@lists.linux.dev>, <devicetree@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-actions@lists.infradead.org>,
+        <linux-unisoc@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-rpi-kernel@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+        <linux-amlogic@lists.infradead.org>,
+        Linux-OMAP <linux-omap@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        Christian Marangi <ansuelsmth@gmail.com>,
+        Linux-Renesas
+	<linux-renesas-soc@vger.kernel.org>,
+        <kernel@dh-electronics.com>, Olof
+ Johansson <olof@lixom.net>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        "linux-oxnas@groups.io" <linux-oxnas@groups.io>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <99b49e6b-e963-415a-a2c9-72505087833c@app.fastmail.com>
+From: Alexandre TORGUE <alexandre.torgue@foss.st.com>
+In-Reply-To: <99b49e6b-e963-415a-a2c9-72505087833c@app.fastmail.com>
+X-Originating-IP: [10.201.21.93]
+X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-04_04,2023-05-03_01,2023-02-09_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230503_182847_318514_9DCAA9A0 
-X-CRM114-Status: GOOD (  25.61  )
+X-CRM114-CacheID: sfid-20230504_000951_290058_06B80A6D 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,244 +114,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2200472109982437792=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============2200472109982437792==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="o90CsH8qM5xCizKV"
-Content-Disposition: inline
-
-
---o90CsH8qM5xCizKV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, May 03, 2023 at 01:40:25AM -0700, KernelCI bot wrote:
-
-The KernelCI bisection bot found that commit db6f68b51e5c ("media:
-verisilicon: Do not set context src/dst formats in reset functions")
-is triggering problems at boot on rk3399-gru-kevin - there are oopses
-printed early on in userspace initialisation while enumerating the v4l
-devices.  The top of the backtrace is:
-
-<4>[   17.793601]  hantro_try_fmt+0xa4/0x27c [hantro_vpu]
-<4>[   17.805556]  hantro_set_fmt_out+0x3c/0x298 [hantro_vpu]
-<4>[   17.817914]  hantro_reset_raw_fmt+0x98/0x128 [hantro_vpu]
-<4>[   17.830429]  hantro_set_fmt_cap+0x240/0x254 [hantro_vpu]
-<4>[   17.842877]  hantro_reset_encoded_fmt+0x94/0xcc [hantro_vpu]
-<4>[   17.855694]  hantro_reset_fmts+0x18/0x34 [hantro_vpu]
-<4>[   17.867801]  hantro_open+0xd4/0x200 [hantro_vpu]
-
-which does seem relevant.
-
-I've left the full report below, including more details like links to
-full logs as well as a tag for the bot, below:
-
-> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-> * This automated bisection report was sent to you on the basis  *
-> * that you may be involved with the breaking commit it has      *
-> * found.  No manual investigation has been done to verify it,   *
-> * and the root cause of the problem may be somewhere else.      *
-> *                                                               *
-> * If you do send a fix, please include this trailer:            *
-> *   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
-> *                                                               *
-> * Hope this helps!                                              *
-> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
->=20
-> mainline/master bisection: baseline.dmesg.alert on rk3399-gru-kevin
->=20
-> Summary:
->   Start:      865fdb08197e Merge tag 'input-for-v6.4-rc0' of git://git.ke=
-rnel.org/pub/scm/linux/kernel/git/dtor/input
->   Plain log:  https://storage.kernelci.org/mainline/master/v6.3-12423-g86=
-5fdb08197e/arm64/defconfig+arm64-chromebook+videodec/gcc-10/lab-collabora/b=
-aseline-rk3399-gru-kevin.txt
->   HTML log:   https://storage.kernelci.org/mainline/master/v6.3-12423-g86=
-5fdb08197e/arm64/defconfig+arm64-chromebook+videodec/gcc-10/lab-collabora/b=
-aseline-rk3399-gru-kevin.html
->   Result:     db6f68b51e5c media: verisilicon: Do not set context src/dst=
- formats in reset functions
->=20
-> Checks:
->   revert:     PASS
->   verify:     PASS
->=20
-> Parameters:
->   Tree:       mainline
->   URL:        https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/li=
-nux.git
->   Branch:     master
->   Target:     rk3399-gru-kevin
->   CPU arch:   arm64
->   Lab:        lab-collabora
->   Compiler:   gcc-10
->   Config:     defconfig+arm64-chromebook+videodec
->   Test case:  baseline.dmesg.alert
->=20
-> Breaking commit found:
->=20
-> -------------------------------------------------------------------------=
-------
-> commit db6f68b51e5c7b432185c6d872d03901c07136d2
-> Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Date:   Mon Feb 20 10:48:44 2023 +0000
->=20
->     media: verisilicon: Do not set context src/dst formats in reset funct=
-ions
->    =20
->     Setting context source and destination formats should only be done
->     in hantro_set_fmt_out() and hantro_set_fmt_cap() after check that
->     the targeted queue is not busy.
->     Remove these calls from hantro_reset_encoded_fmt() and
->     hantro_reset_raw_fmt() to clean the driver.
->    =20
->     Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->     Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
->     Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
->     Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
-edia/platform/verisilicon/hantro_v4l2.c
-> index c0d427956210..d8aa42bd4cd4 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -382,13 +382,10 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
-> =20
->  	vpu_fmt =3D hantro_get_default_fmt(ctx, true);
-> =20
-> -	if (ctx->is_encoder) {
-> -		ctx->vpu_dst_fmt =3D vpu_fmt;
-> +	if (ctx->is_encoder)
->  		fmt =3D &ctx->dst_fmt;
-> -	} else {
-> -		ctx->vpu_src_fmt =3D vpu_fmt;
-> +	else
->  		fmt =3D &ctx->src_fmt;
-> -	}
-> =20
->  	hantro_reset_fmt(fmt, vpu_fmt);
->  	fmt->width =3D vpu_fmt->frmsize.min_width;
-> @@ -408,11 +405,9 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
->  	raw_vpu_fmt =3D hantro_get_default_fmt(ctx, false);
-> =20
->  	if (ctx->is_encoder) {
-> -		ctx->vpu_src_fmt =3D raw_vpu_fmt;
->  		raw_fmt =3D &ctx->src_fmt;
->  		encoded_fmt =3D &ctx->dst_fmt;
->  	} else {
-> -		ctx->vpu_dst_fmt =3D raw_vpu_fmt;
->  		raw_fmt =3D &ctx->dst_fmt;
->  		encoded_fmt =3D &ctx->src_fmt;
->  	}
-> -------------------------------------------------------------------------=
-------
->=20
->=20
-> Git bisection log:
->=20
-> -------------------------------------------------------------------------=
-------
-> git bisect start
-> # good: [d53c3eaaef6a05fec04e8b5990d97d7216eb5e42] Merge tag 'soc-dt-6.4'=
- of git://git.kernel.org/pub/scm/linux/kernel/git/soc/soc
-> git bisect good d53c3eaaef6a05fec04e8b5990d97d7216eb5e42
-> # bad: [865fdb08197e657c59e74a35fa32362b12397f58] Merge tag 'input-for-v6=
-=2E4-rc0' of git://git.kernel.org/pub/scm/linux/kernel/git/dtor/input
-> git bisect bad 865fdb08197e657c59e74a35fa32362b12397f58
-> # bad: [6e98b09da931a00bf4e0477d0fa52748bf28fcce] Merge tag 'net-next-6.4=
-' of git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next
-> git bisect bad 6e98b09da931a00bf4e0477d0fa52748bf28fcce
-> # bad: [c3558a6b2a75d9adacf15dd7fae79dbfffa7ebe4] Merge tag 'fsverity-for=
--linus' of git://git.kernel.org/pub/scm/fs/fsverity/linux
-> git bisect bad c3558a6b2a75d9adacf15dd7fae79dbfffa7ebe4
-> # good: [289af45508ca890585f329376d16e08f41f75bd5] Merge tag 'exynos-drm-=
-next-for-v6.4-2' of git://git.kernel.org/pub/scm/linux/kernel/git/daeinki/d=
-rm-exynos into drm-next
-> git bisect good 289af45508ca890585f329376d16e08f41f75bd5
-> # bad: [f5468bec213ec2ad3f2724e3f1714b3bc7bf1515] Merge tag 'regmap-v6.4'=
- of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regmap
-> git bisect bad f5468bec213ec2ad3f2724e3f1714b3bc7bf1515
-> # bad: [017984559d09aef296011f9a8e9ce855404ad519] media: common: saa7146:=
- add support for missing .vidioc_try_fmt_vbi_cap
-> git bisect bad 017984559d09aef296011f9a8e9ce855404ad519
-> # bad: [428bbf4be4018aefa26e4d6531779fa8925ecaaf] media: camss: Convert t=
-o platform remove callback returning void
-> git bisect bad 428bbf4be4018aefa26e4d6531779fa8925ecaaf
-> # good: [e004c637fb1d4b975d476f800675ec18c9502cc9] media: i2c: ov5670: Pr=
-operly handle !CONFIG_HAVE_CLK
-> git bisect good e004c637fb1d4b975d476f800675ec18c9502cc9
-> # bad: [db6f68b51e5c7b432185c6d872d03901c07136d2] media: verisilicon: Do =
-not set context src/dst formats in reset functions
-> git bisect bad db6f68b51e5c7b432185c6d872d03901c07136d2
-> # good: [75c38caf66a10983acc5a59069bfc9492c43d682] media: mtk-jpeg: Fixes=
- jpeghw multi-core judgement
-> git bisect good 75c38caf66a10983acc5a59069bfc9492c43d682
-> # good: [6d020d81b91af80a977061e82de25cafa4456af5] media: mediatek: vcode=
-c: Make MM21 the default capture format
-> git bisect good 6d020d81b91af80a977061e82de25cafa4456af5
-> # good: [5bbb6e2ca67477ab41163b32e6b3444faea74a5e] media: mediatek: vcode=
-c: add params to record lat and core lat_buf count
-> git bisect good 5bbb6e2ca67477ab41163b32e6b3444faea74a5e
-> # good: [d227af847ac2d7d90350124a1b2451e4fc1f050c] media: mediatek: vcode=
-c: add core decode done event
-> git bisect good d227af847ac2d7d90350124a1b2451e4fc1f050c
-> # good: [2e0ef56d81cb2569624d288b7e95a8a2734a7c74] media: mediatek: vcode=
-c: making sure queue_work successfully
-> git bisect good 2e0ef56d81cb2569624d288b7e95a8a2734a7c74
-> # good: [960badda95f10fb0c60f6f64978b19eafa9507a7] media: mediatek: vcode=
-c: change lat thread decode error condition
-> git bisect good 960badda95f10fb0c60f6f64978b19eafa9507a7
-> # first bad commit: [db6f68b51e5c7b432185c6d872d03901c07136d2] media: ver=
-isilicon: Do not set context src/dst formats in reset functions
-> -------------------------------------------------------------------------=
-------
->=20
->=20
-> -=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-
-> Groups.io Links: You receive all messages sent to this group.
-> View/Reply Online (#41611): https://groups.io/g/kernelci-results/message/=
-41611
-> Mute This Topic: https://groups.io/mt/98657502/1131744
-> Group Owner: kernelci-results+owner@groups.io
-> Unsubscribe: https://groups.io/g/kernelci-results/unsub [broonie@kernel.o=
-rg]
-> -=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-
->=20
->=20
-
---o90CsH8qM5xCizKV
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRTCkYACgkQJNaLcl1U
-h9Cosgf+Mwyy2qZKSoOX9nSW4qJ/w48N7jUEfM8wfrCKVhV8Zes2DFbCFpAY9BKg
-O9RXAkVJ8ElWyGEYqmfIFzGqwso5XhiYIeVC7tdKeQGE9ij+KgkylEwHNiLN+BgH
-bzg2SlBIXPt3Q//7kxlJV6WmB5NbMsSRmbOJLH+IUIj/1Wlze6P0PGitV39Zgjg4
-Lwo8De1WuwG6ltd7a7gvlKwD3prJGsaoy7tpnxVK9vRaDT7QsibAkVErAP49KUPq
-+yB+byC8wNQ2pVVIfHvduy37JRlA/tAIXkRndJ5cDwo3II14EKPHhuPpsdgt8n8q
-b9uMxT9EonqAgNVodiI2MPDgPu8IIw==
-=JOS8
------END PGP SIGNATURE-----
-
---o90CsH8qM5xCizKV--
-
-
---===============2200472109982437792==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2200472109982437792==--
-
+T24gNS8zLzIzIDEzOjAyLCBBcm5kIEJlcmdtYW5uIHdyb3RlOgo+IE9uIFR1ZSwgTWF5IDIsIDIw
+MjMsIGF0IDIxOjQwLCBSb2IgSGVycmluZyB3cm90ZToKPj4gT24gVHVlLCBNYXkgMiwgMjAyMyBh
+dCAzOjE14oCvQU0gQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4gd3JvdGU6Cj4gCgouLi4K
+Cj4gCj4+ICAgICAgJ3N0bScgOiAnc3RtMzInLAo+PiAgICAgICdzdGknIDogJ3N0aScsCj4+ICAg
+ICAgJ3N0LXBpbicgOiAnc3RpJywKPj4gICAgICAnc3RlJyA6ICdzdC1lcmljc3NvbicsCj4+ICAg
+ICAgJ3NwZWFyJyA6ICdzcGVhcicsCj4gCj4gSSB3b3VsZCBwdXQgYWxsIGZpdmUgb2YgdGhlc2Ug
+aW50byAnc3QnLiBUaGUgdXg1MDAgd2FzIGRldmVsb3BlZAo+IGluIHN0LWVyaWNzc29uLCBidXQg
+bGFzdCBzb2xkIGJ5IHN0LCBhbmQgdGhlIG90aGVyIG9uZXMgYXJlIGFsbAo+IG9yaWdpbmFsIHN0
+IHByb2R1Y3RzLgoKQWNrZWQtYnk6IEFsZXhhbmRyZSBUT1JHVUUgPGFsZXhhbmRyZS50b3JndWVA
+c3QuY29tPgoKdGhhbmtzCkFsZXgKCj4gCj4gICAgICAgIEFybmQKPiBfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXN0bTMyIG1haWxpbmcgbGlz
+dAo+IExpbnV4LXN0bTMyQHN0LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5jb20KPiBodHRwczovL3N0
+LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5jb20vbWFpbG1hbi9saXN0aW5mby9saW51eC1zdG0zMgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
