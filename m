@@ -4,65 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7E3FC7EE21
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 11:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A1DC7EE26
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 11:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Subject:References:In-Reply-To:
-	Message-ID:To:From:MIME-Version:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Date:References:
+	In-Reply-To:Message-Id:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GaES3lkxoZwFRUmNf5o88t32fEtkMCZQjo/kuaEVddo=; b=h9qooiq64+yNih
-	T+wh0vr6IfzinlsmqURir6jHZPY/7EPg7WDzjjFcMx4PGrN9qwpL58DgAYLhwGyBJlW4cu9N0hNv4
-	YLfV85zMr7mCJYcDjEiZudpSASVtq8Myzerd722yNCxD/EYEt+INMjrEHKB5Y+ycUR0HmDeFdoqzA
-	nnNyU5PSecb+XMJ7N9zThuR2AE5WLO6/xGz1ZItKUsd8NBZnTLAVhgJb6tNLrszgQNtuOiK7JYtT8
-	rskuOtYvVX8XnnxICjREajsS8g3aBRoC2V8RjXOJtcBwEsPd5PBP7jIov4oPsdZ9PUebM5PGdz72p
-	q1EjATshs8NZLIPXWj8g==;
+	List-Owner; bh=cdSrOTH2BjVUdwk554CmTehd9vavOkt+mSizCfTr7Eo=; b=nmbzIRHQC8tzXL
+	v9Zhcmy/ff7f4VbL+rCaydwvRrzsZ9BuqIbYEQXrnizv86RDFqnpW/5GeyW5hnkrBk12Q6hN5IfXU
+	pHVpTO7R8Oymq1232tyutLez6esFAuqEshfeSr8rxmrZFlFY48F839m6+kdyhjRLCO4VU1c5HbChz
+	Z6LAKB039c1PJd5+FxWDvrrTMWUQFc3QxE1lW+rcQXyYLmPc+O/PVf2+LX89+EWW2UMZLHBx/OBUs
+	dgv6WGggW6PaECjRRrP+9s8/2RXo3bvq3K6478ucqWvU3Mg2ai57YTWdA6cBH1x58LbvhHS3Pvxk7
+	aBup1YwOHQ7nrawhL7wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puWi6-007aes-2C;
-	Thu, 04 May 2023 11:01:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1puXOj-007iKI-0n;
+	Thu, 04 May 2023 11:45:21 +0000
+Received: from new3-smtp.messagingengine.com ([66.111.4.229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1puWi2-007adj-0B;
-	Thu, 04 May 2023 11:01:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DA466333A;
-	Thu,  4 May 2023 11:01:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 122CFC433D2;
-	Thu,  4 May 2023 11:01:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683198072;
-	bh=GCbNqsULn4kqqYRz3TpLCrpoIO7DZgrmGlreBxukNAU=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=QYZScNZE2jnTGBHkTp5H2tFb1Vz3Q4iiQO8X8T1J238/Kx1/A6wRVzRJZF2hcMONu
-	 kbWfqQ56xdAcpemfI/6UWfnXlXSoyMpDfIgYZtZ+5IhIBe/XApjmt1NiXfk2XTyX5/
-	 kDUXPM7wbL71xiWfVdIkv0s5MP3YWcUlHk4dX66K8ZGyWfkKgNSiz30+gRHvVSrx37
-	 1XTYnxk46BL6MMbskn66JV7ggzb2JiLsqQRKTyofzlnTuS+sPDdwbzOcMjStYyqVcz
-	 UHJPPuInK0zoTfAlKoSHxOgd4GmShRC50LITWf0FKcZBO1JprgvoOWmdnIGUSaaP8s
-	 pQozNynB1F+vg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id E0211C41677;
-	Thu,  4 May 2023 11:01:11 +0000 (UTC)
-MIME-Version: 1.0
-From: "Kernel.org Bugbot" <bugbot@kernel.org>
-To: linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de, bugs@lists.linux.dev
-Message-ID: <20230504-b217334c5-347147dfa102@bugzilla.kernel.org>
-In-Reply-To: <20230419-b217334c0-3101f9f4b426@bugzilla.kernel.org>
-References: <20230419-b217334c0-3101f9f4b426@bugzilla.kernel.org>
-Subject: Re: [PATCH] pinctrl: rockchip: rk3328: rk3328_mux_recalced_data:
- fix bit alignment
-X-Bugzilla-Product: Linux
-X-Bugzilla-Component: Kernel
-X-Mailer: peebz 0.1
-Date: Thu,  4 May 2023 11:01:11 +0000 (UTC)
+	id 1puXOd-007iG2-1G;
+	Thu, 04 May 2023 11:45:17 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 7F8E7580E74;
+	Thu,  4 May 2023 07:45:09 -0400 (EDT)
+Received: from imap51 ([10.202.2.101])
+  by compute6.internal (MEProxy); Thu, 04 May 2023 07:45:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1683200709; x=1683207909; bh=rv
+	dn+vPe48KPGDs0leGYpaM1jtugXaszLFPftQ7tCmQ=; b=K3vb/txYtZKnDaX7av
+	yXDErCEtK8JWoojEYV/KOhr/Dv3+/xOdTNnlfPilF7nZ1vUsdDP7l+AgwDbRQSuE
+	5AUT6SPooYuy01IO6jURwU7twh1iCROPuF4Hz3zAUJdbJERGRcVw7wLAOdZON0f2
+	AhZwSiy8u7IYmN4dU7xIQbvrXShHBkCkYnYnC0IoMvFDdx6WQKJ4rLgfLXj0hCW/
+	ckDTGcWhommWigg7s6rAmkjQ1+FesSQJLbAeZIs8XTPkdZlzCBQmlaWbCOt46UI7
+	TaQrFKOEB7Nrxln82bVy1GZqe9KuSEr+WJIPa6wdhqmLquSGvkDqg3ABmaiUtN8f
+	/V6A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; t=1683200709; x=1683207909; bh=rvdn+vPe48KPG
+	Ds0leGYpaM1jtugXaszLFPftQ7tCmQ=; b=Pw6Rg+XVCkD8w3YHy7jGkIyjxzhiF
+	bN/nWbfwIR4ZK/F9LSR2lSdh5WuOB6Zd/S/dxjLYOJX2pQKrTV0T8idbkjcOcQF5
+	SwoSgg9l8jKzkx3OOYZXp9IzAPIUyKCbJYXfJ1Co1zpAhWXPmQXpDlG8hbdhXCqo
+	Ide3agAfwauTe+q41YGw5qJ2db95dqZn1JU+kHQVa7baSeKRpcpIB14hYe498UV1
+	qSbU08XfSJ51vZL4nbzqAVErhFeOyUkPmcXy3uA1E2ZHbZ12aj+TO8581K6JMOqx
+	WSKLMOUGfU3GMPJTvVpyvFa7UxM2y027LOl0hEHvk1DeHWVGhQTOePmWQ==
+X-ME-Sender: <xms:xJpTZBRFDKFjpUX2zSPaH_4Nc8R2Qpk2no6uSQvOfRDhdZKlcM2S1w>
+    <xme:xJpTZKx9r-aiclDw81Wu7rGAVEGjfn7b8plKzDI0Fm4sbn8ToKgyao_lHGOMzamjl
+    uNZIJ6W5xJhlsHwBQU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeftddggedvucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
+    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
+    htvghrnhepffehueegteeihfegtefhjefgtdeugfegjeelheejueethfefgeeghfektdek
+    teffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
+    hrnhgusegrrhhnuggsrdguvg
+X-ME-Proxy: <xmx:xJpTZG1ikd38RTtD1R071POfBXt5S1hFZ6Fml4H3RBTwbc4m3wVYQA>
+    <xmx:xJpTZJBCtHzUiKeZoBrJeZc8fH8Ed5ISfh9DPuxYIqK6axwqLg053Q>
+    <xmx:xJpTZKh7kYU5y_FppCdiasiBdQUPjv6lvIKqgolP6FEiBuWg49SF6g>
+    <xmx:xZpTZKDU9-4LKKK2Ti8y1N5SEny0C66Vm4BJmIaG1feFi_OTmPFchA>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 5DF60B60089; Thu,  4 May 2023 07:45:08 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-386-g2404815117-fm-20230425.001-g24048151
+Mime-Version: 1.0
+Message-Id: <6ece505b-1075-48e6-9ff9-1673014e5df1@app.fastmail.com>
+In-Reply-To: <ZFOE4wd31hpJh0ro@shell.armlinux.org.uk>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
+ <CAL_Jsq+RQQ-ADMxLPUFwk6S6kGmb6oNDy4k52fnU0EtbUvqmSA@mail.gmail.com>
+ <CAMuHMdWNTE48MFy6fqxAsfMWz9b6E7dVNXtXtESP95sxk2PGwA@mail.gmail.com>
+ <CAL_JsqJthKTm8bhRF2B=ae1tvtPeYYXx_Tm76qQtSwLtH5C6VA@mail.gmail.com>
+ <720a2829-b6b5-411c-ac69-9a53e881f48d@app.fastmail.com>
+ <CAL_JsqKCtmkwzKa01gyG65fH8ye6R3KhR41PJbJhOJ4X9j=znA@mail.gmail.com>
+ <ZFOE4wd31hpJh0ro@shell.armlinux.org.uk>
+Date: Thu, 04 May 2023 13:44:37 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Russell King" <linux@armlinux.org.uk>, "Rob Herring" <robh+dt@kernel.org>
+Cc: "Geert Uytterhoeven" <geert@linux-m68k.org>,
+ "Olof Johansson" <olof@lixom.net>,
+ "Christian Marangi" <ansuelsmth@gmail.com>,
+ "Krzysztof Kozlowski" <krzk@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, Linux-OMAP <linux-omap@vger.kernel.org>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org,
+ "linux-oxnas@groups.io" <linux-oxnas@groups.io>,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-realtek-soc@lists.infradead.org
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_040114_155595_E405E087 
-X-CRM114-Status: UNSURE (   6.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230504_044516_075385_AA48FFCE 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,24 +129,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-antwain.schneider added an attachment on Kernel.org Bugzilla:
+On Thu, May 4, 2023, at 12:11, Russell King (Oracle) wrote:
+> On Tue, May 02, 2023 at 02:40:19PM -0500, Rob Herring wrote:
+>> I think the only issue remaining is finalizing the mapping of
+>> platforms to subdirs. What I have currently is a mixture of SoC
+>> families and vendors. The most notable are all the Freescale/NXP
+>> platforms, pxa, socfpga, and stm32. It's not consistent with arm64
+>> either. Once that's finalized, I still need to go update MAINTAINERS.
+>
+> I haven't followed this discussion at all, so here's a question.
+>
+> What does this mean for the _installed_ dtb files? Do they move
+> location? If they do, lots is going to break, because there will
+> be u-boot configurations and other scripts that assume the flat
+> directory structure for the installed dtb files.
+>
+> I don't think changing the installed dtb structure is acceptable
+> at this point in time. It's something that _should_ have been
+> thought about when ARM was converted to dtb, it's too late to be
+> changing that now.
 
-Created attachment 304214
-both parts of the recalc in one handy patch
+Rob said earlier that his script does keep a flat directory
+for the output of 'make dtbs_install'.
 
-david wu's original patch lovingly restored for modern audiences
-
-File: pinctrl-rockchip.diff (text/plain)
-Size: 1.61 KiB
-Link: https://bugzilla.kernel.org/attachment.cgi?id=304214
----
-both parts of the recalc in one handy patch
-
-You can reply to this message to join the discussion.
--- 
-Deet-doot-dot, I am a bot.
-Kernel.org Bugzilla (peebz 0.1)
-
+     Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
