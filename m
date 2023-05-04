@@ -4,93 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17196C77B78
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 14:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2DBC7EE21
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 17:36:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ULtH9TYAu8PooR2L2GH8E+vTR0A7Ssou+SyrTCmtzmg=; b=uHUkQ8GvBhfhEB
-	zAEZ0wzQsbAxMuvxKFN1sSXRHHo96+rDl823OGW759SNjnaKmSj07NM99vdnSZpco0SD8Hq86xMaM
-	9nv20ng8NqXWcHeMkm4lDR7BSJVIapcD0ws1uXxiILO9ksxlLD+EQ6MIcea8fdUDyzeT3/SEl9Bg/
-	Wm7jozdqfn+CMn6/YUagSVE+R6DhCjVj4w0/6yhotboFV1iZ9sxMVMlS6D0xQY84O8OECM8fTLk7X
-	BIw4XWs4Brt6Mx7RS0UQO1h8g8xtprirfSl+mGTQPDL1BnxC9o/pWcRsdImNsqOcfSeJsQU3ZKeXi
-	7bMpnKNw6HZGjkg88ftQ==;
+	List-Owner; bh=U/EjTMBIsJAJkad8e2CSDVQ6c/3QMDl9/2mTOb+z6ZA=; b=toqMdtlgYKnMAm
+	pk81NFgmJpn8SKZ4Y1OxbIPBivxP/b4FFVw7P5kxUBeRavBe9XJjrZAPKNnHtT6cpbWe69BsadW5J
+	a/9Kw6+Xfo9rV57BpBBdP6KkWA6eErcjE1+pjJr1RO8+ceTBQdwSDgLOZHEKNOH20KNgbywjncm/X
+	0+NzzHzZMguV7J4YFj0qrwHn1hUGNs2wHDesKj/mF2q/ZTyxWFUKH8FHq2QIj0XhyAXDMH+TmhtFU
+	qlsPISOsLZuCRD574Wa6uHuVq971Jm8tDo1A6CAGN6ptypxy4kQfADavmDqSHmggkDLrXbyzeboYP
+	s3a4l9rwxlgNiAKYxLnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pua7M-0086wV-0R;
-	Thu, 04 May 2023 14:39:36 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pucsY-008R1S-2k;
+	Thu, 04 May 2023 17:36:30 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pua7H-0086us-2g
+	id 1pucsU-008QxN-2e
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 May 2023 14:39:34 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-50bc040c7b8so915938a12.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 May 2023 07:39:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683211169; x=1685803169;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=RtHFIOyHUHDm6OwF3/rRw5NdicRws7FTGgdEZwPjkL0=;
-        b=B2ywh6muaT5cNRLxTdpb3TEH/PiIrCqdXYixzvXno5GZTT0ZscAElKb2bmGGt2PxHR
-         /OudDMGAa+SYwMxo5fUixcqCVy1/Malqex3Hr8MCOIX3wHyzpLbAXr2kovOg6hdJqacT
-         W8CjMqQZMpaV1oSgry9csxJq6ob8N+tHo9oNEqVJ1Fff8skrMNxBl/rZcVK5MDTOi/TO
-         /ZjkXUFVBynZE2GU7NA4iNZ/iFfAJlEhz7hCm1xOYo/DdETSzbBaFgS2oAroY0CtX0ry
-         17lAR5bXcJmJK1qpPq/p7NaN8h8NZ8vi5flVyaEx6ACgn9Z0apLJ1a2+GFHftIjAHWTh
-         br4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683211169; x=1685803169;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RtHFIOyHUHDm6OwF3/rRw5NdicRws7FTGgdEZwPjkL0=;
-        b=HB7rDobsTaFLPqkH5dR+YhGT5ssvD1AgQSHLEGZYJ/hyqMKVJYG+/6wsMZBmy9VjPu
-         v2oTF+yT0GsrSiY6xI6ppuyer58PFx7alyLSBJQi/3KI8I5kVD9v5ytQQ4vkLOSPWJCO
-         OpVLcF21xUX8catnu1N95h48+6YLVTqhFNhXqCJOij9C+HgK5j6K23Wqw34Gp/apxtcb
-         pJAGU04HCiXfZyEhmCEpRwMmy8Ndd8hZL+6w4hhD+epNQfKAhE++ytVUdQDXA9Q70V03
-         8y0DMgzHWFYp3GMYE8nwFgUTpmB6VGmEa6donLWk9Zzk8P47053nPM4zop6ju58yzgjg
-         BeYQ==
-X-Gm-Message-State: AC+VfDzrTAmTDvHSFtv5HhqGhTqhBzRTtTrTKMzbU44ieklYh1q5748e
-	x8TOLUcNeomY8DUzpVywM7QgWw==
-X-Google-Smtp-Source: ACHHUZ7Z3L26zZEhzBRypzDcsBcd1kRVAs82E/aA2e4syMmGyPokB7NYew5voOG/UPvwcxk9Hlq1gA==
-X-Received: by 2002:a17:907:9693:b0:953:9b27:8f00 with SMTP id hd19-20020a170907969300b009539b278f00mr6645560ejc.74.1683211169112;
-        Thu, 04 May 2023 07:39:29 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:cbf1:e7ef:fb81:e912? ([2a02:810d:15c0:828:cbf1:e7ef:fb81:e912])
-        by smtp.gmail.com with ESMTPSA id d1-20020a170907272100b00965bf86c00asm302384ejl.143.2023.05.04.07.39.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 May 2023 07:39:28 -0700 (PDT)
-Message-ID: <2490f7dd-9b6b-2865-4e44-37808b167c11@linaro.org>
-Date: Thu, 4 May 2023 16:39:27 +0200
+	Thu, 04 May 2023 17:36:28 +0000
+Received: from jupiter.universe (dyndsl-091-248-211-176.ewe-ip-backbone.de [91.248.211.176])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E75A866056FC;
+	Thu,  4 May 2023 18:36:22 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1683221783;
+	bh=NyGVHCdQfQojOkYLVTgp5/MPvqiRvj7fGFEwI2FwT6I=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=m460v7kacOv53UmdrWAwEAOnQEzzXGEYGNIdviGiAhsm8p+8wTV0ApVN1PRjQ9S80
+	 cqTOlGjwc2jnvbkN9XAFWbAk75ThZsm0c/RVvy4Nn/xUalLAtn4O/+Q12lLdDPmxnh
+	 g4ofkt1fE9IybGnL73Vptw7W6qHlHsQdjcmfNFhWCjhH1FKHJdHOGjXdyo0sD65izr
+	 PVDqsHuBw3SFjAfBi31eargiUmWvHjLp9wIBjGx7u4oL4W8EgSCAMW+lqHzgZtgb5T
+	 BSoJfW5AD99/hb/mtlh1JDnGSL3ih3OX0tXh1AcJXLlS21ur4yA8bTRLMiO5z5aKj6
+	 jHHrTEgygbCDw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id D83D84807E1; Thu,  4 May 2023 19:36:20 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Vincent Legoll <vincent.legoll@gmail.com>
+Subject: [PATCH v8 02/14] mfd: rk808: convert to device managed resources
+Date: Thu,  4 May 2023 19:36:06 +0200
+Message-Id: <20230504173618.142075-3-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230504173618.142075-1-sebastian.reichel@collabora.com>
+References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH 2/8] dt-bindings: nvmem: rockchip-otp: Add compatible for
- RK3588
-Content-Language: en-US
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Shreeya Patel <shreeya.patel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20230501084401.765169-1-cristian.ciocaltea@collabora.com>
- <20230501084401.765169-3-cristian.ciocaltea@collabora.com>
- <0678c24c-33ae-7e99-7bb6-d15dc5a7ed76@linaro.org>
- <a5d4a5be-b658-d9fe-59b8-69199329446d@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <a5d4a5be-b658-d9fe-59b8-69199329446d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_073931_870407_2D692A74 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20230504_103627_112709_DBFD4323 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,49 +91,155 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/05/2023 16:14, Cristian Ciocaltea wrote:
->>> +        reset-names:
->>> +          items:
->>> +            - const: phy
->>> +
->>> +  - if:
->>> +      properties:
->>> +        compatible:
->>> +          contains:
->>> +            enum:
->>> +              - rockchip,rk3588-otp
->>> +    then:
->>> +      properties:
->>> +        clocks:
->>> +          minItems: 4
->>> +          maxItems: 4
->>> +        clock-names:
->>> +          items:
->>> +            - const: otpc
->>> +            - const: apb
->>> +            - const: arb
->>> +            - const: phy
->>
->> Keep the same order of clocks as in older variants, so you can keep the
->> list in top-level place and here only minItems: 4.
->>
->>> +        resets:
->>> +          minItems: 1
->>> +          maxItems: 3
->>> +        reset-names:
->>> +          items:
->>> +            - const: otpc
->>
->> Shouldn't this be phy?
-> 
-> It seems there is no reset for PHY, or at least I couldn't find any
-> reference in the RK3588 TRM, nor in the downstream driver implementation.
+Fully convert the driver to device managed resources.
 
-OK, just to be sure that this is not the same reset as rk3308 just
-differently named in consumer.
+Acked-for-MFD-by: Lee Jones <lee@kernel.org>
+Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/mfd/rk808.c | 64 ++++++++++++++++-----------------------------
+ 1 file changed, 22 insertions(+), 42 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 0f22ef61e817..a996a43f9204 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -548,13 +548,11 @@ static const struct regmap_irq_chip rk818_irq_chip = {
+ 	.init_ack_masked = true,
+ };
+ 
+-static struct i2c_client *rk808_i2c_client;
+-
+-static void rk808_pm_power_off(void)
++static int rk808_power_off(struct sys_off_data *data)
+ {
++	struct rk808 *rk808 = data->cb_data;
+ 	int ret;
+ 	unsigned int reg, bit;
+-	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+ 
+ 	switch (rk808->variant) {
+ 	case RK805_ID:
+@@ -575,16 +573,18 @@ static void rk808_pm_power_off(void)
+ 		bit = DEV_OFF;
+ 		break;
+ 	default:
+-		return;
++		return NOTIFY_DONE;
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
++		dev_err(&rk808->i2c->dev, "Failed to shutdown device!\n");
++
++	return NOTIFY_DONE;
+ }
+ 
+-static int rk808_restart_notify(struct notifier_block *this, unsigned long mode, void *cmd)
++static int rk808_restart(struct sys_off_data *data)
+ {
+-	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
++	struct rk808 *rk808 = data->cb_data;
+ 	unsigned int reg, bit;
+ 	int ret;
+ 
+@@ -600,16 +600,11 @@ static int rk808_restart_notify(struct notifier_block *this, unsigned long mode,
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808_i2c_client->dev, "Failed to restart device!\n");
++		dev_err(&rk808->i2c->dev, "Failed to restart device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+ 
+-static struct notifier_block rk808_restart_handler = {
+-	.notifier_call = rk808_restart_notify,
+-	.priority = 192,
+-};
+-
+ static void rk8xx_shutdown(struct i2c_client *client)
+ {
+ 	struct rk808 *rk808 = i2c_get_clientdata(client);
+@@ -745,9 +740,9 @@ static int rk808_probe(struct i2c_client *client)
+ 		return -EINVAL;
+ 	}
+ 
+-	ret = regmap_add_irq_chip(rk808->regmap, client->irq,
+-				  IRQF_ONESHOT, -1,
+-				  rk808->regmap_irq_chip, &rk808->irq_data);
++	ret = devm_regmap_add_irq_chip(&client->dev, rk808->regmap, client->irq,
++				       IRQF_ONESHOT, -1,
++				       rk808->regmap_irq_chip, &rk808->irq_data);
+ 	if (ret) {
+ 		dev_err(&client->dev, "Failed to add irq_chip %d\n", ret);
+ 		return ret;
+@@ -771,17 +766,23 @@ static int rk808_probe(struct i2c_client *client)
+ 			      regmap_irq_get_domain(rk808->irq_data));
+ 	if (ret) {
+ 		dev_err(&client->dev, "failed to add MFD devices %d\n", ret);
+-		goto err_irq;
++		return ret;
+ 	}
+ 
+ 	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+-		rk808_i2c_client = client;
+-		pm_power_off = rk808_pm_power_off;
++		ret = devm_register_sys_off_handler(&client->dev,
++				    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
++				    &rk808_power_off, rk808);
++		if (ret)
++			return dev_err_probe(&client->dev, ret,
++					     "failed to register poweroff handler\n");
+ 
+ 		switch (rk808->variant) {
+ 		case RK809_ID:
+ 		case RK817_ID:
+-			ret = register_restart_handler(&rk808_restart_handler);
++			ret = devm_register_sys_off_handler(&client->dev,
++							    SYS_OFF_MODE_RESTART, SYS_OFF_PRIO_HIGH,
++							    &rk808_restart, rk808);
+ 			if (ret)
+ 				dev_warn(&client->dev, "failed to register rst handler, %d\n", ret);
+ 			break;
+@@ -792,26 +793,6 @@ static int rk808_probe(struct i2c_client *client)
+ 	}
+ 
+ 	return 0;
+-
+-err_irq:
+-	regmap_del_irq_chip(client->irq, rk808->irq_data);
+-	return ret;
+-}
+-
+-static void rk808_remove(struct i2c_client *client)
+-{
+-	struct rk808 *rk808 = i2c_get_clientdata(client);
+-
+-	regmap_del_irq_chip(client->irq, rk808->irq_data);
+-
+-	/**
+-	 * pm_power_off may points to a function from another module.
+-	 * Check if the pointer is set by us and only then overwrite it.
+-	 */
+-	if (pm_power_off == rk808_pm_power_off)
+-		pm_power_off = NULL;
+-
+-	unregister_restart_handler(&rk808_restart_handler);
+ }
+ 
+ static int __maybe_unused rk8xx_suspend(struct device *dev)
+@@ -868,7 +849,6 @@ static struct i2c_driver rk808_i2c_driver = {
+ 		.pm = &rk8xx_pm_ops,
+ 	},
+ 	.probe_new = rk808_probe,
+-	.remove   = rk808_remove,
+ 	.shutdown = rk8xx_shutdown,
+ };
+ 
+-- 
+2.39.2
 
 
 _______________________________________________
