@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15AF1C77B78
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B1C4C7EE22
 	for <linux-rockchip@archiver.kernel.org>; Thu,  4 May 2023 17:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,40 +12,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/RmZlemI+iSJz5ESi+x95VYRFapGfJM64N4CwGf0aPE=; b=ZuWk3GnSwdwOhA
-	pgWhSoBVpl2gOJ0IpGRMK5WMQ3vsLEBPCjQKIdi3WGfZssR5NCWDV3k0Q0NW6SnqvFyyEMG3acSdv
-	r0Xr9PL9kLRrN6q88hZyDwmEQ2K0CjCjVMZyv9k/sUGGYJoQNRXekNo87xdJ3oAOcT1MaGClwgtY3
-	qfD0qDIZ+cAbFs1dSsQifadWgxHNdAs35X+2QK/h7EY5MZB3l8DJBxEU/jRbymBKLwmyhpxlNuKzK
-	OOH8hbPOSihw8tEQBaXUvX+LuEvu1NTjuAEDBVWSxqMpTC4lJhwItSXDbMyEjBkozDEd03mbMPgjP
-	ZL9H4pLQfUusPCDhqV8A==;
+	List-Owner; bh=jdL8aAW+ccTcO8eYb4jH969ZTWmb+CEK2BIQVAySPYo=; b=xm8DrzC9kI9XWn
+	MtAiFBkuVTfM+gOtruM5SMVD6IXeUD3GaHEfsIVao7XuTVtYANbI0itoj9uwWXCD0eTThH8965dQ4
+	6aiHDRKk00Hsy4FfzsMt06hYYL7iWarH1hbI3G5blIOawT5rspnOwLM4rt1cytqi9Uly/ZniIxAJC
+	MigqISIG/HUtfAnt2eN2a4BK4xd8Iy2rneYBfUyZYLdWkdMOsHcyKcoBGcChjPPZ6M60MROmYBFM+
+	qjcJrwxxaX89qnJG1I6isxwcNtQV/n5b3Yh6r28dsP66PbgX6fue/DjDy4qOgqUKrKfXcZ8XYqU1j
+	nSLgetuRrzB2Qo9JKpjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pucse-008R6h-2x;
-	Thu, 04 May 2023 17:36:36 +0000
+	id 1pucsh-008R91-0R;
+	Thu, 04 May 2023 17:36:39 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pucsZ-008R17-0V
+	id 1pucsZ-008R16-0V
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 May 2023 17:36:33 +0000
+	Thu, 04 May 2023 17:36:34 +0000
 Received: from jupiter.universe (dyndsl-091-248-211-176.ewe-ip-backbone.de [91.248.211.176])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 39637660570B;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 307766605702;
 	Thu,  4 May 2023 18:36:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1683221785;
-	bh=BwNYqItpwXGrfyTuzvFjLuZMAbcaEb65/BiVmtlvYi4=;
+	bh=X6eDCzkh4sNwrVY93vOLfEcsRkHyxCN7KA4Kl9mw1hs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aTsA8AK3eGEWfqeH18T6FZiZiHOL0medzyJP/Tv4bkOh/AVPJ0U0GI/aZz7cN47Le
-	 W7tCVUa2Xae67KCPdkOqybNQlu0aykfhOr9fCOCvuG+GZISLNRmnWQJiHuqfRHhMhu
-	 QdZthpiOW8/sb9c3RhKnp98mMtWAPjYAWIIec0E8f6KwpiX7POVD+6V6/npmZXuuj7
-	 cBRaPq5xebLqB4cUUC2R99YLsk/tPk/VXrCof7DmgZVSKLnETLWDIr+7fKbMkRirMF
-	 LugpdT+C4sJi28x56xuX8sUEES74FqKEMdlZzfvWKtqLP9g/U5tlnMiaNOAnWh1Hnz
-	 oqkNKbo3aUG9A==
+	b=JqKTtmxMyaZGWGRoTzGuNU30OLXqXlxde5HpkbmVAjUC+VASoB56o4yuG3rOQUJVq
+	 jAsd/c+tt+ICLZG7CwGDQDhMKSCtfYnzHs4Zk+wtZz93ZRMjCBn8w5cRCqhT2zdllD
+	 tzb6v0KMmvmS2k46baEzVCfVDF0FmaQUsK9lPufmmCtU4GldxPGJroydOPK9wO37hn
+	 zo6FU4p2dGi21exPRjv+GWJa9ZgvhADLSKlaor/UhOJkP0PXhXo0SRop/3Um5VdsI3
+	 H5ZwdD5vFNWZOsn8aur/Oo45hygNOf6Q+v4+7TxZ+2UuIh3IcczyJLrn3lOiM64umX
+	 Ctrl2vohiGV8w==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id E5FD04807F6; Thu,  4 May 2023 19:36:20 +0200 (CEST)
+	id E44D24807F4; Thu,  4 May 2023 19:36:20 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -62,17 +62,19 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v8 11/14] regulator: rk808: fix asynchronous probing
-Date: Thu,  4 May 2023 19:36:15 +0200
-Message-Id: <20230504173618.142075-12-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Vincent Legoll <vincent.legoll@gmail.com>
+Subject: [PATCH v8 10/14] regulator: expose regulator_find_closest_bigger
+Date: Thu,  4 May 2023 19:36:14 +0200
+Message-Id: <20230504173618.142075-11-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230504173618.142075-1-sebastian.reichel@collabora.com>
 References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230504_103631_364563_14D04443 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20230504_103631_363063_EC4E315C 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +91,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If the probe routine fails with -EPROBE_DEFER after taking over the
-OF node from its parent driver, reprobing triggers pinctrl_bind_pins()
-and that will fail. Fix this by setting of_node_reused, so that the
-device does not try to setup pin muxing.
+Expose and document the table lookup logic used by
+regulator_set_ramp_delay_regmap, so that it can be
+reused for devices that cannot be configured via
+regulator_set_ramp_delay_regmap.
 
-For me this always happens once the driver is marked to prefer async
-probing and never happens without that flag.
-
-Fixes: 259b93b21a9f ("regulator: Set PROBE_PREFER_ASYNCHRONOUS for drivers that existed in 4.14")
+Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/regulator/rk808-regulator.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/regulator/helpers.c      | 22 ++++++++++++++++++----
+ include/linux/regulator/driver.h |  2 ++
+ 2 files changed, 20 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 3637e81654a8..80ba782d8923 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -1336,6 +1336,7 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+diff --git a/drivers/regulator/helpers.c b/drivers/regulator/helpers.c
+index ad2237a95572..586f42e378ee 100644
+--- a/drivers/regulator/helpers.c
++++ b/drivers/regulator/helpers.c
+@@ -902,8 +902,21 @@ bool regulator_is_equal(struct regulator *reg1, struct regulator *reg2)
+ }
+ EXPORT_SYMBOL_GPL(regulator_is_equal);
  
- 	config.dev = &pdev->dev;
- 	config.dev->of_node = pdev->dev.parent->of_node;
-+	config.dev->of_node_reused = true;
- 	config.driver_data = pdata;
- 	config.regmap = regmap;
+-static int find_closest_bigger(unsigned int target, const unsigned int *table,
+-			       unsigned int num_sel, unsigned int *sel)
++/**
++ * regulator_find_closest_bigger - helper to find offset in ramp delay table
++ *
++ * @target: targeted ramp_delay
++ * @table: table with supported ramp delays
++ * @num_sel: number of entries in the table
++ * @sel: Pointer to store table offset
++ *
++ * This is the internal helper used by regulator_set_ramp_delay_regmap to
++ * map ramp delay to register value. It should only be used directly if
++ * regulator_set_ramp_delay_regmap cannot handle a specific device setup
++ * (e.g. because the value is split over multiple registers).
++ */
++int regulator_find_closest_bigger(unsigned int target, const unsigned int *table,
++				  unsigned int num_sel, unsigned int *sel)
+ {
+ 	unsigned int s, tmp, max, maxsel = 0;
+ 	bool found = false;
+@@ -933,6 +946,7 @@ static int find_closest_bigger(unsigned int target, const unsigned int *table,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(regulator_find_closest_bigger);
+ 
+ /**
+  * regulator_set_ramp_delay_regmap - set_ramp_delay() helper
+@@ -951,8 +965,8 @@ int regulator_set_ramp_delay_regmap(struct regulator_dev *rdev, int ramp_delay)
+ 	if (WARN_ON(!rdev->desc->n_ramp_values || !rdev->desc->ramp_delay_table))
+ 		return -EINVAL;
+ 
+-	ret = find_closest_bigger(ramp_delay, rdev->desc->ramp_delay_table,
+-				  rdev->desc->n_ramp_values, &sel);
++	ret = regulator_find_closest_bigger(ramp_delay, rdev->desc->ramp_delay_table,
++					    rdev->desc->n_ramp_values, &sel);
+ 
+ 	if (ret) {
+ 		dev_warn(rdev_get_dev(rdev),
+diff --git a/include/linux/regulator/driver.h b/include/linux/regulator/driver.h
+index d3b4a3d4514a..c6ef7d68eb9a 100644
+--- a/include/linux/regulator/driver.h
++++ b/include/linux/regulator/driver.h
+@@ -758,6 +758,8 @@ int regulator_set_current_limit_regmap(struct regulator_dev *rdev,
+ 				       int min_uA, int max_uA);
+ int regulator_get_current_limit_regmap(struct regulator_dev *rdev);
+ void *regulator_get_init_drvdata(struct regulator_init_data *reg_init_data);
++int regulator_find_closest_bigger(unsigned int target, const unsigned int *table,
++				  unsigned int num_sel, unsigned int *sel);
+ int regulator_set_ramp_delay_regmap(struct regulator_dev *rdev, int ramp_delay);
+ int regulator_sync_voltage_rdev(struct regulator_dev *rdev);
  
 -- 
 2.39.2
