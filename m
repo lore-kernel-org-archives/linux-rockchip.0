@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75CBC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1400AC7EE22
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9UhckF+f//LgzRgoC1NyCKtBbmsr45MLdD+1ncJncE=; b=3roI0IQDwiPToi
-	gHjNE7jAoP/Qs61gbpkf1hD6JIQBfl7yMEthl38HtK9XIHqsqnjVg1KDE8WEATqWUEgV8x5dC2Y4a
-	M014BjoHU6SyTrpn7ffrTkdP6uB0bY3yiRFXmMZ4vYICrjWcMWzcZe8eT+xDs06m0uK9pizkvCCcc
-	pMAp8EA4/CTHanlpKKJHu/akR7ojV9Eb8N9+cLQDgSfNeIICeGykFuWEEV4RctpprAT6O4aCe4ORL
-	M5q6yow8o+0WJC7AY5GRN7RVCThDgN9TtxGiOqLbPtLVqybGrAlm7i2YGT1DePhG0Wi955iUISucH
-	VxYa67nE0BCVguEARPpQ==;
+	List-Owner; bh=RHrAx5uDQ753T6WX0z3w+Xf2kcph9O3CGCFtBteOkXU=; b=4cEncI8hQ37szj
+	zEr3s+lSokOl21TsrUCKW7YHmu6ls4v+K5XwXcD7SBgW77jV8gj0+yxUVWISqyrPdfDOHVGTaabZz
+	JlksQMgYscF6W5KrR9WCNzMZ5W4YMH7jP30JOly1TpXmtIC7bc1WlR3Tt9J/cBsY7bVnoRvGI+NQk
+	+GeqOMe3N6+IFzVY1sBCjF23AjhDO1AqSaXv9KXoiDgZpYTj6gqq9IQyo7OGZv2lFLStxGcKctVbu
+	g8PabpH51ErhGItiZYc2Nq+JU0rqwwUMxHRoE7n1XHRYaS3rJgdG/e22JFzzWESB9WVxgCnSGy1tA
+	d/X2lBDNTSQamJFbaZkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmk-00AjJH-2e;
-	Fri, 05 May 2023 11:39:38 +0000
+	id 1putmm-00AjKJ-06;
+	Fri, 05 May 2023 11:39:40 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmL-00Aj10-0P
+	id 1putmL-00Aj0y-0P
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 May 2023 11:39:22 +0000
+	Fri, 05 May 2023 11:39:23 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmB-0001Vb-Lf; Fri, 05 May 2023 13:39:03 +0200
+	id 1putmB-0001Ve-Ln; Fri, 05 May 2023 13:39:03 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putm9-001HbO-Tz; Fri, 05 May 2023 13:39:01 +0200
+	id 1putmA-001HbZ-Hf; Fri, 05 May 2023 13:39:02 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putm8-003RnE-1b; Fri, 05 May 2023 13:39:00 +0200
+	id 1putm8-003Roj-9b; Fri, 05 May 2023 13:39:00 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -50,9 +50,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v4 03/21] PM / devfreq: rockchip-dfi: Make pmu regmap mandatory
-Date: Fri,  5 May 2023 13:38:38 +0200
-Message-Id: <20230505113856.463650-4-s.hauer@pengutronix.de>
+Subject: [PATCH v4 13/21] PM / devfreq: rockchip-dfi: Pass private data struct to internal functions
+Date: Fri,  5 May 2023 13:38:48 +0200
+Message-Id: <20230505113856.463650-14-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230505113856.463650-1-s.hauer@pengutronix.de>
 References: <20230505113856.463650-1-s.hauer@pengutronix.de>
@@ -62,8 +62,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_043913_307242_87CDD1E9 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20230505_043913_271584_AFE72E46 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,41 +80,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As a matter of fact the regmap_pmu already is mandatory because
-it is used unconditionally in the driver. Bail out gracefully in
-probe() rather than crashing later.
+The internal functions do not need the struct devfreq_event_dev *,
+so pass them the struct rockchip_dfi *. This is a preparation for
+adding perf support later which doesn't have a struct devfreq_event_dev *.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 98712ac68aa5f..47cc9e48dafab 100644
+index dc48d9c26f599..c0b7b1e9805e9 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -193,14 +193,14 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(dfi->clk),
- 				     "Cannot get the clk pclk_ddr_mon\n");
+@@ -73,9 +73,8 @@ struct rockchip_dfi {
+ 	unsigned int channel_mask;
+ };
  
--	/* try to find the optional reference to the pmu syscon */
- 	node = of_parse_phandle(np, "rockchip,pmu", 0);
--	if (node) {
--		dfi->regmap_pmu = syscon_node_to_regmap(node);
--		of_node_put(node);
--		if (IS_ERR(dfi->regmap_pmu))
--			return PTR_ERR(dfi->regmap_pmu);
--	}
-+	if (!node)
-+		return dev_err_probe(&pdev->dev, -ENODEV, "Can't find pmu_grf registers\n");
-+
-+	dfi->regmap_pmu = syscon_node_to_regmap(node);
-+	if (IS_ERR(dfi->regmap_pmu))
-+		return PTR_ERR(dfi->regmap_pmu);
-+
- 	dfi->dev = dev;
+-static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
++static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
+ {
+-	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 	void __iomem *dfi_regs = dfi->regs;
  
- 	desc = &dfi->desc;
+ 	/* clear DDRMON_CTRL setting */
+@@ -102,18 +101,16 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 		       dfi_regs + DDRMON_CTRL);
+ }
+ 
+-static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
++static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
+ {
+-	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+ 	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+ 		       dfi_regs + DDRMON_CTRL);
+ }
+ 
+-static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
++static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
+ {
+-	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 	u32 i;
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+@@ -131,7 +128,7 @@ static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
+ {
+ 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 
+-	rockchip_dfi_stop_hardware_counter(edev);
++	rockchip_dfi_stop_hardware_counter(dfi);
+ 	clk_disable_unprepare(dfi->clk);
+ 
+ 	return 0;
+@@ -148,7 +145,7 @@ static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
+ 		return ret;
+ 	}
+ 
+-	rockchip_dfi_start_hardware_counter(edev);
++	rockchip_dfi_start_hardware_counter(dfi);
+ 	return 0;
+ }
+ 
+@@ -166,7 +163,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+ 	u32 access = 0, total = 0;
+ 	int i;
+ 
+-	rockchip_dfi_read_counters(edev, &count);
++	rockchip_dfi_read_counters(dfi, &count);
+ 
+ 	/* We can only report one channel, so find the busiest one */
+ 	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
 -- 
 2.39.2
 
