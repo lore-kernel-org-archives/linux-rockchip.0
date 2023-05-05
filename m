@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824D3C77B7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D84C77B75
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=04AkfLveScp3sXgpBZlezLocl7zRy9NbeJIsAoCajlM=; b=DrU/JiSF5Mxo7T
-	HZjdE5WyddwgyoQujSKK9GEUIZtEozcLFzpSE6mFuME0LrhW1urJdwpbvqbMT+An+zu6PLlpsXwFF
-	3uDz4dSfQpnAGgFakZTE3ORgUwy3o+e8hqnW1Tvs5j/676H7+pZ2TSIBtgho3LlvLAvhZ6fzERV7T
-	lNvzhPZnda9Osi3lTq+NlwCof8ueAwiwp/XD91tC/60zr3xntw+JeXldXgdLOhtYyHbEndsxyXand
-	eY+WH0xowRsOD4VpXHGKEH+EGH9o+nWvf7BUxS5eajHv8jH+dT0TiTHJ5tLFbPvRCSr4NgZhPYfsz
-	LFjuYibkazFnDw4DDsVQ==;
+	List-Owner; bh=V77EmWsEavsFmsV8W7duBrd4+gO/6kPhlHWRH9qDZeI=; b=kKk5nkv/Rqbuzv
+	TgDjjBXONd+E9DUOqfHrCMChp9k8Y9cjwcD9CAa1oa/pHaYLlY+QlEb37SE59MUwvuHkS1ZKRH+GZ
+	X7GFtFQbWb+Dl8gtAAPyCN0zAUu8bT4RPHUmruuJRN2uk07cN7AR5DnfTV08MKI4F6Fuj8GB2ehUn
+	eVA/wsxkLNd0acG7jf+Lh+JGhy83oIuQUSh8Qb7uVUVtOuCDceqaSF/j4k/bwDI/SGPtXrL6f64KT
+	LrCRPF7x43sF9LwOHHCWYwV0F3FIActlOnz4BF7APOma24O5dtTentXi8wgBkarWCrvY6vIdTdg6C
+	ZBV/BtMO8NiuoYqZ7+mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmY-00AjAP-2Q;
-	Fri, 05 May 2023 11:39:26 +0000
+	id 1putmT-00Aj75-2l;
+	Fri, 05 May 2023 11:39:21 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmL-00Aj0w-0O
+	id 1putmL-00Aj13-0P
 	for linux-rockchip@lists.infradead.org;
 	Fri, 05 May 2023 11:39:20 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmB-0001Vg-NC; Fri, 05 May 2023 13:39:03 +0200
+	id 1putmB-0001Va-Lp; Fri, 05 May 2023 13:39:03 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmA-001Hbf-Sl; Fri, 05 May 2023 13:39:02 +0200
+	id 1putm9-001HbN-Rr; Fri, 05 May 2023 13:39:01 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putm8-003RpX-Ds; Fri, 05 May 2023 13:39:00 +0200
+	id 1putm8-003Rno-4v; Fri, 05 May 2023 13:39:00 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -50,9 +50,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v4 18/21] PM / devfreq: rockchip-dfi: add support for RK3588
-Date: Fri,  5 May 2023 13:38:53 +0200
-Message-Id: <20230505113856.463650-19-s.hauer@pengutronix.de>
+Subject: [PATCH v4 07/21] PM / devfreq: rockchip-dfi: introduce channel mask
+Date: Fri,  5 May 2023 13:38:42 +0200
+Message-Id: <20230505113856.463650-8-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230505113856.463650-1-s.hauer@pengutronix.de>
 References: <20230505113856.463650-1-s.hauer@pengutronix.de>
@@ -61,9 +61,6 @@ X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_043913_272258_D9B3BCFC 
-X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,104 +77,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the RK3588 to the driver. The RK3588 has four DDR
-channels with a register stride of 0x4000 between the channel
-registers, also it has a DDRMON_CTRL register per channel.
+Different Rockchip SoC variants have a different number of channels.
+Introduce a channel mask to make the number of channels configurable
+from SoC initialization code.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 34 +++++++++++++++++++++++++++-
- include/soc/rockchip/rk3588_grf.h    | 18 +++++++++++++++
- 2 files changed, 51 insertions(+), 1 deletion(-)
- create mode 100644 include/soc/rockchip/rk3588_grf.h
+ drivers/devfreq/event/rockchip-dfi.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 74d69153e6386..3630981505c6d 100644
+index 25d64d9166a9a..18d578730fd0c 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -25,8 +25,9 @@
- #include <soc/rockchip/rockchip_grf.h>
+@@ -21,7 +21,7 @@
+ 
  #include <soc/rockchip/rk3399_grf.h>
- #include <soc/rockchip/rk3568_grf.h>
-+#include <soc/rockchip/rk3588_grf.h>
  
--#define DMC_MAX_CHANNELS	2
-+#define DMC_MAX_CHANNELS	4
+-#define RK3399_DMC_NUM_CH	2
++#define DMC_MAX_CHANNELS	2
  
- #define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+ /* DDRMON_CTRL */
+ #define DDRMON_CTRL	0x04
+@@ -44,7 +44,7 @@ struct dmc_count_channel {
+ };
  
-@@ -616,6 +617,32 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+ struct dmc_count {
+-	struct dmc_count_channel c[RK3399_DMC_NUM_CH];
++	struct dmc_count_channel c[DMC_MAX_CHANNELS];
+ };
+ 
+ /*
+@@ -62,6 +62,7 @@ struct rockchip_dfi {
+ 	struct regmap *regmap_pmu;
+ 	struct clk *clk;
+ 	u32 ddr_type;
++	unsigned int channel_mask;
+ };
+ 
+ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+@@ -96,7 +97,9 @@ static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dm
+ 	u32 i;
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+-	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
++	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
++		if (!(dfi->channel_mask & BIT(i)))
++			continue;
+ 		count->c[i].access = readl_relaxed(dfi_regs +
+ 				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+ 		count->c[i].total = readl_relaxed(dfi_regs +
+@@ -146,9 +149,14 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+ 	rockchip_dfi_read_counters(edev, &count);
+ 
+ 	/* We can only report one channel, so find the busiest one */
+-	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
+-		u32 a = count.c[i].access - last->c[i].access;
+-		u32 t = count.c[i].total - last->c[i].total;
++	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
++		u32 a, t;
++
++		if (!(dfi->channel_mask & BIT(i)))
++			continue;
++
++		a = count.c[i].access - last->c[i].access;
++		t = count.c[i].total - last->c[i].total;
+ 
+ 		if (a > access) {
+ 			access = a;
+@@ -186,6 +194,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+ 	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+ 			RK3399_PMUGRF_DDRTYPE_MASK;
+ 
++	dfi->channel_mask = 3;
++
  	return 0;
  };
  
-+static int rk3588_dfi_init(struct rockchip_dfi *dfi)
-+{
-+	struct regmap *regmap_pmu = dfi->regmap_pmu;
-+	u32 reg2, reg3, reg4;
-+
-+	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG2, &reg2);
-+	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG3, &reg3);
-+	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG4, &reg4);
-+
-+	dfi->ddr_type = FIELD_GET(RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
-+
-+	if (FIELD_GET(RK3588_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
-+		dfi->ddr_type |= FIELD_GET(RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
-+
-+	dfi->buswidth[0] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
-+	dfi->buswidth[1] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg2) == 0 ? 4 : 2;
-+	dfi->buswidth[2] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg4) == 0 ? 4 : 2;
-+	dfi->buswidth[3] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) == 0 ? 4 : 2;
-+	dfi->channel_mask = FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
-+			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
-+
-+	dfi->ddrmon_stride = 0x4000;
-+
-+	return 0;
-+};
-+
- struct rockchip_dfi_devtype_data {
- 	int (*init)(struct rockchip_dfi *dfi);
- };
-@@ -628,9 +655,14 @@ static struct rockchip_dfi_devtype_data rk3568_devtype_data = {
- 	.init = rk3568_dfi_init,
- };
- 
-+static struct rockchip_dfi_devtype_data rk3588_devtype_data = {
-+	.init = rk3588_dfi_init,
-+};
-+
- static const struct of_device_id rockchip_dfi_id_match[] = {
- 	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_devtype_data },
- 	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_devtype_data },
-+	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_devtype_data },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
-diff --git a/include/soc/rockchip/rk3588_grf.h b/include/soc/rockchip/rk3588_grf.h
-new file mode 100644
-index 0000000000000..630b35a550640
---- /dev/null
-+++ b/include/soc/rockchip/rk3588_grf.h
-@@ -0,0 +1,18 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
-+#ifndef __SOC_RK3588_GRF_H
-+#define __SOC_RK3588_GRF_H
-+
-+#define RK3588_PMUGRF_OS_REG2		0x208
-+#define RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO		GENMASK(15, 13)
-+#define RK3588_PMUGRF_OS_REG2_BW_CH0			GENMASK(3, 2)
-+#define RK3588_PMUGRF_OS_REG2_BW_CH1                    GENMASK(19, 18)
-+#define RK3588_PMUGRF_OS_REG2_CH_INFO                   GENMASK(29, 28)
-+
-+#define RK3588_PMUGRF_OS_REG3		0x20c
-+#define RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
-+#define RK3588_PMUGRF_OS_REG3_SYSREG_VERSION		GENMASK(31, 28)
-+
-+#define RK3588_PMUGRF_OS_REG4           0x210
-+#define RK3588_PMUGRF_OS_REG5           0x214
-+
-+#endif /* __SOC_RK3588_GRF_H */
 -- 
 2.39.2
 
