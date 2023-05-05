@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EA70C77B7C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7429C77B75
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,48 +12,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=11weUjtNXR7prrIts5MOAFGpuvauSShPCrvPFpCCPyk=; b=is6C2dvkdhF2D/
-	9Nvo1j311a9Vd45WQ24jDp79f+7V0x85dwjIDRnp/1fmP2S7URBF8I5RFIpuY+u6CaQH2MAEBIUvC
-	5d1+ipJbu5UGScX1c4GdWsztUxxQMIm+Hs6rJafRL0CcS1l/Aw7Ji/2Z7nao9vhKlh2VZI87FX5Wi
-	KW0bLLmZFQV8bWebki5lyMGypHn9WE/S2QuRmdQZUAiyoda66WDT3WQ9G+1vspl6DkM+cmOUb7ApP
-	5mhRV3NNiGAyYkUuMK5BtbZecd0LBGnrwm/OTQ+3WuhNYqTgIKZqUO46eEVTapr805p3MtTUQYXvh
-	+9GQPeeusCWprkcYLwjA==;
+	List-Owner; bh=cLQHoY7UU9dvivLDPEPUOAW+gOWbNHX3sSDaZQR4/w8=; b=ZevpQlcYOalmpb
+	N7aiYvM+ijfVq8wqS7axqJ/hf2PMHPkQ5bkGZDMMU66UPO+YE2dkmGuDoeVMLEviUfd9fILdLlgfb
+	skLzSbzvrgvrap7+2712xE7PbQpy/WldnciWJd5d05f8JJxBWtRMN1McyyJDfsHx6rW2Uz9i9rz0v
+	BQe7wCvwiMa1Kp0LYBoQfMJEaSpT82Jc3100I87Nu2Cdrphotmef2EIuv/6LvH21T6emFpvdcb3K/
+	y5kLC90HD4l4WS7SgXvjTGCwS29d2V9gJp7sqmilDnkrDhUjcVr4h2iYb9M02yNv4YJbh5YVayAIW
+	rV5O5H5tnJ417/aykq+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1puto6-00AkXJ-0Y;
-	Fri, 05 May 2023 11:41:02 +0000
+	id 1puto9-00Akas-2T;
+	Fri, 05 May 2023 11:41:05 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmg-00AjFq-2j
+	id 1putmi-00AjGu-0z
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 05 May 2023 11:39:34 +0000
+	Fri, 05 May 2023 11:39:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=rRPG9zbxRNEmMbipwyizNsj67rkGE3tp0VTVDEiV5ow=; b=oPws8AATZ14DJPqkd0UFhJX5Z9
-	amgnBr8XksBjxTduJEstAd7Pvg8ygXN/8aNoU/26NARc9ndyfTHTYfAqDTd0h+t7A0wnVxWaaOXCc
-	Dbwpg6Bisp43UakKj/5Y7jj45R44e7Wl+2cN6V1IAhuBQiSh/YmzpzUPu/CfpysN2/tMB9GkqVQ9Z
-	1RMJQMsxk4cemIhUz6txG+MHXHc1aYRntKjCT+PUM42TKWxJjKxfoZDAkUek4MnS5EYYzA0vPK2FT
-	kPkcq+3P0CBU3w2gnLSvKB4FLHpJ9Hs4/TwvcU7MmGyCggHrgCLfd+XKSzC8neCHz5w+EswYNJVFm
-	uohN09dg==;
+	bh=FJ+EzXPcdYoMpz0mcbdXWQ56emc8w3K04AYM71IFx4U=; b=QDH1HB+ulCTEHwQARKAjK6x5ii
+	pwUK6kU2Edu+FqK52rzw4pF9xjGHkLtq0eZeugxZY4gneiKCv3Ir8LPA3FYqJV0hJg73Wk/OxYw9x
+	duVmlbcM8gVSkbmn00o/6n53FcboNT10WEoO80R+5GzJwiWWKkgW5eJM4MGgdBbBtshvmGWv9gAj+
+	AO2rc6MLBEVOJCTzoF+Xqi6SsS7tjLlCufxKl/pobM6iEkWQuLM5EMAMY7fLR5Zz/aO2nO9vQ+Zj6
+	Kv9Od89t4R2tvORtJyWa7yXnvE5+o3WjEGB8i3CYqGLulMsw6xQebVpELGVQel1M8KvTfMnLp3Ca+
+	+4junEng==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmP-003ETy-0l
+	id 1putmP-003EU1-0l
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 May 2023 11:39:33 +0000
+	Fri, 05 May 2023 11:39:34 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmC-0001Yg-GG; Fri, 05 May 2023 13:39:04 +0200
+	id 1putmC-0001Vl-4Z; Fri, 05 May 2023 13:39:04 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmB-001Hc9-Qj; Fri, 05 May 2023 13:39:03 +0200
+	id 1putmB-001Hbt-8s; Fri, 05 May 2023 13:39:03 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putm8-003Rpz-GB; Fri, 05 May 2023 13:39:00 +0200
+	id 1putm8-003Ro4-6c; Fri, 05 May 2023 13:39:00 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -65,9 +65,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v4 21/21] dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
-Date: Fri,  5 May 2023 13:38:56 +0200
-Message-Id: <20230505113856.463650-22-s.hauer@pengutronix.de>
+Subject: [PATCH v4 09/21] PM / devfreq: rockchip-dfi: Clean up DDR type register defines
+Date: Fri,  5 May 2023 13:38:44 +0200
+Message-Id: <20230505113856.463650-10-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230505113856.463650-1-s.hauer@pengutronix.de>
 References: <20230505113856.463650-1-s.hauer@pengutronix.de>
@@ -77,8 +77,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_123923_558894_532C8A92 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20230505_123931_985525_969586A7 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,86 +95,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the Rockchip DFI binding to yaml. While at it add the newly
-supported rk3568-dfi to the binding.
+Use the HIWORD_UPDATE() define known from other rockchip drivers to
+make the defines look less odd to the readers who've seen other
+rockchip drivers.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ---------
- .../bindings/devfreq/event/rockchip-dfi.yaml  | 39 +++++++++++++++++++
- 2 files changed, 39 insertions(+), 18 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
- create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
+ drivers/devfreq/event/rockchip-dfi.c | 32 +++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
-deleted file mode 100644
-index 148191b0fc158..0000000000000
---- a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
-+++ /dev/null
-@@ -1,18 +0,0 @@
--
--* Rockchip rk3399 DFI device
--
--Required properties:
--- compatible: Must be "rockchip,rk3399-dfi".
--- reg: physical base address of each DFI and length of memory mapped region
--- rockchip,pmu: phandle to the syscon managing the "pmu general register files"
--- clocks: phandles for clock specified in "clock-names" property
--- clock-names : the name of clock used by the DFI, must be "pclk_ddr_mon";
--
--Example:
--	dfi: dfi@ff630000 {
--		compatible = "rockchip,rk3399-dfi";
--		reg = <0x00 0xff630000 0x00 0x4000>;
--		rockchip,pmu = <&pmugrf>;
--		clocks = <&cru PCLK_DDR_MON>;
--		clock-names = "pclk_ddr_mon";
--	};
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
-new file mode 100644
-index 0000000000000..c0ef02a2d262b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
-@@ -0,0 +1,39 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/devfreq/event/rockchip-dfi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 7896cd8beb143..035984d3c7b01 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -26,15 +26,19 @@
+ 
+ #define DMC_MAX_CHANNELS	2
+ 
++#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
 +
-+title: Rockchip DFI
-+
-+maintainers:
-+  - Sascha Hauer <s.hauer@pengutronix.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rk3399-dfi
-+      - rk3568-dfi
-+      - rk3588-dfi
-+
-+  clocks:
-+    maxItems: 1
-+
-+  rockchip,pmu:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the "PMU general register files".
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    dfi: dfi@fe230000 {
-+        compatible = "rockchip,rk3568-dfi";
-+        reg = <0x00 0xfe230000 0x00 0x400>;
-+        rockchip,pmu = <&pmugrf>;
-+    };
+ /* DDRMON_CTRL */
+ #define DDRMON_CTRL	0x04
+-#define CLR_DDRMON_CTRL	(0x1f0000 << 0)
+-#define LPDDR4_EN	(0x10001 << 4)
+-#define HARDWARE_EN	(0x10001 << 3)
+-#define LPDDR3_EN	(0x10001 << 2)
+-#define SOFTWARE_EN	(0x10001 << 1)
+-#define SOFTWARE_DIS	(0x10000 << 1)
+-#define TIME_CNT_EN	(0x10001 << 0)
++#define DDRMON_CTRL_DDR4		BIT(5)
++#define DDRMON_CTRL_LPDDR4		BIT(4)
++#define DDRMON_CTRL_HARDWARE_EN		BIT(3)
++#define DDRMON_CTRL_LPDDR23		BIT(2)
++#define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
++#define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
++#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
++					 DDRMON_CTRL_LPDDR4 | \
++					 DDRMON_CTRL_LPDDR23)
+ 
+ #define DDRMON_CH0_COUNT_NUM		0x28
+ #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
+@@ -74,16 +78,19 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+ 	/* clear DDRMON_CTRL setting */
+-	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(0, 0xffff), dfi_regs + DDRMON_CTRL);
+ 
+ 	/* set ddr type to dfi */
+ 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
+-		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
++		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
++			       dfi_regs + DDRMON_CTRL);
+ 	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
+-		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
++		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
++			       dfi_regs + DDRMON_CTRL);
+ 
+ 	/* enable count, use software mode */
+-	writel_relaxed(SOFTWARE_EN, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
++		       dfi_regs + DDRMON_CTRL);
+ }
+ 
+ static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+@@ -91,7 +98,8 @@ static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+ 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+-	writel_relaxed(SOFTWARE_DIS, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
++		       dfi_regs + DDRMON_CTRL);
+ }
+ 
+ static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
 -- 
 2.39.2
 
