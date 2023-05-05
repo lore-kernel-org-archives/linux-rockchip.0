@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 617AFC77B75
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94616C7EE22
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 11:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xrio8WUV9PiEqGJqs5kTTn3WW5ts5Uu35IPPreH+eYY=; b=KEkT60+jSZIxVX
-	HxjBB9TYoiczbTzLAfxMzZu5z04R6gSPGjLYTFK1IUz4zZMB3tK7j2Db7ejImo/y6xNVY4oNGRe5O
-	/5v6pfTMT7ETb384AIYfSAzu7mQSgx6LDkjRg1AzHhaDSB5sFJ+bPR6X5J7Wx63OlgIBqYPwOwmTL
-	7ryG6hi31s8dn7DIsCwWC8Q404epe7v9XXRcIAY9v0UVXiGCxN1GQcjVwdBWCn0GabIyXeuk7QCwO
-	1agKQVyJRHIKCw4Z/L6bI/j75xOaYhO1WaVO9O/Bwc/WGNeWlyfF6eAj9RlKnbkbzBYoo+ATCknjo
-	/caTSy4aszmNheirae5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tdNh57WWL2XPgGsvCJjJED2dDPBkZbhLcZ35Ip+QMZQ=; b=xM2F01YoVPp23c
+	Qvv5sVrIbnygnjDQBeMEZRVSUVu01uOxQmkawg+uiL5ZdnMpyearEKiZ6xdqa4RfMrZ1qK+/p8Ug3
+	ee2ovSnL4aID2D7e+/J1xBJtbnw0wxAfT7YUAgDTtoljUqEeLSWkc0GUwL6UuYR1lmeS4SL3sfi9q
+	CZz0JUeuX6uGkcC4nnP+vHIR8eXVACBP0jWKQuDWLK32nac2bRl5Yyf7ivhLsLtiYDnuYDBznrha7
+	oVaga8B+qYz6tJTnTA8e8699qGGVe4/6qrTJHOni1713/EwRwaNLl+p2jzsWuXxSIT38uN2otQ8gh
+	yI6PrNZ8/WBGsFLdaDRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1putni-00AkAD-0p;
-	Fri, 05 May 2023 11:40:38 +0000
+	id 1putnw-00AkOm-2H;
+	Fri, 05 May 2023 11:40:52 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmc-00AjCW-34
+	id 1putme-00AjEV-3B
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 05 May 2023 11:39:30 +0000
+	Fri, 05 May 2023 11:39:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=mvuMAJZqI1bMj1bbzKdlJN0DrRVwBHP7ZgE4JW2U2z8=; b=Ubs+YCZpoR4Xg9JFvZLprEUBIE
-	VbaJ0ftnsQRk8f9szl4yo6HOiiox6SSmcb0q6+Yz5Y+vm4jJjJI2QK5/cr0q4Pm8qwZmzT9YBpitX
-	5xizMvVxBn2cXipdK3/+6ZjtiJpdF5D1Y4nJ5ULcTxFqL4NQmxZVJSOwoe/dAJj6gdKmMWfnfC37B
-	oCr1muoEHG8eaQOlwMkTVTHPGp4zqwSsSnL2uIppXguuiUV/auaP+OSTE6GmPgmocF2wrtn/YsSXp
-	PI4b+jUeXJauj0IniDJ6c34FnJfMIhMYQaJJitDMEbOQgg5VCtGvtK6SzcR1+MgEknpCHVdvQpxpG
-	gCTr5thA==;
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=IWoYqjNohyECJ5RXAqoifLE+MQvnQ5u+b3CR90br26I=; b=XwMy0o9ZdbLJc25EwMTR1neOgd
+	bp7+yjNf4a7/QkbP9ff/JTZXLv5aW6QcgDn3M50Msq0iKNJx78hj6E9JD0Qd0DuqgZl4a/ZUau1zd
+	PaBX2N95cizuPUsg3hBw1VU/SVbh2PXlLMFzOUHA/2aaArbveIxLhqFAO/+BqkmEjCJnwd1k64ez4
+	3H7TxUeCsrcV3HlrtFbMR2iZU7cXETLaa0PjA3wfidSgcf+R/EEoLrZ2NurGZbS0BxYm18jW6lFNq
+	OKru4Rx5sB4Mf5jPLexgorXjPjIgaHKZn5s5F6sqv28kBx/yC12iqZGnqKMCnOO9dK7lNs5Zrpb9o
+	+Azc9oqQ==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1putmP-003ETz-0l
+	id 1putmP-003EU7-0l
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 May 2023 11:39:25 +0000
+	Fri, 05 May 2023 11:39:31 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmB-0001Vk-Vy; Fri, 05 May 2023 13:39:04 +0200
+	id 1putmC-0001ZG-KU; Fri, 05 May 2023 13:39:04 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putmB-001Hbr-5C; Fri, 05 May 2023 13:39:03 +0200
+	id 1putmB-001HcD-To; Fri, 05 May 2023 13:39:03 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1putm8-003RnY-3s; Fri, 05 May 2023 13:39:00 +0200
+	id 1putm7-003RmW-Ux; Fri, 05 May 2023 13:38:59 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -65,20 +65,18 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v4 06/21] PM / devfreq: rockchip-dfi: Use free running counter
-Date: Fri,  5 May 2023 13:38:41 +0200
-Message-Id: <20230505113856.463650-7-s.hauer@pengutronix.de>
+Subject: [PATCH v4 00/21] Add perf support to the rockchip-dfi driver
+Date: Fri,  5 May 2023 13:38:35 +0200
+Message-Id: <20230505113856.463650-1-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230505113856.463650-1-s.hauer@pengutronix.de>
-References: <20230505113856.463650-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_123918_068546_A32275DE 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20230505_123921_729869_2473D2A3 
+X-CRM114-Status: GOOD (  18.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,125 +93,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DDR_MON counters are free running counters. These are resetted to 0
-when starting them over like currently done when reading the current
-counter values.
+This is v4 of the patches adding DDR perf support to the rockchip-dfi
+driver.
 
-Resetting the counters becomes a problem with perf support we want to
-add later, because perf needs a monotonicly increasing counter.
+There was no reaction to v3 of this series. Heiko, as the devfreq maintainers
+are unreactive, would it be an option to take this through your tree?
 
-This patch removes resetting the counters and keeps them running
-instead. Counter overflows are handled with modular arithmetics. Not
-stopping the counters also has the impact that they are running while
-we are reading them. We cannot read multiple timers atomically, so
-the values do not exactly fit together. The effect should be negligible
-though as the time between two measurements is some orders of magnitude
-bigger than the time we need to read multiple registers.
+Compared to the last version I added RK3588 support this time which required
+some minor refactoring of the driver code. Only the driver changes are
+included, not yet the device tree changes.
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- drivers/devfreq/event/rockchip-dfi.c | 53 ++++++++++++++++------------
- 1 file changed, 31 insertions(+), 22 deletions(-)
+To make a bit of advertisement for this series: It allows us to measure the
+DDR utilization which can be quite nice to identify performance bottlenecks.
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 383fe8a17a512..25d64d9166a9a 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -38,11 +38,15 @@
- #define DDRMON_CH1_COUNT_NUM		0x3c
- #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
- 
--struct dmc_usage {
-+struct dmc_count_channel {
- 	u32 access;
- 	u32 total;
- };
- 
-+struct dmc_count {
-+	struct dmc_count_channel c[RK3399_DMC_NUM_CH];
-+};
-+
- /*
-  * The dfi controller can monitor DDR load. It has an upper and lower threshold
-  * for the operating points. Whenever the usage leaves these bounds an event is
-@@ -51,7 +55,8 @@ struct dmc_usage {
- struct rockchip_dfi {
- 	struct devfreq_event_dev *edev;
- 	struct devfreq_event_desc desc;
--	struct dmc_usage ch_usage[RK3399_DMC_NUM_CH];
-+	struct dmc_count count;
-+	struct dmc_count last_event_count;
- 	struct device *dev;
- 	void __iomem *regs;
- 	struct regmap *regmap_pmu;
-@@ -85,30 +90,18 @@ static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
- 	writel_relaxed(SOFTWARE_DIS, dfi_regs + DDRMON_CTRL);
- }
- 
--static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
-+static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
--	u32 tmp, max = 0;
--	u32 i, busier_ch = 0;
-+	u32 i;
- 	void __iomem *dfi_regs = dfi->regs;
- 
--	rockchip_dfi_stop_hardware_counter(edev);
--
--	/* Find out which channel is busier */
- 	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
--		dfi->ch_usage[i].access = readl_relaxed(dfi_regs +
-+		count->c[i].access = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
--		dfi->ch_usage[i].total = readl_relaxed(dfi_regs +
-+		count->c[i].total = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_COUNT_NUM + i * 20);
--		tmp = dfi->ch_usage[i].access;
--		if (tmp > max) {
--			busier_ch = i;
--			max = tmp;
--		}
- 	}
--	rockchip_dfi_start_hardware_counter(edev);
--
--	return busier_ch;
- }
- 
- static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
-@@ -145,12 +138,28 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 				  struct devfreq_event_data *edata)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
--	int busier_ch;
-+	struct dmc_count count;
-+	struct dmc_count *last = &dfi->last_event_count;
-+	u32 access = 0, total = 0;
-+	int i;
-+
-+	rockchip_dfi_read_counters(edev, &count);
-+
-+	/* We can only report one channel, so find the busiest one */
-+	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
-+		u32 a = count.c[i].access - last->c[i].access;
-+		u32 t = count.c[i].total - last->c[i].total;
-+
-+		if (a > access) {
-+			access = a;
-+			total = t;
-+		}
-+	}
- 
--	busier_ch = rockchip_dfi_get_busier_ch(edev);
-+	edata->load_count = access * 4;
-+	edata->total_count = total;
- 
--	edata->load_count = dfi->ch_usage[busier_ch].access * 4;
--	edata->total_count = dfi->ch_usage[busier_ch].total;
-+	dfi->last_event_count = count;
- 
- 	return 0;
- }
+Usage can be something like:
+
+perf stat -a -e rockchip_ddr/cycles/,\
+                rockchip_ddr/read-bytes/,\
+                rockchip_ddr/write-bytes/,\
+                rockchip_ddr/bytes/ sleep 1
+
+ Performance counter stats for 'system wide':
+
+        1582524826      rockchip_ddr/cycles/
+           1802.25 MB   rockchip_ddr/read-bytes/
+           1793.72 MB   rockchip_ddr/write-bytes/
+           3595.90 MB   rockchip_ddr/bytes/
+
+       1.014369709 seconds time elapsed
+
+The above was called with running a test program in the background which copies
+memory around. The measurements actually match quite well to the amount of
+memory really copied as output by the test program.
+
+Sascha
+
+Changes since v3:
+- Add RK3588 support
+
+Changes since v2:
+- Fix broken reference to binding
+- Add Reviewed-by from Rob
+
+Changes since v1:
+- Fix example to actually match the binding and fix the warnings resulted thereof
+- Make addition of rockchip,rk3568-dfi an extra patch
+
+Sascha Hauer (21):
+  PM / devfreq: rockchip-dfi: Embed desc into private data struct
+  PM / devfreq: rockchip-dfi: use consistent name for private data
+    struct
+  PM / devfreq: rockchip-dfi: Make pmu regmap mandatory
+  PM / devfreq: rockchip-dfi: Add SoC specific init function
+  PM / devfreq: rockchip-dfi: dfi store raw values in counter struct
+  PM / devfreq: rockchip-dfi: Use free running counter
+  PM / devfreq: rockchip-dfi: introduce channel mask
+  PM / devfreq: rk3399_dmc,dfi: generalize DDRTYPE defines
+  PM / devfreq: rockchip-dfi: Clean up DDR type register defines
+  PM / devfreq: rockchip-dfi: Add RK3568 support
+  PM / devfreq: rockchip-dfi: Handle LPDDR2 correctly
+  PM / devfreq: rockchip-dfi: Handle LPDDR4X
+  PM / devfreq: rockchip-dfi: Pass private data struct to internal
+    functions
+  PM / devfreq: rockchip-dfi: Prepare for multiple users
+  PM / devfreq: rockchip-dfi: Add perf support
+  PM / devfreq: rockchip-dfi: make register stride SoC specific
+  PM / devfreq: rockchip-dfi: account for multiple DDRMON_CTRL registers
+  PM / devfreq: rockchip-dfi: add support for RK3588
+  arm64: dts: rockchip: rk3399: Enable DFI
+  arm64: dts: rockchip: rk356x: Add DFI
+  dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
+
+ .../bindings/devfreq/event/rockchip-dfi.txt   |  18 -
+ .../bindings/devfreq/event/rockchip-dfi.yaml  |  39 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   1 -
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   6 +
+ drivers/devfreq/event/rockchip-dfi.c          | 723 +++++++++++++++---
+ drivers/devfreq/rk3399_dmc.c                  |  10 +-
+ include/soc/rockchip/rk3399_grf.h             |   9 +-
+ include/soc/rockchip/rk3568_grf.h             |  13 +
+ include/soc/rockchip/rk3588_grf.h             |  18 +
+ include/soc/rockchip/rockchip_grf.h           |  16 +
+ 10 files changed, 718 insertions(+), 135 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+ create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.yaml
+ create mode 100644 include/soc/rockchip/rk3568_grf.h
+ create mode 100644 include/soc/rockchip/rk3588_grf.h
+ create mode 100644 include/soc/rockchip/rockchip_grf.h
+
 -- 
 2.39.2
 
