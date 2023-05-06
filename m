@@ -4,82 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B01DBC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 May 2023 18:46:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F1EFC77B73
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 May 2023 06:11:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MXy5z1wHckIxTpfBISH2PxydGqbs2qN0LbecPgtPA/E=; b=rHB/zz8LIs7/7P
-	gfzwWb9l8cFjijim5QqQKQuu1jcpY1rgPTCjy/GN1wKSeiwD4kfpUYQzARQXINarhaGtLcedFHO5b
-	Lg2Nj1gssgLpYXdRRL0EJylhJDIJ4mX1eGMsDH8lJqZ88APCP/PEsBh+Jt+Wbc+qeJNDTMX5lbKss
-	/jUsB0gGZ67Og21/oR/67OtOjOnK+iOHTp9SlDvuuLDvc6viyCl0zh0GTVvhWqGaAIr9vLjEGJ8rP
-	buigBPWExYKEBiv3Lh712QMD7mRqFJwteENMyGUE8Gto4ZpUnyobXQXMtncgiifMTFsPOpRkW2W2E
-	DQsVwhTHJ1hoM5oc0NTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JenesyFaKYL7k1rUG79/3LS+csnkX3bXhnBMN1nb02I=; b=0aeHF/QwcEZJeE
+	IwKHe2GumKFh4QFVGvEOw9b58vQWZ0ox5LBvmHV5AEBMHAU/zbFsAzALAERtEjGrPm3scWrP2kY/E
+	pognra5WKhNtcQnmwKO3eIXTNTcwThFL8mYz5NkHalfb6+AGnoADmjA/JiG04d4YnWl2q5f0hASc+
+	GLTaL7UZyIryEK81r+YwoFfkvD3o/000vEgNOA7GZW9OL8B7ePf2DGh4LbP0R99qIEQ0DcjnQHB0Z
+	CLvb8rSqHicfsg3tNUQiVLJsEDXHhhoX5H+Oqhf5xjH0qC++WHLZRAfhLELJ5SxUKVsxcGxmjHnZH
+	kTrkzBNy/moJYJCLvnqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pv0RY-00BXjV-0z;
-	Fri, 05 May 2023 18:46:12 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1pvB8Z-00Cdrj-0Q;
+	Sat, 06 May 2023 06:11:19 +0000
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pv0RV-00BXiY-11
-	for linux-rockchip@lists.infradead.org;
-	Fri, 05 May 2023 18:46:10 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-3ef5bea20caso9646681cf.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 05 May 2023 11:46:06 -0700 (PDT)
+	id 1pvB8U-00Cdq7-0l;
+	Sat, 06 May 2023 06:11:16 +0000
+Received: by mail-il1-x129.google.com with SMTP id e9e14a558f8ab-333866a265fso8990305ab.3;
+        Fri, 05 May 2023 23:11:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=poorly.run; s=google; t=1683312366; x=1685904366;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=EhmbhDCRzak/t11wXpwMu2NOC9pgAHH93PKpbCf1qtA=;
-        b=G4QDfdGTzO4rSstvF9JULH2agg39wZYGm0nZVPkuB63FSC18U3tIHgh/MgE122WMBH
-         p/twjplPNfl+1E0E9Z1UrteFrIythH94J7d/AWSuxJLPTHdli5pkwaMD/wXE7UdE+Q1Q
-         FyT1xfPSDRgD7KkOR2w802JXOiQ5nSwAJiRS45fHgz+GyOap8dVYLryiN2EE+zTNsRIR
-         CIrD9UQljXXNAqfHwziSmDhh7++2JjQzEsexVdaeS9WoZhSCE+HfHEaANeIIKYv75fFz
-         jfHGxvzY3fnhKhdycwH/5pNZHbyPZkutgwzSDevR80rIETpfhoeIdtjwzgD9sagW7LSp
-         s9tw==
+        d=gmail.com; s=20221208; t=1683353472; x=1685945472;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=VE2YlrUyq5bOerpTSJ4F3tPsUEgEruXEc28cG2wMg3A=;
+        b=jzHAeMwNfRTd0NdZ/iG/nzD4VC5m1KPVuLB3sK/Jjb/bDlh//nDvbPLAuEY9j4ehHm
+         zcs7hbymYw5mgo+474DHEgkcBXD7W3mYdqqgb1YL82jIyeL5mXjO+d1plbqtksNn/23z
+         Sxl9s9cLSSGgrGuFBxl8t5zlFb+hwTUeSgpdcPUayIvlRGPzH1U78/u0Hl8N7rOWi01n
+         JQuIk/WLE4XqdPBNeTvYVbvrQi4S7KsOfRCZoxb+bDinjuSEL1Sh37VOI1ZFRwwJpIgi
+         xNwWbPiDSfDSEpadl9/paJp2evrY+vi0b7zW7j1gbQicrsPzQ1KFuuN5ESX0HAel1z1K
+         8VMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683312366; x=1685904366;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EhmbhDCRzak/t11wXpwMu2NOC9pgAHH93PKpbCf1qtA=;
-        b=glaG61w0LdTZwc3TnTSf22HSRvMSyCCt3QbTg1cUHBe2o44hbCOpnAdvKFm/JrOnKN
-         LBIW1+tygFfMjqqhyzqRUqPrAX/y6y9KzyCxAXsoflXKmJ6pUsHbQl+IS0lc4+4dPu1J
-         aFEplMifCsmtsJ587jXhRcLWTMqOhjFVfPcvBPlLo5qmfLQO7Uk4X1dMeJwsHM0aiSJ7
-         Cg63P+RdLd5fXT7/vVOE8+M3VqxuqohDLRlXnLxVcgmrGUNrVJ3LfPixe9F4B8FworDr
-         XQAs2fQT5U74felEI8VgIINhigvsa2BGeEI8Zoi2IgTlBTaPogePtQtx3lC3aSoCkaJx
-         Amfw==
-X-Gm-Message-State: AC+VfDxkpGq+7ayr2/iAA8sXKR5XlK3/kbZ/9VoDCu3YS6iYQrXyOLd9
-	Ep21GOxVmk5F/irxZQPkBjwbCw==
-X-Google-Smtp-Source: ACHHUZ6vlZe98aEMf6s3/JGq7Iyk2iDwsx/lw9OyEks9Uh1D/pOw8Gb/P9wzyi0pSNjwmIgQGhKOKg==
-X-Received: by 2002:a05:622a:1999:b0:3e6:4fab:478e with SMTP id u25-20020a05622a199900b003e64fab478emr4806484qtc.33.1683312365928;
-        Fri, 05 May 2023 11:46:05 -0700 (PDT)
-Received: from localhost (164.146.150.34.bc.googleusercontent.com. [34.150.146.164])
-        by smtp.gmail.com with ESMTPSA id i2-20020ac80042000000b003ef28a76a11sm59598qtg.68.2023.05.05.11.46.04
+        d=1e100.net; s=20221208; t=1683353472; x=1685945472;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=VE2YlrUyq5bOerpTSJ4F3tPsUEgEruXEc28cG2wMg3A=;
+        b=Ir/B4yPgMhmyY8TZtbQIbKjhr0jrlZ0s0p3qdER3hnewufwLP3McU1rZrkW+WyRIgB
+         0+4+JbBX+tLBp7UOeKBHHSQpiOYpyoZJIbVw8l0kmaVzMq1Zlf4q7gHkHh6B724tVczO
+         iFVg0UC3iv88oZ6jlR0OUWqH2N+Crqh/XYAde3LVepqpjre1FuTn8RymFexqG/eV3Zxx
+         GO7di9yEUJyEfepS4tWmXMPMYGX5LJa5X4wNamDAxXFGF/7NXr0jKm+TB+YjRloib2em
+         c9ENnZnNpX0qGVN65i+FgrhyOy30xa7XptHmw2qMph1VWSeRvEoO+N0+h4Nj+JvbObQP
+         QwsQ==
+X-Gm-Message-State: AC+VfDzawl6NkDWs5bvNyB8fRXWh9E5tPkLGk1gzYdV0MkuVNXlEFEbw
+	MRB5OkOTLWdsEFJPFMd1b/w=
+X-Google-Smtp-Source: ACHHUZ6ZnHVBxAHo7DZR0rRf52cK96e9/U3YCE1XTTh+l9xyr4FPCfqeGMLrwoJoW7Uv32XIJa50bA==
+X-Received: by 2002:a92:c60f:0:b0:332:dd0a:c6df with SMTP id p15-20020a92c60f000000b00332dd0ac6dfmr2498088ilm.22.1683353471686;
+        Fri, 05 May 2023 23:11:11 -0700 (PDT)
+Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
+        by smtp.googlemail.com with ESMTPSA id b16-20020a92c850000000b0032e28db67dcsm413047ilq.84.2023.05.05.23.11.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 May 2023 11:46:04 -0700 (PDT)
-Date: Fri, 5 May 2023 18:46:04 +0000
-From: Sean Paul <sean@poorly.run>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Daniel Vetter <daniel@ffwll.ch>, Sean Paul <seanpaul@chromium.org>,
-	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v3 1/2] drm/atomic: Allow vblank-enabled + self-refresh
- "disable"
-Message-ID: <ZFVO7LAroGNZuCxu@art_vandelay>
-References: <20230109171809.v3.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
+        Fri, 05 May 2023 23:11:11 -0700 (PDT)
+From: Tianling Shen <cnsztl@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Andy Yan <andyshrk@163.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Vasily Khoruzhick <anarsoul@gmail.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/3] dt-bindings: Add doc for Fastrhino R66S / R68S
+Date: Sat,  6 May 2023 14:11:06 +0800
+Message-Id: <20230506061108.17658-1-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230109171809.v3.1.I3904f697863649eb1be540ecca147a66e42bfad7@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230505_114609_484250_88182B33 
-X-CRM114-Status: GOOD (  29.34  )
+X-CRM114-CacheID: sfid-20230505_231114_280017_4A69FB2B 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,89 +108,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 09, 2023 at 05:18:16PM -0800, Brian Norris wrote:
-> The self-refresh helper framework overloads "disable" to sometimes mean
-> "go into self-refresh mode," and this mode activates automatically
-> (e.g., after some period of unchanging display output). In such cases,
-> the display pipe is still considered "on", and user-space is not aware
-> that we went into self-refresh mode. Thus, users may expect that
-> vblank-related features (such as DRM_IOCTL_WAIT_VBLANK) still work
-> properly.
-> 
-> However, we trigger the WARN_ONCE() here if a CRTC driver tries to leave
-> vblank enabled.
-> 
-> Add a different expectation: that CRTCs *should* leave vblank enabled
-> when going into self-refresh.
-> 
-> This patch is preparation for another patch -- "drm/rockchip: vop: Leave
-> vblank enabled in self-refresh" -- which resolves conflicts between the
-> above self-refresh behavior and the API tests in IGT's kms_vblank test
-> module.
-> 
-> == Some alternatives discussed: ==
-> 
-> It's likely that on many display controllers, vblank interrupts will
-> turn off when the CRTC is disabled, and so in some cases, self-refresh
-> may not support vblank. To support such cases, we might consider
-> additions to the generic helpers such that we fire vblank events based
-> on a timer.
-> 
-> However, there is currently only one driver using the common
-> self-refresh helpers (i.e., rockchip), and at least as of commit
-> bed030a49f3e ("drm/rockchip: Don't fully disable vop on self refresh"),
-> the CRTC hardware is powered enough to continue to generate vblank
-> interrupts.
-> 
-> So we chose the simpler option of leaving vblank interrupts enabled. We
-> can reevaluate this decision and perhaps augment the helpers if/when we
-> gain a second driver that has different requirements.
-> 
-> v3:
->  * include discussion summary
-> 
-> v2:
->  * add 'ret != 0' warning case for self-refresh
->  * describe failing test case and relation to drm/rockchip patch better
-> 
-> Cc: <stable@vger.kernel.org> # dependency for "drm/rockchip: vop: Leave
->                              # vblank enabled in self-refresh"
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+Add devicetree binding documentation for the
+Lunzn Fastrhino R66S and R68S boards.
 
-Pushed both patches to drm-misc-next, thanks Brian
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
 
-> ---
->  drivers/gpu/drm/drm_atomic_helper.c | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-> index d579fd8f7cb8..a22485e3e924 100644
-> --- a/drivers/gpu/drm/drm_atomic_helper.c
-> +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> @@ -1209,7 +1209,16 @@ disable_outputs(struct drm_device *dev, struct drm_atomic_state *old_state)
->  			continue;
->  
->  		ret = drm_crtc_vblank_get(crtc);
-> -		WARN_ONCE(ret != -EINVAL, "driver forgot to call drm_crtc_vblank_off()\n");
-> +		/*
-> +		 * Self-refresh is not a true "disable"; ensure vblank remains
-> +		 * enabled.
-> +		 */
-> +		if (new_crtc_state->self_refresh_active)
-> +			WARN_ONCE(ret != 0,
-> +				  "driver disabled vblank in self-refresh\n");
-> +		else
-> +			WARN_ONCE(ret != -EINVAL,
-> +				  "driver forgot to call drm_crtc_vblank_off()\n");
->  		if (ret == 0)
->  			drm_crtc_vblank_put(crtc);
->  	}
-> -- 
-> 2.39.0.314.g84b9a713c41-goog
-> 
+Changes in v2:
+* Collected Ack-by tag.
 
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml    | 7 +++++++
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ec141c937b8b..b1d271778179 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -562,6 +562,13 @@ properties:
+           - const: leez,p710
+           - const: rockchip,rk3399
+ 
++      - description: Lunzn FastRhino R66S / R68S
++        items:
++          - enum:
++              - lunzn,fastrhino-r66s
++              - lunzn,fastrhino-r68s
++          - const: rockchip,rk3568
++
+       - description: mqmaker MiQi
+         items:
+           - const: mqmaker,miqi
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 82d39ab0231b..c3d426509e7e 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -781,6 +781,8 @@ patternProperties:
+     description: Nanjing Loongmasses Ltd.
+   "^lsi,.*":
+     description: LSI Corp. (LSI Logic)
++  "^lunzn,.*":
++    description: Shenzhen Lunzn Technology Co., Ltd.
+   "^lwn,.*":
+     description: Liebherr-Werk Nenzing GmbH
+   "^lxa,.*":
 -- 
-Sean Paul, Software Engineer, Google / Chromium OS
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
