@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A22C7EE24
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 May 2023 16:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC90C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 May 2023 16:08:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p9JnEK6iNYJDQTai2YpKnIm9YLyx9rLNWwdTGGuILDw=; b=jn/CxHo0OH5dwc
-	cTcLOF1kV9bOiy5dXA53gyWEgEBAD1G8MM+OsZjLj/hduKygxGBy2DhrrtY4edyaifD4kjphrEwdo
-	mJQh7oKjmsRUey2XCBWjcmrE+OQ+xo5jeJGAZFY5UILImYqe0sTqzVPS5vxKyebEXWJR2xS3twxEu
-	bEBidQTaUqZKFENPh38nFOypxskUX8dbBUhvufdUqQ0xDam7HwnaX//B54eEzhDYpH+uqerP8xeeB
-	zoGk2321SHe0/JRSJ1ajQjDRNAt8lztDeAuxdFJ8bbR5Q5JQ5TRWrmqyqbOOqx/KgV20ufL7VzPzE
-	zrILtLbuXB1k73PkaiEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jGxLLUtQBQh1D4PH+D924cZ1PpPzUFPrfHO+fzLC7xo=; b=cxFF9DlQz94xue
+	KZQnPfGA1PXheCdH02hudxA0RVnzclVKmbWE9RR+aR7Y+FQl7YvMrSx31vXZqLXzn3lFOnBiEMC7s
+	xrQ8jXcE/T9RUQyJOlMtmkzB8yWGVZCnmtkoaX0UMRZ0tEB7zdmHZX7DAThgSayChBsIxQ8o4civQ
+	uaWw1CbdBMMZhpNiCGqwI+YdaUvTwA9F2NSFVT8JcpA+pbSHbLPvt2MPp0IV1yL/crulOdOhPby5I
+	8KS+gVE7XTRNZyH/BRHJFIAlMc3JlwvHvLvhovWrUkyu1nA5qLBYu+4z/OiweTrRG2izulYamuK7z
+	t5nYJqBCGc0plpnc5+0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw3PV-000vtm-1z;
-	Mon, 08 May 2023 16:08:25 +0000
+	id 1pw3PT-000vt8-0x;
+	Mon, 08 May 2023 16:08:23 +0000
 Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pw3PR-000vrp-0D
+	id 1pw3PR-000vrs-0A
 	for linux-rockchip@lists.infradead.org;
-	Mon, 08 May 2023 16:08:23 +0000
-Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-18f4a6d2822so32313680fac.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 08 May 2023 09:08:18 -0700 (PDT)
+	Mon, 08 May 2023 16:08:22 +0000
+Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-19619af9a02so463642fac.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 08 May 2023 09:08:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683562097; x=1686154097;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=U1Sdn3cY34mbROpVOZmUz0voYYViR2D+rO4YXIzNRJw=;
-        b=eg/BLvUR/R6QusB1qBcDlIKIz97DNjMmM3OOfHlPMz1tuyNvX7i6Y+u37hNz+uf5m1
-         hRiSkYpV0a8C99cm7J98yFUQ0xjw0KCaoniBstHSNOKMwwQxrD1RscqOj4iI8vZcGerI
-         5uzExLyjQ3dnCfGD5OTqnuR03O09kVIOKjODYwbooriUD6yeEMlZ8+dfWwEs92bWcQqI
-         tbiOyT5XoC/WjuhyfMK6F52yQcA8q50dOOOdcm4qMlKnzjaX4a5iON1/Zcok+++ZiVi2
-         3NsYYcjF6yhl4570C5u+Uvj5S77drfaNCStarSTugY+57/mTHn93T1XtNd5EDzVkUJe/
-         fL1g==
+        d=gmail.com; s=20221208; t=1683562098; x=1686154098;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6LD3Dby/8UnB2TQdVJHksGEYFyHRfIWgMsXp5YA/0W4=;
+        b=fv3zAXMWgoVbs1CNjix7xqZhp7ZHjFyyPxJYOQgqBGFG8v+SbeVQR9CMdft37GVdyF
+         AM5E8b7gsBh6Y2in3oYDTZ6Y7u+w932WqRpWbvAXfXOohbIRYzpT9y06O5CulPZRSjTj
+         c3QzY1nqECc1YF55onWTh5W0KzlEIdd4xJKyOxPWlnqraJcK5G7+/aujSxGqiK1uWuT/
+         T0unIBATCXxqLAqFMD17R2G6DcV1oEUM3MH56OiIV4bAzAzU6f1unfGweZhV33RLfvc6
+         PjY7Ss5pMW90GGxs70Jz8XqXaufvMzOyqtdsBZAZ+6yqGpSgcQYCVgf0xuDpaf63Zx28
+         zK7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683562097; x=1686154097;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=U1Sdn3cY34mbROpVOZmUz0voYYViR2D+rO4YXIzNRJw=;
-        b=In2ye8RcyH5sDq7Wn67iWTXKP5FElhlw92uwDv7nnHLBYFHberXZtGUsMiymqpzwxk
-         joHIoItndKY5LPYze3DEletBGjByHU04ZIOSXrGHhVa5gMDVL6C53cB0l797zyrZ8j7i
-         T4gCywUsKI1wTwCFhdIRc2VvVF1YxmjF6dzb06dDaAkyEpHNqa0mgSwJvI0ZUU1TsbGb
-         ChnBozg/pVinztlaBF+NQsFtuItXujVm7lGCvSHLE8VoJdVkEqB/VWIlXtA3mM21HM1T
-         QX3GNULHzrqRTV6OotN1hOtNlNjgPnho9pLVikJagnC0Pmxr+q/TUxJoaR/6B3Qh5hl7
-         XijQ==
-X-Gm-Message-State: AC+VfDzUOjnOGgPngaKUiH7GM+XnfXk+S5rC842O/0oUErvo+XKRPNaV
-	HGMs7xqB1dncUi8eNL9gsRE=
-X-Google-Smtp-Source: ACHHUZ5/eRTQpv8E/Y3Thhptmhz9PhabAPNQN0tpgRgv8byeyOTsb+fGYFuQyGJ68QzxXv1web228w==
-X-Received: by 2002:aca:2b14:0:b0:38d:ec3f:3117 with SMTP id i20-20020aca2b14000000b0038dec3f3117mr4746310oik.25.1683562097322;
-        Mon, 08 May 2023 09:08:17 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683562098; x=1686154098;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6LD3Dby/8UnB2TQdVJHksGEYFyHRfIWgMsXp5YA/0W4=;
+        b=ILg/kQGibvjdP4ZW/0iwQlGcNAuCrzmJp1fINyMexKk/snZi83FacZYb/y+0chZ53W
+         OpLktxueAsHItRvLSsTXLb1agB//jz+8ZZEv7dQ0q3vkIPSgQ0s52L89ScQo15NxMgTM
+         GCCwhTu1pg5wbPZmrCxpfNdnW+uSlnuPHdqFuw6094mNOOSaFIey6KiiyaAxVIrT9qUX
+         Tu/wfikCj6AMNw0DoHRgMrNOMj5p/FLtlthcaihj7gvFkClp+pXBI+GMXwCcT+/+8S3r
+         aiTjfkpxZPGK1aLK5gSz9mQY2FezaW2cBUBoLIimym086YNIvD+32AY8zQZREH9C0zBd
+         ND1Q==
+X-Gm-Message-State: AC+VfDya5xhREmSzNsQlCcMO1vpfgT9mkjQ9lxVrTieKhs4fQXh7XQXS
+	Zi9bVjFx02Hympw3yurumv8=
+X-Google-Smtp-Source: ACHHUZ6s4IMyzdiFjAyMenwg+XGqfN9NJsOwu0Yq0SrvJQ7Ut9Qxq/5PQju1U3Mrr+lZYef3ZHGkNA==
+X-Received: by 2002:aca:2b06:0:b0:38c:11b3:a397 with SMTP id i6-20020aca2b06000000b0038c11b3a397mr4754488oik.14.1683562096550;
+        Mon, 08 May 2023 09:08:16 -0700 (PDT)
 Received: from localhost.localdomain ([76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id v206-20020aca61d7000000b0038c0a359e74sm136391oib.31.2023.05.08.09.08.16
+        by smtp.gmail.com with ESMTPSA id v206-20020aca61d7000000b0038c0a359e74sm136391oib.31.2023.05.08.09.08.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 08 May 2023 09:08:16 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
@@ -77,16 +76,15 @@ Cc: linux-rockchip@lists.infradead.org,
 	edumazet@google.com,
 	davem@davemloft.net,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/2] dt-bindings: net: realtek-bluetooth: Fix RTL8821CS binding
-Date: Mon,  8 May 2023 11:08:10 -0500
-Message-Id: <20230508160811.3568213-2-macroalpha82@gmail.com>
+Subject: [PATCH 0/2] Correct fallback compatible for rtl8821cs bluetooth
+Date: Mon,  8 May 2023 11:08:09 -0500
+Message-Id: <20230508160811.3568213-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230508160811.3568213-1-macroalpha82@gmail.com>
-References: <20230508160811.3568213-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230508_090821_102529_6C3FBB62 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20230508_090821_086701_4A861E6A 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +103,21 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Update the fallback string for the RTL8821CS from realtek,rtl8822cs-bt
-to realtek,rtl8723bs-bt. The difference between these two strings is
-that the 8822cs enables power saving features that the 8723bs does not,
-and in testing the 8821cs seems to have issues with these power saving
-modes enabled.
+The realtek 8821cs bluetooth module is functionally very similar to the
+8822cs and 8723bs modules, however unlike the 8822 module it seems to
+struggle when power management features are enabled. By switching the
+fallback string from realtek,rtl8822cs-bt to realtek,rtl8723bs-bt we
+can instruct the driver to not enable advanced power management
+features that cause the issues.
 
-Fixes: 95ee3a93239e ("dt-bindings: net: realtek-bluetooth: Add RTL8821CS")
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
+Chris Morgan (2):
+  dt-bindings: net: realtek-bluetooth: Fix RTL8821CS binding
+  arm64: dts: rockchip: Fix compatible for Bluetooth
+
  Documentation/devicetree/bindings/net/realtek-bluetooth.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-index 8cc2b9924680..506ea9b17668 100644
---- a/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-+++ b/Documentation/devicetree/bindings/net/realtek-bluetooth.yaml
-@@ -27,7 +27,7 @@ properties:
-       - items:
-           - enum:
-               - realtek,rtl8821cs-bt
--          - const: realtek,rtl8822cs-bt
-+          - const: realtek,rtl8723bs-bt
- 
-   device-wake-gpios:
-     maxItems: 1
 -- 
 2.34.1
 
