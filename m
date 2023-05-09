@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5C82C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 21:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4055DC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 21:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=wJrdb0rLN0qkV4beQuGOuOtaljHDlTWdRg9EspOMXjo=; b=qLq6xumGtPjdm/
-	bpDm/mUEGRbBMBMiyM9Gf3r8R9Vq0RE6djfu0jA7IObSgvFUo2+56tfTsklBwqK6a4cFq+8xa7Gww
-	kntZm7V0lgh8zPO1Iys0WNJnTrumHoG9qklx7ZXXu42IsrYzQRrvZobmEzV9NVtGMPQuDNetOBazJ
-	0pIRkqA6mE5Lq6KmzXv7C2d4YZ4Vz3qKTTai+v16LTdSrrBgbPWysnbNicuWqSmnDcFTzkq1PZsZJ
-	4YmSFtBPR46Nh1Gy98JqVgeXlSQRJLoQqOO/n9PwCNqZ7AugM+L0yPMWPj32eCi6KLmPaDEjsTpGE
-	tU8deHaJYku2Zg1KSB/w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1kkRb/jSsh8OFiRHZ9RaljT/NMJ5l0lYR2fXbODwZK4=; b=LsCcijBMxMH7xK
+	fTJZCwh/DzU/LIa6l72AD7IeOwkgYpysKq2Uw4mIqiTPECC7JX1pQhXsGynMoyCkASw7um6VvKWlC
+	icQNdL4YIva7fNnUnVEV/anaEu8FmHIuRl3+huky8TNOKnJ/skLe9m5qvY2JoGiFpdnobqxVR+tzd
+	cX+a40oMUcR8WCdYr3Wn2vSjHIPZ5CMxvhvCkHZY00H4RuSubKgjbLGal7/Ms2leZGT8lQz4aSiEf
+	h4QsykMJG/ufL5QOn/rsT8sBbwDJGvAvCVOgTOcWMb667no8lhS9ibWeEnLix/0n1WQE7QbnHTZfT
+	XZn9P/J3WPyw8p5WYGrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwUjn-004Hgb-0a;
-	Tue, 09 May 2023 21:19:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pwUka-004Hu4-2t;
+	Tue, 09 May 2023 21:20:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwUjj-004Hfq-0B;
-	Tue, 09 May 2023 21:19:09 +0000
+	id 1pwUkW-004HsI-3A;
+	Tue, 09 May 2023 21:19:58 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B8F4B63474;
-	Tue,  9 May 2023 21:19:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1962C433D2;
-	Tue,  9 May 2023 21:19:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7677863728;
+	Tue,  9 May 2023 21:19:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23417C433AA;
+	Tue,  9 May 2023 21:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683667145;
-	bh=paFIiV0ojWVNmpAG7xnNSJM6eT+FwbQEGoSUL07SX9E=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Osqy01NModmG70vIdcLfjI4bTcs6w3AwYzLBNAL5wzYbz8J78Eck1IqtWWcc3tMHQ
-	 mfwtaHhDJOmN8phCSA9ShpYhisTVQSIvqnvVknukuqmjulR2LFh8OQRs8EfdOsZRes
-	 C/S3TDloBE6VMjfkr3YclV9+5t9m9Unm0rWUW9U7MdSUpj6RnXUw2zse8ttpFbUPMd
-	 UzaGreBQW8g+6ML9V+s/dgX+zKW+q2RhSYPRX2nd6wXp1Xi4ztQoNQqAlaukmkMzrB
-	 iWG3gT92ASwVa4NxiOdhQ0g5l60PoTW6ckle+kPHAhKVvwCeBPNktFL2kQUM1p+7jR
-	 e32tevANNQpuQ==
-Date: Tue, 9 May 2023 16:19:02 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
-Cc: linux-pci@vger.kernel.org, robh@kernel.org, heiko@sntech.de,
-	kw@linux.com, shawn.lin@rock-chips.com,
-	linux-kernel@vger.kernel.org, lgirdwood@gmail.com,
-	linux-rockchip@lists.infradead.org, broonie@kernel.org,
-	bhelgaas@google.com, linux-kernel-mentees@lists.linuxfoundation.org,
-	lpieralisi@kernel.org, linux-arm-kernel@lists.infradead.org,
-	Dan Johansen <strit@manjaro.org>
-Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
- Rockchip PCIe bus scan
-Message-ID: <20230509211902.GA1270901@bhelgaas>
+	s=k20201202; t=1683667195;
+	bh=dZcncFoOgw/eH7UVCrXpSIV9X+sT3A0DOP87tB3c8zE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OReouasxxpVe6+0j96aM2dl486XO52MGkfiKH27iAC7pajocVBu1o6YQ0ITMrIS+/
+	 VvC8z0vOnGyTMmK3sF45Qn331if9if554Oq+N24fbQUQuqUp7sZVGI+QfrQXjULIjX
+	 cvACOhtTRD+ywEUxKpQKhtAwp3y46jVkGfVTYuOe1lZ/x/ayujTQ57lBbWlMN2ECBx
+	 6Iev9TjMlOHkxnhrJ38DUjLtBRGTyZocDXReA1FWPluMf/MtklyXLumYWnEo6h+B2F
+	 P6uyBkpJCAQXqqYCtAtwxsBAz77QCl4O57ljRNg3dSUDb0fFlzbpJWJRxEJ76+f4sY
+	 mDbBv6EXU5iJw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sasha Levin <sashal@kernel.org>,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.3 17/18] clk: rockchip: rk3588: make gate linked clocks critical
+Date: Tue,  9 May 2023 17:19:25 -0400
+Message-Id: <20230509211928.21010-17-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230509211928.21010-1-sashal@kernel.org>
+References: <20230509211928.21010-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230509153912.515218-1-vincenzopalazzodev@gmail.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_141907_204045_64D74DB1 
-X-CRM114-Status: GOOD (  46.81  )
+X-CRM114-CacheID: sfid-20230509_141957_097268_9444C0CF 
+X-CRM114-Status: GOOD (  25.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,236 +83,159 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vincenzo,
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Thanks for raising this issue.  Let's see what we can do to address
-it.
+[ Upstream commit 64042c28c3bb6729df8e2fda89bc7ebbe3790907 ]
 
-On Tue, May 09, 2023 at 05:39:12PM +0200, Vincenzo Palazzo wrote:
-> Add a configurable delay to the Rockchip PCIe driver to address
-> crashes that occur on some old devices, such as the Pine64 RockPro64.
-> 
-> This issue is affecting the ARM community, but there is no
-> upstream solution for it yet.
+RK3588 has a couple of hardware blocks called Native Interface Unit
+(NIU) that gate the clocks to devices behind them. Effectively this
+means that some clocks require two parent clocks being enabled.
+Downstream implemented this by using a separate clock driver
+("clk-link") for them, which enables the second clock using PM
+framework.
 
-It sounds like this happens with several endpoints, right?  And I
-assume the endpoints work fine in other non-Rockchip systems?  If
-that's the case, my guess is the problem is with the Rockchip host
-controller and how it's initialized, not with the endpoints.
+In the upstream kernel we are currently missing support for the second
+parent. The information about it is in the GATE_LINK() macro as
+linkname, but that is not used. Thus the second parent clock is not
+properly enabled. So far this did not really matter, since these clocks
+are mostly required for the more advanced IP blocks, that are not yet
+supported upstream. As this is about to change we need a fix. There
+are three options available:
 
-The only delays and timeouts I see in the driver now are in
-rockchip_pcie_host_init_port(), where it waits for link training to
-complete.  I assume the link training did completely successfully
-since you don't mention either a gen1 or gen2 timeout (although the
-gen2 message is a dev_dbg() that normally wouldn't go to the console).
+1. Properly implement support for having two parent clocks in the
+   clock framework.
+2. Mark the affected clocks CLK_IGNORE_UNUSED, so that they are not
+   disabled. This wastes some power, but keeps the hack contained
+   within the clock driver. Going from this to the first solution
+   is easy once that has been implemented.
+3. Enabling the extra clock in the consumer driver. This leaks some
+   implementation details into DT.
 
-I don't know that the spec contains a retrain timeout value.  Several
-other drivers use 1 second, while rockchip uses 500ms (for example,
-see LINK_RETRAIN_TIMEOUT and LINK_UP_TIMEOUT).
+This patch implements the second option as an intermediate solution
+until the first one is available. I used an alias for CLK_IS_CRITICAL,
+so that it's easy to see which clocks are not really critical once
+the clock framework supports a better way to implement this.
 
-I think we need to understand the issue better before adding a DT
-property and a module parameter.  Those are hard for users to deal
-with.  If we can figure out a value that works for everybody, it would
-be better to just hard-code it in the driver and use that all the
-time.
+Tested-by: Vincent Legoll <vincent.legoll@gmail.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Link: https://lore.kernel.org/r/20230403193250.108693-2-sebastian.reichel@collabora.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/clk/rockchip/clk-rk3588.c | 42 +++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
 
-A few minor style/formatting comments below just for future reference:
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index b7ce3fbd6fa6a..6994165e03957 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -13,15 +13,25 @@
+ #include "clk.h"
+ 
+ /*
+- * GATE with additional linked clock. Downstream enables the linked clock
+- * (via runtime PM) whenever the gate is enabled. The downstream implementation
+- * does this via separate clock nodes for each of the linked gate clocks,
+- * which leaks parts of the clock tree into DT. It is unclear why this is
+- * actually needed and things work without it for simple use cases. Thus
+- * the linked clock is ignored for now.
++ * Recent Rockchip SoCs have a new hardware block called Native Interface
++ * Unit (NIU), which gates clocks to devices behind them. These effectively
++ * need two parent clocks.
++ *
++ * Downstream enables the linked clock via runtime PM whenever the gate is
++ * enabled. This implementation uses separate clock nodes for each of the
++ * linked gate clocks, which leaks parts of the clock tree into DT.
++ *
++ * The GATE_LINK macro instead takes the second parent via 'linkname', but
++ * ignores the information. Once the clock framework is ready to handle it, the
++ * information should be passed on here. But since these clocks are required to
++ * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
++ * clocks critical until a better solution is available. This will waste some
++ * power, but avoids leaking implementation details into DT or hanging the
++ * system.
+  */
+ #define GATE_LINK(_id, cname, pname, linkname, f, o, b, gf) \
+ 	GATE(_id, cname, pname, f, o, b, gf)
++#define RK3588_LINKED_CLK		CLK_IS_CRITICAL
+ 
+ 
+ #define RK3588_GRF_SOC_STATUS0		0x600
+@@ -1446,7 +1456,7 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE_NODIV(HCLK_NVM_ROOT,  "hclk_nvm_root", mux_200m_100m_50m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(77), 0, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(31), 0, GFLAGS),
+-	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, 0,
++	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(77), 7, 1, MFLAGS, 2, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(31), 1, GFLAGS),
+ 	GATE(ACLK_EMMC, "aclk_emmc", "aclk_nvm_root", 0,
+@@ -1675,13 +1685,13 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(42), 9, GFLAGS),
+ 
+ 	/* vdpu */
+-	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, 0,
++	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(98), 5, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(44), 0, GFLAGS),
+ 	COMPOSITE_NODIV(ACLK_VDPU_LOW_ROOT, "aclk_vdpu_low_root", mux_400m_200m_100m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(98), 7, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(44), 1, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, 0,
++	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(98), 9, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(44), 2, GFLAGS),
+ 	COMPOSITE(ACLK_JPEG_DECODER_ROOT, "aclk_jpeg_decoder_root", gpll_cpll_aupll_spll_p, 0,
+@@ -1732,9 +1742,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE(ACLK_RKVENC0_ROOT, "aclk_rkvenc0_root", gpll_cpll_npll_p, 0,
+ 			RK3588_CLKSEL_CON(102), 7, 2, MFLAGS, 2, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(47), 1, GFLAGS),
+-	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", 0,
++	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", RK3588_LINKED_CLK,
+ 			RK3588_CLKGATE_CON(47), 4, GFLAGS),
+-	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", 0,
++	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", RK3588_LINKED_CLK,
+ 			RK3588_CLKGATE_CON(47), 5, GFLAGS),
+ 	COMPOSITE(CLK_RKVENC0_CORE, "clk_rkvenc0_core", gpll_cpll_aupll_npll_p, 0,
+ 			RK3588_CLKSEL_CON(102), 14, 2, MFLAGS, 9, 5, DFLAGS,
+@@ -1744,10 +1754,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(48), 6, GFLAGS),
+ 
+ 	/* vi */
+-	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, 0,
++	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(106), 5, 3, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(49), 0, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, 0,
++	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(106), 8, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(49), 1, GFLAGS),
+ 	COMPOSITE_NODIV(PCLK_VI_ROOT, "pclk_vi_root", mux_100m_50m_24m_p, 0,
+@@ -1919,10 +1929,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE(ACLK_VOP_ROOT, "aclk_vop_root", gpll_cpll_dmyaupll_npll_spll_p, 0,
+ 			RK3588_CLKSEL_CON(110), 5, 3, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(52), 0, GFLAGS),
+-	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, 0,
++	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(110), 8, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(52), 1, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, 0,
++	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
+ 			RK3588_CLKSEL_CON(110), 10, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(52), 2, GFLAGS),
+ 	COMPOSITE_NODIV(PCLK_VOP_ROOT, "pclk_vop_root", mux_100m_50m_24m_p, 0,
+@@ -2425,7 +2435,7 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 
+ 	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", "aclk_vi_root", 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
+ 	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", "hclk_vi_root", 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
+-	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", "aclk_nvm_root", 0, RK3588_CLKGATE_CON(31), 2, GFLAGS),
++	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", "aclk_nvm_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
+ 	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
+ 	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", "hclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
+ 	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
+-- 
+2.39.2
 
-> Crash dump (customized Manjaro kernel before this patch):
-> [    1.229856] SError Interrupt on CPU4, code 0xbf000002 -- SError
-> [    1.229860] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.9.9-2.0-MANJARO-ARM #1
-> [    1.229862] Hardware name: Pine64 RockPro64 v2.1 (DT)
-> [    1.229864] pstate: 60000085 (nZCv daIf -PAN -UAO BTYPE=--)
-> [    1.229866] pc : rockchip_pcie_rd_conf+0xb4/0x270
-> [    1.229868] lr : rockchip_pcie_rd_conf+0x1b4/0x270
-> [    1.229870] sp : ffff80001004b850
-> [    1.229872] x29: ffff80001004b850 x28: 0000000000000001
-> [    1.229877] x27: 0000000000000000 x26: ffff00007a795000
-> [    1.229882] x25: ffff00007a7910b0 x24: 0000000000000000
-> [    1.229887] x23: 0000000000000000 x22: ffff00007b3a4380
-> [    1.229891] x21: ffff80001004b8c4 x20: 0000000000000004
-> [    1.229895] x19: 0000000000100000 x18: 0000000000000020
-> [    1.229900] x17: 0000000000000001 x16: 0000000000000019
-> [    1.229904] x15: ffff00007b222fd8 x14: ffffffffffffffff
-> [    1.229908] x13: ffff00007a79ba1c x12: ffff00007a79b290
-> [    1.229912] x11: 0101010101010101 x10: 7f7f7f7f7f7f7f7f
-> [    1.229917] x9 : ff72646268756463 x8 : 0000000000000391
-> [    1.229921] x7 : ffff80001004b880 x6 : 0000000000000001
-> [    1.229925] x5 : 0000000000000000 x4 : 0000000000000000
-> [    1.229930] x3 : 0000000000c00008 x2 : 000000000080000a
-> [    1.229934] x1 : 0000000000000000 x0 : ffff800014000000
-> [    1.229939] Kernel panic - not syncing: Asynchronous SError Interrupt
-> [    1.229942] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.9.9-2.0-MANJARO-ARM #1
-> [    1.229944] Hardware name: Pine64 RockPro64 v2.1 (DT)
-> [    1.229946] Call trace:
-> [    1.229948]  dump_backtrace+0x0/0x1d0
-> [    1.229949]  show_stack+0x18/0x24
-> [    1.229951]  dump_stack+0xc0/0x118
-> [    1.229953]  panic+0x148/0x320
-> [    1.229955]  nmi_panic+0x8c/0x90
-> [    1.229956]  arm64_serror_panic+0x78/0x84
-> [    1.229958]  do_serror+0x15c/0x160
-> [    1.229960]  el1_error+0x84/0x100
-> [    1.229962]  rockchip_pcie_rd_conf+0xb4/0x270
-> [    1.229964]  pci_bus_read_config_dword+0x6c/0xd0
-> [    1.229966]  pci_bus_generic_read_dev_vendor_id+0x34/0x1b0
-> [    1.229968]  pci_scan_single_device+0xa4/0x144
-> [    1.229970]  pci_scan_slot+0x40/0x12c
-> [    1.229972]  pci_scan_child_bus_extend+0x58/0x34c
-> [    1.229974]  pci_scan_bridge_extend+0x310/0x590
-> [    1.229976]  pci_scan_child_bus_extend+0x210/0x34c
-> [    1.229978]  pci_scan_root_bus_bridge+0x68/0xdc
-> [    1.229980]  pci_host_probe+0x18/0xc4
-> [    1.229981]  rockchip_pcie_probe+0x204/0x330
-
-Include only the parts of the crash dump that are needed to debug the
-problem or identify the problem enough to find this patch.  Timestamps
-probably aren't necessary.  Register contents -- probably not either.
-
-The rest of the backtrace (below here) probably isn't useful.
-
-> [    1.229984]  platform_drv_probe+0x54/0xb0
-> [    1.229985]  really_probe+0xe8/0x500
-> [    1.229987]  driver_probe_device+0xd8/0xf0
-> [    1.229989]  device_driver_attach+0xc0/0xcc
-> [    1.229991]  __driver_attach+0xa4/0x170
-> [    1.229993]  bus_for_each_dev+0x70/0xc0
-> [    1.229994]  driver_attach+0x24/0x30
-> [    1.229996]  bus_add_driver+0x140/0x234
-> [    1.229998]  driver_register+0x78/0x130
-> [    1.230000]  __platform_driver_register+0x4c/0x60
-> [    1.230002]  rockchip_pcie_driver_init+0x1c/0x28
-> [    1.230004]  do_one_initcall+0x54/0x1c0
-> [    1.230005]  do_initcalls+0xf4/0x130
-> [    1.230007]  kernel_init_freeable+0x144/0x19c
-> [    1.230009]  kernel_init+0x14/0x11c
-> [    1.230011]  ret_from_fork+0x10/0x34
-> [    1.230035] SMP: stopping secondary CPUs
-> [    1.230037] Kernel Offset: disabled
-> [    1.230039] CPU features: 0x0240022,2100200c
-> [    1.230041] Memory Limit: none
-
-> +++ b/Documentation/admin-guide/kernel-parameters.txt
-> @@ -4286,6 +4286,14 @@
->  				any pair of devices, possibly at the cost of
->  				reduced performance.  This also guarantees
->  				that hot-added devices will work.
-> +		pcie_rockchip_host.bus_scan_delay=	[PCIE] Delay in ms before
-> +			scanning PCIe bus in Rockchip PCIe host driver. Some PCIe
-> +			cards seem to need delays that can be several hundred ms.
-> +			If set to greater than or equal to 0 this parameter will
-> +			override delay that can be set in device tree.
-> +			Values less than 0 the module will hit an assertion
-> +			during the init.
-> +			The default value is 0.
-
-Generally speaking module-specific stuff like this doesn't get
-documented in kernel-parameters.txt.
-
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> @@ -663,7 +663,8 @@ &pcie0 {
->  	pinctrl-0 = <&pcie_perst>;
->  	vpcie12v-supply = <&vcc12v_dcin>;
->  	vpcie3v3-supply = <&vcc3v3_pcie>;
-> -	status = "okay";
-> +    bus-scan-delay-ms = <0>;
-> +    status = "okay";
-
-Please don't add arbitrary whitespace changes (it looks like this
-uses leading spaces instead of tabs).
-
-> +/* bus_scan_delay - module parameter to override the
-> + * device tree value, which is 0 by default. */
-
-Please follow comment style in the file, i.e.,
-
-  /*
-   * bus_scan_delay - ...
-   */
-
-Wrap comments to fill 78 columns or so to match the rest of the file.
-
-> @@ -987,6 +996,23 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	rockchip_pcie_enable_interrupts(rockchip);
->  
-> +	prob_delay = rockchip->bus_scan_delay;
-> +	if (bus_scan_delay)
-> +		prob_delay = bus_scan_delay;
-> +
-> +	/*
-> +	 * FIXME: This is a workaround for some devices that crash on calls to pci_host_probe()
-> +	 * or pci_scan_root_bus_bridge(). We add a delay before bus scanning to avoid the crash.
-> +	 * The call trace reaches rockchip_pcie_rd_conf() while attempting to read the vendor ID
-> +	 * (pci_bus_generic_read_dev_vendor_id() is in the call stack) before panicking.
-> +	 *
-> +	 * I'm not sure why this workaround is effective or what causes the panic. It may be related
-> +	 * to the cansleep value.
-
-Wrap comments to fit in 78 columns to match the rest of the file.
-
-> +	 */
-> +	dev_info(dev, "wait %u ms before bus scan\n", prob_delay);
-> +	if (prob_delay > 0)
-> +		msleep(prob_delay);
-
-I don't think we want to just add a random delay here that's not
-connected to anything else.  I assume it could go in
-rockchip_pcie_host_init_port() or perhaps rockchip_pcie_init_port()
-(which deasserts resets, and there are usually timing constraints
-related to deasserting resets).  Hopefully Shawn can shed some light
-on this.
-
->  	err = pci_host_probe(bridge);
->  	if (err < 0)
->  		goto err_remove_irq_domain;
-> @@ -1055,6 +1081,11 @@ static struct platform_driver rockchip_pcie_driver = {
->  };
->  module_platform_driver(rockchip_pcie_driver);
->  
-> +/** Allow to override the device tree default configuration with
-> + * a command line argument.
-> + **/
-
-Use multi-line comment style that matches the rest of the file.
-
-> +module_param_named(bus_scan_delay, bus_scan_delay, int, S_IRUGO);
-
-This should go right next to the bus_scan_delay definition above.
-
-> +++ b/drivers/pci/controller/pcie-rockchip.c
-> @@ -149,6 +149,11 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->  		return PTR_ERR(rockchip->clk_pcie_pm);
->  	}
->  
-> +	err = of_property_read_u32(node, "bus-scan-delay-ms", &rockchip->bus_scan_delay);
-> +	if (err) {
-> +		dev_info(dev, "no bus scan delay, default to 0 ms\n");
-> +		rockchip->bus_scan_delay = 0;
-
-I hope we don't need this property at all, but if we do, I assume it
-should be optional, with no message needed if it's not present.
-
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -299,6 +299,16 @@ struct rockchip_pcie {
->  	phys_addr_t msg_bus_addr;
->  	bool is_rc;
->  	struct resource *mem_res;
-> +
-> +	/* It seems that the driver crashes on some
-> +	 * older devices. To work around this, we
-> +	 * should add a sleep delay before probing.
-> +	 *
-> +	 * FIXME: need more investigated with an,
-> +	 * but looks like the problem can be related with
-> +	 * the cansleep value?
-> +	 **/
-
-We need better understanding of what's going on here.  Then this
-comment could be made more specific, shorter, and formatted like
-others.
-
-> +	u32 bus_scan_delay;
 
 _______________________________________________
 Linux-rockchip mailing list
