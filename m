@@ -4,75 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22688C77B7C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 15:03:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01757C77B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 15:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UDSC9wX9MeTAHThXJb+uwiOxeJ/g2Nb8IzVYQ9ZfHGk=; b=rUaFjUaxqEsSYS
-	7UVEYzmER453ZBDIBlyVXw8hRpMRtQyWuNb4gn6q14VjQCGVygtImG0Mc0ANVhLGD5rgpxd8N/YbP
-	z3xqBF/fYhkOylXQhZ/Ky6IXVaBYbec+Gr7s0+Bc6dSQR14Hq7OWx1MS0ZEDUkfbqTUEdDVQmCfz8
-	n+gGGoN0ncx2IFSoB6ts6k+I3IQNbefJlVz8caKaPez+3/K6q39Mtvb5I+8g+9BmuZTEXIMeeZFq8
-	8rdTLVn6oNAegwrJPDzr8fixQZc1ElSIUuvi/z1KUavJ9a9ABGsXremGItfMtzuKXBG060XBjlqz8
-	yooHNumWfVH0mwt+7u7A==;
+	List-Owner; bh=WW40wCZCA/cxO91U/W7Zqgytxp+Y9ZOzROOgPq6iN0U=; b=HaMgw37MUaintw
+	6i9gOkvGy2o//3GoX29vGv0DjokzqH2yMQ0bt61m1vF6p4o6gi67GW8E4YfOZTNQ0x3EPanQ6p4kq
+	pEOZaPVUhmKUudYRYkg75C3nIQm8Lb+5kcp2VNdE8WAxwmCBm/QFOlxFUZILl5mE2NB5wjHgwSrp1
+	pRGLQmhZRb57tyzFOY7DQ7e/JpbRkmEGS4V8+Z4Eml47cOMRfhtl04eFBZNPO4bn8AxsGxK20FUZ0
+	YVUCx11Nde95WG+a7bBPxJGBdIqfZqIMVIqq/RYJFeO6EY7z9vNGRz01aBgKEoGborCMrznmtj/Er
+	X4W3Z8gnD9eZXeJqf9cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwOrv-003el9-2U;
-	Tue, 09 May 2023 15:03:11 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1pwPQt-003iwA-2L;
+	Tue, 09 May 2023 15:39:19 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwOrr-003ejl-2f
-	for linux-rockchip@lists.infradead.org;
-	Tue, 09 May 2023 15:03:10 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3f315735514so212231285e9.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 09 May 2023 08:03:03 -0700 (PDT)
+	id 1pwPQp-003iuj-2J;
+	Tue, 09 May 2023 15:39:18 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-30786c6082dso2431719f8f.2;
+        Tue, 09 May 2023 08:39:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=yngvason.is; s=google; t=1683644582; x=1686236582;
+        d=gmail.com; s=20221208; t=1683646748; x=1686238748;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=yiiCFHEosqMsCxH4XI80X8lEQ3JLMfR1TMA28RRGwNE=;
-        b=Vq31+bD8BmUMKDR2yIRO+WwAKTomtKCl8AFDzULseMjyEc0Z62L3dSqL0a/wPZmDUB
-         JGRvYzFVcTKEzt2O/ZBlDKc6gQuBmKipuV9QnpZiO+yi0z3URYwcc+0EBuMv/q5u547X
-         98c3NRtivO5Y6/T/H5notMvmWkKWV+1JzTbp0=
+        bh=BAP6y9vENbOGTUMhyFaj/H50h+Cw78KTsgpA0Rfk0rk=;
+        b=MufmtxbdxskYNVPPTGC4wvh5lnaRXX5HH8PFcWRPdIDNo5A5tuqVl1P7E/DC2oqNvn
+         bXbUuYsN9QmwXlKoS8aSxKjfaEI2l0DchyG2G1HsZeQjFD8jp2zv6Nsyq5M3uUvMAjM0
+         qjKoRkVK3vdJ54iePMleWGLCzvbKZa7L7VFcHjBdxA7Nszp8fcrKy40YzqCxklOPpD+k
+         uQrfNZTBDx0hkpiNxq6PUcwpdIkDToBDoeBwfGGYVHMgkn7NYRo0/QIe7oZQPkwbQdhc
+         9e435yLIw5Zy2bPFrZp3DvZDVkubxvzA5VwbPoTDYZ/TAPc4HjsdpxGmJrDAUzrdIwFQ
+         UXNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683644582; x=1686236582;
+        d=1e100.net; s=20221208; t=1683646748; x=1686238748;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=yiiCFHEosqMsCxH4XI80X8lEQ3JLMfR1TMA28RRGwNE=;
-        b=SuClkjM+kwdfeDRdHkCXD4WtMe9ydLMdSl8bfzD1Rn/tjrP/eQ5EWTLiKKo2hr6ucp
-         y1fVuJ6dNShqq/O5sstnX0XBaHtQ1zQcqYrN0YllpjvTJ4IhiwzXImLRRYlQE+9JwQRJ
-         BfU1eHph8dFqmfQFsNVktmUFHDmlP7E7MuyXniM1FdBRI7TE2VjMV94ZOtLH1LJCvXVJ
-         NqmvOSLMWt3Rl2+bdhPskT7vQ3qzv6fWUKIqUF2L1NsTS1dXQt+4luwYr2ZUDfc16Y5W
-         gTGNIIv7+vpC4BxEXeGv2CeDiixjaUlImaDdigPU3QbUqn7VqDieYLc1xCY0IbaTJaRt
-         skxQ==
-X-Gm-Message-State: AC+VfDxUilQQ64Fncpb+XI6/W2aULfPEsn+yPTO9nYeuSTBXpVCOWUbD
-	PSxJMWTw5S9poeDyRGOD4jiCzQ==
-X-Google-Smtp-Source: ACHHUZ4gjz4q+PyY6d+zetOBkLBeMQVa9bwTVYN5JzodVoQDnsveCJ/cK4ILy5y5ZL3eTDfWh0fF3A==
-X-Received: by 2002:adf:db01:0:b0:307:9d14:eeee with SMTP id s1-20020adfdb01000000b003079d14eeeemr3587019wri.3.1683644580856;
-        Tue, 09 May 2023 08:03:00 -0700 (PDT)
-Received: from andri-workstation.turninn.appdynamic.com ([2a01:8280:aa07:ad:7285:c2ff:fef0:4baf])
-        by smtp.gmail.com with ESMTPSA id n10-20020a5d400a000000b00307a3045d65sm2588373wrp.46.2023.05.09.08.03.00
+        bh=BAP6y9vENbOGTUMhyFaj/H50h+Cw78KTsgpA0Rfk0rk=;
+        b=ls4tfeHlb7hCyHDlOM0c7Hsd1KHukeymO/oRgec7oGwjQUkjB/npQ6nJqB911PTiw2
+         eLHOH2MK9iFxyDt8ljFixcIlPkHkoLtwwVBpWb6TID8Xsibc1hvqbxKmfG0VOiqFnJGe
+         HDYf6FHFpuXP2jvPYqjmIgXubF+DZpxetGFabZwVHO2lkb49XSLdgch+2xVQj0f3ehHn
+         0J9TAMkXkUJPlKeL4fNJbAuc2kYlTea4ZyLvaAveTlLAOdFor2BquLU3Q2MDZLE/c5uC
+         p4PflizH+8/JuOWbYAn5PobFRtJJ9Dt2K1S2/g3PM9FklOnTK9dptnkzaieVpP1bQgvN
+         d2XQ==
+X-Gm-Message-State: AC+VfDzzELEwwIl5dWk27ZMQueab1eMyTPPTfcYBQEl8LRRYuBtZdJrT
+	PLUDvc247mP5E4u0cbH9vDI=
+X-Google-Smtp-Source: ACHHUZ4aKda1ezxfuzftb1TPzU+2RoACFlSNYWggFpqk8qP96GfUNv2pmL5E+0OyroVm0hmVFu9jeQ==
+X-Received: by 2002:a5d:4c49:0:b0:306:2c16:8361 with SMTP id n9-20020a5d4c49000000b003062c168361mr10045612wrt.22.1683646747911;
+        Tue, 09 May 2023 08:39:07 -0700 (PDT)
+Received: from localhost.localdomain ([146.70.132.238])
+        by smtp.gmail.com with ESMTPSA id x18-20020a5d6b52000000b002ff2c39d072sm14743147wrw.104.2023.05.09.08.39.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 May 2023 08:03:00 -0700 (PDT)
-From: Andri Yngvason <andri@yngvason.is>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Cc: Andri Yngvason <andri@yngvason.is>
-Subject: [PATCH 1/2] media: verisilicon: rockchip_vpu2_hw_jpeg_enc: Consolidate setting of source buffer addresses
-Date: Tue,  9 May 2023 15:02:48 +0000
-Message-Id: <20230509150249.824440-1-andri@yngvason.is>
+        Tue, 09 May 2023 08:39:07 -0700 (PDT)
+From: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
+To: linux-pci@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kw@linux.com,
+	robh@kernel.org,
+	bhelgaas@google.com,
+	heiko@sntech.de,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	skhan@linuxfoundation.org,
+	shawn.lin@rock-chips.com,
+	lpieralisi@kernel.org,
+	linux-kernel-mentees@lists.linuxfoundation.org,
+	Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
+Subject: [PATCH v1 0/1] Add configurable sleep for pcie-rockchip-host
+Date: Tue,  9 May 2023 17:39:02 +0200
+Message-Id: <20230509153902.515106-1-vincenzopalazzodev@gmail.com>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_080308_056804_4F94CEF2 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20230509_083915_758792_FC0330E8 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,78 +100,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Andri Yngvason <andri@yngvason.is>
----
- .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c   | 36 ++++++++++---------
- 1 file changed, 19 insertions(+), 17 deletions(-)
+I am submitting a patch to add a configurable sleep for the
+Rockchip PCIe driver in the hope of resolving a persistent
+issue with old ARM platforms.
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-index 8395c4d48dd0..52c76fb91c56 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-@@ -32,6 +32,16 @@
- 
- #define VEPU_JPEG_QUANT_TABLE_COUNT 16
- 
-+static inline u32 __vepu_reg_addr_for_plane(int plane)
-+{
-+	switch (plane) {
-+	case 0: return VEPU_REG_ADDR_IN_PLANE_0;
-+	case 1: return VEPU_REG_ADDR_IN_PLANE_1;
-+	case 2: return VEPU_REG_ADDR_IN_PLANE_2;
-+	}
-+	return 0;
-+}
-+
- static void rockchip_vpu2_set_src_img_ctrl(struct hantro_dev *vpu,
- 					   struct hantro_ctx *ctx)
- {
-@@ -70,35 +80,27 @@ static void rockchip_vpu2_jpeg_enc_set_buffers(struct hantro_dev *vpu,
- 					       struct vb2_buffer *dst_buf)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt = &ctx->src_fmt;
--	dma_addr_t src[3];
-+	unsigned int num_planes = pix_fmt->num_planes;
-+	unsigned int i;
-+	dma_addr_t src;
- 	u32 size_left;
- 
- 	size_left = vb2_plane_size(dst_buf, 0) - ctx->vpu_dst_fmt->header_size;
- 	if (WARN_ON(vb2_plane_size(dst_buf, 0) < ctx->vpu_dst_fmt->header_size))
- 		size_left = 0;
- 
--	WARN_ON(pix_fmt->num_planes > 3);
-+	WARN_ON(num_planes > 3);
-+	if (num_planes > 3)
-+		num_planes = 3;
- 
- 	vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
- 				ctx->vpu_dst_fmt->header_size,
- 			   VEPU_REG_ADDR_OUTPUT_STREAM);
- 	vepu_write_relaxed(vpu, size_left, VEPU_REG_STR_BUF_LIMIT);
- 
--	if (pix_fmt->num_planes == 1) {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
--		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
--	} else if (pix_fmt->num_planes == 2) {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
--		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
--		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
--		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
--	} else {
--		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
--		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
--		src[2] = vb2_dma_contig_plane_dma_addr(src_buf, 2);
--		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
--		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
--		vepu_write_relaxed(vpu, src[2], VEPU_REG_ADDR_IN_PLANE_2);
-+	for (i = 0; i < num_planes; i++) {
-+		src = vb2_dma_contig_plane_dma_addr(src_buf, i);
-+		vepu_write_relaxed(vpu, src, __vepu_reg_addr_for_plane(i));
- 	}
- }
- 
--- 
+It has been observed that the driver requires an extra
+sleep before probing the device, particularly on some older ARM
+devices like Pine64 RockPro64. While an original patch was deployed
+in Manjaro ARM, the issue still persists with the upstream kernel.
+
+This patch introduces a module parameter "bus_scan_delay" which allows users
+to configure the delay before probing the device. I have tested this patch
+on several platforms and it has proven to be effective.
+
+I hope that by starting this discussion, we can collaborate and
+find a more robust upstream solution for this issue.
+
+P.S: I sent again this because I forget to add some people to the list
+of cc.
+
+Cheers!
+
+Vincent.
+-------
+Vincenzo Palazzo (1):
+  drivers: pci: introduce configurable delay for Rockchip PCIe bus scan
+
+ .../admin-guide/kernel-parameters.txt         |  8 +++++
+ .../boot/dts/rockchip/rk3399-rockpro64.dtsi   |  3 +-
+ drivers/pci/controller/pcie-rockchip-host.c   | 29 +++++++++++++++++++
+ drivers/pci/controller/pcie-rockchip.c        |  5 ++++
+ drivers/pci/controller/pcie-rockchip.h        |  9 ++++++
+ 5 files changed, 53 insertions(+), 1 deletion(-)
+
+--
 2.40.1
 
 
