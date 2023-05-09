@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7470DC77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 10:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61713C77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 15:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DJ16JQrTYI3SF65tXvGj6MsSjdLj8KIYVtGCpmbgw5k=; b=brOrJOU3QY70vW
-	HXxnxsN49NV7aC0p7EjsJ55n9JhX058eTMVNwbeuV99mDfwm8JqJqZ68tzD7fK5hxOsfLEcG47BTo
-	x9KxrF6lyzqu0CDZXkJKaSXvBT2edE6bq/8vnW6ntp8p/iNjxgQOwPVyAlP4kb9NoRalpTM3yZGMV
-	US7iBqZorfh9VB0hTVcg9Z5LCTlmtSsHJbhVC6buEZu9rRnOhcrpKtVjr5xQjdu8Nx0SYWHomnK39
-	VjkUz6TqvZKUmt5Pnt9gmTa5yJnOnKvT7WNkgBvuCZMlOnvSBXJGJAVkE8Sd5CxmJUhbe2M/ysDN4
-	4o5GFTL64ld3IyAxUQAQ==;
+	List-Owner; bh=nGsuX+1aBbCZC39fFdVW7sI3gW9EdsKo3Z76sqT2dNo=; b=CDsnfBzEmWZcdU
+	aVpANqxqXm1/6XQYW7ru2RJtCgqpHV1raJnUQ0pgckQw5KUipyXlmkd/j1cB06Uk+QfVr2boNZJMP
+	nnO9YnfbqfXdqpCvnlx4NHt9fh4RiIwW36iK5c5yieVI32TEqYeRyKgLS0Cl+sawo78vtkDzDX8Ke
+	R9X6FLL3KQ2l/Gk5Zq35eyJ7YUxcN64BBv121Xrbo3iANulZlqQfS9u6vIrclA/0aRzflPRDD6eXk
+	dntvzMyjPIUiC9mc5tP3JaTZh3X2xVB0G4kQwZk4hFjaTRND2WWWmIx5XKBSbHeE8E8z0ulU++1+K
+	bIfYXPHH36Oc5HlqAMQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwKBJ-002otK-2k;
-	Tue, 09 May 2023 10:02:53 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pwOs4-003emz-2o;
+	Tue, 09 May 2023 15:03:20 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwKBG-002orw-2V
+	id 1pwOs0-003elY-0C
 	for linux-rockchip@lists.infradead.org;
-	Tue, 09 May 2023 10:02:52 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pwKB7-0002F1-0b; Tue, 09 May 2023 12:02:41 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pwKB5-0006Qe-1w; Tue, 09 May 2023 12:02:39 +0200
-Date: Tue, 9 May 2023 12:02:39 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	kernel@pengutronix.de, Will Deacon <will@kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 21/21] dt-bindings: devfreq: event: convert Rockchip
- DFI binding to yaml
-Message-ID: <20230509100239.GG29365@pengutronix.de>
-References: <20230505113856.463650-1-s.hauer@pengutronix.de>
- <20230505113856.463650-22-s.hauer@pengutronix.de>
- <c0ee4c52-8d78-992a-22b0-911038a62b0e@kernel.org>
- <d505aba4-e345-44f0-fc70-33a69e0c5b7e@kernel.org>
- <20230509093728.GF29365@pengutronix.de>
- <326c57b3-90b3-8d92-be10-34d03463d8d2@kernel.org>
+	Tue, 09 May 2023 15:03:19 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-306dbad5182so3843741f8f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 09 May 2023 08:03:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=yngvason.is; s=google; t=1683644591; x=1686236591;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pK5NzJ9ziuEkY80D3VsCAngV63DKm6HcJ44c4nALZ6M=;
+        b=XMOznpr6W1KHCA3b+rQxaF5bEyjaIcsYUadoMEOEvgkJZD8+jxnACLfdz8qoUCpBOG
+         A4oJoNDTz3MPil2JhCRqxGJCYZRsOwNvr4saOm2EqMD+nm+Tg3qYbmQOy4YmB0w2myil
+         4ZqRrFOOEpGlJaRNTVXO1VbEsHxf4nLp4zQqM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683644591; x=1686236591;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pK5NzJ9ziuEkY80D3VsCAngV63DKm6HcJ44c4nALZ6M=;
+        b=ll6inEL9tDVz4jLrFWFfSuv6MNSEgGijcAIWYzPp0c1yz+/xyETvrZgiAjnfi8Rxot
+         qgGc4YmNUSpb0yWw98cwrIJ25bZpYZiKZzR+EXAWyLtNR7H/SORYT+np4/EM0WJKEW34
+         /krrX0R/f07TiI+JLwM+BOPf+fzQBCUyx+ofpg8tSuSzyP4th5pShJA+8Lr6zREz71m7
+         FGbckjJn49YYltRBD5MMaMm1q2p64NlGDM2aDtZxOznw4DAYUOPqiLu/k8eujGbSWSz8
+         yr10hIQYqkSsJ8U4exjKUTe0mM5HczM036Oi91huHQe/Ddd1IeH5f/5wVNV6Zy6O6Sbs
+         7rsg==
+X-Gm-Message-State: AC+VfDwCJ2UNtLjkO/ADWevgspqInBY9xZcE59KhGLoaalIgETogCaQl
+	+GWX5wVi/pAP/6Zb8Wi4oHK2Y7+VAkM9V8RNqkDsMA==
+X-Google-Smtp-Source: ACHHUZ431gDx8koKiopG2pHzobK49xX78f7b+WGWOqHizQK63Gg2QRw2Un0jJXpeolN9dCE6zsn1bg==
+X-Received: by 2002:adf:e84e:0:b0:306:35fa:202b with SMTP id d14-20020adfe84e000000b0030635fa202bmr9242698wrn.6.1683644590162;
+        Tue, 09 May 2023 08:03:10 -0700 (PDT)
+Received: from andri-workstation.turninn.appdynamic.com ([2a01:8280:aa07:ad:7285:c2ff:fef0:4baf])
+        by smtp.gmail.com with ESMTPSA id n10-20020a5d400a000000b00307a3045d65sm2588373wrp.46.2023.05.09.08.03.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 May 2023 08:03:09 -0700 (PDT)
+From: Andri Yngvason <andri@yngvason.is>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Cc: Andri Yngvason <andri@yngvason.is>
+Subject: [PATCH 2/2] media: verisilicon: rockchip_vpu2_hw_jpeg_enc: Add data_offset to source addresses
+Date: Tue,  9 May 2023 15:02:49 +0000
+Message-Id: <20230509150249.824440-2-andri@yngvason.is>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230509150249.824440-1-andri@yngvason.is>
+References: <20230509150249.824440-1-andri@yngvason.is>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <326c57b3-90b3-8d92-be10-34d03463d8d2@kernel.org>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_030250_815381_A0147BFA 
-X-CRM114-Status: GOOD (  30.28  )
+X-CRM114-CacheID: sfid-20230509_080316_095885_347DCA09 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +92,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 09, 2023 at 11:40:26AM +0200, Krzysztof Kozlowski wrote:
-> On 09/05/2023 11:37, Sascha Hauer wrote:
-> > On Fri, May 05, 2023 at 06:31:35PM +0200, Krzysztof Kozlowski wrote:
-> >> On 05/05/2023 18:29, Krzysztof Kozlowski wrote:
-> >>> On 05/05/2023 13:38, Sascha Hauer wrote:
-> >>>> Convert the Rockchip DFI binding to yaml. While at it add the newly
-> >>>> supported rk3568-dfi to the binding.
-> >>>>
-> >>>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> >>>
-> >>> Please use scripts/get_maintainers.pl to get a list of necessary people
-> >>> and lists to CC.  It might happen, that command when run on an older
-> >>> kernel, gives you outdated entries.  Therefore please be sure you base
-> >>> your patches on recent Linux kernel.
-> >>>
-> >>> You missed at least DT list (maybe more), so this won't be tested.
-> >>> Please resend and include all necessary entries.
-> >>>
-> >>
-> >> Actually you already got such comments and nothing improved here. You
-> >> just resend same patch with same bugs.
-> >>
-> >> This is a waste of our time. Ignoring output of maintainers means there
-> >> is no testing and the patch does not appear in the inboxes.
-> >>
-> >> I don't understand why you insist on ignoring that output.
-> > 
-> > I skipped the device tree list because there was no change in the dts or
-> > binding part compared to the previous version.
-> 
-> Please always CC DT list and all maintainers. Just because something did
-> not change here, does not mean that nothing changed elsewhere, e.g. in
-> dependant schemas.
+This accommodates planes that are backed by a single dmabuf.
 
-Ok.
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+---
+ drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> 
-> What's more, the binding should have changed because I asked to fix
-> several things.
-
-You commented on v1 of this series and the things you mentioned were
-fixed in v2 and v3. It's v4 where I lost them.
-
-Sascha
-
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
+index 52c76fb91c56..716c248dc2bf 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
+@@ -99,7 +99,8 @@ static void rockchip_vpu2_jpeg_enc_set_buffers(struct hantro_dev *vpu,
+ 	vepu_write_relaxed(vpu, size_left, VEPU_REG_STR_BUF_LIMIT);
+ 
+ 	for (i = 0; i < num_planes; i++) {
+-		src = vb2_dma_contig_plane_dma_addr(src_buf, i);
++		src = vb2_dma_contig_plane_dma_addr(src_buf, i) +
++			src_buf->planes[i].data_offset;
+ 		vepu_write_relaxed(vpu, src, __vepu_reg_addr_for_plane(i));
+ 	}
+ }
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
