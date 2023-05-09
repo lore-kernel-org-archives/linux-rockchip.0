@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4055DC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 21:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FC75C77B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 21:20:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1kkRb/jSsh8OFiRHZ9RaljT/NMJ5l0lYR2fXbODwZK4=; b=LsCcijBMxMH7xK
-	fTJZCwh/DzU/LIa6l72AD7IeOwkgYpysKq2Uw4mIqiTPECC7JX1pQhXsGynMoyCkASw7um6VvKWlC
-	icQNdL4YIva7fNnUnVEV/anaEu8FmHIuRl3+huky8TNOKnJ/skLe9m5qvY2JoGiFpdnobqxVR+tzd
-	cX+a40oMUcR8WCdYr3Wn2vSjHIPZ5CMxvhvCkHZY00H4RuSubKgjbLGal7/Ms2leZGT8lQz4aSiEf
-	h4QsykMJG/ufL5QOn/rsT8sBbwDJGvAvCVOgTOcWMb667no8lhS9ibWeEnLix/0n1WQE7QbnHTZfT
-	XZn9P/J3WPyw8p5WYGrw==;
+	List-Owner; bh=1kkRb/jSsh8OFiRHZ9RaljT/NMJ5l0lYR2fXbODwZK4=; b=UCquJQKziSzaLY
+	+QWYCQl12/1igXJ6+GhejKumlMGe4KL1z/LvS/50qi1l+mpuDcaoYyBNXPLR3QEruxlogG4yKvxYQ
+	Fq1aRNCFJ1mdzu44xP05T+yMeeFTfcg/wpTNFZHkaCMpDahXUTAaJQngnnpoYA1Zj7/eln1B+LERu
+	xaREOmWeXVLNaatAVNVVWPAv/hR+NX/qZ9zN4ehGVWKWCCmCBQPPOv5cFyRyWvT6MU9srbmqJnFhE
+	1Q59LUwf4CN1ASKck26D7oTAXabr3bgKsPFXqaKZZaGp1ic33/gxFz6dbBdjNhEqUYaJTyiZbhaFQ
+	kR38l7nvMOQV9M+ZrB9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwUka-004Hu4-2t;
-	Tue, 09 May 2023 21:20:00 +0000
+	id 1pwUl0-004IBj-0g;
+	Tue, 09 May 2023 21:20:26 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwUkW-004HsI-3A;
-	Tue, 09 May 2023 21:19:58 +0000
+	id 1pwUkv-004I85-33;
+	Tue, 09 May 2023 21:20:24 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7677863728;
-	Tue,  9 May 2023 21:19:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23417C433AA;
-	Tue,  9 May 2023 21:19:55 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 83E3D63728;
+	Tue,  9 May 2023 21:20:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC459C4331F;
+	Tue,  9 May 2023 21:20:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683667195;
+	s=k20201202; t=1683667219;
 	bh=dZcncFoOgw/eH7UVCrXpSIV9X+sT3A0DOP87tB3c8zE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OReouasxxpVe6+0j96aM2dl486XO52MGkfiKH27iAC7pajocVBu1o6YQ0ITMrIS+/
-	 VvC8z0vOnGyTMmK3sF45Qn331if9if554Oq+N24fbQUQuqUp7sZVGI+QfrQXjULIjX
-	 cvACOhtTRD+ywEUxKpQKhtAwp3y46jVkGfVTYuOe1lZ/x/ayujTQ57lBbWlMN2ECBx
-	 6Iev9TjMlOHkxnhrJ38DUjLtBRGTyZocDXReA1FWPluMf/MtklyXLumYWnEo6h+B2F
-	 P6uyBkpJCAQXqqYCtAtwxsBAz77QCl4O57ljRNg3dSUDb0fFlzbpJWJRxEJ76+f4sY
-	 mDbBv6EXU5iJw==
+	b=Gj52pfCVyh3Qe0Ch9cxQEeaykwrlv8JNQD3eW+fMt0tb3tXktiDWxKmdS+80+EQ5/
+	 UOT2XDLjaj9q0ft6YBM9MjqyUwaUlExSK6VnO6LYyVyfDCGoQGCY2EIbmpEA/4VmmY
+	 HfP9zxX5LngDjvbfmDG0p/9mtSbKd0TtfDi8/TUdQNAy57PY7H6NX4+1HOU3gY9YaN
+	 WO0fPEYfSQMtIDHqND3I+NT3/xV/966ckJQtRi9OhHtXKZIrCxEgJwHgc7WuSfWv6a
+	 SflPZodzgCAL57Etdyp4ZLg+hcEeI7nOnCFvcSOlEzql7iPhr5Sp9C24CvBpUXQxXa
+	 cRT7v1RnW/Suw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,18 +55,18 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.3 17/18] clk: rockchip: rk3588: make gate linked clocks critical
-Date: Tue,  9 May 2023 17:19:25 -0400
-Message-Id: <20230509211928.21010-17-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.2 17/18] clk: rockchip: rk3588: make gate linked clocks critical
+Date: Tue,  9 May 2023 17:19:55 -0400
+Message-Id: <20230509211958.21596-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230509211928.21010-1-sashal@kernel.org>
-References: <20230509211928.21010-1-sashal@kernel.org>
+In-Reply-To: <20230509211958.21596-1-sashal@kernel.org>
+References: <20230509211958.21596-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_141957_097268_9444C0CF 
-X-CRM114-Status: GOOD (  25.09  )
+X-CRM114-CacheID: sfid-20230509_142022_080786_EF4DB390 
+X-CRM114-Status: GOOD (  25.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
