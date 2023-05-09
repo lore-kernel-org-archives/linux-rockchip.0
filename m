@@ -4,54 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30A6C77B7C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 20:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5C82C77B75
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 May 2023 21:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7gyYfP2tV6bVUOklRxsoBsMyvriGQZxG7j/kYhiFfSs=; b=ntM2Qwp8ReG5KS
-	SsWA7wjv6PmWYyaL+wIoizekFDeGcTy3Hs+XjwHt7JKDjt0OEhWrFWYlXty4kfnRLXVxTCQDZPPQF
-	3oxNzm7GCE0Qxngt0ucMgKJ4n/UgpBXNyVYLuWNCEDXc0O++HwlYGiu/4+Pgs2QYXCXA3PVeU3+W0
-	EzTPWujg1aZxr1RbmdcfctsdrGi5f7XVcBqBOHX+AHanbtRF8MDHHXs333bpViaxw3cGZytdCY+VS
-	5sw5MqkBy/+NL6cg2qQF8JXh02WSxNOI2BDGB9H9o/Zd6U+lbia4CprHbtPkIp/UaOEY/s4znQzT9
-	dRA997wOPEhlfS4/nXmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=wJrdb0rLN0qkV4beQuGOuOtaljHDlTWdRg9EspOMXjo=; b=qLq6xumGtPjdm/
+	bpDm/mUEGRbBMBMiyM9Gf3r8R9Vq0RE6djfu0jA7IObSgvFUo2+56tfTsklBwqK6a4cFq+8xa7Gww
+	kntZm7V0lgh8zPO1Iys0WNJnTrumHoG9qklx7ZXXu42IsrYzQRrvZobmEzV9NVtGMPQuDNetOBazJ
+	0pIRkqA6mE5Lq6KmzXv7C2d4YZ4Vz3qKTTai+v16LTdSrrBgbPWysnbNicuWqSmnDcFTzkq1PZsZJ
+	4YmSFtBPR46Nh1Gy98JqVgeXlSQRJLoQqOO/n9PwCNqZ7AugM+L0yPMWPj32eCi6KLmPaDEjsTpGE
+	tU8deHaJYku2Zg1KSB/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwTaJ-004AKM-0k;
-	Tue, 09 May 2023 20:05:19 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwTaE-004AJG-0o;
-	Tue, 09 May 2023 20:05:17 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9AB5DFEC;
-	Tue,  9 May 2023 13:05:49 -0700 (PDT)
-Received: from [10.57.83.77] (unknown [10.57.83.77])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 63B313F67D;
-	Tue,  9 May 2023 13:05:03 -0700 (PDT)
-Message-ID: <71827018-8e29-2966-380b-66ddfdcd3668@arm.com>
-Date: Tue, 9 May 2023 21:04:58 +0100
+	id 1pwUjn-004Hgb-0a;
+	Tue, 09 May 2023 21:19:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pwUjj-004Hfq-0B;
+	Tue, 09 May 2023 21:19:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B8F4B63474;
+	Tue,  9 May 2023 21:19:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1962C433D2;
+	Tue,  9 May 2023 21:19:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1683667145;
+	bh=paFIiV0ojWVNmpAG7xnNSJM6eT+FwbQEGoSUL07SX9E=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Osqy01NModmG70vIdcLfjI4bTcs6w3AwYzLBNAL5wzYbz8J78Eck1IqtWWcc3tMHQ
+	 mfwtaHhDJOmN8phCSA9ShpYhisTVQSIvqnvVknukuqmjulR2LFh8OQRs8EfdOsZRes
+	 C/S3TDloBE6VMjfkr3YclV9+5t9m9Unm0rWUW9U7MdSUpj6RnXUw2zse8ttpFbUPMd
+	 UzaGreBQW8g+6ML9V+s/dgX+zKW+q2RhSYPRX2nd6wXp1Xi4ztQoNQqAlaukmkMzrB
+	 iWG3gT92ASwVa4NxiOdhQ0g5l60PoTW6ckle+kPHAhKVvwCeBPNktFL2kQUM1p+7jR
+	 e32tevANNQpuQ==
+Date: Tue, 9 May 2023 16:19:02 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
+Cc: linux-pci@vger.kernel.org, robh@kernel.org, heiko@sntech.de,
+	kw@linux.com, shawn.lin@rock-chips.com,
+	linux-kernel@vger.kernel.org, lgirdwood@gmail.com,
+	linux-rockchip@lists.infradead.org, broonie@kernel.org,
+	bhelgaas@google.com, linux-kernel-mentees@lists.linuxfoundation.org,
+	lpieralisi@kernel.org, linux-arm-kernel@lists.infradead.org,
+	Dan Johansen <strit@manjaro.org>
+Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
+ Rockchip PCIe bus scan
+Message-ID: <20230509211902.GA1270901@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v4 15/21] PM / devfreq: rockchip-dfi: Add perf support
-Content-Language: en-GB
-To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
- Michael Riesch <michael.riesch@wolfvision.net>
-References: <20230505113856.463650-1-s.hauer@pengutronix.de>
- <20230505113856.463650-16-s.hauer@pengutronix.de>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230505113856.463650-16-s.hauer@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <20230509153912.515218-1-vincenzopalazzodev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230509_130514_389199_6CDE4931 
-X-CRM114-Status: GOOD (  45.42  )
+X-CRM114-CacheID: sfid-20230509_141907_204045_64D74DB1 
+X-CRM114-Status: GOOD (  46.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,556 +73,241 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-05-05 12:38, Sascha Hauer wrote:
-> The DFI is a unit which is suitable for measuring DDR utilization, but
-> so far it could only be used as an event driver for the DDR frequency
-> scaling driver. This adds perf support to the DFI driver.
+Hi Vincenzo,
+
+Thanks for raising this issue.  Let's see what we can do to address
+it.
+
+On Tue, May 09, 2023 at 05:39:12PM +0200, Vincenzo Palazzo wrote:
+> Add a configurable delay to the Rockchip PCIe driver to address
+> crashes that occur on some old devices, such as the Pine64 RockPro64.
 > 
-> Usage with the 'perf' tool can look like:
-> 
-> perf stat -a -e rockchip_ddr/cycles/,\
-> 		rockchip_ddr/read-bytes/,\
-> 		rockchip_ddr/write-bytes/,\
-> 		rockchip_ddr/bytes/ sleep 1
-> 
->   Performance counter stats for 'system wide':
-> 
->          1582524826      rockchip_ddr/cycles/
->             1802.25 MB   rockchip_ddr/read-bytes/
->             1793.72 MB   rockchip_ddr/write-bytes/
->             3595.90 MB   rockchip_ddr/bytes/
-> 
->         1.014369709 seconds time elapsed
-> 
-> perf support has been tested on a RK3568 and a RK3399, the latter with
-> dual channel DDR.
+> This issue is affecting the ARM community, but there is no
+> upstream solution for it yet.
 
-Might it be useful to offer the option of monitoring each channel 
-individually?
+It sounds like this happens with several endpoints, right?  And I
+assume the endpoints work fine in other non-Rockchip systems?  If
+that's the case, my guess is the problem is with the Rockchip host
+controller and how it's initialized, not with the endpoints.
 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->   drivers/devfreq/event/rockchip-dfi.c | 349 +++++++++++++++++++++++++++
->   include/soc/rockchip/rk3399_grf.h    |   2 +
->   include/soc/rockchip/rk3568_grf.h    |   1 +
->   3 files changed, 352 insertions(+)
-> 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index eae010644935a..400b1b360e3c9 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -20,6 +20,7 @@
->   #include <linux/of_device.h>
->   #include <linux/bitfield.h>
->   #include <linux/bits.h>
-> +#include <linux/perf_event.h>
->   
->   #include <soc/rockchip/rockchip_grf.h>
->   #include <soc/rockchip/rk3399_grf.h>
-> @@ -41,14 +42,30 @@
->   					 DDRMON_CTRL_LPDDR4 | \
->   					 DDRMON_CTRL_LPDDR23)
->   
-> +#define DDRMON_CH0_WR_NUM		0x20
-> +#define DDRMON_CH0_RD_NUM		0x24
->   #define DDRMON_CH0_COUNT_NUM		0x28
->   #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
->   #define DDRMON_CH1_COUNT_NUM		0x3c
->   #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
->   
-> +enum access_type {
-> +	PERF_EVENT_CYCLES,
-> +	PERF_EVENT_READ_BYTES,
-> +	PERF_EVENT_WRITE_BYTES,
-> +	PERF_EVENT_BYTES,
-> +	PERF_ACCESS_TYPE_MAX,
-> +};
+The only delays and timeouts I see in the driver now are in
+rockchip_pcie_host_init_port(), where it waits for link training to
+complete.  I assume the link training did completely successfully
+since you don't mention either a gen1 or gen2 timeout (although the
+gen2 message is a dev_dbg() that normally wouldn't go to the console).
 
-The design you have here means these values *must* match the ones in the 
-format attribute strings, so it might be nice to define them explicitly.
+I don't know that the spec contains a retrain timeout value.  Several
+other drivers use 1 second, while rockchip uses 500ms (for example,
+see LINK_RETRAIN_TIMEOUT and LINK_UP_TIMEOUT).
 
-> +
->   struct dmc_count_channel {
->   	u32 access;
->   	u32 total;
-> +	u32 read_access;
-> +	u32 write_access;
-> +};
-> +
-> +struct dmc_count_channel64 {
-> +	u64 count[PERF_ACCESS_TYPE_MAX];
->   };
->   
->   struct dmc_count {
-> @@ -65,6 +82,7 @@ struct rockchip_dfi {
->   	struct devfreq_event_desc desc;
->   	struct dmc_count count;
->   	struct dmc_count last_event_count;
-> +	struct dmc_count last;
->   	struct device *dev;
->   	void __iomem *regs;
->   	struct regmap *regmap_pmu;
-> @@ -73,6 +91,15 @@ struct rockchip_dfi {
->   	struct mutex mutex;
->   	u32 ddr_type;
->   	unsigned int channel_mask;
-> +	enum cpuhp_state cpuhp_state;
-> +	struct hlist_node node;
-> +	struct pmu pmu;
-> +	struct hrtimer timer;
-> +	unsigned int cpu;
-> +	struct dmc_count_channel64 frr;
-> +	int active_events;
-> +	int burst_len;
-> +	int buswidth[DMC_MAX_CHANNELS];
->   };
->   
->   static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
-> @@ -148,6 +175,10 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
->   	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
->   		if (!(dfi->channel_mask & BIT(i)))
->   			continue;
-> +		count->c[i].read_access = readl_relaxed(dfi_regs +
-> +				DDRMON_CH0_RD_NUM + i * 20);
-> +		count->c[i].write_access = readl_relaxed(dfi_regs +
-> +				DDRMON_CH0_WR_NUM + i * 20);
->   		count->c[i].access = readl_relaxed(dfi_regs +
->   				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
->   		count->c[i].total = readl_relaxed(dfi_regs +
-> @@ -218,6 +249,305 @@ static const struct devfreq_event_ops rockchip_dfi_ops = {
->   	.set_event = rockchip_dfi_set_event,
->   };
->   
-> +#ifdef CONFIG_PERF_EVENTS
-> +
-> +static ssize_t ddr_perf_cpumask_show(struct device *dev,
-> +				struct device_attribute *attr, char *buf)
-> +{
-> +	struct pmu *pmu = dev_get_drvdata(dev);
-> +	struct rockchip_dfi *dfi = container_of(pmu, struct rockchip_dfi, pmu);
-> +
-> +	return cpumap_print_to_pagebuf(true, buf, cpumask_of(dfi->cpu));
-> +}
-> +
-> +static struct device_attribute ddr_perf_cpumask_attr =
-> +	__ATTR(cpumask, 0444, ddr_perf_cpumask_show, NULL);
-> +
-> +static struct attribute *ddr_perf_cpumask_attrs[] = {
-> +	&ddr_perf_cpumask_attr.attr,
-> +	NULL,
-> +};
-> +
-> +static const struct attribute_group ddr_perf_cpumask_attr_group = {
-> +	.attrs = ddr_perf_cpumask_attrs,
-> +};
-> +
-> +PMU_EVENT_ATTR_STRING(cycles, ddr_pmu_cycles, "event=0x00")
-> +
-> +PMU_EVENT_ATTR_STRING(read-bytes, ddr_pmu_read_bytes, "event=0x01")
-> +PMU_EVENT_ATTR_STRING(read-bytes.unit, ddr_pmu_read_bytes_unit, "MB");
-> +PMU_EVENT_ATTR_STRING(read-bytes.scale, ddr_pmu_read_bytes_scale, "9.536743164e-07");
-> +
-> +PMU_EVENT_ATTR_STRING(write-bytes, ddr_pmu_write_bytes, "event=0x02")
-> +PMU_EVENT_ATTR_STRING(write-bytes.unit, ddr_pmu_write_bytes_unit, "MB");
-> +PMU_EVENT_ATTR_STRING(write-bytes.scale, ddr_pmu_write_bytes_scale, "9.536743164e-07");
-> +
-> +PMU_EVENT_ATTR_STRING(bytes, ddr_pmu_bytes, "event=0x03")
-> +PMU_EVENT_ATTR_STRING(bytes.unit, ddr_pmu_bytes_unit, "MB");
-> +PMU_EVENT_ATTR_STRING(bytes.scale, ddr_pmu_bytes_scale, "9.536743164e-07");
-> +
-> +static struct attribute *ddr_perf_events_attrs[] = {
-> +	&ddr_pmu_cycles.attr.attr,
-> +	&ddr_pmu_read_bytes.attr.attr,
-> +	&ddr_pmu_read_bytes_unit.attr.attr,
-> +	&ddr_pmu_read_bytes_scale.attr.attr,
-> +	&ddr_pmu_write_bytes.attr.attr,
-> +	&ddr_pmu_write_bytes_unit.attr.attr,
-> +	&ddr_pmu_write_bytes_scale.attr.attr,
-> +	&ddr_pmu_bytes.attr.attr,
-> +	&ddr_pmu_bytes_unit.attr.attr,
-> +	&ddr_pmu_bytes_scale.attr.attr,
-> +	NULL,
-> +};
-> +
-> +static const struct attribute_group ddr_perf_events_attr_group = {
-> +	.name = "events",
-> +	.attrs = ddr_perf_events_attrs,
-> +};
-> +
-> +PMU_FORMAT_ATTR(event, "config:0-7");
-> +
-> +static struct attribute *ddr_perf_format_attrs[] = {
-> +	&format_attr_event.attr,
-> +	NULL,
-> +};
-> +
-> +static const struct attribute_group ddr_perf_format_attr_group = {
-> +	.name = "format",
-> +	.attrs = ddr_perf_format_attrs,
-> +};
-> +
-> +static const struct attribute_group *attr_groups[] = {
-> +	&ddr_perf_events_attr_group,
-> +	&ddr_perf_cpumask_attr_group,
-> +	&ddr_perf_format_attr_group,
-> +	NULL,
-> +};
-> +
-> +static int rockchip_ddr_perf_event_init(struct perf_event *event)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
-> +
-> +	if (event->attr.type != event->pmu->type)
-> +		return -ENOENT;
-> +
-> +	if (event->attach_state & PERF_ATTACH_TASK)
-> +		return -EOPNOTSUPP;
+I think we need to understand the issue better before adding a DT
+property and a module parameter.  Those are hard for users to deal
+with.  If we can figure out a value that works for everybody, it would
+be better to just hard-code it in the driver and use that all the
+time.
 
-IMO this should be -EINVAL - the event isn't something that the driver 
-would consider valid in general but happens to not be supported by this 
-particular PMU instance, it's something that's fundamentally meaningless 
-because the memory controller has no notion of what a task or even a CPU 
-is, much less the ability to ever attribute low-level DRAM accesses to one.
+A few minor style/formatting comments below just for future reference:
 
-> +
-> +	if (event->cpu < 0) {
-> +		dev_warn(dfi->dev, "Can't provide per-task data!\n");
-> +		return -EOPNOTSUPP;
+> Crash dump (customized Manjaro kernel before this patch):
+> [    1.229856] SError Interrupt on CPU4, code 0xbf000002 -- SError
+> [    1.229860] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.9.9-2.0-MANJARO-ARM #1
+> [    1.229862] Hardware name: Pine64 RockPro64 v2.1 (DT)
+> [    1.229864] pstate: 60000085 (nZCv daIf -PAN -UAO BTYPE=--)
+> [    1.229866] pc : rockchip_pcie_rd_conf+0xb4/0x270
+> [    1.229868] lr : rockchip_pcie_rd_conf+0x1b4/0x270
+> [    1.229870] sp : ffff80001004b850
+> [    1.229872] x29: ffff80001004b850 x28: 0000000000000001
+> [    1.229877] x27: 0000000000000000 x26: ffff00007a795000
+> [    1.229882] x25: ffff00007a7910b0 x24: 0000000000000000
+> [    1.229887] x23: 0000000000000000 x22: ffff00007b3a4380
+> [    1.229891] x21: ffff80001004b8c4 x20: 0000000000000004
+> [    1.229895] x19: 0000000000100000 x18: 0000000000000020
+> [    1.229900] x17: 0000000000000001 x16: 0000000000000019
+> [    1.229904] x15: ffff00007b222fd8 x14: ffffffffffffffff
+> [    1.229908] x13: ffff00007a79ba1c x12: ffff00007a79b290
+> [    1.229912] x11: 0101010101010101 x10: 7f7f7f7f7f7f7f7f
+> [    1.229917] x9 : ff72646268756463 x8 : 0000000000000391
+> [    1.229921] x7 : ffff80001004b880 x6 : 0000000000000001
+> [    1.229925] x5 : 0000000000000000 x4 : 0000000000000000
+> [    1.229930] x3 : 0000000000c00008 x2 : 000000000080000a
+> [    1.229934] x1 : 0000000000000000 x0 : ffff800014000000
+> [    1.229939] Kernel panic - not syncing: Asynchronous SError Interrupt
+> [    1.229942] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.9.9-2.0-MANJARO-ARM #1
+> [    1.229944] Hardware name: Pine64 RockPro64 v2.1 (DT)
+> [    1.229946] Call trace:
+> [    1.229948]  dump_backtrace+0x0/0x1d0
+> [    1.229949]  show_stack+0x18/0x24
+> [    1.229951]  dump_stack+0xc0/0x118
+> [    1.229953]  panic+0x148/0x320
+> [    1.229955]  nmi_panic+0x8c/0x90
+> [    1.229956]  arm64_serror_panic+0x78/0x84
+> [    1.229958]  do_serror+0x15c/0x160
+> [    1.229960]  el1_error+0x84/0x100
+> [    1.229962]  rockchip_pcie_rd_conf+0xb4/0x270
+> [    1.229964]  pci_bus_read_config_dword+0x6c/0xd0
+> [    1.229966]  pci_bus_generic_read_dev_vendor_id+0x34/0x1b0
+> [    1.229968]  pci_scan_single_device+0xa4/0x144
+> [    1.229970]  pci_scan_slot+0x40/0x12c
+> [    1.229972]  pci_scan_child_bus_extend+0x58/0x34c
+> [    1.229974]  pci_scan_bridge_extend+0x310/0x590
+> [    1.229976]  pci_scan_child_bus_extend+0x210/0x34c
+> [    1.229978]  pci_scan_root_bus_bridge+0x68/0xdc
+> [    1.229980]  pci_host_probe+0x18/0xc4
+> [    1.229981]  rockchip_pcie_probe+0x204/0x330
 
-Ditto.
+Include only the parts of the crash dump that are needed to debug the
+problem or identify the problem enough to find this patch.  Timestamps
+probably aren't necessary.  Register contents -- probably not either.
 
-> +	}
-> +
+The rest of the backtrace (below here) probably isn't useful.
 
-If you can't snapshot multiple counters atomically (and don't want to 
-start/stop the whole monitor to achieve the same effect - I guess it 
-would be hard to do that without getting in the way of devfreq 
-operation), then you should ideally also check for and reject event 
-groups containing multiple hardware events.
+> [    1.229984]  platform_drv_probe+0x54/0xb0
+> [    1.229985]  really_probe+0xe8/0x500
+> [    1.229987]  driver_probe_device+0xd8/0xf0
+> [    1.229989]  device_driver_attach+0xc0/0xcc
+> [    1.229991]  __driver_attach+0xa4/0x170
+> [    1.229993]  bus_for_each_dev+0x70/0xc0
+> [    1.229994]  driver_attach+0x24/0x30
+> [    1.229996]  bus_add_driver+0x140/0x234
+> [    1.229998]  driver_register+0x78/0x130
+> [    1.230000]  __platform_driver_register+0x4c/0x60
+> [    1.230002]  rockchip_pcie_driver_init+0x1c/0x28
+> [    1.230004]  do_one_initcall+0x54/0x1c0
+> [    1.230005]  do_initcalls+0xf4/0x130
+> [    1.230007]  kernel_init_freeable+0x144/0x19c
+> [    1.230009]  kernel_init+0x14/0x11c
+> [    1.230011]  ret_from_fork+0x10/0x34
+> [    1.230035] SMP: stopping secondary CPUs
+> [    1.230037] Kernel Offset: disabled
+> [    1.230039] CPU features: 0x0240022,2100200c
+> [    1.230041] Memory Limit: none
 
-Most of all, though you should definitely validate the event config 
-itself...
+> +++ b/Documentation/admin-guide/kernel-parameters.txt
+> @@ -4286,6 +4286,14 @@
+>  				any pair of devices, possibly at the cost of
+>  				reduced performance.  This also guarantees
+>  				that hot-added devices will work.
+> +		pcie_rockchip_host.bus_scan_delay=	[PCIE] Delay in ms before
+> +			scanning PCIe bus in Rockchip PCIe host driver. Some PCIe
+> +			cards seem to need delays that can be several hundred ms.
+> +			If set to greater than or equal to 0 this parameter will
+> +			override delay that can be set in device tree.
+> +			Values less than 0 the module will hit an assertion
+> +			during the init.
+> +			The default value is 0.
 
-> +	return 0;
-> +}
-> +
-> +static void rockchip_ddr_perf_update_counters(struct rockchip_dfi *dfi)
-> +{
-> +	struct dmc_count count;
-> +	struct dmc_count *last = &dfi->last;
-> +	int blen = dfi->burst_len;
-> +	u32 diff;
-> +	int i;
-> +
-> +	rockchip_dfi_read_counters(dfi, &count);
-> +
-> +	diff = count.c[0].total - last->c[0].total;
-> +	dfi->frr.count[PERF_EVENT_CYCLES] += diff;
-> +
-> +	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
-> +		if (!(dfi->channel_mask & BIT(i)))
-> +			continue;
-> +
-> +		diff = count.c[i].read_access - last->c[i].read_access;
-> +		dfi->frr.count[PERF_EVENT_READ_BYTES] += (u64)diff * blen * dfi->buswidth[i];
-> +
-> +		diff = count.c[i].write_access - last->c[i].write_access;
-> +		dfi->frr.count[PERF_EVENT_WRITE_BYTES] += (u64)diff * blen * dfi->buswidth[i];
-> +
-> +		diff = count.c[i].access - last->c[i].access;
-> +		dfi->frr.count[PERF_EVENT_BYTES] += (u64)diff * blen * dfi->buswidth[i];
-> +	}
-> +
-> +	dfi->last = count;
-> +}
-> +
-> +static void rockchip_ddr_perf_event_update(struct perf_event *event)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
-> +	s64 prev;
-> +	u64 now;
-> +
-> +	rockchip_ddr_perf_update_counters(dfi);
-> +
-> +	now = dfi->frr.count[event->attr.config];
+Generally speaking module-specific stuff like this doesn't get
+documented in kernel-parameters.txt.
 
-...otherwise these array dereferences could go absolutely anywhere :(
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> @@ -663,7 +663,8 @@ &pcie0 {
+>  	pinctrl-0 = <&pcie_perst>;
+>  	vpcie12v-supply = <&vcc12v_dcin>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie>;
+> -	status = "okay";
+> +    bus-scan-delay-ms = <0>;
+> +    status = "okay";
 
-FWIW I'd also be inclined to keep the intermediate values in units of 
-bursts, and defer the conversion to bytes until this point where we know 
-it's defintely wanted, rather than have to repeat it every time we sync 
-each internal shadow counter. On which note, there are so many seemingly 
-redundant (but not always?) sets of shadow counter values in play here 
-that it's hard to easily make sense of - for instance I spent a while 
-thinking a race exists between rockchip_ddr_perf_update_counters() and 
-rockchip_dfi_read_counters() since it was all too easy to overlook that 
-"last" and "last" are actually different things, and is dfi->count ever 
-even used at all?
+Please don't add arbitrary whitespace changes (it looks like this
+uses leading spaces instead of tabs).
 
-> +	prev = local64_xchg(&event->hw.prev_count, now);
-> +	local64_add(now - prev, &event->count);
-> +}
-> +
-> +static void rockchip_ddr_perf_event_start(struct perf_event *event, int flags)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
-> +
-> +	rockchip_ddr_perf_update_counters(dfi);
-> +
-> +	local64_set(&event->hw.prev_count, dfi->frr.count[event->attr.config]);
-> +}
-> +
-> +static int rockchip_ddr_perf_event_add(struct perf_event *event, int flags)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
-> +	struct hw_perf_event *hwc = &event->hw;
-> +
-> +	hwc->state |= PERF_HES_STOPPED;
+> +/* bus_scan_delay - module parameter to override the
+> + * device tree value, which is 0 by default. */
 
-This is never used.
+Please follow comment style in the file, i.e.,
 
-> +
-> +	dfi->active_events++;
-> +
-> +	if (dfi->active_events == 1) {
-> +		rockchip_dfi_enable(dfi);
-> +		hrtimer_start(&dfi->timer, 0, HRTIMER_MODE_REL);
-> +	}
-> +
-> +	if (flags & PERF_EF_START)
-> +		rockchip_ddr_perf_event_start(event, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_ddr_perf_event_stop(struct perf_event *event, int flags)
-> +{
-> +	rockchip_ddr_perf_event_update(event);
-> +}
-> +
-> +static void rockchip_ddr_perf_event_del(struct perf_event *event, int flags)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
-> +
-> +	rockchip_ddr_perf_event_stop(event, PERF_EF_UPDATE);
-> +
-> +	dfi->active_events--;
-> +
-> +	if (dfi->active_events == 0) {
-> +		hrtimer_cancel(&dfi->timer);
-> +		rockchip_dfi_disable(dfi);
-> +	}
-> +}
-> +
-> +static enum hrtimer_restart rockchip_dfi_timer(struct hrtimer *timer)
-> +{
-> +	struct rockchip_dfi *dfi = container_of(timer, struct rockchip_dfi, timer);
-> +	ktime_t timeout;
-> +
-> +	rockchip_ddr_perf_update_counters(dfi);
-> +
-> +	timeout = ns_to_ktime(NSEC_PER_SEC);
-> +	hrtimer_forward_now(&dfi->timer, timeout);
-> +
-> +	return HRTIMER_RESTART;
-> +};
-> +
-> +static int ddr_perf_offline_cpu(unsigned int cpu, struct hlist_node *node)
-> +{
-> +	struct rockchip_dfi *dfi = hlist_entry_safe(node, struct rockchip_dfi, node);
-> +	int target;
-> +
-> +	if (cpu != dfi->cpu)
-> +		return 0;
-> +
-> +	target = cpumask_any_but(cpu_online_mask, cpu);
-> +	if (target >= nr_cpu_ids)
-> +		return 0;
-> +
-> +	perf_pmu_migrate_context(&dfi->pmu, cpu, target);
-> +	dfi->cpu = target;
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_ddr_perf_init(struct rockchip_dfi *dfi)
-> +{
-> +	struct pmu *pmu = &dfi->pmu;
-> +	int ret;
-> +
-> +	pmu->module = THIS_MODULE;
-> +	pmu->capabilities = PERF_PMU_CAP_NO_EXCLUDE;
-> +	pmu->task_ctx_nr = perf_invalid_context;
-> +	pmu->attr_groups = attr_groups;
-> +	pmu->event_init  = rockchip_ddr_perf_event_init;
-> +	pmu->add = rockchip_ddr_perf_event_add;
-> +	pmu->del = rockchip_ddr_perf_event_del;
-> +	pmu->start = rockchip_ddr_perf_event_start;
-> +	pmu->stop = rockchip_ddr_perf_event_stop;
-> +	pmu->read = rockchip_ddr_perf_event_update;
-> +
-> +	dfi->cpu = raw_smp_processor_id();
-> +
-> +	ret = cpuhp_setup_state_multi(CPUHP_AP_ONLINE_DYN,
-> +				      "rockchip_ddr_perf_pmu",
-> +				      NULL,
-> +				      ddr_perf_offline_cpu);
+  /*
+   * bus_scan_delay - ...
+   */
 
-So, each instance gets its own distinct multi-instance state to only 
-support a single instance each, except there can clearly only ever be a 
-single instance globally anyway, since the PMU is registered with a 
-fixed name... I can only guess that maybe such a contrivance is born of 
-the notion of "global variables are bad", but honestly, this is worse :/
+Wrap comments to fill 78 columns or so to match the rest of the file.
 
-> +	if (ret < 0) {
-> +		dev_err(dfi->dev, "cpuhp_setup_state_multi failed: %d\n", ret);
-> +		return ret;
-> +	}
+> @@ -987,6 +996,23 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  
+>  	rockchip_pcie_enable_interrupts(rockchip);
+>  
+> +	prob_delay = rockchip->bus_scan_delay;
+> +	if (bus_scan_delay)
+> +		prob_delay = bus_scan_delay;
 > +
-> +	dfi->cpuhp_state = ret;
-> +
-> +	/* Register the pmu instance for cpu hotplug */
-> +	ret = cpuhp_state_add_instance_nocalls(dfi->cpuhp_state, &dfi->node);
-> +	if (ret) {
-> +		dev_err(dfi->dev, "Error %d registering hotplug\n", ret);
-> +		goto cpuhp_instance_err;
-> +	}
-> +
-> +	hrtimer_init(&dfi->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
-> +	dfi->timer.function = rockchip_dfi_timer;
-> +
-> +	switch (dfi->ddr_type) {
-> +	case ROCKCHIP_DDRTYPE_LPDDR2:
-> +	case ROCKCHIP_DDRTYPE_LPDDR3:
-> +		dfi->burst_len = 8;
-> +		break;
-> +	case ROCKCHIP_DDRTYPE_LPDDR4:
-> +	case ROCKCHIP_DDRTYPE_LPDDR4X:
-> +		dfi->burst_len = 16;
-> +		break;
-> +	}
-> +
-> +	ret = perf_pmu_register(pmu, "rockchip_ddr", -1);
-> +	if (ret)
-> +		goto ddr_perf_err;
-> +
-> +	return 0;
-> +
-> +ddr_perf_err:
-> +	cpuhp_state_remove_instance_nocalls(dfi->cpuhp_state, &dfi->node);
-> +cpuhp_instance_err:
-> +	cpuhp_remove_multi_state(dfi->cpuhp_state);
-> +
-> +	return ret;
-> +}
-> +
-> +static void rockchip_ddr_perf_remove(struct rockchip_dfi *dfi)
-> +{
-> +	cpuhp_state_remove_instance_nocalls(dfi->cpuhp_state, &dfi->node);
-> +	cpuhp_remove_multi_state(dfi->cpuhp_state);
-> +
-> +	perf_pmu_unregister(&dfi->pmu);
-> +}
-> +
-> +#else
-> +static int rockchip_ddr_perf_init(struct rockchip_dfi *dfi)
-> +{
-> +	return 0;
-> +}
-> +
-> +static void rockchip_ddr_perf_remove(struct rockchip_dfi *dfi)
-> +{
-> +}
-> +#endif
-> +
->   static int rk3399_dfi_init(struct rockchip_dfi *dfi)
->   {
->   	struct regmap *regmap_pmu = dfi->regmap_pmu;
-> @@ -234,6 +564,9 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
->   
->   	dfi->channel_mask = 3;
->   
-> +	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
-> +	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
-> +
->   	return 0;
->   };
->   
-> @@ -250,6 +583,8 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
->   	if (FIELD_GET(RK3568_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
->   		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
->   
-> +	dfi->buswidth[0] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
-> +
->   	dfi->channel_mask = 1;
->   
->   	return 0;
-> @@ -325,13 +660,27 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
->   		return PTR_ERR(dfi->edev);
->   	}
->   
-> +	ret = rockchip_ddr_perf_init(dfi);
-> +	if (ret)
-> +		return ret;
-> +
->   	platform_set_drvdata(pdev, dfi);
->   
->   	return 0;
->   }
->   
-> +static int rockchip_dfi_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_dfi *dfi = platform_get_drvdata(pdev);
-> +
-> +	rockchip_ddr_perf_remove(dfi);
-> +
-> +	return 0;
-> +}
-> +
->   static struct platform_driver rockchip_dfi_driver = {
->   	.probe	= rockchip_dfi_probe,
-> +	.remove	= rockchip_dfi_remove,
->   	.driver = {
->   		.name	= "rockchip-dfi",
->   		.of_match_table = rockchip_dfi_id_match,
+> +	/*
+> +	 * FIXME: This is a workaround for some devices that crash on calls to pci_host_probe()
+> +	 * or pci_scan_root_bus_bridge(). We add a delay before bus scanning to avoid the crash.
+> +	 * The call trace reaches rockchip_pcie_rd_conf() while attempting to read the vendor ID
+> +	 * (pci_bus_generic_read_dev_vendor_id() is in the call stack) before panicking.
+> +	 *
+> +	 * I'm not sure why this workaround is effective or what causes the panic. It may be related
+> +	 * to the cansleep value.
 
-You also want to set suppress_bind_attrs to be safe - the module 
-reference that perf holds while the PMU is active still can't prevent a 
-manual unbind of the platform driver making the PMU device disappear 
-unexpectedly.
+Wrap comments to fit in 78 columns to match the rest of the file.
 
-Thanks,
-Robin.
+> +	 */
+> +	dev_info(dev, "wait %u ms before bus scan\n", prob_delay);
+> +	if (prob_delay > 0)
+> +		msleep(prob_delay);
 
-> diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
-> index 775f8444bea8d..39cd44cec982f 100644
-> --- a/include/soc/rockchip/rk3399_grf.h
-> +++ b/include/soc/rockchip/rk3399_grf.h
-> @@ -12,5 +12,7 @@
->   /* PMU GRF Registers */
->   #define RK3399_PMUGRF_OS_REG2		0x308
->   #define RK3399_PMUGRF_OS_REG2_DDRTYPE		GENMASK(15, 13)
-> +#define RK3399_PMUGRF_OS_REG2_BW_CH0		GENMASK(3, 2)
-> +#define RK3399_PMUGRF_OS_REG2_BW_CH1		GENMASK(19, 18)
->   
->   #endif
-> diff --git a/include/soc/rockchip/rk3568_grf.h b/include/soc/rockchip/rk3568_grf.h
-> index 575584e9d8834..52853efd6720e 100644
-> --- a/include/soc/rockchip/rk3568_grf.h
-> +++ b/include/soc/rockchip/rk3568_grf.h
-> @@ -4,6 +4,7 @@
->   
->   #define RK3568_PMUGRF_OS_REG2		0x208
->   #define RK3568_PMUGRF_OS_REG2_DRAMTYPE_INFO		GENMASK(15, 13)
-> +#define RK3568_PMUGRF_OS_REG2_BW_CH0			GENMASK(3, 2)
->   
->   #define RK3568_PMUGRF_OS_REG3		0x20c
->   #define RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
+I don't think we want to just add a random delay here that's not
+connected to anything else.  I assume it could go in
+rockchip_pcie_host_init_port() or perhaps rockchip_pcie_init_port()
+(which deasserts resets, and there are usually timing constraints
+related to deasserting resets).  Hopefully Shawn can shed some light
+on this.
+
+>  	err = pci_host_probe(bridge);
+>  	if (err < 0)
+>  		goto err_remove_irq_domain;
+> @@ -1055,6 +1081,11 @@ static struct platform_driver rockchip_pcie_driver = {
+>  };
+>  module_platform_driver(rockchip_pcie_driver);
+>  
+> +/** Allow to override the device tree default configuration with
+> + * a command line argument.
+> + **/
+
+Use multi-line comment style that matches the rest of the file.
+
+> +module_param_named(bus_scan_delay, bus_scan_delay, int, S_IRUGO);
+
+This should go right next to the bus_scan_delay definition above.
+
+> +++ b/drivers/pci/controller/pcie-rockchip.c
+> @@ -149,6 +149,11 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  		return PTR_ERR(rockchip->clk_pcie_pm);
+>  	}
+>  
+> +	err = of_property_read_u32(node, "bus-scan-delay-ms", &rockchip->bus_scan_delay);
+> +	if (err) {
+> +		dev_info(dev, "no bus scan delay, default to 0 ms\n");
+> +		rockchip->bus_scan_delay = 0;
+
+I hope we don't need this property at all, but if we do, I assume it
+should be optional, with no message needed if it's not present.
+
+> +++ b/drivers/pci/controller/pcie-rockchip.h
+> @@ -299,6 +299,16 @@ struct rockchip_pcie {
+>  	phys_addr_t msg_bus_addr;
+>  	bool is_rc;
+>  	struct resource *mem_res;
+> +
+> +	/* It seems that the driver crashes on some
+> +	 * older devices. To work around this, we
+> +	 * should add a sleep delay before probing.
+> +	 *
+> +	 * FIXME: need more investigated with an,
+> +	 * but looks like the problem can be related with
+> +	 * the cansleep value?
+> +	 **/
+
+We need better understanding of what's going on here.  Then this
+comment could be made more specific, shorter, and formatted like
+others.
+
+> +	u32 bus_scan_delay;
 
 _______________________________________________
 Linux-rockchip mailing list
