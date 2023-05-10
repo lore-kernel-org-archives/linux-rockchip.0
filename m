@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83BD5C7EE26
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 May 2023 11:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2782C77B7C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 May 2023 16:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V0wAsfX0jPwNij1RRu/gV1FwdYiABJGvRrcIn43WBec=; b=SvuegBsVgnQqrI
-	QRWn245vS9K5kHxMosemjfHyqcsbdTP4MxaTwikmF9PdnS7ZDIMHuQ26STI2SjC9gcm6BtE1kukxT
-	1wxK4FzIkw+7pZINbEfotyU95VZ62a/rMXLEkJqw42HIPTXUN8cGZVYIceWAXeJbtNw6HNG+PzNyr
-	zjsULItYrDLBOqOhNYNqey6NvTsvCF2qRNK8pGu0asJQwKEYKvs/iOvrx1p4L4/BDmE3xzrtTG6cS
-	9bOf4brdIETuYQC/uJ3wutiCK+tGQcM2GLK9m3py3b/mNS0I3s3SUlWu3BfVUaqEdNDkQI2+y+m4X
-	qx0il+FGGq4IwK7py2Lw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=E/yhcxoy6cwcsZtOM3H0OVyWXDniQVOrCIR0HLJERh4=; b=1glDrS4jmB0Gea
+	zStPT3CPsqXjfr6uuXYx1yS27AObTvFhnMH02QH7PA4r5BIT7/haTDSQrHcuSeOy+Ai61y6ogaLZz
+	HI3oGBXUuJbG6qGbRkV/3KNVMjVqKnQVcMl8lXRSjXTWrnJNIqoxTq9KmmQ7gWvx+i3axvh7InlSM
+	w8Eb3mROXEwJKa3KMWT7J1zkcQNxvUmEap2u8amz6mAmZHMwMz3/r6x2HeF2h1e/uYdXWwo3ufetT
+	JfQ3e5aphKqUz0UlGE5QD0d97wTXm2+0b0HZJ+PS8++XqmXCmMe/KSs8z/nuvszI/A1nJHs9ZWYON
+	aDk1iFyYMa028QzSKKpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwi6q-0062z3-0i;
-	Wed, 10 May 2023 11:35:52 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1pwmWp-006Y94-0n;
+	Wed, 10 May 2023 16:18:59 +0000
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pwi6n-0062yH-1k;
-	Wed, 10 May 2023 11:35:50 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3f450815d02so6115495e9.0;
-        Wed, 10 May 2023 04:35:47 -0700 (PDT)
+	id 1pwmWl-006Y8U-0Z;
+	Wed, 10 May 2023 16:18:56 +0000
+Received: by mail-il1-x136.google.com with SMTP id e9e14a558f8ab-331911956c3so56067925ab.1;
+        Wed, 10 May 2023 09:18:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683718546; x=1686310546;
-        h=in-reply-to:references:cc:to:from:subject:message-id:date
-         :content-transfer-encoding:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tvApClf6Vwq7pYYq456swXVsLdXe4Yk/kHkfI1zIbf0=;
-        b=A7JK7Aa8+cE+lTIOQPBBguTGx4LVhzygAywBRaxRWDXJpKHRJStUaUY0rPCDStOCSq
-         GBOwjR+1YuWTe1dVqZQcobgsVkrlYymiSSrIgo+y0ASEPz75m0AzfCcw0fQzFPjjjYS7
-         d6bzOGfAsvxNKXSfg0xZdsHy5GLoUdan879eDcH7YNC+L+C7ZB2Q+noqlVV1W1Pk56KR
-         7bEuYPaKJmyf9WpoT0p220LaMblPNU6x98SZYeR65vem9VFLS+ZxqbhOETZtq+tXPA5r
-         PVytCKL5HNhUazNOxTgiBgva7e24kHjSXwKigglEJI+dTeP4GBSTvCjnBOWyCxdAaAqP
-         0bFA==
+        d=gmail.com; s=20221208; t=1683735533; x=1686327533;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=voV7s248E7gIvbug1lZfTIuQben9sdww3QQZzGmRsFk=;
+        b=XYEPZf0tfHEEexs2ZzM5vTzkNgJ6QvjxLjn0g3k8Mja50uGvOiDT5PWAQyPXYTgL4Q
+         4Ow7rATx11mY42MgJ7z/zPj1bsKL/usl8PDFd7oAiXQA0HptpwAUHVsDkO1/iSMDrfxi
+         Y4XNPzuuhKECiLHyZALmihESnIPaOWbSoaMmM1HOef+v7gZt45R8iy2I8zTdoF2Sx1Zm
+         4sCxgtMonTNmP0mYa7KYZ5MpP2b1izXtOOdPI8sz4qvci0F1H1UG1nxWecaC1IU8s9xr
+         jSXwf4AohepvXRg9ispxW0MhHvlFeJxzqDnwXWUAmByqQpXOwbWldQicQSulLV27fczt
+         Hmkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683718546; x=1686310546;
-        h=in-reply-to:references:cc:to:from:subject:message-id:date
-         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=tvApClf6Vwq7pYYq456swXVsLdXe4Yk/kHkfI1zIbf0=;
-        b=USWLfkFcDR/18L+ztlWRyCPsW5UadMzM0ahl8jiZtgrjCNDKeH8MVppakDiQw4oGpD
-         RnI79R5CE6JakiM0TLOBa63+UKPbrF60448JFSf12SNEFr6y2zHbKZLP9g//an3ZjRw9
-         c9QzkpyJ5/WVh8m3P13WCYwxRgJxWbaOmxvyQciqbjUoFfvhifeRs7OWm10Vfa3lhpvl
-         rGjoGqpS5eUHhDHSneULxBSJSIB+xJ36BZ80vi/5QTHcCzdlM7IDGEzJ4pLl3oVSc/p8
-         rz4Kwh+yU2nclzKX4ocxadSIimB/gXHpYdt9zCUcTbxp2quA1eqZ0o+GnlLbifHnwM0H
-         Bfew==
-X-Gm-Message-State: AC+VfDyWdd+n/1MEq8AHJYjdRCznEzDVfSlj6TilzX3V5BeWjoWT2bla
-	XU+Qxrgyl6pvRaxIzcCe3eM=
-X-Google-Smtp-Source: ACHHUZ7wo+6G+OTP/f1njXi4NgMQmaiEiKJ9+AcmhQdxQJiCG8NzXngE14HdSos3iGEqNEoox2RfcQ==
-X-Received: by 2002:a05:600c:2298:b0:3f4:2bce:eeff with SMTP id 24-20020a05600c229800b003f42bceeeffmr3624831wmf.25.1683718545727;
-        Wed, 10 May 2023 04:35:45 -0700 (PDT)
-Received: from localhost ([146.70.133.78])
-        by smtp.gmail.com with ESMTPSA id y10-20020a7bcd8a000000b003f16fc33fbesm22321946wmj.17.2023.05.10.04.35.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 10 May 2023 04:35:45 -0700 (PDT)
-Mime-Version: 1.0
-Date: Wed, 10 May 2023 13:35:43 +0200
-Message-Id: <CSIKESNNLX5D.4VDA3E6NBN3N@vincent-arch>
-Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
- Rockchip PCIe bus scan
-From: "Vincenzo Palazzo" <vincenzopalazzodev@gmail.com>
-To: "Bjorn Helgaas" <helgaas@kernel.org>
-Cc: <linux-pci@vger.kernel.org>, <robh@kernel.org>, <heiko@sntech.de>,
- <kw@linux.com>, <shawn.lin@rock-chips.com>, <linux-kernel@vger.kernel.org>,
- <lgirdwood@gmail.com>, <linux-rockchip@lists.infradead.org>,
- <broonie@kernel.org>, <bhelgaas@google.com>,
- <linux-kernel-mentees@lists.linuxfoundation.org>, <lpieralisi@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, "Dan Johansen" <strit@manjaro.org>
-X-Mailer: aerc 0.15.1
-References: <20230509153912.515218-1-vincenzopalazzodev@gmail.com>
- <20230509211902.GA1270901@bhelgaas>
-In-Reply-To: <20230509211902.GA1270901@bhelgaas>
+        d=1e100.net; s=20221208; t=1683735533; x=1686327533;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=voV7s248E7gIvbug1lZfTIuQben9sdww3QQZzGmRsFk=;
+        b=NkHXl3EqHxja7uzigVrVkltjvvjVeNrSQbSuLfauTokkZuDwHZC+LLZ3mDZ7Z9Mjzn
+         qJaQCSkagZOLYvVdLbEz/JGO8crYritJm369J1AL0SnaQEjGh1grme+iPNwC0o6PCLP3
+         zNfcYAwwcHaKxi++4wTVJai1N4+c52D5W7SD5Nm1u9tbwRV6dWfu1sqNu9EQa/F0NRB6
+         TjUxLbWAvQwA4hb1uzkHUmv9WuLBp1vSPYXfVre4IbPm4bTWYZbB7l3DUSTKqMGSu1x1
+         7mnDILnP+so1Q8yInEq0+KT52fM/lqPmR8rBZFjKNbtmo66FmJZxJFDvPz1FB6nLEm2Q
+         PhHQ==
+X-Gm-Message-State: AC+VfDzAvo6beAiDQJtHJ97/xrVA4YcrGRavj+vZ+gubPrsT4GSkkA9O
+	obBLc3bj8twNFrQKy8JeOYk=
+X-Google-Smtp-Source: ACHHUZ67bHjT+fSIecYQ6lhHmzt9xA6tcO8lP35mP2lEwHtEgEFR968NAIK3gcbaaPTDf0JlDcPvYw==
+X-Received: by 2002:a05:6e02:78a:b0:335:b047:3f62 with SMTP id q10-20020a056e02078a00b00335b0473f62mr3288918ils.10.1683735532649;
+        Wed, 10 May 2023 09:18:52 -0700 (PDT)
+Received: from localhost.localdomain (tunnel785484-pt.tunnel.tserv9.chi1.ipv6.he.net. [2001:470:1f10:aed::2])
+        by smtp.googlemail.com with ESMTPSA id b24-20020a05663801b800b00411b6a4ab7esm3539427jaq.93.2023.05.10.09.18.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 May 2023 09:18:52 -0700 (PDT)
+From: Tianling Shen <cnsztl@gmail.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Tianling Shen <cnsztl@gmail.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: fix button reset pin for nanopi r5c
+Date: Thu, 11 May 2023 00:18:50 +0800
+Message-Id: <20230510161850.4866-1-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230510_043549_583946_7491A4D2 
-X-CRM114-Status: GOOD (  26.08  )
+X-CRM114-CacheID: sfid-20230510_091855_236694_2AE913E4 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,59 +92,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Hi Vincenzo,
+The reset pin was wrongly assigned due to a copy/paste error,
+fix it to match actual gpio pin.
 
-Hi :)
+While at it, remove a blank line from nanopi r5s dts.
 
-> Thanks for raising this issue.  Let's see what we can do to address
-> it.
+Fixes: 05620031408a ("arm64: dts: rockchip: Add FriendlyARM NanoPi R5C")
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-Yeah, as I said in my cover letter, I am not happy with my solution,
-but we should start somewhere to discuss it.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
+index f70ca9f0470a..c718b8dbb9c6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5c.dts
+@@ -106,7 +106,7 @@ pcie20_reset_pin: pcie20-reset-pin {
+ 
+ 	rockchip-key {
+ 		reset_button_pin: reset-button-pin {
+-			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+index 2a1118f15c29..b6ad8328c7eb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+@@ -134,4 +134,3 @@ wan_led_pin: wan-led-pin {
+ 		};
+ 	};
+ };
+-
+-- 
+2.40.1
 
-> > Add a configurable delay to the Rockchip PCIe driver to address
-> > crashes that occur on some old devices, such as the Pine64 RockPro64.
-> > 
-> > This issue is affecting the ARM community, but there is no
-> > upstream solution for it yet.
->
-> It sounds like this happens with several endpoints, right?  And I
-> assume the endpoints work fine in other non-Rockchip systems?  If
-> that's the case, my guess is the problem is with the Rockchip host
-> controller and how it's initialized, not with the endpoints.
-
-
-Yeah, the crash is only reproducible with the Rockchip system, or better, 
-the crash is reproducible only in some modern devices that use the old 
-Rockchip driver mentioned in this patch.
-
-> The only delays and timeouts I see in the driver now are in
-> rockchip_pcie_host_init_port(), where it waits for link training to
-> complete.  I assume the link training did completely successfully
-> since you don't mention either a gen1 or gen2 timeout (although the
-> gen2 message is a dev_dbg() that normally wouldn't go to the console).
->
-> I don't know that the spec contains a retrain timeout value.  Several
-> other drivers use 1 second, while rockchip uses 500ms (for example,
-> see LINK_RETRAIN_TIMEOUT and LINK_UP_TIMEOUT).
->
-> I think we need to understand the issue better before adding a DT
-> property and a module parameter.  Those are hard for users to deal
-> with.  If we can figure out a value that works for everybody, it would
-> be better to just hard-code it in the driver and use that all the
-> time.
-
-Yeah, I see, I see. This makes sense. Is there any path that I can follow in 
-order to better understand what's going on at the hardware level? In other 
-words, how can I help to understand this issue better and provide a
-unique solution for everybody?
-
-Thanks for the nits in the patch, I will take a look with a fresh mind
-later in the day.
-
-Cheers!
-
-Vincent.
 
 _______________________________________________
 Linux-rockchip mailing list
