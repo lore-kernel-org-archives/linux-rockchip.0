@@ -4,113 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A44C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 16:35:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E2EFC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 16:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i03XtjNHGGZSCIdzU0Q+vqXbF1pWHHTKOoPO4NNVh7k=; b=aeoy/m18e9Odx3
-	KWHJeB51oNtEt2UpuOfLUa1mM6BAeqlg2kmxYw7cakl0MF7Lm6A6dFq18XI2xN6YE4AlYuiMgw02D
-	QFdHaIY2sB4S/GMVfLr/DIujDpH7NXP3cxQhfv6navdc6MiFdeAqEuLyO3LeKZ2UVDdSdFAc1dat9
-	nr3rIM3l0UZr2nM7+XFZsMcHm7izvZE9LAe16AsL6fxJOUw+4vISAiDM5ZU60Ht0Wk3SKVro8Yd3d
-	S86Y8nGCjVz56dZI0Vjl3PMD2e4KCBS8nt1cVX2O/TjOrzk+60s0wYU+hWHGs8KJmA/Z60nzXHzGQ
-	GXS0R+DnSHmUuj9eTRKg==;
+	List-Owner; bh=+82K0yVYqgpV852m7S6lpE806yr8eP5AejjRJ97rZ48=; b=1ULyv28qLkiFpB
+	F4DzM45ts7qYbRdIoSHfrkZKlPnMbowVd87xOkfQEP/Br5ZlYGvcPe7WnqLTVeC+kTYiBRJqAxx4E
+	71jsn/h3u/a8MyNXsSc+HjiOjAlqxbjgQo6DoR5f1xA/K6Y+28dcnuM8nTAHil7X2D2r0u9jL9Gk3
+	2Z+MefiAjEZONghA/FW5ow4ofgDeowmduWYYHrDpCV1eQsYNH6VGmuHmmCNGuNzSbj4o600cY83OA
+	nrD3/M8zDD7J/lX5uwMpjojAwr4cwcEn5v+sLp9BL25bdrAWfAGev0ozhxcgLar/RPb4dSz2mE68J
+	KtHez02CpYvqcmtDf+TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxVjk-00CUjF-2P;
-	Fri, 12 May 2023 16:35:20 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pxVoU-00CVMc-2p;
+	Fri, 12 May 2023 16:40:14 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxVjh-00CUhL-2V
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 May 2023 16:35:19 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-50bcae898b2so17973665a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 12 May 2023 09:35:17 -0700 (PDT)
+	id 1pxVoS-00CVLb-1H;
+	Fri, 12 May 2023 16:40:13 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f4249b7badso63983235e9.3;
+        Fri, 12 May 2023 09:40:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683909316; x=1686501316;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Oj3vBLYi0VGg7znZN4GARmcXM9pKwrBpVwIV9KkQbec=;
-        b=cX9t50W3qWgc+/ZaeMekhrhK1HUSgn6pR9RA6For+1pKOyNl38tWsLSYOfttWTB89c
-         Vr2S7zudABZH+b7KSDqiMNpgQAWPYU7rpl+r5I9fF147w2jcxg6cRplVOIq4PYhRJSuX
-         1H2dQdesYD3RgRF+wtsb5y2D+cBLKlR/go2UbTI757Xu/FfM2oQTSbndCZzd6iGc2Wvh
-         Wg+KeqlAtEUQbqigYT559PDPA5RPd2OVmYiP4zXf3PP3bsJ6e/ZtLEtAfaGvZO3NIjOc
-         L4BCIFXPgs9MbOyq4n0ZUayjP7HhqQcTqVmuYAtJnYBi9943hkimGEBt6m7DAqjRCsuJ
-         ZEpw==
+        d=gmail.com; s=20221208; t=1683909606; x=1686501606;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gOPr8RiZNSgqggpmzVuoRlbviV7C/s+3BUUqAAb6inU=;
+        b=DOCSZD3R4gA0NV+uJmIYMvCPKGm8d9kpASOgAAz+Pf4S+bC0zfZIpDVA6j4pA5/G9z
+         2pv/aZk9u0O0KFrGIRGMFN5sxS4S/44ucOrDp+w9VpWR4uuZvwDTzUhBQBhBZ8S1Tz3B
+         A5RVjIX26Ua+r+QGuGgXEYRPOaEK2M0bQL6s3XxHIXuZRKLWM+xfN3SpYRT0P92uopQt
+         CkJRyCOBuJ4vl5d6ZVUxN/FPuTayqcbUDbcbnkY8KA6iyaI8vGfTnKQJuxTpkgX780tb
+         2n2REXdeuXT4AOACppzPbHWgY1hFyp1P5fqnXt0Bz0wOeGEDCNuAqXOkQ+hG5w5ExObO
+         OR2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683909316; x=1686501316;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Oj3vBLYi0VGg7znZN4GARmcXM9pKwrBpVwIV9KkQbec=;
-        b=CuoXmY5ZZovVUfwYtwsFlDmIa7GJufEDycl3gwmNcvPCNK5Sedt2ukmSgNiklge0e/
-         9/d5ev+95QHYzaIwBozH9lITM3GKhIIWSU7zmotfawDArR+rqs6msvIddfLemd/2AImY
-         iAyWeyS07l2TrJtGeP6oIqNnRYNdU/ZMZbVIM7fdB57SFiw5/ng6ieGz/fNCmaht/CXL
-         dc/aC7RxW+Ja9rM+TwrNSa5xGKJT8aW2JO4o/q3962N0WiT0JtHt3OT476qo++aMAPSK
-         3qweWuvAob6UE/vX5ce6RUQiu9WywBeo03pmzBxyw3rnBLAjeABvasa9aE5EPbrdVK99
-         jujw==
-X-Gm-Message-State: AC+VfDy/yJdsiFnuDdxsinZf6/C3Z/KNymaRCFwLLqjjjVhbgrJRsmNW
-	uTzUyTV0tOYscBSUC1W32LGfdA==
-X-Google-Smtp-Source: ACHHUZ4ot459mbkMzA1b+DbStmTsgAlYaGVvjjMaw+ecLAMB38L9UcblvQxLt2/wAAYALelHBjLbFA==
-X-Received: by 2002:a17:907:3e9e:b0:96a:29c0:8515 with SMTP id hs30-20020a1709073e9e00b0096a29c08515mr8774854ejc.58.1683909315994;
-        Fri, 12 May 2023 09:35:15 -0700 (PDT)
-Received: from ?IPV6:2a02:810d:15c0:828:7ede:fc7b:2328:3883? ([2a02:810d:15c0:828:7ede:fc7b:2328:3883])
-        by smtp.gmail.com with ESMTPSA id lt14-20020a170906fa8e00b0094efdfe60dcsm5490714ejb.206.2023.05.12.09.35.13
+        d=1e100.net; s=20221208; t=1683909606; x=1686501606;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=gOPr8RiZNSgqggpmzVuoRlbviV7C/s+3BUUqAAb6inU=;
+        b=Nkf6wjsFgHc2HqBKY5lKajane8vSLWdxpuclwD63PfPAD39i8SFQ95Cv5heBg1YGFh
+         xw+MuGaQA0CuDqFJKu9XAkWoh6ltDRbMloCliwZQpjnH8L9nTmle1mtHkEPCU/g5Ly51
+         4Lu9lQFhVWnTm0qM5SEv9jKABBWd2IHjnmwsKkDE8N4Dx0zYHJRocoZQpeld/68S4FLO
+         ytJlKEaxEbiKdlYkTxUmaQA0Rbcsf7SgIAK6ajzoKeKt6BiR6+VMBDsmi/Nw9q+FbKmg
+         PVHKlxy1odqCIk46qs3eyHi6c2K1H6/EnM1NK/BmiQQYfaXxrbyc/ljIrrQJUqo/0rKR
+         zqbg==
+X-Gm-Message-State: AC+VfDwdCpTbQHvHr8MNQz757WT9XLHfd6I7y9rw6a9+BqXU4cPRI1XH
+	RNbfQDgDfNozAHKM9uy7rOo=
+X-Google-Smtp-Source: ACHHUZ5yxbWW2Bv6DZDq5gkRtNdoEDpV2I3JPwHvYv23gd+IPRTMx71bA/LG2dz5CkgOQTwYpkRxhA==
+X-Received: by 2002:a5d:5968:0:b0:2c9:e585:84b0 with SMTP id e40-20020a5d5968000000b002c9e58584b0mr16128939wri.1.1683909605667;
+        Fri, 12 May 2023 09:40:05 -0700 (PDT)
+Received: from localhost ([146.70.133.78])
+        by smtp.gmail.com with ESMTPSA id v13-20020a05600c214d00b003f42461ac75sm16140195wml.12.2023.05.12.09.40.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 May 2023 09:35:15 -0700 (PDT)
-Message-ID: <98a77653-ec58-56c4-9893-3b424f67c87e@linaro.org>
-Date: Fri, 12 May 2023 18:35:12 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
-Content-Language: en-US
-To: Joe Tessler <jrt@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Michael Tretter <m.tretter@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jacopo Mondi <jacopo+renesas@jmondi.org>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang
- <wenyou.yang@microchip.com>, Bin Liu <bin.liu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Yong Deng <yong.deng@magewell.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
-References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+        Fri, 12 May 2023 09:40:05 -0700 (PDT)
+Mime-Version: 1.0
+Date: Fri, 12 May 2023 18:40:03 +0200
+Message-Id: <CSKG4WDA4MVH.1RVYIN4NYH4EA@vincent-arch>
+Cc: <linux-pci@vger.kernel.org>, <robh@kernel.org>, <heiko@sntech.de>,
+ <kw@linux.com>, <shawn.lin@rock-chips.com>, <linux-kernel@vger.kernel.org>,
+ <lgirdwood@gmail.com>, <linux-rockchip@lists.infradead.org>,
+ <broonie@kernel.org>, <bhelgaas@google.com>,
+ <linux-kernel-mentees@lists.linuxfoundation.org>, <lpieralisi@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, "Dan Johansen" <strit@manjaro.org>
+Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
+ Rockchip PCIe bus scan
+From: "Vincenzo Palazzo" <vincenzopalazzodev@gmail.com>
+To: "Bjorn Helgaas" <helgaas@kernel.org>
+X-Mailer: aerc 0.15.1
+References: <20230509153912.515218-1-vincenzopalazzodev@gmail.com>
+ <20230509211902.GA1270901@bhelgaas>
+In-Reply-To: <20230509211902.GA1270901@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_093517_860152_C6B593BC 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20230512_094012_456235_A96959BA 
+X-CRM114-Status: GOOD (  25.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,24 +92,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTIvMDMvMjAyMyAxNDoxMiwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPiBUaGUgZHJp
-dmVyIGNhbiBtYXRjaCBvbmx5IHZpYSB0aGUgRFQgdGFibGUgc28gdGhlIHRhYmxlIHNob3VsZCBi
-ZSBhbHdheXMKPiB1c2VkIGFuZCB0aGUgb2ZfbWF0Y2hfcHRyIGRvZXMgbm90IGhhdmUgYW55IHNl
-bnNlICh0aGlzIGFsc28gYWxsb3dzIEFDUEkKPiBtYXRjaGluZyB2aWEgUFJQMDAwMSwgZXZlbiB0
-aG91Z2ggaXQgbWlnaHQgbm90IGJlIHJlbGV2YW50IGhlcmUpLgo+IAo+ICAgZHJpdmVycy9tZWRp
-YS9jZWMvaTJjL2NoNzMyMi5jOjU4MzozNDogZXJyb3I6IOKAmGNoNzMyMl9vZl9tYXRjaOKAmSBk
-ZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVdlcnJvcj11bnVzZWQtY29uc3QtdmFyaWFibGU9XQo+IAo+
-IFNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lA
-bGluYXJvLm9yZz4KPiAtLS0KCkhhbnMsIFNha2FyaSwKCkNhbiB5b3UgcGljayB1cCB0aGUgcGF0
-Y2hzZXQ/IFRoZXJlIHdhcyBwb3NpdGl2ZSBmZWVkYmFjazoKaHR0cHM6Ly9wYXRjaHdvcmsubGlu
-dXh0di5vcmcvcHJvamVjdC9saW51eC1tZWRpYS9wYXRjaC8yMDIzMDMxMjEzMTMxOC4zNTExNzMt
-MS1rcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmcvCgpidXQgaXQgc2VlbXMgaXQgd2FzIG5v
-dCBhcHBsaWVkLgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+>
+> Thanks for raising this issue.  Let's see what we can do to address
+> it.
+>
+> On Tue, May 09, 2023 at 05:39:12PM +0200, Vincenzo Palazzo wrote:
+> > Add a configurable delay to the Rockchip PCIe driver to address
+> > crashes that occur on some old devices, such as the Pine64 RockPro64.
+> > 
+> > This issue is affecting the ARM community, but there is no
+> > upstream solution for it yet.
+>
+> It sounds like this happens with several endpoints, right?  And I
+> assume the endpoints work fine in other non-Rockchip systems?  If
+> that's the case, my guess is the problem is with the Rockchip host
+> controller and how it's initialized, not with the endpoints.
+>
+> The only delays and timeouts I see in the driver now are in
+> rockchip_pcie_host_init_port(), where it waits for link training to
+> complete.  I assume the link training did completely successfully
+> since you don't mention either a gen1 or gen2 timeout (although the
+> gen2 message is a dev_dbg() that normally wouldn't go to the console).
+>
+> I don't know that the spec contains a retrain timeout value.  Several
+> other drivers use 1 second, while rockchip uses 500ms (for example,
+> see LINK_RETRAIN_TIMEOUT and LINK_UP_TIMEOUT).
+>
+> I think we need to understand the issue better before adding a DT
+> property and a module parameter.  Those are hard for users to deal
+> with.  If we can figure out a value that works for everybody, it would
+> be better to just hard-code it in the driver and use that all the
+> time.
+>
+> A few minor style/formatting comments below just for future reference:
+
+Due the recent email I think it is worth make a version 2 of this
+patch with your suggestion? and iterate over it another time?
+
+Cheers!
+
+Vincent.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
