@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04757C77B75
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 10:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27098C77B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 11:11:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q+OGo7zemJ/CR94B/DUHhyQFOpjrFCTGJCkeKP9hqPw=; b=ABAFy9RvdPolwu
-	x2lzmls1dKm/fEOYvwtBEQaN0jwf9/3Y/1Wxxer8on/yq1SD/IQNcT4dLtvrl9ATqmUvcooz89tsI
-	yba9vjPIlcRR66771YnSQ4iC3JQM1y1/HxRBQ7Ov4clq7uycYWeiVq46vxFii7HrP6oCsA4nSFWHt
-	kWxdmxf4SHheLb+hpmZPTsJ+n3sll+Ku0G1jC622AHF+OiU/eCilECNg+wrMS67YGOX8hDY7M0v/9
-	OEKl5oXZWiI+lREWC390uIEl/SEB5kPxSC4w8dWz2iX0Ly2EsnxAyW5VzQR0ELeipftROqUCD31wo
-	oZ+I5asx4kwzk2Z7D85g==;
+	List-Owner; bh=C5lzBGVBolZof3x4x87yNYtpeXd3jMFyblY9VceFTUM=; b=FCu5HvkTCJKZd3
+	00mduXN4suwB/yZWB/FwXqKjnNk1AUKNScfCEhLV/dHXCpvi5JO//0+bMsEunueROGkbx8aJfk52B
+	zXPX+Iz0Gi/aOeophaKWhts28YaQYhevErrsJyH8IPoLzgCO7UKG9kZhBr9sORrSRQAxxuI78HzHm
+	DzFb0wBVDFV/1Hjfflv7qGlTwIMjvdBEfCokCEz3Z1WsChcwyJ06QMl1g+gt6thhKXpmqVfU83FRU
+	e3Bbt5ak1aSZDMpD1JESzP5ckN2PqhVYsY2yk1jX+8JxpZjQ3kjBZloi4Fntz1KVBI+fKqMvwGGhJ
+	2SgYnCM5X0sUfUtPSr7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxQI9-00Bfo9-2X;
-	Fri, 12 May 2023 10:46:29 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1pxQfv-00Bkjw-1l;
+	Fri, 12 May 2023 11:11:03 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxQI6-00Bfkd-2e;
-	Fri, 12 May 2023 10:46:28 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3078cc99232so6655623f8f.3;
-        Fri, 12 May 2023 03:46:25 -0700 (PDT)
+	id 1pxQfV-00BkB5-2u
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 May 2023 11:10:39 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3078aa0b152so4881103f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 12 May 2023 04:10:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683888384; x=1686480384;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1683889836; x=1686481836;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oo67O9FRX0GyvAWrdRm6agPjzPmEBmkG90/e6PxM5KQ=;
-        b=JCRV1/NQyGX6dw30BOLJmllahdmyGUPU53QIi9FLiR5Vfnxd/uxH57HFPSk2aiYmXs
-         Lwb7Qy3ApHZfdD8luXPgw+oPKlxgc2wRL1wd92LiLKvvrCJe9INCIriCfJXnWkAO19l/
-         kasDE6ZhNNTv8R8qVQhXsVjD+0Pf0CBGWWOyhOeIW7RLZnfeBxOiGNtz0pqqUFgqfY0l
-         J0JW80xxDmkPygm6LCo7LzDgPQOnKoFh35Rj3+iSTA9CtTrnMcqwV9YNV9RmRfVcP86H
-         /nCUaDxSjynHnQx/rk7tXbMkQMzkDE3L0xn8uZCFZH9ojCzgZQdUT8WX4RksSCGlQtKp
-         DCgw==
+        bh=y+KMJ/AizzmjvBDK75pfKIoc8C4iUMG5GzBQw5S3Y2M=;
+        b=To5ik1sgCmInqKXB4yESoh9/JmeHZvBWQH71Auy6YaptnepzOFlI4JBQAfvyX4SyGj
+         mm//7gMKmNi+3Jj2rp/Ip1dWRSJCnjgC/TjUT/O2aYtCfBAzu0D+/zYprvSTvC/ecZUg
+         HvrA/QjIo0BQE7hoLZgZywdAwXnM3Gm/0rVVkvyHzeHp6m7USOd6TF0mIRsu8Jua/rul
+         jzqknHbBMghUjYQasJYknqevf61bHs8hT/RkIclnljhMvqPvgO59aekaRusb/xChPBxA
+         913UVIBXWKtluXmK2G++P2onRnMXrczvu9BFDQPfVZ2Fb3ArtoXlXhft7FBKTMhQV3gh
+         nCsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683888384; x=1686480384;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=oo67O9FRX0GyvAWrdRm6agPjzPmEBmkG90/e6PxM5KQ=;
-        b=TtlkeEwyja0xNISZBG8i51VGDcCYXCUkuo8cOuU/UAnIPSrNgl84WMXNphawaPO2js
-         IcBz6t5D8yzvTFLkjxohBqgKPkShGvuewqBMvTA7HO7DgFDjPL3ITQ8E4Pfb+Xvpl3lB
-         09uCAawCZ+x1p1IjxtzG/N99WLNIzwKWy68Op/zx2Gi/qxfpF+jzleZV24V6aKXaj+W4
-         /Fmz/V3vS3pX70TuLYNlHVqqH5YUTLaPfFqTP47/dhfOZ2Wivz+qcLqPQ2zf1/aswGY2
-         tPdo92T4vKGbAIP6218TngYyEaR76WJWmHWg8J/PPjFkHdWhWw72FC3PTgu33bDTgCKr
-         4faQ==
-X-Gm-Message-State: AC+VfDzlIH0PAcgiie1De9GskZEHsTTxNbwQ1ojcOEFfyI9IoztQcLOU
-	PNO+iFD9/YdprA2cr135DKk=
-X-Google-Smtp-Source: ACHHUZ7cQ6lAGWPK6qsZqTOzReZDoPCdV311+gW5FWzcfuzQiOK30bhW8w9cTIRqHdDCML34gprPCg==
-X-Received: by 2002:a5d:5011:0:b0:307:8a39:5568 with SMTP id e17-20020a5d5011000000b003078a395568mr17093589wrt.7.1683888384189;
-        Fri, 12 May 2023 03:46:24 -0700 (PDT)
-Received: from localhost ([146.70.133.78])
-        by smtp.gmail.com with ESMTPSA id f12-20020a7bc8cc000000b003f4e4b5713esm5650587wml.37.2023.05.12.03.46.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 May 2023 03:46:23 -0700 (PDT)
-Mime-Version: 1.0
-Date: Fri, 12 May 2023 12:46:21 +0200
-Message-Id: <CSK8M39MQL2C.3S7JO031H0BA2@vincent-arch>
-Cc: <linux-pci@vger.kernel.org>, <robh@kernel.org>, <heiko@sntech.de>,
- <kw@linux.com>, <shawn.lin@rock-chips.com>, <linux-kernel@vger.kernel.org>,
- <lgirdwood@gmail.com>, <linux-rockchip@lists.infradead.org>,
- <broonie@kernel.org>, <bhelgaas@google.com>,
- <linux-kernel-mentees@lists.linuxfoundation.org>, <lpieralisi@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, "Dan Johansen" <strit@manjaro.org>
-Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
- Rockchip PCIe bus scan
-From: "Vincenzo Palazzo" <vincenzopalazzodev@gmail.com>
-To: "Peter Geis" <pgwipeout@gmail.com>, "Bjorn Helgaas" <helgaas@kernel.org>
-X-Mailer: aerc 0.15.1
-References: <CAMdYzYp6=mYSoUHN3TEXVSMbRt1HpRm0X_4RMez09V0XzQewaw@mail.gmail.com> <ZFwC/seTfSoaLn0v@bhelgaas> <CAMdYzYoa8dhmBx5MUG0yBPwVVXPXHrYNnR0QvKHXvV=JaKuMfw@mail.gmail.com>
-In-Reply-To: <CAMdYzYoa8dhmBx5MUG0yBPwVVXPXHrYNnR0QvKHXvV=JaKuMfw@mail.gmail.com>
+        d=1e100.net; s=20221208; t=1683889836; x=1686481836;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=y+KMJ/AizzmjvBDK75pfKIoc8C4iUMG5GzBQw5S3Y2M=;
+        b=Mr9VPLkeyNhzCo+At5e3qP+ZSD5KSPQCLyIT2+shvUnghqJ7xvuf6Jtl470XkP7Jzw
+         bjqMyZERDf14c2Xgy0BBj08XBPyy9HKLRRhMfgdL6fmkDYBg81vJNxrDc4hWB40YACfh
+         Qbya3ZYyv5Yc9WsCO5aFWXiafUfEOSJwdXRRBHDvHeeBn9NWa2KeeFzc0gHDP2D7np4d
+         I4N2k85mGxXHDnsDdJXphZp1ugZzju63YtSeQQ+3mwOb+D8f8kGuI/Xq4IeWrWLaGgOt
+         YyhAVzCSUlfIWagmHOs8p6lDXW+HV4TsQqHDb47ev9mjryScLTx56QElJA6iBYKL+edj
+         mHsQ==
+X-Gm-Message-State: AC+VfDyaPlPB2zf7TnxrWmHHJr1YQGCqp2dy/vkvENJer44DfpFVIi/t
+	080UZofSMjkNwG/wbN7nhAbjAQ==
+X-Google-Smtp-Source: ACHHUZ6BySf4RTOA+DCTnNPHluussWs1MosyuGdp8wA/aRAU7GBrsacrdRgCwVTXFnSsCvVg9uzYJA==
+X-Received: by 2002:adf:ee0c:0:b0:306:2c16:8359 with SMTP id y12-20020adfee0c000000b003062c168359mr18084867wrn.39.1683889836235;
+        Fri, 12 May 2023 04:10:36 -0700 (PDT)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.gmail.com with ESMTPSA id p8-20020a056000018800b002f28de9f73bsm23471755wrx.55.2023.05.12.04.10.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 May 2023 04:10:35 -0700 (PDT)
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Shreeya Patel <shreeya.patel@collabora.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>, 
+ Vincent Legoll <vincent.legoll@gmail.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com
+In-Reply-To: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
+References: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
+Subject: Re: (subset) [PATCH v2 0/8] Add RK3588 OTP memory support
+Message-Id: <168388983496.54762.17098900405456249991.b4-ty@linaro.org>
+Date: Fri, 12 May 2023 12:10:34 +0100
+MIME-Version: 1.0
+X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_034626_866224_2EC62AC5 
-X-CRM114-Status: GOOD (  30.72  )
+X-CRM114-CacheID: sfid-20230512_041037_995437_A2F217AA 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +101,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > > Many years ago we ran that issue to ground and with Robin Murphy's
-> > > help we found that while it's possible to gracefully handle that
-> > > condition it required hijacking the entire arm64 error handling
-> > > routine. Not exactly scalable for just one SoC.
-> >
-> > Do you have a pointer to that discussion?  The URL might save
-> > repeating the whole exercise and could be useful for the commit log
-> > when we try to resolve this.
->
-> The link to the patch email is here, the full discussion is pretty
-> easy to follow:
-> https://lore.kernel.org/linux-pci/2a381384-9d47-a7e2-679c-780950cd862d@rock-chips.com/
-> Also:
-> https://lore.kernel.org/linux-rockchip/1f180d4b-9e5d-c829-555b-c9750940361e@web.de/T/#m9c9d4a28a0d3aa064864f188b8ee3b16ce107aff
 
+On Thu, 04 May 2023 23:06:40 +0300, Cristian Ciocaltea wrote:
+> This patch series adds OTP memory support for Rockchip RK3588 SoC,
+> while also providing a few improvements to the existing rockchip-otp
+> driver, in addition to converting the bindings to dt-schema.
+> 
+> Changes in v2:
+>  - Renamed rockchip-otp.yaml to rockchip,otp.yaml and removed clock's minItems
+>    in PATCH 1/8, according to the review from Krzysztof
+>  - Updated commit message in PATCH 2/8, per Heiko's suggestion
+>  - Renamed rockchip_data's clocks to clks in PATCH 3/8, per Heiko's review
+>  - Preserved clocks order/names from older SoC variants in PATCH 2/8, according
+>    to Krzysztof's review; updated accordingly patches 7/8 and 8/8
+>  - Added Tested-by tags from Vincent
+>  - Added Reviewed-by tags from Heiko
+>  - v1: https://lore.kernel.org/lkml/20230501084401.765169-1-cristian.ciocaltea@collabora.com/
+> 
+> [...]
 
-I have some concerns about the patch proposed in the email that you share. It seems like 
-it is quite extensive (code that is it not just related to the HW) just to fix a hardware 
-issue. I would have expected the code to fix the bug to be integrated into the driver itself, 
-so that if the hardware will died at some point in the future, I would expect that also the 
-buddy code will died with it.
+Applied, thanks!
 
-However, it is possible that I may have missed something in the patch, 
-and my thoughts could be wrong.
+[1/8] dt-bindings: nvmem: Convert rockchip-otp.txt to dt-schema
+      commit: 5dede99d255a14e4819e74ee0e8710b96a354b99
+[2/8] dt-bindings: nvmem: rockchip,otp: Add compatible for RK3588
+      commit: cdaa055cdc739c5c38b7e1ede59718e8d817c2fb
+[3/8] nvmem: rockchip-otp: Add clks and reg_read to rockchip_data
+      commit: 71f1b0883907d4f3604a169e8b8750138b8ae302
+[4/8] nvmem: rockchip-otp: Generalize rockchip_otp_wait_status()
+      commit: da5c9b4fcf324f57b045e9eb5dd1df95784a8609
+[5/8] nvmem: rockchip-otp: Use devm_reset_control_array_get_exclusive()
+      commit: e86fba9eb891e375e1f7c9d935fa2687cba9b4c8
+[6/8] nvmem: rockchip-otp: Improve probe error handling
+      commit: 17baab60780b6801bc94f50c5fb12b9c3c262ceb
+[7/8] nvmem: rockchip-otp: Add support for RK3588
+      commit: 3a0134e21d90ab0389359a1908a3ea21dd01d661
 
-> >
-> > > The configurable waits allow us to program reasonable times for
-> > > 90% of the endpoints that come up in the normal amount of time, while
-> > > being able to adjust it for the other 10% that do not. Some require
-> > > multiple seconds before they return without error. Part of the reason
-> > > we don't want to hardcode the wait time is because the probe isn't
-> > > handled asynchronously, so the kernel appears to hang while waiting
-> > > for the timeout.
-> >
-> > Is there some way for users to figure out that they would need this
-> > property?  Or is it just "if your kernel panics on boot, try
-> > adding or increasing "bus-scan-delay-ms" in your DT?
->
-> There's a listing of tested cards at:
-> https://wiki.pine64.org/wiki/ROCKPro64_Hardware_compatibility
->
-> Most cards work fine that don't require a large BAR. PCIe switches are
-> completely dead without the above hack patch. Cards that lie in the
-> middle are ones that expect BIOS / EFI support to initialize, or ones
-> that have complex boot roms and don't initialize quickly.
-> But yes, it's unfortunately going to be "if you panic, increase the
-> delay" unless a more complete database of cards can be generated.
+Best regards,
+-- 
+Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 
-This is really unfortunate because as mentioned in some previous emails, 
-using sleep time slows down the kernel. Is there any way to tell the kernel 
-to tell the kernel "hey we need some more time here", or in computer science 
-terms, load a driver asynchronously?
-
-Thanks.
-
-Vincent.
 
 _______________________________________________
 Linux-rockchip mailing list
