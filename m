@@ -4,106 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C4ECC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 02:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04757C77B75
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 10:46:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AtMIfIFzcen7ERhjbA29ms3dYvo+1nrqG8JXNwL5pvM=; b=YqtNO959NKi8c5
-	aaN3VPRVONo9S5Iz1WOYg/74/eoWDeqyArUCBm5WwxlxxXr6yL014FuxoZeBH2DGqndX9Y3yOpmqu
-	pM2GTN6efO8nepZ0sM09JYeciNqRxDahsujPNsKREzqODbAe21Oqh7G66jDWrgTEZ1qsd5kBQyEe8
-	nTIj6fNOnYnz3MpYZnzIok0IVOI1Qgbxr7dWXgpFMCjTdTJXIvblwMOn6Mfpm7rM9ZDjN5qoWETOU
-	kSLIY/2zm4C04ZkNJq2F09gzFAHogiXDvzruJWWQbLf+GffaYkODtvp7SAWic+4BdcTBcaDl//06j
-	p8gdyQ/+BMvoiOzUB5zw==;
+	List-Owner; bh=q+OGo7zemJ/CR94B/DUHhyQFOpjrFCTGJCkeKP9hqPw=; b=ABAFy9RvdPolwu
+	x2lzmls1dKm/fEOYvwtBEQaN0jwf9/3Y/1Wxxer8on/yq1SD/IQNcT4dLtvrl9ATqmUvcooz89tsI
+	yba9vjPIlcRR66771YnSQ4iC3JQM1y1/HxRBQ7Ov4clq7uycYWeiVq46vxFii7HrP6oCsA4nSFWHt
+	kWxdmxf4SHheLb+hpmZPTsJ+n3sll+Ku0G1jC622AHF+OiU/eCilECNg+wrMS67YGOX8hDY7M0v/9
+	OEKl5oXZWiI+lREWC390uIEl/SEB5kPxSC4w8dWz2iX0Ly2EsnxAyW5VzQR0ELeipftROqUCD31wo
+	oZ+I5asx4kwzk2Z7D85g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxIwQ-00Am2M-2p;
-	Fri, 12 May 2023 02:55:34 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1pxQI9-00Bfo9-2X;
+	Fri, 12 May 2023 10:46:29 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxIwM-00Am0y-1c;
-	Fri, 12 May 2023 02:55:32 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-4efe8b3f3f7so10721234e87.2;
-        Thu, 11 May 2023 19:55:29 -0700 (PDT)
+	id 1pxQI6-00Bfkd-2e;
+	Fri, 12 May 2023 10:46:28 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3078cc99232so6655623f8f.3;
+        Fri, 12 May 2023 03:46:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683860128; x=1686452128;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dkOUlUNxiR4Gqj0+EmYuULSRki0JxNp8SsnGkEdjwKw=;
-        b=PpruK/NzGHjzRovvWCYvW7HqDD68KmOoIjPRjVBwwjOl44YKmS9LJw0bJlpO5wCaTK
-         JYQMRTt8PUIg7Tt3sXx/BumOofEX1UyIXH2rVZ7HQ4xk8w/0TIePej2ODQWIhhjMLGCF
-         ObsKQnai0HwA0gxPpanVkllqPWACWFvsyhk8otvSXkxJ7boKNh6rOvhXhhU7XGpKW3yF
-         bnb3jZjGoJuviMp6XaP/FxIe9hwsqI+C+2qQBWPRGsJkiS6fP0ZvUhHR+JTm3yUIwJpq
-         rSKT9UqKx0zvTFuela8XEHqJdseFq2qZbEhMjlCN21nk45Ltut9jjYaQ7C5U84jN7UFH
-         YUlA==
+        d=gmail.com; s=20221208; t=1683888384; x=1686480384;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oo67O9FRX0GyvAWrdRm6agPjzPmEBmkG90/e6PxM5KQ=;
+        b=JCRV1/NQyGX6dw30BOLJmllahdmyGUPU53QIi9FLiR5Vfnxd/uxH57HFPSk2aiYmXs
+         Lwb7Qy3ApHZfdD8luXPgw+oPKlxgc2wRL1wd92LiLKvvrCJe9INCIriCfJXnWkAO19l/
+         kasDE6ZhNNTv8R8qVQhXsVjD+0Pf0CBGWWOyhOeIW7RLZnfeBxOiGNtz0pqqUFgqfY0l
+         J0JW80xxDmkPygm6LCo7LzDgPQOnKoFh35Rj3+iSTA9CtTrnMcqwV9YNV9RmRfVcP86H
+         /nCUaDxSjynHnQx/rk7tXbMkQMzkDE3L0xn8uZCFZH9ojCzgZQdUT8WX4RksSCGlQtKp
+         DCgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683860128; x=1686452128;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dkOUlUNxiR4Gqj0+EmYuULSRki0JxNp8SsnGkEdjwKw=;
-        b=ldMuC4IkO4C6kOKOeelWdDTE1JjfQc92prTBJJIgxZCP5GIWEZanuM7K56w8Ysfibw
-         9TcgxrRv96Px648Lao84bjaNGzzZXB4zwDT/Q8Mb0it0ctTmOWT5OVwiCxwFUayzo04G
-         KcQu14VCgP6lJLj8tRcK0I+67zsAFAcFtLq6LPHJHbO316WVbKSi5VdBq+1OV2DKqALK
-         nCgezuufsmV4CV9LzQCbVqNJktp5yPUsg+jhSPMUUah6zii405u5gsJspfunYqEevhUD
-         5rxwuHqDSD7fWiMiG1/4Kn2mw+qWWlK0K03/5/WDpqpkgeQY1D6wvJ6hFDumfYQ4U4OM
-         2law==
-X-Gm-Message-State: AC+VfDwDpeWKT8IrcQNg10PKtkCDaCrj+D0rxtKnfJRc8pMXJf2SMU+a
-	Fh9hRJdtefX1bCmRLZDrnLw=
-X-Google-Smtp-Source: ACHHUZ4dxW4iqzv/N28X1gKcL88SemTjJ65/wtcy0AZdHSmj4XHMTrDxPz8Icvt/RO3sRR4TuYCJgw==
-X-Received: by 2002:ac2:488c:0:b0:4f1:4086:9384 with SMTP id x12-20020ac2488c000000b004f140869384mr3159987lfc.61.1683860127415;
-        Thu, 11 May 2023 19:55:27 -0700 (PDT)
-Received: from [192.168.2.145] (109-252-144-198.dynamic.spd-mgts.ru. [109.252.144.198])
-        by smtp.googlemail.com with ESMTPSA id c26-20020ac244ba000000b004efae490c51sm1285288lfm.240.2023.05.11.19.55.25
+        d=1e100.net; s=20221208; t=1683888384; x=1686480384;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=oo67O9FRX0GyvAWrdRm6agPjzPmEBmkG90/e6PxM5KQ=;
+        b=TtlkeEwyja0xNISZBG8i51VGDcCYXCUkuo8cOuU/UAnIPSrNgl84WMXNphawaPO2js
+         IcBz6t5D8yzvTFLkjxohBqgKPkShGvuewqBMvTA7HO7DgFDjPL3ITQ8E4Pfb+Xvpl3lB
+         09uCAawCZ+x1p1IjxtzG/N99WLNIzwKWy68Op/zx2Gi/qxfpF+jzleZV24V6aKXaj+W4
+         /Fmz/V3vS3pX70TuLYNlHVqqH5YUTLaPfFqTP47/dhfOZ2Wivz+qcLqPQ2zf1/aswGY2
+         tPdo92T4vKGbAIP6218TngYyEaR76WJWmHWg8J/PPjFkHdWhWw72FC3PTgu33bDTgCKr
+         4faQ==
+X-Gm-Message-State: AC+VfDzlIH0PAcgiie1De9GskZEHsTTxNbwQ1ojcOEFfyI9IoztQcLOU
+	PNO+iFD9/YdprA2cr135DKk=
+X-Google-Smtp-Source: ACHHUZ7cQ6lAGWPK6qsZqTOzReZDoPCdV311+gW5FWzcfuzQiOK30bhW8w9cTIRqHdDCML34gprPCg==
+X-Received: by 2002:a5d:5011:0:b0:307:8a39:5568 with SMTP id e17-20020a5d5011000000b003078a395568mr17093589wrt.7.1683888384189;
+        Fri, 12 May 2023 03:46:24 -0700 (PDT)
+Received: from localhost ([146.70.133.78])
+        by smtp.gmail.com with ESMTPSA id f12-20020a7bc8cc000000b003f4e4b5713esm5650587wml.37.2023.05.12.03.46.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 11 May 2023 19:55:26 -0700 (PDT)
-Message-ID: <4a5ebc65-a384-a8df-c692-ca114f1a018d@gmail.com>
-Date: Fri, 12 May 2023 05:55:23 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
- with IOMMU_DOMAIN_PLATFORM
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Orson Zhai <orsonzhai@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Niklas Schnelle <schnelle@linux.ibm.com>, Krishna Reddy <vdumpa@nvidia.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
- Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Steven Price <steven.price@arm.com>
-References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
- <1db712d2-9e33-4183-2766-34e32f170507@arm.com> <ZFI/D6mnLKYpdIqx@nvidia.com>
- <1a995f30-31fe-354f-ddfe-e944fa36e7a0@arm.com> <ZFJlZ03lswl9uHD0@nvidia.com>
- <ZFJzKQcKNFHdIWqy@orome> <ZFKXz/HWFkYOJrgT@nvidia.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-In-Reply-To: <ZFKXz/HWFkYOJrgT@nvidia.com>
+        Fri, 12 May 2023 03:46:23 -0700 (PDT)
+Mime-Version: 1.0
+Date: Fri, 12 May 2023 12:46:21 +0200
+Message-Id: <CSK8M39MQL2C.3S7JO031H0BA2@vincent-arch>
+Cc: <linux-pci@vger.kernel.org>, <robh@kernel.org>, <heiko@sntech.de>,
+ <kw@linux.com>, <shawn.lin@rock-chips.com>, <linux-kernel@vger.kernel.org>,
+ <lgirdwood@gmail.com>, <linux-rockchip@lists.infradead.org>,
+ <broonie@kernel.org>, <bhelgaas@google.com>,
+ <linux-kernel-mentees@lists.linuxfoundation.org>, <lpieralisi@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, "Dan Johansen" <strit@manjaro.org>
+Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
+ Rockchip PCIe bus scan
+From: "Vincenzo Palazzo" <vincenzopalazzodev@gmail.com>
+To: "Peter Geis" <pgwipeout@gmail.com>, "Bjorn Helgaas" <helgaas@kernel.org>
+X-Mailer: aerc 0.15.1
+References: <CAMdYzYp6=mYSoUHN3TEXVSMbRt1HpRm0X_4RMez09V0XzQewaw@mail.gmail.com> <ZFwC/seTfSoaLn0v@bhelgaas> <CAMdYzYoa8dhmBx5MUG0yBPwVVXPXHrYNnR0QvKHXvV=JaKuMfw@mail.gmail.com>
+In-Reply-To: <CAMdYzYoa8dhmBx5MUG0yBPwVVXPXHrYNnR0QvKHXvV=JaKuMfw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230511_195530_559081_8C739D31 
-X-CRM114-Status: GOOD (  38.35  )
+X-CRM114-CacheID: sfid-20230512_034626_866224_2EC62AC5 
+X-CRM114-Status: GOOD (  30.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,83 +91,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-MDMuMDUuMjAyMyAyMDoyMCwgSmFzb24gR3VudGhvcnBlINC/0LjRiNC10YI6Cj4gT24gV2VkLCBN
-YXkgMDMsIDIwMjMgYXQgMDQ6NDM6NTNQTSArMDIwMCwgVGhpZXJyeSBSZWRpbmcgd3JvdGU6Cj4g
-Cj4+PiBUaGUgb25seSB0aGluZyBpdCBkb2VzIGlzIGNhdXNlIGRtYS1pb21tdS5jIGluIEFSTTY0
-IHRvIHVzZSB0aGUKPj4+IGRtYS1yYW5nZXMgZnJvbSBPRiBpbnN0ZWFkIG9mIHRoZSBkb21haW4g
-YXBlcnR1cmUuIHNwcmQgaGFzIG5vCj4+PiBkbWEtcmFuZ2VzIGluIGFyY2gvYXJtNjQvYm9vdC9k
-dHMvc3ByZC4KPj4+Cj4+PiBGdXJ0aGVyLCBzcHJkIGhhcmQgZmFpbHMgYW55IG1hcCBhdHRlbXB0
-IG91dHNpZGUgdGhlIGFwZXJ0dXJlLCBzbyBpdAo+Pj4gbG9va3MgbGlrZSBhIGJ1ZyBpZiB0aGUg
-T0Ygc29tZWhvdyBjaG9vc2VzIGEgd2lkZXIgYXBlcnR1cmUgYXMKPj4+IGRtYS1pb21tdS5jIHdp
-bGwgc3RhcnQgZmFpbGluZyBtYXBzLgo+Pgo+PiBUaGF0IGFsbCBzb3VuZHMgb2RkLiBvZl9kbWFf
-Y29uZmlndXJlX2lkKCkgYWxyZWFkeSBzZXRzIHVwIHRoZSBETUEgbWFzawo+PiBiYXNlZCBvbiBk
-bWEtcmFuZ2VzIGFuZCB0aGUgRE1BIEFQSSB1c2VzIHRoYXQgdG8gcmVzdHJpY3Qgd2hhdCBJT1ZB
-IGFueQo+PiBidWZmZXJzIGNhbiBnZXQgbWFwcGVkIHRvIGZvciBhIGdpdmVuIGRldmljZS4KPiAK
-PiBZZXMsIGFuZCBhZnRlciBpdCBzZXRzIHVwIHRoZSBtYXNrIGl0IGFsc28gcGFzc2VzIHRoYXQg
-cmFuZ2UgZG93biBsaWtlIHRoaXM6Cj4gCj4gIG9mX2RtYV9jb25maWd1cmVfaWQoKToKPiAJZW5k
-ID0gZG1hX3N0YXJ0ICsgc2l6ZSAtIDE7Cj4gCW1hc2sgPSBETUFfQklUX01BU0soaWxvZzIoZW5k
-KSArIDEpOwo+IAlkZXYtPmNvaGVyZW50X2RtYV9tYXNrICY9IG1hc2s7Cj4gCj4gCWFyY2hfc2V0
-dXBfZG1hX29wcyhkZXYsIGRtYV9zdGFydCwgc2l6ZSwgaW9tbXUsIGNvaGVyZW50KTsKPiAKPiBX
-aGljaCBldmVudHVhbGx5IGdvZXMgdG86Cj4gCj4gIGlvbW11X3NldHVwX2RtYV9vcHMoKQo+ICBp
-b21tdV9kbWFfaW5pdF9kb21haW4oKQo+IAo+IFdoaWNoIHRoZW4gZG9lczoKPiAKPiAJaWYgKGRv
-bWFpbi0+Z2VvbWV0cnkuZm9yY2VfYXBlcnR1cmUpIHsKPiAKPiBBbmQgaWYgbm90IHNldCB1c2Vz
-IHRoZSBkbWFfc3RhcnQvc2l6ZSBwYXJhbWV0ZXIgYXMgdGhlIGFjdHVhbAo+IGFwZXJ0dXJlLiAo
-IT8pCj4gCj4gU2luY2Ugc3ByZCBkb2VzIHRoaXMgaW4gdGhlIGlvbW11IGRyaXZlcjoKPiAKPiAJ
-ZG9tLT5kb21haW4uZ2VvbWV0cnkuYXBlcnR1cmVfc3RhcnQgPSAwOwo+IAlkb20tPmRvbWFpbi5n
-ZW9tZXRyeS5hcGVydHVyZV9lbmQgPSBTWl8yNTZNIC0gMTsKPiAKPiBBbmQgaXQgaXMgc2VyaW91
-cyBhYm91dCBlbmZvcmNpbmcgaXQgZHVyaW5nIG1hcDoKPiAKPiAJdW5zaWduZWQgbG9uZyBzdGFy
-dCA9IGRvbWFpbi0+Z2VvbWV0cnkuYXBlcnR1cmVfc3RhcnQ7Cj4gCXVuc2lnbmVkIGxvbmcgZW5k
-ID0gZG9tYWluLT5nZW9tZXRyeS5hcGVydHVyZV9lbmQ7Cj4gCj4gCWlmIChpb3ZhIDwgc3RhcnQg
-fHwgKGlvdmEgKyBzaXplKSA+IChlbmQgKyAxKSkgewo+IAkJCXJldHVybiAtRUlOVkFMOwo+IAo+
-IFdlIG11c3Qgc2VlIHRoZSBkbWFfc3RhcnQvc2l6ZSBwYXJhbWV0ZXIgYmUgYSBzdWJzZXQgb2Yg
-dGhlIGFwZXJ0dXJlCj4gb3IgZXZlbnR1YWxseSBkbWEtaW9tbXUuYyB3aWxsIHNlZSBtYXAgZmFp
-bHVyZXMuCj4gCj4gSSBjYW4ndCBzZWUgaG93IHRoaXMgaXMgY2FuIGhhcHBlbiwgc28gaXQgbG9v
-a3MgbGlrZSBvbWl0dGluZwo+IGZvcmNlX2FwZXJ0dXJlIGlzIGEgbWlzdGFrZSBub3QgYSBkZWxp
-YmVyYXRlIGNob2ljZS4gSSdsbCBtYWtlIGEgcGF0Y2gKPiBhbmQgc2VlIGlmIHRoZSBTUFJEIGZv
-bGtzIGhhdmUgYW55IGNvbW1lbnQuIElmIHRoZXJlIGlzIG5vIHJlYXNvbiBJCj4gY2FuIGdvIGFo
-ZWFkIGFuZCBwdXJnZSBmb3JjZV9hcGVydHVyZSBhbmQgYWxsIHRoZSBkbWFfc3RhcnQvc2l6ZQo+
-IHBhc3NpbmcgdGhyb3VnaCBhcmNoX3NldHVwX2RtYV9vcHMoKS4KPiAKPj4+IFRodXMsIEkgcHJv
-cG9zZSB3ZSBqdXN0IHJlbW92ZSB0aGUgd2hvbGUgdGhpbmcuIEFsbCBkcml2ZXJzIG11c3Qgc2V0
-Cj4+PiBhbiBhcGVydHVyZSBhbmQgdGhlIGFwZXJ0dXJlIGlzIHRoZSBwdXJlIEhXIGNhcGFiaWxp
-dHkgdG8gbWFwIGFuCj4+PiBJT1BURSBhdCB0aGF0IGFkZHJlc3MuIGllIGl0IHJlZmxlY3RzIHRo
-ZSBkZXNpZ24gb2YgdGhlIHBhZ2UgdGFibGUKPj4+IGl0c2VsZiBhbmQgbm90aGluZyBlbHNlLgo+
-Pgo+PiBZZWFoLCB0aGF0IHNvdW5kcyByZWFzb25hYmxlLiBJZiB0aGUgYXBlcnR1cmUgcmVwcmVz
-ZW50cyB3aGF0IHRoZSBJT01NVQo+PiBzdXBwb3J0cy4gVG9nZXRoZXIgd2l0aCBlYWNoIGRldmlj
-ZSdzIERNQSBtYXNrIHdlIHNob3VsZCBoYXZlIGV2ZXJ5dGhpbmcKPj4gd2UgbmVlZC4KPiAKPiBB
-cmd1YWJseSB3ZSBzaG91bGQgcmVzcGVjdCB0aGUgZG1hLXJhbmdlcyBhcyB3ZWxsLCBidXQgSSB0
-aGluayB0aGF0Cj4gc2hvdWxkIGNvbWUgdXAgZnJvbSB0aGUgaW9tbXUgZHJpdmVyIHZpYSB0aGUg
-Z2V0X3Jlc3ZfcmVnaW9ucygpIHdoaWNoCj4gaXMgdGhlIHVzdWFsIHBsYWNlIHdlIHJldHVybiBG
-VyBvcmlnaW5hdGVkIGluZm9ybWF0aW9uLgo+IAo+PiBGb3IgVGVncmEgR0FSVCBJIHRoaW5rIHRo
-ZXJlJ3MgaW5kZWVkIG5vIHVzZS1jYXNlcyBhdCB0aGUgbW9tZW50LiBEbWl0cnkKPj4gaGFkIGF0
-IG9uZSBwb2ludCB0cmllZCB0byBtYWtlIHVzZSBvZiBpdCBiZWNhdXNlIGl0IGNhbiBiZSBoZWxw
-ZnVsIG9uCj4+IHNvbWUgb2YgdGhlIG9sZGVyIGRldmljZXMgdGhhdCB3ZXJlIHZlcnkgbWVtb3J5
-LWNvbnN0cmFpbmVkLiBUaGF0Cj4+IHN1cHBvcnQgbmV2ZXIgbWFkZSBpdCB1cHN0cmVhbSBiZWNh
-dXNlIGl0IHJlcXVpcmVkIHNpZ25pZmljYW50IGNoYW5nZXMKPj4gaW4gdmFyaW91cyBwbGFjZXMs
-IGlmIEkgcmVjYWxsIGNvcnJlY3RseS4gRm9yIGFueXRoaW5nIHdpdGggYSBkZWNlbnQKPj4gZW5v
-dWdoIGFtb3VudCBvZiBSQU0sIENNQSBpcyB1c3VhbGx5IGEgYmV0dGVyIG9wdGlvbi4KPiAKPiBT
-byB0aGUgYWN0dWFsIHVzZSBjYXNlIG9mIHRoaXMgSFcgaXMgdG8gbGluZWFyaXplIGJ1ZmZlcnM/
-IGllIGl0IGlzIGEKPiBnZW5lcmFsIHNjYXR0ZXIvZ2F0aGVyIGVuZ2luZT8KPiAKPj4gVGhpcyBo
-YXMgb2NjYXNpb25hbGx5IGNvbWUgdXAgaW4gdGhlIHBhc3QgYW5kIEkgc2VlbSB0byByZW1lbWJl
-ciB0aGF0IGl0Cj4+IGhhZCBvbmNlIGJlZW4gcHJvcG9zZWQgdG8gc2ltcGx5IHJlbW92ZSB0ZWdy
-YS1nYXJ0IGFuZCB0aGVyZSBoYWQgYmVlbiBubwo+PiBvYmplY3Rpb25zLiBBZGRpbmcgRG1pdHJ5
-LCBpZiBoZSBkb2Vzbid0IGhhdmUgb2JqZWN0aW9ucyB0byByZW1hdmluZyBpdCwKPj4gbmVpdGhl
-ciBkbyBJLgo+IAo+IERtaXRyeSwgcGxlYXNlIHNheSB5ZXMgYW5kIEkgd2lsbCByZW1vdmUgaXQg
-aW5zdGVhZCBvZiB0cnlpbmcgdG8gY2FycnkKPiBpdC4gVGhlIGRyaXZlciBpcyBhbG1vc3QgMTAg
-eWVhcnMgb2xkIGF0IHRoaXMgcG9pbnQsIEknbSBza2VwdGljYWwKPiBhbnlvbmUgd2lsbCBuZWVk
-IGl0IG9uIGEgNi4yIGVyYSBrZXJuZWwuLgoKWW91IHByb2JhYmx5IG1pc3NlZCB0aGF0IHN1cHBv
-cnQgZm9yIG1hbnkgb2YgMTAgeWVhcnMgb2xkIFRlZ3JhMi8zCmRldmljZXMgd2FzIGFkZGVkIHRv
-IGtlcm5lbCBkdXJpbmcgbGFzdCB5ZWFycy4KClRoaXMgR0FSVCBpc24ndCB1c2VkIGJ5IHVwc3Ry
-ZWFtIERSTSBkcml2ZXIsIGJ1dCBpdCdzIHVzZWQgYnkgZG93bnN0cmVhbQprZXJuZWwgd2hpY2gg
-dXNlcyBhbHRlcm5hdGl2ZSBUZWdyYSBEUk0gZHJpdmVyIHRoYXQgd29ya3MgYmV0dGVyIGZvcgpv
-bGRlciBoYXJkd2FyZS4KCklmIGl0J3MgdG9vIG11Y2ggYnVyZGVuIHRvIG1haW50YWluIHRoaXMg
-ZHJpdmVyLCB0aGVuIGZlZWwgZnJlZSB0bwpyZW1vdmUgaXQgYW5kIEknbGwgY29udGludWUgbWFp
-bnRhaW5pbmcgaXQgaW4gZG93bnN0cmVhbSBteXNlbGYuCk90aGVyd2lzZSBJIGNhbiB0ZXN0IHlv
-dXIgY2hhbmdlcyBpZiBuZWVkZWQuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+> > > Many years ago we ran that issue to ground and with Robin Murphy's
+> > > help we found that while it's possible to gracefully handle that
+> > > condition it required hijacking the entire arm64 error handling
+> > > routine. Not exactly scalable for just one SoC.
+> >
+> > Do you have a pointer to that discussion?  The URL might save
+> > repeating the whole exercise and could be useful for the commit log
+> > when we try to resolve this.
+>
+> The link to the patch email is here, the full discussion is pretty
+> easy to follow:
+> https://lore.kernel.org/linux-pci/2a381384-9d47-a7e2-679c-780950cd862d@rock-chips.com/
+> Also:
+> https://lore.kernel.org/linux-rockchip/1f180d4b-9e5d-c829-555b-c9750940361e@web.de/T/#m9c9d4a28a0d3aa064864f188b8ee3b16ce107aff
+
+
+I have some concerns about the patch proposed in the email that you share. It seems like 
+it is quite extensive (code that is it not just related to the HW) just to fix a hardware 
+issue. I would have expected the code to fix the bug to be integrated into the driver itself, 
+so that if the hardware will died at some point in the future, I would expect that also the 
+buddy code will died with it.
+
+However, it is possible that I may have missed something in the patch, 
+and my thoughts could be wrong.
+
+> >
+> > > The configurable waits allow us to program reasonable times for
+> > > 90% of the endpoints that come up in the normal amount of time, while
+> > > being able to adjust it for the other 10% that do not. Some require
+> > > multiple seconds before they return without error. Part of the reason
+> > > we don't want to hardcode the wait time is because the probe isn't
+> > > handled asynchronously, so the kernel appears to hang while waiting
+> > > for the timeout.
+> >
+> > Is there some way for users to figure out that they would need this
+> > property?  Or is it just "if your kernel panics on boot, try
+> > adding or increasing "bus-scan-delay-ms" in your DT?
+>
+> There's a listing of tested cards at:
+> https://wiki.pine64.org/wiki/ROCKPro64_Hardware_compatibility
+>
+> Most cards work fine that don't require a large BAR. PCIe switches are
+> completely dead without the above hack patch. Cards that lie in the
+> middle are ones that expect BIOS / EFI support to initialize, or ones
+> that have complex boot roms and don't initialize quickly.
+> But yes, it's unfortunately going to be "if you panic, increase the
+> delay" unless a more complete database of cards can be generated.
+
+This is really unfortunate because as mentioned in some previous emails, 
+using sleep time slows down the kernel. Is there any way to tell the kernel 
+to tell the kernel "hey we need some more time here", or in computer science 
+terms, load a driver asynchronously?
+
+Thanks.
+
+Vincent.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
