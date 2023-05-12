@@ -4,79 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D59C9C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 19:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CAC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 20:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0UNTF1OkU42Ym2z/+8xO1v9hO3Zry8XyHc88vlqtinc=; b=DGDfWGa4oSMtgh
-	gIB5+/OuKGFXHye1l6Q8qgVjXt7RXTqQF8PP+ByA5G4rcukKlGmg9sNFjm0NCNVZjwYxfiy+GzHyn
-	oNiuncG6Hc3cRwRS6WbNq6EjnYFgLwJRVj3heITDtAXG6LKtgRkOTjFAckkdoSUkbpa9V2CT/cWfa
-	kheYqqNgMT08EQiKzLmGqrmwRb3S/lrk9t9Gk3V8zLR4k+I4w94yL6jRmo6y1+uJlOW0PLUPKLQvG
-	M+8RuL7r6uGUmeriaQG1x95NVcAdnGJp5o3olKm60FGVhu+h/ZlFfJpbTR6bMvFE6INNtMS/S7+8K
-	4XkpmK3xwDeh2bScLwwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=THyYKVqwe+tIbDhT3qmvG3fcZcZKlf4ycNmuGEclzHI=; b=SsWtKYqw8Akfbi
+	e5DSc7znx2adyrqQjd8Q3T+2TtZ7Qt9ge22cWyTRI2PBLnlDIwt+2bMPRvGPNzIudBxBmydtKB9eP
+	FPzs3qNu1mmFMiGe+eAwN/VNqks/w2o2ulUa+Pumof7dHaDeE5VGrd9D3D0h8+TitVIZ+tRbaQ22J
+	4dKg7MVqEUsa8IvLJlAVZavdFAutMclhB0FrDU4AU6aaHPbTdsYdwBBzrhloIW20ptIDZGwCS5hQD
+	93Cb3741/wb7s1AkdD4Tf7Z2ddEAfoU7mwiqS1JkETlI9El4NOEtpj2fqs8Bj1Ax9KsZd4aCgrw5z
+	ZNwJgKlrnD+V6b4smBww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxYG2-00Cmy3-0c;
-	Fri, 12 May 2023 19:16:50 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1pxZkk-00CwQE-2h;
+	Fri, 12 May 2023 20:52:38 +0000
+Received: from mail-bn7nam10on20618.outbound.protection.outlook.com ([2a01:111:f400:7e8a::618] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxYFz-00Cmx7-03
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 May 2023 19:16:48 +0000
-Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-38ea3f8e413so5208922b6e.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 12 May 2023 12:16:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1683919005; x=1686511005;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kEpGRsh5mvkK0y8EGva7fncjVhmgrH88oIK8Gwzmri8=;
-        b=DhSBeb6gMVdQm1NeJbixY29FZS1GB+G322uijhbF+sbxl0TrncV2HTB6Q7Y0SEjYsR
-         wcNs0DTBl3jDIT9Ltt3HYp9UV63Vp/3mK85EK4QhlsbKT7mbh3ft4belq+vRQqzCbLUL
-         F1oYgBTXAUT2LVh/9d35vh8+dq4sFJKlqNaRe2phsNvRgC8KRAVnSOl51FNBXvWgIr2d
-         AslSJdsfF/X3RuJWoLNsAZqvRSGcXkkNd19oy69sMTxwleMJnrTCutiTk0bx4l+A6zTz
-         NM7e109WDXpjU/qQaKnZK2X7pLQNQO7TyyCRKBdaelrBOc0msbOO63NqFNIY/bL39bWb
-         GAeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683919005; x=1686511005;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kEpGRsh5mvkK0y8EGva7fncjVhmgrH88oIK8Gwzmri8=;
-        b=bRylrxK05KdO9HGIRHp0ewgrUbJTVFFUTVztwnkZKd2Rp40pkNmqYzBWMZcDXBMIxx
-         LUY6qlcfbUoeAf7DK/ZXCFovwvBJ9X9cS2qZ+tXkVrohl26Sa40RWtHQIHuteebieKh6
-         XLHuT6Z/9mmMpwmuMfBpTzvypQJCnGiuuxfmo2I4gFvHUcqGth5t+Do8tmSWKEjVsSqN
-         vrl28LIrBaIFPRgeCLvuyYKVZjlC3G8xmVDrzEk+mfi3kHTAqL3V79SqRNfz+7PNGqsz
-         WYDIi2tkGntnfB/wr/BDdEArJEpolsL4ysCT6Ontn6uQmtrjPC6q6cjCnX9kdvvyV7HZ
-         w13Q==
-X-Gm-Message-State: AC+VfDwz8UTCsYK5suFQ3WZbdejJB7GfsOVvFCXfPvTnguQMKYgNwVTP
-	DqnS5yGTOOs8mM+8fo/OfgaUn852tQ1kvg==
-X-Google-Smtp-Source: ACHHUZ4oMunQEvTJk/SBgnzsntxzn/r+5g2AbFnXi5QkFxt0HdroBrhMUwalk6CEvbvyUDOxFs+Z7g==
-X-Received: by 2002:aca:220e:0:b0:384:3f55:ab96 with SMTP id b14-20020aca220e000000b003843f55ab96mr6225377oic.25.1683919004915;
-        Fri, 12 May 2023 12:16:44 -0700 (PDT)
-Received: from localhost.localdomain ([76.244.6.13])
-        by smtp.gmail.com with ESMTPSA id r81-20020acaf354000000b0038ee0c3b38esm4817681oih.44.2023.05.12.12.16.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 May 2023 12:16:44 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Update leds for Anbernic RGxx3 Series
-Date: Fri, 12 May 2023 14:16:33 -0500
-Message-Id: <20230512191633.33416-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1pxZkh-00CwPN-35;
+	Fri, 12 May 2023 20:52:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cVptgSzBtU85Zr1RVj9Wx/XdCxztyWYv32Q3j5iDyW0f7aJJuh36ATlEX39o+dFLGBwN400feL+DaatKwFn4LnWDx9nzEs7tqXJkCWEJBu/LnP24WDgj/MiQbSfHNI088RRi0PQJHo1wVt/bxVAEIsnWS/iY4VcFxRM8BR9OpsW0LUmP1qFUSKn0Ok6aVEVF22Oxv9PIdoLMV4pUZlUzYqMHHzH6ijoqIvYR/0hfe4Hn7vHGoDHWZz/4gY0uoy4Kpo71oH80gWAZUHRdAt5bfeclq5Fzhfo8EkpTYofsAznIcBFG5I9dg4PRrAv91CGxsrWA91iH6mk3pGcQOHISQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=efScZjkjmic7la8z/qAlJo5TNkfYpCfcYfV3h4narFE=;
+ b=Nz3a9/MV2nEeevJKlSGMR8XplPFHNO25UvOIbbMav26RA/9ZEblAlRSjAcu1k1MmU+XnOTtnTlhzH+9HDoqBDntQph85Hfqd8cXUcOiHBgZxv+SArPNB2zbSD6AHH4re3MYn7jrjdnFBXN3vD1b7fdNPy1G2xZ7Luqzd4FYYUdsUzDwwj1csqZ22MNeQcNyRAALJS8x12YkwGkYekWdGlwEEpQgsVZdXW5VpInRHtsS1HRMeIh+UXB3fWhDpkHRwP14ASgtZwrNGfNHPaPj2yDCqolU7nb8+5aNum65xhK8ecbBsDEVL3J+GuTPBbix2kA2Zhdde1vvaH7DvEo3fSQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=efScZjkjmic7la8z/qAlJo5TNkfYpCfcYfV3h4narFE=;
+ b=SXqigWThFFPY4vrs9IpK404+EPyF01qzNa9Csoj4eEgwxTuyPPRZTAQFGyTenmGXexgG16M9jwBL+7Lbp/8HbdXaJf4uKYV+xwNqFNMOhZCT58W63nBb8/ljTFQto63R6sBKkfRzt2d/baqkIq1qiiq5lMH80E1RpQh9k2A/feE2EVPrkAYxfxrczLzWROM+PR/1C8vyh091CyNUi3hsrwWpg4i/+Fm8znKISe0QUKv2/YQpCp567U3ho1G27p4mDj08sWg0ygo11I168mjuHCTBYewBsNnpB8ZW2KwUKGFTO8TdzKZ3Iu3stluauUlK6cSKw/cYUpKT3NNShxuq7A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by DS0PR12MB8269.namprd12.prod.outlook.com (2603:10b6:8:fd::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.20; Fri, 12 May
+ 2023 20:52:30 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6387.021; Fri, 12 May 2023
+ 20:52:29 +0000
+Date: Fri, 12 May 2023 17:52:27 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Dmitry Osipenko <digetx@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH 02/20] iommu/terga-gart: Replace set_platform_dma_ops()
+ with IOMMU_DOMAIN_PLATFORM
+Message-ID: <ZF6nC7fvmaNZNph3@nvidia.com>
+References: <2-v1-21cc72fcfb22+a7a-iommu_all_defdom_jgg@nvidia.com>
+ <1db712d2-9e33-4183-2766-34e32f170507@arm.com>
+ <ZFI/D6mnLKYpdIqx@nvidia.com>
+ <1a995f30-31fe-354f-ddfe-e944fa36e7a0@arm.com>
+ <ZFJlZ03lswl9uHD0@nvidia.com>
+ <ZFJzKQcKNFHdIWqy@orome>
+ <ZFKXz/HWFkYOJrgT@nvidia.com>
+ <4a5ebc65-a384-a8df-c692-ca114f1a018d@gmail.com>
+ <ZF5uKPhpBNioJUwL@nvidia.com>
+ <9488a2cc-fbc6-6c1e-58f8-e2e1dc5db579@arm.com>
+Content-Disposition: inline
+In-Reply-To: <9488a2cc-fbc6-6c1e-58f8-e2e1dc5db579@arm.com>
+X-ClientProxiedBy: MWH0EPF00056D05.namprd21.prod.outlook.com
+ (2603:10b6:30f:fff2:0:1:0:e) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB8269:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3a442b5c-4d49-4c47-17c9-08db532acce9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	XfdKzJ2+8zMFLBARctyz8DdIysXLM9aMKpNjOZac1bxSiNgys497s2V/XsSuhUVbbRO96dkBv9IAb1PJFnJpiu4G5mV24AH4OfURTW4PR8P03NIARIDbR5NxgKG9jygLjCjYhYLpE9MlvxfdKX1qAZgN4ixmO93hz4G6+MmAsuIsdJ/+XBqKNvOzCwLzk3/dKo5+B2kFFtzlJUhZqd2ahTHkeWIaOHAPEKStgLiuO6J9+DoEOL/AZa9f6dwjE8Z0laBP7vb0Z0JDLWLB+hcQTwmcp8eS9yL7s3jy+DEarU3oi4PHOBSqKP2W1WbJSgwhp6mpiKQ9ppRJHoRSZMVWqx2DCkucW/rngR8FKJfpHBC4qbXUZ8zo2+i/C3NuuEOfmI9B42Lz4OCShGy4S5gk7UUIq5CJIdzIqoYdeLivEyALvQkM17A/UruU09nB5Bq3LDhVjAD3jeW/V4J+gNe0h5j+yA2aYSvqsIrSyUnblUZqCaJ3AtDQCZVMF80Sl6zqxGhWO+x8m9Mb/ZysWcGwnBwSbvqhFDMjYrCRPY06ADYvHZ+sT6IV64fICvIQBClO
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(346002)(136003)(396003)(366004)(39860400002)(451199021)(7406005)(6506007)(478600001)(26005)(316002)(7416002)(6512007)(83380400001)(41300700001)(66946007)(66476007)(66556008)(54906003)(4326008)(6916009)(38100700002)(6486002)(2616005)(8676002)(86362001)(8936002)(2906002)(36756003)(186003)(5660300002)(53546011);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?iByBEW7V+hdwnnMf3C6nVnRgkFI+mQq0zbKNwjIYdqZdbdt0pPpII+b2NZ2K?=
+ =?us-ascii?Q?uelOeKBHNG4MlCvLE9T3GESlLNV7PVy/m1jQf3EAnbaRGKnF0r10UtFLEXXQ?=
+ =?us-ascii?Q?+eHes9PpOXuCsebNzzUZtkWcwVqLUwpbt7k7NpfQs6odJoeqRCxtO0erCl2j?=
+ =?us-ascii?Q?6TelzDKUUgfrRtfRTFEq0bAMyclv10tgfxl8zxUgBud0NTsSJGMCaNXBVQv8?=
+ =?us-ascii?Q?5LdEB5y2QV5sWVU+QabTzPvdttl7kkmeei573TkzeOGTSz8GYCQWxQPksTIr?=
+ =?us-ascii?Q?jC0QYbp3VyB+eAAKqJObeivSdsZEHjym/oU8KZV9sR+6+0k4Ad9SZp44do9X?=
+ =?us-ascii?Q?GrXZoAi8XrBwbvKQz9q3vFkSjAJaaq7O3zKySndvIGP3hUbmjmxaRCHDd4Xe?=
+ =?us-ascii?Q?HnpjleOhS4pJWtasUhLadi3xD0fIh0ys96oND4nG8GnstBK5gX/eG7Tj75af?=
+ =?us-ascii?Q?NYnMzogU4yWj59VnTODvKdsieK3tQdB/8NK04NMJgMfpsNNw34R9Zvdz9gOP?=
+ =?us-ascii?Q?6QLENxKgZPMs8hfvcFlbh0rvf6zLkZIW2xYxqPm27sYMuY3CLgurU4RPiZbb?=
+ =?us-ascii?Q?QQ86fRHduNKPAKyyTBm5k0A5fDiVn29D7Ni/kRaazybhTXKQmJQ81MNzQStn?=
+ =?us-ascii?Q?dghiTnXiKjagfoN8u0wo5ug73xrU4G+0LbM1mcel3zgX+/Dlg2PC12Hb/QGh?=
+ =?us-ascii?Q?d2ilq5AL+ycIm01MtUW+tvHVXzCOQjpB5UnpndHeCCByWxG0blQaJVVR28Te?=
+ =?us-ascii?Q?bju/VVuMnvEYDFsFxX9pqq73XCDohr5UlRfIbwIYk8Uf9Szwt/WleOsgxFZ4?=
+ =?us-ascii?Q?a8dz2OtlC4DrMeDM1XPPCCeO+jj/BNy41DSMCxJx5G3vUW+ggBpAtec05gw0?=
+ =?us-ascii?Q?pJ+aAJCjx5YQILftcGqK6bN2nbEhsKV+OYuGY0jLnXF51NZDIhTJ3Io8Hxf7?=
+ =?us-ascii?Q?SihS84WWE5KDjNph7CYvjB/6k9zR0dIIP2E6+xUrd8iucEENARpVToK6Eu8d?=
+ =?us-ascii?Q?smKaUwAQ9vBv2kwKiuZwSGj0YGxPs0UWB78HxJ+Z+NnqXzd6al1M+j07VMVb?=
+ =?us-ascii?Q?qCh0CoHRYne0Bc+HBohHWCMZM4d039AayEloEX7SWkC0g6+z++wW0zr9ZyUc?=
+ =?us-ascii?Q?0gt/KXTvvMbYRy03UlcrvlOZ9c11yIK1ZgeNejWwbCVohGC6TLer2ValxWp0?=
+ =?us-ascii?Q?npdxpRRSNEWG7RxAIFOsrtu5oo6chhrwdPk1ociNsWwKJO8CyqX32FFtG3zN?=
+ =?us-ascii?Q?1JusmxYbh7KVap7yBMtD1yhKCM+nkGSH+dEktwpq5/SwkIgIRekxB71CGCaq?=
+ =?us-ascii?Q?EYWIV3DECnP1t9bf58pDWSC+eUU6LOTHwvapBn+miyLzCwrlv3fw5ImDyutl?=
+ =?us-ascii?Q?FMnc/nhbFhurCvTnWiZeTXcfWoAMqsxpsrt6G49OL8s4kmSpl4cTX4l/goX8?=
+ =?us-ascii?Q?ERIWbHmqxSY18iUODcoEyN56wLnYo5dKMygHI0RMxMbPiPWWVNxhIv0X5iBN?=
+ =?us-ascii?Q?Nnjkk+oGM8GlyIU5kCVVVL6kYw0bxDpHrvnzCrU2moVgyRP9DabQUBfJKn8W?=
+ =?us-ascii?Q?aQxn7NjG6KE4lp9rw6E=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a442b5c-4d49-4c47-17c9-08db532acce9
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2023 20:52:29.5817
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: J9yW1Skn+kvOBwIRorqSo1+xEPGwoWewzqFjQyIauZ3aPe7npwZ77g+wxw9Dakrd
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8269
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_121647_097321_D8088551 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20230512_135236_067016_B484D7DE 
+X-CRM114-Status: GOOD (  36.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,105 +172,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On Fri, May 12, 2023 at 07:12:21PM +0100, Robin Murphy wrote:
+> On 2023-05-12 17:49, Jason Gunthorpe wrote:
+> > On Fri, May 12, 2023 at 05:55:23AM +0300, Dmitry Osipenko wrote:
+> > 
+> > > > > This has occasionally come up in the past and I seem to remember that it
+> > > > > had once been proposed to simply remove tegra-gart and there had been no
+> > > > > objections. Adding Dmitry, if he doesn't have objections to remaving it,
+> > > > > neither do I.
+> > > > 
+> > > > Dmitry, please say yes and I will remove it instead of trying to carry
+> > > > it. The driver is almost 10 years old at this point, I'm skeptical
+> > > > anyone will need it on a 6.2 era kernel..
+> > > 
+> > > You probably missed that support for many of 10 years old Tegra2/3
+> > > devices was added to kernel during last years.
+> > > 
+> > > This GART isn't used by upstream DRM driver, but it's used by downstream
+> > > kernel which uses alternative Tegra DRM driver that works better for
+> > > older hardware.
+> > 
+> > It is kernel policy not to carry code to only support out of tree drivers in
+> > mainline, so it should be removed, thanks
+> 
+> Aww, I was literally in the middle of writing a Friday-afternoon patch to
+> fix it... still need to build-test, but it's really not looking too bad at
+> all:
 
-Each of the LEDs on the RGxx3 which is currently controlled via GPIO
-can also be controlled via a PWM. Change each of the LEDs to PWM so
-that users have the ability to adjust the brightness of the LEDs
-according to their preference.
+But we still need some kind of core support to accommodate a domain
+with a mixture of identity and translation. Seems a bit pointless for
+a driver with no in tree user even?
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../dts/rockchip/rk3566-anbernic-rgxx3.dtsi   | 39 +++++++++++--------
- 1 file changed, 22 insertions(+), 17 deletions(-)
+> After that I was going to clean up the force_aperture confusion.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-index 8fadd8afb190..69f332738d24 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-@@ -191,30 +191,30 @@ hdmi_con_in: endpoint {
- 		};
- 	};
- 
--	leds: gpio-leds {
--		compatible = "gpio-leds";
--		pinctrl-0 = <&led_pins>;
--		pinctrl-names = "default";
-+	leds: pwm-leds {
-+		compatible = "pwm-leds";
- 
- 		green_led: led-0 {
- 			color = <LED_COLOR_ID_GREEN>;
- 			default-state = "on";
- 			function = LED_FUNCTION_POWER;
--			gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
-+			max-brightness = <255>;
-+			pwms = <&pwm6 0 25000 0>;
- 		};
- 
- 		amber_led: led-1 {
- 			color = <LED_COLOR_ID_AMBER>;
- 			function = LED_FUNCTION_CHARGING;
--			gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
--			retain-state-suspended;
-+			max-brightness = <255>;
-+			pwms = <&pwm7 0 25000 0>;
- 		};
- 
- 		red_led: led-2 {
- 			color = <LED_COLOR_ID_RED>;
- 			default-state = "off";
- 			function = LED_FUNCTION_STATUS;
--			gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
-+			max-brightness = <255>;
-+			pwms = <&pwm0 0 25000 0>;
- 		};
- 	};
- 
-@@ -597,15 +597,6 @@ btn_pins_vol: btn-pins-vol {
- 		};
- 	};
- 
--	gpio-led {
--		led_pins: led-pins {
--			rockchip,pins =
--				<0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>,
--				<0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>,
--				<0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--
- 	joy-mux {
- 		joy_mux_en: joy-mux-en {
- 			rockchip,pins =
-@@ -654,10 +645,24 @@ &pmu_io_domains {
- 	vccio7-supply = <&vcc_3v3>;
- };
- 
-+&pwm0 {
-+	pinctrl-0 = <&pwm0m1_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
- &pwm5 {
- 	status = "okay";
- };
- 
-+&pwm6 {
-+	status = "okay";
-+};
-+
-+&pwm7 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcc_1v8>;
- 	status = "okay";
--- 
-2.34.1
+Oh I already made a patch to delete it :)
 
+> TBH I've grown to rather like having this driver around as an
+> exception to prove our abstractions and help make sure they make
+> sense 
+
+Except nobody else seems to know it is here or really understand how
+weird/broken it is compared to the other drivers. We've managed to
+ignore the issues, but I wouldn't say it is helping build
+abstractions.
+
+If we remove this driver then the iommu subsystem has no HW with a
+mixed translation in the iommu_domain and looking forwards I think
+that will be the kind of HW people want to build. The remaining
+GART-like hardware is in arch code.
+
+> not like there aren't plenty of in-tree drivers for hardware even
+> more ancient, obscure and less-used than Tegra20. FWIW I have
+> *20*-year-old hardware at home running an up-to-date mainline-based
+> distro for a practical purpose, but I guess that's considered valid
+> if it says Intel on it? :P
+
+Well, We keep trying to remove stuff across the kernel.. This week I
+heard about removing areas of HIGHMEM support, removing ia64 and even
+some rumbles that it is time to say good bye to ia32 - apparently it
+is now slightly broken. Who knows what will stick in the end but it is
+not just ARM.
+
+Stuff tends to get removed when it stands in the way..
+
+On the other hand stuff with no in-tree user should just be summarily
+deleted. We have enough problems keeping actual ancient used code
+going, the community doesn't need even more work to support some out
+of tree stuff.
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
