@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C94BFC77B7D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 May 2023 16:49:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328B3C7EE24
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 May 2023 16:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9CgffcEjqnHA0EDnZnWo7mG9dtQ6mK7ceARMPrCzpkQ=; b=hz487M9jZCdUzz
-	UjpsPjRUEXQ/ZlExDRE9S3k9hSSQep9zSH91KY94Uh7p8jSV+OL76sNECx1HtQFZZJMlVeuxCnUBL
-	OsPBMfrNqmLw6F4/D70Rkgpkq8U0FJ27KLNanv203saRQEkFlBm6On0E9OEjVLDQ0bHmLdgxPp7Kd
-	jsJlq7vwzmLmP4LyP9LSe8fLbxBkhip6Uku96AmCwJgU9VVW/Z0jjdvz53ES8WVeSv8vPXSsalJoW
-	dw1N+AHBCsRP/ZYwuFBAlAj0X3/sDV8wkNdlRVirvJo/CwzfQHYp2FgH1XV64VHwcHjSFsr+t3kb9
-	JHJYRg3L+hyw7p4e1qbQ==;
+	List-Owner; bh=hAvOAZ+5qC5fbcer0EDsM2oxHx60cASSd08uasqrJtE=; b=CPyukhQdDuPwhe
+	2mBvBKGdazthKOyZw7E2MfIKOYbR3Jm8KOLHdMYmnLQlkaA2Q0K+j8dXrD8mxgv1mRBfHeRaavuh2
+	DceSt6xZN6gpUEDA2ewOLnQWSQJafVIgYtBh0JycWFn6BX8GIn57/AvfSzxI192q+mow+6gPjlYHk
+	3zAK4qXwEY7pa4KWS0QeN42Yz3uhUx6xNwQmt71GJjzONdaIUkL2fA+UfMZjbLZGqccqmuz54Ex6E
+	Y9RynWt58xas4lLyBGgs6gttI9rbw0tvmr5g7zV/B7CCZ4VDBLZwr3yyOW5SzNgZiVUZ6g5/s7ECl
+	6vbP4CZ0AOy9SRPnfxsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxsR6-00FQRK-0w;
-	Sat, 13 May 2023 16:49:36 +0000
+	id 1pxsRC-00FQUb-2M;
+	Sat, 13 May 2023 16:49:42 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxsR3-00FQPt-0d
-	for linux-rockchip@lists.infradead.org;
-	Sat, 13 May 2023 16:49:34 +0000
+	id 1pxsR9-00FQSH-0f;
+	Sat, 13 May 2023 16:49:40 +0000
 Received: from p508fce4f.dip0.t-ipconnect.de ([80.143.206.79] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1pxsR1-0000Vh-Rd; Sat, 13 May 2023 18:49:31 +0200
+	id 1pxsR1-0000Vh-GY; Sat, 13 May 2023 18:49:31 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org
+To: Shreeya Patel <shreeya.patel@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	maccraft123mc@gmail.com,
-	sebastian.reichel@collabora.com,
-	jagan@amarulasolutions.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org
-Subject: Re: [PATCH 0/2] rockchip: Add Anbernic RG353PS
-Date: Sat, 13 May 2023 18:49:27 +0200
-Message-Id: <168399655503.610817.14386300924428899116.b4-ty@sntech.de>
+	kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: (subset) [PATCH v2 0/8] Add RK3588 OTP memory support
+Date: Sat, 13 May 2023 18:49:26 +0200
+Message-Id: <168399655509.610817.6649297823886958542.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230512162039.31132-1-macroalpha82@gmail.com>
-References: <20230512162039.31132-1-macroalpha82@gmail.com>
+In-Reply-To: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
+References: <20230504200648.1119866-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230513_094933_255681_874153A8 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230513_094939_253834_B9E688DB 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,24 +74,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 12 May 2023 11:20:37 -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Thu, 4 May 2023 23:06:40 +0300, Cristian Ciocaltea wrote:
+> This patch series adds OTP memory support for Rockchip RK3588 SoC,
+> while also providing a few improvements to the existing rockchip-otp
+> driver, in addition to converting the bindings to dt-schema.
 > 
-> Add support for the Anbernic RG353PS, which is a cheaper variant of the
-> Anbernic RG353P.
-> 
-> Chris Morgan (2):
->   dt-bindings: arm: rockchip: add Anbernic RG353PS
->   arm64: dts: rockchip: add Anbernic RG353PS
+> Changes in v2:
+>  - Renamed rockchip-otp.yaml to rockchip,otp.yaml and removed clock's minItems
+>    in PATCH 1/8, according to the review from Krzysztof
+>  - Updated commit message in PATCH 2/8, per Heiko's suggestion
+>  - Renamed rockchip_data's clocks to clks in PATCH 3/8, per Heiko's review
+>  - Preserved clocks order/names from older SoC variants in PATCH 2/8, according
+>    to Krzysztof's review; updated accordingly patches 7/8 and 8/8
+>  - Added Tested-by tags from Vincent
+>  - Added Reviewed-by tags from Heiko
+>  - v1: https://lore.kernel.org/lkml/20230501084401.765169-1-cristian.ciocaltea@collabora.com/
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: add Anbernic RG353PS
-      commit: 4e959380ba823cdf4e643ff247b8359e1bcbf683
-[2/2] arm64: dts: rockchip: add Anbernic RG353PS
-      commit: 4d83538aab4ccb59abdbf7f39568761a8b7d7ea1
+[8/8] arm64: dts: rockchip: Add rk3588 OTP node
+      commit: bcac467b7ca045224bd0f35e245b8edfcb1c452e
 
 Best regards,
 -- 
