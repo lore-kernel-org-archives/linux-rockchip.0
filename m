@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7D2AC77B7F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 May 2023 21:40:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E48EC77B75
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 May 2023 01:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9tgAnltYz+ZmAsKs7073BhtK0qYENdROh+E63GCF9jM=; b=3W0PfGFxvaZhm7HPVcX29/T2tE
-	INrREMP4UtpjoCtS/8iGKpe3LV9A1GUwlz+mm1kuohuvDyRNPM3cI0WipdNc5X7ZkLua9oHkx/q5v
-	Y+anEAwMP4xHEGSuamIkW6ZduCL4vFn+k6O4/3FLTw5tt556YrHdFcw5oaqkyTP9T9Rnhr81dh4ev
-	PhPsHzhz+zeTuCwLWepvwPD8IGWwsZq9ZfLHwzbxwLmtZNRyvOmrVO83cYsqIoK+TqLwME167ctpu
-	wPAYzCVMrOMVWBbUrFi3mOXCCLZwj61LvObsKgFfJLJD9L2kHomoaiTsT9+EgkaX/PpqaRdWd9OtC
-	IqyRDRkA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=gRrGUMJEdb4FYOTrSwuPRcnsqUwxjY8zXTk/F7jsyVc=; b=YGD09Jv2i5cwfK
+	rNk70DFy/mI1iVgmdlll2wSu7yHSNuEstDoq2oUCXIrgFlH1IhJoNihWQek6wDNpuFpvgujApWR7f
+	MVbAkivj29+iayrDziF6iVwzEFsY3tYdqqXbu12AGX28HjI6g7ZuOkyC4hYNE/uwPLReaIu8ZFIqn
+	07J6Neqt/wS/7dnTfBZOpLOVh21+d1uWoBEslPU6k/dbBCuOoCQkoYNRNcgzP9A7P/+Dli3CEd6zu
+	v+THYtojSztrQYbWeNb226q1FPBy/hieNLeKoqTFrqyml/uzzz4TUwVAxdgI/BVO+DOZUut0lML/4
+	rQlgRBOm0Tbj2CfpleHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxaUh-00D6l9-2I;
-	Fri, 12 May 2023 21:40:07 +0000
+	id 1pxe06-00DSZW-26;
+	Sat, 13 May 2023 01:24:46 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pxaUf-00D6kO-2v
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 May 2023 21:40:07 +0000
+	id 1pxe03-00DSYx-0s;
+	Sat, 13 May 2023 01:24:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CA36863EAF;
-	Fri, 12 May 2023 21:40:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F23FDC433EF;
-	Fri, 12 May 2023 21:40:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DCAF361DB4;
+	Sat, 13 May 2023 01:24:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F15BFC433D2;
+	Sat, 13 May 2023 01:24:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1683927604;
-	bh=KIkWcPr+8Ai6rs8xhYCgfBIb28NBYuUZ1jlpiLJME20=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FNJuHI2QEtiU2N37bw8ItRP1jT75L3EDor153a7oE0LMkiHQUEFmFCBf7Mz4fNaVB
-	 61qfrbfqHA6jyHkUNcoj6Bpluzu7qKY/G9dmN+3Kiq5++XCcImQaj8gy9IhA0akCqF
-	 u1RCemaM6uSCiwnAzsp1cbuAcgao4atGPkTejglHtoTwZ1OOesK8y5jaeNOtrNg0IB
-	 3HPCJK4qJXTtupNHyIyTPgCiDXg1EN3JbsSzglXOvYkxKCGmF7T7WY+dJoyPUxGiVA
-	 kknuOoeQujZsH2HKQSeWti6h8A/6vkX7hGJipeNd9qW17FNPKEGAE0OXGOTqtswo3j
-	 KEMWbp/WB5Fqw==
-Date: Fri, 12 May 2023 22:39:59 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	maccraft123mc@gmail.com, sebastian.reichel@collabora.com,
-	jagan@amarulasolutions.com, heiko@sntech.de, conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: add Anbernic RG353PS
-Message-ID: <20230512-mothball-mongoose-724fd30fa8e4@spud>
-References: <20230512162039.31132-1-macroalpha82@gmail.com>
- <20230512162039.31132-2-macroalpha82@gmail.com>
+	s=k20201202; t=1683941081;
+	bh=ufptWhk0BbCBOlRE0pk1y6y1XcHSouNAvlan/zSTrAY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=sxtJ8CfHTCeAo0D9/++DN1TpfPp54rd4Bjo9/cVcNl+dpoRXUItLhHO5gRcwq/76H
+	 iG2T612DUkjnlkyelE9eD2HgVSk04mxeWbB0MU+5ARtEwZw1qO4cyCfiHmHjmGZvH1
+	 nDgF5O5vp+wv35xUsBBE8WZaXp3awA3WiHOajXq++DOBOGEEF7LKHnbMDxrj4WqF+Q
+	 O+3N4Vm1dRMOBRBmrKN/f+e07pyMPCq7HDKGhx1ySipqxRfIZJme8kOOTfOjO6rJ8b
+	 ogh0CxwXsoQHtYEWTf8j2mjN7gAEPM4vUsAqY6xRymjRUSmPw989oheJkEI1Qy1xl7
+	 2SRbEcfq/u5IQ==
+Date: Fri, 12 May 2023 20:24:38 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
+Cc: Peter Geis <pgwipeout@gmail.com>, kw@linux.com, heiko@sntech.de,
+	robh@kernel.org, linux-pci@vger.kernel.org,
+	shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org,
+	lgirdwood@gmail.com, linux-rockchip@lists.infradead.org,
+	broonie@kernel.org, bhelgaas@google.com,
+	linux-kernel-mentees@lists.linuxfoundation.org,
+	lpieralisi@kernel.org, linux-arm-kernel@lists.infradead.org,
+	Dan Johansen <strit@manjaro.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v1] drivers: pci: introduce configurable delay for
+ Rockchip PCIe bus scan
+Message-ID: <ZF7m1npzLZmawT8Y@bhelgaas>
 MIME-Version: 1.0
-In-Reply-To: <20230512162039.31132-2-macroalpha82@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CSK8M39MQL2C.3S7JO031H0BA2@vincent-arch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230512_144006_084455_88B02B6A 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20230512_182443_388939_32D69AA0 
+X-CRM114-Status: GOOD (  20.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,88 +76,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6071717049189779693=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+[+cc ARM64 folks, in case you have abort handling tips; thread at:
+https://lore.kernel.org/r/20230509153912.515218-1-vincenzopalazzodev@gmail.com]
 
---===============6071717049189779693==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="6W+/UUZmsps6p5qu"
-Content-Disposition: inline
+Pine64 RockPro64 panics while enumerating some PCIe devices.  Adding a
+delay avoids the panic.  My theory is a PCIe Request Retry Status to a
+Vendor ID config read causes an abort that we don't handle.
 
+> On Tue, May 09, 2023 at 05:39:12PM +0200, Vincenzo Palazzo wrote:
+>> ...
+>> [    1.229856] SError Interrupt on CPU4, code 0xbf000002 -- SError
+>> [    1.229860] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.9.9-2.0-MANJARO-ARM
+>> #1
+>> [    1.229862] Hardware name: Pine64 RockPro64 v2.1 (DT)
+>> [    1.229864] pstate: 60000085 (nZCv daIf -PAN -UAO BTYPE=--)
+>> [    1.229866] pc : rockchip_pcie_rd_conf+0xb4/0x270
+>> [    1.229868] lr : rockchip_pcie_rd_conf+0x1b4/0x270
+>> ...
+>> [    1.229939] Kernel panic - not syncing: Asynchronous SError Interrupt
+>> ...
+>> [    1.229955]  nmi_panic+0x8c/0x90
+>> [    1.229956]  arm64_serror_panic+0x78/0x84
+>> [    1.229958]  do_serror+0x15c/0x160
+>> [    1.229960]  el1_error+0x84/0x100
+>> [    1.229962]  rockchip_pcie_rd_conf+0xb4/0x270
+>> [    1.229964]  pci_bus_read_config_dword+0x6c/0xd0
+>> [    1.229966]  pci_bus_generic_read_dev_vendor_id+0x34/0x1b0
+>> [    1.229968]  pci_scan_single_device+0xa4/0x144
 
---6W+/UUZmsps6p5qu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, May 12, 2023 at 12:46:21PM +0200, Vincenzo Palazzo wrote:
+> ... Is there any way to tell the kernel "hey we need some more time
+> here"?
 
-On Fri, May 12, 2023 at 11:20:38AM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add devicetree binding for Anbernic RG353PS. This device is identical
-> to the RG353P, except it does not have a touchscreen, does not have
-> an eMMC, only includes 1GB of RAM, and ships with only the 2nd
-> revision panel based on a Sitronix ST7703 controller. Support for the
-> panel has been added in a separate commit.
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+We enumerate PCI devices by trying to read the Vendor ID of every
+possible device address (see pci_scan_slot()).  On PCIe, if a device
+doesn't exist at that address, the Vendor ID config read will be
+terminated with Unsupported Request (UR) status.  This is normal
+and happens every time we enumerate devices.
 
-The see-through case looks kinda cool actually.
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+The crash doesn't happen every time we enumerate, so I don't think
+this UR is the problem.  Also, if it *were* the problem, adding a
+delay would not make any difference.
 
-Thanks,
-Conor.
+There *is* a way for a PCIe device to say "I need more time".  It does
+this by responding to that Vendor ID config read with Request Retry
+Status (RRS, aka CRS in older specs), which means "I'm not ready yet,
+but I will be ready in the future."  Adding a delay would definitely
+make a difference here, so my guess is this is what's happening.
 
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
-ntation/devicetree/bindings/arm/rockchip.yaml
-> index ec141c937b8b..362df3f2a037 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -40,6 +40,11 @@ properties:
->            - const: anbernic,rg353p
->            - const: rockchip,rk3566
-> =20
-> +      - description: Anbernic RG353PS
-> +        items:
-> +          - const: anbernic,rg353ps
-> +          - const: rockchip,rk3566
-> +
->        - description: Anbernic RG353V
->          items:
->            - const: anbernic,rg353v
-> --=20
-> 2.34.1
->=20
+Most root complexes return ~0 data to the CPU when a config read
+terminates with UR or RRS.  It sounds like rockchip does this for UR
+but possibly not for RRS.
 
---6W+/UUZmsps6p5qu
-Content-Type: application/pgp-signature; name="signature.asc"
+There is a "RRS Software Visibility" feature, which is supposed to
+turn the RRS into a special value (Vendor ID == 0x0001), but per [1],
+rockchip doesn't support it (lspci calls it "CRSVisible").
 
------BEGIN PGP SIGNATURE-----
+But the CPU load instruction corresponding to the config read has to
+complete by reading *something* or else be aborted.  It sounds like
+it's aborted in this case.  I don't know the arm64 details, but if we
+could catch that abort and determine that it was an RRS and not a UR,
+maybe we could fabricate the magic RRS 0x0001 value.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZF6yLwAKCRB4tDGHoIJi
-0t21AP9rVHBoIPtOldCOdXy+x9g4qaYdLwxad4HevcZAMDjtlQD/WnT6rH7bcmwR
-ZH44LV1MSD2ecdKiz8FhRzH+NntCvAk=
-=JHJc
------END PGP SIGNATURE-----
+imx6q_pcie_abort_handler() does something like that, although I think
+it's for arm32, not arm64.  But obviously we already catch the abort
+enough to dump the register state and panic, so maybe there's a way to
+extend that?
 
---6W+/UUZmsps6p5qu--
+Bjorn
 
-
---===============6071717049189779693==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+[1] https://lore.kernel.org/linux-pci/CAMdYzYpOFAVq30N+O2gOxXiRtpoHpakFg3LKq3TEZq4S6Y0y0g@mail.gmail.com/
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6071717049189779693==--
-
