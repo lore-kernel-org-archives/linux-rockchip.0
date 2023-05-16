@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108E9C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 23:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482BEC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 23:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9RJuHfV+1eBWUylcaYjZtMIXIiwaMv02zxkIIBCqA6E=; b=kfoVsHKjo8fW+E
-	OLLdZ+PpkNhs9Fe5RI/FddYWnGzP230SuG9M3s3WWAHtcF8EMwjardET1CXyic4jLNXZduNgrzw2G
-	x9s0rHLT4kA4m/LcOWCSUl3g9hE/dm8OdOUlrTdQkvWMpO9monDsqctIE6aNivhQbYES2/k80PVFS
-	XpVOmjk3/vgAjzQB669N6q0taBJ2c9PT2psbmZk+bvuWVqzFYWRxZfESuhE3t4OEMuEGmUaoFGCGJ
-	FWtylYGtVvn++mC88Wz63aQ1wwtjyHRNx2/r++iNizDU9vUgwIP51pBLzUDn3sfchTKL1Xs+QIX19
-	BdyC7+bVQSRpKiGn4zaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Vwo42dUQnl/nzxPIHP7/xUACEHpyUMT2kCGA9hxH+d0=; b=CJcAqpmYi4GW/O
+	0lkl8OyHEpqAB8nhQcpjP1RQA+pFoeI2SloxCL5qZJCaDBkapB14id8qqFfmkpuF0a+B+LEkVW1nr
+	W6L6UgyH2R9XUPaxyoafC1RE5LUIgrMhBMQNviyxyIJw7L1STEnnHijwgDy3n16evFMqvb7yssUzU
+	XEl+NIvOGRKora4hSwjqWFAZ5inJLWqjakNjCLeRpOkbygISi3eC256Hh/SNk0vr1k2RDioxB9FYI
+	mVpMOUWNFxDb2FE56pNI1QeWMZ7gv/r53n/6uYaeRyKuVi6kwvBY3cn0fdQ2HOhPE/gKXqabAwxO5
+	AS8kxxRdFtaRgcHqf9WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz3gw-007NnZ-37;
-	Tue, 16 May 2023 23:02:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pz3h6-007Nq4-0H;
+	Tue, 16 May 2023 23:03:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz3gt-007Nlq-2y;
-	Tue, 16 May 2023 23:02:49 +0000
+	id 1pz3h1-007NoF-2m;
+	Tue, 16 May 2023 23:02:57 +0000
 Received: from localhost.localdomain (unknown [IPv6:2405:201:0:21ea:73f6:2283:f432:3936])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: shreeya)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3AB98660322D;
-	Wed, 17 May 2023 00:02:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 408CE6605905;
+	Wed, 17 May 2023 00:02:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684278162;
-	bh=zxx/0uLHIiU/dV4bb646/T74e4BDMJ4Bb1ejBv5KV0w=;
-	h=From:To:Cc:Subject:Date:From;
-	b=kduFv+PCqztIKtviaxymKsO7g3OzFC6kl3N+qEgVpTWLRW7wRfH7HlRuJhfPhzYOY
-	 gGUPzcy6uK1oC6LzCB6PDtyeQkPj2A8fGIdHeyElTpUvWZ9GzXHvxC+j82HQw6h5cO
-	 vR4R2Pb7NhKORf16ioZaS6VFPVuE76pNzbp/+XqKAo+SVah6G24U9SbuUh50r/uUT8
-	 FNf9Dkh+7Xg4fvBnG+f9B0tiWAQC+ppFPPCjOoNQvKl4SslOGs4w5rIFAADAP5Tq2i
-	 T+TIlGtUWNQc1+QWEghzYxjamLLwnlHQHHUWeIUCehI/vsOejaLf0PXmtM3kR2hF3o
-	 Sqtc/4rU0Xz6g==
+	s=mail; t=1684278173;
+	bh=qwN88J0Rbr1Da7hiHvEJ/DwurFUZhOrTurH08fXFxNs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=iSyKsZlJHjDNtWbgK6zTYddhTRMPaoXFGWoFYgaVNp0cCHk0Jt0L1qx+0KOGTcLbB
+	 zTwezVjSvDkmPhIuTrJEgaxsfepa1wlGz9ZB80IsFwsiU+hHE8T1ISACNlP6W9tyxQ
+	 cZdl/7aXaRXkzYhNDDnLcqnYQDzfp6MXJpgWyuFK7IOrIxxqdWWtNckXazjfgShY5c
+	 CpvAFYM3K6W5Usbji2YxIjVXG37pzjZ/imDXPqf+4wpIJdEOvvxY1YHIT9bF+ENcQ5
+	 mfFesaOKIyHAk4l6CpouHfS2ICXXRHMli+b2h0cF2LAU7mtYhkfx2IAUGsHExaCnfD
+	 XjhrOItU95aBw==
 From: Shreeya Patel <shreeya.patel@collabora.com>
 To: jic23@kernel.org,
 	lars@metafoo.de,
@@ -58,16 +58,18 @@ Cc: linux-iio@vger.kernel.org,
 	kernel@collabora.com,
 	gustavo.padovan@collabora.com,
 	serge.broslavsky@collabora.com,
-	Shreeya Patel <shreeya.patel@collabora.com>
-Subject: [PATCH 0/7] RK3588 ADC support
-Date: Wed, 17 May 2023 04:30:44 +0530
-Message-Id: <20230516230051.14846-1-shreeya.patel@collabora.com>
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	Simon Xue <xxm@rock-chips.com>
+Subject: [PATCH 1/7] iio: adc: rockchip_saradc: Add support for RK3588
+Date: Wed, 17 May 2023 04:30:45 +0530
+Message-Id: <20230516230051.14846-2-shreeya.patel@collabora.com>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230516230051.14846-1-shreeya.patel@collabora.com>
+References: <20230516230051.14846-1-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_160248_103280_6948A5E5 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230516_160256_160609_233F192C 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +86,216 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds ADC support for RK3588 and updates
-the DT bindings for the same.
+Refactor conversion operation to support rk3588 saradc and
+add separate start, read, powerdown in respective hooks.
 
-To test ADC support on Rock 5B board, a voltage divider circuit
-was created using the gpio pin 22 ( SARADC_IN4 ) and few more
-tests were ran for testing the buffer and trigger using the
-iio_generic_buffer tool.
+Signed-off-by: Simon Xue <xxm@rock-chips.com>
+Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+---
+ drivers/iio/adc/rockchip_saradc.c | 127 +++++++++++++++++++++++++++---
+ 1 file changed, 115 insertions(+), 12 deletions(-)
 
-Shreeya Patel (7):
-  iio: adc: rockchip_saradc: Add support for RK3588
-  iio: adc: rockchip_saradc: Make use of devm_clk_get_enabled
-  iio: adc: rockchip_saradc: Use of_device_get_match_data
-  iio: adc: rockchip_saradc: Match alignment with open parenthesis
-  iio: adc: rockchip_saradc: Use dev_err_probe
-  arm64: dts: rockchip: Add DT node for ADC support in RK3588
-  dt-bindings: iio: adc: Add rockchip,rk3588-saradc string
-
- .../bindings/iio/adc/rockchip-saradc.yaml     |   1 +
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  12 +
- drivers/iio/adc/rockchip_saradc.c             | 260 ++++++++++--------
- 3 files changed, 164 insertions(+), 109 deletions(-)
-
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 79448c5ffc2a..ac6fdf8e673b 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -38,10 +38,29 @@
+ #define SARADC_TIMEOUT			msecs_to_jiffies(100)
+ #define SARADC_MAX_CHANNELS		8
+ 
++/* v2 registers */
++#define SARADC2_CONV_CON		0x0
++#define SARADC_T_PD_SOC			0x4
++#define SARADC_T_DAS_SOC		0xc
++#define SARADC2_END_INT_EN		0x104
++#define SARADC2_ST_CON			0x108
++#define SARADC2_STATUS			0x10c
++#define SARADC2_END_INT_ST		0x110
++#define SARADC2_DATA_BASE		0x120
++
++#define SARADC2_EN_END_INT		BIT(0)
++#define SARADC2_START			BIT(4)
++#define SARADC2_SINGLE_MODE		BIT(5)
++
++struct rockchip_saradc;
++
+ struct rockchip_saradc_data {
+ 	const struct iio_chan_spec	*channels;
+ 	int				num_channels;
+ 	unsigned long			clk_rate;
++	void (*start)(struct rockchip_saradc *info, int chn);
++	int (*read)(struct rockchip_saradc *info);
++	void (*power_down)(struct rockchip_saradc *info);
+ };
+ 
+ struct rockchip_saradc {
+@@ -60,27 +79,77 @@ struct rockchip_saradc {
+ 	struct notifier_block nb;
+ };
+ 
+-static void rockchip_saradc_power_down(struct rockchip_saradc *info)
++static void rockchip_saradc_reset_controller(struct reset_control *reset);
++
++static void rockchip_saradc_start_v1(struct rockchip_saradc *info, int chn)
++{
++	/* 8 clock periods as delay between power up and start cmd */
++	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
++	/* Select the channel to be used and trigger conversion */
++	writel(SARADC_CTRL_POWER_CTRL | (chn & SARADC_CTRL_CHN_MASK) |
++	       SARADC_CTRL_IRQ_ENABLE, info->regs + SARADC_CTRL);
++}
++
++static void rockchip_saradc_start_v2(struct rockchip_saradc *info, int chn)
++{
++	int val;
++
++	if (info->reset)
++		rockchip_saradc_reset_controller(info->reset);
++
++	writel_relaxed(0xc, info->regs + SARADC_T_DAS_SOC);
++	writel_relaxed(0x20, info->regs + SARADC_T_PD_SOC);
++	val = SARADC2_EN_END_INT << 16 | SARADC2_EN_END_INT;
++	writel_relaxed(val, info->regs + SARADC2_END_INT_EN);
++	val = SARADC2_START | SARADC2_SINGLE_MODE | chn;
++	writel(val << 16 | val, info->regs + SARADC2_CONV_CON);
++}
++
++static void rockchip_saradc_start(struct rockchip_saradc *info, int chn)
++{
++	info->data->start(info, chn);
++}
++
++static int rockchip_saradc_read_v1(struct rockchip_saradc *info)
++{
++	return readl_relaxed(info->regs + SARADC_DATA);
++}
++
++static int rockchip_saradc_read_v2(struct rockchip_saradc *info)
++{
++	int offset;
++
++	/* Clear irq */
++	writel_relaxed(0x1, info->regs + SARADC2_END_INT_ST);
++
++	offset = SARADC2_DATA_BASE + info->last_chan->channel * 0x4;
++
++	return readl_relaxed(info->regs + offset);
++}
++
++static int rockchip_saradc_read(struct rockchip_saradc *info)
++{
++	return info->data->read(info);
++}
++
++static void rockchip_saradc_power_down_v1(struct rockchip_saradc *info)
+ {
+-	/* Clear irq & power down adc */
+ 	writel_relaxed(0, info->regs + SARADC_CTRL);
+ }
+ 
++static void rockchip_saradc_power_down(struct rockchip_saradc *info)
++{
++	if (info->data->power_down)
++		info->data->power_down(info);
++}
++
+ static int rockchip_saradc_conversion(struct rockchip_saradc *info,
+ 				   struct iio_chan_spec const *chan)
+ {
+ 	reinit_completion(&info->completion);
+ 
+-	/* 8 clock periods as delay between power up and start cmd */
+-	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+-
+ 	info->last_chan = chan;
+-
+-	/* Select the channel to be used and trigger conversion */
+-	writel(SARADC_CTRL_POWER_CTRL
+-			| (chan->channel & SARADC_CTRL_CHN_MASK)
+-			| SARADC_CTRL_IRQ_ENABLE,
+-		   info->regs + SARADC_CTRL);
++	rockchip_saradc_start(info, chan->channel);
+ 
+ 	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
+ 		return -ETIMEDOUT;
+@@ -123,7 +192,7 @@ static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
+ 	struct rockchip_saradc *info = dev_id;
+ 
+ 	/* Read value */
+-	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
++	info->last_val = rockchip_saradc_read(info);
+ 	info->last_val &= GENMASK(info->last_chan->scan_type.realbits - 1, 0);
+ 
+ 	rockchip_saradc_power_down(info);
+@@ -163,6 +232,9 @@ static const struct rockchip_saradc_data saradc_data = {
+ 	.channels = rockchip_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_saradc_iio_channels),
+ 	.clk_rate = 1000000,
++	.start = rockchip_saradc_start_v1,
++	.read = rockchip_saradc_read_v1,
++	.power_down = rockchip_saradc_power_down_v1,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channels[] = {
+@@ -174,6 +246,9 @@ static const struct rockchip_saradc_data rk3066_tsadc_data = {
+ 	.channels = rockchip_rk3066_tsadc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
+ 	.clk_rate = 50000,
++	.start = rockchip_saradc_start_v1,
++	.read = rockchip_saradc_read_v1,
++	.power_down = rockchip_saradc_power_down_v1,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
+@@ -189,6 +264,9 @@ static const struct rockchip_saradc_data rk3399_saradc_data = {
+ 	.channels = rockchip_rk3399_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
+ 	.clk_rate = 1000000,
++	.start = rockchip_saradc_start_v1,
++	.read = rockchip_saradc_read_v1,
++	.power_down = rockchip_saradc_power_down_v1,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3568_saradc_iio_channels[] = {
+@@ -206,6 +284,28 @@ static const struct rockchip_saradc_data rk3568_saradc_data = {
+ 	.channels = rockchip_rk3568_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3568_saradc_iio_channels),
+ 	.clk_rate = 1000000,
++	.start = rockchip_saradc_start_v1,
++	.read = rockchip_saradc_read_v1,
++	.power_down = rockchip_saradc_power_down_v1,
++};
++
++static const struct iio_chan_spec rockchip_rk3588_saradc_iio_channels[] = {
++	SARADC_CHANNEL(0, "adc0", 12),
++	SARADC_CHANNEL(1, "adc1", 12),
++	SARADC_CHANNEL(2, "adc2", 12),
++	SARADC_CHANNEL(3, "adc3", 12),
++	SARADC_CHANNEL(4, "adc4", 12),
++	SARADC_CHANNEL(5, "adc5", 12),
++	SARADC_CHANNEL(6, "adc6", 12),
++	SARADC_CHANNEL(7, "adc7", 12),
++};
++
++static const struct rockchip_saradc_data rk3588_saradc_data = {
++	.channels = rockchip_rk3588_saradc_iio_channels,
++	.num_channels = ARRAY_SIZE(rockchip_rk3588_saradc_iio_channels),
++	.clk_rate = 1000000,
++	.start = rockchip_saradc_start_v2,
++	.read = rockchip_saradc_read_v2,
+ };
+ 
+ static const struct of_device_id rockchip_saradc_match[] = {
+@@ -221,6 +321,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
+ 	}, {
+ 		.compatible = "rockchip,rk3568-saradc",
+ 		.data = &rk3568_saradc_data,
++	}, {
++		.compatible = "rockchip,rk3588-saradc",
++		.data = &rk3588_saradc_data,
+ 	},
+ 	{},
+ };
 -- 
 2.30.2
 
