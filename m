@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A98C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 16:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6122BC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 16:36:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cDpHKlkC82bgFHRxPux257btFcWC6EnJPa8FbhGdW6A=; b=ulX3YCwUpCYs6w
-	3S4nB35t7LFaAqLx16mER/7Ve1m4IQSenuhN4klfptIUuVbf3djHp9h0WXYcw1T+L1XXhkcvMoGSR
-	QuraRIL+gqKk+MusQEbm3SOhCnPbmFCQ6cUSXbSGzV9yyaxOUKmC0SHx+qaqnw7/Giia0JHU4Mgul
-	bhc2/sNwUbVE3xt7wTjeINCN98BHYRTS8v3mjZA8oeNZbXGKal/nhh0TmqZX6sLxXEVxCpwj+bF8r
-	XBIATkbWh1TLcSPnj/E8LdSHJs7tU8J5N9BBr2v4gd+2OZ0miSJOnzIUH3DZSszfCn08VQXGjkHE3
-	l+s+JnmhFvthhtLGDA6w==;
+	List-Owner; bh=fcPYLmQknCY/p5SD/wRLqHpn9tlXaELzHkujILlhQTA=; b=Bnzd6qVs4ZnhkW
+	sp7yef0F6wf6PqiLFtjCgz7CMUvLa2l2zPx0WBcpxrso4G/IAGeolvJxhAs/3wXCY0CwARwyQQyM1
+	TyM2Jq20j/HE+ywoZRqIoYRv9KxSSy1ZmbuoJ6dse65wkGk4p5U6Cf8Yuf4GuN7hIWk3CqVf8FgsZ
+	pLUa42r23NEjQBIuq98oXTKNC8ol6KoG0KUombu2kl+jSBYbgfSm72qFEZVi6szIaLOXQMEFGMVJx
+	mw8hAvR0XUaz6PPYFe1gBmk3rOrX1g+O88g6aXKYB2ZQBCY2kKT6JWtT/v7HyPct+Sxo687N1/dXR
+	HpO6O/OIj4eSBYAfO/bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyxel-006UYS-2m;
-	Tue, 16 May 2023 16:36:11 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1pyxen-006UaG-1p;
+	Tue, 16 May 2023 16:36:13 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pyxed-006UT3-13
+	id 1pyxeh-006UUu-18
 	for linux-rockchip@lists.infradead.org;
-	Tue, 16 May 2023 16:36:04 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-6439df6c268so9444642b3a.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 16 May 2023 09:36:03 -0700 (PDT)
+	Tue, 16 May 2023 16:36:08 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-6439f186366so9251143b3a.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 16 May 2023 09:36:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1684254962; x=1686846962;
+        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1684254966; x=1686846966;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ea2YayJLBKvMXOborY5MNIRy6faIAQn1yQrzm0Y50Jg=;
-        b=SCbK6tdgB7fqWtPFLOlCGlB3qBXaiY6LinI+ZWqFt/dTRagE/Cnk33PGGY9Y97siWW
-         b/tyhcLHyBiSsVWr9oIzyPzDlAYEQzmBXhcoJ+5gyfybGXBBkI7HEHc0fiU6s+bgZEu+
-         ZifDa7KxD+54n3VmCvbi+8FiiyznL8HUm+NtMln33wn3E/oABhML6OkeYnrvQDQh7WOQ
-         oayiTdbu2f4BVF5sJv0tEu9vZlqi2Iw2d7al0Byg8XTewtlV68LasKXymtyz+LTWnqX+
-         9dyskCK2X1/H5dfH9GOuuLeKWbcjfv1Uv2xj/aJCh66z1ok9nXGQcmkRh8phVNcte0mg
-         GWcg==
+        bh=ezjtQijoDVXErg3hmWyEVfCx0667IycZaqsDw1F5F8k=;
+        b=h1bhJpU5LZMESAqY7xGRkiU1U/J9kvQbN5kGq9g2wcmA0iuC4zzv6xVvhI357rzANM
+         90JDAwEBdoC8f7NJMoqmkpbOsOur4YkaIYPZ/ziYBL1Qr75X0JjKDW3noseAo5FsAKbu
+         8LlMx+gX2zhiVLAemSHaEQUm2R4jKmJ1RbXsqhdXpAetKqSmVq2KJcYD1Gz5lJMpApoW
+         bW19bIeJFeS6eIhucFz+ti6mYZx4tDjI/PBrbMdyd4g19/SuVPzdZOTE3/O0yhdGK+/U
+         o+zg/x1MkSEaXbmo3LTP9qWuufYsGZHm4fgSA70pVwJN7WRYoK0EsnAgDEJMeDWdbnkE
+         dUUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684254962; x=1686846962;
+        d=1e100.net; s=20221208; t=1684254966; x=1686846966;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ea2YayJLBKvMXOborY5MNIRy6faIAQn1yQrzm0Y50Jg=;
-        b=B37RD12qqbX9DkaHUXgvPBUNq6sTmm0+HiZLqZdPBF7z0r2h+Z0nG8vbJTA3RVfbvc
-         5HPVvWhqU/9jxfNTpSPJNTKujKoes4ZZ61j7CqzkbJZrVZk3Aiakqi/0neLIyfMjbXBI
-         g5ecQQyc+1uQlL5pA7HS5f0D/QpJdQeVFgcZ8ZqstfHSH1EFDUcwcAVu/UzesjggB3ol
-         Y1toYhXAn4Mli7oUm7k+wv+hP/jc9sSHhufExAoDzjl9FRe/UAmc1/H7k4wutfTUd6WR
-         3eW88p5Awu6LVXLvkvwNM0K6TLs8j4drz00l2rh6UkilwtN8RHWaUcPww51uRzpab0Ss
-         SHFQ==
-X-Gm-Message-State: AC+VfDxTFo9ZQCJweCRezEryoBq6a2WZb3z9EQB4L6kj71NXEEkEAVsw
-	b7kW/v5uJpO0BpSWmPI1Il9xfwMW3zC+p+cTVxzJ1w==
-X-Google-Smtp-Source: ACHHUZ4Skk6VRRdtdz/Bbe/xbuYycfbh+licm5pACX8tVIz4psA4iEqNdxTMk+0JHDx3c924XngoxA==
-X-Received: by 2002:a05:6a00:1828:b0:643:9b40:103e with SMTP id y40-20020a056a00182800b006439b40103emr48025941pfa.30.1684254962583;
-        Tue, 16 May 2023 09:36:02 -0700 (PDT)
+        bh=ezjtQijoDVXErg3hmWyEVfCx0667IycZaqsDw1F5F8k=;
+        b=W4ldyHE0CmEuu1eUrgAvXedOEmS/p5/H00ydMLFQQJN75Ap7PC/DsTmTBFLNPQqrSm
+         Zc68gi23gtV9vH6w64P/8P0jvVs9wcLJFMV+j0nXXuksjPC6Pt7VWFsZ7ElcfHERU4HW
+         D+tXTr4Kj+sm/TNyAhRzKGFoECPHOGA4sNo+G+Vw/BguP9Y04xRGy8rzjwGVANsab/k8
+         cem/zw9LzT2xfN0+qZQ4K2FgafoFcOJCeDBFU0EBYrgsh18HlYyQzojys3x1sWIe0n9V
+         pUcBQh313sGKL05CwBZJFIQIA0zS+pJM0Rg7O8Fy1vi3eAjlm7UZDobPqsgLQM29wdfo
+         /qxA==
+X-Gm-Message-State: AC+VfDyCplp6If1yPP7WOPWoYC921zl2mRe51Z6fC40Jh1lqcISHt3yQ
+	gGhEOCJ3Lxi5QZnxO8jvEemfsg==
+X-Google-Smtp-Source: ACHHUZ7CHB5Je4dE3jfSR9609+uzPXUkoP7609DIkQIc8Mb1vVawZQSrl7ELnGBJcU2fxGqc/vpjwg==
+X-Received: by 2002:a05:6a00:148b:b0:648:8c0d:6e4e with SMTP id v11-20020a056a00148b00b006488c0d6e4emr30425665pfu.19.1684254965912;
+        Tue, 16 May 2023 09:36:05 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a181:890:d993:6673:2242])
-        by smtp.gmail.com with ESMTPSA id u19-20020aa78393000000b00642f527cd28sm13686983pfm.33.2023.05.16.09.35.59
+        by smtp.gmail.com with ESMTPSA id u19-20020aa78393000000b00642f527cd28sm13686983pfm.33.2023.05.16.09.36.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 May 2023 09:36:02 -0700 (PDT)
+        Tue, 16 May 2023 09:36:05 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -70,16 +70,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 3/4] arm64: dts: rockchip: rk3588: Add Edgeble Neu6 Model B SoM
-Date: Tue, 16 May 2023 22:04:53 +0530
-Message-Id: <20230516163454.997736-3-jagan@edgeble.ai>
+Subject: [PATCH 4/4] arm64: dts: rockchip: rk3588: Add Edgeble Neu6 Model B IO
+Date: Tue, 16 May 2023 22:04:54 +0530
+Message-Id: <20230516163454.997736-4-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230516163454.997736-1-jagan@edgeble.ai>
 References: <20230516163454.997736-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_093603_360956_B573D9D6 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20230516_093607_386902_055F14F2 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,66 +96,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Neural Compute Module 6B(Neu6B) is a 96boards SoM-CB compute module
-based on Rockchip RK3588J from Edgeble AI.
+Neural Compute Module 6B(Neu6B) IO board is an industrial form factor
+ready-to-use IO board from Edgeble AI.
+
+IO board offers plenty of peripherals and connectivity options and
+this patch enables basic eMMC and UART which is enough to successfully
+boot Linux.
 
 General features:
-- Rockchip RK3588J
-- up to 32GB LPDDR4x
-- up to 128GB eMMC
-- 2x MIPI CSI2 FPC
+- microSD slot
+- 1x HDMI Out
+- 1x HDMI In
+- 2x DP
+- 1x eDP
+- 2x MIPI DSI connector
+- 4x MIPI CSI2 connector
+- 2x USB Host
+- 2x USB 3.0 OTG/Host
+- 1x SATA
+- 1x 2.5Gbps Ethernet
+- 1x 4G/5G mini PCIe
+- 1x M.2 E-Key slot
+- 1x Onboard PoE
+- 1x RS485, RS232, CAN
+- 1x Audio, MIC port
+- RTC battery slot
+- 40-pin GPIO expansion
 
-On module WiFi6/BT5 is available in the following Neu6 variants.
+Neu6B needs to mount on top of this IO board in order to create a
+complete Edgeble Neural Compute Module 6B(Neu6B) IO platform.
 
-Neu6B needs to mount on top of associated Edgeble Neu6B IO boards for
-creating complete platform solutions.
-
-Enable eMMC for now to boot Linux successfully.
-
-Add support for Edgeble Neu6 Model B SoM.
+Add support for Edgeble Neu6 Model B IO Board.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
- .../dts/rockchip/rk3588-edgeble-neu6b.dtsi    | 32 +++++++++++++++++++
- 1 file changed, 32 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3588-edgeble-neu6b-io.dts  | 27 +++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 2d585bbb8f3a..f07f605749e3 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -92,6 +92,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
 new file mode 100644
-index 000000000000..1c5bcf1280b4
+index 000000000000..e9d5a8bab581
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
-@@ -0,0 +1,32 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
+@@ -0,0 +1,27 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
 + */
 +
++/dts-v1/;
++#include "rk3588j.dtsi"
++#include "rk3588-edgeble-neu6b.dtsi"
++
 +/ {
-+	compatible = "edgeble,neural-compute-module-6b", "rockchip,rk3588";
++	model = "Edgeble Neu6B IO Board";
++	compatible = "edgeble,neural-compute-module-6b-io",
++		     "edgeble,neural-compute-module-6b", "rockchip,rk3588";
 +
 +	aliases {
-+		mmc0 = &sdhci;
++		serial2 = &uart2;
 +	};
 +
-+	vcc12v_dcin: vcc12v-dcin-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
++	chosen {
++		stdout-path = "serial2:1500000n8";
 +	};
 +};
 +
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
++&uart2 {
++	pinctrl-0 = <&uart2m0_xfer>;
 +	status = "okay";
 +};
 -- 
