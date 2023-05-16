@@ -4,129 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59047C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 21:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01314C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 22:01:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=68wZ2ta/452sja2d4JH0Y4f6tJkWApsZRcM9Y5Qbbpg=; b=rPf9BIvb9yAruE
-	tLmSr/qPtBqjuN4000Msx83eFvr4A4oBAfgcCfQS51DB/HkZ2FKw1m7vf8c76U2/ip7jKYoD3qO9O
-	tAgHAOhSQ2BGyRQ/C18yL3vrt8/3s61YzJ39kstC3QEPSj/rVBrsV10gDNOef0yQY/cwrYnU0elNq
-	0c0+pb2xwmgNoQ6TR0/ryHypDLEYM8FYsxaVGWkzyaybSr+iyoTI0/vQ7PFz8L7vRf5xvf40AKwhF
-	rjwvQvLyN/pCbiJQF9L4nLaGLPKrrznb4Sw8GEEk4wWzN0BZC9nk1bEWJ4Za6Q99JHjz58ddt15Wj
-	kjoqJMGNKnLb12IkU0ow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aTUilRfP+aLeezuQtS62poUHB0YlEGuUC9LB+FCe4tU=; b=nYxv5CYUpMvTamE0zPNteOlrlo
+	lBcwKoA8v/0ZudWEttyuDvlYiBaJTRBauJYACoIlf8fV/GphKOkXim8czxKxgoQRLhzEwmctl4dO1
+	uKC79VjPrexMxGLPlxh8HhklUTZmOZpgUSrNvxN/Ub+uGX99hNTCRai1MzON2AuIf/F/PjbLOqId6
+	OhnBWGTGl0ASQ5VhdO71dySHKXCvyggiiBhRSDpP7Uh9iBE16N38g2IkECKIJ8vefO/YqEJ2npLxj
+	XJBHrTzXt2XwyZ7XtnVW3+QOmcGDZT+aV2t5qr50VoIxHaXd7eJswIlCHAJXZJuFizwanh7U4L/XP
+	zQnYjjtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz2CO-007AtH-1J;
-	Tue, 16 May 2023 21:27:12 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1pz2jh-007Fcm-0z;
+	Tue, 16 May 2023 22:01:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz2CL-007Ar9-0o
+	id 1pz2je-007Fbn-2Y
 	for linux-rockchip@lists.infradead.org;
-	Tue, 16 May 2023 21:27:11 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230516212702euoutp02f4b78211f30650976572fcf6098593f9~fvNgo_WsD1270012700euoutp021
-	for <linux-rockchip@lists.infradead.org>; Tue, 16 May 2023 21:27:02 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230516212702euoutp02f4b78211f30650976572fcf6098593f9~fvNgo_WsD1270012700euoutp021
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1684272422;
-	bh=AWnFPzdKQ3BmDA6aeSsFt7RWiz9U9+getE+2R81AueU=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=OuUaNOoesxxJSJukHoQCMhFRMIVPfBefG6JYEau0reBbr/qij3NYV+xuE4jeVLWln
-	 P5xFab7pIb+KqxL5upi2q3d/iCCBuAw8Yt13/I1OQXGSPvjxClLiT9MN5bmloJEnCp
-	 fyQipo1NyHaanCzhEq2iA3WbernQvPF/DK2vd9v0=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTP id
-	20230516212701eucas1p182e16c522a2e31461b9511b2390b8b3a~fvNf2Xpgy1496114961eucas1p1o;
-	Tue, 16 May 2023 21:27:01 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
-	eusmges1new.samsung.com (EUCPMTA) with SMTP id 06.92.42423.525F3646; Tue, 16
-	May 2023 22:27:01 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00~fvNepBxWa1501615016eucas1p1N;
-	Tue, 16 May 2023 21:27:00 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
-	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20230516212700eusmtrp109235a95d334cf742154f8b806fbb48e~fvNeoUmSE1235012350eusmtrp1W;
-	Tue, 16 May 2023 21:27:00 +0000 (GMT)
-X-AuditID: cbfec7f2-a3bff7000002a5b7-5e-6463f52569d4
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
-	eusmgms2.samsung.com (EUCPMTA) with SMTP id FE.7F.14344.325F3646; Tue, 16
-	May 2023 22:26:59 +0100 (BST)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20230516212659eusmtip1402a48b4d27c0ca2942f69a8219ae669~fvNdz47OG2253222532eusmtip1_;
-	Tue, 16 May 2023 21:26:59 +0000 (GMT)
-Message-ID: <2d234cd8-f883-800b-af97-116a949b64af@samsung.com>
-Date: Tue, 16 May 2023 23:26:59 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
-	Gecko/20100101 Thunderbird/102.10.1
-Subject: Re: [PATCH v8 05/14] mfd: rk808: split into core and i2c
-Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
-	<heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Mark Brown
-	<broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>,
+	Tue, 16 May 2023 22:01:36 +0000
+Received: from mercury (unknown [185.254.75.45])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 03C2E66058F7;
+	Tue, 16 May 2023 23:01:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684274490;
+	bh=6VuzT6ae7G/wqb/mbM+/UZDAQjp/Is1WP9mWxQ5YyIo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TzwHnsUgq6M5aQDQ7BliujRzwfM+sKCjIweA7mkDMTVE76Lslbg4iU4+F+MGRG9kP
+	 tvHeMh++vslPUk/x39l/R4op0k2zaIp0wV52A2tSkH2PUdR/5t7t0GzFHRC7AdBEZK
+	 OLoMQ/vJH/RIvnjZwZBhITKeusFpWGXSZM6Zt6UDIAPHRsDnOxdOj7KHYx64nsSOGE
+	 BavuGd84nu17CWUqcd9N3T0WFa+p5oh9V3BNERaR6kPG9Pcy1mLL9zbv937Bq0/Whn
+	 RZvVp3eeL8zkxYALmjjPVNulIbJ9fnTV51LyLndbuWXkj/qvtcNRPChnzta8lDPKB6
+	 bCUF/ohnOBS6Q==
+Received: by mercury (Postfix, from userid 1000)
+	id B264110620FE; Wed, 17 May 2023 00:01:27 +0200 (CEST)
+Date: Wed, 17 May 2023 00:01:27 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com, Diederik de Haas
-	<didi.debian@cknow.org>, Vincent Legoll <vincent.legoll@gmail.com>
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <20230504173618.142075-6-sebastian.reichel@collabora.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrPKsWRmVeSWpSXmKPExsWy7djP87qqX5NTDCa1C1ksuXiV3aL93TJ2
-	i6kPn7BZzD9yjtWi9dVzdov/j16zWmw+18Nq0ffiIbPFjraFLBbfrnQwWUz5s5zJ4vKuOWwW
-	nx78Z7a4eMrVonXvEXaLf9c2sljcfe1ncXztMzYHIY/3N1rZPeatqfY48f8Ii8eOu0sYPXbO
-	usvusWlVJ5vHnWt72Dw2L6n32H5tHrPH9Hk/mTw+b5IL4I7isklJzcksSy3St0vgyvj76Apr
-	QRd/xYfjfA2MC7m7GDk5JARMJJ49n87SxcjFISSwglHiyccuNpCEkMAXRolrh5MgEp8ZJZp/
-	tjPDdJz+ugKqYzmjxOVdd6Gcj4wS7RfesoBU8QrYSUzvvQNmswioShyfOxUqLihxcuYTMFtU
-	IFVi1eaLYFOFBRwlLk3dyApiMwuIS9x6Mp8JZKiIwBVGie4lF9hBHGaBj8wSTc/fgh3IJmAo
-	0fUW4lhOATeJs43LGSG65SW2v50Ddes1TonDjZIQtovEkaadrBC2sMSr41vYIWwZidOTe8Be
-	kBBoZ5RY8Ps+E4QzgVGi4fktRogqa4k7534BbeMA2qApsX6XPkTYUWL6xEXsIGEJAT6JG28F
-	IW7gk5i0bTozRJhXoqNNCKJaTWLW8XVwaw9euMQ8gVFpFlK4zELy/ywk38xC2LuAkWUVo3hq
-	aXFuemqxYV5quV5xYm5xaV66XnJ+7iZGYJo8/e/4px2Mc1991DvEyMTBeIhRgoNZSYQ3sC85
-	RYg3JbGyKrUoP76oNCe1+BCjNAeLkjivtu3JZCGB9MSS1OzU1ILUIpgsEwenVANTtoBkgi2f
-	2i/Gn5sMtk7dx8RSb8u9g3vJu5qONc+1brrOStuWfbzGt8D3r327DvObvivvL05at+xHpgvj
-	NFaPeT9cjz5a2a393bby46XLb27fUfw+yfCKasl7eRPDaR4XT0xKlDv6eqb0m8+bn150Wp68
-	xVmrxrq7WOGP0gJZHw7FLHf3pnUS70KCPmXUvUnWsTXbZFq9aTavrf2h0G2TI6dtZIks+/rk
-	7RfHNbkL/ZQNd7hbmE9h1H1XNF3Z0f7Wr8De8ObHPA8PM8sb/tq/rn2HHHv64ZdftjnsCL3V
-	pbP7+R/5GytPxJuduOesZt92ISvBseyoy7t5D2weXZxnIcsfttLo5M5jirf2t6/3U2Ipzkg0
-	1GIuKk4EAEWGzLQCBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpmleLIzCtJLcpLzFFi42I5/e/4XV3lr8kpBtemWFssuXiV3aL93TJ2
-	i6kPn7BZzD9yjtWi9dVzdov/j16zWmw+18Nq0ffiIbPFjraFLBbfrnQwWUz5s5zJ4vKuOWwW
-	nx78Z7a4eMrVonXvEXaLf9c2sljcfe1ncXztMzYHIY/3N1rZPeatqfY48f8Ii8eOu0sYPXbO
-	usvusWlVJ5vHnWt72Dw2L6n32H5tHrPH9Hk/mTw+b5IL4I7SsynKLy1JVcjILy6xVYo2tDDS
-	M7S00DMysdQzNDaPtTIyVdK3s0lJzcksSy3St0vQy/j76AprQRd/xYfjfA2MC7m7GDk5JARM
-	JE5/XcHSxcjFISSwlFHi6axJbBAJGYmT0xpYIWxhiT/Xutggit4zSkz9fZwZJMErYCcxvfcO
-	C4jNIqAqcXzuVBaIuKDEyZlPwGxRgVSJk0tvgNnCAo4Sl6ZuBBvKLCAucevJfCaQoSIC1xgl
-	lsw4CbaBWeAzs8TcXXdYIdY1MkpM+vqFEaSFTcBQouttF9h9nAJuEmcblzNCjDKT6NraBWXL
-	S2x/O4d5AqPQLCSXzEKycRaSlllIWhYwsqxiFEktLc5Nzy020itOzC0uzUvXS87P3cQITA3b
-	jv3csoNx5auPeocYmTgYDzFKcDArifAG9iWnCPGmJFZWpRblxxeV5qQWH2I0BQbHRGYp0eR8
-	YHLKK4k3NDMwNTQxszQwtTQzVhLn9SzoSBQSSE8sSc1OTS1ILYLpY+LglGpg8tgZ4sPybEaE
-	gtOC0uzc2zMfbJt2zev3oaU1jH8PmgXIbAkz/21t+blpqSPfLROG6385F17PTfIw1BZy6/K3
-	/PKG7ZFp3ObgmetFb7Dy62l/mnKA+z3XCelMM5logSeJYmX/ngsudBH75Xyr8EDuNmXrtyL8
-	h43j2riynY/8l7hcVnGm9sjpL8zz9PTO3ewJ/G/tELmQ9brjJfPfNyxLKwSDua8bv/zd/O3q
-	8/WvZU9oiofOL/CwruYXyb8exXZQrrz+GYv44d9bJrpXNU3/m6N763HC5E9Pl5a0iIr1t+46
-	aPjL/1PcZs83Em6Ws5hfXObPeTbhbZvd7cRXzQ3PlHTsbudOWPRqk2nWR9f9SizFGYmGWsxF
-	xYkAaplqb5YDAAA=
-X-CMS-MailID: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
-X-Msg-Generator: CA
-X-RootMTR: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Vincent Legoll <vincent.legoll@gmail.com>
+Subject: Re: [PATCH v8 05/14] mfd: rk808: split into core and i2c
+Message-ID: <20230516220127.ohumwhchhzzmw7he@mercury.elektranox.org>
 References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
-	<20230504173618.142075-6-sebastian.reichel@collabora.com>
-	<CGME20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00@eucas1p1.samsung.com>
+ <20230504173618.142075-6-sebastian.reichel@collabora.com>
+ <CGME20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00@eucas1p1.samsung.com>
+ <2d234cd8-f883-800b-af97-116a949b64af@samsung.com>
+MIME-Version: 1.0
+In-Reply-To: <2d234cd8-f883-800b-af97-116a949b64af@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_142709_750374_AA4C65D2 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20230516_150135_123516_A4C6839E 
+X-CRM114-Status: GOOD (  20.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,61 +85,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7573479828200948347=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 04.05.2023 19:36, Sebastian Reichel wrote:
-> Split rk808 into a core and an i2c part in preparation for
-> SPI support.
->
-> Acked-for-MFD-by: Lee Jones <lee@kernel.org>
-> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com> # for RTC
-> Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
-> Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-This patch landed in today's linux-next as commit c20e8c5b1203 ("mfd: 
-rk808: Split into core and i2c"). Unfortunately some boards (for example 
-Hardkernel's Odroid-M1) stopped to boot after this change. This is 
-caused by the lack of updating the related defconfigs. Could you please 
-add a patch that updates the MFD_RK808 entries to MFD_RK8XX_I2C in the 
-following files:
-
-$ git grep MFD_RK808
-arch/arm/configs/multi_v7_defconfig:CONFIG_MFD_RK808=y
-arch/arm64/configs/defconfig:CONFIG_MFD_RK808=y
+--===============7573479828200948347==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mutsuecdbukxiwro"
+Content-Disposition: inline
 
 
-> ---
->   drivers/clk/Kconfig                   |   2 +-
->   drivers/input/misc/Kconfig            |   2 +-
->   drivers/mfd/Kconfig                   |   7 +-
->   drivers/mfd/Makefile                  |   3 +-
->   drivers/mfd/{rk808.c => rk8xx-core.c} | 209 +++++---------------------
->   drivers/mfd/rk8xx-i2c.c               | 200 ++++++++++++++++++++++++
->   drivers/pinctrl/Kconfig               |   2 +-
->   drivers/power/supply/Kconfig          |   2 +-
->   drivers/regulator/Kconfig             |   2 +-
->   drivers/rtc/Kconfig                   |   2 +-
->   include/linux/mfd/rk808.h             |   6 +
->   sound/soc/codecs/Kconfig              |   2 +-
->   12 files changed, 256 insertions(+), 183 deletions(-)
->   rename drivers/mfd/{rk808.c => rk8xx-core.c} (76%)
->   create mode 100644 drivers/mfd/rk8xx-i2c.c
->
-> ...
+--mutsuecdbukxiwro
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+Hello Marek,
 
+On Tue, May 16, 2023 at 11:26:59PM +0200, Marek Szyprowski wrote:
+> Hi,
+>=20
+> On 04.05.2023 19:36, Sebastian Reichel wrote:
+> > Split rk808 into a core and an i2c part in preparation for
+> > SPI support.
+> >
+> > Acked-for-MFD-by: Lee Jones <lee@kernel.org>
+> > Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com> # for RTC
+> > Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 =
+Model A + B
+> > Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro=
+64
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>=20
+> This patch landed in today's linux-next as commit c20e8c5b1203 ("mfd:=20
+> rk808: Split into core and i2c"). Unfortunately some boards (for example=
+=20
+> Hardkernel's Odroid-M1) stopped to boot after this change. This is=20
+> caused by the lack of updating the related defconfigs. Could you please=
+=20
+> add a patch that updates the MFD_RK808 entries to MFD_RK8XX_I2C in the=20
+> following files:
+>=20
+> $ git grep MFD_RK808
+> arch/arm/configs/multi_v7_defconfig:CONFIG_MFD_RK808=3Dy
+> arch/arm64/configs/defconfig:CONFIG_MFD_RK808=3Dy
+
+Sure, I will prepare a patch for each of them. Thanks for the quick
+report and sorry for the inconvenience.
+
+-- Sebastian
+
+>=20
+>=20
+> > ---
+> >   drivers/clk/Kconfig                   |   2 +-
+> >   drivers/input/misc/Kconfig            |   2 +-
+> >   drivers/mfd/Kconfig                   |   7 +-
+> >   drivers/mfd/Makefile                  |   3 +-
+> >   drivers/mfd/{rk808.c =3D> rk8xx-core.c} | 209 +++++------------------=
+---
+> >   drivers/mfd/rk8xx-i2c.c               | 200 ++++++++++++++++++++++++
+> >   drivers/pinctrl/Kconfig               |   2 +-
+> >   drivers/power/supply/Kconfig          |   2 +-
+> >   drivers/regulator/Kconfig             |   2 +-
+> >   drivers/rtc/Kconfig                   |   2 +-
+> >   include/linux/mfd/rk808.h             |   6 +
+> >   sound/soc/codecs/Kconfig              |   2 +-
+> >   12 files changed, 256 insertions(+), 183 deletions(-)
+> >   rename drivers/mfd/{rk808.c =3D> rk8xx-core.c} (76%)
+> >   create mode 100644 drivers/mfd/rk8xx-i2c.c
+> >
+> > ...
+>=20
+> Best regards
+> --=20
+> Marek Szyprowski, PhD
+> Samsung R&D Institute Poland
+>=20
+
+--mutsuecdbukxiwro
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmRj/TcACgkQ2O7X88g7
++ppkcg//WH2Y+C6FPh41OdSO5Szxw3CQJ1Ku3dNvcQAt3BHSGl0ATOPFmYc1j2v8
+/DNrXu+6aPU46ko+iu0Jrtlng4zdkl50sLLbYfvoNZQvNtI7oDYVV9ej3NO7diCr
++aN0krfeFW2MiaGcs6/U5B0/wgXCgeRf+2sCLCNxCfUji7xLT9HOQHUf34d6ZRAq
+rU8iIcB7K9Kg1UUDCjn8FSUgKduyy2YriowTgO1Q1Bx93jYZ/wka+qtA9lRJC+bC
+6g/9f2H7hs9IkfwVgGimp5iR++FF0G7wfY7XBZyuyVcsMLPZ9JIdCtl88oISGAFp
+A94yL7MYgxtAuu6gOpnIWQVSits/WgfmfMfs95twzPQ0Vngdxm24bn4wGR7mUrMK
+sd8krWaSfDPxahUkfN43p1WjDXY1WMMT6e0UPNR/MwhE+6fjI1PVc2BNSEsDQGdu
+wlCYwIoPhBBGBh7L1dCKXEThlSdZsUd1N6R1QYZ3qQmYnF0KWHgnp7GDEREabHiO
+RzWc0uHFa/Rnq7p1z/zZlBkUfryUqHRaLO7WIx4hzAj1w8CIMSkV08XA6Hb8X84u
+/7ijOEH/selxYiETdAnkuobE9lf4cbpzU2vN7O0P9rQT7j/QIp6Mm/VsSMQaL74C
+8mk7Q3O6xhh/f1/Y5M9lInSJ7hfkj5WrYCPF2Upb0a6hwfleQg0=
+=tOhN
+-----END PGP SIGNATURE-----
+
+--mutsuecdbukxiwro--
+
+
+--===============7573479828200948347==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7573479828200948347==--
+
