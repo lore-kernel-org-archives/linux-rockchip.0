@@ -4,61 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DA2C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 21:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59047C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 21:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8U/HJISdJHd5IFV9aUCtel0+a5aqtBAjMMd0lPDjwrs=; b=PzI7ReWCzKH8gbjerlT4X1V1QK
-	Jjv3gONg7oDu1RF6ZCZNXo5UkiL8AyP+f0j8gAasPlDkvvmLQFP0O3KDPT8eDCgCpd6x1XUEXSpd/
-	hGL6ec2V0CIwwcI2q6h2ntz5P5t+V76A9AqNQMUiFuBTIU8CUMvW/dijlU/0omV5fG5efAapLpxVZ
-	mvk/bOdLzUdCdx5eB0ykygzWTWYbauXdRxAS8N1eX/LZSWuhvORXJK1dARTtKMQrV+XhWfwMO5ARS
-	ZvekD/e7dLaBNLyR2iD68s26Da6vYNMv/KVuYMBPXozEVhIFGrD44M2xJlnlVLLv+bF7g5eehJqpa
-	C742lc7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=68wZ2ta/452sja2d4JH0Y4f6tJkWApsZRcM9Y5Qbbpg=; b=rPf9BIvb9yAruE
+	tLmSr/qPtBqjuN4000Msx83eFvr4A4oBAfgcCfQS51DB/HkZ2FKw1m7vf8c76U2/ip7jKYoD3qO9O
+	tAgHAOhSQ2BGyRQ/C18yL3vrt8/3s61YzJ39kstC3QEPSj/rVBrsV10gDNOef0yQY/cwrYnU0elNq
+	0c0+pb2xwmgNoQ6TR0/ryHypDLEYM8FYsxaVGWkzyaybSr+iyoTI0/vQ7PFz8L7vRf5xvf40AKwhF
+	rjwvQvLyN/pCbiJQF9L4nLaGLPKrrznb4Sw8GEEk4wWzN0BZC9nk1bEWJ4Za6Q99JHjz58ddt15Wj
+	kjoqJMGNKnLb12IkU0ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz207-0079Da-1n;
-	Tue, 16 May 2023 21:14:31 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pz2CO-007AtH-1J;
+	Tue, 16 May 2023 21:27:12 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz204-0079CM-22;
-	Tue, 16 May 2023 21:14:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2F01A6145B;
-	Tue, 16 May 2023 21:14:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1835FC433EF;
-	Tue, 16 May 2023 21:14:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684271667;
-	bh=y+rreP5sHr2YNg/6jHqP3cZxDuJomyg0Ljp/B6vy2c0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Fh3tJkcFmYX8eKMNsO2rr9g9bfH1UAfc224Vpk+1usIlIWZfpWIzsZq020oBoR5LD
-	 MZk+63ZXtFcTKi6m9ssDy7MAowK3OK/k9bjGxx7k1Ls7dET+lSL3MySqL9t04JAUV1
-	 92ekH95HH5lqkD8+SALfYScMTC2h235y7CsX/0SV3HcsoYTvVE7NK11sTSq2r2CLLG
-	 6C/LS2EtLKX/QXxKX7vgBmo3l/HQ1iPHHe4xTBeRfw6zdraZU6D2zEnlrF9br8UVi2
-	 mrqHa+OGTrM3JCBjl9mqFb+IDMQbiySepseuw2hOEnYwTzBlQk4ANa9rW9lf/Pu+8x
-	 VzMsZsnQBDuSg==
-Date: Tue, 16 May 2023 22:14:23 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/4] dt-bindings: arm: rockchip: Add Edgeble Neural
- Compute Module 6B
-Message-ID: <20230516-frostbite-demystify-8634264693e3@spud>
-References: <20230516163454.997736-1-jagan@edgeble.ai>
+	id 1pz2CL-007Ar9-0o
+	for linux-rockchip@lists.infradead.org;
+	Tue, 16 May 2023 21:27:11 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230516212702euoutp02f4b78211f30650976572fcf6098593f9~fvNgo_WsD1270012700euoutp021
+	for <linux-rockchip@lists.infradead.org>; Tue, 16 May 2023 21:27:02 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230516212702euoutp02f4b78211f30650976572fcf6098593f9~fvNgo_WsD1270012700euoutp021
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1684272422;
+	bh=AWnFPzdKQ3BmDA6aeSsFt7RWiz9U9+getE+2R81AueU=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=OuUaNOoesxxJSJukHoQCMhFRMIVPfBefG6JYEau0reBbr/qij3NYV+xuE4jeVLWln
+	 P5xFab7pIb+KqxL5upi2q3d/iCCBuAw8Yt13/I1OQXGSPvjxClLiT9MN5bmloJEnCp
+	 fyQipo1NyHaanCzhEq2iA3WbernQvPF/DK2vd9v0=
+Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+	20230516212701eucas1p182e16c522a2e31461b9511b2390b8b3a~fvNf2Xpgy1496114961eucas1p1o;
+	Tue, 16 May 2023 21:27:01 +0000 (GMT)
+Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
+	eusmges1new.samsung.com (EUCPMTA) with SMTP id 06.92.42423.525F3646; Tue, 16
+	May 2023 22:27:01 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00~fvNepBxWa1501615016eucas1p1N;
+	Tue, 16 May 2023 21:27:00 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20230516212700eusmtrp109235a95d334cf742154f8b806fbb48e~fvNeoUmSE1235012350eusmtrp1W;
+	Tue, 16 May 2023 21:27:00 +0000 (GMT)
+X-AuditID: cbfec7f2-a3bff7000002a5b7-5e-6463f52569d4
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+	eusmgms2.samsung.com (EUCPMTA) with SMTP id FE.7F.14344.325F3646; Tue, 16
+	May 2023 22:26:59 +0100 (BST)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20230516212659eusmtip1402a48b4d27c0ca2942f69a8219ae669~fvNdz47OG2253222532eusmtip1_;
+	Tue, 16 May 2023 21:26:59 +0000 (GMT)
+Message-ID: <2d234cd8-f883-800b-af97-116a949b64af@samsung.com>
+Date: Tue, 16 May 2023 23:26:59 +0200
 MIME-Version: 1.0
-In-Reply-To: <20230516163454.997736-1-jagan@edgeble.ai>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
+	Gecko/20100101 Thunderbird/102.10.1
+Subject: Re: [PATCH v8 05/14] mfd: rk808: split into core and i2c
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
+	<heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Mark Brown
+	<broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com, Diederik de Haas
+	<didi.debian@cknow.org>, Vincent Legoll <vincent.legoll@gmail.com>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <20230504173618.142075-6-sebastian.reichel@collabora.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrPKsWRmVeSWpSXmKPExsWy7djP87qqX5NTDCa1C1ksuXiV3aL93TJ2
+	i6kPn7BZzD9yjtWi9dVzdov/j16zWmw+18Nq0ffiIbPFjraFLBbfrnQwWUz5s5zJ4vKuOWwW
+	nx78Z7a4eMrVonXvEXaLf9c2sljcfe1ncXztMzYHIY/3N1rZPeatqfY48f8Ii8eOu0sYPXbO
+	usvusWlVJ5vHnWt72Dw2L6n32H5tHrPH9Hk/mTw+b5IL4I7isklJzcksSy3St0vgyvj76Apr
+	QRd/xYfjfA2MC7m7GDk5JARMJJ49n87SxcjFISSwglHiyccuNpCEkMAXRolrh5MgEp8ZJZp/
+	tjPDdJz+ugKqYzmjxOVdd6Gcj4wS7RfesoBU8QrYSUzvvQNmswioShyfOxUqLihxcuYTMFtU
+	IFVi1eaLYFOFBRwlLk3dyApiMwuIS9x6Mp8JZKiIwBVGie4lF9hBHGaBj8wSTc/fgh3IJmAo
+	0fUW4lhOATeJs43LGSG65SW2v50Ddes1TonDjZIQtovEkaadrBC2sMSr41vYIWwZidOTe8Be
+	kBBoZ5RY8Ps+E4QzgVGi4fktRogqa4k7534BbeMA2qApsX6XPkTYUWL6xEXsIGEJAT6JG28F
+	IW7gk5i0bTozRJhXoqNNCKJaTWLW8XVwaw9euMQ8gVFpFlK4zELy/ywk38xC2LuAkWUVo3hq
+	aXFuemqxYV5quV5xYm5xaV66XnJ+7iZGYJo8/e/4px2Mc1991DvEyMTBeIhRgoNZSYQ3sC85
+	RYg3JbGyKrUoP76oNCe1+BCjNAeLkjivtu3JZCGB9MSS1OzU1ILUIpgsEwenVANTtoBkgi2f
+	2i/Gn5sMtk7dx8RSb8u9g3vJu5qONc+1brrOStuWfbzGt8D3r327DvObvivvL05at+xHpgvj
+	NFaPeT9cjz5a2a393bby46XLb27fUfw+yfCKasl7eRPDaR4XT0xKlDv6eqb0m8+bn150Wp68
+	xVmrxrq7WOGP0gJZHw7FLHf3pnUS70KCPmXUvUnWsTXbZFq9aTavrf2h0G2TI6dtZIks+/rk
+	7RfHNbkL/ZQNd7hbmE9h1H1XNF3Z0f7Wr8De8ObHPA8PM8sb/tq/rn2HHHv64ZdftjnsCL3V
+	pbP7+R/5GytPxJuduOesZt92ISvBseyoy7t5D2weXZxnIcsfttLo5M5jirf2t6/3U2Ipzkg0
+	1GIuKk4EAEWGzLQCBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpmleLIzCtJLcpLzFFi42I5/e/4XV3lr8kpBtemWFssuXiV3aL93TJ2
+	i6kPn7BZzD9yjtWi9dVzdov/j16zWmw+18Nq0ffiIbPFjraFLBbfrnQwWUz5s5zJ4vKuOWwW
+	nx78Z7a4eMrVonXvEXaLf9c2sljcfe1ncXztMzYHIY/3N1rZPeatqfY48f8Ii8eOu0sYPXbO
+	usvusWlVJ5vHnWt72Dw2L6n32H5tHrPH9Hk/mTw+b5IL4I7SsynKLy1JVcjILy6xVYo2tDDS
+	M7S00DMysdQzNDaPtTIyVdK3s0lJzcksSy3St0vQy/j76AprQRd/xYfjfA2MC7m7GDk5JARM
+	JE5/XcHSxcjFISSwlFHi6axJbBAJGYmT0xpYIWxhiT/Xutggit4zSkz9fZwZJMErYCcxvfcO
+	C4jNIqAqcXzuVBaIuKDEyZlPwGxRgVSJk0tvgNnCAo4Sl6ZuBBvKLCAucevJfCaQoSIC1xgl
+	lsw4CbaBWeAzs8TcXXdYIdY1MkpM+vqFEaSFTcBQouttF9h9nAJuEmcblzNCjDKT6NraBWXL
+	S2x/O4d5AqPQLCSXzEKycRaSlllIWhYwsqxiFEktLc5Nzy020itOzC0uzUvXS87P3cQITA3b
+	jv3csoNx5auPeocYmTgYDzFKcDArifAG9iWnCPGmJFZWpRblxxeV5qQWH2I0BQbHRGYp0eR8
+	YHLKK4k3NDMwNTQxszQwtTQzVhLn9SzoSBQSSE8sSc1OTS1ILYLpY+LglGpg8tgZ4sPybEaE
+	gtOC0uzc2zMfbJt2zev3oaU1jH8PmgXIbAkz/21t+blpqSPfLROG6385F17PTfIw1BZy6/K3
+	/PKG7ZFp3ObgmetFb7Dy62l/mnKA+z3XCelMM5logSeJYmX/ngsudBH75Xyr8EDuNmXrtyL8
+	h43j2riynY/8l7hcVnGm9sjpL8zz9PTO3ewJ/G/tELmQ9brjJfPfNyxLKwSDua8bv/zd/O3q
+	8/WvZU9oiofOL/CwruYXyb8exXZQrrz+GYv44d9bJrpXNU3/m6N763HC5E9Pl5a0iIr1t+46
+	aPjL/1PcZs83Em6Ws5hfXObPeTbhbZvd7cRXzQ3PlHTsbudOWPRqk2nWR9f9SizFGYmGWsxF
+	xYkAaplqb5YDAAA=
+X-CMS-MailID: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
+X-Msg-Generator: CA
+X-RootMTR: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00
+References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
+	<20230504173618.142075-6-sebastian.reichel@collabora.com>
+	<CGME20230516212700eucas1p1fbde1b6181c18d821e0796b6b6a4fa00@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_141428_740507_07C24138 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20230516_142709_750374_AA4C65D2 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,65 +138,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1730917617718121346=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============1730917617718121346==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="98xwV+p72ipvBnbv"
-Content-Disposition: inline
+On 04.05.2023 19:36, Sebastian Reichel wrote:
+> Split rk808 into a core and an i2c part in preparation for
+> SPI support.
+>
+> Acked-for-MFD-by: Lee Jones <lee@kernel.org>
+> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com> # for RTC
+> Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
+> Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
+This patch landed in today's linux-next as commit c20e8c5b1203 ("mfd: 
+rk808: Split into core and i2c"). Unfortunately some boards (for example 
+Hardkernel's Odroid-M1) stopped to boot after this change. This is 
+caused by the lack of updating the related defconfigs. Could you please 
+add a patch that updates the MFD_RK808 entries to MFD_RK8XX_I2C in the 
+following files:
 
---98xwV+p72ipvBnbv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, May 16, 2023 at 10:04:51PM +0530, Jagan Teki wrote:
-> Neural Compute Module 6B(Neu6B) is a 96boards SoM-CB compute module
-> based on Rockchip RK3588J from Edgeble AI.
->=20
-> Edgeble Neural Compute Module 6B(Neu6B) IO board is an industrial
-> form factor evaluation board from Edgeble AI.
->=20
-> Neu6B needs to mount on top of this IO board in order to create complete
-> Edgeble Neural Compute Module 6B(Neu6B) IO platform.
->=20
-> This patch add dt-bindings for Edgeble Neu6 Model B SoM based IO board.
->=20
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Thanks,
-Conor.
-
---98xwV+p72ipvBnbv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZGPyLwAKCRB4tDGHoIJi
-0pnaAQDZ3cu8KV6KuLy7sKcu+MTeHXDdnLgIm6dSJIVhCgh0FAD+IlJhrxNG1Y7n
-l39cirgNe117K2ElBTOnxP0/6Dfssww=
-=lQrB
------END PGP SIGNATURE-----
-
---98xwV+p72ipvBnbv--
+$ git grep MFD_RK808
+arch/arm/configs/multi_v7_defconfig:CONFIG_MFD_RK808=y
+arch/arm64/configs/defconfig:CONFIG_MFD_RK808=y
 
 
---===============1730917617718121346==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+>   drivers/clk/Kconfig                   |   2 +-
+>   drivers/input/misc/Kconfig            |   2 +-
+>   drivers/mfd/Kconfig                   |   7 +-
+>   drivers/mfd/Makefile                  |   3 +-
+>   drivers/mfd/{rk808.c => rk8xx-core.c} | 209 +++++---------------------
+>   drivers/mfd/rk8xx-i2c.c               | 200 ++++++++++++++++++++++++
+>   drivers/pinctrl/Kconfig               |   2 +-
+>   drivers/power/supply/Kconfig          |   2 +-
+>   drivers/regulator/Kconfig             |   2 +-
+>   drivers/rtc/Kconfig                   |   2 +-
+>   include/linux/mfd/rk808.h             |   6 +
+>   sound/soc/codecs/Kconfig              |   2 +-
+>   12 files changed, 256 insertions(+), 183 deletions(-)
+>   rename drivers/mfd/{rk808.c => rk8xx-core.c} (76%)
+>   create mode 100644 drivers/mfd/rk8xx-i2c.c
+>
+> ...
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1730917617718121346==--
-
