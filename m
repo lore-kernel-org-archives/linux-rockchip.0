@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A0D6C7EE24
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 23:03:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 565CCC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 May 2023 23:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X+3mtjWwYQ2ebISbjFeJAIPhKMei+uMFt0w9s1PaAQ0=; b=NvFczvhDYllXLD
-	Jms4DSFD1OGjKT9E4/GBkD4oDaSKvHDI65lrcYPSRKnbYUuP/wP6iQF6kj37/xI8DS2AYEF09C+Eo
-	NsSzlpQzWAHGZV9kqVM0Y48OrcfmD2bs+nNsaewu25Ynb2ZAUo8se/XPjGLDaPrVOcyDNlwGlOU4X
-	9/atDR/Aclz7jPqkV7wj/6KU6Dix9IXQ17ZYi/1eE446t/6axlsFm/ISFg+SSaIig8KPpi4Qsghv6
-	6gHfjG/4W9Q6bZUrhMSIO8wjC8kTZIauiuQbUldYJa9+LAvzU9gADcFNJpmD3djfVPRkpLgTPsr26
-	MO5hL0pM3VNZcL3b5bKA==;
+	List-Owner; bh=wP9RsBe+4OdIlw7/G71d9q5b4RimjdaGFZ6iBmTpJsg=; b=XVa4qPCxnrIe2i
+	ZQAPxhTdc4fMYdYX2GQ/7bf5UcaTm5BJHuF/horDvL1mCk+w9DiGifOVXIscyBfT6dKKt+SpNWfYY
+	byPL87b7qDIVIyhjFoFH8SmP43cRrCdfck+Eswuyni/x5q167Wj1BlK3tpM6joCsMVoqnlKKgI0K7
+	XWlMYZdmYzaQRbyKOJc0Z7O3AqwIOAGHyNUD5iMCPKQCXx0pFR3w73KNNBWql/OT4Bu1G4rnBR2i2
+	m6ZiIW/nGr3CAGe66DWTFxUehIBOUbIzNaSFnVYpfroVZ1qaIxaTHon/WSxkQiLhGjR5Xj0xVaNc0
+	o9v1l5nmWbfjMrEex0Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz3hs-007OFs-18;
-	Tue, 16 May 2023 23:03:48 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pz3i2-007OLJ-1p;
+	Tue, 16 May 2023 23:03:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pz3ho-007ODe-2S;
-	Tue, 16 May 2023 23:03:46 +0000
+	id 1pz3hy-007OI5-0S;
+	Tue, 16 May 2023 23:03:56 +0000
 Received: from localhost.localdomain (unknown [IPv6:2405:201:0:21ea:73f6:2283:f432:3936])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: shreeya)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B232E6605905;
-	Wed, 17 May 2023 00:03:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DC69E6605906;
+	Wed, 17 May 2023 00:03:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684278223;
-	bh=APUXpv76gAJ+bvr5pL51Y23+mXfXNgygrnteOrO5pJI=;
+	s=mail; t=1684278232;
+	bh=lDz/zDew1D+agp77cTWfGbMYmza4eMo3EHXMw7US+9M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l+Ht+y+fcgjaPk088r5OsjgjFwbFXVgpdc0Nj+zL8zEkWY81HL+LGhORJ/YFLcUC2
-	 DR9xkqjdks0rfhQN13R3eP3pXOMQz1G619FRRKV7BZ3JSuBpS+sZZ8eOypQRHOAxha
-	 1r2ObYvLlzG09yAVsX/rlq1sBz84CjlxYyATNaRTq1vrUqaJhWvmhrfO4ckzXDlScT
-	 oUyaRZxtcFqwIQAFOHeQnXRXkltx9N1E2dffYSHdwQpIbv49NLIVDH+M0WGvMN1Bgm
-	 Cqa+qBbjL+2BuO5FdpzWjoJ6dXiA5Qf8I6K1Vx8iOobkUdqF2SD4zxxnAhfue8mtVq
-	 lwsy+BHDZBJRA==
+	b=TwiO4uSHH2bl0609n6yUlQY6/QBubDltJLEdZGoy0Y9KYXrk95H3DtmAhq1XV5m9V
+	 rmZmcsvhlXHpjqjn7cr/zKNXkgUs31KNFxdok+0EmMqGjBDa1XMKxqCr8qjFt75z87
+	 IwN4lOtCWV2UHh+NBFM5jOqGYC3sTXAaQKbwF+GJ0wCO4fOf7ZnlBgN4ZooocPDIBO
+	 RIf09Gylnz7UbmCVxRYXkDijGZsBjnRjlqeehqnBHjQcJ2N0Nkgu1qyXkBDcFMZSOF
+	 Z8BmHBwcjOm2SSOz9Ql8ehIw+Nhpc1sqVVWCQ4UO2dC5zBEzR2sb1UmQlVGIT8/nsA
+	 32VoFv9tLdoAA==
 From: Shreeya Patel <shreeya.patel@collabora.com>
 To: jic23@kernel.org,
 	lars@metafoo.de,
@@ -59,16 +59,17 @@ Cc: linux-iio@vger.kernel.org,
 	gustavo.padovan@collabora.com,
 	serge.broslavsky@collabora.com,
 	Shreeya Patel <shreeya.patel@collabora.com>
-Subject: [PATCH 5/7] iio: adc: rockchip_saradc: Use dev_err_probe
-Date: Wed, 17 May 2023 04:30:49 +0530
-Message-Id: <20230516230051.14846-6-shreeya.patel@collabora.com>
+Subject: [PATCH 6/7] arm64: dts: rockchip: Add DT node for ADC support in RK3588
+Date: Wed, 17 May 2023 04:30:50 +0530
+Message-Id: <20230516230051.14846-7-shreeya.patel@collabora.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230516230051.14846-1-shreeya.patel@collabora.com>
 References: <20230516230051.14846-1-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230516_160344_925921_EC91B908 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230516_160354_312747_5F597228 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,89 +86,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe instead of dev_err in probe function,
-which simplifies code a little bit and prints the error
-code.
+Add DT node for ADC support in RK3588.
 
 Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 ---
- drivers/iio/adc/rockchip_saradc.c | 45 ++++++++++++++-----------------
- 1 file changed, 20 insertions(+), 25 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 5e1e8575bc76..a52021fd477d 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -418,25 +418,23 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 		return -ENODEV;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 657c019d27fa..6c4424bc4b1b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1825,6 +1825,18 @@ dmac2: dma-controller@fed10000 {
+ 		#dma-cells = <1>;
+ 	};
  
- 	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*info));
--	if (!indio_dev) {
--		dev_err(&pdev->dev, "failed allocating iio device\n");
--		return -ENOMEM;
--	}
-+	if (!indio_dev)
-+		return dev_err_probe(&pdev->dev, -ENOMEM,
-+				     "failed allocating iio device\n");
++	saradc: saradc@fec10000 {
++		compatible = "rockchip,rk3588-saradc";
++		reg = <0x0 0xfec10000 0x0 0x10000>;
++		interrupts = <GIC_SPI 398 IRQ_TYPE_LEVEL_HIGH 0>;
++		#io-channel-cells = <1>;
++		clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
++		clock-names = "saradc", "apb_pclk";
++		resets = <&cru SRST_P_SARADC>;
++		reset-names = "saradc-apb";
++		status = "disabled";
++	};
 +
- 	info = iio_priv(indio_dev);
- 
- 	match_data = of_device_get_match_data(&pdev->dev);
--	if (!match_data) {
--		dev_err(&pdev->dev, "failed to match device\n");
--		return -ENODEV;
--	}
-+	if (!match_data)
-+		return dev_err_probe(&pdev->dev, -ENODEV,
-+				     "failed to match device\n");
- 
- 	info->data = match_data;
- 
- 	/* Sanity check for possible later IP variants with more channels */
--	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
--		dev_err(&pdev->dev, "max channels exceeded");
--		return -EINVAL;
--	}
-+	if (info->data->num_channels > SARADC_MAX_CHANNELS)
-+		return dev_err_probe(&pdev->dev, -EINVAL,
-+				     "max channels exceeded");
- 
- 	info->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(info->regs))
-@@ -494,23 +492,20 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	 * This may become user-configurable in the future.
- 	 */
- 	ret = clk_set_rate(info->clk, info->data->clk_rate);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "failed to set adc clk rate, %d\n", ret);
--		return ret;
--	}
-+	if (ret < 0)
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "failed to set adc clk rate\n");
- 
- 	ret = regulator_enable(info->vref);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "failed to enable vref regulator\n");
--		return ret;
--	}
-+	if (ret < 0)
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "failed to enable vref regulator\n");
-+
- 	ret = devm_add_action_or_reset(&pdev->dev,
- 				       rockchip_saradc_regulator_disable, info);
--	if (ret) {
--		dev_err(&pdev->dev, "failed to register devm action, %d\n",
--			ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "failed to register devm action\n");
- 
- 	ret = regulator_get_voltage(info->vref);
- 	if (ret < 0)
+ 	system_sram2: sram@ff001000 {
+ 		compatible = "mmio-sram";
+ 		reg = <0x0 0xff001000 0x0 0xef000>;
 -- 
 2.30.2
 
