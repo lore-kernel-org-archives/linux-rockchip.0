@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0BD9C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 10:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D19F5C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 10:33:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vvGD1I4M1K476LEIEy771r5QsxaDh9tdzeQ6IjJMM+g=; b=hTu8+2WxwyHY8j
-	brqlbePhK5hY3ipF/KoRf3AKQ6wB9gmsu4mLzG14Et80cjoxQwRcpkBfMzaIsX0PNGXhACXPX6BMP
-	V2oMelFfOcjBw0ACsownOklcm+3KQ9MzHwjEhgLEDroJuBSwb2/Ea++HcJOSV5exWhhmx+bmb3mP8
-	8CtWa5Ns1vfMw6Ikp39HfX1CQ5RhHpng5gaBWY0S3iJmoZhdlTvfdWErqxerKTK86ux9mU8pzzfBX
-	0wa9rg/Cz58u1Jr9C+ko5O4t6sYDzVwki77rHN+EpfVsF7KB57SL9SHxVg6FrpFL6a6gKTZxipDgD
-	xfP9/IKcbtj1HFOs2PQA==;
+	List-Owner; bh=o5y49yEJ/9pybcxr9nxUhxXnAtIMMZrLd2qX3+mpv/0=; b=xFyY2FCqcS9S7V
+	g4Jv+I+bXGiJKWQmgeUEtv3FMomjZ1q6eWPpkpAaIrQTZQ4qV1uzzqgufqqHf6QGynCAD6mW8KIdB
+	ZcayxsvGNQpeG2cwJOdfEebrbprNrzIqhvyf7K1icsogb2VAwrvjzScWtq2r+EBHAf3eWoFAWfbPY
+	Z/M0Pp9UApKBcjdoZ7CJ+wyz2u15Ke+FVvIC+hquLFcC52gR4p611wGw+DNyxcQtWTfYhBU1BDlOl
+	MrJ2zeRoq0MjX1fJMp1ZyDaK6pk+FAqLwf7I9IQk5UsOZAq5Ixe2YXvtcKhz/NSwUVljDWUMvZwSs
+	yIm6nub8DqGTQKuVhlTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzEL2-009OBW-2X;
-	Wed, 17 May 2023 10:24:56 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1pzESs-009QaT-2p;
+	Wed, 17 May 2023 10:33:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzEKz-009O7k-0l;
-	Wed, 17 May 2023 10:24:54 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QLq1d48gTz67Yn8;
-	Wed, 17 May 2023 18:23:01 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 17 May
- 2023 11:24:49 +0100
-Date: Wed, 17 May 2023 11:24:48 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-CC: <linux-rockchip@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham
-	<myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>, Mark Rutland
-	<mark.rutland@arm.com>, <kernel@pengutronix.de>, Michael Riesch
-	<michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v4 18/21] PM / devfreq: rockchip-dfi: add support for
- RK3588
-Message-ID: <20230517112448.00005538@Huawei.com>
-In-Reply-To: <20230505113856.463650-19-s.hauer@pengutronix.de>
-References: <20230505113856.463650-1-s.hauer@pengutronix.de>
-	<20230505113856.463650-19-s.hauer@pengutronix.de>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1pzESo-009QYY-1z;
+	Wed, 17 May 2023 10:33:00 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D1A7A6605877;
+	Wed, 17 May 2023 11:32:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1684319574;
+	bh=yiNihgP3IrNI3loR/8a+ht/13x21xzVRUN2RDyTYeg4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SylBTcxfImZLgeZy1TmMJVYWvo1PI/aclIfEm7SGQAyttBoQapaytZ0swJcMwAvZh
+	 bKfSaqLUB7e/bWNBbq6kjLMhK14dxPR4CLitPNZeNIcH9ppHS4EwwkNZM1AdOSupYH
+	 OWiOQF+G4PrytuzEyPsbkUvSCV3RO/bjTTuFGSKgvlChe+xtpMgnRG+mTPr16D99t7
+	 J7yW5TrrGcj9FUMWdikNzgmdA/WnF+U1LkcqnA6VqOAPPvMFU/Jp28qUBFSxWnIyCn
+	 vZ4sOlggmFfKyiUuJKaO2Px7sfatKk652nV/RApQGUvCfpyw2rHDJFy51XkP0pYVAi
+	 shjBqLWjhtCcA==
+Message-ID: <c5315454-a155-3842-00b7-08b6b8ff92e6@collabora.com>
+Date: Wed, 17 May 2023 12:32:51 +0200
 MIME-Version: 1.0
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH 1/7] iio: adc: rockchip_saradc: Add support for RK3588
+To: Shreeya Patel <shreeya.patel@collabora.com>, jic23@kernel.org,
+ lars@metafoo.de, heiko@sntech.de, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ gustavo.padovan@collabora.com, serge.broslavsky@collabora.com,
+ Simon Xue <xxm@rock-chips.com>
+References: <20230516230051.14846-1-shreeya.patel@collabora.com>
+ <20230516230051.14846-2-shreeya.patel@collabora.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230516230051.14846-2-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_032453_564508_EF1D9828 
-X-CRM114-Status: GOOD (  21.61  )
+X-CRM114-CacheID: sfid-20230517_033258_829149_BD2313DE 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,117 +76,117 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri,  5 May 2023 13:38:53 +0200
-Sascha Hauer <s.hauer@pengutronix.de> wrote:
-
-> Add support for the RK3588 to the driver. The RK3588 has four DDR
-> channels with a register stride of 0x4000 between the channel
-> registers, also it has a DDRMON_CTRL register per channel.
+Il 17/05/23 01:00, Shreeya Patel ha scritto:
+> Refactor conversion operation to support rk3588 saradc and
+> add separate start, read, powerdown in respective hooks.
 > 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-No idea if registers are right as I've not checked any datasheets, but
-the code looks fine to me.
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c | 34 +++++++++++++++++++++++++++-
->  include/soc/rockchip/rk3588_grf.h    | 18 +++++++++++++++
->  2 files changed, 51 insertions(+), 1 deletion(-)
->  create mode 100644 include/soc/rockchip/rk3588_grf.h
+>   drivers/iio/adc/rockchip_saradc.c | 127 +++++++++++++++++++++++++++---
+>   1 file changed, 115 insertions(+), 12 deletions(-)
 > 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 74d69153e6386..3630981505c6d 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -25,8 +25,9 @@
->  #include <soc/rockchip/rockchip_grf.h>
->  #include <soc/rockchip/rk3399_grf.h>
->  #include <soc/rockchip/rk3568_grf.h>
-> +#include <soc/rockchip/rk3588_grf.h>
->  
-> -#define DMC_MAX_CHANNELS	2
-> +#define DMC_MAX_CHANNELS	4
->  
->  #define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
->  
-> @@ -616,6 +617,32 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
->  	return 0;
->  };
->  
-> +static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index 79448c5ffc2a..ac6fdf8e673b 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -38,10 +38,29 @@
+>   #define SARADC_TIMEOUT			msecs_to_jiffies(100)
+>   #define SARADC_MAX_CHANNELS		8
+>   
+> +/* v2 registers */
+> +#define SARADC2_CONV_CON		0x0
+> +#define SARADC_T_PD_SOC			0x4
+> +#define SARADC_T_DAS_SOC		0xc
+> +#define SARADC2_END_INT_EN		0x104
+> +#define SARADC2_ST_CON			0x108
+> +#define SARADC2_STATUS			0x10c
+> +#define SARADC2_END_INT_ST		0x110
+> +#define SARADC2_DATA_BASE		0x120
+> +
+> +#define SARADC2_EN_END_INT		BIT(0)
+> +#define SARADC2_START			BIT(4)
+> +#define SARADC2_SINGLE_MODE		BIT(5)
+> +
+> +struct rockchip_saradc;
+> +
+>   struct rockchip_saradc_data {
+>   	const struct iio_chan_spec	*channels;
+>   	int				num_channels;
+>   	unsigned long			clk_rate;
+> +	void (*start)(struct rockchip_saradc *info, int chn);
+> +	int (*read)(struct rockchip_saradc *info);
+> +	void (*power_down)(struct rockchip_saradc *info);
+>   };
+>   
+>   struct rockchip_saradc {
+> @@ -60,27 +79,77 @@ struct rockchip_saradc {
+>   	struct notifier_block nb;
+>   };
+>   
+> -static void rockchip_saradc_power_down(struct rockchip_saradc *info)
+> +static void rockchip_saradc_reset_controller(struct reset_control *reset);
+> +
+> +static void rockchip_saradc_start_v1(struct rockchip_saradc *info, int chn)
 > +{
-> +	struct regmap *regmap_pmu = dfi->regmap_pmu;
-> +	u32 reg2, reg3, reg4;
+> +	/* 8 clock periods as delay between power up and start cmd */
+> +	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+> +	/* Select the channel to be used and trigger conversion */
+> +	writel(SARADC_CTRL_POWER_CTRL | (chn & SARADC_CTRL_CHN_MASK) |
+> +	       SARADC_CTRL_IRQ_ENABLE, info->regs + SARADC_CTRL);
+> +}
 > +
-> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG2, &reg2);
-> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG3, &reg3);
-> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG4, &reg4);
+> +static void rockchip_saradc_start_v2(struct rockchip_saradc *info, int chn)
+> +{
+> +	int val;
 > +
-> +	dfi->ddr_type = FIELD_GET(RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
+> +	if (info->reset)
+> +		rockchip_saradc_reset_controller(info->reset);
 > +
-> +	if (FIELD_GET(RK3588_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
-> +		dfi->ddr_type |= FIELD_GET(RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
+> +	writel_relaxed(0xc, info->regs + SARADC_T_DAS_SOC);
+> +	writel_relaxed(0x20, info->regs + SARADC_T_PD_SOC);
+> +	val = SARADC2_EN_END_INT << 16 | SARADC2_EN_END_INT;
+
+What about using bitfield macros?
+
+/* "LO" and "HI" may get a better name, if there's any possible one! */
+#define SARADC2_EN_END_INT_LO BIT(0)
+#define SARADC2_EN_END_INT_HI BIT(16)
+
+val = FIELD_PREP(SARADC_EN_END_INT_LO, 1);
+val |= FIELD_PREP(SARADC_EN_END_INT_HI, 1);
+writel ....
+
+Otherwise, if it's about two really "specular" instances, you can probably
+keep the current definition as SARADC2_EN_END_INT and do
+
+val = FIELD_PREP(SARADC_EN_END_INT, 1);
+val |= val << 16;
+writel ...
+
+/* note: high, low bits are unknown to me, I assumed it's 16 bits :-) */
+#define SARADC2_CONV_CHANNELS GENMASK(15, 0)
+
+val = FIELD_PREP(SARADC2_START, 1);
+val |= FIELD_PREP(SARADC2_SINGLE_MODE, 1);
+val |= FIELD_PREP(SARADC2_CONV_CHANNELS, chn);
+val |= val << 16;
+writel ...
+
+
+> +	writel_relaxed(val, info->regs + SARADC2_END_INT_EN);
+> +	val = SARADC2_START | SARADC2_SINGLE_MODE | chn;
+> +	writel(val << 16 | val, info->regs + SARADC2_CONV_CON);
+> +}
 > +
-> +	dfi->buswidth[0] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
-> +	dfi->buswidth[1] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg2) == 0 ? 4 : 2;
-> +	dfi->buswidth[2] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg4) == 0 ? 4 : 2;
-> +	dfi->buswidth[3] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) == 0 ? 4 : 2;
-> +	dfi->channel_mask = FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
-> +			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
-> +
-> +	dfi->ddrmon_stride = 0x4000;
-> +
-> +	return 0;
-> +};
-> +
->  struct rockchip_dfi_devtype_data {
->  	int (*init)(struct rockchip_dfi *dfi);
->  };
-> @@ -628,9 +655,14 @@ static struct rockchip_dfi_devtype_data rk3568_devtype_data = {
->  	.init = rk3568_dfi_init,
->  };
->  
-> +static struct rockchip_dfi_devtype_data rk3588_devtype_data = {
-> +	.init = rk3588_dfi_init,
-> +};
-> +
->  static const struct of_device_id rockchip_dfi_id_match[] = {
->  	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_devtype_data },
->  	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_devtype_data },
-> +	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_devtype_data },
->  	{ },
->  };
->  MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
-> diff --git a/include/soc/rockchip/rk3588_grf.h b/include/soc/rockchip/rk3588_grf.h
-> new file mode 100644
-> index 0000000000000..630b35a550640
-> --- /dev/null
-> +++ b/include/soc/rockchip/rk3588_grf.h
-> @@ -0,0 +1,18 @@
-> +/* SPDX-License-Identifier: GPL-2.0+ */
-> +#ifndef __SOC_RK3588_GRF_H
-> +#define __SOC_RK3588_GRF_H
-> +
-> +#define RK3588_PMUGRF_OS_REG2		0x208
-> +#define RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO		GENMASK(15, 13)
-> +#define RK3588_PMUGRF_OS_REG2_BW_CH0			GENMASK(3, 2)
-> +#define RK3588_PMUGRF_OS_REG2_BW_CH1                    GENMASK(19, 18)
-> +#define RK3588_PMUGRF_OS_REG2_CH_INFO                   GENMASK(29, 28)
-> +
-> +#define RK3588_PMUGRF_OS_REG3		0x20c
-> +#define RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
-> +#define RK3588_PMUGRF_OS_REG3_SYSREG_VERSION		GENMASK(31, 28)
-> +
-> +#define RK3588_PMUGRF_OS_REG4           0x210
-> +#define RK3588_PMUGRF_OS_REG5           0x214
-> +
-> +#endif /* __SOC_RK3588_GRF_H */
+
+Cheers,
+Angelo
 
 
 _______________________________________________
