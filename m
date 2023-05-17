@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74340C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 09:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 598A1C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 10:19:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZTI7w5j3OlTtqMLBVbb0Iy2Ugsk+8sK4yhrmBMBjXh0=; b=a0XdWVHCcP7jfp
-	nbo4BGyq7kfictA5W45aRED0RWKKOGNNRsxkLWidUjXhb2CcFnb9+FgcNexsMXzLPLql0G8zWvOs7
-	gAhSCSdsklBpGRxBKuvGl0DTJXE1Absq0mQVVbINBjXusKtbbB9P6RhrkoApWAA78E/rA/KonnNeQ
-	EVIRvgTPUYmO9itNg2Pv7s0i1YveIJ6Cz5/diY2eOTl26PoajHwpDpZdS8Nuz1xyjTJ6FDjKRlb6e
-	qa8Db514YeQE8E1nQHm+uZlnnHb5TpsVh5mDbsM26uDfAP0vUl67adHKO2VeVTlPlv+c8znoTGcx2
-	CbLFi4pLDSs164RRoexQ==;
+	List-Owner; bh=e6QuSYh6Ejxm/t7HbjHRbLD4gsQH9LNT2esLca7g/n4=; b=QCbE1IkYrqixCf
+	FQYCRyJrYzJkp/+2xCQl8VNl5o5omsttlfm3yjVK2cSZybq2gTP+tuhXPjrmxPLzedLGXX9FAGwSj
+	mmYzgQXoo0xOT+ABYJNqTsE7FOCzQqqzhjYhk3zdlW6hbRyxTsknzOxbepJxjYAhHVaAHzl1lz3q/
+	rY61QsiyNGHKy07fS6xD+pXmWZbJjawHdDbfMeUkWpURAlaZiTjyy28tZqTtugPmFvA3yHDIFZ2RP
+	1Y2PGaHARKHty5iToYV9Ynx95s8ZJ2qQECaV0GSWj3FLTcuflFs64d4r8h1BzChS9Dv0+rUugaBZG
+	uYaHaiy5mGkOOBLeSHOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDXm-0094ce-09;
-	Wed, 17 May 2023 09:34:02 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1pzEFV-009JnJ-1d;
+	Wed, 17 May 2023 10:19:13 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzDXj-0094bw-1V
-	for linux-rockchip@lists.infradead.org;
-	Wed, 17 May 2023 09:34:00 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pzDXZ-0000f7-0f; Wed, 17 May 2023 11:33:49 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1pzDXX-0003G5-3n; Wed, 17 May 2023 11:33:47 +0200
-Date: Wed, 17 May 2023 11:33:47 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	kernel@pengutronix.de, Will Deacon <will@kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 07/21] PM / devfreq: rockchip-dfi: introduce channel
- mask
-Message-ID: <20230517093347.GV29365@pengutronix.de>
+	id 1pzEFQ-009Jfo-2M;
+	Wed, 17 May 2023 10:19:10 +0000
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QLpvs6SKZz67bLC;
+	Wed, 17 May 2023 18:18:01 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 17 May
+ 2023 11:19:03 +0100
+Date: Wed, 17 May 2023 11:19:02 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+CC: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>,
+	<linux-rockchip@lists.infradead.org>, Kyungmin Park
+	<kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Michael
+ Riesch <michael.riesch@wolfvision.net>, <kernel@pengutronix.de>, Will Deacon
+	<will@kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v4 04/21] PM / devfreq: rockchip-dfi: Add SoC specific
+ init function
+Message-ID: <20230517111902.00003867@Huawei.com>
+In-Reply-To: <20230517092040.GT29365@pengutronix.de>
 References: <20230505113856.463650-1-s.hauer@pengutronix.de>
- <20230505113856.463650-8-s.hauer@pengutronix.de>
- <20230516165009.00007f3e@Huawei.com>
+	<20230505113856.463650-5-s.hauer@pengutronix.de>
+	<20230516164017.00002774@Huawei.com>
+	<20230517092040.GT29365@pengutronix.de>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230516165009.00007f3e@Huawei.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_023359_525497_A9B323CD 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20230517_031908_914053_065833B4 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,54 +75,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 16, 2023 at 04:50:09PM +0100, Jonathan Cameron wrote:
-> On Fri,  5 May 2023 13:38:42 +0200
-> Sascha Hauer <s.hauer@pengutronix.de> wrote:
+
+> >   
+> > > +
+> > > +	return 0;
+> > > +};
+> > > +
+> > > +struct rockchip_dfi_devtype_data {
+> > > +	int (*init)(struct rockchip_dfi *dfi);
+> > > +};
+> > > +
+> > > +static struct rockchip_dfi_devtype_data rk3399_devtype_data = {
+> > > +	.init = rk3399_dfi_init,  
+> > 
+> > I guess the 'why' will become apparent later in the set, but at this
+> > stage a callback to get the ddr type would have made more sense and
+> > kept the data local to where it was needed.  
 > 
-> > Different Rockchip SoC variants have a different number of channels.
-> > Introduce a channel mask to make the number of channels configurable
-> > from SoC initialization code.
+> struct rockchip_dfi_devtype_data will still have a single member by the
+> end of this series. The reason I still prefer a struct type is that I've
+> seen enough drivers that passed a single ad-hoc value in devtype data
+> that I had to convert to pass a struct type because I had to add another
+> value.
 > 
-> If it's just numbers, why not a count rather than a mask?
+> Well, I just realized that I have configured several values that I could
+> have put in that struct in the SoC specific init function instead, so
+> there's no real point in using a struct type.
 
-It's a mask in the downstream driver. I guess it's not necessarily the
-first channels that are enabled when not all channels are enabled. It
-could also be channels 0 and 2 that are enabled.
+I'm fine with the above being a struct - it was more the question of why
+do everything in one 'init' function rather than having more specific
+callbacks, e.g. one to just read the DDR type where you need it.
 
-I don't have any example board for this case though, so I can only
-guess.
 
-> > -	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
-> > -		u32 a = count.c[i].access - last->c[i].access;
-> > -		u32 t = count.c[i].total - last->c[i].total;
-> > +	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
-> > +		u32 a, t;
-> > +
-> > +		if (!(dfi->channel_mask & BIT(i)))
-> > +			continue;
-> > +
-> > +		a = count.c[i].access - last->c[i].access;
-> > +		t = count.c[i].total - last->c[i].total;
-> >  
-> >  		if (a > access) {
-> >  			access = a;
-> > @@ -186,6 +194,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
-> >  	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> >  			RK3399_PMUGRF_DDRTYPE_MASK;
-> >  
-> > +	dfi->channel_mask = 3;
-> 
-> GENMASK(1, 0)
-
-OK.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
