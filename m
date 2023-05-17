@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE009C77B75
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 12:00:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF5E1C77B75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 14:27:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eDrGbs7tBhg/DxFKQpqakydnv5agFrbipDLxit1uC54=; b=CNsv2Wi9G8rEcE
-	H3l1hSL7i/tbMOmZ826mItQ8J8yDccR6mmWr7RC6tY9nMDYJt0/sEJ+I+J8TYwDt2bs7K3sGAyvKN
-	Z4RYA8jcLkxZxIp/wrObVwgQ9ekXfKYKQE/+fjSnmZ2h2XG22jhfRXk09TRXrnTMHqYKZa3kVanBa
-	YFwn9NdKndyg+MpfZtQZg6eWxLMJlWjSegyI4/SVu3cEAyF0v+juSW+kc3iTi001kdcev9QtV6BFE
-	tDl3NfAOe+9k9JzOEb2OalzSPJPGwxdETyyJrVdIekYGtHzvxJo0grZHZaFAZytCQAeq0ou5iofga
-	DEQRiyRXSzAezwYQhyEA==;
+	List-Owner; bh=JoRSzATkNwvGpnI/rmnFFODjYu6QTU1xQkLjjd87A6Y=; b=YcUujIuOn5TfS1
+	4y+FDX6ZeI9/2mG2Y4zlco2yhzShekOqUJkvEytirmgDEs8DmmowXbKcyN2+BrJQgsTBpn15R3koQ
+	arLme7xTHsVyCX6aV1q7adIJ8lYevXQnQEiyt/AHy176j0yIWqCeYRlWRzacjeie5TvYv5UanXAE5
+	QocDUGihj5kRBYCGvFXc1QBSZIG5SdAsPS+4Ixeu9kaLI3eewT3o502EBiBL9enMvXMBI3ZtoO+rM
+	Tz4GFvtcfeUsTkAM3RIPPlAwAV6MRwD+SIPa7iJaVTkynZcV7VUX9Bojgr2r9S7YVU/DYuxxuSeE1
+	bqlVLGjK0ncGwwYku/Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzFpa-009iah-09;
-	Wed, 17 May 2023 12:00:34 +0000
-Received: from metis.ext.pengutronix.de ([85.220.165.71])
+	id 1pzI76-00A7nA-2G;
+	Wed, 17 May 2023 14:26:48 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzElM-009UN8-0J
+	id 1pzI73-00A7lY-1H
 	for linux-rockchip@lists.infradead.org;
-	Wed, 17 May 2023 10:52:09 +0000
+	Wed, 17 May 2023 14:26:47 +0000
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pzElJ-0005hA-8b; Wed, 17 May 2023 12:52:05 +0200
+	id 1pzI71-00074N-Ls; Wed, 17 May 2023 16:26:43 +0200
 Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1pzElD-0006lv-W9; Wed, 17 May 2023 12:52:00 +0200
-Date: Wed, 17 May 2023 12:51:59 +0200
+	id 1pzI6s-0000m8-3t; Wed, 17 May 2023 16:26:34 +0200
+Date: Wed, 17 May 2023 16:26:34 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 Cc: linux-rockchip@lists.infradead.org,
@@ -46,15 +46,14 @@ Cc: linux-rockchip@lists.infradead.org,
 	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
 	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v4 08/21] PM / devfreq: rk3399_dmc,dfi: generalize
- DDRTYPE defines
-Message-ID: <20230517105159.GW29365@pengutronix.de>
+Subject: Re: [PATCH v4 15/21] PM / devfreq: rockchip-dfi: Add perf support
+Message-ID: <20230517142634.GA29365@pengutronix.de>
 References: <20230505113856.463650-1-s.hauer@pengutronix.de>
- <20230505113856.463650-9-s.hauer@pengutronix.de>
- <20230516165455.00002f5b@Huawei.com>
+ <20230505113856.463650-16-s.hauer@pengutronix.de>
+ <20230517115359.0000429e@Huawei.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230516165455.00002f5b@Huawei.com>
+In-Reply-To: <20230517115359.0000429e@Huawei.com>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-Accept-Language: de,en
@@ -65,8 +64,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_035208_130191_DE994DF4 
-X-CRM114-Status: GOOD (  35.76  )
+X-CRM114-CacheID: sfid-20230517_072645_587869_2721E7C7 
+X-CRM114-Status: GOOD (  54.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,95 +82,306 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 16, 2023 at 04:54:55PM +0100, Jonathan Cameron wrote:
-> On Fri,  5 May 2023 13:38:43 +0200
+On Wed, May 17, 2023 at 11:53:59AM +0100, Jonathan Cameron wrote:
+> On Fri,  5 May 2023 13:38:50 +0200
 > Sascha Hauer <s.hauer@pengutronix.de> wrote:
 > 
-> > The DDRTYPE defines are named to be RK3399 specific, but they can be
-> > used for other Rockchip SoCs as well, so replace the RK3399_PMUGRF_
-> > prefix with ROCKCHIP_. They are defined in a SoC specific header
-> > file, so when generalizing the prefix also move the new defines to
-> > a SoC agnostic header file. While at it use GENMASK to define the
-> > DDRTYPE bitfield and give it a name including the full register name.
-> 
-> Great - you covered this one a few patches later.
-> 
-> A few suggestions inline but this looks basically fine to me.
+> > The DFI is a unit which is suitable for measuring DDR utilization, but
+> > so far it could only be used as an event driver for the DDR frequency
+> > scaling driver. This adds perf support to the DFI driver.
+> > 
+> > Usage with the 'perf' tool can look like:
+> > 
+> > perf stat -a -e rockchip_ddr/cycles/,\
+> > 		rockchip_ddr/read-bytes/,\
+> > 		rockchip_ddr/write-bytes/,\
+> > 		rockchip_ddr/bytes/ sleep 1
+> > 
+> >  Performance counter stats for 'system wide':
+> > 
+> >         1582524826      rockchip_ddr/cycles/
+> >            1802.25 MB   rockchip_ddr/read-bytes/
+> >            1793.72 MB   rockchip_ddr/write-bytes/
+> >            3595.90 MB   rockchip_ddr/bytes/
+> > 
+> >        1.014369709 seconds time elapsed
+> > 
+> > perf support has been tested on a RK3568 and a RK3399, the latter with
+> > dual channel DDR.
 > > 
 > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> 
+> A few comments to add to Robin's review.
+> 
 > > ---
-> >  drivers/devfreq/event/rockchip-dfi.c | 10 ++++++----
-> >  drivers/devfreq/rk3399_dmc.c         | 10 +++++-----
-> >  include/soc/rockchip/rk3399_grf.h    |  7 +------
-> >  include/soc/rockchip/rockchip_grf.h  | 15 +++++++++++++++
-> >  4 files changed, 27 insertions(+), 15 deletions(-)
-> >  create mode 100644 include/soc/rockchip/rockchip_grf.h
+> >  drivers/devfreq/event/rockchip-dfi.c | 349 +++++++++++++++++++++++++++
+> >  include/soc/rockchip/rk3399_grf.h    |   2 +
+> >  include/soc/rockchip/rk3568_grf.h    |   1 +
+> >  3 files changed, 352 insertions(+)
 > > 
 > > diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> > index 18d578730fd0c..7896cd8beb143 100644
+> > index eae010644935a..400b1b360e3c9 100644
 > > --- a/drivers/devfreq/event/rockchip-dfi.c
 > > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> > @@ -18,7 +18,10 @@
-> >  #include <linux/list.h>
-> >  #include <linux/of.h>
+> > @@ -20,6 +20,7 @@
 > >  #include <linux/of_device.h>
-> > +#include <linux/bitfield.h>
-> > +#include <linux/bits.h>
-> 
-> Why bits.h?
-
-For GENMASK.
-
-It's included indirectly anyway, but being explicit shouldn't hurt.
-
-> 
+> >  #include <linux/bitfield.h>
+> >  #include <linux/bits.h>
+> > +#include <linux/perf_event.h>
 > >  
-> > +#include <soc/rockchip/rockchip_grf.h>
+> >  #include <soc/rockchip/rockchip_grf.h>
 > >  #include <soc/rockchip/rk3399_grf.h>
+> > @@ -41,14 +42,30 @@
+> >  					 DDRMON_CTRL_LPDDR4 | \
+> >  					 DDRMON_CTRL_LPDDR23)
 > >  
-> >  #define DMC_MAX_CHANNELS	2
-> > @@ -74,9 +77,9 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
-> >  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+> > +#define DDRMON_CH0_WR_NUM		0x20
+> > +#define DDRMON_CH0_RD_NUM		0x24
+> >  #define DDRMON_CH0_COUNT_NUM		0x28
+> >  #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
+> >  #define DDRMON_CH1_COUNT_NUM		0x3c
+> >  #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
 > >  
-> >  	/* set ddr type to dfi */
-> > -	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
-> > +	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
-> >  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
-> > -	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
-> > +	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
-> >  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
-> 
-> Maybe a switch statement here as well?  In particular I'm interested
-> that there is no sign of DDR3 or LPDDR2 here and I think it would be good to
-> make that explicit given it's defined.
-
-That's done later in this series, but you already noticed that.
-
-> > diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-> > new file mode 100644
-> > index 0000000000000..dc77bb762a05a
-> > --- /dev/null
-> > +++ b/include/soc/rockchip/rockchip_grf.h
-> > @@ -0,0 +1,15 @@
-> > +/* SPDX-License-Identifier: GPL-2.0+ */
-> > +/*
-> > + * Rockchip General Register Files definitions
-> > + */
+> > +enum access_type {
+> > +	PERF_EVENT_CYCLES,
+> > +	PERF_EVENT_READ_BYTES,
+> > +	PERF_EVENT_WRITE_BYTES,
+> > +	PERF_EVENT_BYTES,
+> > +	PERF_ACCESS_TYPE_MAX,
+> > +};
 > > +
-> > +#ifndef __SOC_ROCKCHIP_GRF_H
-> > +#define __SOC_ROCKCHIP_GRF_H
-> > +
-> > +/* Rockchip DDRTYPE defines */
-> > +#define ROCKCHIP_DDRTYPE_DDR3	3
-> > +#define ROCKCHIP_DDRTYPE_LPDDR2	5
-> > +#define ROCKCHIP_DDRTYPE_LPDDR3	6
-> > +#define ROCKCHIP_DDRTYPE_LPDDR4	7
+> >  struct dmc_count_channel {
+> >  	u32 access;
+> >  	u32 total;
+> > +	u32 read_access;
+> > +	u32 write_access;
 > 
-> Maybe worth an enum so you can give ddr_type a named type and
-> the compiler can see if you've handled all the cases for
-> the switch statements?
+> Silly question, but is access = read_access + write_access?
+> If so no need for keeping track of all 3 around.
 
-Ok, will do.
+Yes, 'access' is the sum of 'read_access' and 'write_access'.
+
+The number of accesses can be read from a separate register. The original
+devfreq driver used that register only, the perf support now wants to
+have the read and write accesses counted separately.
+
+You are right, we could now remove 'access'. Not sure if it's worth it
+though, at least during development I was happy to see that the values
+are consistent.
+
+> 
+> Come to think of it, total could do with a more meaningful name
+> or a comment at least.  total what?
+
+'total' counts the number of clock cycles in the DDR controller. I'll
+add a patch to rename it accordingly.
+
+> 
+> > +};
+> > +
+> > +struct dmc_count_channel64 {
+> > +	u64 count[PERF_ACCESS_TYPE_MAX];
+> >  };
+> 
+> Why bother with the structure?
+
+because copying a struct like this works:
+
+	struct dmc_count_channel64 a, b;
+
+	a = b;
+
+With plain arrays it doesn't work without looping over the array or
+using memcpy.
+
+> 
+> >  
+> >  struct dmc_count {
+> > @@ -65,6 +82,7 @@ struct rockchip_dfi {
+> >  	struct devfreq_event_desc desc;
+> >  	struct dmc_count count;
+> >  	struct dmc_count last_event_count;
+> > +	struct dmc_count last;
+> 
+> Needs a more descriptive name...
+
+Yes, I already changed that here. This will look differently overall
+next round.
+
+> 
+> >  	struct device *dev;
+> >  	void __iomem *regs;
+> >  	struct regmap *regmap_pmu;
+> > @@ -73,6 +91,15 @@ struct rockchip_dfi {
+> >  	struct mutex mutex;
+> >  	u32 ddr_type;
+> >  	unsigned int channel_mask;
+> > +	enum cpuhp_state cpuhp_state;
+> > +	struct hlist_node node;
+> > +	struct pmu pmu;
+> > +	struct hrtimer timer;
+> > +	unsigned int cpu;
+> > +	struct dmc_count_channel64 frr;
+> > +	int active_events;
+> > +	int burst_len;
+> > +	int buswidth[DMC_MAX_CHANNELS];
+> >  };
+> >  
+> >  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+> > @@ -148,6 +175,10 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
+> >  	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
+> >  		if (!(dfi->channel_mask & BIT(i)))
+> >  			continue;
+> > +		count->c[i].read_access = readl_relaxed(dfi_regs +
+> > +				DDRMON_CH0_RD_NUM + i * 20);
+> > +		count->c[i].write_access = readl_relaxed(dfi_regs +
+> > +				DDRMON_CH0_WR_NUM + i * 20);
+> 
+> I guess no expensive, but you could gate these on the perf support being built given
+> not used for anything else
+
+Right, I think it's better readable without this ifdef or IS_ENABLED().
+
+> 
+> >  		count->c[i].access = readl_relaxed(dfi_regs +
+> >  				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+> >  		count->c[i].total = readl_relaxed(dfi_regs +
+> > @@ -218,6 +249,305 @@ static const struct devfreq_event_ops rockchip_dfi_ops = {
+> >  	.set_event = rockchip_dfi_set_event,
+> >  };
+> >  
+> 
+> > +
+> > +static void rockchip_ddr_perf_event_start(struct perf_event *event, int flags)
+> > +{
+> > +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
+> > +
+> > +	rockchip_ddr_perf_update_counters(dfi);
+> > +
+> > +	local64_set(&event->hw.prev_count, dfi->frr.count[event->attr.config]);
+> > +}
+> > +
+> > +static int rockchip_ddr_perf_event_add(struct perf_event *event, int flags)
+> > +{
+> > +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
+> > +	struct hw_perf_event *hwc = &event->hw;
+> > +
+> > +	hwc->state |= PERF_HES_STOPPED;
+> > +
+> > +	dfi->active_events++;
+> > +
+> > +	if (dfi->active_events == 1) {
+> > +		rockchip_dfi_enable(dfi);
+> > +		hrtimer_start(&dfi->timer, 0, HRTIMER_MODE_REL);
+> 
+> Trigger immediately?  Lot of work to just call the function.  Perhaps
+> instead wrap the contents of the callback with two functions, the callback
+> itself and one that does same reads etc and starts the timer.
+
+No need to trigger immediately, it just has to trigger before the timers
+overflow. I can pass ns_to_ktime(NSEC_PER_SEC) instead of 0.
+
+> 
+> I guess it doesn't really matter though.
+> 
+> To my mind the timer start should be in the event_start callback, but I
+> see there is plenty of precedence for doing it add and I doubt it matters.
+> 
+> > +	}
+> > +
+> > +	if (flags & PERF_EF_START)
+> > +		rockchip_ddr_perf_event_start(event, flags);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void rockchip_ddr_perf_event_stop(struct perf_event *event, int flags)
+> > +{
+> > +	rockchip_ddr_perf_event_update(event);
+> > +}
+> > +
+> > +static void rockchip_ddr_perf_event_del(struct perf_event *event, int flags)
+> > +{
+> > +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
+> > +
+> > +	rockchip_ddr_perf_event_stop(event, PERF_EF_UPDATE);
+> > +
+> > +	dfi->active_events--;
+> > +
+> > +	if (dfi->active_events == 0) {
+> > +		hrtimer_cancel(&dfi->timer);
+> > +		rockchip_dfi_disable(dfi);
+> > +	}
+> > +}
+> > +
+> > +static enum hrtimer_restart rockchip_dfi_timer(struct hrtimer *timer)
+> > +{
+> > +	struct rockchip_dfi *dfi = container_of(timer, struct rockchip_dfi, timer);
+> > +	ktime_t timeout;
+> > +
+> > +	rockchip_ddr_perf_update_counters(dfi);
+> > +
+> > +	timeout = ns_to_ktime(NSEC_PER_SEC);
+> > +	hrtimer_forward_now(&dfi->timer, timeout);
+> 
+> Trivial: No real advantage in local variable.
+> 
+> 	hrtimer_forward-now(&dfi->timer, ns_to_ktime(NSEC_PER_SEC));
+> 
+> > +
+> > +	return HRTIMER_RESTART;
+> > +};
+> 
+> ...
+> 
+> > +static int rockchip_ddr_perf_init(struct rockchip_dfi *dfi)
+> > +{
+> 
+> ...
+> 
+> > +
+> > +	dfi->cpuhp_state = ret;
+> > +
+> > +	/* Register the pmu instance for cpu hotplug */
+> 
+> I'd argue that's pretty obvious so comment not needed.
+> 
+> > +	ret = cpuhp_state_add_instance_nocalls(dfi->cpuhp_state, &dfi->node);
+> > +	if (ret) {
+> > +		dev_err(dfi->dev, "Error %d registering hotplug\n", ret);
+> > +		goto cpuhp_instance_err;
+> > +	}
+> > +
+> > +	hrtimer_init(&dfi->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+> > +	dfi->timer.function = rockchip_dfi_timer;
+> > +
+> > +	switch (dfi->ddr_type) {
+> > +	case ROCKCHIP_DDRTYPE_LPDDR2:
+> > +	case ROCKCHIP_DDRTYPE_LPDDR3:
+> > +		dfi->burst_len = 8;
+> > +		break;
+> > +	case ROCKCHIP_DDRTYPE_LPDDR4:
+> > +	case ROCKCHIP_DDRTYPE_LPDDR4X:
+> > +		dfi->burst_len = 16;
+> > +		break;
+> > +	}
+> > +
+> > +	ret = perf_pmu_register(pmu, "rockchip_ddr", -1);
+> > +	if (ret)
+> > +		goto ddr_perf_err;
+> > +
+> > +	return 0;
+> > +
+> > +ddr_perf_err:
+> > +	cpuhp_state_remove_instance_nocalls(dfi->cpuhp_state, &dfi->node);
+> > +cpuhp_instance_err:
+> > +	cpuhp_remove_multi_state(dfi->cpuhp_state);
+> 
+> Instead of a single devm callback as suggested below, you could
+> do them separately for the various steps.  That way you can avoid
+> the need to do explicit error handling in this function.
+
+Ok, will add some devm_add_action_or_reset().
 
 Sascha
 
