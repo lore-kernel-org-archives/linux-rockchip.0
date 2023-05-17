@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D19F5C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 10:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF264C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 10:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o5y49yEJ/9pybcxr9nxUhxXnAtIMMZrLd2qX3+mpv/0=; b=xFyY2FCqcS9S7V
-	g4Jv+I+bXGiJKWQmgeUEtv3FMomjZ1q6eWPpkpAaIrQTZQ4qV1uzzqgufqqHf6QGynCAD6mW8KIdB
-	ZcayxsvGNQpeG2cwJOdfEebrbprNrzIqhvyf7K1icsogb2VAwrvjzScWtq2r+EBHAf3eWoFAWfbPY
-	Z/M0Pp9UApKBcjdoZ7CJ+wyz2u15Ke+FVvIC+hquLFcC52gR4p611wGw+DNyxcQtWTfYhBU1BDlOl
-	MrJ2zeRoq0MjX1fJMp1ZyDaK6pk+FAqLwf7I9IQk5UsOZAq5Ixe2YXvtcKhz/NSwUVljDWUMvZwSs
-	yIm6nub8DqGTQKuVhlTA==;
+	List-Owner; bh=ssHXqTkNBS4lChslSzblFY+6qikin6c6JLplsYsv4d0=; b=yQD6cNERz2nDUz
+	DfswmikEZdlXETpnUmZu/H+862QgaohQH8v7b1sLt5BAiAAxp79h9TqJevJg2aVk9eqtbae1XIp+b
+	pc7WRZA6IB7NwDOpBqAuN/ie2ws6BXplMDlXUSfb0GFXEBYRyBUPpEjdg5iv/hrq7af1thITKuGwg
+	3kiHAiQJyU7EvV3SwI0l44/oHnAWdLafz6GnSfZ4n/XmTvxBK8sX0HnzVZ7baUAiw6lJ6iSzl72+p
+	ArhZnBhI8UtquTtsUsHR61K2xQrNRPQdGP0HAAwf+xog+F7BM6Hpq5WzLK386IQ5Kn7WM8TqZyjOt
+	oDMG4xHbWo6HvoBi1NAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzESs-009QaT-2p;
-	Wed, 17 May 2023 10:33:02 +0000
+	id 1pzETw-009QnH-1W;
+	Wed, 17 May 2023 10:34:08 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzESo-009QYY-1z;
-	Wed, 17 May 2023 10:33:00 +0000
+	id 1pzETt-009QmE-2S;
+	Wed, 17 May 2023 10:34:07 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D1A7A6605877;
-	Wed, 17 May 2023 11:32:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AFF396605877;
+	Wed, 17 May 2023 11:34:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684319574;
-	bh=yiNihgP3IrNI3loR/8a+ht/13x21xzVRUN2RDyTYeg4=;
+	s=mail; t=1684319644;
+	bh=CNPDAErWqxe5Rz37F5idUDbn9tn9q19Yz8WhGFdKC/s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SylBTcxfImZLgeZy1TmMJVYWvo1PI/aclIfEm7SGQAyttBoQapaytZ0swJcMwAvZh
-	 bKfSaqLUB7e/bWNBbq6kjLMhK14dxPR4CLitPNZeNIcH9ppHS4EwwkNZM1AdOSupYH
-	 OWiOQF+G4PrytuzEyPsbkUvSCV3RO/bjTTuFGSKgvlChe+xtpMgnRG+mTPr16D99t7
-	 J7yW5TrrGcj9FUMWdikNzgmdA/WnF+U1LkcqnA6VqOAPPvMFU/Jp28qUBFSxWnIyCn
-	 vZ4sOlggmFfKyiUuJKaO2Px7sfatKk652nV/RApQGUvCfpyw2rHDJFy51XkP0pYVAi
-	 shjBqLWjhtCcA==
-Message-ID: <c5315454-a155-3842-00b7-08b6b8ff92e6@collabora.com>
-Date: Wed, 17 May 2023 12:32:51 +0200
+	b=Qhrp+52jnkMGIO2iKOvtOSuZFp1FDgQ22+KAjPZK8PLYDp3yHfP3bFvBRiViC/BXE
+	 mjH21LxpxsGpEPYE4VsqECzWYcHwCRRyjYrQBHcbAl62fdtlairBikh4sT8tjS6LBY
+	 aHMstjfkISKqAD4+rfrwor0iBZ1jmk4Ivc9dMIgmF2YzGp3qkqL4INwuL5R49vabkW
+	 QNTw3WMXoHYbyxH4JYg1hLTXySv2eo/zuQuAyCAr4USL34jHr5l20FOJBBZVYARTRI
+	 VoHCSXfyhubGMRCsNopd+QdKvbXPi6Sg2VSyujk4ehp9yhFEJN1rNEn7YABnwmJoJ1
+	 RFZL98bf9Ik7A==
+Message-ID: <632269cc-db60-d405-d31f-b80a7faf1791@collabora.com>
+Date: Wed, 17 May 2023 12:34:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.1
-Subject: Re: [PATCH 1/7] iio: adc: rockchip_saradc: Add support for RK3588
+Subject: Re: [PATCH 3/7] iio: adc: rockchip_saradc: Use
+ of_device_get_match_data
+Content-Language: en-US
 To: Shreeya Patel <shreeya.patel@collabora.com>, jic23@kernel.org,
  lars@metafoo.de, heiko@sntech.de, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com
 Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
- gustavo.padovan@collabora.com, serge.broslavsky@collabora.com,
- Simon Xue <xxm@rock-chips.com>
+ gustavo.padovan@collabora.com, serge.broslavsky@collabora.com
 References: <20230516230051.14846-1-shreeya.patel@collabora.com>
- <20230516230051.14846-2-shreeya.patel@collabora.com>
-Content-Language: en-US
+ <20230516230051.14846-4-shreeya.patel@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230516230051.14846-2-shreeya.patel@collabora.com>
+In-Reply-To: <20230516230051.14846-4-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_033258_829149_BD2313DE 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20230517_033405_929214_07378995 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,111 +82,54 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Il 17/05/23 01:00, Shreeya Patel ha scritto:
-> Refactor conversion operation to support rk3588 saradc and
-> add separate start, read, powerdown in respective hooks.
+> Use of_device_get_match_data() to simplify the code.
 > 
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
 > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 > ---
->   drivers/iio/adc/rockchip_saradc.c | 127 +++++++++++++++++++++++++++---
->   1 file changed, 115 insertions(+), 12 deletions(-)
+>   drivers/iio/adc/rockchip_saradc.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 > 
 > diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index 79448c5ffc2a..ac6fdf8e673b 100644
+> index 05b66eff9a44..05ea823a8f16 100644
 > --- a/drivers/iio/adc/rockchip_saradc.c
 > +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -38,10 +38,29 @@
->   #define SARADC_TIMEOUT			msecs_to_jiffies(100)
->   #define SARADC_MAX_CHANNELS		8
+> @@ -408,10 +408,10 @@ static void rockchip_saradc_regulator_unreg_notifier(void *data)
 >   
-> +/* v2 registers */
-> +#define SARADC2_CONV_CON		0x0
-> +#define SARADC_T_PD_SOC			0x4
-> +#define SARADC_T_DAS_SOC		0xc
-> +#define SARADC2_END_INT_EN		0x104
-> +#define SARADC2_ST_CON			0x108
-> +#define SARADC2_STATUS			0x10c
-> +#define SARADC2_END_INT_ST		0x110
-> +#define SARADC2_DATA_BASE		0x120
-> +
-> +#define SARADC2_EN_END_INT		BIT(0)
-> +#define SARADC2_START			BIT(4)
-> +#define SARADC2_SINGLE_MODE		BIT(5)
-> +
-> +struct rockchip_saradc;
-> +
->   struct rockchip_saradc_data {
->   	const struct iio_chan_spec	*channels;
->   	int				num_channels;
->   	unsigned long			clk_rate;
-> +	void (*start)(struct rockchip_saradc *info, int chn);
-> +	int (*read)(struct rockchip_saradc *info);
-> +	void (*power_down)(struct rockchip_saradc *info);
->   };
+>   static int rockchip_saradc_probe(struct platform_device *pdev)
+>   {
+> +	const struct rockchip_saradc_data *match_data;
+
+s/match_data/data/g maybe?
+
+Regardless of that,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+>   	struct rockchip_saradc *info = NULL;
+>   	struct device_node *np = pdev->dev.of_node;
+>   	struct iio_dev *indio_dev = NULL;
+> -	const struct of_device_id *match;
+>   	int ret;
+>   	int irq;
 >   
->   struct rockchip_saradc {
-> @@ -60,27 +79,77 @@ struct rockchip_saradc {
->   	struct notifier_block nb;
->   };
+> @@ -425,13 +425,13 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>   	}
+>   	info = iio_priv(indio_dev);
 >   
-> -static void rockchip_saradc_power_down(struct rockchip_saradc *info)
-> +static void rockchip_saradc_reset_controller(struct reset_control *reset);
-> +
-> +static void rockchip_saradc_start_v1(struct rockchip_saradc *info, int chn)
-> +{
-> +	/* 8 clock periods as delay between power up and start cmd */
-> +	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
-> +	/* Select the channel to be used and trigger conversion */
-> +	writel(SARADC_CTRL_POWER_CTRL | (chn & SARADC_CTRL_CHN_MASK) |
-> +	       SARADC_CTRL_IRQ_ENABLE, info->regs + SARADC_CTRL);
-> +}
-> +
-> +static void rockchip_saradc_start_v2(struct rockchip_saradc *info, int chn)
-> +{
-> +	int val;
-> +
-> +	if (info->reset)
-> +		rockchip_saradc_reset_controller(info->reset);
-> +
-> +	writel_relaxed(0xc, info->regs + SARADC_T_DAS_SOC);
-> +	writel_relaxed(0x20, info->regs + SARADC_T_PD_SOC);
-> +	val = SARADC2_EN_END_INT << 16 | SARADC2_EN_END_INT;
+> -	match = of_match_device(rockchip_saradc_match, &pdev->dev);
+> -	if (!match) {
+> +	match_data = of_device_get_match_data(&pdev->dev);
+> +	if (!match_data) {
+>   		dev_err(&pdev->dev, "failed to match device\n");
+>   		return -ENODEV;
+>   	}
+>   
+> -	info->data = match->data;
+> +	info->data = match_data;
+>   
+>   	/* Sanity check for possible later IP variants with more channels */
+>   	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
 
-What about using bitfield macros?
-
-/* "LO" and "HI" may get a better name, if there's any possible one! */
-#define SARADC2_EN_END_INT_LO BIT(0)
-#define SARADC2_EN_END_INT_HI BIT(16)
-
-val = FIELD_PREP(SARADC_EN_END_INT_LO, 1);
-val |= FIELD_PREP(SARADC_EN_END_INT_HI, 1);
-writel ....
-
-Otherwise, if it's about two really "specular" instances, you can probably
-keep the current definition as SARADC2_EN_END_INT and do
-
-val = FIELD_PREP(SARADC_EN_END_INT, 1);
-val |= val << 16;
-writel ...
-
-/* note: high, low bits are unknown to me, I assumed it's 16 bits :-) */
-#define SARADC2_CONV_CHANNELS GENMASK(15, 0)
-
-val = FIELD_PREP(SARADC2_START, 1);
-val |= FIELD_PREP(SARADC2_SINGLE_MODE, 1);
-val |= FIELD_PREP(SARADC2_CONV_CHANNELS, chn);
-val |= val << 16;
-writel ...
-
-
-> +	writel_relaxed(val, info->regs + SARADC2_END_INT_EN);
-> +	val = SARADC2_START | SARADC2_SINGLE_MODE | chn;
-> +	writel(val << 16 | val, info->regs + SARADC2_CONV_CON);
-> +}
-> +
-
-Cheers,
-Angelo
 
 
 _______________________________________________
