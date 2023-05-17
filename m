@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3489C77B7D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 14:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA611C7EE2A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 18:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ehaWRLbZKsCkfE6muhx96m9oGKub/JN5tNAMWD2B524=; b=emoeg1b+Zk6A/2
-	zJ57krODN7tvKPb/ULO0cjPCOvaida4IVYxm2gNcN7Q35f0BrsW5LGgoSBPYguQ4ohxOLM1OBHuFK
-	CEozgVt0YduCt6kyfAjVL3gsDaNBPBxyQU7O1aFpRfoT2r65OW7Bz6ZbrADM1zEpIfr1vKpb+LRMr
-	3crkU2lhok2fsMfQC7umo/V6GhK8PraclHzHM5lvxurTOnqML+rH0Vipt08MJa5YgK4XYgWXiQ4L3
-	APAvFloDKvCzDFMyVKuL8lediYT0uo1XxEuJWnw8mN/NIoOE1K4PfewAhJwuh8+PAsmA+5yqliPkY
-	n0mEe8dhK/eIdEDtiLkQ==;
+	List-Owner; bh=Hg8Brilj+f4CRf8pA22VWShjHFVX8JsN2sFp9ccYK1M=; b=qD8n/Rkk8BEfmZ
+	rnfGYZM1xD05qyXF7LrLIpTsq4VrHqRoBaP1MUbeNqoNu2zkgIqGMJHZLpDem/kX9zKSSRraJYXPv
+	+QMcZ2x3p0impR0Hpj3Py51xwjbGfH39e6A3icHcCZgZ6k4p//yg2kfPX+W9x2xcxDU9ZCoCskq77
+	lqV/HFr0yhZsADN57UZrjZfc6Q10oEsZC8vcyqmJxUVhMavMiWPCjxlwrVyPX9nQgOUFbVqs8Oce+
+	JxqxZdIUVDWIwMUHCrU77Z7UR2gnY2ohZAxORd8Mwi/nPivJB0qzJ2R9apnDGJEEI+YVqxvqkGmeg
+	kQLfghTvbLVjibUxZj1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzIQE-00ABAW-2P;
-	Wed, 17 May 2023 14:46:34 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1pzM3W-00Al3K-03;
+	Wed, 17 May 2023 18:39:22 +0000
+Received: from meesny.iki.fi ([195.140.195.201])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzIQB-00AB8g-0r;
-	Wed, 17 May 2023 14:46:33 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QLwrC31b6z6D973;
-	Wed, 17 May 2023 22:45:15 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 17 May
- 2023 15:46:17 +0100
-Date: Wed, 17 May 2023 15:46:16 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-CC: <linux-rockchip@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham
-	<myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>, Mark Rutland
-	<mark.rutland@arm.com>, <kernel@pengutronix.de>, Michael Riesch
-	<michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v4 10/21] PM / devfreq: rockchip-dfi: Add RK3568 support
-Message-ID: <20230517154616.000007f5@Huawei.com>
-In-Reply-To: <20230517113828.GY29365@pengutronix.de>
-References: <20230505113856.463650-1-s.hauer@pengutronix.de>
-	<20230505113856.463650-11-s.hauer@pengutronix.de>
-	<20230516170435.000040f5@Huawei.com>
-	<20230517113828.GY29365@pengutronix.de>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1pzM3R-00Al2A-1w;
+	Wed, 17 May 2023 18:39:18 +0000
+Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by meesny.iki.fi (Postfix) with ESMTPSA id 4QM2246QrlzyWs;
+	Wed, 17 May 2023 21:39:08 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
+	t=1684348752;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8YcIUdxitzihe1t5/ZGI9wvkvaRoi0KQ1Kz7/8cndvM=;
+	b=BzxLMX11TUdNJlNteF/kvfYKG3TEVjtCurDgWBTYDdYZKDCEZ9YyAOIQR6+CrneeYyv4ib
+	tgv74KUKpnn+QmDxoO641Oxe/FYb5tOSr7fIUglT5RWliWV4/UILXig+2n/iCmGHKXo9LE
+	GT58Ldcjv8pgMzsZxNiOqU6hNkjJM6M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=meesny; t=1684348752;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8YcIUdxitzihe1t5/ZGI9wvkvaRoi0KQ1Kz7/8cndvM=;
+	b=xIILG9xexUktDZ/49ewHgLVaOAmhxn3+MdP5YT7g2vanlcaMsSBCvUd4/izV7CSrkIdbxY
+	rXivjcUOCRvrevUoVJbC0+ZS4yKrRJxcdVzYyaof2P/42jINz8aEPGquPvx30Wez63EzRM
+	KxUQKX8pugKm2srcobeZs0s/+7zet+s=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Seal: i=1; s=meesny; d=iki.fi; t=1684348752; a=rsa-sha256; cv=none;
+	b=v3KzjL4T/vcd4IpVf0JO6WN6RbQfWLq+PzjJMPvg3pzKOjjB+tkwwgpeRe9ZPEzhG46TEF
+	FNxXniXOogtG6J0m/8OmE6uneLBkNV8Mfzf62y5Cv0WX4Enjzu1j5Tof0WM02WumLXW4Q/
+	ovc3DM5euPh/p36XrY/MZG/AewfLYeU=
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 28A6F634C94;
+	Wed, 17 May 2023 21:39:08 +0300 (EEST)
+Date: Wed, 17 May 2023 21:39:08 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Michael Tretter <m.tretter@pengutronix.de>
+Cc: Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Subject: Re: [PATCH RESEND 2/2] arm64: dts: rockchip: Add RGA2 support to
+ rk356x
+Message-ID: <ZGUfTP1EXtlJbtxJ@valkosipuli.retiisi.eu>
+References: <20230119-rk3568-rga-v1-0-43d4d14365e6@pengutronix.de>
+ <20230119-rk3568-rga-v1-2-43d4d14365e6@pengutronix.de>
 MIME-Version: 1.0
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20230119-rk3568-rga-v1-2-43d4d14365e6@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_074631_462526_4059C225 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20230517_113917_844173_EC21E80F 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,31 +104,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > > +
-> > > +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG2, &reg2);
-> > > +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG3, &reg3);
-> > > +
-> > > +	dfi->ddr_type = FIELD_GET(RK3568_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
-> > > +
-> > > +	if (FIELD_GET(RK3568_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
-> > > +		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;  
-> > 
-> > This is unusual enough that I'd suggest some comments to say how
-> > the bits are distributed across the two registers.  
-> 
-> I'd say in version 3 of the register structure they realized that they
-> need two bits more for the ddr_type and have put them in BIT(12) and
-> BIT(13) of RK3568_PMUGRF_OS_REG3. I think the code makes that
-> sufficiently clear and apart from this code taken from the downstream
-> kernel I don't have any documentation of these registers.
-> 
-> Sascha
-OK, that's fine.
+Hi folks,
 
-Jonathan
-
+On Fri, Jan 20, 2023 at 10:14:22AM +0100, Michael Tretter wrote:
+> The rk3568 also features a RGA2 block. Add the necessary device tree
+> node.
 > 
+> Acked-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 
+Can this patch be merged via the media tree? I don't expect merging the
+other one via a different tree being an issue either, so alternatively to
+the 1st patch:
+
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+
+-- 
+Regards,
+
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
