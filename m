@@ -4,133 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9D8FC77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 May 2023 23:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61DA1C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 May 2023 10:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fyim15pXYFtdCK+RPSnrwKNJZTt2z9eSyQr5iNbIgKs=; b=ttrfqRCtxv4En7
-	wdE2e64LszhR/4gAUZ1FiwewHSQ+WZNxg6DgOWdwVBAJHfWErSYbUItKrQmx8dX+VjKUYMblt7e4l
-	6Tx+KrII1H2WQUmaaAp7smezLb79Qj6EM3AmcUqOf14ewC6SUz5NG3NcUjk3t9egbKW6JSxNlvyN3
-	uuoA6SAdw9KZKQ2jQd7Z8reoV+o7VkgEapMGMjE0I+bc94EddewSfET5oHZslkU3PZQfmtmeK2R6r
-	g7C2rNtbYzYRETKOYKGtN0/4t1wH84AwfiZuOSDsj3+8T+F2nO1EwL/VAs8dqYCt+kxs2Lu2bX0wB
-	FUW/jQXBiwEemBQf3ygA==;
+	List-Owner; bh=OWrucfzzu8HPVSOIBsklVBTOqhAAgTjTJpGUWBIJlgA=; b=wtW0hb5hENs/8H
+	kp99TWXL9pZmYNVQUbDBr0uHftLA5lNwf4rmLY5eewx/WCueO3pPK13IuNsF608YEy5WJaV4dqQgG
+	jRvPuV4xBd2cujUgJ8TTY1+FeixtH6k5hRMDJPXhNRJrFRLXkAwUXAN9I+/LGFAt/nh/5guCDIX4C
+	IH7OQ7c1HdsmN88P9mFksZN0ohmafT3/q4UwWPl8UobpZXtyJCPGg59OQGZY/OPO/9jgaskNe+v1b
+	lnmd9NChXbRB0Yxj4dUn36NgkBMw7ucH5vz2zrOAVbyo6sazDUiK8o6HSO7Vbn1mdJteunRCym2sg
+	A9Ku3ED6HefTDZXzqwyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzQdV-00BNKa-2k;
-	Wed, 17 May 2023 23:32:49 +0000
-Received: from mail-dm6nam11on20612.outbound.protection.outlook.com ([2a01:111:f400:7eaa::612] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1pzb0x-00Cb5u-2h;
+	Thu, 18 May 2023 10:37:43 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pzQdS-00BNJW-35;
-	Wed, 17 May 2023 23:32:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g2J+oE80v+B1Kweq6z+STuijyPtEkRwz8pWoXjK5/lQ4oTOz3mj7kQzuMqaizG9F3CDXxn1SPDZ12GUVIrss5lQvnO8AOsROrJUHU08jWds/Xwy2ni4vQ6NT3akOEHyDNXrU0AQf7GG7/ndMSDYssSOJNoOJW7BNYvWmlow4ZTg+0Z1R81JLQTzISBekPtY7ntcWV4mBmsXlEhhFfteRdZHsEOze+edxxSXD+de+gaZsjOsIXvAO6wJx60ga8lV5hSOXUMsHx0ZRZtxb0cbb5t0uynFY9iRHWxsQFsEsfk5XV5EcivwgSrhAade6XQ/BagWzw4JeIkEsqBhvyzz5og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SU7+OS0futKjoBt58LQ+nXP395IRweXRjQi4kW6PQLU=;
- b=Oeo0w4/5iIve7I8iVusfV7B8W3I/Fz6Wxu2h+/W+gJKHNDn5maJ1ZKO016jx3O6IIRHXD4iEAEXDy+N3X3RJw5NDwwpb+S9cIgbKHcAafK0ONde0BZSBLcYpJvbwFpi4010MX9ajBY89qOqYnJMMHu5USl52el4hupiiJNKxyqnfTg8ptZvVkZHk+yTXIMGrvN7eQmUokftc15sZCRDH+bpPurGs1h3H7L43+Xrx5bh4uxSrLpW6Wx3ctNAc5Hx1SOQvtYS+chdssRAE2v0q1N55PQVj4Ay5uC5Nphu8dOe9Zn4ysQpWiHtzSLlqilkyffZxycabLwasEIhuoZaLAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=lists.ozlabs.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SU7+OS0futKjoBt58LQ+nXP395IRweXRjQi4kW6PQLU=;
- b=T9dbxYfi0ePh8X7jY4DWSOh/1wX2Pd3qEz/X3enlbBpLhGYWh+9H9J8rgPwD7yquiJvDAeDLOhOt3pCQFi00U3NOIDUA+dUAlN02tFWC75pOM12ItgpPcDBhHd9ZpcYDl38kmQI1OsTb5REddcPhFx6Xh+wL59OQnHdxP1vmaSbLPy5tbCWpGE5+RUrMnr52BGOg0U50+SzNGm6CizbLS/swXInbWEdZZzWGEbUBf/F2IQJ9XEVzzQSnFTnxUKykC1E4AswHHdnhtQbiN/JngfDwbkNa4gGol5cIZ3UJUOhjcCjjt/pyJm2XsU9g6JPUnJJWxkFTHhHsR7JY/otAnw==
-Received: from MW4PR04CA0257.namprd04.prod.outlook.com (2603:10b6:303:88::22)
- by SA0PR12MB4542.namprd12.prod.outlook.com (2603:10b6:806:73::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.17; Wed, 17 May
- 2023 23:32:39 +0000
-Received: from CO1NAM11FT087.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:88:cafe::3c) by MW4PR04CA0257.outlook.office365.com
- (2603:10b6:303:88::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.18 via Frontend
- Transport; Wed, 17 May 2023 23:32:38 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- CO1NAM11FT087.mail.protection.outlook.com (10.13.174.68) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6411.19 via Frontend Transport; Wed, 17 May 2023 23:32:38 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Wed, 17 May 2023
- 16:32:32 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.37; Wed, 17 May 2023 16:32:32 -0700
-Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com
- (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
- Transport; Wed, 17 May 2023 16:32:29 -0700
-Date: Wed, 17 May 2023 16:32:28 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Baolin Wang
-	<baolin.wang@linux.alibaba.com>, Christophe Leroy
-	<christophe.leroy@csgroup.eu>, Gerald Schaefer
-	<gerald.schaefer@linux.ibm.com>, Heiko Stuebner <heiko@sntech.de>,
-	<iommu@lists.linux.dev>, Jernej Skrabec <jernej.skrabec@gmail.com>, "Jonathan
- Hunter" <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, Kevin Tian
-	<kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>, Russell King
-	<linux@armlinux.org.uk>, <linuxppc-dev@lists.ozlabs.org>, Marek Szyprowski
-	<m.szyprowski@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>, Michael Ellerman
-	<mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, Orson Zhai
-	<orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, Robin Murphy
-	<robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, Thierry Reding
-	<thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai
-	<wens@csie.org>, Will Deacon <will@kernel.org>, Yong Wu
-	<yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu
-	<baolu.lu@linux.intel.com>, Dmitry Osipenko <digetx@gmail.com>, "Niklas
- Schnelle" <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v2 00/25] iommu: Make default_domain's mandatory
-Message-ID: <ZGVkDB+MCrx3tQho@Asurada-Nvidia>
-References: <0-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+	id 1pzb0u-00Cb4i-3B
+	for linux-rockchip@lists.infradead.org;
+	Thu, 18 May 2023 10:37:43 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1ac4910e656so8019655ad.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 18 May 2023 03:37:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1684406259; x=1686998259;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=TN0khYDoCxGGhU5ss9Q38NY81uIy7NyfHWBZ/foWTNs=;
+        b=YL4RF+ajG6qmFtw1krWMbvmqp58K2LdZMkdN9NtDq9e7qB3xM66fR+vKPs9LqZrUI3
+         z/cPBUbxaZ4Mw/HmC/E8mx5KxEa5i6J03kQoUue1Ik904Mj84kPWUy4rLKZHni07u46x
+         Lhgt1OggQSQZKi4LXbciYoburV0kltKx9Z6vs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684406259; x=1686998259;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TN0khYDoCxGGhU5ss9Q38NY81uIy7NyfHWBZ/foWTNs=;
+        b=aenDGNq3jiGD0kjvhJD63tcdGyppKZYpnqRmwNNBXVYSQ35CWwx3JgZhJx8MUPFSav
+         btD/vRzscTC87MF73N6cn94pSeX0c5r762cZJ6Xl5jVVmlPIOnl1HBmnoewubvMHhNA1
+         IGuDTZJWoYHBdrv/cCz6hJSlPnsdd6nX+wxoFksn+1sHMgILkHIo/YqBAR4WBVMgCvBY
+         Gkol7X2S51tJyqPaIzy9TmRO0/YAmrRw28WbRIrHnKxkrgzamPkXa0k1eiC/PLw+u9+T
+         x2NIwjb8qj3EuWYHp7hVX8wWX3jwfIcO0RXE6kyPTU8h+jec2W3PRt9SKRcqJpm0BuTc
+         l0lw==
+X-Gm-Message-State: AC+VfDzwBqdWT7s5EiMEoz1stcYIfrKmd6p7Lw1EfSxyEZyBkQWpjtj1
+	vGO1mqIFTu/JNuoFzJl1wb0r8w==
+X-Google-Smtp-Source: ACHHUZ6W+zJ2HYptQYSQqBcWmDXV2Skkvr77A8XeRCPRwOALKveKfXkSKd9XHlfW112zz6NLjZUcYQ==
+X-Received: by 2002:a17:902:e889:b0:1ac:6fc3:6beb with SMTP id w9-20020a170902e88900b001ac6fc36bebmr2063035plg.9.1684406259377;
+        Thu, 18 May 2023 03:37:39 -0700 (PDT)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id ix12-20020a170902f80c00b001ab0669d84csm1104058plb.26.2023.05.18.03.37.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 May 2023 03:37:38 -0700 (PDT)
+Date: Thu, 18 May 2023 10:37:33 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+	jernel@kernel.org, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 1/8] media: videobuf2: Access vb2_queue bufs array
+ through helper functions
+Message-ID: <20230518103733.djr5zp5mac3xixxa@chromium.org>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <0-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1NAM11FT087:EE_|SA0PR12MB4542:EE_
-X-MS-Office365-Filtering-Correlation-Id: 192db192-fae9-42d6-3f47-08db572f0083
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Xp1ANaCQqDkvQxMkDGNeVnZgg2QHq7mlxtx6A8BUGbMjgoK/P5t4maMzuKixtU7LOp1Uo51Vq1YlcBrFPWS0rnzkEwCuhDzcZeOuHx/19o9krkOp0BlyU+ELCWMUAa2hwCDlxWgHCeqWhgEmE/6HiMNQ3HaErUKoXy1VV+dz5h9TrvywnLzRpJS4c5bx3ly6mA5NODX6vzM91weyCKzGWGqSEKxblrcKPQn6ug8piZ8Bp71af5OIFJd4wIwY6r5tgQhZ/OWx3z6/vImdPUa7OL33h6NUI3X+UUCl3lwWLMfbYcf48h2em+LTnt8k2b/xfZfdLOwqtyB+/vcWiH0tUgSU3UCZFbEQlnWMm2dGI2NsnvZSke9uazUM3qy3KR6LdIVfXbnjrx9xpCEzwl9H0xvpZT7axGCMoG/RBVT/rjx0IO6nfxRmzCFQIRXTm245v+wimriyw7R8Z691v8EpdPwTZ+JsqDOSIdYsWIxL6jK14OaX+JShd8mKAe5d5V918vZ2AcBEpzMLOWu0zl+eOMkD6ihhybqSDfKBlYw5BFA+BxtQo0mXWF+7TCnGhGrvi/rGWPHYrKmd3RPzf0jRIRe1ckw48EBLqTTkA0QPyisnVLFgu2A+82FWUp2LDoyPUY1LjMGD65nnIxPjWZdUVjbHzaY9rvlgmAIWNrawbvWntCrWkGwAGa9aU59g/9Iwyk6RYfuMygImtPEcSX7+iCzGDeF7hBh5dMDabpdtET0nSRboAE8Ym/yNorJPawsljffBQTVY97BVKPn21CS5etWQxehgcoxSHpfuCz7vii6g6rpIQ9uyBl4A9UO5PmM9
-X-Forefront-Antispam-Report: 	CIP:216.228.118.233;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge2.nvidia.com;CAT:NONE;SFS:(13230028)(4636009)(346002)(396003)(39860400002)(136003)(376002)(451199021)(36840700001)(40470700004)(46966006)(36860700001)(82740400003)(7636003)(356005)(40460700003)(41300700001)(7416002)(7406005)(2906002)(6862004)(8676002)(5660300002)(33716001)(6636002)(8936002)(55016003)(86362001)(316002)(4326008)(70206006)(70586007)(40480700001)(82310400005)(83380400001)(966005)(336012)(186003)(47076005)(107886003)(426003)(9686003)(26005)(478600001)(54906003)(67856001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2023 23:32:38.5800
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 192db192-fae9-42d6-3f47-08db572f0083
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.233];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT087.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB4542
+In-Reply-To: <20230321102855.346732-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230517_163247_013837_EEFEB4D4 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20230518_033741_045749_CC98BB2B 
+X-CRM114-Status: GOOD (  40.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,38 +101,335 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 15, 2023 at 09:00:33PM -0300, Jason Gunthorpe wrote:
- 
-> This is on github: https://github.com/jgunthorpe/linux/commits/iommu_all_defdom
+Hi Benjamin,
 
-Ran some VFIO-passthrough sanity on x86 and ARM64, using this
-branch. It should cover partially this series. So, if I may:
+On Tue, Mar 21, 2023 at 11:28:48AM +0100, Benjamin Gaignard wrote:
+> The first step before changing how vb2 buffers are stored into queue
+> is to avoid direct access to bufs arrays.
+> 
+> This patch adds 2 helpers functions to add and remove vb2 buffers
+> from a queue. With these 2 and vb2_get_buffer(), bufs field of
+> struct vb2_queue becomes like a private member of the structure.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 84 +++++++++++--------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 17 ++--
+>  drivers/media/platform/amphion/vpu_dbg.c      |  4 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  2 +-
+>  .../vcodec/vdec/vdec_vp9_req_lat_if.c         |  2 +-
+>  drivers/media/test-drivers/visl/visl-dec.c    | 16 ++--
+>  .../staging/media/atomisp/pci/atomisp_ioctl.c |  2 +-
+>  include/media/videobuf2-core.h                | 26 ++++++
+>  8 files changed, 101 insertions(+), 52 deletions(-)
+> 
 
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Sorry for being late with review and thanks a lot for working on this.
+This is a quite a long overdue functionality.
 
-Thanks
-Nic
+[snip]
 
-> v2:
->  - FSL is an IDENTITY domain
->  - Delete terga-gart instead of trying to carry it
->  - Use the policy determination from iommu_get_default_domain_type() to
->    drive the arm_iommu mode
->  - Reorganize and introduce new patches to do the above:
->     * Split the ops->identity_domain to an independent earlier patch
->     * Remove the UNMANAGED return from def_domain_type in mtk_v1 earlier
->       so the new iommu_get_default_domain_type() can work
->     * Make the driver's def_domain_type have higher policy priority than
->       untrusted
->     * Merge the set_platfom_dma_ops hunk from mtk_v1 along with rockchip
->       into the patch that forced IDENTITY on ARM32
->  - Revise sun50i to be cleaner and have a non-NULL internal domain
->  - Reword logging in exynos
->  - Remove the gdev from the group alloc path, instead add a new
->    function __iommu_group_domain_alloc() that takes in the group
->    and uses the first device. Split this to its own patch
->  - New patch to make iommufd's mock selftest into a real driver
->  - New patch to fix power's partial iommu driver
+> @@ -2679,7 +2689,13 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	 * Check if plane_count is correct
+>  	 * (multiplane buffers are not supported).
+>  	 */
+> -	if (q->bufs[0]->num_planes != 1) {
+> +	vb = vb2_get_buffer(q, 0);
+> +	if (!vb) {
+> +		ret = -EBUSY;
+
+Out of curiosity, is there any reason for specifically chosing -EBUSY here?
+
+It shouldn't be possible for this to happen, but since we're
+dealing with a pointer here, a NULL check is a good thing. I guess that makes
+-EBUSY as good as any other code here.
+
+I see some other similar places in the code, with a comment "This shouldn't
+happen" and a dprinkt(). Maybe it would be good to add those here too?
+
+> +		goto err_reqbufs;
+> +	}
+> +
+> +	if (vb->num_planes != 1) {
+>  		ret = -EBUSY;
+>  		goto err_reqbufs;
+>  	}
+> @@ -2688,12 +2704,14 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
+>  	 * Get kernel address of each buffer.
+>  	 */
+>  	for (i = 0; i < q->num_buffers; i++) {
+> -		fileio->bufs[i].vaddr = vb2_plane_vaddr(q->bufs[i], 0);
+> +		vb = vb2_get_buffer(q, i);
+> +
+> +		fileio->bufs[i].vaddr = vb2_plane_vaddr(vb, 0);
+>  		if (fileio->bufs[i].vaddr == NULL) {
+>  			ret = -EINVAL;
+>  			goto err_reqbufs;
+>  		}
+> -		fileio->bufs[i].size = vb2_plane_size(q->bufs[i], 0);
+> +		fileio->bufs[i].size = vb2_plane_size(vb, 0);
+>  	}
+>  
+>  	/*
+> @@ -2821,15 +2839,15 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  
+>  		fileio->cur_index = index;
+>  		buf = &fileio->bufs[index];
+> -		b = q->bufs[index];
+> +		b = vb2_get_buffer(q, index);
+>  
+>  		/*
+>  		 * Get number of bytes filled by the driver
+>  		 */
+>  		buf->pos = 0;
+>  		buf->queued = 0;
+> -		buf->size = read ? vb2_get_plane_payload(q->bufs[index], 0)
+> -				 : vb2_plane_size(q->bufs[index], 0);
+> +		buf->size = read ? vb2_get_plane_payload(b, 0)
+> +				 : vb2_plane_size(b, 0);
+>  		/* Compensate for data_offset on read in the multiplanar case. */
+>  		if (is_multiplanar && read &&
+>  				b->planes[0].data_offset < buf->size) {
+> @@ -2872,7 +2890,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  	 * Queue next buffer if required.
+>  	 */
+>  	if (buf->pos == buf->size || (!read && fileio->write_immediately)) {
+> -		struct vb2_buffer *b = q->bufs[index];
+> +		struct vb2_buffer *b = vb2_get_buffer(q, index);
+>  
+>  		/*
+>  		 * Check if this is the last buffer to read.
+> @@ -2899,7 +2917,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  		 */
+>  		buf->pos = 0;
+>  		buf->queued = 1;
+> -		buf->size = vb2_plane_size(q->bufs[index], 0);
+> +		buf->size = vb2_plane_size(vb2_get_buffer(q, index), 0);
+>  		fileio->q_count += 1;
+>  		/*
+>  		 * If we are queuing up buffers for the first time, then
+> @@ -2970,7 +2988,7 @@ static int vb2_thread(void *data)
+>  		 * Call vb2_dqbuf to get buffer back.
+>  		 */
+>  		if (prequeue) {
+> -			vb = q->bufs[index++];
+> +			vb = vb2_get_buffer(q, index++);
+>  			prequeue--;
+>  		} else {
+>  			call_void_qop(q, wait_finish, q);
+> @@ -2979,7 +2997,7 @@ static int vb2_thread(void *data)
+>  			call_void_qop(q, wait_prepare, q);
+>  			dprintk(q, 5, "file io: vb2_dqbuf result: %d\n", ret);
+>  			if (!ret)
+> -				vb = q->bufs[index];
+> +				vb = vb2_get_buffer(q, index);
+>  		}
+>  		if (ret || threadio->stop)
+>  			break;
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index 1f5d235a8441..01b2bb957239 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -383,7 +383,7 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  		return -EINVAL;
+>  	}
+>  
+> -	if (q->bufs[b->index] == NULL) {
+> +	if (!vb2_get_buffer(q, b->index)) {
+>  		/* Should never happen */
+>  		dprintk(q, 1, "%s: buffer is NULL\n", opname);
+>  		return -EINVAL;
+> @@ -394,7 +394,7 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = q->bufs[b->index];
+> +	vb = vb2_get_buffer(q, b->index);
+>  	vbuf = to_vb2_v4l2_buffer(vb);
+>  	ret = __verify_planes_array(vb, b);
+>  	if (ret)
+> @@ -628,11 +628,14 @@ static const struct vb2_buf_ops v4l2_buf_ops = {
+>  struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
+>  {
+>  	unsigned int i;
+> +	struct vb2_buffer *vb2;
+>  
+> -	for (i = 0; i < q->num_buffers; i++)
+> -		if (q->bufs[i]->copied_timestamp &&
+> -		    q->bufs[i]->timestamp == timestamp)
+> -			return vb2_get_buffer(q, i);
+> +	for (i = 0; i < q->num_buffers; i++) {
+> +		vb2 = vb2_get_buffer(q, i);
+> +		if (vb2->copied_timestamp &&
+> +		    vb2->timestamp == timestamp)
+> +			return vb2;
+> +	}
+>  	return NULL;
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_find_buffer);
+> @@ -664,7 +667,7 @@ int vb2_querybuf(struct vb2_queue *q, struct v4l2_buffer *b)
+>  		dprintk(q, 1, "buffer index out of range\n");
+>  		return -EINVAL;
+>  	}
+> -	vb = q->bufs[b->index];
+> +	vb = vb2_get_buffer(q, b->index);
+>  	ret = __verify_planes_array(vb, b);
+>  	if (!ret)
+>  		vb2_core_querybuf(q, b->index, b);
+> diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
+> index 44b830ae01d8..8a423c1f6b55 100644
+> --- a/drivers/media/platform/amphion/vpu_dbg.c
+> +++ b/drivers/media/platform/amphion/vpu_dbg.c
+> @@ -133,7 +133,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+>  
+>  	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		struct vb2_buffer *vb = vq->bufs[i];
+> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>  		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>  
+>  		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+> @@ -148,7 +148,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+>  
+>  	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		struct vb2_buffer *vb = vq->bufs[i];
+> +		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
+>  		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>  
+>  		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 969516a940ba..0be07f691d9a 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -603,7 +603,7 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+>  		return -EINVAL;
+>  	}
+>  
+> -	vb = vq->bufs[buf->index];
+> +	vb = vb2_get_buffer(vq, buf->index);
+>  	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+>  	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
+>  
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> index cbb6728b8a40..f5958b6d834a 100644
+> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> @@ -1701,7 +1701,7 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
+>  
+>  	/* update internal buffer's width/height */
+>  	for (i = 0; i < vq->num_buffers; i++) {
+> -		if (vb == vq->bufs[i]) {
+> +		if (vb == vb2_get_buffer(vq, i)) {
+>  			instance->dpb[i].width = w;
+>  			instance->dpb[i].height = h;
+>  			break;
+> diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+> index 318d675e5668..328016b456ba 100644
+> --- a/drivers/media/test-drivers/visl/visl-dec.c
+> +++ b/drivers/media/test-drivers/visl/visl-dec.c
+> @@ -290,13 +290,14 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+>  	for (i = 0; i < out_q->num_buffers; i++) {
+>  		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+>  		u32 old_len = len;
+> -		char *q_status = visl_get_vb2_state(out_q->bufs[i]->state);
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(out_q, i);
+> +		char *q_status = visl_get_vb2_state(vb2->state);
+>  
+>  		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+>  				 entry, i, q_status,
+> -				 to_vb2_v4l2_buffer(out_q->bufs[i])->request_fd);
+> +				 to_vb2_v4l2_buffer(vb2)->request_fd);
+>  
+> -		len += visl_fill_bytesused(to_vb2_v4l2_buffer(out_q->bufs[i]),
+> +		len += visl_fill_bytesused(to_vb2_v4l2_buffer(vb2),
+>  					   &buf[len],
+>  					   TPG_STR_BUF_SZ - len);
+>  
+> @@ -342,13 +343,14 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+>  	len = 0;
+>  	for (i = 0; i < cap_q->num_buffers; i++) {
+>  		u32 old_len = len;
+> -		char *q_status = visl_get_vb2_state(cap_q->bufs[i]->state);
+> +		struct vb2_buffer *vb2 = vb2_get_buffer(cap_q, i);
+> +		char *q_status = visl_get_vb2_state(vb2->state);
+>  
+>  		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+>  				 "index: %u, status: %s, timestamp: %llu, is_held: %d",
+> -				 cap_q->bufs[i]->index, q_status,
+> -				 cap_q->bufs[i]->timestamp,
+> -				 to_vb2_v4l2_buffer(cap_q->bufs[i])->is_held);
+> +				 vb2->index, q_status,
+> +				 vb2->timestamp,
+> +				 to_vb2_v4l2_buffer(vb2)->is_held);
+>  
+>  		tpg_gen_text(&ctx->tpg, basep, line++ * line_height, 16, &buf[old_len]);
+>  		frame_dprintk(ctx->dev, run->dst->sequence, "%s", &buf[old_len]);
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+> index d1314bdbf7d5..c7778860f3d4 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+> @@ -1095,7 +1095,7 @@ static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer
+>  	if (ret)
+>  		return ret;
+>  
+> -	vb = pipe->vb_queue.bufs[buf->index];
+> +	vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+>  	frame = vb_to_frame(vb);
+>  
+>  	buf->reserved = asd->frame_status[buf->index];
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 4b6a9d2ea372..5b1e3d801546 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -1244,6 +1244,32 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+>  	return NULL;
+>  }
+>  
+> +/**
+> + * vb2_queue_add_buffer() - add a buffer to a queue
+> + * @q:	pointer to &struct vb2_queue with videobuf2 queue.
+> + * @vb:	pointer to &struct vb2_buffer to be added to the queue.
+> + */
+> +static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+
+Could we make index an argument to this function and actually assign it to
+vb->index if the operation succeeds?
+Similarly, could we assign q to vb->vb2_queue in this function as well?
+
+I have plans to make the vb2_buffer struct represent a buffer, rather than
+an entry in the queue, because the memory can actually outlive the queue,
+e.g. when REQBUFS(0) happens, but an exported DMA-buf still references the
+buffer. Currently the DMA-buf object is tied to the allocator-private
+struct, but that one has a pointer to a vb2_buffer, which becomes invalid
+in such scenario with current implementation.
+
+> +{
+> +	if (vb->index < VB2_MAX_FRAME) {
+> +		q->bufs[vb->index] = vb;
+> +		return true;
+> +	}
+> +
+> +	return false;
+> +}
+> +
+> +/**
+> + * vb2_queue_remove_buffer() - remove a buffer from a queue
+> + * @q:	pointer to &struct vb2_queue with videobuf2 queue.
+> + * @vb:	pointer to &struct vb2_buffer to be removed from the queue.
+> + */
+> +static inline void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+> +{
+> +	if (vb->index < VB2_MAX_FRAME)
+> +		q->bufs[vb->index] = NULL;
+
+Here we could also NULLify vb->vb2_queue. Right now I think the struct
+would be just kfree()d instantly after returning to the caller, but with
+the design I mentioned above, it could still stay there until the last
+reference goes away.
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-rockchip mailing list
