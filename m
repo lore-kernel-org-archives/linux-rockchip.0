@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13A69C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 May 2023 15:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F81AC77B7D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 May 2023 15:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ki3fk9432yHv1UkU1XJdVjLTgyqDEfaj+c0XgIPIusQ=; b=Z/dvYtB7fvzvXl
-	b2bqrJoFi5rY+khwmPZtNlFFJza7y0l3OYT+zngHuD6cypA2kF7SSHt7mqwILo3x8xkIShvKRj79r
-	MNHzkXZCl5L3as0/VzSxFAXwn1T+MF/+Tnn0s/Hk2iQQbHOIIgthWVKWhOqNIkSpRMqS9mGjXrKrH
-	HF3LwgNxtKD/R46xJ0snlliyn2n5jEx9aPM923FXemotHw7SLMDa8hCme2y5CsnEuJXE7rAR9tgac
-	ZTB88IQOhY48EW6gU5eh3YHBhh7sFThp7PKIViarYd3CCgvhnl8hy6um3G6QSWPQf8oQSUsbYv3F8
-	dCci0X6BtfxENwgxO8qw==;
+	List-Owner; bh=40pbnGlMtPn94i4j0kvS/soB+O3EJ6Hm6WnLhnenJiY=; b=uQ7YGEkWeC+w+1
+	P9/qKXjJcv66iIAIo6MJUnCVca9xzjEjz3Km5xE+SPGwRvP1iLbgBFoFguCDw6vJ5bFuiDXI0WRB3
+	51poXzlHxadX86/kOtUe/KLul4ajQrcStR6GgdJ6/vfwREoSad+KWZAEe8yxKia8HdXf7Mq5dK9CM
+	LVoGhWKgXbaITfUEN8baUQXk8PJ3MftM9vKmlGZAUoneSmgX9cH4HAY7d2EOIn6r1Eplq91HE8eaU
+	t2s+2PkkX+vVAi8vqLir0h+yW8op5KLRshJl6a9frdPsNZe/AXc7DJDKb1xR8fLp9WSF49BEQggWn
+	PC7AcBpNySVoGSbCjhfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0OaM-001md6-1J;
-	Sat, 20 May 2023 15:33:34 +0000
+	id 1q0Ohf-001nQI-2z;
+	Sat, 20 May 2023 15:41:07 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q0OaI-001mas-0H;
-	Sat, 20 May 2023 15:33:31 +0000
+	id 1q0OhY-001nOt-3A;
+	Sat, 20 May 2023 15:41:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C51F460B18;
-	Sat, 20 May 2023 15:33:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90740C433D2;
-	Sat, 20 May 2023 15:33:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4E76B60AB4;
+	Sat, 20 May 2023 15:41:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5CF6C433D2;
+	Sat, 20 May 2023 15:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684596807;
-	bh=v2J4QcmeQzjUO1CUDFFKdSrX6QMMRgCiCMtenkolPlU=;
+	s=k20201202; t=1684597259;
+	bh=9Ps1xvHyEdQpdoqJaEeCbsAna43Ebewm5CkBpwanu2U=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=saGd+R5YIQWo5HvkhlsM7ywmRukcLhf2Kgb3vtXaUdjya86Ia9ulrRP1ID2G0lpwp
-	 jehUTPp1qXNEbMKx7JiO6CykDrQ9H9M5VZ71ADjTAG+F4eUXuw/ap6KYpDWkfjBOMw
-	 KSPFG2/zqDGKLlBYCi0Hi6qCFSg3mTaJ6UeHvR8/KytNG7jC3eU8DZwW+9tu5+gRLN
-	 fmOsfadxDhg2lWgAfVNJwG2dvOMWjQXnLdVKqXueEq7KN73EzCTygK0zjvcTS+4O5i
-	 1gqlyTL3zMgLkEV+tJGSAkWlCnzivD2vSi5GnZs6qqFSqOcTNBsSGhr1GS0Iq65zlN
-	 iZV2/2HrJVO9A==
-Date: Sat, 20 May 2023 16:49:35 +0100
+	b=oA1jURKODqVIMIR07QZUqj8P0EAwJYmfUC43ursKlC6SK3C3hlntNXzXTsh7MoDLE
+	 S4v38CrFsXmdYUg7WmsQFI+Mj11qBUdxNH3voE0X9zGRE+dA4k17WewdGBofvBOfjy
+	 FJjuHnp/WR6zIj/8XX/qNEsfSdGNVmQOewgZ/dEcaWI46Bj7mFXhksYykFVDObxS3A
+	 f/cdIdfOeA2AfTdliPQq+RzX0AIpsaQ1laI/45Ny8Lbh2STxYzUxyGHN+QwYKUGbnS
+	 06ehIM6DmkW4aqDYhZ+4XZSkKMpdWLNT2Iq6bGg6kWSk1YhucU+WPEW9bvPWpJCLk4
+	 cSMi10hTLRyrg==
+Date: Sat, 20 May 2023 16:57:07 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Shreeya Patel <shreeya.patel@collabora.com>, lars@metafoo.de,
- heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- sebastian.reichel@collabora.com, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, gustavo.padovan@collabora.com,
- serge.broslavsky@collabora.com
-Subject: Re: [PATCH 5/7] iio: adc: rockchip_saradc: Use dev_err_probe
-Message-ID: <20230520164935.70094206@jic23-huawei>
-In-Reply-To: <d1955b9e-c719-9c7c-b1fd-f11fa97e44af@collabora.com>
+To: Shreeya Patel <shreeya.patel@collabora.com>
+Cc: lars@metafoo.de, heiko@sntech.de, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ gustavo.padovan@collabora.com, serge.broslavsky@collabora.com, Simon Xue
+ <xxm@rock-chips.com>
+Subject: Re: [PATCH 1/7] iio: adc: rockchip_saradc: Add support for RK3588
+Message-ID: <20230520165707.695de520@jic23-huawei>
+In-Reply-To: <20230516230051.14846-2-shreeya.patel@collabora.com>
 References: <20230516230051.14846-1-shreeya.patel@collabora.com>
-	<20230516230051.14846-6-shreeya.patel@collabora.com>
-	<d1955b9e-c719-9c7c-b1fd-f11fa97e44af@collabora.com>
+	<20230516230051.14846-2-shreeya.patel@collabora.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230520_083330_229376_38973C26 
-X-CRM114-Status: GOOD (  26.56  )
+X-CRM114-CacheID: sfid-20230520_084101_060116_4B7F08FB 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,90 +79,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 May 2023 12:40:37 +0200
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+On Wed, 17 May 2023 04:30:45 +0530
+Shreeya Patel <shreeya.patel@collabora.com> wrote:
 
-> Il 17/05/23 01:00, Shreeya Patel ha scritto:
-> > Use dev_err_probe instead of dev_err in probe function,
-> > which simplifies code a little bit and prints the error
-> > code.
-> > 
-> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > ---
-> >   drivers/iio/adc/rockchip_saradc.c | 45 ++++++++++++++-----------------
-> >   1 file changed, 20 insertions(+), 25 deletions(-)
-> > 
-> > diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> > index 5e1e8575bc76..a52021fd477d 100644
-> > --- a/drivers/iio/adc/rockchip_saradc.c
-> > +++ b/drivers/iio/adc/rockchip_saradc.c  
+> Refactor conversion operation to support rk3588 saradc and
+> add separate start, read, powerdown in respective hooks.
 > 
-> ..snip..
-> 
-> > @@ -494,23 +492,20 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
-> >   	 * This may become user-configurable in the future.
-> >   	 */
-> >   	ret = clk_set_rate(info->clk, info->data->clk_rate);
-> > -	if (ret < 0) {
-> > -		dev_err(&pdev->dev, "failed to set adc clk rate, %d\n", ret);
-> > -		return ret;
-> > -	}
-> > +	if (ret < 0)
-> > +		return dev_err_probe(&pdev->dev, ret,
-> > +				     "failed to set adc clk rate\n");
-> >   
-> >   	ret = regulator_enable(info->vref);
-> > -	if (ret < 0) {
-> > -		dev_err(&pdev->dev, "failed to enable vref regulator\n");
-> > -		return ret;
-> > -	}
-> > +	if (ret < 0)
-> > +		return dev_err_probe(&pdev->dev, ret,
-> > +				     "failed to enable vref regulator\n");
-> > +
-> >   	ret = devm_add_action_or_reset(&pdev->dev,
-> >   				       rockchip_saradc_regulator_disable, info);
-> > -	if (ret) {
-> > -		dev_err(&pdev->dev, "failed to register devm action, %d\n",
-> > -			ret);
-> > -		return ret;
-> > -	}
-> > +	if (ret)
-> > +		return dev_err_probe(&pdev->dev, ret,
-> > +				     "failed to register devm action\n");  
-> 
-> It's not your fault - and it's about a pre-existing issue, but there's that:
-> you're returning an error if devm_add_action_or_reset() fails (which is highly
-> unlikely), but you're leaving the regulator enabled!
-Which regulator?  The _or_reset() part means that the callback is called if
-the devm_add_action_or_reset is going to return an error.  So in the
-path you talk about
-rockchip_saradc_regulator_disable() is called and disables vref
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+Hi Shreeya,
 
-> 
-> As for how to proceed here, I would suggest to fix this issue in a separated
-> commit (before the dev_err_probe() conversion); it'd look like...
-> 
-> 	if (ret) {
-> 		regulator_disable(info->vref);
-> 		dev_err( .... blurb );
-> 		return ret;
-> 	}
-> 
-> and after the conversion it'd look like...
-> 
-> 	if (ret) {
-> 		regulator_disable(info->vref);
-> 		return dev_err_probe( ... blurb );
-> 	}
-> 
-> Cheers,
-> Angelo
-> 
-> >   
-> >   	ret = regulator_get_voltage(info->vref);
-> >   	if (ret < 0)  
-> 
+This particular chain of tags has unclear authorship.
+If Simon wrote the driver, then the author (from address) of the
+patch should be Simon's.  If it is a codeveloped situation look
+at how to use the co-developed-by tag
+
+
+Generally the nicest way to add new callbacks is to do them in their
+own patch.  Then introduce new devices with different callbacks in a follow
+on patch.  That means the first one can be reviewed to ensure there
+is no functional change separate from the new code in the following patch.
+
+
+
+> +static const struct rockchip_saradc_data rk3588_saradc_data = {
+> +	.channels = rockchip_rk3588_saradc_iio_channels,
+> +	.num_channels = ARRAY_SIZE(rockchip_rk3588_saradc_iio_channels),
+> +	.clk_rate = 1000000,
+> +	.start = rockchip_saradc_start_v2,
+
+As mentioned above, I'd like to see the changes for old devices done in patch
+1 and the support for new device in a new patch.
+
+> +	.read = rockchip_saradc_read_v2,
+>  };
+
 
 
 _______________________________________________
