@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8687FC77B73
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8ADC7EE2D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N9puW1sYJ7hiJLqRTnmD34TfOGQCaF+VDaK92x1hpXo=; b=gyRUIE6TNC4Jfy
-	mCk385ulYrWmJd90cYfU5PCboLAftiZmrsrChfa9gXIDzUEJFyNRrxJ9TrUlRQ+4gdqaV6kuWCVsd
-	BXHr2HM3vdqWI9gh85aN4xHJ56v2E3BeQIH9i9xzsTGfewIRD9aBp6Bl/0f2dKJS4sbgZ7mSJ7tu/
-	J/feubLif7x2iSA31BWHhRWpYLH9YFFyaYyXh0oICk/G5GbiQ+szLWfqwwALvL5n4tf0GTx90sU3g
-	wCIrllXMDzjpHTtmCC5YDO79EcnA/6LnM6mNlg46PO0sFAb20AiITlCqMXujYveAbZalhBokbNDLG
-	uISQ0gnDpVm504qKqyTQ==;
+	List-Owner; bh=L7r8rbSeW7+bJzqHG6YMvLG57dnXn3flyw1mD/7fwhA=; b=PoJXkwNT1re3wp
+	arsQEVPuvp6k3xDNWGDccgxd+6O68sxiLqazGZa1/jjSyeDrXiDAHSU383onswFHjEJnshcEYne51
+	zPua9wm+KPYBym7Ukf6LC3QZzaPVTWydvw2hZh95d5gy7A5fQP6KlHSNo5JWFc1fSr/PqolxG/6i1
+	ZAIoOGHgfk/bKTkhDKV1cKZ8CmF7ZBADDG5ueratBbAN+0JerxhKVECNW40eYDGYWO+iluFqcYd0N
+	ptMsipHcHO9bR6qCC0RgBRtX0mWvc+2/ZvkAMMkbuodO9nT9N4aavW3sh271dSBPleC7R1Lw0bM+t
+	Jl3cbI0+SZHnnQQo/uEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18ww-007IOh-0Y;
-	Mon, 22 May 2023 17:03:58 +0000
+	id 1q18x2-007IRv-1T;
+	Mon, 22 May 2023 17:04:04 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18wl-007IHg-1O;
-	Mon, 22 May 2023 17:03:48 +0000
+	id 1q18wl-007IHf-1N;
+	Mon, 22 May 2023 17:03:50 +0000
 Received: from jupiter.universe (dyndsl-091-248-208-162.ewe-ip-backbone.de [91.248.208.162])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CF3CE66058F2;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E81F76606E69;
 	Mon, 22 May 2023 18:03:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1684775023;
-	bh=SnIuBsU5kpCH9yPr3h2kL9GaEGKLFpCi+TtA5q9biHA=;
+	bh=O4ESAX1oWkZABPepXOkCKY7w4k1fSpZvKClJj0JDRNc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JL2LQsn+CU1CxsWwr7jgwSvPLUdmgznwYDN5Zp/80zTnPJGJmnZw4sVL2DocPjbFz
-	 aG5XEF+hGuZ5F1EDF/AVr24l7zJNOOV6xCvh5zE7qoG11+e1vNX7wyzdoDj8asXmio
-	 dQtf9ZDe8MgPmrDcP/ogudB26xig1RWRtJxpAkBSJLP9OBG718rcCc6DyMzXbtVerD
-	 Ej0klxZIYkZTEtF8UMmTxEnMo2mBsJZi+pP7/a+NE8QUAPvJ+ZUml7L4Ycw4HJS2p1
-	 UiDZzji7zBb1R30DOSdOWLBdBxgROZjOWQiVnBhHn7vQ9uPS1meLgd3l3ExPkDFlCJ
-	 maXKcYPj9fppA==
+	b=AISvuS2BSnXpHERZfMru4pssu3VeuPPykVBFscd4PkG8VwQf9aMKyEdMsOmlo9+C6
+	 juowKS4HCBlXa2WLmnv0SCnZjS6rJ2g/q6SfJ36E7rFS2t+W9cNr0B9nJG/uCIcuAW
+	 5CfwBBNggFiGuaKRsyk2bTjK7oYVUfXQmGwj7NJBUR/Mig71w0EdaV30iolLCnAKOg
+	 h62GjIeGetDj4RUa9RJmzaGtrC1GF44Zk5QhB5VSQEbzCTZr84ZpQmFeWgmjDEy1PW
+	 5lXLeQNXKO+99+IN0UZa/BPbWSiy10VQ7LZwM3zpZB/c6wc2Clzk/163qV3PtM3Uvm
+	 ekZGfqxxAZuYg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 78F6B4805B8; Mon, 22 May 2023 19:03:40 +0200 (CEST)
+	id 7C96C4807E2; Mon, 22 May 2023 19:03:40 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -57,19 +57,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 1/7] dt-bindings: phy: rockchip,inno-usb2phy: add rk3588
-Date: Mon, 22 May 2023 19:03:18 +0200
-Message-Id: <20230522170324.61349-2-sebastian.reichel@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v3 3/7] phy: phy-rockchip-inno-usb2: add reset support
+Date: Mon, 22 May 2023 19:03:20 +0200
+Message-Id: <20230522170324.61349-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 References: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_100347_617264_84A86A85 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230522_100347_622076_8CDF5076 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,66 +84,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add compatible for the USB2 phy in the Rockchip RK3588 SoC.
+Add reset handling support, which is needed for proper
+operation with RK3588.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/phy/rockchip,inno-usb2phy.yaml   | 21 ++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 38 +++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-index 0d6b8c28be07..5254413137c6 100644
---- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
-@@ -20,6 +20,7 @@ properties:
-       - rockchip,rk3366-usb2phy
-       - rockchip,rk3399-usb2phy
-       - rockchip,rk3568-usb2phy
-+      - rockchip,rk3588-usb2phy
-       - rockchip,rv1108-usb2phy
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 2c4683c67a8e..101b46939f0b 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -24,6 +24,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/power_supply.h>
+ #include <linux/regmap.h>
++#include <linux/reset.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/usb/of.h>
+ #include <linux/usb/otg.h>
+@@ -223,6 +224,7 @@ struct rockchip_usb2phy_port {
+  * @clk: clock struct of phy input clk.
+  * @clk480m: clock struct of phy output clk.
+  * @clk480m_hw: clock struct of phy output clk management.
++ * @phy_reset: phy reset control.
+  * @chg_state: states involved in USB charger detection.
+  * @chg_type: USB charger types.
+  * @dcd_retries: The retry count used to track Data contact
+@@ -239,6 +241,7 @@ struct rockchip_usb2phy {
+ 	struct clk	*clk;
+ 	struct clk	*clk480m;
+ 	struct clk_hw	clk480m_hw;
++	struct reset_control	*phy_reset;
+ 	enum usb_chg_state	chg_state;
+ 	enum power_supply_type	chg_type;
+ 	u8			dcd_retries;
+@@ -280,6 +283,25 @@ static inline bool property_enabled(struct regmap *base,
+ 	return tmp != reg->disable;
+ }
  
-   reg:
-@@ -56,6 +57,14 @@ properties:
-     description: Muxed interrupt for both ports
-     maxItems: 1
- 
-+  resets:
-+    maxItems: 2
++static int rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
++{
++	int ret;
 +
-+  reset-names:
-+    items:
-+      - const: phy
-+      - const: apb
++	ret = reset_control_assert(rphy->phy_reset);
++	if (ret)
++		return ret;
 +
-   rockchip,usbgrf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -120,15 +129,21 @@ required:
-   - reg
-   - clock-output-names
-   - "#clock-cells"
--  - host-port
--  - otg-port
++	udelay(10);
 +
-+anyOf:
-+  - required:
-+      - otg-port
-+  - required:
-+      - host-port
++	ret = reset_control_deassert(rphy->phy_reset);
++	if (ret)
++		return ret;
++
++	usleep_range(100, 200);
++
++	return 0;
++}
++
+ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
+ {
+ 	struct rockchip_usb2phy *rphy =
+@@ -534,6 +556,18 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
+ 		return ret;
+ 	}
  
- allOf:
-   - if:
-       properties:
-         compatible:
-           contains:
--            const: rockchip,rk3568-usb2phy
-+            enum:
-+              - rockchip,rk3568-usb2phy
-+              - rockchip,rk3588-usb2phy
++	/*
++	 * For rk3588, it needs to reset phy when exit from
++	 * suspend mode with common_on_n 1'b1(aka REFCLK_LOGIC,
++	 * Bias, and PLL blocks are powered down) for lower
++	 * power consumption. If you don't want to reset phy,
++	 * please keep the common_on_n 1'b0 to set these blocks
++	 * remain powered.
++	 */
++	ret = rockchip_usb2phy_reset(rphy);
++	if (ret)
++		return ret;
++
+ 	/* waiting for the utmi_clk to become stable */
+ 	usleep_range(1500, 2000);
  
-     then:
-       properties:
+@@ -1348,6 +1382,10 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
++	rphy->phy_reset = devm_reset_control_get_optional(dev, "phy");
++	if (IS_ERR(rphy->phy_reset))
++		return PTR_ERR(rphy->phy_reset);
++
+ 	rphy->clk = of_clk_get_by_name(np, "phyclk");
+ 	if (!IS_ERR(rphy->clk)) {
+ 		clk_prepare_enable(rphy->clk);
 -- 
 2.39.2
 
