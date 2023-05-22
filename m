@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BDC0C7EE26
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:34:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC6AC7EE2D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 19:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v7W8JLUCDB0tOYdJn6IAcwJ56+hUqPBHHi5KOXCHjh0=; b=GgxCbp5tZ3d5iB
-	4ysIe+DwNYxXyBAZU+o6yeiZ0qrUP12m5Mtw01MwRfSrMXsaYWScKq17tKRvmGXZt4hAlFerw6frH
-	rzVlO48+n4n0c8FEC3Gcoyab/YK2Xjl0/LUNIdir+ME6Ztvcm5nw3D445liye7EWKkewWnEKe6hp5
-	b4tSh2CYseCR5twCXULM5tWnKfCNqNgZMgkGyS3G3cGP06FbUEQvZpDmgugn0oXw1u7gy3Zj3plNb
-	MaaPPDVSjp1vkjL+R1EUI0qUiyIanGrirX4oBvhlD8jxRTxtiH2uF2E8pCvGy2HZx/t2KtHDf/6aY
-	nBJk7dJJRFlf+hwLkyJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cvU1Cv3p4E1stckIiPRH9ccTcscvoE0M5vtc6SLFY1c=; b=rBlB8MiPIw0E77RL3NOyY+4Y5g
+	z5Y/UCgLAoU7evQNSxq8x27WPoKryXsBo2bwxPxCa5h7XwF1sJS7v4CbqLroOKlKgg53lXCuSu0sZ
+	6GQq2JXjyIvrdStlbCqK2i8ou5H5jCV71y1J6wfY9msADBl9VaSi1xS6DwbyJOYv4xffbqFe55o7y
+	AGniVWT6IgXQQLuyoBNeM25xgKEG9Barg3iEJ8kiW9mH0XtlepjbDgSdh0L2/rdkE9DOkOSWn+p6H
+	TamMTGrpbEKIVOQ/a/77QR2YW9RcSnXs7RqaSm3eZVvQgjaTfl12npvkca+C5t4TkIlLqOzhQhSHd
+	vBpHuoWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q19Qh-007Nuu-08;
-	Mon, 22 May 2023 17:34:43 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q1B9F-007fll-2W;
+	Mon, 22 May 2023 19:24:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q19Qa-007NoY-1z;
-	Mon, 22 May 2023 17:34:38 +0000
-Received: from jupiter.universe (dyndsl-091-248-208-162.ewe-ip-backbone.de [91.248.208.162])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1q1B9C-007fkp-2G;
+	Mon, 22 May 2023 19:24:47 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 07FF06606E73;
-	Mon, 22 May 2023 18:34:34 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684776874;
-	bh=uHNhWU1jmIOWUBoodh01ywxlZr0fhauLWpShle6WDA0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QdS+9VDGKETNE8Jl+/wmLcacEYcQJeNk3AOrQf05kefFP0aq/3VdjUQyxulx0rqq2
-	 ytOe1Gy7P/pgimlLEhj4xdilYoXsp1xqINgN8diaMsfTw45C3cG6DNMgl8vgPq4qzF
-	 jQySOffH7H2LihdTtDHGYrlaHzT8gLFbKxyIrHNVRvgm+ZYI9MLzTOlUpJIaTUBIIq
-	 USWWwp3E4FKbYCtQ8CSfo1LpBF2ylhZe2jjtQnKjwE1kCUttO3pTTCzYtC8/3Ua4Dt
-	 7vp4gkVFdrlngILc5h/XtbqBaK7CKBmzzfEWQaLy4Tl/S5ylDt9TozyNkWex3EkfIi
-	 /ZJmj+zb0N3ug==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9248C4807F0; Mon, 22 May 2023 19:34:29 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3E29B6287E;
+	Mon, 22 May 2023 19:24:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA9C2C4339B;
+	Mon, 22 May 2023 19:24:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1684783485;
+	bh=RSKvD+Gg0X0tn8/0dtsFGEkG2OQ9a7Azcy+M2cqCDiw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jXOEwZO7yCqNHHQ+wkO8E6g3WIXsWRU3srInmTFq8BCIGKR6udYIPuoEiRw8PZQKd
+	 jKND4lNpZDcbU+a0u6vsqN/62wK5cUl+kdUtxpETwgnR54a1P65aCh+1QZQxbZNsXZ
+	 kbTNnbD7SpeOWKPqks2ewaxWsE6DGAWKZgSuD78phXDfug7yEXYKznHTdAlN8ncTGI
+	 uKI6MabT3RF9B4kbAxS1o07SnD/ICx+IgVKcPmVzdXoLgGjJclbpdoITAz+DgbkTO9
+	 oZ8Sk5dAooYC+KCW4CpTQf907LF+ffSaJys863uMg2iGzHNZpNqv4wy9nCy7Om6m+h
+	 4Fq9Sxi5oPKLQ==
+Date: Mon, 22 May 2023 20:24:40 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
 	Serge Semin <fancer.lancer@gmail.com>,
 	Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-ide@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v2 6/6] arm64: dts: rockchip: rk3588: add SATA support
-Date: Mon, 22 May 2023 19:34:23 +0200
-Message-Id: <20230522173423.64691-7-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v2 4/6] dt-bindings: phy: rockchip: rk3588 has two reset
+ lines
+Message-ID: <20230522-blanching-unfiled-b89a4378622e@spud>
 References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+ <20230522173423.64691-5-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <20230522173423.64691-5-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_103436_960420_C83180D1 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20230522_122446_803721_CE24A44E 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,124 +76,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4406729406199126114=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add all three SATA IP blocks to the RK3588 DT.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588.dtsi  | 23 +++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 48 +++++++++++++++++++++++
- 2 files changed, 71 insertions(+)
+--===============4406729406199126114==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="XlKnjVVIuNeAc4md"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 9d8539b5309b..b9508cea34f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -129,6 +129,29 @@ gmac0_mtl_tx_setup: tx-queues-config {
- 		};
- 	};
- 
-+	sata1: sata@fe220000 {
-+		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfe220000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA1>, <&cru CLK_PMALIVE1>,
-+			 <&cru CLK_RXOOB1>, <&cru CLK_PIPEPHY1_REF>,
-+			 <&cru CLK_PIPEPHY1_PIPE_ASIC_G>;
-+		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
-+		interrupts = <GIC_SPI 274 IRQ_TYPE_LEVEL_HIGH 0>;
-+		ports-implemented = <0x1>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+
-+		sata-port@0 {
-+			reg = <0>;
-+			hba-port-cap = <HBA_PORT_FBSCP>;
-+			phys = <&combphy1_ps PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			snps,rx-ts-max = <32>;
-+			snps,tx-ts-max = <32>;
-+		};
-+	};
-+
- 	combphy1_ps: phy@fee10000 {
- 		compatible = "rockchip,rk3588-naneng-combphy";
- 		reg = <0x0 0xfee10000 0x0 0x100>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 45ae457a22a4..00a91b08e3bb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -9,6 +9,8 @@
- #include <dt-bindings/power/rk3588-power.h>
- #include <dt-bindings/reset/rockchip,rk3588-cru.h>
- #include <dt-bindings/thermal/thermal.h>
-+#include <dt-bindings/phy/phy.h>
-+#include <dt-bindings/ata/ahci.h>
- 
- / {
- 	compatible = "rockchip,rk3588";
-@@ -1717,6 +1719,52 @@ gmac1_mtl_tx_setup: tx-queues-config {
- 		};
- 	};
- 
-+	sata0: sata@fe210000 {
-+		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfe210000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA0>, <&cru CLK_PMALIVE0>,
-+			 <&cru CLK_RXOOB0>, <&cru CLK_PIPEPHY0_REF>,
-+			 <&cru CLK_PIPEPHY0_PIPE_ASIC_G>;
-+		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
-+		interrupts = <GIC_SPI 273 IRQ_TYPE_LEVEL_HIGH 0>;
-+		ports-implemented = <0x1>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+
-+		sata-port@0 {
-+			reg = <0>;
-+			hba-port-cap = <HBA_PORT_FBSCP>;
-+			phys = <&combphy0_ps PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			snps,rx-ts-max = <32>;
-+			snps,tx-ts-max = <32>;
-+		};
-+	};
-+
-+	sata2: sata@fe230000 {
-+		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfe230000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA2>, <&cru CLK_PMALIVE2>,
-+			 <&cru CLK_RXOOB2>, <&cru CLK_PIPEPHY2_REF>,
-+			 <&cru CLK_PIPEPHY2_PIPE_ASIC_G>;
-+		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
-+		interrupts = <GIC_SPI 275 IRQ_TYPE_LEVEL_HIGH 0>;
-+		ports-implemented = <0x1>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+
-+		sata-port@0 {
-+			reg = <0>;
-+			hba-port-cap = <HBA_PORT_FBSCP>;
-+			phys = <&combphy2_psu PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			snps,rx-ts-max = <32>;
-+			snps,tx-ts-max = <32>;
-+		};
-+	};
-+
- 	sdmmc: mmc@fe2c0000 {
- 		compatible = "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe2c0000 0x0 0x4000>;
--- 
-2.39.2
 
+--XlKnjVVIuNeAc4md
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hey Sebastian,
+
+On Mon, May 22, 2023 at 07:34:21PM +0200, Sebastian Reichel wrote:
+> The RK3588 has two reset lines for the combphy. One for the
+> APB interface and one for the actual PHY.
+
+But the 68 only has one? Should per-compatible enforcement be added
+like you added for the clocks?
+
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/phy/phy-rockchip-naneng-combphy.yaml         | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-co=
+mbphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-comb=
+phy.yaml
+> index 9ae514fa7533..82550a5c2ed5 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.y=
+aml
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.y=
+aml
+> @@ -31,8 +31,14 @@ properties:
+>        - const: pipe
+> =20
+>    resets:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  reset-names:
+> +    minItems: 1
+>      items:
+> -      - description: exclusive PHY reset line
+> +      - const: phy
+> +      - const: apb
+> =20
+>    rockchip,enable-ssc:
+>      type: boolean
+> --=20
+> 2.39.2
+>=20
+
+--XlKnjVVIuNeAc4md
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZGvBeAAKCRB4tDGHoIJi
+0ulrAQDdVYZ0XlkyJr9Pk+AzBZf9DYBqLoF3J5agxBBphJ/icAD+Ps9MqBbyxLxN
+Wtkf7n3izQhheQvLbTM0gYlDXt8TzgU=
+=I8fK
+-----END PGP SIGNATURE-----
+
+--XlKnjVVIuNeAc4md--
+
+
+--===============4406729406199126114==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4406729406199126114==--
+
