@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50FB9C7EE2D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D77F5C7EE26
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TyqSpm4kZ3zMDZ2ximasyZmSY24vlr+UaTyh8cqAZ3g=; b=KG4sEJX1gsIkXp
-	UD82igptlYlxFDpo6aTuvEByK31y9pEFvtYr7xfaRIgFZjYcVH1zbBYEv7R8An8TGBR3YKrtt35o8
-	Ap2jnvM4hd6ImZARs8SY2u9z6MwMQSjUdgW2GEbm5egDNkORTeo8TPVYkc3N/QOEW+92zfSMO9ViY
-	f5cb6zNxg7vy4obX06ZtSd8SiGyALhz0xqrHd/85d5KfyLkTR+0oqvOxT8E1xYvbJWiPg7u+za8SH
-	e0qawwT5SMaV3NDIGArBQoDvmjZHU/a6M2e7DWPHYWtK0iul40+SNA3eRoxTcfuGL0earXHR7kg1Q
-	O4VAG0YPeKQUXlXwApsw==;
+	List-Owner; bh=VoKLv6JvDssQhgDAFgjd2n9vk04iQBXC1UehIIEM4iY=; b=KwN9sNHpQS3881
+	c+aO6EBj3lvj5yl9TpdbTuLVRzQkeFhxzvM8DBm3odezwQcE5YCWPdElkEWRqTFUsqw0uIFScuBGB
+	k3/ML7ZsXiWpNkFAvqwwkFsipuWfMYnqQiYjJ2t4R9dZZD36KCdG3KmzDe5BMztwa+/6uNMXz0WpD
+	hMnXN/SY4CJMcMv/VzUIwJkfShiHxMxUx3PrRomS4Spd4zcxWD7EifWA64OjQzP9bwKtB+T0CquoB
+	6yazLeLN7W+4suWx5rsGy9puUetKB7BCB6C7C9TLehnAm9QgT0H00t1rIGp1mY9ymoQ+vw4t8/M1z
+	sQh6ij1t54DOPFk/X6sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18xH-007IdQ-2c;
-	Mon, 22 May 2023 17:04:19 +0000
+	id 1q18xI-007Ie7-1c;
+	Mon, 22 May 2023 17:04:20 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18wn-007IJi-30;
+	id 1q18wn-007IJj-30;
 	Mon, 22 May 2023 17:03:51 +0000
 Received: from jupiter.universe (dyndsl-091-248-208-162.ewe-ip-backbone.de [91.248.208.162])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D45E6606E6F;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 12A966606E72;
 	Mon, 22 May 2023 18:03:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1684775025;
-	bh=aOdRu9IgBBsXxS1i+3a2pCjzvGT6Hcmagn1UYmXetkE=;
+	bh=MWtwyGF7akcYO5s0qhuBRzsJ9ydw4HewyiQSd80e/Q8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iZPGWsHQ05ONMyoFxPyoBnZsYqF53ShQRH/KtCwJzPTjZvSDTHO2twimXkWH7jgbO
-	 bMB0hLsm98/il6bGvm53IjZcLQVy5z1YM3+W3bTNTGoD/sWBk/73FiVt2NJqyaXy4e
-	 ynlSPUUhC83263oLDQiB2r6lz54MIct2M42bMCxNIK5XZXX+DK4mbQ1g4D9xbCB/ja
-	 02sc8KG4+j+Ub3b/brmfS2+QV6xaqYOM99xIyHaigpiQJiRtlbvx3xh0ZGp7DOijFb
-	 mLeg4BsGLryCxkrv950UmBGx+dHkkKciNChr5bFIFuYbjcxzRJg+wOHQBnUpMs42JK
-	 gAV0IJkoGfgKQ==
+	b=WaqvdF6ocAzkI463kXIOimiwSO1fUcnLllx8va5AKRDNr9vD6FVlUO2X8Mpbc1sZs
+	 ctecFb+keRzRcbLylk/SHTTO1Pejil6HHad66nLkksi2NgRp6Zji3frtgpziqLWFbE
+	 FWx0xJ4cJ0Yxhbj3xZtkE+/wFLUqGzgzW3vGf6q5SUNLY00sJDzZul8XmLi9GP9oG7
+	 u+bGhBc9X2ykxMjwGUgDkt2R2WY9gQKT9nJ9Eht1TAy9SIey3lv6ox7hJ6N+CgZWbZ
+	 E16rhGV/aO6mUiFy0qcecULKTRZ6UsNYmWg2tgtssWvh5rF+IYvg0mWeV3wFqcF+Sw
+	 z4eUy8i/NrJyw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7FCAB4807EF; Mon, 22 May 2023 19:03:40 +0200 (CEST)
+	id 81CCD4807F0; Mon, 22 May 2023 19:03:40 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -58,16 +58,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v3 5/7] phy: phy-rockchip-inno-usb2: simplify phy clock handling
-Date: Mon, 22 May 2023 19:03:22 +0200
-Message-Id: <20230522170324.61349-6-sebastian.reichel@collabora.com>
+Subject: [PATCH v3 6/7] phy: phy-rockchip-inno-usb2: simplify getting match data
+Date: Mon, 22 May 2023 19:03:23 +0200
+Message-Id: <20230522170324.61349-7-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 References: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_100350_107087_0F31F5E5 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20230522_100350_105221_AC5DA173 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,62 +84,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify phyclk handling by using devm_clk_get_optional_enabled to
-acquire and enable the optional clock. This also fixes a resource
-leak in driver remove path and adds proper error handling.
+Simplify the code by directly getting the match data via
+device_get_match_data() instead of open coding its functionality.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index aa8c55609c0d..1cf84869e78b 100644
+index 1cf84869e78b..f5c30f117cba 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1390,24 +1390,22 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (IS_ERR(rphy->phy_reset))
- 		return PTR_ERR(rphy->phy_reset);
+@@ -1305,7 +1305,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	struct phy_provider *provider;
+ 	struct rockchip_usb2phy *rphy;
+ 	const struct rockchip_usb2phy_cfg *phy_cfgs;
+-	const struct of_device_id *match;
+ 	unsigned int reg;
+ 	int index, ret;
  
--	rphy->clk = of_clk_get_by_name(np, "phyclk");
--	if (!IS_ERR(rphy->clk)) {
--		clk_prepare_enable(rphy->clk);
--	} else {
--		dev_info(&pdev->dev, "no phyclk specified\n");
--		rphy->clk = NULL;
-+	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
-+	if (IS_ERR(rphy->clk)) {
-+		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
-+				     "failed to get phyclk\n");
- 	}
+@@ -1313,12 +1312,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	if (!rphy)
+ 		return -ENOMEM;
  
- 	ret = rockchip_usb2phy_clk480m_register(rphy);
- 	if (ret) {
- 		dev_err(dev, "failed to register 480m output clock\n");
--		goto disable_clks;
-+		return ret;
- 	}
- 
- 	if (rphy->phy_cfg->phy_tuning) {
- 		ret = rphy->phy_cfg->phy_tuning(rphy);
- 		if (ret)
--			goto disable_clks;
-+			return ret;
- 	}
- 
- 	index = 0;
-@@ -1470,11 +1468,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 
- put_child:
- 	of_node_put(child_np);
--disable_clks:
--	if (rphy->clk) {
--		clk_disable_unprepare(rphy->clk);
--		clk_put(rphy->clk);
+-	match = of_match_device(dev->driver->of_match_table, dev);
+-	if (!match || !match->data) {
+-		dev_err(dev, "phy configs are not assigned!\n");
+-		return -EINVAL;
 -	}
- 	return ret;
- }
+-
+ 	if (!dev->parent || !dev->parent->of_node) {
+ 		rphy->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,usbgrf");
+ 		if (IS_ERR(rphy->grf)) {
+@@ -1359,12 +1352,15 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	}
  
+ 	rphy->dev = dev;
+-	phy_cfgs = match->data;
++	phy_cfgs = device_get_match_data(dev);
+ 	rphy->chg_state = USB_CHG_STATE_UNDEFINED;
+ 	rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
+ 	rphy->irq = platform_get_irq_optional(pdev, 0);
+ 	platform_set_drvdata(pdev, rphy);
+ 
++	if (!phy_cfgs)
++		return dev_err_probe(dev, -EINVAL, "phy configs are not assigned!\n");
++
+ 	ret = rockchip_usb2phy_extcon_register(rphy);
+ 	if (ret)
+ 		return ret;
 -- 
 2.39.2
 
