@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2062C7EE26
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50FB9C7EE2D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 May 2023 17:04:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MpYXk9RwBWUgEfWzJ7GpdezUtZnwXcbkBHB1gEMUO88=; b=rbTBfTQCr4AoPg
-	K/9crNjO+r09q2kwzbSoSGttlJTllHXzLBs2FW2sf+Kh/T+6rSXDGTc6nZxNgM+rEDklSnmoPpyve
-	x77nq474Mo+FfjpFa8/W4y2LXpY6DQ/PXIVgZ0ydc4zB5C7wMro9sPbybD+0OAKJX3h3QR5VQhhiB
-	YYVdORsg3Cj8yT4a89ieBKiDaXgFD+joIv7y/hWOwxW62he/hk35qn6hBLOT9+WbSswBAxjTY9wKc
-	pxdOEF8z2/WoNdWYITTqHXlGr0bmebyBekfEcmwd7lKHtOV9ty7hbnT2ftx1FlGFfU9aZ6rteMpRZ
-	txi/PMY5yUQ0MpRKcYxQ==;
+	List-Owner; bh=TyqSpm4kZ3zMDZ2ximasyZmSY24vlr+UaTyh8cqAZ3g=; b=KG4sEJX1gsIkXp
+	UD82igptlYlxFDpo6aTuvEByK31y9pEFvtYr7xfaRIgFZjYcVH1zbBYEv7R8An8TGBR3YKrtt35o8
+	Ap2jnvM4hd6ImZARs8SY2u9z6MwMQSjUdgW2GEbm5egDNkORTeo8TPVYkc3N/QOEW+92zfSMO9ViY
+	f5cb6zNxg7vy4obX06ZtSd8SiGyALhz0xqrHd/85d5KfyLkTR+0oqvOxT8E1xYvbJWiPg7u+za8SH
+	e0qawwT5SMaV3NDIGArBQoDvmjZHU/a6M2e7DWPHYWtK0iul40+SNA3eRoxTcfuGL0earXHR7kg1Q
+	O4VAG0YPeKQUXlXwApsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18xJ-007Iei-0P;
-	Mon, 22 May 2023 17:04:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q18xH-007IdQ-2c;
+	Mon, 22 May 2023 17:04:19 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q18wo-007IJs-0f;
+	id 1q18wn-007IJi-30;
 	Mon, 22 May 2023 17:03:51 +0000
 Received: from jupiter.universe (dyndsl-091-248-208-162.ewe-ip-backbone.de [91.248.208.162])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1FAF46606E74;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D45E6606E6F;
 	Mon, 22 May 2023 18:03:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1684775025;
-	bh=ce34z/CXrUq2NMhvtZdCHvp4uOK1+ORwK5t6sNy10LE=;
+	bh=aOdRu9IgBBsXxS1i+3a2pCjzvGT6Hcmagn1UYmXetkE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kcI6B1fVLFNOtckJ7RVa23rviif43wxsc80XQ4QwZusJGSB+7f1nSpKDr/GFUZ0zV
-	 z2Gfd6YIIm7qQfN6KRW6cIT6ymgICqTG1NHQD6I3/walJPTZ/FtdtjAOMU8vp8nqMK
-	 e3clQzDzO0/qzZDWi8emT4QFEgn8nmoKf+R7pF8J9pRwpH01nfQWQzoB791PtFdpWq
-	 k9zeev7emXRL9ohg0hj+ZRNsqSPwJ8hfIr6ZQgxbz/xbNy4RUZxVOACzrQIn0PBLR6
-	 nYXY5+V798pFtVm0cnEi3WO2ZRUM/K6zyJjXLAifHN3cduF1SVkc5JAoJq9bAL6MjZ
-	 BWoXnbSWIDyMg==
+	b=iZPGWsHQ05ONMyoFxPyoBnZsYqF53ShQRH/KtCwJzPTjZvSDTHO2twimXkWH7jgbO
+	 bMB0hLsm98/il6bGvm53IjZcLQVy5z1YM3+W3bTNTGoD/sWBk/73FiVt2NJqyaXy4e
+	 ynlSPUUhC83263oLDQiB2r6lz54MIct2M42bMCxNIK5XZXX+DK4mbQ1g4D9xbCB/ja
+	 02sc8KG4+j+Ub3b/brmfS2+QV6xaqYOM99xIyHaigpiQJiRtlbvx3xh0ZGp7DOijFb
+	 mLeg4BsGLryCxkrv950UmBGx+dHkkKciNChr5bFIFuYbjcxzRJg+wOHQBnUpMs42JK
+	 gAV0IJkoGfgKQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 82DD04807F1; Mon, 22 May 2023 19:03:40 +0200 (CEST)
+	id 7FCAB4807EF; Mon, 22 May 2023 19:03:40 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -58,16 +58,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v3 7/7] phy: phy-rockchip-inno-usb2: improve error message
-Date: Mon, 22 May 2023 19:03:24 +0200
-Message-Id: <20230522170324.61349-8-sebastian.reichel@collabora.com>
+Subject: [PATCH v3 5/7] phy: phy-rockchip-inno-usb2: simplify phy clock handling
+Date: Mon, 22 May 2023 19:03:22 +0200
+Message-Id: <20230522170324.61349-6-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 References: <20230522170324.61349-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230522_100350_404546_6B309E73 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20230522_100350_107087_0F31F5E5 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +84,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Printing the OF node is not useful, since we get the same information
-from the device context. Instead print the reg address, that could
-not be found.
+Simplify phyclk handling by using devm_clk_get_optional_enabled to
+acquire and enable the optional clock. This also fixes a resource
+leak in driver remove path and adds proper error handling.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index f5c30f117cba..b982c3f0d4b5 100644
+index aa8c55609c0d..1cf84869e78b 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1377,8 +1377,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	} while (phy_cfgs[index].reg);
+@@ -1390,24 +1390,22 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	if (IS_ERR(rphy->phy_reset))
+ 		return PTR_ERR(rphy->phy_reset);
  
- 	if (!rphy->phy_cfg) {
--		dev_err(dev, "no phy-config can be matched with %pOFn node\n",
--			np);
-+		dev_err(dev, "could not find phy config for reg=0x%08x\n", reg);
- 		return -EINVAL;
+-	rphy->clk = of_clk_get_by_name(np, "phyclk");
+-	if (!IS_ERR(rphy->clk)) {
+-		clk_prepare_enable(rphy->clk);
+-	} else {
+-		dev_info(&pdev->dev, "no phyclk specified\n");
+-		rphy->clk = NULL;
++	rphy->clk = devm_clk_get_optional_enabled(dev, "phyclk");
++	if (IS_ERR(rphy->clk)) {
++		return dev_err_probe(&pdev->dev, PTR_ERR(rphy->clk),
++				     "failed to get phyclk\n");
  	}
+ 
+ 	ret = rockchip_usb2phy_clk480m_register(rphy);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register 480m output clock\n");
+-		goto disable_clks;
++		return ret;
+ 	}
+ 
+ 	if (rphy->phy_cfg->phy_tuning) {
+ 		ret = rphy->phy_cfg->phy_tuning(rphy);
+ 		if (ret)
+-			goto disable_clks;
++			return ret;
+ 	}
+ 
+ 	index = 0;
+@@ -1470,11 +1468,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 
+ put_child:
+ 	of_node_put(child_np);
+-disable_clks:
+-	if (rphy->clk) {
+-		clk_disable_unprepare(rphy->clk);
+-		clk_put(rphy->clk);
+-	}
+ 	return ret;
+ }
  
 -- 
 2.39.2
