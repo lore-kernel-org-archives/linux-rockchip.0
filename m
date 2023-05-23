@@ -4,50 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A17C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 14:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4871FC7EE23
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 14:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QdRBPcnoPIp+rakAH74073dHY4WTslk51AE+/kJSTlY=; b=g/gu9/JylA1KP9Rp9z+zXu4KeO
-	pIICIMmW7+HJp+VddB2GEMGtRs//gUjngnbSgawKwxAayNOSyU6csVrQ/iCLYQj+tZ4xkv942+OwP
-	tEfoqrNkErXtSr1Q9FbD67DtolQWMNICUrSH8A7r3f22NM3B1qfSJ8RcusL9ZC/DutY3vmVQLKZdC
-	sMRRBZZynP7WknvNVHt6HyT5UBLlXewqMAARr9MzobRBkIojTEDCoHfMPmgpxDLInjBIbiYNglOSQ
-	HUgKgtd7kJg6FubN7SrTuxrvYMZ7QOppn4DbFutB34bnHQcJAz4ycyh1SJYG3fAGIx/OwSd+nvA/S
-	AbSxBeJA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VrwIXQyMh3NGogBaK8oY//xO+S9eJCkq0h/wOXh5TTA=; b=zBXnQKyGOszSCN
+	VLQc6bquoWl77L9OQYqFaWVOGTi1c/Ei50Eza3/DXQTIKVb9BQqv+z+ZS653cmxMOBqJ9Ivlo2ile
+	wgUtUiK8EYlfvDGY1VQRg42pAuEfy2HKN/xyqrXh+xErhpo8ezVzai26CfIBTT3KX9Kd7gGsjVcZV
+	OY9qlv8Um49JKi2BLArdNYSwhR7F3XxLZQoftdYAJLrw8IT7uEtiCVQfLWiFWRoVjA7j868uN9/jK
+	zoX3CUBXjl4phYfzoJM6Qc/b7Sy/Q2hPr7U5hPGSjlvQKH09JQqaJExBQItqu8mzAxTFm5u6w7QIY
+	lF7ZUXVQiaT4dfeUo9lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1Suy-00AUY4-0t;
-	Tue, 23 May 2023 14:23:16 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1q1T6v-00AVrl-1G;
+	Tue, 23 May 2023 14:35:37 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1Suu-00AUWL-2D
+	id 1q1T6s-00AVr1-07
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 May 2023 14:23:14 +0000
-Received: (Authenticated sender: didi.debian@cknow.org)
-	by mail.gandi.net (Postfix) with ESMTPSA id 694AAFF804;
-	Tue, 23 May 2023 14:23:05 +0000 (UTC)
-From: Diederik de Haas <didi.debian@cknow.org>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- hverkuil-cisco@xs4all.nl, benjamin.gaignard@collabora.com,
- linux-rockchip@lists.infradead.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@pengutronix.de, m.tretter@pengutronix.de,
- Michael Tretter <m.tretter@pengutronix.de>,
- "Linux regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>
-Subject: Re: [PATCH] media: verisilicon: Fix null pointer dereference in try_fmt
-Date: Tue, 23 May 2023 16:22:56 +0200
-Message-ID: <6444204.lOV4Wx5bFT@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20230516091209.3098262-1-m.tretter@pengutronix.de>
-References: <20230516091209.3098262-1-m.tretter@pengutronix.de>
+	Tue, 23 May 2023 14:35:35 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1q1T6l-0006Em-FZ; Tue, 23 May 2023 16:35:27 +0200
+Received: from mtr by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1q1T6h-0008Cv-9N; Tue, 23 May 2023 16:35:23 +0200
+Date: Tue, 23 May 2023 16:35:23 +0200
+From: Michael Tretter <m.tretter@pengutronix.de>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH] media: verisilicon: Final fix for the crash when opening
+ the driver
+Message-ID: <20230523143523.GA9943@pengutronix.de>
+Mail-Followup-To: Michael Tretter <m.tretter@pengutronix.de>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+References: <CGME20230421104811eucas1p16ad5e11ebc4d305c6fab372d3743b6e1@eucas1p1.samsung.com>
+ <20230421104759.2236463-1-m.szyprowski@samsung.com>
+ <f4da6f1e5218db0417429a7fb5ebfdb95928e240.camel@ndufresne.ca>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f4da6f1e5218db0417429a7fb5ebfdb95928e240.camel@ndufresne.ca>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: mtr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_072313_028400_C9C03550 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20230523_073534_070874_F1CC53EF 
+X-CRM114-Status: GOOD (  33.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,115 +86,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8078586903238888953=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8078586903238888953==
-Content-Type: multipart/signed; boundary="nextPart5339283.31r3eYUQgx";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart5339283.31r3eYUQgx
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Tue, 23 May 2023 16:22:56 +0200
-Message-ID: <6444204.lOV4Wx5bFT@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20230516091209.3098262-1-m.tretter@pengutronix.de>
-References: <20230516091209.3098262-1-m.tretter@pengutronix.de>
-MIME-Version: 1.0
-
-On Tuesday, 16 May 2023 11:12:09 CEST Michael Tretter wrote:
-> Since commit db6f68b51e5c ("media: verisilicon: Do not set context
-> src/dst formats in reset functions"), vpu_src_fmt is not set in the
-> reset function, but only set in hantro_set_fmt_out, which calls
-> hantro_try_fmt before setting the format. Therefore, hantro_try_fmt
-> might be called with vpu_src_fmt still being null.
-> 
-> Add a test if the format is actually set before checking the format.
-> 
-> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
-> Fixes: db6f68b51e5c ("media: verisilicon: Do not set context src/dst formats
-> in reset functions") ---
->  drivers/media/platform/verisilicon/hantro_v4l2.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> b/drivers/media/platform/verisilicon/hantro_v4l2.c index
-> 835518534e3b..ec37d2646fde 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -313,17 +313,20 @@ static int hantro_try_fmt(const struct hantro_ctx
-> *ctx, /* Fill remaining fields */
->  		v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, pix_mp->width,
->  				    pix_mp->height);
-> -		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE 
-&&
-> +		if (ctx->vpu_src_fmt &&
-> +		    ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE 
-&&
->  		    !hantro_needs_postproc(ctx, fmt))
->  			pix_mp->plane_fmt[0].sizeimage +=
->  				hantro_h264_mv_size(pix_mp-
->width,
->  						    pix_mp-
->height);
-> -		else if (ctx->vpu_src_fmt->fourcc == 
-V4L2_PIX_FMT_VP9_FRAME &&
-> +		else if (ctx->vpu_src_fmt &&
-> +			 ctx->vpu_src_fmt->fourcc == 
-V4L2_PIX_FMT_VP9_FRAME &&
->  			 !hantro_needs_postproc(ctx, fmt))
->  			pix_mp->plane_fmt[0].sizeimage +=
->  				hantro_vp9_mv_size(pix_mp->width,
->  						   pix_mp-
->height);
-> -		else if (ctx->vpu_src_fmt->fourcc == 
-V4L2_PIX_FMT_HEVC_SLICE &&
-> +		else if (ctx->vpu_src_fmt &&
-> +			 ctx->vpu_src_fmt->fourcc == 
-V4L2_PIX_FMT_HEVC_SLICE &&
->  			 !hantro_needs_postproc(ctx, fmt))
->  			pix_mp->plane_fmt[0].sizeimage +=
->  				hantro_hevc_mv_size(pix_mp-
->width,
-
-I have verified that this patch fixes the crash I was seeing since 6.4.
-https://lore.kernel.org/linux-media/12724349.O9o76ZdvQC@bagend/ is a/the other 
-patch which also fixed the crash.
---nextPart5339283.31r3eYUQgx
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZGzMQAAKCRDXblvOeH7b
-bg3/AP9bb4nQhPomMdHZPBe37sKDTz5e6cBfiIHTHYSOwuMcpAD+IudI0INZj2SA
-hjbDfu5ZCXl6VQhv7vl5yeKD4nes9QE=
-=k7yc
------END PGP SIGNATURE-----
-
---nextPart5339283.31r3eYUQgx--
-
-
-
-
-
---===============8078586903238888953==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8078586903238888953==--
-
-
-
-
+T24gTW9uLCAwMSBNYXkgMjAyMyAxNDo1MDo1NyAtMDQwMCwgTmljb2xhcyBEdWZyZXNuZSB3cm90
+ZToKPiBMZSB2ZW5kcmVkaSAyMSBhdnJpbCAyMDIzIMOgIDEyOjQ3ICswMjAwLCBNYXJlayBTenlw
+cm93c2tpIGEgw6ljcml0wqA6Cj4gPiBjdHgtPnZwdV9zcmNfZm10IGlzIG5vIG1vcmUgaW5pdGlh
+bGl6ZWQgYmVmb3JlIGNhbGxpbmcgaGFudHJvX3RyeV9mbXQoKQo+ID4gc28gY2hlY2tpbmcgaXQg
+bGVkIHRvIGNyYXNoIHRoZSBrZXJuZWwuIFNpbXBseSB1c2UgdGhlIHByb3ZpZGVkICdmbXQnIGFz
+Cj4gPiBhIGZvcm1hdCBmb3IgdGhvc2UgY2hlY2tzLgo+ID4gCj4gPiBUaGlzIGZpeGVzIHRoZSBm
+b2xsb3dpbmcgaXNzdWUgb2JzZXJ2ZWQgb24gT2Ryb2lkLU0xIGJvYXJkOgo+ID4gCj4gPiAgVW5h
+YmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwg
+YWRkcmVzcyAwMDAwMDAwMDAwMDAwMDA4Cj4gPiAgTWVtIGFib3J0IGluZm86Cj4gPiAgLi4uCj4g
+PiAgTW9kdWxlcyBsaW5rZWQgaW46IGNyY3QxMGRpZl9jZSBoYW50cm9fdnB1IHNuZF9zb2Nfc2lt
+cGxlX2NhcmQgc25kX3NvY19zaW1wbGVfY2FyZF91dGlscyB2NGwyX3ZwOSB2NGwyX2gyNjQgcm9j
+a2NoaXBfc2FyYWRjIHY0bDJfbWVtMm1lbSB2aWRlb2J1ZjJfZG1hX2NvbnRpZyB2aWRlb2J1ZjJf
+bWVtb3BzIHJ0Y19yazgwOCB2aWRlb2J1ZjJfdjRsMiBpbmR1c3RyaWFsaW9fdHJpZ2dlcmVkX2J1
+ZmZlciByb2NrY2hpcF90aGVybWFsIGR3bWFjX3JrIHN0bW1hY19wbGF0Zm9ybSBzdG1tYWMgdmlk
+ZW9kZXYga2ZpZm9fYnVmIGRpc3BsYXlfY29ubmVjdG9yIHZpZGVvYnVmMl9jb21tb24gcGNzX3hw
+Y3MgbWMgcm9ja2NoaXBkcm0gYW5hbG9naXhfZHAgZHdfbWlwaV9kc2kgZHdfaGRtaSBkcm1fZGlz
+cGxheV9oZWxwZXIgcGFuZnJvc3QgZHJtX3NobWVtX2hlbHBlciBncHVfc2NoZWQgaXBfdGFibGVz
+IHhfdGFibGVzIGlwdjYKPiA+ICBDUFU6IDMgUElEOiAxNzYgQ29tbTogdjRsX2lkIE5vdCB0YWlu
+dGVkIDYuMy4wLXJjNy1uZXh0LTIwMjMwNDIwICMxMzQ4MQo+ID4gIEhhcmR3YXJlIG5hbWU6IEhh
+cmRrZXJuZWwgT0RST0lELU0xIChEVCkKPiA+ICBwc3RhdGU6IDYwNDAwMDA5IChuWkN2IGRhaWYg
+K1BBTiAtVUFPIC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKPiA+ICBwYyA6IGhhbnRyb190cnlf
+Zm10KzB4YTAvMHgyNzggW2hhbnRyb192cHVdCj4gPiAgbHIgOiBoYW50cm9fdHJ5X2ZtdCsweDk0
+LzB4Mjc4IFtoYW50cm9fdnB1XQo+ID4gIC4uLgo+ID4gIENhbGwgdHJhY2U6Cj4gPiAgIGhhbnRy
+b190cnlfZm10KzB4YTAvMHgyNzggW2hhbnRyb192cHVdCj4gPiAgIGhhbnRyb19zZXRfZm10X291
+dCsweDNjLzB4Mjk4IFtoYW50cm9fdnB1XQo+ID4gICBoYW50cm9fcmVzZXRfcmF3X2ZtdCsweDk4
+LzB4MTI4IFtoYW50cm9fdnB1XQo+ID4gICBoYW50cm9fc2V0X2ZtdF9jYXArMHgyNDAvMHgyNTQg
+W2hhbnRyb192cHVdCj4gPiAgIGhhbnRyb19yZXNldF9lbmNvZGVkX2ZtdCsweDk0LzB4Y2MgW2hh
+bnRyb192cHVdCj4gPiAgIGhhbnRyb19yZXNldF9mbXRzKzB4MTgvMHgzOCBbaGFudHJvX3ZwdV0K
+PiA+ICAgaGFudHJvX29wZW4rMHhkNC8weDIwYyBbaGFudHJvX3ZwdV0KPiA+ICAgdjRsMl9vcGVu
+KzB4ODAvMHgxMjAgW3ZpZGVvZGV2XQo+ID4gICBjaHJkZXZfb3BlbisweGMwLzB4MjJjCj4gPiAg
+IGRvX2RlbnRyeV9vcGVuKzB4MTNjLzB4NDhjCj4gPiAgIHZmc19vcGVuKzB4MmMvMHgzOAo+ID4g
+ICBwYXRoX29wZW5hdCsweDU1MC8weDkzNAo+ID4gICBkb19maWxwX29wZW4rMHg4MC8weDEyYwo+
+ID4gICBkb19zeXNfb3BlbmF0MisweGI0LzB4MTY4Cj4gPiAgIF9fYXJtNjRfc3lzX29wZW5hdCsw
+eDY0LzB4YWMKPiA+ICAgaW52b2tlX3N5c2NhbGwrMHg0OC8weDExNAo+ID4gICBlbDBfc3ZjX2Nv
+bW1vbisweDEwMC8weDEyMAo+ID4gICBkb19lbDBfc3ZjKzB4M2MvMHhhOAo+ID4gICBlbDBfc3Zj
+KzB4NDAvMHhhOAo+ID4gICBlbDB0XzY0X3N5bmNfaGFuZGxlcisweGI4LzB4YmMKPiA+ICAgZWww
+dF82NF9zeW5jKzB4MTkwLzB4MTk0Cj4gPiAgQ29kZTogOTdmYzhhN2YgZjk0MGFhODAgNTI4NjRh
+NjEgNzJhNjg2YzEgKGI5NDAwODAwKSAKPiA+ICAtLS1bIGVuZCB0cmFjZSAwMDAwMDAwMDAwMDAw
+MDAwIF0tLS0KPiA+IAo+ID4gRml4ZXM6IGRiNmY2OGI1MWU1YyAoIm1lZGlhOiB2ZXJpc2lsaWNv
+bjogRG8gbm90IHNldCBjb250ZXh0IHNyYy9kc3QgZm9ybWF0cyBpbiByZXNldCBmdW5jdGlvbnMi
+KQo+ID4gU2lnbmVkLW9mZi1ieTogTWFyZWsgU3p5cHJvd3NraSA8bS5zenlwcm93c2tpQHNhbXN1
+bmcuY29tPgo+ID4gLS0tCj4gPiBJdCBsb29rcyB0aGF0IEkndmUgbWlzc2VkIHRoZSBmYWN0IHRo
+YXQgdGhlIGZpcnN0IGZpeCBtZXJnZWQgYXMgY29tbWl0Cj4gPiBmMTAwY2UzYmJkNmEgKCJtZWRp
+YTogdmVyaXNpbGljb246IEZpeCBjcmFzaCB3aGVuIHByb2JpbmcgZW5jb2RlciIpIGRpZAo+ID4g
+bm90IGZpeCBhbGwgdGhlIGlzc3VlcyBpbnRyb2R1Y2VkIGJ5IGRiNmY2OGI1MWU1YyAoIm1lZGlh
+OiB2ZXJpc2lsaWNvbjoKPiA+IERvIG5vdCBzZXQgY29udGV4dCBzcmMvZHN0IGZvcm1hdHMgaW4g
+cmVzZXQgZnVuY3Rpb25zIikuIEknbSByZWFsbHkgc29ycnkKPiA+IGZvciB0aGF0Lgo+ID4gLS0t
+Cj4gPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRsMi5jIHwg
+NiArKystLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9u
+cygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2ls
+aWNvbi9oYW50cm9fdjRsMi5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9o
+YW50cm9fdjRsMi5jCj4gPiBpbmRleCA4MzU1MTg1MzRlM2IuLjYxOGVhMjNhN2Q0OSAxMDA2NDQK
+PiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIu
+Ywo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRs
+Mi5jCj4gPiBAQCAtMzEzLDE3ICszMTMsMTcgQEAgc3RhdGljIGludCBoYW50cm9fdHJ5X2ZtdChj
+b25zdCBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+ID4gIAkJLyogRmlsbCByZW1haW5pbmcgZmll
+bGRzICovCj4gPiAgCQl2NGwyX2ZpbGxfcGl4Zm10X21wKHBpeF9tcCwgZm10LT5mb3VyY2MsIHBp
+eF9tcC0+d2lkdGgsCj4gPiAgCQkJCSAgICBwaXhfbXAtPmhlaWdodCk7Cj4gPiAtCQlpZiAoY3R4
+LT52cHVfc3JjX2ZtdC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9IMjY0X1NMSUNFICYmCj4gPiAr
+CQlpZiAoZm10LT5mb3VyY2MgPT0gVjRMMl9QSVhfRk1UX0gyNjRfU0xJQ0UgJiYKPiAKPiBJbiB0
+aGlzIGNvbnRleHQsIHdlIGhhdmUgIWNvZGVkLCBzbyBmbXQtPmZvdXJjYyB3aWxsIG5ldmVyIGJl
+IGFueSBvZiBIMjY0LCBWUDkKPiBvciBIRVZDLCBzbyB3ZSdsbG5ldmVyIGFsbG9jYXRlIHNwYWNl
+IGZvciBtb3Rpb24gdmVjdG9yLiBJJ20gc3VycHJpc2UgeW91IGFyZQo+IGdldHRpbmcgYW55dGhp
+bmcgd29ya2luZyBhZnRlciB0aGF0LiBXaGF0IHRoaXMgY29kZSBpcyB0cnlpbmcgdG8gYWNoaWV2
+ZSBpcyB0bwo+IHBhZCB0aGUgc2l6ZSBvZiByYXcgaW1hZ2VzIGRlcGVuZGluZyBvbiB0aGUgc2Vs
+ZWN0ZWQgY29kZWQgZm9ybWF0IChvcHBvc2l0ZQo+IHF1ZXVlKS4KClRoZSBlcnJvciBoYXBwZW5z
+IGZvciB0aGUgZW5jb2Rlci4gVGh1cywgaXQgaXMgdGhlIE9VVFBVVCBkZXZpY2UgdGhhdCBpcwoh
+Y29kZWQuIFRoZSBPVVRQVVQgZGV2aWNlIGFsc28gZGV0ZXJtaW5lcyB2cHVfc3JjX2Zvcm1hdCwg
+d2hpY2ggd2lsbCBuZXZlciBiZQpIMjY0LCBWUDksIG9yIEhFVkMgZm9yIGFuIGVuY29kZXIuCgpU
+aGUgZW5jb2RlciB3b3JrcyBmaW5lIHdpdGggdGhpcyBwYXRjaCwgYnV0IEkgdGhpbmsgaXQgYnJl
+YWtzIHRoZSBkZWNvZGVyLgoKPiAKPiBJIHRoaW5rIHRoZSBwcm9wZXIgZml4IGlzIHRvIGFjdHVh
+bGx5IGZpeCB0aGUgZGVmYXVsdCBjb2RlZCBmb3JtYXQgc2V0dXAuIFRoaXMKPiB3aWxsIGVuc3Vy
+ZSB0aGF0IHZwdV9zcmNfZm10IGlzIGFsd2F5cyB2YWxpZC4gVGhlIHNhbWUgcG9pbnRlciBjYW4g
+YmUgdXNlZCBpbgo+IHN0YXJ0LXN0cmVhbWluZyBpdCBzZWVtcy4KClNldHRpbmcgYSBkZWZhdWx0
+IGNvZGVkIGZvcm1hdCB3b3VsZCBiZSBhIHByb3BlciBmaXguIEhvd2V2ZXIsIHRoaXMgcHJldmlv
+dXNseQp3YXMgZG9uZSBpbiB0aGUgaGFudHJvX3Jlc2V0XypfZm10IGZ1bmN0aW9ucywgd2hlcmUg
+aXQgaGFzIGJlZW4gcmVtb3ZlZC4KCk1pY2hhZWwKCj4gCj4gPiAgCQkgICAgIWhhbnRyb19uZWVk
+c19wb3N0cHJvYyhjdHgsIGZtdCkpCj4gPiAgCQkJcGl4X21wLT5wbGFuZV9mbXRbMF0uc2l6ZWlt
+YWdlICs9Cj4gPiAgCQkJCWhhbnRyb19oMjY0X212X3NpemUocGl4X21wLT53aWR0aCwKPiA+ICAJ
+CQkJCQkgICAgcGl4X21wLT5oZWlnaHQpOwo+ID4gLQkJZWxzZSBpZiAoY3R4LT52cHVfc3JjX2Zt
+dC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9WUDlfRlJBTUUgJiYKPiA+ICsJCWVsc2UgaWYgKGZt
+dC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9WUDlfRlJBTUUgJiYKPiA+ICAJCQkgIWhhbnRyb19u
+ZWVkc19wb3N0cHJvYyhjdHgsIGZtdCkpCj4gPiAgCQkJcGl4X21wLT5wbGFuZV9mbXRbMF0uc2l6
+ZWltYWdlICs9Cj4gPiAgCQkJCWhhbnRyb192cDlfbXZfc2l6ZShwaXhfbXAtPndpZHRoLAo+ID4g
+IAkJCQkJCSAgIHBpeF9tcC0+aGVpZ2h0KTsKPiA+IC0JCWVsc2UgaWYgKGN0eC0+dnB1X3NyY19m
+bXQtPmZvdXJjYyA9PSBWNEwyX1BJWF9GTVRfSEVWQ19TTElDRSAmJgo+ID4gKwkJZWxzZSBpZiAo
+Zm10LT5mb3VyY2MgPT0gVjRMMl9QSVhfRk1UX0hFVkNfU0xJQ0UgJiYKPiA+ICAJCQkgIWhhbnRy
+b19uZWVkc19wb3N0cHJvYyhjdHgsIGZtdCkpCj4gPiAgCQkJcGl4X21wLT5wbGFuZV9mbXRbMF0u
+c2l6ZWltYWdlICs9Cj4gPiAgCQkJCWhhbnRyb19oZXZjX212X3NpemUocGl4X21wLT53aWR0aCwK
+PiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
