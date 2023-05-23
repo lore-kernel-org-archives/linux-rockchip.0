@@ -4,55 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89E04C77B75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 11:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A17C7EE23
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 14:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YOkwxDRKyzbCqx7JoqhO1dPAGovnsRXcByw8Cb6ftHg=; b=JUMKaANr72/13t
-	x2L3CcCv7OSTXaejskCN9rHUpKX9E8D7yw/GiTchjw/Vm2vYXlVi4P4jJe2WSt6s5v+cQ2kAvg+Ud
-	x1W9iQ4pgOhQ1/X0bzzz0agycfbfl/yVd4k7e+gExJ5jsJxf3ryJ3bCW6zPMpwpa2f1BuT0Hr9i58
-	Qhn1Ugh4TNwNfG1SA11nrojjLoleaMTN0jbaVPEZP3l5LPqbNJwZRQJKnhK4lLAZ3bbgweTlB1AaX
-	K2136ELZAcW3xxLGQIMssZzHEYGlc2lO0HCwIyiTiAdB4FeLjr6e3qBN/2VJo5N2/ZYfapruM5IbW
-	sVG4lq9gSVVqt96t7RyQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QdRBPcnoPIp+rakAH74073dHY4WTslk51AE+/kJSTlY=; b=g/gu9/JylA1KP9Rp9z+zXu4KeO
+	pIICIMmW7+HJp+VddB2GEMGtRs//gUjngnbSgawKwxAayNOSyU6csVrQ/iCLYQj+tZ4xkv942+OwP
+	tEfoqrNkErXtSr1Q9FbD67DtolQWMNICUrSH8A7r3f22NM3B1qfSJ8RcusL9ZC/DutY3vmVQLKZdC
+	sMRRBZZynP7WknvNVHt6HyT5UBLlXewqMAARr9MzobRBkIojTEDCoHfMPmgpxDLInjBIbiYNglOSQ
+	HUgKgtd7kJg6FubN7SrTuxrvYMZ7QOppn4DbFutB34bnHQcJAz4ycyh1SJYG3fAGIx/OwSd+nvA/S
+	AbSxBeJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1QeU-00A9Sb-1P;
-	Tue, 23 May 2023 11:58:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q1Suy-00AUY4-0t;
+	Tue, 23 May 2023 14:23:16 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1QeR-00A9R2-18
+	id 1q1Suu-00AUWL-2D
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 May 2023 11:58:04 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 72F8D625DF;
-	Tue, 23 May 2023 11:58:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFCD3C433EF;
-	Tue, 23 May 2023 11:58:00 +0000 (UTC)
-Message-ID: <7a447631-e6f7-fae2-6884-c404db7e2b0b@xs4all.nl>
-Date: Tue, 23 May 2023 13:57:59 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH 1/2] media: verisilicon: rockchip_vpu2_hw_jpeg_enc:
- Consolidate setting of source buffer addresses
-Content-Language: en-US
-To: Andri Yngvason <andri@yngvason.is>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
+	Tue, 23 May 2023 14:23:14 +0000
+Received: (Authenticated sender: didi.debian@cknow.org)
+	by mail.gandi.net (Postfix) with ESMTPSA id 694AAFF804;
+	Tue, 23 May 2023 14:23:05 +0000 (UTC)
+From: Diederik de Haas <didi.debian@cknow.org>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ hverkuil-cisco@xs4all.nl, benjamin.gaignard@collabora.com,
  linux-rockchip@lists.infradead.org
-References: <20230509150249.824440-1-andri@yngvason.is>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20230509150249.824440-1-andri@yngvason.is>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@pengutronix.de, m.tretter@pengutronix.de,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ "Linux regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>
+Subject: Re: [PATCH] media: verisilicon: Fix null pointer dereference in try_fmt
+Date: Tue, 23 May 2023 16:22:56 +0200
+Message-ID: <6444204.lOV4Wx5bFT@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20230516091209.3098262-1-m.tretter@pengutronix.de>
+References: <20230516091209.3098262-1-m.tretter@pengutronix.de>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_045803_472734_3ED1C3C6 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20230523_072313_028400_C9C03550 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,95 +59,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8078586903238888953=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andri,
+--===============8078586903238888953==
+Content-Type: multipart/signed; boundary="nextPart5339283.31r3eYUQgx";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-On 09/05/2023 17:02, Andri Yngvason wrote:
+--nextPart5339283.31r3eYUQgx
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Tue, 23 May 2023 16:22:56 +0200
+Message-ID: <6444204.lOV4Wx5bFT@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20230516091209.3098262-1-m.tretter@pengutronix.de>
+References: <20230516091209.3098262-1-m.tretter@pengutronix.de>
+MIME-Version: 1.0
 
-Please provide a commit message!
-
-Thank you,
-
-	Hans
-
-> Signed-off-by: Andri Yngvason <andri@yngvason.is>
-> ---
->  .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c   | 36 ++++++++++---------
->  1 file changed, 19 insertions(+), 17 deletions(-)
+On Tuesday, 16 May 2023 11:12:09 CEST Michael Tretter wrote:
+> Since commit db6f68b51e5c ("media: verisilicon: Do not set context
+> src/dst formats in reset functions"), vpu_src_fmt is not set in the
+> reset function, but only set in hantro_set_fmt_out, which calls
+> hantro_try_fmt before setting the format. Therefore, hantro_try_fmt
+> might be called with vpu_src_fmt still being null.
 > 
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-> index 8395c4d48dd0..52c76fb91c56 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-> @@ -32,6 +32,16 @@
->  
->  #define VEPU_JPEG_QUANT_TABLE_COUNT 16
->  
-> +static inline u32 __vepu_reg_addr_for_plane(int plane)
-> +{
-> +	switch (plane) {
-> +	case 0: return VEPU_REG_ADDR_IN_PLANE_0;
-> +	case 1: return VEPU_REG_ADDR_IN_PLANE_1;
-> +	case 2: return VEPU_REG_ADDR_IN_PLANE_2;
-> +	}
-> +	return 0;
-> +}
-> +
->  static void rockchip_vpu2_set_src_img_ctrl(struct hantro_dev *vpu,
->  					   struct hantro_ctx *ctx)
->  {
-> @@ -70,35 +80,27 @@ static void rockchip_vpu2_jpeg_enc_set_buffers(struct hantro_dev *vpu,
->  					       struct vb2_buffer *dst_buf)
->  {
->  	struct v4l2_pix_format_mplane *pix_fmt = &ctx->src_fmt;
-> -	dma_addr_t src[3];
-> +	unsigned int num_planes = pix_fmt->num_planes;
-> +	unsigned int i;
-> +	dma_addr_t src;
->  	u32 size_left;
->  
->  	size_left = vb2_plane_size(dst_buf, 0) - ctx->vpu_dst_fmt->header_size;
->  	if (WARN_ON(vb2_plane_size(dst_buf, 0) < ctx->vpu_dst_fmt->header_size))
->  		size_left = 0;
->  
-> -	WARN_ON(pix_fmt->num_planes > 3);
-> +	WARN_ON(num_planes > 3);
-> +	if (num_planes > 3)
-> +		num_planes = 3;
->  
->  	vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
->  				ctx->vpu_dst_fmt->header_size,
->  			   VEPU_REG_ADDR_OUTPUT_STREAM);
->  	vepu_write_relaxed(vpu, size_left, VEPU_REG_STR_BUF_LIMIT);
->  
-> -	if (pix_fmt->num_planes == 1) {
-> -		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
-> -		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
-> -	} else if (pix_fmt->num_planes == 2) {
-> -		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
-> -		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
-> -		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
-> -		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
-> -	} else {
-> -		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
-> -		src[1] = vb2_dma_contig_plane_dma_addr(src_buf, 1);
-> -		src[2] = vb2_dma_contig_plane_dma_addr(src_buf, 2);
-> -		vepu_write_relaxed(vpu, src[0], VEPU_REG_ADDR_IN_PLANE_0);
-> -		vepu_write_relaxed(vpu, src[1], VEPU_REG_ADDR_IN_PLANE_1);
-> -		vepu_write_relaxed(vpu, src[2], VEPU_REG_ADDR_IN_PLANE_2);
-> +	for (i = 0; i < num_planes; i++) {
-> +		src = vb2_dma_contig_plane_dma_addr(src_buf, i);
-> +		vepu_write_relaxed(vpu, src, __vepu_reg_addr_for_plane(i));
->  	}
->  }
->  
+> Add a test if the format is actually set before checking the format.
+> 
+> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+> Fixes: db6f68b51e5c ("media: verisilicon: Do not set context src/dst formats
+> in reset functions") ---
+>  drivers/media/platform/verisilicon/hantro_v4l2.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> b/drivers/media/platform/verisilicon/hantro_v4l2.c index
+> 835518534e3b..ec37d2646fde 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -313,17 +313,20 @@ static int hantro_try_fmt(const struct hantro_ctx
+> *ctx, /* Fill remaining fields */
+>  		v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, pix_mp->width,
+>  				    pix_mp->height);
+> -		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE 
+&&
+> +		if (ctx->vpu_src_fmt &&
+> +		    ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE 
+&&
+>  		    !hantro_needs_postproc(ctx, fmt))
+>  			pix_mp->plane_fmt[0].sizeimage +=
+>  				hantro_h264_mv_size(pix_mp-
+>width,
+>  						    pix_mp-
+>height);
+> -		else if (ctx->vpu_src_fmt->fourcc == 
+V4L2_PIX_FMT_VP9_FRAME &&
+> +		else if (ctx->vpu_src_fmt &&
+> +			 ctx->vpu_src_fmt->fourcc == 
+V4L2_PIX_FMT_VP9_FRAME &&
+>  			 !hantro_needs_postproc(ctx, fmt))
+>  			pix_mp->plane_fmt[0].sizeimage +=
+>  				hantro_vp9_mv_size(pix_mp->width,
+>  						   pix_mp-
+>height);
+> -		else if (ctx->vpu_src_fmt->fourcc == 
+V4L2_PIX_FMT_HEVC_SLICE &&
+> +		else if (ctx->vpu_src_fmt &&
+> +			 ctx->vpu_src_fmt->fourcc == 
+V4L2_PIX_FMT_HEVC_SLICE &&
+>  			 !hantro_needs_postproc(ctx, fmt))
+>  			pix_mp->plane_fmt[0].sizeimage +=
+>  				hantro_hevc_mv_size(pix_mp-
+>width,
 
+I have verified that this patch fixes the crash I was seeing since 6.4.
+https://lore.kernel.org/linux-media/12724349.O9o76ZdvQC@bagend/ is a/the other 
+patch which also fixed the crash.
+--nextPart5339283.31r3eYUQgx
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZGzMQAAKCRDXblvOeH7b
+bg3/AP9bb4nQhPomMdHZPBe37sKDTz5e6cBfiIHTHYSOwuMcpAD+IudI0INZj2SA
+hjbDfu5ZCXl6VQhv7vl5yeKD4nes9QE=
+=k7yc
+-----END PGP SIGNATURE-----
+
+--nextPart5339283.31r3eYUQgx--
+
+
+
+
+
+--===============8078586903238888953==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8078586903238888953==--
+
+
+
+
