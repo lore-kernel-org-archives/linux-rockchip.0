@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FB7C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 10:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC33C7EE26
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 11:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:
-	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+TWU8WWYZgbqwig6NRkby1Dx7wvniF6+zXlJc5cuGiw=; b=Qwhe5t9mss352i
-	iOgQrAufxyAvynwt067+xbCXAbaagcX6UwxC8q59yj1TJtnQtU3nIslcmaEOt3RLTU1/KFDTmP8Te
-	tV/fNNvJLUYyPvTanx0xMXfuxbUbJUFraoZ6sm+YIQa2s04VAxkNE0agQ+iDgN5bifWAlw+gZ1yY4
-	LCY4um5fFpdMqu2xuDcjToCPkpYn353y0hXyGDbQj0aqhSyrpiUQCRZwyACnshICSjfrxkheImWIe
-	783q0xXboMbtuvrlFYDjNayUzWpoIFxbqpgeyqFt2hnulU3OistYXX943Cz2ZWPbvPJY3PhHlR1SB
-	BHjxVz4z2WlBC1nos+Tg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Iif92BVxyUC17pe3/c4dqWMl4UkUDCxZk6DcFTN8+A8=; b=XSFHbeRSs7dDfzcDPMpcKlxRDb
+	WpB1678LxhSR6m55LgDDS4is3UYuTvq+k9lFJQVr+eiW+asAWnbLZm17BzDKKB79CsJYYv1VEdSfj
+	QJ/9FApVpukB4cZhqYGoTA7EN1Q/S4+LBwXq6/zPTTPvpSm2jK0cQgISglYyE914Wu/jcnL3noZe1
+	8/cYlaPRD5o17atc28RONWrmCcLaTzizUKS/LoTzvCbEA2/fKGi7v4dkEhZpDQQGPEf7aYmv3kmhu
+	gpIClHmNeDRTB3g41LM5z486wdtBEQk/xGkwncUkzl6Eo4Jf1f7PLD/HcZYu+nJdZSOVK/kiU6MnC
+	Ow8ciDXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1PbR-009yym-2Q;
-	Tue, 23 May 2023 10:50:53 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1PbP-009yxj-0I
-	for linux-rockchip@lists.infradead.org;
-	Tue, 23 May 2023 10:50:52 +0000
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1q1PbI-0006Kn-VK; Tue, 23 May 2023 12:50:45 +0200
-Message-ID: <5d871928-dcd5-3f27-e975-d1639525dad0@leemhuis.info>
-Date: Tue, 23 May 2023 12:50:42 +0200
+	id 1q1PxW-00A2jO-1C;
+	Tue, 23 May 2023 11:13:42 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1q1PxS-00A2hZ-0v;
+	Tue, 23 May 2023 11:13:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F1F5139F;
+	Tue, 23 May 2023 04:14:16 -0700 (PDT)
+Received: from [10.57.84.70] (unknown [10.57.84.70])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 61F1D3F6C4;
+	Tue, 23 May 2023 04:13:29 -0700 (PDT)
+Message-ID: <b404dc20-c460-ac3f-6659-8be7a7d32bfe@arm.com>
+Date: Tue, 23 May 2023 12:13:25 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2] media: verisilicon: Fix crash when probing encoder
-Content-Language: en-US, de-DE
-To: Diederik de Haas <didi.debian@cknow.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Tretter <m.tretter@pengutronix.de>
-Cc: p.zabel@pengutronix.de, mchehab@kernel.org, m.szyprowski@samsung.com,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- Linux kernel regressions list <regressions@lists.linux.dev>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, hverkuil-cisco@xs4all.nl,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>
-References: <20230413104756.356695-1-benjamin.gaignard@collabora.com>
- <4995215.LvFx2qVVIh@bagend>
- <7c1bf9c4-f14b-30cd-2610-871f5f512d06@collabora.com>
- <12724349.O9o76ZdvQC@bagend>
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-In-Reply-To: <12724349.O9o76ZdvQC@bagend>
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1684839051;406e068f;
-X-HE-SMSGID: 1q1PbI-0006Kn-VK
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH RESEND 0/2] media: rockchip: rga: Add rk3568 support
+Content-Language: en-GB
+To: Michael Tretter <m.tretter@pengutronix.de>,
+ Diederik de Haas <didi.debian@cknow.org>, Jacob Chen
+ <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230119-rk3568-rga-v1-0-43d4d14365e6@pengutronix.de>
+ <168466589373.900480.8086350880534437090.b4-ty@sntech.de>
+ <2386524.2IynHR6iFi@prancing-pony> <20230522102953.GB23678@pengutronix.de>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20230522102953.GB23678@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_035051_270029_5C2D9E3D 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20230523_041338_370664_7CBA579F 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,51 +69,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q0NpbmcgdGhlIFJlZ3Jlc3Npb24gbGlzdCBhbmQgYSBidW5jaCBvZiBvdGhlciBwZW9wbGUgdGhh
-dCB3ZXJlIENDZWQgaW4KdGhyZWFkcyB0aGF0IGxvb2sgcmVsYXRlZDoKCk9uIDIzLjA1LjIzIDAw
-OjM4LCBEaWVkZXJpayBkZSBIYWFzIHdyb3RlOgo+IE9uIE1vbmRheSwgMjIgTWF5IDIwMjMgMTg6
-MTc6MzkgQ0VTVCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gTGUgMjAvMDUvMjAyMyDDoCAw
-MDozNCwgRGllZGVyaWsgZGUgSGFhcyBhIMOpY3JpdCA6Cj4+PiBPbiBUaHVyc2RheSwgMTMgQXBy
-aWwgMjAyMyAyMTo1Mjo1MCBDRVNUIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gWy4uLl0KPj4+
-IFdoZW4gSSBib290ZWQgaW50byBteSA2LjQtcmMxIChidXQgYWxzbyByYzIpIGtlcm5lbCBvbiBt
-eQo+Pj4gUGluZTY0IFF1YXJ0ejY0IE1vZGVsIEEsIEkgbm90aWNlZCBhIGNyYXNoIHdoaWNoIHNl
-ZW1zIHRoZSBzYW1lIGFzCj4+PiBhYm92ZSwgYnV0IEkgZGlkbid0IGhhdmUgc3VjaCBhIGNyYXNo
-IHdpdGggbXkgNi4zIGtlcm5lbC4KPj4+IFNlYXJjaGluZyBmb3IgJ2hhbnRybycgbGVkIG1lIHRv
-IHRoaXMgY29tbWl0IGFzIHRoZSBtb3N0IGxpa2VseSBjdWxwcml0Cj4+PiBidXQgd2hlbiBJIGJ1
-aWxkIGEgbmV3IDYuNC1yY1gga2VybmVsIHdpdGggdGhpcyBjb21taXQgcmV2ZXJ0ZWQsCj4+PiBJ
-IHN0aWxsIGhhZCB0aGlzIGNyYXNoLgo+Pj4gRG8geW91IGhhdmUgc3VnZ2VzdGlvbnMgd2hpY2gg
-Y29tbWl0IHdvdWxkIHRoZW4gYmUgdGhlIGxpa2VseSBjdWxwcml0Pwo+Pgo+PiBUaGlzIHBhdGNo
-IGZpeCB0aGUgY3Jhc2ggYXQgYm9vdCB0aW1lLCByZXZlcnQgaXQgZG9lc24ndCBzZWVtIHRvIGJl
-IHRoZQo+PiBzb2x1dGlvbi4gTWF5YmUgdGhpcyBwcm9wb3NhbCBmcm9tIE1hcmVrIGNhbiBoZWxw
-IHlvdSA/Cj4+Cj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1t
-ZWRpYS9wYXRjaC8yMDIzMDQyMTEwNDc1OS4yMjM2NDYzLTEtbS5zenlwcm93c2tpQHNhbXN1bmcu
-Y29tLwo+IAo+IFRoYXQgaGVscGVkIDopIEFmdGVyIGFwcGx5aW5nIHRoYXQgcGF0Y2ggSSBubyBs
-b25nZXIgaGF2ZSB0aGUgY3Jhc2guCj4gVGhhbmtzIQoKVGhhdCByZWdyZXNzaW9uIGZpeCBpcyBu
-b3cgYSBtb250aCBvbGQsIGJ1dCBub3QgeWV0IG1lcmdlZCBhZmFpY3MgLS0KZ3Vlc3MgZHVlIHRv
-IE5pY29sYXMgY29tbWVudCB0aGF0IHdhc24ndCBhZGRyZXNzZWQgeWV0IGFuZCBsaWtlbHkKcmVx
-dWlyZXMgYSB1cGRhdGVkIHBhdGNoLgoKTWljaGFlbCBhZmFpY3MgYSB3ZWVrIGFnbyBwb3N0ZWQg
-YSBwYXRjaCB0aGF0IHRvIG15ICp2ZXJ5IGxpbWl0ZWQKdW5kZXJzdGFuZGluZyBvZiB0aGluZ3Mq
-IChJIGhvcGUgSSBkb24ndCBjb25mdXNlIG1hdHRlcnMgaGVyZSEpIHNlZW1zIHRvCmFkZHJlc3Mg
-dGhlIHNhbWUgcHJvYmxlbSwgYnV0IHNsaWdodGx5IGRpZmZlcmVudGx5OgpodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9hbGwvMjAyMzA1MTYwOTEyMDkuMzA5ODI2Mi0xLW0udHJldHRlckBwZW5ndXRy
-b25peC5kZS8KCk5vIHJlcGx5IHlldC4KClRoYXQncyBhbGwgYSBiaXQgdW5mb3J0dW5hdGUsIGFz
-IGl0J3Mgbm90IGhvdyByZWdyZXNzaW9uIGZpeGVzIHNob3VsZCBiZQpkZWFsdCB3aXRoIC0tIGFu
-ZCBjYXVzZWQgbXVsdGlwbGUgcGVvcGxlIGhlYWRhY2hlcyB0aGF0IGNvdWxkIGhhdmUgYmVlbgph
-dm9pZGVkLiA6LS8KCkJ1dCB3ZWxsLCB0aGluZ3MgaGFwcGVuLiBCdXQgaXQgbGVhZHMgdG8gdGhl
-IHF1ZXN0aW9uOgoKSG93IGNhbiB3ZSBmaW5hbGx5IGFkZHJlc3MgdGhlIGlzc3VlIHF1aWNrbHkg
-bm93IHRvIGVuc3VyZSBpcyBkb2Vzbid0CmNhdXNlIGhlYWRhY2hlcyBmb3IgZXZlbiBtb3JlIHBl
-b3BsZT8KCk1hcmVrLCBNaWNoYWVsLCBjb3VsZCB5b3Ugd29yayBvbiBhIHBhdGNoIHRvZ2V0aGVy
-IHRoYXQgd2UgdGhlbiBnZXQKc29tZXdoYXQgZmFzdC10cmFja2VkIHRvIExpbnVzIHRvIGF2b2lk
-IGhpbSBnZXR0aW5nIGV2ZW4gbW9yZSB1bmhhcHB5CmFib3V0IHRoZSBzdGF0ZSBvZiB0aGluZ3Nb
-MV0/CgpDaWFvLCBUaG9yc3RlbgoKWzFdIHNlZQpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwv
-Q0FIay09d2d6VThfZEduMFlnK0R5WDdhbW1Ua0RVQ3lFSjRDPU52bkhSaHhLV0M3V3B3QG1haWwu
-Z21haWwuY29tLwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+On 2023-05-22 11:29, Michael Tretter wrote:
+> On Sun, 21 May 2023 21:32:51 +0200, Diederik de Haas wrote:
+>> On Sunday, 21 May 2023 12:44:58 CEST Heiko Stuebner wrote:
+>>> On Fri, 20 Jan 2023 10:14:21 +0100, Michael Tretter wrote:
+>>>> The RGA2 on the Rockchip rk3568 is the same core as the RGA2 on the
+>>>> Rockchip rk3288.
+>>>>
+>>>> This series adds the necessary device tree binding and node in the device
+>>>> tree to enable the RGA2 on the Rockchip rk3568.
+>>>>
+>>>> I tested the driver with the GStreamer v4l2convert element on a Rock3
+>>>> Model A board.
+>>>>
+>>>> [...]
+>>>
+>>> Applied, thanks!
+>>>
+>>> [1/2] media: dt-bindings: media: rockchip-rga: add rockchip,rk3568-rga
+>>>        commit: 9b12ceb5a80d1fb45d293265de100e33b5843943
+>>> [2/2] arm64: dts: rockchip: Add RGA2 support to rk356x
+>>>        commit: 0c3391f8bb06b744df521651534cd99e3d77e0a8
+>>
+>> https://lore.kernel.org/all/TY3P286MB26115F60D273E840D36A610598CA9@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM/
+>>
+>> indicated that there was a problem with device >= 4GB (RAM?):
+>>> Since we have the over-4GB problem now, should we mark this problem as a
+>>> TODO or something?
+>>
+>> I thought that was the reason that these patches weren't picked up before?
+> 
+> That's what I thought, too.
+> 
+>>
+>> I have no insight into this problem, so I can't comment on the technical
+>> aspects, but I had made a note for myself 'locally' about it.
+> 
+> Using the RGA2 with the driver in its current form on devices with more than 4
+> GB system memory may lead to memory corruption as buffer addresses are
+> silently truncated to 32 bits.
+
+That's because the driver is completely broken and is not using the DMA 
+API anywhere near properly. The fact that it's been getting away with it 
+so far can be mostly put down to good luck and nobody using 
+CONFIG_DMA_API_DEBUG.
+
+> I'm not sure if that's actually a blocker for merging these patches.
+
+If anything, hopefully getting more SoC support merged might provide 
+more motivation for someone to fix the existing code :)
+
+Robin.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
