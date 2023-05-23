@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 685C7C7EE26
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D07D0C7EE29
 	for <linux-rockchip@archiver.kernel.org>; Tue, 23 May 2023 21:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TUqvm7Utnr6A6zq0vYbDWhg8ALlsjJGYNhbxTOT2ibw=; b=1zFFRpBg0c+b8h
-	0Lyw+wr64MWGlKFk7SQyWv/0uZ1x1spuLTF1JFxlhcLZCWwat+Nbs14ZnmMhaoRuGrfsAdatfhJkR
-	14cbprjU+dHAWHCBK/yd2lxXm3xC1178XeUrAuobOL59tYP+RxPfQ3FZlE03UXuSlNWM4RjstEo9Q
-	7xiha535vnLMDqCrw7WQFzGWgtZB8oaGyhbzeGuqwDh31+WrcDRERTIJyPCpIt3WygtjaXyXEJH7k
-	Lyk0H4M5yPt2eEMVSyu0hsTsd1ZDB8m5d4k7y4cM7q1N3rcWI5gw1gSFPg0DYd+349SrAx5i8xCZs
-	Q8OZJtvNRX5d61+jzMEQ==;
+	List-Owner; bh=KvBYqYbnKQyx+qc6GRVl789XrKB0Hv4tu2cPowFos/0=; b=V4ZngxQFmshC2m
+	KhYZTSn8ILyxnYyC6aiDyaYKgxXwVRSTIN9Ppe5gYOkY6Zl42Q6i8bjnOSDfEhLW8C5zTY+cFRfaQ
+	OqEzfIJ2M4+XwoZXRfxW6PCYUnxttf3Zq+u/Fk/TVQOBSJWkiSytKK+n/wrryvR/5Ei8ikVmC5V3+
+	j38QdGtxe0ExyL46IhMTyTlc9nf+C/BmNhsZpVE9kwsCtmKoPX6EGgT4zWeG1l3rPQYOjyW5rV5yN
+	WdDN4H6dyOwASwo+VbxCcsonxSQ7+B/SRT8N9JNgTBxIhT20HsJo/W+mc7qocTKApsRKD1Nv1tNnu
+	l5KXhdjz6Fe9uCpyFtmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1ZiI-00BVRd-0Z;
-	Tue, 23 May 2023 21:38:38 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1q1ZiM-00BVUL-1N;
+	Tue, 23 May 2023 21:38:42 +0000
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1ZiE-00BVOs-33
+	id 1q1ZiH-00BVQF-2M
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 May 2023 21:38:36 +0000
-Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-3943fdc59f9so214073b6e.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 23 May 2023 14:38:33 -0700 (PDT)
+	Tue, 23 May 2023 21:38:38 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-19a16c8d70cso137244fac.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 23 May 2023 14:38:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684877913; x=1687469913;
+        d=gmail.com; s=20221208; t=1684877915; x=1687469915;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VI4om0ZWAsAxPDpD0mRnXUe2apysOtTyxuri6O2D2jQ=;
-        b=IxRFm84jrNoDiWcn5yW738bsCP5iCB0+EmH3a0i5BluwYlfXaNm4/LO8GY3bKEzmJk
-         aCUSC36WK9GhGYMwwepdNTbFoMHV+9TH1Ejv1JYzw5H3OvwuyM24dFrcbPcCDReJJ6Kr
-         8cvW4zgnlcdef4f+/ud0PKulsS+offM0b4j5G/PpjSgQvaMfFsEU1iSRwDnvXhDXcRTe
-         46yPBK/3n5BC8K/XM8nT30CAWlpnUdlK4IHeL9973nRjPXGsjhek9YbZ+zWCLD1/L+ew
-         iHluVRTd64DZ++VBCcP8GyEJxneQgfoWmLWDH2UJdk4ZZDp6zVOqV7imaCV51v09G+Cr
-         f/kQ==
+        bh=Ix+1iyVwvq5YDYEbZ/aFgQhyfZBXx0DvBnZd+gR5Wcw=;
+        b=ikhR7QD/PWZ9AYHLbDesyyyoL21t6ku6E+41m6IIb3rJAyTZa4y97wt1OdHqmM/ThV
+         dQNCAVfTtqpH/ur0Wb+768h9L/sIAADrlZX3mccXAGngeKayrYtjU9zNcfWOQ6C+Rrah
+         2BQ4Q1uqiJKhlh5ISf7UUQjMpS46akCCq8YUceSJVYEj/GTljoX7zPSE/Ecw85KHwTJX
+         ElFjA9JBheP0pXhfqpRKOro/LgIxsgBYO0Wqq2l2aFP4eT/ukIy0Q/3GYBg4rVWfruF3
+         wFnd6DlYtg0KKBb+J7/iIO3oxGX3S57WsL4Gl4Oz0tWMop4ljmmrYDPZREebi80HEV6Z
+         DPUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684877913; x=1687469913;
+        d=1e100.net; s=20221208; t=1684877915; x=1687469915;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=VI4om0ZWAsAxPDpD0mRnXUe2apysOtTyxuri6O2D2jQ=;
-        b=iixeXplLUrwLxh4M2STrgK9DgE9Zl2bPhVr5J+XcPMZ0feXK/6XXfq/ppHK6/InboQ
-         bDTTmIa0/CxNFhDln6kgZpTvJgps7Xq54bU/e5ke0LhYw7NG9qDPMpZV3WhRHVkw7F1f
-         rK2+oNnKliBsLVBBdYBhkyPx0k3Yriw2x/r4rfelYNMn+WoZsxOk0N12Yfo3pBkjO6I4
-         aKejbJ0xLCTxAr6t8I3PuSQFj4WZ6IHBxsacgYNGePltT7wpRU51wNxFq7l6bbx0rY0f
-         qkGXbaPM7FzW1AlETlPi0yh8nzRYNdRTpptVhav6cJpNE+wTuVj9K/HxqwWt6EzGhQXJ
-         zqVA==
-X-Gm-Message-State: AC+VfDyIfHtk+98eummq2aTe4sPyf3vDfABxLsJ8yKuRu+KEf7zuSN0Q
-	9LWc4f7n4cqHZ4gxrsraVMDFUIqVd4SlOA==
-X-Google-Smtp-Source: ACHHUZ49snHGywQm22s3ZruIpUwwW0LIO0zG7T/h5lkdyPqari17yoPFvSZJS3L1hb8wzc7tjabbWQ==
-X-Received: by 2002:a05:6808:4043:b0:398:9ae:50cc with SMTP id cz3-20020a056808404300b0039809ae50ccmr4312004oib.41.1684877912654;
-        Tue, 23 May 2023 14:38:32 -0700 (PDT)
+        bh=Ix+1iyVwvq5YDYEbZ/aFgQhyfZBXx0DvBnZd+gR5Wcw=;
+        b=ZSqSVBhJ/pI5qPNq0k7NitNDxLlv2dmllPAN0cMmoJJreWkLODZGltKkM7cKw/BLg3
+         p7vt7HpTXL9oKQ9S404EG0lQA4svUi/hoLthlk2wC1MBdOfUpE3aMh0Kg992dRP8cI2c
+         6QgibMUb7S711roXlmYfWY2P48DgKsZngDNgx//WkO/gHo07ishDWUrIMJCP8BUUE3fz
+         y/egYGZBimMKvkrNbzVhaF4dCYQP9wbmv4lKw1ONoxz7AhGeuaoJ0GIHO4UoK5LIRm6n
+         g1VT+huCvSjrpd3j057/DwyCPpmJR6516Qdr75Ym2X14xQ9CxTAoaJqNmDpQPCv7pTKo
+         FqPw==
+X-Gm-Message-State: AC+VfDwSYK0W7HMZO/CIOhQHkJ+RTS1TxtXI9l42/oE982BNJ9Kb3liv
+	8Uk4Hqe4gGcJEVNO7Fnkgq26aqApKbJhDA==
+X-Google-Smtp-Source: ACHHUZ5MneObFTHYZ+sAb7c/LwLONHBsL0zmQRw5S21Rr5FCtGfmJRScWF1vi/l6oY18WrpSERHDSQ==
+X-Received: by 2002:a05:6808:4293:b0:397:fc20:385 with SMTP id dq19-20020a056808429300b00397fc200385mr4226191oib.28.1684877915719;
+        Tue, 23 May 2023 14:38:35 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id y83-20020acae156000000b0037832f60518sm4442359oig.14.2023.05.23.14.38.31
+        by smtp.gmail.com with ESMTPSA id y83-20020acae156000000b0037832f60518sm4442359oig.14.2023.05.23.14.38.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 May 2023 14:38:32 -0700 (PDT)
+        Tue, 23 May 2023 14:38:35 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: alsa-devel@alsa-project.org,
@@ -79,16 +79,17 @@ Cc: alsa-devel@alsa-project.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/6] ASoC: es8328: Enabling support for 12Mhz sysclk
-Date: Tue, 23 May 2023 16:38:20 -0500
-Message-Id: <20230523213825.120077-2-macroalpha82@gmail.com>
+Subject: [PATCH 5/6] dt-bindings: arm: rockchip: Add Indiedroid Nova
+Date: Tue, 23 May 2023 16:38:24 -0500
+Message-Id: <20230523213825.120077-6-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230523213825.120077-1-macroalpha82@gmail.com>
 References: <20230523213825.120077-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230523_143834_982563_E5999645 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20230523_143837_779258_A8D57F21 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,50 +108,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Enable support for 12Mhz sysclk on es8328. This sysclk value is used on
-the Indiedroid Nova rk3588s based single board computer.
+Add Indiedroid Nova, an rk3588s based single board computer.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
- sound/soc/codecs/es8328.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
-index 160adc706cc6..3918be5fc3f1 100644
---- a/sound/soc/codecs/es8328.c
-+++ b/sound/soc/codecs/es8328.c
-@@ -36,6 +36,16 @@ static const struct snd_pcm_hw_constraint_list constraints_12288 = {
- 	.list	= rates_12288,
- };
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ec141c937b8b..3c5a204bcd81 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -542,6 +542,11 @@ properties:
+               - khadas,edge-v
+           - const: rockchip,rk3399
  
-+static unsigned int ratios_12000[] = {
-+	8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000,
-+	48000, 88235, 96000,
-+};
++      - description: Indiedroid Nova SBC
++        items:
++          - const: indiedroid,nova
++          - const: rockchip,rk3588s
 +
-+static struct snd_pcm_hw_constraint_list constraints_12000 = {
-+	.count = ARRAY_SIZE(ratios_12000),
-+	.list = ratios_12000,
-+};
-+
- static const unsigned int rates_11289[] = {
- 	8018, 11025, 22050, 44100, 88200,
- };
-@@ -577,6 +587,13 @@ static int es8328_set_sysclk(struct snd_soc_dai *codec_dai,
- 		es8328->sysclk_constraints = &constraints_12288;
- 		es8328->mclk_ratios = ratios_12288;
- 		break;
-+	case 24000000:
-+		mclkdiv2 = 1;
-+		fallthrough;
-+	case 12000000:
-+		es8328->sysclk_constraints = &constraints_12000;
-+		es8328->mclk_ratios = ratios_12000;
-+		break;
- 	default:
- 		return -EINVAL;
- 	}
+       - description: Khadas Edge2 series boards
+         items:
+           - const: khadas,edge2
 -- 
 2.34.1
 
