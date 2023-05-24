@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6AD2C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 10:31:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 120C3C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 10:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CUlRtROhHZMlyAXDtdWmhw31zEKPzUG7JF5epYh+b8c=; b=ezqPbgV3NQMbdIMY7UaZRDxt5+
-	mxMGhYNoZUbiWbNQUF26znNLc+0DXIQH3EZGsXAlSbnxnTEiXwfOajMTQ0cvwNvDjLTghacQndbjg
-	kKn/DzgjChNqbSe2z0wJRWtvKKXn5I9rM1sXMyPsAfFibhIah9f/rR0HxgLtMeU7rxUYFeTzU+bPp
-	7XJ2hY2tekcPywqqNw8vxjIK4q6GndqHcpNUwQJcY9mVjCNFksPBh/+UVoFUAhHw1hSlx5aQFHk06
-	u+mfG+TWFBA5G2rPQP94HXvg7RrezPt84shMJR2tQFqoUSCJxw89xuIId+TfhirMH4GoMh2J5+sfB
-	omR/rmmQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LkxBfxEzqx4YruVUw9m6hS4xQaWON4rqU2Z1Gd7vRto=; b=afRqp8hCVwGa4f
+	a7YgXhwImfK4HEcyIKe3K9Keq4WMktGd9i9dZ1YWqpNHMvWl0R4lUlW0I8Lzb8ZdPbpPgQmqyxgHk
+	6iN3Rwy1s+OV+VU9P2GV1OgH89rARrtV/kNdqiwtgc+Qvl6P77WwP69JMk/qAqq0pflnkBM4wi+1A
+	kodGhtmMW2axqF8hcfdk4grFMFkRFLKUBhpxt3yJCOzsqkwIGLwirTq0DoAMMghN2iE9zxOT8S5Yu
+	TeDHCSoYrb6tXGuZF/VX33tbWsLvBoaqyal5jjyF+7M7kq+yUIcrnaFnR1RNami3uIZBY/MvgyWfc
+	xmqTAS3w09cPLjyBpKTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1llg-00D7X5-0y;
-	Wed, 24 May 2023 10:30:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1q1lpp-00DA67-00;
+	Wed, 24 May 2023 10:35:13 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1lld-00D7TJ-04;
-	Wed, 24 May 2023 10:30:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EB7D563124;
-	Wed, 24 May 2023 10:30:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D7ADC4339B;
-	Wed, 24 May 2023 10:30:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684924250;
-	bh=WEZcHPlDfYf7TtWz9LXQxs+qNwVnCMerNu5/zi8CBAM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D4L9oGHJHghir4insEGgFs9ibzZsVUeZ4vEQf53PekPNNs28AkELJW9lm2CEVyYux
-	 HNJiR3cfNgbsRsCm2P+NwQXfT4dlrca3PEHVdVkBo8uyPmjA4qJAPzrYLVVTwDrPlL
-	 BGGa43VwuK8rWKRiFgwn95CKqMi4ursGstH/HwN/o9CKuUSNwO5FT0qZ7DgjEhw3GA
-	 s0OAZ9iPsT2nBC9kRRRdG0KG8QrFYu7JQ84Pxu5XAX0DPQ8mgLsiqziLUPCtoQJ0re
-	 ZDt8xoKyubueuy0YQyc3e6huSH1yESvim1PUOuYbKEShY4S08D22Mx51Nbs9j/8bvp
-	 uY0k/F08iShvw==
-Date: Wed, 24 May 2023 11:30:43 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Zhu Ning <zhuning0077@gmail.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	David Yang <yangxiaohua@everest-semi.com>,
-	Daniel Drake <drake@endlessm.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	alsa-devel@alsa-project.org, kernel@collabora.com
-Subject: Re: [PATCH 1/3] ASoC: es8316: Increment max value for ALC Capture
- Target Volume control
-Message-ID: <5dbcbf84-602a-44de-ad99-268d4d5b4b2f@sirena.org.uk>
-References: <20230524074156.147387-1-cristian.ciocaltea@collabora.com>
- <20230524074156.147387-2-cristian.ciocaltea@collabora.com>
+	id 1q1khB-00CvpA-1Z
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 May 2023 09:22:14 +0000
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1q1kh7-0007zs-M9; Wed, 24 May 2023 11:22:09 +0200
+Message-ID: <53ce7dba-24ec-22b2-d3e6-80ad68a09f88@leemhuis.info>
+Date: Wed, 24 May 2023 11:22:08 +0200
 MIME-Version: 1.0
-In-Reply-To: <20230524074156.147387-2-cristian.ciocaltea@collabora.com>
-X-Cookie: You will be divorced within a year.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] media: verisilicon: Additional fix for the crash when
+ opening the driver
+Content-Language: en-US, de-DE
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@vanguardiasur.com.ar, nicolas.dufresne@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org, m.szyprowski@samsung.com,
+ m.tretter@pengutronix.de, didi.debian@cknow.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com, kernel@pengutronix.de,
+ regressions@lists.linux.dev
+References: <20230523162515.993862-1-benjamin.gaignard@collabora.com>
+ <c034db29-b664-793d-35e0-406fdfe2b145@collabora.com>
+ <de161e23-1ec6-1c16-b1c4-f423a088b711@leemhuis.info>
+ <e227724a-fb39-5d68-4453-f03fb532bfde@xs4all.nl>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+In-Reply-To: <e227724a-fb39-5d68-4453-f03fb532bfde@xs4all.nl>
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1684920133;02d9476f;
+X-HE-SMSGID: 1q1kh7-0007zs-M9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_033053_155713_72B95B17 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20230524_022213_666372_11D9EA0A 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,77 +69,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7527281527870687098=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7527281527870687098==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4CLZw5f0knrgRlGR"
-Content-Disposition: inline
-
-
---4CLZw5f0knrgRlGR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, May 24, 2023 at 10:41:54AM +0300, Cristian Ciocaltea wrote:
-
-> This means that either the hardware default is wrongly set to 0xB
-> instead of 0xA, or the specs are incorrect and instead of having the
-> range 0xA-0xF mapped to -1.5 dB, the single value 0xA should have been
-> mapped to -1.5 dB and the remaining range 0xB-0xF to 0 dB.
-
-> Increment the max value allowed for ALC Capture Target Volume control,
-> so that it matches the hardware default.
-
-> -	SOC_SINGLE_TLV("ALC Capture Target Volume", ES8316_ADC_ALC3, 4, 10, 0,
-> +	SOC_SINGLE_TLV("ALC Capture Target Volume", ES8316_ADC_ALC3, 4, 11, 0,
->  		       alc_target_tlv),
-
-The description above of what the control does doesn't seem to match
-what alc_target_tlv specifies - it is:
-
-  static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(alc_target_tlv, -1650, 150, 0);
-
-which is saying that the value goes from -16.5dB up in steps of 1.5dB
-but your description above says that 0-10 map to -1.5dB and other values
-are 0dB.
-
-Presumably you can check the effects of changing the value?  It seems
-plausible that what's written in the code might be accurate and the
-higher values might actually change the gain but it'd be better to
-check.
-
---4CLZw5f0knrgRlGR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRt51IACgkQJNaLcl1U
-h9BBFAf+K91gpv3OOpIomfDxOtcWJQeELJ8c/CLvL/L7u9SR7wrJxAXP+x0I6m8V
-M/Soju79ZHj9rtO8/vf1Qlawdk7CUvthUzBwUEnIal57dR1m1B/CrPWl0gVtY2t+
-r8O/SrCF4LVeIazbzm3hEtwnE+d7oKJV6f1R6r08DfB/Yh3pXoMO7CaqaHIMXYZK
-OahYu0IBVvCb4KGrNHTOusU22LoPS2A1N+rTiXhtHM3BY4mt0PKH4PcDsgU8izx2
-Hc6IZjLTbatLFHGzyUJbCw1gXreoHIkjEmVO1V+TovEBeu/sSabTiIIILOAJUzj4
-OL+XGPHyh9TISGyaSPgSt6f8HcnDQA==
-=UXce
------END PGP SIGNATURE-----
-
---4CLZw5f0knrgRlGR--
-
-
---===============7527281527870687098==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7527281527870687098==--
-
+T24gMjQuMDUuMjMgMTE6MTUsIEhhbnMgVmVya3VpbCB3cm90ZToKPiBPbiAyNC8wNS8yMDIzIDEx
+OjA2LCBUaG9yc3RlbiBMZWVtaHVpcyB3cm90ZToKPj4gT24gMjMuMDUuMjMgMTg6MzYsIEJlbmph
+bWluIEdhaWduYXJkIHdyb3RlOgo+Pj4KPj4+IExlIDIzLzA1LzIwMjMgw6AgMTg6MjUsIEJlbmph
+bWluIEdhaWduYXJkIGEgw6ljcml0wqA6Cj4+Pj4gVGhpcyBmaXhlcyB0aGUgZm9sbG93aW5nIGlz
+c3VlIG9ic2VydmVkIG9uIE9kcm9pZC1NMSBib2FyZDoKPj4+IFsuLi5dCj4+PiBEaWVkZXJpY2ss
+IE1hcmVrLCBNaWNoYWVsLAo+Pj4gSSBoYXZlIHRlc3RlZCB0aGlzIHBhdGNoIG9uIG15IGJvYXJk
+cyBhbmQgSSBzZWUgbm8gcmVncmVzc2lvbnMgb24KPj4+IGRlY29kZXIgcGFydCBhbmQgbm8gbW9y
+ZSBjcmFzaCB3aGVuIHByb2JpbmcgdGhlIGVuY29kZXIuCj4+PiBDb3VsZCB5b3UgdGVzdCBpdCBv
+biB5b3VyIHNpZGUgdG8gY29uZmlybSBpdCBpcyBvayA/Cj4+Cj4+IFRoZXkgYWxsIGRpZCwgc28g
+dGhhdCBpcyBkb25lLiBUaHggZm9yIHlvdXIgaGVscCwgZXZlcnlib2R5IQo+Pgo+PiAvbWUgbm93
+IGhvcGVzIHRoaXMgcGF0Y2ggd2lsbCBiZSBxdWlja2x5IHJldmlld2VkLCBhY2NlcHRlZCBhbmQg
+c2VudCB0bwo+PiBMaW51cyB0byBwcmV2ZW50IGV2ZW4gbW9yZSBwZW9wbGUgcnVubmluZyBpbnRv
+IHRoaXMuLi4KPiAKPiBJIHBsYW4gdG8gbWFrZSBhIFBSIHdpdGggNi40IGZpeGVzIHRvZGF5IG9y
+IHRvbW9ycm93LgoKQWhoLCBmYWJ1bG91cywgbWFueSB0aHghCgpDaWFvLCBUaG9yc3RlbgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
