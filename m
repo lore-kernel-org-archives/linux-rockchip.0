@@ -4,89 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D18C7EE2E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 08:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92362C7EE2C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 09:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=etMW8rAByAM5tNRxPSLzVZIJNzJa9/WWOYx72DtRUVA=; b=dP6MnVyiq9EyRY
-	2k9F8k502N0Mpm9edGlxhlUWcrkE8pl+ea7kub4JeA+ynUMsQO0ESidWiV6rZUEnPIzeaWU2VXCqM
-	ayuFMRcOMVpXBaN1WN4Zc1FSscX8eXvtIphf5JRAuCtsJnnfuQ7JRuoHNmOje3h70nluvHHb6rkmQ
-	UEd6O43+5zMlmzR0Ike0mSq6mAk3BQ68jiZq9EnKoiibJGONCH+h78Wjzc0d/Js6IBM1Re3AmiGqC
-	xGiHUwCIiZcsVPA3PfCh0nDPhIVjd+oqIB1gpupSNrIIL4rANOFIwIQvLRjHJQjpKcEk9dhaXQiGX
-	ClPTvNIOniMDAP+XdsxA==;
+	List-Owner; bh=Bt9DWQvw7uE6ylbdO0WutbeGQ5alitCKFBDi52Shaig=; b=de1ukpzakA5qMF
+	n2gbJMj7vxucc7rXNv6mYW6kVB/hitIqBw1P6Kz8crmvBSMq7gihM8NwWHMNIWlsRGmlt0plelrSD
+	AZkNt67PoFZxMopQ+19pEd1rC7vo+RdRJM80binXS3Z/M+cTqCn8Eyx6H7afTx/29svfxHNUz9whZ
+	giNuZRVrfpo3XNLY9j7PTsozIIORXF1YcdgIKfnzGecVEvvQClD7knw4oJU/E/t9XphfpAfJW8dGu
+	bXk00hqMUX4xiUqhXxOeu8IcAHiT3mayaC8c7C6R2IU6fJPdsJhR2rzzI0gL3LD3iHx/NLzOJjVL1
+	2vtBNYHj48ob0T1DMKVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1kHP-00CrgP-2Z;
-	Wed, 24 May 2023 08:55:35 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1q1kRm-00CtHO-0F;
+	Wed, 24 May 2023 09:06:18 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1kGZ-00Cr2Z-11
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 24 May 2023 08:54:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=ifsY8Q5OpLlsPL+EiUrm6vtNbb2qMkp0oYUaH3KVk2U=; b=FPrF9TGPHo23gh+Vwhd5iBedvA
-	/SrBloPOsk3aQ7dTT7CoPJaImIFK9VHSPbZKH2gqk+BTOUGPo2vCOFipCpHLXyDkq48/UyOujNiox
-	8uapzdviMqpXJPpumsBLzno2dFSabl5g1aB/tsmKfvcv7xiC6XFF2+Xw9rQ2+sBhJMjK1Jn+8HjoE
-	T/CrgFdO2TNXZBpdFuES+H/o8P4cAUJD90apjy9L9+Bnefyx6SBeyIDyYpgc09jAvFzOdCHs++sIq
-	nUdHGKAem2f/9gaEiqhnbk90yBgvA1a3yr0GPFzrGMoEkquZ65KClaaOxoFAQqxbrnvE45TmQzrta
-	2DjrEz+A==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1q1jui-00B18C-Ss
-	for linux-rockchip@lists.infradead.org; Wed, 24 May 2023 08:32:11 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1q1jub-0002sI-Ql; Wed, 24 May 2023 10:32:01 +0200
-Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1q1jua-002Rae-On; Wed, 24 May 2023 10:32:00 +0200
-Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1q1juX-009jHl-9L; Wed, 24 May 2023 10:31:57 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Will Deacon <will@kernel.org>,
-	Mark Rutland <mark.rutland@arm.com>,
-	kernel@pengutronix.de,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Vincent Legoll <vincent.legoll@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH v5 17/25] PM / devfreq: rockchip-dfi: make register stride SoC specific
-Date: Wed, 24 May 2023 10:31:45 +0200
-Message-Id: <20230524083153.2046084-18-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230524083153.2046084-1-s.hauer@pengutronix.de>
-References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
+	id 1q1kRi-00CtFP-2t
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 May 2023 09:06:16 +0000
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1q1kRc-0004jf-Cx; Wed, 24 May 2023 11:06:08 +0200
+Message-ID: <de161e23-1ec6-1c16-b1c4-f423a088b711@leemhuis.info>
+Date: Wed, 24 May 2023 11:06:05 +0200
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] media: verisilicon: Additional fix for the crash when
+ opening the driver
+Content-Language: en-US, de-DE
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@vanguardiasur.com.ar, nicolas.dufresne@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org, m.szyprowski@samsung.com,
+ m.tretter@pengutronix.de, didi.debian@cknow.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ hverkuil-cisco@xs4all.nl, kernel@pengutronix.de, regressions@lists.linux.dev
+References: <20230523162515.993862-1-benjamin.gaignard@collabora.com>
+ <c034db29-b664-793d-35e0-406fdfe2b145@collabora.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+In-Reply-To: <c034db29-b664-793d-35e0-406fdfe2b145@collabora.com>
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1684919174;de824fcc;
+X-HE-SMSGID: 1q1kRc-0004jf-Cx
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_093209_056048_2A9EB4D5 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20230524_020615_078558_A97D16A0 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,68 +65,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The currently supported RK3399 has a stride of 20 between the channel
-specific registers. Upcoming RK3588 has a different stride, so put
-the stride into driver data to make it configurable.
-While at it convert decimal 20 to hex 0x14 for consistency with RK3588
-which has a register stride 0x4000 and we want to write that in hex
-as well.
-
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- drivers/devfreq/event/rockchip-dfi.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 88145688e3d9c..a872550a7caf5 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -112,6 +112,7 @@ struct rockchip_dfi {
- 	int active_events;
- 	int burst_len;
- 	int buswidth[DMC_MAX_CHANNELS];
-+	int ddrmon_stride;
- };
- 
- static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
-@@ -189,13 +190,13 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 		c->c[i].read_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_RD_NUM + i * 20);
-+				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].write_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_WR_NUM + i * 20);
-+				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
-+				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].clock_cycles = readl_relaxed(dfi_regs +
--				DDRMON_CH0_COUNT_NUM + i * 20);
-+				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
- 	}
- }
- 
-@@ -661,6 +662,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
- 	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
- 
-+	dfi->ddrmon_stride = 0x14;
-+
- 	return 0;
- };
- 
--- 
-2.39.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjMuMDUuMjMgMTg6MzYsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+IAo+IExlIDIzLzA1
+LzIwMjMgw6AgMTg6MjUsIEJlbmphbWluIEdhaWduYXJkIGEgw6ljcml0wqA6Cj4+IFRoaXMgZml4
+ZXMgdGhlIGZvbGxvd2luZyBpc3N1ZSBvYnNlcnZlZCBvbiBPZHJvaWQtTTEgYm9hcmQ6Cj4gWy4u
+Ll0KPiBEaWVkZXJpY2ssIE1hcmVrLCBNaWNoYWVsLAo+IEkgaGF2ZSB0ZXN0ZWQgdGhpcyBwYXRj
+aCBvbiBteSBib2FyZHMgYW5kIEkgc2VlIG5vIHJlZ3Jlc3Npb25zIG9uCj4gZGVjb2RlciBwYXJ0
+IGFuZCBubyBtb3JlIGNyYXNoIHdoZW4gcHJvYmluZyB0aGUgZW5jb2Rlci4KPiBDb3VsZCB5b3Ug
+dGVzdCBpdCBvbiB5b3VyIHNpZGUgdG8gY29uZmlybSBpdCBpcyBvayA/CgpUaGV5IGFsbCBkaWQs
+IHNvIHRoYXQgaXMgZG9uZS4gVGh4IGZvciB5b3VyIGhlbHAsIGV2ZXJ5Ym9keSEKCi9tZSBub3cg
+aG9wZXMgdGhpcyBwYXRjaCB3aWxsIGJlIHF1aWNrbHkgcmV2aWV3ZWQsIGFjY2VwdGVkIGFuZCBz
+ZW50IHRvCkxpbnVzIHRvIHByZXZlbnQgZXZlbiBtb3JlIHBlb3BsZSBydW5uaW5nIGludG8gdGhp
+cy4uLgoKPiBUaG9yc3RlbiwgSSB0cnkvdGVzdCByZWd6Ym90IGNvbW1hbmRzLCBwbGVhc2UgdGVs
+bCBtZSBpZiBpdCBpcyBjb3JyZWN0Lgo+IAo+ICNyZWd6Ym90IF5pbnRyb2R1Y2VkIGRiNmY2OGI1
+MWU1Ywo+ICNyZWd6Ym90IHRpdGxlIG1lZGlhOiB2ZXJpc2lsaWNvbjogbnVsbCBwb2ludGVyIGRl
+cmVmZXJlbmNlIGluIHRyeV9mbXQKPiAjcmVnemJvdCBpZ25vcmUtYWN0aXZpdHkKClRoeCBmb3Ig
+dGhpcywgd2UganVzdCBub3cgdHJhY2sgdGhpcyByZWdyZXNzaW9uIHR3byB0aW1lcy4gTm8gd29y
+cmllcywKbGV0IG1lIGZpeCB0aGlzIGFuZCBhbHNvIHRlbGwgcmVnemJvdCBhYm91dCB0aGUgZml4
+OgoKI3JlZ3pib3QgZHVwLW9mOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzQ5OTUyMTUu
+THZGeDJxVlZJaEBiYWdlbmQvCiNyZWd6Ym90IGZpeDogbWVkaWE6IHZlcmlzaWxpY29uOiBBZGRp
+dGlvbmFsIGZpeCBmb3IgdGhlIGNyYXNoIHdoZW4Kb3BlbmluZyB0aGUgZHJpdmVyCgpDaWFvLCBU
+aG9yc3RlbiAod2VhcmluZyBoaXMgJ3RoZSBMaW51eCBrZXJuZWwncyByZWdyZXNzaW9uIHRyYWNr
+ZXInIGhhdCkKLS0KRXZlcnl0aGluZyB5b3Ugd2FubmEga25vdyBhYm91dCBMaW51eCBrZXJuZWwg
+cmVncmVzc2lvbiB0cmFja2luZzoKaHR0cHM6Ly9saW51eC1yZWd0cmFja2luZy5sZWVtaHVpcy5p
+bmZvL2Fib3V0LyN0bGRyCklmIEkgZGlkIHNvbWV0aGluZyBzdHVwaWQsIHBsZWFzZSB0ZWxsIG1l
+LCBhcyBleHBsYWluZWQgb24gdGhhdCBwYWdlLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
