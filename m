@@ -4,124 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE3FC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 07:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24981C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 08:32:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RwQRv3hPd+jJ1g/R7dtQw88dKOKMrfMSP3uZ734pjvw=; b=aZA1t95BN7HKYT
-	FC19fTwqRbr89AlGyG3fWKdNpMF8j9IHj8q8Fnugd/a5sjmLOALjlH4p7CF2tvZBpnvADzx/t4cFs
-	/NbAOyIrXCWkRf6Q7Jp9XNGUUY1SFrztEZQL5+oJxI2MSikMGADvxdHkZbu8aW+cxCjmnZuHYOmb6
-	yVNLDaec5PO45eiB5a3hy9TlrM4kmL2x+K0GgoBX1FccW4LIjYoujkfA5I3s4ktDFuqEJr/Ggrzua
-	qhuqX0wI2TZHI4Ns9ssktDsCsi9yr7NjgUGsUxGHdF37Q7aPM95SL6le1aNNJ+qrCn1tZgPdKp8+l
-	Gkja1ovuigCvty5JuFCQ==;
+	List-Owner; bh=HwrkFlov2gl75mqs8fNvSM1+Hj6DwIJvbbOebOgWg5E=; b=4xc/ACZV541j7h
+	p53GtNwFAPFcwdOBCCvcSGLKBSeAC6zA35czxCtC4AMsITIvWbhU71dNGiZYwsXzmZ85FrQ1AtXFv
+	ot+SqY+CpTIG6jE7XEwvid9jzTLKxr2eq4+zI6+J2PSzZ/DKgkNN5zQM0D+f/442Hjn4u6AEvKG10
+	8A+wvEaGb8b1kT60YRnYB2xZn9tsFjquKS0U7jRqstR4Gf4ek+MLug9K8ClicBTdkH/ovmAAMJfiS
+	gnsWIW/QRvX6iN2e7195BFICSD0jjTtDggfWlOLeRiYCOx4NK1nZOrb9J0gx5wYP4XlwPC+1nxO5i
+	L0h/UWIvYtlTwP0zF/AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jHE-00CftR-0p;
-	Wed, 24 May 2023 07:51:20 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1q1jur-00CmyW-2w;
+	Wed, 24 May 2023 08:32:17 +0000
+Received: from metis.ext.pengutronix.de ([85.220.165.71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jH9-00Cfpu-2b
+	id 1q1jun-00Cmsw-2y
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 May 2023 07:51:19 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20230524075107euoutp01ae751c6ceb579d649d3498ff2fff7568~iBPaBFd8k0762007620euoutp01t
-	for <linux-rockchip@lists.infradead.org>; Wed, 24 May 2023 07:51:07 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20230524075107euoutp01ae751c6ceb579d649d3498ff2fff7568~iBPaBFd8k0762007620euoutp01t
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1684914667;
-	bh=YEkrocO0Lhlb57mohHGNmeTDKwplmsj2mt7QK1SNvHM=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=G9S4pcMqE6t09Qir0XS4yvAJ/f72EPm6+qstq18k5G4ztrs9ehjS/UDxwPyiNcBOP
-	 5bxkCi8ILMDMHsaiIZeEcZtNnEXh9k94dA353j86EIk1MLJR+N/gqD7o0GBh27+CTe
-	 XwgjmsCMU4MqDujouByXr8s3cfBHo4OC1LnwTccI=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20230524075107eucas1p2ba76fdf6fdf3d88c9abb90fcc8cc494f~iBPZxdIia2699126991eucas1p2E;
-	Wed, 24 May 2023 07:51:07 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
-	eusmges1new.samsung.com (EUCPMTA) with SMTP id 04.1E.42423.AE1CD646; Wed, 24
-	May 2023 08:51:07 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20230524075106eucas1p26a6f2fc48035a96cd86912d6f9a71a69~iBPZYj3Qu2697926979eucas1p2R;
-	Wed, 24 May 2023 07:51:06 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
-	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20230524075106eusmtrp1900217962e97d095ced3bf5a75072223~iBPZXkj2v2522525225eusmtrp17;
-	Wed, 24 May 2023 07:51:06 +0000 (GMT)
-X-AuditID: cbfec7f2-a3bff7000002a5b7-03-646dc1eab95a
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
-	eusmgms2.samsung.com (EUCPMTA) with SMTP id 5E.17.14344.AE1CD646; Wed, 24
-	May 2023 08:51:06 +0100 (BST)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20230524075105eusmtip233dd8d7684832bd1687f22a6140474c0~iBPYey1fZ1216812168eusmtip2R;
-	Wed, 24 May 2023 07:51:05 +0000 (GMT)
-Message-ID: <7659de84-2b90-7f6b-edf3-2e1e42f6e4c6@samsung.com>
-Date: Wed, 24 May 2023 09:51:05 +0200
+	Wed, 24 May 2023 08:32:16 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1q1jub-0002r5-QC; Wed, 24 May 2023 10:32:01 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1q1jua-002RaV-Gm; Wed, 24 May 2023 10:32:00 +0200
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1q1juY-009jQW-0H; Wed, 24 May 2023 10:31:58 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>,
+	Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v5 25/25] arm64: dts: rockchip: rk3588s: Add DFI
+Date: Wed, 24 May 2023 10:31:53 +0200
+Message-Id: <20230524083153.2046084-26-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230524083153.2046084-1-s.hauer@pengutronix.de>
+References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
-	Gecko/20100101 Thunderbird/102.10.1
-Subject: Re: [PATCH] media: verisilicon: Additional fix for the crash when
- opening the driver
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	ezequiel@vanguardiasur.com.ar, nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de, mchehab@kernel.org, m.tretter@pengutronix.de,
-	didi.debian@cknow.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	hverkuil-cisco@xs4all.nl, kernel@pengutronix.de, regressions@lists.linux.dev
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <20230523162515.993862-1-benjamin.gaignard@collabora.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrMKsWRmVeSWpSXmKPExsWy7djP87qvD+amGHx0sthyZTazReur5+wW
-	G198ZrG4OPMui8Xmcz2sFqum7mSxuLxrDptFz4atrBafHvxntti24hyrxbJNf5gsdn25x2Zx
-	994JFouNbzvYHfg8Tvw/wuKx4+4SRo9NqzrZPDYvqfd4sXkmo0f/XwOPriPX2Tw+b5LzOPX1
-	M3sAZxSXTUpqTmZZapG+XQJXxvqFE9kL7ohX3Ju4n7GB8ZVwFyMnh4SAicSvBxvZuxi5OIQE
-	VjBK9K2bxAjhfGGUONf1lA2kSkjgM6PE2m3ZMB3NB64xQRQtZ5T4uHcRM4TzkVFi1YaNTCBV
-	vAJ2ElsuzmABsVkEVCW6vy1hhYgLSpyc+QQsLiqQKrFq80VmEFtYIF7iwKSrYDazgLjErSfz
-	wTaICNxklOg4PB/sQGaBk4wSl7d/AetmEzCU6HrbBXYfp4CbROOeH2wQ3fIS29/OATtJQmA1
-	p8TyL11AoziAHBeJt9ukIX4Qlnh1fAs7hC0jcXpyDwtEfTujxILf95kgnAmMEg3PbzFCVFlL
-	3Dn3iw1kELOApsT6XfoQYUeJs5dAmkHm80nceCsIcQOfxKRt05khwrwSHW1CENVqErOOr4Nb
-	e/DCJeYJjEqzkMJlFpL/ZyH5ZhbC3gWMLKsYxVNLi3PTU4sN81LL9YoTc4tL89L1kvNzNzEC
-	093pf8c/7WCc++qj3iFGJg7GQ4wSHMxKIrwnyrNThHhTEiurUovy44tKc1KLDzFKc7AoifNq
-	255MFhJITyxJzU5NLUgtgskycXBKNTBJhr1RS3pxy+Okg4SXadVjcVmZvXVxZ5+6NDdfqPgy
-	O1x26hv2j9be7dMsX5yY3tEef7O1be0prR3Wwgp7Gpb8Xdus8XrRnf85blIfZ76+FD1javtM
-	xbvcTP5iyW/qVqydbH/OcKZX9E7XxSEqm1rrayvebUr3qDh49dy5FfP5TfN7GuYktj18Umdx
-	6dDswuAbK9ep34kOnrj0gVTVxO8MPUYf3Asdmz3z780rdstZwvTWfXpu4iPWg2Vz14l12blc
-	CF8772Sf+dL6vjTFvVlMB7caf15yWGf2nMtPHghYbXf7ribAsvXqUwE10SUtF/9e4qkxd0wQ
-	0G0+JCDe5+AafcGy+VkiS62FvHTZNQklluKMREMt5qLiRACH257w5gMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrGIsWRmVeSWpSXmKPExsVy+t/xe7qvDuamGOw8qGCx5cpsZovWV8/Z
-	LTa++MxicXHmXRaLzed6WC1WTd3JYnF51xw2i54NW1ktPj34z2yxbcU5Votlm/4wWez6co/N
-	4u69EywWG992sDvweZz4f4TFY8fdJYwem1Z1snlsXlLv8WLzTEaP/r8GHl1HrrN5fN4k53Hq
-	62f2AM4oPZui/NKSVIWM/OISW6VoQwsjPUNLCz0jE0s9Q2PzWCsjUyV9O5uU1JzMstQifbsE
-	vYz1CyeyF9wRr7g3cT9jA+Mr4S5GTg4JAROJ5gPXmLoYuTiEBJYyShy6t58RIiEjcXJaAyuE
-	LSzx51oXG4gtJPCeUaLhbxyIzStgJ7Hl4gwWEJtFQFWi+9sSVoi4oMTJmU/A4qICqRInl94A
-	s4UF4iUOTLrKDGIzC4hL3HoynwnEFhG4ySix4o8zyBHMAicZJc70zWWDuGgmo0TXvQVgHWwC
-	hhJdbyGu4BRwk2jc84MNYpKZRNfWLkYIW15i+9s5zBMYhWYhOWQWkoWzkLTMQtKygJFlFaNI
-	amlxbnpusZFecWJucWleul5yfu4mRmCEbzv2c8sOxpWvPuodYmTiYDzEKMHBrCTCe6I8O0WI
-	NyWxsiq1KD++qDQntfgQoykwNCYyS4km5wNTTF5JvKGZgamhiZmlgamlmbGSOK9nQUeikEB6
-	YklqdmpqQWoRTB8TB6dUA5OZ3Peqk6/nZwbacTJPi0t3KN7isKLqcMzlPW1V6Wpr2VmeiqkH
-	S5yTNZ568y7P3Cl+N/KKrv15lfL+W4V5xHbn7685XOqs3shM2/KAd69bmsCe4DvNDvHeRblT
-	S1MnhavecHvmnPRP7UC//LMaJaZchpUHzaz9Vggc3TZNVC7wrqxIvgQLT2py412vA3NkH8q4
-	97VOZvjsG9DuJndqx/E/JmaJvIdMZEyL1jIntwrrx1bzFdmq3P3vsDzMN6XQ7Nf/deovGyfd
-	+eF7zXvZbauE2YmcfeZS7/SNAw9O4Kj0dXz1M+vd60lqGn+Ctp2X72jfpRO0zHJzgipftHDa
-	K2vHOcoH53HVS2cwrfVTYinOSDTUYi4qTgQAuyXLn3kDAAA=
-X-CMS-MailID: 20230524075106eucas1p26a6f2fc48035a96cd86912d6f9a71a69
-X-Msg-Generator: CA
-X-RootMTR: 20230523162528eucas1p297a28b644c81704d7fc9a0810649e3e9
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230523162528eucas1p297a28b644c81704d7fc9a0810649e3e9
-References: <CGME20230523162528eucas1p297a28b644c81704d7fc9a0810649e3e9@eucas1p2.samsung.com>
-	<20230523162515.993862-1-benjamin.gaignard@collabora.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_005116_106800_B5AE5A59 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20230524_013213_971169_0E2EA34D 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,76 +88,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23.05.2023 18:25, Benjamin Gaignard wrote:
-> This fixes the following issue observed on Odroid-M1 board:
->
->   Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
->   Mem abort info:
->   ...
->   Modules linked in: crct10dif_ce hantro_vpu snd_soc_simple_card snd_soc_simple_card_utils v4l2_vp9 v4l2_h264 rockchip_saradc v4l2_mem2mem videobuf2_dma_contig videobuf2_memops rtc_rk808 videobuf2_v4l2 industrialio_triggered_buffer rockchip_thermal dwmac_rk stmmac_platform stmmac videodev kfifo_buf display_connector videobuf2_common pcs_xpcs mc rockchipdrm analogix_dp dw_mipi_dsi dw_hdmi drm_display_helper panfrost drm_shmem_helper gpu_sched ip_tables x_tables ipv6
->   CPU: 3 PID: 176 Comm: v4l_id Not tainted 6.3.0-rc7-next-20230420 #13481
->   Hardware name: Hardkernel ODROID-M1 (DT)
->   pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->   pc : hantro_try_fmt+0xa0/0x278 [hantro_vpu]
->   lr : hantro_try_fmt+0x94/0x278 [hantro_vpu]
->   ...
->   Call trace:
->    hantro_try_fmt+0xa0/0x278 [hantro_vpu]
->    hantro_set_fmt_out+0x3c/0x298 [hantro_vpu]
->    hantro_reset_raw_fmt+0x98/0x128 [hantro_vpu]
->    hantro_set_fmt_cap+0x240/0x254 [hantro_vpu]
->    hantro_reset_encoded_fmt+0x94/0xcc [hantro_vpu]
->    hantro_reset_fmts+0x18/0x38 [hantro_vpu]
->    hantro_open+0xd4/0x20c [hantro_vpu]
->    v4l2_open+0x80/0x120 [videodev]
->    chrdev_open+0xc0/0x22c
->    do_dentry_open+0x13c/0x48c
->    vfs_open+0x2c/0x38
->    path_openat+0x550/0x934
->    do_filp_open+0x80/0x12c
->    do_sys_openat2+0xb4/0x168
->    __arm64_sys_openat+0x64/0xac
->    invoke_syscall+0x48/0x114
->    el0_svc_common+0x100/0x120
->    do_el0_svc+0x3c/0xa8
->    el0_svc+0x40/0xa8
->    el0t_64_sync_handler+0xb8/0xbc
->    el0t_64_sync+0x190/0x194
->   Code: 97fc8a7f f940aa80 52864a61 72a686c1 (b9400800)
->   ---[ end trace 0000000000000000 ]---
->
-> Fixes: db6f68b51e5c ("media: verisilicon: Do not set context src/dst formats in reset functions")
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
->   drivers/media/platform/verisilicon/hantro_v4l2.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index 835518534e3b..61cfaaf4e927 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -397,10 +397,12 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth)
->   	if (!raw_vpu_fmt)
->   		return -EINVAL;
->   
-> -	if (ctx->is_encoder)
-> +	if (ctx->is_encoder) {
->   		encoded_fmt = &ctx->dst_fmt;
-> -	else
-> +		ctx->vpu_src_fmt = raw_vpu_fmt;
-> +	} else {
->   		encoded_fmt = &ctx->src_fmt;
-> +	}
->   
->   	hantro_reset_fmt(&raw_fmt, raw_vpu_fmt);
->   	raw_fmt.width = encoded_fmt->width;
+The DFI unit can be used to measure DRAM utilization using perf. Add the
+node to the device tree. The DFI needs a rockchip,pmu phandle to the pmu
+containing registers for SDRAM configuration details. This is added in
+this patch as well.
 
-Best regards
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+
+Notes:
+    Changes since v4:
+    - new patch
+
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 657c019d27fa9..4a445d8704c8f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -388,6 +388,11 @@ scmi_shmem: sram@0 {
+ 		};
+ 	};
+ 
++	pmu1grf: syscon@fd58a000 {
++		compatible = "rockchip,rk3588-pmugrf", "syscon", "simple-mfd";
++		reg = <0x0 0xfd58a000 0x0 0x10000>;
++	};
++
+ 	sys_grf: syscon@fd58c000 {
+ 		compatible = "rockchip,rk3588-sys-grf", "syscon";
+ 		reg = <0x0 0xfd58c000 0x0 0x1000>;
+@@ -1112,6 +1117,17 @@ qos_vop_m1: qos@fdf82200 {
+ 		reg = <0x0 0xfdf82200 0x0 0x20>;
+ 	};
+ 
++	dfi: dfi@fe060000 {
++		reg = <0x00 0xfe060000 0x00 0x10000>;
++		compatible = "rockchip,rk3588-dfi";
++		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "ch0", "ch1", "ch2", "ch3";
++		rockchip,pmu = <&pmu1grf>;
++	};
++
+ 	gmac1: ethernet@fe1c0000 {
+ 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+ 		reg = <0x0 0xfe1c0000 0x0 0x10000>;
 -- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+2.39.2
 
 
 _______________________________________________
