@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CBC4C77B73
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 08:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E4BC77B73
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 08:32:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vOdbJ2lvBrc+AvOVEnA3kUVGNQjc2a1psokCOruuj4o=; b=0kdiAVpWx7M0Zj
-	LPIt2zaySJB2VTtbwuss+J9g8d8YQkWyGIJHGYSCEFui/Z7Ac/e+ZSJW0VU/8dBdtOgTb0RdpTLcC
-	9UDbUmSG162OwQtj6Mc7c+ja9VCRemRiDNGOHA2BlAnpSjAHRIiQY+xgqfT4zm8uGPPI6/rvKxIzr
-	8cdKNt2y8ndUvwDJbhbIxBXVtw+mEJ+aiDwhg7Rx+6hyNJYV7/HDWiWS3JSaclqxQhsJ7CnbBg1wc
-	25A8CDXCL9xvTddQodlhorQ9yst0ocTqrIfwLttKvP2hF8TkTnmTQ/OKpwW63UfHh0+xR2Ol1oYqR
-	jvikzARuc8T03+ak+a7A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lsr3xd9zEtzYEHVDRnPAS3Hh8xpVPIqAmxhJY8RNOb8=; b=XiX3HEvAPZ+dTH
+	lUnoEwrLwytXsnc0BhVg5wWHZ4U9rP9Cthy9AaO1nhKU/V3d9R+S7Qfubggh3ythjaJmP87aEV3HO
+	e42B7vOynOk9z8wD5BnGZhVd4edIr7Fj6TrdIlkIxXGk7Feqp1/K2sOVpmYf2W3u2SxZpazEH+ru5
+	f72c/lludrKoKgfFg0YnE3PHM9S3vB/ec+axppFLSHt17LjlE+Rq91CPLzgYTh5D1g8fJdLMkCj9D
+	JGP+9IjGS/G+i/4pY4CRUhxGaov2e9okmoyJqtULuUzy3Vmjbdsnps1+Wr7DobPqcKFF+kzu7xkBk
+	QUQ00kZjNqxyRBLeNaKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1jvI-00Cn8Y-0m;
-	Wed, 24 May 2023 08:32:44 +0000
+	id 1q1jvH-00Cn8A-2W;
+	Wed, 24 May 2023 08:32:43 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1juo-00Cmrt-0r
+	id 1q1juo-00Cmrf-0s
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 May 2023 08:32:19 +0000
+	Wed, 24 May 2023 08:32:18 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1q1juZ-0002mu-VN; Wed, 24 May 2023 10:32:00 +0200
+	id 1q1juY-0002l6-Rb; Wed, 24 May 2023 10:31:58 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1q1juZ-002RZz-3u; Wed, 24 May 2023 10:31:59 +0200
+	id 1q1juW-002RZ7-Io; Wed, 24 May 2023 10:31:56 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1q1juX-009jKu-Ik; Wed, 24 May 2023 10:31:57 +0200
+	id 1q1juV-009izp-MD; Wed, 24 May 2023 10:31:55 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -57,22 +57,19 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v5 20/25] dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
-Date: Wed, 24 May 2023 10:31:48 +0200
-Message-Id: <20230524083153.2046084-21-s.hauer@pengutronix.de>
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v5 00/25] Add perf support to the rockchip-dfi driver
+Date: Wed, 24 May 2023 10:31:28 +0200
+Message-Id: <20230524083153.2046084-1-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230524083153.2046084-1-s.hauer@pengutronix.de>
-References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_013214_345170_9831FFB6 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20230524_013214_367023_A3E43261 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,128 +86,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the Rockchip DFI binding to yaml.
+This is v5 of the series adding perf support to the rockchip DFI driver.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
+A lot has changed in the perf driver since v4. First of all the review
+feedback from Robin and Jonathan has been integrated. The perf driver
+now not only supports monitoring the total DDR utilization, but also the
+individual channels. I also reworked the way the raw 32bit counter
+values are summed up to 64bit perf values, so hopefully the code is
+easier to follow now.
 
-Notes:
-    Changes since v4:
-    
-    - Revert to state of v3 (changes were lost in v4)
+lockdep found out that that locking in the perf driver was broken, so I
+reworked that as well. None of the perf hooks allows locking with
+mutexes or spinlocks, so in perf it's not possible to enable the DFI
+controller when needed. Instead I now unconditionally enable the DFI
+controller during probe when perf is enabled.
 
- .../bindings/devfreq/event/rockchip,dfi.yaml  | 61 +++++++++++++++++++
- .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ------
- .../rockchip,rk3399-dmc.yaml                  |  2 +-
- 3 files changed, 62 insertions(+), 19 deletions(-)
+Furthermore the hrtimer I use for reading out the hardware counter
+values before they overflow race with perf. Now a seqlock is used to
+prevent that.
+
+The RK3588 device tree changes for the DFI were not part of v4. As
+Vincent Legoll showed interest in testing this series the necessary
+device tree changes are now part of this series.
+
+Changes since v4:
+- Add device tree changes for RK3588
+- Use seqlock to protect perf counter values from hrtimer
+- Unconditionally enable DFI when perf is enabled
+- Bring back changes to dts/binding patches that were lost in v4
+
+Changes since v3:
+- Add RK3588 support
+
+Changes since v2:
+- Fix broken reference to binding
+- Add Reviewed-by from Rob
+
+Changes since v1:
+- Fix example to actually match the binding and fix the warnings resulted thereof
+- Make addition of rockchip,rk3568-dfi an extra patch
+
+Sascha Hauer (25):
+  PM / devfreq: rockchip-dfi: Make pmu regmap mandatory
+  PM / devfreq: rockchip-dfi: Embed desc into private data struct
+  PM / devfreq: rockchip-dfi: use consistent name for private data
+    struct
+  PM / devfreq: rockchip-dfi: Add SoC specific init function
+  PM / devfreq: rockchip-dfi: dfi store raw values in counter struct
+  PM / devfreq: rockchip-dfi: Use free running counter
+  PM / devfreq: rockchip-dfi: introduce channel mask
+  PM / devfreq: rk3399_dmc,dfi: generalize DDRTYPE defines
+  PM / devfreq: rockchip-dfi: Clean up DDR type register defines
+  PM / devfreq: rockchip-dfi: Add RK3568 support
+  PM / devfreq: rockchip-dfi: Handle LPDDR2 correctly
+  PM / devfreq: rockchip-dfi: Handle LPDDR4X
+  PM / devfreq: rockchip-dfi: Pass private data struct to internal
+    functions
+  PM / devfreq: rockchip-dfi: Prepare for multiple users
+  PM / devfreq: rockchip-dfi: give variable a better name
+  PM / devfreq: rockchip-dfi: Add perf support
+  PM / devfreq: rockchip-dfi: make register stride SoC specific
+  PM / devfreq: rockchip-dfi: account for multiple DDRMON_CTRL registers
+  PM / devfreq: rockchip-dfi: add support for RK3588
+  dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
+  dt-bindings: devfreq: event: rockchip,dfi: Add rk3568 support
+  dt-bindings: devfreq: event: rockchip,dfi: Add rk3588 support
+  arm64: dts: rockchip: rk3399: Enable DFI
+  arm64: dts: rockchip: rk356x: Add DFI
+  arm64: dts: rockchip: rk3588s: Add DFI
+
+ .../bindings/devfreq/event/rockchip,dfi.yaml  |  84 ++
+ .../bindings/devfreq/event/rockchip-dfi.txt   |  18 -
+ .../rockchip,rk3399-dmc.yaml                  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   1 -
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   7 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  16 +
+ drivers/devfreq/event/rockchip-dfi.c          | 796 +++++++++++++++---
+ drivers/devfreq/rk3399_dmc.c                  |  10 +-
+ include/soc/rockchip/rk3399_grf.h             |   9 +-
+ include/soc/rockchip/rk3568_grf.h             |  13 +
+ include/soc/rockchip/rk3588_grf.h             |  18 +
+ include/soc/rockchip/rockchip_grf.h           |  18 +
+ 12 files changed, 854 insertions(+), 138 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+ create mode 100644 include/soc/rockchip/rk3568_grf.h
+ create mode 100644 include/soc/rockchip/rk3588_grf.h
+ create mode 100644 include/soc/rockchip/rockchip_grf.h
 
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-new file mode 100644
-index 0000000000000..7a82f6ae0701e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/devfreq/event/rockchip,dfi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip DFI
-+
-+maintainers:
-+  - Sascha Hauer <s.hauer@pengutronix.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3399-dfi
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: pclk_ddr_mon
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  reg:
-+    maxItems: 1
-+
-+  rockchip,pmu:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the "PMU general register files".
-+
-+required:
-+  - compatible
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/rk3308-cru.h>
-+
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      dfi: dfi@ff630000 {
-+        compatible = "rockchip,rk3399-dfi";
-+        reg = <0x00 0xff630000 0x00 0x4000>;
-+        interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
-+        rockchip,pmu = <&pmugrf>;
-+        clocks = <&cru PCLK_DDR_MON>;
-+        clock-names = "pclk_ddr_mon";
-+      };
-+    };
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
-deleted file mode 100644
-index 148191b0fc158..0000000000000
---- a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
-+++ /dev/null
-@@ -1,18 +0,0 @@
--
--* Rockchip rk3399 DFI device
--
--Required properties:
--- compatible: Must be "rockchip,rk3399-dfi".
--- reg: physical base address of each DFI and length of memory mapped region
--- rockchip,pmu: phandle to the syscon managing the "pmu general register files"
--- clocks: phandles for clock specified in "clock-names" property
--- clock-names : the name of clock used by the DFI, must be "pclk_ddr_mon";
--
--Example:
--	dfi: dfi@ff630000 {
--		compatible = "rockchip,rk3399-dfi";
--		reg = <0x00 0xff630000 0x00 0x4000>;
--		rockchip,pmu = <&pmugrf>;
--		clocks = <&cru PCLK_DDR_MON>;
--		clock-names = "pclk_ddr_mon";
--	};
-diff --git a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
-index fb4920397d08e..aba8649aaeb10 100644
---- a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
-@@ -18,7 +18,7 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-       Node to get DDR loading. Refer to
--      Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt.
-+      Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml.
- 
-   clocks:
-     maxItems: 1
 -- 
 2.39.2
 
