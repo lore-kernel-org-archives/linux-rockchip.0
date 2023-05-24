@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F6AC77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 10:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3C0C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 10:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rQd1lKQOJW5TvtimW9RMxAKfRopV+nuuuzIBsdAVddo=; b=HSHTURWqAo7R381uaQYfRRE1uX
-	mH3t6jckOsBSxtHA/IXnhiCzLE/7ta4G+hw+oC48pe5Y4yZD4n0mOpzYii/u8ZD4ZvLCktgoku+97
-	4rHxjqJZLQQbUFetsOLPfG7TXUJ6OEyCU5ziblfAfqj3UV53QRj81p4CzpKcmEXW3m4VvcKdYt/HT
-	TYe4OnlZ5GvX15sapwOHIlDjX6i3WaTsE4U4LQJtORt2vFK3IQC8xfgOT+592PFCnE98T95jnChui
-	zY/fSqMr77A6aqmyTk1fG712gzALwoC/PSe2/G50Pu8tApzKOzD823lmr4e1mF2QsVW4kte62VhxW
-	EKzateKg==;
+	bh=LEnO/4DBp56xPNACQcmsMcR45YEBJ9zO7JuZb/iRVRY=; b=oEIMPdbxiwp8n+ojtS1Srl0gcz
+	dzKP5SqxbyjvaQsr0hfStTS80n/A4BhBTngxoMyRVX/+PTIBVYhIL5YD4AM9B9CsYqyzZjHvbi9u5
+	ZGR/pvCHtsbtKflgU2Z0vUxlvPaoEvdyeS5o1aU0C82oItsm9GbwmobnC7F/zrrjBjx8Pc+ooqWGZ
+	sEwQWzcmF3AbmDR7QtrIQtSFbWWEAQUgrD/YBAfm/g0TNE1N4rfja2GHRX3/TPveAaPonCaiTstKB
+	cf4wpoUSxppk0XcOx6p+NQW6+UrRehHJCAcbs6nZSJ2BJGVvHaOlLskQuhy7OufCEMGsT5SC5OLXp
+	rfBbFQXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1lrJ-00DB3o-1q;
-	Wed, 24 May 2023 10:36:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q1lti-00DCej-0c;
+	Wed, 24 May 2023 10:39:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1lrG-00DB1H-2B;
-	Wed, 24 May 2023 10:36:43 +0000
+	id 1q1lte-00DCbv-2x;
+	Wed, 24 May 2023 10:39:12 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 00B0760E9F;
-	Wed, 24 May 2023 10:36:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68E84C433EF;
-	Wed, 24 May 2023 10:36:37 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 152B660989;
+	Wed, 24 May 2023 10:39:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB763C433D2;
+	Wed, 24 May 2023 10:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1684924601;
-	bh=hi083FkRexhMLoidEEKy5XWziKKRM1PgNlp/EQlYmVA=;
+	s=k20201202; t=1684924749;
+	bh=97Bo8M7vIcJpKbKSc2UjRTwALsSkh/PCl91iiCIBYgI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=asbJvu+16MZuQTh7gbxpwMrJTcvjfHd4T6JDwAkJJlFE/EAssy5B+lXSI4CsJooAC
-	 GsqJUEODGl0h+lSkFnrAGaSKtsjZyM9UnsBZ7/5iQuEXWxCu9MtWGvUah3EfzjUKsJ
-	 QSid30r06xwGLXYnUiyHdLWw1lLxCJGQBPrJUBuXftC2w05fbnD99Gxuhy8RsYgaYn
-	 vgBek6q58SIUmwO2S1J7KPifsFHaMUVdadB7YXrhUyCpXuJ/gtdnRbnRZQe0mORPuK
-	 w0owrUkSjXbYqiGRyJCx4+Zzu4ta9kd9l+GgUAXRugyIQcdZVmvgQdKxk43Ra66Cba
-	 T4ZmRgdhGlZqQ==
-Date: Wed, 24 May 2023 11:36:34 +0100
+	b=uTWnnoc9M65z0pi+/RphFF0cyaG7G0fBxhQ/CRdXGcaGayKSEvgqc9qTZKkQ/HcFx
+	 wHDyQEVfYGNbGpVedSYEPpvivoUllsZ47udQ2iWNbu8he4ct3pCnc4ZaxCLRdZSbAk
+	 exkhiGqn2Mbpnxc9RpMcaKYJIpuH6zT0WNFrH0nzlUiSkSJA51tbO0k7lFeTKElpzT
+	 WKIo/kmtZIK84+hcbg/S1AUcDM3n7Xd2pkQBVqEfDVeFgQEXDusM4S/sFEMfU8eYyM
+	 TCkDketyaOxgFeoD01aooo9Nlhc+goj7sYD6rroOJK7oN/PF9IDOKhWrXo0s94TeAW
+	 +efNTcdc8rVew==
+Date: Wed, 24 May 2023 11:39:01 +0100
 From: Mark Brown <broonie@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -61,17 +61,17 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	alsa-devel@alsa-project.org, kernel@collabora.com
-Subject: Re: [PATCH 2/3] ASoC: es8316: Do not set rate constraints for
- unsupported MCLKs
-Message-ID: <16e818c0-6917-44d9-8cb6-27bbf41b896c@sirena.org.uk>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Assign ES8316 MCLK rate on
+ rk3588-rock-5b
+Message-ID: <5b3e479f-366b-4de7-a4ec-5348166ebcbc@sirena.org.uk>
 References: <20230524074156.147387-1-cristian.ciocaltea@collabora.com>
- <20230524074156.147387-3-cristian.ciocaltea@collabora.com>
+ <20230524074156.147387-4-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20230524074156.147387-3-cristian.ciocaltea@collabora.com>
+In-Reply-To: <20230524074156.147387-4-cristian.ciocaltea@collabora.com>
 X-Cookie: You will be divorced within a year.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_033642_762328_3277C771 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20230524_033911_036228_E5A8DBCC 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +83,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5946737259006325357=="
+Content-Type: multipart/mixed; boundary="===============5258365623722478178=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5946737259006325357==
+--===============5258365623722478178==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="BL18BDqPwAF3M+kF"
+	protocol="application/pgp-signature"; boundary="Ddn++dUqYG3z34LP"
 Content-Disposition: inline
 
 
---BL18BDqPwAF3M+kF
+--Ddn++dUqYG3z34LP
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 24, 2023 at 10:41:55AM +0300, Cristian Ciocaltea wrote:
+On Wed, May 24, 2023 at 10:41:56AM +0300, Cristian Ciocaltea wrote:
+> The I2S0_8CH_MCLKOUT clock rate on Rock 5B board defaults to 12 MHz and
+> it is used to provide the master clock (MCLK) for the ES8316 audio
+> codec.
+>=20
+> On sound card initialization, this limits the allowed sample rates
+> according to the MCLK/LRCK ratios supported by the codec, which results
+> in the following non-standard rates: 15625, 30000, 31250, 46875.
+>=20
+> Hence, the very first access of the sound card fails:
+>=20
+>   Broken configuration for playback: no configurations available: Invalid=
+ argument
+>   Setting of hwparams failed: Invalid argument
+>=20
+> However, all subsequent attempts will succeed, as the audio graph card
+> will request a correct clock frequency, based on the stream sample rate
+> and the multiplication factor.
+>=20
+> Assign MCLK to 12.288 MHz, which allows the codec to advertise most of
+> the standard sample rates.
 
-> -	es8316->sysclk_constraints.list = es8316->allowed_rates;
-> +	es8316->sysclk_constraints.list = count ? es8316->allowed_rates : NULL;
+Surely this is irrelevant with your previous change, and if the clock is
+freely reprogrammable as it sounds even harmful given that it'll
+restrict rates that are not available with the selected MCLK?
 
-Please write normal conditional statements to improve legibility.
-
---BL18BDqPwAF3M+kF
+--Ddn++dUqYG3z34LP
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRt6LEACgkQJNaLcl1U
-h9AHVwf+KYnUvOtkX0kkKv5bSX8q6lynYNs4cwPyEYa4ElWGkL05TG7EvMqFyl61
-NAFr7ZbaXS5F6bk9tM+owkDvWBUl7XF0Wgi3Bgkch5xmKSfeYDCXnP7ptpiS8wxX
-2giK/jQ7VoZ2vRo3qAquYD+hBmoLOLdsF/CIpUONtUhzfKldB0zyhPP6MFtK7n9J
-8s8a4b2r2qszuEXCWQ1NvyikCLMcWoWIoopwEK8pN3371eXvEBvOyex42sEXweDX
-e8dv+hwlxnEV+LDLxHFUPq+bnxgneJgv6LWdXaTHdI2V0LC1s4vkBmI0jGn+4ses
-8Cd5IhmPalyR6EYRq0qoQPY3e4ipWg==
-=Bx7i
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmRt6UQACgkQJNaLcl1U
+h9DN5wf/W5WcD7Og4mMGFdpfZQX2dnzRyeSTEz0CjPCd8IH1EtUjs9/Ynbswoa1h
+i4b9JEmZ6FhwJXA/mEhAD5UZ84MDSy3Eiaa1tyqU+WszFsDFkXRruycmYiLvjk3Z
+qdz1fqWbl9PFKNcwC9Yx9fDnrph6/yI1ok1Xn+p1RuC13ykFo9eaecWEeowXCoCl
+Q88gVYix4yYaXcTRuax6hnPq9PKnysUyuzTPB+FZ/HycBLwAWf51TwLkCUbGkGRF
+eWViwSHzF9HVynxOFtINjPzzMS9HVyWh7Jr4a+CK/0NIkqyqvjP/318EfukXyw2k
+WEVKpaYD0v05lvNpqUp4kEyVo+IKnQ==
+=sTqD
 -----END PGP SIGNATURE-----
 
---BL18BDqPwAF3M+kF--
+--Ddn++dUqYG3z34LP--
 
 
---===============5946737259006325357==
+--===============5258365623722478178==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -134,5 +154,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5946737259006325357==--
+--===============5258365623722478178==--
 
