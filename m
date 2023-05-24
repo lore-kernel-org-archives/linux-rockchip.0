@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48C02C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 14:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2BC1C77B73
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 May 2023 16:13:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Subject:Cc:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BN27XlN1gS1NuknlULW+uDpuNa4X00aN7yKm97Vkk+c=; b=hkuaigc4rG9H5B
-	Q5wy395XC8e0rN643bjimbbwXOh66gtxc1/6lYQb+cYTwS84hy54NPLWV7xC7QOXFPLNYHpjFYoFQ
-	MY/bFguivI2P6e/KVFudzGv9KtNNlTYa4IFEX1XMb6ISzzrBpXePV67y/UMZ8DQtCuBEZud2N5Mjq
-	3lf/IqggewqHFj8RbML83J2A+B4EEBh/1jdYoD2k9eK+qGEb4XYEfYrnvwdpLAWHdEbpb0C1PEyxQ
-	kJ2iKXwoFwtgt5uYzU3MozoYtsb05F4nRWD15c4hLHlpzDUaUIPRdKhJyixcCo6j5lJdhuxliomrl
-	TSkGI50yacW+yNcm6IOw==;
+	List-Owner; bh=7DVxo8s33UCDmh/UnxTdlePL11ZEpCKYP+NJ6YgibOc=; b=bcJDT8h5opDWLk
+	s3ip6BgcVMWzUgMarPi+pQKWPZNrp9PFyLNzAzGP2IHeDyf4navyO27/M6UenqnmOVfG3f99Uc4jO
+	IKW4eZqpyopgaf4TJDUjUnRb5xFa6l4l2JR8vxvITTrF5hf0v2Iw6CaTiqjNHTnqvDNSEUmKTakXh
+	NLz9s4be3/t209WYa8Z9k6drnLD2z2nkj8Pe3kRGiMOszVYSAeDYvoIYM/fskbb5axm0/x/yvkxG6
+	XIQpuByX+9XC5ko7BFblYCrWw1qDu4IRudtHLof8F7BVhLy+UmRGfqQ+pbaPO7nAsD79uMCYDJmfy
+	12RJF+Gf0Fnf/aMbKwyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1pMj-00DfG9-0o;
-	Wed, 24 May 2023 14:21:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q1r6h-00DyLU-1J;
+	Wed, 24 May 2023 16:12:59 +0000
+Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q1pMf-00DfFU-1h;
-	Wed, 24 May 2023 14:21:22 +0000
-Received: from [192.168.1.90] (unknown [188.27.34.213])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21E976605943;
-	Wed, 24 May 2023 15:21:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1684938080;
-	bh=hvJt7YjyA2Q4IEqhRK/UATNSLwjQita55Z4eggN8Sec=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DDzb++/BzzeLQ6R1GbLy8KbEJ/cumPebTkGoHFK66V2TcIStLD9HE1jJ65Mw+TNXm
-	 FHuMI1xvaX1gXwKK8gUs59pTpEfy/R767P5gpsGCHKsEQHaYOyK+ZDh92x0DrxA1B1
-	 clXfs60YXvTlUCIRpicYerr9gLwe7NRdG2HVRWrF7NgjE29JRDiOuXG7KozI33HhhP
-	 JiqKZQRe1cdRTmF80vIZ1RYCltHKd0WNtaeanFThogcgHXML635kDFikzXC25mxzzE
-	 HFaAmBdC3li0VDw+13iD0t+RQ1HDquIGHsaiAjYdL5OxTcSnGYJGGrx/WNc6G5WakT
-	 tVX/oB4i6miUw==
-Message-ID: <0f5765e4-484e-2ae7-dc43-c1d6e9e3e1a4@collabora.com>
-Date: Wed, 24 May 2023 17:21:17 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Assign ES8316 MCLK rate on
- rk3588-rock-5b
-Content-Language: en-US
+	id 1q1r6e-00DyK3-2M
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 May 2023 16:12:58 +0000
+Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-19a77e4c8dcso372923fac.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 May 2023 09:12:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1684944772; x=1687536772;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=d2krvbmUqOnT4KV8ff+7HqiCvnexQ6qfpMeD5hBBKDI=;
+        b=BXQc/vB2/r9Dq425nCPgq9QmObSBwPsi5anYqf70r7oyC2C1g6fTPoPoi9p2iSrWSm
+         c9D/8N8/y21hqTJf1gOpXyYMdQes2dCzj59IGxkfyYh8LBDkXHDQAxrvv7vH8mJHkvJw
+         yGtmuS42uE0ofz1TYDAIU+jb/hfkVvbpCBPFqtsOCPYzgNy8/L1AGiqZK6RB9p5zpb9z
+         lPJxI73lFmeaf+4ZuSTk8xD6mS8czma8D89H23EPnv6jYzfBiFZ2bIgEz8XBJ6W/yCp5
+         8tbMO1HjL4HxIFk1o3J9og0WW5tl985SvZV0UI2jO57IL0lUKOHuzKC3HZi5WqQgwGtp
+         G+CA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684944772; x=1687536772;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=d2krvbmUqOnT4KV8ff+7HqiCvnexQ6qfpMeD5hBBKDI=;
+        b=QKSw9wgwoMGeerxjaX0FRLCaXsdhHxgO84q3EAAsXMvEI6Md2ADY2r4oSSPhGOQ1sU
+         auJdBRMsb2IQrQLfiQDl0irVDk0HggN4C1oL3qABRpcIFGv7cZwiAIfkMsBtAS32C6jG
+         4Np1VvIVYH1vqR1qPNGyi5Oj6C0E5Oz0M9AXci3faUVhCtZNCPMv7APxwOM76mmXGZ/N
+         dQbAuKfSJKtyUkYgQRP7VXfZ4zrCOLczKvRGbWe87G7mIEK4KYXsT941SFY4yWIs+Jx9
+         Q+HxmZmIm0vweu3IQMPPEfDfjkgSrCqlMDO4hsCScx6FER3sy/Fa2S51Z1q5tABNYM+1
+         bfwA==
+X-Gm-Message-State: AC+VfDyN1hlqTrrktNGsHsgT4qhRufyNHkagMjxcWb/jd/9KJ13mZn4/
+	9knnFS+Ka18BDWVHraC1wTo=
+X-Google-Smtp-Source: ACHHUZ7Lso2poEP7KecW3pW1g3gvJHrRqlkMvpmtiMnveNZ9VYZhCemAUJ0Zdx5qdJxt5oBJVxxi4Q==
+X-Received: by 2002:a05:6870:93d5:b0:195:fe38:3b60 with SMTP id c21-20020a05687093d500b00195fe383b60mr161544oal.25.1684944772365;
+        Wed, 24 May 2023 09:12:52 -0700 (PDT)
+Received: from neuromancer. ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id u1-20020a05687036c100b0019ea8771fb0sm82550oak.13.2023.05.24.09.12.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 May 2023 09:12:52 -0700 (PDT)
+Message-ID: <646e3784.050a0220.71431.07f7@mx.google.com>
+X-Google-Original-Message-ID: <ZG43gSO+UYAi6bv+@neuromancer.>
+Date: Wed, 24 May 2023 11:12:49 -0500
+From: Chris Morgan <macroalpha82@gmail.com>
 To: Mark Brown <broonie@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Zhu Ning <zhuning0077@gmail.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- David Yang <yangxiaohua@everest-semi.com>, Daniel Drake
- <drake@endlessm.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
- kernel@collabora.com
-References: <20230524074156.147387-1-cristian.ciocaltea@collabora.com>
- <20230524074156.147387-4-cristian.ciocaltea@collabora.com>
- <5b3e479f-366b-4de7-a4ec-5348166ebcbc@sirena.org.uk>
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <5b3e479f-366b-4de7-a4ec-5348166ebcbc@sirena.org.uk>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
+	devicetree@vger.kernel.org, zyw@rock-chips.com,
+	sebastian.reichel@collabora.com, andyshrk@163.com,
+	jagan@amarulasolutions.com, perex@perex.cz, tiwai@suse.com,
+	lgirdwood@gmail.com, heiko@sntech.de, conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/6] ASoC: es8328: Enabling support for 12Mhz sysclk
+References: <20230523213825.120077-1-macroalpha82@gmail.com>
+ <20230523213825.120077-2-macroalpha82@gmail.com>
+ <f5b780ac-e079-4c24-9dfc-05aee52deb9c@sirena.org.uk>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f5b780ac-e079-4c24-9dfc-05aee52deb9c@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230524_072121_695300_5F953372 
-X-CRM114-Status: GOOD (  17.86  )
+X-CRM114-CacheID: sfid-20230524_091256_771075_37CFE2B9 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +99,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/24/23 13:39, Mark Brown wrote:
-> On Wed, May 24, 2023 at 10:41:56AM +0300, Cristian Ciocaltea wrote:
->> The I2S0_8CH_MCLKOUT clock rate on Rock 5B board defaults to 12 MHz and
->> it is used to provide the master clock (MCLK) for the ES8316 audio
->> codec.
->>
->> On sound card initialization, this limits the allowed sample rates
->> according to the MCLK/LRCK ratios supported by the codec, which results
->> in the following non-standard rates: 15625, 30000, 31250, 46875.
->>
->> Hence, the very first access of the sound card fails:
->>
->>   Broken configuration for playback: no configurations available: Invalid argument
->>   Setting of hwparams failed: Invalid argument
->>
->> However, all subsequent attempts will succeed, as the audio graph card
->> will request a correct clock frequency, based on the stream sample rate
->> and the multiplication factor.
->>
->> Assign MCLK to 12.288 MHz, which allows the codec to advertise most of
->> the standard sample rates.
+On Wed, May 24, 2023 at 12:57:02PM +0100, Mark Brown wrote:
+> On Tue, May 23, 2023 at 04:38:20PM -0500, Chris Morgan wrote:
 > 
-> Surely this is irrelevant with your previous change, and if the clock is
-> freely reprogrammable as it sounds even harmful given that it'll
-> restrict rates that are not available with the selected MCLK?
+> > +static unsigned int ratios_12000[] = {
+> > +	8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000,
+> > +	48000, 88235, 96000,
+> > +};
+> > +
+> > +static struct snd_pcm_hw_constraint_list constraints_12000 = {
+> > +	.count = ARRAY_SIZE(ratios_12000),
+> > +	.list = ratios_12000,
+> > +};
+> 
+> ...
+> 
+> > +	case 12000000:
+> > +		es8328->sysclk_constraints = &constraints_12000;
+> > +		es8328->mclk_ratios = ratios_12000;
+> 
+> The other constraints have separate rates and ratios, with wildly
+> different values between the two - the ratio (I'm guessing a clock
+> divider) being written to a 5 bit field which obviously can't contain
+> the actual sample rate.
 
-As mentioned in the previous patch description, there's a bad timing
-with es8316_pcm_startup() being executed before the 2nd call to
-es8316_set_dai_sysclk(), with the effect that the new/updated
-rate constraints won't be used until the next playback attempt.
+A bit over my head here, I saw this patch from the Rockchip BSP kernel
+branch and tested it on my mainline kernel. Long story short the clock
+for the mclk is 12000000. I see that there are similar issues for the
+ES8316 on the Rock 5B, so I will probably just wait for a proper fix
+there and then implement something similar here.
 
-Hence the approach here was to ensure the initial list of restricted
-rates is sane, by (pre)assigning a proper MCLK. Alternatively, we could
-have used an unsupported MCLK and, with the help of the previous patch,
-we would have ended up with no restrictions applied on es8316_pcm_startup().
+Thank you.
 
 _______________________________________________
 Linux-rockchip mailing list
