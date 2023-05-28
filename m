@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B76C7EE29
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 May 2023 16:30:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E40AC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 May 2023 21:23:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dg3sFuEOW9H4tmD6dNNUlalxz6DtEoegAS1bj1sTkfo=; b=svTEjg6Wm16pUW
-	9XmxvVaHpEg3jIqGwLOgYphMhE0Vb8wBJm7J1UvJY7p5sGrrEgR4jXJ0hRp3Xt782xFcw+L+vXZLV
-	+h4RnTVbKxCeYSwXFTb77gjCVLSriZYbdFKsebK98kwCbqT3EtQN3CJxpQra9IyEFXSYvgK2wtRFl
-	za/+YaPWnvslBox7MMVjsY6Yntt6Ay9amiskb+E5MYvPj8LYy6AGuYjO0NqZlD4sMBsOc6JOBEmmF
-	Ez6o2jKsSGPRYwJN8WoXflReQ9Il3TBZvvF013VF5ah/HBweD6JMN/e3VxPfeDmo/eTamekj7FfeY
-	6fbVQZkTYgorhhlo7m0A==;
+	List-Owner; bh=a054vO9X8vLc3bmZe/9dX582ch70Y4qe4Va7Yy8pXB0=; b=G895xWjAPtaTPo
+	MnUYS37jDOkLm1S5ar5wMD6f5R3hyuqs0idvcFsfwRRkAhliAg38AKx7SzoDvCEXBHKBDugL0/ydg
+	g5CXO1kGp9wcHNJhrVUOX5cyPxx1ar2kOORWazyNggLZhRLw+pqWMtTdH1Ml2vTSwhOvb53r89t+6
+	7HSlrndplJQjuIEZ/+B5gy3lZO4QxtsaREokReZKfGwJSRqVm9NjoBR6FTtKgJmWOxPKDTblpZHb3
+	MYb6MMQwblt+XwcyAokQ/nKBB+TmAoHgueAMWxshZYbtwde7g+/Yh+y/FVvM8nK0yMPxyvTxfMxUL
+	2QjLnvRRJ0j6SWCbdgJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3JHM-0084Vg-0z;
-	Sun, 28 May 2023 16:30:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q3Nqe-008QER-2M;
+	Sun, 28 May 2023 21:22:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q3JHJ-0084Ur-2P;
-	Sun, 28 May 2023 16:29:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1q3Nqa-008QD2-2f;
+	Sun, 28 May 2023 21:22:42 +0000
+Received: from [IPV6:2405:201:0:21ea:e49:10dd:40c0:e842] (unknown [IPv6:2405:201:0:21ea:e49:10dd:40c0:e842])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 16A7060ECA;
-	Sun, 28 May 2023 16:29:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB045C433D2;
-	Sun, 28 May 2023 16:29:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685291396;
-	bh=ei8N2Em3Nr2Uv8xvmQo82ZVNT14+4f7srT0ooNh+iQo=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=afV34sY38FPwajLAlwDWQFBlyPOq+izpon2VPq1T29AhDO+jOomUpeqrMi8s3+RKE
-	 e/K4tWZ/MmpILm07QY2RGKmzRJUh+fGBOYqUDOkvn9sTaAhWyxkknHjo1AM4plzptd
-	 gHrd+7MOXgZj3h97saRXomXc28ftLrML7FJsWSC6jDMB+q+i0z6a+KTGje9zk+lN2H
-	 cXXjCMu5YEcDuo6Op0yGCHlbK9bv+BVjJ1A5l7R7q55WcK5A/6g6lF8MP9yB+tEW6r
-	 J2Uhn+oJfqMvMxrYEDvX92Krd9yjhZkIPDpATS9NFLZnUb44CNjxL5cer/cQ8UaZCr
-	 Ade9q6Ww7Nhaw==
-Date: Sun, 28 May 2023 17:46:14 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Shreeya Patel <shreeya.patel@collabora.com>
-Cc: lars@metafoo.de, heiko@sntech.de, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	(Authenticated sender: shreeya)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B151E66028F5;
+	Sun, 28 May 2023 22:22:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1685308953;
+	bh=1lLaRddepgjlJW8m/FCwzogjASyCbCW3Pl3FgHcbwsk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kWKimZgJE/wgD8bXw+oYGRrist/CQD8pLhPTL34wR5pIowb42+UgENaXifYNLnz5x
+	 XNOO/B/8TsxzEgVK9pKN4WawB0HKt+P+bGhGJzWCEj+if6nFTzf1YnQJ0dzrY5n7Ak
+	 JbOVvy+MZFQZii4dKeorqq26GKww80mQijQAlVqsXwsRQHgqVsHP3CbQ13FE1oedH9
+	 o817Lpoaes2eO+AZNYP3zIbQ4Hpbzjg6uIiD8brnzxOm8wL3EqReBkuPIjlYy+rcGn
+	 +djyMiHUswW8nN2fxIj5P7zy1xy7xC5FPJdI2gp9dw/frgPDn9bpl9t5Ev1qwvc0uA
+	 BdPzrn7uoPPig==
+Message-ID: <196486e3-a6e4-d330-6193-6eff248bdefb@collabora.com>
+Date: Mon, 29 May 2023 02:52:26 +0530
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 3/8] iio: adc: rockchip_saradc: Make use of
+ devm_clk_get_enabled
+Content-Language: en-US
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>, jic23@kernel.org,
+ heiko@sntech.de, sebastian.reichel@collabora.com
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, lars@metafoo.de,
+ linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  gustavo.padovan@collabora.com, serge.broslavsky@collabora.com
-Subject: Re: [PATCH v2 0/8] RK3588 ADC support
-Message-ID: <20230528174614.4dc5cd01@jic23-huawei>
-In-Reply-To: <20230525212712.255406-1-shreeya.patel@collabora.com>
 References: <20230525212712.255406-1-shreeya.patel@collabora.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
+ <20230525212712.255406-4-shreeya.patel@collabora.com>
+ <a7e0d4f0-a497-8697-e108-5247e11abc41@collabora.com>
+From: Shreeya Patel <shreeya.patel@collabora.com>
+In-Reply-To: <a7e0d4f0-a497-8697-e108-5247e11abc41@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230528_092957_829392_7881F4A2 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20230528_142241_016328_4774D9B1 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,54 +78,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 May 2023 02:57:04 +0530
-Shreeya Patel <shreeya.patel@collabora.com> wrote:
+Hi Dmitry,
 
-> This patch series adds ADC support for RK3588 and updates
-> the DT bindings for the same.
-> 
-> To test ADC support on Rock 5B board, a voltage divider circuit
-> was created using the gpio pin 22 ( SARADC_IN4 ) and few more
-> tests were ran for testing the buffer and trigger support using
-> the iio_generic_buffer tool.
-> 
-FWIW I don't have any additional comments on this beyond agreeing
-those made by others need addressing.
 
-Fingers crossed for v3.
+On 26/05/23 06:12, Dmitry Osipenko wrote:
+> On 5/26/23 00:27, Shreeya Patel wrote:
+>> @@ -600,8 +560,6 @@ static int rockchip_saradc_suspend(struct device *dev)
+>>   	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+>>   	struct rockchip_saradc *info = iio_priv(indio_dev);
+>>   
+>> -	clk_disable_unprepare(info->clk);
+>> -	clk_disable_unprepare(info->pclk);
+>>   	regulator_disable(info->vref);
+> Why clocks need to be enabled during suspend?
 
-Jonathan
+They don't need to be enabled during suspend. Thanks for pointing it 
+out, I'll add them again in v3.
 
-> 
-> Changes in v2
->   - Add from address in patches 1 and 2.
->   - Create separate patches for adding new device support and changes to
->     the old device code.
->   - Make use of FIELD_PREP in patch 2.
->   - Move the enablement of clocks at it's original position in patch 3
->   - Add Reviewed-by tag in patches 4 and 5.
->   - Add an Acked-by tag in patch 8.
-> 
-> Shreeya Patel (8):
->   iio: adc: rockchip_saradc: Add callback functions
->   iio: adc: rockchip_saradc: Add support for RK3588
->   iio: adc: rockchip_saradc: Make use of devm_clk_get_enabled
->   iio: adc: rockchip_saradc: Use of_device_get_match_data
->   iio: adc: rockchip_saradc: Match alignment with open parenthesis
->   iio: adc: rockchip_saradc: Use dev_err_probe
->   arm64: dts: rockchip: Add DT node for ADC support in RK3588
->   dt-bindings: iio: adc: Add rockchip,rk3588-saradc string
-> 
->  .../bindings/iio/adc/rockchip-saradc.yaml     |   1 +
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  12 +
->  drivers/iio/adc/rockchip_saradc.c             | 262 +++++++++++-------
->  3 files changed, 168 insertions(+), 107 deletions(-)
-> 
+
+Thanks,
+Shreeya Patel
 
 
 _______________________________________________
