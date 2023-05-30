@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBA8C7EE2F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 18:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48088C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 18:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=btIzRWljiY4gA1Mg0894HnZ8h8UFGIztjvVR6zVQYAg=; b=SU3GkVXJGgCDCD
-	aRiGXTWcrGJI/OOXF7fkrTRnG0xiAa+orncVZAy1JRmzNQGd3HjFqbFX71ew1ri3GythfjLu/ojRj
-	61YxsGQTpanMSFildIF6sdEl5lplCiJIO53Q3o7MmAu4TY7tsMBuLiYe5t20+Ux4Kf+EluWMsA5Qn
-	R9BYoGjaUjeR+1psNHl4hTclceiQVl32PYVL46xO60c4AwcaQeFK0xQ5G0qp/0v1eDZ2geNaMmQgU
-	LmnKZ6sjqvwEOPWbOiT9XHy6wwFEe+w+D6bWoEIgwRJ3yYWiq9ZIVyLQGVSTTblfEuYDNZy2DDPmL
-	ncBVRthMH1dup5sCJVbA==;
+	List-Owner; bh=7C5RMljZhYhV0wB7UllG3/1qbK8ht7xu7nu1mibNOZ4=; b=GzYMxY+ecf8hm2
+	1OuRdGtRMi9gBQvuO7ear0o62PAQkP4biMuFKs0WTFKJ5uSqk/74kpKqY+qWTX6VdgMV5WRdd+/h1
+	T73WNpaSWBl36TlDSPhGWQJCVX5KQp8bDVi6ivOhTsfXN00Nfso1kFE5PWJjp9Mrl19NKapQTZ4CO
+	qYC2p+SwxWyxp1SN3Sz9m/Panqjy7h+RP4nZjjdOz6pvO2zOsNbCimQqYL3sKG/xrlI9PkHa45QlL
+	qEJQAzqcoMb/sGsWVmixx8/nZhwUZ6eUOPW4iTlgVskNamvBXEZ0Dkgf8+DvxYnVlAq1XsHmT5l1x
+	WebLOINGBmr58jyw5A4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43pE-00Eqg1-2K;
-	Tue, 30 May 2023 18:12:04 +0000
+	id 1q43pM-00Eqiu-1x;
+	Tue, 30 May 2023 18:12:12 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43p2-00EqZw-2n;
-	Tue, 30 May 2023 18:11:54 +0000
+	id 1q43p2-00EqZT-2n;
+	Tue, 30 May 2023 18:11:55 +0000
 Received: from localhost (unknown [188.27.34.213])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 312836605840;
-	Tue, 30 May 2023 19:11:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A042266020E9;
+	Tue, 30 May 2023 19:11:46 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685470310;
-	bh=sMhuZ+7skk9Nz8F8CqkKKe/JQIPAguLL7MXGBbO2Dt8=;
+	s=mail; t=1685470306;
+	bh=F2WISEdJDdqbi/subGvFRxrlvnOqEMvj4xCyofd4JJw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jSeuSeX3vb9uNFXqB5SBwWMN/i7ouAXBywLxiMCsC7i+7SUEN9TsHC+eJ331EeZ6p
-	 FQc2qNLPcePsPRIsRr7JxQ2KhT7Zo7xILISvaPxW2pkuA8kkEsUfHgrRk6DfmX6W8K
-	 xlwJwrNcAujY06uE1+n2TrzSyFs95Cz6kXxkGlfxLFW1BrFxGV1yLonTBQIHR5lAfh
-	 Nk1+djddCn+ffS8paqMobLyhoGEohaOYxQ/IQC7ZK++2BlVtcKopJDS3eHDItAaUwU
-	 8NCXUzcM81o5Z18Z938O0rIAZJWIHrYLmEn6Qy7ZkgrnHwHJYhp6UKBMY//7wR3Tvt
-	 Dm5BhJH4Sa8Zg==
+	b=LHqWuTzyJ+iZL4px+c0McrZeAZo5V/8SEsdRUnEDNaHGJa8TEc3wVqGzeZwvF5ipK
+	 68iUw/BsxVqgf93wU+kFq5byKRfONvK9Amn+DLhEdXzidzpcwM0/OHh5FJou0GuX0c
+	 ZYB+pj1/xeDXN42WdslVR+DN9dffjezfGwPfxG16fjCaA4+TYGA65lgqcuRD3khopa
+	 tnxtxyNPecIS3195Cafks9/nt8EGVSBC2goADkAp0SG9CkFP+/HNAY6iMEoWPLqak0
+	 jO5DEi0u51S+8Tx//GNNC3UANWQzPyojETJpXRR2GeWWlsk/cwZwd6WtGXo5HAvoe9
+	 VgB2lSdY2cZRg==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -64,16 +64,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	alsa-devel@alsa-project.org,
 	kernel@collabora.com
-Subject: [PATCH v2 2/3] ASoC: es8316: Do not set rate constraints for unsupported MCLKs
-Date: Tue, 30 May 2023 21:11:39 +0300
-Message-Id: <20230530181140.483936-3-cristian.ciocaltea@collabora.com>
+Subject: [PATCH v2 1/3] ASoC: es8316: Increment max value for ALC Capture Target Volume control
+Date: Tue, 30 May 2023 21:11:38 +0300
+Message-Id: <20230530181140.483936-2-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
 References: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_111153_042770_DA034AAF 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20230530_111153_068263_0C5266B3 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,82 +90,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When using the codec through the generic audio graph card, there are at
-least two calls of es8316_set_dai_sysclk(), with the effect of limiting
-the allowed sample rates according to the MCLK/LRCK ratios supported by
-the codec:
+The following error occurs when trying to restore a previously saved
+ALSA mixer state (tested on a Rock 5B board):
 
-1. During audio card setup, to set the initial MCLK - see
-   asoc_simple_init_dai().
+  $ alsactl --no-ucm -f /tmp/asound.state store hw:Analog
+  $ alsactl --no-ucm -I -f /tmp/asound.state restore hw:Analog
+  alsactl: set_control:1475: Cannot write control '2:0:0:ALC Capture Target Volume:0' : Invalid argument
 
-2. Before opening a stream, to update MCLK, according to the stream
-   sample rate and the multiplication factor - see
-   asoc_simple_hw_params().
+According to ES8316 datasheet, the register at address 0x2B, which is
+related to the above mixer control, contains by default the value 0xB0.
+Considering the corresponding ALC target bits (ALCLVL) are 7:4, the
+control is initialized with 11, which is one step above the maximum
+value allowed by the driver:
 
-In some cases the initial MCLK might be set to a frequency that doesn't
-match any of the supported ratios, e.g. 12287999 instead of 12288000,
-which is only 1 Hz below the supported clock, as that is what the
-hardware reports. This creates an empty list of rate constraints, which
-is further passed to snd_pcm_hw_constraint_list() via
-es8316_pcm_startup(), and causes the following error on the very first
-access of the sound card:
+ ALCLVL | dB gain
+ -------+--------
+  0000  |  -16.5
+  0001  |  -15.0
+  0010  |  -13.5
+  ....  |  .....
+  0111  |   -6.0
+  1000  |   -4.5
+  1001  |   -3.0
+  1010  |   -1.5
+  ....  |  .....
+  1111  |   -1.5
 
-  $ speaker-test -D hw:Analog,0 -F S16_LE -c 2 -t wav
-  Broken configuration for playback: no configurations available: Invalid argument
-  Setting of hwparams failed: Invalid argument
+The tests performed using the VU meter feature (--vumeter=TYPE) of
+arecord/aplay confirm the specs are correct and there is no measured
+gain if the 1011-1111 range would have been mapped to 0 dB:
 
-Note that all subsequent retries succeed thanks to the updated MCLK set
-at point 2 above, which uses a computed frequency value instead of a
-reading from the hardware registers. Normally this would have mitigated
-the issue, but es8316_pcm_startup() executes before the 2nd call to
-es8316_set_dai_sysclk(), hence it cannot make use of the updated
-constraints.
+ dB gain | VU meter %
+ --------+-----------
+   -6.0  |  30-31
+   -4.5  |  35-36
+   -3.0  |  42-43
+   -1.5  |  50-51
+    0.0  |  50-51
 
-Since es8316_pcm_hw_params() performs anyway a final validation of MCLK
-against the stream sample rate and the supported MCLK/LRCK ratios, fix
-the issue by ensuring that sysclk_constraints list is only set when at
-least one supported sample rate is autodetected by the codec.
+Increment the max value allowed for ALC Capture Target Volume control,
+so that it matches the hardware default.  Additionally, update the
+related TLV to prevent an artificial extension of the dB gain range.
 
 Fixes: b8b88b70875a ("ASoC: add es8316 codec driver")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- sound/soc/codecs/es8316.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ sound/soc/codecs/es8316.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/sound/soc/codecs/es8316.c b/sound/soc/codecs/es8316.c
-index 8f0625b45b7c..069f1ce1cd50 100644
+index 9e033fb320a0..8f0625b45b7c 100644
 --- a/sound/soc/codecs/es8316.c
 +++ b/sound/soc/codecs/es8316.c
-@@ -369,13 +369,11 @@ static int es8316_set_dai_sysclk(struct snd_soc_dai *codec_dai,
- 	int count = 0;
- 
- 	es8316->sysclk = freq;
-+	es8316->sysclk_constraints.list = NULL;
-+	es8316->sysclk_constraints.count = 0;
- 
--	if (freq == 0) {
--		es8316->sysclk_constraints.list = NULL;
--		es8316->sysclk_constraints.count = 0;
--
-+	if (freq == 0)
- 		return 0;
--	}
- 
- 	ret = clk_set_rate(es8316->mclk, freq);
- 	if (ret)
-@@ -391,8 +389,10 @@ static int es8316_set_dai_sysclk(struct snd_soc_dai *codec_dai,
- 			es8316->allowed_rates[count++] = freq / ratio;
- 	}
- 
--	es8316->sysclk_constraints.list = es8316->allowed_rates;
--	es8316->sysclk_constraints.count = count;
-+	if (count) {
-+		es8316->sysclk_constraints.list = es8316->allowed_rates;
-+		es8316->sysclk_constraints.count = count;
-+	}
- 
- 	return 0;
- }
+@@ -52,7 +52,12 @@ static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(dac_vol_tlv, -9600, 50, 1);
+ static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(adc_vol_tlv, -9600, 50, 1);
+ static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(alc_max_gain_tlv, -650, 150, 0);
+ static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(alc_min_gain_tlv, -1200, 150, 0);
+-static const SNDRV_CTL_TLVD_DECLARE_DB_SCALE(alc_target_tlv, -1650, 150, 0);
++
++static const SNDRV_CTL_TLVD_DECLARE_DB_RANGE(alc_target_tlv,
++	0, 10, TLV_DB_SCALE_ITEM(-1650, 150, 0),
++	11, 11, TLV_DB_SCALE_ITEM(-150, 0, 0),
++);
++
+ static const SNDRV_CTL_TLVD_DECLARE_DB_RANGE(hpmixer_gain_tlv,
+ 	0, 4, TLV_DB_SCALE_ITEM(-1200, 150, 0),
+ 	8, 11, TLV_DB_SCALE_ITEM(-450, 150, 0),
+@@ -115,7 +120,7 @@ static const struct snd_kcontrol_new es8316_snd_controls[] = {
+ 		       alc_max_gain_tlv),
+ 	SOC_SINGLE_TLV("ALC Capture Min Volume", ES8316_ADC_ALC2, 0, 28, 0,
+ 		       alc_min_gain_tlv),
+-	SOC_SINGLE_TLV("ALC Capture Target Volume", ES8316_ADC_ALC3, 4, 10, 0,
++	SOC_SINGLE_TLV("ALC Capture Target Volume", ES8316_ADC_ALC3, 4, 11, 0,
+ 		       alc_target_tlv),
+ 	SOC_SINGLE("ALC Capture Hold Time", ES8316_ADC_ALC3, 0, 10, 0),
+ 	SOC_SINGLE("ALC Capture Decay Time", ES8316_ADC_ALC4, 4, 10, 0),
 -- 
 2.40.1
 
