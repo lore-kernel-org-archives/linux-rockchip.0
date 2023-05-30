@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B04C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 18:12:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D87C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 19:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Hxi7zyaY2KAFfshPSxyuyXox+Vt2lL+fIYudy0OE3o=; b=H5neIltNPL/XKl
-	dncOtYpqIaeZtj1wsc7JlOKoKNgKdIKXCDPAjX/oP4g+4QGh6amwWIWDIGchPXyDQby3nxmM0Krsz
-	qPNa2Cqf/QpYpmey9OdSrSQJ4iD+KADgaqQv5gB5AeI+6hw+n8fXQLn64rLs3EWnygXIMYGUqwxBE
-	tkgk3k9u3V3wFj2W0iJLCbuT9Ginq2zNKU8nwBd4edJ/SceQ+LQQLMwLMHQF9flSFYgsh+PFA8taB
-	vHvhy1aOkpoeF15SUKNHOhs5ourTYYCkqo0+csrciyBrcLGSbU2vWo7chfdbp0ghfD0qL8aKsJzVm
-	qocHSSzPI7PbEaX5sTBQ==;
+	List-Owner; bh=kez1zu4e0ZB33Rovvg5fOY4WGWlWCyPT9ubrzZJt4Mk=; b=ifw2fun2Ua0lMl
+	2Z8445+FoIj8FoVQbiap270SKs0uee5Yp7/3rdZADJNVCsEH6aiR00a58Bqqng5wkBTt+EQs3eKDk
+	z7FrFyo0VrpaYRgtLwtXMAt+7jNLpJCSsZTBPuL9FbsoXSPy1BzHMJT88xWxa9A1/p8i2bzopCM++
+	Ic9aL3uapVG7p9m7GfV6+MT2aCYsueLWGOr7f4j19cZUsfo6DKD8DejA2xbacF8yeG8OtwPJ2oY5L
+	fOIBr1fQ8YQfYefPyNl11CuV7ipQVE8gmAg/ewBrwg4YD6on/FqadaTLp8Cl/2fmowtC1r0lkP6k1
+	lF5XcjyvQDsH+ImxCC4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43pW-00EqnN-08;
-	Tue, 30 May 2023 18:12:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q45EZ-00F0L4-15;
+	Tue, 30 May 2023 19:42:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43p4-00Eqbu-1Y;
-	Tue, 30 May 2023 18:11:56 +0000
-Received: from localhost (unknown [188.27.34.213])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1q45EV-00F0KG-2I;
+	Tue, 30 May 2023 19:42:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3512C6606E76;
-	Tue, 30 May 2023 19:11:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685470313;
-	bh=iHcb9BFc/X1bbxtUKpaxg5GTnEgeVVJ1yraooXSIn1k=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kVgtbEN3hqRjjWYAhVn3DNUVrLbzogAUD3ZcQ6srLv0f6+cM8SjLXGVgwHRq751qy
-	 AgUnx+6VWIYyHU8oLQ5/WBDwbY/Z8sGpfUwOCuKp/2LH5EYVhEsRfBDh/X4tvdhXAK
-	 FCABiS0A1FDOV/C7rJMrx8UdWqQvf6fPQeJI94xn6D091IxAsBvJYBFq5LLbo97eY5
-	 f4csibbvqoXLChNyuFKbc/4iblvSsZhz+hY5RBjlTyE9Nil/Xz4qxaa47CLjFASdfv
-	 xwM3QLj7S02aaP9MQ2X2T057l51nlM6kDQeyq0HtRfZJg5ovfDqT05zaL07SIavHbt
-	 Oeov1kSSDiI/Q==
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Zhu Ning <zhuning0077@gmail.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	David Yang <yangxiaohua@everest-semi.com>,
-	Daniel Drake <drake@endlessm.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	alsa-devel@alsa-project.org,
-	kernel@collabora.com
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: Assign ES8316 MCLK rate on rk3588-rock-5b
-Date: Tue, 30 May 2023 21:11:40 +0300
-Message-Id: <20230530181140.483936-4-cristian.ciocaltea@collabora.com>
-X-Mailer: git-send-email 2.40.1
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 81BD6630D5;
+	Tue, 30 May 2023 19:42:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2055C433EF;
+	Tue, 30 May 2023 19:42:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685475733;
+	bh=C/ZCDt9dxkFqBdenxsotP/gQkEWd0TJC2yhywFPrxlU=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=K93thLG6dvDqETIhFEajld3t2N4JSaO+9Xro4KcquZXq1aN8xBW+sXicFMELWgaLN
+	 pH7eC573JWpTDi9D957EgYNr4EObZ099H9tylABVhlNPWiginmSVtQalMUMe7LzTSg
+	 B+My6btPtnLo87e2Akm6IJ4pUY5VJ7eWcfWTemfBXPUkOKZUb+uzyjw5+5yZdIgVrq
+	 x9X35u5rfa/oLL3HeFZY9F3/sj2eOg3MarOTrLMKtgJFhyW3oSNdhqpR80NrGqe2Md
+	 0Olhr1iNLouKS4XBHXt74Mw4/0YZWyVOU/f7YG+9R5Zo8OoYcVIdLUP997A/59oh4H
+	 54LZ17CBqO6AQ==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Zhu Ning <zhuning0077@gmail.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
+ Charles Keepax <ckeepax@opensource.cirrus.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ David Yang <yangxiaohua@everest-semi.com>, 
+ Daniel Drake <drake@endlessm.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ alsa-devel@alsa-project.org, kernel@collabora.com
 In-Reply-To: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
 References: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
+Subject: Re: (subset) [PATCH v2 0/3] ES8316 audio codec fixes on Rock5B
+Message-Id: <168547572955.1446927.6113726229906083649.b4-ty@kernel.org>
+Date: Tue, 30 May 2023 20:42:09 +0100
 MIME-Version: 1.0
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_111154_670468_8A781BFA 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20230530_124215_797689_3427B2D3 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +84,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The I2S0_8CH_MCLKOUT clock rate on Rock 5B board defaults to 12 MHz and
-it is used to provide the master clock (MCLK) for the ES8316 audio
-codec.
+On Tue, 30 May 2023 21:11:37 +0300, Cristian Ciocaltea wrote:
+> This patch series handles a few issues related to the ES8316 audio
+> codec, discovered while doing some testing on the Rock 5B board.
+> 
+> Changes in v2:
+>  - Preserved original dB gain range in PATCH 1
+>  - Rewrote PATCH 2 conditional statement, per Mark's review
+>  - Rebased series onto next-20230530
+>  - v1: https://lore.kernel.org/all/20230524074156.147387-1-cristian.ciocaltea@collabora.com/
+> 
+> [...]
 
-On sound card initialization, this limits the allowed sample rates
-according to the MCLK/LRCK ratios supported by the codec, which results
-in the following non-standard rates: 15625, 30000, 31250, 46875.
+Applied to
 
-Hence, the very first access of the sound card fails:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-  Broken configuration for playback: no configurations available: Invalid argument
-  Setting of hwparams failed: Invalid argument
+Thanks!
 
-However, all subsequent attempts will succeed, as the audio graph card
-will request a correct clock frequency, based on the stream sample rate
-and the multiplication factor.
+[1/3] ASoC: es8316: Increment max value for ALC Capture Target Volume control
+      commit: 6f073429037cd79d7311cd8236311c53f5ea8f01
+[2/3] ASoC: es8316: Do not set rate constraints for unsupported MCLKs
+      commit: 60413129ee2b38a80347489270af7f6e1c1de4d0
 
-Assign MCLK to 12.288 MHz, which allows the codec to advertise most of
-the standard sample rates.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Fixes: 55529fe3f32d ("arm64: dts: rockchip: Add rk3588-rock-5b analog audio")
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 2 ++
- 1 file changed, 2 insertions(+)
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 3e4aee8f70c1..30cdd366813f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -133,6 +133,8 @@ es8316: audio-codec@11 {
- 		reg = <0x11>;
- 		clocks = <&cru I2S0_8CH_MCLKOUT>;
- 		clock-names = "mclk";
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
- 		#sound-dai-cells = <0>;
- 
- 		port {
--- 
-2.40.1
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
