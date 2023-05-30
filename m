@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C749AC7EE23
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 18:12:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBA8C7EE2F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 18:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VEJbW9Ok0sindEHuvj0YKDUyihiV0bg4zAmJNaVjK8Y=; b=i75ru63mr4DaJf
-	nLL/Dpb8rN5GeZi2ZcUdoA3KcaDm1eXAeQWF+8TGeg8XZ9cW0/czjSSUv6fp1Z9g7eWeHet6vTOgm
-	rCAA+SitHYyLt+YVnIcWFq3n7XbmI5igfJdBbOWJc57uT55NyQE4b7lIlaz3RFYW26gXg0jEqVM+x
-	eLJNC3Bz6d2uoFIkqBW87gVs4p4B8lScq4GUjra2TidqKCl7xnMjzgbpwYtK7mrZ83l3yI7u7LdaZ
-	soHSwb7zLvkLrEZpJchYiyseloobClzQ0E+43+/WhsFqG4zZRmY8PoedkFznI43ijEWLI4frqpSrY
-	HMX0bFIYxb9wk1MgVn5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=btIzRWljiY4gA1Mg0894HnZ8h8UFGIztjvVR6zVQYAg=; b=SU3GkVXJGgCDCD
+	aRiGXTWcrGJI/OOXF7fkrTRnG0xiAa+orncVZAy1JRmzNQGd3HjFqbFX71ew1ri3GythfjLu/ojRj
+	61YxsGQTpanMSFildIF6sdEl5lplCiJIO53Q3o7MmAu4TY7tsMBuLiYe5t20+Ux4Kf+EluWMsA5Qn
+	R9BYoGjaUjeR+1psNHl4hTclceiQVl32PYVL46xO60c4AwcaQeFK0xQ5G0qp/0v1eDZ2geNaMmQgU
+	LmnKZ6sjqvwEOPWbOiT9XHy6wwFEe+w+D6bWoEIgwRJ3yYWiq9ZIVyLQGVSTTblfEuYDNZy2DDPmL
+	ncBVRthMH1dup5sCJVbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43p5-00Eqd0-1V;
-	Tue, 30 May 2023 18:11:55 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q43pE-00Eqg1-2K;
+	Tue, 30 May 2023 18:12:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q43p1-00EqYu-1D;
-	Tue, 30 May 2023 18:11:52 +0000
+	id 1q43p2-00EqZw-2n;
+	Tue, 30 May 2023 18:11:54 +0000
 Received: from localhost (unknown [188.27.34.213])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D11BA66003B0;
-	Tue, 30 May 2023 19:11:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 312836605840;
+	Tue, 30 May 2023 19:11:50 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685470304;
-	bh=GQF9lUAe0Utvbi867xCuwYxDhrPJXP6m2MEpKIazxXo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Gb34rY/H0aIJjjGOchyEPTHOzBtnXtSSUbQsHDxYhKy3LCWlhY1z4fewyDPhPSsfc
-	 brl+qlCTDcplTnVbe5pdI48q03dxP/JpPd1iiEJiMld3/y2STdpl+kkXHE5gUJUmEH
-	 kOyZ/P0lmd3mzC0+aiXvNGlEbXt4Q1ewQz5e7KTuz0+Z95Uts7A3Y2nKgSFcYnKUyR
-	 MYYC4keeqB9I5CEfhzMpE/cCcUpCdIpyraA2KamNxlhfOoERTiL8MmoLspVjplJyLi
-	 3RppIVXc8AC/rSRches7FtT+H5qT1pmZBsUWNB8mr4yliCZ9dp8loOsUc41lbOHnsZ
-	 /qT/mR4f+TWYw==
+	s=mail; t=1685470310;
+	bh=sMhuZ+7skk9Nz8F8CqkKKe/JQIPAguLL7MXGBbO2Dt8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=jSeuSeX3vb9uNFXqB5SBwWMN/i7ouAXBywLxiMCsC7i+7SUEN9TsHC+eJ331EeZ6p
+	 FQc2qNLPcePsPRIsRr7JxQ2KhT7Zo7xILISvaPxW2pkuA8kkEsUfHgrRk6DfmX6W8K
+	 xlwJwrNcAujY06uE1+n2TrzSyFs95Cz6kXxkGlfxLFW1BrFxGV1yLonTBQIHR5lAfh
+	 Nk1+djddCn+ffS8paqMobLyhoGEohaOYxQ/IQC7ZK++2BlVtcKopJDS3eHDItAaUwU
+	 8NCXUzcM81o5Z18Z938O0rIAZJWIHrYLmEn6Qy7ZkgrnHwHJYhp6UKBMY//7wR3Tvt
+	 Dm5BhJH4Sa8Zg==
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -64,15 +64,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	alsa-devel@alsa-project.org,
 	kernel@collabora.com
-Subject: [PATCH v2 0/3] ES8316 audio codec fixes on Rock5B
-Date: Tue, 30 May 2023 21:11:37 +0300
-Message-Id: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
+Subject: [PATCH v2 2/3] ASoC: es8316: Do not set rate constraints for unsupported MCLKs
+Date: Tue, 30 May 2023 21:11:39 +0300
+Message-Id: <20230530181140.483936-3-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
+References: <20230530181140.483936-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_111151_539298_0A093E9D 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230530_111153_042770_DA034AAF 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +90,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series handles a few issues related to the ES8316 audio 
-codec, discovered while doing some testing on the Rock 5B board.
+When using the codec through the generic audio graph card, there are at
+least two calls of es8316_set_dai_sysclk(), with the effect of limiting
+the allowed sample rates according to the MCLK/LRCK ratios supported by
+the codec:
 
-Changes in v2:
- - Preserved original dB gain range in PATCH 1
- - Rewrote PATCH 2 conditional statement, per Mark's review
- - Rebased series onto next-20230530
- - v1: https://lore.kernel.org/all/20230524074156.147387-1-cristian.ciocaltea@collabora.com/
+1. During audio card setup, to set the initial MCLK - see
+   asoc_simple_init_dai().
 
-Cristian Ciocaltea (3):
-  ASoC: es8316: Increment max value for ALC Capture Target Volume
-    control
-  ASoC: es8316: Do not set rate constraints for unsupported MCLKs
-  arm64: dts: rockchip: Assign ES8316 MCLK rate on rk3588-rock-5b
+2. Before opening a stream, to update MCLK, according to the stream
+   sample rate and the multiplication factor - see
+   asoc_simple_hw_params().
 
- .../boot/dts/rockchip/rk3588-rock-5b.dts      |  2 ++
- sound/soc/codecs/es8316.c                     | 23 +++++++++++--------
- 2 files changed, 16 insertions(+), 9 deletions(-)
+In some cases the initial MCLK might be set to a frequency that doesn't
+match any of the supported ratios, e.g. 12287999 instead of 12288000,
+which is only 1 Hz below the supported clock, as that is what the
+hardware reports. This creates an empty list of rate constraints, which
+is further passed to snd_pcm_hw_constraint_list() via
+es8316_pcm_startup(), and causes the following error on the very first
+access of the sound card:
 
+  $ speaker-test -D hw:Analog,0 -F S16_LE -c 2 -t wav
+  Broken configuration for playback: no configurations available: Invalid argument
+  Setting of hwparams failed: Invalid argument
+
+Note that all subsequent retries succeed thanks to the updated MCLK set
+at point 2 above, which uses a computed frequency value instead of a
+reading from the hardware registers. Normally this would have mitigated
+the issue, but es8316_pcm_startup() executes before the 2nd call to
+es8316_set_dai_sysclk(), hence it cannot make use of the updated
+constraints.
+
+Since es8316_pcm_hw_params() performs anyway a final validation of MCLK
+against the stream sample rate and the supported MCLK/LRCK ratios, fix
+the issue by ensuring that sysclk_constraints list is only set when at
+least one supported sample rate is autodetected by the codec.
+
+Fixes: b8b88b70875a ("ASoC: add es8316 codec driver")
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ sound/soc/codecs/es8316.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/sound/soc/codecs/es8316.c b/sound/soc/codecs/es8316.c
+index 8f0625b45b7c..069f1ce1cd50 100644
+--- a/sound/soc/codecs/es8316.c
++++ b/sound/soc/codecs/es8316.c
+@@ -369,13 +369,11 @@ static int es8316_set_dai_sysclk(struct snd_soc_dai *codec_dai,
+ 	int count = 0;
+ 
+ 	es8316->sysclk = freq;
++	es8316->sysclk_constraints.list = NULL;
++	es8316->sysclk_constraints.count = 0;
+ 
+-	if (freq == 0) {
+-		es8316->sysclk_constraints.list = NULL;
+-		es8316->sysclk_constraints.count = 0;
+-
++	if (freq == 0)
+ 		return 0;
+-	}
+ 
+ 	ret = clk_set_rate(es8316->mclk, freq);
+ 	if (ret)
+@@ -391,8 +389,10 @@ static int es8316_set_dai_sysclk(struct snd_soc_dai *codec_dai,
+ 			es8316->allowed_rates[count++] = freq / ratio;
+ 	}
+ 
+-	es8316->sysclk_constraints.list = es8316->allowed_rates;
+-	es8316->sysclk_constraints.count = count;
++	if (count) {
++		es8316->sysclk_constraints.list = es8316->allowed_rates;
++		es8316->sysclk_constraints.count = count;
++	}
+ 
+ 	return 0;
+ }
 -- 
 2.40.1
 
