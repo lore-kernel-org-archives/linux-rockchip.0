@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E89F2C7EE31
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 14:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3BCCC7EE23
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 17:38:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ftRkBk0ls4jyzDmcSSks8hYz1OEneyRS1Ugct/G2BRk=; b=vcQxCVuy0JHKyXtefbPQNPbX7a
-	M53f/drJijpHbLPXjklsfEjf4FpbwaoLMUKF9TjhJtofHZt3X17PrWio6NQfMWOr43IzoOYbg7pXI
-	VDnF/qb6zzGIkbg+rLdAG/Jr2hNMETPsBvVCWmxQXqoFaSzPjeeX054+N2kbzDAXrUr4kHJlnwZje
-	9566x53llPIFqlexhhwkehVcpjkX36kIUn3InK7tjY14DVzkFKx1CzVVctBG6XZ5T1DdgSpjYuj6u
-	/yMnGj6HysWq7pbO7QwjKUinqGoM9Kw0wel1s8LcyYNxb8UHfDVvTJJNZEf0gjMJeXcCGXx6epjsX
-	xYRYaHtw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=caLAGZDgXHLhkh46PD2Oj/zUuvBWLlmb8265o32c3dY=; b=WujFWk6WPrOo8g
+	+ai8akys8U7koGqWoUBeCsCJBxL06dXVQwxgCdv9yT0Y7yHx7fFGm+g/0szbgDPyMrz+iNsuzJfiq
+	uaa/V0Ggfue+XtfMIG+GHLPFFJhE7HRqVeIs63ZvrHfYYCrE36R+XTC0MXsc02xo4/KQt09zjZAX/
+	4q8b8ElDAValoJPaNEfK2P4hdhAMwV0KJJz2gpORPaUE+3xEk/uWbO+V031DogeBTMDzVccingi5z
+	QWDDeS3nj3PCMI/R1JtBAVeO/EAUdh0+bv7MAjywyBtE2fZsJJCxFH91QVSFIYmQ7r33v3ZAzrYn0
+	SPX9mtCSFwlvbF/2g2Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q401t-00EAzV-07;
-	Tue, 30 May 2023 14:08:53 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1q43J1-00Elp8-0J;
+	Tue, 30 May 2023 17:38:47 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q401p-00EAxI-00
-	for linux-rockchip@lists.infradead.org;
-	Tue, 30 May 2023 14:08:50 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400v-0004ps-Ru; Tue, 30 May 2023 16:07:53 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400o-003tfR-8p; Tue, 30 May 2023 16:07:46 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q400n-009WHq-B9; Tue, 30 May 2023 16:07:45 +0200
-Date: Tue, 30 May 2023 16:07:42 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Joyce Ooi <joyce.ooi@intel.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tom Joseph <tjoseph@cadence.com>, Shawn Guo <shawn.guo@linaro.org>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Vidya Sagar <vidyas@nvidia.com>, Jisheng Zhang <jszhang@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>, Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org, kernel@pengutronix.de,
-	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
+	id 1q43Ix-00ElmP-29;
+	Tue, 30 May 2023 17:38:45 +0000
+Received: from pendragon.ideasonboard.com (om126205198071.34.openmobile.ne.jp [126.205.198.71])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 68C084A9;
+	Tue, 30 May 2023 19:38:17 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1685468298;
+	bh=aWLEljEa4WBDYidz22ghKKHo6cHXsO43Tw4K7iTQ6hA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=G9jtKbXxW+cOBY9Kwb7daVQCzjgcT8IDF5LCmE02LSMSZZUczzxgkrSGmpwD5dy/G
+	 F6hWETU4pZUvl59kgiOTruU0PEAQ8FIklRLCBbZZJbgguK41qQjPP8CIBz5vNOoTsf
+	 Mkr9l0lcyGWCxG1bDXKaTRCby3NYIPW5RHpsz44o=
+Date: Tue, 30 May 2023 20:38:39 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	hverkuil-cisco@xs4all.nl, jernel@kernel.org,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
- void
-Message-ID: <20230530140742.ebbrxmpieuphbmz3@pengutronix.de>
-References: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
+ queue buffer storage
+Message-ID: <20230530173839.GH22516@pendragon.ideasonboard.com>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+ <20230519101916.dt25jofubidrasd2@chromium.org>
 MIME-Version: 1.0
-In-Reply-To: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20230519101916.dt25jofubidrasd2@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_070849_042268_804C077F 
-X-CRM114-Status: GOOD (  21.18  )
+X-CRM114-CacheID: sfid-20230530_103843_849274_823580D4 
+X-CRM114-Status: GOOD (  29.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,90 +76,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3731690893921632009=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, May 19, 2023 at 10:19:16AM +0000, Tomasz Figa wrote:
+> On Tue, Mar 21, 2023 at 11:28:50AM +0100, Benjamin Gaignard wrote:
+> > Add module parameter "max_vb_buffer_per_queue" to be able to limit
+> > the number of vb2 buffers store in queue.
+> > 
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > ---
+> >  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
+> >  include/media/videobuf2-core.h                  | 11 +++++++++--
+> >  2 files changed, 12 insertions(+), 14 deletions(-)
+> > 
+> > diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> > index ae9d72f4d181..f4da917ccf3f 100644
+> > --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> > +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> > @@ -34,6 +34,8 @@
+> >  static int debug;
+> >  module_param(debug, int, 0644);
+> >  
+> > +module_param(max_vb_buffer_per_queue, ulong, 0644);
+> > +
+> >  #define dprintk(q, level, fmt, arg...)					\
+> >  	do {								\
+> >  		if (debug >= level)					\
+> > @@ -412,10 +414,6 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+> >  	struct vb2_buffer *vb;
+> >  	int ret;
+> >  
+> > -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> > -	num_buffers = min_t(unsigned int, num_buffers,
+> > -			    VB2_MAX_FRAME - q->num_buffers);
+> > -
+> 
+> We should keep the validation here, just using the new module parameter
+> instead of VB2_MAX_FRAME. Otherwise we let the userspace pass
+> UINT_MAX to REQBUFS and have the array below exhaust the system memory.
+> 
+> >  	for (buffer = 0; buffer < num_buffers; ++buffer) {
+> >  		/* Allocate vb2 buffer structures */
+> >  		vb = kzalloc(q->buf_struct_size, GFP_KERNEL);
+> > @@ -801,9 +799,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+> >  	/*
+> >  	 * Make sure the requested values and current defaults are sane.
+> >  	 */
+> > -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+> >  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+> > -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
+> 
+> Similar concern here.
+> 
+> >  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+> >  	/*
+> >  	 * Set this now to ensure that drivers see the correct q->memory value
+> > @@ -919,11 +915,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+> >  	bool no_previous_buffers = !q->num_buffers;
+> >  	int ret;
+> >  
+> > -	if (q->num_buffers == VB2_MAX_FRAME) {
+> > -		dprintk(q, 1, "maximum number of buffers already allocated\n");
+> > -		return -ENOBUFS;
+> > -	}
+> > -
+> 
+> Ditto.
+> 
+> >  	if (no_previous_buffers) {
+> >  		if (q->waiting_in_dqbuf && *count) {
+> >  			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
+> > @@ -948,7 +939,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+> >  			return -EINVAL;
+> >  	}
+> >  
+> > -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> > +	num_buffers = *count;
+> 
+> Ditto.
+> 
+> >  
+> >  	if (requested_planes && requested_sizes) {
+> >  		num_planes = requested_planes;
+> > diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> > index 397dbf6e61e1..b8b34a993e04 100644
+> > --- a/include/media/videobuf2-core.h
+> > +++ b/include/media/videobuf2-core.h
+> > @@ -12,6 +12,7 @@
+> >  #ifndef _MEDIA_VIDEOBUF2_CORE_H
+> >  #define _MEDIA_VIDEOBUF2_CORE_H
+> >  
+> > +#include <linux/minmax.h>
+> >  #include <linux/mm_types.h>
+> >  #include <linux/mutex.h>
+> >  #include <linux/poll.h>
+> > @@ -48,6 +49,8 @@ struct vb2_fileio_data;
+> >  struct vb2_threadio_data;
+> >  struct vb2_buffer;
+> >  
+> > +static size_t max_vb_buffer_per_queue = 1024;
+> > +
+> >  /**
+> >   * struct vb2_mem_ops - memory handling/memory allocator operations.
+> >   * @alloc:	allocate video memory and, optionally, allocator private data,
+> > @@ -1268,12 +1271,16 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
+> >  
+> >  	if (vb->index >= q->max_num_bufs) {
+> >  		struct vb2_buffer **tmp;
+> > +		int cnt = min(max_vb_buffer_per_queue, q->max_num_bufs * 2);
+> 
+> Should cnt also be size_t to match max_vb_buffer_per_queue?
+> This could also overflow given q->max_num_bufs big enough, so maybe it
+> would just be better to rewrite to?
+> 
+> size_t cnt = (q->max_num_bufs > max_vb_buffer_per_queue / 2) ?
+> 		max_vb_buffer_per_queue : q->max_num_bufs * 2;
+> 
+> Or we could just switch to XArray and it would solve this for us. :)
 
---===============3731690893921632009==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qk26xz6flafy3g2q"
-Content-Disposition: inline
+I like using existing libraries instead of reinventing the wheel :-)
 
+> > +
+> > +		if (cnt >= q->max_num_bufs)
+> > +			goto realloc_failed;
+> >  
+> > -		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
+> > +		tmp = krealloc_array(q->bufs, cnt, sizeof(*q->bufs), GFP_KERNEL);
+> >  		if (!tmp)
+> >  			goto realloc_failed;
+> >  
+> > -		q->max_num_bufs *= 2;
+> > +		q->max_num_bufs = cnt;
+> >  		q->bufs = tmp;
+> >  	}
+> >  
 
---qk26xz6flafy3g2q
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+-- 
+Regards,
 
-Hello Bjorn,
-
-On Tue, Mar 21, 2023 at 08:31:53PM +0100, Uwe Kleine-K=F6nig wrote:
-> this series adapts the platform drivers below drivers/pci to use the
-> .remove_new() callback. Compared to the traditional .remove() callback
-> .remove_new() returns no value. This is a good thing because the driver c=
-ore
-> doesn't (and cannot) cope for errors during remove. The only effect of a
-> non-zero return value in .remove() is that the driver core emits a warnin=
-g. The
-> device is removed anyhow and an early return from .remove() usually yield=
-s a
-> resource leak.
->=20
-> By changing the remove callback to return void driver authors cannot
-> reasonably assume any more that there is some kind of cleanup later.
->=20
-> All drivers were easy to convert as they all returned zero in their
-> remove callback. Only for iproc the conversion wasn't trivial, the other
-> were converted using coccinelle.
->=20
-> There are no interdependencies between these patches. So even if there
-> are some concerns for individual patches, I ask you to apply the
-> remaining set. Then I only have to care for the review feedback of the
-> refused patches. (Having said that I don't expect any serious objection,
-> just things like squashing or separating patches, or maybe I picked a
-> wrong subject prefix.)
-
-These patches wait for application for quite some time now. They apply
-just fine to v6.4-rc1 and next/master. Would be great to get them in
-during the next merge window and ideally give them some time in next
-before.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---qk26xz6flafy3g2q
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmR2Ay0ACgkQj4D7WH0S
-/k5qnwgAnpUxpx4rn6WEsDH7Xm3DdX2vIesYJvk7oOO95SBT/vP6MAkPvzaDUJfe
-WVi/Oz1Ka8FPwOop8vkbb8M3nQIjNjB9OfI+6fW+55MvN9guFPI/Utl1TIscmgQz
-YnH2pnHF7uIzKApPtniNZJ6CDy1deepI9SK9Vyx/eMbuppFuUfVz5NR+vdR8e1FA
-o+DEn8E+tjfjwSb0FdxgTv+Subwm4oPwuYrhyv3bJZ17YenL7OoGc8coPdQr13BS
-Mq7t/nM05p/vZtkey55UWA3E+SEsbGz64ikmcv1hfwGVq2aRi8qO+aCUnhe3LX9m
-GZAiwIh4ypdjtDXIIMwGjMatqA4QQA==
-=tfIE
------END PGP SIGNATURE-----
-
---qk26xz6flafy3g2q--
-
-
---===============3731690893921632009==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3731690893921632009==--
-
