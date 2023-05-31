@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5727DC77B7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 08:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28EDEC77B73
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 11:35:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yrp+4MFnW8MogGMYWQETW6JtWXThBPInbcGSpztQ2+s=; b=EyZ1/85btDZEtO
-	4DAOxqKEbDosaz06buwl9ox3D6jDik59PFJiqBdrdewpLFeWoij+5YajHL5/6jzMhtRnAwHxllSSO
-	X2DkgjffIipsHhKlgbmLb4f+uAmgxPmbahJyVJzHyXHH5sT+L3RferbeeMxbw9QQUqWMpqUpiMezN
-	raL8pvoJehhy9L6ztT7q4uzf8okck1ys6aRo518qKjYe4+UgxMga/f48B/6Hrlrz6JlGpyk2qYYtV
-	oXZeL3bDVG3Gewhl0P10v5Xge+DmHDNeoJ7Jp/ipQIW3PoeTBtOWNK34EgjI3TOuCpVkC1jeXz5Ea
-	zhJd7AJjzzWWGHjYue9Q==;
+	List-Owner; bh=5UUKm7wuYQ/wyXYez+p+WvYZMUfjIuY4cpb/Wi+JRRA=; b=NB1ZUTfp1nUWNz
+	NH7+XOv7Q1z4gc/6xQjekgEg9uhzxh6c/GjCNz93WJHj9eqnv+A1BR0PO6beM3EtHyV8WiPzRgnU3
+	HWrAn00G3MLgOODssBvOwjZ5Icr96aURnc4po6tXRc1n2Btwe0jBQyxaJO2BA5tEVOTow6s89Gomx
+	4E2VmvLJ0/HtaUDegOcgnH0W3qzAeHpbOnMaIbsCUGGvaU25OHjJQ1r+wyqur9HaDwX4pvp/2f7gq
+	ePwKwMkvCFRWFXtPOCOQe8Y49T6ZxFzRlhKVj0JgltxHLC0ril3k3ge1+azarsZF5hy7GWgo1Pa5y
+	sSYEqJ0N0wJeplzQW6LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4HEG-00Gcfv-1E;
-	Wed, 31 May 2023 08:30:48 +0000
-Received: from ewsoutbound.kpnmail.nl ([195.121.94.170])
+	id 1q4K79-00HFYm-1T;
+	Wed, 31 May 2023 11:35:39 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4HEA-00Gcdu-33
-	for linux-rockchip@lists.infradead.org;
-	Wed, 31 May 2023 08:30:45 +0000
-X-KPN-MessageId: 6b6a2c64-ff8d-11ed-b139-005056ab378f
-Received: from smtp.kpnmail.nl (unknown [10.31.155.38])
-	by ewsoutbound.so.kpn.org (Halon) with ESMTPS
-	id 6b6a2c64-ff8d-11ed-b139-005056ab378f;
-	Wed, 31 May 2023 10:30:37 +0200 (CEST)
+	id 1q4K77-00HFXT-0R;
+	Wed, 31 May 2023 11:35:38 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-4effb818c37so6371943e87.3;
+        Wed, 31 May 2023 04:35:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xs4all.nl; s=xs4all01;
-	h=content-type:from:to:subject:mime-version:date:message-id;
-	bh=bi/zwW1dF0baBHFGLa1Ol2YY+ghL4hKqNhiswnod4IY=;
-	b=Cbx2lnBI939OqQlwn2LgA2WtjioUKZjZDqNO54cgoWQaDD9mMT75o3zz4hySA8tRKu/u6KChttcwC
-	 XziBcYpFDtwzd+rVXRRr9KDDX4K2+VtaE7//Mog3QLgp8PG8TW3urucSmi+PQ1+govLxt64R3SYwDb
-	 RTpfsmVGvxNahUXSAhKnnX+5sPH+O/W/1vtVq8y+n+vBPYHV6ekR60QRAFge2gzNNJmajAcBuza0BP
-	 bwcW1ukpQPaOs0Mu1NNJe3rQ5tVnbj+AesMLe8j38mo4oFHHZZ2QOoHx4HYUx3rLAfAQyn3ukFaoV5
-	 oMer0XYvZHUuPxpRQppi/EzjwaEBUkg==
-X-KPN-MID: 33|Fcd5oOhZ044j3uOQbeA2h3AjFJJJbejqxfpkqOfmqYParZA1prin+rv5J38icqA
- 3vHUOx6g9HA1xlyqcjCnfdbicA2a9kyRyk3ej0hpbsbk=
-X-KPN-VerifiedSender: Yes
-X-CMASSUN: 33|3YKdBL7gafLa96P8ALjF+44XrQH3OeXh6KixQi1/qKwG3bLPylcZA9xSJT+Plbx
- sCBzYiEGKS2jF5n8a2fWIBQ==
-X-Originating-IP: 173.38.220.44
-Received: from [10.47.77.214] (unknown [173.38.220.44])
-	by smtp.xs4all.nl (Halon) with ESMTPSA
-	id 6b437bb6-ff8d-11ed-a898-005056abf0db;
-	Wed, 31 May 2023 10:30:38 +0200 (CEST)
-Message-ID: <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
-Date: Wed, 31 May 2023 10:30:36 +0200
+        d=gmail.com; s=20221208; t=1685532934; x=1688124934;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YtaeayrxwnpVa64jGqwH3nylPnKgLH9664Qace/gSBA=;
+        b=aMaqn41hzNWiWfn+hx37ZzesODgofhDklubUC+rUH4M6gg6wyKrv92npnIYfoC61vR
+         3Ihs6LKRRZJdJwayqXPndJrJR8qpHwHyomoNocsKwxaxQ5Bl78XqIV5kJEi+klUfLg+W
+         NzlvX1s7P02BY1VD2YyHdn/dJSjCh75pHOpm49UzWR4v7ojAyrBVAc27ZIu5KwAZzgHa
+         WGX+c8wxbz/WIFpiu2bVMnaY7VBnxunWk2xGRr1X5xYdP0UhC+NaAzoLgQ+kQXpV62Gu
+         WZqL28ooj1Qtj9mVi5chfNG5lY8s43HoxjNNIxAp+Ak+kQPgHbd8OuS2MjaW2vv83h1z
+         z5dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685532934; x=1688124934;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YtaeayrxwnpVa64jGqwH3nylPnKgLH9664Qace/gSBA=;
+        b=CS0BUIMu1W1vKfn/9xq/EnQWiutB4v7M9XjCNlgHDMziDjMZxG7pRYwcBvncaVnm5q
+         /Bba3LuUDWY+oZQM6tLSGryGJDIOp9BNSN630s62wn9Ch9v6yDyF7RkAuqp7O+3d4yqG
+         vmtftp0MTF/9ACXxh/nwwAGh5B0Eso/uFZmDpGZUb6wLK4Y5TIEHS4EL9suZAjZ82OE/
+         bcWCxVrLHI7k50jXJJbRv5m33CdWLSOye1ewaT0GbNiTBQbqEHS9jIm2rOIH93r2UAJY
+         Dkmy76g7QWyWk4I3Y10iZNxtWqN6H11vQtOz426u0YDVvG1CQKD4FhdksJX7288wnFPa
+         2U2Q==
+X-Gm-Message-State: AC+VfDzEVD/ibzhjMv2Drfl74+dbTDQPStvDYC7mkRFFjko2NQyOLsB/
+	lpOjeYbh4lHGgdwIgIZ2D1A6orApq/z/qA==
+X-Google-Smtp-Source: ACHHUZ4fnjb/mV3OvhnIK8X+bfU3M2FICrmkQDNJ91GcVsSM8BddGMIpS9+xFyVk2jpKrqeR3DnntQ==
+X-Received: by 2002:ac2:4859:0:b0:4f3:9930:5b8c with SMTP id 25-20020ac24859000000b004f399305b8cmr2382226lfy.25.1685532933569;
+        Wed, 31 May 2023 04:35:33 -0700 (PDT)
+Received: from mobilestation ([95.79.140.35])
+        by smtp.gmail.com with ESMTPSA id c15-20020a19760f000000b004f24e797c58sm675740lff.217.2023.05.31.04.35.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 May 2023 04:35:33 -0700 (PDT)
+Date: Wed, 31 May 2023 14:35:31 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v2 0/6] Add RK3588 SATA support
+Message-ID: <20230531113531.rxmupa2mbx4tn2re@mobilestation>
+References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
- m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
- shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
- quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
- konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, daniel.almeida@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
- <20230531080331.GB6496@pendragon.ideasonboard.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230531080331.GB6496@pendragon.ideasonboard.com>
+Content-Disposition: inline
+In-Reply-To: <20230522173423.64691-1-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_013043_415762_3F44CC47 
-X-CRM114-Status: GOOD (  21.84  )
+X-CRM114-CacheID: sfid-20230531_043537_179151_47E3C098 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,64 +96,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/31/23 10:03, Laurent Pinchart wrote:
-> On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
->> On 21/03/2023 11:28, Benjamin Gaignard wrote:
->>> Add module parameter "max_vb_buffer_per_queue" to be able to limit
->>> the number of vb2 buffers store in queue.
->>>
->>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->>> ---
->>>  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
->>>  include/media/videobuf2-core.h                  | 11 +++++++++--
->>>  2 files changed, 12 insertions(+), 14 deletions(-)
->>>
->>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
->>> index ae9d72f4d181..f4da917ccf3f 100644
->>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
->>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
->>> @@ -34,6 +34,8 @@
->>>  static int debug;
->>>  module_param(debug, int, 0644);
->>>  
->>> +module_param(max_vb_buffer_per_queue, ulong, 0644);
->>
->> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
->> the debug param either, it should be added for that as well.
+Hello Sebastian
+
+On Mon, May 22, 2023 at 07:34:17PM +0200, Sebastian Reichel wrote:
+> Hi,
 > 
-> Would this be the right time to consider resource accounting in V4L2 for
-> buffers ? Having a module parameter doesn't sound very useful, an
-> application could easily allocate more buffers by using buffer orphaning
-> (allocating buffers, exporting them as dmabuf objects, and freeing them,
-> which leaves the memory allocated). Repeating allocation cycles up to
-> max_vb_buffer_per_queue will allow allocating an unbounded number of
-> buffers, using all the available system memory. I'd rather not add a
-> module argument that only gives the impression of some kind of safety
-> without actually providing any value.
+> This enables SATA support for RK3588.
 
-Does dmabuf itself provide some accounting mechanism? Just wondering.
+Thanks for the updated series. I'll have a look at the DW AHCI SATA
+part of it on this week.
 
-More specific to V4L2: I'm not so sure about this module parameter either.
-It makes sense to have a check somewhere against ridiculous values (i.e.
-allocating MAXINT buffers), but that can be a define as well. But otherwise
-I am fine with allowing applications to allocate buffers until the memory
-is full.
+-Serge(y)
 
-The question is really: what is this parameter supposed to do? The only
-thing it does is to sanitize unlikely inputs (e.g. allocating MAXINT buffers).
-
-I prefer that as a define, to be honest.
-
-I think it is perfectly fine for users to try to request more buffers than
-memory allows. It will just fail in that case, not a problem.
-
-And if an application is doing silly things like buffer orphaning, then so
-what? Is that any different than allocating memory and not freeing it?
-Eventually it will run out of memory and crash, which is normal.
-
-Regards,
-
-	Hans
+> 
+> Changes since PATCHv1:
+>  * https://lore.kernel.org/all/20230413182345.92557-1-sebastian.reichel@collabora.com/
+>  * Rebase to v6.4-rc1
+>  * Collect Acked-by for syscon DT binding update
+>  * Use ASIC clock description suggested by Serge Semin
+>  * Also add RBC clock (not used by RK3588)
+>  * Add extra patch narrowing down the allowed clocks for RK356x and RK3588
+> 
+> -- Sebastian
+> 
+> Sebastian Reichel (6):
+>   dt-bindings: soc: rockchip: add rk3588 pipe-phy syscon
+>   dt-bindings: ata: ahci: add RK3588 AHCI controller
+>   dt-bindings: ata: ahci: dwc: enforce rockchip clocks
+>   dt-bindings: phy: rockchip: rk3588 has two reset lines
+>   arm64: dts: rockchip: rk3588: add combo PHYs
+>   arm64: dts: rockchip: rk3588: add SATA support
+> 
+>  .../bindings/ata/snps,dwc-ahci-common.yaml    |  8 +-
+>  .../bindings/ata/snps,dwc-ahci.yaml           | 40 +++++++--
+>  .../phy/phy-rockchip-naneng-combphy.yaml      |  8 +-
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 44 +++++++++
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 90 +++++++++++++++++++
+>  6 files changed, 183 insertions(+), 8 deletions(-)
+> 
+> -- 
+> 2.39.2
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
