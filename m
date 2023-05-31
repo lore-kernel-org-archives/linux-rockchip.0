@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86034C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 16:12:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95048C7EE23
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 16:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XDr61T5J1SQ42/WMDYuR0M8XO6/3zuNaUdoWqbS2Bhs=; b=yp84yTs/HVAECA
-	y62DU8tdrbhF5Y0o5YoPvelQ2Kszo1qLW/f26W/81gOU11kamHqxc6bAIQbmjRzsESf9TTZl73xRt
-	mh8DxzOJHfb0ZjkqXzfT2FRiyoSDsW7tUcms80vsxzf534kgauHCrfdyz2530scDWHu2cphbq0qpg
-	HKQO+AbXvDxv1q6SQYrWzgkH+9+bnmj9zcdgA0ne4H0HcnL2f4+WNFyD4vJjdA6NIyHHxFNL6aZX8
-	GOeGfDosIfpqQTVwko79uakRxCP5Q5j2qYx1vGCI6FEAip2mLndOm1hDy4jEiCrfOlqi/K21uKO+q
-	slTe089ncNNIKagir50g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mDQy5GgFPqH2QBG59RxBtv/KK5YSkUkD9a4woK5eteQ=; b=mxuklU4TX9fGSx
+	zLmCyHx+9ODV2myz1hRzCzOI8lS31WXzGZK4Wa8euXM+GXCXeszN8I9QcbwCFJfn0IMnPub4iQwwj
+	HRfOCfPJbb6tQ8iV3kuXhTLIIVoJzrJR2fnCNom+JYEiTT5yTTyoVM7kAw+Wjvw9EAqsN2ejDe5xU
+	a4Sb5IwAx9dcCLS4bS2nPdo7EQKZkLKV1QA6J+oJWiYYJelU9yGSht8paYy+8ifXAsnRsNQ1GmtZ6
+	BO+P2PiDGC/xjPC9HGSWs5CiY6OVzO0JQ6at1544qo0zVbFKd5NbQeEeEPQlpGfLJvX5oYSAo6Gez
+	xG0PpuL80DMzGK4EEWyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ORI-000QZa-1u;
+	id 1q4ORI-000QZT-0f;
 	Wed, 31 May 2023 16:12:44 +0000
 Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ORC-000QX0-2C
+	id 1q4ORC-000QXJ-2G
 	for linux-rockchip@lists.infradead.org;
 	Wed, 31 May 2023 16:12:42 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-397f10f861eso829380b6e.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 31 May 2023 09:12:35 -0700 (PDT)
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-39a55e5cfc0so601274b6e.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 31 May 2023 09:12:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685549554; x=1688141554;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YftW4qyrZ/kOeqZlxsqBGWXR5JeR/v1FsiZ5diM6+rQ=;
-        b=mZL8Wtg1x7nV9cDMJhfLSi86kyN5jQ0oSEnOItrgapkq2IflW87cZRuwmwOrRLXHmh
-         7Ij9jHBmb6R8VEFu8j2/IEVSEBzwm7AXvq7ew7Za8oQEzXdXYWuGN4AMXQdzMxeP3uh4
-         NsySmX3ozY6nmCjBrTUNju5rzL7dqvqlqAOHqngCbfQ11HBtWW+Z0ygUnaXm5BGS+Ygn
-         gc1n9tYkWfKbq3OjFXgp+Ql6gmXwthqM2Xn7h2aPZ24yoM+kxPFLWtEh37xAEzzvsm/w
-         kdHH1JjCRDt8k2O273rugn5UMrgdWAFAVN4v/CkCcZ/m+zBAXCjfQ8Lrf7FFP4wdRfVp
-         e4HQ==
+        d=gmail.com; s=20221208; t=1685549557; x=1688141557;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kGplE1nV9lc+LSJw4EDPm/qvRoPFDbe8Tvoz+cEIQPg=;
+        b=VZqUdn9Srnc6U2nOhDJ6NyWAWi5f9BiUn77wrKIEVaQMG6SAD+tS53SZutWByGWUtK
+         whPvUKzLSzq7dWZIJgNgLt45pV7MC1/g13yAGNb+wnktI69sq7rtzjelG08bmepfnOXv
+         V5oF+8Kc7Kpq1vAVkmWDT7ppcHzU+sF5fXFw08599N+WpTuh6XQ90Bx3hkc+EdSWIkol
+         dPn/2nz4OUXObKHkSEbvd3zoMeyZ9PnPBRuozEWp64RkvpPJ1yEtx6frVgrXzAAe6TzW
+         TgY/g8gceVHzXD1CnuBA+rCc+a6iGihROdheDgZDJ2Og1QKoQV02REErSWY1QiIjstAB
+         RyeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685549554; x=1688141554;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YftW4qyrZ/kOeqZlxsqBGWXR5JeR/v1FsiZ5diM6+rQ=;
-        b=R0YOFlkXmXHGN3QKbDtdzKYM3cu6sTemsXhauiz460lCR14TW/PPTTEdzrDQBxZgrs
-         lmlLH1G5R/VisUMMQSdz+6tfjlzx3nBR651yzv3ZTwkjrqGB28TDbfEYf5FABnUuto/W
-         bOHqUmiulH1MR9TdIY/WtUyhOCVpHvrHscmZLKhNP1aoQrlcgMMxwVUhJ4RaRvVZkKpA
-         xdycjGZhyGclWSVFC3J2yp/Wjx4l+ovOotZDE5VaiUzE8hskaUbbluQjx9UJz3DHDh4M
-         /tqz145z3rT/viI0ZbH2h4St0jF94bpPCKa4kz4q/FfW7B99VZIP5tJ2UvtTwxPdiFCM
-         Kc5Q==
-X-Gm-Message-State: AC+VfDzxL1S0CI7uWS4eSDTTUf84b2ZrVgD1hZopXEfhDSZFUN8H2R68
-	kVeifEGT4Y6GzhR/QtuxzVSfuC5v0uo=
-X-Google-Smtp-Source: ACHHUZ6NZSNJPwC7hkpvi3TukgaSPrEnQHyxkgxmdVbne8PeiLy/Fk6060/ycx4S35jx4aXo+kxdUw==
-X-Received: by 2002:aca:1007:0:b0:397:f439:d3f5 with SMTP id 7-20020aca1007000000b00397f439d3f5mr2689903oiq.4.1685549554500;
-        Wed, 31 May 2023 09:12:34 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1685549557; x=1688141557;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kGplE1nV9lc+LSJw4EDPm/qvRoPFDbe8Tvoz+cEIQPg=;
+        b=gZvQTvymc0I3l6aIvMdNxCKYgjDnEl5xfEIkcmALChXKlGmriVPC+hnqyq0DNALNWX
+         24bPdX/Tzn54Ec636txDcbR6fMFiZ9AT1i4lvYNUQwLCOJiPYwiHv6XnSREFZvRO6Iy7
+         9xhLSLeGpz9Rz3qKz1+viwZ0Wyd4b16cx3FYI/78Xa6udKzFDxUtHTU4E8EO+/QVlmUM
+         pwbikk3jAfbxAc7g/aaQ1KNO+yz627bBDWsLLp3Sa+lx8WGCt3BQYX96CV5YLItAMESp
+         fdxxd/Xj1G2ri+5NYTgNWXlfreMcdvf97kqiOLriLMZia3Tq3jak1dFCsj4pQ546BUKU
+         Bang==
+X-Gm-Message-State: AC+VfDwBIEC4NqpRsssL7VGVk1CjcwdtPfJsqzP4aEwCH8BJ8UX9JkST
+	EaS0k/6dts9+rsYGHnzeTkiYj1E/Cps=
+X-Google-Smtp-Source: ACHHUZ5aL5Vg8BBmveNsZWoFtuXkpFvEdUxfX0YWODm6jMdRDvWSoF7WuMjxbIqd27YXY/MxrowyBQ==
+X-Received: by 2002:a05:6808:1792:b0:38d:ed6f:536 with SMTP id bg18-20020a056808179200b0038ded6f0536mr5465620oib.42.1685549556782;
+        Wed, 31 May 2023 09:12:36 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id c3-20020a544e83000000b0039a21e8c620sm684633oiy.3.2023.05.31.09.12.33
+        by smtp.gmail.com with ESMTPSA id c3-20020a544e83000000b0039a21e8c620sm684633oiy.3.2023.05.31.09.12.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 May 2023 09:12:34 -0700 (PDT)
+        Wed, 31 May 2023 09:12:36 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -76,14 +77,17 @@ Cc: devicetree@vger.kernel.org,
 	robh+dt@kernel.org,
 	broonie@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 0/5] Add Support for RK3588s Indiedroid Nova
-Date: Wed, 31 May 2023 11:12:15 -0500
-Message-Id: <20230531161220.280744-1-macroalpha82@gmail.com>
+Subject: [PATCH V2 3/5] dt-bindings: vendor-prefixes: add Indiedroid
+Date: Wed, 31 May 2023 11:12:18 -0500
+Message-Id: <20230531161220.280744-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230531161220.280744-1-macroalpha82@gmail.com>
+References: <20230531161220.280744-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_091238_722306_95B854BF 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230531_091238_733715_69A17DB5 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,33 +106,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the RK3588s based Indiedroid Nova. Note that this
-series is dependent on regulator support for the RK806 being
-upstreamed.
+Indiedroid is a sub-brand of Ameridroid for their line of single board
+computers.
+https://indiedroid.us/
 
-https://lore.kernel.org/linux-rockchip/20230515152044.GT10825@google.com/
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes Since V1:
- - Removed changes to ES8328 codec and added a note that a permanent
-   fix will be needed to cope with a 1hz mismatch between requested
-   frequency and actual frequency.
- - Fixed vendor-prefixes.yaml change to alphabetical order.
-
-Chris Morgan (5):
-  arm64: dts: rockchip: add default pinctrl for rk3588 emmc
-  arm64: dts: rockchip: Add sdio node to rk3588
-  dt-bindings: vendor-prefixes: add Indiedroid
-  dt-bindings: arm: rockchip: Add Indiedroid Nova
-  arm64: dts: rockchip: Add Indiedroid Nova board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 764 ++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  18 +
- 5 files changed, 790 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 82d39ab0231b..580f32086d55 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -617,6 +617,8 @@ patternProperties:
+     description: Integrated Micro-Electronics Inc.
+   "^incircuit,.*":
+     description: In-Circuit GmbH
++  "^indiedroid,.*":
++    description: Indiedroid
+   "^inet-tek,.*":
+     description: Shenzhen iNet Mobile Internet Technology Co., Ltd
+   "^infineon,.*":
 -- 
 2.34.1
 
