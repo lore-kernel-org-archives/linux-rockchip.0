@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F037C7EE24
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 May 2023 23:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15388C77B7C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 06:37:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HLnpqosT8DbxQ29S1SQA/AvKgTvCLFQcG7X60q7n7+s=; b=LKV9VzQu3CzL+c
-	nqBQro1DuRNZjOcvtfvjrE4MgETtb8Kivr/edt6O3gwaqt82yUDvosJcT1ymRI5wHkbxEZWJI7GNw
-	j6A7VLW9sbJ+TduBao77YoW7C3uS1Ye5DaLh4oQ/jjZ6ZM/7zaV3WZI8/jfJJSXT7/D/rnKti0ukT
-	iBaWHQc9JXJstS5xOSayYZ3RkCS6G50FrdR/h5ASfP6f9ycu79WsKg7SUX/H1uW5dr3CpDYQGrW7Z
-	uX9WT0jVne846tn9VeMshpHIApbS8DcD7AMksYB53nulaDDPNvT2ZYwQZK7wz6+Yg5yGY5qkd4S/o
-	IrGv0FTrSyqhbPARviYA==;
+	List-Owner; bh=6Bw4HIT/l7ltnMJcE/hrVGEmsvi+b375J9jImaqOVaI=; b=Yn1oszFvNX1byj
+	CiemBsRsjx5JrBcZzzyjTJYWGr5s6r9BFSfdCoXADjH4XCRlbd1KpLa2nmvX3b8yJdSoXQj0YggNr
+	3JOSUMhyB1I6HdKksVZuMgMgDOFm1/1n2JEmgtlHQiFDqHyVgTF0h7JHl4ZqHnvVTBLOH0gUSCSEa
+	R+7pARCIT/nB25n0Hk1NRRG+EV+SrfJtgaLaq5GiBxUDgB7O9wETTE7rDKPzK6hP8yvZwCneBpfjI
+	xlszaJcowlvJSpo9MauYC3pLT0gvqRlzxGDen49dzxznFHxp5lx7ckXyBD9QhoqsXlDLSF+e6vkeA
+	fg06tGg3G3/o7lQCHVVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q48Pz-00FQAQ-2a;
-	Tue, 30 May 2023 23:06:19 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1q4FSM-00GJhz-0r;
+	Wed, 31 May 2023 06:37:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q48Pw-00FQ7M-2Y
-	for linux-rockchip@lists.infradead.org;
-	Tue, 30 May 2023 23:06:18 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-64d3bc502ddso5907334b3a.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 May 2023 16:06:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1685487973; x=1688079973;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zao+usj1MFnHO0lPVaYxKTWIh4Wrl1XUDw1PK7J3fWM=;
-        b=JxW2OPW0HQsH3SYq6o+okCUEhDYhLDsnK1IuCG7HA6xFymgskDPQOJb3fsdobb+33b
-         OytwBRj9myGzf6KufZCXuq8v1N449uBhWYJDYZr/WDjiEjkffVePnp2koTcOUJletBb3
-         V+wiOOW5qxMjHFzU+yLJCZPoAi1X2q/uS84gg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685487973; x=1688079973;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zao+usj1MFnHO0lPVaYxKTWIh4Wrl1XUDw1PK7J3fWM=;
-        b=Btd0Elpf8aq4UrESuCzIUxXGp0AGvxERD0IoFXedl+2Nxo4B1Gdu6COp2TwQQGgngL
-         4oLfCfsjIQUhj+tX1ZVJ5zFIM84mD5AN6qqOTOsbyMpCRD3FoUCmZq25s64Wl26dd5Fr
-         P0JW6y2nJ31LJcRw33oLpzDmjtxo9qFDM9v0cydF8kBd/n0jPTF+2yB2DITqQ7qfyo63
-         /EFk2DoEwom3Y1t7ohsPKoJAMrqY4354p+SLQby+VlErHk8FxkPDVwtBonQm7WeRqs6m
-         DqjkTrEUZ324s4RAp7rGYARm7w08QFqh4KuHBeJl/CdW4vbIrT00MWZPInV7z9/Zfwvp
-         1OTQ==
-X-Gm-Message-State: AC+VfDwn1SdCr7Vjoo1lf3y9WkAh8jzy2gLqhpoauoubMzGpKR3vo7li
-	v6w2jlcNnFouJzPS+QakbIQdJA==
-X-Google-Smtp-Source: ACHHUZ5D1+tV1+lvxmaVwvByCrU2SFfVv0srtnoQzi2H74dwcr6jd0JM1qdxaJAJFzqXVqgoNVS1HA==
-X-Received: by 2002:a05:6a00:150f:b0:642:fbed:2808 with SMTP id q15-20020a056a00150f00b00642fbed2808mr5705307pfu.25.1685487973579;
-        Tue, 30 May 2023 16:06:13 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id d4-20020aa78144000000b0064d7221529asm2162683pfn.32.2023.05.30.16.06.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 May 2023 16:06:12 -0700 (PDT)
-From: Kees Cook <keescook@chromium.org>
-To: heiko@sntech.de,
-	azeemshaikh38@gmail.com,
-	hjc@rock-chips.com
-Cc: Kees Cook <keescook@chromium.org>,
-	linux-kernel@vger.kernel.org,
-	linux-hardening@vger.kernel.org,
-	daniel@ffwll.ch,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	airlied@gmail.com
-Subject: Re: [PATCH] drm/rockchip: Replace all non-returning strlcpy with strscpy
-Date: Tue, 30 May 2023 16:06:04 -0700
-Message-Id: <168548796306.1350188.1085117815557149174.b4-ty@chromium.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230522155149.2336620-1-azeemshaikh38@gmail.com>
-References: <20230522155149.2336620-1-azeemshaikh38@gmail.com>
+	id 1q4FSI-00GJgP-1Q;
+	Wed, 31 May 2023 06:37:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D012763709;
+	Wed, 31 May 2023 06:37:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3B40C4339B;
+	Wed, 31 May 2023 06:37:00 +0000 (UTC)
+Message-ID: <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
+Date: Wed, 31 May 2023 08:36:59 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
+ queue buffer storage
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
+ m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+ shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+ yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+ quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+ konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+ laurent.pinchart@ideasonboard.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230321102855.346732-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230530_160616_827175_2E816C4A 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230530_233710_561882_4377C963 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,24 +78,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 May 2023 15:51:49 +0000, Azeem Shaikh wrote:
-> strlcpy() reads the entire source buffer first.
-> This read may exceed the destination size limit.
-> This is both inefficient and can lead to linear read
-> overflows if a source string is not NUL-terminated [1].
-> In an effort to remove strlcpy() completely [2], replace
-> strlcpy() here with strscpy().
-> No return values were used, so direct replacement is safe.
+On 21/03/2023 11:28, Benjamin Gaignard wrote:
+> Add module parameter "max_vb_buffer_per_queue" to be able to limit
+> the number of vb2 buffers store in queue.
 > 
-> [...]
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
+>  include/media/videobuf2-core.h                  | 11 +++++++++--
+>  2 files changed, 12 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index ae9d72f4d181..f4da917ccf3f 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -34,6 +34,8 @@
+>  static int debug;
+>  module_param(debug, int, 0644);
+>  
+> +module_param(max_vb_buffer_per_queue, ulong, 0644);
 
-Applied to for-next/hardening, thanks!
+There is no MODULE_PARM_DESC here? Please add. I see it is not there for
+the debug param either, it should be added for that as well.
 
-[1/1] drm/rockchip: Replace all non-returning strlcpy with strscpy
-      https://git.kernel.org/kees/c/3bc490653e12
+Regards,
 
--- 
-Kees Cook
+	Hans
+
+> +
+>  #define dprintk(q, level, fmt, arg...)					\
+>  	do {								\
+>  		if (debug >= level)					\
+> @@ -412,10 +414,6 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> -	num_buffers = min_t(unsigned int, num_buffers,
+> -			    VB2_MAX_FRAME - q->num_buffers);
+> -
+>  	for (buffer = 0; buffer < num_buffers; ++buffer) {
+>  		/* Allocate vb2 buffer structures */
+>  		vb = kzalloc(q->buf_struct_size, GFP_KERNEL);
+> @@ -801,9 +799,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	/*
+>  	 * Make sure the requested values and current defaults are sane.
+>  	 */
+> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+>  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
+>  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+>  	/*
+>  	 * Set this now to ensure that drivers see the correct q->memory value
+> @@ -919,11 +915,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	bool no_previous_buffers = !q->num_buffers;
+>  	int ret;
+>  
+> -	if (q->num_buffers == VB2_MAX_FRAME) {
+> -		dprintk(q, 1, "maximum number of buffers already allocated\n");
+> -		return -ENOBUFS;
+> -	}
+> -
+>  	if (no_previous_buffers) {
+>  		if (q->waiting_in_dqbuf && *count) {
+>  			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
+> @@ -948,7 +939,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return -EINVAL;
+>  	}
+>  
+> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> +	num_buffers = *count;
+>  
+>  	if (requested_planes && requested_sizes) {
+>  		num_planes = requested_planes;
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 397dbf6e61e1..b8b34a993e04 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -12,6 +12,7 @@
+>  #ifndef _MEDIA_VIDEOBUF2_CORE_H
+>  #define _MEDIA_VIDEOBUF2_CORE_H
+>  
+> +#include <linux/minmax.h>
+>  #include <linux/mm_types.h>
+>  #include <linux/mutex.h>
+>  #include <linux/poll.h>
+> @@ -48,6 +49,8 @@ struct vb2_fileio_data;
+>  struct vb2_threadio_data;
+>  struct vb2_buffer;
+>  
+> +static size_t max_vb_buffer_per_queue = 1024;
+> +
+>  /**
+>   * struct vb2_mem_ops - memory handling/memory allocator operations.
+>   * @alloc:	allocate video memory and, optionally, allocator private data,
+> @@ -1268,12 +1271,16 @@ static inline bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *
+>  
+>  	if (vb->index >= q->max_num_bufs) {
+>  		struct vb2_buffer **tmp;
+> +		int cnt = min(max_vb_buffer_per_queue, q->max_num_bufs * 2);
+> +
+> +		if (cnt >= q->max_num_bufs)
+> +			goto realloc_failed;
+>  
+> -		tmp = krealloc_array(q->bufs, q->max_num_bufs * 2, sizeof(*q->bufs), GFP_KERNEL);
+> +		tmp = krealloc_array(q->bufs, cnt, sizeof(*q->bufs), GFP_KERNEL);
+>  		if (!tmp)
+>  			goto realloc_failed;
+>  
+> -		q->max_num_bufs *= 2;
+> +		q->max_num_bufs = cnt;
+>  		q->bufs = tmp;
+>  	}
+>  
 
 
 _______________________________________________
