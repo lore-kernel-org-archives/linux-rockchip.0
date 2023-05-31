@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28EDEC77B73
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 11:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C407C7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 12:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5UUKm7wuYQ/wyXYez+p+WvYZMUfjIuY4cpb/Wi+JRRA=; b=NB1ZUTfp1nUWNz
-	NH7+XOv7Q1z4gc/6xQjekgEg9uhzxh6c/GjCNz93WJHj9eqnv+A1BR0PO6beM3EtHyV8WiPzRgnU3
-	HWrAn00G3MLgOODssBvOwjZ5Icr96aURnc4po6tXRc1n2Btwe0jBQyxaJO2BA5tEVOTow6s89Gomx
-	4E2VmvLJ0/HtaUDegOcgnH0W3qzAeHpbOnMaIbsCUGGvaU25OHjJQ1r+wyqur9HaDwX4pvp/2f7gq
-	ePwKwMkvCFRWFXtPOCOQe8Y49T6ZxFzRlhKVj0JgltxHLC0ril3k3ge1+azarsZF5hy7GWgo1Pa5y
-	sSYEqJ0N0wJeplzQW6LQ==;
+	List-Owner; bh=NejGLo8fmNJgwdx/3UMzjnPpcZ+RB8zfHtyz02ol/dE=; b=fLuACXbYKm6qb7
+	HHSuv7Evvm66xlQ+/JYjGyCLz2rdmSFvtgoIocCx/bvp+S/jet23KSxYhWTtRPUmDDnlXsc9LejQH
+	S2SqKtq1rurdk9pPzRBhTgrfNrx3B1u290PEjo7ePy4lxJUlb/dnEND6RyxjyMlNXF9XD97cqm7Ho
+	s2bQCjssOugIEe8S9SVcUU5PZs7IOyVss/FnrXRysZ3prMZeuLT3sGvKX6K+5fRUgyuxeLYNKt01p
+	SItHvqqrDIWNidUneeoO/KVzXA/RK9bI/wdgtC5KMRCFk7UaU/z3FDCd7pi9wKq/7C0D+Ce6zkkOS
+	JMvzBbhnt4AeJ8EItEEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4K79-00HFYm-1T;
-	Wed, 31 May 2023 11:35:39 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1q4L7L-00HNqI-0y;
+	Wed, 31 May 2023 12:39:55 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4K77-00HFXT-0R;
-	Wed, 31 May 2023 11:35:38 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-4effb818c37so6371943e87.3;
-        Wed, 31 May 2023 04:35:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685532934; x=1688124934;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YtaeayrxwnpVa64jGqwH3nylPnKgLH9664Qace/gSBA=;
-        b=aMaqn41hzNWiWfn+hx37ZzesODgofhDklubUC+rUH4M6gg6wyKrv92npnIYfoC61vR
-         3Ihs6LKRRZJdJwayqXPndJrJR8qpHwHyomoNocsKwxaxQ5Bl78XqIV5kJEi+klUfLg+W
-         NzlvX1s7P02BY1VD2YyHdn/dJSjCh75pHOpm49UzWR4v7ojAyrBVAc27ZIu5KwAZzgHa
-         WGX+c8wxbz/WIFpiu2bVMnaY7VBnxunWk2xGRr1X5xYdP0UhC+NaAzoLgQ+kQXpV62Gu
-         WZqL28ooj1Qtj9mVi5chfNG5lY8s43HoxjNNIxAp+Ak+kQPgHbd8OuS2MjaW2vv83h1z
-         z5dA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685532934; x=1688124934;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YtaeayrxwnpVa64jGqwH3nylPnKgLH9664Qace/gSBA=;
-        b=CS0BUIMu1W1vKfn/9xq/EnQWiutB4v7M9XjCNlgHDMziDjMZxG7pRYwcBvncaVnm5q
-         /Bba3LuUDWY+oZQM6tLSGryGJDIOp9BNSN630s62wn9Ch9v6yDyF7RkAuqp7O+3d4yqG
-         vmtftp0MTF/9ACXxh/nwwAGh5B0Eso/uFZmDpGZUb6wLK4Y5TIEHS4EL9suZAjZ82OE/
-         bcWCxVrLHI7k50jXJJbRv5m33CdWLSOye1ewaT0GbNiTBQbqEHS9jIm2rOIH93r2UAJY
-         Dkmy76g7QWyWk4I3Y10iZNxtWqN6H11vQtOz426u0YDVvG1CQKD4FhdksJX7288wnFPa
-         2U2Q==
-X-Gm-Message-State: AC+VfDzEVD/ibzhjMv2Drfl74+dbTDQPStvDYC7mkRFFjko2NQyOLsB/
-	lpOjeYbh4lHGgdwIgIZ2D1A6orApq/z/qA==
-X-Google-Smtp-Source: ACHHUZ4fnjb/mV3OvhnIK8X+bfU3M2FICrmkQDNJ91GcVsSM8BddGMIpS9+xFyVk2jpKrqeR3DnntQ==
-X-Received: by 2002:ac2:4859:0:b0:4f3:9930:5b8c with SMTP id 25-20020ac24859000000b004f399305b8cmr2382226lfy.25.1685532933569;
-        Wed, 31 May 2023 04:35:33 -0700 (PDT)
-Received: from mobilestation ([95.79.140.35])
-        by smtp.gmail.com with ESMTPSA id c15-20020a19760f000000b004f24e797c58sm675740lff.217.2023.05.31.04.35.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 May 2023 04:35:33 -0700 (PDT)
-Date: Wed, 31 May 2023 14:35:31 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 0/6] Add RK3588 SATA support
-Message-ID: <20230531113531.rxmupa2mbx4tn2re@mobilestation>
-References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+	id 1q4L7H-00HNoH-1w;
+	Wed, 31 May 2023 12:39:53 +0000
+Received: from pendragon.ideasonboard.com (om126205251136.34.openmobile.ne.jp [126.205.251.136])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 37C5D844;
+	Wed, 31 May 2023 14:39:24 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1685536765;
+	bh=9FI5ddx12U5j33AEsAb/4FtfCwfmcg+v2kVwvbdIAMA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OH88JsHsX3ruTeSP27IWfbNRq3s+8jd3QTExCPeR9EZhe1G19meyJPQIKRJwcVCVX
+	 B+5WzKe+RKEGgvTN9+mLeVOdgdD2P+OZMs/+BD8RQp5GDE1WYsFWkE3yba40wuwA9P
+	 8WgxU+gPHnF4/aun5cVexTAhlz4MRxMXoIsn0DXg=
+Date: Wed, 31 May 2023 15:39:45 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, tfiga@chromium.org,
+	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
+	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
+	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
+	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
+ queue buffer storage
+Message-ID: <20230531123945.GF27043@pendragon.ideasonboard.com>
+References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
+ <20230321102855.346732-4-benjamin.gaignard@collabora.com>
+ <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
+ <20230531080331.GB6496@pendragon.ideasonboard.com>
+ <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+In-Reply-To: <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_043537_179151_47E3C098 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20230531_053951_785727_C8EAB00F 
+X-CRM114-Status: GOOD (  32.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,48 +82,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian
+On Wed, May 31, 2023 at 10:30:36AM +0200, Hans Verkuil wrote:
+> On 5/31/23 10:03, Laurent Pinchart wrote:
+> > On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
+> >> On 21/03/2023 11:28, Benjamin Gaignard wrote:
+> >>> Add module parameter "max_vb_buffer_per_queue" to be able to limit
+> >>> the number of vb2 buffers store in queue.
+> >>>
+> >>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> >>> ---
+> >>>  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
+> >>>  include/media/videobuf2-core.h                  | 11 +++++++++--
+> >>>  2 files changed, 12 insertions(+), 14 deletions(-)
+> >>>
+> >>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> >>> index ae9d72f4d181..f4da917ccf3f 100644
+> >>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> >>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> >>> @@ -34,6 +34,8 @@
+> >>>  static int debug;
+> >>>  module_param(debug, int, 0644);
+> >>>  
+> >>> +module_param(max_vb_buffer_per_queue, ulong, 0644);
+> >>
+> >> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
+> >> the debug param either, it should be added for that as well.
+> > 
+> > Would this be the right time to consider resource accounting in V4L2 for
+> > buffers ? Having a module parameter doesn't sound very useful, an
+> > application could easily allocate more buffers by using buffer orphaning
+> > (allocating buffers, exporting them as dmabuf objects, and freeing them,
+> > which leaves the memory allocated). Repeating allocation cycles up to
+> > max_vb_buffer_per_queue will allow allocating an unbounded number of
+> > buffers, using all the available system memory. I'd rather not add a
+> > module argument that only gives the impression of some kind of safety
+> > without actually providing any value.
+> 
+> Does dmabuf itself provide some accounting mechanism? Just wondering.
+> 
+> More specific to V4L2: I'm not so sure about this module parameter either.
+> It makes sense to have a check somewhere against ridiculous values (i.e.
+> allocating MAXINT buffers), but that can be a define as well. But otherwise
+> I am fine with allowing applications to allocate buffers until the memory
+> is full.
+> 
+> The question is really: what is this parameter supposed to do? The only
+> thing it does is to sanitize unlikely inputs (e.g. allocating MAXINT buffers).
+> 
+> I prefer that as a define, to be honest.
+> 
+> I think it is perfectly fine for users to try to request more buffers than
+> memory allows. It will just fail in that case, not a problem.
+> 
+> And if an application is doing silly things like buffer orphaning, then so
+> what? Is that any different than allocating memory and not freeing it?
+> Eventually it will run out of memory and crash, which is normal.
 
-On Mon, May 22, 2023 at 07:34:17PM +0200, Sebastian Reichel wrote:
-> Hi,
-> 
-> This enables SATA support for RK3588.
+Linux provides APIs to account for and limit usage of resources,
+including memory. A system administrator can prevent rogue processes
+from starving system resources. The memory consumed by vb2 buffer isn't
+taken into account, making V4L2 essentially unsafe for untrusted
+processes.
 
-Thanks for the updated series. I'll have a look at the DW AHCI SATA
-part of it on this week.
+Now, to be fair, there are many reasons why allowing access to v4L2
+devices to untrusted applications is a bad idea, and memory consumption
+is likely not even the worst one. Still, is this something we want to
+fix, or do we want to consider V4L2 to be priviledged API only ? Right
+now we can't do so, but with many Linux systems moving towards pipewire,
+we could possibly have a system daemon isolating untrusted applications
+from the rest of the system. We may thus not need to fix this in the
+V4L2 API.
 
--Serge(y)
+-- 
+Regards,
 
-> 
-> Changes since PATCHv1:
->  * https://lore.kernel.org/all/20230413182345.92557-1-sebastian.reichel@collabora.com/
->  * Rebase to v6.4-rc1
->  * Collect Acked-by for syscon DT binding update
->  * Use ASIC clock description suggested by Serge Semin
->  * Also add RBC clock (not used by RK3588)
->  * Add extra patch narrowing down the allowed clocks for RK356x and RK3588
-> 
-> -- Sebastian
-> 
-> Sebastian Reichel (6):
->   dt-bindings: soc: rockchip: add rk3588 pipe-phy syscon
->   dt-bindings: ata: ahci: add RK3588 AHCI controller
->   dt-bindings: ata: ahci: dwc: enforce rockchip clocks
->   dt-bindings: phy: rockchip: rk3588 has two reset lines
->   arm64: dts: rockchip: rk3588: add combo PHYs
->   arm64: dts: rockchip: rk3588: add SATA support
-> 
->  .../bindings/ata/snps,dwc-ahci-common.yaml    |  8 +-
->  .../bindings/ata/snps,dwc-ahci.yaml           | 40 +++++++--
->  .../phy/phy-rockchip-naneng-combphy.yaml      |  8 +-
->  .../devicetree/bindings/soc/rockchip/grf.yaml |  1 +
->  arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 44 +++++++++
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 90 +++++++++++++++++++
->  6 files changed, 183 insertions(+), 8 deletions(-)
-> 
-> -- 
-> 2.39.2
-> 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
