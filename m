@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95048C7EE23
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5142C77B7A
 	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 16:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mDQy5GgFPqH2QBG59RxBtv/KK5YSkUkD9a4woK5eteQ=; b=mxuklU4TX9fGSx
-	zLmCyHx+9ODV2myz1hRzCzOI8lS31WXzGZK4Wa8euXM+GXCXeszN8I9QcbwCFJfn0IMnPub4iQwwj
-	HRfOCfPJbb6tQ8iV3kuXhTLIIVoJzrJR2fnCNom+JYEiTT5yTTyoVM7kAw+Wjvw9EAqsN2ejDe5xU
-	a4Sb5IwAx9dcCLS4bS2nPdo7EQKZkLKV1QA6J+oJWiYYJelU9yGSht8paYy+8ifXAsnRsNQ1GmtZ6
-	BO+P2PiDGC/xjPC9HGSWs5CiY6OVzO0JQ6at1544qo0zVbFKd5NbQeEeEPQlpGfLJvX5oYSAo6Gez
-	xG0PpuL80DMzGK4EEWyw==;
+	List-Owner; bh=9kVrPcTR91siaIivETrL8HmYQPbx3Y4NzP2JayWb7Pc=; b=XIh0MBP/C8gGWr
+	MAbAsgJP0a/pzmfyo9GhExmskfXDLvvsajS1JFKkNB4+Z2iQJ95uX2efGTMI0jS8i/oe04328uJ7q
+	Eh8c9XkLPorgeoXWzIYhYGjo6mUyDlL+wbShUdZqijgo9cIH94afC04nXgwXxm5JO7VIaCBaOJZPb
+	uE4HXediX9zKeeZ1PE5HjGvwCNcZ1oEaX05SA0zYKAHEwbiLA09omqQDsf+xvy+k2SqEEFDaVj7cu
+	U7U9o5e0R9wQmIohxMPlBQlgxbl+YuJMGlIaz8WNGP4KVs0s+1oElnmE5d0nLpOFWke5XMR/zMn2c
+	47hmLhIzvdUEcbLZHV1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ORI-000QZT-0f;
-	Wed, 31 May 2023 16:12:44 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1q4ORR-000Qd0-1U;
+	Wed, 31 May 2023 16:12:53 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4ORC-000QXJ-2G
+	id 1q4ORO-000QXS-0P
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 May 2023 16:12:42 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-39a55e5cfc0so601274b6e.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 31 May 2023 09:12:37 -0700 (PDT)
+	Wed, 31 May 2023 16:12:51 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-38ede2e0e69so3601276b6e.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 31 May 2023 09:12:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20221208; t=1685549557; x=1688141557;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=kGplE1nV9lc+LSJw4EDPm/qvRoPFDbe8Tvoz+cEIQPg=;
-        b=VZqUdn9Srnc6U2nOhDJ6NyWAWi5f9BiUn77wrKIEVaQMG6SAD+tS53SZutWByGWUtK
-         whPvUKzLSzq7dWZIJgNgLt45pV7MC1/g13yAGNb+wnktI69sq7rtzjelG08bmepfnOXv
-         V5oF+8Kc7Kpq1vAVkmWDT7ppcHzU+sF5fXFw08599N+WpTuh6XQ90Bx3hkc+EdSWIkol
-         dPn/2nz4OUXObKHkSEbvd3zoMeyZ9PnPBRuozEWp64RkvpPJ1yEtx6frVgrXzAAe6TzW
-         TgY/g8gceVHzXD1CnuBA+rCc+a6iGihROdheDgZDJ2Og1QKoQV02REErSWY1QiIjstAB
-         RyeA==
+        bh=/I9p4uFE4LhLrQniPcbipsYybg79wk4q2UammLd6/vI=;
+        b=TRPuwPAcDLwuzn+azD92osTTZuJ6mH59z5UG01urBCMvZkk3dfG/xitgNIUWz/OaTc
+         42POUp+VJ6c4XdzMgXlpM+xCzIlA1qYpwt5wRRDzqIq0VWvRf7NBRF8HHjBtlcSexgM/
+         KVyzyK//jd4p8NcrmAMEoUpPUMro4dVblyi8e61esCqcRDFF5NsqygLEb7PyMOYqQZ0+
+         mXX87z90bLyCIVI/eQ+TDu9nDKgkBFdv6ikMwBzSAtZL4SJQHT2SojE2/51RJk3kLyVU
+         pIOf4lwqLmTYTlP1Tnp6gcbbHkSpTPghMmQrdr1ZkuJW9+nGMaWrJ0wa/rcMn9ID47ee
+         izYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685549557; x=1688141557;
+        d=1e100.net; s=20221208; t=1685549558; x=1688141558;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=kGplE1nV9lc+LSJw4EDPm/qvRoPFDbe8Tvoz+cEIQPg=;
-        b=gZvQTvymc0I3l6aIvMdNxCKYgjDnEl5xfEIkcmALChXKlGmriVPC+hnqyq0DNALNWX
-         24bPdX/Tzn54Ec636txDcbR6fMFiZ9AT1i4lvYNUQwLCOJiPYwiHv6XnSREFZvRO6Iy7
-         9xhLSLeGpz9Rz3qKz1+viwZ0Wyd4b16cx3FYI/78Xa6udKzFDxUtHTU4E8EO+/QVlmUM
-         pwbikk3jAfbxAc7g/aaQ1KNO+yz627bBDWsLLp3Sa+lx8WGCt3BQYX96CV5YLItAMESp
-         fdxxd/Xj1G2ri+5NYTgNWXlfreMcdvf97kqiOLriLMZia3Tq3jak1dFCsj4pQ546BUKU
-         Bang==
-X-Gm-Message-State: AC+VfDwBIEC4NqpRsssL7VGVk1CjcwdtPfJsqzP4aEwCH8BJ8UX9JkST
-	EaS0k/6dts9+rsYGHnzeTkiYj1E/Cps=
-X-Google-Smtp-Source: ACHHUZ5aL5Vg8BBmveNsZWoFtuXkpFvEdUxfX0YWODm6jMdRDvWSoF7WuMjxbIqd27YXY/MxrowyBQ==
-X-Received: by 2002:a05:6808:1792:b0:38d:ed6f:536 with SMTP id bg18-20020a056808179200b0038ded6f0536mr5465620oib.42.1685549556782;
-        Wed, 31 May 2023 09:12:36 -0700 (PDT)
+        bh=/I9p4uFE4LhLrQniPcbipsYybg79wk4q2UammLd6/vI=;
+        b=ZEZWKqtTAsgzUj/bdcPrcztz8wmXu/vz4XNtkjVZ0nTmM5NyQKsxUybkmWA3XAK3iJ
+         A0j9dTkCO7dC/NhfNSU+U4W33KRiVXpHjkl6+NRFBloUJf/xtxw5Joi25Kk0cEB4sjxF
+         KayXw3+3+RK4BSf+pj450rePBVx5knRS8KxIdNDCv5csqYjMWDEgtmO3Pl1oSWtPFkCc
+         MW0/NlJbQR9Rv3mtOh2eOwP9EG3DRCxZiT6/mIhCEjajkFdsSRWdPaB4Hb5JoNTNYa7E
+         mDxWibUefi2Nhk/g5ZBpfRPrh136KJ3xJWt3q+9BXEw8uTD6F6tfWVC+1Nxwp+Z4eHqV
+         xPmg==
+X-Gm-Message-State: AC+VfDx/2xt6wuISOc5NYzZAi5+2xz5Od0gaHgUOhjv9olfyllKr9eti
+	V+ERbcOtFsNaapXCBml0ClPc6rEujPg=
+X-Google-Smtp-Source: ACHHUZ7n9fOl/FXDCpJMDjt+lJNn7ElHIgFZ4cemt40GeeFs9e3f9NMl3FlZotnTzP/s2kF+4viTcg==
+X-Received: by 2002:a05:6808:298a:b0:398:26f0:67b1 with SMTP id ex10-20020a056808298a00b0039826f067b1mr3547101oib.7.1685549557610;
+        Wed, 31 May 2023 09:12:37 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
         by smtp.gmail.com with ESMTPSA id c3-20020a544e83000000b0039a21e8c620sm684633oiy.3.2023.05.31.09.12.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 May 2023 09:12:36 -0700 (PDT)
+        Wed, 31 May 2023 09:12:37 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -76,17 +76,18 @@ Cc: devicetree@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	broonie@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 3/5] dt-bindings: vendor-prefixes: add Indiedroid
-Date: Wed, 31 May 2023 11:12:18 -0500
-Message-Id: <20230531161220.280744-4-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH V2 4/5] dt-bindings: arm: rockchip: Add Indiedroid Nova
+Date: Wed, 31 May 2023 11:12:19 -0500
+Message-Id: <20230531161220.280744-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230531161220.280744-1-macroalpha82@gmail.com>
 References: <20230531161220.280744-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_091238_733715_69A17DB5 
-X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-CacheID: sfid-20230531_091250_169651_95430F5B 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,28 +107,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Indiedroid is a sub-brand of Ameridroid for their line of single board
-computers.
-https://indiedroid.us/
+Add Indiedroid Nova, an rk3588s based single board computer.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index 82d39ab0231b..580f32086d55 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -617,6 +617,8 @@ patternProperties:
-     description: Integrated Micro-Electronics Inc.
-   "^incircuit,.*":
-     description: In-Circuit GmbH
-+  "^indiedroid,.*":
-+    description: Indiedroid
-   "^inet-tek,.*":
-     description: Shenzhen iNet Mobile Internet Technology Co., Ltd
-   "^infineon,.*":
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ec141c937b8b..3c5a204bcd81 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -542,6 +542,11 @@ properties:
+               - khadas,edge-v
+           - const: rockchip,rk3399
+ 
++      - description: Indiedroid Nova SBC
++        items:
++          - const: indiedroid,nova
++          - const: rockchip,rk3588s
++
+       - description: Khadas Edge2 series boards
+         items:
+           - const: khadas,edge2
 -- 
 2.34.1
 
