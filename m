@@ -4,85 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA283C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 13:26:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4FEC7EE29
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 13:28:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6gCpXP2k8h6Cj/lDiguH3JfFggzyxdZLFo/bdxb9az0=; b=jVmMzw4T3vD+6p
-	PAKdbFpTEklCmw7gRbWJzvVZEHAfThHfMUnXLesofNtTAXyILgswAaoTIbQd5SNpo2lqM/5OGcuXM
-	t8JVQsG87KHvBmHInUurgsvccfSzmgENMcA5dVZDqUhNttPRImi12qRd+NqyGGv9jr0pjHeG5Aigu
-	gNi782gp8DBbgcddEyjTzO76PmPjJzwWFKrgUutm7mky72p3hL1PUsFsNDX9zMe3f7Zvxn8M6z3MT
-	8TQZRKEI4Z7qwL6M6Q93Iulw8clNxgCSUQM5rD3DgIUCD77cQgQm+K4b3R53JOUFK/IhZCT5trYbn
-	Eysmt+T9AW/CLxTgiOLg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xi3km45IDUheDm7ERkj8osncHJLZc8UAql2h+qN4eNY=; b=o2xGhaXb+lP3nD
+	CfkJCvsOkgeBG5Cn51YrEG/LqK2pVfg7GzNsThct/QZz8bcHTKNkzsnfv7BW6LoU3O4EBEzoOuaj5
+	3Umv4+x9Xu4DX4W3iG2iQR2XXS8YUEGR4Oc1BYYZXwTX+p8YTXMbzrxC7XZ6DwSlxC9EYPKAXy9gp
+	wJqDzZiQHHpj9T5FdgH+nV58SQCQ7BaNDlvRE3N6rjPkmGRrn6SfBtzNngYak0KZrIZYky6i/SMHa
+	NvklCLmf0I5f3NdINsnYi7OUlav+NaS3wHTh5XOsOmk7OXmjXn2P51nCkRUnh2GFhWVyT3d7x8BdI
+	sQw7a/9gwvJSV2TtCAyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4iJt-003gDq-1e;
-	Thu, 01 Jun 2023 13:26:25 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1q4iLT-003gZn-0Q;
+	Thu, 01 Jun 2023 13:28:03 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4iJp-003gBt-0v;
-	Thu, 01 Jun 2023 13:26:23 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f6dbe3c230so8705425e9.3;
-        Thu, 01 Jun 2023 06:26:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685625977; x=1688217977;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mY4ulbNFE/jjkAM6F1KYjqgtbBRcYBjAGNE85b4mha4=;
-        b=Eyrfbb4GRekIwaWBrbBJoAQ+TnpS4Wpf9ICO7qzsFvxrI9yFUyGrFRxRngKXl20JW3
-         tEbx+C9qcNg2G+jhDjaxDGirdsMr/nreZgAB9LkqbAaVVfWCJFlrs3R8sFu+BsIiquMP
-         lbCyVxQMJzaR1SqXubYb72QmrEP1SnkUlHjOwgYf6cZjhmdUf0SWLC5O5Ya/hRGn8rHe
-         v9SzgNnKjXNQNNs/ci1y7YuRaMQWCCUzO3r6LLTJz12h5My9spUJ8CexcmAWpWSJowE8
-         MspDWpWbFA3mTGmxvAt9KdlZhRjlGfdLXibIIdrUbLBeVgxKF+cZsb4pvM56w+unqb+z
-         CfgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685625977; x=1688217977;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=mY4ulbNFE/jjkAM6F1KYjqgtbBRcYBjAGNE85b4mha4=;
-        b=kXXgsxGJg4yOO34jpqz5Q3NghV+b3YHnsJEkZ9ew9ljM7lyVz24gLqL//7ltObhMLP
-         wvzTWjUgw7q/HFt2I9Qz1+9C0hjNJRTxkMMHvPVD6YE9qA+E/cKPsF0YpPNQ3N6sbwN6
-         s8fpfBj7RWbxw8Hncw0C6itQ3BTc6HTJH6qP/pM1oZsKfMck/nLRxdWMNYqzeXNR5ljY
-         n3kWJTfX1rC7QCCY/H4PLHoxuckcxzr/ANW9OtETqyDh3Q9Yr2yPCvil2QHwpmlulRVa
-         eOYliIWk+gNOKbgRVJum3d8ShTmivwBeUXAz0kLgaBY+wEIQYqWH4wUcjtIfX1XwgFGT
-         YeSA==
-X-Gm-Message-State: AC+VfDxgJyEfp5+g+QrBrB7ZKEhieElUXxRF5rqWKyAJLm5Sgm3dM1tS
-	LZ/H77JZJcsAwAtaKwRCmIE=
-X-Google-Smtp-Source: ACHHUZ4u07oje+b/pW5QY8IISmc/7hrBKpGR8OodL8MJC5Gg23AvYMTBZe3OPWHRjosNZWA7j6ukxw==
-X-Received: by 2002:a7b:ca59:0:b0:3f4:f7c2:d681 with SMTP id m25-20020a7bca59000000b003f4f7c2d681mr2294755wml.29.1685625976702;
-        Thu, 01 Jun 2023 06:26:16 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id n16-20020a1c7210000000b003f60119ee08sm2396549wmc.43.2023.06.01.06.26.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Jun 2023 06:26:16 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Peter Geis <pgwipeout@gmail.com>
-Cc: Andrew Powers-Holmes <aholmes@omnom.net>,
-	Ondrej Jirman <megi@xff.cz>,
-	stable@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: rk356x: Fix PCIe register and range mappings
-Date: Thu,  1 Jun 2023 15:25:16 +0200
-Message-Id: <20230601132516.153934-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.40.1
+	id 1q4iLQ-003gXi-1q
+	for linux-rockchip@lists.infradead.org;
+	Thu, 01 Jun 2023 13:28:01 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1q4iLJ-0005D4-Cc; Thu, 01 Jun 2023 15:27:53 +0200
+Received: from mtr by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1q4iLF-0002Wl-RG; Thu, 01 Jun 2023 15:27:49 +0200
+Date: Thu, 1 Jun 2023 15:27:49 +0200
+From: Michael Tretter <m.tretter@pengutronix.de>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	mchehab@kernel.org, m.szyprowski@samsung.com,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	kernel@pengutronix.de, nicolas.dufresne@collabora.com,
+	didi.debian@cknow.org, hverkuil-cisco@xs4all.nl
+Subject: Re: [PATCH v2] media: verisilicon: Fix crash when probing encoder
+Message-ID: <20230601132749.GA31313@pengutronix.de>
+Mail-Followup-To: Michael Tretter <m.tretter@pengutronix.de>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	mchehab@kernel.org, m.szyprowski@samsung.com,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	kernel@pengutronix.de, nicolas.dufresne@collabora.com,
+	didi.debian@cknow.org, hverkuil-cisco@xs4all.nl
+References: <20230413104756.356695-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230413104756.356695-1-benjamin.gaignard@collabora.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: mtr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_062621_331086_3A5B57CF 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20230601_062800_606496_CB1612AC 
+X-CRM114-Status: GOOD (  22.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,96 +86,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andrew Powers-Holmes <aholmes@omnom.net>
+Hi Benjamin,
 
-The register and range mappings for the PCIe controller in Rockchip's
-RK356x SoCs are incorrect. Replace them with corrected values from the
-vendor BSP sources, updated to match current DT schema.
+On Thu, 13 Apr 2023 12:47:56 +0200, Benjamin Gaignard wrote:
+> ctx->vpu_dst_fmt is no more initialized before calling hantro_try_fmt()
+> so assigne it to vpu_fmt led to crash the kernel.
+> Like for decoder case use 'fmt' as format for encoder and clean up
+> the code.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Fixes: db6f68b51e5c ("media: verisilicon: Do not set context src/dst formats in reset functions")
+> ---
+> version 2:
+> - Remove useless vpu_fmt.
+> 
+>  drivers/media/platform/verisilicon/hantro_v4l2.c | 10 +++-------
+>  1 file changed, 3 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> index 8f1414085f47..d71f79471396 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -275,7 +275,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+>  			  struct v4l2_pix_format_mplane *pix_mp,
+>  			  enum v4l2_buf_type type)
+>  {
+> -	const struct hantro_fmt *fmt, *vpu_fmt;
+> +	const struct hantro_fmt *fmt;
+>  	bool capture = V4L2_TYPE_IS_CAPTURE(type);
+>  	bool coded;
+>  
+> @@ -295,11 +295,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+>  
+>  	if (coded) {
+>  		pix_mp->num_planes = 1;
+> -		vpu_fmt = fmt;
+> -	} else if (ctx->is_encoder) {
+> -		vpu_fmt = ctx->vpu_dst_fmt;
+> -	} else {
+> -		vpu_fmt = fmt;
+> +	} else if (!ctx->is_encoder) {
+>  		/*
+>  		 * Width/height on the CAPTURE end of a decoder are ignored and
+>  		 * replaced by the OUTPUT ones.
+> @@ -311,7 +307,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+>  	pix_mp->field = V4L2_FIELD_NONE;
+>  
+>  	v4l2_apply_frmsize_constraints(&pix_mp->width, &pix_mp->height,
+> -				       &vpu_fmt->frmsize);
+> +				       &fmt->frmsize);
 
-These values are also used in u-boot.
+This causes a regression on the OUTPUT device of the encoder. fmt->frmsize is
+only valid for coded ("bitstream") formats, but fmt on the OUTPUT of an
+encoder will be a raw format. This results in width and height to be clamped
+to 0.
 
-Fixes: 66b51ea7d70f ("arm64: dts: rockchip: Add rk3568 PCIe2x1 controller")
-Cc: stable@vger.kernel.org
-Signed-off-by: Andrew Powers-Holmes <aholmes@omnom.net>
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
+I think the correct fix would be to apply the frmsize constraints of the
+currently configured coded format, but as ctx->vpu_dst_fmt is not initialized
+before calling this code, I don't know how to get the coded format.
 
-Since nobody else was gonna submit this fix on a fix, I decided
-to do it myself, based on the u-boot patch Jonas Karlman wrote.
+Michael
 
-Please test that this does not break the PCIe 3 controller on
-RK3568 hardware, I don't have the right setup to easily test it
-on there.
-
-Changes since v1:
- - Fix copy-paste error on second reg property from 0xf2000000
-   to 0xf0000000
-
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 14 ++++++++------
- arch/arm64/boot/dts/rockchip/rk356x.dtsi |  7 ++++---
- 2 files changed, 12 insertions(+), 9 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index ba67b58f05b7..f1be76a54ceb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -94,9 +94,10 @@ pcie3x1: pcie@fe270000 {
- 		power-domains = <&power RK3568_PD_PIPE>;
- 		reg = <0x3 0xc0400000 0x0 0x00400000>,
- 		      <0x0 0xfe270000 0x0 0x00010000>,
--		      <0x3 0x7f000000 0x0 0x01000000>;
--		ranges = <0x01000000 0x0 0x3ef00000 0x3 0x7ef00000 0x0 0x00100000>,
--			 <0x02000000 0x0 0x00000000 0x3 0x40000000 0x0 0x3ef00000>;
-+		      <0x0 0xf2000000 0x0 0x00100000>;
-+		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x01e00000>,
-+			 <0x03000000 0x0 0x40000000 0x3 0x40000000 0x0 0x40000000>;
- 		reg-names = "dbi", "apb", "config";
- 		resets = <&cru SRST_PCIE30X1_POWERUP>;
- 		reset-names = "pipe";
-@@ -146,9 +147,10 @@ pcie3x2: pcie@fe280000 {
- 		power-domains = <&power RK3568_PD_PIPE>;
- 		reg = <0x3 0xc0800000 0x0 0x00400000>,
- 		      <0x0 0xfe280000 0x0 0x00010000>,
--		      <0x3 0xbf000000 0x0 0x01000000>;
--		ranges = <0x01000000 0x0 0x3ef00000 0x3 0xbef00000 0x0 0x00100000>,
--			 <0x02000000 0x0 0x00000000 0x3 0x80000000 0x0 0x3ef00000>;
-+		      <0x0 0xf0000000 0x0 0x00100000>;
-+		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x01e00000>,
-+			 <0x03000000 0x0 0x40000000 0x3 0x80000000 0x0 0x40000000>;
- 		reg-names = "dbi", "apb", "config";
- 		resets = <&cru SRST_PCIE30X2_POWERUP>;
- 		reset-names = "pipe";
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index f62e0fd881a9..61680c7ac489 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -952,7 +952,7 @@ pcie2x1: pcie@fe260000 {
- 		compatible = "rockchip,rk3568-pcie";
- 		reg = <0x3 0xc0000000 0x0 0x00400000>,
- 		      <0x0 0xfe260000 0x0 0x00010000>,
--		      <0x3 0x3f000000 0x0 0x01000000>;
-+		      <0x0 0xf4000000 0x0 0x00100000>;
- 		reg-names = "dbi", "apb", "config";
- 		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
-@@ -982,8 +982,9 @@ pcie2x1: pcie@fe260000 {
- 		phys = <&combphy2 PHY_TYPE_PCIE>;
- 		phy-names = "pcie-phy";
- 		power-domains = <&power RK3568_PD_PIPE>;
--		ranges = <0x01000000 0x0 0x3ef00000 0x3 0x3ef00000 0x0 0x00100000
--			  0x02000000 0x0 0x00000000 0x3 0x00000000 0x0 0x3ef00000>;
-+		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x01e00000>,
-+			 <0x03000000 0x0 0x40000000 0x3 0x00000000 0x0 0x40000000>;
- 		resets = <&cru SRST_PCIE20_POWERUP>;
- 		reset-names = "pipe";
- 		#address-cells = <3>;
--- 
-2.40.1
-
+>  
+>  	if (!coded) {
+>  		/* Fill remaining fields */
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
