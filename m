@@ -4,66 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEA32C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 May 2023 16:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D706C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 07:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z03pcWq+ofFeISQRrL1K8l7kOlbPmyi+t7cBkFm394E=; b=VpSs44oSEnD2TVlPiwFUUv4eZI
-	Is+VGn2bqKZdeF7Z4iSp5npD7lqhP+W/OHGO89kOpVJRWGNmK08GoiM9KR0TgXZhQpwMSfvHJPxnc
-	NHEfbS+DZM/CtdOXGBdEJdJy7FfEdfrrDOvzVk+gc4BC+mBhEPBO84OPSoqXphlR5jInZXa9gg5nM
-	hthRdomZdKnoabxsuLbcN3WjGBUFYorAVxIgryP/FE9WqdxnDQQjp6cgX3WwwUxnkS0oz3FkT6Qmw
-	CUeYiwGvUDScwZQWUbpavGY0MhP+QpDqu3uu0AXpInW4g9zKOUzove5jDYRW/Q83pDiEIDalgMT+X
-	gT2FQHDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fGiRy+xT5u9VHCr9af72PaePowhZUijgJhhgj8eGdhc=; b=LymlEZnDw+h1A7
+	6cZi/o59+QH9zc3snwWcpM98YoT0ichT7Ho/JD6FvYTM28ahDVkARHUu0cS6ozVJaqqeF+ZR0I3vi
+	8vUOKLAETzElx6nNFi21rgrztQRSJP4yusmRjI/KVhY5V9QZYaOZzQORT/Z4Q7HYyxqQqaQ15F+cl
+	G8ME3Z6EdbtKFIRvUfrD80FpOzrX/EYDo+jHOIHaIrSfNGmKCZV/7o3joWBbiPJoeKFbsWSq2tEM7
+	UKNjrYwOZtpcJAcaPJB+6j5GlQ4Ex2p6Hf6sMKT7GODlPn9H/TduaNHnnuMv0IlT04YgxSd2iW8BY
+	7N9vOIm0pQl2Nen4a2CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Okh-000U2L-36;
-	Wed, 31 May 2023 16:32:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q4co1-002NH6-1l;
+	Thu, 01 Jun 2023 07:33:09 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4Okf-000U1U-1T
+	id 1q4cny-002NG7-1g
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 May 2023 16:32:46 +0000
-Received: from mercury (dyndsl-091-248-214-208.ewe-ip-backbone.de [91.248.214.208])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F7206606EB5;
-	Wed, 31 May 2023 17:32:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685550761;
-	bh=iGVlFFWrXlHprpv4RXq3dpJKVALQai2pERiadBlBG7w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HyoKutGysF/etl5J5nl3c891hWPGPMW7npbBGAB8c91HlZXs14c2889HHEn7Hgm/y
-	 D60QydZT9+cQUlAKIqv1e6rXbI6Z1xoBSYwpjKcIRXlpHGhbJnp11TA4w3jgbtu07V
-	 VnIWCjZjnPzdbUFeUglwzholxfQ3zcnAdRqaKsxiVA0sve0ZIEdqz+G5+HnFBv62nP
-	 I7fO8jtw9zft0W3fU29Xb2tDBcmnLB2Acs4n41Jq5ER1hlAzv14l5UcG6iagvPagrX
-	 nIHVqX5bUVFNAnEvy9gjagUOBD1fSNO2dBwNNUMBu+ktvpR3aqZ7hA/nmm+Zj+6yh1
-	 RQ4Ng61nrClpA==
-Received: by mercury (Postfix, from userid 1000)
-	id BA25010607D5; Wed, 31 May 2023 18:32:38 +0200 (CEST)
-Date: Wed, 31 May 2023 18:32:38 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	lucas.tanure@collabora.com, kever.yang@rock-chips.com,
-	yifeng.zhao@rock-chips.com, andyshrk@163.com,
-	jagan@amarulasolutions.com, heiko@sntech.de, conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	broonie@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V2 2/5] arm64: dts: rockchip: Add sdio node to rk3588
-Message-ID: <20230531163238.blpv77h5j7ymdhyp@mercury.elektranox.org>
-References: <20230531161220.280744-1-macroalpha82@gmail.com>
- <20230531161220.280744-3-macroalpha82@gmail.com>
+	Thu, 01 Jun 2023 07:33:07 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 999D883CB1; Thu,  1 Jun 2023 08:33:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1685604784; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=lLbM5uZFh4xJtlY0zyFE6KLKLccP3LsHNaCLXGL6nZqn/jTNMimWAH8aPMgxzWt+v
+	 XRy8DIAzy1ng1OxALOaJTjSRih9Wl91kB6UjdObNBVuT5glGq5yuyjW80Dzng4ilDa
+	 J6097FY+XNpQaED0Bi8MYLSK/jKhqdAO0+p3Js/3UdCE1HlM4wBSS/6DLGaz1+Kxor
+	 JQba2DPQVlBwNHV31HhGW53UWzhEgXElpN3udyCDO/d+4Sh2tGdAMgZbx2PzHmP9mc
+	 TGFQAxx0ezs9pKcJAuinet/bIcqh+P/+0JCVS8isOGWiYQTMmIPm+WHFtQg1ng9RqP
+	 YtBa0io178t+w==
+Received: by mail.lokoho.com for <linux-rockchip@lists.infradead.org>; Thu,  1 Jun 2023 07:30:57 GMT
+Message-ID: <20230601074503-0.1.6c.2g5cm.0.6q322egcg7@lokoho.com>
+Date: Thu,  1 Jun 2023 07:30:57 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-In-Reply-To: <20230531161220.280744-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230531_093245_627003_65FC01FB 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20230601_003306_700291_C90A739E 
+X-CRM114-Status: UNSURE (   1.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,103 +61,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8726575058573389216=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============8726575058573389216==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7hwyf2s256c2xbfz"
-Content-Disposition: inline
-
-
---7hwyf2s256c2xbfz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Wed, May 31, 2023 at 11:12:17AM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add SDIO node for rk3588/rk3588s.
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/=
-dts/rockchip/rk3588s.dtsi
-> index 571cdec24a66..6335d5648bc3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -1176,6 +1176,21 @@ sdmmc: mmc@fe2c0000 {
->  		status =3D "disabled";
->  	};
-> =20
-> +	sdio: mmc@fe2d0000 {
-> +		compatible =3D "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
-> +		reg =3D <0x00 0xfe2d0000 0x00 0x4000>;
-> +		interrupts =3D <GIC_SPI 204 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks =3D <&cru HCLK_SDIO>, <&cru CCLK_SRC_SDIO>,
-> +			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-> +		clock-names =3D "biu", "ciu", "ciu-drive", "ciu-sample";
-> +		fifo-depth =3D <0x100>;
-> +		max-frequency =3D <200000000>;
-> +		pinctrl-names =3D "default";
-> +		pinctrl-0 =3D <&sdiom1_pins>;
-> +		power-domains =3D <&power RK3588_PD_SDIO>;
-> +		status =3D "disabled";
-> +	};
-> +
->  	sdhci: mmc@fe2e0000 {
->  		compatible =3D "rockchip,rk3588-dwcmshc";
->  		reg =3D <0x0 0xfe2e0000 0x0 0x10000>;
-> --=20
-> 2.34.1
->=20
-
---7hwyf2s256c2xbfz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmR3dqYACgkQ2O7X88g7
-+ppttg//f6n//QEiTEixajOWkoTYJt2pfRrGFyFz67UTeEP3N9tcB7H3i9IalSGD
-wV1YtDfFvYi06qRJ1TCZSDjGJf8ZF/GP+GzqAxY2v0jaWskpAkEyhocjJR/6g4Ex
-U+8FW9wuZrvVFzStoZdsJ5hxTK2ZHx6SHE7QdHkzZRbnZGrqfKHCVjnO5gCnzPkG
-pvKDtuB92OH6+t67fslXYEph7j5lV6KZ/TTqEo1+Gx8G3l1Y5iz0Hma3cXKwnsRZ
-kk4r/RN5vIHg0bl01XK8Y4ZysbBjbJIZ+yM2T7ON6DuDprQYbTurhGoDCY9DVkBs
-ajaH5CgjQWOzGAzjZZh4A502+8YN9IodYf5V6W03SuZhVethdpO5OAT6RZJ9Opth
-dX1a6xrzt39U9NR8aEAZ2c2K5Z7dsZZ9vPMZ9L98bFay9aALANFlcL9PsowuQc+H
-qOGc8fTiBptEYphMHwTF3RpB4watWvhvi6hEmwg45YtRDvFr9ix2Zt1FUZpoEVks
-TDD8mPAZMqMh4wLq+7mN+sFFx8svpVPrS+0APqWdUQ9GRncrn/HUHBgg6kiIudUP
-4/d3ZZdKLlM/FWAh/vIsW7fGqECrs/wfOAN/18En0Nl295/8w1mifDYItmii50Kx
-Sx0knuGYS8CgRwE0ABfzqaSwMCbpPr/ml0LBZVRntXXgr+1S5pI=
-=r1hM
------END PGP SIGNATURE-----
-
---7hwyf2s256c2xbfz--
-
-
---===============8726575058573389216==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8726575058573389216==--
-
+RHppZcWEIGRvYnJ5LAoKemFwb3puYcWCZW0gc2nEmSB6IFBhxYRzdHdhIG9mZXJ0xIUgaSB6IHBy
+enlqZW1ub8WbY2nEhSBwcnp5em5hasSZLCDFvGUgcHJ6eWNpxIVnYSB1d2FnxJkgaSB6YWNoxJlj
+YSBkbyBkYWxzenljaCByb3ptw7N3LiAKClBvbXnFm2xhxYJlbSwgxbxlIG1vxbxlIG3Ds2fFgmJ5
+bSBtaWXEhyBzd8OzaiB3a8WCYWQgdyBQYcWEc3R3YSByb3p3w7NqIGkgcG9tw7NjIGRvdHJ6ZcSH
+IHogdMSFIG9mZXJ0xIUgZG8gd2nEmWtzemVnbyBncm9uYSBvZGJpb3Jjw7N3LiBQb3p5Y2pvbnVq
+xJkgc3Ryb255IHd3dywgZHppxJlraSBjemVtdSBnZW5lcnVqxIUgxZt3aWV0bnkgcnVjaCB3IHNp
+ZWNpLgoKTW/FvGVteSBwb3Jvem1hd2lhxIcgdyBuYWpibGnFvHN6eW0gY3phc2llPwoKClBvemRy
+YXdpYW0KQWRhbSBDaGFyYWNodXRhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
