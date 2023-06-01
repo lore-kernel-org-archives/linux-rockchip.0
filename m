@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D733DC77B7E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 19:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB0F7C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 19:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0hLvbFRBMiXEZpx1Co3m3fE+lTWnz2AllxprSmexwBg=; b=Vm+IwudpqFjpQj
-	Lsgv3s9J67SmAsTQOSbAN+P7lk4a0dTsREQ7B62V1iUYTLeHsFgVqe9RvesXHunMbtM8WojU1uvyh
-	cFGDpHrCnAon7MbcpA+8Rz34bTZLdoO2imKbr30RVkRvzWzBmxTTX3kWUg5vs06IqoWhnoOKOe73E
-	VgS6hKmiWREFxbC7rfm/ipkhsMF1Az+t5tr+OTtIlJIIo33YYkkYIJNIS67Y+N0YTzF1nSlAKtPox
-	nvjkQSvtwyRtRr5EPaOh1IQHDof0y2QmRmu32UPaCvSQViWT7nrGoY1dQC+efz7P02pNvaPnDsCP5
-	2n9PzUf9sK212j469Kvw==;
+	List-Owner; bh=r6qYmb++cqGc4grZUM/UipVtAd8t9GYa49CGfRwJmSI=; b=mPtDT35lAiWWul
+	EEqGeBZRzlkV2IcMRpdR1R6F2YzLXbEgP/l/V4rxF90c7GKl+SnajP/m+ctKZWLJ6k0gPZY/0IVkY
+	21mvHI0vKKHlB9zUUUks4rN4nshXmmLfHuGB7aP6axwCtnoV9ziFtea2MRWza1foGp/4LCCGbSZCi
+	B8C0aPaoF4iS+BTOdlsmPI6qQaacZq9VSpu3w296srFSiG9u37iv44fpt3u1IOkq71HoF/N4CKUpP
+	ThAqX4dIJwbL2VcFTw6ltaOvZkoujgnsQgbeAvZd1W21JYqIC9XBdCR26IJ63V93RsxMeFCgC4eBv
+	IoJypYNpb+doe/fLHHhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4oHB-004mDK-08;
-	Thu, 01 Jun 2023 19:48:01 +0000
+	id 1q4oN2-004n4E-0A;
+	Thu, 01 Jun 2023 19:54:04 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4oH6-004mBV-08;
-	Thu, 01 Jun 2023 19:47:58 +0000
+	id 1q4oMy-004n2T-0M;
+	Thu, 01 Jun 2023 19:54:01 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D19C71063;
-	Thu,  1 Jun 2023 12:48:36 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EF2051063;
+	Thu,  1 Jun 2023 12:54:40 -0700 (PDT)
 Received: from [10.57.84.85] (unknown [10.57.84.85])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 788933F7BD;
-	Thu,  1 Jun 2023 12:47:43 -0700 (PDT)
-Message-ID: <67a01c3f-9495-d586-1fee-4fd6161cadd9@arm.com>
-Date: Thu, 1 Jun 2023 20:47:28 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C2A163F7BD;
+	Thu,  1 Jun 2023 12:53:48 -0700 (PDT)
+Message-ID: <ef78fd49-4609-b947-b26d-f3f5ac66178f@arm.com>
+Date: Thu, 1 Jun 2023 20:53:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
  Thunderbird/102.11.2
-Subject: Re: [PATCH v2 25/25] iommu: Convert remaining simple drivers to
- domain_alloc_paging()
+Subject: Re: [PATCH v2 09/25] iommu/fsl_pamu: Implement an IDENTITY domain
 Content-Language: en-GB
-To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Bjorn Andersson <andersson@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Baolin Wang <baolin.wang@linux.alibaba.com>,
  Christophe Leroy <christophe.leroy@csgroup.eu>,
@@ -66,17 +65,17 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>, Dmitry Osipenko <digetx@gmail.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-References: <25-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+ Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>,
+ Dmitry Osipenko <digetx@gmail.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Steven Price
+ <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
+References: <9-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+ <84aa0f5e-f13d-40f5-abe6-e8ac231e2d95@arm.com> <ZHj1kXMMf5iqxXOV@nvidia.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <25-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <ZHj1kXMMf5iqxXOV@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_124756_172290_E34E483D 
-X-CRM114-Status: GOOD (  25.14  )
+X-CRM114-CacheID: sfid-20230601_125400_268243_67691865 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,181 +92,56 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-05-16 01:00, Jason Gunthorpe wrote:
-> These drivers don't support IOMMU_DOMAIN_DMA, so this commit effectively
-> allows them to support that mode.
+On 2023-06-01 20:46, Jason Gunthorpe wrote:
+> On Thu, Jun 01, 2023 at 08:37:45PM +0100, Robin Murphy wrote:
+>> On 2023-05-16 01:00, Jason Gunthorpe wrote:
+>>> Robin was able to check the documentation and what fsl_pamu has
+>>> historically called detach_dev() is really putting the IOMMU into an
+>>> IDENTITY mode.
+>>
+>> Unfortunately it was the other way around - it's the call to
+>> fsl_setup_liodns() from fsl_pamu_probe() which leaves everything in bypass
+>> by default (the PAACE_ATM_NO_XLATE part, IIRC), whereas the detach_device()
+>> call here ends up disabling the given device's LIODN altogether
 > 
-> The prior work to require default_domains makes this safe because every
-> one of these drivers is either compilation incompatible with dma-iommu.c,
-> or already establishing a default_domain. In both cases alloc_domain()
-> will never be called with IOMMU_DOMAIN_DMA for these drivers so it is safe
-> to drop the test.
-> 
-> Removing these tests clarifies that the domain allocation path is only
-> about the functionality of a paging domain and has nothing to do with
-> policy of how the paging domain is used for UNMANAGED/DMA/DMA_FQ.
-> 
-> Tested-by: Niklas Schnelle <schnelle@linux.ibm.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/fsl_pamu_domain.c | 7 ++-----
->   drivers/iommu/msm_iommu.c       | 7 ++-----
->   drivers/iommu/mtk_iommu_v1.c    | 7 ++-----
->   drivers/iommu/omap-iommu.c      | 7 ++-----
->   drivers/iommu/s390-iommu.c      | 7 ++-----
->   5 files changed, 10 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
-> index ca4f5ebf028783..8d5d6a3acf9dfd 100644
-> --- a/drivers/iommu/fsl_pamu_domain.c
-> +++ b/drivers/iommu/fsl_pamu_domain.c
-> @@ -192,13 +192,10 @@ static void fsl_pamu_domain_free(struct iommu_domain *domain)
->   	kmem_cache_free(fsl_pamu_domain_cache, dma_domain);
->   }
->   
-> -static struct iommu_domain *fsl_pamu_domain_alloc(unsigned type)
-> +static struct iommu_domain *fsl_pamu_domain_alloc_paging(struct device *dev)
+> Er, I see.. Let me think about it, you convinced me to change it from
+> PLATFORM, so maybe we should go back to that if it is all wonky.
 
-This isn't a paging domain - it doesn't support map/unmap, and AFAICT 
-all it has ever been intended to do is "isolate" accesses to within an 
-aperture which is never set to anything less than the entire physical 
-address space :/
+FWIW I was thinking more along the lines of a token nominal identity 
+domain where attach does nothing at all...
 
-I hate to imagine what the VFIO userspace applications looked like...
+>> There doesn't appear to have ever been any code anywhere for putting
+>> things *back* into bypass after using a VFIO domain, so as-is these
+>> default domains would probably break all DMA :(
+> 
+> Sounds like it just never worked right.
+> 
+> ie going to VFIO mode was always a one way trip and you can't go back
+> to a kernel driver.
+
+...on the assumption that doing so wouldn't really be any less broken 
+than it always has been :)
 
 Thanks,
 Robin.
 
->   {
->   	struct fsl_dma_domain *dma_domain;
->   
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> -		return NULL;
-> -
->   	dma_domain = kmem_cache_zalloc(fsl_pamu_domain_cache, GFP_KERNEL);
->   	if (!dma_domain)
->   		return NULL;
-> @@ -476,7 +473,7 @@ static const struct iommu_ops fsl_pamu_ops = {
->   	.identity_domain = &fsl_pamu_identity_domain,
->   	.def_domain_type = &fsl_pamu_def_domain_type,
->   	.capable	= fsl_pamu_capable,
-> -	.domain_alloc	= fsl_pamu_domain_alloc,
-> +	.domain_alloc_paging = fsl_pamu_domain_alloc_paging,
->   	.probe_device	= fsl_pamu_probe_device,
->   	.device_group   = fsl_pamu_device_group,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
-> diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-> index 26ed81cfeee897..a163cee0b7242d 100644
-> --- a/drivers/iommu/msm_iommu.c
-> +++ b/drivers/iommu/msm_iommu.c
-> @@ -302,13 +302,10 @@ static void __program_context(void __iomem *base, int ctx,
->   	SET_M(base, ctx, 1);
->   }
->   
-> -static struct iommu_domain *msm_iommu_domain_alloc(unsigned type)
-> +static struct iommu_domain *msm_iommu_domain_alloc_paging(struct device *dev)
->   {
->   	struct msm_priv *priv;
->   
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> -		return NULL;
-> -
->   	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
->   	if (!priv)
->   		goto fail_nomem;
-> @@ -691,7 +688,7 @@ irqreturn_t msm_iommu_fault_handler(int irq, void *dev_id)
->   
->   static struct iommu_ops msm_iommu_ops = {
->   	.identity_domain = &msm_iommu_identity_domain,
-> -	.domain_alloc = msm_iommu_domain_alloc,
-> +	.domain_alloc_paging = msm_iommu_domain_alloc_paging,
->   	.probe_device = msm_iommu_probe_device,
->   	.device_group = generic_device_group,
->   	.pgsize_bitmap = MSM_IOMMU_PGSIZES,
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 7c0c1d50df5f75..67e044c1a7d93b 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -270,13 +270,10 @@ static int mtk_iommu_v1_domain_finalise(struct mtk_iommu_v1_data *data)
->   	return 0;
->   }
->   
-> -static struct iommu_domain *mtk_iommu_v1_domain_alloc(unsigned type)
-> +static struct iommu_domain *mtk_iommu_v1_domain_alloc_paging(struct device *dev)
->   {
->   	struct mtk_iommu_v1_domain *dom;
->   
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> -		return NULL;
-> -
->   	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
->   	if (!dom)
->   		return NULL;
-> @@ -585,7 +582,7 @@ static int mtk_iommu_v1_hw_init(const struct mtk_iommu_v1_data *data)
->   
->   static const struct iommu_ops mtk_iommu_v1_ops = {
->   	.identity_domain = &mtk_iommu_v1_identity_domain,
-> -	.domain_alloc	= mtk_iommu_v1_domain_alloc,
-> +	.domain_alloc_paging = mtk_iommu_v1_domain_alloc_paging,
->   	.probe_device	= mtk_iommu_v1_probe_device,
->   	.probe_finalize = mtk_iommu_v1_probe_finalize,
->   	.release_device	= mtk_iommu_v1_release_device,
-> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-> index 34340ef15241bc..fcf99bd195b32e 100644
-> --- a/drivers/iommu/omap-iommu.c
-> +++ b/drivers/iommu/omap-iommu.c
-> @@ -1580,13 +1580,10 @@ static struct iommu_domain omap_iommu_identity_domain = {
->   	.ops = &omap_iommu_identity_ops,
->   };
->   
-> -static struct iommu_domain *omap_iommu_domain_alloc(unsigned type)
-> +static struct iommu_domain *omap_iommu_domain_alloc_paging(struct device *dev)
->   {
->   	struct omap_iommu_domain *omap_domain;
->   
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> -		return NULL;
-> -
->   	omap_domain = kzalloc(sizeof(*omap_domain), GFP_KERNEL);
->   	if (!omap_domain)
->   		return NULL;
-> @@ -1748,7 +1745,7 @@ static struct iommu_group *omap_iommu_device_group(struct device *dev)
->   
->   static const struct iommu_ops omap_iommu_ops = {
->   	.identity_domain = &omap_iommu_identity_domain,
-> -	.domain_alloc	= omap_iommu_domain_alloc,
-> +	.domain_alloc_paging = omap_iommu_domain_alloc_paging,
->   	.probe_device	= omap_iommu_probe_device,
->   	.release_device	= omap_iommu_release_device,
->   	.device_group	= omap_iommu_device_group,
-> diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
-> index f0c867c57a5b9b..5695ad71d60e24 100644
-> --- a/drivers/iommu/s390-iommu.c
-> +++ b/drivers/iommu/s390-iommu.c
-> @@ -39,13 +39,10 @@ static bool s390_iommu_capable(struct device *dev, enum iommu_cap cap)
->   	}
->   }
->   
-> -static struct iommu_domain *s390_domain_alloc(unsigned domain_type)
-> +static struct iommu_domain *s390_domain_alloc_paging(struct device *dev)
->   {
->   	struct s390_domain *s390_domain;
->   
-> -	if (domain_type != IOMMU_DOMAIN_UNMANAGED)
-> -		return NULL;
-> -
->   	s390_domain = kzalloc(sizeof(*s390_domain), GFP_KERNEL);
->   	if (!s390_domain)
->   		return NULL;
-> @@ -447,7 +444,7 @@ void zpci_destroy_iommu(struct zpci_dev *zdev)
->   static const struct iommu_ops s390_iommu_ops = {
->   	.default_domain = &s390_iommu_platform_domain,
->   	.capable = s390_iommu_capable,
-> -	.domain_alloc = s390_domain_alloc,
-> +	.domain_alloc_paging = s390_domain_alloc_paging,
->   	.probe_device = s390_iommu_probe_device,
->   	.release_device = s390_iommu_release_device,
->   	.device_group = generic_device_group,
+> I don't think this patch makes it worse because we call the identity
+> attach_dev in all the same places we called detach_dev in the first
+> place.
+> 
+> We add an extra call at the start of time, but that call is NOP'd
+> by this:
+> 
+>>> 	if (domain == platform_domain || !domain)
+>>> +		return 0;
+>>> +
+> 
+> (bah, and the variable name needs updating too)
+> 
+> Honestly, I don't really want to fix FSL since it seems abandoned, so
+> either this patch or going back to PLATFORM seems like the best option.
+> 
+> Jason
 
 _______________________________________________
 Linux-rockchip mailing list
