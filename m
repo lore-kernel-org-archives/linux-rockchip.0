@@ -4,66 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4977C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 14:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FC5C77B7E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jun 2023 16:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fj2AysggpR5xvBeVxL3gPgL7Qqnt9X5WUDwTiy65HaA=; b=M3k/6xKFsSuPeaT1XDAPFqSiOT
-	hwUxHs87xGrqX/4K/oy68ROg6hzl2VBiJdauuf1t+NyYTwNldA6Cc2rbqJ+CzxwwW+v7DH7PTyHBL
-	j88oShW6XfWDJKllqZ4JLDinD4jy++prXPAF6fwxNukQUYbrqhOIC82dKRYX0O4RmtpTziEl121D7
-	F1xwAACqUonUnu7Z4CEfR/paxGLtUZdg3txDZcqDUSX/TzeBeFWm/AIvhw1RYJOql2ykAoCWvNPd0
-	kF/wxoB6PiTKZVNCG8PUtdM1wfOrNOIB9TAoBzvZkwa0oCGL2lmiWSE7T9qEZey9GiQlvxFVLIwTa
-	UIXVvwdg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CLCHKSLSMxmmX31hhy9Hloq8bJg9sjN1m7SWr9PYfAc=; b=IFmgoobmpENuOPL4ADt06zQeKJ
+	mRD7WKeS+IZPYOvwwfeI3odLp32R+N54H7HrQXM9xnYtCMPJ9ZZOziP4LuuEtz6f4Nt8XnnOhWvIG
+	ehAabxghtAz57e+1wQZKVH+zkStjZ1ZpVQ1n/uBm6An05l83LQB7YEiQFHywbDfsh3BOnKGoT5v4j
+	JrbIi1qDi6dJeXzmx9HhVPUCKNB/1QWDYFe+ScE7wnJ45j4dIrmQ6CdMCQo2ZTsz1dbvioU6NrS7+
+	EoiaEbNkNCLKtftulUS3rNNEf5m4YjL8lkrC7W/eFHMZ960U5TdOiwokkUc6PHz4KDxKa9hSIQdxT
+	KwiSePbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4iyT-003mgc-2y;
-	Thu, 01 Jun 2023 14:08:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q4lWG-004JSG-0G;
+	Thu, 01 Jun 2023 16:51:24 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q4iyR-003mem-0m
-	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Jun 2023 14:08:20 +0000
-Received: from [IPV6:2a01:e0a:120:3210:7d6d:c387:79e6:807d] (unknown [IPv6:2a01:e0a:120:3210:7d6d:c387:79e6:807d])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4DF5A6602B7B;
-	Thu,  1 Jun 2023 15:08:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685628495;
-	bh=2JX/h/DWYtco3A+ZzzUhtQVY2buJesqRTANDsE9Karg=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=AdhYBi04g2Qg9LTs2O+2XUaB4NuEQ6mmKE8Pn5mgMBKmFuR0XyMlkKJXGGpGzCqxJ
-	 lUsf0TsUjT3YfNnfHc5uHxa3F+ikAhbvlbSKWJT3vD4IHXs2yGWhX5x1ZYcmoN27Ht
-	 4yi4jTd8GoevXhBfh8gn6PLEfgvjqQO6nCN5IBBGOE/27ehPYEaVOmxlhl/Xjop4J/
-	 u2jvhYI5QQWTvF9sUT0ZsUqwY7ONrTmRVKiRBOumAq/E0k/QfhxMTUtVcGaN6RYZu1
-	 KGsBWERn+kdZHs/wbdnJmEY8tTy4QsQMFGFUIAoQVi6PldcoJBMjulsYv/2+1nFgjE
-	 ZGWwZiBkHBGXQ==
-Message-ID: <2a892e71-f1be-41eb-5397-87484db7d592@collabora.com>
-Date: Thu, 1 Jun 2023 16:08:13 +0200
+	id 1q4lWB-004JPi-14;
+	Thu, 01 Jun 2023 16:51:20 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-96fab30d1e1so252295266b.0;
+        Thu, 01 Jun 2023 09:51:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685638275; x=1688230275;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=E6aw7YI0APlK+a4Ho7hkA2bZ/IE4Hfe3r+p1hUTo22w=;
+        b=P5K1gIvm5lMpyivClcYlSPpZk74Scq23UC7J49ZKXtd2Ty5NCk14Pzlmiw6G4TAT4e
+         R1SGrpIa7IOeMrrklx7UG2tAsiq9TFD4L8+GH42Zwqhfq/57kAkCKDh9e1B9u0uiq27N
+         Z2+cMvWVhGdpGqS04+8eMH1XROW5TNrSoWp21DvbX4Cljkzg06zAxgkEeZxXqtAHLxHn
+         Ukmg1ow9zsxYl1omDwPfgFBfHdDY/RlrCywsx1cRypvE8ktrFFqeuPghyapZVqcnmPfd
+         pHVao4wq68V+9Udu892pd4CZQNueuUSskC33wv4222J7q5LLmeCFeujIxSJZqtaz7HbM
+         QbBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685638275; x=1688230275;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=E6aw7YI0APlK+a4Ho7hkA2bZ/IE4Hfe3r+p1hUTo22w=;
+        b=F83FRO8gobdVdzD7wlxZo7NI+bUBoHnl5CBZTklzdzVBbGbjgfpb+E1h+NPmN704WC
+         1CIWB9GnrJqTFEkP0h5Ion/RqsdYJXVbINcESIX3CKSNnMw2ochRTNIiuyMpE5Z7P6Es
+         5TMyFlKgklskD3pXNwC/6jHR/wQqeFyPpqnYoN7HrDQFp79IeEX05onzBuevOc+7yZT9
+         eJvSm8MmL65Fie/97Xu0j5dLLSKhYP3IpOPE5MzbSiJi/lzH1+xIaylJE3ixHGeLM2cT
+         zUDAzzeIgbl37NGhPnKnRC6ybPgnCR/unYidj6z8jAneDGNowgzhvSf/Mao2tRdxfioE
+         fItg==
+X-Gm-Message-State: AC+VfDxHy7fgUPQf8XKtGjcloIL+xqwY5ngxQhfmZLWWjZRW3Z8mphkC
+	6Ppq3eiYvHs1iNGU2PnRDTs=
+X-Google-Smtp-Source: ACHHUZ6tapSBvaY3YL2Ex5VOuVrYb3aIm5DVnhvBJZ6q0GGzp5g+K/kybtTX/EWGyJOG95QWxE5s1Q==
+X-Received: by 2002:a17:907:7f15:b0:94a:4e86:31bc with SMTP id qf21-20020a1709077f1500b0094a4e8631bcmr2589785ejc.13.1685638274568;
+        Thu, 01 Jun 2023 09:51:14 -0700 (PDT)
+Received: from orome (p200300e41f305300f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f30:5300:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id s7-20020a170906c30700b0094f410225c7sm10744283ejz.169.2023.06.01.09.51.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Jun 2023 09:51:14 -0700 (PDT)
+Date: Thu, 1 Jun 2023 18:51:11 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v2 05/25] iommu/tegra-gart: Remove tegra-gart
+Message-ID: <ZHjMf9_uunlvVWtB@orome>
+References: <0-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+ <5-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2] media: verisilicon: Fix crash when probing encoder
-Content-Language: en-US
-To: Michael Tretter <m.tretter@pengutronix.de>,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- m.szyprowski@samsung.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, kernel@pengutronix.de, nicolas.dufresne@collabora.com,
- didi.debian@cknow.org, hverkuil-cisco@xs4all.nl
-References: <20230413104756.356695-1-benjamin.gaignard@collabora.com>
- <20230601132749.GA31313@pengutronix.de>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20230601132749.GA31313@pengutronix.de>
+In-Reply-To: <5-v2-8d1dc464eac9+10f-iommu_all_defdom_jgg@nvidia.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230601_070819_478857_7DAE89C8 
-X-CRM114-Status: GOOD (  20.99  )
+X-CRM114-CacheID: sfid-20230601_095119_393928_630491B9 
+X-CRM114-Status: GOOD (  26.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +120,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============7826800467277694403=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDAxLzA2LzIwMjMgw6AgMTU6MjcsIE1pY2hhZWwgVHJldHRlciBhIMOpY3JpdMKgOgo+IEhp
-IEJlbmphbWluLAo+Cj4gT24gVGh1LCAxMyBBcHIgMjAyMyAxMjo0Nzo1NiArMDIwMCwgQmVuamFt
-aW4gR2FpZ25hcmQgd3JvdGU6Cj4+IGN0eC0+dnB1X2RzdF9mbXQgaXMgbm8gbW9yZSBpbml0aWFs
-aXplZCBiZWZvcmUgY2FsbGluZyBoYW50cm9fdHJ5X2ZtdCgpCj4+IHNvIGFzc2lnbmUgaXQgdG8g
-dnB1X2ZtdCBsZWQgdG8gY3Jhc2ggdGhlIGtlcm5lbC4KPj4gTGlrZSBmb3IgZGVjb2RlciBjYXNl
-IHVzZSAnZm10JyBhcyBmb3JtYXQgZm9yIGVuY29kZXIgYW5kIGNsZWFuIHVwCj4+IHRoZSBjb2Rl
-Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25h
-cmRAY29sbGFib3JhLmNvbT4KPj4gVGVzdGVkLWJ5OiBNYXJlayBTenlwcm93c2tpIDxtLnN6eXBy
-b3dza2lAc2Ftc3VuZy5jb20+Cj4+IEZpeGVzOiBkYjZmNjhiNTFlNWMgKCJtZWRpYTogdmVyaXNp
-bGljb246IERvIG5vdCBzZXQgY29udGV4dCBzcmMvZHN0IGZvcm1hdHMgaW4gcmVzZXQgZnVuY3Rp
-b25zIikKPj4gLS0tCj4+IHZlcnNpb24gMjoKPj4gLSBSZW1vdmUgdXNlbGVzcyB2cHVfZm10Lgo+
-Pgo+PiAgIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Y0bDIuYyB8
-IDEwICsrKy0tLS0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA3IGRl
-bGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJp
-c2lsaWNvbi9oYW50cm9fdjRsMi5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm9fdjRsMi5jCj4+IGluZGV4IDhmMTQxNDA4NWY0Ny4uZDcxZjc5NDcxMzk2IDEwMDY0
-NAo+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwy
-LmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fdjRs
-Mi5jCj4+IEBAIC0yNzUsNyArMjc1LDcgQEAgc3RhdGljIGludCBoYW50cm9fdHJ5X2ZtdChjb25z
-dCBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+PiAgIAkJCSAgc3RydWN0IHY0bDJfcGl4X2Zvcm1h
-dF9tcGxhbmUgKnBpeF9tcCwKPj4gICAJCQkgIGVudW0gdjRsMl9idWZfdHlwZSB0eXBlKQo+PiAg
-IHsKPj4gLQljb25zdCBzdHJ1Y3QgaGFudHJvX2ZtdCAqZm10LCAqdnB1X2ZtdDsKPj4gKwljb25z
-dCBzdHJ1Y3QgaGFudHJvX2ZtdCAqZm10Owo+PiAgIAlib29sIGNhcHR1cmUgPSBWNEwyX1RZUEVf
-SVNfQ0FQVFVSRSh0eXBlKTsKPj4gICAJYm9vbCBjb2RlZDsKPj4gICAKPj4gQEAgLTI5NSwxMSAr
-Mjk1LDcgQEAgc3RhdGljIGludCBoYW50cm9fdHJ5X2ZtdChjb25zdCBzdHJ1Y3QgaGFudHJvX2N0
-eCAqY3R4LAo+PiAgIAo+PiAgIAlpZiAoY29kZWQpIHsKPj4gICAJCXBpeF9tcC0+bnVtX3BsYW5l
-cyA9IDE7Cj4+IC0JCXZwdV9mbXQgPSBmbXQ7Cj4+IC0JfSBlbHNlIGlmIChjdHgtPmlzX2VuY29k
-ZXIpIHsKPj4gLQkJdnB1X2ZtdCA9IGN0eC0+dnB1X2RzdF9mbXQ7Cj4+IC0JfSBlbHNlIHsKPj4g
-LQkJdnB1X2ZtdCA9IGZtdDsKPj4gKwl9IGVsc2UgaWYgKCFjdHgtPmlzX2VuY29kZXIpIHsKPj4g
-ICAJCS8qCj4+ICAgCQkgKiBXaWR0aC9oZWlnaHQgb24gdGhlIENBUFRVUkUgZW5kIG9mIGEgZGVj
-b2RlciBhcmUgaWdub3JlZCBhbmQKPj4gICAJCSAqIHJlcGxhY2VkIGJ5IHRoZSBPVVRQVVQgb25l
-cy4KPj4gQEAgLTMxMSw3ICszMDcsNyBAQCBzdGF0aWMgaW50IGhhbnRyb190cnlfZm10KGNvbnN0
-IHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4+ICAgCXBpeF9tcC0+ZmllbGQgPSBWNEwyX0ZJRUxE
-X05PTkU7Cj4+ICAgCj4+ICAgCXY0bDJfYXBwbHlfZnJtc2l6ZV9jb25zdHJhaW50cygmcGl4X21w
-LT53aWR0aCwgJnBpeF9tcC0+aGVpZ2h0LAo+PiAtCQkJCSAgICAgICAmdnB1X2ZtdC0+ZnJtc2l6
-ZSk7Cj4+ICsJCQkJICAgICAgICZmbXQtPmZybXNpemUpOwo+IFRoaXMgY2F1c2VzIGEgcmVncmVz
-c2lvbiBvbiB0aGUgT1VUUFVUIGRldmljZSBvZiB0aGUgZW5jb2Rlci4gZm10LT5mcm1zaXplIGlz
-Cj4gb25seSB2YWxpZCBmb3IgY29kZWQgKCJiaXRzdHJlYW0iKSBmb3JtYXRzLCBidXQgZm10IG9u
-IHRoZSBPVVRQVVQgb2YgYW4KPiBlbmNvZGVyIHdpbGwgYmUgYSByYXcgZm9ybWF0LiBUaGlzIHJl
-c3VsdHMgaW4gd2lkdGggYW5kIGhlaWdodCB0byBiZSBjbGFtcGVkCj4gdG8gMC4KPgo+IEkgdGhp
-bmsgdGhlIGNvcnJlY3QgZml4IHdvdWxkIGJlIHRvIGFwcGx5IHRoZSBmcm1zaXplIGNvbnN0cmFp
-bnRzIG9mIHRoZQo+IGN1cnJlbnRseSBjb25maWd1cmVkIGNvZGVkIGZvcm1hdCwgYnV0IGFzIGN0
-eC0+dnB1X2RzdF9mbXQgaXMgbm90IGluaXRpYWxpemVkCj4gYmVmb3JlIGNhbGxpbmcgdGhpcyBj
-b2RlLCBJIGRvbid0IGtub3cgaG93IHRvIGdldCB0aGUgY29kZWQgZm9ybWF0LgoKaWYgY3R4LT5k
-c3RfZm10IGlzIGNvcnJlY3RseSBzZXQgKGFuZCBpdCBzaG91bGQgYmUpIHRoZW4gZG9pbmc6Cgpw
-aXhfbXAtPndpZHRoID0gY3R4LT5kc3RfZm10LndpZHRoOwpwaXhfbXAtPmhlaWdodCA9IGN0eC0+
-ZHN0X2ZtdC5oZWlnaHQ7CgpzaG91bGQgc29sdmUgdGhlIGlzc3VlLgoKQmVuamFtaW4KCj4KPiBN
-aWNoYWVsCj4KPj4gICAKPj4gICAJaWYgKCFjb2RlZCkgewo+PiAgIAkJLyogRmlsbCByZW1haW5p
-bmcgZmllbGRzICovCj4+IC0tIAo+PiAyLjM0LjEKPj4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============7826800467277694403==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0JJNQg2cyOE2ETg4"
+Content-Disposition: inline
+
+
+--0JJNQg2cyOE2ETg4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 15, 2023 at 09:00:38PM -0300, Jason Gunthorpe wrote:
+> Thierry says this is not used anymore, and doesn't think it ever will
+> be. The HW it supports is about 10 years old now and newer HW uses
+> different IOMMU drivers.
+>=20
+> As this is the only driver with a GART approach, and it doesn't really
+> meet the driver expectations from the IOMMU core, let's just remove it
+> so we don't have to think about how to make it fit in.
+>=20
+> It has a number of identified problems:
+>  - The assignment of iommu_groups doesn't match the HW behavior
+>=20
+>  - It claims to have an UNMANAGED domain but it is really an IDENTITY
+>    domain with a translation aperture. This is inconsistent with the core
+>    expectation for security sensitive operations
+>=20
+>  - It doesn't implement a SW page table under struct iommu_domain so
+>    * It can't accept a map until the domain is attached
+>    * It forgets about all maps after the domain is detached
+>    * It doesn't clear the HW of maps once the domain is detached
+>      (made worse by having the wrong groups)
+>=20
+> Cc: Thierry Reding <treding@nvidia.com>
+> Cc: Dmitry Osipenko <digetx@gmail.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  arch/arm/configs/multi_v7_defconfig |   1 -
+>  arch/arm/configs/tegra_defconfig    |   1 -
+>  drivers/iommu/Kconfig               |  11 -
+>  drivers/iommu/Makefile              |   1 -
+>  drivers/iommu/tegra-gart.c          | 371 ----------------------------
+>  drivers/memory/tegra/mc.c           |  34 ---
+>  drivers/memory/tegra/tegra20.c      |  28 ---
+>  include/soc/tegra/mc.h              |  26 --
+>  8 files changed, 473 deletions(-)
+>  delete mode 100644 drivers/iommu/tegra-gart.c
+
+To clarify, I think this hardware could very well be used again, but I
+don't think it makes sense to use it in the context of the IOMMU
+subsystem. If anybody wants to make use of this on Tegra20, it probably
+makes more sense to move the GART programming into whatever driver ends
+up using it instead of jumping through all these hoops just to make it
+work like something it isn't.
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--0JJNQg2cyOE2ETg4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIyBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmR4zHwACgkQ3SOs138+
+s6EzXg/4sDDYzIY93jnjqgBAzF26DdM9+f9tNLS+tEhgUpn3WoMfZ+2mVBZJ6Qvl
++zK/7cpay72mra2XCdI2nBDl4fc/MivQMZ2uBvnu1mNY4uQypRWZsVlnpKO5nkpf
+55oa0ZvczaCmITixiNpt58qIRcL/+Rwn+kuXCMcfZYr8WXq09eTZJ/E0SndTbgRv
+RNPyDbkY2T939Z3KYEhZH3filqm0ul9asQvbO31FsU+htgOT6XEYwanpd1jZuV+E
+uemlmy/fYzUkBbJoZ1wk9/pbYhZqlvZnOF3XvyJXOfsbrBiP/gkDstxYeMS86AVq
+ITwKKqX80dphMpO6Af5OEpuKjrh6wtzPgdgcKIMIgd6aQADSX5xLsQ/P0kIqI0em
+H679cza6Mm7Nl7NwmAMCiOVL568ME8criReWPK5nEnRg4TLj1AvsKLAubgHxXIP/
+Hzxox5RDNL5ubE2gcko6btoFu+yXxvxGT9nF1YcJxBcWUhHPVqpwg1q403RqF0bE
+Kfcfzs07wR/OM8vsXJxYxZdgE7HdZkh/vZnE0MWmiaGCHDaPZdx8vsMW8g0G1Wn9
+a3GXa18+zdEntyjXiH2QaNuytRlcnTWX6Egc9uLjzjyWgjW8dA2PHN70fli1p+Zf
+wv1qFNssXNER2qzepDmLQj621WybUok9GAhhWu0jfezY8b75zw==
+=Ciid
+-----END PGP SIGNATURE-----
+
+--0JJNQg2cyOE2ETg4--
+
+
+--===============7826800467277694403==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7826800467277694403==--
+
