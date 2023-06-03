@@ -4,72 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB34C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jun 2023 18:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764E1C77B73
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jun 2023 20:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=42IRt2eKBpcGDCk5mcDShhQiNBVDnIyx7tt8ISNrjbU=; b=Z/TtaUDPQk3nwB
-	GR0ZaiKOsJm3F8UbeIvnugmqJGX04HwA/G0uw0uNQl/+DlvECvn4Yc2ArpHjUnqMXssjFGh2WN4lW
-	EN9mx7Z38FD1KakjwzvWaAEyi++yjPI32Qry0yvby7yEgFhTyRdE+EWa7dzu4WXyvZUtaPVawRiK6
-	PD9LTSLIOIibGmURBOXuF5nPMXeWYfaM9sM7AFYSssu6fmpABKQK6tcqE5TXO3WadVKO/PhU2gRpa
-	F5pHqhDxaezUFyGrwK8qfKdsi7MemXqaqwT2DdiAmRWa5eiecyvkSy3lZKoxl9KtyXaRxq81m8Iij
-	Kbb1SBCK8DPD+JHebztw==;
+	List-Owner; bh=HUlooUYut6r6cr9poXoDz1L8p/PQeU8K3xzEbjata5I=; b=J+FO6dttkJglNV
+	aDnLii2Kc1TsL8As6KcBpD3lKlxPx2ph20GkZdkdBCn+8jQVw/m75w0vh98ZRqu+v+F0d8xfeCMhA
+	AcnBXIP69L97EE61gE67ZBjXXmYwn2mqVceFQBiOfR8wZ48vfpDWJ5OUi8g3bO1xdhIoY3RTJm4Z0
+	MayY2rBWhB0/Hd3cW5qoYyZhseuVc1aDCrKp8tBB7AOgzw4/JAVm5oJoR+Wknl5g4sf+EHTZUr0Hm
+	I4yhkMXVLFHRh6Eqeanvk75zYjiQEWML6RfREJol3O/ezGahws6MYIbLJ5uvzMvHVtb89tUVRud4X
+	h4DV8dLz/Acjm1fwlj2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5WPG-00AMMg-2U;
-	Sat, 03 Jun 2023 18:55:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q5YAT-00AZXf-0U;
+	Sat, 03 Jun 2023 20:48:09 +0000
+Received: from fgw20-7.mail.saunalahti.fi ([62.142.5.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5WP7-00AMFE-2T;
-	Sat, 03 Jun 2023 18:55:12 +0000
-Received: from localhost.localdomain (unknown [IPv6:2405:201:0:21ea:e49:10dd:40c0:e842])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: shreeya)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D5CD6603050;
-	Sat,  3 Jun 2023 19:55:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1685818508;
-	bh=8S7OKZmsezN6RAz8kQrAHp0icflqSiGjbX9ZA0jDAwA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QWmWePs19ts8sVUd4Z4OscrkOetjDVbAaFedKZFjEMnXmn2su4sDSPtsGHDjUAHjG
-	 bQwclcUFme+Pb7TeUB4X7eJJOsP1qnr46OVHC2HviY62rJRhBaHBsyS2MTdY46Ki+S
-	 VcF+ijqRifz0EFLjk9JsCwogHo3M4cPS8OzN+hfzBa5VG3Fbpbn7chHWaWQMqgZdkF
-	 8w5Zh2S3ZuxhCOBc3YfIXPeaGlTXmrQNoEzCLXlStFIWJtR/hll94cy2BkMnG4kO/S
-	 fiSJ+E0KuzfkCz2IXvx560GjVaggcC0i9xkgwjKzV3xbFLDd22iL1bih51DlEpOpOD
-	 cj807GFcEHiMA==
-From: Shreeya Patel <shreeya.patel@collabora.com>
-To: jic23@kernel.org,
-	lars@metafoo.de,
-	heiko@sntech.de,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	sebastian.reichel@collabora.com
-Cc: linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	id 1q5YAO-00AZW9-30
+	for linux-rockchip@lists.infradead.org;
+	Sat, 03 Jun 2023 20:48:07 +0000
+Received: from localhost (88-113-26-95.elisa-laajakaista.fi [88.113.26.95])
+	by fgw20.mail.saunalahti.fi (Halon) with ESMTP
+	id ed5e4d7a-024f-11ee-b3cf-005056bd6ce9;
+	Sat, 03 Jun 2023 23:48:01 +0300 (EEST)
+From: andy.shevchenko@gmail.com
+Date: Sat, 3 Jun 2023 23:48:00 +0300
+To: Shreeya Patel <shreeya.patel@collabora.com>
+Cc: jic23@kernel.org, lars@metafoo.de, heiko@sntech.de, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	gustavo.padovan@collabora.com,
-	kernel@collabora.com,
-	serge.broslavsky@collabora.com,
-	Shreeya Patel <shreeya.patel@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 8/8] dt-bindings: iio: adc: Add rockchip,rk3588-saradc string
-Date: Sun,  4 Jun 2023 00:23:40 +0530
-Message-Id: <20230603185340.13838-9-shreeya.patel@collabora.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230603185340.13838-1-shreeya.patel@collabora.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	gustavo.padovan@collabora.com, kernel@collabora.com,
+	serge.broslavsky@collabora.com, Simon Xue <xxm@rock-chips.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 2/8] iio: adc: rockchip_saradc: Add support for RK3588
+Message-ID: <ZHunAIbK7-tIvsm1@surfacebook>
 References: <20230603185340.13838-1-shreeya.patel@collabora.com>
+ <20230603185340.13838-3-shreeya.patel@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230603185340.13838-3-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230603_115510_003640_275E7072 
-X-CRM114-Status: UNSURE (   7.80  )
+X-CRM114-CacheID: sfid-20230603_134806_042976_1D534D9B 
+X-CRM114-Status: UNSURE (   7.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,35 +69,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,rk3588-saradc compatible string.
+Sun, Jun 04, 2023 at 12:23:34AM +0530, Shreeya Patel kirjoitti:
+> From: Simon Xue <xxm@rock-chips.com>
+> 
+> Add new start and read functions to support rk3588 device.
+> Also, add a device compatible string for the same.
 
-Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
+...
 
-Changes in v3
-  - No change
+> +/* v2 registers */
+> +#define SARADC2_CONV_CON		0x0
+> +#define SARADC_T_PD_SOC			0x4
+> +#define SARADC_T_DAS_SOC		0xc
 
-Changes in v2
-  - Add an Acked-by tag.
+Can you use fixed-width values for all registers?
 
- Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 1 +
- 1 file changed, 1 insertion(+)
+	0x000
+	0x004
+	0x00c
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-index da50b529c157..11c27ea451c8 100644
---- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-@@ -21,6 +21,7 @@ properties:
-               - rockchip,rk3308-saradc
-               - rockchip,rk3328-saradc
-               - rockchip,rk3568-saradc
-+              - rockchip,rk3588-saradc
-               - rockchip,rv1108-saradc
-               - rockchip,rv1126-saradc
-           - const: rockchip,rk3399-saradc
+> +#define SARADC2_END_INT_EN		0x104
+> +#define SARADC2_ST_CON			0x108
+> +#define SARADC2_STATUS			0x10c
+> +#define SARADC2_END_INT_ST		0x110
+> +#define SARADC2_DATA_BASE		0x120
+
 -- 
-2.30.2
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
