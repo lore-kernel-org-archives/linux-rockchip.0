@@ -4,65 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F38AC7EE29
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jun 2023 10:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A80DCC77B73
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jun 2023 18:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gK7lrg9QHu3kpe8A1ss+tIPFAjDXSHqvDvvjIAv8IMc=; b=3upIa/mE3r4vzy
-	fHvCQF+SF106MYABDGa+2m9GH0xI0gefWueq8+Oma8jp2i+MndlTpR7UoEj8JdW4DTMa/0QJ+/Uii
-	brZCQG7P1HiIvcfFxwEcgHogcC97cg4KSB24r+rN6tWkdxzyvEudbOm2lMa1GaUo1hUFUHpFFP9Xy
-	sQ4uRb6QEUPcLsis+4V0Hap0MiSCRHwWcKov8mFKFNHF8SD9IrnqYkciVwWXC+d5Lcw3HwIbxJu07
-	BHTTfinJWgGvrmvYvQG0VHgScHJOHqtzKjEtMDjDWfbbJ1xiMM/oP5uFQWfjlSaK3G7U6KF7rPcL3
-	cYYl5ZM7n2mkg0YKpLlQ==;
+	List-Owner; bh=DB0dbzY16QrRIaVltHDMS3aFYvFF4ijHqfTwKFWuPgg=; b=Epvtm16RL6fx3l
+	jStQ9XZRtT8NSrVThvIloRVCNIXl9cR9s6uNUgK6nbwmVwxDIc3LuU1f7+lqrH8MFcg4f4pZu++/0
+	PsuJHn17V+tVJnXd/u+1Ntstq9chw9ulemdKLYsxc0OVeC+KpUl3Taa+3+eOAm2FLaG2xIq04L4iW
+	gKiKa3AdN9fgWGmkCQGn7xZ4y+gdSzNZQ8pLaZxMgiCr5H2HRJici0bY9cewZFdF4ktmLw255E5Lw
+	/lwya4L/882cbMI24lF//2pLh7I+WBLRKAp49HGCTLau5KD3o/TORIoFVOYQ6iapfc7YfZqfGwHm/
+	AOyJRTLqNYoEn/liaomA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5kxm-00BpbY-2X;
-	Sun, 04 Jun 2023 10:27:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q5swK-00Cokv-34;
+	Sun, 04 Jun 2023 18:58:56 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5kxj-00BpaW-1v;
-	Sun, 04 Jun 2023 10:27:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EA11260FD0;
-	Sun,  4 Jun 2023 10:27:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4881C433D2;
-	Sun,  4 Jun 2023 10:27:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685874470;
-	bh=GDFD2QaDPXXZG69Pe6qfg/v2YwVstAycrro3d0aXXw8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=F9gEOFAag92qMFuczSBuQUu/wejjL/Bk2+RZXcZKa0sCYHy9XSjw98lwVQVotNUNu
-	 BcHK3HHdEY8FCk1oBS970nOvqLt8z9kJTT/Kr/vbWu0LpMMat8q9pu4zXoDt6hMub5
-	 nOp1c4/QpKKAO04HqI8Csf3oZScLR50Yqj9YlYCXmApdxkfEhQXGLdgP7SU+7xp0i2
-	 Z0oOt4T4e+GyyV888gGFpEB0ZYMkce8QgybjvUcIDIRHu6eN0uaS6w6tRTu7Pq6Qbd
-	 EfTf/Z5n5QpCBxESakyOYxqa8nz7B0HSK1XT8N/KE2Yv1yiF/7zc/M7VKSwvQ8TYZs
-	 rVpp+FlV0ClQw==
-Date: Sun, 4 Jun 2023 11:27:45 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: andy.shevchenko@gmail.com
-Cc: Shreeya Patel <shreeya.patel@collabora.com>, lars@metafoo.de,
- heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- sebastian.reichel@collabora.com, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- gustavo.padovan@collabora.com, kernel@collabora.com,
- serge.broslavsky@collabora.com
-Subject: Re: [PATCH v3 0/8] RK3588 ADC support
-Message-ID: <20230604112745.402beb1c@jic23-huawei>
-In-Reply-To: <ZHungQT5an39pjEg@surfacebook>
-References: <20230603185340.13838-1-shreeya.patel@collabora.com>
-	<ZHungQT5an39pjEg@surfacebook>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
+	id 1q5swH-00Cojv-1O;
+	Sun, 04 Jun 2023 18:58:54 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-4f6255ad8aeso636490e87.2;
+        Sun, 04 Jun 2023 11:58:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1685905131; x=1688497131;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0uLDA7fQ1eFEBxyVgNGzB8pTMv55u419IbeoR7nu4AQ=;
+        b=MuCQKaUvVjjMXgniF8sNia9BsE7FRRYHz4Pk2pNq+aYgc4wvJ8CTRJGdo+nbfVftES
+         0hxG70Lob7NRmTRU/wZ7rFKxlOHaf+bLZfEXsEHXlPGGnwIjbHOxuqPlb+PCb1k9uFZB
+         L067AQi559bjdLcW3ShTD9ijZydSFUoyLMjtjHd+0mubagCLzd4hAEVcMoWANSfs0b/0
+         +W0q6iQxWYUZkysfY/GD86Xy8xsPmbE8VxSSF5ZMDRLJazBN7VWS/j7DZ7q1eciJgMeD
+         e38B0pNnrSxkLEjE7kMJYpSX1Eadx7Fb8cWNM3+6zrihsL6oC318QsCO7fOK365jKiHb
+         9UOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685905131; x=1688497131;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0uLDA7fQ1eFEBxyVgNGzB8pTMv55u419IbeoR7nu4AQ=;
+        b=HMGoMkqgT1xFoG6AUk2WMMlr/g4EazFD5U6GwRxR/YOtGBZ1KK12TIwp1kRmhuz8J/
+         BwRhfTOebNimjzCF/lC3On9wVdbKOOREL+SYlDxUbOAfwK8bAjCYfeSqRsHPoKhtEeRS
+         bsMoqk/JDKv3+2mHMVQUnarDOqas2iTvsQfe3HynT9XyszuAF6HbxdQ78MRogayR/68o
+         yoW8BO7ikjj7b3c+vEvQ/lq6czXh0pn3jmDyjy2XT/skn383za9jHfUylYt4cPcffjAv
+         L+v/mNyuYhN8NHq6M5jGbd3VP09ZtM5PW+Ic46+qqQ0d8yn2STxyLrrTZ4F16+GAM9EX
+         sdpQ==
+X-Gm-Message-State: AC+VfDxz4egZMAp2C+hekrBxSzBE3z7VMk3otiAw2t03HzeR47lp9rZx
+	BjdaKIGwJOfYbQZes5jqB3Ynn/IQ8C4=
+X-Google-Smtp-Source: ACHHUZ5EkaqP6x5GqtWx1BZ2gJzmxHf/jE8v3IHyZU6SL7aUosESZU4nC8UiF+0Xk6nOGWSAa+UFKA==
+X-Received: by 2002:ac2:5eca:0:b0:4f3:a0f5:92e5 with SMTP id d10-20020ac25eca000000b004f3a0f592e5mr3904178lfq.31.1685905130670;
+        Sun, 04 Jun 2023 11:58:50 -0700 (PDT)
+Received: from mobilestation ([95.79.140.35])
+        by smtp.gmail.com with ESMTPSA id u9-20020a056512040900b004eb0dcc52ddsm858329lfk.41.2023.06.04.11.58.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Jun 2023 11:58:49 -0700 (PDT)
+Date: Sun, 4 Jun 2023 21:58:47 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v2 2/6] dt-bindings: ata: ahci: add RK3588 AHCI controller
+Message-ID: <20230604185847.r23v53eetd53okyg@mobilestation>
+References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+ <20230522173423.64691-3-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230522173423.64691-3-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_032751_719738_89DE0028 
-X-CRM114-Status: GOOD (  25.49  )
+X-CRM114-CacheID: sfid-20230604_115853_477319_57444233 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,67 +97,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 3 Jun 2023 23:50:09 +0300
-andy.shevchenko@gmail.com wrote:
-
-> Sun, Jun 04, 2023 at 12:23:32AM +0530, Shreeya Patel kirjoitti:
-> > This patch series adds ADC support for RK3588 and updates
-> > the DT bindings for the same.
-> > 
-> > To test ADC support on Rock 5B board, a voltage divider circuit
-> > was created using the gpio pin 22 ( SARADC_IN4 ) and few more
-> > tests were ran for testing the buffer and trigger support using
-> > the iio_generic_buffer tool.  
+On Mon, May 22, 2023 at 07:34:19PM +0200, Sebastian Reichel wrote:
+> Just like RK3568, the RK3588 has a DWC based AHCI controller.
 > 
-> Well done!
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../devicetree/bindings/ata/snps,dwc-ahci-common.yaml     | 8 ++++++--
+>  Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml  | 6 ++++--
+>  2 files changed, 10 insertions(+), 4 deletions(-)
 > 
-> For patches 1-6
-> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> (with one nit-pick to be addressed)
+> diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> index c1457910520b..34c5bf65b02d 100644
 
-Addressed the nit whilst applying and picked up 1-6,8.
-Applied them to the togreg branch of iio.git, but initially I'll just
-push that out as testing for 0-day to take a look and see what we missed.
+> --- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> +++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> @@ -31,11 +31,11 @@ properties:
+>        PM-alive clock, RxOOB detection clock, embedded PHYs reference (Rx/Tx)
+>        clock, etc.
+>      minItems: 1
+> -    maxItems: 4
+> +    maxItems: 6
+>  
+>    clock-names:
+>      minItems: 1
+> -    maxItems: 4
+> +    maxItems: 6
+>      items:
+>        oneOf:
+>          - description: Application APB/AHB/AXI BIU clock
+> @@ -48,6 +48,10 @@ properties:
+>            const: pmalive
+>          - description: RxOOB detection clock
+>            const: rxoob
+> +        - description: PHY Transmit Clock
+> +          const: asic
+> +        - description: PHY Receive Clock
+> +          const: rbc
+>          - description: SATA Ports reference clock
+>            const: ref
 
-As normal 7 should go via appropriate SoC tree
+This part looks good but as I mentioned in my comment to the previous
+patchset revision these are generic clocks. Extending the common
+schema could be done in a framework of a preparation patch with
+the justification described in my comment back then.
 
+>  
+> diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
+> index 5afa4b57ce20..c6a0d6c8b62c 100644
+> --- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
+> +++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
+> @@ -23,9 +23,11 @@ properties:
+>          const: snps,dwc-ahci
+>        - description: SPEAr1340 AHCI SATA device
+>          const: snps,spear-ahci
 
+> -      - description: Rockhip RK3568 AHCI controller
+> +      - description: Rockhip AHCI controller
+>          items:
+> -          - const: rockchip,rk3568-dwc-ahci
+> +          - enum:
+> +              - rockchip,rk3568-dwc-ahci
+> +              - rockchip,rk3588-dwc-ahci
+
+Regarding this part. I would suggest to just create a separate
+DT-schema instead of extending the generic one. See my comment to the
+next patch in the series and my suggestion posted in a comment to
+the previous patchset revision.
+
+-Serge(y)
+
+>            - const: snps,dwc-ahci
+>  
+>  patternProperties:
+> -- 
+> 2.39.2
 > 
-> > Changes in v3
-> >   - Add bitfield.h header file in patch 2.
-> >   - Add a Reviewed-by tag in patch 2.
-> >   - Do not remove clock enabling and disabling from the suspend and
-> >     resume functions respectively in patch 3
-> > 
-> > Changes in v2
-> >   - Add from address in patches 1 and 2.
-> >   - Create separate patches for adding new device support and changes to
-> >     the old device code.
-> >   - Make use of FIELD_PREP in patch 2.
-> >   - Move the enablement of clocks at it's original position in patch 3
-> >   - Add Reviewed-by tag in patches 4 and 5.
-> >   - Add an Acked-by tag in patch 8.
-> > 
-> > Shreeya Patel (8):
-> >   iio: adc: rockchip_saradc: Add callback functions
-> >   iio: adc: rockchip_saradc: Add support for RK3588
-> >   iio: adc: rockchip_saradc: Make use of devm_clk_get_enabled
-> >   iio: adc: rockchip_saradc: Use of_device_get_match_data
-> >   iio: adc: rockchip_saradc: Match alignment with open parenthesis
-> >   iio: adc: rockchip_saradc: Use dev_err_probe
-> >   arm64: dts: rockchip: Add DT node for ADC support in RK3588
-> >   dt-bindings: iio: adc: Add rockchip,rk3588-saradc string
-> > 
-> >  .../bindings/iio/adc/rockchip-saradc.yaml     |   1 +
-> >  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  12 +
-> >  drivers/iio/adc/rockchip_saradc.c             | 246 +++++++++++-------
-> >  3 files changed, 168 insertions(+), 91 deletions(-)
-> > 
-> > -- 
-> > 2.30.2
-> >   
-> 
-
 
 _______________________________________________
 Linux-rockchip mailing list
