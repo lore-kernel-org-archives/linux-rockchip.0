@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A80DCC77B73
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jun 2023 18:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD741C7EE29
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jun 2023 19:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DB0dbzY16QrRIaVltHDMS3aFYvFF4ijHqfTwKFWuPgg=; b=Epvtm16RL6fx3l
-	jStQ9XZRtT8NSrVThvIloRVCNIXl9cR9s6uNUgK6nbwmVwxDIc3LuU1f7+lqrH8MFcg4f4pZu++/0
-	PsuJHn17V+tVJnXd/u+1Ntstq9chw9ulemdKLYsxc0OVeC+KpUl3Taa+3+eOAm2FLaG2xIq04L4iW
-	gKiKa3AdN9fgWGmkCQGn7xZ4y+gdSzNZQ8pLaZxMgiCr5H2HRJici0bY9cewZFdF4ktmLw255E5Lw
-	/lwya4L/882cbMI24lF//2pLh7I+WBLRKAp49HGCTLau5KD3o/TORIoFVOYQ6iapfc7YfZqfGwHm/
-	AOyJRTLqNYoEn/liaomA==;
+	List-Owner; bh=xvSAQjhoAuEskjRuvQ0ChkZzmt8ey/3uoFYl49PmKFM=; b=LB6T4lmigU1U8l
+	JL0vaOZNg4Ir9Uu4bNHEfZARKOHnbxg+ZscBaHIovSlYhNqZ4NvrzxQhLw2LRoKl8d3urUmr5olh5
+	1EqeF7Ojirnie7Q0LYZjf9CMeI5r0kX79jo5Q2fRM92ulkQNL+rQPTmL7EqA9aO2LHBChtHWX6VVp
+	Nle4Bs97yHWPQiy4urIPqm4JIlg7v71gSS6UpeqRUDs4USKB4rQUe8HqSC2i789kMkRPaW6ONhrDO
+	+i7z8eNkk/AatVzsYe3dDS5J09KVBpfQqyFDIhrNssPJGyns2FxcZLdSses85Q/nUdLUfo/oL9JoC
+	QfaDbaIVLb7GfGdYnOaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5swK-00Cokv-34;
-	Sun, 04 Jun 2023 18:58:56 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1q5t8x-00Cr8u-0o;
+	Sun, 04 Jun 2023 19:11:59 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q5swH-00Cojv-1O;
-	Sun, 04 Jun 2023 18:58:54 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-4f6255ad8aeso636490e87.2;
-        Sun, 04 Jun 2023 11:58:52 -0700 (PDT)
+	id 1q5t8u-00Cr7c-0F;
+	Sun, 04 Jun 2023 19:11:57 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-4f6255ad8aeso645329e87.2;
+        Sun, 04 Jun 2023 12:11:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685905131; x=1688497131;
+        d=gmail.com; s=20221208; t=1685905914; x=1688497914;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0uLDA7fQ1eFEBxyVgNGzB8pTMv55u419IbeoR7nu4AQ=;
-        b=MuCQKaUvVjjMXgniF8sNia9BsE7FRRYHz4Pk2pNq+aYgc4wvJ8CTRJGdo+nbfVftES
-         0hxG70Lob7NRmTRU/wZ7rFKxlOHaf+bLZfEXsEHXlPGGnwIjbHOxuqPlb+PCb1k9uFZB
-         L067AQi559bjdLcW3ShTD9ijZydSFUoyLMjtjHd+0mubagCLzd4hAEVcMoWANSfs0b/0
-         +W0q6iQxWYUZkysfY/GD86Xy8xsPmbE8VxSSF5ZMDRLJazBN7VWS/j7DZ7q1eciJgMeD
-         e38B0pNnrSxkLEjE7kMJYpSX1Eadx7Fb8cWNM3+6zrihsL6oC318QsCO7fOK365jKiHb
-         9UOQ==
+        bh=azAP3x1baPIF9TbZBZ/iwj9CaGYl4y3es7jb/ELOFIA=;
+        b=pfxsmkbyB8/+7tGHKrqVx1tdPTcUyi0+pa7WFkwh1EiHwkuyD2wc7eD5CiOqwsGm4b
+         TurgxvO4X0a6HuMdjVXV8ox/CEwfRpx98kXBdD9RgrY8reW9kFLDSdAvyv8ibz4g7JYf
+         CVO2D9TnG02RfiUeAtsxYriCX/wXUFYA0Z1fm6aXJKAhnBKH0V8Y+9QRbq4vU9+/STBv
+         C6GPK8TdLQDQPU2s3Mo2GeHFzYoCfneUDF4j80vgrCsMKTw3/4XOxN7tiEfAahuch+Fe
+         upST+TcXK4FuIsCh2ECSIKLsiPa2UgvL8acXEmMCaYSZCuOsUpVOR7l7rB430YhAzUS+
+         aUYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685905131; x=1688497131;
+        d=1e100.net; s=20221208; t=1685905914; x=1688497914;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0uLDA7fQ1eFEBxyVgNGzB8pTMv55u419IbeoR7nu4AQ=;
-        b=HMGoMkqgT1xFoG6AUk2WMMlr/g4EazFD5U6GwRxR/YOtGBZ1KK12TIwp1kRmhuz8J/
-         BwRhfTOebNimjzCF/lC3On9wVdbKOOREL+SYlDxUbOAfwK8bAjCYfeSqRsHPoKhtEeRS
-         bsMoqk/JDKv3+2mHMVQUnarDOqas2iTvsQfe3HynT9XyszuAF6HbxdQ78MRogayR/68o
-         yoW8BO7ikjj7b3c+vEvQ/lq6czXh0pn3jmDyjy2XT/skn383za9jHfUylYt4cPcffjAv
-         L+v/mNyuYhN8NHq6M5jGbd3VP09ZtM5PW+Ic46+qqQ0d8yn2STxyLrrTZ4F16+GAM9EX
-         sdpQ==
-X-Gm-Message-State: AC+VfDxz4egZMAp2C+hekrBxSzBE3z7VMk3otiAw2t03HzeR47lp9rZx
-	BjdaKIGwJOfYbQZes5jqB3Ynn/IQ8C4=
-X-Google-Smtp-Source: ACHHUZ5EkaqP6x5GqtWx1BZ2gJzmxHf/jE8v3IHyZU6SL7aUosESZU4nC8UiF+0Xk6nOGWSAa+UFKA==
-X-Received: by 2002:ac2:5eca:0:b0:4f3:a0f5:92e5 with SMTP id d10-20020ac25eca000000b004f3a0f592e5mr3904178lfq.31.1685905130670;
-        Sun, 04 Jun 2023 11:58:50 -0700 (PDT)
+        bh=azAP3x1baPIF9TbZBZ/iwj9CaGYl4y3es7jb/ELOFIA=;
+        b=giOo8kMIk8Y/LNkGsA8bSorFVNi4vhFacE26BuVJycWVuoknjk5XNdPnLkPFLdkrIs
+         DS0kk7ZQmAJCWgLQIER5Klif01XDgqgdYnsV6o2b+DlcXIuSwYk8DBgmWOlSP6gH7rut
+         CbaDqkg2JSGubKybqviyR9BaXoig+ybKzXRnS08cQebbTVwpXoq5oRwLq0uTOIyhh3zw
+         9TaOTvWL40XeXs4YXbai1N/0pic92pQ4yOU5PasauOEHuLDOUOqW73Stz2C40tpSYLii
+         Y05E+jxX+nSERwAW75DUgxiovM5jJT41GUORT0mTuupHNNAQXGpZlIFG6LPst09Oa6vM
+         VaNw==
+X-Gm-Message-State: AC+VfDxD6PKB+LurbjRw1BEncHywm1sxKBZGUOrBXMKklLuq2UMaRDl4
+	rja9nlUT6fc4FjGZ7knPLwI=
+X-Google-Smtp-Source: ACHHUZ4QX84YGTAap42xf8IcVLART9ckvKesrVoX2+oE65kP2pidl7JNsvozPo1y0LQJ9I7eRhD7QQ==
+X-Received: by 2002:ac2:46f4:0:b0:4ee:e0c7:434d with SMTP id q20-20020ac246f4000000b004eee0c7434dmr4561954lfo.51.1685905913218;
+        Sun, 04 Jun 2023 12:11:53 -0700 (PDT)
 Received: from mobilestation ([95.79.140.35])
-        by smtp.gmail.com with ESMTPSA id u9-20020a056512040900b004eb0dcc52ddsm858329lfk.41.2023.06.04.11.58.48
+        by smtp.gmail.com with ESMTPSA id u8-20020ac25188000000b004f377f317d4sm858351lfi.285.2023.06.04.12.11.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Jun 2023 11:58:49 -0700 (PDT)
-Date: Sun, 4 Jun 2023 21:58:47 +0300
+        Sun, 04 Jun 2023 12:11:52 -0700 (PDT)
+Date: Sun, 4 Jun 2023 22:11:50 +0300
 From: Serge Semin <fancer.lancer@gmail.com>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
 	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/6] dt-bindings: ata: ahci: add RK3588 AHCI controller
-Message-ID: <20230604185847.r23v53eetd53okyg@mobilestation>
+Subject: Re: [PATCH v2 3/6] dt-bindings: ata: ahci: dwc: enforce rockchip
+ clocks
+Message-ID: <20230604191150.aqx4jewtifsknijt@mobilestation>
 References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
- <20230522173423.64691-3-sebastian.reichel@collabora.com>
+ <20230522173423.64691-4-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230522173423.64691-3-sebastian.reichel@collabora.com>
+In-Reply-To: <20230522173423.64691-4-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230604_115853_477319_57444233 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20230604_121156_117390_222EB83B 
+X-CRM114-Status: GOOD (  18.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,78 +98,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 22, 2023 at 07:34:19PM +0200, Sebastian Reichel wrote:
-> Just like RK3568, the RK3588 has a DWC based AHCI controller.
+On Mon, May 22, 2023 at 07:34:20PM +0200, Sebastian Reichel wrote:
+> Provide a specific list of clocks allowed for RK3568 and RK3588
+> based DWC AHCI controllers.
 > 
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  .../devicetree/bindings/ata/snps,dwc-ahci-common.yaml     | 8 ++++++--
->  Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml  | 6 ++++--
->  2 files changed, 10 insertions(+), 4 deletions(-)
+>  .../bindings/ata/snps,dwc-ahci.yaml           | 34 +++++++++++++++++--
+>  1 file changed, 31 insertions(+), 3 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-> index c1457910520b..34c5bf65b02d 100644
-
-> --- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-> +++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-> @@ -31,11 +31,11 @@ properties:
->        PM-alive clock, RxOOB detection clock, embedded PHYs reference (Rx/Tx)
->        clock, etc.
->      minItems: 1
-> -    maxItems: 4
-> +    maxItems: 6
->  
->    clock-names:
->      minItems: 1
-> -    maxItems: 4
-> +    maxItems: 6
->      items:
->        oneOf:
->          - description: Application APB/AHB/AXI BIU clock
-> @@ -48,6 +48,10 @@ properties:
->            const: pmalive
->          - description: RxOOB detection clock
->            const: rxoob
-> +        - description: PHY Transmit Clock
-> +          const: asic
-> +        - description: PHY Receive Clock
-> +          const: rbc
->          - description: SATA Ports reference clock
->            const: ref
-
-This part looks good but as I mentioned in my comment to the previous
-patchset revision these are generic clocks. Extending the common
-schema could be done in a framework of a preparation patch with
-the justification described in my comment back then.
-
->  
 > diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
-> index 5afa4b57ce20..c6a0d6c8b62c 100644
+> index c6a0d6c8b62c..37830185b9b5 100644
 > --- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
 > +++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci.yaml
-> @@ -23,9 +23,11 @@ properties:
->          const: snps,dwc-ahci
->        - description: SPEAr1340 AHCI SATA device
->          const: snps,spear-ahci
-
-> -      - description: Rockhip RK3568 AHCI controller
-> +      - description: Rockhip AHCI controller
->          items:
-> -          - const: rockchip,rk3568-dwc-ahci
-> +          - enum:
-> +              - rockchip,rk3568-dwc-ahci
+> @@ -13,9 +13,6 @@ description:
+>    This document defines device tree bindings for the generic Synopsys DWC
+>    implementation of the AHCI SATA controller.
+>  
+> -allOf:
+> -  - $ref: snps,dwc-ahci-common.yaml#
+> -
+>  properties:
+>    compatible:
+>      oneOf:
+> @@ -41,6 +38,37 @@ required:
+>    - reg
+>    - interrupts
+>  
+> +allOf:
+> +  - $ref: snps,dwc-ahci-common.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
 > +              - rockchip,rk3588-dwc-ahci
+> +    then:
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: sata
+> +            - const: pmalive
+> +            - const: rxoob
+> +            - const: ref
+> +            - const: asic
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3568-dwc-ahci
+> +    then:
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: sata
+> +            - const: pmalive
+> +            - const: rxoob
+> +
 
-Regarding this part. I would suggest to just create a separate
-DT-schema instead of extending the generic one. See my comment to the
-next patch in the series and my suggestion posted in a comment to
-the previous patchset revision.
+As I already suggested here
+https://lore.kernel.org/all/20230421192822.yckihqlk2vlkueyc@mobilestation/
+let's create a separate DT-schema for the Rockchip AHCI SATA
+controllers. Please see the way it's done for Baikal-T1 AHCI SATA
+here: Documentation/devicetree/bindings/ata/baikal,bt1-ahci.yaml
+Your generic schema patch doesn't provide a full hardware constraints
+(what about resets, number of ports, etc?), but makes the generic
+DW AHCI SATA controller DT-schema harder to read.
+
+* Don't forget to add the "select: ..." property to prevent your
+DT-schema from being applied to all the "snps,dwc-ahci"-compatible
+DT-nodes (see my comment to the previous patchset revision).
+Alternatively you can just drop the generic DW AHCI compatible string
+from the DT-files (but in this case you would need to add vendor-specific
+compatible string to the driver).
 
 -Serge(y)
 
->            - const: snps,dwc-ahci
+>  unevaluatedProperties: false
 >  
->  patternProperties:
+>  examples:
 > -- 
 > 2.39.2
 > 
