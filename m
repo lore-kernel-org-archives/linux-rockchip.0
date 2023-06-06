@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F50C7EE24
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50D90C7EE29
 	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jun 2023 17:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2PkGAMIiMbG3hICZGy/kUXdMTc4sl7VCotdTBDZRhwI=; b=i8XOhK26dfy6gj
-	1WdGWT+7RS3Z9CGkWqdEJBIrlthbyZikeZl2pWdf3jz+6TxUoeQZcGbkA4FV/5JptBEXz2mispeaw
-	uuIHhdlKE1F2jDZtO1nwW8xMgOQwRqS0pWBnustXAi1+6CBVsDCnm22KKeXScyB0aRTobosNEAsND
-	/QDQDUPCxospeBqDWmQ6FrA7T2IRhnFjDLK8hg35QZtpAmB7N/J1V/rCi7n2YpOHYN9rytTzNKygv
-	kOTOSl2+0Xd0u44so7ehKvL6RJnDvvlTiUiX6nWOqq22u8DO2CIj5VTJXYpI7PPmA3IRROtukJ3Qt
-	6xnXbeRd3rBk1pFyYjHQ==;
+	List-Owner; bh=jQDIlz/Z8J2O4A55Nn7eHASKnasiOMgfxj8PTK5nkDw=; b=QqlK+KQOB0Lxur
+	lwxE5DQULxUeipgUm/R8ByypyvGii+IHA8o8lmNV+DAnqG1mUDtI3SdbhXiTZHgA4oAXmY7+ihrLt
+	G186biFmVuzTZp2rAD9FKbfk+1UreiNNdlYiaTd+Rwa0Y0ger2b6eskyPsXAfv2Uyje8KJSAU0j5l
+	ZUYEcWoxiSM4V39wxErmpzzDfaplA7swE0M1p7KSaj+fEjeEyy6LV8BimPaWYGIv70SzPKOhg+TQ0
+	VC6fuNZg3PJnVrdsN0IjV9i1AkCx4PbiXKyPJLwc7BwiC75HOe3Tz0lzpTJaivGUy/fisAytmYd5k
+	lShR/Pr4dEwmcvdFa3zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6a9V-002XHl-1J;
-	Tue, 06 Jun 2023 17:07:25 +0000
+	id 1q6a9U-002XHB-2O;
+	Tue, 06 Jun 2023 17:07:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6a9S-002XFD-19;
+	id 1q6a9S-002XF2-1E
+	for linux-rockchip@lists.infradead.org;
 	Tue, 06 Jun 2023 17:07:23 +0000
 Received: from [91.65.34.120] (helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1q6a9P-0001ED-2c; Tue, 06 Jun 2023 19:07:19 +0200
+	id 1q6a9O-0001ED-JJ; Tue, 06 Jun 2023 19:07:18 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-rockchip@lists.infradead.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-phy@lists.infradead.org,
-	Serge Semin <fancer.lancer@gmail.com>,
-	linux-rockchip@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	kernel@collabora.com,
-	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
-	linux-ide@vger.kernel.org,
-	Vinod Koul <vkoul@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Rob Herring <robh+dt@kernel.org>
-Subject: Re: (subset) [PATCH v2 0/6] Add RK3588 SATA support
-Date: Tue,  6 Jun 2023 19:07:13 +0200
-Message-Id: <168607097305.1436521.3168877133799952042.b4-ty@sntech.de>
+Subject: Re: [PATCH v1 1/2] arm64: dts: rockchip: rock-5b: add PMIC
+Date: Tue,  6 Jun 2023 19:07:12 +0200
+Message-Id: <168607097312.1436521.15824413081309384373.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230522173423.64691-1-sebastian.reichel@collabora.com>
-References: <20230522173423.64691-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20230529170532.59804-1-sebastian.reichel@collabora.com>
+References: <20230529170532.59804-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_100722_395021_F28436FB 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20230606_100722_417393_73F8188A 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,23 +69,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 May 2023 19:34:17 +0200, Sebastian Reichel wrote:
-> This enables SATA support for RK3588.
+On Mon, 29 May 2023 19:05:31 +0200, Sebastian Reichel wrote:
+> This adds PMIC support for the Radxa ROCK 5B
 > 
-> Changes since PATCHv1:
->  * https://lore.kernel.org/all/20230413182345.92557-1-sebastian.reichel@collabora.com/
->  * Rebase to v6.4-rc1
->  * Collect Acked-by for syscon DT binding update
->  * Use ASIC clock description suggested by Serge Semin
->  * Also add RBC clock (not used by RK3588)
->  * Add extra patch narrowing down the allowed clocks for RK356x and RK3588
 > 
-> [...]
 
 Applied, thanks!
 
-[1/6] dt-bindings: soc: rockchip: add rk3588 pipe-phy syscon
-      commit: ea85370df14011255c60e1951ef4ef749806aa5c
+[1/2] arm64: dts: rockchip: rock-5b: add PMIC
+      commit: db242e8240b5dc8bd3709dceb194bd49cd3aac2e
+[2/2] arm64: dts: rockchip: rock-5b: Add SD card support
+      commit: 2a6d4af5f157b1540e7a49f7fdbbf517b0d0d5b7
+
+I've adapted the fixed regulator nodes, to add the
+"-regulator" suffix.
+
 
 Best regards,
 -- 
