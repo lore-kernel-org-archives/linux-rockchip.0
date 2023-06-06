@@ -4,92 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A6EC7EE24
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jun 2023 16:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A859C7EE24
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jun 2023 17:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vuwZURBRx9Fjm2neH1D54GPac9z8lDoy+GE0kCScE98=; b=PB+iZBlyZhhpqexDRwJCNn/uaI
-	wwWvPu82gCk4wvKjUXqMzxtH/8l/wI3YGzghKdDvxTT8vvnP3wtP6Y5JP8XEVBp+jRyKyLVQ1Vg0d
-	NoGMcZxD5Z79+fnUvgJpoSCFONmIUJSz9ldiAlsVDNyvOKMuAtW0IhrZj53/VsKNJzk1fdDrVf25q
-	7VqzntWtXbhxOhRuljHkgqWkJSgH6WGjJLU2V2YwTIqKOWIkAfRUo70uqtsVJ2lzphvwjLwqsbklF
-	eW+g6Mi1Dklpkgc07GVSS+eSb8gvsEpfvNEy2StJdBr36jDv6zWcUD0uN5/Lb9gdal5HVxZbu9FN7
-	uA0myjyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jydAa9ftr5pWods9Aas3Rh0k9H9mLbzYaQW2ae7JscI=; b=2ffUvKCc6JqSWc
+	eBMidJPNJ3RJZdbl/6Mq2VX2GSdNtYT6k1mm1YXPyahW5IVQr8UDW+PWhNH1q+BOJ52vb1oP3qzp6
+	BI7KqK8pqdMDTF4lhRBQlPv8qiJvcHmelYV/UnByKeuBSVRjGERYEH2z0bRTMrfKnBR5PzjJ+DoCL
+	NWJoR25SZg5dxrSL636mIbtPeW94wJQWinRC3YxxpogBPlJq9W5TQE2QD3Xra1DVEV1JUp14g7nJB
+	lhq5Vd0LyJRgd24MKrpwH5KsDyDdyHzWpoRz0011+zg9uzf5uEaTk9TRNwPjLdXuLnEgetRXOJyGw
+	5UkNJYhRw/I0mtu3ZP4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Z9Q-002LdE-1P;
-	Tue, 06 Jun 2023 16:03:16 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1q6a9W-002XIQ-1L;
+	Tue, 06 Jun 2023 17:07:26 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Z9N-002LcG-2T
+	id 1q6a9S-002XFK-1t
 	for linux-rockchip@lists.infradead.org;
-	Tue, 06 Jun 2023 16:03:15 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q6Z8u-0001e5-46; Tue, 06 Jun 2023 18:02:44 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q6Z8l-005Xat-NX; Tue, 06 Jun 2023 18:02:35 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1q6Z8k-00BkQ7-PH; Tue, 06 Jun 2023 18:02:34 +0200
-Date: Tue, 6 Jun 2023 18:02:34 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-pci@vger.kernel.org,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	linux-rockchip@lists.infradead.org, Joyce Ooi <joyce.ooi@intel.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-arm-msm@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	linux-tegra@vger.kernel.org, kernel@pengutronix.de,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Ray Jui <rjui@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Shawn Guo <shawn.guo@linaro.org>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
- void
-Message-ID: <20230606160234.elcvyqlz2j3mggih@pengutronix.de>
-References: <20230530140742.ebbrxmpieuphbmz3@pengutronix.de>
- <ZHphHkNLO4tEJIm/@bhelgaas>
+	Tue, 06 Jun 2023 17:07:24 +0000
+Received: from [91.65.34.120] (helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1q6a9P-0001ED-FW; Tue, 06 Jun 2023 19:07:19 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-kernel@vger.kernel.org,
+	shengfei Xu <xsf@rock-chips.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [RESEND PATCH v1 1/1] arm64: dts: rockchip: rk3588-evb1: add PMIC
+Date: Tue,  6 Jun 2023 19:07:14 +0200
+Message-Id: <168607097301.1436521.16891300608030740248.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230526172255.68236-1-sebastian.reichel@collabora.com>
+References: <20230526172255.68236-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <ZHphHkNLO4tEJIm/@bhelgaas>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_090313_804590_E8ED0BDB 
-X-CRM114-Status: GOOD (  31.45  )
+X-CRM114-CacheID: sfid-20230606_100722_631892_1152729E 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,113 +65,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8315012315807381821=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, 26 May 2023 19:22:55 +0200, Sebastian Reichel wrote:
+> This adds PMIC support for the RK3588 EVB.
+> 
+> 
 
---===============8315012315807381821==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zxsm4y3nhwayyseu"
-Content-Disposition: inline
+Applied, thanks!
 
+[1/1] arm64: dts: rockchip: rk3588-evb1: add PMIC
+      commit: ec5d218e1e443dd6fea7e77983c3f97b9e09a74a
 
---zxsm4y3nhwayyseu
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello,
-
-[dropped Tom Joseph and Joyce Ooi from Cc:, my last mail in this thread
-resulted in a bounce for their addresses.]
-
-On Fri, Jun 02, 2023 at 04:37:34PM -0500, Bjorn Helgaas wrote:
-> On Tue, May 30, 2023 at 04:07:42PM +0200, Uwe Kleine-K=F6nig wrote:
-> > Hello Bjorn,
-> >=20
-> > On Tue, Mar 21, 2023 at 08:31:53PM +0100, Uwe Kleine-K=F6nig wrote:
-> > > this series adapts the platform drivers below drivers/pci to use the
-> > > .remove_new() callback. Compared to the traditional .remove() callback
-> > > .remove_new() returns no value. This is a good thing because the driv=
-er core
-> > > doesn't (and cannot) cope for errors during remove. The only effect o=
-f a
-> > > non-zero return value in .remove() is that the driver core emits a wa=
-rning. The
-> > > device is removed anyhow and an early return from .remove() usually y=
-ields a
-> > > resource leak.
-> > >=20
-> > > By changing the remove callback to return void driver authors cannot
-> > > reasonably assume any more that there is some kind of cleanup later.
-> > >=20
-> > > All drivers were easy to convert as they all returned zero in their
-> > > remove callback. Only for iproc the conversion wasn't trivial, the ot=
-her
-> > > were converted using coccinelle.
-> > >=20
-> > > There are no interdependencies between these patches. So even if there
-> > > are some concerns for individual patches, I ask you to apply the
-> > > remaining set. Then I only have to care for the review feedback of the
-> > > refused patches. (Having said that I don't expect any serious objecti=
-on,
-> > > just things like squashing or separating patches, or maybe I picked a
-> > > wrong subject prefix.)
-> >=20
-> > These patches wait for application for quite some time now. They apply
-> > just fine to v6.4-rc1 and next/master. Would be great to get them in
-> > during the next merge window and ideally give them some time in next
-> > before.
->=20
-> Thanks, these seem fine to me, and Lorenzo normally takes care of
-> drivers/pci/controller/.  Lorenzo, if it's easier to have me apply
-> them, that's fine, too, just let me know.
->=20
-> The only tweaks I would make would be:
->=20
->   PCI: j721e: Convert to platform remove callback returning void
->   PCI: dwc: Convert to platform remove callback returning void
-
-If it's easier for you (or Lorenzo) I can resend with these tweaks.
-Otherwise if these are adapted when applying them, that's fine for me,
-too. Just tell me if I should do anything here.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---zxsm4y3nhwayyseu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmR/WJkACgkQj4D7WH0S
-/k6o4QgAswvhCfm74HQnoTwnC+IoMm4EP1uz/xxeEg2IRLGbrC34TS1Z84R+TfOq
-npW+Bvfva1xto9TqFtxPapMCURjsueSiw5mqKI4wkMiNqBPBmCoR1kzsPM4zY/v1
-hI83Ar+x5UD94+L6lMpQKKl4diNnzFZPAJGX5576Pb/OsrYPBelBsiD2CPyas+ij
-CvVl7AhNVPfTIr8db3ngHUE+Dc47kiTXmrgk9PMd7v4gFWRMLmF0jcRLX5Ri0TbA
-G4d95IrdAHIC/okElC+mPjfp6Ilgzlhvaxupaw26oS0mEKSqG9ZOZh5E17boefVN
-cISjXwl3/zNxHdQUilLemtYFK/fyTQ==
-=aXLj
------END PGP SIGNATURE-----
-
---zxsm4y3nhwayyseu--
-
-
---===============8315012315807381821==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8315012315807381821==--
-
