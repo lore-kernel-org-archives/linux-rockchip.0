@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B90A5C7EE25
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jun 2023 16:31:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14E99C7EE29
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jun 2023 16:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u0kgrOyrH3FwcQyvJMd2OvIg8CXXvYciLa4tm+WAXTk=; b=UUf5mK0Tk1QA6V
-	0ekdQI+kuwFo/ErxYgYS+EDBgEd1cMwhNtiq47tCZ0ot/LpkyL5e8SxJmwHk31EwwY0NSj6kpNX96
-	kc/cHrPQ7CFL2mX0o44K/Hxv4VVnVdDP/yG6VOsbXGAxIGOwSLBESZ93cUNlseETOkeKHL+Q8E5DF
-	3c8kbhTlRZANV5YJONNYjFs/iLS0LrxgYTZ/EEHWtY549E0eT8IXwk7QgacEdKr0lm59LvaEtwAh3
-	ei0aTgPkz8mJZBGxr8HlwEQBVfDyA7UPoG5wPEqJBnaBAyflaVPslXN2w4AS320JQukQzV/ix+RHb
-	Q/qRITSjqs18VW9NpteA==;
+	List-Owner; bh=Cw+igSGUrAxC/yPrQJUGuPFazV9hrO+19u5OIdJLfRo=; b=lTrdlyBLEvONmN
+	jbnTdaeLgtTDeibdsTwAMQyspqdZkDZxGMWN5RTO2Hs+mX+hXHz/eLY2pmpEoXqUfXRdnDpqLVqXM
+	lXqI8TsVR7m3xunzXC2NAK4fW2qz10ZeqmOkYLjDO09qb5O2GFFvk+vaiKMrGb+biEVuk9p6O88Wo
+	NJTG3JTM05yM2/AAoeV7HxS8TdV2anu7ojgNuzAQUXHj2lYrIR8HHItqRALM2JST5iKfhRJaVfPA7
+	opqfLRL76CjwFDez27lXgh0V+K4Q1NTNXktPHSd3UI//0V8IG6UM+nN+Y23MtKicWDNcIq1l8LaGj
+	+3uvqYcTSjRkAnsQhKOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7IXP-009tKA-1n;
-	Thu, 08 Jun 2023 16:31:03 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1q7IXZ-009tSG-0v;
+	Thu, 08 Jun 2023 16:31:13 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7IXI-009tEL-1a;
-	Thu, 08 Jun 2023 16:31:00 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5147dce372eso1270101a12.0;
-        Thu, 08 Jun 2023 09:30:55 -0700 (PDT)
+	id 1q7IXT-009tMW-2C;
+	Thu, 08 Jun 2023 16:31:08 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-9788faaca2dso144111966b.0;
+        Thu, 08 Jun 2023 09:31:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686241854; x=1688833854;
+        d=gmail.com; s=20221208; t=1686241865; x=1688833865;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=/+lWdxdyjn98DSIsUOubwz/2jxFFE94HkilpG/MpBg8=;
-        b=lnFfQTWL93+gmaq67BRhQvuLlxlzloh39fybowrXPtD+Ttb2I6xa8z0AYOQ6AZQz7P
-         3PdYvcE/9ePKM4Qbs1nLAfWrz6xuqYGMI5VjVysieAVPYWU0iu+7pki8NRQb/EzUOGQ9
-         CpKARlQMgFXYbManoFWczAg4I8OYbCj3FEJyP9qCczB8rr8W6ZiJZM8z0LFsRjceTfOi
-         DVI0l830g+qr9wmvqrtLx97Tw7lTOb6s/VAtHEKwewQBudGog5WE9V2hCPZ5qssX5UxF
-         jittVF2oLYZ5OYvVJB1ygq/IKHFIizTZKpKxEu0kEDJ4JKGm+qK9JolleF3AygvlwaWe
-         Q6Iw==
+        bh=FuC7NSHnCjOPABSYc7BMbW74QWv84w5gPSWpqKs1P3g=;
+        b=aNNyAbTqj3IEtixMqMg+vLI37ql4/0Acm5DTZwIVLAsTl75k6dQ1SmDigYhQyWMe+4
+         kv8STcPKEhQ/eKeljkyP5gMJqrpUNcA1ZV22qv/pKVdWNepsQP0b4YIgOCJ9/nFEI3v3
+         yJp2X3xDiG/Qfh/9y30lpl8xi0SV8LzrKgtKS8FZbDPZkDRQ7kfpqqm1TtgYXHIyPOij
+         45TSLPZ2nYlpojs18oErPwQg/iP8zPc+jII1NcC1iZO4zVuPpFkRc+zitkkk8VBg7uvQ
+         7p50g0b7aH0eyKMck+wRxrTxMci9kY47b1U73PqqP6BxdHnib0UIX/J1YcboiFYYj6Pg
+         Apsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686241854; x=1688833854;
+        d=1e100.net; s=20221208; t=1686241865; x=1688833865;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/+lWdxdyjn98DSIsUOubwz/2jxFFE94HkilpG/MpBg8=;
-        b=RBx+f+ro9S5NNNW+2+AUdiK5VbbXKsdzdSyNhtloeMN9q0wohig018yhfgvVT3cqBr
-         bKts/uocBFTdLoj255Z9tVWu/GTsOlQWbsxLgIuCtozdTcHnl8KKqB0YpNAzmgFki9UO
-         Q8bfghaUZGd925jrXxf7KjhiNfVGevZ+gv8qR9e+cXRYXCptjQSH3DUgC5fsdfFtkSKt
-         6zuAkMoTH2yJPQDvXD67SCgHuf0OuPI9gdXggyxMPu7gn9VRpR+psmHk0YZXBNGH0s8G
-         LqfI3cIwWWkDGkT54qj74151WhDFCNb8RWWYZJX20e3TCYRVGbHx7ajzL/prJpyozjJM
-         P9dg==
-X-Gm-Message-State: AC+VfDysIhPl6lbEJ2WkFK5JRiQxBu0pVs4FrhJkd2+eeUOz1XL9aTDf
-	7PH3ogFHIbWQccxkyD2ON8M=
-X-Google-Smtp-Source: ACHHUZ4dAiHZdXniLxJTkgUTGxFZTA34BkWqXauEnC4CDgR/tTjfboJFNTivZhmLJ2Adyf7+kXoPbA==
-X-Received: by 2002:a17:906:d550:b0:974:20bd:6e15 with SMTP id cr16-20020a170906d55000b0097420bd6e15mr413482ejc.4.1686241854107;
-        Thu, 08 Jun 2023 09:30:54 -0700 (PDT)
+        bh=FuC7NSHnCjOPABSYc7BMbW74QWv84w5gPSWpqKs1P3g=;
+        b=kJuWIa8sokSiaQAjTdppkIyYYPA88IEFeS2I7SIZ8g2DJpqvsPCXWeZ7OsXqVioXRI
+         wIw7V9ILidx+ZyJQhNIPi7MWW5gymsRc7FOCDkjeAzrrY+unN8t6z3XQ90HeGFRO1TgR
+         yA+VQ01GQhpMekav8gcTKAX+iVCLON2OyXnoiVKi7DUj4uHV5SmwjkPboxUlebLsMlb4
+         8RQmbZZa0U/aSSMtccJXOdU6U/U1pWFJB2MbIpMK2u9lFIqnB1to0DUz+cwe/Uh9IoVx
+         DwLNyj25k8zLwR7Wb6K10PPQIABbt15l87D4z10eLZ4qctjLgo/IEhqG0h98r4xk9qsI
+         nnlw==
+X-Gm-Message-State: AC+VfDwx4563km735J5YN/a9KkFlzIQ69iVI6sGA8QKpu0hV/+Xg776g
+	vtTNRRamSVMbQ6xO03mqfxU=
+X-Google-Smtp-Source: ACHHUZ7DyU8f3R8jgsuvsuJAD1m2ESx11xvhon/3qlB8Ls1/utZvujvvZ18ia9yuMt56eXMMwEU18g==
+X-Received: by 2002:a17:907:9445:b0:974:5c2f:65cc with SMTP id dl5-20020a170907944500b009745c2f65ccmr209318ejc.67.1686241865494;
+        Thu, 08 Jun 2023 09:31:05 -0700 (PDT)
 Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id l6-20020a1709065a8600b0097866bc5119sm24920ejq.200.2023.06.08.09.30.53
+        by smtp.gmail.com with ESMTPSA id k19-20020a170906129300b0097381fe7aaasm29029ejb.180.2023.06.08.09.31.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Jun 2023 09:30:53 -0700 (PDT)
-Message-ID: <9f606cfd-6823-3232-4f96-d0bd70b17211@gmail.com>
-Date: Thu, 8 Jun 2023 18:30:52 +0200
+        Thu, 08 Jun 2023 09:31:05 -0700 (PDT)
+Message-ID: <c21a0de8-f8f6-a8f9-417b-eca99dc8b55b@gmail.com>
+Date: Thu, 8 Jun 2023 18:31:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 4/5] mtd: nand: raw: rockchip-nand-controller: fix oobfree
- offset and description
+Subject: [PATCH v1 5/5] mtd: nand: add support for the Sandisk SDTNQGAMA chip
 To: miquel.raynal@bootlin.com
 Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
  linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -78,8 +77,9 @@ References: <19bf714a-43f9-c30a-8197-91aaaf4a6e5d@gmail.com>
 Content-Language: en-US
 In-Reply-To: <19bf714a-43f9-c30a-8197-91aaaf4a6e5d@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_093056_550225_5D3328AD 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20230608_093107_718256_89826243 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,59 +91,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MTD framework reserves 1 or 2 bytes for the bad block marker
-depending on the bus size. The rockchip-nand-controller driver
-currently only supports a 8 bit bus, but reserves standard 2 bytes
-for the BBM. The first free OOB byte is therefore OOB2 at offset 2.
-Page address(PA) bytes are moved to the last 4 positions before
-ECC. Update the description for Linux.
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index e39431cfa..cf0fe502f 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -568,9 +568,10 @@ static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
- 		 *    BBM  OOB1 OOB2 OOB3 |......|  PA0  PA1  PA2  PA3
- 		 *
- 		 * The rk_nfc_ooblayout_free() function already has reserved
--		 * these 4 bytes with:
-+		 * these 4 bytes together with 2 bytes for BBM
-+		 * by reducing it's length:
- 		 *
--		 * oob_region->offset = NFC_SYS_DATA_SIZE + 2;
-+		 * oob_region->length = rknand->metadata_size - NFC_SYS_DATA_SIZE - 2;
- 		 */
- 		if (!i)
- 			memcpy(rk_nfc_oob_ptr(chip, i),
-@@ -947,12 +948,8 @@ static int rk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
- 	if (section)
- 		return -ERANGE;
-
--	/*
--	 * The beginning of the OOB area stores the reserved data for the NFC,
--	 * the size of the reserved data is NFC_SYS_DATA_SIZE bytes.
--	 */
- 	oob_region->length = rknand->metadata_size - NFC_SYS_DATA_SIZE - 2;
--	oob_region->offset = NFC_SYS_DATA_SIZE + 2;
-+	oob_region->offset = 2;
-
- 	return 0;
- }
---
-2.30.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+U2FuZGlzayBTRFROUUdBTUEgaXMgYSA4R0Igc2l6ZSwgMy4zViA4IGJpdCBjaGlwIHdpdGggMTZL
+QiBwYWdlIHNpemUsCjFLQiB3cml0ZSBzaXplIGFuZCA0MCBiaXQgZWNjIHN1cHBvcnQKClNpZ25l
+ZC1vZmYtYnk6IFBhd2XFgiBKYXJvc3ogPHBhd2VsamFyb3N6MzY5MUBnbWFpbC5jb20+ClNpZ25l
+ZC1vZmYtYnk6IEpvaGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Ci0tLQogZHJpdmVycy9t
+dGQvbmFuZC9yYXcvbmFuZF9pZHMuYyB8IDMgKysrCiAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRp
+b25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvbmFuZC9yYXcvbmFuZF9pZHMuYyBiL2Ry
+aXZlcnMvbXRkL25hbmQvcmF3L25hbmRfaWRzLmMKaW5kZXggZGFjYzU1MjliLi41M2M0MTE4ZGUg
+MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbXRkL25hbmQvcmF3L25hbmRfaWRzLmMKKysrIGIvZHJpdmVy
+cy9tdGQvbmFuZC9yYXcvbmFuZF9pZHMuYwpAQCAtNDQsNiArNDQsOSBAQCBzdHJ1Y3QgbmFuZF9m
+bGFzaF9kZXYgbmFuZF9mbGFzaF9pZHNbXSA9IHsKIAl7IlRDNThOVkc2RDIgNjRHIDMuM1YgOC1i
+aXQiLAogCQl7IC5pZCA9IHsweDk4LCAweGRlLCAweDk0LCAweDgyLCAweDc2LCAweDU2LCAweDA0
+LCAweDIwfSB9LAogCQkgIFNaXzhLLCBTWl84SywgU1pfMk0sIDAsIDgsIDY0MCwgTkFORF9FQ0Nf
+SU5GTyg0MCwgU1pfMUspIH0sCisJeyJTRFROUUdBTUEgNjRHIDMuM1YgOC1iaXQiLAorCQl7IC5p
+ZCA9IHsweDQ1LCAweGRlLCAweDk0LCAweDkzLCAweDc2LCAweDU3fSB9LAorCQkgIFNaXzE2Sywg
+U1pfOEssIFNaXzRNLCAwLCA2LCAxMjgwLCBOQU5EX0VDQ19JTkZPKDQwLCBTWl8xSykgfSwKIAl7
+IlNEVE5SR0FNQSA2NEcgMy4zViA4LWJpdCIsCiAJCXsgLmlkID0gezB4NDUsIDB4ZGUsIDB4OTQs
+IDB4OTMsIDB4NzYsIDB4NTB9IH0sCiAJCSAgU1pfMTZLLCBTWl84SywgU1pfNE0sIDAsIDYsIDEy
+ODAsIE5BTkRfRUNDX0lORk8oNDAsIFNaXzFLKSB9LAotLQoyLjMwLjIKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
