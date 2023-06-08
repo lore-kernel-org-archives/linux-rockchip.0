@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E8E9C7EE29
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jun 2023 10:42:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA31FC7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jun 2023 16:22:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MA02NWEyaS9z0JKn6YTKXizQ3r3uLcpW3pLqJUWWgZM=; b=WIwsAjZmjdvEcV
-	FDnKXlwPaIzM+9oEhn4/MF4Bw3KXxXFblNqP+Dyhfc4KVBnnK8XG6OC3G4wNw0PJjXdFz3a4o9+5L
-	+jLFuNzsfl8NzB529HJFGq/XYpZX7fWUyPMdQ5mQVF/5iFBAgDdNDMRgW9oxGbW/HavJ9JhuOPfgH
-	MJ4h3u5Naf2hIHJPr5wfSzNeFrCFWECPz176Xa0SbU8nKHcuwB7uK3eIkyk7OekjNSQ2Aw3e8Pv7w
-	oehh/dxdnYCgsk5s87Czsi0s3pwTLHeRmsGrq6vZ2eacC9NUELa47i9rHO5+Ljc/aL6hSHLQUcSDx
-	QTYNUjkmLlywxMKbtHPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QJs5kdhZx28GEGhe7L3Yul3yRroV5MCUCVRuRpSnqtk=; b=t7bW49sYnkW4i5
+	jUsVIxA4DA7HsHPIqAKfWzGc25bW3VivHuTGfAvdxMBIQMwhJhRgjo6tbLkSM3GOfndTcZS8SvAuI
+	uQ2oQC8r6Hp7ezduy0pdl7WCDGtWlSJYdaPIDptWxsvcKYAGx47gOlg+pCvPxDxDxXcIv6PE/WdE/
+	ncg4U8NHfxc3TuUJLvYPiw2QfZC1fZGxRF12EyYgcx0DRdenFWMfgGElRGA6fWqYxisvl2Iz6TV0T
+	crOFHfpZ/zMA/05gip+c9SxP+YTnOVnnbkjsm7GOWYwgrtWoZvZkvTfmUPDfTRdf/xUl0E9q4UWEr
+	DfD7pifDgTAAvkP/hjmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7D69-008vHc-1a;
-	Thu, 08 Jun 2023 10:42:33 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1q7IPS-009rTp-0L;
+	Thu, 08 Jun 2023 16:22:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7D65-008vB7-35;
-	Thu, 08 Jun 2023 10:42:31 +0000
-Received: from pendragon.ideasonboard.com (om126033089000.35.openmobile.ne.jp [126.33.89.0])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 18545480;
-	Thu,  8 Jun 2023 12:41:56 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1686220917;
-	bh=HpyajXFq3Bn1xOynZKfJ657CvXa2Mt/KDZmQlXLGLBs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n4RD0gh/QbIyDCJw62QTaUdUTBgP5VKks+vXeLL9ThBAp+gdlvk3SqC0WnuLYuOFu
-	 kwDxjbDfNJhew0OqUoJ4/hWE5AdtvGP6tOc/K9oqjh0dFOn8FzbSh2pDm98NhXxZIJ
-	 wFjJd1htwDvwt8L0FKM8KSojiUSEugsNb6e0gVMk=
-Date: Thu, 8 Jun 2023 13:42:20 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <20230608104220.GP5058@pendragon.ideasonboard.com>
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
- <20230531080331.GB6496@pendragon.ideasonboard.com>
- <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
- <20230531123945.GF27043@pendragon.ideasonboard.com>
- <CAAFQd5A6sz1BhEjiWyXH6B1TBTLt0ivAc6N0Vd73hebnpc7fKQ@mail.gmail.com>
+	id 1q7IPO-009rQ9-1H;
+	Thu, 08 Jun 2023 16:22:47 +0000
+Received: from jupiter.universe (dyndsl-091-248-189-092.ewe-ip-backbone.de [91.248.189.92])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D5F2C6606F20;
+	Thu,  8 Jun 2023 17:22:41 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686241362;
+	bh=FUovyx4uZxMWc91RhE6Xo+afuqEOehrwcyAViHLU/HU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Yk8lAERkgxCLZNAqSBy1hIwruaRpomWHSkmnjueVD2xRurgWIKlFfR7MklkAJzcql
+	 l/ccXmgzN9Ovua+guJXIfaUt9fz9BUw8i8oZF4aXiQyESB5kicYSy3xxwViHRB70iR
+	 hVyVyVl4D2fuoWnJpk5THwUNvwWmEkfF5EhIcuy65zcZZBczmxWW8AfTlWcZj6ZYsi
+	 emshVIjAMw6ZtlfvRvpQM45eaVaB38Nlbda/0by76tuN1QJDflWDGpK/X5RghUWZ7r
+	 3Hm15WPlVce2dtRRxx8tVXorV8KQ1W4r+I2fNfwq0p0DFyqjat51PH69g/5rkz2OfH
+	 ZyXjyuX98gWKQ==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id C848F4805CC; Thu,  8 Jun 2023 18:22:39 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-ide@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v3 0/5] Add RK3588 SATA support
+Date: Thu,  8 Jun 2023 18:22:33 +0200
+Message-Id: <20230608162238.50078-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5A6sz1BhEjiWyXH6B1TBTLt0ivAc6N0Vd73hebnpc7fKQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_034230_161879_BA7AFD9D 
-X-CRM114-Status: GOOD (  49.60  )
+X-CRM114-CacheID: sfid-20230608_092246_567327_7B592727 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,104 +80,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVG9tYXN6LAoKT24gVGh1LCBKdW4gMDgsIDIwMjMgYXQgMDc6MjQ6MjlQTSArMDkwMCwgVG9t
-YXN6IEZpZ2Egd3JvdGU6Cj4gT24gV2VkLCBNYXkgMzEsIDIwMjMgYXQgOTozOeKAr1BNIExhdXJl
-bnQgUGluY2hhcnQgd3JvdGU6Cj4gPiBPbiBXZWQsIE1heSAzMSwgMjAyMyBhdCAxMDozMDozNkFN
-ICswMjAwLCBIYW5zIFZlcmt1aWwgd3JvdGU6Cj4gPiA+IE9uIDUvMzEvMjMgMTA6MDMsIExhdXJl
-bnQgUGluY2hhcnQgd3JvdGU6Cj4gPiA+ID4gT24gV2VkLCBNYXkgMzEsIDIwMjMgYXQgMDg6MzY6
-NTlBTSArMDIwMCwgSGFucyBWZXJrdWlsIHdyb3RlOgo+ID4gPiA+PiBPbiAyMS8wMy8yMDIzIDEx
-OjI4LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPiA+ID4gPj4+IEFkZCBtb2R1bGUgcGFyYW1l
-dGVyICJtYXhfdmJfYnVmZmVyX3Blcl9xdWV1ZSIgdG8gYmUgYWJsZSB0byBsaW1pdAo+ID4gPiA+
-Pj4gdGhlIG51bWJlciBvZiB2YjIgYnVmZmVycyBzdG9yZSBpbiBxdWV1ZS4KPiA+ID4gPj4+Cj4g
-PiA+ID4+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25h
-cmRAY29sbGFib3JhLmNvbT4KPiA+ID4gPj4+IC0tLQo+ID4gPiA+Pj4gIGRyaXZlcnMvbWVkaWEv
-Y29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jIHwgMTUgKysrLS0tLS0tLS0tLS0tCj4g
-PiA+ID4+PiAgaW5jbHVkZS9tZWRpYS92aWRlb2J1ZjItY29yZS5oICAgICAgICAgICAgICAgICAg
-fCAxMSArKysrKysrKystLQo+ID4gPiA+Pj4gIDIgZmlsZXMgY2hhbmdlZCwgMTIgaW5zZXJ0aW9u
-cygrKSwgMTQgZGVsZXRpb25zKC0pCj4gPiA+ID4+Pgo+ID4gPiA+Pj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jIGIvZHJpdmVycy9t
-ZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMKPiA+ID4gPj4+IGluZGV4IGFl
-OWQ3MmY0ZDE4MS4uZjRkYTkxN2NjZjNmIDEwMDY0NAo+ID4gPiA+Pj4gLS0tIGEvZHJpdmVycy9t
-ZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMKPiA+ID4gPj4+ICsrKyBiL2Ry
-aXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jCj4gPiA+ID4+PiBA
-QCAtMzQsNiArMzQsOCBAQAo+ID4gPiA+Pj4gIHN0YXRpYyBpbnQgZGVidWc7Cj4gPiA+ID4+PiAg
-bW9kdWxlX3BhcmFtKGRlYnVnLCBpbnQsIDA2NDQpOwo+ID4gPiA+Pj4KPiA+ID4gPj4+ICttb2R1
-bGVfcGFyYW0obWF4X3ZiX2J1ZmZlcl9wZXJfcXVldWUsIHVsb25nLCAwNjQ0KTsKPiA+ID4gPj4K
-PiA+ID4gPj4gVGhlcmUgaXMgbm8gTU9EVUxFX1BBUk1fREVTQyBoZXJlPyBQbGVhc2UgYWRkLiBJ
-IHNlZSBpdCBpcyBub3QgdGhlcmUgZm9yCj4gPiA+ID4+IHRoZSBkZWJ1ZyBwYXJhbSBlaXRoZXIs
-IGl0IHNob3VsZCBiZSBhZGRlZCBmb3IgdGhhdCBhcyB3ZWxsLgo+ID4gPiA+Cj4gPiA+ID4gV291
-bGQgdGhpcyBiZSB0aGUgcmlnaHQgdGltZSB0byBjb25zaWRlciByZXNvdXJjZSBhY2NvdW50aW5n
-IGluIFY0TDIgZm9yCj4gPiA+ID4gYnVmZmVycyA/IEhhdmluZyBhIG1vZHVsZSBwYXJhbWV0ZXIg
-ZG9lc24ndCBzb3VuZCB2ZXJ5IHVzZWZ1bCwgYW4KPiA+ID4gPiBhcHBsaWNhdGlvbiBjb3VsZCBl
-YXNpbHkgYWxsb2NhdGUgbW9yZSBidWZmZXJzIGJ5IHVzaW5nIGJ1ZmZlciBvcnBoYW5pbmcKPiA+
-ID4gPiAoYWxsb2NhdGluZyBidWZmZXJzLCBleHBvcnRpbmcgdGhlbSBhcyBkbWFidWYgb2JqZWN0
-cywgYW5kIGZyZWVpbmcgdGhlbSwKPiA+ID4gPiB3aGljaCBsZWF2ZXMgdGhlIG1lbW9yeSBhbGxv
-Y2F0ZWQpLiBSZXBlYXRpbmcgYWxsb2NhdGlvbiBjeWNsZXMgdXAgdG8KPiA+ID4gPiBtYXhfdmJf
-YnVmZmVyX3Blcl9xdWV1ZSB3aWxsIGFsbG93IGFsbG9jYXRpbmcgYW4gdW5ib3VuZGVkIG51bWJl
-ciBvZgo+ID4gPiA+IGJ1ZmZlcnMsIHVzaW5nIGFsbCB0aGUgYXZhaWxhYmxlIHN5c3RlbSBtZW1v
-cnkuIEknZCByYXRoZXIgbm90IGFkZCBhCj4gPiA+ID4gbW9kdWxlIGFyZ3VtZW50IHRoYXQgb25s
-eSBnaXZlcyB0aGUgaW1wcmVzc2lvbiBvZiBzb21lIGtpbmQgb2Ygc2FmZXR5Cj4gPiA+ID4gd2l0
-aG91dCBhY3R1YWxseSBwcm92aWRpbmcgYW55IHZhbHVlLgo+IAo+IEdvb2QgcG9pbnQuIEl0J3Mg
-ZXZlbiBzaW1wbGVyLCBqdXN0IGtlZXAgb3BlbmluZyBuZXcgdmltMm0gaW5zdGFuY2VzCj4gYW5k
-IHJlcXVlc3RpbmcgbWF4IGJ1ZmZlcnMgOikuCj4gCj4gPiA+Cj4gPiA+IERvZXMgZG1hYnVmIGl0
-c2VsZiBwcm92aWRlIHNvbWUgYWNjb3VudGluZyBtZWNoYW5pc20/IEp1c3Qgd29uZGVyaW5nLgo+
-ID4gPgo+ID4gPiBNb3JlIHNwZWNpZmljIHRvIFY0TDI6IEknbSBub3Qgc28gc3VyZSBhYm91dCB0
-aGlzIG1vZHVsZSBwYXJhbWV0ZXIgZWl0aGVyLgo+ID4gPiBJdCBtYWtlcyBzZW5zZSB0byBoYXZl
-IGEgY2hlY2sgc29tZXdoZXJlIGFnYWluc3QgcmlkaWN1bG91cyB2YWx1ZXMgKGkuZS4KPiA+ID4g
-YWxsb2NhdGluZyBNQVhJTlQgYnVmZmVycyksIGJ1dCB0aGF0IGNhbiBiZSBhIGRlZmluZSBhcyB3
-ZWxsLiBCdXQgb3RoZXJ3aXNlCj4gPiA+IEkgYW0gZmluZSB3aXRoIGFsbG93aW5nIGFwcGxpY2F0
-aW9ucyB0byBhbGxvY2F0ZSBidWZmZXJzIHVudGlsIHRoZSBtZW1vcnkKPiA+ID4gaXMgZnVsbC4K
-PiA+ID4KPiA+ID4gVGhlIHF1ZXN0aW9uIGlzIHJlYWxseTogd2hhdCBpcyB0aGlzIHBhcmFtZXRl
-ciBzdXBwb3NlZCB0byBkbz8gVGhlIG9ubHkKPiA+ID4gdGhpbmcgaXQgZG9lcyBpcyB0byBzYW5p
-dGl6ZSB1bmxpa2VseSBpbnB1dHMgKGUuZy4gYWxsb2NhdGluZyBNQVhJTlQgYnVmZmVycykuCj4g
-PiA+Cj4gPiA+IEkgcHJlZmVyIHRoYXQgYXMgYSBkZWZpbmUsIHRvIGJlIGhvbmVzdC4KPiA+ID4K
-PiA+ID4gSSB0aGluayBpdCBpcyBwZXJmZWN0bHkgZmluZSBmb3IgdXNlcnMgdG8gdHJ5IHRvIHJl
-cXVlc3QgbW9yZSBidWZmZXJzIHRoYW4KPiA+ID4gbWVtb3J5IGFsbG93cy4gSXQgd2lsbCBqdXN0
-IGZhaWwgaW4gdGhhdCBjYXNlLCBub3QgYSBwcm9ibGVtLgo+ID4gPgo+ID4gPiBBbmQgaWYgYW4g
-YXBwbGljYXRpb24gaXMgZG9pbmcgc2lsbHkgdGhpbmdzIGxpa2UgYnVmZmVyIG9ycGhhbmluZywg
-dGhlbiBzbwo+ID4gPiB3aGF0PyBJcyB0aGF0IGFueSBkaWZmZXJlbnQgdGhhbiBhbGxvY2F0aW5n
-IG1lbW9yeSBhbmQgbm90IGZyZWVpbmcgaXQ/Cj4gPiA+IEV2ZW50dWFsbHkgaXQgd2lsbCBydW4g
-b3V0IG9mIG1lbW9yeSBhbmQgY3Jhc2gsIHdoaWNoIGlzIG5vcm1hbC4KPiA+Cj4gPiBMaW51eCBw
-cm92aWRlcyBBUElzIHRvIGFjY291bnQgZm9yIGFuZCBsaW1pdCB1c2FnZSBvZiByZXNvdXJjZXMs
-Cj4gPiBpbmNsdWRpbmcgbWVtb3J5LiBBIHN5c3RlbSBhZG1pbmlzdHJhdG9yIGNhbiBwcmV2ZW50
-IHJvZ3VlIHByb2Nlc3Nlcwo+ID4gZnJvbSBzdGFydmluZyBzeXN0ZW0gcmVzb3VyY2VzLiBUaGUg
-bWVtb3J5IGNvbnN1bWVkIGJ5IHZiMiBidWZmZXIgaXNuJ3QKPiA+IHRha2VuIGludG8gYWNjb3Vu
-dCwgbWFraW5nIFY0TDIgZXNzZW50aWFsbHkgdW5zYWZlIGZvciB1bnRydXN0ZWQKPiA+IHByb2Nl
-c3Nlcy4KPiAKPiBJIGFncmVlIHRoYXQgcHJvcGVyIGFjY291bnRpbmcgd291bGQgYmUgdXNlZnVs
-LCBhbHRob3VnaCBJIHdvdWxkbid0Cj4gcmVhbGx5IG1ha2UgdGhpcyBwYXRjaCBzZXJpZXMgZGVw
-ZW5kIG9uIGl0LCBzaW5jZSBpdCdzIG5vdCBpbnRyb2R1Y2luZwo+IHRoZSBsb29waG9sZSBpbiB0
-aGUgZmlyc3QgcGxhY2UuCgpObyBkaXNhZ3JlZW1lbnQgaGVyZSwgbXkgY29uY2VybiB3YXMgYWJv
-dXQgaW50cm9kdWNpbmcgYSB3b3JrYXJvdW5kIGZvcgp0aGUgbGFjayBvZiBwcm9wZXIgbWVtb3J5
-IGFjY291bnRpbmcuIEknZCBsaWtlIHRvIGF2b2lkIHRoZSB3b3JrYXJvdW5kLApidXQgaXQgZG9l
-c24ndCBtZWFuIG1lbW9yeSBhY2NvdW50aW5nIGhhcyB0byBiZSBpbXBsZW1lbnQgbm93LgoKPiBX
-ZSBoYWQgc29tZSBkaXNjdXNzaW9uIGFib3V0IHRoaXMgaW4gQ2hyb21lT1MgbG9uZyBhZ28gYW5k
-IHdlIHRob3VnaHQKPiBpdCB3b3VsZCBiZSByZWFsbHkgdXNlZnVsIGZvciBraWxsaW5nIGJyb3dz
-ZXIgdGFicyB3aXRoIGJpZyB2aWRlb3MsCj4gYnV0IG90aGVyd2lzZSB1c2luZyB2ZXJ5IGxpdHRs
-ZSByZWd1bGFyIG1lbW9yeSAoZS5nLiB2aWEgamF2YXNjcmlwdCkuCj4gCj4gT25lIGNoYWxsZW5n
-ZSB3aXRoIGFjY291bnRpbmcgVjRMMiBhbGxvY2F0aW9ucyBpcyBob3cgdG8gY291bnQgc2hhcmVk
-Cj4gRE1BLWJ1ZnMuIElmIG9uZSBwcm9jZXNzIGFsbG9jYXRlcyBhIFY0TDIgYnVmZmVyLCBleHBv
-cnRzIGl0IHRvCj4gRE1BLWJ1ZiBhbmQgdGhlbiBzZW5kcyBpdCB0byBhbm90aGVyIHByb2Nlc3Mg
-dGhhdCBrZWVwcyBpdCBhbGl2ZSwgYnV0Cj4gZnJlZXMgdGhlIFY0TDIgYnVmZmVyIChhbmQgZXZl
-biBjbG9zZXMgdGhlIERNQS1idWYgZmQpLCBzaG91bGQgdGhhdAo+IG1lbW9yeSBiZSBzdGlsbCBh
-Y2NvdW50ZWQgdG8gaXQgZXZlbiB0aG91Z2ggaXQgZG9lc24ndCBob2xkIGEKPiByZWZlcmVuY2Ug
-dG8gaXQgYW55bW9yZT8KCkkndmUgdGhvdWdodCBhYm91dCB0aGF0IHRvby4gSXQncyBhbiBhbm5v
-eWluZyBwcm9ibGVtLCBpdCBzaG91bGQKcHJvYmFibHkgYmUgZGlzY3Vzc2VkIHdpdGggbWVtb3J5
-IG1hbmFnZW1lbnQgZGV2ZWxvcGVycy4KCj4gPiBOb3csIHRvIGJlIGZhaXIsIHRoZXJlIGFyZSBt
-YW55IHJlYXNvbnMgd2h5IGFsbG93aW5nIGFjY2VzcyB0byB2NEwyCj4gPiBkZXZpY2VzIHRvIHVu
-dHJ1c3RlZCBhcHBsaWNhdGlvbnMgaXMgYSBiYWQgaWRlYSwgYW5kIG1lbW9yeSBjb25zdW1wdGlv
-bgo+ID4gaXMgbGlrZWx5IG5vdCBldmVuIHRoZSB3b3JzdCBvbmUuIFN0aWxsLCBpcyB0aGlzIHNv
-bWV0aGluZyB3ZSB3YW50IHRvCj4gPiBmaXgsIG9yIGRvIHdlIHdhbnQgdG8gY29uc2lkZXIgVjRM
-MiB0byBiZSBwcml2aWxlZGdlZCBBUEkgb25seSA/IFJpZ2h0Cj4gPiBub3cgd2UgY2FuJ3QgZG8g
-c28sIGJ1dCB3aXRoIG1hbnkgTGludXggc3lzdGVtcyBtb3ZpbmcgdG93YXJkcyBwaXBld2lyZSwK
-PiA+IHdlIGNvdWxkIHBvc3NpYmx5IGhhdmUgYSBzeXN0ZW0gZGFlbW9uIGlzb2xhdGluZyB1bnRy
-dXN0ZWQgYXBwbGljYXRpb25zCj4gPiBmcm9tIHRoZSByZXN0IG9mIHRoZSBzeXN0ZW0uIFdlIG1h
-eSB0aHVzIG5vdCBuZWVkIHRvIGZpeCB0aGlzIGluIHRoZQo+ID4gVjRMMiBBUEkuCgotLSAKUmVn
-YXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+This enables SATA support for RK3588.
+
+Changes since PATCHv2:
+ * https://lore.kernel.org/all/20230522173423.64691-1-sebastian.reichel@collabora.com/
+ * Drop patch 1 (applied by Heiko)
+ * Update SATA DT binding to split Rockchip into its own file
+ * Enforce correct resets numbers for the rk3568/rk3588 combo PHY
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20230413182345.92557-1-sebastian.reichel@collabora.com/
+ * Rebase to v6.4-rc1
+ * Collect Acked-by for syscon DT binding update
+ * Use ASIC clock description suggested by Serge Semin
+ * Also add RBC clock (not used by RK3588)
+ * Add extra patch narrowing down the allowed clocks for RK356x and RK3588
+
+-- Sebastian
+
+Sebastian Reichel (5):
+  dt-bindings: ata: dwc-ahci: add PHY clocks
+  dt-bindings: ata: dwc-ahci: add Rockchip RK3588
+  dt-bindings: phy: rockchip: rk3588 has two reset lines
+  arm64: dts: rockchip: rk3588: add combo PHYs
+  arm64: dts: rockchip: rk3588: add SATA support
+
+ .../bindings/ata/rockchip,dwc-ahci.yaml       | 114 ++++++++++++++++++
+ .../bindings/ata/snps,dwc-ahci-common.yaml    |   8 +-
+ .../bindings/ata/snps,dwc-ahci.yaml           |  17 ++-
+ .../phy/phy-rockchip-naneng-combphy.yaml      |  34 +++++-
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |  44 +++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  90 ++++++++++++++
+ 6 files changed, 298 insertions(+), 9 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
