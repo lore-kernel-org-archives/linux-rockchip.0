@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA66C77B7A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jun 2023 15:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC09C77B7A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jun 2023 16:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FAhm7YT5Ki/o01RyFlOKx0visPfXK+dyc2pgoKlbsBU=; b=GdIvCepHT96ZdEJCpT6U6QkFA6
-	kp17+ZWISA5qzSW2vm4gYdoVA5/GXcJ/3rxFKJvzxOeRKdvjOpo+ZbR3sJ1yWXzTqnJCyeKtj+DTf
-	BOC1psHScHkfcbRKy2qLBP7xLxIVdi/o+a61lWU2ozClqY98Gac5ejQLBnu2tu3K4PpsfD4his9th
-	ViXEw0S5vx+CBjeul6dl4Tb0bjtDRhlYAvLzmue0E/A9yvz7J0WWRprABIZ/1fW4eSOzwkc4mNRz4
-	BUX/TXfk54QSOoueO010VsBafhhyGjW063T4B0iKDv/+KTSvyI20yeMMco4AX3//60KJzdO3FHdze
-	xEZnYWIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=smj85BW0K4EqL33UqjGhO2jVnvlqlhPJZJKBLkdDi9o=; b=mC4f/AoEOw6HyB
+	BFtQyaUqRtq0UmMsPjzL0+lofVbhBSJt8Pf0zNW4O7Ub4UCAkQrbRAMjDbzusp1wxaYYfEcD4+zDr
+	J4ENdcO9WgolVlKX62nRKDGzobl9WMZPLYesS9mkW2ZU7GkoyknQVEWO6FvE3NiLeww7qiD/35eaT
+	IUVcMc+JL3FLOke3u7CYkEF9P9J1YzKiSGZuhLgseQClHbo9HgB+W4ta0YP9NKkIiFjahxsDla29p
+	tRCf7VrF0A4iMnUNfYOO0AWFzSssLyiD+lIjxxOUXNWcEtgAJbbs7tFleKlZ5xqnpkMVChTSs9+yH
+	WKIbujvbzukCKRd4tviQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q80Bj-00GQHY-1P;
-	Sat, 10 Jun 2023 15:07:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q81UY-00GYux-0Z;
+	Sat, 10 Jun 2023 16:31:06 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q80Bg-00GQGN-0R;
-	Sat, 10 Jun 2023 15:07:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A9B0B61044;
-	Sat, 10 Jun 2023 15:07:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F353AC433EF;
-	Sat, 10 Jun 2023 15:07:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1686409651;
-	bh=OFXw4bB33vMAMP/mYtrrZ0SI5zDOVjnAgufarPsOhB8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UQGn99pnynaq9uYtEVwDAzPaCVqzhpd1OTSMw7uX9tK3QuRXZ/3SyX2snVoz9deYn
-	 7JIz9eaQdi/2YoK9ihy4ys4AsvU2vMOZAOcHyT/MnFU+syHwKbrQa6aHt7CD0Oxi/S
-	 SVJgm5WT8Cc/AlFzhxQ4q5M0GcxyZF6bgCsipuYWod8lBpXLgcBkaTRKoJXutecd7E
-	 vyP26AP8w6pAscSqadEnLZMahfGbdA0ngXAi6tyB/G7E0lZtk5jWcwUw46TXUdgKUr
-	 S8F00qKBUTtlJ22KSmOmOk7x+anwzyLdK18xOg2h2MtnkXuFYOSZWizcyQcjYxO4Qe
-	 5woFdFEakuMCg==
-Date: Sat, 10 Jun 2023 16:07:25 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Shreeya Patel <shreeya.patel@collabora.com>
-Cc: jic23@kernel.org, lars@metafoo.de, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	heiko@sntech.de, sebastian.reichel@collabora.com,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com, gustavo.padovan@collabora.com,
-	serge.broslavsky@collabora.com
+	id 1q81UV-00GYu5-2o
+	for linux-rockchip@lists.infradead.org;
+	Sat, 10 Jun 2023 16:31:04 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5147f5efeb5so5032883a12.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 10 Jun 2023 09:31:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1686414660; x=1689006660;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uk7ZRHzY6ZnIa35oiewUZ6JqsNNCpQsJIRIF2DGyVuo=;
+        b=uzTJnk3hMjLXnmgHH535kCPcL222DsQlFUOg03NCBayB4Er0ztzmLa44+UUTpuDEgh
+         4ognjT4NCy477Lpo0y0CVKrBIOf7j7MPpec6oJsDCSuPIbjxKhhrxWrqaRhHj2fAT6sy
+         UA8JXM4RS/pFNU/ROOGugSfIkvQhHUAkQLMSGbNNZ+9vPA/re3BtBWquJ5EsrrDh0rZe
+         kMDulhkr4TsqQTh7GG94zE7a/DmOn8KZwQ6Gy3xXrGbmMefdIT47FRXE7z9z+pmUUzoz
+         VEIJg+bBrSl0ztpfvNtVXXDIqIeTLUvIBbmzlw24MK1gJe6ZI3pvu7iP7lxHE4EjDwwP
+         cCXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686414660; x=1689006660;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uk7ZRHzY6ZnIa35oiewUZ6JqsNNCpQsJIRIF2DGyVuo=;
+        b=aDGcnpenI0fXsNIPRVNr/+ZZd2WyvLKQVVoZH+2xrQrtYZifFwbOgFi4i24etV069T
+         xLW3c0+uJKgxR0b951A9cCKLHZSwy6+4hQ8I2IdhfwqDD6ZLxkryJzvHyQf++tFD9/Ud
+         90tGbEgdbYpy3u996fMpOM2Rl+ZeWUkpZSH3HsFRqCDJCzxtJhgNAu5FPAMtgu3e5zoS
+         ef2mhensoPaXL0U7PZI29ipAvs9g6oyqnybWluA2psH51gX9CZtvMW0tHZPKfRT5GI8W
+         bYX65EegcJvMHYu1hrNSa5Rq7t+RcJiOI5Ef7fDCq/3m9ACjswPImOltUNbiEhFAwBbY
+         06Og==
+X-Gm-Message-State: AC+VfDz1/qRkfm64//hSuxP9dMPF0b/eiyYIkcRaQjxE8yH4cQJd1/Mb
+	inXc5LE+ER/EdS+Htl/GQRhmTg==
+X-Google-Smtp-Source: ACHHUZ7vxhVCpy6NFkysiYwdjutN6KRNJcaFd3rV7LzVNTq5r9IFA4bPPfG281Asltu8fcnoNTkcMA==
+X-Received: by 2002:aa7:cd95:0:b0:514:a0a7:7e7f with SMTP id x21-20020aa7cd95000000b00514a0a77e7fmr1618079edv.2.1686414660144;
+        Sat, 10 Jun 2023 09:31:00 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id b20-20020aa7d494000000b00514a3c04646sm3017914edr.73.2023.06.10.09.30.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 10 Jun 2023 09:30:59 -0700 (PDT)
+Message-ID: <c5243179-9baf-59ce-b979-c596dcf6692b@linaro.org>
+Date: Sat, 10 Jun 2023 18:30:57 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
 Subject: Re: [PATCH v2] dt-bindings: iio: rockchip: Fix 'oneOf' condition
  failed warning
-Message-ID: <20230610-agreed-aground-8a08f6854965@spud>
+Content-Language: en-US
+To: Shreeya Patel <shreeya.patel@collabora.com>, jic23@kernel.org,
+ lars@metafoo.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, heiko@sntech.de, sebastian.reichel@collabora.com
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ gustavo.padovan@collabora.com, serge.broslavsky@collabora.com
 References: <20230610143601.173307-1-shreeya.patel@collabora.com>
-MIME-Version: 1.0
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 In-Reply-To: <20230610143601.173307-1-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230610_080732_216136_F752144F 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20230610_093103_906366_D2362CAC 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,70 +95,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9127708057043440219=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============9127708057043440219==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HX7e/hojOdb6OlLG"
-Content-Disposition: inline
-
-
---HX7e/hojOdb6OlLG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Jun 10, 2023 at 08:06:01PM +0530, Shreeya Patel wrote:
+On 10/06/2023 16:36, Shreeya Patel wrote:
 > rk3588-saradc isn't compatible with the rk3399-saradc variant,
 > hence, fix the following dtbs_check warning for 'oneOf' condition
 > failure.
->=20
-> DTC_CHK arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb
-> /home/shreeya/linux/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb:
-> 	saradc@fec10000: compatible: 'oneOf' conditional failed,
-> 	one must be fixed:
-> 	['rockchip,rk3588-saradc'] is too short
-> 	'rockchip,saradc' was expected
-> 	'rockchip,rk3066-tsadc' was expected
-> 	'rockchip,rk3399-saradc' was expected
->=20
-> Fixes: 2daf2ae9793d ("dt-bindings: iio: adc: Add rockchip,rk3588-saradc s=
-tring")
-> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> 
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Are you sure it isn't compatible? According to your driver it is and
+this change is not enough.
 
-Cheers,
-Conor.
+Best regards,
+Krzysztof
 
---HX7e/hojOdb6OlLG
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZISRrQAKCRB4tDGHoIJi
-0q+iAQCBDXnjy5NryPeQQk7XL4f/lyuDEbE/4xBNyy6UWaXdmwD+L91PrMDYIF6a
-CaCNra/LYyBrWPHVG64IgrjYkvtNrwc=
-=3vCR
------END PGP SIGNATURE-----
-
---HX7e/hojOdb6OlLG--
-
-
---===============9127708057043440219==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9127708057043440219==--
-
