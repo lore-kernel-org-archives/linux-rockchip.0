@@ -4,96 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A4A4C7EE23
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Jun 2023 13:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F332EC7EE23
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Jun 2023 20:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7tZaqLUOQ0c5GFwiq+N2s6m6I8bQ95hc7SgEbVmdvs0=; b=Ba51nOFai4Ua+1
-	rtLlw4fI2287/eUJaZ9EzkAPIaP6zugy08qN9Zb3ghwPOpmxhLBmvn7Bnk+yL24Nh5yCSlboz6TPi
-	7w7qmivvCEIn4Yo8c/BVL5ASrhsi/cPkZEeXFTRMLnu0HfM4crrU6GN21AeSrIlMrtSjLjCcYp0B4
-	6j5KJ8IuZgxM8P5chgSh1lWJYgUbGXjlclY86a+4VReMNUU1cEOn4X2uTTGRCWeUZnbfTIJgmtSY6
-	CU+kCuShT3HdZ98uYxnfdnFYHs1pCuz0SjMCGOVM9WyASuiAnz1irtO2Dnj94x5skXwHDnIbGKknP
-	3S7sOmNccVG6h9Cbf3rw==;
+	List-Owner; bh=xic84IjsBi90RE843NywY47XEFXCpDaMJ4+GXxubCBY=; b=MjBTFkMf+VhEKC
+	hWI/LEsNmgbcXRvO4s6AR/n5ZXAL0eqPaRveppEC8XkDtCfOZJGopksCF3EVR8vgy+ZgrXr16IQ9z
+	zsqkbDs5wTYFwNl4a/INKhQyfMUgNwM44kwSwuslgYt42vDU62QqVvaviVqw5o0UIiFoFV86qxFfX
+	tWe2lkPI1YiKJWEQNREo2fX/WQLtybDHSGtrvCq0gNK6038ykEJDhlysOc2ML2ZCF7EqqZ1ca3m2p
+	KhDFyH9pyfvd+3PERvxSZnOsWqi8RbUzKznR1oplK6gIIJsuG2+NrvWiz6ah2tqAuwINEbQrl05g3
+	YNzPL3FHV3fxm+VxHz8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8L3Z-00115e-19;
-	Sun, 11 Jun 2023 13:24:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q8RLV-001fYc-0l;
+	Sun, 11 Jun 2023 20:07:29 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8L3V-001148-07;
-	Sun, 11 Jun 2023 13:24:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8D46D610AA;
-	Sun, 11 Jun 2023 13:24:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D4A6C433D2;
-	Sun, 11 Jun 2023 13:24:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1686489866;
-	bh=g9njtkoojqRfUI49HT2MGfWzoAKuf1DOFdEq/kUvHsA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DGC5PWnLkcdaGgKC8g7aXKlp+cTXW37FdG3MVsm8EY5hOfYkx9wU/GrdAySg2Oi3E
-	 dOVMl4KJhdYBu2De+eoiciAURQiPsCqJ9ietIqhfXZzIiJ/qHaNTEP+6cbbfGxU3OF
-	 S1V2x+n0xz8qtn3BiYOFuIupPFOSQz5yy55SQRQJKpTgLcEvlJGss24Pfra8lHGfqX
-	 flOVS0h/DWl7SNIHBe4o1Tckr5hlYu9wiNquAWD9glhB7l1BDGN6MfJfYQi4jaXF/p
-	 CbfeGdAXGcgQoXEiIlRZ2gExfM0ZoxVnZVNTIqcbZJpWvcddhXHRqZboEHi89XhF++
-	 jIjqIIdIQw+Hg==
-Received: by pali.im (Postfix)
-	id D08BB7FD; Sun, 11 Jun 2023 15:24:23 +0200 (CEST)
-Date: Sun, 11 Jun 2023 15:24:23 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Joyce Ooi <joyce.ooi@intel.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tom Joseph <tjoseph@cadence.com>, Shawn Guo <shawn.guo@linaro.org>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Vidya Sagar <vidyas@nvidia.com>, Jisheng Zhang <jszhang@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>, Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-rpi-kernel@lists.infradead.org, kernel@pengutronix.de,
-	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
- void
-Message-ID: <20230611132423.milnj2pnvjqzwino@pali>
-References: <20230530140742.ebbrxmpieuphbmz3@pengutronix.de>
- <ZHphHkNLO4tEJIm/@bhelgaas>
+	id 1q8RLR-001fXn-2s;
+	Sun, 11 Jun 2023 20:07:27 +0000
+Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2b1afe57bdfso40981751fa.0;
+        Sun, 11 Jun 2023 13:07:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1686514043; x=1689106043;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=DPAXUJMl2olgLfel3fMTObIngqSlcX9cwamWvtgEryU=;
+        b=U90IpPzzDT1hYVjCAzUYQ8SH+qZ9LJ9b/4gKcgd+QWBGGt4cwKs1AO/LJKvWQOxGdf
+         lFFhRDU67j/CuN+5SSBeK8eIyTTICTlp1/3oGlSk2HT0eaheaM8BHDVoxjMsIk1eHdOu
+         dxAZhMmOu2UrspCZ0gp2W8G4zac+HtXkoTUJjQfHR8TBAMjPpKWbjM56LVCoWftyshRI
+         eE2N7r9tK1tDu9BmGFvIbR/BbkLIaj3al69jy+m/iARqsrLiWBTRA5i5gwHM/HV7YG/E
+         CGxrK3sqptY+OvelKMemwVbaehCExCG5iMGDE0kejZGQAWcP/Dsiqpq4AsxCv3FV98R5
+         RjSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686514043; x=1689106043;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DPAXUJMl2olgLfel3fMTObIngqSlcX9cwamWvtgEryU=;
+        b=g8Mmosw3/ytalDleQoIroraCBAku4WYMOi9kBtz8wS84YtbxpvmTt+Vy+qd6L5yObB
+         sMSinRQEZ/4S1V5JqO5BJ6e52UXo2VB/46934d1kKk9xyCfGjUPUxCpZQbTesAfJ1c+u
+         6lYOr6DAbOpY+aMCdqKvzee9to7e0rxJWZuzJt1jKfDuQejB3qjUsZuHGudqWY3zSjxM
+         NFH2pAoY/8TgKzzKD99YxdJUYCLF53VxU+5SnTgF0VT1q2MKPDlL83s/gY0JlO2rLKRq
+         R4J+nPn+sfauQEtPOhZEsYi6gXFq8nHP4FKeYo2yqkrCep7qFz7Vze21L0G1E0fPE9py
+         huqw==
+X-Gm-Message-State: AC+VfDz/DCdahk/0TFlOTXWBVU5+oMDbrmdBwZj7CfrmSrcTPpBoSZDf
+	iez843QMmu3KZL+l+bHT9i4=
+X-Google-Smtp-Source: ACHHUZ7TUfI6VgL+wCYiJszZCQaUW35B1SFLTNT2ijeS+m8ypXT3rz4F5aZE/26qGRRhbAtmY3gF9Q==
+X-Received: by 2002:a05:6512:1d1:b0:4f3:94b5:3274 with SMTP id f17-20020a05651201d100b004f394b53274mr2903819lfp.63.1686514042768;
+        Sun, 11 Jun 2023 13:07:22 -0700 (PDT)
+Received: from mobilestation ([95.79.140.35])
+        by smtp.gmail.com with ESMTPSA id s6-20020a19ad46000000b004efff420b11sm1235506lfd.181.2023.06.11.13.07.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Jun 2023 13:07:21 -0700 (PDT)
+Date: Sun, 11 Jun 2023 23:07:19 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v3 1/5] dt-bindings: ata: dwc-ahci: add PHY clocks
+Message-ID: <20230611200719.exct7r7z5izqzz4t@mobilestation>
+References: <20230608162238.50078-1-sebastian.reichel@collabora.com>
+ <20230608162238.50078-2-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ZHphHkNLO4tEJIm/@bhelgaas>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <20230608162238.50078-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230611_062429_185821_379FFAD9 
-X-CRM114-Status: GOOD (  31.36  )
+X-CRM114-CacheID: sfid-20230611_130725_934767_6C4EAF65 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,56 +92,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpZGF5IDAyIEp1bmUgMjAyMyAxNjozNzozNCBCam9ybiBIZWxnYWFzIHdyb3RlOgo+IE9u
-IFR1ZSwgTWF5IDMwLCAyMDIzIGF0IDA0OjA3OjQyUE0gKzAyMDAsIFV3ZSBLbGVpbmUtS8O2bmln
-IHdyb3RlOgo+ID4gSGVsbG8gQmpvcm4sCj4gPiAKPiA+IE9uIFR1ZSwgTWFyIDIxLCAyMDIzIGF0
-IDA4OjMxOjUzUE0gKzAxMDAsIFV3ZSBLbGVpbmUtS8O2bmlnIHdyb3RlOgo+ID4gPiB0aGlzIHNl
-cmllcyBhZGFwdHMgdGhlIHBsYXRmb3JtIGRyaXZlcnMgYmVsb3cgZHJpdmVycy9wY2kgdG8gdXNl
-IHRoZQo+ID4gPiAucmVtb3ZlX25ldygpIGNhbGxiYWNrLiBDb21wYXJlZCB0byB0aGUgdHJhZGl0
-aW9uYWwgLnJlbW92ZSgpIGNhbGxiYWNrCj4gPiA+IC5yZW1vdmVfbmV3KCkgcmV0dXJucyBubyB2
-YWx1ZS4gVGhpcyBpcyBhIGdvb2QgdGhpbmcgYmVjYXVzZSB0aGUgZHJpdmVyIGNvcmUKPiA+ID4g
-ZG9lc24ndCAoYW5kIGNhbm5vdCkgY29wZSBmb3IgZXJyb3JzIGR1cmluZyByZW1vdmUuIFRoZSBv
-bmx5IGVmZmVjdCBvZiBhCj4gPiA+IG5vbi16ZXJvIHJldHVybiB2YWx1ZSBpbiAucmVtb3ZlKCkg
-aXMgdGhhdCB0aGUgZHJpdmVyIGNvcmUgZW1pdHMgYSB3YXJuaW5nLiBUaGUKPiA+ID4gZGV2aWNl
-IGlzIHJlbW92ZWQgYW55aG93IGFuZCBhbiBlYXJseSByZXR1cm4gZnJvbSAucmVtb3ZlKCkgdXN1
-YWxseSB5aWVsZHMgYQo+ID4gPiByZXNvdXJjZSBsZWFrLgo+ID4gPiAKPiA+ID4gQnkgY2hhbmdp
-bmcgdGhlIHJlbW92ZSBjYWxsYmFjayB0byByZXR1cm4gdm9pZCBkcml2ZXIgYXV0aG9ycyBjYW5u
-b3QKPiA+ID4gcmVhc29uYWJseSBhc3N1bWUgYW55IG1vcmUgdGhhdCB0aGVyZSBpcyBzb21lIGtp
-bmQgb2YgY2xlYW51cCBsYXRlci4KPiA+ID4gCj4gPiA+IEFsbCBkcml2ZXJzIHdlcmUgZWFzeSB0
-byBjb252ZXJ0IGFzIHRoZXkgYWxsIHJldHVybmVkIHplcm8gaW4gdGhlaXIKPiA+ID4gcmVtb3Zl
-IGNhbGxiYWNrLiBPbmx5IGZvciBpcHJvYyB0aGUgY29udmVyc2lvbiB3YXNuJ3QgdHJpdmlhbCwg
-dGhlIG90aGVyCj4gPiA+IHdlcmUgY29udmVydGVkIHVzaW5nIGNvY2NpbmVsbGUuCj4gPiA+IAo+
-ID4gPiBUaGVyZSBhcmUgbm8gaW50ZXJkZXBlbmRlbmNpZXMgYmV0d2VlbiB0aGVzZSBwYXRjaGVz
-LiBTbyBldmVuIGlmIHRoZXJlCj4gPiA+IGFyZSBzb21lIGNvbmNlcm5zIGZvciBpbmRpdmlkdWFs
-IHBhdGNoZXMsIEkgYXNrIHlvdSB0byBhcHBseSB0aGUKPiA+ID4gcmVtYWluaW5nIHNldC4gVGhl
-biBJIG9ubHkgaGF2ZSB0byBjYXJlIGZvciB0aGUgcmV2aWV3IGZlZWRiYWNrIG9mIHRoZQo+ID4g
-PiByZWZ1c2VkIHBhdGNoZXMuIChIYXZpbmcgc2FpZCB0aGF0IEkgZG9uJ3QgZXhwZWN0IGFueSBz
-ZXJpb3VzIG9iamVjdGlvbiwKPiA+ID4ganVzdCB0aGluZ3MgbGlrZSBzcXVhc2hpbmcgb3Igc2Vw
-YXJhdGluZyBwYXRjaGVzLCBvciBtYXliZSBJIHBpY2tlZCBhCj4gPiA+IHdyb25nIHN1YmplY3Qg
-cHJlZml4LikKPiA+IAo+ID4gVGhlc2UgcGF0Y2hlcyB3YWl0IGZvciBhcHBsaWNhdGlvbiBmb3Ig
-cXVpdGUgc29tZSB0aW1lIG5vdy4gVGhleSBhcHBseQo+ID4ganVzdCBmaW5lIHRvIHY2LjQtcmMx
-IGFuZCBuZXh0L21hc3Rlci4gV291bGQgYmUgZ3JlYXQgdG8gZ2V0IHRoZW0gaW4KPiA+IGR1cmlu
-ZyB0aGUgbmV4dCBtZXJnZSB3aW5kb3cgYW5kIGlkZWFsbHkgZ2l2ZSB0aGVtIHNvbWUgdGltZSBp
-biBuZXh0Cj4gPiBiZWZvcmUuCj4gCj4gVGhhbmtzLCB0aGVzZSBzZWVtIGZpbmUgdG8gbWUsIGFu
-ZCBMb3JlbnpvIG5vcm1hbGx5IHRha2VzIGNhcmUgb2YKPiBkcml2ZXJzL3BjaS9jb250cm9sbGVy
-Ly4gIExvcmVuem8sIGlmIGl0J3MgZWFzaWVyIHRvIGhhdmUgbWUgYXBwbHkKPiB0aGVtLCB0aGF0
-J3MgZmluZSwgdG9vLCBqdXN0IGxldCBtZSBrbm93Lgo+IAo+IFRoZSBvbmx5IHR3ZWFrcyBJIHdv
-dWxkIG1ha2Ugd291bGQgYmU6Cj4gCj4gICBQQ0k6IGo3MjFlOiBDb252ZXJ0IHRvIHBsYXRmb3Jt
-IHJlbW92ZSBjYWxsYmFjayByZXR1cm5pbmcgdm9pZAo+ICAgUENJOiBkd2M6IENvbnZlcnQgdG8g
-cGxhdGZvcm0gcmVtb3ZlIGNhbGxiYWNrIHJldHVybmluZyB2b2lkCj4gCj4gdG8gbWF0Y2ggdGhl
-IGdpdCBoaXN0b3J5LgoKSGVsbG8gQmpvcm4sIGl0IHNob3VsZCBiZSBleHBlY3RlZCB0aGF0IG90
-aGVyIGNoYW5nZXMgZm9yIFBDSWUgZHJpdmVycwpzZW50IGJ5IG90aGVyIHBlb3BsZSB3aGljaCB3
-ZXJlIHNlbnQgdG8gdGhlIGxpc3QgYmVmb3JlIHRoaXMgcGF0Y2gKc2VyaWVzIGFuZCBhcmUgc3Rp
-bGwgd2FpdGluZyBmb3IgdGhlIHJldmlldyAoYmVjYXVzZSBhcmUgd2l0aG91dApjb21tZW50cyks
-IHdvdWxkIGJlIHByb2Nlc3NlZCBiZWZvcmUgYW5kIHBhdGNoZXMgc2VudCBsYXRlci4KCkFsc28g
-SSB3b3VsZCBsaWtlIHRvIHBvaW50IG91dCB0aGF0IGluIHBhc3QgSSBoYXZlIHNlbnQgZml4ZXMg
-Zm9yIFBDSWUKbXZlYnUgZHJpdmVyLCB3aGljaCBpcyBjdXJyZW50bHkgaW4gdGhlIGJyb2tlbiBz
-dGF0ZS4gQW5kIHRoaXMgaXMgYWxzbwpvbiB3YWl0aW5nIG9uIHRoZSBsaXN0LgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Thu, Jun 08, 2023 at 06:22:34PM +0200, Sebastian Reichel wrote:
+> Add PHY transmit and receive clocks as described by the
+> DW SATA AHCI HW manual.
+> 
+> Suggested-by: Serge Semin <fancer.lancer@gmail.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Looks good. Thanks.
+Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
+
+-Serge(y)
+
+> ---
+>  .../devicetree/bindings/ata/snps,dwc-ahci-common.yaml     | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> index c1457910520b..34c5bf65b02d 100644
+> --- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> +++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
+> @@ -31,11 +31,11 @@ properties:
+>        PM-alive clock, RxOOB detection clock, embedded PHYs reference (Rx/Tx)
+>        clock, etc.
+>      minItems: 1
+> -    maxItems: 4
+> +    maxItems: 6
+>  
+>    clock-names:
+>      minItems: 1
+> -    maxItems: 4
+> +    maxItems: 6
+>      items:
+>        oneOf:
+>          - description: Application APB/AHB/AXI BIU clock
+> @@ -48,6 +48,10 @@ properties:
+>            const: pmalive
+>          - description: RxOOB detection clock
+>            const: rxoob
+> +        - description: PHY Transmit Clock
+> +          const: asic
+> +        - description: PHY Receive Clock
+> +          const: rbc
+>          - description: SATA Ports reference clock
+>            const: ref
+>  
+> -- 
+> 2.39.2
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
