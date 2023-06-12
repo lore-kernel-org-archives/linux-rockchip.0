@@ -4,82 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060CFC7EE2E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 15:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A450C7EE2F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 16:19:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mbD8B0/FkjdmOA400lNzRz7CnveLJaAf3HGorIrCqXY=; b=GU3ivEBlju/Ezv
-	BDG7SEqN5ZqNN2B3f6acWeFHPqO8HN6tAeSOwZLz+3+KH4SAvPyKRMq6xiHrkOEy217Es9QEtoJkz
-	0rVjSIWyIVsE1/LHz0J8TsAe2oovC2UKSoRQyB3bVATgmuV5A9HTEvpLyQ4QLObro0SzApcQqXVeQ
-	sLi24zEWoc4HqVWWaEDWDyO8knv5RPJQauQawFKtvfDuAm+b4T26p7fWPREXBRSfWMdaCJW12mjzy
-	VqFdlsc0Wb7iIxZbRLVnp1zDeYIkCtSZcqSd1O6JgYUm9etl8GoTN1VXbLs87jyo1ptObHVe6wnpA
-	EbQs1Bj8xeW/8b1akpWg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=Yn0h4rAYgYwVuHS9GXZ7KA8GlRj0pIg5Eyr+yljObDk=; b=SMbi6fpbmOcpZN
+	Kos41OmkIpPdoArVR1ZZ+YywalRooyQr4B4D68w21r10KbgbYPnmEZdFHjRkLeA8uF7euywEL003M
+	VWE5VJrrQZNQjBFkimevfgVTeQC/CePcOqRz/ex/GQ+KWBAsYDXvYAaEKyFYpVUPKK0Mnqou479GX
+	pd4xY85uYN4LgGNMr3h/pRkamcbh3Epoa2a9rURtI3ib+b7+c4RdXudmmegyeF8OUXo26kpzNC452
+	61tXTIPc1597q6kaqsJ3oLz1yzOEJgeOMb7pn2PZ6BCFCevLAmluMj3+RWqO6hhcop7xfIMupWqg8
+	LRxcgtuIJKtrwuTtxwNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8j5M-004PCV-2m;
-	Mon, 12 Jun 2023 15:04:00 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1q8kGU-004bi0-0F;
+	Mon, 12 Jun 2023 16:19:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8j5J-004P8S-15;
-	Mon, 12 Jun 2023 15:03:58 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-9788faaca2dso746879666b.0;
-        Mon, 12 Jun 2023 08:03:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686582233; x=1689174233;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=b5dvgiuwu58z2RBXdkqKsBTMg+eHX490cp2iBeNipXs=;
-        b=oyw5FcG95RMH8gBZPimMuo8K1RUozZQd0fP+vIEKp9XdRHQjIeXucA7M7HcnfFBWeR
-         obL1xrP/WSVuSzcn8sqgEd/DYrTjrYR0xUXJyzZCGoXkekxkkcigqaGYAnGm1+eei7dd
-         4JVdqYbq56KJ+fxGRK3R00jKH2ShpQRs6CBKpNYFl0pNczf09s1keyYDi9zhuQTRP4kB
-         Yw1W6qDIIu6mABprgil2J7o4dBaxMg+t6YSyDjT+YVwK+mtwSQAse2FajC6VZRWZHKOO
-         Cyldiel5U3c6g3BfT47+swlDyPA7NlC3P5WyZP3wZg8zLkxXtbTQZvOvMiVeHLRdKjCO
-         pZUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686582233; x=1689174233;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b5dvgiuwu58z2RBXdkqKsBTMg+eHX490cp2iBeNipXs=;
-        b=kQHmLol7+jowhhEGlO+m4/IzmBd/p70d+9apXHTGVqnRC/svJPlod8LxzGzXe3A4rN
-         ACcOHQnRicv8bu8tcRo4xI4OESCUamH2v3+MFV41o7QWVQvbDrjogD68gCY0WlSxMw55
-         UFO6nydJflT3THa94jD9Nhyjf84Oxf/6ADGgwWTnBHe8RSPmxpHbe9HA/bddp42DvIkL
-         QKwP71bLCmNTdUvX8nstNhRMqMQvT19fCNW2At6NAxBI1BrLmCInWpUg49BmlJxfZHU1
-         4wr+iTJ9IiPHJzcjY7F0J3J5CkU9gTkS2u/DteKcS3RacxEElE7vp/U9DGGGy3f1P/yI
-         IUeg==
-X-Gm-Message-State: AC+VfDzTvZc5Wy4Pxr4ivne8NyXD40qmw7GUxbCzb03FHwa64XColmll
-	CEpdjNZ5A2v65Jgtzz9dlRA=
-X-Google-Smtp-Source: ACHHUZ6Y8U1kRtrGOzG5Ib4y5z1rRbsqGlhyiWIqgbv1DlOcUMV+/wrK4Syva0l88PDG+OBz0PHfPQ==
-X-Received: by 2002:a17:907:320e:b0:978:acec:36c0 with SMTP id xg14-20020a170907320e00b00978acec36c0mr9473330ejb.9.1686582233549;
-        Mon, 12 Jun 2023 08:03:53 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id o20-20020a170906601400b00977d3fb2a7dsm5298309ejj.76.2023.06.12.08.03.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Jun 2023 08:03:53 -0700 (PDT)
-Message-ID: <8b5303a0-fb1b-ee05-c2e6-bbd2d9c06cb9@gmail.com>
-Date: Mon, 12 Jun 2023 17:03:52 +0200
+	id 1q8kGQ-004bgx-2B;
+	Mon, 12 Jun 2023 16:19:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B73E562B70;
+	Mon, 12 Jun 2023 16:19:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 369B1C4339B;
+	Mon, 12 Jun 2023 16:19:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1686586769;
+	bh=OTJAkzUB/kHEz+zDpGNc9vDTw+iMQ7TJ/wo3kRt6WNE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=CCG/J7Hk7a7Pqayi8Dhv4V5Lo1gKzDd2gONXFYj9dZ3ZlZsjrC3VfeL99tkG8oXFv
+	 xWdp4qVMK0MopWl4sfLAXlJg2OrAm/XFsPasvOIh6LQCGt7aa7bQd7zpD1TFNkbIU9
+	 L1jxyebl9sLVd2W9lZZTRnLyhkOJYK3XZGm6jEO0rnjypc3oze2wFCaSBtLsKc83Gs
+	 PboYwpcQKg6IbNC1xzF3lx3VIfAVL0Aa9/tP4w7+I/dUsDNefxPJmfYtREE5tTIKk7
+	 Jn1iBRGaC/y9DoMdE+4K1As0RtgR13AwOkAC0v2pyyRAfvbyFCrNiHrhaE2JHkncKF
+	 OwBnmjtJoxSCQ==
+Date: Mon, 12 Jun 2023 11:19:27 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Joyce Ooi <joyce.ooi@intel.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tom Joseph <tjoseph@cadence.com>, Shawn Guo <shawn.guo@linaro.org>,
+	Rahul Tanwar <rtanwar@maxlinear.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+	Vidya Sagar <vidyas@nvidia.com>, Jisheng Zhang <jszhang@kernel.org>,
+	Miaoqian Lin <linmq006@gmail.com>, Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Toan Le <toan@os.amperecomputing.com>,
+	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	linux-rpi-kernel@lists.infradead.org, kernel@pengutronix.de,
+	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
+ void
+Message-ID: <20230612161927.GA1335109@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 5/5] mtd: nand: add support for the Sandisk SDTNQGAMA chip
-To: miquel.raynal@bootlin.com
-Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- yifeng.zhao@rock-chips.com
-References: <11e16c3b-6f7b-a6a9-b0ed-b7ac0cd703e3@gmail.com>
-Content-Language: en-US
-In-Reply-To: <11e16c3b-6f7b-a6a9-b0ed-b7ac0cd703e3@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20230611132423.milnj2pnvjqzwino@pali>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_080357_384845_F0023859 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230612_091930_810203_69248005 
+X-CRM114-Status: GOOD (  24.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,30 +100,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-U2FuZGlzayBTRFROUUdBTUEgaXMgYSA4R0Igc2l6ZSwgMy4zViA4IGJpdCBjaGlwIHdpdGggMTZL
-QiBwYWdlIHNpemUsCjFLQiB3cml0ZSBzaXplIGFuZCA0MCBiaXQgZWNjIHN1cHBvcnQKCkNvLWRl
-dmVsb3BlZC1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KU2ln
-bmVkLW9mZi1ieTogUGF3ZcWCIEphcm9zeiA8cGF3ZWxqYXJvc3ozNjkxQGdtYWlsLmNvbT4KU2ln
-bmVkLW9mZi1ieTogSm9oYW4gSm9ua2VyIDxqYng2MjQ0QGdtYWlsLmNvbT4KLS0tCiBkcml2ZXJz
-L210ZC9uYW5kL3Jhdy9uYW5kX2lkcy5jIHwgMyArKysKIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2Vy
-dGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9uYW5kX2lkcy5jIGIv
-ZHJpdmVycy9tdGQvbmFuZC9yYXcvbmFuZF9pZHMuYwppbmRleCAxYTg5ZWQ3OTYuLjY1MDM1MWM2
-MiAxMDA2NDQKLS0tIGEvZHJpdmVycy9tdGQvbmFuZC9yYXcvbmFuZF9pZHMuYworKysgYi9kcml2
-ZXJzL210ZC9uYW5kL3Jhdy9uYW5kX2lkcy5jCkBAIC00NCw2ICs0NCw5IEBAIHN0cnVjdCBuYW5k
-X2ZsYXNoX2RldiBuYW5kX2ZsYXNoX2lkc1tdID0gewogCXsiVEM1OE5WRzZEMiA2NEcgMy4zViA4
-LWJpdCIsCiAJCXsgLmlkID0gezB4OTgsIDB4ZGUsIDB4OTQsIDB4ODIsIDB4NzYsIDB4NTYsIDB4
-MDQsIDB4MjB9IH0sCiAJCSAgU1pfOEssIFNaXzhLLCBTWl8yTSwgMCwgOCwgNjQwLCBOQU5EX0VD
-Q19JTkZPKDQwLCBTWl8xSykgfSwKKwl7IlNEVE5RR0FNQSA2NEcgMy4zViA4LWJpdCIsCisJCXsg
-LmlkID0gezB4NDUsIDB4ZGUsIDB4OTQsIDB4OTMsIDB4NzYsIDB4NTd9IH0sCisJCSAgU1pfMTZL
-LCBTWl84SywgU1pfNE0sIDAsIDYsIDEyODAsIE5BTkRfRUNDX0lORk8oNDAsIFNaXzFLKSB9LAog
-CXsiU0RUTlJHQU1BIDY0RyAzLjNWIDgtYml0IiwKIAkJeyAuaWQgPSB7MHg0NSwgMHhkZSwgMHg5
-NCwgMHg5MywgMHg3NiwgMHg1MH0gfSwKIAkJICBTWl8xNkssIFNaXzhLLCBTWl80TSwgMCwgNiwg
-MTI4MCwgTkFORF9FQ0NfSU5GTyg0MCwgU1pfMUspIH0sCi0tCjIuMzAuMgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Sun, Jun 11, 2023 at 03:24:23PM +0200, Pali Roh=E1r wrote:
+> On Friday 02 June 2023 16:37:34 Bjorn Helgaas wrote:
+> > On Tue, May 30, 2023 at 04:07:42PM +0200, Uwe Kleine-K=F6nig wrote:
+> > > On Tue, Mar 21, 2023 at 08:31:53PM +0100, Uwe Kleine-K=F6nig wrote:
+> > > > this series adapts the platform drivers below drivers/pci to
+> > > > use the .remove_new() callback. Compared to the traditional
+> > > > .remove() callback .remove_new() returns no value. This is a
+> > > > good thing because the driver core doesn't (and cannot) cope
+> > > > for errors during remove. The only effect of a non-zero return
+> > > > value in .remove() is that the driver core emits a warning.
+> > > > The device is removed anyhow and an early return from
+> > > > .remove() usually yields a resource leak.
+> ...
+
+> Hello Bjorn, it should be expected that other changes for PCIe drivers
+> sent by other people which were sent to the list before this patch
+> series and are still waiting for the review (because are without
+> comments), would be processed before and patches sent later.
+
+I don't think it's necessary to delay simple, easily-reviewed changes
+behind more complicated ones.
+
+> Also I would like to point out that in past I have sent fixes for PCIe
+> mvebu driver, which is currently in the broken state. And this is also
+> on waiting on the list.
+
+Thanks for this reminder.  Would you mind reposting them?  I poked
+around in patchwork and I must be doing something wrong because I
+can't find *any* patches from you, though obviously there are many.
+
+If you repost them at least we'll know unambiguously what is on the
+table.
+
+Bjorn
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
