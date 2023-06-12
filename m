@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE610C88CB4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 17:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A5F7C88CB7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 17:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RkKhN5d6Kot4cUIjiD54TxbUZ0wZoOo4iKqVEj9D/sE=; b=Fa4D+qH0hVJ3vQ
-	aYxA96/YUJARPR0I0aBj/+mswfgw/RWvey9zYbcFMQAJnIFExuYLI1YepCs4jIgqA82QEf9GXGrp6
-	GfSj+lHmEqhva5k4WX3Z4kbavquWZP+aW+6EEZgnTcyZXyKnDWmw9QhZA+6DPLvJA6mfWv5H+A0kJ
-	1n1sKPGQmAGCBHzvvOfMDneI0JeTJBu+utU+7vDuGIbKWjlDpAfgOMnbvMa5YQydYpC3ebayOtdMe
-	H8LwLHws1NZGBIxmAGw5ptYgH83JvuddoXmDTZKlL3VIc5JSRN9+VgFoHd3iMAWA6eOF5YgG1KSgD
-	yiHc+qaeAQTzZkI+4prg==;
+	List-Owner; bh=v7W8JLUCDB0tOYdJn6IAcwJ56+hUqPBHHi5KOXCHjh0=; b=uoYVEYTCXwFRrB
+	f/ARrjt4cbdF7CsjPT/NfMbD1WibSvTG4qro4Uj+lcjGdL8cWmpl89NNofiUQsHUuua5GMVFGbm85
+	xRGpOw9HGPBciPgsPtpZwtv7g2MdmVInIAS2k30Pz3YxKUbGnQUH8HL74yHJRunRNb5UvOhFjWO98
+	zucAQjBJRz23vyV/1Ub4S9onkFMe+XmOB8Af2K/CGgQ3m3vnn8LhlQ7UutgBg4JWTYiHOQsPx2OHO
+	w0pmD6Fb3ESDBmvm8c6Q02GWzCQNl5uneouSks4p2XsbW3Wln3wI8GYXJPCC6eiRTn0SY2VZxe04B
+	PT47pUHVlpCG287mHCdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8l71-004ieI-2V;
-	Mon, 12 Jun 2023 17:13:51 +0000
+	id 1q8l75-004igR-0J;
+	Mon, 12 Jun 2023 17:13:55 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8l6w-004iZ9-1D;
-	Mon, 12 Jun 2023 17:13:49 +0000
+	id 1q8l6z-004ibp-0B;
+	Mon, 12 Jun 2023 17:13:50 +0000
 Received: from jupiter.universe (dyndsl-091-248-210-131.ewe-ip-backbone.de [91.248.210.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC835660217A;
-	Mon, 12 Jun 2023 18:13:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C34516606EE0;
+	Mon, 12 Jun 2023 18:13:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686590021;
-	bh=n54yxi0NbW+9j5w95zW2R5gmOueJZM48CLnOI1FoEB0=;
+	s=mail; t=1686590023;
+	bh=uHNhWU1jmIOWUBoodh01ywxlZr0fhauLWpShle6WDA0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MikiQcRGOiFOSxmoBB/jq8DkOGToAcx9ny7kd5HyQLvOJjkUdEY7XMGZTAKrpavSG
-	 qGB4EsjoXVQDOiPUjGooYvCiiep7/d5jSuNjnxqj6WADEQLNRChE5HFXJ2edmEzcxG
-	 yWQ3+PEHRJ1NvULmUAnXYIyNTXScTFHb+7JAfAETjZP30wE6REdzg33bYru62aQcdT
-	 ZDgsGDA8Wbc2bhRyFokFJFRMsmtuSPeUSwIcht+pW8DK3ECzJDjsu9s+0X9w3gsTYj
-	 PxVcL1/D6Og+wgRyJVvqknab6ZAp9BIbYsyApKEZ5CYvHy6OGnVRRmfEjzPz7i5m2a
-	 EbVUzTjnrP6VA==
+	b=eo+0Brh05JGSEEIja1s2f8Mg+SuZWAm7KhcmxPXYwqNopH7zqOMlpvkm5zL9DuW68
+	 tlzNLCUxN6sGXaUHv5KsH3vThDYuwX2dH0GsR9o+y4nqNMlvpSlMhxRwSsUn+ERDo/
+	 1IYBMK1GKEVOBqdgMb1dBKWwHbF4IojwaqcmoJh55ZpsAgkyEoNZbesfEh5Im4kfkG
+	 JwBQf2Pw43NdP5+jKusfj5CYJELb5my+YC3bHIJO65KMG56Ae+gf6b88ndi0KUQFEo
+	 uVVAquepDPJK1lh+ZtYqyzypwA6VlwrRbUm+KGXGyHKcj2pPhqNEb3LUUYuZEi86vS
+	 bj3cjkLxCMWbQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id A3C8D4805B8; Mon, 12 Jun 2023 19:13:38 +0200 (CEST)
+	id AAD1F4807F0; Mon, 12 Jun 2023 19:13:38 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -59,19 +59,17 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 1/5] dt-bindings: ata: dwc-ahci: add PHY clocks
-Date: Mon, 12 Jun 2023 19:13:33 +0200
-Message-Id: <20230612171337.74576-2-sebastian.reichel@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v4 5/5] arm64: dts: rockchip: rk3588: add SATA support
+Date: Mon, 12 Jun 2023 19:13:37 +0200
+Message-Id: <20230612171337.74576-6-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230612171337.74576-1-sebastian.reichel@collabora.com>
 References: <20230612171337.74576-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_101346_593261_8A0C020F 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230612_101349_230413_F4DF95A1 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,46 +86,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add PHY transmit and receive clocks as described by the
-DW SATA AHCI HW manual.
+Add all three SATA IP blocks to the RK3588 DT.
 
-Suggested-by: Serge Semin <fancer.lancer@gmail.com>
-Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/ata/snps,dwc-ahci-common.yaml     | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi  | 23 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 48 +++++++++++++++++++++++
+ 2 files changed, 71 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-index c1457910520b..34c5bf65b02d 100644
---- a/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-+++ b/Documentation/devicetree/bindings/ata/snps,dwc-ahci-common.yaml
-@@ -31,11 +31,11 @@ properties:
-       PM-alive clock, RxOOB detection clock, embedded PHYs reference (Rx/Tx)
-       clock, etc.
-     minItems: 1
--    maxItems: 4
-+    maxItems: 6
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+index 9d8539b5309b..b9508cea34f1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+@@ -129,6 +129,29 @@ gmac0_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
  
-   clock-names:
-     minItems: 1
--    maxItems: 4
-+    maxItems: 6
-     items:
-       oneOf:
-         - description: Application APB/AHB/AXI BIU clock
-@@ -48,6 +48,10 @@ properties:
-           const: pmalive
-         - description: RxOOB detection clock
-           const: rxoob
-+        - description: PHY Transmit Clock
-+          const: asic
-+        - description: PHY Receive Clock
-+          const: rbc
-         - description: SATA Ports reference clock
-           const: ref
++	sata1: sata@fe220000 {
++		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
++		reg = <0 0xfe220000 0 0x1000>;
++		clocks = <&cru ACLK_SATA1>, <&cru CLK_PMALIVE1>,
++			 <&cru CLK_RXOOB1>, <&cru CLK_PIPEPHY1_REF>,
++			 <&cru CLK_PIPEPHY1_PIPE_ASIC_G>;
++		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
++		interrupts = <GIC_SPI 274 IRQ_TYPE_LEVEL_HIGH 0>;
++		ports-implemented = <0x1>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++
++		sata-port@0 {
++			reg = <0>;
++			hba-port-cap = <HBA_PORT_FBSCP>;
++			phys = <&combphy1_ps PHY_TYPE_SATA>;
++			phy-names = "sata-phy";
++			snps,rx-ts-max = <32>;
++			snps,tx-ts-max = <32>;
++		};
++	};
++
+ 	combphy1_ps: phy@fee10000 {
+ 		compatible = "rockchip,rk3588-naneng-combphy";
+ 		reg = <0x0 0xfee10000 0x0 0x100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 45ae457a22a4..00a91b08e3bb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -9,6 +9,8 @@
+ #include <dt-bindings/power/rk3588-power.h>
+ #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+ #include <dt-bindings/thermal/thermal.h>
++#include <dt-bindings/phy/phy.h>
++#include <dt-bindings/ata/ahci.h>
  
+ / {
+ 	compatible = "rockchip,rk3588";
+@@ -1717,6 +1719,52 @@ gmac1_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
+ 
++	sata0: sata@fe210000 {
++		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
++		reg = <0 0xfe210000 0 0x1000>;
++		clocks = <&cru ACLK_SATA0>, <&cru CLK_PMALIVE0>,
++			 <&cru CLK_RXOOB0>, <&cru CLK_PIPEPHY0_REF>,
++			 <&cru CLK_PIPEPHY0_PIPE_ASIC_G>;
++		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
++		interrupts = <GIC_SPI 273 IRQ_TYPE_LEVEL_HIGH 0>;
++		ports-implemented = <0x1>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++
++		sata-port@0 {
++			reg = <0>;
++			hba-port-cap = <HBA_PORT_FBSCP>;
++			phys = <&combphy0_ps PHY_TYPE_SATA>;
++			phy-names = "sata-phy";
++			snps,rx-ts-max = <32>;
++			snps,tx-ts-max = <32>;
++		};
++	};
++
++	sata2: sata@fe230000 {
++		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
++		reg = <0 0xfe230000 0 0x1000>;
++		clocks = <&cru ACLK_SATA2>, <&cru CLK_PMALIVE2>,
++			 <&cru CLK_RXOOB2>, <&cru CLK_PIPEPHY2_REF>,
++			 <&cru CLK_PIPEPHY2_PIPE_ASIC_G>;
++		clock-names = "sata", "pmalive", "rxoob", "ref", "asic";
++		interrupts = <GIC_SPI 275 IRQ_TYPE_LEVEL_HIGH 0>;
++		ports-implemented = <0x1>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++
++		sata-port@0 {
++			reg = <0>;
++			hba-port-cap = <HBA_PORT_FBSCP>;
++			phys = <&combphy2_psu PHY_TYPE_SATA>;
++			phy-names = "sata-phy";
++			snps,rx-ts-max = <32>;
++			snps,tx-ts-max = <32>;
++		};
++	};
++
+ 	sdmmc: mmc@fe2c0000 {
+ 		compatible = "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x0 0xfe2c0000 0x0 0x4000>;
 -- 
 2.39.2
 
