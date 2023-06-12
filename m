@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 249CFC7EE25
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 08:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1FF7C7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 09:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4k52NvJL/FZSB5udioS6+4nM5a/R1uyxW6+7z3QfpEg=; b=X6ski+zhFNi/iT
-	wJumVBQDoMi4V3nbX79u2BnLOulo70NMru9MOlIyhCiJKl6fUmhqWSOdIHlY28YB88D5HqPOwniRb
-	+xruDJQBTT9J4K0pf0x5XXHZOWX4GTBOB4wK3Q1FBG55hHbx4Kxdq7fnZlBXqxkmVS9rFM5GWO6sw
-	6IEf1uhBAxOD0CXOCvOgPwFLkO639Yw8GRr1hG78iKoG2KRi+U39bQCbtnQ/fgsua5sTwJwBqSwS1
-	a+9rXz4wIz5qBe8grHEF9f/nDTSg1Rizt4eFyNe+ULQFsMoQMx0FDFqd4s+sRgZIvRv4tfWXx2eB+
-	fQohXUscUWCB+ALTbCrw==;
+	List-Owner; bh=JUi8mojJW7Wgpclji7uQ35muA8UBxuf5WPAlxIXjvYw=; b=rGsEwKRjMj6Djo
+	XPBZwveaF3UaPlSoVd3SVRu/vPx6rF64ATjwPsosBpF5E7A9dWsOc2sD77VjcbcSwSNCiKLMZA449
+	xHoQ8lvshahvarkXVAble0YX+0es2Jy9UN+1bpXGezSL+VVAixhLWjgx76D7DCN+yLT9rpyEJxTBG
+	vBI7XRPuik50XikQmwfTJdnFw8ovyziivv0870iUI1VXq/gXwbI/fWvl2g6nrqHrvfYPjI5ZLclbN
+	lDbpDf4pAyMRxnUasWoM+BUfnnvG7AaxzeMov2EXBaC6aMR3hFNq/c/P8dq+BaobMWBQVM4vARwXW
+	6DYKfMTSKxmN4UyQkYVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8dHb-003AB4-1j;
-	Mon, 12 Jun 2023 08:52:15 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1q8e68-003LfF-1V;
+	Mon, 12 Jun 2023 09:44:28 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8dHY-003A88-0c;
-	Mon, 12 Jun 2023 08:52:13 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2b1a46ad09fso46897931fa.2;
-        Mon, 12 Jun 2023 01:52:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686559923; x=1689151923;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vC6uwJ0JqcA9AI2hZ192LN4Lm6HljDsWRRLUQCbqRcI=;
-        b=ha+NLGOPK268A8Rm69MB2VrlRZ+bdLMoCKBLy0i1SKtuixABoEGpHl4oGE70nPdWrI
-         fWHYhWb5EBh38UF+ViInymqzwkg/Zad+alqWfDprpVo9fgantG3Tz2sziWPw8upec7ts
-         /Fv3t/yWt6xY9KXU53ybP9Y85wyqEazYhy6JiPo96nIX5SF4uRKG5GITBsqxWuCk1vQX
-         EkWAFhD8ZV+9RpimOe60IiIxpLQXcl/lff1tzJzFERRz1X4gJJh8cCQuDLq3wpAnM8wY
-         WWTst4ebBmy5XYqnnge0LQw1u/wcQ76+CfadGwNDS32TMQdIsStrT+N5jEUX9QHUrcCk
-         D7qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686559923; x=1689151923;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vC6uwJ0JqcA9AI2hZ192LN4Lm6HljDsWRRLUQCbqRcI=;
-        b=aViVu/1WcEFGxgsEMbVv6LYlM32qgRSL0AtXlDI+2XupXYbQO50fn6uTE/NuBQ/weg
-         KgcBMuk+I05eipWrAfn0R9grI5ZiEaT8MraSd9YcsFgLt2DzMxwOLfuIsnAEZIMAqaK6
-         AJXJ8DDPAmpCHdaOoGPqqftAcjWnjudP3o4FlHmDYBC4AHBBlf6hp8TEr8eYT1K0zQvz
-         tMr3Ogz3QRyYLLlWLnDyLn/vkCN4pLeoipgG8HSAQvWEPO6Gw91aU2bwcIQz+dXWDqrR
-         uLPAp5TPLsu78jKv7BtCG8nXRIp5F8Bjxpsjd8h3NE5OueXTegSqQdZMuWLU6+ybvf0L
-         XVkQ==
-X-Gm-Message-State: AC+VfDypjWeXGARuHuBn10VyPoNpXvZQZ8ytGymu3vwnbVd3paMPkcly
-	+QLazZg/bpnb+FPgUZgJuMg=
-X-Google-Smtp-Source: ACHHUZ7EKA8vldamQ7vDC+e0lKSYEpHmgr+nXY6Twa32SsY75+3B3FPeePjMNjp0U0aabyKDkLIrCw==
-X-Received: by 2002:a05:651c:1039:b0:2af:d2ef:49d4 with SMTP id w25-20020a05651c103900b002afd2ef49d4mr2231817ljm.1.1686559923246;
-        Mon, 12 Jun 2023 01:52:03 -0700 (PDT)
-Received: from mobilestation ([95.79.140.35])
-        by smtp.gmail.com with ESMTPSA id s9-20020a2e9c09000000b002b31e0be2d7sm1003800lji.90.2023.06.12.01.52.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Jun 2023 01:52:02 -0700 (PDT)
-Date: Mon, 12 Jun 2023 11:52:00 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v3 2/5] dt-bindings: ata: dwc-ahci: add Rockchip RK3588
-Message-ID: <20230612085200.5okxcipiw5sofo62@mobilestation>
-References: <20230608162238.50078-1-sebastian.reichel@collabora.com>
- <20230608162238.50078-3-sebastian.reichel@collabora.com>
- <4c914503-c2e5-a5d8-97af-daaee0b4ec7c@linaro.org>
- <20230612083536.q3sq7w6cyiuxaqtv@mobilestation>
- <838ed0e6-985d-9a45-7ece-c607bda15871@linaro.org>
+	id 1q8e65-003LdS-0A;
+	Mon, 12 Jun 2023 09:44:26 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 871996606E8A;
+	Mon, 12 Jun 2023 10:44:22 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686563063;
+	bh=L9+Fd1Jt5ie6N8kEME3WfF11akqrl+GDjydWidgLGqs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EjeOWbbks3EjuI4NqUETG1gV3dsuUDknLu8oMiDShQ4GxbXW7xQj3YKKFjA9UrW7s
+	 TWKCgT7xEvM/ZLMaJaA8ioi/nd5KOMUeXkvatvZA5SBMZRrAF3S/FrVNgZLXqcZy2G
+	 9f8glb4VkgnBygg+is8v/YUOfHXCm5DYCYHqFLCFWWMyB3nG6bUQoSM28ADbC4w3mX
+	 ZmcjyOyS7KYp5A73+mtui4v0QQrCuXljUGDVnwUluz8HNDGKKPAdus/IiaT31aRdnK
+	 hjoxB00bnn4TyNsh5WOYOBj5x0QMD4HiFyT6aNthL9VWc9CQETSlBlrGXQKF5a8GPW
+	 LYWFxVt78FLhw==
+Message-ID: <61c68bd9-aa3a-bd55-0a06-958e4e3a3be2@collabora.com>
+Date: Mon, 12 Jun 2023 11:44:19 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <838ed0e6-985d-9a45-7ece-c607bda15871@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v2] dt-bindings: iio: rockchip: Fix 'oneOf' condition
+ failed warning
+Content-Language: en-US
+To: Shreeya Patel <shreeya.patel@collabora.com>, jic23@kernel.org,
+ lars@metafoo.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, heiko@sntech.de, sebastian.reichel@collabora.com
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ gustavo.padovan@collabora.com, serge.broslavsky@collabora.com
+References: <20230610143601.173307-1-shreeya.patel@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230610143601.173307-1-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_015212_228785_C708C0B2 
-X-CRM114-Status: GOOD (  20.62  )
+X-CRM114-CacheID: sfid-20230612_024425_224800_00281850 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,90 +76,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 12, 2023 at 10:39:57AM +0200, Krzysztof Kozlowski wrote:
-> On 12/06/2023 10:35, Serge Semin wrote:
-> > On Mon, Jun 12, 2023 at 10:24:06AM +0200, Krzysztof Kozlowski wrote:
-> >> On 08/06/2023 18:22, Sebastian Reichel wrote:
-> >>> This adds Rockchip RK3588 AHCI binding. In order to narrow down the
-> >>> allowed clocks without bloating the generic binding, the description
-> >>> of Rockchip's AHCI controllers has been moved to its own file.
-> >>>
-> >>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> >>> ---
-> >>
-> >> ...
-> >>
-> >>> +
-> >>> +properties:
-> >>> +  compatible:
-> >>> +    items:
-> >>> +      - enum:
-> >>> +          - rockchip,rk3568-dwc-ahci
-> >>> +          - rockchip,rk3588-dwc-ahci
-> >>> +      - const: snps,dwc-ahci
-> >>> +
-> >>> +  ports-implemented:
-> >>> +    const: 1
-> >>> +
-> >>> +patternProperties:
-> >>> +  "^sata-port@[0-9a-e]$":
-> >>> +    $ref: /schemas/ata/snps,dwc-ahci-common.yaml#/$defs/dwc-ahci-port
-> >>> +
-> >>> +    unevaluatedProperties: false
-> >>
-> > 
-> >> You should be able to skip this patternProperties entirely, because it
-> >> comes from dwc-ahci-common -> ahci-common schema. Did you try the patch
-> >> without it?
-> > 
-
-> > Please see my message about this. The "sata-port@[0-9a-e]$" sub-node
-> > bindings could be updated with the "reg" property constraint which,
-> > based on the "ports-implemented" property value, most likely is
-> > supposed to be always set to const: 1.
+Il 10/06/23 16:36, Shreeya Patel ha scritto:
+> rk3588-saradc isn't compatible with the rk3399-saradc variant,
+> hence, fix the following dtbs_check warning for 'oneOf' condition
+> failure.
 > 
-> Then anyway the pattern is wrong as it should be @1 always.
-
-* I miscalculated a bit, it should have been zero but in general
-the pattern-property is indeed redundant.
-
-As a conclusion the change should look like this:
-
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - rockchip,rk3568-dwc-ahci
-+          - rockchip,rk3588-dwc-ahci
-+      - const: snps,dwc-ahci
-+
-+  ports-implemented:
-+    const: 1
-+
-+  "sata-port@0":
-+    $ref: /schemas/ata/snps,dwc-ahci-common.yaml#/$defs/dwc-ahci-port
-+
-+    properties:
-+      reg:
-+        const: 0
-+
-+    unevaluatedProperties: false
-+
-+ ...
-
-Right?
-
--Serge(y)
-
+> DTC_CHK arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb
+> /home/shreeya/linux/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb:
+> 	saradc@fec10000: compatible: 'oneOf' conditional failed,
+> 	one must be fixed:
+> 	['rockchip,rk3588-saradc'] is too short
+> 	'rockchip,saradc' was expected
+> 	'rockchip,rk3066-tsadc' was expected
+> 	'rockchip,rk3399-saradc' was expected
 > 
-> Best regards,
-> Krzysztof
-> 
+> Fixes: 2daf2ae9793d ("dt-bindings: iio: adc: Add rockchip,rk3588-saradc string")
+> Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
