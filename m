@@ -4,95 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BEE3C7EE2E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 08:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5994C7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 08:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xF6aP9KptptWU7fJ4oIt1WS6K2orRaqXPPxIFt+bkoc=; b=iWAAghpLq5sdRl
-	UQNbXh21Un8TLWZ2XSyyDvKJ6YmcLC53IH33ECdH/ZRS2bxlKgj6P6X5xx4gRR5iygV4N++Sfg4UX
-	P/yPusYVTfkKVgG91XyPy4Z+/7Lkm+Kle9l0dRntu0YI7JkBVp5H3VjeoYcAa4t7nIiwZZXGciA0B
-	vv2F1P1BIGYS1CKEqnYlVpkNbkDmY1USbSule/TqSP4peCqmP4wMhZRkUtGgmHTRpXMAxIEWVJZCf
-	M7DN1zblHSiM0fopDzRp7F82xmYGXm8SFffi07bh2I+QbUdHqaFwkOO+7N9gO1tGNeuCbcHE7ejTB
-	fEJvE2HjyNStXvOcNkpg==;
+	List-Owner; bh=2SNCKoJtg1DBm/hU1KJsx7NfuYBQYIttJ1N1cR6No1A=; b=y7wnwGvsev6WHF
+	DgW5htN91pBCH/LumqV02nlFDX1tZRHYHXnbr95R7uFUhpKIyyKhLyYbtT7bljDb3rKOJQXcX/MqK
+	0UmzLIYkLxR3S3Z3HqhMMroe07H3T/BrcEsL5m7LkgTDJT7Hpes3Df6ggKxn9lJHCkM2G9cID+38h
+	VQsQvEpsl23QRVdlfMfGJDGH6A5coojmUFedjsqeZXtoIDkGM3xQ8PPTTWfeyCgZAb+zgL45EE7m8
+	dP1HEmiK9Aqp4mC+X3ryPBgEJg9slKUJ/8ZnMBvxfn/ZExpGmf16bfj1MwYrg7R4Ud+51ww/4GJu5
+	vtVLs0i1xvqYAfnroP6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8cvY-0037AC-1u;
-	Mon, 12 Jun 2023 08:29:28 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1q8d1e-0037vr-2e;
+	Mon, 12 Jun 2023 08:35:46 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8cvR-00377c-2v
-	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jun 2023 08:29:25 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-516a008e495so8353855a12.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jun 2023 01:29:20 -0700 (PDT)
+	id 1q8d1Y-0037v5-2v;
+	Mon, 12 Jun 2023 08:35:44 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-4f6255ad8aeso4715808e87.2;
+        Mon, 12 Jun 2023 01:35:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686558559; x=1689150559;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gsnHpIL0gMBUBdAQKZ2SqRGf+mIF2ab1KdkyACTk5zY=;
-        b=IYCp3o9Yf+5H82G/i4/6kNCO5btgqpB7Maxiu447zdbiEXTSY3ws7MLx8GEOxIfaDZ
-         QTwLfMNtnYCq9Psx2hsUawFWp7xsCxHfSmLZx9gLRdMCMlwK3xh5x9wAoSXt5E4Qx8PE
-         Be1YNAMGdhf2wRP1nVi67psGQ5IQiTDSGbiPz8gAUcILOPHVxxngYCsciYFdc2xxf2b/
-         5LIKe1n8JmnArct8kx6X/pa9VlRmjoDfAk5aRZgL2Ea6HTo51MHCVMhX786WfuLzndbu
-         0fffvo7fZ+qH1gIZiivaeK4IfilNQ7NSUmUF62LffxIpftzNuodOYhkNLvQXvxNmzjCh
-         dqEA==
+        d=gmail.com; s=20221208; t=1686558939; x=1689150939;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=MDpjBLQGC3gMirLkcnPZdPRPRXte4njImOP0NWtJdEA=;
+        b=H6Ey9jTloHjRG1mS9yoFp7ky8frmRUP9qm3Ijv+dOndhI56cD8PHwjddcRnvGovfmL
+         7u6uK6716blbkmPwBvIr0cotyJl/+jkpuRDvQNHbD+CQNkdnyfVcEGQ883ThMgbrKKbO
+         9k/Yb4b8SdRYZukI/vJmfHKhavI1SZryIvnD7wDgjCLtToqyyXlr9PhQL45YeS2lQry3
+         +uoWPZXwb56ukqTmxgoQ0CpPqn0TJc6gx8urk/FO93Bgw8pHv79vlR14dNpYHQrq0/3w
+         e0L/p3q/b9nCXmxUgC66q6YNCy/o2dsZLJATRfDlBzl5oiW4klf6q/KrxZIbsnioUgm/
+         +H0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686558559; x=1689150559;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gsnHpIL0gMBUBdAQKZ2SqRGf+mIF2ab1KdkyACTk5zY=;
-        b=Y4vlToAjuh3oILC1JDbDhcBNJmRiJzXP1Kwt/mEcq6yTXJXrYjvV0/MlipVPBzQxiD
-         lDRIifRLIjKlPkJM8x91kLLggvvE5fS83XV9Sk4XondarF6Q6/GLvDuylR7lsVQCbGLk
-         Ivtqiwwp+4UURFyGywW7R0y9BU48Myeh0MPinzxRKo55aLVxVR4GEbq6/nJ8L9K+KFEV
-         ysr6xB9L7gXYcqLX6064hg3ys45PxHjBeI+S+5uoorQf9gUAUNoY4FbSViUOE5vYuaBE
-         A7WutPMHsqKkmeXvlcX78kXrCVKLbB+AI4jCo1Qkk4TIoxkVMaa78VLYnGc0iOviGzGh
-         PTrw==
-X-Gm-Message-State: AC+VfDy1aDN9hHIv9BMrB0NSI+N8T+juXgkLIhrM5KwhW9xamn67jVvj
-	L+xyk9c590DCoJs8fALC78Cbdw==
-X-Google-Smtp-Source: ACHHUZ6Q+a1N0q7NwKFJlA9Qqt1cuwduPcLwp2Ngzcbiu+4Sq+3r2FGCOunAVh6N8Xr2giVJlMHYag==
-X-Received: by 2002:a05:6402:270d:b0:514:8fdb:6354 with SMTP id y13-20020a056402270d00b005148fdb6354mr5483679edd.18.1686558559205;
-        Mon, 12 Jun 2023 01:29:19 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id i13-20020a50fc0d000000b0050bc6d0e880sm4745009edr.61.2023.06.12.01.29.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Jun 2023 01:29:18 -0700 (PDT)
-Message-ID: <5217a54e-353b-bd48-68fa-d2104accfeb9@linaro.org>
-Date: Mon, 12 Jun 2023 10:29:16 +0200
+        d=1e100.net; s=20221208; t=1686558939; x=1689150939;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MDpjBLQGC3gMirLkcnPZdPRPRXte4njImOP0NWtJdEA=;
+        b=RYJh99FEtVz2oUE1XTpfinXws9WSQulyS5YNMEMNhNDyRIw2vhTyhNhnCum6/F6QZ/
+         0qU726iFcKutuhV4qVfOdt5wp3Twv+g6MAZkRd7lkHNwFSMMeLFtvYid7Zgh3gBWy+8r
+         w7ARm/C71OxAFOHykD2mSuIDSfw64huc5YduuIEp2bSnlTi7DgHFdc4AOuTP30l16ZIF
+         He7l5YvszhgzqVqDUGOPqQQl30F70Nw+j/NfZKkYK0pD9dcXyvm4scQ4EMbyd1haaTtI
+         hpPHuotb7MPkQi+XDJmT2sRfO9DwdGC+yHVJXfHBI7j+VadxzlxQlu7y/4LO4GTsS92o
+         wAqQ==
+X-Gm-Message-State: AC+VfDzT6VJcChN/A3nPtplyPRWk7AFiwxQa+2027v6377jBxpCVkH7P
+	Mt8U2doeyHEpafwy9Mhy7Qo=
+X-Google-Smtp-Source: ACHHUZ7QYZL5AtYxXYviU5KMKIXtoukGzE0SX6NjEUMs5Z9It2omQJA72i/UdaCfskj/t+1leyf9dw==
+X-Received: by 2002:a19:6918:0:b0:4f6:19e0:8ab7 with SMTP id e24-20020a196918000000b004f619e08ab7mr3188712lfc.62.1686558938839;
+        Mon, 12 Jun 2023 01:35:38 -0700 (PDT)
+Received: from mobilestation ([95.79.140.35])
+        by smtp.gmail.com with ESMTPSA id n5-20020ac24905000000b004eed68a68efsm1383548lfi.280.2023.06.12.01.35.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Jun 2023 01:35:38 -0700 (PDT)
+Date: Mon, 12 Jun 2023 11:35:36 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-ide@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v3 2/5] dt-bindings: ata: dwc-ahci: add Rockchip RK3588
+Message-ID: <20230612083536.q3sq7w6cyiuxaqtv@mobilestation>
+References: <20230608162238.50078-1-sebastian.reichel@collabora.com>
+ <20230608162238.50078-3-sebastian.reichel@collabora.com>
+ <4c914503-c2e5-a5d8-97af-daaee0b4ec7c@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH 1/3] dt-bindings: extcon-usb-gpio: convert to DT schema
- format
-Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
- <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
+Content-Disposition: inline
+In-Reply-To: <4c914503-c2e5-a5d8-97af-daaee0b4ec7c@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_012921_949477_1D94BB0A 
-X-CRM114-Status: GOOD (  22.42  )
+X-CRM114-CacheID: sfid-20230612_013540_945324_90900971 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,115 +99,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/06/2023 10:11, Alexander Stein wrote:
-> Convert the binding to DT schema format. Change the GPIO properties to new
-> naming convention using -gpios as well.
+On Mon, Jun 12, 2023 at 10:24:06AM +0200, Krzysztof Kozlowski wrote:
+> On 08/06/2023 18:22, Sebastian Reichel wrote:
+> > This adds Rockchip RK3588 AHCI binding. In order to narrow down the
+> > allowed clocks without bloating the generic binding, the description
+> > of Rockchip's AHCI controllers has been moved to its own file.
+> > 
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
 > 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> ---
->  .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
->  .../bindings/extcon/extcon-usb-gpio.yaml      | 52 +++++++++++++++++++
->  2 files changed, 52 insertions(+), 21 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
->  create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
+> ...
 > 
-> diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-> deleted file mode 100644
-> index dfc14f71e81fb..0000000000000
-> --- a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-> +++ /dev/null
-> @@ -1,21 +0,0 @@
-> -USB GPIO Extcon device
-> -
-> -This is a virtual device used to generate USB cable states from the USB ID pin
-> -connected to a GPIO pin.
-> -
-> -Required properties:
-> -- compatible: Should be "linux,extcon-usb-gpio"
-> -
-> -Either one of id-gpio or vbus-gpio must be present. Both can be present as well.
-> -- id-gpio: gpio for USB ID pin. See gpio binding.
-> -- vbus-gpio: gpio for USB VBUS pin.
-> -
-> -Example: Examples of extcon-usb-gpio node in dra7-evm.dts as listed below:
-> -	extcon_usb1 {
-> -		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&gpio6 1 GPIO_ACTIVE_HIGH>;
-> -	}
-> -
-> -	&omap_dwc3_1 {
-> -		extcon = <&extcon_usb1>;
-> -	};
-> diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-> new file mode 100644
-> index 0000000000000..3a71d848dc7a8
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-> @@ -0,0 +1,52 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/extcon/extcon-usb-gpio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: USB GPIO Extcon device
-> +
-> +maintainers:
-> +  - Alexander Stein <alexander.stein@ew.tq-group.com>
-> +
-> +description: |
-> +  This is a virtual device used to generate USB cable states from the
-> +  USB ID pin connected to a GPIO pin.
-> +
-> +properties:
-> +  compatible:
-> +    const: linux,extcon-usb-gpio
-> +
-> +  id-gpios:
-> +    description: An input gpio for USB ID pin.
-> +    maxItems: 1
-> +
-> +  vbus-gpios:
-> +    description: An input gpio for USB VBus pin, used to detect presence of
-> +      VBUS 5V.
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +
-> +anyOf:
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - rockchip,rk3568-dwc-ahci
+> > +          - rockchip,rk3588-dwc-ahci
+> > +      - const: snps,dwc-ahci
+> > +
+> > +  ports-implemented:
+> > +    const: 1
+> > +
+> > +patternProperties:
+> > +  "^sata-port@[0-9a-e]$":
+> > +    $ref: /schemas/ata/snps,dwc-ahci-common.yaml#/$defs/dwc-ahci-port
+> > +
+> > +    unevaluatedProperties: false
+> 
 
-oneOf instead
+> You should be able to skip this patternProperties entirely, because it
+> comes from dwc-ahci-common -> ahci-common schema. Did you try the patch
+> without it?
 
-> +  - required:
-> +      - id-gpios
-> +  - required:
-> +      - vbus-gpios
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +
-> +    extcon_usb1 {
+Please see my message about this. The "sata-port@[0-9a-e]$" sub-node
+bindings could be updated with the "reg" property constraint which,
+based on the "ports-implemented" property value, most likely is
+supposed to be always set to const: 1.
 
-No underscores, generic node names, so just "extcon-usb"
+-Serge(y)
 
-> +      compatible = "linux,extcon-usb-gpio";
-> +      id-gpios = <&gpio6 1 GPIO_ACTIVE_HIGH>;
-> +      vbus-gpios = <&gpio6 2 GPIO_ACTIVE_HIGH>;
-> +    };
-> +
-> +    usb-controller {
-> +      extcon = <&extcon_usb1>;
-> +    };
-
-Drop controller, no need to add consumers in a provider's binding.
-
-Best regards,
-Krzysztof
-
+> 
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - clocks
+> > +  - clock-names
+> > +  - ports-implemented
+> > +
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
