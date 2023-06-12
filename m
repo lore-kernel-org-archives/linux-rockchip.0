@@ -4,94 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2099BC7EE2E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 10:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71E83C7EE2E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jun 2023 14:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yQngQof9BQ79dM1SXU6Zo1rWyb2YMyiHZabpGj9/YHo=; b=3GdzSOdB78l2X+
-	R9RjKdOhMD+FVfXq9nTewgGUguJQIE8bI8UUo2iyZ9UIjIYZRe8pgpDjQNQ4+xuJvF3Sy7Ny2UzAS
-	YA150ln4A18HxeTnZfrmWDHliy6FaZ4wPxAIy1/LUr/m1q3GwnzkHjUW75aMzKHSsZzhjVP/sM++D
-	3a6/Nm434XUrbqKKSYGVDAIT6canPZgMO2psvV40fuGVy0tZaXuoO3Glj2cLGQoZo3hTH9pLbeM64
-	/zjL50NKyp2DLtf5PJbRYF/AHJ3JImP2UCSoI7M3LUZ+77jz6tYLhNUJM+m30EYSwt1lkAL22oYKZ
-	Pp3L+RXD/AHB/vgtDGfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=K5ln5rgR8Q+i/SaMU2kS4YyAMr+GgBP4BcLNYWjZhj8=; b=AcSsdoM+XEytVL
+	xqpROgIyjuXVA6hkA7Z+wdrDx50yAy1gP5n8EgZYuqOHMy75+eDOVXNANEq9VaqDbRpPbvCg7MKUv
+	DGCsp4ezt21uHxK9vkaZnIb9RCx/ek5LpcxQpmyhjghuBp5gpr/vtpn5Sg80WvlQlAx9Z6UCLJiZR
+	t6EWyY0NW10A9jhy22y4VawMF7CVOEEZsY25seQrk/+RK1YC/+R8x8JB/L064ixAdLdUrI/7JiesV
+	NWUcbkVMKPfFdRRKXy7WsT8jBxtXHxSR2TtkWGQ9ZpxDuScdkIEsF08KxVVxevSmbV8F5phmWD0yL
+	z9Nd3ypQY+sOIaoprdfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8fGP-003g8t-33;
-	Mon, 12 Jun 2023 10:59:09 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1q8igv-004KJ6-0J;
+	Mon, 12 Jun 2023 14:38:45 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8fGL-003g6J-0V;
-	Mon, 12 Jun 2023 10:59:07 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-3f6e1393f13so30684615e9.0;
-        Mon, 12 Jun 2023 03:59:02 -0700 (PDT)
+	id 1q8igs-004KGU-2m
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Jun 2023 14:38:44 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-3f6d7abe9a4so32587245e9.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jun 2023 07:38:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686567541; x=1689159541;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=NeFFMA6ERUij92JEfj5DxIm8Qo8he5d+YN0SgBTuheI=;
-        b=pYKcbL117CGmXdLRbaMTEao1n2LHcLPC0PDpOZTtWNMseA9x9M3iqQPOMlCuE5pDxC
-         JWkWMB+Ht3+Yr7oisX/NGnHMV2Hn532CtnWTESJPkR8x5zmhc6kYYRChy6q0k9ACVUbI
-         sq7kCFlEgKeWMwGE+CBd5sbvwTzi4nQ/6UR6CThydjwizYLdzJeKGlx8rPjH5r5K7rT8
-         kQ736WYhC+xha38TynfTiojlmNjS8hf/WNoK9vh/WJ82lYQdWl+iqhat/lYYaadnusJx
-         s+NuE32dyR+reO+Kt66Y0krHjyahZ7rAjdIBG7UH/WgXlM+9+7BLOnLFLeeifW3TPqZ9
-         JznA==
+        d=gmail.com; s=20221208; t=1686580720; x=1689172720;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Qpp1USHGcqO04WoWBbryL5M8e9S80vQGjt+eEysyPmM=;
+        b=qW3mxqp1UEKpHcv7ICrOiqLR0JCzOb7gUubLgpnxcZsMVeUNL17oNcibiuW5nNxgpJ
+         n6EF9BdfZoPx+qFTuNBqiLegJ0Bx3yQ1Qpg6nF8NrywKQH3GC2olIgyE6AndvoKPMc/M
+         fKyzqwgO17RJ7ey04hiWMW7bNhq+Yov2J02fwhqOPJZn04ugeyNY4WnE0ATv/mUw6zNB
+         f7ZzN4wSQc3eS1/0HDAw7ma8WyQdVhm6bbWSdPC3c0wAWUlfr6LlH+hhzOJKskm24WRE
+         2KN2JB1+XluXt65G7rZgiUrxPQGyhDMqHmISloRtV08H5vsmSeW8l1vwPiTWGsKNO0d7
+         GBkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686567541; x=1689159541;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NeFFMA6ERUij92JEfj5DxIm8Qo8he5d+YN0SgBTuheI=;
-        b=E4jrp+vcsxj+y0c8l+0jqTDbtr0F62mvqW3QA+q7X64vSVLynPycRhXCIABRhGYAGR
-         zcwYLfldAt3BEVyMw0BP3TnYVyznaYsM58DrH14eQ9Uv8/5LNAxfSz/8JzlRHxQCnojP
-         urj3nTu3Fx9ylSNDpOXPUW8jD8cOXlJ+0+p//E7qIU07cs3f/mclW+5KJ8JPsbn8Wpl7
-         QhFf1i0wj24P6wAf7ZDyr9jZLUzwXh17ua3Kf2CqhLIpwXcj5usb5lijHcspGV6eX40j
-         4b3CYVKu7zZJsWtsM67m8mVw1CP0dtbo0LLSbfxsW21jGtQPL1zYqbYEvGmLjOMEesDj
-         SVBg==
-X-Gm-Message-State: AC+VfDyHIigf71FkBolzoybzzgPwUrhvIB+BPKDMwIKR3eMIz50tLhpq
-	xrj6n5cDTWCVrnwl/RncLDM=
-X-Google-Smtp-Source: ACHHUZ6TcYlnkQkI9JPSh90BB5ZeQ3eKCU9mALlQAhY2MVG7muGvfmwYMDP7A+O8yMoD2hp56+woZg==
-X-Received: by 2002:a05:600c:aca:b0:3f7:fa21:f66 with SMTP id c10-20020a05600c0aca00b003f7fa210f66mr6289925wmr.26.1686567540770;
-        Mon, 12 Jun 2023 03:59:00 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id q25-20020a7bce99000000b003f17848673fsm11025841wmj.27.2023.06.12.03.58.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Jun 2023 03:58:59 -0700 (PDT)
-Message-ID: <3d55af5b-5dc3-08fa-35d6-16c24b47cec8@gmail.com>
-Date: Mon, 12 Jun 2023 12:58:57 +0200
+        d=1e100.net; s=20221208; t=1686580720; x=1689172720;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Qpp1USHGcqO04WoWBbryL5M8e9S80vQGjt+eEysyPmM=;
+        b=aku90iEY3LRBiYSVPviaHfI25/crOpYC431j5U74uBUZnw6OofwrVCfhyqH/pcC07B
+         pvupmz/30Dkmz5JnJaIblW3VaoP/KZOtoduFQPbiqpETxRIBK2aAfJl1RNs55sUy/uh5
+         bLh2vQQMIBYQeH6hdnOXICNmwR3qphA17hZJwXLeKBgxpLhctnOJbmUGpk7XPOUssBuD
+         r1FZ9spTlL83O+GVH6iOLq6SUh7HVisKkfvXtj14FtELC5XtqYu0mwv87II1UI1Wlc1f
+         8nPivYW5Wy6fEE6Olp2Relf3EO+eHypYReibhVpOQQfQffkUyF49ogdosgep1jrDmulm
+         kVUA==
+X-Gm-Message-State: AC+VfDyOQyRVjseGCf0E6xYHUKtmj5Zj3A75XO+fy/9rYsDjXzpaHrxh
+	rasJd/l2s98evRqUjfdF0Zg=
+X-Google-Smtp-Source: ACHHUZ4JXuS1VBcsFH33Jc5dY/EQj6s0sCmTvbnDSzwOcOUKv0+vt+vFWoQcOyPs2UGUzpUrNVQc+g==
+X-Received: by 2002:adf:cd05:0:b0:30a:e9a9:a4e4 with SMTP id w5-20020adfcd05000000b0030ae9a9a4e4mr3912546wrm.51.1686580720220;
+        Mon, 12 Jun 2023 07:38:40 -0700 (PDT)
+Received: from archbox.v.cablecom.net (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
+        by smtp.gmail.com with ESMTPSA id e40-20020a5d5968000000b002fda1b12a0bsm12721064wri.2.2023.06.12.07.38.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Jun 2023 07:38:39 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Sebastian Reichel <sre@kernel.org>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Chris Morgan <macromorgan@hotmail.com>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	linux-rockchip@lists.infradead.org,
+	stable@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] power: supply: rk817: Add missing module alias
+Date: Mon, 12 Jun 2023 16:36:52 +0200
+Message-ID: <20230612143651.959646-2-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
-Content-Language: en-US, ca-ES, es-ES
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
- <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
- <20230608081153.441455-3-alexander.stein@ew.tq-group.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20230608081153.441455-3-alexander.stein@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_035905_218600_47645B8F 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20230612_073842_898182_A1116A66 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,360 +92,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Similar to the rk817 codec alias that was missing, the rk817 charger
+driver is missing a module alias as well. This absence prevents the
+driver from autoprobing on OF systems when it is built as a module.
 
+Add the right MODULE_ALIAS to fix this.
 
-On 08/06/2023 10:11, Alexander Stein wrote:
-> Use id-gpios and vbus-gpios instead.
-> 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> ---
->   arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi            | 2 +-
->   arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts       | 2 +-
->   arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 4 ++--
->   arch/arm64/boot/dts/mediatek/mt8173-evb.dts                   | 2 +-
+Fixes: 11cb8da0189b ("power: supply: Add charger driver for Rockchip RK817")
+Cc: stable@vger.kernel.org
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ drivers/power/supply/rk817_charger.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-For mediatek:
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/rk817_charger.c
+index 1a2143641e66..76b991e112da 100644
+--- a/drivers/power/supply/rk817_charger.c
++++ b/drivers/power/supply/rk817_charger.c
+@@ -1211,3 +1211,4 @@ MODULE_DESCRIPTION("Battery power supply driver for RK817 PMIC");
+ MODULE_AUTHOR("Maya Matuszczyk <maccraft123mc@gmail.com>");
+ MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
+ MODULE_LICENSE("GPL");
++MODULE_ALIAS("platform:rk817-charger");
+-- 
+2.41.0
 
->   arch/arm64/boot/dts/qcom/apq8016-sbc.dts                      | 2 +-
->   arch/arm64/boot/dts/qcom/apq8096-db820c.dts                   | 4 ++--
->   arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts              | 2 +-
->   arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts          | 2 +-
->   arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts            | 2 +-
->   arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts                | 2 +-
->   arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts          | 2 +-
->   arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts         | 2 +-
->   arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts | 2 +-
->   arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts    | 2 +-
->   arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi        | 2 +-
->   arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts               | 2 +-
->   arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi     | 4 ++--
->   arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts           | 2 +-
->   arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi         | 2 +-
->   arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts           | 2 +-
->   arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts  | 2 +-
->   arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts      | 2 +-
->   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                 | 2 +-
->   23 files changed, 26 insertions(+), 26 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-> index 5dbec71747c3b..61c2a63efc6db 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-> +++ b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-> @@ -109,7 +109,7 @@ extcon_usb0: extcon-usb0 {
->   		compatible = "linux,extcon-usb-gpio";
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&pinctrl_usb0_extcon>;
-> -		id-gpio = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
->   	};
->   };
->   
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-> index d4ae7a3efff87..9e53b214abc85 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-> +++ b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-> @@ -24,7 +24,7 @@ extcon_usbotg: extcon-usbotg0 {
->   		compatible = "linux,extcon-usb-gpio";
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&pinctrl_usbcon0>;
-> -		id-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	pcie0_refclk: pcie0-refclk {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> index fffdb7bbf889e..0c38f7b517637 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> @@ -43,12 +43,12 @@ cpus_fixed_vproc1: regulator-vproc-buck1 {
->   
->   	extcon_usb: extcon_iddig {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&pio 12 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	extcon_usb1: extcon_iddig1 {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&pio 14 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	usb_p0_vbus: regulator-usb-p0-vbus {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> index 5122963d8743a..607d65ddba9ec 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> @@ -41,7 +41,7 @@ hdmi_connector_in: endpoint {
->   
->   	extcon_usb: extcon_iddig {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&pio 16 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&pio 16 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	usb_p1_vbus: regulator@0 {
-> diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-> index 56dfca61253e6..8b8cb392e851d 100644
-> --- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-> +++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-> @@ -77,7 +77,7 @@ usb2513 {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 121 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 121 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-> index b599909c44639..be657df89e734 100644
-> --- a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-> +++ b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-> @@ -99,14 +99,14 @@ button {
->   
->   	usb2_id: usb2-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb2_vbus_det_gpio>;
->   	};
->   
->   	usb3_id: usb3-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb3_vbus_det_gpio>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-> index 5025c08e48173..9b4270ba0652f 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-> @@ -48,7 +48,7 @@ button-volume-up {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-> index 7b629243ef0d7..5e69c32c297eb 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-> @@ -52,7 +52,7 @@ led-0 {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 69 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 69 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-> index 56c42b0c97336..ada2eda5dacdb 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-> @@ -75,7 +75,7 @@ led-green {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
->   		pinctrl-0 = <&usb_id_default>;
->   		pinctrl-names = "default";
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-> index 175ca011998c6..f3eb7367db3e0 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-> @@ -80,7 +80,7 @@ led-2 {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 117 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 117 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-> index f23cfb2bf7934..4c19738af23ea 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-> @@ -68,7 +68,7 @@ led-0 {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-> index 733917531218c..27e02021b577a 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-> @@ -56,7 +56,7 @@ button-volume-up {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_id_default>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-> index 85a8d8fe212ff..ae522f4c0aaec 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-> @@ -32,7 +32,7 @@ chosen {
->   
->   	usb_id: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
->   		pinctrl-0 = <&usb_id_default>;
->   		pinctrl-names = "default";
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-> index 4a0645db0ae14..6374c5f53d9a1 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-> @@ -24,5 +24,5 @@ &usb_detect {
->   };
->   
->   &usb3_id {
-> -	id-gpio = <&tlmm 24 GPIO_ACTIVE_LOW>;
-> +	id-gpios = <&tlmm 24 GPIO_ACTIVE_LOW>;
->   };
-> diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-> index b4b770a9277dc..d55e4075040ff 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-> +++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-> @@ -71,7 +71,7 @@ panel_tvdd: tvdd-regulator {
->   
->   	usb3_id: usb3-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 25 GPIO_ACTIVE_LOW>;
-> +		id-gpios = <&tlmm 25 GPIO_ACTIVE_LOW>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb_detect>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-> index b35e2d9f428c1..b6a214bea70f5 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-> +++ b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-> @@ -31,7 +31,7 @@ aliases {
->   	 */
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	gpio-hall-sensors {
-> diff --git a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-> index 687e96068cb2b..876c6921ddf07 100644
-> --- a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-> +++ b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-> @@ -89,8 +89,8 @@ vph_pwr: vph-pwr-regulator {
->   
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-> -		vbus-gpio = <&tlmm 128 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-> +		vbus-gpios = <&tlmm 128 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&cc_dir_default &usb_detect_en>;
->   	};
-> diff --git a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-> index 7459525d99828..0c1352b8f2645 100644
-> --- a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-> +++ b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-> @@ -43,7 +43,7 @@ key-volup {
->   	 */
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	hdmi-out {
-> diff --git a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-> index 3033723fc6ff3..87d0293c728d8 100644
-> --- a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-> +++ b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-> @@ -150,7 +150,7 @@ cont_splash_mem: splash@9d400000 {
->   	 */
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
->   	};
->   };
->   
-> diff --git a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-> index 8fb2d17887424..3c47410ba94c0 100644
-> --- a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-> +++ b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-> @@ -85,7 +85,7 @@ framebuffer_mem: memory@9d400000 {
->   	 */
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
->   	};
->   };
->   
-> diff --git a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-> index 9f8a9ef398a26..9353b9b622f6e 100644
-> --- a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-> +++ b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-> @@ -42,7 +42,7 @@ framebuffer0: framebuffer@5c000000 {
->   
->   	extcon_usb: extcon-usb {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	gpio-keys {
-> diff --git a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-> index a7f4aeae9c1a5..1b06617ba34a9 100644
-> --- a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-> +++ b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-> @@ -63,7 +63,7 @@ cmdline_mem: memory@ffd00000 {
->   
->   	extcon_usb: usb-id {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
->   	};
->   
->   	gpio-keys {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> index aa3e21bd6c8f4..20e3f41efe97f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> @@ -27,7 +27,7 @@ module_led: led-0 {
->   
->   	extcon_usb3: extcon-usb3 {
->   		compatible = "linux,extcon-usb-gpio";
-> -		id-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-> +		id-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&usb3_id>;
->   	};
 
 _______________________________________________
 Linux-rockchip mailing list
