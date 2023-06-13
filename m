@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FFFEB64D0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jun 2023 16:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E281EB64D0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jun 2023 16:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TlTW79ZgNSktBtRt8fDEtE7oeCKqWVt7kLhPlWe6NfU=; b=tqvOGHrKiuKk0vHv/j7WFx2Kxc
-	9Od4IuXCZIKQTD2XaW2sW7B4OU/Ipc5fmH3Jw5i1lkI3vH5P+CcGLQWaS6K2KIEdAuBf8DwTOhjlm
-	TtO6kHgQn77h+9VsxdiEmfIdvInElvKGAj1rc7I0dDpnD/EiJFIubPs5C97DxKxbCLBMByt4Oc8Xt
-	uqWo8tVPidcaT6NXiUnAt+f0Vukve+cLcbHbmgX8k16lFoj855ENdYpjXy0xwO4OUrEGKF6qDd6zV
-	g884flsHyCorJz+FjGCSEboNi0nqcSADLFX/k4qJ+Zpg57EjW05lyE1rVrgPOgnSXq72LemUN8Xde
-	UdgQH/yg==;
+	bh=xa0u/WlLLm0z8Qm0XC24Wrgm9uT6XyIxj6YqwNalPrw=; b=FeK4ai/BSAcpB8u5xS12sV2w0v
+	J5J6N7YoAR1R7nTegQFbr/omI7QI1cwnGTkQxaoGBI1YCsr7cG3flxd9mrCZejywXDSMFdrNk0TRv
+	3DWvpwSf1cK01Jd/2Wyw0FMawBVHDXch0WrOs01JNwkTQybTP7CN0XHvOL+9Vo2mIHoqwnk7Kud+g
+	p/ddm9nYneIU17C2T0rZYwBoHgA8+HU4dC/dkVomlLkSmNn51BCHHdXCTUAiSCxyhQfKl1Y4efmf8
+	4hoLvQi0tD8b7KSGnwqhkwW5dAI8o0RXL4UFasTa4DPMSEJxOCQnJfKXWAMLZ5tiY+J2cS5fFVn9P
+	C0hAM9gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q96kA-008ZhO-0b;
-	Tue, 13 Jun 2023 16:19:42 +0000
+	id 1q96lv-008a6g-29;
+	Tue, 13 Jun 2023 16:21:31 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q96k5-008ZgU-1O;
-	Tue, 13 Jun 2023 16:19:39 +0000
+	id 1q96lq-008a5H-2h;
+	Tue, 13 Jun 2023 16:21:29 +0000
 Received: from mercury (dyndsl-091-248-189-170.ewe-ip-backbone.de [91.248.189.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E56766606EF9;
-	Tue, 13 Jun 2023 17:19:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 646666606EF9;
+	Tue, 13 Jun 2023 17:21:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686673176;
-	bh=rm+xEAF9m8EKLIV/91S2iZERE1DFe3KIxCEU2gBO/jc=;
+	s=mail; t=1686673285;
+	bh=uEVL5S3JkGp5uXOVShXjVbjuqvt7cRNDQ53qXd+EKLE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CVrEKkAppmYrbOq1v8+sQA+Rr8M1nfY9ODmNgd8urU6UbcRElqhCzA4YjpRqX4X2i
-	 E2JfFWLg6CBa9lj3EGV21uJhbf9FcxvWav+VmnVE3t/bvPbGv1AXo+VnoH83VwFlHg
-	 WM9ydUlNuP4H9UoaUNFSgrRFirVUmld41SGL/2if5tgOh3Qw3MPvCDPsSo5s5vCSv8
-	 KJtBUct6oWfnwi0gBvqVwItDMf5HS335idMr5fnuVQEO73EUsj9oaX+0pFQ8XezAR1
-	 pkU/aFs9aN0ODF3QHqEA9MgG0gSGnyRARteP8oii//nn4k+mjeP+NKY2/6kCJV4BUJ
-	 TcMha1dYPsY+A==
+	b=V5UP5h7A+FQW45eeruuyKjP3GZK2truPkTrQE6u0lXow4Y59TidPUm2iIcC0CvB9b
+	 apX6Mu1Yj5O1iBeRk7k9ZdTDxJRO6SYh3J11EDdbYZQaUA/l5Dw+Ap0ob+Lvb5Xg70
+	 w/KJZAsMDbYP+ItTmKgqIyBrSlNEomtGTTQAuMrE2TgQ/L2m/fd5wcqaONWvazCDYi
+	 Jk66c3QoEFBNb82JVBC7boyfPY0irk3xYUIB1wAsWCvsfrIe2UqT0LxifNofmfFmej
+	 RzfC1uBoJeHr9I0SRNj8i0D9XJlTSV7B5+D5HF3WPRYzoVenSco3n2Uiddj8orDMfe
+	 Ir0OvhsQXu51g==
 Received: by mercury (Postfix, from userid 1000)
-	id 8A4761066FBA; Tue, 13 Jun 2023 18:19:33 +0200 (CEST)
-Date: Tue, 13 Jun 2023 18:19:33 +0200
+	id D9EBA1066FBA; Tue, 13 Jun 2023 18:21:22 +0200 (CEST)
+Date: Tue, 13 Jun 2023 18:21:22 +0200
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Sascha Hauer <s.hauer@pengutronix.de>
 Cc: linux-rockchip@lists.infradead.org,
@@ -61,15 +61,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v5 25/25] arm64: dts: rockchip: rk3588s: Add DFI
-Message-ID: <20230613161933.qy3qh7ybf3azl3aa@mercury.elektranox.org>
+Subject: Re: [PATCH v5 01/25] PM / devfreq: rockchip-dfi: Make pmu regmap
+ mandatory
+Message-ID: <20230613162122.fkivfd7bzpwdrkan@mercury.elektranox.org>
 References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
- <20230524083153.2046084-26-s.hauer@pengutronix.de>
+ <20230524083153.2046084-2-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20230524083153.2046084-26-s.hauer@pengutronix.de>
+In-Reply-To: <20230524083153.2046084-2-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230613_091937_600467_FCC7F7C0 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20230613_092127_026975_3661F769 
+X-CRM114-Status: GOOD (  24.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,113 +82,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6282917561088833294=="
+Content-Type: multipart/mixed; boundary="===============2033401421874020987=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6282917561088833294==
+--===============2033401421874020987==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mrx4igmyearfat7p"
+	protocol="application/pgp-signature"; boundary="jurk47xd2prgsurq"
 Content-Disposition: inline
 
 
---mrx4igmyearfat7p
+--jurk47xd2prgsurq
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-On Wed, May 24, 2023 at 10:31:53AM +0200, Sascha Hauer wrote:
-> The DFI unit can be used to measure DRAM utilization using perf. Add the
-> node to the device tree. The DFI needs a rockchip,pmu phandle to the pmu
-> containing registers for SDRAM configuration details. This is added in
-> this patch as well.
+On Wed, May 24, 2023 at 10:31:29AM +0200, Sascha Hauer wrote:
+> As a matter of fact the regmap_pmu already is mandatory because
+> it is used unconditionally in the driver. Bail out gracefully in
+> probe() rather than crashing later.
 >=20
+> Fixes: b9d1262bca0af ("PM / devfreq: event: support rockchip dfi controll=
+er")
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->=20
-> Notes:
->     Changes since v4:
->     - new patch
->=20
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/=
-dts/rockchip/rk3588s.dtsi
-> index 657c019d27fa9..4a445d8704c8f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -388,6 +388,11 @@ scmi_shmem: sram@0 {
->  		};
->  	};
-> =20
-> +	pmu1grf: syscon@fd58a000 {
-> +		compatible =3D "rockchip,rk3588-pmugrf", "syscon", "simple-mfd";
-                      ^^^^^^^^^^^^^^^^^^^^^^
-
-Must be added in Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-
-Otherwise the patch is
 
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 -- Sebastian
 
-> +		reg =3D <0x0 0xfd58a000 0x0 0x10000>;
-> +	};
-> +
->  	sys_grf: syscon@fd58c000 {
->  		compatible =3D "rockchip,rk3588-sys-grf", "syscon";
->  		reg =3D <0x0 0xfd58c000 0x0 0x1000>;
-> @@ -1112,6 +1117,17 @@ qos_vop_m1: qos@fdf82200 {
->  		reg =3D <0x0 0xfdf82200 0x0 0x20>;
->  	};
+>=20
+> Notes:
+>     Changes since v4:
+>     - move to beginning of the series to make it easier to backport to st=
+able
+>     - Add a Fixes: tag
+>     - add missing of_node_put()
+>=20
+>  drivers/devfreq/event/rockchip-dfi.c | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event=
+/rockchip-dfi.c
+> index 39ac069cabc75..74893c06aa087 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -193,14 +193,15 @@ static int rockchip_dfi_probe(struct platform_devic=
+e *pdev)
+>  		return dev_err_probe(dev, PTR_ERR(data->clk),
+>  				     "Cannot get the clk pclk_ddr_mon\n");
 > =20
-> +	dfi: dfi@fe060000 {
-> +		reg =3D <0x00 0xfe060000 0x00 0x10000>;
-> +		compatible =3D "rockchip,rk3588-dfi";
-> +		interrupts =3D <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names =3D "ch0", "ch1", "ch2", "ch3";
-> +		rockchip,pmu =3D <&pmu1grf>;
-> +	};
+> -	/* try to find the optional reference to the pmu syscon */
+>  	node =3D of_parse_phandle(np, "rockchip,pmu", 0);
+> -	if (node) {
+> -		data->regmap_pmu =3D syscon_node_to_regmap(node);
+> -		of_node_put(node);
+> -		if (IS_ERR(data->regmap_pmu))
+> -			return PTR_ERR(data->regmap_pmu);
+> -	}
+> +	if (!node)
+> +		return dev_err_probe(&pdev->dev, -ENODEV, "Can't find pmu_grf register=
+s\n");
 > +
->  	gmac1: ethernet@fe1c0000 {
->  		compatible =3D "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
->  		reg =3D <0x0 0xfe1c0000 0x0 0x10000>;
+> +	data->regmap_pmu =3D syscon_node_to_regmap(node);
+> +	of_node_put(node);
+> +	if (IS_ERR(data->regmap_pmu))
+> +		return PTR_ERR(data->regmap_pmu);
+> +
+>  	data->dev =3D dev;
+> =20
+>  	desc =3D devm_kzalloc(dev, sizeof(*desc), GFP_KERNEL);
 > --=20
 > 2.39.2
 >=20
 
---mrx4igmyearfat7p
+--jurk47xd2prgsurq
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmSIlxUACgkQ2O7X88g7
-+ppIDA//WR0R31t307KcfvZ9jJLxYNQIh7CaH3HbyqW7+sNvWtE+rXSagxXNxkL8
-VNpRElARVtbqfT0tNeK2zjrbjU5zl2ZuBtEWDlFHpBvLmO66ArdjKuKb1Qk4NgZJ
-SkYWFcNgzNNqoZfhbrADBuBlCBzr0cHHTScqYTcCMMgcrHyed0EsFZ4wJyhxVQUc
-cWen5lS7J/fEiyKJmhZtvd3n0NnlAhtNjT0EzI1Mod+otdxfCuWE1ePB3rRcsK6D
-S26j8KM98N/B05+nmbKSmpNpsLswyraLkb8KrgtVSRqhifAG2/+Wr+jIOQGurnAJ
-0Vn/i3tXy38W1POgE5yXhoIT0hu86hlhtvHuKe8n3ryVbtCEtKVxyjBGLcrnQX9z
-xZMCYtMBppHaapVg0HwPlqDozRLFKOWDXiW30eWqqYBWzPVwS18SQa4TivqQ1lsx
-L3LFYpdX2QFUIGKq2cOoGDYNXhOiaNH6nGsEhdlggvEuzLdAmPNK17DNQZO8eMO2
-FIjEl5/K1jMSV/uP95SUWhUMjUHf+Lokby2KgQbpVNE0qmalWv8vga824k+t38Sr
-Q14OSHO+8GXo6xvQhVFjJf0IOnb7mTWBZGMnGpEO5oKBt7XngH9G1sx/ohRNMSs+
-0KAr2sXEvP7bsWb+nQdNL6ZhowQIWu14LSVxD0MWHKjNRXs5Yh0=
-=jDvv
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmSIl4IACgkQ2O7X88g7
++ppKcw//ZTg1vOUfnXfLbpBaa8Hxz6w4+A4J9oT3pbk1OSYD9C8Nx8Z97dV0T4YN
+0bM7LPlqdLXPrEngsMPWx0vwAdjZG2d5TnN0rRLB9LVoBEBtuiGi3t+AvPhvdCGh
+OaqvCLwnkkOtGjU32NBq53nzLwp1JQio6uOwLMGFwvkNR3a1RnQlwFci7L/uOkNU
+o4WEWyhC3FgtxvCOOQwlJ1Uz3k5fi9yQejvjBN79mF4RCS3ZvKfODcsYxLx1415a
+i/Aee7UpLMk4btvPwM/1kc5NEvx01NXNZQj6V09gsDRDwLFg4dexXyjz8NPqZX3P
+DhACT7gMN94enie2IllSF2umrbBcslkTtuPEJ4TlF0ES692vCl2qdodSRgxM89Lq
+XgSrbwwP6NQgA0AhLjjy4Nw+WqHACYU55kpFdoB7txGcJXyQpRT4v+2x1vHQHMJL
+DYnoy/ohmg6nlLAd84SSEyfqNI/UrGwQPYi2TwZe2SAyhqiCi5NKN08umm4xw1Jf
+M5XuM9koQj5Wosqby0FBcUvPB7GjV8uA9lB1tNLrIjR26wHYrUpH4UNjtYzEHSHr
+BMxi1e5c2cmAjzQIUUXCwi0t1kNqHTd3m+joEjM9NTt2NfjBe6cKGWwLcmgGmHkP
+0aWH++uS2E+NQlAET1QTONzuh/MxJuB7Hm8AkYA4sT0PMEfCgP0=
+=Gdda
 -----END PGP SIGNATURE-----
 
---mrx4igmyearfat7p--
+--jurk47xd2prgsurq--
 
 
---===============6282917561088833294==
+--===============2033401421874020987==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -198,5 +193,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6282917561088833294==--
+--===============2033401421874020987==--
 
