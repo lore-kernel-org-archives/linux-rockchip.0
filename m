@@ -4,89 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 684C4C7EE29
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jun 2023 06:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21B8EB64D0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jun 2023 16:17:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BZYjZZcyn20bYMTasWyVzLZezZe67UxbCtSPTerRFSM=; b=3cUiIcy7Bahy+o
-	iCXVlHFoDeu/FHvsLpo5Y7xUuCp/wyZsBcME8XwK76HEVZaZmZMp4v4NMqGnkOCbbTvwLsrwX4hIf
-	B1wOmGreSUefUpIJ8nqualuo8zh1PquhQLPgQdngteWBFZxJy3oBvirMunUvNXltazh8fvhZqc7cS
-	Y/5i/YxPHavMjT5BPXO526xbE8umcxzHcGBMvv4obQ0S/gLDtQZutkA+H753bSu9ef3oBWpK9XufP
-	U8gymvLsXFaHbVbkW9by+k+x6xrrKH9dUc/AbYgr5e0+dOwaX+WY9MwdikD80MQCn4CZSmYQMS6u0
-	4W5MIMRnhxOCDiQyz8vQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3KuBIpUvY5EaqDOnI9Ssxf+/jgzuqMzE/cVVtdMcy0Y=; b=qR5QF1PoCMOMwSNklIhdwzgpyu
+	2BxNUsbSfQ6yw3SfENW9PctGOlrUT4cE2m3TykqBAE/u7UWOkaDOPRbBChK5B2sYHtolfIpOPNHi5
+	6YBoeWTTNZH4rjmTrRdS33Npp/vZuKx2I8fxyLE2V8FNrYA2mb+GGcUUeLQcZ7oUDZyY3U8l1MQY2
+	/hMfCZsHK+fb5eSsQ7zL4j+emq2OA/wKwi8xbRupNgYIjnPg+4zbXz57VE5t65ZQ+AgWJFbcFUKl0
+	euDJ17RranXc8ot+d9jxohuRYqoLnYNYO0Y7jkxaZ+Z+tAg1s1+ssDCeMpQJtRjoxZEDMmfrTyKm6
+	fiaAU08w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8xww-0078uR-1n;
-	Tue, 13 Jun 2023 06:56:18 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1q96hN-008Z9Q-1k;
+	Tue, 13 Jun 2023 16:16:49 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q8xwt-0078sD-2L
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jun 2023 06:56:16 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5151934a4e3so7666577a12.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jun 2023 23:56:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686639367; x=1689231367;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=WmDb0FqExseWIwOM+eDbd4Y0lzi/vx10EOXmxwOWe4M=;
-        b=o0kkKmW2vSbCVd0ghUZmQJ5Tp5ku/bqKN/w9kbxWX6OwWUAKdaBZWKGPtp62VFTaQM
-         vE68/3HXtlb7Ipiaz7LoGRMD4JusW0hVgsM9EGct+SpGJcOMHvc+S7r4SzpKkRHeVNOk
-         KEaw10ZFBcKCUQScWVdlzv7ApNKm1ZgyVjMogr1nZJqvjtW+20NWX7wkTuqL+sxhRX3/
-         IrwZhuz6dKj9XLK1dNNZoKoIluZAqFhSwdbFqAzE1bsX+PSxTY/sFfjQyNM8sqMvsISv
-         hAJUrcAdeMVgFS+ZYMTK0CmFP2UnHfTzh6Hl/6XrM0cdboobGbzjXQH/gjseyfpR3z7E
-         4TLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686639367; x=1689231367;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WmDb0FqExseWIwOM+eDbd4Y0lzi/vx10EOXmxwOWe4M=;
-        b=Y3aLLCKtvw49I6X4NZv21tGmuEO+cFSdcZAKA3F1koGc3FjCbAIECANUwjsUnWCFxH
-         nkfiKOtyDEedfVrYmnm+MrvZSWrJxdEcTl/fxR7p5o4op00qVXbdi9ljixRnj0dcm5Jh
-         tVy0Zvj2aMeCcAJeqFinPeIGBn2yKbsVtde7jGkUyX7nfWoV8zM2F1hPMAJ5s75dXC0U
-         MUJHXsdfYEiSlgtGS4THy29FzdFVjE+BLrertZqSUyqADv0XUe828MGt/CbaR49xK2Pp
-         rpmtrW3hfrIrEgTSGU6j96qRAp8OUDzr0mvfHpLRHnb4wzdrLKrrCGBkgEPTjSqk6sVt
-         2G6Q==
-X-Gm-Message-State: AC+VfDxj/0uk2WlN6bKDVbdIGhTdlIhfOMy9uornnE7d9l7XIkjcN+Nn
-	HXk6R49aWoycFwvGlO2SJ0jsTA==
-X-Google-Smtp-Source: ACHHUZ7KDHVjq84hd7jnAxZuW1GtZX7g9vEo3lmLlL3Z28G3faXdjwa6gLk/uRj3hbQBYDNJ/LiuiA==
-X-Received: by 2002:a05:6402:1012:b0:518:72f1:8211 with SMTP id c18-20020a056402101200b0051872f18211mr856371edu.28.1686639367370;
-        Mon, 12 Jun 2023 23:56:07 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id u13-20020a50eacd000000b005149b6ec1bdsm5945038edp.29.2023.06.12.23.56.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Jun 2023 23:56:06 -0700 (PDT)
-Message-ID: <b72569a2-c101-e686-ad7f-3eefd41951ef@linaro.org>
-Date: Tue, 13 Jun 2023 08:56:04 +0200
+	id 1q96hG-008Z3u-0D;
+	Tue, 13 Jun 2023 16:16:46 +0000
+Received: from mercury (dyndsl-091-248-189-170.ewe-ip-backbone.de [91.248.189.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D32DA6606EF9;
+	Tue, 13 Jun 2023 17:16:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686672997;
+	bh=VE/+max2Mlkt3YpUqAw/JwuEfVkmt/4kiwUGsGiUfyM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E+ob3Lptalee4kc7E9ETGu6hl+h1NwPpV5Ryh0bPjm3T54RNe/UKAExvDPeXAj5WG
+	 kFv9UKt3t8oRaRJ7yA3xqHPFcRcF++JB9gNmfSKwz0583oppLSvVnHzNFLJZc9jZVn
+	 goY9dHQxUkQoU4tNnAwhoiWn6kV7vAkrwSNH8uF8u8/7gZ9B5K5KroigQxwkshRcCy
+	 C6gD/qSBtKhJnxXfiv7MY8/uKYLnLbNAV7fC4Hj9Z29zsallV4Cj3uWT77UcPqx7yq
+	 eqmxdjeiHJp+vJ1+dB1IBIkDCdX3LoJl/nxi/oDZws2cXOoi0VN8qb1xKf5JalnpMz
+	 CHIIn9IhrBuSQ==
+Received: by mercury (Postfix, from userid 1000)
+	id 2C4A91066FBA; Tue, 13 Jun 2023 18:16:35 +0200 (CEST)
+Date: Tue, 13 Jun 2023 18:16:35 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: Re: [PATCH v5 19/25] PM / devfreq: rockchip-dfi: add support for
+ RK3588
+Message-ID: <20230613161635.2rhx5eebhccg4niu@mercury.elektranox.org>
+References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
+ <20230524083153.2046084-20-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v4 2/5] dt-bindings: ata: dwc-ahci: add Rockchip RK3588
-Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Serge Semin <fancer.lancer@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, linux-ide@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20230612171337.74576-1-sebastian.reichel@collabora.com>
- <20230612171337.74576-3-sebastian.reichel@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230612171337.74576-3-sebastian.reichel@collabora.com>
+In-Reply-To: <20230524083153.2046084-20-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230612_235615_768201_9A57E3B4 
-X-CRM114-Status: UNSURE (   7.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230613_091642_388576_DACAA777 
+X-CRM114-Status: GOOD (  25.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +83,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5363214314127002000=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/06/2023 19:13, Sebastian Reichel wrote:
-> This adds Rockchip RK3588 AHCI binding. In order to narrow down the
-> allowed clocks without bloating the generic binding, the description
-> of Rockchip's AHCI controllers has been moved to its own file.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--===============5363214314127002000==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pwxokmnhbdb7mc7y"
+Content-Disposition: inline
 
-Best regards,
-Krzysztof
 
+--pwxokmnhbdb7mc7y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Wed, May 24, 2023 at 10:31:47AM +0200, Sascha Hauer wrote:
+> Add support for the RK3588 to the driver. The RK3588 has four DDR
+> channels with a register stride of 0x4000 between the channel
+> registers, also it has a DDRMON_CTRL register per channel.
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+>  drivers/devfreq/event/rockchip-dfi.c | 30 +++++++++++++++++++++++++++-
+>  include/soc/rockchip/rk3588_grf.h    | 18 +++++++++++++++++
+>  2 files changed, 47 insertions(+), 1 deletion(-)
+>  create mode 100644 include/soc/rockchip/rk3588_grf.h
+>=20
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event=
+/rockchip-dfi.c
+> index 23d66fe737975..1410d20f3df80 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -26,8 +26,9 @@
+>  #include <soc/rockchip/rockchip_grf.h>
+>  #include <soc/rockchip/rk3399_grf.h>
+>  #include <soc/rockchip/rk3568_grf.h>
+> +#include <soc/rockchip/rk3588_grf.h>
+> =20
+> -#define DMC_MAX_CHANNELS	2
+> +#define DMC_MAX_CHANNELS	4
+> =20
+>  #define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+> =20
+> @@ -711,9 +712,36 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+>  	return 0;
+>  };
+> =20
+> +static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+> +{
+> +	struct regmap *regmap_pmu =3D dfi->regmap_pmu;
+> +	u32 reg2, reg3, reg4;
+> +
+> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG2, &reg2);
+> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG3, &reg3);
+> +	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG4, &reg4);
+> +
+> +	dfi->ddr_type =3D FIELD_GET(RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
+> +
+> +	if (FIELD_GET(RK3588_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >=3D 0x3)
+> +		dfi->ddr_type |=3D FIELD_GET(RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, r=
+eg3) << 3;
+> +
+> +	dfi->buswidth[0] =3D FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH0, reg2) =3D=
+=3D 0 ? 4 : 2;
+> +	dfi->buswidth[1] =3D FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg2) =3D=
+=3D 0 ? 4 : 2;
+> +	dfi->buswidth[2] =3D FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg4) =3D=
+=3D 0 ? 4 : 2;
+> +	dfi->buswidth[3] =3D FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) =3D=
+=3D 0 ? 4 : 2;
+> +	dfi->channel_mask =3D FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
+> +			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
+> +
+> +	dfi->ddrmon_stride =3D 0x4000;
+> +
+> +	return 0;
+> +};
+> +
+>  static const struct of_device_id rockchip_dfi_id_match[] =3D {
+>  	{ .compatible =3D "rockchip,rk3399-dfi", .data =3D rk3399_dfi_init },
+>  	{ .compatible =3D "rockchip,rk3568-dfi", .data =3D rk3568_dfi_init },
+> +	{ .compatible =3D "rockchip,rk3588-dfi", .data =3D rk3588_dfi_init },
+>  	{ },
+>  };
+> =20
+> diff --git a/include/soc/rockchip/rk3588_grf.h b/include/soc/rockchip/rk3=
+588_grf.h
+> new file mode 100644
+> index 0000000000000..630b35a550640
+> --- /dev/null
+> +++ b/include/soc/rockchip/rk3588_grf.h
+> @@ -0,0 +1,18 @@
+> +/* SPDX-License-Identifier: GPL-2.0+ */
+> +#ifndef __SOC_RK3588_GRF_H
+> +#define __SOC_RK3588_GRF_H
+> +
+> +#define RK3588_PMUGRF_OS_REG2		0x208
+> +#define RK3588_PMUGRF_OS_REG2_DRAMTYPE_INFO		GENMASK(15, 13)
+> +#define RK3588_PMUGRF_OS_REG2_BW_CH0			GENMASK(3, 2)
+> +#define RK3588_PMUGRF_OS_REG2_BW_CH1                    GENMASK(19, 18)
+> +#define RK3588_PMUGRF_OS_REG2_CH_INFO                   GENMASK(29, 28)
+> +
+> +#define RK3588_PMUGRF_OS_REG3		0x20c
+> +#define RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
+> +#define RK3588_PMUGRF_OS_REG3_SYSREG_VERSION		GENMASK(31, 28)
+> +
+> +#define RK3588_PMUGRF_OS_REG4           0x210
+> +#define RK3588_PMUGRF_OS_REG5           0x214
+> +
+> +#endif /* __SOC_RK3588_GRF_H */
+> --=20
+> 2.39.2
+>=20
+
+--pwxokmnhbdb7mc7y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmSIllkACgkQ2O7X88g7
++pqqxg//Ru08eJtfd7WQl/Adyz6ldiB1m34JNsRpPS3WRnpZruiK8lAjavvXFrZf
+apqhFTb6MkQTDV88k63E/JxRoRZhmcj42i9UGPI+LVapbJ7P10vv1VDr2eWjLBZ8
+vnOqTPI1AXvAJUK9v6aDoozrdrZD9vdOcILMwo8oO249JIov3XXN/Vi70prL11SG
+4B0KCRm6JwgzXr1wYdCc6jpUu8g7K+WYgHHtpgc5h4vjQC3bQHidfJDp4RWQNB2p
+E6ig/NP0hoE8IYX+fWqRL+kSFb6u5wJn0ntNogUP+pb7SfzBIh5Gyy5YKz1dvKDp
+mx1s2IzGQNnvRS/bS3oQFzZAVcY6S3fNZp8QgZ9hqu6bG9n1cCRSaf2OzReQvelO
+zC00ReXgZTAeF/aWYBhp7GiaTOj8C3m5Mb7qGsKfZf2dSRNJPTbML5k4NmDKO/db
+w+Cqlgs0e01jl67CmvzM/DROC+Vig9RzTsylWAgJh7j5eaSFaxnqjJP1hynjeuzr
+hyX/f3VzkBwxNNJYo9kD8n9mhX2JL78Hu471bCmoxUVlb3tJEcw8HlzXcxnvvhtp
+PFQ0PDqHJ6EKKSEKu6rL1GbDMBy/W16qVgFPqK1LmqzBM9F5DqE1RNkc2hvko+eF
+kagas9l5UlztXdu6on+knrBsF5DCbrKxMpv98HdWS6Ow6Q5Jxx8=
+=qCmO
+-----END PGP SIGNATURE-----
+
+--pwxokmnhbdb7mc7y--
+
+
+--===============5363214314127002000==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5363214314127002000==--
+
