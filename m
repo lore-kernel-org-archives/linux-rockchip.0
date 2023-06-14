@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E039EB64D8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jun 2023 19:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0028FEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jun 2023 19:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B13BdQIl0cHVYHXHO+vgUZ7/ynQKvlYlswmg2b5gY6U=; b=tyYzecv92Sa7qw
-	HSWT+XJoBmTVVjHV/+ESt78w5Gjm6+EV0ruZepuKStmt0LkCbeZ+dmxL9oOnsBYe9lyukWchNCmXU
-	+l/dxwZT4hInr6HayypT7+l7NDVvU1AvfNIAfkHfxIB9/PChyqOz7JPmpzETNRQzT6r8mARVtElqQ
-	cm6zsuQCtKcUVx4tNuOqAfFcZRuYPOjxMmzXcSQpOP7z98/ZG6IebANlWxybYbHufN/Ijr+mGWfWW
-	MXQ7XR8wVcNLTZLuMACPJuH0rOb02fjZyBurGTSF0S9utuA5am0ZqJGIBgcK55uVkTaywX0RNevBc
-	EbARs98x2jmlN++h5Sow==;
+	List-Owner; bh=I/xMrh7SaWIFfWYpGwLec1ZE8WjrTqd+ERZ11LxDysA=; b=z4tkxgKABfJBt3
+	8NwvOtnNLi9/9y9RHx41xX4yzBIg9fYs/BF/04BX52DVo1hl/TiPbxP+Rgui4pKC4b14VNNMJCIRG
+	ho68G9qqVcFs5xlvDLR5q+MZvIp8DZMEGzQJGHnwQubHQlFdazwCjuUjgHG/Uj4JJRW8xXKKYeNVn
+	3zQrEwAyaZC3AllYW00iR7M/bm7Yp0NXmKT83CUk+X4KlTkCQ1p5vCQGauBfC0Ej4bAHHoCnE6eqc
+	JLZhTlcpQ+BzonrEdi53O15+gyb04cNiHxie4cl2XfkRoEUUOE0KfGUik7+8sK7DKs99atm+IsySP
+	Pq74N/0tC3DvJkUlArmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9Vro-00CVZY-2r;
-	Wed, 14 Jun 2023 19:09:16 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1q9Vrn-00CVYl-2y;
+	Wed, 14 Jun 2023 19:09:15 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9Vrd-00CVUG-2f;
-	Wed, 14 Jun 2023 19:09:07 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-30af159b433so6897986f8f.3;
-        Wed, 14 Jun 2023 12:09:04 -0700 (PDT)
+	id 1q9Vrc-00CVTw-1Z;
+	Wed, 14 Jun 2023 19:09:05 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f8cdb12719so9347555e9.1;
+        Wed, 14 Jun 2023 12:09:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686769743; x=1689361743;
+        d=gmail.com; s=20221208; t=1686769742; x=1689361742;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=5u9vHxVGrzBlNg97U37WfCH1VZYMHPccfRdk0EIgi0Q=;
-        b=CpgQ+Kp063bXwmLKcP1EEsFKM93bGnY15ULSzxfxUlpJLR6gAyb4oeXYPjqoQUm1Qh
-         kHc+Ueb4SiOE+/bHeahP/YzEp4jLn6ikXcfMAlgRRiQV+sBkHYwFpjdNXjkOsMvCRpUi
-         2Jb1+Go+ysqeLQxKvH0let+oPsNKRlCFj1nQL9S5ZsjhYwW+J7uflIfyuyXjNdTLvfzG
-         0Q3jbptnO63W0s2Kp2zPcEmszKHZ4i4SAg6G7taC8/t7agm9MGmGOJWKsg0iNceDD1Yi
-         xnjkmJNOjCwEz+99cd4NwBByCBeI0xLzscMFpyO9RUZzCr2+s4nj7LRAa3JSvCc/Aohl
-         0Bfw==
+        bh=JT6Z31XAHARj6r8X3TIPRAVf58b/OWvZZzUE5BznjHg=;
+        b=gTzZep0N8oZ10jqQuBazaO0RxgQ4fGM9RR2h9Phld70KcT2mFR2cnLbdgMqScg8sBL
+         3jMYkb8566phWczTsYRfnzfNxUT2R6VjXkjin4M4pLmU0AVNRQRM/vtTmvQa8cR3B1vY
+         3qegnkVWljI7Ltunbik/Ch/48zAdVkDn8AWiYWbMH836isLN44BOgxbHVdiZAQ6SkqAu
+         bCIRyIKEn/K/n8l89Myt5fgbn5I9b8NkNczJZ1D2q5ZZzAf82ZbKmfnApqSQpFv0o/Nk
+         eDrdy/kUVixCC20dwLJeKRqsp35Hch2aeSMOHro9Kou/5UtdS7TSkhf4zqfNVOolH/Ha
+         3ZoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686769743; x=1689361743;
+        d=1e100.net; s=20221208; t=1686769742; x=1689361742;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5u9vHxVGrzBlNg97U37WfCH1VZYMHPccfRdk0EIgi0Q=;
-        b=UUgYV+DxHB5QHH4Ezq3gRF/wyLy8gGI/9F0y7fZxds5jaP/UImQA1SXiinI9fM8ImO
-         yAk94QVg3YF3V+N14eY0JFd2KHb/gFSiipd1jThBnaEPJM3HagdmF353hno7XRunylBo
-         HO+6Q16FVU+2OHEsIpIQzaesJRKnfp6sl6FNVDKeAuqTvA6jolwLjEUHK3Yg+TH41KYx
-         ds81fHhdcBd6eEdmUhzf+I+Zu0LMRxVdsl/91Fj1XYqnNB2DkDbiE63yQVCu1ejoHd/d
-         sAH2CnBbKOAKVxByzRdBTbDFW2Ymw7nj/KGYbaGtwxsoc4vzw8yw1NmHOBHZ1JAHEf0D
-         aTpA==
-X-Gm-Message-State: AC+VfDzWB+xoL+eZ8a5mdZrv/mJmTC05fdPIwznZkwH6xBQxN/zhzm8V
-	xijP4t9Gk5Bb5bL9Frnffww=
-X-Google-Smtp-Source: ACHHUZ4WcZukf0p1Xe7srG7EpSfRIc8i1xLVw2rVsv9fLH+mSROtW2rbeQ6y/IwrGmrmgOtHgQBd0Q==
-X-Received: by 2002:a5d:4009:0:b0:30d:673e:1547 with SMTP id n9-20020a5d4009000000b0030d673e1547mr12367726wrp.41.1686769743534;
-        Wed, 14 Jun 2023 12:09:03 -0700 (PDT)
+        bh=JT6Z31XAHARj6r8X3TIPRAVf58b/OWvZZzUE5BznjHg=;
+        b=hxcVfWBC02aHVPUeqFy+FMp6jgS/QvzrYSF/pCEE4oU5Y2ppLmBVotBLXz9CJr56wn
+         gMoeUilStGImvdHgmrn2l1W35paM//W5tNKh7UXBkZgAR/SVmWuQuRXR+/iAlNiAMJHR
+         jiu/dLZ58JvruvMoWgNe2JB4aAsNJsqX5bgGk3DYhEeqZLiLbCbS6YWfoc30qWQwVxT7
+         w0jV4ySw8U4IhVMLGL0lEf+m1BRmKDOnCwBiCJURYFXbc2ThqhVMMrPePZNSLn4l1nsz
+         ALJZyG7ucA5AymJ+GMOWTZEN1MV0qck6bljcFiED9OmFi0n0SWMsQsDjbgbEWqVi4u+7
+         YN+Q==
+X-Gm-Message-State: AC+VfDz9mE72dzpBOTDqeC+D7iEGaKNRULbKelnyXMtziwRuyAG/PiIy
+	lDg08MdcCRhvWZeBUh1Sm1w=
+X-Google-Smtp-Source: ACHHUZ4FHa3Ekp7twbhYSZ1B+qSHxIRwzxrV2Oa4FpAIjwYwusJWuhQOVC7BOmRWCf2/QwABBhnpCw==
+X-Received: by 2002:a05:600c:218:b0:3f7:f584:5793 with SMTP id 24-20020a05600c021800b003f7f5845793mr10767493wmi.1.1686769742314;
+        Wed, 14 Jun 2023 12:09:02 -0700 (PDT)
 Received: from [127.0.1.1] (2001-4dd6-393b-ff-f59e-4402-63f8-7ff5.ipv6dyn.netcologne.de. [2001:4dd6:393b:ff:f59e:4402:63f8:7ff5])
-        by smtp.gmail.com with ESMTPSA id e6-20020a5d5306000000b003110ab70a4fsm2341094wrv.83.2023.06.14.12.09.02
+        by smtp.gmail.com with ESMTPSA id e6-20020a5d5306000000b003110ab70a4fsm2341094wrv.83.2023.06.14.12.09.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jun 2023 12:09:03 -0700 (PDT)
+        Wed, 14 Jun 2023 12:09:01 -0700 (PDT)
 From: Maximilian Weigand <mweigand2017@gmail.com>
-Date: Wed, 14 Jun 2023 21:08:54 +0200
-Subject: [PATCH 3/3] arm64: dts: rockchip: shift boost frequency for
- rk3566-pinenote backlight
+Date: Wed, 14 Jun 2023 21:08:53 +0200
+Subject: [PATCH 2/3] dt-bindings: backlight: lm3630a: add entries to
+ control boost frequency
 MIME-Version: 1.0
-Message-Id: <20230602-lm3630a_boost_frequency-v1-3-076472036d1a@mweigand.net>
+Message-Id: <20230602-lm3630a_boost_frequency-v1-2-076472036d1a@mweigand.net>
 References: <20230602-lm3630a_boost_frequency-v1-0-076472036d1a@mweigand.net>
 In-Reply-To: <20230602-lm3630a_boost_frequency-v1-0-076472036d1a@mweigand.net>
 To: Lee Jones <lee@kernel.org>, 
@@ -81,16 +81,16 @@ Cc: dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
  linux-rockchip@lists.infradead.org, 
  Maximilian Weigand <mweigand@mweigand.net>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1686769738; l=833;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1686769738; l=1362;
  i=mweigand@mweigand.net; s=20230601; h=from:subject:message-id;
- bh=68FCYhe2/70pszTO5OdRKpvXw9/fY4xli3NXD6/hP14=;
- b=S4CP5nzsXth0E8aD8pqpP1sl8cO7kQrQEa7HRD5BrzLuryOjSI3/PCNUZyOKG9OtVCheLd/e+
- i6pmW/zckRjBf6ve1+/wKCo4UP/YGxbpdycIp3O6ibe+0ai9w0SVaYb
+ bh=vFi9JmX30p4FXzLB94ZKuKFYw2IqIvaq5iK+mmgK7cc=;
+ b=tZelMqP5s9rTtVj5AIX03Sswiymmj2/HSNVLOJ2ccIO1XsQuYVsGFigH8Y/GaLBYubBTsAXMq
+ 9sYwPTIhVH6DSu/5SpeGl25ralV0tuvaapXJhddWIR3appAYaVkjXHW
 X-Developer-Key: i=mweigand@mweigand.net; a=ed25519;
  pk=Tjuj6PXmCCxzGTRw+9suZuZ41q/etgDHrIbPdkAaTpM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230614_120905_869591_19C3765E 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20230614_120904_521075_D24ECED3 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,27 +109,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Maximilian Weigand <mweigand@mweigand.net>
 
-The PineNote exhibits visible flickering of its backlight for certain
-brightness settings. Alleviate this by enabling a frequency shift from
-500 kHz to 560 kHz for the boost converter of the led driver.
+Add 'ti,boost_use_1mhz' to switch between 500 kHz and 1 MHz boost
+converter switching frequency, and add 'ti,boost_frequency_shift' to
+activate a frequency shift to 560 kHz or 1.12 MHz, respectively.
 
 Signed-off-by: Maximilian Weigand <mweigand@mweigand.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ .../bindings/leds/backlight/lm3630a-backlight.yaml           | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-index 8d61f824c12d..4e4b3bbaa157 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-@@ -453,6 +453,7 @@ led-controller@36 {
- 		pinctrl-names = "default";
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		ti,boost_frequency_shift;
+diff --git a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
+index 3c9b4054ed9a..ef7ea0ad2d25 100644
+--- a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
++++ b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
+@@ -33,6 +33,18 @@ properties:
+     description: GPIO to use to enable/disable the backlight (HWEN pin).
+     maxItems: 1
  
- 		led@0 {
- 			reg = <0>;
++  ti,boost_use_1mhz:
++    description: |
++      If present, change the boost converter switching frequency from the
++      default 500 kHz to 1 MHz. Refer to data sheet for hardware requirements.
++    type: boolean
++
++  ti,boost_frequency_shift:
++    description: |
++      If present, change boost converter switching frequency from 500 kHz to
++      560 kHz or from 1 Mhz to 1.12 Mhz, respectively.
++    type: boolean
++
+ required:
+   - compatible
+   - reg
 
 -- 
 2.39.2
