@@ -4,93 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0028FEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jun 2023 19:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 969F0EB64D8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jun 2023 19:51:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I/xMrh7SaWIFfWYpGwLec1ZE8WjrTqd+ERZ11LxDysA=; b=z4tkxgKABfJBt3
-	8NwvOtnNLi9/9y9RHx41xX4yzBIg9fYs/BF/04BX52DVo1hl/TiPbxP+Rgui4pKC4b14VNNMJCIRG
-	ho68G9qqVcFs5xlvDLR5q+MZvIp8DZMEGzQJGHnwQubHQlFdazwCjuUjgHG/Uj4JJRW8xXKKYeNVn
-	3zQrEwAyaZC3AllYW00iR7M/bm7Yp0NXmKT83CUk+X4KlTkCQ1p5vCQGauBfC0Ej4bAHHoCnE6eqc
-	JLZhTlcpQ+BzonrEdi53O15+gyb04cNiHxie4cl2XfkRoEUUOE0KfGUik7+8sK7DKs99atm+IsySP
-	Pq74N/0tC3DvJkUlArmw==;
+	List-Owner; bh=jIFzGgkiX6xIuEORXNPX9X+99UljOVTauMybswubfRg=; b=xU9w2/aApg2Exr
+	QsnXKb+WgPf99WVWq/qDCaLDaW4Dc+Gf+E0aGsuq37gh03ISiQyHoMhJwidZM/fqnrJcDSDim3OMy
+	P0QH97KZBBHWaOPWVeKgr/Tq4NC56AMk1xQB9FMSEYdjeeV063VAawXE2nygRWJt6M2IHeXq3xZBl
+	jPT0zkc2aDT+ONpOfqY9M9tdFywnc7kmXAyH6E9i3fGp4g1jtVnNWyrV1LApUzZdvRYJcoVeMeOmZ
+	1/YYQm01+VmSPJI6q8mH+e6HAm55u08movmbAlEkq2B73aR3W7ZWHVsL9n+i8xiqTQYglYn4TSTl5
+	HTQkAKrncHOKDS9+21RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9Vrn-00CVYl-2y;
-	Wed, 14 Jun 2023 19:09:15 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1q9WWm-00Cae7-0D;
+	Wed, 14 Jun 2023 19:51:36 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9Vrc-00CVTw-1Z;
-	Wed, 14 Jun 2023 19:09:05 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f8cdb12719so9347555e9.1;
-        Wed, 14 Jun 2023 12:09:03 -0700 (PDT)
+	id 1q9WWj-00CadX-2h;
+	Wed, 14 Jun 2023 19:51:35 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-543d32eed7cso3165411a12.2;
+        Wed, 14 Jun 2023 12:51:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686769742; x=1689361742;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JT6Z31XAHARj6r8X3TIPRAVf58b/OWvZZzUE5BznjHg=;
-        b=gTzZep0N8oZ10jqQuBazaO0RxgQ4fGM9RR2h9Phld70KcT2mFR2cnLbdgMqScg8sBL
-         3jMYkb8566phWczTsYRfnzfNxUT2R6VjXkjin4M4pLmU0AVNRQRM/vtTmvQa8cR3B1vY
-         3qegnkVWljI7Ltunbik/Ch/48zAdVkDn8AWiYWbMH836isLN44BOgxbHVdiZAQ6SkqAu
-         bCIRyIKEn/K/n8l89Myt5fgbn5I9b8NkNczJZ1D2q5ZZzAf82ZbKmfnApqSQpFv0o/Nk
-         eDrdy/kUVixCC20dwLJeKRqsp35Hch2aeSMOHro9Kou/5UtdS7TSkhf4zqfNVOolH/Ha
-         3ZoA==
+        d=gmail.com; s=20221208; t=1686772293; x=1689364293;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Md9lJKmlQJvh1OZaUzX4DgJIrqm76TL4au4CTghcG/E=;
+        b=V9thkchiKXb6KvcRpmH/5tE9tuUGZmrVmTfS7pyVleoqsTeSmhRR9IvR8QY1biyoPp
+         U6YrtENufunf28NM775x4KZRl6ucdZDoAnzir4SoqIPQ5Nmo9EBxgxoeAJ+1R/NK0v+a
+         vOwGkkeHoPP6liCkXMt23SYxJTvokHgy0wrZjYChsit6Q019r0jGZl/BCgg7vVgcP6lQ
+         JqqyFDqfGs0ITwi5atzwRNShjy4YoybKD/k3w//ENXiFJENvXT+oBUq5QrX497nejLyD
+         QksrO3itaCMlV6msn2LA6oCa7xLMYc8Rxx0gkyR+OV0SJIBO2shoPD4wcAgva43SLzjs
+         bYSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686769742; x=1689361742;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1686772293; x=1689364293;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JT6Z31XAHARj6r8X3TIPRAVf58b/OWvZZzUE5BznjHg=;
-        b=hxcVfWBC02aHVPUeqFy+FMp6jgS/QvzrYSF/pCEE4oU5Y2ppLmBVotBLXz9CJr56wn
-         gMoeUilStGImvdHgmrn2l1W35paM//W5tNKh7UXBkZgAR/SVmWuQuRXR+/iAlNiAMJHR
-         jiu/dLZ58JvruvMoWgNe2JB4aAsNJsqX5bgGk3DYhEeqZLiLbCbS6YWfoc30qWQwVxT7
-         w0jV4ySw8U4IhVMLGL0lEf+m1BRmKDOnCwBiCJURYFXbc2ThqhVMMrPePZNSLn4l1nsz
-         ALJZyG7ucA5AymJ+GMOWTZEN1MV0qck6bljcFiED9OmFi0n0SWMsQsDjbgbEWqVi4u+7
-         YN+Q==
-X-Gm-Message-State: AC+VfDz9mE72dzpBOTDqeC+D7iEGaKNRULbKelnyXMtziwRuyAG/PiIy
-	lDg08MdcCRhvWZeBUh1Sm1w=
-X-Google-Smtp-Source: ACHHUZ4FHa3Ekp7twbhYSZ1B+qSHxIRwzxrV2Oa4FpAIjwYwusJWuhQOVC7BOmRWCf2/QwABBhnpCw==
-X-Received: by 2002:a05:600c:218:b0:3f7:f584:5793 with SMTP id 24-20020a05600c021800b003f7f5845793mr10767493wmi.1.1686769742314;
-        Wed, 14 Jun 2023 12:09:02 -0700 (PDT)
-Received: from [127.0.1.1] (2001-4dd6-393b-ff-f59e-4402-63f8-7ff5.ipv6dyn.netcologne.de. [2001:4dd6:393b:ff:f59e:4402:63f8:7ff5])
-        by smtp.gmail.com with ESMTPSA id e6-20020a5d5306000000b003110ab70a4fsm2341094wrv.83.2023.06.14.12.09.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jun 2023 12:09:01 -0700 (PDT)
-From: Maximilian Weigand <mweigand2017@gmail.com>
-Date: Wed, 14 Jun 2023 21:08:53 +0200
-Subject: [PATCH 2/3] dt-bindings: backlight: lm3630a: add entries to
- control boost frequency
+        bh=Md9lJKmlQJvh1OZaUzX4DgJIrqm76TL4au4CTghcG/E=;
+        b=D/XttmTDWXAc45dRRhK+5bxcfuYAlUb7feX797loLTfsUdk5im/ni+j/cizQTdPspe
+         wwrdp/bTIV5H+8BOlOsJUTOVJIx40KUvDGlIjQuONg6fs5JxH9aFkSUYqUG7MwanHMrr
+         K0ug9DiTalQBcwoOizKXbpKgtEQepCec0SM72XeeZN5LIRJg9fGswfgvELpTrsSaLRwP
+         narOC1Jy2YSpnX1zhylhNvdNll+OG3p6rLWDxpud6DeoD19GSHEzxSuco9A64QQbBbGR
+         o/GHkCxc8JyWc1uMitbhkCjyFvSfjSvgHboWLeMo6m4v2i9uk7ucsWg9mWMWuLbhMDow
+         A0og==
+X-Gm-Message-State: AC+VfDwfE1rNo3kE0lHwlVDQQsKOdurMfy7gy8NBvdurxBndJmbTI1sJ
+	KlugnAFb+pCKbehXpxv0jFOWMPmc/Yryxl3SNY4=
+X-Google-Smtp-Source: ACHHUZ4VBmluG6ODSEiZ+YZ6cKjQzEkNwgG2Jx/k+1Wq+rcowseSsrI8mlOimnJNxswGpbk4W/FFajCTW8uIUS7z47c=
+X-Received: by 2002:a17:90b:4b8f:b0:256:2fd4:e238 with SMTP id
+ lr15-20020a17090b4b8f00b002562fd4e238mr2401011pjb.38.1686772292745; Wed, 14
+ Jun 2023 12:51:32 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20230602-lm3630a_boost_frequency-v1-2-076472036d1a@mweigand.net>
-References: <20230602-lm3630a_boost_frequency-v1-0-076472036d1a@mweigand.net>
-In-Reply-To: <20230602-lm3630a_boost_frequency-v1-0-076472036d1a@mweigand.net>
-To: Lee Jones <lee@kernel.org>, 
- Daniel Thompson <daniel.thompson@linaro.org>, 
- Jingoo Han <jingoohan1@gmail.com>, Helge Deller <deller@gmx.de>, 
- Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Maximilian Weigand <mweigand@mweigand.net>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1686769738; l=1362;
- i=mweigand@mweigand.net; s=20230601; h=from:subject:message-id;
- bh=vFi9JmX30p4FXzLB94ZKuKFYw2IqIvaq5iK+mmgK7cc=;
- b=tZelMqP5s9rTtVj5AIX03Sswiymmj2/HSNVLOJ2ccIO1XsQuYVsGFigH8Y/GaLBYubBTsAXMq
- 9sYwPTIhVH6DSu/5SpeGl25ralV0tuvaapXJhddWIR3appAYaVkjXHW
-X-Developer-Key: i=mweigand@mweigand.net; a=ed25519;
- pk=Tjuj6PXmCCxzGTRw+9suZuZ41q/etgDHrIbPdkAaTpM=
+References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
+ <20230614134034.3p3p75a3jophi2eu@mercury.elektranox.org> <20230614152721.eep5ip726ump2kpe@mercury.elektranox.org>
+In-Reply-To: <20230614152721.eep5ip726ump2kpe@mercury.elektranox.org>
+From: Vincent Legoll <vincent.legoll@gmail.com>
+Date: Wed, 14 Jun 2023 19:51:21 +0000
+Message-ID: <CAEwRq=qufx6Y6JCD3pzA31y7mfXUxFeMLtwthE_N7rYY7k9+-A@mail.gmail.com>
+Subject: Re: [PATCH v5 00/25] Add perf support to the rockchip-dfi driver
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de, 
+	Michael Riesch <michael.riesch@wolfvision.net>, Robin Murphy <robin.murphy@arm.com>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230614_120904_521075_D24ECED3 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20230614_125133_897268_3352D92A 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,51 +90,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Maximilian Weigand <mweigand@mweigand.net>
-
-Add 'ti,boost_use_1mhz' to switch between 500 kHz and 1 MHz boost
-converter switching frequency, and add 'ti,boost_frequency_shift' to
-activate a frequency shift to 560 kHz or 1.12 MHz, respectively.
-
-Signed-off-by: Maximilian Weigand <mweigand@mweigand.net>
----
- .../bindings/leds/backlight/lm3630a-backlight.yaml           | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-index 3c9b4054ed9a..ef7ea0ad2d25 100644
---- a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-+++ b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-@@ -33,6 +33,18 @@ properties:
-     description: GPIO to use to enable/disable the backlight (HWEN pin).
-     maxItems: 1
- 
-+  ti,boost_use_1mhz:
-+    description: |
-+      If present, change the boost converter switching frequency from the
-+      default 500 kHz to 1 MHz. Refer to data sheet for hardware requirements.
-+    type: boolean
-+
-+  ti,boost_frequency_shift:
-+    description: |
-+      If present, change boost converter switching frequency from 500 kHz to
-+      560 kHz or from 1 Mhz to 1.12 Mhz, respectively.
-+    type: boolean
-+
- required:
-   - compatible
-   - reg
-
--- 
-2.39.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiBXZWQsIEp1biAxNCwgMjAyMyBhdCAzOjI34oCvUE0gU2ViYXN0aWFuIFJlaWNoZWwK
+PHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IE9uIFdlZCwgSnVuIDE0
+LCAyMDIzIGF0IDAzOjQwOjM0UE0gKzAyMDAsIFNlYmFzdGlhbiBSZWljaGVsIHdyb3RlOgo+ID4g
+SSB0ZXN0ZWQgdGhlIHNlcmllcyBvbiBSSzM1ODggRVZCMS4gVGhlIHJlYWQvd3JpdGUgYnl0cyBs
+b29rcwo+ID4gc2Vuc2libGUuIFNvbWV0aW1lcyBjeWNsZXMgcmVhZHMgdW5yZWFsaXN0aWMgdmFs
+dWVzLCB0aG91Z2g6Cj4gPgo+ID4gMTg0NDY3NDQwNzA0NzUxMTA0MDAgICAgICByb2NrY2hpcF9k
+ZHIvY3ljbGVzLwo+Cj4gSSBoYXZlIHNlZW4gdGhpcyBnb2luZyBvZmYgYSBmZXcgdGltZXMgd2l0
+aCBhbmQgd2l0aG91dCBtZW1vcnkKPiBwcmVzc3VyZS4gSWYgaXQncyB3YXkgb2ZmLCBpdCBhbHdh
+eXMgc2VlbXMgdG8gZm9sbG93IHRoZSBzYW1lCj4gcGF0dGVybjogVGhlIHVwcGVyIDMyIGJpdHMg
+YXJlIDB4ZmZmZmZmZmYgaW5zdGVhZCBvZiAweDAwMDAwMDAwCj4gd2l0aCB0aGUgbG93ZXIgMzIg
+Yml0cyBjb250YWluaW5nIHNlbnNpYmxlIGRhdGEuCgpIb3cgb2Z0ZW4gaXMgdGhhdCBoYXBwZW5p
+bmcgPwoKSSBoYXZlIGJlZW4gcnVubmluZyB0aGlzIGluIGEgbG9vcCB3aXRoIHZhcnlpbmcgc2xl
+ZXAgZHVyYXRpb24gZm9yCnRoZSBsYXN0IGZldyBob3VycyB3aXRob3V0IGhpdHRpbmcgaXQsIHdp
+dGggYW5kIHdpdGhvdXQgbWVtdGVzdGVyLgoKUkVQRUFUUz0xMDAwCk1BWF9EVVJBVElPTj0xMDAK
+Ck9VVD0iL3RtcC9wZXJmLWRmaS1yazM1ODgtJHtSRVBFQVRTfXgke01BWF9EVVJBVElPTn1zLnR4
+dCIKZWNobyAtbiA+ICRPVVQKCmZvciBpIGluICQoc2VxICRSRVBFQVRTKSA7IGRvCiAgRFVSQVRJ
+T049JChzaHVmIC1pICIwLSR7TUFYX0RVUkFUSU9OfSIgLW4gMSkKICBlY2hvIC1uICIke0RVUkFU
+SU9OfSA6ICIgPj4gJE9VVAogIHBlcmYgc3RhdCAtYSAtZSByb2NrY2hpcF9kZHIvY3ljbGVzLyBz
+bGVlcCAkRFVSQVRJT04gMj4mMSB8IGF3awonL3JvY2tjaGlwX2Rkci8ge3ByaW50ZigiJVhcbiIs
+IGludCgkMSkpfScgPj4gJE9VVApkb25lCgpCVFcsIGl0J3Mgb24gYSBtdXNsLWxpYmMgYXJtNjQg
+dm9pZCBsaW51eCB1c2Vyc3BhY2UuCgotLSAKVmluY2VudCBMZWdvbGwKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
