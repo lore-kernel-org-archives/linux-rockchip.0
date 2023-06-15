@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FA3EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 20:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3154EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 20:11:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,62 +13,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=XW70Q4qtJVztqK03oAFmKLwN0bB3alLnPGBdN6ZTntI=; b=yz5ONBlLn/DB80FTI3LXHqnYAI
-	kR91FYgfJURFBygugo6CiGZYS+gVzeX/PbQDRod6mgkFrpCyq81GjSDarsUyP3rGeZALAuvimkA3a
-	dyoGg11pivnlHFYKnF7pJq7pd4GZ4v59AwPOBs1LMFS73mLZSgUHFiBWDyKmPoZJ8Sh+zn0Fivzos
-	R+WiEmbXzK6T3OsKXRfbYg/ewT6LvsB734HhWbw8Mj8/zBxz9Xd4NhreJVmgbzRrktPfLBCexwVIk
-	wvFWMZTGCZ+rHWWwBx1LUjnGLpbAYq64uH1bzH8Vd7VW+qVndPsnxt3fEud8XzuMaDN7gLzL8vk6i
-	Ca4lVSUg==;
+	bh=ByNFzx2DnLs+L9PgBPHfelnguKKOMEmQ1ASr3+xsS7I=; b=R9d0/sXTU2ckfw0kRZrg/Rkmex
+	J0CroNTBAEXVj1v5LvOY7P+vcTnjw1yGY05qICf27Rpr1q9jE8KpiyPzf58Gp5lbZYy8EAadTxb0n
+	RclIfCeHFm3CBP1K/gDv3zHgGV/OufffZqQ1OoUwgH3xIiaqtylpgGGfIznqH0StX9fBxXwUv11ba
+	zSoycWB3v/HGteclw/6/J2aebJ9c0kRXDEn9eFv4ZXJ8fRDCN+wvf7t6NxTBV2I1fhMRRM0T7AGc4
+	hOshfxJ2Efknp0rRf3atlvq6G6vlaT/fpt7ObYHj/tx3oUBSFHpuv7UVX4VH3ERYZ/BlHJUEXpyvC
+	hUk3+NIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9tJ2-00FzUE-2g;
-	Thu, 15 Jun 2023 20:10:56 +0000
+	id 1q9tJE-00FzZs-1j;
+	Thu, 15 Jun 2023 20:11:08 +0000
 Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9tIw-00FzP2-1r
+	id 1q9tIx-00FzPI-0m
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Jun 2023 20:10:54 +0000
+	Thu, 15 Jun 2023 20:10:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
 	h=from:subject:in-reply-to:references:mime-version:to:cc:
 	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=Jo6WrxNEBvFGf7AFwmeZPUW/JDvN4uXBntOmSb9t0Xw=;
-	b=UJJk/i2kqv2+FgNaiQ7osSjPGFyvg+xx90znS7A6WMqpEnFj0gnvj33JNOjwqfmjCZoI
-	tSLxmZqwcsQKATSs6fM4Gps9ufnOKMUjlhXvEDSoWroLpX/rE1PWMnXqRlUb8XbXb0MgLF
-	ibIF8AKNo2ZVEmVCK9SaYEib/6zYEyPutujJQ6JxhTZgZU4f4DVgstiAX6+v4ke3IAVvYX
-	jkbxngwRNbkcrAxNCy26C4VTpKJKETu3TDec6VksvJbNLTZ8k+IaeqCMkusynPGdCvjFts
-	DyBy4hJZT+mhIHF/WSKbH+OfwXp+4NDboY5ZJ8WFOTs+XDyMYuDiBeHPL8Y5Hzwg==
-Received: by filterdrecv-77869f68cc-lcgp6 with SMTP id filterdrecv-77869f68cc-lcgp6-1-648B7047-29
-        2023-06-15 20:10:47.655923269 +0000 UTC m=+3098089.849329708
+	s=s1; bh=InoMtFPn0qTi9rWJ9dL8ZNuMI6SUv/MQcYAVE6/OKuo=;
+	b=HiCP8luTDml4dCPktTvI4G2UlOh2JqkOCf/aGXztdfKU9pDKYRW1eYvbwGA77RClrwUq
+	ALcRzlSdAjaPwSy12HtHnldT3u/ghdJxx8AVijFBmON6CitofS5IIg7T6xmDyCL9r8mkYu
+	Pn31l4ZYbpCyYAuAjOtSgiIJN/+HHf9XwCoLUOJJrkMwkO3KKAIKmdl2Qq0X7c8PnkPNEX
+	EeSiTxErTQHQW384TL3a/ErkaCV3oCRTFsTRw9DEepQHGT6MwvTCaRveHm1JBEjtURvBfm
+	hKsrYjTBfjHGnjzSrfnZVxqNmPSVEmMiTMVwrX81/HPVVZMCn0HNbhG71JEU7dTw==
+Received: by filterdrecv-84b96456cb-bvsrh with SMTP id filterdrecv-84b96456cb-bvsrh-1-648B7046-1F
+        2023-06-15 20:10:46.550315811 +0000 UTC m=+3097935.073942733
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-5 (SG)
 	with ESMTP
-	id HeBgvyqzQEmrDPru8i_iZw
-	Thu, 15 Jun 2023 20:10:47.460 +0000 (UTC)
+	id iwNkUP0QQjuksV59p23YJg
+	Thu, 15 Jun 2023 20:10:46.259 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 2/3] iommu: rockchip: Remove unused variant ops
-Date: Thu, 15 Jun 2023 20:10:47 +0000 (UTC)
-Message-Id: <20230615201042.2291867-3-jonas@kwiboo.se>
+Subject: [PATCH v2 1/3] iommu: rockchip: Fix discovery table address encoding
+Date: Thu, 15 Jun 2023 20:10:46 +0000 (UTC)
+Message-Id: <20230615201042.2291867-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230615201042.2291867-1-jonas@kwiboo.se>
 References: <20230615201042.2291867-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hw3PhMXq4dBde3yCz?=
- =?us-ascii?Q?R1jfjYCf+7fd8HHpQWrb68EQHPtq89X0VUIvV9y?=
- =?us-ascii?Q?qtrQo51l3wTBwoWjkkPMRshT5iwndBQjOIrzLqq?=
- =?us-ascii?Q?7t1YUCyD3w5EmqZbmVRStUO5pjxD8Lf3HypvmAf?=
- =?us-ascii?Q?IPgIoOFXq1CDOf+J7k0m2=2F1zxbR01lUCOcSVOdo?=
- =?us-ascii?Q?KGWeQ=2F1S1zl4uornQejTw=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h2WrMIoUX2Eyj8rSF?=
+ =?us-ascii?Q?yVoSoz7tVbeJqQR7WFNCHUyheNyk=2FbPq147L39v?=
+ =?us-ascii?Q?x2smspVWTq7LOi9K7FyO33CWUW1L7UhWsoV5hWc?=
+ =?us-ascii?Q?l9n+0L4fjwoyz2Q=2FbJRXyoXrTFOg60cS3lL1cL6?=
+ =?us-ascii?Q?9UosjCpoVKDSGjWDmyFZEayscrMlyevGCSJDCza?=
+ =?us-ascii?Q?SJU6i5NwYEvxvQc2SpviA=3D=3D?=
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+	Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>, Joerg Roedel <jroedel@suse.de>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230615_131051_348831_D096EE24 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230615_131051_438521_12A07649 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,82 +85,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The dte_addr_phys and dma_addr_dte ops is now unused by the driver,
-let's remove them.
+The address to the discovery table is currently encoded using the
+following bit layout.
 
+ 31:12 - Address bit 31:0
+ 11: 4 - Address bit 39:32
+
+This is also the bit layout used by the vendor kernel.
+
+However, testing has shown that addresses to the discovery/page tables
+and memory pages are all encoded using the same bit layout.
+
+IOMMU v1:
+ 31:12 - Address bit 31:0
+
+IOMMU v2:
+ 31:12 - Address bit 31:0
+ 11: 8 - Address bit 35:32
+  7: 4 - Address bit 39:36
+
+Change to use the mk_dtentries ops to encode the discovery table address
+correctly. Also update the bit layout comment for the page address.
+
+These changes render the dte_addr_phys and dma_addr_dte ops unused
+and will be removed in a following patch.
+
+Fixes: 227014b33f62 ("iommu: rockchip: Add internal ops to handle variants")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v2:
-- no change
+- replace currently with correctly in commit message
 
- drivers/iommu/rockchip-iommu.c | 33 ---------------------------------
- 1 file changed, 33 deletions(-)
+ drivers/iommu/rockchip-iommu.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index d46319f77e5c..62be9bf42390 100644
+index 4054030c3237..d46319f77e5c 100644
 --- a/drivers/iommu/rockchip-iommu.c
 +++ b/drivers/iommu/rockchip-iommu.c
-@@ -98,8 +98,6 @@ struct rk_iommu_ops {
- 	phys_addr_t (*pt_address)(u32 dte);
- 	u32 (*mk_dtentries)(dma_addr_t pt_dma);
- 	u32 (*mk_ptentries)(phys_addr_t page, int prot);
--	phys_addr_t (*dte_addr_phys)(u32 addr);
--	u32 (*dma_addr_dte)(dma_addr_t dt_dma);
- 	u64 dma_bit_mask;
- };
+@@ -278,8 +278,8 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
+ /*
+  * In v2:
+  * 31:12 - Page address bit 31:0
+- *  11:9 - Page address bit 34:32
+- *   8:4 - Page address bit 39:35
++ * 11: 8 - Page address bit 35:32
++ *  7: 4 - Page address bit 39:36
+  *     3 - Security
+  *     2 - Writable
+  *     1 - Readable
+@@ -577,7 +577,7 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
+ 	page_offset = rk_iova_page_offset(iova);
  
-@@ -531,33 +529,6 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
- 	return 0;
- }
+ 	mmu_dte_addr = rk_iommu_read(base, RK_MMU_DTE_ADDR);
+-	mmu_dte_addr_phys = rk_ops->dte_addr_phys(mmu_dte_addr);
++	mmu_dte_addr_phys = rk_ops->pt_address(mmu_dte_addr);
  
--static inline phys_addr_t rk_dte_addr_phys(u32 addr)
--{
--	return (phys_addr_t)addr;
--}
--
--static inline u32 rk_dma_addr_dte(dma_addr_t dt_dma)
--{
--	return dt_dma;
--}
--
--#define DT_HI_MASK GENMASK_ULL(39, 32)
--#define DTE_BASE_HI_MASK GENMASK(11, 4)
--#define DT_SHIFT   28
--
--static inline phys_addr_t rk_dte_addr_phys_v2(u32 addr)
--{
--	u64 addr64 = addr;
--	return (phys_addr_t)(addr64 & RK_DTE_PT_ADDRESS_MASK) |
--	       ((addr64 & DTE_BASE_HI_MASK) << DT_SHIFT);
--}
--
--static inline u32 rk_dma_addr_dte_v2(dma_addr_t dt_dma)
--{
--	return (dt_dma & RK_DTE_PT_ADDRESS_MASK) |
--	       ((dt_dma & DT_HI_MASK) >> DT_SHIFT);
--}
--
- static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
- {
- 	void __iomem *base = iommu->bases[index];
-@@ -1405,8 +1376,6 @@ static struct rk_iommu_ops iommu_data_ops_v1 = {
- 	.pt_address = &rk_dte_pt_address,
- 	.mk_dtentries = &rk_mk_dte,
- 	.mk_ptentries = &rk_mk_pte,
--	.dte_addr_phys = &rk_dte_addr_phys,
--	.dma_addr_dte = &rk_dma_addr_dte,
- 	.dma_bit_mask = DMA_BIT_MASK(32),
- };
+ 	dte_addr_phys = mmu_dte_addr_phys + (4 * dte_index);
+ 	dte_addr = phys_to_virt(dte_addr_phys);
+@@ -967,7 +967,7 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
  
-@@ -1414,8 +1383,6 @@ static struct rk_iommu_ops iommu_data_ops_v2 = {
- 	.pt_address = &rk_dte_pt_address_v2,
- 	.mk_dtentries = &rk_mk_dte_v2,
- 	.mk_ptentries = &rk_mk_pte_v2,
--	.dte_addr_phys = &rk_dte_addr_phys_v2,
--	.dma_addr_dte = &rk_dma_addr_dte_v2,
- 	.dma_bit_mask = DMA_BIT_MASK(40),
- };
- 
+ 	for (i = 0; i < iommu->num_mmu; i++) {
+ 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+-			       rk_ops->dma_addr_dte(rk_domain->dt_dma));
++			       rk_ops->mk_dtentries(rk_domain->dt_dma));
+ 		rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
+ 		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
+ 	}
 -- 
 2.40.1
 
