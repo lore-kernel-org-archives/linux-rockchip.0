@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E337EEB64D8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jun 2023 23:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB44EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 06:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yP1X0aLrvCux+vNpj629aGSmNKjEXj6kEJsABsK5C0s=; b=A8Uzzz4bkJlE5f
-	y1QN4e35kyUod5PHQoQmeSTw7bc6M57iCjBJqQbOLcDL4Jtv4tXk7fy63nvboKy3G6bPYg03lT+RB
-	9SULhWKjs+qREIvBRYv1MEnv7+V80LYHbna/yso4+Iv9PJjzmtpD/CV1wCUiBRJO+mmBn1jx2hFdI
-	h+0ICL1I+d1h+mfQIpWWdLlLQ8vnxg3H9tengNNQoYSpesSWMtWSxGymJxn2m/rmShNmbzIAYiBaA
-	YttXlY9x1LGLQhPd08Cu3MMRo4H73PQtz3fYtl0ljVoRBsjD8/yft0h2/eLu0I8Bthotk7e/i3CTY
-	wUicV1hsD9jGfXXXXDnA==;
+	List-Owner; bh=xy2NhnBgbpwozNjudiK2V99KRNdIK6x/NWpk1+J2uKE=; b=L9yTEDPeVyIBxC
+	SmDVlxfiZTk81A/4pl/lMvz8ZCgiPN4BopU6Ja2uVWx2ghs9rIwYXXvYtFC21tf1v/jD9BXiflrbi
+	fNaxpapu75GDu6b9r3se8VSMHc6aD/JC6+c9iR4lkgB5XmQbNcEKVTHp+KM8oZv9JnrzWxbfEf6Ql
+	y1OZjCuZOJGoOE+7+bKyLgG/Ja7o6TCNm2xEweGGKvoJZMdzy4O2OvTGxkpxeNAVsJAeYw8fN57ku
+	FFPjobGZk8kRuT5DiLhHgGswCxe+SXvIXOjt/n7lamnde3TG36BRC0I357KqHVy+Ctkwi6dGow1Zc
+	3i3wQAxTq2mzf3bSgGwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9ZiP-00Cyih-2F;
-	Wed, 14 Jun 2023 23:15:49 +0000
-Received: from mail-io1-f50.google.com ([209.85.166.50])
+	id 1q9gug-00DvTg-1j;
+	Thu, 15 Jun 2023 06:56:58 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9ZiK-00Cyg9-0l;
-	Wed, 14 Jun 2023 23:15:47 +0000
-Received: by mail-io1-f50.google.com with SMTP id ca18e2360f4ac-777b0cae9ecso394765039f.2;
-        Wed, 14 Jun 2023 16:15:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686784543; x=1689376543;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=W6h1SH+KPupH0y0aqvJqt12V2TdAsnl1nbLJ9iHmf7o=;
-        b=ST520iH/cmbREipl6609vq2cZ3HmoOgSKSogpbZAPdlZcNOhenGNdMc+n7Kbm8UT5n
-         NUtv/MJ1w3kpWvUWiS5NanuF0vf6koMFqF+H8ahMCmLvfhjIqPx3RRZcfOUqS4P1+hqj
-         NlS4ytguWDt2JD8cf1mTuu61SwGigYMjgvZU2TH3jc1qtvz1eNgNwJ155ppgvNND1fOl
-         qGsY1M07OiP2A+8wLXEFqA0nxLcCL8/HVZheFCOOGJyiBwqu4TOP73FZCI8nBdEquN8F
-         8AIXfHtGu54Ihrz/ubZBXjd42s2CThQUxAzu0Bud7lJ1IB8cXco5VhWNbuqD+tamed1t
-         X45w==
-X-Gm-Message-State: AC+VfDyMpLr+YTjFv8Lze31m+9WDY7b5X1Om3e1WtvWEiWgO7oT65HE7
-	c7wP/X0X4U7H03AV5wOHTw==
-X-Google-Smtp-Source: ACHHUZ7wQeyYnIwDBLnmBdri7Vyhsn6rPMIrim2mugZblLdL62WV8QD9wkuKJT5uzWp1PU2osL8HPA==
-X-Received: by 2002:a05:6602:196:b0:777:b7f9:18f1 with SMTP id m22-20020a056602019600b00777b7f918f1mr16682656ioo.17.1686784542761;
-        Wed, 14 Jun 2023 16:15:42 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id f13-20020a5ec60d000000b007749b74ab18sm5680520iok.15.2023.06.14.16.15.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jun 2023 16:15:41 -0700 (PDT)
-Received: (nullmailer pid 3103614 invoked by uid 1000);
-	Wed, 14 Jun 2023 23:15:39 -0000
-Date: Wed, 14 Jun 2023 17:15:38 -0600
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alexander Stein <alexander.stein@ew.tq-group.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, =?iso-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/3] dt-bindings: extcon-usb-gpio: convert to DT schema
- format
-Message-ID: <20230614231538.GA3075226-robh@kernel.org>
-References: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
- <5217a54e-353b-bd48-68fa-d2104accfeb9@linaro.org>
+	id 1q9guc-00DvSS-2v
+	for linux-rockchip@lists.infradead.org;
+	Thu, 15 Jun 2023 06:56:57 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1q9guZ-0008L7-GC; Thu, 15 Jun 2023 08:56:51 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1q9guW-0005ja-Or; Thu, 15 Jun 2023 08:56:48 +0200
+Date: Thu, 15 Jun 2023 08:56:48 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
+Subject: Re: [PATCH v5 00/25] Add perf support to the rockchip-dfi driver
+Message-ID: <20230615065648.GD18491@pengutronix.de>
+References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
+ <20230614134034.3p3p75a3jophi2eu@mercury.elektranox.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <5217a54e-353b-bd48-68fa-d2104accfeb9@linaro.org>
+In-Reply-To: <20230614134034.3p3p75a3jophi2eu@mercury.elektranox.org>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230614_161544_273609_E5A2B4FC 
-X-CRM114-Status: GOOD (  26.17  )
+X-CRM114-CacheID: sfid-20230614_235654_968968_A2AB714B 
+X-CRM114-Status: GOOD (  32.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,126 +86,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 12, 2023 at 10:29:16AM +0200, Krzysztof Kozlowski wrote:
-> On 08/06/2023 10:11, Alexander Stein wrote:
-> > Convert the binding to DT schema format. Change the GPIO properties to new
-> > naming convention using -gpios as well.
+Hi Sebastian,
+
+On Wed, Jun 14, 2023 at 03:40:34PM +0200, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Wed, May 24, 2023 at 10:31:28AM +0200, Sascha Hauer wrote:
+> > This is v5 of the series adding perf support to the rockchip DFI driver.
 > > 
-> > Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> > ---
-> >  .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
-> >  .../bindings/extcon/extcon-usb-gpio.yaml      | 52 +++++++++++++++++++
-> >  2 files changed, 52 insertions(+), 21 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-> >  create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
+> > A lot has changed in the perf driver since v4. First of all the review
+> > feedback from Robin and Jonathan has been integrated. The perf driver
+> > now not only supports monitoring the total DDR utilization, but also the
+> > individual channels. I also reworked the way the raw 32bit counter
+> > values are summed up to 64bit perf values, so hopefully the code is
+> > easier to follow now.
 > > 
-> > diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-> > deleted file mode 100644
-> > index dfc14f71e81fb..0000000000000
-> > --- a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-> > +++ /dev/null
-> > @@ -1,21 +0,0 @@
-> > -USB GPIO Extcon device
-> > -
-> > -This is a virtual device used to generate USB cable states from the USB ID pin
-> > -connected to a GPIO pin.
-> > -
-> > -Required properties:
-> > -- compatible: Should be "linux,extcon-usb-gpio"
-> > -
-> > -Either one of id-gpio or vbus-gpio must be present. Both can be present as well.
-> > -- id-gpio: gpio for USB ID pin. See gpio binding.
-> > -- vbus-gpio: gpio for USB VBUS pin.
-> > -
-> > -Example: Examples of extcon-usb-gpio node in dra7-evm.dts as listed below:
-> > -	extcon_usb1 {
-> > -		compatible = "linux,extcon-usb-gpio";
-> > -		id-gpio = <&gpio6 1 GPIO_ACTIVE_HIGH>;
-> > -	}
-> > -
-> > -	&omap_dwc3_1 {
-> > -		extcon = <&extcon_usb1>;
-> > -	};
-> > diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-> > new file mode 100644
-> > index 0000000000000..3a71d848dc7a8
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-> > @@ -0,0 +1,52 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/extcon/extcon-usb-gpio.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: USB GPIO Extcon device
-> > +
-> > +maintainers:
-> > +  - Alexander Stein <alexander.stein@ew.tq-group.com>
-> > +
-> > +description: |
+> > lockdep found out that that locking in the perf driver was broken, so I
+> > reworked that as well. None of the perf hooks allows locking with
+> > mutexes or spinlocks, so in perf it's not possible to enable the DFI
+> > controller when needed. Instead I now unconditionally enable the DFI
+> > controller during probe when perf is enabled.
+> > 
+> > Furthermore the hrtimer I use for reading out the hardware counter
+> > values before they overflow race with perf. Now a seqlock is used to
+> > prevent that.
+> > 
+> > The RK3588 device tree changes for the DFI were not part of v4. As
+> > Vincent Legoll showed interest in testing this series the necessary
+> > device tree changes are now part of this series.
+> 
+> I tested the series on RK3588 EVB1. The read/write byts looks
+> sensible. Sometimes cycles reads unrealistic values, though:
+> 
+>  Performance counter stats for 'system wide':
+> 
+> 18446744070475110400      rockchip_ddr/cycles/
 
-Don't need '|'
+I'll have a look later this day. I remember seeing this, but I thought
+this had been resolved already.
 
-> > +  This is a virtual device used to generate USB cable states from the
-> > +  USB ID pin connected to a GPIO pin.
+Thanks for your feedback so far.
 
-Please add 'deprecated: true' here. New designs should use a USB 
-connector node binding.
+Sascha
 
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: linux,extcon-usb-gpio
-> > +
-> > +  id-gpios:
-> > +    description: An input gpio for USB ID pin.
-> > +    maxItems: 1
-> > +
-> > +  vbus-gpios:
-> > +    description: An input gpio for USB VBus pin, used to detect presence of
-> > +      VBUS 5V.
-> > +    maxItems: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +
-> > +anyOf:
-> 
-> oneOf instead
-
-anyOf is correct. Both can be present.
-
-> 
-> > +  - required:
-> > +      - id-gpios
-> > +  - required:
-> > +      - vbus-gpios
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    extcon_usb1 {
-> 
-> No underscores, generic node names, so just "extcon-usb"
-> 
-> > +      compatible = "linux,extcon-usb-gpio";
-> > +      id-gpios = <&gpio6 1 GPIO_ACTIVE_HIGH>;
-> > +      vbus-gpios = <&gpio6 2 GPIO_ACTIVE_HIGH>;
-> > +    };
-> > +
-> > +    usb-controller {
-> > +      extcon = <&extcon_usb1>;
-> > +    };
-> 
-> Drop controller, no need to add consumers in a provider's binding.
-> 
-> Best regards,
-> Krzysztof
-> 
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
