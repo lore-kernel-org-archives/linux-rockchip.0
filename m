@@ -4,72 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB44EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 06:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D656AEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 09:29:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xy2NhnBgbpwozNjudiK2V99KRNdIK6x/NWpk1+J2uKE=; b=L9yTEDPeVyIBxC
-	SmDVlxfiZTk81A/4pl/lMvz8ZCgiPN4BopU6Ja2uVWx2ghs9rIwYXXvYtFC21tf1v/jD9BXiflrbi
-	fNaxpapu75GDu6b9r3se8VSMHc6aD/JC6+c9iR4lkgB5XmQbNcEKVTHp+KM8oZv9JnrzWxbfEf6Ql
-	y1OZjCuZOJGoOE+7+bKyLgG/Ja7o6TCNm2xEweGGKvoJZMdzy4O2OvTGxkpxeNAVsJAeYw8fN57ku
-	FFPjobGZk8kRuT5DiLhHgGswCxe+SXvIXOjt/n7lamnde3TG36BRC0I357KqHVy+Ctkwi6dGow1Zc
-	3i3wQAxTq2mzf3bSgGwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fGiRy+xT5u9VHCr9af72PaePowhZUijgJhhgj8eGdhc=; b=h5KtPKgib3uvCF
+	PvRIYqoLO2/sE7qm/1av84mGZZByL/U4fLz004KzxI2OponZyV4SkHYnBaGFdHvpwBP1IllaLqftI
+	0ndOxgQC7cXgfdrfWkV5di53hoRai9SbVB3H1v5RLXsNI3JSQqXwRpITQTTESEzej2r4+yEOWOtz6
+	U1R0J6OfaWZ7N8KQbJ26NB36KXnpqjny4sUH92WTrDb2MjwQ5PwIZDo7TdEvgIl33nQgSqcR00WKg
+	4p+NjGbqA/6L6WfnIekgSaMgsRJhXcbtJOkW3BmDkdrlUAaghU1OlbSN6tYNG05c6+/hRkbv8cxQG
+	7FV7gxrd+LtM4N4wE8Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9gug-00DvTg-1j;
-	Thu, 15 Jun 2023 06:56:58 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1q9jHk-00EIW2-0s;
+	Thu, 15 Jun 2023 09:28:56 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9guc-00DvSS-2v
+	id 1q9jHh-00EITZ-1a
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Jun 2023 06:56:57 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1q9guZ-0008L7-GC; Thu, 15 Jun 2023 08:56:51 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1q9guW-0005ja-Or; Thu, 15 Jun 2023 08:56:48 +0200
-Date: Thu, 15 Jun 2023 08:56:48 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
-	kernel@pengutronix.de,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Vincent Legoll <vincent.legoll@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v5 00/25] Add perf support to the rockchip-dfi driver
-Message-ID: <20230615065648.GD18491@pengutronix.de>
-References: <20230524083153.2046084-1-s.hauer@pengutronix.de>
- <20230614134034.3p3p75a3jophi2eu@mercury.elektranox.org>
+	Thu, 15 Jun 2023 09:28:54 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 9A3F8878D0; Thu, 15 Jun 2023 10:26:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1686821226; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=fM/QC9BNWy6NSJO96M07ckrkNz1dAcvIet+eLdFaUm2Li1cBDeXAeO3aOWGs5TY69
+	 vJGYoSrG9nRm5fLf4PLDKx8+CE/8G2DYP08pA9uGuopzncXcwCHD76SN7NxiZJ8iFi
+	 v+6xeFL3YzMUp7Q9jDoO56BiZqMrcc7PLR47pXDD52GX7g6wN2eKPBXb8+b5FoIrVY
+	 Ir8WOC0POLwCzy2De4g47GnmhGBRleu2GodybOPikSb9/li4wbKbxgkCS4H8Hq+HzS
+	 9zzeWJ7dTPn6iVsbzkOTdiLmh5XASGUMoUaP170qtRGLTVqbde051Bye63Orei3rkf
+	 g14HJ2IBFehyA==
+Received: by mail.lokoho.com for <linux-rockchip@lists.infradead.org>; Thu, 15 Jun 2023 09:26:02 GMT
+Message-ID: <20230615094301-0.1.6n.2mdpc.0.0ugflp4ch7@lokoho.com>
+Date: Thu, 15 Jun 2023 09:26:02 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230614134034.3p3p75a3jophi2eu@mercury.elektranox.org>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230614_235654_968968_A2AB714B 
-X-CRM114-Status: GOOD (  32.02  )
+X-CRM114-CacheID: sfid-20230615_022853_667670_0FCE1FE2 
+X-CRM114-Status: UNSURE (   1.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,61 +61,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
-
-On Wed, Jun 14, 2023 at 03:40:34PM +0200, Sebastian Reichel wrote:
-> Hi,
-> 
-> On Wed, May 24, 2023 at 10:31:28AM +0200, Sascha Hauer wrote:
-> > This is v5 of the series adding perf support to the rockchip DFI driver.
-> > 
-> > A lot has changed in the perf driver since v4. First of all the review
-> > feedback from Robin and Jonathan has been integrated. The perf driver
-> > now not only supports monitoring the total DDR utilization, but also the
-> > individual channels. I also reworked the way the raw 32bit counter
-> > values are summed up to 64bit perf values, so hopefully the code is
-> > easier to follow now.
-> > 
-> > lockdep found out that that locking in the perf driver was broken, so I
-> > reworked that as well. None of the perf hooks allows locking with
-> > mutexes or spinlocks, so in perf it's not possible to enable the DFI
-> > controller when needed. Instead I now unconditionally enable the DFI
-> > controller during probe when perf is enabled.
-> > 
-> > Furthermore the hrtimer I use for reading out the hardware counter
-> > values before they overflow race with perf. Now a seqlock is used to
-> > prevent that.
-> > 
-> > The RK3588 device tree changes for the DFI were not part of v4. As
-> > Vincent Legoll showed interest in testing this series the necessary
-> > device tree changes are now part of this series.
-> 
-> I tested the series on RK3588 EVB1. The read/write byts looks
-> sensible. Sometimes cycles reads unrealistic values, though:
-> 
->  Performance counter stats for 'system wide':
-> 
-> 18446744070475110400      rockchip_ddr/cycles/
-
-I'll have a look later this day. I remember seeing this, but I thought
-this had been resolved already.
-
-Thanks for your feedback so far.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKemFwb3puYcWCZW0gc2nEmSB6IFBhxYRzdHdhIG9mZXJ0xIUgaSB6IHBy
+enlqZW1ub8WbY2nEhSBwcnp5em5hasSZLCDFvGUgcHJ6eWNpxIVnYSB1d2FnxJkgaSB6YWNoxJlj
+YSBkbyBkYWxzenljaCByb3ptw7N3LiAKClBvbXnFm2xhxYJlbSwgxbxlIG1vxbxlIG3Ds2fFgmJ5
+bSBtaWXEhyBzd8OzaiB3a8WCYWQgdyBQYcWEc3R3YSByb3p3w7NqIGkgcG9tw7NjIGRvdHJ6ZcSH
+IHogdMSFIG9mZXJ0xIUgZG8gd2nEmWtzemVnbyBncm9uYSBvZGJpb3Jjw7N3LiBQb3p5Y2pvbnVq
+xJkgc3Ryb255IHd3dywgZHppxJlraSBjemVtdSBnZW5lcnVqxIUgxZt3aWV0bnkgcnVjaCB3IHNp
+ZWNpLgoKTW/FvGVteSBwb3Jvem1hd2lhxIcgdyBuYWpibGnFvHN6eW0gY3phc2llPwoKClBvemRy
+YXdpYW0KQWRhbSBDaGFyYWNodXRhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
