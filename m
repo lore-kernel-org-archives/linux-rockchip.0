@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A759EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4673DEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:10:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,63 +13,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=QbvtXBkNGASemakDY0d/Sll+flTS2c+NewIUBj54M20=; b=1blEo4nf5Y1TfJNBe5Ev3nLjnL
-	2JfQFb8lP7NnnqrwwVb7ZKabXHTQDNV9dyyOvVeheSIFlkdkq/EVoETDMrt/i5YIvIC14ojLchfix
-	rSdjq4ckwFdbmCfGN11WkeEaBKSEscjWq3IsYwhs0dPyvDmquCBFU5KrCV0vVt3RrZXW2E3B+txva
-	UB2LWL9KbDB7XPrP71hAl52do8HWwebhvQNtu8KSWqLPX5J+v43H+5Z+8Suq9VyJtZBEsYXYvMczB
-	ASAZS+XAC5tZFNE3a+XOHplTzUV4JSaNi5iICYYXVb36br+29Q4k1cakNorw2VRapTcHx76/ke859
-	+PvtDUQw==;
+	bh=o2YxA4f4efZFi9P6sHNX6fcp7UEjVtA5zHIJyppu0WU=; b=D5MXiv8ynkIsJA8AScVRLrYLEB
+	CQv4RFEopDt2dhTNRTIksdPmQHOgckxgeNm1TpNbMS20lbhQB8iXclnFdvI66shclByp4nO1+US3E
+	t0LSQ0EXf8Pm+akJzPPHKD2iPyXQCHfQSLuOADvcqDc1vSIl7dzyL/WQ0VpOclvRMPUunWTyBnI8X
+	AXKuiKxt3jbIiUG86vYYYWLNmRI7pL10InTjhODHrAfgk37Z2PKqkZZiLiO3Mtr9KQEQgtOv9NrZU
+	4xOakKYe755ahEa/o89R+oAhkpgSqHHZS6allfQrbjP43jsFJu2Z2EIy6zb0s4z0tR8aHfRJ4t6jy
+	uBQr6Agg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUQ-00FXK7-1y;
-	Thu, 15 Jun 2023 17:10:30 +0000
+	id 1q9qUd-00FXVn-2i;
+	Thu, 15 Jun 2023 17:10:43 +0000
 Received: from s.wrqvtzvf.outbound-mail.sendgrid.net ([149.72.126.143])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUG-00FXAO-13
+	id 1q9qUL-00FXFb-17
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Jun 2023 17:10:23 +0000
+	Thu, 15 Jun 2023 17:10:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
 	h=from:subject:in-reply-to:references:mime-version:to:cc:
 	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=8x78MvgAGf0Pwtnasq/3ixUfJIGr5jN/dHSd464Z2hQ=;
-	b=hr5+BqzP9WVpUBezueHehavpwYTSm6bvX5IhVWo8GcAm4aa5g9wBD7lwGxMGJo38T1Yz
-	sunsnIac7aTYxp6fwrNZDeY59a3etr8DvX7WnvDTNa2n+nW0V16vbidl2IcB2af15h0byP
-	TXM470aTOU1vaDlqAITHGI6heDEkZBRadVoyAr6pcMyTNIkqXtXJP199ZIVGEtQ4jw0OPN
-	gCrgxrwFuFNtuKcanya1YkC9zsxr5owDs2tH+LORm8MVKIP6S5vHAnE7X7DaYcm7ENlfjM
-	yzzAtNbi/fTr5xXDGDnQBo2tAeJ4K3Y67XIVBabDjGdSglMBJnmALI2QgNwlXE3g==
-Received: by filterdrecv-77869f68cc-wnrh7 with SMTP id filterdrecv-77869f68cc-wnrh7-1-648B45F8-58
-        2023-06-15 17:10:17.048603932 +0000 UTC m=+3087256.701033920
+	s=s1; bh=vA0siNNoQPy3/vIOzvke7+l30gRVntlLCictzmh3vc4=;
+	b=L64zJrLw3eZ2e4DG7uxcRJqNHwnk8peGVI8BsMgi1WAnJ1taOMGTyATt1iCkBzk7UN0c
+	hZ5oQ1wpZISnM+8QT5ncBm1mNrSQXgbaFAIS3eu2v/Mwn0Jcm15W6HWsgMp5B9ammkbFTO
+	c+0fxmCmpOKDIRVjcSSOVCknAWUiHvxfY7h3Xn65P6ebwBr/znzhFrEcy691wmjAhPoo3H
+	ncIsiLwlO5dVvxbDqHHf0EAswnCDUDNpGwIXhzi1HtH5vEMGG5ZjEZsCVQA+M19+LfBEh5
+	a4h+3HR65KYy+UUBjOyaeKoQgegbGRMQAX2ZXKItKRr3DHBCvCHsvObhZ/KdwGhw==
+Received: by filterdrecv-77869f68cc-wnrh7 with SMTP id filterdrecv-77869f68cc-wnrh7-1-648B4600-23
+        2023-06-15 17:10:24.425570446 +0000 UTC m=+3087264.078000380
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-2 (SG)
 	with ESMTP
-	id dUuyg-PyTA26fNyKJvWdhw
-	Thu, 15 Jun 2023 17:10:16.831 +0000 (UTC)
+	id HQNKjoSjR1mzIcQ_hvUZmQ
+	Thu, 15 Jun 2023 17:10:24.176 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 1/6] phy/rockchip: inno-hdmi: use correct vco_div_5 macro
- on rk3328
-Date: Thu, 15 Jun 2023 17:10:17 +0000 (UTC)
-Message-Id: <20230615171005.2251032-2-jonas@kwiboo.se>
+Subject: [PATCH v4 6/6] phy/rockchip: inno-hdmi: add more supported pre-pll
+ rates
+Date: Thu, 15 Jun 2023 17:10:24 +0000 (UTC)
+Message-Id: <20230615171005.2251032-7-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230615171005.2251032-1-jonas@kwiboo.se>
 References: <20230615171005.2251032-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h+ZrqWCTZdFFi5nlL?=
- =?us-ascii?Q?DuP0hLMHKNwHCEmYMS2H=2FdC7+pE+Pk3R=2FVINVZo?=
- =?us-ascii?Q?OHLxCqDj40h5GYb1sEiLgsa5m5FpcuMRBQi=2FhGD?=
- =?us-ascii?Q?FFIxhpmMWs8AyKcUNm9=2F+3Ffsxop+0hz1eBzscN?=
- =?us-ascii?Q?tLV+U45dCFRwV+cZAfrfkn9NPMGI0exYx2iJ7mG?=
- =?us-ascii?Q?lrio02WVGCem2PQk9uT7Q=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hz8oSuRXGDMMoZV6B?=
+ =?us-ascii?Q?CxIqjmFYxi1bh4TJ6nKozoHh9FOiC8fAFX0eSLn?=
+ =?us-ascii?Q?M+Ufr7bz5a2Un1rlQ03elOU3nDdr+qMR2tb8yWO?=
+ =?us-ascii?Q?GtI1ZdjUG92AmakJOVO8ob9Oml=2FZiKRIBjR+xOx?=
+ =?us-ascii?Q?J4cbdBmjP6SZMOMHdrMvfEjswnDm8R0FLGoBQ0h?=
+ =?us-ascii?Q?dSYl7tqdyKchibNezmFHw=3D=3D?=
 To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Zheng Yang <zhengyang@rock-chips.com>
+	Heiko Stuebner <heiko@sntech.de>
 Cc: Alex Bee <knaerzche@gmail.com>, linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>,
-	Kishon Vijay Abraham I <kishon@ti.com>
+	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230615_101020_469924_46F9CD86 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20230615_101025_560480_99CDDBBE 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,35 +85,244 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-inno_hdmi_phy_rk3328_clk_set_rate() is using the RK3228 macro
-when configuring vco_div_5 on RK3328.
+From: Alex Bee <knaerzche@gmail.com>
 
-Fix this by using correct vco_div_5 macro for RK3328.
+This adds a bunch of new pixel clock- and tmds rates to the pre-pll
+table which are required to get more VESA and some DMT rates working.
 
-Fixes: 53706a116863 ("phy: add Rockchip Innosilicon hdmi phy")
+It has been completely re-calculated to match the min- and max-vco of
+(750 MHz - 3.2 GHz) requirements. If more than one configuration would
+have been possible the lowest fbdiv and refdiv (and therefore lowest
+vco rate) has been preferred.
+
+It's important to note, that RK3228 version of the phy does not support
+fractional dividers. To support the most possible rates for this version
+also in both 8-bit and 10-bit variant, some rates are not exact. The
+maximum deviation of the pixel clock is 0.26, which perfectly fits into
+VESA DMT recommendation of 0.5%.
+
+I tested all possible rates on several screens from different
+manufacturers with both RK3228 and RK3328. Both pre- and post-PLL
+locking are slighlty faster now.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v3:
-- no change
+- replaced patch with more improved rates
 
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 198 +++++++++++++++---
+ 1 file changed, 173 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 1e1563f5fffc..f348e5347d81 100644
+index a1fb39af6493..88ddbfb90eed 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -790,8 +790,8 @@ static int inno_hdmi_phy_rk3328_clk_set_rate(struct clk_hw *hw,
- 			 RK3328_PRE_PLL_POWER_DOWN);
+@@ -292,31 +292,179 @@ struct inno_hdmi_phy_drv_data {
+ };
  
- 	/* Configure pre-pll */
--	inno_update_bits(inno, 0xa0, RK3228_PCLK_VCO_DIV_5_MASK,
--			 RK3228_PCLK_VCO_DIV_5(cfg->vco_div_5_en));
-+	inno_update_bits(inno, 0xa0, RK3328_PCLK_VCO_DIV_5_MASK,
-+			 RK3328_PCLK_VCO_DIV_5(cfg->vco_div_5_en));
- 	inno_write(inno, 0xa1, RK3328_PRE_PLL_PRE_DIV(cfg->prediv));
+ static const struct pre_pll_config pre_pll_cfg_table[] = {
+-	{ 27000000,  27000000, 1,  90, 3, 2, 2, 10, 3, 3, 4, 0, 0},
+-	{ 27000000,  33750000, 1,  90, 1, 3, 3, 10, 3, 3, 4, 0, 0},
+-	{ 40000000,  40000000, 1,  80, 2, 2, 2, 12, 2, 2, 2, 0, 0},
+-	{ 59341000,  59341000, 1,  98, 3, 1, 2,  1, 3, 3, 4, 0, 0xE6AE6B},
+-	{ 59400000,  59400000, 1,  99, 3, 1, 1,  1, 3, 3, 4, 0, 0},
+-	{ 59341000,  74176250, 1,  98, 0, 3, 3,  1, 3, 3, 4, 0, 0xE6AE6B},
+-	{ 59400000,  74250000, 1,  99, 1, 2, 2,  1, 3, 3, 4, 0, 0},
+-	{ 74176000,  74176000, 1,  98, 1, 2, 2,  1, 2, 3, 4, 0, 0xE6AE6B},
+-	{ 74250000,  74250000, 1,  99, 1, 2, 2,  1, 2, 3, 4, 0, 0},
+-	{ 74176000,  92720000, 4, 494, 1, 2, 2,  1, 3, 3, 4, 0, 0x816817},
+-	{ 74250000,  92812500, 4, 495, 1, 2, 2,  1, 3, 3, 4, 0, 0},
+-	{148352000, 148352000, 1,  98, 1, 1, 1,  1, 2, 2, 2, 0, 0xE6AE6B},
+-	{148500000, 148500000, 1,  99, 1, 1, 1,  1, 2, 2, 2, 0, 0},
+-	{148352000, 185440000, 4, 494, 0, 2, 2,  1, 3, 2, 2, 0, 0x816817},
+-	{148500000, 185625000, 4, 495, 0, 2, 2,  1, 3, 2, 2, 0, 0},
+-	{296703000, 296703000, 1,  98, 0, 1, 1,  1, 0, 2, 2, 0, 0xE6AE6B},
+-	{297000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2, 2, 0, 0},
+-	{296703000, 370878750, 4, 494, 1, 2, 0,  1, 3, 1, 1, 0, 0x816817},
+-	{297000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1, 1, 0, 0},
+-	{593407000, 296703500, 1,  98, 0, 1, 1,  1, 0, 2, 1, 0, 0xE6AE6B},
+-	{594000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2, 1, 0, 0},
+-	{593407000, 370879375, 4, 494, 1, 2, 0,  1, 3, 1, 1, 1, 0x816817},
+-	{594000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1, 1, 1, 0},
+-	{593407000, 593407000, 1,  98, 0, 2, 0,  1, 0, 1, 1, 0, 0xE6AE6B},
+-	{594000000, 594000000, 1,  99, 0, 2, 0,  1, 0, 1, 1, 0, 0},
++	{ 25175000,  25175000,  3,  125, 3, 1, 1,  1, 3, 3,  4, 0, 0xe00000},
++	{ 25175000,  31468750,  1,   41, 0, 3, 3,  1, 3, 3,  4, 0, 0xf5554f},
++	{ 27000000,  27000000,  1,   36, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 27000000,  33750000,  1,   45, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 31500000,  31500000,  1,   42, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 31500000,  39375000,  1,  105, 1, 3, 3, 10, 0, 3,  4, 0,      0x0},
++	{ 33750000,  33750000,  1,   45, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 33750000,  42187500,  1,  169, 2, 3, 3, 15, 0, 3,  4, 0,      0x0},
++	{ 35500000,  35500000,  1,   71, 2, 2, 2,  6, 0, 3,  4, 0,      0x0},
++	{ 35500000,  44375000,  1,   74, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{ 36000000,  36000000,  1,   36, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 36000000,  45000000,  1,   45, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{ 40000000,  40000000,  1,   40, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 40000000,  50000000,  1,   50, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{ 49500000,  49500000,  1,   66, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 49500000,  61875000,  1,  165, 1, 3, 3, 10, 0, 3,  4, 0,      0x0},
++	{ 50000000,  50000000,  1,   50, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 50000000,  62500000,  1,  125, 2, 2, 2, 15, 0, 2,  2, 0,      0x0},
++	{ 54000000,  54000000,  1,   36, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{ 54000000,  67500000,  1,   45, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{ 56250000,  56250000,  1,   75, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 56250000,  70312500,  1,  117, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{ 59341000,  59341000,  1,  118, 2, 2, 2,  6, 0, 3,  4, 0, 0xae978d},
++	{ 59341000,  74176250,  2,  148, 2, 1, 1, 15, 0, 1,  1, 0, 0x5a3d70},
++	{ 59400000,  59400000,  1,   99, 3, 1, 1,  1, 3, 3,  4, 0,      0x0},
++	{ 59400000,  74250000,  1,   99, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 65000000,  65000000,  1,   65, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 65000000,  81250000,  3,  325, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 68250000,  68250000,  1,   91, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 68250000,  85312500,  1,  142, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{ 71000000,  71000000,  1,   71, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 71000000,  88750000,  3,  355, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 72000000,  72000000,  1,   36, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{ 72000000,  90000000,  1,   60, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{ 73250000,  73250000,  3,  293, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 73250000,  91562500,  1,   61, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{ 74176000,  74176000,  1,   37, 2, 0, 0,  1, 1, 2,  2, 0, 0x16872b},
++	{ 74176000,  92720000,  2,  185, 2, 1, 1, 15, 0, 1,  1, 0, 0x70a3d7},
++	{ 74250000,  74250000,  1,   99, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 74250000,  92812500,  4,  495, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 75000000,  75000000,  1,   50, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{ 75000000,  93750000,  1,  125, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 78750000,  78750000,  1,  105, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 78750000,  98437500,  1,  164, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{ 79500000,  79500000,  1,   53, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{ 79500000,  99375000,  1,  199, 2, 2, 2, 15, 0, 2,  2, 0,      0x0},
++	{ 83500000,  83500000,  2,  167, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{ 83500000, 104375000,  1,  104, 2, 1, 1, 15, 0, 1,  1, 0, 0x600000},
++	{ 85500000,  85500000,  1,   57, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{ 85500000, 106875000,  1,  178, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{ 85750000,  85750000,  3,  343, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 85750000, 107187500,  1,  143, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{ 88750000,  88750000,  3,  355, 0, 3, 3,  1, 2, 3,  4, 0,      0x0},
++	{ 88750000, 110937500,  1,  110, 2, 1, 1, 15, 0, 1,  1, 0, 0xf00000},
++	{ 94500000,  94500000,  1,   63, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{ 94500000, 118125000,  1,  197, 3, 1, 1, 25, 0, 1,  1, 0,      0x0},
++	{101000000, 101000000,  1,  101, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{101000000, 126250000,  1,   42, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{102250000, 102250000,  4,  409, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{102250000, 127812500,  1,  128, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{106500000, 106500000,  1,   71, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{106500000, 133125000,  1,  133, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{108000000, 108000000,  1,   36, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{108000000, 135000000,  1,   45, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{115500000, 115500000,  1,   77, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{115500000, 144375000,  1,   48, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{117500000, 117500000,  2,  235, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{117500000, 146875000,  1,   49, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{119000000, 119000000,  1,  119, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{119000000, 148750000,  3,  148, 0, 1, 1,  1, 3, 1,  1, 0, 0xc00000},
++	{121750000, 121750000,  4,  487, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{121750000, 152187500,  1,  203, 0, 3, 3,  1, 3, 3,  4, 0,      0x0},
++	{122500000, 122500000,  2,  245, 2, 1, 1,  1, 1, 3,  4, 0,      0x0},
++	{122500000, 153125000,  1,   51, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{135000000, 135000000,  1,   45, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{135000000, 168750000,  1,  169, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{136750000, 136750000,  1,   68, 2, 0, 0,  1, 1, 2,  2, 0, 0x600000},
++	{136750000, 170937500,  1,  113, 0, 2, 2,  1, 3, 2,  2, 0, 0xf5554f},
++	{140250000, 140250000,  2,  187, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{140250000, 175312500,  1,  117, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{146250000, 146250000,  2,  195, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{146250000, 182812500,  1,   61, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{148250000, 148250000,  3,  222, 2, 0, 0,  1, 1, 2,  2, 0, 0x600000},
++	{148250000, 185312500,  1,  123, 0, 2, 2,  1, 3, 2,  2, 0, 0x8aaab0},
++	{148352000, 148352000,  2,  148, 2, 0, 0,  1, 1, 2,  2, 0, 0x5a1cac},
++	{148352000, 185440000,  3,  185, 0, 1, 1,  1, 3, 1,  1, 0, 0x70a3d7},
++	{148500000, 148500000,  1,   99, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{148500000, 185625000,  4,  495, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{154000000, 154000000,  1,   77, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{154000000, 192500000,  1,   64, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{156000000, 156000000,  1,   52, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{156000000, 195000000,  1,   65, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{156750000, 156750000,  2,  209, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{156750000, 195937500,  1,  196, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{157000000, 157000000,  2,  157, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{157000000, 196250000,  1,  131, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{157500000, 157500000,  1,  105, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{157500000, 196875000,  1,  197, 2, 1, 1, 15, 0, 1,  1, 0,      0x0},
++	{162000000, 162000000,  1,   54, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{162000000, 202500000,  2,  135, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{175500000, 175500000,  1,  117, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{175500000, 219375000,  1,   73, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{179500000, 179500000,  3,  359, 0, 2, 2,  1, 0, 3,  4, 0,      0x0},
++	{179500000, 224375000,  1,   75, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{182750000, 182750000,  1,   91, 2, 0, 0,  1, 1, 2,  2, 0, 0x600000},
++	{182750000, 228437500,  1,  152, 0, 2, 2,  1, 3, 2,  2, 0, 0x4aaab0},
++	{182750000, 228437500,  1,  152, 0, 2, 2,  1, 3, 2,  2, 0, 0x4aaab0},
++	{187000000, 187000000,  2,  187, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{187000000, 233750000,  1,   39, 0, 0, 0,  1, 3, 0,  0, 1,      0x0},
++	{187250000, 187250000,  3,  280, 2, 0, 0,  1, 1, 2,  2, 0, 0xe00000},
++	{187250000, 234062500,  1,  156, 0, 2, 2,  1, 3, 2,  2, 0,  0xaaab0},
++	{189000000, 189000000,  1,   63, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{189000000, 236250000,  1,   79, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{193250000, 193250000,  3,  289, 2, 0, 0,  1, 1, 2,  2, 0, 0xe00000},
++	{193250000, 241562500,  1,  161, 0, 2, 2,  1, 3, 2,  2, 0,  0xaaab0},
++	{202500000, 202500000,  2,  135, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{202500000, 253125000,  1,  169, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{204750000, 204750000,  4,  273, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{204750000, 255937500,  1,  171, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{208000000, 208000000,  1,  104, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{208000000, 260000000,  1,  173, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{214750000, 214750000,  1,  107, 2, 0, 0,  1, 1, 2,  2, 0, 0x600000},
++	{214750000, 268437500,  1,  178, 0, 2, 2,  1, 3, 2,  2, 0, 0xf5554f},
++	{218250000, 218250000,  4,  291, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{218250000, 272812500,  1,   91, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{229500000, 229500000,  2,  153, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{229500000, 286875000,  1,  191, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{234000000, 234000000,  1,   39, 0, 0, 0,  1, 0, 1,  1, 0,      0x0},
++	{234000000, 292500000,  1,  195, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{241500000, 241500000,  2,  161, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{241500000, 301875000,  1,  201, 0, 2, 2,  1, 3, 2,  2, 0,      0x0},
++	{245250000, 245250000,  4,  327, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{245250000, 306562500,  1,   51, 0, 0, 0,  1, 3, 0,  0, 1,      0x0},
++	{245500000, 245500000,  4,  491, 2, 0, 0,  1, 1, 2,  2, 0,      0x0},
++	{245500000, 306875000,  1,   51, 0, 0, 0,  1, 3, 0,  0, 1,      0x0},
++	{261000000, 261000000,  1,   87, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{261000000, 326250000,  1,  109, 0, 1, 1,  1, 3, 1,  1, 0,      0x0},
++	{268250000, 268250000,  9,  402, 0, 0, 0,  1, 0, 1,  1, 0, 0x600000},
++	{268250000, 335312500,  1,  111, 0, 1, 1,  1, 3, 1,  1, 0, 0xc5554f},
++	{268500000, 268500000,  2,  179, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{268500000, 335625000,  1,   56, 0, 0, 0,  1, 3, 0,  0, 1,      0x0},
++	{281250000, 281250000,  4,  375, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{281250000, 351562500,  1,  117, 0, 3, 1,  1, 3, 1,  1, 0,      0x0},
++	{288000000, 288000000,  1,   48, 0, 0, 0,  1, 0, 1,  1, 0,      0x0},
++	{288000000, 360000000,  1,   60, 0, 2, 0,  1, 3, 0,  0, 1,      0x0},
++	{296703000, 296703000,  1,   49, 0, 0, 0,  1, 0, 1,  1, 0, 0x7353f7},
++	{296703000, 370878750,  1,  123, 0, 3, 1,  1, 3, 1,  1, 0, 0xa051eb},
++	{297000000, 297000000,  1,   99, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{297000000, 371250000,  4,  495, 0, 3, 1,  1, 3, 1,  1, 0,      0x0},
++	{312250000, 312250000,  9,  468, 0, 0, 0,  1, 0, 1,  1, 0, 0x600000},
++	{312250000, 390312500,  1,  130, 0, 3, 1,  1, 3, 1,  1, 0, 0x1aaab0},
++	{317000000, 317000000,  3,  317, 0, 1, 1,  1, 0, 2,  2, 0,      0x0},
++	{317000000, 396250000,  1,   66, 0, 2, 0,  1, 3, 0,  0, 1,      0x0},
++	{319750000, 319750000,  3,  159, 0, 0, 0,  1, 0, 1,  1, 0, 0xe00000},
++	{319750000, 399687500,  3,  199, 0, 2, 0,  1, 3, 0,  0, 1, 0xd80000},
++	{333250000, 333250000,  9,  499, 0, 0, 0,  1, 0, 1,  1, 0, 0xe00000},
++	{333250000, 416562500,  1,  138, 0, 3, 1,  1, 3, 1,  1, 0, 0xdaaab0},
++	{348500000, 348500000,  9,  522, 0, 2, 0,  1, 0, 1,  1, 0, 0xc00000},
++	{348500000, 435625000,  1,  145, 0, 3, 1,  1, 3, 1,  1, 0, 0x35554f},
++	{356500000, 356500000,  9,  534, 0, 2, 0,  1, 0, 1,  1, 0, 0xc00000},
++	{356500000, 445625000,  1,  148, 0, 3, 1,  1, 3, 1,  1, 0, 0x8aaab0},
++	{380500000, 380500000,  9,  570, 0, 2, 0,  1, 0, 1,  1, 0, 0xc00000},
++	{380500000, 475625000,  1,  158, 0, 3, 1,  1, 3, 1,  1, 0, 0x8aaab0},
++	{443250000, 443250000,  1,   73, 0, 2, 0,  1, 0, 1,  1, 0, 0xe00000},
++	{443250000, 554062500,  1,   92, 0, 2, 0,  1, 3, 0,  0, 1, 0x580000},
++	{505250000, 505250000,  9,  757, 0, 2, 0,  1, 0, 1,  1, 0, 0xe00000},
++	{552750000, 552750000,  3,  276, 0, 2, 0,  1, 0, 1,  1, 0, 0x600000},
++	{593407000, 296703500,  3,  296, 0, 1, 1,  1, 0, 1,  1, 0, 0xb41893},
++	{593407000, 370879375,  4,  494, 0, 3, 1,  1, 3, 0,  0, 1, 0x817e4a},
++	{593407000, 593407000,  3,  296, 0, 2, 0,  1, 0, 1,  1, 0, 0xb41893},
++	{594000000, 297000000,  1,   99, 0, 1, 1,  1, 0, 1,  1, 0,      0x0},
++	{594000000, 371250000,  4,  495, 0, 3, 1,  1, 3, 0,  0, 1,      0x0},
++	{594000000, 594000000,  1,   99, 0, 2, 0,  1, 0, 1,  1, 0,      0x0},
+ 	{ /* sentinel */ }
+ };
  
- 	val = RK3328_SPREAD_SPECTRUM_MOD_DISABLE;
 -- 
 2.40.1
 
