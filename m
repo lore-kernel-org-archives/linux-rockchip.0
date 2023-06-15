@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9670EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38083EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=3mgMdZeI7TLJpW3Kzc63nIVGDDLIi1XCKkF1baCtMVw=; b=pNtc0od01QAk/XeBV0W9SRkS1N
-	zKMrnIPpmIKoBohDv+tBb1OEYiFsIsuDo3HWLxx9pZqLO6xofsgqMfKNECTCeAOatqRL6hRwRxelR
-	k/YLUOH+Qycd2MwUBO9k38wpurvvrO/f2lsEnGqxdETwTubuM3+7h81/e1v396JEaG19CN1Ueh6ju
-	cNpIF/zUuo4uU8bQtfUJF9g5orC2759EGSRDuZftETejiTkWBtp3d8nD/STsYaeKQEMXatuAsE7Xk
-	W71PGTIt4DObUYXpoApsoFEHQsYM41e5aYKCFSIGrmopD0nxcWnNwlTkBFihqDfyoaG5HIseeJnMC
-	dfuYIu2g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MbO8RiyU6WAOdK/HkNAXsg06el3u8mkAcvmkRKKmO0k=; b=n3WI3B54hU7ieL
+	TcqC1F4rIcBMTnS1bfE1ynqG8Upsf9qyqE/j+pyzC7gR91QU1ooNjzZXYJsNXL6VFTaWpRH/+1RF9
+	2w3q2w8mK+xv5zMYB0k/xbRb90Zlr1Opxwpd5ZwDavrl8FXkwjQQz1fqWx10W0I4gUKSTqJhf7nOc
+	8ESzqfjLJLmvDD0yyi5NP0kYV7FZjURjk80hNuuN0J4rAKsxvNf8OOgLhrLL2nyJCWhPZYllzMPxT
+	EY2vtKhZGvC13hvRp33PQSbO5MFxRRJyxJGsUvkZPZaWIy02pNeGOAQXhUEJDiuWCPK1YPnYenze4
+	Zwk2HZkC7rzSz1SflDiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUO-00FXIy-3A;
-	Thu, 15 Jun 2023 17:10:28 +0000
-Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUH-00FXBU-1P
-	for linux-rockchip@lists.infradead.org;
+	id 1q9qUJ-00FXDc-1M;
 	Thu, 15 Jun 2023 17:10:23 +0000
+Received: from s.wrqvtbkv.outbound-mail.sendgrid.net ([149.72.123.24])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1q9qUG-00FXAN-0L
+	for linux-rockchip@lists.infradead.org;
+	Thu, 15 Jun 2023 17:10:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=g0mKsxc7WifgfdQa6wkEL0DNKIhExEjXfMT5XBSp9vg=;
-	b=FyhGjc4hI55uDjlAar+NHdUxq6WdEL6eAqI0BktwfCEg+kdAJ3JFf1WPDfpHgAqXVeSw
-	0iCSPkLjU3a50t9iW93e8MRyKTfxUXDBC0r55IH5avyNOZ8krpf3QmUDnTbpI8GUkrmmEB
-	QNQMZZ+ItsbZQoL5E3HIzQtqY+OUDrwvGWKcQHa02IDjKOUs28bwKjwht9hVBPJxXx9988
-	VZ9iyxa+Bctkenc/cNDy5Y/rkj8QK3x2Zku+iUQcRh/hEQiDkhkmSizU6a0rbLK7TP3scg
-	EA4CC8qPN0Da9zLsdXZYpAaOzfQ91nFd25mq7AEPrUzfPVcfGWa4yUNxpQJtqbCw==
-Received: by filterdrecv-77869f68cc-l7kjz with SMTP id filterdrecv-77869f68cc-l7kjz-1-648B45FB-47
-        2023-06-15 17:10:19.904194626 +0000 UTC m=+3087262.988656015
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=/iMiHruchMZdH7EbKaXXVbEUNCDq8w9JXi9nEY/WsG0=;
+	b=rO8/HnoE9YtWXVLmjXww+B4Qqmh2HHf+JnA+/rg1e9HzBFSKZgm2cRhwyyfazuNoVUPn
+	lmPBmV28a01qMJEC2UaPnponVCxXOghiGItj+76wIWtPsVSTP8lT+CyzIaNa7LfN0obOnQ
+	c5P6T5HViCabUuQQTnskaK/oVfH74EhBi5RUfzzEDu8LQUA9YrRP3ElfEyUijPZ/wW8u1U
+	KC5W0RT+rlR5pK4OY6Mo30Q73x1IRAtIpq4gqTrqNYwy8Y4GSrRVgsNSvbSYMdLHI4UoNg
+	Igc0NezKG+mcM0a3IFcbUFWcmBWgCKg3+ehe9bjaZWrsCzYJJzYJdTehv8HSteqQ==
+Received: by filterdrecv-77869f68cc-l7kjz with SMTP id filterdrecv-77869f68cc-l7kjz-1-648B45F7-28
+        2023-06-15 17:10:15.543950118 +0000 UTC m=+3087258.628411507
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-2 (SG)
 	with ESMTP
-	id qITfAYONSLq-yRrNSqJZKw
-	Thu, 15 Jun 2023 17:10:19.695 +0000 (UTC)
+	id nGTvoAPVSCO8vRsd_RsRfg
+	Thu, 15 Jun 2023 17:10:15.220 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 3/6] phy/rockchip: inno-hdmi: remove unused no_c from
- rk3328 recalc_rate
-Date: Thu, 15 Jun 2023 17:10:20 +0000 (UTC)
-Message-Id: <20230615171005.2251032-4-jonas@kwiboo.se>
+Subject: [PATCH v4 0/6] Support more HDMI modes on RK3228/RK3328
+Date: Thu, 15 Jun 2023 17:10:15 +0000 (UTC)
+Message-Id: <20230615171005.2251032-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230615171005.2251032-1-jonas@kwiboo.se>
-References: <20230615171005.2251032-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h2Wro69xbbdc3QDDK?=
- =?us-ascii?Q?WHBniN5oob5+vr=2F5t3kES7o30Kht6TfePRyTCkj?=
- =?us-ascii?Q?RZf4ZJK=2FD4SK2lT1n6EMDZdqBmoJtpzosmRzc8V?=
- =?us-ascii?Q?2F3D1n66p7spuudK4ON1c0XpYaLjKN6iMWJb5qd?=
- =?us-ascii?Q?iA9uMs5S5fCRpTXN=2Fsrimhran3lCPclrdyTRdbw?=
- =?us-ascii?Q?TGn1=2FT5IgC0eTO7asSlpQ=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h1XOkue=2FcxLltwil4?=
+ =?us-ascii?Q?k2y4aiZwCJ7=2FvKmD3jebfAfZdtNcM7nB2rsB1rs?=
+ =?us-ascii?Q?W2x6dmGJ+tvdv5r2Scmow9SIkrsu9+54z8rbzyY?=
+ =?us-ascii?Q?vWDIjMGnVA9wiwgfj9MeTQ07w1xNl5BtQTuVKk6?=
+ =?us-ascii?Q?s3hnLYYM5EdcG5vUqCWRHq2YwglYmwsoyGwfljL?=
+ =?us-ascii?Q?F9frAPZ50FPgUYCWyBC4g=3D=3D?=
 To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: Alex Bee <knaerzche@gmail.com>, linux-phy@lists.infradead.org,
@@ -67,9 +63,8 @@ Cc: Alex Bee <knaerzche@gmail.com>, linux-phy@lists.infradead.org,
 	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230615_101021_570583_4851251E 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230615_101020_228731_AFD8E294 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +81,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-no_c is not used in any calculation, lets remove it.
+This is a revival of a 3+ year old series that never got picked up,
+it contains fixes and adds support for more HDMI modes on RK3228/RK3328.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v3:
-- no change
+This v4 series contains the original v2/v3 patches targeting the inno
+hdmi phy driver, the last patch that adds support for more HDMI modes
+has been replaced with a new patch from Alex Bee.
 
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Part of this has been reworked from vendor BSP 4.4 kernel commits.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 7d412f771f6c..f027e0a2e26b 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -714,7 +714,7 @@ unsigned long inno_hdmi_phy_rk3328_clk_recalc_rate(struct clk_hw *hw,
- {
- 	struct inno_hdmi_phy *inno = to_inno_hdmi_phy(hw);
- 	unsigned long frac;
--	u8 nd, no_a, no_b, no_c, no_d;
-+	u8 nd, no_a, no_b, no_d;
- 	u64 vco;
- 	u16 nf;
- 
-@@ -737,9 +737,6 @@ unsigned long inno_hdmi_phy_rk3328_clk_recalc_rate(struct clk_hw *hw,
- 		no_b = inno_read(inno, 0xa5) & RK3328_PRE_PLL_PCLK_DIV_B_MASK;
- 		no_b >>= RK3328_PRE_PLL_PCLK_DIV_B_SHIFT;
- 		no_b += 2;
--		no_c = inno_read(inno, 0xa6) & RK3328_PRE_PLL_PCLK_DIV_C_MASK;
--		no_c >>= RK3328_PRE_PLL_PCLK_DIV_C_SHIFT;
--		no_c = 1 << no_c;
- 		no_d = inno_read(inno, 0xa6) & RK3328_PRE_PLL_PCLK_DIV_D_MASK;
- 
- 		do_div(vco, (nd * (no_a == 1 ? no_b : no_a) * no_d * 2));
+Patch 1-5 fixes issues and shortcomings in the inno hdmi phy driver.
+
+Patch 6 adds support for more pixel clock rates in order to support
+common DMT modes in addition to CEA modes.
+
+These patches has been in use by LibreELEC and other distros for the
+past 3+ years, hoping they can be merged this time around :-)
+
+Changes i v4:
+- replace last patch
+
+Changes in v3:
+- split series
+- drop drm and device tree changes
+
+Changes in v2:
+- collect acked-by tag
+- drop the limit resolution width to 3840 patch
+
+This series is also available at [1].
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20230615-inno-hdmi-phy
+
+Regards,
+Jonas
+
+Alex Bee (1):
+  phy/rockchip: inno-hdmi: add more supported pre-pll rates
+
+Huicong Xu (1):
+  phy/rockchip: inno-hdmi: force set_rate on power_on
+
+Jonas Karlman (3):
+  phy/rockchip: inno-hdmi: use correct vco_div_5 macro on rk3328
+  phy/rockchip: inno-hdmi: remove unused no_c from rk3328 recalc_rate
+  phy/rockchip: inno-hdmi: do not power on rk3328 post pll on reg write
+
+Zheng Yang (1):
+  phy/rockchip: inno-hdmi: round fractal pixclock in rk3328 recalc_rate
+
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 234 +++++++++++++++---
+ 1 file changed, 198 insertions(+), 36 deletions(-)
+
 -- 
 2.40.1
 
