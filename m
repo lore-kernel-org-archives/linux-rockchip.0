@@ -4,72 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B72EB64DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:10:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18601EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jun 2023 17:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=DRQHXTGiyLA4bxcozvOHypaXcXhfWIjaQMZHxGCmvyY=; b=X1irHnVZARVGiUTIg4PH8XL21d
-	P769gahT3DJLHZ7i5nfymPB++PKgc+K23p9ZxbOaABX9zfBtQc0iCyE+4dQZZaGUwEFB/O/1wc3Lb
-	UNarWawuFLbJ/okb7qRJV8vdBz95qC4YgKP4EfASOKIuS8D2UQNlFQY4A2vfgJoek0FpTYucLs9sE
-	AFL6+l/l0zEebvJo83sfaBdaD6NgQnGtMGoq5yGnOdZ44pCsnUF/vzVAMffziAm+hGNBArGADk2/Y
-	gCESdsIdZYxaGElvZ2Cwc3Psi1uLX8UA1Kut+AHiqX9PG4oucem9OH04tbjGDCUGkVstxw+9pDLqY
-	rkyEfOSQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=golSOe/g9UM7tthf//I4SrnAKPMRj2A8tO0VkN8XZhc=; b=MAnUpBPHuYl2aG
+	6x8u5tl+Rtbc3ydKaKTPsELN+30DEpQV+zYvCmn5/ZKeo7USQ60OKlFRZCIyr8QFFHWz/c8P77CpI
+	CPgSsl5Dhj72vjDFBG2s8vDWwzpd6f1rkUeyZvttb8uNIxWxoy9Q0hujWX3RzM0djiNGYs6e9KihH
+	zsGqw/FE9fOWMHF54eSQyyUX32q9BjipDGzv2ZETQ4pLi8KIwlLFmEJGgKBRfGQHC2akg6xD54q7e
+	Ny9pfbSiYdGXfxoycfCQDAOGo5trAFogrdrPOPwOcCAG6RrXmh/OpsFuKRWg+kknONVk9NDOpzpVE
+	OzT61tph6NI2+y710wqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUf-00FXYA-1y;
-	Thu, 15 Jun 2023 17:10:45 +0000
-Received: from s.wrqvtzvf.outbound-mail.sendgrid.net ([149.72.126.143])
+	id 1q9qpn-00Fb2D-1e;
+	Thu, 15 Jun 2023 17:32:35 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q9qUM-00FXGp-2I
-	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Jun 2023 17:10:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=SwUrQGtfdJAfbPGuPioQpX3ZwqUQutzSyANTQ3rAAzw=;
-	b=AMwf2Hpdyvkd7i69t99g+qZJ9jtyPG9rteVAsinO8lpeNRIbbOB9Y1NHTAqw1kEUboIX
-	Wp2ypBdurEoTq1nzyETIhOgWse33pC7/jmORGjvT2ccuTy6Lp75x1OxW1A7sx/QfQRbKm+
-	oCw26goRml136PvKzb+ClgRrs1L5xYP4J6VSE3oQpg0GkpGrVfLf7v6ygI92QAQNXu0pfn
-	8QbeZFChndwjVbMh9Un6LAL77QrYTbT65UEWvmHKIupaThEQJ4uoZGTh5bQTn4gBMZ5rf+
-	o1ABoCJIAhM8tpJ/LNd7zpA+FM7UtgdicRgHwt0Ht89ZepMry/kMdFRM630qEuJg==
-Received: by filterdrecv-84b96456cb-6l8hp with SMTP id filterdrecv-84b96456cb-6l8hp-1-648B45FD-25
-        2023-06-15 17:10:21.532681887 +0000 UTC m=+3087112.128091413
-Received: from bionic.localdomain (unknown)
-	by geopod-ismtpd-2 (SG)
-	with ESMTP
-	id A-l5S23OQY-HMDmXz1kwpQ
-	Thu, 15 Jun 2023 17:10:21.207 +0000 (UTC)
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 4/6] phy/rockchip: inno-hdmi: do not power on rk3328 post
- pll on reg write
-Date: Thu, 15 Jun 2023 17:10:21 +0000 (UTC)
-Message-Id: <20230615171005.2251032-5-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230615171005.2251032-1-jonas@kwiboo.se>
-References: <20230615171005.2251032-1-jonas@kwiboo.se>
+	id 1q9qpk-00Fazf-01;
+	Thu, 15 Jun 2023 17:32:33 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-4f61b45ee0dso11050052e87.0;
+        Thu, 15 Jun 2023 10:32:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1686850349; x=1689442349;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cJxuaJ5691h/k4UcTAuN0XDw63vuAh/dneyBNjCjVmY=;
+        b=mV/e0OUTEj46icDsVr+JRbtP4EPO9HzVPEwP6B2e4JDKoPWX3NXfgikVpy+7wg2NbD
+         8V28anN5XJveBeXd0RgY9vPuEF6TN0Cqam02EPVxvzB5pxFuLp3AbYeS76tZawInOIj9
+         KfctomLfGfGYOd2X/XsNVfPd+G8HUmPVxTxg0ImRuLMoRfGGJQ7j6WjP38I5BylB+A+V
+         LosWW2IqnTnrq3ogF/+DAYkkRxAm8QGNNJo1EdpLM6Cdg5oqwkbmtPwEt3Iy90YmWpVA
+         Zpr+3HkzSgtohniS0LFHzVhyvY91mzUP3v9ZMhqVHIC4cJnqsY7R3vwvI0FEjG6movI5
+         8PVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686850349; x=1689442349;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=cJxuaJ5691h/k4UcTAuN0XDw63vuAh/dneyBNjCjVmY=;
+        b=HHLUkWTGa0J1UvdsWWiuKl4j0lulK+KItn+cCZpzWEANvV0hM7/2D3O2c2XectlMR8
+         DYIeBdaLexFSAvPwPHXpTrq9cjma7rXGUA/JtD6XH1iOoD6xuXR8aimO1pgJfwWtQRn8
+         5fsvUR7gF4lthYsr6DL9i085OOdupav6BYVJiOQSbGN9uSnCDFbaBcn8DEBiJXGrbJTz
+         Qqdt2cx4pc7S+H/lndF3aebb28iLVtZtvDuyCl939kivQ37sYX0mM36ZTiqa6WgigoWX
+         wT7PgVsCxejx/E9a9KkaIeqwb8yP6OPikSMaZ5hrq3I17ExNk9Rfx2O4kkwd/iewhVMo
+         yy3w==
+X-Gm-Message-State: AC+VfDxtRcj8sUmMS+bm+AO9ogt8qSken7weRkxMtdaZZokbcUGx91Mp
+	1mmn+R4LdSvTdjrJ9dUOafg93zIouOs=
+X-Google-Smtp-Source: ACHHUZ6FZpgcNvW6Qi5ZSZdhqz1y/N8G1DHAib7CyXk9nmboV+EfYS5w6LkFk00Y5fDNCee33DChSA==
+X-Received: by 2002:a19:ca5a:0:b0:4f7:b640:fa43 with SMTP id h26-20020a19ca5a000000b004f7b640fa43mr2399794lfj.38.1686850348704;
+        Thu, 15 Jun 2023 10:32:28 -0700 (PDT)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id s24-20020a1709060c1800b00969f25b96basm9570398ejf.204.2023.06.15.10.32.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Jun 2023 10:32:27 -0700 (PDT)
+Message-ID: <0047fc52-bc45-a768-8bdd-c0f12cddc17e@gmail.com>
+Date: Thu, 15 Jun 2023 19:32:26 +0200
 MIME-Version: 1.0
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h444tarc9ufij5dRA?=
- =?us-ascii?Q?eI1cNBIYAT3oqUvqrtRFevHr5kMKRB2WdkvXiol?=
- =?us-ascii?Q?zFWREqpE=2FjoQJRA6K5mU0FvT1bQmfn6ebI8Fu2L?=
- =?us-ascii?Q?w5+GSCaGOu2wnwHgGXlL9=2Fp4t1mi3PnwbfQTV5=2F?=
- =?us-ascii?Q?E5sFc28G=2FKv=2F0r5Paxca7skf++7gb5wW1xpFBXQ?=
- =?us-ascii?Q?M0onZCipQIwdY3RFQ0A1w=3D=3D?=
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Zheng Yang <zhengyang@rock-chips.com>
-Cc: Alex Bee <knaerzche@gmail.com>, linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>,
-	Kishon Vijay Abraham I <kishon@ti.com>
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v3 0/3] Fixes for Rockchip NAND controller driver
+To: miquel.raynal@bootlin.com
+Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
+ linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ yifeng.zhao@rock-chips.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230615_101026_876331_1A7A4C57 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20230615_103232_049182_4830A77D 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +94,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-inno_write is used to configure 0xaa reg, that also hold the
-POST_PLL_POWER_DOWN bit.
-When POST_PLL_REFCLK_SEL_TMDS is configured the power down bit is not
-taken into consideration.
+This serie contains various fixes for the Rockchip NAND controller
+driver that showed up while testing boot block writing.
 
-Fix this by keeping the power down bit until configuration is complete.
-Also reorder the reg write order for consistency.
+Fixed are:
+  Always copy hwecc PA data to/from oob_poi buffer in order to be able
+  to read/write the various boot block layouts.
+  Add option to safely probe the driver on a NAND with unknown data layout.
+  Fix oobfree layout.
 
-Fixes: 53706a116863 ("phy: add Rockchip Innosilicon hdmi phy")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v3:
-- no change
+Changed V3:
+  Change patch order, layout fixes first
+  Change prefixes
+  Reword
+  State that patches break all existing jffs2 users
 
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Changed V2:
+  Add tag
+  Add manufacturer ops
+  Reword
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index f027e0a2e26b..fe7fa9a43ec0 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -1020,9 +1020,10 @@ inno_hdmi_phy_rk3328_power_on(struct inno_hdmi_phy *inno,
- 
- 	inno_write(inno, 0xac, RK3328_POST_PLL_FB_DIV_7_0(cfg->fbdiv));
- 	if (cfg->postdiv == 1) {
--		inno_write(inno, 0xaa, RK3328_POST_PLL_REFCLK_SEL_TMDS);
- 		inno_write(inno, 0xab, RK3328_POST_PLL_FB_DIV_8(cfg->fbdiv) |
- 			   RK3328_POST_PLL_PRE_DIV(cfg->prediv));
-+		inno_write(inno, 0xaa, RK3328_POST_PLL_REFCLK_SEL_TMDS |
-+			   RK3328_POST_PLL_POWER_DOWN);
- 	} else {
- 		v = (cfg->postdiv / 2) - 1;
- 		v &= RK3328_POST_PLL_POST_DIV_MASK;
-@@ -1030,7 +1031,8 @@ inno_hdmi_phy_rk3328_power_on(struct inno_hdmi_phy *inno,
- 		inno_write(inno, 0xab, RK3328_POST_PLL_FB_DIV_8(cfg->fbdiv) |
- 			   RK3328_POST_PLL_PRE_DIV(cfg->prediv));
- 		inno_write(inno, 0xaa, RK3328_POST_PLL_POST_DIV_ENABLE |
--			   RK3328_POST_PLL_REFCLK_SEL_TMDS);
-+			   RK3328_POST_PLL_REFCLK_SEL_TMDS |
-+			   RK3328_POST_PLL_POWER_DOWN);
- 	}
- 
- 	for (v = 0; v < 14; v++)
--- 
-2.40.1
+Johan Jonker (3):
+  mtd: rawnand: rockchip-nand-controller: fix oobfree offset and
+    description
+  mtd: rawnand: rockchip-nand-controller: copy hwecc PA data to oob_poi
+    buffer
+  mtd: rawnand: rockchip-nand-controller: add skipbbt option
+
+ .../mtd/nand/raw/rockchip-nand-controller.c   | 52 ++++++++++++-------
+ 1 file changed, 32 insertions(+), 20 deletions(-)
+
+--
+2.30.2
 
 
 _______________________________________________
