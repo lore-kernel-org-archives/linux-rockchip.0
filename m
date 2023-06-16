@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A944DEB64DA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 17:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F66DEB64D7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 17:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KyqbfX7qcC9C3Xcw7TWTqQ4JV9Cxez8k04ZX9HCY+EE=; b=mA8nlAeqoaO1J/
-	dURjv07zNXuKbyzF1u2McXFumcXSpbUFEevBceNlkxCNIdCufp7EXZ1q8oo0bUSPo+riC4HTWlmgG
-	9hhBjwW8qTXDuLJjBu3ewClnDltnfJzwmT4B6V78onJ5x7//ksdq5rqPaTFswKe/hcj5aENrSURy6
-	edHJuTTTmsERWPIkPCzNfHdO1l2FFeq4x6cRKH0xzOI431azHbunk3RITBkkYDLunSzXcNiuiqNhg
-	tasBITICwBB9cl/H89DAGgIBo4wIn7+CZre5FNn0q1CYDk877sBQ5bj7KfXfVesOrCw6Mb+cKLNEM
-	VlU9rI0W2Mp0Mj0uqH6w==;
+	List-Owner; bh=sSGu6QcaN1F6ZpnXSgwfO/w17Wr6tyHAXPgDhxF3ECc=; b=jdTDYn+CiIG8Jk
+	fVf7j8ROLm+ImrT4ltgDiqrUvPIzTEZv6ZY+hjOGA6UzjAQU/vH5eTcr7Hwn94NrhXst119fhs40o
+	syLzfJqcC9w8mTPcZ3+Iz62IuoGTwbfKCzW8k030TJADj1K65KpfEb94Y/71QRBaO6Fxfipwc1d84
+	hR5wNkUCLtn1eHkK7Ie23Uzt1TZ5i6kguH7KU5f8u5PfKZFD0JoqWQl1rnnkh1ji6q0kFi8Z5emkx
+	hMAdDGsL4vt4ygTLg6ltpVWf285cZqhTnfFC1mHkghcv4+T+po26OO5Q9qoWCeSxtODWb4zuDTXac
+	yHPaA8s5xT+XDuIVBkKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qACoc-001DLj-0T;
-	Fri, 16 Jun 2023 17:00:50 +0000
+	id 1qACon-001DQR-15;
+	Fri, 16 Jun 2023 17:01:01 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qACoX-001DHY-0l;
-	Fri, 16 Jun 2023 17:00:46 +0000
+	id 1qACoX-001DHb-0v;
+	Fri, 16 Jun 2023 17:00:48 +0000
 Received: from jupiter.universe (dyndsl-091-248-215-052.ewe-ip-backbone.de [91.248.215.52])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 604026606F85;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D92D6606F86;
 	Fri, 16 Jun 2023 18:00:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1686934841;
-	bh=mUHbgHwI0ryNn4lkHpGJMiFlejZz09YJSeHgaUj4sVs=;
+	bh=UUp1ukfBywtwpph0BM+a29Xo/RNDQnnSMjgz7LkN1Zw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=S1CdmAWzKuFM2OPpy48efHFqKqrkGIb8x97s4ZbEWcBxF8q5+lpT+Hrz3PXf47ERw
-	 sBj4/bCLkLcZ8UtHigoDGHI+aqatV8L56UUYix5NOYc9KF81pN6soxP21e1xIizYgT
-	 MTJ7l07paZki5dLIjjlsYMQkaG9eZAHZqpI88J6iT66mMjoNcBrBbJXwAzqyIgEljL
-	 qDPM6I7IWZw+5HBqDdxspiSHpoVh9Net8+ZcmyykbXUf253Ah06b+0xMFHW7BgOFBP
-	 p5fFMCQS/8UKcSogOo5SHKmWL4OvzJUldwxs/f3UtKxLC4GGX3cDQOmgcJWGPUr/4F
-	 KJv0MEivPOSMQ==
+	b=msXBX3v/bw9oWUk68ClxuJHLoBW+kShPYmlyil7ZsQbf/tJHHvGSN+qSQs5ZJKBsi
+	 riuH9SBaJNosZrohWiM1K0qh6ovjSLSWnB3ziBnxWyRAnIaufz9qXA3p+9w76Pbe6p
+	 4ly7dPNMxzq2n04Il8SCtFkNUBgO2qTL7Oeiy+uisz2X+kMyEfSExYcQaw78pGpILN
+	 et1warkNVV99NGzB/L8F3SShOrizPsunC3vqBU12DcKMgIz3qw9VmsbNmKKsubFcrt
+	 Dpj2qDBkTSamasPhK83nxaA+7TUAKIf1utFYdmAPWiwbx2yGqWqcbBqXa7SOZCuLBi
+	 Q5cZpNUmhH/KA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 10B6F480583; Fri, 16 Jun 2023 19:00:39 +0200 (CEST)
+	id 124BF480596; Fri, 16 Jun 2023 19:00:39 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
@@ -64,16 +64,16 @@ Cc: Jingoo Han <jingoohan1@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v1 1/4] dt-bindings: PCI: dwc: rockchip: Fix interrupt-names issue
-Date: Fri, 16 Jun 2023 19:00:19 +0200
-Message-Id: <20230616170022.76107-2-sebastian.reichel@collabora.com>
+Subject: [PATCH v1 2/4] dt-bindings: PCI: dwc: rockchip: Add missing legacy-interrupt-controller
+Date: Fri, 16 Jun 2023 19:00:20 +0200
+Message-Id: <20230616170022.76107-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230616170022.76107-1-sebastian.reichel@collabora.com>
 References: <20230616170022.76107-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230616_100045_441973_C27F85C1 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20230616_100045_468790_4BEC3641 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,93 +90,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK356x (and RK3588) have 5 ganged interrupts. For example the
-"legacy" interrupt combines "inta/intb/intc/intd" with a register
-providing the details.
-
-Currently the binding is not specifying these interrupts resulting
-in a bunch of errors for all rk356x boards using PCIe.
-
-Fix this by specifying the interrupts and add them to the example
-to prevent regressions.
+Rockchip RK356x and RK3588 handle legacy interrupts via a ganged
+interrupts. The RK356x DT implements this via a sub-node named
+"legacy-interrupt-controller", just like a couple of other PCIe
+implementations. This adds proper documentation for this and updates
+the example to avoid regressions.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/pci/rockchip-dw-pcie.yaml         | 18 ++++++++++++++++++
- .../devicetree/bindings/pci/snps,dw-pcie.yaml  | 15 ++++++++++++++-
- 2 files changed, 32 insertions(+), 1 deletion(-)
+ .../bindings/pci/rockchip-dw-pcie.yaml        | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 24c88942e59e..98e45d2d8dfe 100644
+index 98e45d2d8dfe..bf81d306cc80 100644
 --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -56,6 +56,17 @@ properties:
-       - const: pclk
-       - const: aux
+@@ -67,6 +67,22 @@ properties:
+       - const: legacy
+       - const: err
  
-+  interrupts:
-+    maxItems: 5
++  legacy-interrupt-controller:
++    description: Interrupt controller node for handling legacy PCI interrupts.
++    type: object
++    properties:
++      "#address-cells":
++        const: 0
 +
-+  interrupt-names:
-+    items:
-+      - const: sys
-+      - const: pmc
-+      - const: msg
-+      - const: legacy
-+      - const: err
++      "#interrupt-cells":
++        const: 1
++
++      "interrupt-controller": true
++
++      interrupts:
++        items:
++          - description: combined legacy interrupt
 +
    msi-map: true
  
    num-lanes: true
-@@ -98,6 +109,7 @@ unevaluatedProperties: false
- 
- examples:
-   - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
-     bus {
-         #address-cells = <2>;
-@@ -117,6 +129,12 @@ examples:
-                           "aclk_dbi", "pclk",
-                           "aux";
-             device_type = "pci";
-+            interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 159 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 158 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 157 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>;
-+            interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-             linux,pci-domain = <2>;
-             max-link-speed = <2>;
-             msi-map = <0x2000 &its 0x2000 0x1000>;
-diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
-index 1a83f0f65f19..9f605eb297f5 100644
---- a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
-@@ -193,9 +193,22 @@ properties:
-           oneOf:
-             - description: See native "app" IRQ for details
-               enum: [ intr ]
-+        - description: Combined Legacy A/B/C/D interrupt signal.
-+          const: legacy
-+        - description: Combined System interrupt signal.
-+          const: sys
-+        - description: Combined Power Management interrupt signal.
-+          const: pmc
-+        - description: Combined Message Received interrupt signal.
-+          const: msg
-+        - description: Combined Error interrupt signal.
-+          const: err
+@@ -148,6 +164,14 @@ examples:
+             reset-names = "pipe";
+             #address-cells = <3>;
+             #size-cells = <2>;
 +
-     allOf:
-       - contains:
--          const: msi
-+          enum:
-+            - msi
-+            - msg
- 
- additionalProperties: true
- 
++            legacy-interrupt-controller {
++                interrupt-controller;
++                #address-cells = <0>;
++                #interrupt-cells = <1>;
++                interrupt-parent = <&gic>;
++                interrupts = <GIC_SPI 72 IRQ_TYPE_EDGE_RISING>;
++            };
+         };
+     };
+ ...
 -- 
 2.39.2
 
