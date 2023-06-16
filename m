@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7A3EB64D7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 06:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2552FEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 06:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nk868lGW/oTtAtOLgGY91d3LNrqAAoVJzNb8t4kG4fE=; b=hwwdcPjHn3XVVI
-	Mt95wucrP8858kQbC1ywdMEy5EcWE0EmX+usknxqRQmukVKjq6lidhh8LiuQaaiEs8IK1S9Te6LzM
-	ZNZAwO/n8pzV5mXKgqx72sQCifYwx2UF/wgMOEHLdrifhY+pSnTJ64vGaNnY/KNdRk/9faoTkQAhr
-	jG5rcmCakTw4iQgsBUCp7mBdc9obKAQrIWIX0yA69pqKJ6g+qrM5t7/FpBebwp145BX+8+aO16Y8P
-	tsUJb8eskVWVlns2V0ejvO7KPQmp3l83hc332LZ0Xecj7UyPCOcTHyIge3QNM2Vgc9bUnk0QXahcz
-	oJTzEpb3RSSLslk1wTEg==;
+	List-Owner; bh=AlFJ4/gefRMseiEIWO2vvvZzPtdF0OHDbYaA9AL3kVo=; b=BObyLUZ+hwh64j
+	wpuFSxsdQdS6iswN0dOtEZvELwFLoNsBLbDBGM54OzmTmYfRxyvCG7F9qxyBbCCY7aQO5+qT8isIT
+	PZVdsqSwqoHcdHQDKL1ERoBDEinkmtmQLyYLIYzvZgHcplmNJoI2rvy5qML2r50vQlKqqy0JAYlYR
+	n2knheADBeu6QliS4LqvjoxA3OyIQeJJqGjPSU8IQmSLyEeqQz5vNgkCN3Glf6TChKxq4hu94qYZe
+	6iiDITc3dBwnr7Us1ZzahmA3z5KnCMNciq4Nhz/58ns23deWc1pzvN8H8Sf4UmKkTUNAG2n3fsKmR
+	/rTfSGWI7xGMJGBJqO7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qA2rS-00H0cT-1P;
-	Fri, 16 Jun 2023 06:23:06 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1qA2rX-00H0gn-01;
+	Fri, 16 Jun 2023 06:23:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qA2qU-00GziY-1W
+	id 1qA2qa-00GzmE-2W
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 16 Jun 2023 06:22:06 +0000
+	Fri, 16 Jun 2023 06:22:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=OuUCcID4oqEIjGpej1WOuJjEbAtmWTNpqoWhWk99SXk=; b=qDw6Qt0iWKySMTgTVci3ny3Cx+
-	KZij1TInvuqHC1qEcG7JRVJYNFMmdoZQhUjvaUth3qGQICuBVUGSN4J3lchT9RepMvYgfbFCRRBo5
-	ZgSKxfbsTEjJqKU/goWtRV+Tyxf2HDDqyQpWMBbbfjOZCvzJbhyV5Jw3XbhSLIIBF/Zci8dTzhpN8
-	FLaqCuLTkwCwC1IYsl2Eua2hQaBrMTIzrL5Y+6ECqLlnARpv9po8/HlmYohbWG8eNGrBvoDQ9KhCN
-	Qhm4G3VjzcPqA81Lj6dPFUUTPjOrx7IGPBNNrCxZo/V0WfbwDaTuWWWHnAcZGVhbLy4XAdkWY6P3y
-	xjRrWDXQ==;
+	bh=45yp4hZM3NdGv/gwZRVaaEqFTrTSC5S66WHARI3MZx4=; b=AlP3ONV4J83qA+duamojh/VTv1
+	HTH+/dpqPWM6AnWGiGko9c0s1bNUXbZYZJ5swRokx5VmbdVES9lLccSgi5LNDGb/HvOUakLAi/vr1
+	duZxPqaXCcgz1b3pnQ1AKGVJhJY3VNN+QbJ+o3A4E2NORiykSkRIHg0tE26kd36U1CkSgduvI+6e6
+	YlKI6pvW/aIrQfmyWy+sfrbIsRkv/xr18Hz3twZ8MZHh2cGrEjdQrX3YcVZiklcYznZz34OJ//J+W
+	S0NytoEUyFTSLvdEyY01HayI/NTqV71xPqFIGC81bTlrtyc7ba9CBepHK5NzyQyN6tjXhAI9ba6fM
+	mS1MDwHg==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qA2qI-008WWV-Ol
-	for linux-rockchip@lists.infradead.org; Fri, 16 Jun 2023 06:22:05 +0000
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qA2qK-00Corm-2h
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 Jun 2023 06:22:05 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q9-0006qO-AX; Fri, 16 Jun 2023 08:21:45 +0200
+	id 1qA2q9-0006qV-GP; Fri, 16 Jun 2023 08:21:45 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q8-007kyE-HI; Fri, 16 Jun 2023 08:21:44 +0200
+	id 1qA2q8-007kyP-Le; Fri, 16 Jun 2023 08:21:44 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q5-003FV3-5D; Fri, 16 Jun 2023 08:21:41 +0200
+	id 1qA2q4-003FUm-Vw; Fri, 16 Jun 2023 08:21:40 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -72,10 +73,11 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v6 15/26] PM / devfreq: rockchip-dfi: give variable a better name
-Date: Fri, 16 Jun 2023 08:20:50 +0200
-Message-Id: <20230616062101.601837-16-s.hauer@pengutronix.de>
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: [PATCH v6 12/26] PM / devfreq: rockchip-dfi: Handle LPDDR4X
+Date: Fri, 16 Jun 2023 08:20:47 +0200
+Message-Id: <20230616062101.601837-13-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230616062101.601837-1-s.hauer@pengutronix.de>
 References: <20230616062101.601837-1-s.hauer@pengutronix.de>
@@ -85,8 +87,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230616_072154_833139_E5B99D8C 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20230616_072158_281792_D2D86EBD 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,82 +105,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-struct dmc_count_channel::total counts the clock cycles of the DDR
-controller. Rename it accordingly to give the reader a better idea
-what this is about. While at it, at some documentation to struct
-dmc_count_channel.
+In the DFI driver LPDDR4X can be handled in the same way as LPDDR4. Add
+the missing case.
 
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Link: https://lore.kernel.org/r/20230524083153.2046084-16-s.hauer@pengutronix.de
+Link: https://lore.kernel.org/r/20230524083153.2046084-13-s.hauer@pengutronix.de
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 1 +
+ include/soc/rockchip/rockchip_grf.h  | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 8a7af7c32ae0d..50e497455dc69 100644
+index 16cd5365671f7..0a568c5551699 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -46,9 +46,14 @@
- #define DDRMON_CH1_COUNT_NUM		0x3c
- #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
- 
-+/**
-+ * struct dmc_count_channel - structure to hold counter values from the DDR controller
-+ * @access:       Number of read and write accesses
-+ * @clock_cycles: DDR clock cycles
-+ */
- struct dmc_count_channel {
- 	u32 access;
--	u32 total;
-+	u32 clock_cycles;
+@@ -89,6 +89,7 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 			       dfi_regs + DDRMON_CTRL);
+ 		break;
+ 	case ROCKCHIP_DDRTYPE_LPDDR4:
++	case ROCKCHIP_DDRTYPE_LPDDR4X:
+ 		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
+ 			       dfi_regs + DDRMON_CTRL);
+ 		break;
+diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
+index dde1a9796ccb5..e46fd72aea8d1 100644
+--- a/include/soc/rockchip/rockchip_grf.h
++++ b/include/soc/rockchip/rockchip_grf.h
+@@ -12,6 +12,7 @@ enum {
+ 	ROCKCHIP_DDRTYPE_LPDDR2	= 5,
+ 	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
+ 	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
++	ROCKCHIP_DDRTYPE_LPDDR4X = 8,
  };
  
- struct dmc_count {
-@@ -150,7 +155,7 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 			continue;
- 		count->c[i].access = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
--		count->c[i].total = readl_relaxed(dfi_regs +
-+		count->c[i].clock_cycles = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_COUNT_NUM + i * 20);
- 	}
- }
-@@ -182,29 +187,29 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 	struct dmc_count count;
- 	struct dmc_count *last = &dfi->last_event_count;
--	u32 access = 0, total = 0;
-+	u32 access = 0, clock_cycles = 0;
- 	int i;
- 
- 	rockchip_dfi_read_counters(dfi, &count);
- 
- 	/* We can only report one channel, so find the busiest one */
- 	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
--		u32 a, t;
-+		u32 a, c;
- 
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 
- 		a = count.c[i].access - last->c[i].access;
--		t = count.c[i].total - last->c[i].total;
-+		c = count.c[i].clock_cycles - last->c[i].clock_cycles;
- 
- 		if (a > access) {
- 			access = a;
--			total = t;
-+			clock_cycles = c;
- 		}
- 	}
- 
- 	edata->load_count = access * 4;
--	edata->total_count = total;
-+	edata->total_count = clock_cycles;
- 
- 	dfi->last_event_count = count;
- 
+ #endif /* __SOC_ROCKCHIP_GRF_H */
 -- 
 2.39.2
 
