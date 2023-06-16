@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2FFCEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 17:57:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE852EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 19:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Subject:Cc:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SYNnD0jCMyIpLtTqiuXcRVRTHBEgkXwXH8zGJfPmqto=; b=2E0Ak/xBD1ou9I
-	G65lEP0ZT4BoQGcA8V0WeB/INh7Ca8iAyMuuxD+yjEXCsVm+XsLiLbNuhJeRWWRAm6AIBAv5p7GkT
-	LUFF0dz1+edDyVVrFbzEwV663jAGRhH6yAaAt46YPbb2k0TsVm6CbgXy2hm6nBZBYqmYSYfqdzySG
-	I9uYijrncfPffPfGHNeIPGGOdU6+B8HLULjDqIesrgp1Y+uFruYZ6QsJ/MlyfqnkTVgOXcE0SQ097
-	LTyBcEQxp7GcvUD93a3EpcBIi6oEsAzbmY0QOErGJ6ggCf/5vnP79S+mUgMQwsLqJoHnJBVX1XFrC
-	iEj67djIugbw206rGNbg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T4rTOe81ur3QaHzut5LDvxOqNqUQMyN7JSuO6bGmklY=; b=UIciYfrbnL9r2BRemYS/nOi0bM
+	eyWcWe+H69uXIeqw1SsQ9OIrWs/cF62zqvi++7EDgB4j5zQd3yq/3BHODcU863obfkkl3EqMjz1k3
+	P3lcObUlgs+Za6SSMW0IdS/zw/R7X/OAeNzjjIgupMwBzrFmlhsiFmkQsfedyUWnogx6eVMf1lLlj
+	pYN2MjBeQhZ4U0YPMwuInHJIGUqcbXHs9CahUrARuHjUuwlZEwFGb0McOceNNZzr3xCJvSiDXYsny
+	vqQjVEje7FCotF1wn6gOOMOtgvWiJfA9oCY9QnFof1rZifcGEZlIxbKyeK66eoLyzIZ7xSZ9eYXAI
+	xMTmM7RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qADgy-001MI3-1X;
-	Fri, 16 Jun 2023 17:57:00 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1qAEh5-001WdC-2l;
+	Fri, 16 Jun 2023 19:01:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qADgt-001MGU-2R;
-	Fri, 16 Jun 2023 17:56:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1686938215; x=1718474215;
-  h=date:from:to:cc:subject:message-id;
-  bh=dHryKIkk8/2CTQfcM0R17XhQOqNhailCRjnxMpU/Z2k=;
-  b=loOzvDn+awKtHT5JB4KJSf+oUHKOY5FwKebtNV9VTf4IY+eIJp12iUHP
-   nH+UTuWykoWIS6rNRyF+0RTHphR9+xtR84VrB/+XvewkgSKj6mxQAyYGN
-   Irk+y49yk8Ey+nRLOwONmSvGNeUq6AMNNlQVSB0dS6+Vb96Jwn1aS/knI
-   9xFIbUaFIaEuqat3jbXAnGGOWN1C1GFFE6fqAqOqw+xcBnOS9avYGo5mM
-   9+94svzuiomvM+9P85mirysuTJP4bcSnRHpZhVBasMducoBl+nIMh5D/t
-   Lq63lOgwIpQ3fIou20ijUybFYLcPGIa0oV3HAyp+urjEIbN+MT+umJpBI
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10743"; a="425213643"
-X-IronPort-AV: E=Sophos;i="6.00,248,1681196400"; 
-   d="scan'208";a="425213643"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2023 10:56:52 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10743"; a="742744959"
-X-IronPort-AV: E=Sophos;i="6.00,248,1681196400"; 
-   d="scan'208";a="742744959"
-Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
-  by orsmga008.jf.intel.com with ESMTP; 16 Jun 2023 10:56:47 -0700
-Received: from kbuild by 783282924a45 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qADgk-0001f2-1u;
-	Fri, 16 Jun 2023 17:56:46 +0000
-Date: Sat, 17 Jun 2023 01:56:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Linux Memory Management List <linux-mm@kvack.org>,
- apparmor@lists.ubuntu.com, intel-gfx@lists.freedesktop.org,
- kunit-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org,
- linux-block@vger.kernel.org, linux-btrfs@vger.kernel.org,
- linux-cifs@vger.kernel.org, linux-kselftest@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-parisc@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-scsi@vger.kernel.org, linux-usb@vger.kernel.org,
- lvs-devel@vger.kernel.org, netdev@vger.kernel.org,
- ntfs3@lists.linux.dev, samba-technical@lists.samba.org
-Subject: [linux-next:master] BUILD REGRESSION
- f7efed9f38f886edb450041b82a6f15d663c98f8
-Message-ID: <202306170124.CtQqzf0I-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+	id 1qAEh3-001Wbs-0X;
+	Fri, 16 Jun 2023 19:01:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AD6B162BE7;
+	Fri, 16 Jun 2023 19:01:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 855ADC433C0;
+	Fri, 16 Jun 2023 19:01:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1686942068;
+	bh=k7TL4/bEtYnlDoFIRBngv3fhHMXqUW4iN9W+YmmLUhY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aodvJaD58Y+8lUTMXpB+bGwpR4phhlnX+6Oh5PnMDn3MAiV5RYJFIv+KjZLQnAY0Y
+	 IEW69W3BETBuIJatjMnz/A/Xeb6JidIvdDB2zGceX2LdWxPw5XDyD/HoZiae83A5EA
+	 rFCGHggp6UO8oX+zbaJM1Pumsr4gBAT2YdfGbHTGf/T/5pVYFvOPZafZYn3PEUbc5w
+	 Lk8k0PvJbAojM73H786e7KeJk75vSEh9JxatHIJTFPqnDB3RXNIW+DUN7rdHfem7Oi
+	 68KrV5zWDb13L1BqzBWAplwxLJMFaRY9EMj4ejW3DLmU3QU8IZY8vwz/dexGHxzsQ2
+	 spuA6P6lAoz9A==
+Date: Fri, 16 Jun 2023 20:01:02 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v6 23/26] dt-bindings: soc: rockchip: grf: add
+ rockchip,rk3588-pmugrf
+Message-ID: <20230616-gargle-spotless-9d04000106b0@spud>
+References: <20230616062101.601837-1-s.hauer@pengutronix.de>
+ <20230616062101.601837-24-s.hauer@pengutronix.de>
+MIME-Version: 1.0
+In-Reply-To: <20230616062101.601837-24-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230616_105655_943224_11B18908 
-X-CRM114-Status: UNSURE (   5.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230616_120109_246576_85BCF897 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,299 +82,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7988192310637232002=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: f7efed9f38f886edb450041b82a6f15d663c98f8  Add linux-next specific files for 20230616
 
-Error/Warning reports:
+--===============7988192310637232002==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="NpVXOp9NH7FQ7UcR"
+Content-Disposition: inline
 
-https://lore.kernel.org/oe-kbuild-all/202306100035.VTusNhm4-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306122223.HHER4zOo-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306141719.MJHClSrC-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306141934.UKmM9bFX-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306142017.23VmBLmG-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306151506.goHEegOd-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306160203.DB48f7wR-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202306160811.nV1bMsK4-lkp@intel.com
 
-Error/Warning: (recently discovered and may have been fixed)
+--NpVXOp9NH7FQ7UcR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-arch/parisc/kernel/pdt.c:65:6: warning: no previous prototype for 'arch_report_meminfo' [-Wmissing-prototypes]
-drivers/block/pktcdvd.c:1371:13: warning: stack frame size (2496) exceeds limit (2048) in 'pkt_handle_packets' [-Wframe-larger-than]
-drivers/char/mem.c:164:25: error: implicit declaration of function 'unxlate_dev_mem_ptr'; did you mean 'xlate_dev_mem_ptr'? [-Werror=implicit-function-declaration]
-drivers/gpu/drm/i915/display/intel_display_power.h:255:70: error: declaration of 'struct seq_file' will not be visible outside of this function [-Werror,-Wvisibility]
-drivers/leds/leds-cht-wcove.c:144:21: warning: no previous prototype for 'cht_wc_leds_brightness_get' [-Wmissing-prototypes]
-drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1036:1: warning: the frame size of 1112 bytes is larger than 1024 bytes [-Wframe-larger-than=]
-drivers/scsi/FlashPoint.c:1712:12: warning: stack frame size (4208) exceeds limit (2048) in 'FlashPoint_HandleInterrupt' [-Wframe-larger-than]
-fs/ntfs3/super.c:1094:12: warning: stack frame size (2384) exceeds limit (2048) in 'ntfs_fill_super' [-Wframe-larger-than]
-lib/kunit/executor_test.c:138:4: warning: cast from 'void (*)(const void *)' to 'kunit_action_t *' (aka 'void (*)(void *)') converts to incompatible function type [-Wcast-function-type-strict]
-lib/kunit/test.c:775:38: warning: cast from 'void (*)(const void *)' to 'kunit_action_t *' (aka 'void (*)(void *)') converts to incompatible function type [-Wcast-function-type-strict]
-security/apparmor/policy_unpack.c:1173: warning: expecting prototype for verify_dfa_accept_xindex(). Prototype was for verify_dfa_accept_index() instead
+On Fri, Jun 16, 2023 at 08:20:58AM +0200, Sascha Hauer wrote:
+> Add rockchip,rk3588-pmugrf compatible string.
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Unverified Error/Warning (likely false positive, please contact us if interested):
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-drivers/net/ethernet/mellanox/mlx5/core/lib/devcom.c:98 mlx5_devcom_register_device() error: uninitialized symbol 'tmp_dev'.
-drivers/opp/core.c:2710 dev_pm_opp_xlate_performance_state() warn: variable dereferenced before check 'src_table' (see line 2698)
-drivers/usb/cdns3/cdns3-starfive.c:23: warning: expecting prototype for cdns3(). Prototype was for USB_STRAP_HOST() instead
-fs/btrfs/volumes.c:6404 btrfs_map_block() error: we previously assumed 'mirror_num_ret' could be null (see line 6242)
-fs/smb/client/cifsfs.c:982 cifs_smb3_do_mount() warn: possible memory leak of 'cifs_sb'
-fs/smb/client/cifssmb.c:4089 CIFSFindFirst() warn: missing error code? 'rc'
-fs/smb/client/cifssmb.c:4216 CIFSFindNext() warn: missing error code? 'rc'
-fs/smb/client/connect.c:2775 cifs_match_super() error: 'tlink' dereferencing possible ERR_PTR()
-fs/smb/client/connect.c:2974 generic_ip_connect() error: we previously assumed 'socket' could be null (see line 2962)
-lib/kunit/test.c:336 __kunit_abort() warn: ignoring unreachable code.
-make[2]: *** No rule to make target 'rustdoc'.
-{standard input}: Error: local label `"2" (instance number 9 of a fb label)' is not defined
-{standard input}:1097: Error: pcrel too far
+Cheers,
+Conor.
 
-Error/Warning ids grouped by kconfigs:
+--NpVXOp9NH7FQ7UcR
+Content-Type: application/pgp-signature; name="signature.asc"
 
-gcc_recent_errors
-|-- arm-randconfig-r046-20230615
-|   `-- drivers-media-platform-verisilicon-rockchip_vpu981_hw_av1_dec.c:warning:the-frame-size-of-bytes-is-larger-than-bytes
-|-- i386-allyesconfig
-|   `-- drivers-leds-leds-cht-wcove.c:warning:no-previous-prototype-for-cht_wc_leds_brightness_get
-|-- i386-randconfig-m021-20230614
-|   |-- drivers-opp-core.c-dev_pm_opp_xlate_performance_state()-warn:variable-dereferenced-before-check-src_table-(see-line-)
-|   |-- fs-smb-client-cifsfs.c-cifs_smb3_do_mount()-warn:possible-memory-leak-of-cifs_sb
-|   |-- fs-smb-client-cifssmb.c-CIFSFindFirst()-warn:missing-error-code-rc
-|   |-- fs-smb-client-cifssmb.c-CIFSFindNext()-warn:missing-error-code-rc
-|   |-- fs-smb-client-connect.c-cifs_match_super()-error:tlink-dereferencing-possible-ERR_PTR()
-|   `-- fs-smb-client-connect.c-generic_ip_connect()-error:we-previously-assumed-socket-could-be-null-(see-line-)
-|-- microblaze-randconfig-m031-20230614
-|   `-- drivers-opp-core.c-dev_pm_opp_xlate_performance_state()-warn:variable-dereferenced-before-check-src_table-(see-line-)
-|-- mips-randconfig-m041-20230615
-|   |-- drivers-opp-core.c-dev_pm_opp_xlate_performance_state()-warn:variable-dereferenced-before-check-src_table-(see-line-)
-|   |-- fs-btrfs-volumes.c-btrfs_map_block()-error:we-previously-assumed-mirror_num_ret-could-be-null-(see-line-)
-|   `-- lib-kunit-test.c-__kunit_abort()-warn:ignoring-unreachable-code.
-|-- parisc-allyesconfig
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-defconfig
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-c004-20230614
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-r001-20230616
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-r011-20230615
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-r021-20230615
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-r036-20230615
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc-randconfig-s042-20230614
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- parisc64-defconfig
-|   `-- arch-parisc-kernel-pdt.c:warning:no-previous-prototype-for-arch_report_meminfo
-|-- riscv-allmodconfig
-|   `-- drivers-usb-cdns3-cdns3-starfive.c:warning:expecting-prototype-for-cdns3().-Prototype-was-for-USB_STRAP_HOST()-instead
-|-- riscv-allyesconfig
-|   `-- drivers-usb-cdns3-cdns3-starfive.c:warning:expecting-prototype-for-cdns3().-Prototype-was-for-USB_STRAP_HOST()-instead
-|-- riscv-randconfig-s031-20230612
-|   |-- arch-riscv-kernel-signal.c:sparse:sparse:incorrect-type-in-assignment-(different-address-spaces)-expected-void-noderef-__user-datap-got-void
-|   `-- arch-riscv-kernel-signal.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-__x-got-void-noderef-__user-assigned-datap
-|-- sh-allmodconfig
-|   |-- drivers-char-mem.c:error:implicit-declaration-of-function-unxlate_dev_mem_ptr
-|   |-- standard-input:Error:local-label-(instance-number-of-a-fb-label)-is-not-defined
-|   `-- standard-input:Error:pcrel-too-far
-|-- sh-j2_defconfig
-|   `-- drivers-char-mem.c:error:implicit-declaration-of-function-unxlate_dev_mem_ptr
-|-- x86_64-allyesconfig
-|   `-- drivers-leds-leds-cht-wcove.c:warning:no-previous-prototype-for-cht_wc_leds_brightness_get
-`-- x86_64-randconfig-m001-20230612
-    |-- drivers-net-ethernet-mellanox-mlx5-core-lib-devcom.c-mlx5_devcom_register_device()-error:uninitialized-symbol-tmp_dev-.
-    |-- fs-smb-client-cifsfs.c-cifs_smb3_do_mount()-warn:possible-memory-leak-of-cifs_sb
-    |-- fs-smb-client-cifssmb.c-CIFSFindFirst()-warn:missing-error-code-rc
-    |-- fs-smb-client-cifssmb.c-CIFSFindNext()-warn:missing-error-code-rc
-    |-- fs-smb-client-connect.c-cifs_match_super()-error:tlink-dereferencing-possible-ERR_PTR()
-    `-- fs-smb-client-connect.c-generic_ip_connect()-error:we-previously-assumed-socket-could-be-null-(see-line-)
-clang_recent_errors
-|-- hexagon-buildonly-randconfig-r002-20230615
-|   |-- lib-kunit-executor_test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|   `-- lib-kunit-test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|-- hexagon-randconfig-r025-20230615
-|   |-- lib-kunit-executor_test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|   `-- lib-kunit-test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|-- hexagon-randconfig-r041-20230615
-|   |-- lib-kunit-executor_test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|   `-- lib-kunit-test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|-- i386-randconfig-i001-20230614
-|   `-- security-apparmor-policy_unpack.c:warning:expecting-prototype-for-verify_dfa_accept_xindex().-Prototype-was-for-verify_dfa_accept_index()-instead
-|-- i386-randconfig-i012-20230615
-|   `-- security-apparmor-policy_unpack.c:warning:expecting-prototype-for-verify_dfa_accept_xindex().-Prototype-was-for-verify_dfa_accept_index()-instead
-|-- i386-randconfig-i013-20230615
-|   `-- drivers-gpu-drm-i915-display-intel_display_power.h:error:declaration-of-struct-seq_file-will-not-be-visible-outside-of-this-function-Werror-Wvisibility
-|-- riscv-buildonly-randconfig-r001-20230615
-|   |-- drivers-block-pktcdvd.c:warning:stack-frame-size-()-exceeds-limit-()-in-pkt_handle_packets
-|   |-- drivers-scsi-FlashPoint.c:warning:stack-frame-size-()-exceeds-limit-()-in-FlashPoint_HandleInterrupt
-|   `-- fs-ntfs3-super.c:warning:stack-frame-size-()-exceeds-limit-()-in-ntfs_fill_super
-|-- riscv-randconfig-r042-20230615
-|   `-- lib-kunit-test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|-- s390-randconfig-r026-20230615
-|   |-- lib-kunit-executor_test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|   `-- lib-kunit-test.c:warning:cast-from-void-(-)(const-void-)-to-kunit_action_t-(aka-void-(-)(void-)-)-converts-to-incompatible-function-type
-|-- x86_64-randconfig-a005-20230614
-|   |-- net-netfilter-ipvs-ip_vs_proto.o:warning:objtool:.init.text:unexpected-end-of-section
-|   `-- security-apparmor-policy_unpack.c:warning:expecting-prototype-for-verify_dfa_accept_xindex().-Prototype-was-for-verify_dfa_accept_index()-instead
-|-- x86_64-randconfig-a015-20230615
-|   `-- drivers-net-ethernet-jme.o:warning:objtool:.text.jme_check_link:unexpected-end-of-section
-|-- x86_64-randconfig-r003-20230616
-|   `-- security-apparmor-policy_unpack.c:warning:expecting-prototype-for-verify_dfa_accept_xindex().-Prototype-was-for-verify_dfa_accept_index()-instead
-`-- x86_64-rhel-8.3-rust
-    |-- make:No-rule-to-make-target-rustdoc-.
-    `-- security-apparmor-policy_unpack.c:warning:expecting-prototype-for-verify_dfa_accept_xindex().-Prototype-was-for-verify_dfa_accept_index()-instead
+-----BEGIN PGP SIGNATURE-----
 
-elapsed time: 733m
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZIyxbgAKCRB4tDGHoIJi
+0hRCAPwIBYDKio6eKwjALxf7btC6cRpqymJvrXVISsExsJ2rGgD/ZsjJuro0F/cO
+PcC1ID8rsPY3eXz6PZ75Cx2uYr3Dogo=
+=NrG2
+-----END PGP SIGNATURE-----
 
-configs tested: 135
-configs skipped: 5
+--NpVXOp9NH7FQ7UcR--
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                        nsimosci_defconfig   gcc  
-arc                  randconfig-r043-20230615   gcc  
-arc                           tb10x_defconfig   gcc  
-arm                              alldefconfig   clang
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                         axm55xx_defconfig   gcc  
-arm                        clps711x_defconfig   gcc  
-arm                                 defconfig   gcc  
-arm                          gemini_defconfig   gcc  
-arm                           imxrt_defconfig   gcc  
-arm                      integrator_defconfig   gcc  
-arm                             mxs_defconfig   clang
-arm                         nhk8815_defconfig   gcc  
-arm                  randconfig-r046-20230615   gcc  
-arm                         s5pv210_defconfig   clang
-arm                        spear6xx_defconfig   gcc  
-arm                           sunxi_defconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-csky                                defconfig   gcc  
-hexagon      buildonly-randconfig-r002-20230615   clang
-hexagon              randconfig-r024-20230615   clang
-hexagon              randconfig-r025-20230615   clang
-hexagon              randconfig-r035-20230615   clang
-hexagon              randconfig-r041-20230615   clang
-hexagon              randconfig-r045-20230615   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230614   clang
-i386                 randconfig-i002-20230614   clang
-i386                 randconfig-i003-20230614   clang
-i386                 randconfig-i004-20230614   clang
-i386                 randconfig-i005-20230614   clang
-i386                 randconfig-i006-20230614   clang
-i386                 randconfig-i011-20230615   clang
-i386                 randconfig-i012-20230615   clang
-i386                 randconfig-i013-20230615   clang
-i386                 randconfig-i014-20230615   clang
-i386                 randconfig-i015-20230615   clang
-i386                 randconfig-i016-20230615   clang
-i386                 randconfig-r015-20230615   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r013-20230615   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r012-20230615   gcc  
-m68k                 randconfig-r016-20230615   gcc  
-m68k                 randconfig-r033-20230615   gcc  
-m68k                        stmark2_defconfig   gcc  
-m68k                           virt_defconfig   gcc  
-microblaze   buildonly-randconfig-r005-20230615   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                  cavium_octeon_defconfig   clang
-mips                     decstation_defconfig   gcc  
-mips                    maltaup_xpa_defconfig   gcc  
-mips                        omega2p_defconfig   clang
-mips                 randconfig-r023-20230615   gcc  
-mips                   sb1250_swarm_defconfig   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r005-20230616   gcc  
-nios2                randconfig-r014-20230615   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc               randconfig-r001-20230616   gcc  
-parisc               randconfig-r011-20230615   gcc  
-parisc               randconfig-r021-20230615   gcc  
-parisc               randconfig-r036-20230615   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                        cell_defconfig   gcc  
-powerpc                     kilauea_defconfig   clang
-powerpc                      makalu_defconfig   gcc  
-powerpc                     ppa8548_defconfig   clang
-powerpc                      walnut_defconfig   clang
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv        buildonly-randconfig-r001-20230615   clang
-riscv                               defconfig   gcc  
-riscv                randconfig-r042-20230615   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r026-20230615   clang
-s390                 randconfig-r044-20230615   clang
-sh                               allmodconfig   gcc  
-sh                                  defconfig   gcc  
-sh                         ecovec24_defconfig   gcc  
-sh                               j2_defconfig   gcc  
-sh                          kfr2r09_defconfig   gcc  
-sh                          landisk_defconfig   gcc  
-sh                   randconfig-r031-20230615   gcc  
-sparc                            allyesconfig   gcc  
-sparc        buildonly-randconfig-r003-20230615   gcc  
-sparc        buildonly-randconfig-r004-20230615   gcc  
-sparc                               defconfig   gcc  
-sparc                       sparc32_defconfig   gcc  
-sparc64              randconfig-r004-20230616   gcc  
-sparc64              randconfig-r006-20230616   gcc  
-sparc64              randconfig-r022-20230615   gcc  
-sparc64              randconfig-r032-20230615   gcc  
-um                               alldefconfig   gcc  
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230614   clang
-x86_64               randconfig-a002-20230614   clang
-x86_64               randconfig-a003-20230614   clang
-x86_64               randconfig-a004-20230614   clang
-x86_64               randconfig-a005-20230614   clang
-x86_64               randconfig-a006-20230614   clang
-x86_64               randconfig-a011-20230615   clang
-x86_64               randconfig-a012-20230615   clang
-x86_64               randconfig-a013-20230615   clang
-x86_64               randconfig-a014-20230615   clang
-x86_64               randconfig-a015-20230615   clang
-x86_64               randconfig-a016-20230615   clang
-x86_64               randconfig-r003-20230616   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+--===============7988192310637232002==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7988192310637232002==--
+
