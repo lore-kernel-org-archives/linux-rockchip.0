@@ -4,56 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B7FEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 06:22:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EB7EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jun 2023 06:22:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QtNvJQWqcsA9N6k7mB14/0mudkhLkVV8wdlrMIKSyqM=; b=atu2ZnQXMCan/s
-	O5quMrOI+/kBQUrpg/hYkXpEmzTqGRkDYrOBVsd/wBOxCYyQmlJUk7r0Kpr5Q+OcEZ7HtjUcNPvcR
-	IkY9mPMxfPonR3u7WfHX9dDTmiGpmK2ducpdHXjf7v7bD1k2uwTnHJV+SQfTJydOQ9yG/D2xMqBck
-	jp2I3ijoN488enJumx4GPTxWb2lqSH+b3Eviy17Dcker8JO+WLyx54Xi9JgkYI1qU94W/rgB6//ey
-	fYOLfSdqeDFtViC+zgMgExSavRHpTpOhHqAhq38hP1K9pefVyAL1QrdOvBVOge1/qbTBUri24Gu9F
-	x2ZAH7W42Kmh8B+H1F4Q==;
+	List-Owner; bh=Nx8nrdXdmFL/geCYYrMPVrE0uyCfg9Jygx0xXCJQ+Qg=; b=wz/xN5bfrbCKjI
+	9qAMuuPVgOXEGEvqRcGM9JOZ6lqdR17YhGhIIprbCbLFy0w6mk4RvakXc/xI9PN6pJkUgY/fHUFXv
+	bWccPY69c9uqdt1DbimYplzilStQ2/7yGG78IfJdOydVEucWWwf5SA/7YFO9ll470ZFfnzb6fwygI
+	HWfKEN65dN9auC8dd6/+SUMMHRw/67LatwqjSK8UXGPVnpeYrwCS3rmUk84pPNKv9OrscV8IwxHRS
+	p/cV4geU85fVRm9jjQtptsBJ+/kvPoNMTJqNOP3gV5uDErPgWCOpQU+WjnYwdBMJjxXcT48v/VyWB
+	3eVMUNWT7/2oV4sEHCHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qA2qd-00GzrU-25;
-	Fri, 16 Jun 2023 06:22:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qA2r5-00H0FS-07;
+	Fri, 16 Jun 2023 06:22:43 +0000
+Received: from metis.ext.pengutronix.de ([85.220.165.71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qA2qN-00GzcA-01
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 16 Jun 2023 06:21:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=8X8ubOp7RUbVtjaoNNeSYKVGlRURpURfwRF/gzpS0QE=; b=jBzJ3FBUmlXKdJ9bszvQQP1GD7
-	PUz711D9oks+SvFz6Fr2ETYzy1nARlVTuhhigEXEcUTizWc+9vs7d47YGZEcCsuZoDVJyNIwykhBG
-	LvGNGrkIIeoPY3xZXtkVU+UmA0wHMiKgjwZ/Y9g7U62VXgcJ+WOC++8BtDy0d776W5O1jGMWHecAH
-	B7Qz0ox3pXkgJCNOJR7PYlsf0Oy7xstvo2HknqVB/iH36h2P/52wIo8326mKBNguUo9msMW0FCFIi
-	zUB9WuFeYxMNxRb6OvybgrQsc4dJLePY86k6pdYFcyZ7V7Vhire/lB3AmcAa9e6WdxU4rFqJH7gye
-	GyGURKqg==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qA2qH-00Corg-08
+	id 1qA2qJ-00GzZu-1E
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Jun 2023 06:21:57 +0000
+	Fri, 16 Jun 2023 06:22:01 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q9-0006q3-7s; Fri, 16 Jun 2023 08:21:45 +0200
+	id 1qA2q9-0006qc-Kq; Fri, 16 Jun 2023 08:21:45 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q8-007ky7-CY; Fri, 16 Jun 2023 08:21:44 +0200
+	id 1qA2q8-007kyZ-Q8; Fri, 16 Jun 2023 08:21:44 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qA2q5-003FVd-JF; Fri, 16 Jun 2023 08:21:41 +0200
+	id 1qA2q5-003FW2-NS; Fri, 16 Jun 2023 08:21:41 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -74,9 +59,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v6 22/26] dt-bindings: devfreq: event: rockchip,dfi: Add rk3588 support
-Date: Fri, 16 Jun 2023 08:20:57 +0200
-Message-Id: <20230616062101.601837-23-s.hauer@pengutronix.de>
+Subject: [PATCH v6 26/26] arm64: dts: rockchip: rk3588s: Add DFI
+Date: Fri, 16 Jun 2023 08:21:01 +0200
+Message-Id: <20230616062101.601837-27-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230616062101.601837-1-s.hauer@pengutronix.de>
 References: <20230616062101.601837-1-s.hauer@pengutronix.de>
@@ -86,8 +71,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230616_072153_639788_C2DFAD88 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20230615_232155_421610_6B2837BF 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,49 +89,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds rockchip,rk3588-dfi to the list of compatibles. Unlike ealier
-SoCs the rk3588 has four interrupts (one for each channel) instead of
-only one, so increase the number of allowed interrupts to four.
+The DFI unit can be used to measure DRAM utilization using perf. Add the
+node to the device tree. The DFI needs a rockchip,pmu phandle to the pmu
+containing registers for SDRAM configuration details. This is added in
+this patch as well.
 
-Link: https://lore.kernel.org/r/20230524083153.2046084-23-s.hauer@pengutronix.de
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Link: https://lore.kernel.org/r/20230524083153.2046084-26-s.hauer@pengutronix.de
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
 
 Notes:
     Changes since v4:
     - new patch
-    
-    Changes since v5:
-    - drop interrupt-names property
-    
-    Changes since v4:
-    - new patch
 
- .../devicetree/bindings/devfreq/event/rockchip,dfi.yaml       | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-index e8b64494ee8bd..50d3fabe958d5 100644
---- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-+++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-@@ -14,6 +14,7 @@ properties:
-     enum:
-       - rockchip,rk3399-dfi
-       - rockchip,rk3568-dfi
-+      - rockchip,rk3588-dfi
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 657c019d27fa9..4a445d8704c8f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -388,6 +388,11 @@ scmi_shmem: sram@0 {
+ 		};
+ 	};
  
-   clocks:
-     maxItems: 1
-@@ -23,7 +24,8 @@ properties:
-       - const: pclk_ddr_mon
++	pmu1grf: syscon@fd58a000 {
++		compatible = "rockchip,rk3588-pmugrf", "syscon", "simple-mfd";
++		reg = <0x0 0xfd58a000 0x0 0x10000>;
++	};
++
+ 	sys_grf: syscon@fd58c000 {
+ 		compatible = "rockchip,rk3588-sys-grf", "syscon";
+ 		reg = <0x0 0xfd58c000 0x0 0x1000>;
+@@ -1112,6 +1117,17 @@ qos_vop_m1: qos@fdf82200 {
+ 		reg = <0x0 0xfdf82200 0x0 0x20>;
+ 	};
  
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 4
- 
-   reg:
-     maxItems: 1
++	dfi: dfi@fe060000 {
++		reg = <0x00 0xfe060000 0x00 0x10000>;
++		compatible = "rockchip,rk3588-dfi";
++		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "ch0", "ch1", "ch2", "ch3";
++		rockchip,pmu = <&pmu1grf>;
++	};
++
+ 	gmac1: ethernet@fe1c0000 {
+ 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+ 		reg = <0x0 0xfe1c0000 0x0 0x10000>;
 -- 
 2.39.2
 
