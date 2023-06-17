@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA7BFEB64DB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 18:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF6EEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 18:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=e7Sby7ILBI23rI/NON7n9hG2amrJn5BThdLGPgprkZs=; b=yc0mxYBX9JWCSMgmvg7vtZpGOW
-	/akx35tbP/hBZiEr+DutMBhNA+kwSiurE4FF4+A5NgXJjojfZqT1MGyDdKtbgnzer+jCfAK1R8bKw
-	ops8tKMe1hRm/qunYpOzy42TwI2Snh3X8CkQo8XH+1V4G9JG6XXZUBOgvB1m7EV+nXd1wouJa1qsv
-	Kslsn/hqrbbmekEabNqKwNy/as0mVEYviPQoz8tgy4ne/8KgxmoWK845CkwZEDsVXyxKWJwVvyGCI
-	ZFXWRWm1SqUzTX8lCVwzGFZwCYrRlu4WmprkwiV7FpIcqusBCWqusfz3x3yvMQYDo6+MusBzbD19d
-	GkJNHpmQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TwYHVxrczI2aNWB7TY8RSoC/JWg8E41NxJkythh89s4=; b=AnyV9tmmQzPzO6
+	rhfYlVQLzXGQJSRRnHsG6XbX8Fr0UFFw+p3o3X2LoZYD9NVCf36y3aATcQfHQNyIsYPNYXH0YR/iH
+	BY2rGio6+lm/pnmHF28KtLsU+/e8E6LALoM1ey4eDxchH+MY2RX3t0/281oPI1p4xr2Cw8S+Dfik2
+	F7DoOYIBD9Deq0xFo6uPA0TRKBakYKQbeo6Hx6gYY/i86LvOKmuhh/IZlmtD9RDYq1tC4fzI31eJh
+	EjQ3woY39vCB9XyU0loR2CsDYL/0gMFvtY5SLS/59kMa56Q4qyePS51KeAyEqTaCNWE66IUlqWDsn
+	E7LxhNJCigBQ4pZVrg2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAacT-00462W-01;
-	Sat, 17 Jun 2023 18:25:53 +0000
+	id 1qAacS-00461z-0D;
+	Sat, 17 Jun 2023 18:25:52 +0000
 Received: from s.wrqvtbkv.outbound-mail.sendgrid.net ([149.72.123.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAacQ-00460Y-0H
+	id 1qAacO-0045zr-2G
 	for linux-rockchip@lists.infradead.org;
-	Sat, 17 Jun 2023 18:25:51 +0000
+	Sat, 17 Jun 2023 18:25:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=8prRfbE+6BMjBYkBg8J9q7EYZh9DJvA0OE++z4Z4keE=;
-	b=ZhZMK7R6ej9z8VN1hjk9bVnrycXXqn/4jMsTTlNtagZhUsDaF/J22/omdiwDdlFybEzR
-	Od9N8qcTvXYd4JAn/TmfPsP28WgwY6Pca4/aDvoaHYpldx0KBz1YeT6cF8rOO0xrztVNgL
-	HPZcwfwxxfzMbzvnS3NQbv9m4900wbSaUQSIwe0xc/t0Y53+2+vxj455KZOoo0RCn7wtlE
-	8eB/TGw1ENXAIZ3HSFOHjwb/7dpcO9P1CUaEnD4Xtsqn111d0Hjv1phsUly3R96CvqfzBB
-	BZjdKxKPNB1HFy8VmHriTHyMCBxS8/Slb/JIFuXr3qd7hUh+/Ayrc11h+dZE7jdA==
-Received: by filterdrecv-66949dbc98-556jz with SMTP id filterdrecv-66949dbc98-556jz-1-648DFAAA-23
-        2023-06-17 18:25:46.920953702 +0000 UTC m=+3264358.699757555
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=EZjVZREN01PWnkecDc4m5lCo/JtuKVVXTJsEdeEOdg8=;
+	b=hQDnLUHbQZH9KfpZwBRovWXzOu/XVbbjTrf3x1f6Dy5nxloVFie4p2zywi6melbP46GZ
+	/fa3V+mdDUVCSeSkF9Fn4PWKGzoonbL/iBsAf0lHvKzJWxGOJbS5LTEn/lya3lNIIhKG38
+	KuabaFAJ1KJVyJ9SisKR0BltkU8mpg6G+KGEHEQywZ17ywqFERJPnXQF3Qy3Ja1KmQUpDF
+	HGZ/Vq1vJlGASgSp1ASaXO5ILstboC1IyDMnW4GJvA1aFun+8RpL+b5tKdLXFfVRMvxD91
+	wbcKS/bYbacqyP/YTrnachADeSsbRQ3P/DP+B6MJup0mmcO+BnJ6FmR4zeilxJqw==
+Received: by filterdrecv-d7bbbc8bf-zf9x9 with SMTP id filterdrecv-d7bbbc8bf-zf9x9-1-648DFAA7-10
+        2023-06-17 18:25:43.829440288 +0000 UTC m=+3264351.627270026
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-9 (SG)
 	with ESMTP
-	id bSTYm9X4SBijI0tVW31gnw
-	Sat, 17 Jun 2023 18:25:46.700 +0000 (UTC)
+	id Nw1GHX5WQdWvCqSwbmqvyw
+	Sat, 17 Jun 2023 18:25:43.459 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 2/2] iommu: rockchip: Allocate tables from all available
- memory for IOMMU v2
-Date: Sat, 17 Jun 2023 18:25:47 +0000 (UTC)
-Message-Id: <20230617182540.3091374-3-jonas@kwiboo.se>
+Subject: [PATCH v3 0/2] iommu: rockchip: Fix directory table address encoding
+Date: Sat, 17 Jun 2023 18:25:44 +0000 (UTC)
+Message-Id: <20230617182540.3091374-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230617182540.3091374-1-jonas@kwiboo.se>
-References: <20230617182540.3091374-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h6BI1m9mIfF17oGYg?=
- =?us-ascii?Q?zhIBYZRmTzhrjNczQSLhl6u7WvKsd+ZpARA1fE8?=
- =?us-ascii?Q?B3XOD8sCVjnurgnuXDQ1qBePWUajf=2F5JGh2pJ61?=
- =?us-ascii?Q?XLKtbB+FeJaPIZzPAoxxT4qnltGBr5CKt6eBL+a?=
- =?us-ascii?Q?k=2F0Mrp3u9q9YpcdcPNwFcxCEmzwzmRjzYWZ2XVl?=
- =?us-ascii?Q?cfr9sgWx4D1e=2Fr3pZCdSw=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h4BqyTv2htkF2lNGw?=
+ =?us-ascii?Q?0iSDwD2SgTmfxp5qa7u3fdNgmCQtZ+zr8KKPzgj?=
+ =?us-ascii?Q?baUueHLCyyWpIyByEJgWIV0EZo4DoeGr4=2F5xlys?=
+ =?us-ascii?Q?0uq329plWcimN4FWaQqx9Wf=2Fg5Px+ohcjUTNimP?=
+ =?us-ascii?Q?4Xh6QDejdPPXJZqNxTBPlGaCq2OTReS=2FOpQsJUv?=
+ =?us-ascii?Q?CPMcqzhvgs+9une0UjJ3g=3D=3D?=
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
 	Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, iommu@lists.linux.dev,
@@ -67,8 +63,8 @@ Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, iommu@lists.linux.dev,
 	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230617_112550_185417_F898570E 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20230617_112549_096584_C094A336 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,70 +81,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-IOMMU v2 found in newer Rockchip SoCs, e.g. RK356x and RK3588, support
-placing directory and page tables in up to 40-bit addressable physical
-memory.
+The address to the directory table is currently encoded using an
+incorrect bit layout when configured into the DTE_ADDR reg on IOMMU v2.
 
-Remove the use of GFP_DMA32 flag for IOMMU v2 now that the physical
-address to the directory table is correctly written to DTE_ADDR.
+This currently do not cause any issue because the directory and page
+tables is allocated in memory below 4GB thanks to the use of the
+GFP_DMA32 flag.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v3:
-- rework to only affect IOMMU v2
+Testing has shown that the directory table address should be encoded
+using the same bit layout as the page table and memory page addresses.
 
-v2:
-- no change
+Only removing the GFP_DMA32 on a RK3568 device with 8GB of memory will
+result in a page fault similar to:
 
- drivers/iommu/rockchip-iommu.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+[    0.907236] rk_iommu fe043e00.iommu: Page fault at 0x00000000ff801000 of type read
+[    0.907264] rk_iommu fe043e00.iommu: iova = 0x00000000ff801000: dte_index: 0x3fe pte_index: 0x1 page_offset: 0x0
+[    0.907281] rk_iommu fe043e00.iommu: mmu_dte_addr: 0x000000010189a000 dte@0x000000010189aff8: 0x1722101 valid: 1 pte@0x0000000101722004: 0x2c01107 valid: 1 page@0x0000000102c01000 flags: 0x106
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index ae42959bc490..8ff69fbf9f65 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -99,6 +99,7 @@ struct rk_iommu_ops {
- 	u32 (*mk_dtentries)(dma_addr_t pt_dma);
- 	u32 (*mk_ptentries)(phys_addr_t page, int prot);
- 	u64 dma_bit_mask;
-+	gfp_t gfp_flags;
- };
- 
- struct rk_iommu {
-@@ -727,7 +728,7 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
- 	if (rk_dte_is_pt_valid(dte))
- 		goto done;
- 
--	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | GFP_DMA32);
-+	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | rk_ops->gfp_flags);
- 	if (!page_table)
- 		return ERR_PTR(-ENOMEM);
- 
-@@ -1076,7 +1077,7 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
- 	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
- 	 * Allocate one 4 KiB page for each table.
- 	 */
--	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | GFP_DMA32);
-+	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | rk_ops->gfp_flags);
- 	if (!rk_domain->dt)
- 		goto err_free_domain;
- 
-@@ -1377,6 +1378,7 @@ static struct rk_iommu_ops iommu_data_ops_v1 = {
- 	.mk_dtentries = &rk_mk_dte,
- 	.mk_ptentries = &rk_mk_pte,
- 	.dma_bit_mask = DMA_BIT_MASK(32),
-+	.gfp_flags = GFP_DMA32,
- };
- 
- static struct rk_iommu_ops iommu_data_ops_v2 = {
-@@ -1384,6 +1386,7 @@ static struct rk_iommu_ops iommu_data_ops_v2 = {
- 	.mk_dtentries = &rk_mk_dte_v2,
- 	.mk_ptentries = &rk_mk_pte_v2,
- 	.dma_bit_mask = DMA_BIT_MASK(40),
-+	.gfp_flags = 0,
- };
- 
- static const struct of_device_id rk_iommu_dt_ids[] = {
+This series fixes this by using the existing mk_dtentries instead of the
+dma_addr_dte ops to encode the directory table address, removes unused
+ops and finally removes the GFP_DMA32 flag to allow for directory and
+page tables to be allocated in memory above 4GB on IOMMU v2.
+
+Changes in v3:
+- merge patch 1 and 2
+- only remove GFP_DMA32 flag for IOMMU v2
+
+Changes in v2:
+- no changes, rebased on next-20230615
+
+This series can also be found at [1].
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20230616-iommu
+
+Jonas Karlman (2):
+  iommu: rockchip: Fix directory table address encoding
+  iommu: rockchip: Allocate tables from all available memory for IOMMU
+    v2
+
+ drivers/iommu/rockchip-iommu.c | 50 +++++++---------------------------
+ 1 file changed, 10 insertions(+), 40 deletions(-)
+
 -- 
 2.40.1
 
