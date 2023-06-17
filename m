@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8CDDEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 22:23:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE983EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 22:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=KVz004JbTfNoLY88B8qDE33ycijf9zTe9dYSZq63DQM=; b=SRjKTu1ewvbbdNm6wMlXwx7gG0
-	a2/MaFA4wVIATBM93RnElFq3auEVWPBV04InOwhFNlYjCt2mH7mYsFOiUqnMlIb2gFmjWTZEttgYE
-	/vVu/DmQsXEI1xN75+mPnT+eoqIc+bnF/sY7+dkvOA8rW1P7HLXevp5+CX3DRwPPfJqHyjyLTNlPU
-	S3A1hHdFbljQS3B8unGGT4qn1TXxbo9SghkAXuXItCsvzMY8LVcgXHEcwI0wPRlWMxsymOi4YjJAS
-	Mf1rVi1ARE731pf2Vb4bzTcpcRfJjh4cJH5XEMHowg0P4LRCSR7gsDbigXZm8jDM66XVJn3RXrKLC
-	uQ0EwCAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0U/5lZnQrU7t+rNOmoevtkDW+Gefa2GHt3bFdFyCsjM=; b=NYwi4VeBjLOnbf
+	kYpphmrGVgX40135Y/zeKHOl4NPLQHsyVAlNQv0pmmfFuyH+nziR3BnQHUJRWhdcOsh+CWgeuKh2s
+	bm8pmEoJ7r0etamZhTsXzMmL3WKL2Udk4CTpLY9ofwFBHod27PB2lnEbaeLa6Uibs2jbZhmfS8MQQ
+	XvPlxZAycERA24m8wox2855wDifZaoEUepVqL43lm8CIrJtzxB6pbt3JpgCuhWdE4Ja4PGoVklDPB
+	eMOk5vPt9ZlH8M0LpP6V3MkYmfJD+LBDQZCr7uSPcu1aS8uZpkoAVIJ75n/VxXGZI2lwc+lev29RS
+	bGJKVc80R99xWn9WNwYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAeKM-004V5x-30;
-	Sat, 17 Jun 2023 22:23:26 +0000
-Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
+	id 1qAejg-004YH7-2j;
+	Sat, 17 Jun 2023 22:49:36 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAeKC-004V2k-0w
+	id 1qAejd-004YFq-0j
 	for linux-rockchip@lists.infradead.org;
-	Sat, 17 Jun 2023 22:23:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=knW5hfOdRlNb6ad4KcvWMFXEOrQEnk5DYqTPo5HmSZE=;
-	b=Lcs4O2j3t0Zya8gHh1y5Xz1vPnnl19E8vEuvH6W8bEEnX+iTrflGvDeo1iZzMttdvVL+
-	98xgNX3tnCR8MrbFidbigyG/aE4uhdKJDEp0YEq++j+djJJlE/DWVKJ4NczNF+N/3DFhyw
-	VtLIdf3jFLfBo4Uzv6ppFPZdBJBEDPq1fsZAcxAu66me8wCPAxwun24TTtffKiNE8jqg39
-	amqDdIg9yeNRgixtwQ45aS3cCHoKVNRmlGPfRK65vQ6RswoMdT5lVyUIVkstnKvLcAXpkB
-	//k+G6QHah1WTLcZ0Z1XQL6P2OivTVqscp00Gi5avguR1rdChqWbf+40lYB4AvQg==
-Received: by filterdrecv-66949dbc98-dbt7m with SMTP id filterdrecv-66949dbc98-dbt7m-1-648E3250-7
-        2023-06-17 22:23:12.210230445 +0000 UTC m=+3278605.771189366
-Received: from bionic.localdomain (unknown)
-	by geopod-ismtpd-1 (SG)
-	with ESMTP
-	id 4XYLAl6XSH2KsNiMfk1_gA
-	Sat, 17 Jun 2023 22:23:12.024 +0000 (UTC)
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 1/2] drm/fourcc: Add NV20 and NV30 YUV formats
-Date: Sat, 17 Jun 2023 22:23:12 +0000 (UTC)
-Message-Id: <20230617222307.3145714-2-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230617222307.3145714-1-jonas@kwiboo.se>
-References: <20230617222307.3145714-1-jonas@kwiboo.se>
+	Sat, 17 Jun 2023 22:49:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1687042166; bh=eyC5JI8V8DNnn2DGE7rCYRCn5Al5AnVBD9PbxGzqK2g=;
+	h=From:To:Cc:Subject:Date:From;
+	b=oKUwMM8cgEjhyZLWJWVJisv9Ze3H3GBrDTrEP/0OLHL9U0g8IcZNRG1MRdNl3aAKH
+	 z/EGNYpVQFTVKGNW59SfocIxaEoKq8EIWbpGcFFN7XEi7p/SeQXOVgj4tqUPave0Tb
+	 wUP3AWpKQZrMz/jz0MqT/ScvrpWQzoJXcI2sxArA=
+From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+To: linux-rockchip@lists.infradead.org
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Archit Taneja <architt@codeaurora.org>,
+	Philippe CORNU <philippe.cornu@st.com>,
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH v2] drm: bridge: dw-mipi-dsi: Fix enable/disable of DSI controller
+Date: Sun, 18 Jun 2023 00:48:25 +0200
+Message-ID: <20230617224915.1923630-1-megi@xff.cz>
 MIME-Version: 1.0
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h=2FnEEJCFmPMWB71Ft?=
- =?us-ascii?Q?+V7t0A=2FzSB2WM2Yr+B+lLlEGl35eOZtuuZWJsdu?=
- =?us-ascii?Q?F1uSpyKMXxuqrraykNbNcSNPUH9XsC2f+e9Gj6X?=
- =?us-ascii?Q?+Ev4TJ5ld2g=2FosOsQHfO5QMiljk2lZDW67c84dA?=
- =?us-ascii?Q?sZRj6Eye9DBE6AT6fnrDxTeecHj0YkIp38ok6eE?=
- =?us-ascii?Q?c5BMSDlayXwb6Wm4q851Q=3D=3D?=
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
-	<airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huang
-	<hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230617_152316_414666_8729688F 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230617_154933_713130_A76ACACC 
+X-CRM114-Status: GOOD (  18.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,60 +72,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DRM_FORMAT_NV20 and DRM_FORMAT_NV30 formats is the 2x1 and non-subsampled
-variant of NV15, a 10-bit 2-plane YUV format that has no padding between
-components. Instead, luminance and chrominance samples are grouped into 4s
-so that each group is packed into an integer number of bytes:
+From: Ondrej Jirman <megi@xff.cz>
 
-YYYY = UVUV = 4 * 10 bits = 40 bits = 5 bytes
+Before this patch, booting to Linux VT and doing a simple:
 
-The '20' and '30' suffix refers to the optimum effective bits per pixel
-which is achieved when the total number of luminance samples is a multiple
-of 4.
+  echo 2 > /sys/class/graphics/fb0/blank
+  echo 0 > /sys/class/graphics/fb0/blank
 
-V2: Added NV30 format
+would result in failures to re-enable the panel. Mode set callback is
+called only once during boot in this scenario, while calls to
+enable/disable callbacks are balanced afterwards. The driver doesn't
+work unless userspace calls modeset before enabling the CRTC/connector.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Sandy Huang <hjc@rock-chips.com>
+This patch moves enabling of the DSI host from mode_set into pre_enable
+callback, and removes some old hacks where this bridge driver is
+directly calling into other bridge driver's callbacks.
+
+pre_enable_prev_first flag is set on the panel's bridge so that panel
+drivers will get their prepare function called between DSI host's
+pre_enable and enable callbacks, so that they get a chance to
+perform panel setup while DSI host is already enabled in command
+mode. Otherwise panel's prepare would be called before DSI host
+is enabled, and any DSI communication used in prepare callback
+would fail.
+
+With all these changes, the enable/disable sequence is now well
+balanced, and host's and panel's callbacks are called in proper order
+documented in the drm_panel API documentation without needing the old
+hacks. (Mainly that panel->prepare is called when DSI host is ready to
+allow the panel driver to send DSI commands and vice versa during
+disable.)
+
+Tested on Pinephone Pro. Trace of the callbacks follows.
+
+Before:
+
+[    1.253882] dw-mipi-dsi-rockchip ff960000.dsi: mode_set
+[    1.290732] panel-himax-hx8394 ff960000.dsi.0: prepare
+[    1.475576] dw-mipi-dsi-rockchip ff960000.dsi: enable
+[    1.475593] panel-himax-hx8394 ff960000.dsi.0: enable
+
+echo 2 > /sys/class/graphics/fb0/blank
+
+[   13.722799] panel-himax-hx8394 ff960000.dsi.0: disable
+[   13.774502] dw-mipi-dsi-rockchip ff960000.dsi: post_disable
+[   13.774526] panel-himax-hx8394 ff960000.dsi.0: unprepare
+
+echo 0 > /sys/class/graphics/fb0/blank
+
+[   17.735796] panel-himax-hx8394 ff960000.dsi.0: prepare
+[   17.923522] dw-mipi-dsi-rockchip ff960000.dsi: enable
+[   17.923540] panel-himax-hx8394 ff960000.dsi.0: enable
+[   17.944330] dw-mipi-dsi-rockchip ff960000.dsi: failed to write command FIFO
+[   17.944335] panel-himax-hx8394 ff960000.dsi.0: sending command 0xb9 failed: -110
+[   17.944340] panel-himax-hx8394 ff960000.dsi.0: Panel init sequence failed: -110
+
+echo 2 > /sys/class/graphics/fb0/blank
+
+[  431.148583] panel-himax-hx8394 ff960000.dsi.0: disable
+[  431.169259] dw-mipi-dsi-rockchip ff960000.dsi: failed to write command FIFO
+[  431.169268] panel-himax-hx8394 ff960000.dsi.0: Failed to enter sleep mode: -110
+[  431.169282] dw-mipi-dsi-rockchip ff960000.dsi: post_disable
+[  431.169316] panel-himax-hx8394 ff960000.dsi.0: unprepare
+[  431.169357] pclk_mipi_dsi0 already disabled
+
+echo 0 > /sys/class/graphics/fb0/blank
+
+[  432.796851] panel-himax-hx8394 ff960000.dsi.0: prepare
+[  432.981537] dw-mipi-dsi-rockchip ff960000.dsi: enable
+[  432.981568] panel-himax-hx8394 ff960000.dsi.0: enable
+[  433.002290] dw-mipi-dsi-rockchip ff960000.dsi: failed to write command FIFO
+[  433.002299] panel-himax-hx8394 ff960000.dsi.0: sending command 0xb9 failed: -110
+[  433.002312] panel-himax-hx8394 ff960000.dsi.0: Panel init sequence failed: -110
+
+-----------------------------------------------------------------------
+
+After:
+
+[    1.248372] dw-mipi-dsi-rockchip ff960000.dsi: mode_set
+[    1.248704] dw-mipi-dsi-rockchip ff960000.dsi: pre_enable
+[    1.285377] panel-himax-hx8394 ff960000.dsi.0: prepare
+[    1.468392] dw-mipi-dsi-rockchip ff960000.dsi: enable
+[    1.468421] panel-himax-hx8394 ff960000.dsi.0: enable
+
+echo 2 > /sys/class/graphics/fb0/blank
+
+[   16.210357] panel-himax-hx8394 ff960000.dsi.0: disable
+[   16.261315] dw-mipi-dsi-rockchip ff960000.dsi: post_disable
+[   16.261339] panel-himax-hx8394 ff960000.dsi.0: unprepare
+
+echo 0 > /sys/class/graphics/fb0/blank
+
+[   19.161453] dw-mipi-dsi-rockchip ff960000.dsi: pre_enable
+[   19.197869] panel-himax-hx8394 ff960000.dsi.0: prepare
+[   19.382141] dw-mipi-dsi-rockchip ff960000.dsi: enable
+[   19.382158] panel-himax-hx8394 ff960000.dsi.0: enable
+
+Fixes: 46fc51546d44 ("drm/bridge/synopsys: Add MIPI DSI host controller bridge")
+       (But depends on functionality intorduced in Linux 6.3, so this patch will
+        not build on older kernels when applied to older stable branches.)
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 ---
- drivers/gpu/drm/drm_fourcc.c  | 8 ++++++++
- include/uapi/drm/drm_fourcc.h | 2 ++
- 2 files changed, 10 insertions(+)
+Changed in v2:
+- use proper function for copying drm mode
+- add fixes + note about dependencies
 
-diff --git a/drivers/gpu/drm/drm_fourcc.c b/drivers/gpu/drm/drm_fourcc.c
-index 0f17dfa8702b..193cf8ed7912 100644
---- a/drivers/gpu/drm/drm_fourcc.c
-+++ b/drivers/gpu/drm/drm_fourcc.c
-@@ -299,6 +299,14 @@ const struct drm_format_info *__drm_format_info(u32 format)
- 		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
- 		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
- 		  .vsub = 2, .is_yuv = true },
-+		{ .format = DRM_FORMAT_NV20,		.depth = 0,
-+		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
-+		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
-+		  .vsub = 1, .is_yuv = true },
-+		{ .format = DRM_FORMAT_NV30,		.depth = 0,
-+		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
-+		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 1,
-+		  .vsub = 1, .is_yuv = true },
- 		{ .format = DRM_FORMAT_Q410,		.depth = 0,
- 		  .num_planes = 3, .char_per_block = { 2, 2, 2 },
- 		  .block_w = { 1, 1, 1 }, .block_h = { 1, 1, 1 }, .hsub = 1,
-diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
-index 8db7fd3f743e..3151f1fc7ebb 100644
---- a/include/uapi/drm/drm_fourcc.h
-+++ b/include/uapi/drm/drm_fourcc.h
-@@ -323,6 +323,8 @@ extern "C" {
-  * index 1 = Cr:Cb plane, [39:0] Cr1:Cb1:Cr0:Cb0 little endian
-  */
- #define DRM_FORMAT_NV15		fourcc_code('N', 'V', '1', '5') /* 2x2 subsampled Cr:Cb plane */
-+#define DRM_FORMAT_NV20		fourcc_code('N', 'V', '2', '0') /* 2x1 subsampled Cr:Cb plane */
-+#define DRM_FORMAT_NV30		fourcc_code('N', 'V', '3', '0') /* non-subsampled Cr:Cb plane */
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 28 +++++++++++--------
+ 1 file changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+index b2efecf7d160..4291798bd70f 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+@@ -265,6 +265,7 @@ struct dw_mipi_dsi {
+ 	struct dw_mipi_dsi *master; /* dual-dsi master ptr */
+ 	struct dw_mipi_dsi *slave; /* dual-dsi slave ptr */
  
- /*
-  * 2 plane YCbCr MSB aligned
++	struct drm_display_mode mode;
+ 	const struct dw_mipi_dsi_plat_data *plat_data;
+ };
+ 
+@@ -332,6 +333,7 @@ static int dw_mipi_dsi_host_attach(struct mipi_dsi_host *host,
+ 	if (IS_ERR(bridge))
+ 		return PTR_ERR(bridge);
+ 
++	bridge->pre_enable_prev_first = true;
+ 	dsi->panel_bridge = bridge;
+ 
+ 	drm_bridge_add(&dsi->bridge);
+@@ -859,15 +861,6 @@ static void dw_mipi_dsi_bridge_post_atomic_disable(struct drm_bridge *bridge,
+ 	 */
+ 	dw_mipi_dsi_set_mode(dsi, 0);
+ 
+-	/*
+-	 * TODO Only way found to call panel-bridge post_disable &
+-	 * panel unprepare before the dsi "final" disable...
+-	 * This needs to be fixed in the drm_bridge framework and the API
+-	 * needs to be updated to manage our own call chains...
+-	 */
+-	if (dsi->panel_bridge->funcs->post_disable)
+-		dsi->panel_bridge->funcs->post_disable(dsi->panel_bridge);
+-
+ 	if (phy_ops->power_off)
+ 		phy_ops->power_off(dsi->plat_data->priv_data);
+ 
+@@ -942,15 +935,25 @@ static void dw_mipi_dsi_mode_set(struct dw_mipi_dsi *dsi,
+ 		phy_ops->power_on(dsi->plat_data->priv_data);
+ }
+ 
++static void dw_mipi_dsi_bridge_atomic_pre_enable(struct drm_bridge *bridge,
++						 struct drm_bridge_state *old_bridge_state)
++{
++	struct dw_mipi_dsi *dsi = bridge_to_dsi(bridge);
++
++	/* Power up the dsi ctl into a command mode */
++	dw_mipi_dsi_mode_set(dsi, &dsi->mode);
++	if (dsi->slave)
++		dw_mipi_dsi_mode_set(dsi->slave, &dsi->mode);
++}
++
+ static void dw_mipi_dsi_bridge_mode_set(struct drm_bridge *bridge,
+ 					const struct drm_display_mode *mode,
+ 					const struct drm_display_mode *adjusted_mode)
+ {
+ 	struct dw_mipi_dsi *dsi = bridge_to_dsi(bridge);
+ 
+-	dw_mipi_dsi_mode_set(dsi, adjusted_mode);
+-	if (dsi->slave)
+-		dw_mipi_dsi_mode_set(dsi->slave, adjusted_mode);
++	/* Store the display mode for later use in pre_enable callback */
++	drm_mode_copy(&dsi->mode, adjusted_mode);
+ }
+ 
+ static void dw_mipi_dsi_bridge_atomic_enable(struct drm_bridge *bridge,
+@@ -1004,6 +1007,7 @@ static const struct drm_bridge_funcs dw_mipi_dsi_bridge_funcs = {
+ 	.atomic_duplicate_state	= drm_atomic_helper_bridge_duplicate_state,
+ 	.atomic_destroy_state	= drm_atomic_helper_bridge_destroy_state,
+ 	.atomic_reset		= drm_atomic_helper_bridge_reset,
++	.atomic_pre_enable	= dw_mipi_dsi_bridge_atomic_pre_enable,
+ 	.atomic_enable		= dw_mipi_dsi_bridge_atomic_enable,
+ 	.atomic_post_disable	= dw_mipi_dsi_bridge_post_atomic_disable,
+ 	.mode_set		= dw_mipi_dsi_bridge_mode_set,
 -- 
-2.40.1
+2.41.0
 
 
 _______________________________________________
