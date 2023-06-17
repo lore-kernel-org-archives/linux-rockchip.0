@@ -4,90 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3472DEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 10:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 691F2EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 11:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fqHnkTYPIsO4hsEC0w9BC8EUJyHUyV07hTKIQOkSBlQ=; b=fLW8Js51paqlGw
-	YyhMRCu1lOTr0xuXp8Uiei6bATwJiZug6x5Y/ZXy6JHwqMbW7i5SfXUprjAUsq4FUddRcgpAhWG81
-	e5T+pt5X4CUwQ49iOnSROxzDZlX6zhxGsdNkD+++bEngJySDTQMoDyfhLhh5Hx1HfDbig9C/TE5OP
-	sTXQngJcMtZ5ExXOG37JOguNKEKyne8/a6xS+NfhclgBkA+gI2pWBOqWlxZPRlKvZwSE19SSX8BVW
-	Lqm3etHbnmGFJLTnJMXspt/VhO1JCulAJjpocMkpJsYxw8ZzMIBQlEdYrrSg/MKgDkqTPJF2F/roB
-	w8aXtC3eoO5AIbfPdtlA==;
+	List-Owner; bh=dD69ftWqF9FiU8+7ZcclQplb6tXjovTHorJ0Aa2TJg4=; b=q5RO2NnIn71M10
+	Y1u0r2OIu+rogq0b5WxyKx0A69hiu+74G0G9r3h94kL9rxeGsbV6ZQKh/Pi3dYOe3x1dGzp9pES61
+	0gMxOdCRngeCTCNw17o06HixmU45eGQLYKLmI9/o5mj0N9xK2iJQWH9OFsI2oUlfTlUa11yY1xewU
+	3akOPXiA534gdW60v2n5fCiSgxDfyHUTrRWX88ZpgsKAe8t8PiC1/2vbVW9BL+5/5InwA6kUWMfIH
+	TblbG/LP94Y+UyPzVo9X11Q98owdj5gziJtFGg6Ys46ar8+rXdFSSkCEAXMiMprvX4sVqomPXpjBc
+	9z7VkSynTziLX/RZ2rsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qASuw-003Emf-0z;
-	Sat, 17 Jun 2023 10:12:26 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qATnN-003SKx-1t;
+	Sat, 17 Jun 2023 11:08:41 +0000
+Received: from s.wrqvtzvf.outbound-mail.sendgrid.net ([149.72.126.143])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qASut-003ElX-07
+	id 1qATnJ-003SJn-0L
 	for linux-rockchip@lists.infradead.org;
-	Sat, 17 Jun 2023 10:12:24 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-986864cfe5dso234735766b.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 17 Jun 2023 03:12:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686996740; x=1689588740;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TgP7Xo0/BI+q/hHqVMJMUYkrnaQIXgCa1ZtLOmCe39I=;
-        b=WY/Al9fg2u/uL7+ehIIXuN3VmIYDiGimoYGFQeZU7j8AvPZCB+bcbRw/+WqHtBruYr
-         ETErEbysbq115pvxQot3y8VruE74oD1UwQMYIRagJLyOxXLehg4EwLAlNRfH0kRRSkDz
-         wSLNCUUueHDn9G0f2kA7bNDD86wzffQKqbq5sO3Ow2jlbhRsG0hn646D5aEmZre6NfVe
-         s4SOKzNa4tdpcPXF8+sMQGyOQSUfUytKGY9n8FPEaGDgKgEeSfm5ddwC9IlXMquMhlL1
-         84g4IDdebc+bMhNpNSMw1kE0850ioi+5VEaN9QcNCz4LhNBPQ2QCw83m1zPCHLrb82xI
-         JWJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686996740; x=1689588740;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TgP7Xo0/BI+q/hHqVMJMUYkrnaQIXgCa1ZtLOmCe39I=;
-        b=QiSlA8rhS5d1CPIsm5r3N+jUdrsn3JRcSaaU0Ku7zR5n6XmBgYJiYlw2+l6aifRGH3
-         fF8rJDdRjadfwfGmYExUPNS9UeATIRVvYTdGaGRl8puf8w0o7qZs4AGrOJkDwPH/YQ3v
-         GEtftnwO7t4+aEIgR7Ya5RbdrFRPdUM/DFuCH+TgJ6Fc9/QuGeYJW0L2cf7Semfk1iK7
-         pU06YTxfTk7D0Kqrhmty96Izy8qWMo4NnQ2W64rvbFDHHAXhmDoyCYiaPD1crGUDECre
-         2VOnJe36+214rpfiB78v/7/tVhtJkKeCfRQ2t6I6QfIB6vKYZHX9RFzFFHA9liaLWILj
-         tsRw==
-X-Gm-Message-State: AC+VfDzlMXJnm+QB2QzXccVizesy3b3z63exNRvnlDbEw3J2x3ZlYb15
-	PiwfHEMAvalCeDOLQPopC6FP1A==
-X-Google-Smtp-Source: ACHHUZ6Yrsd8H0C60FMXwj8vhCdlHIXessbhg49bscbUVgRS9oFYMYBeaKA0rC+pw4cm1EFHhY8Ygg==
-X-Received: by 2002:a17:907:d26:b0:977:d468:827 with SMTP id gn38-20020a1709070d2600b00977d4680827mr4767373ejc.17.1686996739862;
-        Sat, 17 Jun 2023 03:12:19 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id i24-20020a170906115800b0098642e99c26sm1980189eja.174.2023.06.17.03.12.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 17 Jun 2023 03:12:19 -0700 (PDT)
-Message-ID: <17576d81-a342-0b77-367a-eb9f2b97b734@linaro.org>
-Date: Sat, 17 Jun 2023 12:12:17 +0200
+	Sat, 17 Jun 2023 11:08:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
+	content-transfer-encoding:cc:content-type:from:subject:to;
+	s=s1; bh=kSdb/lHB+3ih+VSQlmzyh6XZ/NXli7OIBoYYuu8Cufw=;
+	b=bcI0QuLnUJTOtgdZTqzhhLRruVnZqsfg/um4ov/DYhsAy/8cp32tX50BVPPTUAbRnJqF
+	ddIYFxIvMpSHcxqglb0JX0arSLrNuvECS5djPQCr2k6aYZk85mzLdXjMHN5ksfZbefo89o
+	SYEDMOJLBZvUSo4glYurft6Q2N9KnH0Mxm8gyZdXNTTqL4phiKRiz1iSyUp/zthMsScqJO
+	JThmslEur6smyncwjfqPWd0WweLSJ/V33pdLt3S0Np3gGPmszBfNtwgUiuXffYCeI8nL89
+	7kEObxdqPagK9Pcx4CGInapTnEbAlAMYljrLUK99S9Li8LyekCRBnXt3gXgf/5IQ==
+Received: by filterdrecv-66949dbc98-2h875 with SMTP id filterdrecv-66949dbc98-2h875-1-648D9430-15
+        2023-06-17 11:08:32.542967934 +0000 UTC m=+3238133.466406997
+Received: from [192.168.1.50] (unknown)
+	by geopod-ismtpd-6 (SG) with ESMTP
+	id 1ayzDbPESH2MEknCWup2WQ
+	Sat, 17 Jun 2023 11:08:32.109 +0000 (UTC)
+Message-ID: <e62fc14e-f06b-e979-8f92-db1451695358@kwiboo.se>
+Date: Sat, 17 Jun 2023 11:08:32 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 2/3] dt-bindings: backlight: lm3630a: add entries to
- control boost frequency
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v1 4/4] arm64: dts: rockchip: rk3588: add PCIe2 support
+References: <20230616170022.76107-1-sebastian.reichel@collabora.com>
+ <20230616170022.76107-5-sebastian.reichel@collabora.com>
 Content-Language: en-US
-To: Maximilian Weigand <mweigand2017@gmail.com>, Lee Jones <lee@kernel.org>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Jingoo Han <jingoohan1@gmail.com>, Helge Deller <deller@gmx.de>,
- Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Maximilian Weigand <mweigand@mweigand.net>
-References: <20230602-lm3630a_boost_frequency-v1-0-076472036d1a@mweigand.net>
- <20230602-lm3630a_boost_frequency-v1-2-076472036d1a@mweigand.net>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230602-lm3630a_boost_frequency-v1-2-076472036d1a@mweigand.net>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20230616170022.76107-5-sebastian.reichel@collabora.com>
+X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h51CekI0YDjjeuLZk?=
+ =?us-ascii?Q?1rLxEDrvM81hUy0jITzmLCj93Zvh1XjElbcsZKX?=
+ =?us-ascii?Q?yL=2FEwnLgHvNPAL81M6wPxoQL4XXG3kXZXTNXf+m?=
+ =?us-ascii?Q?5I4VmXbR5vIkI9kVQOOPAOAQJp6kLw9n9QMDQQn?=
+ =?us-ascii?Q?mx7Gxhi7uHC8zzdRziF=2FU5LqP9WPCbYhrvqR9jg?=
+ =?us-ascii?Q?AIphFp3GdjtlEJNziQrow=3D=3D?=
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Jingoo Han
+	<jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi
+	<lpieralisi@kernel.org>, Krzysztof =?iso-8859-2?q?Wilczy=F1ski?=
+	<kw@linux.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com, Kever Yang <kever.yang@rock-chips.com>
+X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230617_031223_104879_B2978D02 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20230617_040837_840095_A8B5A76B 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,49 +91,230 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/06/2023 21:08, Maximilian Weigand wrote:
-> From: Maximilian Weigand <mweigand@mweigand.net>
+Hi Sebastian,
+
+On 2023-06-16 19:00, Sebastian Reichel wrote:
+> Add all three PCIe2 IP blocks to the RK3588 DT. Note, that RK3588
+> also has two PCIe3 IP blocks, that will be handled separately.
 > 
-> Add 'ti,boost_use_1mhz' to switch between 500 kHz and 1 MHz boost
-> converter switching frequency, and add 'ti,boost_frequency_shift' to
-> activate a frequency shift to 560 kHz or 1.12 MHz, respectively.
-> 
-> Signed-off-by: Maximilian Weigand <mweigand@mweigand.net>
+> Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  .../bindings/leds/backlight/lm3630a-backlight.yaml           | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3588.dtsi  |  54 +++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 108 ++++++++++++++++++++++
+>  2 files changed, 162 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-> index 3c9b4054ed9a..ef7ea0ad2d25 100644
-> --- a/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-> +++ b/Documentation/devicetree/bindings/leds/backlight/lm3630a-backlight.yaml
-> @@ -33,6 +33,18 @@ properties:
->      description: GPIO to use to enable/disable the backlight (HWEN pin).
->      maxItems: 1
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> index b9508cea34f1..40fee1367b34 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> @@ -80,6 +80,60 @@ i2s10_8ch: i2s@fde00000 {
+>  		status = "disabled";
+>  	};
 >  
-> +  ti,boost_use_1mhz:
+> +	pcie2x1l0: pcie@fe170000 {
+> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		bus-range = <0x20 0x2f>;
+> +		clocks = <&cru ACLK_PCIE_1L0_MSTR>, <&cru ACLK_PCIE_1L0_SLV>,
+> +			 <&cru ACLK_PCIE_1L0_DBI>, <&cru PCLK_PCIE_1L0>,
+> +			 <&cru CLK_PCIE_AUX2>, <&cru CLK_PCIE1L0_PIPE>;
+> +		clock-names = "aclk_mst", "aclk_slv",
+> +			      "aclk_dbi", "pclk",
+> +			      "aux", "pipe";
+> +		device_type = "pci";
+> +		interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 241 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 240 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie2x1l0_intc 0>,
+> +				<0 0 0 2 &pcie2x1l0_intc 1>,
+> +				<0 0 0 3 &pcie2x1l0_intc 2>,
+> +				<0 0 0 4 &pcie2x1l0_intc 3>;
+> +		linux,pci-domain = <2>;
+> +		num-ib-windows = <8>;
+> +		num-ob-windows = <8>;
+> +		num-viewport = <4>;
+> +		max-link-speed = <2>;
+> +		msi-map = <0x2000 &its0 0x2000 0x1000>;
+> +		num-lanes = <1>;
+> +		phys = <&combphy1_ps PHY_TYPE_PCIE>;
+> +		phy-names = "pcie-phy";
+> +		power-domains = <&power RK3588_PD_PCIE>;
+> +		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
+> +			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
+> +			 <0x03000000 0x9 0x80000000 0x9 0x80000000 0x0 0x40000000>;
 
-No underscores in property names.
+For the RK356x [1] and for RK3588 in u-boot [2] the pci_addr range was
+changed to be in 32-bit address space, start address at 0x40000000, to
+make the 1 GB region available for 32-bit BARs. Something that possible
+could/should be done here too?
 
-> +    description: |
+E.g.:
 
-Do not need '|' unless you need to preserve formatting.
+  <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>
 
-> +      If present, change the boost converter switching frequency from the
-> +      default 500 kHz to 1 MHz. Refer to data sheet for hardware requirements.
-> +    type: boolean
+[1] https://lore.kernel.org/all/20230601132516.153934-1-frattaroli.nicolas@gmail.com/
+[2] https://lore.kernel.org/u-boot/20230517100102.109855-1-eugen.hristev@collabora.com/
+
+> +		reg = <0xa 0x40800000 0x0 0x00400000>,
+> +		      <0x0 0xfe170000 0x0 0x00010000>,
+> +		      <0x0 0xf2000000 0x0 0x00100000>;
+> +		reg-names = "dbi", "apb", "config";
+> +		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
+> +		reset-names = "pwr", "pipe";
+> +		status = "disabled";
 > +
-> +  ti,boost_frequency_shift:
-> +    description: |
-> +      If present, change boost converter switching frequency from 500 kHz to
-> +      560 kHz or from 1 Mhz to 1.12 Mhz, respectively.
+> +		pcie2x1l0_intc: legacy-interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+> +			#interrupt-cells = <1>;
+> +			interrupt-parent = <&gic>;
+> +			interrupts = <GIC_SPI 240 IRQ_TYPE_EDGE_RISING 0>;
+> +		};
+> +	};
+> +
+>  	gmac0: ethernet@fe1b0000 {
+>  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+>  		reg = <0x0 0xfe1b0000 0x0 0x10000>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> index a73b17f597af..b5fdc046d8f7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> @@ -1670,6 +1670,114 @@ qos_vop_m1: qos@fdf82200 {
+>  		reg = <0x0 0xfdf82200 0x0 0x20>;
+>  	};
+>  
+> +	pcie2x1l1: pcie@fe180000 {
+> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		bus-range = <0x30 0x3f>;
+> +		clocks = <&cru ACLK_PCIE_1L1_MSTR>, <&cru ACLK_PCIE_1L1_SLV>,
+> +			 <&cru ACLK_PCIE_1L1_DBI>, <&cru PCLK_PCIE_1L1>,
+> +			 <&cru CLK_PCIE_AUX3>, <&cru CLK_PCIE1L1_PIPE>;
+> +		clock-names = "aclk_mst", "aclk_slv",
+> +			      "aclk_dbi", "pclk",
+> +			      "aux", "pipe";
+> +		device_type = "pci";
+> +		interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie2x1l1_intc 0>,
+> +				<0 0 0 2 &pcie2x1l1_intc 1>,
+> +				<0 0 0 3 &pcie2x1l1_intc 2>,
+> +				<0 0 0 4 &pcie2x1l1_intc 3>;
+> +		linux,pci-domain = <3>;
+> +		num-ib-windows = <8>;
+> +		num-ob-windows = <8>;
+> +		num-viewport = <4>;
+> +		max-link-speed = <2>;
+> +		msi-map = <0x3000 &its0 0x3000 0x1000>;
+> +		num-lanes = <1>;
+> +		phys = <&combphy2_psu PHY_TYPE_PCIE>;
+> +		phy-names = "pcie-phy";
+> +		power-domains = <&power RK3588_PD_PCIE>;
+> +		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
+> +			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
+> +			 <0x03000000 0x9 0xc0000000 0x9 0xc0000000 0x0 0x40000000>;
 
-So just make it a property choosing the frequency, not bools, with
-proper unit suffix.
+And:
 
+  <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>
 
-Best regards,
-Krzysztof
+> +		reg = <0xa 0x40c00000 0x0 0x00400000>,
+> +		      <0x0 0xfe180000 0x0 0x00010000>,
+> +		      <0x0 0xf3000000 0x0 0x00100000>;
+> +		reg-names = "dbi", "apb", "config";
+> +		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
+> +		reset-names = "pwr", "pipe";
+> +		status = "disabled";
+> +
+> +		pcie2x1l1_intc: legacy-interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+> +			#interrupt-cells = <1>;
+> +			interrupt-parent = <&gic>;
+> +			interrupts = <GIC_SPI 245 IRQ_TYPE_EDGE_RISING 0>;
+> +		};
+> +	};
+> +
+> +	pcie2x1l2: pcie@fe190000 {
+> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		bus-range = <0x40 0x4f>;
+> +		clocks = <&cru ACLK_PCIE_1L2_MSTR>, <&cru ACLK_PCIE_1L2_SLV>,
+> +			 <&cru ACLK_PCIE_1L2_DBI>, <&cru PCLK_PCIE_1L2>,
+> +			 <&cru CLK_PCIE_AUX4>, <&cru CLK_PCIE1L2_PIPE>;
+> +		clock-names = "aclk_mst", "aclk_slv",
+> +			      "aclk_dbi", "pclk",
+> +			      "aux", "pipe";
+> +		device_type = "pci";
+> +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie2x1l2_intc 0>,
+> +				<0 0 0 2 &pcie2x1l2_intc 1>,
+> +				<0 0 0 3 &pcie2x1l2_intc 2>,
+> +				<0 0 0 4 &pcie2x1l2_intc 3>;
+> +		linux,pci-domain = <4>;
+> +		num-ib-windows = <8>;
+> +		num-ob-windows = <8>;
+> +		num-viewport = <4>;
+> +		max-link-speed = <2>;
+> +		msi-map = <0x4000 &its0 0x4000 0x1000>;
+> +		num-lanes = <1>;
+> +		phys = <&combphy0_ps PHY_TYPE_PCIE>;
+> +		phy-names = "pcie-phy";
+> +		power-domains = <&power RK3588_PD_PCIE>;
+> +		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
+> +			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
+> +			 <0x03000000 0xa 0x00000000 0xa 0x00000000 0x0 0x40000000>;
+
+And:
+
+  <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>
+
+Regards,
+Jonas
+
+> +		reg = <0xa 0x41000000 0x0 0x00400000>,
+> +		      <0x0 0xfe190000 0x0 0x00010000>,
+> +		      <0x0 0xf4000000 0x0 0x00100000>;
+> +		reg-names = "dbi", "apb", "config";
+> +		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
+> +		reset-names = "pwr", "pipe";
+> +		status = "disabled";
+> +
+> +		pcie2x1l2_intc: legacy-interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+> +			#interrupt-cells = <1>;
+> +			interrupt-parent = <&gic>;
+> +			interrupts = <GIC_SPI 250 IRQ_TYPE_EDGE_RISING 0>;
+> +		};
+> +	};
+> +
+>  	gmac1: ethernet@fe1c0000 {
+>  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
+>  		reg = <0x0 0xfe1c0000 0x0 0x10000>;
 
 
 _______________________________________________
