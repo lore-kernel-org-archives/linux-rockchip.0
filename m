@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 691F2EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 11:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A44EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Jun 2023 11:26:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dD69ftWqF9FiU8+7ZcclQplb6tXjovTHorJ0Aa2TJg4=; b=q5RO2NnIn71M10
-	Y1u0r2OIu+rogq0b5WxyKx0A69hiu+74G0G9r3h94kL9rxeGsbV6ZQKh/Pi3dYOe3x1dGzp9pES61
-	0gMxOdCRngeCTCNw17o06HixmU45eGQLYKLmI9/o5mj0N9xK2iJQWH9OFsI2oUlfTlUa11yY1xewU
-	3akOPXiA534gdW60v2n5fCiSgxDfyHUTrRWX88ZpgsKAe8t8PiC1/2vbVW9BL+5/5InwA6kUWMfIH
-	TblbG/LP94Y+UyPzVo9X11Q98owdj5gziJtFGg6Ys46ar8+rXdFSSkCEAXMiMprvX4sVqomPXpjBc
-	9z7VkSynTziLX/RZ2rsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-Id:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bV650QCGBX2l53q6ADGyFdGSXk1x6OAQqQRdCmgTdRM=; b=Q39a1h08kBBW+qnuGhIz4jCFPO
+	Xt2Qmm4A7pTlEUVLh+XbdFbgeuTzMkoLDElt31coQfoGjnPa4k8qwAtqhva19faueyXGCW2lpJZwO
+	vPshMwYsM9ss0mcXFcnfcj/D/pIFBrcUXkDX/191Bt8wYW38sZulgkkNo+riCN1lHUQefPAuWp6WA
+	S0gyC6AMoT+f/pH/GoN114i9dacEQvkYz5fm7H62RBqIsDNJwJFYKgnLU2ty6SpbYnpHT21bTbI2L
+	fzLG6uTNwudsST8PRzn4TSvwUCitIVfH+gJ3v1zgZTOtkSHbgbhL11LcNUlHSf2L5i3zA3nx7CdZs
+	OyD/wWog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qATnN-003SKx-1t;
-	Sat, 17 Jun 2023 11:08:41 +0000
-Received: from s.wrqvtzvf.outbound-mail.sendgrid.net ([149.72.126.143])
+	id 1qAU4p-003U4h-2r;
+	Sat, 17 Jun 2023 11:26:43 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qATnJ-003SJn-0L
-	for linux-rockchip@lists.infradead.org;
-	Sat, 17 Jun 2023 11:08:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
-	content-transfer-encoding:cc:content-type:from:subject:to;
-	s=s1; bh=kSdb/lHB+3ih+VSQlmzyh6XZ/NXli7OIBoYYuu8Cufw=;
-	b=bcI0QuLnUJTOtgdZTqzhhLRruVnZqsfg/um4ov/DYhsAy/8cp32tX50BVPPTUAbRnJqF
-	ddIYFxIvMpSHcxqglb0JX0arSLrNuvECS5djPQCr2k6aYZk85mzLdXjMHN5ksfZbefo89o
-	SYEDMOJLBZvUSo4glYurft6Q2N9KnH0Mxm8gyZdXNTTqL4phiKRiz1iSyUp/zthMsScqJO
-	JThmslEur6smyncwjfqPWd0WweLSJ/V33pdLt3S0Np3gGPmszBfNtwgUiuXffYCeI8nL89
-	7kEObxdqPagK9Pcx4CGInapTnEbAlAMYljrLUK99S9Li8LyekCRBnXt3gXgf/5IQ==
-Received: by filterdrecv-66949dbc98-2h875 with SMTP id filterdrecv-66949dbc98-2h875-1-648D9430-15
-        2023-06-17 11:08:32.542967934 +0000 UTC m=+3238133.466406997
-Received: from [192.168.1.50] (unknown)
-	by geopod-ismtpd-6 (SG) with ESMTP
-	id 1ayzDbPESH2MEknCWup2WQ
-	Sat, 17 Jun 2023 11:08:32.109 +0000 (UTC)
-Message-ID: <e62fc14e-f06b-e979-8f92-db1451695358@kwiboo.se>
-Date: Sat, 17 Jun 2023 11:08:32 +0000 (UTC)
+	id 1qAU4k-003U2n-1I;
+	Sat, 17 Jun 2023 11:26:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1687001182;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=o5l1HjnqnDISiqhRlWYvekNpiQAl/3p9MARb7LEs9vg=;
+	b=C5aolF9Z06fTrdPi8mcXc2DHtTMvON/XlNAZmWJHJ9d4zRc53CFuoLe5uVdNoNXdtKFfFx
+	mzY/vu1cbUa1TkeYEnc65qQodXowHARCF4erZFzhYJbKSWQY722QkI8288eGltmfAaPZPq
+	Nk2z2flqC0xIOpb/rlXHRULs/ster4yZgiNqyK81DFR5gxIWDX+fygjlefiKbkOTK0FsBZ
+	hhie87wSNGMWZ671aG2IWi4njBzFmi39fYi+guChghtSD9b/Ko5U4vIeTIDZBQ20/OTOZg
+	k3qpXXDQH4qcbXZ5yGfNoRVJTX1AzPDKfSl36kyeruox4ctdhiMawnuaqCJTpA==
+Message-Id: <1687000758103.681646360.380124875@manjaro.org>
+From: Furkan Kardame <f.kardame@manjaro.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>, pgwipeout@gmail.com
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add dts for Firefly Station
+ P2 aka rk3568-roc-pc
+Date: Sat, 17 Jun 2023 11:26:19 +0000
+In-Reply-To: <b62a188d-fa47-2f7f-7c99-90e5f729c227@kernel.org>
+References: <b62a188d-fa47-2f7f-7c99-90e5f729c227@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v1 4/4] arm64: dts: rockchip: rk3588: add PCIe2 support
-References: <20230616170022.76107-1-sebastian.reichel@collabora.com>
- <20230616170022.76107-5-sebastian.reichel@collabora.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20230616170022.76107-5-sebastian.reichel@collabora.com>
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h51CekI0YDjjeuLZk?=
- =?us-ascii?Q?1rLxEDrvM81hUy0jITzmLCj93Zvh1XjElbcsZKX?=
- =?us-ascii?Q?yL=2FEwnLgHvNPAL81M6wPxoQL4XXG3kXZXTNXf+m?=
- =?us-ascii?Q?5I4VmXbR5vIkI9kVQOOPAOAQJp6kLw9n9QMDQQn?=
- =?us-ascii?Q?mx7Gxhi7uHC8zzdRziF=2FU5LqP9WPCbYhrvqR9jg?=
- =?us-ascii?Q?AIphFp3GdjtlEJNziQrow=3D=3D?=
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Jingoo Han
-	<jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi
-	<lpieralisi@kernel.org>, Krzysztof =?iso-8859-2?q?Wilczy=F1ski?=
-	<kw@linux.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com, Kever Yang <kever.yang@rock-chips.com>
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=f.kardame@manjaro.org smtp.mailfrom=f.kardame@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230617_040837_840095_A8B5A76B 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20230617_042639_064320_32D778AE 
+X-CRM114-Status: GOOD (  24.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,236 +65,302 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
 
-On 2023-06-16 19:00, Sebastian Reichel wrote:
-> Add all three PCIe2 IP blocks to the RK3588 DT. Note, that RK3588
-> also has two PCIe3 IP blocks, that will be handled separately.
-> 
-> Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588.dtsi  |  54 +++++++++++
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 108 ++++++++++++++++++++++
->  2 files changed, 162 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> index b9508cea34f1..40fee1367b34 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> @@ -80,6 +80,60 @@ i2s10_8ch: i2s@fde00000 {
->  		status = "disabled";
->  	};
->  
-> +	pcie2x1l0: pcie@fe170000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x20 0x2f>;
-> +		clocks = <&cru ACLK_PCIE_1L0_MSTR>, <&cru ACLK_PCIE_1L0_SLV>,
-> +			 <&cru ACLK_PCIE_1L0_DBI>, <&cru PCLK_PCIE_1L0>,
-> +			 <&cru CLK_PCIE_AUX2>, <&cru CLK_PCIE1L0_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 241 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 240 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l0_intc 0>,
-> +				<0 0 0 2 &pcie2x1l0_intc 1>,
-> +				<0 0 0 3 &pcie2x1l0_intc 2>,
-> +				<0 0 0 4 &pcie2x1l0_intc 3>;
-> +		linux,pci-domain = <2>;
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
-> +		max-link-speed = <2>;
-> +		msi-map = <0x2000 &its0 0x2000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy1_ps PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
-> +			 <0x03000000 0x9 0x80000000 0x9 0x80000000 0x0 0x40000000>;
+Hello  Krzysztof,
+Thank you for spending your precious time on reviewing this patch. 
 
-For the RK356x [1] and for RK3588 in u-boot [2] the pci_addr range was
-changed to be in 32-bit address space, start address at 0x40000000, to
-make the 1 GB region available for 32-bit BARs. Something that possible
-could/should be done here too?
+My apologies for the silly mistakes, Thank you for the detailed review. 
+I will fix the patch and send as version-2 to all the latest maintainer.
+It have been used in manjaro kernel since long time and some of the users 
+are already using the device with this patch.
 
-E.g.:
+It will be better if it can be tested by more developers and reviewed 
+before it gets merged.
 
-  <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>
+Recently I fixed the warning before sending the patches, Build log can be 
+found here:
+https://gitlab.manjaro.org/manjaro-arm/packages/core/linux-rc/-/jobs/12638/raw
 
-[1] https://lore.kernel.org/all/20230601132516.153934-1-frattaroli.nicolas@gmail.com/
-[2] https://lore.kernel.org/u-boot/20230517100102.109855-1-eugen.hristev@collabora.com/
 
-> +		reg = <0xa 0x40800000 0x0 0x00400000>,
-> +		      <0x0 0xfe170000 0x0 0x00010000>,
-> +		      <0x0 0xf2000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l0_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 240 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
->  	gmac0: ethernet@fe1b0000 {
->  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
->  		reg = <0x0 0xfe1b0000 0x0 0x10000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> index a73b17f597af..b5fdc046d8f7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -1670,6 +1670,114 @@ qos_vop_m1: qos@fdf82200 {
->  		reg = <0x0 0xfdf82200 0x0 0x20>;
->  	};
->  
-> +	pcie2x1l1: pcie@fe180000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x30 0x3f>;
-> +		clocks = <&cru ACLK_PCIE_1L1_MSTR>, <&cru ACLK_PCIE_1L1_SLV>,
-> +			 <&cru ACLK_PCIE_1L1_DBI>, <&cru PCLK_PCIE_1L1>,
-> +			 <&cru CLK_PCIE_AUX3>, <&cru CLK_PCIE1L1_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l1_intc 0>,
-> +				<0 0 0 2 &pcie2x1l1_intc 1>,
-> +				<0 0 0 3 &pcie2x1l1_intc 2>,
-> +				<0 0 0 4 &pcie2x1l1_intc 3>;
-> +		linux,pci-domain = <3>;
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
-> +		max-link-speed = <2>;
-> +		msi-map = <0x3000 &its0 0x3000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy2_psu PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
-> +			 <0x03000000 0x9 0xc0000000 0x9 0xc0000000 0x0 0x40000000>;
 
-And:
+On Saturday 17 June 2023 10:52:59 (+03:00), Krzysztof Kozlowski wrote:
 
-  <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>
+ > On 16/06/2023 23:10, Furkan Kardame wrote:
+ > > Add dts for Firefly Station P2.
+ > > Working IO:
+ > > * eMMC
+ > > * HDMI
+ > > * LAN
+ > > * LED
+ > > * SD Card
+ > > * UART
+ > > * USB2
+ > > * USB3
+ > > 
+ > > Signed-off-by: Furkan Kardame 
+ > > ---
+ > >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ > >  .../arm64/boot/dts/rockchip/rk3568-roc-pc.dts | 689 
+++++++++++++++++++
+ > >  2 files changed, 690 insertions(+)
+ > >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+ > > 
+ > > diff --git a/arch/arm64/boot/dts/rockchip/Makefile 
+b/arch/arm64/boot/dts/rockchip/Makefile
+ > > index 2d585bbb8..2085b00f3 100644
+ > > --- a/arch/arm64/boot/dts/rockchip/Makefile
+ > > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+ > > @@ -90,6 +90,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5c.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
+ > > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
+ > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ > > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts 
+b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+ > > new file mode 100644
+ > > index 000000000..5946ad3ea
+ > > --- /dev/null
+ > > +++ b/arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+ > > @@ -0,0 +1,689 @@
+ > > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+ > > +/*
+ > > + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+ > > + *
+ > > + */
+ > > +
+ > > +/dts-v1/;
+ > > +
+ > > +#include 
+ > > +#include 
+ > > +#include 
+ > > +#include "rk3568.dtsi"
+ > > +
+ > > +/ {
+ > > +	model = "Firefly Station P2";
+ > > +	compatible = "firefly,rk3568-roc-pc", "rockchip,rk3568";
+ > > +
+ > > +	aliases {
+ > > +		ethernet0 = &gmac0;
+ > > +		ethernet1 = &gmac1;
+ > > +		mmc0 = &sdmmc0;
+ > > +		mmc1 = &sdhci;
+ > > +	};
+ > > +
+ > > +	chosen: chosen {
+ > > +		stdout-path = "serial2:1500000n8";
+ > > +	};
+ > > +> +	dc_12v: dc-12v {
+ > 
+ > Node names should be generic. See also explanation and list of examples
+ > in DT specification:
+ > 
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+ 
+> So at least regulator prefix or suffix.
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "dc_12v";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <12000000>;
+ > > +		regulator-max-microvolt = <12000000>;
+ > > +	};
+ > > +
+ > > +	gmac0_clkin: external-gmac0-clock {
+ > > +		compatible = "fixed-clock";
+ > > +		clock-frequency = <125000000>;
+ > > +		clock-output-names = "gmac0_clkin";
+ > > +		#clock-cells = <0>;
+ > > +	};
+ > > +
+ > > +	gmac1_clkin: external-gmac1-clock {
+ > > +		compatible = "fixed-clock";
+ > > +		clock-frequency = <125000000>;
+ > > +		clock-output-names = "gmac1_clkin";
+ > > +		#clock-cells = <0>;
+ > > +	};
+ > > +
+ > > +	leds {
+ > > +		compatible = "gpio-leds";
+ > > +
+ > > +		led-user {
+ > > +			label = "user-led";
+ > > +			default-state = "on";
+ > > +			gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
+ > > +			linux,default-trigger = "heartbeat";
+ > > +			pinctrl-names = "default";
+ > > +			pinctrl-0 = <&user_led_enable_h>;
+ > > +			retain-state-suspended;
+ > > +		};
+ > > +	};
+ > > +
+ > > +	hdmi-con {
+ > > +		compatible = "hdmi-connector";
+ > > +		type = "a";
+ > > +
+ > > +		port {
+ > > +			hdmi_con_in: endpoint {
+ > > +			remote-endpoint = <&hdmi_out_con>;
+ > > +			};
+ > > +		};
+ > > +	};
+ > > +
+ > > +	sdio_pwrseq: sdio-pwrseq {
+ > > +		status = "okay";
+ > 
+ > Why do you need it?
+Will be removed and will add it back later with wifi patch in future.
 
-> +		reg = <0xa 0x40c00000 0x0 0x00400000>,
-> +		      <0x0 0xfe180000 0x0 0x00010000>,
-> +		      <0x0 0xf3000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l1_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 245 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
-> +	pcie2x1l2: pcie@fe190000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x40 0x4f>;
-> +		clocks = <&cru ACLK_PCIE_1L2_MSTR>, <&cru ACLK_PCIE_1L2_SLV>,
-> +			 <&cru ACLK_PCIE_1L2_DBI>, <&cru PCLK_PCIE_1L2>,
-> +			 <&cru CLK_PCIE_AUX4>, <&cru CLK_PCIE1L2_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l2_intc 0>,
-> +				<0 0 0 2 &pcie2x1l2_intc 1>,
-> +				<0 0 0 3 &pcie2x1l2_intc 2>,
-> +				<0 0 0 4 &pcie2x1l2_intc 3>;
-> +		linux,pci-domain = <4>;
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
-> +		max-link-speed = <2>;
-> +		msi-map = <0x4000 &its0 0x4000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy0_ps PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
-> +			 <0x03000000 0xa 0x00000000 0xa 0x00000000 0x0 0x40000000>;
-
-And:
-
-  <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>
+ > 
+ > > +		compatible = "mmc-pwrseq-simple";
+ > > +		clocks = <&rk809 1>;
+ > > +		clock-names = "ext_clock";
+ > > +		pinctrl-names = "default";
+ > > +		pinctrl-0 = <&wifi_enable_h>;
+ > > +		reset-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
+ > > +	};
+ > > +
+ > > +	pcie30_avdd0v9: pcie30-avdd0v9 {
+ > 
+ > Same naming problem.
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "pcie30_avdd0v9";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <900000>;
+ > > +		regulator-max-microvolt = <900000>;
+ > > +		vin-supply = <&vcc3v3_sys>;
+ > > +	};
+ > > +
+ > > +	pcie30_avdd1v8: pcie30-avdd1v8 {
+ > 
+ > Ditto
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "pcie30_avdd1v8";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <1800000>;
+ > > +		regulator-max-microvolt = <1800000>;
+ > > +		vin-supply = <&vcc3v3_sys>;
+ > > +	};
+ > > +
+ > > +	vcc3v3_sys: vcc3v3-sys {
+ > 
+ > Ditto
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "vcc3v3_sys";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <3300000>;
+ > > +		regulator-max-microvolt = <3300000>;
+ > > +		vin-supply = <&dc_12v>;
+ > > +	};
+ > > +
+ > > +	vcc3v3_pcie: gpio-regulator {
+ > 
+ > Oh, suffix appeared.
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "vcc3v3_pcie";
+ > > +		enable-active-high;
+ > > +		regulator-min-microvolt = <3300000>;
+ > > +		regulator-max-microvolt = <3300000>;
+ > > +		pinctrl-names = "default";
+ > > +		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
+ > > +		gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
+ > > +		startup-delay-us = <5000>;
+ > > +		vin-supply = <&vcc5v0_sys>;
+ > > +	};
+ > > +
+ > > +	vcc5v0_sys: vcc5v0-sys {
+ > 
+ > And gone.
+ > 
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "vcc5v0_sys";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <5000000>;
+ > > +		regulator-max-microvolt = <5000000>;
+ > > +		vin-supply = <&dc_12v>;
+ > > +	};
+ > > +
+ > > +	vcc5v0_usb: vcc5v0-usb {
+ > > +		compatible = "regulator-fixed";
+ > > +		regulator-name = "vcc5v0_usb";
+ > > +		regulator-always-on;
+ > > +		regulator-boot-on;
+ > > +		regulator-min-microvolt = <5000000>;
+ > > +		regulator-max-microvolt = <5000000>;
+ > > +		vin-supply = <&vcc5v0_sys>;
+ > > +	};
+ > > +
+ > 
+ > ...
+ > 
+ > > +
+ > > +			vdda0v9_pmu: LDO_REG3 {
+ > > +				regulator-name = "vdda0v9_pmu";
+ > > +				regulator-always-on;
+ > > +				regulator-boot-on;
+ > > +				regulator-min-microvolt = <900000>;
+ > > +				regulator-max-microvolt = <900000>;
+ > > +
+ > > +				regulator-state-mem {
+ > > +					regulator-on-in-suspend;
+ > > +					regulator-suspend-microvolt = <900000>;
+ > > +					};
+ > 
+ > Fix indentation.
+ > 
+ > > +			};
+ > > +
+ > > +			vccio_acodec: LDO_REG4 {
+ > > +				regulator-name = "vccio_acodec";
+ > > +				regulator-min-microvolt = <3300000>;
+ > > +				regulator-max-microvolt = <3300000>;
+ > > +
+ > > +				regulator-state-mem {
+ > > +					regulator-off-in-suspend;
+ > > +				};
+ > > +			};
+ > > +
+ > 
+ > > +
+ > > +	pcie {
+ > > +		pcie_reset_pin: pcie-reset-pin {
+ > > +			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+ > > +		};
+ > > +		vcc3v3_pcie_en_pin: vcc3v3-pcie-en-pin {
+ > > +			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ > > +		};
+ > > +	};
+ > > +
+ > > +	pmic {
+ > > +		pmic_int: pmic_int {
+ > 
+ > No underscores in node names.
+ > 
+ > Are you sure this does not cause `make dtsb_check` warnings?
+ > 
+ > Best regards,
+ > Krzysztof
+ > 
+ > 
 
 Regards,
-Jonas
-
-> +		reg = <0xa 0x41000000 0x0 0x00400000>,
-> +		      <0x0 0xfe190000 0x0 0x00010000>,
-> +		      <0x0 0xf4000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l2_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 250 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
->  	gmac1: ethernet@fe1c0000 {
->  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
->  		reg = <0x0 0xfe1c0000 0x0 0x10000>;
-
+Furkan.
 
 _______________________________________________
 Linux-rockchip mailing list
