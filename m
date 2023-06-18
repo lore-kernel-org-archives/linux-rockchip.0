@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51463EB64D7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jun 2023 22:01:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8337EEB64D7
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jun 2023 22:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=KVz004JbTfNoLY88B8qDE33ycijf9zTe9dYSZq63DQM=; b=S8uPrpTYuINBjfdFaVusYqXI8y
-	wYu3jrz3UYDkI1yLbyiq/s6PaXajthLJ5dYCNfsxq07iMik+1/7f+GMUEEpnQI4IoapLI0nzNNUl7
-	BmIfgFCdoGkquXd2AXCwKuMktSgqtaTYzI/YV3nTbF6fdnch6rzDJbXahmTCb3+rslNVBa4T0B8zE
-	OT6Z/K1aqiLoGCf5yeeLQSzPJncqXe5lnIEhoaXYz6wkPEbJcAu53IEndwM1uj59UE85q/gAO8tQQ
-	0Paus0WoR5y2k79PLKgL3u3j6tXLOR9O5ZhVskFsmVlnZKQDG5D96k2lPDV28rIdRZODSifPml114
-	F4DXEA1Q==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=moSWUUMiFYo4nSJ3HL8Ri64oHJ/ltKcD+oeOG0SlOxw=; b=x/B1PeYpFPPM+s
+	uTk6MBhKG2TMi5RAEU6WU0kOkwbnSsfI4eqqgpq/6WagBIUEBvMYvjUB1JfBM0yZzJHAV4NpMUm/n
+	n4YkD5totd/+v5FFZC6I8pXhhvXfQGM7jc0KJe9DgE02y1ME3o0ql/l0L06aV7SUMpAH5RfxDm+zM
+	Zx7lyCgsRu4pz5uc0d+gxubK2ISVebga2BWm/gWgzvNipzYHD6QA9q3/GB/KloDwpTp463/gSK0LY
+	ED3D3/ogg3pZKuBEpqmw+Ua8qnCPKYcdka31GDecA/m4gNQOMKei3MA5vOdhLesCDl49CKXqw1/0r
+	+5txHfnDl5aJeGuf5KyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qB0Sk-006nUW-0u;
-	Sun, 18 Jun 2023 22:01:34 +0000
+	id 1qB0Si-006nTy-2T;
+	Sun, 18 Jun 2023 22:01:32 +0000
 Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qB0Sf-006nSa-2L
+	id 1qB0Se-006nSS-2O
 	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Jun 2023 22:01:32 +0000
+	Sun, 18 Jun 2023 22:01:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=knW5hfOdRlNb6ad4KcvWMFXEOrQEnk5DYqTPo5HmSZE=;
-	b=nwrZNklbIibuv/B5ivfm6EIkAUlnO1nHZq/SerLKzN45UjsIjnkNqYVRDnKgzpo227Hq
-	oHCw00h31gvAEBoLn+WoX33Z5LK+1BOoDBa/OmuSU9SjhoBuPQDX5uQzHJeWkLSCIcTQ6B
-	aT7ZvIaH3hj7mnUyUiF6DCXCyDumgtdFcO32dhJMdsvK6NA6l6dIWadlAiKBvtGAn/MI53
-	QlkbXGstcmLz4OdfcjxuBpN4CZwI01g1wLfkzNj9C9jzVlyjl4cQV/06Yu6x9WRXg7a9UF
-	v/mHzUf9i2ZafNsom3UKIrevbGPEZyWL4no+oeNVpLsHMsnIRGpFuZyPNwo4uZug==
-Received: by filterdrecv-84b96456cb-fbbmz with SMTP id filterdrecv-84b96456cb-fbbmz-1-648F7EB6-30
-        2023-06-18 22:01:26.625714618 +0000 UTC m=+3363784.259579225
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=kE3ug1FphWK8w4bAu88BIK2LQbxYxA5TL1gVPHRLq0s=;
+	b=I18/eC+ZDPL1HZg9AUC1xf4aOdnDKuDMJNZrPnUxF/B8A44OdIN6YX9Y/GzODreQRsBJ
+	q5fe/G5y0H+GJ9SIBrsnX87Gg79I/absjKEwql8LswxWeSJjREH0MtNEOMD3Z1DDOpMhKg
+	D7xc4Au6vFseMsLWGbQhARkSavbLUlqRgqq+Hs0b2l0NLaXl9HtnkX9IYcnDNgvzX/2Max
+	zhTbxBxVMx8vNt/Cl/SVszvlOsSocZVNqN4G/5wTxhEqULNbKkplpXQ02snOXMlK+R1/Az
+	DVUs6Yf2kD5JX2LmIop7PApmABEePgUZcyB6VaWRLmGrIH0ZPweV5Z66/jQ9V1Ww==
+Received: by filterdrecv-65f68489c8-zmlx4 with SMTP id filterdrecv-65f68489c8-zmlx4-1-648F7EB4-7C
+        2023-06-18 22:01:25.078475909 +0000 UTC m=+3363925.214276436
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-5 (SG)
 	with ESMTP
-	id oYfsfJYrSiSN_35tLvMcIg
-	Sun, 18 Jun 2023 22:01:26.169 +0000 (UTC)
+	id o9F54kvgToCDS4l4o5-IEA
+	Sun, 18 Jun 2023 22:01:24.617 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 1/2] drm/fourcc: Add NV20 and NV30 YUV formats
-Date: Sun, 18 Jun 2023 22:01:27 +0000 (UTC)
-Message-Id: <20230618220122.3911297-2-jonas@kwiboo.se>
+Subject: [PATCH v4 0/2] drm/rockchip: vop: Add NV15, NV20 and NV30 support
+Date: Sun, 18 Jun 2023 22:01:25 +0000 (UTC)
+Message-Id: <20230618220122.3911297-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230618220122.3911297-1-jonas@kwiboo.se>
-References: <20230618220122.3911297-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h4iCR0c7B5q6rx1oD?=
- =?us-ascii?Q?W9+4R8Lw7Z7xtsoiXwBXqJPoFzEsTzCoor3Hb++?=
- =?us-ascii?Q?Z7TaqcwWsh9e86dziBnyfLh8E9iPkhTO=2FsPJHCH?=
- =?us-ascii?Q?OZHCz0hhDECKOHxbgAmIseVuVRJa3ut0XuGbS14?=
- =?us-ascii?Q?UXDjZ0Hy8SS71ZVUINySexcOUUNUJdusRESrMJj?=
- =?us-ascii?Q?YouYRCIuONPe6UJUycwgw=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h2uRKfwUrnAuhEShj?=
+ =?us-ascii?Q?yRo=2FdCt6XHj=2FoPJvO4UOauxEyTrAKiA2DU4+Gq+?=
+ =?us-ascii?Q?lO9RCUbwfLMSCEL+PvsSkAWdCnDGx4nIxNbvQkI?=
+ =?us-ascii?Q?I=2FO3oAz7GAlU4PbVHiYiXwtL1GEpqIHawbcba85?=
+ =?us-ascii?Q?IJ+y9bXoUNjVNUNNOZ2EdG5mfgEn1YDKAiY6gfZ?=
+ =?us-ascii?Q?2jzUKVaI1eQ+Tf8nt0uWw=3D=3D?=
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
 	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
 	<airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huang
@@ -68,9 +65,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
 	Jonas Karlman <jonas@kwiboo.se>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230618_150129_896139_7C216919 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230618_150129_485334_113A166D 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,58 +83,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DRM_FORMAT_NV20 and DRM_FORMAT_NV30 formats is the 2x1 and non-subsampled
-variant of NV15, a 10-bit 2-plane YUV format that has no padding between
-components. Instead, luminance and chrominance samples are grouped into 4s
-so that each group is packed into an integer number of bytes:
+This series add support for displaying 10-bit 4:2:0 and 4:2:2 formats produced
+by the Rockchip Video Decoder on RK322X, RK3288, RK3328, RK3368 and RK3399.
+Also include 10-bit 4:4:4 support since VOP can support that also.
 
-YYYY = UVUV = 4 * 10 bits = 40 bits = 5 bytes
+First patch adds new fourcc 10-bit YUV formats with 4:2:2/4:4:4 sub-sampling.
+Second patch adds support for displaying the new fourcc formats.
 
-The '20' and '30' suffix refers to the optimum effective bits per pixel
-which is achieved when the total number of luminance samples is a multiple
-of 4.
+These patches has been in use by LibreELEC and other distros for the
+past 3+ years, hoping they can be merged this time around :-)
 
-V2: Added NV30 format
+Changes in v4:
+- Rework RK3328/RK3399 win0/1 data to not affect RK3368
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Sandy Huang <hjc@rock-chips.com>
----
- drivers/gpu/drm/drm_fourcc.c  | 8 ++++++++
- include/uapi/drm/drm_fourcc.h | 2 ++
- 2 files changed, 10 insertions(+)
+Changes in v3:
+- No changes, rebased on next-20230616
+- R-B tags was collected
 
-diff --git a/drivers/gpu/drm/drm_fourcc.c b/drivers/gpu/drm/drm_fourcc.c
-index 0f17dfa8702b..193cf8ed7912 100644
---- a/drivers/gpu/drm/drm_fourcc.c
-+++ b/drivers/gpu/drm/drm_fourcc.c
-@@ -299,6 +299,14 @@ const struct drm_format_info *__drm_format_info(u32 format)
- 		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
- 		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
- 		  .vsub = 2, .is_yuv = true },
-+		{ .format = DRM_FORMAT_NV20,		.depth = 0,
-+		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
-+		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
-+		  .vsub = 1, .is_yuv = true },
-+		{ .format = DRM_FORMAT_NV30,		.depth = 0,
-+		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
-+		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 1,
-+		  .vsub = 1, .is_yuv = true },
- 		{ .format = DRM_FORMAT_Q410,		.depth = 0,
- 		  .num_planes = 3, .char_per_block = { 2, 2, 2 },
- 		  .block_w = { 1, 1, 1 }, .block_h = { 1, 1, 1 }, .hsub = 1,
-diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
-index 8db7fd3f743e..3151f1fc7ebb 100644
---- a/include/uapi/drm/drm_fourcc.h
-+++ b/include/uapi/drm/drm_fourcc.h
-@@ -323,6 +323,8 @@ extern "C" {
-  * index 1 = Cr:Cb plane, [39:0] Cr1:Cb1:Cr0:Cb0 little endian
-  */
- #define DRM_FORMAT_NV15		fourcc_code('N', 'V', '1', '5') /* 2x2 subsampled Cr:Cb plane */
-+#define DRM_FORMAT_NV20		fourcc_code('N', 'V', '2', '0') /* 2x1 subsampled Cr:Cb plane */
-+#define DRM_FORMAT_NV30		fourcc_code('N', 'V', '3', '0') /* non-subsampled Cr:Cb plane */
- 
- /*
-  * 2 plane YCbCr MSB aligned
+Changes in v2:
+- Add NV30 format
+- R-B tags was not collected due to NV30 changes
+
+This series is also available at [1].
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20230616-vop-nv15
+
+Jonas Karlman (2):
+  drm/fourcc: Add NV20 and NV30 YUV formats
+  drm/rockchip: vop: Add NV15, NV20 and NV30 support
+
+ drivers/gpu/drm/drm_fourcc.c                |  8 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 63 +++++++++++++++++----
+ include/uapi/drm/drm_fourcc.h               |  2 +
+ 5 files changed, 91 insertions(+), 12 deletions(-)
+
 -- 
 2.40.1
 
