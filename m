@@ -4,36 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA97CEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jun 2023 08:14:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A609EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jun 2023 11:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=36pWzJp0sNsy6SpHq6ky2x6LENvv7khRiaCuAwNzmYA=; b=ODVrbK1QhkpIck
-	VKPiMMrRxtxHgRVAUN/S43vsfFkOudcrjf3ieNDKzhre4aevpODfw2/Q8wBd+8EEPpbEFaJC93dmi
-	1joeLm0kRxhk6hk9JpCO7E9+1rIJvgQiWt9M+EYr+XQUzTF8MXC2VvaBo0TSbZWjEpzQ8Mkji6dyf
-	ZPJ9BZErt3Frb9m/cAJezv5ILYhUBSgpkMr/nVxGnX+0XGFh4OWUz4482f7/CLLHLRhbCnoFK7htB
-	+wAH0uDvk5KSoNvaNlmPduDQhSMQj8DNpdMjX7SoJz3ZzslZQeW5S+wd7W9flKsiEP+Ay2FEXBy0d
-	v4qKhd2W2L6whHoagBuA==;
+	List-Owner; bh=H6Qk5YH26whSJwurunXFR0MxZE/uJ0G9wbzrXAn1hEY=; b=Ns1nv676loBVhc
+	zRNbMySK1wxmq40XxSEQNle1YnyS8jmeM3VXd+H6H7xIGGXz/xwGLREbaecKnCOf0fTfQhNMTscvM
+	rqUlrVwavMIMrFWbZSni2O4z9Pepz9YisH3/3EXecPaLHE4jgucTE8kvjY5y3kqeYlpiIchGIcLvw
+	dlnCaGgfzWURz4QbxQ5eLi0/bEzRMSDoYm9XTvEnvf1jbTL2rcIZFKGUAX/7YJOMNrvRycOuGDXm9
+	gnBkUxAMR2Emo1BhIrsGTTjBduL+cuXxBFvPyv/KNvsIRvhPPo66dhUpAA4fhj/vjUYIZsv5qD/ut
+	VCD+T9I1cHq5cywj3Ahg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAnXy-005RRh-0A;
-	Sun, 18 Jun 2023 08:14:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qAqnG-005oyM-1W;
+	Sun, 18 Jun 2023 11:42:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qAnXu-005RQD-3A;
-	Sun, 18 Jun 2023 08:14:04 +0000
-Received: from i53875b22.versanet.de ([83.135.91.34] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qAnXn-00028P-K9; Sun, 18 Jun 2023 10:13:55 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Damien Le Moal <dlemoal@kernel.org>
+	id 1qAqnD-005oxd-0w;
+	Sun, 18 Jun 2023 11:42:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E36AD60B00;
+	Sun, 18 Jun 2023 11:42:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5992EC433C0;
+	Sun, 18 Jun 2023 11:41:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1687088520;
+	bh=BFmIrutDYG4LB/6zb/Nq9wLMZ8zxH9TishG/byWakZw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nyXluhSZyi5w0ELiAjionCSz2q0Fhr8mg7NxOyVCVHZZJXdVx5o4MujlqZ0mYCPhp
+	 uM2gXLUbGjewDDyVrJ2tAQUKyLMJ3DRhfsGLZee7v0CtSdnnPGKvBxQuOmmCtfu00S
+	 mfCQqO6ImWwDP8tGQ2g95k4cfnUYmRTOtf0OZFskNQlkqV5x9L64K67DNWHoHWbQrI
+	 CzSZWfJbVa1fEJX9tT3ltI450mR1nsaHWwaXAiDeoU77n9y7ut4cqokJw9xWxPrpNd
+	 +gMW+f6euw7tgL6tHFjklmCL0diW9XhwYxz/0+C97kB8SIojtktp7Z9Pw4ibvmcnvU
+	 hcR5HfR+C6evQ==
+Message-ID: <d0d12af5-4dd6-b153-f1fc-123721bfd929@kernel.org>
+Date: Sun, 18 Jun 2023 20:41:56 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v4 5/5] arm64: dts: rockchip: rk3588: add SATA support
+Content-Language: en-US
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Damien Le Moal <damien.lemoal@opensource.wdc.com>,
@@ -42,17 +61,15 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com
-Subject: Re: [PATCH v4 5/5] arm64: dts: rockchip: rk3588: add SATA support
-Date: Sun, 18 Jun 2023 10:13:54 +0200
-Message-ID: <4844617.31r3eYUQgx@diego>
-In-Reply-To: <fa42c1ad-c411-2121-92f7-fc1e1f0f8172@kernel.org>
 References: <20230612171337.74576-1-sebastian.reichel@collabora.com>
  <20230612171337.74576-6-sebastian.reichel@collabora.com>
- <fa42c1ad-c411-2121-92f7-fc1e1f0f8172@kernel.org>
-MIME-Version: 1.0
+ <fa42c1ad-c411-2121-92f7-fc1e1f0f8172@kernel.org> <4844617.31r3eYUQgx@diego>
+From: Damien Le Moal <dlemoal@kernel.org>
+Organization: Western Digital Research
+In-Reply-To: <4844617.31r3eYUQgx@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230618_011403_024221_D5060905 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20230618_044203_370448_1FF6D01E 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,36 +81,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Damien,
-
-Am Sonntag, 18. Juni 2023, 05:10:58 CEST schrieb Damien Le Moal:
-> On 6/13/23 02:13, Sebastian Reichel wrote:
-> > Add all three SATA IP blocks to the RK3588 DT.
-> > 
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
-> This patch does not apply to libata for-6.5 branch. What is it based on ?
-
-I guess probably either mainline or my dts-branch [0] .
-
-Most of the time we have series doing driver changes + devicetree changes
-where subsystem maintainers pick the driver + binding patches 
-(1-3 in this case) and after that I pick the devicetree changes (4-5 here).
-
-
-Heiko
-
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v6.5-armsoc/dts64
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gNi8xOC8yMyAxNzoxMywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkgRGFtaWVuLAo+IAo+
+IEFtIFNvbm50YWcsIDE4LiBKdW5pIDIwMjMsIDA1OjEwOjU4IENFU1Qgc2NocmllYiBEYW1pZW4g
+TGUgTW9hbDoKPj4gT24gNi8xMy8yMyAwMjoxMywgU2ViYXN0aWFuIFJlaWNoZWwgd3JvdGU6Cj4+
+PiBBZGQgYWxsIHRocmVlIFNBVEEgSVAgYmxvY2tzIHRvIHRoZSBSSzM1ODggRFQuCj4+Pgo+Pj4g
+U2lnbmVkLW9mZi1ieTogU2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxh
+Ym9yYS5jb20+Cj4+Cj4+IFRoaXMgcGF0Y2ggZG9lcyBub3QgYXBwbHkgdG8gbGliYXRhIGZvci02
+LjUgYnJhbmNoLiBXaGF0IGlzIGl0IGJhc2VkIG9uID8KPiAKPiBJIGd1ZXNzIHByb2JhYmx5IGVp
+dGhlciBtYWlubGluZSBvciBteSBkdHMtYnJhbmNoIFswXSAuCj4gCj4gTW9zdCBvZiB0aGUgdGlt
+ZSB3ZSBoYXZlIHNlcmllcyBkb2luZyBkcml2ZXIgY2hhbmdlcyArIGRldmljZXRyZWUgY2hhbmdl
+cwo+IHdoZXJlIHN1YnN5c3RlbSBtYWludGFpbmVycyBwaWNrIHRoZSBkcml2ZXIgKyBiaW5kaW5n
+IHBhdGNoZXMgCj4gKDEtMyBpbiB0aGlzIGNhc2UpIGFuZCBhZnRlciB0aGF0IEkgcGljayB0aGUg
+ZGV2aWNldHJlZSBjaGFuZ2VzICg0LTUgaGVyZSkuCgpPSy4gSSB3aWxsIHF1ZXVlIDEtMyBvbmx5
+IHRoZW4uIFBsZWFzZSBwaWNrdXAgNCAmIDUuClRoYW5rcyAhCgo+IAo+IAo+IEhlaWtvCj4gCj4g
+Cj4gWzBdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21t
+aW5kL2xpbnV4LXJvY2tjaGlwLmdpdC9sb2cvP2g9djYuNS1hcm1zb2MvZHRzNjQKPiAKPiAKCi0t
+IApEYW1pZW4gTGUgTW9hbApXZXN0ZXJuIERpZ2l0YWwgUmVzZWFyY2gKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
