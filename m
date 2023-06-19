@@ -4,72 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11F11EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jun 2023 22:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D08EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jun 2023 01:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jQhpg5xntxTsP+EMxCalFXReS4ZBnwJDAVk/BVzZ/1I=; b=Z2oiObRqLriB2uJNSwIBLk4BTL
-	1J/rme0rxz35tm+NZDTL7wPGbxoNYiIU7gmkrDFT9MmZYWVZ4i9exbt1c6okHsA8NPywu8YkEt1af
-	69AWmEs0K0VvBXWhZmEdKxwa/mkb6HMpT8PMd8pWeP+1428T3zvsKfWLqtc3gHqtpRZOo9ehsicax
-	mypsE5wjr1blS/Hc6ERk/2f6QxkLEg4w6ROrpall7EpFJaS/OgrevrpFOS4eUQA87Sz937s01NTt3
-	km0aXYGQkVv8XSj/QNCtsqJ++h9fIh+y6aBiNk+VD0BledxUz55mgpB2D861w2adlSML4iPtzCJLd
-	G7hYx3gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=61I+gFgtwzgA/c9I07yW90ps5b6XlaNpANH16nMbzFw=; b=wI/Yqy5y4ViHCj
+	2YTtfGHzQlcjzjgDV9vpZUTdhvRenJXVR881Zony7PJK/IIP4r4LAImx3HNced4m7xdR6K64cH5SA
+	S8EJR6eVKqYl669yfJwQGZkfG14CagdfWTGs8WtRfFlhmnw/wAuyuPmuAlub0Rp+MhBubfhHxL3ys
+	jG+9jBEOQ+fw8Hr24ZT8SzUd126FKAIRotGRKWaqY7ZN7QS5Gbgijl7pZ85b7YYhK/khwNkJ/sgAk
+	/fXh72uQISW2URxspVP3W6HV/BdX2lo1vOSDiO47JHRSsiLvhXc7wiNSC0CbRCWXAgBkGFl5kPNaF
+	1+hPnMDhchhU36ZzX+lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qB0Sq-006nY7-1j;
-	Sun, 18 Jun 2023 22:01:40 +0000
-Received: from s.wrqvtbkv.outbound-mail.sendgrid.net ([149.72.123.24])
+	id 1qB3PP-0075VS-2h;
+	Mon, 19 Jun 2023 01:10:19 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qB0Sl-006nU3-0P
-	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Jun 2023 22:01:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=from:subject:in-reply-to:references:mime-version:to:cc:
-	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=ugWfous5KsbcnnKbZj0TMZzPMGxV9++0NJ/5fHcgZlw=;
-	b=Bus/m02lgHoVmOQfb3ta1Mg4+K+KnkB4ANdYrDkH/LUmynFCP80kvzDr9FoX3SeXYWfy
-	7TFXRVfHOF+eYMUWN7T2ZfWOvIADWZsl80HWnsU2sTZLCOoHSJC/TkVMdEqUAqeaR58jrn
-	8KvM/Hz1ELOv7OPlnlvF6w420Bpg4gf7jJQ/Rf2QHvv1EwhR4Kp/jMqKlv9vNU9cjVMNsE
-	h+z7JKnqDfuElzjiiLjEhVzJkULhgYidYUwy1xUNdGHns1ZzAchbRj6qUkKku7OM7niTB8
-	eQd4YYukNWkvt7nLF1cHcG3K6nOCinD/PjAjPFAhIkjcWIPL//sDNsnpRhSiVgeg==
-Received: by filterdrecv-77869f68cc-5ckz9 with SMTP id filterdrecv-77869f68cc-5ckz9-1-648F7EB7-59
-        2023-06-18 22:01:28.035090334 +0000 UTC m=+3363922.884745269
-Received: from bionic.localdomain (unknown)
-	by geopod-ismtpd-5 (SG)
-	with ESMTP
-	id 8EjW6wG7SjG_CQ6pCJHWwQ
-	Sun, 18 Jun 2023 22:01:27.844 +0000 (UTC)
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 2/2] drm/rockchip: vop: Add NV15, NV20 and NV30 support
-Date: Sun, 18 Jun 2023 22:01:28 +0000 (UTC)
-Message-Id: <20230618220122.3911297-3-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230618220122.3911297-1-jonas@kwiboo.se>
-References: <20230618220122.3911297-1-jonas@kwiboo.se>
+	id 1qB3PM-0075U9-1Y;
+	Mon, 19 Jun 2023 01:10:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1687137006; bh=l1Av13OOBeHvZ6hhVrMrrY1JviPoUrwczfkLMItzFNU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=v1GWcFzR9GXrM78ith3aTO2L3gwShkuGbtZcQitGAWjKjPiIG8QMtzxBAEzVIKr5s
+	 AE+7K9ITO/vaFMj+gIME6QDFFf9xirUQTYL7fISoQT1pUXU5Hk7p9jYqn2ms8C1mI/
+	 wZFoZqj11dtT0Zy4eI1IoJMuxNV2P9qo2FKX57xY=
+From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+To: linux-rockchip@lists.infradead.org
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH] soc: rockchip: grf: Fix SDMMC not working on RK3588 with bus-width > 1
+Date: Mon, 19 Jun 2023 03:09:58 +0200
+Message-ID: <20230619011002.2249960-1-megi@xff.cz>
 MIME-Version: 1.0
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hwRsjo=2F7Hz=2F5HZJ0Z?=
- =?us-ascii?Q?8p1fE7ovghHY39JWHFK35Sgbv5fWzDGYLaq+o16?=
- =?us-ascii?Q?yKmb4D4=2FgOy9m8sLkWYhyCh5h893NgMHDyR2rG0?=
- =?us-ascii?Q?PtJP5tJzX1YqN4pORCr=2FAHv8BfVrxLaDWa6iOob?=
- =?us-ascii?Q?zRYY89H+kx6EIHy7m65Y+=2FtiXiGOsgth9pHsrt+?=
- =?us-ascii?Q?CPV76gqowhbQ6Suf2ihOw=3D=3D?=
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
-	<airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huang
-	<hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230618_150135_242227_EAB87DAA 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20230618_181017_307657_727EC969 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,221 +62,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for displaying 10-bit 4:2:0 and 4:2:2 formats produced by
-the Rockchip Video Decoder on RK322X, RK3288, RK3328 and RK3399.
-Also add support for 10-bit 4:4:4 format while at it.
+From: Ondrej Jirman <megi@xff.cz>
 
-V4: Rework RK3328/RK3399 win0/1 data to not affect RK3368
-V2: Added NV30 support
+RK3588 has the same issue as other earlier RK SoCs. JTAG
+functionality muxed to some SDMMC data pins causes issues with SDMMC
+interface. Without this patch, I can only use SDMMC inteface
+with bus-width = <1>. (JTAG is muxed to data pins D2 and D3)
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Sandy Huang <hjc@rock-chips.com>
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 63 +++++++++++++++++----
- 3 files changed, 81 insertions(+), 12 deletions(-)
+ drivers/soc/rockchip/grf.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index a530ecc4d207..fa0405ad0acf 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -273,6 +273,18 @@ static bool has_uv_swapped(uint32_t format)
- 	}
- }
- 
-+static bool is_fmt_10(uint32_t format)
-+{
-+	switch (format) {
-+	case DRM_FORMAT_NV15:
-+	case DRM_FORMAT_NV20:
-+	case DRM_FORMAT_NV30:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- static enum vop_data_format vop_convert_format(uint32_t format)
- {
- 	switch (format) {
-@@ -288,12 +300,15 @@ static enum vop_data_format vop_convert_format(uint32_t format)
- 	case DRM_FORMAT_BGR565:
- 		return VOP_FMT_RGB565;
- 	case DRM_FORMAT_NV12:
-+	case DRM_FORMAT_NV15:
- 	case DRM_FORMAT_NV21:
- 		return VOP_FMT_YUV420SP;
- 	case DRM_FORMAT_NV16:
-+	case DRM_FORMAT_NV20:
- 	case DRM_FORMAT_NV61:
- 		return VOP_FMT_YUV422SP;
- 	case DRM_FORMAT_NV24:
-+	case DRM_FORMAT_NV30:
- 	case DRM_FORMAT_NV42:
- 		return VOP_FMT_YUV444SP;
- 	default:
-@@ -944,7 +959,12 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
- 	dsp_st = dsp_sty << 16 | (dsp_stx & 0xffff);
- 
--	offset = (src->x1 >> 16) * fb->format->cpp[0];
-+	if (fb->format->block_w[0])
-+		offset = (src->x1 >> 16) * fb->format->char_per_block[0] /
-+			 fb->format->block_w[0];
-+	else
-+		offset = (src->x1 >> 16) * fb->format->cpp[0];
-+
- 	offset += (src->y1 >> 16) * fb->pitches[0];
- 	dma_addr = rk_obj->dma_addr + offset + fb->offsets[0];
- 
-@@ -970,6 +990,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	}
- 
- 	VOP_WIN_SET(vop, win, format, format);
-+	VOP_WIN_SET(vop, win, fmt_10, is_fmt_10(fb->format->format));
- 	VOP_WIN_SET(vop, win, yrgb_vir, DIV_ROUND_UP(fb->pitches[0], 4));
- 	VOP_WIN_SET(vop, win, yrgb_mst, dma_addr);
- 	VOP_WIN_YUV2YUV_SET(vop, win_yuv2yuv, y2r_en, is_yuv);
-@@ -986,7 +1007,11 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		uv_obj = fb->obj[1];
- 		rk_uv_obj = to_rockchip_obj(uv_obj);
- 
--		offset = (src->x1 >> 16) * bpp / hsub;
-+		if (fb->format->block_w[1])
-+			offset = (src->x1 >> 16) * bpp /
-+				 fb->format->block_w[1] / hsub;
-+		else
-+			offset = (src->x1 >> 16) * bpp / hsub;
- 		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
- 
- 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 5f56e0597df8..4b2daefeb8c1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -186,6 +186,7 @@ struct vop_win_phy {
- 	struct vop_reg enable;
- 	struct vop_reg gate;
- 	struct vop_reg format;
-+	struct vop_reg fmt_10;
- 	struct vop_reg rb_swap;
- 	struct vop_reg uv_swap;
- 	struct vop_reg act_info;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 20ac7811c5eb..4f1134010498 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -53,6 +53,23 @@ static const uint32_t formats_win_full[] = {
- 	DRM_FORMAT_NV42,
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index 15a3970e3509..d768c5a70174 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -121,6 +121,17 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3566_defaults),
  };
  
-+static const uint32_t formats_win_full_10[] = {
-+	DRM_FORMAT_XRGB8888,
-+	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_ABGR8888,
-+	DRM_FORMAT_RGB888,
-+	DRM_FORMAT_BGR888,
-+	DRM_FORMAT_RGB565,
-+	DRM_FORMAT_BGR565,
-+	DRM_FORMAT_NV12,
-+	DRM_FORMAT_NV16,
-+	DRM_FORMAT_NV24,
-+	DRM_FORMAT_NV15,
-+	DRM_FORMAT_NV20,
-+	DRM_FORMAT_NV30,
++#define RK3588_GRF_SOC_CON6		0x0318
++
++static const struct rockchip_grf_value rk3588_defaults[] __initconst = {
++	{ "jtag switching", RK3588_GRF_SOC_CON6, HIWORD_UPDATE(0, 1, 14) },
 +};
 +
- static const uint64_t format_modifiers_win_full[] = {
- 	DRM_FORMAT_MOD_LINEAR,
- 	DRM_FORMAT_MOD_INVALID,
-@@ -627,11 +644,12 @@ static const struct vop_scl_regs rk3288_win_full_scl = {
- 
- static const struct vop_win_phy rk3288_win01_data = {
- 	.scl = &rk3288_win_full_scl,
--	.data_formats = formats_win_full,
--	.nformats = ARRAY_SIZE(formats_win_full),
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full,
- 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
- 	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
- 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
-@@ -936,13 +954,38 @@ static const struct vop_win_yuv2yuv_data rk3399_vop_big_win_yuv2yuv_data[] = {
- 
- };
- 
--static const struct vop_win_phy rk3399_win01_data = {
-+static const struct vop_win_phy rk3399_win0_data = {
- 	.scl = &rk3288_win_full_scl,
--	.data_formats = formats_win_full,
--	.nformats = ARRAY_SIZE(formats_win_full),
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full_afbc,
- 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
-+	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
-+	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
-+	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
-+	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
-+	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
-+	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
-+	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
-+	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
-+	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
-+	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
-+	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
-+	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
-+	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
-+	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
++static const struct rockchip_grf_info rk3588_sysgrf __initconst = {
++	.values = rk3588_defaults,
++	.num_values = ARRAY_SIZE(rk3588_defaults),
 +};
 +
-+static const struct vop_win_phy rk3399_win1_data = {
-+	.scl = &rk3288_win_full_scl,
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
-+	.format_modifiers = format_modifiers_win_full,
-+	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
-+	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
- 	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
- 	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
-@@ -965,9 +1008,9 @@ static const struct vop_win_phy rk3399_win01_data = {
-  * AFBC on the primary plane.
-  */
- static const struct vop_win_data rk3399_vop_win_data[] = {
--	{ .base = 0x00, .phy = &rk3399_win01_data,
-+	{ .base = 0x00, .phy = &rk3399_win0_data,
- 	  .type = DRM_PLANE_TYPE_PRIMARY },
--	{ .base = 0x40, .phy = &rk3368_win01_data,
-+	{ .base = 0x40, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
- 	{ .base = 0x00, .phy = &rk3368_win23_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
-@@ -1099,11 +1142,11 @@ static const struct vop_intr rk3328_vop_intr = {
- };
  
- static const struct vop_win_data rk3328_vop_win_data[] = {
--	{ .base = 0xd0, .phy = &rk3368_win01_data,
-+	{ .base = 0xd0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_PRIMARY },
--	{ .base = 0x1d0, .phy = &rk3368_win01_data,
-+	{ .base = 0x1d0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
--	{ .base = 0x2d0, .phy = &rk3368_win01_data,
-+	{ .base = 0x2d0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_CURSOR },
+ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	{
+@@ -147,6 +158,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	}, {
+ 		.compatible = "rockchip,rk3566-pipe-grf",
+ 		.data = (void *)&rk3566_pipegrf,
++	}, {
++		.compatible = "rockchip,rk3588-sys-grf",
++		.data = (void *)&rk3588_sysgrf,
+ 	},
+ 	{ /* sentinel */ },
  };
- 
 -- 
-2.40.1
+2.41.0
 
 
 _______________________________________________
