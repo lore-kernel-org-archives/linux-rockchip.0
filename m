@@ -4,100 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75693EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jun 2023 14:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 210B7EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jun 2023 14:51:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Date:References:
-	In-Reply-To:Message-Id:Mime-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qg9jErm1MuEFTNV7bNL0YYj5/alpM1CxeMDmVXIKbHg=; b=H41MaCtwqidee2
-	aweM6grJ4IjCg72hnta/Ap3yyeHHKQErPZw1Lqf23imebE3rTHDZQc3zfeKjbWdnQqGk9xN64PPHx
-	SbsAn3ZJnINjD84WpkhWLcHSqLnc1Xlxah5rFQTZ6P7SLZkB3LdMH6eQt03nytmhPEtLvHLZLGQ+/
-	3Y+rYTMI8OkUDxI89MGjJxZOfi9SA0ifTYdt3p94DyPZGSTg9a13x+BjDm/n4F2bo4klRuhPPGkcE
-	vL2u6zroj392IBXg2khdDeoOD5Omj/ac80WH/GNMMe+ZgJBnQpcIlQEFHDes/YCYwMDrCFkDCRpOZ
-	K+fcdxmPjJlgK8j4bVMQ==;
+	List-Owner; bh=RTQENaLvFzwpI6TUjzSaEY9zw2DXuf17FEgATvoUUTY=; b=dRhOeXhacw7viO
+	yaoilclaSSFeRBwql+SiEPhNjG1i+yCA/DUi45ssj/+50l4gUC+8MYRNOp5qy+lKrQM2xWZOb6Mv6
+	EwO9xQsr3My0hUK3GzLLTIbYtF2FJV6ISV+yEArsPl6mMHRd7gYFBkDCaItq2GLnvUPUA+P+gTHM9
+	FfYFczJbpOXSYC5zZX5YVHl7lnvbJdqYjGnJG3JUdHzqv4XDFDaEL8r88JKfEaKhbdO/DSpBq56T0
+	kZKU9q47mlJyPwXDob6hxqzvfwo17MYglwS78pBIricxXyCFtrz3jZRd/rQmzUjd3wWG8qKyJTbec
+	QYYsgDkMS3zNCrS3qcmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBGCq-008gV7-39;
-	Mon, 19 Jun 2023 14:50:12 +0000
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBGCn-008gTh-0H
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Jun 2023 14:50:10 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id ADE525C02DC;
-	Mon, 19 Jun 2023 10:50:04 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Mon, 19 Jun 2023 10:50:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm1; t=
-	1687186204; x=1687272604; bh=Ox0mGgHLkp5N/Da4WUkUcZFzC5y5KCU3DdU
-	4cU5s0Zw=; b=uBukndHQGWLUkt5Elnl5NgRUP7VADlbyByjzxpYFPTCu6ZQkXkW
-	EuO6nRksRTSITxAS041IgShdDE/C8nTnzCS7s+KZ4sgX6fv6hI2se4CxS3f76Cel
-	P4ZqwZ2nOukWFZcSdwaDdraA+vnJ1lG0EYHRF7+UXlzs90o5yeMkfrs7nMAAZEK3
-	X3Pd/FoSMQ/gIs5V+CHZCfBNZdcNzQ5SwsRMhOJ9/JciE/N6W9hfB33m7yfbtupm
-	9H+jHbnWngZ6Rn/8sSIBLubLAbe59dNfS4uFYJ2GJnNy68mS1j7tEA7MtrS6Equz
-	x1kQ67rUB17ZXrv0EkRvrnlrLXmZMNDbu8g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1687186204; x=1687272604; bh=Ox0mGgHLkp5N/Da4WUkUcZFzC5y5KCU3DdU
-	4cU5s0Zw=; b=BlQIjlC4NmqbmqO/N50HX0TO6aj3XPhHGD7M9YlMcqHrSp+rasA
-	HsYFM3OHe592/b0g5KK9mszRBYFpelGzdavoUPRhfMLRRbYFj0QEc2vqC/OAicj6
-	k+vRxIuu6wlDRpXXi3opAdHsWh3CGny8wP/7moaXopic9tdQhKXtAmHJ8vVVZTAf
-	VZ6Z8ss9uvYbSipcfWyx/j2V51PwTCM7ilQUkrjJnZKfqY6v3uR2+u1GwOTrlkOL
-	FY5YX1ZFR0waug0Knym4rss67fjXHFFdn4ZAWHOpAb49Xxx//wdmeRtVp7BLueus
-	64bMxkkTpglzcGdQP7EnXj0ahq7qRiH8lMQ==
-X-ME-Sender: <xms:HGuQZFgGOAhuUZ4CKNgTny7qdd2QSQY5T65AhPpH_OtUQoQf8pAoZA>
-    <xme:HGuQZKDfo0bl_ti3SX1Ai2pN33AvW9DTfaSARGUffcyYwD9W0XrPgKHZcI5YVdsww
-    zsvn2-YHI0G60mzM3M>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrgeefvddgjeelucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
-    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
-    htthgvrhhnpeegfeejhedvledvffeijeeijeeivddvhfeliedvleevheejleetgedukedt
-    gfejveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    grrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:HGuQZFFPkC1g4AxtOWHiKVCoutxonI8fb5p5FMcCuCJi2eDvuqzzQg>
-    <xmx:HGuQZKT3Q682uKecNV6ASB1RYXERLp9xPObFiBF6sbUTsV5BosHdaw>
-    <xmx:HGuQZCyN4W8k3O2ouLqLZXxIUD5jo4CMTfcEv7HaYaUskz9b1zX9lg>
-    <xmx:HGuQZBmupTpROysgmBoVV2vahoAhxBiXsQC9ASt9WJXsIqsz_4HAgw>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 1B2F9B60086; Mon, 19 Jun 2023 10:50:03 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-496-g8c46984af0-fm-20230615.001-g8c46984a
-Mime-Version: 1.0
-Message-Id: <063a8886-fd31-425f-901c-fc830512eca3@app.fastmail.com>
-In-Reply-To: <e264ac3a15e0f115aa7e941a77eb312429b8f65e.camel@collabora.com>
-References: <20230616144854.3818934-1-arnd@kernel.org>
- <20230616144854.3818934-2-arnd@kernel.org>
- <e264ac3a15e0f115aa7e941a77eb312429b8f65e.camel@collabora.com>
-Date: Mon, 19 Jun 2023 16:49:41 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>,
- "Arnd Bergmann" <arnd@kernel.org>,
- "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
- "Philipp Zabel" <p.zabel@pengutronix.de>,
- "Mauro Carvalho Chehab" <mchehab@kernel.org>
-Cc: "Hans Verkuil" <hverkuil-cisco@xs4all.nl>,
- "Benjamin Gaignard" <benjamin.gaignard@collabora.com>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, linux-media@vger.kernel.org,
+	id 1qBGED-008ghJ-05;
+	Mon, 19 Jun 2023 14:51:37 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qBGEA-008gfv-0L;
+	Mon, 19 Jun 2023 14:51:35 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 577F512FC;
+	Mon, 19 Jun 2023 07:52:14 -0700 (PDT)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6ACBB3F59C;
+	Mon, 19 Jun 2023 07:51:29 -0700 (PDT)
+Message-ID: <092dda67-8751-9e80-304d-05465162cd97@arm.com>
+Date: Mon, 19 Jun 2023 15:51:28 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v3 2/2] iommu: rockchip: Allocate tables from all
+ available memory for IOMMU v2
+Content-Language: en-GB
+To: Jonas Karlman <jonas@kwiboo.se>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] media: verisilicon: change confusingly named relaxed register
- access
+References: <20230617182540.3091374-1-jonas@kwiboo.se>
+ <20230617182540.3091374-3-jonas@kwiboo.se>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20230617182540.3091374-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230619_075009_601327_EC3F46E6 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20230619_075134_238448_F062F48A 
+X-CRM114-Status: GOOD (  20.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,42 +63,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKdW4gMTksIDIwMjMsIGF0IDE2OjQxLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+
-IExlIHZlbmRyZWRpIDE2IGp1aW4gMjAyMyDDoCAxNjo0OCArMDIwMCwgQXJuZCBCZXJnbWFubiBh
-IMOpY3JpdMKgOgo+PiBGcm9tOiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+PiAKPj4g
-VGhlIHJlZ2lzdGVyIGFic3RyYWN0aW9uIGhhcyB3cmFwcGVycyBhcm91bmQgYm90aCB0aGUgbm9y
-bWFsIHdyaXRlbCgpCj4+IGFuZCBpdHMgd3JpdGVsX3JlbGF4ZWQoKSBjb3VudGVycGFydCwgYnV0
-IHRoaXMgaGFzIGxlZCB0byBhIGxvdCBvZiB1c2Vycwo+PiBlbmRpbmcgdXAgd2l0aCB0aGUgcmVs
-YXhlZCB2ZXJzaW9uLgo+PiAKPj4gVGhlcmUgaXMgc29tZXRpbWVzIGEgbmVlZCB0byBpbnRlbnRp
-b25hbGx5IHBpY2sgdGhlIHJlbGF4ZWQgYWNjZXNzb3IgZm9yCj4+IHBlcmZvcm1hbmNlIGNyaXRp
-Y2FsIGZ1bmN0aW9ucywgYnV0IEkgbm90aWNlZCB0aGF0IGVhY2ggaGFudHJvX3JlZ193cml0ZSgp
-Cj4+IGNhbGwgYWxzbyBjb250YWlucyBhIG5vbi1yZWxheGVkIHJlYWRsKCksIHdoaWNoIGlzIHR5
-cGljYWxseSBtdWNoIG1vcmUKPj4gZXhwZW5zaXZlIHRoYW4gYSB3cml0ZWwsIHNvIHRoZXJlIGlz
-IGxpdHRsZSBiZW5lZml0IGhlcmUgYnV0IGFuIGFkZGVkCj4+IHJpc2sgb2YgbWlzc2luZyBhIHNl
-cmlhbGl6YXRpb24gYWdhaW5zdCBETUEuCj4+IAo+PiBUbyBtYWtlIHRoaXMgYmVoYXZlIGxpa2Ug
-b3RoZXIgaW50ZXJmYWNlcywgdXNlIHRoZSBub3JtYWwgYWNjZXNzb3IgYnkKPj4gZGVmYXVsdCBh
-bmQgb25seSBwcm92aWRlIHRoZSByZWxheGVkIHZlcnNpb24gYXMgYW4gYWx0ZXJuYXRpdmUgZm9y
-Cj4+IHBlcmZvcm1hbmNlIGNyaXRpY2FsIGNvZGUuIGhhbnRyb19wb3N0cHJvYy5jIGlzIHRoZSBv
-bmx5IHBsYWNlIHRoYXQKPj4gdXNlZCBib3RoIHRoZSByZWxheGVkIGFuZCBub3JtYWwgd3JpdGVs
-LCBidXQgdGhpcyBkb2VzIG5vdCBzZWVtCj4+IGNyaWNpdGFsIGVpdGhlciwgc28gY2hhbmdlIGl0
-IGFsbCB0byB0aGUgbm9ybWFsIG9uZXMuCj4KPiBJbiB0aGlzIHRleHQgeW91IHNwb2tlIGFib3V0
-IHBvdGVudGlhbCBwZXJmb3JtYW5jZSBzaWRlIGVmZmVjdHMgb2YgZXhpc3RpbmcgY29kZQo+IGFu
-ZCB5b3VyIGNoYW5nZXMsIGJ1dCBpdHMgbGVmdCBhbGwgdmVyeSB2YWd1ZSBhbmQgdGhlb3JldGlj
-YWwuIEhhdmUgeW91IGRvbmUgYW55Cj4gbWVhc3VyZW1lbnQgPyBEbyB5b3UgbmVlZCBoZWxwIHdp
-dGggdGhlIG1hbm5lciA/CgpJIGRvbid0IGhhdmUgdGhpcyBoYXJkd2FyZSBhbmQgaGF2ZSBub3Qg
-ZG9uZSBhbnkgbWVhc3VyZW1lbnRzLgpPYnZpb3VzbHkgdGhlIG9ubHkgcG9pbnQgb2YgdXNpbmcg
-cmVsYXhlZCBhY2Nlc3NvcnMgaXMgdG8KaW1wcm92ZSBwZXJmb3JtYW5jZSBpbiBjcml0aWNhbCBj
-b2RlIHBhdGhzLCBidXQgZnJvbSB0aGUgd2F5IHRoZXkKYXJlIHVzZWQgaGVyZSBpdCBzZWVtcyB0
-aGF0IHRoaXMgd2FzIGluc3RlYWQganVzdCBhbiBhY2NpZGVudAphbmQgbm9ib2R5IGVsc2UgZGlk
-IGFueSBjb21wYXJpc29ucyBlaXRoZXIuCgpNeSBndWVzcyB3b3VsZCBiZSB0aGF0IGlmIG9uZSB3
-YW50ZWQgdG8gc3BlZWQgdXAgdGhlIHJlZ2lzdGVyCmFjY2VzcywgYSBiZXR0ZXIgd2F5IHdvdWxk
-IGJlIHRvIHVzZSBhIHJlZ21hcCBjYWNoZSB0byBhdm9pZApyZWFkaW5nIHJlZ2lzdGVycyB3aGVu
-IHRoZSBjb250ZW50cyBhcmUgYWxyZWFkeSBrbm93bi4KCiAgICAgQXJuZAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 17/06/2023 7:25 pm, Jonas Karlman wrote:
+> IOMMU v2 found in newer Rockchip SoCs, e.g. RK356x and RK3588, support
+> placing directory and page tables in up to 40-bit addressable physical
+> memory.
+> 
+> Remove the use of GFP_DMA32 flag for IOMMU v2 now that the physical
+> address to the directory table is correctly written to DTE_ADDR.
+
+FWIW I'd be tempted to refactor a bit harder since this is closely 
+coupled to the DMA mask and both could be calculated from a single data 
+value, but there's absolutely nothing wrong with this approach either.
+
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+[ In fact if you start down that rabbit-hole, then I think logically it 
+leads to an even bigger refactor to convert the whole lot to use 
+dma_alloc_pages() instead ]
+
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> v3:
+> - rework to only affect IOMMU v2
+> 
+> v2:
+> - no change
+> 
+>   drivers/iommu/rockchip-iommu.c | 7 +++++--
+>   1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index ae42959bc490..8ff69fbf9f65 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -99,6 +99,7 @@ struct rk_iommu_ops {
+>   	u32 (*mk_dtentries)(dma_addr_t pt_dma);
+>   	u32 (*mk_ptentries)(phys_addr_t page, int prot);
+>   	u64 dma_bit_mask;
+> +	gfp_t gfp_flags;
+>   };
+>   
+>   struct rk_iommu {
+> @@ -727,7 +728,7 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+>   	if (rk_dte_is_pt_valid(dte))
+>   		goto done;
+>   
+> -	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | GFP_DMA32);
+> +	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | rk_ops->gfp_flags);
+>   	if (!page_table)
+>   		return ERR_PTR(-ENOMEM);
+>   
+> @@ -1076,7 +1077,7 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
+>   	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
+>   	 * Allocate one 4 KiB page for each table.
+>   	 */
+> -	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | GFP_DMA32);
+> +	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | rk_ops->gfp_flags);
+>   	if (!rk_domain->dt)
+>   		goto err_free_domain;
+>   
+> @@ -1377,6 +1378,7 @@ static struct rk_iommu_ops iommu_data_ops_v1 = {
+>   	.mk_dtentries = &rk_mk_dte,
+>   	.mk_ptentries = &rk_mk_pte,
+>   	.dma_bit_mask = DMA_BIT_MASK(32),
+> +	.gfp_flags = GFP_DMA32,
+>   };
+>   
+>   static struct rk_iommu_ops iommu_data_ops_v2 = {
+> @@ -1384,6 +1386,7 @@ static struct rk_iommu_ops iommu_data_ops_v2 = {
+>   	.mk_dtentries = &rk_mk_dte_v2,
+>   	.mk_ptentries = &rk_mk_pte_v2,
+>   	.dma_bit_mask = DMA_BIT_MASK(40),
+> +	.gfp_flags = 0,
+>   };
+>   
+>   static const struct of_device_id rk_iommu_dt_ids[] = {
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
