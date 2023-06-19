@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D7ADEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jun 2023 14:33:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A637BEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jun 2023 14:41:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ehtZwCRmm5BDIBOn0/z+wGjV6pWkGJDb2yOAeh4+auM=; b=FvSk5d/MLdK52k
-	uLJK/Ce3ZT35x5e4vVkZrs8ofe7iAAwe0ZyWisHbIagvvfTiHf1plxj3s7HoVtBT1WbN0vn6mc5GS
-	0KUWh+AVQZ6pCa9jADpkJVO0wRaZpNKsFH6GQ3p3y87nFHUTPyOHevCX0kkNr0szd2ujxKa/Qzo4Z
-	lVq/psFt+M0EhOYlGIWlA8wPoNc86MG9YCIBYzu6/iqpTcf7rYWoVFb7UjBzJcCL5sP4tKaOm2Xk1
-	3M9qn6FvDEwJatzaWFjKXeWnV8/QWZiWh+9wvE2CYn8oQNuBmx9lxBRr07j/Ic5Tn+jFA7fNjYrhW
-	iM+jFdgB6gDiEHJ209wQ==;
+	List-Owner; bh=2U1vOoxu8jeUpbZKSPz8RpFor/0lzSSwL8XtMM3/1dw=; b=X8fhj4DxfmQeP4
+	H/gDYwwrlct8YAX9BLy6LgBdlc07birjtK1lYNtx9e+UHmylpbNdMP2MsxZ2TNoSGEWTFKLAg1jrD
+	XkTjS8/dwcX0QhPEE/NWRe91ESj5H4yhSDYMNRG7V9vDLfZPIdYCfK6Z3wLoW3pqH/8p2K3gqwsDe
+	+c/7hCUamnT7gY78ueY0BwjMctrxGkmEjJ8BBWQcN0trMwrRJmssBDm4ufCgwF5viFr0wWBAdmpDu
+	2QUmW0mnY6i8DqxWcpMVpe8OcF90nyyCLHS/rDt6rrXYoAUCZKWwNZShA/2SIx+Fy+hjwrk2JRogP
+	qAGORvQaHIsVBmZtdyEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBFw8-008eOS-0v;
-	Mon, 19 Jun 2023 14:32:56 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBFw4-008eNK-2a;
-	Mon, 19 Jun 2023 14:32:54 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 60E2912FC;
-	Mon, 19 Jun 2023 07:33:32 -0700 (PDT)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 58EC53F59C;
-	Mon, 19 Jun 2023 07:32:47 -0700 (PDT)
-Message-ID: <bbfd874e-4a07-5be5-dde3-2b44763eaa0a@arm.com>
-Date: Mon, 19 Jun 2023 15:32:42 +0100
+	id 1qBG4a-008fKM-0t;
+	Mon, 19 Jun 2023 14:41:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qBG4W-008fIb-0f
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Jun 2023 14:41:37 +0000
+Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:15:c623::7a9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF50766003B0;
+	Mon, 19 Jun 2023 15:41:28 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1687185690;
+	bh=bcT+FUOyCCJiCPzg14oHY8Ywv+HBklrEGs40i6TF2xY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=AyWK+LOjmnPIPsG3d7SkdRNoF/0Bn0+DmYPq/Wv493u7FX+kO0bZj/FEifFHkcG5m
+	 14igAaYZt+KKr5tDUR1N9OFop2PbFp5upv64sXrwFHanfag8fvX2NoDfekZCp+edoH
+	 E2yzQ0dJVkW8fgedCceiz+6Wv/eaWE6ydL3l9imwR4KBPJS/REMvAF4U1DXVQxIHGs
+	 H7u3k3APT7Dob7RTWMQIE9Kps9z3wjYCAkY9qWLTmzrwvtkxAbIGZETVRzr3HkVwAi
+	 2vWOAwFv1Hmj5IlKmctEHNGjCo5Ogc8eDiFy04WMbuXxk/5slAAMmKVlzFHJVzwaDI
+	 EYraxJK6XtYTw==
+Message-ID: <e264ac3a15e0f115aa7e941a77eb312429b8f65e.camel@collabora.com>
+Subject: Re: [PATCH 2/2] media: verisilicon: change confusingly named
+ relaxed register access
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Arnd Bergmann <arnd@kernel.org>, Ezequiel Garcia
+	 <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Mauro Carvalho Chehab
+	 <mchehab@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>,  linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,  linux-kernel@vger.kernel.org
+Date: Mon, 19 Jun 2023 10:41:19 -0400
+In-Reply-To: <20230616144854.3818934-2-arnd@kernel.org>
+References: <20230616144854.3818934-1-arnd@kernel.org>
+	 <20230616144854.3818934-2-arnd@kernel.org>
+User-Agent: Evolution 3.48.3 (3.48.3-1.fc38) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v3 1/2] iommu: rockchip: Fix directory table address
- encoding
-Content-Language: en-GB
-To: Jonas Karlman <jonas@kwiboo.se>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>
-References: <20230617182540.3091374-1-jonas@kwiboo.se>
- <20230617182540.3091374-2-jonas@kwiboo.se>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230617182540.3091374-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230619_073252_953161_7CFABD1A 
-X-CRM114-Status: GOOD (  27.61  )
+X-CRM114-CacheID: sfid-20230619_074136_520237_77168384 
+X-CRM114-Status: GOOD (  21.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,163 +76,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/06/2023 7:25 pm, Jonas Karlman wrote:
-> The physical address to the directory table is currently encoded using
-> the following bit layout for IOMMU v2.
-> 
->   31:12 - Address bit 31:0
->   11: 4 - Address bit 39:32
-> 
-> This is also the bit layout used by the vendor kernel.
-> 
-> However, testing has shown that addresses to the directory/page tables
-> and memory pages are all encoded using the same bit layout.
-> 
-> IOMMU v1:
->   31:12 - Address bit 31:0
-> 
-> IOMMU v2:
->   31:12 - Address bit 31:0
->   11: 8 - Address bit 35:32
->    7: 4 - Address bit 39:36
-> 
-> Change to use the mk_dtentries ops to encode the directory table address
-> correctly. The value written to DTE_ADDR may include the valid bit set,
-> a bit that is ignored and DTE_ADDR reg read it back as 0.
-> 
-> This also update the bit layout comment for the page address and the
-> number of nybbles that are read back for DTE_ADDR comment.
-> 
-> These changes render the dte_addr_phys and dma_addr_dte ops unused and
-> is removed.
-
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-
-> Fixes: 227014b33f62 ("iommu: rockchip: Add internal ops to handle variants")
-> Fixes: c55356c534aa ("iommu: rockchip: Add support for iommu v2")
-> Fixes: c987b65a574f ("iommu/rockchip: Fix physical address decoding")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> v3:
-> - squash removal of unused ops into this patch
-> - update commit message
-> 
-> v2:
-> - replace currently with correctly in commit message
-> 
->   drivers/iommu/rockchip-iommu.c | 43 ++++------------------------------
->   1 file changed, 5 insertions(+), 38 deletions(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 4054030c3237..ae42959bc490 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -98,8 +98,6 @@ struct rk_iommu_ops {
->   	phys_addr_t (*pt_address)(u32 dte);
->   	u32 (*mk_dtentries)(dma_addr_t pt_dma);
->   	u32 (*mk_ptentries)(phys_addr_t page, int prot);
-> -	phys_addr_t (*dte_addr_phys)(u32 addr);
-> -	u32 (*dma_addr_dte)(dma_addr_t dt_dma);
->   	u64 dma_bit_mask;
->   };
->   
-> @@ -278,8 +276,8 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
->   /*
->    * In v2:
->    * 31:12 - Page address bit 31:0
-> - *  11:9 - Page address bit 34:32
-> - *   8:4 - Page address bit 39:35
-> + * 11: 8 - Page address bit 35:32
-> + *  7: 4 - Page address bit 39:36
->    *     3 - Security
->    *     2 - Writable
->    *     1 - Readable
-> @@ -506,7 +504,7 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
->   
->   	/*
->   	 * Check if register DTE_ADDR is working by writing DTE_ADDR_DUMMY
-> -	 * and verifying that upper 5 nybbles are read back.
-> +	 * and verifying that upper 5 (v1) or 7 (v2) nybbles are read back.
->   	 */
->   	for (i = 0; i < iommu->num_mmu; i++) {
->   		dte_addr = rk_ops->pt_address(DTE_ADDR_DUMMY);
-> @@ -531,33 +529,6 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
->   	return 0;
->   }
->   
-> -static inline phys_addr_t rk_dte_addr_phys(u32 addr)
-> -{
-> -	return (phys_addr_t)addr;
-> -}
-> -
-> -static inline u32 rk_dma_addr_dte(dma_addr_t dt_dma)
-> -{
-> -	return dt_dma;
-> -}
-> -
-> -#define DT_HI_MASK GENMASK_ULL(39, 32)
-> -#define DTE_BASE_HI_MASK GENMASK(11, 4)
-> -#define DT_SHIFT   28
-> -
-> -static inline phys_addr_t rk_dte_addr_phys_v2(u32 addr)
-> -{
-> -	u64 addr64 = addr;
-> -	return (phys_addr_t)(addr64 & RK_DTE_PT_ADDRESS_MASK) |
-> -	       ((addr64 & DTE_BASE_HI_MASK) << DT_SHIFT);
-> -}
-> -
-> -static inline u32 rk_dma_addr_dte_v2(dma_addr_t dt_dma)
-> -{
-> -	return (dt_dma & RK_DTE_PT_ADDRESS_MASK) |
-> -	       ((dt_dma & DT_HI_MASK) >> DT_SHIFT);
-> -}
-> -
->   static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
->   {
->   	void __iomem *base = iommu->bases[index];
-> @@ -577,7 +548,7 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
->   	page_offset = rk_iova_page_offset(iova);
->   
->   	mmu_dte_addr = rk_iommu_read(base, RK_MMU_DTE_ADDR);
-> -	mmu_dte_addr_phys = rk_ops->dte_addr_phys(mmu_dte_addr);
-> +	mmu_dte_addr_phys = rk_ops->pt_address(mmu_dte_addr);
->   
->   	dte_addr_phys = mmu_dte_addr_phys + (4 * dte_index);
->   	dte_addr = phys_to_virt(dte_addr_phys);
-> @@ -967,7 +938,7 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
->   
->   	for (i = 0; i < iommu->num_mmu; i++) {
->   		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
-> -			       rk_ops->dma_addr_dte(rk_domain->dt_dma));
-> +			       rk_ops->mk_dtentries(rk_domain->dt_dma));
->   		rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
->   		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
->   	}
-> @@ -1405,8 +1376,6 @@ static struct rk_iommu_ops iommu_data_ops_v1 = {
->   	.pt_address = &rk_dte_pt_address,
->   	.mk_dtentries = &rk_mk_dte,
->   	.mk_ptentries = &rk_mk_pte,
-> -	.dte_addr_phys = &rk_dte_addr_phys,
-> -	.dma_addr_dte = &rk_dma_addr_dte,
->   	.dma_bit_mask = DMA_BIT_MASK(32),
->   };
->   
-> @@ -1414,8 +1383,6 @@ static struct rk_iommu_ops iommu_data_ops_v2 = {
->   	.pt_address = &rk_dte_pt_address_v2,
->   	.mk_dtentries = &rk_mk_dte_v2,
->   	.mk_ptentries = &rk_mk_pte_v2,
-> -	.dte_addr_phys = &rk_dte_addr_phys_v2,
-> -	.dma_addr_dte = &rk_dma_addr_dte_v2,
->   	.dma_bit_mask = DMA_BIT_MASK(40),
->   };
->   
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQXJuZCwKCkxlIHZlbmRyZWRpIDE2IGp1aW4gMjAyMyDDoCAxNjo0OCArMDIwMCwgQXJuZCBC
+ZXJnbWFubiBhIMOpY3JpdMKgOgo+IEZyb206IEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+
+Cj4gCj4gVGhlIHJlZ2lzdGVyIGFic3RyYWN0aW9uIGhhcyB3cmFwcGVycyBhcm91bmQgYm90aCB0
+aGUgbm9ybWFsIHdyaXRlbCgpCj4gYW5kIGl0cyB3cml0ZWxfcmVsYXhlZCgpIGNvdW50ZXJwYXJ0
+LCBidXQgdGhpcyBoYXMgbGVkIHRvIGEgbG90IG9mIHVzZXJzCj4gZW5kaW5nIHVwIHdpdGggdGhl
+IHJlbGF4ZWQgdmVyc2lvbi4KPiAKPiBUaGVyZSBpcyBzb21ldGltZXMgYSBuZWVkIHRvIGludGVu
+dGlvbmFsbHkgcGljayB0aGUgcmVsYXhlZCBhY2Nlc3NvciBmb3IKPiBwZXJmb3JtYW5jZSBjcml0
+aWNhbCBmdW5jdGlvbnMsIGJ1dCBJIG5vdGljZWQgdGhhdCBlYWNoIGhhbnRyb19yZWdfd3JpdGUo
+KQo+IGNhbGwgYWxzbyBjb250YWlucyBhIG5vbi1yZWxheGVkIHJlYWRsKCksIHdoaWNoIGlzIHR5
+cGljYWxseSBtdWNoIG1vcmUKPiBleHBlbnNpdmUgdGhhbiBhIHdyaXRlbCwgc28gdGhlcmUgaXMg
+bGl0dGxlIGJlbmVmaXQgaGVyZSBidXQgYW4gYWRkZWQKPiByaXNrIG9mIG1pc3NpbmcgYSBzZXJp
+YWxpemF0aW9uIGFnYWluc3QgRE1BLgo+IAo+IFRvIG1ha2UgdGhpcyBiZWhhdmUgbGlrZSBvdGhl
+ciBpbnRlcmZhY2VzLCB1c2UgdGhlIG5vcm1hbCBhY2Nlc3NvciBieQo+IGRlZmF1bHQgYW5kIG9u
+bHkgcHJvdmlkZSB0aGUgcmVsYXhlZCB2ZXJzaW9uIGFzIGFuIGFsdGVybmF0aXZlIGZvcgo+IHBl
+cmZvcm1hbmNlIGNyaXRpY2FsIGNvZGUuIGhhbnRyb19wb3N0cHJvYy5jIGlzIHRoZSBvbmx5IHBs
+YWNlIHRoYXQKPiB1c2VkIGJvdGggdGhlIHJlbGF4ZWQgYW5kIG5vcm1hbCB3cml0ZWwsIGJ1dCB0
+aGlzIGRvZXMgbm90IHNlZW0KPiBjcmljaXRhbCBlaXRoZXIsIHNvIGNoYW5nZSBpdCBhbGwgdG8g
+dGhlIG5vcm1hbCBvbmVzLgoKSW4gdGhpcyB0ZXh0IHlvdSBzcG9rZSBhYm91dCBwb3RlbnRpYWwg
+cGVyZm9ybWFuY2Ugc2lkZSBlZmZlY3RzIG9mIGV4aXN0aW5nIGNvZGUKYW5kIHlvdXIgY2hhbmdl
+cywgYnV0IGl0cyBsZWZ0IGFsbCB2ZXJ5IHZhZ3VlIGFuZCB0aGVvcmV0aWNhbC4gSGF2ZSB5b3Ug
+ZG9uZSBhbnkKbWVhc3VyZW1lbnQgPyBEbyB5b3UgbmVlZCBoZWxwIHdpdGggdGhlIG1hbm5lciA/
+CgpyZWdhcmRzLApOaWNvbGFzCgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFybmQgQmVyZ21hbm4gPGFy
+bmRAYXJuZGIuZGU+Cj4gLS0tCj4gSSBkaWQgbm90IGxvb2sgd2hldGhlciB0aGVyZSBpcyBhbiBh
+Y3R1YWwgYnVnIGhlcmUsIGp1c3Qgbm90aWNlZCB0aGlzCj4gd2hlbiBJIGRlYnVnZ2VkIHRoZSBl
+eGNlc3NpdmUgc3RhY2sgdXNhZ2UuCj4gLS0tCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVy
+aXNpbGljb24vaGFudHJvLmggICAgICAgICAgfCAgNiArKystLS0KPiAgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fcG9zdHByb2MuYyB8IDEyICsrKysrKy0tLS0tLQo+
+ICAyIGZpbGVzIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm8uaCBi
+L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvLmgKPiBpbmRleCA2YzVl
+NTZjZTViMzUxLi5hNDgxZDk1N2ZlZjkzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vdmVyaXNpbGljb24vaGFudHJvLmgKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L3ZlcmlzaWxpY29uL2hhbnRyby5oCj4gQEAgLTQ0MSwxNCArNDQxLDE0IEBAIHN0YXRpYyBfX2Fs
+d2F5c19pbmxpbmUgdm9pZCBoYW50cm9fcmVnX3dyaXRlKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUs
+Cj4gIAkJCQkgICAgY29uc3Qgc3RydWN0IGhhbnRyb19yZWcgKnJlZywKPiAgCQkJCSAgICB1MzIg
+dmFsKQo+ICB7Cj4gLQl2ZHB1X3dyaXRlX3JlbGF4ZWQodnB1LCB2ZHB1X3JlYWRfbWFzayh2cHUs
+IHJlZywgdmFsKSwgcmVnLT5iYXNlKTsKPiArCXZkcHVfd3JpdGUodnB1LCB2ZHB1X3JlYWRfbWFz
+ayh2cHUsIHJlZywgdmFsKSwgcmVnLT5iYXNlKTsKPiAgfQo+ICAKPiAtc3RhdGljIF9fYWx3YXlz
+X2lubGluZSB2b2lkIGhhbnRyb19yZWdfd3JpdGVfcyhzdHJ1Y3QgaGFudHJvX2RldiAqdnB1LAo+
+ICtzdGF0aWMgX19hbHdheXNfaW5saW5lIHZvaWQgaGFudHJvX3JlZ193cml0ZV9yZWxheGVkKHN0
+cnVjdCBoYW50cm9fZGV2ICp2cHUsCj4gIAkJCQkgICAgICBjb25zdCBzdHJ1Y3QgaGFudHJvX3Jl
+ZyAqcmVnLAo+ICAJCQkJICAgICAgdTMyIHZhbCkKPiAgewo+IC0JdmRwdV93cml0ZSh2cHUsIHZk
+cHVfcmVhZF9tYXNrKHZwdSwgcmVnLCB2YWwpLCByZWctPmJhc2UpOwo+ICsJdmRwdV93cml0ZV9y
+ZWxheGVkKHZwdSwgdmRwdV9yZWFkX21hc2sodnB1LCByZWcsIHZhbCksIHJlZy0+YmFzZSk7Cj4g
+IH0KPiAgCj4gIHZvaWQgKmhhbnRyb19nZXRfY3RybChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCB1
+MzIgaWQpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29u
+L2hhbnRyb19wb3N0cHJvYy5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9o
+YW50cm9fcG9zdHByb2MuYwo+IGluZGV4IGM5NzdkNjQxMDViMTguLjAyMjRmZjY4YWIzZmMgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fcG9z
+dHByb2MuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJv
+X3Bvc3Rwcm9jLmMKPiBAQCAtMjEsMTEgKzIxLDExIEBACj4gIAkJCSB2YWwpOyBcCj4gIH0KPiAg
+Cj4gLSNkZWZpbmUgSEFOVFJPX1BQX1JFR19XUklURV9TKHZwdSwgcmVnX25hbWUsIHZhbCkgXAo+
+ICsjZGVmaW5lIEhBTlRST19QUF9SRUdfV1JJVEVfUkVMQVhFRCh2cHUsIHJlZ19uYW1lLCB2YWwp
+IFwKPiAgeyBcCj4gLQloYW50cm9fcmVnX3dyaXRlX3ModnB1LCBcCj4gLQkJCSAgICZoYW50cm9f
+ZzFfcG9zdHByb2NfcmVncy5yZWdfbmFtZSwgXAo+IC0JCQkgICB2YWwpOyBcCj4gKwloYW50cm9f
+cmVnX3dyaXRlX3JlbGF4ZWQodnB1LCBcCj4gKwkJCQkgJmhhbnRyb19nMV9wb3N0cHJvY19yZWdz
+LnJlZ19uYW1lLCBcCj4gKwkJCQkgdmFsKTsgXAo+ICB9Cj4gIAo+ICAjZGVmaW5lIFZQVV9QUF9J
+Tl9ZVVlWCQkJMHgwCj4gQEAgLTcyLDcgKzcyLDcgQEAgc3RhdGljIHZvaWQgaGFudHJvX3Bvc3Rw
+cm9jX2cxX2VuYWJsZShzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+ICAJZG1hX2FkZHJfdCBkc3Rf
+ZG1hOwo+ICAKPiAgCS8qIFR1cm4gb24gcGlwZWxpbmUgbW9kZS4gTXVzdCBiZSBkb25lIGZpcnN0
+LiAqLwo+IC0JSEFOVFJPX1BQX1JFR19XUklURV9TKHZwdSwgcGlwZWxpbmVfZW4sIDB4MSk7Cj4g
+KwlIQU5UUk9fUFBfUkVHX1dSSVRFKHZwdSwgcGlwZWxpbmVfZW4sIDB4MSk7Cj4gIAo+ICAJc3Jj
+X3BwX2ZtdCA9IFZQVV9QUF9JTl9OVjEyOwo+ICAKPiBAQCAtMjQyLDcgKzI0Miw3IEBAIHN0YXRp
+YyB2b2lkIGhhbnRyb19wb3N0cHJvY19nMV9kaXNhYmxlKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgp
+Cj4gIHsKPiAgCXN0cnVjdCBoYW50cm9fZGV2ICp2cHUgPSBjdHgtPmRldjsKPiAgCj4gLQlIQU5U
+Uk9fUFBfUkVHX1dSSVRFX1ModnB1LCBwaXBlbGluZV9lbiwgMHgwKTsKPiArCUhBTlRST19QUF9S
+RUdfV1JJVEUodnB1LCBwaXBlbGluZV9lbiwgMHgwKTsKPiAgfQo+ICAKPiAgc3RhdGljIHZvaWQg
+aGFudHJvX3Bvc3Rwcm9jX2cyX2Rpc2FibGUoc3RydWN0IGhhbnRyb19jdHggKmN0eCkKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
