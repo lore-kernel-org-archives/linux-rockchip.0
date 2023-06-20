@@ -4,85 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD06EEB64D8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 06:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37C11EB64DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 06:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:From:To:
-	Subject:Content-Description:MIME-Version:Cc:Content-ID:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=jwvLjy3uonChjwUGVuTpu4p5JG+UjjbGK2Ynre6fSfk=; b=yOg
-	5wK6jAYkHVWZ5M69JjrSZmJ2xE+XUd9dIqrh6GdS9+ES3VKzpt+kTSgBYQYUUZsuphXFd7p+GDOXl
-	JUVNx9uoJR0732useExRpM6VguBvfKX6vr6rhR06N8webFh2TgQoRQFrYPQNUuy2v4JVuHCZZBmKk
-	HB4hm2gB2VssUW0kWNi8YGAagwlya0OMc7meWVpsj+VtRIHQNaSq46WtfoPkmPQDBWvnxUnDalHdJ
-	lObKGGUvOFPBY5aUCN3vb5HmE/acKtNmpa5DlAQTkVKrub2Mew3WzlLhXDoSwgW83fOh1xg7YARIH
-	XnJavujSmaf2Pl/kO90OlKmK/O5IyAA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-ID:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=G4LparfCyT/kkn665WDMxkjab8kpN1LwpAbWsRjtj/I=; b=THITuDhibK90B6
+	G+SBvAXZGk/5cB/3NS0fF307szBh9M15g5JuJ40s09vzTqbwm14l3HoPbApZN4ZHZFrwexS/nxVmk
+	qu6Omab1Ze1hL50yrNARZVwr6N3tUrYS/QqlarwxywykSzjk3rUFnWMH9hSk9jVeZFvamzCULpLwu
+	wpQKzk3dJ98hU4FZ9dlTjoPclOPcefn6ogDknKZGiSC0PLx+7VoH5+DnDqEFF+oRn2d8hAr6RzAzu
+	vijLUYmO2jjRHWsTDSBn52ew8MughzLu+vyPfHRX01Z7YjMYAZXdV1/vo+zE+POSqX53v5bVwZ1ET
+	da/sF9Xx5BB7NVQo9kpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBUj3-00AGWq-37;
-	Tue, 20 Jun 2023 06:20:25 +0000
-Received: from zsmtp-out1.bppt.go.id ([103.224.137.202])
+	id 1qBV9S-00AIcD-2P;
+	Tue, 20 Jun 2023 06:47:42 +0000
+Received: from s.wrqvtzvf.outbound-mail.sendgrid.net ([149.72.126.143])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBUj0-00AGUy-10
+	id 1qBV9P-00AIZK-1R
 	for linux-rockchip@lists.infradead.org;
-	Tue, 20 Jun 2023 06:20:24 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by zsmtp-out1.bppt.go.id (Postfix) with ESMTP id 0E8F89BAD8
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 13:00:59 +0700 (WIB)
-Received: from zsmtp-out1.bppt.go.id ([127.0.0.1])
-	by localhost (zsmtp-out1.bppt.go.id [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id RCulqxBEtGUr for <linux-rockchip@lists.infradead.org>;
-	Tue, 20 Jun 2023 13:00:58 +0700 (WIB)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by zsmtp-out1.bppt.go.id (Postfix) with ESMTP id 0C756AC266
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 12:54:08 +0700 (WIB)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zsmtp-out1.bppt.go.id 0C756AC266
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bppt.go.id;
-	s=selector; t=1687240448;
-	bh=mT4C0VGIL9cwEg4iQcifPH62fsFpI/CbiLcos0MqCTM=;
-	h=MIME-Version:To:From:Date:Message-Id;
-	b=puFZGktS7syyJEoghtc2y/Ume2eHmxq8zJKq3US9TImp60/kkzJMHIv4uJm4dJ9wW
-	 H5P0TPhb4ZuU69YAXqpuwLaryXq4SM+8tin4UYFr+nw0C/20+w+1g0J+4MN/Z8iHkg
-	 15lJ5U9tJrFTwRxYfNa2K3rVW6C0PpTBjq8hFY+0=
-X-Amavis-Modified: Mail body modified (using disclaimer) -
-	zsmtp-out1.bppt.go.id
-X-Virus-Scanned: amavisd-new at bppt.go.id
-Received: from zsmtp-out1.bppt.go.id ([127.0.0.1])
-	by localhost (zsmtp-out1.bppt.go.id [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id gwnXQ7EjQpFB for <linux-rockchip@lists.infradead.org>;
-	Tue, 20 Jun 2023 12:54:07 +0700 (WIB)
-Received: from mta1.bppt.go.id (mta1.bppt.go.id [10.10.180.6])
-	by zsmtp-out1.bppt.go.id (Postfix) with ESMTPS id 2E08AAF328
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 12:47:23 +0700 (WIB)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mta1.bppt.go.id (Postfix) with ESMTP id A280CADE84
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 10:10:28 +0700 (WIB)
-Received: from mta1.bppt.go.id ([127.0.0.1])
-	by localhost (mta1.bppt.go.id [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id 5us_obSyGP9C for <linux-rockchip@lists.infradead.org>;
-	Tue, 20 Jun 2023 10:10:28 +0700 (WIB)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mta1.bppt.go.id (Postfix) with ESMTP id 0A068204873
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 06:19:42 +0700 (WIB)
-X-Virus-Scanned: amavisd-new at mta1.bppt.go.id
-Received: from mta1.bppt.go.id ([127.0.0.1])
-	by localhost (mta1.bppt.go.id [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id anqEX4Z1cJIK for <linux-rockchip@lists.infradead.org>;
-	Tue, 20 Jun 2023 06:19:42 +0700 (WIB)
-Received: from [192.168.1.39] (unknown [88.233.174.93])
-	by mta1.bppt.go.id (Postfix) with ESMTPA id E8786C4B3C
-	for <linux-rockchip@lists.infradead.org>; Sun, 18 Jun 2023 17:31:19 +0700 (WIB)
+	Tue, 20 Jun 2023 06:47:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+	h=from:subject:mime-version:to:cc:content-transfer-encoding:
+	content-type:cc:content-type:from:subject:to;
+	s=s1; bh=/OiFg9zrUL7FLkxH5IitcBTJNO1C0qlvkkDfhUrYB7E=;
+	b=OSZ64m+wuJFPFHqsz+9OOHnUMY4g9X4S6PuFLitLVqb3QIK47vi/CVlp/2/Ip6BRgW7S
+	rfF4R+6I83EwBwvit78rji+e0k0wojC2PqiBNEASIcvT32oOdLlA75q0t43Wh6CF5FxycN
+	s/jY6zDsS3q29oaNqqm4cQAxn2tnV2eNNSuWoPnBUUkm7jMiSo+5rPX17EwGFlDvHKrsOH
+	Iwm+aA4z10w0VaBrb8mRPWTpmWiy2chcmI6oQ/nBUI0H/CAk+WzdXJIMwfd1ZaCd0Y9gf0
+	Q07Q1ObxtXy+5zT7Szu5tsBTL04cvGOAIGqedaH5Go2antUvLrSHQP0I41jzpqAQ==
+Received: by filterdrecv-8684c58db7-wf85l with SMTP id filterdrecv-8684c58db7-wf85l-1-64914B87-1
+        2023-06-20 06:47:35.167912827 +0000 UTC m=+3481761.974497447
+Received: from bionic.localdomain (unknown)
+	by geopod-ismtpd-5 (SG)
+	with ESMTP
+	id PBMypHKAT3KFA1SgmOnoHA
+	Tue, 20 Jun 2023 06:47:34.794 +0000 (UTC)
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/4] drm/rockchip: Fix crtc duplicate state and crtc reset
+ funcs
+Date: Tue, 20 Jun 2023 06:47:35 +0000 (UTC)
+Message-ID: <20230620064732.1525594-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Reminder
-To: linux-rockchip@lists.infradead.org
-From: "Mr.Mark" <asep.nurohmat@bppt.go.id>
-Date: Sun, 18 Jun 2023 13:31:14 +0300
-Message-Id: <20230618103121.E8786C4B3C@mta1.bppt.go.id>
+X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hyjMKERdf95KMPdLE?=
+ =?us-ascii?Q?AIYz=2F9=2FCZufW1gBVLLc0p++89OiAC6+VYSCZLnn?=
+ =?us-ascii?Q?0MwskFyyqsX3ZLfdoaTVik4Smb7c9wfGnhpQQtF?=
+ =?us-ascii?Q?4VsHRWnZtJ2hkmegEcQWmXL6bBnE3UMzllTBxxx?=
+ =?us-ascii?Q?G=2FzkObbA5f23hwgrssfTVRM76Uh5Qy915fV5aAT?=
+ =?us-ascii?Q?I9WIeLjmCTkFDp9cznlgw=3D=3D?=
+To: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: Mark Yao <markyao0591@gmail.com>, Andy Yan <andy.yan@rock-chips.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230619_232022_914858_CDD3655D 
-X-CRM114-Status: SPAM  (  -5.02  )
+X-CRM114-CacheID: sfid-20230619_234740_254515_BFDE2121 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,14 +79,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: ceo79ceo@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Did you receive our previous email?
-Isi e-mail ini mungkin bersifat rahasia dan penyalahgunaan, penyalinan, atau penyebaran dari e-mail ini dan semua attachment dari e-mail ini dilarang. Komunikasi internet tidak aman dan oleh karena itu Badan Pengkajian dan Penerapan Teknologi tidak menerima tanggung jawab hukum atas isi pesan ini atau untuk setiap kerusakan yang disebabkan oleh virus. Pendapat-pendapat yang diungkapkan di sini tidak selalu mewakili Badan Pengkajian dan Penerapan Teknologi.
+This series fixes a reset of state in duplicate state crtc funcs for VOP
+driver, a possible crash and ensure crtc reset helper is called in VOP2
+driver.
+
+Patch 1 use kmemdup instead of kzalloc to duplicate the crtc state.
+Patch 2 change to use crtc and plane cleanup helpers directly.
+Patch 3 adds a crash guard for empty crtc state.
+Patch 4 adds a missing call to crtc reset helper.
+
+This is the next part of an ongoing effort to upstream HDMI 2.0 support
+used in LibreELEC for the past 3+ years.
+
+This series is also available at [1].
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20230619-duplicate-state
+
+Jonas Karlman (4):
+  drm/rockchip: vop: Fix crtc duplicate state
+  drm/rockchip: vop: User cleanup helpers directly as destroy ops
+  drm/rockchip: vop2: Don't crash for invalid duplicate_state
+  drm/rockchip: vop2: Add missing call to crtc reset helper
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 19 +++--------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 36 +++++++++-----------
+ 2 files changed, 21 insertions(+), 34 deletions(-)
+
+-- 
+2.41.0
 
 
 _______________________________________________
