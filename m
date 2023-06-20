@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 987DEEB64D8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 16:36:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B890EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 16:48:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pQMeCcJDnql4/sKtsAx4RQnDmRtV74AJHqtMOZPYaAg=; b=zweVY30YO8Zgtj
-	UgVKYO3JnRvfUyP+AjY+XIyor2YE/wI2v70r7c0BfFLfA0PsDrNLpoSKuuGjoBpuGC8BaU6C1maav
-	ivz5HuuE0fa778b99K+0nDChGcD6HPSMyhw72qx2iBhTDN6NeZotdQ2vfaBjsHoJ7mjZ2FWKGKalt
-	vrpM5Z06npUaDKNBrdMtY0fl71UrSx/XomtpJ1mPK2d6uJikzaTqy6l2XCbjq3dz7jrvm9xWHi1NZ
-	25mB3yjUfZklxT5tmqyzhTmA2Tkq0YY5eRuCmqxbhBCPIowUj5gavrmju1sX+V1RsgwJbp6vdrkXJ
-	6e8qbFet+LcyeBSIRvBQ==;
+	List-Owner; bh=hlju6U8XnhZHZjZGYd6osGTrWf8cZEtQiuguYlD+QSo=; b=Y2sdabFIjes5It
+	x7CZciuPYVVD6L7BT4hItGfmfUIev14Ywhb7/EFfR9B0aB7IGHgu+H12C0ILF8TP2CVt6Ixfo3cMM
+	TL9RYYWHjUqKFyJwmSQNQHW3Ut+8NtQZVDCY9L5ZYAtuGZmmARVg9I7VkTDx8BPONT+1UzP+h2ser
+	86rm4rUK7cZDyrtm9mMPDY1dd8oG1rv1hZrAM3WwGCMKRbbL97BhuED1PlUi9LixaxwKifPUuAh15
+	j1iA3JXT0L1HXylMIVagvoj5AV9VcVHnYz4GyVPXWHsTGVK6F+Wpd0fNRgYw903Tzb5wsMFIktWKj
+	ylmQ3xdZ9xWAHlHV+SOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBeLQ-00Bq2E-0R;
-	Tue, 20 Jun 2023 16:36:40 +0000
-Received: from mail-il1-f179.google.com ([209.85.166.179])
+	id 1qBeWP-00Br7a-0V;
+	Tue, 20 Jun 2023 16:48:01 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBeLM-00Bq1K-2j;
-	Tue, 20 Jun 2023 16:36:38 +0000
-Received: by mail-il1-f179.google.com with SMTP id e9e14a558f8ab-341c14e495fso24762845ab.0;
-        Tue, 20 Jun 2023 09:36:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687278995; x=1689870995;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=85ycF3hecAMuGXOhwj9jJJFOE19UT7fZCAss7kLUOhg=;
-        b=J+8hMqYs6oBM4i2KNmWXhDVdhIcb72UyXKLQDbryhq0DPnqEwAYGDM8yZWkuwIvn/0
-         xIQm3YBm1wsHBBcG5Bu5bBYXYBm06ki8wvnRgMYLd/LZ5G2xs0Q05F1H9n9h2fwwgeFK
-         +5W6XJClltK8xZos2yYx7CJ8GeSoiL8TYYqBi1q3SXF/rhTuKLmfeBDPdvJ19fFhgFm9
-         TP5+zNEQzicS+UaWSbWYU0MqKokbaGU2SCDrZbNKPBdZpU1DMmONLmw2eeEzChB//Lhj
-         g9+JtXdtryNX2TuhbfOLHT1SZAjQK3HuRTdaAaes1184v0/4g4vx1cfPvwbYZ+Q8mu0r
-         K6Pg==
-X-Gm-Message-State: AC+VfDy42SoqyITtc4wnwPZK0FcHwmfT/Zi9Li+XCMqMtIJQ8rxxtHMp
-	oaIaH8Yii7p8K701RhhC9g==
-X-Google-Smtp-Source: ACHHUZ4riU11u7eu+RnQQlZcN7Q/lf8OrfPR1grO+uL6MNJjLsR6F7z2sKzW0av3kxeX/tTgYurw1Q==
-X-Received: by 2002:a92:c647:0:b0:342:89b4:b8c1 with SMTP id 7-20020a92c647000000b0034289b4b8c1mr5080768ill.21.1687278995655;
-        Tue, 20 Jun 2023 09:36:35 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id l14-20020a92290e000000b003427601b77esm708354ilg.21.2023.06.20.09.36.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Jun 2023 09:36:34 -0700 (PDT)
-Received: (nullmailer pid 3787225 invoked by uid 1000);
-	Tue, 20 Jun 2023 16:36:32 -0000
-Date: Tue, 20 Jun 2023 10:36:32 -0600
-From: Rob Herring <robh@kernel.org>
-To: Alexander Stein <alexander.stein@ew.tq-group.com>
-Cc: Tony Lindgren <tony@atomide.com>, Conor Dooley <conor+dt@kernel.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, linux-omap@vger.kernel.org, NXP Linux Team <linux-imx@nxp.com>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Andy Gross <agross@kernel.org>, Shawn Guo <shawnguo@kernel.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, =?iso-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Andersson <andersson@kernel.org>, linux-arm-msm@vger.kernel.org, Konrad Dybcio <konrad.dybcio@linaro.org>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v2 1/3] dt-bindings: extcon-usb-gpio: convert to DT
- schema format
-Message-ID: <168727899219.3787165.585753030890671451.robh@kernel.org>
-References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
+	id 1qBeWL-00Br6b-31;
+	Tue, 20 Jun 2023 16:47:59 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1DE032B3;
+	Tue, 20 Jun 2023 18:47:17 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1687279637;
+	bh=jYgE5le27xQma1/Mqs7mA7Z8eqDAn9yhZZQX0YvVRis=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GLyUiw/9qVwUqcWFa0iAR0S9IXTNPtpUTJ7z/Z1b6/jConkuiqFBkc3lHTbKs8Yad
+	 eWE18Tp8b6iIWZ7LqWO+JkzNs/GJSHaMw6FWCOQw7F1FtYtxVpIlswgrfN+YBdDK+d
+	 0OyAMEUnRLHjj1y1tB164ODnRT/QimKG0V8x3AWo=
+Date: Tue, 20 Jun 2023 19:47:50 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	airlied@gmail.com, daniel@ffwll.ch,
+	kieran.bingham+renesas@ideasonboard.com, hjc@rock-chips.com,
+	heiko@sntech.de, dri-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/3] drm/rcar-du: Import buffers with GEM DMA's helpers
+Message-ID: <20230620164750.GE26467@pendragon.ideasonboard.com>
+References: <20230620121202.28263-1-tzimmermann@suse.de>
+ <20230620121202.28263-2-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
+In-Reply-To: <20230620121202.28263-2-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_093636_902795_4F2B2B33 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20230620_094758_146124_3D48684D 
+X-CRM114-Status: GOOD (  20.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,28 +72,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Thomas,
 
-On Thu, 15 Jun 2023 16:58:36 +0200, Alexander Stein wrote:
-> Convert the binding to DT schema format. Change the GPIO properties to new
-> naming convention using -gpios as well.
+Thank you for the patch.
+
+
+On Tue, Jun 20, 2023 at 02:03:21PM +0200, Thomas Zimmermann wrote:
+> Call __drm_gem_dma_create() to create an object for imported buffers,
+> instead of reimplementing the function within the driver. Reduces
+> code duplication and will later allow to un-export a number of symbols
+> from the GEM DMA helpers.
 > 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+Nice simplification.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+I assume you'll merge the whole series through drm-misc, please let me
+know if that's not correct.
+
 > ---
-> Changes in v2:
-> * Mark extcon-usb-gpio as deprecated
-> * Fix YAML format
-> * Fix example node
-> * Remove unneeded consumer node in example
+>  drivers/gpu/drm/drm_gem_dma_helper.c          |  5 +--
+>  drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c | 33 +++----------------
+>  include/drm/drm_gem_dma_helper.h              |  3 ++
+>  3 files changed, 10 insertions(+), 31 deletions(-)
 > 
->  .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
->  .../bindings/extcon/extcon-usb-gpio.yaml      | 51 +++++++++++++++++++
->  2 files changed, 51 insertions(+), 21 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
->  create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-> 
+> diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
+> index 870b90b78bc4e..e9aa3ac140654 100644
+> --- a/drivers/gpu/drm/drm_gem_dma_helper.c
+> +++ b/drivers/gpu/drm/drm_gem_dma_helper.c
+> @@ -67,8 +67,8 @@ static const struct drm_gem_object_funcs drm_gem_dma_default_funcs = {
+>   * A struct drm_gem_dma_object * on success or an ERR_PTR()-encoded negative
+>   * error code on failure.
+>   */
+> -static struct drm_gem_dma_object *
+> -__drm_gem_dma_create(struct drm_device *drm, size_t size, bool private)
+> +struct drm_gem_dma_object *__drm_gem_dma_create(struct drm_device *drm,
+> +						size_t size, bool private)
+>  {
+>  	struct drm_gem_dma_object *dma_obj;
+>  	struct drm_gem_object *gem_obj;
+> @@ -112,6 +112,7 @@ __drm_gem_dma_create(struct drm_device *drm, size_t size, bool private)
+>  	kfree(dma_obj);
+>  	return ERR_PTR(ret);
+>  }
+> +EXPORT_SYMBOL_GPL(__drm_gem_dma_create);
+>  
+>  /**
+>   * drm_gem_dma_create - allocate an object with the given size
+> diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> index adfb36b0e8154..ea7487e270f13 100644
+> --- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> +++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> @@ -356,49 +356,24 @@ const struct rcar_du_format_info *rcar_du_format_info(u32 fourcc)
+>   * Frame buffer
+>   */
+>  
+> -static const struct drm_gem_object_funcs rcar_du_gem_funcs = {
+> -	.free = drm_gem_dma_object_free,
+> -	.print_info = drm_gem_dma_object_print_info,
+> -	.get_sg_table = drm_gem_dma_object_get_sg_table,
+> -	.vmap = drm_gem_dma_object_vmap,
+> -	.mmap = drm_gem_dma_object_mmap,
+> -	.vm_ops = &drm_gem_dma_vm_ops,
+> -};
+> -
+>  struct drm_gem_object *rcar_du_gem_prime_import_sg_table(struct drm_device *dev,
+>  				struct dma_buf_attachment *attach,
+>  				struct sg_table *sgt)
+>  {
+>  	struct rcar_du_device *rcdu = to_rcar_du_device(dev);
+>  	struct drm_gem_dma_object *dma_obj;
+> -	struct drm_gem_object *gem_obj;
+> -	int ret;
+>  
+>  	if (!rcar_du_has(rcdu, RCAR_DU_FEATURE_VSP1_SOURCE))
+>  		return drm_gem_dma_prime_import_sg_table(dev, attach, sgt);
+>  
+> -	/* Create a DMA GEM buffer. */
+> -	dma_obj = kzalloc(sizeof(*dma_obj), GFP_KERNEL);
+> -	if (!dma_obj)
+> -		return ERR_PTR(-ENOMEM);
+> -
+> -	gem_obj = &dma_obj->base;
+> -	gem_obj->funcs = &rcar_du_gem_funcs;
+> -
+> -	drm_gem_private_object_init(dev, gem_obj, attach->dmabuf->size);
+> -	dma_obj->map_noncoherent = false;
+> -
+> -	ret = drm_gem_create_mmap_offset(gem_obj);
+> -	if (ret) {
+> -		drm_gem_object_release(gem_obj);
+> -		kfree(dma_obj);
+> -		return ERR_PTR(ret);
+> -	}
+> +	dma_obj = __drm_gem_dma_create(dev, attach->dmabuf->size, true);
+> +	if (IS_ERR(dma_obj))
+> +		return ERR_CAST(dma_obj);
+>  
+>  	dma_obj->dma_addr = 0;
+>  	dma_obj->sgt = sgt;
+>  
+> -	return gem_obj;
+> +	return &dma_obj->base;
+>  }
+>  
+>  int rcar_du_dumb_create(struct drm_file *file, struct drm_device *dev,
+> diff --git a/include/drm/drm_gem_dma_helper.h b/include/drm/drm_gem_dma_helper.h
+> index 61da596780b64..3877cbf0e927c 100644
+> --- a/include/drm/drm_gem_dma_helper.h
+> +++ b/include/drm/drm_gem_dma_helper.h
+> @@ -32,6 +32,9 @@ struct drm_gem_dma_object {
+>  #define to_drm_gem_dma_obj(gem_obj) \
+>  	container_of(gem_obj, struct drm_gem_dma_object, base)
+>  
+> +struct drm_gem_dma_object *__drm_gem_dma_create(struct drm_device *drm,
+> +						size_t size, bool private);
+> +
+>  struct drm_gem_dma_object *drm_gem_dma_create(struct drm_device *drm,
+>  					      size_t size);
+>  void drm_gem_dma_free(struct drm_gem_dma_object *dma_obj);
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+-- 
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
