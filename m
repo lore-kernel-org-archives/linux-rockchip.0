@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3746EB64D8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 14:38:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A92EB64D8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 14:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9wkd5H6OFZiWzNk91j6Fu0vK2KhvMOHz1v9ylSl8w4A=; b=yhSxS2KeP6t/pT
-	nNnZI+YRWo63DX4TwibznnDpM7Qe3Vf2rfeJA0t/Tt2JM2XE6Fm4Mjcnj+cMxUIJZ5x761zl8AHU/
-	hD9am65c9vAqEAIDVL9wAD+X7m54aIdYzXMxOiQziskfYk6a5RgCk7A6i09OQoehPQ3bS47PENT5Q
-	fo1TQ0iA+IKAGrcsayQ+9QkmmzYUZ8i6g90uxvApanvqwV9WY5MU0wy2YyJJIpRT/Jr3Gczh9AyPX
-	/LZcg6s2oRnKNvdMI0ex/Tmo5ES8NUhufgijHi+5TEDGSX5cVc9r6qhgspx8u473y9zC9ZCqYkZMy
-	z3tOLiykXxwM3vBHObDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iAsHx/OfSw1iSfv4eYIShFiZ8xui9H71nE3EIAPa2zA=; b=JK9gIiVTpuu8FOPZQ6cIiMwwwY
+	0/+5GdS6b7u7PhB1kmZIsF+LH1Ei3h+cAT//ZdNgWcoHGgWPnxQ95OJz/g+Kym18NGkdx0Naltk0H
+	rfN8dcmcoK+m3SGcvW+NJJSc4EIHPAi96xaXRPGtQtJTEtrZIq5j0UWfXtvkPz3Taz8e/Ivq4wXeY
+	mmpMhcUjCDW8blcPNt7jbb+ne9hhdCDrCfxHTrvZh0CbZ46jJEnXXNxHIneQi36kq0nrx0ypis7zX
+	oJirptJxLx1ELI2ZvXm0hy5ttwyPO5RL+Ab0ynsvA4Fzbjudsp6c91J7ToMJEZHfBNUpA0NJ7BydJ
+	Z/oHqv5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBcUK-00BY4K-0W;
-	Tue, 20 Jun 2023 14:37:44 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+	id 1qBcX8-00BYeG-1o;
+	Tue, 20 Jun 2023 14:40:38 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBcUH-00BY41-2i
-	for linux-rockchip@lists.infradead.org;
-	Tue, 20 Jun 2023 14:37:43 +0000
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6b2d356530eso3005095a34.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 20 Jun 2023 07:37:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google; t=1687271859; x=1689863859;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=YLsuiZT+7S8hb3ruvLbkU6f0QmASOzrUTrFBKgR3UrY=;
-        b=ieH/biXa31jXUdFSR86pf5py2kofE5eMYgamUFnPbDiyZz6xuTSHUGGEIbellnB37n
-         YbcIDEAUpxMy5epH9uQpaDAAVSQ5VYaimk63AJ0y81Dz38/AhLyEVq6TeB3IHkvL10lB
-         t3A0lR2bahgzvwCsd5PwlPKOxcb1FGCELXQSs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687271859; x=1689863859;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YLsuiZT+7S8hb3ruvLbkU6f0QmASOzrUTrFBKgR3UrY=;
-        b=aE/vv4zksTuZ906UjBEv/g2WERapMGO5H2XCqEApUmbRjXUmqOCU6wr3nllG1fvaKG
-         VIl0VW+QW4GdSSeEhee9O7/hjJ/0czOUbMpm4il8sGlG/x8Qux4CmpJiBIWDsPNawAg0
-         qq7hQCF3f8jNK5LlFSkGvTIsA5sMb13ddkE2BTTfedpCIeRmzIiEs2TFEdE17j/a2bQZ
-         LPY7qU8CLdaLUMyeUSAXg+tbInUAWR84082lA5+a9xbTqbYZu24PjHn93NE7qouogGQV
-         RrhB6YSRyNAOtvjvsDXKyUttSMJPjf7Mo15uku5clIbJ3b9POc+DfCxYxTu8HXMHyLnS
-         xfHQ==
-X-Gm-Message-State: AC+VfDwS4KixtyHUjyxs9kK7SXp40y0RQ5dGR6yvL0+LvgVXY0WYLq0h
-	P7tbp9TzPVU3p93TgsAhJlFnjeO00CStYLJN70/WcTlPp1yxtII/LYfM2Qu8
-X-Google-Smtp-Source: ACHHUZ4uCIKOTbXHoCIkSBQPZOqzIcor24BB3qujNqWGKEzGVSsmku1nijA42P9oN8hMNcecgjogXbgiZIQaSi60cMU=
-X-Received: by 2002:a05:6359:63a8:b0:130:f25a:b2f5 with SMTP id
- sg40-20020a05635963a800b00130f25ab2f5mr1398805rwb.6.1687271858996; Tue, 20
- Jun 2023 07:37:38 -0700 (PDT)
+	id 1qBcX5-00BYdB-2D;
+	Tue, 20 Jun 2023 14:40:37 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id B1DCE218B5;
+	Tue, 20 Jun 2023 14:40:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1687272031; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pwO5liwYTqMSyQXOoPthNHYqRO4IgUKYysAQxUSQScE=;
+	b=1ZwNUJNAZ3jxwWIDCoG9LK3spHqsLG9MDlz0FBrSqXJS98zOzlqI7qTF7uj8NmXuhD1shQ
+	T1VeMaRfpO29Y4B3u7rEcK0lGrreqU5jqmtZ0adFdAXwdHjYjJsk+dJ+uaG2tmBnaZq7Hb
+	MF0Y4zOV73frs4iO/9CXIj46QI490yI=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1687272031;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pwO5liwYTqMSyQXOoPthNHYqRO4IgUKYysAQxUSQScE=;
+	b=PXgLLTi7HIUzyQBqwNMSFZYvl1hFMcr5FcsYFSLqlMup6hCYHZfU64YKvjRLpJ/N5dT/lw
+	bpBSZ77aSxSJrsCg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 69F21133A9;
+	Tue, 20 Jun 2023 14:40:31 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 6zfWGF+6kWT0WwAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Tue, 20 Jun 2023 14:40:31 +0000
+Message-ID: <93b72df1-77c3-8d88-cfca-7b1acd6066e4@suse.de>
+Date: Tue, 20 Jun 2023 16:40:30 +0200
 MIME-Version: 1.0
-From: Jagan Teki <jagan@amarulasolutions.com>
-Date: Tue, 20 Jun 2023 20:07:26 +0530
-Message-ID: <CAMty3ZD64BH-XunimhVjcFF=H0O6zOg34KBMVcUa5hTZLJw0AQ@mail.gmail.com>
-Subject: Rockchip DWC2 issue
-To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Kever Yang <kever.yang@rock-chips.com>, Peter Robinson <pbrobinson@gmail.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Marek Vasut <marex@denx.de>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 2/3] drm/rockchip: Resolve dependency in GEM DMA helpers
+Content-Language: en-US
+To: Jonas Karlman <jonas@kwiboo.se>, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, airlied@gmail.com, daniel@ffwll.ch,
+ laurent.pinchart@ideasonboard.com, kieran.bingham+renesas@ideasonboard.com,
+ hjc@rock-chips.com, heiko@sntech.de
+Cc: linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20230620121202.28263-1-tzimmermann@suse.de>
+ <20230620121202.28263-3-tzimmermann@suse.de>
+ <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+In-Reply-To: <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_073741_915122_EA65FEA9 
-X-CRM114-Status: UNSURE (   6.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230620_074035_887264_0A657FC1 
+X-CRM114-Status: GOOD (  21.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +90,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1635672768728070845=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1635672768728070845==
+Content-Language: en-US
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------OfTinYNHZ5UuuwykzqfTdN6g"
 
-Has anyone tried to use dwc2 and echi port together with USB disk?
-look like this is not working with this combination on any Rockchip
-SoC's
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------OfTinYNHZ5UuuwykzqfTdN6g
+Content-Type: multipart/mixed; boundary="------------VbfdzPY5HHfqMFG9evx6eP0f";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Jonas Karlman <jonas@kwiboo.se>, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, airlied@gmail.com, daniel@ffwll.ch,
+ laurent.pinchart@ideasonboard.com, kieran.bingham+renesas@ideasonboard.com,
+ hjc@rock-chips.com, heiko@sntech.de
+Cc: linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Message-ID: <93b72df1-77c3-8d88-cfca-7b1acd6066e4@suse.de>
+Subject: Re: [PATCH 2/3] drm/rockchip: Resolve dependency in GEM DMA helpers
+References: <20230620121202.28263-1-tzimmermann@suse.de>
+ <20230620121202.28263-3-tzimmermann@suse.de>
+ <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
+In-Reply-To: <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
 
-Here are the issues that I've reproduced in RK3328 where the disk
-connected in EHCI port is detecting but DWC2 is not. Any clue?
+--------------VbfdzPY5HHfqMFG9evx6eP0f
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-=> usb start
-starting USB...
-Bus usb@ff5c0000: USB EHCI 1.00
-Bus usb@ff5d0000: USB OHCI 1.0
-Bus usb@ff600000: generic_phy_get_bulk : no phys property
-Register 2000140 NbrPorts 2
-Starting the controller
-USB XHCI 1.10
-Bus usb@ff580000: USB DWC2
-scanning bus usb@ff5c0000 for devices... 2 USB Device(s) found
-scanning bus usb@ff5d0000 for devices... 1 USB Device(s) found
-scanning bus usb@ff600000 for devices... 1 USB Device(s) found
-scanning bus usb@ff580000 for devices... Adding disk for
-usb_mass_storage.lun0 failed
-(err=-9223372036854775788/0x8000000000000014)
-device 'usb_mass_storage.lun0' failed to unbind
-1 USB Device(s) found
-device 'usb_mass_storage.lun0' failed to unbind
-       scanning usb for storage devices... 2 Storage Device(s) found
-=> usb tree
-USB device tree:
-  1  Hub (480 Mb/s, 0mA)
-  |  u-boot EHCI Host Controller
-  |
-  +-2  Mass Storage (480 Mb/s, 100mA)
-       Generic Teclast CoolFlash 4163831324317134
+SGkNCg0KQW0gMjAuMDYuMjMgdW0gMTU6NTYgc2NocmllYiBKb25hcyBLYXJsbWFuOg0KPiBI
+aSBUaG9tYXMsDQo+IA0KPiBPbiAyMDIzLTA2LTIwIDE0OjAzLCBUaG9tYXMgWmltbWVybWFu
+biB3cm90ZToNCj4+IFJlbW92ZSB0aGUgZGVwZW5kZW5jeSBvbiB0aGUgR0VNIERNQSBoZWxw
+ZXIgbGlicmFyeS4gUm9ja2NoaXAgY29tZXMNCj4+IHdpdGggaXRzIG93biBpbXBsZW1lbnRh
+dGlvbiBvZiB0aGUgR0VNIGludGVyZmFjZS4gSXQgb25seSB1c2VzIHRoZSBWTQ0KPj4gY2Fs
+bGJhY2tzIGluIGRybV9nZW1fZG1hX3ZtX29wcyBmcm9tIHRoZSBHRU0gRE1BIGhlbHBlcnMu
+IFRoZXNlIGFyZQ0KPj4gbm90IERNQSBzcGVjaWZpYy4NCj4+DQo+PiBEdXBsaWNhdGUgZHJt
+X2dlbV9kbWFfdm1fb3BzIGluIHJvY2tjaGlwIGFuZCByZW1vdmUgYWxsIGRlcGVuZGVuY2ll
+cyBvbg0KPj4gdGhlIEdFTSBETUEgaGVscGVyIGxpYnJhcnkuDQo+IA0KPiBJIGhhdmUgaW50
+ZW50aW9ucyB0byByZW1vdmUgdGhlIGVudGlyZSBjdXN0b20gaW1wbGVtZW50YXRpb24gb2Yg
+dGhlIEdFTQ0KPiBpbnRlcmZhY2UgYW5kIHJlcGxhY2UgaXQgd2l0aCB1c2Ugb2YgR0VNIERN
+QSBoZWxwZXJzIGluIGEgZnV0dXJlIHNlcmllcy4NCj4gDQo+IEN1cnJlbnQgY3VzdG9tIGlt
+cGxlbWVudGF0aW9uIGJyZWFrIGltcG9ydCBvZiB2aWRlbyBmcmFtZWJ1ZmZlcnMgbG9jYXRl
+ZA0KPiBpbiBtZW1vcnkgYmV5b25kIDRHQi4gU3dpdGNoaW5nIHRvIHVzZSBwdXJlIEdFTSBE
+TUEgaGVscGVycyBzb2x2ZWQgdGhhdA0KPiBpc3N1ZSBidXQgcmVxdWlyZXMgcmV3b3JraW5n
+IElPTU1VIGludGVncmF0aW9uIGZvciBmdWxsIHN1cHBvcnQgb2YNCj4gbXVsdGlwbGUgVk9Q
+cyBvbiBlLmcuLCBSSzMyODggYW5kIFJLMzM5OS4NCj4gDQo+IEkgaGF2ZSBubyBFVEEgb24g
+d2hlbiBzdWNoIHNlcmllcyBjYW4gYmUgcmVhZHkgc28gdGhpcyBpcyBtb3JlIG9mIGENCj4g
+aGVhZHMgdXAgdGhhdCBJIHdpbGwgcmV2ZXJ0IHRoaXMgcmVtb3ZhbCBvZiBkZXBlbmRlbmN5
+IG9uIEdFTSBETUEgaGVscGVyDQo+IGxpYnJhcnkgaW4gYSBmdXR1cmUgc2VyaWVzLg0KDQpO
+byBwcm9ibGVtLiBJJ20gb25seSBpbnRlcmVzdGVkIGluIGNsZWFuaW5nIHVwIHRoZSBjdXJy
+ZW50IGludGVyZmFjZXMuIA0KUm9ja2NoaXAgY2FuIGVhc2lseSBzd2l0Y2ggdG8gcmVhbCBH
+RU0gRE1BIGNvZGUuDQoNCkJlc3QgcmVnYXJkcw0KVGhvbWFzDQoNCj4gDQo+IFJlZ2FyZHMs
+DQo+IEpvbmFzDQo+IA0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5u
+IDx0emltbWVybWFubkBzdXNlLmRlPg0KPj4gLS0tDQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAxIC0NCj4+ICAgZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDIgKy0NCj4+ICAgZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDggKysrKysrLS0NCj4+ICAgMyBm
+aWxlcyBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pDQo+Pg0KPiBb
+c25pcF0NCg0KLS0gDQpUaG9tYXMgWmltbWVybWFubg0KR3JhcGhpY3MgRHJpdmVyIERldmVs
+b3Blcg0KU1VTRSBTb2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJIDQpGcmFua2Vuc3Ry
+YXNzZSAxNDYsIDkwNDYxIE51ZXJuYmVyZywgR2VybWFueQ0KR0Y6IEl2byBUb3RldiwgQW5k
+cmV3IE15ZXJzLCBBbmRyZXcgTWNEb25hbGQsIEJvdWRpZW4gTW9lcm1hbg0KSFJCIDM2ODA5
+IChBRyBOdWVybmJlcmcpDQo=
 
-  1  Hub (12 Mb/s, 0mA)
-      U-Boot Root Hub
+--------------VbfdzPY5HHfqMFG9evx6eP0f--
 
-  1  Hub (5 Gb/s, 0mA)
-     U-Boot XHCI Host Controller
+--------------OfTinYNHZ5UuuwykzqfTdN6g
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
-  1  Hub (480 Mb/s, 0mA)
-      U-Boot Root Hub
+-----BEGIN PGP SIGNATURE-----
 
-Thanks,
-Jagan.
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmSRul4FAwAAAAAACgkQlh/E3EQov+Cw
+WA/+OyPL01W5b95WE7W8w0mhA/+w7TDUeQ3jgf4xmI6vH5KL/xxxldRTaf6nqphy1nRAhgz/RZIk
+ZBNOskQskRwI+Cc0wD1IUJ/pKcH6+HFiL17KC29z0dhzAGtWLGC2vdudtapZw8+lFQkJqByq7MZC
+k5JJnJDIirnSX1Iw00m2UmH9/KoIXLZWOAUSqeRw6z7ccUZuxwPvNxpd5QnBNhlLKZfcE1pOi1jy
+xEwzKsabsGLJRbt3/HFnlWvvhCnEaTWYqqkhcGWKTyVzrZv98IB6nD+Ze3wDC1CHm0am+w8DOatg
+pH2w7eQXy6sKNP5XEuUiSxUNrZ4EMG4s+Ady+gfeszNRBtvCHBI08QkFrk940YzpqAZXehkhLvKm
+TcAF1cY929Nq0IZZ8g2QGglGjWdHS16vP9u+f0SCM3M9sOgYTKkn5dAiuyagqKOBxgRbuCBFk6hH
+nobwZEt6dxLZp9EAz1D1JP/urb7km6MEQP5ch0VEGFr7H4AxTzAKDPgXyNvYV2GvsSxYY2WawXuX
+Ma+KlzQvZdhfyx2doyOLVX/6+Iu6jxT7g34517CcM4Vacwv8laMX7zub3Oa4T4vFuZevDfazXhen
+5bw5cYsume6uUjiwSFw5LDoOnHsqPJqLuQspPm35T9NsfeLBqJj9FhM03NdbTJNkRgAtZAkxRlXA
+wiE=
+=IKbW
+-----END PGP SIGNATURE-----
+
+--------------OfTinYNHZ5UuuwykzqfTdN6g--
+
+
+--===============1635672768728070845==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1635672768728070845==--
+
