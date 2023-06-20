@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A92EB64D8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 14:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1DAFEB64D7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 14:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iAsHx/OfSw1iSfv4eYIShFiZ8xui9H71nE3EIAPa2zA=; b=JK9gIiVTpuu8FOPZQ6cIiMwwwY
-	0/+5GdS6b7u7PhB1kmZIsF+LH1Ei3h+cAT//ZdNgWcoHGgWPnxQ95OJz/g+Kym18NGkdx0Naltk0H
-	rfN8dcmcoK+m3SGcvW+NJJSc4EIHPAi96xaXRPGtQtJTEtrZIq5j0UWfXtvkPz3Taz8e/Ivq4wXeY
-	mmpMhcUjCDW8blcPNt7jbb+ne9hhdCDrCfxHTrvZh0CbZ46jJEnXXNxHIneQi36kq0nrx0ypis7zX
-	oJirptJxLx1ELI2ZvXm0hy5ttwyPO5RL+Ab0ynsvA4Fzbjudsp6c91J7ToMJEZHfBNUpA0NJ7BydJ
-	Z/oHqv5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fWpkJKdNsOYm3T2kLz4GuPJ/gZzZ7hjScnIEGDXtDqM=; b=MsnHaS/sGYmjfW
+	0vyeVQdEUBtf6NGUuVDjWMZr1y2BBt36MvfH4COFQjFKp4ZATzLt/pJS0NG5hlkDxwm61lrbojkk8
+	LV3vCCGYD5b8fnUPTjVCJXLiKlRAf0ldbrE/SsE/7Uy3lbl9hZKn4yCBhFYaH0g2I2kYAjR3QGM7y
+	mZLUY5/HgGWBfctEi5vaNeeAViHf5DU+LVdvIhBdScWQpzbw/cxfDTJdZ6X7zoez8n3Wyx8ksiFor
+	SzIY/khXKyEN1ex2ybP7sjxUeUS+6BhLnezmc/LX7hyzseHImfECSt3m8lm1XbhmDQQ2QKamLdiTE
+	plBH3mVJZPhYz2UAGhDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBcX8-00BYeG-1o;
-	Tue, 20 Jun 2023 14:40:38 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1qBcYt-00BYzP-2A;
+	Tue, 20 Jun 2023 14:42:27 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBcX5-00BYdB-2D;
-	Tue, 20 Jun 2023 14:40:37 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id B1DCE218B5;
-	Tue, 20 Jun 2023 14:40:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1687272031; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pwO5liwYTqMSyQXOoPthNHYqRO4IgUKYysAQxUSQScE=;
-	b=1ZwNUJNAZ3jxwWIDCoG9LK3spHqsLG9MDlz0FBrSqXJS98zOzlqI7qTF7uj8NmXuhD1shQ
-	T1VeMaRfpO29Y4B3u7rEcK0lGrreqU5jqmtZ0adFdAXwdHjYjJsk+dJ+uaG2tmBnaZq7Hb
-	MF0Y4zOV73frs4iO/9CXIj46QI490yI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1687272031;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pwO5liwYTqMSyQXOoPthNHYqRO4IgUKYysAQxUSQScE=;
-	b=PXgLLTi7HIUzyQBqwNMSFZYvl1hFMcr5FcsYFSLqlMup6hCYHZfU64YKvjRLpJ/N5dT/lw
-	bpBSZ77aSxSJrsCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 69F21133A9;
-	Tue, 20 Jun 2023 14:40:31 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 6zfWGF+6kWT0WwAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Tue, 20 Jun 2023 14:40:31 +0000
-Message-ID: <93b72df1-77c3-8d88-cfca-7b1acd6066e4@suse.de>
-Date: Tue, 20 Jun 2023 16:40:30 +0200
+	id 1qBcYq-00BYy8-0K;
+	Tue, 20 Jun 2023 14:42:25 +0000
+Received: by mail-io1-f42.google.com with SMTP id ca18e2360f4ac-77e43dde8c9so68753439f.3;
+        Tue, 20 Jun 2023 07:42:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687272143; x=1689864143;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0MmZ0g1HW4agS/tjTfgrP/sLuSN4tElhlwhGgoaJ3go=;
+        b=ilFYd2nX7o3PmLu6RytOie6qupYN2fAtACkfpquh3GaHtTCIT6tBVmXvBUTqxNwYfr
+         5xc/BMjUvzDfhe4uYHm1ly+8Yf7oQJNyhrsZKASgJmSG4HKEiVosiOVWvIleS0svD+5Z
+         x1ZeEYcqGtgVstD4P1BDLzGjj5V0YRdV7lk/Fx7HUX50VG4rH51sNgfE+jrNuh2mbpj7
+         /nQvGoMQkpGEX5FqzVcpWAMgoyilmKPKLjTjvCbgB6/5lQStv8FuQ4ig7IOm5A44Kj2z
+         rGQQdO9JeZ8GN49IGA/dC8ZRD6ZPNpWZ1bFiPC6hYeb0ivjPv4b9GCrYBxilnQzbxQ8A
+         hUjQ==
+X-Gm-Message-State: AC+VfDwyuTXroaSOmoSUtZh1lrHHI4JyKrlfCfTKhMc4lsOOhcWY+o2M
+	3l1z3TBqa6rKCDxXt2aFhkB6VaZbIw==
+X-Google-Smtp-Source: ACHHUZ6+i1Qpe2BYZ878BybOTtRyh71NPNDpWWXT+XcPjB3Rn3VGzSz4sJVTkp0w/dkvLRDHJBTzfA==
+X-Received: by 2002:a05:6602:2995:b0:76c:4ce7:e37c with SMTP id o21-20020a056602299500b0076c4ce7e37cmr10852808ior.16.1687272142793;
+        Tue, 20 Jun 2023 07:42:22 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id l9-20020a5e8809000000b0077e2ae3170fsm674348ioj.55.2023.06.20.07.42.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Jun 2023 07:42:22 -0700 (PDT)
+Received: (nullmailer pid 3564600 invoked by uid 1000);
+	Tue, 20 Jun 2023 14:42:20 -0000
+Date: Tue, 20 Jun 2023 08:42:20 -0600
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: [PATCH] dt-bindings: rockchip: grf: drop unneeded quotes
+Message-ID: <168727214023.3564537.237122680984653343.robh@kernel.org>
+References: <20230609140702.64589-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 2/3] drm/rockchip: Resolve dependency in GEM DMA helpers
-Content-Language: en-US
-To: Jonas Karlman <jonas@kwiboo.se>, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, airlied@gmail.com, daniel@ffwll.ch,
- laurent.pinchart@ideasonboard.com, kieran.bingham+renesas@ideasonboard.com,
- hjc@rock-chips.com, heiko@sntech.de
-Cc: linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20230620121202.28263-1-tzimmermann@suse.de>
- <20230620121202.28263-3-tzimmermann@suse.de>
- <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-In-Reply-To: <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
+Content-Disposition: inline
+In-Reply-To: <20230609140702.64589-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_074035_887264_0A657FC1 
-X-CRM114-Status: GOOD (  21.42  )
+X-CRM114-CacheID: sfid-20230620_074224_138311_E4A337EF 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,110 +75,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1635672768728070845=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1635672768728070845==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------OfTinYNHZ5UuuwykzqfTdN6g"
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------OfTinYNHZ5UuuwykzqfTdN6g
-Content-Type: multipart/mixed; boundary="------------VbfdzPY5HHfqMFG9evx6eP0f";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Jonas Karlman <jonas@kwiboo.se>, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, airlied@gmail.com, daniel@ffwll.ch,
- laurent.pinchart@ideasonboard.com, kieran.bingham+renesas@ideasonboard.com,
- hjc@rock-chips.com, heiko@sntech.de
-Cc: linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
-Message-ID: <93b72df1-77c3-8d88-cfca-7b1acd6066e4@suse.de>
-Subject: Re: [PATCH 2/3] drm/rockchip: Resolve dependency in GEM DMA helpers
-References: <20230620121202.28263-1-tzimmermann@suse.de>
- <20230620121202.28263-3-tzimmermann@suse.de>
- <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
-In-Reply-To: <34c08fc9-eb9b-376d-57fb-d47a68c2fc4d@kwiboo.se>
+On Fri, 09 Jun 2023 16:07:02 +0200, Krzysztof Kozlowski wrote:
+> Cleanup bindings dropping unneeded quotes. Once all these are fixed,
+> checking for this can be enabled in yamllint.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  .../devicetree/bindings/soc/rockchip/grf.yaml        | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
 
---------------VbfdzPY5HHfqMFG9evx6eP0f
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+Applied, thanks!
 
-SGkNCg0KQW0gMjAuMDYuMjMgdW0gMTU6NTYgc2NocmllYiBKb25hcyBLYXJsbWFuOg0KPiBI
-aSBUaG9tYXMsDQo+IA0KPiBPbiAyMDIzLTA2LTIwIDE0OjAzLCBUaG9tYXMgWmltbWVybWFu
-biB3cm90ZToNCj4+IFJlbW92ZSB0aGUgZGVwZW5kZW5jeSBvbiB0aGUgR0VNIERNQSBoZWxw
-ZXIgbGlicmFyeS4gUm9ja2NoaXAgY29tZXMNCj4+IHdpdGggaXRzIG93biBpbXBsZW1lbnRh
-dGlvbiBvZiB0aGUgR0VNIGludGVyZmFjZS4gSXQgb25seSB1c2VzIHRoZSBWTQ0KPj4gY2Fs
-bGJhY2tzIGluIGRybV9nZW1fZG1hX3ZtX29wcyBmcm9tIHRoZSBHRU0gRE1BIGhlbHBlcnMu
-IFRoZXNlIGFyZQ0KPj4gbm90IERNQSBzcGVjaWZpYy4NCj4+DQo+PiBEdXBsaWNhdGUgZHJt
-X2dlbV9kbWFfdm1fb3BzIGluIHJvY2tjaGlwIGFuZCByZW1vdmUgYWxsIGRlcGVuZGVuY2ll
-cyBvbg0KPj4gdGhlIEdFTSBETUEgaGVscGVyIGxpYnJhcnkuDQo+IA0KPiBJIGhhdmUgaW50
-ZW50aW9ucyB0byByZW1vdmUgdGhlIGVudGlyZSBjdXN0b20gaW1wbGVtZW50YXRpb24gb2Yg
-dGhlIEdFTQ0KPiBpbnRlcmZhY2UgYW5kIHJlcGxhY2UgaXQgd2l0aCB1c2Ugb2YgR0VNIERN
-QSBoZWxwZXJzIGluIGEgZnV0dXJlIHNlcmllcy4NCj4gDQo+IEN1cnJlbnQgY3VzdG9tIGlt
-cGxlbWVudGF0aW9uIGJyZWFrIGltcG9ydCBvZiB2aWRlbyBmcmFtZWJ1ZmZlcnMgbG9jYXRl
-ZA0KPiBpbiBtZW1vcnkgYmV5b25kIDRHQi4gU3dpdGNoaW5nIHRvIHVzZSBwdXJlIEdFTSBE
-TUEgaGVscGVycyBzb2x2ZWQgdGhhdA0KPiBpc3N1ZSBidXQgcmVxdWlyZXMgcmV3b3JraW5n
-IElPTU1VIGludGVncmF0aW9uIGZvciBmdWxsIHN1cHBvcnQgb2YNCj4gbXVsdGlwbGUgVk9Q
-cyBvbiBlLmcuLCBSSzMyODggYW5kIFJLMzM5OS4NCj4gDQo+IEkgaGF2ZSBubyBFVEEgb24g
-d2hlbiBzdWNoIHNlcmllcyBjYW4gYmUgcmVhZHkgc28gdGhpcyBpcyBtb3JlIG9mIGENCj4g
-aGVhZHMgdXAgdGhhdCBJIHdpbGwgcmV2ZXJ0IHRoaXMgcmVtb3ZhbCBvZiBkZXBlbmRlbmN5
-IG9uIEdFTSBETUEgaGVscGVyDQo+IGxpYnJhcnkgaW4gYSBmdXR1cmUgc2VyaWVzLg0KDQpO
-byBwcm9ibGVtLiBJJ20gb25seSBpbnRlcmVzdGVkIGluIGNsZWFuaW5nIHVwIHRoZSBjdXJy
-ZW50IGludGVyZmFjZXMuIA0KUm9ja2NoaXAgY2FuIGVhc2lseSBzd2l0Y2ggdG8gcmVhbCBH
-RU0gRE1BIGNvZGUuDQoNCkJlc3QgcmVnYXJkcw0KVGhvbWFzDQoNCj4gDQo+IFJlZ2FyZHMs
-DQo+IEpvbmFzDQo+IA0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5u
-IDx0emltbWVybWFubkBzdXNlLmRlPg0KPj4gLS0tDQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAxIC0NCj4+ICAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDIgKy0NCj4+ICAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDggKysrKysrLS0NCj4+ICAgMyBm
-aWxlcyBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pDQo+Pg0KPiBb
-c25pcF0NCg0KLS0gDQpUaG9tYXMgWmltbWVybWFubg0KR3JhcGhpY3MgRHJpdmVyIERldmVs
-b3Blcg0KU1VTRSBTb2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJIDQpGcmFua2Vuc3Ry
-YXNzZSAxNDYsIDkwNDYxIE51ZXJuYmVyZywgR2VybWFueQ0KR0Y6IEl2byBUb3RldiwgQW5k
-cmV3IE15ZXJzLCBBbmRyZXcgTWNEb25hbGQsIEJvdWRpZW4gTW9lcm1hbg0KSFJCIDM2ODA5
-IChBRyBOdWVybmJlcmcpDQo=
-
---------------VbfdzPY5HHfqMFG9evx6eP0f--
-
---------------OfTinYNHZ5UuuwykzqfTdN6g
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmSRul4FAwAAAAAACgkQlh/E3EQov+Cw
-WA/+OyPL01W5b95WE7W8w0mhA/+w7TDUeQ3jgf4xmI6vH5KL/xxxldRTaf6nqphy1nRAhgz/RZIk
-ZBNOskQskRwI+Cc0wD1IUJ/pKcH6+HFiL17KC29z0dhzAGtWLGC2vdudtapZw8+lFQkJqByq7MZC
-k5JJnJDIirnSX1Iw00m2UmH9/KoIXLZWOAUSqeRw6z7ccUZuxwPvNxpd5QnBNhlLKZfcE1pOi1jy
-xEwzKsabsGLJRbt3/HFnlWvvhCnEaTWYqqkhcGWKTyVzrZv98IB6nD+Ze3wDC1CHm0am+w8DOatg
-pH2w7eQXy6sKNP5XEuUiSxUNrZ4EMG4s+Ady+gfeszNRBtvCHBI08QkFrk940YzpqAZXehkhLvKm
-TcAF1cY929Nq0IZZ8g2QGglGjWdHS16vP9u+f0SCM3M9sOgYTKkn5dAiuyagqKOBxgRbuCBFk6hH
-nobwZEt6dxLZp9EAz1D1JP/urb7km6MEQP5ch0VEGFr7H4AxTzAKDPgXyNvYV2GvsSxYY2WawXuX
-Ma+KlzQvZdhfyx2doyOLVX/6+Iu6jxT7g34517CcM4Vacwv8laMX7zub3Oa4T4vFuZevDfazXhen
-5bw5cYsume6uUjiwSFw5LDoOnHsqPJqLuQspPm35T9NsfeLBqJj9FhM03NdbTJNkRgAtZAkxRlXA
-wiE=
-=IKbW
------END PGP SIGNATURE-----
-
---------------OfTinYNHZ5UuuwykzqfTdN6g--
-
-
---===============1635672768728070845==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1635672768728070845==--
-
