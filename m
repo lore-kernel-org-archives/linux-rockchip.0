@@ -4,41 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3514BEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 18:48:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B8CFEB64D7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 18:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yWzJnKAnAKIsOYfJwlqj5J1onMG51cF4BwaKavE5HB8=; b=fm+d1j5Qb1myEx
-	on1EsDE+oFeNmGELn5vYterW6s777dyGql42P912/YED00LZ9C+w56ENijt6O2RUO1NEZoudLJXvs
-	10pwuW06jrZ8a8/3jGFZIYJFEbkRnm4las1Xj+bpPZiU39tC5oIeJSCXBid5fMG5p3OWS6IlpQQgm
-	qpq6vxfZ4ul+LBnyRENxq9LJUYfIQOpQV9Af8eumPIDovqJSWYohRYPbiTgZyNcQBkb9Rh2cQyrZ8
-	2iJcmft0nj4v/Sgp/c3D7sC096AkaIkUcPYqYsN282ZavUhxGmUPY/fNgWWz+eeGsUm39IXJE31uQ
-	z85zraC8SSCD6kPu3TaA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8ic7+8bta8VPMepSR6pPWAHJ+EMpdKp646RYZiOEOTc=; b=OaFVTNDMa8s1RK
+	R94AU2q29YQco4pheL3F29R9ezCoNq37ev6gRxn7h+MGs7Hq1uGJF7gvxQT3bPhwGyi5cEEYaCuMI
+	C2vm8LPrf46uXtMVu7TLT42H2eBtoBGc1PGBGuYeBe3bGFMM9YY2fQCxB0+8crnLlnuYUXGEq4Ii1
+	fauyc1zHPtFTSBSd4ADVec0V9YzXOwb3KoTTq4HL1snQ+Srpm4wJ6ubULATR0NqACXFliCcXPRZUP
+	LK4avO9yEWOvqQQWz82AgX+9lA7jrjqhP8gPheTctcgabPJMKxzuejbZln1yuObIW11c1glh5/rgr
+	zNOfqK/SPm90uXlYy1/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBgOc-00C5ld-0e;
+	id 1qBgOc-00C5ll-1n;
 	Tue, 20 Jun 2023 18:48:06 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBgOY-00C5j5-0C;
+	id 1qBgOY-00C5ic-0D;
 	Tue, 20 Jun 2023 18:48:03 +0000
 From: Furkan Kardame <f.kardame@manjaro.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1687286878;
+	t=1687286875;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AdJOrsfn+EjXmTCRjY9atZ1E+lqcObT34k7FSpSTYes=;
-	b=w7uvhxMsi9vPxgDJlB5G2+PebI6fpimR0bZIrarjfbvO/cfqrD0ohrWsZuBrcleRE6PNlB
-	PwxdY+FjLW0EIHK+BgBmTcbcPc3WVZbPJ4w22BoRlZqBDn7TyGemydqff37HBnmazsxmUK
-	dehUGXWMctu6lll/iauS1u8pUdC1/bADG1ERU2wXkOw82ByxQr33jvOpyF8HL/ZDgEsJbW
-	ZkJ7SdpVzeMH8+eJWkNLqH4g7KlaJhJPFM4x8NCoNWSxQ6k7Cwt0RtfnMsYh0j4qDgyhjO
-	teWLnYHSXKCg0h+EfUhlnBkdw3GDNm1IR5weUTqZtVQnAmdhln8WC7FLiO+RWQ==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=x5Ty4pCnpwGR7JhrU4QbNphR7Ex1qOB/BOQRkHNf7iY=;
+	b=TsqWWY2qIfNlMBfSe+2Mdfr7D45iOXSDGrxYIRYVSZlkNZuaAvrJHTUFsDS5U7UvOH2p81
+	ubx1lhwY3veyGiD6yO7unhOQfSiU0InRti1nMdAgwynfAg02keW/m4Zb+Ba4lQP2Z8S3PT
+	TJGa3z9lUDWZcuY4G4YbWK1brohjK8en1rm7uf5FeATS6h2nWvRctDYZ621RB+kF9X6SPg
+	wDIOCHBUpBHc/VwWV8RH65ji8Ao6tfsJk0G36QeK/pjwxGaLlFKGJ4ky18bRfpaV6HEgFP
+	sWCE7N9L6IpnlxQx31qA2xU7JFanZ+EC+LMOVkiWjplg6+hLJ8KGWPPJfexgLA==
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
 	conor+dt@kernel.org,
@@ -52,17 +51,15 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Furkan Kardame <f.kardame@manjaro.org>
-Subject: [PATCHv4 1/2] dt-bindings: arm: rockchip: Add Firefly Station P2
-Date: Tue, 20 Jun 2023 21:47:45 +0300
-Message-Id: <20230620184746.55391-2-f.kardame@manjaro.org>
-In-Reply-To: <20230620184746.55391-1-f.kardame@manjaro.org>
-References: <20230620184746.55391-1-f.kardame@manjaro.org>
+Subject: [PATCHv4 0/2] Add support for Firefly Station P2 aka rk3568-roc-pc
+Date: Tue, 20 Jun 2023 21:47:44 +0300
+Message-Id: <20230620184746.55391-1-f.kardame@manjaro.org>
 MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=f.kardame@manjaro.org smtp.mailfrom=f.kardame@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_114802_261423_5C5F5A6E 
-X-CRM114-Status: UNSURE (   5.83  )
+X-CRM114-CacheID: sfid-20230620_114802_260914_F0ADB747 
+X-CRM114-Status: UNSURE (   8.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,30 +77,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Station P2 is a single board computer by firefly based
-on rk3568 soc
+Patch 1 adds the requisite dt-binding.
+Patch 2 adds Firefly Station P2 device tree
 
-Signed-off-by: Furkan Kardame <f.kardame@manjaro.org>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Please review and I hope it is all good this time :)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ec141c937..fa21640bc 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -185,6 +185,11 @@ properties:
-           - const: firefly,rk3566-roc-pc
-           - const: rockchip,rk3566
- 
-+      - description: Firefly Station P2
-+        items:
-+          - const: firefly,rk3568-roc-pc
-+          - const: rockchip,rk3568
-+
-       - description: FriendlyElec NanoPi R2 series boards
-         items:
-           - enum:
+Furkan Kardame
+
+--- 
+V4: 
+- Fix indentation
+- Remove unused regulator nodes
+- Add space before the property.
+
+V3:  https://lore.kernel.org/all/20230619184856.23066-1-f.kardame@manjaro.org/
+- Change tab to space in devicetree binding.
+
+v2: https://lore.kernel.org/all/20230617135315.25441-1-f.kardame@manjaro.org/
+- Add regulator suffix to nodes
+- Fix indentation
+- Remove sdio_pwrseq node as it's not needed until sdmmc2 is added
+- Remove underscore from pinctrl node name
+- Fix dt-binding compatible name
+
+v1: https://lore.kernel.org/all/20230616211020.55755-3-f.kardame@manjaro.org/
+
+Furkan Kardame (2):
+  dt-bindings: arm: rockchip: Add Firefly Station P2
+  arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../arm64/boot/dts/rockchip/rk3568-roc-pc.dts | 654 ++++++++++++++++++
+ 3 files changed, 660 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
+
 -- 
 2.40.1
 
