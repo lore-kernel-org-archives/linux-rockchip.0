@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6882EEB64D8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 12:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC84EB64DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 12:53:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cpeqeIO31wtcHN6QAJcj5D99MyLeT/vXXVldHZxE6T8=; b=J8aUDseemljI0Q
-	tgH1G8wEIvibrbNXiPk/XZ/rSbPY4qDmSkkTRKAk2M/GkvBxAC1JIs1rcgZ13weAGfBN684URYngZ
-	uozU7m72nC9qCNgkBLQ4x2OfXQJFyz8BtdqfufGFg84Au74FbxBdxyL3eA0BXS1FX1fthYc/N0xb2
-	/x7Y/pB9BxLvoxzKE4iai1eiqtnpscDE9GPXxV/AV6f/dJ+c0pu6VSKJPKxW/EgBBQLj81/43yhFs
-	XeahO9kivIeKmjPKztq3bG3/+JL1v9mmDiLl8+9jOsKuANRVn7x+RUXnMZQ7Z2tH135uPRXOPE/vP
-	zlPJ7EzHKzIDD6arvsnA==;
+	List-Owner; bh=it4cVYbgYbZ/SqeO0ug0HX3OvhWK1PbFLCfzHUPnXzk=; b=JLE1bzsTNZXsI4
+	S67DJN8d0wiWtx2/8kH2Qi9iohHPEwBu9CRf5P6yqg9oKCnFvPEbJ+yGmwGKd46S5NgRoFmftQkig
+	7E2Ac5v1nnUoC8nuW30cEHBlcSRg2H9cjEQN+RWYmpabScPff9lJqjehHIgCzmCEf1yG8wi93iup2
+	beb/oizUDx0bhy8J7uyA48EX+QA2f2Ls0ll2QaahHDOxXuGo2WphSKjMqTRIRFW9l1QfhHo0Gr3qX
+	40gDwtglc3zOT29Mg1mNMsyaRh7fKPFQi5V3vqsag1CsxwaehyS7/1pa2mUarmZj+M3po2IWVVnvJ
+	tOliGIKJD+we05qiSzvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBaDs-00BDLB-0T;
-	Tue, 20 Jun 2023 12:12:36 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1qBarF-00BJ25-1Q;
+	Tue, 20 Jun 2023 12:53:17 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBaDV-00BDA2-1D;
-	Tue, 20 Jun 2023 12:12:15 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id F2F9C1F38A;
-	Tue, 20 Jun 2023 12:12:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1687263125; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=M0StLaEV9t2bJwgKygVMZYw7cxkeD85gCdMq65G977o=;
-	b=Ay//wprv7O21AW5J+hlW74XI+t4LeXz4puYQl0kA1RdHz4cZfFxdViDgWGebwqy/de+ezG
-	E3gsuXCa+aWbYTQeWm5tDxXuC30xORNcizHZ/ekF8ho/kZcGYtJMXDiAx0ddhncHPeKiLV
-	MQuKDYJzlh7d0Q7jUPIG3qMyNhd8n9Y=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1687263125;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=M0StLaEV9t2bJwgKygVMZYw7cxkeD85gCdMq65G977o=;
-	b=3lwNBgmHAodF4AoGrOwavr97ZrO5qBME48sSYQJas4o7FYoiQndEDUaTNbxv13+NfLvczG
-	/wAgcgYsjHou0CCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B14DF139C7;
-	Tue, 20 Jun 2023 12:12:04 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id YLBbKpSXkWSwEQAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Tue, 20 Jun 2023 12:12:04 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	laurent.pinchart@ideasonboard.com,
-	kieran.bingham+renesas@ideasonboard.com,
-	hjc@rock-chips.com,
-	heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 1/3] drm/rcar-du: Import buffers with GEM DMA's helpers
-Date: Tue, 20 Jun 2023 14:03:21 +0200
-Message-ID: <20230620121202.28263-2-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230620121202.28263-1-tzimmermann@suse.de>
-References: <20230620121202.28263-1-tzimmermann@suse.de>
+	id 1qBarC-00BJ1A-2q;
+	Tue, 20 Jun 2023 12:53:15 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-54fb3c168fcso3819697a12.0;
+        Tue, 20 Jun 2023 05:53:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1687265590; x=1689857590;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=36Q0E79+X6bNneD5gDA+F7nctDYtSY+gSKV0kemn51w=;
+        b=biZQsAESZ+D1x6A0v1zqe/1e4BZaCgoEsQ6FzOWn3p2nkjLod+TPsvmNIIUxxx7Iqe
+         4O/qBQKOMyeabo0VPCOC47R1gnS90F0ofGDSzSXP48DlY1zcoyGnK1r8rCqIsJDJb3+D
+         GCD1mSc94t8CYjOkmzNoqpxK7juIAsKqDHHDQ0Qw6vsi9vYHjacSGB3jHKpiaPtthleY
+         nUkUFUbE6YQcrCrquSVTk7vNL75h9BkYG7MP4SMrNfP5CITzWgENVOUlSUEmoIlqdPEO
+         3j88WEA6pWnbcK4ZFw79uWx6NsrHJ6RcVDDC1CCiIZzwJ1ap1yt8Ri5ruSrsYshYrNxo
+         Yrjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687265590; x=1689857590;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=36Q0E79+X6bNneD5gDA+F7nctDYtSY+gSKV0kemn51w=;
+        b=PYtb1nz3tf3DvRqxxE0VY0KTB/mAN8FkqU0vEs/3V+hXvfNLlcmbr+wAbC9/9dLMEm
+         vZ96mWS6aAocUbiXnWnKLdDgnTbQqSSalL411ZVHuBrPLdl5jF7v6zCp9I0TibDiCegI
+         FYZLM3BbU7vjYad/0IoHc9b+0PIGUFRXSpXbV1NfZE4hBWvWoYkNcYvkxdPs0I9EfKFU
+         sDTt/PLjjByIh86xnPw+bIxvLeGXA3euVw903yBrNfeZKh1z8Ott7zdy9xs/DnyPBwUp
+         /5XzqnytdsDlkd53pV3I8FK/swGVW3i5QEcFNViBT98ae2wy9+qOJASOJge064O//X3W
+         7lpg==
+X-Gm-Message-State: AC+VfDxh62cfJV6y05/RsruOiDmSkBrVBqBpROypeauPOBYgKgrc9i3M
+	D6Yt0uuj9I6CnkqPZawrL7qviwWHus31iC7mTEJ8sjq5M0Li+Q==
+X-Google-Smtp-Source: ACHHUZ76WSq5RGqhOitBXAkf/k6nPDKOSPAANQfs50njYPaQLIfrVUw7wInfRGDjJSuF2kvn1h1zEc7LSN9LNzG/6k4=
+X-Received: by 2002:a17:903:41c3:b0:1b1:ac87:b47a with SMTP id
+ u3-20020a17090341c300b001b1ac87b47amr15870276ple.65.1687265590088; Tue, 20
+ Jun 2023 05:53:10 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230614134716.1055862-1-a1ba.omarov@gmail.com>
+In-Reply-To: <20230614134716.1055862-1-a1ba.omarov@gmail.com>
+From: Alibek Omarov <a1ba.omarov@gmail.com>
+Date: Tue, 20 Jun 2023 15:52:58 +0300
+Message-ID: <CAKyg=SXGbk+rtH_-PVbKgdj1LoWSxuq0=SU6FQH_U879fMeY9A@mail.gmail.com>
+Subject: Re: [PATCH] clk: rockchip: rk3568: Add PLL rate for 101MHz
+To: linux-rockchip@lists.infradead.org
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_051213_562531_308B78EB 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230620_055314_920166_9E4AA497 
+X-CRM114-Status: UNSURE (   4.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,116 +88,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Call __drm_gem_dma_create() to create an object for imported buffers,
-instead of reimplementing the function within the driver. Reduces
-code duplication and will later allow to un-export a number of symbols
-from the GEM DMA helpers.
-
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
----
- drivers/gpu/drm/drm_gem_dma_helper.c          |  5 +--
- drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c | 33 +++----------------
- include/drm/drm_gem_dma_helper.h              |  3 ++
- 3 files changed, 10 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
-index 870b90b78bc4e..e9aa3ac140654 100644
---- a/drivers/gpu/drm/drm_gem_dma_helper.c
-+++ b/drivers/gpu/drm/drm_gem_dma_helper.c
-@@ -67,8 +67,8 @@ static const struct drm_gem_object_funcs drm_gem_dma_default_funcs = {
-  * A struct drm_gem_dma_object * on success or an ERR_PTR()-encoded negative
-  * error code on failure.
-  */
--static struct drm_gem_dma_object *
--__drm_gem_dma_create(struct drm_device *drm, size_t size, bool private)
-+struct drm_gem_dma_object *__drm_gem_dma_create(struct drm_device *drm,
-+						size_t size, bool private)
- {
- 	struct drm_gem_dma_object *dma_obj;
- 	struct drm_gem_object *gem_obj;
-@@ -112,6 +112,7 @@ __drm_gem_dma_create(struct drm_device *drm, size_t size, bool private)
- 	kfree(dma_obj);
- 	return ERR_PTR(ret);
- }
-+EXPORT_SYMBOL_GPL(__drm_gem_dma_create);
- 
- /**
-  * drm_gem_dma_create - allocate an object with the given size
-diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
-index adfb36b0e8154..ea7487e270f13 100644
---- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
-+++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
-@@ -356,49 +356,24 @@ const struct rcar_du_format_info *rcar_du_format_info(u32 fourcc)
-  * Frame buffer
-  */
- 
--static const struct drm_gem_object_funcs rcar_du_gem_funcs = {
--	.free = drm_gem_dma_object_free,
--	.print_info = drm_gem_dma_object_print_info,
--	.get_sg_table = drm_gem_dma_object_get_sg_table,
--	.vmap = drm_gem_dma_object_vmap,
--	.mmap = drm_gem_dma_object_mmap,
--	.vm_ops = &drm_gem_dma_vm_ops,
--};
--
- struct drm_gem_object *rcar_du_gem_prime_import_sg_table(struct drm_device *dev,
- 				struct dma_buf_attachment *attach,
- 				struct sg_table *sgt)
- {
- 	struct rcar_du_device *rcdu = to_rcar_du_device(dev);
- 	struct drm_gem_dma_object *dma_obj;
--	struct drm_gem_object *gem_obj;
--	int ret;
- 
- 	if (!rcar_du_has(rcdu, RCAR_DU_FEATURE_VSP1_SOURCE))
- 		return drm_gem_dma_prime_import_sg_table(dev, attach, sgt);
- 
--	/* Create a DMA GEM buffer. */
--	dma_obj = kzalloc(sizeof(*dma_obj), GFP_KERNEL);
--	if (!dma_obj)
--		return ERR_PTR(-ENOMEM);
--
--	gem_obj = &dma_obj->base;
--	gem_obj->funcs = &rcar_du_gem_funcs;
--
--	drm_gem_private_object_init(dev, gem_obj, attach->dmabuf->size);
--	dma_obj->map_noncoherent = false;
--
--	ret = drm_gem_create_mmap_offset(gem_obj);
--	if (ret) {
--		drm_gem_object_release(gem_obj);
--		kfree(dma_obj);
--		return ERR_PTR(ret);
--	}
-+	dma_obj = __drm_gem_dma_create(dev, attach->dmabuf->size, true);
-+	if (IS_ERR(dma_obj))
-+		return ERR_CAST(dma_obj);
- 
- 	dma_obj->dma_addr = 0;
- 	dma_obj->sgt = sgt;
- 
--	return gem_obj;
-+	return &dma_obj->base;
- }
- 
- int rcar_du_dumb_create(struct drm_file *file, struct drm_device *dev,
-diff --git a/include/drm/drm_gem_dma_helper.h b/include/drm/drm_gem_dma_helper.h
-index 61da596780b64..3877cbf0e927c 100644
---- a/include/drm/drm_gem_dma_helper.h
-+++ b/include/drm/drm_gem_dma_helper.h
-@@ -32,6 +32,9 @@ struct drm_gem_dma_object {
- #define to_drm_gem_dma_obj(gem_obj) \
- 	container_of(gem_obj, struct drm_gem_dma_object, base)
- 
-+struct drm_gem_dma_object *__drm_gem_dma_create(struct drm_device *drm,
-+						size_t size, bool private);
-+
- struct drm_gem_dma_object *drm_gem_dma_create(struct drm_device *drm,
- 					      size_t size);
- void drm_gem_dma_free(struct drm_gem_dma_object *dma_obj);
--- 
-2.41.0
-
+bump
 
 _______________________________________________
 Linux-rockchip mailing list
