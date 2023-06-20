@@ -4,60 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 940E2EB64D7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 17:06:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE03EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jun 2023 17:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-Id:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tLXnX/RA2/eqxI695mzVUIeI4BHDZViQVt3t/KJPNU8=; b=Wy0FKfg5kJL3lW
-	0zHFqITMGsbvgzETyQO0FPRD7BYFNP6hyCMmTXSmi6h+C91XRJ4lUg+QOMdQc5zjFkyi1g9KE3xAH
-	VR9+cRtMHEd3Vrod4XunQw+byuiKVPIp/5qb0rjHRY3DPWum4niv7mWSUpamAjT48kiTDlHqUktda
-	tXsb/QVmacqdTAgpKN5ysHAM81ZFfso9Xxb2YfI5bqiD9TfmrX8q+fR7NBI+HOQurNvwyWPuEbspe
-	U9QXmx59YILHURAB9PeWPtjJC4jDAVpsdP41RXLD6KOEDGXNkkz4mHgL5/JNJNOGq9VZFomM400mc
-	ma38KxFUdovsjhUzaoRQ==;
+	List-Owner; bh=2GBriLnJ4YmPo6YJPVd6JPXxY4JtT2O7AXx0Cd71owo=; b=WjTihiPPrW7YHA
+	zIfZYo2xfZXIZGEN6eiX2q9y+JY7rlCl1Y8NxHPytRXyHUaaQOhAsvftjQLSM3BcJaeUh0qG1ER6w
+	TjoC9CCYhf4IGVEcLrX+mZsB5Sv5j30P/z/yWQG361Tlq2C8nPKc9NlIdZwpJuBRDlpQ007/yPRia
+	+t8Ae6jevfeNlu1wyBbOddgcqGLXFdY+14qxsA3HK25ojkdqWpzQIjiBXGRYjk6iZ2Pj1P21IDgbm
+	qVfRp4HpXumGIwysBFWSZJfGtQaqDRo4k1NVxhwSKiDW/axqVFj5++WfVcLWgUVaQo3PXV5wSpAKI
+	vfgOEx+Op2JMU6p0Mvjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBeno-00Bt4R-0p;
-	Tue, 20 Jun 2023 17:06:00 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1qBeqU-00BtKp-0S;
+	Tue, 20 Jun 2023 17:08:46 +0000
+Received: from mail-io1-f52.google.com ([209.85.166.52])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBenk-00Bt3H-1r;
-	Tue, 20 Jun 2023 17:05:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1687280753;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rTmTy1WXEGmdcqhzGnAmxnaNlJl7OG70Wq3ri14vgRY=;
-	b=l1ezp8VHu1KMPm3mGn5zw3f5IbR53qX+AwhtlwlyknMpFjPPjuC9R1/GRoXGM8Stf5EK/g
-	rrw8ANWqmK7HwDt9sQkLmjbrQchgs3/drSDuMZbdDpOU8Mgbfm/58J+pmkO7OhVwyltOKy
-	TQfZcOYg6W9QrS/ZIyLsRJfovgF5dshyLmptWRTEcaIhARazWWg7/dbYmxOJ05CzrqDYLN
-	x9984v3xTjtD1tsMfT4OrL8Uxs9FZgmGMj3m4GaxqtQKVY2mYVOve3E0TxCZuApaT9KqKw
-	xLaaIvHgw2PYClD6YTKg0BaFDtSQ3p0zeFf7tAWVogAxQp5sc6cSz5XDkRB/tg==
-Message-Id: <1687280004029.3690769854.982412891@manjaro.org>
-From: Furkan Kardame <f.kardame@manjaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- heiko@sntech.de, broonie@kernel.org, deller@gmx.de, dsterba@suse.com,
- arnd@arndb.de, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCHv3 2/2] arm64: dts: rockchip: add dts for Firefly
- Station P2 aka rk3568-roc-pc
-Date: Tue, 20 Jun 2023 17:05:48 +0000
-In-Reply-To: <c020531e-c56e-7606-1846-5ca7332de96f@linaro.org>
-References: <c020531e-c56e-7606-1846-5ca7332de96f@linaro.org>
+	id 1qBeqR-00BtJd-0n;
+	Tue, 20 Jun 2023 17:08:44 +0000
+Received: by mail-io1-f52.google.com with SMTP id ca18e2360f4ac-77e394b3cfbso123252439f.2;
+        Tue, 20 Jun 2023 10:08:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687280917; x=1689872917;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gJcsNw9M8GOd71NQMFbyfiNslmnbg2Ev97OtD/n6IA8=;
+        b=Eq6+JMVqEACpdkHd9LI1dIlMwVCEQq8aDoWiNfqOh6NKkS2P36jwkzUj+b64sV9c2D
+         tzGzvGCM7iCxnjrRIjrFjZADsqZg+NkxuYPxcAbaLCzbEnLTiR1DX9OmcZ5WpIlWoGwa
+         FsihWWFz1xoacJSXGFb4Tzxob88d+7Oh1locP/VT7jZtZk42f8kIUJAYIiCrgE4XHd5W
+         3CEyGNbf42cNjPYjsbPdbAa70M+p3rY/hloSS6m50FJbxyWsxr9Y3DC8nCqbj30DMMK1
+         YLOfpnBFy6Cp72ZS8hW/ygA8AAgwj6MuT+8cnV5KgMfrKjbsixvrh/EpD6oCuUYT+21W
+         LgDw==
+X-Gm-Message-State: AC+VfDxvtic75e/Psfz+5OuG96Wtq1nvMYs0bOpbOiKOPCWDoetuHMUc
+	PRcDChRXrwZr8tzO9jtmyQ==
+X-Google-Smtp-Source: ACHHUZ4LW3ZZ/cBYhYhRQFPFEU1u8KrW05QGpnRnMNVV6p1GfqQBCDIZtWRbIiboQdX+bfk3YUT6Jw==
+X-Received: by 2002:a5e:db05:0:b0:778:82d1:39a3 with SMTP id q5-20020a5edb05000000b0077882d139a3mr12005610iop.13.1687280916907;
+        Tue, 20 Jun 2023 10:08:36 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id w17-20020a02cf91000000b00422e02bff00sm764914jar.84.2023.06.20.10.08.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Jun 2023 10:08:36 -0700 (PDT)
+Received: (nullmailer pid 3833675 invoked by uid 1000);
+	Tue, 20 Jun 2023 17:08:34 -0000
+Date: Tue, 20 Jun 2023 11:08:34 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-pci@vger.kernel.org, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Simon Xue <xxm@rock-chips.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: [PATCH v1 1/4] dt-bindings: PCI: dwc: rockchip: Fix
+ interrupt-names issue
+Message-ID: <168728091385.3833618.8845528184695868032.robh@kernel.org>
+References: <20230616170022.76107-1-sebastian.reichel@collabora.com>
+ <20230616170022.76107-2-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=f.kardame@manjaro.org smtp.mailfrom=f.kardame@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <20230616170022.76107-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230620_100557_068171_4B8940E5 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20230620_100843_288918_FFA8070F 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,87 +83,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-
-
-On Tuesday 20 June 2023 09:19:22 (+03:00), Krzysztof Kozlowski wrote:
-
-> On 19/06/2023 20:48, Furkan Kardame wrote:
-> > Add dts for Firefly Station P2.
-> > Working IO:
-> > * eMMC
-> > * HDMI
-> > * LAN
-> > * LED
-> > * SD Card
-> > * UART
-> > * USB2
-> > * USB3
-> ...
+On Fri, 16 Jun 2023 19:00:19 +0200, Sebastian Reichel wrote:
+> The RK356x (and RK3588) have 5 ganged interrupts. For example the
+> "legacy" interrupt combines "inta/intb/intc/intd" with a register
+> providing the details.
 > 
-> > +	};
-> > +
-> > +	hdmi-con {
-> > +		compatible = "hdmi-connector";
-> > +		type = "a";
-> > +
-> > +		port {
-> > +			hdmi_con_in: endpoint {
-> > +			remote-endpoint = <&hdmi_out_con>;
+> Currently the binding is not specifying these interrupts resulting
+> in a bunch of errors for all rk356x boards using PCIe.
 > 
-> Missing indentation.
-
-I am not able to see any missing indentation in the patch. 
-I did run checkpatch and did not find any such warning.
-Please advice in detail ?
-
-
+> Fix this by specifying the interrupts and add them to the example
+> to prevent regressions.
 > 
-> ...
-> 
-> > +
-> > +	vcc3v3_lcd0_n: vcc3v3-lcd0-n-regulator {
-> > +		compatible = "regulator-fixed";
-> > +		regulator-name = "vcc3v3_lcd0_n";
-> > +		regulator-boot-on;
-> > +
-> > +		regulator-state-mem {
-> > +			regulator-off-in-suspend;
-> 
-> How do you turn this regulator off in suspend?
-
-These nodes needs to be deleted as they are not used.
-I will remove vcc3v3_lcd0_n and send a new patch.
-
-> 
-> > +		};
-> > +	};
-> > +
-> > +	vcc3v3_lcd1_n: vcc3v3-lcd1-n-regulator {
-> > +		compatible = "regulator-fixed";
-> > +		regulator-name = "vcc3v3_lcd1_n";
-> > +		regulator-boot-on;
-> > +
-> > +		regulator-state-mem {
-> > +			regulator-off-in-suspend;
-> 
-> Same question here.
-vcc3v3_lcd1_n will be removed.
-> 
-> > +		};
-> > +	};
-> > +};
-> 
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie.yaml         | 18 ++++++++++++++++++
+>  .../devicetree/bindings/pci/snps,dw-pcie.yaml  | 15 ++++++++++++++-
+>  2 files changed, 32 insertions(+), 1 deletion(-)
 > 
 
--- 
--- 
-With best regards
-Furkan Kardame
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 
 _______________________________________________
