@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C2DEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jun 2023 12:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8568EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jun 2023 13:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dXr96XR49/+m1qb90bRoXPVXwcjKw2XdrjG/u8mnCzQ=; b=rRxkJ1lwerZdiQ
-	RCSobE8JwYQqztmYQkRfl8jLc050yhunRk5i3XatEWz2UWe+s5z4U5Hga2ADT43DMLduA9S5m34K0
-	5Jq/7lhUuDnzYXBZqGY3hiNOu51xSYm+v5b4GSNj1S8Qp6JrHcac5TeoyV+fpFbqTXh2VeiAhlA7f
-	21cIXBNokXfH9MucGdoQSMANGD29ogOYpxGjOKzWbLO9mi5pnp9xk0AQ24AqPgCBZRVdbCdTxOCTI
-	NMvM2gYVVgiOWMpdLHD8WXT4QzF7PDYDUyVLUHsBZGQX83XtRUiFhY/CkwwTC89nRUxc2FEBaANzh
-	xIXCSEcUZxfywMwsBBTw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-Id:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Ygkj55iviunVJC8caccD7P1vRsKLHKgaF1gMS/MxsU=; b=GRCBL821WLWKaPRcYzqJrjxLQE
+	OeOtj6HIfZHrS7Vufqak53jDfu5ufrtZBJqu1Sf9MLL+fjSdv5v7yCVj1m5ysZLOUjOqy+BS7x8XH
+	zdZ6HFPq4XQUlpZRNkrueDycdAleauF1zJnBalg2Z74uQoo0RDgqWYDaYIHgcRiinLLPxSGRMTmqF
+	MaTOh3VxxCzQGUA6WeWIGil+n/b1ftPkhuyVZ+PSqmZQEMPrkgEmRr7Ea5UqqaR+abPo138w1H0da
+	v65nGIibmzhyXAOqDHQyimGq4mNI5VMVR0sIXRd/jl6Rx2Krm6Xxy7xI4jBQHTfI9+vOC7nzk6pMA
+	tEzw8NTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBx32-00EYru-0l;
-	Wed, 21 Jun 2023 12:34:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qBxRb-00EcZ6-0M;
+	Wed, 21 Jun 2023 13:00:19 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qBx30-00EYqx-0P
-	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Jun 2023 12:34:55 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4A08161553;
-	Wed, 21 Jun 2023 12:34:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34D08C433C8;
-	Wed, 21 Jun 2023 12:34:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1687350892;
-	bh=HUK+2Pf/1vVdz2BpYCSLWgvpypSBQV0pJcvu0NwNaBY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IefTF8yyUuBk68bb6/aMl2PZgESWD+7uHcHW86L04b1lA1NSNnPZ/VvrZEpBD62o+
-	 YulJV/OjhYm7qlccjPorHdC3ZFUPvOwyBfGdcQYaonY+uVIBSqYIY48zgPGdLHezNx
-	 XYHrLEt+aGeeyFO6KANpHhVwT+JN5FxtK0fCvXxU=
-Date: Wed, 21 Jun 2023 14:34:47 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: emma <emma.t.christy@gmail.com>
-Cc: ezequiel@vanguardiasur.com.ar, mchehab@kernel.org,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Subject: [PATCH] media: rkvdec: removed redundant blank
- line
-Message-ID: <2023062124-goldsmith-matcher-edbf@gregkh>
-References: <20230621092223.10805-1-emma.t.christy@gmail.com>
- <2023062136-drench-pasty-79a2@gregkh>
- <20230621151806.6b56f121@emma-rogzephyrusg14ga401iv>
+	id 1qBxRX-00EcXh-2g;
+	Wed, 21 Jun 2023 13:00:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1687352410;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t4MW0GvBawLQtktDB4ATGKjd0pHPqZSaP4yASsVpW/s=;
+	b=ml1R80Q1Pym5yMPXk0q9o2l3NPk4lQqYzZlZYLBJGxr5WvEF1raRg8vq4AJ/8EvPoF5sbW
+	y9i219H6i9fWYiwCDW+pYWotG+j8GfMdHslwR3AKGuCf6Sm2VZpAxdncOlyYlcW/hPJFcE
+	ACyeIjK97TGsFUADw1ojYSv6sEIONU95ENyYTefULn6BEkplOspN3e5z1rmHUUYKcBwTAu
+	WsBiPT3efLRihgM7D0TT4sninBjelsXukNE/tWKQU8qiu2vYPH1KVut/FCSS9eKUjA03q8
+	42WdymLr5ZkZyKWEywPiHtseS++sRoQn6uCLMFyn9rVg6MeeTz//2TJ1eDTiNw==
+Message-Id: <1687352320815.1257416493.3087155415@manjaro.org>
+From: Furkan Kardame <f.kardame@manjaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ heiko@sntech.de, broonie@kernel.org, deller@gmx.de, dsterba@suse.com,
+ arnd@arndb.de, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCHv4 1/2] dt-bindings: arm: rockchip: Add Firefly Station
+ P2
+Date: Wed, 21 Jun 2023 13:00:05 +0000
+In-Reply-To: <66d5a117-abc7-e147-f416-5366706b5f26@linaro.org>
+References: <66d5a117-abc7-e147-f416-5366706b5f26@linaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230621151806.6b56f121@emma-rogzephyrusg14ga401iv>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=f.kardame@manjaro.org smtp.mailfrom=f.kardame@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230621_053454_198733_39850BF8 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20230621_060016_043727_8D6B7BF0 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,41 +69,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 21, 2023 at 03:18:06PM +0300, emma wrote:
-> On Wed, 21 Jun 2023 12:51:11 +0200
-> Greg KH <gregkh@linuxfoundation.org> wrote:
-> 
-> > On Wed, Jun 21, 2023 at 12:22:23PM +0300, emma christy wrote:
-> > > Adhere to Linux kernel coding style. Removed redundant blank line.
-> > > Issue found by checkpatch.
-> > > 
-> > > Signed-off-by: emma christy <emma.t.christy@gmail.com>  
-> > 
-> > You might need to write this as "Emma Christy", right?
-> > 
-> > Also, your "Subject" line has an additional [PATCH] and "Subject:" in
-> > it somehow.
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> 
-> I am sorry for the errors, I am still new at this.
-> 
-> I did mean to sign as "Emma Christy". Should I resubmit the patch,
-> because of this?
 
-We can't accept it because of this issue, and the "Subject:" issue, so
-yes, you will need to send a v2 of this.
 
-thanks,
 
-greg k-h
+On Wednesday 21 June 2023 09:22:31 (+03:00), Krzysztof Kozlowski wrote:
+
+ > On 20/06/2023 20:47, Furkan Kardame wrote:
+ > > Station P2 is a single board computer by firefly based
+ > > on rk3568 soc
+ > > 
+ > > Signed-off-by: Furkan Kardame 
+ > > ---
+ > 
+ > This is a friendly reminder during the review process.
+ > 
+ > It looks like you received a tag and forgot to add it.
+ > 
+ > If you do not know the process, here is a short explanation:
+ > Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+ > versions. However, there's no need to repost patches *only* to add the
+ > tags. The upstream maintainer will do that for acks received on the
+ > version they apply.
+ > 
+Noted, will take care of this in the future. 
+
+ > 
+https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
+ 
+> 
+ > If a tag was not added on purpose, please state why and what changed.
+ > 
+ > Best regards,
+ > Krzysztof
+ > 
+ > 
+
+-- 
+-- 
+With best regards
+Furkan Kardame
 
 _______________________________________________
 Linux-rockchip mailing list
