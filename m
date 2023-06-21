@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4141CEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jun 2023 22:33:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6310EB64D7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jun 2023 22:33:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,65 +13,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-ID:Date:Subject:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=vK4Btp5SbmvevpNeQdtFhYcNAgLTi8jr8ibcN4olIBM=; b=IQzm6li1OhxMN+vT4BwGqqC4oq
-	+mUdqRiBgT5xRYkEvi90eFvWLaNoq4414l7/Q9qXB8fxmqn+ZIwfKUipthZI2uMQOJNSvebXsotFL
-	vLSRoen+Np6zGpRuFzbZxADrHKOyYW8YEtyEamvEcpj5teWsfo1aS2sLI5X7MFfTgxtrMvVO5iIL8
-	zlezcYcExiZGkiqSpMwnjOUT5EtgJrmN9clkVKgxtuksTyiMV5O0wkfEuIsShjwbFF+pZdJ+ie/6w
-	Pcos8YkqohuA01iNAnnZaICyoHYxg/NP9gY/nNNZl6YheG5bBG8ceMuwFra+ZGb1+4BmJRfm9HdRk
-	ASQDJc3w==;
+	bh=cyAJNdNXszA1OZlkL0CkOWM9wCHN8GQ46mivjAB+j/A=; b=UNs3ujcJQZTwrAaRLNLtTFPuKx
+	bsfZ7k2MVNp8lNDEDMWX0pFz5SajD0XCLoCMAaXZg8gDOl8qG/KFDeVvBcFnQIrFed2FbYPDBHE4o
+	QX/RnHHxJKcatRBCw2yUtvBksL0ZdETWtjkFT375NMwmYLScRzhmzS/XNKAUnt+56xddFSXQgHpGy
+	OQw/AaA/ZdK53ipqFMov5qY+9xMkZ2sw63K5tH+PqM3VGmB1xa7uhU+88uuhCCXq3w4y7N8VMN0T4
+	ZPLES9EYuSg6LCzGXWylian3OgSh3ZIdybhM+0x/b8lB20nCD/FZgk3c+/u6n75CjCxk2iC6W97cX
+	8uwiLu7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qC6OF-00FvG4-07;
-	Wed, 21 Jun 2023 22:33:27 +0000
-Received: from s.wrqvtbkv.outbound-mail.sendgrid.net ([149.72.123.24])
+	id 1qC6OT-00FvPa-2V;
+	Wed, 21 Jun 2023 22:33:41 +0000
+Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qC6OA-00FvBB-2P
+	id 1qC6OB-00FvBX-1c
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Jun 2023 22:33:24 +0000
+	Wed, 21 Jun 2023 22:33:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
 	h=from:subject:in-reply-to:references:mime-version:to:cc:
 	content-transfer-encoding:content-type:cc:content-type:from:subject:to;
-	s=s1; bh=W99jR6zQr9o9HH0LFWjkqVeyLEmhww0LQ1TODMrD+JU=;
-	b=lgYVrVqzL5xtT/wvZAyliCCJFvkwGuTcAcJfKQdzdxZC6nLMwUo9oDusU22C1uWycY8I
-	p34S3bqatApfjKJTD6B4eqk7llOn5/Xibjn/59rFvUNYJpcXcORsPCo/1q8lBzu49gqfjB
-	5PDLZaTyULgvju+D0MFe6J6rsx8c/hdQbcyDzjbI6MDJnr3FbvWFMIIF/X0/Gt/wgODH29
-	AMiYWHdlvJEungau2LBFg6UBFDagsmxX5TqNHt+ZoboL6wu8V4cakUrMw9jhJCfkqgkEj3
-	F40YikYplgk68+/3que0WX9V4L4kVAXHsY7Sm/jyaWEFZ3bd0BYwBi10ZNkv5yNA==
-Received: by filterdrecv-84b96456cb-hrvlt with SMTP id filterdrecv-84b96456cb-hrvlt-1-64937AAC-29
-        2023-06-21 22:33:16.784398642 +0000 UTC m=+3624881.780498603
+	s=s1; bh=N3/rzRG3o23sD+ICspFZR3Hn+pKFLqALOJeNlqnKgj4=;
+	b=odo6I7Jt7vJMGUnTiX003h/h8HEQt1HFOUB00tQROehfkL77cpEvY37AZmQGVQkAjjO1
+	+vExX5bMazjGKH1Kak0ROyBhP7gG4VQ4mKNf2kOPWts/wX01JJiYLvcURr4p8QRHMzLVYw
+	enwvkMPNRdMtVo4za6tO8B/xk8FvH+GsScKALqG3YwK6BTRHLkek1QpTfgR+pADi1KPTW7
+	OtcUXI9ClAufLMKUWkoD1BYAoFBYNZogpZL4+Snt4P+unpFxwqsEqTxsbH+ieJc5kc8O09
+	H4x4ZykiaZS9cfKtysqt4m0I+DQuF6WWklCLiG9IMOeCUl+TZ4KK4iU2RBcOeFQA==
+Received: by filterdrecv-84b96456cb-hq7z7 with SMTP id filterdrecv-84b96456cb-hq7z7-1-64937AAF-22
+        2023-06-21 22:33:19.939834959 +0000 UTC m=+3624888.194376328
 Received: from bionic.localdomain (unknown)
 	by geopod-ismtpd-0 (SG)
 	with ESMTP
-	id q2JBcGBES7ak8zO87bOzoQ
-	Wed, 21 Jun 2023 22:33:16.341 +0000 (UTC)
+	id ZVQYkneORxuup128izvcVw
+	Wed, 21 Jun 2023 22:33:19.491 +0000 (UTC)
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 1/5] drm/rockchip: vop: Fix reset of state in duplicate
- state crtc funcs
-Date: Wed, 21 Jun 2023 22:33:17 +0000 (UTC)
-Message-ID: <20230621223311.2239547-2-jonas@kwiboo.se>
+Subject: [PATCH v2 3/5] drm/rockchip: vop: Fix call to crtc reset helper
+Date: Wed, 21 Jun 2023 22:33:20 +0000 (UTC)
+Message-ID: <20230621223311.2239547-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230621223311.2239547-1-jonas@kwiboo.se>
 References: <20230621223311.2239547-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h4IxyhjudaBMscryW?=
- =?us-ascii?Q?yil2MxaaDxax+ugZQXodSqRHYB6mo1lanwr1jqt?=
- =?us-ascii?Q?Ei9avORGicVCxu+gicqUMciYzh1qKi0rKAAZsg3?=
- =?us-ascii?Q?6a46UzsyNeYvAelFe=2FL5MeEgpWHSX6qgeZuSn=2Fr?=
- =?us-ascii?Q?bILQujCX+o+T3Up+mu4zx=2FDdYQ0uZHRIKOJURd1?=
- =?us-ascii?Q?a0LTlj2c6hV6WggcPO0cw=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h8LrEgJzY5ktvBu14?=
+ =?us-ascii?Q?zmHPK0tdeaF=2FrED9ytrdgA=2FZcc=2FZBkGuBtyyJes?=
+ =?us-ascii?Q?jdWC3QvDOV0X9yW1R=2FVKEfNKLQZiqi09BM4YEAP?=
+ =?us-ascii?Q?+O8MhuTX8IUJxNQ1hDLN5d06OhhlyKV3DKYYg9A?=
+ =?us-ascii?Q?u2l=2FOMSP+tVShDs6Czt8AVcVqfxbTS8zTc+Gt6u?=
+ =?us-ascii?Q?LuYIn+3Z8yCSQU=2FNI2Kmw=3D=3D?=
 To: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Mark Yao
-	<markyao0591@gmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Andy Yan
-	<andy.yan@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Mark Yao <markyao0591@gmail.com>, Andy Yan <andy.yan@rock-chips.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230621_153322_922577_C06A5A98 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20230621_153323_671853_CA717809 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +86,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-struct rockchip_crtc_state members such as output_type, output_bpc and
-enable_afbc is always reset to zero in the atomic_duplicate_state crtc
-funcs.
+Allocation of crtc_state may fail in vop_crtc_reset, causing an invalid
+pointer to be passed to __drm_atomic_helper_crtc_reset.
 
-Fix this by using kmemdup on the subclass rockchip_crtc_state struct.
+Fix this by adding a NULL check of crtc_state, similar to other drivers.
 
-Fixes: 4e257d9eee23 ("drm/rockchip: get rid of rockchip_drm_crtc_mode_config")
+Fixes: 01e2eaf40c9d ("drm/rockchip: Convert to using __drm_atomic_helper_crtc_reset() for reset.")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
 v2:
-- Collect r-b tag
+- New patch
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index a530ecc4d207..60b23636a3fe 100644
+index 25c873d4ff53..23bc79064e78 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1614,7 +1614,8 @@ static struct drm_crtc_state *vop_crtc_duplicate_state(struct drm_crtc *crtc)
- 	if (WARN_ON(!crtc->state))
- 		return NULL;
+@@ -1630,7 +1630,10 @@ static void vop_crtc_reset(struct drm_crtc *crtc)
+ 	if (crtc->state)
+ 		vop_crtc_destroy_state(crtc, crtc->state);
  
--	rockchip_state = kzalloc(sizeof(*rockchip_state), GFP_KERNEL);
-+	rockchip_state = kmemdup(to_rockchip_crtc_state(crtc->state),
-+				 sizeof(*rockchip_state), GFP_KERNEL);
- 	if (!rockchip_state)
- 		return NULL;
+-	__drm_atomic_helper_crtc_reset(crtc, &crtc_state->base);
++	if (crtc_state)
++		__drm_atomic_helper_crtc_reset(crtc, &crtc_state->base);
++	else
++		__drm_atomic_helper_crtc_reset(crtc, NULL);
+ }
  
+ #ifdef CONFIG_DRM_ANALOGIX_DP
 -- 
 2.41.0
 
