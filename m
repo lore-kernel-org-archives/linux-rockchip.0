@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAED6EB64D8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jun 2023 15:27:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77C0EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jun 2023 23:13:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8XLXI9dd9unDkwuWUPMGRs+Jo+shw0OE2RQc7S3lsc8=; b=mEK6c8966oSSMF
-	ZFihiDkca3b9Mzu6936GklnEdDlSUjm+EUjkTWj3Zzk5+xmE2bF2TkOjS42NBzHo3Ahh18rncGN9i
-	0tbKjWAxpN/fd3/0l8itNIqdlDUPAjLOwEOI55gPTtNgYwUSHq2FeL1N1Sn14Ku1/AZ06MRtByflP
-	y3Jf4GWQzwg/IEmNAJYQrE2oMrjQgmP0jHRpmApD44Ivdcr+2o3uVgKZ/q8W5Nu5ZYy1sxX0hB8Xj
-	/ROJJjncQOEdnBavr+fN/9IjiLYy4JWoen7bnq/E7Le89hhHbyqAMizimBHDbeq8YOWd1zqAinYWF
-	62CueeUupNANdRxAx6Tg==;
+	List-Owner; bh=TaSXfLV0MyuCYhUezxLyV/hgIMaMOYBSvDSuFXHfPks=; b=hMje1SMzOimX19
+	CUFIvhc/QgrUjQQozYvTYpJDvFBDQYoD9lfWjDdcnDxZrGTz/CLJLAof7OJh7JuYAuLjnOMi7VQET
+	9nGtuxTqScH/hA1du9UBvW7nfVl+xyVX45va+LfbJ19vTcD8+uSR0WwRGhvFB1ba9gFjKKDgbAPRK
+	tuf8aEskCTrlKjyBLZ88JepfPkaP7nT/MI9q6OXw4XegkgDqG/EKAeUYxY0TdoeQa4fwpEv1u1JHF
+	9KFVcFGpftoxvGd3C9kGWJT+kBi6xsnKRGGXGIXJW8mbQhHijpUakkh0TrJCk9Z8EdzF8PCIZkpEx
+	wvTsMMpwhI/zeRFa2CNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCMDb-0017mW-2j;
-	Thu, 22 Jun 2023 15:27:31 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qCTU7-0021WK-0H;
+	Thu, 22 Jun 2023 23:13:03 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCMDX-0017lK-24;
-	Thu, 22 Jun 2023 15:27:28 +0000
-Received: from [IPV6:2a01:e0a:120:3210:7d72:676c:e745:a6ef] (unknown [IPv6:2a01:e0a:120:3210:7d72:676c:e745:a6ef])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9F2486606EDE;
-	Thu, 22 Jun 2023 16:27:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1687447646;
-	bh=Yz+NRZOehOEU34hZagSNPjsgeqyatJPhUhG6wIg2Iio=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V8Imr1qeQyMMtuQ6blSrhADA3yYPLUM83j3zTux9jWDQffVzlaZrPfjWcPSu8Hk3e
-	 CjET/duybztDC6v97V7rZ+VUhyRSgRjOi9iIjQj5YQMFoiKN6MnVxQNlvAJy1MHQLH
-	 n50qvwtAv2LD4c0FuoMOImVHMOMPZPnfWcGTU0rtmzhFQVdwdTEUjE93x7NkYKmBAV
-	 9qZMTQKrDqEXE1dUmcVQqVHOVnpXADp4k8NwGkLsRg8ZpcITM/OPJAPhCjJWu9K/d6
-	 XHkwcQZNRn0FF3f1bPBSQBshUdzZvevH7svbFJEKCEGB/xdZfPpm3K20Udcz5bQw4r
-	 wXEDVkApYNnqw==
-Message-ID: <6798cc82-d5dc-5603-7e7e-57ce09c09d24@collabora.com>
-Date: Thu, 22 Jun 2023 17:27:23 +0200
+	id 1qCTU3-0021Uq-2P;
+	Thu, 22 Jun 2023 23:13:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1687475579; x=1719011579;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=YF+i4k+p20bNeWeCgKkHDXbLmP2kzXmF7Q2NTsnY5cs=;
+  b=KqOQ+SgEkShL8MpEeCTGqmmj/8fuBoPjhhtt10sU01xZdsHSAd6/4ZPb
+   h5umbBaVBOkF5tmVKu9yQo6C9nTzwaU0uZ/vCp9SysHUh5kkXMObjEfoq
+   v7BTYl+Bub8IRtqjcSrzVvgUbSebEKaT1kKM0QEuN4xAglf6q8ItsWbTM
+   GYPAA0rg/Bp6jea9/3TkUVzysb3RsDOpCucElVYESwaFbergpRhpymyLB
+   D/dhAge9RvtaLtRRPuz/vX6v7Pe308uyCpvQCMAlavLZiHKvbVUgpJN5B
+   RTq7kY7U/TsAJpiBkS/bczwDuS6tRBHmS+47o42jx5SKukwu0Q3U6VMqK
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="340976511"
+X-IronPort-AV: E=Sophos;i="6.01,150,1684825200"; 
+   d="scan'208";a="340976511"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jun 2023 16:12:53 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="889261769"
+X-IronPort-AV: E=Sophos;i="6.01,150,1684825200"; 
+   d="scan'208";a="889261769"
+Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
+  by orsmga005.jf.intel.com with ESMTP; 22 Jun 2023 16:12:48 -0700
+Received: from kbuild by 783282924a45 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qCTTr-0007o7-21;
+	Thu, 22 Jun 2023 23:12:47 +0000
+Date: Fri, 23 Jun 2023 07:12:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 10/11] media: v4l2: Add DELETE_BUF ioctl
+Message-ID: <202306230742.KaUokotT-lkp@intel.com>
+References: <20230622131349.144160-11-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v3 08/11] media: verisilicon: postproc: Fix down scale
- test
-Content-Language: en-US
-To: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
- ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
- <20230622131349.144160-9-benjamin.gaignard@collabora.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20230622131349.144160-9-benjamin.gaignard@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20230622131349.144160-11-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230622_082727_820218_DC49661F 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20230622_161259_794609_40677151 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +89,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDIyLzA2LzIwMjMgw6AgMTU6MTMsIEJlbmphbWluIEdhaWduYXJkIGEgw6ljcml0wqA6Cj4g
-RG8gbm90IGFsbG93IGRvd24gc2NhbGluZyBpZiB0aGUgc291cmNlIGJ1ZmZlciByZXNvbHV0aW9u
-IGlzCj4gc21hbGxlciB0aGFuIGRlc3RpbmF0aW9uIG9uZS4KPgo+IFNpZ25lZC1vZmYtYnk6IEJl
-bmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+IC0tLQo+
-ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fcG9zdHByb2MuYyB8
-IDUgKysrKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24o
-LSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hh
-bnRyb19wb3N0cHJvYy5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50
-cm9fcG9zdHByb2MuYwo+IGluZGV4IGE2YjY3ZDBjYzY2Yy4uYTRmMmM1ZTg5MzJjIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Bvc3Rwcm9j
-LmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19wb3N0
-cHJvYy5jCj4gQEAgLTEwMyw3ICsxMDMsMTAgQEAgc3RhdGljIHZvaWQgaGFudHJvX3Bvc3Rwcm9j
-X2cxX2VuYWJsZShzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+ICAgCj4gICBzdGF0aWMgaW50IGRv
-d25fc2NhbGVfZmFjdG9yKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gICB7Cj4gLQlpZiAoY3R4
-LT5zcmNfZm10LndpZHRoID09IGN0eC0+ZHN0X2ZtdC53aWR0aCkKPiArCWlmIChjdHgtPnNyY19m
-bXQud2lkdGggPD0gY3R4LT5kc3RfZm10LndpZHRoKQo+ICsJCXJldHVybiAwOwo+ICsKPiArCWlm
-IChjdHgtPnNyY19mbXQuaGVpZ2h0IDw9IGN0eC0+ZHN0X2ZtdC5oZWlnaHQpCgpPbmUgdGVzdCB3
-aWxsIGJlIGVub3VnaC4KSSB3aWxsIGZpeCB0aGF0IGluIHY0LgoKQmVuamFtaW4KCj4gICAJCXJl
-dHVybiAwOwo+ICAgCj4gICAJcmV0dXJuIERJVl9ST1VORF9DTE9TRVNUKGN0eC0+c3JjX2ZtdC53
-aWR0aCwgY3R4LT5kc3RfZm10LndpZHRoKTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Benjamin,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.4-rc7]
+[cannot apply to next-20230622]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230622-214122
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230622131349.144160-11-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v3 10/11] media: v4l2: Add DELETE_BUF ioctl
+config: i386-buildonly-randconfig-r004-20230622 (https://download.01.org/0day-ci/archive/20230623/202306230742.KaUokotT-lkp@intel.com/config)
+compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project.git 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
+reproduce: (https://download.01.org/0day-ci/archive/20230623/202306230742.KaUokotT-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202306230742.KaUokotT-lkp@intel.com/
+
+All errors (new ones prefixed by >>, old ones prefixed by <<):
+
+>> ERROR: modpost: "vb2_core_delete_buf" [drivers/media/common/videobuf2/videobuf2-v4l2.ko] undefined!
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
