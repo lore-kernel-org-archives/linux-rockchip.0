@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2817EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jun 2023 13:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 036E4EB64D8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jun 2023 14:11:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hEhpXGQxBYRvBJhVWv90WsKXsI1vxAr182HzPR3MOZE=; b=QcEdAzqdYmjH4B
-	QiEmqB+qrE+h56kORzfgGQwU4bc/9ODBQIQJFCZYKoiPQU6grBJJUPf6fMSmlrViEqv6dyHN6E9mN
-	xFD1OSAxrbt82jXtGjKATmEacwLALWNIRytF6RpffPh+kwjplLls0teGHVFpdE7AwReb6qPs69ADi
-	O2H32g4ldhRcBTUclWVCGRhpv0oVh8iECbi3dgULJK8WB7CTpsNe/S3lHo7dT9xVp1Bvr/s9DuTgd
-	kn9ECIgrtyGW5dCbepUfsoIo/ahevxmSlEkNAAOlqWbwwWfiftutw3vCHZdHr4HkQRXh6vEd0TCVB
-	zneoY7X+Sxf3n47WyMGw==;
+	List-Owner; bh=BppOcplyO1AE5l+VgbSuF9dUHWMdrLbXd/V+aopTYA8=; b=bVoeqidbQxlRVi
+	cc9oOT0P09GyDoKbG1RkFXh64jyXY4sAPbWWerlABqH4PluWJTm6nmLLv593W3fnnjILNNzVSLSt0
+	8ZPXgyjBqld7k+Q2Qp4QoxM6NbeyDhusRudW0nRdXd9INDXdNYTqkOWinSyd/tKMYvHv6B0QnrsQd
+	oZottYC5lVE6975VEm+LFCxPjbKfJoTZd5/dHAwVzVQ5Unlxt+y+WfxmvZkyYWokYsodgSl5RdRo0
+	SEFqfBbmR2+lzNPTT9oHOEL0ksmnAbvwRod5cKRSPjQPhLA9Cc6W+nexVO5sFFtEA10att4joh5FO
+	ogWvjRy4trSWbOCYxzGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCKni-000s0o-25;
-	Thu, 22 Jun 2023 13:56:42 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1qCL2B-000uuf-2l;
+	Thu, 22 Jun 2023 14:11:39 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCKne-000rxM-01
+	id 1qCL26-000uqO-11
 	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Jun 2023 13:56:40 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-311183ef595so7208790f8f.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Jun 2023 06:56:36 -0700 (PDT)
+	Thu, 22 Jun 2023 14:11:36 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3fa7512e599so5684995e9.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 22 Jun 2023 07:11:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687442195; x=1690034195;
+        d=linaro.org; s=google; t=1687443086; x=1690035086;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=QEW2WXBte3jN1fLJ211gvIuJSeoOteLGjUnX78P98k4=;
-        b=rrCXA0HYW+NRaxuK0LzkBkWHaS32roNXnVTcSlzHkz0PKFiRzi6Lf0a2kxT5sw4sbW
-         jjMVv3gbRGX7y73/rTeAxgcyKJRaEjx8hgeXVmr1KOVjDxufD90egWATGqaHhCdg5lyL
-         CCWBPoNFR/6czRV2XsuleAFb6zUW8evSN0nKHKSOPM/86ngFyJnI//xhzazH6g+ufdey
-         iAvpeJ61KZ0V6PMuriG406hq6r4Jp2DjThmRQnPoG+2mD5V8pIHj1OSfFc1yhmt6x4Iw
-         hJJY0N9IrNvCEy31Uv4j6O7vgmIRqgPp5toYxfIEQfRxNvrKDPf6N2IWfmuS9pLtFoy0
-         IMUg==
+        bh=GHxJuqmuhPWFpQhIFC68lKcmCkInE/kiaYAhaHcn0+Y=;
+        b=gEz/PAQ1qIP5WZun0LdTuL2gGMzh3DxKsvzmJ6Q0I9nak7WYgFwIua8o4b7DyFjInu
+         SH+yb8hYWg8DPwV1viEU6ZlC5W12dzJ0cpS2WhYFT+HXtgViha0pmeDj9pynoswZZOTF
+         P/sVO4e/j0gRgSpCoWweryl6LRW3mzxc+ShAtTe6cVPWa+CAxgZSyLrflRN7eA/KAapm
+         ub1C0L2rIcRzkgBqnTbcW75iwVmmT8HRAKNXuHDGEi4rT3fGAi2MDTpm1XQbWGrx9Gzd
+         RmYbgNRvkmPX0g4ourdc60JrhU8l+mRk/wFWm+1F6nQcKJZEAzhKd8wx7xJunOOfg0nk
+         9TzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687442195; x=1690034195;
+        d=1e100.net; s=20221208; t=1687443086; x=1690035086;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QEW2WXBte3jN1fLJ211gvIuJSeoOteLGjUnX78P98k4=;
-        b=RjUhiQZQewapCbPVidiK/DOPCCGC9xNVZY+00pOhi9vjDbHxg6nEibVMVZa8nxVUTA
-         vOIEmHalkzbD2gYQvoG2xciQ7kZfiTcrt2PIUbnB1gJMn+TxPKntqbD1rBEXB58RbJ6e
-         gn4m3V5K+1onEkIIVoIeD0cyJ/vqnz3ucxD9li2oRIRVsE4VNRytLzZ4iz7oNhf63QgI
-         U3+yTS7q0c6kqf15RFhiCTZEseIcvQob9odiRn1C3G8F5vIyDtl1WTPiNF9Gb9ow7ubQ
-         klbHOmmBp8ly1SBqVKIInA6Bki4cWh9aQZuunvBF3ovp0jrG9KWcIcgBIUfpz/2S1s8N
-         6RFQ==
-X-Gm-Message-State: AC+VfDzlUgqw1RW3y31YdcrHQLYhNdjPj75SZll1l3zdCgN0Wjs94yrv
-	by50vV0R+8i8YuHzGaJIUahAnQ==
-X-Google-Smtp-Source: ACHHUZ6a6EZPyQbiw2QFhMNDMLiHUFcNZTWVMQXmY1brW9zlZbdXXamxNjQ4bnHgoRKMXiHVkCeg6Q==
-X-Received: by 2002:adf:ec45:0:b0:30f:af06:7320 with SMTP id w5-20020adfec45000000b0030faf067320mr1923670wrn.23.1687442195120;
-        Thu, 22 Jun 2023 06:56:35 -0700 (PDT)
+        bh=GHxJuqmuhPWFpQhIFC68lKcmCkInE/kiaYAhaHcn0+Y=;
+        b=YTmXLEEQCtTHJ+IfAaRUnEx09QttNehOf35iaoMw6ZyIYdSPzjEmT07BZYuVCl0PTj
+         iuVz/N4ZYeJczzXJ0x8wMoOZJjS6GGCAALxx825UBYQ7AEeEofn8ERCunzxwUQW83hEn
+         q4mGjo7UX1pyZVGbqzUKvoncrPKPM60I16K9Lhrvy/7GwVCa3lTGznWI2FqB6KKKbxCs
+         cKpNLm/p4BZOKRO2n+OrL5LjxPJDKIY9GnhB/N7ZaZ8XABE1fPyRlCWyRDVejTGFls72
+         s6EXvfwkoPCiZN6chl2Jg90qUCJBzQ3zHvMpGwTPhNHXGuOc3JROMnhUg+MU6xmsNdlk
+         YIyA==
+X-Gm-Message-State: AC+VfDwXAijS/qJ3gYspbG39VI5M54myMrdwUJoZJBYtmo6VYlBEVISV
+	nCBxNPVC6Cs6jrA5gctNmpqS+w==
+X-Google-Smtp-Source: ACHHUZ6BmQp3My+dLgyfXTj9FadTnh4ZdU89bg6m7H4+QQzmHulg0AjgY/idmg/TybIPzxG+o/8epA==
+X-Received: by 2002:a7b:c3d3:0:b0:3f9:b7cf:262f with SMTP id t19-20020a7bc3d3000000b003f9b7cf262fmr6889086wmj.4.1687443086247;
+        Thu, 22 Jun 2023 07:11:26 -0700 (PDT)
 Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id s3-20020a7bc383000000b003f6132f95e6sm18924956wmj.35.2023.06.22.06.56.32
+        by smtp.gmail.com with ESMTPSA id p24-20020a1c7418000000b003f9c859894esm3753202wmc.7.2023.06.22.07.11.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Jun 2023 06:56:33 -0700 (PDT)
-Date: Thu, 22 Jun 2023 16:56:29 +0300
+        Thu, 22 Jun 2023 07:11:24 -0700 (PDT)
+Date: Thu, 22 Jun 2023 17:11:19 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
@@ -75,15 +75,15 @@ Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
 	kernel@collabora.com
 Subject: Re: [PATCH v3 03/11] media: videobuf2: Remove VB2_MAX_FRAME limit on
  buffer storage
-Message-ID: <1d9fea5b-5c74-4fc2-9287-71cd68adbda1@kadam.mountain>
+Message-ID: <bddd6cb7-cd72-4fb5-8d4a-d02cb9c46dce@kadam.mountain>
 References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
  <20230622131349.144160-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20230622131349.144160-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230622_065638_098686_90CD2DBC 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20230622_071134_361610_1C6EC586 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,27 +114,13 @@ On Thu, Jun 22, 2023 at 03:13:41PM +0200, Benjamin Gaignard wrote:
 >  	num_buffers = min_t(unsigned int, num_buffers,
 > -			    VB2_MAX_FRAME - q->num_buffers);
 > +			    UINT_MAX - q->num_buffers);
-
-The UINT_MAX limit adds a level of danger.  It would be safer to do what
-the vfs layer does for MAX_RW_COUNT and use "INT_MAX - PAGE_SIZE".  That
-way you can take size + sizeof() and it's only very rarely going to turn
-negative.  Or at least just INT_MAX.  I would keep the VB2_MAX_FRAME and
-define it as:
-
-#define VB2_MAX_FRAME (INT_MAX & PAGE_MASK)  /* The mask prevents 85% of integer overflows */
-
 >  
 >  	for (buffer = 0; buffer < num_buffers; ++buffer) {
 >  		/* Allocate vb2 buffer structures */
-> @@ -858,9 +858,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-> +	WARN_ON(q->min_buffers_needed > UINT_MAX);
 
-This will trigger a static checker warning because the condition is
-impossible.
+Ah...  Here's one of the integer overflow bugs I was talking about.  The
+__vb2_queue_alloc() function returns an int so if num_buffers goes over
+INT_MAX we are hosed.
 
 regards,
 dan carpenter
