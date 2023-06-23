@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B68AEB64DD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jun 2023 07:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB1DEB64D7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jun 2023 15:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ERYM8KSHBv4s99CgXhkptqx7JjR+zfaEX4EI1g5V0DA=; b=hTMiqQ4dLYEiT/
-	0EDceig/ZGk0TvM1QeWykqYchZpc4DpcOhn1r50Gq6PEtACZ0lgrN5DEzWfYLgIyeI+Z6EJCRPUbw
-	YBSg4EaevGHymAO5SKkUdmg1PH62AKgZsoC1WFc1zFg1WmXl47wT1IT7Ql2/fhxVs0XTRbTxN4Tbm
-	Oj7HSQ/pHZwfvoMg7xItumEzguAfmUh+xlBW12+FKfgoWEws3X9NOJ36nIp0tx0iCxAKad0wjm+QP
-	0usTiZrksjsRLlsCTQAJHfCZO9jp1Uqkk4CoCoU+sZ3kS1tB6dfl92NpfioxLj3XLRKI38vtkr/Na
-	eX1oqlUBdh8UpJpZ8vMA==;
+	List-Owner; bh=f1EwvPZgZIIfh+DJ7JLGAIjnd7ELlPbv2N5BZCvFNVI=; b=cIG1eRhuszOGsC
+	d8u1CQpkg2eSdgoJbBFgkTRmNpL4dMeC8+LHZL6yiPJ3pjO/rlfJhgSBbs8oTU/Z94XWbZnSChiO6
+	6Ndt9QRfD/rkhcJS39VQXcXqvE7ueAC7dg5y4LLgUbDaWVz8A5bG5wKYnuxUJsUL3bnX5bOyZyaMN
+	s2NFzXRKvnY3pfFLsvDnyIORDnWdRhhqO1Meur16qh26b42SJNI0z3lO4msS461wjn1f+gr9SUn+J
+	r0c5hoEfWliLOjZg4jl1aRGLaW2P0fGl91J25d9w+M4L8urE5Az/Wvrtj6IdsElDYk102Ms2s9wam
+	2Z19Cq/VeCJTSQ9ymGew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCba2-002qFw-1b;
-	Fri, 23 Jun 2023 07:51:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qCiRU-003tgi-0a;
+	Fri, 23 Jun 2023 15:11:20 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCbZy-002q9r-1e;
-	Fri, 23 Jun 2023 07:51:39 +0000
-Received: from [IPV6:2a01:e0a:120:3210:4849:8b52:4bff:674] (unknown [IPv6:2a01:e0a:120:3210:4849:8b52:4bff:674])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EB293660712B;
-	Fri, 23 Jun 2023 08:51:31 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1687506692;
-	bh=IXSG7zZWbP+AwYQOLnWcF9xBZeJYynGpMRfo2WLgtCg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=opJS58tLdQU7YgNFJUmqNjtvNi91rAm2bjUy5XSJTziw0Kzbhy0CJ0UUak/xI7jgL
-	 vx4+DOqhd4m2VeH5sfQokwGGD0g6ZmWRimqlB7E+W+uPcKyTPWaekM7ENeW/FT6PV4
-	 VFIQejfKUdiTG98Hi5h+j1pc3nPu1gW7ynHnEQ8bXu5/MAP6RkFjaoRDX08emZ3sEw
-	 Vu8z8i1m5gQ9bpjSIh6QvkNJS6E8nWRkeGXOe1Dxegk+Xq+fkyHdtozWTz7CfS+HPL
-	 QCftKOh1hkTTKqzuc+w9+1m53HCjE+sXCTihxVYdk9QnB35uWZW57tDSvK3DFJOb6F
-	 BVFs/E+zgUpGQ==
-Message-ID: <fee4a434-a4b6-9ecc-1188-4638a3cd6af8@collabora.com>
-Date: Fri, 23 Jun 2023 09:51:29 +0200
+	id 1qCiRQ-003tf6-1X;
+	Fri, 23 Jun 2023 15:11:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1687533076; x=1719069076;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Rx5rxTjZywE9SSTSseHg/Sc6c4OWkUAeUcWp+yPZTQ4=;
+  b=XGZV1ryVldfa94I0CUmuZKpbiQKE2brizHK4jH2gDf3Wwc++T8QnLqDq
+   Jx7ny84ZjTORC0tlwhwRZzmZer+zJM1Bl3VqBSlm3QeVXRlnLAL0dok35
+   gWKHzL5y24hsFZx6QWmuuPXC0TsDcW0RqCMMoVBnuKE3iVx1eIAOgvtzz
+   MzkICYIwYaRqGG5J0UmXwjpAlMlT7twC21ngP+dlDkKRqEs8fU/Q2PNQc
+   bQXg9XmP6ghpcHI+Diawz9ilEkAbwwnxydR10HjxYl27asvb0x5VtA+YK
+   y3M6/MYSaLh1jvxCXsktBeKZy493bMLXV7SkYZff5GFew9vag1xHSIRNE
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="345540974"
+X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; 
+   d="scan'208";a="345540974"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2023 08:11:15 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="889506053"
+X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; 
+   d="scan'208";a="889506053"
+Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
+  by orsmga005.jf.intel.com with ESMTP; 23 Jun 2023 08:11:11 -0700
+Received: from kbuild by 783282924a45 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qCiRK-0008Lr-15;
+	Fri, 23 Jun 2023 15:11:10 +0000
+Date: Fri, 23 Jun 2023 23:10:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array
+ through helper functions
+Message-ID: <202306232218.dOcWboPB-lkp@intel.com>
+References: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v3 03/11] media: videobuf2: Remove VB2_MAX_FRAME limit on
- buffer storage
-Content-Language: en-US
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
- ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
- <20230622131349.144160-4-benjamin.gaignard@collabora.com>
- <bddd6cb7-cd72-4fb5-8d4a-d02cb9c46dce@kadam.mountain>
- <39aff680-316a-7382-c93b-d9ca61c389e9@collabora.com>
- <f21d6fce-155c-28f0-fdea-e9264ba1f7ba@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <f21d6fce-155c-28f0-fdea-e9264ba1f7ba@xs4all.nl>
+Content-Disposition: inline
+In-Reply-To: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230623_005138_676395_08EAFC51 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20230623_081116_617501_7D90C593 
+X-CRM114-Status: GOOD (  14.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +88,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDIzLzA2LzIwMjMgw6AgMDk6MDIsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDIy
-LzA2LzIwMjMgMTY6MTMsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+PiBMZSAyMi8wNi8yMDIz
-IMOgIDE2OjExLCBEYW4gQ2FycGVudGVyIGEgw6ljcml0wqA6Cj4+PiBPbiBUaHUsIEp1biAyMiwg
-MjAyMyBhdCAwMzoxMzo0MVBNICswMjAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4+PiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3Jl
-LmMgYi9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+Pj4+
-IGluZGV4IGYxZmY3YWYzNGE5Zi4uODZlMWU5MjZmYTQ1IDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZl
-cnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jCj4+Pj4gKysrIGIvZHJp
-dmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMKPj4+PiBAQCAtNDU1
-LDkgKzQ1NSw5IEBAIHN0YXRpYyBpbnQgX192YjJfcXVldWVfYWxsb2Moc3RydWN0IHZiMl9xdWV1
-ZSAqcSwgZW51bSB2YjJfbWVtb3J5IG1lbW9yeSwKPj4+PiAgwqDCoMKgwqDCoCBzdHJ1Y3QgdmIy
-X2J1ZmZlciAqdmI7Cj4+Pj4gIMKgwqDCoMKgwqAgaW50IHJldDsKPj4+PiAgwqAgLcKgwqDCoCAv
-KiBFbnN1cmUgdGhhdCBxLT5udW1fYnVmZmVycytudW1fYnVmZmVycyBpcyBiZWxvdyBWQjJfTUFY
-X0ZSQU1FICovCj4+Pj4gK8KgwqDCoCAvKiBFbnN1cmUgdGhhdCBxLT5udW1fYnVmZmVycyArIG51
-bV9idWZmZXJzIGlzIFVJTlRfTUFYICovCj4+Pj4gIMKgwqDCoMKgwqAgbnVtX2J1ZmZlcnMgPSBt
-aW5fdCh1bnNpZ25lZCBpbnQsIG51bV9idWZmZXJzLAo+Pj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgVkIyX01BWF9GUkFNRSAtIHEtPm51bV9idWZmZXJzKTsKPj4+PiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFVJTlRfTUFYIC0gcS0+bnVtX2J1ZmZlcnMpOwo+Pj4+
-ICDCoCDCoMKgwqDCoMKgIGZvciAoYnVmZmVyID0gMDsgYnVmZmVyIDwgbnVtX2J1ZmZlcnM7ICsr
-YnVmZmVyKSB7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBBbGxvY2F0ZSB2YjIgYnVmZmVy
-IHN0cnVjdHVyZXMgKi8KPj4+IEFoLi4uwqAgSGVyZSdzIG9uZSBvZiB0aGUgaW50ZWdlciBvdmVy
-ZmxvdyBidWdzIEkgd2FzIHRhbGtpbmcgYWJvdXQuwqAgVGhlCj4+PiBfX3ZiMl9xdWV1ZV9hbGxv
-YygpIGZ1bmN0aW9uIHJldHVybnMgYW4gaW50IHNvIGlmIG51bV9idWZmZXJzIGdvZXMgb3Zlcgo+
-Pj4gSU5UX01BWCB3ZSBhcmUgaG9zZWQuCj4+IEkgd2lsbCBsaW1pdCBpdCB0bzoKPj4gI2RlZmlu
-ZSBWQjJfUVVFVUVfTUFYX0JVRkZFUlPCoCAoSU5UX01BWCAmIFBBR0VfTUFTSynCoCAvKiBUaGUg
-bWFzayBwcmV2ZW50cyA4NSUgb2YgaW50ZWdlciBvdmVyZmxvd3MgKi8KPj4gYXMgeW91IGhhdmUg
-c3VnZ2VzdCBpdC4KPiBJTUhPIElOVF9NQVggaXMgd2F5IG92ZXJraWxsLiBIb3cgYWJvdXQgKDFV
-IDw8IDIwKT8gSSB3b3VsZCBsaWtlIHNvbWUgc29ydCBvZgo+IHNhbml0eSBjaGVjayBoZXJlLiAx
-MDQ4NTc2IGJ1ZmZlcnMgb2YgNjQweDQ4MCBhbmQgNCBieXRlcyBwZXIgcGl4ZWwgaXMgMS4yIFRC
-LgoKSSB3aWxsIGdvIGZvciAoMVUgPDwgMjApIGluIG5leHQgdmVyc2lvbi4KClJlZ2FyZHMsCkJl
-bmphbWluCgo+Cj4gU2luY2UgYSBUQiBvZiBtZW1vcnkgaXMgZG9hYmxlIHRoZXNlIGRheXMsIEkg
-dGhpbmsgdGhpcyBpcyBhIHJlYXNvbmFibGUKPiB2YWx1ZSBmb3IgTUFYX0JVRkZFUlMgd2l0aG91
-dCBhbGxvd2luZyBqdXN0IGFueXRoaW5nLgo+Cj4gQW4gYWx0ZXJuYXRpdmUgaXMgdG8gbWFrZSB0
-aGlzIGEga2VybmVsIGNvbmZpZy4KPgo+IFJlZ2FyZHMsCj4KPiAJSGFucwo+Cj4+IFRoYXQgd2ls
-bCBiZSBpbiB2ZXJzaW9uIDQuCj4+Cj4+IFRoYW5rcywKPj4gQmVuamFtaW4KPj4KPj4+IHJlZ2Fy
-ZHMsCj4+PiBkYW4gY2FycGVudGVyCj4+PgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Benjamin,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.4-rc7 next-20230623]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230622-214122
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230622131349.144160-2-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array through helper functions
+config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20230623/202306232218.dOcWboPB-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20230623/202306232218.dOcWboPB-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202306232218.dOcWboPB-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/staging/media/atomisp/pci/atomisp_ioctl.c: In function 'atomisp_dqbuf_wrapper':
+>> drivers/staging/media/atomisp/pci/atomisp_ioctl.c:1080:33: error: incompatible type for argument 1 of 'vb2_get_buffer'
+    1080 |         vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+         |                             ~~~~^~~~~~~~~~
+         |                                 |
+         |                                 struct vb2_queue
+   In file included from include/media/videobuf2-v4l2.h:16,
+                    from drivers/staging/media/atomisp//pci/ia_css_frame_public.h:23,
+                    from drivers/staging/media/atomisp/pci/sh_css_legacy.h:22,
+                    from drivers/staging/media/atomisp/pci/atomisp_internal.h:34,
+                    from drivers/staging/media/atomisp/pci/atomisp_cmd.h:30,
+                    from drivers/staging/media/atomisp/pci/atomisp_ioctl.c:27:
+   include/media/videobuf2-core.h:1239:67: note: expected 'struct vb2_queue *' but argument is of type 'struct vb2_queue'
+    1239 | static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+         |                                                 ~~~~~~~~~~~~~~~~~~^
+
+
+vim +/vb2_get_buffer +1080 drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+
+  1065	
+  1066	static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer *buf)
+  1067	{
+  1068		struct video_device *vdev = video_devdata(file);
+  1069		struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
+  1070		struct atomisp_sub_device *asd = pipe->asd;
+  1071		struct atomisp_device *isp = video_get_drvdata(vdev);
+  1072		struct ia_css_frame *frame;
+  1073		struct vb2_buffer *vb;
+  1074		int ret;
+  1075	
+  1076		ret = vb2_ioctl_dqbuf(file, fh, buf);
+  1077		if (ret)
+  1078			return ret;
+  1079	
+> 1080		vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+  1081		frame = vb_to_frame(vb);
+  1082	
+  1083		buf->reserved = asd->frame_status[buf->index];
+  1084	
+  1085		/*
+  1086		 * Hack:
+  1087		 * Currently frame_status in the enum type which takes no more lower
+  1088		 * 8 bit.
+  1089		 * use bit[31:16] for exp_id as it is only in the range of 1~255
+  1090		 */
+  1091		buf->reserved &= 0x0000ffff;
+  1092		if (!(buf->flags & V4L2_BUF_FLAG_ERROR))
+  1093			buf->reserved |= frame->exp_id;
+  1094		buf->reserved2 = pipe->frame_config_id[buf->index];
+  1095	
+  1096		dev_dbg(isp->dev,
+  1097			"dqbuf buffer %d (%s) with exp_id %d, isp_config_id %d\n",
+  1098			buf->index, vdev->name, buf->reserved >> 16, buf->reserved2);
+  1099		return 0;
+  1100	}
+  1101	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
