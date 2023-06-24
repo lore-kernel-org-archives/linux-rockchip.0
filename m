@@ -4,79 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB1DEB64D7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jun 2023 15:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FC33EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jun 2023 14:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f1EwvPZgZIIfh+DJ7JLGAIjnd7ELlPbv2N5BZCvFNVI=; b=cIG1eRhuszOGsC
-	d8u1CQpkg2eSdgoJbBFgkTRmNpL4dMeC8+LHZL6yiPJ3pjO/rlfJhgSBbs8oTU/Z94XWbZnSChiO6
-	6Ndt9QRfD/rkhcJS39VQXcXqvE7ueAC7dg5y4LLgUbDaWVz8A5bG5wKYnuxUJsUL3bnX5bOyZyaMN
-	s2NFzXRKvnY3pfFLsvDnyIORDnWdRhhqO1Meur16qh26b42SJNI0z3lO4msS461wjn1f+gr9SUn+J
-	r0c5hoEfWliLOjZg4jl1aRGLaW2P0fGl91J25d9w+M4L8urE5Az/Wvrtj6IdsElDYk102Ms2s9wam
-	2Z19Cq/VeCJTSQ9ymGew==;
+	List-Owner; bh=Krroo8SDLI7eM5Uyxk8c3sAAlPY8ZDbjZDNIQ2VoQkw=; b=p5Ykxq+ajkIXbV
+	RMKbQPbSwpcJ6DQWJ6coJxyyl+rGj6JD+HF+ZKTGyo95iitPy48kIjE2HqfCUf8ysp0v8gx5G1Uzy
+	VgkNSvHl2+qqDBv52MChoLXrQhk5CwXSnEEwU9LSiAA3I/P754c29c8K5m8UQVy9G9U3xXkE/Asb6
+	Vfzi1lGBUaK+a8xGfWK/dyxqso7QqWIsTZRYDFtK7/Av820riMZ7f8KI6szB3W/NSKZvIIEnbtd7k
+	DMQnu79ElbbxCW1CWWF98m+mo3LTGvjacLDwnQ3EKNXK12HH4SlwPGwjdfvY7EORjuA8X7hrlf/4f
+	3bmXDrFWqF+wSaZiyPJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCiRU-003tgi-0a;
-	Fri, 23 Jun 2023 15:11:20 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1qD47M-00665x-1k;
+	Sat, 24 Jun 2023 14:20:00 +0000
+Received: from mail-pg1-f171.google.com ([209.85.215.171])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qCiRQ-003tf6-1X;
-	Fri, 23 Jun 2023 15:11:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1687533076; x=1719069076;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Rx5rxTjZywE9SSTSseHg/Sc6c4OWkUAeUcWp+yPZTQ4=;
-  b=XGZV1ryVldfa94I0CUmuZKpbiQKE2brizHK4jH2gDf3Wwc++T8QnLqDq
-   Jx7ny84ZjTORC0tlwhwRZzmZer+zJM1Bl3VqBSlm3QeVXRlnLAL0dok35
-   gWKHzL5y24hsFZx6QWmuuPXC0TsDcW0RqCMMoVBnuKE3iVx1eIAOgvtzz
-   MzkICYIwYaRqGG5J0UmXwjpAlMlT7twC21ngP+dlDkKRqEs8fU/Q2PNQc
-   bQXg9XmP6ghpcHI+Diawz9ilEkAbwwnxydR10HjxYl27asvb0x5VtA+YK
-   y3M6/MYSaLh1jvxCXsktBeKZy493bMLXV7SkYZff5GFew9vag1xHSIRNE
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="345540974"
-X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; 
-   d="scan'208";a="345540974"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2023 08:11:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="889506053"
-X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; 
-   d="scan'208";a="889506053"
-Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
-  by orsmga005.jf.intel.com with ESMTP; 23 Jun 2023 08:11:11 -0700
-Received: from kbuild by 783282924a45 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qCiRK-0008Lr-15;
-	Fri, 23 Jun 2023 15:11:10 +0000
-Date: Fri, 23 Jun 2023 23:10:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
-	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array
- through helper functions
-Message-ID: <202306232218.dOcWboPB-lkp@intel.com>
-References: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
+	id 1qD47H-00664w-2e;
+	Sat, 24 Jun 2023 14:19:57 +0000
+Received: by mail-pg1-f171.google.com with SMTP id 41be03b00d2f7-53fbf2c42bfso1396326a12.3;
+        Sat, 24 Jun 2023 07:19:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687616394; x=1690208394;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4Lt8rVZcLBBLvWmzWUEEsEG7voRn3Ez10TeZpg/RjPk=;
+        b=h/i3alZKneQ0EAXMV2x0YaLQiK8G6pzIXZoaTYp1Lc/x94le9OQQEM9FdnE8Bo2tQW
+         xme+/DXSQWw243IiP3WRlEJ/Cy67rZFCYj89NCCmsNjzyvvvPqLnitWYne7gKs5IyuZc
+         1ma6hfXodx5tVew5Urxa3DwgEaVp6KBqBr1Brcfi7nWkuoRh94DEaoPDbLqJe/XsMT3B
+         WSN9WNhAGDHbGKqqnjpLp1M3JfbUB1OgkxtYcSOf1Xceuwj4N58C+uhloc47hkCWYW3m
+         B/t344+KUC0mggXxZsIVB+rcTn5CJ0rX8EFdw3heHrdNv4BbE7xxs/pCRPF7w/IvjdLE
+         iNQw==
+X-Gm-Message-State: AC+VfDx9rVTfSgKpl0XaNiiwNAkOtY7HOQF6uSvTCabkAE4v0K5sMO+W
+	1i9X13sC+8hAQ5tFWs9acuc=
+X-Google-Smtp-Source: ACHHUZ7V4ur+WjVdxiJp9SMnFICVdY4GzXniERNA4mlZ5oQMqFI4aBU4506d4ioclwCaJARbESzQrw==
+X-Received: by 2002:a17:902:c44c:b0:1b0:2d08:eb51 with SMTP id m12-20020a170902c44c00b001b02d08eb51mr1857911plm.12.1687616394388;
+        Sat, 24 Jun 2023 07:19:54 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id bg6-20020a1709028e8600b001b3d0aff88fsm1296336plb.109.2023.06.24.07.19.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 24 Jun 2023 07:19:53 -0700 (PDT)
+Date: Sat, 24 Jun 2023 23:19:52 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Joyce Ooi <joyce.ooi@intel.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tom Joseph <tjoseph@cadence.com>, Shawn Guo <shawn.guo@linaro.org>,
+	Rahul Tanwar <rtanwar@maxlinear.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+	Vidya Sagar <vidyas@nvidia.com>, Jisheng Zhang <jszhang@kernel.org>,
+	Miaoqian Lin <linmq006@gmail.com>, Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Toan Le <toan@os.amperecomputing.com>,
+	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	linux-rpi-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
+ void
+Message-ID: <20230624141952.GB2636347@rocinante>
+References: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230321193208.366561-1-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230623_081116_617501_7D90C593 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20230624_071955_877190_2E286AFF 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,91 +111,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+Hello,
 
-kernel test robot noticed the following build errors:
+> this series adapts the platform drivers below drivers/pci to use the
+> .remove_new() callback. Compared to the traditional .remove() callback
+> .remove_new() returns no value. This is a good thing because the driver core
+> doesn't (and cannot) cope for errors during remove. The only effect of a
+> non-zero return value in .remove() is that the driver core emits a warning. The
+> device is removed anyhow and an early return from .remove() usually yields a
+> resource leak.
+> 
+> By changing the remove callback to return void driver authors cannot
+> reasonably assume any more that there is some kind of cleanup later.
+> 
+> All drivers were easy to convert as they all returned zero in their
+> remove callback. Only for iproc the conversion wasn't trivial, the other
+> were converted using coccinelle.
+> 
+> There are no interdependencies between these patches. So even if there
+> are some concerns for individual patches, I ask you to apply the
+> remaining set. Then I only have to care for the review feedback of the
+> refused patches. (Having said that I don't expect any serious objection,
+> just things like squashing or separating patches, or maybe I picked a
+> wrong subject prefix.)
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.4-rc7 next-20230623]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Applied to controller/remove-void-callbacks, thank you!
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230622-214122
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20230622131349.144160-2-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array through helper functions
-config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20230623/202306232218.dOcWboPB-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce: (https://download.01.org/0day-ci/archive/20230623/202306232218.dOcWboPB-lkp@intel.com/reproduce)
+[01/15] PCI: aardvark: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/b11c76db97e7
+[02/15] PCI: altera: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/3a610560aa4f
+[03/15] PCI: altera-msi: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/60d03f70455c
+[04/15] PCI: brcmstb: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/b169c576ad0c
+[05/15] PCI: j721e: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/c86f4bd6008e
+[06/15] PCI: dwc: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/221879c98698
+[07/15] PCI: hisi-error: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/9a285fbbb591
+[08/15] PCI: iproc: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/6f1c0a046048
+[09/15] PCI: mediatek: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/5e0005409427
+[10/15] PCI: mediatek-gen3: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/22626c46bb32
+[11/15] PCI: mt7621: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/8c47ac2a66c4
+[12/15] PCI: mvebu: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/4c3bc1b41b8f
+[13/15] PCI: rockchip-host: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/2998efcd8e73
+[14/15] PCI: tegra: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/c7fd95cda648
+[15/15] PCI: xgene-msi: Convert to platform remove callback returning void
+        https://git.kernel.org/pci/pci/c/afbb9130d2bf
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202306232218.dOcWboPB-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/staging/media/atomisp/pci/atomisp_ioctl.c: In function 'atomisp_dqbuf_wrapper':
->> drivers/staging/media/atomisp/pci/atomisp_ioctl.c:1080:33: error: incompatible type for argument 1 of 'vb2_get_buffer'
-    1080 |         vb = vb2_get_buffer(pipe->vb_queue, buf->index);
-         |                             ~~~~^~~~~~~~~~
-         |                                 |
-         |                                 struct vb2_queue
-   In file included from include/media/videobuf2-v4l2.h:16,
-                    from drivers/staging/media/atomisp//pci/ia_css_frame_public.h:23,
-                    from drivers/staging/media/atomisp/pci/sh_css_legacy.h:22,
-                    from drivers/staging/media/atomisp/pci/atomisp_internal.h:34,
-                    from drivers/staging/media/atomisp/pci/atomisp_cmd.h:30,
-                    from drivers/staging/media/atomisp/pci/atomisp_ioctl.c:27:
-   include/media/videobuf2-core.h:1239:67: note: expected 'struct vb2_queue *' but argument is of type 'struct vb2_queue'
-    1239 | static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
-         |                                                 ~~~~~~~~~~~~~~~~~~^
-
-
-vim +/vb2_get_buffer +1080 drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-
-  1065	
-  1066	static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer *buf)
-  1067	{
-  1068		struct video_device *vdev = video_devdata(file);
-  1069		struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
-  1070		struct atomisp_sub_device *asd = pipe->asd;
-  1071		struct atomisp_device *isp = video_get_drvdata(vdev);
-  1072		struct ia_css_frame *frame;
-  1073		struct vb2_buffer *vb;
-  1074		int ret;
-  1075	
-  1076		ret = vb2_ioctl_dqbuf(file, fh, buf);
-  1077		if (ret)
-  1078			return ret;
-  1079	
-> 1080		vb = vb2_get_buffer(pipe->vb_queue, buf->index);
-  1081		frame = vb_to_frame(vb);
-  1082	
-  1083		buf->reserved = asd->frame_status[buf->index];
-  1084	
-  1085		/*
-  1086		 * Hack:
-  1087		 * Currently frame_status in the enum type which takes no more lower
-  1088		 * 8 bit.
-  1089		 * use bit[31:16] for exp_id as it is only in the range of 1~255
-  1090		 */
-  1091		buf->reserved &= 0x0000ffff;
-  1092		if (!(buf->flags & V4L2_BUF_FLAG_ERROR))
-  1093			buf->reserved |= frame->exp_id;
-  1094		buf->reserved2 = pipe->frame_config_id[buf->index];
-  1095	
-  1096		dev_dbg(isp->dev,
-  1097			"dqbuf buffer %d (%s) with exp_id %d, isp_config_id %d\n",
-  1098			buf->index, vdev->name, buf->reserved >> 16, buf->reserved2);
-  1099		return 0;
-  1100	}
-  1101	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
