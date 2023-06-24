@@ -4,99 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B08EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jun 2023 14:23:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB73EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jun 2023 23:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=193ghiTN02J6zvs2sV/PX+EEGyMNw3JpJppQyQLmnzA=; b=Dh/6LNOYWgz8fV
-	Usx6KibLT8DbXQjF+f/JLI6EiYFM/dIz7+V/3rrtTmWNOPg1qy3mnXasGiYa3/T+QPQif3W2w5qe7
-	1lQAPfKB+fYn70XNq3w+IcV8WLb/lmEbR5zPWNpRuDFoEl+MKTxmbsGRP4E2cimELvxFDYOjso9mv
-	oWq++6vSt25voVhbI1+iLLHSkDy7KeLMQ/jgwbfqbWWHN+qnEZvuVTKoBbDFrY0DpB3jE2mvzdmxr
-	sJDLndKvZ6O9B9cT1PDhELofm5BO1MMO8WPnaCQXHkt2eoDnAa6754Ybb1BHPOrxv+IOE2NZSKkst
-	eIs5XEIscYS70WdyQK2Q==;
+	List-Owner; bh=SxYMODR1JzCwgsT8/KkM44kRRqC0ef8An2fjtSgYmqM=; b=gH60wWt+6JSWJ7
+	GpHXYdk1ITm74rjvkZHZDPHfL1Wy4NJOL7aaj+hdYBKN/K9clmFyVm49Ot4ECvmLcr0xjFLhc40K4
+	25r+/v0hAB7IVs1uIUKb7a3PcM8Vb6pAHZZoUlZvdg8OD55hcJ+B0uti5dI5e1SLDeuaGROUb9s4B
+	hQE+vHVzdOMhGuw4G/5BKZ42Hz/huBFL27F7UlkrxM9rDRGk0jK5H2vRUUageS1AqTiBENc2O6xCN
+	/5aRjYqodIxmDHOiqed8ceayeCSOlKe1BvIs9XJunhEvyDE/EYSTMWzHqo2G2FHT03QskC9Tw9TO0
+	jQoNjLKs62adtjPfap3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qD4Aq-0066V6-34;
-	Sat, 24 Jun 2023 14:23:36 +0000
-Received: from mail-pf1-f176.google.com ([209.85.210.176])
+	id 1qDCm5-006pwY-13;
+	Sat, 24 Jun 2023 23:34:37 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qD4Ao-0066U4-1B;
-	Sat, 24 Jun 2023 14:23:35 +0000
-Received: by mail-pf1-f176.google.com with SMTP id d2e1a72fcca58-6686708c986so1528895b3a.0;
-        Sat, 24 Jun 2023 07:23:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687616613; x=1690208613;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=l61WbsGIflGvlUxdvoJkBkB8edAun9mmIBPamQIpoWM=;
-        b=YGsUKOtFv4km8iyZn1UAatI5z431Q9IGMfGxlfcCy0qTdm3T18GG2IpezK3XU8nJVg
-         QsSYCxYCKWC+Rqiy5FU2k8k+xVKnGBUyFbiK+1QHx2d9lOa7irEM4rMcD3/LN2jW6c6w
-         xQmehd58fqIPgWTRCNX1mGmDEmA54W+nLTyrE7eHskEhOeGMmoPRbgyOG80lYpGxUm7p
-         Xmikh7EWlnWwrRcvno+H8jQud9cgVMUm5zhyOBjXVRx2wxrVP0kNayNzR/BEj0mVtGcl
-         dKoO102cVoGQi4szLO6wrhEdDyaZ3NEjS3Ep1NpEFmhVpln8Rq4/Nz/gWDJY/bVK7xeV
-         +/RA==
-X-Gm-Message-State: AC+VfDwPPNv1It4Sooma0L/1MBqnSzImGZVncCq+3eD7WksuFbAg+ttR
-	td/LPfS0mQ/nwQ8Odx60D+PE8lUq3wkAc2vS
-X-Google-Smtp-Source: ACHHUZ4/e98bK2UmPfEy4r3yCMJ6M+KXaviUSrYfc5Ra0ti+kRhvfGmLjPU3w2ysu/LA7SWvpPix5Q==
-X-Received: by 2002:a05:6a00:22d2:b0:668:7143:50b0 with SMTP id f18-20020a056a0022d200b00668714350b0mr26865595pfj.31.1687616613173;
-        Sat, 24 Jun 2023 07:23:33 -0700 (PDT)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id j21-20020aa783d5000000b006580e98326esm1155839pfn.42.2023.06.24.07.23.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Jun 2023 07:23:32 -0700 (PDT)
-Date: Sat, 24 Jun 2023 23:23:30 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Miaoqian Lin <linmq006@gmail.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>, linux-pci@vger.kernel.org,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	linux-rockchip@lists.infradead.org, Joyce Ooi <joyce.ooi@intel.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Rahul Tanwar <rtanwar@maxlinear.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-arm-msm@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	linux-tegra@vger.kernel.org, kernel@pengutronix.de,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Ray Jui <rjui@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org,
+	id 1qDCm1-006pvR-0I;
+	Sat, 24 Jun 2023 23:34:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1687649673; x=1719185673;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=uSich5WtIL4xEDBsn+PUSmiT50AF+RCLc8UMqP5tImA=;
+  b=UsdACTwsnFFaJ5Jg+PEEhJig6cRsUdR6Xk/I0LTvmzkeWKBwOznsrbVt
+   pI2TdKAnC1h2lI8ueE3do6Ooyz/Z9RZx8ohkZmMJxJ+H1leuJMV3pQo9u
+   wPD7d7Cj04oXn5GOO448o+bC86CisXqgT9o2l6CVZCl8QYWlXaZkLZ1IE
+   reB9Y438jRHFAibog+mz58XmCEiRSQ4udbKj1rj1PV8Kg/zGOQ6VmoTwt
+   ci17IOqBDNsCrdUtfC2PrKVjSUwuWcv+mALcrMEZn1cWU7lm9lQnrz0Ng
+   oxPq7Jd7ka3iiLY/Ei/vG8bcu8bGOZs6mdAKwPh52AqT3dqNBbRpJCgKx
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10751"; a="391122038"
+X-IronPort-AV: E=Sophos;i="6.01,156,1684825200"; 
+   d="scan'208";a="391122038"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2023 16:34:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10751"; a="839837858"
+X-IronPort-AV: E=Sophos;i="6.01,156,1684825200"; 
+   d="scan'208";a="839837858"
+Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
+  by orsmga004.jf.intel.com with ESMTP; 24 Jun 2023 16:34:22 -0700
+Received: from kbuild by 783282924a45 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qDClq-0009Xr-05;
+	Sat, 24 Jun 2023 23:34:22 +0000
+Date: Sun, 25 Jun 2023 07:34:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Shawn Guo <shawn.guo@linaro.org>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-Subject: Re: [PATCH 00/15] PCI: Convert to platform remove callback returning
- void
-Message-ID: <20230624142330.GC2636347@rocinante>
-References: <20230530140742.ebbrxmpieuphbmz3@pengutronix.de>
- <ZHphHkNLO4tEJIm/@bhelgaas>
- <20230606160234.elcvyqlz2j3mggih@pengutronix.de>
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array
+ through helper functions
+Message-ID: <202306250705.Ts4zHhMG-lkp@intel.com>
+References: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230606160234.elcvyqlz2j3mggih@pengutronix.de>
+In-Reply-To: <20230622131349.144160-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230624_072334_403542_2C7D46D6 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20230624_163433_177739_37B894B3 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,32 +94,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Hi Benjamin,
 
-[...]
-> > > These patches wait for application for quite some time now. They apply
-> > > just fine to v6.4-rc1 and next/master. Would be great to get them in
-> > > during the next merge window and ideally give them some time in next
-> > > before.
-> > 
-> > Thanks, these seem fine to me, and Lorenzo normally takes care of
-> > drivers/pci/controller/.  Lorenzo, if it's easier to have me apply
-> > them, that's fine, too, just let me know.
-> > 
-> > The only tweaks I would make would be:
-> > 
-> >   PCI: j721e: Convert to platform remove callback returning void
-> >   PCI: dwc: Convert to platform remove callback returning void
-> 
-> If it's easier for you (or Lorenzo) I can resend with these tweaks.
-> Otherwise if these are adapted when applying them, that's fine for me,
-> too. Just tell me if I should do anything here.
+kernel test robot noticed the following build errors:
 
-I took the entire series and tweaked the subject lines as Bjorn requested.
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on linus/master v6.4-rc7 next-20230623]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Thank you!
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Access-vb2_queue-bufs-array-through-helper-functions/20230622-214122
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230622131349.144160-2-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v3 01/11] media: videobuf2: Access vb2_queue bufs array through helper functions
+config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20230625/202306250705.Ts4zHhMG-lkp@intel.com/config)
+compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project.git 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
+reproduce: (https://download.01.org/0day-ci/archive/20230625/202306250705.Ts4zHhMG-lkp@intel.com/reproduce)
 
-	Krzysztof
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202306250705.Ts4zHhMG-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/staging/media/atomisp/pci/atomisp_ioctl.c:1080:22: error: passing 'struct vb2_queue' to parameter of incompatible type 'struct vb2_queue *'; take the address with &
+           vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+                               ^~~~~~~~~~~~~~
+                               &
+   include/media/videobuf2-core.h:1239:67: note: passing argument to parameter 'q' here
+   static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+                                                                     ^
+   1 error generated.
+
+
+vim +1080 drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+
+  1065	
+  1066	static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer *buf)
+  1067	{
+  1068		struct video_device *vdev = video_devdata(file);
+  1069		struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
+  1070		struct atomisp_sub_device *asd = pipe->asd;
+  1071		struct atomisp_device *isp = video_get_drvdata(vdev);
+  1072		struct ia_css_frame *frame;
+  1073		struct vb2_buffer *vb;
+  1074		int ret;
+  1075	
+  1076		ret = vb2_ioctl_dqbuf(file, fh, buf);
+  1077		if (ret)
+  1078			return ret;
+  1079	
+> 1080		vb = vb2_get_buffer(pipe->vb_queue, buf->index);
+  1081		frame = vb_to_frame(vb);
+  1082	
+  1083		buf->reserved = asd->frame_status[buf->index];
+  1084	
+  1085		/*
+  1086		 * Hack:
+  1087		 * Currently frame_status in the enum type which takes no more lower
+  1088		 * 8 bit.
+  1089		 * use bit[31:16] for exp_id as it is only in the range of 1~255
+  1090		 */
+  1091		buf->reserved &= 0x0000ffff;
+  1092		if (!(buf->flags & V4L2_BUF_FLAG_ERROR))
+  1093			buf->reserved |= frame->exp_id;
+  1094		buf->reserved2 = pipe->frame_config_id[buf->index];
+  1095	
+  1096		dev_dbg(isp->dev,
+  1097			"dqbuf buffer %d (%s) with exp_id %d, isp_config_id %d\n",
+  1098			buf->index, vdev->name, buf->reserved >> 16, buf->reserved2);
+  1099		return 0;
+  1100	}
+  1101	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
