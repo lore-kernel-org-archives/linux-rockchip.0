@@ -4,160 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1298FEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jun 2023 10:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7534FEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jun 2023 10:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lKAEACwZx77P5asXpwNl56jadXOg7Trl691+WfNohBs=; b=r9DNH4hHUFNYNa
-	6/CiQnFjNEKMyT3rEoUA5sru5fBwpI9Z65TGXUbzOq5LPjsvE/w88GuWyel0CyW+eAwDVPZsUWXrQ
-	PVrMUpfQQC524VoYV8GkPfJYs1rTP3f0PGWqB1wDdggbvxQ1tEvX5ooM89f0oEDR0sXEoGmm3NLvL
-	TjckCgm5Wt9QuK6aC6kYNHlYkrPFQgWsHsNENp4HbiwdaG6wIHZdK47hBq/jVfYGxI86+rM72nMWx
-	IhPTV7z9EM6L5896z2pHhAN6LYK4q4oUDqXmSOllmgbC4LtZAuZyijJ8/n5+I1WfY9Oy+QZq6RryQ
-	c4FQFm8Vk17fS40lmYpA==;
+	List-Owner; bh=OJkBJGkhvNq7M5Wo483I83/hNDB5g3iCMlQeQ5b0obM=; b=zTBfmHfCuVDI6L
+	0P1i/jU7uoBJRwzYj9Bc0gf9sxFEYCzUDPwTjBbCdSKcBCmtn009WW9q+ublz6RrdxA2EkI/1mPc+
+	gN/GSCxaYC2NvX6LXjoNKC8tKj4D7cCJ9cVWjkT5RWRerrfF3CUZb76LM6C2feYm8VEXa+OddrfEu
+	3Vohp03oMWOu2uRDKq+C0s7KgUki6NrAieBzho+rn8tZeFe89bKY+9OJCf4uELuDWB1WEKIaPuodL
+	/8ecfkx3gVKIGM8aAQdIATlqaA1PcJzhLoJm/LQzScR0Jwk//O6pR8tQuXzVlK9s3KMJv+6cYdzGq
+	xz+u9freJjACBaQ2vcFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qE5jE-00Cnq1-2p;
-	Tue, 27 Jun 2023 10:15:20 +0000
-Received: from mail-sgaapc01on2071d.outbound.protection.outlook.com ([2a01:111:f400:feab::71d] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1qE5w9-00CplH-2H;
+	Tue, 27 Jun 2023 10:28:41 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qE5i2-00CmuO-0J;
-	Tue, 27 Jun 2023 10:14:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d0CxXaiJF7On6Nn3KJbg6mM15W6L9gRplwWTX+c/grT8u9IY+mYP3rpqOCQnqnkumR93QLmYOQIpLdJk+RYpQnhhe/7iG8ZtjqRmTzHB+QIDivJefpO9QQJ69gqS39EVG9AJZHBHdt0pG4invjE5w7IXr2NwZ4Fk0VX9dTfrhfgytJtkeZCUHO94lrVX35hYDHEUF3xcm65v/NK6Eu8gZm8WF/0vsrTPN049IW7jkLEDiQpH02WC9vpPAuHiIOx1rS0tucoNsLSOSZ/WXbOT841g53RqCwX+HfX6reQl0sYDZN4RzANdx5jprdx7eiHJ1CjEGdLqbD6l4GH2lzTnig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=E7tSH2tT/Jraih9mu6/sDXeCrQeKUun4r//7X+ozZRA=;
- b=SV/I5kXAjFkVjPKQFJ+o+QBAPwKYlLFVHKdAhuv7Ydwh2GtDp0mHHB02U/55Ym9xOqCZ+HARRXa8CYCVgLU78mJHhbA9qJOJ8rtz7a1xJu7YRYJia9Vi6htaTTMax0Ea+73bGdcH3R7k6u2sQYMbeGzuLVidEwGXIYnj3y4vDf9KHZs+PBVz9ujULLrVgI6KwL64o043kFf45Tc1ioKasNbQ00XwsccWtaj3shfExygOP4wZjvAtchk2sZu0YcalfhGCS49wsxn8bT13y767PDkJxjAIBoQu2soDy15zlwC3APINjCkPXU8vgYQoRUe0+pkbmT+z4krXQ271sGONyw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E7tSH2tT/Jraih9mu6/sDXeCrQeKUun4r//7X+ozZRA=;
- b=E4mcp7ro6VjQZ6PldP1rQFNmOF3OWF8MUYC0bEkshPuSvLs3VteTNthdW5YGU6NxeYAFQ3Nio2AW2E3UvOWFW0W0ty2JZBa+aLE3k6SAmdTJ4Muw+emp/z/P0lH4H8Vw3O30kaTWf5wnpGZHPtuaOd4FmFBIlN6GKm4aSi0+gnfJURDnmFPGGNsmXIeQsAt5Q2rJPYCIiDnDLECoshV6z6xwosjiFiB71IXuGbLst82euzgl+U33DrbvcB4tNnTEGLqh5spfnh0vIl6RHoAFx+tAcG0JWF3PPWk9a66ygN0xmntdkvAkX08T3GAJ1qVzr1MlA8bESI0YDq8A9f2A4Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
- by SEYPR06MB6661.apcprd06.prod.outlook.com (2603:1096:101:168::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6500.35; Tue, 27 Jun
- 2023 10:14:00 +0000
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6521.023; Tue, 27 Jun 2023
- 10:14:00 +0000
-From: Yangtao Li <frank.li@vivo.com>
-To: miquel.raynal@bootlin.com,
-	rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	amitk@kernel.org,
-	rui.zhang@intel.com,
-	mmayer@broadcom.com,
-	bcm-kernel-feedback-list@broadcom.com,
-	florian.fainelli@broadcom.com,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	linux-imx@nxp.com,
-	agross@kernel.org,
-	andersson@kernel.org,
-	konrad.dybcio@linaro.org,
-	thara.gopinath@gmail.com,
-	heiko@sntech.de,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com,
-	jonathanh@nvidia.com,
-	tglx@linutronix.de,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	srinivas.pandruvada@linux.intel.com,
-	DLG-Adam.Ward.opensource@dm.renesas.com,
-	frank.li@vivo.com,
-	shangxiaojing@huawei.com,
-	bchihi@baylibre.com,
-	wenst@chromium.org,
-	u.kleine-koenig@pengutronix.de,
-	hayashi.kunihiko@socionext.com,
-	niklas.soderlund+renesas@ragnatech.se,
-	chi.minghao@zte.com.cn,
-	johan+linaro@kernel.org,
-	jernej.skrabec@gmail.com
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 15/15] thermal/drivers/mediatek/lvts_thermal: remove redundant msg
-Date: Tue, 27 Jun 2023 18:12:15 +0800
-Message-Id: <20230627101215.58798-15-frank.li@vivo.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230627101215.58798-1-frank.li@vivo.com>
-References: <20230627101215.58798-1-frank.li@vivo.com>
-X-ClientProxiedBy: SI1PR02CA0012.apcprd02.prod.outlook.com
- (2603:1096:4:1f7::8) To SEZPR06MB5269.apcprd06.prod.outlook.com
- (2603:1096:101:78::6)
+	id 1qE5w6-00Cpi3-1x
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 Jun 2023 10:28:39 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3fba545d743so5649065e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 Jun 2023 03:28:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1687861700; x=1690453700;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Gmf7swzBx3zmrorxZOdEgYZz3vMgCASZCN0hJOkIo00=;
+        b=C+BVtYn4jX0LRy0VrAz6Tpink6WrpV7gikawtc8z6OICC9zRejV4euVhEN7qDurUc4
+         I10v4x8VsvLNbjrUd0sigj2DP8SNn0yP4q3PpTmvlBr8qALYshj5BXKrSILx8V9DFiBz
+         4GvIQ3bQaSMtkaieP5dfIeXqPgQDS9KETd60dZ4ix3c/ckSMKh4Lyeq6OLsPB2tnVCVF
+         r8dEOPcgigBTLHy9fu59BNAsyRfs4OEh5LYoH4Qvx98EonKQ3VHEcOY29vpq2t+B5tTi
+         ywNEh7XU/A8bJQFbO3O/iFSoV3A/uMEFAEbntTtQ42fR777djBZbWkYChLlvgg+Bb4W1
+         QBNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687861700; x=1690453700;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Gmf7swzBx3zmrorxZOdEgYZz3vMgCASZCN0hJOkIo00=;
+        b=OhNwxN6yIUgebhKSTxzMX0vNDsEgxO4rNeqoV5a9L2B+0iUM1nBSGZlKOtKM7pJGrn
+         dy3ZgyGOTCg2hvDquXgF+AS9rJg5vIW4EZajMI0hd6sUZF2R3QIVc7SgE4LkuECuifA/
+         NrQWGs1ac7TexOA6zJAnvkMFoTVSd0Rwzp0f0Ba1asW3Ba2yrgddMOngEtColhA8NnjW
+         9jWriFKSRcRLbqo5jdhSZbl5wBV5p1wSzKHTvdofh9dsVt9PVMHUx8ADlaUGzaD4Nb+U
+         rbH3vYIFB6a4eJhZGw8q2cYYVFRvgQ4aAAozZAXeJDsghUe6Ed/Oe40L4vA9bkScQSyL
+         6PpQ==
+X-Gm-Message-State: AC+VfDyq88XiLl7FgB/sbTDSZ6qVr0p7h6+Sk3L6EsHaTyfy2uk3AITH
+	IU+ysncEqOAvAwmEvrnWu/oPiw==
+X-Google-Smtp-Source: ACHHUZ5XMObNZEMfu2qUXIhZuLUJ2ha5NxMgYWPdt3EyCo1TufdxxWi8w5C9EWlJPCA81JQywXQslA==
+X-Received: by 2002:a7b:cc15:0:b0:3f9:846:d892 with SMTP id f21-20020a7bcc15000000b003f90846d892mr24473786wmh.9.1687861699917;
+        Tue, 27 Jun 2023 03:28:19 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id h2-20020a1ccc02000000b003fa74bff02asm10232352wmb.26.2023.06.27.03.28.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 Jun 2023 03:28:19 -0700 (PDT)
+Message-ID: <689ffb7b-9efb-ecec-61f5-9d8b00f9906b@linaro.org>
+Date: Tue, 27 Jun 2023 12:28:14 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEYPR06MB6661:EE_
-X-MS-Office365-Filtering-Correlation-Id: 81094a23-312f-44f9-4edd-08db76f73a0f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /NISsRo869Vi/naKNba7EDu0CZiNjJ8uIxdhK7RSA772mSYCNNEismlNYDbAn2/jNOTaCRiCad+j12hSfHgtXpYWS2KXLociAnAeasb63NeMPfEue1t0Izwl1pMP6/T67GUk0rnbx8QZfSk78UQYyJ4adLusLnPHVJuIoCzIM+gZ17mu853QJ5vfGqP6Y9AgrxMYXznd2cFN5v4yB/A8CDwx7MraoHlGt6unbGuZq9v8ADWMQ6gzd46neI1praqqmc7JOgkqhuviBJpPecLf10t7XydLwMOes+AjshGyjWZQv+sKuGJByg/K4wMKJ9y6OZnJBwv1mBAl/hbVNfmjPWRu40c2B6TpgWGnLKOOfHZ8dPgfWZLR+rIbaiCTVhoUytxCWEuczUp8BgUTQqx4+NQ9lJ6FeOrKCDYNloRcom42OxLp+ueI60ozcMzRiSG5Xz3rtk95Qc1hrmxUE4oQssOr/42DW0j095QepHrC8PqGPnaDmWtSgNPLk8J/ouYfkEUaEDHCQ4eqXjmYpCfLw0hau91s7oZuRVOVHtloatmGWHUmiL2IYmBpw7Sy3ZxvrbOEhdqaXKcwncCza9PA72fgpTTsFb8/kK9UKjKSGdv5JFBlBnCXW4JZihKWhQ+Uxk1EOvV7y5+aFwO12aSGqA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(396003)(39860400002)(376002)(366004)(136003)(451199021)(7416002)(7406005)(5660300002)(66946007)(66556008)(4326008)(66476007)(478600001)(36756003)(316002)(8676002)(8936002)(4744005)(2906002)(86362001)(41300700001)(6486002)(52116002)(186003)(38350700002)(6506007)(6512007)(1076003)(26005)(6666004)(921005)(38100700002)(2616005)(83380400001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?kwDUWecQRY9x822G3hENRcw3G9AFRwgMtJvKdLMUrLSH3SJlv8BYlZyI4HvL?=
- =?us-ascii?Q?sS1f8LnXW+foAjW4yFJkFUeaav8QKmiX9cxllsoCaxPWCiH4q0mG6Zf7HM0I?=
- =?us-ascii?Q?Dd5tfJBQJKQ1qAOx38FqMkh15tP0Xo6ccWbQt4pYPM9RToPIjMW9hJw+irbz?=
- =?us-ascii?Q?fsXQso3I0uQwyFlfH4kjMUzVwuVV0bKXmF47NkEGEZKdjd8YAHci1qbfRNbH?=
- =?us-ascii?Q?coun24NCaJHt42q2DFOy5QznsVSuxIf8S20XFE8MBPlN7y3jg+8Ug6PqJVuq?=
- =?us-ascii?Q?RVMZRW/n/FXFyBbHm+pwz5/GPvMjJCVDE9rmsqP5ThQuGa+2TSqQkyqzNnM8?=
- =?us-ascii?Q?LV04madzgNalSJ12+VmUYPTovIi1+v3PhaTzy2aMuMxYLcEz59x0WGSHUyYX?=
- =?us-ascii?Q?jSbZ7J9zByGdhU54mkY0alG9G97T2fwufUieTbPIWCMmJ/P0FytroWnU9LA5?=
- =?us-ascii?Q?fhviCukJb2RwtaOzImnAQh8ZwztFI7oBNSIP/5ilGTVNpkFmZ9DLxeXESv6v?=
- =?us-ascii?Q?JbDxsSHxYtyy32xlP8fIJ3m7UoAmoYCRc3wnZIZYlNBDXq9DMlAMNrNmqvYE?=
- =?us-ascii?Q?kOLJHST+HEIA2c+duLBuim2xIXShvbeH5lpI5dxXPZ6B9iZq1fkuE1C0HyRy?=
- =?us-ascii?Q?BF6tE+d+BdVCw7UGCwOcx+GUYhITrD8dp3FuSJgqHyVOsiqupOFAzAy+eJMP?=
- =?us-ascii?Q?V7l9ztcxqwsXE7dFvDXlsAUpEhHNF7L2XgaqjSEKYVkJgSKzk3tAjiFlZF4Q?=
- =?us-ascii?Q?HxQaDM1nLY9ulLR9c+44gDnPGu1VhVUorKtjjklboLmlTBsDinVsulIFnGk4?=
- =?us-ascii?Q?quGV1gEatThAisTiT/o/3VxT6vLy1jX9ISXCU3N6JJHHPrExlmwjZBUscorc?=
- =?us-ascii?Q?KJX2kJkG8dy5lkkLEE0Tu4QH5B2SbHC+yN9acDHNvjgM2bP6DgaslfbfgZ6h?=
- =?us-ascii?Q?+hymulGxd4miXRd3/kHVYDmm0IBg7I/XLkTV90gGGSZ4elacGhJrw996yn0y?=
- =?us-ascii?Q?d0dXHWdmAUGEaXn18wb5ejcvHgkPgFaBJuNTdU21MT2dkWDm6Lsm1ubggS6P?=
- =?us-ascii?Q?oKzqXbKWpaisDEy9V3CmOl0d9LP/AJuLL2v+qM543LE/O4ge0kHPndjcNBq5?=
- =?us-ascii?Q?qQiBdXAy7OMof6552IqSvpGsxhHXETUgC5d678EEmmz8yyr3wuNdVtMTyiTB?=
- =?us-ascii?Q?CsZrRcAqiJ7sQXSsvslUmfsFVn2ot68NxbGfIi0HGHIV1LewBVyxV9JIfeR9?=
- =?us-ascii?Q?oZbsy9BMDwE+Scy8z6CEILSPC3xI5hFwoBEvJ/3i77LC0yfb8YNxQWBQoCXk?=
- =?us-ascii?Q?j3qooh3Z++3BKX1fMxiR85pSfmX7f3JHfwN+EFTp/e/mfHZcjWyLolmIftfq?=
- =?us-ascii?Q?cye7hoI8nOZrwi+11RqI+vwmzhU8KOPi3rp6a69rpxOTDrUoaChrLwCY8zo2?=
- =?us-ascii?Q?bWs5P9bkWsDJgpvmVwQKCoG749fKlvz3EBQYKm530iTwqoK4Yqy8fo44yrsU?=
- =?us-ascii?Q?fQVWJlx2gOWRUDQemb56yKYXBIdb91Zc3Cbk6IzqOGbyd4ZZsQKPruMJkDiy?=
- =?us-ascii?Q?pHqdwT7ud8nQmEGkz4KIZRd7yv7umr83tVvsiddo?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81094a23-312f-44f9-4edd-08db76f73a0f
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2023 10:14:00.7886
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: M6eR32G0woF8Tw6YCAaSX59PwYJXw9tnkdrbbiJnjbY+UD3Tw8qH1AVdn7tOgrsHuoTyB1bjto8Y0zQg7ssGFQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6661
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 01/15] genirq/devres: Add error information printing
+ for devm_request_threaded_irq()
+Content-Language: en-US
+To: Yangtao Li <frank.li@vivo.com>, miquel.raynal@bootlin.com,
+ rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
+ rui.zhang@intel.com, mmayer@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org, thara.gopinath@gmail.com,
+ heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, tglx@linutronix.de,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ srinivas.pandruvada@linux.intel.com,
+ DLG-Adam.Ward.opensource@dm.renesas.com, shangxiaojing@huawei.com,
+ bchihi@baylibre.com, wenst@chromium.org, u.kleine-koenig@pengutronix.de,
+ hayashi.kunihiko@socionext.com, niklas.soderlund+renesas@ragnatech.se,
+ chi.minghao@zte.com.cn, johan+linaro@kernel.org, jernej.skrabec@gmail.com
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230627101215.58798-1-frank.li@vivo.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230627101215.58798-1-frank.li@vivo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230627_031406_138161_E41659CD 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230627_032838_643850_1901681B 
+X-CRM114-Status: GOOD (  21.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,29 +112,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The upper devm_request_threaded_irq() function prints directly
-error message.
+On 27/06/2023 12:12, Yangtao Li wrote:
+> Ensure that all error handling branches print error information. In this
+> way, when this function fails, the upper-layer functions can directly
+> return an error code without missing debugging information. Otherwise,
+> the error message will be printed redundantly or missing.
+> 
+> There are more than 700 calls to the devm_request_threaded_irq method.
+> Most drivers only request one interrupt resource, and these error
+> messages are basically the same. If error messages are printed
+> everywhere, more than 1000 lines of code can be saved by removing the
+> msg in the driver.
+> 
+> Signed-off-by: Yangtao Li <frank.li@vivo.com>
+> ---
+>  kernel/irq/devres.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/kernel/irq/devres.c b/kernel/irq/devres.c
+> index f6e5515ee077..fcb946ffb7ec 100644
+> --- a/kernel/irq/devres.c
+> +++ b/kernel/irq/devres.c
+> @@ -58,8 +58,10 @@ int devm_request_threaded_irq(struct device *dev, unsigned int irq,
+>  
+>  	dr = devres_alloc(devm_irq_release, sizeof(struct irq_devres),
+>  			  GFP_KERNEL);
+> -	if (!dr)
+> +	if (!dr) {
+> +		dev_err(dev, "Failed to allocate device resource data\n");
 
-Signed-off-by: Yangtao Li <frank.li@vivo.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I don't understand why did you send v2:
+1. Without responding to my comments - either by implementing them or
+continuing the discussion
+2. Without changelog explaining what happened here
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index b693fac2d677..bd503fbcba51 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1151,7 +1151,7 @@ static int lvts_probe(struct platform_device *pdev)
- 	ret = devm_request_threaded_irq(dev, irq, NULL, lvts_irq_handler,
- 					IRQF_ONESHOT, dev_name(dev), lvts_td);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to request interrupt\n");
-+		return ret;
- 
- 	platform_set_drvdata(pdev, lvts_td);
- 
--- 
-2.39.0
+My comments for v1 stand. Please do not ignore them, respond. If sending
+new version, then usually one per day is max and of course provide
+changelog.
+
+>  		return -ENOMEM;
+> +	}
+>  
+>  	if (!devname)
+>  		devname = dev_name(dev);
+> @@ -67,6 +69,7 @@ int devm_request_threaded_irq(struct device *dev, unsigned int irq,
+>  	rc = request_threaded_irq(irq, handler, thread_fn, irqflags, devname,
+>  				  dev_id);
+>  	if (rc) {
+> +		dev_err_probe(dev, rc, "Failed to request threaded irq%d: %d\n", irq, rc);
+
+Why printing rc twice? Did you test this patch? Does not look like.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
