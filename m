@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2967BC001B0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jun 2023 19:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C66C9EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jun 2023 19:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=okFyq3ruSliomiUAq3+7FifQfHG2tfu9X9jh3OydFmU=; b=XOCdTOc9FRyFfG
-	cwItDfzS13Gzxo2mMMlBwVbuztGR/Iegd0HNFFV7luk7ZqCaBg5vXKmzYqTHzf28lDPfVi3OLJv2p
-	L1kE1UV5vfpz9Ob0QzBnazc5z3mUWXscZV/KzLwN/eaTsiNu+pHeyh4wdg6cWOqJVJ414cCQw9PUZ
-	aEi8fsgC2Yc3NYqJ0MdRlcaThlQ4qG6g1sUhFboxrXraFY9FLRYuK6LsM6HsG9c4KboJNlOWspjaa
-	I+Rezn+3ZlANExJ3gdd+PeuRTrMSjpEhwi0fRSA5pYkGpSLkpizS6HeGuMF8guptMrkv18HAT88Cp
-	I7M9ukbJ+552W5YNYCwQ==;
+	List-Owner; bh=rMT9dAxQGnBaOIw66n1q1rAvyhhbiM86rWegX/TWdKU=; b=TTv48t4NoXplPc
+	N+mEQqoPFsP4qqVgg6f2NYR0J30mvzo9oJUa/UJ6eQTTA997VHtAqdckJvZCXK7DzJvkgGimCIVpK
+	thnfiCvHEz3SSdbJ8Q0N6R8xrzwM3UnxOKHmpBNx8VxVgVwtMGvH6eCX7Xh1BKvOZiFejAgGXujxX
+	H8JlFEGfTKhcpZBBhQH/JD+Haj81FyRhJPhYz1+ze/4lMR3AJ8OZpb3h8tZyuoLFo4RlGTfwezJrJ
+	USqtUrAqts3KUC1EpyJhOMXF0q7N4b+BD6Ub+ZCruC5+0oujJZc/S1JKkzOU8Kwfa7FYNLu4XzbTo
+	kzA+b7/xFJ1aXGFIGtCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwu6-001rYf-0F;
-	Thu, 29 Jun 2023 19:02:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qEwuI-001rfM-0A;
+	Thu, 29 Jun 2023 19:02:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwu0-001rVS-2o;
-	Thu, 29 Jun 2023 19:02:03 +0000
+	id 1qEwu9-001ra4-2W;
+	Thu, 29 Jun 2023 19:02:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6049461602;
-	Thu, 29 Jun 2023 19:02:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 675D8C433CD;
-	Thu, 29 Jun 2023 19:01:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4D6726163F;
+	Thu, 29 Jun 2023 19:02:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5152C433CB;
+	Thu, 29 Jun 2023 19:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688065319;
-	bh=FsfFDLqgmY9SMMnUYxeo8rjBO5Tm0rDlY+CxeWfUkLM=;
+	s=k20201202; t=1688065328;
+	bh=DtMCrQyRTSe9qIz/DBRTPqo4mRCz8yhbttkm6P7/WIs=;
 	h=From:To:Cc:Subject:Date:From;
-	b=bxlrOvtFnTjP1ihB+lsVUtsfC5Cu+k+ydf5KfSWby8owRE6antdyGXYE7+Pe9WBi/
-	 ybojO9sDMIg2MieYYmmQkntX94anUqoyEDJKHCpOvOzt2PTK9wdfY2Qcso4xv6nwyf
-	 8qmgOyLlAOZwORBTCAoacXvH9ffm4SNVry8SOJc1vLzKbuyqXJAH1R193eBjolMaFw
-	 0s1N9LjmG5a65lst45acx4Sdsh5KaiaRKd8G2jOTgWD+2V4jxJfqW2RiY2CG0JLt+f
-	 nDGcPMIGTg1duCayQLmV42Tw7V7HlUjuF+CUTZRYG4ZoiUZoMvQ2RSrBkoAq779d//
-	 IkLiDFb4xboHw==
+	b=klXOyjXohdLSZwdGRbG4WkVuhhuZ41xv7oP1dltJNwv+jiNXT3PcotxacHSXRm1XV
+	 iefMDS1PHNLac9g5TE5Q6Nz5a+uyibm26I392USsmSS/LnGn0rdHTobwQ37nV/N+aG
+	 61U96SKv/UnF2zg9vBS6BAak8I+/nBs8M5PJ5wztfBrvRoTjykjNTrJl0LxdScmlI4
+	 ytnRG2KK7JGhq20BTDqCIp6dMuM7KFQbin7A4FcAxmdm2Rj7Fyn7Q8thD9yPLZvWGS
+	 AvxvQUOH2qH+EZ+x5LIZ9S1bjJLSjnSMUoY7F1zRj+AAzgWd0aKkNM4bBP5E8C8FIv
+	 CEJXQ1AER0gOA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,16 +57,16 @@ Cc: Lorenz Brun <lorenz@brun.one>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 1/5] arm64: dts: rockchip: fix USB regulator on ROCK64
-Date: Thu, 29 Jun 2023 15:01:52 -0400
-Message-Id: <20230629190158.908169-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 1/4] arm64: dts: rockchip: fix USB regulator on ROCK64
+Date: Thu, 29 Jun 2023 15:02:01 -0400
+Message-Id: <20230629190206.908243-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.118
+X-stable-base: Linux 5.10.185
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_120200_989458_2CD50D8C 
+X-CRM114-CacheID: sfid-20230629_120210_073943_F09E55EF 
 X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -116,10 +116,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 12 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 1b0f7e4551ea4..522d2d4281033 100644
+index 95ab6928cfd40..d6a288b0e2ab6 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -37,7 +37,8 @@ vcc_sd: sdmmc-regulator {
+@@ -32,7 +32,8 @@ vcc_sd: sdmmc-regulator {
  		vin-supply = <&vcc_io>;
  	};
  
@@ -129,7 +129,7 @@ index 1b0f7e4551ea4..522d2d4281033 100644
  		compatible = "regulator-fixed";
  		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
  		pinctrl-names = "default";
-@@ -48,17 +49,6 @@ vcc_host_5v: vcc-host-5v-regulator {
+@@ -43,17 +44,6 @@ vcc_host_5v: vcc-host-5v-regulator {
  		vin-supply = <&vcc_sys>;
  	};
  
