@@ -4,62 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81797EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jun 2023 07:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FD3EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jun 2023 07:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+5p8NBiOs510jpg6UMJHes51Kf9phZxFdk2JuqMe9KA=; b=RtzJ1z550w2HwE
-	aCluZsR3aoo1IVvKw27ihkzbN8lhJHptQ1cmij4Juq6xkxV/ds7XSAPX6P6fxZjf1s390b1PDa1FL
-	LSoFGlo45+Q6KtP9zgRIUpBrLHSiMYGIKLDiCk54ki76Vln4fLjYoExRClUO3WM2xYW14aahUyDM3
-	Z03UPO58G0JBLWYENBF6ptDZVXHRRlHUxJXIgpmTCrRa/Zuqec4g416s40emyZNDZ4P9aJ2coI7dz
-	MOhEpZ81xBCrXJyPw73lMu3SUKvY94ha+oSAdWWcRZs0Vuz+5g+dkazxeocGaMWaGC+QEBqfe9COE
-	rwr4pM/KWQwdEx1IzzLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fGiRy+xT5u9VHCr9af72PaePowhZUijgJhhgj8eGdhc=; b=k02UPwT+1EE0jg
+	c/Dv6TJhIsrSGqTqkGwZT/nipciy1ezGphV4As2gm9uSVgnojzSjWWxPjQqC28x/c/xrAtq6/s0oR
+	zcOnw97COGh3jACQLhid/bFDo9KyMWjB0w3AZGy4b3OabtQuP3GyfZBgi8RgwY98P9gNceUS3ftOm
+	wxSqzIZzw1Ej79oTEane0wqF1uwNlH09SlnCAoWB6nhQWhODJuHc432ci3NezAOXfFwIsKm8XulhD
+	1OwesogOTuhEpE3i4sQ7IlTPfp1xu/bMLJfhW5dVlPo5F506jdsWnU/48xuXnNQv2tgD8yOrN09v1
+	JBo4Jph4uiGnjusXAVkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qElh4-000AZG-1W;
-	Thu, 29 Jun 2023 07:03:54 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qEm9B-000Cze-0p;
+	Thu, 29 Jun 2023 07:32:57 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qElgz-000AYL-2a
+	id 1qEm98-000Cz5-1e
 	for linux-rockchip@lists.infradead.org;
-	Thu, 29 Jun 2023 07:03:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2ED56614CD;
-	Thu, 29 Jun 2023 07:03:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 994CEC433C0;
-	Thu, 29 Jun 2023 07:03:44 +0000 (UTC)
-Message-ID: <567481c3-08bc-3bb8-5538-0d296ee539d9@xs4all.nl>
-Date: Thu, 29 Jun 2023 09:03:42 +0200
+	Thu, 29 Jun 2023 07:32:55 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 84A198371C; Thu, 29 Jun 2023 08:32:14 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1688023935; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=SkAuGpIlxfTkfvA+3yzz/DRko+jB7JvBiwuwkilF90l9uxq+sYeoisb8MPc9z243F
+	 l2XnTjMCidQ+k4ZCNZjkVsquy1SZYuZC9k9CDK5vEeIExFuwkpiE7oJZ1KCAecKyzi
+	 xOdpcHxeOUvednzzajQxa6k7k+4c801HZQeazixx6NCrvwnDQfbV4gQ7Bb87emUIlq
+	 /daMt5tAp9aJO+OttuQeYfeVfkbk5MQGVlUmQkS9MzbegN5QZGmk13w2JLOJThqHrp
+	 IzOG7oPXe6Xqa9GyF9f7DCWLTRhVw/6VHe0blRbEAJis6bQdsbLpBetwFhPj95uAgP
+	 t2B3O2AKBYpOA==
+Received: by mail.lokoho.com for <linux-rockchip@lists.infradead.org>; Thu, 29 Jun 2023 07:30:21 GMT
+Message-ID: <20230629074502-0.1.6y.2sxer.0.3ra5orc0jk@lokoho.com>
+Date: Thu, 29 Jun 2023 07:30:21 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 1/2] media: verisilicon: fix excessive stack usage
-To: Nathan Chancellor <nathan@kernel.org>, Arnd Bergmann <arnd@kernel.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Arnd Bergmann <arnd@arndb.de>, kernel test robot <lkp@intel.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev
-References: <20230616144854.3818934-1-arnd@kernel.org>
- <20230628182617.GA911656@dev-arch.thelio-3990X>
-Content-Language: en-US
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20230628182617.GA911656@dev-arch.thelio-3990X>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_000349_944522_AAD9AE2D 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20230629_003254_773676_B7907558 
+X-CRM114-Status: UNSURE (   1.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,166 +61,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
-
-On 6/28/23 20:26, Nathan Chancellor wrote:
-> On Fri, Jun 16, 2023 at 04:48:47PM +0200, Arnd Bergmann wrote:
->> From: Arnd Bergmann <arnd@arndb.de>
->>
->> In some configurations, gcc decides not to inline the register accessor functions,
->> which in turn leads to lots of temporary hantro_reg structures on the stack that
->> cannot be eliminated because they escape into an uninlined function:
->>
->> drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:1022:1: warning: the frame size of 1112 bytes is larger than 1024 bytes [-Wframe-larger-than=]
->>
->> Mark all of these as __always_inline so the compiler is able to completely
->> eliminate the temporary structures instead, which brings the stack usage
->> back down to just the normal local variables.
->>
->> Reported-by: kernel test robot <lkp@intel.com>
->> Closes: https://lore.kernel.org/oe-kbuild-all/202306151506.goHEegOd-lkp@intel.com/
->> Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
->> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> 
-> For what it's worth, this patch massively helps with avoiding a warning
-> with clang 16.x and older, for presumably a similar reason, since this
-> happens with allmodconfig, which turns on a bunch of sanitizers.
-> 
-> https://github.com/ClangBuiltLinux/linux/issues/1875
-> 
-> Before this change:
-> 
->    drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:2097:5: error: stack frame size (2096) exceeds limit (2048) in 'rockchip_vpu981_av1_dec_run' [-Werror,-Wframe-larger-than]
->    int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
->        ^
->    238/2096 (11.35%) spills, 1858/2096 (88.65%) variables
-> 
-> After this change:
-> 
->    drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c:2097:5: error: stack frame size (496) exceeds limit (200) in 'rockchip_vpu981_av1_dec_run' [-Werror,-Wframe-larger-than]
->    int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
->        ^
->    265/496 (53.43%) spills, 231/496 (46.57%) variables
-> 
-> If this could be picked up either before the 6.5 media pull goes out or
-> at some point during the -rc cycle, that would be great!
-
-Once the merge window closes I'll make a PR to get it in 6.5.
-
-Regards,
-
-	Hans
-
-> 
-> Tested-by: Nathan Chancellor <nathan@kernel.org>
-> 
->> ---
->>   drivers/media/platform/verisilicon/hantro.h | 22 ++++++++++-----------
->>   1 file changed, 11 insertions(+), 11 deletions(-)
->>
->> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
->> index 6523ffb748812..6c5e56ce5b351 100644
->> --- a/drivers/media/platform/verisilicon/hantro.h
->> +++ b/drivers/media/platform/verisilicon/hantro.h
->> @@ -370,26 +370,26 @@ extern int hantro_debug;
->>   	pr_err("%s:%d: " fmt, __func__, __LINE__, ##args)
->>   
->>   /* Structure access helpers. */
->> -static inline struct hantro_ctx *fh_to_ctx(struct v4l2_fh *fh)
->> +static __always_inline struct hantro_ctx *fh_to_ctx(struct v4l2_fh *fh)
->>   {
->>   	return container_of(fh, struct hantro_ctx, fh);
->>   }
->>   
->>   /* Register accessors. */
->> -static inline void vepu_write_relaxed(struct hantro_dev *vpu,
->> +static __always_inline void vepu_write_relaxed(struct hantro_dev *vpu,
->>   				      u32 val, u32 reg)
->>   {
->>   	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
->>   	writel_relaxed(val, vpu->enc_base + reg);
->>   }
->>   
->> -static inline void vepu_write(struct hantro_dev *vpu, u32 val, u32 reg)
->> +static __always_inline void vepu_write(struct hantro_dev *vpu, u32 val, u32 reg)
->>   {
->>   	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
->>   	writel(val, vpu->enc_base + reg);
->>   }
->>   
->> -static inline u32 vepu_read(struct hantro_dev *vpu, u32 reg)
->> +static __always_inline u32 vepu_read(struct hantro_dev *vpu, u32 reg)
->>   {
->>   	u32 val = readl(vpu->enc_base + reg);
->>   
->> @@ -397,27 +397,27 @@ static inline u32 vepu_read(struct hantro_dev *vpu, u32 reg)
->>   	return val;
->>   }
->>   
->> -static inline void vdpu_write_relaxed(struct hantro_dev *vpu,
->> +static __always_inline void vdpu_write_relaxed(struct hantro_dev *vpu,
->>   				      u32 val, u32 reg)
->>   {
->>   	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
->>   	writel_relaxed(val, vpu->dec_base + reg);
->>   }
->>   
->> -static inline void vdpu_write(struct hantro_dev *vpu, u32 val, u32 reg)
->> +static __always_inline void vdpu_write(struct hantro_dev *vpu, u32 val, u32 reg)
->>   {
->>   	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
->>   	writel(val, vpu->dec_base + reg);
->>   }
->>   
->> -static inline void hantro_write_addr(struct hantro_dev *vpu,
->> +static __always_inline void hantro_write_addr(struct hantro_dev *vpu,
->>   				     unsigned long offset,
->>   				     dma_addr_t addr)
->>   {
->>   	vdpu_write(vpu, addr & 0xffffffff, offset);
->>   }
->>   
->> -static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
->> +static __always_inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
->>   {
->>   	u32 val = readl(vpu->dec_base + reg);
->>   
->> @@ -425,7 +425,7 @@ static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
->>   	return val;
->>   }
->>   
->> -static inline u32 vdpu_read_mask(struct hantro_dev *vpu,
->> +static __always_inline u32 vdpu_read_mask(struct hantro_dev *vpu,
->>   				 const struct hantro_reg *reg,
->>   				 u32 val)
->>   {
->> @@ -437,14 +437,14 @@ static inline u32 vdpu_read_mask(struct hantro_dev *vpu,
->>   	return v;
->>   }
->>   
->> -static inline void hantro_reg_write(struct hantro_dev *vpu,
->> +static __always_inline void hantro_reg_write(struct hantro_dev *vpu,
->>   				    const struct hantro_reg *reg,
->>   				    u32 val)
->>   {
->>   	vdpu_write_relaxed(vpu, vdpu_read_mask(vpu, reg, val), reg->base);
->>   }
->>   
->> -static inline void hantro_reg_write_s(struct hantro_dev *vpu,
->> +static __always_inline void hantro_reg_write_s(struct hantro_dev *vpu,
->>   				      const struct hantro_reg *reg,
->>   				      u32 val)
->>   {
->> -- 
->> 2.39.2
->>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKemFwb3puYcWCZW0gc2nEmSB6IFBhxYRzdHdhIG9mZXJ0xIUgaSB6IHBy
+enlqZW1ub8WbY2nEhSBwcnp5em5hasSZLCDFvGUgcHJ6eWNpxIVnYSB1d2FnxJkgaSB6YWNoxJlj
+YSBkbyBkYWxzenljaCByb3ptw7N3LiAKClBvbXnFm2xhxYJlbSwgxbxlIG1vxbxlIG3Ds2fFgmJ5
+bSBtaWXEhyBzd8OzaiB3a8WCYWQgdyBQYcWEc3R3YSByb3p3w7NqIGkgcG9tw7NjIGRvdHJ6ZcSH
+IHogdMSFIG9mZXJ0xIUgZG8gd2nEmWtzemVnbyBncm9uYSBvZGJpb3Jjw7N3LiBQb3p5Y2pvbnVq
+xJkgc3Ryb255IHd3dywgZHppxJlraSBjemVtdSBnZW5lcnVqxIUgxZt3aWV0bnkgcnVjaCB3IHNp
+ZWNpLgoKTW/FvGVteSBwb3Jvem1hd2lhxIcgdyBuYWpibGnFvHN6eW0gY3phc2llPwoKClBvemRy
+YXdpYW0KQWRhbSBDaGFyYWNodXRhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
