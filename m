@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964F9EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Jul 2023 07:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97574EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Jul 2023 09:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
 	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dgLdTSkwTbDisEj215jWoErGFzbon0akGZgBTzGqBeA=; b=sQ1sLHwSNGLRfr
-	DvSKqoQ7C7dzjE3qu9R1FMIREK09frhf3GSy/6XAAXRYYsAIWbyP9KczKgfP9bkwsujW/SmBOkHap
-	93P1o8qDV1cbANri/4j2mpUObEADI1lY2QNDdQx15wIEuk/TSqqJFQeX7xV0NPAFsDbdyRHxNdS0H
-	/ouZ5TyG9SYrFfN9PnRzaW3DKP791FTBpCFCOJQ6xut3NUKGT3JiZMWGEpWXqeG1fqeIDOMGQlvoN
-	OobPLp9rTH4edYNH3R/NqXH3bML0OSC1gFkTbP1jwSHx+52JZW3m42IY4u+N0eYymIlj1rRUFTE7F
-	RaIjCaY/T8CerowiqQSg==;
+	List-Owner; bh=zsbSAgZbegR+Qyq06GfVfYVtOkQe27BUv5iIxw2EY10=; b=cqQDKgLP4KXdWx
+	W8DjWYp+aIyX4RQ2ckFZJpF7yTZE/q3bp58Zjdi8rB+ou2gfDCjhfaowJZ6OktjZwHii7hDDEes0g
+	ZS4XHG7I++xnEUn0XHU4jRzjq26xCoSc0iwcTVTUvrxkYuc/xDnufDd2tkFqOWWYsGihzTok4AEXR
+	NwAneZAOaWKyZUWz4qDdMJL44KwrxGExJ9uZntdH0Q7Lt3+5XtIcaadMdxwmDjMz6i5+xUp1yx1p9
+	phIlkJFIaXfg7KBoyI0Vvctr1OOHVLFFDlYsPtVKxm0WELkqRnUFtSI3/dWpbautmL2v4ovJOUfGb
+	0TbLY9Rqu1TmEXhHJbBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFrpl-007LMj-2t;
-	Sun, 02 Jul 2023 07:49:25 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1qFtAL-007Sj9-1O;
+	Sun, 02 Jul 2023 09:14:45 +0000
+Received: from mout.web.de ([212.227.15.4])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFrpi-007LLt-2K;
-	Sun, 02 Jul 2023 07:49:24 +0000
+	id 1qFtAH-007ShP-1F;
+	Sun, 02 Jul 2023 09:14:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=s29768273; t=1688284144; x=1688888944; i=markus.elfring@web.de;
- bh=BHx9ZZkl5ZMEnvKU0DhetsvfeKgpfsIoKlJQhi8IceI=;
+ s=s29768273; t=1688289268; x=1688894068; i=markus.elfring@web.de;
+ bh=04iT+UnfwyDPFNO9j8bB4gtCjTRJDEn6nkaOWfmk9Ak=;
  h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:In-Reply-To;
- b=JLFjGmWXHtFOTm1nf98oGegiuUV4QxnMmFnt9rJl6pSzUgRCctsg/uYr+MAxsO0/AgPeMqW
- VkwwEu7Lm/NXYU8LP9L38LAwyp0oCuxSxOQxYAgXi66RWTWT0yxtaNMlkxmmdMdMEi/fWiOJT
- g49tmNOlqqxwWaNKnBXFtd2B5ew/RiBzNB52fgHTYmAuYq+9LtHVwcLph1rI2P/v8e77AsrRx
- 9upocQl2jABVa3bziVJ7wNlmtu1BabLJmRGRVTNfzvzCUrrHzqqQIYqP9Z7fiJ02dnj2kU6hl
- NFaUAxy+0O4eoOt53pXEHCjxZqQVYJO3uKsDV/t58pZWShSxUR+A==
+ b=K0Gg5BBc16nMDxJbeztZdnZLJ0zNgerCb1gynfjqZBgSwfkKSFpuDXx9QxGjAkLuycFrOgr
+ dGjwfYyG6YCreioKgtE7qyhXpex2n2RWewJCg1Gm3CZwIQ9UuBG91iuvGBOU+iLlp7pk92V+q
+ mzZzwfxbHxbGoP+tq1PLOovQsN0W/+PR8X9gCGkF1LiZTuRTYVgsSTHmDrFDkF84jU8HI/R/l
+ Iy5hbUJaoiKXEfok+aIIOgd+AG4sw1y/F39PFMG0FgKBNHRLPXwTfMwbyUog/Hxyc9H0TF7ja
+ 12ykN70YUqvw9QCrNSfTSz00Bfb5S26dUzrW1FrGjlFaQD4jt0+g==
 X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mmho4-1pZcmc0WH8-00k2Se; Sun, 02
- Jul 2023 09:49:04 +0200
-Message-ID: <368f5604-913a-9bb9-dbaf-3a7ede15742d@web.de>
-Date: Sun, 2 Jul 2023 09:48:50 +0200
+Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MqIFD-1pceFb33iN-00nRBU; Sun, 02
+ Jul 2023 11:14:28 +0200
+Message-ID: <83b5faec-7e7c-c73c-c510-903ad69051f1@web.de>
+Date: Sun, 2 Jul 2023 11:14:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
@@ -57,34 +57,34 @@ To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Tomasz Figa <tfiga@chromium.org>
 Cc: LKML <linux-kernel@vger.kernel.org>, kernel@collabora.com
-References: <20230622131349.144160-7-benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 06/11] media: verisilicon: Store chroma and motion
- vectors offset
+References: <20230622131349.144160-8-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v3 07/11] media: verisilicon: vp9: Use destination buffer
+ height to compute chroma offset
 Content-Language: en-GB
 From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20230622131349.144160-7-benjamin.gaignard@collabora.com>
-X-Provags-ID: V03:K1:2PztqH7KzsuGkGlyH9ZJqiRJYzUo7XjNcLpHfVCCIV4/if/U4eB
- dZk4BhYADC1udLSZbnavlDQbuq3AEjHDWrbgu86SV7TB6nhJj8tntzc8OmLuux0UFFs9oMm
- Tu8KHpRIPkLOK936PRfm53XK85dDGE2Ai/WUpT0DQLbQ+MfaaGy5xH77MzTLVlHm3UBu5dN
- 0cVWMe8cDQ7BniPBfUWaQ==
-UI-OutboundReport: notjunk:1;M01:P0:ufs6gWbQAIk=;ceoMYeyeZvCBuXP8GBm42rh5x7D
- m/VLSSYo2ng2sApensdO9ipNd6CQjJuplF2XvSO55YEeg7aAzZWMgz3b/13u5sWDJEiw6pRPt
- nIbRYB0sIB5AqS/0DFzP1nyV/Iqagllr/apdeoDY1AbTf+Fi6+O54dNfzW//NeFcGAJsl4URc
- ueN9KDOB5q4b2mRHnFKVcUehB13/0D89rb9VgW5dl5a7nKjHZ5HgNx4sohUqCaR+tEevz020O
- s/Q7zYXA0TnYx1GOsoJ/JH38PiTfzOKtn8d1U8EXCZgYZ0FfwARC22HqL5ZwomBd8hYEXDng+
- 9YuZn1ZvfRPV3truXB3UhQBWhe5arZHKUVZlq5z7skgi37BNA3A82R4uDwP0edrWstxkAtFnR
- GlIeBX9unwRzNHHYPGCHJpXYBSLbtyNtb/KjlYfeM+UykYY3quq9XauUDDyJpnGzg2Qnl4ncc
- LEYDH+aRRP40RJ0xsLLgxPl4PxYEDRbeoJ9BZQUy6Z68/JPUpe+AsEgtV1YXXcl8dMv1gnQwS
- UbvY4PT60tI0Eytt0cDnmSrF0mS+Vu3LxIhQHHCeQpflVLF61cGOZVFjB41L5UzFn2ONaEjoP
- xeQeFJWbOyZC67zre5Gz+cEG8CGff5JaEIRs9za5dpY31C4py5gzkWZt/0gXx1uL3DLbIMWPd
- eEPhcT4tpdH+x11WHJBSvGR3a0WBLaxb713aOUR5bBF2qxmV5Y/1f1Y3WV+BfcpGMbigT8WES
- QcX7/b3Gdd9bQZp9CxNL1y4pF21GVag+x0cAmAbhNf2xGipADP8mQfnpm0i0RXEXDETj/ICsa
- XiiJIdqsRrLREVvrfrTKjTsmB+pddV/zY8A45r4PMUqngXSLo4887OrpsY1V+6L3j6y9VFouc
- bpaNpnj4tYn+jigdTfy4HbU8eW4p/Zs92OFDGfS3NXKxS6lF0kv2M5SIlGVRuqEoqQbhrMtQ7
- RCINJA==
+In-Reply-To: <20230622131349.144160-8-benjamin.gaignard@collabora.com>
+X-Provags-ID: V03:K1:7kJlUJsja2lPREtJK+HuF7keC2n5Tx00nxUKQmSzGqmAP/g37LJ
+ DOgyytD3Xc+gPUa9LcGlaxnWioRo89+mye0/FJg4yE/HqGtfFFRRs5yZpXqFaVtAJxC0xKA
+ pi8D/tQcQj279Cpxw6pPnfyuLjnHp114YJiup9RLyRYZXixln8yFZPTH0NjGlFe+JEKOJnq
+ syilA2sOvIBDDI8eWaBpw==
+UI-OutboundReport: notjunk:1;M01:P0:2uaVJO373Zw=;h4bf8LWkfnrDJhoPYeovRW+snHL
+ LUzSbcYBQNIAdx0jzYi9vOFIid4SFBM95TXAJ3l9G2PVfFL8mK9SeKKN6xbEfHFXmTZUQR1hr
+ IXW5I9QnyD66SJgNlTny1k3mUWWv95HYq06xwv8f1BdWKzwYWl2NhbXPThiBXYTC8UCFEc+Te
+ ROXE89wBqDjmAW1o7oA3dEY3kXYxjJusE5eXL09nQdGWE1vG058Qqvh3fE04bMSjLEawcu5Ko
+ Opi0JNzvt/cMmpN82yUYcdR2S+nmEz18/6ULWmJg0bdxR6fMb+ZwS9WTYPM+XsLupSh3tl9Zl
+ V6jgbm/fDEmOR1efXcEgFflych7sycwJtNG7hwmqIo+i2j3GapQJcFafHabGmT40q15MUDAiB
+ PZrED3dMpIZgxltFHNRxkghGJjlvss6wgUDVge9ELv0teRTZZ9zmWXvjgHnWs3u9m8QXd5hxv
+ KH4QY8ARY4rA31A3ZMT+cFdcnF7eIgjW0wuEJzoKWeMlbM7il2VLYK/MGpCLLY8uYhD3R2tBI
+ tl4w4I1omUG26sPzS4A1QQjLDY73tLaPFur56fHE1mD5r+mC8YKq9m7I9PdE1tC8vTtFEf03t
+ LN1KtpQAruc0beK9bZRm64/kUyVJn0lVNGRAxgvFDjkdubLXEjDgEXfYIkt0jY8gj4+/8FA35
+ jRK5AyG6jTas2uUegS9FDm+onrmS8c1DC4353iCP0Gm4I2Wb9Ap89ycyZp6ZXiXDQdKNzTtUF
+ fI2npsVUGWtv/wcPz9VPuDtaHqlzl5GfDYxuMyLDgzSJqDdEI5aOr/R4jQOIwoo4zfV5Fhq4Y
+ ksKTo9gipCulTtODp6BhuElSsJG16nlOb8nTIWGM1UzOL8T1vCw3Zh4GqysHZ9okqZa4NOmGn
+ sdl7fXu1DYHpwcYs5wAmMefRWbxCHRHvbbEWAkxYmej+kwbeuCeoxItz2oKQxXHbpH2GGfD20
+ ENWTDA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230702_004923_245349_44999AB3 
-X-CRM114-Status: UNSURE (   4.76  )
+X-CRM114-CacheID: sfid-20230702_021441_875058_369A67BA 
+X-CRM114-Status: UNSURE (   5.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,8 +102,11 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-4oCmCj4gdGhleSBkZXBlbmRzIG9uIOKApgoKUGxlYXNlIGF2b2lkIGEgdHlwbyBpbiBhIHN1YnNl
-cXVlbnQgY2hhbmdlIGRlc2NyaXB0aW9uLgoKUmVnYXJkcywKTWFya3VzCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+PiBTb3VyY2UgYW5kIGRlc3RpbmF0aW9uIGJ1ZmZlciBoZWlnaHQgbWF5IG5vdCBiZSB0aGUgc2Ft
+ZSBiZWNhdXNlCj4gYWxpZ25tZW50IGNvbnN0cmFpbnQgYXJlIGRpZmZlcmVudC4KCkhvdyBkbyB5
+b3UgdGhpbmsgYWJvdXQgdG8gdXNlIHRoZSB3b3JkaW5nIHZhcmlhbnQg4oCcYWxpZ25tZW50IGNv
+bnN0cmFpbnRzIGFyZSBkaWZmZXJlbnTigJ0KaW4gYSBzdWJzZXF1ZW50IGNoYW5nZSBkZXNjcmlw
+dGlvbj8KClJlZ2FyZHMsCk1hcmt1cwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
