@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DF9C0015E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jul 2023 16:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C621CC30654
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jul 2023 16:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=D/l/70EI9ID+xMAaNZNnKn0H/Nx0SVMSJ0wBOQfT8G8=; b=D4sDMFTkbXLt5v
-	HHizSxrldFUI131vFPYA1Y2uQEO9ZEdKZoyn1o5RB8OQiDgmMkZ/enR+8JNZuUjUgC/ExtrGLJVkS
-	QougFB4DKsWgY3X4+jjiiTbJnWsdfzIrtFt0lUh8cQL3vF54/G4/dFtKDXhuz9tlgazDhqcmAAHan
-	mMGZLO/hfRI249WWFZS9Sw2wCHpuV7D3BT/vNeenPRTGptZudGO99Zsi7nxjxv602W72I7NqaHXRy
-	L6SOgwNixoerz4pDpHjudPb0+HGXRMPgUEcPHZMMvSYnFkrmHZrxxIJT3aNuKSYRdbMg8tKaa8rY3
-	c8lILcFjRXdX/f2y4RSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xonxR+fJlhM2xjpW/fNiWrJUfOjD3bE4XD8DUU+eLlw=; b=zK+QP0ol7CxeG2
+	U16rbuwiJtdtyTWadkmCk5Jqgrihp0Oh9VFiTTX4msPgYiWZKcd6zr6CS8ooGaqbKOh5wY7phIpIk
+	tpReehtt2ma9LIXPiwYwQtC4HHhqwAfm++VoKayPe0e7KJs1x/SPDPL5Bcd9br/2FkCM0eWj8qmb9
+	nKJcrjm4/xKuWbXK2MYmJpIa1JXx7KQ/If9sLrzgOKzbGm+bxD2zPyYUse9emxbThS35/U0VqMVPQ
+	8WIX7QSk7cTC5JM1sgNQ7SnKLzYrr7zQ2HKhzKwT2iJ2n4gZ54A3wnmvWFu5wGMijlQlqZmcAxicd
+	bTfj8ijaEhPe6ht0EJDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGMcO-00B1nN-0r;
-	Mon, 03 Jul 2023 16:41:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qGMp1-00B2xC-1d;
+	Mon, 03 Jul 2023 16:54:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGMcL-00B1m9-20
+	id 1qGMoy-00B2wb-0l
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Jul 2023 16:41:39 +0000
-Received: from jupiter.universe (dyndsl-091-248-215-029.ewe-ip-backbone.de [91.248.215.29])
+	Mon, 03 Jul 2023 16:54:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 01E206606F6C;
-	Mon,  3 Jul 2023 17:41:34 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688402494;
-	bh=B0URFXgImNMOKALU8VS0EvBoWTwaU4+U/GaqYEktyFs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=BMfTbVp3pDQZF4LAVvTLSGGR61z5ggRm8jnjTib/HV9Ot5jRcI/poXVrBbrYueekA
-	 WjIMbrhiSEL+r1a4KraEd+kbEiph37/qfUkFTLgeJRAyqy/3tL7mRrN6iIHt3vA7/s
-	 YEyM82LNnqqlU2hPD3IF1yAjGLlJTtZgdCPAgT1D2TluR0pjVMc0IBNjoDmXliAz+G
-	 onWLTXc2lzkHcu14r9+fYsE6P3EIy38Rx1XFhTepLqu3uvFC6djLi/pjOR0jv5YUlL
-	 Hz0BNoZze96xk6jMfsMbZAaTCO4nxYElSF2qXc8xMlwsmI3LHwgfQK0+ZEyo8daPr0
-	 AQWYPIxT299tw==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 025444829F6; Mon,  3 Jul 2023 18:41:30 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Marc Zyngier <maz@kernel.org>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C6CB060FE2;
+	Mon,  3 Jul 2023 16:54:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A4F7C433C8;
+	Mon,  3 Jul 2023 16:54:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688403279;
+	bh=1esEcU2jcd4ZFiYLpi/Z/+JsLZfJuT+BZMzPEsrCXIU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=ojMC9qMG/1wNxyKIZ1mpop6q9A4xk5udZYn6K9KVoCi5dJ57IARmF9lAF3TxHZn9V
+	 X8gtizv8NR6AEQnIaiKvorF4AaFN9PPM/JiQROdJIZEjAAjPkxpwSIWkoBq1iGKo3J
+	 nuxeXgU40HyB/X4fwz6zz1/wd2OoeAOcK//SFfAm57n+Tvu7lYe4y0RVbeVffvCJCZ
+	 Cbt1aktoxg0uHST16e5oYlXCmaoY8tGveDk6qmae4LTSVe9cQPkd1t/OuKbc9CmgFx
+	 8hkHleHMpzodLtKXJQUKzr4eNrs2y8HMd6nnh9D91n1LBWoShj6KH+S7pBCw5h/Sf9
+	 5xWLKqpo+OgpQ==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1qGMou-00ADVA-VJ;
+	Mon, 03 Jul 2023 17:54:37 +0100
+Date: Mon, 03 Jul 2023 17:54:36 +0100
+Message-ID: <863525x7eb.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Chris Morgan <macromorgan@hotmail.com>,
 	Thomas Gleixner <tglx@linutronix.de>,
 	Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v1 1/1] irqchip/gic-v3: Enable Rockchip 3588001 erratum workaround for RK3588S
-Date: Mon,  3 Jul 2023 18:41:29 +0200
-Message-Id: <20230703164129.193991-1-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-MIME-Version: 1.0
+Subject: Re: [PATCH v1 1/1] irqchip/gic-v3: Enable Rockchip 3588001 erratum workaround for RK3588S
+In-Reply-To: <20230703164129.193991-1-sebastian.reichel@collabora.com>
+References: <20230703164129.193991-1-sebastian.reichel@collabora.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, macromorgan@hotmail.com, tglx@linutronix.de, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_094137_841876_993120BC 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20230703_095440_353051_33FC4910 
+X-CRM114-Status: GOOD (  25.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,40 +91,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit a8707f553884 ("irqchip/gic-v3: Add Rockchip 3588001 erratum
-workaround") mentioned RK3588S (the slimmed down variant of RK3588)
-being affected, but did not check for its compatible value. Thus the
-quirk is not applied on RK3588S. Since the GIC ITS node got added to the
-upstream DT, boards using RK3588S are no longer booting without this
-quirk being applied.
+On Mon, 03 Jul 2023 17:41:29 +0100,
+Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+> 
+> Commit a8707f553884 ("irqchip/gic-v3: Add Rockchip 3588001 erratum
+> workaround") mentioned RK3588S (the slimmed down variant of RK3588)
+> being affected, but did not check for its compatible value. Thus the
+> quirk is not applied on RK3588S. Since the GIC ITS node got added to the
+> upstream DT, boards using RK3588S are no longer booting without this
+> quirk being applied.
+> 
+> Fixes: 06cdac8e8407 ("arm64: dts: rockchip: add GIC ITS support to rk3588")
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+> I recently got a Rock 5A and noticed this issue. Apart from it, the Indiedroid
+> Nova should also be affected (I don't have that board). There are no other
+> upstream RK3588S boards at the moment.
 
-Fixes: 06cdac8e8407 ("arm64: dts: rockchip: add GIC ITS support to rk3588")
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-I recently got a Rock 5A and noticed this issue. Apart from it, the Indiedroid
-Nova should also be affected (I don't have that board). There are no other
-upstream RK3588S boards at the moment.
----
- drivers/irqchip/irq-gic-v3-its.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+What about "khadas,edge2"?
 
-diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-index 1994541eaef8..034ece9ac47c 100644
---- a/drivers/irqchip/irq-gic-v3-its.c
-+++ b/drivers/irqchip/irq-gic-v3-its.c
-@@ -4727,7 +4727,8 @@ static bool __maybe_unused its_enable_rk3588001(void *data)
- {
- 	struct its_node *its = data;
- 
--	if (!of_machine_is_compatible("rockchip,rk3588"))
-+	if (!of_machine_is_compatible("rockchip,rk3588") &&
-+	    !of_machine_is_compatible("rockchip,rk3588s"))
- 		return false;
- 
- 	its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+> ---
+>  drivers/irqchip/irq-gic-v3-its.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
+> index 1994541eaef8..034ece9ac47c 100644
+> --- a/drivers/irqchip/irq-gic-v3-its.c
+> +++ b/drivers/irqchip/irq-gic-v3-its.c
+> @@ -4727,7 +4727,8 @@ static bool __maybe_unused its_enable_rk3588001(void *data)
+>  {
+>  	struct its_node *its = data;
+>  
+> -	if (!of_machine_is_compatible("rockchip,rk3588"))
+> +	if (!of_machine_is_compatible("rockchip,rk3588") &&
+> +	    !of_machine_is_compatible("rockchip,rk3588s"))
+>  		return false;
+>  
+>  	its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
+
+I don't mind taking this, but it also mean that only a new kernel will
+boot. Shouldn't you *also* fix the DT so that it advertises rk3588 as
+a fallback to rk3588s? This would ensure that an old kernel can boot
+as well.
+
+	M.
+
 -- 
-2.40.1
-
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
