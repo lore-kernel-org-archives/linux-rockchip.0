@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092F4C0015E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jul 2023 08:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB06EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jul 2023 08:59:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y8pXxlyIjW+jQLqyo3ukohU9ldUcHJFVTTs6KtWfuUE=; b=CWNANxP5mq2p1q
-	pKY5m4WTu6J/cvKAHwTkjGaxwLENsmOMnADgp2cLlOeNZBnCS6lMg+9jYqY8URFCNIMAz7glfHTrr
-	HsSog58Y+S1MtL+Stzvm+TYwJHw+eem2Tn7m8tosXV9pddcWukC3Sf9reHSNzM9JHWrgKn6a/OC5U
-	eNJ6dAXzFYAO6T2bz8b1xNKUJcsm8jQ9yzBHgXMhnIGyyf6lsGAv0NR3HdNRSoXVZWM/FpurKNp7U
-	jYbEc+8y57sFmdqska7Ue0WfKhArqsZSUdj0uavamWcAR18fPkgj8PycCaaf2RBGbnQKnrRt7XkD7
-	tavB18rReqiGhWGUNVAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AG4K5Jrw+RePMvdiQBAEJZC/uJJwKThYx7gQLVmSuPQ=; b=NnKL6vLcffzSqL
+	q0eU8KtpfP59utyukUUb3ihRBnXJd1FE6qI4h2KbbNIkT0zS0DzFSA8OuGIyWeJ+2xzrwm5jd3AqX
+	uEumNKQ0c80ul7xTtdtiiFiQYf4gBqR5LBYt9fry+a8sLtzlXLUfX790mEmBnEAwhrmqLYmD6JVwK
+	8oPFJmGLJSkSUIxErE6iEgL6Oqd742rNiJWbGs7b+8KGR/X37sOsfJB3Qeq0ev3+poaL/ueOmWYq6
+	cQh+S/ZJPe4OMRQFeUeYU+sa1o4yWp5oLY1z96/9LFz8eT+bFyvE/7yT5hmuaiIydlCrq430KCLV7
+	Tc8b1iHwSGl2yNgpAP9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGFKf-009p4v-1J;
-	Mon, 03 Jul 2023 08:54:53 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1qGFPC-009piw-1W;
+	Mon, 03 Jul 2023 08:59:34 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGFKc-009p3e-25;
-	Mon, 03 Jul 2023 08:54:52 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-c2cf29195f8so4881261276.1;
-        Mon, 03 Jul 2023 01:54:48 -0700 (PDT)
+	id 1qGFPA-009piL-0j;
+	Mon, 03 Jul 2023 08:59:33 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-51d88f1c476so4675509a12.0;
+        Mon, 03 Jul 2023 01:59:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1688374488; x=1690966488;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2P1+8Vl4nN04UtbHWZzTAFlwj7juUIzaPe884hrImxc=;
-        b=D+UL71vejPPkfFEC9QjT/anRmhQj61MJn/T2Wuz+8Lq9eHWp4ip0SdPMZs9EUKUIt5
-         Cxgf9gvnF8ypVhtCllM9F5xQSw7K8AgUXi9jXjFhomZ/2czKvKkwVwFeJ3X6oV4HJpeM
-         hGNXsycE3U76fRJZFugirljo8Z5TiUrMLbiHJphFUwa20F7FWOHSJv96zn0PR31Oz7Kc
-         fCXsdzmknD2RSc7eyNnrXZxqmoDdEB6JbDHUoG+YXW4aU/EZWQTc/1XBLV8ejFAImisZ
-         rgXQ+RwC9K71wNvMf+9XD2UG7Jg9IC+16z5cSW/0f8R1JACJmlo3n+TKSWwYWE7w9+2F
-         Xkgg==
+        d=gmail.com; s=20221208; t=1688374770; x=1690966770;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gIU+W3KyfXyLBg7kXWXihpWayTsoJV4YZPC0K6yLsJA=;
+        b=JUWUA2aOc9Dgh4V5Q7UhO675h2MALJ5NW9MdQo101rjli8W6OLSSe1OswnGwmKyxrB
+         NHAUqn0UPLG4yGtZMWH7AeC8CxBMCMXdg6abYWBNi1BfS5zfu3f6898+i89v95xWw6kp
+         GvEUWvuhCV1ZkHG39MFp0vYwtTJL6f+XzqaRfT0A4yfCYG2gv4hqb6YxgSbaPiHijGpv
+         L7RL9qE6EPs2sbXSVEPx8EXype00i4baQGWNbw5zRK7QmYI3Mx97966lUGfTL9jcQprI
+         83RZ8yj/3MfV3dBGnVVyK91IqrR4m9MmA5Unj1F+ggj93CCca5I2pwNTCWBSJ93JOR2M
+         JJtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688374488; x=1690966488;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2P1+8Vl4nN04UtbHWZzTAFlwj7juUIzaPe884hrImxc=;
-        b=LK/TpovZmn1bjSgaz/kDr/p8Bh7bk6P/5bwYUN2WPgGd8ayxqLR00/PJfS8k2Nuq9i
-         c+fGXzYcUcFMcY4vGXm90kLm7/SuVyo+uyUQMiIxgUUqm1JksTJcZNWxnWJUhcVzmNRY
-         0rUsaDouVIh40mPpVdG22a89efld2LDyHaIAImE6/mORnXL5FXOHNLQyoTHMOJEJUBtq
-         rnZaI5/x9Gu0eBFIhuLYivvOOi+CYAwRHjduVm10c7SQVcSm68/1rAt6CdDmKyOlKx0i
-         L7YzZtPMy5bxOYKP8xopd0JO7thhXH8QFX4jliBVqrcj7pnVVvVk9Bb/OU+5e8ZpLtVw
-         N95Q==
-X-Gm-Message-State: ABy/qLYkGKyR+ABLnzTUJCocAjyVoYgBN0EodLl9NzK94zN+G7Yqb0Ns
-	16LaXcEgHSb76ofd+BQXaUREVF/t6QFB6HpjbFs=
-X-Google-Smtp-Source: APBJJlG75z1nfpbVvYw7Z+wJ+Z2EHygE7EH09Min96xS+Npy3j+/Xbha47DlKPIzV5Nx9YPV6reVdaNSfZKF7oEAnOs=
-X-Received: by 2002:a25:3754:0:b0:c4e:24d:ae7f with SMTP id
- e81-20020a253754000000b00c4e024dae7fmr3689710yba.58.1688374487895; Mon, 03
- Jul 2023 01:54:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230630131753.1549685-1-rick.wertenbroek@gmail.com> <3e49476e-ee18-bfb8-ae1a-3a55a3d13f88@kernel.org>
-In-Reply-To: <3e49476e-ee18-bfb8-ae1a-3a55a3d13f88@kernel.org>
+        d=1e100.net; s=20221208; t=1688374770; x=1690966770;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gIU+W3KyfXyLBg7kXWXihpWayTsoJV4YZPC0K6yLsJA=;
+        b=Abpoa9OO+dlqfQQpg7opH8uId6bERwGars7SgnHOW8lKZeuHCOZ3yrxmcNzrRhcbNf
+         SV5KJ8g2JYdIkNrMcH4Ownns43kle7td2fzK9apW2lDK3j/1q1lX0Jwr8KhZAH+3NaF8
+         pU7Oj25+zEfokSYk80K8IHgP3l6Pno0RQzroG+UYiHFDcgnShEBMSuSprpPSswhU4+x1
+         zg14nzGNJOGrTSb0AeePHETpL3TdHm9PlsxXvIAgXXQ9/cDcfFzqaT7ahc36VZxODZmJ
+         pp3a2QphTVntIdFTsqVXiazzPtKw3gVfk65nk/DA/vE9Us3aGTOafNW1q+52SWeoRzWs
+         6YQg==
+X-Gm-Message-State: ABy/qLYomNeaIvNoYWJTNzjYPjlopggPzJTjDogxet+p7+91lNhauEQO
+	oyrNhXK2i0Vy5dWoICyfLWU=
+X-Google-Smtp-Source: APBJJlEtZ35iuRiAJo32s6RRkTkvahBjWT1OeGN/+dzdJFyZKgH0GZC7TK0lOAP/xxPXzDnniK+bYw==
+X-Received: by 2002:a17:906:5a94:b0:96f:c0b0:f137 with SMTP id l20-20020a1709065a9400b0096fc0b0f137mr6850646ejq.16.1688374770463;
+        Mon, 03 Jul 2023 01:59:30 -0700 (PDT)
+Received: from A13PC04R.einet.ad.eivd.ch ([193.134.219.72])
+        by smtp.googlemail.com with ESMTPSA id gx23-20020a170906f1d700b00992dcae806bsm4501159ejb.5.2023.07.03.01.59.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jul 2023 01:59:29 -0700 (PDT)
 From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Date: Mon, 3 Jul 2023 10:54:11 +0200
-Message-ID: <CAAEEuhrCHQBi89G2hzJjDZmG3zR=ErbtGQTGuVbiPUOCYh=S5Q@mail.gmail.com>
-Subject: Re: [PATCH] PCI: rockchip: Use 64-bit mask on MSI 64-bit PCI address
-To: Damien Le Moal <dlemoal@kernel.org>
-Cc: Dan Carpenter <dan.carpenter@linaro.org>, stable@vger.kernel.org, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: alberto.dassatti@heig-vd.ch
+Cc: dlemoal@kernel.org,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	stable@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] PCI: rockchip: Use 64-bit mask on MSI 64-bit PCI address
+Date: Mon,  3 Jul 2023 10:58:45 +0200
+Message-Id: <20230703085845.2052008-1-rick.wertenbroek@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_015450_683732_EEA486D2 
-X-CRM114-Status: GOOD (  26.48  )
+X-CRM114-CacheID: sfid-20230703_015932_308927_590E1E6C 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,103 +95,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKdWwgMywgMjAyMyBhdCA0OjA14oCvQU0gRGFtaWVuIExlIE1vYWwgPGRsZW1vYWxA
-a2VybmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiA2LzMwLzIzIDIyOjE3LCBSaWNrIFdlcnRlbmJyb2Vr
-IHdyb3RlOgo+ID4gQSAzMi1iaXQgbWFzayB3YXMgdXNlZCBvbiB0aGUgNjQtYml0IFBDSSBhZGRy
-ZXNzIHVzZWQgZm9yIG1hcHBpbmcgTVNJcy4KPiA+IFRoaXMgd291bGQgcmVzdWx0IGluIHRoZSB1
-cHBlciAzMiBiaXRzIGJlaW5nIHVuaW50ZW50aW9uYWxseSB6ZXJvZWQgYW5kCj4gPiBNU0lzIGdl
-dHRpbmcgbWFwcGVkIHRvIGluY29ycmVjdCBQQ0kgYWRkcmVzc2VzIGlmIHRoZSBhZGRyZXNzIGhh
-ZCBhbnkKPiA+IG9mIHRoZSB1cHBlciBiaXRzIHNldC4KPiA+Cj4gPiBSZXBsYWNlIDMyLWJpdCBt
-YXNrIGJ5IGFwcHJvcHJpYXRlIDY0LWJpdCBtYXNrIGFuZCByZW5hbWUgMzItYml0IG1hc2sKPiA+
-IGZvciBjbGFyaXR5Lgo+ID4KPiA+IEZpeGVzOiBkYzczZWQwZjFiOGIgKCJQQ0k6IHJvY2tjaGlw
-OiBGaXggd2luZG93IG1hcHBpbmcgYW5kIGFkZHJlc3MgdHJhbnNsYXRpb24gZm9yIGVuZHBvaW50
-IikKPiA+IFJlcG9ydGVkLWJ5OiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQGxpbmFyby5v
-cmc+Cj4gPiBDbG9zZXM6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBjaS84ZDE5ZTVi
-Ny04ZmEwLTQ0YTQtOTBlMi05YmIwNmY1ZWI2OTRAbW9yb3RvLm1vdW50YWluLwo+ID4gU2lnbmVk
-LW9mZi1ieTogUmljayBXZXJ0ZW5icm9layA8cmljay53ZXJ0ZW5icm9la0BnbWFpbC5jb20+Cj4g
-PiBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+ID4gLS0tCj4gPiAgZHJpdmVycy9wY2kvY29u
-dHJvbGxlci9wY2llLXJvY2tjaGlwLWVwLmMgfCAxMiArKysrKystLS0tLS0KPiA+ICBkcml2ZXJz
-L3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaCAgICB8ICA2ICsrKy0tLQo+ID4gIDIgZmls
-ZXMgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+ID4KPiA+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtZXAuYyBiL2RyaXZl
-cnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1lcC5jCj4gPiBpbmRleCAwYWYwZTk2NWZi
-NTcuLjMxM2ZhY2U2YTg3ZiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
-cGNpZS1yb2NrY2hpcC1lcC5jCj4gPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUt
-cm9ja2NoaXAtZXAuYwo+ID4gQEAgLTM1NCw3ICszNTQsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlw
-X3BjaWVfZXBfc2VuZF9tc2lfaXJxKHN0cnVjdCByb2NrY2hpcF9wY2llX2VwICplcCwgdTggZm4s
-Cj4gPiAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXAgPSAmZXAtPnJvY2tjaGlw
-Owo+ID4gICAgICAgdTMyIGZsYWdzLCBtbWUsIGRhdGEsIGRhdGFfbWFzazsKPiA+ICAgICAgIHU4
-IG1zaV9jb3VudDsKPiA+IC0gICAgIHU2NCBwY2lfYWRkcjsKPiA+ICsgICAgIHU2NCBwY2lfYWRk
-ciwgcGNpX2FkZHJfbWFzayA9IEdFTk1BU0soNjMsIDgpOwo+Cj4gSSB0aGluayB5b3UgY2FuIHNp
-bXBsaWZ5IGFsbCB0aGlzIHdpdGggb25seSB0aGUgY2hhbmdlIHRvIHRoZSBkZWZpbml0aW9uIG9m
-Cj4gUENJRV9BRERSX01BU0sgbWFjcm8uIEFwcGx5aW5nIGEgNjQgYml0cyBtYXNrIGZvciBsb3cg
-Yml0cyB0byBhIDMyLWJpdHMgdmFyaWFibGUKPiBpcyBPSyBhbmQgc2hvdWxkIG5vdCBnZW5lcmF0
-ZSBhbnkgY29tcGxhaW50cyBmcm9tIHRoZSBjb21waWxlci4KPiBBbHNvLCB0aGF0ICI4IiBpbiB0
-aGUgR0VOTUFTSyBjYW4gYmUgcmVwbGFjZWQgYnkgTUlOX0FYSV9BRERSX0JJVFNfUEFTU0VELgo+
-IFNvOgo+Cj4gI2RlZmluZSBQQ0lFX0FERFJfTUFTSyAgR0VOTUFTSyg2MywgTUlOX0FYSV9BRERS
-X0JJVFNfUEFTU0VEKQo+Cj4gV291bGQgZml4IGV2ZXJ5dGhpbmcgSSB0aGluay4KPgo+IElmIGl0
-IGRvZXMgbm90LCBJIHdvdWxkIHByZWZlciB5b3UgZGVmaW5lIGEgbWFjcm8gZm9yIHRoYXQgR0VO
-TUFTSyg2MywgOCkgbWFzawo+IGluc3RlYWQgb2YgdXNpbmcgYSB2YXJpYWJsZSBvbiBzdGFjay4g
-VGhhdCB3b3VsZCBiZSBtb3JlIGVmZmljaWVudCBjb2RlIHdpc2UsCj4gcmVtb3ZpbmcgYSBtZW1v
-cnkgYWNjZXNzLgoKSW5kZWVkIHRoaXMgd291bGQgbWFrZSB0aGUgcGF0Y2ggbXVjaCBzaW1wbGVy
-LgpJIHdpbGwgcHJlcGFyZSBhbmQgc2VuZCB0aGUgdjIuIFRoYW5rIHlvdSBmb3IgdGhlIHN1Z2dl
-c3Rpb25zCgpSZWdhcmRzLApSaWNrCgo+Cj4gPiAgICAgICB1MzIgcjsKPiA+Cj4gPiAgICAgICAv
-KiBDaGVjayBNU0kgZW5hYmxlIGJpdCAqLwo+ID4gQEAgLTM5MSwxOCArMzkxLDE4IEBAIHN0YXRp
-YyBpbnQgcm9ja2NoaXBfcGNpZV9lcF9zZW5kX21zaV9pcnEoc3RydWN0IHJvY2tjaGlwX3BjaWVf
-ZXAgKmVwLCB1OCBmbiwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQ
-Q0lfTVNJX0FERFJFU1NfTE8pOwo+ID4KPiA+ICAgICAgIC8qIFNldCB0aGUgb3V0Ym91bmQgcmVn
-aW9uIGlmIG5lZWRlZC4gKi8KPiA+IC0gICAgIGlmICh1bmxpa2VseShlcC0+aXJxX3BjaV9hZGRy
-ICE9IChwY2lfYWRkciAmIFBDSUVfQUREUl9NQVNLKSB8fAo+ID4gKyAgICAgaWYgKHVubGlrZWx5
-KGVwLT5pcnFfcGNpX2FkZHIgIT0gKHBjaV9hZGRyICYgcGNpX2FkZHJfbWFzaykgfHwKPiA+ICAg
-ICAgICAgICAgICAgICAgICBlcC0+aXJxX3BjaV9mbiAhPSBmbikpIHsKPiA+ICAgICAgICAgICAg
-ICAgciA9IHJvY2tjaGlwX29iX3JlZ2lvbihlcC0+aXJxX3BoeXNfYWRkcik7Cj4gPiAgICAgICAg
-ICAgICAgIHJvY2tjaGlwX3BjaWVfcHJvZ19lcF9vYl9hdHUocm9ja2NoaXAsIGZuLCByLAo+ID4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVwLT5pcnFfcGh5c19h
-ZGRyLAo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBjaV9h
-ZGRyICYgUENJRV9BRERSX01BU0ssCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgflBDSUVfQUREUl9NQVNLICsgMSk7Cj4gPiAtICAgICAgICAgICAgIGVwLT5p
-cnFfcGNpX2FkZHIgPSAocGNpX2FkZHIgJiBQQ0lFX0FERFJfTUFTSyk7Cj4gPiArICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGNpX2FkZHIgJiBwY2lfYWRkcl9tYXNr
-LAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH5wY2lfYWRk
-cl9tYXNrICsgMSk7Cj4gPiArICAgICAgICAgICAgIGVwLT5pcnFfcGNpX2FkZHIgPSAocGNpX2Fk
-ZHIgJiBwY2lfYWRkcl9tYXNrKTsKPiA+ICAgICAgICAgICAgICAgZXAtPmlycV9wY2lfZm4gPSBm
-bjsKPiA+ICAgICAgIH0KPiA+Cj4gPiAtICAgICB3cml0ZXcoZGF0YSwgZXAtPmlycV9jcHVfYWRk
-ciArIChwY2lfYWRkciAmIH5QQ0lFX0FERFJfTUFTSykpOwo+ID4gKyAgICAgd3JpdGV3KGRhdGEs
-IGVwLT5pcnFfY3B1X2FkZHIgKyAocGNpX2FkZHIgJiB+cGNpX2FkZHJfbWFzaykpOwo+ID4gICAg
-ICAgcmV0dXJuIDA7Cj4gPiAgfQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
-cm9sbGVyL3BjaWUtcm9ja2NoaXAuaCBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2Nr
-Y2hpcC5oCj4gPiBpbmRleCBmZTAzMzM3NzhmZDkuLjJkN2IwNWYwN2I3ZSAxMDA2NDQKPiA+IC0t
-LSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCj4gPiArKysgYi9kcml2
-ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+ID4gQEAgLTE1OCwxMSArMTU4LDEx
-IEBACj4gPiAgI2RlZmluZSBQQ0lFX1JDX0NPTkZJR19USFBfQ0FQICAgICAgICAgICAgICAgKFBD
-SUVfUkNfQ09ORklHX0JBU0UgKyAweDI3NCkKPiA+ICAjZGVmaW5lICAgUENJRV9SQ19DT05GSUdf
-VEhQX0NBUF9ORVhUX01BU0sgICBHRU5NQVNLKDMxLCAyMCkKPiA+Cj4gPiAtI2RlZmluZSBQQ0lF
-X0FERFJfTUFTSyAgICAgICAgICAgICAgICAgICAgICAgMHhmZmZmZmYwMAo+ID4gKyNkZWZpbmUg
-UENJRV9MT19BRERSX01BU0sgICAgICAgICAgICBHRU5NQVNLKDMxLCA4KQo+ID4gICNkZWZpbmUg
-UENJRV9DT1JFX0FYSV9DT05GX0JBU0UgICAgICAgICAgICAgIDB4YzAwMDAwCj4gPiAgI2RlZmlu
-ZSBQQ0lFX0NPUkVfT0JfUkVHSU9OX0FERFIwICAgIChQQ0lFX0NPUkVfQVhJX0NPTkZfQkFTRSAr
-IDB4MCkKPiA+ICAjZGVmaW5lICAgUENJRV9DT1JFX09CX1JFR0lPTl9BRERSMF9OVU1fQklUUyAw
-eDNmCj4gPiAtI2RlZmluZSAgIFBDSUVfQ09SRV9PQl9SRUdJT05fQUREUjBfTE9fQUREUiAgUENJ
-RV9BRERSX01BU0sKPiA+ICsjZGVmaW5lICAgUENJRV9DT1JFX09CX1JFR0lPTl9BRERSMF9MT19B
-RERSICBQQ0lFX0xPX0FERFJfTUFTSwo+ID4gICNkZWZpbmUgUENJRV9DT1JFX09CX1JFR0lPTl9B
-RERSMSAgICAoUENJRV9DT1JFX0FYSV9DT05GX0JBU0UgKyAweDQpCj4gPiAgI2RlZmluZSBQQ0lF
-X0NPUkVfT0JfUkVHSU9OX0RFU0MwICAgIChQQ0lFX0NPUkVfQVhJX0NPTkZfQkFTRSArIDB4OCkK
-PiA+ICAjZGVmaW5lIFBDSUVfQ09SRV9PQl9SRUdJT05fREVTQzEgICAgKFBDSUVfQ09SRV9BWElf
-Q09ORl9CQVNFICsgMHhjKQo+ID4gQEAgLTE3MCw3ICsxNzAsNyBAQAo+ID4gICNkZWZpbmUgUENJ
-RV9DT1JFX0FYSV9JTkJPVU5EX0JBU0UgICAweGMwMDgwMAo+ID4gICNkZWZpbmUgUENJRV9SUF9J
-Ql9BRERSMCAgICAgICAgICAgICAoUENJRV9DT1JFX0FYSV9JTkJPVU5EX0JBU0UgKyAweDApCj4g
-PiAgI2RlZmluZSAgIFBDSUVfQ09SRV9JQl9SRUdJT05fQUREUjBfTlVNX0JJVFMgMHgzZgo+ID4g
-LSNkZWZpbmUgICBQQ0lFX0NPUkVfSUJfUkVHSU9OX0FERFIwX0xPX0FERFIgIFBDSUVfQUREUl9N
-QVNLCj4gPiArI2RlZmluZSAgIFBDSUVfQ09SRV9JQl9SRUdJT05fQUREUjBfTE9fQUREUiAgUENJ
-RV9MT19BRERSX01BU0sKPiA+ICAjZGVmaW5lIFBDSUVfUlBfSUJfQUREUjEgICAgICAgICAgICAg
-KFBDSUVfQ09SRV9BWElfSU5CT1VORF9CQVNFICsgMHg0KQo+ID4KPiA+ICAvKiBTaXplIG9mIG9u
-ZSBBWEkgUmVnaW9uIChub3QgUmVnaW9uIDApICovCj4KPiAtLQo+IERhbWllbiBMZSBNb2FsCj4g
-V2VzdGVybiBEaWdpdGFsIFJlc2VhcmNoCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+A 32-bit mask was used on the 64-bit PCI address used for mapping MSIs.
+This would result in the upper 32 bits being unintentionally zeroed and
+MSIs getting mapped to incorrect PCI addresses if the address had any
+of the upper bits set.
+
+Replace 32-bit mask by appropriate 64-bit mask.
+
+Fixes: dc73ed0f1b8b ("PCI: rockchip: Fix window mapping and address translation for endpoint")
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Closes: https://lore.kernel.org/linux-pci/8d19e5b7-8fa0-44a4-90e2-9bb06f5eb694@moroto.mountain/
+Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: stable@vger.kernel.org
+---
+ drivers/pci/controller/pcie-rockchip.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index fe0333778fd9..627d08b34827 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -158,7 +158,9 @@
+ #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+ #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
+ 
+-#define PCIE_ADDR_MASK			0xffffff00
++#define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
++#define MIN_AXI_ADDR_BITS_PASSED		8
++#define PCIE_ADDR_MASK			GENMASK(63, MIN_AXI_ADDR_BITS_PASSED)
+ #define PCIE_CORE_AXI_CONF_BASE		0xc00000
+ #define PCIE_CORE_OB_REGION_ADDR0	(PCIE_CORE_AXI_CONF_BASE + 0x0)
+ #define   PCIE_CORE_OB_REGION_ADDR0_NUM_BITS	0x3f
+@@ -185,8 +187,6 @@
+ #define AXI_WRAPPER_TYPE1_CFG			0xb
+ #define AXI_WRAPPER_NOR_MSG			0xc
+ 
+-#define MAX_AXI_IB_ROOTPORT_REGION_NUM		3
+-#define MIN_AXI_ADDR_BITS_PASSED		8
+ #define PCIE_RC_SEND_PME_OFF			0x11960
+ #define ROCKCHIP_VENDOR_ID			0x1d87
+ #define PCIE_LINK_IS_L2(x) \
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
