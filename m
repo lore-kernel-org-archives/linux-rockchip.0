@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55374EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:34:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9133EEB64DD
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1EkdCVXdt2gkrIHRqEKZ7r7yT8olZOawsxpq+lnAPVs=; b=n1kZwUvJrfNTrB
-	9jYqq7QCf2BSkkCRORmlsLcvHojWulUzR+hTcM+pSF81pFtXdcOet4ZLl5TcLi3q03dvejCeeuU0G
-	I0J9ouQF0Y78z640lRiu5qUIPNkoW81lCrQzZNXXPBh+kAhitzbGJ/8V8WdqaxyOie5efWCide26X
-	DhxQpCBJthe5EPbDyxA/ApnT1Pbnn+5ysgAh6c8y7xcHnzfDEjJYVi/Q8hvXY4SoaYVwO5DoFKEhm
-	XtLmcc4P9hsEUUwyMDq329kKDLEJEOeqgNfUHm0H7zfvcpLa6oPONm0tiYqd0qn37u+Z6ihkVkVUO
-	whM4Zzlyxb7wtbPehqbQ==;
+	List-Owner; bh=K8mmzzapjMXchmX/NLacI5IK80XSgUqF7BnmHV1hByw=; b=CzF23IPYC3HGgW
+	1ShklTWPURyGWRsa1Z0X32NHa95ZW32aygSmBcydREPuOEekghZyc95P3ISU+wnrUWNagYfKlcZ9C
+	l0sentttU9LvoeMWSyZCYbp3D8TCtKgLk/PxUZG4JU6iYeZWRSqvzRHC+2hc3gCCwD4vqLxMM2asB
+	Xbnz18JNk9BGrdkmx/+rbQhzdoERF07Aw8rBfIDpB87PnBtHOqGXb4NEEGeAcoJJ+n5flstalxV5n
+	SC11ljdDJXeWcRRQDj78VqgLwRBmGmjxA/22gWTRYnPlXkOuW9HQD09g3HeuttfvOstwjgB+2dC2s
+	YhqZyUpCRUsvecWowqtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcPy-00Cjvv-2r;
-	Tue, 04 Jul 2023 09:33:54 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qGcQ0-00Cjwp-0L;
+	Tue, 04 Jul 2023 09:33:56 +0000
+Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcPI-00CjAO-0I
+	id 1qGcPH-00Cj92-2Q
 	for linux-rockchip@bombadil.infradead.org;
-	Tue, 04 Jul 2023 09:33:12 +0000
+	Tue, 04 Jul 2023 09:33:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=Skqxx2SkxTDa7rkcKNx5uX0PmbhQ6Nr0tLQEjoXCmwI=; b=XxDCX3W3SuHPN8RhSb7Sp9Er98
-	69ubjrl1u7nFVUrJmGdfXwdXK2K0lHafSv3ULABKdsTcMgZgL6ekVEm3tipSFPzPuC8KKvfsVGZO2
-	qdV4NS+okAxTratw7Gv+rXkLiHPdXgXzc/PXhO3fUal1NpPDbDTBBt6I8F021JK1hFhfRlAKOl0j+
-	TDi53m5rsuf8gfIYWh2RKCgznQi2BSG/JFrH2IbzkmThnaeffaHOB+O4bzsB3O5h6Pf3/cZ37Zopm
-	TT/OawaXjhZBCsDeA0uTz6so6lWjES6UoCLLqaomQBmlYJQjt+QxjW6WdD84y1gQiMK6/9LptjaF6
-	Njs9+qBg==;
+	bh=dPxkvAbFshHBUP1gvm3mXMrH6dgJqJQhV0rg6XszgV8=; b=MG+BVUcjxy9cf43VqPjzZUp3t4
+	Pbn8F2X2x3zblOEojxG6jfJqc5o2j8Lgc4ksBAkcUES/PSvm6B38h9geOznIiXgD+LYgykvKtioXm
+	R+C/NPAIPuL9N8ixrxbd2nXuuE4HjJX9Q9GIeKh5jkSfJylp03/IVtOAUezaWelTE8Jd4envcPfKY
+	94rkGtdx1b3hq6I4HEj7ZTJ0+eQQixmaJ1fch8+cKj24wGdSI2K0d6fi8cdYuYYkRroZR6jWjXIjB
+	BFSmFvpTMpYJqpY644knnBla3qGfP3leIKePgsaCb5Vlop7zOuh24LBIP/Wjh5nvBaObD5UjW/vBE
+	didkNbgw==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qGcPD-0091Kv-FD
-	for linux-rockchip@lists.infradead.org; Tue, 04 Jul 2023 09:33:10 +0000
+	id 1qGcP9-0091JP-0B
+	for linux-rockchip@lists.infradead.org; Tue, 04 Jul 2023 09:33:08 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOw-0006u1-0c; Tue, 04 Jul 2023 11:32:50 +0200
+	id 1qGcOx-0006xx-8Y; Tue, 04 Jul 2023 11:32:51 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOv-00C0A7-3d; Tue, 04 Jul 2023 11:32:49 +0200
+	id 1qGcOw-00C0Ap-HA; Tue, 04 Jul 2023 11:32:50 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOr-002Tye-BB; Tue, 04 Jul 2023 11:32:45 +0200
+	id 1qGcOr-002Ty3-4E; Tue, 04 Jul 2023 11:32:45 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -72,11 +72,10 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH v7 17/26] PM / devfreq: rockchip-dfi: make register stride SoC specific
-Date: Tue,  4 Jul 2023 11:32:33 +0200
-Message-Id: <20230704093242.583575-18-s.hauer@pengutronix.de>
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v7 09/26] PM / devfreq: rockchip-dfi: Clean up DDR type register defines
+Date: Tue,  4 Jul 2023 11:32:25 +0200
+Message-Id: <20230704093242.583575-10-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230704093242.583575-1-s.hauer@pengutronix.de>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
@@ -86,8 +85,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_103307_527312_9417E0CA 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20230704_103303_049506_E8FD560C 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,59 +103,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The currently supported RK3399 has a stride of 20 between the channel
-specific registers. Upcoming RK3588 has a different stride, so put
-the stride into driver data to make it configurable.
-While at it convert decimal 20 to hex 0x14 for consistency with RK3588
-which has a register stride 0x4000 and we want to write that in hex
-as well.
+Use the HIWORD_UPDATE() define known from other rockchip drivers to
+make the defines look less odd to the readers who've seen other
+rockchip drivers.
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+The HIWORD registers have their functional bits in the lower 16 bits
+whereas the upper 16 bits contain a mask. Only the functional bits that
+have the corresponding mask bit set are modified during a write. Although
+the register writes look different, the end result should be the same,
+at least there's no functional change intended with this patch.
+
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 33 ++++++++++++++++++----------
+ 1 file changed, 21 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 969b62f071b83..85ec93fd41858 100644
+index 6bccb6fbcfc0c..6b3ef97b3be09 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -112,6 +112,7 @@ struct rockchip_dfi {
- 	int active_events;
- 	int burst_len;
- 	int buswidth[DMC_MAX_CHANNELS];
-+	int ddrmon_stride;
- };
+@@ -26,15 +26,19 @@
  
- static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
-@@ -189,13 +190,13 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 		c->c[i].read_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_RD_NUM + i * 20);
-+				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].write_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_WR_NUM + i * 20);
-+				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
-+				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
- 		c->c[i].clock_cycles = readl_relaxed(dfi_regs +
--				DDRMON_CH0_COUNT_NUM + i * 20);
-+				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
- 	}
+ #define DMC_MAX_CHANNELS	2
+ 
++#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
++
+ /* DDRMON_CTRL */
+ #define DDRMON_CTRL	0x04
+-#define CLR_DDRMON_CTRL	(0x1f0000 << 0)
+-#define LPDDR4_EN	(0x10001 << 4)
+-#define HARDWARE_EN	(0x10001 << 3)
+-#define LPDDR3_EN	(0x10001 << 2)
+-#define SOFTWARE_EN	(0x10001 << 1)
+-#define SOFTWARE_DIS	(0x10000 << 1)
+-#define TIME_CNT_EN	(0x10001 << 0)
++#define DDRMON_CTRL_DDR4		BIT(5)
++#define DDRMON_CTRL_LPDDR4		BIT(4)
++#define DDRMON_CTRL_HARDWARE_EN		BIT(3)
++#define DDRMON_CTRL_LPDDR23		BIT(2)
++#define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
++#define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
++#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
++					 DDRMON_CTRL_LPDDR4 | \
++					 DDRMON_CTRL_LPDDR23)
+ 
+ #define DDRMON_CH0_COUNT_NUM		0x28
+ #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
+@@ -73,16 +77,20 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+ 	/* clear DDRMON_CTRL setting */
+-	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
++		       DDRMON_CTRL_HARDWARE_EN), dfi_regs + DDRMON_CTRL);
+ 
+ 	/* set ddr type to dfi */
+ 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
+-		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
++		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
++			       dfi_regs + DDRMON_CTRL);
+ 	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
+-		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
++		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
++			       dfi_regs + DDRMON_CTRL);
+ 
+ 	/* enable count, use software mode */
+-	writel_relaxed(SOFTWARE_EN, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
++		       dfi_regs + DDRMON_CTRL);
  }
  
-@@ -664,6 +665,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
- 	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
+ static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+@@ -90,7 +98,8 @@ static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+ 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+ 	void __iomem *dfi_regs = dfi->regs;
  
-+	dfi->ddrmon_stride = 0x14;
-+
- 	return 0;
- };
+-	writel_relaxed(SOFTWARE_DIS, dfi_regs + DDRMON_CTRL);
++	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
++		       dfi_regs + DDRMON_CTRL);
+ }
  
+ static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
 -- 
 2.39.2
 
