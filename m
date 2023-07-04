@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00E6C001B3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Jul 2023 18:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F05EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:33:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uOitMYXd7AyYWlDNb7zBCr3FWPuGs+JwgilGnE3vFsw=; b=q0b4Nvr2EN7rVA
-	8QpdykGc9F+lkXNuDqanfIW7qlkZCNxwo6hGKyVJW9wTTremDNod3OyNfqpxAASoiA2Qj9gD23EOf
-	GNRXn1UKstKzTrtMrbjHERGWLfRsb9yGOmdRBWQVBmfV7OAG/e1p3Wx1x0GdgIz9XildbkZl26LM4
-	/NQSbcjQF7v6Ss/Av4vRDkW0wFRtyMB41pGS+DmSVMPtOXaUNXczTMk7wG0CdT7ADuy1qp0yf97nd
-	bZ01/ort8cPs0Rxzmht270bvlTox1bcd7bQ4F4btZnH/tYUeCP4DYKMIVkWN6RKksVSk/z/N6JDcZ
-	GdSvwZyyr/Br1H/xjPqA==;
+	List-Owner; bh=7WzObcsjYouerLftnZdlu+8yUOTdi/hPs4O6myIHl+k=; b=owGyWkSZ/phtKr
+	uMeJYUdZLOHD49tVqVvY13YYByvH/E5lsJ7HAVIv75JEgCuXmq0GaX6mvzn7U5NQOttUqqM/tyqQw
+	8cDSJjjdPK2LirVUDtfKC+YkRlfzb2/+EgTpRK61OJFGInnGQL9ip4DGM4dMSk3u/g15LozMaXw55
+	zOI9bRyRRJqyRC0GXd7QvrkMF12QBsiTPE3AA3vD+NZz9h+sQn99ozCt+kSzUvwAFuLwWnhoJ9zE2
+	MEDVrAIp91Pp8VeRVlfPXql/Isjj+xuVpPF2eawWvGfTYTAphHkdl6QXdxSU6IwutsuPGzyNsWzRH
+	gY+HLsTl/uejGPksho7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGOVO-00BE4z-0u;
-	Mon, 03 Jul 2023 18:42:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qGcP5-00Ciz4-3B;
+	Tue, 04 Jul 2023 09:32:59 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGOVL-00BE4b-05
+	id 1qGcOy-00CisW-0R
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Jul 2023 18:42:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7EEF160B6A;
-	Mon,  3 Jul 2023 18:42:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5D50C433C7;
-	Mon,  3 Jul 2023 18:42:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688409749;
-	bh=ak7CRcSEzl92AIv7ty+8mdZMIXPfH1X1lmjQ31H8fZA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=iFBATVd/6dCJC/RSUNCK0CAfnuDUaoypWoaqEvv92jGZ0JS6l5rf1gG33mC0iwh4R
-	 GVB0usJRP5jA54niWzzhkm2706qtGePD6Qhw2wTTlSxGWATMEjjSH3hSRB7o1k5Rxa
-	 lQABRCkxAKPdEymlfHlUQEtRBVxvaIZln/p2arhlipd9VEG2PB/uUKZVXAqDD9LURx
-	 J1L6WlvlrgV2qrfdIEtNp6TD3Jo/tOa1maRgDNAa10IHGWrh35BH3dhgrZdcQXqP1k
-	 qoBcJOItgkTTYn9XYA9zW0k9xDSsAvRkzeoLLir9FLb8ecXdI9Ox17wvDYLgmu9iS4
-	 uxW+rMIbeKgoA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1qGOVH-00AF1y-Nq;
-	Mon, 03 Jul 2023 19:42:27 +0100
-Date: Mon, 03 Jul 2023 19:42:27 +0100
-Message-ID: <86y1jwx2ek.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Chris Morgan <macromorgan@hotmail.com>,
-	Yixun Lan <dlan@gentoo.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
+	Tue, 04 Jul 2023 09:32:55 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1qGcOv-0006tp-RT; Tue, 04 Jul 2023 11:32:49 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1qGcOt-00C09X-5Z; Tue, 04 Jul 2023 11:32:47 +0200
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1qGcOr-002Txn-12; Tue, 04 Jul 2023 11:32:45 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v1 1/1] irqchip/gic-v3: Enable Rockchip 3588001 erratum workaround for RK3588S
-In-Reply-To: <20230703174233.wn7jusqeh3udusdz@mercury.elektranox.org>
-References: <20230703164129.193991-1-sebastian.reichel@collabora.com>
-	<863525x7eb.wl-maz@kernel.org>
-	<20230703174233.wn7jusqeh3udusdz@mercury.elektranox.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: sebastian.reichel@collabora.com, macromorgan@hotmail.com, dlan@gentoo.org, tglx@linutronix.de, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	linux-pm@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>,
+	Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: [PATCH v7 05/26] PM / devfreq: rockchip-dfi: dfi store raw values in counter struct
+Date: Tue,  4 Jul 2023 11:32:21 +0200
+Message-Id: <20230704093242.583575-6-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230704093242.583575-1-s.hauer@pengutronix.de>
+References: <20230704093242.583575-1-s.hauer@pengutronix.de>
+MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_114231_161648_5B46134C 
-X-CRM114-Status: GOOD (  27.25  )
+X-CRM114-CacheID: sfid-20230704_023252_238508_2643D0F3 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,54 +90,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 03 Jul 2023 18:42:33 +0100,
-Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
-> 
-> > > ---
-> > >  drivers/irqchip/irq-gic-v3-its.c | 3 ++-
-> > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/irqchip/irq-gic-v3-its.c b/drivers/irqchip/irq-gic-v3-its.c
-> > > index 1994541eaef8..034ece9ac47c 100644
-> > > --- a/drivers/irqchip/irq-gic-v3-its.c
-> > > +++ b/drivers/irqchip/irq-gic-v3-its.c
-> > > @@ -4727,7 +4727,8 @@ static bool __maybe_unused its_enable_rk3588001(void *data)
-> > >  {
-> > >  	struct its_node *its = data;
-> > >  
-> > > -	if (!of_machine_is_compatible("rockchip,rk3588"))
-> > > +	if (!of_machine_is_compatible("rockchip,rk3588") &&
-> > > +	    !of_machine_is_compatible("rockchip,rk3588s"))
-> > >  		return false;
-> > >  
-> > >  	its->flags |= ITS_FLAGS_FORCE_NON_SHAREABLE;
-> > 
-> > I don't mind taking this, but it also mean that only a new kernel
-> > will boot.
-> 
-> Yes. My assumption is, that this is considered a fix and landing in the
-> 6.5 cycle. The rk3588s.dtsi from v6.4 does not yet have the GIC ITS
-> nodes. So there is not yet a tagged kernel with the boot failure. The
-> first one will be v6.5-rc1.
+When adding perf support to the DFI driver the perf part will
+need the raw counter values, so move the fixed * 4 factor to
+rockchip_dfi_get_event().
 
-Ah, fair enough. In this case I'll queue this patch without any remorse.
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/devfreq/event/rockchip-dfi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> The quirk in the GIC driver only landed in v6.4, so anything older
-> is broken anyways. So effectively we are talking about v6.4 booting
-> a v6.5 DT, which is not something we guarantee to be working as far
-> as I know.
-
-In general, I do make a point in making things work *in both
-directions*. But given that this is an erratum, there isn't much we
-can do, and advertising an ITS to a kernel that cannot handle it is
-doomed.
-
-Thanks,
-
-	M.
-
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 6b1ef29df7048..680f629da64fc 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -97,7 +97,7 @@ static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
+ 	/* Find out which channel is busier */
+ 	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
+ 		dfi->ch_usage[i].access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_DFI_ACCESS_NUM + i * 20) * 4;
++				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+ 		dfi->ch_usage[i].total = readl_relaxed(dfi_regs +
+ 				DDRMON_CH0_COUNT_NUM + i * 20);
+ 		tmp = dfi->ch_usage[i].access;
+@@ -149,7 +149,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+ 
+ 	busier_ch = rockchip_dfi_get_busier_ch(edev);
+ 
+-	edata->load_count = dfi->ch_usage[busier_ch].access;
++	edata->load_count = dfi->ch_usage[busier_ch].access * 4;
+ 	edata->total_count = dfi->ch_usage[busier_ch].total;
+ 
+ 	return 0;
 -- 
-Without deviation from the norm, progress is not possible.
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
