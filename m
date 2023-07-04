@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD06C001DD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CF16EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:34:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A035z1YBvmxKgQ7A/B45oNUGTPeRJxZgUSenK4bXhd4=; b=bVr+TctSkCyDIZ
-	0ZK0uQfndlRnxSUw26GyiCF3WBZFZiScB0WrBYjlJToikC7v15fW5X1yBfsNLbgR/Fkum7oDxCPmT
-	RRiMhwpeIKgibvUaNy7eJp3xEdNmJy0DFZnmOwUisMuQWZhKgnXoElTiDQRJYZvqWFGjuMqz/VaAw
-	5ChaglMxvOb8JJH6FMI+HdGhvxfVMusAUR6CJ1Vy3RRt0mlV8qwTJVk0NF2ctmwdj07Vk8CIUB8Yg
-	iovrAoe03RZBPwXT6NRWeMGDpsRAup9sH9+HfRU7ZmllXECNot53Q8sGSYCz4zWwLcdHuvpKHSrUn
-	4+dnVYeQBYL3WT4JOmQA==;
+	List-Owner; bh=0NAUVD0ioCrehG7IEq9T0+ympZPwRWzKfbK0N5RUDSc=; b=Omwv5ClhnjBm7a
+	HnVIFIU51/u4Nw3BeyFGdf7nJb2VLRE+zh9VImN/9KfmDjrLCxO+qjddKqoISrwtJjr+k8ELSdVAZ
+	DFmUbEBDKv4Ymmvbx3lq4zymetPHnCeLG/kxjN4HnWPuuCku5i1QuoVKo4kC463rXiYQJb/IZ7fqF
+	1f+IeGFTkR5yN+LTMYPv4OrlE9wN7CKS29pKzX3zOCfkLKIQgax5sXoNQDryTpHKedaWiuZQTGKiL
+	SpQw/c06iWvEfGHobrCM6ShyPQhMkHyKLF3cxpUXVjX7c4mL5sFoQy//6cwmc8jLXN2aPT2FqSPod
+	2RCWOZ4jE2akyQDg+Xxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcQ8-00Ck5d-18;
-	Tue, 04 Jul 2023 09:34:04 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1qGcQB-00CkAB-38;
+	Tue, 04 Jul 2023 09:34:07 +0000
+Received: from metis.ext.pengutronix.de ([85.220.165.71])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcPL-00CjEh-2L
+	id 1qGcPT-00CjOM-22
 	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Jul 2023 09:33:20 +0000
+	Tue, 04 Jul 2023 09:33:32 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOv-0006tq-RU; Tue, 04 Jul 2023 11:32:49 +0200
+	id 1qGcOv-0006tm-RF; Tue, 04 Jul 2023 11:32:49 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOt-00C09Y-68; Tue, 04 Jul 2023 11:32:47 +0200
+	id 1qGcOs-00C09R-Js; Tue, 04 Jul 2023 11:32:46 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOr-002TyN-8A; Tue, 04 Jul 2023 11:32:45 +0200
+	id 1qGcOr-002Txj-0B; Tue, 04 Jul 2023 11:32:45 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -58,11 +58,10 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH v7 14/26] PM / devfreq: rockchip-dfi: Prepare for multiple users
-Date: Tue,  4 Jul 2023 11:32:30 +0200
-Message-Id: <20230704093242.583575-15-s.hauer@pengutronix.de>
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v7 04/26] PM / devfreq: rockchip-dfi: Add SoC specific init function
+Date: Tue,  4 Jul 2023 11:32:20 +0200
+Message-Id: <20230704093242.583575-5-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230704093242.583575-1-s.hauer@pengutronix.de>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
@@ -72,8 +71,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_023315_901298_CEE72E50 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20230704_023323_690060_D8A82877 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,138 +89,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When adding perf support later the DFI must be enabled when
-either of devfreq-event or perf is active. Prepare for that
-by adding a usage counter for the DFI. Also move enabling
-and disabling of the clock away from the devfreq-event specific
-functions to which the perf specific part won't have access.
+Move the RK3399 specifics to a SoC specific init function to make
+the way free for supporting other SoCs later.
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 57 +++++++++++++++++++---------
- 1 file changed, 40 insertions(+), 17 deletions(-)
+
+Notes:
+    Changes since v4:
+    - use of_device_get_match_data()
+    - use a callback rather than a struct type as driver data
+
+ drivers/devfreq/event/rockchip-dfi.c | 48 +++++++++++++++++++---------
+ 1 file changed, 33 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index d39db5de7f19c..8a7af7c32ae0d 100644
+index e19e5acaa362c..6b1ef29df7048 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -68,13 +68,28 @@ struct rockchip_dfi {
+@@ -17,6 +17,7 @@
+ #include <linux/slab.h>
+ #include <linux/list.h>
+ #include <linux/of.h>
++#include <linux/of_device.h>
+ 
+ #include <soc/rockchip/rk3399_grf.h>
+ 
+@@ -55,27 +56,21 @@ struct rockchip_dfi {
  	void __iomem *regs;
  	struct regmap *regmap_pmu;
  	struct clk *clk;
-+	int usecount;
-+	struct mutex mutex;
- 	u32 ddr_type;
- 	unsigned int channel_mask;
++	u32 ddr_type;
  };
  
--static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
-+static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
  {
+ 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
  	void __iomem *dfi_regs = dfi->regs;
-+	int ret = 0;
-+
-+	mutex_lock(&dfi->mutex);
-+
-+	dfi->usecount++;
-+	if (dfi->usecount > 1)
-+		goto out;
-+
-+	ret = clk_prepare_enable(dfi->clk);
-+	if (ret) {
-+		dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n", ret);
-+		goto out;
-+	}
+-	u32 val;
+-	u32 ddr_type;
+-
+-	/* get ddr type */
+-	regmap_read(dfi->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+-	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+-		    RK3399_PMUGRF_DDRTYPE_MASK;
  
  	/* clear DDRMON_CTRL setting */
- 	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
-@@ -99,14 +114,30 @@ static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
+ 	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+ 
+ 	/* set ddr type to dfi */
+-	if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
++	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
+ 		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+-	else if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
++	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
+ 		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+ 
  	/* enable count, use software mode */
- 	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
- 		       dfi_regs + DDRMON_CTRL);
-+out:
-+	mutex_unlock(&dfi->mutex);
-+
-+	return ret;
- }
- 
--static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
-+static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
- {
- 	void __iomem *dfi_regs = dfi->regs;
- 
-+	mutex_lock(&dfi->mutex);
-+
-+	dfi->usecount--;
-+
-+	WARN_ON_ONCE(dfi->usecount < 0);
-+
-+	if (dfi->usecount > 0)
-+		goto out;
-+
- 	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
- 		       dfi_regs + DDRMON_CTRL);
-+	clk_disable_unprepare(dfi->clk);
-+out:
-+	mutex_unlock(&dfi->mutex);
- }
- 
- static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
-@@ -124,29 +155,20 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 	}
- }
- 
--static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
-+static int rockchip_dfi_event_disable(struct devfreq_event_dev *edev)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 
--	rockchip_dfi_stop_hardware_counter(dfi);
--	clk_disable_unprepare(dfi->clk);
-+	rockchip_dfi_disable(dfi);
- 
- 	return 0;
- }
- 
--static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
-+static int rockchip_dfi_event_enable(struct devfreq_event_dev *edev)
- {
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
--	int ret;
--
--	ret = clk_prepare_enable(dfi->clk);
--	if (ret) {
--		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
--		return ret;
--	}
- 
--	rockchip_dfi_start_hardware_counter(dfi);
--	return 0;
-+	return rockchip_dfi_enable(dfi);
- }
- 
- static int rockchip_dfi_set_event(struct devfreq_event_dev *edev)
-@@ -190,8 +212,8 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- }
- 
- static const struct devfreq_event_ops rockchip_dfi_ops = {
--	.disable = rockchip_dfi_disable,
--	.enable = rockchip_dfi_enable,
-+	.disable = rockchip_dfi_event_disable,
-+	.enable = rockchip_dfi_event_enable,
- 	.get_event = rockchip_dfi_get_event,
+@@ -167,8 +162,26 @@ static const struct devfreq_event_ops rockchip_dfi_ops = {
  	.set_event = rockchip_dfi_set_event,
  };
-@@ -272,6 +294,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 		return PTR_ERR(dfi->regmap_pmu);
  
- 	dfi->dev = dev;
-+	mutex_init(&dfi->mutex);
++static int rk3399_dfi_init(struct rockchip_dfi *dfi)
++{
++	struct regmap *regmap_pmu = dfi->regmap_pmu;
++	u32 val;
++
++	dfi->clk = devm_clk_get(dfi->dev, "pclk_ddr_mon");
++	if (IS_ERR(dfi->clk))
++		return dev_err_probe(dfi->dev, PTR_ERR(dfi->clk),
++				     "Cannot get the clk pclk_ddr_mon\n");
++
++	/* get ddr type */
++	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
++	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
++			RK3399_PMUGRF_DDRTYPE_MASK;
++
++	return 0;
++};
++
+ static const struct of_device_id rockchip_dfi_id_match[] = {
+-	{ .compatible = "rockchip,rk3399-dfi" },
++	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
+@@ -179,6 +192,12 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	struct rockchip_dfi *dfi;
+ 	struct devfreq_event_desc *desc;
+ 	struct device_node *np = pdev->dev.of_node, *node;
++	int (*soc_init)(struct rockchip_dfi *dfi);
++	int ret;
++
++	soc_init = of_device_get_match_data(&pdev->dev);
++	if (!soc_init)
++		return -EINVAL;
  
- 	desc = &dfi->desc;
- 	desc->ops = &rockchip_dfi_ops;
+ 	dfi = devm_kzalloc(dev, sizeof(*dfi), GFP_KERNEL);
+ 	if (!dfi)
+@@ -188,11 +207,6 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dfi->regs))
+ 		return PTR_ERR(dfi->regs);
+ 
+-	dfi->clk = devm_clk_get(dev, "pclk_ddr_mon");
+-	if (IS_ERR(dfi->clk))
+-		return dev_err_probe(dev, PTR_ERR(dfi->clk),
+-				     "Cannot get the clk pclk_ddr_mon\n");
+-
+ 	node = of_parse_phandle(np, "rockchip,pmu", 0);
+ 	if (!node)
+ 		return dev_err_probe(&pdev->dev, -ENODEV, "Can't find pmu_grf registers\n");
+@@ -209,6 +223,10 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	desc->driver_data = dfi;
+ 	desc->name = np->name;
+ 
++	ret = soc_init(dfi);
++	if (ret)
++		return ret;
++
+ 	dfi->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
+ 	if (IS_ERR(dfi->edev)) {
+ 		dev_err(&pdev->dev,
 -- 
 2.39.2
 
