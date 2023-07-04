@@ -4,41 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2F9EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4D7EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 09:34:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9PfNtd/XwAngx7EWO1WIJNnla15X+r4i1iL07TuR09M=; b=UMfByDf+wV1pfZ
-	bVhMrtKZPwQwRX0vx83/HkRoCffF6St1uE0Hrt1FURX/3Jo4lBw/ccdDRfUk7a+2lxrVc2v3vWtnA
-	2SAYjKhSGyB5Kp0zrM0Kq8rS2rTCvVi98TFf9pkqy5XDjoIunYkGOINDIvJd0iAMtC0Qlr3CT45hw
-	/3CnIJWJvBYPqMV/ATuEjpVTXKVzIPDAQMQMDh/nz5jk62HaXPweO+TGjTmq6VuanA9qvZcJOT8W4
-	vdU0dnmrHCUHzk7NDn82Ial+o9QTHC0iZ/AHnsHD1QvYvx+/bMirA4U774gDPc1P2NYV8n8G1suo/
-	r583pDEkO0BcgjG5z39Q==;
+	List-Owner; bh=H6Sdg/QE+CwkuHAN/Gn7DNp3o7AU66gB+uwcxkugV4M=; b=HPXSDnq0F6rYI8
+	W4fuLwGsXVu69tblR4FnG3c+BVdzrQfjGhJ3lV/s4KKoKTXiwhY4pWNJPyMqpZ0bBsFsPid6GycFP
+	gH10hUU/wwrrhNN6xe/PAdL0FOAnhqi5dT+Qdq6pZMCokXuh8MOePRt1y30S7+tBOM0aLVZkKPA++
+	DnyzlvWcj1yGRBhKnT6OkN6rx2Q3OctlLhz4rRTnP90eslixzERSzBl2GKnL2DNbK3grFeafaEfoP
+	sFPqZ+cRPmsJ2W80NkgXNbXY0Wn4V1tuDuj4jfP/wAaTegUXLN5c/FKqB5/YxSFKbxkKtx0iAcZ+L
+	BpbCk9JZf+TCKLYFyogQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcPm-00CjiP-2z;
-	Tue, 04 Jul 2023 09:33:42 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1qGcPo-00Cjke-2c;
+	Tue, 04 Jul 2023 09:33:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGcPD-00Cj4W-1Z
+	id 1qGcPH-00Cj9k-0q
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 04 Jul 2023 09:33:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=SkfqaA8/RJS+625MZhrRtwa1Pba22CXSJWHCMWVVBm8=; b=mG9QYZXBdpg1WrdtcEDri/SgVx
+	fRMUfVrNY5HXc4jrHf/rt0R0P0d5q2mfI4bAucO9SKDXmdOlUaOY4scfEuqEKbD4WPwNUA+cqr+XM
+	3QekOUdzjXW9LSKJg9qrBFDA3hGzfY1kFSHfTkLZAQ1z1BjolbFs9Uh2W+/ACY1pTNjnhRPdnDO9A
+	cNJ47BL2/zvlswDCXR4ZdRPLLwUfbExS8A3iQu2m1NHUEdsNEhDrkFN2A0Eg7SKrCLZjnrK3II+fM
+	Dr89RPQE3587Lw7oloYjNQKpCZNUbBoXJXO+5XRBMP7S099zYyRlGvJik6FcMCrq2PlL3DYMioEg1
+	jBYz8j9g==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qGcP5-00Apf2-2q
 	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Jul 2023 09:33:10 +0000
+	Tue, 04 Jul 2023 09:33:09 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOv-0006tv-RH; Tue, 04 Jul 2023 11:32:49 +0200
+	id 1qGcOx-0006xy-7N; Tue, 04 Jul 2023 11:32:51 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOt-00C09i-Hp; Tue, 04 Jul 2023 11:32:47 +0200
+	id 1qGcOw-00C0Aq-HX; Tue, 04 Jul 2023 11:32:50 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qGcOr-002TyW-8y; Tue, 04 Jul 2023 11:32:45 +0200
+	id 1qGcOr-002Tz0-FC; Tue, 04 Jul 2023 11:32:45 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -58,10 +73,11 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v7 15/26] PM / devfreq: rockchip-dfi: give variable a better name
-Date: Tue,  4 Jul 2023 11:32:31 +0200
-Message-Id: <20230704093242.583575-16-s.hauer@pengutronix.de>
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v7 22/26] dt-bindings: devfreq: event: rockchip,dfi: Add rk3588 support
+Date: Tue,  4 Jul 2023 11:32:38 +0200
+Message-Id: <20230704093242.583575-23-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230704093242.583575-1-s.hauer@pengutronix.de>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
@@ -71,8 +87,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_023307_563285_173375F5 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20230704_103308_129029_08439C46 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,81 +105,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-struct dmc_count_channel::total counts the clock cycles of the DDR
-controller. Rename it accordingly to give the reader a better idea
-what this is about. While at it, at some documentation to struct
-dmc_count_channel.
+This adds rockchip,rk3588-dfi to the list of compatibles. Unlike ealier
+SoCs the rk3588 has four interrupts (one for each channel) instead of
+only one, so increase the number of allowed interrupts to four.
 
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 8a7af7c32ae0d..50e497455dc69 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -46,9 +46,14 @@
- #define DDRMON_CH1_COUNT_NUM		0x3c
- #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
+Notes:
+    Changes since v4:
+    - new patch
+    
+    Changes since v5:
+    - drop interrupt-names property
+    
+    Changes since v4:
+    - new patch
+
+ .../devicetree/bindings/devfreq/event/rockchip,dfi.yaml       | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+index e8b64494ee8bd..50d3fabe958d5 100644
+--- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
++++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+@@ -14,6 +14,7 @@ properties:
+     enum:
+       - rockchip,rk3399-dfi
+       - rockchip,rk3568-dfi
++      - rockchip,rk3588-dfi
  
-+/**
-+ * struct dmc_count_channel - structure to hold counter values from the DDR controller
-+ * @access:       Number of read and write accesses
-+ * @clock_cycles: DDR clock cycles
-+ */
- struct dmc_count_channel {
- 	u32 access;
--	u32 total;
-+	u32 clock_cycles;
- };
+   clocks:
+     maxItems: 1
+@@ -23,7 +24,8 @@ properties:
+       - const: pclk_ddr_mon
  
- struct dmc_count {
-@@ -150,7 +155,7 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 			continue;
- 		count->c[i].access = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
--		count->c[i].total = readl_relaxed(dfi_regs +
-+		count->c[i].clock_cycles = readl_relaxed(dfi_regs +
- 				DDRMON_CH0_COUNT_NUM + i * 20);
- 	}
- }
-@@ -182,29 +187,29 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
- 	struct dmc_count count;
- 	struct dmc_count *last = &dfi->last_event_count;
--	u32 access = 0, total = 0;
-+	u32 access = 0, clock_cycles = 0;
- 	int i;
+   interrupts:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 4
  
- 	rockchip_dfi_read_counters(dfi, &count);
- 
- 	/* We can only report one channel, so find the busiest one */
- 	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
--		u32 a, t;
-+		u32 a, c;
- 
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 
- 		a = count.c[i].access - last->c[i].access;
--		t = count.c[i].total - last->c[i].total;
-+		c = count.c[i].clock_cycles - last->c[i].clock_cycles;
- 
- 		if (a > access) {
- 			access = a;
--			total = t;
-+			clock_cycles = c;
- 		}
- 	}
- 
- 	edata->load_count = access * 4;
--	edata->total_count = total;
-+	edata->total_count = clock_cycles;
- 
- 	dfi->last_event_count = count;
- 
+   reg:
+     maxItems: 1
 -- 
 2.39.2
 
