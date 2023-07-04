@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92C90EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 15:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C92FEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Jul 2023 16:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MDYD4CVx0pjtHvA1SP8h2Fke/qzpywCdpEveDG6f8RQ=; b=JIAwpPOr6Bw33d
-	YxIDceAKKnAMIPa89/eeOtaqTulgB6QlxFyBrSX9/wkQ8TJ+LXM5IhTGqoQ5JsBNMfYpfo2CZAayo
-	1ObwalNaMalr6IbL36BKoyD9qDkOL/deRFbEWhQF+UZUkAJgkpLcPTuVcjrYXBx+v1s4HGaECNqE4
-	OtPyo8fKSxToMeejSpFe/8o7ok5im4OoypzwSA29ok19K4nPGouVqmU4O5oPVlz6/4JHBxfADYgQr
-	yAWlKvPpdOLVOebRau6egjj9wa5t+yj1iUzdzUaTAqO0oL4CvFWZHOC2hiE7Af5jCifgFPODm8emz
-	gjvYak4PO2Ogx3xl9w+Q==;
+	List-Owner; bh=qN0tLU+R9b8U8qTfme9ciS3xKjXwqvtbIYgQwFpJVtc=; b=yCSAXnIcFwwLeI
+	PKRybgY7O0F57o/Rao1FsFnjIrxsIlCSz5FHnOX12H6mRDGzPfe9OjTERGGYtdYPO0kouRSL/no1l
+	j2HNtd8U9B/KQXZb1MGSwVZn4KyR7tflY9vsbhq5y8IyZyj7CmuHiZrth7RsyKutp9qUrYsR8fvkW
+	6mdb4NIqHHgpHhidKLptTIZl2wFfJ7J2QjsI5rPPmzJNTOutD25jlSc1P0rwpPqiQqe/ff8+/AVBR
+	pDtWdxJlXLaCI/ssQzuo+FgE+HJyeheM3cW+x2vULqo6or2JbpmTYfKnmk5PiTAgzDstKe53PPkZ/
+	fpNKePalXML5+HD0WRWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGhj8-00Dco9-36;
-	Tue, 04 Jul 2023 15:14:02 +0000
-Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
+	id 1qGj1l-00Dq58-2z;
+	Tue, 04 Jul 2023 16:37:21 +0000
+Received: from mail-pl1-f180.google.com ([209.85.214.180])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGhj4-00Dclk-1v;
-	Tue, 04 Jul 2023 15:14:00 +0000
-X-GND-Sasl: miquel.raynal@bootlin.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1688483632;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vXGiUI7wXthGZKQ/sxJzjijIY2a26JIxtb9GTkcZ6mU=;
-	b=ZrdHbbyuAduccdHY9ijrExqWBbYQXeH5ibGBH4XcqvtTTD0jkSMeeZNAWtOF7pGfMrDpGH
-	cEcOmHkDq6cMCEdkGQR/WnTYQR1TjPuj4xaxq/fhcy37oUCj5rBKMdKaLBE3m7GVCAmhco
-	7BFVpTltuJSlRYXCt1wsbhwRE7hc5PRybVaqydcLPo9/lMf0+GKOU04HG5lTL1ZMc3aevQ
-	pYB7yjhHECcAZaKVB9mHg3TU2TE1IC8VXTwv6cHQZRTMGDOzC+0mXqnr3tZ4xrAjb0Jvqw
-	HK8JAu3Fhms9VXRlYSBHoCtaCFV9vSaz+KMU0piBK2EAuREw1EvD0qflPBgYgA==
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-X-GND-Sasl: miquel.raynal@bootlin.com
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B78866000F;
-	Tue,  4 Jul 2023 15:13:49 +0000 (UTC)
-Date: Tue, 4 Jul 2023 17:13:48 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- yifeng.zhao@rock-chips.com
-Subject: Re: [PATCH v3 3/3] mtd: rawnand: rockchip-nand-controller: add
- skipbbt option
-Message-ID: <20230704171348.5eee98f7@xps-13>
-In-Reply-To: <457c1da7-61dc-2a56-4f86-47413795138c@gmail.com>
-References: <0047fc52-bc45-a768-8bdd-c0f12cddc17e@gmail.com>
-	<457c1da7-61dc-2a56-4f86-47413795138c@gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1qGj1j-00Dq4D-2C;
+	Tue, 04 Jul 2023 16:37:20 +0000
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-1b89cb535afso9914295ad.2;
+        Tue, 04 Jul 2023 09:37:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688488637; x=1691080637;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qq9caxBhUaIDTOUts0hMPoGeTAHn1nr/fwkbfDRFOV4=;
+        b=ApLIOv/vWv8HB5Tda8bcfFhy2FWb/0veAeZzq5JhIGFhwP3xrR9RQkFSrscZQrjhnV
+         9jF8qBpIZPGxvbuogLro4+VJaPV6Vdb40/6Yl6+gOq1lcRedlczzzhGqOAA37okRziYB
+         bx0QuX1CsXyizXLZjZEc7ethovhvm5EmKSBTV11j2k0EVgyzBA7ZgjZGGSQ8U2NFM08E
+         IcvZGKTjx+ZyWlOmBJWwfutFXBJLWV4h/2KKwZ0GBJxPiGIYI2hQxKfZdLztKOG029fs
+         63XiCetvEvrUCmaj8hDFjIC1JCGTtQ7Ywoye7w6QkURDPoyIV8nmLHqw3tDwhKqKJB6Y
+         vFzg==
+X-Gm-Message-State: ABy/qLZtLKTU09ZEpWBOICaugV/FbO+zSQa8UCTUAIp636ijFFeBYgnc
+	eTeEz+99SZme+TIQAEjAOyw=
+X-Google-Smtp-Source: APBJJlFLrXdz6T8wRfchr9R6PTEOz95tWasBcijz9afT2zIq9026AzCHmKf2iLbvuD5b+Zi1eMkf+g==
+X-Received: by 2002:a17:902:8682:b0:1b8:95fc:d12 with SMTP id g2-20020a170902868200b001b895fc0d12mr4921692plo.54.1688488637557;
+        Tue, 04 Jul 2023 09:37:17 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id j6-20020a170902c3c600b001b8918da8d1sm4605652plj.80.2023.07.04.09.37.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Jul 2023 09:37:15 -0700 (PDT)
+Date: Wed, 5 Jul 2023 01:37:13 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: alberto.dassatti@heig-vd.ch, dlemoal@kernel.org,
+	Dan Carpenter <dan.carpenter@linaro.org>, stable@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: rockchip: Use 64-bit mask on MSI 64-bit PCI
+ address
+Message-ID: <20230704163713.GB435329@rocinante>
+References: <20230703085845.2052008-1-rick.wertenbroek@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230703085845.2052008-1-rick.wertenbroek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_081359_066196_CFCEABD7 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20230704_093719_723432_FB821B3B 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +82,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSm9oYW4sCgpqYng2MjQ0QGdtYWlsLmNvbSB3cm90ZSBvbiBUaHUsIDE1IEp1biAyMDIzIDE5
-OjM0OjI2ICswMjAwOgoKPiBPbiBSb2NrY2hpcCBTb0NzIHRoZSBmaXJzdCBib290IHN0YWdlcyBh
-cmUgd3JpdHRlbiBvbiBOQU5ECj4gd2l0aCBoZWxwIG9mIG1hbnVmYWN0dXJlciBzb2Z0d2FyZSB0
-aGF0IHVzZXMgYSBkaWZmZXJlbnQgZm9ybWF0Cj4gdGhlbiB0aGUgTVREIGZyYW1ld29yay4gU2tp
-cCB0aGUgYXV0b21hdGljIEJCVCBzY2FuIHdpdGggdGhlCj4gTkFORF9TS0lQX0JCVFNDQU4gb3B0
-aW9uIHNvIHRoYXQgdGhlIG9yaWdpbmFsIGNvbnRlbnQgaXMgdW5jaGFuZ2VkCj4gZHVyaW5nIHRo
-ZSBkcml2ZXIgcHJvYmUuCj4gVGhlIE5BTkRfTk9fQkJNX1FVSVJLIG9wdGlvbiBhbGxvd3MgdXMg
-dG8gZXJhc2UgYmFkIGJsb2NrcyB3aXRoCj4gdGhlIG5hbmRfZXJhc2VfbmFuZCgpIGZ1bmN0aW9u
-IGFuZCB0aGUgZmxhc2hfZXJhc2UgY29tbWFuZC4KPiBXaXRoIHRoZXNlIG9wdGlvbnMgdGhlIHVz
-ZXIgaGFzIHRoZSAiZnJlZWRvbSBvZiBjaG9pY2UiIGJ5IG5ldXRyYWwKPiBhY2Nlc3MgbW9kZSB0
-byByZWFkIGFuZCB3cml0ZSBpbiB3aGF0ZXZlciBmb3JtYXQgaXMgbmVlZGVkLgoKQ2FuIHRoZSBi
-b290X3JvbV9tb2RlIHRoaW5nIGhlbHA/CgpGb3Igd3JpdGluZyB0aGlzIHBhcnQgeW91IGNhbiBk
-aXNhYmxlIHRoZSBiYWQgYmxvY2sgcHJvdGVjdGlvbiB1c2luZwpkZWJ1Z2ZzIGFuZCB0aGVuIHdy
-aXRlIGFuIGV4dGVybmFsbHkgcHJvY2Vzc2VkIGZpbGUgaW4gcmF3IG1vZGUgSSBndWVzcy4KCkZv
-ciB0aGUgYm9vdCBJIHRoaW5rIEkgcHJvcG9zZWQgYSBEVCBwcm9wZXJ0eS4gSSBkb24ndCByZW1l
-bWJlciBob3cgZmFyCnRoZSBkaXNjdXNzaW9uIHdlbnQuCgo+IAo+IFNpZ25lZC1vZmYtYnk6IEpv
-aGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBWMzoKPiAg
-IENoYW5nZSBwcmVmaXhlcwo+IAo+IENoYW5nZWQgVjI6Cj4gICByZXdvcmQKPiAKPiAtLS0KPiAK
-PiBJJ20gYXdhcmUgdGhhdCB0aGUgbWFpbnRhaW5lciBmaW5kcyBpdCAiYXdmdWwiLAo+IGJ1dCBp
-dCdzIGFic29sdXRlIG5lY2Vzc2FyeSB0bzoKPiAxOiByZWFkL3dyaXRlIGJvb3QgYmxvY2tzIGlu
-IHVzZXIgc3BhY2Ugd2l0aG91dCB0b3VjaGluZyBvcmlnaW5hbCBjb250ZW50Cj4gMjogZm9ybWF0
-IGEgTkFORCBmb3IgTVREIGVpdGhlciB3aXRoIGJ1aWx0IGluIG9yIGV4dGVybmFsIGRyaXZlciBt
-b2R1bGUKPiAKPiBTbyB3ZSBrZWVwIGl0IGluY2x1ZGUgaW4gdGhpcyBzZXJpZS4KPiAtLS0KPiAg
-ZHJpdmVycy9tdGQvbmFuZC9yYXcvcm9ja2NoaXAtbmFuZC1jb250cm9sbGVyLmMgfCA3ICsrKysr
-KysKPiAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL210ZC9uYW5kL3Jhdy9yb2NrY2hpcC1uYW5kLWNvbnRyb2xsZXIuYyBiL2RyaXZlcnMv
-bXRkL25hbmQvcmF3L3JvY2tjaGlwLW5hbmQtY29udHJvbGxlci5jCj4gaW5kZXggNWEwNDY4MDM0
-Li5mY2RhNGM3NjAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tdGQvbmFuZC9yYXcvcm9ja2NoaXAt
-bmFuZC1jb250cm9sbGVyLmMKPiArKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9yb2NrY2hpcC1u
-YW5kLWNvbnRyb2xsZXIuYwo+IEBAIC0xODgsNiArMTg4LDEwIEBAIHN0cnVjdCBya19uZmMgewo+
-ICAJdW5zaWduZWQgbG9uZyBhc3NpZ25lZF9jczsKPiAgfTsKPiAKPiArc3RhdGljIGludCBza2lw
-YmJ0Owo+ICttb2R1bGVfcGFyYW0oc2tpcGJidCwgaW50LCAwNjQ0KTsKPiArTU9EVUxFX1BBUk1f
-REVTQyhza2lwYmJ0LCAiU2tpcCBCQlQgc2NhbiBpZiBkYXRhIG9uIHRoZSBOQU5EIGNoaXAgaXMg
-bm90IGluIE1URCBmb3JtYXQuIik7Cj4gKwo+ICBzdGF0aWMgaW5saW5lIHN0cnVjdCBya19uZmNf
-bmFuZF9jaGlwICpya19uZmNfdG9fcmtuYW5kKHN0cnVjdCBuYW5kX2NoaXAgKmNoaXApCj4gIHsK
-PiAgCXJldHVybiBjb250YWluZXJfb2YoY2hpcCwgc3RydWN0IHJrX25mY19uYW5kX2NoaXAsIGNo
-aXApOwo+IEBAIC0xMTUzLDYgKzExNTcsOSBAQCBzdGF0aWMgaW50IHJrX25mY19uYW5kX2NoaXBf
-aW5pdChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBya19uZmMgKm5mYywKPiAKPiAgCW5hbmRf
-c2V0X2NvbnRyb2xsZXJfZGF0YShjaGlwLCBuZmMpOwo+IAo+ICsJaWYgKHNraXBiYnQpCj4gKwkJ
-Y2hpcC0+b3B0aW9ucyB8PSBOQU5EX1NLSVBfQkJUU0NBTiB8IE5BTkRfTk9fQkJNX1FVSVJLOwo+
-ICsKPiAgCWNoaXAtPm9wdGlvbnMgfD0gTkFORF9VU0VTX0RNQSB8IE5BTkRfTk9fU1VCUEFHRV9X
-UklURTsKPiAgCWNoaXAtPmJidF9vcHRpb25zID0gTkFORF9CQlRfVVNFX0ZMQVNIIHwgTkFORF9C
-QlRfTk9fT09COwo+IAo+IC0tCj4gMi4zMC4yCj4gCgoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello,
+
+> A 32-bit mask was used on the 64-bit PCI address used for mapping MSIs.
+> This would result in the upper 32 bits being unintentionally zeroed and
+> MSIs getting mapped to incorrect PCI addresses if the address had any
+> of the upper bits set.
+> 
+> Replace 32-bit mask by appropriate 64-bit mask.
+
+Applied to controller/rockchip, thank you!
+
+[1/1] PCI: rockchip: Use 64-bit mask on MSI 64-bit PCI address
+      https://git.kernel.org/pci/pci/c/251c859f4b6f
+
+	Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
