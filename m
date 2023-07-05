@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3EA2EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 18:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2B3EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 20:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-Id:To:
+	From:Cc:Subject:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c1MQZekB6wA6gnW7FWArFNvExaUgKBdDJvA/0scNy4Q=; b=hE07xW4lyDpNqO
-	CH6EaCK4ZRF/qJ8pZ8mO8re+y1OdnqzuRiX9aZm1oevkby6l4iDzBX8b/PN3Ixqe8YMc09kAGQjAO
-	MM4tjnzPmIl9oWpeORdWEQ5v8y4SRojUvDZiy1hM71DI95qGy/ajE7Iqy9UlOiQn/JxHs3A5nyVlm
-	CbkqofqhUUgrUgnsRu4LKasvLQRATfqE4tQB0wWaiFPzzfTtqnRfEKYpkiw/876f4A9vXodZulmVA
-	fq9BPKLl/14iVxqmQmsyBnSCvSuOA4OyRe8Vgj19FxkbIhi/qr0hTAmIuYQGBU/16BRiPDlO00cOJ
-	OMlmt0uhFIRsU8iFUTrA==;
+	List-Owner; bh=I8HTmOK4gIsID6aDBxsmDjmkAN71+g499X/m3TkiMM4=; b=Mmjh4KZE9Cqd+G
+	VesLgCnzhKkadX1nVX8E63800f+WcLQnW67WrGNp4yUKEAz/xdI7ivyrwc325kNLNhE+p8rgBkkwS
+	AVjOLExO2bUD6UXQ7FrspT01120/mwA8qkkNv3kdPVP945YMf1clxRMdU2DrtlnmjrrIY/HkE9qCV
+	s3WFvHgHrKXjEGjZRtS3/VodFStOyRWY6CHdagNWNE9t9BKVhq5cUanwkTVhnvdUQ/H9+E7l/p8y7
+	RJbOV6oj/mWDGukgXssNwMTAD19++qRGxFMfK51FO1VIDQU8vS1wrLLltO7Yb2hSpf/WNqpCDK/OP
+	1Cuy75ODOQutw5/NmkOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH77j-00Gk6Y-0G;
-	Wed, 05 Jul 2023 18:21:07 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qH9BH-00H1j4-2W;
+	Wed, 05 Jul 2023 20:32:55 +0000
+Received: from www522.your-server.de ([195.201.215.122])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH77e-00Gk4p-1u;
-	Wed, 05 Jul 2023 18:21:04 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2b6a084a34cso107022661fa.1;
-        Wed, 05 Jul 2023 11:20:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1688581256; x=1691173256;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=w7iqWni3eK8x3dTleEGq98e3HnfEpiof9+EFvCVfJeA=;
-        b=lcHhhZJ6UA3AaQGfvUqt/v6qgzBe4qjRli/ZwMNWbWFNKRJuoYH/PNcBNy64/kkQ77
-         Qm1aUvHQGPebLCfWmTrgGclckRL2j19Cu2XFej0v1AWuWlpg0Si8hgXauI9+QgK0gBQ4
-         2MADHn/a+BIrH8jeGN7OEyfb+N9fAyIYgNd2xBcalXN+8RPMcM2a35wdI0zJXiMPwKMd
-         /kUxQVqpOykM6keZP7tPcp38JOnNiK8oCzYQ6kxbs5u9KFU9m9mOTc+5HAp7T4Nk5P8v
-         4a0fQVoWHivgC2jfuBLVJ6m6YiErJ+3/lvX7+B3NqNSiaUrdb7D6NwEJGuMciykXo8Mj
-         /SlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688581256; x=1691173256;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=w7iqWni3eK8x3dTleEGq98e3HnfEpiof9+EFvCVfJeA=;
-        b=UVEyTA9jKmlHTfGjT/WB9cp7gagWDDGiAh4ESb6jA7p7/LuRfXtJO8JKHA5dUFSHGh
-         xo2c9DmnlNmI4RcYR0CBDuaIGtIgXKBWc2kQVUIWd2L4ZNDHnja5gBPpjzviUQkPJni0
-         LA5/s44tajAzsWJX8mM98DBor4i/wCkg8OK/BHxooZ4RuBoY3gZxBvC0dYK+SrhIZBvt
-         5rLBrk8szO82jEdhAZtt0rFmH2McPW81wQ2vkG+C8Znb6WO56ZF6alOoQLMLFL78Rtrk
-         c5vD0CWg3yFsScw2uNdqxJ2sERdMI6ET8CanPT7TDXESFPAMphpdk9EED7TZIoVSDguZ
-         pj/Q==
-X-Gm-Message-State: ABy/qLZ2W0+5C2oG0QURykZGwZPnTrbOyxAXUVwxcwNG4wtLrUXLz1Sq
-	ccFPkpHz8SzhMFi5GrA37yk=
-X-Google-Smtp-Source: APBJJlGrUgXkEQsV1QF3xFlWaDw9jfN/TvbHLUD9SGHxGFDYPwKfO0V/VHYG98M8lFENx5tsGzAgfg==
-X-Received: by 2002:a19:7418:0:b0:4f9:5d2a:e0f6 with SMTP id v24-20020a197418000000b004f95d2ae0f6mr11255992lfe.14.1688581255815;
-        Wed, 05 Jul 2023 11:20:55 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id qx22-20020a170906fcd600b009931baa0d44sm6553278ejb.140.2023.07.05.11.20.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Jul 2023 11:20:55 -0700 (PDT)
-Message-ID: <ebb0d719-4fa0-791d-f160-e8ffc75385b1@gmail.com>
-Date: Wed, 5 Jul 2023 20:20:53 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v3 2/3] mtd: rawnand: rockchip-nand-controller: copy hwecc
- PA data to oob_poi buffer
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- yifeng.zhao@rock-chips.com
-References: <0047fc52-bc45-a768-8bdd-c0f12cddc17e@gmail.com>
- <539cfba7-dd6f-015e-b990-a2335cb3aac9@gmail.com>
- <20230704170858.2a64c181@xps-13>
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20230704170858.2a64c181@xps-13>
+	id 1qH9BD-00H1hb-2v;
+	Wed, 05 Jul 2023 20:32:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=folker-schwesinger.de; s=default2212; h=In-Reply-To:References:Message-Id:
+	To:From:Cc:Subject:Date:Content-Type:Content-Transfer-Encoding:Mime-Version:
+	Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=fwgkD+l/wKF+0W7lw6F3W01TP++bGxB20+3iUOcYWz0=; b=iAqmbQbTpdWxduFtrUHR0hfMSy
+	j2HFv1KI0MhPxOOBXI32IAdUmY5+US5owdiWS8qhMPJc17FWHUbWXN9Qg9fC3x+eAwYBaDEnIXUNa
+	Ds4GbcMbdPsuuJa/LiUL2YZcQne2tiHzGK78BKSYiBWcqpYLDhzgRMmLddDC/rfi9IaHwOgotB9qp
+	rx6VXFmFVak8iqeP7s/U6jkQC9pjlrj1CPHSQOt3qzdxlliXF2xOy1SCs7IX3O0ukSyzcYrk3N/R4
+	YThX6eJCKWjURp6+MopvdVuON9zeCaT/lFPkIYqHR6trXl7K7CRLojWTooRjn89jX1OPqKP8QhTz2
+	3LYTTfxg==;
+Received: from sslproxy03.your-server.de ([88.198.220.132])
+	by www522.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1qH9B4-0003aR-7T; Wed, 05 Jul 2023 22:32:42 +0200
+Received: from [80.88.20.1] (helo=localhost)
+	by sslproxy03.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1qH9B3-0004zD-F9; Wed, 05 Jul 2023 22:32:41 +0200
+Mime-Version: 1.0
+Date: Wed, 05 Jul 2023 20:32:40 +0000
+Subject: Re: [PATCH v1 0/2] Disable HS400 for eMMC on Radxa ROCK 4 SBCs
+Cc: <kernel@collabora.com>, "Akash Gajjar" <Akash_Gajjar@mentor.com>, "Conor
+ Dooley" <conor+dt@kernel.org>, "FUKAUMI Naoki" <naoki@radxa.com>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Jagan Teki" <jagan@amarulasolutions.com>,
+ "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, "Manoj Sai"
+ <abbaraju.manojsai@amarulasolutions.com>, "Pragnesh Patel"
+ <Pragnesh_Patel@mentor.com>, "Rob Herring" <robh+dt@kernel.org>, "Stephen
+ Chen" <stephen@radxa.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+From: "Folker Schwesinger" <dev@folker-schwesinger.de>
+To: "Christopher Obbard" <chris.obbard@collabora.com>,
+ <linux-rockchip@lists.infradead.org>
+Message-Id: <CTUIBFDTG9O8.1XKGSAIMSH7LR@homedev>
+X-Mailer: aerc 0.15.2-76-g69094e332779
+References: <20230705144255.115299-1-chris.obbard@collabora.com>
+In-Reply-To: <20230705144255.115299-1-chris.obbard@collabora.com>
+X-Authenticated-Sender: dev@folker-schwesinger.de
+X-Virus-Scanned: Clear (ClamAV 0.103.8/26960/Wed Jul  5 09:29:05 2023)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_112102_632330_72B4C0E3 
-X-CRM114-Status: GOOD (  26.80  )
+X-CRM114-CacheID: sfid-20230705_133252_248774_36BC9F4A 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,87 +81,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiA3LzQvMjMgMTc6MDgsIE1pcXVlbCBSYXluYWwgd3JvdGU6Cj4gSGkgSm9oYW4sCj4gCj4g
-amJ4NjI0NEBnbWFpbC5jb20gd3JvdGUgb24gVGh1LCAxNSBKdW4gMjAyMyAxOTozNDoxMyArMDIw
-MDoKPiAKPj4gUm9ja2NoaXAgYm9vdCBibG9ja3MgYXJlIHdyaXR0ZW4gcGVyIDQgeCA1MTIgYnl0
-ZSBzZWN0b3JzIHBlciBwYWdlLgo+PiBFYWNoIHBhZ2UgbXVzdCBoYXZlIGEgcGFnZSBhZGRyZXNz
-IChQQSkgcG9pbnRlciBpbiBPT0IgdG8gdGhlIG5leHQgcGFnZS4KCj4gCj4gT25seSB3aGVuIHVz
-ZWQgYXMgYm9vdCBkZXZpY2UgSSBndWVzcz8gSXQncyBhIEJvb3RST00gbGltaXRhdGlvbi4KClll
-cywgcmVxdWlyZWQgYnkgdGhlIEJvb3RST00uCgo+IAo+PiBQYWdlcyBhcmUgd3JpdHRlbiBpbiBh
-IHBhdHRlcm4gZGVwZW5kaW5nIG9uIHRoZSBOQU5EIGNoaXAgSUQuCj4+IFRoaXMgbG9naWMgdXNl
-ZCB0byBidWlsZCBhIHBhZ2UgcGF0dGVybiB0YWJsZSBpcyBub3QgZnVsbHkgZGlzY2xvc2VkIGFu
-ZAo+PiBpcyBub3QgZWFzeSB0byBmaXQgaW4gdGhlIE1URCBmcmFtZXdvcmsuCj4+IFRoZSBmb3Jt
-dWxhIGluIHJrX25mY193cml0ZV9wYWdlX2h3ZWNjKCkgZnVuY3Rpb24gaXMgbm90IGNvcnJlY3Qu
-Cj4+IE1ha2UgaHdlY2MgYW5kIHJhdyBiZWhhdmlvciBpZGVudGljYWwuCj4gCgo+IFNvIHRoaXMg
-aXMgYSBmaXggYXMgd2VsbCwgZGVzZXJ2ZXMgYSB0YWcuIFdoYXRldmVyIHRoZSByZWFzb24gd2h5
-IHlvdQo+IG5lZWQgdGhpcywgdGhlIGlzc3VlIHlvdSBhcmUgc29sdmluZyBpczogd3JpdGVfcGFn
-ZV9od2VjYyBhbmQKPiB3cml0ZV9wYWdlX3JhdyBhcmUgbm90IGFsaWduZWQuCgpGaXhlczogMDU4
-ZTBlODQ3ZDU0ICgibXRkOiByYXduYW5kOiByb2NrY2hpcDogTkZDIGRyaXZlciBmb3IgUkszMzA4
-LCBSSzI5MjggYW5kIG90aGVycyIpCgo+IAo+PiBHZW5lcmF0ZSBib290IGJsb2NrIHBhZ2UgYWRk
-cmVzcyBhbmQgcGF0dGVybiBmb3IgaHdlY2MgaW4gdXNlciBzcGFjZQo+PiBhbmQgY29weSBQQSBk
-YXRhIHRvL2Zyb20gdGhlIGFscmVhZHkgcmVzZXJ2ZWQgbGFzdCA0IGJ5dGVzIGJlZm9yZSBFRUMK
-PiAKPiBFQ0MKCk9LCgo+IAo+PiBpbiB0aGUgY2hpcC0+b29iX3BvaSBkYXRhIGxheW91dC4KPj4K
-Pj4gVGhpcyBwYXRjaCBicmVha3MgYWxsIGV4aXN0aW5nIGpmZnMyIHVzZXJzIHRoYXQgaGF2ZSBm
-cmVlIE9PQiBvdmVybGFwCj4+IHdpdGggdGhlIHJlc2VydmVkIHNwYWNlIGZvciBQQSBkYXRhLgo+
-Pgo+PiBTaWduZWQtb2ZmLWJ5OiBKb2hhbiBKb25rZXIgPGpieDYyNDRAZ21haWwuY29tPgo+PiAt
-LS0KPj4KPj4gQ2hhbmdlZCBWMzoKPj4gICBDaGFuZ2UgcHJlZml4ZXMKPj4gICBSZXdvcmQKPj4g
-LS0tCj4+ICAuLi4vbXRkL25hbmQvcmF3L3JvY2tjaGlwLW5hbmQtY29udHJvbGxlci5jICAgfCAz
-NCArKysrKysrKysrKystLS0tLS0tCj4+ICAxIGZpbGUgY2hhbmdlZCwgMjEgaW5zZXJ0aW9ucygr
-KSwgMTMgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5kL3Jh
-dy9yb2NrY2hpcC1uYW5kLWNvbnRyb2xsZXIuYyBiL2RyaXZlcnMvbXRkL25hbmQvcmF3L3JvY2tj
-aGlwLW5hbmQtY29udHJvbGxlci5jCj4+IGluZGV4IDM3ZmMwN2JhNS4uNWEwNDY4MDM0IDEwMDY0
-NAo+PiAtLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9yb2NrY2hpcC1uYW5kLWNvbnRyb2xsZXIu
-Ywo+PiArKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9yb2NrY2hpcC1uYW5kLWNvbnRyb2xsZXIu
-Ywo+PiBAQCAtNTk4LDcgKzU5OCw3IEBAIHN0YXRpYyBpbnQgcmtfbmZjX3dyaXRlX3BhZ2VfaHdl
-Y2Moc3RydWN0IG5hbmRfY2hpcCAqY2hpcCwgY29uc3QgdTggKmJ1ZiwKPj4gIAlpbnQgcGFnZXNf
-cGVyX2JsayA9IG10ZC0+ZXJhc2VzaXplIC8gbXRkLT53cml0ZXNpemU7Cj4+ICAJaW50IHJldCA9
-IDAsIGksIGJvb3Rfcm9tX21vZGUgPSAwOwo+PiAgCWRtYV9hZGRyX3QgZG1hX2RhdGEsIGRtYV9v
-b2I7Cj4+IC0JdTMyIHJlZzsKPj4gKwl1MzIgdG1wOwo+PiAgCXU4ICpvb2I7Cj4+Cj4+ICAJbmFu
-ZF9wcm9nX3BhZ2VfYmVnaW5fb3AoY2hpcCwgcGFnZSwgMCwgTlVMTCwgMCk7Cj4+IEBAIC02MjUs
-NiArNjI1LDEzIEBAIHN0YXRpYyBpbnQgcmtfbmZjX3dyaXRlX3BhZ2VfaHdlY2Moc3RydWN0IG5h
-bmRfY2hpcCAqY2hpcCwgY29uc3QgdTggKmJ1ZiwKPj4gIAkgKgo+PiAgCSAqICAgMHhGRiAweEZG
-IDB4RkYgMHhGRiB8IEJCTSBPT0IxIE9PQjIgT09CMyB8IC4uLgo+PiAgCSAqCj4+ICsJICogVGhl
-IGNvZGUgaGVyZSBqdXN0IHN3YXBzIHRoZSBmaXJzdCA0IGJ5dGVzIHdpdGggdGhlIGxhc3QKPj4g
-KwkgKiA0IGJ5dGVzIHdpdGhvdXQgbG9zaW5nIGFueSBkYXRhLgo+PiArCSAqCj4+ICsJICogVGhl
-IGNoaXAtPm9vYl9wb2kgZGF0YSBsYXlvdXQ6Cj4+ICsJICoKPj4gKwkgKiAgICBCQk0gIE9PQjEg
-T09CMiBPT0IzIHwuLi4uLi58ICBQQTAgIFBBMSAgUEEyICBQQTMKPj4gKwkgKgo+PiAgCSAqIENv
-bmZpZ3VyZSB0aGUgRUNDIGFsZ29yaXRobSBzdXBwb3J0ZWQgYnkgdGhlIGJvb3QgUk9NLgo+PiAg
-CSAqLwo+PiAgCWlmICgocGFnZSA8IChwYWdlc19wZXJfYmxrICogcmtuYW5kLT5ib290X2Jsa3Mp
-KSAmJgo+PiBAQCAtNjM1LDIxICs2NDIsMTcgQEAgc3RhdGljIGludCBya19uZmNfd3JpdGVfcGFn
-ZV9od2VjYyhzdHJ1Y3QgbmFuZF9jaGlwICpjaGlwLCBjb25zdCB1OCAqYnVmLAo+PiAgCX0KPj4K
-Pj4gIAlmb3IgKGkgPSAwOyBpIDwgZWNjLT5zdGVwczsgaSsrKSB7Cj4+IC0JCWlmICghaSkgewo+
-PiAtCQkJcmVnID0gMHhGRkZGRkZGRjsKPj4gLQkJfSBlbHNlIHsKPj4gKwkJaWYgKCFpKQo+PiAr
-CQkJb29iID0gY2hpcC0+b29iX3BvaSArIChlY2MtPnN0ZXBzIC0gMSkgKiBORkNfU1lTX0RBVEFf
-U0laRTsKPj4gKwkJZWxzZQo+PiAgCQkJb29iID0gY2hpcC0+b29iX3BvaSArIChpIC0gMSkgKiBO
-RkNfU1lTX0RBVEFfU0laRTsKPj4gLQkJCXJlZyA9IG9vYlswXSB8IG9vYlsxXSA8PCA4IHwgb29i
-WzJdIDw8IDE2IHwKPj4gLQkJCSAgICAgIG9vYlszXSA8PCAyNDsKPj4gLQkJfQo+Pgo+PiAtCQlp
-ZiAoIWkgJiYgYm9vdF9yb21fbW9kZSkKPiAKCj4gU28gd2Ugbm8gbG9uZ2VyIG5lZWQgYm9vdF9y
-b21fbW9kZT8gT3IgZG8gd2U/Cgpib290X3JvbV9tb2RlIGlzIHN0aWxsIGluIHVzZSBmb3IgZWNj
-IHN3aXRjaGluZy4KCj4gCj4+IC0JCQlyZWcgPSAocGFnZSAmIChwYWdlc19wZXJfYmxrIC0gMSkp
-ICogNDsKPj4gKwkJdG1wID0gb29iWzBdIHwgb29iWzFdIDw8IDggfCBvb2JbMl0gPDwgMTYgfCBv
-b2JbM10gPDwgMjQ7Cj4+Cj4+ICAJCWlmIChuZmMtPmNmZy0+dHlwZSA9PSBORkNfVjkpCj4+IC0J
-CQluZmMtPm9vYl9idWZbaV0gPSByZWc7Cj4+ICsJCQluZmMtPm9vYl9idWZbaV0gPSB0bXA7Cj4+
-ICAJCWVsc2UKPj4gLQkJCW5mYy0+b29iX2J1ZltpICogKG9vYl9zdGVwIC8gNCldID0gcmVnOwo+
-PiArCQkJbmZjLT5vb2JfYnVmW2kgKiAob29iX3N0ZXAgLyA0KV0gPSB0bXA7Cj4+ICAJfQo+Pgo+
-PiAgCWRtYV9kYXRhID0gZG1hX21hcF9zaW5nbGUobmZjLT5kZXYsICh2b2lkICopbmZjLT5wYWdl
-X2J1ZiwKPj4gQEAgLTgxMiwxMiArODE1LDE3IEBAIHN0YXRpYyBpbnQgcmtfbmZjX3JlYWRfcGFn
-ZV9od2VjYyhzdHJ1Y3QgbmFuZF9jaGlwICpjaGlwLCB1OCAqYnVmLCBpbnQgb29iX29uLAo+PiAg
-CQlnb3RvIHRpbWVvdXRfZXJyOwo+PiAgCX0KPj4KPj4gLQlmb3IgKGkgPSAxOyBpIDwgZWNjLT5z
-dGVwczsgaSsrKSB7Cj4+IC0JCW9vYiA9IGNoaXAtPm9vYl9wb2kgKyAoaSAtIDEpICogTkZDX1NZ
-U19EQVRBX1NJWkU7Cj4+ICsJZm9yIChpID0gMDsgaSA8IGVjYy0+c3RlcHM7IGkrKykgewo+PiAr
-CQlpZiAoIWkpCj4+ICsJCQlvb2IgPSBjaGlwLT5vb2JfcG9pICsgKGVjYy0+c3RlcHMgLSAxKSAq
-IE5GQ19TWVNfREFUQV9TSVpFOwo+PiArCQllbHNlCj4+ICsJCQlvb2IgPSBjaGlwLT5vb2JfcG9p
-ICsgKGkgLSAxKSAqIE5GQ19TWVNfREFUQV9TSVpFOwo+PiArCj4+ICAJCWlmIChuZmMtPmNmZy0+
-dHlwZSA9PSBORkNfVjkpCj4+ICAJCQl0bXAgPSBuZmMtPm9vYl9idWZbaV07Cj4+ICAJCWVsc2UK
-Pj4gIAkJCXRtcCA9IG5mYy0+b29iX2J1ZltpICogKG9vYl9zdGVwIC8gNCldOwo+PiArCj4+ICAJ
-CSpvb2IrKyA9ICh1OCl0bXA7Cj4+ICAJCSpvb2IrKyA9ICh1OCkodG1wID4+IDgpOwo+PiAgCQkq
-b29iKysgPSAodTgpKHRtcCA+PiAxNik7Cj4+IC0tCj4+IDIuMzAuMgo+Pgo+IAo+IAo+IFRoYW5r
-cywKPiBNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi,
+
+On Wed Jul 5, 2023 at 4:42 PM CEST, Christopher Obbard wrote:
+> There is some instablity with some eMMC modules on ROCK Pi 4 SBCs running
+> in HS400 mode. This ends up resulting in some block errors after a while
+> or after a "heavy" operation utilising the eMMC (e.g. resizing a
+> filesystem). An example of these errors is as follows:
+>
+>     [  289.171014] mmc1: running CQE recovery
+>     [  290.048972] mmc1: running CQE recovery
+>     [  290.054834] mmc1: running CQE recovery
+>     [  290.060817] mmc1: running CQE recovery
+>     [  290.061337] blk_update_request: I/O error, dev mmcblk1, sector 1411072 op 0x1:(WRITE) flags 0x800 phys_seg 36 prio class 0
+>     [  290.061370] EXT4-fs warning (device mmcblk1p1): ext4_end_bio:348: I/O error 10 writing to inode 29547 starting block 176466)
+>     [  290.061484] Buffer I/O error on device mmcblk1p1, logical block 172288
+>     [  290.061531] Buffer I/O error on device mmcblk1p1, logical block 172289
+>     [  290.061551] Buffer I/O error on device mmcblk1p1, logical block 172290
+>     [  290.061574] Buffer I/O error on device mmcblk1p1, logical block 172291
+>     [  290.061592] Buffer I/O error on device mmcblk1p1, logical block 172292
+>     [  290.061615] Buffer I/O error on device mmcblk1p1, logical block 172293
+>     [  290.061632] Buffer I/O error on device mmcblk1p1, logical block 172294
+>     [  290.061654] Buffer I/O error on device mmcblk1p1, logical block 172295
+>     [  290.061673] Buffer I/O error on device mmcblk1p1, logical block 172296
+>     [  290.061695] Buffer I/O error on device mmcblk1p1, logical block 172297
+>
+> Disabling the Command Queue seems to stop the CQE recovery from running,
+> but doesn't seem to improve the I/O errors. Until this can be investigated
+> further, disable HS400 mode on the ROCK Pi 4 SBCs to at least stop I/O
+> errors from occurring.
+
+Thanks for the patches! This issue lately got some attention on the
+Radxa forums so thanks for bringing it to the kernel lists.
+
+As a user who was hitting this issue some time ago I'd like to share the
+observations I made during my testing:
+
+I've seen these EMMC issues on several RockPi4 boards (4b v1.4, 4b v1.5,
+4SE and 4b+ v1.73), with different EMMC modules (3 Foresee, 1 Samsung)
+and throughout different kernels (v6.1.8 through 6.1.37, 6.3,
+6.3.0-rc7-next-20230421).
+
+However, with this vendor image [1] that uses kernel
+4.4.154-116-rockchip-g86a614bc15b3 all of the EMMC modules work just fine.
+The same holds true for another vendor image with kernel
+4.4.154-00039-g00fccd37c63c-dirty.
+
+The interesting thing here is, that both 4.4 kernels have HS400 enabled
+(and max-frequency=<150000000> set) in their respective device-trees.
+This can be checked in the vendor kernel repo for
+4.4.154-116-rockchip-g86a614bc15b3 [2] and for
+4.4.154-00039-g00fccd37c63c [3].
+
+Kind regards
+
+Folker
+
+
+[1]: https://github.com/radxa-build/rock-pi-4b/releases/download/main-df04b3af/rockpi-4b-debian-buster-xfce4-arm64-20220401-0335-gpt.img.xz
+[2]: https://github.com/radxa/kernel/blob/86a614bc15b3b1aeb3a9a9e395aedd088c70e35e/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+[3]: https://github.com/radxa/kernel/blob/00fccd37c63cd51b2ae9b3af965f975c561674b1/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+
+>
+> Christopher Obbard (2):
+>   arm64: dts: rockchip: Disable HS400 for eMMC on ROCK Pi 4
+>   arm64: dts: rockchip: Disable HS400 for eMMC on ROCK 4C+
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 3 +--
+>  arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 4 ++--
+>  2 files changed, 3 insertions(+), 4 deletions(-)
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
