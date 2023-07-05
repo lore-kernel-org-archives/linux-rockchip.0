@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EAB9EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 12:55:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E5E2EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 14:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FGbmOikoufFgNCqIHUeMzyE+RU6FydYP/kSVsQbtyYA=; b=seNhIsw/748t2l
-	1pmvCJcxYL0H6gY0pMZSxxxqzTs4IE01APcdMQ1KxvD40wG8kk1PGN+BGaw7sAbCVaLxwbmN1r5ED
-	n+6yNSh2L5Ol+K4+e0GfN7KPXkdvsQGHwMgypLSiwyQjmnR5+mnSuzQlIJHDCZqHl9nJRURI2gh/7
-	ij1rjFlSQ39lQOLvlMTnAFdfIv8jW9cIZCWbsEDIqk9zcj6F1gyW31bvv9o63/koLFmUMcot4EwDL
-	1uG5Oe4N6uwJ2mKrXtiKGeNYdPYIsGnn5J6q9Xc36LphqVTgW2aoJGEolCxZCEYVE9mW4wUp/bIWK
-	n7aqbcrjc364tu9xfELA==;
+	List-Owner; bh=qb1V+OvV16Ceh5VSNpd5sOnGWVZlf1fxrP9iRv5ZzJA=; b=pLuAeBQrID4lIU
+	98AMUhRzYNSgOm7BzNVFKzgy7SZdbp4Tjuhd2jdQaFGwwOKZu3+3wk/0Csod9tBARrNmFoRNxiaYQ
+	LTtULuBGXHUtdqFXVXluWWSRSEJroTKX8RmLmbjnsguoOtN4z5u+H9ee/+W4bCQ69tbEPXhtZv6Oh
+	AG6vrUcxrIFeJkpU0Xr7DL7bizg1DU+14croIPiHSWZKn9bJ4g8b1eGwhLZ1r7BVlwtHCxjuJM2PL
+	R3IlEjSem6P1n3ts+vd+8usxBC2vz8rt2I8+fTo7EGf1m2YQTLeEvdK63rZfkjaBXP6vfwadbKek0
+	3TxCi5pnGf5ygoWGyxPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH22e-00Fvi2-24;
-	Wed, 05 Jul 2023 12:55:32 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH22b-00Fvew-2V;
-	Wed, 05 Jul 2023 12:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=f//Lu0FPoyrpc7sNpXYp41ursJKYth2AfDJdKhGe3+o=; b=j8yFU5vuZ9MS+pJQA3z+d7YP7E
-	ZSE2o6PpyNCLrIrxHb9p8K0c6xSof3MOMFFKadbOCbceIGTqt/riDpvfkEjsz0rQ0ph8jZkcfvS+z
-	6iv6P8GTB3dWNCHMJaCgEnGxo79pMyvE6oOKsg2W7zVg7HaqrQmFOFrLPMmO8pAObBNzZj1zDn7Rv
-	1cZL+6CoMN8/33DyZ9qCkhbhmEEdu0zecjij0nc9m2IAKC8orFGHz7aNlnzb5u8RdZ0+wWTB0InTw
-	vxCzIhWewtBJ4+sNlowAykISFsm7ZwtV1FdE61qyiGtl58O6NH6i7VL2EN2oUPRcpxMMZTK6Fr7s3
-	gWgXY3ow==;
+	id 1qH3DJ-00G53F-2A;
+	Wed, 05 Jul 2023 14:10:37 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH1Ln-00C8if-3B;
-	Wed, 05 Jul 2023 12:11:18 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:cbfb:e358:222c:d8c1])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qH3DD-00G4zr-0J;
+	Wed, 05 Jul 2023 14:10:32 +0000
+Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:7599:ed26:1798:f430])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F0ED6606FB7;
-	Wed,  5 Jul 2023 13:11:08 +0100 (BST)
+	(Authenticated sender: obbardc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1F6A6606FB9;
+	Wed,  5 Jul 2023 15:10:29 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688559068;
-	bh=JcQEQsRyFFpDQxqYrZw61Z4R27rfAC7WB2mYLyxvgng=;
+	s=mail; t=1688566229;
+	bh=Bl78q3Ch1sDVxiVmKqz7qSjFhBF46KI5+lf0oBzlvdo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Od5IoMVHyjnUQu6XuiF3koimeEcsO4HL11T/zxvqv6HMPwJrs0if+0aP0cBiV/b/i
-	 lPb7/coEXu5NFRm9ShC/MOVVqHD0Rt9nTKQ0foPn5EJ7FeZDRphCnhwfCATQFHCTkQ
-	 O7KzkxgmjRGNB8S2fea9GyAq1zdF7tfVhrO2cm+T10b0mJYDf6O3OEGrhrruT+IRgb
-	 Nue8K0e/6VgQwZE7MoIvS0fkj7nrx9jW3OTsz+i6Iwhq+JDV04BPlQ/fJU+DQ6uaTg
-	 0ERSrVylKcxxYlTcL9LYwCfxHSB779SDPSVz4B2Ct93fgq12vaOrTAEeZd2MOcGz8/
-	 6bL9oe1tWTpAA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	b=NAeFBMiKfyHbcFlsLGh09vplmumo/4HICCaTIaF5U6rNnDDZjfTtW2HxbCct4B6pD
+	 tdizNyJinHLTpTeq773JCG8EBtnrU88H8IfhM3h1gewH6zfzjVP/QRqdX5rfhzlQMx
+	 oYv8ns3b/ilTDy7yHm1LB9mFpr00zTY1aF/1fEPZCLJz4Wlp5rSK5i1l+IRVFA5/+F
+	 FtiDuhw7TK8CEyiyqTS+Tq69We721cVM3XvMrN0434WSD2AtewBU2DOlpFh1PWnkcL
+	 1AVKzXnbvNe67h3RFLTb54mIShASYfGH8SHZ6xVnB+gScT/ltS3CrV480lGxZeZagk
+	 pFddr6hYCGh+w==
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Andy Yan <andyshrk@163.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Tianling Shen <cnsztl@gmail.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Wed,  5 Jul 2023 14:10:56 +0200
-Message-Id: <20230705121056.37017-11-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
-References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 2/3] dt-bindings: arm: rockchip: Add Radxa ROCK 4SE
+Date: Wed,  5 Jul 2023 15:10:10 +0100
+Message-Id: <20230705141011.111568-3-chris.obbard@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230705141011.111568-1-chris.obbard@collabora.com>
+References: <20230705141011.111568-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_131116_429591_4F26940D 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20230705_071031_263930_1CBE3B7D 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,110 +88,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
+Add devicetree binding entry for the Radxa ROCK 4SE.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  1 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 4 files changed, 34 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 08ec5e9cc739..6b8d3908a4f7 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -720,6 +720,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ecdb72a519cb..3b7bf86cec02 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -694,6 +694,11 @@ properties:
+           - const: radxa,rock-4c-plus
+           - const: rockchip,rk3399
  
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..3014b8ee13d0 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_buf	= v4l2_m2m_ioctl_delete_buf,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
- 
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
++      - description: Radxa ROCK 4SE
++        items:
++          - const: radxa,rock-4se
++          - const: rockchip,rk3399
 +
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
- {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
- 
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index bb9de6a899e0..95b9e1be09f8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
- 
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -846,6 +856,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
+       - description: Radxa ROCK Pi E
+         items:
+           - const: radxa,rockpi-e
 -- 
-2.39.2
+2.40.1
 
 
 _______________________________________________
