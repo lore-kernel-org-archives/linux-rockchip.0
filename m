@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95527EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 14:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76753EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 14:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BwUu+Qxix9IlOdBQK6v6Kc8RS5xWKXfFdPnAqE4UWDQ=; b=p9V3rZumsw0tjb
-	zLcHvzn04gnzAOnZlpRMMTHCmPGwEEp9znGzgO9RJ1QXyrVP8JYO2zqjqRR5qPna7iIJvaeVMNyhQ
-	4lL9b5JUNR9yTm9p4UfdFZGGvXsKrPGbujywpM+JV66YzY0BlyFl9OZTo0ogBU4QglKffSqMMDR+s
-	59ywPJXvVBVMALpswWIDpVmoH/sdUIkwi5xxUHJEoPhf5GYwpYBQsnWgkEeMZomqsGHmdjw5RwdBS
-	C+4F56Ww03x7zwwIdMfCnWXlRlzpFV6RvKkhNCt3NdLYABA93cS/STMy1s87K4T92a7bp+6MBjEAo
-	l9to9hW2rWgwxGLgqT9A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DlX1gRMiv0mW3x6H5bLOoK/lkv+/Lp3cDUWhvtUNgpA=; b=OdXQwZqcZuz85K
+	89wUJq50xBXzz/CQ6wpjXu4cFym2IT/tk9zbJ1ZagZ3tBGp2eZFi2HOosJ6YzAJ8FxVIAFxlEl5wO
+	6JUrMdsRBox1CNZ4MmhL19T11eJkYL2LuTiXLoXHzFYtUL4xXoVAYI9FPR1Rv3H1VIhjyfb88LoDc
+	putdO+a1GTAj/SsszoN4QXWxS+3hCEugTCKNC28aIsUe6NrC3929ZI6b7w8NI0DAPsuMWPSWKAXU/
+	fIRuMbciRBYPbey0/3MO/+3Ckj32nNyl7L8CtuC7+4+Mn1dWDm26vGZtkUFxLK50pH8L/OT17EsOF
+	Sp5f0q4BxL/mIvYJ9kTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH3il-00GB85-2r;
-	Wed, 05 Jul 2023 14:43:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qH3yI-00GEaA-2h;
+	Wed, 05 Jul 2023 14:59:10 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH3ih-00GB4u-15;
-	Wed, 05 Jul 2023 14:43:04 +0000
-Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:7599:ed26:1798:f430])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B7BFE6606FBA;
-	Wed,  5 Jul 2023 15:43:01 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688568181;
-	bh=uPaYPRBzOqPzhs7FH+a97cBKmRbQaU3/eRl8Hl4t9z4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=A2hNM1ZmvLZ2ham6FGonveGJiwK9UZbmqzgcCkRfqPOTpM7KFaX9itSzRzJTcJFmR
-	 DY1OTZaAKpKTbIOujbgh/oyyQwREsRzY/I2uzWVvnM9XPE42PSsafBGfYkW0GQQRsS
-	 t8MzAz2sORC51PBadMdhW5y/uT8fTmsdmD+3BdI4uQ2Lb93fjs+ItBTM/VVTll98d8
-	 RP9JjkPcCe3wen1CWcoOBnshnDU3dzOtg0y5eFa9oHVmvEv/4l6NLvfnMUNXPxKu11
-	 fHshVc5tqSej1UpBNspfgT2Tfg6JDMFe/cBOuc0FDyF0yI10DnWRU2+m8is2SkMeY6
-	 RHHaXwZmCtgfw==
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Akash Gajjar <Akash_Gajjar@mentor.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jagan Teki <jagan@amarulasolutions.com>,
+	id 1qH3yG-00GEYX-0w
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Jul 2023 14:59:09 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-99384a80af7so249612266b.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Jul 2023 07:59:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688569144; x=1691161144;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0VNzB+MriQ9BG4K4qokulMx9kQTLwPATV3LNvBr25cQ=;
+        b=hjWKurOtmqtWXbr3mSIf/L9OQms/n9RTowc2zhmz9nsfo+HvrErke4NLYsIZiSgjlp
+         o0WsUWqPzdX39GBzx+EemPZvQNYCIoAcMRiqTOv3TV70VX4z9gKe9raszFCXUq47eECZ
+         Pt3YsEOOnMA+hq3XhuVVAFTHwLitjjmoUku30lkfFj/JjYrNsTwMV8MFY/Buc4/iIHIM
+         37GyfNbLC+3PBUWBn8YCdHMqIAiNoAObOeby6VajYz8RGZE4d+qrnjV9JOlX0FwhMih+
+         rwIGB/K+DMOFQKxuj55voB7uq8mzvZIK4LGBCCJ10yYI7wDhZ9AlOazEW1xPH1VMqBM+
+         unrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688569144; x=1691161144;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0VNzB+MriQ9BG4K4qokulMx9kQTLwPATV3LNvBr25cQ=;
+        b=K1ZrD3q2dA+iwodk/RyIt/6q3y5jwRvew5ijDr0VcdcoEKA2c6Ctu+avvPMueShd/x
+         00T+rUMWEeLrMbPRQftZhcKEVkFcq50a74D/G+XpjUa4TZQZQ+dwN0PAzGlGCMdSPROS
+         xBGfN11MWmqwK0oED94nAseQuCuknF37XLAJxGPd11UukkIcj9q1nwqMmWPvlm0p6hHd
+         jRd4FhMGs5otsK5fdirmlV0325Bf8RkOhrhjIoa2iQBMeLUDGfAdeWZPoKXdvs2ZRUgp
+         JtWvELqh6nnmj9Dhl0tlLjvK4qff3Sssr62yv0YskXUJtPBQx5Hb/Zme3KvnX5nrc48o
+         Caog==
+X-Gm-Message-State: ABy/qLaA/PE/cjyPmhQRZijsf2kheQpFksz0wGRwtJFFszMtYPHVHnwm
+	NOqGmZ8Y2LzH10pzQq6NBzFBdw==
+X-Google-Smtp-Source: APBJJlF7I2RU8dWT3drf/l5wsrLFM9ZWN+E3OqVP01I0ERAyLy6TxUsBD/Q2Yf1G9XgUJgJ2kGO81g==
+X-Received: by 2002:a17:906:4e06:b0:98d:9ded:f87f with SMTP id z6-20020a1709064e0600b0098d9dedf87fmr9221656eju.10.1688569144505;
+        Wed, 05 Jul 2023 07:59:04 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id kt19-20020a170906aad300b009894b476310sm14786411ejb.163.2023.07.05.07.59.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Jul 2023 07:59:04 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Pragnesh Patel <Pragnesh_Patel@mentor.com>,
-	Rob Herring <robh+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 1/2] arm64: dts: rockchip: Disable HS400 for eMMC on ROCK Pi 4
-Date: Wed,  5 Jul 2023 15:42:54 +0100
-Message-Id: <20230705144255.115299-2-chris.obbard@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230705144255.115299-1-chris.obbard@collabora.com>
-References: <20230705144255.115299-1-chris.obbard@collabora.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: rockchip: add missing space before {
+Date: Wed,  5 Jul 2023 16:58:59 +0200
+Message-Id: <20230705145859.293260-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_074303_500590_FBAA46A7 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20230705_075908_347572_8C3D813D 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,61 +96,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is some instablity with some eMMC modules on ROCK Pi 4 SBCs running
-in HS400 mode. This ends up resulting in some block errors after a while
-or after a "heavy" operation utilising the eMMC (e.g. resizing a
-filesystem). An example of these errors is as follows:
+Add missing whitespace between node name/label and opening {.
 
-    [  289.171014] mmc1: running CQE recovery
-    [  290.048972] mmc1: running CQE recovery
-    [  290.054834] mmc1: running CQE recovery
-    [  290.060817] mmc1: running CQE recovery
-    [  290.061337] blk_update_request: I/O error, dev mmcblk1, sector 1411072 op 0x1:(WRITE) flags 0x800 phys_seg 36 prio class 0
-    [  290.061370] EXT4-fs warning (device mmcblk1p1): ext4_end_bio:348: I/O error 10 writing to inode 29547 starting block 176466)
-    [  290.061484] Buffer I/O error on device mmcblk1p1, logical block 172288
-    [  290.061531] Buffer I/O error on device mmcblk1p1, logical block 172289
-    [  290.061551] Buffer I/O error on device mmcblk1p1, logical block 172290
-    [  290.061574] Buffer I/O error on device mmcblk1p1, logical block 172291
-    [  290.061592] Buffer I/O error on device mmcblk1p1, logical block 172292
-    [  290.061615] Buffer I/O error on device mmcblk1p1, logical block 172293
-    [  290.061632] Buffer I/O error on device mmcblk1p1, logical block 172294
-    [  290.061654] Buffer I/O error on device mmcblk1p1, logical block 172295
-    [  290.061673] Buffer I/O error on device mmcblk1p1, logical block 172296
-    [  290.061695] Buffer I/O error on device mmcblk1p1, logical block 172297
-
-Disabling the Command Queue seems to stop the CQE recovery from running,
-but doesn't seem to improve the I/O errors. Until this can be investigated
-further, disable HS400 mode on the ROCK Pi 4 SBCs to at least stop I/O
-errors from occurring.
-
-While we are here, set the eMMC maximum clock frequency to 1.5MHz to
-follow the ROCK 4C+.
-
-Fixes: 1b5715c602fd ("arm64: dts: rockchip: add ROCK Pi 4 DTS support")
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
+ arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 907071d4fe80..95efee311ece 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -645,9 +645,9 @@ &saradc {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index 4d9ed2a02736..1a60a275ddf9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -125,19 +125,19 @@ &cpu_l3 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
  };
  
- &sdhci {
-+	max-frequency = <150000000>;
- 	bus-width = <8>;
--	mmc-hs400-1_8v;
--	mmc-hs400-enhanced-strobe;
-+	mmc-hs200-1_8v;
- 	non-removable;
- 	status = "okay";
+-&cpu_b0{
++&cpu_b0 {
+ 	cpu-supply = <&vdd_cpu_big0_s0>;
  };
+ 
+-&cpu_b1{
++&cpu_b1 {
+ 	cpu-supply = <&vdd_cpu_big0_s0>;
+ };
+ 
+-&cpu_b2{
++&cpu_b2 {
+ 	cpu-supply = <&vdd_cpu_big1_s0>;
+ };
+ 
+-&cpu_b3{
++&cpu_b3 {
+ 	cpu-supply = <&vdd_cpu_big1_s0>;
+ };
+ 
 -- 
-2.40.1
+2.34.1
 
 
 _______________________________________________
