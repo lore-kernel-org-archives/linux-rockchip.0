@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A67A9C00528
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 15:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EA9C001B0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 15:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XvpSa8K3LLCYGJbTAHll9WfHB7OByN5YX0gfxAiY1jQ=; b=Fe1aqIMR0CEv/T
-	qY6A//KFFJtgVEqwRef9U7MFOQ8xqnGPYFt6TlE1ym2isYLvXT+B7n+5Iy1wgXVX8ISmeL/27ZWYT
-	Kfgs2QrZn5RL0sJgcCrqK7J++ukwPcfFx7z72KJV3oucBxPoW1NMpYjDKSqIBXOMPCRqSN/GeWG7E
-	psikJFnn5ANiJ1ZavwlaNLN5OhcU1EDMLzRlx0m0dW2pK4+1VsPwMXPWBRRUscYDCiH6aan3kVbWo
-	EZY1CU0pp3sAGyr2xhxlxe2HEUo1s/wRXMMgu9T70B9pZ9d8Cb+qZCYYep1mmGc26WFi05fLehinU
-	p9d2E8xtKVCilOk8dbSQ==;
+	List-Owner; bh=64mrkay23l87+RYbTZ/403mZyDprybCyXoc0RMicgcs=; b=mmPQcwk6eqEAq9
+	n7pPesi9lGOIy4dy9JtndDaeE0INOq+OT10IRVVVXem3L1U60ZfpnIXJooRnWzgHMmk3IP1LehJl1
+	4+V/q8WCbMlFYAVAJIw9OvLh9pebULp3Yt3/1WZVfjvrJ4q02cbWdSoHAKlzaG6EJ4LDGAFJNvvKn
+	GRsXIIRy075D0PLhgg841y7hAHlsUFb9Qee1tzFLb6ZVWDSuG1xgxACJqPgamj7TBA9gnB4wfXDtK
+	6G9vmKaZ9/2JMKVt1uyAJU7NHgxy0/ayOXTVQGqFM/H/0fTDmA/JvcIPCtCSlw76tSWvsda5b31/k
+	gj+SGMyUEj5QpuI45y5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH4ol-00GOiC-2W;
-	Wed, 05 Jul 2023 15:53:23 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1qH4pP-00GOwd-1b;
+	Wed, 05 Jul 2023 15:54:03 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH4oj-00GOg4-2c
-	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Jul 2023 15:53:22 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-98df3dea907so815177366b.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 05 Jul 2023 08:53:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688572395; x=1691164395;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vh477yDSd+xSa/Mg5e8k0mjyTlNnNDL3Odj1uMreL9w=;
-        b=FyE+JH8rQS/3AwHo2bDBieRlA0uAn7fhn54l+1mD2m1KmtyrGneCNZpeF/gaEvTOFQ
-         qulUr+gqI6H1vBbOOjzVf/kWCOpMLY6Mely4jQ04rvNp9OovZVaQwpjDRM2A4tyOof90
-         0hqy15xEiM5iZ08gk60+G1mCnVFB+vRVfJAIFt/XDf3NfXVmbA++mkm9KjDtozo8lyQj
-         dwM6SeQ1NiWgoJw9sekEgZDNhNdn/tsAvYE7Q03rflmt2vZ8C+wwESAGZxyINNoUyppW
-         EkyZn8LIhMkkgoCpcbzrBWiwYh2pBJ3mqLFau3fQoPjGH8tm7WX3cAnz2QY3NtaW3xF/
-         f8jA==
+	id 1qH4pM-00GOue-2U;
+	Wed, 05 Jul 2023 15:54:01 +0000
+Received: by mail-io1-f45.google.com with SMTP id ca18e2360f4ac-78362f57500so333921839f.3;
+        Wed, 05 Jul 2023 08:53:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688572395; x=1691164395;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vh477yDSd+xSa/Mg5e8k0mjyTlNnNDL3Odj1uMreL9w=;
-        b=I568rjiLuTI+/Ot5XFZSWEga0tjKVBMzTIsHNeH5HSIFhLFjE1IguECVmRcNucUH3c
-         rwB4GuBMq2TtlRJUrldaorVoobIYEJRW8Jh44vJWBNFYRkBm3dO1usckDz+a5MgkXvGL
-         OJBiCVsN91EFIYYDFcByNNa7BBc77nl5MCm6arx2EZdGVbES8q2Qyq1uq8xK3NMR6XuD
-         DDROa40waAoUxT4cE0L4RMo0U5mw0WlKkPjIACE4R6H0GQHjpvwphWiL/3B3x2sPOtT7
-         ng80lB1cEXq4r3zRp66+xpby6voL3L2KMW4yvZI+F+yjGyb0bZYQXwid1flYSqpfu0c5
-         rHuw==
-X-Gm-Message-State: ABy/qLaQ4Fvy9Hvabt9jJpELR5pd1qNsWUDEXJVkPmAsG/84Fre7JLFR
-	qi2iBpaHXn8UR3B1KE1bfAKSFA==
-X-Google-Smtp-Source: APBJJlE4PgcJ7V29VNYZD2/t4XcW0wr66Eo22nZ/3iI3L9HTkt5yMStE/CU7ZF2DnujfWvJy+dxuUA==
-X-Received: by 2002:a17:906:1914:b0:98e:2b01:ab97 with SMTP id a20-20020a170906191400b0098e2b01ab97mr11790132eje.68.1688572395674;
-        Wed, 05 Jul 2023 08:53:15 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id t14-20020a170906948e00b009886aaeb722sm14726472ejx.137.2023.07.05.08.53.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Jul 2023 08:53:15 -0700 (PDT)
-Message-ID: <b573535b-25f8-8986-3d5d-2e8d4b4c5ca1@linaro.org>
-Date: Wed, 5 Jul 2023 17:53:12 +0200
+        d=1e100.net; s=20221208; t=1688572438; x=1691164438;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3RLbkYBSMtZSZWsdqOipQPRF1AXaIm7IXw5H9F31xDg=;
+        b=eQ/QSvp+6VorQRfrrC8cYP+wh2GHofAQUp0FMl8JBryzMJ6ka3837eohpe3fpQ9OGT
+         vUSoeKOug3eIaUHm0FCiEIzJtbAwLo+NWjpKCtWP5qRwi2Ym/7EUOm4vijm3cR8iF1Fx
+         uMOPjrFPAhCVu0vEV7CXL4UMHd66GRK4NXsRKfR2XopXiF6mDXoSqHugtN+Zq+cQjqiE
+         uxtw5g+p4wqPea8HtO9nmX1n9rFw9WoJIblOZEVmvvgzbCxtKuGEZXQDCrKXuqWS5Yuo
+         fnb5xcjeEq+gtIjWEefeDfuB9TKboxX5kS6S7CywIeqAuPv5m4FoX+4tIu5wiOT5D/k/
+         xY2A==
+X-Gm-Message-State: AC+VfDyrvfllhJ3P6zt5q7Aj58N4M3f0TQHlw8YT5r3eUmWytqU3ZctY
+	Q+G4qXc0aL+dSfsT2gyfCZhTnr0mWw==
+X-Google-Smtp-Source: ACHHUZ73QtYKyynoI9ylI1XEWC2lq+A/sJ6q02lzFpAinNpUOyDvzNhBset5FBiQu0bFE/MLWXDyOg==
+X-Received: by 2002:a5e:8811:0:b0:785:ca70:46a2 with SMTP id l17-20020a5e8811000000b00785ca7046a2mr18137083ioj.4.1688572438444;
+        Wed, 05 Jul 2023 08:53:58 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id q15-20020a02c8cf000000b0042ad6abe0bbsm6425382jao.20.2023.07.05.08.53.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Jul 2023 08:53:57 -0700 (PDT)
+Received: (nullmailer pid 691642 invoked by uid 1000);
+	Wed, 05 Jul 2023 15:53:55 -0000
+Date: Wed, 5 Jul 2023 09:53:55 -0600
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Leo Yan <leo.yan@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, freedreno@lists.freedesktop.org, linux-usb@vger.kernel.org, linux-media@vger.kernel.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-remoteproc@vger.kernel.org, coresight@lists.linaro.org, dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-amlogic@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: cleanup DTS example whitespaces
+Message-ID: <168857243311.691536.13322875472425620659.robh@kernel.org>
+References: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v1 3/3] arm64: dts: rockchip: Add Radxa ROCK 4SE
-Content-Language: en-US
-To: Christopher Obbard <chris.obbard@collabora.com>,
- linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
- Chris Morgan <macromorgan@hotmail.com>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@edgeble.ai>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Maya Matuszczyk <maccraft123mc@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Tianling Shen <cnsztl@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230705141011.111568-1-chris.obbard@collabora.com>
- <20230705141011.111568-4-chris.obbard@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230705141011.111568-4-chris.obbard@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_085321_847006_43298198 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20230705_085400_811470_E07F151C 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,33 +81,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/07/2023 16:10, Christopher Obbard wrote:
-> Add board-specific devicetree file for the RK3399T-based Radxa ROCK 4SE
-> board. This board offers similar peripherals in a similar form-factor to
-> the existing ROCK Pi 4B but uses the cost-optimised RK3399T processor
-> (which has different OPP table than the RK3399) and other minimal hardware
-> changes.
+
+On Sun, 02 Jul 2023 20:23:08 +0200, Krzysztof Kozlowski wrote:
+> The DTS code coding style expects spaces around '=' sign.
 > 
-> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
 > ---
 > 
+> Rob,
+> 
+> Maybe this could go via your tree? Rebased on your for-next:
+> v6.4-rc2-45-gf0ac35049606
+> ---
+>  .../bindings/arm/arm,coresight-cti.yaml        | 18 +++++++++---------
+>  .../bindings/arm/keystone/ti,sci.yaml          |  8 ++++----
+>  .../devicetree/bindings/display/msm/gmu.yaml   |  2 +-
+>  .../display/panel/samsung,s6e8aa0.yaml         |  2 +-
+>  .../display/rockchip/rockchip-vop.yaml         |  4 ++--
+>  .../bindings/iio/adc/ti,adc108s102.yaml        |  2 +-
+>  .../bindings/media/renesas,rzg2l-cru.yaml      |  4 ++--
+>  .../devicetree/bindings/media/renesas,vin.yaml |  4 ++--
+>  .../devicetree/bindings/mtd/mtd-physmap.yaml   |  2 +-
+>  .../bindings/net/mediatek-dwmac.yaml           |  2 +-
+>  .../bindings/perf/amlogic,g12-ddr-pmu.yaml     |  4 ++--
+>  .../bindings/phy/mediatek,dsi-phy.yaml         |  2 +-
+>  .../remoteproc/amlogic,meson-mx-ao-arc.yaml    |  2 +-
+>  .../devicetree/bindings/usb/mediatek,mtu3.yaml |  2 +-
+>  .../devicetree/bindings/usb/ti,am62-usb.yaml   |  2 +-
+>  15 files changed, 30 insertions(+), 30 deletions(-)
+> 
 
-
-> +
-> +&sdio0 {
-> +	status = "okay";
-> +
-> +	brcmf: wifi@1 {
-> +		compatible = "brcm,bcm4329-fmac";
-> +		reg = <1>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-
-I just send a patch to fix this in some files, so let's try keep it
-good. Use proper interrupt type, not none.
-
-Best regards,
-Krzysztof
+Applied, thanks!
 
 
 _______________________________________________
