@@ -4,58 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7EDCC0015E
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 14:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C162FC001DE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 14:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DERWeuwfSfY6D+u5GHsWy+QCqykv4/jvVCKYc2qrnPA=; b=Ys9baeboJA/sHV
-	BMdGk6dfkiLFZl3ysYf5sr1CTWfPVEpN/XBhpV4WNcj5e8oLTCJvbArDWPXOaMf325Z9jYoebXOnF
-	v5oW3WvGiQsB/eBBawC131vojvY+U4LtoSNh/YyNoMUPEXRuULK+fU8cwN1rQuxuxPTUMMUDNfKW7
-	eq9kRKJhd62Usor5jfMZ/gM4J11DsLqA8QayrzkL5hRSAk0/Rx3hP6tfAYQvXqU0bgN6szxo0Cmrf
-	+3Kc7N9rJa3XmPBlLzZrm0mf/0p1N1bpwzdjPN1AUV1l+TC3e0E8a1MGEBv8YDok3MsJqsidnm2EH
-	nRYsRuYJD8Z61EeRWK3g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sh0kO/lcRZoGpgo6vNFyTiy7/5SCbWgptPLPVqdaM2o=; b=IXI3ndWL60ac6c
+	nRQho7tOAl9Y/Iz7rl3PJnC5YvFFZfY9wAJynVSCfkbPLIrfXl2XK00qSbB+9X32egV7HjuM2Spz3
+	X3xq/rg/nSjAQQR0KXWTu9bKQrL+snjlsMQDqM5S6FKfBo5e3GAd2/4BpjfDkaeg3o7z9glYGRmpx
+	zNhBM5xK7I+mPnA1fyuLuKObM5EvsyN0pGzF0UkaC9ESX6gvi3/ArWNrMZDmXOzgTCj8JDFNA/unE
+	RGzCnFAwJOKyBKIWP+Zo1QzFM18jdes7EIQLuJ8fcmCKZT8CFBhVgZ26erSNc5r3zLX8bT3vH226j
+	rP4vHgFueRpKvL5xKEtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH3DG-00G525-1K;
-	Wed, 05 Jul 2023 14:10:34 +0000
+	id 1qH3DL-00G54c-1Z;
+	Wed, 05 Jul 2023 14:10:39 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH3DC-00G4zk-0b;
-	Wed, 05 Jul 2023 14:10:31 +0000
+	id 1qH3DE-00G50Q-0Z;
+	Wed, 05 Jul 2023 14:10:33 +0000
 Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:7599:ed26:1798:f430])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F2C3B6601F5E;
-	Wed,  5 Jul 2023 15:10:26 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DC9246606FBD;
+	Wed,  5 Jul 2023 15:10:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688566227;
-	bh=y0Ghe9koICkN/RpJzROtFUmgT0UnN61Nopi/vdGHi5c=;
-	h=From:To:Cc:Subject:Date:From;
-	b=BxqEg2BidsL4JQgj2HaFCORG8pylLXX+9b3F5qjWGa2cl12kvYjrjKSA2lOr1AvWD
-	 3koGNDg/GI01yi4W59UQsAjhheQWQJtflBVgRQfvDxHFRwFCLEvuoOOMox6KIwIsiD
-	 qgs3ghfsR0ACx+IoaW+jibfqmmQEk23pxcjC3jmqAvucncUqra5WEO16/Og7RW385s
-	 /EfDNY6VZ2hQ9/dU/No9gTc3HFBAb7aaFVOXOLzQKK0Gh6kWiMNgliMat37E3GtJrR
-	 PMBKTwtLYm0PmpczSxqKShGsj4B8ZBGPlPolhsHKnK6M0Ldg18DX2dUc9gqdNxPKG4
-	 P6HogS4purCWw==
+	s=mail; t=1688566231;
+	bh=HH037cIatFNjpzqzoiSAyNtBb7WwRL/g3tN/nADY86I=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BLMXc2H3ZfeFmJFNgguDbhyPdDaSGXUShvulvztIgsySQ7jImJsZGb4cFouBlX5lO
+	 fWp489lsgRbKDDubrdWcCIEapF0PbtkaIeRKgeUQiFkyEo3K2i78hl++YfucCuKwoq
+	 sUW9ZJz4DsEeBklzvupo3na9kfIFKpO5l1Sa1OFe/kYJ8ugUYj4zt9xbqnCqoc0n34
+	 V4BdbvfHU3dqbePU9ZM/OKlONzyxvHSW+9C0H+PASHmCrqdEjo5R+MOwG4dYGAzdx/
+	 rjhu4PgQfSMP4zWu4co8j+rJ1wjgfzLpTHbB7nV1ClMmYlEMnExHIyNN/f3mWCaqSR
+	 Lsn7Mw/6AbjCA==
 From: Christopher Obbard <chris.obbard@collabora.com>
 To: linux-rockchip@lists.infradead.org
 Cc: kernel@collabora.com,
 	Christopher Obbard <chris.obbard@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
 	Andy Yan <andyshrk@163.com>,
-	Brian Norris <briannorris@chromium.org>,
 	Chris Morgan <macromorgan@hotmail.com>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
 	Conor Dooley <conor+dt@kernel.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Jagan Teki <jagan@amarulasolutions.com>,
 	Jagan Teki <jagan@edgeble.ai>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Maya Matuszczyk <maccraft123mc@gmail.com>,
@@ -65,14 +60,16 @@ Cc: kernel@collabora.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 0/3] Add support for Radxa ROCK 4SE
-Date: Wed,  5 Jul 2023 15:10:08 +0100
-Message-Id: <20230705141011.111568-1-chris.obbard@collabora.com>
+Subject: [PATCH v1 3/3] arm64: dts: rockchip: Add Radxa ROCK 4SE
+Date: Wed,  5 Jul 2023 15:10:11 +0100
+Message-Id: <20230705141011.111568-4-chris.obbard@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230705141011.111568-1-chris.obbard@collabora.com>
+References: <20230705141011.111568-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_071030_461544_E0D91791 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20230705_071032_343568_C847206F 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +86,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the RK3399T-based Radxa ROCK 4SE board. This board offers
-similar peripherals and form-factor to the ROCK Pi 4B but uses the
-cost-optimised RK3399T processor (which has different a OPP table but
-otherwise minimal changes) and some other minor hardware changes between
-the Rock Pi 4B (described in the devicetree).
+Add board-specific devicetree file for the RK3399T-based Radxa ROCK 4SE
+board. This board offers similar peripherals in a similar form-factor to
+the existing ROCK Pi 4B but uses the cost-optimised RK3399T processor
+(which has different OPP table than the RK3399) and other minimal hardware
+changes.
 
-The first patch moves the RK3399 OPP table from the generic Radxa ROCK
-Pi 4 dtsi into board-specific devicetree files, in preparation for the
-ROCK 4SE devicetree file (in later patches).
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+---
 
-The second patch adds the devicetree binding documentation for the Radxa
-ROCK 4SE.
-
-The third patch adds the board-specific devicetree file for the Radxa ROCK
-4SE.
-
-
-Christopher Obbard (3):
-  arm64: dts: rockchip: Move OPP table from ROCK Pi 4 dtsi
-  dt-bindings: arm: rockchip: Add Radxa ROCK 4SE
-  arm64: dts: rockchip: Add Radxa ROCK 4SE
-
- .../devicetree/bindings/arm/rockchip.yaml     |  5 ++
  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
  .../boot/dts/rockchip/rk3399-rock-4se.dts     | 65 +++++++++++++++++++
- .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   |  1 -
- .../boot/dts/rockchip/rk3399-rock-pi-4a.dts   |  1 +
- .../boot/dts/rockchip/rk3399-rock-pi-4b.dts   |  1 +
- .../boot/dts/rockchip/rk3399-rock-pi-4c.dts   |  1 +
- 7 files changed, 74 insertions(+), 1 deletion(-)
+ 2 files changed, 66 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
 
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index b7fb908eb92d..7ab29cbe71c4 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -58,6 +58,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4c-plus.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4se.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+new file mode 100644
+index 000000000000..d0bc91cebba2
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+@@ -0,0 +1,65 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-t-opp.dtsi"
++
++/ {
++	model = "Radxa ROCK 4SE";
++	compatible = "radxa,rock-4se", "rockchip,rk3399";
++
++	aliases {
++		mmc2 = &sdio0;
++	};
++};
++
++&pinctrl {
++	usb2 {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&sdio0 {
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
++};
++
++&uart0 {
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm4345c5";
++		clocks = <&rk808 1>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		max-speed = <1500000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++		vbat-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_1v8>;
++	};
++};
++
++&vcc5v0_host {
++	enable-active-high;
++	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&vcc5v0_host_en>;
++};
 -- 
 2.40.1
 
