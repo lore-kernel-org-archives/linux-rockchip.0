@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D4CEC001DF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45129EB64DA
 	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jul 2023 12:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PWn7PNB+91fwOaeKFqRyNzxyXByQVbsJFnuY43clwIg=; b=sgjrhynPB0Njfr
-	jGTn8zn+loihJaog8zwR2y2RSnNC0NCF8VRxWgs9GnLBxC1CpcDlQKiHdL2iijpan8CkUaQtz8yOg
-	ky7vUVQaxItZG619PS8jGAXR+n2hxqV1TPfog6H3pNGvGd/yg+pa0LKML4Q3Ffhx7cn64lEGsAuJA
-	fQw/sglr8YrxkIY10ihDC4H38fX3eU0i9R77aBYuZ+gUcF3MZ/BbeXJtJPrtIOdiJ0MQUWMF48tvn
-	DxyYmixZOCaV/VwjNFZ5v9lXYrHl6ViBwJc8B9RUdDmzYHnfbQp2Ep4/wt3n/f4EyUnY1ru6n2UZr
-	pwbVifdgGJKJ+yFExbrA==;
+	List-Owner; bh=wYcMYrx5X+l4oZupB0vLQU2dczOGODmrkPCoEKa94tU=; b=NJwkfX5UBzMrKd
+	vJkcTDbanDBfMMeqj6SM7xSH31ZmFs8VDggTx42BVKG7uP9GpzWMNWmFbsm2NiO9pQeBbBAFWnKBa
+	45u1sp3crvJFwWHoaMKkUs0xXiYHOFVaaQBYThEBSN3D5kpWqRQo9FjS8t/WrJYvMxFkza5nLLnBa
+	s/Zw8Yi3vUPv3rhS+bdkP1oRZ022UC4GfiiYAM4a0NILZzFoOr4cbUt8ey8U0dB7oWRjCXuR8tytT
+	Tbm+hMffQD5c9PcGtsk2EZ2dKu+YPVs0MZaKY4jTHe0TDwBysJ1GtEhiEqUKIczTgXYv+57gsOsiw
+	bX9yz/3XzqmJ1MRyDi3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH1Lu-00Fpd5-0b;
-	Wed, 05 Jul 2023 12:11:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qH1Ls-00FpbU-0K;
+	Wed, 05 Jul 2023 12:11:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH1Lj-00FpSV-0V;
-	Wed, 05 Jul 2023 12:11:15 +0000
+	id 1qH1Lj-00FpSS-0V;
+	Wed, 05 Jul 2023 12:11:13 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:cbfb:e358:222c:d8c1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4EDCA6606FBA;
-	Wed,  5 Jul 2023 13:11:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 494256606FB0;
+	Wed,  5 Jul 2023 13:11:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688559065;
-	bh=/7DVclLTrBQzDYE1VjnNUTPJoyWcBdPfrc2tItSEaPs=;
+	s=mail; t=1688559064;
+	bh=KRDWgSGJLJJkZ4YtMc9THdOTvbmNUOepA0+ihzaVNOw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mn3LpKZYxlKyQBB3N2c5v26i0eEPM8P1D7FJnhnJbntqqmR/Hk/huWldbG7ZXL9A2
-	 4Ovj40KnPUtrfjFxdd0sgXM9YPobNljguC0fM4a4gWw1LdLcIBKeerQxNqEMk+4+vS
-	 O6oXa9FVUzUYCXAYz+izaDPZQ1MYhvIA2h8jbxvHUdGFUIRH/sNUAQ5J741lYd35UQ
-	 Oj7d2QHBNDe0ksuLoCyh6+GfjqQRHVfC+VNfWQvZ2eU6wieeENk/2Yi2Kn7pqOX5oY
-	 cj0tWk+vd2Vs03Lj2dAVO6SxvcccYlCnrdL4WBnxwXcL+1r7LpbJrzyjRcwFgAphBC
-	 lbY+JjSfZlcgQ==
+	b=ZcMU1y9EUXHri9xNIMVSQgGfsIxsb4k9NexSZvNAzIxyrv92JPCztdcNThKs+rPTD
+	 yE9dBa4VclSkMCl72vxAU6gGnMBfjj/moi3iDAkxiu6fJqvNlt5tpyQKIJlTx725SB
+	 697NDE9taZcN72QTr4rAutJ7efLEGPDIALQSWYuL0mY9mspeUKGzpu0sAL01a6DPP9
+	 Ix3jBJKvB2vwaARdqD/OYAe8aKbv8lD02on7+e8sE+yLZZemPUYAZXfxDtyEON+bjJ
+	 7pjP8kTY4uP3+Nov0Rq8yTDL0yxucgyqc243/SB41KjcwqfwETylY1h3hgd+lP0HR+
+	 W9YAVLFvYswtw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 04/10] media: verisilicon: Refactor postprocessor to store more buffers
-Date: Wed,  5 Jul 2023 14:10:50 +0200
-Message-Id: <20230705121056.37017-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 02/10] media: videobuf2: Be more flexible on the number of queue stored buffers
+Date: Wed,  5 Jul 2023 14:10:48 +0200
+Message-Id: <20230705121056.37017-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
 References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_051111_501355_1A89BEB0 
-X-CRM114-Status: GOOD (  22.33  )
+X-CRM114-CacheID: sfid-20230705_051111_466113_9A0FDFF4 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,238 +88,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since vb2 queue can store than VB2_MAX_FRAME buffers postprocessor
-buffer storage must be capable to store more buffers too.
-Change static dec_q array to allocated array to be capable to store
-up to queue 'max_allowed_buffers'.
-Keep allocating queue 'num_buffers' at queue setup time but also allows
-to allocate postprocessors buffers on the fly.
+Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
+how many buffers could be stored in a queue.
+This request 'bufs' array to be allocated at queue init time and freed
+when releasing the queue.
+By default VB2_MAX_FRAME remains the limit.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/verisilicon/hantro.h   |   7 +-
- .../media/platform/verisilicon/hantro_drv.c   |   4 +-
- .../media/platform/verisilicon/hantro_hw.h    |   2 +-
- .../platform/verisilicon/hantro_postproc.c    | 103 ++++++++++++++----
- .../media/platform/verisilicon/hantro_v4l2.c  |   2 +-
- 5 files changed, 93 insertions(+), 25 deletions(-)
+version 4:
+- no Xarray here but instead a new field to let queues decide
+  of their own maximum.
+ .../media/common/videobuf2/videobuf2-core.c   | 22 ++++++++++++-------
+ include/media/videobuf2-core.h                |  4 +++-
+ 2 files changed, 17 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 2989ebc631cc..c8a3cf10cc64 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -461,11 +461,14 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
- bool hantro_needs_postproc(const struct hantro_ctx *ctx,
- 			   const struct hantro_fmt *fmt);
- 
-+dma_addr_t
-+hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index);
-+
- static inline dma_addr_t
- hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
- {
- 	if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
--		return ctx->postproc.dec_q[vb->index].dma;
-+		return hantro_postproc_get_dec_buf_addr(ctx, vb->index);
- 	return vb2_dma_contig_plane_dma_addr(vb, 0);
- }
- 
-@@ -477,8 +480,8 @@ vb2_to_hantro_decoded_buf(struct vb2_buffer *buf)
- 
- void hantro_postproc_disable(struct hantro_ctx *ctx);
- void hantro_postproc_enable(struct hantro_ctx *ctx);
-+int hantro_postproc_init(struct hantro_ctx *ctx);
- void hantro_postproc_free(struct hantro_ctx *ctx);
--int hantro_postproc_alloc(struct hantro_ctx *ctx);
- int hanto_postproc_enum_framesizes(struct hantro_ctx *ctx,
- 				   struct v4l2_frmsizeenum *fsize);
- 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 09c74a573ddb..d908559817ce 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -234,8 +234,10 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	 * The Kernel needs access to the JPEG destination buffer for the
- 	 * JPEG encoder to fill in the JPEG headers.
- 	 */
--	if (!ctx->is_encoder)
-+	if (!ctx->is_encoder) {
- 		dst_vq->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
-+		dst_vq->max_allowed_buffers = 64;
-+	}
- 
- 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index e83f0c523a30..6fd6c9d53cec 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -253,7 +253,7 @@ struct hantro_vp9_dec_hw_ctx {
-  * @dec_q:		References buffers, in decoder format.
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 42fd3984c2bc..77e69b01d88d 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -413,7 +413,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
   */
- struct hantro_postproc_ctx {
--	struct hantro_aux_buf dec_q[VB2_MAX_FRAME];
-+	struct hantro_aux_buf *dec_q;
- };
- 
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index 6437423ccf3a..9dfe3141a398 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -173,9 +173,11 @@ static int hantro_postproc_g2_enum_framesizes(struct hantro_ctx *ctx,
- void hantro_postproc_free(struct hantro_ctx *ctx)
+ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int index)
  {
- 	struct hantro_dev *vpu = ctx->dev;
-+	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-+	struct vb2_queue *queue = &m2m_ctx->cap_q_ctx.q;
- 	unsigned int i;
- 
--	for (i = 0; i < VB2_MAX_FRAME; ++i) {
-+	for (i = 0; i < queue->max_allowed_buffers; ++i) {
- 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
- 
- 		if (priv->cpu) {
-@@ -184,22 +186,21 @@ void hantro_postproc_free(struct hantro_ctx *ctx)
- 			priv->cpu = NULL;
- 		}
+-	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
++	if (index < q->max_allowed_buffers && !q->bufs[index]) {
+ 		q->bufs[index] = vb;
+ 		vb->index = index;
+ 		vb->vb2_queue = q;
+@@ -430,7 +430,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int
+  */
+ static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+ {
+-	if (vb->index < VB2_MAX_FRAME) {
++	if (vb->index < q->max_allowed_buffers) {
+ 		q->bufs[vb->index] = NULL;
+ 		vb->vb2_queue = NULL;
  	}
-+	kfree(ctx->postproc.dec_q);
-+	ctx->postproc.dec_q = NULL;
- }
+@@ -451,9 +451,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 	struct vb2_buffer *vb;
+ 	int ret;
  
--int hantro_postproc_alloc(struct hantro_ctx *ctx)
-+static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
--	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
--	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
--	unsigned int num_buffers = cap_queue->num_buffers;
- 	struct v4l2_pix_format_mplane pix_mp;
- 	const struct hantro_fmt *fmt;
--	unsigned int i, buf_size;
-+	unsigned int buf_size;
+-	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
++	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+ 	num_buffers = min_t(unsigned int, num_buffers,
+-			    VB2_MAX_FRAME - q->num_buffers);
++			    q->max_allowed_buffers - q->num_buffers);
  
- 	/* this should always pick native format */
- 	fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth);
- 	if (!fmt)
--		return -EINVAL;
-+		return 0;
-+
- 	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
- 			    ctx->src_fmt.height);
+ 	for (buffer = 0; buffer < num_buffers; ++buffer) {
+ 		/* Allocate vb2 buffer structures */
+@@ -854,9 +854,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	/*
+ 	 * Make sure the requested values and current defaults are sane.
+ 	 */
+-	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
++	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
+ 	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+-	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
++	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
+ 	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+ 	/*
+ 	 * Set this now to ensure that drivers see the correct q->memory value
+@@ -972,7 +972,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	bool no_previous_buffers = !q->num_buffers;
+ 	int ret;
  
-@@ -214,23 +215,85 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 		buf_size += hantro_hevc_mv_size(pix_mp.width,
- 						pix_mp.height);
- 
--	for (i = 0; i < num_buffers; ++i) {
--		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
-+	return buf_size;
-+}
-+
-+static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
-+	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
-+
-+	if (!buf_size)
-+		return -EINVAL;
-+
-+	/*
-+	 * The buffers on this queue are meant as intermediate
-+	 * buffers for the decoder, so no mapping is needed.
-+	 */
-+	priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
-+	priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
-+				    GFP_KERNEL, priv->attrs);
-+	if (!priv->cpu)
-+		return -ENOMEM;
-+	priv->size = buf_size;
-+
-+	return 0;
-+}
-+
-+int hantro_postproc_init(struct hantro_ctx *ctx)
-+{
-+	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-+	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
-+	unsigned int num_buffers = cap_queue->num_buffers;
-+	unsigned int i;
-+	int ret;
- 
--		/*
--		 * The buffers on this queue are meant as intermediate
--		 * buffers for the decoder, so no mapping is needed.
--		 */
--		priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
--		priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
--					    GFP_KERNEL, priv->attrs);
--		if (!priv->cpu)
--			return -ENOMEM;
--		priv->size = buf_size;
-+	if (!ctx->postproc.dec_q)
-+		ctx->postproc.dec_q = kcalloc(cap_queue->max_allowed_buffers,
-+					      sizeof(*ctx->postproc.dec_q),
-+					      GFP_KERNEL);
-+
-+	if (!ctx->postproc.dec_q)
-+		return -EINVAL;
-+
-+	for (i = 0; i < num_buffers; i++) {
-+		ret = hantro_postproc_alloc(ctx, i);
-+		if (ret)
-+			return ret;
+-	if (q->num_buffers == VB2_MAX_FRAME) {
++	if (q->num_buffers == q->max_allowed_buffers) {
+ 		dprintk(q, 1, "maximum number of buffers already allocated\n");
+ 		return -ENOBUFS;
  	}
+@@ -1001,7 +1001,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return -EINVAL;
+ 	}
+ 
+-	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
++	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
+ 
+ 	if (requested_planes && requested_sizes) {
+ 		num_planes = requested_planes;
+@@ -2549,6 +2549,11 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 
+ 	q->memory = VB2_MEMORY_UNKNOWN;
+ 
++	if (!q->max_allowed_buffers)
++		q->max_allowed_buffers = VB2_MAX_FRAME;
 +
- 	return 0;
++	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
++
+ 	if (q->buf_struct_size == 0)
+ 		q->buf_struct_size = sizeof(struct vb2_buffer);
+ 
+@@ -2573,6 +2578,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	__vb2_queue_cancel(q);
+ 	mutex_lock(&q->mmap_lock);
+ 	__vb2_queue_free(q, q->num_buffers);
++	kfree(q->bufs);
+ 	mutex_unlock(&q->mmap_lock);
  }
+ EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index 4b6a9d2ea372..ee9161b9fd64 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -558,6 +558,7 @@ struct vb2_buf_ops {
+  * @dma_dir:	DMA mapping direction.
+  * @bufs:	videobuf2 buffer structures
+  * @num_buffers: number of allocated/used buffers
++ * @max_allowed_buffers: upper limit of number of allocated/used buffers
+  * @queued_list: list of buffers currently queued from userspace
+  * @queued_count: number of buffers queued and ready for streaming.
+  * @owned_by_drv_count: number of buffers owned by the driver
+@@ -619,8 +620,9 @@ struct vb2_queue {
+ 	struct mutex			mmap_lock;
+ 	unsigned int			memory;
+ 	enum dma_data_direction		dma_dir;
+-	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
++	struct vb2_buffer		**bufs;
+ 	unsigned int			num_buffers;
++	unsigned int			max_allowed_buffers;
  
-+dma_addr_t
-+hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index)
-+{
-+	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
-+	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
-+	struct hantro_dev *vpu = ctx->dev;
-+	int ret;
-+
-+	if (priv->size < buf_size && priv->cpu) {
-+		/* buffer is too small, release it */
-+		dma_free_attrs(vpu->dev, priv->size, priv->cpu,
-+			       priv->dma, priv->attrs);
-+		priv->cpu = NULL;
-+	}
-+
-+	if (!priv->cpu) {
-+		/* buffer not already allocated, try getting a new one */
-+		ret = hantro_postproc_alloc(ctx, index);
-+		if (ret)
-+			return 0;
-+	}
-+
-+	if (!priv->cpu)
-+		return 0;
-+
-+	return priv->dma;
-+}
-+
- static void hantro_postproc_g1_disable(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 61cfaaf4e927..898e8763d63a 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -897,7 +897,7 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
- 		}
- 
- 		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt)) {
--			ret = hantro_postproc_alloc(ctx);
-+			ret = hantro_postproc_init(ctx);
- 			if (ret)
- 				goto err_codec_exit;
- 		}
+ 	struct list_head		queued_list;
+ 	unsigned int			queued_count;
 -- 
 2.39.2
 
