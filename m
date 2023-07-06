@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D57EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jul 2023 11:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08250EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Jul 2023 13:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Sna7HBfFTtGGMx1DuxBVfKrnY4Xzvd9oW45gkQCiy8=; b=j6Cab0OV+wLOpF
-	V9ZNysTa2fcFfOnItF7QtJf/j1teUtr7huKNj8N1XmjWRR0Z3WQwq+iikYcc8phLtRXmRNJlC/TPQ
-	Hffb+oaugvcC2rqXElDvEJGZd2krxMUpTcLs8W7sobjrtBw00zNHzzxvPLG2t6X87DIYYquoY7HoB
-	+chhZKlEBzq1teLVOuSOX5ayLkKswaNzzHRsDXjlZ3I2JOQlu9ZnK0YKsgNC2A+b3tdI6p6694s6A
-	zE0EvfmNOkfy1iXX7/y5CcMKm6jlZfjZXrVKZ401B76+CuWO2qInKCrIaolfDjHnLkCGOsf6NLj9H
-	cJmLLDxFUGs+9kKt6QlQ==;
+	List-Owner; bh=xQkXD0vYhlryUOjRdnISnDJdn3+iHse0hoIWyslxxwM=; b=S1vzy/WlDodgdf
+	Phz6xoPLO61Vo+lNJip5ErXAyYcb6mAFkjOR+TOJP3SUA5qnoNWCaddiAneeRo/g2BY4PhY9ijA9k
+	ioFt+K7/eV15xxtcLQJWscWEQ+x4bXmZmNitiBgJHLZ73aUS+nfDGwP3Q7otL9d19JdHJx71bzTrS
+	Ls/kHyaFb1k9L9QWOHzC0F7wRSye8awitGwtouaY2TOtQWhWQGST1hE5CF3hKSE6kkyMjl+4nn3yQ
+	nRVkdgKlA1r/xGj0xwk/8VsgSxbbchRiciM5ovGJFZPMGafHPfl+uMMA/lsdDMxpaZeVYEfLqER8D
+	U48yZ04gnzlW1ftxecmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHNEX-001URC-1E;
-	Thu, 06 Jul 2023 11:33:13 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qHPRi-001okG-0o;
+	Thu, 06 Jul 2023 13:54:58 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHNEU-001UQ7-0U;
-	Thu, 06 Jul 2023 11:33:11 +0000
-Received: from [IPv6:2a00:23c8:b70a:ae01:35d0:8e34:613c:c44e] (unknown [IPv6:2a00:23c8:b70a:ae01:35d0:8e34:613c:c44e])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B0B466602242;
-	Thu,  6 Jul 2023 12:33:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688643188;
-	bh=l5+LL5sG+6oNk98vidsTUD1ZT1xF0tRZN4EIfi2Jzz8=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=KInwh3I9qZsDTaBRQW8F/t2QGDZ/ofjWuirTgSfnjvf1QBmRrbOhTjY3xbvIQSbpX
-	 Pit1IhOCJ2snhlQMmw0aDhv+7mrD/F8ov/0fLaHolXyNQmXdP1Oz7wjPeNxtDucp9A
-	 bssu7N7XnEgKC2b/y3ocQaS6HS8MwwCz5W4FdpPBBNo/KxmkXtq3B7u6EBtuDgaCGC
-	 B+ft4lFfJSpFsvqJkhNQ5BS0KMpucyYCvZjkvObuLrJcpWi1VI2c+QtHWVjutoWLHq
-	 uetic+AXTYY95fYRBXaW9giOQPHdJAf1A1tr/NgWWHrTnHbldG02pyk9wGhQ8lKBGe
-	 x/XNpt32UQfGg==
-Message-ID: <7fa80568e37cca3b8c4560e033cd2cfc18b2eb27.camel@collabora.com>
-Subject: Re: [PATCH v1 3/3] arm64: dts: rockchip: Add Radxa ROCK 4SE
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, Chris Morgan
- <macromorgan@hotmail.com>, Conor Dooley <conor+dt@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Jagan Teki <jagan@edgeble.ai>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Maya Matuszczyk
- <maccraft123mc@gmail.com>,  Rob Herring <robh+dt@kernel.org>, Sebastian
- Reichel <sebastian.reichel@collabora.com>, Tianling Shen
- <cnsztl@gmail.com>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Thu, 06 Jul 2023 12:33:06 +0100
-In-Reply-To: <b573535b-25f8-8986-3d5d-2e8d4b4c5ca1@linaro.org>
-References: <20230705141011.111568-1-chris.obbard@collabora.com>
-	 <20230705141011.111568-4-chris.obbard@collabora.com>
-	 <b573535b-25f8-8986-3d5d-2e8d4b4c5ca1@linaro.org>
-User-Agent: Evolution 3.48.4-1 
+	id 1qHPRf-001oi8-17
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Jul 2023 13:54:56 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-51d93425853so1011886a12.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 06 Jul 2023 06:54:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688651692; x=1691243692;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dJZIZaXi9+UMAV6SzKJCfkOpgDP4Lodb3brLJpgo+E0=;
+        b=bg5odx8aK40mX3j9+IoldO8bOk7Q6UJ80I6WYOnvN3cvqQ/NzVPYbisFdH42EBncGu
+         wRn20470gK3yyXuzRe/PhfrLkGmUP1UBapt+tarplzaNZ4+b7ec2CDJ9ov1KOmn1/UJO
+         XqDDKKwMmQ8C735pGjpBTQhOMae4rvglBoJhGZaUcGlIPWTmDA7IKW4Gr/G5rl54UFyG
+         Jz8dAdgt5JfmlgKExw7j4Zn87m5S2b6us59580RL7le9ryo9u9C1XfXLquv0yL2slt8V
+         jCREiTNvj681GBwkeAaBUw7z3ZqoTJKW9jYyars66wQZ9Rf50fcDWLYAfZSTWgk+Gtlm
+         iVSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688651692; x=1691243692;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dJZIZaXi9+UMAV6SzKJCfkOpgDP4Lodb3brLJpgo+E0=;
+        b=Akr9XkbPorKZ+7eD+BnShbESbJQY3f2JChx7OJX3SYRKu4YLjzusaVfsb0CSr0MgeA
+         22vRMHUCYN9LAqYfjkwtYpQLBo9CltbZYe5KlIYpVx5QKnl9bZ4h8Of3PD6rOcMTJf4S
+         enFl8VZDtfXGqCr+yxLATuHemWFMhBixtOwMi4VuHxsgNvZKlthQwcyhgThY4sS1/H12
+         9hHpulKIQ7jkc+1KvcpJRwFZ2PTWa++Go/haYx4d7O/zss+gw2xdJAM64mTgrs0clJ0Z
+         3Hw205E9beG7QG1QMUWv7mBYSXNiyp+kPolMNWD3d/F+/sl7siWObzKAsw965yIl7UVi
+         MxKg==
+X-Gm-Message-State: ABy/qLbi3fvVFm4YLbB0EQBzo+eUZhCLOzIYL98ZKowcIOVywE6062sX
+	9Oe080cENl9yvaq96dYUrKyhAA==
+X-Google-Smtp-Source: APBJJlE+2vHvI4Z4KJIJhk8YVlZZPb330YMaIGshIPS5z/4VS8YZ4GrDE6Mi7v6oZzC4po8QkYlzCQ==
+X-Received: by 2002:aa7:c610:0:b0:51a:2013:583 with SMTP id h16-20020aa7c610000000b0051a20130583mr1758445edq.13.1688651692535;
+        Thu, 06 Jul 2023 06:54:52 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id h13-20020a50ed8d000000b0051e362db186sm123271edr.60.2023.07.06.06.54.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Jul 2023 06:54:52 -0700 (PDT)
+Message-ID: <941ead9e-9e46-b5cb-0a8b-345df6606484@linaro.org>
+Date: Thu, 6 Jul 2023 15:54:51 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [RFT PATCH 1/3] arm64: dts: rockchip: correct audio-codec
+ interrupt flag in eaidk-610
+Content-Language: en-US
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230705064823.9210-1-krzysztof.kozlowski@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230705064823.9210-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_043310_324379_D9800098 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20230706_065455_390837_0E039C3D 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +92,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKT24gV2VkLCAyMDIzLTA3LTA1IGF0IDE3OjUzICswMjAwLCBLcnp5c3p0
-b2YgS296bG93c2tpIHdyb3RlOgo+IE9uIDA1LzA3LzIwMjMgMTY6MTAsIENocmlzdG9waGVyIE9i
-YmFyZCB3cm90ZToKPiA+IEFkZCBib2FyZC1zcGVjaWZpYyBkZXZpY2V0cmVlIGZpbGUgZm9yIHRo
-ZSBSSzMzOTlULWJhc2VkIFJhZHhhIFJPQ0sgNFNFCj4gPiBib2FyZC4gVGhpcyBib2FyZCBvZmZl
-cnMgc2ltaWxhciBwZXJpcGhlcmFscyBpbiBhIHNpbWlsYXIgZm9ybS1mYWN0b3IgdG8KPiA+IHRo
-ZSBleGlzdGluZyBST0NLIFBpIDRCIGJ1dCB1c2VzIHRoZSBjb3N0LW9wdGltaXNlZCBSSzMzOTlU
-IHByb2Nlc3Nvcgo+ID4gKHdoaWNoIGhhcyBkaWZmZXJlbnQgT1BQIHRhYmxlIHRoYW4gdGhlIFJL
-MzM5OSkgYW5kIG90aGVyIG1pbmltYWwgaGFyZHdhcmUKPiA+IGNoYW5nZXMuCj4gPiAKPiA+IFNp
-Z25lZC1vZmYtYnk6IENocmlzdG9waGVyIE9iYmFyZCA8Y2hyaXMub2JiYXJkQGNvbGxhYm9yYS5j
-b20+Cj4gPiAtLS0KPiA+IAo+IAo+IAo+ID4gKwo+ID4gKyZzZGlvMCB7Cj4gPiArwqDCoMKgwqDC
-oMKgwqBzdGF0dXMgPSAib2theSI7Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqBicmNtZjogd2lm
-aUAxIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjb21wYXRpYmxlID0gImJy
-Y20sYmNtNDMyOS1mbWFjIjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcg
-PSA8MT47Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0LXBhcmVu
-dCA9IDwmZ3BpbzA+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVw
-dHMgPSA8UktfUEEzIEdQSU9fQUNUSVZFX0hJR0g+Owo+IAo+IEkganVzdCBzZW5kIGEgcGF0Y2gg
-dG8gZml4IHRoaXMgaW4gc29tZSBmaWxlcywgc28gbGV0J3MgdHJ5IGtlZXAgaXQKPiBnb29kLiBV
-c2UgcHJvcGVyIGludGVycnVwdCB0eXBlLCBub3Qgbm9uZS4KClRoYW5rIHlvdSBmb3IgeW91ciBy
-ZXZpZXcuIEkgbWlzc2VkIHRoYXQgcGF0Y2gsIHNlbnQgb25seSBhIGZldyBob3VycyBiZWZvcmUg
-bWluZS4gSSB3aWxsIGFkZHJlc3MgdGhpcyBpbiB2Mi4KCgpDaGVlcnMhCgpDaHJpcwoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 05/07/2023 08:48, Krzysztof Kozlowski wrote:
+> GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+> These are simple defines so they could be used in DTS but they will not
+> have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
+> 
+> Correct the interrupt flags, assuming the author of the code wanted same
+> logical behavior behind the name "ACTIVE_xxx", this is:
+>   ACTIVE_LOW  => IRQ_TYPE_LEVEL_LOW
+
+This should be HIGH in both cases. I will send a v2.
+
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+> index d1f343345f67..6464ef4d113d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+> @@ -773,7 +773,7 @@ brcmf: wifi@1 {
+>  		compatible = "brcm,bcm4329-fmac";
+>  		reg = <1>;
+>  		interrupt-parent = <&gpio0>;
+> -		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
+> +		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
