@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9114EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jul 2023 06:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A07DC001DE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jul 2023 06:33:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wg/ybE3MhimU9l/BNNCfp28QvvmevVzRQx/03JIu300=; b=yqiozMAtPmgo/X
-	E7iOSNAzVh8tbS1m5LPiQ4TmuAI1GnjdyZ+Ekm+UECL5l8TuXBF/LIeixRHEdsMl5hxaXCjNi4lop
-	yxSTFabef5gSB+o2QnA8x9rYkfkXff0TNKvMh0ZdlADj0GqOgWIMLnxFP/kXPQ1d42vmG4vtgu845
-	2EGNFmWGKoZ96SO7oK5ljuN11/YFO3n/P19DVh/LQsnCGJ5pqWeXtm3F1BZYakOh22AIO3/2v9V6s
-	mrE1bVQCDco1Q8TXT0R+9+c/v/kfcDhtrPzBIusGqqQ2PwiXCnsQgi5ROIByk/qDhz1af/gmcAdVn
-	DY2eMEtdGYMZXg0U+Ymw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZvJ+MqERmaQCENPlX+fAeBCzQuMV97AV1E+rONiUXQw=; b=d6k1UnLGKyPciM
+	dEEf4CrMI0XAb+ze8RZpwr//+Q7GUTcBebU/wNUpkl0fpvJ6qKcYhju3xRRSsRurOLuUw94H2FRvW
+	GZksg/C48BJE8h8qUT5YDGqrOjes9a0VqMKrg0gSErKgp46rBIoTe6pr8IsN+w7ndSxOFCtjdXazH
+	ys6GYO32IOTC1EA6SKf28XHJMgOrfaDUn5k51wEEp0D7EBMu4uKgHaD0wsIdk5xxfH67ZC+2maYwE
+	Uf5nn+w2BT4xp/cW9zOv/5POPtx2JIDxQ69HUAVG3ZGFdhIZNEiiqaoFgmSO4uF7rejOwgiUWWi6Q
+	SKTbgUCZL6voH/p/xOLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHevo-003kPb-19;
-	Fri, 07 Jul 2023 06:27:04 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1qHf2J-003l9w-2t;
+	Fri, 07 Jul 2023 06:33:47 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHevk-003kON-2n
+	id 1qHf2G-003l7E-1q
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Jul 2023 06:27:02 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-51dff848168so2052864a12.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 06 Jul 2023 23:26:59 -0700 (PDT)
+	Fri, 07 Jul 2023 06:33:45 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-51d9a925e9aso2048868a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 06 Jul 2023 23:33:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688711218; x=1691303218;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0W3Gd8jBrQTVEqQoMXv1avQ4XCiWz9OzEFTfcGO5S9w=;
-        b=yYMu2AnD79fmH8D7wB05ARP47RnYpezo9YbavMljtL6qURDtiWwd7uxsgnRUGOR86L
-         v649Xj/HhWFkeRumQTnPb4Anrc30OuSpm4jNnG1rwtROmZi3jLJKB6Of7rrC0CnAHi/b
-         P9HDTEk3pxfd9Be5Wr8XYuVIkj+FbqR/osNNU+6xzv25wnAxZwFew5Gv0FXVMBwrjE2A
-         CRlQn4KpMNWvU6RALhtkSaw9VeqMllqiVyl1UUpdTUmfpxXIEjnipqF1Lsu4uoHnPD5f
-         j8ioOlSdPJ0lsZ7NMHXWVoI9kjopZn4H3WVFDV4Ez723DxmV0jXDgX9oyVwf3mJRjkTb
-         QgKw==
+        d=linaro.org; s=google; t=1688711618; x=1691303618;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=e1W0PEIp2Z9O+/54QqCCTT57o1K3eq1ISnoT3iEkIG4=;
+        b=Ji+vp0Rf7GnjgL/ryIs4zj5psew4pNxA0cs8GFKCCt4E8wh0ztH3y1BPKo8A6Kr5CR
+         Ssh+LsCi0ePSmFr6nLgrN73CA2MGcMaJIrfjpg/jM7aBYCC7QstmFfJTkw+D0od4S9CL
+         fK43PEE9RS+gtkkroUsHTHuZrB4sb2u/XCw+wBuIGWfkCD0UmOg1nuWcTcVNjB4Y9lBJ
+         XtIxHr9Fe2nvRTn/d7F6dMPhkKhvs3PfzluZg24d0Fqx/c5HsGGJBo/U2On4yiyKU7x2
+         jekKm74a17Mc0FGyAaRQgC6mRyV6NJcMAVHpqNP/NinRZ88jHW6ZblkBXu+EnDP5KDX+
+         smmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688711218; x=1691303218;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0W3Gd8jBrQTVEqQoMXv1avQ4XCiWz9OzEFTfcGO5S9w=;
-        b=jHnK/nhkwCabRgQ82AKZ9ETU8klx8NVrSTgIRfrCcOGLx8xLOKhIoIbkSkZ8Ani45J
-         y8Q9KX6AZiJ3Uau/ycd58Zbaapepx7KcpqiFJoId2SHvpCMI3t/2pk15EU9N7yTVuxtb
-         l3gNrajM4dT/oXq1CrJEiFWsBt3xe/CRgR2nA0ICnM2g5ROkC8bhtKgcWvpf236SFNEx
-         Wj35H1elFKZf5BO4MgN0UL/sxMjf7hv1kW1s1ZVkK+mnhyVaXIQMrhu1tebEA5iWnZqn
-         Od4Mjor5hHoZXoqlFrMP1L6MvjI631WBaKjaVSW+G7bvlCCJlC6ID29R6riR1eiYhgFa
-         jH3Q==
-X-Gm-Message-State: ABy/qLbyC2T9Rro/JqjZaWpIuOi9Ooh0+GOnVf7x7eZjva838qwy9Y/q
-	uTwbkD0FTe+Dp6y8ZWIoPLPj+w==
-X-Google-Smtp-Source: APBJJlGyXXAFlZKcUiBo8uH2mXTvF+2xcpddNfdWn8QuWvicVEB5eBFG1KaGmK8LsJfFTahNxI5cRg==
-X-Received: by 2002:a17:906:224d:b0:977:e87c:e633 with SMTP id 13-20020a170906224d00b00977e87ce633mr2949201ejr.23.1688711213433;
-        Thu, 06 Jul 2023 23:26:53 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id ov24-20020a170906fc1800b0099364d9f0e6sm1727055ejb.117.2023.07.06.23.26.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Jul 2023 23:26:52 -0700 (PDT)
-Message-ID: <0fd87e8f-7d09-549f-1170-3bcebbc572f6@linaro.org>
-Date: Fri, 7 Jul 2023 08:26:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [RFT PATCH 1/3] arm64: dts: rockchip: correct audio-codec
- interrupt flag in eaidk-610
-Content-Language: en-US
-To: Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230705064823.9210-1-krzysztof.kozlowski@linaro.org>
- <941ead9e-9e46-b5cb-0a8b-345df6606484@linaro.org>
- <9d9245fb-463f-c967-46e5-cfc0ac832792@arm.com>
+        d=1e100.net; s=20221208; t=1688711618; x=1691303618;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=e1W0PEIp2Z9O+/54QqCCTT57o1K3eq1ISnoT3iEkIG4=;
+        b=jABEePeh/tUFmZ6gaPm0Zo1G83IQqy8m7on7a3bAH4GbuLc1SKI7lcLKeKt4QHHpjD
+         +bQWgEvEGiQZY+bK8gu8W3BpoNFYrn0tlwri0/hnv8neJn/I4tUULnlza7XRnER+kRKT
+         Qh8nGzDtlsDbNYrrzA5EiZXr/46Gmf/4cEnq0V3Kfx5tStF5+ty9YEefs0MewPbulstI
+         W8qs12wrTIJ4IHka4tzhh/Kzi7nENapCRa3mbpW4DBNyDSVRATNN8yU9JP2UeuQAPhsm
+         1fQcBbaLNt1hXcuibiRuJhIXCRf7nXs3CTY8UBStRxDscvuI8lsX3Xd54rDn4TD8ifXI
+         HOfQ==
+X-Gm-Message-State: ABy/qLacpVrrzlqk5f6PqtHWAcudcTLX5Kwd6iMCsLTruE4+OygC/xSh
+	lVIvbM2PgsDNWcX78xdA7mXs/A==
+X-Google-Smtp-Source: APBJJlF+EQzCxlpuXGk2rbnxNVji72DYX39eyT/xKUrWXgFmOCWnAUyM7SHtccK5tqS/eFhQSlzXhw==
+X-Received: by 2002:a17:907:75f6:b0:94f:449e:75db with SMTP id jz22-20020a17090775f600b0094f449e75dbmr3160188ejc.52.1688711618411;
+        Thu, 06 Jul 2023 23:33:38 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id s24-20020a170906169800b0096f7500502csm1724803ejd.199.2023.07.06.23.33.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Jul 2023 23:33:38 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <9d9245fb-463f-c967-46e5-cfc0ac832792@arm.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [RFT PATCH v2 1/3] arm64: dts: rockchip: correct wifi interrupt flag in eaidk-610
+Date: Fri,  7 Jul 2023 08:33:33 +0200
+Message-Id: <20230707063335.13317-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_232700_901970_CD1A2125 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20230706_233344_613331_FDF1A42F 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,26 +95,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/07/2023 19:49, Robin Murphy wrote:
-> On 2023-07-06 14:54, Krzysztof Kozlowski wrote:
->> On 05/07/2023 08:48, Krzysztof Kozlowski wrote:
->>> GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
->>> These are simple defines so they could be used in DTS but they will not
->>> have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
->>>
->>> Correct the interrupt flags, assuming the author of the code wanted same
->>> logical behavior behind the name "ACTIVE_xxx", this is:
->>>    ACTIVE_LOW  => IRQ_TYPE_LEVEL_LOW
->>
->> This should be HIGH in both cases. I will send a v2.
-> 
-> Also the titles say "audio-codec" but they're all touching SDIO WiFi 
-> modules ;)
+GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+These are simple defines so they could be used in DTS but they will not
+have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
 
-Thanks. Too much of copy-pasta.
+Correct the interrupt flags, assuming the author of the code wanted same
+logical behavior behind the name "ACTIVE_xxx", this is:
+  ACTIVE_HIGH  => IRQ_TYPE_LEVEL_HIGH
 
-Best regards,
-Krzysztof
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+---
+
+Changes in v2:
+1. Correct subject and commit msg (active low -> high)
+---
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+index d1f343345f67..6464ef4d113d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts
+@@ -773,7 +773,7 @@ brcmf: wifi@1 {
+ 		compatible = "brcm,bcm4329-fmac";
+ 		reg = <1>;
+ 		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "host-wake";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&wifi_host_wake_l>;
+-- 
+2.34.1
 
 
 _______________________________________________
