@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B57EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jul 2023 20:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB768EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jul 2023 21:07:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W8y165q4pWENw4BTJ0451w3WjUOvwM5TuFhVcg/otv8=; b=u/3L8H50Ye7rV9
-	ApOp3i7rW+UEx3oi5J2JcTrjsYy5swaLj2+JCFrnbXb5/NzecIK7VR1pwZPTOGaz6I0Zk6eq5Fmy1
-	FV+1oFw4ZlAc5m2pvo1z/HLH/XPTD4GSix8OETydfB8GO2xb+nZMsudG+7w+7rKpUY9sY8EmwEF8r
-	Xt/W1CEpw5kcLKQNlQCRXuNTMVPhYq2ZNDE8l2ZmpOnmDoj4UU0+rRPcEEyHnsJncL/6WQIg26UVh
-	o3jZOUZU4Mkj9ZjcoaNI+o6ITGBOejPjAs+crzPYnVOJhfI3bisfMGcO/8Ru5RrNP0gZ1+2tcRMNi
-	SnBfO13YJfDXqI2l62tA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EFMXGOCATBQ6hF+iBngon8L5iht/mLQwLLVaTAu1Jmg=; b=j/lLFeXSARFSe+
+	Z6/Y/CbYLQ1yTalpT6NcSakSXD1+ktZ0z5pnpMstvYIrFfQ7YBg8r7VGRXoWijddZi8RCI5/hp4rl
+	1ppYDJwQHU28PQv3LRfwGVw/7TJzqqzPMTdcBU0OVUxWh3TaxcIUN8gQwGhg1hw8a7/5LXcJaaZu9
+	TALUH1qXKCDJ0VMbt0jqIpPKFxXZp6imC2axs9DdaPFNC0O+diGOFlWLsRdu48dbcISd8biQU0JoZ
+	+8SUsQwktTbxJz1ILNrUvAS5vHwMr/A9Ui4XHJTuzaA3X0tFE6FeqSLd15lO1kdeSRosYxsV+cA2F
+	xP9XEnKe8qZ7vYSD7d9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHs0b-005cfg-35;
-	Fri, 07 Jul 2023 20:24:53 +0000
-Received: from ip-89-177-23-149.bb.vodafone.cz ([89.177.23.149] helo=ixit.cz)
+	id 1qHsfF-005hEj-0F;
+	Fri, 07 Jul 2023 21:06:53 +0000
+Received: from mail-io1-f51.google.com ([209.85.166.51])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHs0W-005ceM-1w;
-	Fri, 07 Jul 2023 20:24:52 +0000
-Received: from [10.0.0.209] (unknown [10.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 999CC1606BD;
-	Fri,  7 Jul 2023 22:24:34 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1688761474;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vBGIgaXWfJ9MjRfBvCBMndi1eM82yolDh4VLL1fxh38=;
-	b=TtVlZfjUjVqryACLzMiaCWW+AchdHouydS0TpeLEOFb38B8D27xZLv2qo1UK0FClAtJafd
-	o/ClurDiBrn+B6sRUTlndK6AMRX8TEK2tewpy2dClvFWavJ3MzoZ8ogMrnhzndkPGvwDOz
-	/Iyp6+kik2FwIP0VdhVbahapZIMiACg=
-Message-ID: <709d585b-8ea6-4588-7d15-2119bd9bdca5@ixit.cz>
-Date: Fri, 7 Jul 2023 22:24:34 +0200
+	id 1qHsfB-005hE1-27;
+	Fri, 07 Jul 2023 21:06:51 +0000
+Received: by mail-io1-f51.google.com with SMTP id ca18e2360f4ac-78372b895d6so89488839f.2;
+        Fri, 07 Jul 2023 14:06:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688764007; x=1691356007;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LsmkCXtt1/Ie/i62Qx5OYBjxzfr/7TqmjkdxzkTOMHo=;
+        b=Fhdpe1e7p1VDMjC8lPrp3rY6ap5jnX2Z92nYujGEBNXdSnrZOnHrQilOP8AskTcyB5
+         hCehwwy6K7iIi1xtV5xAOBLhmIxAPXF4b7OgGaBE4opFG0V7hTg98NV6Qe9QCnuiti49
+         C2T0pYEE2aQcOCbjgXCzx3yuKb39aiHYDxrTgAeQ3ABtGIHwf9inn35O+4PJVuwaQmtE
+         +IFoPQUkJd9hr2MBRWoj2vbAcC9paEOSZHBYaLsRGSLRKHH6Z8u2icZRS+5FxWF/Chd3
+         WPY5RKsVX430uIT278FhvR2ynSBV5fxcAqeIGvMoeW9pb9IQhPCIxd4qGopSpQNDYZZr
+         kLtg==
+X-Gm-Message-State: ABy/qLYbfRGzQzQANJwtHZYOV70JcRssPbGOx4ks8Vjy5KJc0m0w9hvA
+	DJmAH+te3O7Nw8p/BnLTjg==
+X-Google-Smtp-Source: APBJJlF0NqZyk+kOePWf4tPR6zQ0SW1fzsw7bbKDzg0TH94gwND+UbwC0Sq8WxQiy3PuHChGbqYNMg==
+X-Received: by 2002:a5e:c005:0:b0:785:5917:a35f with SMTP id u5-20020a5ec005000000b007855917a35fmr6819221iol.8.1688764007306;
+        Fri, 07 Jul 2023 14:06:47 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id l12-20020a02ccec000000b0042b05586c52sm1538288jaq.25.2023.07.07.14.06.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Jul 2023 14:06:46 -0700 (PDT)
+Received: (nullmailer pid 868731 invoked by uid 1000);
+	Fri, 07 Jul 2023 21:06:44 -0000
+From: Rob Herring <robh@kernel.org>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Daniel Scally <djrscally@gmail.com>, Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Tommaso Merciai <tommaso.merciai@amarulasolutions.com>, Helen Koike <helen.koike@collabora.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
+Date: Fri,  7 Jul 2023 15:06:04 -0600
+Message-Id: <20230707210604.868002-1-robh@kernel.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Drop invalid
- regulator-init-microvolt property
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Johan Jonker <jbx6244@gmail.com>, Jensen Huang
- <jensenhuang@friendlyarm.com>, Chris Morgan <macromorgan@hotmail.com>,
- Fabio Estevam <festevam@denx.de>,
- Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
- Furkan Kardame <f.kardame@manjaro.org>, Yuteng Zhong <zonyitoo@gmail.com>,
- Wenhao Cui <lasstp5011@gmail.com>, Lev Popov <leo@nabam.net>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Peter Geis <pgwipeout@gmail.com>,
- Dan Johansen <strit@manjaro.org>, Frank Wunderlich
- <frank-w@public-files.de>, Alex Riabchenko <d3adme4t@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Tianling Shen <cnsztl@gmail.com>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Andy Yan <andyshrk@163.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Dongjin Kim <tobetter@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>,
- Anand Moon <linux.amoon@gmail.com>, Shengyu Qu <wiagn233@outlook.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20230707162217.675390-1-cristian.ciocaltea@collabora.com>
-Content-Language: en-US
-From: David Heidelberg <david@ixit.cz>
-In-Reply-To: <20230707162217.675390-1-cristian.ciocaltea@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_132449_121656_50FE31CD 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20230707_140649_691993_8D2CAA29 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,494 +73,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: David Heidelberg <david@ixit.cz>
+The OV5695 binding is almost the same as the OV5693 binding. The only
+difference is 'clock-names' is defined for OV5695. However, the lack of
+clock-names is an omission as the Linux OV5693 driver expects the same
+'xvclk' clock name.
 
-On 07/07/2023 18:22, Cristian Ciocaltea wrote:
-> The 'regulator-init-microvolt' property is not currently supported by
-> any driver, it was simply carried on from downstream kernels.
->
-> The problem is also indicated by the following dtbs_check warning:
->
->    rk3588-rock-5b.dtb: pmic@0: regulators:dcdc-reg4: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
->
-> Remove the invalid property from all affected DTS files.
->
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts          | 1 -
->   arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts       | 1 -
->   arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi        | 1 -
->   arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts      | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi       | 2 --
->   arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts      | 2 --
->   arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts      | 2 --
->   arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts          | 2 --
->   arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi       | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts      | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts        | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi | 4 ----
->   arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts      | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi     | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts       | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi     | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts         | 3 ---
->   arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts         | 1 -
->   19 files changed, 46 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-> index 7ea48167747c..9232357f4fec 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-> @@ -106,7 +106,6 @@ vdd_core: vdd-core {
->   		regulator-name = "vdd_core";
->   		regulator-min-microvolt = <827000>;
->   		regulator-max-microvolt = <1340000>;
-> -		regulator-init-microvolt = <1015000>;
->   		regulator-settling-time-up-us = <250>;
->   		regulator-always-on;
->   		regulator-boot-on;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> index a71f249ed384..e9810d2f0407 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> @@ -105,7 +105,6 @@ vdd_core: vdd-core {
->   		regulator-name = "vdd_core";
->   		regulator-min-microvolt = <827000>;
->   		regulator-max-microvolt = <1340000>;
-> -		regulator-init-microvolt = <1015000>;
->   		regulator-settling-time-up-us = <250>;
->   		regulator-always-on;
->   		regulator-boot-on;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> index b6e082f1f6d9..7c5f441a2219 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> @@ -375,7 +375,6 @@ regulator-state-mem {
->   			vcc_sdio: LDO_REG4 {
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <3000000>;
->   				regulator-min-microvolt = <1800000>;
->   				regulator-max-microvolt = <3300000>;
->   				regulator-name = "vcc_sdio";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> index a2c31d53b45b..8cbf3d9a4f22 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> @@ -356,7 +356,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-name = "vdd_logic";
-> @@ -371,7 +370,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-name = "vdd_gpu";
-> @@ -533,7 +531,6 @@ vdd_cpu: regulator@40 {
->   		regulator-boot-on;
->   		regulator-min-microvolt = <712500>;
->   		regulator-max-microvolt = <1390000>;
-> -		regulator-init-microvolt = <900000>;
->   		regulator-name = "vdd_cpu";
->   		regulator-ramp-delay = <2300>;
->   		vin-supply = <&vcc_sys>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> index ff936b713579..1c6d83b47cd2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> @@ -218,7 +218,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> @@ -233,7 +232,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> @@ -259,7 +257,6 @@ vdd_npu: DCDC_REG4 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> index 8d61f824c12d..d899087bf0b5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-> @@ -264,7 +264,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-always-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> @@ -278,7 +277,6 @@ vdd_gpu_npu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu_npu";
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> index 25a8c781f4e7..854d02b46e6f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> @@ -366,7 +366,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-name = "vdd_logic";
-> @@ -381,7 +380,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-name = "vdd_gpu";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> index b276eb0810c7..2d92713be2a0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> @@ -277,7 +277,6 @@ vdd_log: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   
->   				regulator-state-mem {
-> @@ -292,7 +291,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <900000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   
->   				regulator-state-mem {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-> index 42889c5900bd..938092fce186 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-> @@ -278,7 +278,6 @@ vdd_log: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   
->   				regulator-state-mem {
-> @@ -291,7 +290,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-min-microvolt = <900000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   
->   				regulator-state-mem {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-> index 31aa2b8efe39..63bae36b8f7e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-> @@ -234,7 +234,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-state-mem {
-> @@ -249,7 +248,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   					regulator-state-mem {
-> @@ -272,7 +270,6 @@ vdd_npu: DCDC_REG4 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-name = "vdd_npu";
->   				regulator-state-mem {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-> index ff0bf24cc1a2..f9127ddfbb7d 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-> @@ -308,7 +308,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -322,7 +321,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -346,7 +344,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> index 674792567fa6..19f8fc369b13 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> @@ -293,7 +293,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -307,7 +306,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -331,7 +329,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
-> index 25e205632a68..89e84e3a9262 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi
-> @@ -173,7 +173,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -187,7 +186,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -211,7 +209,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -330,7 +327,6 @@ regulator-state-mem {
->   
->   			vcca1v8_image: LDO_REG9 {
->   				regulator-name = "vcca1v8_image";
-> -				regulator-init-microvolt = <950000>;
->   				regulator-min-microvolt = <950000>;
->   				regulator-max-microvolt = <1800000>;
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts b/arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts
-> index e653b067aa5d..a8a4cc190eb3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts
-> @@ -243,7 +243,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> @@ -258,7 +257,6 @@ vdd_gpu: DCDC_REG2 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> @@ -284,7 +282,6 @@ vdd_npu: DCDC_REG4 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-initial-mode = <0x2>;
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
-> index 58ba328ea782..93189f830640 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
-> @@ -232,7 +232,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -246,7 +245,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -270,7 +268,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> index 59ecf868dbd0..a337f547caf5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> @@ -291,7 +291,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -305,7 +304,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -329,7 +327,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> index c50fbdd48680..45b03dcbbad4 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-> @@ -163,7 +163,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -177,7 +176,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -201,7 +199,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index 917f5b2b8aab..e05ab11981f5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -350,7 +350,6 @@ vdd_logic: DCDC_REG1 {
->   				regulator-name = "vdd_logic";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -364,7 +363,6 @@ regulator-state-mem {
->   			vdd_gpu: DCDC_REG2 {
->   				regulator-name = "vdd_gpu";
->   				regulator-always-on;
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> @@ -388,7 +386,6 @@ regulator-state-mem {
->   
->   			vdd_npu: DCDC_REG4 {
->   				regulator-name = "vdd_npu";
-> -				regulator-init-microvolt = <900000>;
->   				regulator-initial-mode = <0x2>;
->   				regulator-min-microvolt = <500000>;
->   				regulator-max-microvolt = <1350000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index afda976680bc..51537030f8e3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -337,7 +337,6 @@ vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
->   				regulator-boot-on;
->   				regulator-min-microvolt = <550000>;
->   				regulator-max-microvolt = <950000>;
-> -				regulator-init-microvolt = <750000>;
->   				regulator-ramp-delay = <12500>;
->   				regulator-name = "vdd_vdenc_s0";
->   
+'link-frequencies' is required by OV5693, but not OV5695. Just drop it
+from being required. Expressing it conditionally would be ugly. It
+shouldn't really be required either as the driver only supports 1
+frequency anyways.
 
+The rockchip-isp1 binding example is missing required properties, so it
+has to be updated as well.
+
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/media/i2c/ov5695.txt  | 41 -------------------
+ .../bindings/media/i2c/ovti,ov5693.yaml       | 19 +++++----
+ .../bindings/media/rockchip-isp1.yaml         |  1 +
+ 3 files changed, 13 insertions(+), 48 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/media/i2c/ov5695.txt
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/ov5695.txt b/Documentation/devicetree/bindings/media/i2c/ov5695.txt
+deleted file mode 100644
+index 640a63717d96..000000000000
+--- a/Documentation/devicetree/bindings/media/i2c/ov5695.txt
++++ /dev/null
+@@ -1,41 +0,0 @@
+-* Omnivision OV5695 MIPI CSI-2 sensor
+-
+-Required Properties:
+-- compatible: shall be "ovti,ov5695"
+-- clocks: reference to the xvclk input clock
+-- clock-names: shall be "xvclk"
+-- avdd-supply: Analog voltage supply, 2.8 volts
+-- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+-- dvdd-supply: Digital core voltage supply, 1.2 volts
+-- reset-gpios: Low active reset gpio
+-
+-The device node shall contain one 'port' child node with an
+-'endpoint' subnode for its digital output video port,
+-in accordance with the video interface bindings defined in
+-Documentation/devicetree/bindings/media/video-interfaces.txt.
+-The endpoint optional property 'data-lanes' shall be "<1 2>".
+-
+-Example:
+-&i2c7 {
+-	ov5695: camera-sensor@36 {
+-		compatible = "ovti,ov5695";
+-		reg = <0x36>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&clk_24m_cam>;
+-
+-		clocks = <&cru SCLK_TESTCLKOUT1>;
+-		clock-names = "xvclk";
+-
+-		avdd-supply = <&pp2800_cam>;
+-		dovdd-supply = <&pp1800>;
+-		dvdd-supply = <&pp1250_cam>;
+-		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
+-
+-		port {
+-			wcam_out: endpoint {
+-				remote-endpoint = <&mipi_in_wcam>;
+-				data-lanes = <1 2>;
+-			};
+-		};
+-	};
+-};
+diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
+index 359dc08440a8..a3d73a87d797 100644
+--- a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
+@@ -5,26 +5,29 @@
+ $id: http://devicetree.org/schemas/media/i2c/ovti,ov5693.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+-title: Omnivision OV5693 CMOS Sensor
++title: Omnivision OV5693/OV5695 CMOS Sensors
+ 
+ maintainers:
+   - Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+ 
+ description: |
+-  The Omnivision OV5693 is a high performance, 1/4-inch, 5 megapixel, CMOS
+-  image sensor that delivers 2592x1944 at 30fps. It provides full-frame,
++  The Omnivision OV5693/OV5695 are high performance, 1/4-inch, 5 megapixel, CMOS
++  image sensors that deliver 2592x1944 at 30fps. It provides full-frame,
+   sub-sampled, and windowed 10-bit MIPI images in various formats via the
+   Serial Camera Control Bus (SCCB) interface.
+ 
+-  OV5693 is controlled via I2C and two-wire Serial Camera Control Bus (SCCB).
+-  The sensor output is available via CSI-2 serial data output (up to 2-lane).
++  OV5693/OV5695 are controlled via I2C and two-wire Serial Camera Control Bus
++  (SCCB). The sensor output is available via CSI-2 serial data output (up to
++  2-lane).
+ 
+ allOf:
+   - $ref: /schemas/media/video-interface-devices.yaml#
+ 
+ properties:
+   compatible:
+-    const: ovti,ov5693
++    enum:
++      - ovti,ov5693
++      - ovti,ov5695
+ 
+   reg:
+     maxItems: 1
+@@ -34,6 +37,9 @@ properties:
+       System input clock (aka XVCLK). From 6 to 27 MHz.
+     maxItems: 1
+ 
++  clock-names:
++    const: xvclk
++
+   dovdd-supply:
+     description:
+       Digital I/O voltage supply, 1.8V.
+@@ -72,7 +78,6 @@ properties:
+ 
+         required:
+           - data-lanes
+-          - link-frequencies
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+index 0bad7e640148..e466dff8286d 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+@@ -199,6 +199,7 @@ examples:
+             wcam: camera@36 {
+                 compatible = "ovti,ov5695";
+                 reg = <0x36>;
++                clocks = <&cru SCLK_TESTCLKOUT1>;
+ 
+                 port {
+                     wcam_out: endpoint {
 -- 
-David Heidelberg
-Consultant Software Engineer
+2.40.1
 
 
 _______________________________________________
