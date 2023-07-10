@@ -4,68 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A30EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C43A2EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:57:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Eu35oS+o2TE0MPHDbYzkhmZm2pxdDHHwlytTivod6M=; b=bYNlnZKMmjwQNY
-	Z+1nMrNp+CBFy4cnD25Ar4um8kMID2dfDdxKpGjBLHLkrOeG0XF7UJ7vmJ28DnZ0G3rFmirGZnwMm
-	W2aFRTfd33ahImrzLXCuwy1eaKhun91mTa7Wz8d3jBUqReJfIKCncf0IsxlVbFJhBYACqBI9McDLS
-	uO6XFQYYAnTRI8kSaBQu+plYa9P+E/7oRyiOsCknG7JK6VipdV4RMgi/ZeWaX8clf5/5Hl+L6F4WD
-	pss7PFZukrcZ/1Tr9ClaG5MCoBarJp87Rk9UIntj+CdNJLwXxGJFQzKZnqwonQhvhUoDWynds49Dl
-	ilsmTwtLiMtNp5qqLiqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GDlJv37zyli4NjjQAOCPmEFB5N71pDOsgEj3dm2fGhY=; b=a8fNP6BDHsCZ8cN4nQi+wPxXGC
+	t79pk7651dyzvwX0uWCI62Xba9sJQbKZ6UP31Bwl+OlE/uWQlt6OxsCHNfp74tvbBHsJj38tGpv/C
+	ABkPbzWgRXDvRFrfH7s5XWS+Jk9f5LoLM+SgP90vTZPOpOy+a5pi3++/jg9LFPgV8rFoa/8LivuUp
+	CLToJI3mxp9+HqMUp1TccuBFQII37uT+v4D1dj8FVPX3+OkeSWGdY2NtheEjEgpWhlqUHnKPaEuyf
+	D8yNzDPVPBpU6JB+mBWcoz5JZRNYuvwm2hp7SaPqR/0kX118gS1tK23/+NVK6thkywCGHd5/Ndj9n
+	NhWg5h0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu8e-00CFa7-2g;
-	Mon, 10 Jul 2023 16:53:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qIuCO-00CGsF-0n;
+	Mon, 10 Jul 2023 16:57:20 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu7s-00CEqt-2L;
-	Mon, 10 Jul 2023 16:52:42 +0000
-Received: from jupiter.universe (dyndsl-091-248-189-246.ewe-ip-backbone.de [91.248.189.246])
+	id 1qIuCJ-00CGqy-2t;
+	Mon, 10 Jul 2023 16:57:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A8CCA6607013;
-	Mon, 10 Jul 2023 17:52:32 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689007953;
-	bh=Tt7uUAjNgNzRuuG1D8AKfKaibOhh6srEjpIfBkMqmqY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T2rWDUoRmK60Z8jFi0D5hZ2iF9hLhNMlkn86LM8HLig14/WAMprxcy+jUhJnyJ1/j
-	 EvxSq0p659Lj9R8DJsdStkW3HTtnc08VRWbG+MaHJNS/UCUdoojwK4XO+PSxT8DQtd
-	 Yxmu9MlhBhV4nzThGuFaqqFMkDA/comV8OVV6p35PFPliUn+RrsIMbaGJg5Fab1Wb9
-	 SK0U12SeVbBnOSgKRkCcqkUn6naZmGC13PkFXxWAU9syPLrHaCrP4IivpZABIUnDOL
-	 bx8aMkmf77YRXGYFekJzSJwvVzy9BNZ4gCPCiWeU7grQOViZ6UVWd/g5qZXQIWgv58
-	 7jwlbaUxK/WEQ==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 28A114807F0; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4835D6102A;
+	Mon, 10 Jul 2023 16:57:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 013E7C433C8;
+	Mon, 10 Jul 2023 16:57:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689008234;
+	bh=IIro+PYudoCpsNeH2Llkq/gmEiqeLq8TswCPO5UnD6k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p7yUWoNb8JNe5qIMp13em9m8Rzsc1ghhta/kWFSe5/qi4pD5l1Kdd3nTIbhSAnB41
+	 W8C1J2axQqESm/vo5JFAn+FCzJ9O92y9klVgFoPPFBocvgHANqPMFGPKWSy1cah2AJ
+	 6B66a+6OSbM4vJnoAPeTpJQU1ZveA0PYXoTV6fut7sflD58+Jtel0GfBpq6p2nXiCt
+	 M0xsvZQxCC0EolQkXizKejaZaayP6VSNsobrYWwUH758W9Nr9zRBh1oYMDG5FsShL0
+	 zQI22BV9Iz/Ww1LFbCTyWKHKLILGMYlknCcvjk0BqOW9V/aTLFc+59pabBeheGKNwr
+	 5euI/OtpKjArA==
+Date: Mon, 10 Jul 2023 17:56:59 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 11/13] arm64: dts: rockchip: rock-5a: enable I2C interface from DSI and CSI connectors
-Date: Mon, 10 Jul 2023 18:52:26 +0200
-Message-Id: <20230710165228.105983-12-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230710165228.105983-1-sebastian.reichel@collabora.com>
-References: <20230710165228.105983-1-sebastian.reichel@collabora.com>
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v2 03/15] spi: Replace if-else-if by bitops and
+ multiplications
+Message-ID: <24e71654-bc79-42ac-86d1-4e6100f6893a@sirena.org.uk>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
+X-Cookie: Do you have lysdexia?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_095240_913354_04326C33 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20230710_095716_017984_F78ADD92 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,46 +116,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6993712804102985778=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I2C3 is routed to the Camera connector and I2C5 is routed to the LCD
-connector. On I2C5 additionally there is an unpopulated footprint for
-a HYM8563TS RTC.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+--===============6993712804102985778==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fI+fdz2D5/EEE42m"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index c4471dfe574f..01822dda0b2d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -190,6 +190,16 @@ eeprom: eeprom@50 {
- 	};
- };
- 
-+&i2c3 {
-+	status = "okay";
-+};
-+
-+&i2c5 {
-+	status = "okay";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c5m2_xfer>;
-+};
-+
- &i2c7 {
- 	status = "okay";
- 
--- 
-2.40.1
 
+--fI+fdz2D5/EEE42m
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Jul 10, 2023 at 06:49:20PM +0300, Andy Shevchenko wrote:
+
+> -		if (xfer->bits_per_word <= 8)
+> -			maxsize = maxwords;
+> -		else if (xfer->bits_per_word <= 16)
+> -			maxsize = 2 * maxwords;
+> -		else
+> -			maxsize = 4 * maxwords;
+> -
+> +		maxsize = maxwords * roundup_pow_of_two(BITS_TO_BYTES(xfer->bits_per_word));
+
+This will change the behaviour if bits_per_word is more than 32.  That
+is validated out elsewhere but I shouldn't have had to go around
+checking the code to confirm that this is the case.  This is the sort of
+thing that should be highlighted when doing this sort of edge case
+stylistic change.
+
+--fI+fdz2D5/EEE42m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsOFsACgkQJNaLcl1U
+h9A2Ywf+KXUPki4n4OHbYfUF8KSXIYSkZGLAugrUbcI1dW/wY8+0fLYP8+4w9V+j
+f81LA7/NDs1aRdnIEAvy6JRWhsUGKyHHKw42xpXD6MqtamipzOaVSYaL2Hr3ZuqC
+22p4KuNl0BAuHc+iyOWLpX7/btG8mweyZNWYjDbaB3duv4usx8Pis5kQu9HrTvfw
+e1repiQ4pqd5PGfhReO1fGbR6QIhoswiEm/9yfkZTQs1HAIOpRAePL2XPZD3sBuj
+pehvlOvP2yRq1fOxYVWGxXH8dhavS5t/mUlzyTYI7VxMD2HUZD1EiZ2uYcmntUEl
+y8tiLDQIFQRb++F+IFf0SjU+vXe0UQ==
+=tuUl
+-----END PGP SIGNATURE-----
+
+--fI+fdz2D5/EEE42m--
+
+
+--===============6993712804102985778==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6993712804102985778==--
+
