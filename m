@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508F3EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3707EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9WFOMneWMrWlS3i5osa0qUUm/CpO62B3iL9ocEsMTVE=; b=DlAlgLT5lL8RA6
-	0fuFFtWf+kLimQZIu57LSLod6AgJuMyK0nUJCN/E8sjNsElV3oENVugqCA1gXuVUi1g6M8rYRDA/O
-	SCvpyBjC8ct5MDfIDweMyYnTp80oXSXgDJtNB61c/GbDOyziA6gUeKYfvos2Iv/j1gtS9CsrEgLqY
-	PyPbE4wrb5sif+utHP7sA/+TalLpK2+i3X7WLsLbM16DnR/vE4S1rQIPEdEvCDnAekGElYVxWjUX1
-	DStHyGT3x3ZDHwg//FjLo2b4rLgS+ZSSbXtVx9EtJKbBKIEnKo+l5QwecyJ3N27+dehXNSiTUxA5o
-	vUhLH1W+Vpiah9U+psxg==;
+	List-Owner; bh=I4NhQ2ba+2ZpSdsEsrgKzBzBIK9o47oLmPlCDLmzXD0=; b=Qznjotr06AmTE7
+	Q3UrSOnIL907o/QLgYWQVfRvjwHfzINOD5URUhQlXk/P+JGbhctkKMuw16eNS1gp4OjWFFu+0EgsG
+	SF0M2xGHHhACdM2LegoN25n7WpBAHo9DNlLGSWZRzxgtASm563VJIcIgUAsA0mOgJhFzYqid9yEhH
+	9sTdMeLi8UfujS4mLXLPhU5qquce5BI3vyax1uuExu3wvLh6CYhExnqz6aNETGuZV0KZLRKlQ9cER
+	TGqB2leDOotAsNA7vHdzlsntO0MVx5T0bAl1GPKQ7o4N9IJoWz7GGf4wk64C6AV66Jaid9MMR5TFQ
+	XAvE7vpyVfxbmsgjYkPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt9P-00C44P-12;
-	Mon, 10 Jul 2023 15:50:11 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1qIt9I-00C3xc-2u;
+	Mon, 10 Jul 2023 15:50:04 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt8z-00C3dd-2E;
-	Mon, 10 Jul 2023 15:49:47 +0000
+	id 1qIt8y-00C3dD-2s;
+	Mon, 10 Jul 2023 15:49:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689004185; x=1720540185;
+  t=1689004184; x=1720540184;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=1YMEKoH26Jvs8dKIC6vdH9uSV/g2LDeyMP+ZqFMU56I=;
-  b=lt7IsWmt2Djixak8dzrQ6XGsvB4JymgNhVMcdAEADJ3F+OhKPgi9RkUW
-   CuhCYbuZrzY3SOzY4BF54YmPfGwynMOa37TuKf5FBf+w/juZD8Nh65wKP
-   gjbD5e3iooATAtyiJbFrLI6qGccEeshmhyBTmR1XosI+UbbvuiUjbe9C9
-   U3MOf3+k60AajRs82gG5I3G4szVGC7BKu4Exbwi77wJdLYGPjzQT9Dn78
-   tmey34jfXU58QM8n6PEV5PBSSWbxmBpg8oaUeViYz69Hj4hbQMv4UI1ZK
-   FVaLYq854XUcsLuAsVCJELaWfrOtN9/Pfs4PrBy1p77rk9JuUzJ1sB1Ik
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="366955272"
+  bh=vBn0rQkEvhyNS8x5dx+OCo1BBkRa+6Quzvw7Xp2sQ+U=;
+  b=V33IaE2mXpiIpnQTcrmlzcAUutwU1uXSFTkWKsrjNX8sEsdkFJ2at3r0
+   gP97/z8BNwBd9r4I2maWR/aXDQiutwYk56V7va0rgbcshjivkirl9gxO5
+   z/Xm4Rdf0vpntZNpH10w7oZx3JgyNeG0xV7SMVYwHxcfQpBijwYg3oX0X
+   rRcmhkhGW+NJbHX6TLe+7NsrSrVfN6fSqbz7uhlmCe8hG6Znxm4GfbUMs
+   eSLspUfwYLfgzlWjdfNsenTg5/rbxdLKgu67LRng/d4zjsZuVATId9KE1
+   PJepFNRRwAKzvCn22PdQPDBMrGjq2oGjZe9rCtlyCcO76wtTKoJkNRef+
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="349185371"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="366955272"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:40 -0700
+   d="scan'208";a="349185371"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="671015611"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="844921835"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="671015611"
+   d="scan'208";a="844921835"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga003.jf.intel.com with ESMTP; 10 Jul 2023 08:49:29 -0700
+  by orsmga004.jf.intel.com with ESMTP; 10 Jul 2023 08:49:31 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 1E05F1D9; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
+	id 4B00D3E3; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -106,16 +106,16 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: [PATCH v2 01/15] spi: Remove unneeded OF node NULL checks
-Date: Mon, 10 Jul 2023 18:49:18 +0300
-Message-Id: <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 03/15] spi: Replace if-else-if by bitops and multiplications
+Date: Mon, 10 Jul 2023 18:49:20 +0300
+Message-Id: <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_084945_778775_72EE616C 
-X-CRM114-Status: GOOD (  14.33  )
+X-CRM114-CacheID: sfid-20230710_084944_984489_FE94A55D 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,37 +132,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the couple of places the NULL check of OF node is implied by the call
-that takes it as a parameter. Drop the respective duplicate checks.
+Instead of if-else-if, simply call roundup_pow_of_two(BITS_PER_BYTES()).
+Note, there is no division assumed as compiler may optimize it away.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/spi/spi.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 9291b2a0e887..8f3282a71c63 100644
+index 6d74218cf38e..125dea8fae00 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -2399,9 +2399,6 @@ static void of_register_spi_devices(struct spi_controller *ctlr)
- 	struct spi_device *spi;
- 	struct device_node *nc;
+@@ -3643,13 +3643,7 @@ int spi_split_transfers_maxwords(struct spi_controller *ctlr,
+ 		size_t maxsize;
+ 		int ret;
  
--	if (!ctlr->dev.of_node)
--		return;
+-		if (xfer->bits_per_word <= 8)
+-			maxsize = maxwords;
+-		else if (xfer->bits_per_word <= 16)
+-			maxsize = 2 * maxwords;
+-		else
+-			maxsize = 4 * maxwords;
 -
- 	for_each_available_child_of_node(ctlr->dev.of_node, nc) {
- 		if (of_node_test_and_set_flag(nc, OF_POPULATED))
- 			continue;
-@@ -3134,7 +3131,7 @@ int spi_register_controller(struct spi_controller *ctlr)
- 		if (WARN(id < 0, "couldn't get idr"))
- 			return id == -ENOSPC ? -EBUSY : id;
- 		ctlr->bus_num = id;
--	} else if (ctlr->dev.of_node) {
-+	} else {
- 		/* Allocate dynamic bus number using Linux idr */
- 		id = of_alias_get_id(ctlr->dev.of_node, "spi");
- 		if (id >= 0) {
++		maxsize = maxwords * roundup_pow_of_two(BITS_TO_BYTES(xfer->bits_per_word));
+ 		if (xfer->len > maxsize) {
+ 			ret = __spi_split_transfer_maxsize(ctlr, msg, &xfer,
+ 							   maxsize, gfp);
 -- 
 2.40.0.1.gaa8946217a0b
 
