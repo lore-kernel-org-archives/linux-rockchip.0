@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDBE9EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:53:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE657EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RUI4Lx/PEwBOpcOLeC6O0pb6Df39bnNxwME00ZqYwY8=; b=hFAuj2PEgkDWyP
-	8GYM490KuOm5h6tJ7r0wWQ4e4Wwp0ft0FsjSqK/ln3D59brZjE0AAkFE++vClhKylFgIcnHUNa8Wt
-	0r7OzX8bEqIx79n1ga68Ln3gd3lpyICbJPH0Qt0446ELPs3ElQCGF0nEq1id7p4nr5U9/IJBrZlcw
-	ZJ0A+Ayytm0HsLF1NcthzD0hRy6XCIULSiWaujmDQIcJlbVwlYLEcqTmIzM9wiTUFhnBlzZDniE38
-	/zjaXnJ+hLGvApI/h1gcNlz+FoL+dEhpEyePro4B9/SqgmIoK4YmtzrdbYLAKpJqeEHFBFTA+e0fa
-	lWQZX/G9q6pkzCiEUqrg==;
+	List-Owner; bh=SLxScr8y/nlbmLTodYtjznNKhAmdq+xiM70/Yv0Q4m0=; b=ZQOEBaYzx9RziQ
+	vj3aI6iCqstpdh2Se+Obr2Lzxx5u16ehcb6/w3LaAyXO57mBnxPI2iaWshB19LyeLWbLKaqaxgxKb
+	ChhDnB9cNnRZjG1xMoq0I/jqOZ0h1/mkBh2X34yUOONyT9tTniMiLAdJDndmUVZZSNJeFajhtl25V
+	lVubY5wXw8S4TCJhKbtsPQgktAenWb4yykzm3fQDMlqeVdW+3AkuvAWWw8abR1JYbOt3N6xf7tS9y
+	6SM7+W9jch6Xg59fVLDYrOexaUBKFazo6lbLo4aoDy0pH8fQikNqDrVXU4GNDgU4h2DKu/hPw1Va7
+	ggtgj6ILvNrkMNBLyncg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu8A-00CF7L-2g;
-	Mon, 10 Jul 2023 16:52:58 +0000
+	id 1qIu89-00CF5m-1I;
+	Mon, 10 Jul 2023 16:52:57 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu7r-00CEp6-0e;
+	id 1qIu7q-00CEor-2S;
 	Mon, 10 Jul 2023 16:52:40 +0000
 Received: from jupiter.universe (dyndsl-091-248-189-246.ewe-ip-backbone.de [91.248.189.246])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 868AE660700F;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 77AF56607009;
 	Mon, 10 Jul 2023 17:52:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1689007952;
-	bh=iAAaULXKzOM58JwUjAKjW61TNCzveUnAnpYj6EelEwk=;
+	bh=SyT5L6QW7HqAZecCA4MRYTD8aoZGBwujAo3dEnVZY78=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ScLMNM0dSZ8G/eH50KidWkP/xzmxVlbKltljXCZhP3HbwUfO6EK+OYxMUq0Z+xurM
-	 iuxxTCcR1QAN0N+ufCiX1UPJy/9qL93HMCCXdK8zofBSwW3csw0RN4pLK5pE6T0aEy
-	 cLigX3JaScbuqXikzYD4zLOAJZw3s6yuUfx7ZD9R0HAxdI62DhVkb97hIFRfpDavCb
-	 UUCXPrgxGAp4c+EzJ5YRBbjkMGj6WrGfFGQd3RxY9cw611oqQZ5X9tsDQ4Z5/Vp39v
-	 ldcSCEKUntJlpyX5naJDCxbjosTQit2avsrVKiczs3S5C9Wi0//leJcHNsDOXR2EkS
-	 aU+YTzb3XKLMQ==
+	b=EQgqj1Q//kViqIzttfWnfi8UGG9Ap0+dTd6xwfUQHpnBaBfnkOSWSxiW3ibv4qJNh
+	 B1WKY1qWNlnxnH/JELYsFpEy2HVJHhSB3mYIuj8Fw0EPpiVD4o1NiedBTDTl4tVo5O
+	 yL/ofWvms2IAJRCxVnYK/ioKVcwSPrwXYLXQsNevxIDOryWBj6TmDCejSrfHPXxglO
+	 IvdIuyVyxmxkfOCVMqGOezk9ovTytdjc7EIThi/liFwqRpVckmmt56wka6Dof92eax
+	 U6qonkSGjyidbNhc0vYxk6EG1VLyKlBzuhuYNl6QDgAnCSqM7im5zQLoA9L0+bPUiT
+	 9/0A1B3aN0N7g==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 24C224807E1; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
+	id 212534805B8; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>
@@ -56,16 +56,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v1 08/13] arm64: dts: rockchip: rock-5a: add analog audio
-Date: Mon, 10 Jul 2023 18:52:23 +0200
-Message-Id: <20230710165228.105983-9-sebastian.reichel@collabora.com>
+Subject: [PATCH v1 05/13] arm64: dts: rockchip: rock-5a: add 5V regulator
+Date: Mon, 10 Jul 2023 18:52:20 +0200
+Message-Id: <20230710165228.105983-6-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230710165228.105983-1-sebastian.reichel@collabora.com>
 References: <20230710165228.105983-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_095239_382002_200C1EF2 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20230710_095238_932900_A85F4A37 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,89 +83,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add analog audio support based on the Everest Semi ES8316 codec.
-
-Note, that this currently does not support headphone plug events. The
-Rock 5A uses a different headphone jack with a different logic to detect
-a headphone plug. Unfortunately the detect GPIO is always low.
-Downstream uses an ADC channel instead, but that is currently not
-supported upstream.
+Add GPIO controlled 5V regulator, which is used for supplying
+the fan, on-board USB hub and HDMI.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 5bad81c5b09d..4c6c87d462e9 100644
+index 616a6bcfd60b..87864a991b50 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -16,6 +16,20 @@ aliases {
- 		serial2 = &uart2;
+@@ -38,6 +38,20 @@ vcc5v0_sys: vcc5v0-sys {
+ 		vin-supply = <&vcc12v_dcin>;
  	};
  
-+	analog-sound {
-+		compatible = "audio-graph-card";
-+		label = "rk3588-es8316";
-+
-+		widgets = "Microphone", "Mic Jack",
-+			  "Headphone", "Headphones";
-+
-+		routing = "MIC2", "Mic Jack",
-+			  "Headphones", "HPOL",
-+			  "Headphones", "HPOR";
-+
-+		dais = <&i2s0_8ch_p0>;
++	vcc_5v0: vcc-5v0 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_5v0";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-boot-on;
++		regulator-always-on;
++		enable-active-high;
++		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc_5v0_en>;
++		vin-supply = <&vcc5v0_sys>;
 +	};
 +
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-@@ -149,6 +163,44 @@ regulator-state-mem {
- 	};
+ 	vcc_1v1_nldo_s3: vcc-1v1-nldo-s3 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_1v1_nldo_s3";
+@@ -150,6 +164,12 @@ rgmii_phy1: ethernet-phy@1 {
  };
  
-+&i2c7 {
-+	status = "okay";
-+
-+	es8316: audio-codec@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		clock-names = "mclk";
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
+ &pinctrl {
++	power {
++		vcc_5v0_en: vcc-5v0-en {
++			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
-+};
 +
-+&i2s0_8ch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
-+		};
-+	};
-+};
-+
- &gmac1 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy1>;
+ 	rtl8211f {
+ 		rtl8211f_rst: rtl8211f-rst {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
 2.40.1
 
