@@ -4,80 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EAE9EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 14:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1501EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 14:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=86WATyr0+KdfqOa+LYFNzx7yJ0qOtkKDzke0w3nZveg=; b=IbEZ/2cX9NaJUQ
-	b1idmT+pg0Xy/Q4cET4Nq4LxldQ9H7r9+sRfaUdHOJPPNi7Vu9h2DfEDSogNpwEQYjY/k5N9nPGVz
-	TdMMUVq8UaqbFpaShUNrbS3LpR7BZlTkJTycK+A2EDXnC/hZKPXLFwMGw3m8idjoiFursbOMNVAxY
-	8C1ZoX0mG6Hffa1wd6gVs+YihGnYx1jwbXaO/R8gMhoHldlVEzeJ5CQqFCRh5vQmZ5hYsUZ4WSgmb
-	/6gfjRMKmXH5DZCOD5fuBbiMGCVxNMz1u/P7vu/2eis/xYMbrXzft3XII4Ll/gD6JPDMVc7vxsSzV
-	rOdRbjfilriQTdGTsUgg==;
+	List-Owner; bh=dX9BFw+NmXUCiNSnSrvWP8nuLIn5q4FyH9+tP+zf9ks=; b=f5WttyqKDQrkMF
+	O1J3rQWCRsyJvIrznlw7Tbj9LjylyQd/6lZ+Kw8eHz8IWr24tG9IzaG1FaNvZWF9zOvhYe0pwBEx0
+	vABXduTES0ZLlp8y/p9nvY61R7sXlkqZyzo3je992MkyBas/FMx4IPmXBKYihCyBGwBdw+c6wPUgN
+	1XZUutERwI7qA0Ip5tfcaoIKK9TiEzEvlbGFrGARsp+eET3RSiDPjJXKQyA0d+Cbkb4IR6p4b6dSW
+	V5P7xCIdYgc+giVA08LCuiYnRhMs6O9UTO5lxLWJ/rWLMGli0g3DzklXl3UsGW8JW8+48qU6gJkyq
+	VBw1c33RTZHvYrzwxyDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIrhH-00BrUT-3A;
-	Mon, 10 Jul 2023 14:17:03 +0000
+	id 1qIrln-00BsBG-1Z;
+	Mon, 10 Jul 2023 14:21:43 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIrhF-00BrSU-1D;
-	Mon, 10 Jul 2023 14:17:02 +0000
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.fritz.box)
+	id 1qIrll-00Bs9w-01;
+	Mon, 10 Jul 2023 14:21:42 +0000
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qIrge-0001RE-D4; Mon, 10 Jul 2023 16:16:24 +0200
+	id 1qIrlf-0001VJ-9u; Mon, 10 Jul 2023 16:21:35 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Alex Riabchenko <d3adme4t@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Furkan Kardame <f.kardame@manjaro.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Rob Herring <robh+dt@kernel.org>,
-	Anand Moon <linux.amoon@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Vasily Khoruzhick <anarsoul@gmail.com>,
-	Shengyu Qu <wiagn233@outlook.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Dan Johansen <strit@manjaro.org>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
-	Yuteng Zhong <zonyitoo@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jensen Huang <jensenhuang@friendlyarm.com>,
-	Wenhao Cui <lasstp5011@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Lev Popov <leo@nabam.net>,
-	Andy Yan <andyshrk@163.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Fabio Estevam <festevam@denx.de>,
-	Dongjin Kim <tobetter@gmail.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH] arm64: dts: rockchip: Drop invalid regulator-init-microvolt property
-Date: Mon, 10 Jul 2023 16:16:16 +0200
-Message-Id: <168899855919.1747213.9998138836668928892.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230707162217.675390-1-cristian.ciocaltea@collabora.com>
-References: <20230707162217.675390-1-cristian.ciocaltea@collabora.com>
+To: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [RFT PATCH v2 1/3] arm64: dts: rockchip: correct wifi interrupt flag in
+ eaidk-610
+Date: Mon, 10 Jul 2023 16:21:34 +0200
+Message-ID: <2762773.BEx9A2HvPv@phil>
+In-Reply-To: <168899855919.1747213.375800621361302991.b4-ty@sntech.de>
+References: <20230707063335.13317-1-krzysztof.kozlowski@linaro.org>
+ <168899855919.1747213.375800621361302991.b4-ty@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_071701_415999_18551439 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20230710_072141_042352_73895BEE 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,24 +65,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 7 Jul 2023 19:22:17 +0300, Cristian Ciocaltea wrote:
-> The 'regulator-init-microvolt' property is not currently supported by
-> any driver, it was simply carried on from downstream kernels.
+Am Montag, 10. Juli 2023, 16:16:20 CEST schrieb Heiko Stuebner:
+> On Fri, 7 Jul 2023 08:33:33 +0200, Krzysztof Kozlowski wrote:
+> > GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+> > These are simple defines so they could be used in DTS but they will not
+> > have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
+> > 
+> > Correct the interrupt flags, assuming the author of the code wanted same
+> > logical behavior behind the name "ACTIVE_xxx", this is:
+> >   ACTIVE_HIGH  => IRQ_TYPE_LEVEL_HIGH
+> > 
+> > [...]
 > 
-> The problem is also indicated by the following dtbs_check warning:
+> Applied, thanks!
 > 
->   rk3588-rock-5b.dtb: pmic@0: regulators:dcdc-reg4: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
-> 
-> [...]
+> [1/3] arm64: dts: rockchip: correct wifi interrupt flag in eaidk-610
+>       commit: 8183bb7e291b7818f49ea39687c2fafa01a46e27
+> [2/3] arm64: dts: rockchip: correct wifi interrupt flag in Rock Pi 4B
+>       commit: cfa12c32b96fd5b12f77d880d6a1ddd2a502756e
+> [3/3] arm64: dts: rockchip: correct wifi interrupt flag in Box Demo
+>       commit: 2d6f7e3938a7aba154c8e8afaddc8b7f1e0a1b56
 
-Applied, thanks!
+we got one successful test and all the changes concern broadcom wifi
+modules, I assume that this should work on all of them the same :-)
 
-[1/1] arm64: dts: rockchip: Drop invalid regulator-init-microvolt property
-      commit: 4d08b19629495b29601991d09d07865694c25199
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
