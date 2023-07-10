@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C992EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 11:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0054FEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 11:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FSkAg5p4AVOAOs+S3nRQUicTEjLTlrtFJjmpqweV3a8=; b=ZQAavjj3Y8PvLt
-	O0P4hJHho2g6vfa/vO2cZOlhHInAugOAdHKLnXgM2/iWOirQWcy1SpChINx77WblLE1w8MwS/Krmo
-	ESpnxjhS/xaEhxGhyCXq8QNp1GR/Zb4G6JT+Lvwffan7VDL9RvRstSkriupDRnNgpzQA9OIumPxK1
-	n0HLl8TFZakLPvNamQ/hu01x7XCRw7weqPm6szr3QTaj52kAmM+8GisipEsH5Tv1bdVVWtn0o/aP2
-	o7eryRFRAY6DjqqU0GtcjSuJZm2KaYCt/gsIvcAARa8CVPeEqhf2m7OJjr2ButoQaXlh+bvwGhEw1
-	KkhmKlN4yC/bB/ICRZng==;
+	List-Owner; bh=fFql5FvTL3aZyzhozfvDqRhl8tyqKHLwoc2vz/sCXlM=; b=bnlUtZC4xmqtOc
+	n3P7lGuT7T0ly7MAQDNH15/jw1nMbwrL1IQ8ORqZad8ijbJ1OiofJZ5Y44u+Q4kXdMUdYsDHxv/eR
+	PNww9+gBYCJmpYPClf3ZRzwynB2/1lS1H7WN+NTch+KWqlup0pblQO61UuY7L3ht2LiZMxcQ6LgP2
+	5AENsOUsSGBu9QuD78sIbWoCjBEwBIfzAd9U+fxQLlRchSQTNvGpFz2Dci19RKR5NscNGkbAaNMCM
+	j16JjYf8Mgv4RteF4m5f9oilHtb25UDaK8xFXiOboqO0iDZt9K0KqmrdcJEbKNjoUK2IAT7zpffZb
+	1RWxs6bz5kXi/dgwrDaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIpPb-00BW0C-1P;
-	Mon, 10 Jul 2023 11:50:39 +0000
+	id 1qIpPh-00BW3A-0p;
+	Mon, 10 Jul 2023 11:50:45 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIpPX-00BVxJ-24;
-	Mon, 10 Jul 2023 11:50:36 +0000
+	id 1qIpPX-00BVxE-1z;
+	Mon, 10 Jul 2023 11:50:38 +0000
 Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:f690:3e44:90e:2421])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E57E86606FFE;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79E446606FFA;
 	Mon, 10 Jul 2023 12:50:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688989831;
-	bh=ifOxrGBK7ddwkyXRFgw7UF9/qlU9v4GUC2LJybbz/sQ=;
+	s=mail; t=1688989830;
+	bh=PjabzgQmfkL9GbnomNrVzecnkjDXllPi8P9uPmapx8U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MBY+WuRYWvyJPl3kHn4Fy0JR9ig/PwI2viU3kK8QAaNj1b/y+qZc9UkRusT1fpntL
-	 j7zrRAfgnBqdnypR/RWupRbLSPHQBB8m4QZ5ACxuWd8N8OhLa0chSFuqUJfpkgeIBi
-	 qB/2yxPuZBJOqw6O6udsEVQrys+JgOS6ysay03z+gTGRXl5IsEFPxJRg8A1tLrqqpu
-	 lx4cVhFydUe3q8xEoo/3PZ1xYethhe1XLqcZDmU6S0gHOd308NE+SkemG6+9i1aoTT
-	 KkBJo++xk3If3WRQ/VJ1vTW6eMAu8cCYK6C1HyzNZPVngLpQsottvr2lgZdM+Ev6/J
-	 tRoI4Er9smN4A==
+	b=RQBNWkDc7DkBV17oflSU9vT/+juYyaD7Y2XRi4PnkVPyaYeKMtnX7swefAknOm2W3
+	 HIrEIHnrI1KXsYwiPXJgRrhu1pxOn7grEf+p2ZSW6n3xIdrZtAE8ddcn1Mi25HJEWh
+	 S3Bq/vmyXJGv6M8No/Cnm2d3Z3mgrt0CXhfE0Zq2Pm00oomT+z4v2kxrhhPwmIvSQ7
+	 yy3i4gP+qkNQ36ZiWrNhSLDhO9NbsuIpbWRUCIWgwEBz1HP6qT9Ph53X5lXYNq4osp
+	 yt3SL+h9iCYKuoOZrb8CmFhKh9j0ElozoauI3r2Og3fLyZPHG5oKHSDhpc3vgxP5L3
+	 GySerQr1JCLVw==
 From: Christopher Obbard <chris.obbard@collabora.com>
 To: linux-rockchip@lists.infradead.org
 Cc: kernel@collabora.com,
 	Christopher Obbard <chris.obbard@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Andy Yan <andyshrk@163.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
+	FUKAUMI Naoki <naoki@radxa.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Jagan Teki <jagan@edgeble.ai>,
+	Jagan Teki <jagan@amarulasolutions.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
-	Tianling Shen <cnsztl@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add Radxa ROCK 4SE
-Date: Mon, 10 Jul 2023 12:50:24 +0100
-Message-Id: <20230710115025.507439-3-chris.obbard@collabora.com>
+Subject: [PATCH v2 1/3] arm64: dts: rockchip: Move OPP table from ROCK Pi 4 dtsi
+Date: Mon, 10 Jul 2023 12:50:23 +0100
+Message-Id: <20230710115025.507439-2-chris.obbard@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230710115025.507439-1-chris.obbard@collabora.com>
 References: <20230710115025.507439-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_045035_826740_C936DD05 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230710_045035_828073_AFB4770A 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +82,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding entry for the Radxa ROCK 4SE.
+The ROCK 4SE uses the RK3399-T variant of the RK3399 SoC, which has some
+changes to the OPP tables. Prepare for the bringup of this SoC by moving
+the inclusion of existing OPP tables from the common devicetree into
+each board-specific devicetree.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
 
-Changes in v2:
-- Add Krzysztof Kozlowski's Acked-by tag.
+(no changes since v1)
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts | 1 +
+ 4 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ecdb72a519cb..3b7bf86cec02 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -694,6 +694,11 @@ properties:
-           - const: radxa,rock-4c-plus
-           - const: rockchip,rk3399
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index 907071d4fe80..ec307ee20c66 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -9,7 +9,6 @@
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pwm/pwm.h>
+ #include "rk3399.dtsi"
+-#include "rk3399-opp.dtsi"
  
-+      - description: Radxa ROCK 4SE
-+        items:
-+          - const: radxa,rock-4se
-+          - const: rockchip,rk3399
-+
-       - description: Radxa ROCK Pi E
-         items:
-           - const: radxa,rockpi-e
+ / {
+ 	aliases {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
+index 89f2af5e111d..931334aa3d62 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
+@@ -6,6 +6,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4A";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+index 0806545922f5..e98a182f8572 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+@@ -6,6 +6,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4B";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
+index 4053ba72618c..d32efab74e94 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
+@@ -7,6 +7,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4C";
 -- 
 2.40.1
 
