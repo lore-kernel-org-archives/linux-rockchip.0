@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E0EEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 17:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 398F4EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 17:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YdIugGpdV1qOYe0C55YV3YA5FB71JISlfAESahVl9UE=; b=ewOW+AxssqgmhzZr2cM/WqwQxj
-	bELuUbrwuIiwZ8R9SMHzYlERupE8O3ZY3mcATgDPHN3OE6AZqhkFJVXygI86OAWCei5Fl4oGcY9aH
-	yFI7ZrukVDKee4XvmBogDxyeIi3xQCqUv77QCEJqE4jae2E6GMb52yili4yAts4SKi/ab7BW3X0ob
-	mpKPGliXqxEvlWSBmPLXC1hfc3I1x+doRZ36L1Tq4P+0r8AOhoskP0/75ZC6JuB8sJo+PX7A2VilH
-	lQ4rM2ECQpadR9bDQXmf3nwSRBT14C0p7lwPAlexrjgzl0MPkBu8PAXeMeVLJks62wa9CwwHHaP0V
-	GdVJfAyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RVbsic2CosjTDYoiSAAU1KVQ+hlqRTIZWb2h6Cze8kA=; b=FnVxECWz4eUaZq
+	tlS3m5iep6su/ks8UVZVtHrE3YYrAGTUUukwtfdgqs3T3a992Ob9b3LO2R+vvBb28JaJqRfLmD+qP
+	KANCu+awQs5Fw/3lyIkhRE0EYIVKCfu2AU5rAcBRBU8McaTy3ZWRhy1qcfSLO73UYiL5EFQS27apV
+	VHhXYJXSf4z3SnUjfGT+LXUGa13W/2vYCkg6v8VhMRtlp+ZTGaePUflIWR1RWCls221iIdfzeTH60
+	GRkTcgjRDyf8WW7govr+Nx4DkUvGiUUyhBg7NGtAlkAkB2AdVFXgYqFXzstiB28vo7KZgWPYI0mKg
+	15y/8EDn9ArkpQFjLb4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuwh-00COCY-0J;
-	Mon, 10 Jul 2023 17:45:11 +0000
+	id 1qIv8W-00CPQh-0x;
+	Mon, 10 Jul 2023 17:57:24 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuwd-00COBC-0f;
-	Mon, 10 Jul 2023 17:45:08 +0000
+	id 1qIv8S-00CPPP-1K;
+	Mon, 10 Jul 2023 17:57:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6E68E610A3;
-	Mon, 10 Jul 2023 17:45:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B492C433C8;
-	Mon, 10 Jul 2023 17:45:02 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 38B4561180;
+	Mon, 10 Jul 2023 17:57:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C4F5C433CC;
+	Mon, 10 Jul 2023 17:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689011105;
-	bh=JYkWJasgvckBZ5AB6t/6gw7izBFHjFqNwBX/W6Q7n2E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pEgXBy9VXc/yXTnnLhVCIsDLJUjNz4cwRaxzrg4INUE5BYM3JyF1PLdsG+HhfWFma
-	 ieCM0QEA+X322SDIl4SapO+6AhAW/rwZUewqlYe9HpyFIuRPjdlucY9SUvHZuWeji/
-	 EGh7w22R+wwwXkJEROT3EoSjJ4zcu3B+FV4p2eKBPxWzjWaB3/YtU3JntbN/xn2Ubo
-	 Ir5mIv6fnL1kMNTdZliTB4UjFiZ2QH3xr3q5ch4bCg3/f7WCvJNJ4o+OaAc8Ze1ay5
-	 nQFkq4fNl2hIDG6blt/m2DV4PbD1FWv7dSZZc+P4ufwh+UA3BsU4JG9WxTrrc04u3k
-	 5FRkpdMX35Z9g==
-Date: Mon, 10 Jul 2023 18:45:00 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
-	Helen Koike <helen.koike@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
-Message-ID: <20230710-unsold-simplify-5a339036ff38@spud>
-References: <20230707210604.868002-1-robh@kernel.org>
+	s=k20201202; t=1689011838;
+	bh=/I5pqYNPgMU3EjysBC8ykci8OtSUSnTRyQ0bamboDiY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=e+Z5FkSfT6duwNCWirzt2iuOixAqEnm0JK9up5V0+jTppqhwHlH0UDFU8bBk9jT8i
+	 0pwFpzfbYYfS6xC3JcptsLHwAsuiI7s/zyVSjktfZVQXedeIcF+Mct+c1sxkMDaeVT
+	 mvbiN/NFMI4l8Mfi4XK+SnAHRLIvUCEHGtF/ztTCDRRgbNzjFZmnjh6oAi5vMh6BDB
+	 8PwPBDZfDMKKzzm3UNtwP3yjc64bVD8SzHPCUOoBxYVNP3mBiUxAw1MDLD/qCvN4nn
+	 UqSHR1OU/6EMvOAqZAu4jbh6Pa8vqZtgrv8NMPN+V7hwVhqmxngDLaUkin8hrR7dQJ
+	 Q9lEOqgCjoGpA==
+Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2b5c2433134so59967721fa.0;
+        Mon, 10 Jul 2023 10:57:18 -0700 (PDT)
+X-Gm-Message-State: ABy/qLbSOiV7MKe5VqcVDuhlBxrrhzIdbZeOK563BDXqrbZxTkKZ5TxE
+	lnznQ7bY9NqZqdamJS09QOtLPRtWSpVmefXyuA==
+X-Google-Smtp-Source: APBJJlHgHIBMx0YbZYevY8LJVdcaIrKkIL2GZViFEE5jVuJubzdXhi9id/g0Ssb5aSItTwU4S71nTDiAya5Sq6Ji/t4=
+X-Received: by 2002:a2e:b044:0:b0:2b6:d0c1:7cd0 with SMTP id
+ d4-20020a2eb044000000b002b6d0c17cd0mr5110497ljl.22.1689011836511; Mon, 10 Jul
+ 2023 10:57:16 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20230707210604.868002-1-robh@kernel.org>
+References: <20230707210604.868002-1-robh@kernel.org> <20230710-unsold-simplify-5a339036ff38@spud>
+In-Reply-To: <20230710-unsold-simplify-5a339036ff38@spud>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 10 Jul 2023 11:57:03 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJOW7kxC4m8tCmNrD6pq5y73BjV236nb+ZHAhR4rDrNvw@mail.gmail.com>
+Message-ID: <CAL_JsqJOW7kxC4m8tCmNrD6pq5y73BjV236nb+ZHAhR4rDrNvw@mail.gmail.com>
+Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
+To: Conor Dooley <conor@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Daniel Scally <djrscally@gmail.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Tommaso Merciai <tommaso.merciai@amarulasolutions.com>, 
+	Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_104507_328060_8F435F3D 
-X-CRM114-Status: GOOD (  26.55  )
+X-CRM114-CacheID: sfid-20230710_105720_554732_CBDEBD7D 
+X-CRM114-Status: GOOD (  31.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,208 +82,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7964456403158171127=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7964456403158171127==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="t+svSrsy1jWs8uVm"
-Content-Disposition: inline
-
-
---t+svSrsy1jWs8uVm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Jul 07, 2023 at 03:06:04PM -0600, Rob Herring wrote:
-> The OV5695 binding is almost the same as the OV5693 binding. The only
-> difference is 'clock-names' is defined for OV5695. However, the lack of
-> clock-names is an omission as the Linux OV5693 driver expects the same
-> 'xvclk' clock name.
->=20
-> 'link-frequencies' is required by OV5693, but not OV5695. Just drop it
-> from being required. Expressing it conditionally would be ugly. It
-> shouldn't really be required either as the driver only supports 1
-> frequency anyways.
-
-I suppose the intent here is something like "the driver only supports 1
-frequency and never bothers to read the property"?
-
-Either way,
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
->=20
-> The rockchip-isp1 binding example is missing required properties, so it
-> has to be updated as well.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../devicetree/bindings/media/i2c/ov5695.txt  | 41 -------------------
->  .../bindings/media/i2c/ovti,ov5693.yaml       | 19 +++++----
->  .../bindings/media/rockchip-isp1.yaml         |  1 +
->  3 files changed, 13 insertions(+), 48 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/media/i2c/ov5695.txt
->=20
-> diff --git a/Documentation/devicetree/bindings/media/i2c/ov5695.txt b/Doc=
-umentation/devicetree/bindings/media/i2c/ov5695.txt
-> deleted file mode 100644
-> index 640a63717d96..000000000000
-> --- a/Documentation/devicetree/bindings/media/i2c/ov5695.txt
-> +++ /dev/null
-> @@ -1,41 +0,0 @@
-> -* Omnivision OV5695 MIPI CSI-2 sensor
-> -
-> -Required Properties:
-> -- compatible: shall be "ovti,ov5695"
-> -- clocks: reference to the xvclk input clock
-> -- clock-names: shall be "xvclk"
-> -- avdd-supply: Analog voltage supply, 2.8 volts
-> -- dovdd-supply: Digital I/O voltage supply, 1.8 volts
-> -- dvdd-supply: Digital core voltage supply, 1.2 volts
-> -- reset-gpios: Low active reset gpio
-> -
-> -The device node shall contain one 'port' child node with an
-> -'endpoint' subnode for its digital output video port,
-> -in accordance with the video interface bindings defined in
-> -Documentation/devicetree/bindings/media/video-interfaces.txt.
-> -The endpoint optional property 'data-lanes' shall be "<1 2>".
-> -
-> -Example:
-> -&i2c7 {
-> -	ov5695: camera-sensor@36 {
-> -		compatible =3D "ovti,ov5695";
-> -		reg =3D <0x36>;
-> -		pinctrl-names =3D "default";
-> -		pinctrl-0 =3D <&clk_24m_cam>;
-> -
-> -		clocks =3D <&cru SCLK_TESTCLKOUT1>;
-> -		clock-names =3D "xvclk";
-> -
-> -		avdd-supply =3D <&pp2800_cam>;
-> -		dovdd-supply =3D <&pp1800>;
-> -		dvdd-supply =3D <&pp1250_cam>;
-> -		reset-gpios =3D <&gpio2 5 GPIO_ACTIVE_LOW>;
-> -
-> -		port {
-> -			wcam_out: endpoint {
-> -				remote-endpoint =3D <&mipi_in_wcam>;
-> -				data-lanes =3D <1 2>;
-> -			};
-> -		};
-> -	};
-> -};
-> diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml=
- b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
-> index 359dc08440a8..a3d73a87d797 100644
-> --- a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
-> +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
-> @@ -5,26 +5,29 @@
->  $id: http://devicetree.org/schemas/media/i2c/ovti,ov5693.yaml#
->  $schema: http://devicetree.org/meta-schemas/core.yaml#
-> =20
-> -title: Omnivision OV5693 CMOS Sensor
-> +title: Omnivision OV5693/OV5695 CMOS Sensors
-> =20
->  maintainers:
->    - Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
-> =20
->  description: |
-> -  The Omnivision OV5693 is a high performance, 1/4-inch, 5 megapixel, CM=
-OS
-> -  image sensor that delivers 2592x1944 at 30fps. It provides full-frame,
-> +  The Omnivision OV5693/OV5695 are high performance, 1/4-inch, 5 megapix=
-el, CMOS
-> +  image sensors that deliver 2592x1944 at 30fps. It provides full-frame,
->    sub-sampled, and windowed 10-bit MIPI images in various formats via the
->    Serial Camera Control Bus (SCCB) interface.
-> =20
-> -  OV5693 is controlled via I2C and two-wire Serial Camera Control Bus (S=
-CCB).
-> -  The sensor output is available via CSI-2 serial data output (up to 2-l=
-ane).
-> +  OV5693/OV5695 are controlled via I2C and two-wire Serial Camera Contro=
-l Bus
-> +  (SCCB). The sensor output is available via CSI-2 serial data output (u=
-p to
-> +  2-lane).
-> =20
->  allOf:
->    - $ref: /schemas/media/video-interface-devices.yaml#
-> =20
->  properties:
->    compatible:
-> -    const: ovti,ov5693
-> +    enum:
-> +      - ovti,ov5693
-> +      - ovti,ov5695
-> =20
->    reg:
->      maxItems: 1
-> @@ -34,6 +37,9 @@ properties:
->        System input clock (aka XVCLK). From 6 to 27 MHz.
->      maxItems: 1
-> =20
-> +  clock-names:
-> +    const: xvclk
-> +
->    dovdd-supply:
->      description:
->        Digital I/O voltage supply, 1.8V.
-> @@ -72,7 +78,6 @@ properties:
-> =20
->          required:
->            - data-lanes
-> -          - link-frequencies
-> =20
->  required:
->    - compatible
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b=
-/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> index 0bad7e640148..e466dff8286d 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> @@ -199,6 +199,7 @@ examples:
->              wcam: camera@36 {
->                  compatible =3D "ovti,ov5695";
->                  reg =3D <0x36>;
-> +                clocks =3D <&cru SCLK_TESTCLKOUT1>;
-> =20
->                  port {
->                      wcam_out: endpoint {
-> --=20
-> 2.40.1
->=20
-
---t+svSrsy1jWs8uVm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZKxDnAAKCRB4tDGHoIJi
-0qn2AP0Wcor69ow4Yy2tBjgcVPKKkO5rO0cMvw977bU0zkbU2wEA03fAzCzyJ+yv
-Ng2oGxRY7uXq/PVcTmI/dsBcudBCXwY=
-=1DQl
------END PGP SIGNATURE-----
-
---t+svSrsy1jWs8uVm--
-
-
---===============7964456403158171127==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7964456403158171127==--
-
+T24gTW9uLCBKdWwgMTAsIDIwMjMgYXQgMTE6NDXigK9BTSBDb25vciBEb29sZXkgPGNvbm9yQGtl
+cm5lbC5vcmc+IHdyb3RlOgo+Cj4gT24gRnJpLCBKdWwgMDcsIDIwMjMgYXQgMDM6MDY6MDRQTSAt
+MDYwMCwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gPiBUaGUgT1Y1Njk1IGJpbmRpbmcgaXMgYWxtb3N0
+IHRoZSBzYW1lIGFzIHRoZSBPVjU2OTMgYmluZGluZy4gVGhlIG9ubHkKPiA+IGRpZmZlcmVuY2Ug
+aXMgJ2Nsb2NrLW5hbWVzJyBpcyBkZWZpbmVkIGZvciBPVjU2OTUuIEhvd2V2ZXIsIHRoZSBsYWNr
+IG9mCj4gPiBjbG9jay1uYW1lcyBpcyBhbiBvbWlzc2lvbiBhcyB0aGUgTGludXggT1Y1NjkzIGRy
+aXZlciBleHBlY3RzIHRoZSBzYW1lCj4gPiAneHZjbGsnIGNsb2NrIG5hbWUuCj4gPgo+ID4gJ2xp
+bmstZnJlcXVlbmNpZXMnIGlzIHJlcXVpcmVkIGJ5IE9WNTY5MywgYnV0IG5vdCBPVjU2OTUuIEp1
+c3QgZHJvcCBpdAo+ID4gZnJvbSBiZWluZyByZXF1aXJlZC4gRXhwcmVzc2luZyBpdCBjb25kaXRp
+b25hbGx5IHdvdWxkIGJlIHVnbHkuIEl0Cj4gPiBzaG91bGRuJ3QgcmVhbGx5IGJlIHJlcXVpcmVk
+IGVpdGhlciBhcyB0aGUgZHJpdmVyIG9ubHkgc3VwcG9ydHMgMQo+ID4gZnJlcXVlbmN5IGFueXdh
+eXMuCj4KPiBJIHN1cHBvc2UgdGhlIGludGVudCBoZXJlIGlzIHNvbWV0aGluZyBsaWtlICJ0aGUg
+ZHJpdmVyIG9ubHkgc3VwcG9ydHMgMQo+IGZyZXF1ZW5jeSBhbmQgbmV2ZXIgYm90aGVycyB0byBy
+ZWFkIHRoZSBwcm9wZXJ0eSI/CgpJdCBkb2VzIHJlYWQgaXQgYW5kIGZhaWxzIGlmIGl0IGRvZXNu
+J3QgbWF0Y2guIEkgZG9uJ3QgcmVhbGx5IHRoaW5rCnRoZSBkcml2ZXIgc2hvdWxkIGlmIHRoZXJl
+IGlzIG9ubHkgMSBmcmVxLiBJIGRvbid0IGtub3cgaWYgaXQncyB0aGF0CnRoZSBodyBvbmx5IHN1
+cHBvcnRzIDEgZnJlcXVlbmN5IG9yIGEgZHJpdmVyIGxpbWl0YXRpb24uIElmIHRoZSBoL3csCnRo
+ZW4gdGhlIHByb3BlcnR5IGlzIHBvaW50bGVzcy4KCgo+IEVpdGhlciB3YXksCj4gUmV2aWV3ZWQt
+Ynk6IENvbm9yIERvb2xleSA8Y29ub3IuZG9vbGV5QG1pY3JvY2hpcC5jb20+Cj4KPiBDaGVlcnMs
+Cj4gQ29ub3IuCj4KPiA+Cj4gPiBUaGUgcm9ja2NoaXAtaXNwMSBiaW5kaW5nIGV4YW1wbGUgaXMg
+bWlzc2luZyByZXF1aXJlZCBwcm9wZXJ0aWVzLCBzbyBpdAo+ID4gaGFzIHRvIGJlIHVwZGF0ZWQg
+YXMgd2VsbC4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwu
+b3JnPgo+ID4gLS0tCj4gPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvaTJjL292NTY5
+NS50eHQgIHwgNDEgLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9p
+MmMvb3Z0aSxvdjU2OTMueWFtbCAgICAgICB8IDE5ICsrKysrLS0tLQo+ID4gIC4uLi9iaW5kaW5n
+cy9tZWRpYS9yb2NrY2hpcC1pc3AxLnlhbWwgICAgICAgICB8ICAxICsKPiA+ICAzIGZpbGVzIGNo
+YW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDQ4IGRlbGV0aW9ucygtKQo+ID4gIGRlbGV0ZSBtb2Rl
+IDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvaTJjL292NTY5
+NS50eHQKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL21lZGlhL2kyYy9vdjU2OTUudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL21lZGlhL2kyYy9vdjU2OTUudHh0Cj4gPiBkZWxldGVkIGZpbGUgbW9kZSAxMDA2NDQKPiA+
+IGluZGV4IDY0MGE2MzcxN2Q5Ni4uMDAwMDAwMDAwMDAwCj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvaTJjL292NTY5NS50eHQKPiA+ICsrKyAvZGV2L251
+bGwKPiA+IEBAIC0xLDQxICswLDAgQEAKPiA+IC0qIE9tbml2aXNpb24gT1Y1Njk1IE1JUEkgQ1NJ
+LTIgc2Vuc29yCj4gPiAtCj4gPiAtUmVxdWlyZWQgUHJvcGVydGllczoKPiA+IC0tIGNvbXBhdGli
+bGU6IHNoYWxsIGJlICJvdnRpLG92NTY5NSIKPiA+IC0tIGNsb2NrczogcmVmZXJlbmNlIHRvIHRo
+ZSB4dmNsayBpbnB1dCBjbG9jawo+ID4gLS0gY2xvY2stbmFtZXM6IHNoYWxsIGJlICJ4dmNsayIK
+PiA+IC0tIGF2ZGQtc3VwcGx5OiBBbmFsb2cgdm9sdGFnZSBzdXBwbHksIDIuOCB2b2x0cwo+ID4g
+LS0gZG92ZGQtc3VwcGx5OiBEaWdpdGFsIEkvTyB2b2x0YWdlIHN1cHBseSwgMS44IHZvbHRzCj4g
+PiAtLSBkdmRkLXN1cHBseTogRGlnaXRhbCBjb3JlIHZvbHRhZ2Ugc3VwcGx5LCAxLjIgdm9sdHMK
+PiA+IC0tIHJlc2V0LWdwaW9zOiBMb3cgYWN0aXZlIHJlc2V0IGdwaW8KPiA+IC0KPiA+IC1UaGUg
+ZGV2aWNlIG5vZGUgc2hhbGwgY29udGFpbiBvbmUgJ3BvcnQnIGNoaWxkIG5vZGUgd2l0aCBhbgo+
+ID4gLSdlbmRwb2ludCcgc3Vibm9kZSBmb3IgaXRzIGRpZ2l0YWwgb3V0cHV0IHZpZGVvIHBvcnQs
+Cj4gPiAtaW4gYWNjb3JkYW5jZSB3aXRoIHRoZSB2aWRlbyBpbnRlcmZhY2UgYmluZGluZ3MgZGVm
+aW5lZCBpbgo+ID4gLURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRl
+by1pbnRlcmZhY2VzLnR4dC4KPiA+IC1UaGUgZW5kcG9pbnQgb3B0aW9uYWwgcHJvcGVydHkgJ2Rh
+dGEtbGFuZXMnIHNoYWxsIGJlICI8MSAyPiIuCj4gPiAtCj4gPiAtRXhhbXBsZToKPiA+IC0maTJj
+NyB7Cj4gPiAtICAgICBvdjU2OTU6IGNhbWVyYS1zZW5zb3JAMzYgewo+ID4gLSAgICAgICAgICAg
+ICBjb21wYXRpYmxlID0gIm92dGksb3Y1Njk1IjsKPiA+IC0gICAgICAgICAgICAgcmVnID0gPDB4
+MzY+Owo+ID4gLSAgICAgICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ID4gLSAg
+ICAgICAgICAgICBwaW5jdHJsLTAgPSA8JmNsa18yNG1fY2FtPjsKPiA+IC0KPiA+IC0gICAgICAg
+ICAgICAgY2xvY2tzID0gPCZjcnUgU0NMS19URVNUQ0xLT1VUMT47Cj4gPiAtICAgICAgICAgICAg
+IGNsb2NrLW5hbWVzID0gInh2Y2xrIjsKPiA+IC0KPiA+IC0gICAgICAgICAgICAgYXZkZC1zdXBw
+bHkgPSA8JnBwMjgwMF9jYW0+Owo+ID4gLSAgICAgICAgICAgICBkb3ZkZC1zdXBwbHkgPSA8JnBw
+MTgwMD47Cj4gPiAtICAgICAgICAgICAgIGR2ZGQtc3VwcGx5ID0gPCZwcDEyNTBfY2FtPjsKPiA+
+IC0gICAgICAgICAgICAgcmVzZXQtZ3Bpb3MgPSA8JmdwaW8yIDUgR1BJT19BQ1RJVkVfTE9XPjsK
+PiA+IC0KPiA+IC0gICAgICAgICAgICAgcG9ydCB7Cj4gPiAtICAgICAgICAgICAgICAgICAgICAg
+d2NhbV9vdXQ6IGVuZHBvaW50IHsKPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJl
+bW90ZS1lbmRwb2ludCA9IDwmbWlwaV9pbl93Y2FtPjsKPiA+IC0gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGRhdGEtbGFuZXMgPSA8MSAyPjsKPiA+IC0gICAgICAgICAgICAgICAgICAgICB9
+Owo+ID4gLSAgICAgICAgICAgICB9Owo+ID4gLSAgICAgfTsKPiA+IC19Owo+ID4gZGlmZiAtLWdp
+dCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9pMmMvb3Z0aSxvdjU2
+OTMueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9pMmMvb3Z0
+aSxvdjU2OTMueWFtbAo+ID4gaW5kZXggMzU5ZGMwODQ0MGE4Li5hM2Q3M2E4N2Q3OTcgMTAwNjQ0
+Cj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvaTJjL292
+dGksb3Y1NjkzLnlhbWwKPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9tZWRpYS9pMmMvb3Z0aSxvdjU2OTMueWFtbAo+ID4gQEAgLTUsMjYgKzUsMjkgQEAKPiA+ICAk
+aWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL21lZGlhL2kyYy9vdnRpLG92NTY5My55
+YW1sIwo+ID4gICRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29y
+ZS55YW1sIwo+ID4KPiA+IC10aXRsZTogT21uaXZpc2lvbiBPVjU2OTMgQ01PUyBTZW5zb3IKPiA+
+ICt0aXRsZTogT21uaXZpc2lvbiBPVjU2OTMvT1Y1Njk1IENNT1MgU2Vuc29ycwo+ID4KPiA+ICBt
+YWludGFpbmVyczoKPiA+ICAgIC0gVG9tbWFzbyBNZXJjaWFpIDx0b21tYXNvLm1lcmNpYWlAYW1h
+cnVsYXNvbHV0aW9ucy5jb20+Cj4gPgo+ID4gIGRlc2NyaXB0aW9uOiB8Cj4gPiAtICBUaGUgT21u
+aXZpc2lvbiBPVjU2OTMgaXMgYSBoaWdoIHBlcmZvcm1hbmNlLCAxLzQtaW5jaCwgNSBtZWdhcGl4
+ZWwsIENNT1MKPiA+IC0gIGltYWdlIHNlbnNvciB0aGF0IGRlbGl2ZXJzIDI1OTJ4MTk0NCBhdCAz
+MGZwcy4gSXQgcHJvdmlkZXMgZnVsbC1mcmFtZSwKPiA+ICsgIFRoZSBPbW5pdmlzaW9uIE9WNTY5
+My9PVjU2OTUgYXJlIGhpZ2ggcGVyZm9ybWFuY2UsIDEvNC1pbmNoLCA1IG1lZ2FwaXhlbCwgQ01P
+Uwo+ID4gKyAgaW1hZ2Ugc2Vuc29ycyB0aGF0IGRlbGl2ZXIgMjU5MngxOTQ0IGF0IDMwZnBzLiBJ
+dCBwcm92aWRlcyBmdWxsLWZyYW1lLAo+ID4gICAgc3ViLXNhbXBsZWQsIGFuZCB3aW5kb3dlZCAx
+MC1iaXQgTUlQSSBpbWFnZXMgaW4gdmFyaW91cyBmb3JtYXRzIHZpYSB0aGUKPiA+ICAgIFNlcmlh
+bCBDYW1lcmEgQ29udHJvbCBCdXMgKFNDQ0IpIGludGVyZmFjZS4KPiA+Cj4gPiAtICBPVjU2OTMg
+aXMgY29udHJvbGxlZCB2aWEgSTJDIGFuZCB0d28td2lyZSBTZXJpYWwgQ2FtZXJhIENvbnRyb2wg
+QnVzIChTQ0NCKS4KPiA+IC0gIFRoZSBzZW5zb3Igb3V0cHV0IGlzIGF2YWlsYWJsZSB2aWEgQ1NJ
+LTIgc2VyaWFsIGRhdGEgb3V0cHV0ICh1cCB0byAyLWxhbmUpLgo+ID4gKyAgT1Y1NjkzL09WNTY5
+NSBhcmUgY29udHJvbGxlZCB2aWEgSTJDIGFuZCB0d28td2lyZSBTZXJpYWwgQ2FtZXJhIENvbnRy
+b2wgQnVzCj4gPiArICAoU0NDQikuIFRoZSBzZW5zb3Igb3V0cHV0IGlzIGF2YWlsYWJsZSB2aWEg
+Q1NJLTIgc2VyaWFsIGRhdGEgb3V0cHV0ICh1cCB0bwo+ID4gKyAgMi1sYW5lKS4KPiA+Cj4gPiAg
+YWxsT2Y6Cj4gPiAgICAtICRyZWY6IC9zY2hlbWFzL21lZGlhL3ZpZGVvLWludGVyZmFjZS1kZXZp
+Y2VzLnlhbWwjCj4gPgo+ID4gIHByb3BlcnRpZXM6Cj4gPiAgICBjb21wYXRpYmxlOgo+ID4gLSAg
+ICBjb25zdDogb3Z0aSxvdjU2OTMKPiA+ICsgICAgZW51bToKPiA+ICsgICAgICAtIG92dGksb3Y1
+NjkzCj4gPiArICAgICAgLSBvdnRpLG92NTY5NQo+ID4KPiA+ICAgIHJlZzoKPiA+ICAgICAgbWF4
+SXRlbXM6IDEKPiA+IEBAIC0zNCw2ICszNyw5IEBAIHByb3BlcnRpZXM6Cj4gPiAgICAgICAgU3lz
+dGVtIGlucHV0IGNsb2NrIChha2EgWFZDTEspLiBGcm9tIDYgdG8gMjcgTUh6Lgo+ID4gICAgICBt
+YXhJdGVtczogMQo+ID4KPiA+ICsgIGNsb2NrLW5hbWVzOgo+ID4gKyAgICBjb25zdDogeHZjbGsK
+PiA+ICsKPiA+ICAgIGRvdmRkLXN1cHBseToKPiA+ICAgICAgZGVzY3JpcHRpb246Cj4gPiAgICAg
+ICAgRGlnaXRhbCBJL08gdm9sdGFnZSBzdXBwbHksIDEuOFYuCj4gPiBAQCAtNzIsNyArNzgsNiBA
+QCBwcm9wZXJ0aWVzOgo+ID4KPiA+ICAgICAgICAgIHJlcXVpcmVkOgo+ID4gICAgICAgICAgICAt
+IGRhdGEtbGFuZXMKPiA+IC0gICAgICAgICAgLSBsaW5rLWZyZXF1ZW5jaWVzCj4gPgo+ID4gIHJl
+cXVpcmVkOgo+ID4gICAgLSBjb21wYXRpYmxlCj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLWlzcDEueWFtbCBiL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9yb2NrY2hpcC1pc3AxLnlhbWwKPiA+IGlu
+ZGV4IDBiYWQ3ZTY0MDE0OC4uZTQ2NmRmZjgyODZkIDEwMDY0NAo+ID4gLS0tIGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLWlzcDEueWFtbAo+ID4gKysr
+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLWlzcDEu
+eWFtbAo+ID4gQEAgLTE5OSw2ICsxOTksNyBAQCBleGFtcGxlczoKPiA+ICAgICAgICAgICAgICB3
+Y2FtOiBjYW1lcmFAMzYgewo+ID4gICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gIm92dGks
+b3Y1Njk1IjsKPiA+ICAgICAgICAgICAgICAgICAgcmVnID0gPDB4MzY+Owo+ID4gKyAgICAgICAg
+ICAgICAgICBjbG9ja3MgPSA8JmNydSBTQ0xLX1RFU1RDTEtPVVQxPjsKPiA+Cj4gPiAgICAgICAg
+ICAgICAgICAgIHBvcnQgewo+ID4gICAgICAgICAgICAgICAgICAgICAgd2NhbV9vdXQ6IGVuZHBv
+aW50IHsKPiA+IC0tCj4gPiAyLjQwLjEKPiA+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
