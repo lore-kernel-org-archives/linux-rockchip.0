@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90085C001B0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508F3EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PdnfIcN0bciWuJ0m3zoyB3T1Y51xqgoy1O18PkelaUk=; b=G4VKTWtPa6AZwz
-	kcXX1FXxhCkqQVb0V0BmwT8GYPRS9jCFCQzrYCO2zL313jSelISd+sWtH7jtWpxHoBKLOHjjN/1Nr
-	Hog1Oyi8eDr5Dlz/NkqlcKAR3CFYE+6Wnjy3Q32Zq+2C4GzV4xu5TMc7RPiY5Het3g8GfAEk/yrhv
-	3RwUG27JJm/3oTiEUggNss5DWOpy/sUg9C09/p69drrhqvvwdD+K8j35dhveVxRUDGaxI8rmj1kwY
-	e16pFP2+j+MbFC9huwkxSP2otvnocsWfJ6ZG32u/2Nk1JNf036B/DW2key+pDurcUK2sV+Uw4NzK+
-	m56juJcInF6uqw0pZuQQ==;
+	List-Owner; bh=9WFOMneWMrWlS3i5osa0qUUm/CpO62B3iL9ocEsMTVE=; b=DlAlgLT5lL8RA6
+	0fuFFtWf+kLimQZIu57LSLod6AgJuMyK0nUJCN/E8sjNsElV3oENVugqCA1gXuVUi1g6M8rYRDA/O
+	SCvpyBjC8ct5MDfIDweMyYnTp80oXSXgDJtNB61c/GbDOyziA6gUeKYfvos2Iv/j1gtS9CsrEgLqY
+	PyPbE4wrb5sif+utHP7sA/+TalLpK2+i3X7WLsLbM16DnR/vE4S1rQIPEdEvCDnAekGElYVxWjUX1
+	DStHyGT3x3ZDHwg//FjLo2b4rLgS+ZSSbXtVx9EtJKbBKIEnKo+l5QwecyJ3N27+dehXNSiTUxA5o
+	vUhLH1W+Vpiah9U+psxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt9B-00C3q0-0v;
-	Mon, 10 Jul 2023 15:49:57 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1qIt9P-00C44P-12;
+	Mon, 10 Jul 2023 15:50:11 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt8y-00C3cH-16;
-	Mon, 10 Jul 2023 15:49:45 +0000
+	id 1qIt8z-00C3dd-2E;
+	Mon, 10 Jul 2023 15:49:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689004184; x=1720540184;
+  t=1689004185; x=1720540185;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=REWyC/nAC6Z96ggpA1NLsyDE3cGETw1DuCTFixDA/T8=;
-  b=DOlDU8TU3zCkyRntM+AQFRtZQBDarOaiyLbE/lo1qpnW9jfNN93rM6Jp
-   J9GjMgp3eOWYf2gP8zNWqoAUnZKwzXFBPJmmfGnmuzf+AEreizPjGqnTU
-   uDKzrw90M1BPrDD0Mqvwrh+xHEVypxaRX3RJhU49qakcFbzqpz0VxFUD6
-   ARoaITkMXFshVDTStnGgxDMoJ8BKP7zJmheAfjrBgaKFePGg16DQ9h9+F
-   ZpCBxSQic0tg4yUQkNhp4m7IAKW0VjFh0uABxUyg2sP4zRBgd2Yc+sMxD
-   khubodGipQwf4tseORUJikt5CGEs6Fs+Ei8Gx6TDOJl1W4aFnmJidYsFP
+  bh=1YMEKoH26Jvs8dKIC6vdH9uSV/g2LDeyMP+ZqFMU56I=;
+  b=lt7IsWmt2Djixak8dzrQ6XGsvB4JymgNhVMcdAEADJ3F+OhKPgi9RkUW
+   CuhCYbuZrzY3SOzY4BF54YmPfGwynMOa37TuKf5FBf+w/juZD8Nh65wKP
+   gjbD5e3iooATAtyiJbFrLI6qGccEeshmhyBTmR1XosI+UbbvuiUjbe9C9
+   U3MOf3+k60AajRs82gG5I3G4szVGC7BKu4Exbwi77wJdLYGPjzQT9Dn78
+   tmey34jfXU58QM8n6PEV5PBSSWbxmBpg8oaUeViYz69Hj4hbQMv4UI1ZK
+   FVaLYq854XUcsLuAsVCJELaWfrOtN9/Pfs4PrBy1p77rk9JuUzJ1sB1Ik
    w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="361842420"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="366955272"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="361842420"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:41 -0700
+   d="scan'208";a="366955272"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:40 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720743949"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="671015611"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="720743949"
+   d="scan'208";a="671015611"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 08:49:29 -0700
+  by orsmga003.jf.intel.com with ESMTP; 10 Jul 2023 08:49:29 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 36E48385; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
+	id 1E05F1D9; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -106,16 +106,16 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: [PATCH v2 02/15] spi: Drop duplicate IDR allocation code in spi_register_controller()
-Date: Mon, 10 Jul 2023 18:49:19 +0300
-Message-Id: <20230710154932.68377-3-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 01/15] spi: Remove unneeded OF node NULL checks
+Date: Mon, 10 Jul 2023 18:49:18 +0300
+Message-Id: <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_084944_392151_19CD048C 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20230710_084945_778775_72EE616C 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,100 +132,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor spi_register_controller() to drop duplicate IDR allocation.
-Instead of if-else-if branching use two sequential if:s, which allows
-to re-use the logic of IDR allocation in all cases.
+In the couple of places the NULL check of OF node is implied by the call
+that takes it as a parameter. Drop the respective duplicate checks.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c | 50 ++++++++++++++++++++++-------------------------
- 1 file changed, 23 insertions(+), 27 deletions(-)
+ drivers/spi/spi.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 8f3282a71c63..6d74218cf38e 100644
+index 9291b2a0e887..8f3282a71c63 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -3081,6 +3081,20 @@ static int spi_controller_check_ops(struct spi_controller *ctlr)
- 	return 0;
- }
+@@ -2399,9 +2399,6 @@ static void of_register_spi_devices(struct spi_controller *ctlr)
+ 	struct spi_device *spi;
+ 	struct device_node *nc;
  
-+/* Allocate dynamic bus number using Linux idr */
-+static int spi_controller_id_alloc(struct spi_controller *ctlr, int start, int end)
-+{
-+	int id;
-+
-+	mutex_lock(&board_lock);
-+	id = idr_alloc(&spi_master_idr, ctlr, start, end, GFP_KERNEL);
-+	mutex_unlock(&board_lock);
-+	if (WARN(id < 0, "couldn't get idr"))
-+		return id == -ENOSPC ? -EBUSY : id;
-+	ctlr->bus_num = id;
-+	return 0;
-+}
-+
- /**
-  * spi_register_controller - register SPI master or slave controller
-  * @ctlr: initialized master, originally from spi_alloc_master() or
-@@ -3108,8 +3122,8 @@ int spi_register_controller(struct spi_controller *ctlr)
- {
- 	struct device		*dev = ctlr->dev.parent;
- 	struct boardinfo	*bi;
-+	int			first_dynamic;
- 	int			status;
--	int			id, first_dynamic;
- 
- 	if (!dev)
- 		return -ENODEV;
-@@ -3122,27 +3136,13 @@ int spi_register_controller(struct spi_controller *ctlr)
- 	if (status)
- 		return status;
- 
-+	if (ctlr->bus_num < 0)
-+		ctlr->bus_num = of_alias_get_id(ctlr->dev.of_node, "spi");
- 	if (ctlr->bus_num >= 0) {
- 		/* Devices with a fixed bus num must check-in with the num */
--		mutex_lock(&board_lock);
--		id = idr_alloc(&spi_master_idr, ctlr, ctlr->bus_num,
--			ctlr->bus_num + 1, GFP_KERNEL);
--		mutex_unlock(&board_lock);
--		if (WARN(id < 0, "couldn't get idr"))
--			return id == -ENOSPC ? -EBUSY : id;
--		ctlr->bus_num = id;
--	} else {
--		/* Allocate dynamic bus number using Linux idr */
--		id = of_alias_get_id(ctlr->dev.of_node, "spi");
--		if (id >= 0) {
--			ctlr->bus_num = id;
--			mutex_lock(&board_lock);
--			id = idr_alloc(&spi_master_idr, ctlr, ctlr->bus_num,
--				       ctlr->bus_num + 1, GFP_KERNEL);
--			mutex_unlock(&board_lock);
--			if (WARN(id < 0, "couldn't get idr"))
--				return id == -ENOSPC ? -EBUSY : id;
--		}
-+		status = spi_controller_id_alloc(ctlr, ctlr->bus_num, ctlr->bus_num + 1);
-+		if (status)
-+			return status;
- 	}
- 	if (ctlr->bus_num < 0) {
- 		first_dynamic = of_alias_get_highest_id("spi");
-@@ -3151,13 +3151,9 @@ int spi_register_controller(struct spi_controller *ctlr)
- 		else
- 			first_dynamic++;
- 
--		mutex_lock(&board_lock);
--		id = idr_alloc(&spi_master_idr, ctlr, first_dynamic,
--			       0, GFP_KERNEL);
--		mutex_unlock(&board_lock);
--		if (WARN(id < 0, "couldn't get idr"))
--			return id;
--		ctlr->bus_num = id;
-+		status = spi_controller_id_alloc(ctlr, first_dynamic, 0);
-+		if (status)
-+			return status;
- 	}
- 	ctlr->bus_lock_flag = 0;
- 	init_completion(&ctlr->xfer_completion);
+-	if (!ctlr->dev.of_node)
+-		return;
+-
+ 	for_each_available_child_of_node(ctlr->dev.of_node, nc) {
+ 		if (of_node_test_and_set_flag(nc, OF_POPULATED))
+ 			continue;
+@@ -3134,7 +3131,7 @@ int spi_register_controller(struct spi_controller *ctlr)
+ 		if (WARN(id < 0, "couldn't get idr"))
+ 			return id == -ENOSPC ? -EBUSY : id;
+ 		ctlr->bus_num = id;
+-	} else if (ctlr->dev.of_node) {
++	} else {
+ 		/* Allocate dynamic bus number using Linux idr */
+ 		id = of_alias_get_id(ctlr->dev.of_node, "spi");
+ 		if (id >= 0) {
 -- 
 2.40.0.1.gaa8946217a0b
 
