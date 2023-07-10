@@ -4,119 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A77C0015E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 905DDEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dett2XcfOLFwXw+EBBVJhjLBjcQatoy3CiRDU6J8ANE=; b=zQDmwjZ/gRoctC
-	AkV791uW8+c9XXJkDhuZHnrkl0vKX7wt//nKwc3GZVkaVVxeqbeAJJallNrpkQMCja7opidAi4hY1
-	LiFqkmmt2WUolxsPWpDyV/Khr47ssaJI3NrhSrFq+Uv7whRByIG8HxG3OWklLO1S3c5BKye9f7Wai
-	XDmXbvpSbwP0Zq35d8arx2/Swx4U16Ymnb6Dp7k0QyEAn+L5kf45l26asp0nytt0Y+u4zk5e9yOCe
-	9B9ttFN9TWB+w5IEv6En6KJMr2xHWPdwO2EOGqRyvjTBJsF3ZizV/8xq7EDoIxJA+jbHD/ndCdBeM
-	FGDuAkyG8P5+oFz11UhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KKAbAsgnlQxHyJq0ZRmhOBnCwLotngT2iaDGAehBfpM=; b=gJve91KkbciGc4
+	EpifBnDrWhPEboweNBC8KHfPi+WKm+K4LbGgYTmneSSWneuUn9ujjUMMiUeTgB+j3BMSNsS1ZLvdc
+	4YJodmC6P//eFxSS3JZat4GrtcslbnJRzEzIH1z73UZD7IlxLU1kT71b8mCz+/QyF7G8YpyBj8kWU
+	SKO8mX64/Tnl2Pyk3mAxyharIi1plkqbJF4O/n7R8HuW1lBdUEmWsheu42Jgf9DjxAvmAwzX+eMNj
+	amgy/QYvftxihtVZlc7cRBBTD7SoziylMwB6u7h8W5Z+zOVo++z4yMPyZzD8wtavGwPg8Y6rY7xUa
+	s/RXmbkW1ad4fO17eywg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItVx-00CA50-1a;
-	Mon, 10 Jul 2023 16:13:29 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1qIu7r-00CEqu-32;
+	Mon, 10 Jul 2023 16:52:39 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItVt-00CA3O-14;
-	Mon, 10 Jul 2023 16:13:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689005605; x=1720541605;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=hcRhvsNpzCZm3Sd7nNPgrDaCtucecy1QPHYWw64ui6o=;
-  b=Uo26fDc1STsoBFkrw6JA8Ubfb/Bw2dOnw5Cgkpt0cMeafWJmMBxToIjE
-   8Wb4qs959VPz8Td+zRFLOMyRR9zDLmCYRSjq8/VutOporF9lqKjkcGQeM
-   zpQ7YqOH+pShuON+9Rx9+FwpOhX8IU2v664HYihx6vxor6CsnuREGqO5w
-   dlRG8biHPMTZrzpEFuXKDu5KipJsjKMb0YeoCSTVMqmjW14ZecUpHFEEw
-   4fIEK4IK4Opi0O83rPaKqWfIms8+2rp6si0+n70IVOsC1guJnDIJFQz/H
-   9yTvxfea9JEso10YiDt8mKOr7k0WBs9N9pIZtf42eFIGWTZIfamq/mgwS
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="354244112"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; 
-   d="scan'208";a="354244112"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 09:12:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="790844445"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; 
-   d="scan'208";a="790844445"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga004.fm.intel.com with ESMTP; 10 Jul 2023 09:12:26 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qItUs-001bGm-39;
-	Mon, 10 Jul 2023 19:12:22 +0300
-Date: Mon, 10 Jul 2023 19:12:22 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-Cc: Mark Brown <broonie@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1qIu7o-00CElr-0o;
+	Mon, 10 Jul 2023 16:52:37 +0000
+Received: from jupiter.universe (dyndsl-091-248-189-246.ewe-ip-backbone.de [91.248.189.246])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1AAD96602B7B;
+	Mon, 10 Jul 2023 17:52:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689007950;
+	bh=ABpJQ8z918e5OZkfpgP7HwSnXWU4EFxL3SvzflDiHoM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=nGNYDGcxK+5wDcCrAZ/2csXrrZCAaOWFOOyDfwc5T7vkrETYIb+QVrafuclahWIxr
+	 IXE4pd4C+FGuT3BMPNyTVUw3r+bsP5f/dv74DqIUF7UJEPwL48DzCq17O2Yz0kPVJm
+	 PjA2aBVKVCp5jrI/sElqItEyFPAjVWBj9qENQcctAYj62vGaXxXQT4vGi41pTVnX8i
+	 2PQAe1Y9dy3EiqR2qiU1z/AZeeY06iEfOhJhTrRG+t3aurbv266IAsu+5F3ezmW76m
+	 /o9IBSDGg40IAn8IcbLBeeUgWNgxXNM5oQwZhJaUzLW+hIsAG3IYTk3VFqVZq1uXWQ
+	 kVcv8eJO1TtPA==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 1980D480592; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Richard Cochran <richardcochran@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Andy Gross <agross@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>
-Subject: Re: [PATCH v2 09/15] spi: Use struct_size() helper
-Message-ID: <ZKwt5utuGaCf5nmT@smile.fi.intel.com>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-10-andriy.shevchenko@linux.intel.com>
- <20230710-doze-scared-9f0a2e1a9125-mkl@pengutronix.de>
- <ZKwtgwZtUUHGC+S3@smile.fi.intel.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v1 00/13] Improve Rock 5A Device Tree
+Date: Mon, 10 Jul 2023 18:52:15 +0200
+Message-Id: <20230710165228.105983-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZKwtgwZtUUHGC+S3@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_091325_416826_F19BA3EB 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20230710_095236_446323_FC90D436 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,30 +81,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 07:10:43PM +0300, Andy Shevchenko wrote:
-> On Mon, Jul 10, 2023 at 05:59:55PM +0200, Marc Kleine-Budde wrote:
-> > On 10.07.2023 18:49:26, Andy Shevchenko wrote:
+Hi,
 
-...
+This brings Rock 5A on par with the Rock 5B. All necessary driver
+changes have already been merged.
 
-> > > +	struct spi_transfer	t[];
-> > 
-> > You might want to use the DECLARE_FLEX_ARRAY helper here.
-> 
-> Technically, yes, semantically documentation [1] disagrees with
+-- Sebastian
 
-"and [2]"
+Lucas Tanure (1):
+  arm64: dts: rockchip: rock-5a: add SD card support
 
-> you, so I leave it as is.
-> 
-> [1]: Documentation/process/deprecated.rst:269
+Sebastian Reichel (12):
+  dt-bindings: vendor-prefixes: Add prefix for belling
+  dt-bindings: at24: add Belling BL24C16A
+  arm64: dts: rockchip: rock-5a: add PMIC
+  arm64: dts: rockchip: rock-5a: add vdd_cpu_big regulators
+  arm64: dts: rockchip: rock-5a: add 5V regulator
+  arm64: dts: rockchip: rock-5a: add status LED
+  arm64: dts: rockchip: rock-5a: add analog audio
+  arm64: dts: rockchip: rock-5a: add I2C EEPROM
+  arm64: dts: rockchip: rock-5a: add vdd_npu_s0 regulator
+  arm64: dts: rockchip: rock-5a: enable I2C interface from DSI and CSI
+    connectors
+  arm64: dts: rockchip: rock-5a: add ADC
+  arm64: dts: rockchip: rock-5a: add fan support
 
-[2]: Documentation/process/deprecated.rst:350
+ .../devicetree/bindings/eeprom/at24.yaml      |   3 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 586 ++++++++++++++++++
+ 3 files changed, 591 insertions(+)
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.40.1
 
 
 _______________________________________________
