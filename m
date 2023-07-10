@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6ED7EB64D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 10:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4FDEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 11:06:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gyvm6/9c2DQyTtSPYDxNpJVkT8WNEABz+5DT9KBRozk=; b=P9j9y3U2kFmuRsJ0rdtf+XZUsi
-	XfiGd2ZlQc5xSkxbHqk6npaiY0z2BDmEAFsNCuckAX+GEIAhywa8+/2JVuhStDMkj7s1V7N6cxmTh
-	EacfvE0aLnKoBRVp1eWfdqnB3/UVH3S60WxgUaFPgExhoHgd3IQCj/ZUup/IKoKvLgew+8zw+Fzmx
-	rX4MpVBQ4ME9tGLF5OY2BTUdSj7lNrqvdmY2mhql5B/4buqzhIjpt3ZPEzLVXdfqpBla7KPu9J2mz
-	fUvhn8FXSOtE/8lpTjcke6CYYkX9gHWAhMUShY0gIcLBX1ke9VTM/smx8L5smiqQhfGMFJoOBQnS3
-	wGoD0BVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TlrUMXN7Nx+6n+C75b+zGiHn3wD5YuOjyHGwQJQi1ow=; b=BaGw/PG+b8L1cS
+	7JxkhFz4IfhtQJeV5Qwo8M/YLK+wBke5uyE55KtSdyJt3N38Gy5BYKvBx9ctqS5099EUzY8PJbaxa
+	4qEdRSE1+ceFOXD7vuIBzd47mpQbAAgXZCh+N3dNzv39OFiiYpRf528Bw55TRNyBFGRbBUoIvXr3n
+	cfY48Fc4us9g4r0z9sPZBDE6c3BHsAj94jinWRUS664ELpz9KP2bP3BrCTmQ3VslvR2ppNgW95Dyh
+	Wqm21TBJt0pmHuYHVfjw4RTVfMDnbN0BEGv8R6g0ZgQOLC7BfeREMnlVL6Y/+eZg1RN+sX63GKJD+
+	OgbUEac1yN2dLPwV5wLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qInrp-00BBaA-0V;
-	Mon, 10 Jul 2023 10:11:41 +0000
-Received: from baptiste.telenet-ops.be ([2a02:1800:120:4::f00:13])
+	id 1qIoid-00BQih-04;
+	Mon, 10 Jul 2023 11:06:15 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qInrk-00BBZ4-2w
-	for linux-rockchip@lists.infradead.org;
-	Mon, 10 Jul 2023 10:11:39 +0000
-Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed40:f087:2614:ec9d:569f])
-	by baptiste.telenet-ops.be with bizsmtp
-	id KNBV2A00B1w4dBK01NBVv9; Mon, 10 Jul 2023 12:11:30 +0200
-Received: from geert (helo=localhost)
-	by ramsan.of.borg with local-esmtp (Exim 4.95)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1qInrd-0010sR-3d;
-	Mon, 10 Jul 2023 12:11:29 +0200
-Date: Mon, 10 Jul 2023 12:11:29 +0200 (CEST)
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-To: linux-kernel@vger.kernel.org
-cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
-    Philipp Zabel <p.zabel@pengutronix.de>, 
-    Mark Rutland <mark.rutland@arm.com>, linux-media@vger.kernel.org, 
-    linux-rockchip@lists.infradead.org, sparclinux@vger.kernel.org, 
-    linux-sh@vger.kernel.org
-Subject: Re: Build regressions/improvements in v6.5-rc1
-In-Reply-To: <20230710100012.2625532-1-geert@linux-m68k.org>
-Message-ID: <bd856932-c2fb-d5f2-17f7-f7f1a1773adf@linux-m68k.org>
-References: <CAHk-=wj8sPDVoWgaceAs1AiwZrHV8mtC3vQNGbeV6-RypJi6aw@mail.gmail.com> <20230710100012.2625532-1-geert@linux-m68k.org>
+	id 1qIoia-00BQh6-00;
+	Mon, 10 Jul 2023 11:06:13 +0000
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qIoi8-0000CZ-7Z; Mon, 10 Jul 2023 13:05:44 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Yangtao Li <frank.li@vivo.com>
+Cc: Yangtao Li <frank.li@vivo.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 12/21] thermal/drivers/rockchip: convert to use
+ devm_request*_irq_probe()
+Date: Mon, 10 Jul 2023 13:05:42 +0200
+Message-ID: <2114204.OBFZWjSADL@phil>
+In-Reply-To: <20230710095926.15614-12-frank.li@vivo.com>
+References: <20230710095926.15614-1-frank.li@vivo.com>
+ <20230710095926.15614-12-frank.li@vivo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_031137_109520_A580E24B 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20230710_040612_040954_7FBB4DD0 
+X-CRM114-Status: GOOD (  20.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,55 +64,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 10 Jul 2023, Geert Uytterhoeven wrote:
-> Below is the list of build error/warning regressions/improvements in
-> v6.5-rc1[1] compared to v6.4[2].
->
-> Summarized:
->  - build errors: +3/-4
->  - build warnings: +36/-18
->
-> Note that there may be false regressions, as some logs are incomplete.
-> Still, they're build errors/warnings.
->
-> Happy fixing! ;-)
->
-> Thanks to the linux-next team for providing the build service.
->
-> [1] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/06c2afb862f9da8dc5efa4b6076a0e48c3fbaaa5/ (all 162 configs)
-> [2] http://kisskb.ellerman.id.au/kisskb/branch/linus/head/6995e2de6891c724bfeb2db33d7b87775f913ad1/ (160 out of 162 configs)
->
->
-> *** ERRORS ***
->
-> 3 error regressions:
->  + /kisskb/src/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c: error: the frame size of 1392 bytes is larger than 1024 bytes [-Werror=frame-larger-than=]:  => 1036:1
+Am Montag, 10. Juli 2023, 11:59:16 CEST schrieb Yangtao Li:
+> There are more than 700 calls to devm_request_threaded_irq method and
+> more than 1000 calls to devm_request_irq method. Most drivers only
+> request one interrupt resource, and these error messages are basically
+> the same. If error messages are printed everywhere, more than 2000 lines
+> of code can be saved by removing the msg in the driver.
+> =
 
-m68k-gcc8/m68k-allmodconfig
+> And tglx point out that:
+> =
 
->  + error: modpost: "__xchg_called_with_bad_pointer" [lib/atomic64_test.ko] undefined!:  => N/A
+>   If we actually look at the call sites of
+>   devm_request_threaded_irq() then the vast majority of them print more or
+>   less lousy error messages. A quick grep/sed/awk/sort/uniq revealed
+> =
 
-sparc64-gcc11/sparc64-allmodconfig
+>      519 messages total (there are probably more)
+> =
 
->  + {standard input}: Error: unknown pseudo-op: `.glo':  => 1097
+>      352 unique messages
+> =
 
-sh4-gcc11/sh-allmodconfig (ICE)
+>      323 unique messages after lower casing
+> =
 
-Gr{oetje,eeting}s,
+>          Those 323 are mostly just variants of the same patterns with
+>          slight modifications in formatting and information provided.
+> =
 
- 						Geert
+>      186 of these messages do not deliver any useful information,
+>          e.g. "no irq", "
+> =
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+>      The most useful one of all is: "could request wakeup irq: %d"
+> =
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
- 							    -- Linus Torvalds
+>   So there is certainly an argument to be made that this particular
+>   function should print a well formatted and informative error message.
+> =
+
+>   It's not a general allocator like kmalloc(). It's specialized and in the
+>   vast majority of cases failing to request the interrupt causes the
+>   device probe to fail. So having proper and consistent information why
+>   the device cannot be used _is_ useful.
+> =
+
+> So convert to use devm_request*_irq_probe() API, which ensure that all
+> error handling branches print error information.
+> =
+
+> In this way, when this function fails, the upper-layer functions can
+> directly return an error code without missing debugging information.
+> Otherwise, the error message will be printed redundantly or missing.
+> =
+
+> Cc: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: "Uwe Kleine-K=F6nig" <u.kleine-koenig@pengutronix.de>
+> Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+> Cc: AngeloGioacchino Del Regno  <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Yangtao Li <frank.li@vivo.com>
+
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
