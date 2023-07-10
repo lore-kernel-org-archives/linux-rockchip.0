@@ -4,55 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4FDEB64D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 11:06:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C992EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 11:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TlrUMXN7Nx+6n+C75b+zGiHn3wD5YuOjyHGwQJQi1ow=; b=BaGw/PG+b8L1cS
-	7JxkhFz4IfhtQJeV5Qwo8M/YLK+wBke5uyE55KtSdyJt3N38Gy5BYKvBx9ctqS5099EUzY8PJbaxa
-	4qEdRSE1+ceFOXD7vuIBzd47mpQbAAgXZCh+N3dNzv39OFiiYpRf528Bw55TRNyBFGRbBUoIvXr3n
-	cfY48Fc4us9g4r0z9sPZBDE6c3BHsAj94jinWRUS664ELpz9KP2bP3BrCTmQ3VslvR2ppNgW95Dyh
-	Wqm21TBJt0pmHuYHVfjw4RTVfMDnbN0BEGv8R6g0ZgQOLC7BfeREMnlVL6Y/+eZg1RN+sX63GKJD+
-	OgbUEac1yN2dLPwV5wLQ==;
+	List-Owner; bh=FSkAg5p4AVOAOs+S3nRQUicTEjLTlrtFJjmpqweV3a8=; b=ZQAavjj3Y8PvLt
+	O0P4hJHho2g6vfa/vO2cZOlhHInAugOAdHKLnXgM2/iWOirQWcy1SpChINx77WblLE1w8MwS/Krmo
+	ESpnxjhS/xaEhxGhyCXq8QNp1GR/Zb4G6JT+Lvwffan7VDL9RvRstSkriupDRnNgpzQA9OIumPxK1
+	n0HLl8TFZakLPvNamQ/hu01x7XCRw7weqPm6szr3QTaj52kAmM+8GisipEsH5Tv1bdVVWtn0o/aP2
+	o7eryRFRAY6DjqqU0GtcjSuJZm2KaYCt/gsIvcAARa8CVPeEqhf2m7OJjr2ButoQaXlh+bvwGhEw1
+	KkhmKlN4yC/bB/ICRZng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIoid-00BQih-04;
-	Mon, 10 Jul 2023 11:06:15 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qIpPb-00BW0C-1P;
+	Mon, 10 Jul 2023 11:50:39 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIoia-00BQh6-00;
-	Mon, 10 Jul 2023 11:06:13 +0000
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qIoi8-0000CZ-7Z; Mon, 10 Jul 2023 13:05:44 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Yangtao Li <frank.li@vivo.com>
-Cc: Yangtao Li <frank.li@vivo.com>, Thomas Gleixner <tglx@linutronix.de>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 12/21] thermal/drivers/rockchip: convert to use
- devm_request*_irq_probe()
-Date: Mon, 10 Jul 2023 13:05:42 +0200
-Message-ID: <2114204.OBFZWjSADL@phil>
-In-Reply-To: <20230710095926.15614-12-frank.li@vivo.com>
-References: <20230710095926.15614-1-frank.li@vivo.com>
- <20230710095926.15614-12-frank.li@vivo.com>
+	id 1qIpPX-00BVxJ-24;
+	Mon, 10 Jul 2023 11:50:36 +0000
+Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:f690:3e44:90e:2421])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: obbardc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E57E86606FFE;
+	Mon, 10 Jul 2023 12:50:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688989831;
+	bh=ifOxrGBK7ddwkyXRFgw7UF9/qlU9v4GUC2LJybbz/sQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MBY+WuRYWvyJPl3kHn4Fy0JR9ig/PwI2viU3kK8QAaNj1b/y+qZc9UkRusT1fpntL
+	 j7zrRAfgnBqdnypR/RWupRbLSPHQBB8m4QZ5ACxuWd8N8OhLa0chSFuqUJfpkgeIBi
+	 qB/2yxPuZBJOqw6O6udsEVQrys+JgOS6ysay03z+gTGRXl5IsEFPxJRg8A1tLrqqpu
+	 lx4cVhFydUe3q8xEoo/3PZ1xYethhe1XLqcZDmU6S0gHOd308NE+SkemG6+9i1aoTT
+	 KkBJo++xk3If3WRQ/VJ1vTW6eMAu8cCYK6C1HyzNZPVngLpQsottvr2lgZdM+Ev6/J
+	 tRoI4Er9smN4A==
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Andy Yan <andyshrk@163.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Maya Matuszczyk <maccraft123mc@gmail.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Tianling Shen <cnsztl@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add Radxa ROCK 4SE
+Date: Mon, 10 Jul 2023 12:50:24 +0100
+Message-Id: <20230710115025.507439-3-chris.obbard@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230710115025.507439-1-chris.obbard@collabora.com>
+References: <20230710115025.507439-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_040612_040954_7FBB4DD0 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20230710_045035_826740_C936DD05 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,75 +85,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 10. Juli 2023, 11:59:16 CEST schrieb Yangtao Li:
-> There are more than 700 calls to devm_request_threaded_irq method and
-> more than 1000 calls to devm_request_irq method. Most drivers only
-> request one interrupt resource, and these error messages are basically
-> the same. If error messages are printed everywhere, more than 2000 lines
-> of code can be saved by removing the msg in the driver.
-> =
+Add devicetree binding entry for the Radxa ROCK 4SE.
 
-> And tglx point out that:
-> =
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+---
 
->   If we actually look at the call sites of
->   devm_request_threaded_irq() then the vast majority of them print more or
->   less lousy error messages. A quick grep/sed/awk/sort/uniq revealed
-> =
+Changes in v2:
+- Add Krzysztof Kozlowski's Acked-by tag.
 
->      519 messages total (there are probably more)
-> =
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
->      352 unique messages
-> =
-
->      323 unique messages after lower casing
-> =
-
->          Those 323 are mostly just variants of the same patterns with
->          slight modifications in formatting and information provided.
-> =
-
->      186 of these messages do not deliver any useful information,
->          e.g. "no irq", "
-> =
-
->      The most useful one of all is: "could request wakeup irq: %d"
-> =
-
->   So there is certainly an argument to be made that this particular
->   function should print a well formatted and informative error message.
-> =
-
->   It's not a general allocator like kmalloc(). It's specialized and in the
->   vast majority of cases failing to request the interrupt causes the
->   device probe to fail. So having proper and consistent information why
->   the device cannot be used _is_ useful.
-> =
-
-> So convert to use devm_request*_irq_probe() API, which ensure that all
-> error handling branches print error information.
-> =
-
-> In this way, when this function fails, the upper-layer functions can
-> directly return an error code without missing debugging information.
-> Otherwise, the error message will be printed redundantly or missing.
-> =
-
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> Cc: "Uwe Kleine-K=F6nig" <u.kleine-koenig@pengutronix.de>
-> Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-> Cc: AngeloGioacchino Del Regno  <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Yangtao Li <frank.li@vivo.com>
-
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ecdb72a519cb..3b7bf86cec02 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -694,6 +694,11 @@ properties:
+           - const: radxa,rock-4c-plus
+           - const: rockchip,rk3399
+ 
++      - description: Radxa ROCK 4SE
++        items:
++          - const: radxa,rock-4se
++          - const: rockchip,rk3399
++
+       - description: Radxa ROCK Pi E
+         items:
+           - const: radxa,rockpi-e
+-- 
+2.40.1
 
 
 _______________________________________________
