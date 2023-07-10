@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE657EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC95EEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 16:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SLxScr8y/nlbmLTodYtjznNKhAmdq+xiM70/Yv0Q4m0=; b=ZQOEBaYzx9RziQ
-	vj3aI6iCqstpdh2Se+Obr2Lzxx5u16ehcb6/w3LaAyXO57mBnxPI2iaWshB19LyeLWbLKaqaxgxKb
-	ChhDnB9cNnRZjG1xMoq0I/jqOZ0h1/mkBh2X34yUOONyT9tTniMiLAdJDndmUVZZSNJeFajhtl25V
-	lVubY5wXw8S4TCJhKbtsPQgktAenWb4yykzm3fQDMlqeVdW+3AkuvAWWw8abR1JYbOt3N6xf7tS9y
-	6SM7+W9jch6Xg59fVLDYrOexaUBKFazo6lbLo4aoDy0pH8fQikNqDrVXU4GNDgU4h2DKu/hPw1Va7
-	ggtgj6ILvNrkMNBLyncg==;
+	List-Owner; bh=M0ksXssBVE/6gXvsqyi2vgwvpDRwe5BCNi+BIMys+8M=; b=BEI6OGPGRKpPqG
+	3m0V02yH7JKhWe0PZ4L+1vevzO7v/gjxLtVGEB2r0C73jGRsqOK3kCIZWAXza0VO3e1JmLpcHl8iM
+	AgeX3A7Dtdv8sToR6nAGLsZnZ+cg1bul5m+pmhHOdxEWd5mlu7lTtdVKobsgyrjV+/ePcdP605C5m
+	q2qDxTchBSZdr9dCHo3C7FR72lHj8tL2c/vaMIBWiIiQtp4MRoawqM8fezSda/Z6Fdp82BkHJdaxX
+	+d97mvHsc7c4OZksQnbSbNVZPoLb7d4Sdt7PHwVDCTyuMrI797LC71jz7vasZS75HmNyNrfhNGT/M
+	m7Nj47d+pMwqDIWnLn/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu89-00CF5m-1I;
-	Mon, 10 Jul 2023 16:52:57 +0000
+	id 1qIu8A-00CF6k-0v;
+	Mon, 10 Jul 2023 16:52:58 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIu7q-00CEor-2S;
+	id 1qIu7r-00CEp5-0a;
 	Mon, 10 Jul 2023 16:52:40 +0000
 Received: from jupiter.universe (dyndsl-091-248-189-246.ewe-ip-backbone.de [91.248.189.246])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 77AF56607009;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7C52B660700D;
 	Mon, 10 Jul 2023 17:52:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1689007952;
-	bh=SyT5L6QW7HqAZecCA4MRYTD8aoZGBwujAo3dEnVZY78=;
+	bh=3T6R53iEwpPY/kj6xBN/ggft/CaTR55t0Gd3VFcgnDg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EQgqj1Q//kViqIzttfWnfi8UGG9Ap0+dTd6xwfUQHpnBaBfnkOSWSxiW3ibv4qJNh
-	 B1WKY1qWNlnxnH/JELYsFpEy2HVJHhSB3mYIuj8Fw0EPpiVD4o1NiedBTDTl4tVo5O
-	 yL/ofWvms2IAJRCxVnYK/ioKVcwSPrwXYLXQsNevxIDOryWBj6TmDCejSrfHPXxglO
-	 IvdIuyVyxmxkfOCVMqGOezk9ovTytdjc7EIThi/liFwqRpVckmmt56wka6Dof92eax
-	 U6qonkSGjyidbNhc0vYxk6EG1VLyKlBzuhuYNl6QDgAnCSqM7im5zQLoA9L0+bPUiT
-	 9/0A1B3aN0N7g==
+	b=GjPae7hvup5PHsZBHp3QERTx6JTI2bZiVgQZD9n+qj9YenY4nQeAdo88dT9vprK7L
+	 I8i8IFc1WsKgtrsDsrPLeRFvWcqSAksNI+z2CRzUjPWKIxon3sYk5g1MOVJDGiaCfU
+	 uGdehEVobkeI/XZFuAcM4bJE8Yrn9gVJVQr1j1QJI28Yd8SuAyGuPR9XttWN3seY7n
+	 I7VInvfCVtENDxFBmspF+P+K70X9WPt9n8A7MpbsZVxhFzBoDZuon10zNTDKIlmnV8
+	 kz9roRF3hSvx/7tR+iKGazIftnxsJWYQvTQ3k+5+2lXxpUctSi+j7B5f9xmS4tQP8B
+	 plVqMyjMd4Rkg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 212534805B8; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
+	id 225BA4805CC; Mon, 10 Jul 2023 18:52:28 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>
@@ -54,19 +54,19 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 05/13] arm64: dts: rockchip: rock-5a: add 5V regulator
-Date: Mon, 10 Jul 2023 18:52:20 +0200
-Message-Id: <20230710165228.105983-6-sebastian.reichel@collabora.com>
+	Lucas Tanure <lucas.tanure@collabora.com>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v1 06/13] arm64: dts: rockchip: rock-5a: add SD card support
+Date: Mon, 10 Jul 2023 18:52:21 +0200
+Message-Id: <20230710165228.105983-7-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230710165228.105983-1-sebastian.reichel@collabora.com>
 References: <20230710165228.105983-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_095238_932900_A85F4A37 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230710_095239_366352_C2353B20 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,52 +83,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add GPIO controlled 5V regulator, which is used for supplying
-the fan, on-board USB hub and HDMI.
+From: Lucas Tanure <lucas.tanure@collabora.com>
 
+Add sdmmc support for Rock Pi 5A board.
+
+Signed-off-by: Lucas Tanure <lucas.tanure@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../boot/dts/rockchip/rk3588s-rock-5a.dts     | 20 +++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 616a6bcfd60b..87864a991b50 100644
+index 87864a991b50..19e05dba2794 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -38,6 +38,20 @@ vcc5v0_sys: vcc5v0-sys {
- 		vin-supply = <&vcc12v_dcin>;
- 	};
- 
-+	vcc_5v0: vcc-5v0 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_5v0";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc_5v0_en>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc_1v1_nldo_s3: vcc-1v1-nldo-s3 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_1v1_nldo_s3";
-@@ -150,6 +164,12 @@ rgmii_phy1: ethernet-phy@1 {
+@@ -188,6 +188,20 @@ &sdhci {
+ 	status = "okay";
  };
  
- &pinctrl {
-+	power {
-+		vcc_5v0_en: vcc-5v0-en {
-+			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
++&sdmmc {
++	max-frequency = <150000000>;
++	no-sdio;
++	no-mmc;
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	disable-wp;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_3v3_s0>;
++	vqmmc-supply = <&vccio_sd_s0>;
++	status = "okay";
++};
 +
- 	rtl8211f {
- 		rtl8211f_rst: rtl8211f-rst {
- 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ &spi2 {
+ 	status = "okay";
+ 	assigned-clocks = <&cru CLK_SPI2>;
 -- 
 2.40.1
 
