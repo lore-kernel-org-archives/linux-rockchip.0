@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74F4AC0015E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 14:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4582FEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 14:16:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PoV4Q6U3hQn/Wt7xGlTo5rWy0t2SkEDeemMyeDOAxL0=; b=kCnGo8yO2HnI+j
-	lOcS3HnDVaAaoVQr/pMHlfVh+Ps02SuU6NUZowNSild/EloGnMOWa2+mPjiDd6adjdWdW0koiWg64
-	bnvXgSsNpEHYEXa78H/4hNMnu3tCvFe2N0+ggPWuVkDWt/Ps5mGiAoRE+0Ss8G9H1O7v0mPg02uDD
-	sVXNzxk7Dc7T3u//8Zf4UuCl15oznERtRRuTlGIdWCl6kXpMld27flwcNoG1YPIYZaF9RJeBPHQLc
-	5zATuUn9v7nykekBZjwNGJtmE0WLh2fIlxqi3KT3O80APnVU0WPpgN9RFadDkLp0OK8HYzu3nhf2P
-	aA5Hiz6DG/+vI5TJvl1w==;
+	List-Owner; bh=n8LmmvCUD3t900BbBK8H7izOYAkBCAoeFYw69IXhOss=; b=t6rgBcOI0gkg38
+	eJaLn9z4rd9abQ8tapxU0GppmNk/zFTHVp2rr42YxiRnjWKd9e0ADi4IcTXreH8af3hiqcL46XBcs
+	WNhAnHcTtj/FGiSISp6IvS0PJBWWSFwMBC+OXlRB2+3vZooAgA3fazBdHS7xIqUK7CB7QWEThNB2O
+	fUFVJHcyOJ/EJ/Ps1OU5IqfL2jggie8EKNvPxarXAos/ewP8N4eWvJHpcdReCHmGC8R+ukRT6ylCm
+	SgZhgZ5npscsAV/CmuUsTAkhQSjVb2hAMQFYDtLz1yjN0lE1s7LDUTcowQ2QugtHdzLruijXGaNa6
+	8ib/e8QhTBukU1OP9ZeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIrgu-00BrGv-29;
-	Mon, 10 Jul 2023 14:16:40 +0000
+	id 1qIrgr-00BrED-2a;
+	Mon, 10 Jul 2023 14:16:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIrgm-00BrAs-0w;
-	Mon, 10 Jul 2023 14:16:33 +0000
+	id 1qIrgl-00BrAN-0r;
+	Mon, 10 Jul 2023 14:16:32 +0000
 Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qIrgg-0001RE-9g; Mon, 10 Jul 2023 16:16:26 +0200
+	id 1qIrge-0001RE-TU; Mon, 10 Jul 2023 16:16:24 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
+To: Conor Dooley <conor+dt@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RFT PATCH v2 1/3] arm64: dts: rockchip: correct wifi interrupt flag in eaidk-610
-Date: Mon, 10 Jul 2023 16:16:20 +0200
-Message-Id: <168899855919.1747213.375800621361302991.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: [PATCH] arm64: dts: rockchip: Update sound card label on rk3588-rock-5b
+Date: Mon, 10 Jul 2023 16:16:17 +0200
+Message-Id: <168899855919.1747213.12679087846139492999.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230707063335.13317-1-krzysztof.kozlowski@linaro.org>
-References: <20230707063335.13317-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230707162822.676024-1-cristian.ciocaltea@collabora.com>
+References: <20230707162822.676024-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_071632_323886_A3020A1F 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230710_071631_302751_CACB0AA4 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,25 +68,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 7 Jul 2023 08:33:33 +0200, Krzysztof Kozlowski wrote:
-> GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
-> These are simple defines so they could be used in DTS but they will not
-> have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
+On Fri, 7 Jul 2023 19:28:22 +0300, Cristian Ciocaltea wrote:
+> The audio-graph-card driver uses the 'label' property to register the
+> sound card in the system, but the currently assigned string is too
+> generic and cannot be supported by alsa-project/alsa-ucm-conf:
 > 
-> Correct the interrupt flags, assuming the author of the code wanted same
-> logical behavior behind the name "ACTIVE_xxx", this is:
->   ACTIVE_HIGH  => IRQ_TYPE_LEVEL_HIGH
+>   card 0: Analog [Analog]
+> 
+> Use the more specific naming "rk3588-es8316", which is still generic
+> enough to be shared with other compatible boards, e.g. Rock 5A. The
+> audio card will be listed as:
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: correct wifi interrupt flag in eaidk-610
-      commit: 8183bb7e291b7818f49ea39687c2fafa01a46e27
-[2/3] arm64: dts: rockchip: correct wifi interrupt flag in Rock Pi 4B
-      commit: cfa12c32b96fd5b12f77d880d6a1ddd2a502756e
-[3/3] arm64: dts: rockchip: correct wifi interrupt flag in Box Demo
-      commit: 2d6f7e3938a7aba154c8e8afaddc8b7f1e0a1b56
+[1/1] arm64: dts: rockchip: Update sound card label on rk3588-rock-5b
+      commit: 7efcaf997ae624caeccd046b6266fc2b7c0b91dc
 
 Best regards,
 -- 
