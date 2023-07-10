@@ -4,105 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA2CEB64DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 17:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E0EEB64D9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 17:45:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MGZJDhF2Ef3xtrowsg4gDOEV46PctVYu3awHs1wUtB0=; b=SydiBF9nW4wqGN1x3293Vc3JgJ
-	FY80nKnYhoQSZCbr9yK8TmNSAQwrTU007PnNP9x4WHmyy2zZhlqD4EQfrF/8HlT6gEALoDGO+CF+A
-	wmYfnryAGGz7wgaPv/6rdakeKa7Qk1XavWaXe84BDZgxoJq9GJ+z+5MoeE76NaVCE3SnZym6g7PZl
-	aR6YF9zD1q2ROyCA7Y4IpkOi3UDq9Ag6nSGmux9RJJFEfn/bHeJH3/9+GlnPO9j9kRzkb0TBmSNnm
-	1XleVToEXOqJKZRCt0LkL54BxsIgXfq8wlnZwexyuILzTluo5TFNtrejuxSqGK4/esYQ9tjqfQpya
-	95rD+zgw==;
+	bh=YdIugGpdV1qOYe0C55YV3YA5FB71JISlfAESahVl9UE=; b=ewOW+AxssqgmhzZr2cM/WqwQxj
+	bELuUbrwuIiwZ8R9SMHzYlERupE8O3ZY3mcATgDPHN3OE6AZqhkFJVXygI86OAWCei5Fl4oGcY9aH
+	yFI7ZrukVDKee4XvmBogDxyeIi3xQCqUv77QCEJqE4jae2E6GMb52yili4yAts4SKi/ab7BW3X0ob
+	mpKPGliXqxEvlWSBmPLXC1hfc3I1x+doRZ36L1Tq4P+0r8AOhoskP0/75ZC6JuB8sJo+PX7A2VilH
+	lQ4rM2ECQpadR9bDQXmf3nwSRBT14C0p7lwPAlexrjgzl0MPkBu8PAXeMeVLJks62wa9CwwHHaP0V
+	GdVJfAyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIujT-00CMmr-0S;
-	Mon, 10 Jul 2023 17:31:31 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qIuwh-00COCY-0J;
+	Mon, 10 Jul 2023 17:45:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIujO-00CMkQ-0n;
-	Mon, 10 Jul 2023 17:31:27 +0000
+	id 1qIuwd-00COBC-0f;
+	Mon, 10 Jul 2023 17:45:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 88CE460FBB;
-	Mon, 10 Jul 2023 17:31:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62DD5C433C7;
-	Mon, 10 Jul 2023 17:31:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6E68E610A3;
+	Mon, 10 Jul 2023 17:45:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B492C433C8;
+	Mon, 10 Jul 2023 17:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689010285;
-	bh=yBEMuGoWHM9zUe+iAIatKlGNoEB//1WfSxUw+0SuQ6A=;
+	s=k20201202; t=1689011105;
+	bh=JYkWJasgvckBZ5AB6t/6gw7izBFHjFqNwBX/W6Q7n2E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VttBOl+eNlj1/cgq3G8qxJc+Ah7b5ZQ04PTV+EG6CFR2pRgYe6JyXMHkH1/K5bemV
-	 K7OqUHz9qrkCqPetZgj1nNcc9MMYdr/B9tGDE8jYkIXmiDAP6OS06Xl3q0kgh5hEpC
-	 MvMnLChy3z1cQdkugx0ULecDib0F8BZscQJjcD6lCQGmAOZWkJumwmB1iP89ewG1mK
-	 rAm6IHAnieSj0S2DZ5vLDOR0ISwF5BNq2Bv8GkENsnzbMGMTAKoGpz+DIGvt6qDstD
-	 H+akvWxjFGPRQ19Fycx48iyLC1xdJ/ddnyN9qoFnjn+84u3R5jM1KfNYx9ZqQrj7XX
-	 kUC1BkFYkCtCQ==
-Date: Mon, 10 Jul 2023 18:31:12 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	b=pEgXBy9VXc/yXTnnLhVCIsDLJUjNz4cwRaxzrg4INUE5BYM3JyF1PLdsG+HhfWFma
+	 ieCM0QEA+X322SDIl4SapO+6AhAW/rwZUewqlYe9HpyFIuRPjdlucY9SUvHZuWeji/
+	 EGh7w22R+wwwXkJEROT3EoSjJ4zcu3B+FV4p2eKBPxWzjWaB3/YtU3JntbN/xn2Ubo
+	 Ir5mIv6fnL1kMNTdZliTB4UjFiZ2QH3xr3q5ch4bCg3/f7WCvJNJ4o+OaAc8Ze1ay5
+	 nQFkq4fNl2hIDG6blt/m2DV4PbD1FWv7dSZZc+P4ufwh+UA3BsU4JG9WxTrrc04u3k
+	 5FRkpdMX35Z9g==
+Date: Mon, 10 Jul 2023 18:45:00 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 00/15] spi: Header and core clean up and refactoring
-Message-ID: <58c6f76a-8028-4ce8-a101-d5feb3b40897@sirena.org.uk>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+	Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
+	Helen Koike <helen.koike@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
+Message-ID: <20230710-unsold-simplify-5a339036ff38@spud>
+References: <20230707210604.868002-1-robh@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
-X-Cookie: Do you have lysdexia?
+In-Reply-To: <20230707210604.868002-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_103126_362172_E4FC4DE9 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20230710_104507_328060_8F435F3D 
+X-CRM114-Status: GOOD (  26.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,47 +77,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0712015669726296071=="
+Content-Type: multipart/mixed; boundary="===============7964456403158171127=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0712015669726296071==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Mtt0ZQ3K6jQ9xKnG"
+--===============7964456403158171127==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="t+svSrsy1jWs8uVm"
 Content-Disposition: inline
 
 
---Mtt0ZQ3K6jQ9xKnG
+--t+svSrsy1jWs8uVm
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jul 10, 2023 at 06:49:17PM +0300, Andy Shevchenko wrote:
-> Various cleanups and refactorings of the SPI header and core parts
-> united in a single series. It also touches drivers under SPI subsystem
-> folder on the pure renaming purposes of some constants.
+On Fri, Jul 07, 2023 at 03:06:04PM -0600, Rob Herring wrote:
+> The OV5695 binding is almost the same as the OV5693 binding. The only
+> difference is 'clock-names' is defined for OV5695. However, the lack of
+> clock-names is an omission as the Linux OV5693 driver expects the same
+> 'xvclk' clock name.
+>=20
+> 'link-frequencies' is required by OV5693, but not OV5695. Just drop it
+> from being required. Expressing it conditionally would be ugly. It
+> shouldn't really be required either as the driver only supports 1
+> frequency anyways.
 
-I've queued 1-3, 6-8 and 11- for CI thanks.
+I suppose the intent here is something like "the driver only supports 1
+frequency and never bothers to read the property"?
 
---Mtt0ZQ3K6jQ9xKnG
+Either way,
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+
+Cheers,
+Conor.
+
+>=20
+> The rockchip-isp1 binding example is missing required properties, so it
+> has to be updated as well.
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/media/i2c/ov5695.txt  | 41 -------------------
+>  .../bindings/media/i2c/ovti,ov5693.yaml       | 19 +++++----
+>  .../bindings/media/rockchip-isp1.yaml         |  1 +
+>  3 files changed, 13 insertions(+), 48 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/media/i2c/ov5695.txt
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ov5695.txt b/Doc=
+umentation/devicetree/bindings/media/i2c/ov5695.txt
+> deleted file mode 100644
+> index 640a63717d96..000000000000
+> --- a/Documentation/devicetree/bindings/media/i2c/ov5695.txt
+> +++ /dev/null
+> @@ -1,41 +0,0 @@
+> -* Omnivision OV5695 MIPI CSI-2 sensor
+> -
+> -Required Properties:
+> -- compatible: shall be "ovti,ov5695"
+> -- clocks: reference to the xvclk input clock
+> -- clock-names: shall be "xvclk"
+> -- avdd-supply: Analog voltage supply, 2.8 volts
+> -- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> -- dvdd-supply: Digital core voltage supply, 1.2 volts
+> -- reset-gpios: Low active reset gpio
+> -
+> -The device node shall contain one 'port' child node with an
+> -'endpoint' subnode for its digital output video port,
+> -in accordance with the video interface bindings defined in
+> -Documentation/devicetree/bindings/media/video-interfaces.txt.
+> -The endpoint optional property 'data-lanes' shall be "<1 2>".
+> -
+> -Example:
+> -&i2c7 {
+> -	ov5695: camera-sensor@36 {
+> -		compatible =3D "ovti,ov5695";
+> -		reg =3D <0x36>;
+> -		pinctrl-names =3D "default";
+> -		pinctrl-0 =3D <&clk_24m_cam>;
+> -
+> -		clocks =3D <&cru SCLK_TESTCLKOUT1>;
+> -		clock-names =3D "xvclk";
+> -
+> -		avdd-supply =3D <&pp2800_cam>;
+> -		dovdd-supply =3D <&pp1800>;
+> -		dvdd-supply =3D <&pp1250_cam>;
+> -		reset-gpios =3D <&gpio2 5 GPIO_ACTIVE_LOW>;
+> -
+> -		port {
+> -			wcam_out: endpoint {
+> -				remote-endpoint =3D <&mipi_in_wcam>;
+> -				data-lanes =3D <1 2>;
+> -			};
+> -		};
+> -	};
+> -};
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml=
+ b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
+> index 359dc08440a8..a3d73a87d797 100644
+> --- a/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
+> +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov5693.yaml
+> @@ -5,26 +5,29 @@
+>  $id: http://devicetree.org/schemas/media/i2c/ovti,ov5693.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+> =20
+> -title: Omnivision OV5693 CMOS Sensor
+> +title: Omnivision OV5693/OV5695 CMOS Sensors
+> =20
+>  maintainers:
+>    - Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+> =20
+>  description: |
+> -  The Omnivision OV5693 is a high performance, 1/4-inch, 5 megapixel, CM=
+OS
+> -  image sensor that delivers 2592x1944 at 30fps. It provides full-frame,
+> +  The Omnivision OV5693/OV5695 are high performance, 1/4-inch, 5 megapix=
+el, CMOS
+> +  image sensors that deliver 2592x1944 at 30fps. It provides full-frame,
+>    sub-sampled, and windowed 10-bit MIPI images in various formats via the
+>    Serial Camera Control Bus (SCCB) interface.
+> =20
+> -  OV5693 is controlled via I2C and two-wire Serial Camera Control Bus (S=
+CCB).
+> -  The sensor output is available via CSI-2 serial data output (up to 2-l=
+ane).
+> +  OV5693/OV5695 are controlled via I2C and two-wire Serial Camera Contro=
+l Bus
+> +  (SCCB). The sensor output is available via CSI-2 serial data output (u=
+p to
+> +  2-lane).
+> =20
+>  allOf:
+>    - $ref: /schemas/media/video-interface-devices.yaml#
+> =20
+>  properties:
+>    compatible:
+> -    const: ovti,ov5693
+> +    enum:
+> +      - ovti,ov5693
+> +      - ovti,ov5695
+> =20
+>    reg:
+>      maxItems: 1
+> @@ -34,6 +37,9 @@ properties:
+>        System input clock (aka XVCLK). From 6 to 27 MHz.
+>      maxItems: 1
+> =20
+> +  clock-names:
+> +    const: xvclk
+> +
+>    dovdd-supply:
+>      description:
+>        Digital I/O voltage supply, 1.8V.
+> @@ -72,7 +78,6 @@ properties:
+> =20
+>          required:
+>            - data-lanes
+> -          - link-frequencies
+> =20
+>  required:
+>    - compatible
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b=
+/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> index 0bad7e640148..e466dff8286d 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> @@ -199,6 +199,7 @@ examples:
+>              wcam: camera@36 {
+>                  compatible =3D "ovti,ov5695";
+>                  reg =3D <0x36>;
+> +                clocks =3D <&cru SCLK_TESTCLKOUT1>;
+> =20
+>                  port {
+>                      wcam_out: endpoint {
+> --=20
+> 2.40.1
+>=20
+
+--t+svSrsy1jWs8uVm
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsQF8ACgkQJNaLcl1U
-h9CQ2gf+NebuHlkBa9zrhzmcGhSrtVx5yFCLP0dHaZVPMEHj6t0rIpQGodx2xOq0
-MawEB/JvvnMHpCvUoGGUXGsTcLiBB3uxADywJKyPkitWM3W/9LMAGRwpdnyV/zbN
-i4RuTGjLyFnoHuDdf82cL/5f3EFsLn1J3rl3cUDAv1c3U+WpZReA4OO9s9QhlqJU
-GfQoV1As2DUX49504bC2EfuPpa4wYIWrR1fT8ApGCZXs3KUQpgTWQ7iH4X48fdbY
-5gE1rQID66FMT2d78FRZkVmqej6wFqYr34G0zD2Lf/qC+ZsTSvvy4YExJhNnts1Q
-Md56GS1p2fjwWtBGCvs3Gmlg6zcmtQ==
-=CQab
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZKxDnAAKCRB4tDGHoIJi
+0qn2AP0Wcor69ow4Yy2tBjgcVPKKkO5rO0cMvw977bU0zkbU2wEA03fAzCzyJ+yv
+Ng2oGxRY7uXq/PVcTmI/dsBcudBCXwY=
+=1DQl
 -----END PGP SIGNATURE-----
 
---Mtt0ZQ3K6jQ9xKnG--
+--t+svSrsy1jWs8uVm--
 
 
---===============0712015669726296071==
+--===============7964456403158171127==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -165,5 +280,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0712015669726296071==--
+--===============7964456403158171127==--
 
