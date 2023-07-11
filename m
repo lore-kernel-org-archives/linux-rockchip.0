@@ -4,50 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC18CEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0330FC0015E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:45:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dWwmmJc+FHE21gLj48m/q6wMpdJmD86NRY3oDEknx/I=; b=I/XAlgdbV0nJ2a
-	tsMY5zFrBvuqd/MoOwHuDYvstwM7g217oJLtFIlTfW3HtcbiQjX8E7NUbLKRtcucavaD1eaHty2q7
-	qVnwqSc0B5E9EhywDFvEWpanPMB2dN77sAW8t1Y1Em7ahtpiZ7d16ZuZ0QnUBoTKjHeK88BENrKFG
-	dx0vDhLnjYre5zkTklO1u6UlR5mxWThJ2x7+oE/7jQwgkydoRqLtkJsc70vHmw/g/7/+7jiB1hBGV
-	nLz0Yqrh2vAjtQ1FAb0Ig5sVa+Anl53klzv60lzkBnjHlBjSjDb3w00e3kJ50r2Fe/dDKi2Cm3EUU
-	YQr0TSzZiWLdrto9E16w==;
+	List-Owner; bh=U9IMlmD8TnA6IPiLXUmU+bKesD0xx5d2OKrhcXkk8IA=; b=nOwEP9PYfMBCA6
+	CzT2fez9KgaV/mjo/iYHZugKFacekALwXzFDhEZGsdRbDFi/B/pRKVPCnXt+E981+wYg2xBTVQ7qn
+	4tNo7hqJlnUYF6dxS1dFTKLOAUfXcnNbOYU4kHmzv6gVUj5k5FNFvHvRZeA0+062bDAEFKQnm0xos
+	7V87/7tA1MW9qNlKn+rfROVLLPh2bDHCY/5D9iRRAF02Uo+S8++tAQEbwQz4NOaA4fVsqOppLNcDx
+	U/RjAaduoN7j4aZamsHMF2Gk8wNatDhGJiVnEafTHaQWMfmqd1kbkiP2HNTisgMGGBWVL9iNBaBgY
+	WOo6zYTbmofEkEAr8XJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDab-00F0NU-2F;
-	Tue, 11 Jul 2023 13:39:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qJDga-00F1Ng-2W;
+	Tue, 11 Jul 2023 13:45:48 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDaY-00F0M1-07;
-	Tue, 11 Jul 2023 13:39:35 +0000
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qJDaT-0008Kg-GE; Tue, 11 Jul 2023 15:39:29 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Yangtao Li <frank.li@vivo.com>
-Cc: Yangtao Li <frank.li@vivo.com>, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/4] phy: rockchip: phy-rockchip-typec: Use
- devm_platform_get_and_ioremap_resource()
-Date: Tue, 11 Jul 2023 15:39:28 +0200
-Message-ID: <4152701.ElGaqSPkdT@phil>
-In-Reply-To: <20230705090126.26854-2-frank.li@vivo.com>
-References: <20230705090126.26854-1-frank.li@vivo.com>
- <20230705090126.26854-2-frank.li@vivo.com>
+	id 1qJDgW-00F1Ml-11;
+	Tue, 11 Jul 2023 13:45:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689083144; x=1720619144;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9H4lxY6vAKcrrWzIJhW2JQY4hyPVgKM+IPDOVEDyRyc=;
+  b=Vqn6mS9JvncdXNVff8lOLk42iRfdup/rlk8JeuTfxJir23cpRGFHyk8D
+   nxfY459KTdQh97G5BuxOMf2PYM8DuTQlW4PxdNmxv4Yvo8LfVEzfZjqwR
+   q5XFYPtUJoOUBmB/6YE+MaT4LeIzMxQpO4kylbj8sOI9prRmwuYKLFQsQ
+   QMnpTFohPR1uWzRoaZPAP3zd1s0gviD1k43lK4cwofJAimwtFG1Q5q31D
+   bcOpmjir4HKy09SK1W+ozWbjkhfnDA4OC0WoLmpff8Aq4OmHyOV8JC4SM
+   Xf/mM5/gz84arq57TqoPBnL9etC4dq0mZjO41Cf2AWwL+KGdL2LlDuyb4
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="354484249"
+X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
+   d="scan'208";a="354484249"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 06:45:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="750766718"
+X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
+   d="scan'208";a="750766718"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga008.jf.intel.com with ESMTP; 11 Jul 2023 06:45:29 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qJDgE-001rb5-12;
+	Tue, 11 Jul 2023 16:45:26 +0300
+Date: Tue, 11 Jul 2023 16:45:25 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v2 00/15] spi: Header and core clean up and refactoring
+Message-ID: <ZK1c9RIHZ+gSkFVw@smile.fi.intel.com>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <58c6f76a-8028-4ce8-a101-d5feb3b40897@sirena.org.uk>
+ <ZK04/8UQEaNinLoK@smile.fi.intel.com>
+ <af598782-6998-4d60-b7fc-3d9aaeb0fe8f@sirena.org.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <af598782-6998-4d60-b7fc-3d9aaeb0fe8f@sirena.org.uk>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_063934_076064_C1B4CABE 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20230711_064544_403662_9104AA7C 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,47 +133,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 5. Juli 2023, 11:01:24 CEST schrieb Yangtao Li:
-> Convert platform_get_resource(), devm_ioremap_resource() to a single
-> call to devm_platform_get_and_ioremap_resource(), as this is exactly
-> what this function does.
+On Tue, Jul 11, 2023 at 02:38:37PM +0100, Mark Brown wrote:
+> On Tue, Jul 11, 2023 at 02:11:59PM +0300, Andy Shevchenko wrote:
 > 
-> Signed-off-by: Yangtao Li <frank.li@vivo.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-Though I guess we should check if the res variable can be removed
-too.
-
-devm_platform_get_and_ioremap_resource() checks for its "res"
-parameter to be not-NULL. So if nothing in the driver itself
-is using the actual resource, res could be removed and get
-replaced by "NULL" when calling devm_platform_get_and_ioremap_resource()
-
-
-Heiko
-
-> ---
->  drivers/phy/rockchip/phy-rockchip-typec.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+> > Do you think patch 9 deserves to be proceeded?
 > 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-> index 8b1667be4915..4efcb78b0ab1 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-> @@ -1116,8 +1116,7 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	tcphy->base = devm_ioremap_resource(dev, res);
-> +	tcphy->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
->  	if (IS_ERR(tcphy->base))
->  		return PTR_ERR(tcphy->base);
->  
-> 
+> That one I need to think about, may as well resend it and I can think
+> about the resend.
 
+Got it.
 
+Probably I have to amend commit message in the patch 9 to point out why
+struct_size() is better.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
