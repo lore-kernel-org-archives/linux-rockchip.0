@@ -4,100 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A10B5EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:29:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBD2EEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:29:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B5tfICU3/wQ3bO/BMeLkzvvDmF4sCbHZe1ZccqpwgLw=; b=iwgXRaZJ20HKrF
-	yuEHlmSmMxNvgu702gFA5jB+/QzykwKt72NvlIDlN3nT1Kylp/lGD/qC6XdzrnkmN0Vr0fPQWZL9Z
-	kw7pPbLeFR16i9atUZT1C5Y46XiG1GF7lkLfk/verClhSGOSMqAYfcAXR9sExtRt8nmjouhTNy9Ny
-	jUuqyr+329Sssq6UY4JKuyjllILGmx99Mehj2ZCm6dahzADuk1D6yPXaPIIv6MgdI2bGpRXXM57h+
-	7FpKLoplaDzgFEVZD/RRr+4uFfJ0ST4XzNM668gchdhlK4rg1OoAyKDd765pssO3IXiGM1EqG9Z+f
-	7WWGwKzk+PfG0BDTzLcQ==;
+	List-Owner; bh=uXmXNl3ziqGwk2jActG2OyjWVjrSX1l7TOMcxUR7tEA=; b=G1VfKjuTuCZKMD
+	8LudrHdlkelm+gLjei3eTfY+GwC1GjWSALLKxRIkD113M25YhzSBvhl8RXIEE/lqHpd3fLQUFb8gO
+	Coam2vkUs/BaqNGgqPX7d3lURYDq+006NRpp6Nx3zHkm0I4YxP4/gcRqDr/pAjrRdhwZ+FpRVxm6a
+	gybOhBx7YYHyEUbH1gAvLPNEfpCCwiW4d4t10Aq5zyoyj4tGWyZIDpMCmh8WAy0qvGOy05hHbAU4Y
+	HDY3cdW6XIfjkFQmN5c5LlCa2cD1xpQm3ISUplRl/EhWnWt7nR761/LcTyzlbamagvaaLkor5rq45
+	rQb0pzJQdW+qWfX3p18Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDQu-00Eyy0-0G;
-	Tue, 11 Jul 2023 13:29:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qJDQz-00Ez0L-1D;
+	Tue, 11 Jul 2023 13:29:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDQp-00Eywk-0v;
-	Tue, 11 Jul 2023 13:29:33 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78FF36607010;
-	Tue, 11 Jul 2023 14:29:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689082168;
-	bh=A6Rhy91tdjux/U1OjfY+XN+em6idN9fFsp4Gj75jj3Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bj0EFZpAy7nFby7CUTs+PEwT8vs+La8bzX9UYqF73oazR63yx2IHPPA2JHUd1crN7
-	 u7PAxyRka3DqmNvhZ5M72I2mvt/zbjiS0yMalOlSuWvlx/bfnSvODSAi5oU/MRyGf3
-	 aGWBbXbtkrs/c69s3IIJc3n9NU+l9N7Vq3udf22WAzHRfo+NjJu3NVNgqg/mGODjal
-	 U+8BVvc+3X5TXjQn5d75fL8W+WXl0I2H6Avc6DBiihqQZ7faWNiWwtdS1K6qIpx6e4
-	 KBce2lFKpLIa/z0lFI7YUxCPDHlYxhSB5sfm0e4oNH095a1OsDfr7jPiRj41PQODwj
-	 CMKuG2rPGicFQ==
-Message-ID: <82a48b1c-b070-ba45-04f8-2f2bf645d893@collabora.com>
-Date: Tue, 11 Jul 2023 15:29:23 +0200
+	id 1qJDQx-00Eyye-1j;
+	Tue, 11 Jul 2023 13:29:40 +0000
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qJDQu-0008E7-Oc; Tue, 11 Jul 2023 15:29:36 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	kernel@collabora.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 00/13] Improve Rock 5A Device Tree
+Date: Tue, 11 Jul 2023 15:29:35 +0200
+Message-Id: <168908206875.1895326.643066920213723100.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230710165228.105983-1-sebastian.reichel@collabora.com>
+References: <20230710165228.105983-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2 04/15] spi: Replace open coded
- spi_controller_xfer_timeout()
-Content-Language: en-US
-To: Mark Brown <broonie@kernel.org>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Yang Yingliang <yangyingliang@huawei.com>,
- Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
- Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
- Sanjay R Mehta <sanju.mehta@amd.com>, Radu Pirea
- <radu_nicolae.pirea@upb.ro>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Tudor Ambarus <tudor.ambarus@linaro.org>,
- Serge Semin <fancer.lancer@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley
- <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat
- <alain.volmat@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Steven Rostedt <rostedt@goodmis.org>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Richard Cochran <richardcochran@gmail.com>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
- <83c4b75a-06d7-9fca-ffa0-f2e6a6ae7aed@collabora.com>
- <e3688ce5-616a-4399-a4e3-c410a09f6a45@sirena.org.uk>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e3688ce5-616a-4399-a4e3-c410a09f6a45@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_062931_501409_7CA22103 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20230711_062939_573334_A56E67E0 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,29 +63,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Il 11/07/23 15:05, Mark Brown ha scritto:
-> On Tue, Jul 11, 2023 at 10:28:13AM +0200, AngeloGioacchino Del Regno wrote:
->> Il 10/07/23 17:49, Andy Shevchenko ha scritto:
+On Mon, 10 Jul 2023 18:52:15 +0200, Sebastian Reichel wrote:
+> This brings Rock 5A on par with the Rock 5B. All necessary driver
+> changes have already been merged.
 > 
->>> +		ms = spi_controller_xfer_timeout(ctlr, xfer);
+> -- Sebastian
 > 
->> I agree on using helpers, but the logic is slightly changing here: yes it is
->> unlikely (and also probably useless) to get ms == UINT_MAX, but the helper is
->> limiting the maximum timeout value to 500mS, which may not work for some slow
->> controllers/devices.
+> Lucas Tanure (1):
+>   arm64: dts: rockchip: rock-5a: add SD card support
 > 
-> The helper is limiting the *minimum* timeout value to 500ms - it's using
-> max() not min().  The idea is the other way around, that for a very fast
-> transfer we don't want to end up with such a short timeout that it false
-> triggers due to scheduling issues.
+> [...]
 
-After reading the code again, yeah, I've totally misread it the first time. Argh!
-Thanks! :-)
+Applied, thanks!
+
+After talking with Arnd on IRC, I also picked the two binding patches
+for the eeprom.
+
+I also fixed a number of nits when applying:
+- "-regulator" suffix was missing on most added fixed regulators
+- one regulator@42 was instead a rk6*@42
+- some ordering issues
+
+
+[01/13] dt-bindings: vendor-prefixes: Add prefix for belling
+        commit: 3dc9c73e65fbe1d8b4762b2ef763d8f5941e87bb
+[02/13] dt-bindings: at24: add Belling BL24C16A
+        commit: 892e989559c7352cd8cacc95729aa6d5bf63b897
+[03/13] arm64: dts: rockchip: rock-5a: add PMIC
+        commit: 75fdcbc8f4c1557545aaabe3f3d41a7337a1ffd8
+[04/13] arm64: dts: rockchip: rock-5a: add vdd_cpu_big regulators
+        commit: 4bbca5c7f4f0175c95588709535e3466a936dd2e
+[05/13] arm64: dts: rockchip: rock-5a: add 5V regulator
+        commit: 53bf040e14c0245711a3cae6f3259e589ac8171b
+[06/13] arm64: dts: rockchip: rock-5a: add SD card support
+        commit: ea3e66e7ad0d8ca1a4248a55e235fa27817ac3da
+[07/13] arm64: dts: rockchip: rock-5a: add status LED
+        commit: db02f866b140dc04eb13da8bc8d9b1e36232102c
+[08/13] arm64: dts: rockchip: rock-5a: add analog audio
+        commit: fb031e6275fc165100a2bf65d630872b89a97c08
+[09/13] arm64: dts: rockchip: rock-5a: add I2C EEPROM
+        commit: 89c880808cff8bc6f1ea6e1b5edc603e6232310e
+[10/13] arm64: dts: rockchip: rock-5a: add vdd_npu_s0 regulator
+        commit: afc3925f694a1a16f38ce66dfc7dcf88cc77b8ee
+[11/13] arm64: dts: rockchip: rock-5a: enable I2C interface from DSI and CSI connectors
+        commit: aa00cf88bd8c5ac22f4da9ae390790268b111f97
+[12/13] arm64: dts: rockchip: rock-5a: add ADC
+        commit: 43465c67518c3d2e6293e9d97e577de434ad682b
+[13/13] arm64: dts: rockchip: rock-5a: add fan support
+        commit: dd4464ecced6f07b0e62f67752928d1424883dee
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
