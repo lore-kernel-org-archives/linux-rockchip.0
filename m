@@ -4,50 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EE3C0015E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56E07EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 13:39:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8TbQkdFYgQV30bzwTdnxBjc3KuViGQOG8kq+Dj5dMwU=; b=4oClyuK1T/YK90
-	bfoTPRYD7T9j3TZ/RYcskBAqbNUzWmmhbm3YNJ+XShPQC7jsxXq/Ezgy0HLWdrtJSI13HJjnxslG+
-	zlivvYRRwD9fCzFnpzUnpCt/ctwtWsWAayvtOaTTAY1R+Yq+jpxDmOF3APKSoRi8BvrUL1Ps8p3vN
-	rQG/+nh1HFPq7krk/H62c9jJak1Eo+g2TVTFF4mY6ktUD5SyEMDNs3DDrxug/dAn+563Os6srPTjX
-	hfeLMNTkfOFTrxb+0fugD+YKlhfTH/dLOUlJDVGBTdSob9EPBHaRf29eACYNdpiIsn7wFoqO7EuOn
-	dufaDvdcbYe0OrGp82ZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u8Pn+1kjFqcuLsyEw/52oUQUrjrpS6ZBuvowLdb/n6A=; b=exLdATYOwoqhGThQ+BrYYYYEXW
+	DIx0icx3MJB4tGkbzXn2Dyks3BuaMNjWsXY+vlI5xZ6x2eA91o6T39qkSFPYlH9Mwg7sB7iDe71N7
+	dNKogQIpcJzox8dyHvcJUc/QvPhjxgOXLBR9iINm7toioE8IEur+etyBWnw/mUkkmDIogpvH2hgMH
+	fMKCEq951NADcqYB0h+tQrs35FWkHNXQ1ZtJZKJpD3S/EocxDmEnvg39/NMaTzmJkjZ1RNpnq4tbq
+	uSeowEYKWgqaqQpKhny6Ns98NhCps3cuRa1feEtuD+OZ0zu7YfcSeoxyl6830KgzBX1PR1pn8xFJY
+	Dsp8FiRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDWr-00EzpC-1R;
-	Tue, 11 Jul 2023 13:35:45 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qJDa3-00F0E1-23;
+	Tue, 11 Jul 2023 13:39:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJDWo-00EzoL-1k;
-	Tue, 11 Jul 2023 13:35:43 +0000
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qJDWm-0008Hp-AW; Tue, 11 Jul 2023 15:35:40 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Yangtao Li <frank.li@vivo.com>
-Cc: Yangtao Li <frank.li@vivo.com>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 5/8] nvmem: rockchip-efuse: Use
- devm_platform_get_and_ioremap_resource()
-Date: Tue, 11 Jul 2023 15:35:39 +0200
-Message-ID: <7814542.lOV4Wx5bFT@phil>
-In-Reply-To: <20230706040504.34057-5-frank.li@vivo.com>
-References: <20230706040504.34057-1-frank.li@vivo.com>
- <20230706040504.34057-5-frank.li@vivo.com>
+	id 1qJDZz-00F0C5-0f;
+	Tue, 11 Jul 2023 13:39:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9ED1C614F1;
+	Tue, 11 Jul 2023 13:38:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C419BC433C7;
+	Tue, 11 Jul 2023 13:38:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689082738;
+	bh=ItxG0MufVqKsV6l67e6rahqYiXE+oNZWIixR/ZiAk7k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m4h5A9eucXGEK5wiqhxNlBc101UZTB1GTSu+bNPFIqQi8lSIpgckIDopdxZ8GCXDU
+	 KaYIqfFehq9XBY9C78BmSRuGAnEkoiVqck1jWN3OSijvCTDKQiEiACW+JrNNDrogva
+	 3EVk5wIoKUlrmASobQlDeI0AXZVsTEb3Co/GLkxVP16Cs59Esgav2MUFclqw4fiLZW
+	 IphOe5HIOtsn51q81shBdkY7+ZB7u0D1/Dnzv8i5DLtWFLx045byoaUqXj3YMCZRgP
+	 Ssnb20dZBFAw4KBSQvZFSG4aJSBBBsmLSdXDHDge2m5HFHwVmkPwFjrJUGV9EZW521
+	 Yi9ajN7auQ10g==
+Date: Tue, 11 Jul 2023 14:38:37 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v2 00/15] spi: Header and core clean up and refactoring
+Message-ID: <af598782-6998-4d60-b7fc-3d9aaeb0fe8f@sirena.org.uk>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <58c6f76a-8028-4ce8-a101-d5feb3b40897@sirena.org.uk>
+ <ZK04/8UQEaNinLoK@smile.fi.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <ZK04/8UQEaNinLoK@smile.fi.intel.com>
+X-Cookie: marriage, n.:
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_063542_582808_4C1BE5BF 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230711_063859_329117_3D87A30B 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,23 +116,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8766742209495242030=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 6. Juli 2023, 06:05:01 CEST schrieb Yangtao Li:
-> Convert platform_get_resource(), devm_ioremap_resource() to a single
-> call to devm_platform_get_and_ioremap_resource(), as this is exactly
-> what this function does.
-> 
-> Signed-off-by: Yangtao Li <frank.li@vivo.com>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+--===============8766742209495242030==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Fpte6ZPjzz/LFITf"
+Content-Disposition: inline
 
 
+--Fpte6ZPjzz/LFITf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Tue, Jul 11, 2023 at 02:11:59PM +0300, Andy Shevchenko wrote:
+
+> Do you think patch 9 deserves to be proceeded?
+
+That one I need to think about, may as well resend it and I can think
+about the resend.
+
+--Fpte6ZPjzz/LFITf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmStW1wACgkQJNaLcl1U
+h9DwCgf6A57WeIs5A+kjDx2nQTR4R6O8VfCeSUxA5+sJLtnTgMShxvODRTArEDJp
+mTB75kAcKQxMw/qNGyDzWRgUYTymPxp24jfu8cWXoEU6FoM1u7fdVIEs/3zF4VI8
+tcXZks8p77A/Xye4dlq/LB2IhJ3CctS47Q6Y+Yr6aACWkOGboS87FDNBeE+4cxcS
+nF4f4M2/d0j85zTf5tfGFaY52gS5Nf9G4MQ8/haFpUaUj2seOk+JpKeF+jqpWc+b
+fjJfrUWG8bC5u8ZfCBniq+wFRLCP6qCskkygh44lrP9yQTKxdUIRoNkcMT2kdz1H
+NguDaiHKGw9X8e6bahJyFd+NyGugwg==
+=B9iG
+-----END PGP SIGNATURE-----
+
+--Fpte6ZPjzz/LFITf--
+
+
+--===============8766742209495242030==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8766742209495242030==--
+
