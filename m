@@ -4,99 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E04EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 08:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABBFEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 09:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wDfIOBfw2bVkZ+JwHTy9UxpNdFrcqY06xjqDbkKhSkc=; b=gLgy7YJG6onM7h
-	ZbfABLJw6anSIH/o83j6z+8Wv+fQQmPdnbKU72fKJbUIzlBWwpzg4yTTtQ+oHf8a6NLTMavut+F+J
-	XlzOYEi31FTwM0TSQiLBfZQ7q2Pi67hkzmB7Ly2tEC2Hhrx8Qs7OMK6s4SYw5kSmsH3zu6i6eFGlr
-	fpt3xfN7BO1HF/ACE+glmzQb3b8sG53fLFZLO/Q4hV39ZLE54lCx2okJ38VpU6XTC/bEq5sQA1d+u
-	veGutsPCCX7xbSWeN3xjlXzYxJDRhkHzYiZDV6XdYLOEtrFXiMq5mzDYMl4CPtBAOM2LDbpCIuxUv
-	qExdgvd+9HGEzqrG2eHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=iIrVA8HSFVicwlrHs6w7MC4i7GIEKBJcmlgaoCXuB5I=; b=ASH2B21t2SGDZ0C/esaQK+M6Xn
+	VnzzbkayIZK9CZK/jjHp+0f73su3bb5sy/X/R/rYRteFRcSR9r5OHBWQEQU7juayHka7ZDYpxB8EV
+	bcrRlAYgapLHhLql6OZywRdCkYP+uMzn/YnPoSq0wQMnNiaJFheAxTDDdglJpkAcaKuo7jl0Wwe3N
+	eH+zhIrU2ixODVsKCmEaxbSaSX/wauwfMGEb2VY8Os90OYPnQev0XYhRv+zjBx4LSXGQ2Wq8t6o6c
+	jwrQdxRX2AtdSeOt/c1VmQl48BDR3Rzj5S9LEFGPJb/CYzMK3+ei13vm7kQUa5Qrxcb9EQ+2S2I5I
+	QAqdGvug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ8jR-00E7IR-2Q;
-	Tue, 11 Jul 2023 08:28:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qJ9gr-00EI8c-0Y;
+	Tue, 11 Jul 2023 09:29:49 +0000
+Received: from mail-am0eur02on2061d.outbound.protection.outlook.com ([2a01:111:f400:fe13::61d] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ8jM-00E7Gf-0m;
-	Tue, 11 Jul 2023 08:28:21 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2532E660700A;
-	Tue, 11 Jul 2023 09:28:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689064098;
-	bh=spdNLway67POM3vmFaXNGhDhQmXxhVIedWvVLp0PkEI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XSCTbFXk9e6Ms6w3dUD0gTaJbCLMJPnp6Us3KW28VZQ9hoaNYRdeO51FSibZH/fzR
-	 JKiOts4MP0vpXd7Sm62WRMiy18wm8cew197TIrGkrMstBRkn8EotGVMfdYCXfIPJSe
-	 daxKC2B2n9x1az4GZ5GnR8rcX8dTYTsyY730jAhseXuJoFP2RlZZLPbPOwRRmcg2DA
-	 AuU+HmpPB29i7vONs5CAXPnuO8/39XXDXiNgdv1iHqfSMOywBsFHXC35USEsn3iVGM
-	 sm/VWNEaupu1VVdE1Na6ph1PWVqdQwL0sL6NNEZHb+h9luZhHTnlJNLnVZ7IUaGKbA
-	 HdIZq6knmkqdQ==
-Message-ID: <83c4b75a-06d7-9fca-ffa0-f2e6a6ae7aed@collabora.com>
-Date: Tue, 11 Jul 2023 10:28:13 +0200
-MIME-Version: 1.0
+	id 1qJ9go-00EI6e-1d
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Jul 2023 09:29:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=foftYVNorFMAFgQQNpnQJyloX9EvgSTK3sLEpSCKRVb7lfXC1vSxH8u/HCIk+YZXpzojZ2JbPmqcesc+2pEbJLG9up3N0AKoJ1T5NzTjDOl4omn8HkDWiDeRqfRTBit5jDDbASfVjB7iqqrlB5kD4L5Je4eCpKNY6H9oxoQRNJmtrF/PWI2n0L5QpgTqV81TKEO7p/xD/XKrmcdGhhWoxqjvA+TH/Skt+lvJ636iRtDDY6uFsT4/iNqUgTkDaWSxTY41aSfFLCbwe0eZd302EtRDRVlps2fR/tfSSsn0Uv2THRhMddwbvmd9NOSZVFoe0knM1ec9Ravanjl5HdTxLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IpRHu06VdFWh+Km/mu/6Hr56zTvgfFKlIqV7F7LmbAQ=;
+ b=WAfkP+z9xdDbVoqIAE+VxW7DebD3OoJwyV1hnFiSQ9YlslgdeiSk1g+jcwwx4Y2b53Ixhq80ATgZQcN4O2TIf89yr4ZqHgjPv5Pvnouz7WoRcP1006gg1h437HYrv+db9kecNLQ2FkMl/i6vk+elgFMUC/eF8GViEN1ZUeMGVoqAoquF6qBlEaSs49F3mf0EnrXoe7Vlx8rfVyq28IyOVxqsgseTem6YJCip4U2qWjvPI6294LMrt0w/0gHfiGhZakCwOk+GHE7BkokoTqmBIZfBi5iJ9Cs9N3PhoMOVmEBpIU38nIaCHWMwG8ZmiG5jiKUPARnDuLUGrVa+opVvUw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IpRHu06VdFWh+Km/mu/6Hr56zTvgfFKlIqV7F7LmbAQ=;
+ b=vlCbJ5StCFoi27RaPrqYZwUonhWSw43U42KejgrcGtZuthZ2usaNr5G2owszwXAoZR1XdUYJpdRXdV5QpYHMumw1jKrvHPSMWN8vZF8DKPeOwl/Mkn5ulAnB4svN/9sYBbi8Ji8q/HDlufpWNdae8+pt5jux1mNNlfGmqva3Ieg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
+ by AS8PR08MB9018.eurprd08.prod.outlook.com (2603:10a6:20b:5b0::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.30; Tue, 11 Jul
+ 2023 09:29:38 +0000
+Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::b3e9:fa7c:106f:7f3f]) by DU0PR08MB9155.eurprd08.prod.outlook.com
+ ([fe80::b3e9:fa7c:106f:7f3f%3]) with mapi id 15.20.6565.028; Tue, 11 Jul 2023
+ 09:29:37 +0000
+Message-ID: <85ffc0b2-efbb-5d70-ab75-e3e9f0c74bf9@wolfvision.net>
+Date: Tue, 11 Jul 2023 11:29:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2 04/15] spi: Replace open coded
- spi_controller_xfer_timeout()
+ Thunderbird/102.11.0
+Subject: Re: Seeking guidance for Adding ISP Driver for RK3568
 Content-Language: en-US
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Mark Brown <broonie@kernel.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Yang Yingliang <yangyingliang@huawei.com>,
- Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
- Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
- Radu Pirea <radu_nicolae.pirea@upb.ro>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Tudor Ambarus <tudor.ambarus@linaro.org>,
- Serge Semin <fancer.lancer@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley
- <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat
- <alain.volmat@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Steven Rostedt <rostedt@goodmis.org>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Richard Cochran <richardcochran@gmail.com>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
+To: Yogesh Hegde <yogi.kernel@gmail.com>,
+ Dafna Hirschfeld <dafna@fastmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: skhan@linuxfoundation.org, ivan.orlov0322@gmail.com,
+ kernelnewbies@kernelnewbies.org
+References: <ZK0ApOXkmkSO98kM@zephyrusG14>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+In-Reply-To: <ZK0ApOXkmkSO98kM@zephyrusG14>
+X-ClientProxiedBy: VI1PR0102CA0015.eurprd01.prod.exchangelabs.com
+ (2603:10a6:802::28) To DU0PR08MB9155.eurprd08.prod.outlook.com
+ (2603:10a6:10:416::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS8PR08MB9018:EE_
+X-MS-Office365-Filtering-Correlation-Id: b5d361fe-07f8-4c81-429f-08db81f15846
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: He7eMX18VqD/njSJz1XBdfyWeUM/y0QIhLPzIe38FNbtPAZ6WgU/qYndt2yrkmKb/Gk0tga0V9Ah8qqu3VdF8g1ZlbJ9+TAqxH454PXJx/uf+24m/sk5zd4vdxXzR3l15huPPMsf1kAqqL2GDsnlJDBKc/ltjh/Jvf5NbnUCaKnCSNuLyG0m6wzTlw/2fWaJ2LS4kZdRABvRG5rCldARqWmvLIvLGPebIWiJE5Kj2UrPZwWi06hugVH5aA0Wloy70ccbTyrh8usPI94U5xIPXxRmDGuZ9R4qDJJ/OlgfFql+peSXTiZSzGEZPeVtLwguofTl/SMxR++7Vjhh9RWuGAwi10A3sjcz8/ZRSeoyktgDhm+qnhzFFbs/osqpprs8phVRrZ7gNO//mdeFOJz+jnSZNHSY5aN5aBH7RsUIvcmBNi/QIk808XebBE0ZU471HglWp6PeifZD4ed3giaQsA9J6fwNcvz15myK2AtbVyaICI2eQYPYVH+PTq4Fiys3ehakJHIANF9apSwPiVYlugBYaEbLpM1yISKK/gocyEHxbJxmlgtvauQRg360Dd00g8noq1FJ/hrDw7PmVObVyU5PS+Bso6ZTiOE5CxMr/yhE97WlWlNvd4PfPl7gFCQjod38M1QvIOkpPTGGVIY8xZl8PlX1zyY+Eu6yGBDpI7A=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(39850400004)(346002)(396003)(136003)(366004)(451199021)(26005)(186003)(53546011)(6506007)(41300700001)(966005)(6512007)(83380400001)(31686004)(2616005)(36916002)(6486002)(478600001)(110136005)(6666004)(4326008)(44832011)(66946007)(66476007)(66556008)(38100700002)(316002)(86362001)(31696002)(5660300002)(8676002)(8936002)(36756003)(2906002)(43740500002)(45980500001)(50394004);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d1FzVThKdHRGSXN4eS9XakVGQ3hjSktoUXVKNEdiSXczQmZUVWlTNUUzQXBL?=
+ =?utf-8?B?TEVNWGI5aEJtbVVUdjIzQ1QzdHROMnl0TDErMWFSYmpZeEZEQXZHMzNUZHVW?=
+ =?utf-8?B?NG9nV1l3K1E0Nk96cE1HeG1ia1lQRHU5Q1hGZXdtRkluaXZ1Q3hKT2RzUThE?=
+ =?utf-8?B?RmhjdGRNZGMyQ1NNOGR5aXBhQ1dycERCbE5qcHZsTjV4S1dxK1Y5b3AxSnha?=
+ =?utf-8?B?RDZhcFZIZW1rbkdQWGlYMzN1UFZjZm5CTHEwMmFmN210SElKYkV4bHBGWFhU?=
+ =?utf-8?B?dFNDT0JlYkZMSE5PdlJXWWIwT09wdmV4VEd2UUdKb0paMXl6TGJUaWFUVjl4?=
+ =?utf-8?B?ZXUyT202YWxIQmc0WkFtM005ZU96OEJwbEhPTVNOdnJqV2toK3VCbVBHSHY0?=
+ =?utf-8?B?WE9rUFlXQnpkenNWTXN1NWo0VXpJUmRnSktsL0JBbHB4Q1NaNUFEOGwyY3FO?=
+ =?utf-8?B?djh5SDJpUGttVzNpb0s3YU5sNGQ0ZkhseTJteDhIc1FzYURTUm51N3Uwc3Rh?=
+ =?utf-8?B?Qm9Mek5WM1ByR2hmT2hiZW5BVnZrOXN4MlpnRDZSUmRtOWVFZGxBQnFyZEhj?=
+ =?utf-8?B?NURjOStSdVVPN0ZtUW5KaHpBamwxcTRGVS9VaFBXeFF6bDFwNWNaV1lnYTlM?=
+ =?utf-8?B?dGRQUWJBV3AxWCsyZi9YSEVNMHJrT1dRdEs1L0o3RXVTYUpoS3R1bFc2WVNB?=
+ =?utf-8?B?NUZkdE5odUloS3pRU2JrWlgreFNRcFNMMEpZUE5Ra01RcmZiUEFBOXFFdWIr?=
+ =?utf-8?B?c3A4S1AySDQ0Q2M4aXZyZkhQWWprVFdhSklCekZmWTE5VjB2eWlLNVlaQldM?=
+ =?utf-8?B?b0FmRENWOTEyelBPcm1CYXI4aXlISm9zNEw1TjZYZldZNWt6eXhQK0lpTXdG?=
+ =?utf-8?B?eS83ZUFEUjlxSDZkRE5zcERRdWlFc1BhYklMKzBTd21oaGF5ZExLbE5UUWl5?=
+ =?utf-8?B?SmR1YWF1L05CRHpldXViY1N4ZERDNFNHa1Z0T0VnTTE4ZW13ZHhvYnZhb0dk?=
+ =?utf-8?B?c0pvM0U0UVVTNUI5UDBmWUJvOWlTR0hFMWlFcGFHUzBYNVFIT1JBcnZLb1oy?=
+ =?utf-8?B?dGtHWlYxZGdYZ3B6RXEyd2d2VTJ1Vk9UWS81TmVPc2NrQ2taNjlEZVFocGFo?=
+ =?utf-8?B?N0lXKzg2ZHQ1OUlSK1NuVyswa0VoSVJWRmNMZi85WU5TYzhpZytjNVMvS3FE?=
+ =?utf-8?B?SnNrSGF6Q2kxZmM5WWVqZnF6YmhEWDRLNkVpaHYzRWNhU2RodFhaV2RBbVVO?=
+ =?utf-8?B?NWd2bzNTRzFrSExUT01yRkwrV3lzWGl6MlVpc2NENGg4dmJKRTk5NmRhWnMw?=
+ =?utf-8?B?MjJINGdyaUsvWHU1bzVUZGc0aFNYSTF6UHA1UXVnckRqNHd2M3VPa2VOd2ll?=
+ =?utf-8?B?a21CQ2RsQUtOWHh5MkRPdjY5V0ZyMDFObVA0NDduQmtpMnc0Q28vQmJNc1dU?=
+ =?utf-8?B?dUJaN2NjMUJSSi8rU2NVWXduZWFIbDdwK2pKMkhxVDMvNS9OdlNNSVhNSEt0?=
+ =?utf-8?B?WHd5N3A1NWJCRzJrblBBYmovMmhSb1VMT1JEL2NObDV6REdBdjgzOU81aG5E?=
+ =?utf-8?B?M2pySHJOa0UzNWVHMll4RjFHU1NhMXd0clNQMmVKeE54VWZxS29PaXhQVTIy?=
+ =?utf-8?B?aW5YVkFRaWppSmR4N1FET2dTb3BXdk5RalQ5Rks5MTd4UncvZmRSRVhINEQ5?=
+ =?utf-8?B?NWIzei94MDVCdmIzS2thLzU2bzVrNm53MTVWTlcxU3dBT0FxdDJyejMweUhp?=
+ =?utf-8?B?Q2VxdVo1aGxXNVJRNWdnS0hIYTQ0VjRCTE04MHc3RFJVODFNcUlEaTF5QXBD?=
+ =?utf-8?B?eXNxNFl6SjRBWVk1RjI2YkVrbHZ6OC83VkRacXpKUDRjeG9SWEkxT0YyL3hX?=
+ =?utf-8?B?VlY1OSsxNTJ0ZXNFckF1TTA5V0I2TkdtNHRQWWZrZWdnR29VSjJBcDFESG9z?=
+ =?utf-8?B?ODRuQWVic2dUeE5VM09PNWV1eVBrYUJMWnEwZXBjK3paY1hFQmQ2d1hrUzlH?=
+ =?utf-8?B?M21DYXR2NS9QNGtJZk5ldC9xSkc2VkRmYlg0T2NuY2tiemMwVFZ6TDhDTGJs?=
+ =?utf-8?B?cjlmc2RrWmZ3a3lCWEJGbG90WmY3a0Uyc1RqMHJwL1NkWlhUbUQxVzRuNlN1?=
+ =?utf-8?B?UWZhZHdCeUYvOHV2d2xJd1ZEQ29OSVRwTkV1ZytvYUZ1d3RRVkEyK0RXSWRD?=
+ =?utf-8?B?SGc9PQ==?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: b5d361fe-07f8-4c81-429f-08db81f15846
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2023 09:29:37.2607
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tmw1F0oRK4kBK6p2XX/FpaPvYJkTHmp7QbQzQAhD6QtMA5BC5fNb84PPz01xX6VOLwLvFBiNtbDaCZOMoHi++b6e2SlkYb6IpD+7RxHviuA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB9018
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_012820_541887_62A2119D 
-X-CRM114-Status: GOOD (  31.16  )
+X-CRM114-CacheID: sfid-20230711_022946_565308_870491F4 
+X-CRM114-Status: GOOD (  32.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,107 +146,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Il 10/07/23 17:49, Andy Shevchenko ha scritto:
-> Since the new spi_controller_xfer_timeout() helper appeared,
-> we may replace open coded variant in spi_transfer_wait().
+Hi Yogesh,
+
+Cc: Laurent as I had a chat with him about 1.
+
+On 7/11/23 09:11, Yogesh Hegde wrote:
+> Hi,
 > 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->   drivers/spi/spi.c       | 25 ++-----------------------
->   include/linux/spi/spi.h |  6 +++++-
->   2 files changed, 7 insertions(+), 24 deletions(-)
+> I am seeking your expert guidance and assistance in adding the ISP driver for 
+> RK3568 to the Linux Kernel.
 > 
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index 125dea8fae00..c99ee4164f11 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -1342,8 +1342,7 @@ static int spi_transfer_wait(struct spi_controller *ctlr,
->   {
->   	struct spi_statistics __percpu *statm = ctlr->pcpu_statistics;
->   	struct spi_statistics __percpu *stats = msg->spi->pcpu_statistics;
-> -	u32 speed_hz = xfer->speed_hz;
-> -	unsigned long long ms;
-> +	unsigned long ms;
->   
->   	if (spi_controller_is_slave(ctlr)) {
->   		if (wait_for_completion_interruptible(&ctlr->xfer_completion)) {
-> @@ -1351,29 +1350,9 @@ static int spi_transfer_wait(struct spi_controller *ctlr,
->   			return -EINTR;
->   		}
->   	} else {
-> -		if (!speed_hz)
-> -			speed_hz = 100000;
-> -
-> -		/*
-> -		 * For each byte we wait for 8 cycles of the SPI clock.
-> -		 * Since speed is defined in Hz and we want milliseconds,
-> -		 * use respective multiplier, but before the division,
-> -		 * otherwise we may get 0 for short transfers.
-> -		 */
-> -		ms = 8LL * MSEC_PER_SEC * xfer->len;
-> -		do_div(ms, speed_hz);
-> -
-> -		/*
-> -		 * Increase it twice and add 200 ms tolerance, use
-> -		 * predefined maximum in case of overflow.
-> -		 */
-> -		ms += ms + 200;
-> -		if (ms > UINT_MAX)
-> -			ms = UINT_MAX;
-> -
-> +		ms = spi_controller_xfer_timeout(ctlr, xfer);
+> Before I start, I have a few questions regarding the process of 
+> adding the ISP driver for RK3568 and upstreaming it to the Linux Kernel. 
+> I greatly appreciate any insights you can provide on the following points:
+> 
+> 1. Integration with existing RK3399 ISP driver: Since the ISP driver for RK3399
+>    has already been upstreamed, I would like to understand if the ISP driver 
+>    for RK3568 will be added to the existing RK3399 ISP driver or if it will be 
+>    a completely new driver ?
 
-I agree on using helpers, but the logic is slightly changing here: yes it is
-unlikely (and also probably useless) to get ms == UINT_MAX, but the helper is
-limiting the maximum timeout value to 500mS, which may not work for some slow
-controllers/devices.
+That's a very good question, but unfortunately there is no clear answer
+to it. We were able to hack the existing mainline rkisp1 driver so that
+it works with the RK3568 ISP (rkisp v2.1), but the result is far from
+being mainline material.
 
-This should get validated on more than a few platforms, and I'm not sure that
-this kind of validation would be "fast" to get... so, probably the best thing
-to do here is to add a warning in case the timeout exceeds 500mS, print the
-actual value, keep it like this for a kernel version or two and check reports:
-that would allow to understand what a safe maximum timeout value could be.
+I would say that there is enough overlap that the RK3568 ISP code should
+enter drivers/media/platform/rockchip/rkisp1/ but on the other hand the
+differences are so significant that there should be separate
+rkisp2-{csi,params,...}.c files.
 
-Aside from that, I wouldn't drop those nice comments explaining how/why the
-timeout is calculated: I know how, but not everyone knows in advance.
+Example for overlap: With some refactoring applied, rkisp1-capture.c
+could support the RK3568 ISP as well.
 
-Regards,
-Angelo
+Example for significant changes: the CSI subdevice is fundamentally
+different, so most likely there will be a rkisp2-csi.c.
 
->   		ms = wait_for_completion_timeout(&ctlr->xfer_completion,
->   						 msecs_to_jiffies(ms));
-> -
->   		if (ms == 0) {
->   			SPI_STATISTICS_INCREMENT_FIELD(statm, timedout);
->   			SPI_STATISTICS_INCREMENT_FIELD(stats, timedout);
-> diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-> index 32c94eae8926..0ce1cb18a076 100644
-> --- a/include/linux/spi/spi.h
-> +++ b/include/linux/spi/spi.h
-> @@ -1270,12 +1270,16 @@ static inline bool spi_is_bpw_supported(struct spi_device *spi, u32 bpw)
->    * that it would take on a single data line and take twice this amount of time
->    * with a minimum of 500ms to avoid false positives on loaded systems.
->    *
-> + * Assume speed to be 100 kHz if it's not defined at the time of invocation.
-> + *
->    * Returns: Transfer timeout value in milliseconds.
->    */
->   static inline unsigned int spi_controller_xfer_timeout(struct spi_controller *ctlr,
->   						       struct spi_transfer *xfer)
->   {
-> -	return max(xfer->len * 8 * 2 / (xfer->speed_hz / 1000), 500U);
-> +	u32 speed_hz = xfer->speed_hz ?: 100000;
-> +
-> +	return max(xfer->len * 8 * 2 / (speed_hz / 1000), 500U);
->   }
->   
->   /*---------------------------------------------------------------------------*/
+Example for a mixture of both: a new stats/params interface to user
+space will be required for the RK3568 ISP, but if this is designed to be
+general enough, it might be reused for the older ISP versions at some point.
 
+> 2. Upstreaming process and staging: I would like to know if the upstreaming 
+>    process for the RK3568 ISP driver will involve starting with the downstream 
+>    driver and adding it to the staging area. From there, would it be merged 
+>    into the media subsystem or follow a different process altogether?
+
+I think the tendency is towards skipping staging, but I don't have a say
+on that one.
+
+> 3. Permission requirements from Rockchip: To ensure a smooth upstreaming 
+>    process, I would like to know if I need any permissions or approvals from 
+>    Rockchip, the manufacturer of the RK3568 chipset. If permissions are 
+>    required, could you please guide me on how to obtain them?
+
+Downstream code is GPL'ed, so it should be fine.
+
+> I would also like to mention that while this is my first time upstreaming a 
+> full driver, I do have some experience working with the media subsystem.
+
+Cool! Just be aware that you picked a complex beast for your first full
+driver.
+
+> I am willing to devote the necessary time and effort to learn and contribute 
+> effectively to the upstreaming process also I have Rock 3A development board, 
+> which will be helpful in testing the ISP driver.
+
+What camera sensor hardware do you have?
+
+Best regards,
+Michael
+
+> 
+> Thank you very much for considering my request. I eagerly await your responses 
+> and any direction you and the mailing list members can provide.
+> 
+> Thanks & Regards,
+> Yogesh
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
