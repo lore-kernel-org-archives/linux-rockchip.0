@@ -4,117 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08AF4EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 11:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC872C001DD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 11:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cCtFoT/dRSDq+eRg/FPjWEvgxEkEEIIF05GZhRvdu30=; b=NPM9vOpN61+rTQ
-	r8L5DVkI5jXMTIh0RZ59iybhXg6VNfq6Pga8/Z20qCMNk7HVoPmZmUxoq5PzWaTyWkCqIcPn92PRl
-	kP9Rid3bkvSoghTltHfxwWIpM0tKgPEXwkQWzgVh0bAhKirzKK/ECH1XNlob4/5i9JiFSff5AqntX
-	1doH220DmJY2vjmm7zDocFBF5OG2kn1EuJhrZHpLtkhIJxu6GXCbFi6cS73Fv0R2R7hoWuOgNC2Ly
-	KJcN3aHY38Vy+mvIWrSw2XwCQplG9CjGYJFiyvdxV4XlbQJHco6wqzK6Df70VSy/OVmSxmHo+HGkO
-	vjLOvH3FlPCJDD4FzGiw==;
+	List-Owner; bh=enTfSvEQdStgnIHko5dG4zJ3Z7oLUFURiSwBsDWDWB4=; b=ShwAwCzRBVzg5U
+	zN45gvHWoxZObB2qv8Qupa6dBv4ppQ+JVoz/F/0cgqKXmsewyhxWa+srbNI/e6uKpLpZG6oRJr/6i
+	LPNxkQj/By3mYKkgZ5gMN0OPUqeOife+9BqdCXSCHt+FL7FNx90QZcIULD+y7UwewCFpzFP04Kwqs
+	f4x24Pd+8NDeiqHsZYxe3dGwRfS9KH85PlZuP3QRpAqohxxS3ggS0RTXJELlpVURxdHnfsVYQ1gij
+	OZqPuuu3ZO6nKCEIM2T+1wUpY/UcHS4qgfT37JUYHbAY5wpg33mk7a7xR4kJf0kQKtd5SJYj02hfk
+	jLT8B3bWrjEDrHG+j5Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJBI4-00Ejlz-1u;
-	Tue, 11 Jul 2023 11:12:20 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1qJBUt-00ElBR-1Y;
+	Tue, 11 Jul 2023 11:25:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJBI0-00Ejl3-2I;
-	Tue, 11 Jul 2023 11:12:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689073936; x=1720609936;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=twR4kdv8R+UGB+uDynfbksgxMKi2k7OVYCc9yUjloq8=;
-  b=KKBynze5CMpuIyfqkRGwCHesvRyiRgF8oxskHf5vbA2zYDjNImWkHPR5
-   IlyAsxeGSCKSAULjWy0gMewmiMU1sETCJnhUjgPVkPyjGow95lid5WqpF
-   LMqa4eg+LLvs9+bOx3MnwY6i69kDE/sdB1boBfjAruwfV55k0i+4qa8W5
-   OwmKNwSfbaIiUmHD2RSquE03zm3qrqQGVPyLltHCg1DjeCh6+0XtQcKxR
-   XTWD7JrU6xbO5skYm3trWSelXonfy4fkd7nye3VafhIdcLfjjcP/CRJmM
-   NcqaHyErGUx+WYtCVqZxM9GCl79RCOM8RvRKY5LkZJ6orfD40Huedk4hb
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="362053721"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="362053721"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 04:12:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="845225511"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="845225511"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga004.jf.intel.com with ESMTP; 11 Jul 2023 04:12:02 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJBHj-001pIO-15;
-	Tue, 11 Jul 2023 14:11:59 +0300
-Date: Tue, 11 Jul 2023 14:11:59 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 00/15] spi: Header and core clean up and refactoring
-Message-ID: <ZK04/8UQEaNinLoK@smile.fi.intel.com>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <58c6f76a-8028-4ce8-a101-d5feb3b40897@sirena.org.uk>
+	id 1qJBUq-00ElAB-2Q;
+	Tue, 11 Jul 2023 11:25:33 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 48BF461483;
+	Tue, 11 Jul 2023 11:25:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A945C433C8;
+	Tue, 11 Jul 2023 11:25:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689074731;
+	bh=tl42imHbEy3iWRjfOyFYAww8EzIJLYW3adn6yI+iI5A=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=pdLMUjBBFpHSm+6DzrqywRJmyFzvfBynyUZGFV8/mI/kjC4/YD9N5IMv08JrPjqKo
+	 qHcmW8M4c6HQgZ4wb/o0ssNqQiR5Fim4HIPxsKWSa74WKkKaGDt2ocdtwakBe0E24D
+	 kujpBoanjjoA8/wpp/WUIGfE9ZsiovIgJYeIy5aXqXNra7ua3+in9vF7FZC2a0zdVo
+	 HMkrCeXynIPSpbYY+UMgj7gz9nwDdjom7uNGfqF4iQ0ZxCniJFXPUVXt7W9xLpcdou
+	 grIk7g//vtph81R8BMlkLyF490ia1Na+q96mcsHi645h0E/McQxaMGdBLvrgrQRovK
+	 4Knalx9Lbl5tg==
+From: Vinod Koul <vkoul@kernel.org>
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>
+Cc: Alex Bee <knaerzche@gmail.com>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20230615171005.2251032-1-jonas@kwiboo.se>
+References: <20230615171005.2251032-1-jonas@kwiboo.se>
+Subject: Re: [PATCH v4 0/6] Support more HDMI modes on RK3228/RK3328
+Message-Id: <168907472889.198426.9725171817617360411.b4-ty@kernel.org>
+Date: Tue, 11 Jul 2023 16:55:28 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <58c6f76a-8028-4ce8-a101-d5feb3b40897@sirena.org.uk>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_041216_763839_88144C54 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20230711_042532_831900_A52C0EED 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,20 +76,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 06:31:12PM +0100, Mark Brown wrote:
-> On Mon, Jul 10, 2023 at 06:49:17PM +0300, Andy Shevchenko wrote:
-> > Various cleanups and refactorings of the SPI header and core parts
-> > united in a single series. It also touches drivers under SPI subsystem
-> > folder on the pure renaming purposes of some constants.
+
+On Thu, 15 Jun 2023 17:10:15 +0000, Jonas Karlman wrote:
+> This is a revival of a 3+ year old series that never got picked up,
+> it contains fixes and adds support for more HDMI modes on RK3228/RK3328.
 > 
-> I've queued 1-3, 6-8 and 11- for CI thanks.
+> This v4 series contains the original v2/v3 patches targeting the inno
+> hdmi phy driver, the last patch that adds support for more HDMI modes
+> has been replaced with a new patch from Alex Bee.
+> 
+> [...]
 
-Thank you!
-Do you think patch 9 deserves to be proceeded?
+Applied, thanks!
 
+[1/6] phy/rockchip: inno-hdmi: use correct vco_div_5 macro on rk3328
+      commit: b98121a164bf4cc27dbf8a9cffd9f9e1b36dd9af
+[2/6] phy/rockchip: inno-hdmi: round fractal pixclock in rk3328 recalc_rate
+      commit: 8d2b1b97536d471ffce3f906146038dcf321ca39
+[3/6] phy/rockchip: inno-hdmi: remove unused no_c from rk3328 recalc_rate
+      commit: de25702be8fb7b822ae509e9d75413ed637cd2eb
+[4/6] phy/rockchip: inno-hdmi: do not power on rk3328 post pll on reg write
+      commit: a52df75a83e8fc322ab9383aeb4945329f9069b4
+[5/6] phy/rockchip: inno-hdmi: force set_rate on power_on
+      commit: 5bfc7c86bc45978f848f08fc483f57d4ecb5ebd4
+[6/6] phy/rockchip: inno-hdmi: add more supported pre-pll rates
+      commit: 35e7d0e3e1fa7ff94a9f82ea643d12b5c8099040
+
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
+~Vinod
 
 
 
