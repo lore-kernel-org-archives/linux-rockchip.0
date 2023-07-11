@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5A7C001DE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 17:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC3CAEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 17:34:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dbj1oi6VMdfkFFbmR48NF4WF44ykqpRnCYiXcapVT6U=; b=p55fQR0SS/b39U
-	vIF+Z00KDuRLh88JHKbwUlnchAGX0PzFS7xuUV80lWVnN0RF3J1Atm2kY4abuhAKjHDho5bQQUkBl
-	jyJA+XDrJcH3Vz3phWTVIqaIlQwrkuvau4xiHSv+/uRcJn+/unvLIcT/z6PBeheGuwCDEvRVxrL98
-	VxxfeWfGooIpLyybHBMaazUP9dcI/CsOOTUqm+Icfs10JI8bnGxG/HE/DoCBXRUfEEvQjMu6wPXRP
-	VaeNHsJ6EJ6lczqvkOBrRMu6ei0IPsWaamKZ4a73W1COH9LTAG3dXFO1MYpQtVuS0FeJQ2LWjtJLh
-	dMYuMFePqaca6W/C211g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rwWrIhWWgCkQ9QtkmIKLaU3xdbMNODYZSVmZMzJEvOI=; b=RrSjO++RW9YhNKEHGw5MOMyvSt
+	lVC2t5ozsEQFN9hg9VO+ow9w5yPpcT26wMCaVfiMb3v7xJIJ1jWE42rA3pKAHS/PPecvJvkHMg3N8
+	EDjBjCj2tVN4jnAVMROLpDQWorxBu4GRELhWCUFxc38+SPB+cCLAJQV04q0GX+IEC4eL6sczAzV0s
+	d4fNUW36A/hpzd+3VH3I/xxY0PoJG1iQfl1HIyQzjrTxzjehss9VcyVyI3AyrCKfOry+ZNNFpWN2q
+	k9qYRTnl3f1wYHV/yRdq/bMXGdIbU2Uw7cmUawbcZ5r+9siYCllVVOGgZsKgTxakjxgO2xk0XCQTR
+	0FfOLbMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH2C-00FWM2-1F;
-	Tue, 11 Jul 2023 17:20:20 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1qJHFc-00FYne-19;
+	Tue, 11 Jul 2023 17:34:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1N-00FVLC-2M;
-	Tue, 11 Jul 2023 17:19:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689095969; x=1720631969;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=8Fi7Z+SejqB8FmLnWihYsJBZfmhjua3hB69p3/WVjRY=;
-  b=HSXQOYx6V/N/LR+mkyui7Rr80ZXmGq3qS8pkg+7LjmJ1xSWEPex0sUG7
-   faPutf8jNETBPUBPCaapgler2eRd98fqCFc0WaZE7D2XK7n1vAtkdc+7S
-   sco9kuS9nk37rs1k0MsV+HPRV1E/FRrY8NlNv+SbvQgNxdKfTXWogiuqO
-   y6DpxazzuLqrPy2L1fsx5iuJWswZ7MFDTaNObkhm/rqzY1hawvXzaad7p
-   BQoUfy2CwnnovfjLNLrhS/PC8lBJZHbt+OPQxy+sJXpKyYg58n7Qr1uNi
-   GtZ3cxauZxc6Y7O4/B8KjlYHVXwANcRhyd9dMDsZua5JJP/DnWekuleSe
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148997"
-X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="362148997"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240987"
-X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="715240987"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:18:06 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id DE1AC7AB; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>,
+	id 1qJHFV-00FYlK-2j;
+	Tue, 11 Jul 2023 17:34:07 +0000
+Received: from mercury (dyndsl-091-248-213-212.ewe-ip-backbone.de [91.248.213.212])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 033A86606FD5;
+	Tue, 11 Jul 2023 18:34:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689096844;
+	bh=xTQ0mmZSKT6xaRW2cSSnwsyXZRn21W+fLOIKOFiv5HU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=H4apaSnHRDvSkpSCkk+wyU65Ngqr9P5JyDBeie6RLPAeIF/a84cxGH59ddGSbX5qw
+	 63kfAbpaiUnhKnAjL7v46VWmzE4FkX9fEEyauEpMkG3DYbKmfvZvGjPGtA+xeI6swf
+	 kjXbLmO76/FOA8FnaeGqaVHoSCSKZ347Op8QNSbAV1AHFtd/woPULZ7cp0Xe7t6lvK
+	 j+oEiKCypr4OaNiLGZi4zRujwMiEhT9wkldDGMRFDyKdZJ0dEmjL8X+4AzL1KA1Sn6
+	 6BSpra8CwZ37kLECStDWmCD4Br675HzuR2KsJ6ZFQzDp7r6efy1uSO15+pqJdv0f+r
+	 Or4DZYoJuC/iQ==
+Received: by mercury (Postfix, from userid 1000)
+	id B8CBE106765E; Tue, 11 Jul 2023 19:34:01 +0200 (CEST)
+Date: Tue, 11 Jul 2023 19:34:01 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Yang Yingliang <yangyingliang@huawei.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
 	Serge Semin <fancer.lancer@gmail.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
 	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
 	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
 	Radu Pirea <radu_nicolae.pirea@upb.ro>,
 	Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
@@ -105,18 +95,17 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v3 13/14] spi: Convert to SPI_CONTROLLER_HALF_DUPLEX
-Date: Tue, 11 Jul 2023 20:17:55 +0300
-Message-Id: <20230711171756.86736-14-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
-In-Reply-To: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v3 04/14] spi: Remove code duplication in
+ spi_add_device*()
+Message-ID: <20230711173401.kz7or6ucurhoe4er@mercury.elektranox.org>
 References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
+ <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_101929_820405_F6D057BC 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20230711_103406_166247_578D01A3 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,190 +117,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3302343101781854697=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the users under SPI subsystem to SPI_CONTROLLER_HALF_DUPLEX.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/spi/spi-amd.c             | 2 +-
- drivers/spi/spi-cavium-thunderx.c | 2 +-
- drivers/spi/spi-falcon.c          | 2 +-
- drivers/spi/spi-lp8841-rtc.c      | 2 +-
- drivers/spi/spi-mxs.c             | 2 +-
- drivers/spi/spi-omap-uwire.c      | 2 +-
- drivers/spi/spi-pic32-sqi.c       | 2 +-
- drivers/spi/spi-qcom-qspi.c       | 2 +-
- drivers/spi/spi-rockchip-sfc.c    | 2 +-
- drivers/spi/spi-sprd-adi.c        | 2 +-
- drivers/spi/spi-ti-qspi.c         | 2 +-
- drivers/spi/spi-xcomm.c           | 2 +-
- 12 files changed, 12 insertions(+), 12 deletions(-)
+--===============3302343101781854697==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nr4764lrwkknwz4l"
+Content-Disposition: inline
 
-diff --git a/drivers/spi/spi-amd.c b/drivers/spi/spi-amd.c
-index fecead757a3c..b19766571f28 100644
---- a/drivers/spi/spi-amd.c
-+++ b/drivers/spi/spi-amd.c
-@@ -404,7 +404,7 @@ static int amd_spi_probe(struct platform_device *pdev)
- 	master->bus_num = 0;
- 	master->num_chipselect = 4;
- 	master->mode_bits = 0;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->max_speed_hz = AMD_SPI_MAX_HZ;
- 	master->min_speed_hz = AMD_SPI_MIN_HZ;
- 	master->setup = amd_spi_master_setup;
-diff --git a/drivers/spi/spi-cavium-thunderx.c b/drivers/spi/spi-cavium-thunderx.c
-index 60c0d6934654..535f7eb9fa69 100644
---- a/drivers/spi/spi-cavium-thunderx.c
-+++ b/drivers/spi/spi-cavium-thunderx.c
-@@ -64,7 +64,7 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
- 		p->sys_freq = SYS_FREQ_DEFAULT;
- 	dev_info(dev, "Set system clock to %u\n", p->sys_freq);
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->num_chipselect = 4;
- 	master->mode_bits = SPI_CPHA | SPI_CPOL | SPI_CS_HIGH |
- 			    SPI_LSB_FIRST | SPI_3WIRE;
-diff --git a/drivers/spi/spi-falcon.c b/drivers/spi/spi-falcon.c
-index 4c103dff0d44..8a8414cbb400 100644
---- a/drivers/spi/spi-falcon.c
-+++ b/drivers/spi/spi-falcon.c
-@@ -401,7 +401,7 @@ static int falcon_sflash_probe(struct platform_device *pdev)
- 	priv->master = master;
- 
- 	master->mode_bits = SPI_MODE_3;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->setup = falcon_sflash_setup;
- 	master->transfer_one_message = falcon_sflash_xfer_one;
- 	master->dev.of_node = pdev->dev.of_node;
-diff --git a/drivers/spi/spi-lp8841-rtc.c b/drivers/spi/spi-lp8841-rtc.c
-index ccaa7a946359..c6810720b3b5 100644
---- a/drivers/spi/spi-lp8841-rtc.c
-+++ b/drivers/spi/spi-lp8841-rtc.c
-@@ -191,7 +191,7 @@ spi_lp8841_rtc_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	platform_set_drvdata(pdev, master);
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->mode_bits = SPI_CS_HIGH | SPI_3WIRE | SPI_LSB_FIRST;
- 
- 	master->bus_num = pdev->id;
-diff --git a/drivers/spi/spi-mxs.c b/drivers/spi/spi-mxs.c
-index 963a53dd680b..cd0e7ae07162 100644
---- a/drivers/spi/spi-mxs.c
-+++ b/drivers/spi/spi-mxs.c
-@@ -572,7 +572,7 @@ static int mxs_spi_probe(struct platform_device *pdev)
- 	master->mode_bits = SPI_CPOL | SPI_CPHA;
- 	master->num_chipselect = 3;
- 	master->dev.of_node = np;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->auto_runtime_pm = true;
- 
- 	spi = spi_master_get_devdata(master);
-diff --git a/drivers/spi/spi-omap-uwire.c b/drivers/spi/spi-omap-uwire.c
-index 902d2e0c1f2f..f89aa9e52c23 100644
---- a/drivers/spi/spi-omap-uwire.c
-+++ b/drivers/spi/spi-omap-uwire.c
-@@ -486,7 +486,7 @@ static int uwire_probe(struct platform_device *pdev)
- 	/* the spi->mode bits understood by this driver: */
- 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
- 	master->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 16);
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 
- 	master->bus_num = 2;	/* "official" */
- 	master->num_chipselect = 4;
-diff --git a/drivers/spi/spi-pic32-sqi.c b/drivers/spi/spi-pic32-sqi.c
-index 51dfb49523f3..5cbebcf26a2a 100644
---- a/drivers/spi/spi-pic32-sqi.c
-+++ b/drivers/spi/spi-pic32-sqi.c
-@@ -648,7 +648,7 @@ static int pic32_sqi_probe(struct platform_device *pdev)
- 	master->dev.of_node	= pdev->dev.of_node;
- 	master->mode_bits	= SPI_MODE_3 | SPI_MODE_0 | SPI_TX_DUAL |
- 				  SPI_RX_DUAL | SPI_TX_QUAD | SPI_RX_QUAD;
--	master->flags		= SPI_MASTER_HALF_DUPLEX;
-+	master->flags		= SPI_CONTROLLER_HALF_DUPLEX;
- 	master->can_dma		= pic32_sqi_can_dma;
- 	master->bits_per_word_mask	= SPI_BPW_RANGE_MASK(8, 32);
- 	master->transfer_one_message	= pic32_sqi_one_message;
-diff --git a/drivers/spi/spi-qcom-qspi.c b/drivers/spi/spi-qcom-qspi.c
-index a8a683d6145c..5a98c52bad32 100644
---- a/drivers/spi/spi-qcom-qspi.c
-+++ b/drivers/spi/spi-qcom-qspi.c
-@@ -724,7 +724,7 @@ static int qcom_qspi_probe(struct platform_device *pdev)
- 	master->mode_bits = SPI_MODE_0 |
- 			    SPI_TX_DUAL | SPI_RX_DUAL |
- 			    SPI_TX_QUAD | SPI_RX_QUAD;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->prepare_message = qcom_qspi_prepare_message;
- 	master->transfer_one = qcom_qspi_transfer_one;
- 	master->handle_err = qcom_qspi_handle_err;
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 583f4187f030..bd550e76ab3d 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -565,7 +565,7 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 	if (!master)
- 		return -ENOMEM;
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->mem_ops = &rockchip_sfc_mem_ops;
- 	master->dev.of_node = pdev->dev.of_node;
- 	master->mode_bits = SPI_TX_QUAD | SPI_TX_DUAL | SPI_RX_QUAD | SPI_RX_DUAL;
-diff --git a/drivers/spi/spi-sprd-adi.c b/drivers/spi/spi-sprd-adi.c
-index 22e39c4c12c4..94d16aadfa44 100644
---- a/drivers/spi/spi-sprd-adi.c
-+++ b/drivers/spi/spi-sprd-adi.c
-@@ -580,7 +580,7 @@ static int sprd_adi_probe(struct platform_device *pdev)
- 	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->bus_num = pdev->id;
- 	ctlr->num_chipselect = num_chipselect;
--	ctlr->flags = SPI_MASTER_HALF_DUPLEX;
-+	ctlr->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	ctlr->bits_per_word_mask = 0;
- 	ctlr->transfer_one = sprd_adi_transfer_one;
- 
-diff --git a/drivers/spi/spi-ti-qspi.c b/drivers/spi/spi-ti-qspi.c
-index 5914335ff63d..bf4b40289bee 100644
---- a/drivers/spi/spi-ti-qspi.c
-+++ b/drivers/spi/spi-ti-qspi.c
-@@ -770,7 +770,7 @@ static int ti_qspi_probe(struct platform_device *pdev)
- 
- 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_RX_DUAL | SPI_RX_QUAD;
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->setup = ti_qspi_setup;
- 	master->auto_runtime_pm = true;
- 	master->transfer_one_message = ti_qspi_start_transfer_one;
-diff --git a/drivers/spi/spi-xcomm.c b/drivers/spi/spi-xcomm.c
-index ae6218bcd02a..a3d57554f5ba 100644
---- a/drivers/spi/spi-xcomm.c
-+++ b/drivers/spi/spi-xcomm.c
-@@ -218,7 +218,7 @@ static int spi_xcomm_probe(struct i2c_client *i2c)
- 	master->num_chipselect = 16;
- 	master->mode_bits = SPI_CPHA | SPI_CPOL | SPI_3WIRE;
- 	master->bits_per_word_mask = SPI_BPW_MASK(8);
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->transfer_one_message = spi_xcomm_transfer_one;
- 	master->dev.of_node = i2c->dev.of_node;
- 	i2c_set_clientdata(i2c, master);
--- 
-2.40.0.1.gaa8946217a0b
 
+--nr4764lrwkknwz4l
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue, Jul 11, 2023 at 08:17:46PM +0300, Andy Shevchenko wrote:
+> The commit 0c79378c0199 ("spi: add ancillary device support")
+> added a dozen of duplicating lines of code. We may move them
+> to the __spi_add_device(). Note, that the code may be called
+> under the mutex.
+>=20
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+> ---
+>  drivers/spi/spi.c | 32 ++++++++++----------------------
+>  1 file changed, 10 insertions(+), 22 deletions(-)
+>=20
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index 6d74218cf38e..876d40d2c708 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -631,6 +631,16 @@ static int __spi_add_device(struct spi_device *spi)
+>  	struct device *dev =3D ctlr->dev.parent;
+>  	int status;
+> =20
+> +	/* Chipselects are numbered 0..max; validate. */
+> +	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> +		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> +			ctlr->num_chipselect);
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Set the bus ID string */
+> +	spi_dev_set_name(spi);
+> +
+>  	/*
+>  	 * We need to make sure there's no other device with this
+>  	 * chipselect **BEFORE** we call setup(), else we'll trash
+> @@ -689,19 +699,8 @@ static int __spi_add_device(struct spi_device *spi)
+>  int spi_add_device(struct spi_device *spi)
+>  {
+>  	struct spi_controller *ctlr =3D spi->controller;
+> -	struct device *dev =3D ctlr->dev.parent;
+>  	int status;
+> =20
+> -	/* Chipselects are numbered 0..max; validate. */
+> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> -			ctlr->num_chipselect);
+> -		return -EINVAL;
+> -	}
+> -
+> -	/* Set the bus ID string */
+> -	spi_dev_set_name(spi);
+> -
+>  	mutex_lock(&ctlr->add_lock);
+>  	status =3D __spi_add_device(spi);
+>  	mutex_unlock(&ctlr->add_lock);
+> @@ -712,17 +711,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
+>  static int spi_add_device_locked(struct spi_device *spi)
+>  {
+>  	struct spi_controller *ctlr =3D spi->controller;
+> -	struct device *dev =3D ctlr->dev.parent;
+> -
+> -	/* Chipselects are numbered 0..max; validate. */
+> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> -			ctlr->num_chipselect);
+> -		return -EINVAL;
+> -	}
+> -
+> -	/* Set the bus ID string */
+> -	spi_dev_set_name(spi);
+> =20
+>  	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
+>  	return __spi_add_device(spi);
+> --=20
+> 2.40.0.1.gaa8946217a0b
+>=20
+
+--nr4764lrwkknwz4l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmStkn4ACgkQ2O7X88g7
++pormhAAnK4ipkeSKHu0xl8agX+r1Ks97iOFEMGG8+gzX4xY/hXNKVPfgpoWdNZa
+rN+CMPEFa2M5kKdm7v6s7wv2A/R0bRMIwUrHhMxAVBKQSNlp47s2N/PBkCgghK7x
+dOCmH/DDN17c1ODn8FJUD/WO5p1/grLRg1mUoNQvVqLVz7jQBx+oOZxG1Fm2e5pb
+suAySbAqDtYVper0iqZhu1BwDjFxj7l/+kXhJWt+mtgFq1shfCwdfK+gm9Z1hJ4B
+kDa1PZSzlIbs8znfYFu8n7gPJIN/nplWGmWgFAbwex3GxdZbSrO58X4m2B0fooFg
+xQ3w3b710ONolovhZktxkx7nibXjJiVFQwgS7BPRquCjCEok5jNmuyVJmu9Pud0s
+nRDWYic0TKErHny9NYCTwdJQX5ZkDIV9QpjVyp5FR7e/ylT8chmX1LwnsKZSd91j
+TN9+lh3yU6BjbjopIAFAhP5BvYeYMI2tvbXpCC3iiqGno53AZUyP5dXBupB/zri7
+bwN6fXNXsuVX0JJH3CHCm13ZK9IFY8GHGqLJBUulYVyaXSLOimXhi/l6bkkhvzxN
+IKpuSWUPTxAVu9q5LxsOWS45GXR0oWiiKL7tOcaX1yJypn+5lKy+4yStvF0cER9d
+NdLreesrYaGS2zSH4qIA7m8dd2oaqPtYCa1VHzxRfLcNsnyCoXY=
+=zPs/
+-----END PGP SIGNATURE-----
+
+--nr4764lrwkknwz4l--
+
+
+--===============3302343101781854697==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3302343101781854697==--
+
