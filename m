@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D367C001DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jul 2023 20:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD71CEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 07:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g1k6mMs86XQVzppvHGCbPq/diOdI/w2G6uRfLPit81U=; b=a222gqqv9IgtEa
-	bqPhRlhgDawo41gVWDxc7TDbm5ZaMJj9JBkoyBLNB7ZusqdLdhUFejfYHEFR6WY4C3R5JkmLOVfqp
-	7ubXMZtZ0/ZYCx+H5hXr5ewoqcrJzZdO4IG/rO0nV+OWTJt9hIhy2XUIuibHWU0+hvsRigSLV5isy
-	wRxwDl0TmBWM4aWaAhiumqbFRI9GN48Q7b0lswtCjEOwPbsTAG5eDiTSiwgkB1BcoNBXWB9iHTwqj
-	qkpAod/K15dmFLPAQhzz0yV3D/PDkQJkj6//UWUjeY5Tqu1PXSmNQ+ara9Ld9Q2F6aVcqAn/1p8/V
-	8AbaJEicBdcgF+n2nGnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7LV5eSCCfVEkhJUh20Cen0AFnHLKMlfkoUmO7nu/1WU=; b=XYD5RhDpc0oBar
+	BHje4lYK1sSah9qmQD32tLI50UZW+3osHHcb9YMhudnzQW8fXhq3WcYsR8BlvM2Sx3UL60PEx4T//
+	n/mksOWhljJRdNwtBmIGahxtVsyD9Es+QaJU0zGxnuEYIzGbyqFBLZEwqkf5KtTqDT/1ojpd+4tLz
+	tT9ywfDSvPyOUf2CtFo1B5lD0V9vAAcQ6kqGE3iXO7JtgMMXRZpgnXbtyuzDc4l9TqA0IsxgfDmsj
+	NmgNm4uOr6sgEbPPUBnJyYxu/1piPvEPM9XJ+XWPChXb+mMXZubrzsha103Bb/SV8wQGSLcJUIwBN
+	gmNQXT4Vj7jr9YaAUnWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIxAw-00Ccur-2I;
-	Mon, 10 Jul 2023 20:08:02 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qJ7XE-00Dxbx-02;
+	Tue, 11 Jul 2023 07:11:44 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIxAt-00Cctn-0i;
-	Mon, 10 Jul 2023 20:08:01 +0000
-Received: from [192.168.0.43] (cpc141996-chfd3-2-0-cust928.12-3.cable.virginm.net [86.13.91.161])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E7B66DA7;
-	Mon, 10 Jul 2023 22:07:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1689019622;
-	bh=b6g3oIdEKQxnDikMS0wynyZDArLACBjT5ZIcmeg3v9w=;
-	h=Date:To:Cc:References:From:Subject:In-Reply-To:From;
-	b=U0tAI4vNt8LCiXM14focRttedaed7oUBa8A2iflHlEr9m+EGa98Fb6O48OKzLmi/5
-	 R7gmg0wgEOS5d2NKXe7a6ZJhxHnzj6L3suk9UwHyJKL1Mv9MkVrtRsw6j9gGUrop0U
-	 0BsRYBSaLrIN6VyZkdqzfaarHdfIbAntMYCPEUnc=
-Message-ID: <018f882a-1dc0-c18e-b582-d6616668c720@ideasonboard.com>
-Date: Mon, 10 Jul 2023 21:07:46 +0100
+	id 1qJ7XC-00DxZu-0C
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Jul 2023 07:11:43 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-66869feb7d1so2735237b3a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Jul 2023 00:11:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689059497; x=1691651497;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=f+HRfPdNbemAMHJzpUwGfU6FG6qMTvaMgkLxb5q5cyQ=;
+        b=IuVjFed0jdcR25f2UeOVaOCfr7YMauUJkrfEwZgo+hI/MBWQwvGi7fs8ra1uDTBsmh
+         NGn/LgTh2y3q5G5WvV0BWxLnsXFN/pTmbhEboUguj514EGL9Tk3YNkTrKN9CBwgSNIZI
+         iX2w4N9zZ/sLFwPgFMbIE1MTdmBcGZEcGKCz+CTnM0b6UImjQXstuW/CzB1xh3H46LXb
+         E58Jxb6BrQS0VcZ84Eh8TytYoGXXzB4QyOvfBbKzTtoSqNqvKwtIjhGSCy8jwU+a88iJ
+         tnsBIyv5XNVMI+drfZd3DIdXFwGQqjEloFeOOFcHgbhSigzp2zqg/Hf12+WL9kEolaCe
+         5zzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689059497; x=1691651497;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=f+HRfPdNbemAMHJzpUwGfU6FG6qMTvaMgkLxb5q5cyQ=;
+        b=jLToNO3dRZK2+rWu3m8BZVwb8Uv4vhZNopQb54cmjOgjra91vDFPZELgA2Yrjd7meh
+         x78SzQucCZ3pM9Ujixa0KrUVG7zhNYr5dTXKbQs8aQA+8jQsiqa6qLNLm9Jbc8XrKOk/
+         fs56szZBhx2P1Azjd/iI7bLi9uZD8kS04PwYvfhIRr+7iP2mzph3uSanr0h98f5LjUbI
+         MN8d2c7vw8otcvIS9KVF+mUAAPwbLwhOd8wAFSS0CdNjeKIHBjnUOJSBTDzBWEeWAwQN
+         UBp7+kaenhCbH/9zL63xuEjt45aC6piGGiVWYuDnOLJEXwLSZP/aEq9xQabc6YBLy4WO
+         7p1w==
+X-Gm-Message-State: ABy/qLZkyam0rjtqh0L4b6XQqdIWbeqQq2pdR/eOp/y6oJG7DmMV7Ln0
+	elLCRDl04uZ1b4E1Yyrh+9gaSzMFRAo=
+X-Google-Smtp-Source: APBJJlEhCX/8jonHXnKcXZ+EHUo86IIc05FYgEKMmnQulhN1eGsjT8uVTSvH6RTsuoFZME40d2EWYA==
+X-Received: by 2002:a05:6a00:1a55:b0:668:74e9:8efb with SMTP id h21-20020a056a001a5500b0066874e98efbmr13422724pfv.8.1689059497511;
+        Tue, 11 Jul 2023 00:11:37 -0700 (PDT)
+Received: from zephyrusG14 ([103.251.210.195])
+        by smtp.gmail.com with ESMTPSA id x2-20020a056a00270200b0066a613c4a58sm974469pfv.102.2023.07.11.00.11.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 00:11:37 -0700 (PDT)
+Date: Tue, 11 Jul 2023 12:41:32 +0530
+From: Yogesh Hegde <yogi.kernel@gmail.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: skhan@linuxfoundation.org, ivan.orlov0322@gmail.com,
+	kernelnewbies@kernelnewbies.org
+Subject: Seeking guidance for Adding ISP Driver for RK3568
+Message-ID: <ZK0ApOXkmkSO98kM@zephyrusG14>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-To: Rob Herring <robh@kernel.org>, Conor Dooley <conor@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Daniel Scally <djrscally@gmail.com>,
- Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
- Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20230707210604.868002-1-robh@kernel.org>
- <20230710-unsold-simplify-5a339036ff38@spud>
- <CAL_JsqJOW7kxC4m8tCmNrD6pq5y73BjV236nb+ZHAhR4rDrNvw@mail.gmail.com>
-Content-Language: en-US
-From: Dan Scally <dan.scally@ideasonboard.com>
-Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
-In-Reply-To: <CAL_JsqJOW7kxC4m8tCmNrD6pq5y73BjV236nb+ZHAhR4rDrNvw@mail.gmail.com>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_130759_435347_59CE6AD0 
-X-CRM114-Status: GOOD (  22.75  )
+X-CRM114-CacheID: sfid-20230711_001142_095804_6408A6B0 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,125 +86,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gYm90aAoKT24gMTAvMDcvMjAyMyAxODo1NywgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24g
-TW9uLCBKdWwgMTAsIDIwMjMgYXQgMTE6NDXigK9BTSBDb25vciBEb29sZXkgPGNvbm9yQGtlcm5l
-bC5vcmc+IHdyb3RlOgo+PiBPbiBGcmksIEp1bCAwNywgMjAyMyBhdCAwMzowNjowNFBNIC0wNjAw
-LCBSb2IgSGVycmluZyB3cm90ZToKPj4+IFRoZSBPVjU2OTUgYmluZGluZyBpcyBhbG1vc3QgdGhl
-IHNhbWUgYXMgdGhlIE9WNTY5MyBiaW5kaW5nLiBUaGUgb25seQo+Pj4gZGlmZmVyZW5jZSBpcyAn
-Y2xvY2stbmFtZXMnIGlzIGRlZmluZWQgZm9yIE9WNTY5NS4gSG93ZXZlciwgdGhlIGxhY2sgb2YK
-Pj4+IGNsb2NrLW5hbWVzIGlzIGFuIG9taXNzaW9uIGFzIHRoZSBMaW51eCBPVjU2OTMgZHJpdmVy
-IGV4cGVjdHMgdGhlIHNhbWUKPj4+ICd4dmNsaycgY2xvY2sgbmFtZS4KPj4+Cj4+PiAnbGluay1m
-cmVxdWVuY2llcycgaXMgcmVxdWlyZWQgYnkgT1Y1NjkzLCBidXQgbm90IE9WNTY5NS4gSnVzdCBk
-cm9wIGl0Cj4+PiBmcm9tIGJlaW5nIHJlcXVpcmVkLiBFeHByZXNzaW5nIGl0IGNvbmRpdGlvbmFs
-bHkgd291bGQgYmUgdWdseS4gSXQKPj4+IHNob3VsZG4ndCByZWFsbHkgYmUgcmVxdWlyZWQgZWl0
-aGVyIGFzIHRoZSBkcml2ZXIgb25seSBzdXBwb3J0cyAxCj4+PiBmcmVxdWVuY3kgYW55d2F5cy4K
-Pj4gSSBzdXBwb3NlIHRoZSBpbnRlbnQgaGVyZSBpcyBzb21ldGhpbmcgbGlrZSAidGhlIGRyaXZl
-ciBvbmx5IHN1cHBvcnRzIDEKPj4gZnJlcXVlbmN5IGFuZCBuZXZlciBib3RoZXJzIHRvIHJlYWQg
-dGhlIHByb3BlcnR5Ij8KPiBJdCBkb2VzIHJlYWQgaXQgYW5kIGZhaWxzIGlmIGl0IGRvZXNuJ3Qg
-bWF0Y2guIEkgZG9uJ3QgcmVhbGx5IHRoaW5rCj4gdGhlIGRyaXZlciBzaG91bGQgaWYgdGhlcmUg
-aXMgb25seSAxIGZyZXEuIEkgZG9uJ3Qga25vdyBpZiBpdCdzIHRoYXQKPiB0aGUgaHcgb25seSBz
-dXBwb3J0cyAxIGZyZXF1ZW5jeSBvciBhIGRyaXZlciBsaW1pdGF0aW9uLiBJZiB0aGUgaC93LAo+
-IHRoZW4gdGhlIHByb3BlcnR5IGlzIHBvaW50bGVzcy4KCgpJdCdzIGEgZHJpdmVyIGxpbWl0YXRp
-b24uIElmIHNvbWVvbmUgbmVlZGVkIHRvIHJ1biBhIGRpZmZlcmVudCBsaW5rIGZyZXF1ZW5jeSB0
-aGV5IGNvdWxkIGFkZCAKc2V0dGluZ3MgdG8gdGhlIGRyaXZlciB0byBjb25maWd1cmUgdGhlIFBM
-THMgZGlmZmVyZW50bHkuCgo+Cj4KPj4gRWl0aGVyIHdheSwKPj4gUmV2aWV3ZWQtYnk6IENvbm9y
-IERvb2xleSA8Y29ub3IuZG9vbGV5QG1pY3JvY2hpcC5jb20+Cj4+Cj4+IENoZWVycywKPj4gQ29u
-b3IuCj4+Cj4+PiBUaGUgcm9ja2NoaXAtaXNwMSBiaW5kaW5nIGV4YW1wbGUgaXMgbWlzc2luZyBy
-ZXF1aXJlZCBwcm9wZXJ0aWVzLCBzbyBpdAo+Pj4gaGFzIHRvIGJlIHVwZGF0ZWQgYXMgd2VsbC4K
-Pj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+Pj4g
-LS0tCj4+PiAgIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL2kyYy9vdjU2OTUudHh0ICB8
-IDQxIC0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+ICAgLi4uL2JpbmRpbmdzL21lZGlhL2kyYy9vdnRp
-LG92NTY5My55YW1sICAgICAgIHwgMTkgKysrKystLS0tCj4+PiAgIC4uLi9iaW5kaW5ncy9tZWRp
-YS9yb2NrY2hpcC1pc3AxLnlhbWwgICAgICAgICB8ICAxICsKPj4+ICAgMyBmaWxlcyBjaGFuZ2Vk
-LCAxMyBpbnNlcnRpb25zKCspLCA0OCBkZWxldGlvbnMoLSkKPj4+ICAgZGVsZXRlIG1vZGUgMTAw
-NjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9pMmMvb3Y1Njk1LnR4
-dAo+Pj4KPj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-bWVkaWEvaTJjL292NTY5NS50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-bWVkaWEvaTJjL292NTY5NS50eHQKPj4+IGRlbGV0ZWQgZmlsZSBtb2RlIDEwMDY0NAo+Pj4gaW5k
-ZXggNjQwYTYzNzE3ZDk2Li4wMDAwMDAwMDAwMDAKPj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9pMmMvb3Y1Njk1LnR4dAo+Pj4gKysrIC9kZXYvbnVsbAo+
-Pj4gQEAgLTEsNDEgKzAsMCBAQAo+Pj4gLSogT21uaXZpc2lvbiBPVjU2OTUgTUlQSSBDU0ktMiBz
-ZW5zb3IKPj4+IC0KPj4+IC1SZXF1aXJlZCBQcm9wZXJ0aWVzOgo+Pj4gLS0gY29tcGF0aWJsZTog
-c2hhbGwgYmUgIm92dGksb3Y1Njk1Igo+Pj4gLS0gY2xvY2tzOiByZWZlcmVuY2UgdG8gdGhlIHh2
-Y2xrIGlucHV0IGNsb2NrCj4+PiAtLSBjbG9jay1uYW1lczogc2hhbGwgYmUgInh2Y2xrIgo+Pj4g
-LS0gYXZkZC1zdXBwbHk6IEFuYWxvZyB2b2x0YWdlIHN1cHBseSwgMi44IHZvbHRzCj4+PiAtLSBk
-b3ZkZC1zdXBwbHk6IERpZ2l0YWwgSS9PIHZvbHRhZ2Ugc3VwcGx5LCAxLjggdm9sdHMKPj4+IC0t
-IGR2ZGQtc3VwcGx5OiBEaWdpdGFsIGNvcmUgdm9sdGFnZSBzdXBwbHksIDEuMiB2b2x0cwo+Pj4g
-LS0gcmVzZXQtZ3Bpb3M6IExvdyBhY3RpdmUgcmVzZXQgZ3Bpbwo+Pj4gLQo+Pj4gLVRoZSBkZXZp
-Y2Ugbm9kZSBzaGFsbCBjb250YWluIG9uZSAncG9ydCcgY2hpbGQgbm9kZSB3aXRoIGFuCj4+PiAt
-J2VuZHBvaW50JyBzdWJub2RlIGZvciBpdHMgZGlnaXRhbCBvdXRwdXQgdmlkZW8gcG9ydCwKPj4+
-IC1pbiBhY2NvcmRhbmNlIHdpdGggdGhlIHZpZGVvIGludGVyZmFjZSBiaW5kaW5ncyBkZWZpbmVk
-IGluCj4+PiAtRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWlu
-dGVyZmFjZXMudHh0Lgo+Pj4gLVRoZSBlbmRwb2ludCBvcHRpb25hbCBwcm9wZXJ0eSAnZGF0YS1s
-YW5lcycgc2hhbGwgYmUgIjwxIDI+Ii4KPj4+IC0KPj4+IC1FeGFtcGxlOgo+Pj4gLSZpMmM3IHsK
-Pj4+IC0gICAgIG92NTY5NTogY2FtZXJhLXNlbnNvckAzNiB7Cj4+PiAtICAgICAgICAgICAgIGNv
-bXBhdGlibGUgPSAib3Z0aSxvdjU2OTUiOwo+Pj4gLSAgICAgICAgICAgICByZWcgPSA8MHgzNj47
-Cj4+PiAtICAgICAgICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+PiAtICAgICAg
-ICAgICAgIHBpbmN0cmwtMCA9IDwmY2xrXzI0bV9jYW0+Owo+Pj4gLQo+Pj4gLSAgICAgICAgICAg
-ICBjbG9ja3MgPSA8JmNydSBTQ0xLX1RFU1RDTEtPVVQxPjsKPj4+IC0gICAgICAgICAgICAgY2xv
-Y2stbmFtZXMgPSAieHZjbGsiOwo+Pj4gLQo+Pj4gLSAgICAgICAgICAgICBhdmRkLXN1cHBseSA9
-IDwmcHAyODAwX2NhbT47Cj4+PiAtICAgICAgICAgICAgIGRvdmRkLXN1cHBseSA9IDwmcHAxODAw
-PjsKPj4+IC0gICAgICAgICAgICAgZHZkZC1zdXBwbHkgPSA8JnBwMTI1MF9jYW0+Owo+Pj4gLSAg
-ICAgICAgICAgICByZXNldC1ncGlvcyA9IDwmZ3BpbzIgNSBHUElPX0FDVElWRV9MT1c+Owo+Pj4g
-LQo+Pj4gLSAgICAgICAgICAgICBwb3J0IHsKPj4+IC0gICAgICAgICAgICAgICAgICAgICB3Y2Ft
-X291dDogZW5kcG9pbnQgewo+Pj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVtb3Rl
-LWVuZHBvaW50ID0gPCZtaXBpX2luX3djYW0+Owo+Pj4gLSAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgZGF0YS1sYW5lcyA9IDwxIDI+Owo+Pj4gLSAgICAgICAgICAgICAgICAgICAgIH07Cj4+
-PiAtICAgICAgICAgICAgIH07Cj4+PiAtICAgICB9Owo+Pj4gLX07Cj4+PiBkaWZmIC0tZ2l0IGEv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL2kyYy9vdnRpLG92NTY5My55
-YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL2kyYy9vdnRpLG92
-NTY5My55YW1sCj4+PiBpbmRleCAzNTlkYzA4NDQwYTguLmEzZDczYTg3ZDc5NyAxMDA2NDQKPj4+
-IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9pMmMvb3Z0aSxv
-djU2OTMueWFtbAo+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
-ZGlhL2kyYy9vdnRpLG92NTY5My55YW1sCj4+PiBAQCAtNSwyNiArNSwyOSBAQAo+Pj4gICAkaWQ6
-IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL21lZGlhL2kyYy9vdnRpLG92NTY5My55YW1s
-Iwo+Pj4gICAkc2NoZW1hOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvbWV0YS1zY2hlbWFzL2NvcmUu
-eWFtbCMKPj4+Cj4+PiAtdGl0bGU6IE9tbml2aXNpb24gT1Y1NjkzIENNT1MgU2Vuc29yCj4+PiAr
-dGl0bGU6IE9tbml2aXNpb24gT1Y1NjkzL09WNTY5NSBDTU9TIFNlbnNvcnMKPj4+Cj4+PiAgIG1h
-aW50YWluZXJzOgo+Pj4gICAgIC0gVG9tbWFzbyBNZXJjaWFpIDx0b21tYXNvLm1lcmNpYWlAYW1h
-cnVsYXNvbHV0aW9ucy5jb20+Cj4+Pgo+Pj4gICBkZXNjcmlwdGlvbjogfAo+Pj4gLSAgVGhlIE9t
-bml2aXNpb24gT1Y1NjkzIGlzIGEgaGlnaCBwZXJmb3JtYW5jZSwgMS80LWluY2gsIDUgbWVnYXBp
-eGVsLCBDTU9TCj4+PiAtICBpbWFnZSBzZW5zb3IgdGhhdCBkZWxpdmVycyAyNTkyeDE5NDQgYXQg
-MzBmcHMuIEl0IHByb3ZpZGVzIGZ1bGwtZnJhbWUsCj4+PiArICBUaGUgT21uaXZpc2lvbiBPVjU2
-OTMvT1Y1Njk1IGFyZSBoaWdoIHBlcmZvcm1hbmNlLCAxLzQtaW5jaCwgNSBtZWdhcGl4ZWwsIENN
-T1MKPj4+ICsgIGltYWdlIHNlbnNvcnMgdGhhdCBkZWxpdmVyIDI1OTJ4MTk0NCBhdCAzMGZwcy4g
-SXQgcHJvdmlkZXMgZnVsbC1mcmFtZSwKPj4+ICAgICBzdWItc2FtcGxlZCwgYW5kIHdpbmRvd2Vk
-IDEwLWJpdCBNSVBJIGltYWdlcyBpbiB2YXJpb3VzIGZvcm1hdHMgdmlhIHRoZQo+Pj4gICAgIFNl
-cmlhbCBDYW1lcmEgQ29udHJvbCBCdXMgKFNDQ0IpIGludGVyZmFjZS4KPj4+Cj4+PiAtICBPVjU2
-OTMgaXMgY29udHJvbGxlZCB2aWEgSTJDIGFuZCB0d28td2lyZSBTZXJpYWwgQ2FtZXJhIENvbnRy
-b2wgQnVzIChTQ0NCKS4KPj4+IC0gIFRoZSBzZW5zb3Igb3V0cHV0IGlzIGF2YWlsYWJsZSB2aWEg
-Q1NJLTIgc2VyaWFsIGRhdGEgb3V0cHV0ICh1cCB0byAyLWxhbmUpLgo+Pj4gKyAgT1Y1NjkzL09W
-NTY5NSBhcmUgY29udHJvbGxlZCB2aWEgSTJDIGFuZCB0d28td2lyZSBTZXJpYWwgQ2FtZXJhIENv
-bnRyb2wgQnVzCj4+PiArICAoU0NDQikuIFRoZSBzZW5zb3Igb3V0cHV0IGlzIGF2YWlsYWJsZSB2
-aWEgQ1NJLTIgc2VyaWFsIGRhdGEgb3V0cHV0ICh1cCB0bwo+Pj4gKyAgMi1sYW5lKS4KPj4+Cj4+
-PiAgIGFsbE9mOgo+Pj4gICAgIC0gJHJlZjogL3NjaGVtYXMvbWVkaWEvdmlkZW8taW50ZXJmYWNl
-LWRldmljZXMueWFtbCMKPj4+Cj4+PiAgIHByb3BlcnRpZXM6Cj4+PiAgICAgY29tcGF0aWJsZToK
-Pj4+IC0gICAgY29uc3Q6IG92dGksb3Y1NjkzCj4+PiArICAgIGVudW06Cj4+PiArICAgICAgLSBv
-dnRpLG92NTY5Mwo+Pj4gKyAgICAgIC0gb3Z0aSxvdjU2OTUKPj4+Cj4+PiAgICAgcmVnOgo+Pj4g
-ICAgICAgbWF4SXRlbXM6IDEKPj4+IEBAIC0zNCw2ICszNyw5IEBAIHByb3BlcnRpZXM6Cj4+PiAg
-ICAgICAgIFN5c3RlbSBpbnB1dCBjbG9jayAoYWthIFhWQ0xLKS4gRnJvbSA2IHRvIDI3IE1Iei4K
-Pj4+ICAgICAgIG1heEl0ZW1zOiAxCj4+Pgo+Pj4gKyAgY2xvY2stbmFtZXM6Cj4+PiArICAgIGNv
-bnN0OiB4dmNsawo+Pj4gKwo+Pj4gICAgIGRvdmRkLXN1cHBseToKPj4+ICAgICAgIGRlc2NyaXB0
-aW9uOgo+Pj4gICAgICAgICBEaWdpdGFsIEkvTyB2b2x0YWdlIHN1cHBseSwgMS44Vi4KPj4+IEBA
-IC03Miw3ICs3OCw2IEBAIHByb3BlcnRpZXM6Cj4+Pgo+Pj4gICAgICAgICAgIHJlcXVpcmVkOgo+
-Pj4gICAgICAgICAgICAgLSBkYXRhLWxhbmVzCj4+PiAtICAgICAgICAgIC0gbGluay1mcmVxdWVu
-Y2llcwo+Pj4KPj4+ICAgcmVxdWlyZWQ6Cj4+PiAgICAgLSBjb21wYXRpYmxlCj4+PiBkaWZmIC0t
-Z2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLWlz
-cDEueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9yb2NrY2hp
-cC1pc3AxLnlhbWwKPj4+IGluZGV4IDBiYWQ3ZTY0MDE0OC4uZTQ2NmRmZjgyODZkIDEwMDY0NAo+
-Pj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlw
-LWlzcDEueWFtbAo+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
-ZGlhL3JvY2tjaGlwLWlzcDEueWFtbAo+Pj4gQEAgLTE5OSw2ICsxOTksNyBAQCBleGFtcGxlczoK
-Pj4+ICAgICAgICAgICAgICAgd2NhbTogY2FtZXJhQDM2IHsKPj4+ICAgICAgICAgICAgICAgICAg
-IGNvbXBhdGlibGUgPSAib3Z0aSxvdjU2OTUiOwo+Pj4gICAgICAgICAgICAgICAgICAgcmVnID0g
-PDB4MzY+Owo+Pj4gKyAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JmNydSBTQ0xLX1RFU1RDTEtP
-VVQxPjsKPj4+Cj4+PiAgICAgICAgICAgICAgICAgICBwb3J0IHsKPj4+ICAgICAgICAgICAgICAg
-ICAgICAgICB3Y2FtX291dDogZW5kcG9pbnQgewo+Pj4gLS0KPj4+IDIuNDAuMQo+Pj4KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+I am seeking your expert guidance and assistance in adding the ISP driver for 
+RK3568 to the Linux Kernel.
+
+Before I start, I have a few questions regarding the process of 
+adding the ISP driver for RK3568 and upstreaming it to the Linux Kernel. 
+I greatly appreciate any insights you can provide on the following points:
+
+1. Integration with existing RK3399 ISP driver: Since the ISP driver for RK3399
+   has already been upstreamed, I would like to understand if the ISP driver 
+   for RK3568 will be added to the existing RK3399 ISP driver or if it will be 
+   a completely new driver ? 
+
+2. Upstreaming process and staging: I would like to know if the upstreaming 
+   process for the RK3568 ISP driver will involve starting with the downstream 
+   driver and adding it to the staging area. From there, would it be merged 
+   into the media subsystem or follow a different process altogether? 
+
+3. Permission requirements from Rockchip: To ensure a smooth upstreaming 
+   process, I would like to know if I need any permissions or approvals from 
+   Rockchip, the manufacturer of the RK3568 chipset. If permissions are 
+   required, could you please guide me on how to obtain them? 
+
+I would also like to mention that while this is my first time upstreaming a 
+full driver, I do have some experience working with the media subsystem. 
+I am willing to devote the necessary time and effort to learn and contribute 
+effectively to the upstreaming process also I have Rock 3A development board, 
+which will be helpful in testing the ISP driver. 
+
+Thank you very much for considering my request. I eagerly await your responses 
+and any direction you and the mailing list members can provide.
+
+Thanks & Regards,
+Yogesh
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
