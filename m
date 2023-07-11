@@ -4,65 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72C0DC001DE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 07:45:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EF8EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 08:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vwTuh/qrqmwtwyQw2jEQdFyHZe3c6j9iyV6MUx08r+U=; b=3lKWLgdtenJH6t
-	0jiwt/+a5L2PEzjWcaH22qeIUN2xo4SDoefJV8pntNTkhY/+AeR+RDdpCnBYgq4AhgRZSXSH2dZiJ
-	UPA2hXa2ns0xPlsSxv4SJ6SapIFlszQWToDgm5/wlU1uKGY2FeGnfAU1qTNcBKP32J+gDWqPmLbBG
-	1a1tvWVuy4nPOb4DK9XsOkRCWrNyXiVu46suxPE4RdO3/i56fNNCGtuVd9HiiCwKMbpPybwMs2A/b
-	RM/zl0j34Io2burQ6lo4wBBZULSFOA9I6KoKGw5LPSC+4J9H4E15qZJgunFgT9OsrhLdOdUjBMjSO
-	e3QL+n47D41LpisaQqvQ==;
+	List-Owner; bh=TTlxXllff5HLUDJ7GDXRwXYj5u3AQXIkaopyompk3fw=; b=bSHSxeXtWW8AtQ
+	0jt+LfixzBvA8hkwCX8jWS1bw3V4FV5g7tS8s62HEYLxyhmN+XScrzm8i0rGeTjLaPolIzeKcqF9B
+	kZj4zHExgE3zw4TyWDVnqs5OadPzvK163+JTsIOb+j6LYnxGiGGG2JzaQz2xDdi6Pil0xiwQuEuKE
+	Wyme4/uuAaz93zuMQ69mvDkYacyuE9hPjEoxiGiru211UC7b/0o2weNYgd2Wtbz9t9i/NyQQVWb2V
+	VFVPDoE4Fl6Zu74ROFK8hd8A3l+kI5eV0F/9G3/j5vniAMxFgnS4C0rBKpm8GocreqfxUna2nJmF+
+	JBoPJAPLH2vPD5yrcsPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ83J-00E1Hc-1L;
-	Tue, 11 Jul 2023 07:44:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qJ8Uf-00E4iD-0J;
+	Tue, 11 Jul 2023 08:13:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ83G-00E1GL-0K;
-	Tue, 11 Jul 2023 07:44:51 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qJ8Ua-00E4g8-0o;
+	Tue, 11 Jul 2023 08:13:05 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9E0DA61355;
-	Tue, 11 Jul 2023 07:44:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D75AC433C7;
-	Tue, 11 Jul 2023 07:44:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689061489;
-	bh=fzY4SPbVj/3yMnNlQmbvE/VH/STLsTGDL1RF3su0iw8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=dL/YYpOZ9353AWN3aGM5uiCHHyo2O5VyjJLKXU57FPFX5v3MWFK/WAb8fwV2AjSvd
-	 IjUp6tarta5Dx8u0pkN77TUTOmHiU9mhRpznRTDAwmkHkh+nIVkWeh5T947U37whiJ
-	 oJ9db9YSPFK96gEe++nlxvYUH2FGBk25wA7Bj9XhUJXEJdgQMcTwiQ3ueYIf7Onk3l
-	 xFkN8h9Dqxffr9ocpDgO9dpBgUGT7vvUjRahukl6fcjt/0kzxvqKDp9PWuSa0CfMkM
-	 AXl6lvzeonAnzQV5oBIHv9zHznTnz19FbX1+51+QuWyGAVAln5MJaK5D95JrLAIxRi
-	 RjdSYyORuDNEQ==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- kernel@collabora.com
-In-Reply-To: <20230522170324.61349-1-sebastian.reichel@collabora.com>
-References: <20230522170324.61349-1-sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v3 0/7] phy-rockchip-inno-usb2: add RK3588 support
-Message-Id: <168906148486.189433.2848523710050580119.b4-ty@kernel.org>
-Date: Tue, 11 Jul 2023 13:14:44 +0530
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6971C660700A;
+	Tue, 11 Jul 2023 09:12:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689063180;
+	bh=2+yn6FDwMd8voKMx1WPt05JiOyMTQxbLsZaEtvbtNN4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Fx8WIExUEuJPaY5MFu8knfLP/k0C26AMfNb/AvH/Fmm0WSmwyzjbdouviC0vRIt5c
+	 MKvJLE8w0cLrlZEwxmbFWfOjjLGUQZgFi0o1pLWqgdMYxBGlFBGIjiNaupLZ6FnB33
+	 j1HPiXlommzYaYv6ce4cvKcTdjN1ewdnVTlkRjRRehst4X7XEwQxnR9ySh21JtPk6b
+	 7KLhT/OtiV9F5v6WVi5j7pxhtZflk0tkK/vKZu9Q314nRK+CtbZPcevQ7M0A64UCcq
+	 2GUJjcluoW7Hk+VgSk0dx0uk8kgwhRiKCYyXOMoe3dlhEE5DcTiXTswvygvLYV31mr
+	 rt/T478FT4VDw==
+Message-ID: <f0b9e2e4-b2c0-4336-0ec4-5afd9f1b6c72@collabora.com>
+Date: Tue, 11 Jul 2023 10:12:55 +0200
 MIME-Version: 1.0
-X-Mailer: b4 0.12.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 01/15] spi: Remove unneeded OF node NULL checks
+Content-Language: en-US
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Mark Brown <broonie@kernel.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Yang Yingliang <yangyingliang@huawei.com>,
+ Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+ Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
+ Radu Pirea <radu_nicolae.pirea@upb.ro>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Tudor Ambarus <tudor.ambarus@linaro.org>,
+ Serge Semin <fancer.lancer@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley
+ <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Alain Volmat
+ <alain.volmat@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Steven Rostedt <rostedt@goodmis.org>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_004450_179327_F112D0A8 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20230711_011304_424574_2B9C68D4 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,50 +107,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 22 May 2023 19:03:17 +0200, Sebastian Reichel wrote:
-> This adds RK3588 to the Rockchip Inno USB2 PHY driver. The RK3588 has four of
-> them. Two are used for USB2 and two are used by USB3 controllers (for USB2
-> fallback mode). All of them can be used with this patchset.
+Il 10/07/23 17:49, Andy Shevchenko ha scritto:
+> In the couple of places the NULL check of OF node is implied by the call
+> that takes it as a parameter. Drop the respective duplicate checks.
 > 
-> Changes since PATCHv2:
->  * https://lore.kernel.org/linux-phy/20230403202307.120562-1-sebastian.reichel@collabora.com/
->  * Dropped patch adding the syscon compatible to the DT binding (applied by Heiko)
->  * Collected Reviewed-by from Rob Herring for DT binding patch (DT binding)
->  * Rebased to v6.4-rc1
->  * Removed superfluous init found by Vinod Koul
->  * Added one additional patch improving the error message for missing phy-config
->  * Fixed address_cells=2 code to not break the PHY at offset 0. I didn't notice it with the
->    previous versions, since that PHY is used for USB3 on Rockchip evaluation board and I
->    only started working on that recently.
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+Validated against spi-mt65xx, spi-mt7621, spi-mtk-nor, spi-mtk-snfi;
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> # 
+MediaTek
+
+> ---
+>   drivers/spi/spi.c | 5 +----
+>   1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> [...]
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index 9291b2a0e887..8f3282a71c63 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -2399,9 +2399,6 @@ static void of_register_spi_devices(struct spi_controller *ctlr)
+>   	struct spi_device *spi;
+>   	struct device_node *nc;
+>   
+> -	if (!ctlr->dev.of_node)
+> -		return;
+> -
+>   	for_each_available_child_of_node(ctlr->dev.of_node, nc) {
+>   		if (of_node_test_and_set_flag(nc, OF_POPULATED))
+>   			continue;
+> @@ -3134,7 +3131,7 @@ int spi_register_controller(struct spi_controller *ctlr)
+>   		if (WARN(id < 0, "couldn't get idr"))
+>   			return id == -ENOSPC ? -EBUSY : id;
+>   		ctlr->bus_num = id;
+> -	} else if (ctlr->dev.of_node) {
+> +	} else {
+>   		/* Allocate dynamic bus number using Linux idr */
+>   		id = of_alias_get_id(ctlr->dev.of_node, "spi");
+>   		if (id >= 0) {
 
-Applied, thanks!
-
-[1/7] dt-bindings: phy: rockchip,inno-usb2phy: add rk3588
-      commit: 26720f89ee6878ef505812e852a3e914b7cbfe44
-[2/7] phy: phy-rockchip-inno-usb2: add rk3588 support
-      commit: 52b99b871eb79637342660b46c900642483d4412
-[3/7] phy: phy-rockchip-inno-usb2: add reset support
-      commit: 44d88aa9ae81c79ccc47ba4ef85aeda968bc4a50
-[4/7] phy: phy-rockchip-inno-usb2: add rk3588 phy tuning support
-      commit: 7d508a92e4588a59b909e235667d515051dd5955
-[5/7] phy: phy-rockchip-inno-usb2: simplify phy clock handling
-      commit: f4ca578b9803601074ab0d9e366b5fcda504e5a6
-[6/7] phy: phy-rockchip-inno-usb2: simplify getting match data
-      commit: 2e5ead8478e8e4a7b3d63a2001c2f0022b2f5e1b
-[7/7] phy: phy-rockchip-inno-usb2: improve error message
-      commit: e7254a4a7c444fa194440fa8dc73c7728e927162
-
-Best regards,
--- 
-~Vinod
 
 
 
