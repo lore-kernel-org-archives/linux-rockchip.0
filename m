@@ -4,59 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D5EEB64DD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 15:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E80C6EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 15:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qCNxhrUuqCKVa9FMzgtS1NAVttrT9h+qNFn2RqfbZmU=; b=euq/FjZlL69M6X
-	rO4cnOSd2xoNG4hICZFjSw4z6DfY9jLF1xuFGLxGNbRkLKg0EL9JbFYDEbNV1HG8221Jfon9jtg3f
-	/YGw9AzNs5gVKPp3GBbdckld3uqfZolisfKkuqmTh7oTXSQDpXY8nrnevy6mlhSSXWcAMud5bA/Ei
-	dunE0SaLFJkExp9+/bjva5AVD0HeU5/bbDMwbyPslGyOVf14EEeZvSLs4pYum76QvpFyjhzLLIvN6
-	uPc5KE/46C3IpHmusuY6FAyYibdOu2ixeNZN52j6yEMcCsWVMspiOeN62b7ZhsZeALDxThQo98H4k
-	KD3eG/k4FQm/FPKHiQQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qDvW4sAU3cDnUFJNXjxlEKiHa2DDL8sKNTXyV7LnbeI=; b=N7p+h2qL/D755RoK9RI368jEQC
+	q0K2YFNxFZqcVpiLo4aUCiouBgo+puImLCe89gyJUEN/83JUYKJnyIjRojhbxzXLmHPsatxXNtprd
+	selXPB4o2e4HCXJb89ccOzCryETwN1cB1IGSg45vfA8oV6Jg0JMITjGFqnhXSJzaZSjeuQy9nyZif
+	I+gmZaPr3j6mgR+GSOaxtx0I8V3DiAaQyvlN6SnAy1EiY+oAeMHTO8pMdGDJUWeC89anYbOtHYBlt
+	Gc7IoTrQv9GTVMQTgROwLuyKZvuyse7gvdHxMZFKuPGmfsgpL+UDglnmK9iuCfqwanrwQc8J+8w7E
+	2XFvr/vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJFJt-00FFAh-2e;
-	Tue, 11 Jul 2023 15:30:29 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1qJFdZ-00FJ3M-30;
+	Tue, 11 Jul 2023 15:50:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJFJp-00FF9l-1Z;
-	Tue, 11 Jul 2023 15:30:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689089425; x=1720625425;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=WtKHEzd9TLb1fy9g0AvI3P/4wH5wHUCXn6+ARbR9U1s=;
-  b=aHxo5lO7I6QXKDu21IKBmaPDi2NgG7KY6pKiYlC1+OWTU78g09sLyIIJ
-   l5EBtZXT0YeOo299LtdFjOBIe877c68fj4/DuYtWr3XzSdab7GNp1adrL
-   exFiVp8c07t5VJDEooQRglnSmL5M2BF60OwjKwxLkRsXYHPZCMjAc1HBh
-   3cdnLR+vTNLcTQ5befzZO5lHnehqUxs+ESazcfJQdDjhDXAutjP+gB56w
-   t6WtsP9xwvlCqed3Mt92ziGsFhYK2mRpezGaAMRjzwvDljjaQ1iAuu1vL
-   E6Q7buJNTgmY9tH+bDS5yRI94Sh8JjKUPtMHz1N3c8CKoGIfOaaSzc/9x
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="428346801"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="428346801"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 08:30:23 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="698462660"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="698462660"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga006.jf.intel.com with ESMTP; 11 Jul 2023 08:30:10 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJFJX-001swf-0G;
-	Tue, 11 Jul 2023 18:30:07 +0300
-Date: Tue, 11 Jul 2023 18:30:06 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>
+	id 1qJFcu-00FIyL-1W;
+	Tue, 11 Jul 2023 15:50:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 046936155D;
+	Tue, 11 Jul 2023 15:50:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A565C433C8;
+	Tue, 11 Jul 2023 15:49:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689090607;
+	bh=Rfrk1uyNxWMBBOGH5Jxn2umsc9+1UwzSvXH/XCQVTMk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tQcn8OvC6bRBN7WzpsoGdLVO3L4xuskzngmmfRCEj2SQ0jAC+8jd5iN20p9gHRbpg
+	 XUbhNgU9wAusI4gCQRZQWpSdosA5W/FQG4z1AWEgo24Qhpez1zvl8Qd08L+UQadjys
+	 qOLdKWVQ3JbXYchCASI4opWSvhez0uMrvZY11sAMGFC7hweCIW8F+sFtyDKkG13nS0
+	 BpkHBiCRn9aeI6z28Cfu2Vk50UunuJFeo1j1nrYJyD6L4Kr0GqQXWYq2XqyGdtwIe+
+	 r8LZOFGfyssDNKEB3zOQjK+1KK7aegmO8dmKUMp5no+2+L0MPlqIAyMOrhHo2iXkMt
+	 IC4BE92YJ2DdQ==
+Date: Tue, 11 Jul 2023 16:49:54 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Yang Yingliang <yangyingliang@huawei.com>,
 	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
@@ -106,19 +96,19 @@ Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Richard Cochran <richardcochran@gmail.com>
 Subject: Re: [PATCH v2 04/15] spi: Replace open coded
  spi_controller_xfer_timeout()
-Message-ID: <ZK11flZf/1grJ1Bd@smile.fi.intel.com>
+Message-ID: <dafdb3d9-572f-49d3-82d7-f0d7667df5dd@sirena.org.uk>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
  <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
  <cfaffa00-4b61-4d81-8675-70295844513b@sirena.org.uk>
  <ZK02efTYxV3czigr@smile.fi.intel.com>
  <5959b123-09e3-474b-9ab0-68d71cfdd9a2@sirena.org.uk>
+ <ZK11flZf/1grJ1Bd@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5959b123-09e3-474b-9ab0-68d71cfdd9a2@sirena.org.uk>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <ZK11flZf/1grJ1Bd@smile.fi.intel.com>
+X-Cookie: marriage, n.:
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_083025_580459_BBCCD057 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20230711_085015_317476_574E6DB0 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,43 +120,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5156846956633861231=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 03:14:54PM +0100, Mark Brown wrote:
-> On Tue, Jul 11, 2023 at 02:01:13PM +0300, Andy Shevchenko wrote:
-> > On Mon, Jul 10, 2023 at 06:30:32PM +0100, Mark Brown wrote:
-> > > On Mon, Jul 10, 2023 at 06:49:21PM +0300, Andy Shevchenko wrote:
-> 
-> > > > + * Assume speed to be 100 kHz if it's not defined at the time of invocation.
-> 
-> > > You didn't mention this bit in the changelog, and I'm not 100% convinced
-> > > it was the best idea in the first place.  It's going to result in some
-> > > very big timeouts if it goes off, and we really should be doing
-> > > validation much earlier in the process.
-> 
-> > Okay, let's drop this change.
-> 
-> Like I say we *should* be fine with the refactoring without this, or at
-> least if it's an issue we should improve the validation.
 
-For the speeds < 1000 Hz, this change will lead to the div by 0 crash.
-It seems that the current code which this one removes is better than
-the spi_controller_xfer_timeout() provides.
-
-If anything, the spi_controller_xfer_timeout() should be improved first.
-So, for now I drop this for sure. Maybe in the future we can come back
-to it.
-
--- 
-With Best Regards,
-Andy Shevchenko
+--===============5156846956633861231==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="z/wyG6sqMhUk9SL4"
+Content-Disposition: inline
 
 
+--z/wyG6sqMhUk9SL4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Tue, Jul 11, 2023 at 06:30:06PM +0300, Andy Shevchenko wrote:
+> On Tue, Jul 11, 2023 at 03:14:54PM +0100, Mark Brown wrote:
+
+> > Like I say we *should* be fine with the refactoring without this, or at
+> > least if it's an issue we should improve the validation.
+
+> For the speeds < 1000 Hz, this change will lead to the div by 0 crash.
+> It seems that the current code which this one removes is better than
+> the spi_controller_xfer_timeout() provides.
+
+> If anything, the spi_controller_xfer_timeout() should be improved first.
+> So, for now I drop this for sure. Maybe in the future we can come back
+> to it.
+
+I don't think this is the only thing that might fall over without a
+speed, what we've generally been doing (and do try to do with speeds, we
+already need to default in the controller's speed and so on) is to
+sanitise input on the way into the subsystem rather than trying to
+ensure that all the users are handling everything.
+
+--z/wyG6sqMhUk9SL4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSteiEACgkQJNaLcl1U
+h9DAYgf9GamF50fucbXVx/aZUwGY2hD+eGYGVpMwfSRhuUlWbnbam1vDqMkEllpk
+X95Rur4vRJQA8erYbUKnhyABsYUSGd8CKx8/mDgvePWDPlYZ3TkdMV8z/j59HZbA
+WhFO3yBSJzNOgDxpftw96yBP7l7eZZHabEpeUAOx+SZ04jtNfdnRHeHBIBKL+YUT
+eFnArWnhTo4dUwNTaAojL5Lfgos/MGY9ABY3b2E4ZkjSaHCUTOa2rxKo9zjc43tE
+gdVuQ8cvshKLUDx2CFZ4oux+stLEOfjcsmR0prxZp3q9t2ywp1CsOHBY1ndd/8Ds
+SnUGepjz95NgZBU7ewJoIuRhKJUQtA==
+=GGl+
+-----END PGP SIGNATURE-----
+
+--z/wyG6sqMhUk9SL4--
+
+
+--===============5156846956633861231==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5156846956633861231==--
+
