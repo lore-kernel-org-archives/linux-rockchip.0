@@ -4,109 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24585EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 14:15:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B052C001E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jul 2023 14:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iOovD/xrHS/boC9z03tEXHko2ZL6FA6EaHQyZA0ik2U=; b=FtSBpNFOlC2T1p/KDW3UfkT1mz
-	H2aRBynQO5U7VjaIQIQQDuT7RrDTcudXYBeGmCaiNy6wmEdzuOibq9BLi2OghkQTsy9z4yMKGP/Lm
-	qBkUF7/A9Del2yH8d4ngnw4dIwdWa4xf/wyYExY8zDxuY7c2COR0jywgtCMnXa4cPoy8h1YhRV2pg
-	nXGuou9d8iJXAmvWaA/sm97yX22rtOl+JbPOXaDU40wGXUS+IBSfLfqM0Cidn5nizNyyfyCV2P51P
-	n+Boyk6FUS3dHSFwphWyQJ9JmppOrxUxL/3/lzevryuFGvtD+uoC7Uh1re54Y1zRaKbxtoj8t40eI
-	Bh6oQgbQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vavGOwEEvxxUmJyNiS0Z3PoA5zwghl6pEAFQruBukzQ=; b=LSc0aQ22Cn+mse
+	/1t4mdwNNGKW1RfUFxxJltkHehuzL+UdmNgpqIU1cihBe1mEzb3BKt48HoFSqTWpZxkbQgmrsXXod
+	kbjPrY3u4k4erJJsxGqG2UM+20B9ZFJdFU+qqVbzq0N03C4pgwaTYnk2YVk498lhjtIDu8m8SK59c
+	HYrsfG82IZEY+mHeZ2VioPa93ok07cYQWYCHXGK/jnoYgNAkHf3hgP9KWzrm/F9kgi60QBTET8Jv/
+	ih3Y2Fis+HatDiF3gARsthH3Dn74BXt1K1jwKfBv4rMgl5Bq8kmDFz1jx6rByZnaEiD4qCRI+4akb
+	vObk6ICmP8b7Vex+ygAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJE94-00F5b2-17;
-	Tue, 11 Jul 2023 14:15:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qJEFT-00F6sS-0W;
+	Tue, 11 Jul 2023 14:21:51 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJE8z-00F5ZO-0c;
-	Tue, 11 Jul 2023 14:15:10 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 77C8D61360;
-	Tue, 11 Jul 2023 14:15:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 209CBC433C9;
-	Tue, 11 Jul 2023 14:14:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689084907;
-	bh=A+lgFSqWg8vRgir1XqFzY9nIE1Cw0dwqFBu8P2BdZBc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KwXQpO0JwJwS2tync5AfGpO9HXb9u4mgZfpWRxyxjmWV7o23oHa66oSgLBUqWen2D
-	 ZlOHsSEyXpzrsEeWWEmLhLLitAzI15911I18ub63ARZldiwGDK6EeLi3B34Qy+IEG4
-	 waxyA6VmnpE80hBohYtayTpWfyRhiz5yBCu2xfPCie7wDB1OJGO5pfFeIe7TmhLaf6
-	 2F7TtEpspxDmIAOKWfQt4n5/QaTo60Dymh5zBKNq1hnkXPOMFNsHXFu721qfrAekf9
-	 KAql0ORVXuf2YxOmwhPq6tE1iNaCTZM61qgKsPoZvWs0hppRNFtMcBrTT4RcCr66z6
-	 VpMXSzxRgleHw==
-Date: Tue, 11 Jul 2023 15:14:54 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1qJEFP-00F6oH-2W
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Jul 2023 14:21:49 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2b69f958ef3so92310631fa.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Jul 2023 07:21:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689085304; x=1691677304;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hgQ8n9LomBfmN5XVIE9V8yRduLBIY8d9iOgPKJiP4zs=;
+        b=xWSdYCQxNymYgnOZZUnd4ZIodCEnApMke9J1PRrQ57R/Uede91putFMbdX7sCvlTLA
+         tB5InT2FwiODgUrIDbyxgbpG+79y/l1WOtH1/tcZICN/AFDjS+91RI3D+FxebIfbEyug
+         PFj+fDv3wfCJTx5EOWDKo4dS8IfAU14R0NpPCvU/DvF2KnXoYDrVNFYIVvXP4v+Ac/NX
+         fVyUe9tb2jGX2Uh70t5vP5JSqDsMPPpwS4Ddyg53/EO4Mb13xwLHxTcSTtvuVgDOLUmK
+         UDn6jyP+Fo3H9+RMXSh5TjdK4o+NS0GPwudFtigwXACKukMRy+8HNFkA+aUc+k5RL/uJ
+         21pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689085304; x=1691677304;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hgQ8n9LomBfmN5XVIE9V8yRduLBIY8d9iOgPKJiP4zs=;
+        b=hXI5UauCIM2TgGrrCAkrAI3P6mz/OvMzk+2E4oEKs+MZBsrQQCnn4U/3JFNc77a76M
+         SYIUZvWWMOvjyhlKxj55jjiNdwk8F4/S8524q3IuHt+DpyW6PwjZHjvbiX3cXCj4v6hj
+         VrcZXPynpUIzmap8xOijnOut8W8kTdUOwD9lzPHDYfnztrEPSmJZOSr4qS2XZR1oRhjO
+         WUut79+Ua0pEF3vfvNHiOeAa0NRibcY6i6ecy7lDZL7XE/BSWlW+lVra0nZt2P5LLBBP
+         1EPYRNqqHWgeLwCBafPer9A+wyNCbXwtcKcnFlDzAnRXyFHMygUNVMHnhLZwOkMphcMu
+         Hzlg==
+X-Gm-Message-State: ABy/qLbdQHhfa6BbJ6IRUeAeGzsnPVpeR2V5kPuYLA1+AwZVdSJOajqO
+	UjgJycsXahALqn5x+sRVOkAoPA==
+X-Google-Smtp-Source: APBJJlEKT6/JfPIQWMIzndgYMxtD7h0zb7OcNaPEMavO1QRqMPj2xl4JjFMYoA+YM6XBYufPqZGF0A==
+X-Received: by 2002:a2e:3109:0:b0:2b6:de52:357 with SMTP id x9-20020a2e3109000000b002b6de520357mr12200248ljx.40.1689085304038;
+        Tue, 11 Jul 2023 07:21:44 -0700 (PDT)
+Received: from uffe-tuxpro14.. (h-94-254-63-18.NA.cust.bahnhof.se. [94.254.63.18])
+        by smtp.gmail.com with ESMTPSA id j11-20020a2e3c0b000000b002b6ee0ff9bbsm463489lja.67.2023.07.11.07.21.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 07:21:43 -0700 (PDT)
+From: Ulf Hansson <ulf.hansson@linaro.org>
+To: Arnd Bergmann <arnd@arndb.de>,
+	Olof Johansson <olof@lixom.net>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-kernel@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 04/15] spi: Replace open coded
- spi_controller_xfer_timeout()
-Message-ID: <5959b123-09e3-474b-9ab0-68d71cfdd9a2@sirena.org.uk>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
- <cfaffa00-4b61-4d81-8675-70295844513b@sirena.org.uk>
- <ZK02efTYxV3czigr@smile.fi.intel.com>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 10/18] soc: rockchip: Mover power-domain driver to the genpd dir
+Date: Tue, 11 Jul 2023 16:21:41 +0200
+Message-Id: <20230711142141.751692-1-ulf.hansson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <ZK02efTYxV3czigr@smile.fi.intel.com>
-X-Cookie: marriage, n.:
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_071509_312756_2EC12027 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20230711_072147_822505_AB371B6F 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,79 +89,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7558335353546217435=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+To simplify with maintenance let's move the rockchip power-domain driver to
+the new genpd directory. Going forward, patches are intended to be managed
+through a separate git tree, according to MAINTAINERS.
 
---===============7558335353546217435==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="MZrPSMfLUzZVYlnE"
-Content-Disposition: inline
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: <linux-rockchip@lists.infradead.org>
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/genpd/Makefile                                          | 1 +
+ drivers/genpd/rockchip/Makefile                                 | 2 ++
+ .../{soc/rockchip/pm_domains.c => genpd/rockchip/pm-domains.c}  | 0
+ drivers/soc/rockchip/Makefile                                   | 1 -
+ 4 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/genpd/rockchip/Makefile
+ rename drivers/{soc/rockchip/pm_domains.c => genpd/rockchip/pm-domains.c} (100%)
 
+diff --git a/drivers/genpd/Makefile b/drivers/genpd/Makefile
+index 286598ce7620..c178421e0cbc 100644
+--- a/drivers/genpd/Makefile
++++ b/drivers/genpd/Makefile
+@@ -6,3 +6,4 @@ obj-y					+= bcm/
+ obj-y					+= mediatek/
+ obj-y					+= qcom/
+ obj-y					+= renesas/
++obj-y					+= rockchip/
+diff --git a/drivers/genpd/rockchip/Makefile b/drivers/genpd/rockchip/Makefile
+new file mode 100644
+index 000000000000..8fb9d88a3492
+--- /dev/null
++++ b/drivers/genpd/rockchip/Makefile
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0-only
++obj-$(CONFIG_ROCKCHIP_PM_DOMAINS)	+= pm-domains.o
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/genpd/rockchip/pm-domains.c
+similarity index 100%
+rename from drivers/soc/rockchip/pm_domains.c
+rename to drivers/genpd/rockchip/pm-domains.c
+diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+index 05f31a4e743c..23d414433c8c 100644
+--- a/drivers/soc/rockchip/Makefile
++++ b/drivers/soc/rockchip/Makefile
+@@ -4,5 +4,4 @@
+ #
+ obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
+ obj-$(CONFIG_ROCKCHIP_IODOMAIN) += io-domain.o
+-obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
+ obj-$(CONFIG_ROCKCHIP_DTPM) += dtpm.o
+-- 
+2.34.1
 
---MZrPSMfLUzZVYlnE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Jul 11, 2023 at 02:01:13PM +0300, Andy Shevchenko wrote:
-> On Mon, Jul 10, 2023 at 06:30:32PM +0100, Mark Brown wrote:
-> > On Mon, Jul 10, 2023 at 06:49:21PM +0300, Andy Shevchenko wrote:
-
-> > > + * Assume speed to be 100 kHz if it's not defined at the time of invocation.
-
-> > You didn't mention this bit in the changelog, and I'm not 100% convinced
-> > it was the best idea in the first place.  It's going to result in some
-> > very big timeouts if it goes off, and we really should be doing
-> > validation much earlier in the process.
-
-> Okay, let's drop this change.
-
-Like I say we *should* be fine with the refactoring without this, or at
-least if it's an issue we should improve the validation.
-
-> > > +	u32 speed_hz = xfer->speed_hz ?: 100000;
-
-> > Not only the ternery operator, but the version without the second
-> > argument for extra clarity!
-
-> Elvis can be interpreted as "A _or_ B (if A is false/0)".
-> Some pieces related to SPI use Elvis already IIRC.
-
-I understand what it means, I just don't find it's adding clarity most
-of the times it's used (there's a few places where it is useful like
-pasting in strings in formats).  There are some examples that I'd
-complain about in the code, most of them predating me working on SPI too
-much, but I'm not a fan.
-
---MZrPSMfLUzZVYlnE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmStY90ACgkQJNaLcl1U
-h9DeQQf+MxpgOv6egcsQtreuAtaq7Ev7HPCaH6MbusHDNH2hElvH+GmEYjovkV6m
-h3LadU5OvktJBaXfjDQRjU71Cbf70/Nlo8I3WN5V4iRKzqWtfMV16ZStvy2+1Rx/
-jHek+Aib8L8SiwlzvD6WB163yHCsSn5KBv2Pqp95DjGWamTl918onxXzSS6g2j5A
-ib1Mz8aOXWBsiIdaFTQ3NoK7Uvnykzp1X2uGcfrRZuPWQNVvpJs/wt5iOuTpuEws
-6O2PEgJext+6CeKBCv8pCvpex2QsVtDKLnDVvmDX4Oa2impxsxSIjLyVbZfbJ480
-4XviYIQ2LNlTFidlbAAqqEafOQrvRg==
-=WM20
------END PGP SIGNATURE-----
-
---MZrPSMfLUzZVYlnE--
-
-
---===============7558335353546217435==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7558335353546217435==--
-
