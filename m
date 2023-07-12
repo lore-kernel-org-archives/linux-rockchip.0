@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 048C0C001B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jul 2023 09:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB7C3EB64D9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jul 2023 10:48:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1hiwXqpbID7A2ZQ+UEh7B4+kgVQh2QikqCsvgp3ggNM=; b=k2DyoA8aRlmggb
-	y1Q7I8cyzHUqy9FY3l0mU7JcyKJE9NhQskOP5an6DasRet7jeLXYb50R1lK9wY+vP2PHLdJt5BLrp
-	qeWT0PWfFC4vgumolLvjUQU4+sbzpUrVTJJW+09Gf+heA5aqah2cszfbSxWkUVz+7JLU4QHbQITNL
-	SoAkBesM9MNhzV9YEuLLseaHSOUA45TCBfKBU1GftR41epFsOh99sOHzwDukCCpKWizSrp/yVgNGf
-	juXNS7RkG/xSbKhSM0IUTfZxiGS7vmBV9kN8RK6943MAJu18BLacuGNQJAFlbo7iNBnESAM47M9dm
-	QLbiSSdH++LAVFIU4PBA==;
+	List-Owner; bh=eEJdrf6q7TBNWtE8ezpGw1SReF+lQCzLtAaCZ/cAtBQ=; b=H75ojX99vtHKhp
+	RGqTwoSrc12raEF7P0LU645NuSa/WkfboXKSLBlEk1pkiu/f6MpxgQjZbxOa+DPLVcIzPYP6IGnxB
+	71SyKHeU/mKyvyhlq7wCuw4rDUExOTubOgNOEkv61XHHhFZITgNqrAiNDwA58o1lXikEvXUpdhbae
+	3G9SePIWGhe+g9rjQrFQSgQRVOsL3a6ADZX15J7ynXpawRv7wGGPPvCYR7ci8GNkP2UsnUVG47f2L
+	WHIKdvZjnS0uUSNQx66Ov28bBD1z2JPf7q9/eVYp2GU0BTs1KRhZ11ffW1cId1qT2l8U6tpe79R+f
+	3pks7fYtFJkb5tukQCHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJWRX-00H5Nr-1O;
-	Wed, 12 Jul 2023 09:47:31 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1qJXON-00HK9V-03;
+	Wed, 12 Jul 2023 10:48:19 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJWRO-00H5Dy-2J
+	id 1qJXOH-00HK6u-2W
 	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Jul 2023 09:47:25 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qJWRH-0001V6-I3; Wed, 12 Jul 2023 11:47:15 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qJWRE-00Dr5f-F2; Wed, 12 Jul 2023 11:47:12 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qJWRD-004GU0-CV; Wed, 12 Jul 2023 11:47:11 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de
-Subject: [PATCH RFC v1 33/52] drm/rockchip: Use struct drm_crtc::drm_dev instead of struct drm_crtc::dev
-Date: Wed, 12 Jul 2023 11:46:43 +0200
-Message-Id: <20230712094702.1770121-34-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230712094702.1770121-1-u.kleine-koenig@pengutronix.de>
-References: <20230712094702.1770121-1-u.kleine-koenig@pengutronix.de>
+	Wed, 12 Jul 2023 10:48:17 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-1b852785a65so4240955ad.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 12 Jul 2023 03:48:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1689158887; x=1691750887;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=zIVoN8xJJ1apuh5u3RRjUDBxovBp1snddoUz1sWtVUc=;
+        b=BMvGqPrzLoLp9tbS8Yi6csf86apIKKPA5HWYXK9DYb8XNFkNsvZ0WDcihp4d25hQ11
+         Kp4M7rgCghETeCFFVfSft7bWcb5rqBRLKR8vDgX2JBSsSWdZ+NwoRbLyRT0cAW48o5tx
+         k8VWkqL4n8vyampu/AnPvTgSXMGnRjNu6zCuA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689158887; x=1691750887;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zIVoN8xJJ1apuh5u3RRjUDBxovBp1snddoUz1sWtVUc=;
+        b=eDRAgD5j3pSkoIEYOuFHzHEFSvpr0fY7VY/ksl6CyRbAgcJLd+YIDtzPhlSugYlN9G
+         wwnLo4IdIb7iJ/+VmXKSLAP5rxf+UUuvaz3bEGQyn6kzwCvRqjl9QF+R0BBE6VCilKpa
+         LIP88AwemHCifGLhXRlD4/KaZ+dZgcfhTSU3VBAh01PAEuz1tknqYyTYTJty1V0c5YrZ
+         Gn+wYNCWoIvBlkC0IEBzfOH+Q6vjQ1QaMAdJrxfWBKG7xskiplgxIZFFtvc6OBqu1SIs
+         n9+fFwzThD3PNpCCG0MGEkHEj/celLXXcKou6mnIwkH8omxHfBIRcXpRV1f7cOzh0rq/
+         OZCA==
+X-Gm-Message-State: ABy/qLadcWv0PGWbaT4xyGl9PcGC8tkN0MRSiQX/twjyhFvAhmWSft+f
+	/lcPx1bIgIAV7uNdlzAAcPkg9A==
+X-Google-Smtp-Source: APBJJlEAi57Syr+e1VCEgUMbZ1p6tYBNaJWe5nyxeKIdojZAG0t41NYxzQsL8d3LNtrPXXR9NgKs8g==
+X-Received: by 2002:a17:902:eccf:b0:1b8:5a42:5145 with SMTP id a15-20020a170902eccf00b001b85a425145mr1488788plh.31.1689158887019;
+        Wed, 12 Jul 2023 03:48:07 -0700 (PDT)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id io12-20020a17090312cc00b001b9dfa24523sm3622055plb.213.2023.07.12.03.48.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Jul 2023 03:48:06 -0700 (PDT)
+Date: Wed, 12 Jul 2023 10:48:01 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Hsia-Jun Li <Randy.Li@synaptics.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	hverkuil-cisco@xs4all.nl, ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de, linux-rockchip@lists.infradead.org,
+	mchehab@kernel.org, linux-staging@lists.linux.dev,
+	ming.qian@nxp.com, kernel@collabora.com, gregkh@linuxfoundation.org,
+	nicolas.dufresne@collabora.com
+Subject: Re: [PATCH v3 04/11] media: videobuf2: Stop define VB2_MAX_FRAME as
+ global
+Message-ID: <20230712104801.tgawhexpm53ocgd6@chromium.org>
+References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
+ <20230622131349.144160-5-benjamin.gaignard@collabora.com>
+ <e7444263-0ce5-1575-8cca-1e51b1cfbe9a@synaptics.com>
+ <5cb3f216-5041-a155-5d2c-059dc1f15024@collabora.com>
+ <25b21252-0d3a-3e50-0012-57055f386fee@synaptics.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4041; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=fzTkzJ2crxvB0YLT3xbxIaqmdKh8jjxij3HqLKEm5PY=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkrnZ8rkrJTPSo7Q7VWyz6pZBFJotWpQXtY4bLU lY8/Ee2UpmJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZK52fAAKCRCPgPtYfRL+ TubhB/9pOJGXkc/cyv7BNxmrRzypJDTk3FSpHNvbRozIfGcXy53Tu/yD21H+UiyEryA7fGyHZRI PJrBDh4JeY5AxFL7g+JOBchnonP408coRmx0FP82u+aysOUTgfEBk9Ap7m1BmM1z2uwjM6mEsca Y8MZI20ZWiTTo4acJbP1djyOAfZTRN1ZC2kfVS3JIkVtxjtFMmDeKkT2TsFw7SY2Rs7ye9Hg3gJ 187shJh4768S3OFzXeEjMX1LZ7cKEHKf/fpihqrl1RjyjZkCKiYuUcffD6Het+qn8v+N2S/Qo3W 6VvkRBk9XatONJ2eNyRUgcIob7MWVREYVP4LkOJe2tUIEPc6
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <25b21252-0d3a-3e50-0012-57055f386fee@synaptics.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_024722_766941_8275FA61 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20230712_034813_834537_77F18350 
+X-CRM114-Status: GOOD (  38.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,80 +96,271 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UHJlcGFyZSBkcm9wcGluZyB0aGUgYWxpYXMgImRldiIgZm9yIHN0cnVjdCBkcm1fY3J0Yzo6ZHJt
-X2Rldi4gImRybV9kZXYiCmlzIHRoZSBiZXR0ZXIgbmFtZSBhcyAiZGV2IiBpcyB1c3VhbGx5IGEg
-c3RydWN0IGRldmljZSBwb2ludGVyLgoKTm8gc2VtYW50aWMgY2hhbmdlcy4KClNpZ25lZC1vZmYt
-Ynk6IFV3ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Ci0t
-LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyAgfCAgOCArKysr
-LS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgfCAxNSAr
-KysrKysrKy0tLS0tLS0KIDIgZmlsZXMgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMTEgZGVs
-ZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
-aW5kZXggYTUzMGVjYzRkMjA3Li44MTFkZGZkMDZkM2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtNzU4LDkgKzc1OCw5IEBAIHN0YXRpYyB2b2lk
-IHZvcF9jcnRjX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAogb3V0Ogog
-CWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQgJiYgIWNydGMtPnN0YXRlLT5hY3RpdmUpIHsKLQkJc3Bp
-bl9sb2NrX2lycSgmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKKwkJc3Bpbl9sb2NrX2lycSgmY3J0
-Yy0+ZHJtX2Rldi0+ZXZlbnRfbG9jayk7CiAJCWRybV9jcnRjX3NlbmRfdmJsYW5rX2V2ZW50KGNy
-dGMsIGNydGMtPnN0YXRlLT5ldmVudCk7Ci0JCXNwaW5fdW5sb2NrX2lycSgmY3J0Yy0+ZGV2LT5l
-dmVudF9sb2NrKTsKKwkJc3Bpbl91bmxvY2tfaXJxKCZjcnRjLT5kcm1fZGV2LT5ldmVudF9sb2Nr
-KTsKIAogCQljcnRjLT5zdGF0ZS0+ZXZlbnQgPSBOVUxMOwogCX0KQEAgLTE1NjcsNyArMTU2Nyw3
-IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNy
-dGMsCiAJICovCiAJdm9wX3dhaXRfZm9yX2lycV9oYW5kbGVyKHZvcCk7CiAKLQlzcGluX2xvY2tf
-aXJxKCZjcnRjLT5kZXYtPmV2ZW50X2xvY2spOworCXNwaW5fbG9ja19pcnEoJmNydGMtPmRybV9k
-ZXYtPmV2ZW50X2xvY2spOwogCWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQpIHsKIAkJV0FSTl9PTihk
-cm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOwogCQlXQVJOX09OKHZvcC0+ZXZlbnQpOwpA
-QCAtMTU3NSw3ICsxNTc1LDcgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRvbWljX2ZsdXNoKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKIAkJdm9wLT5ldmVudCA9IGNydGMtPnN0YXRlLT5ldmVudDsK
-IAkJY3J0Yy0+c3RhdGUtPmV2ZW50ID0gTlVMTDsKIAl9Ci0Jc3Bpbl91bmxvY2tfaXJxKCZjcnRj
-LT5kZXYtPmV2ZW50X2xvY2spOworCXNwaW5fdW5sb2NrX2lycSgmY3J0Yy0+ZHJtX2Rldi0+ZXZl
-bnRfbG9jayk7CiAKIAlmb3JfZWFjaF9vbGRuZXdfcGxhbmVfaW5fc3RhdGUob2xkX3N0YXRlLCBw
-bGFuZSwgb2xkX3BsYW5lX3N0YXRlLAogCQkJCSAgICAgICBuZXdfcGxhbmVfc3RhdGUsIGkpIHsK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5j
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKaW5kZXggY2E3
-M2I4Y2NjMjlmLi42Y2JkZWYzMjRkODIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wMi5jCkBAIC05MjQsOSArOTI0LDkgQEAgc3RhdGljIHZvaWQgdm9wMl9j
-cnRjX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAl2b3AyX3VubG9jayh2
-b3AyKTsKIAogCWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQgJiYgIWNydGMtPnN0YXRlLT5hY3RpdmUp
-IHsKLQkJc3Bpbl9sb2NrX2lycSgmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKKwkJc3Bpbl9sb2Nr
-X2lycSgmY3J0Yy0+ZHJtX2Rldi0+ZXZlbnRfbG9jayk7CiAJCWRybV9jcnRjX3NlbmRfdmJsYW5r
-X2V2ZW50KGNydGMsIGNydGMtPnN0YXRlLT5ldmVudCk7Ci0JCXNwaW5fdW5sb2NrX2lycSgmY3J0
-Yy0+ZGV2LT5ldmVudF9sb2NrKTsKKwkJc3Bpbl91bmxvY2tfaXJxKCZjcnRjLT5kcm1fZGV2LT5l
-dmVudF9sb2NrKTsKIAogCQljcnRjLT5zdGF0ZS0+ZXZlbnQgPSBOVUxMOwogCX0KQEAgLTE1NjQs
-NyArMTU2NCw4IEBAIHN0YXRpYyB2b2lkIHZvcDJfY3J0Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBk
-cm1fY3J0YyAqY3J0YywKIAlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BWU1lOQykK
-IAkJcG9sZmxhZ3MgfD0gQklUKFZTWU5DX1BPU0lUSVZFKTsKIAotCWRybV9mb3JfZWFjaF9lbmNv
-ZGVyX21hc2soZW5jb2RlciwgY3J0Yy0+ZGV2LCBjcnRjX3N0YXRlLT5lbmNvZGVyX21hc2spIHsK
-Kwlkcm1fZm9yX2VhY2hfZW5jb2Rlcl9tYXNrKGVuY29kZXIsIGNydGMtPmRybV9kZXYsCisJCQkJ
-ICBjcnRjX3N0YXRlLT5lbmNvZGVyX21hc2spIHsKIAkJc3RydWN0IHJvY2tjaGlwX2VuY29kZXIg
-KnJrZW5jb2RlciA9IHRvX3JvY2tjaGlwX2VuY29kZXIoZW5jb2Rlcik7CiAKIAkJcmszNTY4X3Nl
-dF9pbnRmX211eCh2cCwgcmtlbmNvZGVyLT5jcnRjX2VuZHBvaW50X2lkLCBwb2xmbGFncyk7CkBA
-IC0yMDYwLDcgKzIwNjEsNyBAQCBzdGF0aWMgdm9pZCB2b3AyX2NydGNfYXRvbWljX2ZsdXNoKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKIAogCXZvcDJfY2ZnX2RvbmUodnApOwogCi0Jc3Bpbl9sb2Nr
-X2lycSgmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKKwlzcGluX2xvY2tfaXJxKCZjcnRjLT5kcm1f
-ZGV2LT5ldmVudF9sb2NrKTsKIAogCWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQpIHsKIAkJV0FSTl9P
-Tihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpKTsKQEAgLTIwNjgsNyArMjA2OSw3IEBAIHN0YXRp
-YyB2b2lkIHZvcDJfY3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAogCQlj
-cnRjLT5zdGF0ZS0+ZXZlbnQgPSBOVUxMOwogCX0KIAotCXNwaW5fdW5sb2NrX2lycSgmY3J0Yy0+
-ZGV2LT5ldmVudF9sb2NrKTsKKwlzcGluX3VubG9ja19pcnEoJmNydGMtPmRybV9kZXYtPmV2ZW50
-X2xvY2spOwogfQogCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2hlbHBlcl9mdW5jcyB2
-b3AyX2NydGNfaGVscGVyX2Z1bmNzID0gewpAQCAtMjE2Miw3ICsyMTYzLDcgQEAgc3RhdGljIGly
-cXJldHVybl90IHZvcDJfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEpCiAKIAkJaWYgKGlycXMgJiBW
-UF9JTlRfRlNfRklFTEQpIHsKIAkJCWRybV9jcnRjX2hhbmRsZV92YmxhbmsoY3J0Yyk7Ci0JCQlz
-cGluX2xvY2soJmNydGMtPmRldi0+ZXZlbnRfbG9jayk7CisJCQlzcGluX2xvY2soJmNydGMtPmRy
-bV9kZXYtPmV2ZW50X2xvY2spOwogCQkJaWYgKHZwLT5ldmVudCkgewogCQkJCXUzMiB2YWwgPSB2
-b3AyX3JlYWRsKHZvcDIsIFJLMzU2OF9SRUdfQ0ZHX0RPTkUpOwogCkBAIC0yMTcyLDcgKzIxNzMs
-NyBAQCBzdGF0aWMgaXJxcmV0dXJuX3Qgdm9wMl9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKIAkJ
-CQkJZHJtX2NydGNfdmJsYW5rX3B1dChjcnRjKTsKIAkJCQl9CiAJCQl9Ci0JCQlzcGluX3VubG9j
-aygmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKKwkJCXNwaW5fdW5sb2NrKCZjcnRjLT5kcm1fZGV2
-LT5ldmVudF9sb2NrKTsKIAogCQkJcmV0ID0gSVJRX0hBTkRMRUQ7CiAJCX0KLS0gCjIuMzkuMgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, Jul 03, 2023 at 04:35:30PM +0800, Hsia-Jun Li wrote:
+> =
+
+> On 7/3/23 16:09, Benjamin Gaignard wrote:
+> > CAUTION: Email originated externally, do not click links or open
+> > attachments unless you recognize the sender and know the content is
+> > safe.
+> > =
+
+> > =
+
+> > Le 30/06/2023 =E0 11:51, Hsia-Jun Li a =E9crit :
+> > > =
+
+> > > On 6/22/23 21:13, Benjamin Gaignard wrote:
+> > > > CAUTION: Email originated externally, do not click links or open
+> > > > attachments unless you recognize the sender and know the content is
+> > > > safe.
+> > > > =
+
+> > > > =
+
+> > > > After changing bufs arrays to a dynamic allocated array
+> > > > VB2_MAX_FRAME doesn't mean anything for videobuf2 core.
+> > > =
+
+> > > I think make it 64 which is the VB2_MAX_FRAME in Android GKI kernel is
+> > > more reasonable.
+> > > =
+
+> > > It would be hard to iterate the whole array, it would go worse with a
+> > > filter. Such iterate may need to go twice because you mix
+> > > post-processing buffer and decoding buffer(with MV) in the same array.
+> > =
+
+> > Here I don't want to change drivers behavior so I keep the same value.
+> > If it happens that they need more buffers, like for dynamic resolution
+> > change
+> > feature for Verisilicon VP9 decoder, case by case patches will be neede=
+d.
+> > =
+
+> I just don't like the idea that using a variant length array here.
+> =
+
+
+"I don't like" is not an argument. We had a number of arguments for
+using a generic helper (originally idr, but later decided to go with
+XArray, because the former is now deprecated) that we pointed out in
+our review comments for previous revisions. It wasn't really about the
+size being variable, but rather avoiding open coding things in vb2 and
+duplicating what's already implemented in generic code.
+
+> And I could explain why you won't need so many buffers for the performance
+> of decoding.
+> =
+
+> VP9 could support 10 reference frames in dpb.
+> =
+
+> Even for those frequent resolution changing test set, it would only happen
+> to two resolutions,
+> =
+
+> 32 would be enough for 20 buffers of two resolution plus golden frames. It
+> also leaves enough slots for re-order latency.
+> =
+
+> If your case had more two resolutions, likes low->medium->high.
+> =
+
+> I would suggest just skip the medium resolutions, just allocate the lower
+> one first for fast playback then the highest for all the possible
+> =
+
+> medium cases. Reallocation happens frequently would only cause memory
+> fragment, nothing benefits your performance.
+> =
+
+
+We have mechanisms in the kernel to deal with memory fragmentation
+(migration/compaction) and it would still only matters for the
+pathologic cases of hardware that require physically contiguous memory.
+Modern hardware with proper DMA capabilities can either scatter-gather
+or are equipped with an IOMMU, so the allocation always happens in page
+granularity and fragmentation is avoided.
+
+Best regards,
+Tomasz
+
+> > =
+
+> > > =
+
+> > > > Remove it from the core definitions but keep it for drivers internal
+> > > > needs.
+> > > > =
+
+> > > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > > ---
+> > > > =A0 drivers/media/common/videobuf2/videobuf2-core.c | 2 ++
+> > > > =A0 drivers/media/platform/amphion/vdec.c | 1 +
+> > > > .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 ++
+> > > > =A0 drivers/media/platform/qcom/venus/hfi.h | 2 ++
+> > > > =A0 drivers/media/platform/verisilicon/hantro_hw.h | 2 ++
+> > > > =A0 drivers/staging/media/ipu3/ipu3-v4l2.c | 2 ++
+> > > > =A0 include/media/videobuf2-core.h | 1 -
+> > > > =A0 include/media/videobuf2-v4l2.h | 4 ----
+> > > > =A0 8 files changed, 11 insertions(+), 5 deletions(-)
+> > > > =
+
+> > > > diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
+> > > > b/drivers/media/common/videobuf2/videobuf2-core.c
+> > > > index 86e1e926fa45..899783f67580 100644
+> > > > --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> > > > +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> > > > @@ -31,6 +31,8 @@
+> > > > =
+
+> > > > =A0 #include <trace/events/vb2.h>
+> > > > =
+
+> > > > +#define VB2_MAX_FRAME=A0 32
+> > > > +
+> > > > =A0 static int debug;
+> > > > =A0 module_param(debug, int, 0644);
+> > > > =
+
+> > > > diff --git a/drivers/media/platform/amphion/vdec.c
+> > > > b/drivers/media/platform/amphion/vdec.c
+> > > > index 3fa1a74a2e20..b3219f6d17fa 100644
+> > > > --- a/drivers/media/platform/amphion/vdec.c
+> > > > +++ b/drivers/media/platform/amphion/vdec.c
+> > > > @@ -28,6 +28,7 @@
+> > > > =
+
+> > > > =A0 #define VDEC_MIN_BUFFER_CAP=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 8
+> > > > =A0 #define VDEC_MIN_BUFFER_OUT=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 8
+> > > > +#define VB2_MAX_FRAME=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0 32
+> > > > =
+
+> > > > =A0 struct vdec_fs_info {
+> > > > =A0=A0=A0=A0=A0=A0=A0=A0 char name[8];
+> > > > diff --git
+> > > > a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> > > > b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> > > > index 6532a69f1fa8..a1e0f24bb91c 100644
+> > > > --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_=
+if.c
+> > > > +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_=
+if.c
+> > > > @@ -16,6 +16,8 @@
+> > > > =A0 #include "../vdec_drv_if.h"
+> > > > =A0 #include "../vdec_vpu_if.h"
+> > > > =
+
+> > > > +#define VB2_MAX_FRAME=A0 32
+> > > > +
+> > > > =A0 /* reset_frame_context defined in VP9 spec */
+> > > > =A0 #define VP9_RESET_FRAME_CONTEXT_NONE0 0
+> > > > =A0 #define VP9_RESET_FRAME_CONTEXT_NONE1 1
+> > > > diff --git a/drivers/media/platform/qcom/venus/hfi.h
+> > > > b/drivers/media/platform/qcom/venus/hfi.h
+> > > > index f25d412d6553..bd5ca5a8b945 100644
+> > > > --- a/drivers/media/platform/qcom/venus/hfi.h
+> > > > +++ b/drivers/media/platform/qcom/venus/hfi.h
+> > > > @@ -10,6 +10,8 @@
+> > > > =
+
+> > > > =A0 #include "hfi_helper.h"
+> > > > =
+
+> > > > +#define VB2_MAX_FRAME=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 32
+> > > > +
+> > > > =A0 #define VIDC_SESSION_TYPE_VPE=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0 0
+> > > > =A0 #define VIDC_SESSION_TYPE_ENC=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0 1
+> > > > =A0 #define VIDC_SESSION_TYPE_DEC=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0 2
+> > > > diff --git a/drivers/media/platform/verisilicon/hantro_hw.h
+> > > > b/drivers/media/platform/verisilicon/hantro_hw.h
+> > > > index e83f0c523a30..9e8faf7ba6fb 100644
+> > > > --- a/drivers/media/platform/verisilicon/hantro_hw.h
+> > > > +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+> > > > @@ -15,6 +15,8 @@
+> > > > =A0 #include <media/v4l2-vp9.h>
+> > > > =A0 #include <media/videobuf2-core.h>
+> > > > =
+
+> > > > +#define VB2_MAX_FRAME=A0 32
+> > > > +
+> > > > =A0 #define DEC_8190_ALIGN_MASK=A0=A0=A0 0x07U
+> > > > =
+
+> > > > =A0 #define MB_DIM=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =
+16
+> > > > diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c
+> > > > b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> > > > index e530767e80a5..6627b5c2d4d6 100644
+> > > > --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
+> > > > +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> > > > @@ -10,6 +10,8 @@
+> > > > =A0 #include "ipu3.h"
+> > > > =A0 #include "ipu3-dmamap.h"
+> > > > =
+
+> > > > +#define VB2_MAX_FRAME=A0 32
+> > > > +
+> > > > =A0 /******************** v4l2_subdev_ops ********************/
+> > > > =
+
+> > > > =A0 #define IPU3_RUNNING_MODE_VIDEO=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0 0
+> > > > diff --git a/include/media/videobuf2-core.h
+> > > > b/include/media/videobuf2-core.h
+> > > > index 77921cf894ef..080b783d608d 100644
+> > > > --- a/include/media/videobuf2-core.h
+> > > > +++ b/include/media/videobuf2-core.h
+> > > > @@ -20,7 +20,6 @@
+> > > > =A0 #include <media/media-request.h>
+> > > > =A0 #include <media/frame_vector.h>
+> > > > =
+
+> > > > -#define VB2_MAX_FRAME=A0 (32)
+> > > > =A0 #define VB2_MAX_PLANES (8)
+> > > > =
+
+> > > > =A0 /**
+> > > > diff --git a/include/media/videobuf2-v4l2.h
+> > > > b/include/media/videobuf2-v4l2.h
+> > > > index 5a845887850b..88a7a565170e 100644
+> > > > --- a/include/media/videobuf2-v4l2.h
+> > > > +++ b/include/media/videobuf2-v4l2.h
+> > > > @@ -15,10 +15,6 @@
+> > > > =A0 #include <linux/videodev2.h>
+> > > > =A0 #include <media/videobuf2-core.h>
+> > > > =
+
+> > > > -#if VB2_MAX_FRAME !=3D VIDEO_MAX_FRAME
+> > > > -#error VB2_MAX_FRAME !=3D VIDEO_MAX_FRAME
+> > > > -#endif
+> > > > -
+> > > > =A0 #if VB2_MAX_PLANES !=3D VIDEO_MAX_PLANES
+> > > > =A0 #error VB2_MAX_PLANES !=3D VIDEO_MAX_PLANES
+> > > > =A0 #endif
+> > > > -- =
+
+> > > > 2.39.2
+> > > > =
+
+> -- =
+
+> Hsia-Jun(Randy) Li
+> =
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
