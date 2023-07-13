@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83911C0015E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jul 2023 14:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF4CC001DD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Jul 2023 14:40:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z0O5KDRVKIhb9U7x1iabYZfhAHzTfdod1wAtGoUR/2M=; b=XnPm0YJK1SkRiV
-	aCoDoHWvTGWerBmm0MAb9w5fP75t4dG5vOmdnFxBGIcol2nCh71fWO70ZNDxj1/p0NiG13uStyT9R
-	hT1ZAeJPw3a/TXvXHaS+ZEVys2JDFu8xqsHBQjpqVhCzKEWE6t36EzDaO2wX8bQ8hseYTS7BR5Wfc
-	EWK32zhvEp8FCLSAH4jlhSiuBF0uAh2DVunjt4Bb2/lYYVRcLCYAts/fyyv6ei1dO1m49rB9Zgwrc
-	dPb+DLCC0KxRYHBgOEsWtxRt6BRtoGK85N4tPr7WWMMDXqwSKFJS6JgTC8HLWQBmqIvy7YJ6p6oTy
-	nXP+6tOddvztXUfRluGQ==;
+	List-Owner; bh=dE8E/STL3On9dexx0z2eK1yemay6815xhapJMelVjQs=; b=KmsCRpgQjbzV80
+	5CqnhN417IgN5UsA2TW21pmu+UpvTXFofUUU6/3mD6AZyUhXjlwT9VM6pywnfFCRO8tkcVuH/4iN9
+	2SusmBbVO0xjUkegFEks6JQfNyq82/Lxv994lU411QDQPDCxgFRYDOXFzhPmwq9X/gTp9XjGdxBFF
+	9Mk/+Ea53fEnGIlgxnvA7DIBGLnkDZ4nS/lJKRGHoADBKHxEe04bUbTOk3hNtTHQOnLOx5FHHiSRi
+	EkldZk65OCwXYsr2N7czG1jedekuRZu/bOBA7OI+NmdyI3+B1D0YeImtdVSNfgfIJ+cyJ95Fo003O
+	iLjIbP/YgnLI9qyNtnJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJxUO-003ail-14;
-	Thu, 13 Jul 2023 14:40:16 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1qJxUP-003ajN-0M;
+	Thu, 13 Jul 2023 14:40:17 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJxUD-003abA-2A
+	id 1qJxUG-003adN-1M
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Jul 2023 14:40:06 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-666ecf9a0ceso515499b3a.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jul 2023 07:40:05 -0700 (PDT)
+	Thu, 13 Jul 2023 14:40:09 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-6831e80080dso524544b3a.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jul 2023 07:40:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1689259205; x=1691851205;
+        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1689259208; x=1691851208;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7FgQIEmSzQ4dFeEFG76qRf/jhDRaMc5SrZrSKL4bD1Y=;
-        b=KTEmLT4F8Cah0ovXAWR3WZ+iIf5n88zvYx6AeJQpdfDQGPXSTGGMvHYv2c/+6nrJRP
-         9l4h+HqU6yslx59r8zY8+3FL+8GVx3gmqft44V74DU9RCabgvFfGdOs6zI54tVHUFlS+
-         UVhSALUdvxRZLShushRqNlDwCQVTJODQfYNhkHERV2vo9sVjLzg8oAQxCc4c8JR1tGCP
-         5Ukb7NriUld+fbt71YSjdOVazfB7CkvdTfaYUPIWbZl3VrTEm5gyBnwYwiZOZac4k9jq
-         n6j55WQYrlsUHz2xsIw/dHsoOQzrPuOIYg5LlQmwJ/cidUo2NhVZtksSDpq1Ul9lj9fN
-         eU1Q==
+        bh=K5vZ1vv0N6K8LaB+S//93BMQdabNI48ulO78d3KhNAs=;
+        b=ViUr4yqzbp/7T1fHL1dSLBxZ5canTK9h+yFzNEtiMTgBVeXe/XRCSjtU8Ys6/nxdVC
+         hG0ythVN0K8XferSdjJdJCB1jugLF/mHAFmdqxx99/crMOQJXOsg/pw87UENZCYePGuo
+         j/Mll1JQmB3xSa/IQ6wOWCeRsTtbqqtTXiU6TAJjw5rviSJXqh2KzjLkLSTFxxBAsfKH
+         jJaIyb4jeYgYElpXMGeRcWr0ski9x88Dvuk9pDjKT7yIDHqZp1ISSuWYDILxTyhLeHTQ
+         aDy3wz+5ehBKBHI+F6tXdK4D+BwAb6AyAy4o/hmjhUD5bxtAYhKnDtTa0BZavaYkm7fh
+         Vbxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689259205; x=1691851205;
+        d=1e100.net; s=20221208; t=1689259208; x=1691851208;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7FgQIEmSzQ4dFeEFG76qRf/jhDRaMc5SrZrSKL4bD1Y=;
-        b=K/kb91cEK8Lk/0RRJWetwAiyiXkpouH+z6A99Mjl1hmySEvJItjKfhXsX+Ob4ikbQi
-         pL7zaxOrctN+7jVEeBrFOiY0+3qSu/1r/+ukP3UVw97ACqvA6gxZr+mLhpMptcR8JsPh
-         2MklA1Rt5wakSgf2JtnxywxN79F8pZy2IoEKte3zL+dSkdg2m/w3h/4DVM9JHBlVug+J
-         bv3BcNLc0wYDnMH1OtS4tXDEeUDYdGFuZsCU+S7LDd4jt6/WK7v/FXI+mmG7q3ICBwl4
-         Gt7bvlKsJlUi0NsviKQ8FiR9nZ4S6XypKAbfC1iuO+zXebhm7w+NZ6b+GpdU/H+/77VR
-         5CuQ==
-X-Gm-Message-State: ABy/qLaQ6a2T34FdXSDoo5nGSJrRJapjmGuZ+gPMMyJd4OstGkpH4XCT
-	5VzeETC78HimNkA9n0agxYE2VQ==
-X-Google-Smtp-Source: APBJJlEPTj0LTZ9j4HJ7wKnTjcCoEfBrmnuijG+9GGHwH7UEyrUfZvu2cVGcA2ICM7t3pGSIklBJqg==
-X-Received: by 2002:aa7:88c3:0:b0:682:562a:39ae with SMTP id k3-20020aa788c3000000b00682562a39aemr1908978pff.32.1689259205162;
-        Thu, 13 Jul 2023 07:40:05 -0700 (PDT)
+        bh=K5vZ1vv0N6K8LaB+S//93BMQdabNI48ulO78d3KhNAs=;
+        b=brIu5ez/XJ2fBuAc31LMLBrTEJ2xHH9ShXUu7azsYam606UbHX7a2DE9x3G4jdq7yz
+         De8RN/99oQn4BpaAWxthFFi55YJ/o+r2of3/lR05NlastJC7gHNmGxZZcxhx4kterPej
+         NJZtathN0t7IbhI+729gwZzFTKMnazpv1y4FTGx+J4wRyQfFVxS8NbteyeNuF3iWDHpE
+         cjXEbCIYJzirDGIO7UHNlVs8CAkvXizqF2ZmE40O06I9HJ/VEKwNlKobzlNQ0w6n39wb
+         0RT/2KvOUHH+Rk1ZCkVDuirxqbQICysm2MIsOxj2OUkfCIq27TmEgiExJDp6LNlzXMz/
+         YsjQ==
+X-Gm-Message-State: ABy/qLbTzstJpmYJ2TGpmpZoDNJV3WXY5DhzNK/ykJHWPgywPmvL5cuY
+	Aod5OluSecOEZvAuL/qQLypqKjtNKFKfjgpFjNATvg==
+X-Google-Smtp-Source: APBJJlHaB4XRsF1iruppO3ErGKHoxLxsp5GZ23w3i5jBtiochO2BfLPG5L2raB1yLQjo/ijQpc7KXA==
+X-Received: by 2002:a05:6a00:3a1d:b0:680:f6fe:8908 with SMTP id fj29-20020a056a003a1d00b00680f6fe8908mr1431203pfb.9.1689259207857;
+        Thu, 13 Jul 2023 07:40:07 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a208:4984:5087:308e:21ca])
-        by smtp.gmail.com with ESMTPSA id d18-20020aa78692000000b0067a50223e44sm5565764pfo.74.2023.07.13.07.40.01
+        by smtp.gmail.com with ESMTPSA id d18-20020aa78692000000b0067a50223e44sm5565764pfo.74.2023.07.13.07.40.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jul 2023 07:40:04 -0700 (PDT)
+        Thu, 13 Jul 2023 07:40:07 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 7/8] arm64: dts: rockchip: Enable RS232 for edgeble-neu6b
-Date: Thu, 13 Jul 2023 20:09:40 +0530
-Message-Id: <20230713143941.1756849-7-jagan@edgeble.ai>
+Subject: [PATCH 8/8] arm64: dts: rockchip: Enable RS485 for edgeble-neu6b
+Date: Thu, 13 Jul 2023 20:09:41 +0530
+Message-Id: <20230713143941.1756849-8-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230713143941.1756849-1-jagan@edgeble.ai>
 References: <20230713143941.1756849-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_074005_734035_AC29DF65 
-X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-CacheID: sfid-20230713_074008_464697_19FDABCB 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,7 +98,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add RS232 support for Edgeble Neu6B NCM IO board.
+Add RS485 support for Edgeble Neu6B NCM IO board.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
@@ -106,17 +106,17 @@ Signed-off-by: Jagan Teki <jagan@edgeble.ai>
  1 file changed, 7 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-index 7ce87366c16c..1bcd64680ff0 100644
+index 1bcd64680ff0..72b0e5150155 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-@@ -77,3 +77,10 @@ &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
+@@ -84,3 +84,10 @@ &uart6 {
+ 	pinctrl-names = "default";
  	status = "okay";
  };
 +
-+/* RS232 */
-+&uart6 {
-+	pinctrl-0 = <&uart6m0_xfer>;
++/* RS485 */
++&uart7 {
++	pinctrl-0 = <&uart7m2_xfer>;
 +	pinctrl-names = "default";
 +	status = "okay";
 +};
