@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72BE9EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 05:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA07EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 06:42:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LGoHbiOSMhchNTleT6wSg4MvUfIAP+2cZ/d5w2QLzhE=; b=jl/sqYFUJ6o0of
-	wCn21Qf6WSQlZV5oLGYczH8v3Cz7l75bUWQlG/83cIHOpeVc4UItQv5eb7HqQSObWQOhbOmEDigKK
-	U79gzPDlKCYBilxi+w2JjMZAs+vWAkbAEBbD4k6I/o1VsDW8/R/jUmIKajFMSgLP4zexTx80x2g6q
-	lJAJPPmpj9d174hxb/W13kJr6cfwFBb3mcIq4urNauYpTXhB/7Ym69aqpYb0lbtZ0SoGf0tb7bzM1
-	OA5/Kh8RSTp3U+OY7jFBXxgq1ZjI42Fsu/UKobSWLQ2vlJnF+lexCVnao+pS0sogoY/YhxF5nCXTe
-	BZtRU7VNNLlB+cIyEKHA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fy3fVUv5ReKPlwm7QYybS2BYgvWDmSnxOC1Puai2/yA=; b=hFBleozv9U2RZP
+	BrUrqQ3Nmu0y1bhBt1YCztYYafD/Oo5+N0kf97evIZX2rXxcvLbYtKzTbgawlj5HJB3gOVfzMrKzD
+	gN+SNsztQX8uVfzV+XbSvw7pDsRIu23zf1o1bcjG9KbrDuQI+I9gZOHA1F2XYAg6IzOWKcrGNbP6l
+	+MkXuIy+OBG5MWRXaOVFvSpjCySlnZz2ghPdVCgjyYyxRBebkqRQhHI/HkzBV0sZKMtrAx85kWiMG
+	BqdMj0S8fIg12nrmlvOu6lzgZ4kyRL+kys3HF/BnI5B9szl9/Tayy7Zmm1JisImmaecYZdiihUf2o
+	pQV64jXWOpAfY4PvCOow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKBQk-0054b9-24;
-	Fri, 14 Jul 2023 05:33:26 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1qKCVt-005COe-37;
+	Fri, 14 Jul 2023 06:42:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKBQh-0054a2-2g
+	id 1qKCVr-005COP-2O
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 14 Jul 2023 06:42:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Q8jvk8HxqSll+q13DIUmb5xEyjBMskrIj+VbITOtZSQ=; b=N/OESIknOUQEUT1hz80ViNQvgB
+	rtHpxLzxekkdN30Ryk70kdlYHWlMp4lnnSXEvE8iyXjHhPAcxOn904+gypu90beSF+pnpNqPeT3P0
+	1WU32AizldDKS7yZH8RFwGqx7BqmK0DqzJ5kxRgF1jkseI+EZDgFsRD/TRpsUCm61tuYLM4LiodaX
+	UOH/hEsRsrMuEcym4me5WHYSkg8ZkEb2mS84W0mFdrJlpkvE2zkcFmdbmc5RdHxvbEHNeJ11TXX3K
+	q5gOMN4XBDfQSyNiNE0ch9iduPePVHhPc/2JqpIizggu7Sa89nnKVpigdnImUiBbHrn+ngBNqT/vK
+	Z2wJS7zQ==;
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qKCVn-006Akr-0I
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Jul 2023 05:33:25 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-bc379e4c1cbso1433013276.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Jul 2023 22:33:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1689312803; x=1691904803;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cO93OCrQNlLCZA+MMbVD/bFScGU9EicCldb08idSeGU=;
-        b=xBgejHrRR1ZPmQWWVcZZ13sWt5Ofu+iTDPRYzWWl6gJKPsKmamGqKOT/8OjniwAsTG
-         JjQGYJuscLmU4kpmBNcnYXKhZs8Jr8q2rjUAr2LtgDJaAhl2iiy0xdlkRji58y7/TJGg
-         L9lcnSnB4aTCrtEtVgibS9vJQgbLuXedWyf885FAUqc0pL3v7IWG2uEXuJxbbPINw19E
-         eGQzj46HD2NmBOzuNuPjKVmsjRyFTnqN/vDTXI61n22KtcjIfHoijhgmwopUxo7s2548
-         HOk3lrefVTcJCZmSqpp+nnBUpnaViPJUAbHnVCdiLq3GznGvRN5fkwwKOtKlecebFJ3M
-         dyvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689312803; x=1691904803;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cO93OCrQNlLCZA+MMbVD/bFScGU9EicCldb08idSeGU=;
-        b=ELtndt1PiLY9S2THRadDGMzzBsVPyNZ2Y3zF45oUB50JgnUKOsn79D5pUJDsvgAVJs
-         bo7REnPWGQtTbGFzElB0TDEtBrx4ZXHlsdid5f8b2Jtr0grBgEIzaEnbwwkQPMrf91gV
-         HH/+5w4Huc4kvc2QE7g1VoHgNfBks9CK7x0DsjiwItUqaBGmNEvfLP28cllF/BHENdcB
-         CGoU19c0BBkNsLAQNyPtbTVAmWqLILqeBi5WwQVRBMQ0uSyRRo3vW2Ar0kdpPWT7aupg
-         GfX0gGaJ7oR05h2LJpPxKaq8278lVH0mESJy4nqKCIEsitxSFB2A26O4dLn6oUU8w0ka
-         awAw==
-X-Gm-Message-State: ABy/qLaNtf9S1IWPIq9pP54ZEaxCOI/Rk8zApC2NSwKKBlCLfdYB4J3u
-	1kezfgLRQIZyDDtKTkUEbJFN8lETFa1e9Kh0E98P+A==
-X-Google-Smtp-Source: APBJJlER1ImBn8SyF4nvZFu6jfUXHV0RYVHgsrGbzlXI/WqrC2ZszrwiB0XPgpV3SfHRs1CKdVmSZ5f1SuUUQOe0xkE=
-X-Received: by 2002:a81:ab50:0:b0:56d:9b15:72a with SMTP id
- d16-20020a81ab50000000b0056d9b15072amr3845945ywk.33.1689312802990; Thu, 13
- Jul 2023 22:33:22 -0700 (PDT)
+	Fri, 14 Jul 2023 06:42:46 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 36E6gAoM013194;
+	Fri, 14 Jul 2023 15:42:11 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: michael.riesch@wolfvision.net, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: rock-3a: make ethernet work
+Date: Fri, 14 Jul 2023 15:30:27 +0900
+Message-Id: <20230714063027.74489-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20230403193250.108693-1-sebastian.reichel@collabora.com>
- <20230403193250.108693-2-sebastian.reichel@collabora.com> <CA+VMnFz4USPcXmQMyUB9n5EVmvQrJARDvnpO7iBrXZ8q2xcyAA@mail.gmail.com>
- <20230713193812.px7q4sdfdppuywsg@mercury.elektranox.org>
-In-Reply-To: <20230713193812.px7q4sdfdppuywsg@mercury.elektranox.org>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Fri, 14 Jul 2023 11:03:12 +0530
-Message-ID: <CA+VMnFwjFx5+h9=KGR-1o0ejSaxbE=-5wH3iqEEkn6k4q_he7Q@mail.gmail.com>
-Subject: Re: [PATCHv2 1/2] clk: rockchip: rk3588: make gate linked clocks
- ignore unused
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
-	Peter Geis <pgwipeout@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
-	Finley Xiao <finley.xiao@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	Vincent Legoll <vincent.legoll@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_223323_873334_82D8C84A 
-X-CRM114-Status: GOOD (  23.92  )
+X-CRM114-CacheID: sfid-20230714_074243_868713_EB728347 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +74,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+ethernet on Radxa ROCK 3A is not working by following error:
 
-On Fri, 14 Jul 2023 at 01:08, Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
->
-> Hello Jagan,
->
-> On Thu, Jul 13, 2023 at 08:25:03PM +0530, Jagan Teki wrote:
-> > On Tue, 4 Apr 2023 at 01:03, Sebastian Reichel
-> > <sebastian.reichel@collabora.com> wrote:
-> > [...]
-> > > + * Recent Rockchip SoCs have a new hardware block called Native Interface
-> > > + * Unit (NIU), which gates clocks to devices behind them. These effectively
-> > > + * need two parent clocks.
-> > > + *
-> > > + * Downstream enables the linked clock via runtime PM whenever the gate is
-> > > + * enabled. This implementation uses separate clock nodes for each of the
-> > > + * linked gate clocks, which leaks parts of the clock tree into DT.
-> > > + *
-> > > + * The GATE_LINK macro instead takes the second parent via 'linkname', but
-> > > + * ignores the information. Once the clock framework is ready to handle it, the
-> > > + * information should be passed on here. But since these clocks are required to
-> > > + * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
-> > > + * clocks critical until a better solution is available. This will waste some
-> > > + * power, but avoids leaking implementation details into DT or hanging the
-> > > + * system.
-> > >   */
-> >
-> > Does it mean the clk-link topology in the downstream kernel can be
-> > reused the same as normal clock notation?
->
-> Yes.
->
-> > For example, I'm trying to add HCLK_VO1 directly to VO1 syscon instead
-> > of routing to pclk_vo1_grf(done downstream)
-> >       vo1_grf: syscon@fd5a8000 {
-> >                compatible = "rockchip,rk3588-vo-grf", "syscon";
-> >                reg = <0x0 0xfd5a8000 0x0 0x100>;
-> >              clocks = <&cru HCLK_VO1>;
->
-> You need PCLK_VO1 (which is currently not exposed; I somehow missed
-> it).
->
-> >       };
-> >
-> > This seems breaking syscon for vo1_grf and observed a bus error
-> > while accessing regmap.
->
-> I investigated the issue you are seeing some weeks ago when my
-> co-workers started to work on HDMI RX and TX. You are probably
-> just missing this patch:
->
-> https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/ecc6415344957fa88356cec10f8b75a9da603a7b
+ rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+ rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
 
-In fact, I tried this solution as well, by connecting the PCLK_VO1GRF.
+to fix this problem, align related properties with vendor kernel
+ https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
 
-        vo1_grf: syscon@fd5a8000 {
-                compatible = "rockchip,rk3588-vo-grf", "syscon";
-                reg = <0x0 0xfd5a8000 0x0 0x100>;
-                clocks = <&cru PCLK_VO1GRF>;
-        };
+Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ .../boot/dts/rockchip/rk3568-rock-3a.dts      | 32 ++++++-------------
+ 1 file changed, 10 insertions(+), 22 deletions(-)
 
-But the result seems the same, accessing vo1_grf triggers an abort [1]
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+index 917f5b2b8aab..f9381ab9629b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+@@ -32,13 +32,6 @@ hdmi_con_in: endpoint {
+ 		};
+ 	};
+ 
+-	gmac1_clkin: external-gmac1-clock {
+-		compatible = "fixed-clock";
+-		clock-frequency = <125000000>;
+-		clock-output-names = "gmac1_clkin";
+-		#clock-cells = <0>;
+-	};
+-
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+@@ -256,18 +249,24 @@ &cpu3 {
+ 
+ &gmac1 {
+ 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+-	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
+-	clock_in_out = "input";
++	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
+ 	phy-handle = <&rgmii_phy1>;
+-	phy-mode = "rgmii-id";
++	phy-mode = "rgmii";
+ 	phy-supply = <&vcc_3v3>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac1m1_miim
+ 		     &gmac1m1_tx_bus2
+ 		     &gmac1m1_rx_bus2
+ 		     &gmac1m1_rgmii_clk
+-		     &gmac1m1_clkinout
+ 		     &gmac1m1_rgmii_bus>;
++	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	/* Reset time is 20ms, 100ms for rtl8211f */
++	snps,reset-delays-us = <0 20000 100000>;
++	tx_delay = <0x42>;
++	rx_delay = <0x28>;
+ 	status = "okay";
+ };
+ 
+@@ -588,11 +587,6 @@ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@0 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
+ 		reg = <0x0>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&eth_phy_rst>;
+-		reset-assert-us = <20000>;
+-		reset-deassert-us = <100000>;
+-		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+ 	};
+ };
+ 
+@@ -630,12 +624,6 @@ vcc_mipi_en: vcc_mipi_en {
+ 		};
+ 	};
+ 
+-	ethernet {
+-		eth_phy_rst: eth_phy_rst {
+-			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+-- 
+2.39.2
 
-[1] https://gist.github.com/openedev/e241da8180341ffbf4dc6a26de7efa31
-
-Thanks,
-Jagan.
 
 _______________________________________________
 Linux-rockchip mailing list
