@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15663EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9497AC001DE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lYOx1BHyrJDO0zL7IT9fDdO1K5iL/SkdvjzHLQ3uAdw=; b=i11m6m8cdQjWuv
-	mc5vH2PO30KGZopg+FoTPoOv/dDB7bKjXtghiTROi18TlWb4S7UtYzIB1qp+o51JBgZvU9gmRnzNt
-	3rac5Q2belJH3V11BMp6br9PZvonhsUNeNqu9RKbUPK5xJFwigLP7TLoUuDAh+GRJaVCyB+RFOCYM
-	sYfS1tl7BS7iYS8z/TQZYxM7wWLporyMKQoia3D2OZzrYbMMOYn0/tw9v5gt/mSrAcfpuLFF8xqhy
-	RGHLpCG/KanhWLtltOr2gTfWwChOG9nlp67lGPtywrAmrHHqvKkTb20a83nLJbXIjea/Q0hSlujkf
-	0Y31n1glZebDk7TFF6HA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ca7ZQQ9pM2ufH91Wdq6hiBKi+yPNzaN3uiEEZ3LS44Y=; b=p2HP3x5Gb0FYnO
+	P0NHIpx61VHzefH4JxoNOLo0ebGD+gIUpeUwWQBGHOZjNZQ8OJa4V1AC7+FMlFreSOAlGkXL2pqLS
+	xrjHIspHSqIwrO2/y7YNwexFeNVuj1w1G1DKDaS/MtgPUEmgGX6/8Fbs+dcnTnVjMp/CXjdKD6s4i
+	doCGp5nh6GJztF8ZNj7hWc3jXNorq2y8j8mARl7Bfa3xWUmtCPPki07T7f3ZfgpP0E6ozyuVji4/B
+	M/a+Tvocz8+EIeVpxz8n6sJjKNNG2Vi3uMsEt4S9+Eg19JjTiNYEMgWJ0i4+iUsSvrlkKoop5tvL4
+	i4RkX5ADDJbUEoxlv3rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMdF-006lEF-0e;
-	Fri, 14 Jul 2023 17:31:05 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1qKMqJ-006nGG-1Q;
+	Fri, 14 Jul 2023 17:44:35 +0000
+Received: from mail-il1-f177.google.com ([209.85.166.177])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMdC-006lDG-1d;
-	Fri, 14 Jul 2023 17:31:04 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-4fbaef9871cso3679218e87.0;
-        Fri, 14 Jul 2023 10:30:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689355858; x=1691947858;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VpMFCE+Ca146c1cbtzsHnNoAmFwnj+Ac+T3KfufJ/1E=;
-        b=p+1k1JvMlq0J5cumGBWyOL8kGH0TmUDQ+aN0Vgij/N+H202thGb5vzpfTtQN/oiFt+
-         Lq/4TEEM7BNVO7wOxOFfHUSsBiAb/H/V8xnreA8oEsEnzY/A1Uh5V9ahm24mzTD04EMG
-         lnsjE2zTqZYuAEHkU/J5v/VrgJ0qE6Nyd3i7/B03tz4erwtCBg7om3Ipl50BZeKRUq9F
-         xX3j8esQOvxgAWfpn7uOb6MJy9usJ3S+xN7oJ5/wf1pV42bZhhV2//6HnoVyEM2UO8V0
-         Sxt2cvnaPj0qylHZT/JuOE/kRXw98j5cKFbh8RM+pzsxllqZ43jlAlpHzUGbAOKhSiZ8
-         ik8Q==
+	id 1qKMqD-006nC0-2r;
+	Fri, 14 Jul 2023 17:44:32 +0000
+Received: by mail-il1-f177.google.com with SMTP id e9e14a558f8ab-345f3e28082so9381675ab.1;
+        Fri, 14 Jul 2023 10:44:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689355858; x=1691947858;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VpMFCE+Ca146c1cbtzsHnNoAmFwnj+Ac+T3KfufJ/1E=;
-        b=SmR4saM5A4oiat8WLZGixPLdMl3gBadbpBTrSpFMwM49uYyjyY59+yXlJ9NagbZo+B
-         5eTlw3VIYqhsA5zl8TzOzrDjZ18yhID60j4HAYOVoFiA0yhWUqpVpTIhJVdM0AXrNxFj
-         LMtmgOyYfAMLvHfSFqznWZ8Cbl/p+CC2KKjlj0TZTHq/6cN6loUyQfU5wMMUZRc2Ft0b
-         uaQr+McjLsU9O6WSfeAVokyKVz4SrRG65LSGL9f+yr1DnIRBR06frh/X7DEr9GSkjiyK
-         ZKLaLTg+pRopAlOIdzxfcMX4d8Y/aU2zL1nUkPfyaV3f9se1AwnLgIkeuK8yCdKnVqhp
-         /PcQ==
-X-Gm-Message-State: ABy/qLbCDx370SfHEF1/O9Mu4n1JFLdOnZqnvB6sr8DgkJWABQbYXLE4
-	WNyq9vDCrtml0kPaA9jWJizuJM+IuapqLg==
-X-Google-Smtp-Source: APBJJlEMMbo9KZIyXFxmxp3JHP/GnReaOpIbfs6lexxSvvqnKyowfI97WlZtL+7nl76t/WqTnMgmIA==
-X-Received: by 2002:a05:6512:39cf:b0:4f8:6b7f:c6d6 with SMTP id k15-20020a05651239cf00b004f86b7fc6d6mr4662367lfu.48.1689355858268;
-        Fri, 14 Jul 2023 10:30:58 -0700 (PDT)
-Received: from mobilestation ([85.249.18.201])
-        by smtp.gmail.com with ESMTPSA id z1-20020a19f701000000b004fb78959218sm1541574lfe.200.2023.07.14.10.30.55
+        d=1e100.net; s=20221208; t=1689356669; x=1691948669;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uA1OYKFmaVAkjUwcQSHH/nc3mV03LI4EOQPprk91MGE=;
+        b=J65riVAR44jY4FlV4jcvjRxgXpd40zP6CZPCxMNo/Ws/muVNTe1mp82rc/NMHMK1wl
+         2wZLTX1FDUq1MV+oG31Ssipa53DJ3APatc7pkptPawA3cevk63tCbVTiL4zUZBdZ1zNH
+         uFhhTIFvqqHuUKjU90A7nYqiCjnwyiW5MLEtf2M9J1PYrog6U6vuU957u+XN0n/dqNbh
+         bM+e6FNuP/rR2F2VEn4Ho6lgTnV3NR+a05PnErS+JUZsSLN6w2x+7rBLwXONbTxgPZUi
+         Keq6tx8iSw3Es3X1oJYIUJKhO8rDV94ItaTcJy4PfpnZAH0dgzIBgB88mKo451MdVKpM
+         bhKw==
+X-Gm-Message-State: ABy/qLar+5smnEbGqwQNLzlL7Ns1jrQZFZITSsfdglavELYHA27MSVBy
+	F48+mmfUi+LNiFsRIGCI4w==
+X-Google-Smtp-Source: APBJJlHTvt8AFSieKPae/Uq7zm6T5QR1KnB7bwBj9DaC1zGZaOUrIWxIW1kn21lsgNgas84mxR3JUA==
+X-Received: by 2002:a92:c906:0:b0:345:c8d4:1147 with SMTP id t6-20020a92c906000000b00345c8d41147mr5141835ilp.16.1689356668888;
+        Fri, 14 Jul 2023 10:44:28 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id c3-20020a92d3c3000000b003460b456030sm2903667ilh.60.2023.07.14.10.44.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:30:57 -0700 (PDT)
-Date: Fri, 14 Jul 2023 20:30:53 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: rk3588: add PCIe2 support
-Message-ID: <cfdkanrvpcvqyjow22gp25xpf4bgel6slqfhkjdeu7tzn5rlzf@jyuncjnvdp3m>
-References: <20230713171851.73052-1-sebastian.reichel@collabora.com>
- <20230713171851.73052-4-sebastian.reichel@collabora.com>
+        Fri, 14 Jul 2023 10:44:28 -0700 (PDT)
+Received: (nullmailer pid 4054349 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:44:25 -0000
+From: Rob Herring <robh@kernel.org>
+To: Corentin Labbe <clabbe.montjoie@gmail.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
+	"David S. Miller" <davem@davemloft.net>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Neal Liu <neal_liu@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, 
+	Andrew Jeffery <andrew@aj.id.au>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Tudor Ambarus <tudor.ambarus@linaro.org>, 
+	=?UTF-8?Q?Horia_Geant=C4=83?= <horia.geanta@nxp.com>, 
+	Pankaj Gupta <pankaj.gupta@nxp.com>, Gaurav Jain <gaurav.jain@nxp.com>, 
+	Gilad Ben-Yossef <gilad@benyossef.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, 
+	Daniele Alessandrelli <daniele.alessandrelli@intel.com>, Declan Murphy <declan.murphy@intel.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Vladimir Zapolskiy <vz@mleia.com>, Jia Jie Ho <jiajie.ho@starfivetech.com>, 
+	William Qiu <william.qiu@starfivetech.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
+	Harsha <harsha.harsha@amd.com>
+Cc: devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH] crypto: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:44:18 -0600
+Message-Id: <20230714174421.4054194-1-robh@kernel.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230713171851.73052-4-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_103102_566427_02CE95AD 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20230714_104429_935767_083C423F 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,220 +94,556 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 07:18:51PM +0200, Sebastian Reichel wrote:
-> Add all three PCIe2 IP blocks to the RK3588 DT. Note, that RK3588
-> also has two PCIe3 IP blocks, that will be handled separately.
-> 
-> Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588.dtsi  |  54 +++++++++++
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 108 ++++++++++++++++++++++
->  2 files changed, 162 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> index 6be9bf81c09c..4d66ca6c2e4c 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> @@ -80,6 +80,60 @@ i2s10_8ch: i2s@fde00000 {
->  		status = "disabled";
->  	};
->  
-> +	pcie2x1l0: pcie@fe170000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x20 0x2f>;
-> +		clocks = <&cru ACLK_PCIE_1L0_MSTR>, <&cru ACLK_PCIE_1L0_SLV>,
-> +			 <&cru ACLK_PCIE_1L0_DBI>, <&cru PCLK_PCIE_1L0>,
-> +			 <&cru CLK_PCIE_AUX2>, <&cru CLK_PCIE1L0_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 241 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 240 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l0_intc 0>,
-> +				<0 0 0 2 &pcie2x1l0_intc 1>,
-> +				<0 0 0 3 &pcie2x1l0_intc 2>,
-> +				<0 0 0 4 &pcie2x1l0_intc 3>;
-> +		linux,pci-domain = <2>;
+The DT of_device.h and of_platform.h date back to the separate
+of_platform_bus_type before it as merged into the regular platform bus.
+As part of that merge prepping Arm DT support 13 years ago, they
+"temporarily" include each other. They also include platform_device.h
+and of.h. As a result, there's a pretty much random mix of those include
+files used throughout the tree. In order to detangle these headers and
+replace the implicit includes with struct declarations, users need to
+explicitly include the correct includes.
 
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c   | 1 -
+ drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c   | 1 -
+ drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c   | 1 -
+ drivers/crypto/amlogic/amlogic-gxl-core.c           | 1 -
+ drivers/crypto/aspeed/aspeed-acry.c                 | 3 ---
+ drivers/crypto/atmel-aes.c                          | 6 ++----
+ drivers/crypto/atmel-ecc.c                          | 2 +-
+ drivers/crypto/atmel-sha.c                          | 6 ++----
+ drivers/crypto/atmel-tdes.c                         | 6 ++----
+ drivers/crypto/bcm/cipher.c                         | 3 +--
+ drivers/crypto/caam/ctrl.c                          | 1 +
+ drivers/crypto/caam/jr.c                            | 1 +
+ drivers/crypto/caam/qi.c                            | 1 +
+ drivers/crypto/ccree/cc_driver.c                    | 1 -
+ drivers/crypto/exynos-rng.c                         | 2 +-
+ drivers/crypto/gemini/sl3516-ce-core.c              | 1 -
+ drivers/crypto/img-hash.c                           | 4 ++--
+ drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c | 3 ++-
+ drivers/crypto/n2_core.c                            | 2 +-
+ drivers/crypto/omap-aes.c                           | 1 -
+ drivers/crypto/omap-des.c                           | 2 --
+ drivers/crypto/omap-sham.c                          | 1 -
+ drivers/crypto/rockchip/rk3288_crypto.c             | 1 -
+ drivers/crypto/s5p-sss.c                            | 1 -
+ drivers/crypto/sa2ul.c                              | 3 ++-
+ drivers/crypto/sahara.c                             | 1 -
+ drivers/crypto/starfive/jh7110-cryp.c               | 2 +-
+ drivers/crypto/starfive/jh7110-hash.c               | 1 -
+ drivers/crypto/stm32/stm32-cryp.c                   | 2 +-
+ drivers/crypto/stm32/stm32-hash.c                   | 2 +-
+ drivers/crypto/talitos.c                            | 4 ++--
+ drivers/crypto/xilinx/zynqmp-aes-gcm.c              | 2 +-
+ drivers/crypto/xilinx/zynqmp-sha.c                  | 1 -
+ 33 files changed, 25 insertions(+), 45 deletions(-)
 
-These properties are marked as deprecated and unused by the driver
-anyway. You can freely drop them.
+diff --git a/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c b/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
+index 51a3a7b5b985..3bcfcfc37084 100644
+--- a/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
++++ b/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
+@@ -14,7 +14,6 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <crypto/scatterwalk.h>
+ #include <linux/scatterlist.h>
+diff --git a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
+index 07ea0cc82b16..258d447765eb 100644
+--- a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
++++ b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
+@@ -18,7 +18,6 @@
+ #include <linux/irq.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c b/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
+index 3dd844b40ff7..77bddd5ebaf0 100644
+--- a/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
++++ b/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
+@@ -19,7 +19,6 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/amlogic/amlogic-gxl-core.c b/drivers/crypto/amlogic/amlogic-gxl-core.c
+index 937187027ad5..c8fa4a8bfd34 100644
+--- a/drivers/crypto/amlogic/amlogic-gxl-core.c
++++ b/drivers/crypto/amlogic/amlogic-gxl-core.c
+@@ -13,7 +13,6 @@
+ #include <linux/irq.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <crypto/internal/skcipher.h>
+ #include <linux/dma-mapping.h>
+diff --git a/drivers/crypto/aspeed/aspeed-acry.c b/drivers/crypto/aspeed/aspeed-acry.c
+index 470122c87fea..d16f570c40d2 100644
+--- a/drivers/crypto/aspeed/aspeed-acry.c
++++ b/drivers/crypto/aspeed/aspeed-acry.c
+@@ -11,10 +11,7 @@
+ #include <linux/clk.h>
+ #include <linux/platform_device.h>
+ #include <linux/module.h>
+-#include <linux/of_address.h>
+-#include <linux/of_irq.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/interrupt.h>
+ #include <linux/count_zeros.h>
+diff --git a/drivers/crypto/atmel-aes.c b/drivers/crypto/atmel-aes.c
+index 143d33fbb316..21c8c2112c6a 100644
+--- a/drivers/crypto/atmel-aes.c
++++ b/drivers/crypto/atmel-aes.c
+@@ -28,7 +28,7 @@
+ #include <linux/irq.h>
+ #include <linux/scatterlist.h>
+ #include <linux/dma-mapping.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/delay.h>
+ #include <linux/crypto.h>
+ #include <crypto/scatterwalk.h>
+@@ -2533,13 +2533,11 @@ static void atmel_aes_get_cap(struct atmel_aes_dev *dd)
+ 	}
+ }
+ 
+-#if defined(CONFIG_OF)
+ static const struct of_device_id atmel_aes_dt_ids[] = {
+ 	{ .compatible = "atmel,at91sam9g46-aes" },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, atmel_aes_dt_ids);
+-#endif
+ 
+ static int atmel_aes_probe(struct platform_device *pdev)
+ {
+@@ -2687,7 +2685,7 @@ static struct platform_driver atmel_aes_driver = {
+ 	.remove		= atmel_aes_remove,
+ 	.driver		= {
+ 		.name	= "atmel_aes",
+-		.of_match_table = of_match_ptr(atmel_aes_dt_ids),
++		.of_match_table = atmel_aes_dt_ids,
+ 	},
+ };
+ 
+diff --git a/drivers/crypto/atmel-ecc.c b/drivers/crypto/atmel-ecc.c
+index 432beabd79e6..590ea984c622 100644
+--- a/drivers/crypto/atmel-ecc.c
++++ b/drivers/crypto/atmel-ecc.c
+@@ -14,7 +14,7 @@
+ #include <linux/init.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/scatterlist.h>
+ #include <linux/slab.h>
+ #include <linux/workqueue.h>
+diff --git a/drivers/crypto/atmel-sha.c b/drivers/crypto/atmel-sha.c
+index 6bef634d3c86..b791be63d84b 100644
+--- a/drivers/crypto/atmel-sha.c
++++ b/drivers/crypto/atmel-sha.c
+@@ -28,7 +28,7 @@
+ #include <linux/irq.h>
+ #include <linux/scatterlist.h>
+ #include <linux/dma-mapping.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/delay.h>
+ #include <linux/crypto.h>
+ #include <crypto/scatterwalk.h>
+@@ -2570,14 +2570,12 @@ static void atmel_sha_get_cap(struct atmel_sha_dev *dd)
+ 	}
+ }
+ 
+-#if defined(CONFIG_OF)
+ static const struct of_device_id atmel_sha_dt_ids[] = {
+ 	{ .compatible = "atmel,at91sam9g46-sha" },
+ 	{ /* sentinel */ }
+ };
+ 
+ MODULE_DEVICE_TABLE(of, atmel_sha_dt_ids);
+-#endif
+ 
+ static int atmel_sha_probe(struct platform_device *pdev)
+ {
+@@ -2716,7 +2714,7 @@ static struct platform_driver atmel_sha_driver = {
+ 	.remove		= atmel_sha_remove,
+ 	.driver		= {
+ 		.name	= "atmel_sha",
+-		.of_match_table	= of_match_ptr(atmel_sha_dt_ids),
++		.of_match_table	= atmel_sha_dt_ids,
+ 	},
+ };
+ 
+diff --git a/drivers/crypto/atmel-tdes.c b/drivers/crypto/atmel-tdes.c
+index c9ded8be9c39..2f152f80f61a 100644
+--- a/drivers/crypto/atmel-tdes.c
++++ b/drivers/crypto/atmel-tdes.c
+@@ -28,7 +28,7 @@
+ #include <linux/irq.h>
+ #include <linux/scatterlist.h>
+ #include <linux/dma-mapping.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/delay.h>
+ #include <linux/crypto.h>
+ #include <crypto/scatterwalk.h>
+@@ -1139,13 +1139,11 @@ static void atmel_tdes_get_cap(struct atmel_tdes_dev *dd)
+ 	}
+ }
+ 
+-#if defined(CONFIG_OF)
+ static const struct of_device_id atmel_tdes_dt_ids[] = {
+ 	{ .compatible = "atmel,at91sam9g46-tdes" },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, atmel_tdes_dt_ids);
+-#endif
+ 
+ static int atmel_tdes_probe(struct platform_device *pdev)
+ {
+@@ -1282,7 +1280,7 @@ static struct platform_driver atmel_tdes_driver = {
+ 	.remove		= atmel_tdes_remove,
+ 	.driver		= {
+ 		.name	= "atmel_tdes",
+-		.of_match_table = of_match_ptr(atmel_tdes_dt_ids),
++		.of_match_table = atmel_tdes_dt_ids,
+ 	},
+ };
+ 
+diff --git a/drivers/crypto/bcm/cipher.c b/drivers/crypto/bcm/cipher.c
+index 70b911baab26..262c7dbc5e5f 100644
+--- a/drivers/crypto/bcm/cipher.c
++++ b/drivers/crypto/bcm/cipher.c
+@@ -15,8 +15,7 @@
+ #include <linux/kthread.h>
+ #include <linux/rtnetlink.h>
+ #include <linux/sched.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/io.h>
+ #include <linux/bitops.h>
+ 
+diff --git a/drivers/crypto/caam/ctrl.c b/drivers/crypto/caam/ctrl.c
+index ff9ddbbca377..74bcd3083881 100644
+--- a/drivers/crypto/caam/ctrl.c
++++ b/drivers/crypto/caam/ctrl.c
+@@ -9,6 +9,7 @@
+ #include <linux/device.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
++#include <linux/platform_device.h>
+ #include <linux/sys_soc.h>
+ #include <linux/fsl/mc.h>
+ 
+diff --git a/drivers/crypto/caam/jr.c b/drivers/crypto/caam/jr.c
+index 96dea5304d22..73b7aa68f21c 100644
+--- a/drivers/crypto/caam/jr.c
++++ b/drivers/crypto/caam/jr.c
+@@ -9,6 +9,7 @@
+ 
+ #include <linux/of_irq.h>
+ #include <linux/of_address.h>
++#include <linux/platform_device.h>
+ 
+ #include "compat.h"
+ #include "ctrl.h"
+diff --git a/drivers/crypto/caam/qi.c b/drivers/crypto/caam/qi.c
+index 2ad2c1035856..46a083849a8e 100644
+--- a/drivers/crypto/caam/qi.c
++++ b/drivers/crypto/caam/qi.c
+@@ -13,6 +13,7 @@
+ #include <linux/kernel.h>
+ #include <linux/kthread.h>
+ #include <linux/netdevice.h>
++#include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/string.h>
+ #include <soc/fsl/qman.h>
+diff --git a/drivers/crypto/ccree/cc_driver.c b/drivers/crypto/ccree/cc_driver.c
+index c57f929805d5..0f0694037dd7 100644
+--- a/drivers/crypto/ccree/cc_driver.c
++++ b/drivers/crypto/ccree/cc_driver.c
+@@ -14,7 +14,6 @@
+ #include <linux/of.h>
+ #include <linux/clk.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/pm_runtime.h>
+ 
+ #include "cc_driver.h"
+diff --git a/drivers/crypto/exynos-rng.c b/drivers/crypto/exynos-rng.c
+index cbd8ca6e52ee..773c3238c603 100644
+--- a/drivers/crypto/exynos-rng.c
++++ b/drivers/crypto/exynos-rng.c
+@@ -15,7 +15,7 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ 
+ #include <crypto/internal/rng.h>
+diff --git a/drivers/crypto/gemini/sl3516-ce-core.c b/drivers/crypto/gemini/sl3516-ce-core.c
+index b7524b649068..e9c00d76545b 100644
+--- a/drivers/crypto/gemini/sl3516-ce-core.c
++++ b/drivers/crypto/gemini/sl3516-ce-core.c
+@@ -16,7 +16,6 @@
+ #include <linux/irq.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/img-hash.c b/drivers/crypto/img-hash.c
+index 359aa2b41016..45063693859c 100644
+--- a/drivers/crypto/img-hash.c
++++ b/drivers/crypto/img-hash.c
+@@ -13,7 +13,7 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
+ #include <linux/scatterlist.h>
+ 
+@@ -1105,7 +1105,7 @@ static struct platform_driver img_hash_driver = {
+ 	.driver		= {
+ 		.name	= "img-hash-accelerator",
+ 		.pm	= &img_hash_pm_ops,
+-		.of_match_table	= of_match_ptr(img_hash_match),
++		.of_match_table	= img_hash_match,
+ 	}
+ };
+ module_platform_driver(img_hash_driver);
+diff --git a/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c b/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
+index d4bcbed1f546..226654b12779 100644
+--- a/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
++++ b/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
+@@ -10,7 +10,8 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/interrupt.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
++#include <linux/platform_device.h>
+ 
+ #include <crypto/engine.h>
+ #include <crypto/scatterwalk.h>
+diff --git a/drivers/crypto/n2_core.c b/drivers/crypto/n2_core.c
+index 4f6ca229ee5e..d5a32d71a3e9 100644
+--- a/drivers/crypto/n2_core.c
++++ b/drivers/crypto/n2_core.c
+@@ -10,7 +10,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
++#include <linux/platform_device.h>
+ #include <linux/cpumask.h>
+ #include <linux/slab.h>
+ #include <linux/interrupt.h>
+diff --git a/drivers/crypto/omap-aes.c b/drivers/crypto/omap-aes.c
+index 67a99c760bc4..71002a12993d 100644
+--- a/drivers/crypto/omap-aes.c
++++ b/drivers/crypto/omap-aes.c
+@@ -24,7 +24,6 @@
+ #include <linux/dmaengine.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_address.h>
+ #include <linux/io.h>
+ #include <linux/crypto.h>
+diff --git a/drivers/crypto/omap-des.c b/drivers/crypto/omap-des.c
+index f783769ea110..82cca34017e4 100644
+--- a/drivers/crypto/omap-des.c
++++ b/drivers/crypto/omap-des.c
+@@ -27,8 +27,6 @@
+ #include <linux/dmaengine.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+-#include <linux/of_address.h>
+ #include <linux/io.h>
+ #include <linux/crypto.h>
+ #include <linux/interrupt.h>
+diff --git a/drivers/crypto/omap-sham.c b/drivers/crypto/omap-sham.c
+index cbeda59c6b19..4c25fc42044c 100644
+--- a/drivers/crypto/omap-sham.c
++++ b/drivers/crypto/omap-sham.c
+@@ -28,7 +28,6 @@
+ #include <linux/dmaengine.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+ #include <linux/delay.h>
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index 9f6ba770a90a..f3a79bec76a8 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -14,7 +14,6 @@
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/clk.h>
+ #include <linux/crypto.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/s5p-sss.c b/drivers/crypto/s5p-sss.c
+index 1c4d5fb05d69..fe8cf9ba8005 100644
+--- a/drivers/crypto/s5p-sss.c
++++ b/drivers/crypto/s5p-sss.c
+@@ -20,7 +20,6 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/scatterlist.h>
+ 
+diff --git a/drivers/crypto/sa2ul.c b/drivers/crypto/sa2ul.c
+index df5f9d675c57..6238d34f8db2 100644
+--- a/drivers/crypto/sa2ul.c
++++ b/drivers/crypto/sa2ul.c
+@@ -15,7 +15,8 @@
+ #include <linux/dmapool.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ 
+diff --git a/drivers/crypto/sahara.c b/drivers/crypto/sahara.c
+index 4c799df3e883..62d93526920f 100644
+--- a/drivers/crypto/sahara.c
++++ b/drivers/crypto/sahara.c
+@@ -27,7 +27,6 @@
+ #include <linux/kthread.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+ 
+diff --git a/drivers/crypto/starfive/jh7110-cryp.c b/drivers/crypto/starfive/jh7110-cryp.c
+index cc43556b6c80..0f517ea06bcb 100644
+--- a/drivers/crypto/starfive/jh7110-cryp.c
++++ b/drivers/crypto/starfive/jh7110-cryp.c
+@@ -11,8 +11,8 @@
+ #include <linux/delay.h>
+ #include <linux/interrupt.h>
+ #include <linux/iopoll.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/starfive/jh7110-hash.c b/drivers/crypto/starfive/jh7110-hash.c
+index 5064150b8a1c..41c9e40c6551 100644
+--- a/drivers/crypto/starfive/jh7110-hash.c
++++ b/drivers/crypto/starfive/jh7110-hash.c
+@@ -14,7 +14,6 @@
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/stm32/stm32-cryp.c b/drivers/crypto/stm32/stm32-cryp.c
+index 6b8d731092a4..ab12c782dec5 100644
+--- a/drivers/crypto/stm32/stm32-cryp.c
++++ b/drivers/crypto/stm32/stm32-cryp.c
+@@ -10,7 +10,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/stm32/stm32-hash.c b/drivers/crypto/stm32/stm32-hash.c
+index f0df32382719..cb3ca28fb193 100644
+--- a/drivers/crypto/stm32/stm32-hash.c
++++ b/drivers/crypto/stm32/stm32-hash.c
+@@ -15,7 +15,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+diff --git a/drivers/crypto/talitos.c b/drivers/crypto/talitos.c
+index bb27f011cf31..4ca4fbd227bc 100644
+--- a/drivers/crypto/talitos.c
++++ b/drivers/crypto/talitos.c
+@@ -19,9 +19,9 @@
+ #include <linux/interrupt.h>
+ #include <linux/crypto.h>
+ #include <linux/hw_random.h>
+-#include <linux/of_address.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/io.h>
+ #include <linux/spinlock.h>
+diff --git a/drivers/crypto/xilinx/zynqmp-aes-gcm.c b/drivers/crypto/xilinx/zynqmp-aes-gcm.c
+index bf1f421e05f2..6092ff0646a8 100644
+--- a/drivers/crypto/xilinx/zynqmp-aes-gcm.c
++++ b/drivers/crypto/xilinx/zynqmp-aes-gcm.c
+@@ -12,7 +12,7 @@
+ 
+ #include <linux/dma-mapping.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
+ 
+ #include <linux/firmware/xlnx-zynqmp.h>
+diff --git a/drivers/crypto/xilinx/zynqmp-sha.c b/drivers/crypto/xilinx/zynqmp-sha.c
+index 43ff170ff1c2..426bf1a72ba6 100644
+--- a/drivers/crypto/xilinx/zynqmp-sha.c
++++ b/drivers/crypto/xilinx/zynqmp-sha.c
+@@ -15,7 +15,6 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ 
+ #define ZYNQMP_DMA_BIT_MASK		32U
+-- 
+2.40.1
 
-> +		max-link-speed = <2>;
-> +		msi-map = <0x2000 &its0 0x2000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy1_ps PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
-> +			 <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>;
-> +		reg = <0xa 0x40800000 0x0 0x00400000>,
-> +		      <0x0 0xfe170000 0x0 0x00010000>,
-> +		      <0x0 0xf2000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l0_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 240 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
->  	gmac0: ethernet@fe1b0000 {
->  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
->  		reg = <0x0 0xfe1b0000 0x0 0x10000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> index c9f9dd2472f5..27d711d114d6 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -1227,6 +1227,114 @@ qos_vop_m1: qos@fdf82200 {
->  		reg = <0x0 0xfdf82200 0x0 0x20>;
->  	};
->  
-> +	pcie2x1l1: pcie@fe180000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x30 0x3f>;
-> +		clocks = <&cru ACLK_PCIE_1L1_MSTR>, <&cru ACLK_PCIE_1L1_SLV>,
-> +			 <&cru ACLK_PCIE_1L1_DBI>, <&cru PCLK_PCIE_1L1>,
-> +			 <&cru CLK_PCIE_AUX3>, <&cru CLK_PCIE1L1_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l1_intc 0>,
-> +				<0 0 0 2 &pcie2x1l1_intc 1>,
-> +				<0 0 0 3 &pcie2x1l1_intc 2>,
-> +				<0 0 0 4 &pcie2x1l1_intc 3>;
-> +		linux,pci-domain = <3>;
-
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
-
-ditto
-
-> +		max-link-speed = <2>;
-> +		msi-map = <0x3000 &its0 0x3000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy2_psu PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
-> +			 <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>;
-> +		reg = <0xa 0x40c00000 0x0 0x00400000>,
-> +		      <0x0 0xfe180000 0x0 0x00010000>,
-> +		      <0x0 0xf3000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l1_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 245 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
-> +	pcie2x1l2: pcie@fe190000 {
-> +		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		bus-range = <0x40 0x4f>;
-> +		clocks = <&cru ACLK_PCIE_1L2_MSTR>, <&cru ACLK_PCIE_1L2_SLV>,
-> +			 <&cru ACLK_PCIE_1L2_DBI>, <&cru PCLK_PCIE_1L2>,
-> +			 <&cru CLK_PCIE_AUX4>, <&cru CLK_PCIE1L2_PIPE>;
-> +		clock-names = "aclk_mst", "aclk_slv",
-> +			      "aclk_dbi", "pclk",
-> +			      "aux", "pipe";
-> +		device_type = "pci";
-> +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-> +		#interrupt-cells = <1>;
-> +		interrupt-map-mask = <0 0 0 7>;
-> +		interrupt-map = <0 0 0 1 &pcie2x1l2_intc 0>,
-> +				<0 0 0 2 &pcie2x1l2_intc 1>,
-> +				<0 0 0 3 &pcie2x1l2_intc 2>,
-> +				<0 0 0 4 &pcie2x1l2_intc 3>;
-> +		linux,pci-domain = <4>;
-
-> +		num-ib-windows = <8>;
-> +		num-ob-windows = <8>;
-> +		num-viewport = <4>;
-
-ditto
-
--Serge(y)
-
-> +		max-link-speed = <2>;
-> +		msi-map = <0x4000 &its0 0x4000 0x1000>;
-> +		num-lanes = <1>;
-> +		phys = <&combphy0_ps PHY_TYPE_PCIE>;
-> +		phy-names = "pcie-phy";
-> +		power-domains = <&power RK3588_PD_PCIE>;
-> +		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-> +			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
-> +			 <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>;
-> +		reg = <0xa 0x41000000 0x0 0x00400000>,
-> +		      <0x0 0xfe190000 0x0 0x00010000>,
-> +		      <0x0 0xf4000000 0x0 0x00100000>;
-> +		reg-names = "dbi", "apb", "config";
-> +		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
-> +		reset-names = "pwr", "pipe";
-> +		status = "disabled";
-> +
-> +		pcie2x1l2_intc: legacy-interrupt-controller {
-> +			interrupt-controller;
-> +			#address-cells = <0>;
-> +			#interrupt-cells = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupts = <GIC_SPI 250 IRQ_TYPE_EDGE_RISING 0>;
-> +		};
-> +	};
-> +
->  	gmac1: ethernet@fe1c0000 {
->  		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
->  		reg = <0x0 0xfe1c0000 0x0 0x10000>;
-> -- 
-> 2.40.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
