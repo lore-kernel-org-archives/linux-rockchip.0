@@ -4,52 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC70C001DE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 15:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA24EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 15:46:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ntqwV3pLB2Xrbj/+1T8H+4TsL7jNBeJBIB15SpmTJGM=; b=JbJx8u/lB4hEkq
-	11SmjhJxxfVcl0jsUBoV68ZiBR2w+G7hK03+LfW4vmuChbbv6gBI3/Hst7rQ38dOLiOqZvMBbH0E6
-	rpswAuhFaE73WC0FwRkphbjHmKMsBjCnsAe/v+VtyxSigxX3dWL9JsEC0dqPLP//56xdEY83zqJ/9
-	pqXDf7RvRFG3QRFpLqHflqc8jV6hn15HbsgSxmf/FRvTnLbNHOC7wFyV3qpfPV1+zMdTd2yvS2EIJ
-	XGL11OESUT1NIS7AM/YZf9dx3YexExxqjuNx03emoucuhi2t6lB8J/qHKBW1HEYUq0jcWkRhw3Yft
-	6N5ue9atF13IB/KL4o0g==;
+	List-Owner; bh=KUr6LHesljh9sGrXS9XLLiwAkWW/i4El6bMW+Q+kjSI=; b=fuWr7KBBZ9zdG8
+	8Ft8dpLaS6pl6USOtwpgc/FNacACdFXzg7g+5gIYYunIULSHAzxxPoyUuDctcdvAukVNlLMn9O5kR
+	MM8FBB0wK8Do1asD7GBrfM2jM2AK+eWGOUt6D9s4cMm4JVpOwlId7rdvdUzfK5BVIx0WRwmrd1ywu
+	WMF4VPJ/NMZ2jhGfLn6tblyo5tXp1ZHuztVD3jyrLKmIXWUPoCFuQtkwPIMbTpoNSnX72YBSuHwn6
+	qpQXmhaiF0shgyr+HudL+R+syHpMUvzMjpsMMtZLAzFSHOlGTiReoCKcoVJzoko94AFcg4fFkJ3mc
+	6DSbEv5aOBuwtkWBrmrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKKtL-006Xw2-07;
-	Fri, 14 Jul 2023 15:39:35 +0000
+	id 1qKKzo-006Yky-25;
+	Fri, 14 Jul 2023 15:46:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKKtD-006Xsf-2m;
-	Fri, 14 Jul 2023 15:39:29 +0000
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.lan)
+	id 1qKKzl-006YkX-1a
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Jul 2023 15:46:15 +0000
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qKKt6-0004Kz-RY; Fri, 14 Jul 2023 17:39:20 +0200
+	id 1qKKzd-0004O4-Gx; Fri, 14 Jul 2023 17:46:05 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Jagan Teki <jagan@edgeble.ai>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/8] arm64: dts: rockchip: Add PMIC for edgeble-neu6b
-Date: Fri, 14 Jul 2023 17:39:17 +0200
-Message-Id: <168934909030.2268788.16181690719660508455.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230713143941.1756849-1-jagan@edgeble.ai>
-References: <20230713143941.1756849-1-jagan@edgeble.ai>
+To: FUKAUMI Naoki <naoki@radxa.com>, michael.riesch@wolfvision.net,
+ Anand Moon <linux.amoon@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: rock-3a: make ethernet work
+Date: Fri, 14 Jul 2023 17:46:04 +0200
+Message-ID: <25008843.6Emhk5qWAg@phil>
+In-Reply-To: <20230714063027.74489-1-naoki@radxa.com>
+References: <20230714063027.74489-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_083927_893883_249D6D04 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20230714_084613_534988_8DEAAE5A 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,36 +61,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Jul 2023 20:09:34 +0530, Jagan Teki wrote:
-> This adds PMIC support for the Edgeble Neu6B NCM.
+Am Freitag, 14. Juli 2023, 08:30:27 CEST schrieb FUKAUMI Naoki:
+> ethernet on Radxa ROCK 3A is not working by following error:
 > 
+>  rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+>  rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
+> 
+> to fix this problem, align related properties with vendor kernel
+>  https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> 
+> Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+
+There also is a second patch in the mix adding the gmac1_clkin
+ef9f4b4a5020 ("arm64: dts: rockchip: Add support of external clock to ethernet node on Rock 3A SBC")
+
+And this patch does the exact opposite as the original nodes.
+Can someone please mention board versions? Or did the gmac1 never
+really work in the first place?
+
+
+Thanks
+Heiko
+
+> ---
+>  .../boot/dts/rockchip/rk3568-rock-3a.dts      | 32 ++++++-------------
+>  1 file changed, 10 insertions(+), 22 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> index 917f5b2b8aab..f9381ab9629b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+> @@ -32,13 +32,6 @@ hdmi_con_in: endpoint {
+>  		};
+>  	};
+>  
+> -	gmac1_clkin: external-gmac1-clock {
+> -		compatible = "fixed-clock";
+> -		clock-frequency = <125000000>;
+> -		clock-output-names = "gmac1_clkin";
+> -		#clock-cells = <0>;
+> -	};
+> -
+>  	leds {
+>  		compatible = "gpio-leds";
+>  
+> @@ -256,18 +249,24 @@ &cpu3 {
+>  
+>  &gmac1 {
+>  	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+> -	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
+> -	clock_in_out = "input";
+> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
+> +	assigned-clock-rates = <0>, <125000000>;
+> +	clock_in_out = "output";
+>  	phy-handle = <&rgmii_phy1>;
+> -	phy-mode = "rgmii-id";
+> +	phy-mode = "rgmii";
+>  	phy-supply = <&vcc_3v3>;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&gmac1m1_miim
+>  		     &gmac1m1_tx_bus2
+>  		     &gmac1m1_rx_bus2
+>  		     &gmac1m1_rgmii_clk
+> -		     &gmac1m1_clkinout
+>  		     &gmac1m1_rgmii_bus>;
+> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	/* Reset time is 20ms, 100ms for rtl8211f */
+> +	snps,reset-delays-us = <0 20000 100000>;
+> +	tx_delay = <0x42>;
+> +	rx_delay = <0x28>;
+>  	status = "okay";
+>  };
+>  
+> @@ -588,11 +587,6 @@ &mdio1 {
+>  	rgmii_phy1: ethernet-phy@0 {
+>  		compatible = "ethernet-phy-ieee802.3-c22";
+>  		reg = <0x0>;
+> -		pinctrl-names = "default";
+> -		pinctrl-0 = <&eth_phy_rst>;
+> -		reset-assert-us = <20000>;
+> -		reset-deassert-us = <100000>;
+> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+>  	};
+>  };
+>  
+> @@ -630,12 +624,6 @@ vcc_mipi_en: vcc_mipi_en {
+>  		};
+>  	};
+>  
+> -	ethernet {
+> -		eth_phy_rst: eth_phy_rst {
+> -			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -	};
+> -
+>  	hym8563 {
+>  		hym8563_int: hym8563-int {
+>  			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
 > 
 
-Applied, thanks!
 
-With a bit of reordering and adding the missing "-regulator"
-to one node in the first patch.
 
-[1/8] arm64: dts: rockchip: Add PMIC for edgeble-neu6b
-      commit: 0d3f385d71cd9ed710ff5a0fd76c0d94c41edcae
-[2/8] arm64: dts: rockchip: Add microSD card for edgeble-neu6b
-      commit: 61808d9341338dc1041a9349a75984943cb1c8cb
-[3/8] arm64: dts: rockchip: Enable SATA for edgeble-neu6b
-      commit: 89f713b0590185c3d6f1afdd66791cccc74d54bb
-[4/8] arm64: defconfig: Enable PHY_ROCKCHIP_NANENG_COMBO_PHY
-      commit: ccc1b7ee2eb4021506838c5f12a8055955332357
-[5/8] arm64: dts: rockchip: Enable RTC for edgeble-neu6b
-      commit: 8f3aa4f7086e998cf14f7802c0a9265402847f7d
-[6/8] arm64: dts: rockchip: Enable PWM FAN for edgeble-neu6b
-      commit: b65814bfb8b329f95408142f1fa8d50072dedc2a
-[7/8] arm64: dts: rockchip: Enable RS232 for edgeble-neu6b
-      commit: 9ee9ea88e6c47fd8e02ab999e18ae1b49eb47ce4
-[8/8] arm64: dts: rockchip: Enable RS485 for edgeble-neu6b
-      commit: 9b9fb10b9d4dc08da2d0f9a2ac4a53e6a2e7ebb8
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
