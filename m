@@ -4,82 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2806C001DE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 15:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B358C0015E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 15:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q36ydKib57GeKo1hPlPSzlcw/T9fqIicUn3jwNiOmos=; b=OQNSPDkf/pEk8X
-	urf0LbokKnSsx/oDBx53Rqe3jSl+3WHNID0zUQ/ZlPz40ViwVjPhSp0MFNJRQ+XuKUvMxazyFjo/y
-	c38+5vxlSOigq+re9tWl+HfKHDGpCdiSuT0haALBWjfa3Lb0WiTPmkyGUHEj3KNrNyaDXygjlKdgd
-	dudN00PXlY5jK9YIsOaShOKh9LEwWOxBlM2bMkG2xmBuesjnCmCKIfoMzFQSpyYUZt/sWU8+2vqcB
-	jLp464vGAgSF879BBW5fy9raPBeUof9/aJD54kXGUlPNYs+YREZrujq7dcaEYmQ4Ni1yfU2x8JMpe
-	1Co9wJ8JJRBCDUOc0E8A==;
+	List-Owner; bh=NT7raVSMEhzZSZTFeHKHRuNwL6MGWISTdMj1a/+lnBY=; b=KSOcYQ5hS9PYA3
+	RYgTYuLx2at2VAXUH0ES1Pa4ZJG4YMLH9vT7iJdy554QeHRWfqCc5zZFxkm3XoUCY9LdzuaHRFfvK
+	aq03GERmsGK7rsGDUXL1cgur92oBdNcgjPqTJisRhZ040LpJBtIvspM5f/ShayTVtJMw7InVuzlFp
+	Tu7GEMSjVeqlzxb8VzNiTe7Y7ZLtNrRnTZLmKLB41q05M86LrV5+rPJsoenzlBulyIOed0NK6WG4w
+	0y37ua8iHvss526m6voCpGjde0PpMM2zuf4onf9w8ePKgskDSZAwWWk+8jLmJh2RRcwXPJpPJs723
+	0aR7sx0Ucyy3fwOL2ZjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKKbq-006Vhm-2O;
-	Fri, 14 Jul 2023 15:21:30 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1qKKtD-006Xsg-0l;
+	Fri, 14 Jul 2023 15:39:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKKbm-006Vek-0p;
-	Fri, 14 Jul 2023 15:21:27 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2b70bfc8db5so31349851fa.2;
-        Fri, 14 Jul 2023 08:21:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689348083; x=1691940083;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=gPMTtJDX93p+W2FMfeS5+8MLkFLKqGSV2IPU3Bw5eBc=;
-        b=Dx5hMByGBB/m9B2iGSmDZSWhmM8Ums69yPuNOxVHlFmd+0A09Oo3DyQyLh8Yistme2
-         lwVnQi4orsB+auNTwB8ssQ1jd5w/qSl78LrvaNQos4m0d0uxvu23/J9Q1XWB3J74uwb2
-         +qcryvpRQoRW5Rs5UCnavMVw0vEZa7coTmLVR7lcH07UoXyF93WIfZEzvU10MrMoAXcw
-         XLpZgFFlABrILlnQGzpUJBtuJz8X1NVWt7R1A8lsnCFw3JXkR9d9tbksjiGlYBidwSFw
-         FdvWellQG2Uu9bedikNNmkxch051mSDSOQrp+KGw5Oqiun386ImyiV5HPHgluoQcDatB
-         iA/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689348083; x=1691940083;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gPMTtJDX93p+W2FMfeS5+8MLkFLKqGSV2IPU3Bw5eBc=;
-        b=eqx1sJFOJOmWEhGllr71XNU+jMQx8S4cLybeRfzm4IYaZ1Rh9Cpuh/d3GNZDWTqgVl
-         MfVmf7Fb9MdN79qEU7VCneY2EsvZ7zycRQvWfQ6gWv/3rEiD280HYixanincgY45h0S5
-         UsMhPjxO0kh4FNorg5ldisgEK3i+tpHWOJi1NRe6Nk+G5D3PwdlhZ9l2rNAiY0ba/oaX
-         8kzdXamaGTQouKPLcmYjmuGXfmk1wem33ItMnK7+mnT4nLuJdoMsjKZFHrLhbUib1JCi
-         N4laMqw/7osVuE0uxubn9jhr1bXoUTLuIKHpp86JbmEqra3Q7wEZK9s+XgkLOcmyPCxC
-         Ki5w==
-X-Gm-Message-State: ABy/qLajtUeeTHXIKPG0+d6Z91TFU9/9ZVYK7ZE+Ig1UqXbMGehtXUty
-	1Ib6PmPZbTL1hjl5AADwx8Q=
-X-Google-Smtp-Source: APBJJlFqQ/SVKroJjMa1fZUCbpjfJrfXjWNcU9vIvwPdVdWNMyGwxyl9FyNl3vx/l6m4g01N4AVLRQ==
-X-Received: by 2002:a2e:321a:0:b0:2b6:9b2e:e352 with SMTP id y26-20020a2e321a000000b002b69b2ee352mr4122408ljy.9.1689348082785;
-        Fri, 14 Jul 2023 08:21:22 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id n25-20020a17090695d900b009927d4d7a6dsm5576536ejy.192.2023.07.14.08.21.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Jul 2023 08:21:22 -0700 (PDT)
-Message-ID: <5e782c08-862b-51ae-47ff-3299940928ca@gmail.com>
-Date: Fri, 14 Jul 2023 17:21:21 +0200
+	id 1qKKt9-006Xqz-2c;
+	Fri, 14 Jul 2023 15:39:25 +0000
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qKKt7-0004Kz-A3; Fri, 14 Jul 2023 17:39:21 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	kernel@collabora.com,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v1 0/4] RK3588 USB2 support
+Date: Fri, 14 Jul 2023 17:39:18 +0200
+Message-Id: <168934909031.2268788.17295705108647249284.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230712165106.65603-1-sebastian.reichel@collabora.com>
+References: <20230712165106.65603-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v5 2/2] mtd: rawnand: rockchip: Align hwecc vs. raw page
- helper layouts
-To: miquel.raynal@bootlin.com
-Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- yifeng.zhao@rock-chips.com
-References: <273ad871-9050-7851-9973-5545b88bf43b@gmail.com>
-Content-Language: en-US
-In-Reply-To: <273ad871-9050-7851-9973-5545b88bf43b@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_082126_294587_E41480BF 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20230714_083923_847651_771F93DA 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,122 +68,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, read/write_page_hwecc() and read/write_page_raw() are not
-aligned: there is a mismatch in the OOB bytes which are not
-read/written at the same offset in both cases (raw vs. hwecc).
+On Wed, 12 Jul 2023 18:51:02 +0200, Sebastian Reichel wrote:
+> This adds USB2 support to Rock 5A, 5B and the EVB1. The necessary USB2 PHY
+> changes have been queued to the PHY tree and are available in linux-next.
+> 
+> -- Sebastian
+> 
+> Sebastian Reichel (4):
+>   arm64: dts: rockchip: rk3588: add USB2 support
+>   arm64: dts: rockchip: rk3588-evb1: add USB2
+>   arm64: dts: rockchip: rk3588-rock5b: add USB2
+>   arm64: dts: rockchip: rk3588s-rock5a: add USB2
+> 
+> [...]
 
-This is a real problem when relying on the presence of the Page
-Addresses (PA) when using the NAND chip as a boot device, as the
-BootROM expects additional data in the OOB area at specific locations.
+Applied, thanks!
 
-Rockchip boot blocks are written per 4 x 512 byte sectors per page.
-Each page with boot blocks must have a page address (PA) pointer in OOB
-to the next page. Pages are written in a pattern depending on the NAND chip ID.
+Adapted the patch subjects to "arm64: dts: rockchip: description in prose"
 
-Generate boot block page address and pattern for hwecc in user space
-and copy PA data to/from the already reserved last 4 bytes before ECC
-in the chip->oob_poi data layout.
+[1/4] arm64: dts: rockchip: rk3588: add USB2 support
+      commit: a684cb416414fdd2b2a33e691119608c0e2eba9f
+[2/4] arm64: dts: rockchip: rk3588-evb1: add USB2
+      commit: e39da1074c20d4fb1114ccafe07a142df5345a53
+[3/4] arm64: dts: rockchip: rk3588-rock5b: add USB2
+      commit: 488fc7ad2bc8d980cc0599bc1be951938df8a779
+[4/4] arm64: dts: rockchip: rk3588s-rock5a: add USB2
+      commit: 1642bf66e270d8de7ba27068d1a5ecdbdba14d3b
 
-Align the different helpers. This change breaks existing jffs2 users.
-
-Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
-
-Changed V5:
-  Reword
-
-Changed V4:
-  Reduce subject size
-  Add 'Fixes:' tag
-  Fix abbreviation
-  Reword
-
-Changed V3:
-  Change prefixes
-  Reword
----
- .../mtd/nand/raw/rockchip-nand-controller.c   | 34 ++++++++++++-------
- 1 file changed, 21 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index 37fc07ba57aa..5a04680342c3 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -598,7 +598,7 @@ static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
- 	int pages_per_blk = mtd->erasesize / mtd->writesize;
- 	int ret = 0, i, boot_rom_mode = 0;
- 	dma_addr_t dma_data, dma_oob;
--	u32 reg;
-+	u32 tmp;
- 	u8 *oob;
-
- 	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
-@@ -625,6 +625,13 @@ static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
- 	 *
- 	 *   0xFF 0xFF 0xFF 0xFF | BBM OOB1 OOB2 OOB3 | ...
- 	 *
-+	 * The code here just swaps the first 4 bytes with the last
-+	 * 4 bytes without losing any data.
-+	 *
-+	 * The chip->oob_poi data layout:
-+	 *
-+	 *    BBM  OOB1 OOB2 OOB3 |......|  PA0  PA1  PA2  PA3
-+	 *
- 	 * Configure the ECC algorithm supported by the boot ROM.
- 	 */
- 	if ((page < (pages_per_blk * rknand->boot_blks)) &&
-@@ -635,21 +642,17 @@ static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
- 	}
-
- 	for (i = 0; i < ecc->steps; i++) {
--		if (!i) {
--			reg = 0xFFFFFFFF;
--		} else {
-+		if (!i)
-+			oob = chip->oob_poi + (ecc->steps - 1) * NFC_SYS_DATA_SIZE;
-+		else
- 			oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
--			reg = oob[0] | oob[1] << 8 | oob[2] << 16 |
--			      oob[3] << 24;
--		}
-
--		if (!i && boot_rom_mode)
--			reg = (page & (pages_per_blk - 1)) * 4;
-+		tmp = oob[0] | oob[1] << 8 | oob[2] << 16 | oob[3] << 24;
-
- 		if (nfc->cfg->type == NFC_V9)
--			nfc->oob_buf[i] = reg;
-+			nfc->oob_buf[i] = tmp;
- 		else
--			nfc->oob_buf[i * (oob_step / 4)] = reg;
-+			nfc->oob_buf[i * (oob_step / 4)] = tmp;
- 	}
-
- 	dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
-@@ -812,12 +815,17 @@ static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *buf, int oob_on,
- 		goto timeout_err;
- 	}
-
--	for (i = 1; i < ecc->steps; i++) {
--		oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
-+	for (i = 0; i < ecc->steps; i++) {
-+		if (!i)
-+			oob = chip->oob_poi + (ecc->steps - 1) * NFC_SYS_DATA_SIZE;
-+		else
-+			oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
-+
- 		if (nfc->cfg->type == NFC_V9)
- 			tmp = nfc->oob_buf[i];
- 		else
- 			tmp = nfc->oob_buf[i * (oob_step / 4)];
-+
- 		*oob++ = (u8)tmp;
- 		*oob++ = (u8)(tmp >> 8);
- 		*oob++ = (u8)(tmp >> 16);
---
-2.30.2
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
