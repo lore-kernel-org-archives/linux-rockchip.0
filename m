@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9497AC001DE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81BE7EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ca7ZQQ9pM2ufH91Wdq6hiBKi+yPNzaN3uiEEZ3LS44Y=; b=p2HP3x5Gb0FYnO
-	P0NHIpx61VHzefH4JxoNOLo0ebGD+gIUpeUwWQBGHOZjNZQ8OJa4V1AC7+FMlFreSOAlGkXL2pqLS
-	xrjHIspHSqIwrO2/y7YNwexFeNVuj1w1G1DKDaS/MtgPUEmgGX6/8Fbs+dcnTnVjMp/CXjdKD6s4i
-	doCGp5nh6GJztF8ZNj7hWc3jXNorq2y8j8mARl7Bfa3xWUmtCPPki07T7f3ZfgpP0E6ozyuVji4/B
-	M/a+Tvocz8+EIeVpxz8n6sJjKNNG2Vi3uMsEt4S9+Eg19JjTiNYEMgWJ0i4+iUsSvrlkKoop5tvL4
-	i4RkX5ADDJbUEoxlv3rQ==;
+	List-Owner; bh=gFthxyVPx0R25dhT+lbD26mNOQppW+ouXQXd9DEfcbU=; b=nGyJr9tqZ6Tka5
+	hGRPo1b+DCFzao0PWrgL55lG6ymAEtMdoLQ01ghSqyo70debX18uWjA8uzvDWxk8RIY8jMh9Rq1wq
+	h0cIcxE2/OeTan5XFfQZx1zieSyGdcSuoCoZQyaGxKrrSh/+jytvGsStYg90mbC3B/qynyVviZRrQ
+	qb6ikd0i8x3aE9YQqbKLBfhj8US7g1D4dcX1Wxn9HY2EQwdrw8cH3+pyB2i5UmwIzj71MDqSVbjaS
+	+FTa/sGXN9e6JeVDIwQ7XNmAawXs+CsMDy82EF6Q1y3SzA7cowJuASBbSn4Xn4i1Z43aOR1xQVEyc
+	pr/FyTXWRXVd4/PCuuqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMqJ-006nGG-1Q;
-	Fri, 14 Jul 2023 17:44:35 +0000
-Received: from mail-il1-f177.google.com ([209.85.166.177])
+	id 1qKMrP-006nyI-23;
+	Fri, 14 Jul 2023 17:45:43 +0000
+Received: from mail-il1-f175.google.com ([209.85.166.175])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMqD-006nC0-2r;
-	Fri, 14 Jul 2023 17:44:32 +0000
-Received: by mail-il1-f177.google.com with SMTP id e9e14a558f8ab-345f3e28082so9381675ab.1;
-        Fri, 14 Jul 2023 10:44:29 -0700 (PDT)
+	id 1qKMrL-006nve-1W;
+	Fri, 14 Jul 2023 17:45:41 +0000
+Received: by mail-il1-f175.google.com with SMTP id e9e14a558f8ab-346392da0d6so9608235ab.3;
+        Fri, 14 Jul 2023 10:45:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356669; x=1691948669;
+        d=1e100.net; s=20221208; t=1689356738; x=1691948738;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=uA1OYKFmaVAkjUwcQSHH/nc3mV03LI4EOQPprk91MGE=;
-        b=J65riVAR44jY4FlV4jcvjRxgXpd40zP6CZPCxMNo/Ws/muVNTe1mp82rc/NMHMK1wl
-         2wZLTX1FDUq1MV+oG31Ssipa53DJ3APatc7pkptPawA3cevk63tCbVTiL4zUZBdZ1zNH
-         uFhhTIFvqqHuUKjU90A7nYqiCjnwyiW5MLEtf2M9J1PYrog6U6vuU957u+XN0n/dqNbh
-         bM+e6FNuP/rR2F2VEn4Ho6lgTnV3NR+a05PnErS+JUZsSLN6w2x+7rBLwXONbTxgPZUi
-         Keq6tx8iSw3Es3X1oJYIUJKhO8rDV94ItaTcJy4PfpnZAH0dgzIBgB88mKo451MdVKpM
-         bhKw==
-X-Gm-Message-State: ABy/qLar+5smnEbGqwQNLzlL7Ns1jrQZFZITSsfdglavELYHA27MSVBy
-	F48+mmfUi+LNiFsRIGCI4w==
-X-Google-Smtp-Source: APBJJlHTvt8AFSieKPae/Uq7zm6T5QR1KnB7bwBj9DaC1zGZaOUrIWxIW1kn21lsgNgas84mxR3JUA==
-X-Received: by 2002:a92:c906:0:b0:345:c8d4:1147 with SMTP id t6-20020a92c906000000b00345c8d41147mr5141835ilp.16.1689356668888;
-        Fri, 14 Jul 2023 10:44:28 -0700 (PDT)
+        bh=b/p6EnB96xx9Bba+TzT5uunZoNLBUx08WENa+RlpM4s=;
+        b=I6afaUjfQn0G+2TLVp+N/M8/i/KGyvmxa6CxZuGcG/xWx6EivBKoDuyjtb1npX2zL8
+         jLTkq3x7dMXg82jkmwINRa96P5QUZRZbl88X5ycDduR29gqysUDvY8BYypqzMtwYDwAS
+         6IeJgufPhGuvnqHmGx7avSGXhKpOjWg9Kps1TKasNnl46ul7asOnDFxDF+LGKQqppiW3
+         rzQsIorNgKzb0zgdlRlDmWW1wUxIgGW96Ps1CHQRPziPFWSFPW18FYKYJCsRb3FYj0E7
+         2kN+gy3iUwDMzsxQSbA4tyOnuEeNUiIrN1yreIO/WgEFjVAtQ3pCuwAC6tXDmXhSo0/3
+         IIxw==
+X-Gm-Message-State: ABy/qLbKv2YZeaJMgH/5bEG2Zk3z9jPXHrTCixZzliqS/914KXnXn5Gw
+	On6ZB2bwi0NfsKa7aGGCCQ==
+X-Google-Smtp-Source: APBJJlFQ06OgCgO2zfnQs7LlZlw/BNplLojN0qmNZ5XX/jPuOEJAMRkVU2fhW4z7FKUV3WKtCui9hw==
+X-Received: by 2002:a92:dac6:0:b0:346:8b3:7aca with SMTP id o6-20020a92dac6000000b0034608b37acamr5853667ilq.21.1689356738196;
+        Fri, 14 Jul 2023 10:45:38 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id c3-20020a92d3c3000000b003460b456030sm2903667ilh.60.2023.07.14.10.44.25
+        by smtp.gmail.com with ESMTPSA id z15-20020a92da0f000000b0034294982b83sm2941766ilm.69.2023.07.14.10.45.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:44:28 -0700 (PDT)
-Received: (nullmailer pid 4054349 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:44:25 -0000
+        Fri, 14 Jul 2023 10:45:37 -0700 (PDT)
+Received: (nullmailer pid 4056243 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:45:34 -0000
 From: Rob Herring <robh@kernel.org>
-To: Corentin Labbe <clabbe.montjoie@gmail.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
-	"David S. Miller" <davem@davemloft.net>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Neal Liu <neal_liu@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, 
-	Andrew Jeffery <andrew@aj.id.au>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Tudor Ambarus <tudor.ambarus@linaro.org>, 
-	=?UTF-8?Q?Horia_Geant=C4=83?= <horia.geanta@nxp.com>, 
-	Pankaj Gupta <pankaj.gupta@nxp.com>, Gaurav Jain <gaurav.jain@nxp.com>, 
-	Gilad Ben-Yossef <gilad@benyossef.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, 
-	Daniele Alessandrelli <daniele.alessandrelli@intel.com>, Declan Murphy <declan.murphy@intel.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Vladimir Zapolskiy <vz@mleia.com>, Jia Jie Ho <jiajie.ho@starfivetech.com>, 
-	William Qiu <william.qiu@starfivetech.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
-	Harsha <harsha.harsha@amd.com>
-Cc: devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH] crypto: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:44:18 -0600
-Message-Id: <20230714174421.4054194-1-robh@kernel.org>
+To: Alban Bedel <albeu@free.fr>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, Doug Berger <opendmb@gmail.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Grygorii Strashko <grygorii.strashko@ti.com>, 
+	Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>, Srinivas Neeli <srinivas.neeli@amd.com>, 
+	Michal Simek <michal.simek@amd.com>, Nandor Han <nandor.han@ge.com>
+Cc: devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: [PATCH] gpio: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:44:58 -0600
+Message-Id: <20230714174525.4055475-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104429_935767_083C423F 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20230714_104539_515221_57C7386B 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,542 +103,512 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c   | 1 -
- drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c   | 1 -
- drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c   | 1 -
- drivers/crypto/amlogic/amlogic-gxl-core.c           | 1 -
- drivers/crypto/aspeed/aspeed-acry.c                 | 3 ---
- drivers/crypto/atmel-aes.c                          | 6 ++----
- drivers/crypto/atmel-ecc.c                          | 2 +-
- drivers/crypto/atmel-sha.c                          | 6 ++----
- drivers/crypto/atmel-tdes.c                         | 6 ++----
- drivers/crypto/bcm/cipher.c                         | 3 +--
- drivers/crypto/caam/ctrl.c                          | 1 +
- drivers/crypto/caam/jr.c                            | 1 +
- drivers/crypto/caam/qi.c                            | 1 +
- drivers/crypto/ccree/cc_driver.c                    | 1 -
- drivers/crypto/exynos-rng.c                         | 2 +-
- drivers/crypto/gemini/sl3516-ce-core.c              | 1 -
- drivers/crypto/img-hash.c                           | 4 ++--
- drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c | 3 ++-
- drivers/crypto/n2_core.c                            | 2 +-
- drivers/crypto/omap-aes.c                           | 1 -
- drivers/crypto/omap-des.c                           | 2 --
- drivers/crypto/omap-sham.c                          | 1 -
- drivers/crypto/rockchip/rk3288_crypto.c             | 1 -
- drivers/crypto/s5p-sss.c                            | 1 -
- drivers/crypto/sa2ul.c                              | 3 ++-
- drivers/crypto/sahara.c                             | 1 -
- drivers/crypto/starfive/jh7110-cryp.c               | 2 +-
- drivers/crypto/starfive/jh7110-hash.c               | 1 -
- drivers/crypto/stm32/stm32-cryp.c                   | 2 +-
- drivers/crypto/stm32/stm32-hash.c                   | 2 +-
- drivers/crypto/talitos.c                            | 4 ++--
- drivers/crypto/xilinx/zynqmp-aes-gcm.c              | 2 +-
- drivers/crypto/xilinx/zynqmp-sha.c                  | 1 -
- 33 files changed, 25 insertions(+), 45 deletions(-)
+ drivers/gpio/gpio-ath79.c         | 3 ++-
+ drivers/gpio/gpio-brcmstb.c       | 4 ++--
+ drivers/gpio/gpio-creg-snps.c     | 2 +-
+ drivers/gpio/gpio-eic-sprd.c      | 2 +-
+ drivers/gpio/gpio-ge.c            | 2 +-
+ drivers/gpio/gpio-grgpio.c        | 2 +-
+ drivers/gpio/gpio-hlwd.c          | 2 +-
+ drivers/gpio/gpio-logicvc.c       | 1 -
+ drivers/gpio/gpio-mb86s7x.c       | 2 +-
+ drivers/gpio/gpio-mpc5200.c       | 2 +-
+ drivers/gpio/gpio-mpc8xxx.c       | 4 +---
+ drivers/gpio/gpio-msc313.c        | 1 -
+ drivers/gpio/gpio-mxc.c           | 1 -
+ drivers/gpio/gpio-mxs.c           | 1 -
+ drivers/gpio/gpio-omap.c          | 1 -
+ drivers/gpio/gpio-palmas.c        | 1 -
+ drivers/gpio/gpio-pmic-eic-sprd.c | 2 +-
+ drivers/gpio/gpio-pxa.c           | 1 -
+ drivers/gpio/gpio-rcar.c          | 1 -
+ drivers/gpio/gpio-rockchip.c      | 2 +-
+ drivers/gpio/gpio-sprd.c          | 2 +-
+ drivers/gpio/gpio-stp-xway.c      | 3 ++-
+ drivers/gpio/gpio-syscon.c        | 1 -
+ drivers/gpio/gpio-tegra.c         | 2 +-
+ drivers/gpio/gpio-tegra186.c      | 2 +-
+ drivers/gpio/gpio-tps6586x.c      | 2 +-
+ drivers/gpio/gpio-tps65910.c      | 2 +-
+ drivers/gpio/gpio-ts4800.c        | 3 +--
+ drivers/gpio/gpio-ts4900.c        | 2 +-
+ drivers/gpio/gpio-uniphier.c      | 1 -
+ drivers/gpio/gpio-vf610.c         | 1 -
+ drivers/gpio/gpio-wcd934x.c       | 3 ++-
+ drivers/gpio/gpio-xilinx.c        | 4 ++--
+ drivers/gpio/gpio-xra1403.c       | 2 +-
+ 34 files changed, 28 insertions(+), 39 deletions(-)
 
-diff --git a/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c b/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
-index 51a3a7b5b985..3bcfcfc37084 100644
---- a/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
-+++ b/drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c
-@@ -14,7 +14,6 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
+diff --git a/drivers/gpio/gpio-ath79.c b/drivers/gpio/gpio-ath79.c
+index aa0a954b8392..f0c0c0f77eb0 100644
+--- a/drivers/gpio/gpio-ath79.c
++++ b/drivers/gpio/gpio-ath79.c
+@@ -9,8 +9,9 @@
+  */
+ 
+ #include <linux/gpio/driver.h>
++#include <linux/platform_device.h>
+ #include <linux/platform_data/gpio-ath79.h>
 -#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <crypto/scatterwalk.h>
- #include <linux/scatterlist.h>
-diff --git a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
-index 07ea0cc82b16..258d447765eb 100644
---- a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
-+++ b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c
-@@ -18,7 +18,6 @@
++#include <linux/of.h>
+ #include <linux/interrupt.h>
+ #include <linux/module.h>
  #include <linux/irq.h>
- #include <linux/module.h>
- #include <linux/of.h>
+diff --git a/drivers/gpio/gpio-brcmstb.c b/drivers/gpio/gpio-brcmstb.c
+index 6566517fe0d8..bccdbfd5ec80 100644
+--- a/drivers/gpio/gpio-brcmstb.c
++++ b/drivers/gpio/gpio-brcmstb.c
+@@ -3,12 +3,12 @@
+ 
+ #include <linux/bitops.h>
+ #include <linux/gpio/driver.h>
 -#include <linux/of_device.h>
+-#include <linux/of_irq.h>
++#include <linux/of.h>
+ #include <linux/module.h>
+ #include <linux/irqdomain.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/interrupt.h>
++#include <linux/platform_device.h>
+ 
+ enum gio_reg_index {
+ 	GIO_REG_ODEN = 0,
+diff --git a/drivers/gpio/gpio-creg-snps.c b/drivers/gpio/gpio-creg-snps.c
+index 789384c6e178..4968232f70f2 100644
+--- a/drivers/gpio/gpio-creg-snps.c
++++ b/drivers/gpio/gpio-creg-snps.c
+@@ -8,7 +8,7 @@
+ #include <linux/gpio/driver.h>
+ #include <linux/io.h>
+ #include <linux/of.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ 
+ #define MAX_GPIO	32
+ 
+diff --git a/drivers/gpio/gpio-eic-sprd.c b/drivers/gpio/gpio-eic-sprd.c
+index 84352a6f4973..67b1e09e8985 100644
+--- a/drivers/gpio/gpio-eic-sprd.c
++++ b/drivers/gpio/gpio-eic-sprd.c
+@@ -9,7 +9,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c b/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
-index 3dd844b40ff7..77bddd5ebaf0 100644
---- a/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
-+++ b/drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c
-@@ -19,7 +19,6 @@
+ #include <linux/spinlock.h>
+ 
+diff --git a/drivers/gpio/gpio-ge.c b/drivers/gpio/gpio-ge.c
+index 7bd4c2a4cc11..4eecbc862abc 100644
+--- a/drivers/gpio/gpio-ge.c
++++ b/drivers/gpio/gpio-ge.c
+@@ -20,7 +20,7 @@
+ #include <linux/kernel.h>
+ #include <linux/io.h>
+ #include <linux/slab.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/module.h>
+ #include <linux/gpio/driver.h>
+diff --git a/drivers/gpio/gpio-grgpio.c b/drivers/gpio/gpio-grgpio.c
+index bea0e32c195d..0163c95f6dd7 100644
+--- a/drivers/gpio/gpio-grgpio.c
++++ b/drivers/gpio/gpio-grgpio.c
+@@ -19,10 +19,10 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/init.h>
++#include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+ #include <linux/io.h>
+ #include <linux/of.h>
+-#include <linux/of_platform.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/slab.h>
+ #include <linux/err.h>
+diff --git a/drivers/gpio/gpio-hlwd.c b/drivers/gpio/gpio-hlwd.c
+index c208ac1c54a6..1bcfc1835dae 100644
+--- a/drivers/gpio/gpio-hlwd.c
++++ b/drivers/gpio/gpio-hlwd.c
+@@ -10,7 +10,7 @@
  #include <linux/kernel.h>
  #include <linux/module.h>
  #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/amlogic/amlogic-gxl-core.c b/drivers/crypto/amlogic/amlogic-gxl-core.c
-index 937187027ad5..c8fa4a8bfd34 100644
---- a/drivers/crypto/amlogic/amlogic-gxl-core.c
-+++ b/drivers/crypto/amlogic/amlogic-gxl-core.c
-@@ -13,7 +13,6 @@
- #include <linux/irq.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/seq_file.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/gpio/gpio-logicvc.c b/drivers/gpio/gpio-logicvc.c
+index 992cc958a43f..2b9876bc1383 100644
+--- a/drivers/gpio/gpio-logicvc.c
++++ b/drivers/gpio/gpio-logicvc.c
+@@ -8,7 +8,6 @@
+ #include <linux/gpio/driver.h>
  #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
+ #include <linux/of_address.h>
  #include <linux/platform_device.h>
- #include <crypto/internal/skcipher.h>
- #include <linux/dma-mapping.h>
-diff --git a/drivers/crypto/aspeed/aspeed-acry.c b/drivers/crypto/aspeed/aspeed-acry.c
-index 470122c87fea..d16f570c40d2 100644
---- a/drivers/crypto/aspeed/aspeed-acry.c
-+++ b/drivers/crypto/aspeed/aspeed-acry.c
-@@ -11,10 +11,7 @@
+ #include <linux/regmap.h>
+diff --git a/drivers/gpio/gpio-mb86s7x.c b/drivers/gpio/gpio-mb86s7x.c
+index 37c5363e391e..ca7eb5e8bfaa 100644
+--- a/drivers/gpio/gpio-mb86s7x.c
++++ b/drivers/gpio/gpio-mb86s7x.c
+@@ -10,11 +10,11 @@
+ #include <linux/io.h>
+ #include <linux/init.h>
  #include <linux/clk.h>
- #include <linux/platform_device.h>
++#include <linux/mod_devicetable.h>
  #include <linux/module.h>
+ #include <linux/err.h>
+ #include <linux/errno.h>
+ #include <linux/ioport.h>
+-#include <linux/of_device.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+diff --git a/drivers/gpio/gpio-mpc5200.c b/drivers/gpio/gpio-mpc5200.c
+index 3b0bfff8c778..b49e3ca64015 100644
+--- a/drivers/gpio/gpio-mpc5200.c
++++ b/drivers/gpio/gpio-mpc5200.c
+@@ -10,7 +10,7 @@
+ #include <linux/slab.h>
+ #include <linux/gpio/legacy-of-mm-gpiochip.h>
+ #include <linux/io.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/module.h>
+ 
+ #include <asm/mpc52xx.h>
+diff --git a/drivers/gpio/gpio-mpc8xxx.c b/drivers/gpio/gpio-mpc8xxx.c
+index 5979a36bf754..ebf2f511df59 100644
+--- a/drivers/gpio/gpio-mpc8xxx.c
++++ b/drivers/gpio/gpio-mpc8xxx.c
+@@ -9,12 +9,10 @@
+ #include <linux/acpi.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
++#include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+ #include <linux/io.h>
+ #include <linux/of.h>
 -#include <linux/of_address.h>
 -#include <linux/of_irq.h>
+-#include <linux/of_platform.h>
+ #include <linux/property.h>
+ #include <linux/mod_devicetable.h>
+ #include <linux/slab.h>
+diff --git a/drivers/gpio/gpio-msc313.c b/drivers/gpio/gpio-msc313.c
+index 036ad2324892..2f448eb23abb 100644
+--- a/drivers/gpio/gpio-msc313.c
++++ b/drivers/gpio/gpio-msc313.c
+@@ -6,7 +6,6 @@
+ #include <linux/types.h>
+ #include <linux/io.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/mfd/syscon.h>
- #include <linux/interrupt.h>
- #include <linux/count_zeros.h>
-diff --git a/drivers/crypto/atmel-aes.c b/drivers/crypto/atmel-aes.c
-index 143d33fbb316..21c8c2112c6a 100644
---- a/drivers/crypto/atmel-aes.c
-+++ b/drivers/crypto/atmel-aes.c
-@@ -28,7 +28,7 @@
- #include <linux/irq.h>
- #include <linux/scatterlist.h>
- #include <linux/dma-mapping.h>
+ #include <linux/of_irq.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/module.h>
+diff --git a/drivers/gpio/gpio-mxc.c b/drivers/gpio/gpio-mxc.c
+index 9d0cec4b82a3..9d16371151d5 100644
+--- a/drivers/gpio/gpio-mxc.c
++++ b/drivers/gpio/gpio-mxc.c
+@@ -22,7 +22,6 @@
+ #include <linux/syscore_ops.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/of.h>
 -#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/delay.h>
- #include <linux/crypto.h>
- #include <crypto/scatterwalk.h>
-@@ -2533,13 +2533,11 @@ static void atmel_aes_get_cap(struct atmel_aes_dev *dd)
- 	}
- }
+ #include <linux/bug.h>
  
--#if defined(CONFIG_OF)
- static const struct of_device_id atmel_aes_dt_ids[] = {
- 	{ .compatible = "atmel,at91sam9g46-aes" },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, atmel_aes_dt_ids);
--#endif
- 
- static int atmel_aes_probe(struct platform_device *pdev)
- {
-@@ -2687,7 +2685,7 @@ static struct platform_driver atmel_aes_driver = {
- 	.remove		= atmel_aes_remove,
- 	.driver		= {
- 		.name	= "atmel_aes",
--		.of_match_table = of_match_ptr(atmel_aes_dt_ids),
-+		.of_match_table = atmel_aes_dt_ids,
- 	},
- };
- 
-diff --git a/drivers/crypto/atmel-ecc.c b/drivers/crypto/atmel-ecc.c
-index 432beabd79e6..590ea984c622 100644
---- a/drivers/crypto/atmel-ecc.c
-+++ b/drivers/crypto/atmel-ecc.c
-@@ -14,7 +14,7 @@
+ #define IMX_SCU_WAKEUP_OFF		0
+diff --git a/drivers/gpio/gpio-mxs.c b/drivers/gpio/gpio-mxs.c
+index 390e619a2831..8e04c9c4b5a2 100644
+--- a/drivers/gpio/gpio-mxs.c
++++ b/drivers/gpio/gpio-mxs.c
+@@ -14,7 +14,6 @@
+ #include <linux/irqdomain.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/gpio/driver.h>
+diff --git a/drivers/gpio/gpio-omap.c b/drivers/gpio/gpio-omap.c
+index a08be5bf6808..2b78fde74e30 100644
+--- a/drivers/gpio/gpio-omap.c
++++ b/drivers/gpio/gpio-omap.c
+@@ -22,7 +22,6 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/pm.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/bitops.h>
+ #include <linux/platform_data/gpio-omap.h>
+diff --git a/drivers/gpio/gpio-palmas.c b/drivers/gpio/gpio-palmas.c
+index bac10c2faf56..6140e87c6754 100644
+--- a/drivers/gpio/gpio-palmas.c
++++ b/drivers/gpio/gpio-palmas.c
+@@ -12,7 +12,6 @@
  #include <linux/init.h>
+ #include <linux/mfd/palmas.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ 
+ struct palmas_gpio {
+diff --git a/drivers/gpio/gpio-pmic-eic-sprd.c b/drivers/gpio/gpio-pmic-eic-sprd.c
+index c3e4d90f6b18..dabb0da3bd33 100644
+--- a/drivers/gpio/gpio-pmic-eic-sprd.c
++++ b/drivers/gpio/gpio-pmic-eic-sprd.c
+@@ -8,7 +8,7 @@
+ #include <linux/interrupt.h>
  #include <linux/kernel.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/scatterlist.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ 
+diff --git a/drivers/gpio/gpio-pxa.c b/drivers/gpio/gpio-pxa.c
+index a1630ed4b741..7e9f7a32d3ee 100644
+--- a/drivers/gpio/gpio-pxa.c
++++ b/drivers/gpio/gpio-pxa.c
+@@ -20,7 +20,6 @@
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/io.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/syscore_ops.h>
+diff --git a/drivers/gpio/gpio-rcar.c b/drivers/gpio/gpio-rcar.c
+index 2525adb52f4f..86e69cde04da 100644
+--- a/drivers/gpio/gpio-rcar.c
++++ b/drivers/gpio/gpio-rcar.c
+@@ -15,7 +15,6 @@
+ #include <linux/irq.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index e5de15a2ab9a..b35b9604413f 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -17,10 +17,10 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/pinconf-generic.h>
++#include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ 
+ #include "../pinctrl/core.h"
+diff --git a/drivers/gpio/gpio-sprd.c b/drivers/gpio/gpio-sprd.c
+index 072b4e653216..c117c11bfb29 100644
+--- a/drivers/gpio/gpio-sprd.c
++++ b/drivers/gpio/gpio-sprd.c
+@@ -7,8 +7,8 @@
+ #include <linux/bitops.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/kernel.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+ 
+diff --git a/drivers/gpio/gpio-stp-xway.c b/drivers/gpio/gpio-stp-xway.c
+index 4750ea34204c..053d616f2e02 100644
+--- a/drivers/gpio/gpio-stp-xway.c
++++ b/drivers/gpio/gpio-stp-xway.c
+@@ -4,11 +4,12 @@
+  *  Copyright (C) 2012 John Crispin <john@phrozen.org>
+  */
+ 
++#include <linux/platform_device.h>
  #include <linux/slab.h>
- #include <linux/workqueue.h>
-diff --git a/drivers/crypto/atmel-sha.c b/drivers/crypto/atmel-sha.c
-index 6bef634d3c86..b791be63d84b 100644
---- a/drivers/crypto/atmel-sha.c
-+++ b/drivers/crypto/atmel-sha.c
-@@ -28,7 +28,7 @@
- #include <linux/irq.h>
- #include <linux/scatterlist.h>
- #include <linux/dma-mapping.h>
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/types.h>
+-#include <linux/of_platform.h>
++#include <linux/of.h>
+ #include <linux/mutex.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/io.h>
+diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
+index 6076937b18e7..41bf47c8c983 100644
+--- a/drivers/gpio/gpio-syscon.c
++++ b/drivers/gpio/gpio-syscon.c
+@@ -9,7 +9,6 @@
+ #include <linux/gpio/driver.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
 -#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/delay.h>
- #include <linux/crypto.h>
- #include <crypto/scatterwalk.h>
-@@ -2570,14 +2570,12 @@ static void atmel_sha_get_cap(struct atmel_sha_dev *dd)
- 	}
- }
- 
--#if defined(CONFIG_OF)
- static const struct of_device_id atmel_sha_dt_ids[] = {
- 	{ .compatible = "atmel,at91sam9g46-sha" },
- 	{ /* sentinel */ }
- };
- 
- MODULE_DEVICE_TABLE(of, atmel_sha_dt_ids);
--#endif
- 
- static int atmel_sha_probe(struct platform_device *pdev)
- {
-@@ -2716,7 +2714,7 @@ static struct platform_driver atmel_sha_driver = {
- 	.remove		= atmel_sha_remove,
- 	.driver		= {
- 		.name	= "atmel_sha",
--		.of_match_table	= of_match_ptr(atmel_sha_dt_ids),
-+		.of_match_table	= atmel_sha_dt_ids,
- 	},
- };
- 
-diff --git a/drivers/crypto/atmel-tdes.c b/drivers/crypto/atmel-tdes.c
-index c9ded8be9c39..2f152f80f61a 100644
---- a/drivers/crypto/atmel-tdes.c
-+++ b/drivers/crypto/atmel-tdes.c
-@@ -28,7 +28,7 @@
- #include <linux/irq.h>
- #include <linux/scatterlist.h>
- #include <linux/dma-mapping.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/mfd/syscon.h>
+diff --git a/drivers/gpio/gpio-tegra.c b/drivers/gpio/gpio-tegra.c
+index 5b265a6fd3c1..ea715582bcf3 100644
+--- a/drivers/gpio/gpio-tegra.c
++++ b/drivers/gpio/gpio-tegra.c
+@@ -15,7 +15,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/gpio/driver.h>
 -#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/delay.h>
- #include <linux/crypto.h>
- #include <crypto/scatterwalk.h>
-@@ -1139,13 +1139,11 @@ static void atmel_tdes_get_cap(struct atmel_tdes_dev *dd)
- 	}
- }
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/module.h>
+ #include <linux/seq_file.h>
+diff --git a/drivers/gpio/gpio-tegra186.c b/drivers/gpio/gpio-tegra186.c
+index 80d08ddde40e..d87dd06db40d 100644
+--- a/drivers/gpio/gpio-tegra186.c
++++ b/drivers/gpio/gpio-tegra186.c
+@@ -11,7 +11,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/irq.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/seq_file.h>
  
--#if defined(CONFIG_OF)
- static const struct of_device_id atmel_tdes_dt_ids[] = {
- 	{ .compatible = "atmel,at91sam9g46-tdes" },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, atmel_tdes_dt_ids);
--#endif
+diff --git a/drivers/gpio/gpio-tps6586x.c b/drivers/gpio/gpio-tps6586x.c
+index c5713524b581..d277aa951143 100644
+--- a/drivers/gpio/gpio-tps6586x.c
++++ b/drivers/gpio/gpio-tps6586x.c
+@@ -15,7 +15,7 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/mfd/tps6586x.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
  
- static int atmel_tdes_probe(struct platform_device *pdev)
- {
-@@ -1282,7 +1280,7 @@ static struct platform_driver atmel_tdes_driver = {
- 	.remove		= atmel_tdes_remove,
- 	.driver		= {
- 		.name	= "atmel_tdes",
--		.of_match_table = of_match_ptr(atmel_tdes_dt_ids),
-+		.of_match_table = atmel_tdes_dt_ids,
- 	},
- };
+ /* GPIO control registers */
+diff --git a/drivers/gpio/gpio-tps65910.c b/drivers/gpio/gpio-tps65910.c
+index 321e6945f0be..187d21580573 100644
+--- a/drivers/gpio/gpio-tps65910.c
++++ b/drivers/gpio/gpio-tps65910.c
+@@ -15,7 +15,7 @@
+ #include <linux/i2c.h>
+ #include <linux/platform_device.h>
+ #include <linux/mfd/tps65910.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
  
-diff --git a/drivers/crypto/bcm/cipher.c b/drivers/crypto/bcm/cipher.c
-index 70b911baab26..262c7dbc5e5f 100644
---- a/drivers/crypto/bcm/cipher.c
-+++ b/drivers/crypto/bcm/cipher.c
-@@ -15,8 +15,7 @@
- #include <linux/kthread.h>
- #include <linux/rtnetlink.h>
- #include <linux/sched.h>
+ struct tps65910_gpio {
+ 	struct gpio_chip gpio_chip;
+diff --git a/drivers/gpio/gpio-ts4800.c b/drivers/gpio/gpio-ts4800.c
+index 95d80ba14bee..4748e3d47106 100644
+--- a/drivers/gpio/gpio-ts4800.c
++++ b/drivers/gpio/gpio-ts4800.c
+@@ -7,8 +7,7 @@
+ 
+ #include <linux/gpio/driver.h>
+ #include <linux/module.h>
 -#include <linux/of_address.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/io.h>
- #include <linux/bitops.h>
+ #include <linux/platform_device.h>
  
-diff --git a/drivers/crypto/caam/ctrl.c b/drivers/crypto/caam/ctrl.c
-index ff9ddbbca377..74bcd3083881 100644
---- a/drivers/crypto/caam/ctrl.c
-+++ b/drivers/crypto/caam/ctrl.c
-@@ -9,6 +9,7 @@
- #include <linux/device.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
-+#include <linux/platform_device.h>
- #include <linux/sys_soc.h>
- #include <linux/fsl/mc.h>
+ #define DEFAULT_PIN_NUMBER      16
+diff --git a/drivers/gpio/gpio-ts4900.c b/drivers/gpio/gpio-ts4900.c
+index eba96319dac2..0f6397b77c9d 100644
+--- a/drivers/gpio/gpio-ts4900.c
++++ b/drivers/gpio/gpio-ts4900.c
+@@ -8,7 +8,7 @@
  
-diff --git a/drivers/crypto/caam/jr.c b/drivers/crypto/caam/jr.c
-index 96dea5304d22..73b7aa68f21c 100644
---- a/drivers/crypto/caam/jr.c
-+++ b/drivers/crypto/caam/jr.c
-@@ -9,6 +9,7 @@
- 
- #include <linux/of_irq.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- 
- #include "compat.h"
- #include "ctrl.h"
-diff --git a/drivers/crypto/caam/qi.c b/drivers/crypto/caam/qi.c
-index 2ad2c1035856..46a083849a8e 100644
---- a/drivers/crypto/caam/qi.c
-+++ b/drivers/crypto/caam/qi.c
-@@ -13,6 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/kthread.h>
- #include <linux/netdevice.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/string.h>
- #include <soc/fsl/qman.h>
-diff --git a/drivers/crypto/ccree/cc_driver.c b/drivers/crypto/ccree/cc_driver.c
-index c57f929805d5..0f0694037dd7 100644
---- a/drivers/crypto/ccree/cc_driver.c
-+++ b/drivers/crypto/ccree/cc_driver.c
-@@ -14,7 +14,6 @@
- #include <linux/of.h>
- #include <linux/clk.h>
- #include <linux/of_address.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/i2c.h>
 -#include <linux/of_device.h>
- #include <linux/pm_runtime.h>
++#include <linux/of.h>
+ #include <linux/module.h>
+ #include <linux/regmap.h>
  
- #include "cc_driver.h"
-diff --git a/drivers/crypto/exynos-rng.c b/drivers/crypto/exynos-rng.c
-index cbd8ca6e52ee..773c3238c603 100644
---- a/drivers/crypto/exynos-rng.c
-+++ b/drivers/crypto/exynos-rng.c
-@@ -15,7 +15,7 @@
+diff --git a/drivers/gpio/gpio-uniphier.c b/drivers/gpio/gpio-uniphier.c
+index 19ce6675cbc0..9725b7aa18a7 100644
+--- a/drivers/gpio/gpio-uniphier.c
++++ b/drivers/gpio/gpio-uniphier.c
+@@ -9,7 +9,6 @@
+ #include <linux/irqdomain.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+diff --git a/drivers/gpio/gpio-vf610.c b/drivers/gpio/gpio-vf610.c
+index d3f3a69d4907..54e7c51f48c8 100644
+--- a/drivers/gpio/gpio-vf610.c
++++ b/drivers/gpio/gpio-vf610.c
+@@ -17,7 +17,6 @@
+ #include <linux/irq.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/pinctrl/consumer.h>
+ 
+diff --git a/drivers/gpio/gpio-wcd934x.c b/drivers/gpio/gpio-wcd934x.c
+index 817750e4e033..2bba27b13947 100644
+--- a/drivers/gpio/gpio-wcd934x.c
++++ b/drivers/gpio/gpio-wcd934x.c
+@@ -1,11 +1,12 @@
+ // SPDX-License-Identifier: GPL-2.0
+ // Copyright (c) 2019, Linaro Limited
+ 
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+ #include <linux/gpio/driver.h>
++#include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/slab.h>
+-#include <linux/of_device.h>
+ 
+ #define WCD_PIN_MASK(p) BIT(p)
+ #define WCD_REG_DIR_CTL_OFFSET 0x42
+diff --git a/drivers/gpio/gpio-xilinx.c b/drivers/gpio/gpio-xilinx.c
+index 1fa66f2a667f..a16945e8319e 100644
+--- a/drivers/gpio/gpio-xilinx.c
++++ b/drivers/gpio/gpio-xilinx.c
+@@ -15,8 +15,8 @@
  #include <linux/io.h>
+ #include <linux/irq.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+-#include <linux/of_platform.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/gpio/gpio-xra1403.c b/drivers/gpio/gpio-xra1403.c
+index bbc06cdd9634..eed8a1684830 100644
+--- a/drivers/gpio/gpio-xra1403.c
++++ b/drivers/gpio/gpio-xra1403.c
+@@ -8,9 +8,9 @@
+ #include <linux/bitops.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/kernel.h>
++#include <linux/mod_devicetable.h>
  #include <linux/module.h>
  #include <linux/mutex.h>
 -#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- 
- #include <crypto/internal/rng.h>
-diff --git a/drivers/crypto/gemini/sl3516-ce-core.c b/drivers/crypto/gemini/sl3516-ce-core.c
-index b7524b649068..e9c00d76545b 100644
---- a/drivers/crypto/gemini/sl3516-ce-core.c
-+++ b/drivers/crypto/gemini/sl3516-ce-core.c
-@@ -16,7 +16,6 @@
- #include <linux/irq.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/img-hash.c b/drivers/crypto/img-hash.c
-index 359aa2b41016..45063693859c 100644
---- a/drivers/crypto/img-hash.c
-+++ b/drivers/crypto/img-hash.c
-@@ -13,7 +13,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/platform_device.h>
- #include <linux/scatterlist.h>
- 
-@@ -1105,7 +1105,7 @@ static struct platform_driver img_hash_driver = {
- 	.driver		= {
- 		.name	= "img-hash-accelerator",
- 		.pm	= &img_hash_pm_ops,
--		.of_match_table	= of_match_ptr(img_hash_match),
-+		.of_match_table	= img_hash_match,
- 	}
- };
- module_platform_driver(img_hash_driver);
-diff --git a/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c b/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
-index d4bcbed1f546..226654b12779 100644
---- a/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
-+++ b/drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c
-@@ -10,7 +10,8 @@
- #include <linux/dma-mapping.h>
- #include <linux/interrupt.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/platform_device.h>
- 
- #include <crypto/engine.h>
- #include <crypto/scatterwalk.h>
-diff --git a/drivers/crypto/n2_core.c b/drivers/crypto/n2_core.c
-index 4f6ca229ee5e..d5a32d71a3e9 100644
---- a/drivers/crypto/n2_core.c
-+++ b/drivers/crypto/n2_core.c
-@@ -10,7 +10,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/cpumask.h>
- #include <linux/slab.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/crypto/omap-aes.c b/drivers/crypto/omap-aes.c
-index 67a99c760bc4..71002a12993d 100644
---- a/drivers/crypto/omap-aes.c
-+++ b/drivers/crypto/omap-aes.c
-@@ -24,7 +24,6 @@
- #include <linux/dmaengine.h>
- #include <linux/pm_runtime.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/io.h>
- #include <linux/crypto.h>
-diff --git a/drivers/crypto/omap-des.c b/drivers/crypto/omap-des.c
-index f783769ea110..82cca34017e4 100644
---- a/drivers/crypto/omap-des.c
-+++ b/drivers/crypto/omap-des.c
-@@ -27,8 +27,6 @@
- #include <linux/dmaengine.h>
- #include <linux/pm_runtime.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_address.h>
- #include <linux/io.h>
- #include <linux/crypto.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/crypto/omap-sham.c b/drivers/crypto/omap-sham.c
-index cbeda59c6b19..4c25fc42044c 100644
---- a/drivers/crypto/omap-sham.c
-+++ b/drivers/crypto/omap-sham.c
-@@ -28,7 +28,6 @@
- #include <linux/dmaengine.h>
- #include <linux/pm_runtime.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/delay.h>
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 9f6ba770a90a..f3a79bec76a8 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -14,7 +14,6 @@
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/clk.h>
- #include <linux/crypto.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/s5p-sss.c b/drivers/crypto/s5p-sss.c
-index 1c4d5fb05d69..fe8cf9ba8005 100644
---- a/drivers/crypto/s5p-sss.c
-+++ b/drivers/crypto/s5p-sss.c
-@@ -20,7 +20,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/scatterlist.h>
- 
-diff --git a/drivers/crypto/sa2ul.c b/drivers/crypto/sa2ul.c
-index df5f9d675c57..6238d34f8db2 100644
---- a/drivers/crypto/sa2ul.c
-+++ b/drivers/crypto/sa2ul.c
-@@ -15,7 +15,8 @@
- #include <linux/dmapool.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- 
-diff --git a/drivers/crypto/sahara.c b/drivers/crypto/sahara.c
-index 4c799df3e883..62d93526920f 100644
---- a/drivers/crypto/sahara.c
-+++ b/drivers/crypto/sahara.c
-@@ -27,7 +27,6 @@
- #include <linux/kthread.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/spinlock.h>
- 
-diff --git a/drivers/crypto/starfive/jh7110-cryp.c b/drivers/crypto/starfive/jh7110-cryp.c
-index cc43556b6c80..0f517ea06bcb 100644
---- a/drivers/crypto/starfive/jh7110-cryp.c
-+++ b/drivers/crypto/starfive/jh7110-cryp.c
-@@ -11,8 +11,8 @@
- #include <linux/delay.h>
- #include <linux/interrupt.h>
- #include <linux/iopoll.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/starfive/jh7110-hash.c b/drivers/crypto/starfive/jh7110-hash.c
-index 5064150b8a1c..41c9e40c6551 100644
---- a/drivers/crypto/starfive/jh7110-hash.c
-+++ b/drivers/crypto/starfive/jh7110-hash.c
-@@ -14,7 +14,6 @@
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/stm32/stm32-cryp.c b/drivers/crypto/stm32/stm32-cryp.c
-index 6b8d731092a4..ab12c782dec5 100644
---- a/drivers/crypto/stm32/stm32-cryp.c
-+++ b/drivers/crypto/stm32/stm32-cryp.c
-@@ -10,7 +10,7 @@
- #include <linux/interrupt.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/stm32/stm32-hash.c b/drivers/crypto/stm32/stm32-hash.c
-index f0df32382719..cb3ca28fb193 100644
---- a/drivers/crypto/stm32/stm32-hash.c
-+++ b/drivers/crypto/stm32/stm32-hash.c
-@@ -15,7 +15,7 @@
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/crypto/talitos.c b/drivers/crypto/talitos.c
-index bb27f011cf31..4ca4fbd227bc 100644
---- a/drivers/crypto/talitos.c
-+++ b/drivers/crypto/talitos.c
-@@ -19,9 +19,9 @@
- #include <linux/interrupt.h>
- #include <linux/crypto.h>
- #include <linux/hw_random.h>
--#include <linux/of_address.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/dma-mapping.h>
- #include <linux/io.h>
- #include <linux/spinlock.h>
-diff --git a/drivers/crypto/xilinx/zynqmp-aes-gcm.c b/drivers/crypto/xilinx/zynqmp-aes-gcm.c
-index bf1f421e05f2..6092ff0646a8 100644
---- a/drivers/crypto/xilinx/zynqmp-aes-gcm.c
-+++ b/drivers/crypto/xilinx/zynqmp-aes-gcm.c
-@@ -12,7 +12,7 @@
- 
- #include <linux/dma-mapping.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/platform_device.h>
- 
- #include <linux/firmware/xlnx-zynqmp.h>
-diff --git a/drivers/crypto/xilinx/zynqmp-sha.c b/drivers/crypto/xilinx/zynqmp-sha.c
-index 43ff170ff1c2..426bf1a72ba6 100644
---- a/drivers/crypto/xilinx/zynqmp-sha.c
-+++ b/drivers/crypto/xilinx/zynqmp-sha.c
-@@ -15,7 +15,6 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- 
- #define ZYNQMP_DMA_BIT_MASK		32U
+ #include <linux/seq_file.h>
+ #include <linux/spi/spi.h>
+ #include <linux/regmap.h>
 -- 
 2.40.1
 
