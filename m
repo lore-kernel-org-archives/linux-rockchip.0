@@ -4,62 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8A1EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 14:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A29EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 15:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7/hEXlmIrxh8Mz1ZwUZy4N5/gazr/RulnikFo4OKyZU=; b=q27kttlzFmUucn
-	BByTsrb18M7FL0hh6pj++/5ow2CIuhH6CXo2Vv31Pni0rim7eooqZwplXt63Xrb3oWYSMshzllyu4
-	ZvwARq+IKAXt0FvZpChX7++EWSqxeH++CBp2or3t2tNi0hLmW7GDolQsUcTkSwGiBTyot9Mjhl+Ov
-	YZV6ZvbEAaGRg93MclzA0FbDpqnr65t033EbryVhKpWDFgoVShWDlgNXzoFnfXPO6+b8/xagqz6MR
-	W2CkJoE3EbJQF+vUK54IAGq1fvDQjGaWSoJ86wJSwroHahsCJwg0LbS+vG/EYl23bFa5vP/8pGN9A
-	PfQWknfxfmSOQZS4ATcw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uVreizktQ0uwkI8K5qeDeRXKYsJTJlj34x9ecZJrTxM=; b=UKYkhql99zuhUz
+	/KjrIAMLskm2EXy504TUPGj7KdfRCotdiVOdhQ6fg/UbxjGKp6QG7orI7+JaWHbchre3z0H4s3YLR
+	xk66nooRb+0sqXhO9YmKORc/3LvwQiM0KjWob2M6L2igUaz1GUUhZdEunaALHSnsGblQU4IdOF3d9
+	LZ8pA1MdJuhORRxylOtRTylpneA6dQLGSntLIF85UOmbzzVTmEEcpeZ25avklNLcaftg72joBxRc5
+	Tksp+iKomCK0bkD/DxEEwvfPG8mzcfQgqFiOeCb2cojkiO3FRLTX5qyKpzExztsceF/hX3cjuutn0
+	POxf6CrZapD87QzvXIAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKJcx-006NE9-1S;
-	Fri, 14 Jul 2023 14:18:35 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKJcu-006NCg-0j;
-	Fri, 14 Jul 2023 14:18:33 +0000
-Received: from 8bytes.org (p200300f6af03f600fd690381fa83412b.dip0.t-ipconnect.de [IPv6:2003:f6:af03:f600:fd69:381:fa83:412b])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 047AA28012B;
-	Fri, 14 Jul 2023 16:18:30 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1689344310;
-	bh=x48tQJuhRIcBK8H22bowqvguJJwO4RiPk3c8qAoIwxM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Dp0bpR/TN6JUtC2kVopJCIWL6JgKs6ep/uDNil4nOncAjdx8i5643rC7XpfbQz/oJ
-	 wgX9d0iHrf47FXFmQrKlkn0a5k+oRW/Rjt5TwtyqQEDOR7pfTD8WHZw/UCRS/LIveP
-	 OSmROeqVdXZUilMAGUgu/5sGLXgLm49sLKwT7kn9SDvlImkJH9oNxb703qm7xKePAX
-	 PBM6w4VEduBYW2BkfgUdSLjpn1OFW1KX9lVucEWP0DXrMJnJfvV91CTMOIl4+y9qIW
-	 h9QFUSCMuH/lBX/VDf+rJh4J74YqmNnc7QumgOwcWATRgJkKv5DQt1+D14HLkRoQNi
-	 /TGV0Evt5GVKg==
-Date: Fri, 14 Jul 2023 16:18:28 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] iommu: rockchip: Fix directory table address
- encoding
-Message-ID: <ZLFZNH_6HIxkYS4n@8bytes.org>
-References: <20230617182540.3091374-1-jonas@kwiboo.se>
+	id 1qKKaT-006VKH-1E;
+	Fri, 14 Jul 2023 15:20:05 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qKKaP-006VI3-1j;
+	Fri, 14 Jul 2023 15:20:03 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-99454855de1so57076766b.2;
+        Fri, 14 Jul 2023 08:19:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689347993; x=1691939993;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uRxUFSZUV2W8ort0PSj9hJsHbd6feENt4NCd2S7baGM=;
+        b=kzPYOVXNMgXeOi1lmP8BNT3aG05tx9JwNSA93oBI+KA2rcVXavNhT42Py82GFw/dVx
+         xYzuz/L+jSOIt+EP6ZuhbjyNgs1QRfCBMk7Eda1ciaG0WdtjCZ7fXYOtove8c1qdWyc+
+         AoFNG0bOWYs9VyaqlEt1l0c44lS+SIjlmi3vgSCrkjzIPUjH3MZp3TaEJyO/sTIAFxWs
+         8DzSW+1LsfzQ8sHkVpVRpZwcirdnwz1ClyrnYUHte4ah1GPfHYo3B+T4KZ8xUXnGqPMs
+         6okwA3JsDmHSR4jKrnPKfZBRKSwKqq2jrCjaB9Xn5FWKS8yULHMRp2wDn9w9+HOopza1
+         8Pqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689347993; x=1691939993;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=uRxUFSZUV2W8ort0PSj9hJsHbd6feENt4NCd2S7baGM=;
+        b=hV51oPidSYYoqlgsjtTv+ydJaduCYlF4qITiDmoXkUVkXFNuQzAtcKNCaXGHrqjsXN
+         KhVI8qj0wf8eeRG/Os7rNYDv44KjdnnfuhtHTDTJIVCYmyTLPZBR3wUb8M51dqo6YgrQ
+         AiGfUItHrle6Cfuij0xpt2GSbSQ1UBG1H8ar6Ve8Zt8fofisocRDb1iYPTWRiKTfxUT+
+         ClnQXSGyOL6jqfZizsQ/y7eB8OIFz3Yj7BUP45Epigobp2Euwim+7GpqyAh8wOTMIZTf
+         d5ViSnCvw07kEDl/FfQJCsMyUnNPl60tDFcrbLnZyy44R3+RntaVvyEPZwQOE6q2zbW6
+         wHAQ==
+X-Gm-Message-State: ABy/qLZhMUl6pOuzJSLCl9q8ArjQwlMxuNc3r3qqebvaXcvx18wzF7Ci
+	9EX+goJJA9m7u47VDXu24+I=
+X-Google-Smtp-Source: APBJJlH/63xAD4d8jqV9NnNG5NHdtTn3OTwFVR/uDJ9N36uzE9gs//IK4CRQnYm5FFxhU/bq+faEQg==
+X-Received: by 2002:a17:906:5194:b0:993:e9b8:90f5 with SMTP id y20-20020a170906519400b00993e9b890f5mr4483546ejk.8.1689347993197;
+        Fri, 14 Jul 2023 08:19:53 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id e10-20020a170906080a00b00992d122af63sm5472518ejd.89.2023.07.14.08.19.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 14 Jul 2023 08:19:52 -0700 (PDT)
+Message-ID: <273ad871-9050-7851-9973-5545b88bf43b@gmail.com>
+Date: Fri, 14 Jul 2023 17:19:51 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230617182540.3091374-1-jonas@kwiboo.se>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v5 0/2] Fixes for Rockchip NAND controller driver
+To: miquel.raynal@bootlin.com
+Cc: richard@nod.at, vigneshr@ti.com, heiko@sntech.de,
+ linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ yifeng.zhao@rock-chips.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_071832_507635_F5C33157 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20230714_082001_579716_2DD6D264 
+X-CRM114-Status: UNSURE (   7.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,16 +94,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 17, 2023 at 06:25:43PM +0000, Jonas Karlman wrote:
-> Jonas Karlman (2):
->   iommu: rockchip: Fix directory table address encoding
->   iommu: rockchip: Allocate tables from all available memory for IOMMU
->     v2
-> 
->  drivers/iommu/rockchip-iommu.c | 50 +++++++---------------------------
->  1 file changed, 10 insertions(+), 40 deletions(-)
+This serie contains various fixes for the Rockchip NAND controller
+driver that showed up while testing boot block writing.
 
-Applied, thanks.
+Fixed are:
+  Always copy hwecc PA data to/from oob_poi buffer in order to be able
+  to read/write the various boot block layouts.
+  Add option to safely probe the driver on a NAND with unknown data layout.
+  Fix oobfree layout.
+
+Changed V5:
+  Reword
+  Remove skipbbt patch
+
+Changed V4:
+  Reduce subject size
+  Add 'Fixes:' tag
+  Reword
+
+Changed V3:
+  Change patch order, layout fixes first
+  Change prefixes
+  Reword
+  State that patches break all existing jffs2 users
+
+Changed V2:
+  Add tag
+  Add manufacturer ops
+  Reword
+
+Johan Jonker (2):
+  mtd: rawnand: rockchip: fix oobfree offset and description
+  mtd: rawnand: rockchip: Align hwecc vs. raw page helper layouts
+
+ .../mtd/nand/raw/rockchip-nand-controller.c   | 45 ++++++++++---------
+ 1 file changed, 25 insertions(+), 20 deletions(-)
+
+--
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
