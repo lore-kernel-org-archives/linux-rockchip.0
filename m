@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AAAEC04FDF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E66BC001DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wraGVN6gpbxKPsseBX2mnu+r0KLWAvtcMzC93fZuJFs=; b=M9my6LgRjtgxxX
-	UG6noDGW1/zPubEJZzfZetQCpsxzuovWIQ1cAuTrrc8Nk3f4X5sJn0b+in+d95BxqK1PjpE/rH7EQ
-	Zffrk0fdM3VQMqFTDxVkBYzfIXbEcoktvwRTWDCRizPm0qL3NeWM5KaSm/UvwYBNXAtZ+pK91kReA
-	XwslGhovty2VNc9Zzl4CVx4OvWIlPC93PwUswbY7CQG+k3+S0noWJaQgD2GzEBfLUXH3S9VevrE1u
-	fAiuuebACBPWfxLvXM/qPfb/ltNAlNuI0n6BdHOeQTQbd0HqVGodsUjuA2TZcAZryfq+gPDba8JKM
-	XkDcNVa91TnKhWp3yJSQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=flo1F1wdxGscx+OfdP6Nc3u9oAVDBVi4AaSmbymGczo=; b=WnGsL1xQ+gdXwM
+	s60myEYGNeSizJAunMDepEHtwExfQ6Co1oZ+NK1qKhWnmm9a62+GiuqKx3aJWTyYGxvgaeJ9lSZHh
+	dNpBAv5TLayjMWzGfwyNw0GXnavK9Zu3WCR+G5ROWJLIoB8cTHL3s9KOtLhq/iKgHZSJAqWXBALln
+	/mSD0+pR3Pc3HfTHtedIHD+AB0ln5viuiJt4pGNrj3PQAEqes1Z0sso8zMussL3WVW8G3YOzdF1w2
+	p5ebi0/pXlcdYiGeBgfZ1psCj2PcIhAzfo0xXZwBhdjaxm//+Vj3YLNVGp9YqEBWe5xJxG1+IQNBc
+	1zRvrvcOaPaBuaE/tPTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMur-006ptM-2G;
-	Fri, 14 Jul 2023 17:49:17 +0000
-Received: from mail-io1-f47.google.com ([209.85.166.47])
+	id 1qKMvH-006qCv-0D;
+	Fri, 14 Jul 2023 17:49:43 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMui-006pn6-1A;
-	Fri, 14 Jul 2023 17:49:13 +0000
-Received: by mail-io1-f47.google.com with SMTP id ca18e2360f4ac-786bb09e595so75905439f.1;
-        Fri, 14 Jul 2023 10:49:08 -0700 (PDT)
+	id 1qKMv7-006q2p-0A;
+	Fri, 14 Jul 2023 17:49:38 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-51e5e4c6026so2693485a12.0;
+        Fri, 14 Jul 2023 10:49:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689356969; x=1691948969;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NC5d4RwQCfp8AlIqPrzhfVbCgr0HcM0nwsYSbXqAxYE=;
+        b=rx2n/DUK5FdpNhorZRwEEki+42neY7ZsFn7dxJ+w0dyX+eW6z/W9Cq8sQP3V25FJXa
+         NFR58sOyCNYM/GahvZZlMRrwvVhJvBjYDMF7yAJc4BJyZ09MXKfyt/HyoqeocODycsed
+         p5E877/Nni8iIJIUcihPYei13XWJlLrzzWbWriWEbLctfyxtmqXWpzvRjUAugkoxNpNi
+         /8BOBWA8iLKwlRv4xWWSiyvmNzozl1ZvC3HJSUGErMYOuKsj8EEerw8L44wdf6RMjNc4
+         ur9VtTzYlljA3AaPEnC5mwWinmvG0RkK7cbk1q037RdUeo00q58A+wrdT/iN20EbSiGC
+         OUuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356947; x=1691948947;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0qcm+1BvZtY+sss5hBqf3SVUL+ciZCYo21hFJ2ZAvdU=;
-        b=dmyF1Q+BYQ8Q65PsavyoLvKTIUQah9Pg0RJe2RJlppXuJvQHCA2tJtbLcPwgzMcrey
-         EscfLo2tX2iwczGAJewDplGdxLMw39NA3c35CTGrwI/GegokMuUoiD3EdFQhG9FAy3xW
-         sAJ9mf3oDjxG5EnKEPJVYEtVvk9vyX8MnoVKHF0eyEmOj5xOM7vXENfC+Ftdl3uPY9ep
-         qlBVAkr/dq1q+lZWm8HWUcLGG5S4E0CBYuLvUKbL2ApZiyotqYqzLIdRKHRRvPOv5ZNh
-         AE8610bwJsaRvLtL8ybIm4RUx+oyuFt+Ynboy7/nwfajJHMqYTWg13t9QyFDoGGdUxOI
-         gUiw==
-X-Gm-Message-State: ABy/qLacz9Jo3PKVmixMzO/3QG/wlAN/J23nF+ZzVXoouLaxKl324+YM
-	Q0b+JdLZFbl7lRj2ZBWwDw==
-X-Google-Smtp-Source: APBJJlFvUpaluwwTRE6l/XAwJH6sV1f7SgqQt3J2ms1EKgUuPjRvJs8HrrBWmYcZQ6BsBytUA6zYoA==
-X-Received: by 2002:a92:609:0:b0:346:7ab9:e1b9 with SMTP id x9-20020a920609000000b003467ab9e1b9mr2501695ilg.0.1689356947261;
-        Fri, 14 Jul 2023 10:49:07 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id y9-20020a92d809000000b003460b8505easm2928746ilm.19.2023.07.14.10.49.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:49:06 -0700 (PDT)
-Received: (nullmailer pid 4062208 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:48:50 -0000
-From: Rob Herring <robh@kernel.org>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Justin Chen <justin.chen@broadcom.com>, 
-	Al Cooper <alcooperx@gmail.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Ioana Ciornei <ioana.ciornei@nxp.com>, Yu Chen <chenyu56@huawei.com>, 
-	Binghui Wang <wangbinghui@hisilicon.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Lubomir Rintel <lkundrak@v3.sk>, Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wolfgang Grandegger <wg@grandegger.com>, Marc Kleine-Budde <mkl@pengutronix.de>, Alban Bedel <albeu@free.fr>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Robert Marko <robert.marko@sartura.hr>, 
-	Luka Perkov <luka.perkov@sartura.hr>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	JC Kuo <jckuo@nvidia.com>
-Cc: devicetree@vger.kernel.org, linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Subject: [PATCH] phy: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:48:35 -0600
-Message-Id: <20230714174841.4061919-1-robh@kernel.org>
-X-Mailer: git-send-email 2.40.1
+        d=1e100.net; s=20221208; t=1689356969; x=1691948969;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NC5d4RwQCfp8AlIqPrzhfVbCgr0HcM0nwsYSbXqAxYE=;
+        b=QW05KWNUv38xdiYhE1Mvd06sdXerpFMzbcAc7S3CrXmO1Yk+DRwY3Vh2gx4fU5R9/0
+         AvrwtQ3F7ahtocm76T/2VF3jlC3mYTMhbctyzcGbAqjoq1+PUMqCtYryRhItwW5ilmpS
+         weZ0zEO8ChjOr4J3EuBsJtZ0BcZkKyT4yrlKxVcMVaeDlilnJZr0OWroYLwyt/Jia8kx
+         bNF+dhQwO/s0zGXxlYWXKQnFbjlVcD+Og8lUAf1mP4l1YC56Ff7xzMLifK/Pa8fmedVx
+         oWUyQSIi90aSAuZXxo2VR7OmZO2Cb3c4Txc3PTeVTyrde8lbmdJx279SgEdaPkqMxMbH
+         LKpA==
+X-Gm-Message-State: ABy/qLYdU/WhUV2wgSjvqEa65LcdhuVzzg+9I8WJwpJVr8MmYN3eXLh1
+	BpPrQX7we2J+AVNgQz0o/NjCkuQmYvoQ2cNwmA4=
+X-Google-Smtp-Source: APBJJlFfwFHwFk6noFrNZTWL+rppCw3afvIqC7GbXmVZFCFZjgyllSTZfCfNmb5FV0WLuiayOxJ87gfTFd1wpfViDLQ=
+X-Received: by 2002:a17:906:7484:b0:994:1806:fb96 with SMTP id
+ e4-20020a170906748400b009941806fb96mr4552864ejl.16.1689356969312; Fri, 14 Jul
+ 2023 10:49:29 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230714174525.4055475-1-robh@kernel.org>
+In-Reply-To: <20230714174525.4055475-1-robh@kernel.org>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Fri, 14 Jul 2023 20:48:52 +0300
+Message-ID: <CAHp75Vda=r4Fdty9f_SOFfYLzned9nnJF3vvGFKNX78rn0qGCQ@mail.gmail.com>
+Subject: Re: [PATCH] gpio: Explicitly include correct DT includes
+To: Rob Herring <robh@kernel.org>
+Cc: Alban Bedel <albeu@free.fr>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, Doug Berger <opendmb@gmail.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Grygorii Strashko <grygorii.strashko@ti.com>, 
+	Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>, Srinivas Neeli <srinivas.neeli@amd.com>, 
+	Michal Simek <michal.simek@amd.com>, Nandor Han <nandor.han@ge.com>, devicetree@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104908_438019_EA818DD9 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20230714_104933_108872_FD345087 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,1148 +98,326 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DT of_device.h and of_platform.h date back to the separate
-of_platform_bus_type before it as merged into the regular platform bus.
-As part of that merge prepping Arm DT support 13 years ago, they
-"temporarily" include each other. They also include platform_device.h
-and of.h. As a result, there's a pretty much random mix of those include
-files used throughout the tree. In order to detangle these headers and
-replace the implicit includes with struct declarations, users need to
-explicitly include the correct includes.
-
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- drivers/phy/allwinner/phy-sun4i-usb.c                 | 2 --
- drivers/phy/allwinner/phy-sun50i-usb3.c               | 1 +
- drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c         | 2 +-
- drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c  | 1 +
- drivers/phy/amlogic/phy-meson-axg-pcie.c              | 1 +
- drivers/phy/amlogic/phy-meson-g12a-mipi-dphy-analog.c | 1 +
- drivers/phy/amlogic/phy-meson-g12a-usb2.c             | 2 +-
- drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c        | 2 +-
- drivers/phy/amlogic/phy-meson-gxl-usb2.c              | 2 +-
- drivers/phy/amlogic/phy-meson8-hdmi-tx.c              | 2 +-
- drivers/phy/amlogic/phy-meson8b-usb2.c                | 2 +-
- drivers/phy/broadcom/phy-bcm63xx-usbh.c               | 1 +
- drivers/phy/broadcom/phy-brcm-usb.c                   | 1 -
- drivers/phy/cadence/cdns-dphy-rx.c                    | 1 +
- drivers/phy/cadence/cdns-dphy.c                       | 3 +--
- drivers/phy/cadence/phy-cadence-torrent.c             | 2 --
- drivers/phy/freescale/phy-fsl-imx8m-pcie.c            | 2 +-
- drivers/phy/freescale/phy-fsl-imx8mq-usb.c            | 2 +-
- drivers/phy/freescale/phy-fsl-lynx-28g.c              | 1 +
- drivers/phy/hisilicon/phy-hi3660-usb3.c               | 1 +
- drivers/phy/hisilicon/phy-hi3670-usb3.c               | 1 +
- drivers/phy/hisilicon/phy-hi6220-usb.c                | 1 +
- drivers/phy/hisilicon/phy-hisi-inno-usb2.c            | 3 ++-
- drivers/phy/hisilicon/phy-histb-combphy.c             | 3 ++-
- drivers/phy/hisilicon/phy-hix5hd2-sata.c              | 1 +
- drivers/phy/ingenic/phy-ingenic-usb.c                 | 1 +
- drivers/phy/lantiq/phy-lantiq-rcu-usb2.c              | 1 -
- drivers/phy/marvell/phy-armada38x-comphy.c            | 1 +
- drivers/phy/marvell/phy-berlin-sata.c                 | 1 +
- drivers/phy/marvell/phy-mmp3-hsic.c                   | 1 +
- drivers/phy/marvell/phy-mmp3-usb.c                    | 1 +
- drivers/phy/marvell/phy-mvebu-a3700-comphy.c          | 1 +
- drivers/phy/marvell/phy-mvebu-a3700-utmi.c            | 2 +-
- drivers/phy/marvell/phy-mvebu-cp110-comphy.c          | 1 +
- drivers/phy/marvell/phy-mvebu-cp110-utmi.c            | 2 +-
- drivers/phy/marvell/phy-mvebu-sata.c                  | 1 +
- drivers/phy/marvell/phy-pxa-28nm-usb2.c               | 1 -
- drivers/phy/mediatek/phy-mtk-hdmi.h                   | 1 -
- drivers/phy/mediatek/phy-mtk-mipi-dsi.h               | 1 -
- drivers/phy/mediatek/phy-mtk-pcie.c                   | 2 +-
- drivers/phy/mediatek/phy-mtk-tphy.c                   | 2 +-
- drivers/phy/mediatek/phy-mtk-ufs.c                    | 1 +
- drivers/phy/phy-can-transceiver.c                     | 1 +
- drivers/phy/phy-xgene.c                               | 1 +
- drivers/phy/qualcomm/phy-ath79-usb.c                  | 1 +
- drivers/phy/qualcomm/phy-qcom-edp.c                   | 2 --
- drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c        | 1 -
- drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c           | 3 +--
- drivers/phy/qualcomm/phy-qcom-ipq806x-usb.c           | 2 +-
- drivers/phy/qualcomm/phy-qcom-qmp-combo.c             | 1 -
- drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c      | 1 -
- drivers/phy/qualcomm/phy-qcom-qmp-pcie.c              | 1 -
- drivers/phy/qualcomm/phy-qcom-qmp-ufs.c               | 1 -
- drivers/phy/qualcomm/phy-qcom-qmp-usb.c               | 1 -
- drivers/phy/qualcomm/phy-qcom-qusb2.c                 | 1 -
- drivers/phy/qualcomm/phy-qcom-snps-eusb2.c            | 1 +
- drivers/phy/qualcomm/phy-qcom-snps-femto-v2.c         | 1 -
- drivers/phy/qualcomm/phy-qcom-usb-hs.c                | 2 +-
- drivers/phy/ralink/phy-mt7621-pci.c                   | 3 +--
- drivers/phy/renesas/phy-rcar-gen2.c                   | 1 -
- drivers/phy/renesas/phy-rcar-gen3-pcie.c              | 1 -
- drivers/phy/renesas/phy-rcar-gen3-usb2.c              | 2 --
- drivers/phy/renesas/r8a779f0-ether-serdes.c           | 1 +
- drivers/phy/rockchip/phy-rockchip-dphy-rx0.c          | 1 -
- drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c      | 2 +-
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c         | 1 -
- drivers/phy/rockchip/phy-rockchip-naneng-combphy.c    | 3 ++-
- drivers/phy/rockchip/phy-rockchip-snps-pcie3.c        | 3 ++-
- drivers/phy/samsung/phy-exynos-dp-video.c             | 2 --
- drivers/phy/samsung/phy-exynos-mipi-video.c           | 3 +--
- drivers/phy/samsung/phy-exynos5-usbdrd.c              | 2 --
- drivers/phy/samsung/phy-samsung-usb2.c                | 2 --
- drivers/phy/socionext/phy-uniphier-pcie.c             | 2 +-
- drivers/phy/st/phy-spear1310-miphy.c                  | 3 ++-
- drivers/phy/st/phy-spear1340-miphy.c                  | 3 ++-
- drivers/phy/st/phy-stm32-usbphyc.c                    | 3 ++-
- drivers/phy/sunplus/phy-sunplus-usb2.c                | 2 +-
- drivers/phy/tegra/phy-tegra194-p2u.c                  | 2 +-
- drivers/phy/tegra/xusb.c                              | 3 ++-
- drivers/phy/ti/phy-tusb1210.c                         | 1 +
- drivers/phy/ti/phy-twl4030-usb.c                      | 1 +
- 81 files changed, 65 insertions(+), 65 deletions(-)
-
-diff --git a/drivers/phy/allwinner/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
-index 56d53f78d002..ec551464dd4f 100644
---- a/drivers/phy/allwinner/phy-sun4i-usb.c
-+++ b/drivers/phy/allwinner/phy-sun4i-usb.c
-@@ -23,8 +23,6 @@
- #include <linux/module.h>
- #include <linux/mutex.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/phy/phy.h>
- #include <linux/phy/phy-sun4i-usb.h>
-diff --git a/drivers/phy/allwinner/phy-sun50i-usb3.c b/drivers/phy/allwinner/phy-sun50i-usb3.c
-index 84055b720016..363f9a0df503 100644
---- a/drivers/phy/allwinner/phy-sun50i-usb3.c
-+++ b/drivers/phy/allwinner/phy-sun50i-usb3.c
-@@ -16,6 +16,7 @@
- #include <linux/clk.h>
- #include <linux/err.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c b/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c
-index 6e9af79e152c..08a86962d949 100644
---- a/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c
-+++ b/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c
-@@ -13,8 +13,8 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
-index a3e1108b736d..ae898f93f97b 100644
---- a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
-+++ b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
-@@ -11,6 +11,7 @@
- #include <linux/regmap.h>
- #include <linux/delay.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/phy/phy.h>
- 
-diff --git a/drivers/phy/amlogic/phy-meson-axg-pcie.c b/drivers/phy/amlogic/phy-meson-axg-pcie.c
-index 2299bab38e05..60be5cdc600b 100644
---- a/drivers/phy/amlogic/phy-meson-axg-pcie.c
-+++ b/drivers/phy/amlogic/phy-meson-axg-pcie.c
-@@ -4,6 +4,7 @@
-  *
-  * Copyright (C) 2020 Remi Pommarel <repk@triplefau.lt>
-  */
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/amlogic/phy-meson-g12a-mipi-dphy-analog.c b/drivers/phy/amlogic/phy-meson-g12a-mipi-dphy-analog.c
-index cabdddbbabfd..46e5f7e7eb6c 100644
---- a/drivers/phy/amlogic/phy-meson-g12a-mipi-dphy-analog.c
-+++ b/drivers/phy/amlogic/phy-meson-g12a-mipi-dphy-analog.c
-@@ -13,6 +13,7 @@
- #include <linux/regmap.h>
- #include <linux/delay.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/phy/phy.h>
- 
-diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb2.c b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
-index ec2555bb83d5..a628c59e5cf0 100644
---- a/drivers/phy/amlogic/phy-meson-g12a-usb2.c
-+++ b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
-@@ -14,7 +14,7 @@
- #include <linux/delay.h>
- #include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
-index d2a1da8d9e58..2712c4bd549d 100644
---- a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
-+++ b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
-@@ -11,7 +11,7 @@
- #include <linux/bitops.h>
- #include <linux/clk.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-index db17c3448bfe..14ea89927ab1 100644
---- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-+++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-@@ -8,8 +8,8 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/amlogic/phy-meson8-hdmi-tx.c b/drivers/phy/amlogic/phy-meson8-hdmi-tx.c
-index f9a6572c27d8..2617f7f6c2ec 100644
---- a/drivers/phy/amlogic/phy-meson8-hdmi-tx.c
-+++ b/drivers/phy/amlogic/phy-meson8-hdmi-tx.c
-@@ -10,7 +10,7 @@
- #include <linux/clk.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/property.h>
-diff --git a/drivers/phy/amlogic/phy-meson8b-usb2.c b/drivers/phy/amlogic/phy-meson8b-usb2.c
-index dd96763911b8..d63147c41b8c 100644
---- a/drivers/phy/amlogic/phy-meson8b-usb2.c
-+++ b/drivers/phy/amlogic/phy-meson8b-usb2.c
-@@ -8,8 +8,8 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/property.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/broadcom/phy-bcm63xx-usbh.c b/drivers/phy/broadcom/phy-bcm63xx-usbh.c
-index 6c05ba8b08be..f8183dea774b 100644
---- a/drivers/phy/broadcom/phy-bcm63xx-usbh.c
-+++ b/drivers/phy/broadcom/phy-bcm63xx-usbh.c
-@@ -17,6 +17,7 @@
- #include <linux/clk.h>
- #include <linux/io.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/broadcom/phy-brcm-usb.c b/drivers/phy/broadcom/phy-brcm-usb.c
-index a4cfb777dd83..a16f0b58eb74 100644
---- a/drivers/phy/broadcom/phy-brcm-usb.c
-+++ b/drivers/phy/broadcom/phy-brcm-usb.c
-@@ -11,7 +11,6 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/phy/cadence/cdns-dphy-rx.c b/drivers/phy/cadence/cdns-dphy-rx.c
-index c05b043893a9..7729cf80a9bd 100644
---- a/drivers/phy/cadence/cdns-dphy-rx.c
-+++ b/drivers/phy/cadence/cdns-dphy-rx.c
-@@ -7,6 +7,7 @@
- #include <linux/bitops.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/phy/phy-mipi-dphy.h>
-diff --git a/drivers/phy/cadence/cdns-dphy.c b/drivers/phy/cadence/cdns-dphy.c
-index 6e58012b6488..dddb66de6dba 100644
---- a/drivers/phy/cadence/cdns-dphy.c
-+++ b/drivers/phy/cadence/cdns-dphy.c
-@@ -9,8 +9,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
- 
-diff --git a/drivers/phy/cadence/phy-cadence-torrent.c b/drivers/phy/cadence/phy-cadence-torrent.c
-index 37b6b5c05be8..81e1c43fb803 100644
---- a/drivers/phy/cadence/phy-cadence-torrent.c
-+++ b/drivers/phy/cadence/phy-cadence-torrent.c
-@@ -17,8 +17,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/freescale/phy-fsl-imx8m-pcie.c b/drivers/phy/freescale/phy-fsl-imx8m-pcie.c
-index d4c92498ad1e..b700f52b7b67 100644
---- a/drivers/phy/freescale/phy-fsl-imx8m-pcie.c
-+++ b/drivers/phy/freescale/phy-fsl-imx8m-pcie.c
-@@ -11,7 +11,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/mfd/syscon/imx7-iomuxc-gpr.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/freescale/phy-fsl-imx8mq-usb.c b/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-index 88826ceb72f8..e1d769402696 100644
---- a/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-+++ b/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-@@ -6,7 +6,7 @@
- #include <linux/delay.h>
- #include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/phy/freescale/phy-fsl-lynx-28g.c b/drivers/phy/freescale/phy-fsl-lynx-28g.c
-index 569f12af2aaf..4f036c77284e 100644
---- a/drivers/phy/freescale/phy-fsl-lynx-28g.c
-+++ b/drivers/phy/freescale/phy-fsl-lynx-28g.c
-@@ -2,6 +2,7 @@
- /* Copyright (c) 2021-2022 NXP. */
- 
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/hisilicon/phy-hi3660-usb3.c b/drivers/phy/hisilicon/phy-hi3660-usb3.c
-index 84adce9b4277..e2a09d67faed 100644
---- a/drivers/phy/hisilicon/phy-hi3660-usb3.c
-+++ b/drivers/phy/hisilicon/phy-hi3660-usb3.c
-@@ -11,6 +11,7 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/hisilicon/phy-hi3670-usb3.c b/drivers/phy/hisilicon/phy-hi3670-usb3.c
-index b9ffe08abaab..40d3cf128b44 100644
---- a/drivers/phy/hisilicon/phy-hi3670-usb3.c
-+++ b/drivers/phy/hisilicon/phy-hi3670-usb3.c
-@@ -13,6 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/hisilicon/phy-hi6220-usb.c b/drivers/phy/hisilicon/phy-hi6220-usb.c
-index e92ba78da4c8..97bd363dfe87 100644
---- a/drivers/phy/hisilicon/phy-hi6220-usb.c
-+++ b/drivers/phy/hisilicon/phy-hi6220-usb.c
-@@ -5,6 +5,7 @@
-  */
- 
- #include <linux/mfd/syscon.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/hisilicon/phy-hisi-inno-usb2.c b/drivers/phy/hisilicon/phy-hisi-inno-usb2.c
-index 15dafe359552..498afd81696b 100644
---- a/drivers/phy/hisilicon/phy-hisi-inno-usb2.c
-+++ b/drivers/phy/hisilicon/phy-hisi-inno-usb2.c
-@@ -9,8 +9,9 @@
- #include <linux/delay.h>
- #include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/reset.h>
- 
- #define INNO_PHY_PORT_NUM	2
-diff --git a/drivers/phy/hisilicon/phy-histb-combphy.c b/drivers/phy/hisilicon/phy-histb-combphy.c
-index f1cb3e4d2add..c44588fd5a53 100644
---- a/drivers/phy/hisilicon/phy-histb-combphy.c
-+++ b/drivers/phy/hisilicon/phy-histb-combphy.c
-@@ -13,8 +13,9 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <dt-bindings/phy/phy.h>
-diff --git a/drivers/phy/hisilicon/phy-hix5hd2-sata.c b/drivers/phy/hisilicon/phy-hix5hd2-sata.c
-index b0f99a9ac857..1b26ddb4c8a7 100644
---- a/drivers/phy/hisilicon/phy-hix5hd2-sata.c
-+++ b/drivers/phy/hisilicon/phy-hix5hd2-sata.c
-@@ -8,6 +8,7 @@
- #include <linux/io.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/ingenic/phy-ingenic-usb.c b/drivers/phy/ingenic/phy-ingenic-usb.c
-index 28c28d816484..eb2721f72a4c 100644
---- a/drivers/phy/ingenic/phy-ingenic-usb.c
-+++ b/drivers/phy/ingenic/phy-ingenic-usb.c
-@@ -11,6 +11,7 @@
- #include <linux/delay.h>
- #include <linux/io.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/phy/lantiq/phy-lantiq-rcu-usb2.c b/drivers/phy/lantiq/phy-lantiq-rcu-usb2.c
-index 29d246ea24b4..82f1ffc0b0ad 100644
---- a/drivers/phy/lantiq/phy-lantiq-rcu-usb2.c
-+++ b/drivers/phy/lantiq/phy-lantiq-rcu-usb2.c
-@@ -12,7 +12,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/property.h>
-diff --git a/drivers/phy/marvell/phy-armada38x-comphy.c b/drivers/phy/marvell/phy-armada38x-comphy.c
-index 0fe408964334..b7d99861526a 100644
---- a/drivers/phy/marvell/phy-armada38x-comphy.c
-+++ b/drivers/phy/marvell/phy-armada38x-comphy.c
-@@ -8,6 +8,7 @@
- #include <linux/delay.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-berlin-sata.c b/drivers/phy/marvell/phy-berlin-sata.c
-index d70ba9bc42d9..f972d78372ea 100644
---- a/drivers/phy/marvell/phy-berlin-sata.c
-+++ b/drivers/phy/marvell/phy-berlin-sata.c
-@@ -9,6 +9,7 @@
- 
- #include <linux/clk.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/io.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-mmp3-hsic.c b/drivers/phy/marvell/phy-mmp3-hsic.c
-index f2537fdcc3ab..271f1a2258ef 100644
---- a/drivers/phy/marvell/phy-mmp3-hsic.c
-+++ b/drivers/phy/marvell/phy-mmp3-hsic.c
-@@ -5,6 +5,7 @@
- 
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-mmp3-usb.c b/drivers/phy/marvell/phy-mmp3-usb.c
-index 04c0bada3519..5b71deb08851 100644
---- a/drivers/phy/marvell/phy-mmp3-usb.c
-+++ b/drivers/phy/marvell/phy-mmp3-usb.c
-@@ -6,6 +6,7 @@
- 
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-mvebu-a3700-comphy.c b/drivers/phy/marvell/phy-mvebu-a3700-comphy.c
-index d641b345afa3..24c3371e2bb2 100644
---- a/drivers/phy/marvell/phy-mvebu-a3700-comphy.c
-+++ b/drivers/phy/marvell/phy-mvebu-a3700-comphy.c
-@@ -19,6 +19,7 @@
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-mvebu-a3700-utmi.c b/drivers/phy/marvell/phy-mvebu-a3700-utmi.c
-index 8834436bc9db..04f4fb4bed70 100644
---- a/drivers/phy/marvell/phy-mvebu-a3700-utmi.c
-+++ b/drivers/phy/marvell/phy-mvebu-a3700-utmi.c
-@@ -13,7 +13,7 @@
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-index 34672e868a1e..0a3589ea0dfe 100644
---- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-+++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-@@ -11,6 +11,7 @@
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/marvell/phy-mvebu-cp110-utmi.c b/drivers/phy/marvell/phy-mvebu-cp110-utmi.c
-index aa27c7994610..4922a5f3327d 100644
---- a/drivers/phy/marvell/phy-mvebu-cp110-utmi.c
-+++ b/drivers/phy/marvell/phy-mvebu-cp110-utmi.c
-@@ -12,7 +12,7 @@
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/marvell/phy-mvebu-sata.c b/drivers/phy/marvell/phy-mvebu-sata.c
-index 51a4646e2933..89a5a2b69d80 100644
---- a/drivers/phy/marvell/phy-mvebu-sata.c
-+++ b/drivers/phy/marvell/phy-mvebu-sata.c
-@@ -10,6 +10,7 @@
- #include <linux/clk.h>
- #include <linux/phy/phy.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/platform_device.h>
- 
- struct priv {
-diff --git a/drivers/phy/marvell/phy-pxa-28nm-usb2.c b/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-index 1b2107f80f3a..64afb82cf70e 100644
---- a/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-+++ b/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-@@ -11,7 +11,6 @@
- #include <linux/delay.h>
- #include <linux/slab.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/err.h>
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.h b/drivers/phy/mediatek/phy-mtk-hdmi.h
-index fc2ad6a0527f..71c02d043485 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi.h
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi.h
-@@ -11,7 +11,6 @@
- #include <linux/delay.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-index 47b60b1a7226..b9a8df3bcdde 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-@@ -12,7 +12,6 @@
- #include <linux/delay.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/phy/phy.h>
- #include <linux/slab.h>
-diff --git a/drivers/phy/mediatek/phy-mtk-pcie.c b/drivers/phy/mediatek/phy-mtk-pcie.c
-index 25dbd6e35722..a2f69d6c72f0 100644
---- a/drivers/phy/mediatek/phy-mtk-pcie.c
-+++ b/drivers/phy/mediatek/phy-mtk-pcie.c
-@@ -7,7 +7,7 @@
- #include <linux/bitfield.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 0d110e50bbfd..05eab9014132 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -13,8 +13,8 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
-index fc19e0fa8ed5..0cb5a25b1b7a 100644
---- a/drivers/phy/mediatek/phy-mtk-ufs.c
-+++ b/drivers/phy/mediatek/phy-mtk-ufs.c
-@@ -7,6 +7,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/phy-can-transceiver.c b/drivers/phy/phy-can-transceiver.c
-index 5487b9dd1ead..840b7f8a31c5 100644
---- a/drivers/phy/phy-can-transceiver.c
-+++ b/drivers/phy/phy-can-transceiver.c
-@@ -5,6 +5,7 @@
-  * Copyright (C) 2021 Texas Instruments Incorporated - https://www.ti.com
-  *
-  */
-+#include <linux/of.h>
- #include<linux/phy/phy.h>
- #include<linux/platform_device.h>
- #include<linux/module.h>
-diff --git a/drivers/phy/phy-xgene.c b/drivers/phy/phy-xgene.c
-index d0f4546648f0..1f0f908323f0 100644
---- a/drivers/phy/phy-xgene.c
-+++ b/drivers/phy/phy-xgene.c
-@@ -39,6 +39,7 @@
-  * Currently, this driver only supports Gen3 SATA mode with external clock.
-  */
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/io.h>
- #include <linux/delay.h>
-diff --git a/drivers/phy/qualcomm/phy-ath79-usb.c b/drivers/phy/qualcomm/phy-ath79-usb.c
-index 09a77e556ece..f8d0199c6e78 100644
---- a/drivers/phy/qualcomm/phy-ath79-usb.c
-+++ b/drivers/phy/qualcomm/phy-ath79-usb.c
-@@ -5,6 +5,7 @@
-  * Copyright (C) 2015-2018 Alban Bedel <albeu@free.fr>
-  */
- 
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-edp.c b/drivers/phy/qualcomm/phy-qcom-edp.c
-index fc8ca0f3018d..e0e722b9be31 100644
---- a/drivers/phy/qualcomm/phy-qcom-edp.c
-+++ b/drivers/phy/qualcomm/phy-qcom-edp.c
-@@ -13,8 +13,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_address.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c b/drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c
-index 90f8543ba265..52c275fbb2a1 100644
---- a/drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c
-+++ b/drivers/phy/qualcomm/phy-qcom-eusb2-repeater.c
-@@ -8,7 +8,6 @@
- #include <linux/regulator/consumer.h>
- #include <linux/regmap.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- 
- /* eUSB2 status registers */
-diff --git a/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c b/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
-index d3e7d5e1d1b6..da6f290af722 100644
---- a/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
-+++ b/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
-@@ -13,8 +13,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/mutex.h>
--#include <linux/of_platform.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-ipq806x-usb.c b/drivers/phy/qualcomm/phy-qcom-ipq806x-usb.c
-index 7bacc527fbad..06392ed7c91b 100644
---- a/drivers/phy/qualcomm/phy-qcom-ipq806x-usb.c
-+++ b/drivers/phy/qualcomm/phy-qcom-ipq806x-usb.c
-@@ -4,7 +4,7 @@
- #include <linux/err.h>
- #include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/delay.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-combo.c b/drivers/phy/qualcomm/phy-qcom-qmp-combo.c
-index bebce8c591a3..7a96dca061e8 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-combo.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-combo.c
-@@ -12,7 +12,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c b/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-index 0c603bc06e09..ab61a9c73b18 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-@@ -12,7 +12,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-pcie.c b/drivers/phy/qualcomm/phy-qcom-qmp-pcie.c
-index df505279edfd..a3bff4b71ffd 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-pcie.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-pcie.c
-@@ -13,7 +13,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/phy/pcie.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c b/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
-index 8c877b668bb9..70a8e2dbc7f9 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
-@@ -12,7 +12,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-usb.c b/drivers/phy/qualcomm/phy-qcom-qmp-usb.c
-index 466f0a56c82e..b879b323eea6 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-usb.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-usb.c
-@@ -12,7 +12,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-qusb2.c b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-index bec6e40d5280..c52655a383ce 100644
---- a/drivers/phy/qualcomm/phy-qcom-qusb2.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-@@ -12,7 +12,6 @@
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-snps-eusb2.c b/drivers/phy/qualcomm/phy-qcom-snps-eusb2.c
-index eeaa1eb0e24b..1484691a41d5 100644
---- a/drivers/phy/qualcomm/phy-qcom-snps-eusb2.c
-+++ b/drivers/phy/qualcomm/phy-qcom-snps-eusb2.c
-@@ -7,6 +7,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/iopoll.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.c b/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.c
-index 6c237f3cc66d..a7af77536d4a 100644
---- a/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.c
-+++ b/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.c
-@@ -10,7 +10,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/qualcomm/phy-qcom-usb-hs.c b/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-index 53e46c220a3a..98a18987f1be 100644
---- a/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-+++ b/drivers/phy/qualcomm/phy-qcom-usb-hs.c
-@@ -7,7 +7,7 @@
- #include <linux/ulpi/regs.h>
- #include <linux/clk.h>
- #include <linux/regulator/consumer.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/reset.h>
- #include <linux/extcon.h>
-diff --git a/drivers/phy/ralink/phy-mt7621-pci.c b/drivers/phy/ralink/phy-mt7621-pci.c
-index 85888ab2d307..2f876f158e1d 100644
---- a/drivers/phy/ralink/phy-mt7621-pci.c
-+++ b/drivers/phy/ralink/phy-mt7621-pci.c
-@@ -9,8 +9,7 @@
- #include <linux/bitfield.h>
- #include <linux/bitops.h>
- #include <linux/module.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/renesas/phy-rcar-gen2.c b/drivers/phy/renesas/phy-rcar-gen2.c
-index c375a4676a3d..507435af2656 100644
---- a/drivers/phy/renesas/phy-rcar-gen2.c
-+++ b/drivers/phy/renesas/phy-rcar-gen2.c
-@@ -16,7 +16,6 @@
- #include <linux/platform_device.h>
- #include <linux/spinlock.h>
- #include <linux/atomic.h>
--#include <linux/of_device.h>
- 
- #define USBHS_LPSTS			0x02
- #define USBHS_UGCTRL			0x80
-diff --git a/drivers/phy/renesas/phy-rcar-gen3-pcie.c b/drivers/phy/renesas/phy-rcar-gen3-pcie.c
-index 9cf786a7daac..0ce7e9c94444 100644
---- a/drivers/phy/renesas/phy-rcar-gen3-pcie.c
-+++ b/drivers/phy/renesas/phy-rcar-gen3-pcie.c
-@@ -10,7 +10,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/phy/phy.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/spinlock.h>
- 
-diff --git a/drivers/phy/renesas/phy-rcar-gen3-usb2.c b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-index d4e2ee7e4efb..e53eace7c91e 100644
---- a/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-+++ b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-@@ -15,8 +15,6 @@
- #include <linux/module.h>
- #include <linux/mutex.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/phy/renesas/r8a779f0-ether-serdes.c b/drivers/phy/renesas/r8a779f0-ether-serdes.c
-index 55b7bdfc10d3..f4e20a29df6d 100644
---- a/drivers/phy/renesas/r8a779f0-ether-serdes.c
-+++ b/drivers/phy/renesas/r8a779f0-ether-serdes.c
-@@ -8,6 +8,7 @@
- #include <linux/err.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-+#include <linux/of.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-index 639452f47869..e6a768bbb9b3 100644
---- a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-+++ b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-@@ -21,7 +21,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/phy/phy-mipi-dphy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-index 401b0aabb159..c879ec69bfd6 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-@@ -14,7 +14,7 @@
- #include <linux/init.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 1e1563f5fffc..058cbe6a0025 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -15,7 +15,6 @@
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-index 7b8b001e4f9e..5de5e2e97ffa 100644
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -8,8 +8,9 @@
- #include <dt-bindings/phy/phy.h>
- #include <linux/clk.h>
- #include <linux/mfd/syscon.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/units.h>
-diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-index 1d355b32ba55..121e5961ce11 100644
---- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-+++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-@@ -12,9 +12,10 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/pcie.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- 
-diff --git a/drivers/phy/samsung/phy-exynos-dp-video.c b/drivers/phy/samsung/phy-exynos-dp-video.c
-index 6069fedbd8f3..a636dee07585 100644
---- a/drivers/phy/samsung/phy-exynos-dp-video.c
-+++ b/drivers/phy/samsung/phy-exynos-dp-video.c
-@@ -12,8 +12,6 @@
- #include <linux/module.h>
- #include <linux/mfd/syscon.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/samsung/phy-exynos-mipi-video.c b/drivers/phy/samsung/phy-exynos-mipi-video.c
-index a7f67857e5b2..592d8067e848 100644
---- a/drivers/phy/samsung/phy-exynos-mipi-video.c
-+++ b/drivers/phy/samsung/phy-exynos-mipi-video.c
-@@ -11,9 +11,8 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/spinlock.h>
- #include <linux/soc/samsung/exynos-regs-pmu.h>
-diff --git a/drivers/phy/samsung/phy-exynos5-usbdrd.c b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-index ee0848fe8432..06484abb5705 100644
---- a/drivers/phy/samsung/phy-exynos5-usbdrd.c
-+++ b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-@@ -14,8 +14,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/iopoll.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/phy/samsung/phy-samsung-usb2.c b/drivers/phy/samsung/phy-samsung-usb2.c
-index ec2befabeea6..68a174eca0ba 100644
---- a/drivers/phy/samsung/phy-samsung-usb2.c
-+++ b/drivers/phy/samsung/phy-samsung-usb2.c
-@@ -10,8 +10,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/spinlock.h>
-diff --git a/drivers/phy/socionext/phy-uniphier-pcie.c b/drivers/phy/socionext/phy-uniphier-pcie.c
-index ebca296ef123..c19173492b79 100644
---- a/drivers/phy/socionext/phy-uniphier-pcie.c
-+++ b/drivers/phy/socionext/phy-uniphier-pcie.c
-@@ -11,7 +11,7 @@
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/phy/st/phy-spear1310-miphy.c b/drivers/phy/st/phy-spear1310-miphy.c
-index 292413db7da4..35a9831b5161 100644
---- a/drivers/phy/st/phy-spear1310-miphy.c
-+++ b/drivers/phy/st/phy-spear1310-miphy.c
-@@ -13,8 +13,9 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
- /* SPEAr1310 Registers */
-diff --git a/drivers/phy/st/phy-spear1340-miphy.c b/drivers/phy/st/phy-spear1340-miphy.c
-index c1d9ffa5a311..34a1cf21015f 100644
---- a/drivers/phy/st/phy-spear1340-miphy.c
-+++ b/drivers/phy/st/phy-spear1340-miphy.c
-@@ -13,8 +13,9 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
- /* SPEAr1340 Registers */
-diff --git a/drivers/phy/st/phy-stm32-usbphyc.c b/drivers/phy/st/phy-stm32-usbphyc.c
-index 0a8552628cbd..d5e7e44000b5 100644
---- a/drivers/phy/st/phy-stm32-usbphyc.c
-+++ b/drivers/phy/st/phy-stm32-usbphyc.c
-@@ -12,8 +12,9 @@
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/reset.h>
- #include <linux/units.h>
- 
-diff --git a/drivers/phy/sunplus/phy-sunplus-usb2.c b/drivers/phy/sunplus/phy-sunplus-usb2.c
-index 56de41091d63..0efe74ac9c6a 100644
---- a/drivers/phy/sunplus/phy-sunplus-usb2.c
-+++ b/drivers/phy/sunplus/phy-sunplus-usb2.c
-@@ -16,7 +16,7 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
-diff --git a/drivers/phy/tegra/phy-tegra194-p2u.c b/drivers/phy/tegra/phy-tegra194-p2u.c
-index 633e6b747275..f49b417c9eb6 100644
---- a/drivers/phy/tegra/phy-tegra194-p2u.c
-+++ b/drivers/phy/tegra/phy-tegra194-p2u.c
-@@ -11,8 +11,8 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_platform.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- 
- #define P2U_CONTROL_CMN			0x74
- #define P2U_CONTROL_CMN_ENABLE_L2_EXIT_RATE_CHANGE		BIT(13)
-diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
-index a296b87dced1..ed30866e7647 100644
---- a/drivers/phy/tegra/xusb.c
-+++ b/drivers/phy/tegra/xusb.c
-@@ -8,10 +8,11 @@
- #include <linux/mailbox_client.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/phy/tegra/xusb.h>
- #include <linux/platform_device.h>
-+#include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
- #include <linux/slab.h>
-diff --git a/drivers/phy/ti/phy-tusb1210.c b/drivers/phy/ti/phy-tusb1210.c
-index 669c13d6e402..b4881cb34475 100644
---- a/drivers/phy/ti/phy-tusb1210.c
-+++ b/drivers/phy/ti/phy-tusb1210.c
-@@ -14,6 +14,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/phy/ulpi_phy.h>
- #include <linux/power_supply.h>
-+#include <linux/property.h>
- #include <linux/workqueue.h>
- 
- #define TUSB1211_POWER_CONTROL				0x3d
-diff --git a/drivers/phy/ti/phy-twl4030-usb.c b/drivers/phy/ti/phy-twl4030-usb.c
-index da50732625d1..6b265992d988 100644
---- a/drivers/phy/ti/phy-twl4030-usb.c
-+++ b/drivers/phy/ti/phy-twl4030-usb.c
-@@ -14,6 +14,7 @@
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/workqueue.h>
- #include <linux/io.h>
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKdWwgMTQsIDIwMjMgYXQgODo0NeKAr1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5l
+bC5vcmc+IHdyb3RlOgo+Cj4gVGhlIERUIG9mX2RldmljZS5oIGFuZCBvZl9wbGF0Zm9ybS5oIGRh
+dGUgYmFjayB0byB0aGUgc2VwYXJhdGUKPiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQg
+YXMgbWVyZ2VkIGludG8gdGhlIHJlZ3VsYXIgcGxhdGZvcm0gYnVzLgo+IEFzIHBhcnQgb2YgdGhh
+dCBtZXJnZSBwcmVwcGluZyBBcm0gRFQgc3VwcG9ydCAxMyB5ZWFycyBhZ28sIHRoZXkKPiAidGVt
+cG9yYXJpbHkiIGluY2x1ZGUgZWFjaCBvdGhlci4gVGhleSBhbHNvIGluY2x1ZGUgcGxhdGZvcm1f
+ZGV2aWNlLmgKPiBhbmQgb2YuaC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCBy
+YW5kb20gbWl4IG9mIHRob3NlIGluY2x1ZGUKPiBmaWxlcyB1c2VkIHRocm91Z2hvdXQgdGhlIHRy
+ZWUuIEluIG9yZGVyIHRvIGRldGFuZ2xlIHRoZXNlIGhlYWRlcnMgYW5kCj4gcmVwbGFjZSB0aGUg
+aW1wbGljaXQgaW5jbHVkZXMgd2l0aCBzdHJ1Y3QgZGVjbGFyYXRpb25zLCB1c2VycyBuZWVkIHRv
+Cj4gZXhwbGljaXRseSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgoKQXQgbGVhc3QgdGhp
+cyBtYWtlcyBHUElPIGRyaXZlcnMgY2xvc2UgdG8gYmVpbmcgYWdub3N0aWMuClJldmlld2VkLWJ5
+OiBBbmR5IFNoZXZjaGVua28gPGFuZHkuc2hldmNoZW5rb0BnbWFpbC5jb20+Cgo+IFNpZ25lZC1v
+ZmYtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3Bp
+by9ncGlvLWF0aDc5LmMgICAgICAgICB8IDMgKystCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLWJyY21z
+dGIuYyAgICAgICB8IDQgKystLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1jcmVnLXNucHMuYyAgICAg
+fCAyICstCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLWVpYy1zcHJkLmMgICAgICB8IDIgKy0KPiAgZHJp
+dmVycy9ncGlvL2dwaW8tZ2UuYyAgICAgICAgICAgIHwgMiArLQo+ICBkcml2ZXJzL2dwaW8vZ3Bp
+by1ncmdwaW8uYyAgICAgICAgfCAyICstCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLWhsd2QuYyAgICAg
+ICAgICB8IDIgKy0KPiAgZHJpdmVycy9ncGlvL2dwaW8tbG9naWN2Yy5jICAgICAgIHwgMSAtCj4g
+IGRyaXZlcnMvZ3Bpby9ncGlvLW1iODZzN3guYyAgICAgICB8IDIgKy0KPiAgZHJpdmVycy9ncGlv
+L2dwaW8tbXBjNTIwMC5jICAgICAgIHwgMiArLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1tcGM4eHh4
+LmMgICAgICAgfCA0ICstLS0KPiAgZHJpdmVycy9ncGlvL2dwaW8tbXNjMzEzLmMgICAgICAgIHwg
+MSAtCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLW14Yy5jICAgICAgICAgICB8IDEgLQo+ICBkcml2ZXJz
+L2dwaW8vZ3Bpby1teHMuYyAgICAgICAgICAgfCAxIC0KPiAgZHJpdmVycy9ncGlvL2dwaW8tb21h
+cC5jICAgICAgICAgIHwgMSAtCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLXBhbG1hcy5jICAgICAgICB8
+IDEgLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1wbWljLWVpYy1zcHJkLmMgfCAyICstCj4gIGRyaXZl
+cnMvZ3Bpby9ncGlvLXB4YS5jICAgICAgICAgICB8IDEgLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1y
+Y2FyLmMgICAgICAgICAgfCAxIC0KPiAgZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYyAgICAg
+IHwgMiArLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1zcHJkLmMgICAgICAgICAgfCAyICstCj4gIGRy
+aXZlcnMvZ3Bpby9ncGlvLXN0cC14d2F5LmMgICAgICB8IDMgKystCj4gIGRyaXZlcnMvZ3Bpby9n
+cGlvLXN5c2Nvbi5jICAgICAgICB8IDEgLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYS5jICAg
+ICAgICAgfCAyICstCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLXRlZ3JhMTg2LmMgICAgICB8IDIgKy0K
+PiAgZHJpdmVycy9ncGlvL2dwaW8tdHBzNjU4NnguYyAgICAgIHwgMiArLQo+ICBkcml2ZXJzL2dw
+aW8vZ3Bpby10cHM2NTkxMC5jICAgICAgfCAyICstCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLXRzNDgw
+MC5jICAgICAgICB8IDMgKy0tCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLXRzNDkwMC5jICAgICAgICB8
+IDIgKy0KPiAgZHJpdmVycy9ncGlvL2dwaW8tdW5pcGhpZXIuYyAgICAgIHwgMSAtCj4gIGRyaXZl
+cnMvZ3Bpby9ncGlvLXZmNjEwLmMgICAgICAgICB8IDEgLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby13
+Y2Q5MzR4LmMgICAgICAgfCAzICsrLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby14aWxpbnguYyAgICAg
+ICAgfCA0ICsrLS0KPiAgZHJpdmVycy9ncGlvL2dwaW8teHJhMTQwMy5jICAgICAgIHwgMiArLQo+
+ICAzNCBmaWxlcyBjaGFuZ2VkLCAyOCBpbnNlcnRpb25zKCspLCAzOSBkZWxldGlvbnMoLSkKPgo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1hdGg3OS5jIGIvZHJpdmVycy9ncGlvL2dw
+aW8tYXRoNzkuYwo+IGluZGV4IGFhMGE5NTRiODM5Mi4uZjBjMGMwZjc3ZWIwIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3Bpby9ncGlvLWF0aDc5LmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1h
+dGg3OS5jCj4gQEAgLTksOCArOSw5IEBACj4gICAqLwo+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlv
+L2RyaXZlci5oPgo+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNs
+dWRlIDxsaW51eC9wbGF0Zm9ybV9kYXRhL2dwaW8tYXRoNzkuaD4KPiAtI2luY2x1ZGUgPGxpbnV4
+L29mX2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4
+L2ludGVycnVwdC5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxs
+aW51eC9pcnEuaD4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tYnJjbXN0Yi5jIGIv
+ZHJpdmVycy9ncGlvL2dwaW8tYnJjbXN0Yi5jCj4gaW5kZXggNjU2NjUxN2ZlMGQ4Li5iY2NkYmZk
+NWVjODAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tYnJjbXN0Yi5jCj4gKysrIGIv
+ZHJpdmVycy9ncGlvL2dwaW8tYnJjbXN0Yi5jCj4gQEAgLTMsMTIgKzMsMTIgQEAKPgo+ICAjaW5j
+bHVkZSA8bGludXgvYml0b3BzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5oPgo+
+IC0jaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9pcnEu
+aD4KPiArI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L2lycWRvbWFpbi5oPgo+ICAjaW5jbHVkZSA8bGludXgvaXJxY2hp
+cC9jaGFpbmVkX2lycS5oPgo+ICAjaW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+Cj4gKyNpbmNs
+dWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPgo+ICBlbnVtIGdpb19yZWdfaW5kZXggewo+
+ICAgICAgICAgR0lPX1JFR19PREVOID0gMCwKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dw
+aW8tY3JlZy1zbnBzLmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby1jcmVnLXNucHMuYwo+IGluZGV4IDc4
+OTM4NGM2ZTE3OC4uNDk2ODIzMmY3MGYyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlv
+LWNyZWctc25wcy5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tY3JlZy1zbnBzLmMKPiBAQCAt
+OCw3ICs4LDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8vZHJpdmVyLmg+Cj4gICNpbmNsdWRl
+IDxsaW51eC9pby5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4
+L29mX3BsYXRmb3JtLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPgo+
+ICAjZGVmaW5lIE1BWF9HUElPICAgICAgIDMyCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlv
+L2dwaW8tZWljLXNwcmQuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLWVpYy1zcHJkLmMKPiBpbmRleCA4
+NDM1MmE2ZjQ5NzMuLjY3YjFlMDllODk4NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bp
+by1laWMtc3ByZC5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tZWljLXNwcmQuYwo+IEBAIC05
+LDcgKzksNyBAQAo+ICAjaW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+Cj4gICNpbmNsdWRlIDxs
+aW51eC9rZXJuZWwuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+IC0jaW5jbHVkZSA8
+bGludXgvb2ZfZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5jbHVkZSA8
+bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zcGlubG9jay5oPgo+
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLWdlLmMgYi9kcml2ZXJzL2dwaW8vZ3Bp
+by1nZS5jCj4gaW5kZXggN2JkNGMyYTRjYzExLi40ZWVjYmM4NjJhYmMgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncGlvL2dwaW8tZ2UuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLWdlLmMKPiBA
+QCAtMjAsNyArMjAsNyBAQAo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNpbmNsdWRl
+IDxsaW51eC9pby5oPgo+ICAjaW5jbHVkZSA8bGludXgvc2xhYi5oPgo+IC0jaW5jbHVkZSA8bGlu
+dXgvb2ZfZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvb2ZfYWRkcmVzcy5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRl
+IDxsaW51eC9ncGlvL2RyaXZlci5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1n
+cmdwaW8uYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLWdyZ3Bpby5jCj4gaW5kZXggYmVhMGUzMmMxOTVk
+Li4wMTYzYzk1ZjZkZDcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tZ3JncGlvLmMK
+PiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1ncmdwaW8uYwo+IEBAIC0xOSwxMCArMTksMTAgQEAK
+PiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9pbml0Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9k
+ZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NwaW5sb2NrLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9pby5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX3Bs
+YXRmb3JtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8
+bGludXgvc2xhYi5oPgo+ICAjaW5jbHVkZSA8bGludXgvZXJyLmg+Cj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3Bpby9ncGlvLWhsd2QuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLWhsd2QuYwo+IGluZGV4
+IGMyMDhhYzFjNTRhNi4uMWJjZmMxODM1ZGFlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9n
+cGlvLWhsd2QuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLWhsd2QuYwo+IEBAIC0xMCw3ICsx
+MCw3IEBACj4gICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21v
+ZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX3Bs
+YXRmb3JtLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3NlcV9maWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zbGFiLmg+Cj4KPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tbG9naWN2Yy5jIGIvZHJpdmVycy9ncGlvL2dwaW8t
+bG9naWN2Yy5jCj4gaW5kZXggOTkyY2M5NThhNDNmLi4yYjk4NzZiYzEzODMgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncGlvL2dwaW8tbG9naWN2Yy5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8t
+bG9naWN2Yy5jCj4gQEAgLTgsNyArOCw2IEBACj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZl
+ci5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5o
+Pgo+IC0jaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9h
+ZGRyZXNzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3JlZ21hcC5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1tYjg2
+czd4LmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby1tYjg2czd4LmMKPiBpbmRleCAzN2M1MzYzZTM5MWUu
+LmNhN2ViNWU4YmZhYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tYjg2czd4LmMK
+PiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1tYjg2czd4LmMKPiBAQCAtMTAsMTEgKzEwLDExIEBA
+Cj4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ICAjaW5jbHVkZSA8bGludXgvaW5pdC5oPgo+ICAj
+aW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tb2RfZGV2aWNldGFibGUu
+aD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvZXJyLmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9lcnJuby5oPgo+ICAjaW5jbHVkZSA8bGludXgvaW9wb3J0Lmg+
+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8v
+ZHJpdmVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3NwaW5sb2NrLmg+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLW1w
+YzUyMDAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW1wYzUyMDAuYwo+IGluZGV4IDNiMGJmZmY4Yzc3
+OC4uYjQ5ZTNjYTY0MDE1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLW1wYzUyMDAu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW1wYzUyMDAuYwo+IEBAIC0xMCw3ICsxMCw3IEBA
+Cj4gICNpbmNsdWRlIDxsaW51eC9zbGFiLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2xlZ2Fj
+eS1vZi1tbS1ncGlvY2hpcC5oPgo+ICAjaW5jbHVkZSA8bGludXgvaW8uaD4KPiAtI2luY2x1ZGUg
+PGxpbnV4L29mX3BsYXRmb3JtLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
+aD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+Cj4gICNpbmNsdWRlIDxhc20vbXBjNTJ4
+eC5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1tcGM4eHh4LmMgYi9kcml2ZXJz
+L2dwaW8vZ3Bpby1tcGM4eHh4LmMKPiBpbmRleCA1OTc5YTM2YmY3NTQuLmViZjJmNTExZGY1OSAx
+MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tcGM4eHh4LmMKPiArKysgYi9kcml2ZXJz
+L2dwaW8vZ3Bpby1tcGM4eHh4LmMKPiBAQCAtOSwxMiArOSwxMCBAQAo+ICAjaW5jbHVkZSA8bGlu
+dXgvYWNwaS5oPgo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9pbml0Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3NwaW5sb2NrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiAtI2luY2x1
+ZGUgPGxpbnV4L29mX2lycS5oPgo+IC0jaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAg
+I2luY2x1ZGUgPGxpbnV4L3Byb3BlcnR5Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2RfZGV2aWNl
+dGFibGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NsYWIuaD4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncGlvL2dwaW8tbXNjMzEzLmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby1tc2MzMTMuYwo+IGluZGV4
+IDAzNmFkMjMyNDg5Mi4uMmY0NDhlYjIzYWJiIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9n
+cGlvLW1zYzMxMy5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tbXNjMzEzLmMKPiBAQCAtNiw3
+ICs2LDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9p
+by5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2Rldmlj
+ZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlv
+L2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3Bpby9ncGlvLW14Yy5jIGIvZHJpdmVycy9ncGlvL2dwaW8tbXhjLmMKPiBpbmRleCA5
+ZDBjZWM0YjgyYTMuLjlkMTYzNzExNTFkNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bp
+by1teGMuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW14Yy5jCj4gQEAgLTIyLDcgKzIyLDYg
+QEAKPiAgI2luY2x1ZGUgPGxpbnV4L3N5c2NvcmVfb3BzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9n
+cGlvL2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAtI2luY2x1ZGUgPGxpbnV4
+L29mX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvYnVnLmg+Cj4KPiAgI2RlZmluZSBJTVhf
+U0NVX1dBS0VVUF9PRkYgICAgICAgICAgICAgMAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8v
+Z3Bpby1teHMuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW14cy5jCj4gaW5kZXggMzkwZTYxOWEyODMx
+Li44ZTA0YzljNGI1YTIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tbXhzLmMKPiAr
+KysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1teHMuYwo+IEBAIC0xNCw3ICsxNCw2IEBACj4gICNpbmNs
+dWRlIDxsaW51eC9pcnFkb21haW4uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gICNpbmNs
+dWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+c2xhYi5oPgo+ICAjaW5jbHVkZSA8bGludXgvZ3Bpby9kcml2ZXIuaD4KPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncGlvL2dwaW8tb21hcC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tb21hcC5jCj4gaW5k
+ZXggYTA4YmU1YmY2ODA4Li4yYjc4ZmRlNzRlMzAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlv
+L2dwaW8tb21hcC5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tb21hcC5jCj4gQEAgLTIyLDcg
+KzIyLDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxp
+bnV4L3BtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+IC0jaW5jbHVkZSA8bGludXgvb2Zf
+ZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8
+bGludXgvYml0b3BzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kYXRhL2dwaW8tb21h
+cC5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1wYWxtYXMuYyBiL2RyaXZlcnMv
+Z3Bpby9ncGlvLXBhbG1hcy5jCj4gaW5kZXggYmFjMTBjMmZhZjU2Li42MTQwZTg3YzY3NTQgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tcGFsbWFzLmMKPiArKysgYi9kcml2ZXJzL2dw
+aW8vZ3Bpby1wYWxtYXMuYwo+IEBAIC0xMiw3ICsxMiw2IEBACj4gICNpbmNsdWRlIDxsaW51eC9p
+bml0Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tZmQvcGFsbWFzLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9vZi5oPgo+IC0jaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPgo+ICBzdHJ1Y3QgcGFsbWFzX2dwaW8gewo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1wbWljLWVpYy1zcHJkLmMgYi9kcml2ZXJzL2dwaW8vZ3Bp
+by1wbWljLWVpYy1zcHJkLmMKPiBpbmRleCBjM2U0ZDkwZjZiMTguLmRhYmIwZGEzYmQzMyAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1wbWljLWVpYy1zcHJkLmMKPiArKysgYi9kcml2
+ZXJzL2dwaW8vZ3Bpby1wbWljLWVpYy1zcHJkLmMKPiBAQCAtOCw3ICs4LDcgQEAKPiAgI2luY2x1
+ZGUgPGxpbnV4L2ludGVycnVwdC5oPgo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNp
+bmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+
+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2Rldmlj
+ZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncGlvL2dwaW8tcHhhLmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby1weGEuYwo+IGluZGV4IGExNjMw
+ZWQ0Yjc0MS4uN2U5ZjdhMzJkM2VlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXB4
+YS5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tcHhhLmMKPiBAQCAtMjAsNyArMjAsNiBAQAo+
+ICAjaW5jbHVkZSA8bGludXgvaXJxY2hpcC9jaGFpbmVkX2lycS5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvaW8uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9k
+ZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BpbmN0cmwvY29uc3VtZXIuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvc3lzY29yZV9v
+cHMuaD4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tcmNhci5jIGIvZHJpdmVycy9n
+cGlvL2dwaW8tcmNhci5jCj4gaW5kZXggMjUyNWFkYjUyZjRmLi44NmU2OWNkZTA0ZGEgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tcmNhci5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dw
+aW8tcmNhci5jCj4gQEAgLTE1LDcgKzE1LDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2lycS5oPgo+
+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+IC0j
+aW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9waW5jdHJsL2Nv
+bnN1bWVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8t
+cm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMKPiBpbmRleCBlNWRlMTVh
+MmFiOWEuLmIzNWI5NjA0NDEzZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1yb2Nr
+Y2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwo+IEBAIC0xNywxMCAr
+MTcsMTAgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+b2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiAtI2luY2x1ZGUgPGxpbnV4
+L29mX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfaXJxLmg+Cj4gICNpbmNsdWRlIDxs
+aW51eC9waW5jdHJsL2NvbnN1bWVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9waW5jdHJsL3BpbmNv
+bmYtZ2VuZXJpYy5oPgo+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNp
+bmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPgo+ICAjaW5jbHVkZSAiLi4vcGluY3RybC9jb3JlLmgi
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLXNwcmQuYyBiL2RyaXZlcnMvZ3Bpby9n
+cGlvLXNwcmQuYwo+IGluZGV4IDA3MmI0ZTY1MzIxNi4uYzExN2MxMWJmYjI5IDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXNwcmQuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXNw
+cmQuYwo+IEBAIC03LDggKzcsOCBAQAo+ICAjaW5jbHVkZSA8bGludXgvYml0b3BzLmg+Cj4gICNp
+bmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+
+Cj4gKyNpbmNsdWRlIDxsaW51eC9tb2RfZGV2aWNldGFibGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4
+L21vZHVsZS5oPgo+IC0jaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxs
+aW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NwaW5sb2NrLmg+Cj4K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tc3RwLXh3YXkuYyBiL2RyaXZlcnMvZ3Bp
+by9ncGlvLXN0cC14d2F5LmMKPiBpbmRleCA0NzUwZWEzNDIwNGMuLjA1M2Q2MTZmMmUwMiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1zdHAteHdheS5jCj4gKysrIGIvZHJpdmVycy9n
+cGlvL2dwaW8tc3RwLXh3YXkuYwo+IEBAIC00LDExICs0LDEyIEBACj4gICAqICBDb3B5cmlnaHQg
+KEMpIDIwMTIgSm9obiBDcmlzcGluIDxqb2huQHBocm96ZW4ub3JnPgo+ICAgKi8KPgo+ICsjaW5j
+bHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zbGFiLmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9pbml0Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9wbGF0Zm9y
+bS5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5oPgo+ICAjaW5jbHVkZSA8bGludXgvaW8u
+aD4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tc3lzY29uLmMgYi9kcml2ZXJzL2dw
+aW8vZ3Bpby1zeXNjb24uYwo+IGluZGV4IDYwNzY5MzdiMThlNy4uNDFiZjQ3YzhjOTgzIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXN5c2Nvbi5jCj4gKysrIGIvZHJpdmVycy9ncGlv
+L2dwaW8tc3lzY29uLmMKPiBAQCAtOSw3ICs5LDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8v
+ZHJpdmVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4
+L29mLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4
+L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gICNpbmNs
+dWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlv
+LXRlZ3JhLmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYS5jCj4gaW5kZXggNWIyNjVhNmZkM2Mx
+Li5lYTcxNTU4MmJjZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tdGVncmEuYwo+
+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXRlZ3JhLmMKPiBAQCAtMTUsNyArMTUsNyBAQAo+ICAj
+aW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ICAj
+aW5jbHVkZSA8bGludXgvZ3Bpby9kcml2ZXIuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2Rldmlj
+ZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3Jt
+X2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9zZXFfZmlsZS5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYTE4Ni5j
+IGIvZHJpdmVycy9ncGlvL2dwaW8tdGVncmExODYuYwo+IGluZGV4IDgwZDA4ZGRkZTQwZS4uZDg3
+ZGQwNmRiNDBkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXRlZ3JhMTg2LmMKPiAr
+KysgYi9kcml2ZXJzL2dwaW8vZ3Bpby10ZWdyYTE4Ni5jCj4gQEAgLTExLDcgKzExLDcgQEAKPiAg
+I2luY2x1ZGUgPGxpbnV4L2ludGVycnVwdC5oPgo+ICAjaW5jbHVkZSA8bGludXgvaXJxLmg+Cj4g
+ICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5o
+Pgo+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2Rl
+dmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvc2VxX2ZpbGUuaD4KPgo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwaW8vZ3Bpby10cHM2NTg2eC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tdHBzNjU4Nngu
+Ywo+IGluZGV4IGM1NzEzNTI0YjU4MS4uZDI3N2FhOTUxMTQzIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3Bpby9ncGlvLXRwczY1ODZ4LmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby10cHM2NTg2
+eC5jCj4gQEAgLTE1LDcgKzE1LDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICAj
+aW5jbHVkZSA8bGludXgvaW5pdC5oPgo+ICAjaW5jbHVkZSA8bGludXgvbWZkL3RwczY1ODZ4Lmg+
+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4L29mLmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPgo+ICAvKiBHUElPIGNvbnRy
+b2wgcmVnaXN0ZXJzICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLXRwczY1OTEw
+LmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby10cHM2NTkxMC5jCj4gaW5kZXggMzIxZTY5NDVmMGJlLi4x
+ODdkMjE1ODA1NzMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tdHBzNjU5MTAuYwo+
+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXRwczY1OTEwLmMKPiBAQCAtMTUsNyArMTUsNyBAQAo+
+ICAjaW5jbHVkZSA8bGludXgvaTJjLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZp
+Y2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21mZC90cHM2NTkxMC5oPgo+IC0jaW5jbHVkZSA8bGlu
+dXgvb2ZfZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+Cj4gIHN0cnVjdCB0cHM2
+NTkxMF9ncGlvIHsKPiAgICAgICAgIHN0cnVjdCBncGlvX2NoaXAgZ3Bpb19jaGlwOwo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby10czQ4MDAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXRz
+NDgwMC5jCj4gaW5kZXggOTVkODBiYTE0YmVlLi40NzQ4ZTNkNDcxMDYgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncGlvL2dwaW8tdHM0ODAwLmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby10czQ4
+MDAuYwo+IEBAIC03LDggKzcsNyBAQAo+Cj4gICNpbmNsdWRlIDxsaW51eC9ncGlvL2RyaXZlci5o
+Pgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9hZGRy
+ZXNzLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4
+L29mLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPgo+ICAjZGVmaW5l
+IERFRkFVTFRfUElOX05VTUJFUiAgICAgIDE2Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9n
+cGlvLXRzNDkwMC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tdHM0OTAwLmMKPiBpbmRleCBlYmE5NjMx
+OWRhYzIuLjBmNjM5N2I3N2M5ZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby10czQ5
+MDAuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXRzNDkwMC5jCj4gQEAgLTgsNyArOCw3IEBA
+Cj4KPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8vZHJpdmVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9p
+MmMuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgv
+b2YuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcmVn
+bWFwLmg+Cj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tdW5pcGhpZXIuYyBiL2Ry
+aXZlcnMvZ3Bpby9ncGlvLXVuaXBoaWVyLmMKPiBpbmRleCAxOWNlNjY3NWNiYzAuLjk3MjViN2Fh
+MThhNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby11bmlwaGllci5jCj4gKysrIGIv
+ZHJpdmVycy9ncGlvL2dwaW8tdW5pcGhpZXIuYwo+IEBAIC05LDcgKzksNiBAQAo+ICAjaW5jbHVk
+ZSA8bGludXgvaXJxZG9tYWluLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAgI2lu
+Y2x1ZGUgPGxpbnV4L29mLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiAgI2lu
+Y2x1ZGUgPGxpbnV4L29mX2lycS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNl
+Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zcGlubG9jay5oPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwaW8vZ3Bpby12ZjYxMC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tdmY2MTAuYwo+IGluZGV4IGQz
+ZjNhNjlkNDkwNy4uNTRlN2M1MWY0OGM4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlv
+LXZmNjEwLmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby12ZjYxMC5jCj4gQEAgLTE3LDcgKzE3
+LDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2lycS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZv
+cm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+IC0jaW5jbHVkZSA8bGludXgv
+b2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4KPiAgI2luY2x1ZGUgPGxp
+bnV4L3BpbmN0cmwvY29uc3VtZXIuaD4KPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bp
+by13Y2Q5MzR4LmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby13Y2Q5MzR4LmMKPiBpbmRleCA4MTc3NTBl
+NGUwMzMuLjJiYmEyN2IxMzk0NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby13Y2Q5
+MzR4LmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby13Y2Q5MzR4LmMKPiBAQCAtMSwxMSArMSwx
+MiBAQAo+ICAvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+ICAvLyBDb3B5cmln
+aHQgKGMpIDIwMTksIExpbmFybyBMaW1pdGVkCj4KPiArI2luY2x1ZGUgPGxpbnV4L21vZF9kZXZp
+Y2V0YWJsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9ncGlvL2RyaXZlci5oPgo+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4g
+ICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NsYWIuaD4KPiAt
+I2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+Cj4gICNkZWZpbmUgV0NEX1BJTl9NQVNLKHAp
+IEJJVChwKQo+ICAjZGVmaW5lIFdDRF9SRUdfRElSX0NUTF9PRkZTRVQgMHg0Mgo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby14aWxpbnguYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXhpbGlu
+eC5jCj4gaW5kZXggMWZhNjZmMmE2NjdmLi5hMTY5NDVlODMxOWUgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncGlvL2dwaW8teGlsaW54LmMKPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby14aWxpbngu
+Ywo+IEBAIC0xNSw4ICsxNSw4IEBACj4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAtI2luY2x1ZGUg
+PGxpbnV4L29mX2RldmljZS5oPgo+IC0jaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAr
+I2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
+aD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3Ns
+YWIuaD4KPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby14cmExNDAzLmMgYi9kcml2
+ZXJzL2dwaW8vZ3Bpby14cmExNDAzLmMKPiBpbmRleCBiYmMwNmNkZDk2MzQuLmVlZDhhMTY4NDgz
+MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby14cmExNDAzLmMKPiArKysgYi9kcml2
+ZXJzL2dwaW8vZ3Bpby14cmExNDAzLmMKPiBAQCAtOCw5ICs4LDkgQEAKPiAgI2luY2x1ZGUgPGxp
+bnV4L2JpdG9wcy5oPgo+ICAjaW5jbHVkZSA8bGludXgvZ3Bpby9kcml2ZXIuaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICsjaW5jbHVkZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+
+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NlcV9m
+aWxlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zcGkvc3BpLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9y
+ZWdtYXAuaD4KPiAtLQo+IDIuNDAuMQo+CgoKLS0gCldpdGggQmVzdCBSZWdhcmRzLApBbmR5IFNo
+ZXZjaGVua28KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
