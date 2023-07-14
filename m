@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A2EC001DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3CD7C0015E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:47:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HGL8W9vN/EH27E62s7iW7koMqm1JEHWlJyeQAQiSZec=; b=K1JagJB3zozSKT
-	BqgSnYqfe8gU0F+Qfdh+piQ5YewK9NKJb11M2UwQsssyAo2KIhk206DoQPmMxIm4mwf/tqgcsQ3/X
-	m9Gkupw549+oZhCPcVscMMleeLUek5dTAVd28Xk52UeiWXNlUbp4NgGo73N2UbWjTJdUec3d+7PwR
-	jM4hI6Xmk6cLsQvoZf2TIW0HlYge7jWBqWTdXA8x6P87ZfnI8S5WOLB8xdW1KbwCwpQUbu/KsijPb
-	07wCSA+zejRea1loSgQERcuq8N8od0IpF8JNkcrgOLYv1wGyibcil0m0maMgX/M0y4Q9kKivKTLz9
-	VkVpUr4bk3mFn2jIQLgw==;
+	List-Owner; bh=ZYFXNz80l63Zc3vr7wBaZJiCToqFUN4fqXITPuKbkq8=; b=Uj6Kz5MDD3PISB
+	En/NWmTVe+dePfFvjD+5klOT+4vFFWVOcmf4UMqcCiyOqs4i8TAnaHsn8WcjLpjPKzkBfZM1wjwsx
+	Jf9QVJB81rjOnIQj0sdhOPRY3vZOKuiApgQeAKK3Y3zrUngh7Y5F7fyhr4kd1NTKZeFA5lE2Akuja
+	yjCj4z+KqAcqh/U2zjH4gnkIkByqE8S3JvUXIq0SuN/J2nJrUZJ78Ur0ypJ5kSVz/He/2efm0PjLa
+	cMevyHOXsPr1/XoErnX/jmKPr2ITMp3zYs3BuGCv0/Bx9k/xfxg5pCO7UfzTHwB2e4Oub2DvENKK8
+	0nmRLCLAfXMKN8PhWmHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMsa-006oJy-00;
-	Fri, 14 Jul 2023 17:46:56 +0000
-Received: from mail-io1-f54.google.com ([209.85.166.54])
+	id 1qKMt8-006ocu-0o;
+	Fri, 14 Jul 2023 17:47:30 +0000
+Received: from mail-il1-f176.google.com ([209.85.166.176])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMsV-006oGe-0H;
-	Fri, 14 Jul 2023 17:46:53 +0000
-Received: by mail-io1-f54.google.com with SMTP id ca18e2360f4ac-7836272f36eso89523539f.1;
-        Fri, 14 Jul 2023 10:46:50 -0700 (PDT)
+	id 1qKMt2-006oZ8-0Z;
+	Fri, 14 Jul 2023 17:47:25 +0000
+Received: by mail-il1-f176.google.com with SMTP id e9e14a558f8ab-3456fda4ed1so10446845ab.0;
+        Fri, 14 Jul 2023 10:47:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356810; x=1691948810;
+        d=1e100.net; s=20221208; t=1689356843; x=1691948843;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=vj61uuakSXL6S+ShqveHzPHKdxzqOSnkWIu6XJlRCO8=;
-        b=RHWEw1QVl4gFQiS1+amuIdq0xQIj+Nl2bPgxjHzWZWySkjmtANlKvizQTyD3G61ib7
-         xzbmGtc0JrknS8I/AmbEZDlFIzhKfs+UxI6mdudJh/+BsprK5Dj9D06PfcJOX97wIGnA
-         Z5g8j+9I7e/VA+cBy22MqtW4NHLwNoqihwFbtvgKyap05ncIxgAL280zN1jfJUT7ufZf
-         kqAdixJJENy5hkP2FqkZX2HFTxBeTLK4+FyjX6I4k459iG4FuBEaZvg5BBlPcVdXtF9H
-         sfCe+sLlweXkmgPd730CwFIWin7KGZINobvwjYdpx7+I8T/gLZLdca5EyW46fwwKQ7cM
-         Ig4A==
-X-Gm-Message-State: ABy/qLYEX+AmiBq1NzYwTCWEeFxvoesAbeu7ikoHr0cIUXbRVGbn5NsG
-	NPmEh7/YZzvlDMpXGQS7xA==
-X-Google-Smtp-Source: APBJJlGgqfJa0zk9WWLj6ia40Lq0YCoeBva3jgLVniHR6ZSizAasRtUVQAviqdwLxUc9CvquiSxSiA==
-X-Received: by 2002:a6b:5b04:0:b0:783:4f8d:4484 with SMTP id v4-20020a6b5b04000000b007834f8d4484mr5952812ioh.2.1689356809853;
-        Fri, 14 Jul 2023 10:46:49 -0700 (PDT)
+        bh=QPqdUUqkc4rI75UMAc4Xs8y3YEcjzz1RiNA4x7IYBHU=;
+        b=brtyrLOsescNNlBZF9FzOxzilTXCQ5643aeq/iRNTi4OH/n8PrNrpN0hP8HmO8fQHK
+         kgEpDbnk0XyMDeJvChXp4qrQlDPJgOf/xnmFVMkYtN3tmTpB9xtyBJEZa7A7sWUATNiW
+         ulvhH6inTn+fR4EHQqkOfUfTYUOlc1rpZJZBiyQwDgd+nsiCIhEuwsyJJpZq/cFXRfC4
+         m3SuXeucGZ972HbchOuJtCisAwezJEDvY4W4UcOeHIpB1OLLUGMKR7RNp6V/8wp4S10g
+         2soOgbXv6MX3sHVzzsAqpuvXLj1pJKUPtHiDt4/rZ+91zrfcGs5GI7aPRj0JQI0oUkFR
+         M0ng==
+X-Gm-Message-State: ABy/qLZjNTnL1a5LV16qH8RNcq1kJy2FqWYeFOefWxzJ4vf2GNBZgoxe
+	qupnOfy1T1dhvykPo7mrOA==
+X-Google-Smtp-Source: APBJJlE9mCouhYM8S5pU14gRiUMFnROknyjtSCY83LyzowqhqRu2tyhgLmXsFN5YRo8A9ohFE0CbNg==
+X-Received: by 2002:a92:c6ce:0:b0:346:46e:2099 with SMTP id v14-20020a92c6ce000000b00346046e2099mr5032285ilm.1.1689356843369;
+        Fri, 14 Jul 2023 10:47:23 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id u16-20020a02cbd0000000b0042adc25ab12sm2718535jaq.44.2023.07.14.10.46.46
+        by smtp.gmail.com with ESMTPSA id gu16-20020a0566382e1000b0042b534e9f52sm2642967jab.59.2023.07.14.10.47.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:46:48 -0700 (PDT)
-Received: (nullmailer pid 4058053 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:46:31 -0000
+        Fri, 14 Jul 2023 10:47:22 -0700 (PDT)
+Received: (nullmailer pid 4059270 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:47:07 -0000
 From: Rob Herring <robh@kernel.org>
-To: Michael Hennerich <michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>, Alexandru Tachici <alexandru.tachici@analog.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Crt Mori <cmo@melexis.com>
-Cc: devicetree@vger.kernel.org, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
-Subject: [PATCH] iio: adc: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:46:26 -0600
-Message-Id: <20230714174628.4057920-1-robh@kernel.org>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
+Subject: [PATCH] mailbox: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:47:01 -0600
+Message-Id: <20230714174702.4059100-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104651_128820_664A04AC 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20230714_104724_230643_58DF7A95 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,342 +89,226 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/iio/accel/adxl372_spi.c    | 1 -
- drivers/iio/accel/bma180.c         | 1 -
- drivers/iio/accel/kxsd9-spi.c      | 1 -
- drivers/iio/accel/mma8452.c        | 2 +-
- drivers/iio/adc/ad7124.c           | 2 +-
- drivers/iio/adc/ad7192.c           | 2 +-
- drivers/iio/adc/ad9467.c           | 2 +-
- drivers/iio/adc/adi-axi-adc.c      | 3 ++-
- drivers/iio/adc/at91_adc.c         | 1 -
- drivers/iio/adc/cc10001_adc.c      | 1 -
- drivers/iio/adc/ina2xx-adc.c       | 2 +-
- drivers/iio/adc/meson_saradc.c     | 1 -
- drivers/iio/adc/palmas_gpadc.c     | 1 -
- drivers/iio/adc/qcom-spmi-iadc.c   | 1 -
- drivers/iio/adc/rockchip_saradc.c  | 1 -
- drivers/iio/adc/sc27xx_adc.c       | 1 -
- drivers/iio/adc/stm32-adc-core.c   | 2 ++
- drivers/iio/adc/stm32-dfsdm-adc.c  | 3 ++-
- drivers/iio/adc/stm32-dfsdm-core.c | 4 +++-
- drivers/iio/adc/stmpe-adc.c        | 3 ++-
- drivers/iio/adc/sun4i-gpadc-iio.c  | 1 -
- drivers/iio/adc/ti_am335x_adc.c    | 1 -
- drivers/iio/proximity/isl29501.c   | 2 +-
- drivers/iio/temperature/mlx90614.c | 2 +-
- 24 files changed, 18 insertions(+), 23 deletions(-)
+ drivers/mailbox/arm_mhu.c            | 1 +
+ drivers/mailbox/arm_mhu_db.c         | 1 -
+ drivers/mailbox/hi3660-mailbox.c     | 1 +
+ drivers/mailbox/hi6220-mailbox.c     | 1 +
+ drivers/mailbox/imx-mailbox.c        | 3 ++-
+ drivers/mailbox/mailbox-mpfs.c       | 1 +
+ drivers/mailbox/mailbox.c            | 1 +
+ drivers/mailbox/mtk-adsp-mailbox.c   | 3 ++-
+ drivers/mailbox/mtk-cmdq-mailbox.c   | 2 +-
+ drivers/mailbox/omap-mailbox.c       | 2 +-
+ drivers/mailbox/platform_mhu.c       | 1 +
+ drivers/mailbox/rockchip-mailbox.c   | 2 +-
+ drivers/mailbox/sprd-mailbox.c       | 2 +-
+ drivers/mailbox/stm32-ipcc.c         | 1 +
+ drivers/mailbox/tegra-hsp.c          | 1 -
+ drivers/mailbox/zynqmp-ipi-mailbox.c | 2 --
+ 16 files changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/iio/accel/adxl372_spi.c b/drivers/iio/accel/adxl372_spi.c
-index 2bd267a22f29..75a88f16c6c9 100644
---- a/drivers/iio/accel/adxl372_spi.c
-+++ b/drivers/iio/accel/adxl372_spi.c
-@@ -8,7 +8,6 @@
- #include <linux/module.h>
- #include <linux/regmap.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/spi/spi.h>
- 
- #include "adxl372.h"
-diff --git a/drivers/iio/accel/bma180.c b/drivers/iio/accel/bma180.c
-index e8ab0d249351..13439f52d26d 100644
---- a/drivers/iio/accel/bma180.c
-+++ b/drivers/iio/accel/bma180.c
-@@ -16,7 +16,6 @@
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
- #include <linux/delay.h>
--#include <linux/of_device.h>
- #include <linux/of.h>
- #include <linux/bitops.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/accel/kxsd9-spi.c b/drivers/iio/accel/kxsd9-spi.c
-index 07f14a9f22c7..1719a9f1d90a 100644
---- a/drivers/iio/accel/kxsd9-spi.c
-+++ b/drivers/iio/accel/kxsd9-spi.c
-@@ -2,7 +2,6 @@
- #include <linux/device.h>
- #include <linux/kernel.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/spi/spi.h>
- #include <linux/module.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/accel/mma8452.c b/drivers/iio/accel/mma8452.c
-index 6e7399e72221..f42a88711486 100644
---- a/drivers/iio/accel/mma8452.c
-+++ b/drivers/iio/accel/mma8452.c
-@@ -28,7 +28,7 @@
- #include <linux/iio/triggered_buffer.h>
- #include <linux/iio/events.h>
- #include <linux/delay.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
- #include <linux/pm_runtime.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/adc/ad7124.c b/drivers/iio/adc/ad7124.c
-index 050a2fbf5c49..b9b206fcd748 100644
---- a/drivers/iio/adc/ad7124.c
-+++ b/drivers/iio/adc/ad7124.c
-@@ -14,7 +14,7 @@
- #include <linux/kernel.h>
- #include <linux/kfifo.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regulator/consumer.h>
- #include <linux/spi/spi.h>
- 
-diff --git a/drivers/iio/adc/ad7192.c b/drivers/iio/adc/ad7192.c
-index 8685e0b58a83..81063accedae 100644
---- a/drivers/iio/adc/ad7192.c
-+++ b/drivers/iio/adc/ad7192.c
-@@ -16,7 +16,7 @@
- #include <linux/err.h>
- #include <linux/sched.h>
- #include <linux/delay.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- #include <linux/iio/iio.h>
- #include <linux/iio/sysfs.h>
-diff --git a/drivers/iio/adc/ad9467.c b/drivers/iio/adc/ad9467.c
-index 0621cf59d614..39eccc28debe 100644
---- a/drivers/iio/adc/ad9467.c
-+++ b/drivers/iio/adc/ad9467.c
-@@ -13,7 +13,7 @@
- #include <linux/err.h>
- #include <linux/delay.h>
- #include <linux/gpio/consumer.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- 
- #include <linux/iio/iio.h>
-diff --git a/drivers/iio/adc/adi-axi-adc.c b/drivers/iio/adc/adi-axi-adc.c
-index e8a8ea4140f1..aff0532a974a 100644
---- a/drivers/iio/adc/adi-axi-adc.c
-+++ b/drivers/iio/adc/adi-axi-adc.c
-@@ -11,8 +11,9 @@
+diff --git a/drivers/mailbox/arm_mhu.c b/drivers/mailbox/arm_mhu.c
+index 22243cabe056..537f7bfb7b06 100644
+--- a/drivers/mailbox/arm_mhu.c
++++ b/drivers/mailbox/arm_mhu.c
+@@ -12,6 +12,7 @@
  #include <linux/io.h>
- #include <linux/delay.h>
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
-+#include <linux/property.h>
- #include <linux/slab.h>
- 
- #include <linux/iio/iio.h>
-diff --git a/drivers/iio/adc/at91_adc.c b/drivers/iio/adc/at91_adc.c
-index 366e252ebeb0..de6650f9c4b1 100644
---- a/drivers/iio/adc/at91_adc.c
-+++ b/drivers/iio/adc/at91_adc.c
-@@ -16,7 +16,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/sched.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/cc10001_adc.c b/drivers/iio/adc/cc10001_adc.c
-index 2cde4b44fc6e..a432342348ab 100644
---- a/drivers/iio/adc/cc10001_adc.c
-+++ b/drivers/iio/adc/cc10001_adc.c
-@@ -9,7 +9,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/ina2xx-adc.c b/drivers/iio/adc/ina2xx-adc.c
-index 213526c1592f..277574484fb1 100644
---- a/drivers/iio/adc/ina2xx-adc.c
-+++ b/drivers/iio/adc/ina2xx-adc.c
-@@ -28,7 +28,7 @@
- #include <linux/iio/sysfs.h>
- #include <linux/kthread.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/sched/task.h>
- #include <linux/util_macros.h>
-diff --git a/drivers/iio/adc/meson_saradc.c b/drivers/iio/adc/meson_saradc.c
-index af6bfcc19075..ef0a9a76743e 100644
---- a/drivers/iio/adc/meson_saradc.c
-+++ b/drivers/iio/adc/meson_saradc.c
-@@ -17,7 +17,6 @@
- #include <linux/interrupt.h>
- #include <linux/of.h>
- #include <linux/of_irq.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/adc/palmas_gpadc.c b/drivers/iio/adc/palmas_gpadc.c
-index 27b2632c1037..3d7cfbb00a69 100644
---- a/drivers/iio/adc/palmas_gpadc.c
-+++ b/drivers/iio/adc/palmas_gpadc.c
-@@ -18,7 +18,6 @@
- #include <linux/mfd/palmas.h>
- #include <linux/completion.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/iio/events.h>
- #include <linux/iio/iio.h>
- #include <linux/iio/machine.h>
-diff --git a/drivers/iio/adc/qcom-spmi-iadc.c b/drivers/iio/adc/qcom-spmi-iadc.c
-index acbda6636dc5..7fb8b2499a1d 100644
---- a/drivers/iio/adc/qcom-spmi-iadc.c
-+++ b/drivers/iio/adc/qcom-spmi-iadc.c
-@@ -13,7 +13,6 @@
- #include <linux/mutex.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 4b011f7eddec..19ce43117685 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -11,7 +11,6 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/clk.h>
- #include <linux/completion.h>
- #include <linux/delay.h>
-diff --git a/drivers/iio/adc/sc27xx_adc.c b/drivers/iio/adc/sc27xx_adc.c
-index ff1fc329bb9b..b4a2e057d80f 100644
---- a/drivers/iio/adc/sc27xx_adc.c
-+++ b/drivers/iio/adc/sc27xx_adc.c
-@@ -7,7 +7,6 @@
- #include <linux/mutex.h>
- #include <linux/nvmem-consumer.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/adc/stm32-adc-core.c b/drivers/iio/adc/stm32-adc-core.c
-index 48f02dcc81c1..7bdd230ce2cb 100644
---- a/drivers/iio/adc/stm32-adc-core.c
-+++ b/drivers/iio/adc/stm32-adc-core.c
-@@ -18,6 +18,8 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/adc/stm32-dfsdm-adc.c b/drivers/iio/adc/stm32-dfsdm-adc.c
-index a428bdb567d5..b5cc43d12b6f 100644
---- a/drivers/iio/adc/stm32-dfsdm-adc.c
-+++ b/drivers/iio/adc/stm32-dfsdm-adc.c
-@@ -19,7 +19,8 @@
- #include <linux/iio/triggered_buffer.h>
- #include <linux/interrupt.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/stm32-dfsdm-core.c b/drivers/iio/adc/stm32-dfsdm-core.c
-index 0362df285a57..0f6ebb3061a0 100644
---- a/drivers/iio/adc/stm32-dfsdm-core.c
-+++ b/drivers/iio/adc/stm32-dfsdm-core.c
-@@ -12,8 +12,10 @@
- #include <linux/iio/sysfs.h>
- #include <linux/interrupt.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/pinctrl/consumer.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/stmpe-adc.c b/drivers/iio/adc/stmpe-adc.c
-index 67518e460e05..55e36b40fdf5 100644
---- a/drivers/iio/adc/stmpe-adc.c
-+++ b/drivers/iio/adc/stmpe-adc.c
-@@ -14,9 +14,10 @@
- #include <linux/kernel.h>
- #include <linux/mfd/stmpe.h>
- #include <linux/module.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/device.h>
 +#include <linux/of.h>
  
- #define STMPE_REG_INT_STA		0x0B
- #define STMPE_REG_ADC_INT_EN		0x0E
-diff --git a/drivers/iio/adc/sun4i-gpadc-iio.c b/drivers/iio/adc/sun4i-gpadc-iio.c
-index a5322550c422..25bba96367a8 100644
---- a/drivers/iio/adc/sun4i-gpadc-iio.c
-+++ b/drivers/iio/adc/sun4i-gpadc-iio.c
-@@ -24,7 +24,6 @@
- #include <linux/io.h>
+ #define INTR_STAT_OFS	0x0
+ #define INTR_SET_OFS	0x8
+diff --git a/drivers/mailbox/arm_mhu_db.c b/drivers/mailbox/arm_mhu_db.c
+index aa0a4d83880f..27a510d46908 100644
+--- a/drivers/mailbox/arm_mhu_db.c
++++ b/drivers/mailbox/arm_mhu_db.c
+@@ -15,7 +15,6 @@
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-diff --git a/drivers/iio/adc/ti_am335x_adc.c b/drivers/iio/adc/ti_am335x_adc.c
-index 642c5c4895e3..8db7a01cb5fb 100644
---- a/drivers/iio/adc/ti_am335x_adc.c
-+++ b/drivers/iio/adc/ti_am335x_adc.c
-@@ -14,7 +14,6 @@
- #include <linux/io.h>
- #include <linux/iio/iio.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/iio/machine.h>
- #include <linux/iio/driver.h>
+ 
+ #define INTR_STAT_OFS	0x0
+ #define INTR_SET_OFS	0x8
+diff --git a/drivers/mailbox/hi3660-mailbox.c b/drivers/mailbox/hi3660-mailbox.c
+index ab24e731a782..17c29e960fbf 100644
+--- a/drivers/mailbox/hi3660-mailbox.c
++++ b/drivers/mailbox/hi3660-mailbox.c
+@@ -11,6 +11,7 @@
  #include <linux/iopoll.h>
-diff --git a/drivers/iio/proximity/isl29501.c b/drivers/iio/proximity/isl29501.c
-index fe45ca35a124..bcebacaf3dab 100644
---- a/drivers/iio/proximity/isl29501.c
-+++ b/drivers/iio/proximity/isl29501.c
-@@ -12,7 +12,7 @@
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
- #include <linux/i2c.h>
- #include <linux/err.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/iio/iio.h>
- #include <linux/iio/sysfs.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
  
-diff --git a/drivers/iio/temperature/mlx90614.c b/drivers/iio/temperature/mlx90614.c
-index 676dc8701924..07bb5df24ab3 100644
---- a/drivers/iio/temperature/mlx90614.c
-+++ b/drivers/iio/temperature/mlx90614.c
-@@ -27,8 +27,8 @@
- #include <linux/gpio/consumer.h>
- #include <linux/i2c.h>
- #include <linux/jiffies.h>
-+#include <linux/mod_devicetable.h>
+diff --git a/drivers/mailbox/hi6220-mailbox.c b/drivers/mailbox/hi6220-mailbox.c
+index 1c73c63598f5..f77741ce42e7 100644
+--- a/drivers/mailbox/hi6220-mailbox.c
++++ b/drivers/mailbox/hi6220-mailbox.c
+@@ -15,6 +15,7 @@
+ #include <linux/kfifo.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/mailbox/imx-mailbox.c b/drivers/mailbox/imx-mailbox.c
+index 20f2ec880ad6..3ef4dd8adf5d 100644
+--- a/drivers/mailbox/imx-mailbox.c
++++ b/drivers/mailbox/imx-mailbox.c
+@@ -14,7 +14,8 @@
+ #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
  #include <linux/pm_runtime.h>
+ #include <linux/suspend.h>
+ #include <linux/slab.h>
+diff --git a/drivers/mailbox/mailbox-mpfs.c b/drivers/mailbox/mailbox-mpfs.c
+index 162df49654fb..20ee283a04cc 100644
+--- a/drivers/mailbox/mailbox-mpfs.c
++++ b/drivers/mailbox/mailbox-mpfs.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+ #include <linux/interrupt.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
+ #include <linux/mailbox_controller.h>
+ #include <soc/microchip/mpfs.h>
+diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
+index adf36c05fa43..ebff3baf3045 100644
+--- a/drivers/mailbox/mailbox.c
++++ b/drivers/mailbox/mailbox.c
+@@ -17,6 +17,7 @@
+ #include <linux/bitops.h>
+ #include <linux/mailbox_client.h>
+ #include <linux/mailbox_controller.h>
++#include <linux/of.h>
  
- #include <linux/iio/iio.h>
+ #include "mailbox.h"
+ 
+diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-adsp-mailbox.c
+index 14bc0057de81..91487aa4d7da 100644
+--- a/drivers/mailbox/mtk-adsp-mailbox.c
++++ b/drivers/mailbox/mtk-adsp-mailbox.c
+@@ -10,7 +10,8 @@
+ #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/slab.h>
+ 
+ struct mtk_adsp_mbox_priv {
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index b18d47ea13a0..4d62b07c1411 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -15,7 +15,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/mailbox/mtk-cmdq-mailbox.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ 
+ #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
+ #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
+diff --git a/drivers/mailbox/omap-mailbox.c b/drivers/mailbox/omap-mailbox.c
+index fa2ce3246b70..792bcaebbc9b 100644
+--- a/drivers/mailbox/omap-mailbox.c
++++ b/drivers/mailbox/omap-mailbox.c
+@@ -16,7 +16,7 @@
+ #include <linux/kfifo.h>
+ #include <linux/err.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/omap-mailbox.h>
+diff --git a/drivers/mailbox/platform_mhu.c b/drivers/mailbox/platform_mhu.c
+index a5922ac0b0bf..54161303a36b 100644
+--- a/drivers/mailbox/platform_mhu.c
++++ b/drivers/mailbox/platform_mhu.c
+@@ -15,6 +15,7 @@
+ #include <linux/slab.h>
+ #include <linux/err.h>
+ #include <linux/io.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/mailbox_controller.h>
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index 116286ecc5a0..10c7bee2a915 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -8,8 +8,8 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
++#include <linux/of.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ 
+ #define MAILBOX_A2B_INTEN		0x00
+diff --git a/drivers/mailbox/sprd-mailbox.c b/drivers/mailbox/sprd-mailbox.c
+index e3c899abeed8..9ae57de77d4d 100644
+--- a/drivers/mailbox/sprd-mailbox.c
++++ b/drivers/mailbox/sprd-mailbox.c
+@@ -11,7 +11,7 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/clk.h>
+ 
+diff --git a/drivers/mailbox/stm32-ipcc.c b/drivers/mailbox/stm32-ipcc.c
+index 15d538fe2113..4ad3653f3866 100644
+--- a/drivers/mailbox/stm32-ipcc.c
++++ b/drivers/mailbox/stm32-ipcc.c
+@@ -11,6 +11,7 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_wakeirq.h>
+ 
+diff --git a/drivers/mailbox/tegra-hsp.c b/drivers/mailbox/tegra-hsp.c
+index 7f98e7436d94..c87c2b900b64 100644
+--- a/drivers/mailbox/tegra-hsp.c
++++ b/drivers/mailbox/tegra-hsp.c
+@@ -8,7 +8,6 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/slab.h>
+diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqmp-ipi-mailbox.c
+index d097f45b0e5f..e4fcac97dbfa 100644
+--- a/drivers/mailbox/zynqmp-ipi-mailbox.c
++++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
+@@ -16,8 +16,6 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+ 
+ /* IPI agent ID any */
 -- 
 2.40.1
 
