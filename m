@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D829FC001DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBE1EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 20:56:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a0farSNZoCE73QQa1Yc3oq3JRDdco98pPApCVmOYsJg=; b=LMWF5WKJ7FO3yG
-	XvCrPECyMNN1zSWfMFco/xR+89pZ7sbrg0DUk4ERxU61a4cje12H4OLOOGlA+jg7NTHEjQZuzioaa
-	dwa378BsRP0CKXYcEobOG6Hg+f/ogEsQ+FvY0M+9aq7KP4xFcqKQC+X8nWYEbnIRkrw+4vc07GWD0
-	h4o1k9bn8UV0Asc2K71zMLt8qRxHZPSJREGK98sBmlDDl5713Jh1ArgAjjhwzrspbL7THn4tMJCX7
-	V+MzoShUz+F+Z+beGGfd2j50ACXvHHj+dQ+rX5/WYKHPugzfFaReltWMpBY9IqBTbBWAqA4M6Jwbd
-	6Bz3pZ5+GeufKjxTT5kg==;
+	List-Owner; bh=azC0+BeC3iRB+OyNpmgf8JcfLD8qi0W+mwKuMNiBjxA=; b=zUsUCMkLjc9K/e
+	sfR/XDadu53udkXIFxBoPQSX4OQd6hLoWVEfG045J/hvEcgf5gWYB6o08w1M0fBJkqmiiDcetQmgY
+	AZfHUr5UO0DwUleFHSi7cKBIsNsnJGGXiqzDUWcIXvWUMtpUKzm+ASaOODY7Ha7yJmZkc62yeU44j
+	yMndD4K/YaN8ZdmpfRo3VmjGGvqefAFHvvYbXIsG7Pw/fEnQb3d+D4GOjw/WcmqrxPp5+cdScVv18
+	EyD7f4HjDGqI5O0oJwWBbJh/RpfgnnViOyoTj5F2ytYcpWXS0cGfcHhsBxZddYVLCKtcKq2roPUdZ
+	Q3/g/P6melq6+fmqkRyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMzW-006ta0-2j;
-	Fri, 14 Jul 2023 17:54:06 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qKPqG-007ElE-0d;
+	Fri, 14 Jul 2023 20:56:44 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMzK-006tQl-0C;
-	Fri, 14 Jul 2023 17:53:57 +0000
-Received: from jupiter.universe (dyndsl-091-248-208-179.ewe-ip-backbone.de [91.248.208.179])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 56B4D660705F;
-	Fri, 14 Jul 2023 18:53:46 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689357226;
-	bh=fGlSMsKWMzL+vLAsojC3j/NluxPVAZbuMrm90oW6/3A=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gNthRf1s5IXke6d0bCNH0vmadOB4ZmyoYpBSynrwrBoOZcRx0zp+yJhIAE1Ph0eV3
-	 Ci+9Kkht+prB95dClBYSoJpS7pd80mg2j4vfOHLWEUoitvkLhe6m8IlcNw8jwEk5SS
-	 5Hazknj4nBJlcUOhE+csL7job24Xm0eUK8tV+TN8m3BdUBnW5mM7Uo8yWsled4k1Ue
-	 GCfwCiWupCEJdkRlOfD+wJWDA8eMU9VEOoQQNAK2RxwmEn1Qo7YMBo2bTgclsLPjbs
-	 eFx1R7TaHGbRy99/D7vl/RZIEQ6ZZvw0O5X686y33SRZEcYcmwWRP7AKFJYZHex/Ia
-	 /ZTv1GyJV8uJw==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id C335B4805CC; Fri, 14 Jul 2023 19:53:43 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	John Clark <inindev@gmail.com>,
-	Qu Wenruo <wqu@suse.com>,
-	devicetree@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1qKPqC-007Ej5-1G
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Jul 2023 20:56:42 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qKPq6-00084j-E7; Fri, 14 Jul 2023 22:56:34 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qKPq5-00EQSm-N5; Fri, 14 Jul 2023 22:56:33 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qKPq4-004u47-Ub; Fri, 14 Jul 2023 22:56:32 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 2/2] arm64: dts: rockchip: rk3588: add PCIe3 support
-Date: Fri, 14 Jul 2023 19:53:31 +0200
-Message-Id: <20230714175331.112923-3-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230714175331.112923-1-sebastian.reichel@collabora.com>
-References: <20230714175331.112923-1-sebastian.reichel@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	kernel@pengutronix.de
+Subject: [PATCH 07/10] pwm: rockchip: Consistenly name pwm_chip variables "chip"
+Date: Fri, 14 Jul 2023 22:56:20 +0200
+Message-Id: <20230714205623.2496590-8-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
+References: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1012; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=wmvev9dVApR529FLTx3AbMYD+vyfhjH6G8GR9o32e+s=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBksbZuODYB8bkDh7pH5CyGZdLbAFRPigIYUZ0Yt NmtNyuwwEaJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZLG2bgAKCRCPgPtYfRL+ Ts+3CACba6Y0XIVavyIlQJrGTgInI9Lkk0RgmJ26EovG2sZKrofV0oU1ZNfaleq8YeAkO8KH+hu rt/QU7p97NjN7eJLphQAsND7mpE/ngaWkEPuKFiUzdMmonS4y87OQjBNF0zfPqzX1Daj+NJ9LcR efywbRUkBfMSwY5siuoZ3z1oM15exBmrH0toLUGRrR9zJoCyJVhp8Tsxem/MT4TDWq3twtBhoZP bhdpy6ULgxrt0oRCMK18hf4x8eOjPMJC2T8t8HF1YV+EbyX3fO9aHUBghFXMj84K91OCzAhvlR5 CJhQNnSRQm0qgcIMRddqLV4nktWwU9hXVLmMo5H6P01oanlH
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_105354_357710_757D178A 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20230714_135640_426120_CCFB4C1B 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,174 +73,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add both PCIe3 controllers together with the shared PHY.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588.dtsi | 128 +++++++++++++++++++++++
- 1 file changed, 128 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 4d66ca6c2e4c..af6f52afbaff 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -7,6 +7,11 @@
- #include "rk3588-pinctrl.dtsi"
- 
- / {
-+	pcie30_phy_grf: syscon@fd5b8000 {
-+		compatible = "rockchip,rk3588-pcie3-phy-grf", "syscon";
-+		reg = <0x0 0xfd5b8000 0x0 0x10000>;
-+	};
-+
- 	pipe_phy1_grf: syscon@fd5c0000 {
- 		compatible = "rockchip,rk3588-pipe-phy-grf", "syscon";
- 		reg = <0x0 0xfd5c0000 0x0 0x100>;
-@@ -80,6 +85,116 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
- 	};
- 
-+	pcie3x4: pcie@fe150000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x00 0x0f>;
-+		clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+			 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+			 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x4_intc 0>,
-+				<0 0 0 2 &pcie3x4_intc 1>,
-+				<0 0 0 3 &pcie3x4_intc 2>,
-+				<0 0 0 4 &pcie3x4_intc 3>;
-+		linux,pci-domain = <0>;
-+		num-ib-windows = <16>;
-+		num-ob-windows = <16>;
-+		num-viewport = <8>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0000 &its1 0x0000 0x1000>;
-+		num-lanes = <4>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0x00000000 0x0 0x40000000>;
-+		reg = <0xa 0x40000000 0x0 0x00400000>,
-+		      <0x0 0xfe150000 0x0 0x00010000>,
-+		      <0x0 0xf0000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-+		reset-names = "pwr", "pipe";
-+		rockchip,pipe-grf = <&php_grf>;
-+		status = "disabled";
-+
-+		pcie3x4_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 260 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
-+	pcie3x2: pcie@fe160000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x10 0x1f>;
-+		clocks = <&cru ACLK_PCIE_2L_MSTR>, <&cru ACLK_PCIE_2L_SLV>,
-+			 <&cru ACLK_PCIE_2L_DBI>, <&cru PCLK_PCIE_2L>,
-+			 <&cru CLK_PCIE_AUX1>, <&cru CLK_PCIE2L_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 257 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 256 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 255 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 254 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x2_intc 0>,
-+				<0 0 0 2 &pcie3x2_intc 1>,
-+				<0 0 0 3 &pcie3x2_intc 2>,
-+				<0 0 0 4 &pcie3x2_intc 3>;
-+		linux,pci-domain = <1>;
-+		num-ib-windows = <16>;
-+		num-ob-windows = <16>;
-+		num-viewport = <8>;
-+		max-link-speed = <3>;
-+		msi-map = <0x1000 &its1 0x1000 0x1000>;
-+		num-lanes = <2>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf1100000 0x0 0xf1100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf1200000 0x0 0xf1200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0x40000000 0x0 0x40000000>;
-+		reg = <0xa 0x40400000 0x0 0x00400000>,
-+		      <0x0 0xfe160000 0x0 0x00010000>,
-+		      <0x0 0xf1000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
-+		reset-names = "pwr", "pipe";
-+		rockchip,pipe-grf = <&php_grf>;
-+		status = "disabled";
-+
-+		pcie3x2_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 255 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
- 	pcie2x1l0: pcie@fe170000 {
- 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
- 		#address-cells = <3>;
-@@ -221,4 +336,17 @@ combphy1_ps: phy@fee10000 {
- 		rockchip,pipe-phy-grf = <&pipe_phy1_grf>;
- 		status = "disabled";
- 	};
-+
-+	pcie30phy: phy@fee80000 {
-+		compatible = "rockchip,rk3588-pcie3-phy";
-+		reg = <0x0 0xfee80000 0x0 0x20000>;
-+		#phy-cells = <0>;
-+		clocks = <&cru PCLK_PCIE_COMBO_PIPE_PHY>;
-+		clock-names = "pclk";
-+		resets = <&cru SRST_PCIE30_PHY>;
-+		reset-names = "phy";
-+		rockchip,pipe-grf = <&php_grf>;
-+		rockchip,phy-grf = <&pcie30_phy_grf>;
-+		status = "disabled";
-+	};
- };
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TW9zdCB2YXJpYWJsZXMgaG9sZGluZyBhIHBvaW50ZXIgdG8gYSBwd21fY2hpcCBhcmUgY2FsbGVk
+ICJjaGlwIiB3aGljaAppcyBhbHNvIHRoZSB1c3VhbCBuYW1lIGluIG1vc3Qgb3RoZXIgcHdtIGRy
+aXZlcnMuIFJlbmFtZSB0aGUgc2luZ2xlCnZhcmlhYmxlIHRoYXQgaGF2ZSBhIGRpZmZlcmVudCBu
+YW1lIHRvIGJlIGNhbGxlZCAiY2hpcCIsIHRvbywgZm9yCmNvbnNpc3RlbmN5LgoKU2lnbmVkLW9m
+Zi1ieTogVXdlIEtsZWluZS1Lw7ZuaWcgPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4K
+LS0tCiBkcml2ZXJzL3B3bS9wd20tcm9ja2NoaXAuYyB8IDQgKystLQogMSBmaWxlIGNoYW5nZWQs
+IDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3B3
+bS9wd20tcm9ja2NoaXAuYyBiL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jCmluZGV4IGMxYTFm
+MmQ4NjRiNS4uMDNlZTE4ZmI4MmQ1IDEwMDY0NAotLS0gYS9kcml2ZXJzL3B3bS9wd20tcm9ja2No
+aXAuYworKysgYi9kcml2ZXJzL3B3bS9wd20tcm9ja2NoaXAuYwpAQCAtNTIsOSArNTIsOSBAQCBz
+dHJ1Y3Qgcm9ja2NoaXBfcHdtX2RhdGEgewogCXUzMiBlbmFibGVfY29uZjsKIH07CiAKLXN0YXRp
+YyBpbmxpbmUgc3RydWN0IHJvY2tjaGlwX3B3bV9jaGlwICp0b19yb2NrY2hpcF9wd21fY2hpcChz
+dHJ1Y3QgcHdtX2NoaXAgKmMpCitzdGF0aWMgaW5saW5lIHN0cnVjdCByb2NrY2hpcF9wd21fY2hp
+cCAqdG9fcm9ja2NoaXBfcHdtX2NoaXAoc3RydWN0IHB3bV9jaGlwICpjaGlwKQogewotCXJldHVy
+biBjb250YWluZXJfb2YoYywgc3RydWN0IHJvY2tjaGlwX3B3bV9jaGlwLCBjaGlwKTsKKwlyZXR1
+cm4gY29udGFpbmVyX29mKGNoaXAsIHN0cnVjdCByb2NrY2hpcF9wd21fY2hpcCwgY2hpcCk7CiB9
+CiAKIHN0YXRpYyBpbnQgcm9ja2NoaXBfcHdtX2dldF9zdGF0ZShzdHJ1Y3QgcHdtX2NoaXAgKmNo
+aXAsCi0tIAoyLjM5LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
