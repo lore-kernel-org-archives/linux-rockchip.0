@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2FBCEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D006C001E0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jul 2023 17:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NpRYLEUG0+TOZAlN99EdywNEMQKyXdLRjiQvRORFYMk=; b=Yqckf+Go5fFIMk
-	IsoHr8uD+PfMPatNmYqGgyjrbE02Y27FNiDocZdgg+pCjF6q3o517JjjcI0JJ0nS2gYzJc0qRLe/i
-	6eMMTcHTaLszZzZ+cwJJqMTom05qQqMihtqubH2AI9X5oHCOMXAvrMguvy6Qzp48MKJIpWDXQZJG3
-	j5++6sQ3u3PZ63PB5rRp2smhhGSo8avnVLKzWjtg8vqBooXB7KJN0CtBm39d+c1vMQ0c67VkMA/qt
-	lFqp6AWtdd2pDotMU5f4++7stqrltLn1uZeYV4mIJjZNkNQas34FgGrDi9arbrlLi9eEYG5I6lVJj
-	8jQDx8vjp7zf01Jrlx3A==;
+	List-Owner; bh=c0pwgsryE0TIBEkx3vuj7uqyY/sZtvDIBSpKfs7Be98=; b=38IAuWb1GJYdFJ
+	Rav4OMeCTmk8aVtGvJ6GlHQSujhrjnS6B14zn0BT8XNnQT2XYv4J3rnIzE8GXgf9snW7CHkNLfjiA
+	8e/oT93vnBytueKCfIuclu/Rr3bzRm5QoIB0m7F85WD6neyFzzALwUnptBg2bN+7EFgH193SafpCr
+	0faJjMrpksha8givuL1imGUl9A9K0/x4Unow1a0hiVP+K096hxQOegFcjVMC376+8re84u1YIcCKJ
+	PK7IjSWYNgiAvoxErQqAMj6zG+HgHhX9lsco23t60bcm9/HeQZ5gUjEvzbGhjTinAM/noTkipFWqb
+	Y6GkS7YKTgudkkmLjO0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMtw-006pDv-09;
-	Fri, 14 Jul 2023 17:48:20 +0000
-Received: from mail-il1-f181.google.com ([209.85.166.181])
+	id 1qKMuS-006pdc-1Y;
+	Fri, 14 Jul 2023 17:48:52 +0000
+Received: from mail-io1-f50.google.com ([209.85.166.50])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMtj-006p1y-18;
-	Fri, 14 Jul 2023 17:48:10 +0000
-Received: by mail-il1-f181.google.com with SMTP id e9e14a558f8ab-345ff33d286so9640765ab.3;
-        Fri, 14 Jul 2023 10:48:06 -0700 (PDT)
+	id 1qKMuL-006pZi-0W;
+	Fri, 14 Jul 2023 17:48:48 +0000
+Received: by mail-io1-f50.google.com with SMTP id ca18e2360f4ac-78372b895d6so89509739f.2;
+        Fri, 14 Jul 2023 10:48:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356885; x=1691948885;
+        d=1e100.net; s=20221208; t=1689356924; x=1691948924;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=R7MnX9EU5DUHE5XRnhL3IlecGwH7oD185TOyFZlX8UQ=;
-        b=KqiNObid3E856wReOp1c4qaoNUw0lkumApycPhVIB7iTsm7eAaB/UV4Z6Hotlcj24n
-         NCaYRDH5pdk1e7WDHT35OzDum51EnhXYR+iwU4/SO3vqsfO+5DSQDLlq11PAkBDe2OkC
-         nPRyshB5+/UvIt+q9i12dDpDXD+sneI82MdY+Upc/coes8cRQa8em6+fZg5YyBxpl7Mk
-         nZK2H4D46ePf6WcQgMgDAjG+NiQXb/AFY8vqUek3bpUvIDE+VVhA/U4RbF+jRgVtG7NQ
-         CS/bMUhTRRmD49CrzGWaN1dvCD+eaEz98dWiFO4TSJrOy2eSSsRFqHCEqwsL7rDkSUYt
-         M6nQ==
-X-Gm-Message-State: ABy/qLZI2e8ciD0rJHdEhD/GXP17J1N74LqjyPBDdag4Se6ZiZwJPBHR
-	Bv/ELITzS1fqknFGU70IYg==
-X-Google-Smtp-Source: APBJJlF4o1MgPuSLnn/Qb5HrydHiexRpoGJKh/EJm02M6MDOXHTh9K4jdGuB1CSsRAAQSRbmMkUHaA==
-X-Received: by 2002:a92:c506:0:b0:347:733c:a55a with SMTP id r6-20020a92c506000000b00347733ca55amr4527148ilg.18.1689356885560;
-        Fri, 14 Jul 2023 10:48:05 -0700 (PDT)
+        bh=zBtCJ1Wj7uyT3akzTe+POqH017QGVk7t8G9DBPGwg8k=;
+        b=hZDc4BpPa4qPSUEVeLrrDjhdXBNUe4/oV9Xcfly8ZBIuriwhO7SiynlUAyemeKLMB0
+         IOYJl/VUsgS48lhFSGV4SD656iMkWIwTSlNBbwn84bHBfaUpy+lHbrPfFK69MgsXIt7d
+         jyTdzfefsbppHVXvHdAX2XbQfoShlxhrRBVMP1zt4f1BQVWKVZ2TDb5NX7M6Mjmjbo20
+         nSQaaCTeQ/UUyuj4iSlEjNW+WVbhxIMZnp08kN2MvMBlFV1Wxlh5hMm8cDF2ezu0S3Yb
+         9NmaTWw9/Kn0w9lCoRxT9tvTQkeJRcDFoTLvqjeuI2PM3TP/YT3pJN0PyMeAtwdJndSj
+         3qRA==
+X-Gm-Message-State: ABy/qLb6Jco4Mnv7JDBCNTzZM3aL2Mtw5WYLrqURwt9I7zKEe8Hm+OwU
+	dyUJQEKmtOB2wRrLt8a+Bg==
+X-Google-Smtp-Source: APBJJlF8/H7PmCypetZ49vRz8/piqGg71JXmwKFXt4Fz7m/Z/JPp9nESxuf4M6YPl/KXPamXOPxMZw==
+X-Received: by 2002:a6b:a04:0:b0:776:fd07:3c96 with SMTP id z4-20020a6b0a04000000b00776fd073c96mr5721801ioi.7.1689356924343;
+        Fri, 14 Jul 2023 10:48:44 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id b25-20020a05663801b900b0042b3a328ee0sm2683036jaq.166.2023.07.14.10.48.02
+        by smtp.gmail.com with ESMTPSA id u14-20020a6be30e000000b00786f5990435sm2843368ioc.7.2023.07.14.10.48.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:48:04 -0700 (PDT)
-Received: (nullmailer pid 4060565 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:47:54 -0000
+        Fri, 14 Jul 2023 10:48:43 -0700 (PDT)
+Received: (nullmailer pid 4061709 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:48:31 -0000
 From: Rob Herring <robh@kernel.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Han Xu <han.xu@nxp.com>, 
-	Harvey Hunt <harveyhuntnexus@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Liang Yang <liang.yang@amlogic.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+To: Vignesh Raghavendra <vigneshr@ti.com>, Tom Joseph <tjoseph@cadence.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Richard Zhu <hongxing.zhu@nxp.com>, Lucas Stach <l.stach@pengutronix.de>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Yue Wang <yue.wang@Amlogic.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
 	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Michal Simek <michal.simek@amd.com>, Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Tudor Ambarus <tudor.ambarus@linaro.org>, Pratyush Yadav <pratyush@kernel.org>, 
-	Michael Walle <michael@walle.cc>
-Cc: devicetree@vger.kernel.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: [PATCH] mtd: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:47:49 -0600
-Message-Id: <20230714174751.4060439-1-robh@kernel.org>
+	Jesper Nilsson <jesper.nilsson@axis.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
+	Xiaowei Song <songxiaowei@hisilicon.com>, Binghui Wang <wangbinghui@hisilicon.com>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, 
+	Will Deacon <will@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Joyce Ooi <joyce.ooi@intel.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: [PATCH] PCI: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:48:25 -0600
+Message-Id: <20230714174827.4061572-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104807_430936_C2E2289F 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20230714_104845_214002_D4E9AACD 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,524 +110,428 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/mtd/devices/mchp23k256.c                | 2 +-
- drivers/mtd/devices/mchp48l640.c                | 2 +-
- drivers/mtd/devices/mtd_dataflash.c             | 1 -
- drivers/mtd/maps/physmap-bt1-rom.c              | 1 -
- drivers/mtd/maps/physmap-gemini.c               | 2 +-
- drivers/mtd/maps/physmap-ixp4xx.c               | 2 +-
- drivers/mtd/maps/physmap-ixp4xx.h               | 1 +
- drivers/mtd/maps/physmap-versatile.c            | 2 +-
- drivers/mtd/maps/sun_uflash.c                   | 2 +-
- drivers/mtd/nand/ecc-mxic.c                     | 2 +-
- drivers/mtd/nand/ecc.c                          | 2 +-
- drivers/mtd/nand/onenand/onenand_omap2.c        | 2 +-
- drivers/mtd/nand/raw/ams-delta.c                | 2 +-
- drivers/mtd/nand/raw/davinci_nand.c             | 1 -
- drivers/mtd/nand/raw/denali_dt.c                | 1 -
- drivers/mtd/nand/raw/fsl_ifc_nand.c             | 1 +
- drivers/mtd/nand/raw/fsl_upm.c                  | 3 ++-
- drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c      | 2 +-
- drivers/mtd/nand/raw/ingenic/ingenic_ecc.c      | 1 +
- drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c | 1 -
- drivers/mtd/nand/raw/marvell_nand.c             | 3 ++-
- drivers/mtd/nand/raw/meson_nand.c               | 1 -
- drivers/mtd/nand/raw/mpc5121_nfc.c              | 4 ++--
- drivers/mtd/nand/raw/mtk_nand.c                 | 1 -
- drivers/mtd/nand/raw/mxc_nand.c                 | 1 -
- drivers/mtd/nand/raw/ndfc.c                     | 3 ++-
- drivers/mtd/nand/raw/omap2.c                    | 2 +-
- drivers/mtd/nand/raw/pl35x-nand-controller.c    | 4 +---
- drivers/mtd/nand/raw/qcom_nandc.c               | 2 +-
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 1 -
- drivers/mtd/nand/raw/s3c2410.c                  | 1 -
- drivers/mtd/nand/raw/sh_flctl.c                 | 1 -
- drivers/mtd/nand/raw/socrates_nand.c            | 3 ++-
- drivers/mtd/nand/raw/sunxi_nand.c               | 1 -
- drivers/mtd/nand/raw/xway_nand.c                | 3 ++-
- drivers/mtd/spi-nor/controllers/nxp-spifi.c     | 1 -
- 36 files changed, 29 insertions(+), 36 deletions(-)
+ drivers/pci/controller/cadence/pci-j721e.c           | 2 +-
+ drivers/pci/controller/cadence/pcie-cadence-plat.c   | 3 +--
+ drivers/pci/controller/cadence/pcie-cadence.c        | 1 +
+ drivers/pci/controller/dwc/pci-dra7xx.c              | 2 +-
+ drivers/pci/controller/dwc/pci-exynos.c              | 2 +-
+ drivers/pci/controller/dwc/pci-imx6.c                | 2 +-
+ drivers/pci/controller/dwc/pci-keystone.c            | 1 -
+ drivers/pci/controller/dwc/pci-meson.c               | 2 +-
+ drivers/pci/controller/dwc/pcie-artpec6.c            | 2 +-
+ drivers/pci/controller/dwc/pcie-designware-plat.c    | 2 +-
+ drivers/pci/controller/dwc/pcie-designware.c         | 2 +-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c        | 2 +-
+ drivers/pci/controller/dwc/pcie-intel-gw.c           | 2 ++
+ drivers/pci/controller/dwc/pcie-kirin.c              | 3 +--
+ drivers/pci/controller/dwc/pcie-qcom.c               | 2 +-
+ drivers/pci/controller/dwc/pcie-tegra194.c           | 1 -
+ drivers/pci/controller/dwc/pcie-uniphier-ep.c        | 2 +-
+ drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 3 ---
+ drivers/pci/controller/pci-ftpci100.c                | 3 +--
+ drivers/pci/controller/pci-host-common.c             | 2 +-
+ drivers/pci/controller/pci-ixp4xx.c                  | 3 +--
+ drivers/pci/controller/pci-loongson.c                | 2 +-
+ drivers/pci/controller/pci-v3-semi.c                 | 3 +--
+ drivers/pci/controller/pcie-altera.c                 | 5 ++---
+ drivers/pci/controller/pcie-rockchip-host.c          | 4 +---
+ drivers/pci/controller/pcie-rockchip.c               | 1 +
+ drivers/pci/endpoint/pci-epc-core.c                  | 1 -
+ drivers/pci/probe.c                                  | 1 -
+ 28 files changed, 25 insertions(+), 36 deletions(-)
 
-diff --git a/drivers/mtd/devices/mchp23k256.c b/drivers/mtd/devices/mchp23k256.c
-index 3a6ea7a6a30c..d533475fda15 100644
---- a/drivers/mtd/devices/mchp23k256.c
-+++ b/drivers/mtd/devices/mchp23k256.c
-@@ -15,7 +15,7 @@
- #include <linux/sizes.h>
- #include <linux/spi/flash.h>
- #include <linux/spi/spi.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- #define MAX_CMD_SIZE		4
- 
-diff --git a/drivers/mtd/devices/mchp48l640.c b/drivers/mtd/devices/mchp48l640.c
-index 40cd5041174c..f576e6a890e8 100644
---- a/drivers/mtd/devices/mchp48l640.c
-+++ b/drivers/mtd/devices/mchp48l640.c
-@@ -22,7 +22,7 @@
- #include <linux/sizes.h>
- #include <linux/spi/flash.h>
- #include <linux/spi/spi.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- struct mchp48_caps {
- 	unsigned int size;
-diff --git a/drivers/mtd/devices/mtd_dataflash.c b/drivers/mtd/devices/mtd_dataflash.c
-index 1d3b2a94581f..0c1b93303618 100644
---- a/drivers/mtd/devices/mtd_dataflash.c
-+++ b/drivers/mtd/devices/mtd_dataflash.c
-@@ -13,7 +13,6 @@
- #include <linux/err.h>
- #include <linux/math64.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #include <linux/spi/spi.h>
- #include <linux/spi/flash.h>
-diff --git a/drivers/mtd/maps/physmap-bt1-rom.c b/drivers/mtd/maps/physmap-bt1-rom.c
-index 58782cfaf71c..60dccc48f99e 100644
---- a/drivers/mtd/maps/physmap-bt1-rom.c
-+++ b/drivers/mtd/maps/physmap-bt1-rom.c
-@@ -14,7 +14,6 @@
- #include <linux/mtd/xip.h>
- #include <linux/mux/consumer.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/string.h>
- #include <linux/types.h>
-diff --git a/drivers/mtd/maps/physmap-gemini.c b/drivers/mtd/maps/physmap-gemini.c
-index d4a46e159d38..9d3b4bf84a1a 100644
---- a/drivers/mtd/maps/physmap-gemini.c
-+++ b/drivers/mtd/maps/physmap-gemini.c
-@@ -8,10 +8,10 @@
-  */
- #include <linux/export.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/xip.h>
+diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
+index e70213c9060a..2c87e7728a65 100644
+--- a/drivers/pci/controller/cadence/pci-j721e.c
++++ b/drivers/pci/controller/cadence/pci-j721e.c
+@@ -14,8 +14,8 @@
+ #include <linux/irqdomain.h>
  #include <linux/mfd/syscon.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/bitops.h>
- #include <linux/pinctrl/consumer.h>
-diff --git a/drivers/mtd/maps/physmap-ixp4xx.c b/drivers/mtd/maps/physmap-ixp4xx.c
-index 6a054229a8a0..c561468f95f6 100644
---- a/drivers/mtd/maps/physmap-ixp4xx.c
-+++ b/drivers/mtd/maps/physmap-ixp4xx.c
-@@ -11,7 +11,7 @@
-  */
- #include <linux/export.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/xip.h>
- #include "physmap-ixp4xx.h"
-diff --git a/drivers/mtd/maps/physmap-ixp4xx.h b/drivers/mtd/maps/physmap-ixp4xx.h
-index b0fc49b7f3ed..46824c57e58a 100644
---- a/drivers/mtd/maps/physmap-ixp4xx.h
-+++ b/drivers/mtd/maps/physmap-ixp4xx.h
-@@ -1,5 +1,6 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- #include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/mtd/map.h>
- 
- #ifdef CONFIG_MTD_PHYSMAP_IXP4XX
-diff --git a/drivers/mtd/maps/physmap-versatile.c b/drivers/mtd/maps/physmap-versatile.c
-index a1b8b7b25f88..8e15d514c82d 100644
---- a/drivers/mtd/maps/physmap-versatile.c
-+++ b/drivers/mtd/maps/physmap-versatile.c
-@@ -9,9 +9,9 @@
- #include <linux/io.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/bitops.h>
- #include "physmap-versatile.h"
-diff --git a/drivers/mtd/maps/sun_uflash.c b/drivers/mtd/maps/sun_uflash.c
-index 860b19f77090..2bfdf1b7e18a 100644
---- a/drivers/mtd/maps/sun_uflash.c
-+++ b/drivers/mtd/maps/sun_uflash.c
-@@ -14,7 +14,7 @@
- #include <linux/errno.h>
- #include <linux/ioport.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <asm/prom.h>
- #include <linux/uaccess.h>
-diff --git a/drivers/mtd/nand/ecc-mxic.c b/drivers/mtd/nand/ecc-mxic.c
-index 22a760e6024e..47e10945b8d2 100644
---- a/drivers/mtd/nand/ecc-mxic.c
-+++ b/drivers/mtd/nand/ecc-mxic.c
-@@ -18,7 +18,7 @@
- #include <linux/mtd/nand.h>
- #include <linux/mtd/nand-ecc-mxic.h>
- #include <linux/mutex.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-diff --git a/drivers/mtd/nand/ecc.c b/drivers/mtd/nand/ecc.c
-index 5250764cedee..8f996e8d61b8 100644
---- a/drivers/mtd/nand/ecc.c
-+++ b/drivers/mtd/nand/ecc.c
-@@ -95,9 +95,9 @@
- 
- #include <linux/module.h>
- #include <linux/mtd/nand.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_platform.h>
- 
- static LIST_HEAD(on_host_hw_engines);
-diff --git a/drivers/mtd/nand/onenand/onenand_omap2.c b/drivers/mtd/nand/onenand/onenand_omap2.c
-index ff7af98604df..7db53b59605d 100644
---- a/drivers/mtd/nand/onenand/onenand_omap2.c
-+++ b/drivers/mtd/nand/onenand/onenand_omap2.c
-@@ -13,7 +13,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/onenand.h>
- #include <linux/mtd/partitions.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/omap-gpmc.h>
- #include <linux/platform_device.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/mtd/nand/raw/ams-delta.c b/drivers/mtd/nand/raw/ams-delta.c
-index fa621ffa6490..919816a7aca7 100644
---- a/drivers/mtd/nand/raw/ams-delta.c
-+++ b/drivers/mtd/nand/raw/ams-delta.c
-@@ -22,7 +22,7 @@
- #include <linux/mtd/nand-gpio.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/sizes.h>
- 
-diff --git a/drivers/mtd/nand/raw/davinci_nand.c b/drivers/mtd/nand/raw/davinci_nand.c
-index 415d6aaa8255..e75d81cf8c21 100644
---- a/drivers/mtd/nand/raw/davinci_nand.c
-+++ b/drivers/mtd/nand/raw/davinci_nand.c
-@@ -18,7 +18,6 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
- #include <linux/slab.h>
--#include <linux/of_device.h>
- #include <linux/of.h>
- 
- #include <linux/platform_data/mtd-davinci.h>
-diff --git a/drivers/mtd/nand/raw/denali_dt.c b/drivers/mtd/nand/raw/denali_dt.c
-index 915047e3fbc2..edac8749bb93 100644
---- a/drivers/mtd/nand/raw/denali_dt.c
-+++ b/drivers/mtd/nand/raw/denali_dt.c
-@@ -13,7 +13,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
- 
-diff --git a/drivers/mtd/nand/raw/fsl_ifc_nand.c b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-index fa537fee6701..20bb1e0cb5eb 100644
---- a/drivers/mtd/nand/raw/fsl_ifc_nand.c
-+++ b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include <linux/module.h>
-+#include <linux/platform_device.h>
- #include <linux/types.h>
- #include <linux/kernel.h>
- #include <linux/of_address.h>
-diff --git a/drivers/mtd/nand/raw/fsl_upm.c b/drivers/mtd/nand/raw/fsl_upm.c
-index 086426139173..5bf73efe42e7 100644
---- a/drivers/mtd/nand/raw/fsl_upm.c
-+++ b/drivers/mtd/nand/raw/fsl_upm.c
-@@ -13,7 +13,8 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
- #include <linux/mtd/mtd.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/io.h>
- #include <linux/slab.h>
- #include <asm/fsl_lbc.h>
-diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-index 500e7a28d2e4..e71ad2fcec23 100644
---- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-+++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-@@ -13,7 +13,7 @@
- #include <linux/module.h>
- #include <linux/mtd/partitions.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
+ #include <linux/pci.h>
 +#include <linux/platform_device.h>
  #include <linux/pm_runtime.h>
- #include <linux/dma/mxs-dma.h>
- #include "gpmi-nand.h"
-diff --git a/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c b/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-index 9054559e52dd..525c34c281b6 100644
---- a/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-+++ b/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-@@ -9,6 +9,7 @@
- #include <linux/clk.h>
- #include <linux/init.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-index b9f135297aa0..6748226b8bd1 100644
---- a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-+++ b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-@@ -13,7 +13,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/gpio/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-diff --git a/drivers/mtd/nand/raw/marvell_nand.c b/drivers/mtd/nand/raw/marvell_nand.c
-index 30c15e4e1cc0..7d0204ea305b 100644
---- a/drivers/mtd/nand/raw/marvell_nand.c
-+++ b/drivers/mtd/nand/raw/marvell_nand.c
-@@ -77,9 +77,10 @@
- #include <linux/module.h>
- #include <linux/clk.h>
- #include <linux/mtd/rawnand.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/iopoll.h>
- #include <linux/interrupt.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/mfd/syscon.h>
  #include <linux/regmap.h>
-diff --git a/drivers/mtd/nand/raw/meson_nand.c b/drivers/mtd/nand/raw/meson_nand.c
-index d3faf8086631..ef821b43b3d4 100644
---- a/drivers/mtd/nand/raw/meson_nand.c
-+++ b/drivers/mtd/nand/raw/meson_nand.c
-@@ -19,7 +19,6 @@
- #include <linux/module.h>
- #include <linux/iopoll.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/sched/task_stack.h>
  
- #define NFC_REG_CMD		0x00
-diff --git a/drivers/mtd/nand/raw/mpc5121_nfc.c b/drivers/mtd/nand/raw/mpc5121_nfc.c
-index ab05ee65702c..6e8e790f84e7 100644
---- a/drivers/mtd/nand/raw/mpc5121_nfc.c
-+++ b/drivers/mtd/nand/raw/mpc5121_nfc.c
-@@ -21,10 +21,10 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-plat.c b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+index bac0541317c1..371ffc1f00f8 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-plat.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+@@ -6,11 +6,10 @@
+  * Author: Tom Joseph <tjoseph@cadence.com>
+  */
+ #include <linux/kernel.h>
+-#include <linux/of_address.h>
 +#include <linux/of.h>
+ #include <linux/of_pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+-#include <linux/of_device.h>
+ #include "pcie-cadence.h"
+ 
+ #define CDNS_PLAT_CPU_TO_BUS_ADDR	0x0FFFFFFF
+diff --git a/drivers/pci/controller/cadence/pcie-cadence.c b/drivers/pci/controller/cadence/pcie-cadence.c
+index 13c4032ca379..4251fac5e310 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence.c
++++ b/drivers/pci/controller/cadence/pcie-cadence.c
+@@ -4,6 +4,7 @@
+ // Author: Cyrille Pitchen <cyrille.pitchen@free-electrons.com>
+ 
+ #include <linux/kernel.h>
++#include <linux/of.h>
+ 
+ #include "pcie-cadence.h"
+ 
+diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
+index 4ae807e7cf79..b445ffe95e3f 100644
+--- a/drivers/pci/controller/dwc/pci-dra7xx.c
++++ b/drivers/pci/controller/dwc/pci-dra7xx.c
+@@ -16,7 +16,7 @@
+ #include <linux/irqdomain.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_gpio.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+diff --git a/drivers/pci/controller/dwc/pci-exynos.c b/drivers/pci/controller/dwc/pci-exynos.c
+index ec5611005566..6319082301d6 100644
+--- a/drivers/pci/controller/dwc/pci-exynos.c
++++ b/drivers/pci/controller/dwc/pci-exynos.c
+@@ -14,11 +14,11 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+-#include <linux/of_device.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+ 
+ #include "pcie-designware.h"
+diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+index 27aaa2a6bf39..d123797a06a2 100644
+--- a/drivers/pci/controller/dwc/pci-imx6.c
++++ b/drivers/pci/controller/dwc/pci-imx6.c
+@@ -17,8 +17,8 @@
+ #include <linux/mfd/syscon/imx6q-iomuxc-gpr.h>
+ #include <linux/mfd/syscon/imx7-iomuxc-gpr.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/of_gpio.h>
+-#include <linux/of_device.h>
  #include <linux/of_address.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+index 78818853af9e..49aea6ce3e87 100644
+--- a/drivers/pci/controller/dwc/pci-keystone.c
++++ b/drivers/pci/controller/dwc/pci-keystone.c
+@@ -19,7 +19,6 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/msi.h>
+ #include <linux/of.h>
 -#include <linux/of_device.h>
  #include <linux/of_irq.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- 
- #include <asm/mpc5121.h>
- 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index b2fa6b2074ab..b6eb8cb6b5e9 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -16,7 +16,6 @@
+ #include <linux/of_pci.h>
+ #include <linux/phy/phy.h>
+diff --git a/drivers/pci/controller/dwc/pci-meson.c b/drivers/pci/controller/dwc/pci-meson.c
+index c1527693bed9..973b0fc81315 100644
+--- a/drivers/pci/controller/dwc/pci-meson.c
++++ b/drivers/pci/controller/dwc/pci-meson.c
+@@ -9,7 +9,6 @@
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+-#include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+@@ -17,6 +16,7 @@
+ #include <linux/resource.h>
+ #include <linux/types.h>
+ #include <linux/phy/phy.h>
++#include <linux/mod_devicetable.h>
  #include <linux/module.h>
- #include <linux/iopoll.h>
- #include <linux/of.h>
+ 
+ #include "pcie-designware.h"
+diff --git a/drivers/pci/controller/dwc/pcie-artpec6.c b/drivers/pci/controller/dwc/pcie-artpec6.c
+index 98102079e26d..9b572a2b2c9a 100644
+--- a/drivers/pci/controller/dwc/pcie-artpec6.c
++++ b/drivers/pci/controller/dwc/pcie-artpec6.c
+@@ -10,7 +10,7 @@
+ #include <linux/delay.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
 -#include <linux/of_device.h>
- #include <linux/mtd/nand-ecc-mtk.h>
- 
- /* NAND controller register definition */
-diff --git a/drivers/mtd/nand/raw/mxc_nand.c b/drivers/mtd/nand/raw/mxc_nand.c
-index 3d4b2e8294ea..0cd98d5714fc 100644
---- a/drivers/mtd/nand/raw/mxc_nand.c
-+++ b/drivers/mtd/nand/raw/mxc_nand.c
-@@ -20,7 +20,6 @@
- #include <linux/irq.h>
- #include <linux/completion.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #define DRIVER_NAME "mxc_nand"
- 
-diff --git a/drivers/mtd/nand/raw/ndfc.c b/drivers/mtd/nand/raw/ndfc.c
-index 57f3db32122d..3bb32a7c6d67 100644
---- a/drivers/mtd/nand/raw/ndfc.c
-+++ b/drivers/mtd/nand/raw/ndfc.c
-@@ -22,8 +22,9 @@
- #include <linux/mtd/ndfc.h>
- #include <linux/slab.h>
- #include <linux/mtd/mtd.h>
 +#include <linux/of.h>
- #include <linux/of_address.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/resource.h>
+diff --git a/drivers/pci/controller/dwc/pcie-designware-plat.c b/drivers/pci/controller/dwc/pcie-designware-plat.c
+index 1fcfb840f238..b625841e98aa 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-plat.c
++++ b/drivers/pci/controller/dwc/pcie-designware-plat.c
+@@ -12,7 +12,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/resource.h>
+diff --git a/drivers/pci/controller/dwc/pcie-designware.c b/drivers/pci/controller/dwc/pcie-designware.c
+index c87848cd8686..2459f2a61b9b 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.c
++++ b/drivers/pci/controller/dwc/pcie-designware.c
+@@ -16,7 +16,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/ioport.h>
+ #include <linux/of.h>
 -#include <linux/of_platform.h>
 +#include <linux/platform_device.h>
- #include <asm/io.h>
+ #include <linux/sizes.h>
+ #include <linux/types.h>
  
- #define NDFC_MAX_CS    4
-diff --git a/drivers/mtd/nand/raw/omap2.c b/drivers/mtd/nand/raw/omap2.c
-index db22b3af16d8..e057c03a197d 100644
---- a/drivers/mtd/nand/raw/omap2.c
-+++ b/drivers/mtd/nand/raw/omap2.c
-@@ -22,7 +22,7 @@
- #include <linux/iopoll.h>
- #include <linux/slab.h>
- #include <linux/of.h>
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index c1e7653e508e..2fe42c70097f 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -14,7 +14,7 @@
+ #include <linux/irqdomain.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
 -#include <linux/of_device.h>
-+#include <linux/of_platform.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/dwc/pcie-intel-gw.c b/drivers/pci/controller/dwc/pcie-intel-gw.c
+index 9c7caed9e706..c9c93524e01d 100644
+--- a/drivers/pci/controller/dwc/pcie-intel-gw.c
++++ b/drivers/pci/controller/dwc/pcie-intel-gw.c
+@@ -9,9 +9,11 @@
+ #include <linux/clk.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/iopoll.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/pci_regs.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ #include <linux/reset.h>
  
- #include <linux/platform_data/elm.h>
- 
-diff --git a/drivers/mtd/nand/raw/pl35x-nand-controller.c b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-index 28b7bd7e22eb..8da5fee321b5 100644
---- a/drivers/mtd/nand/raw/pl35x-nand-controller.c
-+++ b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-@@ -23,9 +23,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
+ #include "../../pci.h"
+diff --git a/drivers/pci/controller/dwc/pcie-kirin.c b/drivers/pci/controller/dwc/pcie-kirin.c
+index d09507f822a7..d93bc2906950 100644
+--- a/drivers/pci/controller/dwc/pcie-kirin.c
++++ b/drivers/pci/controller/dwc/pcie-kirin.c
+@@ -16,8 +16,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/interrupt.h>
+ #include <linux/mfd/syscon.h>
 -#include <linux/of_address.h>
 -#include <linux/of_device.h>
--#include <linux/of_platform.h>
 +#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/clk.h>
-diff --git a/drivers/mtd/nand/raw/qcom_nandc.c b/drivers/mtd/nand/raw/qcom_nandc.c
-index 72d6168d8a1b..df245353b12b 100644
---- a/drivers/mtd/nand/raw/qcom_nandc.c
-+++ b/drivers/mtd/nand/raw/qcom_nandc.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2016, The Linux Foundation. All rights reserved.
-  */
- #include <linux/clk.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/bitops.h>
- #include <linux/dma/qcom_adm.h>
-@@ -12,7 +13,6 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
+ #include <linux/of_gpio.h>
+ #include <linux/of_pci.h>
+ #include <linux/phy/phy.h>
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index 7a87a47eb7ed..cee4e400a695 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -19,7 +19,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_gpio.h>
+ #include <linux/pci.h>
+ #include <linux/pm_runtime.h>
+diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
+index e1db909f53ec..383ba71d1e8f 100644
+--- a/drivers/pci/controller/dwc/pcie-tegra194.c
++++ b/drivers/pci/controller/dwc/pcie-tegra194.c
+@@ -20,7 +20,6 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+diff --git a/drivers/pci/controller/dwc/pcie-uniphier-ep.c b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+index 4d0a587c0ba5..cba3c88fcf39 100644
+--- a/drivers/pci/controller/dwc/pcie-uniphier-ep.c
++++ b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+@@ -11,7 +11,7 @@
  #include <linux/delay.h>
- #include <linux/dma/qcom_bam_dma.h>
- 
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index 2312e27362cb..0ec03ffb4846 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -15,7 +15,6 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/of.h>
+ #include <linux/init.h>
+ #include <linux/iopoll.h>
 -#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/pci.h>
+ #include <linux/phy/phy.h>
  #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/mtd/nand/raw/s3c2410.c b/drivers/mtd/nand/raw/s3c2410.c
-index ac80aaf5b4e3..3d3d5c9814ff 100644
---- a/drivers/mtd/nand/raw/s3c2410.c
-+++ b/drivers/mtd/nand/raw/s3c2410.c
-@@ -26,7 +26,6 @@
- #include <linux/clk.h>
- #include <linux/cpufreq.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
-diff --git a/drivers/mtd/nand/raw/sh_flctl.c b/drivers/mtd/nand/raw/sh_flctl.c
-index 63bf20c41719..08211e96ce64 100644
---- a/drivers/mtd/nand/raw/sh_flctl.c
-+++ b/drivers/mtd/nand/raw/sh_flctl.c
-@@ -17,7 +17,6 @@
+diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+index 31a7bdebe540..45b97a4b14db 100644
+--- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
++++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+@@ -17,9 +17,6 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/msi.h>
+-#include <linux/of_address.h>
+-#include <linux/of_irq.h>
+-#include <linux/of_platform.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+index 6e7981d2ed5e..ffdeed25e961 100644
+--- a/drivers/pci/controller/pci-ftpci100.c
++++ b/drivers/pci/controller/pci-ftpci100.c
+@@ -15,8 +15,7 @@
  #include <linux/interrupt.h>
  #include <linux/io.h>
- #include <linux/of.h>
+ #include <linux/kernel.h>
+-#include <linux/of_address.h>
 -#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/sh_dma.h>
-diff --git a/drivers/mtd/nand/raw/socrates_nand.c b/drivers/mtd/nand/raw/socrates_nand.c
-index a8b720ffe9e8..76d50eb9f1db 100644
---- a/drivers/mtd/nand/raw/socrates_nand.c
-+++ b/drivers/mtd/nand/raw/socrates_nand.c
-@@ -8,8 +8,9 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
+index d3924a44db02..6be3266cd7b5 100644
+--- a/drivers/pci/controller/pci-host-common.c
++++ b/drivers/pci/controller/pci-host-common.c
+@@ -9,8 +9,8 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/module.h>
 +#include <linux/of.h>
  #include <linux/of_address.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
+-#include <linux/of_device.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci-ecam.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pci-ixp4xx.c b/drivers/pci/controller/pci-ixp4xx.c
+index e44252db6085..acb85e0d5675 100644
+--- a/drivers/pci/controller/pci-ixp4xx.c
++++ b/drivers/pci/controller/pci-ixp4xx.c
+@@ -19,8 +19,7 @@
+ #include <linux/init.h>
  #include <linux/io.h>
- 
- #define FPGA_NAND_CMD_MASK		(0x7 << 28)
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 9884304634f6..c6cd7713bee7 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -19,7 +19,6 @@
- #include <linux/moduleparam.h>
- #include <linux/platform_device.h>
- #include <linux/of.h>
+ #include <linux/kernel.h>
+-#include <linux/of_address.h>
 -#include <linux/of_device.h>
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
-diff --git a/drivers/mtd/nand/raw/xway_nand.c b/drivers/mtd/nand/raw/xway_nand.c
-index 6b1e2a2bba15..51d802a165ed 100644
---- a/drivers/mtd/nand/raw/xway_nand.c
-+++ b/drivers/mtd/nand/raw/xway_nand.c
-@@ -7,7 +7,8 @@
- 
- #include <linux/mtd/rawnand.h>
- #include <linux/of_gpio.h>
--#include <linux/of_platform.h>
 +#include <linux/of.h>
-+#include <linux/platform_device.h>
- 
- #include <lantiq_soc.h>
- 
-diff --git a/drivers/mtd/spi-nor/controllers/nxp-spifi.c b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-index 794c7b7d5c92..337e83bf3362 100644
---- a/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-+++ b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-@@ -17,7 +17,6 @@
- #include <linux/mtd/partitions.h>
- #include <linux/mtd/spi-nor.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
  #include <linux/platform_device.h>
- #include <linux/spi/spi.h>
+diff --git a/drivers/pci/controller/pci-loongson.c b/drivers/pci/controller/pci-loongson.c
+index fe0f732f6e43..d45e7b8dc530 100644
+--- a/drivers/pci/controller/pci-loongson.c
++++ b/drivers/pci/controller/pci-loongson.c
+@@ -5,7 +5,7 @@
+  * Copyright (C) 2020 Jiaxun Yang <jiaxun.yang@flygoat.com>
+  */
  
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/pci_ids.h>
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index ca44b0c83d1b..0917f571bb6d 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -20,8 +20,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
+index c95a29fff8bf..a9536dc4bf96 100644
+--- a/drivers/pci/controller/pcie-altera.c
++++ b/drivers/pci/controller/pcie-altera.c
+@@ -9,11 +9,10 @@
+ #include <linux/delay.h>
+ #include <linux/interrupt.h>
+ #include <linux/irqchip/chained_irq.h>
++#include <linux/irqdomain.h>
+ #include <linux/init.h>
+ #include <linux/module.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
++#include <linux/of.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 2438bc9b3a1a..afbbdccd195d 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -24,10 +24,8 @@
+ #include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_pci.h>
+-#include <linux/of_platform.h>
+ #include <linux/pci.h>
+ #include <linux/pci_ids.h>
+ #include <linux/phy/phy.h>
+diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+index 1aa84035a8bc..0ef2e622d36e 100644
+--- a/drivers/pci/controller/pcie-rockchip.c
++++ b/drivers/pci/controller/pcie-rockchip.c
+@@ -15,6 +15,7 @@
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/iopoll.h>
++#include <linux/of.h>
+ #include <linux/of_pci.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+index 6c54fa5684d2..5a4a8b0be626 100644
+--- a/drivers/pci/endpoint/pci-epc-core.c
++++ b/drivers/pci/endpoint/pci-epc-core.c
+@@ -9,7 +9,6 @@
+ #include <linux/device.h>
+ #include <linux/slab.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ 
+ #include <linux/pci-epc.h>
+ #include <linux/pci-epf.h>
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index 8bac3ce02609..31fb02fbb2cc 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -8,7 +8,6 @@
+ #include <linux/init.h>
+ #include <linux/pci.h>
+ #include <linux/msi.h>
+-#include <linux/of_device.h>
+ #include <linux/of_pci.h>
+ #include <linux/pci_hotplug.h>
+ #include <linux/slab.h>
 -- 
 2.40.1
 
