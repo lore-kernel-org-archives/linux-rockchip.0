@@ -4,61 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1EAEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jul 2023 04:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B8BEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jul 2023 09:27:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SYM+P+4/rFedJLRIInlRKYA9eXNq9uIOwp7dojNW4cw=; b=rQN7Vex07mGCel
-	JYMoczqV6iwDgWWXgT4uMfHuGK5dCID+rs8fB/HhagsLtoljoY4einn5nbPYiQw8aGXQJidot6wD5
-	ugHyxeVOcISbyB04L2a1T+ByC/pHM8oHvaGeV5qOZY7oZK35yMpGeLfjJ9ODDtRfpeWcX6Rtmf/4C
-	nnhInBOa9sJMY8hY/fih4IdgmY2PoWye4KupUxGlp8DXgzAEXO27vUD8wYhbxBCKqDmFKRrmu1JAZ
-	mbDUdW+ah/Td2uaRaBs+UMN47IYfiUyZINfdy27LiHOqnDQUn/IFkphxHWEOS+1akfB2d0zkBeVCD
-	Vsa7Lo7WzSzapi4ob8Tw==;
+	List-Owner; bh=HD+3l4G5tQ8tBzIdsdl1qFTo/tOhtSeFBYTjWOr61Q8=; b=vxll4AcaDoYGza
+	Fba2exe93Pl/Z1qORu7Z2+RTDV+tyfLzxRzwZGF7Dk1fpa9OGtKBbbdRGr2eMNsLevQRYihN9RpXH
+	gVSv9vG54Tmca9Gb1dPFZAm4ymptAfwjppKqbrjWR7t5k8BSIxbLcCtEjpYtVbz5iNnEfUYnQ4EYZ
+	4TeWbxV5hf42X5waB05m8T/7EifYhNX+HsdkO9PBiDECxiwqacDSF7CCG/ZIdhF0WgwQbienOd+HM
+	Awkjm2IwMOPyoAYNUgZ22poX5Nj1iKLMZQ7NLwKk2EjGztZi1t2QldgSoUjNXw6PktwUntUZm8UGm
+	1EAt1Y01HV9uXvFofFiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKXEU-007upc-1T;
-	Sat, 15 Jul 2023 04:50:14 +0000
-Received: from smtpbgbr2.qq.com ([54.207.22.56])
+	id 1qKbYH-008IFC-1u;
+	Sat, 15 Jul 2023 09:26:57 +0000
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKXEQ-007unc-0l
-	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Jul 2023 04:50:13 +0000
-X-QQ-mid: bizesmtp66t1689396554ts0a65lb
-Received: from [192.168.159.131] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Sat, 15 Jul 2023 12:49:12 +0800 (CST)
-X-QQ-SSF: 01100000000000B0G000000A0000000
-X-QQ-FEAT: nA8mzCjPbKhB82fJ7kfmdm6ovveqkbcT39SgoDHoyXXLIX29WusPB54nXKgW9
-	xYqCY4xmJxcVmvBB6QdRETRptLLwn8KkT1F/GO4r1y2E80fEGOGLczD5XVgzSLN4tWVf/JN
-	VMSM+dm3KuPK7Z3J0CTcrUNwgQRA7u9MFMJO7mzEZqRU4sK7o3MuwYmJ/4z1674cLv3QAYC
-	9wgXQGTCe0k1jxoCNMhhKlABfJM6NmbpPMqhhiaUDgDv4DLZ6z/0U9BH50VFFFujCuvRAQ0
-	xfAIqc8OfvEtDKFcjK+T37kJlY5e2JV004Ntw6/y5GARWOHuRBBL+re7Ks2SBKXQ49JC+k9
-	U8vibhPTp8LWsnPdtZBxC/97dz5uYxphhbpkwLGMc4Xcfa4szQ=
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 2870174752306850587
-Message-ID: <88A84626E8619FC1+da8b7cbd-ecc3-bd30-ed88-d6f13a39acd3@radxa.com>
-Date: Sat, 15 Jul 2023 13:49:12 +0900
+	id 1qKbYB-008IDN-27;
+	Sat, 15 Jul 2023 09:26:53 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-1b056276889so2090123fac.2;
+        Sat, 15 Jul 2023 02:26:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689413210; x=1692005210;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wHphB4LnIXM8B5KTzxaE1knTLhvmv4UUsDUmEXJtUjc=;
+        b=KNtkg40Donc1RJ+Y/N6bMmujMSl9cywEa6fXVSQYqV4W4lT8G1IFlO5DKCTqezy9NY
+         lefwY54PRhNWProidCgY7SJny7AEfavu3g+BjFgAL5dZzNMIElbAwgo4QZnm4OLwjy+V
+         CVJWSo1L7gWOhYkpGKP0r9oukax6+UlfkfofBx8xxPcLUf3ek7zbTjABn/JHDdvTWXCu
+         WWDX31kpkxyfmd7Q/WE+0i7y3grMAoIl2p8ABV+V0g6ZwAueUBzPNbjvXwLF4/1Voo58
+         THpoQ4ecU8W2lHElPdLC420Acx2PDSK/3KkrYlQGhj1Cbwmy3bV4wSFCbbKfSoIqtJyV
+         8cKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689413210; x=1692005210;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wHphB4LnIXM8B5KTzxaE1knTLhvmv4UUsDUmEXJtUjc=;
+        b=kHlIYqvXhlsHYo7ETWKyY5WUchr2JpdUgo4u8S+UiI1MKkG7LywgmdzuJJnBnXK+iY
+         vfZ3ci4rXDc3RKFt0fV9ok1yyK1rWeCqPEbweCmhHVaN5/L47YDr6a4O3ZCLS2pQh+yM
+         HybHB3KklwvslNtiB+nGiDsHTJt4lIgz3mcdfbSXPedg+bU0rLmsPMFmqaAI0/4QLIM3
+         Wt2wUSJpqnINYnNvVlye43qPstAu6NibOvRwzSEZzIpcOuUPG/gffGpV/z3W95jm8was
+         n2AzeXXv18/IVpHOotSTsoClgVFIeiCjhaP76qsQKAl+/QVhIoeEAkihIRBvptLkZHJb
+         u4fA==
+X-Gm-Message-State: ABy/qLaOE6Ocf30kVG+iwC4gRs6uO3FyqCQX41ZY+TxOUg2aFld+7LRR
+	q1Nqs/TeEtV8wnw11wdE9whgOBT3LY7uMWiigrw=
+X-Google-Smtp-Source: APBJJlGwdJmxyzGjSGIAgoqFi7CGlWiMJBmcsPBzo9lxW5BLyYxxPOYfHlixbBaupkZxkAV8b0mEWpZJ8j8VMX6oWRI=
+X-Received: by 2002:a05:6870:328d:b0:177:a158:9ef6 with SMTP id
+ q13-20020a056870328d00b00177a1589ef6mr6679986oac.52.1689413209848; Sat, 15
+ Jul 2023 02:26:49 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] arm64: dts: rockchip: rock-3a: make ethernet work
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
- michael.riesch@wolfvision.net, Anand Moon <linux.amoon@gmail.com>
-Cc: linux-rockchip@lists.infradead.org
-References: <20230714063027.74489-1-naoki@radxa.com>
- <25008843.6Emhk5qWAg@phil> <3e4a649c-a8fe-ff84-3beb-c56be1afff9b@kwiboo.se>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <3e4a649c-a8fe-ff84-3beb-c56be1afff9b@kwiboo.se>
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:radxa.com:qybglogicsvrgz:qybglogicsvrgz6a-0
+References: <20230714174841.4061919-1-robh@kernel.org>
+In-Reply-To: <20230714174841.4061919-1-robh@kernel.org>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Sat, 15 Jul 2023 11:26:38 +0200
+Message-ID: <CAMhs-H-6tAV-+U-4zZDKs47eKCJr+kZ-Op8vR4SyJyE5LK_2aw@mail.gmail.com>
+Subject: Re: [PATCH] phy: Explicitly include correct DT includes
+To: Rob Herring <robh@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Justin Chen <justin.chen@broadcom.com>, 
+	Al Cooper <alcooperx@gmail.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Ioana Ciornei <ioana.ciornei@nxp.com>, Yu Chen <chenyu56@huawei.com>, 
+	Binghui Wang <wangbinghui@hisilicon.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Lubomir Rintel <lkundrak@v3.sk>, Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wolfgang Grandegger <wg@grandegger.com>, Marc Kleine-Budde <mkl@pengutronix.de>, Alban Bedel <albeu@free.fr>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Robert Marko <robert.marko@sartura.hr>, 
+	Luka Perkov <luka.perkov@sartura.hr>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	JC Kuo <jckuo@nvidia.com>, devicetree@vger.kernel.org, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, 
+	linux-usb@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_215011_086087_85FD1C97 
-X-CRM114-Status: GOOD (  27.19  )
+X-CRM114-CacheID: sfid-20230715_022651_698638_D5D4F033 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,161 +114,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-hi,
-
-On 7/15/23 01:24, Jonas Karlman wrote:
-> On 2023-07-14 17:46, Heiko Stuebner wrote:
->> Am Freitag, 14. Juli 2023, 08:30:27 CEST schrieb FUKAUMI Naoki:
->>> ethernet on Radxa ROCK 3A is not working by following error:
->>>
->>>   rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
->>>   rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
->>>
->>> to fix this problem, align related properties with vendor kernel
->>>   https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>
->>> Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
->>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->>
->> There also is a second patch in the mix adding the gmac1_clkin
->> ef9f4b4a5020 ("arm64: dts: rockchip: Add support of external clock to ethernet node on Rock 3A SBC")
->>
->> And this patch does the exact opposite as the original nodes.
->> Can someone please mention board versions? Or did the gmac1 never
->> really work in the first place?
-> 
-> Ethernet have worked and probably still works booting with vendor U-Boot.
-> 
-> However, when booting using mainline U-Boot the ethernet PHY is never
-> initialized or reset due to lack of a ethernet gmac driver for rk35xx.
-
-surely I'm using mainline u-boot.
-
-> With an early work-in-progress gmac driver the ethernet PHY is working
-> same as with vendor U-Boot, and the ethernet PHY is identified.
-> 
-> This revert from using reset-gpios to using the deprecated
-> snps,reset-gpio is probably the wrong way forward.
-> 
-> I suspect there is a bug in net/phy/mdio_device.c on how reset-gpios
-> is asserted/deasserted, it works differently than how I would expect it
-> to work, and also differs in how U-Boot handles reset-gpios.
-> 
-> Some earlier findings regarding this reset issue:
-> https://github.com/Kwiboo/linux-rockchip/compare/rk3568-eth-phy-reset~2...rk3568-eth-phy-reset
-> 
-> Will try to get a proper patch/rfc out later this weekend or early next
-> week after re-testing that on latest kernel.
-
-thank you so much for your awesome work!
-
-Best regards,
-FUKAUMI Naoki
-
-> Regards,
-> Jonas
-> 
->>
->>
->> Thanks
->> Heiko
->>
->>> ---
->>>   .../boot/dts/rockchip/rk3568-rock-3a.dts      | 32 ++++++-------------
->>>   1 file changed, 10 insertions(+), 22 deletions(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> index 917f5b2b8aab..f9381ab9629b 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>> @@ -32,13 +32,6 @@ hdmi_con_in: endpoint {
->>>   		};
->>>   	};
->>>   
->>> -	gmac1_clkin: external-gmac1-clock {
->>> -		compatible = "fixed-clock";
->>> -		clock-frequency = <125000000>;
->>> -		clock-output-names = "gmac1_clkin";
->>> -		#clock-cells = <0>;
->>> -	};
->>> -
->>>   	leds {
->>>   		compatible = "gpio-leds";
->>>   
->>> @@ -256,18 +249,24 @@ &cpu3 {
->>>   
->>>   &gmac1 {
->>>   	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
->>> -	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
->>> -	clock_in_out = "input";
->>> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
->>> +	assigned-clock-rates = <0>, <125000000>;
->>> +	clock_in_out = "output";
->>>   	phy-handle = <&rgmii_phy1>;
->>> -	phy-mode = "rgmii-id";
->>> +	phy-mode = "rgmii";
->>>   	phy-supply = <&vcc_3v3>;
->>>   	pinctrl-names = "default";
->>>   	pinctrl-0 = <&gmac1m1_miim
->>>   		     &gmac1m1_tx_bus2
->>>   		     &gmac1m1_rx_bus2
->>>   		     &gmac1m1_rgmii_clk
->>> -		     &gmac1m1_clkinout
->>>   		     &gmac1m1_rgmii_bus>;
->>> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
->>> +	snps,reset-active-low;
->>> +	/* Reset time is 20ms, 100ms for rtl8211f */
->>> +	snps,reset-delays-us = <0 20000 100000>;
->>> +	tx_delay = <0x42>;
->>> +	rx_delay = <0x28>;
->>>   	status = "okay";
->>>   };
->>>   
->>> @@ -588,11 +587,6 @@ &mdio1 {
->>>   	rgmii_phy1: ethernet-phy@0 {
->>>   		compatible = "ethernet-phy-ieee802.3-c22";
->>>   		reg = <0x0>;
->>> -		pinctrl-names = "default";
->>> -		pinctrl-0 = <&eth_phy_rst>;
->>> -		reset-assert-us = <20000>;
->>> -		reset-deassert-us = <100000>;
->>> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
->>>   	};
->>>   };
->>>   
->>> @@ -630,12 +624,6 @@ vcc_mipi_en: vcc_mipi_en {
->>>   		};
->>>   	};
->>>   
->>> -	ethernet {
->>> -		eth_phy_rst: eth_phy_rst {
->>> -			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
->>> -		};
->>> -	};
->>> -
->>>   	hym8563 {
->>>   		hym8563_int: hym8563-int {
->>>   			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
->>>
->>
->>
->>
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKdWwgMTQsIDIwMjMgYXQgNzo0OeKAr1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5l
+bC5vcmc+IHdyb3RlOgo+Cj4gVGhlIERUIG9mX2RldmljZS5oIGFuZCBvZl9wbGF0Zm9ybS5oIGRh
+dGUgYmFjayB0byB0aGUgc2VwYXJhdGUKPiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQg
+YXMgbWVyZ2VkIGludG8gdGhlIHJlZ3VsYXIgcGxhdGZvcm0gYnVzLgo+IEFzIHBhcnQgb2YgdGhh
+dCBtZXJnZSBwcmVwcGluZyBBcm0gRFQgc3VwcG9ydCAxMyB5ZWFycyBhZ28sIHRoZXkKPiAidGVt
+cG9yYXJpbHkiIGluY2x1ZGUgZWFjaCBvdGhlci4gVGhleSBhbHNvIGluY2x1ZGUgcGxhdGZvcm1f
+ZGV2aWNlLmgKPiBhbmQgb2YuaC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCBy
+YW5kb20gbWl4IG9mIHRob3NlIGluY2x1ZGUKPiBmaWxlcyB1c2VkIHRocm91Z2hvdXQgdGhlIHRy
+ZWUuIEluIG9yZGVyIHRvIGRldGFuZ2xlIHRoZXNlIGhlYWRlcnMgYW5kCj4gcmVwbGFjZSB0aGUg
+aW1wbGljaXQgaW5jbHVkZXMgd2l0aCBzdHJ1Y3QgZGVjbGFyYXRpb25zLCB1c2VycyBuZWVkIHRv
+Cj4gZXhwbGljaXRseSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgo+Cj4gU2lnbmVkLW9m
+Zi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiAtLS0KPiAgZHJpdmVycy9waHkv
+cmFsaW5rL3BoeS1tdDc2MjEtcGNpLmMgICAgICAgICAgICAgICAgICAgfCAzICstLQoKQWNrZWQt
+Ynk6IFNlcmdpbyBQYXJhY3VlbGxvcyA8c2VyZ2lvLnBhcmFjdWVsbG9zQGdtYWlsLmNvbT4KClRo
+YW5rcywKICAgIFNlcmdpbyBQYXJhY3VlbGxvcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
