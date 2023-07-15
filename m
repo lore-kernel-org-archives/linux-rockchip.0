@@ -4,105 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B8BEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jul 2023 09:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D90EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Jul 2023 10:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HD+3l4G5tQ8tBzIdsdl1qFTo/tOhtSeFBYTjWOr61Q8=; b=vxll4AcaDoYGza
-	Fba2exe93Pl/Z1qORu7Z2+RTDV+tyfLzxRzwZGF7Dk1fpa9OGtKBbbdRGr2eMNsLevQRYihN9RpXH
-	gVSv9vG54Tmca9Gb1dPFZAm4ymptAfwjppKqbrjWR7t5k8BSIxbLcCtEjpYtVbz5iNnEfUYnQ4EYZ
-	4TeWbxV5hf42X5waB05m8T/7EifYhNX+HsdkO9PBiDECxiwqacDSF7CCG/ZIdhF0WgwQbienOd+HM
-	Awkjm2IwMOPyoAYNUgZ22poX5Nj1iKLMZQ7NLwKk2EjGztZi1t2QldgSoUjNXw6PktwUntUZm8UGm
-	1EAt1Y01HV9uXvFofFiA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O72oFljCJERIWspYnCLr2tEcVw/KqAVVRyyA1JAHrN8=; b=4Q4TGF32vzLm/UwpMO1s99nXR/
+	YaUhvJzm8ziMAE5eBh+CEmwfAG0SBVL9aIctmb1dBJc3nkAdWeBoiyOMw1EYbBo3BvYKZ8PxfBoqo
+	4dUqo2sNg98+OOetdfGnGXi8PWgLelfvrRZ+oIYSfbFdhtMNrXU7Wz5c3CwmKIYJq7OWu7RoxtkqG
+	ntgWP8McpfDVfEvJTff8aPMr4RabYLwE1D0bofzaqd7AbanMjRkFBk+RtU8jkpxLU+1KoIlEcGiEu
+	gnw+Wo9nf9IXsunbacqzPwSZkrYfAMz5QCS3XJ+X4px4gwJOH1TmGR+jDYfyv0cVmJ3Q5nyGRfDa1
+	nzG7Q1hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKbYH-008IFC-1u;
-	Sat, 15 Jul 2023 09:26:57 +0000
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+	id 1qKcXF-008N48-2p;
+	Sat, 15 Jul 2023 10:29:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKbYB-008IDN-27;
-	Sat, 15 Jul 2023 09:26:53 +0000
-Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-1b056276889so2090123fac.2;
-        Sat, 15 Jul 2023 02:26:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689413210; x=1692005210;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wHphB4LnIXM8B5KTzxaE1knTLhvmv4UUsDUmEXJtUjc=;
-        b=KNtkg40Donc1RJ+Y/N6bMmujMSl9cywEa6fXVSQYqV4W4lT8G1IFlO5DKCTqezy9NY
-         lefwY54PRhNWProidCgY7SJny7AEfavu3g+BjFgAL5dZzNMIElbAwgo4QZnm4OLwjy+V
-         CVJWSo1L7gWOhYkpGKP0r9oukax6+UlfkfofBx8xxPcLUf3ek7zbTjABn/JHDdvTWXCu
-         WWDX31kpkxyfmd7Q/WE+0i7y3grMAoIl2p8ABV+V0g6ZwAueUBzPNbjvXwLF4/1Voo58
-         THpoQ4ecU8W2lHElPdLC420Acx2PDSK/3KkrYlQGhj1Cbwmy3bV4wSFCbbKfSoIqtJyV
-         8cKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689413210; x=1692005210;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wHphB4LnIXM8B5KTzxaE1knTLhvmv4UUsDUmEXJtUjc=;
-        b=kHlIYqvXhlsHYo7ETWKyY5WUchr2JpdUgo4u8S+UiI1MKkG7LywgmdzuJJnBnXK+iY
-         vfZ3ci4rXDc3RKFt0fV9ok1yyK1rWeCqPEbweCmhHVaN5/L47YDr6a4O3ZCLS2pQh+yM
-         HybHB3KklwvslNtiB+nGiDsHTJt4lIgz3mcdfbSXPedg+bU0rLmsPMFmqaAI0/4QLIM3
-         Wt2wUSJpqnINYnNvVlye43qPstAu6NibOvRwzSEZzIpcOuUPG/gffGpV/z3W95jm8was
-         n2AzeXXv18/IVpHOotSTsoClgVFIeiCjhaP76qsQKAl+/QVhIoeEAkihIRBvptLkZHJb
-         u4fA==
-X-Gm-Message-State: ABy/qLaOE6Ocf30kVG+iwC4gRs6uO3FyqCQX41ZY+TxOUg2aFld+7LRR
-	q1Nqs/TeEtV8wnw11wdE9whgOBT3LY7uMWiigrw=
-X-Google-Smtp-Source: APBJJlGwdJmxyzGjSGIAgoqFi7CGlWiMJBmcsPBzo9lxW5BLyYxxPOYfHlixbBaupkZxkAV8b0mEWpZJ8j8VMX6oWRI=
-X-Received: by 2002:a05:6870:328d:b0:177:a158:9ef6 with SMTP id
- q13-20020a056870328d00b00177a1589ef6mr6679986oac.52.1689413209848; Sat, 15
- Jul 2023 02:26:49 -0700 (PDT)
+	id 1qKcXC-008N36-0q;
+	Sat, 15 Jul 2023 10:29:55 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E1A0760B06;
+	Sat, 15 Jul 2023 10:29:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9C87C433C8;
+	Sat, 15 Jul 2023 10:29:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689416991;
+	bh=CH/l+e3PeGDEEGxcizi8F/Qwtn5DnbYB9Arg2+4cEzU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BS7tNxA4PhjrLdLFPXcSc/hOWx2p+Q5Y3/gWbVbGoEL07TdkjGj7pPdGkdoLJPCU9
+	 efQ4LK9E+DgYJI+4rFb6XFartpO56lpPaf261HnpICqDHppIbdxZ1DKLDfZLg+4EIs
+	 tJFXn3VzSc/Sg3Swv0XdccXFce8PH5bHpjL38PopjMwrEYLvOioSb0n73CyOcxun93
+	 TatS8CrNJmxux8zpjpNLY6fZThxN8QFp6lvroh7NIllI4YCIPh3K1A8OBJ6GaeKA5J
+	 IbVtzrc7Se2vRdSYvKvZ1Y5sTuvuuLu61QuXVbiPt3WRRoy46fMHZpMYbT7Jd5b+Mr
+	 TEtLSTLgYihoA==
+Date: Sat, 15 Jul 2023 11:29:44 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, John Clark <inindev@gmail.com>,
+	Qu Wenruo <wqu@suse.com>, devicetree@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 1/2] dt-bindings: phy: rockchip: add RK3588 PCIe v3 phy
+Message-ID: <20230715-rudder-unbent-ff7754bec4b4@spud>
+References: <20230714175331.112923-1-sebastian.reichel@collabora.com>
+ <20230714175331.112923-2-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-References: <20230714174841.4061919-1-robh@kernel.org>
-In-Reply-To: <20230714174841.4061919-1-robh@kernel.org>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sat, 15 Jul 2023 11:26:38 +0200
-Message-ID: <CAMhs-H-6tAV-+U-4zZDKs47eKCJr+kZ-Op8vR4SyJyE5LK_2aw@mail.gmail.com>
-Subject: Re: [PATCH] phy: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Justin Chen <justin.chen@broadcom.com>, 
-	Al Cooper <alcooperx@gmail.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Ioana Ciornei <ioana.ciornei@nxp.com>, Yu Chen <chenyu56@huawei.com>, 
-	Binghui Wang <wangbinghui@hisilicon.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Lubomir Rintel <lkundrak@v3.sk>, Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wolfgang Grandegger <wg@grandegger.com>, Marc Kleine-Budde <mkl@pengutronix.de>, Alban Bedel <albeu@free.fr>, 
-	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Robert Marko <robert.marko@sartura.hr>, 
-	Luka Perkov <luka.perkov@sartura.hr>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	JC Kuo <jckuo@nvidia.com>, devicetree@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, 
-	linux-usb@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
+In-Reply-To: <20230714175331.112923-2-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230715_022651_698638_D5D4F033 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20230715_032954_366533_C22749AE 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,26 +85,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============4809198223826970582=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdWwgMTQsIDIwMjMgYXQgNzo0OeKAr1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5l
-bC5vcmc+IHdyb3RlOgo+Cj4gVGhlIERUIG9mX2RldmljZS5oIGFuZCBvZl9wbGF0Zm9ybS5oIGRh
-dGUgYmFjayB0byB0aGUgc2VwYXJhdGUKPiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQg
-YXMgbWVyZ2VkIGludG8gdGhlIHJlZ3VsYXIgcGxhdGZvcm0gYnVzLgo+IEFzIHBhcnQgb2YgdGhh
-dCBtZXJnZSBwcmVwcGluZyBBcm0gRFQgc3VwcG9ydCAxMyB5ZWFycyBhZ28sIHRoZXkKPiAidGVt
-cG9yYXJpbHkiIGluY2x1ZGUgZWFjaCBvdGhlci4gVGhleSBhbHNvIGluY2x1ZGUgcGxhdGZvcm1f
-ZGV2aWNlLmgKPiBhbmQgb2YuaC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCBy
-YW5kb20gbWl4IG9mIHRob3NlIGluY2x1ZGUKPiBmaWxlcyB1c2VkIHRocm91Z2hvdXQgdGhlIHRy
-ZWUuIEluIG9yZGVyIHRvIGRldGFuZ2xlIHRoZXNlIGhlYWRlcnMgYW5kCj4gcmVwbGFjZSB0aGUg
-aW1wbGljaXQgaW5jbHVkZXMgd2l0aCBzdHJ1Y3QgZGVjbGFyYXRpb25zLCB1c2VycyBuZWVkIHRv
-Cj4gZXhwbGljaXRseSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgo+Cj4gU2lnbmVkLW9m
-Zi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiAtLS0KPiAgZHJpdmVycy9waHkv
-cmFsaW5rL3BoeS1tdDc2MjEtcGNpLmMgICAgICAgICAgICAgICAgICAgfCAzICstLQoKQWNrZWQt
-Ynk6IFNlcmdpbyBQYXJhY3VlbGxvcyA8c2VyZ2lvLnBhcmFjdWVsbG9zQGdtYWlsLmNvbT4KClRo
-YW5rcywKICAgIFNlcmdpbyBQYXJhY3VlbGxvcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============4809198223826970582==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="A9wMCNuEv+mNAcmd"
+Content-Disposition: inline
+
+
+--A9wMCNuEv+mNAcmd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Jul 14, 2023 at 07:53:30PM +0200, Sebastian Reichel wrote:
+> When the RK3568 PCIe v3 PHY supported has been upstreamed, RK3588
+> support was included, but the DT binding does not reflect this.
+> This adds the missing bits.
+
+Thanks for rectifying that!
+
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+
+--A9wMCNuEv+mNAcmd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZLJ1GAAKCRB4tDGHoIJi
+0qC2AQDLhuOu8q2be4MO3J7WuzO0cCDIq88igm6teBgavhzglQD/S0kOknT+dRpF
+RgFKkdHBfEi2/D6JSy9HXCkHgpbkdAM=
+=cYpP
+-----END PGP SIGNATURE-----
+
+--A9wMCNuEv+mNAcmd--
+
+
+--===============4809198223826970582==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4809198223826970582==--
+
