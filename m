@@ -4,77 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E9FC001B0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jul 2023 15:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0FCBC0015E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jul 2023 17:09:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/2TGAVyAPmkTygx0Hp9yDuD5tNw6bh4naWXDJrqY03w=; b=jx0BlGMVgq7wCi
-	F5VzCozf08YS0HlUKELizE3zVzjZQOWYzmqcb0sjZdHu6zL27jw5xX8cAWghLfgsJOQMQ1dHRKFZz
-	eZ98s7tbmHVtHx6sQlgtE5jK7WJi3OKjjs/Sl1AtlGkjxUVYJ/+D2N2BbxJ8KyGz7goR+bWUs2c3o
-	9FWeUgVUkEuGf7i8K3rnshgQL+xViAv+avpGAKUUlHyTulW9y9xiOAW9BN43qhmJsg6JUFoyWOF8m
-	Ub4E0AfMQ7VOaiH8GSZvbQPTYeDZZzgqcYmUHpE3VIf7xVMKMB/Uh2ItgszkxkHmAJ4wJGT7yRPFX
-	pm9IJ/W8i54vA2p5JHLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+sJJGu4LfrBZQXYK4nGcBtt0Mrrf4ZbafBhzQ+3rje4=; b=FdNDNzJQBhWyEItF6Dhlc+4BXX
+	c5mFi3aKCMU1YejJ0NcNxwAmgLDAK+AXOfh2E32SkO6fuFcgmv68hUNkXup7IG/xlaNKqj7Q2/778
+	7sd8CRoOzFglHyKO0sQCVJJhoE8ClOU432D4U3/gU7oCOP88YJVYECMU7mEHdmPIjLOMOA+fKDPw8
+	IE1muOB+BxQHagmRgAbcbyGO1KfjHJiOpWyP++5T6LD+qn1/hbBrjTmo6wTMGFr1FDJRl7NqK/TgK
+	ixJ8UyX+fJJkfH4mLGczDnH97YNbVEppwP1eWf3SYZ78HZtmJ/iyjSQydyM9q4p5CkaCf/vIwMsaX
+	CRKWik5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qL443-00Ca5N-0o;
-	Sun, 16 Jul 2023 15:53:39 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1qL5F9-00DGfT-0v;
+	Sun, 16 Jul 2023 17:09:11 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qL440-00Ca1l-00;
-	Sun, 16 Jul 2023 15:53:37 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-55b1238cab4so2088114a12.2;
-        Sun, 16 Jul 2023 08:53:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689522814; x=1692114814;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=abs11f8UHVu+fecLFEFwp0PW6/N5LPbHdu0gV+3y038=;
-        b=ctFvETFr7bnJxUyExlXVogWAbDtwrZb9lVS8wjLMPmQtSNPHo3RiCI3D7RdOxnIdrg
-         KbpcR1/UGhV4a5YawvKmm5xtctdaHE1Y2dXbL26fFQTaSX0YKeOV/OdxIyJKbt1uS4ux
-         hJ+ypmbBTYuU/0+8zlCOkLGZN66xLUmjqjAzH+ld2Hhc9blh4Fq49cy4IOIvpkuA8rk8
-         /T2QY0isHdD4iT54ky3nzir6HJuvASdSxwNzDb72h452fN816pfKhntGQz8sr5XV+/mt
-         rAP4H23HyPcXpC+ErWLpMO/vyJHPu+an9200hVB3cUpgW4fAlnPVVUgrdnVB3YhPXzqZ
-         Z30Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689522814; x=1692114814;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=abs11f8UHVu+fecLFEFwp0PW6/N5LPbHdu0gV+3y038=;
-        b=EsZ36HZmtAmqOkSeaO9rfSQRz9ZNz6XUR3XY3A2ZQABejV9Tek5yrCcy8jtZ3p97eY
-         6tjq6CPa4opdDeAEKFhXPt5XE6GtANnE22FtslnRDtvcR77SqUnMC9IVJxC646dCCgDG
-         SikpFlAKqmI5vOdllQtPztxcTxoVhG7A9ZADrdc0rZzp6vs9ICFce1pYSluHwHdpHjCC
-         SH1gH08uwuXuKhptiQ9LJ9ewdlwGkBcFsXrJVo6HEtB6g8FzJhAe9V4AMX/zSdM6RPhM
-         t8cyOmY3CMtE/qTdRSWA4hDLqH1DaTc/KkmY7J35BeHUbIqrg2w9o9kmPyOu1Y2ExbWM
-         iErw==
-X-Gm-Message-State: ABy/qLZysf7p1xS2C7jHOjxn4kRsJAgd6vtESUDAbNvODAQGfn+gElvj
-	HkSngmPpasuooH9PtvJuBkPCmdvDvr6eD1wZwjcFYmeQ2EU=
-X-Google-Smtp-Source: APBJJlEGQtfsRwz1XtspqBQl34vmpvD+Dei7LRAoFDGxKuzO815i+XyeZQE6FVEUNXOjwbyrPM/p7K+ru97TpSRLgWA=
-X-Received: by 2002:a17:90a:eb12:b0:24e:2e86:5465 with SMTP id
- j18-20020a17090aeb1200b0024e2e865465mr8674012pjz.31.1689522813638; Sun, 16
- Jul 2023 08:53:33 -0700 (PDT)
+	id 1qL5F4-00DGb2-1E
+	for linux-rockchip@lists.infradead.org;
+	Sun, 16 Jul 2023 17:09:07 +0000
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1qL5EK-0006nj-5v; Sun, 16 Jul 2023 19:08:20 +0200
+Received: from pengutronix.de (unknown [172.20.34.65])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id D858F1F1E4D;
+	Sun, 16 Jul 2023 17:08:14 +0000 (UTC)
+Date: Sun, 16 Jul 2023 19:08:13 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Justin Chen <justin.chen@broadcom.com>,
+	Al Cooper <alcooperx@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Yu Chen <chenyu56@huawei.com>,
+	Binghui Wang <wangbinghui@hisilicon.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Lubomir Rintel <lkundrak@v3.sk>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfgang Grandegger <wg@grandegger.com>,
+	Alban Bedel <albeu@free.fr>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Luka Perkov <luka.perkov@sartura.hr>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vincent Shih <vincent.sunplus@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>, JC Kuo <jckuo@nvidia.com>,
+	devicetree@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] phy: Explicitly include correct DT includes
+Message-ID: <20230716-rippling-wafer-1c986e593fc5-mkl@pengutronix.de>
+References: <20230714174841.4061919-1-robh@kernel.org>
 MIME-Version: 1.0
-References: <ZLO450xOIQ29VoBT@zephyrusG14>
-In-Reply-To: <ZLO450xOIQ29VoBT@zephyrusG14>
-From: Vincent Legoll <vincent.legoll@gmail.com>
-Date: Sun, 16 Jul 2023 15:53:22 +0000
-Message-ID: <CAEwRq=rUXpFpkrfKyCG8Eede10cCeo6V3RCDxv0McWA_g9t0CA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix Wifi/Bluetooth on ROCK Pi 4 boards
-To: Yogesh Hegde <yogi.kernel@gmail.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
-	heiko@sntech.de, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-kernel-mentees@lists.linuxfoundation.org, 
-	skhan@linuxfoundation.org, ivan.orlov0322@gmail.com
+In-Reply-To: <20230714174841.4061919-1-robh@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:b01:1d::7b
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230716_085336_042501_EAAF5A88 
-X-CRM114-Status: UNSURE (   7.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230716_100906_509303_9D3BCE7B 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,18 +123,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8830247228854557467=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpPbiBTdW4sIEp1bCAxNiwgMjAyMyBhdCA5OjMy4oCvQU0gWW9nZXNoIEhlZ2RlIDx5
-b2dpLmtlcm5lbEBnbWFpbC5jb20+IHdyb3RlOgo+IENvbW1pdCBmNDcxYjFiMmRiMDggKCJhcm02
-NDogZHRzOiByb2NrY2hpcDogRml4IEJsdWV0b290aAo+IG9uIFJPQ0sgUGkgNCBib2FyZHMiKSBp
-bnRyb2R1Y2VkIGEgcHJvYmxlbSB3aXRoIHRoZSBjbG9jayBjb25maWd1cmF0aW9uLgoKTWF5YmUg
-eW91IHNob3VsZCBhZGQgYSAiRml4ZXM6IiB0YWcuCkxvb2sgYXQ6CkRvY3VtZW50YXRpb24vcHJv
-Y2Vzcy9zdWJtaXR0aW5nLXBhdGNoZXMucnN0CmZvciBkZXRhaWxzLgoKQ2hlZXJzCgotLSAKVmlu
-Y2VudCBMZWdvbGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+
+--===============8830247228854557467==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nbfpe5avx7koqgt4"
+Content-Disposition: inline
+
+
+--nbfpe5avx7koqgt4
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 14.07.2023 11:48:35, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/phy/phy-can-transceiver.c                     | 1 +
+
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de> # for drivers/phy/phy-can-=
+transceiver.c
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--nbfpe5avx7koqgt4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEDs2BvajyNKlf9TJQvlAcSiqKBOgFAmS0I/oACgkQvlAcSiqK
+BOjjrwgArExbry3lxXJ0IU/QstoPtXDWo1kq+VrGdKo90TUKc6zRFxqvnUNRrjBk
+9aVhw60wUadmaqmq+5XBpVPES7N6/lzVGQxqKvMo90pMkksfG+isH43EGgJKSCGW
+50aecO37i/0V2xhrIoHdcChv/8G2ND7TCQRoREFPHZZAZCY8ounBXRoNZD0XmC8y
+SxL3qs9NG4rSdKSzQuXZ9tNqThZ5R+dU+jXGeBYK2/yhaiBr9bLokg9qS4ZA2Keh
+OIbgZeiYE8RrbwcPL1CrMYM/mY1MEyVqOTrWb6xzJZYYzJENZi11xoPi5nB+x2zP
+F5frwLP70qIiMDMihQLMvpd/SRkwEA==
+=Qdmr
+-----END PGP SIGNATURE-----
+
+--nbfpe5avx7koqgt4--
+
+
+--===============8830247228854557467==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8830247228854557467==--
+
