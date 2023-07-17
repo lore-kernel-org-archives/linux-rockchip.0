@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B8CEEB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:35:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8133EC001B0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bu+KWP7Cl4lDBr4wFlxpfxXe0ScNyeKqr+cIdRWp4oc=; b=GB0IOfl/SEH0JT
-	WODpWzDV+ZU4NJ48+n9twO4kEji8YCjMhGCkmEOl8qg63ve9XpazfllE3RsHlZa3jCLy/vuKz4S1a
-	zjniPVc/mL8N9CvUioUP6AwjXsc6UYqa9Yqo7uaelV/TXtdXkW1A6RSeKpmbhH/AniVKGXwPSFHqz
-	Q6xuNm87ezOwaf3HKbASEy1dz4FimkaS6+vFA21kCINhsnCLTxxFLUMxV7R0f3MMm127MqkKQ7sB/
-	hN/gkdQKrQNIdehJjhJQt17xIwNSQOX+Q1QNKB5ptc2YOv7qO6qXbdL6TbUZSREPo2WGYlkh0E/Xe
-	SmjG7PqdTUdbRX+flNXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NGhhOGdZuUDh1TnHGyc2LbV0c57cxUqQ2jc1oOVcDTA=; b=y/CbPxGgg0o/x7
+	QOmsxQ5xnGgs+9Z4TbuWcelCbev8qnNOlqdqPQ8pXWq/cMvyMF6PW7lTPJmKTHxiosKdg23/XUX6F
+	c9ohax8t2ZUGb3NZoLJ9WaluGIJh+VvZurCMWZIVTG9je5EzXDteswLl59OkSjDx4ud/7muepYpiH
+	hA38hhuzfPv2Dv9KJD6AifxyUd5+Elb6rEK/ciK/wxTeff+bOJNqKcGH+rQDk/Tn2VIajKUNvVEjB
+	wHSXsNle/cyh2CHFCutgcxqW6FksJwxJ4i9qzDvewdRztZOmRPtDHVk3crLrx/VbBvML8fowYsyLR
+	kSZKFpRXybbyeqXy0Xeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLS84-004hKx-1x;
-	Mon, 17 Jul 2023 17:35:24 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qLS85-004hL8-0q;
+	Mon, 17 Jul 2023 17:35:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLS7x-004hHp-1C;
-	Mon, 17 Jul 2023 17:35:19 +0000
+	id 1qLS7x-004hHt-1q;
+	Mon, 17 Jul 2023 17:35:18 +0000
 Received: from jupiter.universe (dyndsl-091-248-189-171.ewe-ip-backbone.de [91.248.189.171])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C8B636602329;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CD3E566028F5;
 	Mon, 17 Jul 2023 18:35:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689615315;
-	bh=UU4KGgu8RlPQoKudc9GjsMWwW3SITngefu1mV+NgQcg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=F6/uz/GiaXgc9Ic/keIGvkOBL24+/kpGMZuaaIy4CtWXCXPFjURzQbp2hv/eivLO6
-	 nbTFikqKdLkCu2icFLkARl4ge5pX2870nMmA1sE7L19p2rXgER+7+mXYBJm4wi7ZXA
-	 i7H3AtPl5ZNG8Q2DE8RTyfw67ZycQvYyLoktX253Y0+ElDwIzM/IUR2kTC1BauV9qi
-	 zAtCQ9Wol7suTuT9Vem0SgylvJWSMuhdTnzg/z+6okJSIt0F/GYD1KswIpYLWmAjo/
-	 lRfm/ErsEfbZKliNc2YY0q3BDlGThCjUtTwBjiW8AmuwyRrpQCi2wpf84EFMbai/dR
-	 rQYfC5Bt9RwUA==
+	s=mail; t=1689615316;
+	bh=64KeJPG4Zg7KDZinmnbpSO47kNMgAyfiBh+eN2b40rg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=B5HBbDB20yXRLoz4slfRfa4dcG7iTPpeXK0IKlVynGXZfrgZ/LTtP0NCtNffMTqp2
+	 53y1ZhTnvb6nxC7WHaZme7TNf4+gjZOb1w7pG4WwffjpLj2HG5r23fVt7C0tOV3O8Z
+	 YKWgBBEsTY540MUUQRvdf4+4SlmnZxx8LqfouRU0AwF9FDU9LoToi1Zcl4stwDZkvK
+	 cR6MuMrIjixM9Zlc4MTTibxIXGuHxU6j7afd6FpeZrqSvmO+t7HXff2HhQoYiYRBpC
+	 Qj7kH3ITX820LlNRz+dt9drHpbb2oJVULN0ijOb8COb5GIdTBGtyYJSPJIn+kx5bYD
+	 pNWzNDmnpYOMQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id D1BD1480C72; Mon, 17 Jul 2023 19:35:12 +0200 (CEST)
+	id D348D480C77; Mon, 17 Jul 2023 19:35:12 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
@@ -69,15 +69,18 @@ Cc: Jingoo Han <jingoohan1@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v2 0/2] RK3588 PCIe3 support
-Date: Mon, 17 Jul 2023 19:35:10 +0200
-Message-Id: <20230717173512.65169-1-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v2 1/2] dt-bindings: phy: rockchip: add RK3588 PCIe v3 phy
+Date: Mon, 17 Jul 2023 19:35:11 +0200
+Message-Id: <20230717173512.65169-2-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230717173512.65169-1-sebastian.reichel@collabora.com>
+References: <20230717173512.65169-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_103517_550035_1245BD7A 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20230717_103517_777628_5651CD56 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,38 +97,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+When the RK3568 PCIe v3 PHY supported has been upstreamed, RK3588
+support was included, but the DT binding does not reflect this.
+This adds the missing bits.
 
-This adds PCIe v3 support for RK3588. The series depends on the PCIe
-v2 series [0], since the the same binding is used. It has been tested
-on Rockchip EVB1 and Radxa Rock 5B.
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../bindings/phy/rockchip,pcie3-phy.yaml      | 33 ++++++++++++++++---
+ 1 file changed, 28 insertions(+), 5 deletions(-)
 
-Note, that the PCIe3 PHY driver is currently missing bifurcation
-support for RK3588. Thus after this series only PCIe3x4 is usable
-(in aggregated x4 mode) without adding support for the PHY's
-"rockchip,pcie30-phymode" DT property, which allows configuring
-how the lanes are distributed. Aggregated 3x4 mode seems to be the
-most common configuration. Both EVB1 and Rock 5B use it, so I
-cannot test anything else anyways.
-
-[0] https://lore.kernel.org/all/20230717172651.64324-1-sebastian.reichel@collabora.com/
-
-Changes since v1:
- * https://lore.kernel.org/all/20230714175331.112923-1-sebastian.reichel@collabora.com/
- * Collected Acked-by from Conor Dooley
- * Dropped deprecated and useless num-ib-windows/num-ob-windows/num-viewport
-   properties from DT (Serge Semin)
-
--- Sebastian
-
-Sebastian Reichel (2):
-  dt-bindings: phy: rockchip: add RK3588 PCIe v3 phy
-  arm64: dts: rockchip: rk3588: add PCIe3 support
-
- .../bindings/phy/rockchip,pcie3-phy.yaml      |  33 ++++-
- arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 120 ++++++++++++++++++
- 2 files changed, 148 insertions(+), 5 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+index 9f2d8d2cc7a5..c4fbffcde6e4 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+@@ -13,19 +13,18 @@ properties:
+   compatible:
+     enum:
+       - rockchip,rk3568-pcie3-phy
++      - rockchip,rk3588-pcie3-phy
+ 
+   reg:
+     maxItems: 1
+ 
+   clocks:
+-    minItems: 3
++    minItems: 1
+     maxItems: 3
+ 
+   clock-names:
+-    items:
+-      - const: refclk_m
+-      - const: refclk_n
+-      - const: pclk
++    minItems: 1
++    maxItems: 3
+ 
+   data-lanes:
+     description: which lanes (by position) should be mapped to which
+@@ -61,6 +60,30 @@ required:
+   - rockchip,phy-grf
+   - "#phy-cells"
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          enum:
++            - rockchip,rk3588-pcie3-phy
++    then:
++      properties:
++        clocks:
++          maxItems: 1
++        clock-names:
++          items:
++            - const: pclk
++    else:
++      properties:
++        clocks:
++          minItems: 3
++
++        clock-names:
++          items:
++            - const: refclk_m
++            - const: refclk_n
++            - const: pclk
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.40.1
 
