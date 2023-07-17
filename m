@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06403EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41E11EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hY9+0DbrvkMOHOn1r3Yjrcm/0FrxLxAgiA2VIXYnu9A=; b=Efm+PLAJLtvkPa
-	WhWENOOhyLyCMJeTumCkEWUkWQmedG8Jr/OcyQHJK28NHHKq10LbpiTMKkt55PrBwlz5V4/H21FTd
-	m2Hxyu6FUXk2o+sMNxeJqRWRZKL0H4YfP5Yn8NAVUT0T7wO1d8z1lKNUsl2RUHSUWz54jt2X6pQeF
-	3D1y4OP83b7/uSvb22Zy3Ow2FdzegJYd4wmbUMviV2hPrV4fP67dyz+BfXQ0I49wLcZJ1OZl+d5FW
-	0ePmzuHD7DXCM5SkNs1LgY2muUEsHKO/Uc/yIVg1D+2UHqu5/H4ragFFdcKRRTEZPTcHn8GEYzLz3
-	xlcjFMxmNnuhh6z2dBaQ==;
+	List-Owner; bh=CZRT0+5S9xyW/V1I5ynOBYSipb/YGJYYYhqkynwDIJ8=; b=KUmY0PkNuLMfG5
+	24kQl/CBbKbC7ODl5NWjDnY7w4lJOsVe8WvC7Ph3gxmhYwcxwTgia2+KD1BAXuzFapjkO5AnxBxRl
+	UyzJJ4DAzWwtoq521/umxYAPgyjRd1WBdcPKohH56uxRY9dZXl5qZRmT024WPOcxCsxT4g11Boh1J
+	5+UUHEiRqXurMXWa10AAgvU7Fctxa7ddPXCrwZ27zjEZPxw8R0NhK8hW4aFolNLT5J4DT+arucC7X
+	k7UpaE3Zb2ZDyq7Fb96U3om+R0BUdGX5Y33sr3GruimAQfChPDPWOXJ9w14bMzKiB/tWjpY1zqWFm
+	iS5aDPhBSFgTDLyptebA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLRlI-004dft-0V;
-	Mon, 17 Jul 2023 17:11:52 +0000
-Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
+	id 1qLS0Y-004fbr-2T;
+	Mon, 17 Jul 2023 17:27:39 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLRlE-004dfG-2Q
-	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Jul 2023 17:11:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
-	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
-	content-transfer-encoding:cc:content-type:from:subject:to;
-	s=s1; bh=u9cyOloQZC6hQzaTzv5Pm5kd2XpYOX/QjlM+6dp3CAs=;
-	b=TWN1JP+BX0foN7bmMnIDKFRWBwcjkMMIHuiDAK3IVrsJTkUfzfKxkQOFsEyzQrPSEj23
-	BfsA8sGaZeVv2CZup2a9vdhrKQJdHG/7u/SAtXfkHaiAQFrOwd3DZJiEhIw5ztzP5vVg1x
-	ov1inY/OwG2SIK0thGID59/l6MUFM2xoYFWUgSJiYDid6wcvw8OR3Q8Q+nKk6fSDkm+8MG
-	HVaZRi8IsXq/lKJM3udb9jnyGbaHRJBl27TpbQdbYS71uBCABMPZwXCtxNV05UoEVOLWqW
-	lnRwU0W3Ht8lfJYb0DJBVbTrWi/yTVXt6dRCrlZlsxsNIp3maCQnIrT3mvWVkbfg==
-Received: by filterdrecv-66949dbc98-mtdwq with SMTP id filterdrecv-66949dbc98-mtdwq-1-64B57652-A
-        2023-07-17 17:11:46.137570545 +0000 UTC m=+1953405.387360475
-Received: from [192.168.1.50] (unknown)
-	by geopod-ismtpd-8 (SG) with ESMTP
-	id 0yLu4gGzRCumHUmwPBgkAA
-	Mon, 17 Jul 2023 17:11:45.884 +0000 (UTC)
-Message-ID: <19a0271a-8b73-bf45-8159-a738ff43f1c2@kwiboo.se>
-Date: Mon, 17 Jul 2023 17:11:46 +0000 (UTC)
+	id 1qLRzx-004fRx-2x;
+	Mon, 17 Jul 2023 17:27:03 +0000
+Received: from jupiter.universe (dyndsl-091-248-189-171.ewe-ip-backbone.de [91.248.189.171])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C95EC66028F5;
+	Mon, 17 Jul 2023 18:26:55 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689614815;
+	bh=E9QpBFx3OjWlRLEoFnsSGJDKU0c7IinxD+9ybLulYfM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=gBd2jq4JHb9CE+ya1XOhEhR8MKtURZmk5lB5peFJDBeh0wOKk17+kgS9Nm7+Hhgcu
+	 qOh5mOdHVwJqaRFRLPSb2mtpgUa+weZKMTIfWhfBBUMJL1KX4zqgXU+i8nqP4Ys4ZA
+	 YqZ6FfDfHgAG8X+lXT+iuq+YzVtnzqGIfVVtZur9+umaXpmzUAAMSJ0oVdd/n7vcnn
+	 mlCT5fMjyhVTy91uj1/5o/yi1XBcgko8OTZSzbQSWmaBNERCxbnaTt6Ea5+4Xhrsvb
+	 QP69NWwHMMo1j1VpSErayFf4O6ZrLxo9WHyDL2CyiGpkf1/nBS++clnJnMr8ehOU7a
+	 b7jOZmADZrYiw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 19AC7480C77; Mon, 17 Jul 2023 19:26:53 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Serge Semin <fancer.lancer@gmail.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v3 1/5] dt-bindings: PCI: dwc: improve msi handling
+Date: Mon, 17 Jul 2023 19:26:47 +0200
+Message-Id: <20230717172651.64324-2-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230717172651.64324-1-sebastian.reichel@collabora.com>
+References: <20230717172651.64324-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] arm64: dts: rockchip: rock-3a: make ethernet work
-Content-Language: en-US
-References: <20230714063027.74489-1-naoki@radxa.com>
- <25008843.6Emhk5qWAg@phil> <3e4a649c-a8fe-ff84-3beb-c56be1afff9b@kwiboo.se>
- <88A84626E8619FC1+da8b7cbd-ecc3-bd30-ed88-d6f13a39acd3@radxa.com>
- <a8de59ae-777a-a52f-cc23-573b500754a7@kwiboo.se>
- <d8f7f21e-f10c-17c9-2462-f21f49196096@wolfvision.net>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <d8f7f21e-f10c-17c9-2462-f21f49196096@wolfvision.net>
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h3pUOVxOtVhDj4RXm?=
- =?us-ascii?Q?eF2HA3CCC2V0UkwGPCRIV0oC12+32XZVZftRi8t?=
- =?us-ascii?Q?115rETE2Y1iTZUQMf2OxRUGUtdLiSSW5P41mAgI?=
- =?us-ascii?Q?4p1Y4DZk3Ky09UAUMSoTgWUFY2pW8zZT=2FnXdedp?=
- =?us-ascii?Q?SoGNNzPM0djKOVAOiM+pNQsqZLiT8WGc+7hzx1Q?=
- =?us-ascii?Q?MxgcWu8pt3hmQTbeTPziA=3D=3D?=
-To: Michael Riesch <michael.riesch@wolfvision.net>, FUKAUMI Naoki
-	<naoki@radxa.com>, Heiko Stuebner <heiko@sntech.de>, Anand Moon
-	<linux.amoon@gmail.com>
-Cc: linux-rockchip@lists.infradead.org
-X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_101148_872636_128DEA5B 
-X-CRM114-Status: GOOD (  36.49  )
+X-CRM114-CacheID: sfid-20230717_102702_150144_22B9C40C 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,194 +92,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-07-17 09:40, Michael Riesch wrote:
-> Hi all,
-> 
-> In addition to what has been already said:
-> 
-> On 7/16/23 15:50, Jonas Karlman wrote:
->> On 2023-07-15 06:49, FUKAUMI Naoki wrote:
->>> hi,
->>>
->>> On 7/15/23 01:24, Jonas Karlman wrote:
->>>> On 2023-07-14 17:46, Heiko Stuebner wrote:
->>>>> Am Freitag, 14. Juli 2023, 08:30:27 CEST schrieb FUKAUMI Naoki:
->>>>>> ethernet on Radxa ROCK 3A is not working by following error:
->>>>>>
->>>>>>   rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
->>>>>>   rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
->>>>>>
->>>>>> to fix this problem, align related properties with vendor kernel
->>>>>>   https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>>>
->>>>>> Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
->>>>>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->>>>>
->>>>> There also is a second patch in the mix adding the gmac1_clkin
->>>>> ef9f4b4a5020 ("arm64: dts: rockchip: Add support of external clock to ethernet node on Rock 3A SBC")
->>>>>
->>>>> And this patch does the exact opposite as the original nodes.
->>>>> Can someone please mention board versions? Or did the gmac1 never
->>>>> really work in the first place?
-> 
-> As far as I know all schematics versions state that the PHY produces the
-> clock (see the most recent schematics here:
-> https://dl.radxa.com/rock3/docs/hw/3a/ROCK-3A-V1.3-SCH.pdf>> 
-> Although using the internal MAC clock works as well, using the
-> gmac1_clkin is most probably the correct way.
-> 
->>>> Ethernet have worked and probably still works booting with vendor U-Boot.
->>>>
->>>> However, when booting using mainline U-Boot the ethernet PHY is never
->>>> initialized or reset due to lack of a ethernet gmac driver for rk35xx.
->>>
->>> surely I'm using mainline u-boot.
-> 
-> Ah, this might explain why I never experienced this issue: I am using
-> mainline barebox with GMAC support.
-> 
->>>> With an early work-in-progress gmac driver the ethernet PHY is working
->>>> same as with vendor U-Boot, and the ethernet PHY is identified.
->>>>
->>>> This revert from using reset-gpios to using the deprecated
->>>> snps,reset-gpio is probably the wrong way forward.
->>>>
->>>> I suspect there is a bug in net/phy/mdio_device.c on how reset-gpios
->>>> is asserted/deasserted, it works differently than how I would expect it
->>>> to work, and also differs in how U-Boot handles reset-gpios.
->>>>
->>>> Some earlier findings regarding this reset issue:
->>>> https://github.com/Kwiboo/linux-rockchip/compare/rk3568-eth-phy-reset~2...rk3568-eth-phy-reset
->>>>
->>>> Will try to get a proper patch/rfc out later this weekend or early next
->>>> week after re-testing that on latest kernel.
->>>
->>> thank you so much for your awesome work!
->>
->> Thanks, made some progress on tracking down the root cause.
->> From what I have discovered so far there is a chicken-and-egg problem:
->>
->> - phy needs to be reset or phy_id read back as 0xffffffff on mdio bus
->> - phy device is not created because a valid phy_id is not read back
->> - phy device needs to be created before it can be reset
->>
->> Possible workarounds so far:
->> - phy is reset in U-Boot
->>   - very early work-in-progress at https://github.com/Kwiboo/u-boot-rockchip/commit/6ee80f9a895a32551cf30dd4252a4960ed80dfc9
->> - phy is reset using mdio bus reset
->>   - similar to old https://github.com/Kwiboo/linux-rockchip/commit/8597fcfa0c5c792dabb44a2db7b283c56c99ec6a
->> - phy is reset using deprecated snps,reset-gpio
->>   - similar to mdio bus reset
-> 
-> There was a similar discussion here:
-> https://lore.kernel.org/all/CAMdYzYo_DGiO0UxJEb3xues7Um=X9AgPvz+Xp_YWb9pp9HaScg@mail.gmail.com/
-> 
-> The approach that moves the reset to the MDIO bus has been mentioned
-> there as well. On the first glance this approach looks reasonable to me.
+Allow missing "msi" interrupt, iff the node has a "msi-map" property.
 
-It does not look like U-Boot support mdio bus reset-gpios, so changing
-to that would require adding even more code into U-Boot to get ethernet
-working in U-Boot.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../devicetree/bindings/pci/snps,dw-pcie.yaml        | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-Moving to mdio bus would make it behave like with old snps,reset-gpio,
-however phy reset-gpios still describe the hw more accurately, a
-assert/deassert cycle of reset-gpios triggers a phy hard reset.
-
-Do not know if it is possible to have both mdio bus reset and phy reset.
-
-There also looks like there is a bug in dwmac-rk rk3568_set_to_rgmii,
-tx/rx delay is always enabled. It should be disabled in some phy modes.
-Can send a patch once I finish with the U-Boot ethernet driver.
-
-Will try to complete a U-Boot driver that supports both phy reset-gpios
-and the deprecated snps,reset-gpio as a first step.
-
-Regards,
-Jonas
-
-> 
-> Best regards,
-> Michael
-> 
->> [...]
->>>>>> ---
->>>>>>   .../boot/dts/rockchip/rk3568-rock-3a.dts      | 32 ++++++-------------
->>>>>>   1 file changed, 10 insertions(+), 22 deletions(-)
->>>>>>
->>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>>> index 917f5b2b8aab..f9381ab9629b 100644
->>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
->>>>>> @@ -32,13 +32,6 @@ hdmi_con_in: endpoint {
->>>>>>   		};
->>>>>>   	};
->>>>>>   
->>>>>> -	gmac1_clkin: external-gmac1-clock {
->>>>>> -		compatible = "fixed-clock";
->>>>>> -		clock-frequency = <125000000>;
->>>>>> -		clock-output-names = "gmac1_clkin";
->>>>>> -		#clock-cells = <0>;
->>>>>> -	};
->>>>>> -
->>>>>>   	leds {
->>>>>>   		compatible = "gpio-leds";
->>>>>>   
->>>>>> @@ -256,18 +249,24 @@ &cpu3 {
->>>>>>   
->>>>>>   &gmac1 {
->>>>>>   	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
->>>>>> -	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
->>>>>> -	clock_in_out = "input";
->>>>>> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
->>>>>> +	assigned-clock-rates = <0>, <125000000>;
->>>>>> +	clock_in_out = "output";
->>>>>>   	phy-handle = <&rgmii_phy1>;
->>>>>> -	phy-mode = "rgmii-id";
->>>>>> +	phy-mode = "rgmii";
->>>>>>   	phy-supply = <&vcc_3v3>;
->>>>>>   	pinctrl-names = "default";
->>>>>>   	pinctrl-0 = <&gmac1m1_miim
->>>>>>   		     &gmac1m1_tx_bus2
->>>>>>   		     &gmac1m1_rx_bus2
->>>>>>   		     &gmac1m1_rgmii_clk
->>>>>> -		     &gmac1m1_clkinout
->>>>>>   		     &gmac1m1_rgmii_bus>;
->>>>>> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
->>>>>> +	snps,reset-active-low;
->>>>>> +	/* Reset time is 20ms, 100ms for rtl8211f */
->>>>>> +	snps,reset-delays-us = <0 20000 100000>;
->>>>>> +	tx_delay = <0x42>;
->>>>>> +	rx_delay = <0x28>;
->>>>>>   	status = "okay";
->>>>>>   };
->>>>>>   
->>>>>> @@ -588,11 +587,6 @@ &mdio1 {
->>>>>>   	rgmii_phy1: ethernet-phy@0 {
->>>>>>   		compatible = "ethernet-phy-ieee802.3-c22";
->>>>>>   		reg = <0x0>;
->>>>>> -		pinctrl-names = "default";
->>>>>> -		pinctrl-0 = <&eth_phy_rst>;
->>>>>> -		reset-assert-us = <20000>;
->>>>>> -		reset-deassert-us = <100000>;
->>>>>> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
->>>>>>   	};
->>>>>>   };
->>>>>>   
->>>>>> @@ -630,12 +624,6 @@ vcc_mipi_en: vcc_mipi_en {
->>>>>>   		};
->>>>>>   	};
->>>>>>   
->>>>>> -	ethernet {
->>>>>> -		eth_phy_rst: eth_phy_rst {
->>>>>> -			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
->>>>>> -		};
->>>>>> -	};
->>>>>> -
->>>>>>   	hym8563 {
->>>>>>   		hym8563_int: hym8563-int {
->>>>>>   			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
->>>>>>
->>
+diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
+index 1a83f0f65f19..abc1bcef13ec 100644
+--- a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
+@@ -25,6 +25,15 @@ select:
+ allOf:
+   - $ref: /schemas/pci/pci-bus.yaml#
+   - $ref: /schemas/pci/snps,dw-pcie-common.yaml#
++  - if:
++      not:
++        required:
++          - msi-map
++    then:
++      properties:
++        interrupt-names:
++          contains:
++            const: "msi"
+ 
+ properties:
+   reg:
+@@ -193,9 +202,6 @@ properties:
+           oneOf:
+             - description: See native "app" IRQ for details
+               enum: [ intr ]
+-    allOf:
+-      - contains:
+-          const: msi
+ 
+ additionalProperties: true
+ 
+-- 
+2.40.1
 
 
 _______________________________________________
