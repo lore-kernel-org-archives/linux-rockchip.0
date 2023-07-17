@@ -4,83 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98043EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 16:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06403EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
-	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=38MVNEu8MwJMjQe0Uvd/1etn1HHD6M4V1SvZ6hTGlwQ=; b=AB7ue3T0H5vPxz
-	6FpIo1HmDCl/bFpxH47ySTZHOKCeH0t+4UIfiGQA0A/KmsxcNdCKHB2kYTxO6e0dSpjOQpokyoYG5
-	MqQQVahUns/v3cJ1knbXFNbkFJRpK1WgCmP5kjgWEiE+/GOmnNxH3uYJJ5MXqKTWEWcuQdqyIv4gR
-	FI1mfi8/G5tihkOpT/XAKwWn/Wk5bxow0KLZfcn3UWJkIuaPA9fcJMD3u3yZSm2JddW9bU+feZjYG
-	SqBoa9jcSCAdj1hj9FiETcBDq3Zu+FdXtF+2dNPg5Z5v/VUs29BZNB/kFZ/HUdkOtZzZO7PPYXR6h
-	nesghFQzhCnqNO94V4SQ==;
+	List-Owner; bh=hY9+0DbrvkMOHOn1r3Yjrcm/0FrxLxAgiA2VIXYnu9A=; b=Efm+PLAJLtvkPa
+	WhWENOOhyLyCMJeTumCkEWUkWQmedG8Jr/OcyQHJK28NHHKq10LbpiTMKkt55PrBwlz5V4/H21FTd
+	m2Hxyu6FUXk2o+sMNxeJqRWRZKL0H4YfP5Yn8NAVUT0T7wO1d8z1lKNUsl2RUHSUWz54jt2X6pQeF
+	3D1y4OP83b7/uSvb22Zy3Ow2FdzegJYd4wmbUMviV2hPrV4fP67dyz+BfXQ0I49wLcZJ1OZl+d5FW
+	0ePmzuHD7DXCM5SkNs1LgY2muUEsHKO/Uc/yIVg1D+2UHqu5/H4ragFFdcKRRTEZPTcHn8GEYzLz3
+	xlcjFMxmNnuhh6z2dBaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLR7I-004Y9p-17;
-	Mon, 17 Jul 2023 16:30:32 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1qLRlI-004dft-0V;
+	Mon, 17 Jul 2023 17:11:52 +0000
+Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLR7F-004Y82-18
+	id 1qLRlE-004dfG-2Q
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Jul 2023 16:30:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=s29768273; t=1689611421; x=1690216221; i=markus.elfring@web.de;
- bh=SHFKQTx4I2uUre12oEx6R5/rWLKJfXW3dMwSe9V87+Y=;
- h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:In-Reply-To;
- b=k/oJTggyz+H/f8FYl46kzu7SGXhkfIIt6CT/9gIZhfNNEYkxdrLAa/Ffzos7sn3IVKWKNa5
- 3TrKHcw1oBqFxDuL2joZXxj22sua0B5giBydkcwrpktfxfY6AQbC43AMGpbYN9292kK7mc0py
- YlPX8FlRt4vontnZoU7f5vLIGsv3hlflZfD+r3TrvyfBiEe20RM+nVBZvf9nOYBrNbVuOLF04
- ddl8LyHbn2x69A2yjJfwt9KIBi9KpFexN1q/xHg/yAyNHQ6IglYgyvaV37kml8ZDX/DfGfysX
- hqtO3fy0uwV4LqPZK1IgOfiddUf7d6fdDz/zEYp4LWRa0ECDf3ww==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MBB3s-1qEF3D1ZB0-00DAP0; Mon, 17
- Jul 2023 18:30:21 +0200
-Message-ID: <46371c1c-c926-6b2c-16f6-0da812da2731@web.de>
-Date: Mon, 17 Jul 2023 18:30:13 +0200
+	Mon, 17 Jul 2023 17:11:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
+	content-transfer-encoding:cc:content-type:from:subject:to;
+	s=s1; bh=u9cyOloQZC6hQzaTzv5Pm5kd2XpYOX/QjlM+6dp3CAs=;
+	b=TWN1JP+BX0foN7bmMnIDKFRWBwcjkMMIHuiDAK3IVrsJTkUfzfKxkQOFsEyzQrPSEj23
+	BfsA8sGaZeVv2CZup2a9vdhrKQJdHG/7u/SAtXfkHaiAQFrOwd3DZJiEhIw5ztzP5vVg1x
+	ov1inY/OwG2SIK0thGID59/l6MUFM2xoYFWUgSJiYDid6wcvw8OR3Q8Q+nKk6fSDkm+8MG
+	HVaZRi8IsXq/lKJM3udb9jnyGbaHRJBl27TpbQdbYS71uBCABMPZwXCtxNV05UoEVOLWqW
+	lnRwU0W3Ht8lfJYb0DJBVbTrWi/yTVXt6dRCrlZlsxsNIp3maCQnIrT3mvWVkbfg==
+Received: by filterdrecv-66949dbc98-mtdwq with SMTP id filterdrecv-66949dbc98-mtdwq-1-64B57652-A
+        2023-07-17 17:11:46.137570545 +0000 UTC m=+1953405.387360475
+Received: from [192.168.1.50] (unknown)
+	by geopod-ismtpd-8 (SG) with ESMTP
+	id 0yLu4gGzRCumHUmwPBgkAA
+	Mon, 17 Jul 2023 17:11:45.884 +0000 (UTC)
+Message-ID: <19a0271a-8b73-bf45-8159-a738ff43f1c2@kwiboo.se>
+Date: Mon, 17 Jul 2023 17:11:46 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- kernel-janitors@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: increase max supported height for H.264
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
-X-Provags-ID: V03:K1:TziCv+vZnuOfHbr8j7j4EBa93tlN9hgveSo2W+a4H/HVKIOcc/J
- 0PI5qVJDZDMq5OVSSfPG7BSTX0u9kk0g49EfYgiuIm1ZdVesVQ0ku4FLDx9C438vHkNQwN8
- IPdnUu8ajTByCd/lV04z5KT2QrjrnAIc5Mo5MFPtDvbEKwgUVm9bu5KBVyrX9caRL8G49mo
- lFUbFdg6XPMznOmQJFwfw==
-UI-OutboundReport: notjunk:1;M01:P0:oOQ9Qx4cIZU=;+3tACxPwPuKWltutcW/4SEkjtYP
- Z1+WVYJv44d8xa1Wl4jom/XRMRQvBUNTbhD8bFgy/sw7fzUlhJQyoFIa2phD0N/QM9GhGYITH
- 41bdmueQ+gry7H8XQHPxraSPXb5WKNLzSgOoNYzrfn5iUzD+mq0hdC9oxWuGfzP4gkdKLYq+w
- AsNE5JByMKRT1c74ya682I82EF2uv+uS0nrlanYZs2NJbKsHrSPDOkoEmKA+Y6z8Pu1ifrvIM
- G35gRJMBbpBlRRWoGKF3wduPDFT+VN9gr4zhmYF0+S5OabRK9m1vCIXxa9tDUBtQdoyW+uiOT
- NO76ABXo5VhmGj/0hI8Dl1AFA3NC5Rg112GS4AovPCqlPWc+7PtspiU+G3SsU7boViMzqsmEt
- P++q7184f4hM190jO73i5DijasMSH3oup0p8C1IfPfD0n5M/B1ymtDZQ4wn+vjuZIRtqH0oJJ
- 0YLrLZcNujSdlURbLdUXyo1V3fCuUDzGDcTd2DcnUef6hYmt0cYF7gYW2ZY/3puOfLAINtNrK
- yfGSPdqSUNG3pvqKValoH0GsjcQUHLiGObfsLvO9hVvjjd5ELTIMQ2xIsoebSkwdGARyOksu7
- C6YQewc/pg3SbeOdZJb5SJrGrQw1SgtulZmXvGFokU2e3ngQWm8TX5SKTqpBrWJ//SKeL9Wr+
- AW+nIT+xMR4vCqkq7DIU4jG9dqrcA9j0Kw0BfmAMgfge5UdJkEfiRbogZt+SBQ7VrjfQMbdhq
- I7V0DWjdHTSGr2ISE+Inye0O1GR29TIsLOO6NC6Dhxs2cExR5lL6HHzxbA2CdluL5NLP5LefO
- KN4FQA+rsdRJPJvIL36udMS0TQzIUW/KlJF4wWND35u8z1FktY4FBwjzDZmkhI2eWDPP2ama3
- UtuRrlmYVjiR4wo1p3HVDnmgtXHLxbGmJrmIU45Ggw5o3AbL190cp5mAXeALYgZs83rtyUpkW
- qBP9ew==
+Subject: Re: [PATCH] arm64: dts: rockchip: rock-3a: make ethernet work
+Content-Language: en-US
+References: <20230714063027.74489-1-naoki@radxa.com>
+ <25008843.6Emhk5qWAg@phil> <3e4a649c-a8fe-ff84-3beb-c56be1afff9b@kwiboo.se>
+ <88A84626E8619FC1+da8b7cbd-ecc3-bd30-ed88-d6f13a39acd3@radxa.com>
+ <a8de59ae-777a-a52f-cc23-573b500754a7@kwiboo.se>
+ <d8f7f21e-f10c-17c9-2462-f21f49196096@wolfvision.net>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <d8f7f21e-f10c-17c9-2462-f21f49196096@wolfvision.net>
+X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h3pUOVxOtVhDj4RXm?=
+ =?us-ascii?Q?eF2HA3CCC2V0UkwGPCRIV0oC12+32XZVZftRi8t?=
+ =?us-ascii?Q?115rETE2Y1iTZUQMf2OxRUGUtdLiSSW5P41mAgI?=
+ =?us-ascii?Q?4p1Y4DZk3Ky09UAUMSoTgWUFY2pW8zZT=2FnXdedp?=
+ =?us-ascii?Q?SoGNNzPM0djKOVAOiM+pNQsqZLiT8WGc+7hzx1Q?=
+ =?us-ascii?Q?MxgcWu8pt3hmQTbeTPziA=3D=3D?=
+To: Michael Riesch <michael.riesch@wolfvision.net>, FUKAUMI Naoki
+	<naoki@radxa.com>, Heiko Stuebner <heiko@sntech.de>, Anand Moon
+	<linux.amoon@gmail.com>
+Cc: linux-rockchip@lists.infradead.org
+X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_093029_833140_84782EC5 
-X-CRM114-Status: UNSURE (   5.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230717_101148_872636_128DEA5B 
+X-CRM114-Status: GOOD (  36.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,16 +87,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> After testing it is possible for the hardware to decode H264
-> bistream with a height up to 2560.
+On 2023-07-17 09:40, Michael Riesch wrote:
+> Hi all,
+> 
+> In addition to what has been already said:
+> 
+> On 7/16/23 15:50, Jonas Karlman wrote:
+>> On 2023-07-15 06:49, FUKAUMI Naoki wrote:
+>>> hi,
+>>>
+>>> On 7/15/23 01:24, Jonas Karlman wrote:
+>>>> On 2023-07-14 17:46, Heiko Stuebner wrote:
+>>>>> Am Freitag, 14. Juli 2023, 08:30:27 CEST schrieb FUKAUMI Naoki:
+>>>>>> ethernet on Radxa ROCK 3A is not working by following error:
+>>>>>>
+>>>>>>   rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+>>>>>>   rk_gmac-dwmac fe010000.ethernet eth0: stmmac_open: Cannot attach to PHY (error: -19)
+>>>>>>
+>>>>>> to fix this problem, align related properties with vendor kernel
+>>>>>>   https://github.com/radxa/kernel/blob/linux-5.10-gen-rkr4.1/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>>>>
+>>>>>> Fixes: 22a442e6586c ("arm64: dts: rockchip: add basic dts for the radxa rock3 model a")
+>>>>>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+>>>>>
+>>>>> There also is a second patch in the mix adding the gmac1_clkin
+>>>>> ef9f4b4a5020 ("arm64: dts: rockchip: Add support of external clock to ethernet node on Rock 3A SBC")
+>>>>>
+>>>>> And this patch does the exact opposite as the original nodes.
+>>>>> Can someone please mention board versions? Or did the gmac1 never
+>>>>> really work in the first place?
+> 
+> As far as I know all schematics versions state that the PHY produces the
+> clock (see the most recent schematics here:
+> https://dl.radxa.com/rock3/docs/hw/3a/ROCK-3A-V1.3-SCH.pdf>> 
+> Although using the internal MAC clock works as well, using the
+> gmac1_clkin is most probably the correct way.
+> 
+>>>> Ethernet have worked and probably still works booting with vendor U-Boot.
+>>>>
+>>>> However, when booting using mainline U-Boot the ethernet PHY is never
+>>>> initialized or reset due to lack of a ethernet gmac driver for rk35xx.
+>>>
+>>> surely I'm using mainline u-boot.
+> 
+> Ah, this might explain why I never experienced this issue: I am using
+> mainline barebox with GMAC support.
+> 
+>>>> With an early work-in-progress gmac driver the ethernet PHY is working
+>>>> same as with vendor U-Boot, and the ethernet PHY is identified.
+>>>>
+>>>> This revert from using reset-gpios to using the deprecated
+>>>> snps,reset-gpio is probably the wrong way forward.
+>>>>
+>>>> I suspect there is a bug in net/phy/mdio_device.c on how reset-gpios
+>>>> is asserted/deasserted, it works differently than how I would expect it
+>>>> to work, and also differs in how U-Boot handles reset-gpios.
+>>>>
+>>>> Some earlier findings regarding this reset issue:
+>>>> https://github.com/Kwiboo/linux-rockchip/compare/rk3568-eth-phy-reset~2...rk3568-eth-phy-reset
+>>>>
+>>>> Will try to get a proper patch/rfc out later this weekend or early next
+>>>> week after re-testing that on latest kernel.
+>>>
+>>> thank you so much for your awesome work!
+>>
+>> Thanks, made some progress on tracking down the root cause.
+>> From what I have discovered so far there is a chicken-and-egg problem:
+>>
+>> - phy needs to be reset or phy_id read back as 0xffffffff on mdio bus
+>> - phy device is not created because a valid phy_id is not read back
+>> - phy device needs to be created before it can be reset
+>>
+>> Possible workarounds so far:
+>> - phy is reset in U-Boot
+>>   - very early work-in-progress at https://github.com/Kwiboo/u-boot-rockchip/commit/6ee80f9a895a32551cf30dd4252a4960ed80dfc9
+>> - phy is reset using mdio bus reset
+>>   - similar to old https://github.com/Kwiboo/linux-rockchip/commit/8597fcfa0c5c792dabb44a2db7b283c56c99ec6a
+>> - phy is reset using deprecated snps,reset-gpio
+>>   - similar to mdio bus reset
+> 
+> There was a similar discussion here:
+> https://lore.kernel.org/all/CAMdYzYo_DGiO0UxJEb3xues7Um=X9AgPvz+Xp_YWb9pp9HaScg@mail.gmail.com/
+> 
+> The approach that moves the reset to the MDIO bus has been mentioned
+> there as well. On the first glance this approach looks reasonable to me.
 
-Are imperative change descriptions still preferred?
+It does not look like U-Boot support mdio bus reset-gpios, so changing
+to that would require adding even more code into U-Boot to get ethernet
+working in U-Boot.
 
-See also:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v6.5-rc2#n94
+Moving to mdio bus would make it behave like with old snps,reset-gpio,
+however phy reset-gpios still describe the hw more accurately, a
+assert/deassert cycle of reset-gpios triggers a phy hard reset.
+
+Do not know if it is possible to have both mdio bus reset and phy reset.
+
+There also looks like there is a bug in dwmac-rk rk3568_set_to_rgmii,
+tx/rx delay is always enabled. It should be disabled in some phy modes.
+Can send a patch once I finish with the U-Boot ethernet driver.
+
+Will try to complete a U-Boot driver that supports both phy reset-gpios
+and the deprecated snps,reset-gpio as a first step.
 
 Regards,
-Markus
+Jonas
+
+> 
+> Best regards,
+> Michael
+> 
+>> [...]
+>>>>>> ---
+>>>>>>   .../boot/dts/rockchip/rk3568-rock-3a.dts      | 32 ++++++-------------
+>>>>>>   1 file changed, 10 insertions(+), 22 deletions(-)
+>>>>>>
+>>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>>>> index 917f5b2b8aab..f9381ab9629b 100644
+>>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+>>>>>> @@ -32,13 +32,6 @@ hdmi_con_in: endpoint {
+>>>>>>   		};
+>>>>>>   	};
+>>>>>>   
+>>>>>> -	gmac1_clkin: external-gmac1-clock {
+>>>>>> -		compatible = "fixed-clock";
+>>>>>> -		clock-frequency = <125000000>;
+>>>>>> -		clock-output-names = "gmac1_clkin";
+>>>>>> -		#clock-cells = <0>;
+>>>>>> -	};
+>>>>>> -
+>>>>>>   	leds {
+>>>>>>   		compatible = "gpio-leds";
+>>>>>>   
+>>>>>> @@ -256,18 +249,24 @@ &cpu3 {
+>>>>>>   
+>>>>>>   &gmac1 {
+>>>>>>   	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+>>>>>> -	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
+>>>>>> -	clock_in_out = "input";
+>>>>>> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
+>>>>>> +	assigned-clock-rates = <0>, <125000000>;
+>>>>>> +	clock_in_out = "output";
+>>>>>>   	phy-handle = <&rgmii_phy1>;
+>>>>>> -	phy-mode = "rgmii-id";
+>>>>>> +	phy-mode = "rgmii";
+>>>>>>   	phy-supply = <&vcc_3v3>;
+>>>>>>   	pinctrl-names = "default";
+>>>>>>   	pinctrl-0 = <&gmac1m1_miim
+>>>>>>   		     &gmac1m1_tx_bus2
+>>>>>>   		     &gmac1m1_rx_bus2
+>>>>>>   		     &gmac1m1_rgmii_clk
+>>>>>> -		     &gmac1m1_clkinout
+>>>>>>   		     &gmac1m1_rgmii_bus>;
+>>>>>> +	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+>>>>>> +	snps,reset-active-low;
+>>>>>> +	/* Reset time is 20ms, 100ms for rtl8211f */
+>>>>>> +	snps,reset-delays-us = <0 20000 100000>;
+>>>>>> +	tx_delay = <0x42>;
+>>>>>> +	rx_delay = <0x28>;
+>>>>>>   	status = "okay";
+>>>>>>   };
+>>>>>>   
+>>>>>> @@ -588,11 +587,6 @@ &mdio1 {
+>>>>>>   	rgmii_phy1: ethernet-phy@0 {
+>>>>>>   		compatible = "ethernet-phy-ieee802.3-c22";
+>>>>>>   		reg = <0x0>;
+>>>>>> -		pinctrl-names = "default";
+>>>>>> -		pinctrl-0 = <&eth_phy_rst>;
+>>>>>> -		reset-assert-us = <20000>;
+>>>>>> -		reset-deassert-us = <100000>;
+>>>>>> -		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+>>>>>>   	};
+>>>>>>   };
+>>>>>>   
+>>>>>> @@ -630,12 +624,6 @@ vcc_mipi_en: vcc_mipi_en {
+>>>>>>   		};
+>>>>>>   	};
+>>>>>>   
+>>>>>> -	ethernet {
+>>>>>> -		eth_phy_rst: eth_phy_rst {
+>>>>>> -			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+>>>>>> -		};
+>>>>>> -	};
+>>>>>> -
+>>>>>>   	hym8563 {
+>>>>>>   		hym8563_int: hym8563-int {
+>>>>>>   			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+>>>>>>
+>>
+
 
 _______________________________________________
 Linux-rockchip mailing list
