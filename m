@@ -4,105 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B9C3EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 06:22:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E639BC001DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 06:23:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ip/CAo+eRgRMcviW0ECKwuhQK5VpufjOOoDTNWJ4XW0=; b=qWcXTELA8if7jXTERQT+LXw1K5
-	DdvSdSwk/keZmaRDRiv8mDZ2OtJq8yoMl0AkILBxiWSBhjNniMIJc+8Es1unqPSV0iNrGMAsxGv88
-	qxM1B0nh7NZT/UPT4UExEXpxe69zhp0MLO+OPd08ua8tNvBGKUBH2AdyVrA3oIfrvPgR95i40WD7i
-	9PQM3uF7y2LN9pYkR03o7LpKhGlhi/RqP0mlx8x+RmGJxihBm6tVT4/pv7dCkZE2VEzcWPHBIa8cd
-	gvBFEtVqogqrAxM0CS2sYZfa8ymDeApiMrL7Axlz3tJ1bVTF+d4afluFfvwzfSOjT9Fovfodi1DAO
-	7L4a8QEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=z4WGeheGfnLb+N6PDd/cyZ28Hn2Lwui2AlP+IadgBzE=; b=ogPQt9DNCdoyKl
+	IJq4tebVRygpLEquSef2PxHKlwpDvzUXdhLkjItqM2bnD4PK3C9krVMSjnUO9IGw5JsWrhK2rUVNz
+	YDUWVvuN3AfHfTj6Mnsu572/oshCRJKxr5v4Ga4YGixEmyRWNtCEpPxt3hhjt442ahTS9HLDqT9Fo
+	ULQrxQx6KNBMFpAZ8r2GoOaZ/nLbcoLuXZJNrZUo2Kruao7XZa92ZxcBxT6VfoB451PkYkgu24+hF
+	rVARzszU2PlQJ+/DqoiusOWj6eFWwHtytJM4KnqasPfCqU30jmFnoLwaeGbL8xEbbuWLqd60hfSkO
+	Q1h7AAWV/GyeCpw+/T4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Zg-005gfB-10;
-	Wed, 19 Jul 2023 06:22:12 +0000
+	id 1qM0aT-005hC6-2S;
+	Wed, 19 Jul 2023 06:23:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Ze-005gdN-1j
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 19 Jul 2023 06:22:10 +0000
+	id 1qM0aQ-005h8a-09;
+	Wed, 19 Jul 2023 06:22:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=wwFV/HSClZfL0mPQDWrZCZVgvJdfgHFUvV8Erj6RGss=; b=kckWEqQFbqe/5xTFy/GDfEjUPt
-	XXPOMvjhBkkyXxZBhta2/rvLIJReD2IoAt5JTHIoswu/K4qhvQ7p+Zs9SrG3GFI+VIc504YfLmMwj
-	0DukrEHiS9rsntrVyr4sv/yg8fhHF4XAfL4efjXjdGNbm7k0JEmPRKwZkqk8n/SBR9uT1C9LE1fH9
-	bzj2vKBtmvUS4xZdZkNBVOiLGLnI+RdxYgvKzr4N1Ljsk2Ri7G+rGNpJfkV+Ppn596E36suPk8IAA
-	zsL78C4qi8k9N58IGijbwJFU0liEn/QiDe3ACrZY/J5vXCMEdr+J6wOGMa6dPuDFdyKO1HeculbFS
-	cuBCKWOg==;
-Received: from 15.mo581.mail-out.ovh.net ([87.98.180.21])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=tXTx2RXlR8EQA67U0RkTrhef+oB+Uz2sXfrApLgduns=; b=JPDcUIqWtxTJ85S+vWEjUTsdQZ
+	6V08Rax/Eep7Eh3lHcoV8PgT4fCl+rzFVKNr4goKqyPwCrUiCLgEOiqY3pQssXIGnN6DtPOaNa+zF
+	evEU66ukcl2BFoRjT3CuCWe3kbkrBmvx92jLT9ceyeuCYK38jHNTkirxxrvGhXv/xLRXWHjeORnIo
+	o9Q/v5DmY6/ObkpsQggrCCcn8BH0xHvqcH+Ll4PqLmW6CvpIrxgqJi8Qp0q4ucwkPBwhrdvFOuAmr
+	QyKd9zz52Ow29alDoIcGYpwAauQ2WBTVVm9hO9zWELlDHFPIKkLdblp0wZPYQO056sc2IjcHz+KDg
+	uV3dIIDA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLgsp-00BM0z-2Q
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Jul 2023 09:20:42 +0000
-Received: from director2.ghost.mail-out.ovh.net (unknown [10.109.143.18])
-	by mo581.mail-out.ovh.net (Postfix) with ESMTP id 2EE23244C4
-	for <linux-rockchip@lists.infradead.org>; Tue, 18 Jul 2023 09:19:55 +0000 (UTC)
-Received: from ghost-submission-6684bf9d7b-mn4ct (unknown [10.109.138.229])
-	by director2.ghost.mail-out.ovh.net (Postfix) with ESMTPS id 9177E1FEB2;
-	Tue, 18 Jul 2023 09:19:49 +0000 (UTC)
-Received: from RCM-web4.webmail.mail.ovh.net ([176.31.235.81])
-	by ghost-submission-6684bf9d7b-mn4ct with ESMTPSA
-	id gQ79HjVZtmSJDgAAInjvQA
-	(envelope-from <rafal@milecki.pl>); Tue, 18 Jul 2023 09:19:49 +0000
+	id 1qLXCp-009R8S-0g;
+	Mon, 17 Jul 2023 23:03:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D75C2612F3;
+	Mon, 17 Jul 2023 22:59:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F8D3C433C7;
+	Mon, 17 Jul 2023 22:59:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689634746;
+	bh=OdfI1DsT8msOhtbHO035wIhdW6mDtm8twU0kdrGcESk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=otKz7JjeuYLIipQRHWMjThEjxKJ8WNODYFYooplOTgboeiGyeR3S30A6wp/3vZt6r
+	 BuVhg1f6CUWrYahR66aCYjWqRWqNX7yXjimmGVCVJMdtRX5QCmv/kym0vSIW8bHSvs
+	 I21pscMlxgSIChfASJoJjwLXHyS5UqVLkivgijPtzg3U3jba2zEPcz7U4Okh8AifYl
+	 lNJKi4ZVQjjEMCh4CbHpJqqTbTdmN7dIUU3Ryz4WuDqV06Y/ViMVO4VDO05be0Spn6
+	 SDPeDl0o+a2zS9Rpdq3DYW3U7yPoNwHaFx+Ctm7sSo4Gift8iCt14TqCL8P3K1WJ3v
+	 rVzXLAGGCfCTQ==
+Received: (nullmailer pid 3212975 invoked by uid 1000);
+	Mon, 17 Jul 2023 22:55:31 -0000
+From: Rob Herring <robh@kernel.org>
+To: Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] ARM: rockchip: Drop unused includes
+Date: Mon, 17 Jul 2023 16:55:28 -0600
+Message-Id: <20230717225528.3212881-1-robh@kernel.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Date: Tue, 18 Jul 2023 11:19:49 +0200
-From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
-To: Ahmad Fatoum <a.fatoum@pengutronix.de>
-Cc: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>, Srinivas
- Kandagatla <srinivas.kandagatla@linaro.org>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>,
- Vignesh Raghavendra <vigneshr@ti.com>, Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>, linux-mtd@lists.infradead.org, Miquel
- Raynal <miquel.raynal@bootlin.com>, Evgeniy Polyakov <zbr@ioremap.net>,
- Fabio Estevam <festevam@gmail.com>,
- linux-stm32@st-md-mailman.stormreply.com, Alyssa Rosenzweig
- <alyssa@rosenzweig.io>, Heiko Stuebner <heiko@sntech.de>,
- linux-rtc@vger.kernel.org, Samuel Holland <samuel@sholland.org>, Richard
- Weinberger <richard@nod.at>, Michal Simek <michal.simek@xilinx.com>, Jernej
- Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, NXP Linux Team
- <linux-imx@nxp.com>, Vincent Shih <vincent.sunplus@gmail.com>, Orson Zhai
- <orsonzhai@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
- linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Sven Peter <sven@svenpeter.dev>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-mediatek@lists.infradead.org, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>, Hector Martin <marcan@marcan.st>,
- linux-kernel@vger.kernel.org, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Michael Walle <michael@walle.cc>, Masami Hiramatsu <mhiramat@kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Kevin Hilman
- <khilman@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea
- <claudiu.beznea@microchip.com>
-Subject: Re: [Linux-stm32] [PATCH V4] nvmem: add explicit config option to
- read old syntax fixed OF cells
-In-Reply-To: <e5a8524c-8961-9ff0-db30-3b648345319e@pengutronix.de>
-References: <20230403225540.1931-1-zajec5@gmail.com>
- <e5a8524c-8961-9ff0-db30-3b648345319e@pengutronix.de>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <d51234ebc05d2b9fe44625299c103caa@milecki.pl>
-X-Sender: rafal@milecki.pl
-X-Originating-IP: 31.11.218.106
-X-Webmail-UserID: rafal@milecki.pl
-X-Ovh-Tracer-Id: 6429732894367460296
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedviedrgeeggdduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeggfffhvfevufgjfhgfkfigihgtgfesthejjhdttdervdenucfhrhhomheptfgrfhgrlhcuofhilhgvtghkihcuoehrrghfrghlsehmihhlvggtkhhirdhplheqnecuggftrfgrthhtvghrnhepgfeuleeuteetfeeuhefhhffgtedvgeejfeelffeuvdfhueffvdehgeeuveeuhfelnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkphepuddvjedrtddrtddruddpfedurdduuddrvddukedruddtiedpudejiedrfedurddvfeehrdekudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoehrrghfrghlsehmihhlvggtkhhirdhplheqpdhnsggprhgtphhtthhopedupdhrtghpthhtoheplhhinhhugidqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdfovfetjfhoshhtpehmohehkedupdhmohguvgepshhmthhpohhuth
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_102039_898500_2FB4471F 
-X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,80 +79,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ahmad,
+Several includes are not needed, so drop them.
 
-On 2023-07-18 11:08, Ahmad Fatoum wrote:
->> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
->> index 60670b2f70b9..334adbae3690 100644
->> --- a/drivers/mtd/mtdcore.c
->> +++ b/drivers/mtd/mtdcore.c
->> @@ -522,6 +522,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
->>  	config.dev = &mtd->dev;
->>  	config.name = dev_name(&mtd->dev);
->>  	config.owner = THIS_MODULE;
->> +	config.add_legacy_fixed_of_cells = of_device_is_compatible(node, 
->> "nvmem-cells");
-> 
-> How does the new binding look like in this situation?
-> 
-> Before it was:
-> 
-> &{flash/partitions} {
-> 	compatible = "fixed-partitions";
-> 	#address-cells = <1>;
-> 	#size-cells = <1>;
-> 
-> 	partition@0 {
-> 		compatible = "nvmem-cells";
-> 		reg = <0 0x100>;
-> 		#address-cells = <1>;
-> 		#size-cells = <1>;
-> 
-> 		calib@1 {
-> 			reg = <1 1>;
-> 		};
-> 	}
-> };
-> 
-> It it now the same, but s/"nvmem-cells"/"fixed-layout"/ ?
+of_platform.h is not needed, but it implicitly includes of.h which is
+needed.
 
-Please take a look at those commits and examples:
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ arch/arm/mach-rockchip/rockchip.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-bd912c991d2e ("dt-bindings: nvmem: layouts: add fixed-layout")
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bd912c991d2ef079a32558f057b8663bcf1fb6fc
+diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
+index beea4564eed4..82102fbabf92 100644
+--- a/arch/arm/mach-rockchip/rockchip.c
++++ b/arch/arm/mach-rockchip/rockchip.c
+@@ -9,15 +9,11 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
++#include <linux/of.h>
+ #include <linux/of_clk.h>
+-#include <linux/of_platform.h>
+-#include <linux/irqchip.h>
+ #include <linux/clocksource.h>
+-#include <linux/mfd/syscon.h>
+-#include <linux/regmap.h>
+ #include <asm/mach/arch.h>
+ #include <asm/mach/map.h>
+-#include <asm/hardware/cache-l2x0.h>
+ #include "core.h"
+ #include "pm.h"
+ 
+-- 
+2.40.1
 
-fa7fbe53ecdc ("dt-bindings: nvmem: convert base example to use NVMEM 
-fixed cells layout")
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fa7fbe53ecdc4e7d549a9f73a40e257b0046b4b9
-
-
-Basically you need a "nvmem-layout" node with:
-compatible = "fixed-layout";
-
-So in your case that would be:
-
-&{flash/partitions} {
-	compatible = "fixed-partitions";
-
-	partition@0 {
-		reg = <0 0x100>;
-
-		nvmem-layout {
-			compatible = "fixed-layout";
-			#address-cells = <1>;
-			#size-cells = <1>;
-
-			calib@1 {
-				reg = <1 1>;
-			};
-		};
-	}
-};
 
 _______________________________________________
 Linux-rockchip mailing list
