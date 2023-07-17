@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C143EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 15:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98043EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 16:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
+	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bTBjgvXuJzyebEof8o1l9VbHK8sspqESsktmoflRHlw=; b=asLJExBPJrNjqK
-	HIMnmltL8VR9m4gGh1DQbOICmq1GbRzEbV3DsCeNcL6Cc331ffxDp1AIjiUO9CY4AKljA1ez5cRW9
-	/fNhVYMOmp3OVL3OU42ods4TddzBm3evy7wA5cZUjNdww0ypd5mIuvb0x0npiufJszNi1I74Tl+E9
-	vmchkH+EPApMEeXyfnHjoEQinkESUyMl1nOrI+IGx77XcsLz+5NQiAKLeeva13C6+REWF6HETVBhN
-	y9kKGofalw0mkoRgu77IonWeynoniIdXdw26q1SxmGfCByIQZSa2peDllDNd1+1XSjEUyztIM1gZr
-	GSqpYOcip0amOsvInSWw==;
+	List-Owner; bh=38MVNEu8MwJMjQe0Uvd/1etn1HHD6M4V1SvZ6hTGlwQ=; b=AB7ue3T0H5vPxz
+	6FpIo1HmDCl/bFpxH47ySTZHOKCeH0t+4UIfiGQA0A/KmsxcNdCKHB2kYTxO6e0dSpjOQpokyoYG5
+	MqQQVahUns/v3cJ1knbXFNbkFJRpK1WgCmP5kjgWEiE+/GOmnNxH3uYJJ5MXqKTWEWcuQdqyIv4gR
+	FI1mfi8/G5tihkOpT/XAKwWn/Wk5bxow0KLZfcn3UWJkIuaPA9fcJMD3u3yZSm2JddW9bU+feZjYG
+	SqBoa9jcSCAdj1hj9FiETcBDq3Zu+FdXtF+2dNPg5Z5v/VUs29BZNB/kFZ/HUdkOtZzZO7PPYXR6h
+	nesghFQzhCnqNO94V4SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLQPg-004RMe-1e;
-	Mon, 17 Jul 2023 15:45:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qLR7I-004Y9p-17;
+	Mon, 17 Jul 2023 16:30:32 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLQPd-004RI3-0o
+	id 1qLR7F-004Y82-18
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Jul 2023 15:45:26 +0000
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:11:83d4::7a9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85E7B6602329;
-	Mon, 17 Jul 2023 16:45:13 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689608714;
-	bh=nfXpPEOOT+DQxYAty6Ka9OIALcouR/KYehklbnLoYLM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=akO6ybvYtgpoWKI83h/6uRWK6loma3uiqETg9r7daQEK0m9x41dnp17GBuP3YnMDH
-	 Ed/giYV5SvqTNjnzYTbMhZVtYpXdYbr0+Nqd6lQZ1NuofLlXGrBTRVMF7TTE8ZDk1n
-	 AFzPkNujdIg/SoV8zg7N3m3si82UkDxH2Vs6itu+taJw5c6TuJr+zfMmAScm9wOOG/
-	 EERmNTPXzyT030KVtxGAmxzpTKZoRuDc/SMpxwNrN1vxPvZi0+2UW3s0MnRg9mlx38
-	 3sCttwOzmSGXBkosxVFKN0fC6nzmhX/f/GB/3Knzq87BBvO9uoYnbok+nXgGNHQpkB
-	 iYdf5U2HHJ0bg==
-Message-ID: <7046e828625a2acd97c48aec9f3b0ef0cc4930ed.camel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: increase max supported height for H.264
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- ezequiel@vanguardiasur.com.ar, mchehab@kernel.org,
- gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Date: Mon, 17 Jul 2023 11:45:04 -0400
-In-Reply-To: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
-References: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	Mon, 17 Jul 2023 16:30:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=s29768273; t=1689611421; x=1690216221; i=markus.elfring@web.de;
+ bh=SHFKQTx4I2uUre12oEx6R5/rWLKJfXW3dMwSe9V87+Y=;
+ h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:In-Reply-To;
+ b=k/oJTggyz+H/f8FYl46kzu7SGXhkfIIt6CT/9gIZhfNNEYkxdrLAa/Ffzos7sn3IVKWKNa5
+ 3TrKHcw1oBqFxDuL2joZXxj22sua0B5giBydkcwrpktfxfY6AQbC43AMGpbYN9292kK7mc0py
+ YlPX8FlRt4vontnZoU7f5vLIGsv3hlflZfD+r3TrvyfBiEe20RM+nVBZvf9nOYBrNbVuOLF04
+ ddl8LyHbn2x69A2yjJfwt9KIBi9KpFexN1q/xHg/yAyNHQ6IglYgyvaV37kml8ZDX/DfGfysX
+ hqtO3fy0uwV4LqPZK1IgOfiddUf7d6fdDz/zEYp4LWRa0ECDf3ww==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MBB3s-1qEF3D1ZB0-00DAP0; Mon, 17
+ Jul 2023 18:30:21 +0200
+Message-ID: <46371c1c-c926-6b2c-16f6-0da812da2731@web.de>
+Date: Mon, 17 Jul 2023 18:30:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ kernel-janitors@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: LKML <linux-kernel@vger.kernel.org>
+References: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: increase max supported height for H.264
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20230717150611.42832-1-benjamin.gaignard@collabora.com>
+X-Provags-ID: V03:K1:TziCv+vZnuOfHbr8j7j4EBa93tlN9hgveSo2W+a4H/HVKIOcc/J
+ 0PI5qVJDZDMq5OVSSfPG7BSTX0u9kk0g49EfYgiuIm1ZdVesVQ0ku4FLDx9C438vHkNQwN8
+ IPdnUu8ajTByCd/lV04z5KT2QrjrnAIc5Mo5MFPtDvbEKwgUVm9bu5KBVyrX9caRL8G49mo
+ lFUbFdg6XPMznOmQJFwfw==
+UI-OutboundReport: notjunk:1;M01:P0:oOQ9Qx4cIZU=;+3tACxPwPuKWltutcW/4SEkjtYP
+ Z1+WVYJv44d8xa1Wl4jom/XRMRQvBUNTbhD8bFgy/sw7fzUlhJQyoFIa2phD0N/QM9GhGYITH
+ 41bdmueQ+gry7H8XQHPxraSPXb5WKNLzSgOoNYzrfn5iUzD+mq0hdC9oxWuGfzP4gkdKLYq+w
+ AsNE5JByMKRT1c74ya682I82EF2uv+uS0nrlanYZs2NJbKsHrSPDOkoEmKA+Y6z8Pu1ifrvIM
+ G35gRJMBbpBlRRWoGKF3wduPDFT+VN9gr4zhmYF0+S5OabRK9m1vCIXxa9tDUBtQdoyW+uiOT
+ NO76ABXo5VhmGj/0hI8Dl1AFA3NC5Rg112GS4AovPCqlPWc+7PtspiU+G3SsU7boViMzqsmEt
+ P++q7184f4hM190jO73i5DijasMSH3oup0p8C1IfPfD0n5M/B1ymtDZQ4wn+vjuZIRtqH0oJJ
+ 0YLrLZcNujSdlURbLdUXyo1V3fCuUDzGDcTd2DcnUef6hYmt0cYF7gYW2ZY/3puOfLAINtNrK
+ yfGSPdqSUNG3pvqKValoH0GsjcQUHLiGObfsLvO9hVvjjd5ELTIMQ2xIsoebSkwdGARyOksu7
+ C6YQewc/pg3SbeOdZJb5SJrGrQw1SgtulZmXvGFokU2e3ngQWm8TX5SKTqpBrWJ//SKeL9Wr+
+ AW+nIT+xMR4vCqkq7DIU4jG9dqrcA9j0Kw0BfmAMgfge5UdJkEfiRbogZt+SBQ7VrjfQMbdhq
+ I7V0DWjdHTSGr2ISE+Inye0O1GR29TIsLOO6NC6Dhxs2cExR5lL6HHzxbA2CdluL5NLP5LefO
+ KN4FQA+rsdRJPJvIL36udMS0TQzIUW/KlJF4wWND35u8z1FktY4FBwjzDZmkhI2eWDPP2ama3
+ UtuRrlmYVjiR4wo1p3HVDnmgtXHLxbGmJrmIU45Ggw5o3AbL190cp5mAXeALYgZs83rtyUpkW
+ qBP9ew==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_084525_438262_7DB840BC 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20230717_093029_833140_84782EC5 
+X-CRM114-Status: UNSURE (   5.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,30 +92,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbHVuZGkgMTcganVpbGxldCAyMDIzIMOgIDE3OjA2ICswMjAwLCBCZW5qYW1pbiBHYWlnbmFy
-ZCBhIMOpY3JpdMKgOgo+IEFmdGVyIHRlc3RpbmcgaXQgaXMgcG9zc2libGUgZm9yIHRoZSBoYXJk
-d2FyZSB0byBkZWNvZGUgSDI2NAo+IGJpc3RyZWFtIHdpdGggYSBoZWlnaHQgdXAgdG8gMjU2MC4K
-PiAKPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRA
-Y29sbGFib3JhLmNvbT4KClRoYW5rcywgdGhpcyBjb3VsZCBwb3NzaWJseSBoYXZlIGEgRml4ZXMg
-dGFnID8KRml4ZXM6IGNkMzNjODMwNDQ4YmEgKCJtZWRpYTogcmt2ZGVjOiBBZGQgdGhlIHJrdmRl
-YyBkcml2ZXIiKQoKV2l0aCBvciB3aXRob3V0IHRoZSB0aGF0IHRob3VnaDoKUmV2aWV3ZWQtYnk6
-IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KCj4gLS0t
-Cj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgfCAyICstCj4gIDEgZmls
-ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+IGluZGV4IDEzNGUyYjlmYTdkOS4uODRhNDE3OTJjYjRi
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiAr
-KysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4gQEAgLTEyMCw3ICsx
-MjAsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jb2RlZF9mbXRfZGVzYyBya3ZkZWNf
-Y29kZWRfZm10c1tdID0gewo+ICAJCQkubWF4X3dpZHRoID0gNDA5NiwKPiAgCQkJLnN0ZXBfd2lk
-dGggPSAxNiwKPiAgCQkJLm1pbl9oZWlnaHQgPSA0OCwKPiAtCQkJLm1heF9oZWlnaHQgPSAyMzA0
-LAo+ICsJCQkubWF4X2hlaWdodCA9IDI1NjAsCj4gIAkJCS5zdGVwX2hlaWdodCA9IDE2LAo+ICAJ
-CX0sCj4gIAkJLmN0cmxzID0gJnJrdmRlY19oMjY0X2N0cmxzLAoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+> After testing it is possible for the hardware to decode H264
+> bistream with a height up to 2560.
+
+Are imperative change descriptions still preferred?
+
+See also:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v6.5-rc2#n94
+
+Regards,
+Markus
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
