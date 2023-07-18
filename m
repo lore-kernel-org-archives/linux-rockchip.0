@@ -4,82 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11A60EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jul 2023 17:35:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE668C0015E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 05:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Sw4RLyoE8vSEL9sTuH1CIsXIQjgUp5lfMFoZKyW5b4=; b=yEWvsbq8A2GPWR
-	3i8gZSkf7HWHC1G4CSxBcuufzG6G+CdlkDfFAUJbAQ9l07St1NWURK7d7sCnLowCgtbY912PTEaes
-	ND0jgH8Cq1tYUTwr5igk0yyQCxDr7LGGZZZxV3y3obQNXzBYrr7Ph01GpoC97QtRaF0CitctdFv4U
-	HHf7fo+O7z6+VR5MKgt6+GkK3pS5+jjnPLQSUXhOoRtLukSWALbQZaY1Zurc6j4++HpcMXdLuEvtp
-	q4eY6wzEHaLRJv+I58B3C2hyRCukm1VBrxJfjhFCeLgeyHF0MB8Q/M4a9L7aU8kzH5SDVjVufjw8a
-	IZad3KWwOw5sRrBEpurA==;
+	List-Owner; bh=vYMPnNW10YH+6gkSqHqJtWvk2TOgcZ9lqLeFS2rmYJU=; b=He5g5iWKpQf3c+
+	qn7CPfBzwZhwkxyxgUxwzcrVS1EGUi8WZo5tT3qKwQhP19sYUAFYmP7sqK8XkvHfF/G+iqgDpwDWd
+	ySgb+OfK3itiS5Fz+OIQyXNfq0RpXjfWF3D/Fu0qOTL3sf5d401bDLQxCpw8Z9tANTUhjDmdhb9qr
+	yRcD6jBDmMesfhPkxuZQCTxQ4njahbPYa+7JhOR2STWXvKZuIYNPDlyRWM6QXnrnyfpQUvuguFn9l
+	LOF0OUy2Xk9UhYsyr77mfJeSfGXqMq0aV8T6KtsK9ZZfKQrtZiCi6Y4g0oFtuaNrgUW5wybDzq+r5
+	6/3SRRUjzy4e+slMpVFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLS8Q-004hRv-06;
-	Mon, 17 Jul 2023 17:35:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qLzRu-005AOS-0G;
+	Wed, 19 Jul 2023 05:10:06 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLS7x-004hHu-1o;
-	Mon, 17 Jul 2023 17:35:20 +0000
-Received: from jupiter.universe (dyndsl-091-248-189-171.ewe-ip-backbone.de [91.248.189.171])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DB88E660297B;
-	Mon, 17 Jul 2023 18:35:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689615316;
-	bh=8oFJad9r/GlAEavQIAU1wTEML33q2mHg++XmmQwX2kM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DqGDoIY9y0wEE76avTYGCDjg2nvy3cTzIABdofTOtlqWP1xQHEbxkKh2SywY2DXdy
-	 I3c0Tyemq4nHkprM5BJmufjc7d5OCgmnE6mzpUL0oMEr0uFgbW/dfdgWj3gisyiJcD
-	 QuLNaYfxr79Hu9EvXE9Tf0PAySjLwpCq80Xn5Jiy7Kehe3xYDoNyPlzoy/69QH+aRB
-	 AHchTHWkCNtvtTzvR75r59HZfQhYwabEiABq8dqffMvk8iIt6vZ30m1/JRBk8t9bz7
-	 uN4OwQWin4TairUPZKBG/4MEqd698US7snTj8zu4++s/22NMqoIYN+VjDZ3tkrtkSV
-	 aHOgrRb5jMZiA==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id D4FCD480C78; Mon, 17 Jul 2023 19:35:12 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1qLzRt-005AO0-0X;
+	Wed, 19 Jul 2023 05:10:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=nZbD14POHu2WrHgEO8Jvpv+BAByIdXDcXCIfoGvu5FQ=; b=ElfJX4QUM97REZJrkMO7E57E9l
+	tlHo4HAkgBrhUumPDPVmsKAKmLuy6gOnomFZ1QrScBf2g8HZl/mJ/FUQqCn1VGH73mS3wih+NjGLd
+	lD0PdH4hXPQF0fV74LS/raKV1R2hbH4C5DDxXWg7I3JFrkwjcGTpE3sAu2NqvEp8AQ2C6eUVcpPsS
+	V3OqEQSClBuWg++a8ktF9+9QK9Q0EMy9PgJXC2lNEH/wUwf2ocv4ybF3mAAkBabQI0cMQ+jxxQGyH
+	/xHfRQNoIgUSME1bH5HrFLWnrm4VOHkzR7a8KcmunYTlDNslgL2xv1KSRpAnO9NFU3Kd58K4Ec/tV
+	d4MnEE/A==;
+Received: from mail-mw2nam10on20615.outbound.protection.outlook.com ([2a01:111:f400:7e89::615] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qLq2t-00BvpF-14;
+	Tue, 18 Jul 2023 19:07:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=S9q41sScpglmPdEKKHS+l3CEBnWRfJ8m0glo5X+sduQ6pKtuMeNjIGcmaAx3953udc+KRruQU8+rNtF76CLoXXfQupDFdJBlYJaIXVTWM/64ONzdYYTNvWeplXWS8eQnw5dr6pVuVu3PMCulcYLdbsWPbiMlrFYQzQbrUIpxKNr62TJkDsbZpjMDUKejDV4rRzLy/wFXnkYnFAAsHxS2L9ZYhrIwcdUEjbrnDHJQIKwyitLyg3hutaCGstaI8CKjv3je9gPhZ8Zdx1LhRiQxg0WoIjKMmU3hLjJIIcoicO5xFdE0X69l2VvQXP+TpXboGlopJDHWBSqyDaNSJRyyQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nZbD14POHu2WrHgEO8Jvpv+BAByIdXDcXCIfoGvu5FQ=;
+ b=UyOBBSIOig0L+UgUPTsVSSt5UltT5iapMj26Twr7zNaP7pWOCmRRNwncAM+ZIXPp7pLLszaZRypO0nwYyqERugkf8zRe2iIHZqsl/I2OcM/m85h/5gi5nfPM2xI5kihMH3DHHe0TGe0vkyyJAfHYpUYdSZDsMP5rn3APwKjH4X34Z7WjdvubQh+33xlC0dm/+kECq3F+LooIjJ/LSQ8gso41YU2fmiKKZAyqWgNHlQuH9tH/e1lZS1srJK8ivg/hBb6B9CXeZQ8PnUiTokt9Hz37wxmK5agrv9b/lkdGMrfXnmcUgtrZKOpYzy0hqs/UQV+ibQlUIJEHFJd3IZ/Cmg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nZbD14POHu2WrHgEO8Jvpv+BAByIdXDcXCIfoGvu5FQ=;
+ b=sWq5OrCLwrtjnD4l2odtGdLIq+arSIbHGC5LeeeggdgHXoIYtL3NHpcMVfCa25dG/fgzcCggejb0RbVw/9+Tu1SF734ZNyT+UsGnTL+/qmBaIJrzPgE9u8u6vkV88zly+OLnkkOHW7YtSL7HuGW8sQS8MGF/y9MOLs1dTXsGF91bkZxWor5iOWSX4lUaB9RqA0NjzZ4hQ1GBLAsTTomPB/tvqSb0lMdDTtkUdKblkna6w8IkuGtLSluWt4MWn54Z0fxw9lbtVR6KMnJSSAyekTQazR/UWHVeilnuxd8r42o5QzlIaOrEiAflu9EIkD/iOOYApl5uMAH5NUpeUpNZpg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by LV3PR12MB9329.namprd12.prod.outlook.com (2603:10b6:408:21c::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Tue, 18 Jul
+ 2023 19:06:01 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
+ 19:06:01 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	John Clark <inindev@gmail.com>,
-	Qu Wenruo <wqu@suse.com>,
-	devicetree@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: rk3588: add PCIe3 support
-Date: Mon, 17 Jul 2023 19:35:12 +0200
-Message-Id: <20230717173512.65169-3-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230717173512.65169-1-sebastian.reichel@collabora.com>
-References: <20230717173512.65169-1-sebastian.reichel@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Subject: [PATCH 08/10] iommu/omap: Convert to generic_single_device_group()
+Date: Tue, 18 Jul 2023 16:05:56 -0300
+Message-ID: <8-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+In-Reply-To: <0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: CH0PR03CA0091.namprd03.prod.outlook.com
+ (2603:10b6:610:cd::6) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|LV3PR12MB9329:EE_
+X-MS-Office365-Filtering-Correlation-Id: 035651ed-bedc-4766-7c9e-08db87c20657
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: kyah1U0JWdXNbMkkUsBV7TUlFSWQTRa1RxIvgkyImlk6FgHEOSu/RKGbUSFfPBBAvhv1BjWnsBbdFulrga84ddoB9YcxNd5PRfQw2oKK/PZ64eiDLbItn33HkQUJgWvDJ2JxSSOIzf7s0uuhjdJdxM27YfXhNsosw9yFqRdIBpkkh8qHdeuFpiteQUtiQe4qjq5VtnOQ9ihKpokwT//5iRJl78XbjPBhIcBCwwk//lV+BEYNQUvW8HHNXO6pvovt7w0yFx+Qo7mMypmNVJ9HOc17BlKj/JFkAi0ImRRGwIBWpCYpzhP8lI0redmB+kqyvsFPxyUW0HtQWr/YASHHTeXCOtIYgLgpWkH6KoUKGpsm5fA09zDipg8iKcAmfcgBGXzw2G+2Lclgdxqb3jVY5QvlDDhST3CO+IBZdsPt3bFyOZp/HwJBqL7uxaOFWtT6KyVn+hGplI4FRQGBShA7+24GqMZkeHwExamE/+dFfIxHNvAjtXlb/CcOcRMnum3zUpexWlndC+RUMHI33dldQkYO3NX5YChApRLhpc/Z4Zgll3nyjTaDCwf1bAS5ziEW8DJQbZV1gL9k+a/2uCQIpFQItuA6FufulSa9KnTS2gx2JNss+LEFScsAFtbXObK1y7e3WlZ5id7mxXRGGJ+eTA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(376002)(396003)(136003)(366004)(451199021)(2906002)(110136005)(6512007)(38100700002)(921005)(2616005)(83380400001)(186003)(6506007)(26005)(5660300002)(86362001)(36756003)(8676002)(7416002)(4326008)(478600001)(6666004)(6486002)(316002)(66946007)(8936002)(66476007)(41300700001)(66556008)(4216001)(41533002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?uHNtXY0nfg+mRsxsEOxcE0ThzVzItKhoVzSxsutjUFgMcDYeQ7LU030G/8Sv?=
+ =?us-ascii?Q?FL1jMSr2EVaxxXsXCVpLp9pyoaDxj9PuJ0FcCaDO0Mnyo9KoHstLMNjcP+Ik?=
+ =?us-ascii?Q?8a/gpJ/z/nTnXgF8Xg8HYut0MR0QWl/fRgeuv4BiJxU8nWz87MSWyIIjNHu8?=
+ =?us-ascii?Q?CCT/jQTGkDANpJPoaLWQ8h+t0+7NmZB3e2hs9GyvEW117Eo1REBAMP0PqEXD?=
+ =?us-ascii?Q?WGY1GuO3wLDjC3hhWL2d84vt/ZxvupZLpztZYhf7eb6Q46NWgkfnV+IPMScA?=
+ =?us-ascii?Q?tL2f0Oq1EDcMxSYomekSjRYdWQEarq6M/66jGmvCfLa1eRIt/CATmtb5Zknj?=
+ =?us-ascii?Q?9hd3P1XuLOPrcl+vTTxRVsACm/CoDdMNAbkPNAd3lZ5q7Qj9l9RnuUUdlDco?=
+ =?us-ascii?Q?ETiTDg8BAuTv8sM46GP4Am0Q8VhcY3zP5hKnE5SYGTUlOK7ImHEOEDyflKpX?=
+ =?us-ascii?Q?mtBY/GrOTZOKapuSyE2eXKjYekn6KpTaAT3/1+RL7sDE5zbU05reEXJ5ew61?=
+ =?us-ascii?Q?ruzJMx+TPoaG31nTVWtwiLTtCnnVIEICo+sABuHSyHQsvw+/VEIqPFow5JD8?=
+ =?us-ascii?Q?m15qTjtGJKbvbr12rAWummCfprbIU36zDX6YwewYKFezCFy/WMz/6q9vxMGY?=
+ =?us-ascii?Q?aBAnHNppAR+ckiW0zx+xH6304NYff/E5hjZkIZkawRZwzZbl6gRFVLXKpwVE?=
+ =?us-ascii?Q?o5HQXnSbvG61sSLoAsthNHiSllJMSje8u9+xyVqgFFyN7SlDRky1rAJG+iP5?=
+ =?us-ascii?Q?uOb8o0kAbdm9r+I23+hk6Y4KPYX1uJn1JBpZCI4wNhKLCqz82HdmCNHGxtV5?=
+ =?us-ascii?Q?GYnGDep8rkb1yh1sYnnCg2VBHa+IkZYuDQWaxzBiO3ot9XwMV6EDgbVx9Ujw?=
+ =?us-ascii?Q?h2U6ymD4l2y4C9oAKt6ran8gcTAdrNw6cgQ7SOhbaKyD4CBzv4XAwoOa6Z23?=
+ =?us-ascii?Q?NVpmAtL/+PxCbSoPJW9C9vEZoDRCUsIF4UVJ+TrBPmkPgviFocQ201atgZGo?=
+ =?us-ascii?Q?ijfOZO+Fj2ohUBGb8LG6YxKIws4V9Njx+LIiz66kMexL7G8VOhqbe6edug4M?=
+ =?us-ascii?Q?qEbMBvAmwg2irIUnnhipvYJISmrvdrzoEHI1yGVH6M7WBZ0MrPWGaJNn7h79?=
+ =?us-ascii?Q?q67Sbn02izyV5s/1cRmUkLEZj+v2X/coxz9Gf+WW/Tv8CZXjWWJQoc28ppcT?=
+ =?us-ascii?Q?vKTEK4tjvQr61jN3GTWm48Sv9qAO0msdFZBi9qlyFspJnbaazEW2PWgNasmR?=
+ =?us-ascii?Q?8pDZZvjEdFAY6XTeoT7OnO7nCqOpjzYV43LlmDRC5i3RqdJqo7JknQ3UcZqa?=
+ =?us-ascii?Q?tTEpW0waXBbJChcW/KkH99HxbrTPCa8jmzujRKn6DvxffP730GUjKSREqWHk?=
+ =?us-ascii?Q?zHY9IKe8HY1k1U0ydNRw1RU6Phhz3Oh/dL9zLdFMqi8rxutcZFswZ9c1OSBR?=
+ =?us-ascii?Q?fUtrsDAAqKckk1V+S4J4c/PPayH5NKF8xyL7IF/BJ+pMZsxvuXZbBatu0+89?=
+ =?us-ascii?Q?0aLLnYp9RI9C03soQklNPmZUPTCz2ZKVc4pPxMG7ge3FKdppxOj479N7FYN0?=
+ =?us-ascii?Q?xWs7oBwExPUFhAQqhRfpexKmycXt9xzokakY0mfV?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 035651ed-bedc-4766-7c9e-08db87c20657
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 19:06:00.4695
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TypXv4oTIwtT6hUzWOboVZq1K3EH1Qn3Vs7lDMQfyvwRrOw56tB/L3AZy7jZoyT9
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9329
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_103517_883375_EE1DAA16 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20230718_200739_658006_579C4D7B 
+X-CRM114-Status: GOOD (  14.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,158 +159,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add both PCIe3 controllers together with the shared PHY.
+Use the new helper.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+For some reason omap will probe its driver even if it doesn't load an
+iommu driver. Keep this working by keeping a bool to track if the iommu
+driver was started.
+
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588.dtsi | 120 +++++++++++++++++++++++
- 1 file changed, 120 insertions(+)
+ drivers/iommu/omap-iommu.c | 30 ++++--------------------------
+ drivers/iommu/omap-iommu.h |  2 +-
+ 2 files changed, 5 insertions(+), 27 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 88d702575db2..8f210f002fac 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -7,6 +7,11 @@
- #include "rk3588-pinctrl.dtsi"
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 537e402f9bba97..97c45f50bf4332 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -1225,18 +1225,15 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, obj);
  
- / {
-+	pcie30_phy_grf: syscon@fd5b8000 {
-+		compatible = "rockchip,rk3588-pcie3-phy-grf", "syscon";
-+		reg = <0x0 0xfd5b8000 0x0 0x10000>;
-+	};
-+
- 	pipe_phy1_grf: syscon@fd5c0000 {
- 		compatible = "rockchip,rk3588-pipe-phy-grf", "syscon";
- 		reg = <0x0 0xfd5c0000 0x0 0x100>;
-@@ -80,6 +85,108 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
- 	};
+ 	if (omap_iommu_can_register(pdev)) {
+-		obj->group = iommu_group_alloc();
+-		if (IS_ERR(obj->group))
+-			return PTR_ERR(obj->group);
+-
+ 		err = iommu_device_sysfs_add(&obj->iommu, obj->dev, NULL,
+ 					     obj->name);
+ 		if (err)
+-			goto out_group;
++			return err;
  
-+	pcie3x4: pcie@fe150000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x00 0x0f>;
-+		clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+			 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+			 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x4_intc 0>,
-+				<0 0 0 2 &pcie3x4_intc 1>,
-+				<0 0 0 3 &pcie3x4_intc 2>,
-+				<0 0 0 4 &pcie3x4_intc 3>;
-+		linux,pci-domain = <0>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0000 &its1 0x0000 0x1000>;
-+		num-lanes = <4>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0x00000000 0x0 0x40000000>;
-+		reg = <0xa 0x40000000 0x0 0x00400000>,
-+		      <0x0 0xfe150000 0x0 0x00010000>,
-+		      <0x0 0xf0000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+
-+		pcie3x4_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 260 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
-+	pcie3x2: pcie@fe160000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x10 0x1f>;
-+		clocks = <&cru ACLK_PCIE_2L_MSTR>, <&cru ACLK_PCIE_2L_SLV>,
-+			 <&cru ACLK_PCIE_2L_DBI>, <&cru PCLK_PCIE_2L>,
-+			 <&cru CLK_PCIE_AUX1>, <&cru CLK_PCIE2L_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 258 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 257 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 256 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 255 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 254 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x2_intc 0>,
-+				<0 0 0 2 &pcie3x2_intc 1>,
-+				<0 0 0 3 &pcie3x2_intc 2>,
-+				<0 0 0 4 &pcie3x2_intc 3>;
-+		linux,pci-domain = <1>;
-+		max-link-speed = <3>;
-+		msi-map = <0x1000 &its1 0x1000 0x1000>;
-+		num-lanes = <2>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf1100000 0x0 0xf1100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf1200000 0x0 0xf1200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0x40000000 0x0 0x40000000>;
-+		reg = <0xa 0x40400000 0x0 0x00400000>,
-+		      <0x0 0xfe160000 0x0 0x00010000>,
-+		      <0x0 0xf1000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+
-+		pcie3x2_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 255 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
- 	pcie2x1l0: pcie@fe170000 {
- 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
- 		#address-cells = <3>;
-@@ -218,4 +325,17 @@ combphy1_ps: phy@fee10000 {
- 		rockchip,pipe-phy-grf = <&pipe_phy1_grf>;
- 		status = "disabled";
- 	};
-+
-+	pcie30phy: phy@fee80000 {
-+		compatible = "rockchip,rk3588-pcie3-phy";
-+		reg = <0x0 0xfee80000 0x0 0x20000>;
-+		#phy-cells = <0>;
-+		clocks = <&cru PCLK_PCIE_COMBO_PIPE_PHY>;
-+		clock-names = "pclk";
-+		resets = <&cru SRST_PCIE30_PHY>;
-+		reset-names = "phy";
-+		rockchip,pipe-grf = <&php_grf>;
-+		rockchip,phy-grf = <&pcie30_phy_grf>;
-+		status = "disabled";
-+	};
+ 		err = iommu_device_register(&obj->iommu, &omap_iommu_ops, &pdev->dev);
+ 		if (err)
+ 			goto out_sysfs;
++		obj->has_iommu_driver = true;
+ 	}
+ 
+ 	pm_runtime_enable(obj->dev);
+@@ -1252,8 +1249,6 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 
+ out_sysfs:
+ 	iommu_device_sysfs_remove(&obj->iommu);
+-out_group:
+-	iommu_group_put(obj->group);
+ 	return err;
+ }
+ 
+@@ -1261,10 +1256,7 @@ static void omap_iommu_remove(struct platform_device *pdev)
+ {
+ 	struct omap_iommu *obj = platform_get_drvdata(pdev);
+ 
+-	if (obj->group) {
+-		iommu_group_put(obj->group);
+-		obj->group = NULL;
+-
++	if (obj->has_iommu_driver) {
+ 		iommu_device_sysfs_remove(&obj->iommu);
+ 		iommu_device_unregister(&obj->iommu);
+ 	}
+@@ -1717,25 +1709,11 @@ static void omap_iommu_release_device(struct device *dev)
+ 
+ }
+ 
+-static struct iommu_group *omap_iommu_device_group(struct device *dev)
+-{
+-	struct omap_iommu_arch_data *arch_data = dev_iommu_priv_get(dev);
+-	struct iommu_group *group = ERR_PTR(-EINVAL);
+-
+-	if (!arch_data)
+-		return ERR_PTR(-ENODEV);
+-
+-	if (arch_data->iommu_dev)
+-		group = iommu_group_ref_get(arch_data->iommu_dev->group);
+-
+-	return group;
+-}
+-
+ static const struct iommu_ops omap_iommu_ops = {
+ 	.domain_alloc	= omap_iommu_domain_alloc,
+ 	.probe_device	= omap_iommu_probe_device,
+ 	.release_device	= omap_iommu_release_device,
+-	.device_group	= omap_iommu_device_group,
++	.device_group	= generic_single_device_group,
+ 	.set_platform_dma_ops = omap_iommu_set_platform_dma,
+ 	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+diff --git a/drivers/iommu/omap-iommu.h b/drivers/iommu/omap-iommu.h
+index 18ee713ede784d..27697109ec79a5 100644
+--- a/drivers/iommu/omap-iommu.h
++++ b/drivers/iommu/omap-iommu.h
+@@ -80,7 +80,7 @@ struct omap_iommu {
+ 	u32 id;
+ 
+ 	struct iommu_device iommu;
+-	struct iommu_group *group;
++	bool has_iommu_driver;
+ 
+ 	u8 pwrst;
  };
 -- 
-2.40.1
+2.41.0
 
 
 _______________________________________________
