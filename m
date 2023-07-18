@@ -4,72 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE905C001E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 06:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482AAEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 06:38:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oRVRgcl+VK547MwzCqpgEfS6PnVMMIyYJvlmNOHauRE=; b=nTxm7ja3b9fxxz
-	mxh37FUCAPNgZUPdHYXteOZSVpRA34YpJ8NV1TvVuIIPNhSMWkIUEsLSZ2IHmXBzuOnTRUPgidKRm
-	1guGB0h5XPx9yUgk001MG6aZT9Sj9kbDYSxjR6/LDNYx1a1+lTyAoE8RYtXnVf5sN+9g6EhVGHNVt
-	YQmbOMvTAEJjEMbvLsMmZyp/szFZwjr/uin1hGLNB69dDEPUjwhBuCvwQ9RHGgy9TB5h8G/WjA31m
-	H2FXLHKJBnEGs4Pnw2tbyjs9P2Tl8KDOnEXgd2033zHHTYlLyspzmccR3aymrVlB8nk2fRLqxBiJd
-	5fpgYLhm3nMxoBJtUL+Q==;
+	List-Owner; bh=AIy61eT4TZC1ydnu5Gd3ePNVRoW9PDCJ45daKMqd3Ss=; b=pOJ6vgCA8XnFrN
+	VyejEw6NnlcXb7CuRvIz83njn9uyBmoyiig4JOy/IkdH90QK/0VPCUqAXvocKWKnMjF7L5Eq0Lrk/
+	yJO2JYqYlsHFH6g4WDtFH4SDv4ue4s80hUilTa58ixWmszsvX0Lx5DEZbIMyQ0euugsbrnuag8g+K
+	tA0jR+9zT2GOsnybZc0hsS20E1AQuAgFXQwH3CzP2y1ptegxd4tzTuH+Yl3ejH05FkemjM4yl/pJg
+	sqdxyuBQUYSNhOvdNiAx9Xi1Irsh5/d9cNNlC4L5+hjiGLYABsCe5Lqs5yaj7gp6K8k7FOEjwEpaO
+	9kux2QocJaA9pk4JB/wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0gC-005kBj-34;
-	Wed, 19 Jul 2023 06:28:57 +0000
+	id 1qM0ou-005oqW-35;
+	Wed, 19 Jul 2023 06:37:56 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0gB-005kAi-29;
-	Wed, 19 Jul 2023 06:28:55 +0000
+	id 1qM0os-005ooK-1a;
+	Wed, 19 Jul 2023 06:37:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=jHVX6dfpCt8cBbZngMojdlaS/kOg+Tlc6u+V2VK9DV4=; b=kCwLuOgqT4vbrPio6Gp/O7AUeP
-	olOXDrDGaiWV80qYUGF9LSBsIGfA1AmKowtHuE8RPrsTcnHfCztQZMJ8vVuXKvP0mkVflibvtwOp0
-	nAUUGUmie3o6hjqNQeOS5sJzNwSSxycPCoMY4AjMuv18h7ZtxYluuXCvbvd2LVytxStfSSIPk4ylg
-	ALTLGKtmki2T9sTWCMj1K80lBhAhqPNUavysc05iL7WeeynfuwNCHfaoomWCL95/VZrNgwycKkcAm
-	ovqweO7rlpuari1/hFRRuI1lJgsguxu8+CFZ/UeaURLZTlJnBkb8YLNZ2EyCZ89GXfvvVcqRLqWRC
-	TsvogzDg==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=WsVGvn1CLzcH649pQIKz9cVx8Rm/xdS4JuFMWCG0qS0=; b=N+1rxZz3F3LtKL2pgYZbSdqpGE
+	ijmR3tdTmKg9bRqcrGs9isNgSLGcL2GpYmI88sZVGd4rKtDYoBOQ9pdowc8Q8GEM28AqIRmxMaiIO
+	8ALsSB9b9Gpjhf83aTLMVRvMj2Ld5no6tjdgMDUHLvaCAyLnfqR3a8jJTWO4LfSa+m8AUHmczAwrC
+	8f8b+8GQ2nTlp2LkqU3ENHD1uGOHYALDOrDg4r1XuXmOqXNhRUwrhlnjpQ/2GCrvlrHm8dmml/pE+
+	ov9daIXn6fYrWmerb8kt83Jou7GAYUIGQZFidx87L0Kv/32Gs9ezXs26ArbvBZPmDmQquV4SX3HkL
+	N+q1taTg==;
+Received: from mail-mw2nam10on2061e.outbound.protection.outlook.com ([2a01:111:f400:7e89::61e] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLg8I-00BJBE-0t;
-	Tue, 18 Jul 2023 08:32:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EA70E614C0;
-	Tue, 18 Jul 2023 08:32:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B76AC433C8;
-	Tue, 18 Jul 2023 08:31:57 +0000 (UTC)
-Message-ID: <53bb24a3-6aa4-4ece-e837-2cd523e0c1e7@xs4all.nl>
-Date: Tue, 18 Jul 2023 10:31:56 +0200
+	id 1qLq2T-00BvjX-0N;
+	Tue, 18 Jul 2023 19:07:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H8gBb6e4W9vlsqAcmiD3oBHKMBt83MkWOl6BqM91JtRiGdanXbAsV91crrZCe/bvlfMy5zH2s/cz/eeynelY4Yi4NTXdZMaP3lux5TlaL231GIUhUDARjVwxY9RgbTKyfI1bmFVOPb/TKPsNHaryk+K28ntuOUn42R3d0HElidS3bztShTSnTTJ3kMNrfJkVgvl84DHSktayanQFffPTQIv6Z22gkk2LsUAUYn0XgrcKiBQAzBf9grPXhoBC+xaIMXG7f9mxVuljQB2gQxVekKaVNkxTCBTuJi8uYrKI/wtHbEtYQwFXBDOR/gOcrDNtZ22t4b7IFd7DMwY+I4/z7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WsVGvn1CLzcH649pQIKz9cVx8Rm/xdS4JuFMWCG0qS0=;
+ b=NNO9ETZRk8xKe83wovrL6zkCE85Qle3dNUG7f5GIqW6BwNhadX9DclyOywN5AZBQ1lSrQbF/CO0T6jH3JzgfI9Y5wvqqle53+HZdkxIWJstlrAY7jW3zc+T+8wrb1Uj/XCAVfddz2d/wSNs7is1jfL6HWivbxItMLVldIjI1HGHOvRxOhiWC0AZrSqrD7P66tck5XsnNtkP6+kWHJ6oqa1/bZHtmptw8quAqeYbvfMfBxeYRdXPweH6JvAgZ4zOvkmdsfasEDqusT3m2NKJOyWvwhoHl6a9oHaS0h+xanA3PDWXQdCOPja7dOZVdHnpbV0saVUAfbreYoZuTxxmMuQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WsVGvn1CLzcH649pQIKz9cVx8Rm/xdS4JuFMWCG0qS0=;
+ b=hQvpA+lxTz5wGXZc8GAknw6ktHYpCQy/I9YoQ2quKCCb0P6cfkJShLmB4od1lUbXP+tQ48vRktn/EUaKYOPLdcA8T3tpFIHXRyu2dRs59OYXfO5IyVuLtYdmc/divMeITchhMdInaj7LiZIYDY/4H//zqWkDnqqvOvKyy3INe1TgcXJ+6bPi2Z80uCwnQOS9r/rXGc+8qXonAszfKf7MOLmt++R4aXys/prSTTTVlB1E63hG8KxiOhTuSlL9967XQtiCg7yN/tIP35JIsqFBq13jp9VjLiO0Oi+BQAmoEZGp10JLf+YORkYwuWTZW7pvCGdfMUS3vEFBIWeKHOOp2A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by LV3PR12MB9329.namprd12.prod.outlook.com (2603:10b6:408:21c::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Tue, 18 Jul
+ 2023 19:06:01 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
+ 19:06:01 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Subject: [PATCH 07/10] iommu/ipmmu-vmsa: Convert to generic_single_device_group()
+Date: Tue, 18 Jul 2023 16:05:55 -0300
+Message-ID: <7-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+In-Reply-To: <0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: CH0PR04CA0034.namprd04.prod.outlook.com
+ (2603:10b6:610:77::9) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v3 00/14] media: rkisp1: Add support for i.MX8MP
-Content-Language: en-US
-To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Helen Koike <helen.koike@collabora.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20221118093931.1284465-1-paul.elder@ideasonboard.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|LV3PR12MB9329:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2fb92bdb-ba00-4676-f696-08db87c2062e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hlAXMSyVIbdanwBuBtrtZUvcWBar8IoWNa/ssUdPmsrz3i9o+GtMlSZpkzgTwmogDFcyqzQxeT3hXGpPnwLB0ZguwE21HxCBNWcKZ0GMl32vnN9BQu/T1E62nrZ+9fY3LSDjou3KeKgRxREYu6N/bU4ZcU7KDl0ffhirBwEuh7+4wu/GXYmhj0+dUOWliijiZTfLdXUdg/8BuqWNFI9ugo6wXqy876puwdn2RvekZgbNJcGHlKyfYHyyncambHeJzSeJyYlXDoVYmXkT02IQNgI06z7rG5BZGeTkqwqtfIy9RvH5dgGNhXpv2VPC+tzLBzTHPHYiSnAJviFoOAUwEFRLepHeyK/qjSkX9blvXtDuyV0jWB3nAr+IFzvJCTDo5oi4QyH+r8L/CuOxEpawK8cAfAPSqRRPqOh1oFcuN2CVBS6qjro0JADqBi6bfOP4EjOP8K0gArND4Fx1YRVdna08biRbZPcq/4SV3bhfwhOLKDyMHCp1Q/roaG0WyV+pzeE38znNOJCkMAJNWOcMV6+fGHIVywJycvWgHHpBdTejIwluAAKVoKs952rBFwNiiiNNlspmSBJarNXYJ+8M6hXfJgyEXIgtAzRvdxUSxzK8+XXZNBq4ZESjBkIeUPI5sAfcXp/lxgwDsBU2sQ+8/A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(376002)(396003)(136003)(366004)(451199021)(2906002)(110136005)(6512007)(38100700002)(921005)(2616005)(83380400001)(186003)(6506007)(26005)(5660300002)(86362001)(36756003)(8676002)(7416002)(4326008)(478600001)(6666004)(6486002)(316002)(66946007)(8936002)(66476007)(41300700001)(66556008)(4216001)(41533002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qs85dXeNUQ1t3c2bR9ULYBC5CsVpLnvOuQXxjIS+rdrw7jyodMwf45eARpJW?=
+ =?us-ascii?Q?w9xR9F+M32lcVOfbQxu4qyGcN5kKPx1+BaGCnHoAh2RZF7mSR7q87yDDYSqU?=
+ =?us-ascii?Q?nBCkyZjv07DxaMmXNWV1RQl6FkTt7mEW/kaH8upyq7PcES9arJMmH0ykLPLe?=
+ =?us-ascii?Q?RoJdbQa/RI5xpjbXJ7nk8aXKHje9sdEZK1EKJi/eIFippUbKwVEoG5njKylE?=
+ =?us-ascii?Q?8IEzgS+wYJek7FQTriQ+tcrROYv5bNrYh3pQwZFs+GgyzWXn2CYtzmddIvAt?=
+ =?us-ascii?Q?wOorP5qk0jqkrVexrBPp19kknVLGsHeYSKQJee0K6h2YpBk4++DOI+d9i/gw?=
+ =?us-ascii?Q?KMMCL6ffmAPtMKj+/hwAFGi9dgKBvSnL95kaqXanm0g41h4HvASVMLrkD48C?=
+ =?us-ascii?Q?iwsBvAn3HatFXx7EvHHshUgO9SYqVwYdt5jIE/wZAZ0hHhkwq+/WkRkNxNpK?=
+ =?us-ascii?Q?tozwpkvEFVyXXsJ47GS1YDo6RCzwhDlhBVMI8VkvE9IpzhWVuR6bZ9pmwgbg?=
+ =?us-ascii?Q?TCtvDthBPNHOKrVzEpT/PdP/Y7Guux3gfGU+zLqbNpAgq5oszjwEqDaDLjwq?=
+ =?us-ascii?Q?awapOHBE5sXKzjP/I/4kGY0CEi/pKDZlOE3eDEYFmJ8tWGOLj7hclDv75WD1?=
+ =?us-ascii?Q?uXK+wSNP2Fk6MU/ccV59qqexd66oX3vtfb9Yg+0VPUUySTV4DqlY4p4zCW/b?=
+ =?us-ascii?Q?89IGrIitWKkmPXP2HouFf1BpTqhffD4jGcsXQMoRvOW8gshBuiybXUmNPssQ?=
+ =?us-ascii?Q?E8MRoriW0lUjCTUNXTOkHoBpuuHM1GyTO1EUL1yP5CESQw8syA9GcQW5CEbq?=
+ =?us-ascii?Q?eCboAp4UPvoaHtw9KAxw8uVY95CL1d8OdPVcluV8SckEGDT8j8hDYTUsy/Uu?=
+ =?us-ascii?Q?PIw1u6r88PRfqAhuUghZAIB46ITUzwKvjNHsqTQmu+z9ZLVV//c44gAVO5Fk?=
+ =?us-ascii?Q?ResfaBL6JePg3u6ZFCVXTX4atxxEf7hwRcFKytk8s0TvMnbuavqGIw5HX7ob?=
+ =?us-ascii?Q?eaxdLf/5vmxmHZiu2j1Hwsd5rn4jmRukSUD8bfQt5jMGwAaQGmVBxVZOTuSb?=
+ =?us-ascii?Q?EssWuueun2lGJChD2cYDcH4kT0dXZkkKa0cR0pu9CU7q64d+GxBu22xtoXge?=
+ =?us-ascii?Q?2YpwcnBYPlAay5mu3nv5iRvuS/Mu37jYlzKxfp6nMOD3+8ybihUaG5f7UXp7?=
+ =?us-ascii?Q?5eqxTj/+ZSkm0b9xoUtrch2D/Qw/pa+U8Jfg+vpKT2bMz7+1wxTPFr5x+pQD?=
+ =?us-ascii?Q?dj4x5WZet2nYQ09tqk+gM9koxbx41+B7dC1z01HiyAwAtgnrCD6/WJA1Bh/M?=
+ =?us-ascii?Q?fZDW54/YWpp/X4aqj572zQu+8wKc4++jx6tqsvqczb7CFxtlukbfP7zQAsJu?=
+ =?us-ascii?Q?d5tCsxv/x78A/b6T5MImJJLMK+4C7TRFIgbHDw0T/Ga+w6WhXZuwt5EuROYp?=
+ =?us-ascii?Q?XXm/6KfEM0diwMp7nmxZmKVesPk9LFvrktSfhhdkDteFh5tXgaBnY5p143lx?=
+ =?us-ascii?Q?84nJXHadjsqzvV7m3pTZMcAbV7caK2s8S4HWCFPWySvXbNAXb/A+h9muRR3v?=
+ =?us-ascii?Q?jwVFeO1YaKwo4xoCv7MU35E3xTRaLX/Xi0XdAnho?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2fb92bdb-ba00-4676-f696-08db87c2062e
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 19:06:00.1834
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xn3fkm/SMRAnW668dEfmGhtRda7gQauv6AbwAOnoke91lDieonY/1JH3TV1bcAAg
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9329
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_093234_996770_FD14379B 
-X-CRM114-Status: GOOD (  24.00  )
+X-CRM114-CacheID: sfid-20230718_200717_973940_C3E85621 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,70 +159,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+Use the new helper.
 
-On 18/11/2022 10:39, Paul Elder wrote:
-> This series depends on v3 of "dt-bindings: media: Add macros for video
-> interface bus types" [1].
-> 
-> This series extends the rkisp1 driver to support the ISP found in the
-> NXP i.MX8MP SoC.
-> 
-> The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> over time as they are now independently developed (afaik) by Rockchip
-> and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> and is close enough to the RK3399 ISP that it can easily be supported by
-> the same driver.
-> 
-> The last two patches add support for UYVY output format, which can be
-> implemented on the ISP version in the i.MX8MP but not in the one in the
-> RK3399.
-> 
-> This version of the series specifically has been tested on a Polyhex
-> Debix model A with an imx219 (Raspberry Pi cam v2).
+This driver is kind of weird since in ARM mode it pretends it has
+per-device groups, but ARM64 mode does not.
 
-There were comments for the first few patches, but I haven't seen a v4.
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/ipmmu-vmsa.c | 22 +++++-----------------
+ 1 file changed, 5 insertions(+), 17 deletions(-)
 
-I'm marking this series as 'Changes Requested' in patchwork, just so you
-know.
-
-Regards,
-
-	Hans
-
-> 
-> [1] https://lore.kernel.org/linux-media/20220615221410.27459-2-laurent.pinchart@ideasonboard.com/
-> 
-> Laurent Pinchart (3):
->   dt-bindings: media: rkisp1: Add i.MX8MP ISP example
->   media: rkisp1: Add and use rkisp1_has_feature() macro
->   media: rkisp1: Configure gasket on i.MX8MP
-> 
-> Paul Elder (11):
->   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
->   media: rkisp1: Add match data for i.MX8MP ISP
->   media: rkisp1: Add and set registers for crop for i.MX8MP
->   media: rkisp1: Add and set registers for output size config on i.MX8MP
->   media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
->   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
->   media: rkisp1: Add register definitions for the test pattern generator
->   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
->   media: rkisp1: Support devices without self path
->   media: rkisp1: Add YC swap capability
->   media: rkisp1: Add UYVY as an output format
-> 
->  .../bindings/media/rockchip-isp1.yaml         |  79 ++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-capture.c | 102 +++++++++++---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  32 +++++
->  .../platform/rockchip/rkisp1/rkisp1-debug.c   |  14 +-
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  67 +++++++--
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  90 ++++++++++++
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  35 ++++-
->  include/uapi/linux/rkisp1-config.h            |   2 +
->  9 files changed, 509 insertions(+), 40 deletions(-)
-> 
+diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+index 9f64c5c9f5b90a..55b9b29221461c 100644
+--- a/drivers/iommu/ipmmu-vmsa.c
++++ b/drivers/iommu/ipmmu-vmsa.c
+@@ -63,7 +63,6 @@ struct ipmmu_vmsa_device {
+ 	struct ipmmu_vmsa_domain *domains[IPMMU_CTX_MAX];
+ 	s8 utlb_ctx[IPMMU_UTLB_MAX];
+ 
+-	struct iommu_group *group;
+ 	struct dma_iommu_mapping *mapping;
+ };
+ 
+@@ -832,28 +831,17 @@ static void ipmmu_release_device(struct device *dev)
+ 	arm_iommu_release_mapping(mmu->mapping);
+ }
+ 
+-static struct iommu_group *ipmmu_find_group(struct device *dev)
+-{
+-	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
+-	struct iommu_group *group;
+-
+-	if (mmu->group)
+-		return iommu_group_ref_get(mmu->group);
+-
+-	group = iommu_group_alloc();
+-	if (!IS_ERR(group))
+-		mmu->group = group;
+-
+-	return group;
+-}
+-
+ static const struct iommu_ops ipmmu_ops = {
+ 	.domain_alloc = ipmmu_domain_alloc,
+ 	.probe_device = ipmmu_probe_device,
+ 	.release_device = ipmmu_release_device,
+ 	.probe_finalize = ipmmu_probe_finalize,
++	/*
++	 * FIXME: The device grouping is a fixed property of the hardware's
++	 * ability to isolate and control DMA, it should not depend on kconfig.
++	 */
+ 	.device_group = IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)
+-			? generic_device_group : ipmmu_find_group,
++			? generic_device_group : generic_single_device_group,
+ 	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
+ 	.of_xlate = ipmmu_of_xlate,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+-- 
+2.41.0
 
 
 _______________________________________________
