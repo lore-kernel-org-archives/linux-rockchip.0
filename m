@@ -4,92 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5CA6C001DC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 08:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559ADEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 08:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2TCvS1UuLYH2Gs2M3lGUulR7Ocvfud2g+5+f2OJUmrA=; b=zJRHZtfseUxumvVVmUJKKRHOgZ
-	jL5wvLycXyzwIGcBEyuY0BFR6oJv+Pto84p/WhPCiXBwC0DB0ekJBzr5HMQttR1zyUj03uTxvuUs/
-	y+fVlIXmqZ67YydUwnAPOL0FxwuFBjkHe6jjXvFkjvOCld+7LG+ZSbskvxV4kYs+7rs6z4gxubP7G
-	VPXpmJ2X02ESiG7AAN6EL8CfaMmo7lZrK9lll+/iKb7vGj79JbYjKMyOMJTr84vFau35o1aCr9mwh
-	VnDSJ3RR22scTx+mh1Or5Sz1AvLiXf5ZVu7nTmZJXHFzw3WYAsikn52dKPag4KUYCqoRfrodG3H5V
-	d/INiO1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oJh36wRfk1IZJ2DQXgDGsJS4v7ACeBr7J0khN8qXtt8=; b=IllBFrVzfgXvAz
+	gaFYRrDUjBoeOWwbRjDk91mI4GRFn+55SKXj4rUCPvV5u7DOIyxYdv3HnFgIlZFyLQS0u3F/sei1v
+	VHhKKFzqurNCkUC+ehV+78UuYdpviUVwA33C1J0TpKoIENKhPvYE8p+yWgaXJGUqldtQXuAAbS9it
+	eGxX7idGfc46oSc7BfNjV6oDPe7GW8IBk8Bibfv/XUjdheN/28ZQ5en+ypY69gJ8xkJHxZvs+YEdX
+	N2yXH1kSizhPsbL0Sy9mem/a+UYTm4L/5o9EDaNarSnjbchTi0W1++X6RXy3lQU5odnbPngF0doVN
+	tGilW1GinjFNM6zO//Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2M3-006H1e-2M;
-	Wed, 19 Jul 2023 08:16:15 +0000
+	id 1qM2Ne-006He2-00;
+	Wed, 19 Jul 2023 08:17:54 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2M1-006Gzq-18;
-	Wed, 19 Jul 2023 08:16:13 +0000
+	id 1qM2Nd-006Hdj-0d;
+	Wed, 19 Jul 2023 08:17:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=crpYAHM+p4nLfGPEJI9h6zUBx8PTfRw/JqYWS3dfJmw=; b=BEJA3ODl1RMXBqU56Bu/pHszTm
-	q58qSoJCyaK3dZD2Duk/6pk/tSO65nmSMuQV6FJjt7EzQsPiGqKc2gN/vwjoBm9o0XVur+RVbwWpp
-	yH9UNAlfXDcj3PkOS8uaR/VMXW56vJV653ixFlTkW1gFUjLQibwJw6nUeXs90aSl6omH10X+7gHGs
-	Ghgqsp5B1jUNqrfErtEuIWl1AB+aiQIkljohGvba1+xoVHrX0tWFegHcysJWjnHlfwKjg8Lt7MAvX
-	nTQI7iUzihZCrmZS8irQoyRbHSCBAGojk4wFv61D79UrNjvc8BEsymf60+UZN75OlQFJLrbXxuAuH
-	S4k/lXYQ==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=hvwdiC6E5CEiy25PSFgk7REzIIrBWJs/ybCCiwdcjMs=; b=UV6MEQq2SMTFteMPEvlgp/zlCh
+	oTuUWkszFd29jZYww4kJXgMWE7kh1FdnLQjyVI+YP7DHCnHGiTq9NRTe+AJZ4g7RGUZPzMiZorSbV
+	8fpqvBYrW7F1hHV6jwBKwG9aCAu4Axr6439bTb/jr/ZE/05Xw5PJOf8Mlqz7bXqi3dfmWY7eSW2hy
+	J/+ud3CBWC03SCScmvaHvtKOHOGR+6LPUHpyLNk0G2fAt16I0vFDkMloxc+gywCWwuuhitu8qIJ9R
+	ZZPehhN6qQeokmBaJVA+tCa2GsJdDzgZRrulAaLWDN7rdQuBHPHVBFZ2vkxQMaDATXZ5cjxstCv5V
+	faKifQkw==;
+Received: from mail-mw2nam10on2061e.outbound.protection.outlook.com ([2a01:111:f400:7e89::61e] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLn93-00BkCt-2H;
-	Tue, 18 Jul 2023 16:01:52 +0000
-Received: from mercury (dyndsl-091-248-212-239.ewe-ip-backbone.de [91.248.212.239])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 06D716607029;
-	Tue, 18 Jul 2023 17:01:40 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689696100;
-	bh=fjD/ofT/AJheOC0PpncIwEm97OhHZA/Z2aAcGGQekfE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QgKIwJjTZLCYtJFI9C3oTjp3n/iC1v4sfaZySSF6luarFGrq212CEA63pyZN4Wv4w
-	 I9SYa9dQcjJfBCZSbae+1xeSgfb3V/Eo6CrPj5rv3RovFYVc9xJa18Iq8xboSoO/uX
-	 Ye1IpLqjlGbw5GA4KE2SgMCqCGLsCfRqDhFErHd9biSHPiz/NxzIRsxMr3OgOrtosv
-	 Ee9kTJptGs/bqm+oj806e66MWjpUt6u0QiaPfobNNYJd5lXFKjNG2MRRnE9odSH0uG
-	 x+QLk2GR9Q1M0YGcNg1GixOkLrl2bV1YJ9un0qyRUbK1FJFfef7sxMruE4vmApL/MN
-	 Uo0XN6rFUBzAA==
-Received: by mercury (Postfix, from userid 1000)
-	id 78BB510607FA; Tue, 18 Jul 2023 18:01:37 +0200 (CEST)
-Date: Tue, 18 Jul 2023 18:01:37 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Liviu Dudau <liviu@dudau.co.uk>
-Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1qLq2h-00BvjX-1n;
+	Tue, 18 Jul 2023 19:07:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=i29eL/tZdPg1vVMF5gZf+BjRfFnIXh14DseczAaURECLy10corm7/5oXKXT0+t7SXjPUc00AlFJ0STwGo187HsuxXLNgXRHt1atDPanAaXJ5Z79nteUycXIHeZ0lyyzZAFmnPbuGcrXEvBMewzueGoTuk6LdaOnnswV33H1PNuJ1YsZao80uztj2qRaskRSVNcsXJ36/dchh30E8sucnEG7jN9H9qOVMJngzvasmUB5Bb1JOpipD0Nob3OCPFP47G3xGqbhED77IoJKEN2B9FZ+UfBdKzNy2yFCcaHHIUfniBt1aKml5e+E2imxpnrC7F5dFZ+OFvtXwRRAO4ub6zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hvwdiC6E5CEiy25PSFgk7REzIIrBWJs/ybCCiwdcjMs=;
+ b=iUsXfKZ4aQoD9Ayh82Ix5re1gReinVIjthI/0FuJxmHDCcGufXAu7suYdbMpVvfSzvdRerA6XaxN3XbdQgWM4Vsi2eQhFNyDCqJoBVGA6Sr0yk58jn0jhOmCeWf94sllECIQK2qQVyhi2x936a38Z7Txjjaue0nwHTrYcy8mwTcbz2gcsTJzRMKdCg8EivTq/5j02EJdX9LuCFuzSKlJwU39VIPxinuTZDt6oUEhO7TwNe6rOgIM3fRslGjifOsfQ182wo0RW/ryXKLQ8k39n/xN+nRIRy3CISzswJy1XfqYLZR+UszqK3Rx0qbfm+LCtYJH3aZsU6nHM3YTF6sjpg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hvwdiC6E5CEiy25PSFgk7REzIIrBWJs/ybCCiwdcjMs=;
+ b=gMHMbfMbWIQafZQIpEklpBBJ5yFUyCGeuhJf5nuEg4Otm/BmZO1mDUpz2wP5/iRfAOoIcPNBoeKXcrRt2S04CreWxddUgDGskzDsukBtMEXL1XUCBH2/26bovdufutC2yhyIE9mFBkh9dp3DEJWq9pM4K3kox5yv0TKZFw+lJpY0eyXI35g6Fa9OtmZIeUwYBnMMnlSnhaWzd6BCyEh76M2/+HvC43SSEvz9fpEz8rqtDgGCPMWTGaTuY9RboqAB5teAoFWJhRNd1FXuh0EuzjMYm9ik8CR6B5Qpy6CWS4rovi0XHtgAIWJM/vlBsk9hOATxLiXfcFsHTUfdbX5QYw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by LV3PR12MB9329.namprd12.prod.outlook.com (2603:10b6:408:21c::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Tue, 18 Jul
+ 2023 19:06:02 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
+ 19:06:02 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, John Clark <inindev@gmail.com>,
-	Qu Wenruo <wqu@suse.com>, devicetree@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: rk3588: add PCIe3 support
-Message-ID: <20230718160137.sfitnkl6gmyi75jx@mercury.elektranox.org>
-References: <20230717173512.65169-1-sebastian.reichel@collabora.com>
- <20230717173512.65169-3-sebastian.reichel@collabora.com>
- <ZLarQUvUK3v3m6Cg@bart.dudau.co.uk>
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Subject: [PATCH 05/10] iommu/sprd: Convert to generic_single_device_group()
+Date: Tue, 18 Jul 2023 16:05:53 -0300
+Message-ID: <5-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+In-Reply-To: <0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: CH0PR03CA0098.namprd03.prod.outlook.com
+ (2603:10b6:610:cd::13) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-In-Reply-To: <ZLarQUvUK3v3m6Cg@bart.dudau.co.uk>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|LV3PR12MB9329:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66291ebd-c23e-4706-1845-08db87c20741
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: nGqKpBzPonSXjnixyKZOAlmwq9swWBnZqZbLdCR2x2I7fkaRd8r+HF/59Uppo4Rc8sxb6NnsB+5RhtA5YSnCBzWGEOAIxeaUeKvNwtlt5PD+dxC6tsC8GppBHCtxCso/WJ6DJq6aJpyRivwZsHBJqpr6VlqfdcVhsVu4JEVU8+Ur6J2eJSTJfQ4yiXb+b8tJ+JEO1BySt8xxZQYiyrhE752CcaTv1yrm8RzgQ1ia8+V4mB1UEg/EJbkDmrNhnd8CSjFNZ5fJucGrmo/Zp3pBAcFiWqhErHjDA5sg4zfjUGRUhDv2A56QljN4igrDKoQWKgnQnP2HlBuQmvklvHQt/We/bokM3uETDKYJ0uzQY2LduP0GhG1s8jUqXadRg/4WnKGOhSaPIVBZy+6LleEc38WjcI0ObFIziBGYUqaLgsdidFLOvvh0kfBZwUPxIA7KgIV8KeLDDD3SrWwp+DdIv54r0fLb174Nb6encIR/g2hZ/LSgtsE9iKebz0f3fEYgZc7V5VvR4NOnoYx6XTI6iwuGyONHH34qgM7mOOT5lPDie9z0aU8uH8kQKWRKNviuq3BSy3TUVlFiR8SkgMC7tYkEUOxecLe/vkqTAjK9HUeAuo5TJfZxchU82vYOMbqajDrklWRLim4NST4HoTkeNg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(376002)(396003)(136003)(366004)(451199021)(2906002)(110136005)(6512007)(38100700002)(921005)(2616005)(83380400001)(186003)(6506007)(26005)(5660300002)(86362001)(36756003)(8676002)(7416002)(4326008)(478600001)(6666004)(6486002)(316002)(66946007)(8936002)(66476007)(41300700001)(66556008)(4216001)(41533002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FAiSilI2AEX1WM/+id/sdhA7Sabg2oFT7Rz8jcvV6tlet+s1695z79Zb8SdO?=
+ =?us-ascii?Q?kcEjO8nb0La5LWSqQS7HXqB3MJ6m0vTc7Qp/A2089BuFMAhMiRfJ5/5d9NVz?=
+ =?us-ascii?Q?IAU28R+eGsHc7dATe4yfLlDN8eYv2cqyxoC/DkME2NLtYtBEGeClvGGCeGyf?=
+ =?us-ascii?Q?RtI7QXyy5PGwq3eyKORR2JVi+ZxsJXz0spKJuQXO3diKFuPZgngbdogm+zeP?=
+ =?us-ascii?Q?SvRywSowbqNJN0vTobPJDhV+C67krlmv5XAW2U/5QcwtcrnBrHMDec2B8Ji2?=
+ =?us-ascii?Q?vwlyu86dW1AQCldVCjNX+XYIk5/wC5lH1CrIrabH8vaxm3X8wa1nl1iKFpV4?=
+ =?us-ascii?Q?0hGrtxBGPK7YjXvTuWjqf+NXLJsKUEJ+Q8m2Y6r2bcTtzqpUjihdTrbhSTyG?=
+ =?us-ascii?Q?JkQ9a+IlDgexwsH+GWmMZujW6i8bWpx2FFb5XIDzhcvP9B/ONBxMU8YTJbWj?=
+ =?us-ascii?Q?EjLOgS2naqKzbcULq39YE39ZTuf+qdaF8wXllRoRoVp9WsqKXmQrp+9XUdTl?=
+ =?us-ascii?Q?YM0CJtquKHxcZptTyiE1/SSeeIliCpS/3bLgsxvuq2uLq+JpB3VWicoy/6bV?=
+ =?us-ascii?Q?iiSHr0McGMBwLFn9ZKY9i/7Kgg4tBF5mt7hF1AywWrHRACppg4Eif1RsCmqI?=
+ =?us-ascii?Q?oNLSRkAkfGlxv3/y7M9kKcECTlAK1f0UlxQdu6o8uIvceQWeCEgKjEdoILSo?=
+ =?us-ascii?Q?rRv3/r3bM3vFUrVjqlFdrb+pTICkziD48cj3Iht+Rk4ZRgJa0hW3xr7z0tJ+?=
+ =?us-ascii?Q?DqXWX0A4V/Ve77vnL2lE73gbL71+EBPgDP74z32V5EtY+l088oNhqLbpAQ+z?=
+ =?us-ascii?Q?xeWdjWmhYizZ/WogpRxmsdvY0rBxaY+K/WONE7LbJFCOE886QPkzGPq2nzsm?=
+ =?us-ascii?Q?1e+Y57DZ8zSpqhrR7c+QR3LgpOtqliDrE78TOaUsgm/X09auXPZay7cseaR6?=
+ =?us-ascii?Q?GlUM92rt/GV2VT0tChAnOLOaGpT8f+W16KT81w37UywvYFiZC+2Q7hiHMwVc?=
+ =?us-ascii?Q?D9gxm5wd4rQcxi5CId60jxYpRndSVkHqKkBDelmFEk9gWKy6w5FklhEdY5i9?=
+ =?us-ascii?Q?pCtSolqvOWvKq3Hwzr+fLfHTBMZicjcbn6bDCzpDT7PJngwcBR+9u+1zr/Uu?=
+ =?us-ascii?Q?m46ixLOaB1d6xbweBPb5/aGboh0Raka+4rr7oYgznpvgOiqHvDQ6KlWX7e2i?=
+ =?us-ascii?Q?vnx/q3vqMEjqN1qOFPsesJIKt1SAmctzeKgp9kTFPrdVTGVDw0lA3LkvWRcC?=
+ =?us-ascii?Q?G5VyCCH/0hX+2gwqaH675i+c+GZgTc1XJULSM9HpN2W1Lzlo8HffGrmJ4qM7?=
+ =?us-ascii?Q?j78fBW7eGhkmYQD/ayBGg09hcJyCyJ+NP9vx70UtqGGNIsnuR4fgNCISZNOO?=
+ =?us-ascii?Q?J6H3u9T/cI+YuA28h4MpmxP2D33zxvolLQfcoi3kKA0TSlxhX83hYuuBpEy+?=
+ =?us-ascii?Q?n8tVf1KWF333+clYksfcc8QxUQnf/i+0AtPLcegfoGQ3TB8VjU1VFmL1K5ns?=
+ =?us-ascii?Q?Jq9kzsN8BqjMNZM9YnG3s4TxeYOu3PTj6RycDLw16Nur4RpxMF9H+iC8MJUu?=
+ =?us-ascii?Q?+TJ4It8wXxCdWUODzTq6lgv5PUI2zFOgwA/pBWtR?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66291ebd-c23e-4706-1845-08db87c20741
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 19:06:01.9531
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: f1fLm+e+dNOUIVGtjFXvVl4SwvvGDDoGqezA6eaUbD9qMzaHOqW/dCHX/Rcdd6dF
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9329
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_170150_194622_733E744B 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20230718_200730_357896_13B241B9 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,95 +154,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4062376238965459529=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Use the new helper.
 
---===============4062376238965459529==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4xub73vban4yxnem"
-Content-Disposition: inline
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/sprd-iommu.c | 24 ++----------------------
+ 1 file changed, 2 insertions(+), 22 deletions(-)
 
+diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
+index 39e34fdeccda78..9fc98fd144e445 100644
+--- a/drivers/iommu/sprd-iommu.c
++++ b/drivers/iommu/sprd-iommu.c
+@@ -69,7 +69,6 @@ struct sprd_iommu_device {
+ 	void __iomem		*base;
+ 	struct device		*dev;
+ 	struct iommu_device	iommu;
+-	struct iommu_group	*group;
+ 	struct clk		*eb;
+ };
+ 
+@@ -397,13 +396,6 @@ static struct iommu_device *sprd_iommu_probe_device(struct device *dev)
+ 	return &sdev->iommu;
+ }
+ 
+-static struct iommu_group *sprd_iommu_device_group(struct device *dev)
+-{
+-	struct sprd_iommu_device *sdev = dev_iommu_priv_get(dev);
+-
+-	return iommu_group_ref_get(sdev->group);
+-}
+-
+ static int sprd_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ {
+ 	struct platform_device *pdev;
+@@ -421,7 +413,7 @@ static int sprd_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ static const struct iommu_ops sprd_iommu_ops = {
+ 	.domain_alloc	= sprd_iommu_domain_alloc,
+ 	.probe_device	= sprd_iommu_probe_device,
+-	.device_group	= sprd_iommu_device_group,
++	.device_group	= generic_single_device_group,
+ 	.of_xlate	= sprd_iommu_of_xlate,
+ 	.pgsize_bitmap	= SPRD_IOMMU_PAGE_SIZE,
+ 	.owner		= THIS_MODULE,
+@@ -494,16 +486,9 @@ static int sprd_iommu_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, sdev);
+ 	sdev->dev = dev;
+ 
+-	/* All the client devices are in the same iommu-group */
+-	sdev->group = iommu_group_alloc();
+-	if (IS_ERR(sdev->group)) {
+-		ret = PTR_ERR(sdev->group);
+-		goto free_page;
+-	}
+-
+ 	ret = iommu_device_sysfs_add(&sdev->iommu, dev, NULL, dev_name(dev));
+ 	if (ret)
+-		goto put_group;
++		goto free_page;
+ 
+ 	ret = iommu_device_register(&sdev->iommu, &sprd_iommu_ops, dev);
+ 	if (ret)
+@@ -528,8 +513,6 @@ static int sprd_iommu_probe(struct platform_device *pdev)
+ 	iommu_device_unregister(&sdev->iommu);
+ remove_sysfs:
+ 	iommu_device_sysfs_remove(&sdev->iommu);
+-put_group:
+-	iommu_group_put(sdev->group);
+ free_page:
+ 	dma_free_coherent(sdev->dev, SPRD_IOMMU_PAGE_SIZE, sdev->prot_page_va, sdev->prot_page_pa);
+ 	return ret;
+@@ -541,9 +524,6 @@ static void sprd_iommu_remove(struct platform_device *pdev)
+ 
+ 	dma_free_coherent(sdev->dev, SPRD_IOMMU_PAGE_SIZE, sdev->prot_page_va, sdev->prot_page_pa);
+ 
+-	iommu_group_put(sdev->group);
+-	sdev->group = NULL;
+-
+ 	platform_set_drvdata(pdev, NULL);
+ 	iommu_device_sysfs_remove(&sdev->iommu);
+ 	iommu_device_unregister(&sdev->iommu);
+-- 
+2.41.0
 
---4xub73vban4yxnem
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Liviu,
-
-On Tue, Jul 18, 2023 at 04:09:53PM +0100, Liviu Dudau wrote:
-> On Mon, Jul 17, 2023 at 07:35:12PM +0200, Sebastian Reichel wrote:
-> > Add both PCIe3 controllers together with the shared PHY.
-> >=20
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3588.dtsi | 120 +++++++++++++++++++++++
-> >  1 file changed, 120 insertions(+)
-> >=20
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot=
-/dts/rockchip/rk3588.dtsi
-> > index 88d702575db2..8f210f002fac 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > @@ -7,6 +7,11 @@
-> >  #include "rk3588-pinctrl.dtsi"
-> > =20
-> >  / {
-> > +	pcie30_phy_grf: syscon@fd5b8000 {
-> > +		compatible =3D "rockchip,rk3588-pcie3-phy-grf", "syscon";
-> > +		reg =3D <0x0 0xfd5b8000 0x0 0x10000>;
-> > +	};
-> > +
-> >  	pipe_phy1_grf: syscon@fd5c0000 {
-> >  		compatible =3D "rockchip,rk3588-pipe-phy-grf", "syscon";
-> >  		reg =3D <0x0 0xfd5c0000 0x0 0x100>;
->=20
-> What tree is based this on? Even after applying your PCIe2 series I don't=
- have the above
-> node so the patch doesn't apply to mainline.
-
-You are missing naneng-combphy support:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/co=
-mmit/?h=3Dv6.6-armsoc/dts64&id=3D6ebd55b3bba383e0523b0c014f17c97f3ce80708
-
--- Sebastian
-
---4xub73vban4yxnem
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmS2t1IACgkQ2O7X88g7
-+pqi5w/+MtPLKzu0zQdj3a5g9sZvB/lE1Ajhuqbg99UmDnDpcKnAmovt4GrDpl9D
-czMjsyIfV2yuvu3cb2quGMdn0oU61vE/Kbi5vnr9PWCWAeljpko+f45Qm9qR9GHb
-+EWu4q5jtw5hsQrMLrGztOcKeM16eY/ArHFlwNtc2paHAS0AyAGDrJFsX31+3/b6
-rWGd2bdbeo+06VOcFjNO+eZPPb2ayUOzgPk8pvtUrUbHlE2pUj6XAAlvLHk7Cb/x
-yPkW9lw29OY/+acWnZTDBTCEGHfwHr8my8L3JN0K1ayMTFlDhDFWyxZCZH8iDweB
-Aiwmhnt7hR1GhY9590dIgOjt+GV3Qph1G2wVAaWV4KMEbBG6xf+X3IpOwC55nqDt
-W9/Z9wpb0OZye+JTIeap7L8tGPVP6SFjQdPf4fWt9D3O13EhgwHSOZLTCaq0oGXu
-Cp05ioeDHq9NU/NA6YrOa8YBC/i9FfheGwaRGcpKqMakhMxk9TNpMWqDQ00ASY+9
-33IgWjLXICSnrgogB0hXwrPwT7+loIBCbXNy8+U8F0IuICu0WCy6x0TlyDfJP+aM
-vAscSUpMqYRHVPSbfO5eOS+dUtnBOLimZt5GpRYHu0cjSisD1rAh+kzPAGpsAE6W
-sY9NKRcNxncmrDygY3nmTX6z7gVMVtPMXkBu19+KvRtq3y/o7U0=
-=hXOJ
------END PGP SIGNATURE-----
-
---4xub73vban4yxnem--
-
-
---===============4062376238965459529==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4062376238965459529==--
-
