@@ -4,127 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47234C001B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 05:53:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8831AEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 05:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CXvdWWSsbO/vLpodX+g3Sf+Br8zyIcJgIytDepPbIjc=; b=r0Wj4WBucq5NhA
-	K1Zp/QXmaaiTApBI1di72bXDPnxWf9d542v2IYiXZd2KdbAWFsBV+g9mcNJKtcmSs6+4kC/XeNbMB
-	vzjf9Hmh01kujDW50ifH3ayfukUHKNsQZw40++vNM6pHPVkbSp9KzKoO7l0HBiVNxAtnhgeuE+I33
-	XhBcY635tdFbZCM277ljeEk3JUJO7YkNHJIUmPOQK0WajTqDCXUne4bcQHIaqqrUGOPhvN5kM59t6
-	fmp+ZhPZdDH5BSy7RyzmWpwlD798sIc0QwduD3CuywiT5BJfjcBCQDx3/9tWKL6KYolIo/WfcazrQ
-	OKTr0hjQFLIHEz1C0X/w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kUxpp32xgghk7PM61a1Mky4I6ETXzJXWWfOPp63svT0=; b=QPCgESFXr9b5bNoYRB31WGfF0d
+	oJZKrlK+O88oJpYWrKEBO4/uQHE3nNpXrrqo5T1aN5Ywq4RKyU0vwYLbGvfTpJEG3mtt2aSA6q8i4
+	/DenLAHxpMzLAqN/qZyuVDM/6jQpU40oqKrVMdLano3CMfPhgTUltTu2l4ZAM+Yrd4DmNSToISA7t
+	UqL+VrA9DJoiQ7ZfeXNlSYXPogTXLIfRCagbqgPMh96Weddb8MxBdQrJVs6no7R/EDocI/KMcIe5s
+	P2+JYDuKEppGwzR7Q95EZOizj2NYni3KMaoGtHWXGIjn3NhGMFv2XpehSpTgLLjYoFybHvOR09BUG
+	uZ2kqJJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM07c-005Rkr-0t;
-	Wed, 19 Jul 2023 05:53:12 +0000
+	id 1qM07v-005Rsy-1s;
+	Wed, 19 Jul 2023 05:53:31 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM07Z-005RjR-0X;
-	Wed, 19 Jul 2023 05:53:09 +0000
+	id 1qM07t-005RrF-0c;
+	Wed, 19 Jul 2023 05:53:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Y1QDj1E+S2bjPPGCPFdmDsT3gCqQuKHXgAf2a6PrB3E=; b=dH7iKLdHxa3TJXLvWEUU+CCtHG
-	NU0kQOSIRYjL/DifW5bh3HMx/zzE3PaOEyE7lh/SwKtHHv7SRjJUm4oF1TGX8iZCiJi/Qww5YH/9e
-	kyk2+EgCh2aI2t/VO7VIfaZ7OgBFnzQ6hXk5otVRGqGc7/Xk4wdKfeY3sOKWiAcNABfcqMXlkvp9V
-	4pMMdIscLYDaAG89VOuFwLhQU9lOAqXonlQJQGrgb2Lv2qIzD/JTJy7iqXqaCgMBnSfjWjuXOpn2V
-	nOg6XjHnP9lMjYxnpDEPhqiH65A7+7v87CZ/UfsNGpXjPxGmiq2g/ofMrPK6riJ1sqipDBMLIAIer
-	/oBnkTEQ==;
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=SKDO8fLABEy4nIQ1F8M+WG1j17Tp8D6xm4F5bsxJbUc=; b=VAJGrnXhF31THrS7vUVoArvCwS
+	ymIODJzLOMrjJoh7stP4CiOrEiHsJ2ILHgNG6N7kPLqEGa/AriSZGPk8KNFZZ0MH4T/X/1da7vbLW
+	CwcAAFASvskRRJyKtOvCCUVDzpYJBfLmg12fVBC0E3x4BcBD6n6oGDO3HOV9aI8WZjUVEeQQZOlA6
+	9F/i7KI/f+//6IiIi0iRd9uvOP0Gv3P5xUw4X8Lz8bUmZtaLSAxhj/FTwSSuut+hmFvMXVp0llDCf
+	5E3PMNCGKtUJM0jpBZx02UQofYPX0eElqWenCGKiOG0/gqVz74RRo6oC7hBQNWNkcxOBPj4Qyn2Go
+	gvQMlyuw==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLf1K-00BFu5-37;
-	Tue, 18 Jul 2023 07:21:20 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-4fb5bcb9a28so8462817e87.3;
-        Tue, 18 Jul 2023 00:21:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689664809; x=1692256809;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Y1QDj1E+S2bjPPGCPFdmDsT3gCqQuKHXgAf2a6PrB3E=;
-        b=XLpqkx/8N+f9aL66iAO4XAc89p9osxV7uu0ZqsyeRuMT4WOEnOlfUxj8GbFX4gEcY7
-         cmQ5fYgkyqNDpwovIzaJAE3TYH7aSiAY5VG0meewNNzbaAUu5EaM8jadqiG9ZIxt8WkH
-         Dz5Wa+qEBe6jQD09zPibdBeoGRnE/sTNzbn42rGQJ9PVOh1x5LzTEO4yedoXofgo5eFQ
-         KuGIkdKxeINxScrJFBi22nrBsED9IknOsqSFxrCgMqZxiUdu7WgZs1LJuL63IoOJJuPq
-         aH9XK5MpDV2L2h3Zd29U/vHUUcmr0Nb7ZNRI8TEZ+HH+Eak4QSPvsUrRq9Bx6pIjVCtR
-         di/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689664809; x=1692256809;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y1QDj1E+S2bjPPGCPFdmDsT3gCqQuKHXgAf2a6PrB3E=;
-        b=VDeS9l7MKjJXZr4gdlZR0xZipac4Jvfir4O6EUkQrM3x2zRsuPN0DnL2V9Wmjnxwe5
-         Kc85u+pqxWMNzxevGSI1brfRVG28hqTkd4Cx7isC/dAPlHzSV+HAqqFLXOgFDwv1QJRY
-         sI0ZgLfFnuJIzbgrpt9W/cACXUYldPt01A8gNCEXOmtVRYAOcuRp/C1eJVCRZ1MTc8An
-         WxeKnCGm4io+WD0X734blSlfIVu/BnaqkAZPGqMQ2Li6F5sM9VlLjDzWNvwmT9LJntv6
-         Mn/wlN1Bf3sCXw2++kKDeP1cPZ6v1Z9oX/rH8g7Z8ELCIfiUeDo2dwkH2r+uV23XJ9S3
-         QIEw==
-X-Gm-Message-State: ABy/qLYUvBL0KkWMTE2gd//buNNigB9PXE5bad228WiLVwTtUINdEPww
-	qwFUKzSWT/xbE0V8nFm84r8=
-X-Google-Smtp-Source: APBJJlH+TWJF5L0ovMggt0/CS2enPlkz+KJw4saqvvcdbjYHJU4i8zA1AJzt6j7rP+36JcEKeZhfYg==
-X-Received: by 2002:a05:6512:3a88:b0:4fb:925f:8be1 with SMTP id q8-20020a0565123a8800b004fb925f8be1mr11403669lfu.45.1689664808795;
-        Tue, 18 Jul 2023 00:20:08 -0700 (PDT)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id 22-20020ac24856000000b004fbb3e91a3fsm299048lfy.114.2023.07.18.00.20.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Jul 2023 00:20:08 -0700 (PDT)
-Message-ID: <b5124f4a-6a7a-3fd9-32d6-e0690a45c7e8@gmail.com>
-Date: Tue, 18 Jul 2023 09:20:05 +0200
+	id 1qLh6K-00BMcx-1x;
+	Tue, 18 Jul 2023 09:34:38 +0000
+Received: from mercury (dyndsl-091-248-212-239.ewe-ip-backbone.de [91.248.212.239])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E103A660703C;
+	Tue, 18 Jul 2023 10:34:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689672872;
+	bh=pDdoHgD/R4j/O2UCXvRlSSP9z0NmI3OdmRQNP6aFg30=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OfHkRS1Fnn2sxv+9ZYTgwkAvWjw4/zzVsMiwQ/4Gdpil0vhSHhiMpF70TpvqNPRCx
+	 czb43+nlO876FJId7eHvLkuwNv6XEl/S6KOT68IL8Fcjnob0znAhqOdrmilUseyPyF
+	 paXOpv93DV1txJfP089cQv2Am6jjhnAVapnajoZwekrfj1bT5eewHDaFZdM48oGVCb
+	 MlzuY8rPaDY4UWxlhgVSFcwKUIHazMS5FFU/t5xQm3nWKJohWUUxGqAPjvowUioQnp
+	 R8MdzbuPa1jyx/Jq1SGdRLfQ79aIynMdmkAoX19cfJSVUhqrUNCXIZF4bSACbuGZZY
+	 /zsNQJjMMkXLg==
+Received: by mercury (Postfix, from userid 1000)
+	id EEF551060D95; Tue, 18 Jul 2023 11:34:28 +0200 (CEST)
+Date: Tue, 18 Jul 2023 11:34:28 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Eugen Hristev <eugen.hristev@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	netdev@vger.kernel.org, david.wu@rock-chips.com, heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org, kernel@collabora.com
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: add default 'input'
+ for clock_in_out
+Message-ID: <20230718093428.ofld4ywhwbpmnw5w@mercury.elektranox.org>
+References: <20230718090914.282293-1-eugen.hristev@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH V4] nvmem: add explicit config option to read old syntax
- fixed OF cells
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Michal Simek <michal.simek@xilinx.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Evgeniy Polyakov <zbr@ioremap.net>, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20230403225540.1931-1-zajec5@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20230403225540.1931-1-zajec5@gmail.com>
+In-Reply-To: <20230718090914.282293-1-eugen.hristev@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_082119_130455_1C3D8A4C 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20230718_103436_797343_6BBA9530 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,29 +86,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2362498791814970003=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA0LjA0LjIwMjMgMDA6NTUsIFJhZmHFgiBNacWCZWNraSB3cm90ZToKPiBCaW5kaW5n
-IGZvciBmaXhlZCBOVk1FTSBjZWxscyBkZWZpbmVkIGRpcmVjdGx5IGFzIE5WTUVNIGRldmljZSBz
-dWJub2Rlcwo+IGhhcyBiZWVuIGRlcHJlY2F0ZWQuIEl0IGhhcyBiZWVuIHJlcGxhY2VkIGJ5IHRo
-ZSAiZml4ZWQtbGF5b3V0IiBOVk1FTQo+IGxheW91dCBiaW5kaW5nLgo+IAo+IE5ldyBzeW50YXgg
-aXMgbWVhbnQgdG8gYmUgY2xlYXJlciBhbmQgc2hvdWxkIGhlbHAgYXZvaWRpbmcgaW1wcmVjaXNl
-Cj4gYmluZGluZ3MuCj4gCj4gTlZNRU0gc3Vic3lzdGVtIGFscmVhZHkgc3VwcG9ydHMgdGhlIG5l
-dyBiaW5kaW5nLiBJdCBzaG91bGQgYmUgYSBnb29kCj4gaWRlYSB0byBsaW1pdCBzdXBwb3J0IGZv
-ciBvbGQgc3ludGF4IHRvIGV4aXN0aW5nIGRyaXZlcnMgdGhhdCBhY3R1YWxseQo+IHN1cHBvcnQg
-JiB1c2UgaXQgKHdlIGNhbid0IGJyZWFrIGJhY2t3YXJkIGNvbXBhdGliaWxpdHkhKS4gVGhhdCB3
-YXkgd2UKPiBhZGRpdGlvbmFsbHkgZW5jb3VyYWdlIG5ldyBiaW5kaW5ncyAmIGRyaXZlcnMgdG8g
-aWdub3JlIGRlcHJlY2F0ZWQKPiBiaW5kaW5nLgo+IAo+IEl0IHdhc24ndCBjbGVhciAodG8gbWUp
-IGlmIHJ0YyBhbmQgdzEgY29kZSBhY3R1YWxseSB1c2VzIG9sZCBzeW50YXgKPiBmaXhlZCBjZWxs
-cy4gSSBlbmFibGVkIHRoZW0gdG8gZG9uJ3QgcmlzayBhbnkgYnJlYWthZ2UuCgppcyB0aGVyZSBh
-bnkgY2hhbmNlIEkgY2FuIGhhdmUgdGhpcyBhY2NlcHRlZCAvIHB1c2hlZCwgcGxlYXNlPwoKSXQn
-cyBhIHRpbnkgb3B0aW1pemF0aW9uIGFuZCBpdCBtYWtlcyBzdXJlIHBlb3BsZSBkb24ndCB1c2Ug
-ZGVwcmVjYXRlZApzeW50YXggd2l0aCBuZXcgZHJpdmVycy4KCkkgYWxzbyBub3RpY2VkIHRoaXMg
-d2lsbCBwcm9iYWJseSBsZXQgbWUgZHJvcCBhbiB1bmNsZWFyIGFuZApub24taW50dWl0aXZlIG5v
-X29mX25vZGUgY29uZmlnIG9wdGlvbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============2362498791814970003==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="p4uagyzg7ikm4k3p"
+Content-Disposition: inline
+
+
+--p4uagyzg7ikm4k3p
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue, Jul 18, 2023 at 12:09:14PM +0300, Eugen Hristev wrote:
+> 'clock_in_out' property is optional, and it can be one of two enums.
+> The binding does not specify what is the behavior when the property is
+> missing altogether.
+> Hence, add a default value that the driver can use.
+>=20
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/=
+Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> index 176ea5f90251..bb943c96c196 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> @@ -80,6 +80,7 @@ properties:
+>        "output" means GMAC provides the reference clock.
+>      $ref: /schemas/types.yaml#/definitions/string
+>      enum: [input, output]
+> +    default: input
+> =20
+>    rockchip,grf:
+>      description: The phandle of the syscon node for the general register=
+ file.
+> --=20
+> 2.34.1
+>=20
+>=20
+> --=20
+> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
+
+--p4uagyzg7ikm4k3p
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmS2XKEACgkQ2O7X88g7
++prE4xAAmh5G/otIOOGE3B28pMwGVdmjdOwa1BRNEfNCHvSeWkh12GQ+Eswe5kqG
+BSB2DE/QqMNTqcrBTOlarZ0BWEMGKnWlpm2W0cBzDHro9ASDyikGy5MyNFtb6Pa2
+kc8L9JGhZB8NN/GD+qWLTnkg0HB056GGBcZF4pediWVSjJERDM8WXEVkEMjxARa2
+PRMpAknIO5kZpHzsekietpLOW4RpfuYCiVVmnCQpURUNK0FH3+la4hLWjvzuiEcM
+rUyTJ9MZwx73KEuKDrCPhRfS8bk6gC+QwSbtjTiIn/ZsUOWbcz0ovkzSpEg3ytrM
+pwLOCNM127Pvhitp9hV3lqad1yn5cioVfM4lmHjBNKxGxBPdQdiFBVWlczWT//p0
+Mg90MJtmkWMqF5OzLQ5UZhRS9Vf9rFROwnrGo6Pl++zAzIesUe62+oSvv2hMo/XG
+0UKo1Xwnl8edOORpjuSMtHbyJXIcpQ+hXRF+C21gZT268wWmxC6mBJi5r6Iunp/I
+uxqYNAxd3Jtd4Kq3D8omE6f0fewzQL+t4cegcKqEdngl9c+a8FwzkEOHa2RDRReB
+1t6XWKsHbgRbrWjt+PmatvnN8Ei/V4gFszQSIWYMhalviQCwqcqBqDKOi33kpFfh
+OZFltVUI6Fj1SZCMsAGBaozAXQ+FZF73haMosgXiWPUwQmr52EM=
+=9u/K
+-----END PGP SIGNATURE-----
+
+--p4uagyzg7ikm4k3p--
+
+
+--===============2362498791814970003==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2362498791814970003==--
+
