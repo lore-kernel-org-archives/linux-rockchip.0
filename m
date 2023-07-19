@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683DFC001B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 17:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25337C0015E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 20:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MlpyBVo5cNP1H0l1DZSpXdVNkUr9GZa1YAx4pJPN4M=; b=ED3tGP6B4NSmjb
-	RYOSei13VtCKWpvwuNdXJOQ72Hin+4qCvYZq/szyqhuDStP+JZCdImGQAp8mIHXTjrSGXpxp8PID5
-	TxOtioXejLp/VZk0m+vIPAY5pIM7yyBJgMKGSLiC4Q8YWaYPro1upc97bMMukGO0ZogKBxSrx2FFX
-	sWeAeTdnQM0d/9FjygGl7brHo9uIGl+ey2yQVRwkcOz8aQFeFlrEP5358HWukPjBJNP7Wvd4N/6iO
-	v9BC4Fpy0ob32r7eWm/7btvGea5WqLOVV9nRZVdroLXLs7UAAzg8XcXv0xa6c4XGLZTfh0SIu1nka
-	4Gngat3CM3D8boKW/HkQ==;
+	List-Owner; bh=dxNh8crqPlLbAWedAyQb+hUBxuUzrVJamfk1XhRpTDA=; b=wKMQ47Ld0RTNWv
+	xU7GERJ0ISIg5V8coNEcZBb080NZsbd++fOuCoh4+eNIDQ/NPbXSlcPSmqBzH7MZpWqfINvXhTTzn
+	ebyrDccEp0Zcl6F0rIDHwFAfbGknVlEg1vBv2GmaBCKfVrdGaPSXL4Y3JDOVt8Bx1mXZl11Tm/7GD
+	Eb3Zz77plIfwSI9sLArwUORHq9TegWcXpt4X0zorkT58Dx5GRcEiLAKh+FOgd63xfCGgLtUabt0xH
+	mmtS3pMLCvKagQ3g2Dbp736dLo4Xg97CGA9Xoo0YObjELow8j1nH+ZfcIPeA8Z1MYuIqIcYkQeKbf
+	Kz/WcNFQfLa/Oji4A+pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMBAJ-008NdF-2A;
-	Wed, 19 Jul 2023 17:40:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qMDam-008oVJ-0t;
+	Wed, 19 Jul 2023 20:16:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMBA2-008NTT-2f;
-	Wed, 19 Jul 2023 17:40:29 +0000
-Received: from jupiter.universe (dyndsl-091-248-208-009.ewe-ip-backbone.de [91.248.208.9])
+	id 1qMDaj-008oU2-15;
+	Wed, 19 Jul 2023 20:16:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3F2EB6606FCE;
-	Wed, 19 Jul 2023 18:40:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689788419;
-	bh=LlUh7Fn0cj04qJmOdkCXn8GhQI6+9wcTUh77kHYpm+c=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mId2p9mv1C0V9ofkmv80IFSeXy7Dod5LmGeSNOVTRWn+aumEFnzwSJt8PhFyRI5Ng
-	 n4UubNfF51wVwIkymVzRcwci+XM+ospEBgV+CfTkRv47yFYjDeoJgJpXaZRZji48xr
-	 UeMg9z2rH6u1IhneCdSsAKiMft2EJVrStEJv/EVgMnVNaQFNLGCV6bGjg/8ZL0PaZW
-	 hdMoXYOdJNi+12XtDlskQM5FlEkkrEskp1QiARs1t4ueXsHR+2cCp4LTAw/vQL/k9K
-	 k0agJfPQ2nTearEeZmqwTqy/fsqL2ldcANHxDcX2CSvwNbCPRpYFrUTI2K3Us6Fmwt
-	 DhZCKdG3yi1wg==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 20E6C480DA8; Wed, 19 Jul 2023 19:40:17 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v1 1/2] dt-bindings: usb: rockchip,dwc3: Add RK3588 binding
-Date: Wed, 19 Jul 2023 19:40:14 +0200
-Message-Id: <20230719174015.68153-2-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230719174015.68153-1-sebastian.reichel@collabora.com>
-References: <20230719174015.68153-1-sebastian.reichel@collabora.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 62D2F6164F;
+	Wed, 19 Jul 2023 20:16:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B680C433C8;
+	Wed, 19 Jul 2023 20:16:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689797767;
+	bh=j6e92Ndx74FH6PByjJZ4j4e9GQ6FFdbXxvBk/vDjsh4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BcblMrxaFpGR37DZykDQc/fmqAEvgdawVysnDghn2k8i9jjcCpOiLmL47RZv72yaZ
+	 0eOsZtIGNaXz5ljaEGbwjuV+M8O+17gnMjF8eBsQ6Mw2OF12P5AJTJEyAWkXqyF3tk
+	 n/BSZYWo5B30L06xg9QjeWT6gbtgR0lkeYutFpwdPKndi1XhHQ5wu0fkpL88dG9Pnw
+	 5T88lbG4jw8lU11jaxaeEjLesIoWPELSSSbql406vsJ33q+q/qitMbs4UhaFrce3+3
+	 wa3vl9Ia5TAjZg+QkRt+WbubnnGmxHQtX/Cf264feEJPKr6OJlEEXA4VP9BQyheZGj
+	 CyB3mgp7OQ4Hw==
+Received: (nullmailer pid 740813 invoked by uid 1000);
+	Wed, 19 Jul 2023 20:16:05 -0000
+Date: Wed, 19 Jul 2023 14:16:05 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Serge Semin <fancer.lancer@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v3 2/5] dt-bindings: PCI: dwc: rockchip: Fix
+ interrupt-names issue
+Message-ID: <20230719201605.GA706263-robh@kernel.org>
+References: <20230717172651.64324-1-sebastian.reichel@collabora.com>
+ <20230717172651.64324-3-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230717172651.64324-3-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_104027_125187_E7BDB25B 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20230719_131609_461276_5110643F 
+X-CRM114-Status: GOOD (  23.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,161 +77,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 contains three DWC3 cores. Two of them are connected to
-dedicated USBDP PHY and can be used in dual-role. The third is
-connected to one of the shared combo PHYs used for PCIe/SATA/USB3
-and can only be used in host mode. Since the binding is all about
-the PHY glueing and involved clocks, separate compatible values
-have been created for these two types.
+On Mon, Jul 17, 2023 at 07:26:48PM +0200, Sebastian Reichel wrote:
+> The RK356x (and RK3588) have 5 ganged interrupts. For example the
+> "legacy" interrupt combines "inta/intb/intc/intd" with a register
+> providing the details.
+> 
+> Currently the binding is not specifying these interrupts resulting
+> in a bunch of errors for all rk356x boards using PCIe.
+> 
+> Fix this by specifying the interrupts and add them to the example
+> to prevent regressions.
+> 
+> This changes the reference from snps,dw-pcie.yaml to
+> snps,dw-pcie-common.yaml, since the interrupts are vendor
+> specific and should not be listed in the generic file. The
+> only other bit from the generic binding are the reg-names,
+> which are overwritten by this binding.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 43 ++++++++++++++++++-
+>  1 file changed, 42 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> index a4f61ced5e88..7836b9a5547c 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> @@ -17,7 +17,8 @@ description: |+
+>    snps,dw-pcie.yaml.
+>  
+>  allOf:
+> -  - $ref: /schemas/pci/snps,dw-pcie.yaml#
+> +  - $ref: /schemas/pci/pci-bus.yaml#
+> +  - $ref: /schemas/pci/snps,dw-pcie-common.yaml#
+>  
+>  properties:
+>    compatible:
+> @@ -60,6 +61,39 @@ properties:
+>        - const: aux
+>        - const: pipe
+>  
+> +  interrupts:
+> +    items:
+> +      - description:
+> +          Combined system interrupt, which is used to signal the following
+> +          interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme,
+> +          hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi,
+> +          edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app
+> +      - description:
+> +          Combined PM interrupt, which is used to signal the following
+> +          interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2,
+> +          linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2,
+> +          linkst_out_l0s, pm_dstate_update
+> +      - description:
+> +          Combined message interrupt, which is used to signal the following
+> +          interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi,
+> +          pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active
+> +      - description:
+> +          Combined legacy interrupt, which is used to signal the following
+> +          interrupts - inta, intb, intc, intd
+> +      - description:
+> +          Combined error interrupt, which is used to signal the following
+> +          interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
+> +          tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
+> +          nf_err_rx, f_err_rx, radm_qoverflow
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- .../bindings/usb/rockchip,rk3399-dwc3.yaml    | 107 ++++++++++++++----
- 1 file changed, 85 insertions(+), 22 deletions(-)
+I'm confused. It is really up to the integrator on how each of these 
+interrupts are combined? I thought it was a bit more fixed than that.
 
-diff --git a/Documentation/devicetree/bindings/usb/rockchip,rk3399-dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,rk3399-dwc3.yaml
-index 3159f9a6a0f7..0db4dc86e506 100644
---- a/Documentation/devicetree/bindings/usb/rockchip,rk3399-dwc3.yaml
-+++ b/Documentation/devicetree/bindings/usb/rockchip,rk3399-dwc3.yaml
-@@ -11,7 +11,13 @@ maintainers:
- 
- properties:
-   compatible:
--    const: rockchip,rk3399-dwc3
-+    oneOf:
-+      - items:
-+          - enum:
-+              - rockchip,rk3588-dwc3-otg
-+              - rockchip,rk3588-dwc3-host
-+          - const: rockchip,rk3399-dwc3
-+      - const: rockchip,rk3399-dwc3
- 
-   '#address-cells':
-     const: 2
-@@ -22,35 +28,37 @@ properties:
-   ranges: true
- 
-   clocks:
--    items:
--      - description:
--          Controller reference clock, must to be 24 MHz
--      - description:
--          Controller suspend clock, must to be 24 MHz or 32 KHz
--      - description:
--          Master/Core clock, must to be >= 62.5 MHz for SS
--          operation and >= 30MHz for HS operation
--      - description:
--          USB3 aclk peri
--      - description:
--          USB3 aclk
--      - description:
--          Controller grf clock
-+    minItems: 3
-+    maxItems: 6
- 
-   clock-names:
-     items:
--      - const: ref_clk
--      - const: suspend_clk
--      - const: bus_clk
--      - const: aclk_usb3_rksoc_axi_perf
--      - const: aclk_usb3
--      - const: grf_clk
-+      oneOf:
-+        - enum:
-+            - ref
-+            - ref_clk
-+        - enum:
-+            - suspend
-+            - suspend_clk
-+        - enum:
-+            - bus
-+            - bus_clk
-+        - const: aclk_usb3_rksoc_axi_perf
-+        - const: aclk_usb3
-+        - const: grf_clk
-+        - const: utmi
-+        - const: php
-+        - const: pipe
-+    minItems: 3
-+    maxItems: 6
- 
-   resets:
-     maxItems: 1
- 
-   reset-names:
--    const: usb3-otg
-+    enum:
-+      - usb3-host
-+      - usb3-otg
- 
- patternProperties:
-   '^usb@':
-@@ -68,6 +76,61 @@ required:
-   - resets
-   - reset-names
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          const: rockchip,rk3399-dwc3
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 6
-+        clock-names:
-+          items:
-+            - const: ref_clk
-+            - const: suspend_clk
-+            - const: bus_clk
-+            - const: aclk_usb3_rksoc_axi_perf
-+            - const: aclk_usb3
-+            - const: grf_clk
-+        reset-names:
-+          const: usb3-otg
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3588-dwc3-otg
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 3
-+        clock-names:
-+          items:
-+            - const: ref
-+            - const: suspend
-+            - const: bus
-+        reset-names:
-+          const: usb3-otg
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3588-dwc3-host
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 6
-+        clock-names:
-+          items:
-+            - const: ref
-+            - const: suspend
-+            - const: bus
-+            - const: utmi
-+            - const: php
-+            - const: pipe
-+        reset-names:
-+          const: usb3-host
-+
- examples:
-   - |
-     #include <dt-bindings/clock/rk3399-cru.h>
--- 
-2.40.1
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
