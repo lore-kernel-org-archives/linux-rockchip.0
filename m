@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B305EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 11:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D538BEB64DA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jul 2023 12:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ptaX63F5Hlyf3T2t6+SOvGKYlYJDDChqwZoGfJ1qUCE=; b=lod8hEAmaEf6z0
-	leWrslNVqJ+1vlvEQjeEjZpKd6NFeP4uS6kwjKXqdKzsFoj3sKLnHNJKXeRgzyE9yrmKygr0EJyDD
-	s7s2ZVR2v5uIGpBzRb3kdt4sssQUpB5SZtirEFbSnxvEE7ahPgdlCwOtnXlLyllVfHVMuxxv4mYuk
-	DOZ/v91K2dHJCIPFrRnS0XzAlKwKCC6yW/rONRW5OgtPzNimM41DxHf0MMiFk6/ycGBQUMqxVfnmH
-	D8mDXHvXTEItYcDpXd1yv/El9O7BK+wdJ32ex5x+IraqFMFZBH80DYQM6rYwCNbqPW1hIZJD45rDK
-	5669aZh2Niyp9/YPLmbw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dKLkNPb3pwv7QKyQS0+1UOEDHJbfDQhFWeTgWUdMre0=; b=CvOj59UDVXxVOA
+	2leivW1tLBWyutsR8x7V0FKusIpA6NjL80AsWzuDHB+t4s+uOFqKzm6cKCPNhtlvjesUF955Evrzq
+	sy84SCLZGfS3hj4bBRkamW1Kb6jXW9cV3q+hnGwQR35XLYzRdCOfrJXhnEZagE1Xe92Q8PUA+xM1q
+	WmoMwGvfHG07fK51pJn47iniRnwQD11KZmz2OY+DvDAezGWmPIlcrmbxGocV9XRw1HXjGBIakJtBh
+	a9L0Bsb20Q1juQSw+fZGm91P+SRbmFJCpSHUDn5ySy1TG4qQZadrc9qRvlMiKvEM+LijvpR2XkTlh
+	o4+VueT9XhL+NmMooAnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM5IZ-007A3r-1D;
-	Wed, 19 Jul 2023 11:24:51 +0000
-Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
+	id 1qM6BZ-007OpW-0d;
+	Wed, 19 Jul 2023 12:21:41 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM5IV-0079zH-1d
+	id 1qM6BV-007Onv-1l
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Jul 2023 11:24:49 +0000
-Received: by mail-ua1-x930.google.com with SMTP id a1e0cc1a2514c-791b8525b59so2458146241.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Jul 2023 04:24:45 -0700 (PDT)
+	Wed, 19 Jul 2023 12:21:38 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-666eef03ebdso4548333b3a.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Jul 2023 05:21:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20221208.gappssmtp.com; s=20221208; t=1689765884; x=1690370684;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OZSrWDc/cBveds+xSFFWhnQ/pzCd4lTeY64B0PPEGW0=;
-        b=T1IMgiireLSvSXiTqLXmFjq9F8EsjIjVEm5sr6vcGRZMB9arVcgUqsKwzTbbVZ5B0d
-         ajVxvut0epp7SNwmwKzEJMgdJvXYkYEb8jBPrsW0yDzJnFFxJoO/RQdh2N1yZJ5O9MRS
-         Ev8Qg9vc4kY2/ME9SqOM+vCW3ViGaZsYa86Kxz9XR/ZPgndF9vzesGT0RksXS5eMc04h
-         ell7+2PcrXlKisrXM96SjKXJ5kwoMY57qLfIyeplwiEJjo9Q4LxRnOriSbtInNjcqq+o
-         I6RYEDjc39Gn0ddNJHe53OJEYZqvaM+hrQhZij6E4WH+TgsfMnxGoOOW7yjSfGQETgYn
-         U63A==
+        d=amarulasolutions.com; s=google; t=1689769296; x=1692361296;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9xcCLpmftHeGeQfoD14ubT9Bi8tdJw0Jz86kdTTP9jk=;
+        b=N1vPVKH1XV02F4rt3itG2s4UdBXz1J1+d5A4tHtBnamSb27U82FLXEEk3Qrv4CNolx
+         CWySiduSwSZX8JZpfeyJ9Mz5fDs8M8WqFoOjk1gDz8qS4KDuMAYKKLryD+kgG3sRgEIf
+         /l2TGQ8SYgiIggC+Ad/kN6WXy7xuVnpBAK6Vw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689765884; x=1690370684;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OZSrWDc/cBveds+xSFFWhnQ/pzCd4lTeY64B0PPEGW0=;
-        b=bDKclUjpiYCZ5I7trL7PQglIN1lpU6zpR583QVEfh/16WEjvX5MAo55zwwqEiG9GlU
-         4ce9pH9++MQijPqhPWvZ0PRabKj8Csb1zDWr1QuFAAspRyqm2yi1WX4d/q4XI2vja6A1
-         kqRFk5GFa5FZx76rOpkU7iwXmht2+8nuNP3gx8Y7cm9rjHzgt9N8Fix4Iw33rp4jJijZ
-         Zug93s79jLWJD7oe3d7RZv9MllqBXa58Wi7Q5T7QbFi0XO3dIS9jGb/wZLbscqou7Mns
-         cioPnwJYUqcjaf1FJ/NJfMfzI3djHaOfMkxzwDyDam8wJ6657NHF4u6LsXrOVpFngsIp
-         Batw==
-X-Gm-Message-State: ABy/qLYwK//cBAw+2paIrftwCfnpUTT4I6K8HVrHqAUPfdjbqhwYBcjZ
-	gELfRfkqe76u1u7ZtzQoAr+CvzHiHJf2EfGt0vDyRw==
-X-Google-Smtp-Source: APBJJlETfEXohyULgSqD+dtrZrcCLBAUgDaqwYgYehWjp3RUYrt8J/1ty1q/3ivKhd5XQbecf0XzDYFagtzXJqIh+lM=
-X-Received: by 2002:a67:fa85:0:b0:443:7503:a537 with SMTP id
- f5-20020a67fa85000000b004437503a537mr8935739vsq.28.1689765884686; Wed, 19 Jul
- 2023 04:24:44 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689769296; x=1692361296;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9xcCLpmftHeGeQfoD14ubT9Bi8tdJw0Jz86kdTTP9jk=;
+        b=ftCnx4Bm9Wm67ifiuC17tj+jemUvXKWt0YzD53gvMW2m8zhe+NbsHGeBjbn5pYVAAl
+         dIvXG43NQZ0IAzBV6UFIBwhxwUHYV2sg8CbAhlBxVzUpND3bTOasvj4GCOrILvbRAZ+A
+         bNdh4LDBmate5a5miMCBNM6o1zXwuXP2vmZaFPnzlREqFwR/VnPbmBc7Ddem9AxzB+fh
+         DP2gE4txI1urGMSDLXmFkfBDQsPLxchVXFMgqJ+v3yI3A5SAQiJM3V+AizBOxV+axRQB
+         ofOEBXOLcOWbb5EJNP6Pnhuzr1L3eCDIV92YJ6EqB6UF2g7BOmtak9KAqbLdOSrz8nX2
+         3i9g==
+X-Gm-Message-State: ABy/qLYtN1QNfj61zn0urKb5LaKiUwETyObq7aFH5MOhDmks66oZjeYF
+	1MOy2zjhAeeILjkiRJINZ/5dnA==
+X-Google-Smtp-Source: APBJJlF0jPy1ajqwBXDOriWABI0+r/gQfRfllY+z9iV0HlUvAyrGG6o+K5F6n8FGBq2zdGWS0U8/8g==
+X-Received: by 2002:a05:6a21:328a:b0:130:d84b:eb91 with SMTP id yt10-20020a056a21328a00b00130d84beb91mr19548092pzb.49.1689769296577;
+        Wed, 19 Jul 2023 05:21:36 -0700 (PDT)
+Received: from localhost.localdomain ([49.205.243.15])
+        by smtp.gmail.com with ESMTPSA id i3-20020aa78b43000000b005d22639b577sm3166773pfd.165.2023.07.19.05.21.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Jul 2023 05:21:35 -0700 (PDT)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH] arm64: dts: rockchip: Enable TYPE-C PD for ROC-RK3399-PC
+Date: Wed, 19 Jul 2023 17:51:23 +0530
+Message-Id: <20230719122123.3702588-1-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230714174525.4055475-1-robh@kernel.org>
-In-Reply-To: <20230714174525.4055475-1-robh@kernel.org>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 19 Jul 2023 13:24:33 +0200
-Message-ID: <CAMRc=MeR=uEufQ3p2cqN2ABL1w9V0QHRSYLv_WVZ97q8C4AgJQ@mail.gmail.com>
-Subject: Re: [PATCH] gpio: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>
-Cc: Alban Bedel <albeu@free.fr>, Linus Walleij <linus.walleij@linaro.org>, 
-	Andy Shevchenko <andy@kernel.org>, Doug Berger <opendmb@gmail.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Grygorii Strashko <grygorii.strashko@ti.com>, 
-	Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
-	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>, Srinivas Neeli <srinivas.neeli@amd.com>, 
-	Michal Simek <michal.simek@amd.com>, Nandor Han <nandor.han@ge.com>, devicetree@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_042447_753451_BDBB93CC 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20230719_052137_621266_25C12E27 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,24 +87,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdWwgMTQsIDIwMjMgYXQgNzo0NeKAr1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5l
-bC5vcmc+IHdyb3RlOgo+Cj4gVGhlIERUIG9mX2RldmljZS5oIGFuZCBvZl9wbGF0Zm9ybS5oIGRh
-dGUgYmFjayB0byB0aGUgc2VwYXJhdGUKPiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQg
-YXMgbWVyZ2VkIGludG8gdGhlIHJlZ3VsYXIgcGxhdGZvcm0gYnVzLgo+IEFzIHBhcnQgb2YgdGhh
-dCBtZXJnZSBwcmVwcGluZyBBcm0gRFQgc3VwcG9ydCAxMyB5ZWFycyBhZ28sIHRoZXkKPiAidGVt
-cG9yYXJpbHkiIGluY2x1ZGUgZWFjaCBvdGhlci4gVGhleSBhbHNvIGluY2x1ZGUgcGxhdGZvcm1f
-ZGV2aWNlLmgKPiBhbmQgb2YuaC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCBy
-YW5kb20gbWl4IG9mIHRob3NlIGluY2x1ZGUKPiBmaWxlcyB1c2VkIHRocm91Z2hvdXQgdGhlIHRy
-ZWUuIEluIG9yZGVyIHRvIGRldGFuZ2xlIHRoZXNlIGhlYWRlcnMgYW5kCj4gcmVwbGFjZSB0aGUg
-aW1wbGljaXQgaW5jbHVkZXMgd2l0aCBzdHJ1Y3QgZGVjbGFyYXRpb25zLCB1c2VycyBuZWVkIHRv
-Cj4gZXhwbGljaXRseSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgo+Cj4gU2lnbmVkLW9m
-Zi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiAtLS0KCkFwcGxpZWQsIHRoYW5r
-cyEKCkJhcnQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+The power supply circuit in ROC-RK3399-PC is
+
+Power Supply (or PPS) => FUSB => MP8859
+
+VUBS pin of FUSB and IN pin of MP8859 is supplied via TYPEC_IN.
+
+The MP8859 operated with 2.8V to 22V supply voltage and typical
+applications this supply can be 12V.
+
+This patch is trying to support the PD by changing the FUSB VBUS supply
+to 12V and tune the I2C7 timings from downstream kernel.
+
+Tested with PD3.0 PPS with supply voltages of 12V/3A and 20V/5A.
+
+Cc: Corentin Labbe <clabbe@baylibre.com>
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index c32913df93c3..8963b3858eae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -6,6 +6,7 @@
+ /dts-v1/;
+ #include <dt-bindings/input/linux-event-codes.h>
+ #include <dt-bindings/pwm/pwm.h>
++#include "dt-bindings/usb/pd.h"
+ #include "rk3399.dtsi"
+ #include "rk3399-opp.dtsi"
+ 
+@@ -524,8 +525,9 @@ &i2c3 {
+ };
+ 
+ &i2c4 {
+-	i2c-scl-rising-time-ns = <600>;
+-	i2c-scl-falling-time-ns = <20>;
++	clock-frequency = <400000>;
++	i2c-scl-rising-time-ns = <345>;
++	i2c-scl-falling-time-ns = <11>;
+ 	status = "okay";
+ 
+ 	fusb1: usb-typec@22 {
+@@ -552,8 +554,19 @@ fusb0: usb-typec@22 {
+ 		interrupts = <2 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&fusb0_int>;
+-		vbus-supply = <&vcc_vbus_typec0>;
++		vbus-supply = <&dc_12v>;
+ 		status = "okay";
++
++		connector {
++			compatible = "usb-c-connector";
++			data-role = "dual";
++			label = "USB-C";
++			power-role = "sink";
++			try-power-role = "sink";
++			op-sink-microwatt = <10000000>;
++			sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
++				     PDO_VAR(5000, 20000, 5000)>;
++		};
+ 	};
+ 
+ 	mp8859: regulator@66 {
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
