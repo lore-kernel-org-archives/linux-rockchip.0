@@ -4,96 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E26FEB64DA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 08:07:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2FA9EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 08:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ipiqIAo1ay92kdhuHK1TnK9zP/vB2WK1HFNDdoN/Xhk=; b=OG4zlxodRraxYd
-	qHqayndD69f4k5su2t5ktZq9pvIOXEVvxzR3LEaimWN0hjAnaFoTHYCGJC70Avk3q+F7KJ9D4W3e8
-	0NxtMci7hByoGDH4l7zKcf9zC9tfrJ2uKOraOcwQ9f5pw0MVpxSeM6E24CKqiUfPX/0ZYurc9qUsL
-	Fmsv1hW7X6pechvSFhHsRyXKWoqa+Tsj0tF7rV600sfDHwBH1ycdNmCJYQjTAFpT0+4/ptFoqZJ5m
-	luyQ1FreG1fWyk3/pQ57k7gLtPEHDzgGkJKea/gX1IHA5eaOc4WKKXUnkB8p+lT+FBJxgCqB+HhMq
-	8GGwtWiPrdvbKKJDcKpw==;
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=vLf2UrfBntWzPOtbwP3kxROCTIf3EBtwBNkSW5vfWg0=; b=VNOFB6hExy1htI
+	q+WRc7LaOJ8OvzvpgOp9aJ0oa1j8AjXP8vPh2xTEQNxVNq7pK/OuZmHR1GHCeFswsWlPpyzkLQ0H9
+	xTKnXl8k84s8TtflXxxxA9X399Tc8gzFVpHdhtpDpTteDD8+lTCCyrSL7robLVRejWo8p2xJtVbhQ
+	ZCKQu94pcuytGieZtUCONbpXFZN4umRUsqgFsvAVoynFmMdcCkNN//ZEI3zeqrcRVRJE+XIQKW+Kl
+	ztkR0RnKzIHokpvvfSFREOqnDI28akW8vPjE0JSbFlY3lfoHCMZxk4pUdaBbGErWGf5E6K2mk0lSG
+	LGYeeTAVNHfxSyee+xNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOgr-00AEqu-0H;
-	Thu, 20 Jul 2023 08:07:13 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qMOid-00AFBk-2O;
+	Thu, 20 Jul 2023 08:09:03 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOgn-00AEpD-1w
+	id 1qMOia-00AF9d-0F
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jul 2023 08:07:11 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2b701dee4bfso7071621fa.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Jul 2023 01:07:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689840427; x=1692432427;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uHV3SorPPRx5smjTKgidKSpB/zG9RGZsFPGQGoh8zP8=;
-        b=eo/aPm7QmBLtn05NMv5zgB6q00je7hyfwr3G+KlaQcIfVVo0nhp/BtkUFXWWNsfxzE
-         YjHlqcOAcqUPzuLvQBBFi9QFWhxy3eLFajG+d2qcpDf4r3RN7Shsxb3P46y8xYKIOb+x
-         cOE3LQEQqHJ7Ookvz6lXNKy87oQQ3XA0tXMb11/tD8c1Y4xlzdNlTV8XkrNkDrkWTNvR
-         wQx4D49nSSuVaRPRiZPt1lULxjIlu4ornYVXwh++JCGMIi0XQ6SIAlnnj/QK+kLh73fk
-         s9csjK5oq6Gvn7yxpA7S+nXVdyngfWBPC37F+D5hZ3tMObEQ2Wkaa1lTcELx4Y+KRLfU
-         tqOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689840427; x=1692432427;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uHV3SorPPRx5smjTKgidKSpB/zG9RGZsFPGQGoh8zP8=;
-        b=S+U4MrbJtAZUXMrbtV08Pz14NZw6/QxJPhbQ1RaFsH29Jmzd+Mppj89hlkC3LFCB+r
-         TKNCwKJDHpfkDTQqj+poZVVLnS5Fccy3Dm+mZiJCUJTXSdkPkVQ9KaK0M1+3GLPhZDiu
-         54IhbkKtQhMa7rogH0f30LZ8r2Tg+Bd+dCY+HZbNTVvrkjNIV5v2mo6h+umdmsmf4l7o
-         eZpWluOEYLJ6atpVJYRYm3cliiZsd46qmON3SNjhuI7VuNfb6jP0oAyYJ320yRa7fi8m
-         FRBjA+4bk6ynbjw4Wp9M//nYZMWWoiFbLSprnqe55cqhdFy1x/zkZRuKzR/bAqRCsIge
-         ayYw==
-X-Gm-Message-State: ABy/qLaA1yLAAorrDL4OFNXsTGXWsjGRC8dfYiajNSi2MfUqclMUaA1Q
-	wTsjqDpFaPMFEJ4vgQRnXx1yig==
-X-Google-Smtp-Source: APBJJlF5k6R9A67PfYpJchDVd7Ed7BYUOP9gf1HDCKJdQrDY3scfui+zBnHSn9KXAkF+LCqCCHgZ5A==
-X-Received: by 2002:a2e:9d52:0:b0:2b9:4aa1:71e1 with SMTP id y18-20020a2e9d52000000b002b94aa171e1mr1456444ljj.50.1689840427634;
-        Thu, 20 Jul 2023 01:07:07 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id q13-20020adff94d000000b003143c9beeaesm542198wrr.44.2023.07.20.01.07.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jul 2023 01:07:07 -0700 (PDT)
-Message-ID: <8374cb80-749a-401d-2d88-48001ad614c2@linaro.org>
-Date: Thu, 20 Jul 2023 10:07:04 +0200
+	Thu, 20 Jul 2023 08:09:02 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230720080849euoutp02588de8ecb32c66797e5a2ba58d05edcc~zhQI0PTD92170321703euoutp02I
+	for <linux-rockchip@lists.infradead.org>; Thu, 20 Jul 2023 08:08:49 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230720080849euoutp02588de8ecb32c66797e5a2ba58d05edcc~zhQI0PTD92170321703euoutp02I
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1689840529;
+	bh=6mlO5pEmP1kCfZ0JJ7a+HVnKdTbVIKx3eVZbQs5lYdU=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=cRsRNRZ1ERl6D+4YE3zpHMB3QbxhSGc6YLBsFVEHrd27l9/05dP3ABZqfE4ar2twy
+	 p0SSyv9/KBm3XLtE2hZataDVlKKoozJIDQpG1tHno59nZcojOVNZXpyx48bWj/+K9y
+	 XKw1nvcrYXVmRNIWAKaqLBVMhroA0mvlE7lN/xuc=
+Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+	20230720080849eucas1p28c7aeb7a045c64869778ce4934b313f2~zhQIiC_tZ0039900399eucas1p2p;
+	Thu, 20 Jul 2023 08:08:49 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+	eusmges1new.samsung.com (EUCPMTA) with SMTP id E7.C0.42423.19BE8B46; Thu, 20
+	Jul 2023 09:08:49 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd~zhQIBxyOc2873128731eucas1p2J;
+	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20230720080848eusmtrp11115655375843bd0fc4a3e1db6969ef1~zhQIBCAyn0727607276eusmtrp1g;
+	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
+X-AuditID: cbfec7f2-a51ff7000002a5b7-24-64b8eb91d9c6
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+	eusmgms1.samsung.com (EUCPMTA) with SMTP id 42.5C.10549.09BE8B46; Thu, 20
+	Jul 2023 09:08:48 +0100 (BST)
+Received: from AMDC4653.eu.corp.samsungelectronics.net (unknown
+	[106.120.51.32]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20230720080848eusmtip101f3d5195e37e6f9e08dfdc184245ffc~zhQHZ_tvf2792127921eusmtip1Y;
+	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Catalin Marinas
+	<catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Arnd Bergmann
+	<arnd@arndb.de>, Aurelien Jarno <aurelien@aurel32.net>, Dan Johansen
+	<strit@manjaro.org>, Heiko Stuebner <heiko@sntech.de>, Anand Moon
+	<linux.amoon@gmail.com>
+Subject: [PATCH v3] arm64: defconfig: Enable drivers for the Odroid-M1 board
+Date: Thu, 20 Jul 2023 10:08:38 +0200
+Message-Id: <20230720080838.933890-1-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
- <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
- <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrLKsWRmVeSWpSXmKPExsWy7djPc7oTX+9IMfhwVcDi76Rj7BY3p61h
+	sXi/rIfR4v+j16wWmx5fY7W4vGsOm8WnB/+ZLdZtvMVusfbIXXaLnqfrmC1a7pg6cHusmbeG
+	0eP3r0mMHn1L5zF57Jx1l91j06pONo/NS+o9Gg4DJfu2rGL02H5tHrPH501yAVxRXDYpqTmZ
+	ZalF+nYJXBlfD0xgK9ghUbHl3xymBsZtol2MnBwSAiYSq07NYuli5OIQEljBKLH6+j12COcL
+	o8TEdZOYIJzPjBKPNy1jhmm5evQcVNVyRonzh3+xQTitTBKLn0xiA6liEzCU6HrbBWaLCORI
+	NMy9ywpSxCywnkniVd9soFEcHMICPhKve8EOYRFQlWjYMZUFxOYVsJO48vIiG8Q2eYn9B88y
+	Q8QFJU7OfAJWwwwUb94KMoYLqOYJh8TJlrlQ57lINF57xQphC0u8Or6FHcKWkTg9uYcFoqGd
+	UWLB7/tMEM4ERomG57cYIaqsJe6cA/mHA2iFpsT6XfoQYUeJu5v3MIKEJQT4JG68FYQ4gk9i
+	0rbpzBBhXomONiGIajWJWcfXwa09eOESVImHxOdn5SBhIYFYidsHZ7BPYFSYheSzWUg+m4Vw
+	wgJG5lWM4qmlxbnpqcWGeanlesWJucWleel6yfm5mxiBKez0v+OfdjDOffVR7xAjEwfjIUYJ
+	DmYlEd5Hl7elCPGmJFZWpRblxxeV5qQWH2KU5mBREufVtj2ZLCSQnliSmp2aWpBaBJNl4uCU
+	amBiXjF9ZZzARnuj7weNd1ycc+CZPtsjKy7r/Rv2X2M6WG3yn/nd4g22LZ17z/GvD+HgeOOh
+	m7BEa93x+7s+XL7isp/juNSkd4fmfPgibGr+NnTZPb7HT87UWd982ndbulfhumnfZQ+m80ye
+	iQvc5h/kDfuV/DDu2Me9px6tWG14QDHBrdMkwpo9sOLAeg4hWa7QTkfB6HnrF4ko8cw/0Vl6
+	+kkDZ4FeZM9Ro+1Vq2uO6Z1+toz92MdH/oet/JMnF+6fFbR++hyRI6bWMpx7z7efL+n8l7/k
+	/aPsNu/+LjdGT9ljbZ5FAvuPfe1RbPlevCV4XarQTNv/VmUiZi/nhMud+X6q4fEZvvJbH+Vu
+	Gs1RVmIpzkg01GIuKk4EAIEPR6PQAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprMIsWRmVeSWpSXmKPExsVy+t/xu7oTXu9IMXhwU9/i76Rj7BY3p61h
+	sXi/rIfR4v+j16wWmx5fY7W4vGsOm8WnB/+ZLdZtvMVusfbIXXaLnqfrmC1a7pg6cHusmbeG
+	0eP3r0mMHn1L5zF57Jx1l91j06pONo/NS+o9Gg4DJfu2rGL02H5tHrPH501yAVxRejZF+aUl
+	qQoZ+cUltkrRhhZGeoaWFnpGJpZ6hsbmsVZGpkr6djYpqTmZZalF+nYJehlfD0xgK9ghUbHl
+	3xymBsZtol2MnBwSAiYSV4+eY+9i5OIQEljKKHFg0gt2iISMxMlpDawQtrDEn2tdbBBFzUwS
+	r95uZAZJsAkYSnS9BUlwcogI5En8OPqWFaSIWWArk8SU5iuMXYwcHMICPhKve8G2sQioSjTs
+	mMoCYvMK2ElceXmRDWKBvMT+g2eZIeKCEidnPgGrYQaKN2+dzTyBkW8WktQsJKkFjEyrGEVS
+	S4tz03OLDfWKE3OLS/PS9ZLzczcxAmNn27Gfm3cwznv1Ue8QIxMH4yFGCQ5mJRHeR5e3pQjx
+	piRWVqUW5ccXleakFh9iNAW6byKzlGhyPjB680riDc0MTA1NzCwNTC3NjJXEeT0LOhKFBNIT
+	S1KzU1MLUotg+pg4OKUamMS9jvuvmVZwdcE8k716tx/M3aZ3zSzvb6DrzPndqx+a+jx0+bLf
+	7FGMpnDghd4ktQObNwkduCW5acMitk89My+d21CssXDz/Cdt8zheLL18doFna8qx7b7LeRJM
+	XvUzfY5T2zm3baJb154l0rt3ztq91GfzG41XIguKpqokZO9ZfCGEZYpW1b3GxFqeW5L9qku+
+	VN+vXhtjtW0+l+/Tw9YWJRpaC5I2VV34rF9cxrhogXaDxqST35QXCXx9eCDjMaPBjpkmpjFd
+	bRzbXjNK179a7C97/vFc22l+alxh8kF1hRWqb/ST5Zz6F7yQr+d44fA0R8Ui6oJZxNXkQtOG
+	Ux9Snz3X2xfImi2VkfXGTVaJpTgj0VCLuag4EQDgMn2kJgMAAA==
+X-CMS-MailID: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
+X-Msg-Generator: CA
+X-RootMTR: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
+References: <CGME20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_010709_647687_962C8187 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20230720_010900_649713_D994E602 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,23 +132,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 15/06/2023 16:58, Alexander Stein wrote:
-> Use id-gpios and vbus-gpios instead.
-> 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
-> ---
-> Changes in v2:
-> * Added Heiko's A-b for rockchip
-> * Added Matthias' R-b for mediatek
+Hardkernel Odroid-M1 board is supported since commit fd3583267703
+("arm64: dts: rockchip: Add Hardkernel ODROID-M1 board"). Enable all
+drivers needed by that board in the defconfig to let the automated
+test systems to check them on the real hardware.
 
-Please split patches per subsystem, so this could be applied. Or send it
-through soc tree, but you chosen the middle way - neither per subsystem
-nor via soc tree - so it went nowhere :(
+The drivers were configured to be compiled as modules if that was
+supported.
 
-Best regards,
-Krzysztof
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+v3:
+- rebased onto latest kernel release
+
+v2:
+https://lore.kernel.org/all/20221209101834.2030-1-m.szyprowski@samsung.com/
+---
+ arch/arm64/configs/defconfig | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 6cbf6eb59378..1b219e5dc314 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -229,6 +229,7 @@ CONFIG_PCI_LAYERSCAPE=y
+ CONFIG_PCI_HISI=y
+ CONFIG_PCIE_QCOM=y
+ CONFIG_PCIE_ARMADA_8K=y
++CONFIG_PCIE_ROCKCHIP_DW_HOST=y
+ CONFIG_PCIE_KIRIN=y
+ CONFIG_PCIE_HISI_STB=y
+ CONFIG_PCIE_TEGRA194_HOST=m
+@@ -297,6 +298,7 @@ CONFIG_ATA=y
+ CONFIG_SATA_AHCI=y
+ CONFIG_SATA_AHCI_PLATFORM=y
+ CONFIG_AHCI_BRCM=m
++CONFIG_AHCI_DWC=m
+ CONFIG_AHCI_CEVA=y
+ CONFIG_AHCI_MVEBU=y
+ CONFIG_AHCI_XGENE=y
+@@ -432,6 +434,7 @@ CONFIG_INPUT_PM8XXX_VIBRATOR=m
+ CONFIG_INPUT_TPS65219_PWRBUTTON=m
+ CONFIG_INPUT_PWM_BEEPER=m
+ CONFIG_INPUT_PWM_VIBRA=m
++CONFIG_INPUT_RK805_PWRKEY=m
+ CONFIG_INPUT_HISI_POWERKEY=y
+ # CONFIG_SERIO_SERPORT is not set
+ CONFIG_SERIO_AMBAKMI=y
+@@ -533,6 +536,7 @@ CONFIG_SPI_OMAP24XX=m
+ CONFIG_SPI_ORION=y
+ CONFIG_SPI_PL022=y
+ CONFIG_SPI_ROCKCHIP=y
++CONFIG_SPI_ROCKCHIP_SFC=m
+ CONFIG_SPI_RPCIF=m
+ CONFIG_SPI_RSPI=m
+ CONFIG_SPI_RZV2M_CSI=m
+@@ -548,6 +552,7 @@ CONFIG_SPI_SPIDEV=m
+ CONFIG_SPMI=y
+ CONFIG_SPMI_MTK_PMIF=m
+ CONFIG_PINCTRL_MAX77620=y
++CONFIG_PINCTRL_RK805=m
+ CONFIG_PINCTRL_SINGLE=y
+ CONFIG_PINCTRL_OWL=y
+ CONFIG_PINCTRL_S700=y
+@@ -631,6 +636,7 @@ CONFIG_BATTERY_MAX17042=m
+ CONFIG_CHARGER_MT6360=m
+ CONFIG_CHARGER_BQ25890=m
+ CONFIG_CHARGER_BQ25980=m
++CONFIG_CHARGER_RK817=m
+ CONFIG_SENSORS_ARM_SCMI=y
+ CONFIG_SENSORS_ARM_SCPI=y
+ CONFIG_SENSORS_GPIO_FAN=m
+@@ -741,6 +747,7 @@ CONFIG_REGULATOR_VCTRL=m
+ CONFIG_RC_CORE=m
+ CONFIG_RC_DECODERS=y
+ CONFIG_RC_DEVICES=y
++CONFIG_IR_GPIO_CIR=m
+ CONFIG_IR_MESON=m
+ CONFIG_IR_SUNXI=m
+ CONFIG_MEDIA_SUPPORT=m
+@@ -795,6 +802,7 @@ CONFIG_DRM_EXYNOS_DSI=y
+ CONFIG_DRM_EXYNOS_HDMI=y
+ CONFIG_DRM_EXYNOS_MIC=y
+ CONFIG_DRM_ROCKCHIP=m
++CONFIG_ROCKCHIP_VOP2=y
+ CONFIG_ROCKCHIP_ANALOGIX_DP=y
+ CONFIG_ROCKCHIP_CDN_DP=y
+ CONFIG_ROCKCHIP_DW_HDMI=y
+@@ -926,6 +934,7 @@ CONFIG_SND_SOC_GTM601=m
+ CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
+ CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
+ CONFIG_SND_SOC_PCM3168A_I2C=m
++CONFIG_SND_SOC_RK817=m
+ CONFIG_SND_SOC_RT5640=m
+ CONFIG_SND_SOC_RT5659=m
+ CONFIG_SND_SOC_SIMPLE_AMPLIFIER=m
+@@ -1399,6 +1408,7 @@ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+ CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
+ CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
+ CONFIG_PHY_ROCKCHIP_PCIE=m
++CONFIG_PHY_ROCKCHIP_SNPS_PCIE3=y
+ CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PHY_SAMSUNG_UFS=y
+ CONFIG_PHY_UNIPHIER_USB2=y
+-- 
+2.34.1
 
 
 _______________________________________________
