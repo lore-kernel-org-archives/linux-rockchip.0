@@ -4,129 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59EFEB64DA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 12:04:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87053EB64DC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 13:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O64M51ERlY7YIR4YaUBu4V2S463agQnRiBV3zqFGjsE=; b=ChwYXqC3Un+neZ
-	ZUXePFYzzd+epShH5f1vus00yoXZd1/yH8zWch/UWdD88DoxDwwPBe0PGTqNG+KGSjFekv6P5Jw/7
-	6oO1uvjd+uG4hJx37/tfvuLz5raQVMP4YkqGGncDk0EkYOw1fF7od1mSXo1YmIuSJow5i7rQM1Wts
-	FArJLUfwVi4qbfZz5XkRgCVPsJpS0KVaWbdeLFIpuqiQdtUSW7guDHmpNE+C2iSOf+uDgmqE6lMse
-	A04mRPBagMbiTW1mO42G0nzxMZhRElRGDdBnDbhU4ab5tLW81QP+S0VoE1B3n/YsAXj39x4fzdl4Z
-	Ys+wyaiRXDoa5ZgHDhfQ==;
+	List-Owner; bh=EiKyMsONQeF9eU4Rt9rKUAvfkI9I8s01vR3jNlC/iYU=; b=tNKC0ilglCUV9E
+	LuJ0gk1bVVhqpRjckZyqwHHFpjnBwhaRv2hgzTH1BwVRtLL2LQ6Y3NR13uo33PajzH4r9gb4lyUUj
+	lIWmur+EdSOXi6MhzU/ZzHDnwJi4XXTyCIQgT6y4mnWDGUX7t3n+mN83VKPBC2rD0APdxeN03AD+Y
+	DOC81DmU1btF1F50iINC3859lPSA1rKMhQDo/AFnXVvg8Q7pe1VlVxRtrFVfD9Q/DN5RhSTCcY9Av
+	uc5uSV+36HoYdiIC9jmCdVv7w+TfLDc0WiMgVVOdtFRHxSQdPh38/QGXQXCGslxo5nsbim/VxJ9pd
+	0J8WyNWAr3JJ2HWVSjuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMSOL-00B4o0-0I;
-	Thu, 20 Jul 2023 12:04:21 +0000
-Received: from mail-dm6nam12on2061b.outbound.protection.outlook.com ([2a01:111:f400:fe59::61b] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1qMTJL-00BCY4-0f;
+	Thu, 20 Jul 2023 13:03:15 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMSOI-00B4ms-1M;
-	Thu, 20 Jul 2023 12:04:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=U/jkUC20nxuIe8CRrMyxp4qFb6+MTn5kLlMxwAr/We7iSU3FRnB3hm1TDQmylMmOR4mlAo19WtNrabOsZ0SZTXdS8zwp0skSvLQa5f9vonMNp7hRwA/snr5QIURLFiw9P8escwpCyAqj0ya1OlRGzsyCIZEnjdyG0+W5OPNtKiaaPkXRFqif74G1xtHLEtaW+O20XTRDv4/8F5w0XKnSmiMpzR2U5xtwZjyIaGoXfCgfUASWdxWeRVeSNe6GKr0oktpVaj0bO9wojw7CkfkeR758mnVnpdDPZo3hNoe7c5uo37aDd4mWgxnT1G5PpkHX9IXLAsiT+t8bTdvCkbq4rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zkyNyjXxYYuLDySnXk5YHZY7tuYfmG1ZJMAeDLATj3Y=;
- b=nHtNDEjR1dQjDwLf+AXG274Vwjk2A6GwxXukUonbVAuUTPnaptIQZyRY5q3FDYAF6f5ztK9DWdyBgsPNUDmh+Azl6/pzj47tCaFl7qBxkR6w7YvKEfjbmd1SmrQWIUxD6cIVS7swNbTkNzQI6g8XdU6JQhTQzJKKbPzs3nC5lC+q8amc8q64xF+X6XA8MG9VQtUi8cCZeUoN3IfXRPMoGZocNcxoKQFDgJwd/+7Ui8/g3C4P8E9yDkwqSAbv5+lh8/xSCSYZmQMmsbO4NU7PYnewpSj9T/+EZPwJ+ktpwJC00+cIZNHzuyqn53A5IghR2bIACstMe9hRbS8CaB04dw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zkyNyjXxYYuLDySnXk5YHZY7tuYfmG1ZJMAeDLATj3Y=;
- b=RH7oN2lqolwyF0dfxdRWaoaRHH78/k5UFQ6UkWl/stvHLZK+weNvffIoaMenZqAe1CBo0ZbUMyEI26eAeGokzQLTOrOpcvAgZy2edEMSGNf+mOPrkaf8n7DiEUlVdX9IWvyHk43QXq+6s892nBeHq6T3QdylNbeG1qGfBHt4WnnNzBttzJU2YBNlxIswxVExizjgVGYEzxZnZnmCRym++aovyhXxC7mtzuACBBzrH4nxxC2FdgS40lt2FvFA63UszNXdY9+QXxGd5Q+HTbQ6xcWo6Ki8Few2D4c2mUsPBKTMoV1QEi5SSxeoHr4sKdYIDt5pt3E91goGKiIBgYEJvA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by SN7PR12MB7252.namprd12.prod.outlook.com (2603:10b6:806:2ac::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.24; Thu, 20 Jul
- 2023 12:04:13 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6609.025; Thu, 20 Jul 2023
- 12:04:13 +0000
-Date: Thu, 20 Jul 2023 09:04:11 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-Cc: Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 03/10] iommu: Add generic_single_device_group()
-Message-ID: <ZLkiu7IyimCckiFs@nvidia.com>
-References: <3-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
- <32eadc5b-bb39-5bb1-f124-44feead97ce9@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <32eadc5b-bb39-5bb1-f124-44feead97ce9@linux.intel.com>
-X-ClientProxiedBy: CH0PR13CA0027.namprd13.prod.outlook.com
- (2603:10b6:610:b1::32) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	id 1qMTJI-00BCVg-2M;
+	Thu, 20 Jul 2023 13:03:14 +0000
+Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2b935316214so10568221fa.1;
+        Thu, 20 Jul 2023 06:03:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689858188; x=1690462988;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=KtLR1t7Xy+lp2xGUnHnlsDF6j8PRmaFSawsn2vIvBWc=;
+        b=Ql9e0h/oYbX6KrhJ1ePRDKew/5d+3Q9oyOoSy1HFtZzh0rNcDBUoJuNGy59r5hmnpL
+         /ma2hKdbFnrTrz1oWlu0x+r9PWf1rJ5xQA/XXmC/dui7DC9z17dkyeB21AI6jUyH2LFo
+         np98/NeShzaKiK9EKh+C66iKrKZsg9Lo0ewj/wCKx8mTFb2j8vAUZwl8g/0sdPa9s/nY
+         zqNqWGZyxbcWWefW05nTSgXSpsOruLIua4m65k9Lm5NoUMTtOsUiL+fZ+K4eqFnp2/Tl
+         oPLtY5jh45qBg7VSj19rktqsZZ1Y9Lx7C8rju8Nv6yTRUy2HYzMzn5R4ZVxNIzvu5I59
+         oZMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689858188; x=1690462988;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KtLR1t7Xy+lp2xGUnHnlsDF6j8PRmaFSawsn2vIvBWc=;
+        b=QhYjOptTFIM2EvvItE0q0ys8cKjsKKfWwTtqzM080GW3M2IGRART+b8oXg2WKdhhfg
+         utikk+5rye5T5SL4lTVNV0qn95uVSmiCa88ebTo5v4LmN0dgTXFDfuqATKeyA/YPibHw
+         dTJKmqAjDioc/5liJRJERp8nmo7C8MUcuFtn2QiyE3UXGKnFB5zw3NhTwpYrrwn3BV/a
+         8O6n8uF+Y/9SwFltsc+69SYHsXW1lH0Qq59CzFWMDsX13Mw11ADL9wfcUqBnzdGT8NWH
+         PTK1GAvei6M7Kd1fx6g+t+e8pXYqszLgH2n25PKciEF1iEsoqcGl8LO/rrO72V4kf7ON
+         u1/Q==
+X-Gm-Message-State: ABy/qLZqzuOiZLn4icGsE42SewJ1/R57HQhA8lAeCKaBNBxHO7EaldjX
+	ysxtsSmMro7CnfeHyQb0r5Y=
+X-Google-Smtp-Source: APBJJlELNtA9t7Vl1ywF7Sx7SuXwzg/v92//dlg5e+KqGI92b1hBQbNtg8odOdwcSW3NiUezfoohMQ==
+X-Received: by 2002:a2e:9259:0:b0:2b9:601d:2c0 with SMTP id v25-20020a2e9259000000b002b9601d02c0mr956643ljg.25.1689858188099;
+        Thu, 20 Jul 2023 06:03:08 -0700 (PDT)
+Received: from mobilestation ([109.197.207.60])
+        by smtp.gmail.com with ESMTPSA id t25-20020a2e7819000000b002b70ac2f631sm266813ljc.76.2023.07.20.06.03.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Jul 2023 06:03:07 -0700 (PDT)
+Date: Thu, 20 Jul 2023 16:03:04 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v3 2/5] dt-bindings: PCI: dwc: rockchip: Fix
+ interrupt-names issue
+Message-ID: <epqbt5c4vxb65l47tupmogxfnskwbd54cg6vzq7xnelrt44omu@py7ntcft6dhf>
+References: <20230717172651.64324-1-sebastian.reichel@collabora.com>
+ <20230717172651.64324-3-sebastian.reichel@collabora.com>
+ <20230719201605.GA706263-robh@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SN7PR12MB7252:EE_
-X-MS-Office365-Filtering-Correlation-Id: c9a9556c-5a39-4c21-62db-08db89196eb0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: xI58ane6AdFB3uc8zR4evAtdA0Czqulz+LVMEZ5YJP7wGf3BOpygZhLGCS69/W4W0petHuLCdZNqb475FK9mP7JVM22UflNoNXDI9Dn/zIE7qc2rwdCadKF4VHYlKHLx/LXe/lUlJ8oqzb46I4Tlb8t1fyiI+YLkIdc0XURHXq7ZDYn6A2meJkF1SdEQYLYUq6I2loz2qruU3nDNg073AOylhp3XBue58EElo18efM8qL6BSVaGsvgKq3dMktfARBrGyavQXAjRJfk+dRXUuA/Lzu8hwTLkoAsywA/VEmuZhhJaVZ4TSDnw2jday6/HxaEPuFkCqAEmay9426Oni411OadntYSnooqmRBN2cwJa3p053+weDZXRK2AJKmjdJjl8p2eZ1sltMvH3gvlYsc2uT58ivoRnjgMt2UfXB7Bxb6naLs9GbBhMRGXs+Frkhbxjf2gneFO0rjqjbrZEVDL8f5G4Vp7q1lQfZN7AYIrhcMAefvD9+kNrOT+QEp4h2tMStNniZSqN/EB1ERRNZP1conemzSZH+UaPzxL5WUex67Rz/PWaxZnHXo3212DqDoanFhykqLUCKkR4/Ux1Jkkfq4kueCECxp95V5y6BSlc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(366004)(396003)(376002)(136003)(346002)(451199021)(66946007)(54906003)(186003)(2616005)(36756003)(53546011)(83380400001)(26005)(6506007)(86362001)(6916009)(2906002)(6486002)(41300700001)(316002)(38100700002)(66476007)(66556008)(478600001)(4326008)(5660300002)(8676002)(8936002)(7416002)(6512007)(41533002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MBgmfz2jnS8B1pNhDdzN3Ui4TFiDbgHTOSmgbefy9tSicrZcDK+lCkDv3KzA?=
- =?us-ascii?Q?kOUQLWFnpKqFlpmJWuzl8jNaXCRkTo572ktuMLBg6iW8SbkATtGiBq52npwa?=
- =?us-ascii?Q?WL2hmnp2Kh9Rm0LyaKwCyHbIcSQl4kOj3egPkfqioUFLFhlTdxDAGVxpXQPx?=
- =?us-ascii?Q?rRaeWlnucK6ZCEXqxNbyBX9Qvn3vX87fezJbO21ELFiIP3PNyyE5wRUIrbwC?=
- =?us-ascii?Q?jgz99D+0K1SCrEHoAEgjIo+HJOO/wHu+ILbYeMxkqO4EFF0NUg9BdDiJyT40?=
- =?us-ascii?Q?WnpSkWzfJ0HaFDZ4E8ssl/FcqNvG1/CwaXcu78WtiV0nOY45aKjfDxZEaojC?=
- =?us-ascii?Q?goOniJon9qNM98u+UnPKovjcUhYcgbb4jkzDoi1qEpWuykYzddvgRBgRwNwV?=
- =?us-ascii?Q?VmT1ZhcO0zLBeySFfe93Tn7zWzKuwKid6qWlMkLrqEDlRa+Z4JcRkj4wnehr?=
- =?us-ascii?Q?1qJICVFrbh+Cvhgae6VVY4szBlJ9q3U4vnPkoEP28bHu+Ovod3rEIUWRmHgH?=
- =?us-ascii?Q?B9le1fEFZyUJolPWKZNDs1o1CM2XEhDhxMYzVS/vt4+fkAYKb4ZQRihMi68o?=
- =?us-ascii?Q?rVKYaH8ACd/uswwRcwOcS4nECq3tty59q5XhNRz+rckGkXZwJIk2BgDSxSj3?=
- =?us-ascii?Q?i+jlLcAjAlNhthgM6hlhud86aHFsROj2n4LWDQ/F1SWgZlStR4zOA9GSQVpu?=
- =?us-ascii?Q?EHvieq1T/OdLxytx6uvosNxU8BdUFtM52ECSDF2xyw3shR7CHbMgQQRGzlhX?=
- =?us-ascii?Q?ZzXIVMrDfGN4vHgkGPO5t2X/JHWZ5XukvDXvXILLSMlvYIEMRwTvJ0SmfmFo?=
- =?us-ascii?Q?vT6JaNjKvE/FsHjNhtB0Czd9jfzwThIpd30ADCHgwP3TMbTtuLskELCV+F5s?=
- =?us-ascii?Q?byxaSw4neLteY/Rs8HC5i7Cosk37mhoEA4lUq0Br6mF0iFHLolYv3PXggQVr?=
- =?us-ascii?Q?Rk5cBlfK0u/NIhnDehmR9bxG5jypXGo6zepplwN9GgcFC/IxiodcYAZ3+Fx6?=
- =?us-ascii?Q?CRSY0ydv5AxfB6vDHziAzQqN+YkNwgGUJVe2ix4mq851yJYkEdINIb3eGcPr?=
- =?us-ascii?Q?I0Zk+3t9P7D93sMkCJynPraXpbNoHsB2GcQkR2jtG+q++dJWF5cTGKcPdrjV?=
- =?us-ascii?Q?5E7CNin9myuPGmy6U+Uqvq58HUsopsWMoJ4/aIKL4mwKlMmjmtwPrYB1BTRZ?=
- =?us-ascii?Q?mWVBl0Tf2ynkN/8+F3pZ00gyxhgc34NK3FZ0bprd3bIngMSri8c0zOiUFTwl?=
- =?us-ascii?Q?Mlqx1Ouy8c3/ktccUqvBFJ6e+4Z9nnIER/XgPi0y4cCDrG1ESBCCknNKRj9V?=
- =?us-ascii?Q?VvdD4Y0+vleJTz5qQ7oSO3j1thECbZw+ZF0zcBzA5szLFtkXCVnYthkWTccx?=
- =?us-ascii?Q?J3nQMO0zIAdkUZO0X+dwsqY3CCOI6LkO1WfacxzzAaMXXbqlPbgxY0S99hlh?=
- =?us-ascii?Q?iT8DfgccD2g8bDz4WNqQoqr/GkLX+vlQ3ZrYAFuO1Yv9YgFYr6ZV9iwnk0bz?=
- =?us-ascii?Q?NpMdEFeNbENe4/ApDSLFirHHemW4/+udx+BE0qXwXbXoO7i78AcdsAX0bsiZ?=
- =?us-ascii?Q?VwYAPFXTYF1k3TXbK0tWkx+bbY4dpwQR4Yv/BpVT?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c9a9556c-5a39-4c21-62db-08db89196eb0
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2023 12:04:13.0160
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: JDP+RhfKw65q2MHqjHC3+eUrqEhTlm4atxfthwJKKbJplRnFtm5kOfdEG+Lq3et4
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7252
+Content-Disposition: inline
+In-Reply-To: <20230719201605.GA706263-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_050418_479387_E147235E 
-X-CRM114-Status: GOOD (  22.75  )
+X-CRM114-CacheID: sfid-20230720_060312_769864_9F42CCE4 
+X-CRM114-Status: GOOD (  30.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,97 +99,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 20, 2023 at 03:39:27PM +0800, Baolu Lu wrote:
-> On 2023/7/19 3:05, Jason Gunthorpe wrote:
-> > This implements the common pattern seen in drivers of a single
-> > iommu_group for the entire iommu driver. Implement this in core code
-> > so the drivers that want this can select it from their ops.
+On Wed, Jul 19, 2023 at 02:16:05PM -0600, Rob Herring wrote:
+> On Mon, Jul 17, 2023 at 07:26:48PM +0200, Sebastian Reichel wrote:
+> > The RK356x (and RK3588) have 5 ganged interrupts. For example the
+> > "legacy" interrupt combines "inta/intb/intc/intd" with a register
+> > providing the details.
 > > 
-> > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Currently the binding is not specifying these interrupts resulting
+> > in a bunch of errors for all rk356x boards using PCIe.
+> > 
+> > Fix this by specifying the interrupts and add them to the example
+> > to prevent regressions.
+> > 
+> > This changes the reference from snps,dw-pcie.yaml to
+> > snps,dw-pcie-common.yaml, since the interrupts are vendor
+> > specific and should not be listed in the generic file. The
+> > only other bit from the generic binding are the reg-names,
+> > which are overwritten by this binding.
+> > 
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > > ---
-> >   drivers/iommu/iommu.c | 25 +++++++++++++++++++++++++
-> >   include/linux/iommu.h |  3 +++
-> >   2 files changed, 28 insertions(+)
+> >  .../bindings/pci/rockchip-dw-pcie.yaml        | 43 ++++++++++++++++++-
+> >  1 file changed, 42 insertions(+), 1 deletion(-)
 > > 
-> > diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> > index 9e41ad4e3219b6..1e0c5d9a0370fb 100644
-> > --- a/drivers/iommu/iommu.c
-> > +++ b/drivers/iommu/iommu.c
-> > @@ -289,6 +289,9 @@ void iommu_device_unregister(struct iommu_device *iommu)
-> >   	spin_lock(&iommu_device_lock);
-> >   	list_del(&iommu->list);
-> >   	spin_unlock(&iommu_device_lock);
-> > +
-> > +	/* Pairs with the alloc in generic_single_device_group() */
-> > +	iommu_group_put(iommu->singleton_group);
-> >   }
-> >   EXPORT_SYMBOL_GPL(iommu_device_unregister);
-> > @@ -1595,6 +1598,28 @@ struct iommu_group *generic_device_group(struct device *dev)
-> >   }
-> >   EXPORT_SYMBOL_GPL(generic_device_group);
-> > +/*
-> > + * Generic device_group call-back function. It just allocates one
-> > + * iommu-group per iommu driver.
-> > + */
-> > +struct iommu_group *generic_single_device_group(struct device *dev)
-> > +{
-> > +	struct iommu_device *iommu = dev->iommu->iommu_dev;
-> > +
-> > +	lockdep_assert_held(&dev_iommu_group_lock);
-> > +
-> > +	if (!iommu->singleton_group) {
-> > +		struct iommu_group *group;
-> > +
-> > +		group = iommu_group_alloc();
-> > +		if (IS_ERR(group))
-> > +			return group;
-> > +		iommu->singleton_group = group;
-> > +	}
-> > +	return iommu_group_ref_get(iommu->singleton_group);
-> > +}
-> > +EXPORT_SYMBOL_GPL(generic_single_device_group);
+> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > index a4f61ced5e88..7836b9a5547c 100644
+> > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > @@ -17,7 +17,8 @@ description: |+
+> >    snps,dw-pcie.yaml.
+> >  
+> >  allOf:
+> > -  - $ref: /schemas/pci/snps,dw-pcie.yaml#
+> > +  - $ref: /schemas/pci/pci-bus.yaml#
+> > +  - $ref: /schemas/pci/snps,dw-pcie-common.yaml#
+> >  
+> >  properties:
+> >    compatible:
+> > @@ -60,6 +61,39 @@ properties:
+> >        - const: aux
+> >        - const: pipe
+> >  
+> > +  interrupts:
+> > +    items:
+> > +      - description:
+> > +          Combined system interrupt, which is used to signal the following
+> > +          interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme,
+> > +          hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi,
+> > +          edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app
+> > +      - description:
+> > +          Combined PM interrupt, which is used to signal the following
+> > +          interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2,
+> > +          linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2,
+> > +          linkst_out_l0s, pm_dstate_update
+> > +      - description:
+> > +          Combined message interrupt, which is used to signal the following
+> > +          interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi,
+> > +          pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active
+> > +      - description:
+> > +          Combined legacy interrupt, which is used to signal the following
+> > +          interrupts - inta, intb, intc, intd
+> > +      - description:
+> > +          Combined error interrupt, which is used to signal the following
+> > +          interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
+> > +          tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
+> > +          nf_err_rx, f_err_rx, radm_qoverflow
 > 
-> When allocating the singleton group for the first time, the group's
-> refcount is taken twice.
 
-Yes, that is correct.
+> I'm confused. It is really up to the integrator on how each of these 
+> interrupts are combined? I thought it was a bit more fixed than that.
 
-The refcount from alloc belongs to iommu->singleton_group and the
-pair'd put is here:
+As I explained it here [1] in details there are only several signals
+which are actually marked as IRQs:
+hp_pme,
+hp/hp_msi,
+link_auto_bw/link_auto_bw_msi,
+bw_mgt/bw_mgt_msi,
+edma_wr/edma_rd,
+cfg_pme/cfg_pme_msi,
+inta, intb, intc, intd,
+aer_rc_err/aer_rc_err_msi.
+(not listed above: cfg_int, cfg_safety_corr, cfg_safety_uncorr,
+cfg_vpd, msi_ctrl_int).
+All of the above (except msi_ctrl_int, which belongs to a none-SII
+group of signals) are a part of the so called "SII: Interrupt
+Signals". They are normally used to indicate IRQs in the most of the
+DW PCIe devices. That's why I listed them in the generic DW PCIe
+DT-bindings.
 
-@@ -289,6 +289,9 @@ void iommu_device_unregister(struct iommu_device *iommu)
- 	spin_lock(&iommu_device_lock);
- 	list_del(&iommu->list);
- 	spin_unlock(&iommu_device_lock);
-+
-+	/* Pairs with the alloc in generic_single_device_group() */
-+	iommu_group_put(iommu->singleton_group);
- }
+The rest of the signals described by Sebastian are also a part of the
+System Information Interface (SII), but they _aren't_ marked as the
+IRQs. Although the signals explicitly stated as interrupts and some
+common SII Signals are marked as _outputs_ (from the DW PCIe
+controller point of view). So all of them can be used as the interrupt
+sources if they are somehow connected to a system interrupt
+controller. Though normally the none-IRQ outputs are just wired to the
+application-specific CSR space and if needed tracked by a separate
+IRQ signal (see the "app" signal in the generic DW PCIe DT-bindings)
 
-The refcount from iommu_group_ref_get() belongs to the caller and the
-caller must have a paired put.
+AFAIU RK rk356x HW designers just grouped some SII output signals and
+OR'ed them up before attaching to the system IRQ controller. So
+basically all the IRQs described by Sebastian can be categorized as
+application-specific IRQs. That's amongst various solutions I
+suggested to rename them to indicate that (see [1]). I don't know what
+the Rockchip HW-engineers were thinking providing such a mix of the
+IRQ sources instead just using the standardized by Synopsys interface,
+but here it is.
 
-> struct iommu_group *generic_single_device_group(struct device *dev)
-> {
->         struct iommu_device *iommu = dev->iommu->iommu_dev;
->         struct iommu_group *group;
+[1] https://lore.kernel.org/linux-pci/3628628.VLH7GnMWUR@phil/T/#m3b3149c26b15e03686cfc2b76033c9949b0d565c
+
+-Serge(y)
+
 > 
->         lockdep_assert_held(&dev_iommu_group_lock);
-> 
->         if (iommu->singleton_group)
->                 return iommu_group_ref_get(iommu->singleton_group);
-> 
->         group = iommu_group_alloc();
->         if (!IS_ERR(group))
->                 iommu->singleton_group = group;
-> 
->         return group;
-
-This will UAF the iommu->singleton_group, consider a caller that does:
-
-   iommu_group_put(generic_single_device_group(dev))
-
-Jason
+> Rob
 
 _______________________________________________
 Linux-rockchip mailing list
