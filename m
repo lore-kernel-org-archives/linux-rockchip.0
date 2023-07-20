@@ -4,98 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97FFDC0015E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 14:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01938EB64DA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 14:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7mwqjGzEl6qH3BcyoZ9pLGBr8tGQ5bcCJpG8b9dYmBo=; b=j7lOYV1Zn8a2CC
-	rNgDQp04Fr6C7orYaxmXBmvMHwWdhKBWOPDuPokLlxIjSfyelOCx3za1lG4raHmU96/ZFEz09RkTR
-	+6tyiPqNUS/UWB5fX8krIbK3ChTvQ7tmaHyciS+pZizGlPz0zlHv3zBJolwbE0aVXedKMLlI/e388
-	t4ZaOKbGR7F7dLcW9ip3qR5PD1HMgFb0jumaSH6ia7uC0Ez/FIkRjWT5iOm1kqzMFz0UsbhCDu9Cz
-	mhX3MSmxVb17B1/r3ahg7kQvIgcYr4I1GO2GNpW9lnXZCEDzST0/np2l5u5VP/RYSizqbDmjhS1ff
-	OvvR8XdWse+sw30+/hQQ==;
+	List-Owner; bh=T63KssPCVwxCQQOb31U0OwW2zkOLQg7anAoMcrmlHFM=; b=iYhpHElI2QqKro
+	V88CENKj9g0POPqQJ7FpQTcm4VcUEuBq3G0YH802g4INqyRnesRRDqg5HrJEc6wfcuTnTp18sDZUK
+	LieaZ85KYJ4FNMQ+2YBRxKeR4iRCDLoQMfqAbnrBPreON7qIOfs6GBuEzV5PcFS1dq1fsoMbTF9ji
+	2BGoXx4vlZOj8XHnMPQbguDQp+gpaB8z/8N8H2urX4xPyKjtUkTPuIYWWAyDgLCE3TOP8NvPV4jRz
+	tZl6vB5b3IFw0f23o3MOoESR9E/LIVwQ4dQXBDZ0Crb6eFdGvtiitl53RpR4cD9gse4q8oUjg4FFa
+	9betP3BS2EWDaYkhuAdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUX9-00BNJQ-1X;
-	Thu, 20 Jul 2023 14:21:35 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1qMUqU-00BPkr-2X;
+	Thu, 20 Jul 2023 14:41:34 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUX7-00BNI2-13
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jul 2023 14:21:34 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2b962c226ceso12405501fa.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Jul 2023 07:21:32 -0700 (PDT)
+	id 1qMUqK-00BPfQ-0n;
+	Thu, 20 Jul 2023 14:41:25 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-991fe70f21bso148272966b.3;
+        Thu, 20 Jul 2023 07:41:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689862891; x=1690467691;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5bM5fwQZuavzr0KLXlSpBqYe6ZYyOnK6tAtOA/McGh0=;
-        b=spUGuRcegEQPc3fc25t8itt8SEf8ygAVohrhUn1ujEk4I9NT0xUvIMs1yqyuWqxNFr
-         fBngMP/QWUKoSJ4W5c8y5CIpFFLT2NdGs7KcRmUv/FP+F2rq6dMQaol9zCqPj/y+WTED
-         2PSRgpO+AuKpqQjbbAcTkKACjlLeF1nbuCreWEGmYWXHj2dY5nBdA3c0ybQNAqoK1TUq
-         kekBLt7Ich29WT7xHej4Hzg7GCemUc/EmRGwPy7fQEuunSvGNdqxqNwLHTK/PQwA40Dp
-         BwJdBbnoarNMLasaotpymgCSCXe725rnTO/e+1odjR+bU2WyYT4CLBrdqgOxxsPSCDk1
-         B2qg==
+        d=gmail.com; s=20221208; t=1689864083; x=1690468883;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wLrHxYUorj4cRATSl4FYWOBY6cgIskL8/uHYHedoFV8=;
+        b=gWcKKtu+NPxLWPKoWi3l0E4hcgurpq8rsryPV5UeUd/jTyTcdlvtGzb8gh0vph929W
+         hr/RMZNCEsxLG3NWBSl60PCuiWYcdsfPONdHgFdAOnDMUgDNA1qOo8kUP2AUFiJiMcDf
+         UKtBS/ErkKBVFXl2mZncl0VCjfxioeF1wCFhisv/VGv0JbxKwdQHnjdMPtQl8dpjxT6I
+         ccyE8q9NPMzASWLBYhw4sR4Pzu1xv2BMCVLl+k0kZzQkNDpSaiv7UzSVPpeN6wSITaAf
+         ZXLIBD5HlyMKXxRDkrj7j3QZ1sgaderLBP6XGfHj0oYi4LU4XCdssHqdMFcQCOiWQo+d
+         QWFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689862891; x=1690467691;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5bM5fwQZuavzr0KLXlSpBqYe6ZYyOnK6tAtOA/McGh0=;
-        b=Z8X0+2g/rBPNZuoQjLZv/3JwEJAOpLT+JTMYP8daVcVghOx+4Pu1k/Vxh2M1yF4gAQ
-         HX5SgmeGWNBUvGzZ4iEe9iunl91e26mp2GWyBx1OCws+fBAOUTGGWQBVZ+cOpbAhk0YT
-         MwxlTRQVZfLjA59gH6MMUwTsLFa/IupGmnNhBwCLzu9TDB9HE0mEU1HYAfBd8ea6kZpM
-         SIbZO+65q4brOKHEFfj1v/UIK1cYsmfWhttZgepgi/+nI38eiFzOOipVeneb4AyCp1Bp
-         WBjGabUi5t6x+YTwx35W71Jz4t8RZBkkYMagytKY/df4ittoNoEtXh7oI+t+0pdScKBl
-         vgtA==
-X-Gm-Message-State: ABy/qLYJrVqviATFIoYEvYwJJCrBFp1eO2v16UE8dBrh/X0KLRqiK65O
-	CnTViFmNJnI7+xlMM+xKslqWAg==
-X-Google-Smtp-Source: APBJJlFpdXWglTYxIM2Ehzj8JoGpf26cOv1zlpe0BemO3ScIjse7kYRRtbcG/801j62owMtgpgABCA==
-X-Received: by 2002:a2e:3310:0:b0:2b6:d137:b5a1 with SMTP id d16-20020a2e3310000000b002b6d137b5a1mr2400228ljc.43.1689862891321;
-        Thu, 20 Jul 2023 07:21:31 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id c10-20020a056000104a00b0031434cebcd8sm1490017wrx.33.2023.07.20.07.21.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jul 2023 07:21:30 -0700 (PDT)
-Message-ID: <2b5b982d-5a9f-810a-ec3f-df65e6c8b83b@linaro.org>
-Date: Thu, 20 Jul 2023 16:21:28 +0200
+        d=1e100.net; s=20221208; t=1689864083; x=1690468883;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wLrHxYUorj4cRATSl4FYWOBY6cgIskL8/uHYHedoFV8=;
+        b=XoUIlT4MeZPZ7JMasZmYuVY8uoZ+44BHjHquonGejmkaIpvIQOEMpGYSvFSooPaFn8
+         3+1TZQJ+WLDORKOOKB1hRf/9qsBeaJIAzs+zoDcudgi6EVvqeeaFIUAvrahgvMB/muhR
+         bP1+GhQrFgnxiWBBuI6xvItPUYhQ0UZpvY7JdV7+Sh/Zozw9zHAIjnbbnhjsZGhWSF4z
+         nBMowFU+xRPbjhLlNnu+NdBQd7cmLKuk7Y+NwStPoZSHXcsuFBRIW4OH0ai0O741Shvz
+         7bIOux72iWCQCeulu0u40MVDCD5PIUPTLh7UgaHS30YyY12ih2/t6O1N11vdDEUMZ3tR
+         Os2Q==
+X-Gm-Message-State: ABy/qLYFGdi7ZJzpj6FfCtmo3mnFYkuK6y2am7n1QeNpz04C3qBavl2v
+	ZwJW6Gyr2iqT0pkLv07kg+c=
+X-Google-Smtp-Source: APBJJlHgueNlqW0haDo5hRGUxcvhVV7/ihvmmvg/gwqzFV0iohHNBCeqNUuKd8ZztzBQESq59FBD8w==
+X-Received: by 2002:a17:906:8488:b0:970:1b2d:45cc with SMTP id m8-20020a170906848800b009701b2d45ccmr4904840ejx.57.1689864082442;
+        Thu, 20 Jul 2023 07:41:22 -0700 (PDT)
+Received: from localhost (p200300e41f1bd600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1b:d600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id c11-20020a170906924b00b0098e34446464sm799399ejx.25.2023.07.20.07.41.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Jul 2023 07:41:21 -0700 (PDT)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Benson Leung <bleung@chromium.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>,
+	Johan Hovold <johan@kernel.org>,
+	Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: linux-pwm@vger.kernel.org,
+	kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev
+Subject: Re: [PATCH 00/10] pwm: Constistenly name pwm_chip variables "chip"
+Date: Thu, 20 Jul 2023 16:41:16 +0200
+Message-ID: <168986404868.1519829.8131310221840364014.b4-ty@gmail.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
+References: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
-Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
- <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
- <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
- <8374cb80-749a-401d-2d88-48001ad614c2@linaro.org>
- <2640608.BddDVKsqQX@steina-w>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <2640608.BddDVKsqQX@steina-w>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_072133_368911_9D40CC8A 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20230720_074124_281922_434252C4 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,52 +108,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 20/07/2023 15:58, Alexander Stein wrote:
-> Hi Krzysztof,
-> 
-> Am Donnerstag, 20. Juli 2023, 10:07:04 CEST schrieb Krzysztof Kozlowski:
->> On 15/06/2023 16:58, Alexander Stein wrote:
->>> Use id-gpios and vbus-gpios instead.
->>>
->>> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
->>> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
->>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
->>> ---
->>> Changes in v2:
->>> * Added Heiko's A-b for rockchip
->>> * Added Matthias' R-b for mediatek
->>
->> Please split patches per subsystem, so this could be applied. Or send it
->> through soc tree, but you chosen the middle way - neither per subsystem
->> nor via soc tree - so it went nowhere :(
-> 
-> How do you distinguish that? 
-
-You create multiple patches per each DTS subdirectory. Then you send
-entire patchset to all people (might create too many Cc addresses) or
-patch-per-maintainers.
-
-> Almost all maintainers and mailing lists from 
-
-Yes, and they can only Ack it. If you wanted it to go via SoC, you
-should have Cc Soc. Since you didn't then it was not the intention, so
-only the first option is left - split per subsystem.
-
-> get_maintainer.pl output for patch 1 are also included in the list for patch 2 
-> & 3? Do you want me to send two series (1 binding patch and 2 DT patches), 
-> which you will receive both of them?
-
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIEZyaSwgMTQgSnVsIDIwMjMgMjI6NTY6MTMgKzAyMDAsIFV3ZSBLbGVpbmUtS8O2bmlnIHdy
+b3RlOgo+IHdoaWxlIHdvcmtpbmcgb24gYW4gZXh0ZW5zaW9uIGZvciB0aGUgcHdtIGZyYW1ld29y
+aywgSSBub3RpY2VkIHRoYXQgc29tZQo+IGRyaXZlcnMgYW5kIGV2ZW4gdGhlIGNvcmUgb25seSBu
+ZWFybHkgY29uc2lzdGVudGx5IG5hbWVkIGFsbCB2YXJpYWJsZXMKPiBhbmQgc3RydWN0IG1lbWJl
+cnMgaG9sZGluZyBhIHBvaW50ZXIgdG8gYSBzdHJ1Y3QgcHdtX2NoaXAgImNoaXAiOgo+IAo+ICQg
+Z2l0IGdyZXAgLVBobyAnc3RydWN0IHB3bV9jaGlwIFwqKlthLXowLTlfXSsoKm5sYTpbXChhLXow
+LTlfXSknIHY2LjUtcmMxIHwgc29ydCB8IHVuaXEgLWMgfCBzb3J0IC1uCj4gICAgICAgMSBzdHJ1
+Y3QgcHdtX2NoaXAgKnB3bQo+ICAgICAgIDEgc3RydWN0IHB3bV9jaGlwIHB3bQo+ICAgICAgIDEg
+c3RydWN0IHB3bV9jaGlwIHB3bV9jaGlwCj4gICAgICAgMiBzdHJ1Y3QgcHdtX2NoaXAgKl9jaGlw
+Cj4gICAgICAgNCBzdHJ1Y3QgcHdtX2NoaXAgKmMKPiAgICAgICA4IHN0cnVjdCBwd21fY2hpcCAq
+cGMKPiAgICAgIDU3IHN0cnVjdCBwd21fY2hpcCBjaGlwCj4gICAgIDM1OCBzdHJ1Y3QgcHdtX2No
+aXAgKmNoaXAKPiAKPiBbLi4uXQoKQXBwbGllZCwgdGhhbmtzIQoKWzAxLzEwXSBwd206IFVzZSBh
+IGNvbnNpc3RlbnQgbmFtZSBmb3IgcHdtX2NoaXAgcG9pbnRlcnMgaW4gdGhlIGNvcmUKICAgICAg
+ICBjb21taXQ6IGI0Zjc4ZmY3NDZlYzUyNzRmZmZhOTJmYTJhNGRjNTMxMzYwYjUwMTYKWzAyLzEw
+XSBwd206IGF0bWVsLWhsY2RjOiBVc2UgY29uc2lzdGVudCB2YXJpYWJsZSBuYW1pbmcKICAgICAg
+ICBjb21taXQ6IDUwOTE0MzkyNmUxODQ3NjJjZGFmZmI2YjY3ZDM4MDlmZGRkN2Y0ZDkKWzAzLzEw
+XSBwd206IGJjbS1rb25hOiBDb25zaXN0ZW5seSBuYW1lIHB3bV9jaGlwIHZhcmlhYmxlcyAiY2hp
+cCIKICAgICAgICBjb21taXQ6IGFmODczODVjN2FkMjc4MjA3ZDM0ZmYzNjgxZmEzMjVhMjQwYWU4
+N2MKWzA0LzEwXSBwd206IGNyYzogQ29uc2lzdGVubHkgbmFtZSBwd21fY2hpcCB2YXJpYWJsZXMg
+ImNoaXAiCiAgICAgICAgY29tbWl0OiBmYzMwODI2ZDUwZDEwZDY3NjI4YWRkZmFiYjkzNjdiNTA2
+N2VmYTQyClswNS8xMF0gcHdtOiBjcm9zLWVjOiBDb25zaXN0ZW5seSBuYW1lIHB3bV9jaGlwIHZh
+cmlhYmxlcyAiY2hpcCIKICAgICAgICBjb21taXQ6IDZiNWZkYjJiNjU1YWM5YWJlNmZiZDJjYmNi
+MjVjODgzN2UzZTg1NTMKWzA2LzEwXSBwd206IGxwMzk0MzogQ29uc2lzdGVubHkgbmFtZSBwd21f
+Y2hpcCB2YXJpYWJsZXMgImNoaXAiCiAgICAgICAgY29tbWl0OiBkZDQ5OWI2MzYxOGU1MjNiNDdm
+MzBkOTliZjIwZjQxN2RlMTE4N2ZmClswNy8xMF0gcHdtOiByb2NrY2hpcDogQ29uc2lzdGVubHkg
+bmFtZSBwd21fY2hpcCB2YXJpYWJsZXMgImNoaXAiCiAgICAgICAgY29tbWl0OiA4YzI5N2QxZmRi
+NWQyYjgxZDM5YWRhNmI0MzVmYjkyYTQxYmU5ZjE3ClswOC8xMF0gcHdtOiBzaWZpdmU6IENvbnNp
+c3Rlbmx5IG5hbWUgcHdtX2NoaXAgdmFyaWFibGVzICJjaGlwIgogICAgICAgIGNvbW1pdDogY2I2
+OWY0MGVhN2NiMTM5MjIzOTAxZmNmYzgxZTRlMGEwYTAzNjczYwpbMDkvMTBdIHB3bTogc2wyOGNw
+bGQ6IENvbnNpc3Rlbmx5IG5hbWUgcHdtX2NoaXAgdmFyaWFibGVzICJjaGlwIgogICAgICAgIGNv
+bW1pdDogZTc5OTc0YzVjM2RkYzNlODE4MWY1ODIxMTdjNDM2ODU1NzUyNGYyMApbMTAvMTBdIHN0
+YWdpbmc6IGdyZXlidXM6IHB3bTogQ29uc2lzdGVubHkgbmFtZSBwd21fY2hpcCB2YXJpYWJsZXMg
+ImNoaXAiCiAgICAgICAgY29tbWl0OiBlZmQxZDFhZDdmNTI1ODA5ZmNkZjc1Mzg2MzhhMDgyNzRi
+NzVjOTlmCgpCZXN0IHJlZ2FyZHMsCi0tIApUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdA
+Z21haWwuY29tPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
