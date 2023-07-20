@@ -4,118 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2FA9EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 08:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F4AFEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 09:55:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=vLf2UrfBntWzPOtbwP3kxROCTIf3EBtwBNkSW5vfWg0=; b=VNOFB6hExy1htI
-	q+WRc7LaOJ8OvzvpgOp9aJ0oa1j8AjXP8vPh2xTEQNxVNq7pK/OuZmHR1GHCeFswsWlPpyzkLQ0H9
-	xTKnXl8k84s8TtflXxxxA9X399Tc8gzFVpHdhtpDpTteDD8+lTCCyrSL7robLVRejWo8p2xJtVbhQ
-	ZCKQu94pcuytGieZtUCONbpXFZN4umRUsqgFsvAVoynFmMdcCkNN//ZEI3zeqrcRVRJE+XIQKW+Kl
-	ztkR0RnKzIHokpvvfSFREOqnDI28akW8vPjE0JSbFlY3lfoHCMZxk4pUdaBbGErWGf5E6K2mk0lSG
-	LGYeeTAVNHfxSyee+xNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DJuwn4PJrsismDFmvz/xNlvSBjTlflHhSLz0puViw1A=; b=VdkDXNjXNde3/u
+	uAJ4VrDTYSubiRHwfYiozwohu21pZ0aBob9Nu593wniuCaYcx6Nc0CAEty2pCw6ZmeJUYbUt4udFp
+	Cjh4KzZsbgH9w7RUryHJaBE7TspN68QtDNyxtynpsqjWmxaBD+H2bntVcFrpZUWqa5eOf0Ii1dBW4
+	KOIWlTJe6qan9MkHVWB3Zm3NSzBv3P2HEPrVk9dKY3yiPifoHV71HpTRlLrJrd9+Yo87tAiUOdB4C
+	AEs5o+zlZeONgZO+OhGtjiQnZmCvJJI1IYexwkEnV3s9mU9rLfQ8CLMXujTaGGpKcZQL9hw5T9/DF
+	R5aTsjj+40UZ+fEBSJ2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOid-00AFBk-2O;
-	Thu, 20 Jul 2023 08:09:03 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1qMQNz-00AcCH-2J;
+	Thu, 20 Jul 2023 09:55:51 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOia-00AF9d-0F
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Jul 2023 08:09:02 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230720080849euoutp02588de8ecb32c66797e5a2ba58d05edcc~zhQI0PTD92170321703euoutp02I
-	for <linux-rockchip@lists.infradead.org>; Thu, 20 Jul 2023 08:08:49 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230720080849euoutp02588de8ecb32c66797e5a2ba58d05edcc~zhQI0PTD92170321703euoutp02I
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1689840529;
-	bh=6mlO5pEmP1kCfZ0JJ7a+HVnKdTbVIKx3eVZbQs5lYdU=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=cRsRNRZ1ERl6D+4YE3zpHMB3QbxhSGc6YLBsFVEHrd27l9/05dP3ABZqfE4ar2twy
-	 p0SSyv9/KBm3XLtE2hZataDVlKKoozJIDQpG1tHno59nZcojOVNZXpyx48bWj/+K9y
-	 XKw1nvcrYXVmRNIWAKaqLBVMhroA0mvlE7lN/xuc=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20230720080849eucas1p28c7aeb7a045c64869778ce4934b313f2~zhQIiC_tZ0039900399eucas1p2p;
-	Thu, 20 Jul 2023 08:08:49 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
-	eusmges1new.samsung.com (EUCPMTA) with SMTP id E7.C0.42423.19BE8B46; Thu, 20
-	Jul 2023 09:08:49 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd~zhQIBxyOc2873128731eucas1p2J;
-	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
-	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20230720080848eusmtrp11115655375843bd0fc4a3e1db6969ef1~zhQIBCAyn0727607276eusmtrp1g;
-	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
-X-AuditID: cbfec7f2-a51ff7000002a5b7-24-64b8eb91d9c6
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
-	eusmgms1.samsung.com (EUCPMTA) with SMTP id 42.5C.10549.09BE8B46; Thu, 20
-	Jul 2023 09:08:48 +0100 (BST)
-Received: from AMDC4653.eu.corp.samsungelectronics.net (unknown
-	[106.120.51.32]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20230720080848eusmtip101f3d5195e37e6f9e08dfdc184245ffc~zhQHZ_tvf2792127921eusmtip1Y;
-	Thu, 20 Jul 2023 08:08:48 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Catalin Marinas
-	<catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Arnd Bergmann
-	<arnd@arndb.de>, Aurelien Jarno <aurelien@aurel32.net>, Dan Johansen
-	<strit@manjaro.org>, Heiko Stuebner <heiko@sntech.de>, Anand Moon
-	<linux.amoon@gmail.com>
-Subject: [PATCH v3] arm64: defconfig: Enable drivers for the Odroid-M1 board
-Date: Thu, 20 Jul 2023 10:08:38 +0200
-Message-Id: <20230720080838.933890-1-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.34.1
+	id 1qMQNw-00AcA9-0e;
+	Thu, 20 Jul 2023 09:55:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689846948; x=1721382948;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=exBOpl1Ubj/aUVKReDg2pFkUeY2g+echAWrj39l6FvA=;
+  b=C+oew/Zv6MC1d3TagraFsITAgw2Qp8F7fUMYHqyl1c4xJ175xe41sOMn
+   5CGf0iSH9Xh1zVUkQB4mjEll0xzjKounZeDtYKtPGz//OJjQLFYjIXOG7
+   jcKmx+QGF0K2wF3T0BwAxMwB2tptLAMQbxOaRomrXZ2U7DTeFMbI5T4IM
+   CXQOGYnLcup+5kIXzVG7hj6qgfTkUQ35n4Hi5C7JFpXwYihmAFjM3ANl+
+   QhTg3Emo4KKyqcfbF7fMR4WEuWh0d31khYQXPEfn2jCIwAQ94LO8dcnS4
+   LYsoSXKF3DOKGEJzdfyKVaSErBsNYPa0Q2PzguNq8QG4abXNZoieoAgSr
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="430456924"
+X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
+   d="scan'208";a="430456924"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 02:55:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="724329491"
+X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
+   d="scan'208";a="724329491"
+Received: from kechengh-mobl.gar.corp.intel.com (HELO [10.252.191.109]) ([10.252.191.109])
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 02:55:40 -0700
+Message-ID: <a64b95e8-435d-0659-449a-74a64a659fa7@linux.intel.com>
+Date: Thu, 20 Jul 2023 17:55:36 +0800
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrLKsWRmVeSWpSXmKPExsWy7djPc7oTX+9IMfhwVcDi76Rj7BY3p61h
-	sXi/rIfR4v+j16wWmx5fY7W4vGsOm8WnB/+ZLdZtvMVusfbIXXaLnqfrmC1a7pg6cHusmbeG
-	0eP3r0mMHn1L5zF57Jx1l91j06pONo/NS+o9Gg4DJfu2rGL02H5tHrPH501yAVxRXDYpqTmZ
-	ZalF+nYJXBlfD0xgK9ghUbHl3xymBsZtol2MnBwSAiYSq07NYuli5OIQEljBKLH6+j12COcL
-	o8TEdZOYIJzPjBKPNy1jhmm5evQcVNVyRonzh3+xQTitTBKLn0xiA6liEzCU6HrbBWaLCORI
-	NMy9ywpSxCywnkniVd9soFEcHMICPhKve8EOYRFQlWjYMZUFxOYVsJO48vIiG8Q2eYn9B88y
-	Q8QFJU7OfAJWwwwUb94KMoYLqOYJh8TJlrlQ57lINF57xQphC0u8Or6FHcKWkTg9uYcFoqGd
-	UWLB7/tMEM4ERomG57cYIaqsJe6cA/mHA2iFpsT6XfoQYUeJu5v3MIKEJQT4JG68FYQ4gk9i
-	0rbpzBBhXomONiGIajWJWcfXwa09eOESVImHxOdn5SBhIYFYidsHZ7BPYFSYheSzWUg+m4Vw
-	wgJG5lWM4qmlxbnpqcWGeanlesWJucWleel6yfm5mxiBKez0v+OfdjDOffVR7xAjEwfjIUYJ
-	DmYlEd5Hl7elCPGmJFZWpRblxxeV5qQWH2KU5mBREufVtj2ZLCSQnliSmp2aWpBaBJNl4uCU
-	amBiXjF9ZZzARnuj7weNd1ycc+CZPtsjKy7r/Rv2X2M6WG3yn/nd4g22LZ17z/GvD+HgeOOh
-	m7BEa93x+7s+XL7isp/juNSkd4fmfPgibGr+NnTZPb7HT87UWd982ndbulfhumnfZQ+m80ye
-	iQvc5h/kDfuV/DDu2Me9px6tWG14QDHBrdMkwpo9sOLAeg4hWa7QTkfB6HnrF4ko8cw/0Vl6
-	+kkDZ4FeZM9Ro+1Vq2uO6Z1+toz92MdH/oet/JMnF+6fFbR++hyRI6bWMpx7z7efL+n8l7/k
-	/aPsNu/+LjdGT9ljbZ5FAvuPfe1RbPlevCV4XarQTNv/VmUiZi/nhMud+X6q4fEZvvJbH+Vu
-	Gs1RVmIpzkg01GIuKk4EAIEPR6PQAwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprMIsWRmVeSWpSXmKPExsVy+t/xu7oTXu9IMXhwU9/i76Rj7BY3p61h
-	sXi/rIfR4v+j16wWmx5fY7W4vGsOm8WnB/+ZLdZtvMVusfbIXXaLnqfrmC1a7pg6cHusmbeG
-	0eP3r0mMHn1L5zF57Jx1l91j06pONo/NS+o9Gg4DJfu2rGL02H5tHrPH501yAVxRejZF+aUl
-	qQoZ+cUltkrRhhZGeoaWFnpGJpZ6hsbmsVZGpkr6djYpqTmZZalF+nYJehlfD0xgK9ghUbHl
-	3xymBsZtol2MnBwSAiYSV4+eY+9i5OIQEljKKHFg0gt2iISMxMlpDawQtrDEn2tdbBBFzUwS
-	r95uZAZJsAkYSnS9BUlwcogI5En8OPqWFaSIWWArk8SU5iuMXYwcHMICPhKve8G2sQioSjTs
-	mMoCYvMK2ElceXmRDWKBvMT+g2eZIeKCEidnPgGrYQaKN2+dzTyBkW8WktQsJKkFjEyrGEVS
-	S4tz03OLDfWKE3OLS/PS9ZLzczcxAmNn27Gfm3cwznv1Ue8QIxMH4yFGCQ5mJRHeR5e3pQjx
-	piRWVqUW5ccXleakFh9iNAW6byKzlGhyPjB680riDc0MTA1NzCwNTC3NjJXEeT0LOhKFBNIT
-	S1KzU1MLUotg+pg4OKUamMS9jvuvmVZwdcE8k716tx/M3aZ3zSzvb6DrzPndqx+a+jx0+bLf
-	7FGMpnDghd4ktQObNwkduCW5acMitk89My+d21CssXDz/Cdt8zheLL18doFna8qx7b7LeRJM
-	XvUzfY5T2zm3baJb154l0rt3ztq91GfzG41XIguKpqokZO9ZfCGEZYpW1b3GxFqeW5L9qku+
-	VN+vXhtjtW0+l+/Tw9YWJRpaC5I2VV34rF9cxrhogXaDxqST35QXCXx9eCDjMaPBjpkmpjFd
-	bRzbXjNK179a7C97/vFc22l+alxh8kF1hRWqb/ST5Zz6F7yQr+d44fA0R8Ui6oJZxNXkQtOG
-	Ux9Snz3X2xfImi2VkfXGTVaJpTgj0VCLuag4EQDgMn2kJgMAAA==
-X-CMS-MailID: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
-X-Msg-Generator: CA
-X-RootMTR: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd
-References: <CGME20230720080848eucas1p2c18ac25b06cb0b89d61db4ab2df1d8dd@eucas1p2.samsung.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Cc: baolu.lu@linux.intel.com, Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH 09/10] iommu: Complete the locking for dev->iommu_group
+Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Orson Zhai <orsonzhai@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
+ Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>
+References: <9-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <9-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_010900_649713_D994E602 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20230720_025548_277621_CC38323E 
+X-CRM114-Status: GOOD (  21.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,117 +84,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hardkernel Odroid-M1 board is supported since commit fd3583267703
-("arm64: dts: rockchip: Add Hardkernel ODROID-M1 board"). Enable all
-drivers needed by that board in the defconfig to let the automated
-test systems to check them on the real hardware.
+On 2023/7/19 3:05, Jason Gunthorpe wrote:
+> Revise the locking for dev->iommu_group so that it has three safe ways to
+> access it:
+> 
+>   - It is read by a probe'd device driver. So long as a device driver is
+>     probed the dev->iommu_group will be guaranteed stable without further
+>     locking.
+> 
+>   - Read under the device_lock(), this primarily protects against
+>     parallel probe of the same device, and parallel probe/remove
+> 
+>   - Read/Write under the global dev_iommu_group_lock. This is used during
+>     probe time discovery of groups. Device drivers will scan unlocked
+>     portions of the device tree to locate an already existing group. These
+>     scans can access the dev->iommu_group under the global lock to single
+>     thread determining and installing the group. This ensures that groups
+>     are reliably formed.
+> 
+> Narrow the scope of the global dev_iommu_group_lock to be only during the
+> dev->iommu_group setup, and not for the entire probing.
+> 
+> Prior patches removed the various races inherent to the probe process by
+> consolidating all the work under the group->mutex. In this configuration
+> it is fine if two devices race to the group_device step of a new
+> iommu_group, the group->mutex locking will ensure the group_device and
+> domain setup part remains properly ordered.
+> 
+> Add the missing locking on the remove paths. For iommu_deinit_device() it
+> is necessary to hold the dev_iommu_group_lock due to possible races during
+> probe error unwind.
+> 
+> Fully lock the iommu_group_add/remove_device() path so we can use lockdep
+> assertions. Other than lockdep this is redundant, VFIO no-iommu doesn't
+> use group clustering.
+> 
+> For iommu_release_device() it is redundant, as we expect no external
+> references to the struct device by this point, but it is harmless so
+> add the missing lock to allow lockdep assertions to work.
+> 
+> This resolves the remarks of the comment in __iommu_probe_device().
+> 
+> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 
-The drivers were configured to be compiled as modules if that was
-supported.
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-v3:
-- rebased onto latest kernel release
-
-v2:
-https://lore.kernel.org/all/20221209101834.2030-1-m.szyprowski@samsung.com/
----
- arch/arm64/configs/defconfig | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 6cbf6eb59378..1b219e5dc314 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -229,6 +229,7 @@ CONFIG_PCI_LAYERSCAPE=y
- CONFIG_PCI_HISI=y
- CONFIG_PCIE_QCOM=y
- CONFIG_PCIE_ARMADA_8K=y
-+CONFIG_PCIE_ROCKCHIP_DW_HOST=y
- CONFIG_PCIE_KIRIN=y
- CONFIG_PCIE_HISI_STB=y
- CONFIG_PCIE_TEGRA194_HOST=m
-@@ -297,6 +298,7 @@ CONFIG_ATA=y
- CONFIG_SATA_AHCI=y
- CONFIG_SATA_AHCI_PLATFORM=y
- CONFIG_AHCI_BRCM=m
-+CONFIG_AHCI_DWC=m
- CONFIG_AHCI_CEVA=y
- CONFIG_AHCI_MVEBU=y
- CONFIG_AHCI_XGENE=y
-@@ -432,6 +434,7 @@ CONFIG_INPUT_PM8XXX_VIBRATOR=m
- CONFIG_INPUT_TPS65219_PWRBUTTON=m
- CONFIG_INPUT_PWM_BEEPER=m
- CONFIG_INPUT_PWM_VIBRA=m
-+CONFIG_INPUT_RK805_PWRKEY=m
- CONFIG_INPUT_HISI_POWERKEY=y
- # CONFIG_SERIO_SERPORT is not set
- CONFIG_SERIO_AMBAKMI=y
-@@ -533,6 +536,7 @@ CONFIG_SPI_OMAP24XX=m
- CONFIG_SPI_ORION=y
- CONFIG_SPI_PL022=y
- CONFIG_SPI_ROCKCHIP=y
-+CONFIG_SPI_ROCKCHIP_SFC=m
- CONFIG_SPI_RPCIF=m
- CONFIG_SPI_RSPI=m
- CONFIG_SPI_RZV2M_CSI=m
-@@ -548,6 +552,7 @@ CONFIG_SPI_SPIDEV=m
- CONFIG_SPMI=y
- CONFIG_SPMI_MTK_PMIF=m
- CONFIG_PINCTRL_MAX77620=y
-+CONFIG_PINCTRL_RK805=m
- CONFIG_PINCTRL_SINGLE=y
- CONFIG_PINCTRL_OWL=y
- CONFIG_PINCTRL_S700=y
-@@ -631,6 +636,7 @@ CONFIG_BATTERY_MAX17042=m
- CONFIG_CHARGER_MT6360=m
- CONFIG_CHARGER_BQ25890=m
- CONFIG_CHARGER_BQ25980=m
-+CONFIG_CHARGER_RK817=m
- CONFIG_SENSORS_ARM_SCMI=y
- CONFIG_SENSORS_ARM_SCPI=y
- CONFIG_SENSORS_GPIO_FAN=m
-@@ -741,6 +747,7 @@ CONFIG_REGULATOR_VCTRL=m
- CONFIG_RC_CORE=m
- CONFIG_RC_DECODERS=y
- CONFIG_RC_DEVICES=y
-+CONFIG_IR_GPIO_CIR=m
- CONFIG_IR_MESON=m
- CONFIG_IR_SUNXI=m
- CONFIG_MEDIA_SUPPORT=m
-@@ -795,6 +802,7 @@ CONFIG_DRM_EXYNOS_DSI=y
- CONFIG_DRM_EXYNOS_HDMI=y
- CONFIG_DRM_EXYNOS_MIC=y
- CONFIG_DRM_ROCKCHIP=m
-+CONFIG_ROCKCHIP_VOP2=y
- CONFIG_ROCKCHIP_ANALOGIX_DP=y
- CONFIG_ROCKCHIP_CDN_DP=y
- CONFIG_ROCKCHIP_DW_HDMI=y
-@@ -926,6 +934,7 @@ CONFIG_SND_SOC_GTM601=m
- CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
- CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
- CONFIG_SND_SOC_PCM3168A_I2C=m
-+CONFIG_SND_SOC_RK817=m
- CONFIG_SND_SOC_RT5640=m
- CONFIG_SND_SOC_RT5659=m
- CONFIG_SND_SOC_SIMPLE_AMPLIFIER=m
-@@ -1399,6 +1408,7 @@ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
- CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
- CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
- CONFIG_PHY_ROCKCHIP_PCIE=m
-+CONFIG_PHY_ROCKCHIP_SNPS_PCIE3=y
- CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PHY_SAMSUNG_UFS=y
- CONFIG_PHY_UNIPHIER_USB2=y
--- 
-2.34.1
-
+Best regards,
+baolu
 
 _______________________________________________
 Linux-rockchip mailing list
