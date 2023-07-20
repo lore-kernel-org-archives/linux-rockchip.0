@@ -4,76 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5E7EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 06:40:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 767F7EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jul 2023 06:48:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iQ1LXHm1UskaL8HBsBtpDsRPMhxK8z6qGPn2tLG1jB0=; b=xtBUrHZ/92c3rb
-	8GpEslywSJA7Pf27Id9nDSyPMFSojksPUrH3zD6kuw1gfo66MU2ohfhb1u8H4R0Ohh5w8IIOiDBUX
-	KCo8/gxyqPQsqItJ76wGSgSmrQdSs5bvLtx5O6oYA81Ly2gs5DhkXzpaCwO0XraI1KxshdqULp3k/
-	sn19xiWklRVdFyblcEXfvm+cMhRDc/w9B6VbO8F5L9dALJzGGOqi39rhEvHehx7iHtVNmlIzGPCxh
-	W1VNJWDS8zUhK4HStVqCPm3WNT37mmruLnMalrl48HRRDnohTRh4982z6+TD2MdPbHAa9JmYE0xnR
-	jZZNEKZn8vHAvgRhGmUA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XYR1ycbJJDswPb936O1h4Qw1tLeHDM+izghQfAD9eBs=; b=EJhZodnTHmWvEniZ7SnGTNgH13
+	9I98qnjmA2284wYHg46hbd5uFcn3km4Qo+Gvj/y6IXCK4lQSgoY1RQdXM1ruv8fvu+4NQ+V8tMe9i
+	I44ukvk9M1/dp6ECxCnvlKuMGLeid+npK63ru/UhI3pMCi3/GlFWpFUSiiZzrvGyjjKOhSHQ4kFdr
+	YQ9mRoONsYi8HnzrgBOLaKt0FyV+ySLmEL3jl/SoNMAqHDuREPCHaT7KcBuRdldwpoNfyc74QghpH
+	cRixkZ/uNT7VlX01EaJOzB+UE2Szu1VAN1X/o49BZ4lRdCGZCrNJNyyVO/Fu464XvoF4HsAqrTcUO
+	0S4QxLQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMNKM-009yAu-13;
-	Thu, 20 Jul 2023 06:39:54 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1qMNSY-009zcL-1p;
+	Thu, 20 Jul 2023 06:48:22 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMNKJ-009y8y-27;
-	Thu, 20 Jul 2023 06:39:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689835191; x=1721371191;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=Q2420lO/67HLept/Ynkd6CkJPfVmitWqJ8oLR0JwEpg=;
-  b=kG0tsA27ZQPQec0Ge6Ft0Wp4yalYjxpV+HyORpu4XPhVewV2tQo1/XjJ
-   4CtyM414DmbKgkF9tuSJA8whdh6BeAn+evq8g3p10SHA9WFH4CZ81bsG9
-   ooZ5CXbFGBgiUnSmZbsFPOt1r5YKVque97bJgzYNi3VYuT8LA0hTQ4Fkr
-   b5qMC2trAdWdE19jwmlsXVLVw0Ex5I1BxoqgEClqgpEwdQuOQ0ICgf2Z5
-   /PO/LBXj4xVSDIkcR26MoA+MVTRfSwtfZUosg9Us3/mwu/mbZ81E0Y8aD
-   V79HhdqcsdrcfqJHRWJa4FC6ogIkU16CluTvb8T9od0IIWo2P6HOPyM6v
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="369302168"
-X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
-   d="scan'208";a="369302168"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jul 2023 23:33:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="701510991"
-X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
-   d="scan'208";a="701510991"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.252.191.114]) ([10.252.191.114])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jul 2023 23:33:04 -0700
-Message-ID: <ea1d5d22-cf91-de8c-5d31-0959765a56b8@linux.intel.com>
-Date: Thu, 20 Jul 2023 14:33:00 +0800
+	id 1qMNSV-009zZO-2D;
+	Thu, 20 Jul 2023 06:48:21 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2b962535808so5865101fa.0;
+        Wed, 19 Jul 2023 23:48:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689835695; x=1692427695;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1FkW5AFugHIm4cfLHhBTJhPmVsKSDHP6cvkrfUVdciI=;
+        b=AzOk4HbUt9ZK+jgh2do1VmTnHs4dXgElnWxrvk/ChEHWWQTAZ9Vx8z7XNmRbDqPxZ3
+         pze3ozYAKUdVg1bDR93gP5GhKEdWWBQ0Z3hpvKSTR3aWKlVmMyKb7oVA0LynQyTcgKv2
+         D6nSHWT0sTsM7wGrLweBRaxKnv4ScXH6R7hljPkQgdoR9wDPheqU4d3pdCm1+3XDKlWu
+         aJeDJRsVcVA+LxTuN/Lh17Y4eVWY7TL9dsBZ5PDZgdTD3S9dyqQ48/KqD62XG+MERd3j
+         v9OutwMGBMZU+qjEDSgxHB5ePtRice9fyfrHWxUYpDn/Ip6PxSF/NyTWH7Duq9PsJPVr
+         i08A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689835695; x=1692427695;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1FkW5AFugHIm4cfLHhBTJhPmVsKSDHP6cvkrfUVdciI=;
+        b=RWDdPgUZ4P2qlLWpbWUrWB/YlVmcCRORFASXMRhExct7+mMVJDOmZGE/1Euyh+7/41
+         /TsrXzSjs4BQvAGtYNpz76L2MdIksp/Igs0UE0bC0FgcksqLd1kF9rJ9sYlY36VN2Sem
+         0nFor7jwYhjwP7/+Viue6Cqr4G0KJZcbzT5qcsoyJ62kT5T9jU4nWKbknadfL4Tl5my3
+         8/i72W0C++ySaTMriWI9+CTGeRfBHNRge8P/JkLclcBsLdAZhEbF+Hd5CTJJMOnlhWvS
+         DFtMtE9r5X6OKhOIJZOAGbJr1iFFfVZbJL5L5+p1a4SgHKxblJ03MwjfX1VE37+eYTmQ
+         rzUw==
+X-Gm-Message-State: ABy/qLZpnKNgXTBe9aVlkKm8BuRdgH9F73hlijqWDEvtQKq8Ckeukc/5
+	Wcr/3IIF/NjckKIaA9+oFmU=
+X-Google-Smtp-Source: APBJJlGrST9hDWvezaAooUi3+dItEEwvvxovRyenIedKgx3brcqw6G9KmcKqHf4GtKi+d6VaNG3D9g==
+X-Received: by 2002:a2e:9901:0:b0:2b6:df6b:84c0 with SMTP id v1-20020a2e9901000000b002b6df6b84c0mr1063490lji.25.1689835694948;
+        Wed, 19 Jul 2023 23:48:14 -0700 (PDT)
+Received: from orome (p200300e41f1bd600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1b:d600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id u9-20020a05600c210900b003fbcdba1a52sm3162159wml.3.2023.07.19.23.48.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Jul 2023 23:48:14 -0700 (PDT)
+Date: Thu, 20 Jul 2023 08:48:11 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Benson Leung <bleung@chromium.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>, Johan Hovold <johan@kernel.org>,
+	Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-pwm@vger.kernel.org, kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev
+Subject: Re: [PATCH 00/10] pwm: Constistenly name pwm_chip variables "chip"
+Message-ID: <ZLjYqwGh178EHrVY@orome>
+References: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Cc: baolu.lu@linux.intel.com, Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 02/10] iommu: Add a lockdep assertion for remaining
- dev->iommu_group reads
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Orson Zhai <orsonzhai@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>
-References: <2-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <2-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+In-Reply-To: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
+User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_233951_741342_9A7089EE 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20230719_234819_730012_A1496021 
+X-CRM114-Status: GOOD (  27.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,36 +103,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============4679157886569711818=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023/7/19 3:05, Jason Gunthorpe wrote:
-> The remaining reads are all in functions called under ops->device_group.
-> 
-> Broadly these functions are walking around the device tree (eg going up
-> the PCI bus tree) and are trying to de-duplicate group allocations
-> according to their logic.
-> 
-> Since these functions don't hold any particular per-device locks their
-> reads to dev->iommu_group are being locked by the caller's
-> iommu_probe_device_lock, and this explains why iommu_probe_device_lock
-> needs to be a global lock.
-> 
-> Rename iommu_probe_device_lock to dev_iommu_group_lock, make it local to
-> the module and annotate all the device_group helpers with
-> iommu_group_get_locked() that includes a lockdep to indicate that they are
-> special.
-> 
-> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+--===============4679157886569711818==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="qz371AQYCl6mZiXj"
+Content-Disposition: inline
 
-Best regards,
-baolu
+
+--qz371AQYCl6mZiXj
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jul 14, 2023 at 10:56:13PM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> while working on an extension for the pwm framework, I noticed that some
+> drivers and even the core only nearly consistently named all variables
+> and struct members holding a pointer to a struct pwm_chip "chip":
+>=20
+> $ git grep -Pho 'struct pwm_chip \**[a-z0-9_]+(*nla:[\(a-z0-9_])' v6.5-rc=
+1 | sort | uniq -c | sort -n
+>       1 struct pwm_chip *pwm
+>       1 struct pwm_chip pwm
+>       1 struct pwm_chip pwm_chip
+>       2 struct pwm_chip *_chip
+>       4 struct pwm_chip *c
+>       8 struct pwm_chip *pc
+>      57 struct pwm_chip chip
+>     358 struct pwm_chip *chip
+>=20
+> With this series applied these are all called "chip" with one exception:
+> The led driver drivers/leds/rgb/leds-qcom-lpg.c uses "pwm". Maybe
+> "pwmchip" would be a better name, but I'm not sure that using "chip" was
+> an improvement there as this isn't a pure pwm driver. I'm not touching
+> that one.
+>=20
+> The first offenders I found were the core and the atmel-hlcdc driver.
+> After I found these I optimistically assumed these were the only ones
+> with the unusual names and send patches for these out individually
+> before checking systematically.
+>=20
+> The atmel-hlcdc patch is included here unchanged, the core patch now
+> also adapted the declaration of the changed functions in <linux/pwm.h>.
+> I marked these two as "superseded" in patchwork already.
+>=20
+> All patches in this series are pairwise independent of each other. I
+> don't know if the staging patch should better go in via the greybus tree
+> or via pwm. Both is possible without needing coordination.
+>=20
+> Best regards
+> Uwe
+>=20
+>=20
+> Uwe Kleine-K=C3=B6nig (10):
+>   pwm: Use a consistent name for pwm_chip pointers in the core
+>   pwm: atmel-hlcdc: Use consistent variable naming
+>   pwm: bcm-kona: Consistenly name pwm_chip variables "chip"
+>   pwm: crc: Consistenly name pwm_chip variables "chip"
+>   pwm: cros-ec: Consistenly name pwm_chip variables "chip"
+>   pwm: lp3943: Consistenly name pwm_chip variables "chip"
+>   pwm: rockchip: Consistenly name pwm_chip variables "chip"
+>   pwm: sifive: Consistenly name pwm_chip variables "chip"
+>   pwm: sl28cpld: Consistenly name pwm_chip variables "chip"
+>   staging: greybus: pwm: Consistenly name pwm_chip variables "chip"
+
+This would've been much easier if it had been a single patch. Now I have
+to either make you redo the whole series because you've misspelled PWM
+or I have to go and update it myself in most of the above patches. Hint:
+I'll do the latter.
+
+There is really no reason to split this up into this many patches for
+such a trivial change.
+
+Thierry
+
+--qz371AQYCl6mZiXj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmS42KkACgkQ3SOs138+
+s6Hrcw//bT6JKDpq1cRgHldmJl93Sju6hsTYMrblCoA1pa6rfV9XZX1D8K1gZUOl
+K+6a1mUlkjv1KR7pIvUU7PG47vE66IXBNwAZYLfXYKmrCBiWjF+mT6Azm2rwPguM
+02gt5Fmv0Xp0CZ3yc2N4CHhiC+MsyhkliuK/dMfejMaPSQjs3F+yMPo4FUON+CJx
+oy+okmnI6VYMtpAX3qDvJ7lrqgmw6CMwkxrYPaCtnzRGYLxOyixhoYy3KzgWS8BO
+Aukgm24XROAuq58cCp9EjxYtMWR7jmJdaqY3DVaE4XaAuklI5/s0QfTSachQbTOu
+Fv/+/1K4cZjTEhg+qSfSq5xIkmDqDDcHFw5Kobcv9xjXegeFLnrTl541jiMLkgcs
+U4zY0OGXm2OZrhqQRj4WmJd8YAkqZbLTquSQb2AtjNyITFKlgQg28Ct6gr5Go9eb
+Te+RAcoQkDuIs0qEJe+07qkCEngilTGdXf59kymAsdDzWqM+7qEDOMYnmWzl06KJ
+qQFbms1FtSzldFO+upYAYMynS4K2Ni+EY6KbocmUwvs9vYw6FC8pmyfAXvFdGD8D
+MXljW6kvcoycIOPlwME1H+b3EourwQhI/wnjLyYmB8Z921+NJZ9D3Bj5ey16YzEp
+ZGqr2I+AgbDzS0yQAM/utgHE9jOZy6KOnQGeWvXYOeUSVDlrobA=
+=iJ4i
+-----END PGP SIGNATURE-----
+
+--qz371AQYCl6mZiXj--
+
+
+--===============4679157886569711818==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4679157886569711818==--
+
