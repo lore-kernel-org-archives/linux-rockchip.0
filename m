@@ -4,95 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC9E8EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 12:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB71EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 14:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=voeh7VIzlcAMs3igUGAMC+t3bfLRRjBAfYqPCQN2ncQ=; b=FFvlqayNHI4ekH
-	Fi3bsQitDHEZCZ8PfRIsuw1KVdseRhtQ0rFalgDRfwY3rxj7WIhYilZytTdCsCfVlxkpXsv05WAab
-	a+uO21NTSZ8tWB5z77VpuX8EILicLy6pxj48mA+yFI4cLo2LiGIMRUKxWW2K+csGJkeU/xpTAhxxQ
-	DohW/1892LGHVwbKjSAnhyhvI8E5/BQdXhFrjMzjrHV3LIV3zmwsVH9j7nk1FDkS/GhAY06zJdD9e
-	8haeJpz/xSB/zLJ4Obia+8X/5IF4UX1TOa99xjovmRg8tBRccrA3XhKGKVqhEHfpdaxZxj0w+p1Es
-	9lh+iyoHPz3bmaRyAJCA==;
+	List-Owner; bh=btDO41ko0u5iqkpTrL4wkM5mhAlHbOnN22IwJTjnPSo=; b=l72kSQhjoDTZu2
+	Nwp3C6Orhhpe+y6WrLrMkIZwmySTbudItuD05WbAac5oGdcfaaSUlbPnN10qYkhYPVbTJ5b9IBxA0
+	ghihhtaTTGiK+Qi08YSPCQCgC2MBd+yUvan0j1Uiffyjy5KxNV4HylxJsuQnFlVcd7LC2h2FJ9Eh4
+	mrigr1QzOQY72dz9D8f5gs1Xzs9I1QdjieeqoPRNk/dsEIULy+ApScXEnndDxlNPxeyGBu+HgXG19
+	qhUNvBj+sy0VXrkIkCguQVgIBkeENR9Gggjk+/4UsySS4YtDsqnsmezYny0PCQ9tfRlEgfePF04Jf
+	1LtMJD6Mnq0jwJyeQWAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMp9E-00E2Oq-3C;
-	Fri, 21 Jul 2023 12:22:16 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1qMrVv-00ELd9-2T;
+	Fri, 21 Jul 2023 14:53:51 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMp9B-00E2NA-0m
+	id 1qMrVs-00ELcR-2h
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Jul 2023 12:22:14 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-51e57874bfdso2587097a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 21 Jul 2023 05:22:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689942129; x=1690546929;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
-        b=A0cs1EZJ3USdSwmD8Zmh3BHe8ECUz3i/LDYB6rwgMenjXjzKol6h9cQafGd3mIi/N8
-         KDogdbP7gvOQK1svPbOI6mX7JR7l19JqTN97JPSpqhLrjOUlknE3puy0ugR0398ZLYo8
-         naxgj7qN3ZGNjf5lbDutUFiPL5qXCYetmt9kl5B2AWKvU4VWJ/ZZd9h5YVosYSWqiRjt
-         W8cq6p8Jyrf5Xrr+g9tereb1+qx1zhbITLmoTVBuYFWR/UOP1naRde+doexBATL0CiJj
-         TIqszl/alN3axDgU8rNVOlfgYsyyEbTRdlyyC/Wk2EnMo63bLN3ekuvj+bMT0APDQZgu
-         1btA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689942129; x=1690546929;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
-        b=P+hJ8KGucIAlOA82Yjjn57JIPENG/Uu9U4wMfzAr5NIlCKMHiNIC3cUQ04M6zlrG+6
-         bsTNTZOVfzIhm8P6LFUf8PDU6uV6bA5Oc0Cjx98LuGNTqB0+Lj4DrlU1JcAHyNXGiPM+
-         +y/u3aBABQVeGbzV9QD0N5I9Yy1TNIvfnKra6ZU3SEdkUWV46Ui/+ZYMGtdzsVhbOAEy
-         dDV5WDhvkuXdPiZaJT0mQAvFTml9EUT2GgAANrWc5rGuU7d0ZfiyFpkny4JEtUCwrDxA
-         Zc1fubI0ZeAwpYUDnoXvZI7rXr+OD89arewVOELera0Lb92xXRAcvRGxlqW2dBiBNpVi
-         Aqvg==
-X-Gm-Message-State: ABy/qLblXf+mZSHc9l59v62PoFo4pqqSiWZmPmQw5QlrXayC8lugJ0Xh
-	0iCIPCxbUvQgNYTrgJlfiqo1SA==
-X-Google-Smtp-Source: APBJJlEgrr+oqGqdLHlHtx6ewGfVXW3b8XDYFP7oP/kY1KKgiXY6CgYY6m3yXZcmQOqvbmIY53YC/Q==
-X-Received: by 2002:a05:6402:7c9:b0:51d:98d1:5337 with SMTP id u9-20020a05640207c900b0051d98d15337mr1478707edy.37.1689942129328;
-        Fri, 21 Jul 2023 05:22:09 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id u11-20020a056402064b00b0051dfa2e30b2sm2042298edx.9.2023.07.21.05.22.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Jul 2023 05:22:08 -0700 (PDT)
-Message-ID: <c3ea2edb-1b3e-2c39-ccf6-333e3c8b9020@linaro.org>
-Date: Fri, 21 Jul 2023 14:22:06 +0200
+	Fri, 21 Jul 2023 14:53:51 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20230721145343euoutp01750044377508f2913e4128e1021a1c97~z6a8B6Thw1462914629euoutp01S
+	for <linux-rockchip@lists.infradead.org>; Fri, 21 Jul 2023 14:53:43 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20230721145343euoutp01750044377508f2913e4128e1021a1c97~z6a8B6Thw1462914629euoutp01S
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1689951223;
+	bh=Rrfb/5CKnXgwUVjftv6KwY1EDaIM4ynA7oZzfhedB9E=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=hn99Q7LOHpT7R1zLQTFNqIrozav5Yq376DDTNRBZhUHxoDYi9Mka0MXpVUWrUx9G7
+	 Nl3vxwiVHY4n1ALfJhMLG9bZATxgG1GMsBpx211IDVmuJ/ktOagwEXPOozMQm8jKY3
+	 QZkXBYe9RJPeNinxJa4VDbJ+lhbyDzslsoEioL/Q=
+Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+	20230721145342eucas1p23fd6df809ed2412ff05863ff67460c74~z6a76U5mS1410514105eucas1p28;
+	Fri, 21 Jul 2023 14:53:42 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+	eusmges2new.samsung.com (EUCPMTA) with SMTP id 01.90.11320.6FB9AB46; Fri, 21
+	Jul 2023 15:53:42 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee~z6a7pa41t2668226682eucas1p1-;
+	Fri, 21 Jul 2023 14:53:42 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20230721145342eusmtrp123604735d480923a48c9203f4226e478~z6a7o17XY2368823688eusmtrp1Z;
+	Fri, 21 Jul 2023 14:53:42 +0000 (GMT)
+X-AuditID: cbfec7f4-993ff70000022c38-38-64ba9bf6ba2a
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+	eusmgms1.samsung.com (EUCPMTA) with SMTP id F6.99.10549.6FB9AB46; Fri, 21
+	Jul 2023 15:53:42 +0100 (BST)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20230721145341eusmtip14705932957219d7009f3d7205e4c2852~z6a6_GjNt3038230382eusmtip1V;
+	Fri, 21 Jul 2023 14:53:41 +0000 (GMT)
+Message-ID: <c2bba4df-da1f-5666-89aa-28c6700575ca@samsung.com>
+Date: Fri, 21 Jul 2023 16:53:42 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
+	Gecko/20100101 Thunderbird/102.13.0
+Subject: Re: [RFC PATCH 2/2] regmap: Reject fast_io regmap configurations
+ with RBTREE and MAPLE caches
 Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
- <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
+To: Guenter Roeck <linux@roeck-us.net>, Mark Brown <broonie@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J . Wysocki"
+	<rafael@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andy
+	Yan <andy.yan@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <20230720032848.1306349-2-linux@roeck-us.net>
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrGKsWRmVeSWpSXmKPExsWy7djPc7rfZu9KMbg1w9Si//xNRoupD5+w
+	WTQvXs9m8f/Ra1aLy7vmsFl8evCf2eLJwjNMFnO/TGW2+Lt9E4sDp8emVZ1sHvvnrmH32Lyk
+	3qP/r4HH31n7WTx2fm9g99h+bR6zx+dNcgEcUVw2Kak5mWWpRfp2CVwZM6+uYSx4z1ex4N4W
+	1gbG79xdjJwcEgImEksa5zN2MXJxCAmsYJR4unwhlPOFUeLEpgdsEM5nRokpN04yw7T0zG5g
+	gUgsZ5Q43v+DGcL5yCixfsI9FpAqXgE7id7tB8BsFgFVid+L25kg4oISJ2c+AYuLCqRK7Lg9
+	gRXEFhbIkLi07hQjiM0sIC5x68l8sHoRAXeJn18boeKTmCQe70oDsdkEDCW63naxgdicAlYS
+	BycdZIOokZfY/nYO2EESAv85JG71XmSCONtF4s/6ZVC2sMSr41vYIWwZidOTe1ggGtoZJRb8
+	vs8E4UxglGh4fosRospa4s65X0ArOIBWaEqs36UPEXaU2Df7HBNIWEKAT+LGW0GII/gkJm2b
+	zgwR5pXoaBOCqFaTmHV8HdzagxcuMU9gVJqFFCyzkLw/C8k7sxD2LmBkWcUonlpanJueWmyU
+	l1quV5yYW1yal66XnJ+7iRGYtE7/O/5lB+PyVx/1DjEycTAeYpTgYFYS4U1P35UixJuSWFmV
+	WpQfX1Sak1p8iFGag0VJnFfb9mSykEB6YklqdmpqQWoRTJaJg1OqgWn1p1/vBd/v3NZZfafW
+	XL460Uhj25/J03le2U1bsedToOSTgGpvYX/uoCuO3JpPeaPNjdau3xck8eZ3TFZlWER/kfm/
+	eQKL9tiIFZ8N2NJ9Kmj/loC6Up0vAccSlY78yz7iwlyqlnSt4E3ODZ87R3nfeasLXu5IWemk
+	4xtSveDfNdWX8YYGJWL2txO9XiWLcBe13JvUHdB86fxON8ttsm4ndzuxp3522iI4iTWeU+Hy
+	wkW81s8ruO5o8sUy32i37bZtVTc6Ipmh/zPlFuvuD5YfbJvXzIvy2TDPrXVNTujKG+eWizG+
+	P567uLrX7MSH35nuzPPsjp3LnxYRbOSnss70XXrh9bXvnKJeH2SLUGIpzkg01GIuKk4EAL/r
+	UCbJAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrOIsWRmVeSWpSXmKPExsVy+t/xu7rfZu9KMbj8RNGi//xNRoupD5+w
+	WTQvXs9m8f/Ra1aLy7vmsFl8evCf2eLJwjNMFnO/TGW2+Lt9E4sDp8emVZ1sHvvnrmH32Lyk
+	3qP/r4HH31n7WTx2fm9g99h+bR6zx+dNcgEcUXo2RfmlJakKGfnFJbZK0YYWRnqGlhZ6RiaW
+	eobG5rFWRqZK+nY2Kak5mWWpRfp2CXoZM6+uYSx4z1ex4N4W1gbG79xdjJwcEgImEj2zG1hA
+	bCGBpYwS718yQcRlJE5Oa2CFsIUl/lzrYuti5AKqec8o0bJoMliCV8BOonf7AbBmFgFVid+L
+	25kg4oISJ2c+AYuLCqRK/GrYBVYvLJAh0fNtFZjNLCAucevJfLB6EQF3iZ9fGxlBFjALTGKS
+	uLd2EyvERZkSd/YtAxvEJmAo0fUW5ApODk4BK4mDkw6yQQwyk+ja2sUIYctLbH87h3kCo9As
+	JHfMQrJvFpKWWUhaFjCyrGIUSS0tzk3PLTbUK07MLS7NS9dLzs/dxAiM0W3Hfm7ewTjv1Ue9
+	Q4xMHIyHGCU4mJVEeNPTd6UI8aYkVlalFuXHF5XmpBYfYjQFBsZEZinR5HxgksgriTc0MzA1
+	NDGzNDC1NDNWEuf1LOhIFBJITyxJzU5NLUgtgulj4uCUamDi1P33yPW7bFp5/0mun42m7rox
+	VUsSQpa/vZJTkx3n2t6z8cSu2xum/vo5+6y67PvXvIfrZ7xmLMxg6phf155y7/OaRLY3k1aL
+	HH38aushntbX5UY/I3W6/z5Q/TjnwbUF4edn2qWe8hPQvDTby/7O9dmrTBvVZ39y1itvFupX
+	cTdqCdm/xiwoRnFmephkZMiUpov+3ArTPK+/zp6z4rA/Wzl/9wK1wyeO8fudqq5MUuFeseXo
+	HevZhbbXvXeev6/6TEx6a0zv+2zr1taK0BV2QbE+h6QsZ94pEv4tWXRnu3buDCPvmbKS280/
+	/j793F1//uJd2ntfrbrifldhOeOeC7+aBISX77qafXf9vPatSizFGYmGWsxFxYkAVrBfb1oD
+	AAA=
+X-CMS-MailID: 20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee
+X-Msg-Generator: CA
+X-RootMTR: 20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee
+References: <20230720032848.1306349-1-linux@roeck-us.net>
+	<20230720032848.1306349-2-linux@roeck-us.net>
+	<CGME20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_052213_297384_B389E2C7 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20230721_075349_135747_AD1F1F21 
+X-CRM114-Status: GOOD (  21.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +137,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/07/2023 10:19, Alexander Stein wrote:
-> Use id-gpios and vbus-gpios instead.
-> 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Shawn Guo <shawnguo@kernel.org>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hi,
+
+On 20.07.2023 05:28, Guenter Roeck wrote:
+> REGCACHE_RBTREE and REGCACHE_MAPLE dynamically allocate memory for regmap
+> operations. This is incompatible with spinlock based locking which is used
+> for fast_io operations. Reject affected configurations.
+>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > ---
-> Changes in v3:
-> * Rebased to next-20230721
-> * Split from bindings patch
+> This seems prudent, given that accesses will be protected by spinlock
+> but may allocate memory with GFP_KERNEL. Another option might be to use
+> WARN_ON instead of rejecting the configuration to avoid hard regressions
+> (and I think both drivers/net/ieee802154/mcr20a.c and
+> sound/soc/codecs/sti-sas.c may be affected, though I can not test it).
 
-I think you wanted to split it per subsystem, right? That's why you
-resent/v3? But the split did not happen. If you decide not to split,
-then try to figure out: who should pick up this patchset?
+This patch, which landed in today's linux-next, breaks operation of the 
+RockChip's VOP2 DRM driver 
+(drivers/gpu/drm/rockchip/rockchip_drm_vop2.c). I'm not sure what is the 
+proper fix in this case. Should one change the cache type to REGCACHE_FLAT?
 
-Best regards,
-Krzysztof
+
+>   drivers/base/regmap/regmap.c | 9 +++++++++
+>   1 file changed, 9 insertions(+)
+>
+> diff --git a/drivers/base/regmap/regmap.c b/drivers/base/regmap/regmap.c
+> index 89a7f1c459c1..b4640285c0b9 100644
+> --- a/drivers/base/regmap/regmap.c
+> +++ b/drivers/base/regmap/regmap.c
+> @@ -777,6 +777,15 @@ struct regmap *__regmap_init(struct device *dev,
+>   	} else {
+>   		if ((bus && bus->fast_io) ||
+>   		    config->fast_io) {
+> +			/*
+> +			 * fast_io is incompatible with REGCACHE_RBTREE and REGCACHE_MAPLE
+> +			 * since both need to dynamically allocate memory.
+> +			 */
+> +			if (config->cache_type == REGCACHE_RBTREE ||
+> +			    config->cache_type == REGCACHE_MAPLE) {
+> +				ret = -EINVAL;
+> +				goto err_name;
+> +			}
+>   			if (config->use_raw_spinlock) {
+>   				raw_spin_lock_init(&map->raw_spinlock);
+>   				map->lock = regmap_lock_raw_spinlock;
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
 
 
 _______________________________________________
