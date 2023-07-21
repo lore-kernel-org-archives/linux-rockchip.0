@@ -4,77 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A9E3EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 16:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54797EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 16:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0J91eVcMXCSkyfRhph849eVOGoa7HRjJ7if3GBhmaeE=; b=YLbS8FA+snoly0
-	aBUnVhDYpBpZlOR5OWfxjyGaV77KzF4wUiLdp1KAP1h8HDc1+8rSqe6oWVs9JtpkGF0aRmLNN4QlQ
-	bkafmkWFlwtZ4M2FR5hP3kKSIUjOD9ovlQMLRfjLUJEOX1hLeLdk/pjuRB+wSUPRnfV9yETfwGXAG
-	oF5UBcwdtdJ6USNLXsISzT6XcZfjr+Gi/da9W4n1zq8t1gvZXCTcAK9sYAT1K5N70Itg6LoJGYnar
-	XJ+KAUtCwOymD9fsiV/s8jmlLk8AtKb+mZewdJVBI49TEoA9jre9OE3ywVJnNKzToMCl5IyWVD5hb
-	+/qSGv9hozcTo2CmTQWQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZoigvQezmyMGmZ887lpdCe6hYDr9/Kpq9XtySNSjjXM=; b=nXrXZiKFqOdg4JQ837IoyHWAIa
+	b6tRHoXN/jyx/3p9KWHdCCXK96u+mTRC5MN3ANm+HktUDOsbsTYLMtwhmp+yqI2wBj/xTAMmqAF/4
+	vTj3DaIeh67UxUIOSJilH0DPU1yeF8qFlq403MaJ5zdQsAujxZ71RyxanFc0jn9Htm4JxhQiA6P1C
+	EV085XmvvdB22+3Uc0uk069SpVl3hjKtCOiluderaY2W3IsFHeZeqc+VBNMYIlBI3Fo/7ZIuZD+u5
+	hHD3HNFIXOJ4xpBavBvOw6lxJlNKdCdEUa79Q0teOBpqQTzx5JFcNDM0SiYlUSnzff9wegeIJHuBW
+	xNNdf8tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsZ3-00EVmH-2O;
-	Fri, 21 Jul 2023 16:01:09 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
+	id 1qMsmK-00EYAC-35;
+	Fri, 21 Jul 2023 16:14:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsZ1-00EVkv-2P
+	id 1qMsmH-00EY9T-0e
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Jul 2023 16:01:08 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id ca18e2360f4ac-78362f574c9so91015039f.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 21 Jul 2023 09:01:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689955265; x=1690560065;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:sender
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=di9/aclK3hfLnvrgH4+kVFnRPLx8Dm1glX0mwyVou0k=;
-        b=H4fSiEiNraah5eON3dL1Ivzn2aBIx3ZMm2ZEAH8Otr0Ul44TMWy/SqXX1lFH9/etOP
-         0d070rgURJhRnTMOBOSKlycUuR2szJc1BtYQqnrvAFETAWCggv95oQ5tk2uGcovLfiZf
-         cwiuGmOLTppRTL264kI9eirAO3yYFuSKCg2awLueM933X/QIUJOOvXVT4WvacclVBvc5
-         OlTc7+OBStK46YJ8z+olDahGdL5v5Y+szmsIOCk+D93d3cA+bHB/K1rJuoyKGhnt8ps+
-         nGnTbyNgjdKhTBcILwUeiCFhZ0ILOKZp4sg9jx7R+K8iyV4114mRjMsI0eNZXADWK4SE
-         rMnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689955265; x=1690560065;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:sender
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=di9/aclK3hfLnvrgH4+kVFnRPLx8Dm1glX0mwyVou0k=;
-        b=d87ckT2N2lhIbu7StmH0WNbMuwZp5Hc+DPGc8DmyvXAuAM+UL/AyxV3RZW62XEMIaS
-         lhpv8AS32E3m8uOJPW1SjxvrYk/Pcxvt141yCK/3x1oGO2i/srH6RQ6L/iMtrdiXreMp
-         PktnPfnHeNVE03C7yCt1dtisQ5uBbaDInYTPl4nPYSMqqvkKMOLFsiSbhwH4Eb8CddI2
-         BVSIdaYjzSA/isoCFKYw6wkExwJW29NBwxrpYpREZXDwH1C9pK8W2kO++bSyvbezQ4iQ
-         j0+eC7DnylBBHDEGJ0YUBgZhlri9Ha+jrkPmOHBw18X/Q5U0borjU7ed/Upp5UOII/gI
-         sLnA==
-X-Gm-Message-State: ABy/qLbIWr4+TVMyKarODnmJIy/3bNz5714xJfaLYyRPZ5pkK/rsw8qa
-	tHAjWqJ+LuGbbS0e8K+U/Ns=
-X-Google-Smtp-Source: APBJJlEXOurJ9bKqvF8rdK9oK18c1yHFpD4ACr5El7QUBXH+yXeCXUK1ScK8ZEbLNo62MFw2qapHag==
-X-Received: by 2002:a6b:916:0:b0:777:8e86:7702 with SMTP id t22-20020a6b0916000000b007778e867702mr349307ioi.16.1689955265490;
-        Fri, 21 Jul 2023 09:01:05 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id w2-20020a02cf82000000b0042b48e5da4bsm1059358jar.134.2023.07.21.09.01.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Jul 2023 09:01:04 -0700 (PDT)
-Message-ID: <1c90db79-4a1a-d3cb-5250-f30cf6b5a90c@roeck-us.net>
-Date: Fri, 21 Jul 2023 09:01:03 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Content-Language: en-US
-To: Mark Brown <broonie@kernel.org>
+	Fri, 21 Jul 2023 16:14:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0A64061D42;
+	Fri, 21 Jul 2023 16:14:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D07EC433C7;
+	Fri, 21 Jul 2023 16:14:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689956087;
+	bh=Tp6m6Ynzv0PZqY6S2XJ0BIUu1olztmgp2bDcjXIC/Ik=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KLDjXxS/KEUupMuXXBjUapvolg7EiOqJBkonnte4ZUByhqOZxr1mya2vorljCqILF
+	 yhR2NukquI3diHzktROs3CNWSxaVdeXXkA4UizWK4rhzoIZ/XBiONvR9BSSCVwop4H
+	 LDzpqxCZfGXCDNPyoMxdnycbwrsKON5miZ4a9okxoSMd+Q7KXwa20S8KGzNxLVjsPn
+	 yiA+igsRTQ+AG5jE5vzVjL51oJQWSnMKjicR4hFcqyzaznLWVn2QUAVzGy51TzLD3v
+	 6Q5d/GfQJ0flY4pHtIPyyEufnihukWHp9KPN6n73UMEd1Ypz79FXEctb52skzMeJsY
+	 HzHPT9oS4nQhw==
+Date: Fri, 21 Jul 2023 17:14:42 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Guenter Roeck <linux@roeck-us.net>
 Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J . Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Dan Carpenter <dan.carpenter@linaro.org>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Dan Carpenter <dan.carpenter@linaro.org>
+Subject: Re: [RFC PATCH 2/2] regmap: Reject fast_io regmap configurations
+ with RBTREE and MAPLE caches
+Message-ID: <52f21f66-96e3-4ff9-b1bf-625bdc535b42@sirena.org.uk>
 References: <20230720032848.1306349-1-linux@roeck-us.net>
  <20230720032848.1306349-2-linux@roeck-us.net>
  <CGME20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee@eucas1p1.samsung.com>
@@ -82,13 +66,13 @@ References: <20230720032848.1306349-1-linux@roeck-us.net>
  <fe31bb86-40ec-4b77-9edd-eeaa61bb5e08@sirena.org.uk>
  <c9614ffb-7840-6a84-883d-ed4371d75c11@roeck-us.net>
  <205a83df-c67b-457f-a9bf-a9c6def4bb3e@sirena.org.uk>
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [RFC PATCH 2/2] regmap: Reject fast_io regmap configurations with
- RBTREE and MAPLE caches
-In-Reply-To: <205a83df-c67b-457f-a9bf-a9c6def4bb3e@sirena.org.uk>
+ <1c90db79-4a1a-d3cb-5250-f30cf6b5a90c@roeck-us.net>
+MIME-Version: 1.0
+In-Reply-To: <1c90db79-4a1a-d3cb-5250-f30cf6b5a90c@roeck-us.net>
+X-Cookie: Do, or do not
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_090107_786720_EB9F0B2D 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20230721_091449_309040_40CC56B1 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,37 +84,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============5049088905740761823=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/21/23 08:13, Mark Brown wrote:
-> On Fri, Jul 21, 2023 at 08:07:28AM -0700, Guenter Roeck wrote:
->> On 7/21/23 08:03, Mark Brown wrote:
-> 
->>> Actually Guenter and Dan have made the required updates to support this
->>> so the warning will be gone soon (hopefully Dan will send his patch
->>> properly shortly).
-> 
->> Do you plan to revert this patch ? If not regmap_init() would still fail
->> for the affected drivers, even after my and Dan's patches have been applied.
-> 
-> Yeah.  You *can* use the dynamically allocating caches safely if you
-> ensure that no new cache nodes are allocated during I/O.  I'd not
-> realised people were actually doing this.
 
-Ok.
+--===============5049088905740761823==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="y5Ora18Azgbblbsy"
+Content-Disposition: inline
 
-Dan, let me know if you don't have time to send a proper patch.
-I have one based on your suggestion prepared that I could send out
-if needed.
 
-Thanks,
-Guenter
+--y5Ora18Azgbblbsy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Fri, Jul 21, 2023 at 09:01:03AM -0700, Guenter Roeck wrote:
+> On 7/21/23 08:13, Mark Brown wrote:
+
+> > Yeah.  You *can* use the dynamically allocating caches safely if you
+> > ensure that no new cache nodes are allocated during I/O.  I'd not
+> > realised people were actually doing this.
+
+> Ok.
+
+> Dan, let me know if you don't have time to send a proper patch.
+> I have one based on your suggestion prepared that I could send out
+> if needed.
+
+Dan sent the patch already, assuming my CI doesn't blow up unexpectedly
+it should be applied tonight.
+
+--y5Ora18Azgbblbsy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmS6rvEACgkQJNaLcl1U
+h9DWgwf9HKwgSix/kA8JSz+x3BXLgjXeeYOKuz4Cos8d6oDZbQOQ0pu2wnCk7b4I
++Q7qIjfFkhVeFvJN+vwMtWkKMiU/uOMAqi3PtuRIEsRolK/9i7g85HK1+/pVi6NH
+Ec9wDamU7ED9L5y8VxD6JYV6wcCGp7KqX1Z+HuStIllxqcNf1T0AFC7wqR+Mq33P
+cmKQMqL+n/dz1mD0S85vt7s0WFS7SDi6wtSqY7nyIiVBlUNxZiPvaej3QMpoi/t/
+uNkqjq2i5lvS26SrZ+pN6Gw9fjER9XlBYkXxJUpgNyAlUFbTbbARBBppM8/dhlaP
+w/gduGTZTVdSBivpvxmMr31J4tk7lA==
+=90DQ
+-----END PGP SIGNATURE-----
+
+--y5Ora18Azgbblbsy--
+
+
+--===============5049088905740761823==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5049088905740761823==--
+
