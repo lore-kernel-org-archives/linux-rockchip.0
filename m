@@ -4,50 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54797EB64DD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 16:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDCDEB64DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 16:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZoigvQezmyMGmZ887lpdCe6hYDr9/Kpq9XtySNSjjXM=; b=nXrXZiKFqOdg4JQ837IoyHWAIa
-	b6tRHoXN/jyx/3p9KWHdCCXK96u+mTRC5MN3ANm+HktUDOsbsTYLMtwhmp+yqI2wBj/xTAMmqAF/4
-	vTj3DaIeh67UxUIOSJilH0DPU1yeF8qFlq403MaJ5zdQsAujxZ71RyxanFc0jn9Htm4JxhQiA6P1C
-	EV085XmvvdB22+3Uc0uk069SpVl3hjKtCOiluderaY2W3IsFHeZeqc+VBNMYIlBI3Fo/7ZIuZD+u5
-	hHD3HNFIXOJ4xpBavBvOw6lxJlNKdCdEUa79Q0teOBpqQTzx5JFcNDM0SiYlUSnzff9wegeIJHuBW
-	xNNdf8tg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=knIvaG/Ttz7EGeffuDnzIh59+9VqDF9moWOALAW2jO4=; b=ntHeG6cmMZ5WXD
+	Xi0Y4GA3jmZzcOno/i+6OyEB93P5wF9TtxuoWIzI1HMIDN7cba8yhD8GJDXkHwFqtvjQcGZSri4mq
+	XORyyd4xt8axycA40eyHnsxlQnrliPjam4v/688jAoTFjRMz7kzlYjA2Qq4662QRl/FHxYwfTXA5R
+	ncjz6snoPt0ixVNrCCDQrcFGoIihya1SraZdkz1Uy7z3yWKV6V7hkfQNP87IgrOMkCacZpvkpySWD
+	T03Lnwevzjc/raCe0OVLxtpBuSEdF+4qAJFCtgDr880rknWNHo9xp5CQmWPSTrklBY4RuAjPGFk7q
+	4gdcHUsM6csrLhzSRW5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsmK-00EYAC-35;
-	Fri, 21 Jul 2023 16:14:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qMsoI-00EYaC-0k;
+	Fri, 21 Jul 2023 16:16:54 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsmH-00EY9T-0e
+	id 1qMsoF-00EYYV-1J
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Jul 2023 16:14:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0A64061D42;
-	Fri, 21 Jul 2023 16:14:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D07EC433C7;
-	Fri, 21 Jul 2023 16:14:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689956087;
-	bh=Tp6m6Ynzv0PZqY6S2XJ0BIUu1olztmgp2bDcjXIC/Ik=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KLDjXxS/KEUupMuXXBjUapvolg7EiOqJBkonnte4ZUByhqOZxr1mya2vorljCqILF
-	 yhR2NukquI3diHzktROs3CNWSxaVdeXXkA4UizWK4rhzoIZ/XBiONvR9BSSCVwop4H
-	 LDzpqxCZfGXCDNPyoMxdnycbwrsKON5miZ4a9okxoSMd+Q7KXwa20S8KGzNxLVjsPn
-	 yiA+igsRTQ+AG5jE5vzVjL51oJQWSnMKjicR4hFcqyzaznLWVn2QUAVzGy51TzLD3v
-	 6Q5d/GfQJ0flY4pHtIPyyEufnihukWHp9KPN6n73UMEd1Ypz79FXEctb52skzMeJsY
-	 HzHPT9oS4nQhw==
-Date: Fri, 21 Jul 2023 17:14:42 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Guenter Roeck <linux@roeck-us.net>
+	Fri, 21 Jul 2023 16:16:52 +0000
+Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-783549ef058so91930539f.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Jul 2023 09:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689956208; x=1690561008;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RkGS0Aio2ruXQJzFNMuw71y4Q4sy6vm123ijO5QNmbQ=;
+        b=C33YvWHyG8SAvKmoWo8GzkqXeJSwpkpeyWOJKIGf43PG1lLHa91EXKWJIQlow4MIU2
+         /C+IKGzvkRfCQGURBhF/dhbHZg+/gRzLtNOvNf/oNrIEjPDCfk5q2EvhjkHzR9eex3qa
+         opN2d+b7syed0gNIOKQRTC4xinE425LlTHUDqY54McGj7U3LjfsQjhVdu9RRygRx7SMI
+         gPqGPKJv6fzMytGqRsj5/lB934739KM8HUf6gf/BounQ87L9vMayqvoEGwsyyfbkGj/S
+         ij1CYjMMFIpDFKh4sYrIdV3RJKeEai/KWeaX86Jdnqv4auRNeT8p/KNXyGrOt0ZBdANz
+         FCnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689956208; x=1690561008;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RkGS0Aio2ruXQJzFNMuw71y4Q4sy6vm123ijO5QNmbQ=;
+        b=ZBqi0BqwznEqzfwO2YyWJfvLg2fnSo8Qk1XspJUDOgo3/MP8TYVttXjH+tyuA8hZgv
+         wBNJvHqtYbOMYGVKzzzseQn2Zg1faScMMpe7FVLGU5lBQacevvyQQO/+MIqdpuPNgj/p
+         UbT++pSprPANR7VCHS/fdXqaiklmyrRKUkSyth2izF/szAluYtMrAlXE9he1kXNWqvLo
+         oNeiv555F2dRE750SWbTBb8LPlmDzwMiJPNspOxDXcOowz3CwtFx6GAmRxVlD19+NgWl
+         zbdp3i0my4TqXdq4bFzmjbyLGkdMCOgnXeZ2L3/22TweDJfEjvGR9204mvrVAauwPSq8
+         O0zA==
+X-Gm-Message-State: ABy/qLZoiJP7aQszPsxKsRByYkQemkXLz0cHszboZiOx4z8L5R4v4Mg7
+	EVZWbDhS20PXuEuyDHGBGR8=
+X-Google-Smtp-Source: APBJJlEGBZEHrqyHJs8rsnrFMZjKXrMKYJ0uB+NZVasno9sqLRIVqTiKQsRYqZ1qCE3lDegYoij5KQ==
+X-Received: by 2002:a05:6602:38a:b0:787:1990:d2e2 with SMTP id f10-20020a056602038a00b007871990d2e2mr507146iov.10.1689956207948;
+        Fri, 21 Jul 2023 09:16:47 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id v10-20020a02cbaa000000b0042036f06b24sm1111818jap.163.2023.07.21.09.16.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jul 2023 09:16:47 -0700 (PDT)
+Date: Fri, 21 Jul 2023 09:16:46 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Mark Brown <broonie@kernel.org>
 Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	"Rafael J . Wysocki" <rafael@kernel.org>,
@@ -58,7 +75,7 @@ Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
 	Dan Carpenter <dan.carpenter@linaro.org>
 Subject: Re: [RFC PATCH 2/2] regmap: Reject fast_io regmap configurations
  with RBTREE and MAPLE caches
-Message-ID: <52f21f66-96e3-4ff9-b1bf-625bdc535b42@sirena.org.uk>
+Message-ID: <7e50d739-fffe-48e7-9da1-baa761419820@roeck-us.net>
 References: <20230720032848.1306349-1-linux@roeck-us.net>
  <20230720032848.1306349-2-linux@roeck-us.net>
  <CGME20230721145342eucas1p12e658a54d36d985b2811e2c21f7810ee@eucas1p1.samsung.com>
@@ -67,12 +84,13 @@ References: <20230720032848.1306349-1-linux@roeck-us.net>
  <c9614ffb-7840-6a84-883d-ed4371d75c11@roeck-us.net>
  <205a83df-c67b-457f-a9bf-a9c6def4bb3e@sirena.org.uk>
  <1c90db79-4a1a-d3cb-5250-f30cf6b5a90c@roeck-us.net>
+ <52f21f66-96e3-4ff9-b1bf-625bdc535b42@sirena.org.uk>
 MIME-Version: 1.0
-In-Reply-To: <1c90db79-4a1a-d3cb-5250-f30cf6b5a90c@roeck-us.net>
-X-Cookie: Do, or do not
+Content-Disposition: inline
+In-Reply-To: <52f21f66-96e3-4ff9-b1bf-625bdc535b42@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_091449_309040_40CC56B1 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20230721_091651_443414_7097FE00 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,65 +102,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5049088905740761823=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jul 21, 2023 at 05:14:42PM +0100, Mark Brown wrote:
+> On Fri, Jul 21, 2023 at 09:01:03AM -0700, Guenter Roeck wrote:
+> > On 7/21/23 08:13, Mark Brown wrote:
+> 
+> > > Yeah.  You *can* use the dynamically allocating caches safely if you
+> > > ensure that no new cache nodes are allocated during I/O.  I'd not
+> > > realised people were actually doing this.
+> 
+> > Ok.
+> 
+> > Dan, let me know if you don't have time to send a proper patch.
+> > I have one based on your suggestion prepared that I could send out
+> > if needed.
+> 
+> Dan sent the patch already, assuming my CI doesn't blow up unexpectedly
+> it should be applied tonight.
 
---===============5049088905740761823==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="y5Ora18Azgbblbsy"
-Content-Disposition: inline
+Excellent.
 
-
---y5Ora18Azgbblbsy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Jul 21, 2023 at 09:01:03AM -0700, Guenter Roeck wrote:
-> On 7/21/23 08:13, Mark Brown wrote:
-
-> > Yeah.  You *can* use the dynamically allocating caches safely if you
-> > ensure that no new cache nodes are allocated during I/O.  I'd not
-> > realised people were actually doing this.
-
-> Ok.
-
-> Dan, let me know if you don't have time to send a proper patch.
-> I have one based on your suggestion prepared that I could send out
-> if needed.
-
-Dan sent the patch already, assuming my CI doesn't blow up unexpectedly
-it should be applied tonight.
-
---y5Ora18Azgbblbsy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmS6rvEACgkQJNaLcl1U
-h9DWgwf9HKwgSix/kA8JSz+x3BXLgjXeeYOKuz4Cos8d6oDZbQOQ0pu2wnCk7b4I
-+Q7qIjfFkhVeFvJN+vwMtWkKMiU/uOMAqi3PtuRIEsRolK/9i7g85HK1+/pVi6NH
-Ec9wDamU7ED9L5y8VxD6JYV6wcCGp7KqX1Z+HuStIllxqcNf1T0AFC7wqR+Mq33P
-cmKQMqL+n/dz1mD0S85vt7s0WFS7SDi6wtSqY7nyIiVBlUNxZiPvaej3QMpoi/t/
-uNkqjq2i5lvS26SrZ+pN6Gw9fjER9XlBYkXxJUpgNyAlUFbTbbARBBppM8/dhlaP
-w/gduGTZTVdSBivpvxmMr31J4tk7lA==
-=90DQ
------END PGP SIGNATURE-----
-
---y5Ora18Azgbblbsy--
-
-
---===============5049088905740761823==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Guenter
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5049088905740761823==--
-
