@@ -4,134 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AC6EB64DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 12:04:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC9E8EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 12:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l7rkdqRhBTpWBtDJbwEcMEWRz2CeJL4OVSTgCVmFEFc=; b=j5KxItj38q/5Gy
-	1pKUNy3HLbCIGbC4hK2NNb4CAx4hlMYngb9fK15PG6ytbNmieqKds6/tfia/H4Y6hrFg3CJgiOv5o
-	Wy67FfLSaKkOeez09J/LVPC6secPx/7fOwK/96HaQCMaBLUTx7yPecdsW0qnVPKQuCrd+5Mpx7f3K
-	SawZZ74wMC5O7A7yQP6fG8af2X7iNwfQs7SOubLas+h5Sz8HWMXIxQ4Y+CO5K9IPA8TRxY1x20Tow
-	9O9EZEwWl6hdToLMWHU5kqDMEr61/iUmXFTJD2giQrKpy/MRs4yLIvkrs0gMjdHzWrSl1r+OmJDtz
-	ZfQM+kbUwgxRpVxhIpxQ==;
+	List-Owner; bh=voeh7VIzlcAMs3igUGAMC+t3bfLRRjBAfYqPCQN2ncQ=; b=FFvlqayNHI4ekH
+	Fi3bsQitDHEZCZ8PfRIsuw1KVdseRhtQ0rFalgDRfwY3rxj7WIhYilZytTdCsCfVlxkpXsv05WAab
+	a+uO21NTSZ8tWB5z77VpuX8EILicLy6pxj48mA+yFI4cLo2LiGIMRUKxWW2K+csGJkeU/xpTAhxxQ
+	DohW/1892LGHVwbKjSAnhyhvI8E5/BQdXhFrjMzjrHV3LIV3zmwsVH9j7nk1FDkS/GhAY06zJdD9e
+	8haeJpz/xSB/zLJ4Obia+8X/5IF4UX1TOa99xjovmRg8tBRccrA3XhKGKVqhEHfpdaxZxj0w+p1Es
+	9lh+iyoHPz3bmaRyAJCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMorp-00E0e0-2x;
-	Fri, 21 Jul 2023 12:04:17 +0000
-Received: from mail-dm6nam12on20601.outbound.protection.outlook.com ([2a01:111:f400:fe59::601] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1qMp9E-00E2Oq-3C;
+	Fri, 21 Jul 2023 12:22:16 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMorn-00E0cg-22;
-	Fri, 21 Jul 2023 12:04:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ESiCmpHu+CO2gPntqsalspQtc0OQN+oXRWaUw1EEOPGddXDWjurpde0FnSlSt2HBY0bOJVnTMLjGDweGiO3SqzfUXG1DhVuyXG2bvsxr+H5jef7Ilk2SFhvSLkMBpj2cMzuvyYb6tMQVexi75E7JFQD2fKrM5AhH7QLEMWPB78XgzjhpiCBpDbDoaSTPDZbEMtyX62vTokyM5i6WM/jZ6bywxqI/mWHeuZoAeydEv3gibA0QPlEB7bnxJ0A7rVfA39zHwq+/V0pX8CbJj9AByUoMILx5d/BcM8Hz/Z6GRZcoMl1dQZ9EnElk3WDBiwdGFuxRpX2SAXsgvLtj4WQLxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=j2TF8sPftjHhRvEpYgHc9KsCMvNukQ4dRQOUlpjcON0=;
- b=XFAIRy7/J8JNnD6ppbXRfyCwvdtbKeT/RosPYmK6OID8VM+gmzJVxmO4E2H3UYotvUJag+dpSdc+6ynudwS8P2wAnhKiKnX8eQMp0+i68rRSYmUTzxiGZlFiLlhEnpCe0O6mxGJN/wjSTKgJB6/OR99JZ5l67WrNN57mS/KaheuDbS8O/sxMVDYLCZITClanbe8I687kPvIqn/WRItRNwBDI7QHyHxWgd3BvLEcJqJ81pMT0sus6yhVw5CFcU3s5iH4geArf4AXSdB9jJvTnoGhul8sy8rVitWRPexLq6zPcVFZoxUykskCuoWI1Fu5S1cQpuQdqif0jFmh72fym3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=j2TF8sPftjHhRvEpYgHc9KsCMvNukQ4dRQOUlpjcON0=;
- b=BthwQWw4YOSd4hSP16y5zLORfid5RRU+7LsCEhHwNr3H8fRBy8nBO9IUcAd92t19YE5zXcDhIyoKHk8HCwIKD8//3RNik1Su3PdZ8XaCLXss3v6FX2nlD+l8lMGqHX2UoUXyeCg6wfxjAnnLI9+Ml5wfLxTw5A0YiXzRVKbrDkDJKqZEzAUO2waB9TJuR1hO4Gw87DeoOLExGd1s/mQ9vx86DpKWHd7Z7CgKWm3NUyk8OnI8AvS3A9WQlUnyR521Iepu1hx8cjbG53pfDGn6u8HqjNOXLG0RrIJUr4zrZkDnuy3QnyrNeWHlz9iJHFbSF8dkckSQNN5gCkiECpXgkQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by MN2PR12MB4455.namprd12.prod.outlook.com (2603:10b6:208:265::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Fri, 21 Jul
- 2023 12:04:08 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6609.025; Fri, 21 Jul 2023
- 12:04:08 +0000
-Date: Fri, 21 Jul 2023 09:04:07 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Cc: Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-sunxi@lists.linux.dev" <linux-sunxi@lists.linux.dev>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 07/10] iommu/ipmmu-vmsa: Convert to
- generic_single_device_group()
-Message-ID: <ZLp0NwPJBCTHh7dX@nvidia.com>
-References: <0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
- <7-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
- <BN9PR11MB52761FF5AA9D8A24C30A12CA8C3FA@BN9PR11MB5276.namprd11.prod.outlook.com>
-Content-Disposition: inline
-In-Reply-To: <BN9PR11MB52761FF5AA9D8A24C30A12CA8C3FA@BN9PR11MB5276.namprd11.prod.outlook.com>
-X-ClientProxiedBy: CH0PR03CA0447.namprd03.prod.outlook.com
- (2603:10b6:610:10e::24) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	id 1qMp9B-00E2NA-0m
+	for linux-rockchip@lists.infradead.org;
+	Fri, 21 Jul 2023 12:22:14 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-51e57874bfdso2587097a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Jul 2023 05:22:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689942129; x=1690546929;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
+        b=A0cs1EZJ3USdSwmD8Zmh3BHe8ECUz3i/LDYB6rwgMenjXjzKol6h9cQafGd3mIi/N8
+         KDogdbP7gvOQK1svPbOI6mX7JR7l19JqTN97JPSpqhLrjOUlknE3puy0ugR0398ZLYo8
+         naxgj7qN3ZGNjf5lbDutUFiPL5qXCYetmt9kl5B2AWKvU4VWJ/ZZd9h5YVosYSWqiRjt
+         W8cq6p8Jyrf5Xrr+g9tereb1+qx1zhbITLmoTVBuYFWR/UOP1naRde+doexBATL0CiJj
+         TIqszl/alN3axDgU8rNVOlfgYsyyEbTRdlyyC/Wk2EnMo63bLN3ekuvj+bMT0APDQZgu
+         1btA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689942129; x=1690546929;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
+        b=P+hJ8KGucIAlOA82Yjjn57JIPENG/Uu9U4wMfzAr5NIlCKMHiNIC3cUQ04M6zlrG+6
+         bsTNTZOVfzIhm8P6LFUf8PDU6uV6bA5Oc0Cjx98LuGNTqB0+Lj4DrlU1JcAHyNXGiPM+
+         +y/u3aBABQVeGbzV9QD0N5I9Yy1TNIvfnKra6ZU3SEdkUWV46Ui/+ZYMGtdzsVhbOAEy
+         dDV5WDhvkuXdPiZaJT0mQAvFTml9EUT2GgAANrWc5rGuU7d0ZfiyFpkny4JEtUCwrDxA
+         Zc1fubI0ZeAwpYUDnoXvZI7rXr+OD89arewVOELera0Lb92xXRAcvRGxlqW2dBiBNpVi
+         Aqvg==
+X-Gm-Message-State: ABy/qLblXf+mZSHc9l59v62PoFo4pqqSiWZmPmQw5QlrXayC8lugJ0Xh
+	0iCIPCxbUvQgNYTrgJlfiqo1SA==
+X-Google-Smtp-Source: APBJJlEgrr+oqGqdLHlHtx6ewGfVXW3b8XDYFP7oP/kY1KKgiXY6CgYY6m3yXZcmQOqvbmIY53YC/Q==
+X-Received: by 2002:a05:6402:7c9:b0:51d:98d1:5337 with SMTP id u9-20020a05640207c900b0051d98d15337mr1478707edy.37.1689942129328;
+        Fri, 21 Jul 2023 05:22:09 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id u11-20020a056402064b00b0051dfa2e30b2sm2042298edx.9.2023.07.21.05.22.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Jul 2023 05:22:08 -0700 (PDT)
+Message-ID: <c3ea2edb-1b3e-2c39-ccf6-333e3c8b9020@linaro.org>
+Date: Fri, 21 Jul 2023 14:22:06 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MN2PR12MB4455:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1a511224-9be1-4ec3-d9f3-08db89e296b3
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: mcMdAZKbAUmzCog4dIvWK2GR7MK+Z9zbhHvV7Y3P/E8wkZRp8xgcYq6cRAU48MvC7ANMoKIoKoEFkAilJfvXcVSrNGEw5Dq9Ar99qtGTpBDcFn8PhCNKzqW6hjvYPPvoTR2yxRXSBjK0iuk7WPD3rI28PlOGeBo8IwqnIP7G7uydwpyxWOR8sak3PBvv7TOl/hzVLo88Lyed1ohto1yLseP69TfQyjFjnzwcGop1hcww4WdOXSPTxeyZ9gg1f36KZ/s7vfilgTuVZjvTsK9nQS0b3/WFkErIzMte0Pwp+ZsTiDar7Q0ngTsDmZ7iWzT5SyLxyX0R22tx7eKGtls0rtgcXuXd3PhQTK4Tiyx8Chkw5FFq1vVkSDcJWmE0RVaJRS3PiLC+VGa1imzTJrZgv1ArcCRzHYehZg21Zsvzwz7TVKxHSwz8s5eUoj1dZ/1RTKLahSg2u8R+JsbKbsyHQh5rNXx90mfs/ZXWTlJkCbtb2NNh0alIvVKnFt6MOd6ViTtSpuc+BcDpVH5xUUanDzSPQJL9IHj2AaLgt4llBNNSSCVZhSW9lUDbMEgaM4rP4KlO6Dp/csZ1dHdiRYZsbOTXjlxg7gxC0269TxWNFpc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(346002)(136003)(366004)(39860400002)(396003)(451199021)(6486002)(54906003)(66556008)(478600001)(4744005)(86362001)(2906002)(6506007)(36756003)(2616005)(186003)(316002)(6512007)(5660300002)(26005)(6916009)(8936002)(66476007)(66946007)(41300700001)(38100700002)(7416002)(8676002)(4326008)(41533002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NmzvTQXRE03BrTEoGwlKLiE6+RYFVQ8sYxgCaMsUcQh/vytQ/3Okxu6IA3ou?=
- =?us-ascii?Q?F9yqNCXmTtzmLA0pEvlTLCdtJ0RoEgA0dQZaU8rdP7Qd18ywfIjsVOYTWqlP?=
- =?us-ascii?Q?LmNAEuSjUSVgoc3v4LE1wW9eeckkzPSH4z55Vo1KLIqksvWF6wLC+DKRMVCH?=
- =?us-ascii?Q?8OFAgmG2C7vT3kGpB21v1bKb+NSIC6Qfsn5GbzAD/jsHSl39MiOkmus1xGyR?=
- =?us-ascii?Q?VpdALRZV+3P3GqIh0gPb42FEKIEiKUakFZy+FKLiLlHSIefw0QGVC5ewWp8d?=
- =?us-ascii?Q?O1pmSn7/Wq9wTibEsOTYFw1ooFLPx+CaUWQ6w7dZd3RRw4VZuSdVt4E+AXDH?=
- =?us-ascii?Q?LzMe15uE2DPisxk4FU2pg8YmYqbY3MlW0CGutqDe8XLR/dGTr2k2T+gDq8tH?=
- =?us-ascii?Q?d+mpjcy0LTqOaCBd9pIQHJPJcUrorYu2AceF+B7hM/VLNrUUIw4V1phFA+7I?=
- =?us-ascii?Q?VQnSOG3d/f0hzMu5hXYRkSp9n3SkSfopvjKghhYwtVSJZfjIYcb/0eiNO66V?=
- =?us-ascii?Q?V/aQGNWoSDzewUPqkStZsjCcEYcg/gB2n/hWqwA4jPZPBIOxV1xe5y7rDMma?=
- =?us-ascii?Q?Xal3VZ+c4+DX6t7voCsf59Xb3T7g5PQG+gpp9Ulw9sFbDL/8ozhG6D0J9YoS?=
- =?us-ascii?Q?LvLLLDOLgdZ/2EMS+QKjl6SsQoNX8iz6cdvzz8SouOW3alD/hmxHM/lQco33?=
- =?us-ascii?Q?TOOx3EM/rVIdGTmrdMs1oioYY0uca0AXecvO8R4md6XvY6rkHOfKeWfxuAdC?=
- =?us-ascii?Q?C3dw3+mRJeI1wVmZvZMLLVZRXLlD7TcKe+zzPjvJcAQCO7HEhwk/nxxSANPA?=
- =?us-ascii?Q?IT0i+c6TI5WfAzWGggRI5yiyl+B1rtbtqcMVqrcQ8iFW300WIDX2aWuTCyfy?=
- =?us-ascii?Q?OFxzKzhkbhJuYY4iC1JCAgAgeCbKXbC/vcYaDhxz34dPpMaZhl6b57SyqHIi?=
- =?us-ascii?Q?rtNeUyGD/oqDUDQdMs8m0MWg9WDPrtYSM/9faAjT7ApOZ55YGJn9sXfb7vH3?=
- =?us-ascii?Q?1YxoNLlNV0oBk8lwrL7KFQVv1rY/pAo+YS4j7bgwwFBZmW2N/6X0Rpy4YNSz?=
- =?us-ascii?Q?vCYjGSSQ8JO+aLaJwtHdkDRpxx6ZzIq59RcuFjeHxc5pWd8qc+K8z7lV6X6B?=
- =?us-ascii?Q?LXIMXqrgtjAhhUuYKGBT+FxOScHV8mSFDqO6/n+kHv+g+sLPVw/GbYm/48js?=
- =?us-ascii?Q?bqR4C0HNTxH8NeXNmBuxY/0AX5tc5dCC5PtzcxgSeDWW2qeUyFpOlsVGhT2d?=
- =?us-ascii?Q?xaQHA+N4ZlkZv0ud0rgOY2nmo40a+2qMdR3/bN7wNt/bFnJv8P//l04dKZZ3?=
- =?us-ascii?Q?5Zp1SwsEok2b6HJwPyO3U8VoG6hCxM3wkN04jrERjSQAhITUIjsW8c+rf6GR?=
- =?us-ascii?Q?HzvLdBXrPFViYV9JNfIUKmQffZEU/mHTRnDXlYtxCBBM9Xd0FonMZuDeP5GM?=
- =?us-ascii?Q?725dao/eMr+gQyxljOh+0jUakRjqpw1X6gpBuI3LCiPtXgg+DZ4T2M8n1HNp?=
- =?us-ascii?Q?UsvtHr+OWMRPfgCy9ArYvgLQNm6u52ody6nuo/N+lKVh0St2hLJmKgR4QIXQ?=
- =?us-ascii?Q?WvXad6wpVW791zXtFpLJioIzt6Jg84UOVxWCFyjy?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1a511224-9be1-4ec3-d9f3-08db89e296b3
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jul 2023 12:04:08.7979
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0/PElE4rOeKvqMun/18zGAfzhttpUHLeLnHC7fCc4VPzXAv6cxbm8FjF+st1CKc9
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4455
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio
+ id-gpio/vbus-gpio properties
+Content-Language: en-US
+To: Alexander Stein <alexander.stein@ew.tq-group.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
+ <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
+ NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
+ <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_050415_672230_DEA80A98 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20230721_052213_297384_B389E2C7 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,36 +109,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 21, 2023 at 07:20:21AM +0000, Tian, Kevin wrote:
-> > From: Jason Gunthorpe <jgg@nvidia.com>
-> > Sent: Wednesday, July 19, 2023 3:06 AM
-> > 
-> > -static struct iommu_group *ipmmu_find_group(struct device *dev)
-> > -{
-> > -	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
-> > -	struct iommu_group *group;
-> > -
-> > -	if (mmu->group)
-> > -		return iommu_group_ref_get(mmu->group);
-> > -
-> > -	group = iommu_group_alloc();
-> > -	if (!IS_ERR(group))
-> > -		mmu->group = group;
-> > -
-> > -	return group;
-> > -}
+On 21/07/2023 10:19, Alexander Stein wrote:
+> Use id-gpios and vbus-gpios instead.
 > 
-> Looks existing code has a leak w/o freeing the group in ipmmu_remove().
+> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Shawn Guo <shawnguo@kernel.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> Changes in v3:
+> * Rebased to next-20230721
+> * Split from bindings patch
 
-IIRC many of the drivers had this, or other bugs here.
- 
-> While at it could you add a patch to fix it allowing backport and then this
-> patch to convert to the generic helper?
+I think you wanted to split it per subsystem, right? That's why you
+resent/v3? But the split did not happen. If you decide not to split,
+then try to figure out: who should pick up this patchset?
 
-It isn't worth it, these drivers are never removed, so it is a bug
-that nobody will ever hit.
+Best regards,
+Krzysztof
 
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
