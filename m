@@ -4,86 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC172C001DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 08:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 453DFEB64DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Jul 2023 09:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iszb9KSlb7iytRdLL0si1axKk+1sdaBX9Bc3utZ4kew=; b=Wbys2lsX4Yo5WM
-	eJdlcbcnzqXxGx8G+a4B4i4CLVvr/M8KrqJ9ONdREy17AhU4QlT6rGvEjpLdp6XINDewFb7dC/bra
-	GfwuXXXmo3VdUzsR4s5cCqfqcMgLZekcUxmr+rewR91iOwGVRtPh+YJYa1fTt3fFnzLv/huW/qBpe
-	omR82Mygywno2/C/uEsUhVr64F7aBIb82wf5GNETxVw5rMkpLcAxxjNOoVV3kcyL6Ewz+2HszmKeQ
-	3R25Mr40s810zuQCXA5LWnjWmKB2HNqqhdymR51W1CkXRjHJzeAonBTQ0UZSLCofEk7rtcNqOuoqB
-	mq7wX/Q0I3gybE9bvGAQ==;
+	List-Owner; bh=iwBqgw7ZpvKBZ9BUV1zPtCqLVWDGvAPPKp+VTiVK/fk=; b=2BGcLhXeK3Gh6i
+	5NboGn21IgS9RfrjdLauynJ1sJ9CLQ+iLgzJkT4dcYUGROVOySHcJ1pB+tkUB2C4aCBqdqoZys+dI
+	sfyMO6IDuYW3+NtfJclTeXWkNSmmjxpvf8q8VK1hoOiRcA0ozMqdH7PUD6vLe8a9Ix55NP3Ls2YGi
+	bPrfpD3c7ROXme9AW3mR4Cq1jtHuRVeuqi7i+lvPZfC1loN6d/hrEGTpmIjW38NyjjaqgcvP0FbNE
+	/WYP54+NGV1O3FeXdkCGjOfL7FgxZxL0QjpErRuzNVH2roJWvnMtg2b+Cwgt9xUs2kJ4eGsd3kFA7
+	ECUt0t4widswaFA2Uw5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlMt-00DL2Y-2z;
-	Fri, 21 Jul 2023 08:20:07 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1qMmji-00DaTv-3A;
+	Fri, 21 Jul 2023 09:47:46 +0000
+Received: from mail-sgaapc01on20701.outbound.protection.outlook.com ([2a01:111:f400:feab::701] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlMk-00DKxc-1c;
-	Fri, 21 Jul 2023 08:20:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1689927598; x=1721463598;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=p0/1b2uDyoIJnLJIBc/lLc5A72TGOK+ZxqgCG5KQQ9s=;
-  b=WW8oKGA+pWf6ceOFCxv420oEW8tR8cr7NGH1yfYqZzER93fcw5JizvGf
-   AIxeVz204NOZ4mLRmKqJaGS0wliu3/DgestpS+8Vk1P33V4xDUqspvOOr
-   VLAiiEpX2OXt9bJj50SIYu1aP+FZ/kJiD88uoUG8mddhn9MYY4nkvC/l+
-   mtJR8UsMbArWhCWzpPxBvznlMYObIK+shSCu4MsDvQp6WcuRZkEfdVbEm
-   6bHU9b/fizQJQjL+rpoBpW5IRHs2e0y0UDaIKcHs5zJLYhc9goKQwCPpa
-   ez81uFXBuzjEfYuJrJGIAyLXTwD6dVQlCUURG5dVICLFR9Ud5nvcMz3ZJ
-   Q==;
-X-IronPort-AV: E=Sophos;i="6.01,220,1684792800"; 
-   d="scan'208";a="32048266"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 21 Jul 2023 10:19:54 +0200
-Received: from steina-w.tq-net.de (unknown [10.123.53.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id B1C59280084;
-	Fri, 21 Jul 2023 10:19:53 +0200 (CEST)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	id 1qMmjb-00DaPb-1z;
+	Fri, 21 Jul 2023 09:47:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KnbokOjhOVtCzeTlxV/MiMVcrCx6WzlGT6gdTYl0h5PGmxdNB0sXlYn50aksdYEXZ8H3MndA3E9MmdDaYHRfJqZgY4SJNjjZmR1xji95d58IE9MPpADbQCkLIGOnjx5nIHIa6I9gjSjIueF8S1PA0fQCypxyXAp9x4eFrsX47x+43eWimc/tqsydCb5DseU2XT5YM21YiXzpQfROxFyQ+BSQBDMN8S1bVgI8jz8IJdGpTyY95bk2Glj+6C+EBOeuywiGj2q6O8a/n2tV9u2djp5ZSLd5agOsDEfdEzCN3mhp9snHD99s0F0XCo2f2sQQHC9Vf0/03QYx3DaB307kWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N03nusCUS3siQa14uFSaE/KiicaLWmrEtJVE7dkAQQg=;
+ b=LrAHWHmEeSNXRkuD4wRPGMHsqFDa//bxSNhCqQgPah9G9LuIVRU6wSvSOx1Nn5B/5ErYkFGTL9T6jGLUJdemaSyG2hrMg8rTa7oSVktYQaKpwshkvfgaI4GVD7lIiu4aKAEB1slNkW+F/cMOhBgq9xg6s2tdu5x8yLhQl597RMzbgyzDcULqzvpyZqOnc1zCucuFYpux+3xL/aoUAzbADH3GMN14Oa1ey8W0CAdiOEJlXf3az3Syx1f7fWxK2Q485C9d7/JOXI590k4beTtGBTSwuk/5bXIVqYzDnmRWVY+k7wYMd6etC8QvHDcrmoH7qwWGFlRD+8b55DyXJBv63w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N03nusCUS3siQa14uFSaE/KiicaLWmrEtJVE7dkAQQg=;
+ b=YmBKuiCviNQBuNCuzg+QTbpGCyUE+jyOIL7F3SS1ND8w3sLMMSRppFhQj3s+OfekMjh0oY0e8tpzA9/Yrif8DwJKM3wUSaudAVvj2yB6LEBZMNX9Y6/TCq1nkhksI0am6utH8ns0wRZCQ2x2C5Ff4PLP1V6+dPQzk0yA9uPVUknR3KpvNs8HK0MamPYtKiHKInZ3GVzV8em+c/g89nyxmx7V4cEmCX76r6RGWwbLrj3tV25M1QyyfyB1D8rk7khbbhEccIDWOhqxX+QKB9GosnLERamGomXYO16afyY44C1MlaUwfSVBM2NbV9cjC0SjUylPfdzqrQ6u6ecWo06uKA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by KL1PR06MB6789.apcprd06.prod.outlook.com (2603:1096:820:ff::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.24; Fri, 21 Jul
+ 2023 09:47:27 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::732f:ea1d:45a1:1e0b]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::732f:ea1d:45a1:1e0b%3]) with mapi id 15.20.6588.031; Fri, 21 Jul 2023
+ 09:47:27 +0000
+From: Yangtao Li <frank.li@vivo.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	devicetree@vger.kernel.org,
-	linux-omap@vger.kernel.org,
+Cc: Yangtao Li <frank.li@vivo.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Jonathan Cameron <Jonathan.Cameron@Huawei.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
-Date: Fri, 21 Jul 2023 10:19:48 +0200
-Message-Id: <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
-References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 13/22] thermal/drivers/rockchip: convert to use devm_request*_irq_probe()
+Date: Fri, 21 Jul 2023 17:46:32 +0800
+Message-Id: <20230721094641.77189-13-frank.li@vivo.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230721094641.77189-1-frank.li@vivo.com>
+References: <20230721094641.77189-1-frank.li@vivo.com>
+X-ClientProxiedBy: SI2PR01CA0031.apcprd01.prod.exchangelabs.com
+ (2603:1096:4:192::11) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|KL1PR06MB6789:EE_
+X-MS-Office365-Filtering-Correlation-Id: 48502543-e9ab-4a7f-0f0f-08db89cf7e45
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ukcEb0DILkyCxXqQHdNv7ekvSDDN/IrjTYQ6bMeJpKOdrfo8Fsk3R21A9yayXa6DM8Cgcwne+5rOH2Hk0jVOISLDX+MjssZ+416rtntKXsRVn+SFU8lHmT+gnMrh6cfa/7A1az7SDuEcbMTOBUyWu2gsmCEuB6D3+9PQ8LQRhaQ4/cglfnSfB9GOuh8P1RkxH0NbDa/76cVmPbqlJinrLysZN1sv+4aSyOVtWcYSmjbgfiv5al1AcnEiQ8JjZGsg5NddfDyacN3/VxR7Ud0J2wD+SdBA/abrOJpV3k9Q5+CR8r1zUrQBuo2IjWsaaAKWKxZjfF8KkFpEJay2J830Uvlgj9rpGbMvgukRKmBeHVBltVgzE3wRz7TJWfAeO5p5HV7+3p/BJeyr6PrJAaJx2vYuvXNFtef9iLDlRy2xOMG4M59BeXqVpJ9UuKMuWNmFagwnIKgPZ8UMlVvMjaGLlZMhqh/5XDjNplzCT9hR6GrMT/LpX26zvPFkYwYZ3fNceS6e7LHSGbwNcMYNRqNEWR6iKv+4VNoNqlLiqevBClkPhzUgGyIUqQWzE8XayPPNSBr14gPBSh4QqRm0UcKBPJVSS/Qd9Sl0Db6OvHapsDR0vDuAIAdZnF+HDDuk9Vd/
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(136003)(346002)(376002)(366004)(39860400002)(451199021)(83380400001)(66574015)(2616005)(2906002)(38350700002)(38100700002)(66556008)(316002)(66946007)(478600001)(6486002)(41300700001)(4326008)(6506007)(26005)(186003)(1076003)(66476007)(52116002)(6512007)(110136005)(54906003)(36756003)(5660300002)(8936002)(8676002)(86362001)(6666004)(7416002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UWNwb21OWlpFUEMzekd1ekJFalVnQkF2Yk9nOUh0RmNHaEs5Ny9Qd1hWaVEx?=
+ =?utf-8?B?c2JKN2RUOG4xbEJwRmNra1VhcFcyYnMwMGExZFFjL1N0dVE5aWhIZWZVZ2RS?=
+ =?utf-8?B?N3Q1RXlhc3RleHArOFdHalc1R1RWK2MvMEpjbkVuTk5DajdEMUZ2MDJxVWE4?=
+ =?utf-8?B?eERIMjNNUExPa3hjWjR0TEdyTWZXYnNuT25pM0Q4MDdUK21JQjhSM1RlTDFt?=
+ =?utf-8?B?Q3pGTzdkZ25SZnp1aFNzeUMrM05Ob0ZRa2R3TFZNcWhhZ3dlWVFwUjNPcGZp?=
+ =?utf-8?B?N0ljbEp5Yy82NWF2Q0pXRFNzZXROVVY0L0llVW5WTC9ocUZLcEVJNkxSQ2t3?=
+ =?utf-8?B?UUZuR0c3aEg1dFgzbmtGeWx1b09oVzdORjdja1YzbU92aTlUeFRQNWhxclJz?=
+ =?utf-8?B?aHVCTlpIYm41UTBaUHhZZ2FjZXlDZm40bjhLMlE0VUJPSW1ETHA3N0owUU9v?=
+ =?utf-8?B?L3NaZ2dpS2RtbHVJNFN4KzRCWHdtZUVjQlpSZUU2RE8wV0JsUHl5T1EyL1Qx?=
+ =?utf-8?B?VXdrMnN6YURPR1JPSE5tL2luRlpESlFwYXVsVVl2WEI2MlBTZzJBQTBYRGRu?=
+ =?utf-8?B?b3MxTmdlVG4zY0tZb0ZUR2MyTCswOU9QS1pyUGdWY0o5Q0I2UW5DZlRVQzEw?=
+ =?utf-8?B?NkhCRDVrNm5Xa2xnRlVpV0ZQanhtVmorRW02SVRaMVIwZStjSWlHMFlSZmFB?=
+ =?utf-8?B?cWJYYjA0L0t2ZHlwOE8vR2M3azZwZFRBL1JmMUJsZWduY1Fyb20zTW1QQkpx?=
+ =?utf-8?B?MFZtL09ab3pTSk9TU2IvU0tiN2RNUTRxK0lpYVExcHkwZlZxRjZDMGswVWZI?=
+ =?utf-8?B?MmYzSlljZkJHbURPZDNmbzRBbW8wRnZVdlhxNFBDRW1JaVl1WURKNCtLYVV3?=
+ =?utf-8?B?Q0lOSmtrOW1nN1Q0UHpDQTNGenlDak00bFdlV1ZDeWoxWHJOeWxQYVN0NUY3?=
+ =?utf-8?B?SkhueVU0YUloaVZWVUFXbGUzRU10ZWNlWHg2OEVVTEtOeHoyMXBrZnYzQkli?=
+ =?utf-8?B?WlljcU1NM2c2eWVvU3lVQ0ZWTWc1KzdWQXdicWQvRHIxRTROem5FWndTOGVE?=
+ =?utf-8?B?am13dFFnUERyK09WMGd0MlVINTVabWU4TFJndTUxYzVpWXR6Y0FwT1FydkxH?=
+ =?utf-8?B?bGRVSU4vQUgxMi9Jd0RMZkx4YXFCTDdTNVZSa1FPdGw0ODhVbDd6NDFYc3hv?=
+ =?utf-8?B?dWdGY0hxS1k3V2NZQWdTOVhZTXJhMVVWaStlYi9vOUVTazNKeTdSNVVjR0F1?=
+ =?utf-8?B?SWZSdEZNMWtpSUtnWjhvWlN5TGpaVjRpenFLZ1VyRFAyOGRzWmd5dUNGUFhj?=
+ =?utf-8?B?UXowSlZkZTJsV2ZDQ1pKeCtCT2tyRVZ5KzBsU212engzUUR5VTkwVzU0TWRk?=
+ =?utf-8?B?ZWVBOWtndVNsTStFampObFVROE5hdTBRRk8yNW93RWRoWXh5ZkZOUk1oc2dY?=
+ =?utf-8?B?WE91S3VzTXIyVisyeVBnV2lEMzl1UkFPeE8vVEVrOWM5cmlKNldSWTFYT0FL?=
+ =?utf-8?B?dUVkOE95WEkzbklvb3FQY3Z5dHFKVjg2Q3AwTnNpdFFkZVhCbGlxRkR5bW4v?=
+ =?utf-8?B?MHh2Z2tQdC84MUwrcUE2T1JqYlpPOHdlcUFMeUtIQ2g0dkIvN1RnL2pKcjN6?=
+ =?utf-8?B?bHRaQWZ2ZjJabVpaQlBpTUhxVDB1QmZCVkRrZ2xOY0pmQ2IwdERGaFJ2RzNC?=
+ =?utf-8?B?UFZPNEQ0Q2orWXhueGt2WXhwZzZZUnEzK0hRdHJjUHlnTjNPdG02SXBFMmRU?=
+ =?utf-8?B?K0QxTk9EWURiWmg0YmxKVmVkL2xLS2dGWEtxQUdGdnpkMkVqYWJOV0NBZlpn?=
+ =?utf-8?B?YmZPNXYrbDFSbm85UEpmdXFZLzZVYmsxRGxybFNrZzJHUWdkOEdMMTFUWC9k?=
+ =?utf-8?B?N1cxMkEwSGhpa3JZSlF5Q3ZSVHd4KzdVbmlJSG5xamRoekdVL1R2MXBORW9r?=
+ =?utf-8?B?M0t1TE1UTk83YnJrZ3ZYQjA4ZGcvRzdYaGkvUXhFU2xjZDQyQThzbVZiQ01j?=
+ =?utf-8?B?NXZoY0ZnZ0RiTGVkRjRhYzd6YXJXMjAxeFhJMTR0Nmd3UW5rUGxwUWtTZE1E?=
+ =?utf-8?B?Yk5YcWxOeUJRdE90VU5VL25KYTdDQ1NKTmZzaEhGL3g4WUtPTCtGUWo2REJR?=
+ =?utf-8?Q?3UjR7X1GNrhkblfcry1zTNR3T?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48502543-e9ab-4a7f-0f0f-08db89cf7e45
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jul 2023 09:47:27.4223
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 98HfIkJnvUzbfPH/v6gTYOVZQe3WuIa3X3f84vvDHhlKY925sYAuXfUsOSZdLQXXVot0RLeLfsFL1rbwny6f0g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6789
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_011958_894243_0F17DD74 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20230721_024739_655744_C232F744 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,370 +147,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use id-gpios and vbus-gpios instead.
-
-Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Shawn Guo <shawnguo@kernel.org>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
-Changes in v3:
-* Rebased to next-20230721
-* Split from bindings patch
-* Added Shawn's A-b
-* Added AngeloGioacchino's R-b
-* Added Krzysztof's A-b
-
- arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi            | 2 +-
- arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts       | 2 +-
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 4 ++--
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts                   | 2 +-
- arch/arm64/boot/dts/qcom/apq8016-sbc.dts                      | 2 +-
- arch/arm64/boot/dts/qcom/apq8096-db820c.dts                   | 4 ++--
- arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts              | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts          | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts            | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts                | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts          | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts         | 2 +-
- arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts | 2 +-
- arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts    | 2 +-
- arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi        | 2 +-
- arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts               | 2 +-
- arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi     | 4 ++--
- arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts           | 2 +-
- arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi         | 2 +-
- arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts           | 2 +-
- arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts  | 2 +-
- arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts      | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                 | 2 +-
- 23 files changed, 26 insertions(+), 26 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-index 5dbec71747c3..61c2a63efc6d 100644
---- a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-@@ -109,7 +109,7 @@ extcon_usb0: extcon-usb0 {
- 		compatible = "linux,extcon-usb-gpio";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pinctrl_usb0_extcon>;
--		id-gpio = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-index fef62acd1152..fe492b773edb 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-@@ -24,7 +24,7 @@ extcon_usbotg: extcon-usbotg0 {
- 		compatible = "linux,extcon-usb-gpio";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pinctrl_usbcon0>;
--		id-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	pcie0_refclk: pcie0-refclk {
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-index fffdb7bbf889..0c38f7b51763 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-@@ -43,12 +43,12 @@ cpus_fixed_vproc1: regulator-vproc-buck1 {
- 
- 	extcon_usb: extcon_iddig {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 12 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	extcon_usb1: extcon_iddig1 {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 14 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	usb_p0_vbus: regulator-usb-p0-vbus {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 5122963d8743..607d65ddba9e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -41,7 +41,7 @@ hdmi_connector_in: endpoint {
- 
- 	extcon_usb: extcon_iddig {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 16 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 16 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	usb_p1_vbus: regulator@0 {
-diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-index e0993e32ee38..f6eeb2598846 100644
---- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-+++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-@@ -77,7 +77,7 @@ usb2513 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 121 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 121 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-index 16353e3b7fab..385b178314db 100644
---- a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-+++ b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-@@ -99,14 +99,14 @@ button {
- 
- 	usb2_id: usb2-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb2_vbus_det_gpio>;
- 	};
- 
- 	usb3_id: usb3-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb3_vbus_det_gpio>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-index 5ad49fe999db..84723c9b73b4 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-@@ -48,7 +48,7 @@ button-volume-up {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-index 1c43f3d6a0b4..47da738661bf 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-@@ -52,7 +52,7 @@ led-0 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 69 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 69 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-index f4dbc515c47a..4aeeee24cedc 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-@@ -75,7 +75,7 @@ led-green {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-0 = <&usb_id_default>;
- 		pinctrl-names = "default";
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-index 4239c8fda11b..484e488a5eca 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-@@ -80,7 +80,7 @@ led-2 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 117 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 117 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-index 9757182fba3e..d73294af1a06 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-@@ -68,7 +68,7 @@ led-0 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-index c94d36b38651..8e238976ab1c 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-@@ -56,7 +56,7 @@ button-volume-up {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-index 0633e3006f17..89b6aebba404 100644
---- a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-@@ -33,7 +33,7 @@ chosen {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-0 = <&usb_id_default>;
- 		pinctrl-names = "default";
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-index 4a0645db0ae1..6374c5f53d9a 100644
---- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-@@ -24,5 +24,5 @@ &usb_detect {
- };
- 
- &usb3_id {
--	id-gpio = <&tlmm 24 GPIO_ACTIVE_LOW>;
-+	id-gpios = <&tlmm 24 GPIO_ACTIVE_LOW>;
- };
-diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-index b4b770a9277d..d55e4075040f 100644
---- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-+++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-@@ -71,7 +71,7 @@ panel_tvdd: tvdd-regulator {
- 
- 	usb3_id: usb3-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 25 GPIO_ACTIVE_LOW>;
-+		id-gpios = <&tlmm 25 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_detect>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-index b35e2d9f428c..b6a214bea70f 100644
---- a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-@@ -31,7 +31,7 @@ aliases {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-hall-sensors {
-diff --git a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-index 687e96068cb2..876c6921ddf0 100644
---- a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-+++ b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-@@ -89,8 +89,8 @@ vph_pwr: vph-pwr-regulator {
- 
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
--		vbus-gpio = <&tlmm 128 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-+		vbus-gpios = <&tlmm 128 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cc_dir_default &usb_detect_en>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-index 0b23d5bb3f26..2ed39d402d3f 100644
---- a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-+++ b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-@@ -43,7 +43,7 @@ key-volup {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	hdmi-out {
-diff --git a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-index 3033723fc6ff..87d0293c728d 100644
---- a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-@@ -150,7 +150,7 @@ cont_splash_mem: splash@9d400000 {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-index 8fb2d1788742..3c47410ba94c 100644
---- a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-+++ b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-@@ -85,7 +85,7 @@ framebuffer_mem: memory@9d400000 {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-index de85086c65ad..e42a4e710cd2 100644
---- a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-+++ b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-@@ -42,7 +42,7 @@ framebuffer0: framebuffer@5c000000 {
- 
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-keys {
-diff --git a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-index 7c58d1299a60..272bc85f1719 100644
---- a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-+++ b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-@@ -63,7 +63,7 @@ cmdline_mem: memory@ffd00000 {
- 
- 	extcon_usb: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-keys {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index aa3e21bd6c8f..20e3f41efe97 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -27,7 +27,7 @@ module_led: led-0 {
- 
- 	extcon_usb3: extcon-usb3 {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb3_id>;
- 	};
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlcmUgYXJlIG1vcmUgdGhhbiA3MDAgY2FsbHMgdG8gZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2ly
+cSBtZXRob2QgYW5kCm1vcmUgdGhhbiAxMDAwIGNhbGxzIHRvIGRldm1fcmVxdWVzdF9pcnEgbWV0
+aG9kLiBNb3N0IGRyaXZlcnMgb25seQpyZXF1ZXN0IG9uZSBpbnRlcnJ1cHQgcmVzb3VyY2UsIGFu
+ZCB0aGVzZSBlcnJvciBtZXNzYWdlcyBhcmUgYmFzaWNhbGx5CnRoZSBzYW1lLiBJZiBlcnJvciBt
+ZXNzYWdlcyBhcmUgcHJpbnRlZCBldmVyeXdoZXJlLCBtb3JlIHRoYW4gMjAwMCBsaW5lcwpvZiBj
+b2RlIGNhbiBiZSBzYXZlZCBieSByZW1vdmluZyB0aGUgbXNnIGluIHRoZSBkcml2ZXIuCgpBbmQg
+dGdseCBwb2ludCBvdXQgdGhhdDoKCiAgSWYgd2UgYWN0dWFsbHkgbG9vayBhdCB0aGUgY2FsbCBz
+aXRlcyBvZgogIGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoKSB0aGVuIHRoZSB2YXN0IG1ham9y
+aXR5IG9mIHRoZW0gcHJpbnQgbW9yZSBvcgogIGxlc3MgbG91c3kgZXJyb3IgbWVzc2FnZXMuIEEg
+cXVpY2sgZ3JlcC9zZWQvYXdrL3NvcnQvdW5pcSByZXZlYWxlZAoKICAgICA1MTkgbWVzc2FnZXMg
+dG90YWwgKHRoZXJlIGFyZSBwcm9iYWJseSBtb3JlKQoKICAgICAzNTIgdW5pcXVlIG1lc3NhZ2Vz
+CgogICAgIDMyMyB1bmlxdWUgbWVzc2FnZXMgYWZ0ZXIgbG93ZXIgY2FzaW5nCgogICAgICAgICBU
+aG9zZSAzMjMgYXJlIG1vc3RseSBqdXN0IHZhcmlhbnRzIG9mIHRoZSBzYW1lIHBhdHRlcm5zIHdp
+dGgKICAgICAgICAgc2xpZ2h0IG1vZGlmaWNhdGlvbnMgaW4gZm9ybWF0dGluZyBhbmQgaW5mb3Jt
+YXRpb24gcHJvdmlkZWQuCgogICAgIDE4NiBvZiB0aGVzZSBtZXNzYWdlcyBkbyBub3QgZGVsaXZl
+ciBhbnkgdXNlZnVsIGluZm9ybWF0aW9uLAogICAgICAgICBlLmcuICJubyBpcnEiLCAiCgogICAg
+IFRoZSBtb3N0IHVzZWZ1bCBvbmUgb2YgYWxsIGlzOiAiY291bGQgcmVxdWVzdCB3YWtldXAgaXJx
+OiAlZCIKCiAgU28gdGhlcmUgaXMgY2VydGFpbmx5IGFuIGFyZ3VtZW50IHRvIGJlIG1hZGUgdGhh
+dCB0aGlzIHBhcnRpY3VsYXIKICBmdW5jdGlvbiBzaG91bGQgcHJpbnQgYSB3ZWxsIGZvcm1hdHRl
+ZCBhbmQgaW5mb3JtYXRpdmUgZXJyb3IgbWVzc2FnZS4KCiAgSXQncyBub3QgYSBnZW5lcmFsIGFs
+bG9jYXRvciBsaWtlIGttYWxsb2MoKS4gSXQncyBzcGVjaWFsaXplZCBhbmQgaW4gdGhlCiAgdmFz
+dCBtYWpvcml0eSBvZiBjYXNlcyBmYWlsaW5nIHRvIHJlcXVlc3QgdGhlIGludGVycnVwdCBjYXVz
+ZXMgdGhlCiAgZGV2aWNlIHByb2JlIHRvIGZhaWwuIFNvIGhhdmluZyBwcm9wZXIgYW5kIGNvbnNp
+c3RlbnQgaW5mb3JtYXRpb24gd2h5CiAgdGhlIGRldmljZSBjYW5ub3QgYmUgdXNlZCBfaXNfIHVz
+ZWZ1bC4KClNvIGNvbnZlcnQgdG8gdXNlIGRldm1fcmVxdWVzdCpfaXJxX3Byb2JlKCkgQVBJLCB3
+aGljaCBlbnN1cmUgdGhhdCBhbGwKZXJyb3IgaGFuZGxpbmcgYnJhbmNoZXMgcHJpbnQgZXJyb3Ig
+aW5mb3JtYXRpb24uCgpJbiB0aGlzIHdheSwgd2hlbiB0aGlzIGZ1bmN0aW9uIGZhaWxzLCB0aGUg
+dXBwZXItbGF5ZXIgZnVuY3Rpb25zIGNhbgpkaXJlY3RseSByZXR1cm4gYW4gZXJyb3IgY29kZSB3
+aXRob3V0IG1pc3NpbmcgZGVidWdnaW5nIGluZm9ybWF0aW9uLgpPdGhlcndpc2UsIHRoZSBlcnJv
+ciBtZXNzYWdlIHdpbGwgYmUgcHJpbnRlZCByZWR1bmRhbnRseSBvciBtaXNzaW5nLgoKQ2M6IFRo
+b21hcyBHbGVpeG5lciA8dGdseEBsaW51dHJvbml4LmRlPgpDYzogS3J6eXN6dG9mIEtvemxvd3Nr
+aSA8a3J6a0BrZXJuZWwub3JnPgpDYzogIlV3ZSBLbGVpbmUtS8O2bmlnIiA8dS5rbGVpbmUta29l
+bmlnQHBlbmd1dHJvbml4LmRlPgpDYzogSm9uYXRoYW4gQ2FtZXJvbiA8Sm9uYXRoYW4uQ2FtZXJv
+bkBIdWF3ZWkuY29tPgpDYzogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gIDxhbmdlbG9naW9h
+Y2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+ClNpZ25lZC1vZmYtYnk6IFlhbmd0YW8gTGkg
+PGZyYW5rLmxpQHZpdm8uY29tPgpBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
+aC5kZT4KLS0tCiBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIHwgMTEgKysrKyst
+LS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyBiL2RyaXZlcnMv
+dGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKaW5kZXggNzcyMzFhOWQyOGZmLi4xMTA2MWY2ZWYz
+MjMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKKysrIGIv
+ZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwpAQCAtMTU3NywxMyArMTU3NywxMiBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX3RoZXJtYWxfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
+ZSAqcGRldikKIAkJCQkiZmFpbGVkIHRvIHJlZ2lzdGVyIHNlbnNvclslZF0uXG4iLCBpKTsKIAl9
+CiAKLQllcnJvciA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgaXJxLCBO
+VUxMLAotCQkJCQkgICZyb2NrY2hpcF90aGVybWFsX2FsYXJtX2lycV90aHJlYWQsCi0JCQkJCSAg
+SVJRRl9PTkVTSE9ULAotCQkJCQkgICJyb2NrY2hpcF90aGVybWFsIiwgdGhlcm1hbCk7CisJZXJy
+b3IgPSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxX3Byb2JlKCZwZGV2LT5kZXYsIGlycSwgTlVM
+TCwKKwkJCQkJCSZyb2NrY2hpcF90aGVybWFsX2FsYXJtX2lycV90aHJlYWQsCisJCQkJCQlJUlFG
+X09ORVNIT1QsCisJCQkJCQkicm9ja2NoaXBfdGhlcm1hbCIsIHRoZXJtYWwsICJ0c2FkYyIpOwog
+CWlmIChlcnJvcikKLQkJcmV0dXJuIGRldl9lcnJfcHJvYmUoJnBkZXYtPmRldiwgZXJyb3IsCi0J
+CQkJICAgICAiZmFpbGVkIHRvIHJlcXVlc3QgdHNhZGMgaXJxLlxuIik7CisJCXJldHVybiBlcnJv
+cjsKIAogCXRoZXJtYWwtPmNoaXAtPmNvbnRyb2wodGhlcm1hbC0+cmVncywgdHJ1ZSk7CiAKLS0g
+CjIuMzkuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
