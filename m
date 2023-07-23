@@ -4,75 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7751EB64DA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Jul 2023 14:02:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DD3C001B0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jul 2023 08:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SlQYoX+MBqtqvvMZxRB/97lKaJlM8MTFgj5wA8nz7QU=; b=uZjyyeg50cq39x
-	T44+QRAZWx8NcIEn+VZgSJZ7MReV/yJi7yTlPZ7NY2Aelj3otk77BuMsrOhkvzeJe1DP4R0ccI9jC
-	SUNoRfpI2+lKBhrtbQ+2DNcqL8pf3cWwLjiA6T+uavsmIIZEukyhAjdkdQPHpbc+TOpUrgeq82wpx
-	OHjIs2KeoK3iX+u2BQtvUUF5EQzAGmeanjXDep9qnMphtdpY9Yt17baMhfGnk+kkvN1oPdT9HDa5f
-	BqBkbsvgbBBWL9Dgx/tKDTFiNPjRLdNphG0C/UfaciNNpenlwDOxPXePkEXVqgOVyW/qnNpzJ7cLu
-	2hoOWzAIkdG+weM24QVg==;
+	List-Owner; bh=DwsXjPa6Fdi/mDzzOl26MeC8hPdy8kQI8CAdqEsciP0=; b=CesFONxe5TeVMo
+	sXg9lyDoiZSAP0wv+0j+mVb/bXEc7KV9Yq6gp8f6BW6cI2h0sRfmz4jhJqbiyYRYlOyakYq/pRFlB
+	3PXYRKg3YLIZTNqLpny3ovY3nR3hlOhUgvbqrnBKQiFccBaUtNy3CNwU972tdHZAisvKHhL9r/3KX
+	45loA/6cb6yJKZOtUQOdXU6ptrRtcl8fgSJdbdBROcJbBwqCfrPWorAUHTYKIfcFQOne7XIpIXka0
+	yCR8J+fWE2JFGrsL1Zz3BsupgjfrVQFs6e8tDwZC64V99kL0YXZVxs62M5ppSgMEN+oEHkmxvjFFt
+	MhVMDnO9Mh8PIaFQxFSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNDBS-00Gp2l-1a;
-	Sat, 22 Jul 2023 14:02:10 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1qNUSO-000aal-1p;
+	Sun, 23 Jul 2023 08:28:48 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNDBP-00Gp1Z-23;
-	Sat, 22 Jul 2023 14:02:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1690034527; x=1721570527;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=SqJ+O+atMOXabuGL4Lbq05LADBIKGyitXrMQM1qr5Ho=;
-  b=kbQRsmlwzH0Ll4MJ0JkO5wP3pcW1l3VP2xhPTML9wYBdtiYz2rWwGurC
-   VWjUi/Ky2UuxsxqWmgv3AgCQ7udZ5R9mN6ejB1/nuXgp75LJ3ajB1Pk7C
-   hxD/jB7b492ANxE4Vu8n5LJaGtzAtJsgK/rtJKyKIWR+HZ+TKREe7yu32
-   QcwIwILtzZAhWv1jh53SZspu6+FT4oQxV8boLUEsj0iXFTb8/zJEci6y7
-   t9+zLKS+1hWMLhClfq+9f3DXvYwo4Ep2/0N1iacOtplbj0Gi/JEDVxQUZ
-   0WcuNYiDrXC0YABPjARZ0G9WmpYHBylEh1IyzdyPSGU09bUA454KFJ988
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10779"; a="398090055"
-X-IronPort-AV: E=Sophos;i="6.01,224,1684825200"; 
-   d="scan'208";a="398090055"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jul 2023 07:02:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10779"; a="760278822"
-X-IronPort-AV: E=Sophos;i="6.01,224,1684825200"; 
-   d="scan'208";a="760278822"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.249.173.108]) ([10.249.173.108])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jul 2023 07:02:02 -0700
-Message-ID: <218edab7-ea1f-8629-4270-046e8b7c7fcc@linux.intel.com>
-Date: Sat, 22 Jul 2023 22:02:00 +0800
+	id 1qNUSK-000aZg-2N;
+	Sun, 23 Jul 2023 08:28:46 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1bb2468257fso17656695ad.0;
+        Sun, 23 Jul 2023 01:28:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1690100923; x=1690705723;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=f2RBK6a1rrlPMn5TOATq9/7yx1S/Tl+2zZSZzJBZNsM=;
+        b=aZpe29ckQMqcjD0CsG2rRtigKYI0ycSzcfnysKME5uEV0dbXxqtgQbq/bhqYWPtf+W
+         CSobQNGJyv5uNyH8uuFRqc+5O513SpfChXjITqC+MhD19F9pcuh321hq90epTf2hntZI
+         xNJWWUot6UblUHOmHbXg/+aohGhJxd/y12WJLiLVw7Vx4xrYQ+RkRLK3FWeQQFqVSwmi
+         9I9HtohJOBSMAaRi0gRLwLmBeMkiYmP6he6Yyl1LTMroJeD73kHNriFDxANu2tsSg2Wy
+         F/HCRsLhC2jDUyU/dZPzCQK7fbSeZV8UPDqP3L85G8sLY7tJZ8mUKPFj1Z5xZ9XOIHty
+         eGqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690100923; x=1690705723;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=f2RBK6a1rrlPMn5TOATq9/7yx1S/Tl+2zZSZzJBZNsM=;
+        b=b9jEKk0+p3Cu7TmAU7Oaz31W1T9aqPnbb9W6+hxr3wraSkhlsx/Xk6FXR5QcBJuAJS
+         dW7T818pB/T681wym+EMzx2VIb+aT3hIZRLToIa5K4ZWlNdc65WKcs6b6DDD6cHu+ZB8
+         7KJgXiXOyIJxw+rnIdkS85H7xjXUTfxfppp5+SP5LOFvLCYRN5MYp251uS5hcnKMQcAs
+         jEtny8EIA0EiP2rNryX5oh4AjoH+QgS13jnoVueve3xJPBO/2+LFHNAhtVl0zKQIUxZH
+         4X0j3SCP+4An0andBqJD/Wa17w6FqCZ16lZuzuqxYQJ/1E7mz24mZyPk0sg7c63Nqkhv
+         OH6Q==
+X-Gm-Message-State: ABy/qLa7sdNhAbYTagcPG4Uhan+Cr6XKySgW+/tAP3dms8R4jtxW95Z+
+	ZXuznqwcEqooDEHBjoxpnKo=
+X-Google-Smtp-Source: APBJJlEyAivqgS1z/Q7bcfIa339ze+9MNCa6mD2worMXLAUFaSPxd3TpcGx2eH8f/O2vbFPJ05rqIg==
+X-Received: by 2002:a17:902:d509:b0:1b9:de67:2870 with SMTP id b9-20020a170902d50900b001b9de672870mr6536878plg.40.1690100922731;
+        Sun, 23 Jul 2023 01:28:42 -0700 (PDT)
+Received: from zephyrusG14 ([103.251.210.195])
+        by smtp.gmail.com with ESMTPSA id s10-20020a170902ea0a00b001b53d3d8f3dsm6428406plg.299.2023.07.23.01.28.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 23 Jul 2023 01:28:42 -0700 (PDT)
+Date: Sun, 23 Jul 2023 13:58:36 +0530
+From: Yogesh Hegde <yogi.kernel@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-kernel-mentees@lists.linuxfoundation.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix Wifi/Bluetooth on ROCK Pi 4
+ boards
+Message-ID: <ZLzktMnJHTg13Pp/@zephyrusG14>
+References: <ZLbATQRjOl09aLAp@zephyrusG14>
+ <2023071850-festival-illusion-6399@gregkh>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Cc: baolu.lu@linux.intel.com, Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 03/10] iommu: Add generic_single_device_group()
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Orson Zhai <orsonzhai@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>
-References: <3-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <3-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <2023071850-festival-illusion-6399@gregkh>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_070207_684372_1D363635 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230723_012844_777101_81267889 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,26 +90,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023/7/19 3:05, Jason Gunthorpe wrote:
-> This implements the common pattern seen in drivers of a single
-> iommu_group for the entire iommu driver. Implement this in core code
-> so the drivers that want this can select it from their ops.
+On Tue, Jul 18, 2023 at 07:37:21PM +0200, Greg KH wrote:
+> On Tue, Jul 18, 2023 at 10:09:41PM +0530, Yogesh Hegde wrote:
+> > This patch fixes an issue affecting the Wifi/Bluetooth connectivity on
+> > ROCK Pi 4 boards. Commit f471b1b2db08 ("arm64: dts: rockchip: Fix Bluetooth
+> > on ROCK Pi 4 boards") introduced a problem with the clock configuration.
+> > Specifically, the clock-names property of the sdio-pwrseq node was not
+> > updated to 'lpo', causing the driver to wait indefinitely for the wrong clock
+> > signal 'ext_clock' instead of the expected one 'lpo'. This prevented the proper
+> > initialization of Wifi/Bluetooth chip on ROCK Pi 4 boards.
+> > 
+> > To address this, this patch updates the clock-names property of the
+> > sdio-pwrseq node to "lpo" to align with the changes made to the bluetooth node.
+> > 
+> > This patch has been tested on ROCK Pi 4B.
+> > 
+> > Fixes: f471b1b2db08 ("arm64: dts: rockchip: Fix Bluetooth on ROCK Pi 4 boards")
+> > Signed-off-by: Yogesh Hegde <yogi.kernel@gmail.com>
 > 
-> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-> ---
->   drivers/iommu/iommu.c | 25 +++++++++++++++++++++++++
->   include/linux/iommu.h |  3 +++
->   2 files changed, 28 insertions(+)
+> Why are you saying this fixes a specific old commit and not also
+> properly cc: the stable@vger.kernel.org alias?
+It is a mistake on my part. I apologize for the mistake. 
+> 
+> Please read:
+>     https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
+> for how to do this properly.
+Thanks for the link, I will read through it and resend a v3 of the patch 
+with fixes. 
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-
-Best regards,
-baolu
+Thanks and Regards 
+-- Yogesh 
 
 _______________________________________________
 Linux-rockchip mailing list
