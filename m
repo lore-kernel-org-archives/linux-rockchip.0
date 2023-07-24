@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B855C41513
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 10:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D604AC0015E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 10:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BqIoQ7iTyZJ40P8WyWxVm6tJJfjNRODr/wLIpDtOdqE=; b=bJPtv9EAbgLXaT
-	szo8JOnOygeyjzpkOcVwV6dY8NRRjkKWG46Y5Uqgc8yVK2hU7RNeVlYfYjIbPJipIvzG3Tc7f/F4u
-	dYX0jVne28pgkIIGwihmkjiNAAbPAjAV9Ms26knIMvJ+BTA+iC5LLL4Twy8nYO6tapGAn9Zijn9pg
-	kqXYv6D/MUt3JNVRAKLgK3OGw/++MtUBHcap+HTV/80vUwS0lm93U9H0d8AAq8blUTd71pGgGoSCH
-	C3qkvTxXJASWLFJZ7Pj8Mrl15wG7VFHqN07BxLFTBLGEkgbXVIXdkPDCUpqloBoG6Pd/4LiTp0J/H
-	ycJ/F1AGV0fv7kUr6tQw==;
+	List-Owner; bh=U4HXwbs9BLrDhNIIYUWYJnzOA+4g+MWgs2jAPD14IcQ=; b=oezJ9fg+tv3umj
+	S9dRfYpVFtWOjHw2pgu+gTG+F4iFHAFnko6TAIObzOa4HoXn9pL6m5C9SyXmH5HEYf8vR6eFTg0M8
+	ERpfRC/2miu1wFjQWqIGM5j46kiuRxW7Jh79IxntR3+/4yiKtsJPgHSxfuefXRpt3ujRNnQhV+JB1
+	TLkgy4K7I9Yrpa9iRJ12YTPxxoDgQs1VfH5S5xxG+fbqMse9Wix4Dfao4ecJhGfwYEEjaeuWYVZ8Q
+	RD8tUMTE+y5KfL9JIaaLzX9qxuMAkaYC3RF79n/eT6uUBIlWypgvW113Ex21bzMdVeKWiZhsip3KQ
+	55YdCwqq8zGjUqL7wHvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNsyS-003qh6-2W;
-	Mon, 24 Jul 2023 10:39:32 +0000
+	id 1qNsyV-003qjf-0S;
+	Mon, 24 Jul 2023 10:39:35 +0000
 Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNsyG-003qZP-2s;
-	Mon, 24 Jul 2023 10:39:22 +0000
+	id 1qNsyJ-003qZ8-1v;
+	Mon, 24 Jul 2023 10:39:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1690195160; x=1721731160;
+  t=1690195163; x=1721731163;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=PSvqA5J0i6lEso9p1BnKC3rml2XscdCkdUBi4lcX+O8=;
-  b=dZzJnvl5q+cMCfC5EsTpDOz5oLI/EjsZO83T8b5fc9Be4AgvthALA2G7
-   uk3PmxByZTUjGrE6CnLk9h3dRHvjjPDSXvFcnvx1FKePGTvRPIjH8/Zzw
-   JZLHWbyeO0dy8Us+MLH7ks5JRR24puA64sijNkmU8GDlKVh+SEhxJ4H3F
-   /d07OiSsdZgitCnNjdqE4haMbwRnq6GoeNbagitTkPdocqoytIG8sX7sV
-   IrIq+7YhDLAB561T4v39fB7pKBYqt/for+wbWDG+HpOnylOsOCO792KGq
-   xuxxe6VEeZL7b8qh3gDoGv8Ysrjl4+t5ljCRX6piuFwOrhF5jK/TGLdxe
+  bh=rYDaogE71dXTVwOGmKawoSDvGd1saOq3dhOykjCphGQ=;
+  b=DJy/9I98QdnvLe/XdPntVyCuwQw3xvyFxn1BrGLyA+g507haCdA1SbZT
+   9uslzSpwmCqiS+jEjEft+vt8w0LhBQ6HB4YA2Y09o/BaiMvKLXSPTrWvD
+   QWHki1KDhzd4VLL82REr8K8hj8dCSTay9r7fY8r3/BzNK1PVm53X3oD61
+   ojU1xE6S+eHH1WeaGqsPfCx/IXCDBTd7Es3Gf/gDHZ8McLyMuRNOLIh+e
+   BhNKu4Gy7/QK+4Ql8wKspohD1/1SaAPIHDJNvUaaPJ/wfrIJI8tXq9hqO
+   n4hFTY524cLV6QcN5YMT++SnUTxfGYxg0+B0Uwn3uJ14j1F+y7ekPeFmy
    w==;
 X-IronPort-AV: E=Sophos;i="6.01,228,1684792800"; 
-   d="scan'208";a="32078482"
+   d="scan'208";a="32078484"
 Received: from vtuxmail01.tq-net.de ([10.115.0.20])
   by mx1.tq-group.com with ESMTP; 24 Jul 2023 12:39:18 +0200
 Received: from steina-w.tq-net.de (unknown [10.123.53.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id A958F280084;
-	Mon, 24 Jul 2023 12:39:17 +0200 (CEST)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 73E83280086;
+	Mon, 24 Jul 2023 12:39:18 +0200 (CEST)
 From: Alexander Stein <alexander.stein@ew.tq-group.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Chanwoo Choi <cw00.choi@samsung.com>,
@@ -74,18 +74,17 @@ Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
 	linux-omap@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v4 1/6] dt-bindings: extcon-usb-gpio: convert to DT schema format
-Date: Mon, 24 Jul 2023 12:39:08 +0200
-Message-Id: <20230724103914.1779027-2-alexander.stein@ew.tq-group.com>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v4 3/6] ARM: dts: nxp/imx: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Mon, 24 Jul 2023 12:39:10 +0200
+Message-Id: <20230724103914.1779027-4-alexander.stein@ew.tq-group.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
 References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_033921_307485_73FEDA0F 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20230724_033923_954768_6235D850 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,102 +101,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the binding to DT schema format. Change the GPIO properties to new
-naming convention using -gpios as well.
+Use id-gpios and vbus-gpios instead.
 
 Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
- .../bindings/extcon/extcon-usb-gpio.yaml      | 51 +++++++++++++++++++
- 2 files changed, 51 insertions(+), 21 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
- create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
+ arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-deleted file mode 100644
-index dfc14f71e81f..000000000000
---- a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
-+++ /dev/null
-@@ -1,21 +0,0 @@
--USB GPIO Extcon device
--
--This is a virtual device used to generate USB cable states from the USB ID pin
--connected to a GPIO pin.
--
--Required properties:
--- compatible: Should be "linux,extcon-usb-gpio"
--
--Either one of id-gpio or vbus-gpio must be present. Both can be present as well.
--- id-gpio: gpio for USB ID pin. See gpio binding.
--- vbus-gpio: gpio for USB VBUS pin.
--
--Example: Examples of extcon-usb-gpio node in dra7-evm.dts as listed below:
--	extcon_usb1 {
--		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&gpio6 1 GPIO_ACTIVE_HIGH>;
--	}
--
--	&omap_dwc3_1 {
--		extcon = <&extcon_usb1>;
--	};
-diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-new file mode 100644
-index 000000000000..136f865b8781
---- /dev/null
-+++ b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-@@ -0,0 +1,51 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/extcon/extcon-usb-gpio.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: USB GPIO Extcon device
-+
-+maintainers:
-+  - Alexander Stein <alexander.stein@ew.tq-group.com>
-+
-+description:
-+  This is a virtual device used to generate USB cable states from the
-+  USB ID pin connected to a GPIO pin.
-+  Deprecated, use USB connector node instead.
-+
-+deprecated: true
-+
-+properties:
-+  compatible:
-+    const: linux,extcon-usb-gpio
-+
-+  id-gpios:
-+    description: An input gpio for USB ID pin.
-+    maxItems: 1
-+
-+  vbus-gpios:
-+    description: An input gpio for USB VBus pin, used to detect presence of
-+      VBUS 5V.
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+
-+anyOf:
-+  - required:
-+      - id-gpios
-+  - required:
-+      - vbus-gpios
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    extcon-usb1 {
-+      compatible = "linux,extcon-usb-gpio";
-+      id-gpios = <&gpio6 1 GPIO_ACTIVE_HIGH>;
-+      vbus-gpios = <&gpio6 2 GPIO_ACTIVE_HIGH>;
-+    };
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi b/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
+index 570995707504..11d9c7a2dacb 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
+@@ -26,7 +26,7 @@ backlight: backlight {
+ 
+ 	extcon_usbc_det: usbc-det {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&gpio7 12 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
++		id-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_usbc_det>;
+ 	};
+diff --git a/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi b/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
+index 104580d51d74..9fe51884af79 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
+@@ -29,7 +29,7 @@ chosen {
+ 
+ 	extcon_usbc_det: usbc-det {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
++		id-gpios = <&gpio7 14 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_usbc_det>;
+ 	};
 -- 
 2.34.1
 
