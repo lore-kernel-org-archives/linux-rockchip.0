@@ -4,97 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCD7C001B0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 07:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A29C0015E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 08:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tXrG/BXuLuarMvvXOEJh1panRh80KPfBI5cWTI+Xews=; b=ehCJt6Gwefniq2
-	6UYGf6GZtlmN0XgExeFX3Ak8NW18ET6kdWoymEHow30ruUsjr0Gr7nha891FwxNXhi53XvRIz2lAv
-	64K6RuIwsEc4LFhIYXQYMInwC3xL56LmpvRP/RPOB6d+jNsrAjWB2Py7YBxVXppFI2JAduRf+KhpJ
-	6/ug3S+9so+jCN9pfnGdsB0h4S/JIxvBYwuY9SUF1QyoyDwb0ZsJBNx7fncpQ30Ez3wMb4m/VXBJF
-	xtkgVyApFR7WjEFrhQb7C0+Wmz1q8b7BLZ5sfDufOqAP9EkAQ2lVtiEb5s3dSHZU/10zGpI+O+/Cu
-	7bBqCX04uexwn2NtT/Jw==;
+	List-Owner; bh=o59hWzOj84ri+wLt6/eNpFW3eJkUfKZE8qML4Z6k/Ok=; b=XZ5ed1woUmgE7J
+	oMEMnsd4QQJHrUxg53c4OFSl4nbfiAuXstbKnGQg6VqLuRQP4BERMaeb9uFZXrlpUUQw2yosLMh47
+	aJ3PvS+jhV+0ec2Gb5J2hj1KWtpa9v4YBhTL6Bq8AIZia7qGIYDSig9LnhiXEZST9mTw0yQBJ82i6
+	Dqi74MszVNUzjutV7vIpigumDiOjKJj2rcxyAAc0lsVoeovKPzZ118O7svmUSh3Bcw+KpUHfbK73g
+	2ld/BCZFEHyrQ1zfbjINFvyGn5DeFGn1IbWqbeFZPPffjU4CjodEpLpVpyjpQsxmhp62LYpCrA3fO
+	1vMGSChQNHd/Jq7E7OEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNpiX-00347e-18;
-	Mon, 24 Jul 2023 07:10:53 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1qNrFr-003Isz-31;
+	Mon, 24 Jul 2023 08:49:23 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNpiT-003457-2W
-	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Jul 2023 07:10:52 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-997c4107d62so591343166b.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 24 Jul 2023 00:10:48 -0700 (PDT)
+	id 1qNrFn-003Iqy-2H;
+	Mon, 24 Jul 2023 08:49:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690182647; x=1690787447;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QNUo0Kn9Aa2Dgdj2gFIhpNrROHE/bncbbpqnizXf6ac=;
-        b=XBUONx0XrgqCY9fZgz3fyLS7sx1wucVYmBIqDiE1WVjoXmXrD5hnDdky2dwBz5wqbl
-         wMg5GMkY+wnsGC2EsGFUHcD4mQn5Ioyc/Dvre6LvhEaIF7hvZAnisPUrEX4+wV28NPu5
-         WgiomtlgNaDO4CK03pmYWtD5bd9C7jhmZjiy3MMNbCJIdkA4ysFNKjrAWuaY/wJ0cOa1
-         aTQk5unjVkodxc555cQ+5rCu+GH8M31LFuEtiZHP9sMQ6YubOLkSgO25cTn+2dXxjqzE
-         moQ/3tvLkXOwz4yja8gWW0d+YP9SPOKyjeaCvZ28INSnuBkr2/WNLrh90TsIctezV5JY
-         u5ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690182647; x=1690787447;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QNUo0Kn9Aa2Dgdj2gFIhpNrROHE/bncbbpqnizXf6ac=;
-        b=BtX7vRWTFZ9ozqn3nbkIoskNH4N3MHN+zisRoogkLRITet8RmYPdZ77EY3U7iU0vT7
-         YS8KPv0ftuFxjboDXlr1mOxuRecV+nM4sJiqeKsQ8DK2AVtgNHsJSP22CrirwoCj1vJX
-         Mbj5K7uF4GFtMf9a7uyghtXVYd5IQ9w//PavtpToxpzhH9/7UQovgKwEFB4GzQ17JhgI
-         2o1dcT9lNHKV2osFUcyCSzjyw5bopAvR1KtnF07ZVvozcUrMCqXZjVMVXCQMbrznDIOR
-         SpOps82r6G83BOO07LlBe4rPLVGtTiuwN2n44U9GZJ0QobDCOXQsQITrR2l3lC0J8IC8
-         eDFA==
-X-Gm-Message-State: ABy/qLZTYR4x0/PIKFGTx1cRfcsZWMgQePQVRsenhA62Ig46gxVqk2vW
-	6RqAda/pYQfLsSCQDwnppB9fUQ==
-X-Google-Smtp-Source: APBJJlGqjMKUoeRrImKQFupGiJ2uC2XkQKoD01CqdLe354F8gMvelSbPPWaIJVuA9pyFDHsmHhcJ7g==
-X-Received: by 2002:a17:907:75e5:b0:993:a379:6158 with SMTP id jz5-20020a17090775e500b00993a3796158mr8298544ejc.17.1690182647475;
-        Mon, 24 Jul 2023 00:10:47 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id kk7-20020a170907766700b0098df7d0e096sm6294662ejc.54.2023.07.24.00.10.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Jul 2023 00:10:47 -0700 (PDT)
-Message-ID: <e0897453-54b0-2a2c-2bf0-1f771c0c6565@linaro.org>
-Date: Mon, 24 Jul 2023 09:10:43 +0200
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1690188559; x=1721724559;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=Q0LGi2QX3xgEV9GZ5vh6iIhI2gnfjhuPy7mD6FixJUY=;
+  b=M7DX+UuBtoqirgUoVlEFPZcmW1Oa8oH6j+dqQ9/9wzESR3A3H+QRGO0H
+   qTBJG8dXtgY3kmr+hmwel8DpGXCzfaF4nhTCoTxjWEi3risT9JNvLabZ2
+   9zLtc4Y8mmqZFnuEEDxhrMuQjhUMDdAPxOr54nU7LVXGWc0Oeczm5QGz2
+   qQ3N7pdhJqWF6FSpNythL650ESOf7qhgSa4QPdB9yiGu+cR4osYuL/udo
+   mmKcmvEwG+AXKaRrh/yy7EIbtQujdJ81lxqd+zXJbMecWxfbaNlO2J82x
+   ZvZolA967g9yQk/NGFfFnfzAnHVYP5834kkH5fws0Oe7Ect3gzb4DMCq7
+   w==;
+X-IronPort-AV: E=Sophos;i="6.01,228,1684792800"; 
+   d="scan'208";a="32075023"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 24 Jul 2023 10:49:17 +0200
+Received: from steina-w.localnet (unknown [10.123.53.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 0FD34280078;
+	Mon, 24 Jul 2023 10:49:17 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Mon, 24 Jul 2023 10:49:16 +0200
+Message-ID: <3178020.5fSG56mABF@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <e0897453-54b0-2a2c-2bf0-1f771c0c6565@linaro.org>
+References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com> <3251040.44csPzL39Z@steina-w> <e0897453-54b0-2a2c-2bf0-1f771c0c6565@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
-Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
- <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
- <c3ea2edb-1b3e-2c39-ccf6-333e3c8b9020@linaro.org>
- <3251040.44csPzL39Z@steina-w>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <3251040.44csPzL39Z@steina-w>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_001049_818176_77AAE577 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20230724_014920_128110_9E64624A 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,57 +73,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2023 08:05, Alexander Stein wrote:
-> Hi,
-> 
-> Am Freitag, 21. Juli 2023, 14:22:06 CEST schrieb Krzysztof Kozlowski:
->> On 21/07/2023 10:19, Alexander Stein wrote:
->>> Use id-gpios and vbus-gpios instead.
->>>
->>> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
->>> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
->>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
->>> Reviewed-by: AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> Acked-by: Shawn Guo
->>> <shawnguo@kernel.org>
->>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>> ---
->>> Changes in v3:
->>> * Rebased to next-20230721
->>> * Split from bindings patch
->>
->> I think you wanted to split it per subsystem, right? That's why you
->> resent/v3? But the split did not happen.
-> 
-> Yes, I split it into dt bindings and DT changes patches. Is this not correct?
+Hi Krzysztof,
 
-We talked about DTS patch - this one. It was already split between
-bindings and DTS, so this would not have been a topic at all.
+Am Montag, 24. Juli 2023, 09:10:43 CEST schrieb Krzysztof Kozlowski:
+> On 24/07/2023 08:05, Alexander Stein wrote:
+> > Hi,
+> > =
 
-> 
->> If you decide not to split,
->> then try to figure out: who should pick up this patchset?
-> 
-> Well, intention was one patch for DT bindings maintainers and these two 
-> patches for imx maintainer (Shawn AFAIK).
+> > Am Freitag, 21. Juli 2023, 14:22:06 CEST schrieb Krzysztof Kozlowski:
+> >> On 21/07/2023 10:19, Alexander Stein wrote:
+> >>> Use id-gpios and vbus-gpios instead.
+> >>> =
 
-You touch there much more than IMX, so if you intend that you need to be
-pretty clear. I see there around 5% of changes from IMX, so targeting
-IMX is a weird choice.
+> >>> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> >>> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+> >>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
+> >>> Reviewed-by: AngeloGioacchino Del Regno
+> >>> <angelogioacchino.delregno@collabora.com> Acked-by: Shawn Guo
+> >>> <shawnguo@kernel.org>
+> >>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> >>> ---
+> >>> Changes in v3:
+> >>> * Rebased to next-20230721
+> >>> * Split from bindings patch
+> >> =
 
+> >> I think you wanted to split it per subsystem, right? That's why you
+> >> resent/v3? But the split did not happen.
+> > =
 
-> I've send patches separated by arch/
-> arm and arch/arm64 in one series, so I'm slightly confused now.
+> > Yes, I split it into dt bindings and DT changes patches. Is this not
+> > correct?
+> We talked about DTS patch - this one. It was already split between
+> bindings and DTS, so this would not have been a topic at all.
 
-So telling you second time - don't. Split per subsystem.
+Ah, sorry. I misunderstood and thought you were referring to bindings and D=
+T =
 
-Best regards,
-Krzysztof
+changes in one series. My bad.
+
+> >> If you decide not to split,
+> >> then try to figure out: who should pick up this patchset?
+> > =
+
+> > Well, intention was one patch for DT bindings maintainers and these two
+> > patches for imx maintainer (Shawn AFAIK).
+> =
+
+> You touch there much more than IMX, so if you intend that you need to be
+> pretty clear. I see there around 5% of changes from IMX, so targeting
+> IMX is a weird choice.
+
+That's true. There are several SoC families.
+
+> > I've send patches separated by arch/
+> > arm and arch/arm64 in one series, so I'm slightly confused now.
+> =
+
+> So telling you second time - don't. Split per subsystem.
+
+Okay, I think I got it. I'll respin a new series, including patches for =
+
+bindings and for each SoC family separately.
+
+Best regards.
+Alexander
+-- =
+
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
 
 
 _______________________________________________
