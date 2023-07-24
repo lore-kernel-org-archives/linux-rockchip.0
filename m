@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2816BC001B0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C15AC41513
 	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 10:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jtNm1KnD0H3VihrcJQPdIFJy4xo0nhXzCyO/ifc95O0=; b=hriUr9zukElO8e
-	AEx4kaL6739PKnqX0H6xdiWhsDscC20eXeQC46O5sA7AaePGW8Y8fnCTLD6dUlTnYUPqNVEAdU5hb
-	MinCSsJDZBSTOMSIovmq/jeKZlXviyzhkg5PSDCLZhIjjaQl/omyBf7VkLYj9oLgvENohuxEMWaL3
-	V73GC4CZF/hHq12mJ6OoRzf3/+c6MYkrzDbZatLOpGtGwWB61n3sT+IdL/+aKUymn6GQs3ehI5Eph
-	w4qnEL/8C4fi610pGXpiWBzH8m3XdhVlp4i9tX6ok3DfmHvlggmKD6wWWZBEvGAXgA3Hc5ACfgOvp
-	4DdtTIkBCFpf+f0JmfpA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NdqNqAR7l+mUAHMbaFQ5WjhP8jSFhOUyssshr62a6b8=; b=myNF79NjHnli65
+	zvQKWpSAACMsgvY47qLNIfluW7pPYVuBBm6z8COMKuWPD/HHveUjzum7ff70dP47wZiXLoK0kw8Gq
+	sMCovyRxZOh07QI3vcSr0PBVU1wYM2V6hvNTqlSUL/u6J2dIMcW4FrM9A7uXvZtI7X6ZfrGNfK40V
+	6Wdq4k0pYxv+uo6JcAXLyU+Plsyf71EE8mmhmqinLMawavqmicisjdKqa33+E8SbKN7gmlgGBS4mR
+	RXWaEMgZQQ0FeZd8eu506vNfXbnMBvO/kLrC43Bs4U4Umet3UQY4md4ApaS+Jeo02XzeziO9Yp8P5
+	figHMxTPzerzaQ7Ltfsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNsyS-003qgp-1G;
-	Mon, 24 Jul 2023 10:39:32 +0000
+	id 1qNsyT-003qiV-34;
+	Mon, 24 Jul 2023 10:39:33 +0000
 Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNsyG-003qZ8-2r;
-	Mon, 24 Jul 2023 10:39:22 +0000
+	id 1qNsyI-003qZk-0P;
+	Mon, 24 Jul 2023 10:39:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1690195160; x=1721731160;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=/kATrrWVYVgcfj/srzQQkHMxx2dvHMHic6hEFaMECqg=;
-  b=HstfJg4oUlipcEkeDtXaLsmZPEFfYQBmOthGIB/1i1tKtlbUtrOOIjU1
-   LNyUBRm3d5jlS88VlGKkKmu0kZJ0GGcsjQCW28hrOKDMr4s7NT5haWMi0
-   KaMdjOPq8W6jAOtG9Xe+oCiF6b+Dmg8e6mNwYxIPKL2wVlz6rx/QkjEqo
-   y09YNbQf+94D2nQ94VitWCXFay1c1lJH4ENJOWHTDgYDiIjiuevJg/JrV
-   g3FuhHTAjE9GhCFwU1R16VFNgCdIRIYfFd0NXeIlN3PX1smZraL4E9u86
-   jhbqE796URStJo0X1cD5OG2+jI5nJBeEcEFpVIdMGiQhTOTppf9PsLZgf
+  t=1690195162; x=1721731162;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=MD0vOMyCzKkm5UOe3FnHAVw+crzpiTUbMdsmSF2boG4=;
+  b=RzsTZXNbhT6Dxf4S7V11yKC9VYzfJwEU9XyLLxTkox9l8pyoE1UUgdE8
+   ZlZBQ/NTdDg2KD9O8b45vyIzbetCnfOO2nztgCSt12jsH9F03ZbUe4GVw
+   ziV0LPpxy4IgUi4DBNF26Ns3Up6ARufgWIhs6VQMcD7hA9obJNCEVkpwd
+   LmqXv8w5dT5zryMzWRjpR3xyhbAGdTXbQ3o/Phw2x4AwU+cwoe8Mqk/3U
+   xJ5nJ2iw2RhuFyn9UwVeHHWs5zArlziWWrijt7D8/qnhcJz+e4qk/1yOL
+   Gv/rZvFjIasYznILCHfxxDlEdLtCGFyh4icibPU4+1fxpV6oksLWm33Rn
    g==;
 X-IronPort-AV: E=Sophos;i="6.01,228,1684792800"; 
-   d="scan'208";a="32078481"
+   d="scan'208";a="32078483"
 Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 24 Jul 2023 12:39:17 +0200
+  by mx1.tq-group.com with ESMTP; 24 Jul 2023 12:39:18 +0200
 Received: from steina-w.tq-net.de (unknown [10.123.53.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id DAEBC280078;
-	Mon, 24 Jul 2023 12:39:16 +0200 (CEST)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 14895280085;
+	Mon, 24 Jul 2023 12:39:18 +0200 (CEST)
 From: Alexander Stein <alexander.stein@ew.tq-group.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Chanwoo Choi <cw00.choi@samsung.com>,
@@ -75,14 +75,16 @@ Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 0/6] extcon-usb-gpio YAML conversion
-Date: Mon, 24 Jul 2023 12:39:07 +0200
-Message-Id: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
+Subject: [PATCH v4 2/6] ARM: dts: ti/omap: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Mon, 24 Jul 2023 12:39:09 +0200
+Message-Id: <20230724103914.1779027-3-alexander.stein@ew.tq-group.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
+References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_033921_308246_04BCF676 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20230724_033922_467904_24F7E03B 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +101,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Use id-gpios and vbus-gpios instead.
 
-after some misunderstanding on my side, sorry for that and the noise, v4
-series now includes now all the changes for the bindings and DT in
-individual patches.
-I've transferred the R-b and A-b tags to the individual patches in the
-arch/arm64 patches. Only to specific patches, e.g. mediatek, if sent with
-#mediatek inidicator, to all patches otherwise. arch/arm has still yet to
-receive feedback.
+Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+---
+ arch/arm/boot/dts/ti/omap/am571x-idk.dts          | 4 ++--
+ arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts | 2 +-
+ arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi  | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi    | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra71-evm.dts           | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi   | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra76-evm.dts           | 4 ++--
+ 7 files changed, 13 insertions(+), 13 deletions(-)
 
-Changes in v4:
-* Put bindings and DT changes back into a single series
-* Split patches per SoC family
-
-Best regards,
-Alexander
-
-Alexander Stein (6):
-  dt-bindings: extcon-usb-gpio: convert to DT schema format
-  ARM: dts: ti/omap: Replace deprecated extcon-usb-gpio
-    id-gpio/vbus-gpio properties
-  ARM: dts: nxp/imx: Replace deprecated extcon-usb-gpio
-    id-gpio/vbus-gpio properties
-  arm64: dts: freescale: Replace deprecated extcon-usb-gpio
-    id-gpio/vbus-gpio properties
-  arm64: dts: mediatek: Replace deprecated extcon-usb-gpio
-    id-gpio/vbus-gpio properties
-  arm64: dts: qcom: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio
-    properties
-
- .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
- .../bindings/extcon/extcon-usb-gpio.yaml      | 51 +++++++++++++++++++
- .../arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi |  2 +-
- arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi   |  2 +-
- arch/arm/boot/dts/ti/omap/am571x-idk.dts      |  4 +-
- .../boot/dts/ti/omap/am5729-beagleboneai.dts  |  2 +-
- .../boot/dts/ti/omap/am572x-idk-common.dtsi   |  4 +-
- .../arm/boot/dts/ti/omap/dra7-evm-common.dtsi |  4 +-
- arch/arm/boot/dts/ti/omap/dra71-evm.dts       |  4 +-
- .../boot/dts/ti/omap/dra72-evm-common.dtsi    |  4 +-
- arch/arm/boot/dts/ti/omap/dra76-evm.dts       |  4 +-
- .../boot/dts/freescale/imx8mp-msc-sm2s.dtsi   |  2 +-
- .../dts/freescale/imx8mq-tqma8mq-mba8mx.dts   |  2 +-
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |  4 +-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts   |  2 +-
- arch/arm64/boot/dts/qcom/apq8016-sbc.dts      |  2 +-
- arch/arm64/boot/dts/qcom/apq8096-db820c.dts   |  4 +-
- .../boot/dts/qcom/msm8916-acer-a1-724.dts     |  2 +-
- .../boot/dts/qcom/msm8916-alcatel-idol347.dts |  2 +-
- .../boot/dts/qcom/msm8916-gplus-fl8005a.dts   |  2 +-
- .../arm64/boot/dts/qcom/msm8916-huawei-g7.dts |  2 +-
- .../boot/dts/qcom/msm8916-longcheer-l8910.dts |  2 +-
- .../dts/qcom/msm8916-wingtech-wt88047.dts     |  2 +-
- .../qcom/msm8939-sony-xperia-kanuti-tulip.dts |  2 +-
- .../qcom/msm8996-sony-xperia-tone-dora.dts    |  2 +-
- .../dts/qcom/msm8996-sony-xperia-tone.dtsi    |  2 +-
- .../boot/dts/qcom/msm8998-fxtec-pro1.dts      |  2 +-
- .../dts/qcom/msm8998-sony-xperia-yoshino.dtsi |  4 +-
- .../boot/dts/qcom/sda660-inforce-ifc6560.dts  |  2 +-
- .../dts/qcom/sdm630-sony-xperia-nile.dtsi     |  2 +-
- .../boot/dts/qcom/sdm660-xiaomi-lavender.dts  |  2 +-
- .../qcom/sm6125-sony-xperia-seine-pdx201.dts  |  2 +-
- .../dts/qcom/sm6125-xiaomi-laurel-sprout.dts  |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi |  2 +-
- 34 files changed, 92 insertions(+), 62 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
- create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
-
+diff --git a/arch/arm/boot/dts/ti/omap/am571x-idk.dts b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+index 48425020281a..322cf79d22e9 100644
+--- a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
++++ b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+@@ -168,8 +168,8 @@ blue3-led {
+ };
+ 
+ &extcon_usb2 {
+-	id-gpio = <&gpio5 7 GPIO_ACTIVE_HIGH>;
+-	vbus-gpio = <&gpio7 22 GPIO_ACTIVE_HIGH>;
++	id-gpios = <&gpio5 7 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&gpio7 22 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &sn65hvs882 {
+diff --git a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+index 149cfafb90bf..c5272302eb11 100644
+--- a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
++++ b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+@@ -197,7 +197,7 @@ brcmf_pwrseq: brcmf_pwrseq {
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+ 		ti,enable-id-detection;
+-		id-gpio = <&gpio3 13 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+index 1d66278c3a72..3fca84819dc0 100644
+--- a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+@@ -169,8 +169,8 @@ blue3-led {
+ };
+ 
+ &extcon_usb2 {
+-	id-gpio = <&gpio3 16 GPIO_ACTIVE_HIGH>;
+-	vbus-gpio = <&gpio3 26 GPIO_ACTIVE_HIGH>;
++	id-gpios = <&gpio3 16 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&gpio3 26 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &sn65hvs882 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+index 4cdffd6db740..ed5199d7acd8 100644
+--- a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+@@ -15,12 +15,12 @@ chosen {
+ 
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	extcon_usb2: extcon_usb2 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	sound0: sound0 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra71-evm.dts b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+index a64364443031..f747ac56eb92 100644
+--- a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
++++ b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+@@ -293,11 +293,11 @@ &hdmi {
+ };
+ 
+ &extcon_usb1 {
+-	vbus-gpio = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &extcon_usb2 {
+-	vbus-gpio = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &ipu2 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+index 31ab0c60ca75..f8151c61488e 100644
+--- a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+@@ -96,12 +96,12 @@ evm_3v3_sd: fixedregulator-sd {
+ 
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	extcon_usb2: extcon_usb2 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	hdmi0: connector {
+diff --git a/arch/arm/boot/dts/ti/omap/dra76-evm.dts b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+index 57868ac60d29..cf9c3d35b049 100644
+--- a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
++++ b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+@@ -533,11 +533,11 @@ &pcie1_ep {
+ };
+ 
+ &extcon_usb1 {
+-	vbus-gpio = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &extcon_usb2 {
+-	vbus-gpio = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &m_can0 {
 -- 
 2.34.1
 
