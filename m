@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F53CC001DE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 14:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C86C001DE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 15:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rrCkH1o2pqh+NLHPfGR5Tj1s3H57qfygicDtstlJZOE=; b=3stFdBtEF12y0I
-	0FdD7tKGDRdZu0iC5oKzfH4UkuMezK9KG25iMr3MSUNl3ITnAFqpVA9SmlyUlzI/HLdyrUwCwP4TD
-	hrGXZkNBpR/agTCPewdnd1mQDIPg+uooXb0gS+7DFUMZqI0gfTJ1upD13CI/RM1BFCVKexlgX8av+
-	EoXpQdtaXD9GI3tAbsfN/0MgXcOop7AiC0GgWAIxdPpPXf37GW3cLA0DRYqmHwHxk918bUiv6HOVz
-	OSQSFdCKy2L1+nT2BrhREea7d3+gM1WfOFao2vmmFTwjoc4MUu3feAYiEfJsHPCU/tK2MzZiBzV0m
-	b7qtyR1wTqp8RBlMDpMw==;
+	List-Owner; bh=ktVT0anK37OGnjVN95Hzeq0Wzc7/9eNqkljGR86EPaA=; b=EkvelDFiCk6rCd
+	EobWxKa5qcuyZxktKgmcRhAINjLhD2c/9oQ1NNRUyDVFDq04H9GMMLl6UKQQJzs89zCb2ZRCcDxOP
+	c1BtmXi9gHCZXnU55xKQhh1cx5ZUjRufubBCAHYBmeKOQwqMP6t2Ta7D+JoF9jgcX/FiNMqTTXpoQ
+	qR5A07K0gth8ylfB/+cLES9A+DKyqE4OwMP63LKaH7Mv1IB64enaOrP9HOwpxzjZTUy3cbT/qunjG
+	ub31DjFHf8cps/fLyjnD3trd5ysAF4SHNeTEObErtIfKfbl/3jiKcFAmOO35puKvYzih5EqdfE+/G
+	pUbmKFU5akkXGQfM47qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOIzc-007lyA-0F;
-	Tue, 25 Jul 2023 14:26:28 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1qOKLX-007xkF-1K;
+	Tue, 25 Jul 2023 15:53:11 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOIzY-007lwb-2e
-	for linux-rockchip@lists.infradead.org;
-	Tue, 25 Jul 2023 14:26:26 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-99454855de1so822228966b.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 25 Jul 2023 07:26:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690295180; x=1690899980;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=09FVJw5uGEFALDgJ9/ima3WpNtVeSrdlarakpdricl8=;
-        b=U3MYmd2ZmoBYDkWYMIZPMAcx/MgUDc21SIjy1UfhukUcPL+MoFOW8Ya2Ie/KXNv0X7
-         uJwxCcs0M5XZl7Wov3gt69kBoN1ejzyceCLaGjInEOMLsrMKXiYnG/+kR1QgIPglcD80
-         f3z7gd+DHKvJnlVmyC1Lq1wMiQaZMt0V7a+vzEdGlX9wTnL6xfvHXLIjph+en9EjFjNa
-         JpDRDf3RBeZd7Gq5hxEz8zlIutfX4ut58rYLM5j4Z3tpdWE274xJkeyW0iaL0yJ2kS6D
-         B6JgAuTGZH5LAgXniQf9I4NzG9GmKZtapxULVks40o449/mA4PyOIbyuWvKxJOPVwIbu
-         WDdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690295180; x=1690899980;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=09FVJw5uGEFALDgJ9/ima3WpNtVeSrdlarakpdricl8=;
-        b=Yy6KGJHsWT1rSn06AHi0O28JTvw9csTq+f+pBexzOO95JmUt7VSGN5DUxSwAtHpBVJ
-         XgU4CDsw6O1pYdS9kHZEQo+96eah83UiHQtS9OcibQ3igbNxhNGz4Qpocwxfe3T05sWt
-         vKjUNh+X1bn1f7IJcHsKgNDsjppkuYLpKj9XANz3G2yMOm6Ciw6pnGVDbxKDWrcnzc9O
-         ngtFP5jInoenEMu7tp0KUiDA26fkB3uyBTnIIBOUbr/1wtKuHeTYEibvxAIYvAsI8tN/
-         BPRaZhD5cFmKDWg0V9z0hkLNrrlr7YXzfj91oO1Q1MWiuWLds3zRkEq88rcF6DxMft2M
-         V7qQ==
-X-Gm-Message-State: ABy/qLYv4cYGwLZbeAGZ5ESS/ObA8mPq5CmqjoFrBoGMbCTYaQaYbYRO
-	14JvdLmi6eHnTqka0XGs8BjqJg==
-X-Google-Smtp-Source: APBJJlHfnYLDPWqwQX72iSv1fq6zL4FiOGn3e9/BX8Em8yYfsX1EMEFFDvH338vqV97ROpWmyBNYSQ==
-X-Received: by 2002:a17:907:60c6:b0:99b:b505:eede with SMTP id hv6-20020a17090760c600b0099bb505eedemr1147775ejc.65.1690295180535;
-        Tue, 25 Jul 2023 07:26:20 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id lg26-20020a170906f89a00b00992b50fbbe9sm8242980ejb.90.2023.07.25.07.26.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jul 2023 07:26:19 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1qOKLU-007xj6-0A;
+	Tue, 25 Jul 2023 15:53:09 +0000
+Received: from eugen-station.. (unknown [82.76.24.202])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DD2386606F9F;
+	Tue, 25 Jul 2023 16:53:02 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690300383;
+	bh=oTwjKmbIzP/ICl+gGyGP/1DH20byUoeqWEtx/veTs3o=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JbyBladbKjcskcYcNNABx1wJ/caoCgyx6Ixz11oqpXplKT3bjW0LG8kuPflsO/Zif
+	 renQs/CYIAVyKv7FcLymQrorKZxhcfIkkfx0njUNVb7la5dGVo5aPfPufXc2yHMnfx
+	 EXFgdsmcXTtePOR1ckYdS4t7Yhx8rKW99t/WYqbKmfVnhIKCvIhk1O1aCZ9kwnZlpZ
+	 rk8O5CW2Cspxzdr7jaEh1AfhMmA+UnY+6J3x+m2EZjvL14jcXV/sNyt+qeP4RFAWlt
+	 AEZ8UVITATGZDICbwaB/RkA4wvFERFsogJ1ew6WGVnnP1s8jtfAeOrfqFAmgZ1+Vnb
+	 1fTcUIui7rA+w==
+From: Eugen Hristev <eugen.hristev@collabora.com>
+To: linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/2] arm64: dts: rockchip: rk3399: switch to enable-gpios
-Date: Tue, 25 Jul 2023 16:26:15 +0200
-Message-Id: <20230725142616.157405-1-krzysztof.kozlowski@linaro.org>
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: david.wu@rock-chips.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	kernel@collabora.com,
+	Eugen Hristev <eugen.hristev@collabora.com>
+Subject: [PATCH] dt-bindings: net: rockchip-dwmac: fix {tx|rx}-delay defaults in schema
+Date: Tue, 25 Jul 2023 18:52:54 +0300
+Message-Id: <20230725155254.664361-1-eugen.hristev@collabora.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_072624_856704_68D1FC19 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20230725_085308_246928_D51E267D 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +79,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The recommended name for enable GPIOs property in regulator-gpio is
-enable-gpios.  This is also required by bindings:
+The defaults are specified in the description instead of being specified
+in the schema.
+Fix it by adding the default value in the `default` field.
 
-  rk3399-gru-bob.dtb: ppvar-sd-card-io: Unevaluated properties are not allowed ('enable-gpio' was unexpected)
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Fixes: b331b8ef86f0 ("dt-bindings: net: convert rockchip-dwmac to json-schema")
+Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 23bfba86daab..c9bf1d5c3a42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -250,7 +250,7 @@ ppvar_sd_card_io: ppvar-sd-card-io {
- 		pinctrl-0 = <&sd_io_pwr_en &sd_pwr_1800_sel>;
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index bb943c96c196..6d08260ad828 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -92,12 +92,14 @@ properties:
+     $ref: /schemas/types.yaml#/definitions/phandle
  
- 		enable-active-high;
--		enable-gpio = <&gpio2 2 GPIO_ACTIVE_HIGH>;
-+		enable-gpios = <&gpio2 2 GPIO_ACTIVE_HIGH>;
- 		gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
- 		states = <1800000 0x1>,
- 			 <3000000 0x0>;
+   tx_delay:
+-    description: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
++    description: Delay value for TXD timing. Range value is 0~0x7F.
+     $ref: /schemas/types.yaml#/definitions/uint32
++    default: 0x30
+ 
+   rx_delay:
+-    description: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
++    description: Delay value for RXD timing. Range value is 0~0x7F.
+     $ref: /schemas/types.yaml#/definitions/uint32
++    default: 0x10
+ 
+   phy-supply:
+     description: PHY regulator
 -- 
 2.34.1
 
