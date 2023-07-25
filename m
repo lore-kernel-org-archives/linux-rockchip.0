@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ECAAEB64DD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 05:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 693FCEB64DD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 05:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m9pU+0PmscvbBbdVd5nLPR8gNmYBSO47mXsunQZs7FE=; b=zm0IV47xRkjJCY
-	w3s3plYMHnYvWqAapmyILVYBvJFZt2OqGsOINbhCGQsMyte78ZaBc0YB7OGiSzhcLZ7+Fsms/xC3D
-	EVSEJSLoV4jm1dTNuCYZjw7ylkThOwSQ/5+KiyInjMP3RzNG2jMFUR98eULKPlMr1jHTiaUdSLGoe
-	PVZ4DXgT/FP2nncbEq2Jl49RHzyIBMUMrys97bfsU9rWRyHsTecBt8WPel35N36Oc70i5/zcVTwMo
-	uHYv6eB84rxpHD00+SAzUKPasdfIhTBjKCqOpj7ka2TI+Un7ehf9GUfbN1KToe6YLQ5p3BpBkoNZd
-	lPC5vFPoPwE4Miul9E8w==;
+	List-Owner; bh=5AD7Em5PRTWFSCCINwmTPoVA5UlQoF07SOPVP1Q9T0E=; b=we3JCLilQZRTV/
+	4Uu+K4puPLL5XJRzITHjeFEFnrSbWRRi9PuY8x+VpYNq5CnYjf6VU78wTNoZBe+DhmS/S7qWbDkwZ
+	Nd0YGkLB+xT+AvWfXevmK3zcqc1Oczp8k3MB03G/Q/jzG3uXtYufwe1gl3aye1U4dgqFy2wJIYxDQ
+	Jj/Mhdx+nmmIJ3HVnyBP+alqNaorYOGDxRdErW4l8FHos8SF8T0KrSolIktiRSfmgRpXJPYxoIBPP
+	RIFJwMCE5NobqCnPlYmF302h2n+aNmyy6i3bL1d/pgxei/4kWIpqu9ntYYSTOzg54rGEnCrq0HRWC
+	gEQlkF07yTe8i6DSHatA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOApx-006K7t-2V;
-	Tue, 25 Jul 2023 05:43:57 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1qOAzD-006LBg-15;
+	Tue, 25 Jul 2023 05:53:31 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOApu-006K6x-0v;
-	Tue, 25 Jul 2023 05:43:55 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-55adfa61199so3658165a12.2;
-        Mon, 24 Jul 2023 22:43:51 -0700 (PDT)
+	id 1qOAz9-006L9O-0L;
+	Tue, 25 Jul 2023 05:53:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1690263831; x=1690868631;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=sWpeQEXkxx6moDjPwLRjO33o1MVNetkxDTfjChMiebs=;
-        b=EvoK59qtrucIfirbBPE8V2OhcYmt3T48AT1joPDN1D9Qu+qEE73r4/cc1daLi60Ydu
-         W9OjfU6BEWgE9r5RajS4qZrLP5UQcsIxhFCeTxvvj0fepgYJ05eb82mpkxo5rssbsg9M
-         O9LnhOGLbT6aHlqvHX3rkQ44kG3WCtwfmRzCiu7oGkCj07RQcLnNb+pzVNlsMY8zP+Ds
-         mmmnbup8yyyj2xJCK7RK0HJ5nRTGUuSj/K4D4w045x0iMMuXZ7Mr3RMJyMpbV6609UYf
-         pOMcY58xYhu9AUaZv+QAuzNr1EBwFmXyMcKCqbdXlcHjE3J5mOBlAS+i5o6bXO6qiebk
-         Q4lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690263831; x=1690868631;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sWpeQEXkxx6moDjPwLRjO33o1MVNetkxDTfjChMiebs=;
-        b=Xn7rwZzIT/+VoccPs0BQYHU2f8wct2Ov7HvAvgqirE30y7DTQ1x60e3R0hxsbJ+SUp
-         i/jOLodeY6fbL7AD1yUibB1yYyB2yKn5GlXYvZF84b8UPHiLtSzV4fmkh3JmcBROobDw
-         Cp3VILGrfxn5LQS+C5bJDpUhjXyEH9HqThcHmN4m+Uf2Uum/DauSombVjWhTjW/gALq4
-         ixxLQi115i1Ovcd9LLCnaVt9WqODu0W/0KvsEtkUfDIaNT+/7y1/hTur5P5gIzHK+gpQ
-         daCn9ppLeysdEqIaxlfGiI1A9ty52AmiNAcXg+Gp6lwRFA+KxE2VLsTSvfsDSxq4OjIT
-         A2mg==
-X-Gm-Message-State: ABy/qLb3jyiXjfJ5+YO8EEL01pNXR1auDKu3hnPejdfzXljpPnCp7sZw
-	jYJbMeTbu9uViN7kV//g/QUVq4PegUo=
-X-Google-Smtp-Source: APBJJlH1oBzcBGr7tDO/0eNp6ihGNRlQs70V0KM9UGizlqp6a736sZfqH/REEYad9RTEhLNxX62GsA==
-X-Received: by 2002:a17:902:7893:b0:1b9:d961:69b7 with SMTP id q19-20020a170902789300b001b9d96169b7mr11745734pll.10.1690263830757;
-        Mon, 24 Jul 2023 22:43:50 -0700 (PDT)
-Received: from zephyrusG14 ([103.251.210.209])
-        by smtp.gmail.com with ESMTPSA id jj22-20020a170903049600b001bb54b6c4e4sm9961732plb.147.2023.07.24.22.43.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Jul 2023 22:43:50 -0700 (PDT)
-Date: Tue, 25 Jul 2023 11:13:43 +0530
-From: Yogesh Hegde <yogi.kernel@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	linux-rockchip@lists.infradead.org, ivan.orlov0322@gmail.com,
-	skhan@linuxfoundation.org,
-	linux-kernel-mentees@lists.linuxfoundation.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix Wifi/Bluetooth on ROCK Pi 4
- boards
-Message-ID: <ZL9hD2db5xbtpmLu@zephyrusG14>
-References: <ZLbATQRjOl09aLAp@zephyrusG14>
- <169022470428.2905604.14514573882052237409.b4-ty@sntech.de>
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1690264407; x=1721800407;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=Tw6AmluQo9H+50YOZ8VzyqlQ1Px/nXDHyihqohOhOtQ=;
+  b=PXFeu5Foswzjxj5aWZZpAp690B2ldHM7JEu0sUtRpv922LhsgKqJ1paK
+   pc3cdjNtmoc98CmgQyDCHSncHwkmVS91TAdf/BBpz8xLhbwZB2AqAOUn3
+   Ro0BOnQ2oif0pCPGZnA9VvdD3Cc9C6XTF68og01KucCJGHIhfxpaDKozf
+   STov44wW3NGPP2r2DXscdhhk4DI/s8m53VEXKB1PWRHVIgCgI2s3MR4Zg
+   nafXilZuaJO49uGXWd1FqgUDsoJXCn4bxCbznvBoVgjh6m1lPC0zqGw/S
+   r+aHuor4SYpVsAxwH8KLDBjCqm/BvK3mikU38QrCw4l2rG9QaqsL8NMUz
+   A==;
+X-IronPort-AV: E=Sophos;i="6.01,229,1684792800"; 
+   d="scan'208";a="32093229"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 25 Jul 2023 07:53:24 +0200
+Received: from steina-w.localnet (unknown [10.123.53.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 6A288280075;
+	Tue, 25 Jul 2023 07:53:24 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 6/6] arm64: dts: qcom: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Tue, 25 Jul 2023 07:53:24 +0200
+Message-ID: <45689756.fMDQidcC6G@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <6220628.iIbC2pHGDl@phil>
+References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com> <20230724103914.1779027-7-alexander.stein@ew.tq-group.com> <6220628.iIbC2pHGDl@phil>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <169022470428.2905604.14514573882052237409.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_224354_325381_14C1E307 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20230724_225327_522891_522EA7A8 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,32 +73,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-On Mon, Jul 24, 2023 at 08:52:37PM +0200, Heiko Stuebner wrote:
-> 
-> Applied, thanks!
-> 
-> [1/1] arm64: dts: rockchip: Fix Wifi/Bluetooth on ROCK Pi 4 boards
->       commit: ebceec271e552a2b05e47d8ef0597052b1a39449
-> 
-> and added the "Cc: stable@vger.kernel.org"
-> 
-> Best regards,
-> -- 
-> Heiko Stuebner <heiko@sntech.de>
-Thanks and my heartfelt gratitude to you for fixing and applying the patch. 
-I am truly grateful for your support. 
+Am Montag, 24. Juli 2023, 20:04:00 CEST schrieb Heiko Stuebner:
+> Am Montag, 24. Juli 2023, 12:39:13 CEST schrieb Alexander Stein:
+> > Use id-gpios and vbus-gpios instead.
+> > =
 
-Due to an increased workload and pressing commitments, there is a considerable 
-delay in my responses and patch submissions.
+> > Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> > Reviewed-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> Acked-by: Shawn Guo
+> > <shawnguo@kernel.org>
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > ---
+> > =
 
-Thanks and Regards 
--- Yogesh
+> >  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                 | 2 +-
+> =
+
+> sorry to be a spoilsport, but Rockchip is not part of qcom ;-) .
+
+Oh, I'm pretty sure I splitted them properly, so I probably accidentally =
+
+squashed them again somehow :(
+
+> I don't have a massive problem with this going through the qcom tree
+> though, so if you don't respin,
+> =
+
+> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+
+Okay, thanks
+
+Best regards,
+Alexander
+
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi index
+> > aa3e21bd6c8f..20e3f41efe97 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > @@ -27,7 +27,7 @@ module_led: led-0 {
+> > =
+
+> >  	extcon_usb3: extcon-usb3 {
+> >  	=
+
+> >  		compatible =3D "linux,extcon-usb-gpio";
+> > =
+
+> > -		id-gpio =3D <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+> > +		id-gpios =3D <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+> > =
+
+> >  		pinctrl-names =3D "default";
+> >  		pinctrl-0 =3D <&usb3_id>;
+> >  	=
+
+> >  	};
+
+
+-- =
+
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
