@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2219C41513
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 18:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B31EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 18:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k1pQopeD9Il++IPeUuHFAmO3YdmR81cECWdkt1FIMmQ=; b=G6auEnu2dDj7EK
-	bsIM/yMBOXHLZbijMoGwQ46EGznm8ZPdz145bf+axQawQX4EkRtHZFR26niOPNQpzXH6unqRMJ/Qc
-	FQODoXywkV+RgpOMgqCNNEr8hhvYy9g2krosRG2ZpSvBc8GDX5wLWrq+lwz5Lfl1jCrC4oNx00nni
-	Lwp9e7hMy1uvMciEyN471fVPWdztsMTjnXIFpsZWLgRYE+i1CR1s7YCnluuZuLOvMotC4yO6+WoaE
-	TWWd3JjibacEfAuLrilRTu6A1k9CiOuYTbmEK/UsWqeiWjxn63agivgrxAkVMwdpdEYOusJPncTy0
-	IUMyJmSqfYvTsEXQGY/Q==;
+	List-Owner; bh=0v6fTgNcsCE4Q6kQaBcvUC+u1FLex+vZZjQMnk+ecT4=; b=QC11ufHFnMbLMJ
+	0GyN+Nkex5xCcjnc2hlOhpLNv/bPJt4smGJ5LM9PvKC/0f3z6POhVAqlUDuU94/mxFeyLaLfhi2OX
+	hvpiWfFp+dsIcaFWYmxVVdmwubwZjFSSe3134neyXgkugKLETUwubtLjiFJcyY3VoG65/ejeVyHnh
+	8bTsE+tlJIHmxCpaDw8iECDao5q9ozcax41UM3ijJL2R8PuFZZacFCGnF5X1LB1DZzJaloYbgAfsv
+	wIBWamOdPtKbk4c4VEW+t84mTtdM2vtw9Kk64dvwGu67u0hA65BnoPsc3DXrw1SpajxXHoAxq+yMK
+	ptlHuyubxJuv41IkFKIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOMqL-008GAE-26;
-	Tue, 25 Jul 2023 18:33:09 +0000
+	id 1qOMqU-008GCT-1D;
+	Tue, 25 Jul 2023 18:33:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOMqJ-008G9n-0v;
-	Tue, 25 Jul 2023 18:33:08 +0000
+	id 1qOMqP-008GAh-2Q;
+	Tue, 25 Jul 2023 18:33:14 +0000
 Received: from [185.230.175.137] (helo=phil.sntech)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qOMqD-0006Er-Pt; Tue, 25 Jul 2023 20:33:01 +0200
+	id 1qOMqD-0006Er-BR; Tue, 25 Jul 2023 20:33:01 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-kernel@vger.kernel.org,
+To: Chukun Pan <amadeus@jmu.edu.cn>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
+	Jonas Karlman <jonas@kwiboo.se>,
 	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
 	Rob Herring <robh+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rk3399: switch to enable-gpios
-Date: Tue, 25 Jul 2023 20:32:59 +0200
-Message-Id: <169030979754.2939984.15402031320478531435.b4-ty@sntech.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix regulators and enable SATA on Radxa E25
+Date: Tue, 25 Jul 2023 20:32:58 +0200
+Message-Id: <169030979754.2939984.9282914456412331786.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230725142616.157405-1-krzysztof.kozlowski@linaro.org>
-References: <20230725142616.157405-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230724145213.3833099-1-jonas@kwiboo.se>
+References: <20230724145213.3833099-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_113307_325959_536A0062 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230725_113313_790621_46A67B15 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,20 +69,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Jul 2023 16:26:15 +0200, Krzysztof Kozlowski wrote:
-> The recommended name for enable GPIOs property in regulator-gpio is
-> enable-gpios.  This is also required by bindings:
+On Mon, 24 Jul 2023 14:52:16 +0000 (UTC), Jonas Karlman wrote:
+> Despite its name, the regulator vcc3v3_pcie30x1 has nothing to do with
+> pcie30x1. Instead, it supply power to VBAT1-5 on the M.2 KEY B port as
+> seen on page 8 of the schematic [1].
 > 
->   rk3399-gru-bob.dtb: ppvar-sd-card-io: Unevaluated properties are not allowed ('enable-gpio' was unexpected)
+> pcie30x1 is used for the mini PCIe slot, and as seen on page 9 the
+> vcc3v3_minipcie regulator is instead related to pcie30x1.
 > 
-> 
+> [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: rk3399: switch to enable-gpios
-      commit: fcedb69be2700d5d07634bcdf06ca98e20a19677
-[2/2] arm64: dts: rockchip: px30-engicam: switch to enable-gpios
-      commit: a02913e886351f039b9d5346be7926c1b05a3eef
+[1/2] arm64: dts: rockchip: Fix PCIe regulators on Radxa E25
+commit: a87852e37f782257ebc57cc44a0d3fbf806471f6
+
+[2/2] arm64: dts: rockchip: Enable SATA on Radxa E25
+commit: 2bdfe84fbd57a4ed9fd65a67210442559ce078f0
+
+As you can see, I've split them in two. Please check that I didn't
+mess anything up. Having an "and" in the commit subject is always a
+very strong indicator that a split is probably a good thing ;-)
+
 
 Best regards,
 -- 
