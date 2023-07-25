@@ -4,108 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6166C0015E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jul 2023 22:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE16EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jul 2023 02:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rU7qyT+Oa6as95Lr6vZCz4eR67My2Y2Y+Fet2Zp4qEo=; b=wYYvV4MbqD3Id3
-	gaeuAIyTS+37DKvx6NqSaIzjLl9G32/xRUJ7OcGyhzmPFP7KddldqmX+YBHPWf1fvJjuVtu/urMAz
-	4Wq/tMuBVS2eOTSLwitk9kdlhwafENz0CSBPnNd78l15VxUk4uxHqwxNocfJ9L52sBUGBtGwfPVUL
-	ceKnoTzxZO/+EIu3dowWNoqMWMG2r/y5GJgRXvcRN+UfRkP1y7MtBoh8vG8lgZ188tcoSwwbc1TWV
-	bHijacABL6DWtRnTvQZG/l63Oj3Qq9zoWEsBAQHx+UOHLf7y30Crl+Cq5/lNuQh7ndOdPLtV3KY3i
-	LJWpmSOuLNT0E+MXUVtQ==;
+	List-Owner; bh=sbygUk+8c51gEkv2eywPF7beVNX0nlWHZ3tP+B1zkGU=; b=VlarxCHO9MGghF
+	3mMWAf7zy/2DsiseTB9/la0NOx24Rg1EaBTUSGTydnRPuXcW5HuhCZTxoE2FB4fKVI8lI/hEY4IWG
+	ly50cDXWrT6zxGXmrEEqczLTvDjyHAsbHsKCBNGBsypZrIRVh2zlO3RAr+R/PR/3LY1qnACPPBoH7
+	HXgdD17YgNiyur+xLIbl11UJiNLE06xU4X8Ty1ZvjtmnjqtMEOHTjQ644DrDzvqA1cjMud5IMWImw
+	5gVxOmwQGmWh7XGXX2TIngu+1Ux043t3MBF/A2vzI8XzedSfmjylGLf5U0dLYzUd7RbzM9/+O6YCy
+	o92/xtzz9Htvu4SQanIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO3wY-005X8A-1A;
-	Mon, 24 Jul 2023 22:22:18 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1qO7Xr-005t86-1c;
+	Tue, 25 Jul 2023 02:13:03 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO3wU-005X6w-2w
-	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Jul 2023 22:22:16 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-4fb73ba3b5dso7529881e87.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 24 Jul 2023 15:22:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690237333; x=1690842133;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=358vZqiTvej61X45civfUiKJd7hpr9GfM3mB5tO/1oY=;
-        b=CWyKsn+fyo8A461uDHxlWqqNhJomz0p6jdiOowLbkzTOopNmfoNhBambSUtyEO5LNP
-         8ZQxB7OKJaeWWTdMhye3/FhUuSUb6YLLGS6tLS8eTeyjps6Os2KMTEOOdQUN1ADiCs3y
-         tA0O7NC2tWbxVi7BepJAcNSNZkhixC7NKrkyP0vhsnEwjCiYipyYGlcql329pVK4BS47
-         IfmJj/dcHadTRR7pUVMVGXVFDeOJiREG11Vvrqk5HFB7zqjuhkzKS+VYHT76+UwT2Gws
-         qaFPHFJZm9lmjfRt0gfHRI/55a+4obs2xjmHv1pvycZ69nHjRtSM9uYLS680TirWHpGK
-         c0cQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690237333; x=1690842133;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=358vZqiTvej61X45civfUiKJd7hpr9GfM3mB5tO/1oY=;
-        b=H2hiYqFN6jnP0Leyq9tV5oBveESh87vB/ysTkdvWzGIK3nuWBD5fGENKJH5PYO63P0
-         Z7flp+SRuo8XxF9bfnO85YXSnNKKyFxXpqelJB5W9WkfbLmSat9/Oo7URY+4ESph2axi
-         BKztADjKAA/BzAxjRfvb7Z4nhYjYlMrU8P63tUj7VpDiUMV+ov/44ZzIZBrePI2v4HUS
-         ZH5Jq0pWnFvzhz+xgcwVxDngEa/zf9hThBd0jfUMAhHyUu02nn6lsOUI4SPWsfJW2enR
-         HbGDJH9GSm9uBGbh/aHPWQHdh+/PAYqOQkuI0CRZYAqM8hpT0p19ot86T4ye+8PsxNHJ
-         UNVQ==
-X-Gm-Message-State: ABy/qLZktpx7t24vQpsuN+ruKhrtCmTrpr5C9Jn/zG+XDffn4Cngv0ry
-	qAgsP8Wt+jpa4JmWcoErI48bmA==
-X-Google-Smtp-Source: APBJJlGRGPfacjmUq1tdWpenzld24E4eJsyR1C29jO0mKIDTugwb8qJZ+ixEzpUc6MmlTv/TGWeMgQ==
-X-Received: by 2002:a05:6512:2036:b0:4f6:d7b:2f19 with SMTP id s22-20020a056512203600b004f60d7b2f19mr5787071lfs.24.1690237332390;
-        Mon, 24 Jul 2023 15:22:12 -0700 (PDT)
-Received: from ?IPV6:2001:14ba:a0db:1f00::8a5? (dzdqv0yyyyyyyyyyybcwt-3.rev.dnainternet.fi. [2001:14ba:a0db:1f00::8a5])
-        by smtp.gmail.com with ESMTPSA id x27-20020ac25ddb000000b004fbb69d8791sm2391586lfq.79.2023.07.24.15.22.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Jul 2023 15:22:11 -0700 (PDT)
-Message-ID: <7b250095-8245-53be-e593-cecbc3cc6763@linaro.org>
-Date: Tue, 25 Jul 2023 01:22:11 +0300
+	id 1qO7Xn-005t6n-1C;
+	Tue, 25 Jul 2023 02:13:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1690251179; x=1721787179;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=2ZzA8PQhmyEUD1bS/bpO6I57HTXTNUQZMqegoa6huK4=;
+  b=H2FFD1pzknfa0Ni7i22K0JdZmT30TVTmHbHYls3Q6cx9JCUY3GXgkj0L
+   CtHWfRqtTSSTw1Iim5Zolh/Vnw7+soz8cIg/50vd6RCTOhy/6aWo62l2R
+   DSerrj6AfrqpnsEy8U1ffrpeKZbgicDCBlrj7HOFvKsYCCQY9olIgffNZ
+   Q64req/AQg3BcB+IOtX6tjbOzEKno9KfsMoI4P8G0L9NG03IfgoziQN1y
+   0nBbJU19uiaW20ckmb70H5omL/XUuZHj9Z9TxdDWsuouV4GQ2Y/jKioiu
+   238r8kMnt+ulF/lNpQKURmuzF72YiKk5kNpteVEqz8CsDGO1GovfFEmLV
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10781"; a="431399080"
+X-IronPort-AV: E=Sophos;i="6.01,229,1684825200"; 
+   d="scan'208";a="431399080"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2023 19:12:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10781"; a="719888695"
+X-IronPort-AV: E=Sophos;i="6.01,229,1684825200"; 
+   d="scan'208";a="719888695"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+  by orsmga007.jf.intel.com with ESMTP; 24 Jul 2023 19:12:53 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 24 Jul 2023 19:12:52 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Mon, 24 Jul 2023 19:12:52 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.108)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Mon, 24 Jul 2023 19:12:52 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AWB5hVa7mI9NVM1ZNpOM2FWE7Oxc5KpJZ7LS+/cwnDrOqLVl87Kw4orDwWuI5JTqtrOhIRgrAhuYE6NPKFFJW/N5oOU9wKafpKYx8LCmx2pTpM4JW0yM/eBsZSF3AXRCFKE5zotNeThKLJhCSEOQyc4jEfZBzyT4G5/Eg+MTQDS7ufL48ZgiU9EkiHJ93X6ZqbUVje+koeKVA4cl8BoXj4ah1ETldYpDH492pHPQakPMaBJfDpaQEBe6H0Q4aKguS3fUy/URaUZVlrM5tV5HA8KwNrdOA+Na4y4hKaY4lZZC5UmGirU7jsRcJfCk0kDJsHyuDdKpZ9k5ZKO2MgA/Ww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OTFTCJLcwUc0k392KwO/QAarBr78QRN9xjsWDQ2yTMA=;
+ b=S2MUMfhngJQe6HKLOCkIIRt0k0ZmAyKuMbM81UuybMyfRUN0yhWWetNaYW4JLcS5sgK0fkL0ZqmUW7bJ7ok5AkP0U/R9sU7xBXkTpSSEhNTVG+bZX0i2QebLJJP58d0PXFDGAhUMEKeujFJIP2An9SD2Pz0UuH8uZEKJrKi4dZ/qBr+GdpkewZv8QQK9d2RKB1fG/J81xdDLHuw1NrMYEr5n/h8sXPI2Fadx5OsmRuToGN9jEqso5f2RoCfUyX8FeuFLUMBrw0sQAcbiL5tyuz+k86nwUh7TkrHo8pkJbvv9pwAXmxJJq2YGlJtBen7fszzd4+AF4NnfVbN3E3b+Zg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by PH0PR11MB4806.namprd11.prod.outlook.com (2603:10b6:510:31::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.32; Tue, 25 Jul
+ 2023 02:12:51 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::137b:ec82:a88c:8159]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::137b:ec82:a88c:8159%4]) with mapi id 15.20.6609.026; Tue, 25 Jul 2023
+ 02:12:51 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Baolin Wang <baolin.wang@linux.alibaba.com>, Lu Baolu
+	<baolu.lu@linux.intel.com>, David Woodhouse <dwmw2@infradead.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, Orson Zhai <orsonzhai@gmail.com>, Robin Murphy
+	<robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai
+	<wens@csie.org>, Will Deacon <will@kernel.org>, Chunyan Zhang
+	<zhang.lyra@gmail.com>, Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH 01/10] iommu: Remove useless group refcounting
+Thread-Topic: [PATCH 01/10] iommu: Remove useless group refcounting
+Thread-Index: AQHZuar/8ffxdhgup0+jp6oCKhjoRa/D0M0AgABSGoCABBHlUIABCuuAgACH4MA=
+Date: Tue, 25 Jul 2023 02:12:50 +0000
+Message-ID: <BN9PR11MB52761B55F0534F92614213858C03A@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+ <1-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com>
+ <BN9PR11MB5276130E7AE8B0BEA43FCC6C8C3FA@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZLpzqVAxxLGJp+L4@nvidia.com>
+ <BN9PR11MB527621E6E7D464982B8730118C02A@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZL69k24VQdH0LFHk@nvidia.com>
+In-Reply-To: <ZL69k24VQdH0LFHk@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|PH0PR11MB4806:EE_
+x-ms-office365-filtering-correlation-id: 95e030fd-b1b0-4e0f-dac0-08db8cb4a607
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: +JCx4SEB/s1jgOQyoTTxXmvcSFt7RXkWyLtv9qep/VeE9z866JbhZp7hPm+XBZZw38mdlgZhbMKFRLv+UTTu4zZkhG5n8j5kCiN6OW+zrBg6S8V0gBlDiHV6TAWM6ScHuFBzDhyhtcmP4FbV/UvitZxjW3ihN4lIoqoNMzI/O44Ys85ba8f1GcMuz/aLAFNJxNm/35zR+aTWVx8kwX5j1ZYf+FvwRJ+XM9poeyWl6DJD3WSg376kVczgdFOlBSbZErVSuaESXAMCekq0bxNBfMXxJ2W4sRm1dbmoIxVfmuRWz052Gxq/i9WBiogbl3Ug58ANLaDVciKygmMcmndlcpf/UIIuAWysxp28i6Vxza2I2wIxpvlZ7Mu2b5F99rvvjl4drA/2KuzgN3jyDiXblU1nAaAdO2fYbPGmPCsLE0vz+I0KLiC1WjDTkX7tWEOOJ34AByJBYswqpK1sD7MeWI/tv9PI6ZRKvJmaLZ0mQ1EUFDNkn1iaIFmizSNZz2s54QUtReCRIUZkQJirGcV2UmNoUThsLSzUFjtVWQ3XObrO3nFYvFdjwUAwgkJ/a1RXPVSkWR3iP9jSE1M7KBkqtssCAdpVyAF4MOiXRk0/hZFuX1nog8kw1Obyuqcf234+
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(396003)(376002)(346002)(136003)(39860400002)(366004)(451199021)(38100700002)(55016003)(122000001)(83380400001)(7416002)(8936002)(8676002)(52536014)(5660300002)(6916009)(478600001)(54906003)(66556008)(4326008)(66476007)(316002)(66946007)(76116006)(41300700001)(71200400001)(64756008)(186003)(6506007)(26005)(9686003)(66446008)(7696005)(2906002)(33656002)(38070700005)(86362001)(82960400001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Yw8AMCgk+NRviqWQTt2Su3FSzdUMpAe4zOBy1xPf3H4au/h8J/rdrkS1GYG1?=
+ =?us-ascii?Q?ZR/idMzZjqbaSgA85tGJgocQB3Tl/gHMlm25YiDsLwxBU5pdPh7l64ktRVvF?=
+ =?us-ascii?Q?aBu0ViOkDT4HPv43QTRIoN0dOHvB62F+T1BpXH708SP4zApKGKOq9ZKOlzbT?=
+ =?us-ascii?Q?LwrmCKTUQhMBNNFOY4kE7K1jogYiFiefU3xd1w5EC9qZAN+/QEvXpNSYbnxp?=
+ =?us-ascii?Q?4dz+mx+DR3tGq/POozj7i9PLE5g35XMqXFttOYbprxsjEI4JAr14Dx5DcQWL?=
+ =?us-ascii?Q?xW/SO4cfqN3p/QcZ1QSCjGrjZkPHcnVGpuMy0JYLA2wvAYiTEaBQSjMem144?=
+ =?us-ascii?Q?WwL4liFPZc53Ct3ZkUg3o9T42IMTkH8lBEFwUBG30nAojmz0iHh4gqckDvRF?=
+ =?us-ascii?Q?LWe9+U/6c+EdwVSM5RIelcKjX0BUoae9j4Tp7Sji1XYVu4WvcVXACnh72FdJ?=
+ =?us-ascii?Q?TF61o2tRUqspbrFDC1Z10EPf0LM5KXJK28KIdByEaM4bG7frJcx34A4Z2Wg5?=
+ =?us-ascii?Q?KgKpVB6LS1cnv9FWDBzCpr3mA61C33CYBrQWktoUC1vx9C6M4M/5oIMDREuv?=
+ =?us-ascii?Q?unGXNWGi/hbvX8q2bIU+NT0rEaR8In9O5a/cPHLFb6/IP6kipwpRvNdQqyoz?=
+ =?us-ascii?Q?hG4ar8uLTfmRzM8lYENlN9e9snJ19cTWXptOZvk2smZ6InTPDxfv/Vfxnqwy?=
+ =?us-ascii?Q?LTQE/2F93dLukqz8pNKhjqvgI4rXRjqUPfDCx/CnewVVI1wx9yDChsBTe8IP?=
+ =?us-ascii?Q?dNHb/XbjMWWgi3PEb8rzClqVCN+Elm+QZzGPSBc2UhfrgeAPIFaR/It927Ge?=
+ =?us-ascii?Q?aPcvJXhllSDGwH0at6vS10To70o1tBeOCSe0olsaerGSAkxoKqxOfIZPek3T?=
+ =?us-ascii?Q?l9G0ISnZphRBOp0ryCvatJsC6eu2/tq2HGubE/HGjjpziocrde/UlLVewMuo?=
+ =?us-ascii?Q?sh910t9y/83iNrukXoANabrGqKFLM6NoQi5miGH23COUU+JM1N+rIok9vq7n?=
+ =?us-ascii?Q?ybMkVXCkEYDM1k75uDTb2EuXnLvSy3+DZj7AfUe5O3mvjaix5vY8USWXW4op?=
+ =?us-ascii?Q?jsfm9DP5rGolHvRPFg+YguULcdt/i0UQbgGVnvPw1CuGV8e9ibRw9xU2uS2Y?=
+ =?us-ascii?Q?4NUfZ21wMbznneD3V1KeK9hQMtr0z7UHdB5U4a2ff2EQzUpZLnW6U1MLKnHD?=
+ =?us-ascii?Q?kLnIezd6uNDuoUdet0FANf4lkL61gwutmCK9AVsETxkVxSChKJvReV/xFjH4?=
+ =?us-ascii?Q?lFGbKDAub43KN6Y9wcwUA8U+mhhwudHCTDA2ePISSFEtZNrL3Z4I8ay/8zOk?=
+ =?us-ascii?Q?MLzibx6IShuu5CfKUWz/GFoU4xAewJRdHyozrriNibCsYDcRky74IH4JzP5p?=
+ =?us-ascii?Q?/QVctZm+3WgO9Hw4Z0WIYCOZavAbJT2FX3gCgKKkLlXiyKhYEPkZ1LqGxs+q?=
+ =?us-ascii?Q?v+6eOpAqg0ID4bTN02tzxJqcpwPt2XoihjyeUWojOXCOC4bO+uWbKMvKNnYb?=
+ =?us-ascii?Q?wEbLrgKf5vKH5PEy8yHnEa0hmx/jLrXnAid8xdaWh/HW9V31VBaJxwJFB9t8?=
+ =?us-ascii?Q?At/TPKqEsbqcznr73qKmVx8rYuVqGkPrZBP5b2RK?=
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v5 14/25] iommu/msm: Implement an IDENTITY domain
-Content-Language: en-GB
-To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>, Dmitry Osipenko <digetx@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-References: <14-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-In-Reply-To: <14-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 95e030fd-b1b0-4e0f-dac0-08db8cb4a607
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2023 02:12:51.0050
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KITvbMrdKsX4Ma4JKHk51xmg3vbFiyrcZXMpSu2erMR1zj+95vAY2xX8ubWlgb3W9yYbDSn1aU5cdj+AmUgN8Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4806
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_152215_001926_3FBF45B5 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20230724_191259_507961_5FCFB834 
+X-CRM114-Status: GOOD (  20.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,93 +174,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2023 20:22, Jason Gunthorpe wrote:
-> What msm does during omap_iommu_set_platform_dma() is actually putting the
-
-typo: msm driver doesn't use/provide omap_iommu_set_platform_dma().
-
-> iommu into identity mode.
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Tuesday, July 25, 2023 2:06 AM
 > 
-> Move to the new core support for ARM_DMA_USE_IOMMU by defining
-> ops->identity_domain.
+> On Mon, Jul 24, 2023 at 02:11:44AM +0000, Tian, Kevin wrote:
+> > > From: Jason Gunthorpe <jgg@nvidia.com>
+> > > Sent: Friday, July 21, 2023 8:02 PM
+> > >
+> > > On Fri, Jul 21, 2023 at 07:10:57AM +0000, Tian, Kevin wrote:
+> > > > > From: Jason Gunthorpe <jgg@nvidia.com>
+> > > > > Sent: Wednesday, July 19, 2023 3:06 AM
+> > > > >
+> > > > >  int iommu_device_use_default_domain(struct device *dev)
+> > > > >  {
+> > > > > -	struct iommu_group *group = iommu_group_get(dev);
+> > > > > +	/* Caller must be a probed driver on dev */
+> > > > > +	struct iommu_group *group = dev->iommu_group;
+> > > > >  	int ret = 0;
+> > > >
+> > > > this is called in the probing path by .dma_configure().
+> > > >
+> > > > the driver hasn't been probed yet hence the rationale to not
+> > > > refcount is due to device_lock() instead?
+> > >
+> > > At this point the driver core has partially attached/detached a driver
+> > > so I'm considering it part of the probed driver explanation.
+> > >
+> > > Really during anything protected by the driver core probe path is
+> > > assured that the group cannot change.
+> > >
+> >
+> > Probably this worths a slightly different comment then?
 > 
-> This driver does not support IOMMU_DOMAIN_DMA, however it cannot be
-> compiled on ARM64 either. Most likely it is fine to support dma-iommu.c
+> How about
 > 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/msm_iommu.c | 23 +++++++++++++++++++----
->   1 file changed, 19 insertions(+), 4 deletions(-)
+> 	/* Caller is the driver core during the post-probe path */
 > 
-> diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-> index 79d89bad5132b7..26ed81cfeee897 100644
-> --- a/drivers/iommu/msm_iommu.c
-> +++ b/drivers/iommu/msm_iommu.c
-> @@ -443,15 +443,20 @@ static int msm_iommu_attach_dev(struct iommu_domain *domain, struct device *dev)
->   	return ret;
->   }
->   
-> -static void msm_iommu_set_platform_dma(struct device *dev)
-> +static int msm_iommu_identity_attach(struct iommu_domain *identity_domain,
-> +				     struct device *dev)
->   {
->   	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
-> -	struct msm_priv *priv = to_msm_priv(domain);
-> +	struct msm_priv *priv;
->   	unsigned long flags;
->   	struct msm_iommu_dev *iommu;
->   	struct msm_iommu_ctx_dev *master;
-> -	int ret;
-> +	int ret = 0;
->   
-> +	if (domain == identity_domain || !domain)
-> +		return 0;
-> +
-> +	priv = to_msm_priv(domain);
->   	free_io_pgtable_ops(priv->iop);
->   
->   	spin_lock_irqsave(&msm_iommu_lock, flags);
-> @@ -468,8 +473,18 @@ static void msm_iommu_set_platform_dma(struct device *dev)
->   	}
->   fail:
->   	spin_unlock_irqrestore(&msm_iommu_lock, flags);
-> +	return ret;
->   }
->   
-> +static struct iommu_domain_ops msm_iommu_identity_ops = {
-> +	.attach_dev = msm_iommu_identity_attach,
-> +};
-> +
-> +static struct iommu_domain msm_iommu_identity_domain = {
-> +	.type = IOMMU_DOMAIN_IDENTITY,
-> +	.ops = &msm_iommu_identity_ops,
-> +};
-> +
->   static int msm_iommu_map(struct iommu_domain *domain, unsigned long iova,
->   			 phys_addr_t pa, size_t pgsize, size_t pgcount,
->   			 int prot, gfp_t gfp, size_t *mapped)
-> @@ -675,10 +690,10 @@ irqreturn_t msm_iommu_fault_handler(int irq, void *dev_id)
->   }
->   
->   static struct iommu_ops msm_iommu_ops = {
-> +	.identity_domain = &msm_iommu_identity_domain,
->   	.domain_alloc = msm_iommu_domain_alloc,
->   	.probe_device = msm_iommu_probe_device,
->   	.device_group = generic_device_group,
-> -	.set_platform_dma_ops = msm_iommu_set_platform_dma,
->   	.pgsize_bitmap = MSM_IOMMU_PGSIZES,
->   	.of_xlate = qcom_iommu_of_xlate,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
 
--- 
-With best wishes
-Dmitry
-
+sounds good
 
 _______________________________________________
 Linux-rockchip mailing list
