@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77433C001B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jul 2023 10:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8839AC001DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jul 2023 10:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+8NMw+JZdT4Us2yCYq4YW0sMF07+nqZmltn4Nzo9oZo=; b=Wxl6zKlJV2T/zs
-	CBtm1fV9mnommRVcE9XOaMLyUa6JydguTmav/UlAOxsIPnGKQBdoO5f0ozg1m/b4jgPWxmDW00T43
-	hEfi219UIHPbkRYK5NcPOOJESJN7kT6aEzu65bgGFEPvMXT7cElbPHSaOyjQNEgzqJPVC2ZPz91/a
-	LL/tn6w6KUUSowTRx61tL/94JCfeFsODOtmUbXz5Ps8BMS2gp9N0kmC+1MWy5pX9U4YO5uwp5aYmG
-	BO6dBBy9FCD8od0I0krMRRxqtkh0hI5NFjHpNAZogFwXRipgsG2GplYAfplwP5r3lbfBWuvQ7n16v
-	8QHh6KRmuJrtmAqCOxkA==;
+	List-Owner; bh=cgmYSoaIDYCUzIPAx6VlaCIsNcfL5hrj5a7YS6GypxY=; b=bJBjmBRS7Jk3+O
+	rGUD4Zpk6jD+qGCAczFbaC0NXY1seNdiJFyaeluLBzDLBQ0eWhOW8Ar5TIBULoCnkt5Kn+aSuSBho
+	3J2virLhpRmnyt0tYDDDwt6NhHGSOihEtOVTeNkOm0cZK52Bhvc+E9ZhSxmUMCdlqu+kza88+uZ76
+	wVg8VKcVp/RadYb6zFZzCFBdHeEk5ygMQjmWvBEphBRNQfbcqaPy3Tr8fGvXSjnHQf+xR17kM0tQ/
+	Mdgc0I0APjWgenG/S1p8hQDsZGscaJ+dEXTwOprMM2iLk3HY2kAgorkxnHmZwaG9gHJ+4h5R8NGC4
+	acbDOrsB6mjLPEGB1ciw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qObLk-009qyh-2p;
-	Wed, 26 Jul 2023 10:02:32 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1qOc1P-009vlh-0u;
+	Wed, 26 Jul 2023 10:45:35 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qObLg-009qxV-1a;
-	Wed, 26 Jul 2023 10:02:30 +0000
+	id 1qOb2v-009n1a-1F;
+	Wed, 26 Jul 2023 09:43:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1690365748; x=1721901748;
+  t=1690364585; x=1721900585;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=fC7EcZ1a0N87YcWZSAEEbxYdBu8EmtydYwOfonr6+KI=;
-  b=jvbqR1ZLjrKHBv0vMBEIXaw4PsCDJub6btXfjSiOW9sHS2rPm/x7pU7Y
-   fMAFo6HDQHQF1u66KRpvdbbGuBFR+1QvQw3yw8qXtKpyWvSd+SWDK2Vdb
-   2r7xBR/E6LcsStp4ea0KOB6ufUXjm961j6Ye3XxIppU7q5nK2vA6BDrOU
-   acOyADy9PdTFHkH7sNPkfX3MxGbWKZvV72/FlobVWA8jm8KXABUN2Ts6v
-   B/HAAa9mpS7gYaDCW8C5mBX2ZRiIy6yUM1AcLFeSi2wtUai0QtFmwezv8
-   DXXFlRflHxYr28HSMb1Veu+jBhy8TTpNKfW9f6p39KNBkopkRvB4XYDbd
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="357971209"
+  bh=c0BcRVLtfxhSDi5n/gkET17KUrY9Ggxrw5qlALdi7QY=;
+  b=OtAAcGpCeJ3qrzhVJ9jiL7kIc643jXnrOiAXi71peAcjMTTuhE3Mf98s
+   dm6Xl3IgIGO68KyqmRtfMgPK7ciNXf0ZJL4QfB4YdzaZT2w8+MWz/xKx7
+   qWYJGnh4ac52LK95MDCyn8kJRpoT/YMRMnFsNpWJ9emsxsIUp7VfsELU6
+   XlzCxSnZ/Uhsnxyc/yJw5gl8VJ549vm+sgOZaIYBCUY8c9MlRp5CX/dY0
+   hhUihZvnW/lnygD9W3Hfv4M6zBDZyiznWwEpFZox400iddeqcw0urF+UY
+   bpWfYvKz1H9Q4xe3cfe5UZkIGE9lK0mn6Qjc0SYDn4KpBZwlrcKpgKYJl
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="431770849"
 X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; 
-   d="scan'208";a="357971209"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 03:02:25 -0700
+   d="scan'208";a="431770849"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 02:43:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="761594570"
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="973055404"
 X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; 
-   d="scan'208";a="761594570"
+   d="scan'208";a="973055404"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.208.129]) ([10.254.208.129])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 03:02:14 -0700
-Message-ID: <1d6e3aba-bdbc-7b56-2f9c-eda6017dbbb5@linux.intel.com>
-Date: Wed, 26 Jul 2023 18:02:12 +0800
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 02:42:48 -0700
+Message-ID: <ab5174e0-73b3-fcb1-bbc5-53cd82d52268@linux.intel.com>
+Date: Wed, 26 Jul 2023 17:42:45 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
@@ -60,7 +60,7 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v5 23/25] iommu: Add ops->domain_alloc_paging()
+Subject: Re: [PATCH v5 16/25] iommu: Remove ops->set_platform_dma_ops()
 Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -88,12 +88,13 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
-References: <23-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+References: <16-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <23-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <16-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_030228_596465_FF83D2F9 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20230726_024305_472291_53E67512 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,31 +112,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2023/7/25 1:22, Jason Gunthorpe wrote:
-> This callback requests the driver to create only a __IOMMU_DOMAIN_PAGING
-> domain, so it saves a few lines in a lot of drivers needlessly checking
-> the type.
+> All drivers are now using IDENTITY or PLATFORM domains for what this did,
+> we can remove it now. It is no longer possible to attach to a NULL domain.
 > 
-> More critically, this allows us to sweep out all the
-> IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA checks from a lot of the
-> drivers, simplifying what is going on in the code and ultimately removing
-> the now-unused special cases in drivers where they did not support
-> IOMMU_DOMAIN_DMA.
-> 
-> domain_alloc_paging() should return a struct iommu_domain that is
-> functionally compatible with ARM_DMA_USE_IOMMU, dma-iommu.c and iommufd.
-> 
-> Be forwards looking and pass in a 'struct device *' argument. We can
-> provide this when allocating the default_domain. No drivers will look at
-> this.
-> 
+> Tested-by: Heiko Stuebner<heiko@sntech.de>
+> Tested-by: Niklas Schnelle<schnelle@linux.ibm.com>
 > Tested-by: Steven Price<steven.price@arm.com>
 > Tested-by: Marek Szyprowski<m.szyprowski@samsung.com>
 > Tested-by: Nicolin Chen<nicolinc@nvidia.com>
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 > ---
->   drivers/iommu/iommu.c | 13 ++++++++++---
->   include/linux/iommu.h |  3 +++
->   2 files changed, 13 insertions(+), 3 deletions(-)
+>   drivers/iommu/iommu.c | 30 +++++-------------------------
+>   include/linux/iommu.h |  4 ----
+>   2 files changed, 5 insertions(+), 29 deletions(-)
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
