@@ -4,56 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A7B2C0015E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jul 2023 13:17:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96637C04A6A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jul 2023 15:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bmZgx4jYc/WrIjQt3jlqm3YUE8ErH8pMfoI3HfOu1o4=; b=h+bNkdiva6tpwp
-	00M3xdpH3dn+16GgWU2XqlQ3qF1WueTHurmnx3YitAXidXh9twshPoWVpZXa9tBtX8sF2zuTVbK0j
-	xTYHOQS3dVHXXuakCbj4aJHBdKvc65Y+wTT/J+ctwg3aG0QVvfcVreDHl4rTG1e2hSTLg629K4yFm
-	8i6b6KP9CXFswG+mmZoP97HWTMBI7pZSaHTXJwBVds0KC0Y6UEdYlM5OPmlsGTumH5UDx1QfjUAwM
-	UUc69AwsjCK6tyEqkh4CyLnPzJl4sVk8vckdQ0pD7O3RFHMODdcImxkLv1VnAUOuQx4Z5zhdLvfLV
-	7E2jFelzwzJhi/9hWHYg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FyEbT2+Wg9zOjyYa8GC1OiaS4ntagQzTXOSpYOgivcQ=; b=WCp0ew171mXPO8
+	pTIB3RwL7fTrwXuzaG4Hi14vO+48mWaxe4bhpvB6FWZ7LXe/k/I7Gf1iiOYLZxSQMLn3oTpfGni4L
+	zvWZ5Iad5MtXuAnZ/MhZVJZPHuLBZINLr1NtieK1O9XNZVWc21cmir1S114nTMEHtarZ/mN7xyhxK
+	mvFgrpmJO9o9Pu5JTghQtUUrwXA1fSzhPPzIB7FviTIbs/Lshz/SEmTInVNZXb6E59kJ7KjdAg/zQ
+	8kgnWAeFP9LpT6bvgqKgrR4ofHg8sFvD/vDgT/+dQdwheZzUq1Wz9LSdWvvqvkQ+QSVKcrphgN83H
+	Y0RZj+U2cHkYs5g6aXpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP0rb-00EQt6-0C;
-	Thu, 27 Jul 2023 13:17:07 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qP2ks-00Flp3-2m;
+	Thu, 27 Jul 2023 15:18:18 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP0rW-00EQiM-12;
-	Thu, 27 Jul 2023 13:17:04 +0000
-Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.54])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RBWTW3lLRzVjf7;
-	Thu, 27 Jul 2023 21:15:11 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 27 Jul
- 2023 21:16:46 +0800
-From: Ruan Jinjie <ruanjinjie@huawei.com>
-To: <jic23@kernel.org>, <lars@metafoo.de>, <rjui@broadcom.com>,
-	<sbranden@broadcom.com>, <bcm-kernel-feedback-list@broadcom.com>,
-	<vz@mleia.com>, <avifishman70@gmail.com>, <tmaimon77@gmail.com>,
-	<tali.perry1@gmail.com>, <venture@google.com>, <yuenn@google.com>,
-	<benjaminfair@google.com>, <nuno.sa@analog.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>, <openbmc@lists.ozlabs.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [PATCH -next] iio: adc: fix the return value handle for platform_get_irq()
-Date: Thu, 27 Jul 2023 21:16:07 +0800
-Message-ID: <20230727131607.2897937-1-ruanjinjie@huawei.com>
+	id 1qP2kj-00FlaC-1x;
+	Thu, 27 Jul 2023 15:18:11 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 998C9C0006;
+	Thu, 27 Jul 2023 15:17:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1690471084;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9aqdGX9nA2iQX2zweZK++in7R/avXw9W2bX/HtVPsxU=;
+	b=RJKiI6QqwOneXyDOlHI7qbB9SyJiAEERWGqIsT0b0+gNi9GTgzZzaUkE+BE7gvc8+kuQdR
+	QWijR44Pcc8xVjqfnxBToFbBJ2wPbk4r6WOIoJtjY0E+StOeLVOD3syqjRgUoSxoFIJmRZ
+	xaK8qo0O240qPLXk0xh/K7Dd3pj9NDjtQ7v2369bc4LXLvt1R9iVO/oRVkKBb9PguVhtKC
+	4sa9pJls3QpfcVq2mav+OR2b6Qg6msajS+eN6b7WwzjlPV8w5ZavHal9WfWUZEGwH8GpM7
+	W0gkJHi4IN2im5i/LVAOqcTuq9ihYtVyFT5QUd8AzSelfeP5NCLRty5uapSXBA==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Rob Herring <robh@kernel.org>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Han Xu <han.xu@nxp.com>,
+	Harvey Hunt <harveyhuntnexus@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Liang Yang <liang.yang@amlogic.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>
+Cc: devicetree@vger.kernel.org,
+	linux-mtd@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH] mtd: Explicitly include correct DT includes
+Date: Thu, 27 Jul 2023 17:17:56 +0200
+Message-Id: <20230727151757.586430-1-miquel.raynal@bootlin.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230714174751.4060439-1-robh@kernel.org>
+References: 
 MIME-Version: 1.0
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-X-CFilter-Loop: Reflected
+X-linux-mtd-patch-notification: thanks
+X-linux-mtd-patch-commit: b'c2fc6b6947905eee832e9ef445df4803f0056cc6'
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_061702_562900_C799173D 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20230727_081809_793951_321B48DD 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,81 +106,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is no possible for platform_get_irq() to return 0
-and the return value of platform_get_irq() is more sensible
-to show the error reason.
+On Fri, 2023-07-14 at 17:47:49 UTC, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
----
- drivers/iio/adc/bcm_iproc_adc.c | 4 ++--
- drivers/iio/adc/lpc32xx_adc.c   | 4 ++--
- drivers/iio/adc/npcm_adc.c      | 4 ++--
- drivers/iio/adc/spear_adc.c     | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git mtd/next, thanks.
 
-diff --git a/drivers/iio/adc/bcm_iproc_adc.c b/drivers/iio/adc/bcm_iproc_adc.c
-index 44e1e53ada72..0d6885413a7e 100644
---- a/drivers/iio/adc/bcm_iproc_adc.c
-+++ b/drivers/iio/adc/bcm_iproc_adc.c
-@@ -540,8 +540,8 @@ static int iproc_adc_probe(struct platform_device *pdev)
- 	}
- 
- 	adc_priv->irqno = platform_get_irq(pdev, 0);
--	if (adc_priv->irqno <= 0)
--		return -ENODEV;
-+	if (adc_priv->irqno < 0)
-+		return adc_priv->irqno;
- 
- 	ret = regmap_update_bits(adc_priv->regmap, IPROC_REGCTL2,
- 				IPROC_ADC_AUXIN_SCAN_ENA, 0);
-diff --git a/drivers/iio/adc/lpc32xx_adc.c b/drivers/iio/adc/lpc32xx_adc.c
-index 732c924a976d..e34ed7dacd89 100644
---- a/drivers/iio/adc/lpc32xx_adc.c
-+++ b/drivers/iio/adc/lpc32xx_adc.c
-@@ -176,8 +176,8 @@ static int lpc32xx_adc_probe(struct platform_device *pdev)
- 	}
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0)
--		return -ENXIO;
-+	if (irq < 0)
-+		return irq;
- 
- 	retval = devm_request_irq(&pdev->dev, irq, lpc32xx_adc_isr, 0,
- 				  LPC32XXAD_NAME, st);
-diff --git a/drivers/iio/adc/npcm_adc.c b/drivers/iio/adc/npcm_adc.c
-index ba4cd8f49f66..3d9207c160eb 100644
---- a/drivers/iio/adc/npcm_adc.c
-+++ b/drivers/iio/adc/npcm_adc.c
-@@ -244,8 +244,8 @@ static int npcm_adc_probe(struct platform_device *pdev)
- 	info->adc_sample_hz = clk_get_rate(info->adc_clk) / ((div + 1) * 2);
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0) {
--		ret = -EINVAL;
-+	if (irq < 0) {
-+		ret = irq;
- 		goto err_disable_clk;
- 	}
- 
-diff --git a/drivers/iio/adc/spear_adc.c b/drivers/iio/adc/spear_adc.c
-index d93e580b3dc5..ad54ef798109 100644
---- a/drivers/iio/adc/spear_adc.c
-+++ b/drivers/iio/adc/spear_adc.c
-@@ -310,8 +310,8 @@ static int spear_adc_probe(struct platform_device *pdev)
- 	}
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0) {
--		ret = -EINVAL;
-+	if (irq < 0) {
-+		ret = irq;
- 		goto errout2;
- 	}
- 
--- 
-2.34.1
-
+Miquel
 
 _______________________________________________
 Linux-rockchip mailing list
