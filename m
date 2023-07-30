@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21AE7C001DE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jul 2023 13:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B49C001DE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jul 2023 13:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fHJE47d0kRbT5u1vVSHvKnZz4m4RE2gWZB9NsXp1+Dk=; b=GkNWYJaOGNEoug
-	/5y0C6ZN89Dj7emVIq1TcOfkFSJsPP+ZmNTAHA0wExuLVgdXBjqV0NDKpiwtEK/Hkry4ZyhjZk4Zr
-	oFREJfSrA523vcBcxnoYHPuK/RVjY00/DaZQiAJRTqK1L/s++xAf3wBkBb+fNlL2OohlNbtseFQkj
-	GEJm+rbsqzsSPANUKvq0d/F0n5dCNUd5v0buCbmTihIcQ/Phv8syazpiDCg9F8xitKR50Cvc7Yl9E
-	Ini/yK2mRXABoMHPhajo3ddsve9mHO/jVwtcVjy52An6mygTlMGVSjZOHGCe1dAIneMP7qDKfpfV4
-	2q48N7nSwMTojYxpWrUQ==;
+	List-Owner; bh=lFdZoKFWxX51fIugTNzHj1xo1+NgPowRDc/eFGzlbUw=; b=JgT2QjFfVN7OCI
+	C7YZBE4fyS5dp9d+ZZtbY/yDvepp+I7Dn2A20U5vEcpAXpu8HDCBo5s1ZS/1mXfZTZbnm8wsqx4SW
+	csw+AEItlY9Di969gQUYD4zcLeelwIAHu+WEvPSIQ0XHJuRwtI3zNF7A0tBDd8PdfXIsxj2mzEQqk
+	iDBEORF4wVw+02GOG76Oqh7mFpusPGsC0sLQCbQbRYDF431PXGQSVNUfU5dihPk2Q3qNuiAJWRWCZ
+	jTzn7VB8/gmjcjhIcjGJpAwQb7MTc39KyhhjCPRc55DGNjiFOlz2iFubyywbWNyQ3z8+rEqNLe+y6
+	8CkH4voFnZ85ZAVupP0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQ6Ni-00BYU8-1W;
-	Sun, 30 Jul 2023 13:22:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qQ6OA-00BYag-1f;
+	Sun, 30 Jul 2023 13:23:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQ6Ne-00BYSf-0F;
-	Sun, 30 Jul 2023 13:22:43 +0000
+	id 1qQ6O7-00BYZG-0S;
+	Sun, 30 Jul 2023 13:23:12 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C307E60BB8;
-	Sun, 30 Jul 2023 13:22:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87871C433C7;
-	Sun, 30 Jul 2023 13:22:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 54C4760C56;
+	Sun, 30 Jul 2023 13:23:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 117F6C433C8;
+	Sun, 30 Jul 2023 13:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690723356;
-	bh=P6nPWoKkxLgNiPFLFCS/pA3Yhg+T0LHnBETGJfKED3k=;
+	s=k20201202; t=1690723389;
+	bh=aKQ6zX5k8uIcjBF07axyeQZQbvOI44YmLbkG4ePV7a4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HE9OFlxOrv4Vx3o9jpsWD/v8UK6ftT2ikE37v64Vk03ummVdqJkSipsfe34M508ok
-	 Bf5i3/5wVedwAm6wLsh7NiT8rgumrT069jwkdGTPZRusArpkVt06uj2/64sJPYEhIa
-	 BrPunXOkwmqm/cJMQgxZkDKy1b7+5AouaHPL4/Y78qnQw3sIln51jMVMEWnVlLFJQt
-	 IdJUqFaOw3tO3FGbXxm4mmRmdGIlPTX4YmVufnqSM0BJsNk3O2VSm4ocKVFeih7V3K
-	 lNvltHclccx1pdb+Zn+5ydiR4ugPVO6ad6GACP/B4HEB6XoUGHp935x+ZunwXD3xaO
-	 BOY08iSg7gCaw==
-Date: Sun, 30 Jul 2023 21:22:17 +0800
+	b=EUc9R2fD3LNYnghaSowLatJqOC0h3Y2XynN6kqFmy+/1gQtN/wJWL5LHHL082jjy0
+	 IABgpRJt3vZ9qo55KWopUKXkl8e+bE6luBhHk+tdF6Zq/f0HxW0J3LZ8SYs8mQrc3Y
+	 PbwBY2nG3bE0iT9E/yQX2+fLqFvSNt8eLRtly+jFQtml7+8sBsKTjqI0gMe8boRTgR
+	 p+jQ9Bn8JgTdmDQPZEsFxzMMyDdWNxPu5kBS06tQ3lMAOb2y0+KxkvJVGE3nkKEMVY
+	 /gTDJgH+UTRye4U/s/vI2LemmXQ+/txfKNc3NYCSnXBPE8SOWckXJo37ioRByB1Bmb
+	 oKmDqoCTKgYbw==
+Date: Sun, 30 Jul 2023 21:22:52 +0800
 From: Shawn Guo <shawnguo@kernel.org>
 To: Alexander Stein <alexander.stein@ew.tq-group.com>
 Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
@@ -66,18 +66,19 @@ Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 3/6] ARM: dts: nxp/imx: Replace deprecated
+	linux-rockchip@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 4/6] arm64: dts: freescale: Replace deprecated
  extcon-usb-gpio id-gpio/vbus-gpio properties
-Message-ID: <20230730132217.GP151430@dragon>
+Message-ID: <20230730132252.GQ151430@dragon>
 References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
- <20230724103914.1779027-4-alexander.stein@ew.tq-group.com>
+ <20230724103914.1779027-5-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230724103914.1779027-4-alexander.stein@ew.tq-group.com>
+In-Reply-To: <20230724103914.1779027-5-alexander.stein@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230730_062242_183435_2EC4D384 
-X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-CacheID: sfid-20230730_062311_221103_27D90E3E 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,10 +96,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 12:39:10PM +0200, Alexander Stein wrote:
+On Mon, Jul 24, 2023 at 12:39:11PM +0200, Alexander Stein wrote:
 > Use id-gpios and vbus-gpios instead.
 > 
 > Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Shawn Guo <shawnguo@kernel.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Applied, thanks!
 
