@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B592EC001DF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jul 2023 15:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21AE7C001DE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Jul 2023 13:23:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9fKMpw4b4BJspfI+61Jpb+cHrkrD931S95jMUAU/Jao=; b=fOTtBWnaJfjGeH
-	Sg77ZNyg2v+dDnHDuS/fP/VnineegG9RFr8nfbpN7dis3AM4S2J3nGYodlpsBcMGhVTe5yuac0Wbq
-	GuhlJgrpljr/7XHh9Cbz7IEySfLIdM1qz6a1BzqEZ5eW3cwIaB/kFuGJBRKh2/XzJ99vuSUTgeYVi
-	EpsGB92zoxYUIow1ViKMjhhowihZ5Q8VtK1xHzROeTYnjNJiO+dpK5W++4ojhTx0Jyhx6CHj1zPPJ
-	OwDEgxFey9uztGpNnm0rgZvi9po0RwK8NbHtsNHq7WV6AVLI5Xi0qJ6mJ7I1Xcx51Lk4HrprdrQoj
-	zhbx0coNgxxguOitZnGQ==;
+	List-Owner; bh=fHJE47d0kRbT5u1vVSHvKnZz4m4RE2gWZB9NsXp1+Dk=; b=GkNWYJaOGNEoug
+	/5y0C6ZN89Dj7emVIq1TcOfkFSJsPP+ZmNTAHA0wExuLVgdXBjqV0NDKpiwtEK/Hkry4ZyhjZk4Zr
+	oFREJfSrA523vcBcxnoYHPuK/RVjY00/DaZQiAJRTqK1L/s++xAf3wBkBb+fNlL2OohlNbtseFQkj
+	GEJm+rbsqzsSPANUKvq0d/F0n5dCNUd5v0buCbmTihIcQ/Phv8syazpiDCg9F8xitKR50Cvc7Yl9E
+	Ini/yK2mRXABoMHPhajo3ddsve9mHO/jVwtcVjy52An6mygTlMGVSjZOHGCe1dAIneMP7qDKfpfV4
+	2q48N7nSwMTojYxpWrUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPlo2-007sLl-2e;
-	Sat, 29 Jul 2023 15:24:34 +0000
+	id 1qQ6Ni-00BYU8-1W;
+	Sun, 30 Jul 2023 13:22:46 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPlny-007sKp-36;
-	Sat, 29 Jul 2023 15:24:32 +0000
+	id 1qQ6Ne-00BYSf-0F;
+	Sun, 30 Jul 2023 13:22:43 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0AD1460C5A;
-	Sat, 29 Jul 2023 15:24:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E99A4C433C8;
-	Sat, 29 Jul 2023 15:24:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C307E60BB8;
+	Sun, 30 Jul 2023 13:22:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87871C433C7;
+	Sun, 30 Jul 2023 13:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690644269;
-	bh=hKEFqZwbeqN1jWVTICiTdix0xi9S3l3WhmAf3G/bhw8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=DXIuVi0lnqRhkPrO7HEhjVV7w4vUZJUJc2bfqFd/hImxHTjYPoqL6ZhRDsO0FVgI8
-	 9iaMs3y/WORFZZxKljp0adeX46AXj5yvUIScZr6pJywg4SOMkCJFozW3LUFZZmeAlw
-	 JPxr2UKrs9GsBiOYM3mAB7UcD3zNzMMP9XkW3Vp35NJp5B2A2TcghasOKJI0Pd4aD3
-	 mX7OvMPijg+eDcH4VpLEpNvtq+9s6cnhAUDpMXuSHNeH6gFTEZZu0cIek3Ndm8siii
-	 GnupThh7jVwcm9/dcW5OonHR2sTsjuQYFClLjf1xWwL+ed1uuSCKHVdsZ1R4zeiPVA
-	 14zpMiOH4Vgxg==
-Date: Sat, 29 Jul 2023 16:24:30 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Ruan Jinjie <ruanjinjie@huawei.com>
-Cc: <lars@metafoo.de>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
- <bcm-kernel-feedback-list@broadcom.com>, <vz@mleia.com>,
- <avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
- <venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
- <nuno.sa@analog.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-iio@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <openbmc@lists.ozlabs.org>
-Subject: Re: [PATCH -next] iio: adc: fix the return value handle for
- platform_get_irq()
-Message-ID: <20230729162430.4f858e08@jic23-huawei>
-In-Reply-To: <20230727131607.2897937-1-ruanjinjie@huawei.com>
-References: <20230727131607.2897937-1-ruanjinjie@huawei.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
+	s=k20201202; t=1690723356;
+	bh=P6nPWoKkxLgNiPFLFCS/pA3Yhg+T0LHnBETGJfKED3k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HE9OFlxOrv4Vx3o9jpsWD/v8UK6ftT2ikE37v64Vk03ummVdqJkSipsfe34M508ok
+	 Bf5i3/5wVedwAm6wLsh7NiT8rgumrT069jwkdGTPZRusArpkVt06uj2/64sJPYEhIa
+	 BrPunXOkwmqm/cJMQgxZkDKy1b7+5AouaHPL4/Y78qnQw3sIln51jMVMEWnVlLFJQt
+	 IdJUqFaOw3tO3FGbXxm4mmRmdGIlPTX4YmVufnqSM0BJsNk3O2VSm4ocKVFeih7V3K
+	 lNvltHclccx1pdb+Zn+5ydiR4ugPVO6ad6GACP/B4HEB6XoUGHp935x+ZunwXD3xaO
+	 BOY08iSg7gCaw==
+Date: Sun, 30 Jul 2023 21:22:17 +0800
+From: Shawn Guo <shawnguo@kernel.org>
+To: Alexander Stein <alexander.stein@ew.tq-group.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	=?iso-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 3/6] ARM: dts: nxp/imx: Replace deprecated
+ extcon-usb-gpio id-gpio/vbus-gpio properties
+Message-ID: <20230730132217.GP151430@dragon>
+References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
+ <20230724103914.1779027-4-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230724103914.1779027-4-alexander.stein@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_082431_107795_3A46A10C 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20230730_062242_183435_2EC4D384 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,88 +95,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jul 2023 21:16:07 +0800
-Ruan Jinjie <ruanjinjie@huawei.com> wrote:
-
-> There is no possible for platform_get_irq() to return 0
-> and the return value of platform_get_irq() is more sensible
-> to show the error reason.
+On Mon, Jul 24, 2023 at 12:39:10PM +0200, Alexander Stein wrote:
+> Use id-gpios and vbus-gpios instead.
 > 
-> Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
-Applied.
+> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
 
-Thanks,
-
-Jonathan
-
-> ---
->  drivers/iio/adc/bcm_iproc_adc.c | 4 ++--
->  drivers/iio/adc/lpc32xx_adc.c   | 4 ++--
->  drivers/iio/adc/npcm_adc.c      | 4 ++--
->  drivers/iio/adc/spear_adc.c     | 4 ++--
->  4 files changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/iio/adc/bcm_iproc_adc.c b/drivers/iio/adc/bcm_iproc_adc.c
-> index 44e1e53ada72..0d6885413a7e 100644
-> --- a/drivers/iio/adc/bcm_iproc_adc.c
-> +++ b/drivers/iio/adc/bcm_iproc_adc.c
-> @@ -540,8 +540,8 @@ static int iproc_adc_probe(struct platform_device *pdev)
->  	}
->  
->  	adc_priv->irqno = platform_get_irq(pdev, 0);
-> -	if (adc_priv->irqno <= 0)
-> -		return -ENODEV;
-> +	if (adc_priv->irqno < 0)
-> +		return adc_priv->irqno;
->  
->  	ret = regmap_update_bits(adc_priv->regmap, IPROC_REGCTL2,
->  				IPROC_ADC_AUXIN_SCAN_ENA, 0);
-> diff --git a/drivers/iio/adc/lpc32xx_adc.c b/drivers/iio/adc/lpc32xx_adc.c
-> index 732c924a976d..e34ed7dacd89 100644
-> --- a/drivers/iio/adc/lpc32xx_adc.c
-> +++ b/drivers/iio/adc/lpc32xx_adc.c
-> @@ -176,8 +176,8 @@ static int lpc32xx_adc_probe(struct platform_device *pdev)
->  	}
->  
->  	irq = platform_get_irq(pdev, 0);
-> -	if (irq <= 0)
-> -		return -ENXIO;
-> +	if (irq < 0)
-> +		return irq;
->  
->  	retval = devm_request_irq(&pdev->dev, irq, lpc32xx_adc_isr, 0,
->  				  LPC32XXAD_NAME, st);
-> diff --git a/drivers/iio/adc/npcm_adc.c b/drivers/iio/adc/npcm_adc.c
-> index ba4cd8f49f66..3d9207c160eb 100644
-> --- a/drivers/iio/adc/npcm_adc.c
-> +++ b/drivers/iio/adc/npcm_adc.c
-> @@ -244,8 +244,8 @@ static int npcm_adc_probe(struct platform_device *pdev)
->  	info->adc_sample_hz = clk_get_rate(info->adc_clk) / ((div + 1) * 2);
->  
->  	irq = platform_get_irq(pdev, 0);
-> -	if (irq <= 0) {
-> -		ret = -EINVAL;
-> +	if (irq < 0) {
-> +		ret = irq;
->  		goto err_disable_clk;
->  	}
->  
-> diff --git a/drivers/iio/adc/spear_adc.c b/drivers/iio/adc/spear_adc.c
-> index d93e580b3dc5..ad54ef798109 100644
-> --- a/drivers/iio/adc/spear_adc.c
-> +++ b/drivers/iio/adc/spear_adc.c
-> @@ -310,8 +310,8 @@ static int spear_adc_probe(struct platform_device *pdev)
->  	}
->  
->  	irq = platform_get_irq(pdev, 0);
-> -	if (irq <= 0) {
-> -		ret = -EINVAL;
-> +	if (irq < 0) {
-> +		ret = irq;
->  		goto errout2;
->  	}
->  
-
+Applied, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
