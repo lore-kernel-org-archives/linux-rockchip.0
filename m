@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB7A8C001E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 11:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE6AC001DF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 11:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qLmKuVGMkU32eHZzfcept16mVPdPz3K5Dlvxe3+I3V0=; b=apQ+CUY+SgGCA6
-	0VPEgap9fdvpypPWlZqO8pLas/O3yIVEHGrRAWo/TkcAkZnDsAfeevUz41c9yCw4cvZsdXlYzqkxk
-	s2I2ESxAn+S3tnLqGLunMrG7EKN8XaE54VzY7E4blub0twKqlHjNhRi8BT4FUCC0GaN+AxAZZVYSF
-	a9B69OyynwkzIWqk+VnnK4AEB2UaBjTNyegavZCix39dfa1Gj1MLv9QKIx0a10g9uUKO4qkHzfXg9
-	mCisgqcVJ2e0jX0evlv9mYEfvtEK+8RNn5/YuVjPbJlq/quVb9fx9PpJtPtnDRuXw5iUhhSX2J4mM
-	BdisI6xjgUdpRHIMbr5g==;
+	List-Owner; bh=mLzTibRdGFNxp/l22kZVZ8HqQc1M2JU+d/kabiwD7pE=; b=vLcS3VUt1u3n/t
+	FdMWZWejcp55ZS8ve+KHUwapVV5pwmlWcmpJlrtSJuxIgdQkGfYDKllqu9GTMUGGdNXcL14UVV4w4
+	xWcChtzK4cPgVePO5UF8ARGDx6byuSKccCOgiKDPd8Qpzpoq01tMAj8EayNmIUdVQQrYGNwGBvrAN
+	5IocsXOAiRK4zJAl08oZj6vxnBV5k1PMo5USYhpSPoOo44DEfdMkDXM2JKfnnic4i4wGjqciHtHv5
+	Gy3PylGN9raZYMmhg6cFSge+YypB/hqBImuH2+qVTCNmSFsV40+ehZr+eFmmY9Xfll5faYXVFJVv5
+	/AQRb/U95ezveM3p9pTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQey-00FFZk-0q;
-	Mon, 31 Jul 2023 11:01:56 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1qQQxj-00FJzF-1l;
+	Mon, 31 Jul 2023 11:21:19 +0000
+Received: from lahtoruutu.iki.fi ([185.185.170.37])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQeJ-00FEke-2n
-	for linux-rockchip@lists.infradead.org;
-	Mon, 31 Jul 2023 11:01:22 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-26814e27a9eso2384576a91.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 04:01:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690801274; x=1691406074;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vSUkajj9vQk/niNIRcq2pUFOSu5eZnt2RDC8js+87Hk=;
-        b=h3Wc5vKtf4P1y1TpzhsWEbSQpbJpkAde9Z0fIZZyyRr8xbzEUP44GgcI7meTeWAnid
-         N7Be+cbmSEOd1rtvCiVfrAhLRgdQyWAKB4+2D+VRs1mC8k4ychTzv4tpeuvvKlylNOpg
-         55MP2bT3/qxY5kpZE7oaqoGb5dzaI8Ttoe7mWAmZaGiZUbXe/1OibX4TXIWD/a+Zrgu9
-         TBFP2JFaOaKunJzQUMP6BDpOLX/nCpZoetS7fPJe2k/9o63whWcuaNtyXnJQjqsM0y1t
-         5R7CI5YWGjtTN9LY3j7MS1ImPJIofPozuvTSlLnx4eQ23fzNrTFaOb1SURUhFkOeQ6+r
-         LoqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690801274; x=1691406074;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vSUkajj9vQk/niNIRcq2pUFOSu5eZnt2RDC8js+87Hk=;
-        b=Amjih7GT7TPQaC5+0D6MizP+ERc9xXgm8mghxW4lutklkXxS8ikeQehJei/IacjS9y
-         YMEcvzH+a02iH0DeTyYrsQolNrrNae+y5Y7Q6FlXtEpt1M3VRv3TEH176osC6L4ZN3nG
-         1njjkvo9v1fMIvoRPKtmgtScUA9uUfEUfGsaucCMp1iEE/qMwncuFFSbVaxxWaq/T8YY
-         o8XvAmgGQyk55uLVZUiSvaIMzOWv0bEUhFk6M3SA/z8t3k/pHcxOFi9xwQhf5bGl8a4z
-         YHdJ3YdI6laP47i4FhGOQ0DYI9BHBfVptN/kcg+CVMlJMWkUB0Ofac22EifmOBx4grkj
-         96iw==
-X-Gm-Message-State: ABy/qLZywR7ztr+sq0ViipwhvXxvlx+FzSWTL/qrbp5c2dOYvVrMryMY
-	kwViuC4nR+Qog4oEaL2QttlnJw==
-X-Google-Smtp-Source: APBJJlFv+Auhpp+ucD2nmECue5JQg/g2CIwB//tveGShOF7nv4DbI4vc+goUslqYFxUEf3hdE8vFsA==
-X-Received: by 2002:a17:90a:fd03:b0:25e:d013:c22c with SMTP id cv3-20020a17090afd0300b0025ed013c22cmr8567808pjb.47.1690801274239;
-        Mon, 31 Jul 2023 04:01:14 -0700 (PDT)
-Received: from localhost.localdomain ([49.205.243.15])
-        by smtp.gmail.com with ESMTPSA id t14-20020a1709028c8e00b001b1a2c14a4asm8281096plo.38.2023.07.31.04.01.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 04:01:13 -0700 (PDT)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Jagan Teki <jagan@edgeble.ai>,
-	devicetree@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
+	id 1qQQxg-00FJx4-29;
+	Mon, 31 Jul 2023 11:21:18 +0000
+Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4RDwm11Lfxz49Pyr;
+	Mon, 31 Jul 2023 14:21:05 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1690802467;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0yTUDvKr9KLJ6gBlgIFt0nRAFsoBYNTAi9NRqIkWAVs=;
+	b=AYI5iHHUBmc01ZiU7KqvPtIs4wGSE7vI+4Li73ZPtdwHGysuYtisKNz1RCt6gbkbHzHmSo
+	iesBV8KPLWj3hHXHfDev76TMOOoige9pF3e5Xel3hbfkcgzfeBaikLW957V48XhR37MuEK
+	ETFwRhT3mpleJfqSFTdhZ8iig7WZEyNQGIZPVtFtNSnSvQcj68GurDoHi5ZWI4F964AN1n
+	BcniA5OO6U+LtNI8bYRlqo0hoJyuCV+/LWmxDrZrzUmbkMvz8HgpZg/+V1ISl3t8lT1s01
+	k+Z0Y3xKD8IKVwTRqicfSCwUsYmS35r4CRjli1rPIxTBS/DiLPkEmslv9/MnzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1690802467;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0yTUDvKr9KLJ6gBlgIFt0nRAFsoBYNTAi9NRqIkWAVs=;
+	b=HAfq68Aq+b99nBng9aVkropwlrnjCcqaNtoRYITdsQe9etLceD09vCESqZrqjaA8CwpACC
+	WEAmhy2fq2WdZZQ4vhWexMBFsPe16SrR09wmxHHk4/bknq4nyugb0r07J50inqNQaG/rdC
+	hdwxSe0y2rf8qyEAr2hOk1IZHBjgW0pbUBu+T7HKhW/HshVRmUchm48BKwvpbSCgAlKz1I
+	iWsm19mWR/iAbNCqZK/mhBioBsff4WKk+nDE2CWGeIPNlaYlHnBuc40bTwoiZNmPf30gq9
+	tX6OdSOjIxfL14Y2RJHge4V6+1VYbmqqxJWhcN7aPiTlJ1TondA2YV9gi3Zkqw==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1690802467; a=rsa-sha256;
+	cv=none;
+	b=wLTcZStgf+OVjSvMjtGKMLiN6mVJZN2XZsvK95TuF3IMgEYRmmTNNS4P0HYQ74Szh5+tEb
+	yy9TuluHhSdDkYs2nY4H+LwkXxWOR081H/snDEYNkGNBO74VG0bE+WfKcVo47+4sj3bkZC
+	TkVItmMuqxfh1xlOSPvRfQEWwwirp0jO3KoJsDRZEPhm9KKUsgIi4yQcWik/skv+HjMgeM
+	gAt19b+XyKRrwvyjMfGRm/aK7jSm1oI+RQQS+E4WBsyfJXhfVhbFLPOLpn33o99ivFqTle
+	tx+xRNQE8eLTmf+cnCqNNdgdaaFWwsEMmvyYTFisGGTCxswer2FT/DhYXa/Qnw==
+Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id A9F60634C95;
+	Mon, 31 Jul 2023 14:21:04 +0300 (EEST)
+Date: Mon, 31 Jul 2023 11:21:04 +0000
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Rob Herring <robh@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH 14/14] ARM: dts: rockchip: Add Radxa Display 8HD overlay
-Date: Mon, 31 Jul 2023 16:30:12 +0530
-Message-Id: <20230731110012.2913742-15-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230731110012.2913742-1-jagan@edgeble.ai>
-References: <20230731110012.2913742-1-jagan@edgeble.ai>
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
+	Helen Koike <helen.koike@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
+Message-ID: <ZMeZIGyD+ET6gaox@valkosipuli.retiisi.eu>
+References: <20230707210604.868002-1-robh@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230707210604.868002-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_040115_919667_6B174BFA 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20230731_042116_909335_87C86635 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +110,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add compatible string of Radxa Display 8HD via DT-overlay.
+Hi Rob,
 
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
-Cc: devicetree@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Conor Dooley <conor+dt@kernel.org>
+On Fri, Jul 07, 2023 at 03:06:04PM -0600, Rob Herring wrote:
+> The OV5695 binding is almost the same as the OV5693 binding. The only
+> difference is 'clock-names' is defined for OV5695. However, the lack of
+> clock-names is an omission as the Linux OV5693 driver expects the same
+> 'xvclk' clock name.
+> 
+> 'link-frequencies' is required by OV5693, but not OV5695. Just drop it
+> from being required. Expressing it conditionally would be ugly. It
+> shouldn't really be required either as the driver only supports 1
+> frequency anyways.
 
- arch/arm/boot/dts/rockchip/Makefile               |  1 +
- arch/arm/boot/dts/rockchip/radxa-display-8hd.dtso | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
- create mode 100644 arch/arm/boot/dts/rockchip/radxa-display-8hd.dtso
+The correct way to address this would appear to be to add link-frequencies
+for both of these devices. I think I've seen one or two sensors of this
+class (raw, CSI-2/parallel, external clock etc.) with link frequencies
+documented as "fixed" --- which is probably a documentation issue more than
+anything else.
 
-diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-index 0a275549b213..053d24978f82 100644
---- a/arch/arm/boot/dts/rockchip/Makefile
-+++ b/arch/arm/boot/dts/rockchip/Makefile
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	radxa-display-10hd.dtbo \
-+	radxa-display-8hd.dtbo \
- 	rv1108-elgin-r1.dtb \
- 	rv1108-evb.dtb \
- 	rv1126-edgeble-neu2-io.dtb \
-diff --git a/arch/arm/boot/dts/rockchip/radxa-display-8hd.dtso b/arch/arm/boot/dts/rockchip/radxa-display-8hd.dtso
-new file mode 100644
-index 000000000000..d42499f8d6b2
---- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/radxa-display-8hd.dtso
-@@ -0,0 +1,14 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2023 Radxa Computer Co., Ltd.
-+ * Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
-+ *
-+ * DT-overlay for Radxa Display 8HD compatible.
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+&panel {
-+	compatible = "radxa,display-8hd-ad002", "jadard,jd9365da-h3";
-+};
+Also see:
+<URL:https://hverkuil.home.xs4all.nl/spec/driver-api/camera-sensor.html#handling-clocks>.
+
 -- 
-2.25.1
+Kind regards,
 
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
