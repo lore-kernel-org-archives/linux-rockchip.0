@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8CCC001DC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 11:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03ACC001DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 11:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ttTI+d7FLWLo7188KFF+R95U0o7jy5xLKzHf2bFERus=; b=yUbsAXBO8HH8BZ
-	R7y/poywqbIFoO+TmVwYZqmwYf+KIi/nwoDKAJWi3Mug9u7cig29ajW65pCoYVm9Z3IxuYuVw2NvV
-	SAmTdWDwMbHu0czDwBZNrpeBHrvAag3XVhevcXADfG3OMX0LIfHmMSsmxrmoCe0dX/G04o+VwDQpo
-	NtvcnICBkVyQYHAqdn7brShlxvig02/T4fp6PB/VYERM09rkcrOwMMecIz4tgA4sR8v2e5eXIVJzP
-	jbTcoJWdhraVY3HCZn/BkzIVp22MU4O3H4DOZb3EM/fURgk+7WtIPOzmlmV85qW69Jy69ItXk1kXg
-	I0yEJyBcUPpYBjMIkDnQ==;
+	List-Owner; bh=V9bDfXspJ/hTGVtrmgokoLHRj19xEooMrn9v7+LEoY8=; b=iiQU3SEq+vVzGZ
+	9ARLNFS5mnU6XmaXzI4L9LcajLunZxCmrD0NO6Id1f2rcZB3gCW1pHQL9/Xv10o+hC4PUJl602p2W
+	tOwt96+Fyb94SyGIjMtUgjqg8aTcbk8y5Rl4rTGhTCVb6+IRvsnZL6gu8g5wXbdbPas+yIJsTchTy
+	JaBsojIwnCqyVcfxF3FduabsvU2c1uczri2SbLxFAIUNROM37DtvBi2iN5HoX/cO6WjXBnKerAK1r
+	+lw3bLwjgNOe8MibX4B2TP6hoyOZMk75CE1NzfTY1l1ijUh6lwOASqmsPSGiFH0r9cq1+HzO8rN8V
+	Ff2x+tzcGns0O9z2WkEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQen-00FFGN-1z;
-	Mon, 31 Jul 2023 11:01:45 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1qQQeo-00FFHX-12;
+	Mon, 31 Jul 2023 11:01:46 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQeC-00FEeB-0P
+	id 1qQQeH-00FEhP-0p
 	for linux-rockchip@lists.infradead.org;
-	Mon, 31 Jul 2023 11:01:16 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1bbc64f9a91so36611435ad.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 04:01:07 -0700 (PDT)
+	Mon, 31 Jul 2023 11:01:18 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1bb84194bf3so26309855ad.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 04:01:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690801267; x=1691406067;
+        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690801271; x=1691406071;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=I3HQqCjHhe62nCHb2ZUEredGg2Liro7QpcAO6XbGXQM=;
-        b=Vbu3QlUxDZg8h79w1nMCHELds+BECqRM0VQBZ7eTInS4YI+1kEdByyYuXdZM7dSrGq
-         33waIJ5YruLhehpBsPuE2dFPtTQgmI84V4ZIEnKh5q4OACZMvdPcewQ1sxNRNe5kqa5E
-         6ry7bNVuLPciLCE61JAY48hpUnBcG7FAOkfsPunXIAcklRdcUDY1Uj7cIbaqnpG8iS2d
-         UCT2Qwq+qQzO6v9Z/zNtLq6UjuehBSkg6MJUg+ngbrHuaNLM6+q4eQ5oWw7sGHp/IAlC
-         qYbIjYyWoxOEzraNBj6PgFzu5SHV5++xfLF+6Jr9tRCAU+Dz2m7mhomhLlL9VX13DlEK
-         p+Qg==
+        bh=ox/FK2P0lsJq99wswpzCibIx03qccyvz1J3mu8W2wUQ=;
+        b=qow5ffPvAWaxlqjzA8290F9X2gqLaAj3afo/Do/vlMgtdugifywh3qfdXdttNFfWF4
+         1YqMTv+WPm/elZMhjXoNiXxzpPYuBf61dnKQ+JWjzOdyjyHMLwSNAH4pxPTFFpMggI+k
+         hsqbV+Q6QdOsy62Z4uZwSbZVIi2R3SwUmwrPRGVvVlBq0Jp36B8xvWThgoKtY0hOXwKI
+         1bw78OxPWJ4a4YkbeFEcXV6BLtPbrtuHSv7fnoihzvPCcJY2Jd8z/xi4G8yhRUN59brk
+         GQCVwr3sTnrcKdemDh1wSjzIu15BDbuFmy5tYNTVV2avBCtnQgQ5IpHvdgObCtSZcaNa
+         NyOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690801267; x=1691406067;
+        d=1e100.net; s=20221208; t=1690801271; x=1691406071;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=I3HQqCjHhe62nCHb2ZUEredGg2Liro7QpcAO6XbGXQM=;
-        b=JZeofBWuE2Dd7vqyO3xoQQccJBZeESS99lR3nhQLx377sqtLOlVyMwKt+kLCOE/k3g
-         DYOZiGkgyJQY38XuMinnhLW/3tyE1iHMZKWnU9hkxhNgC0eaItTsIqr2ZIVfyPKGc1ni
-         zEC3qGQjGG22SdVOZJ5eDiiENYeiUkUUIbccr3gNgaK5PYvsosSUK+M98L97/Yw2EL4B
-         1vEQUVzO7qnGPx70wMIYPqeQ0kYqDpLwDE3y+u+oMd44rN2QEoFzzTdBS911EnXuJpU/
-         L/LfzoJjuqKtOUkMq/KJu2NdecWvRFHSxx4lq7QvGHdndoZdSgTufk+kgZqVIc4ysULR
-         fFQg==
-X-Gm-Message-State: ABy/qLby3ALm/tJviUHS4APZ4QT2vyOVupDwH1YQ7bICcUb3TUatmNUw
-	apwOxBSQnN9IFXMmYA83b4sUmFy/75hDA85q8Jt01w==
-X-Google-Smtp-Source: APBJJlFq+2TfHav2VZ5GzORqXeGIqvCIntD0Yt+oFMlS+Mm1TXcW7gCdNp3DlH7fkuLzM7MZG0S/Zg==
-X-Received: by 2002:a17:902:ea09:b0:1b8:76ce:9d91 with SMTP id s9-20020a170902ea0900b001b876ce9d91mr11389549plg.1.1690801267368;
-        Mon, 31 Jul 2023 04:01:07 -0700 (PDT)
+        bh=ox/FK2P0lsJq99wswpzCibIx03qccyvz1J3mu8W2wUQ=;
+        b=Z5M/S3hIBGxWALh6AzhPz/oJc1CHtlxaG0puxtAVkewtsZuRMZ4RND8ocgTZnGJirW
+         bshwVMuUnXCHzuaHrakCwWNWuS1KPsBC8/9IzJOf0EE+8pVVEiyxNl/6q2fyLpmZVtej
+         YGSzu+0izk9BCc4XKzwgYgDKvSc8BXA8koJPDFQWcGo6/K0gDKCH7G8fisRK4aZ5U0kc
+         IVDOb/gIh9EQ2FzE6WqVLHpIvaJHKErC+wS+ZAl/DcdS6OJM6Q22Z0mRTpJzBufA0fCu
+         ZJ/+namB60b240y+JO/wTZ/+90dQvHbhY/61q7oPGm0DRCuASwHjt6zQ6jZ49mq4efjH
+         lXbg==
+X-Gm-Message-State: ABy/qLaR2qqXKGSdpaZ+gQVhGEH9Q9Cl9BOOkkNnuoDBhodCSeA1aiwe
+	eOm0DbIg49TbQHxbEZ26eU7BQw==
+X-Google-Smtp-Source: APBJJlExKEYw6Js1ULnYXnGZZffjGgT73Dy7xzDgYbAtztUSQpOD9OJlAbxyil1D7dH0K546tCZJVA==
+X-Received: by 2002:a17:903:41cf:b0:1b8:ae8c:7bfb with SMTP id u15-20020a17090341cf00b001b8ae8c7bfbmr9579444ple.17.1690801270832;
+        Mon, 31 Jul 2023 04:01:10 -0700 (PDT)
 Received: from localhost.localdomain ([49.205.243.15])
-        by smtp.gmail.com with ESMTPSA id t14-20020a1709028c8e00b001b1a2c14a4asm8281096plo.38.2023.07.31.04.01.04
+        by smtp.gmail.com with ESMTPSA id t14-20020a1709028c8e00b001b1a2c14a4asm8281096plo.38.2023.07.31.04.01.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 04:01:06 -0700 (PDT)
+        Mon, 31 Jul 2023 04:01:10 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
@@ -71,16 +71,16 @@ Cc: Jagan Teki <jagan@edgeble.ai>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH 12/14] ARM: dts: rockchip: rv1126: Add Edgeble Neu2 IO DSI overlay
-Date: Mon, 31 Jul 2023 16:30:10 +0530
-Message-Id: <20230731110012.2913742-13-jagan@edgeble.ai>
+Subject: [PATCH 13/14] ARM: dts: rockchip: Add Radxa Display 10HD overlay
+Date: Mon, 31 Jul 2023 16:30:11 +0530
+Message-Id: <20230731110012.2913742-14-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230731110012.2913742-1-jagan@edgeble.ai>
 References: <20230731110012.2913742-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_040108_253343_F1CDC9C2 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20230731_040113_328592_9417D353 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,13 +97,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DSI pipeline for Edgeble Neu2 IO board via DT-overlay
-
-The DSI connector in Edgeble Neu2 IO board support different
-resolution panels and those compatible is added in another
-DT-overlay.
-
-Add Edgeble Neu2 IO DSI connector DT-overlay.
+Add compatible string of Radxa Display 10HD via DT-overlay.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
@@ -112,140 +106,41 @@ Cc: Rob Herring <robh+dt@kernel.org>
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 Cc: Conor Dooley <conor+dt@kernel.org>
 
- arch/arm/boot/dts/rockchip/Makefile           |   1 +
- .../rockchip/rv1126-edgeble-neu2-io-dsi.dtso  | 112 ++++++++++++++++++
- 2 files changed, 113 insertions(+)
- create mode 100644 arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io-dsi.dtso
+ arch/arm/boot/dts/rockchip/Makefile                |  1 +
+ arch/arm/boot/dts/rockchip/radxa-display-10hd.dtso | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip/radxa-display-10hd.dtso
 
 diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-index 0f46e18fe275..c8c8e1292650 100644
+index c8c8e1292650..0a275549b213 100644
 --- a/arch/arm/boot/dts/rockchip/Makefile
 +++ b/arch/arm/boot/dts/rockchip/Makefile
-@@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
++	radxa-display-10hd.dtbo \
  	rv1108-elgin-r1.dtb \
  	rv1108-evb.dtb \
  	rv1126-edgeble-neu2-io.dtb \
-+	rv1126-edgeble-neu2-io-dsi.dtbo \
- 	rk3036-evb.dtb \
- 	rk3036-kylin.dtb \
- 	rk3066a-bqcurie2.dtb \
-diff --git a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io-dsi.dtso b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io-dsi.dtso
+diff --git a/arch/arm/boot/dts/rockchip/radxa-display-10hd.dtso b/arch/arm/boot/dts/rockchip/radxa-display-10hd.dtso
 new file mode 100644
-index 000000000000..88431e1e30f8
+index 000000000000..7393b9417647
 --- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io-dsi.dtso
-@@ -0,0 +1,112 @@
++++ b/arch/arm/boot/dts/rockchip/radxa-display-10hd.dtso
+@@ -0,0 +1,14 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
++ * Copyright (c) 2023 Radxa Computer Co., Ltd.
 + * Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
 + *
-+ * DT-overlay for Edgeble Neu2 IO DSI Connector.
++ * DT-overlay for Radxa Display 10HD compatible.
 + */
 +
 +/dts-v1/;
 +/plugin/;
 +
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		pwms = <&pwm2 0 25000 0>;
-+		enable-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&backlight_en>;
-+	};
-+
-+	vcc_lcd_mipi_2: vcc-lcd-mipi-2-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_lcd_mipi_2";
-+		enable-active-high;
-+		gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc_lcd_mipi_2_en>;
-+		regulator-boot-on;
-+		vin-supply = <&v3v3_sys>;
-+	};
-+
-+	vcc_1v8_2: vcc-1v8-2-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8_2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&dsi_dphy {
-+	status = "okay";
-+};
-+
-+&dsi {
-+	clock-master;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			mipi_out_panel: endpoint {
-+				remote-endpoint = <&mipi_in_panel>;
-+			};
-+		};
-+	};
-+
-+	panel: panel@0 {
-+		/* different resolution panels are used, compatibles are in DTO */
-+		reg = <0>;
-+		vdd-supply = <&vcc_lcd_mipi_2>;
-+		vccio-supply = <&vcc_1v8_2>;
-+		reset-gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcd_reset>;
-+		backlight = <&backlight>;
-+
-+		port {
-+			mipi_in_panel: endpoint {
-+				remote-endpoint = <&mipi_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	lcd {
-+		backlight_en: backlight-en {
-+			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		lcd_reset: lcd-reset {
-+			rockchip,pins = <3 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		vcc_lcd_mipi_2_en: vcc-lcd-mipi-2-en {
-+			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
++&panel {
++	compatible = "radxa,display-10hd-ad001", "jadard,jd9365da-h3";
 +};
 -- 
 2.25.1
