@@ -4,48 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CC9C00528
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 20:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75875C001DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 20:49:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0SGTteHevmFjKLn7YDmrDXFP/nAV/qgcuF8s8tsiD/I=; b=D3/Xx3OxTBD0Ez
-	Ag1/fYyRqngvLwI/iwpJ+uVgaQvZCs0XPcyVcjUdGTwUlSZEc4BTOinEiYS40jRJKUqgBO7xi3O0X
-	o59dlXaLGG5AxSUicNOqH4KSxwiek55BySyqB1qYF7j2XVHOu9XgSX5QSgvcpS2NWrEP6+fo09Mmm
-	o3YVdwmo0FXweLu3L4p4ClxILn07jOZ+0gRaI1lyJXDnT+NvhBqMNYow4rQXS/NSO5FUG4oK5gcpt
-	nAR9ym6rbPUYZlTCMshGEw9jRyz71O6AUW70pAaUGXj/7k8pQxXXYk/Cp4C76OYlwq8ReHqYt3wJq
-	ChtfXGiVLnvG3Y2KCZLA==;
+	List-Owner; bh=o8IvgqDegGUBfvMwYfJQB1VhsPe3FMxVIqVVP/ljEAg=; b=Of/FgLEdmHVDUT
+	F4Qq1CisTrADh9dylZouUwJClX6wTcJdkXOi/kdYb3D3lLp0QqhSl6y8HTDFQ6NkqPUQZXkOpk/6m
+	K9Ggjn1ULHT+0OZn6QmCUmZ7JZCKkQ2jTMVxIbSKmrda/d/aX9Gw0Uwb5gkPjo48OZthcjTaqzomB
+	0sD/9UQZWKvwW0PaHiYMBfu5QkY3NuQcM/GWJBzZ0DZtNqPSkwlUff1cqwoGqF1y7Hiw6BKOBxDFF
+	BGwiZFdVJ9jZFGGrrqXq4Z8P1DcysKRPQvo91bVau+lm2sx4VaqWtylifLaJE3AJ98OWwE3k68teF
+	ofTAPHb3nT+l5R+nslog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQZp2-00HJye-0g;
-	Mon, 31 Jul 2023 20:48:56 +0000
+	id 1qQZpb-00HK4s-38;
+	Mon, 31 Jul 2023 20:49:31 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQZoz-00HJxE-0Y;
-	Mon, 31 Jul 2023 20:48:54 +0000
+	id 1qQZpY-00HK3i-1j;
+	Mon, 31 Jul 2023 20:49:29 +0000
 Received: from i53875aa8.versanet.de ([83.135.90.168] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qQZot-0008UV-QH; Mon, 31 Jul 2023 22:48:47 +0200
+	id 1qQZpX-0008Uq-4l; Mon, 31 Jul 2023 22:49:27 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Jagan Teki <jagan@edgeble.ai>
-Cc: Jagan Teki <jagan@edgeble.ai>, linux-pm@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 01/14] genpd: rockchip: Add PD_VO entry for rv1126
-Date: Mon, 31 Jul 2023 22:48:45 +0200
-Message-ID: <5699457.DvuYhMxLoT@diego>
-In-Reply-To: <20230731110012.2913742-2-jagan@edgeble.ai>
+Cc: Jagan Teki <jagan@edgeble.ai>, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH 03/14] dt-bindings: phy: rockchip-inno-dsidphy: Document rv1126
+Date: Mon, 31 Jul 2023 22:49:26 +0200
+Message-ID: <4851208.31r3eYUQgx@diego>
+In-Reply-To: <20230731110012.2913742-4-jagan@edgeble.ai>
 References: <20230731110012.2913742-1-jagan@edgeble.ai>
- <20230731110012.2913742-2-jagan@edgeble.ai>
+ <20230731110012.2913742-4-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_134853_227829_D00BE75C 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20230731_134928_571523_A462210C 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,45 +65,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 31. Juli 2023, 12:59:59 CEST schrieb Jagan Teki:
-> PD_VO power-domain entry in RV1126 are connected to
-> - BIU_VO
-> - VOP
-> - RGA
-> - IEP
-> - DSIHOST
-> 
-> Add an entry for it.
+Am Montag, 31. Juli 2023, 13:00:01 CEST schrieb Jagan Teki:
+> Document a compatible string for the rv1126 dsi-dphy.
 > 
 > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-@Ulf: now that we have a genpd subsystem, I assume you're going
-to pick up this patch, right?
-
-Thanks
-Heiko
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
 > ---
-> Cc: linux-pm@vger.kernel.org
-> Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> Cc: linux-phy@lists.infradead.org
+> Cc: devicetree@vger.kernel.org
+> Cc: Vinod Koul <vkoul@kernel.org>
+> Cc: Kishon Vijay Abraham I <kishon@kernel.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+> Cc: Conor Dooley <conor+dt@kernel.org>
 > 
->  drivers/genpd/rockchip/pm-domains.c | 1 +
+>  .../devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml          | 1 +
 >  1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/genpd/rockchip/pm-domains.c b/drivers/genpd/rockchip/pm-domains.c
-> index e3de49e671dc..d5d3ecb38283 100644
-> --- a/drivers/genpd/rockchip/pm-domains.c
-> +++ b/drivers/genpd/rockchip/pm-domains.c
-> @@ -976,6 +976,7 @@ static const struct rockchip_domain_info px30_pm_domains[] = {
->  static const struct rockchip_domain_info rv1126_pm_domains[] = {
->  	[RV1126_PD_VEPU]	= DOMAIN_RV1126("vepu", BIT(2),  BIT(9),  BIT(9), false),
->  	[RV1126_PD_VI]		= DOMAIN_RV1126("vi", BIT(4),  BIT(6),  BIT(6),  false),
-> +	[RV1126_PD_VO]		= DOMAIN_RV1126("vo", BIT(5),  BIT(7),  BIT(7),  false),
->  	[RV1126_PD_ISPP]	= DOMAIN_RV1126("ispp", BIT(1), BIT(8), BIT(8),  false),
->  	[RV1126_PD_VDPU]	= DOMAIN_RV1126("vdpu", BIT(3), BIT(10), BIT(10), false),
->  	[RV1126_PD_NVM]		= DOMAIN_RV1126("nvm", BIT(7), BIT(11), BIT(11),  false),
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
+> index 5c35e5ceec0b..46e64fa293d5 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
+> @@ -19,6 +19,7 @@ properties:
+>        - rockchip,rk3128-dsi-dphy
+>        - rockchip,rk3368-dsi-dphy
+>        - rockchip,rk3568-dsi-dphy
+> +      - rockchip,rv1126-dsi-dphy
+>  
+>    reg:
+>      maxItems: 1
 > 
 
 
