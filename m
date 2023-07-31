@@ -4,96 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE6AC001DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 11:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D66F1C001DC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 12:25:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mLzTibRdGFNxp/l22kZVZ8HqQc1M2JU+d/kabiwD7pE=; b=vLcS3VUt1u3n/t
-	FdMWZWejcp55ZS8ve+KHUwapVV5pwmlWcmpJlrtSJuxIgdQkGfYDKllqu9GTMUGGdNXcL14UVV4w4
-	xWcChtzK4cPgVePO5UF8ARGDx6byuSKccCOgiKDPd8Qpzpoq01tMAj8EayNmIUdVQQrYGNwGBvrAN
-	5IocsXOAiRK4zJAl08oZj6vxnBV5k1PMo5USYhpSPoOo44DEfdMkDXM2JKfnnic4i4wGjqciHtHv5
-	Gy3PylGN9raZYMmhg6cFSge+YypB/hqBImuH2+qVTCNmSFsV40+ehZr+eFmmY9Xfll5faYXVFJVv5
-	/AQRb/U95ezveM3p9pTw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=rhte350xwzeJOM3h5kF48ssDg2A2gXgw0na3XsBqeZ0=; b=wLpnqJKLpZytq6
+	ntV0C0UFrmL7ztm2vNe1nbEcEnPJpzrTSY0uhPOTtGMQGae2eZrxhOyPKpHqqLkUnTXzSVwH920Sx
+	XN1xKrf2uyzph4vaireARfjM36SZ8f6m64VFejfzrO4GpmzhePT9cTBJ2WZI4giEWfHYzIMLNx/vp
+	Z0pVXUh1IP5qKblh4POxiUvkyQn/LYuHE1lCWmaFZx9bTBZc3jfilfIkRW9OtppudOEpTE4SsPMlv
+	sIeK3unP9+BDutppR0pMRLKhdYzYbLONSNYf5PJck6TO+VEKmUTkdYuy7eFBnRhUVarwAGc9zREBj
+	iy4uwiAIAp8Z8oTO1xXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQxj-00FJzF-1l;
-	Mon, 31 Jul 2023 11:21:19 +0000
-Received: from lahtoruutu.iki.fi ([185.185.170.37])
+	id 1qQRxb-00FYw3-0j;
+	Mon, 31 Jul 2023 12:25:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQxg-00FJx4-29;
-	Mon, 31 Jul 2023 11:21:18 +0000
-Received: from hillosipuli.retiisi.eu (82-181-192-243.bb.dnainternet.fi [82.181.192.243])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4RDwm11Lfxz49Pyr;
-	Mon, 31 Jul 2023 14:21:05 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
-	t=1690802467;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0yTUDvKr9KLJ6gBlgIFt0nRAFsoBYNTAi9NRqIkWAVs=;
-	b=AYI5iHHUBmc01ZiU7KqvPtIs4wGSE7vI+4Li73ZPtdwHGysuYtisKNz1RCt6gbkbHzHmSo
-	iesBV8KPLWj3hHXHfDev76TMOOoige9pF3e5Xel3hbfkcgzfeBaikLW957V48XhR37MuEK
-	ETFwRhT3mpleJfqSFTdhZ8iig7WZEyNQGIZPVtFtNSnSvQcj68GurDoHi5ZWI4F964AN1n
-	BcniA5OO6U+LtNI8bYRlqo0hoJyuCV+/LWmxDrZrzUmbkMvz8HgpZg/+V1ISl3t8lT1s01
-	k+Z0Y3xKD8IKVwTRqicfSCwUsYmS35r4CRjli1rPIxTBS/DiLPkEmslv9/MnzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=lahtoruutu; t=1690802467;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0yTUDvKr9KLJ6gBlgIFt0nRAFsoBYNTAi9NRqIkWAVs=;
-	b=HAfq68Aq+b99nBng9aVkropwlrnjCcqaNtoRYITdsQe9etLceD09vCESqZrqjaA8CwpACC
-	WEAmhy2fq2WdZZQ4vhWexMBFsPe16SrR09wmxHHk4/bknq4nyugb0r07J50inqNQaG/rdC
-	hdwxSe0y2rf8qyEAr2hOk1IZHBjgW0pbUBu+T7HKhW/HshVRmUchm48BKwvpbSCgAlKz1I
-	iWsm19mWR/iAbNCqZK/mhBioBsff4WKk+nDE2CWGeIPNlaYlHnBuc40bTwoiZNmPf30gq9
-	tX6OdSOjIxfL14Y2RJHge4V6+1VYbmqqxJWhcN7aPiTlJ1TondA2YV9gi3Zkqw==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1690802467; a=rsa-sha256;
-	cv=none;
-	b=wLTcZStgf+OVjSvMjtGKMLiN6mVJZN2XZsvK95TuF3IMgEYRmmTNNS4P0HYQ74Szh5+tEb
-	yy9TuluHhSdDkYs2nY4H+LwkXxWOR081H/snDEYNkGNBO74VG0bE+WfKcVo47+4sj3bkZC
-	TkVItmMuqxfh1xlOSPvRfQEWwwirp0jO3KoJsDRZEPhm9KKUsgIi4yQcWik/skv+HjMgeM
-	gAt19b+XyKRrwvyjMfGRm/aK7jSm1oI+RQQS+E4WBsyfJXhfVhbFLPOLpn33o99ivFqTle
-	tx+xRNQE8eLTmf+cnCqNNdgdaaFWwsEMmvyYTFisGGTCxswer2FT/DhYXa/Qnw==
-Received: from valkosipuli.retiisi.eu (valkosipuli.localdomain [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id A9F60634C95;
-	Mon, 31 Jul 2023 14:21:04 +0300 (EEST)
-Date: Mon, 31 Jul 2023 11:21:04 +0000
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Rob Herring <robh@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
-	Helen Koike <helen.koike@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] media: dt-bindings: Merge OV5695 into OV5693 binding
-Message-ID: <ZMeZIGyD+ET6gaox@valkosipuli.retiisi.eu>
-References: <20230707210604.868002-1-robh@kernel.org>
+	id 1qQRxX-00FYuS-1b;
+	Mon, 31 Jul 2023 12:25:12 +0000
+Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1c:f269::1])
+	by madras.collabora.co.uk (Postfix) with ESMTP id 17F5166020AE;
+	Mon, 31 Jul 2023 13:25:06 +0100 (BST)
+From: "Helen Mae Koike Fornazier" <helen.koike@collabora.com>
+In-Reply-To: <CAF6AEGtan-bQ7syKAwOKDY=044aKu26SLPQ0j1ieLqXNyQQS3g@mail.gmail.com>
+X-Forward: 127.0.0.1
+Date: Mon, 31 Jul 2023 13:25:05 +0100
+Cc: "Daniel Stone" <daniel@fooishbar.org>, emma@anholt.net, linux-doc@vger.kernel.org, david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, daniels@collabora.com, martin.blumenstingl@googlemail.com, mripard@kernel.org, anholt@google.com, linux-mediatek@lists.infradead.org, robclark@freedesktop.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, "Dave Airlie" <airlied@gmail.com>, "Daniel Vetter" <daniel@ffwll.ch>
+To: "Rob Clark" <robdclark@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230707210604.868002-1-robh@kernel.org>
+Message-ID: <282e-64c7a800-77-46253680@38053863>
+Subject: =?utf-8?q?Re=3A?= [PATCH v10] =?utf-8?q?drm=3A?= Add initial ci/ 
+ subdirectory
+User-Agent: SOGoMail 5.8.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_042116_909335_87C86635 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20230731_052511_687207_C9B4F5F8 
+X-CRM114-Status: GOOD (  21.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,39 +54,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-On Fri, Jul 07, 2023 at 03:06:04PM -0600, Rob Herring wrote:
-> The OV5695 binding is almost the same as the OV5693 binding. The only
-> difference is 'clock-names' is defined for OV5695. However, the lack of
-> clock-names is an omission as the Linux OV5693 driver expects the same
-> 'xvclk' clock name.
-> 
-> 'link-frequencies' is required by OV5693, but not OV5695. Just drop it
-> from being required. Expressing it conditionally would be ugly. It
-> shouldn't really be required either as the driver only supports 1
-> frequency anyways.
-
-The correct way to address this would appear to be to add link-frequencies
-for both of these devices. I think I've seen one or two sensors of this
-class (raw, CSI-2/parallel, external clock etc.) with link frequencies
-documented as "fixed" --- which is probably a documentation issue more than
-anything else.
-
-Also see:
-<URL:https://hverkuil.home.xs4all.nl/spec/driver-api/camera-sensor.html#handling-clocks>.
-
--- 
-Kind regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gYWxsLAoKVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLgoKT24gRnJpZGF5LCBKdWx5IDI4
+LCAyMDIzIDExOjM3IC0wMywgUm9iIENsYXJrIDxyb2JkY2xhcmtAZ21haWwuY29tPiB3cm90ZToK
+Cj4gT24gVGh1LCBKdWwgMjcsIDIwMjMgYXQgMTA6MjbigK9QTSBEYW5pZWwgU3RvbmUgPGRhbmll
+bEBmb29pc2hiYXIub3JnPiB3cm90ZToKPiA+Cj4gPiBPbiBUaHUsIDI3IEp1bCAyMDIzIGF0IDIy
+OjQ3LCBSb2IgQ2xhcmsgPHJvYmRjbGFya0BnbWFpbC5jb20+IHdyb3RlOgo+ID4gPiA+IEkgZGlk
+IHJ1biBpbnRvIGEgYml0IG9mIGEgY2hpY2tlbiB2cy4gZWdnIHByb2JsZW0gd2l0aCB0ZXN0aW5n
+IHRoZSAiaW4KPiA+ID4gPiB0cmVlIiB2ZXJzaW9uIChjb21wYXJlZCB0byBlYXJsaWVyIHZlcnNp
+b25zIHdoaWNoIGtlcHQgbW9zdCBvZiB0aGUgeW1sCj4gPiA+ID4gYW5kIHNjcmlwdHMgaW4gYSBz
+ZXBhcmF0ZSB0cmVlKSwgaXMgdGhhdCBpdCBhY3R1YWxseSByZXF1aXJlcyB0aGlzCj4gPiA+ID4g
+Y29tbWl0IHRvIGV4aXN0IGluIHRoZSBicmFuY2ggeW91IHdhbnQgdG8gcnVuIENJIG9uLiAgTXkg
+ZWFybGllcgo+ID4gPiA+IHdvcmthcm91bmQgb2YgcHVsbGluZyB0aGUgZHJtL2NpIGNvbW1pdCBp
+biB2aWEKPiA+ID4gPiAke2JyYW5jaG5hbWV9LWV4dGVybmFsLWZpeGVzIG5vIGxvbmdlciB3b3Jr
+cy4KPiA+ID4KPiA+ID4gQWZ0ZXIgdW53aW5kaW5nIHNvbWUgbW9yZSBnaXRsYWIgcmVwbyBzZXR0
+aW5ncyB0aGF0IHdlcmUgZm9yIHRoZQo+ID4gPiBwcmV2aW91cyBvdXQtb2YtdHJlZSB5bWwgc2V0
+dXAsIEkgaGF2ZSB0aGlzIHdvcmtpbmcuCj4gPiA+Cj4gPiA+IFRlc3RlZC1ieTogUm9iIENsYXJr
+IDxyb2JkY2xhcmtAZ21haWwuY29tPgo+ID4gPiBBY2tlZC1ieTogUm9iIENsYXJrIDxyb2JkY2xh
+cmtAZ21haWwuY29tPgo+ID4KPiA+IEFuZCBpdCdzIGFsc286Cj4gPiBBY2tlZC1ieTogRGFuaWVs
+IFN0b25lIDxkYW5pZWxzQGNvbGxhYm9yYS5jb20+Cj4gPgo+ID4gSXQncyBiZWVuIGJhY2sgYW5k
+IGZvcnRoIGEgZmV3IHRpbWVzIGJ5IG5vdyBhbmQgcmV2aWV3ZWQgcHJldHR5Cj4gPiBoZWF2aWx5
+IGJ5IGFsbCB0aGUgcGVvcGxlIHdobyBhcmUgYWNyb3NzIHRoZSBDSSBkZXRhaWxzLiBJIHRoaW5r
+IHRoZQo+ID4gbmV4dCBzdGVwIGlzIHRvIGFuc3dlciBhbGwgdGhlIHdvcmtmbG93IHF1ZXN0aW9u
+cyBieSBhY3R1YWxseSBnZXR0aW5nCj4gPiBpdCBpbnRvIHRyZWVzIGFuZCB1c2luZyBpdCBpbiBh
+bmdlci4gVGhlcmUgd2FzIHNvbWUgZGlzY3Vzc2lvbiBhYm91dAo+ID4gd2hldGhlciB0aGlzIHNo
+b3VsZCBjb21lIGluIGZyb20gZHJtLW1pc2MsIG9yIHRoZSBjb3JlIERSTSB0cmVlLCBvciBhCj4g
+PiBjb21wbGV0ZWx5IHNlcGFyYXRlIHB1bGwsIGJ1dCBJJ20gbm90IHN1cmUgd2hhdCB0aGUgY29u
+Y2x1c2lvbiB3YXMgLi4uCj4gPiBtYWludGFpbmVycywgdGhvdWdodHM/Cj4gCj4gSSdkIHByZWZl
+ciBhIHNlcGFyYXRlIHB1bGwsIHNvIHRoYXQgSSBjb3VsZCBtZXJnZSBpdCBpbnRvIG1zbS1uZXh0
+IGFzCj4gd2VsbCB3aXRob3V0IGhhdmluZyB0byBwdWxsIGluIGFsbCBvZiBkcm0tbWlzYwoKU2hv
+dWxkIHdlIGNyZWF0ZSBhIGRybS1jaSA/Cgo+IAo+IFBvc3NpYmx5IHNvbWUgb3RoZXIgZHJpdmVy
+IHRyZWVzIHdvdWxkIGxpa2UgdG8gZG8gc2ltaWxhcj8KPiAKPiBCUiwKPiAtUgoKQWxzbywgcGxl
+YXNlIHdhaXQgZm9yIHYxMSwgSSBoYXZlIGEgZmV3IGFkanVzdG1lbnRzIHRvIG1ha2UgYXMgcG9p
+bnRlciBieQpzb21lIGNvbW1lbnRzLCBhbmQgYWxzbyByZWdhcmRpbmcgeGZhaWxzIGxpc3QgYW5k
+IGhvdyB0aGUgY29uZmlncyBzaG91bGQKYmUgb3JnYW5pemVkICh1bmxlc3MgaWYgeW91IGFyZSBm
+aW5lIG1lcmdpbmcgdGhpcyB2ZXJzaW9uIGFuZCBJIGNhbiBzdWJtaXQKdGhlIGFkanVzdG1lbnRz
+IGxhdGVyKS4KClRoYW5rcywKSGVsZW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
