@@ -4,79 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85221C41513
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 16:58:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5967BC001DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 17:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pUizXVdz0509+/v44dTiUfavb2Ajhd7UBLAI3lM9N/k=; b=PNhfqt+76jjm46
-	la41xCH/Ki/mDSIfIHpyACo99eKwzXmLSxmdSlgX95s0K4IhqZkzD0Xgmsw8R7mXwaI2B4RvMuoEL
-	xMt/fDA1PQZjRuH/vVSKvFIB9zjhsG76Umbai3BXiUZIt6M3WWwi8mND0QPWvLy69udzpp60ztWCP
-	DbA9eMPu7r2X7NboKLCxeCXQGWs9sBCa9Q20I/ZromJUMK8qZppBXgKXRm2eHc1gYMkO+7sBLKsES
-	LUZZCzzdGL4IWKSQUgdpXqrGoxKINCeqDGYZfCfibEGyuQ4tYrhWNTaESwkrdiMyIWYJreMN/ZIaH
-	A0nKWgCkiw+rSUDjgbzQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=68WpdFRDyByU7HehLoWAemd8g+FdVBPUti4wG4jXhnY=; b=J2frBimSz/ZGq7
+	TAoldq1oRmpIQZzFyU9Ree6OxAPXvaOk+9l4r5aBo17JD5s9+/Hbia9OWKSB4ddQZTIOuBs5eyhTE
+	ndOeDzGKdwLKQNFwswuoSsSuVIEbV6VXjXprhDA42weC/P2W0r1NHWjVHIaRxqzLBWYjQK2ghnP3J
+	kY3hlu6xi7xfAUjyPTTZx9FPGaCEFkIEeVuZBLbsWj+xjYoKjZdGgVzFEl0UkaqSYK6CMH5LT2SfO
+	A0XtkHFbP1Fh3ESrUYzujuxgydnoy3xX6NasefYpnaDIk9jY2No3ShG3yK/EnHLsQ4EnYoFZea/FN
+	xzbjUnxcTxEutX9CKy8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQWDS-00Gi2O-07;
-	Mon, 31 Jul 2023 16:57:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qQX2k-00GtkK-1y;
+	Mon, 31 Jul 2023 17:50:54 +0000
+Received: from mail-bn8nam12on20618.outbound.protection.outlook.com ([2a01:111:f400:fe5b::618] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQWD9-00GhOZ-2P;
-	Mon, 31 Jul 2023 16:57:37 +0000
-Received: from jupiter.universe (dyndsl-091-248-210-008.ewe-ip-backbone.de [91.248.210.8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B99F06607186;
-	Mon, 31 Jul 2023 17:57:28 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690822648;
-	bh=iJEV5hp8TWN3be/f2X5Jvjfl1ZZIqLvw4EgQ1zURuRM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VmPKZJSlk1PR4lRNjOr8Zno4JQuxNRd6xewwRw6AW+wMFQYBKYdo+hOWHKO/qZ+At
-	 +6tWExc6mmL0xSyYQSjUh/dN2MG3SPNJyC2b8DblTuZ4HH25goW4uH5qRiPCoLjR74
-	 +wYA47lJLfydhXsB5W5lEH7Zjb8QSeQWh4FsKGQOjDu6BOyctzXZqIzFyerxuw9qHo
-	 xw+yx1mjgJi/VUDDI1hceLyhS4ijr8/tOLj4hzn34CTqMmK5yTyQzi0D5iXl0fa5wo
-	 B5EonUrlKTaOneIimxo+Vx3q3PDXsra/G/AyYwW87HRQaDw/xN4hnvTe063rPSlbS5
-	 G53cFVlbxY+Rg==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 306484800B3; Mon, 31 Jul 2023 18:57:25 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Serge Semin <fancer.lancer@gmail.com>
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1qQX2X-00GtYt-1o;
+	Mon, 31 Jul 2023 17:50:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=P2HMEIPXRWHXnmFG7b+UOOBtu88drkaOAzsoS+gvk/YP5dU1fnREXf48tI78y38nL7PwCP+QXn4SR5q52YGLaTvJ4z9K8r0qusTI2Uei+m3n+1UmhsjuMgl5yLvw7Vf+BgjihLruvth+EdtMyfL/JWXr2DB+RUeQH2+RzbT24lwqKlm71qpMAwEUkW1zkg/LV35RVfCrb9hFw6zdfy1ys42uiBEENxWhwiZ4g4m+8eQ+Z9JdZaNUzf6hQWW8q/mDkdDRo42120NXHle+bbbohc9dZ6xwkx76sTvPVKby3GMymyucH2DJPHybV17Jh2MyhomS9mIMKir9+78UegsuhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Wyhbk5va218DoPtymtzpXj65Jm8E3ndEQ+y3/M0iGLc=;
+ b=bu2o+S7KHT1LR0yH1e7bnJKY/D6KU0vGLw1kk2elgp3gEekEPhFEIenCersSjQm6PJqcncIMNg/PGdZ6SO1VJHEr3ykxk3On2I9YqBL8YqbOf6zhBRDPn03AImq/oZwIeNNlvHmzqC9qhEeIaMAhEC6PJD7/blQycFiZUDYNmOdfFyyZAWx1r587L+eMEuJy/7mfvYS64h502QO52hGWXitDM8gYnTyYJSi6XAf/st1eoE5PE1yEuQwWEJpGR1OviQ/nbBD1BTAw4VT60pclUoOrLW7GpeJiPG/qigLdFMqhHsy1PHWFHhJ4g9JJSqlb5W+fiFncaNH5O/Oc9ui/JA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Wyhbk5va218DoPtymtzpXj65Jm8E3ndEQ+y3/M0iGLc=;
+ b=Bnpl1hqVnYXfZ6yGOBckMo3f6tAN7brJkPt61fIbe2TX8rzAgXkmT+5lRWHprNtt41ZvJ3wRdm8A7RL6U3Iqe6+akIvCRyhHtMgy+FrCZgx4+zYy1PPVAEWA5fRSfQV/JHid7aWGIvOKl6ArDktBSMzKMXqOL1cvQcRWpsH4gHBAsA9t5LczeMzO9knH+Tkqje3K5O383cncONCnovtvxRgW0+RDM2lMKRa/qS0bc4UfRLEDtCseGuyh0LYxcto2MtZBlOCY/3763vFJG6LGZunlPl2Tm2CZpxBEi9japcXA3CDYVJ6oi16gVQCXN8C4W25uMHSGlo2BilvviWEEkw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by SJ0PR12MB6992.namprd12.prod.outlook.com (2603:10b6:a03:483::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.43; Mon, 31 Jul
+ 2023 17:50:35 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6631.043; Mon, 31 Jul 2023
+ 17:50:35 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Woodhouse <dwmw2@infradead.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: rk3588: add PCIe2 support
-Date: Mon, 31 Jul 2023 18:57:23 +0200
-Message-Id: <20230731165723.53069-6-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230731165723.53069-1-sebastian.reichel@collabora.com>
-References: <20230731165723.53069-1-sebastian.reichel@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>
+Subject: [PATCH v2 00/10] Refine the locking for dev->iommu_group
+Date: Mon, 31 Jul 2023 14:50:23 -0300
+Message-ID: <0-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
+X-ClientProxiedBy: YT4P288CA0034.CANP288.PROD.OUTLOOK.COM
+ (2603:10b6:b01:d3::20) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SJ0PR12MB6992:EE_
+X-MS-Office365-Filtering-Correlation-Id: face7454-67e1-48b4-d369-08db91eea44c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZN89sLaUSVt1S+vJMg/GBkwB1tLR1DXjKeiZijkxcillopu7G01lc2e22rSS9VB9PM8chHyXmv0FA+3I2zd4bHh0FqYI2TYGv4yrbof60UeJXGzoxXjiaVFrP0xBCeve5rEbCGw5zg2NPfO6QhDOqSfh1VNyE8c/1Eor8dPGaFwiLY84qevS384UKnHe93WHvEBo3cjUqEaJGL5rQYUy2KthWUbt6DCz9D0Thh+JAPbrIIMzcNHghQVRI1bcNs5oCGVD1icMFSi0AhYJQ5vOHgFDhtWHfOUTehPSgxrHuqD5LeSRtQx2b+DjrF8gx7E0m646GgChBliE8IjR0mferEvggHHRsNBJT0rBrp2QbxHAERJ9eT+JRW/6p+qystyv7RO225k4tKCmVWn21n+K3q5PywJ3eZmyKfwRl8W5RQFaQMWB7MRwyGa3OVy7wjZ8on2a23BZDeDQ3j4bhhWHsOvzHR9Jm4/SjNcKW2TuQHVfYMX1MWu5ZblsN8ENxmukduShrhhjyoWIoQJhnRFrVnzn9SoV2tLcA30zGvIMUvSpKRGkz5cn0xKkpdLV6HYJEx7j1mNvG+X7JOmxr1pMrwVXDJCnNvJACxBCYUPxqzAqQUjy4i9D6q8eEejs8hMKMe3WediIB86CayzsOSF3weRtnh2VkOOOLSQh7hETiMSfUloyhzbKe+1oxNWmIRwr1LJQzKcNrhi/K81hpwdm/g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(366004)(376002)(136003)(396003)(451199021)(966005)(6512007)(6486002)(36756003)(2616005)(6506007)(26005)(83380400001)(186003)(66946007)(66556008)(7416002)(54906003)(41300700001)(921005)(110136005)(38100700002)(66476007)(86362001)(316002)(5660300002)(4326008)(8676002)(8936002)(2906002)(6666004)(478600001)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?iPwY/VgkMqsFCbgAUY7VRlddkFNjaZT3PzclgpLJ4BqW5zI3V/IPuaH2zJgA?=
+ =?us-ascii?Q?nHErnKdiPJb+Dw8tU5qfqPrm1DU5vz+43pgzJkhCklk0nlW+2N+6A/aKa/H3?=
+ =?us-ascii?Q?fLS2uAZAkx5HMia2RMBpYmPGSIiGGdoc86B9bvGBq6ou4EP7oswEpcMprhGt?=
+ =?us-ascii?Q?6DWCB2fAnIyOPqbNYh8cacfKk9106k+vPvD9GyCw+OSzCILsgMMRKRjPKLUm?=
+ =?us-ascii?Q?8OeTWkhmBUyyWQJyz20KacsMSJctXpLCUWsngDAuF5cG5Kt1tpSl361UsyKP?=
+ =?us-ascii?Q?Uj6/gbKJhzPAvJouXGZ8uZKZ5SPQwzuel3ip3kRyL6UAuk1MIXbpca2ATSyn?=
+ =?us-ascii?Q?bxRpVZwkpC2W7XXlgFZLt+tQsfZvh/zKcSj4myJJti7QucSWbpPu7sYsZmjY?=
+ =?us-ascii?Q?fBgVPrVMo6gHLeS4vfmSD3NlN+tR2cNBRc/ADq+ekN92HwW7+tPCGZv9Fg7+?=
+ =?us-ascii?Q?nJ4yyGNhYqAugNDwcJZ1QF4soy+X6JrxiehcQK9Di4PgCaUkKvw7bzIvzDmG?=
+ =?us-ascii?Q?MtftVsUDFD/HtVP8g88JwKiS317asRZ1LU+GOZS85gSI6ilAq1r3bIiDL/qd?=
+ =?us-ascii?Q?2J/FGgF6uM4S5cdlx6ikEixHl5nVzph1yOrN1wGTGPTb+LfLUuh47o9Qi4Fv?=
+ =?us-ascii?Q?P4OQhbLSXSbxz5V2AkZRrnLCYpE0tUKcoxJUNMICj8XEGGcSs/irs17+90XU?=
+ =?us-ascii?Q?GYHkttnXbBFwFqUI2chVvqKZcb9JJydHZe0f97F7AcS20t38MKk/QLFrykbB?=
+ =?us-ascii?Q?05y/Z6FVz1o5M0yqChrvhJxRhT9X2Lp4/t1hPVB6bMxT2onkGS7Ck0LT8jXX?=
+ =?us-ascii?Q?ZRUYpl82p/wN/gR8HqEOjweX130I4TLGbVdkX2S2wVv85wvdESfHzWiWD8Sw?=
+ =?us-ascii?Q?zQp8862qTmbfk9EHh5qDwN+FBROfbpfZ7Hh6i79+0YYpPDn6EMSm0zYFUJ4m?=
+ =?us-ascii?Q?36QDR+TPH5bSbRjp5FC/oL34nnqaydAN0jn3DIx0F98AhcZjflqnr4v87fy2?=
+ =?us-ascii?Q?DsDPBd8W126aODbt1cB3KGNJV8AMiO/c/HxGEwx85Jo0ZW5oh+tU04wnHgIv?=
+ =?us-ascii?Q?bMMRLgFWr6sSBp5qqnzBz4T83ydedoQvPvwg5RPZbhxAie0WCal6ulgU1kR4?=
+ =?us-ascii?Q?jidPKfNQMz9KR7lB3KCQ1J9k1b+TeIqUO+nANZgMwDKRzHC+VNsQYWGH1m8Y?=
+ =?us-ascii?Q?Ln8lFTOUDUkLcXlvT9dxtZ9eIGxz+Tmmxh+xXCzBbo7z2QXHfoXOSCxS9OlS?=
+ =?us-ascii?Q?ALfxjZ4eAqNTMjMuavpPbXkgZ44mkMp58b2JqXakK+6d1lYJLcl3sBYKjW9N?=
+ =?us-ascii?Q?k63c3s6IrEM45CSXRq0rZbaVgfw9oBqRPloxzSxZat2Sl67zwA0/OOo27j5+?=
+ =?us-ascii?Q?40ULaEBQv1CmGCR4I4GxgtrWbudAfR91E5WDz9S17rmuvBWbnvmojq129dIo?=
+ =?us-ascii?Q?uBqcv1MvibyQCx/cly2bgo3gnpQ41faYKWKOc67GYNwXcfTw2xS9sVKEzxh2?=
+ =?us-ascii?Q?GGqqua9amIS24zq05dy/I4C0Id3lzRMPazQGU3qvuWQHDZY3XFSygPZQRBGg?=
+ =?us-ascii?Q?dUQEScsVzhIjQYpfPzalmVJx9g9C8bwUBbRqBjmA?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: face7454-67e1-48b4-d369-08db91eea44c
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2023 17:50:34.9127
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8sZMtMjHoKzy38xPg+Moyx14+W1tlezu+216+hi2XIW0gRrRRG4M1Nu7wK1YGz1l
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB6992
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_095736_049196_74DE46FE 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20230731_105041_631283_8CE19AE8 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,196 +143,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add all three PCIe2 IP blocks to the RK3588 DT. Note, that RK3588
-also has two PCIe3 IP blocks, that will be handled separately.
+This series puts the core code usage of dev->iommu_group under a
+consistent set of locking rules. Currently a lot of places in the code
+access this value without any locking or READ_ONCE/etc techniques and it
+is not clear how or why this is safe.
 
-Co-developed-by: Kever Yang <kever.yang@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Tested-by: Jagan Teki <jagan@edgeble.ai> # edgeble-neu6a, 6b
-Reviewed-by: Jagan Teki <jagan@edgeble.ai>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588.dtsi  |  51 +++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 102 ++++++++++++++++++++++
- 2 files changed, 153 insertions(+)
+Make it so the following locking rules are used:
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 6be9bf81c09c..88d702575db2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -80,6 +80,57 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
- 	};
- 
-+	pcie2x1l0: pcie@fe170000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x20 0x2f>;
-+		clocks = <&cru ACLK_PCIE_1L0_MSTR>, <&cru ACLK_PCIE_1L0_SLV>,
-+			 <&cru ACLK_PCIE_1L0_DBI>, <&cru PCLK_PCIE_1L0>,
-+			 <&cru CLK_PCIE_AUX2>, <&cru CLK_PCIE1L0_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 241 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 240 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie2x1l0_intc 0>,
-+				<0 0 0 2 &pcie2x1l0_intc 1>,
-+				<0 0 0 3 &pcie2x1l0_intc 2>,
-+				<0 0 0 4 &pcie2x1l0_intc 3>;
-+		linux,pci-domain = <2>;
-+		max-link-speed = <2>;
-+		msi-map = <0x2000 &its0 0x2000 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&combphy1_ps PHY_TYPE_PCIE>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>;
-+		reg = <0xa 0x40800000 0x0 0x00400000>,
-+		      <0x0 0xfe170000 0x0 0x00010000>,
-+		      <0x0 0xf2000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+
-+		pcie2x1l0_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 240 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
- 	gmac0: ethernet@fe1b0000 {
- 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
- 		reg = <0x0 0xfe1b0000 0x0 0x10000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index c9f9dd2472f5..b9b509257aaa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1227,6 +1227,108 @@ qos_vop_m1: qos@fdf82200 {
- 		reg = <0x0 0xfdf82200 0x0 0x20>;
- 	};
- 
-+	pcie2x1l1: pcie@fe180000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x30 0x3f>;
-+		clocks = <&cru ACLK_PCIE_1L1_MSTR>, <&cru ACLK_PCIE_1L1_SLV>,
-+			 <&cru ACLK_PCIE_1L1_DBI>, <&cru PCLK_PCIE_1L1>,
-+			 <&cru CLK_PCIE_AUX3>, <&cru CLK_PCIE1L1_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie2x1l1_intc 0>,
-+				<0 0 0 2 &pcie2x1l1_intc 1>,
-+				<0 0 0 3 &pcie2x1l1_intc 2>,
-+				<0 0 0 4 &pcie2x1l1_intc 3>;
-+		linux,pci-domain = <3>;
-+		max-link-speed = <2>;
-+		msi-map = <0x3000 &its0 0x3000 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&combphy2_psu PHY_TYPE_PCIE>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>;
-+		reg = <0xa 0x40c00000 0x0 0x00400000>,
-+		      <0x0 0xfe180000 0x0 0x00010000>,
-+		      <0x0 0xf3000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+
-+		pcie2x1l1_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 245 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
-+	pcie2x1l2: pcie@fe190000 {
-+		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x40 0x4f>;
-+		clocks = <&cru ACLK_PCIE_1L2_MSTR>, <&cru ACLK_PCIE_1L2_SLV>,
-+			 <&cru ACLK_PCIE_1L2_DBI>, <&cru PCLK_PCIE_1L2>,
-+			 <&cru CLK_PCIE_AUX4>, <&cru CLK_PCIE1L2_PIPE>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk",
-+			      "aux", "pipe";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie2x1l2_intc 0>,
-+				<0 0 0 2 &pcie2x1l2_intc 1>,
-+				<0 0 0 3 &pcie2x1l2_intc 2>,
-+				<0 0 0 4 &pcie2x1l2_intc 3>;
-+		linux,pci-domain = <4>;
-+		max-link-speed = <2>;
-+		msi-map = <0x4000 &its0 0x4000 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&combphy0_ps PHY_TYPE_PCIE>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3588_PD_PCIE>;
-+		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
-+			 <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>;
-+		reg = <0xa 0x41000000 0x0 0x00400000>,
-+		      <0x0 0xfe190000 0x0 0x00010000>,
-+		      <0x0 0xf4000000 0x0 0x00100000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
-+		reset-names = "pwr", "pipe";
-+		status = "disabled";
-+
-+		pcie2x1l2_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 250 IRQ_TYPE_EDGE_RISING 0>;
-+		};
-+	};
-+
- 	gmac1: ethernet@fe1c0000 {
- 		compatible = "rockchip,rk3588-gmac", "snps,dwmac-4.20a";
- 		reg = <0x0 0xfe1c0000 0x0 0x10000>;
+ - It is readable by a probe'd device driver. So long as a device driver
+   is probed the dev->iommu_group will be guaranteed stable without further
+   locking. The reader should provide some kind of locking that ensure's
+   its remove() struct device_driver op cannot progress.
+
+ - Read/Write under the device_lock(), this primarily protects against
+   parallel probe of the same device, and parallel probe/remove. This is
+   useful for places that don't naturally have a device driver probed, and
+   should be rare.
+
+ - Read/Write under the global dev_iommu_group_lock. This is used during
+   probe time discovery of groups. Device drivers will scan unlocked
+   portions of the device tree to locate an already existing group. These
+   scans can access the dev->iommu_group under the global lock to single
+   thread determining and installing the group. This ensures that groups
+   are reliably formed.
+
+Add locking assertions to enforce this.
+
+Along the way remove a bunch of opencoded group touching in drivers trying
+to implement a 'single group per driver' approach by providing a core helper
+that does this common algorithm.
+
+Overall this significantly reduces the number of places within
+drivers/iommu calling iommu_group_get or touching groups at all.
+
+This goes on top of Joerg's next tree, it needs the prior series
+"Consolidate the probe_device path".
+
+This is on github: https://github.com/jgunthorpe/linux/commits/iommu_group_locking
+
+v2:
+ - Revise comments
+ - NULL singleton_group during iommu_device_unregister() for clarity
+v1: https://lore.kernel.org/r/0-v1-3c8177327a47+256-iommu_group_locking_jgg@nvidia.com
+
+Jason Gunthorpe (10):
+  iommu: Remove useless group refcounting
+  iommu: Add a lockdep assertion for remaining dev->iommu_group reads
+  iommu: Add generic_single_device_group()
+  iommu/sun50i: Convert to generic_single_device_group()
+  iommu/sprd: Convert to generic_single_device_group()
+  iommu/rockchip: Convert to generic_single_device_group()
+  iommu/ipmmu-vmsa: Convert to generic_single_device_group()
+  iommu/omap: Convert to generic_single_device_group()
+  iommu: Complete the locking for dev->iommu_group
+  iommu/intel: Fix missing locking for show_device_domain_translation()
+
+ drivers/iommu/intel/debugfs.c  |  34 ++++----
+ drivers/iommu/iommu.c          | 155 +++++++++++++++++++++------------
+ drivers/iommu/ipmmu-vmsa.c     |  22 ++---
+ drivers/iommu/omap-iommu.c     |  30 +------
+ drivers/iommu/omap-iommu.h     |   2 +-
+ drivers/iommu/rockchip-iommu.c |  22 +----
+ drivers/iommu/sprd-iommu.c     |  24 +----
+ drivers/iommu/sun50i-iommu.c   |  29 ++----
+ include/linux/iommu.h          |   3 +
+ 9 files changed, 138 insertions(+), 183 deletions(-)
+
+
+base-commit: a5003e75a1714857c01317d04982eef81331fe2f
 -- 
-2.40.1
+2.41.0
 
 
 _______________________________________________
