@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B78ECC001E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 10:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2803BC001DF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 10:37:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aJLlDmKbC2jE5y5L49TvAUna6wnVK8fyfnqMGV+rfmQ=; b=UcB2GUR3KPSQa3
-	8sdaDEZoc+kokYDJ9t7xTm6mISC1AssnaBLfMxUG0uo78TuwDe8g178s/7v/7LPBMlUtVbEfhhr+z
-	6C2StQN2ARslsmwz0ylTF57WNv1ZSFu9izSD+pdsWwVg2agXPMhQtW6qn616YBrpKHRBkqbYnLnJw
-	e2psBKqTeIfAiMt13iepbVzECYrVspkEAwGjwMd1r9jjV7IZLGFnzdxLpMpWZYI7VHLyUFvLPY4X3
-	lZWTUbQvM7EHibdF+/KBChBFGf5a/FBAOj1dTcqPi78zucgQH0ToRK7GrKJNNTn/zLElweY/D8c5p
-	PoEyvRO43fuR02HB2Qdw==;
+	List-Owner; bh=FITwl/7fD55hHB71gLC6IeCKxaIv+xNP02dCqEXkuok=; b=vzwBOZbsAZhk/E
+	xA+8XrCVtIIEbmSKcEjZ25CMh+NLDgaBDFMO00tT2pLf4QPZ3v7l0CaM6O8SLgk4YiQ5Zw5/fF+ra
+	cB2sKsgMkDFY34cnFHt2D5Z2pggyOAyvAF06p2l45w1ebjgU7RSnofQUdAPLWUztHUu5NNovDkzb0
+	7qHM++IUlatfsdq+RMY45Rav355Ym1C5p48qLGqmSCMiV6eaIW3TPlV9qKL1mkNqNnsI/ubcQfcS7
+	rrTaCgtk7Ug1noLPulN7eghxT46b5FSRRty/jxcc+CJPTZYK7NxLpKPamPCa2yNeVOFPyW77JKhDI
+	Csbh4ma2FvpHm16Ia1fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQGr-00F7cm-0I;
-	Mon, 31 Jul 2023 10:37:01 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1qQQGv-00F7hK-1w;
+	Mon, 31 Jul 2023 10:37:05 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQG7-00F6w8-2p
+	id 1qQQGG-00F74q-0x
 	for linux-rockchip@lists.infradead.org;
-	Mon, 31 Jul 2023 10:36:17 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-686ba29ccb1so2672612b3a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 03:36:15 -0700 (PDT)
+	Mon, 31 Jul 2023 10:36:26 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-686ba97e4feso4357534b3a.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 03:36:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690799775; x=1691404575;
+        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690799783; x=1691404583;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=D7wWUGs/v+ImTg6la07JUUOGNgXiEd+D9UkVWUeb/xY=;
-        b=aKCmVAh3ZjgncuiUoYMo4S+G9tvS1SVRPoqlucOk43GiLicJREDat/Ep+9AJ8v6JHs
-         oDqiDC86nUczMtooX38L+VpnHw5Ylxtf9PTOnxMi9ea5jt6Iz2274HNFqphpeFFhYtwJ
-         cvphjoYj7btHsvGYeo1ntfuFKmbuotegn9wni04OHV0xoKKP+LD/tb9Si8YM0z3OLxiV
-         m/gHZrWeeBmqGS8iuX/vuzWVDTma5sjTaIV1WAIZhYI73sdHcY6GjN9rNHa6aJqjY5QQ
-         zIlxoLwiUwvSos7e+bA1LQp0goJQeJN5EBltDzchofCbrvx23kNqC9UGf8qAI/ycRHm2
-         lhZA==
+        bh=CGv1dcNKbS3YC7V4kkMD0PxlW/a+2lGKPQQ7EbzshOA=;
+        b=ZlNPo2MnkBjJ1fcgEvxHQ8xYzc9RdvvpNt38jBBOLOCugZgg4mPyrVMF9QbSmAIfkH
+         o3e656XYZA1keutDtrF2nSX6+r750wFI8fPz8KFD6BOoevEF+CXXMuMxbDJJzgIehZsm
+         sWhBrjgYpdmam3seHMBQVg+tIlBXDHfE51Qhe6SPjcBWV8wwTpKitZl5MoZO8V+QqDCm
+         IdigFulA9X2MjCIS9l19OS/tgAGjuDPcJ1n48rn14XSwVHpoyT/7T6RTmj4G5+AIr5yu
+         +Ztvw7oCoVi6ybgXs+q4qjfOvxCfHCa86IDrVB9tf+aeBhL9RM3foQJRDQPLK4iTo2tz
+         ZV9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690799775; x=1691404575;
+        d=1e100.net; s=20221208; t=1690799783; x=1691404583;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=D7wWUGs/v+ImTg6la07JUUOGNgXiEd+D9UkVWUeb/xY=;
-        b=lgSBvMXHvc72yyKNXpJMVnFk1KyQZMUdkLauCh1BhJBUK+HfQV9EjPqYz3dverDIqW
-         QSdcg7rVggSreFPUoMuTOGFxTciTXVPVUsEu7ZaFIioVfPGRdk4B9C74A4XVMR00plxU
-         c2E7kTEbhhe0O7gcGJSmFAFuxmSSSjLvinfl9cakYAg3iBkz5ibY+ATtfYdn+mRdnssH
-         oLar05waMlCpcntGuCFn33XolSddrJfGh6/sXazVZgF2pKBcz0Cs9JHDTaTP4XDOi098
-         iorgAJeIfO7W2q+Ak8pDdlkuY4oDfSx2QZN7ud3qmZMIzKOCUhNTLueNbfAEQFKiIIvr
-         0Mvw==
-X-Gm-Message-State: ABy/qLbLyEAP98KdLHkjw8MiaM9H8YpBQQZijETtCdvZtqBoBHnuzloX
-	cekU4n+XTDhAEohaMOhgz1stTw==
-X-Google-Smtp-Source: APBJJlEhUGkpmPWPU9n4Zc5cFJjFcxCUlPtPbB5awuud41XG4ilIiiuIfZtKy4lJk9bqmCxRsmgvPw==
-X-Received: by 2002:a05:6a20:a11d:b0:12f:d350:8a12 with SMTP id q29-20020a056a20a11d00b0012fd3508a12mr10679410pzk.21.1690799775321;
-        Mon, 31 Jul 2023 03:36:15 -0700 (PDT)
+        bh=CGv1dcNKbS3YC7V4kkMD0PxlW/a+2lGKPQQ7EbzshOA=;
+        b=P5lEjAnSPHdM+sYb63iJoo1PVkvyxU5eUSjiMG8M8Z3XXqrIh9k6VV1ixSh5pYfJHF
+         JO5uzo6V4Zm9KGmB2beeWWf3oUgiNxuCOxNdmPvNfxzEYm6BomIdcc61tQNGktjrm8Jh
+         CvDnhD6DsG0mMUGmQZNzD0fEg1LRS+mKc/UwXsTLKTcRPoBjfjOOjarAY0fC98CqKf9H
+         pLL4UfFSPx5HrkTdzE+W64bJutnHiF/iPesKgrON2EeilZ7KmMEBjCK9z8CSCBbpVI/l
+         yU53PSXZkVV7eGuEPkFAGB81OxCxGTh6rIYmIekDuNYAv65gTdUs4JdIuJWAZgIiGxuK
+         m/ng==
+X-Gm-Message-State: ABy/qLauehdUNYe+oCRd/Z1v0/Pni04FT/vrHmzVpVhUPgJwW1htSJI8
+	xPahs1p4KHEcyxXSIcaK6WQ6GQ==
+X-Google-Smtp-Source: APBJJlGlw9ezW8FYGzLUTXIHL6JOHakL4mSK2TtrDVsybBfwL4KRI/X2LLCB4mLm0IfcH530uyBqdw==
+X-Received: by 2002:a05:6a00:23cf:b0:63a:ea82:b7b7 with SMTP id g15-20020a056a0023cf00b0063aea82b7b7mr12943743pfc.28.1690799783728;
+        Mon, 31 Jul 2023 03:36:23 -0700 (PDT)
 Received: from localhost.localdomain ([49.205.243.15])
-        by smtp.gmail.com with ESMTPSA id c13-20020aa7880d000000b00640f51801e6sm5906115pfo.159.2023.07.31.03.36.12
+        by smtp.gmail.com with ESMTPSA id c13-20020aa7880d000000b00640f51801e6sm5906115pfo.159.2023.07.31.03.36.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 03:36:15 -0700 (PDT)
+        Mon, 31 Jul 2023 03:36:23 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -70,17 +70,18 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
+	Stephen Chen <stephen@radxa.com>,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 08/13] ARM: dts: rockchip: rv1126: Add uart5m2_xfer pins
-Date: Mon, 31 Jul 2023 16:05:13 +0530
-Message-Id: <20230731103518.2906147-9-jagan@edgeble.ai>
+Subject: [PATCH 11/13] ARM: dts: rv1126: Enable SFC for edgeble-neu2
+Date: Mon, 31 Jul 2023 16:05:16 +0530
+Message-Id: <20230731103518.2906147-12-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230731103518.2906147-1-jagan@edgeble.ai>
 References: <20230731103518.2906147-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_033615_919141_F67586A3 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20230731_033624_348399_80173DDA 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +98,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add uart5m2_xfer pins for Rockchip RV1126 uart5.
+From: Stephen Chen <stephen@radxa.com>
 
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+Enable on module SPI Flash present in Edgeble Neu2.
+
+Tested-by: Jagan Teki <jagan@edgeble.ai>
+Signed-off-by: Stephen Chen <stephen@radxa.com>
 ---
- arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../boot/dts/rockchip/rv1126-edgeble-neu2.dtsi   | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
-index cb31e6bebcec..bb34b0c9cb4a 100644
---- a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
-@@ -283,5 +283,13 @@ uart5m0_xfer: uart5m0-xfer {
- 				/* uart5_tx_m0 */
- 				<3 RK_PA6 4 &pcfg_pull_up>;
- 		};
-+		/omit-if-no-ref/
-+		uart5m2_xfer: uart5m2-xfer {
-+			rockchip,pins =
-+				/* uart5_rx_m2 */
-+				<2 RK_PA1 3 &pcfg_pull_up>,
-+				/* uart5_tx_m2 */
-+				<2 RK_PA0 3 &pcfg_pull_up>;
-+		};
- 	};
+diff --git a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
+index e3e5752fd6b7..6bbaf6da6545 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
+@@ -301,6 +301,22 @@ &saradc {
+ 	status = "okay";
  };
+ 
++&sfc {
++	pinctrl-names = "default";
++	pinctrl-0 = <&fspi_pins>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <50000000>;
++		spi-rx-bus-width = <4>;
++		spi-tx-bus-width = <1>;
++	};
++};
++
+ &sdio {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
 -- 
 2.25.1
 
