@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C08EC001DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 10:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 691EEC001DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Jul 2023 10:37:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UQpizjphJDmLLIaGcLwz5T5JbaFN1nUtUdpJjvY175E=; b=a674kRhvpWzf/0
-	lF1zyBxNQ+WNULqfWz7fBhnweGBxjkkVgTlwojgcui5nCWVWy/+Md6AituzoPtfDH5sMVJ6c0HbYO
-	R4/nnG+a7iaHtZPZFHkZk4oLrv4v6Xsw/5krq4vmi4l9kfD59Xz0zxNAyOuxVPvRjUW8LSXYs1O/N
-	PD90UVCSp9yxgvW1yve6Z+l5/ucq443OHfuusxPn8jspzb7YqhIbEem3i+YI28ss+T8xPK+YL85uU
-	5oL3DSNDKydlWhvfpiSBbda3XJEIzFnwBT7Jj1dHEO+gNCbCBinO/qioiJADNVgXMVEfwp88AwZR1
-	JbP9O7Oa4a1HdNbfVgtw==;
+	List-Owner; bh=5jbOtbHPI/RdKMBh4VoSmo3MqSf/frbEy8bqhC6CxV4=; b=W2tIQGOm6AoueI
+	CNqpprDhCAAumKXzTDHd1c2vmupk3gq59e18xLu00AegP9OwOvImiRzBohAC2UsAlVT5omyxp7wnY
+	fbGPx+EsdiU5eNSljxP6m//88IS3l8eiYMWeMEa1HtOOk8g4U850S/R84eQAAFK9exRDkA/dnjhIN
+	bOZPKBWCMc9gcwzr9cSrPuDo3cOeDuUhH0MRsEMrpJU0p+uAApgJOx244CrtrqBXSQs29PZuCzIgt
+	PQLVfZeyN/O/0P6R4PKo9WSKQb2VCzGDjnPvBAp73NzUGG9YIzwd9MO7yJ24r0LwCJ0/FThf3S2EQ
+	RzaDC3ZoFfuGzj0V3RnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQGt-00F7fk-2r;
-	Mon, 31 Jul 2023 10:37:03 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1qQQGy-00F7jP-04;
+	Mon, 31 Jul 2023 10:37:08 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQGD-00F725-0p
+	id 1qQQGL-00F7B8-2v
 	for linux-rockchip@lists.infradead.org;
-	Mon, 31 Jul 2023 10:36:22 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-686fc0d3c92so2542372b3a.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 03:36:21 -0700 (PDT)
+	Mon, 31 Jul 2023 10:36:31 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-686efdeabaeso2775278b3a.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 31 Jul 2023 03:36:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690799781; x=1691404581;
+        d=edgeble-ai.20221208.gappssmtp.com; s=20221208; t=1690799789; x=1691404589;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lr/IRa0Gy3cXDJfJQ3C/islU29JYFF9cRXQo0YY1xm8=;
-        b=yJ4OAXudxqBZFhr/OyaJCKK4Fpkr1LIhOPnfV6fQsYdVGfxWuqpmW9wYrIJxU9WSv0
-         7cbp4xvw/8YMZrBMS9VUZNTL2Zo5AwcIlW3wnS8JVcvkdBISE/GAYfQ1MH3dalhQM2vT
-         LWOqCprBIxP64zzmdEBECGxw5J9ZT7az3nIAnbSrA++/tV8BrASy+tO9xuMQt/JA1qY8
-         2itpno2Nmn5RS/20BJt1E8YZwlLhz/B1zs92OoA6FJN5466akXrJWO+09UwQprYeaKHe
-         3xPHjij63xrtEvBuS/w8enuvScep0c2A4lByrw+n9N9gCl7ccNRCNZfM9IT90n9nQFkR
-         PaNA==
+        bh=kGLL2IWqqe53/KrEV7Ij4qiJEApJ+nnC26dOnmKXiOM=;
+        b=S8/UdxoDBrOFE/PBXrrrcrSQKc2Eil0EnQ5kYdRqqtA/2Jhx4m8Yodvc+F8A99WcDz
+         6t76RK4JadDLzwjujBul8WONYooOjX2ZBDekdEXWTjp/ZT7a10ogqOUEWldeEkHs3+pE
+         JPsOx7Qescne273kLgZY1nCuYsLy9J3AsqIW5kUujKJ2vmbb9HuCt52iXiUBzOPXT3LM
+         n9N4zdvoDOwIXI+M4bGbaE2lqB6ipJzt1om+bzmW+ACAFiziue8OvaoawlYnrOfbeYl7
+         qQF5GuZrcMWw9vSdinWbD8HbJsDchMofDFnYyy1Wy1lchg2dj+RK9beuUpq5dG5c6wDn
+         SOeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690799781; x=1691404581;
+        d=1e100.net; s=20221208; t=1690799789; x=1691404589;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lr/IRa0Gy3cXDJfJQ3C/islU29JYFF9cRXQo0YY1xm8=;
-        b=X1sZyK9h8MFkOmvDa7kmadCvybwilRPeVVBXXsNOT3Ey5wjFg5FjzA9806Jlje2Bv7
-         xoGYKMr45kZU746zxkpBWZoRLTNKTrJ0bv/2efihc8vOyJJC3wwZU77eUGh7kKrX4/in
-         wkPNolcvJCorGp8F+4j5b9QOTSJ1qXarA1kRvP8SfKcNRDb+Glt81bYddAQ+49B42syG
-         gJDjrl/Fky00Uf8/HDfeyqMtqZcqNPI10TZFu561Uc2YktkWFSSxXEVUtNgOajGFDr7X
-         y6G2BTwQ/fd+ZBjW8kdYqgRwQqybtBmcLsXPfZGx/ntTzl+P9w1ZLiqd2imhJRtxn4do
-         yH3A==
-X-Gm-Message-State: ABy/qLZ5I9l6MVpdrY01TJJv/89vnJLNJWKEePwpDWg2HIl2DjmAZI5o
-	OQ+AdAPNEFChGQDHJPTK+CQ9PA==
-X-Google-Smtp-Source: APBJJlFRxY1Cy24Y086tRrFk21t6zff+ANEgQENQZLIdnmYNVKsJ+PFWvKSp6WojMQ2IOrtA7Rxe0g==
-X-Received: by 2002:a05:6a00:2296:b0:687:1be4:46e7 with SMTP id f22-20020a056a00229600b006871be446e7mr8645601pfe.9.1690799780782;
-        Mon, 31 Jul 2023 03:36:20 -0700 (PDT)
+        bh=kGLL2IWqqe53/KrEV7Ij4qiJEApJ+nnC26dOnmKXiOM=;
+        b=MlIIoW9Tla+ZG3ETI6GQ3QDrprJ9HmS+kUQLj6gbHtMAZgl/GAdrpmCPaQY4S8tF+v
+         DmtBFSKs/n90L3/pkkqMBOHJtzHPr+j0RhOCzNVavSp8SMXTfXjIWNfzUhVzllVWj3aT
+         5BTvH312nqlaYYjeT3HTYgAxQQYLUHwNS5QTetZwSkJHhfcAQrg/X2r/nlmsdFCKBMJs
+         z0+lIkKGqDafiba+DLF1G3QNWbDnaGTBjVbxHsAfpP+koFjFqw+AEMLTUNiIxLPGcjeX
+         AYBidXgVv+sfUuufOgsBixlDlRUveN5J4rVRUbUERQupdta8e5Yw0r5iZXVHd6KGXssL
+         79wA==
+X-Gm-Message-State: ABy/qLZxuVSU7eLn7D4XmUnzIp9+f8Hjwmv2UdQMtK+Gxsk2ePmbK1aG
+	vCU0iEGQVHHx7Zy3KPW5uQav/w==
+X-Google-Smtp-Source: APBJJlGfDnAALa8etDjbX37DnRE8+0pfLEzEtWWS9Bu6a0vi6OdECzid3nUr0EVj/2G0fgzEobOZ5A==
+X-Received: by 2002:a05:6a20:c1:b0:12e:98a3:77b7 with SMTP id 1-20020a056a2000c100b0012e98a377b7mr8136555pzh.59.1690799789349;
+        Mon, 31 Jul 2023 03:36:29 -0700 (PDT)
 Received: from localhost.localdomain ([49.205.243.15])
-        by smtp.gmail.com with ESMTPSA id c13-20020aa7880d000000b00640f51801e6sm5906115pfo.159.2023.07.31.03.36.18
+        by smtp.gmail.com with ESMTPSA id c13-20020aa7880d000000b00640f51801e6sm5906115pfo.159.2023.07.31.03.36.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 03:36:20 -0700 (PDT)
+        Mon, 31 Jul 2023 03:36:29 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 10/13] ARM: dts: rv1126: Drop EMMC_RSTN for edgeble-neu2
-Date: Mon, 31 Jul 2023 16:05:15 +0530
-Message-Id: <20230731103518.2906147-11-jagan@edgeble.ai>
+Subject: [PATCH 13/13] ARM: dts: rv1126: Add 12V main supply for edgeble-neu2
+Date: Mon, 31 Jul 2023 16:05:18 +0530
+Message-Id: <20230731103518.2906147-14-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230731103518.2906147-1-jagan@edgeble.ai>
 References: <20230731103518.2906147-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_033621_310984_40F19426 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20230731_033629_974684_C2C5BB2F 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,29 +97,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-EMMC_RSTN GPIO1_A3 is connected to FSPI_CLK in Edgeble Neu2
-board.
+The Main supply volatge for Edgeble Neu2 IO board is 12V DC.
 
-So, drop the same GPIO pin from eMMC.
+Add the 12v supply regulator for it and input to vcc5v0_sys.
+
+Since the power regulator is part of IO board circuit, move the
+regulator in IO dts file.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
- arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../dts/rockchip/rv1126-edgeble-neu2-io.dts   | 19 +++++++++++++++++++
+ .../dts/rockchip/rv1126-edgeble-neu2.dtsi     |  9 ---------
+ 2 files changed, 19 insertions(+), 9 deletions(-)
 
+diff --git a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
+index 1c6a6a134131..f09be8405964 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
++++ b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2-io.dts
+@@ -21,6 +21,25 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+ 
++	vcc12v_dcin: vcc12v-dcin-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc12v_dcin";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc12v_dcin>;
++	};
++
+ 	v3v3_sys: v3v3-sys-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "v3v3_sys";
 diff --git a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
-index cc64ba4be344..e3e5752fd6b7 100644
+index 6bbaf6da6545..7ea8d7d16f5f 100644
 --- a/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi
-@@ -52,7 +52,7 @@ &emmc {
- 	bus-width = <8>;
- 	non-removable;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&emmc_bus8 &emmc_cmd &emmc_clk &emmc_rstnout>;
-+	pinctrl-0 = <&emmc_bus8 &emmc_cmd &emmc_clk>;
- 	rockchip,default-sample-phase = <90>;
- 	vmmc-supply = <&vcc_3v3>;
- 	vqmmc-supply = <&vccio_flash>;
+@@ -11,15 +11,6 @@ aliases {
+ 		mmc0 = &emmc;
+ 	};
+ 
+-	vcc5v0_sys: vcc5v0-sys-regulator {
+-		compatible = "regulator-fixed";
+-		regulator-name = "vcc5v0_sys";
+-		regulator-always-on;
+-		regulator-boot-on;
+-		regulator-min-microvolt = <5000000>;
+-		regulator-max-microvolt = <5000000>;
+-	};
+-
+ 	vccio_flash: vccio-flash-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
 -- 
 2.25.1
 
