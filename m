@@ -4,66 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC976C00528
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Aug 2023 21:07:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616EBC001DF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Aug 2023 01:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ML/KGvNt84HBop/sR6pwmJ6mLkcyuK+Q/TIEs0njieU=; b=wzUMCCFh0yCAqoSropK6t4TQsS
-	tfV4rojtE0K+NOl3P3fUTIOWVlIv8MlKf8JTsxMQvuNEP7DymkmHyCa82RBHEn/jaY7ktJmY+gO8a
-	vJsNwg3lS2E1fKmq9ULxBT/qSd/T+L/XzFOspVv8sbB5BedQlMjcoEQK0R3wbMzyKFLxQPXQSgEcZ
-	Tz+l0Drw4WP7i+Pzqs/UcBdPoflFEfifLKTbjGRa/OeSsqTXi8yIq/00aI9ZFYfiYgxal/ndQAWs0
-	L/MrukSPNpS1xZ5Q5lZFme/9nM/HpNFEbaMXGfXRSSow815IAD+Bg+ZJVdg7L1q5eYVgYAQjg+BBw
-	GMDV2/AA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Hz8UWZ7iMyGqi4oGsV5iAajDYKVuZnsGLexnRqd+cyo=; b=STPDNAVoQOVhvI
+	rKJVYqE9H6ktun/Fr0OhxkCjcobxz+jeezOwQkD4wxfN7rp9gdlzZVvaF6hsq72gppkX6ptn4tUsu
+	7w6nL4rrKC+5qdsuzREsUAJ2uauEyuHXRmEl+pwNa+V9TLxBrd6OmRPDSBUhBt2HcD7JMxGNkCA58
+	TtHLLetUDjj5Xe/OeAVSg6xToMLuIFs0umXVP7Ls+ED0GAt6vWLRtxvg06zoY6dhOB283yVz/ELQ2
+	cD/RtzuU2e6GzhpVv+dDYN+3HlmMKqNteeiuVgEN2hxhC3pV3Oq7iU5EkfZZbSvClEfaQixc3q+yG
+	APmhqQMx5yeUT2HEI1rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQwaa-003Jsz-2m;
-	Tue, 01 Aug 2023 21:07:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qR0kG-003hND-0E;
+	Wed, 02 Aug 2023 01:33:48 +0000
+Received: from mgamail.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQwaX-003JsM-1r;
-	Tue, 01 Aug 2023 21:07:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 175F56170D;
-	Tue,  1 Aug 2023 21:07:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17414C433C8;
-	Tue,  1 Aug 2023 21:07:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690924048;
-	bh=K0rsCfWkpm4/DZighE9w0PX9rgV/Bm9df7670wIl4FI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TgouPXXIzW0OROEdXovJXLRxq5PEsymVh6oJhJR0SpjVfvYJawFd4TNgXvJY5HaQ8
-	 sq6xjOvapf4D+xf6vXlFcv8hEkhn/8tGlxDq0rdbgHAenJF5GwJURcJiaWgtQjLY/L
-	 0Y0eJ/1uYzXUj/lwbjffZ6S9CqS7kmXg/wMM9naTX21Tja6KQCPycu+2hx00IaTJ8w
-	 42bO/zujh5psu9kDxa3oOx1te1j5nokNZqh0j+OD0GX+/SWoSqUGFUS2xYRbWJdNKD
-	 3LgZsAKykdIEkTIano3ByN1OlhQivydK4Tp7T9oc4Yu61jKBKRmG0t+ZrqUUSuqrpE
-	 GdgW19uV1k1kw==
-Date: Tue, 1 Aug 2023 22:07:23 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 05/14] dt-bindings: display: rockchip-vop: Document
- rv1126 vop
-Message-ID: <20230801-residue-tractor-5c63e4447f2c@spud>
-References: <20230731110012.2913742-1-jagan@edgeble.ai>
- <20230731110012.2913742-6-jagan@edgeble.ai>
+	id 1qR0kD-003hMN-0X;
+	Wed, 02 Aug 2023 01:33:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1690940025; x=1722476025;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=gJ12rHNlY3lW4xMVIYqHcXwvtCXjc0VZhdFOH3pwkuk=;
+  b=aIOoZVfLd/hNtAsPcnRADAf40grildXNiinskFKMs/pq0KmJQMcLAZZq
+   suutTly23N8lnDJsc2u/blhBJhev6/tD2Xya/RuUj9WmS9p1I2JIDCT1y
+   pa/cttL8Doe2qO/kQxkOIawczmyjQ+EAGZKqWKdL21w4tuRv9pUdert1s
+   tUD3quH7rtOOfJx5HkPIhyads3e1L9ckSX/fnQXVy9eA4urTErmC6i3bA
+   cSrNzdq81WCBMF6JQ17m2xY99vaJ9J3WseejAFT4CVMndyyE3T82n+h1j
+   EcCRndfbEerz09VUzJG+Hyt829j+Hv2fiDIw0BZ3d3/SlZUHRhh+s1mrV
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="359492756"
+X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; 
+   d="scan'208";a="359492756"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Aug 2023 18:33:41 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="722681987"
+X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; 
+   d="scan'208";a="722681987"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+  by orsmga007.jf.intel.com with ESMTP; 01 Aug 2023 18:33:40 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Tue, 1 Aug 2023 18:33:40 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Tue, 1 Aug 2023 18:33:40 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Tue, 1 Aug 2023 18:33:40 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=F2/MHIda9sldDLXfeWm92+AFAlycab3Em2hKWc2nQJlvoySLB/PUgUXku2ewNV9ygJ/dYAxEkM3cNW6IcyN7ZO7eD3NYsk046j1NyLHiccpoOdhz7+c2JT6EPWD8RFN7H78sCmzBLviW2wXVr8ZkuX9Z4yMTi3pEmdWUKbPEPXvgHw7oJzU6hDK9KtqF+lAZ4r9/Oi6eeMjDJfRKp0GrxKVx3pAxom309HRkd+CW+pRTyQFw0T4o0m+c2YO1lecVL0Q/A7bb7S7LHUAwlEeQeYR8cM0uiWjhvQBtth8ObQsYbSFV2F+yFsqic0pLh++IY7wc8tt5LuxaGPa6IutXWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gJ12rHNlY3lW4xMVIYqHcXwvtCXjc0VZhdFOH3pwkuk=;
+ b=U53tfwFZrfBR+oM6fbeQX9zGW2pwXjDMmUr3f+kRiHVJgWry6L1t4X/6sesj6DeDYAWmwDMCdxLuRX0Onl9bpFvkRrFsJPcqMmhHuSkU/dDUYYBMwd0oGYFPTfPEel/qGPM5u4w4wiV1x5vsyFubdlh4uzPQcxN8mghSgN2Ddq+jJqmrZVSaT3KC+hKR6bYVHY2N59xM7AsS6LXg5LCo1LnvjBJ+10P6deyzfUjVvQq65dzkBkfV3Ba09x3hA+h/fL2IgXVHV2o74pU8ZYt/spfXnnD9s7Pet7b95qJmgrtmLaoLkbz/kdcSpc79LbtVUYmUfi71c9Tt1hYEWpRshg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by MN2PR11MB4648.namprd11.prod.outlook.com (2603:10b6:208:26f::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.33; Wed, 2 Aug
+ 2023 01:33:38 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::dcf3:7bac:d274:7bed]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::dcf3:7bac:d274:7bed%4]) with mapi id 15.20.6631.045; Wed, 2 Aug 2023
+ 01:33:38 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, David Woodhouse <dwmw2@infradead.org>, Heiko
+ Stuebner <heiko@sntech.de>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>, "Joerg Roedel" <joro@8bytes.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, Orson Zhai <orsonzhai@gmail.com>, Robin Murphy
+	<robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai
+	<wens@csie.org>, Will Deacon <will@kernel.org>, Chunyan Zhang
+	<zhang.lyra@gmail.com>
+CC: Alex Williamson <alex.williamson@redhat.com>, Lu Baolu
+	<baolu.lu@linux.intel.com>
+Subject: RE: [PATCH v2 01/10] iommu: Remove useless group refcounting
+Thread-Topic: [PATCH v2 01/10] iommu: Remove useless group refcounting
+Thread-Index: AQHZw9eSo/0MHu2cdEaWGD6zMVPfqK/WOvEQ
+Date: Wed, 2 Aug 2023 01:33:38 +0000
+Message-ID: <BN9PR11MB52766E8DA3D094ED66AB1F988C0BA@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <0-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
+ <1-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
+In-Reply-To: <1-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|MN2PR11MB4648:EE_
+x-ms-office365-filtering-correlation-id: aca9a968-d95f-4966-9279-08db92f87f08
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Qgbgmh8RC/vIV4iYrBonX/1dW0KjSMCU+aunnitf8EC/xYdSNUqcmAoXIQYkUX1zgeggVYvJaD3/lu5H+gp4t5TyFH3dU12fHWJkZHDJM3zsAO8XdG2HhCsVap1qDy/D4q+2+kQnAvLg7Vf1y39bBnRKvFxyH8WxkpPx4r2VCn8O3HjJOHWXB5AcuDfZ2Q8rIXfVReWx6r2ecsYzln8lX0AeYRBf2LZNftkYON5xz5uwfZj0b9A2zQM/OY3UFnvREGxfqsToe+gDrYxrW2+u9ZaJN5tLlCRf2GZFlkIc3shQVzpswMPCi3Mb0NC8PTBPykWRttABdm9ak0R1oqtFhTJaFqoSSI4/ZjCznl0IXxd4KZaJx67fR9+UpIkNedOS7djIS7vxawURqyo6Iz4fvfiFaLmQGzSHQAwxoGkRaQtSsvx+vkUUsFZZGU/l+25TF2pF9zsQLu31Zauf0zyv1W2PpZABOYC27Nm+s+QftV4udUrqTIkfzPqDNzLwnHQnrdMoFtmf6TnmLVEVJC/7E71b//HaUFBOL2xAfhyEWPzWSE6h+GzogUAtHS1f2h3C93x0uwYKjJLGIOi8Sya5kxBDeqdi1UvxmvkZIvO2ZVfz4rWJ7jVlCdSczr3cxqK6zLpe6bxcvxENlTLloWT56Q==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(136003)(346002)(396003)(376002)(366004)(39860400002)(451199021)(86362001)(38070700005)(122000001)(33656002)(82960400001)(921005)(7696005)(41300700001)(55016003)(2906002)(4744005)(110136005)(54906003)(38100700002)(52536014)(7416002)(5660300002)(76116006)(66446008)(8676002)(71200400001)(8936002)(26005)(186003)(64756008)(478600001)(6506007)(316002)(83380400001)(4326008)(66946007)(66556008)(9686003)(66476007);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?KIqMCxFr7TqwAvaHGkIDtDMxNM3jm/VJPNe6aBBJEz0/yBFSu72n8d5DwpOx?=
+ =?us-ascii?Q?ga+nB8vVqYR009zh78nbk+3cEZjkzNwP0XyMK7x+tvM2SayBFxkIMPMfqOAz?=
+ =?us-ascii?Q?4WLF2cavpMQpDBBsUCbnR5BmIKDwhgd5cvgCmPToPtOu2WQa+z2kyeBtxpR1?=
+ =?us-ascii?Q?/LMl7j/0NIi8rDF+CYD2bnFSJLbHwifd+dLc86DxiPwLxtH5mDlCAqxosctr?=
+ =?us-ascii?Q?/lK3j9AeCD4KYt/YWyquGVa1WPBkJziFycT1EXC4XqNo1q9q73N+9P+nemiA?=
+ =?us-ascii?Q?7Q2tbjUCWuMRuOxGGTM95vvVQWQ7mwzYBLL/jGVDpAAK26FUUvPRv/CHgRQl?=
+ =?us-ascii?Q?fZFL4JiQ29+SCx5xNzLVzHRI9T0jXQW0I/mf9Q9AT2qImCG+pXb5XlewLIvD?=
+ =?us-ascii?Q?huz1moWOp6TZigMTvhwg9wdYXY5RZF3BL0qdP5FmvKh5nB4TLr8rIpB7AFQJ?=
+ =?us-ascii?Q?lCQpTo8gwMC5vQayEZ2m9+CSS6axmhPTJxbXF4d3QSJXALUcYxQ0UieMqqX8?=
+ =?us-ascii?Q?bpq08kx1QN0B9jWuJsNUQvjM1hfMC6m3xu08vSWKonAngL3iAEe0rCLzgrac?=
+ =?us-ascii?Q?k7rAs44ESXtP7rV8QTrL1SkgO5j1ZNfT065K1xh+1MNYP5mqtIRA1BXwT6rl?=
+ =?us-ascii?Q?0/MO+PKnOPULILj3LhRDlNjw86FELAyg7pzjoJJdTJcgcOBNJOrLrGtkER0e?=
+ =?us-ascii?Q?lzTU6Fs+PETy3eNiIKVtAgeqEzOxGHTQK9NnvkjzPSQ0tgGKtGiMgPrbdP6v?=
+ =?us-ascii?Q?ecalonkqIZeHVUuPjJCJL9hxiLaygeP220jz018a7Y7kDMysnoLqhApLlfjm?=
+ =?us-ascii?Q?LFFKio5cXAyy9vNGINVY4/kLqXpfYm8y7aFYEjuDwvspZtqMlZ5Ef6jdUziG?=
+ =?us-ascii?Q?Zs8rd+8RU64jF6c2q3TMk79HACOJOIL0Z1aWTKsSG3Y3P6qM2+/0R9mrmXhA?=
+ =?us-ascii?Q?pC9sFLuPN0eowT2GhJxD32t2Pv30EwfBDrGGzJpk2x0lDPJW2WR3jmHMNtMt?=
+ =?us-ascii?Q?8GFnac7al+/m9xFjsK6bTD3N+Ifyw2nods3rFDdLzVEPrvLcbO9r8BtTozfs?=
+ =?us-ascii?Q?CdQ0eu/Y7d4/yzXSWMA2Ya9YPMGdP3/AhxiCMDjX8KxIwK7Ur90gGBVbfquc?=
+ =?us-ascii?Q?KeSGfVnYAuf38GGcUU3ml/6ZXQSqULvOBkpu1elI9gljnIYh4ewosiA8SW7d?=
+ =?us-ascii?Q?vpRBk1VbS2doDob82rBoEKpF1559on1AxH96URNbJc6w8oizGHS5KYLNI8T7?=
+ =?us-ascii?Q?LOEGzKOq5UJMu+MU56XET2+BHBcuCgI9r/v6jznqnv/m1KiLhQL9bIQC/P9w?=
+ =?us-ascii?Q?QtM7AAO92xzZYQBhZTUOnDWO7JbKVgclnt+1gG+ZLO0zmvB1cTWzC9XBCy4T?=
+ =?us-ascii?Q?zXyoS4PQ0fbZhuHVQzyucukDK/gAc9db5pvpFhBy8k5c4mMphVDROdVKhBlk?=
+ =?us-ascii?Q?xJl2KPMcOdeigf84zLy2gL57157xf00RmS0XKGT8aqTvyFlSp6uJmKwmDnmr?=
+ =?us-ascii?Q?K0J0YZQueIrmSYRqfuBbv+A2jHL3mEukrhKGpBKJ8nYOWM9VetM9RpC+x1SR?=
+ =?us-ascii?Q?1EiPzaXLOdAd8WPuj2O7OsI3tcyTuQn0JutkaYFy?=
 MIME-Version: 1.0
-In-Reply-To: <20230731110012.2913742-6-jagan@edgeble.ai>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aca9a968-d95f-4966-9279-08db92f87f08
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2023 01:33:38.3668
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6z1Gh868kXxbsiLh1y13hpDf/TLNqILnfdCBKVBwo5a7x9HZhZRVCc7UYyiVEsq8EzUVAekXkjVNDpe0U3AO4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4648
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_140729_678833_FD12E6EA 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20230801_183345_340396_6DEFE91F 
+X-CRM114-Status: GOOD (  18.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +171,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0814898428972413889=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Tuesday, August 1, 2023 1:50 AM
+> 
+> Several functions obtain the group reference and then release it before
+> returning. This gives the impression that the refcount is protecting
+> something for the duration of the function.
+> 
+> In truth all of these functions are called in places that know a device
+> driver is probed to the device and our locking rules already require
+> that dev->iommu_group cannot change while a driver is attached to the
+> struct device.
+> 
+> If this was not the case then this code is already at risk of triggering
+> UAF as it is racy if the dev->iommu_group is concurrently going to
+> NULL/free. refcount debugging will throw a WARN if kobject_get() is
+> called on a 0 refcount object to highlight the bug.
+> 
+> Remove the confusing refcounting and leave behind a comment about the
+> restriction.
+> 
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
---===============0814898428972413889==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ndrRpp+GVoLa+YWP"
-Content-Disposition: inline
-
-
---ndrRpp+GVoLa+YWP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Jul 31, 2023 at 04:30:03PM +0530, Jagan Teki wrote:
-> Document the VOP for Rockchip RV1126.
->=20
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-
-There's no commentary here about compatibility with other, existing,
-devices nor did you CC me on the rest of the series. How am I supposed
-to know if appending to enum is the right thing to do?
-
-Ditto the other binding.
-
-Thanks,
-Conor.
-
-> ---
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: devicetree@vger.kernel.org
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-> Cc: Conor Dooley <conor+dt@kernel.org>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: David Airlie <airlied@gmail.com>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
->=20
->  .../devicetree/bindings/display/rockchip/rockchip-vop.yaml       | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-=
-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.=
-yaml
-> index df61cb5f5c54..b339b7e708c6 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-> @@ -31,6 +31,7 @@ properties:
->        - rockchip,rk3368-vop
->        - rockchip,rk3399-vop-big
->        - rockchip,rk3399-vop-lit
-> +      - rockchip,rv1126-vop
-> =20
->    reg:
->      minItems: 1
-> --=20
-> 2.25.1
->=20
-
---ndrRpp+GVoLa+YWP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZMl0CwAKCRB4tDGHoIJi
-0sMRAP94AAcG2k+QdviKRNxL+Z2cWoicgNyRkc73TT92zzHevAEAju+k5rogAoDj
-aGIjmgDauCja1IFZGjTf7DzL03fFXAE=
-=mxOH
------END PGP SIGNATURE-----
-
---ndrRpp+GVoLa+YWP--
-
-
---===============0814898428972413889==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0814898428972413889==--
-
