@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36229C001E0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 06:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78893C00528
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 11:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1R0syoBlYnUsnhUlpu00T0kAlUdWBZ6H1xPM097gX9Q=; b=b886MZO7SC8YYjdMVrm7Z2IdIB
-	5C+ynoxxZ2DayPYlAsAJqmyFGdRAuw7aPH/VHiQC+hiXbumYf+yCeZiDn+8qUYTCCIPAR6Sg1rYhP
-	HmzHXuyyBacOzQUc5icCdxx5yEMTasqYDpeYv5YBgBfyOaSZ3pX7nsLDxQ99dnhGlDCMk5fjvxqv3
-	rZpoccZfBrFssu1SO+pW0zliPNE/Qy7MzvBf5hrf7dGxPa3vgMYIPdk0AUfF2FcrGO/whG2nxAcih
-	gkt2x/07+sc0ujEnQzRPxzoFRK0VM7G+cpXYjxhhIlgpDDnVcGihOn/2vpCBw56bdfm50YRMLILqR
-	KTI6FIhA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x1dtwzrrGtWgF/l9zVOGqhjJO8Awn0phFTc3KEfqXik=; b=ZfGa/jZAsmCkoY
+	X4C1FS/FOgplSYynsHZGXcyeIb0E8uxbZoCl0kQjsWSSFMUduJbdN3TdMHdOy8lnCmUNoQm7HZkXg
+	1eRIbz1ab8NTtzQT2F6fSqF/wdRKmVLy3uTd1d9KjerN9+D9w5W3LJTUupvG2d1idDWBbZXcmueuU
+	EvhtXZpKaAD+H3th+/xDV4LsIbKN4NN4qYS19E+8/Ku6Zvn3QUPbCKCFcLoeT4lnzpEkmj4sK53w7
+	rGnKX5r6Gfn2YOlB9Ip1EEM7VJcd3OsqEUt2BRW6LUTZZre3LsQEPcqzxK0Txa5UwBlYxl6l5Aodr
+	ENRkE8nlz720NFaKEGeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRRzq-006n4C-2o;
-	Thu, 03 Aug 2023 06:39:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qRWMd-007jgf-0L;
+	Thu, 03 Aug 2023 11:19:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRRzo-006n3K-0u
+	id 1qRWMZ-007jdc-37
 	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Aug 2023 06:39:41 +0000
-Received: from [192.168.15.130] (94-240-0-14.lukman.pl [94.240.0.14])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	Thu, 03 Aug 2023 11:19:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E524366015A0;
-	Thu,  3 Aug 2023 07:39:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691044778;
-	bh=mbhJCCamZaUvv7gj02tF6AHf2SgoVVliqliY7HWr6Fc=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=Ki+FGbYnYinawxuZ3Md+oDYFBxqYps2wHfnsUIjwuH2Qzpjv2+mgbitN5ERaO/GZD
-	 K3MiG7Htvsm7FbzZNpPc+Wtb+W2iMrniYONBVcy9/jaDe7Lnk3oVZhh4p0pKJtk/8b
-	 7iFDXwfN6x7loiHLhmxftkAi7/bQrgJkUyZg7EUG4ao+JEvKtkVY6+Om2tQSsUiOgD
-	 lclR2+3mJlPZI+kVniDTfOKMNnMrfeOqKqXEncA1F/hbAu24nJC5EE0eSkALZvOSii
-	 UHclJNupXCsawQCKfZ6SuFlcYia4MHzh3tlggQ1NjknYDcogSgg20E3Q5/iw0pqhyz
-	 IQ3d0BoZ5oV9g==
-Message-ID: <c24b1f67-d68c-698b-90f6-cff136482ca0@collabora.com>
-Date: Thu, 3 Aug 2023 08:39:35 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9B87161D27;
+	Thu,  3 Aug 2023 11:19:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDD08C433C8;
+	Thu,  3 Aug 2023 11:19:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691061566;
+	bh=yhIowr8i6QfVKk14MdHInqF6hYvcJbNXDLSBxgbwMPI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OK7A0R11P2eqw35fQJAUdM9vmjmVDDtwXB6LIqNr+C/RjCYCrDpVcjcmjkMDCwUWl
+	 xZ7F17QdwQ8oq8Bum8dp6fbjHDpAv8RnnxboF/7DTP/1s7TcffeBMp8Ajk/ZYsc4n9
+	 qYkA6rog4VSbwIBORLT0ILQE9OG9LCLvu0MUAazV3hpF4UU5cyzX/qBhBkUEMKrcI1
+	 AVpudaoYitA+TwumW2e7NRR8vDxlOtcVD87oFRFNAiNkxOP2hGcN8y8HQR+9pmGny7
+	 EO8PAlvLwiMjiVmZnCkQQnqlzDhaVX4dwhW1LU43/Cti+iiZNZC2ilwF5kmBU96Tam
+	 Ztwa6rfBsJy+w==
+Message-ID: <38b2779b-4cb8-3caf-f980-aa656277a7de@kernel.org>
+Date: Thu, 3 Aug 2023 13:19:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH -next 1/2] media: camif-core: Do not check for 0 return
- after calling platform_get_irq()
+ Thunderbird/102.13.1
+Subject: Re: [PATCH v3 3/4] dt-bindings: clock: rk3588: export PCLK_VO1GRF clk
+ id
+To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, huangtao@rock-chips.com
+References: <20230802072038.29996-1-zhangqing@rock-chips.com>
+ <20230802072038.29996-4-zhangqing@rock-chips.com>
 Content-Language: en-US
-To: Ruan Jinjie <ruanjinjie@huawei.com>, sylvester.nawrocki@gmail.com,
- mchehab@kernel.org, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- linux-media@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230803024645.2716057-1-ruanjinjie@huawei.com>
- <20230803024645.2716057-2-ruanjinjie@huawei.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20230803024645.2716057-2-ruanjinjie@huawei.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20230802072038.29996-4-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_233940_447293_A8B63C33 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20230803_041928_099319_CC6D532F 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +76,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VyBkbml1IDMuMDguMjAyMyBvwqAwNDo0NiwgUnVhbiBKaW5qaWUgcGlzemU6Cj4gSXQgaXMgbm90
-IHBvc3NpYmxlIGZvciBwbGF0Zm9ybV9nZXRfaXJxKCkgdG8gcmV0dXJuIDAuIFVzZSB0aGUKPiBy
-ZXR1cm4gdmFsdWUgZnJvbSBwbGF0Zm9ybV9nZXRfaXJxKCkuCj4gCj4gU2lnbmVkLW9mZi1ieTog
-UnVhbiBKaW5qaWUgPHJ1YW5qaW5qaWVAaHVhd2VpLmNvbT4KClJldmlld2VkLWJ5OiBBbmRyemVq
-IFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgoKPiAtLS0KPiAgIGRyaXZl
-cnMvbWVkaWEvcGxhdGZvcm0vc2Ftc3VuZy9zM2MtY2FtaWYvY2FtaWYtY29yZS5jIHwgNCArKy0t
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3NhbXN1bmcvczNjLWNhbWlmL2Nh
-bWlmLWNvcmUuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc2Ftc3VuZy9zM2MtY2FtaWYvY2Ft
-aWYtY29yZS5jCj4gaW5kZXggYWZlMWZjYzM3MzU0Li5lNDUyOWY2NjZlMjAgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zYW1zdW5nL3MzYy1jYW1pZi9jYW1pZi1jb3JlLmMK
-PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3NhbXN1bmcvczNjLWNhbWlmL2NhbWlmLWNv
-cmUuYwo+IEBAIC0zODEsOCArMzgxLDggQEAgc3RhdGljIGludCBjYW1pZl9yZXF1ZXN0X2lycXMo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiAgIAkJaW5pdF93YWl0cXVldWVfaGVhZCgm
-dnAtPmlycV9xdWV1ZSk7Cj4gICAKPiAgIAkJaXJxID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCBp
-KTsKPiAtCQlpZiAoaXJxIDw9IDApCj4gLQkJCXJldHVybiAtRU5YSU87Cj4gKwkJaWYgKGlycSA8
-IDApCj4gKwkJCXJldHVybiBpcnE7Cj4gICAKPiAgIAkJcmV0ID0gZGV2bV9yZXF1ZXN0X2lycSgm
-cGRldi0+ZGV2LCBpcnEsIHMzY19jYW1pZl9pcnFfaGFuZGxlciwKPiAgIAkJCQkgICAgICAgMCwg
-ZGV2X25hbWUoJnBkZXYtPmRldiksIHZwKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 02/08/2023 09:20, Elaine Zhang wrote:
+> add PCLK_VO1GRF clk id.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+
+v3 and still no improvements:
+
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
+
+You missed at least DT list (maybe more), so this won't be tested by
+automated tooling. Performing review on untested code might be a waste
+of time, thus I will skip this patch entirely till you follow the
+process allowing the patch to be tested.
+
+Please kindly resend and include all necessary To/Cc entries.
+
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
