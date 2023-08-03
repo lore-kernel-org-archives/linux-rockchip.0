@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4530DC001DF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BFDC001DF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qijkXhSMKJ2miZ8ajPqJWusR2KiVya7u96ZsX2DhaFo=; b=hg05wxOcqVT5YO
-	uV8HDgQwkBVeZd0PSicip14MAbvzPBXezmXUi8EbB17UJQpnr6wOZxWBKNpKqMop8o/b3yexD8eIQ
-	KtQgukpqPu6KzhoBMGiSkykID8gbohXH7Ey8r7N1X/SquBZCKGjMBo2e5IaI73hJd37q94N1TdYkT
-	s2RhPuXB0bT4GICbzZEEtDNXmFj+q5CJSKTeB/ATjRobjW2hhcC5luWzGi5vkiDv5JaERKVl8D9bB
-	GvSEMp0UeIheBnT2lQzoudR7QpjTSOm0Gv7O9fRpB6Q+EzJyPzfxEGZt54fScWzfZibgVUICw9XxH
-	uYQgCwPNqlnprWSbCf+Q==;
+	List-Owner; bh=kCueMXhD7syZ6e89mnINxDPNBJft08bNn/ke8AaLIWc=; b=Q/Gg2UvH/lhbLq
+	lotddTdXn2NUOWIhJa3s35wItIu0B3K2tTo+Wxl10/Ku78LWeo0eWCq4sy0htW0NT4WXMQNogxxLM
+	nCw8o0d72vkXOxPBl6PS9u13oYeG2tmu3ewtHcmc2Go6mYmsawjeGWaQC34Oe+FQcyDZosfamr4b+
+	58ajpLZP19JNrcWOheenVJ/w/0xzTxXKpI8639NwWpYrJY4LGfshEqZyJf+2KNsqsVcxppfFK08Nx
+	rjPYt96gNGqpTzELGLWMmjWdeSPHjp649JdWoll4k6d221Vgtpz7M7+9+95zG+WoyehT4l/xzrJcl
+	914txj8yFBWjKJIjYFBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3N-00B15q-24;
-	Thu, 03 Aug 2023 22:44:21 +0000
+	id 1qRh3R-00B18D-0F;
+	Thu, 03 Aug 2023 22:44:25 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3H-00B12T-0c;
-	Thu, 03 Aug 2023 22:44:18 +0000
+	id 1qRh3N-00B15a-1g;
+	Thu, 03 Aug 2023 22:44:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7D54161EE4;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0CC0161EEE;
+	Thu,  3 Aug 2023 22:44:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1252EC433C8;
 	Thu,  3 Aug 2023 22:44:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59A4BC433C7;
-	Thu,  3 Aug 2023 22:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691102653;
-	bh=kteogynxAW7+pSqJ+F5ajc09a1cS6TIo4KO19Vs6RtE=;
+	s=k20201202; t=1691102660;
+	bh=prG9EyLTNfHDqOF6uZVSzYO6KHwa1ZJ65S1OeS16o4U=;
 	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=FJ1+duqUPdJnrC2BObDXwwr6wBo9yowp0ny1+RIX+QLR6FQg3iGkACB0X4smaJb2r
-	 Zm3mOxrKxTM1LstEvrjFZYdSAw7OVemsCAIJYL7crSvWXRxnTeAiWfg9X1K0XQ9HS4
-	 qgihX0X70Ig4jHM62HvxGKm0hKEUEUiRc6QglCXFDLE2PMth+AhdTa27UmCR/bkW9j
-	 KOLDJn8lZ7eau9gqTn9PvwGFOzD2/QtAZh7Fm0Mjmd2P4GF257OWGlLUa2vgcfCIRQ
-	 SAdRvo2UO6VCfMOMAVzAHdxqZrHBywMEQsOjbduuGTaBK+CzY6YLecnzBsvgzYypZl
-	 b5LP0YHZNqbYg==
-Received: (nullmailer pid 3693772 invoked by uid 1000);
+	b=draOJyVJLQBKyS4iqncW0BU01+r0cep3aYPRMDZm0f5BYhZFvK9xiQJhE8Enq5To6
+	 sMUmRoj1APMm3b7dIxmepA413QzLle9nTDSYvxGTWIDJBFGtF2YHXRvTMh8FKWnt9r
+	 pSEnH0y0v8oyWO/mbL7GCCn6q808jdGVZtfgCEL/zT1kRxnmG/sixqpamgLlZ2P/yj
+	 fRPkfr/3L3oJqhHI5b1mBgcReCzF1dfudndFFIDO1qQopUI0Sy5MNY8jjT6eHOilvd
+	 Az2PkZbLhwC60TmC2wgLyZbgMXZic9Z20SjV30/+w/4w+t3YekZtXVAfiZvw1hUc2u
+	 5S5tOl7Xsd2mA==
+Received: (nullmailer pid 3693756 invoked by uid 1000);
 	Thu, 03 Aug 2023 22:42:55 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 03 Aug 2023 16:42:51 -0600
-Subject: [PATCH v2 11/23] ARM: pxa: Drop unused includes
+Date: Thu, 03 Aug 2023 16:42:43 -0600
+Subject: [PATCH v2 03/23] ARM: alpine: Drop unused includes
 MIME-Version: 1.0
-Message-Id: <20230803-dt-header-cleanups-for-soc-v2-11-d8de2cc88bff@kernel.org>
+Message-Id: <20230803-dt-header-cleanups-for-soc-v2-3-d8de2cc88bff@kernel.org>
 References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Shiraz Has
@@ -58,8 +58,8 @@ To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenb
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_154415_344663_D7971856 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20230803_154421_644319_1084F1CD 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,31 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several includes are not needed, so drop them.
+of_platform.h is not needed, drop it.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm/mach-pxa/pxa-dt.c | 6 ------
- 1 file changed, 6 deletions(-)
+ arch/arm/mach-alpine/alpine_machine.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm/mach-pxa/pxa-dt.c b/arch/arm/mach-pxa/pxa-dt.c
-index 5e5d543fdf46..a292de91dce5 100644
---- a/arch/arm/mach-pxa/pxa-dt.c
-+++ b/arch/arm/mach-pxa/pxa-dt.c
-@@ -5,13 +5,7 @@
-  *  Copyright (C) 2012 Daniel Mack
+diff --git a/arch/arm/mach-alpine/alpine_machine.c b/arch/arm/mach-alpine/alpine_machine.c
+index d256a99e9b99..bc491bbbabf8 100644
+--- a/arch/arm/mach-alpine/alpine_machine.c
++++ b/arch/arm/mach-alpine/alpine_machine.c
+@@ -5,8 +5,6 @@
+  * Copyright (C) 2015 Annapurna Labs Ltd.
   */
  
--#include <linux/irq.h>
--#include <linux/irqdomain.h>
--#include <linux/of_irq.h>
 -#include <linux/of_platform.h>
+-
  #include <asm/mach/arch.h>
--#include <asm/mach/time.h>
--#include "irqs.h"
  
- #include "generic.h"
- 
+ static const char * const al_match[] __initconst = {
 
 -- 
 2.40.1
