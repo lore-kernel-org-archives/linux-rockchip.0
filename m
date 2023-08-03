@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FB0C001DF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7FDC001DF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9HmulDYWiBLSVfxbwnHLI32NHNu4+BqA5bC/ySTKl84=; b=gOg+qnZCXkbmve
-	RmvEPMdDDoYf6pylNWBl7xDPXFqimSqh3JhK/mC4g6POR/bqZ2/tQ0y2Ox0dGuM27bGs7X3Elppiu
-	ajiDjEqV7OefqrjKVralKp64VQnOY7Ue5v9E/0BQdAvE81NzjeMzBGi50FROX+EzMciDCM+X4hzDG
-	37SkwwiDGuqEH68e6x+GvzgeEuzxGujC8Q5rQ0fDncWqbuDcSt9idXaGkVktSBKG1j7efB/jLya+0
-	sY4ai5kgSFfa8dKMeUXVcR3lTh7oT7VYKvbrx/5kVgJGAE653eW7SQbjtdp898P3bHjKheNWgbvQH
-	Ck8tMa1kPXt17Us4uOJw==;
+	List-Owner; bh=5UhR8MZieIYOs5rzMKENnBYOqUN0UGcd1BzcN7RKxZc=; b=LvslXulu9otulC
+	lO0USUar+oRowEzNISv6Wiv8+Sy/ku7FjXQeI2aWYHATZN8X49umTPKzkev5u5BTk/0FekyouPeXy
+	hAJXuZ2I5DWwmHa2WS94/QXx/1IuBPO6JYHf/DGv5E9y0jCHHEbqXIaWbgmMQXh+7FLSHJaaiZcgv
+	RP9Hb+Jh0PvWGKydeH++dpTPMLQrqzVf0zOwwVIxK7m+JSqcu35IwpLHIMGiNYMUBYG+ExiTRuPin
+	cwO+C1u44OyFCx+AZkdJ6a2m8sib4SDRHFQBhXRpHJK2qqobi34uL4lqFx3bdZ/XLbJx+p3dhfp4X
+	Neic7jFA98IQ6kbvfq4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3d-00B1Ex-2x;
-	Thu, 03 Aug 2023 22:44:37 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qRh3l-00B1Id-0G;
+	Thu, 03 Aug 2023 22:44:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3Z-00B1CP-0M;
-	Thu, 03 Aug 2023 22:44:34 +0000
+	id 1qRh3f-00B1Fr-1z;
+	Thu, 03 Aug 2023 22:44:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9F05861EF5;
-	Thu,  3 Aug 2023 22:44:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4184EC433C7;
-	Thu,  3 Aug 2023 22:44:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1B9AE61EE8;
+	Thu,  3 Aug 2023 22:44:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EADBC433C9;
+	Thu,  3 Aug 2023 22:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691102672;
-	bh=ooI1TM9H8LnZ1gnuyjNAccMoo4FYLVdXFfZiGCq2Yj4=;
+	s=k20201202; t=1691102678;
+	bh=MOwEwZXV75zhxhA5ZluJWONcMdP8WYi3FHPfFhLBRIQ=;
 	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=ZCo5HKGYpVq8NzpJpLR7qDtlgY33ewPxQDSQKN00GSUwrP2vu6waonVoKiNdOHP76
-	 YQdR9Yso99hwTzqmD096JE8S+qOa9VGOOCejhlrKxPpXVd3Bv42Yt+AYU6nykXRTq/
-	 UObuZK3vBPHy4k5CY8OiBtrDMN0pvDWx0tNH2DteRo8R8Va5Q6pACtSozbrPv41WXh
-	 yQRIOw2le11kuLvdhW3/AnWykwdqLtchKw2av8vaxzRpqYMBoH8Z2NivVOIl6tDpNY
-	 sdyhS1bhJFdysDhyRhpkZ1SILQJ3s9jHUpN+TImpvp9UKHnGsyNGgaObq883KmaNKr
-	 jTnlIuoJ0vQDQ==
-Received: (nullmailer pid 3693758 invoked by uid 1000);
+	b=Gorzm2KBvbdF/eBCCih5/bVppiZj+BdzD0cAAEpmaPwfpho4wfyw4l2aziCPqD9Zd
+	 y4f4P/Sb+zyePzcdYkm2vdVS6LBchFdhQhN7qp900gfmC8VQr82uVJsPPmBBEV+GHv
+	 1ML7nkK7mMOK1QMhUZpsZjyKN/9iQJqlWN+g9CCc4NcsBueuhJZBfczGZ33DIKdMh0
+	 3gSdLMlGbrPXceHuMFSkQUG+mOjtl9rsfpGlh/bQi2c95xD8L2UPx08CkKmbEhTgPG
+	 hjHWp/LcFLPqdhF77ecY+2aEaPV67xsC4WsAgdsaNyL3njOhGKLvu+XvHKTXogxMB3
+	 9Wf432z4NNsJA==
+Received: (nullmailer pid 3693792 invoked by uid 1000);
 	Thu, 03 Aug 2023 22:42:55 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 03 Aug 2023 16:42:44 -0600
-Subject: [PATCH v2 04/23] ARM: berlin: Drop unused includes
+Date: Thu, 03 Aug 2023 16:43:01 -0600
+Subject: [PATCH v2 21/23] soc: sunxi: Explicitly include correct DT
+ includes
 MIME-Version: 1.0
-Message-Id: <20230803-dt-header-cleanups-for-soc-v2-4-d8de2cc88bff@kernel.org>
+Message-Id: <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
 References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Shiraz Has
@@ -58,8 +59,8 @@ To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenb
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_154433_234931_04B203EF 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20230803_154439_747925_6459CA69 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,29 +77,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several includes are not needed, so drop them.
+The DT of_device.h and of_platform.h date back to the separate
+of_platform_bus_type before it as merged into the regular platform bus.
+As part of that merge prepping Arm DT support 13 years ago, they
+"temporarily" include each other. They also include platform_device.h
+and of.h. As a result, there's a pretty much random mix of those include
+files used throughout the tree. In order to detangle these headers and
+replace the implicit includes with struct declarations, users need to
+explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm/mach-berlin/berlin.c | 5 -----
- 1 file changed, 5 deletions(-)
+v2:
+ - Drop sun20i-ppu.c which moved
+---
+ drivers/soc/sunxi/sunxi_sram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/mach-berlin/berlin.c b/arch/arm/mach-berlin/berlin.c
-index 2424ad40190c..13d5c899f09e 100644
---- a/arch/arm/mach-berlin/berlin.c
-+++ b/arch/arm/mach-berlin/berlin.c
-@@ -8,11 +8,6 @@
-  *  (c) Marvell International Ltd.
-  */
+diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
+index 4c4864cd2342..4458b2e0562b 100644
+--- a/drivers/soc/sunxi/sunxi_sram.c
++++ b/drivers/soc/sunxi/sunxi_sram.c
+@@ -15,7 +15,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
++#include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
  
--#include <linux/init.h>
--#include <linux/io.h>
--#include <linux/kernel.h>
--#include <linux/of_platform.h>
--#include <asm/hardware/cache-l2x0.h>
- #include <asm/mach/arch.h>
- 
- static const char * const berlin_dt_compat[] = {
 
 -- 
 2.40.1
