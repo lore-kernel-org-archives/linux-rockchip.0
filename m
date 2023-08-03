@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26559C001DF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07156C001DF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oMO07bU0R1s0wEaZAeQIZ1ltvNA6CH78zTh55gupSng=; b=2dcRSCZB51dsFq
-	9vzlSv3CM7eS6Gs7uZEbygpQermeHJAjEBr8e2I0Xz9miVeb8+rRu8DeuNEOGgkLURJJrNuVkb0S0
-	R/1egYfZ5/ihYObv+8Vr06wKmvhKRJU3NOpkTStT/w1YirClkXeosrKPuevuuyvTpBf1r34nmHv17
-	S4y7XFF26hcE36lxhlG8+O4rXeUxN8LnEeiG2xlG/qYsaXfZtX3XuvCMFhnWuEVBDHoGw8948/8AB
-	CZLXALy6wuo9FNHj74lTC+u83rv8+xkgQQJKZEXbtUnt6Z+5LvOpVAIz4qxA5HSvYbaBQ+xbLUP9j
-	DurSPQMXVCKYFu7Vg2eg==;
+	List-Owner; bh=rz1ZDn16mZojHFbZo5RSFGOmRI/Tubkpx0Ut8Mb+suI=; b=CYe+kGOFtl4oMi
+	dOUrzDRh02kWxk0169vPu2/9cZxLPTKVD7uvzjvq+6P73pZKOiWSTCf2K4CLE0Fw1QHvkN8BGadzD
+	lDMscfSa2pxHUw0KMMnpIQIfOAyxBR2BO5iu+NPOaoerAxGUt31wVUme9v5D45uTOX2Mm0cJ/QgJr
+	7JXlaX5BDxJwcKmNd0rCxE4WHrBuJ12OoL/0R8wqZIM7InF/z3ECayAzD7hg/l/5hffO8T7Gm26Ix
+	+fWDNpTOHRak/j1BOPBZn5TPOyVMw94DeBQMLxsI5aW3+COZPcbE8tQZDNu9Hw+BpaAjXZT0IFnQQ
+	xt9t7oVMOVvY4YRQBmTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh4D-00B1Z2-19;
-	Thu, 03 Aug 2023 22:45:13 +0000
+	id 1qRh4J-00B1ct-2y;
+	Thu, 03 Aug 2023 22:45:19 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh49-00B1WU-0C;
-	Thu, 03 Aug 2023 22:45:10 +0000
+	id 1qRh4E-00B1Zt-2i;
+	Thu, 03 Aug 2023 22:45:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 77AD161EE5;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5A9ED61EE4;
+	Thu,  3 Aug 2023 22:45:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E52A6C433C7;
 	Thu,  3 Aug 2023 22:45:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 143CFC433CA;
-	Thu,  3 Aug 2023 22:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691102707;
-	bh=NT9YjnWH+Cx3vzUXB7dFBR+8AivvvTmdQI2irFqFSF8=;
+	s=k20201202; t=1691102713;
+	bh=3yPSxhtvmHCRpQ5KBqxLc4q6ro2VZSxGQ+wC8Q6Uvuc=;
 	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=mB451M39Ashetm0D2ehUMWIGPk5UaKYJ8jgtChtIsODki9cY+YECM7ad8WOMqlr1R
-	 nbpnVLRijCoWa4PwWfe7hqS0/RLiHGoindq0QgcoRbF9hHTCqlbGf2a2RTiJUFYlIA
-	 RFUNldoDPJ0irEQzfiK5jAh7O5Fi3YCjXCxR8CvaFdi6VYiZVcpUse1U4trP6q093Z
-	 S92gPcV3phUcrVEnq0MyBW0Zdq4WZH/flx7sgcGRwdJssrCeRf3zu0bXGZh2ieTv/U
-	 8TJ2PtAqEUTuL/ouQ9JHuGOAGqSzUvRYWO5SofJXW5NgnUNd6iaReDf2YD6uB9IIqv
-	 gxgzBdElgT0zg==
-Received: (nullmailer pid 3693786 invoked by uid 1000);
+	b=dWWguMmMKd4QsCLpgzwcar0zpWrYeWDZNcAzMmIIvvTVVGrjFaHz1VtZ7xlboFMH1
+	 exD3xZpcwnhEjAoayz+BRCkPQ+672at99YtGQ/xhLJKLadCGXFZynbih39jRTo5GIT
+	 2eGf2YPhyARgiz3Q6PoHlvwPmzVXWZnchJ/qF9DnxQV2n3Tk/i/KgjDoJR/ObRBLP9
+	 vmLmrwbsjHPFkKND/q3UX21KLNtswBKG1ckf6aCUijdyk+gXFdYOTv6AuOOKPWevMD
+	 XYX9WM9DEPRLwgGWjLxDN6V4YDTQ+9ibXJmpMcMoN62DKWt73//Hpav0An31WTIW4l
+	 nGrx05d8/e3lg==
+Received: (nullmailer pid 3693790 invoked by uid 1000);
 	Thu, 03 Aug 2023 22:42:55 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 03 Aug 2023 16:42:58 -0600
-Subject: [PATCH v2 18/23] soc: aspeed: Explicitly include correct DT
+Date: Thu, 03 Aug 2023 16:43:00 -0600
+Subject: [PATCH v2 20/23] soc: rockchip: Explicitly include correct DT
  includes
 MIME-Version: 1.0
-Message-Id: <20230803-dt-header-cleanups-for-soc-v2-18-d8de2cc88bff@kernel.org>
+Message-Id: <20230803-dt-header-cleanups-for-soc-v2-20-d8de2cc88bff@kernel.org>
 References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Shiraz Has
@@ -59,8 +59,8 @@ To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenb
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_154509_189490_668C6D44 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20230803_154514_966435_559B1BBD 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +88,22 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/soc/aspeed/aspeed-lpc-snoop.c    | 1 -
- drivers/soc/aspeed/aspeed-p2a-ctrl.c     | 2 +-
- drivers/soc/aspeed/aspeed-uart-routing.c | 3 +--
- 3 files changed, 2 insertions(+), 4 deletions(-)
+ drivers/soc/rockchip/grf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/soc/aspeed/aspeed-lpc-snoop.c b/drivers/soc/aspeed/aspeed-lpc-snoop.c
-index eceeaf8dfbeb..773dbcbc03a6 100644
---- a/drivers/soc/aspeed/aspeed-lpc-snoop.c
-+++ b/drivers/soc/aspeed/aspeed-lpc-snoop.c
-@@ -19,7 +19,6 @@
- #include <linux/miscdevice.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/poll.h>
- #include <linux/regmap.h>
-diff --git a/drivers/soc/aspeed/aspeed-p2a-ctrl.c b/drivers/soc/aspeed/aspeed-p2a-ctrl.c
-index 20b5fb2a207c..548f44da28a9 100644
---- a/drivers/soc/aspeed/aspeed-p2a-ctrl.c
-+++ b/drivers/soc/aspeed/aspeed-p2a-ctrl.c
-@@ -18,8 +18,8 @@
- #include <linux/mm.h>
- #include <linux/module.h>
- #include <linux/mutex.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
-diff --git a/drivers/soc/aspeed/aspeed-uart-routing.c b/drivers/soc/aspeed/aspeed-uart-routing.c
-index 59123e1f27ac..3a4c1f28cb34 100644
---- a/drivers/soc/aspeed/aspeed-uart-routing.c
-+++ b/drivers/soc/aspeed/aspeed-uart-routing.c
-@@ -5,8 +5,7 @@
-  */
- #include <linux/device.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index d768c5a70174..5fd62046b28a 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -7,7 +7,7 @@
+ 
+ #include <linux/err.h>
  #include <linux/mfd/syscon.h>
- #include <linux/regmap.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ 
 
 -- 
 2.40.1
