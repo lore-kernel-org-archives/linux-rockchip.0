@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7FDC001DF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB8FC00528
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Aug 2023 22:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5UhR8MZieIYOs5rzMKENnBYOqUN0UGcd1BzcN7RKxZc=; b=LvslXulu9otulC
-	lO0USUar+oRowEzNISv6Wiv8+Sy/ku7FjXQeI2aWYHATZN8X49umTPKzkev5u5BTk/0FekyouPeXy
-	hAJXuZ2I5DWwmHa2WS94/QXx/1IuBPO6JYHf/DGv5E9y0jCHHEbqXIaWbgmMQXh+7FLSHJaaiZcgv
-	RP9Hb+Jh0PvWGKydeH++dpTPMLQrqzVf0zOwwVIxK7m+JSqcu35IwpLHIMGiNYMUBYG+ExiTRuPin
-	cwO+C1u44OyFCx+AZkdJ6a2m8sib4SDRHFQBhXRpHJK2qqobi34uL4lqFx3bdZ/XLbJx+p3dhfp4X
-	Neic7jFA98IQ6kbvfq4Q==;
+	List-Owner; bh=4NllHb/gSLK/ESYnGr8hHXD5Wid7dEtBpf+dZ4mFdvA=; b=WYyKqAWrUOMh8k
+	bIzKTQekwkETl+5uuucweX76swgvi+z4fTyK21lU+sv63El0kwptg4ihLe+F6TzKPV6lpPWZGPTDG
+	UIGZqXNjVbEMNK2zBHZH/7c9mzMEhtE/tL0hYJFElXJG/Xkr48lUlYo+qXuOtz1rGOLSvza+nfM3x
+	WeYb9c3WNjYNrq2czdEWXkeQeVhhXWDTKobflO6lf5clavU36TTXeubudyM4CuUC5wbswCaYjbHKt
+	4PuH3c63ykxseoqASIJacyC8K5P/P4KKyQhMvlDEBYKSs3cn2S3fHwCgeQP9WrCt1sZBEyMKetgNm
+	TG0SEynkuDDFrGeOPOsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3l-00B1Id-0G;
-	Thu, 03 Aug 2023 22:44:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qRh3q-00B1LV-1e;
+	Thu, 03 Aug 2023 22:44:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRh3f-00B1Fr-1z;
-	Thu, 03 Aug 2023 22:44:41 +0000
+	id 1qRh3l-00B1In-2K;
+	Thu, 03 Aug 2023 22:44:47 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1B9AE61EE8;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 30ED761EDD;
+	Thu,  3 Aug 2023 22:44:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABDB6C433C8;
 	Thu,  3 Aug 2023 22:44:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EADBC433C9;
-	Thu,  3 Aug 2023 22:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691102678;
-	bh=MOwEwZXV75zhxhA5ZluJWONcMdP8WYi3FHPfFhLBRIQ=;
+	s=k20201202; t=1691102684;
+	bh=brmdhvzyvAA0agZSGAy0sXXc2XvdgvNnDJ7I2JsnpoA=;
 	h=From:Date:Subject:References:In-Reply-To:List-Id:To:Cc:From;
-	b=Gorzm2KBvbdF/eBCCih5/bVppiZj+BdzD0cAAEpmaPwfpho4wfyw4l2aziCPqD9Zd
-	 y4f4P/Sb+zyePzcdYkm2vdVS6LBchFdhQhN7qp900gfmC8VQr82uVJsPPmBBEV+GHv
-	 1ML7nkK7mMOK1QMhUZpsZjyKN/9iQJqlWN+g9CCc4NcsBueuhJZBfczGZ33DIKdMh0
-	 3gSdLMlGbrPXceHuMFSkQUG+mOjtl9rsfpGlh/bQi2c95xD8L2UPx08CkKmbEhTgPG
-	 hjHWp/LcFLPqdhF77ecY+2aEaPV67xsC4WsAgdsaNyL3njOhGKLvu+XvHKTXogxMB3
-	 9Wf432z4NNsJA==
-Received: (nullmailer pid 3693792 invoked by uid 1000);
+	b=CiOJmAJ+wHXAE1D+uCR/CBPk7eSgbn1doh2vYQk83ymXIOgUMOfbIAbV36PI0TBHe
+	 JPDNW9iVLRmpjrql7lg/RRybjAYXycBN9495J706CBGZa5NPeMjRxMsoxvazihy9J6
+	 R/nEirHQkIE3QXZj7a//eRnClC/C0RDrS+0rKbN82x/bv3NDWoqQN59BushkbXT+NQ
+	 Kx7idYtBcAb4kQ7aIZBgmLjZDsL/k9pI7zc6AOUiAIsB4M6DbkTWh2ePGfJi2iol7Z
+	 IW6E6p1CMOiNqQbfiW+7nLqo5BzVRQ57vBOJbdcND0pJsrGGOlfieAOZhQxI3PlXzG
+	 P3dE4OoTarXIQ==
+Received: (nullmailer pid 3693764 invoked by uid 1000);
 	Thu, 03 Aug 2023 22:42:55 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 03 Aug 2023 16:43:01 -0600
-Subject: [PATCH v2 21/23] soc: sunxi: Explicitly include correct DT
- includes
+Date: Thu, 03 Aug 2023 16:42:47 -0600
+Subject: [PATCH v2 07/23] ARM: mmp: Drop unused includes
 MIME-Version: 1.0
-Message-Id: <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
+Message-Id: <20230803-dt-header-cleanups-for-soc-v2-7-d8de2cc88bff@kernel.org>
 References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
 To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Shiraz Has
@@ -59,8 +58,8 @@ To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, Tsahee Zidenb
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
 X-Mailer: b4 0.13-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_154439_747925_6459CA69 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20230803_154445_843001_9DD2A9A7 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +76,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DT of_device.h and of_platform.h date back to the separate
-of_platform_bus_type before it as merged into the regular platform bus.
-As part of that merge prepping Arm DT support 13 years ago, they
-"temporarily" include each other. They also include platform_device.h
-and of.h. As a result, there's a pretty much random mix of those include
-files used throughout the tree. In order to detangle these headers and
-replace the implicit includes with struct declarations, users need to
-explicitly include the correct includes.
+Several includes are not needed, so drop them.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-v2:
- - Drop sun20i-ppu.c which moved
----
- drivers/soc/sunxi/sunxi_sram.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/mach-mmp/mmp-dt.c  | 3 ---
+ arch/arm/mach-mmp/mmp2-dt.c | 4 ----
+ arch/arm/mach-mmp/mmp3.c    | 4 ----
+ 3 files changed, 11 deletions(-)
 
-diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
-index 4c4864cd2342..4458b2e0562b 100644
---- a/drivers/soc/sunxi/sunxi_sram.c
-+++ b/drivers/soc/sunxi/sunxi_sram.c
-@@ -15,7 +15,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
+diff --git a/arch/arm/mach-mmp/mmp-dt.c b/arch/arm/mach-mmp/mmp-dt.c
+index 3f43c0867dca..8479996a8f2e 100644
+--- a/arch/arm/mach-mmp/mmp-dt.c
++++ b/arch/arm/mach-mmp/mmp-dt.c
+@@ -6,12 +6,9 @@
+  *  Author: Haojian Zhuang <haojian.zhuang@marvell.com>
+  */
+ 
+-#include <linux/irqchip.h>
+-#include <linux/of_platform.h>
+ #include <linux/of_clk.h>
+ #include <linux/clocksource.h>
+ #include <asm/mach/arch.h>
+-#include <asm/mach/time.h>
+ #include <asm/hardware/cache-tauros2.h>
+ 
+ #include "common.h"
+diff --git a/arch/arm/mach-mmp/mmp2-dt.c b/arch/arm/mach-mmp/mmp2-dt.c
+index 34a5fe4b3949..e5ddc327651b 100644
+--- a/arch/arm/mach-mmp/mmp2-dt.c
++++ b/arch/arm/mach-mmp/mmp2-dt.c
+@@ -6,13 +6,9 @@
+  *  Author: Haojian Zhuang <haojian.zhuang@marvell.com>
+  */
+ 
+-#include <linux/io.h>
+-#include <linux/irqchip.h>
+-#include <linux/of_platform.h>
+ #include <linux/of_clk.h>
+ #include <linux/clocksource.h>
+ #include <asm/mach/arch.h>
+-#include <asm/mach/time.h>
+ #include <asm/hardware/cache-tauros2.h>
+ 
+ #include "common.h"
+diff --git a/arch/arm/mach-mmp/mmp3.c b/arch/arm/mach-mmp/mmp3.c
+index b0e86964f302..073a4ee219cb 100644
+--- a/arch/arm/mach-mmp/mmp3.c
++++ b/arch/arm/mach-mmp/mmp3.c
+@@ -5,10 +5,6 @@
+  *  Copyright (C) 2019 Lubomir Rintel <lkundrak@v3.sk>
+  */
+ 
+-#include <linux/io.h>
+-#include <linux/irqchip.h>
+-#include <linux/of_platform.h>
+-#include <linux/clk-provider.h>
+ #include <asm/mach/arch.h>
+ #include <asm/hardware/cache-l2x0.h>
  
 
 -- 
