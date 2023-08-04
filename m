@@ -4,95 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C41C00528
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Aug 2023 09:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6F35C001DF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Aug 2023 14:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6vQu7izFql0SdSBm6ydoiYsci6sFRsYleO45AVgUv4=; b=fUYrkuasMvpzwC
-	pLIY+24IZt05kPS9CbN5YA1evTyWx6JHuQSlc7y4nj27cKtD28+k8pAk9w4Am5kRv9H9XSJ8L/PxQ
-	sAEV2+lVrCkwif5y/n2e7slXNmspGzHN5/YYnp0IZaLKyRYOvj0+j5ul/SWD6XeWAXwmImubL5TYb
-	cLZRWIdTWRX3BseB+Ullmqbm52kEZCPM2/Y2cs/x2Ux8AUOMFhDDHJDYwr90C/4GBQiyh/uSWqov5
-	pp3Sz9HPczdzQzw12L6N5/2p8byBFd8nqa6po0yWM270ZRDtb6Lv83kNY6ufDanQBvaSDZZlstudw
-	7h8YcaJwcQ5IKN3ZaUrQ==;
+	List-Owner; bh=IZneSpgWUALvUywr8i/Tii9yUjwBceBaQa9jS/WzmU0=; b=QoWu1zh2ifUVJi
+	rpEqJzPs+NUKBMbV6goaPIB+xZQnCTSNF+nu8BjTA6PXDai5VdIGo4f4w2herQYuvkO4+bRw8/a7A
+	us5w9hW/62hnRrtLDHIDiGa2hHEiu3kMsIQSiZtHMjI0/fdjL4g3iB/seLaJb3l0XRTi0DP+6+Pqp
+	ZB9hDIHDdhDlF+a9DflZcP9jeazL0MJ4A+ONad7p/0CEx6Y3qdAjJEBKXdCbr2+rXkoxZWbA7Fi9P
+	YquhxZpdReofMdZVf+e1KcGxpscJ8pi/tJm7xdFjb7+Jd/yYCIO9Pjw7FebwNzRwN4syIbx5TgRPf
+	b92bPQasTjfMg1g59URQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRrTq-00C3tP-1p;
-	Fri, 04 Aug 2023 09:52:22 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRrTl-00C3sR-2o;
-	Fri, 04 Aug 2023 09:52:19 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 19B7B1007;
-	Fri,  4 Aug 2023 02:52:58 -0700 (PDT)
-Received: from bogus (unknown [10.57.96.101])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 756D23F6C4;
-	Fri,  4 Aug 2023 02:52:03 -0700 (PDT)
-Date: Fri, 4 Aug 2023 10:51:27 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Rob Herring <robh@kernel.org>
-Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
-	Antoine Tenart <atenart@kernel.org>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Lubomir Rintel <lkundrak@v3.sk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Sh iraz Has him <shiraz.linux.kernel@gmail.com>,
-	Stuart Yoder <stuyoder@gmail.com>,
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
-	Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
-	Qiang Zhao <qiang.zhao@nxp.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v2 17/23] firmware: Explicitly include correct DT includes
-Message-ID: <20230804095127.w74m6aphiwkaqlim@bogus>
+	id 1qRvwi-00Cbza-0u;
+	Fri, 04 Aug 2023 14:38:28 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qRvwe-00Cbyb-2f;
+	Fri, 04 Aug 2023 14:38:26 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3fe4b45a336so4463165e9.1;
+        Fri, 04 Aug 2023 07:38:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1691159895; x=1691764695;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BM5R+rkSeL9WIp21l2emysOOucIRf/CjafaqigjE3ns=;
+        b=P52o47d9dHG1aUMZwk0pd23gUMU1gSEcAaorjtm0PUBSc4CTskirX886xdzRJezLg6
+         M4MtQIA6juxB9+sFPFH3EPWi9hMPTVDd1wwyWh3PmXuu1po0m+repmiBQFo72mEPoUaF
+         CKzmuVyB06487jxO3URnO0OYZ2cjQP/ZYPY+Ly4YmQO1h8Ul1MwxJiS6CzfTEpBkUg4D
+         GvHC2AtRasiPCNfOkLFtYCr2iYrhUrXdaNuwr9xpfY5akGkjLPDtWAHv3doGspA8ZqzA
+         BVho52Djxf/ClpbDDROl0ciKQJHwoe5ELFkv+xQsoTFDKnytt8GlFd+Ntd6Geakv25p/
+         LA8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691159895; x=1691764695;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BM5R+rkSeL9WIp21l2emysOOucIRf/CjafaqigjE3ns=;
+        b=F6r+jxmTG9wKNBIe1qfqm7c+2db32oKYeol4ZwO+bmIQFr+3PVNQr8xGkUqNgzPzNL
+         HfOCnxRrZIRkeUfgkFnA2oRmcSiQW1qd6Oac3xvoRkVN+AaYJJ4t0/gnhGoJu5Itq/Mm
+         a8ZtXWeQIdqdGlMeEBbwgE8xQ458ZiSAzpEYkkFI098tVzazsTsm0nB9qNpZmMHMsPp+
+         pdb0OCzpWF4/9eQls/Ob7SuPen/nv7Ea6oa7nPVyF3CcSAkXD5pZ6bbBM7xS1y96Jn12
+         J8gt9aYin16CWgw0wg24/dF/XRJwJRtF+bC7FhVKN4KRzEoY+AOyHRD7UNhQsoqM66My
+         sM9Q==
+X-Gm-Message-State: AOJu0YxSIv7I8tw/DTUngixzvu1aQ/yNmQ/ZLEr/POoibFKy+QWoWRo1
+	q7RqKwvriJaKd4t3XechIcs=
+X-Google-Smtp-Source: AGHT+IFR8gDqjRYqyXRMOxF0JJDJ3mrxElW64dDSszEM8SNr/lPevhKIntH0L12mO9e2OcoWVt3KOw==
+X-Received: by 2002:a1c:7c05:0:b0:3fb:e4ce:cc65 with SMTP id x5-20020a1c7c05000000b003fbe4cecc65mr1591896wmc.25.1691159894687;
+        Fri, 04 Aug 2023 07:38:14 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
+        by smtp.gmail.com with ESMTPSA id f9-20020a7bc8c9000000b003fba92fad35sm6833727wml.26.2023.08.04.07.38.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Aug 2023 07:38:14 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+ Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+ Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+ Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
+ Qiang Zhao <qiang.zhao@nxp.com>, Rob Herring <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 21/23] soc: sunxi: Explicitly include correct DT includes
+Date: Fri, 04 Aug 2023 16:38:11 +0200
+Message-ID: <2690872.mvXUDI8C0e@jernej-laptop>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
 References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
- <20230803-dt-header-cleanups-for-soc-v2-17-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-17-d8de2cc88bff@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_025218_009113_5B621C85 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20230804_073824_867266_8F430ECD 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,7 +121,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 03, 2023 at 04:42:57PM -0600, Rob Herring wrote:
+Dne petek, 04. avgust 2023 ob 00:43:01 CEST je Rob Herring napisal(a):
 > The DT of_device.h and of_platform.h date back to the separate
 > of_platform_bus_type before it as merged into the regular platform bus.
 > As part of that merge prepping Arm DT support 13 years ago, they
@@ -119,20 +131,38 @@ On Thu, Aug 03, 2023 at 04:42:57PM -0600, Rob Herring wrote:
 > replace the implicit includes with struct declarations, users need to
 > explicitly include the correct includes.
 > 
-> Acked-by: Dinh Nguyen <dinguyen@kernel.org>
-> Acked-by: Thierry Reding <treding@nvidia.com>
 > Signed-off-by: Rob Herring <robh@kernel.org>
+
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+Should I take this through sunxi tree?
+
+Best regards,
+Jernej
+
 > ---
->  drivers/firmware/arm_scmi/driver.c | 4 ++--
->  drivers/firmware/scpi_pm_domain.c  | 3 ++-
+> v2:
+>  - Drop sun20i-ppu.c which moved
+> ---
+>  drivers/soc/sunxi/sunxi_sram.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
+> index 4c4864cd2342..4458b2e0562b 100644
+> --- a/drivers/soc/sunxi/sunxi_sram.c
+> +++ b/drivers/soc/sunxi/sunxi_sram.c
+> @@ -15,7 +15,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+> -#include <linux/of_device.h>
+> +#include <linux/of_platform.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
 
-(For SCMI changes)
 
-Acked-by:  Sudeep Holla <sudeep.holla@arm.com>
 
--- 
-Regards,
-Sudeep
+
 
 _______________________________________________
 Linux-rockchip mailing list
