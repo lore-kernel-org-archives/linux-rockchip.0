@@ -4,64 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74365C001DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Aug 2023 15:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B26C001DE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Aug 2023 19:08:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WxKVDYv4SlElgm9hOYmOZeVnJi8e3o3z8lE6OFODL/c=; b=S6bQT9BvLlNWrx1J4ucbZ7ILWf
-	jIZvUz+Py49vOaaNZuzdDzvEgOHioF5Gk6kbZRJZWJbf/4Ro3kaJhiSKEj44bWqbXSDhDO1mMI9xV
-	8Np74YlCZKEjlB02+HbC4dmk26xumRWlJYcGC6wUmOVeV447v4nX0BAuYezSSopkoegVPwUKjGmRU
-	DKbud8gFTmuLd/VB3Ic3lmo8t3nZQDjuUeBNDBrIY2YsPb31L4sGqisjNc01wfwnmtRp/xEYffW7h
-	6wKGTEQWx8uwjxVJIpJkL+1Dv3stRW3O6q1wQkk3PCHt2DhiU+cvaimPYvN3ev8+pE3noYqBuQbhA
-	RDcITY0Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JX0wXge76dYbc6db09+lg3w0+I5elQxkvLkcNYgGIT4=; b=F9fteyipv6pjVf
+	wNBh43lqKyHXLIqVwjhlh5nJ6/KbFjgxKvoglk/DCENSuhd3lMUPrNRH9E90d8agjPzsJbdtmfydP
+	oNE2Lw04/J/eSDBxJvgl/d4YmTAoi32BtqTuLm0PgyKE6HMDOvpD34vxjhmmuQvSA/yTijiXgPRX4
+	6YGTPIg7DoNGYD5ruySQ2L0clVdnhSlQWOibO/Ual1eAIlrR8DFAJycyw7azSVTvvh/A3Q5ROjMAq
+	T2Po1Kfx5rTDnrWoEzKLhQK1e5f2gff0Wxd5XdQFv5boFb3cyWz/cEa8dd4v2mVRkScxkBbQW3THv
+	yYaVaSWTVIg1t+mbRssA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwsd-00CiwH-2u;
-	Fri, 04 Aug 2023 15:38:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qS0A2-00D5IR-0O;
+	Fri, 04 Aug 2023 19:08:30 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwsb-00CivR-15;
-	Fri, 04 Aug 2023 15:38:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7126762089;
-	Fri,  4 Aug 2023 15:38:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B15AC433C8;
-	Fri,  4 Aug 2023 15:38:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691163495;
-	bh=t4F+m0azHkadYsutPkh75iCV6olf/pJ7y0Pbspodwio=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s3LWYBXP0DQCJ8gWTRlGS+DLuDNG91JnVUqj6fIwyYQ+K/ZrE+Mf+5akzN9HDNSsM
-	 AlrELznaKCwhcSAZJBIdBxmoyVZYYz+BqXgKziIikEOcaTShqV9YhIuU/Qw+4xwOhV
-	 dP3KswXwcY3JV6Xpd9idcxJLE/sHQJye5zPAIqwIVMW1uMYllspZXdh6XBYwjVzvQa
-	 v3W9wiRmou7leVNioc8L1c1r+yrjoFid7gIEH7u+TptlFC4hBp+SU+dn4e4bBn5YX0
-	 P4y/DADmXFXhRTNNa5dDHRmSzILx1OsbjX62EzkrsdGyGqtNb3dHbc0A7OMRJGHpzH
-	 j6D+8RkWlFHtA==
-Date: Fri, 4 Aug 2023 16:38:10 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, kever.yang@rock-chips.com,
-	heiko@sntech.de, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, huangtao@rock-chips.com
-Subject: Re: [RESEND PATCH v3 3/4] dt-bindings: clock: rk3588: export
- PCLK_VO1GRF clk id
-Message-ID: <20230804-colonial-balsamic-c97491ebec12@spud>
-References: <20230804025101.28438-1-zhangqing@rock-chips.com>
+	id 1qS09x-00D5Gw-2C;
+	Fri, 04 Aug 2023 19:08:26 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3fbc63c2e84so24153815e9.3;
+        Fri, 04 Aug 2023 12:08:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1691176103; x=1691780903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uUct/82ZzJYoId4uQpyLnXW8CpRtqtjF90BwOBq+j0o=;
+        b=Sw0i87+1TNyjnpxDcQG2yBq3mmDztmoLnSIvDewEdu7MsRTVLhilD7q5AKtBLX6bCP
+         elMoZXCrptU3/c0hUjL82BhwCUtuwD234IiW92vDvJchvI9yWOV7n3ucy+Kx7L537UpN
+         ipmvlloMQL3eFNqO481bhW999WW4XvMDm6ak4OyD64Rpj8BB6hwXU8YfbYPNYGs75uOd
+         /SYwTd7gX9E3bMqFbqOqYohdq/v+V4XPSZkY26rQAtiQgPWjeUZjGKHlAxIk49TCmKSy
+         gHGT/pFVmDRTERB+/+brCukvg2dEggQozIodxVeorNa5WTQs0TY+qbw22NEndee1NBb9
+         N+dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691176103; x=1691780903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uUct/82ZzJYoId4uQpyLnXW8CpRtqtjF90BwOBq+j0o=;
+        b=DqumS91K2CGn+aVNJAZvlEGSdyrAFKuUKdm1gcaLcEul/ogWCIpiEiLqPlTO2nEnz0
+         CGHlSCO+lG8xqLGqXdnNPT7jOMg4ZGZVxnWOf/2ahl5l6KP+0GOzZacaXot9rWz65Akv
+         Go/DiNaAxKkBW/6oEW0iYyowl8YaOwYvcOQRtQTreE5HIOWZRSuSAdbpDQWHibnnp4b0
+         nIs8WESgTro3RyTRv2N7vAyDFgcyAF22DqTLG4MyMfTlKaZ4gDsULTBOIpUsoDNWqnzO
+         PRFuWVnvz5pF+DHhrhfAUda2yV7esvFdqyM+LMxxogDqPB0ksKri/gVXBcphaM/+yUao
+         nuiA==
+X-Gm-Message-State: AOJu0YznFRP2gm2yBbiMmnCr3ISVHXEcfy9IFxuQMMQEAw6Xf4gWClB4
+	WGiOHsZJ8VHreDM6BRjLvQw=
+X-Google-Smtp-Source: AGHT+IEVrZLvF9EJvd/t1u18YqhdNyGjzTlFOtuLbcjUbAk5S3X8YO69YyZ5+NC4O8tskW7xE0E92w==
+X-Received: by 2002:a7b:cbd3:0:b0:3fb:c9f4:1506 with SMTP id n19-20020a7bcbd3000000b003fbc9f41506mr2400916wmi.1.1691176102471;
+        Fri, 04 Aug 2023 12:08:22 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
+        by smtp.gmail.com with ESMTPSA id u24-20020a05600c00d800b003fa95f328afsm7461683wmm.29.2023.08.04.12.08.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Aug 2023 12:08:22 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+ Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+ Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+ Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
+ Qiang Zhao <qiang.zhao@nxp.com>, Rob Herring <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 16/23] bus: Explicitly include correct DT includes
+Date: Fri, 04 Aug 2023 21:08:19 +0200
+Message-ID: <2151246.irdbgypaU6@jernej-laptop>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-16-d8de2cc88bff@kernel.org>
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-16-d8de2cc88bff@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20230804025101.28438-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_083817_416636_599282C9 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20230804_120825_716427_48C1772E 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,82 +116,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5773691367480551335=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5773691367480551335==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="lK93WBiQtkbGzRv8"
-Content-Disposition: inline
-
-
---lK93WBiQtkbGzRv8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Aug 04, 2023 at 10:51:01AM +0800, Elaine Zhang wrote:
-> add PCLK_VO1GRF clk id.
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Dne petek, 04. avgust 2023 ob 00:42:56 CEST je Rob Herring napisal(a):
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  include/dt-bindings/clock/rockchip,rk3588-cru.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt=
--bindings/clock/rockchip,rk3588-cru.h
-> index b5616bca7b44..864a321ab362 100644
-> --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> @@ -733,8 +733,9 @@
->  #define ACLK_AV1_PRE			718
->  #define PCLK_AV1_PRE			719
->  #define HCLK_SDIO_PRE			720
-> +#define PCLK_VO1GRF			721
-> =20
-> -#define CLK_NR_CLKS			(HCLK_SDIO_PRE + 1)
-> +#define CLK_NR_CLKS			(PCLK_VO1GRF + 1)
+>  drivers/bus/fsl-mc/fsl-mc-bus.c | 1 +
+>  drivers/bus/fsl-mc/fsl-mc-msi.c | 2 --
+>  drivers/bus/hisi_lpc.c          | 2 +-
+>  drivers/bus/omap_l3_smx.c       | 1 -
+>  drivers/bus/simple-pm-bus.c     | 2 ++
+>  drivers/bus/sunxi-rsb.c         | 2 +-
 
-I only got this patch & not the rest of the series, so no idea what's
-going in those patches, but since CLK_NR_CLKS was put in a dt-binding
-header, is that value not now part of the ABI?
+for sunxi-rsb:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-Thanks,
-Conor.
+Best regards,
+Jernej
 
-> =20
->  /* scmi-clocks indices */
-> =20
-> --=20
-> 2.17.1
->=20
-
---lK93WBiQtkbGzRv8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZM0bYgAKCRB4tDGHoIJi
-0ivZAQCx292j0WpUPtQm1NKlAx/CxxoK2bk0EqWwWc0QshsvGwD/aj8I8l6Qv8Xn
-VBq+pNEmZJBYuho1YQFAV5jlcDIbmAM=
-=eTnE
------END PGP SIGNATURE-----
-
---lK93WBiQtkbGzRv8--
+>  drivers/bus/ti-pwmss.c          | 2 +-
 
 
---===============5773691367480551335==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5773691367480551335==--
-
