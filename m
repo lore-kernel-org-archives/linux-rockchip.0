@@ -4,66 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 586D9C00528
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Aug 2023 21:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1CD9C00528
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Aug 2023 09:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ImMby1V3xadkEzyJOm+j6vJY8Cw4n0oJypjwMA/crF8=; b=ll+1wnIBdBrd3C
-	IeV8Sgutfv00eIjnXe48/hJNvyuWLD6HUjw60GFh2F7ypGCRS/4PUqeZsclQK8mMwG2epOnK42GYy
-	Yiw/9IMpg6W6jnZSukr4JXREBx/RyFrLdA1/ltLzclepQaJQuC1MlBJ5qZ9OeDNQngC4ijzkhLMUn
-	nqCV4nF+s+Hb+Lnoui73JteFgBcsh2S3H+pUzN+XaLtrGGbtQVrz1Rhbluu6eFPm5JEqZq3bql5Ra
-	HxScj3m0y0aQQiDqOWJe1DKu2C/YUdNMteQYIo4kbgHrkL9JX7QJm+PHH+q4S4aT2E1NisB1VmlA9
-	pxHDhq42unfmJj10jtCA==;
+	List-Owner; bh=aBl+sGniFHZspB2xBCNOv7C04oMRCOJiWyJpF1lKcJ4=; b=U0r7tKBsoy2AV8
+	rSPvZHp2uLfeJCkXYuJ6ylb58u0LKXzuSB5zYUfcemfCdFWtaeokqz2icuON7PymGxuJRegWsIN0J
+	Jfasa4jxNDb7T3jE/8suV9VkfLfmA8D7i6hZxyKrcucxm0i9+hg/QZchq9agChCKQq9y2iyy3AX8Y
+	xxTZx0VhHgCVBsAUSBhZ+SJjSUlYZQFwYA6aWP2zMIXpVLKaFL1yNq1yBlDOnGa9q1rsqECNYgYha
+	ybJ+h5GewykA79gUerzdlQxzdQwSZf0Epr2NotIUSkTVzR2TfndaaW9hb23cf3JPeYkrJ71JyMZay
+	6Lb5yXjN3S1rNwY4F/Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSP2k-00Eb7Z-1z;
-	Sat, 05 Aug 2023 21:42:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qSaD9-00F8vu-2f;
+	Sun, 06 Aug 2023 09:38:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSP2h-00Eb6y-3A
-	for linux-rockchip@lists.infradead.org;
-	Sat, 05 Aug 2023 21:42:37 +0000
+	id 1qSaD2-00F8vO-2G;
+	Sun, 06 Aug 2023 09:38:02 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1599960DEB;
-	Sat,  5 Aug 2023 21:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47EFCC433C8;
-	Sat,  5 Aug 2023 21:42:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D043160FE5;
+	Sun,  6 Aug 2023 09:37:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07DBFC433C7;
+	Sun,  6 Aug 2023 09:37:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691271754;
-	bh=t9/PN8NddGMEUxQeZoMA3O8Sbt550SevL2v+P6ufCyg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cwMxHtdgC35fZyO9bZK9AiKZv7KpBingNGmGYJgMgKUoJRPQr51SnaVTPUEn3cf5f
-	 V1DirzHs9KzbOuNmLqhTAPwxCsSAPcavUAR36f1R+Ditq2Ib/sUxMTvCSYj0LFrDmz
-	 uxM/L3o4D9pmzY9psTHsPvR9pC86NlT2eOMNN6VS1lK9w/1KgvCgdhII0AC/sr0LX0
-	 kTrC5WqApvFdeZRTS7A0DOMugOBqmKsm9NIClz4Szu0DbhcyqXNij7deedEAYP7TqK
-	 7haLTiX9K1ovRtrdW+fEy6Nw1LOOGSY/LdjG0e9yVTFImeL0JSAtTft8c+ITCUyMKf
-	 BW5BKQjXk3LMA==
-Date: Sat, 5 Aug 2023 23:42:30 +0200
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Ruan Jinjie <ruanjinjie@huawei.com>
-Cc: sylvester.nawrocki@gmail.com, mchehab@kernel.org,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	linux-media@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH -next 2/2] media: verisilicon: Do not check for 0 return
- after calling platform_get_irq()
-Message-ID: <20230805214230.7v3kjloxoby3fyxs@intel.intel>
-References: <20230803024645.2716057-1-ruanjinjie@huawei.com>
- <20230803024645.2716057-3-ruanjinjie@huawei.com>
+	s=k20201202; t=1691314678;
+	bh=eVpmHvQ+el5oYnGHhCSpJ5MEq+qn7dtrQFEijdKMa8E=;
+	h=Date:From:To:List-Id:Cc:Subject:References:In-Reply-To:From;
+	b=hVSQsnl40hPx5Hzzj5zBBPn+ff8r3wDMB4k07G0sRzVhqsLlZsELCofYkyX1vHEH9
+	 03ftiNg9xoj/PdueOZCPd4+FYwDyorhR9keodEEfyj9p9KA4/h9hFsiKMDTw1wM7lf
+	 //8t24an4y9cxraswJL0vsj9Y8Zk5jSE5vPvdgX9dinzZrLvJvcZVXFm6si+6Nq2rF
+	 1Tt8WY1cesvzjLLo4dNhnZQZE5teSMdzrfqdtaOHt49D6vcGVyzszm2dZZYrfboNVH
+	 m6uPs5ND889+AtHQvdUCRX8b03lZtROnjo0oDt7LRhtMcC0TWq4ZFRWob1DxWot5kb
+	 F1CL31Cx36ztg==
+Date: Sun, 6 Aug 2023 17:26:09 +0800
+From: Jisheng Zhang <jszhang@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Jean-Marie Verdun <verdun@hpe.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Lubomir Rintel <lkundrak@v3.sk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+	Stuart Yoder <stuyoder@gmail.com>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+	Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
+	Qiang Zhao <qiang.zhao@nxp.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 04/23] ARM: berlin: Drop unused includes
+Message-ID: <ZM9nMTHTFEY8JcC/@xhacker>
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-4-d8de2cc88bff@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230803024645.2716057-3-ruanjinjie@huawei.com>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-4-d8de2cc88bff@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230805_144236_056701_A7ABDA4B 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230806_023800_847944_4131AB6B 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +120,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ruan,
-
-On Thu, Aug 03, 2023 at 10:46:45AM +0800, Ruan Jinjie wrote:
-> It is not possible for platform_get_irq() or platform_get_irq_byname()
-> to return 0. Use the return value from platform_get_irq()
-> or platform_get_irq_byname().
+On Thu, Aug 03, 2023 at 04:42:44PM -0600, Rob Herring wrote:
+> Several includes are not needed, so drop them.
 > 
-> Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: Andi Shyti <andi.shyti@kernel.org> 
+Reviewed-by: Jisheng Zhang <jszhang@kernel.org>
 
-Andi
+Thanks!
+
+PS: what would be the better merge path? Arnd take it directly with each
+sub-maintainers' ack or something else?
+> ---
+>  arch/arm/mach-berlin/berlin.c | 5 -----
+>  1 file changed, 5 deletions(-)
+> 
+> diff --git a/arch/arm/mach-berlin/berlin.c b/arch/arm/mach-berlin/berlin.c
+> index 2424ad40190c..13d5c899f09e 100644
+> --- a/arch/arm/mach-berlin/berlin.c
+> +++ b/arch/arm/mach-berlin/berlin.c
+> @@ -8,11 +8,6 @@
+>   *  (c) Marvell International Ltd.
+>   */
+>  
+> -#include <linux/init.h>
+> -#include <linux/io.h>
+> -#include <linux/kernel.h>
+> -#include <linux/of_platform.h>
+> -#include <asm/hardware/cache-l2x0.h>
+>  #include <asm/mach/arch.h>
+>  
+>  static const char * const berlin_dt_compat[] = {
+> 
+> -- 
+> 2.40.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
