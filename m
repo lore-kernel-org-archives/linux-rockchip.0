@@ -4,75 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 201F7C001B0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Aug 2023 10:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB6BC001B0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Aug 2023 11:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AZTFxgseNWihzkuPakKF0F4zGDyL823hhvV7gqUdvt4=; b=C/b7LSUspxpqFA
-	xyCWO/V3mi5paToEfjbtQFup2kxD6043V+nNNvt17gai8Uw+gnTk836na0CvGBTnGHppkYIetzOY7
-	/81Xn4r2F1IcZoFuR5jJpZL4T6YT1LN2FVnSAsgcBedzmMwXRtd5VvWnOQpsMsxxcvaZtgEin+60t
-	qn/pR1S4btqNXIUZtktfxDj+KiMkUX99FwZo8KJLtpmXWbGXdQjUoMC/pcDCwc5Yw8CYrq5lITOhw
-	740gk0Q62snXRfP6quK30DFFLFbgK8TbLe1D5iwaBHvTzOEHzce2AcOebRM/+bdtVzaSyeBwpn08Z
-	bLjwapJkV11JQ7xYQe+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rnn6Ki/QEejsGq75WMopvMl4X3bpVF3wf53qxlXyD0k=; b=QtziIemyc3t1kN
+	jpH1AfEw1qpiYU0Pf4+8C0iuMvt20IbklyTPSTa25O6q78U5IuCqZ0SDGL7eplOKiCDL/2zOxPlsz
+	P+jQNTXN5VT1AnKphWqLtSkOrro+JNU5DE/0uCJWqgcejsypnxf2i6u1o5cgUNYZv25Mph72B91cX
+	BiTW8r0w4XDHaby7fH47Oru5bdBM9yNrJry8jcxUteUF9zM7dhTSqYyiG6j2bpzHdEDlGdUQRCa5d
+	AGMGgGB1kL8btUAr5YpIzKZ+GhQYAPsG0DFR+iblE+s3FnNofq2Ap3nl38HrovQhutBbR+dSPCeI9
+	TRnv3OAQIJc/yGPEknFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTKCH-002KTI-0H;
-	Tue, 08 Aug 2023 10:44:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qTKzt-002TVK-24;
+	Tue, 08 Aug 2023 11:35:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTKCF-002KRH-1d
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 08 Aug 2023 10:44:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=OOcVy0gbQaufF0sp/LMQlOIqST+bH3DNbQ6ygDNrv18=; b=XXUuiaZBW3+HCmS/T/ZBixLnMT
-	mPuLm7d9w0l1nRP9xEQUv/YGZLFZ2CBhwskkFUmu3TeKDUFNtCGAjy39UegzPCcTQ12I8tK+R/TEf
-	pEmN5KtE0etUt5wxLyQ9d7SeYNYrRmf9ViqNw8sf1cT8rvppsuPR0UjjYCs9aNc23IEeGGGqCrCUv
-	QXvINs6NqLoa5X9Sjr/+lgo9QZfgmC9QyE0mmj/kpsILRqud82eMlQ3JJIV/s+S5Lt11R8nWNiwkp
-	ZElHScoCwPSSgPyzg4r3zeynACc/KAF5ClqFEPgNbBO3Ni1xTgFenpIZsIsaL0kPmTxzYt6SLQd58
-	EHUxrDAQ==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTKCB-004j1S-1I
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Aug 2023 10:44:13 +0000
-Received: from strictly.printclub (unknown [5.151.124.206])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: daniels)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF3DB6607207;
-	Tue,  8 Aug 2023 11:44:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691491448;
-	bh=85vuuRF0tMoEaLhW9I6v3ofumqZOtQ5z2vb4Z7G70ZM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=DuCREdww2HMkOcLK/te3ska11xe7qdyM48ex64O+vvAXaScULhuPI2ZxLU1nGISyP
-	 PWclZTevzR5M/pi9ZSx3c+ZhPfsi6sc7+VPLNW7NjHPhPyhZcj/SEo4w0QQe7Qee6x
-	 p98/mFMhJCpe4oTX6Rm04R2zuEtneMpPssYg2ECkftdRBMoD3RaLa6pvTI/ib7zo7a
-	 blV9aS7IJvHKBCkOAfQHdgAdH7J3MFoihfrnpeXyKczwBQbuxV8R48AZOqGSRIUWJr
-	 WQY3XzFZSPWN5z0eR37enmt8dEQQgFb9XTkoiP7ZfoFoIvzHH6lbkif/gZHa8jlFxv
-	 dsfE5edhFAjLg==
-From: Daniel Stone <daniels@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org,
-	hjc@rock-chips.com,
-	heiko@sntech.de
-Subject: [PATCH] drm/rockchip: Don't spam logs in atomic check
-Date: Tue,  8 Aug 2023 11:44:05 +0100
-Message-ID: <20230808104405.522493-1-daniels@collabora.com>
-X-Mailer: git-send-email 2.41.0
+	id 1qTKzp-002TUH-2k;
+	Tue, 08 Aug 2023 11:35:31 +0000
+Received: from i53875a28.versanet.de ([83.135.90.40] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qTKzY-0007r7-Mx; Tue, 08 Aug 2023 13:35:12 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Thomas McKahan <tmckahan@singleboardsolutions.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add NanoPC T6
+Date: Tue, 08 Aug 2023 13:35:11 +0200
+Message-ID: <1770215.VLH7GnMWUR@diego>
+In-Reply-To: <20230808002751.00001385@singleboardsolutions.com>
+References: <20230802051441.3106-1-tmckahan@singleboardsolutions.com>
+ <f49a803f-9ff4-794e-265b-a98e3711cca8@linaro.org>
+ <20230808002751.00001385@singleboardsolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_114411_955577_39F71CB0 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230808_043529_888732_28257965 
+X-CRM114-Status: GOOD (  26.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +66,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Userspace should not be able to trigger DRM_ERROR messages to spam the
-logs; especially not through atomic commit parameters which are
-completely legitimate for userspace to attempt.
+Am Dienstag, 8. August 2023, 06:32:45 CEST schrieb Thomas McKahan:
+> On Mon, 7 Aug 2023 08:44:40 +0200
+> Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
+> 
+> > On 02/08/2023 07:14, Thomas McKahan wrote:
+> > > Add the NanoPC T6, a single board computer from FriendlyElec based on
+> > > the RK3588.
+> > > 
+> > > Initial device tree supports debug UART, SD, eMMC, PCIe 3, PMIC,
+> > > and 40 pin GPIO assignments.
+> > > 
+> > > Signed-off-by: Thomas McKahan <tmckahan@singleboardsolutions.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> > >  .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 845 ++++++++++++++++++
+> > >  2 files changed, 846 insertions(+)
+> > >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > > index 1ebbb3e9c2f9..e7728007fd1b 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > > @@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+> > > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+> > > new file mode 100644
+> > > index 000000000000..2362da2c53d9
+> > > --- /dev/null
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+> > > @@ -0,0 +1,845 @@
+> > > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > > +/*
+> > > + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+> > > + * Copyright (c) 2023 Thomas McKahan
+> > > + *
+> > > + */
+> > > +
+> > > +/dts-v1/;
+> > > +
+> > > +#include <dt-bindings/gpio/gpio.h>
+> > > +#include <dt-bindings/pinctrl/rockchip.h>
+> > > +#include <dt-bindings/usb/pd.h>
+> > > +#include "rk3588.dtsi"
+> > > +
+> > > +/ {
+> > > +	model = "FriendlyElec NanoPC-T6";
+> > > +	compatible = "friendlyarm,nanopc-t6", "rockchip,rk3588";
+> > > +
+> 
+> ...
+> 
+> > > +&spi2 {
+> > > +	status = "okay";
+> > > +	assigned-clocks = <&cru CLK_SPI2>;
+> > > +	assigned-clock-rates = <200000000>;
+> > > +	pinctrl-names = "default";
+> > > +	pinctrl-0 = <&spi2m2_cs0 &spi2m2_pins>;
+> > > +	num-cs = <1>;
+> > > +
+> > > +	pmic@0 {
+> > > +		compatible = "rockchip,rk806";
+> > > +		spi-max-frequency = <1000000>;
+> > > +		reg = <0x0>;
+> > > +
+> > > +		interrupt-parent = <&gpio0>;
+> > > +		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+> > > +
+> > > +		pinctrl-names = "default";
+> > > +		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+> > > +			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
+> > > +
+> > > +		vcc1-supply = <&vcc4v0_sys>;
+> > > +		vcc2-supply = <&vcc4v0_sys>;
+> > > +		vcc3-supply = <&vcc4v0_sys>;
+> > > +		vcc4-supply = <&vcc4v0_sys>;
+> > > +		vcc5-supply = <&vcc4v0_sys>;
+> > > +		vcc6-supply = <&vcc4v0_sys>;
+> > > +		vcc7-supply = <&vcc4v0_sys>;
+> > > +		vcc8-supply = <&vcc4v0_sys>;
+> > > +		vcc9-supply = <&vcc4v0_sys>;
+> > > +		vcc10-supply = <&vcc4v0_sys>;
+> > > +		vcc11-supply = <&vcc_2v0_pldo_s3>;
+> > > +		vcc12-supply = <&vcc4v0_sys>;
+> > > +		vcc13-supply = <&vcc_1v1_nldo_s3>;
+> > > +		vcc14-supply = <&vcc_1v1_nldo_s3>;
+> > > +		vcca-supply = <&vcc4v0_sys>;
+> > > +
+> > > +		gpio-controller;
+> > > +		#gpio-cells = <2>;
+> > > +
+> > > +		rk806_dvs1_null: dvs1-null-pins {
+> > > +			pins = "gpio_pwrctrl2";
+> > > +			function = "pin_fun0";
+> > > +		};
+> > > +
+> > > +		rk806_dvs2_null: dvs2-null-pins {
+> > > +			pins = "gpio_pwrctrl2";
+> > > +			function = "pin_fun0";
+> > > +		};
+> > > +
+> > > +		rk806_dvs3_null: dvs3-null-pins {
+> > > +			pins = "gpio_pwrctrl3";
+> > > +			function = "pin_fun0";
+> > > +		};
+> > > +
+> > > +		regulators {
+> > > +			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
+> > > +				regulator-boot-on;  
+> > 
+> > Boolean properties are not first, but last. regulator-name is the first
+> > one. This odd style...
+> > 
+> 
+> I agree, however it seems the norm in Rockchip devices. This will
+> become an outlier in Rockchip but fall in line with the general case.
+> I'll put it in V2 with the other mentioned fixes unless a conflicting 
+> opinion is expressed. 
 
-Signed-off-by: Daniel Stone <daniels@collabora.com>
-Fixes: 7707f7227f09 ("drm/rockchip: Add support for afbc")
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 17 +++++++++--------
- 1 file changed, 9 insertions(+), 8 deletions(-)
+I definitly do prefer regulator-name to be the first regulator-* (same as
+compatible for regular nodes) and I think generally I do catch outliers
+in this .
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 86fd9f51c692..14320bc73e5b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -832,12 +832,12 @@ static int vop_plane_atomic_check(struct drm_plane *plane,
- 	 * need align with 2 pixel.
- 	 */
- 	if (fb->format->is_yuv && ((new_plane_state->src.x1 >> 16) % 2)) {
--		DRM_ERROR("Invalid Source: Yuv format not support odd xpos\n");
-+		DRM_DEBUG_KMS("Invalid Source: Yuv format not support odd xpos\n");
- 		return -EINVAL;
- 	}
- 
- 	if (fb->format->is_yuv && new_plane_state->rotation & DRM_MODE_REFLECT_Y) {
--		DRM_ERROR("Invalid Source: Yuv format does not support this rotation\n");
-+		DRM_DEBUG_KMS("Invalid Source: Yuv format does not support this rotation\n");
- 		return -EINVAL;
- 	}
- 
-@@ -845,7 +845,7 @@ static int vop_plane_atomic_check(struct drm_plane *plane,
- 		struct vop *vop = to_vop(crtc);
- 
- 		if (!vop->data->afbc) {
--			DRM_ERROR("vop does not support AFBC\n");
-+			DRM_DEBUG_KMS("vop does not support AFBC\n");
- 			return -EINVAL;
- 		}
- 
-@@ -854,15 +854,16 @@ static int vop_plane_atomic_check(struct drm_plane *plane,
- 			return ret;
- 
- 		if (new_plane_state->src.x1 || new_plane_state->src.y1) {
--			DRM_ERROR("AFBC does not support offset display, xpos=%d, ypos=%d, offset=%d\n",
--				  new_plane_state->src.x1,
--				  new_plane_state->src.y1, fb->offsets[0]);
-+			DRM_DEBUG_KMS("AFBC does not support offset display, " \
-+				      "xpos=%d, ypos=%d, offset=%d\n",
-+				      new_plane_state->src.x1, new_plane_state->src.y1,
-+				      fb->offsets[0]);
- 			return -EINVAL;
- 		}
- 
- 		if (new_plane_state->rotation && new_plane_state->rotation != DRM_MODE_ROTATE_0) {
--			DRM_ERROR("No rotation support in AFBC, rotation=%d\n",
--				  new_plane_state->rotation);
-+			DRM_DEBUG_KMS("No rotation support in AFBC, rotation=%d\n",
-+				      new_plane_state->rotation);
- 			return -EINVAL;
- 		}
- 	}
--- 
-2.41.0
+But for the rest of the propeties I guess it's different. While true I
+followed a scheme of booleans at the bottom in the past, going with
+"name at the top, rest alphabetically" is way easier to explain to people.
+
+[normal nodes should do: {compatible, regs, interrupts, ..alphabetical..,
+  status} of course ]
+
+And of course regulator nodes are generally in board-files not in central
+soc dtsis and if needed I'll also just move things around when applying ;-).
+
+
+Heiko
+
+
+> 
+> > > +				regulator-min-microvolt = <550000>;
+> > > +				regulator-max-microvolt = <950000>;
+> > > +				regulator-ramp-delay = <12500>;
+> > > +				regulator-name = "vdd_gpu_s0";
+> > > +				regulator-enable-ramp-delay = <400>;
+> > > +
+> > > +				regulator-state-mem {
+> > > +					regulator-off-in-suspend;
+> > > +				};
+> > > +			};  
+> > 
+> > 
+> > 
+> > Best regards,
+> > Krzysztof
+> > 
+> 
+> Best Regards,
+> Thomas
+> 
+
+
+
 
 
 _______________________________________________
