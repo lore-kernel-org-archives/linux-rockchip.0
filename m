@@ -4,133 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B90DC001B0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Aug 2023 13:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B28CEC001B0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Aug 2023 13:25:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IKflPPf7Y82Gf9q+YrcpjCyyrQExs8/0LKMSIGM2h18=; b=mpkFTT/RsK6AJ8
-	t6IU2B/uu6i39hl0tP1zSq4TOIHH8eFgsjsLOZ+JJiH6k2+n93xUsvv23Ek8PKLNin7vwHse5/t9U
-	S91xxUh4or2k5iX9fJIOjecxmuuUGb7nzKC71eKPs7AvLgAyy4MQEeYxHrySbcFaPm9cP3ts6j5JN
-	6dijYoWelKFUualv+gt8x8H9Ibkca5qpBfb+b2EET3MsGUrERudqW8XRDiFpSp/cjwVFxnK4tlaoh
-	L99yNq6rt9IrvIt8wBTkWSPa2jA+F0ExislajTyORaco4kwK92uLic/5iIqdOu6xWnGb2Espnn25l
-	XV7V4gI+Cee0qFidG+ag==;
+	List-Owner; bh=1hnpnbHRGEBoIf2TgCQzVqY14z3a9x0tK5307iUyZ7s=; b=xhoZtMMPtT2k3j
+	FImmGlY3ZZxukRVl92XjsJvh50HJShVzaRtX4GmoZ391NRy1Ko8Fe6JTP16DOWcqQJ1L/zahy3gRl
+	oXWvGOcnsmrkKsCbtidb1qd70LcYVN8m18kG5PH5ds2WH5/8vUX2QRQ8cgnt4BrNGi4zTec6JvQGi
+	h8l2uirwjwPs8mX6DBp2JJq2KiMCqBxBQ3Ndt9pC02oX5Vw8cHp81JWhvIR0sDJG/yBsZAtboJaE8
+	DAHHcHdVToyJMKo6U0Kp9bbXXlduNKFTQbl4i3qAZKJ03t9BhEogdbZIXlRgIVBrk7QdI2l0NMfSf
+	Lj49TonwP/Uu80srGSCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTMRz-002bwV-1U;
-	Tue, 08 Aug 2023 13:08:39 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1qTMiP-002dhi-2a;
+	Tue, 08 Aug 2023 13:25:37 +0000
+Received: from mail-bn8nam11on20600.outbound.protection.outlook.com ([2a01:111:f400:7eae::600] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTMRw-002bvO-0c
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Aug 2023 13:08:38 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20230808130833euoutp020dc89f32d5ea64100b03a3ca77d36f27~5amQnzt5q1607416074euoutp02h
-	for <linux-rockchip@lists.infradead.org>; Tue,  8 Aug 2023 13:08:33 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20230808130833euoutp020dc89f32d5ea64100b03a3ca77d36f27~5amQnzt5q1607416074euoutp02h
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1691500113;
-	bh=+y/qt4HK5xdtRnacVh6aBBBKtUVBJA/3594jbkBRLjI=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=XqXzBL+H0nNEwGhA8nIbX2IJaJ5ZviKy8O4IvhPRsqtABua7KV5hBRUSB86sDqvqA
-	 OzKM8U5mIKLZJjQP/T2Fpcw2UMDSXoZDe+hE+UIM6KmyBnVibZcDUAibYjEcd153aZ
-	 J+RnvJM9h0OWRgVohoJkeul8fr7a8VvXFReC0WU8=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20230808130832eucas1p2b8ef2df5509731d6e148498fcff05079~5amQFBX_x1961819618eucas1p2U;
-	Tue,  8 Aug 2023 13:08:32 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
-	eusmges3new.samsung.com (EUCPMTA) with SMTP id 44.03.37758.05E32D46; Tue,  8
-	Aug 2023 14:08:32 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20230808130832eucas1p20d46ed1c49a271e16b24baf3bd985372~5amPobM8O1961819618eucas1p2Q;
-	Tue,  8 Aug 2023 13:08:32 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
-	eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20230808130832eusmtrp153f423b207cd1258468b68351484c440~5amPnoNzx3194031940eusmtrp1v;
-	Tue,  8 Aug 2023 13:08:32 +0000 (GMT)
-X-AuditID: cbfec7f5-7ffff7000002937e-7d-64d23e503698
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
-	eusmgms2.samsung.com (EUCPMTA) with SMTP id C5.41.14344.05E32D46; Tue,  8
-	Aug 2023 14:08:32 +0100 (BST)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20230808130831eusmtip153eba0215b08b89df3ce0bf6b61402d3~5amOaxpv_2255922559eusmtip1x;
-	Tue,  8 Aug 2023 13:08:31 +0000 (GMT)
-Message-ID: <4d56203e-b602-07ee-ab74-2825c110c36d@samsung.com>
-Date: Tue, 8 Aug 2023 15:08:30 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
-	Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v2 00/10] Refine the locking for dev->iommu_group
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
+	id 1qTMiM-002dgp-2M;
+	Tue, 08 Aug 2023 13:25:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CgB0efijX2vZtG4bJyxul0dC2oKOeSJ2IVcpE3yM3N/DpPOjhUtVrGuJyaraJcpv9nE1FYBLovrRE/yG07Ve9P8odMWqKKcnfT4d4IU72B/2UN2heupuerhrx/ndeGq3wSczJXXPLD3o6+34f29xZaYwYXYOA1qpt/xIEI0dhtEhJgpIzBgbcUs3vwCvckvHLFc0Y3a8wM5iy4eN2Nsh1qVDxlkaUPVDTxD2bXQ003HrcIt7T1ivXN43yIgycrjT9x7UfqQ1mklHfISR1HhVuGivtILFjApvxQumiCaHKOX+mTdH2t5MQGXCfujs4acroYL45+AGw4eMjAvp8USwog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2xMWraQoXlwT11LTm8URq9K9bymeYs5dIvUow/YjEAA=;
+ b=DnbXkzRcigXapSLij9IuW5XRdFs9heJ4M6suVsO/S8416wzZ05T17hC8gx9i6VO6B95GuWiESsweEPLKR6VkV9XlLkEgSe9/Jx0WsUd3Bqo0bePUeUneyGN/6EGXNFRpJQr+3Qbz2lxBMMRI5fzzHrUHHGl/z8SpYURIa9uDTaIA9k3uXAdnOKZn3/KU7KrJ9VqTSMLK88nzcbOZV/6x9OtNRGrte5fwPLVxPP3DzTha8CI/wy9Gp/sJAydijo3v3MgudKcjEE2cgDYjDIMIDtPF8y/5x2NWsbwDoHFmyBRavjAiA7TFdBm29SpGfS+eCpBB/HT5ejNi2F7gO9gjsA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2xMWraQoXlwT11LTm8URq9K9bymeYs5dIvUow/YjEAA=;
+ b=FtXNK56oNU9DBRYDIGYYXyeWVg0AeSnU6Gp78wBNENFOYccvuQrdEtGamDu6Ibopm6z7yhxCAIYJ2a65iNQxeJnJY9VSOLX7Th1gNKak5/D7MtqxIFuohBYQTTi4SmF/K3cRSxm7g+YNwfsSSrAefqRV09pSzBRjG2RYDeFWzyQQnWRmSIMO6SrC1auGM7B4C29QOw+srh4ZMdCRRrjLMb8IB3Xl4zaBjNWnddC7lRS1a6WHo8Zlj0fFGNNMtppVtvaTecbrr5+7xo9udJ9d93GjnmlRfYe15ggCeB8w/pnkdZdfpPp7i536S3D0RuQct3Hq8hXiMJCKgBVmoNOIOA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by DM4PR12MB5069.namprd12.prod.outlook.com (2603:10b6:5:388::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.27; Tue, 8 Aug
+ 2023 13:25:28 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6652.026; Tue, 8 Aug 2023
+ 13:25:28 +0000
+Date: Tue, 8 Aug 2023 10:25:26 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
 Cc: Chen-Yu Tsai <wenst@chromium.org>, Joerg Roedel <joro@8bytes.org>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>, David Woodhouse
-	<dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, Orson Zhai <orsonzhai@gmail.com>, Robin Murphy
-	<robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai
-	<wens@csie.org>, Will Deacon <will@kernel.org>, Chunyan Zhang
-	<zhang.lyra@gmail.com>, Alex Williamson <alex.williamson@redhat.com>, Lu
-	Baolu <baolu.lu@linux.intel.com>
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <ZNI8W0hTXraSi/Ne@nvidia.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTVxjAc3pvb1uSskth4cgIm51jiA4kuOQwHbJEl+ucgSVbzDQRq72D
-	brSaVkA3hwUmj6IJ9RHWFkqNgsCYEqry8lGK0mKxjIfIGBPFTqSkSBWYvOflzo3/ft93zu97
-	nBw+JjpGBPFlioO0UiFJERM++NXW6Y4PEmK7pOtOlkaiqcXjBFq83gqQWXuFQNrKUxhaHBrl
-	opkJhIZLLwLUs3ANoHxDDQ/VPu7loucPFzF0+kYjgYrGDQA1j7u4aHgon0DT1g4O+jmnm4t+
-	GvgQXXjYyIvzp1zNRg5VbawGlEHdiVM1Q79wqQb9nzzKXBFO1VblE1TDoxjK2PYFZT5/lHpq
-	1gHqRPYYQT27cY+g3JMlgKrrNWIJb+z02SilU2RptDIydo9PckH5FOfAvN8hy0gmUIM6Xw0Q
-	8CG5HnqePMEYFpEVAM6/pDTA5xVPAPg05wHOBi8AfNlr4bw2xs4P8ljjAoB2N2QveQGsn/Is
-	lRKSsTC7uJirAXw+Tq6C9vFENu0H23QunOE3SRrW/1HIZdif3AIf6JoIhjEyEPa7Spd6BTCq
-	vZ3H1MdIHRdWTpxYqk+QUVDj0SwJAjIcTnrLASu/DbOvGDBGgOSUAD4a/Ytgp94M5+8YAMv+
-	0G27zGM5GDpOHcdZIRdA0+wghw0KAVQP9/9rbIADzhmCWQcjV8NLjZEMQvITaCtLY9EX9nn8
-	2Bl84cmrRRibFsK8HBFbIxTqbRf/69r8WxdWCMT6Zc+iX7a+ftk2+v/bmgBeBQLpVJU8iVZF
-	K+j0CJVErkpVJEXs2y+vBa9+qmPBNlkPKtzeCCvg8IEVQD4mDhAaXR1SkVAqOfw9rdyfqExN
-	oVVW8BYfFwcK13zctk9EJkkO0t/R9AFa+fqUwxcEqTmSgtoIc8HtIFOY+o7nmyPvl9+slDi0
-	XSH2F0PWooD1lmpHS9a3h3qaM6ML04NXy3+Nj9nemSjTBx+pn9jqDA0B0dNbSvt+NKIV7dPv
-	9qyQzu6++zhszvuc2OTotO8dKHuWcPR+etZH1ttFwpXygPn+sry0DZU/yOZMrXFWi1EWdnMs
-	1FCHDm8tOUecUZicLbvd6+5l7Tj7+477tl0lTXOfSp0120ec10S3FGZLQVxKYl5IRtXOzO6V
-	wxszBMENuTOXvvT9elNL8mfihqiY0yPv/d3UWhN/a0Q06P1qz+W7xdtaRnNjUXea/+e6Y+/g
-	Mm1H29pdUrg3Pm5zxoJ2FmtHa/rEuCpZEhWOKVWSfwDnkT1TGAQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprFKsWRmVeSWpSXmKPExsVy+t/xu7oBdpdSDO585LH49r+HzeL/3mOM
-	FpsnbmWzmLhyMrPF/0evWS1+fbGweD5/HaPFlX97GC06Z29gt9j0+BqrxacH/5ktpuzbxWYx
-	/cNsRouDH56wWjx/1Mlm8fPQeSaLGW2XWS1a7phaLH+wi91B2OPJwXlMHmvmrWH0mN1wkcVj
-	w6PVrB47Z91l99i8Qstj06pONo+dDy095p0M9Ni8pN7jxeaZjB69ze/YPN7vu8rm8errXEaP
-	7dfmMQfwR+nZFOWXlqQqZOQXl9gqRRtaGOkZWlroGZlY6hkam8daGZkq6dvZpKTmZJalFunb
-	JehldC/7xlTwV7DiwMtGxgbG7XxdjJwcEgImEu+W3GfvYuTiEBJYyijRsucHM0RCRuLktAZW
-	CFtY4s+1LjaIoveMElvbpjOCJHgF7CSa58wBKuLgYBFQkTjxIR4iLChxcuYTFhBbVCBV4lfD
-	LrA5wgKuEvdm7mYDsZkFxCVuPZnPBGKLgLSeOAN2BLPAbFaJCcu3MEEsu8YkcXn3fbBuNgFD
-	ia63XWDdnAJaEl8/LmOEmGQm0bW1C8qWl2jeOpt5AqPQLCSHzEKycBaSlllIWhYwsqxiFEkt
-	Lc5Nzy020itOzC0uzUvXS87P3cQITCTbjv3csoNx5auPeocYmTgYDzFKcDArifDOe3I+RYg3
-	JbGyKrUoP76oNCe1+BCjKTAwJjJLiSbnA1NZXkm8oZmBqaGJmaWBqaWZsZI4r2dBR6KQQHpi
-	SWp2ampBahFMHxMHp1QD02rxoO1M+/pldO9qLuLzOKtxaxN3g9uiPDcrIZZdYo21MxzOCZ+L
-	evFH4vcOg3RRJp4ZOZ9/bVwvpTXt8EFm9k7Dn/7yaWk3pwgtPSb+yjPAv/FgwE/pC94ddn2z
-	DLIPqDS9263Fd2RzUYvNBgXuFRsnvG3+/PCEy+FFv2RSBFZJTLPm3Kd58tUXRhF9I1dl0fPb
-	q1dxlEmUXH3p2tEslfk+dV0u1/q0q2/e27luudFYrDV3gmGO7mTrHaZr8vKvO59R3f7//vvY
-	ledS0h+6Vh7eY+j3KbnSu9T6gKbnK7VNdzfGPzvLtMu4YN6uryscgpVXJ32b39Zscqy28X62
-	QMgX8xK2mi++c/KOnlu8WYmlOCPRUIu5qDgRAIXY7BytAwAA
-X-CMS-MailID: 20230808130832eucas1p20d46ed1c49a271e16b24baf3bd985372
-X-Msg-Generator: CA
-X-RootMTR: 20230808123250eucas1p19d12a9ae0e530c123ba625189f593b36
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230808123250eucas1p19d12a9ae0e530c123ba625189f593b36
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>
+Subject: Re: [PATCH v2 00/10] Refine the locking for dev->iommu_group
+Message-ID: <ZNJCRhGGxS+63Dnr@nvidia.com>
 References: <0-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
-	<ZNDpfCoeFxA56ZlU@8bytes.org>
-	<CAGXv+5E-f9AteAYkmXYzVDZFSA_royc7-bS5LcrzzuHDnXccwA@mail.gmail.com>
-	<CGME20230808123250eucas1p19d12a9ae0e530c123ba625189f593b36@eucas1p1.samsung.com>
-	<7483d18e-d06f-53eb-92af-beed50674ab0@samsung.com>
-	<ZNI8W0hTXraSi/Ne@nvidia.com>
+ <ZNDpfCoeFxA56ZlU@8bytes.org>
+ <CAGXv+5E-f9AteAYkmXYzVDZFSA_royc7-bS5LcrzzuHDnXccwA@mail.gmail.com>
+ <CGME20230808123250eucas1p19d12a9ae0e530c123ba625189f593b36@eucas1p1.samsung.com>
+ <7483d18e-d06f-53eb-92af-beed50674ab0@samsung.com>
+ <ZNI8W0hTXraSi/Ne@nvidia.com>
+ <4d56203e-b602-07ee-ab74-2825c110c36d@samsung.com>
+Content-Disposition: inline
+In-Reply-To: <4d56203e-b602-07ee-ab74-2825c110c36d@samsung.com>
+X-ClientProxiedBy: MN2PR05CA0035.namprd05.prod.outlook.com
+ (2603:10b6:208:c0::48) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM4PR12MB5069:EE_
+X-MS-Office365-Filtering-Correlation-Id: a1324d32-70c4-4397-d196-08db9812ee71
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: LcG5SRFFdagcb8fxS/3uNGYCKJVATb+4Q0OStXOIdWCdf1R9usZANOb/x/XUh3GlmrLWtrS//ORKrvBefdMJlxGcNmEUP7IkPJvIyKa7I/R5qS81GMYDsxvfl1yCg7JoK4UBlrX3BM3GWx9FO/ZShgSwioA92C5CgRVje9RHh934xU6jbIsDCj1ajNPcElY/Yjf5tw8aVVTIPRggBPWZjWW8RtNAdbf0fRJlVg9hguKCqUztNx+NipJQTIcI86QwAkGG6G9HcwFeiLNagrhUtgpK//TrVozmwP8MUJIVGouXxMfx8mUaBXO4pbv3JZAadxtcR7gBm0eQNo8fo26o6u1gItB8VA6R1Ymn24OxEunBk9YFtQGNlw4tKxCS/Z9TJ3cHy7lk3aliJfnsQByyGLldHJT5CHn+3aPJy0aCAvTBL9aUq2RBwGXl8bXhvJYO1Rs7l1v/b3B9TdJzOtVl3ZJHzXsV0I6y+tSodDkljAMi+5KfQ1GQwQSmaHjc3YolAZxlY3ANbtgVg8ty3r46PgeNsFJmv8xgFNjmDI8oELZmuQW/PW5L/UhfyRLxIMOGqBwjbxgn63u8bJyDGFTYM3I3xC9aZgQrs19w1fTHQAefAYy+C1UpRFWKLJIuKQU2kzUyrhF9HsWSNa3P/YnGtQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(346002)(396003)(136003)(366004)(39860400002)(451199021)(1800799003)(186006)(7416002)(8936002)(8676002)(5660300002)(6916009)(4326008)(41300700001)(316002)(86362001)(2906002)(6512007)(966005)(2616005)(26005)(6506007)(6486002)(36756003)(66946007)(66556008)(66476007)(478600001)(54906003)(38100700002)(67856001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fWyRxFTS91yWGGIaO9P83K0w5PKgUC8UDpqoCl7vcGRT7t2MSGiNmrDYnolL?=
+ =?us-ascii?Q?n8TSFzANPCMmKU7GWUWpzRjav7C8Q6rh41woxRmpHbLqpEaSYcU0ZFYlJls3?=
+ =?us-ascii?Q?J4BjN0ccagG4N39QiMLkVGjPy+oBmQM2MohN0v8ia+ul/qn4N4CwaKxriMw1?=
+ =?us-ascii?Q?cSIOw6RKLhcoxYpHTmvRh4gryAP13lJZ9OlorufI83TufJSe2LyvC0FyEgnp?=
+ =?us-ascii?Q?BsnXam0SuBhyh3dh7u7BIO4ygndUvm7ZrIqBT3KI86Nuapj54RamFG4fdpwH?=
+ =?us-ascii?Q?UASV9R/ElQcPBng6K4/3KGHKpWeHzt+98d98F0hOJjctzA1uxpFAwkVuhIMz?=
+ =?us-ascii?Q?/imtJn0nTWSUw3Ihv6bnEMeupkVXvkkb5foS7P1ZGjT9M+unq8x02j1yV+1V?=
+ =?us-ascii?Q?AmV0wBbedWZ8j7WyWlXuXqXKqd0aqYQw/HS+G+mzmqv/Xt+fYKCI5tsf1oEx?=
+ =?us-ascii?Q?0EatwzaKe1VAb1l0dWca6zZlTygxq0u8aHMPwJg3AQA5Ob6Xd/vxGbSd+p3I?=
+ =?us-ascii?Q?oJ2HtDIIq+BdpwuLPW/sLhpmOu6Qcitkwcrqp2jCBX2fTogQWXqHm8TCMubM?=
+ =?us-ascii?Q?QWG1fw2M7ap5XDrSR9S+CH8k7iG7FQReHtY+/ZTFkl4l8mXzeC2NVypj97WR?=
+ =?us-ascii?Q?PD6FsmboCkatBJ4mq79vKSpwIqOXRJlrZ8SJlOdy1eE2VxGxl4U4Xkb744Q2?=
+ =?us-ascii?Q?SY4fje7UbfwB1WAWIPBaeq+htXBx503nuQqSGtCDUGc0io9quwrrxuoQ8ay+?=
+ =?us-ascii?Q?h/K8yXl14jwjaWM1I2Ndt//HLKGtOJzUQhhXSBvw69gQbU4vZlU/InVa/9Xf?=
+ =?us-ascii?Q?0DMbLKpxUZfHP/9BjF3DLzFX5VfIxEVm0YNf8kYuOZ3n4YkWgxx1L3FLy6l+?=
+ =?us-ascii?Q?zfm2na6J8dYZ3RbmbPjSgEMlePOL/PXpiLHfpi6b0cjGmtJCVkIVjSt8J+JS?=
+ =?us-ascii?Q?5Nkwq7+xJnLyswOeTOEzqwpZ4udeCbohhTgvTpKY8smq9gXIJW3F0iUprWyi?=
+ =?us-ascii?Q?6GWngyjMlejIihr1f0l4NnsBT4k7ixUK8ELGyyptmhDk0vqwcygUtF6o4i0F?=
+ =?us-ascii?Q?F49ZomB7jHq4QPfxeqYUC3WcOWgudX+zW3/I7knfH2HkFB8N6vsgxCpy0QCb?=
+ =?us-ascii?Q?hMIq9M4ObVsBZOv2tA3gLYaX6Sl95hPBtf6BVUt1dqKRc+PP12nX2PQrS2jV?=
+ =?us-ascii?Q?rlqZdjfRjYLYKPcmENxw8cE4m9tOaLOJPOvsi0bZH4PsgcaRZY3o3S60Kzu7?=
+ =?us-ascii?Q?v/8TRVpRlPFOfzSJZ/Sq9MsyEy8Kev8YN2eO5QRatK7dZG7sNqL8a8Zs98KX?=
+ =?us-ascii?Q?niih15A3z408L5bbdxCAhrJJw1A01ejBsZJXNAjXeCYSwm4VS+J0ZrfgUtYn?=
+ =?us-ascii?Q?J6wbP5tHgWosbXfGEpCj7X3nbCn6mMoJl9cuALL91gkpfBQ34SW+v35rm5PI?=
+ =?us-ascii?Q?X26b31m43AuOv+xVKDMW1yajqMA4JHSNGcs2FQ4GSSYKDlY8FT3SVWAd6j6x?=
+ =?us-ascii?Q?+F7XrVkoX6rhhMVLjNeYg29o5VjhSKxNRN67Rd5SMOUinFLGToM+2QyImRKL?=
+ =?us-ascii?Q?0Jii6AQ4zJhgBycbx+/m6cdLaIJ4BU8CnVXQBrNv?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a1324d32-70c4-4397-d196-08db9812ee71
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Aug 2023 13:25:28.2129
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TdTyVqVbhaFHI9gMHJ8XvDEDh2nCIgYY5waBWcV3a/qhxT0eq0JYPxiQufZzdSff
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5069
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_060836_840664_1D7E5ED5 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20230808_062534_797133_E912395A 
+X-CRM114-Status: GOOD (  21.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,51 +144,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSmFzb24sCgpPbiAwOC4wOC4yMDIzIDE1OjAwLCBKYXNvbiBHdW50aG9ycGUgd3JvdGU6Cj4g
-T24gVHVlLCBBdWcgMDgsIDIwMjMgYXQgMDI6MzI6NDhQTSArMDIwMCwgTWFyZWsgU3p5cHJvd3Nr
-aSB3cm90ZToKPj4gT24gMDguMDguMjAyMyAxMjozMSwgQ2hlbi1ZdSBUc2FpIHdyb3RlOgo+Pj4g
-T24gTW9uLCBBdWcgNywgMjAyMyBhdCA4OjU04oCvUE0gSm9lcmcgUm9lZGVsIDxqb3JvQDhieXRl
-cy5vcmc+IHdyb3RlOgo+Pj4+IE9uIE1vbiwgSnVsIDMxLCAyMDIzIGF0IDAyOjUwOjIzUE0gLTAz
-MDAsIEphc29uIEd1bnRob3JwZSB3cm90ZToKPj4+Pj4gSmFzb24gR3VudGhvcnBlICgxMCk6Cj4+
-Pj4+ICAgICBpb21tdTogUmVtb3ZlIHVzZWxlc3MgZ3JvdXAgcmVmY291bnRpbmcKPj4+Pj4gICAg
-IGlvbW11OiBBZGQgYSBsb2NrZGVwIGFzc2VydGlvbiBmb3IgcmVtYWluaW5nIGRldi0+aW9tbXVf
-Z3JvdXAgcmVhZHMKPj4+Pj4gICAgIGlvbW11OiBBZGQgZ2VuZXJpY19zaW5nbGVfZGV2aWNlX2dy
-b3VwKCkKPj4+Pj4gICAgIGlvbW11L3N1bjUwaTogQ29udmVydCB0byBnZW5lcmljX3NpbmdsZV9k
-ZXZpY2VfZ3JvdXAoKQo+Pj4+PiAgICAgaW9tbXUvc3ByZDogQ29udmVydCB0byBnZW5lcmljX3Np
-bmdsZV9kZXZpY2VfZ3JvdXAoKQo+Pj4+PiAgICAgaW9tbXUvcm9ja2NoaXA6IENvbnZlcnQgdG8g
-Z2VuZXJpY19zaW5nbGVfZGV2aWNlX2dyb3VwKCkKPj4+Pj4gICAgIGlvbW11L2lwbW11LXZtc2E6
-IENvbnZlcnQgdG8gZ2VuZXJpY19zaW5nbGVfZGV2aWNlX2dyb3VwKCkKPj4+Pj4gICAgIGlvbW11
-L29tYXA6IENvbnZlcnQgdG8gZ2VuZXJpY19zaW5nbGVfZGV2aWNlX2dyb3VwKCkKPj4+Pj4gICAg
-IGlvbW11OiBDb21wbGV0ZSB0aGUgbG9ja2luZyBmb3IgZGV2LT5pb21tdV9ncm91cAo+Pj4+PiAg
-ICAgaW9tbXUvaW50ZWw6IEZpeCBtaXNzaW5nIGxvY2tpbmcgZm9yIHNob3dfZGV2aWNlX2RvbWFp
-bl90cmFuc2xhdGlvbigpCj4+Pj4+Cj4+Pj4+ICAgIGRyaXZlcnMvaW9tbXUvaW50ZWwvZGVidWdm
-cy5jICB8ICAzNCArKysrLS0tLQo+Pj4+PiAgICBkcml2ZXJzL2lvbW11L2lvbW11LmMgICAgICAg
-ICAgfCAxNTUgKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4+Pj4+ICAgIGRyaXZl
-cnMvaW9tbXUvaXBtbXUtdm1zYS5jICAgICB8ICAyMiArKy0tLQo+Pj4+PiAgICBkcml2ZXJzL2lv
-bW11L29tYXAtaW9tbXUuYyAgICAgfCAgMzAgKy0tLS0tLQo+Pj4+PiAgICBkcml2ZXJzL2lvbW11
-L29tYXAtaW9tbXUuaCAgICAgfCAgIDIgKy0KPj4+Pj4gICAgZHJpdmVycy9pb21tdS9yb2NrY2hp
-cC1pb21tdS5jIHwgIDIyICstLS0tCj4+Pj4+ICAgIGRyaXZlcnMvaW9tbXUvc3ByZC1pb21tdS5j
-ICAgICB8ICAyNCArLS0tLQo+Pj4+PiAgICBkcml2ZXJzL2lvbW11L3N1bjUwaS1pb21tdS5jICAg
-fCAgMjkgKystLS0tCj4+Pj4+ICAgIGluY2x1ZGUvbGludXgvaW9tbXUuaCAgICAgICAgICB8ICAg
-MyArCj4+Pj4+ICAgIDkgZmlsZXMgY2hhbmdlZCwgMTM4IGluc2VydGlvbnMoKyksIDE4MyBkZWxl
-dGlvbnMoLSkKPj4+PiBBcHBsaWVkLCB0aGFua3MgZm9yIHRoZSBuaWNlIGNsZWFudXAhCj4+PiBU
-aGlzIHNlcmllcyBzZWVtcyB0byBjYXVzZSBhIGh1bmcgdGFzayBkdXJpbmcgYm9vdCBvbiBNZWRp
-YVRlayBwbGF0Zm9ybXMuCj4+PiBJdCBoYW5ncyB3aXRoIG5leHQtMjAyMzA4MDguIFJldmVydGlu
-ZyB0aGUgMTAgY29tbWl0cyBmcm9tIHRoaXMgc2VyaWVzCj4+PiBtYWtlcyB0aGUgc3lzdGVtIGJv
-b3QgdXAgYWdhaW4uCj4+IEkgY29uZmlybSB0aGF0IG5leHQtMjAyMzA4MDggaXMgYnJva2VuIG9u
-IEFSTSAzMmJpdCBiYXNlZCBFeHlub3MgYm9hcmRzCj4+IHRvby4gQm9hcmRzIGxvY2sgdXAgdmVy
-eSBlYXJseSBkdXJpbmcgYm9vdC4gSSB3aWxsIHRyeSB0byBpbnZlc3RpZ2F0ZQo+PiB0aGlzIHNv
-b24uCj4gQW55IG9mIHRoZSBkcml2ZXJzIHRoYXQgdXNlIHBsYXRmb3JtIGRldmljZSBhcyB0aGUg
-aW9tbXVfZGV2aWNlIHdpbGwKPiBoYXZlIGEgcHJvYmxlbSwgcGxlYXNlIHRyeToKPgo+IGh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWlvbW11L1pOSXolMkZOVkxiNldxcXZReEBudmlkaWEu
-Y29tLwoKSSd2ZSBjaGVja2VkIGFuZCBpdCBkb2Vzbid0IGhlbHAgaW4gbXkgY2FzZS4gSSB3aWxs
-IHNvb24gY2hlY2sgd2h5LgoKQmVzdCByZWdhcmRzCi0tIApNYXJlayBTenlwcm93c2tpLCBQaEQK
-U2Ftc3VuZyBSJkQgSW5zdGl0dXRlIFBvbGFuZAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Aug 08, 2023 at 03:08:30PM +0200, Marek Szyprowski wrote:
+> > Any of the drivers that use platform device as the iommu_device will
+> > have a problem, please try:
+> >
+> > https://lore.kernel.org/linux-iommu/ZNIz%2FNVLb6WqqvQx@nvidia.com/
+> 
+> I've checked and it doesn't help in my case. I will soon check why.
+
+Oh, I botched it. Forgot that the iommu_device->dev is the sysfs
+handle not the HW device. Maybe this:
+
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index 7dbbcffac21930..dbaace482861da 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -264,6 +264,7 @@ int iommu_device_register(struct iommu_device *iommu,
+ 		return -EBUSY;
+ 
+ 	iommu->ops = ops;
++	iommu->hwdev = hwdev;
+ 	if (hwdev)
+ 		iommu->fwnode = dev_fwnode(hwdev);
+ 
+@@ -273,7 +274,7 @@ int iommu_device_register(struct iommu_device *iommu,
+ 
+ 	for (int i = 0; i < ARRAY_SIZE(iommu_buses) && !err; i++) {
+ 		iommu_buses[i]->iommu_ops = ops;
+-		err = bus_iommu_probe(iommu_buses[i]);
++		err = bus_iommu_probe(iommu_buses[i], iommu);
+ 	}
+ 	if (err)
+ 		iommu_device_unregister(iommu);
+@@ -1784,12 +1785,21 @@ struct iommu_domain *iommu_group_default_domain(struct iommu_group *group)
+ 	return group->default_domain;
+ }
+ 
++struct probe_iommu_args {
++	struct list_head *group_list;
++	struct iommu_device *iommu;
++};
++
+ static int probe_iommu_group(struct device *dev, void *data)
+ {
+-	struct list_head *group_list = data;
++	struct probe_iommu_args *args = data;
+ 	int ret;
+ 
+-	ret = __iommu_probe_device(dev, group_list);
++	/* We never probe the iommu device itself */
++	if (args->iommu && args->iommu->hwdev == dev)
++		return 0;
++
++	ret = __iommu_probe_device(dev, args->group_list);
+ 	if (ret == -ENODEV)
+ 		ret = 0;
+ 
+@@ -1858,13 +1868,16 @@ static void iommu_group_do_probe_finalize(struct device *dev)
+ 		ops->probe_finalize(dev);
+ }
+ 
+-int bus_iommu_probe(const struct bus_type *bus)
++int bus_iommu_probe(const struct bus_type *bus, struct iommu_device *iommu)
+ {
+ 	struct iommu_group *group, *next;
++	struct probe_iommu_args args = {};
+ 	LIST_HEAD(group_list);
+ 	int ret;
+ 
+-	ret = bus_for_each_dev(bus, NULL, &group_list, probe_iommu_group);
++	args.group_list = &group_list;
++	args.iommu = iommu;
++	ret = bus_for_each_dev(bus, NULL, &args, probe_iommu_group);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 97c45f50bf4332..e8ab7cb832ba37 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -1234,6 +1234,9 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 		if (err)
+ 			goto out_sysfs;
+ 		obj->has_iommu_driver = true;
++	} else {
++		/* Re-probe bus to probe device attached to this IOMMU */
++		bus_iommu_probe(&platform_bus_type, NULL);
+ 	}
+ 
+ 	pm_runtime_enable(obj->dev);
+@@ -1242,9 +1245,6 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 
+ 	dev_info(&pdev->dev, "%s registered\n", obj->name);
+ 
+-	/* Re-probe bus to probe device attached to this IOMMU */
+-	bus_iommu_probe(&platform_bus_type);
+-
+ 	return 0;
+ 
+ out_sysfs:
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index f1e18e81fca78b..784e0fd91fd17e 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -361,6 +361,7 @@ struct iommu_domain_ops {
+  * @list: Used by the iommu-core to keep a list of registered iommus
+  * @ops: iommu-ops for talking to this iommu
+  * @dev: struct device for sysfs handling
++ * @hwdev: The device HW that controls the iommu
+  * @singleton_group: Used internally for drivers that have only one group
+  * @max_pasids: number of supported PASIDs
+  */
+@@ -369,6 +370,7 @@ struct iommu_device {
+ 	const struct iommu_ops *ops;
+ 	struct fwnode_handle *fwnode;
+ 	struct device *dev;
++	struct device *hwdev;
+ 	struct iommu_group *singleton_group;
+ 	u32 max_pasids;
+ };
+@@ -465,7 +467,8 @@ static inline const struct iommu_ops *dev_iommu_ops(struct device *dev)
+ 	return dev->iommu->iommu_dev->ops;
+ }
+ 
+-extern int bus_iommu_probe(const struct bus_type *bus);
++extern int bus_iommu_probe(const struct bus_type *bus,
++			   struct iommu_device *iommu);
+ extern bool iommu_present(const struct bus_type *bus);
+ extern bool device_iommu_capable(struct device *dev, enum iommu_cap cap);
+ extern bool iommu_group_has_isolated_msi(struct iommu_group *group);
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
