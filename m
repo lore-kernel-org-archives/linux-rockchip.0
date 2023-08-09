@@ -4,131 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32895C0015E
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Aug 2023 14:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 242D1C0015E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Aug 2023 14:03:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JUwMxIZHgw1EWQB/JgIKX7aciMf4xH+rF/OUNPPzI7I=; b=X1wXnez/rMsnNa
-	9aL56dLa1PD3FfaJRvlO+7P6lLOP8Nv64ErKRip2xnDoGI+bkZ6f+BH5POPDYv0oGeB04Zv8lCNuE
-	Zd0ulK1s//wKu7et06juTrEW5HNzj8wB2JXPuWPFpkHsD2/CPHtLB9R4uBEcNLAa2fdG9XqWVMU3j
-	LjkntSzUEbZS2iz0O5YIS4KGWf2mM012FmtF4WHilAXh4mnYXD1ET/3IUvDaUViLDwwlzDcA3LbAB
-	mFm9g/eNlyDiBesr11FnfPURzdIt5sxZfGtvJlHDr7iWFSKHKLjGEiQga79ELucn0TH9h0b4sAuFE
-	I7wTdhVK9B1fjQcy3Cyg==;
+	List-Owner; bh=Xj8lXqVURkBwhfobcOF4cLM7s2BGBwdgwn5o6nmVedY=; b=ka2VOJWtUm1Wj0
+	tN7dDriZAmOHGCqA9iWFzbGe4a69+AmLo32PGydvxoikjyNZShOgWcohUOQsCcKcyJtNllLXr7Hnn
+	IGMZPV7XnDBmRqaaTKmARE6KmmsFQzpFGAY30P3UUq1XPiSkRZqrxGTFw1n03MaGO+dWvViUtER5K
+	uYMZaRzrmLMmBwShOS20IJuP44+lNq53GolO5xXwlUbmPOAH8hx8R2TC3pF4BYaKu3HIj7cKRf+J4
+	nuaKsZ99Rea21VfrkUfusj4dyILmATirl9CBR852tR57x0hXykIINUn82cU59q8SbjjvTPylZuOcq
+	o9UhTWuAdbB6pTZTH0mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTjle-0056sS-1l;
-	Wed, 09 Aug 2023 14:02:30 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1qTjm2-0056wq-07;
+	Wed, 09 Aug 2023 14:02:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTjla-0056px-0E
-	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Aug 2023 14:02:28 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20230809140221euoutp019ccf3b5ca339aa1d137e2ce95e82c7dd~5u_gyRFsl1483514835euoutp01Q
-	for <linux-rockchip@lists.infradead.org>; Wed,  9 Aug 2023 14:02:21 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20230809140221euoutp019ccf3b5ca339aa1d137e2ce95e82c7dd~5u_gyRFsl1483514835euoutp01Q
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1691589741;
-	bh=7VzQjeJmxVY/tawsT4b6u0ffcI5diIMKa5AEs4Q3RMA=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=B8xdH9btAqoQ8qfSjR5sDbnDomtdnfBOee8Rhhjh4OlJOKab+XfEgDlktbhrYXD88
-	 jtCS5TOut6c8k3wZl/7Uva+ZcN6sxe0Jmpzl3SujyBlHw7fIK9lX0bwss5DI9aFX6b
-	 9e+Sl1mztt7tEamg+QTi9VtEi04Vm81cZGdnC4nY=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20230809140220eucas1p21f53bffcac3e42c97def213f3107bad2~5u_gaNAOJ0280502805eucas1p2c;
-	Wed,  9 Aug 2023 14:02:20 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
-	eusmges1new.samsung.com (EUCPMTA) with SMTP id E5.EE.42423.C6C93D46; Wed,  9
-	Aug 2023 15:02:20 +0100 (BST)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20230809140220eucas1p1ea4b9a4bb1e64c658abef2ab4bc16733~5u_f_jIfD1190611906eucas1p1x;
-	Wed,  9 Aug 2023 14:02:20 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
-	eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
-	20230809140220eusmtrp21791c5b26e7ec9c225d4bff032f6cf9c~5u_f9mlBb2327523275eusmtrp2a;
-	Wed,  9 Aug 2023 14:02:20 +0000 (GMT)
-X-AuditID: cbfec7f2-a3bff7000002a5b7-d2-64d39c6c3bd6
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
-	eusmgms1.samsung.com (EUCPMTA) with SMTP id 18.5B.10549.B6C93D46; Wed,  9
-	Aug 2023 15:02:19 +0100 (BST)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20230809140218eusmtip2c1225bf916a90754f846c11c79fd9ff6~5u_e2C7MC1204112041eusmtip2S;
-	Wed,  9 Aug 2023 14:02:18 +0000 (GMT)
-Message-ID: <af2ff489-1848-ae4a-1146-3725c10678af@samsung.com>
-Date: Wed, 9 Aug 2023 16:02:18 +0200
+	id 1qTjly-0056vA-10;
+	Wed, 09 Aug 2023 14:02:51 +0000
+Received: from [194.95.143.137] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qTjlq-0007Tp-Tt; Wed, 09 Aug 2023 16:02:42 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Jagan Teki <jagan@edgeble.ai>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 01/13] dt-bindings: pwm: rockchip: Document rv1126-pwm
+Date: Wed, 09 Aug 2023 16:02:42 +0200
+Message-ID: <5533260.88bMQJbFj6@phil>
+In-Reply-To: <20230731145129.mrrkb6tcuvlpmxan@pengutronix.de>
+References: <20230731103518.2906147-1-jagan@edgeble.ai>
+ <20230731103518.2906147-2-jagan@edgeble.ai>
+ <20230731145129.mrrkb6tcuvlpmxan@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0)
-	Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v2 06/10] iommu/rockchip: Convert to
- generic_single_device_group()
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Baolin Wang <baolin.wang@linux.alibaba.com>, David Woodhouse
-	<dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, Joerg
-	Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, Orson Zhai
-	<orsonzhai@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Samuel Holland
-	<samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>, Will Deacon
-	<will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>, Alex Williamson
-	<alex.williamson@redhat.com>, Lu Baolu <baolu.lu@linux.intel.com>
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <ZNOZ0M48+DAhDBWZ@nvidia.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Sf0xbVRj1vvf6+spS8lbGesOMjd2io9NuLHW5TJkz+sfbHAGDRjOzSQMv
-	3ZSyrQUUoxPFbbaKFnD8KL8as1nGFoaFMSAO15KNNhqQDWuhq7TYrFiEMuhENkfltZ3y3/nO
-	+U7O+W4uhYuWeSnU4cIiVlOoLJCSCUT39aXhpwsab+Zvq7kvQX9FviBR5Mp1gDorL5Go8lw1
-	jiKT0zx0L4xQoKUdoNHl7wHSNXTwkeV3Jw/NeyM4+rq/j0S1cw0AWef8PBSY1JFoyTaMoU9v
-	PYPM3j7+bhHjtzZjzIXmC4DpmDzPY3qNHj7T2SpjLG06kun1pTPNjleYzjMfMVOd9YCpKJ8l
-	mVD/LyQTvNsEmMvOZjw7cX/Cc/lsweESVrN1V27CodGgmzhaTr9nrpgly8AnQj0QUJBWwAbj
-	OF8PEigR3QpgyBLgcYKIDgM4EdodExYAdBkM4KHjD4eJjAlmAN2h0fhwB8CzY3V8bktI74Lt
-	31TjHCboTdB85TYR49dCR70/ipNpFva4DdG4JPoN+OfF2eg+TovhuL8F4/C6Fa/d/lO0H06H
-	Cfhtv53kBJJOg/oZfRQLaBm0euxxswRenmnEOQOkJwVwaehzPNb7JVh+4nwcJ8HgYBc/hh+F
-	kV4ujTOcAtB0fyI+GAAsC4zHr34W3hq6txJHrUSkwot9W2P0C9BV68Y5GtKJ0DWzNlYiEVZ1
-	18ZpIfzspCi2/QQ0Drb/F2v9+QZuAFLjqncxrrrfuOoc4/+5JkC0ATFbrFWrWG1aIfuuXKtU
-	a4sLVfK8I2oLWPmiPy4PzveApuAduQ1gFLABSOHSdcKMnBv5ImG+svR9VnPkLU1xAau1gQ0U
-	IRULt2Q48kS0SlnEvsOyR1nNQxWjBCll2KlXHYHtIMu+OKfoYr6sqcad3j3J/3y3vlp9QJI6
-	26WunK5KMezNPjO06A2WOEstA1j689LjSesX8lQSv+wBfnP0WObGkSTpGt+epeRrHurkJjZz
-	Y4ncete3YXP3V3XpV0/vbRNPGLz7Wh1bMOWcYrtbJqkP/63DeTt7Pj4xVnNwoP5A7hhmyqka
-	kL792qJRl7F/4exOp2Kk0XPuWq4+tUF5cIdkOhuCUhXCBD98MPS6hyrZN79Y1/jg+FNv8n0V
-	XY+NG12/jkiaXOagXrUjjHyZbaZLWVlFV5nNp4fX2KbIUA79Yea0PuXY44oXn+zwtdz2b5NP
-	ebGXaeIR8W9SQntImSbDNVrlvwMqZewRBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprIKsWRmVeSWpSXmKPExsVy+t/xe7rZcy6nGOx7ZWPx7X8Pm8X/vccY
-	LTZP3MpmMXHlZGaL/49es1r8+mJh8Xz+OkaLK//2MFp0zt7AbrHp8TVWi08P/jNbTNm3i81i
-	+ofZjBYHPzxhtXj+qJPN4ueh80wWLXdMLZY/2MXuIOTx5OA8Jo8189Ywemx4tJrVY+esu+we
-	m1doeWxa1cnmsfOhpce8k4Eem5fUe7zYPJPRo7f5HZvH+31X2TxefZ3L6LH92jzmAL4oPZui
-	/NKSVIWM/OISW6VoQwsjPUNLCz0jE0s9Q2PzWCsjUyV9O5uU1JzMstQifbsEvYwrr26zFDQL
-	VCzvfcfWwNjE28XIySEhYCLx8uQCti5GLg4hgaWMEj9fTmCDSMhInJzWwAphC0v8udYFVfSe
-	UWLht/tgRbwCdhLrFk1mBrFZBFQklu99xgIRF5Q4OfMJmC0qkCrxq2EX2CBhgQiJN+vfgdUz
-	C4hL3HoynwnEFgHqPXHiDDvIAmaBbywSF7dPYoLb1j1/GVg3m4ChRNfbLrDNnAJaEgfvnoCa
-	ZCbRtbWLEcKWl9j+dg7zBEahWUgOmYVk4SwkLbOQtCxgZFnFKJJaWpybnltsqFecmFtcmpeu
-	l5yfu4kRmDa2Hfu5eQfjvFcf9Q4xMnEwHmKU4GBWEuG1Db6UIsSbklhZlVqUH19UmpNafIjR
-	FBgaE5mlRJPzgYkrryTe0MzA1NDEzNLA1NLMWEmc17OgI1FIID2xJDU7NbUgtQimj4mDU6qB
-	KSv3gdmeq8dapz+Irm0IPZ1feSXPbKvFxgKdkFVplgd0z22XUPy/e83M6RHzS2QXS+4XlJu7
-	NSW0jcVq7d3g7IVPX8yZJF0xvcLj1y5pdr/Focd7Xj0WDm3J0Z++wJhB0PCG1kvtV4FsWT8O
-	VPBelfbfPo1Jzmfp6lXTdNbNcnG+uPWqTLbi4rWfV/+6Yzn/Cl/adWWms9XbdB6oLPrZLdmR
-	zcNweBePmmSKv5TLjmB9N9VpFeIqN/95SZzvUE62OJxnzZU84TfLikUvSjgz+jUnrdh18Kl1
-	kuBvVl/RTtnqusySn3xel7Pdd11sEVpZ+njxS3+e73N37P1Yeeao8YGsoNNyEZcDYv0N9H8x
-	K7EUZyQaajEXFScCAMf6W0mkAwAA
-X-CMS-MailID: 20230809140220eucas1p1ea4b9a4bb1e64c658abef2ab4bc16733
-X-Msg-Generator: CA
-X-RootMTR: 20230809131935eucas1p247866f51cde0952d764c92f10a41c90c
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20230809131935eucas1p247866f51cde0952d764c92f10a41c90c
-References: <6-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
-	<CGME20230809131935eucas1p247866f51cde0952d764c92f10a41c90c@eucas1p2.samsung.com>
-	<e5e75222-13a9-ee01-0c25-8311b622fe0d@samsung.com>
-	<ZNOZ0M48+DAhDBWZ@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_070226_721532_F59E0777 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20230809_070250_343532_5113A391 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,69 +61,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+Am Montag, 31. Juli 2023, 16:51:29 CEST schrieb Uwe Kleine-K=F6nig:
+> On Mon, Jul 31, 2023 at 04:05:06PM +0530, Jagan Teki wrote:
+> > Document pwm compatible for rv1126 which is fallback compatible
+> > of rk3328-pwm group.
+> > =
 
-On 09.08.2023 15:51, Jason Gunthorpe wrote:
-> On Wed, Aug 09, 2023 at 03:19:34PM +0200, Marek Szyprowski wrote:
->> On 31.07.2023 19:50, Jason Gunthorpe wrote:
->>> Use the new helper.
->>>
->>> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
->>> ---
->>>    drivers/iommu/rockchip-iommu.c | 22 ++--------------------
->>>    1 file changed, 2 insertions(+), 20 deletions(-)
->> After applying your recent fixes from "[PATCH 0/3] Fix device_lock
->> deadlock on two probe() paths" thread I've decided to run more tests on
->> all boards I have. This way I found that this patch breaks booting of
->> Odroid-M1 board, which is ARM64 system based on Rockchip RK3568
->> (arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts). Here is the log:
-> Is this why?
+> > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> =
 
-Right, this fixed the issue.
+> Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> =
 
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Should this go in via the pwm tree, or together with the other patches
+> via rockchip?
 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 8842f4975ec4a8..8677d3ace47bbe 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -366,6 +366,7 @@ static int iommu_init_device(struct device *dev, const struct iommu_ops *ops)
->   		ret = PTR_ERR(iommu_dev);
->   		goto err_module_put;
->   	}
-> +	dev->iommu->iommu_dev = iommu_dev;
->   
->   	ret = iommu_device_link(iommu_dev, dev);
->   	if (ret)
-> @@ -383,7 +384,6 @@ static int iommu_init_device(struct device *dev, const struct iommu_ops *ops)
->   	dev->iommu_group = group;
->   	mutex_unlock(&dev_iommu_group_lock);
->   
-> -	dev->iommu->iommu_dev = iommu_dev;
->   	dev->iommu->max_pasids = dev_iommu_get_max_pasids(dev);
->   	if (ops->is_attach_deferred)
->   		dev->iommu->attach_deferred = ops->is_attach_deferred(dev);
-> @@ -397,6 +397,7 @@ static int iommu_init_device(struct device *dev, const struct iommu_ops *ops)
->   err_module_put:
->   	module_put(ops->owner);
->   err_free:
-> +	dev->iommu->iommu_dev = NULL;
->   	dev_iommu_free(dev);
->   	return ret;
->   }
->
-> Thanks,
-> Jason
->
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+I have no clue, sadly. I _can_ pick it up, but I guess that would
+require an Ack from Thierry? Otherwise I guess we'll need to wait
+for him.
+
+
+Heiko
+
 
 
 _______________________________________________
