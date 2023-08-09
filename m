@@ -4,130 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8415C001B0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Aug 2023 16:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B6D2EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Aug 2023 05:42:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d/dhl2QnZbk8diFbaTgB/AKAkQUOB6JStUuViYgFZas=; b=cGLCBQhIk0ngK6
-	CBzkVb0gkt8uAKO9ZMsf27fSn7FeKTPOWh3MVggdGwdFL6lpfe00LOJXLfUepRZRknbX76UYFB6IK
-	1j+goxDbHw+RKfsAYnOxx+99GSsXtXYNjkVLinR5vc3Q27qvPbhSY9xaBbyUkX+qWLNx+DvVpUU4V
-	Wa+mWxNnjspooNZGJSg97+xZCw/K5qadaaZaIoLRAVN0KwdO/FKAunfP9PJeEYStcglgWnSJe7kpd
-	smtRM0twHkDa62Am8Gan16Q34fvTIPEu21gXDWD4dpEDOhDk0b2F0vZ1gxG7dfw9ARGOq61tEkNV+
-	jlshjWgvoqmplWEmidbQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6m+cL3Hp1GNadmsGtznZ5TmSSA7XVveXniJUs8RwmSo=; b=wB8A9yNCLO4Ava
+	i/hf6GuVKf2faIu0UJgk6Up6FLO0RRNsfzOJUY+fzr5IgZDR5oOZv1JleCC2dXHWh4nOBbCUeB73p
+	FZeH5N71u36CIe1ukWcQufgrPRuur5fngMSOFaBt8sXPchwTSL7ZDt3VXvls6iSkP3a8X5vRs+0t0
+	HoptVdlfwAc5mWK+suPn2zpfuN1sNytH03SYnLchk/bZi6dc/hOpzHuLAspRZcGnw5qL2FW5k6V/0
+	TieLJslEEKcw9oq6SthUBF9Xn8EJ1p8wgo76HCKOEWvZcy6vuQv/uRUDDcgsWBTis6BpHy9igTVys
+	HpFSoMGTZWFT9px5m6Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTPyw-0032e1-2h;
-	Tue, 08 Aug 2023 16:54:54 +0000
-Received: from mail-mw2nam12on20603.outbound.protection.outlook.com ([2a01:111:f400:fe5a::603] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1qTby1-0045Wj-17;
+	Wed, 09 Aug 2023 05:42:45 +0000
+Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTPyo-0032Th-1X;
-	Tue, 08 Aug 2023 16:54:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cgzSQE080Oib5LXUdc2qCLUDcj8Ci4MuucSOcP5T1VkW/fD9jSdKfeqmVR0b1N0XwWpxzLGtWhw0KakA0WqFw3aDrIrrDe0pMDRCZuqkoFOTD2PmmqNmXeVNI8+M7qX+QUv5Zibucrbkg09lVDPaU0ywWz1GL5NSL3ZVO84xz/uXw+Sc/jkpVyRqAcvuluyID862/4axqInL0O2t1Cv+uE6eQ2FXfMUgUGY3OvVqF/vMKwG5xRa9Ot1f2RE+VyTgKjy9jSYcvH5Zju1qHVaXwGL+FUr9lIH0BFocrevLstDQ5eg72Qjez5ISdYNuXlpZxiiEmkKghlW7oKHO9lbtxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=++zvF+/Y4HE6PdmyxJWjgtz7gY7tcIfhAXcwcP7l9iE=;
- b=IILIqGvTpXiCjZvw/O55qb1tMMk3yj/pQ3GJ0vLQSBn760fGR+PA6nP6cwTBOrTDgGB3yShZr1+ZUGN0K8KobVQdEdRWA9FbLwHBWm4h+c028aVQUSnWHx5QKhLc/tAzSuxTYzVejU46O5zOKUq+yBMUmjtY1aXz0VwDnVe1YRkwZLfsZ2+CAiuGbJKZihC2rkL8ivWXTnDs1JIIhvfrQGx25fH8Ojjj+mHuL8idtr19zhKROO59k7XEqFk6FkVXtPxTE41QqYiomANIAF252A1pAiPlGAf4EZyapzR/aij1/PrIibIlOv24a1PheJDR01HcdAj1RrAt5Uw4G5eMyg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=++zvF+/Y4HE6PdmyxJWjgtz7gY7tcIfhAXcwcP7l9iE=;
- b=bC3+HJW/KdSoUAF/oOBGVPNza7ike9vfGB7gaFQg5wN9iD2ebqnnhe9u7zVpki5U0W6Shja7MJTt8RyRvpbm1lGkHqrt8cmZBSlD1ouh2mYsMJxbdpg8qy+zTzACB+j/d/iJuPmN8kElq90vY2mXnoUw8fSGqW4SzFpCqRZI4dHEzeFdmbOTo5QSh7eBAoyr1NxxXgWkwAI5xNN6IKHW4o0pHf/cvQp28a7Lum9wUevW4QH4UWoQf5B/ZNdThEwFHebN3X+fguWoEp/xR7kSuJHktj97VQ4TA0AeoCW2c4H+mssqKwa4ZsyG5CWIl+yjDsjnzaUNNSra9+zZxOItdw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by PH7PR12MB8596.namprd12.prod.outlook.com (2603:10b6:510:1b7::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.27; Tue, 8 Aug
- 2023 16:54:37 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6652.026; Tue, 8 Aug 2023
- 16:54:37 +0000
-Date: Tue, 8 Aug 2023 13:54:36 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
+	id 1qTbxx-0045VI-2m
+	for linux-rockchip@lists.infradead.org;
+	Wed, 09 Aug 2023 05:42:43 +0000
+Received: from eig-obgw-5007a.ext.cloudfilter.net ([10.0.29.141])
+	by cmsmtp with ESMTP
+	id TMN1qx22CyYOwTbxkqf5G5; Wed, 09 Aug 2023 05:42:28 +0000
+Received: from just2025.justhost.com ([173.254.28.237])
+	by cmsmtp with ESMTPS
+	id TbxjqkAsha8COTbxkqn02S; Wed, 09 Aug 2023 05:42:28 +0000
+X-Authority-Analysis: v=2.4 cv=DK2cXgBb c=1 sm=1 tr=0 ts=64d32744
+ a=Jt2RHIFfQig1ELqEZVeWfA==:117 a=Jt2RHIFfQig1ELqEZVeWfA==:17
+ a=OWjo9vPv0XrRhIrVQ50Ab3nP57M=:19 a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19
+ a=UttIx32zK-AA:10 a=5SfhNeb3QxAA:10 a=VwQbUJbxAAAA:8 a=QX4gbG5DAAAA:8
+ a=DgXrqYuCAAAA:8 a=LN1DEILRDWMThqYPT54A:9 a=AjGcO6oz07-iQ99wixmX:22
+ a=AbAUZ8qAyYyZVLSsDulk:22 a=NFkmT8Fa3oR8cXbSjPxL:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=singleboardsolutions.com; s=default; h=Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=IRedR4a0UlTeO6ZLpW4sOxZ1W5NZ59F4Kr/32UOhOHI=; b=Fb+cNBMESaV3YERu24pAVhOYrS
+	yp+fmY1ZbPXQR6GjDOREBMv9ESiwIonrw7EPEoLtz+RGksXJMGliW0nQJjE5oKQ5zGgswNY5DZqNB
+	OErLhrdUGlA2AkGp8VdO1hwsDHYyLcZmrvA3V3Ug77CS+CEIveOG+c9B272FShakyuX3Y5IK0g6gd
+	iQonanpixIP7EHMyTLfO1Bvt9/n8eVbcIeTD429+F3jAx7uTI/BAMnJUP5f8PW3X+j/Tgyo3J32W2
+	DI3l9vMDLHA8g/+XG6Tq+L6II8O7s2CKVruUSu8p7ye+3vvTWP0Dn1Km2QeBqrKBkADbDFTCK4XGK
+	lw0ji2nw==;
+Received: from 097-084-242-070.res.spectrum.com ([97.84.242.70]:52104 helo=localhost.localdomain)
+	by just2025.justhost.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <tmckahan@singleboardsolutions.com>)
+	id 1qTbxi-003yPQ-2S;
+	Tue, 08 Aug 2023 23:42:26 -0600
+From: Thomas McKahan <tmckahan@singleboardsolutions.com>
+To: "Rob Herring" <robh+dt@kernel.org>,
+	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
+	"Conor Dooley" <conor+dt@kernel.org>,
+	"Heiko Stuebner" <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: Thomas McKahan <tmckahan@singleboardsolutions.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>
-Subject: Re: [PATCH v2 02/10] iommu: Add a lockdep assertion for remaining
- dev->iommu_group reads
-Message-ID: <ZNJzTIgaqimQ08tA@nvidia.com>
-References: <2-v2-b0417f84403e+11f-iommu_group_locking_jgg@nvidia.com>
- <a94abd4d-fb0a-8f72-7dee-82144c90187b@arm.com>
-Content-Disposition: inline
-In-Reply-To: <a94abd4d-fb0a-8f72-7dee-82144c90187b@arm.com>
-X-ClientProxiedBy: BL1PR13CA0064.namprd13.prod.outlook.com
- (2603:10b6:208:2b8::9) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] Add Support for the FriendlyElec NanoPC T6
+Date: Wed,  9 Aug 2023 01:42:08 -0400
+Message-Id: <20230809054213.27447-1-tmckahan@singleboardsolutions.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB8596:EE_
-X-MS-Office365-Filtering-Correlation-Id: c113614b-1760-4cd3-87df-08db98302634
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: EWZu7RQOzmcD9GV+f1Xj9ehKTPPBFacpyWOG1yWjOJeHb9CbvKDjyeTpdyqhSL6pGKSZxro8XkuopIqkImmzCIkmcKmxPrycfirNCXBAvYvg6fqD8Vzc+R6L7w6/DRNxYJPojJXhVwcmmcdaUb6lOc+EK8nLkeKmHnqGV2rYvXNu+0yuioRfDi9Z4BKRhNxrklU932RG8HAnV7QgR95FGDCipXoIaBWXpTvnNqC5ABzxhYazwtj0wuJr17abgWaX8uvDwfdHPbGiX7a07ABn1gf6nrcl95VYN0Fgm8tyrAY4lQO25m/ZP7f+lA5JcxN5M4R4hg95vi8xz4z+fXEJ8kEwao71KhycLoYt7G73n8bzuHMC2nVrojYERrtUDLbmmg5bDg1AJATuq3CxQFK0Ka5yFk++g8G/xcFP+tW1NBHs7TCHeFN/5DPiZULTENrG3YeEBYHbbjk+NNgwUrwGLcB6Lke+Z23LX2vticIQ9HSBHKdAvwlnc7qWqxechgkBkheO7poZ+NbyJ15C7RtfgxH30wvTAwXaWDw8kPPbX+HWq+29mbfGBPWHsz9GTIna
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(39860400002)(376002)(346002)(396003)(136003)(1800799003)(186006)(451199021)(8936002)(7416002)(53546011)(6506007)(26005)(8676002)(5660300002)(66476007)(66556008)(66946007)(6916009)(4326008)(478600001)(38100700002)(36756003)(54906003)(6486002)(6512007)(316002)(41300700001)(2616005)(83380400001)(86362001)(2906002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?LURfX0YRlmAkf0JmT4zWAb9wzVFWu8+7jzS5KfugSx4L60/wse0G4tHSVjSZ?=
- =?us-ascii?Q?5erCS+FOUGJvY6IKrHtFPIoZ27TsUL6M1O4X8QyhbZ2kHZLZ79IJbVtMi/OH?=
- =?us-ascii?Q?p+X/QkSBBGUk1otHm0vynP0YODSZfQXisiukAfxrpwrACvgV3EsZaEhkf4Nq?=
- =?us-ascii?Q?TxYebWHxB8y3juizJKcWb0MfPywpAfB9K9QZcxQ6C8rWe9iZAexkIx/KLom0?=
- =?us-ascii?Q?WO+KJ3LBSRMAK5p90OWUSm51+3QBRZmvW+87BBBCzWUNxeMyDJ6kXnwlCYWu?=
- =?us-ascii?Q?ahpjyADrGcjpfYbODi9UkhZLGrsyBPW3OqJfTyxU+njgCWuBLhEh1hZZj340?=
- =?us-ascii?Q?IdUC4FJQ5/za0kH1ruGkj3+rkk7cKIVfrKnPiBpJANANw+6sPl3Ym9jeGuUl?=
- =?us-ascii?Q?hj3ne/3Y13EWht/hAzgUJFzf3f2JfA0YgS7HdHhvWkJenquYpnL21Q1BKX1U?=
- =?us-ascii?Q?6FnjRlzWRr7P6ClwX0hgUbIF1ACCO8Gmjnn5Q9tbQ2lR+FbqOhMBfaUq1ZgJ?=
- =?us-ascii?Q?66baFhnAQgtMxt94THVmd5tQuky5ckcZGKG9it+fpsnLFTJQVsdwHWLlPwyk?=
- =?us-ascii?Q?ADQbfwo/2AEChjp5yuW3PubP7FaeZj83TCYwcjLsgIjUri6Xq1fmRmJad/Fd?=
- =?us-ascii?Q?b221PhW0yY6j6mWfmybFGqnpcmjn0G14QN7GmeHxg9LW0nxp7I7jR0OXRdOG?=
- =?us-ascii?Q?qJwBdeqQmAEB2KTAJ5nd1GatATbWNECDbMhQmSL0lovP3rISBhHvnWKFAY7s?=
- =?us-ascii?Q?YzGxXZniwzNs+63Y9XEenlDbBXbbOS4NWszXnwueGUafkeQ3cvUq7ziU+j0S?=
- =?us-ascii?Q?iz5xdrE63p0roYpZerceAjQ56podYMT1jLXF7XPgDptXd9FoisleprQthV+8?=
- =?us-ascii?Q?22K1g3mNjOEMrHZq9FkZw5gnpyvU7fFl7ku3+KRpeIgqGTRRo3ZICiNWOIWz?=
- =?us-ascii?Q?fpmv2DevCbuyDwZ/M0c9Rh+1YyxbzZEBrkVxqgvSxZcpqbpdl6oHalAqK5Oo?=
- =?us-ascii?Q?86rJj5KP1LqgRur6G6iaDtqtS5TwsoMGuEy8RpuVnX4iCWVsCdOFKeoCPAkf?=
- =?us-ascii?Q?LWWOm0bLMyOxGga91scfQdViQetGjhJoF4lH5TNQ4eW36yjLHBqQEM+nI4sI?=
- =?us-ascii?Q?3tyf6ndKuVa+eglCl2pkISXa/D5zieJy8XBxKAOTmHUADOs1FFeB67zurkD6?=
- =?us-ascii?Q?8r7OxEuKinCoyXFBfM/6/f+XrJI2pNKptcqmIqgI/8jo526tVSy5G4H1yX5z?=
- =?us-ascii?Q?mdU5vqXKzS13+XxzaHc9X5LPG89wLfLAWdOVGOxMhfTaOqyFCHEf6YDjppsw?=
- =?us-ascii?Q?AgqCsb6SDRROgOa2acnYRcFzbwKt+10mpSPqGcrZusAOHuzg03Q5HBkcYNmr?=
- =?us-ascii?Q?9Yy1IVbNRPWhvfIRwizQU6jmAUjBP8+5Sa+Jm4hSVUN56phNMwpMUJHcL+Cz?=
- =?us-ascii?Q?iq56ZU7HDPCd4eJYTP6wyAvsuXAXFKCbta2ve7OLXrUpvc6D1IqXErJ/yp6W?=
- =?us-ascii?Q?VAHeLZIa3ZS1FgGCmUBBlHOKlv6fIcMg3B9PWzge50halRjmr3w5i+Sm4xCG?=
- =?us-ascii?Q?Y2go+m7vJEyIgGWiR7G0osVRn+R6h4ZlWa9eFDAv?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c113614b-1760-4cd3-87df-08db98302634
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Aug 2023 16:54:37.3729
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: t5UQB/b96sW28xO27OfVVuzV78PdFYdiXiB/yTAPlPXbAAHeTLQyFs/x1lSAIElC
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB8596
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - just2025.justhost.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - singleboardsolutions.com
+X-BWhitelist: no
+X-Source-IP: 97.84.242.70
+X-Source-L: No
+X-Exim-ID: 1qTbxi-003yPQ-2S
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 097-084-242-070.res.spectrum.com (localhost.localdomain) [97.84.242.70]:52104
+X-Source-Auth: tmckahan@singleboardsolutions.com
+X-Email-Count: 4
+X-Org: HG=bhshared_jh;ORG=bluehost;
+X-Source-Cap: ZWxlY3RyaTk7ZWxlY3RyaTk7anVzdDIwMjUuanVzdGhvc3QuY29t
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfC0yCF9JsO60/MmJe7ralMDzxf/DHdeoKxA3dXT95pZe1gV8DHYH1Pdg3MPUITstS/p/wG+UBnmA43yj2J/JS8KOkhwTBPUkszoMgL/XZn8+p0XmA8kS
+ 92ersDCveFRWEhxWEvlj3FzIr+EIShsXP2WHzOtPSukrDWQbGMdfUgjHrTlYCSK5YHwrtPLtr55+BycyR2yYjJk9hh/ii60rYtngG+RtgfkgxW2awfE/czgY
+ xi9qmSR9WZfRtrLOduzz5A==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_095446_550008_16C1EE63 
-X-CRM114-Status: GOOD (  24.20  )
+X-CRM114-CacheID: sfid-20230808_224241_981795_1BB1ECD0 
+X-CRM114-Status: UNSURE (   5.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,55 +113,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 08, 2023 at 05:22:55PM +0100, Robin Murphy wrote:
-> Oh, the things that happen if I take holiday... :)
-> 
-> On 31/07/2023 6:50 pm, Jason Gunthorpe wrote:
-> > The remaining reads are all in functions called under ops->device_group.
-> > 
-> > Broadly these functions are walking around the device tree (eg going up
-> > the PCI bus tree) and are trying to de-duplicate group allocations
-> > according to their logic.
-> > 
-> > Since these functions don't hold any particular per-device locks their
-> > reads to dev->iommu_group are being locked by the caller's
-> > iommu_probe_device_lock, and this explains why iommu_probe_device_lock
-> > needs to be a global lock.
-> 
-> This confuzzles me. iommu_probe_device_lock is a global (but tightly-scoped)
-> lock because its sole purpose is as a point hack to serialise calls to
-> iommu_probe_device(), 
+Hello,
 
-Well, that may have been the intention, but as a side effect it turns
-out that it is the only thing that locks the access to the
-dev->iommu_group as well. This is some other bug that I suppose nobody
-noticed.
+This adds support for the RK3588-based NanoPC T6 single board computer.
+Note this series is dependent on the PCIe 3 support [0] being
+upstreamed. The NanoPC T6 uses PCIe3x4 like the Rock 5B and EVB1.
 
-> concurrently for the same device, but due to the long-standing "replay"
-> hacks, currently can. It is not meant to have anything to do with groups,
-> and expanding its scope is a really really terrible idea.
+[0] https://lore.kernel.org/all/20230717173512.65169-1-sebastian.reichel@collabora.com/
 
-Regardless, it does serialize the group stuff so what I did here is
-recognize that as its main purpose and made the probe serialization a
-secondary thing, which is eventually entirely removed.
+v2:
+ - remove unnecessary "okay" status from sound 
+ - add '-regulator' suffix on 2 regulators that were missing them
+ - use generic node name for rtc
+ - remove extra lines
+ - fix alignment in I2S entry
+ 
+v1: https://lore.kernel.org/all/20230802051441.3106-1-tmckahan@singleboardsolutions.com/
 
-I could have constructed this the other way and said that the group
-locking is missing and added another global lock, but that seems
-equally confusing since it isn't missing, it is just mis-named :)
+Thomas McKahan (2):
+  dt-bindings: arm: rockchip: Add NanoPC T6
+  arm64: dts: rockchip: Add NanoPC T6
 
-> I finally now have some time to work on IOMMU gubbins again, so I'll be
-> updating the bus ops removal series ASAP, then the next step after that is
-> some bus_type callback surgery to pull the {of,acpi}_iommu_configure()
-> parsing and ops->of_xlate calls to the proper point in the core
-> iommu_probe_device() path, and all this mess finally goes away for good.
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 842 ++++++++++++++++++
+ 3 files changed, 848 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 
-That is great, but it won't address the dev->group locking.
+-- 
+2.34.1
 
-I'm not sure there is further value in trying to remove the
-device_lock() around probe, but cleaning up the iommu_configure stuff
-would be nice.
-
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
