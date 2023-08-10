@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7332C04A94
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Aug 2023 10:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F52C04E69
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Aug 2023 10:48:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yC6IL0+JagDYxzABABjN3kvU+rFCii6P4daF5BM3vzk=; b=zZYvRbS96Jzs61
-	sem4T4nDijHI9ORqyE3sc+FpN6/qtn0e730Y+F/jXa13ugbEwJ79QthoHLmVlDyAl5u8OsvUV3x9S
-	TTsAWBwOxZIHmPCV8tvt73eRHUM2kcWaJe/SJMN3WKjEg0SDzQxLWa6p6hTM5awRwSRkNozfr3CpW
-	DXsPjH6cloKfIqUaYCgCUyQxZdmFSfKmiX4324+hHXN6D1sWQJDj3AuofxrDdwUQ+yBT2j+blZ49O
-	1/nQbxevvQpSImtSgbBJanTpUXz58Zwk6lvrU0RJawE1m1arpXeuLEybl2VkbAXMx7/zxk1tJKE6P
-	lNexbKIF76GBTt2KbESA==;
+	List-Owner; bh=oWDLySLuZQMQDb5BC/di1Q6NKhDRIYATf1B0DUJNOQs=; b=Tx1qx659geiuqv
+	w71AJiJYFaSZGxPA9WWknDpHx5GUW4GAPq2smIVyQHNh9ys3AM0mKtdpvP/I3UT91zZq5X+lZisDD
+	lq0qXlICET7f8ODXeiaFXtD8YNfSy9bcOB+zPcSxxu83DXB0CYPebM6t50onQXivnRK+FzNVBJVz8
+	jyDTgA/TKIJuwbZybXklQjn+c/nFqxVNV87Y/ge8Yn5LVd0qF+so1JjN7s7oGvf7YF2pw1apdB5ZB
+	rh8TcQfnCelvqwoRvX2g7grLLaAPk1SpbyDcDSJQ6yTb5OixenHYRmxtNTSc8nI0f+ZmxrRT7opGg
+	BMlLX4R3O8EeA/dmXHUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU3D7-007GJK-2f;
-	Thu, 10 Aug 2023 10:48:09 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1qU3D9-007GLV-0f;
+	Thu, 10 Aug 2023 10:48:11 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU3Cz-007G6W-2m
+	id 1qU3D1-007GAc-0D
 	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Aug 2023 10:48:03 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-52364e9daceso900168a12.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 10 Aug 2023 03:47:59 -0700 (PDT)
+	Thu, 10 Aug 2023 10:48:04 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-4fe1c285690so1095389e87.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Aug 2023 03:48:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691664478; x=1692269278;
+        d=linaro.org; s=google; t=1691664481; x=1692269281;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UpZqgVo2zkbi2B7sOh6o48YWO5812KC5/SRbTNsfhC4=;
-        b=L+pJzrZz5LiodQRp/U/kbzpSYWnuq6UUxyeRItM6/VS+qn+D1PDLrcfAJlUCmks3Kz
-         Licj4R5ZhYqFNIyGDXQpyL/zv+UQqLViDrfb5AQ5Lk0yh0s8tkC9JT5Wi4Rz2sWltvfD
-         24dwksZBWyf0htE1vPBy9QBmrbo+qPRzH8EaHBcvW31pMM5faimC9YDi9d+PxB0L0IKN
-         RvDGD0ECUskqfPBcVKcp9DdgIhUjd4a6DuzkmtbPY6Y/FFnK61k2qicYoEsqIRuuzPtV
-         5rb0itHN4h2ptsZeSrFedln9PwV3C4sILAvNxBhujef01IdBWcivSBYg3FU8C6qUz/HA
-         Y3AQ==
+        bh=qzMSq7HLSHN1HFLKAp83kiHFzC/dRhYUs++4UrDqaOA=;
+        b=UGqNEmNN1GRZd/cQPQ8BSIM/P3HO1mpPaFsq5qWJJQp/cf2hqFCbXFb+QeRHXLlMKG
+         7zasTTRuG7one9GfxqSB1uSZzw6Wy2owDcgscp2LVQ0ZEYKU/dIgcZ2X7SMvcCIuMvnP
+         fT+UGY1nG6W+GX8JH8DDyNGJS0INeWEZe/xIc7W7rVuY1LUon1MxyAMsMXy/QaIJnAs5
+         yOJES8JPBZNK0XFRdKrYta4LXxKYP8bpG35w5ltlkGbEGVbpp3kh+yoIZax3cM3SBv4E
+         PjezXo8hgAwGpuJ1o+WPULiVfbGjx4KGX4Oer/736Jql6eOYkB/sibEnHmDbRKKrJh36
+         Xrxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691664478; x=1692269278;
+        d=1e100.net; s=20221208; t=1691664481; x=1692269281;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UpZqgVo2zkbi2B7sOh6o48YWO5812KC5/SRbTNsfhC4=;
-        b=Kbii4o9ZDDJRDnjUUDdyri1tIFwp+u+yMgKz82zFJaexMBoPjRuUJUI+y9fgedGJXu
-         qLFrqHxlIc4vQPOSsuhU9HDf6FP0fopqy+vQBksiKPTj5hYHejIKmpP4CLOE792bJPmB
-         p3L96jYkysm+3k+m0wG41MIzMTjLrafhxi+6RbV7nRK5UuCQ+GhQYT3Av3IT5VgqKESm
-         FqNZO5OSgj25UjxePYEEfh36OQV6+C2yL2X96hekVYaG2TWtBJol5/YgYYOIB8ziBgw+
-         A3JjBA4YJ/kWWZUQAUdzdxquCR4wprzwvGoyVbFsthZDYNpgIWnauygqLSKK2v2ucxdf
-         P3XA==
-X-Gm-Message-State: AOJu0YyYGpLh0KIPQDcEZ8OgG4EgN0LqhIeh2fSGGe+95j2k/Kcm5hDQ
-	cOz9NGK9gGLBIYmbWt0A5Rf6eg==
-X-Google-Smtp-Source: AGHT+IFi6mpqtjPUZgkNME8tljPZsCKLpCa4i79mEQYjX4KcyxYg/CD19QBrJpMdXKSWYT3AtUshSw==
-X-Received: by 2002:a50:fc09:0:b0:522:2d1b:5a38 with SMTP id i9-20020a50fc09000000b005222d1b5a38mr1688860edr.10.1691664478219;
-        Thu, 10 Aug 2023 03:47:58 -0700 (PDT)
+        bh=qzMSq7HLSHN1HFLKAp83kiHFzC/dRhYUs++4UrDqaOA=;
+        b=MTJryBON3MuXCjA3DVcEN7HCOU4ZEh1540QGCn6EzXtu0BCnRxOJJyDkNTfd2MPFjU
+         e0POuAQBLcyIwoQtAM2e6m0LMgAs2RifZf8v9tSgBt1ousTjtvktFx0L/d+jkHtNhF1v
+         95eUNtlRYzTZlXYUGvtZGPyvKCcyFAruK25QdzBvoC7eM/ItO4560b2XKXR2AnvkUuz+
+         OXds9kd4NnMzd941+hsCasSsMir4lzqHLVqw32Aic/KrGUYWLDM374gu6vfpJ9v6pJga
+         CGXcP2EdEB75xMtHKO75EdfOAEA8WxPywWti/GpcaJH9wGp6ECfPYxHPkHJ+3XzGilmn
+         +PQw==
+X-Gm-Message-State: AOJu0Yzg0BnxTwS1iSD6LCjESEa/iTl3B8h0/L9ekkpGrvyzt50UQi7+
+	aJ8KSRxtMy9iJLZuGiL1ej4/nw==
+X-Google-Smtp-Source: AGHT+IEP9ckwBL1/0mfPqosWIWOXy9uevpV0Iq3ArH10HdVvSOvTyx5j3EETKE0Mzgr1fyviNz4aeA==
+X-Received: by 2002:a19:9159:0:b0:4fe:a2e:890c with SMTP id y25-20020a199159000000b004fe0a2e890cmr1439491lfj.49.1691664481535;
+        Thu, 10 Aug 2023 03:48:01 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.222.113])
-        by smtp.gmail.com with ESMTPSA id x20-20020aa7cd94000000b0051dfa2e30b2sm653854edv.9.2023.08.10.03.47.56
+        by smtp.gmail.com with ESMTPSA id x20-20020aa7cd94000000b0051dfa2e30b2sm653854edv.9.2023.08.10.03.48.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Aug 2023 03:47:57 -0700 (PDT)
+        Thu, 10 Aug 2023 03:48:01 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -79,16 +79,16 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
 	llvm@lists.linux.dev
 Cc: Andi Shyti <andi.shyti@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 3/4] ASoC: codecs: wm8904: fix Wvoid-pointer-to-enum-cast warning
-Date: Thu, 10 Aug 2023 12:47:46 +0200
-Message-Id: <20230810104749.164827-4-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 4/4] ASoC: rockchip: fix Wvoid-pointer-to-enum-cast warning
+Date: Thu, 10 Aug 2023 12:47:48 +0200
+Message-Id: <20230810104749.164827-6-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230810104749.164827-1-krzysztof.kozlowski@linaro.org>
 References: <20230810104749.164827-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_034801_911277_E1FDAF72 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20230810_034803_132261_AB699017 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,29 +105,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-'devtype' is an enum, thus cast of pointer on 64-bit compile test with
+'version' is an enum, thus cast of pointer on 64-bit compile test with
 W=1 causes:
 
-  wm8904.c:2205:21: error: cast to smaller integer type 'enum wm8904_type' from 'const void *' [-Werror,-Wvoid-pointer-to-enum-cast]
+  rockchip_pdm.c:587:18: error: cast to smaller integer type 'enum rk_pdm_version' from 'const void *' [-Werror,-Wvoid-pointer-to-enum-cast]
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- sound/soc/codecs/wm8904.c | 2 +-
+ sound/soc/rockchip/rockchip_pdm.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/codecs/wm8904.c b/sound/soc/codecs/wm8904.c
-index 60319b468fb2..829bf055622a 100644
---- a/sound/soc/codecs/wm8904.c
-+++ b/sound/soc/codecs/wm8904.c
-@@ -2202,7 +2202,7 @@ static int wm8904_i2c_probe(struct i2c_client *i2c)
- 		match = of_match_node(wm8904_of_match, i2c->dev.of_node);
- 		if (match == NULL)
- 			return -EINVAL;
--		wm8904->devtype = (enum wm8904_type)match->data;
-+		wm8904->devtype = (uintptr_t)match->data;
- 	} else {
- 		const struct i2c_device_id *id =
- 			i2c_match_id(wm8904_i2c_id, i2c);
+diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
+index 52f9aae60be8..678989b25e57 100644
+--- a/sound/soc/rockchip/rockchip_pdm.c
++++ b/sound/soc/rockchip/rockchip_pdm.c
+@@ -584,7 +584,7 @@ static int rockchip_pdm_probe(struct platform_device *pdev)
+ 
+ 	match = of_match_device(rockchip_pdm_match, &pdev->dev);
+ 	if (match)
+-		pdm->version = (enum rk_pdm_version)match->data;
++		pdm->version = (uintptr_t)match->data;
+ 
+ 	if (pdm->version == RK_PDM_RK3308) {
+ 		pdm->reset = devm_reset_control_get(&pdev->dev, "pdm-m");
 -- 
 2.34.1
 
