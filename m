@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F52C04E69
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Aug 2023 10:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1BDCC04A94
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Aug 2023 10:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oWDLySLuZQMQDb5BC/di1Q6NKhDRIYATf1B0DUJNOQs=; b=Tx1qx659geiuqv
-	w71AJiJYFaSZGxPA9WWknDpHx5GUW4GAPq2smIVyQHNh9ys3AM0mKtdpvP/I3UT91zZq5X+lZisDD
-	lq0qXlICET7f8ODXeiaFXtD8YNfSy9bcOB+zPcSxxu83DXB0CYPebM6t50onQXivnRK+FzNVBJVz8
-	jyDTgA/TKIJuwbZybXklQjn+c/nFqxVNV87Y/ge8Yn5LVd0qF+so1JjN7s7oGvf7YF2pw1apdB5ZB
-	rh8TcQfnCelvqwoRvX2g7grLLaAPk1SpbyDcDSJQ6yTb5OixenHYRmxtNTSc8nI0f+ZmxrRT7opGg
-	BMlLX4R3O8EeA/dmXHUQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5hfKkEBW0sEnOZPq7nRnVYYZ84ZPxN7cCYcODdZyiLQ=; b=aRHqBDWxz4MILV
+	WVXfj8p7Gdb5CCyWU45sESWOvxxvDsIao0wJw9hvs6j5lq/2rTcvTF2Gkd4Anmz8QvfBH6W8UuP9X
+	BLngUkQkEUKY1h4DUpPCfsB2SEuBIbbcRfnUzsy7EGAUdgGWdCW352SpSCjIK8ZW6QEIKd0rQmJXn
+	Ip9TPGo8JfJJpb7gRDg27HPzK1ORK3fT9JZTCQDEpNy7xD2+uimGRY1MMsNLOQDeBsfQ4qD7jkEOD
+	RCHmAkzMc1wbp3Zx3cyvJo2UtpSpWnMQ0/2XenOk0WDQtcxqYvi6uerUsq7YsOQFT59N8Rl2RYp7V
+	ec0La3rM3/B6wGCLkh7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU3D9-007GLV-0f;
-	Thu, 10 Aug 2023 10:48:11 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1qU3Cz-007GA8-3D;
+	Thu, 10 Aug 2023 10:48:02 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU3D1-007GAc-0D
+	id 1qU3Cw-007G2p-11
 	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Aug 2023 10:48:04 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-4fe1c285690so1095389e87.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 10 Aug 2023 03:48:02 -0700 (PDT)
+	Thu, 10 Aug 2023 10:47:59 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5237365f3a6so961383a12.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Aug 2023 03:47:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691664481; x=1692269281;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qzMSq7HLSHN1HFLKAp83kiHFzC/dRhYUs++4UrDqaOA=;
-        b=UGqNEmNN1GRZd/cQPQ8BSIM/P3HO1mpPaFsq5qWJJQp/cf2hqFCbXFb+QeRHXLlMKG
-         7zasTTRuG7one9GfxqSB1uSZzw6Wy2owDcgscp2LVQ0ZEYKU/dIgcZ2X7SMvcCIuMvnP
-         fT+UGY1nG6W+GX8JH8DDyNGJS0INeWEZe/xIc7W7rVuY1LUon1MxyAMsMXy/QaIJnAs5
-         yOJES8JPBZNK0XFRdKrYta4LXxKYP8bpG35w5ltlkGbEGVbpp3kh+yoIZax3cM3SBv4E
-         PjezXo8hgAwGpuJ1o+WPULiVfbGjx4KGX4Oer/736Jql6eOYkB/sibEnHmDbRKKrJh36
-         Xrxw==
+        d=linaro.org; s=google; t=1691664473; x=1692269273;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cL5UPVfVDvTPeQFgxKATIKznitcWyNXilLQp5uC80cI=;
+        b=G6pHUHnoTRweCuka8lUSPfAXJhMF537/JJNKPyOuyVHJBy5UR0uOeLt8TW7dwXa4JD
+         BEBO2xt/mITqpaAYcQ65ixrn/FU1/rF5Uo2CChXWuk6wBuA0iR1sT0O4SYChe32G/E9x
+         2nV5gCCrVFq/EamTv7i9wU21Fs+zGTJWa/uPofqynaQLcuik19lqLog8NruRcQLUmRvp
+         ZhPLwqEOmjw0yPYz8dSNNq957zC/gjOaH2cIpxW8F0j0tkGBbbzdykd2D6tbKd9B4k3W
+         BXrzxJRZ78QSdp1HmG0pQX8ee0aNP460OnyCEwER3ENS5EBe7eOPBxLEYZ/CRizp28b8
+         F6zQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691664481; x=1692269281;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qzMSq7HLSHN1HFLKAp83kiHFzC/dRhYUs++4UrDqaOA=;
-        b=MTJryBON3MuXCjA3DVcEN7HCOU4ZEh1540QGCn6EzXtu0BCnRxOJJyDkNTfd2MPFjU
-         e0POuAQBLcyIwoQtAM2e6m0LMgAs2RifZf8v9tSgBt1ousTjtvktFx0L/d+jkHtNhF1v
-         95eUNtlRYzTZlXYUGvtZGPyvKCcyFAruK25QdzBvoC7eM/ItO4560b2XKXR2AnvkUuz+
-         OXds9kd4NnMzd941+hsCasSsMir4lzqHLVqw32Aic/KrGUYWLDM374gu6vfpJ9v6pJga
-         CGXcP2EdEB75xMtHKO75EdfOAEA8WxPywWti/GpcaJH9wGp6ECfPYxHPkHJ+3XzGilmn
-         +PQw==
-X-Gm-Message-State: AOJu0Yzg0BnxTwS1iSD6LCjESEa/iTl3B8h0/L9ekkpGrvyzt50UQi7+
-	aJ8KSRxtMy9iJLZuGiL1ej4/nw==
-X-Google-Smtp-Source: AGHT+IEP9ckwBL1/0mfPqosWIWOXy9uevpV0Iq3ArH10HdVvSOvTyx5j3EETKE0Mzgr1fyviNz4aeA==
-X-Received: by 2002:a19:9159:0:b0:4fe:a2e:890c with SMTP id y25-20020a199159000000b004fe0a2e890cmr1439491lfj.49.1691664481535;
-        Thu, 10 Aug 2023 03:48:01 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1691664473; x=1692269273;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cL5UPVfVDvTPeQFgxKATIKznitcWyNXilLQp5uC80cI=;
+        b=fBw8PrgbQLe+VqW+iZSWHTfIU5Usfd9nI1XMIgsJAj/Vqi37M+kygkidGhCIO3foTz
+         9V4vERBzN/P6i8B53eoKLo2hVljb6zhA6AedEu2rjxDKfCrsqvBl5NeEh/qvjmLmvFvN
+         Kqyp13UXjq3TBdNkgpTSByVxaXqPEGzcDGuux2eQ/rE2YO8cRZxxyOQKQ1x6MYIYvWD0
+         xREOfXX4MND+0Gvfx9X8UDfqZoczEoYUV3+oiz4nXeUh/RxxSGD5Fm0yqBETo45Y0JOi
+         WzBcgCQQNSKlB73e5AiLQguxDOqfPXNuqBZ8S/uqPlw5/eZMJcuDdGNfQC7oMOouBqiW
+         JRGA==
+X-Gm-Message-State: AOJu0YzHFQdhrc5l2zil/BB03wBpMqJG6Zq6W7+frEMb9FdANGT7NTwc
+	b06eYyi4LkGw8/ti0VgtXKUBIQ==
+X-Google-Smtp-Source: AGHT+IGXS1aQfmfAEnnnicUw9UC/MVRyaVegshXzkv6MrwG7ZgOG9nfvxHajlaARube88C1uKtE0IA==
+X-Received: by 2002:a05:6402:28a:b0:523:406a:5f6 with SMTP id l10-20020a056402028a00b00523406a05f6mr1588660edv.12.1691664472836;
+        Thu, 10 Aug 2023 03:47:52 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.222.113])
-        by smtp.gmail.com with ESMTPSA id x20-20020aa7cd94000000b0051dfa2e30b2sm653854edv.9.2023.08.10.03.48.00
+        by smtp.gmail.com with ESMTPSA id x20-20020aa7cd94000000b0051dfa2e30b2sm653854edv.9.2023.08.10.03.47.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Aug 2023 03:48:01 -0700 (PDT)
+        Thu, 10 Aug 2023 03:47:52 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -79,16 +78,14 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
 	llvm@lists.linux.dev
 Cc: Andi Shyti <andi.shyti@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 4/4] ASoC: rockchip: fix Wvoid-pointer-to-enum-cast warning
-Date: Thu, 10 Aug 2023 12:47:48 +0200
-Message-Id: <20230810104749.164827-6-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/4] ASoC: aw88261: Fix unitialized ret of aw88261_reg_update()
+Date: Thu, 10 Aug 2023 12:47:43 +0200
+Message-Id: <20230810104749.164827-1-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230810104749.164827-1-krzysztof.kozlowski@linaro.org>
-References: <20230810104749.164827-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_034803_132261_AB699017 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20230810_034758_357714_3107CF8E 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,29 +102,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-'version' is an enum, thus cast of pointer on 64-bit compile test with
-W=1 causes:
+There is a branch in if() clause where aw88261_reg_update() could return
+uninitialized value.  Pounted out by W=1 clang build:
 
-  rockchip_pdm.c:587:18: error: cast to smaller integer type 'enum rk_pdm_version' from 'const void *' [-Werror,-Wvoid-pointer-to-enum-cast]
+  sound/soc/codecs/aw88261.c:651:7: error: variable 'ret' is used uninitialized whenever 'if' condition is false [-Werror,-Wsometimes-uninitialized]
+                if (aw_dev->prof_cur != aw_dev->prof_index) {
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/codecs/aw88261.c:660:9: note: uninitialized use occurs here
+        return ret;
+               ^~~
+  sound/soc/codecs/aw88261.c:651:3: note: remove the 'if' if its condition is always true
+                if (aw_dev->prof_cur != aw_dev->prof_index) {
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- sound/soc/rockchip/rockchip_pdm.c | 2 +-
+ sound/soc/codecs/aw88261.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index 52f9aae60be8..678989b25e57 100644
---- a/sound/soc/rockchip/rockchip_pdm.c
-+++ b/sound/soc/rockchip/rockchip_pdm.c
-@@ -584,7 +584,7 @@ static int rockchip_pdm_probe(struct platform_device *pdev)
+diff --git a/sound/soc/codecs/aw88261.c b/sound/soc/codecs/aw88261.c
+index 82923b454dd4..fddba2f2de41 100644
+--- a/sound/soc/codecs/aw88261.c
++++ b/sound/soc/codecs/aw88261.c
+@@ -636,7 +636,7 @@ static int aw88261_dev_stop(struct aw_device *aw_dev)
+ static int aw88261_reg_update(struct aw88261 *aw88261, bool force)
+ {
+ 	struct aw_device *aw_dev = aw88261->aw_pa;
+-	int ret;
++	int ret = 0;
  
- 	match = of_match_device(rockchip_pdm_match, &pdev->dev);
- 	if (match)
--		pdm->version = (enum rk_pdm_version)match->data;
-+		pdm->version = (uintptr_t)match->data;
- 
- 	if (pdm->version == RK_PDM_RK3308) {
- 		pdm->reset = devm_reset_control_get(&pdev->dev, "pdm-m");
+ 	if (force) {
+ 		ret = regmap_write(aw_dev->regmap,
 -- 
 2.34.1
 
