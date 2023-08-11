@@ -4,97 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D41F0C04A6A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Aug 2023 05:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 115D9C0015E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Aug 2023 07:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cttNuu4ynLtUpcL2eVYiaDzWx/cfrEO6iaufv0RRHHA=; b=SoxXpREqHlEidw
-	llrRyhMHcGukjapdh1sv3i+BxGHbr5Lum7dElQcVvEUiAKgHl9yNwa14VxpO2NxcraXYdUaiCu8aU
-	+g7GYdWtAdG6bjKhCLWb2UR4Y5DqiMrAro/+27na9LpN8o9Ed3x7KwbQimvqkQK69sjIxUVQUj/wz
-	X2oARvfdnkrJvufD2us0bzpPwPKOOwjE5n5wMXis3iE6Dk2tM2NVnPkRGNv6xfOqDupAmLaUSsVD0
-	rkt9JHNG9otX7YV7cZltplSEHPnRSeZRiCcYb491imq5jtSG/02/8iIGU9QPPtI4+0DEY+QvjUQEB
-	+gaPcGt/f+VTEvLiLQGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:From:To:
+	Subject:Content-Description:MIME-Version:Cc:Content-ID:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=/34LiLGSfEf8li4+hMVBAKwkF+JnUSJ2RUj+07pIrpQ=; b=di7
+	X3CcE4XH5pW6yhkxy04u1c7pU8/puKIrR3fF3qJPm7PdxdkffLl+eakpNHMOpb0mlf3TXuLmnv0OV
+	SsuqwKA3ekdQvR3RXta9pyDfReHnVkOBC/l8lg8RIZg7T1J1yyj1uYE3AtGdga2CGlljHWastD7Hw
+	Hzg3vcM14t251qjANb++Z4Z0IcamGQNBfcpBzu3N7TZ/eY8DU7UX9eJsRZsz7E7IwfpiAgKgLamVE
+	8jb0MgF7vXp9QyW1aPXMsOsvRY+pzJUJUxzrEblZOIponVSdPO2LZd7B/cAthFozedMTxhBXxtkjc
+	Diujejak4L+sWdsxeTfFIigkl7XxCBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUgl5-00CfAZ-2z;
-	Sat, 12 Aug 2023 05:01:51 +0000
-Received: from mgamail.intel.com ([134.134.136.65])
+	id 1qUiwo-00CqVr-0n;
+	Sat, 12 Aug 2023 07:22:06 +0000
+Received: from etna2.itineris.hu ([193.32.235.205])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUgl2-00Cf9P-0s;
-	Sat, 12 Aug 2023 05:01:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691816508; x=1723352508;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=8ESbiLHr+YCgav0uKLzgJWB6fuptDUr8xuFAEutcc9g=;
-  b=bwTkAfs2FJF8B3ePDJCygJXxMX+4+TT0iAlMPiylO6bNeycqRt46sY4S
-   t4GGxSZHMdomNE9pWzTDd5wz+EwmePsShmvf739hvHlQZUgQWieS7wQ5i
-   QwhgzEas/uPYHohfcrYElULKg7zrnZ3vrBFz2D04ncPTZaShrvXmKuboE
-   K6+BXj3gC42aaZ9RFDmbmKeIuHBbfOBSzDERfGamplpifR7eidoNX49T5
-   G9Dkt4Rjg0LgxDvbUE0QzL4A8zly8vD5xD97o/84zH0Gn6Nlvcx03EPSz
-   AhmtCTDNPNjK7b+93o+JZXX8HcimOEhKJBB6tCIF6e8n+bs88hgv0x7ev
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="375513670"
-X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="375513670"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 22:01:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="767872740"
-X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="767872740"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.214.60]) ([10.254.214.60])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 22:01:26 -0700
-Message-ID: <d4451419-627b-36de-0b0f-3a7e8bc59a35@linux.intel.com>
-Date: Sat, 12 Aug 2023 13:01:24 +0800
+	id 1qUiwl-00CqUq-0w
+	for linux-rockchip@lists.infradead.org;
+	Sat, 12 Aug 2023 07:22:05 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by etna2.itineris.hu (Postfix) with ESMTP id 98F7884369F
+	for <linux-rockchip@lists.infradead.org>; Sat, 12 Aug 2023 07:27:54 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at etna2.itineris.hu
+Received: from etna2.itineris.hu ([127.0.0.1])
+	by localhost (etna2.itineris.hu [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id aS_6VYWfmFUE for <linux-rockchip@lists.infradead.org>;
+	Sat, 12 Aug 2023 07:27:52 +0200 (CEST)
+Received: from DESKTOP-U6PB1T9.station (net-37-179-9-113.cust.vodafonedsl.it [37.179.9.113])
+	by etna2.itineris.hu (Postfix) with ESMTPA id 10D90802EDD
+	for <linux-rockchip@lists.infradead.org>; Fri, 11 Aug 2023 16:03:54 +0200 (CEST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 15/25] iommufd/selftest: Make the mock iommu driver
- into a real driver
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>
-References: <15-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <15-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+Content-Description: Mail message body
+Subject: UN-Habitat-Vereinbarung
+To: linux-rockchip@lists.infradead.org
+From: support@brique.in
+Date: Fri, 11 Aug 2023 15:03:51 +0100
+Message-Id: <20230812052754.98F7884369F@etna2.itineris.hu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_220148_357768_0810172C 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20230812_002203_503105_D512D22F 
+X-CRM114-Status: UNSURE (  -0.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,43 +60,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: UN-Habitat@europe.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/3 8:08, Jason Gunthorpe wrote:
-> +/*
-> + * Register an iommu driver against a single bus. This is only used by iommufd
-> + * selftest to create a mock iommu driver. The caller must provide
-> + * some memory to hold a notifier_block.
-> + */
-> +int iommu_device_register_bus(struct iommu_device *iommu,
-> +			      const struct iommu_ops *ops, struct bus_type *bus,
-> +			      struct notifier_block *nb)
-> +{
-> +	int err;
-> +
-> +	iommu->ops = ops;
-> +	nb->notifier_call = iommu_bus_notifier;
-> +	err = bus_register_notifier(bus, nb);
-> +	if (err)
-> +		return err;
-> +
-> +	spin_lock(&iommu_device_lock);
-> +	list_add_tail(&iommu->list, &iommu_device_list);
-> +	spin_unlock(&iommu_device_lock);
-> +
-> +	bus->iommu_ops = ops;
-> +	err = bus_iommu_probe(bus);
-
-By the way, bus_iommu_probe() has been changed in iommu-next, so it
-needs to be rebased here.
-
-Best regards,
-baolu
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+R2zDvGNrd3Vuc2NoLAoKICAgIFdpciBtw7ZjaHRlbiBTaWUgZGFyw7xiZXIgaW5mb3JtaWVyZW4s
+IGRhc3MgSWhuZW4gaW0gUmFobWVuIGVpbmVyIFVOLUhhYml0YXQtVmVyZWluYmFydW5nIGVpbiBC
+ZXRyYWcgdm9uIDEuNDAwLjAwMCDigqwgenVnZXRlaWx0IHd1cmRlLiBIaWVyIGlzdCBkaWUgQWJy
+ZWNobnVuZ3MtSUQ6IFIxLTMyRlNCLTAwMTMzNC4gRsO8ciB3ZWl0ZXJlIEluZm9ybWF0aW9uZW4g
+enVtIEVyaGFsdCBkZXIgTWl0dGVsIHdlbmRlbiBTaWUgc2ljaCBiaXR0ZSBhbiBVTi1IYWJpdGF0
+QGV1cm9wZS5jb20KCkF1ZnJpY2h0aWcsClVOLUhhYml0YXQgRXVyb3BhCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
