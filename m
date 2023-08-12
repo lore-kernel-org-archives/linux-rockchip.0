@@ -4,62 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A482C0015E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Aug 2023 20:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1EF1C0015E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Aug 2023 01:37:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YihdNFWPfoG5JcZnWj9f2pFFg0uUpehy3cyPWEVp8eI=; b=DgRB/zh8+oEtcY
-	4CyyDAxhkIZVnrUUjdSnBoL5kWKS1zRwcx2JiW72ozaxcF8Jcbz7xIDKk6AaMEz2Ptx53cRqay6lz
-	q+ugxFPBDE262oC1ud7Ibc1whqbXB5vbvkDTiNUqKeHZRKoxzuAvhx7dIH/z6E0ZbV3yWZuNxMwNt
-	+PxkFUTqNBOhMZEd4cFV+g/PPgwXl8oc5tffq8OKoS9i9M4zmBK/+AnKopYBVJ5UvXgtRW7FfSYYl
-	LRQ2Es52mA1kg7lCfnuhFdvolxUWtM4nzJRhSMrTHC70YhsHBHpNVA6KLigUTzyTxpkhwYBnMSy/P
-	vWi8S4NjEqMdUosJ0DJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FG4keYHm8vV8wmhS78rIDIZsaxWFh8eyntlRRn1KowI=; b=M6lauoJxPqa9O0
+	BIhfGxLteksDT5aHU+U3p60mVeaNaH3i/OnXPAOcf11WmeuqjJkUJnAvQ30xL0zGV7aLVXWHGLqTn
+	5payvre2wTLFLfxEN0H4czy24jDpIK9wkwyzFjtVH3/4llEb+1SdiCgt2w2L4P0aymIkzDSps3ppp
+	Xr8FK+zpy9Lidg1/lGlhYY/g5W0oo5Nm0V4fbP5ot8n1sTkpxBLhK7rN57lHgUb+MRy0xJXEivojw
+	8Tq5NaEVEWuGQ8rV/JVO5Q/CIrjpIg9DwrXgJw6WpPLch+f/dluuFdVNdyGauF43VA/iVzFu6TRxA
+	oXumRHQU9JMibH72/jUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUYU0-00BXZ4-2W;
-	Fri, 11 Aug 2023 20:11:40 +0000
-Received: from uvw.ixypsilon.net ([81.223.58.118])
+	id 1qUdYx-00CLHQ-1q;
+	Sat, 12 Aug 2023 01:37:07 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUYTx-00BXX1-0M;
-	Fri, 11 Aug 2023 20:11:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ixypsilon.net; s=20210903; h=Content-Transfer-Encoding:MIME-Version:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=uqx6rDb8lMrAoJhRENG6RTKx5+D5I6ScWaggeCDeSQA=; b=o1m9ZC1XiE7aZ9IizgMJJlCLJx
-	YsgqpnbKq+aODX69GmvhCq1GDXjHu5b+raVOUwG7ee38mYiGadquBPk+dI1PntkGMftMIraw+zxdg
-	i7Q1lNrxQpiei8Pfy8uZl7AwCQydaVs+9UBFD7NIf1mjn2uVrIWWErLN3RxR883d/ypB24BlgDGUO
-	9gkkxcixFc1bxWmsLAD7NIL9TRtk2DmtIHaXkE5tG2HdvXT4QUzxbJFtXljjSVuZtkkKNODg2IHzA
-	dfx4+Fr3BdD0Le40fO7Gq+gY7Y0M6mGihFVcTD/4afYvxLhY44POyWCD/54E0ez4dOUBeXSh5a68H
-	oSYhRFbQ==;
-Received: from [192.168.0.1] (helo=librem14.Hitronhub.home)
-	by uvw.ixypsilon.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <stefan.nagy@ixypsilon.net>)
-	id 1qUYTn-0000uL-GC; Fri, 11 Aug 2023 22:11:27 +0200
-From: Stefan Nagy <stefan.nagy@ixypsilon.net>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Enable internal SPI flash for ROCK Pi 4A/B/C
-Date: Fri, 11 Aug 2023 22:11:18 +0200
-Message-Id: <20230811201118.15066-1-stefan.nagy@ixypsilon.net>
-X-Mailer: git-send-email 2.30.2
+	id 1qUdYt-00CLFg-0O;
+	Sat, 12 Aug 2023 01:37:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1691804223; x=1723340223;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=InQwijdXw9W+QsSLGg97dJTKcOqeU8+07ewmIVxJV4I=;
+  b=QPageSS5VL07idujR4MthMo+R30+lmNoVlWu/O0S7r5sxJyIk63WCoW4
+   B+g1EBFpzZAKEKT93J9TbaQidTWxNQqXWYV8YjQfddiAacZZcVR84kuj0
+   X+JYNaYMqzhcQdYZChQDxJlmGfJ2JH3l8vCwWsJTVmYJ8dKlQ0sKHi0Sa
+   LNNv3Ce9XMDvhZ/4uH6ySFFA3ghPm2Dof4kaX2rvMkbDmGJilbv4oK6Eb
+   9wEYYSTKn8chyvCsoNSXiAEWmUHNf2TR6eS6DrHRa3YDS7A1+rZA2ejmF
+   u0r44BYw6kqt+R+YjqWfPlFaz7noyXE0Ma0sXliW4qJSZteXEE5lis2Q5
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="371797634"
+X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
+   d="scan'208";a="371797634"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="1063472658"
+X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
+   d="scan'208";a="1063472658"
+Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.79]) ([10.254.215.79])
+  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:35 -0700
+Message-ID: <dde32ea5-2b1a-1148-c329-3c52ffcb71a7@linux.intel.com>
+Date: Sat, 12 Aug 2023 09:36:33 +0800
 MIME-Version: 1.0
-X-Spam_score: -1.0
-X-Spam_bar: -
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
+ <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
+ Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v6 02/25] iommu: Add IOMMU_DOMAIN_PLATFORM
+To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
+ <andersson@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
+ <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>
+References: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+Content-Language: en-US
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_131137_444224_86DB4511 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230811_183703_190293_8E797205 
+X-CRM114-Status: GOOD (  28.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,86 +105,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ROCK Pi 4A, ROCK Pi 4B and ROCK Pi 4C boards contain a nor-flash chip
-connected to spi1. Enable spi1 and add the device node.
+On 2023/8/3 8:07, Jason Gunthorpe wrote:
+> This is used when the iommu driver is taking control of the dma_ops,
+> currently only on S390 and power spapr. It is designed to preserve the
+> original ops->detach_dev() semantic that these S390 was built around.
+> 
+> Provide an opaque domain type and a 'default_domain' ops value that allows
+> the driver to trivially force any single domain as the default domain.
+> 
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/iommu.c | 14 +++++++++++++-
+>   include/linux/iommu.h |  6 ++++++
+>   2 files changed, 19 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 5e3cdc9f3a9e78..c64365169b678d 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1705,6 +1705,17 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
+>   
+>   	lockdep_assert_held(&group->mutex);
+>   
+> +	/*
+> +	 * Allow legacy drivers to specify the domain that will be the default
+> +	 * domain. This should always be either an IDENTITY or PLATFORM domain.
+> +	 * Do not use in new drivers.
+> +	 */
+> +	if (bus->iommu_ops->default_domain) {
+> +		if (req_type)
+> +			return ERR_PTR(-EINVAL);
+> +		return bus->iommu_ops->default_domain;
+> +	}
+> +
+>   	if (req_type)
+>   		return __iommu_group_alloc_default_domain(bus, group, req_type);
+>   
+> @@ -1967,7 +1978,8 @@ void iommu_domain_free(struct iommu_domain *domain)
+>   	if (domain->type == IOMMU_DOMAIN_SVA)
+>   		mmdrop(domain->mm);
+>   	iommu_put_dma_cookie(domain);
+> -	domain->ops->free(domain);
+> +	if (domain->ops->free)
+> +		domain->ops->free(domain);
+>   }
+>   EXPORT_SYMBOL_GPL(iommu_domain_free);
+>   
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index e05c93b6c37fba..87aebba474e093 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -64,6 +64,7 @@ struct iommu_domain_geometry {
+>   #define __IOMMU_DOMAIN_DMA_FQ	(1U << 3)  /* DMA-API uses flush queue    */
+>   
+>   #define __IOMMU_DOMAIN_SVA	(1U << 4)  /* Shared process address space */
+> +#define __IOMMU_DOMAIN_PLATFORM	(1U << 5)
+>   
+>   #define IOMMU_DOMAIN_ALLOC_FLAGS ~__IOMMU_DOMAIN_DMA_FQ
+>   /*
+> @@ -81,6 +82,8 @@ struct iommu_domain_geometry {
+>    *				  invalidation.
+>    *	IOMMU_DOMAIN_SVA	- DMA addresses are shared process addresses
+>    *				  represented by mm_struct's.
+> + *	IOMMU_DOMAIN_PLATFORM	- Legacy domain for drivers that do their own
+> + *				  dma_api stuff. Do not use in new drivers.
+>    */
+>   #define IOMMU_DOMAIN_BLOCKED	(0U)
+>   #define IOMMU_DOMAIN_IDENTITY	(__IOMMU_DOMAIN_PT)
+> @@ -91,6 +94,7 @@ struct iommu_domain_geometry {
+>   				 __IOMMU_DOMAIN_DMA_API |	\
+>   				 __IOMMU_DOMAIN_DMA_FQ)
+>   #define IOMMU_DOMAIN_SVA	(__IOMMU_DOMAIN_SVA)
+> +#define IOMMU_DOMAIN_PLATFORM	(__IOMMU_DOMAIN_PLATFORM)
+>   
+>   struct iommu_domain {
+>   	unsigned type;
+> @@ -256,6 +260,7 @@ struct iommu_iotlb_gather {
+>    * @owner: Driver module providing these ops
+>    * @identity_domain: An always available, always attachable identity
+>    *                   translation.
+> + * @default_domain: If not NULL this will always be set as the default domain.
+>    */
+>   struct iommu_ops {
+>   	bool (*capable)(struct device *dev, enum iommu_cap);
+> @@ -290,6 +295,7 @@ struct iommu_ops {
+>   	unsigned long pgsize_bitmap;
+>   	struct module *owner;
+>   	struct iommu_domain *identity_domain;
+> +	struct iommu_domain *default_domain;
 
-This patch has been tested on ROCK Pi 4A.
+I am imaging whether we can merge above two pointers into a single one.
+It is either an IDENTITY or PLATFORM domain and the core will choose it
+as the default domain of a group if iommu_group_alloc_default_domain()
+fails to allocate one through the iommu dev_ops.
 
-Signed-off-by: Stefan Nagy <stefan.nagy@ixypsilon.net>
----
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts | 10 ++++++++++
- 3 files changed, 30 insertions(+)
+Those iommu drivers that could result in a NULL default domain could
+provide such domain and guarantee that this domain is always usable for
+devices.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-index 89f2af5e1..4ea4bec95 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-@@ -11,3 +11,13 @@ / {
- 	model = "Radxa ROCK Pi 4A";
- 	compatible = "radxa,rockpi4a", "radxa,rockpi4", "rockchip,rk3399";
- };
-+
-+&spi1 {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <10000000>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-index 080654592..84b9d8b3d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -30,6 +30,16 @@ brcmf: wifi@1 {
- 	};
- };
- 
-+&spi1 {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <10000000>;
-+	};
-+};
-+
- &uart0 {
- 	status = "okay";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-index 4053ba726..39917f987 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-@@ -42,6 +42,16 @@ &sound {
- 	hp-det-gpio = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;
- };
- 
-+&spi1 {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <10000000>;
-+	};
-+};
-+
- &uart0 {
- 	status = "okay";
- 
--- 
-2.30.2
+Probably we could give it a more meaningful name? For example,
+supplemental_domain or rescue_domain?
 
+I am not sure whether this can address the NULL-default-domain issues
+of all drivers this series tries to address. So just for discussion
+purpose.
+
+Best regards,
+baolu
 
 _______________________________________________
 Linux-rockchip mailing list
