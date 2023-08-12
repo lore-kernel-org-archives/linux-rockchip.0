@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED573C0015E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Aug 2023 01:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488FFC001B0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Aug 2023 02:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nbMgykqB1qSz6KHDP0viK4kEw+vctlpnYeYrYkla3Bw=; b=oDDTfemlYRUoLM
-	Ft0EmmPL41nTd3zZFGyLds7B3FvlVA8a9Q4W/M6rMca0DZHntHmJCwtUqE8gSslYVP9PJA+3FQ6WT
-	cMWL9u1RYbLyBjaRCDmfsD8Rs9WzmHXBU5c5iTPrtT7aWGDSN7jUzQGApIslSCruDNhcLwRvJwZI/
-	p5/R+fZSZIRRJWc6sYJ4jiYL4LxMJVWpeX39VCqzBKsPsMmdl+v4akNb8k2RoPM/tGd/yuLSJ2PxQ
-	UwEfFglU6NCPlQiAKjjEbj81cHfKvX1bFqS7dwlKIzWpX7MefszaPdtXoBA6XyBbMZIZXVgzZBoxD
-	spWYOu12BSNiHsMKOemA==;
+	List-Owner; bh=Uj9gYbRK743ex3DcVEhw7SRrBunnePRtk8JdTwXYl1Y=; b=xk5ClKDAcefNXO
+	3hm50AP43dGfO6/+7+imEI33wjo7svaNreD2zxnieXogVXfBL7Y3O3b14aTQRyC0PmdKCWTWlXeqg
+	3vzm/jCk1SauSp+fy+wbIHU0RgytccKcymdwvu0Nwb91HMUomJnuZ8wxMLuI96Ae9BeOQfWLozsrb
+	QfsjRL7Dt5rQT9oBlJv9OoPn8j0L5hlPHxExGbCw+9jKYaaU9XlbrO3tfb/0UCo5tYM3IkNzdQbV2
+	TnEEEy6GQZ9zhOGS0FEer9ncxg24Cnzja7HkzNGbrRpbeYWLBTTdjvw18Ql9Pl+V3hAt/0GRSoh2N
+	8BiNMwHAi8fqIJ3RGB8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUdnc-00COaJ-0m;
-	Sat, 12 Aug 2023 01:52:16 +0000
-Received: from mgamail.intel.com ([192.55.52.151])
+	id 1qUeAh-00CSms-25;
+	Sat, 12 Aug 2023 02:16:07 +0000
+Received: from mgamail.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUdnY-00COYi-2B;
-	Sat, 12 Aug 2023 01:52:13 +0000
+	id 1qUeAb-00CSlC-0C;
+	Sat, 12 Aug 2023 02:16:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691805132; x=1723341132;
+  t=1691806561; x=1723342561;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=eUUEU5LEbeviw+Tdt86pjS6LMPIps7FsAMnnYjoKRyE=;
-  b=UZN6QFXkJu+bouzAW/U0dN6PbqgsL7qfMxWvh1wsxjaWTd5Ajxswjpq6
-   aW9pVPY1lRDK3G2yKn91SG0pI8D7QU3/ftAT0FPXy+w7bPNYVgNPghSY1
-   0nwYnMi1dKpWeq2sZ7AentbBtG/NRADCR8u6iqZ3Pf052iT+xnl8O02zq
-   cnQYc+hd4HsdKnBrA06qm0PXq+z59J7vzrdteANNYvwXI9PP1NM/VgcJU
-   7Dl6L3p5QFD6VeovONXhRQ6OdPrsrGtHko2L+q4L7eaQuzVBCZ5tB/qd0
-   9N000sH+P/PCW8fcf1CSOHeRIYNdZN/iwLZytEKNW/lKHaD+WzRBCq01O
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="352121579"
+  bh=sbxhrY1MVdB36V2CNTZkugKnmcToq8EzXXuZlM20LSI=;
+  b=iboib7AyC7I0SuPpICZB+Hpj1+TUZL8LEzHpu+ZKnJDrW7JjtFzniZFF
+   8YaaaIvA62wZ0F1j9IewqpRXZEXQntNteY4eB8svKtmqOx0EyAO0mim6A
+   x/w4cHxcyl106xoMsyNmCh8mfdlUxhJfYxTlzUGqCY/2vQM/JHaAZFXQb
+   q1Vd1Q4b/38HiaZnlzMcsGCkuI68EHSDv9a+TTdd3Nl+h3HfFWYYaSOmF
+   q3mg4UhqLFGNq/Tl3Y84+cUUewuk2Ugu0Sp6JGlCwGTym9A18WFgd4MUr
+   1DYrmRchrUvPPcknrNOpnN7J7hG/Ioznm56ayI8s7F0tcAXmjPPt5brfl
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="375507200"
 X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="352121579"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:52:04 -0700
+   d="scan'208";a="375507200"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 19:15:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.01,202,1684825200"; 
-   d="scan'208";a="876364144"
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="979386282"
+X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
+   d="scan'208";a="979386282"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.79]) ([10.254.215.79])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:51:57 -0700
-Message-ID: <6bb11581-4b24-1e54-d3f6-674cde3e4539@linux.intel.com>
-Date: Sat, 12 Aug 2023 09:51:51 +0800
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 19:15:45 -0700
+Message-ID: <b50a464a-fa28-e359-1bc5-4f2b105326ad@linux.intel.com>
+Date: Sat, 12 Aug 2023 10:15:42 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
@@ -59,7 +60,8 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 06/25] iommu/tegra-gart: Remove tegra-gart
+Subject: Re: [PATCH v6 08/25] iommu: Reorganize
+ iommu_get_default_domain_type() to respect def_domain_type()
 Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -87,12 +89,12 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
-References: <6-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+References: <8-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <6-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <8-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_185212_731052_3554B287 
-X-CRM114-Status: GOOD (  20.37  )
+X-CRM114-CacheID: sfid-20230811_191601_178556_1DAEE58A 
+X-CRM114-Status: GOOD (  31.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,44 +112,205 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2023/8/3 8:07, Jason Gunthorpe wrote:
-> Thierry says this is not used anymore, and doesn't think it makes sense as
-> an iommu driver. The HW it supports is about 10 years old now and newer HW
-> uses different IOMMU drivers.
+> Except for dart every driver returns 0 or IDENTITY from def_domain_type().
 > 
-> As this is the only driver with a GART approach, and it doesn't really
-> meet the driver expectations from the IOMMU core, let's just remove it
-> so we don't have to think about how to make it fit in.
+> The drivers that return IDENTITY have some kind of good reason, typically
+> that quirky hardware really can't support anything other than IDENTITY.
 > 
-> It has a number of identified problems:
->   - The assignment of iommu_groups doesn't match the HW behavior
+> Arrange things so that if the driver says it needs IDENTITY then
+> iommu_get_default_domain_type() either fails or returns IDENTITY.  It will
+> never reject the driver's override to IDENTITY.
 > 
->   - It claims to have an UNMANAGED domain but it is really an IDENTITY
->     domain with a translation aperture. This is inconsistent with the core
->     expectation for security sensitive operations
+> The only real functional difference is that the PCI untrusted flag is now
+> ignored for quirky HW instead of overriding the IOMMU driver.
 > 
->   - It doesn't implement a SW page table under struct iommu_domain so
->     * It can't accept a map until the domain is attached
->     * It forgets about all maps after the domain is detached
->     * It doesn't clear the HW of maps once the domain is detached
->       (made worse by having the wrong groups)
+> This makes the next patch cleaner that wants to force IDENTITY always for
+> ARM_IOMMU because there is no support for DMA.
 > 
-> Cc: Thierry Reding<treding@nvidia.com>
-> Cc: Dmitry Osipenko<digetx@gmail.com>
-> Acked-by: Thierry Reding<treding@nvidia.com>
-> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
+> Tested-by: Steven Price <steven.price@arm.com>
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->   arch/arm/configs/multi_v7_defconfig |   1 -
->   arch/arm/configs/tegra_defconfig    |   1 -
->   drivers/iommu/Kconfig               |  11 -
->   drivers/iommu/Makefile              |   1 -
->   drivers/iommu/tegra-gart.c          | 371 ----------------------------
->   drivers/memory/tegra/mc.c           |  34 ---
->   drivers/memory/tegra/tegra20.c      |  28 ---
->   include/soc/tegra/mc.h              |  26 --
->   8 files changed, 473 deletions(-)
->   delete mode 100644 drivers/iommu/tegra-gart.c
+>   drivers/iommu/iommu.c | 66 +++++++++++++++++++++----------------------
+>   1 file changed, 33 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index c64365169b678d..53174179102d17 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1669,19 +1669,6 @@ struct iommu_group *fsl_mc_device_group(struct device *dev)
+>   }
+>   EXPORT_SYMBOL_GPL(fsl_mc_device_group);
+>   
+> -static int iommu_get_def_domain_type(struct device *dev)
+> -{
+> -	const struct iommu_ops *ops = dev_iommu_ops(dev);
+> -
+> -	if (dev_is_pci(dev) && to_pci_dev(dev)->untrusted)
+> -		return IOMMU_DOMAIN_DMA;
+> -
+> -	if (ops->def_domain_type)
+> -		return ops->def_domain_type(dev);
+> -
+> -	return 0;
+> -}
+> -
+>   static struct iommu_domain *
+>   __iommu_group_alloc_default_domain(const struct bus_type *bus,
+>   				   struct iommu_group *group, int req_type)
+> @@ -1775,36 +1762,49 @@ static int iommu_bus_notifier(struct notifier_block *nb,
+>   static int iommu_get_default_domain_type(struct iommu_group *group,
+>   					 int target_type)
+>   {
+> +	const struct iommu_ops *ops = dev_iommu_ops(
+> +		list_first_entry(&group->devices, struct group_device, list)
+> +			->dev);
 
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+How about consolidating above into a single helper?
+
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -1787,6 +1787,21 @@ __iommu_group_alloc_default_domain(struct 
+iommu_group *group, int req_type)
+  	return __iommu_group_domain_alloc(group, req_type);
+  }
+
++/*
++ * Returns the iommu_ops for the devices in an iommu group.
++ *
++ * It is assumed that all devices in an iommu group are managed by a single
++ * IOMMU unit. Therefore, this returns the dev_iommu_ops of the first 
+device
++ * in the group.
++ */
++static const struct iommu_ops *group_iommu_ops(struct iommu_group *group)
++{
++	struct group_device *device;
++
++	device = list_first_entry(&group->devices, struct group_device, list);
++	return dev_iommu_ops(device->dev);
++}
++
+  /*
+   * req_type of 0 means "auto" which means to select a domain based on
+   * iommu_def_domain_type or what the driver actually supports.
+@@ -1794,10 +1809,7 @@ __iommu_group_alloc_default_domain(struct 
+iommu_group *group, int req_type)
+  static struct iommu_domain *
+  iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
+  {
+-	struct device *dev =
+-		list_first_entry(&group->devices, struct group_device, list)
+-			->dev;
+-	const struct iommu_ops *ops = dev_iommu_ops(dev);
++	const struct iommu_ops *ops = group_iommu_ops(group);
+  	struct iommu_domain *dom;
+
+  	lockdep_assert_held(&group->mutex);
+@@ -1888,9 +1900,7 @@ static int iommu_bus_notifier(struct 
+notifier_block *nb,
+  static int iommu_get_default_domain_type(struct iommu_group *group,
+  					 int target_type)
+  {
+-	const struct iommu_ops *ops = dev_iommu_ops(
+-		list_first_entry(&group->devices, struct group_device, list)
+-			->dev);
++	const struct iommu_ops *ops = group_iommu_ops(group);
+  	int best_type = target_type;
+  	struct group_device *gdev;
+  	struct device *last_dev;
+@@ -2124,13 +2134,9 @@ static struct iommu_domain 
+*__iommu_domain_alloc(const struct iommu_ops *ops,
+  static struct iommu_domain *
+  __iommu_group_domain_alloc(struct iommu_group *group, unsigned int type)
+  {
+-	struct device *dev =
+-		list_first_entry(&group->devices, struct group_device, list)
+-			->dev;
+-
+  	lockdep_assert_held(&group->mutex);
+
+-	return __iommu_domain_alloc(dev_iommu_ops(dev), dev, type);
++	return __iommu_domain_alloc(group_iommu_ops(group), dev, type);
+  }
+
+  struct iommu_domain *iommu_domain_alloc(const struct bus_type *bus)
+
+>   	int best_type = target_type;
+>   	struct group_device *gdev;
+>   	struct device *last_dev;
+> +	int type;
+>   
+>   	lockdep_assert_held(&group->mutex);
+> -
+>   	for_each_group_device(group, gdev) {
+> -		unsigned int type = iommu_get_def_domain_type(gdev->dev);
+> -
+> -		if (best_type && type && best_type != type) {
+> -			if (target_type) {
+> -				dev_err_ratelimited(
+> -					gdev->dev,
+> -					"Device cannot be in %s domain\n",
+> -					iommu_domain_type_str(target_type));
+> -				return -1;
+> -			}
+> -
+> -			dev_warn(
+> -				gdev->dev,
+> -				"Device needs domain type %s, but device %s in the same iommu group requires type %s - using default\n",
+> -				iommu_domain_type_str(type), dev_name(last_dev),
+> -				iommu_domain_type_str(best_type));
+> -			return 0;
+> +		type = best_type;
+> +		if (ops->def_domain_type) {
+> +			type = ops->def_domain_type(gdev->dev);
+> +			if (best_type && type && best_type != type)
+> +				goto err;
+>   		}
+> -		if (!best_type)
+> -			best_type = type;
+> +
+> +		if (dev_is_pci(gdev->dev) && to_pci_dev(gdev->dev)->untrusted) {
+> +			type = IOMMU_DOMAIN_DMA;
+> +			if (best_type && type && best_type != type)
+> +				goto err;
+> +		}
+> +		best_type = type;
+>   		last_dev = gdev->dev;
+>   	}
+>   	return best_type;
+> +
+> +err:
+> +	if (target_type) {
+> +		dev_err_ratelimited(
+> +			gdev->dev,
+> +			"Device cannot be in %s domain - it is forcing %s\n",
+> +			iommu_domain_type_str(target_type),
+> +			iommu_domain_type_str(type));
+> +		return -1;
+> +	}
+> +
+> +	dev_warn(
+> +		gdev->dev,
+> +		"Device needs domain type %s, but device %s in the same iommu group requires type %s - using default\n",
+> +		iommu_domain_type_str(type), dev_name(last_dev),
+> +		iommu_domain_type_str(best_type));
+> +	return 0;
+
+This doesn't match the commit message, where it states:
+
+"Arrange things so that if the driver says it needs IDENTITY then
+  iommu_get_default_domain_type() either fails or returns IDENTITY.
+"
+
+I saw that this change was made in the sequential patch. It is probably
+better to put that here?
+
+>   }
+>   
+>   static void iommu_group_do_probe_finalize(struct device *dev)
 
 Best regards,
 baolu
