@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8147CC001DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Aug 2023 02:14:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94668EB64DD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Aug 2023 02:20:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4B1DKd78CMt0AMGs51qxCcTVwURzzrC0Tv6DRZgpjA0=; b=N5iZUikAObRO9b
-	/W2XJJxK7DQcdDjaNSTQwFCO5qDyaDoprxHoP9uXyAU69itu5114Z2d+Ql/31LW5tmfSJlvANOGSK
-	WnQXpj+xzSCqGVLFbDOHJFBB5IPG6SgxPrwszcCar1Do7FF0gOj1xHSmy3/NTHh7Qah+yBvS0knm9
-	yolAOpTMt2Y3o3B1N6yelZtuPT+ib9fVXdJHWT/Mg86FKXA50DdKyAj0Rsl7B6Bqp6W81dTCVTF9z
-	nLeQjhWh76TtXSPGLVeRux+0i3bLNpKcQ6fHswvrqlP29pn+/+OVK5ah0KV+dox/uJvBf5n702FEl
-	l2+ssmHzp6yyTPYh+xfQ==;
+	List-Owner; bh=8R8ChA5MCoB02MvJnwhBMTA2OeaRDSFhyc8w2f5vkSU=; b=KJgRhcYP47iRgm
+	xiOmSUF/792RPDpK9/7G26sEd1fMw8y45t2NbxqAtiusQli/CTk9t5QXmGl81NnqfdsTZ6PMqQIXY
+	sC/mX5RDGKTN/4//lcH23VzBmH73G/TA9aNLYrar93NIK4ORkQbQxGVDfx9O54ilyyDb6M7yoftI7
+	sOGhtol7jLa1ua2o3PlVCY9Qla1nDZCAMQykyy13DU5RJRCkuwa8E7iwP0m/FstSUWb3btyKaMyzA
+	sngzGuacWTpkX25DmhQ2M0bzf4USKprWGhud/IkmEOdQj/fHtG+QBFbmNLdsK/yFTyppKJ9xf4rx9
+	Gvs4CzYFs6SHQYwV3l2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVN5m-00FzsW-2e;
-	Mon, 14 Aug 2023 02:14:02 +0000
-Received: from mgamail.intel.com ([192.55.52.115])
+	id 1qVNCH-00G0Gx-0t;
+	Mon, 14 Aug 2023 02:20:45 +0000
+Received: from mgamail.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVN5j-00FzrY-0K;
-	Mon, 14 Aug 2023 02:14:00 +0000
+	id 1qVNCD-00G0FM-0m;
+	Mon, 14 Aug 2023 02:20:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691979239; x=1723515239;
+  t=1691979641; x=1723515641;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=D0cMxkzz2W3U1WROUJDub6YFpGLwPPBS6a8Mkd5QN7w=;
-  b=mxZ/JMwtjUqpMBq1HS2sRs/4KM4v7x+ZyOk1nmb4hPiZnqurFCY1JCLT
-   ySod+08bWB5JfMN8SrGTuraYBCRXXnVg0WinLrWgL96brCJTmmrCB6EM9
-   PVXEZbtWIt5wCcHYQECNzcIfVuuuAY5xv29B7n7I36WZNosjcjJYcWZhV
-   QJTiLUheWJgUToSNjom+sixrbMMm0g4L5dlVRtcJShCMkt/AkbZPEYfUi
-   r/pSSDll9e0NDQcU4jzjEQArPpjQKWMbL7owrwQAj1VByZQepsImrLQpV
-   CTwrxLsG5u7xu3bOPM/w9E00sFDKRE/2tG7/jRfY7jcS3iIX16cMqY+OA
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="371948304"
+  bh=BKroavBK6EnBprtuPd4BTHpO6ajK8Y/4HL8VYFF7pWY=;
+  b=erS6ziD6eOrfBs30IhdNcEGljp0bYzVgMvY+XhEnHB0PhmJ6Zmj5DDBV
+   n6nW/PlyWv9Q1eJ+slDYHbSbfAMpIFqHKroKBWKVt+4+mcwwYuPf3GxDZ
+   BtMKOR3zbq1tiaXFmuWlDWwaGTxbHC3Yg7z1lRijqpWc8SNQGUQqByoMg
+   +1bVuPdqSDjGjin8dIQrshyzIR5Lk6OVtLY1tTd2715Z4hm8R+pWfQlsM
+   +UJojGwks4vxMdoecEjJ7iLqg40ZDEcYYV5a10tP/tQDqEkoffGh5/mNE
+   TXvkDhfT4k9hPjTIYGsYk+d0zLwFBzcRHgFjNZmu4FSHBRTNn1JPSsp+z
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="374714055"
 X-IronPort-AV: E=Sophos;i="6.01,171,1684825200"; 
-   d="scan'208";a="371948304"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 19:13:58 -0700
+   d="scan'208";a="374714055"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 19:20:39 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="823277535"
+X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="768282809"
 X-IronPort-AV: E=Sophos;i="6.01,171,1684825200"; 
-   d="scan'208";a="823277535"
+   d="scan'208";a="768282809"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.255.29.49]) ([10.255.29.49])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 19:13:47 -0700
-Message-ID: <de9d9270-e510-b888-449c-d936a940d514@linux.intel.com>
-Date: Mon, 14 Aug 2023 10:13:45 +0800
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 19:20:28 -0700
+Message-ID: <98f23aee-6861-3aa6-d50d-d712985a09c7@linux.intel.com>
+Date: Mon, 14 Aug 2023 10:20:25 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
@@ -60,8 +60,8 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 03/25] powerpc/iommu: Setup a default domain and remove
- set_platform_dma_ops
+Subject: Re: [PATCH v6 04/25] iommu: Add IOMMU_DOMAIN_PLATFORM for S390
+Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
  <andersson@kernel.org>,
@@ -88,13 +88,12 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
-References: <3-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
-Content-Language: en-US
+References: <4-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <3-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <4-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230813_191359_157609_B08802D7 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20230813_192041_377046_4AF9259F 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,25 +111,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2023/8/3 8:07, Jason Gunthorpe wrote:
-> POWER is using the set_platform_dma_ops() callback to hook up its private
-> dma_ops, but this is buired under some indirection and is weirdly
-> happening for a BLOCKED domain as well.
+> The PLATFORM domain will be set as the default domain and attached as
+> normal during probe. The driver will ignore the initial attach from a NULL
+> domain to the PLATFORM domain.
 > 
-> For better documentation create a PLATFORM domain to manage the dma_ops,
-> since that is what it is for, and make the BLOCKED domain an alias for
-> it. BLOCKED is required for VFIO.
+> After this, the PLATFORM domain's attach_dev will be called whenever we
+> detach from an UNMANAGED domain (eg for VFIO). This is the same time the
+> original design would have called op->detach_dev().
 > 
-> Also removes the leaky allocation of the BLOCKED domain by using a global
-> static.
+> This is temporary until the S390 dma-iommu.c conversion is merged.
 > 
+> Tested-by: Heiko Stuebner<heiko@sntech.de>
+> Tested-by: Niklas Schnelle<schnelle@linux.ibm.com>
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 > ---
->   arch/powerpc/kernel/iommu.c | 38 +++++++++++++++++--------------------
->   1 file changed, 17 insertions(+), 21 deletions(-)
-
-Not sure how to fix the fake blocking domain in this driver.
-
-But it's not the purpose of this patch, so
+>   drivers/iommu/s390-iommu.c | 21 +++++++++++++++++++--
+>   1 file changed, 19 insertions(+), 2 deletions(-)
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
