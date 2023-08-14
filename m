@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA695C04A6A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Aug 2023 05:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9919C001DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Aug 2023 05:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EyAkDQQKgvC+yYrslKHIOzOWAk/OU4/4SPW406WaJ84=; b=ThisyK/dFe4VK2
-	cZ/QP1Z088ChB8yjbdycuSHBH+RSzv0MTogk0fMWOFhdzT7PSznbTTlcZPemBDTjzFIk3fLbdz6QT
-	+vZ9dC6BaQlG1QvFvBbdrI8BYnJER7gbIuJfIbPsGZQgryAAdqExyBK3rF23lnJl8qEcWJR/B36Z9
-	STUPLdgKvSdepFJUZTujVxJKxS06qg6yoN4EzRWcw6JY/YsVhTApq0c10Bgwgl8DyxH4oGGgMvlt3
-	2P6nJ4Zy04rmaCX2L2y9OawqfF1YK3znhRE5N2YwJmUrx8JslzWI+C2hv9qP4jcO0i4fTCRhxrpkb
-	3llgTGw83LkZP794/Uvg==;
+	List-Owner; bh=14cDncG/3icP07WkVL15QZ1fhqd8vR/bE/304lu5VuU=; b=Xc1MU5Pz9zIuX0
+	MeSSEKYTduUpaFKVkWZL82qr6O8WZwzNr0G0YV5eTENWevRaNAGj/Huj7DXCA5hVDkGz8GvCBn0bp
+	vR28yxX2iOweHaN41IjCf0ixEAgAfYJ5XXcLf4UZMqOPmlfbDk/Pgr8aZ+MByLH3B99BSC4qyGryh
+	S5NlaCWV82hNK6t/o18IL3q0n5TqshZSwNZEO6QsOh9UsCEOKEkCqY6yQgWvTeAvsj5kCc7CVSATb
+	gL+xmJcfE5Y48c55ookEJeIKjpYFD8Ji5mDsjN/cZ/VvDrmv4wk2gTcmA94lugMmr/EgsA/gl3WmB
+	YfIrRnth6Sdd2f74Nk5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVPp2-00GAsM-1Z;
-	Mon, 14 Aug 2023 05:08:56 +0000
-Received: from mgamail.intel.com ([192.55.52.88])
+	id 1qVPqt-00GB3j-01;
+	Mon, 14 Aug 2023 05:10:51 +0000
+Received: from mgamail.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVPoz-00GArU-1w;
-	Mon, 14 Aug 2023 05:08:54 +0000
+	id 1qVPqp-00GB2M-0m;
+	Mon, 14 Aug 2023 05:10:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691989733; x=1723525733;
+  t=1691989847; x=1723525847;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=fbQxPjZnY0DuGHhK25w0Zhh0FieYTmdMp1vAFT8U97s=;
-  b=PJKQ/u1OodAVVgWEMlcV6TFibn92FwNEYGzexI5HJ1GyrQzy19YKTnOF
-   kW55hlde0quLqSZHoWvbqFORtNE/WN9Zt4JOcvvA0YG1qBmtIluR3F2oN
-   9SQ2oHrRomH2+BowtGZ8nR1ZASeOYfKRO/nNodHC17Lyee+iuSevn1Wyv
-   cfrOGOfIQ0flguF9W/eHBKcBmf+WTSoM69mZIb8IhjQavZjSphb4h1wdn
-   kgdTh3N1VMCs7dTc9j27DDT+rGQ3L5fKz04CIUV1DpjfWqpUo6mEfurv6
-   +OEfDtviNpwiNQ1d+skgoLHoPKIUyYGteYt5QmNEBMPxowbc15TVCBXGC
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="402946763"
+  bh=TUpy0yCpdy1QocZ9SL6jg1gXIK1RHtcIWUumpNs6efA=;
+  b=Uwp/0Ua0pgDzAZwjgyNsRaLVOCF+OVBFYocNsHyq5C2piX48PAJCxJCV
+   w2HLlwhhzQ7lrkf4Sf7LwIL0VsUBl/3h/5YsLZ1sIBDbPG4H6NyIm5wln
+   2V8Rwb5hnsbQY3FR+ee+ygpj0t/mkaIpmGIep/XWE+SST1aEg6gJt/j+/
+   wh4kesZ2C/R34/Q5WjEvxIzHGGULNDe266rh5TKDvzT1OAaLl/Xh4Mena
+   D0BIP/ibAfi8whKvUJvD+VBlMNpuy0kTbsq66PhojWtBYnrlpaHAFyeEF
+   lXvDm+Mo//5hXmOFjqeTm0liJhlZlRp0E5veCjOcX0QuRbH2l4asfT/xo
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="369434651"
 X-IronPort-AV: E=Sophos;i="6.01,171,1684825200"; 
-   d="scan'208";a="402946763"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 22:08:52 -0700
+   d="scan'208";a="369434651"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 22:10:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="856945336"
+X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="710202088"
 X-IronPort-AV: E=Sophos;i="6.01,171,1684825200"; 
-   d="scan'208";a="856945336"
+   d="scan'208";a="710202088"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.255.29.49]) ([10.255.29.49])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 22:08:41 -0700
-Message-ID: <6675bf11-ed80-15b9-b8bc-dee65b595ba5@linux.intel.com>
-Date: Mon, 14 Aug 2023 13:08:39 +0800
+  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 22:10:34 -0700
+Message-ID: <2997ef72-37bd-109b-d659-71f259c64eb5@linux.intel.com>
+Date: Mon, 14 Aug 2023 13:10:32 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
@@ -60,7 +60,7 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 12/25] iommu/tegra-smmu: Support DMA domains in tegra
+Subject: Re: [PATCH v6 13/25] iommu/omap: Implement an IDENTITY domain
 Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -88,12 +88,12 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
-References: <12-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+References: <13-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <12-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <13-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230813_220853_675099_922DE346 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20230813_221047_316787_BF58FEBD 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,54 +110,22 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/3 8:07, Jason Gunthorpe wrote:
-> All ARM64 iommu drivers should support IOMMU_DOMAIN_DMA to enable
-> dma-iommu.c.
+On 2023/8/3 8:08, Jason Gunthorpe wrote:
+> What omap does during omap_iommu_set_platform_dma() is actually putting
+> the iommu into identity mode.
 > 
-> tegra is blocking dma-iommu usage, and also default_domain's, because it
-> wants an identity translation. This is needed for some device quirk. The
-> correct way to do this is to support IDENTITY domains and use
-> ops->def_domain_type() to return IOMMU_DOMAIN_IDENTITY for only the quirky
-> devices.
+> Move to the new core support for ARM_DMA_USE_IOMMU by defining
+> ops->identity_domain.
 > 
-> Add support for IOMMU_DOMAIN_DMA and force IOMMU_DOMAIN_IDENTITY mode for
-> everything so no behavior changes.
+> This driver does not support IOMMU_DOMAIN_DMA, however it cannot be
+> compiled on ARM64 either. Most likely it is fine to support dma-iommu.c
 > 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 > ---
->   drivers/iommu/tegra-smmu.c | 8 +++++++-
->   1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-> index f63f1d4f0bd10f..6cba034905edbf 100644
-> --- a/drivers/iommu/tegra-smmu.c
-> +++ b/drivers/iommu/tegra-smmu.c
-> @@ -276,7 +276,7 @@ static struct iommu_domain *tegra_smmu_domain_alloc(unsigned type)
->   {
->   	struct tegra_smmu_as *as;
->   
-> -	if (type != IOMMU_DOMAIN_UNMANAGED)
-> +	if (type != IOMMU_DOMAIN_UNMANAGED && type != IOMMU_DOMAIN_DMA)
->   		return NULL;
->   
->   	as = kzalloc(sizeof(*as), GFP_KERNEL);
-> @@ -989,6 +989,12 @@ static int tegra_smmu_def_domain_type(struct device *dev)
->   }
->   
->   static const struct iommu_ops tegra_smmu_ops = {
-> +	/*
-> +	 * FIXME: For now we want to run all translation in IDENTITY mode,
-> +	 * better would be to have a def_domain_type op do this for just the
-> +	 * quirky device.
-> +	 */
-> +	.default_domain = &tegra_smmu_identity_domain,
+>   drivers/iommu/omap-iommu.c | 21 ++++++++++++++++++---
+>   1 file changed, 18 insertions(+), 3 deletions(-)
 
-tegra_smmu_def_domain_type() has already forced the core to use
-ops->identity_domain, why do we still need ops->default_domain?
-
->   	.identity_domain = &tegra_smmu_identity_domain,
->   	.def_domain_type = &tegra_smmu_def_domain_type,
->   	.domain_alloc = tegra_smmu_domain_alloc,
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
 Best regards,
 baolu
