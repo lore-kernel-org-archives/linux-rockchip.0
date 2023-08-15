@@ -4,98 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DBAC001DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Aug 2023 01:35:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C85FC0015E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Aug 2023 12:59:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5tLdKd3RdBix0So7GYFOymG/92cZko6uII5gvt4RBZk=; b=zG3nTHVPgPPD5f
-	AvLLk6ySaeiYp8L02bEUdByNGxB3SUtgWYL/gABr4exYGirU4udVWTNjELXhS5OsahlG2YAPLNHAt
-	zIn6l9NkKIpq+yi1+qBPjbgleclWhPBtKeTy4KqsMFJCGhrB2WCqiJdQcdlI2VXbQ6VRxwFk0rUcO
-	VJn/S0zgvXWNNJ65ClAa9vgUDvuc1iKdcVWSr5E0RE0reQHeaRedngiAxmo3g2o/yxMdbu7u69uYK
-	nkTtdYz+Xat1U+uaYFeZRgLXb0+DfQLx0OE/M+riZGlz7TEOdoQduuqG843gTuYbTZF5w/mdFXK+v
-	dj4bZp66JYkQWNj2Dcpw==;
+	List-Owner; bh=/9XS/8HxnJaE15OwNWL0W7YhTEsYUeaoVXDSC4JssoU=; b=rRDemt0wVwp60A
+	skeDmcgNGYJlJwdmyfYQZdUakBib6hwTN5VPff3NdReyWf8ccDzjcqmasTOkxRWnotq4Xz8RJJTTx
+	6jAvAvC3W9nl5AywbLPU7qBmPxWv7/BwRvFakRjqKfoK04bedwh7sxlEK7YU5sgdcmkyT/ytjXm5O
+	7+A8rCb1Gs5+rQ8IHFWiMK6u+4mOfw/tnS72IqbqgdvecEDQDMHFToOplnE3xqElabN6/tyvQEW/C
+	n7yuJUNT+YH+ZeopxXT2YbNSvO3jx7a/R5YXu03vgl8W71vqlwuYnf8irHRvIRFJwfXIFiYXtRU6g
+	ayJX4DYm7vHuGq36ATIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVixN-000fyW-1B;
-	Tue, 15 Aug 2023 01:34:49 +0000
-Received: from mgamail.intel.com ([134.134.136.31])
+	id 1qVtdv-001eAv-3B;
+	Tue, 15 Aug 2023 12:59:27 +0000
+Received: from forward103b.mail.yandex.net ([2a02:6b8:c02:900:1:45:d181:d103])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVixJ-000fxY-2O;
-	Tue, 15 Aug 2023 01:34:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1692063285; x=1723599285;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=jkr/6uy80FBJ1zVM9rO0oVAo4kuNs+82saVQaD5txn0=;
-  b=idt4CGF2kLf+rGN3fWSU+WKTCnYsSf+q5ZRypDbiVROKVGYcKlSE/hVY
-   2ZZMyWVvxD4/W2cCIS119kv/eZe0zWZx+koHMytgd1mnbMzSL69fdguj1
-   nb6Qw0MAng+3AeBw+ArrokS+6TfCHtgOYBP605q+g+lq0fi2NM6pm+FzM
-   qSqYSHKeao37wbbeqEI/4NoHG6N8xUCcnu1lUBMswqigSjnnwxjFNj+Vp
-   3xFVLi1MR9PbsyokoxMSdO32zjnRY8aFIezWL/+Vv5YywegPEZqTSmV27
-   CYNBB5hul+5urEDK0pVDrcu0EZvMJuN7rd6AFeZTiO1XUrBVSaDiXskmF
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="436073292"
-X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="436073292"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 18:34:43 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="768654964"
-X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="768654964"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.149]) ([10.254.215.149])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 18:34:30 -0700
-Message-ID: <7fdbf6a5-87a2-65c1-7c1e-d7b936dd3a67@linux.intel.com>
-Date: Tue, 15 Aug 2023 09:34:28 +0800
+	id 1qVtdr-001e9d-2N;
+	Tue, 15 Aug 2023 12:59:25 +0000
+Received: from mail-nwsmtp-smtp-production-main-91.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-91.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:17a3:0:640:53a6:0])
+	by forward103b.mail.yandex.net (Yandex) with ESMTP id 900576008A;
+	Tue, 15 Aug 2023 15:59:14 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-91.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 3xeYJg5Wma60-NJiIOuGT;
+	Tue, 15 Aug 2023 15:59:13 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692104354;
+	bh=qVobqAw1ejIeOmOQL3G2D1I+HOKk97SjxD2o3Soufo4=;
+	h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
+	b=TzaQnxGslyFELK2A8isOQFJlRqsl1BMGBTYnSU9v2DDDFD+92kQZDxyVdL9oZVBuf
+	 m/JUeBf8nCsX1joutmBJtUrbIDTY9zut9nzcI/IuVYpTG8HCr8PdxtEYF+Tt6rCt3i
+	 snm5h3JLrGSoZsGzcmZh6xQ/rguVG4YniWUOgpfg=
+Authentication-Results: mail-nwsmtp-smtp-production-main-91.iva.yp-c.yandex.net; dkim=pass header.i=@6tel.net
+From: Muhammed Efe Cetin <efectn@6tel.net>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	sebastian.reichel@collabora.com,
+	Muhammed Efe Cetin <efectn@6tel.net>
+Subject: [PATCH 1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 board
+Date: Tue, 15 Aug 2023 15:58:59 +0300
+Message-ID: <cdb5f1d686425e7dcb953c83749153f9321f9afc.1692102057.git.efectn@6tel.net>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <cover.1692102057.git.efectn@6tel.net>
+References: <cover.1692102057.git.efectn@6tel.net>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Cc: baolu.lu@linux.intel.com, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 00/25] iommu: Make default_domain's mandatory
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <0-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
- <50feed07-f89a-dfc2-d8a8-16f9bf0fe937@linux.intel.com>
- <ZNpksUtIY+3N1Hn3@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <ZNpksUtIY+3N1Hn3@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_183445_862954_2CD40CE0 
-X-CRM114-Status: GOOD (  21.09  )
+X-CRM114-CacheID: sfid-20230815_055923_986177_AF8BF7D5 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,59 +72,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/15 1:30, Jason Gunthorpe wrote:
-> On Mon, Aug 14, 2023 at 04:43:23PM +0800, Baolu Lu wrote:
-> 
->>> This is on github:https://github.com/jgunthorpe/linux/commits/iommu_all_defdom
->> It seems that after this series, all ARM iommu drivers are able to
->> support the IDENTITY default domain, hence perhaps we can remove below
->> code?
-> Yes, but this code is still used
-> 
->> If I remember it correctly, the background of this part of code is
->> that some arm drivers didn't support IDENTITY domain, so fall back to
->> DMA domain if IDENTITY domain allocation fails.
-> Not quite..
-> 
-> 	if (req_type)
-> 		return __iommu_group_alloc_default_domain(group, req_type);
-> 
-> req_type == 0 can still happen because it depends on what
-> def_domain_type returns, which is still 0 in alot of cases
-> 
-> 	/* The driver gave no guidance on what type to use, try the default */
-> 	dom = __iommu_group_alloc_default_domain(group, iommu_def_domain_type);
-> 	if (dom)
-> 		return dom;
-> 
-> So we try the default which might be IDENTITY/DMA/DMA_FQ - still have
-> to do this.
-> 
-> 	/* Otherwise IDENTITY and DMA_FQ defaults will try DMA */
-> 	if (iommu_def_domain_type == IOMMU_DOMAIN_DMA)
-> 		return NULL;
-> 	dom = __iommu_group_alloc_default_domain(group, IOMMU_DOMAIN_DMA);
-> 	if (!dom)
-> 		return NULL;
-> 
-> 	pr_warn("Failed to allocate default IOMMU domain of type %u for group %s - Falling back to IOMMU_DOMAIN_DMA",
-> 		iommu_def_domain_type, group->name);
-> 
-> And this hunk is primarily a fallback in case the DMA_FQ didn't
-> work. Then we try normal DMA.
-> 
-> That it also protected against not implementing IDENTITY is a side
-> effect, so I think we have to keep all of this still.
+Add Orange Pi 5 SBC from Xunlong.
 
-Okay, fair enough. Thanks for the explanation.
+Signed-off-by: Muhammed Efe Cetin <efectn@6tel.net>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Best regards,
-baolu
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ca5389862887..b9649e27bc82 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -877,6 +877,11 @@ properties:
+               - xunlong,orangepi-r1-plus-lts
+           - const: rockchip,rk3328
+ 
++      - description: Xunlong Orange Pi 5
++        items:
++          - const: xunlong,orangepi-5
++          - const: rockchip,rk3588s
++
+       - description: Zkmagic A95X Z2
+         items:
+           - const: zkmagic,a95x-z2
+-- 
+2.41.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
