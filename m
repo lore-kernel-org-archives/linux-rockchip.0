@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88719C001B0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Aug 2023 20:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD22C0015E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Aug 2023 21:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=66ETSqm7uXB8tmxrY4O37KQsdDnefr+5uTAIinfahu8=; b=sbSggsd0yc870y
-	N4WNGaY1BSJIIe7CaT5eN3fpEy6IDV6ch9Pa4nTHdCWN157wuNTw7mZuhUGMLQcA59epWJ1i+1Yx4
-	U9e72nSa17oMQHBVsaxJeMdMCtyyHXU5K2i9A2EEpGvAiIAdoZLFgykwidLTHTQkVtCtMWdgDUkV4
-	+od/u2puO+3totvBxDKUaa0zdZ3isN5SZTqJ6Uv1T2oPYq9P7X8x7ZUDG73Ouoa5MVBUYRPU6BQ95
-	o7hXNrZLDe/Jz8Nk7EmfjbZgb8tyNh+wUjW+jj70tQvciUKdnHHdFcIiyFN8D2HdZkUvPNrAg2xI6
-	i0IRU75Ok00BcJ3Qt07w==;
+	List-Owner; bh=EzbvYUQAhh4XgUKT9zplAhNsWR2kIwxQPCIhkaa1x4Y=; b=n2PMcapH3u2ak7
+	IU4dyLQeVbJT9REDXQXt4FddK7Jk/Gzsnsggujua4NhfGhfu8Nd8WYkf3wbumxAnex2IeeqNDC3xh
+	vEjaduwzZ9WZVrfc3Eb6s1e5LApKxyJXSOkVt5nsyftDu2tlqFNPH8//gFj9xY0AgKw/943lgZn4g
+	AHFTuWnu/Um/MV0bqgrdkEJrIZ+IWY1xFK7tlV8n+4fuON2WbOkPdRmO2AjgbzWvRW1wPM/SfFegg
+	cBNezdXKnNwSGoFNCfXE3tukgI4aVCK0HZVqxFJKD1ZEY+doNc74+YTjI+AuUA0tdaJHGhLn5G5Bd
+	T/jZNUiDZTHFOeEfS4cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qW0rS-002RY1-0s;
-	Tue, 15 Aug 2023 20:41:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qW194-002Tx8-2V;
+	Tue, 15 Aug 2023 21:00:06 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qW0rP-002RWo-1E;
-	Tue, 15 Aug 2023 20:41:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AA3456192B;
-	Tue, 15 Aug 2023 20:41:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29FFDC433C8;
-	Tue, 15 Aug 2023 20:41:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692132110;
-	bh=N7ipikLuPtGgetkxcY+A3Ut1e/FpcdlgAB/lDl1fW/w=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=RGz9IEfwwSDU6RkRCDeWBhsyJ+y2VV6ZRXXHxyIz7K8wWaxdNlc5MB+oifALvzeFx
-	 xVp2/GLHXEFshr5NDyFnNwpxhhc1x0I7k+Opw5udpcBO3Cw9s+a5GrJ8p4D1Lp4M0J
-	 3RoPY6uyfLC5ThJEynhJt2NUQat69iIK0PyC31cFkaxrPBNi2LpskBL6VFq+HAgmB1
-	 lVis78itGCJiqXLjUD8UCCrPk77UTS1P2qaKKk9DM5lHzxvQTKeFw2tsbgstnd86k5
-	 LcGYGqEIYoS93FvFWe+XHckNIw2VkSrCd6lMs4RaVMVTtbSRnymapWooXYIrjYRqv0
-	 rFTAGSJRqdiVw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
- patches@opensource.cirrus.com, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230815143204.379708-1-krzysztof.kozlowski@linaro.org>
-References: <20230815143204.379708-1-krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH RESEND 1/3] ASoC: codecs: tlv320aic32x4: Fix
- Wvoid-pointer-to-enum-cast warning
-Message-Id: <169213210789.572973.6949298748225335967.b4-ty@kernel.org>
-Date: Tue, 15 Aug 2023 21:41:47 +0100
+	id 1qW192-002Tv0-0X
+	for linux-rockchip@lists.infradead.org;
+	Tue, 15 Aug 2023 21:00:05 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fe2ba3e260so57039705e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 15 Aug 2023 14:00:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692133199; x=1692737999;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=JUh3d8Lt7h78kSmqim/NK0v26wjsQ9UPaRp1gHVVLo8=;
+        b=tfxl1J+rEIE3RPV5s+HiYSSmR8o3fwI4rI7kmbxDGa1qQl7mFASsACCcBG4tmCBqlR
+         9ysXL06I0IHZJix2RiiaetlvM8QBPcwn/WsEnPTvyPXtauzT2xeXvAV+zEmUUhOYeibD
+         I8YpqAdiuPgxg6sePWl0vU8RSoCHfTWoaBHvkUSqCSAWzwH8JU4tqvv1Uso9rIaO+ZCs
+         IcKLflToXoiJmS0DF1owHeFiY8bHFPE9a0FM+Lc4CCgLfWvarmy0LZCq9yAdFRFBAtw1
+         4kWs28w0XrSurCux7MWrFxfpzhluB8LgqGLSgrZSk588Kc883RFYpw3f/exZtt4u6NNL
+         LZ4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692133199; x=1692737999;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=JUh3d8Lt7h78kSmqim/NK0v26wjsQ9UPaRp1gHVVLo8=;
+        b=MkcJy2q//J1qsUm2PrviZfCowOK5QehfPBvG0gSC5nrzFq7/kahhnA6CH1MuRblsHK
+         uUNbYnTz51tn0ztgX5pafnGmHq1UEM1UuNmnR9JWQH3gT79vKV7aF8riTpHLQTesTjCM
+         ZMH4cVIZvS8fXQbd3cvavfADbm/wfBajM3f8ynnFkrOPmskrb/NApgzE15j7Oe3XCo4t
+         07fphNPVk6/4gx6lgzoMgJeQmw/TpIfAVVk+wwzCo3jJ/fNDlASox+wy/JGpL/oS/Tbd
+         0n0FPvyWFN02e8h+s7zxj0jAZHHpGSNMWCEo62QeF/oTh5/AMCHfZP4UfnPyWUi9ctSI
+         YA7w==
+X-Gm-Message-State: AOJu0YzHU7VPqLQu4LMeRGhBhjb2eqR2CP+dxFm5WqT2VaJBzG1VSB6S
+	BdBbGRkJgmsYfFz1s8MLXg6QPQ==
+X-Google-Smtp-Source: AGHT+IHPR5ZgIquj78Pw6M82XZhDr7Qg0j9byeQ7z5RcXbozmJwaicWWbYDePNqCmEBEVYDTpuPHHQ==
+X-Received: by 2002:a7b:ce94:0:b0:3fb:ff34:a846 with SMTP id q20-20020a7bce94000000b003fbff34a846mr10667435wmj.22.1692133199585;
+        Tue, 15 Aug 2023 13:59:59 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.214.188])
+        by smtp.gmail.com with ESMTPSA id h14-20020a05600c260e00b003fa8dbb7b5dsm19027605wma.25.2023.08.15.13.59.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Aug 2023 13:59:59 -0700 (PDT)
+Message-ID: <3efc0e28-3a5a-bfc7-57e3-e7e3d5ae1740@linaro.org>
+Date: Tue, 15 Aug 2023 22:59:57 +0200
 MIME-Version: 1.0
-X-Mailer: b4 0.13-dev-034f2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Subject: Re: [PATCH 01/13] dt-bindings: pwm: rockchip: Document rv1126-pwm
+Content-Language: en-US
+To: Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@edgeble.ai>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>
+References: <20230731103518.2906147-1-jagan@edgeble.ai>
+ <20230731103518.2906147-2-jagan@edgeble.ai>
+ <20230731145129.mrrkb6tcuvlpmxan@pengutronix.de> <5533260.88bMQJbFj6@phil>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <5533260.88bMQJbFj6@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_134151_485372_2F22152C 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20230815_140004_205738_2F105168 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +95,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Aug 2023 16:32:02 +0200, Krzysztof Kozlowski wrote:
-> 'type' is an enum, thus cast of pointer on 64-bit compile test with W=1
-> causes:
-> 
->   tlv320aic32x4.c:1352:18: error: cast to smaller integer type 'enum aic32x4_type' from 'void *' [-Werror,-Wvoid-pointer-to-enum-cast]
-> 
-> 
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] ASoC: codecs: tlv320aic32x4: Fix Wvoid-pointer-to-enum-cast warning
-      commit: 66de320b0214a60095287ba1afa09e870d8cdbe5
-[2/3] ASoC: codecs: wm8904: Fix Wvoid-pointer-to-enum-cast warning
-      commit: 5a1803324949f4ebdf6e887b59e0e89afc3ee0bb
-[3/3] ASoC: rockchip: Fix Wvoid-pointer-to-enum-cast warning
-      commit: 49a4a8d1261230378a8931d0859329057686b6eb
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDkvMDgvMjAyMyAxNjowMiwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gQW0gTW9udGFnLCAz
+MS4gSnVsaSAyMDIzLCAxNjo1MToyOSBDRVNUIHNjaHJpZWIgVXdlIEtsZWluZS1Lw7ZuaWc6Cj4+
+IE9uIE1vbiwgSnVsIDMxLCAyMDIzIGF0IDA0OjA1OjA2UE0gKzA1MzAsIEphZ2FuIFRla2kgd3Jv
+dGU6Cj4+PiBEb2N1bWVudCBwd20gY29tcGF0aWJsZSBmb3IgcnYxMTI2IHdoaWNoIGlzIGZhbGxi
+YWNrIGNvbXBhdGlibGUKPj4+IG9mIHJrMzMyOC1wd20gZ3JvdXAuCj4+Pgo+Pj4gU2lnbmVkLW9m
+Zi1ieTogSmFnYW4gVGVraSA8amFnYW5AZWRnZWJsZS5haT4KPj4KPj4gQWNrZWQtYnk6IFV3ZSBL
+bGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Cj4+Cj4+IFNob3Vs
+ZCB0aGlzIGdvIGluIHZpYSB0aGUgcHdtIHRyZWUsIG9yIHRvZ2V0aGVyIHdpdGggdGhlIG90aGVy
+IHBhdGNoZXMKPj4gdmlhIHJvY2tjaGlwPwo+IAo+IEkgaGF2ZSBubyBjbHVlLCBzYWRseS4gSSBf
+Y2FuXyBwaWNrIGl0IHVwLCBidXQgSSBndWVzcyB0aGF0IHdvdWxkCj4gcmVxdWlyZSBhbiBBY2sg
+ZnJvbSBUaGllcnJ5PyBPdGhlcndpc2UgSSBndWVzcyB3ZSdsbCBuZWVkIHRvIHdhaXQKPiBmb3Ig
+aGltLgoKR2VuZXJhbCBwcmVmZXJlbmNlIGlzIHRoYXQgYmluZGluZyBnb2VzIHZpYSBzdWJzeXN0
+ZW0gKHNvIFRoaWVycnkpLCBidXQKdGhlcmUgYXJlIG5vIGRyaXZlciBjaGFuZ2VzIGhlcmUgYW5k
+IHlvdXIgRFRTIGJyYW5jaCB3b3VsZCBiZW5lZml0IGZyb20KaXQgKGxlc3MgZHRic19jaGVjayB3
+YXJuaW5ncykuIFRoZXJlZm9yZSBJIHByb3Bvc2UgLSBqdXN0IGdyYWIgaXQgLQp1bmxlc3MgVGhp
+ZXJyeSB3YW50cyBvdGhlciB3YXkuCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
