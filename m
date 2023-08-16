@@ -4,86 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD22C0015E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Aug 2023 21:00:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36547C001B0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Aug 2023 08:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EzbvYUQAhh4XgUKT9zplAhNsWR2kIwxQPCIhkaa1x4Y=; b=n2PMcapH3u2ak7
-	IU4dyLQeVbJT9REDXQXt4FddK7Jk/Gzsnsggujua4NhfGhfu8Nd8WYkf3wbumxAnex2IeeqNDC3xh
-	vEjaduwzZ9WZVrfc3Eb6s1e5LApKxyJXSOkVt5nsyftDu2tlqFNPH8//gFj9xY0AgKw/943lgZn4g
-	AHFTuWnu/Um/MV0bqgrdkEJrIZ+IWY1xFK7tlV8n+4fuON2WbOkPdRmO2AjgbzWvRW1wPM/SfFegg
-	cBNezdXKnNwSGoFNCfXE3tukgI4aVCK0HZVqxFJKD1ZEY+doNc74+YTjI+AuUA0tdaJHGhLn5G5Bd
-	T/jZNUiDZTHFOeEfS4cg==;
+	List-Owner; bh=3GGLDOi1R8/ifJMuNrfKTIaDAusUNzvau7xRZdbYn4Y=; b=OfiA466z8b+ymi
+	tXdniZHndcqX0d14zPHAJsb3qfHvtvp02Y5n9jz7qHbJwRJN2jJmEYPdarM3ILFCom/xUGUkbJLmh
+	xqNaW2rE40i3gYyIp1kElSscEJR55ieEwV70vATAmvRvtDyzwpfu2MVf+BFTw1/J0h2b4N0PPkggz
+	2Ekyktft1eZJlF3gXBa74isttaRxtmPUS6W7a+GuauQ0mgEDmMA8L58s5JBYEBfxL3vYYVVo49rlL
+	RM9greCcah0NcQijDrSldyKm82zhANrICBoistsMh43FPU9c5ybQAQZLiQmp101lH7SVemkgkpRhZ
+	7a4gjFSTV0nKX+Tf5CiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qW194-002Tx8-2V;
-	Tue, 15 Aug 2023 21:00:06 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1qWBbR-003TQ0-1u;
+	Wed, 16 Aug 2023 08:10:05 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qW192-002Tv0-0X
-	for linux-rockchip@lists.infradead.org;
-	Tue, 15 Aug 2023 21:00:05 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fe2ba3e260so57039705e9.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 15 Aug 2023 14:00:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692133199; x=1692737999;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=JUh3d8Lt7h78kSmqim/NK0v26wjsQ9UPaRp1gHVVLo8=;
-        b=tfxl1J+rEIE3RPV5s+HiYSSmR8o3fwI4rI7kmbxDGa1qQl7mFASsACCcBG4tmCBqlR
-         9ysXL06I0IHZJix2RiiaetlvM8QBPcwn/WsEnPTvyPXtauzT2xeXvAV+zEmUUhOYeibD
-         I8YpqAdiuPgxg6sePWl0vU8RSoCHfTWoaBHvkUSqCSAWzwH8JU4tqvv1Uso9rIaO+ZCs
-         IcKLflToXoiJmS0DF1owHeFiY8bHFPE9a0FM+Lc4CCgLfWvarmy0LZCq9yAdFRFBAtw1
-         4kWs28w0XrSurCux7MWrFxfpzhluB8LgqGLSgrZSk588Kc883RFYpw3f/exZtt4u6NNL
-         LZ4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692133199; x=1692737999;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JUh3d8Lt7h78kSmqim/NK0v26wjsQ9UPaRp1gHVVLo8=;
-        b=MkcJy2q//J1qsUm2PrviZfCowOK5QehfPBvG0gSC5nrzFq7/kahhnA6CH1MuRblsHK
-         uUNbYnTz51tn0ztgX5pafnGmHq1UEM1UuNmnR9JWQH3gT79vKV7aF8riTpHLQTesTjCM
-         ZMH4cVIZvS8fXQbd3cvavfADbm/wfBajM3f8ynnFkrOPmskrb/NApgzE15j7Oe3XCo4t
-         07fphNPVk6/4gx6lgzoMgJeQmw/TpIfAVVk+wwzCo3jJ/fNDlASox+wy/JGpL/oS/Tbd
-         0n0FPvyWFN02e8h+s7zxj0jAZHHpGSNMWCEo62QeF/oTh5/AMCHfZP4UfnPyWUi9ctSI
-         YA7w==
-X-Gm-Message-State: AOJu0YzHU7VPqLQu4LMeRGhBhjb2eqR2CP+dxFm5WqT2VaJBzG1VSB6S
-	BdBbGRkJgmsYfFz1s8MLXg6QPQ==
-X-Google-Smtp-Source: AGHT+IHPR5ZgIquj78Pw6M82XZhDr7Qg0j9byeQ7z5RcXbozmJwaicWWbYDePNqCmEBEVYDTpuPHHQ==
-X-Received: by 2002:a7b:ce94:0:b0:3fb:ff34:a846 with SMTP id q20-20020a7bce94000000b003fbff34a846mr10667435wmj.22.1692133199585;
-        Tue, 15 Aug 2023 13:59:59 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id h14-20020a05600c260e00b003fa8dbb7b5dsm19027605wma.25.2023.08.15.13.59.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Aug 2023 13:59:59 -0700 (PDT)
-Message-ID: <3efc0e28-3a5a-bfc7-57e3-e7e3d5ae1740@linaro.org>
-Date: Tue, 15 Aug 2023 22:59:57 +0200
+	id 1qWBbO-003TOX-37;
+	Wed, 16 Aug 2023 08:10:04 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 37G4px6f021725;
+	Wed, 16 Aug 2023 03:09:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=PODMain02222019; bh=RtuS4+RPM5H1eJM
+	X+4Vl/LFgMJ7LIG0XPxVu8i+mQYU=; b=p6gCqmF5a32jO0Yqo4wAaacnUR4GSqG
+	Y95zPgG7IA7/Y/guuFNkunnjFa/Lmij4iQf7nQAZ4xvR+jdk4/8Hy/yhTTs1QepI
+	8LxL0nL8jXuARklIL/d3WausNTHxRf0VnyKIu/Jx8o+I6uwrOlZoYqotNoQjEUBG
+	6Z8F/cuy86suepUnRX3EZc2Fo0EC4UdUWa0NC+RdaF3KIT07tKsrAvVb/iPTy8Vm
+	W5B9b8g07ao/TltFpj+l2ALVQBxXz6W4jshFuBZETiLcuz+t5eOirbi3BeWYN6dE
+	TYO4kdptj7qAT15pxIbFYzbYD7QMocO8XrojXEpOP6UWRcTH7BqqSEA==
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3se8kqvnbb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 03:09:36 -0500 (CDT)
+Received: from ediex01.ad.cirrus.com (198.61.84.80) by ediex01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Wed, 16 Aug
+ 2023 09:09:33 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by ediex01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.2.1118.30 via Frontend
+ Transport; Wed, 16 Aug 2023 09:09:33 +0100
+Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id CBBE33575;
+	Wed, 16 Aug 2023 08:09:33 +0000 (UTC)
+Date: Wed, 16 Aug 2023 08:09:33 +0000
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+CC: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+        Heiko
+ Stuebner <heiko@sntech.de>, <alsa-devel@alsa-project.org>,
+        <linux-kernel@vger.kernel.org>, <patches@opensource.cirrus.com>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH RESEND 2/3] ASoC: codecs: wm8904: Fix
+ Wvoid-pointer-to-enum-cast warning
+Message-ID: <20230816080933.GA103419@ediswmail.ad.cirrus.com>
+References: <20230815143204.379708-1-krzysztof.kozlowski@linaro.org>
+ <20230815143204.379708-2-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH 01/13] dt-bindings: pwm: rockchip: Document rv1126-pwm
-Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@edgeble.ai>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-pwm@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>
-References: <20230731103518.2906147-1-jagan@edgeble.ai>
- <20230731103518.2906147-2-jagan@edgeble.ai>
- <20230731145129.mrrkb6tcuvlpmxan@pengutronix.de> <5533260.88bMQJbFj6@phil>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <5533260.88bMQJbFj6@phil>
+Content-Disposition: inline
+In-Reply-To: <20230815143204.379708-2-krzysztof.kozlowski@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Proofpoint-ORIG-GUID: eNCEnLsDOM7DPowp6ucywe6coIrIFr1T
+X-Proofpoint-GUID: eNCEnLsDOM7DPowp6ucywe6coIrIFr1T
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_140004_205738_2F105168 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20230816_011003_102650_38B29CDC 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +88,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDkvMDgvMjAyMyAxNjowMiwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gQW0gTW9udGFnLCAz
-MS4gSnVsaSAyMDIzLCAxNjo1MToyOSBDRVNUIHNjaHJpZWIgVXdlIEtsZWluZS1Lw7ZuaWc6Cj4+
-IE9uIE1vbiwgSnVsIDMxLCAyMDIzIGF0IDA0OjA1OjA2UE0gKzA1MzAsIEphZ2FuIFRla2kgd3Jv
-dGU6Cj4+PiBEb2N1bWVudCBwd20gY29tcGF0aWJsZSBmb3IgcnYxMTI2IHdoaWNoIGlzIGZhbGxi
-YWNrIGNvbXBhdGlibGUKPj4+IG9mIHJrMzMyOC1wd20gZ3JvdXAuCj4+Pgo+Pj4gU2lnbmVkLW9m
-Zi1ieTogSmFnYW4gVGVraSA8amFnYW5AZWRnZWJsZS5haT4KPj4KPj4gQWNrZWQtYnk6IFV3ZSBL
-bGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Cj4+Cj4+IFNob3Vs
-ZCB0aGlzIGdvIGluIHZpYSB0aGUgcHdtIHRyZWUsIG9yIHRvZ2V0aGVyIHdpdGggdGhlIG90aGVy
-IHBhdGNoZXMKPj4gdmlhIHJvY2tjaGlwPwo+IAo+IEkgaGF2ZSBubyBjbHVlLCBzYWRseS4gSSBf
-Y2FuXyBwaWNrIGl0IHVwLCBidXQgSSBndWVzcyB0aGF0IHdvdWxkCj4gcmVxdWlyZSBhbiBBY2sg
-ZnJvbSBUaGllcnJ5PyBPdGhlcndpc2UgSSBndWVzcyB3ZSdsbCBuZWVkIHRvIHdhaXQKPiBmb3Ig
-aGltLgoKR2VuZXJhbCBwcmVmZXJlbmNlIGlzIHRoYXQgYmluZGluZyBnb2VzIHZpYSBzdWJzeXN0
-ZW0gKHNvIFRoaWVycnkpLCBidXQKdGhlcmUgYXJlIG5vIGRyaXZlciBjaGFuZ2VzIGhlcmUgYW5k
-IHlvdXIgRFRTIGJyYW5jaCB3b3VsZCBiZW5lZml0IGZyb20KaXQgKGxlc3MgZHRic19jaGVjayB3
-YXJuaW5ncykuIFRoZXJlZm9yZSBJIHByb3Bvc2UgLSBqdXN0IGdyYWIgaXQgLQp1bmxlc3MgVGhp
-ZXJyeSB3YW50cyBvdGhlciB3YXkuCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Aug 15, 2023 at 04:32:03PM +0200, Krzysztof Kozlowski wrote:
+> 'devtype' is an enum, thus cast of pointer on 64-bit compile test with
+> W=1 causes:
+> 
+>   wm8904.c:2205:21: error: cast to smaller integer type 'enum wm8904_type' from 'const void *' [-Werror,-Wvoid-pointer-to-enum-cast]
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+
+Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+
+Thanks,
+Charles
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
