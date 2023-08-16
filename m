@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E032C27C52
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Aug 2023 22:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18A5C27C52
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Aug 2023 22:03:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JxUxo4CAIVbGurAni8zgQd5IpfzYjBofmn3PS9oY8/8=; b=nHikTsE0LYaNXK
-	G0d0/exfUNUwNUdxZRreJAvauOs01PEFmMGsUOdpYYf9FyIk9H+QlgcRIASK1ZtQLnswGqUaprlRb
-	2iCO+KxamWTYZ7Cmf0+SqTAcHPiYHpHuilEBbt+t3ddtpJHjleMjEHZxucswtVr5vHsnygUeIos0J
-	YJxycLR2OjL5mBqDby5jv0WSECRD013hz1szoikO+MeG9iJpKj4LRRlsFD/gHvm+2+Z1Swk4iQEfH
-	CqstxCSTzsOq8V3/pV4kz5K5EECWJCiA3COrJ/nfUTpwqwgmc6QMhZ/gJSxXwmVwFPMeu8V16GkB7
-	1z+wqRqIK3lkQZJWYWzg==;
+	List-Owner; bh=m7uaX4iwIknPs76lvD499XWrGlpXY1BZ3vVHe9Pp36E=; b=oPdfXEHxqfW4Oe
+	OolprkG/pYL2srK8PfDuOiAPbZ+yjoGGpmR2od38bWK1cH/6/ZjzJvnoZXw2qIq6l1LViDPq30j2L
+	NRFenCRTEYmXs+5FMJllf8zD2rpJVZXYaH1fragoBSGRy3L2+Sa5EVbETpWkOnQp9LZFvMMViN6K6
+	XGmacGnA4YIeIJ7LVun6jtMggCTfc5pykv2BQbdiY+O+5jCk7BMHfQb0eB1HV+IRIP1I1FqZaWuMY
+	TR1pajbTf1/QWx+fCE4w666HbmSkjn7PbYnNZNwj+vsLZC/IePch3cPUyLk5ENFjr8wget3eOBLA9
+	MYYPhOaCXByzTXAAhWcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWObT-0054b3-1a;
-	Wed, 16 Aug 2023 22:02:59 +0000
+	id 1qWOc1-0054g2-0i;
+	Wed, 16 Aug 2023 22:03:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWObP-0054aY-32;
-	Wed, 16 Aug 2023 22:02:57 +0000
+	id 1qWOby-0054fJ-2m;
+	Wed, 16 Aug 2023 22:03:32 +0000
 Received: from i53875bbf.versanet.de ([83.135.91.191] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qWObO-0007b0-M7; Thu, 17 Aug 2023 00:02:54 +0200
+	id 1qWObx-0007bH-Js; Thu, 17 Aug 2023 00:03:29 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 6.6 #1
-Date: Thu, 17 Aug 2023 00:02:54 +0200
-Message-ID: <7414564.rnE6jSC6OK@phil>
+Subject: [GIT PULL] Rockchip dts32 changes for 6.6 #1
+Date: Thu, 17 Aug 2023 00:03:28 +0200
+Message-ID: <6299163.hdfAi7Kttb@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_150255_991711_FFE57DBA 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20230816_150330_896518_1EF612A2 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,155 +58,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
-
-please find below and in a subsequent pull-request
-Rockchip changes for for 6.6 .
-
-As always the 64bit DTS part is the big one, with some new boards and
-yet another lot of added support for rk3588 peripherals.
-
-
-Please pull!
-
-Thanks
-Heiko
-
-
 The following changes since commit 06c2afb862f9da8dc5efa4b6076a0e48c3fbaaa5:
 
   Linux 6.5-rc1 (2023-07-09 13:53:13 -0700)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.6-rockchip-dts64-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.6-rockchip-dts32-1
 
-for you to fetch changes up to a721e28dfad2dec895a5aada85fb0fac0223e2d2:
+for you to fetch changes up to 1bf0dcb1e2a987a9281ae91f94e10c0de52c4952:
 
-  arm64: dts: rockchip: Add NanoPC T6 PCIe Ethernet support (2023-08-12 15:13:00 +0200)
-
-----------------------------------------------------------------
-New boards are the NanoPC T6, Firefly Station P2, Radxa Rock 4SE.
-
-Many new peripherals for the still only basic supported rk3588 soc
-(PCIe2, PCIe3, USB2, SATA, Combo-Phys).
-
-Improvements to the Rock-5a development board based on this soc (saradc,
-i2c on dsi and csi, fan, eeprom, analog audio, leds, sd-card,
-some regulators, pmic).
-
-Improvements for the edgeble-neu6b (rs485, rs232, pwm-fan, rtc, sata,
-sata, sd-card, pmic)
-
-RK3399 got the PCIe endpoint node when used as a PCIe-client.
-
-And some minor changes for some boards: spi-flash for RockPi 4,
-SATA and fixed PCIe regulators for Radxa E25 and using enable-gpios
-on engicam and gru boards.
+  ARM: dts: rockchip: Add rv1126 VOP_LITE support (2023-08-12 14:59:15 +0200)
 
 ----------------------------------------------------------------
-Christopher Obbard (3):
-      arm64: dts: rockchip: Move OPP table from ROCK Pi 4 dtsi
-      dt-bindings: arm: rockchip: Add Radxa ROCK 4SE
-      arm64: dts: rockchip: Add Radxa ROCK 4SE
+Basic graphics support for rv1126, some more new peripherals for it as well
+and some improvements for the edgeble-neu2 board based on this soc.
 
-Cristian Ciocaltea (1):
-      arm64: dts: rockchip: Update sound card label on rk3588-rock-5b
-
-FUKAUMI Naoki (1):
-      arm64: dts: rockchip: fix/update sdmmc properties for rock-5a and -5b
-
-Furkan Kardame (2):
-      dt-bindings: arm: rockchip: Add Firefly Station P2
-      arm64: dts: rockchip: add dts for Firefly Station P2 aka rk3568-roc-pc
-
+----------------------------------------------------------------
 Jagan Teki (8):
-      arm64: dts: rockchip: Drop unchanged max-frequency from rk3588 boards
-      arm64: dts: rockchip: Add PMIC for edgeble-neu6b
-      arm64: dts: rockchip: Add microSD card for edgeble-neu6b
-      arm64: dts: rockchip: Enable SATA for edgeble-neu6b
-      arm64: dts: rockchip: Enable RTC for edgeble-neu6b
-      arm64: dts: rockchip: Enable PWM FAN for edgeble-neu6b
-      arm64: dts: rockchip: Enable RS232 for edgeble-neu6b
-      arm64: dts: rockchip: Enable RS485 for edgeble-neu6b
+      ARM: dts: rockchip: Add SFC node to rv1126
+      ARM: dts: rockchip: Add rv1126 FSPI pins
+      ARM: dts: rockchip: Add rv1126 uart5m2_xfer pins
+      ARM: dts: rockchip: Drop EMMC_RSTN for edgeble-neu2
+      ARM: dts: rockchip: Add 3V3_SYS regulator for edgeble-neu2
+      ARM: dts: rockchip: Add 12V main supply for edgeble-neu2
+      ARM: dts: rockchip: Add rv1126 PD_VO entry
+      ARM: dts: rockchip: Add rv1126 VOP_LITE support
 
-John Clark (1):
-      arm64: dts: rockchip: Add NanoPC T6 PCIe Ethernet support
+Stephen Chen (1):
+      ARM: dts: rockchip: Enable SFC for edgeble-neu2
 
-Jonas Karlman (2):
-      arm64: dts: rockchip: Fix PCIe regulators on Radxa E25
-      arm64: dts: rockchip: Enable SATA on Radxa E25
-
-Krzysztof Kozlowski (2):
-      arm64: dts: rockchip: switch rk3399-gru boards to enable-gpios
-      arm64: dts: rockchip: switch px30-engicam to enable-gpios
-
-Lucas Tanure (1):
-      arm64: dts: rockchip: add SD card support to rock-5a
-
-Rick Wertenbroek (1):
-      arm64: dts: rockchip: Add dtsi entry for RK3399 PCIe endpoint core
-
-Sebastian Reichel (21):
-      dt-bindings: vendor-prefixes: Add prefix for belling
-      dt-bindings: eeprom: at24: add Belling BL24C16A
-      arm64: dts: rockchip: add PMIC to rock-5a
-      arm64: dts: rockchip: add vdd_cpu_big regulators to rock-5a
-      arm64: dts: rockchip: add 5V regulator to rock-5a
-      arm64: dts: rockchip: add status LED to rock-5a
-      arm64: dts: rockchip: add analog audio to rock-5a
-      arm64: dts: rockchip: add I2C EEPROM to rock-5a
-      arm64: dts: rockchip: add vdd_npu_s0 regulator to rock-5a
-      arm64: dts: rockchip: enable I2C interface from DSI and CSI connectors on rock-5a
-      arm64: dts: rockchip: add SARADC to rock-5a
-      arm64: dts: rockchip: add fan support to rock-5a
-      arm64: dts: rockchip: add combo PHYs to rk3588
-      arm64: dts: rockchip: add SATA support to rk3588
-      arm64: dts: rockchip: enable SATA on rk3588-evb1
-      arm64: dts: rockchip: add USB2 support for rk3588
-      arm64: dts: rockchip: add USB2 to rk3588-evb1
-      arm64: dts: rockchip: add USB2 to rk3588-rock5b
-      arm64: dts: rockchip: add USB2 to rk3588s-rock5a
-      arm64: dts: rockchip: add PCIe3 support for rk3588
-      arm64: dts: rockchip: add rk3588 PCIe2 support
-
-Stefan Nagy (1):
-      arm64: dts: rockchip: Enable internal SPI flash for ROCK Pi 4A/B/C
-
-Thomas McKahan (2):
-      dt-bindings: arm: rockchip: Add NanoPC T6
-      arm64: dts: rockchip: Add NanoPC T6
-
- .../devicetree/bindings/arm/rockchip.yaml          |  15 +
- Documentation/devicetree/bindings/eeprom/at24.yaml |   3 +
- .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
- arch/arm64/boot/dts/rockchip/Makefile              |   3 +
- .../boot/dts/rockchip/px30-engicam-ctouch2.dtsi    |   2 +-
- .../rockchip/px30-engicam-px30-core-edimm2.2.dts   |   2 +-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts   |  65 ++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |   1 -
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts |  11 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts |  11 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts |  11 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  27 +
- arch/arm64/boot/dts/rockchip/rk3568-radxa-e25.dts  |  24 +-
- arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts     | 643 +++++++++++++++
- .../boot/dts/rockchip/rk3588-edgeble-neu6a.dtsi    |   1 -
- .../boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts  |  66 ++
- .../boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi    | 359 ++++++++-
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  83 +-
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  | 888 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  78 +-
- arch/arm64/boot/dts/rockchip/rk3588.dtsi           | 215 +++++
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |   2 -
- .../boot/dts/rockchip/rk3588s-khadas-edge2.dts     |   1 -
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   | 665 ++++++++++++++-
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi          | 286 +++++++
- 26 files changed, 3436 insertions(+), 30 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+ .../boot/dts/rockchip/rv1126-edgeble-neu2-io.dts   | 29 +++++++
+ .../arm/boot/dts/rockchip/rv1126-edgeble-neu2.dtsi | 27 ++++---
+ arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     | 26 ++++++
+ arch/arm/boot/dts/rockchip/rv1126.dtsi             | 93 ++++++++++++++++++++++
+ 4 files changed, 165 insertions(+), 10 deletions(-)
 
 
 
