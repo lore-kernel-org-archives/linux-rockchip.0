@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6056EC5479A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Aug 2023 21:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4220C5479A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Aug 2023 21:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:From:References:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yk7PqzCl4QYOeUPtYdBjAyJqgCUE8ycFTp8wqTlmnsE=; b=2iTOFoq8g4+rto
-	iq266y69N2LcFeApeprH9Pm4+PfGddOQOr11f1Qn1sDAm76e8dHdvIEzKDNe7OtgcwhqI0wjyps9t
-	7g+YiGAjlfMrBuneKVUcEC+T9Wpo9igtk+l5UFoWMcnxFJNSFrKYIlHA30SiX7WMusgYDgXApg6HB
-	FD3cNdSG4tMDals/bpxREAVjc/AUzWgta4pQY3TOPZlQs+m2f9526L9LrdF79dexmh7P6eIVyTaxn
-	O/k1K1ekOVseSuoRQMEKBDfZu+QwW/kNlZ5YpbfLNG8V51XiFIXFatPyqLEUA8tNa95RDglGikNHc
-	z3nwyxfiN0wPE5Dm0ojQ==;
+	List-Owner; bh=bBle/sfkchDv9+SekONHInT1Jn5YKDrvI9LRY5u6420=; b=3CQwuAXqs+0V+i
+	zzbqEl7yW4qYbkXSLeur6QIw91NDQd834tdNaOeB2UjMasD8oRca8RAI7MbcXjmkmi/RbJE10cQM3
+	J7NW7Prf3EtDqDlJ3uujidBebjgEbjLd9afDPaarSSk5iR+Khtvp+22zpaRq46Xhh0KO61oEIQKqj
+	vnWTqjpslzBq4cmHy8ej2L3MMLqQubA22EnMGJqYzBEUXefQQyTNqAQmfiG8kufymQMWKWO3rtdvU
+	N1QE0SY0j+5+YY0X0sAtZnK8MTU+PZQxZ7ayZGxnAXN99PECThB1IfL60k2ECHSn2/1RkO1FNb3xy
+	QoFohP3rzUQRmmpzuhrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWkAM-0079F7-39;
-	Thu, 17 Aug 2023 21:04:26 +0000
-Received: from s.wrqvtbkv.outbound-mail.sendgrid.net ([149.72.123.24])
+	id 1qWkBY-0079ND-2O;
+	Thu, 17 Aug 2023 21:05:40 +0000
+Received: from s.wrqvwxzv.outbound-mail.sendgrid.net ([149.72.154.232])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWkAJ-0079E5-2k
+	id 1qWkBW-0079MM-0d
 	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Aug 2023 21:04:25 +0000
+	Thu, 17 Aug 2023 21:05:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
 	h=mime-version:subject:references:from:in-reply-to:to:cc:content-type:
 	content-transfer-encoding:cc:content-type:from:subject:to;
-	s=s1; bh=TcEEszJfjlCHwKsFpwnWm1d65Qo4xi+W36wwjFhVKOo=;
-	b=oDOPIB5D/fL5/fWe3ME9vleCXenp1V7YZDIoGspzOJ2/iWYvxSyEHpVuBoSxTspVvOtu
-	1RBmvL0ThLdbBHQY88xK0TZ9SCHWBOyhP6hdJHAhF+IpKf0dWyRoB8ViAo1r/UR0m8KETi
-	VfA08g9KcWsgpL4tJL9L6XNoexsB6rKC9fGAmvjeRfPt9deZPM+hHGa8oGm+GamRXjcygT
-	xlrfwU/0WJ7hgl5x1A6r2hG8u0q/Po5xtDEjqSTjEIh5T5Wwxr5sERRn3foE8M1c1nldab
-	87M0Qi5nG4S00FsMs/VJW8o7Zn6Wu6HC94rhyQPvHTabj5QPAgoZov8TzyZFapIA==
-Received: by filterdrecv-66949dbc98-r7x9c with SMTP id filterdrecv-66949dbc98-r7x9c-1-64DE8B54-15
-        2023-08-17 21:04:20.267440901 +0000 UTC m=+8544276.233978210
+	s=s1; bh=cyiHqxPewOUpiLCgGfyzAGcRUj6oFW1nQmFKoVsPlwg=;
+	b=We1DvlBHISgTXv7m8zEcddU4iaI3+XfhW/TnucIxIffh7qASLlT8cIDlmR6a1o9WqrTD
+	4PWhu9Nr49a3liMAglWKJUFKaojc6uYLbMg2EP+bgp/wbwfWOSINr5OpWB8cpVRRDNboLg
+	2rAFk6X07A7TAuVnm5ugqUAecQ2cJF6h1PLkWgECQhoeYsPhgfH/dy7M6FRZ6mlJ1XWmrr
+	i6f++GVH2FtdbPbuKQK7oXT/SoRzTtsWuzMFHFq3HB299n0EWxqlm9ucxegt2SviUA0P3S
+	W2QH0d0uQ9bCSgKAjlQi3cncFgapqcytp6RdkTdIdFZV8j6kLZiYlzzzg4J3MV7A==
+Received: by filterdrecv-65f68489c8-qxj4s with SMTP id filterdrecv-65f68489c8-qxj4s-1-64DE8B9E-3
+        2023-08-17 21:05:34.1068273 +0000 UTC m=+8544571.152719573
 Received: from [192.168.1.50] (unknown)
-	by geopod-ismtpd-5 (SG) with ESMTP
-	id 4A2qnn0eRB6lO0Onw9U5kw
-	Thu, 17 Aug 2023 21:04:19.902 +0000 (UTC)
-Message-ID: <86c92a80-38ac-bd5d-2f31-fd003f13d2ed@kwiboo.se>
-Date: Thu, 17 Aug 2023 21:04:20 +0000 (UTC)
+	by geopod-ismtpd-4 (SG) with ESMTP
+	id wpz1daj1Q02vwM5bH70FAA
+	Thu, 17 Aug 2023 21:05:33.924 +0000 (UTC)
+Message-ID: <c187cd65-b3fc-1ebb-86f9-cc41fe7512f3@kwiboo.se>
+Date: Thu, 17 Aug 2023 21:05:34 +0000 (UTC)
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add sfc node to rk3588s
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Orange Pi 5
 Content-Language: en-US
 References: <cover.1692102057.git.efectn@6tel.net>
- <b96e8d517d431d13eedd9c9606523076d72033bf.1692102057.git.efectn@6tel.net>
+ <a1eca379d151c3f91f4cd4e1751ba389096c4f13.1692102057.git.efectn@6tel.net>
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <b96e8d517d431d13eedd9c9606523076d72033bf.1692102057.git.efectn@6tel.net>
+In-Reply-To: <a1eca379d151c3f91f4cd4e1751ba389096c4f13.1692102057.git.efectn@6tel.net>
 X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h7He8qHGjMdPut1pE?=
- =?us-ascii?Q?dkn9+=2F2DGDvT=2FkkNZp68DzJlYASbgkv9+xcggGU?=
- =?us-ascii?Q?r3Cd2hy7EWNayQYq5V0=2F3cCs2E5vkKxCNVGyen5?=
- =?us-ascii?Q?Ue1jMIO5OW9qeOBCEfDXKcAM4mNHDXmlu4uscuK?=
- =?us-ascii?Q?RCRI=2F=2FoxxWlpWkSU8t8Cl4tNulX1Tj7zhfIUQVu?=
- =?us-ascii?Q?NbGbvEojQCLOL7Bfwfjnw=3D=3D?=
+ =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0hyCiVY7Rd6FCVJxn9?=
+ =?us-ascii?Q?YKn6BxeQGSlAokbdSAyYThKQkTnDSrOvFFgJA3p?=
+ =?us-ascii?Q?LQHf163Os1yOJ8tkSFUilxG4VYIFwQsXsBzkKlT?=
+ =?us-ascii?Q?H+Wv7y8244=2FMKCyDOlReuRr8F4uFlU+Wbmh32T5?=
+ =?us-ascii?Q?majpb3TxS=2FArjQWdmW=2FIIswadE=2Fwxt0r5qWQ0e7?=
+ =?us-ascii?Q?VNIr=2FvjGjhmMt8=2FkYSoVw=3D=3D?=
 To: Muhammed Efe Cetin <efectn@6tel.net>, linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org, robh+dt@kernel.org,
@@ -67,8 +67,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	sebastian.reichel@collabora.com
 X-Entity-ID: P7KYpSJvGCELWjBME/J5tg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_140423_973628_DB6A05A0 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20230817_140538_311751_36B7B73F 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,49 +86,66 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2023-08-15 14:59, Muhammed Efe Cetin wrote:
-> Add sfc node to rk3588s.dtsi from downstream kernel.
+> Add initial support for OPi5 that includes support for USB2, PCIe2, Sata,
+> Sdmmc, SPI Flash, PMIC.
 > 
 > Signed-off-by: Muhammed Efe Cetin <efectn@6tel.net>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
+>  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 873 ++++++++++++++++++
+>  1 file changed, 873 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> index 5544f66c6ff4..a38a0158fce0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -1424,6 +1424,19 @@ sata-port@0 {
->  		};
->  	};
->  
-> +	sfc: spi@fe2b0000 {
-> +		compatible = "rockchip,sfc";
-> +		reg = <0x0 0xfe2b0000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+> new file mode 100644
+> index 000000000000..85071084a207
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+> @@ -0,0 +1,873 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
 
-gic use 4 interrupt-cells, should be:
+[...]
 
-  interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
+> +
+> +&sfc {
+> +	pinctrl-0 = <&fspim0_pins>;
+> +	pinctrl-names = "default";
+> +	max-freq = <100000000>;
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	status = "okay";
+> +
+> +	spi_flash: spi-flash@0 {
 
-> +		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-> +		clock-names = "clk_sfc", "hclk_sfc";
-> +		assigned-clocks = <&cru SCLK_SFC>;
-> +		assigned-clock-rates = <100000000>;
-
-You should not need to assign clock rate here, do it in your board dts
-if you really must.
+Node should be named flash@0 to help SPI flash boot with U-Boot.
 
 Regards,
 Jonas
 
+> +		compatible = "jedec,spi-nor";
+> +		reg = <0x0>;
+> +		spi-max-frequency = <100000000>;
+> +		spi-tx-bus-width = <1>;
+> +		spi-rx-bus-width = <4>;
 > +		#address-cells = <1>;
 > +		#size-cells = <0>;
-> +		status = "disabled";
-> +	};
+> +		status = "okay";
 > +
->  	sdmmc: mmc@fe2c0000 {
->  		compatible = "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
->  		reg = <0x0 0xfe2c0000 0x0 0x4000>;
+> +		partitions {
+> +			compatible = "fixed-partitions";
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+> +
+> +			loader@0 {
+> +				label = "loader";
+> +				reg = <0x0 0x1000000>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+
+[...]
 
 
 _______________________________________________
