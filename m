@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4669EE49AB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 15:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88353EE49AC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 15:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=os9wza0C/IhPFfBg/F6K4LgenlXrbY5dkfjBYXdFwBc=; b=q+D93APJXzxJJp
-	3Qn1H+FpxswIh0Iza9412OmGpFyMgnmCZxVKIUumwUDZQLaS6AaFGWZCIFjYjiFqYCX1mMvG2FfVq
-	1aLJd1A3coFIMOAEQ3ykPis/KV78pbeLrDLJfOuCQIo01TBwa3aCNjki5jMZdgcYz7y02fAp329se
-	FPNHa7DqeslgNolnjz88TEGrfuujnDCOMPqnMgfX+nav9arf6os3owqMnkfxOGa17aHMAFN+0TZnw
-	zk2e4BZZvQZE+5ON5zdb5CUvvps6R+o9e2zamfHlgymMuB0VXokCyU4itZ1hbNsxCmRoX2r8JfYp5
-	e4nuUYchSV6HzpuIyEXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FCVWwHonKMTMCfZXY+UXG832advGQFOYVowj6dEQpwk=; b=oTlAPXLiQoiuvV
+	ermJ3lBENIPRnvIAcbk/IHRyfLVCDTr16M0CqjcgilMHyh8nIkQnPkBeKqIB0HpW0Yz/QTXp8utnF
+	v5ccAEoAZT4ZGHRSkZVohkfbDLfnB5Tx+hkmhPzR2I/tdJr9/dXXVNh0iGbLuYvn36l51t2c6ssu8
+	WkvAtGOW69YECh63tt+1IrK+QoivOWCJ3p5y27v8UPGpBw/eY+aRd7TorOv8qQ+yBFEpwy4+nOz+W
+	7pvwX5Y56OIHMZFZghu87XdTnLQiIee/JTQcW/kQVf9eplkzayC/6oq8uEhIMDBJetEubg1ajqczK
+	LNPrk/IsWphqbYm8aM7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY78m-00EIm5-2H;
-	Mon, 21 Aug 2023 15:48:28 +0000
-Received: from forward102b.mail.yandex.net ([178.154.239.149])
+	id 1qY78u-00EIqg-2n;
+	Mon, 21 Aug 2023 15:48:36 +0000
+Received: from forward102c.mail.yandex.net ([178.154.239.213])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY78j-00EIig-0f;
-	Mon, 21 Aug 2023 15:48:26 +0000
+	id 1qY78n-00EIlC-2A;
+	Mon, 21 Aug 2023 15:48:31 +0000
 Received: from mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:12ae:0:640:5b3c:0])
-	by forward102b.mail.yandex.net (Yandex) with ESMTP id 0C30560059;
-	Mon, 21 Aug 2023 18:48:15 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 7mKGOJgDamI0-ySCYmVO6;
-	Mon, 21 Aug 2023 18:48:13 +0300
+	by forward102c.mail.yandex.net (Yandex) with ESMTP id 6DB906002F;
+	Mon, 21 Aug 2023 18:48:24 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 7mKGOJgDamI0-8r34BOYC;
+	Mon, 21 Aug 2023 18:48:23 +0300
 X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692632894;
-	bh=7QTAAhaoJM7pAQXybSkxpF1Sd6aRXq5aJx2tvdulhk0=;
-	h=Message-ID:Date:Cc:Subject:To:From;
-	b=sPcMdbn6pNOjJpaecFMvnfNKnXcCpAjWG5oTW0o41FhlAPGryjEwifhJQ8N5pPJVV
-	 r3ul/GKKUlzBl+ExpHegvUNolyGzGB2/2u3uFH7uErq0RAgHLP9KWR5SL989xToNJO
-	 MYyX3tRWPxm8U4d+o1cHVwxVcJnvOx+wPTSfF9nA=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692632903;
+	bh=+GtcJeHQ2tykEqiG/ZsRUO2yoqwpGoPfqqd5eEJixoQ=;
+	h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
+	b=Dz6uaBI6NmU02cayE3Pv2VGygm0c0rYPoZzqZhthBrdHqfQgXIj7mr/zrNggNfNwD
+	 cpBAzgocZiudXzvrM3ODnRUmmfTJ3C3OPz2i/S/9VrqDVvMUzT5q0BwZf1d+PD+xtY
+	 HgTYGuq137YaFk+POALys2XPKtXwO2EfxUNcTdmg=
 Authentication-Results: mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net; dkim=pass header.i=@6tel.net
 From: Muhammed Efe Cetin <efectn@6tel.net>
 To: linux-rockchip@lists.infradead.org
@@ -51,15 +51,19 @@ Cc: devicetree@vger.kernel.org,
 	sebastian.reichel@collabora.com,
 	jonas@kwiboo.se,
 	megi@xff.cz,
-	Muhammed Efe Cetin <efectn@6tel.net>
-Subject: [PATCH v3 0/3] Add Support for Orange Pi 5
-Date: Mon, 21 Aug 2023 18:47:56 +0300
-Message-ID: <cover.1692632346.git.efectn@6tel.net>
+	Muhammed Efe Cetin <efectn@6tel.net>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 board
+Date: Mon, 21 Aug 2023 18:47:57 +0300
+Message-ID: <0281d757b4cbcf2092167bdcf3d112e330fe6b92.1692632346.git.efectn@6tel.net>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <cover.1692632346.git.efectn@6tel.net>
+References: <cover.1692632346.git.efectn@6tel.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_084825_443778_F30928DB 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20230821_084829_880809_8D22BA3C 
+X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,38 +80,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add Orange Pi 5 SBC from Xunlong.
 
-These series add initial support for Orange Pi 5 and SFC node for RK3588S.
+Signed-off-by: Muhammed Efe Cetin <efectn@6tel.net>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Changes in v3:
-* Remove cap-mmc-highspeed property from sdmmc.
-* Make vcc_1v1_nldo_s3 an alias of dcdc-reg6 and add regulator-max-microvolt, regulator-min-microvolt properties.
-* Make press-threshold-microvolt 1800 for recovery button.
-* Remove assigned-clocks from sfc node.
-* Drop some properties from sfc node in orangepi5 devicetree.
-* Move snps reset properties to rgmii_phy1.
-
-Changes in v2:
-* Fix CHECK_DTBS warnings and add dtb to makefile.
-* Remove assigned-clock-rates from sfc node and fix wrong interrupts property.
-* Remove non-existent adc buttons and add button-recovery instead.
-* Remove backlight_1, backlight, vcc12v_dcin, vcc5v0_usbdcin, vcc5v0_usb, combophy_avdd0v85, combophy_avdd1v8, sata0, u2phy0, u2phy0_otg nodes.
-* Rename vcc3v3_pcie2x1l2 to vcc3v3_pcie20, vbus5v0_typec to vbus_typec.
-* Remove regulator-always-on property from vcc_3v3_sd_s0 and vcc3v3_pcie20.
-
-Muhammed Efe Cetin (3):
-  dt-bindings: arm: rockchip: Add Orange Pi 5 board
-  arm64: dts: rockchip: Add sfc node to rk3588s
-  arm64: dts: rockchip: Add Orange Pi 5
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 673 ++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  11 +
- 4 files changed, 690 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ca5389862887..b9649e27bc82 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -877,6 +877,11 @@ properties:
+               - xunlong,orangepi-r1-plus-lts
+           - const: rockchip,rk3328
+ 
++      - description: Xunlong Orange Pi 5
++        items:
++          - const: xunlong,orangepi-5
++          - const: rockchip,rk3588s
++
+       - description: Zkmagic A95X Z2
+         items:
+           - const: zkmagic,a95x-z2
 -- 
 2.41.0
 
