@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88353EE49AC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 15:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C24BEE4996
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 15:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FCVWwHonKMTMCfZXY+UXG832advGQFOYVowj6dEQpwk=; b=oTlAPXLiQoiuvV
-	ermJ3lBENIPRnvIAcbk/IHRyfLVCDTr16M0CqjcgilMHyh8nIkQnPkBeKqIB0HpW0Yz/QTXp8utnF
-	v5ccAEoAZT4ZGHRSkZVohkfbDLfnB5Tx+hkmhPzR2I/tdJr9/dXXVNh0iGbLuYvn36l51t2c6ssu8
-	WkvAtGOW69YECh63tt+1IrK+QoivOWCJ3p5y27v8UPGpBw/eY+aRd7TorOv8qQ+yBFEpwy4+nOz+W
-	7pvwX5Y56OIHMZFZghu87XdTnLQiIee/JTQcW/kQVf9eplkzayC/6oq8uEhIMDBJetEubg1ajqczK
-	LNPrk/IsWphqbYm8aM7Q==;
+	List-Owner; bh=TcxGAL93c9fKLFBTdsZJZY/AlAZuqCJuvnI62jx0w3E=; b=iFms3+Fp0AA3tH
+	5M9uZDyH7VM1NUuv71aitzKmAIH0AhurZZE7GZOajV1ki195lH3iBTd7sX8ok98dkjGJ9xhryJYMo
+	JMtf5ekBSdnQ7Hgmtf7bdjHsWb0ojx9jZ9oHk/tLXp/OAriD7x1d5ocFgTS2llypU8ht/3XmxTbH6
+	EEoyYHgNuJC0T3y2FKe/BFK8qjmp3FuYTZM1do9OXwm0majoTeLTTorY06TOt1jr28dIbmzwtW0vZ
+	OND8yDQftHvpLoFd6UUUXX0KBiRRYquF6SAZHFofRND8ak3mitjggvGN5sgT60QV8sFCBIQiUFuuJ
+	A2Q+hEg2h5nEHByZU+IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY78u-00EIqg-2n;
-	Mon, 21 Aug 2023 15:48:36 +0000
-Received: from forward102c.mail.yandex.net ([178.154.239.213])
+	id 1qY793-00EIug-03;
+	Mon, 21 Aug 2023 15:48:45 +0000
+Received: from forward100b.mail.yandex.net ([178.154.239.147])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY78n-00EIlC-2A;
-	Mon, 21 Aug 2023 15:48:31 +0000
+	id 1qY78s-00EInf-2Q;
+	Mon, 21 Aug 2023 15:48:36 +0000
 Received: from mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:12ae:0:640:5b3c:0])
-	by forward102c.mail.yandex.net (Yandex) with ESMTP id 6DB906002F;
-	Mon, 21 Aug 2023 18:48:24 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 7mKGOJgDamI0-8r34BOYC;
-	Mon, 21 Aug 2023 18:48:23 +0300
+	by forward100b.mail.yandex.net (Yandex) with ESMTP id DEE546005C;
+	Mon, 21 Aug 2023 18:48:27 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 7mKGOJgDamI0-Z1f7fceh;
+	Mon, 21 Aug 2023 18:48:26 +0300
 X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692632903;
-	bh=+GtcJeHQ2tykEqiG/ZsRUO2yoqwpGoPfqqd5eEJixoQ=;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692632907;
+	bh=xFn7Cyu/7fJeQMrS8j7WfSw7yg5kq6A45q2hWGDSDCo=;
 	h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
-	b=Dz6uaBI6NmU02cayE3Pv2VGygm0c0rYPoZzqZhthBrdHqfQgXIj7mr/zrNggNfNwD
-	 cpBAzgocZiudXzvrM3ODnRUmmfTJ3C3OPz2i/S/9VrqDVvMUzT5q0BwZf1d+PD+xtY
-	 HgTYGuq137YaFk+POALys2XPKtXwO2EfxUNcTdmg=
+	b=nIdrsfV13E+vQZMVffLIv3XWHUevWnXahqn2nliBUi7In5Ssd735kzm2pNCQwr8R5
+	 Yf4WB+wRrLJK747uV3SNbqn8PJISddHaHrg/TGzRTDaInf0jIUupzOGPRZ2cJLJAli
+	 2E1tyit67DB/4wf7yizbmjeefWfT+qUeDvfYcOjU=
 Authentication-Results: mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net; dkim=pass header.i=@6tel.net
 From: Muhammed Efe Cetin <efectn@6tel.net>
 To: linux-rockchip@lists.infradead.org
@@ -51,18 +51,17 @@ Cc: devicetree@vger.kernel.org,
 	sebastian.reichel@collabora.com,
 	jonas@kwiboo.se,
 	megi@xff.cz,
-	Muhammed Efe Cetin <efectn@6tel.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 board
-Date: Mon, 21 Aug 2023 18:47:57 +0300
-Message-ID: <0281d757b4cbcf2092167bdcf3d112e330fe6b92.1692632346.git.efectn@6tel.net>
+	Muhammed Efe Cetin <efectn@6tel.net>
+Subject: [PATCH v3 2/3] arm64: dts: rockchip: Add sfc node to rk3588s
+Date: Mon, 21 Aug 2023 18:47:58 +0300
+Message-ID: <70557b7843994a57c6d3422e00643cb75a698d0b.1692632346.git.efectn@6tel.net>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <cover.1692632346.git.efectn@6tel.net>
 References: <cover.1692632346.git.efectn@6tel.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_084829_880809_8D22BA3C 
-X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-CacheID: sfid-20230821_084834_970733_F0945649 
+X-CRM114-Status: UNSURE (   9.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,30 +79,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Orange Pi 5 SBC from Xunlong.
+Add sfc node to rk3588s.dtsi from downstream kernel.
 
 Signed-off-by: Muhammed Efe Cetin <efectn@6tel.net>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ca5389862887..b9649e27bc82 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -877,6 +877,11 @@ properties:
-               - xunlong,orangepi-r1-plus-lts
-           - const: rockchip,rk3328
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 5544f66c6ff4..1a820a5a51eb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1424,6 +1424,17 @@ sata-port@0 {
+ 		};
+ 	};
  
-+      - description: Xunlong Orange Pi 5
-+        items:
-+          - const: xunlong,orangepi-5
-+          - const: rockchip,rk3588s
++	sfc: spi@fe2b0000 {
++		compatible = "rockchip,sfc";
++		reg = <0x0 0xfe2b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
++		clock-names = "clk_sfc", "hclk_sfc";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++	};
 +
-       - description: Zkmagic A95X Z2
-         items:
-           - const: zkmagic,a95x-z2
+ 	sdmmc: mmc@fe2c0000 {
+ 		compatible = "rockchip,rk3588-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x0 0xfe2c0000 0x0 0x4000>;
 -- 
 2.41.0
 
