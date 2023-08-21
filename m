@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD3D3EE4996
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 14:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4669EE49AB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Aug 2023 15:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mXA9sd7FaUbvtBNhdFmBvxAFiZfx3AeABdD2gPvpe4U=; b=J7vMIknlGMhYeh
-	1ANQeDxKc/j3ZOdVzgLrbUE7Ol1oLWdtGclJSDY1xJG5jV7c1PQgiCJulkj51jKgQM5qYqcgMolz1
-	HJBFYfUo7lUrqnspyG5sH0WkjV3LPRpqS0lh0I6yLGvIdWGNom5ZpxUlMXyGctrUpK/h5ZIWg5N0p
-	ejCbrS0L6Y/eV6BpEPyDk9McWSL6q+eP2PPLweOv96ecTz/Pf328WnkNzlWSs3yLESjaWCmRPyqlO
-	m7u6aauwn0KA6WRLtDWSsoXD9fGJH1b9U2icNdsPsoJQpV/Mcc0c7OwrzheXee8NOiSRZOutx0nZW
-	1TELLs83em//PIX6bD3w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=os9wza0C/IhPFfBg/F6K4LgenlXrbY5dkfjBYXdFwBc=; b=q+D93APJXzxJJp
+	3Qn1H+FpxswIh0Iza9412OmGpFyMgnmCZxVKIUumwUDZQLaS6AaFGWZCIFjYjiFqYCX1mMvG2FfVq
+	1aLJd1A3coFIMOAEQ3ykPis/KV78pbeLrDLJfOuCQIo01TBwa3aCNjki5jMZdgcYz7y02fAp329se
+	FPNHa7DqeslgNolnjz88TEGrfuujnDCOMPqnMgfX+nav9arf6os3owqMnkfxOGa17aHMAFN+0TZnw
+	zk2e4BZZvQZE+5ON5zdb5CUvvps6R+o9e2zamfHlgymMuB0VXokCyU4itZ1hbNsxCmRoX2r8JfYp5
+	e4nuUYchSV6HzpuIyEXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY664-00ECHQ-2m;
-	Mon, 21 Aug 2023 14:41:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qY78m-00EIm5-2H;
+	Mon, 21 Aug 2023 15:48:28 +0000
+Received: from forward102b.mail.yandex.net ([178.154.239.149])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY661-00ECFA-17;
-	Mon, 21 Aug 2023 14:41:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D052D60DDF;
-	Mon, 21 Aug 2023 14:41:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 261F7C433C7;
-	Mon, 21 Aug 2023 14:41:28 +0000 (UTC)
-Message-ID: <1b87f062-9d5e-fa8e-3d3b-e766362c6e3b@xs4all.nl>
-Date: Mon, 21 Aug 2023 16:41:27 +0200
+	id 1qY78j-00EIig-0f;
+	Mon, 21 Aug 2023 15:48:26 +0000
+Received: from mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:12ae:0:640:5b3c:0])
+	by forward102b.mail.yandex.net (Yandex) with ESMTP id 0C30560059;
+	Mon, 21 Aug 2023 18:48:15 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 7mKGOJgDamI0-ySCYmVO6;
+	Mon, 21 Aug 2023 18:48:13 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail; t=1692632894;
+	bh=7QTAAhaoJM7pAQXybSkxpF1Sd6aRXq5aJx2tvdulhk0=;
+	h=Message-ID:Date:Cc:Subject:To:From;
+	b=sPcMdbn6pNOjJpaecFMvnfNKnXcCpAjWG5oTW0o41FhlAPGryjEwifhJQ8N5pPJVV
+	 r3ul/GKKUlzBl+ExpHegvUNolyGzGB2/2u3uFH7uErq0RAgHLP9KWR5SL989xToNJO
+	 MYyX3tRWPxm8U4d+o1cHVwxVcJnvOx+wPTSfF9nA=
+Authentication-Results: mail-nwsmtp-smtp-production-main-42.myt.yp-c.yandex.net; dkim=pass header.i=@6tel.net
+From: Muhammed Efe Cetin <efectn@6tel.net>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	sebastian.reichel@collabora.com,
+	jonas@kwiboo.se,
+	megi@xff.cz,
+	Muhammed Efe Cetin <efectn@6tel.net>
+Subject: [PATCH v3 0/3] Add Support for Orange Pi 5
+Date: Mon, 21 Aug 2023 18:47:56 +0300
+Message-ID: <cover.1692632346.git.efectn@6tel.net>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v4 05/10] media: verisilicon: Store chroma and motion
- vectors offset
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
- <20230705121056.37017-6-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230705121056.37017-6-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_074133_469857_CD5E04F6 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20230821_084825_443778_F30928DB 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,75 +76,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/07/2023 14:10, Benjamin Gaignard wrote:
-> Store computed values of chroma and motion vectors offset because
-> they depends on width and height values which change if the resolution
-> change.
+Hi,
 
-Is this a bug fix? Does this patch belong in this series?
+These series add initial support for Orange Pi 5 and SFC node for RK3588S.
 
-Same actually for the next few verisilicon patches. Shouldn't they be
-part of a separate 'fixes' patch series? It's confusing to see them
-in this series.
+Changes in v3:
+* Remove cap-mmc-highspeed property from sdmmc.
+* Make vcc_1v1_nldo_s3 an alias of dcdc-reg6 and add regulator-max-microvolt, regulator-min-microvolt properties.
+* Make press-threshold-microvolt 1800 for recovery button.
+* Remove assigned-clocks from sfc node.
+* Drop some properties from sfc node in orangepi5 devicetree.
+* Move snps reset properties to rgmii_phy1.
 
-Regards,
+Changes in v2:
+* Fix CHECK_DTBS warnings and add dtb to makefile.
+* Remove assigned-clock-rates from sfc node and fix wrong interrupts property.
+* Remove non-existent adc buttons and add button-recovery instead.
+* Remove backlight_1, backlight, vcc12v_dcin, vcc5v0_usbdcin, vcc5v0_usb, combophy_avdd0v85, combophy_avdd1v8, sata0, u2phy0, u2phy0_otg nodes.
+* Rename vcc3v3_pcie2x1l2 to vcc3v3_pcie20, vbus5v0_typec to vbus_typec.
+* Remove regulator-always-on property from vcc_3v3_sd_s0 and vcc3v3_pcie20.
 
-	Hans
+Muhammed Efe Cetin (3):
+  dt-bindings: arm: rockchip: Add Orange Pi 5 board
+  arm64: dts: rockchip: Add sfc node to rk3588s
+  arm64: dts: rockchip: Add Orange Pi 5
 
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/media/platform/verisilicon/hantro.h            | 2 ++
->  drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 6 ++++--
->  2 files changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-> index c8a3cf10cc64..53be00142473 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -320,6 +320,8 @@ struct hantro_vp9_decoded_buffer_info {
->  	/* Info needed when the decoded frame serves as a reference frame. */
->  	unsigned short width;
->  	unsigned short height;
-> +	size_t chroma_offset;
-> +	size_t mv_offset;
->  	u32 bit_depth : 4;
->  };
->  
-> diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> index 6fc4b555517f..6db1c32fce4d 100644
-> --- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> +++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> @@ -158,9 +158,11 @@ static void config_output(struct hantro_ctx *ctx,
->  
->  	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
->  	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
-> +	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
->  
->  	mv_addr = luma_addr + mv_offset(ctx, dec_params);
->  	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
-> +	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
->  }
->  
->  struct hantro_vp9_ref_reg {
-> @@ -195,7 +197,7 @@ static void config_ref(struct hantro_ctx *ctx,
->  	luma_addr = hantro_get_dec_buf_addr(ctx, &buf->base.vb.vb2_buf);
->  	hantro_write_addr(ctx->dev, ref_reg->y_base, luma_addr);
->  
-> -	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
-> +	chroma_addr = luma_addr + buf->vp9.chroma_offset;
->  	hantro_write_addr(ctx->dev, ref_reg->c_base, chroma_addr);
->  }
->  
-> @@ -238,7 +240,7 @@ static void config_ref_registers(struct hantro_ctx *ctx,
->  	config_ref(ctx, dst, &ref_regs[2], dec_params, dec_params->alt_frame_ts);
->  
->  	mv_addr = hantro_get_dec_buf_addr(ctx, &mv_ref->base.vb.vb2_buf) +
-> -		  mv_offset(ctx, dec_params);
-> +		  mv_ref->vp9.mv_offset;
->  	hantro_write_addr(ctx->dev, G2_REF_MV_ADDR(0), mv_addr);
->  
->  	hantro_reg_write(ctx->dev, &vp9_last_sign_bias,
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 673 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  11 +
+ 4 files changed, 690 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+
+-- 
+2.41.0
 
 
 _______________________________________________
