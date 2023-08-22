@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E20DEE49AA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Aug 2023 13:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72279EE49AF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Aug 2023 13:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iXDEvFyUlfkDsKfZuSyjX37SJQtRz38dxhRazve0/e8=; b=G8GUiw9JsQPFvp
-	KhKiZrs98GcLN2zVkJ8flxn7U59nkzBRf/+i6Ipl8lZMWDQ4a01zD3AV/sLK1MuBwzQSTVynCEm8i
-	e5ALsGDCKCrHQqJboQ7bxHmoxK9dNGXkPClVdTGfJXGhU/8DeihyQJw2LYK/MCqTdHUWycNyeYO2R
-	QKemQFdRrmfWDAE/OM7AWI5U2XhhSMN0S+pdSDvw9gEh4FoXyEQbEiMZq+bfDJ1sfUZK8Bs/gPpvm
-	6JA1OsLKth+MaSNtolBfVofRRNPXCgPxMmYVoOl27uIM1rke/4zaVV77W3RT2xRtmpcWAgVAVzgoG
-	EITYsmU1MRxnYDD2j5Gg==;
+	List-Owner; bh=O+WeZbErKr1TvEvhznKfmbY/qeKe7bKGY/CY+1yW0M0=; b=F6jSZPrMdsrTz2
+	3w2d4oOe3fDxv6ljSbpLmRfheaznca4WSkN7Yw+hh7H/woC6vf7bvJDvkPAQCLgpzTZhnPkjXmeuJ
+	7kIXh+sOOk6dR0DwF0tRv/LN/+XMGo7EUfOIb6ksdlR3Q7/DzTtX4QYrLJbcQAK75wVaVCT3AP+ZW
+	EHva88qyIfEtYDsEQlJdxDNJWN9c2LFVYzjvUYX+I2sX4vPge2iUfrIc+FOA2Soj3nW37mkYyRC0Y
+	hpaMgJOeZt1ARCvlCAQZn8BY5/WwS00oJKkdamwwYhugOm1Ul0NUkkM7y6hYHCA1wO3zVthvnim4D
+	iIh0T24g68EY2oJEJwfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRC9-00Fxkv-0B;
-	Tue, 22 Aug 2023 13:13:17 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qYRCV-00Fy9j-12;
+	Tue, 22 Aug 2023 13:13:39 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRBs-00FxVX-0I;
-	Tue, 22 Aug 2023 13:13:02 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RVV6j1lnzzNnMw;
-	Tue, 22 Aug 2023 21:09:17 +0800 (CST)
+	id 1qYRBt-00FxVf-1y;
+	Tue, 22 Aug 2023 13:13:03 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RVV6g4mz2ztS5s;
+	Tue, 22 Aug 2023 21:09:15 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 21:12:50 +0800
+ 2023 21:12:57 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
 	<joel@jms.id.au>, <andrew@aj.id.au>, <florian.fainelli@broadcom.com>,
@@ -51,9 +51,9 @@ CC: <lizetao1@huawei.com>, <linux-spi@vger.kernel.org>,
 	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
 	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-rockchip@lists.infradead.org>
-Subject: [PATCH -next 02/25] spi: armada-3700: Use helper function devm_clk_get_prepared()
-Date: Tue, 22 Aug 2023 21:12:14 +0800
-Message-ID: <20230822131237.1022815-3-lizetao1@huawei.com>
+Subject: [PATCH -next 09/25] spi: spi-cavium-thunderx: Use helper function devm_clk_get_enabled()
+Date: Tue, 22 Aug 2023 21:12:21 +0800
+Message-ID: <20230822131237.1022815-10-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230822131237.1022815-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -63,8 +63,9 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_061300_693220_10BC2325 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20230822_061301_858805_4618316F 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,73 +83,54 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare() can now be replaced
-by devm_clk_get_prepared() when driver prepares the clocks for the whole
-lifetime of the device. Moreover, it is no longer necessary to unprepare
-the clocks explicitly.
+and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+replaced by devm_clk_get_enabled() when driver enables (and possibly
+prepares) the clocks for the whole lifetime of the device. Moreover, it is
+no longer necessary to unprepare and disable the clocks explicitly.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/spi/spi-armada-3700.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
+ drivers/spi/spi-cavium-thunderx.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/spi/spi-armada-3700.c b/drivers/spi/spi-armada-3700.c
-index 0103ac0158c0..70113b9dab35 100644
---- a/drivers/spi/spi-armada-3700.c
-+++ b/drivers/spi/spi-armada-3700.c
-@@ -865,18 +865,12 @@ static int a3700_spi_probe(struct platform_device *pdev)
+diff --git a/drivers/spi/spi-cavium-thunderx.c b/drivers/spi/spi-cavium-thunderx.c
+index f7c378a5f1bc..337aef12abcc 100644
+--- a/drivers/spi/spi-cavium-thunderx.c
++++ b/drivers/spi/spi-cavium-thunderx.c
+@@ -49,16 +49,12 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
+ 	p->regs.tx = 0x1010;
+ 	p->regs.data = 0x1080;
  
- 	init_completion(&spi->done);
- 
--	spi->clk = devm_clk_get(dev, NULL);
-+	spi->clk = devm_clk_get_prepared(dev, NULL);
- 	if (IS_ERR(spi->clk)) {
- 		dev_err(dev, "could not find clk: %ld\n", PTR_ERR(spi->clk));
+-	p->clk = devm_clk_get(dev, NULL);
++	p->clk = devm_clk_get_enabled(dev, NULL);
+ 	if (IS_ERR(p->clk)) {
+ 		ret = PTR_ERR(p->clk);
  		goto error;
  	}
  
--	ret = clk_prepare(spi->clk);
--	if (ret) {
--		dev_err(dev, "could not prepare clk: %d\n", ret);
+-	ret = clk_prepare_enable(p->clk);
+-	if (ret)
 -		goto error;
--	}
 -
- 	host->max_speed_hz = min_t(unsigned long, A3700_SPI_MAX_SPEED_HZ,
- 					clk_get_rate(spi->clk));
- 	host->min_speed_hz = DIV_ROUND_UP(clk_get_rate(spi->clk),
-@@ -888,19 +882,17 @@ static int a3700_spi_probe(struct platform_device *pdev)
- 			       dev_name(dev), host);
- 	if (ret) {
- 		dev_err(dev, "could not request IRQ: %d\n", ret);
--		goto error_clk;
-+		goto error;
- 	}
- 
- 	ret = devm_spi_register_controller(dev, host);
- 	if (ret) {
- 		dev_err(dev, "Failed to register host\n");
--		goto error_clk;
-+		goto error;
- 	}
- 
+ 	p->sys_freq = clk_get_rate(p->clk);
+ 	if (!p->sys_freq)
+ 		p->sys_freq = SYS_FREQ_DEFAULT;
+@@ -82,7 +78,6 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
  	return 0;
  
--error_clk:
--	clk_unprepare(spi->clk);
  error:
+-	clk_disable_unprepare(p->clk);
+ 	pci_release_regions(pdev);
  	spi_controller_put(host);
- out:
-@@ -909,10 +901,6 @@ static int a3700_spi_probe(struct platform_device *pdev)
+ 	return ret;
+@@ -97,7 +92,6 @@ static void thunderx_spi_remove(struct pci_dev *pdev)
+ 	if (!p)
+ 		return;
  
- static void a3700_spi_remove(struct platform_device *pdev)
- {
--	struct spi_controller *host = platform_get_drvdata(pdev);
--	struct a3700_spi *spi = spi_controller_get_devdata(host);
--
--	clk_unprepare(spi->clk);
- }
- 
- static struct platform_driver a3700_spi_driver = {
+-	clk_disable_unprepare(p->clk);
+ 	pci_release_regions(pdev);
+ 	/* Put everything in a known state. */
+ 	writeq(0, p->register_base + OCTEON_SPI_CFG(p));
 -- 
 2.34.1
 
