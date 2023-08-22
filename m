@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72279EE49AF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Aug 2023 13:13:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD28EE49B0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Aug 2023 13:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O+WeZbErKr1TvEvhznKfmbY/qeKe7bKGY/CY+1yW0M0=; b=F6jSZPrMdsrTz2
-	3w2d4oOe3fDxv6ljSbpLmRfheaznca4WSkN7Yw+hh7H/woC6vf7bvJDvkPAQCLgpzTZhnPkjXmeuJ
-	7kIXh+sOOk6dR0DwF0tRv/LN/+XMGo7EUfOIb6ksdlR3Q7/DzTtX4QYrLJbcQAK75wVaVCT3AP+ZW
-	EHva88qyIfEtYDsEQlJdxDNJWN9c2LFVYzjvUYX+I2sX4vPge2iUfrIc+FOA2Soj3nW37mkYyRC0Y
-	hpaMgJOeZt1ARCvlCAQZn8BY5/WwS00oJKkdamwwYhugOm1Ul0NUkkM7y6hYHCA1wO3zVthvnim4D
-	iIh0T24g68EY2oJEJwfw==;
+	List-Owner; bh=crOnNEz8F79PTJAo1UhBgCUFZ4ruGcK53C0RtoH7pgM=; b=dI+2Z3NA14hq3B
+	WrAv11y7K3rp31gWXz2IIRH+FQuMzRoj7ChaTv6kRfI7mqR2zuzLqv3Rv2Y5Dm/N1zLDSVNdNtkJr
+	mDyrRqfpbq+bZVyMLqk720onPlt8BWcqYuqq+L5IBME/o94qejJ9fqXnmxwF1/T0ix+NkT3EMQQAC
+	NV5zRw/Ll+vo2wufbbQ+q2KD6GHVYmm8DOZmWV94BoLmiB3gJX25InJoXrBigjc7k6XZn+7oF4+Vr
+	UrngD3CLw8oPjlbBUR/6SarPxkgZjaneDPYPwljavyzWDxcXEnD+/BDxABsujvXF1NwNRi1BEfyRN
+	GGBwE3wY8OpA1WaA+uqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRCV-00Fy9j-12;
-	Tue, 22 Aug 2023 13:13:39 +0000
+	id 1qYRCT-00Fy8B-2y;
+	Tue, 22 Aug 2023 13:13:37 +0000
 Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRBt-00FxVf-1y;
+	id 1qYRBs-00FxVd-1P;
 	Tue, 22 Aug 2023 13:13:03 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RVV6g4mz2ztS5s;
-	Tue, 22 Aug 2023 21:09:15 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RVV9D6Z1TzrSP8;
+	Tue, 22 Aug 2023 21:11:28 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 21:12:57 +0800
+ 2023 21:12:56 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
 	<joel@jms.id.au>, <andrew@aj.id.au>, <florian.fainelli@broadcom.com>,
@@ -51,9 +51,9 @@ CC: <lizetao1@huawei.com>, <linux-spi@vger.kernel.org>,
 	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
 	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-rockchip@lists.infradead.org>
-Subject: [PATCH -next 09/25] spi: spi-cavium-thunderx: Use helper function devm_clk_get_enabled()
-Date: Tue, 22 Aug 2023 21:12:21 +0800
-Message-ID: <20230822131237.1022815-10-lizetao1@huawei.com>
+Subject: [PATCH -next 08/25] spi: spi-cadence: Use helper function devm_clk_get_enabled()
+Date: Tue, 22 Aug 2023 21:12:20 +0800
+Message-ID: <20230822131237.1022815-9-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230822131237.1022815-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -63,8 +63,8 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_061301_858805_4618316F 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20230822_061300_968130_8540C9BB 
+X-CRM114-Status: UNSURE (   9.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,47 +90,68 @@ no longer necessary to unprepare and disable the clocks explicitly.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/spi/spi-cavium-thunderx.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/spi/spi-cadence.c | 23 +++--------------------
+ 1 file changed, 3 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/spi/spi-cavium-thunderx.c b/drivers/spi/spi-cavium-thunderx.c
-index f7c378a5f1bc..337aef12abcc 100644
---- a/drivers/spi/spi-cavium-thunderx.c
-+++ b/drivers/spi/spi-cavium-thunderx.c
-@@ -49,16 +49,12 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
- 	p->regs.tx = 0x1010;
- 	p->regs.data = 0x1080;
- 
--	p->clk = devm_clk_get(dev, NULL);
-+	p->clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(p->clk)) {
- 		ret = PTR_ERR(p->clk);
- 		goto error;
+diff --git a/drivers/spi/spi-cadence.c b/drivers/spi/spi-cadence.c
+index 3c9813ad064b..174476bbdf54 100644
+--- a/drivers/spi/spi-cadence.c
++++ b/drivers/spi/spi-cadence.c
+@@ -576,31 +576,19 @@ static int cdns_spi_probe(struct platform_device *pdev)
+ 		goto remove_ctlr;
  	}
  
--	ret = clk_prepare_enable(p->clk);
--	if (ret)
--		goto error;
+-	xspi->pclk = devm_clk_get(&pdev->dev, "pclk");
++	xspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
+ 	if (IS_ERR(xspi->pclk)) {
+ 		dev_err(&pdev->dev, "pclk clock not found.\n");
+ 		ret = PTR_ERR(xspi->pclk);
+ 		goto remove_ctlr;
+ 	}
+ 
+-	ret = clk_prepare_enable(xspi->pclk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Unable to enable APB clock.\n");
+-		goto remove_ctlr;
+-	}
 -
- 	p->sys_freq = clk_get_rate(p->clk);
- 	if (!p->sys_freq)
- 		p->sys_freq = SYS_FREQ_DEFAULT;
-@@ -82,7 +78,6 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
- 	return 0;
+ 	if (!spi_controller_is_target(ctlr)) {
+-		xspi->ref_clk = devm_clk_get(&pdev->dev, "ref_clk");
++		xspi->ref_clk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
+ 		if (IS_ERR(xspi->ref_clk)) {
+ 			dev_err(&pdev->dev, "ref_clk clock not found.\n");
+ 			ret = PTR_ERR(xspi->ref_clk);
+-			goto clk_dis_apb;
+-		}
+-
+-		ret = clk_prepare_enable(xspi->ref_clk);
+-		if (ret) {
+-			dev_err(&pdev->dev, "Unable to enable device clock.\n");
+-			goto clk_dis_apb;
++			goto remove_ctlr;
+ 		}
  
- error:
--	clk_disable_unprepare(p->clk);
- 	pci_release_regions(pdev);
- 	spi_controller_put(host);
+ 		pm_runtime_use_autosuspend(&pdev->dev);
+@@ -674,10 +662,7 @@ static int cdns_spi_probe(struct platform_device *pdev)
+ 	if (!spi_controller_is_target(ctlr)) {
+ 		pm_runtime_set_suspended(&pdev->dev);
+ 		pm_runtime_disable(&pdev->dev);
+-		clk_disable_unprepare(xspi->ref_clk);
+ 	}
+-clk_dis_apb:
+-	clk_disable_unprepare(xspi->pclk);
+ remove_ctlr:
+ 	spi_controller_put(ctlr);
  	return ret;
-@@ -97,7 +92,6 @@ static void thunderx_spi_remove(struct pci_dev *pdev)
- 	if (!p)
- 		return;
+@@ -698,8 +683,6 @@ static void cdns_spi_remove(struct platform_device *pdev)
  
--	clk_disable_unprepare(p->clk);
- 	pci_release_regions(pdev);
- 	/* Put everything in a known state. */
- 	writeq(0, p->register_base + OCTEON_SPI_CFG(p));
+ 	cdns_spi_write(xspi, CDNS_SPI_ER, CDNS_SPI_ER_DISABLE);
+ 
+-	clk_disable_unprepare(xspi->ref_clk);
+-	clk_disable_unprepare(xspi->pclk);
+ 	pm_runtime_set_suspended(&pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 
 -- 
 2.34.1
 
