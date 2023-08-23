@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496B3EE49B5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C42EE49A3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H4SCDtUdqQkQvS9Hm1MhCxCGBUQKlsgK09FSAKNbqbA=; b=W1GOIPQjJJvKye
-	KKMZqFV1ylulc/ski/Pj/BLYveNmdl+nN0rgJZmzk4mquJXKeLmLKdlQ5BBYNj4qbHBMjcc2S1eW8
-	awrTOMzDjdUco3z5CpAWV698wKEerD8AwcfMFXCzK+waNRz4EhPygOie6sfpmwWyBUTx786bG6ena
-	0nsbLH6xJpJyY+gjNCFRf6icrt9myKQMJhqpwlEw0MILdkGVK6lFfjYGLPaK73K99Nw8LjkCxOqZ2
-	cOYL8IjRgB6dMraAThrkOWFbWCaMCf0SraGjwV9vVK05z3D5MAT3I+ossHQC+r1CxCAdel9jqw+ui
-	dcEa22Y3r31S+hw6XGtg==;
+	List-Owner; bh=4xZoEadG/SGyKJrBaXuNrzibKXtAIuZ4aeB7ggpKw50=; b=CSP+4iMQcEoHz0
+	kwJ6XD0vvSNhzviX5CuzMzjME1zfa35hP7HOg3dv5990qMAws/X0cZDagpAWtNmRM9BvXE0/BwgZC
+	6KppbJr8fBNjvMw2gb7Q44KUeacbXr1kt6TIhGy22DBt24F7AIS7LoUmmY5AlrP/YtHCtIUqYIBfo
+	BZfQg7/Rgk/c01mmZjIIz7VnKaqBup7uOg26qJF3/ZOCmwdFPlbv5Hbzr3uj1Fa5sbpdO8OQXtsNl
+	JfNdHqjCPQmrXJlUuTIy2ThvOPQjsj8T/SvTt1cih2gQJoyWyydKNHLIpvzl07S5gK7EQwC+w1gwt
+	jfEFYZR3zwsACZqLRRTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo9C-000lAV-0h;
-	Wed, 23 Aug 2023 13:43:46 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1qYo9L-000lLD-1a;
+	Wed, 23 Aug 2023 13:43:55 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5o-000hX4-01;
-	Wed, 23 Aug 2023 13:40:18 +0000
+	id 1qYo5r-000ha8-0k;
+	Wed, 23 Aug 2023 13:40:21 +0000
 Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RW6kC4Q7nz16Nxc;
-	Wed, 23 Aug 2023 21:38:43 +0800 (CST)
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RW6gs5KpLzNn3J;
+	Wed, 23 Aug 2023 21:36:41 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:11 +0800
+ 2023 21:40:15 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 20/25] spi: npcm-fiu: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:33 +0800
-Message-ID: <20230823133938.1359106-21-lizetao1@huawei.com>
+Subject: [PATCH -next v2 23/25] spi: pic32: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:36 +0800
+Message-ID: <20230823133938.1359106-24-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064016_595484_97715849 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20230823_064019_595888_B7557114 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,59 +94,48 @@ Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-npcm-fiu.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ drivers/spi/spi-pic32.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/spi/spi-npcm-fiu.c b/drivers/spi/spi-npcm-fiu.c
-index 0ca21ff0e9cc..1a5277ff349f 100644
---- a/drivers/spi/spi-npcm-fiu.c
-+++ b/drivers/spi/spi-npcm-fiu.c
-@@ -699,7 +699,7 @@ static int npcm_fiu_probe(struct platform_device *pdev)
- 	struct spi_controller *ctrl;
- 	struct npcm_fiu_spi *fiu;
- 	void __iomem *regbase;
--	int id, ret;
-+	int id;
+diff --git a/drivers/spi/spi-pic32.c b/drivers/spi/spi-pic32.c
+index 52b788dac10a..f55b38c577e4 100644
+--- a/drivers/spi/spi-pic32.c
++++ b/drivers/spi/spi-pic32.c
+@@ -730,17 +730,13 @@ static int pic32_spi_hw_probe(struct platform_device *pdev,
+ 		return pic32s->tx_irq;
  
- 	ctrl = devm_spi_alloc_host(dev, sizeof(*fiu));
- 	if (!ctrl)
-@@ -737,7 +737,7 @@ static int npcm_fiu_probe(struct platform_device *pdev)
+ 	/* get clock */
+-	pic32s->clk = devm_clk_get(&pdev->dev, "mck0");
++	pic32s->clk = devm_clk_get_enabled(&pdev->dev, "mck0");
+ 	if (IS_ERR(pic32s->clk)) {
+ 		dev_err(&pdev->dev, "clk not found\n");
+ 		ret = PTR_ERR(pic32s->clk);
+ 		goto err_unmap_mem;
+ 	}
  
- 	fiu->res_mem = platform_get_resource_byname(pdev, IORESOURCE_MEM,
- 						    "memory");
--	fiu->clk = devm_clk_get(dev, NULL);
-+	fiu->clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(fiu->clk))
- 		return PTR_ERR(fiu->clk);
- 
-@@ -745,7 +745,6 @@ static int npcm_fiu_probe(struct platform_device *pdev)
- 					       "nuvoton,spix-mode");
- 
- 	platform_set_drvdata(pdev, fiu);
--	clk_prepare_enable(fiu->clk);
- 
- 	ctrl->mode_bits = SPI_RX_DUAL | SPI_RX_QUAD
- 		| SPI_TX_DUAL | SPI_TX_QUAD;
-@@ -755,18 +754,11 @@ static int npcm_fiu_probe(struct platform_device *pdev)
- 	ctrl->num_chipselect = fiu->info->max_cs;
- 	ctrl->dev.of_node = dev->of_node;
- 
--	ret = devm_spi_register_controller(dev, ctrl);
+-	ret = clk_prepare_enable(pic32s->clk);
 -	if (ret)
--		clk_disable_unprepare(fiu->clk);
+-		goto err_unmap_mem;
 -
--	return ret;
-+	return devm_spi_register_controller(dev, ctrl);
+ 	pic32_spi_hw_init(pic32s);
+ 
+ 	return 0;
+@@ -837,7 +833,6 @@ static int pic32_spi_probe(struct platform_device *pdev)
+ 
+ err_bailout:
+ 	pic32_spi_dma_unprep(pic32s);
+-	clk_disable_unprepare(pic32s->clk);
+ err_host:
+ 	spi_controller_put(host);
+ 	return ret;
+@@ -849,7 +844,6 @@ static void pic32_spi_remove(struct platform_device *pdev)
+ 
+ 	pic32s = platform_get_drvdata(pdev);
+ 	pic32_spi_disable(pic32s);
+-	clk_disable_unprepare(pic32s->clk);
+ 	pic32_spi_dma_unprep(pic32s);
  }
  
- static void npcm_fiu_remove(struct platform_device *pdev)
- {
--	struct npcm_fiu_spi *fiu = platform_get_drvdata(pdev);
--
--	clk_disable_unprepare(fiu->clk);
- }
- 
- MODULE_DEVICE_TABLE(of, npcm_fiu_dt_ids);
 -- 
 2.34.1
 
