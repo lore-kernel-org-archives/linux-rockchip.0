@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB32EE49A5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 03:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEDEBEE49AF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 03:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uSzLH++g6eut27pXwFOTQPEpYoRd1fSYLH03yiwPp/0=; b=HDWJcIjcwwgI79
-	fwJfjV/PXGMrOK/Egufe9mMtmV/8LDf1mTe8umzuWin4SR6sVEnYX0nvhfirW1jAIGbnnffbiDBlz
-	zeKuM9ioAv2X7uUFUR8aHT6P18N/NNfyOGyiOgo4rAJgJzVccu13DOzsN7PrDF1nQ9upiN4HfjSV7
-	IV5jUsjohPV00mpluCzMVC9W6reR4m91nsQF37Te1Z1jCcTO4TpGoSE/961xkPp9FS6ZOWS+QQUvS
-	QrKoPgi3HJoPLmeZvKNJ0eWZ1flvRjJtn7uLbaeu3AYT07uG1lOO84eqdNi7ztLSBYdABSQUwp4S4
-	+TDcV667wVOALSRG94dQ==;
+	List-Owner; bh=0duMtuiMysU25Uri2jb2OEKflQiCPEdhEgLRCq5HXTI=; b=gq/XaAnjfBYv2u
+	5soDthE0yrLyoLa88dzr/aDo7Y1cYBj3zKrunOZ3NORz/2iXPtweM5q5mWCs3UFjr8Yq4HnTAMjjV
+	sROD9BfWRrWE16EauMLg7v4H98QYT35OYP92BJTLBwWvv68pXGg17aar4TGWHZC3m4yeGs/VHCee7
+	m0y5atHvwa3cAaKP1bh8kVNOf0bdsk0AV05zELoVGMYjcJbc0NOzUkJvsu9rImNE35hs4uxqmXZhJ
+	YNygRgwVZP/ZN4rybqJos8zQOTzeKbByyhLegcR1x6cnQcCpEgrff3QUo4dV9EONSNkHKbJz3wO63
+	NZ7xQQFSH0US+tm1M4Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYe8c-00H7He-2G;
-	Wed, 23 Aug 2023 03:02:30 +0000
+	id 1qYeCU-00H7ep-0h;
+	Wed, 23 Aug 2023 03:06:30 +0000
 Received: from 167-179-156-38.a7b39c.syd.nbn.aussiebb.net ([167.179.156.38])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYe8X-00H7GK-1Y;
-	Wed, 23 Aug 2023 03:02:28 +0000
+	id 1qYeCQ-00H7cW-19;
+	Wed, 23 Aug 2023 03:06:27 +0000
 Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
 	by formenos.hmeau.com with smtp (Exim 4.94.2 #2 (Debian))
-	id 1qYe6H-006o9O-CL; Wed, 23 Aug 2023 11:00:06 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Wed, 23 Aug 2023 11:00:06 +0800
-Date: Wed, 23 Aug 2023 11:00:06 +0800
+	id 1qYeB0-006oC8-CQ; Wed, 23 Aug 2023 11:04:59 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Wed, 23 Aug 2023 11:04:59 +0800
+Date: Wed, 23 Aug 2023 11:04:59 +0800
 From: Herbert Xu <herbert@gondor.apana.org.au>
 To: Rob Herring <robh@kernel.org>
 Cc: Corentin Labbe <clabbe.montjoie@gmail.com>,
@@ -67,15 +67,14 @@ Cc: Corentin Labbe <clabbe.montjoie@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Subject: Re: [PATCH] crypto: Explicitly include correct DT includes
-Message-ID: <ZOV2Nn4o8Ldy9P1i@gondor.apana.org.au>
+Message-ID: <ZOV3Ww1l8Fu6fYim@gondor.apana.org.au>
 References: <20230714174421.4054194-1-robh@kernel.org>
- <CAL_JsqL_CvroupJEFwrjt8WOq=4WBxvE3sOTMnY8hEuBAMG=1g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAL_JsqL_CvroupJEFwrjt8WOq=4WBxvE3sOTMnY8hEuBAMG=1g@mail.gmail.com>
+In-Reply-To: <20230714174421.4054194-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_200225_525223_A9D818A6 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20230822_200626_397669_03ECA8EB 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,67 +86,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgMjIsIDIwMjMgYXQgMDU6NDA6NTdQTSAtMDUwMCwgUm9iIEhlcnJpbmcgd3Jv
-dGU6Cj4gT24gRnJpLCBKdWwgMTQsIDIwMjMgYXQgMTI6NDTigK9QTSBSb2IgSGVycmluZyA8cm9i
-aEBrZXJuZWwub3JnPiB3cm90ZToKPiA+Cj4gPiBUaGUgRFQgb2ZfZGV2aWNlLmggYW5kIG9mX3Bs
-YXRmb3JtLmggZGF0ZSBiYWNrIHRvIHRoZSBzZXBhcmF0ZQo+ID4gb2ZfcGxhdGZvcm1fYnVzX3R5
-cGUgYmVmb3JlIGl0IGFzIG1lcmdlZCBpbnRvIHRoZSByZWd1bGFyIHBsYXRmb3JtIGJ1cy4KPiA+
-IEFzIHBhcnQgb2YgdGhhdCBtZXJnZSBwcmVwcGluZyBBcm0gRFQgc3VwcG9ydCAxMyB5ZWFycyBh
-Z28sIHRoZXkKPiA+ICJ0ZW1wb3JhcmlseSIgaW5jbHVkZSBlYWNoIG90aGVyLiBUaGV5IGFsc28g
-aW5jbHVkZSBwbGF0Zm9ybV9kZXZpY2UuaAo+ID4gYW5kIG9mLmguIEFzIGEgcmVzdWx0LCB0aGVy
-ZSdzIGEgcHJldHR5IG11Y2ggcmFuZG9tIG1peCBvZiB0aG9zZSBpbmNsdWRlCj4gPiBmaWxlcyB1
-c2VkIHRocm91Z2hvdXQgdGhlIHRyZWUuIEluIG9yZGVyIHRvIGRldGFuZ2xlIHRoZXNlIGhlYWRl
-cnMgYW5kCj4gPiByZXBsYWNlIHRoZSBpbXBsaWNpdCBpbmNsdWRlcyB3aXRoIHN0cnVjdCBkZWNs
-YXJhdGlvbnMsIHVzZXJzIG5lZWQgdG8KPiA+IGV4cGxpY2l0bHkgaW5jbHVkZSB0aGUgY29ycmVj
-dCBpbmNsdWRlcy4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJu
-ZWwub3JnPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9jcnlwdG8vYWxsd2lubmVyL3N1bjRpLXNzL3N1
-bjRpLXNzLWNvcmUuYyAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlwdG8vYWxsd2lubmVyL3N1bjhp
-LWNlL3N1bjhpLWNlLWNvcmUuYyAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlwdG8vYWxsd2lubmVy
-L3N1bjhpLXNzL3N1bjhpLXNzLWNvcmUuYyAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlwdG8vYW1s
-b2dpYy9hbWxvZ2ljLWd4bC1jb3JlLmMgICAgICAgICAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlw
-dG8vYXNwZWVkL2FzcGVlZC1hY3J5LmMgICAgICAgICAgICAgICAgIHwgMyAtLS0KPiA+ICBkcml2
-ZXJzL2NyeXB0by9hdG1lbC1hZXMuYyAgICAgICAgICAgICAgICAgICAgICAgICAgfCA2ICsrLS0t
-LQo+ID4gIGRyaXZlcnMvY3J5cHRvL2F0bWVsLWVjYy5jICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8IDIgKy0KPiA+ICBkcml2ZXJzL2NyeXB0by9hdG1lbC1zaGEuYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgfCA2ICsrLS0tLQo+ID4gIGRyaXZlcnMvY3J5cHRvL2F0bWVsLXRkZXMuYyAgICAg
-ICAgICAgICAgICAgICAgICAgICB8IDYgKystLS0tCj4gPiAgZHJpdmVycy9jcnlwdG8vYmNtL2Np
-cGhlci5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgMyArLS0KPiA+ICBkcml2ZXJzL2NyeXB0
-by9jYWFtL2N0cmwuYyAgICAgICAgICAgICAgICAgICAgICAgICAgfCAxICsKPiA+ICBkcml2ZXJz
-L2NyeXB0by9jYWFtL2pyLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAxICsKPiA+ICBk
-cml2ZXJzL2NyeXB0by9jYWFtL3FpLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAxICsK
-PiA+ICBkcml2ZXJzL2NyeXB0by9jY3JlZS9jY19kcml2ZXIuYyAgICAgICAgICAgICAgICAgICAg
-fCAxIC0KPiA+ICBkcml2ZXJzL2NyeXB0by9leHlub3Mtcm5nLmMgICAgICAgICAgICAgICAgICAg
-ICAgICAgfCAyICstCj4gPiAgZHJpdmVycy9jcnlwdG8vZ2VtaW5pL3NsMzUxNi1jZS1jb3JlLmMg
-ICAgICAgICAgICAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlwdG8vaW1nLWhhc2guYyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHwgNCArKy0tCj4gPiAgZHJpdmVycy9jcnlwdG8vaW50ZWwva2Vl
-bWJheS9rZWVtYmF5LW9jcy1oY3UtY29yZS5jIHwgMyArKy0KPiA+ICBkcml2ZXJzL2NyeXB0by9u
-Ml9jb3JlLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAyICstCj4gPiAgZHJpdmVycy9j
-cnlwdG8vb21hcC1hZXMuYyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMSAtCj4gPiAgZHJp
-dmVycy9jcnlwdG8vb21hcC1kZXMuYyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMiAtLQo+
-ID4gIGRyaXZlcnMvY3J5cHRvL29tYXAtc2hhbS5jICAgICAgICAgICAgICAgICAgICAgICAgICB8
-IDEgLQo+ID4gIGRyaXZlcnMvY3J5cHRvL3JvY2tjaGlwL3JrMzI4OF9jcnlwdG8uYyAgICAgICAg
-ICAgICB8IDEgLQo+ID4gIGRyaXZlcnMvY3J5cHRvL3M1cC1zc3MuYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IDEgLQo+ID4gIGRyaXZlcnMvY3J5cHRvL3NhMnVsLmMgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8IDMgKystCj4gPiAgZHJpdmVycy9jcnlwdG8vc2FoYXJhLmMgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHwgMSAtCj4gPiAgZHJpdmVycy9jcnlwdG8vc3RhcmZp
-dmUvamg3MTEwLWNyeXAuYyAgICAgICAgICAgICAgIHwgMiArLQo+ID4gIGRyaXZlcnMvY3J5cHRv
-L3N0YXJmaXZlL2poNzExMC1oYXNoLmMgICAgICAgICAgICAgICB8IDEgLQo+ID4gIGRyaXZlcnMv
-Y3J5cHRvL3N0bTMyL3N0bTMyLWNyeXAuYyAgICAgICAgICAgICAgICAgICB8IDIgKy0KPiA+ICBk
-cml2ZXJzL2NyeXB0by9zdG0zMi9zdG0zMi1oYXNoLmMgICAgICAgICAgICAgICAgICAgfCAyICst
-Cj4gPiAgZHJpdmVycy9jcnlwdG8vdGFsaXRvcy5jICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgNCArKy0tCj4gPiAgZHJpdmVycy9jcnlwdG8veGlsaW54L3p5bnFtcC1hZXMtZ2NtLmMgICAg
-ICAgICAgICAgIHwgMiArLQo+ID4gIGRyaXZlcnMvY3J5cHRvL3hpbGlueC96eW5xbXAtc2hhLmMg
-ICAgICAgICAgICAgICAgICB8IDEgLQo+ID4gIDMzIGZpbGVzIGNoYW5nZWQsIDI1IGluc2VydGlv
-bnMoKyksIDQ1IGRlbGV0aW9ucygtKQo+IAo+IFBpbmchCgpTb3JyeSwgSSBtaXNmaWxlZCB0aGlz
-IG9uZS4gIEknbGwgZ2V0IG9udG8gaXQgbm93LgoKVGhhbmtzLAotLSAKRW1haWw6IEhlcmJlcnQg
-WHUgPGhlcmJlcnRAZ29uZG9yLmFwYW5hLm9yZy5hdT4KSG9tZSBQYWdlOiBodHRwOi8vZ29uZG9y
-LmFwYW5hLm9yZy5hdS9+aGVyYmVydC8KUEdQIEtleTogaHR0cDovL2dvbmRvci5hcGFuYS5vcmcu
-YXUvfmhlcmJlcnQvcHVia2V5LnR4dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Jul 14, 2023 at 11:44:18AM -0600, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/crypto/allwinner/sun4i-ss/sun4i-ss-core.c   | 1 -
+>  drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c   | 1 -
+>  drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c   | 1 -
+>  drivers/crypto/amlogic/amlogic-gxl-core.c           | 1 -
+>  drivers/crypto/aspeed/aspeed-acry.c                 | 3 ---
+>  drivers/crypto/atmel-aes.c                          | 6 ++----
+>  drivers/crypto/atmel-ecc.c                          | 2 +-
+>  drivers/crypto/atmel-sha.c                          | 6 ++----
+>  drivers/crypto/atmel-tdes.c                         | 6 ++----
+>  drivers/crypto/bcm/cipher.c                         | 3 +--
+>  drivers/crypto/caam/ctrl.c                          | 1 +
+>  drivers/crypto/caam/jr.c                            | 1 +
+>  drivers/crypto/caam/qi.c                            | 1 +
+>  drivers/crypto/ccree/cc_driver.c                    | 1 -
+>  drivers/crypto/exynos-rng.c                         | 2 +-
+>  drivers/crypto/gemini/sl3516-ce-core.c              | 1 -
+>  drivers/crypto/img-hash.c                           | 4 ++--
+>  drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c | 3 ++-
+>  drivers/crypto/n2_core.c                            | 2 +-
+>  drivers/crypto/omap-aes.c                           | 1 -
+>  drivers/crypto/omap-des.c                           | 2 --
+>  drivers/crypto/omap-sham.c                          | 1 -
+>  drivers/crypto/rockchip/rk3288_crypto.c             | 1 -
+>  drivers/crypto/s5p-sss.c                            | 1 -
+>  drivers/crypto/sa2ul.c                              | 3 ++-
+>  drivers/crypto/sahara.c                             | 1 -
+>  drivers/crypto/starfive/jh7110-cryp.c               | 2 +-
+>  drivers/crypto/starfive/jh7110-hash.c               | 1 -
+>  drivers/crypto/stm32/stm32-cryp.c                   | 2 +-
+>  drivers/crypto/stm32/stm32-hash.c                   | 2 +-
+>  drivers/crypto/talitos.c                            | 4 ++--
+>  drivers/crypto/xilinx/zynqmp-aes-gcm.c              | 2 +-
+>  drivers/crypto/xilinx/zynqmp-sha.c                  | 1 -
+>  33 files changed, 25 insertions(+), 45 deletions(-)
+
+Patch applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
