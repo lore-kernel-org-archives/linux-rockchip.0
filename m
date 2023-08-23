@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A1E5C3DA6F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 17:16:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E061CC3DA66
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 19:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zox5ZbcJwfruWPYhP5O5UgDeC6SAIB9eK+hAojvaRYE=; b=N8Fac5ltbU2UL7
-	sEfGaEhTbwrfEtTHImjx+6ZOLbdVYCEFWCxACJpCBFeaF4vIwubOzMJLRIAu5zEHZNGPDCLMY1QaP
-	6xh40EivFHNDXnI7hou8UysDotdOasrvaGNSDknSs4b1Wg22Rd3ye45RjHv9ctbFoKleQw8DLK+1X
-	HExOpaPDGmlXGVmUaNcvdL/CrjGTHxAOCrrnfEHn5A6Y+bldwkjEUPY2ESe1LRf+s29hUPlDY3Fbm
-	Ti1aX4jsMgSqoYdEFddFx+ymJxHtj8dA+x7Wqk6SSAOIaeGF8EImjjumZKDoFU//qYSVpy0E8ZgzV
-	q3dt3vDTFoeRrGFox3cQ==;
+	List-Owner; bh=KhG8q17pCbi0buLKAJC4hzWUyKIaO+7XQgpWXuq0vxk=; b=cDx920+oUaC+47
+	ssdgCTvfuuQIVQ7oOlrhucWFve3960aIMuiG0Fa6+yCr9J/xechUUYVSConCBnTzdEPLLs1SdQ3xF
+	ByQW2tEoFVcj0FoXzL4hJlZZQT2xw01UMT9NeEmBxJvixcU9PpWYEpseDeKWo1wuLomMKiSPQUff2
+	2zdExIhJmXzZHIFtlwCsMiiDMKJurnNVKadqh7N52ktgEhEtgffKf442OxNv+e82VcmOSmP1yZXsu
+	JSVkf11M+m4FOzNGeTXuMEUvF/mkfobjFaQ2b9IRZKPV4x9d65REHtaGA73AKVsqxaylwHpNi2d4W
+	wte63gSQtkL9eFRu7Uog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYrSz-001CRG-2L;
-	Wed, 23 Aug 2023 17:16:25 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1qYtQx-001PEt-2M;
+	Wed, 23 Aug 2023 19:22:27 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYrSu-001CP9-1C;
-	Wed, 23 Aug 2023 17:16:22 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RWCSR0Fxdz67Ldy;
-	Thu, 24 Aug 2023 01:12:07 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 18:16:16 +0100
-Date: Wed, 23 Aug 2023 18:16:15 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Li Zetao <lizetao1@huawei.com>, <linux-amlogic@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>
-CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
-	<avifishman70@gmail.com>, <bcm-kernel-feedback-list@broadcom.com>,
-	<benjaminfair@google.com>, <broonie@kernel.org>,
-	<chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>, <conor.dooley@microchip.com>,
-	<daire.mcnamara@microchip.com>, <fancer.lancer@gmail.com>,
-	<florian.fainelli@broadcom.com>, <heiko@sntech.de>, <jbrunet@baylibre.com>,
-	<joel@jms.id.au>, <khilman@baylibre.com>, <linus.walleij@linaro.org>,
-	<linux-aspeed@lists.ozlabs.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-spi@vger.kernel.org>, <martin.blumenstingl@googlemail.com>,
-	<matthias.bgg@gmail.com>, <neil.armstrong@linaro.org>, <olteanv@gmail.com>,
-	<openbmc@lists.ozlabs.org>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
-	<tali.perry1@gmail.com>, <tmaimon77@gmail.com>, <venture@google.com>,
-	<yuenn@google.com>
-Subject: Re: [PATCH -next v2 24/25] spi: spl022: Use helper function
- devm_clk_get_enabled()
-Message-ID: <20230823181615.00007e9f@Huawei.com>
-In-Reply-To: <20230823133938.1359106-25-lizetao1@huawei.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
-	<20230823133938.1359106-1-lizetao1@huawei.com>
-	<20230823133938.1359106-25-lizetao1@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1qYtQs-001PE5-2B;
+	Wed, 23 Aug 2023 19:22:25 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-99cdb0fd093so811854266b.1;
+        Wed, 23 Aug 2023 12:22:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692818539; x=1693423339;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4A7rqXZuJfU1yZs94XUAoV6PyvGVYswx1v0VPnHlBMo=;
+        b=gABV0oZ48L/j5GWCIeTrExYiZi91ng21hl5xespzr8NB3S4D/8ftCqCb9FGv/K2afQ
+         ArY+l6UCMD6gpiNzOX76C49BNHZlaVvwNz4QSSYAqxFtnH8PVkEBo0kfXRDoHKtHEK+T
+         FynUDmVpnbZ5U4/SKWlUzkz3di/XO0oHHZQmgkk9wbopDuQsHvi0ko5qTL9BAomQkpJD
+         8WAd6Neg4HzJ9SzKVoOlRMbblIRxX37RdOaWfPWyoBQOxhBb6ooBanHlud/zE7ql/74B
+         GvCHfsDsKPKnVWXTnluLxnbqN0GYFfPQ9klsbR1I/RqmZuMePgFQ+Fuq1Wh+qi9cRwgB
+         24JQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692818539; x=1693423339;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4A7rqXZuJfU1yZs94XUAoV6PyvGVYswx1v0VPnHlBMo=;
+        b=L4Keg1QtOlbLvDcd72p/vxvTnabZMwcuP9u036QxP0/QlRz4xs1AkgioLKWvJqaXEy
+         gOhd5P+ndABF288aFPh8AHOzr1VGXRYMo8VhdMNVBumtwrMJEIVaVpgKkp8zJwNL1VkZ
+         NP3vZctQmf7OS2E3uxVlgLF+AoBtQy3tmNZaM72QokwpLRMqqD/Aof33GNIAHIYYgOyf
+         z28zabvkNv4jLoHEk/p1ZF70JQa57PGxqEHe0mrWVsIn8xo9gmGMwTMLIHu5C5jfvSkZ
+         20FIvGSj765O1Y0Gk7kJhIEWHH6Xt/Lf4HjtIociog4OU+JKQOrC65X0PGzg1/bu/nB/
+         tubQ==
+X-Gm-Message-State: AOJu0YxSO+nqpmrqW2HTSu6Q8oCu1eQVmroto4c/2FuLOkQBXcj0WOLp
+	W9O5jcIMR8xaWFLEwUsXNkA=
+X-Google-Smtp-Source: AGHT+IHmo+7tkL57NnW1/dVyRTs/Uwxxxaw5Ytu+u/iQ6yK9cxjIxAGx4nZFFqWG6KJlM+8tYnkyww==
+X-Received: by 2002:a17:906:5356:b0:9a1:abf8:76ad with SMTP id j22-20020a170906535600b009a1abf876admr6243155ejo.34.1692818538741;
+        Wed, 23 Aug 2023 12:22:18 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
+        by smtp.gmail.com with ESMTPSA id i6-20020a170906264600b0099bd1ce18fesm10171343ejc.10.2023.08.23.12.22.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Aug 2023 12:22:17 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Orson Zhai <orsonzhai@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>, Chen-Yu Tsai <wens@csie.org>,
+ Will Deacon <will@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Jason Gunthorpe <jgg@nvidia.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH 3/7] iommu/sun50i: Convert to generic_single_device_group()
+Date: Wed, 23 Aug 2023 21:22:15 +0200
+Message-ID: <2152915.irdbgypaU6@jernej-laptop>
+In-Reply-To: <3-v1-c869a95191f2+5e8-iommu_single_grp_jgg@nvidia.com>
+References: <3-v1-c869a95191f2+5e8-iommu_single_grp_jgg@nvidia.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_101620_696401_F10376DA 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20230823_122222_741469_20D5C4E8 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,74 +97,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 23 Aug 2023 21:39:37 +0800
-Li Zetao <lizetao1@huawei.com> wrote:
-
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it is
-> no longer necessary to unprepare and disable the clocks explicitly.
-> Moreover, the label "err_no_clk_en" is no used, drop it for clean code.
+Dne torek, 22. avgust 2023 ob 18:15:58 CEST je Jason Gunthorpe napisal(a):
+> Use the new helper.
 > 
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
-FWIW
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
-If you want to follow up with a patch fixing that odd formatting (on it's own)
-then that would be great.
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-Jonathan
+Best regards,
+Jernej
 
 > ---
-> v1 -> v2: Delete the modification of odd formatting.
+>  drivers/iommu/sun50i-iommu.c | 29 ++++++-----------------------
+>  1 file changed, 6 insertions(+), 23 deletions(-)
 > 
->  drivers/spi/spi-pl022.c | 11 +----------
->  1 file changed, 1 insertion(+), 10 deletions(-)
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index 74c5cb93e90027..b8df655185ab2a 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -107,7 +107,6 @@ struct sun50i_iommu {
+>  	struct clk *clk;
 > 
-> diff --git a/drivers/spi/spi-pl022.c b/drivers/spi/spi-pl022.c
-> index bb347b6bb6f3..d1b6110b38fc 100644
-> --- a/drivers/spi/spi-pl022.c
-> +++ b/drivers/spi/spi-pl022.c
-> @@ -2168,19 +2168,13 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
->  	dev_info(&adev->dev, "mapped registers from %pa to %p\n",
->  		&adev->res.start, pl022->virtbase);
->  
-> -	pl022->clk = devm_clk_get(&adev->dev, NULL);
-> +	pl022->clk = devm_clk_get_enabled(&adev->dev, NULL);
->  	if (IS_ERR(pl022->clk)) {
->  		status = PTR_ERR(pl022->clk);
->  		dev_err(&adev->dev, "could not retrieve SSP/SPI bus clock\n");
->  		goto err_no_clk;
->  	}
->  
-> -	status = clk_prepare_enable(pl022->clk);
-> -	if (status) {
-> -		dev_err(&adev->dev, "could not enable SSP/SPI bus clock\n");
-> -		goto err_no_clk_en;
+>  	struct iommu_domain *domain;
+> -	struct iommu_group *group;
+>  	struct kmem_cache *pt_pool;
+>  };
+> 
+> @@ -808,13 +807,6 @@ static struct iommu_device
+> *sun50i_iommu_probe_device(struct device *dev) return &iommu->iommu;
+>  }
+> 
+> -static struct iommu_group *sun50i_iommu_device_group(struct device *dev)
+> -{
+> -	struct sun50i_iommu *iommu = sun50i_iommu_from_dev(dev);
+> -
+> -	return iommu_group_ref_get(iommu->group);
+> -}
+> -
+>  static int sun50i_iommu_of_xlate(struct device *dev,
+>  				 struct of_phandle_args *args)
+>  {
+> @@ -828,7 +820,7 @@ static int sun50i_iommu_of_xlate(struct device *dev,
+> 
+>  static const struct iommu_ops sun50i_iommu_ops = {
+>  	.pgsize_bitmap	= SZ_4K,
+> -	.device_group	= sun50i_iommu_device_group,
+> +	.device_group	= generic_single_device_group,
+>  	.domain_alloc	= sun50i_iommu_domain_alloc,
+>  	.of_xlate	= sun50i_iommu_of_xlate,
+>  	.probe_device	= sun50i_iommu_probe_device,
+> @@ -995,42 +987,36 @@ static int sun50i_iommu_probe(struct platform_device
+> *pdev) if (!iommu->pt_pool)
+>  		return -ENOMEM;
+> 
+> -	iommu->group = iommu_group_alloc();
+> -	if (IS_ERR(iommu->group)) {
+> -		ret = PTR_ERR(iommu->group);
+> -		goto err_free_cache;
 > -	}
 > -
->  	/* Initialize transfer pump */
->  	tasklet_init(&pl022->pump_transfers, pump_transfers,
->  		     (unsigned long)pl022);
-> @@ -2240,8 +2234,6 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
->  	if (platform_info->enable_dma)
->  		pl022_dma_remove(pl022);
->   err_no_irq:
-> -	clk_disable_unprepare(pl022->clk);
-> - err_no_clk_en:
->   err_no_clk:
->   err_no_ioremap:
->  	amba_release_regions(adev);
-> @@ -2268,7 +2260,6 @@ pl022_remove(struct amba_device *adev)
->  	if (pl022->host_info->enable_dma)
->  		pl022_dma_remove(pl022);
->  
-> -	clk_disable_unprepare(pl022->clk);
->  	amba_release_regions(adev);
->  	tasklet_disable(&pl022->pump_transfers);
->  }
+>  	iommu->base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(iommu->base)) {
+>  		ret = PTR_ERR(iommu->base);
+> -		goto err_free_group;
+> +		goto err_free_cache;
+>  	}
+> 
+>  	irq = platform_get_irq(pdev, 0);
+>  	if (irq < 0) {
+>  		ret = irq;
+> -		goto err_free_group;
+> +		goto err_free_cache;
+>  	}
+> 
+>  	iommu->clk = devm_clk_get(&pdev->dev, NULL);
+>  	if (IS_ERR(iommu->clk)) {
+>  		dev_err(&pdev->dev, "Couldn't get our clock.\n");
+>  		ret = PTR_ERR(iommu->clk);
+> -		goto err_free_group;
+> +		goto err_free_cache;
+>  	}
+> 
+>  	iommu->reset = devm_reset_control_get(&pdev->dev, NULL);
+>  	if (IS_ERR(iommu->reset)) {
+>  		dev_err(&pdev->dev, "Couldn't get our reset line.\n");
+>  		ret = PTR_ERR(iommu->reset);
+> -		goto err_free_group;
+> +		goto err_free_cache;
+>  	}
+> 
+>  	ret = iommu_device_sysfs_add(&iommu->iommu, &pdev->dev,
+>  				     NULL, dev_name(&pdev->dev));
+>  	if (ret)
+> -		goto err_free_group;
+> +		goto err_free_cache;
+> 
+>  	ret = iommu_device_register(&iommu->iommu, &sun50i_iommu_ops, 
+&pdev->dev);
+> if (ret)
+> @@ -1049,9 +1035,6 @@ static int sun50i_iommu_probe(struct platform_device
+> *pdev) err_remove_sysfs:
+>  	iommu_device_sysfs_remove(&iommu->iommu);
+> 
+> -err_free_group:
+> -	iommu_group_put(iommu->group);
+> -
+>  err_free_cache:
+>  	kmem_cache_destroy(iommu->pt_pool);
+
+
+
 
 
 _______________________________________________
