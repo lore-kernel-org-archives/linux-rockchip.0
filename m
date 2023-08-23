@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3F9DEE49B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:43:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDEBDEE4993
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ePZb0NT5ZYFpNQ/oG+YD6dOEaBfqDts5bXAF7vCgKp4=; b=xCw9ND8phInbiQ
-	wXLKl/HS4Lw6Hx0LPfAjcd/gQsiBwbSvtqTV+U/7glosht+545GW2serLYy2+7lhVPNCdLaTELfUm
-	8avsXDg8HqvhCvsoE5pSbctCKAHA+7gjAXO/8kU5zxG785cOSpFtpTgLkRnI4Dpj2cUTuuhLuDQG5
-	5jBaM+3fLd/LymlWMZ/mOqtPqlhWOrIjqL6EWN72pDhcHlEa1wHIRKiV3VLbzFoubvoDVzvoci3+w
-	nvEvmReX0ZtAXcrCMAdDN4KKH3SHoPQyeXzX8MD3yE1IHeteVMCPK2ueWKf406PlaaICDZbfTctCB
-	KEbCMWCyYWS6nVGwo3ww==;
+	List-Owner; bh=vCIkt9VNKQymE26RavcepHeWJtpl6DSgLfMHCxhP0yw=; b=nIM6YDIllhn7Ju
+	wv2Pduvu5qUsNA1W+sGrRgx5oy/bGVmdtKbzTdRECdzGJgmojH+cnOUREk8elc+1T5AYq5Nb5T8cs
+	1jKjBeXhRzKsEZDeiBgaVNhh3ExWB4BHIMLODzTQ56ele98MAcy/VYbZS5Cd2sgsSDocTVxwIlNlQ
+	QJ8/84Ujm5ZkqOu60JPsAaTE1j3wW8CVveIcdkQatGv1nsNrWVKCAnn8u8YEoSlT/H1DCFVg3wgvS
+	5frVlhdtOwNOlKCSitkNPtDbBOJKAx9aeSgN/31TL260bg+B8YQf+mvk9mWvIc6X/OV1Vxb/q8dwg
+	VTIBGEwuUdQne9itT8QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo8O-000kLk-22;
-	Wed, 23 Aug 2023 13:42:56 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1qYo8J-000kFi-07;
+	Wed, 23 Aug 2023 13:42:51 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5h-000hP4-0b;
-	Wed, 23 Aug 2023 13:40:16 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RW6h46w6SzLpCJ;
-	Wed, 23 Aug 2023 21:36:52 +0800 (CST)
+	id 1qYo5g-000hQC-2z;
+	Wed, 23 Aug 2023 13:40:13 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RW6j72BqtzTmKC;
+	Wed, 23 Aug 2023 21:37:47 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:39:56 +0800
+ 2023 21:40:02 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 06/25] spi: bcm2835: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:19 +0800
-Message-ID: <20230823133938.1359106-7-lizetao1@huawei.com>
+Subject: [PATCH -next v2 11/25] spi: dw-bt1: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:24 +0800
+Message-ID: <20230823133938.1359106-12-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064010_356662_CBFE0BDB 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20230823_064010_119792_925C3EA9 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +89,76 @@ prepares) the clocks for the whole lifetime of the device. Moreover, it is
 no longer necessary to unprepare and disable the clocks explicitly.
 
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Acked-by: Serge Semin <fancer.lancer@gmail.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-bcm2835.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ drivers/spi/spi-dw-bt1.c | 23 +++++------------------
+ 1 file changed, 5 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/spi/spi-bcm2835.c b/drivers/spi/spi-bcm2835.c
-index e7bb2714678a..a457ad2f7db1 100644
---- a/drivers/spi/spi-bcm2835.c
-+++ b/drivers/spi/spi-bcm2835.c
-@@ -1352,7 +1352,7 @@ static int bcm2835_spi_probe(struct platform_device *pdev)
- 	if (IS_ERR(bs->regs))
- 		return PTR_ERR(bs->regs);
+diff --git a/drivers/spi/spi-dw-bt1.c b/drivers/spi/spi-dw-bt1.c
+index 5e1c01822967..5391bcac305c 100644
+--- a/drivers/spi/spi-dw-bt1.c
++++ b/drivers/spi/spi-dw-bt1.c
+@@ -269,43 +269,32 @@ static int dw_spi_bt1_probe(struct platform_device *pdev)
  
--	bs->clk = devm_clk_get(&pdev->dev, NULL);
-+	bs->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(bs->clk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(bs->clk),
- 				     "could not get clk\n");
-@@ -1363,14 +1363,11 @@ static int bcm2835_spi_probe(struct platform_device *pdev)
- 	if (bs->irq < 0)
- 		return bs->irq;
+ 	dws->paddr = mem->start;
  
--	err = clk_prepare_enable(bs->clk);
--	if (err)
--		return err;
- 	bs->clk_hz = clk_get_rate(bs->clk);
+-	dwsbt1->clk = devm_clk_get(&pdev->dev, NULL);
++	dwsbt1->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(dwsbt1->clk))
+ 		return PTR_ERR(dwsbt1->clk);
  
- 	err = bcm2835_dma_init(ctlr, &pdev->dev, bs);
- 	if (err)
--		goto out_clk_disable;
-+		return err;
- 
- 	/* initialise the hardware with the default polarities */
- 	bcm2835_wr(bs, BCM2835_SPI_CS,
-@@ -1396,8 +1393,6 @@ static int bcm2835_spi_probe(struct platform_device *pdev)
- 
- out_dma_release:
- 	bcm2835_dma_release(ctlr, bs);
--out_clk_disable:
--	clk_disable_unprepare(bs->clk);
- 	return err;
- }
- 
-@@ -1415,8 +1410,6 @@ static void bcm2835_spi_remove(struct platform_device *pdev)
- 	/* Clear FIFOs, and disable the HW block */
- 	bcm2835_wr(bs, BCM2835_SPI_CS,
- 		   BCM2835_SPI_CS_CLEAR_RX | BCM2835_SPI_CS_CLEAR_TX);
+-	ret = clk_prepare_enable(dwsbt1->clk);
+-	if (ret)
+-		return ret;
 -
--	clk_disable_unprepare(bs->clk);
+ 	dws->bus_num = pdev->id;
+ 	dws->reg_io_width = 4;
+ 	dws->max_freq = clk_get_rate(dwsbt1->clk);
+-	if (!dws->max_freq) {
+-		ret = -EINVAL;
+-		goto err_disable_clk;
+-	}
++	if (!dws->max_freq)
++		return -EINVAL;
+ 
+ 	init_func = device_get_match_data(&pdev->dev);
+ 	ret = init_func(pdev, dwsbt1);
+ 	if (ret)
+-		goto err_disable_clk;
++		return ret;
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
+ 	ret = dw_spi_add_host(&pdev->dev, dws);
+ 	if (ret) {
+ 		pm_runtime_disable(&pdev->dev);
+-		goto err_disable_clk;
++		return ret;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, dwsbt1);
+ 
+ 	return 0;
+-
+-err_disable_clk:
+-	clk_disable_unprepare(dwsbt1->clk);
+-
+-	return ret;
  }
  
- static const struct of_device_id bcm2835_spi_match[] = {
+ static void dw_spi_bt1_remove(struct platform_device *pdev)
+@@ -315,8 +304,6 @@ static void dw_spi_bt1_remove(struct platform_device *pdev)
+ 	dw_spi_remove_host(&dwsbt1->dws);
+ 
+ 	pm_runtime_disable(&pdev->dev);
+-
+-	clk_disable_unprepare(dwsbt1->clk);
+ }
+ 
+ static const struct of_device_id dw_spi_bt1_of_match[] = {
 -- 
 2.34.1
 
