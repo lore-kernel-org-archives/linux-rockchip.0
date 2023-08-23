@@ -4,90 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F25ECEE49A3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 14:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED07C79F96
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 16:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CBDXilfPolycn+7XrtF5/yZGA6efvURI5UudHk8JuVo=; b=qkZvNAN/B5p6Um
-	1sEJVe1bD0XBFZHAhn38ZcwvoBQkiKIIO19JBOVB4xXJTYtuWcaHvNsxFAiheUddHHKt3+17gYQOW
-	/HD2MeDn3wdezRYmn2bZgVDOgT2GESB80XLtT7kMzOGFyLvmVECdomevdw04YRrEe930Z4ItUxYlb
-	YiLr0qsVNy1+2HKznUlmpdgBgUYJnzf2STDWa290DBFqq7pq67BPtX4rqT92Jk8ZyDv2yH2y1Tpxv
-	CzMEsv3xZSFEZS5Ybz1fDkjZAl3U7V+k20MD3vK4wCHeSW+MRYX2625BCb6zaXnRRSLFS56IzW0ay
-	0Y5p/pxM3+sXdUtd589g==;
+	List-Owner; bh=yeAXTgfOhpNLpiB2OxqTkF3v8f1JhDC5AW41EJ8scgs=; b=J0faezlN8D412e
+	Zgp0IZ1CCW6aMD/0WDO+JJbClJSHIs84kJJHj0MaymI94SPJgiMZMzjTTCfySs/G9D3Q2lKeQ2hCu
+	8pRJ264o/4sbxWZ/VxHrt1K87IGHa88ZACmoJ4NynQgb1r2a1gQuSo7ncFxf+xjmrLpPE/7UU8sok
+	mTyC1zHdfypnfhRJPSke3BBjiIW//gj1eWzTl3/k2zJzWMJXcBC1tWI/GHBnbLg6WDNwlobGPQA7c
+	gayaMTmkNc5MIlgoPFSPYyZ4wuN2zcvTn4IwjPotPq3gFOHlfiqLryERi/swJZlcJ3GRwpnEB50Hl
+	uiRW7QJsRSMiJ0ChXLVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYoxg-000rLX-1V;
-	Wed, 23 Aug 2023 14:35:56 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1qYr1O-0016Au-0e;
+	Wed, 23 Aug 2023 16:47:54 +0000
+Received: from mail-mw2nam10on2062c.outbound.protection.outlook.com ([2a01:111:f400:7e89::62c] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYoxb-000rHo-0R;
-	Wed, 23 Aug 2023 14:35:52 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-4ff8cf11b90so8952445e87.1;
-        Wed, 23 Aug 2023 07:35:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692801340; x=1693406140;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=k2TgiqCmPSnILANt5GZ18rswgB/K69rSR8VLR5YONDs=;
-        b=RVzW2IYkj05E1QurcVWCK8Xr7hoWpAOpq6CNlM5mHjUNjLSfNyKWHfrrFTfD9jQ3sy
-         eDWbgQ442RcyjicydLE6/q60tWpJdy6owEAJS82xvbIcbBMG5mL58fFkQ2ll1I6CDNZk
-         sy57Jl1xt9HL9jEtz8CEZQj7WMl/hyN2A+zsuaCdZqYXcjp81CxeZbRcdAYxDsGZ/QXS
-         kSenj8ixe68J2WE8rMsSlvpz33p80M3zhzSMOE/X5uDBSnWHA9seXSpGOUV4gvZnTFxZ
-         Yv0Aegrg6xvVhrq6m+Gl4RABhOtV9dWhz9ongXNlT9GqtGbxTGyhdc9vo0S9nFxBcNYJ
-         nYuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692801340; x=1693406140;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k2TgiqCmPSnILANt5GZ18rswgB/K69rSR8VLR5YONDs=;
-        b=fvZk26vBQLwDUU75lDggzhrlFPKcwA+ThgtXWQFLQVlF0B4iT3GMbtbOfdiA/MvptK
-         IDun3tYmraoi7E1JvzjgT/LT6/p4M95mfTxizgkAJN6pC5AG8xLBPg0W942p4OA3splU
-         +dw0BVHUng2S62JnZ7pjAJ2OjP1hiDsm34YqMix95OORfYh2WvXlqyS+llOvIytOKVZg
-         FiyNYvN5/o9Kj6Bmw+p5Tb/lknievhOBXRfHJCvPo7x8B9m8Zpn+sOKLSw56j3Iga8H4
-         /c6R78oUu9zve8onU7Uf0TDPcMDs0/xVa1OV++xL+8oITKKm9sKSBREE67cSQXFulXbX
-         z+zQ==
-X-Gm-Message-State: AOJu0Yz/WZa11q04byfiMU0aPwfj+qXL0rUeu/VbkA9+QOg7DLRe/UtA
-	IIRoLV8zm+pS92D/AGpRrkA=
-X-Google-Smtp-Source: AGHT+IFj+DCY0sY2R0WBzy7d65Q9hoRnlsbk7tAiZi/tGbFHUyZQZNNjWy+pVOAk7a3V21jYp3uHGg==
-X-Received: by 2002:ac2:5f6a:0:b0:4fd:d517:fbd8 with SMTP id c10-20020ac25f6a000000b004fdd517fbd8mr8210729lfc.9.1692801340064;
-        Wed, 23 Aug 2023 07:35:40 -0700 (PDT)
-Received: from mobilestation ([178.176.56.174])
-        by smtp.gmail.com with ESMTPSA id d11-20020ac244cb000000b005009b4d5c14sm59710lfm.265.2023.08.23.07.35.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Aug 2023 07:35:39 -0700 (PDT)
-Date: Wed, 23 Aug 2023 17:35:35 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Li Zetao <lizetao1@huawei.com>
-Cc: andrew@aj.id.au, angelogioacchino.delregno@collabora.com, 
-	avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, benjaminfair@google.com, 
-	broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
-	conor.dooley@microchip.com, daire.mcnamara@microchip.com, florian.fainelli@broadcom.com, 
-	heiko@sntech.de, jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
-	linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-spi@vger.kernel.org, 
-	martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com, neil.armstrong@linaro.org, 
-	olteanv@gmail.com, openbmc@lists.ozlabs.org, rjui@broadcom.com, 
-	sbranden@broadcom.com, tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
-	yuenn@google.com, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH -next v2 11/25] spi: dw-bt1: Use helper function
- devm_clk_get_enabled()
-Message-ID: <xxosi2ymo7otqyfbmjlubezzedqw6ulwwhdmbdjbto7yaqw673@q673weupq67y>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230823133938.1359106-1-lizetao1@huawei.com>
- <20230823133938.1359106-12-lizetao1@huawei.com>
+	id 1qYr1K-00168J-2Y;
+	Wed, 23 Aug 2023 16:47:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=d1/4SPi53tvCjkLsJZ9Wy/g/8a4UlzX/OPha1EuEQ5S/amQLuI6IC1oOtetOvBpJo+8H14PZZlHfOnFCb0JDp7DS+peusz66U6u8+z1i2K4TvdqNpTwzsMPYLR3XBZkVbD14YvVJVe6aHOYqvLUw7/Ih8jdu8j7aqd4bceSE1s/Tqto0uHlra9VaWbCJiYU8PUsR4mqSHidQ9ObL7vZiA9Ff7bQzX1gVg4DvWM9es6ayi2PyhbVP2s/qvprp0NbqtezbQvJzVOnT1awIkwd872N0nKIEJzC8RD7hfltPTFmJGtHi+0qR74XYB42jesnc5Bc6YCTfc7CosjfWuLYahw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8i1/nr4BZ72rdgQlfM4bhM6VAGgmmnzEdUflAW1+U/M=;
+ b=fcX2cMqENQrGc5KB9mszGUhDGsHuwrld785wg8UWm9hVe6aSdxBhk89R3jBU/nPv0GRqX58qkLxz7BSXH8P0LPc4zvuzDLxlFsReh6D0KEdPVVTPR5TnpkkcOYKdniImgHXZCR1nkGd+YQqyHggbRN/VU/twmIG7yCm6hL0Ol+Ior3JiYv/BwwWRU32uWIBT1qReOyR0D2cddZK/7UqgTROi09pJl9bwA32UkZRSVgPPNWgqI+H9l058X7etigGKl5yueeldtbmc5ufmSE9gACpvyvUDhhQ3wwxEeI5bfRSseGesYdQQg2EcAQbA5V4+Bh1ZvOa7cmURAkUFJM0z1Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8i1/nr4BZ72rdgQlfM4bhM6VAGgmmnzEdUflAW1+U/M=;
+ b=btxXwF9VXiGFDSwbNiytD/00vKC6DR/xcKjGRj/YMUdICc8TEIWzMu6fqkt4PR2lZDd2N4kWl0jErQ+3dH0A8h+3ZCl1ROtfm1HDk7OhbnAB1jE8svaXOaGUib+x7FwtR5ql9YqmjU7PwM38OCqpJqztMKOLQLZDaDoPkHj7a4CFseEM0r+pCFS1tqOOJ43vYH1n8KTKyCWJYHhokAr64m5NXJxpwc8jP6JGl1FOwJMC2i1BVK4XDRhqZRiQpgCk/JzVvv8CO30Jaf1MIhfFUuXk83MBSekH2EcBqqQ8ktR93wB68i4U4N6O5mWZqD4wm0lI9l9JIwRAk5X1dKGGhg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by IA1PR12MB6459.namprd12.prod.outlook.com (2603:10b6:208:3a9::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.26; Wed, 23 Aug
+ 2023 16:47:41 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6699.020; Wed, 23 Aug 2023
+ 16:47:40 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: [PATCH v7 03/24] powerpc/iommu: Setup a default domain and remove set_platform_dma_ops
+Date: Wed, 23 Aug 2023 13:47:17 -0300
+Message-ID: <3-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: CH0PR03CA0419.namprd03.prod.outlook.com
+ (2603:10b6:610:11b::8) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230823133938.1359106-12-lizetao1@huawei.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6459:EE_
+X-MS-Office365-Filtering-Correlation-Id: ee25eebd-9ec4-4942-c7f9-08dba3f8aa00
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 9QmUv7AQmHuiZTLWskn45qphkWnw3jm+53GJDKoYa0pkR70mYs/GJtf1R5s/EA/i2zWSxKv9CF1R+HEm6pn2+8qbO6sFGiCco/7/1F3nb2IDpGyvTzsUE2ctEcWWceO3AAzh10cZN8z2zrW0oVY5kG39IB4MxKVHa9C/qjZXSnTSGOwUnq/QEmceFVIb6BtUj8rzqkASoqghZGuQyPpqsA2pn+CqFClGMFWHD3sPB1zeBMUCMZ8eCHEx/UHMnu5/OPVZQvRXFeHgwsfEY5zeKx4WWtmX9Xwm2xHp9gJJ0nIzFzmPM71WHY59geEzfMt+b0nkcCTeC3Se/DiB1bXH6TBDqC/RxLt+V15MmKqun528WtmFN9u6hbRQwRBE+cl5ZJ7/b9BsHwFPU5m86kmxu28t/UI/P+y0JBdOR9j5bh0NkM87OYFPIofXC3r5CbwwrQHU0anm11UVWXXtefehGqgMtcIIj87ugireynBXRxsStBTY/5saxFLr2Hk8AnXrT4adXLpJqcVaEvptwPSWwijwEvtJvlMDtsHK8sxdDvJnwh5iM0Zn9p9lpYRkspYwmnCwG2ls7VUtk2oj8oJXQ+ajLdFrBHJ8PbByRHkHIss95/IPPQn3Kh3wPaNRCbC0
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(39860400002)(136003)(366004)(396003)(376002)(451199024)(186009)(1800799009)(36756003)(478600001)(86362001)(6486002)(6506007)(66476007)(66556008)(316002)(54906003)(110136005)(66946007)(6666004)(41300700001)(6512007)(38100700002)(8676002)(4326008)(8936002)(5660300002)(107886003)(921005)(26005)(2616005)(7406005)(7416002)(83380400001)(2906002)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IoZIr+l0Z7n4irMu7mwMpt1tJjzsEA+n2/U1smioZW2CGhDREejM2gpeBMbb?=
+ =?us-ascii?Q?yDSvMQi+vuCeuEtXKf3I7oG2nXp+x6ICcP7Pp0UWABEMiNW66q7YCS0rLFP3?=
+ =?us-ascii?Q?LQaFKzZlcWOilIGo+/fcQFGTfDxEAvPU6dCY54Ny45Y5yjTwELN01BPm/qnP?=
+ =?us-ascii?Q?7tWR/2ItTA6XQz8YdIouUDsYWsMdYhwbRKq4VKzcdS6MazqlOvXZaGDzrSaw?=
+ =?us-ascii?Q?hOZBAey5ah+Xkbk5+9NXXy0mFb5CV4YzJ7Zg004/HqU92fO0w2fcfD8WHDm5?=
+ =?us-ascii?Q?1SCygrogkgNnQ3O9PhGSh02cII3equQhdzJvYZ3S4RcBI9pO8TEdZ7WghrsO?=
+ =?us-ascii?Q?OGEGCnxopUCzc/ZviCMeRVVYQ7DQgpBwXWTaMd7XAeKe1Jb6XihzKTjMJ5d5?=
+ =?us-ascii?Q?c1sfOYCfiW6/20qoPewGnt/I1IWAuNNDi4EsgIDcDCTyBQakjR7M1KHxUSfi?=
+ =?us-ascii?Q?kDivkRZuImFd5cmTbFl8l/l5wxcnT3rXBREaaPLVXjMdhojwiYYulN4tm8FJ?=
+ =?us-ascii?Q?zp8vHGKSuNLRwri8hCvrOM3jw+bDUo0Rq8b2NrNFyg/AbSDBxZkqXtnuJkWz?=
+ =?us-ascii?Q?P4LlKlcvEqY29Quv+UrKL+1IdI9k/9j+2sTjy0KRA7JlipJVEoLoUim0j5Z/?=
+ =?us-ascii?Q?MPsWq87dbIQOxQ8Bn+A3kPYPGJ1lyhVH8p6Aqziwll5/s/g+W+6LibRkO3w3?=
+ =?us-ascii?Q?F09C/9ElkIvAQ9v4D3DfZ/UvqUbzivODTAX+q5jNccvN9oLXJfKFief9Tps6?=
+ =?us-ascii?Q?hc9h0bosfmMlzSSuXvN85arh5h70yNHxVqQUxidcTPeq/YKeVUnShVzPQ0Gz?=
+ =?us-ascii?Q?QiL5rlh0B4RC9uNfTXdq2cS1sFMeeGv6yMsRQy+JDKwdOREMJIXqqofn+NYk?=
+ =?us-ascii?Q?cwYlSgiW12SpAyeTznDwVOcCcl8Ls1tW5mq7twLpMnY5bzpV70ImPrqlmf3v?=
+ =?us-ascii?Q?sA+fSoknj3UuuMKiYo8squ90VhDjc5puAgNmNjSILklF2b9Ltz0myf/sIC3R?=
+ =?us-ascii?Q?DVuBM9VTwpb2gn24g5VJVcLXkUPQd3o0P6Or+htFtmKnlibg+FUo9RjMFON2?=
+ =?us-ascii?Q?xmSMjEKuwfBdZ9iPcWXhqaPJgDHvM1Bwe3d0urTy/GXhQyI37UND7Q+23HvB?=
+ =?us-ascii?Q?+rb0AdDG5BMpUt7rsO8jr2Tpxx4xDvin97Rr2H7TxHnFQreoyZ9TFSm35NjS?=
+ =?us-ascii?Q?5/23exnvj57BVfKAJMZJ8K0YlTm1ERHuSv4tLmV8l6EzaEDHsf6Keg3HD0Hz?=
+ =?us-ascii?Q?v3tnJlqHZmN+nP2ALZMKZsOa3gtb2Xm+eukL49Drwq16aVjuVDQJsvLbYoQE?=
+ =?us-ascii?Q?0REpwXFwffnArohDVoV9krJDkswc5Sq+p4A8lMqe8e5lMl+JqFUet5G3hlKU?=
+ =?us-ascii?Q?cPHxcVpfkNUA9yT1BvqdPJXm32/EUGLMp6+K22tZUbkx3Jax/SZl5ASr1qXL?=
+ =?us-ascii?Q?V1cEcvBdnj0AUBsldm1vfrsnV3GyPlWgVKFUjc+wyDlnMsGq/Oz/EVL2DHHP?=
+ =?us-ascii?Q?Yw+bbv+/xhUIMrDdeEzVnkcLiTbi/uFgYpGMV3HP53ZtcMEN4ghNeSCTlBFg?=
+ =?us-ascii?Q?xFmcg2fNMPRIO+Gh7lIkaJI2IhdZuufN0xp/Aoaj?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee25eebd-9ec4-4942-c7f9-08dba3f8aa00
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2023 16:47:40.6191
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pc2yeaneATsbLKmvqQBD9H+xPw76qVDsulx86fSTKIE+UgIqZ4cmgvM7UCw879Ro
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6459
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_073551_179787_D54AA5BB 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20230823_094750_851930_102CAA39 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,98 +174,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 09:39:24PM +0800, Li Zetao wrote:
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it is
-> no longer necessary to unprepare and disable the clocks explicitly.
-> 
+POWER is using the set_platform_dma_ops() callback to hook up its private
+dma_ops, but this is buired under some indirection and is weirdly
+happening for a BLOCKED domain as well.
 
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Acked-by: Serge Semin <fancer.lancer@gmail.com>
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+For better documentation create a PLATFORM domain to manage the dma_ops,
+since that is what it is for, and make the BLOCKED domain an alias for
+it. BLOCKED is required for VFIO.
 
-Just for the record, the tags order is normally supposed to reflect a
-patch route. Even though AFAICS it's explicitly defined for the Sob
-tags only (see Documentation/process/submitting-patches.rst), but
-almost all kernel developers apply that rule to all the tags. See the
-kernel git log as the brightest example. So your Sob tag should have
-been kept first, then either my Ab or Jonathan' Rb tags.
+Also removes the leaky allocation of the BLOCKED domain by using a global
+static.
 
--Serge(y)
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ arch/powerpc/kernel/iommu.c | 38 +++++++++++++++++--------------------
+ 1 file changed, 17 insertions(+), 21 deletions(-)
 
-> ---
-> v1 -> v2: None
-> 
->  drivers/spi/spi-dw-bt1.c | 23 +++++------------------
->  1 file changed, 5 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-dw-bt1.c b/drivers/spi/spi-dw-bt1.c
-> index 5e1c01822967..5391bcac305c 100644
-> --- a/drivers/spi/spi-dw-bt1.c
-> +++ b/drivers/spi/spi-dw-bt1.c
-> @@ -269,43 +269,32 @@ static int dw_spi_bt1_probe(struct platform_device *pdev)
->  
->  	dws->paddr = mem->start;
->  
-> -	dwsbt1->clk = devm_clk_get(&pdev->dev, NULL);
-> +	dwsbt1->clk = devm_clk_get_enabled(&pdev->dev, NULL);
->  	if (IS_ERR(dwsbt1->clk))
->  		return PTR_ERR(dwsbt1->clk);
->  
-> -	ret = clk_prepare_enable(dwsbt1->clk);
-> -	if (ret)
-> -		return ret;
-> -
->  	dws->bus_num = pdev->id;
->  	dws->reg_io_width = 4;
->  	dws->max_freq = clk_get_rate(dwsbt1->clk);
-> -	if (!dws->max_freq) {
-> -		ret = -EINVAL;
-> -		goto err_disable_clk;
-> -	}
-> +	if (!dws->max_freq)
-> +		return -EINVAL;
->  
->  	init_func = device_get_match_data(&pdev->dev);
->  	ret = init_func(pdev, dwsbt1);
->  	if (ret)
-> -		goto err_disable_clk;
-> +		return ret;
->  
->  	pm_runtime_enable(&pdev->dev);
->  
->  	ret = dw_spi_add_host(&pdev->dev, dws);
->  	if (ret) {
->  		pm_runtime_disable(&pdev->dev);
-> -		goto err_disable_clk;
-> +		return ret;
->  	}
->  
->  	platform_set_drvdata(pdev, dwsbt1);
->  
->  	return 0;
-> -
-> -err_disable_clk:
-> -	clk_disable_unprepare(dwsbt1->clk);
-> -
-> -	return ret;
->  }
->  
->  static void dw_spi_bt1_remove(struct platform_device *pdev)
-> @@ -315,8 +304,6 @@ static void dw_spi_bt1_remove(struct platform_device *pdev)
->  	dw_spi_remove_host(&dwsbt1->dws);
->  
->  	pm_runtime_disable(&pdev->dev);
-> -
-> -	clk_disable_unprepare(dwsbt1->clk);
->  }
->  
->  static const struct of_device_id dw_spi_bt1_of_match[] = {
-> -- 
-> 2.34.1
-> 
+diff --git a/arch/powerpc/kernel/iommu.c b/arch/powerpc/kernel/iommu.c
+index c52449ae6936ad..ffe8d1411a9d56 100644
+--- a/arch/powerpc/kernel/iommu.c
++++ b/arch/powerpc/kernel/iommu.c
+@@ -1269,7 +1269,7 @@ struct iommu_table_group_ops spapr_tce_table_group_ops = {
+ /*
+  * A simple iommu_ops to allow less cruft in generic VFIO code.
+  */
+-static int spapr_tce_blocking_iommu_attach_dev(struct iommu_domain *dom,
++static int spapr_tce_platform_iommu_attach_dev(struct iommu_domain *dom,
+ 					       struct device *dev)
+ {
+ 	struct iommu_group *grp = iommu_group_get(dev);
+@@ -1286,17 +1286,22 @@ static int spapr_tce_blocking_iommu_attach_dev(struct iommu_domain *dom,
+ 	return ret;
+ }
+ 
+-static void spapr_tce_blocking_iommu_set_platform_dma(struct device *dev)
+-{
+-	struct iommu_group *grp = iommu_group_get(dev);
+-	struct iommu_table_group *table_group;
++static const struct iommu_domain_ops spapr_tce_platform_domain_ops = {
++	.attach_dev = spapr_tce_platform_iommu_attach_dev,
++};
+ 
+-	table_group = iommu_group_get_iommudata(grp);
+-	table_group->ops->release_ownership(table_group);
+-}
++static struct iommu_domain spapr_tce_platform_domain = {
++	.type = IOMMU_DOMAIN_PLATFORM,
++	.ops = &spapr_tce_platform_domain_ops,
++};
+ 
+-static const struct iommu_domain_ops spapr_tce_blocking_domain_ops = {
+-	.attach_dev = spapr_tce_blocking_iommu_attach_dev,
++static struct iommu_domain spapr_tce_blocked_domain = {
++	.type = IOMMU_DOMAIN_BLOCKED,
++	/*
++	 * FIXME: SPAPR mixes blocked and platform behaviors, the blocked domain
++	 * also sets the dma_api ops
++	 */
++	.ops = &spapr_tce_platform_domain_ops,
+ };
+ 
+ static bool spapr_tce_iommu_capable(struct device *dev, enum iommu_cap cap)
+@@ -1313,18 +1318,9 @@ static bool spapr_tce_iommu_capable(struct device *dev, enum iommu_cap cap)
+ 
+ static struct iommu_domain *spapr_tce_iommu_domain_alloc(unsigned int type)
+ {
+-	struct iommu_domain *dom;
+-
+ 	if (type != IOMMU_DOMAIN_BLOCKED)
+ 		return NULL;
+-
+-	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
+-	if (!dom)
+-		return NULL;
+-
+-	dom->ops = &spapr_tce_blocking_domain_ops;
+-
+-	return dom;
++	return &spapr_tce_blocked_domain;
+ }
+ 
+ static struct iommu_device *spapr_tce_iommu_probe_device(struct device *dev)
+@@ -1360,12 +1356,12 @@ static struct iommu_group *spapr_tce_iommu_device_group(struct device *dev)
+ }
+ 
+ static const struct iommu_ops spapr_tce_iommu_ops = {
++	.default_domain = &spapr_tce_platform_domain,
+ 	.capable = spapr_tce_iommu_capable,
+ 	.domain_alloc = spapr_tce_iommu_domain_alloc,
+ 	.probe_device = spapr_tce_iommu_probe_device,
+ 	.release_device = spapr_tce_iommu_release_device,
+ 	.device_group = spapr_tce_iommu_device_group,
+-	.set_platform_dma_ops = spapr_tce_blocking_iommu_set_platform_dma,
+ };
+ 
+ static struct attribute *spapr_tce_iommu_attrs[] = {
+-- 
+2.41.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
