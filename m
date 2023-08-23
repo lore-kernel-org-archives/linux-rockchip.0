@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 487D5EE49A3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F0F6EE4993
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:42:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jtaCYoxoubYXMP7qBfvNvhl1J8W85UIMQ+++cFkn66Q=; b=qxtuuWMAGQkeqm
-	fMleBYVVWeUcW/6wU+PJ3yAxq6EdN+BpCJqlWpt/U4GF/oxMNOSC7D/1Tjr4vyaUhNezxJOvkXkq8
-	mk446dVygKVMR2Dlj9QpPPPkAJirgssx3LWEDAoOgSP0HMUxBCSQcQ7znAZzXPAwfTg2b4nwrYoMR
-	GW1QTMDjwqC0ovGf6vj6jqYR1i5D+jcP6xgXB8/ZL0+KA9CkFkFtVAA9QTfPWxM6ldxw9EqLWYPUw
-	gxuUabfaEAUwn88pPrtKOpXAcIA4RkqjowA3nN8EpdoiOg+4J0Nj2lki5oxoKIJm6DZxD6H0BP6e9
-	DKqfrhZscgBy4rJq40SA==;
+	List-Owner; bh=8MURR4dj5YYWpLmy2liKJam0IIwOFvOVwQc2+17mqwo=; b=YLaSTGoBAZ40iv
+	37ooJbvvfQ7Og7ED5qtULy0DbtwJAZOElNKq4rn9ELP7Vq7333NhCCYOU3cmLDeYDeYneMMwc/yI3
+	ih5FuIvecTheZWMO+8rlhVu429P2B7+JT0szu3uduJQf7L4KJX+c4t9gLVv6WKjOMclnkq317LvQ/
+	zQBTU2AlQVI8Hmd1FEImYFcC4Knlu2NYhegPYzbivujHSpRVf75UrY7vZuQiR31wT1wQWVOsBdOyA
+	wZ61dIlPutA/vVUPt2OMQv6KaIkFdbELLxwt4ZhEv2dWU9rDgCyjdnBBJ84j2zbozsGDnrQTmTbmh
+	JiRN8AWsVfEZuyb+Kt2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo7a-000jVD-09;
-	Wed, 23 Aug 2023 13:42:06 +0000
+	id 1qYo8D-000k9l-1K;
+	Wed, 23 Aug 2023 13:42:45 +0000
 Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5h-000hQJ-1S;
+	id 1qYo5h-000hOx-26;
 	Wed, 23 Aug 2023 13:40:13 +0000
 Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RW6k51HDRz16NsJ;
-	Wed, 23 Aug 2023 21:38:37 +0800 (CST)
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RW6jq1m9tz16NyL;
+	Wed, 23 Aug 2023 21:38:23 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:05 +0800
+ 2023 21:39:51 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 14/25] spi: lantiq-ssc: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:27 +0800
-Message-ID: <20230823133938.1359106-15-lizetao1@huawei.com>
+Subject: [PATCH -next v2 01/25] spi: ar934x: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:14 +0800
+Message-ID: <20230823133938.1359106-2-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064010_037689_29D2565D 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20230823_064010_212639_015357C9 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +93,70 @@ Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-lantiq-ssc.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ drivers/spi/spi-ar934x.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/spi/spi-lantiq-ssc.c b/drivers/spi/spi-lantiq-ssc.c
-index 938e9e577e4f..18a46569ba46 100644
---- a/drivers/spi/spi-lantiq-ssc.c
-+++ b/drivers/spi/spi-lantiq-ssc.c
-@@ -932,14 +932,11 @@ static int lantiq_ssc_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_host_put;
+diff --git a/drivers/spi/spi-ar934x.c b/drivers/spi/spi-ar934x.c
+index 58b98cea31d9..5ba988720851 100644
+--- a/drivers/spi/spi-ar934x.c
++++ b/drivers/spi/spi-ar934x.c
+@@ -168,27 +168,21 @@ static int ar934x_spi_probe(struct platform_device *pdev)
+ 	struct ar934x_spi *sp;
+ 	void __iomem *base;
+ 	struct clk *clk;
+-	int ret;
  
--	spi->spi_clk = devm_clk_get(dev, "gate");
-+	spi->spi_clk = devm_clk_get_enabled(dev, "gate");
- 	if (IS_ERR(spi->spi_clk)) {
- 		err = PTR_ERR(spi->spi_clk);
- 		goto err_host_put;
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	clk = devm_clk_get(&pdev->dev, NULL);
++	clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(clk)) {
+ 		dev_err(&pdev->dev, "failed to get clock\n");
+ 		return PTR_ERR(clk);
  	}
--	err = clk_prepare_enable(spi->spi_clk);
--	if (err)
--		goto err_host_put;
  
- 	/*
- 	 * Use the old clk_get_fpi() function on Lantiq platform, till it
-@@ -952,7 +949,7 @@ static int lantiq_ssc_probe(struct platform_device *pdev)
- #endif
- 	if (IS_ERR(spi->fpi_clk)) {
- 		err = PTR_ERR(spi->fpi_clk);
+-	ret = clk_prepare_enable(clk);
+-	if (ret)
+-		return ret;
+-
+ 	ctlr = devm_spi_alloc_host(&pdev->dev, sizeof(*sp));
+ 	if (!ctlr) {
+ 		dev_info(&pdev->dev, "failed to allocate spi controller\n");
+-		ret = -ENOMEM;
 -		goto err_clk_disable;
-+		goto err_host_put;
++		return -ENOMEM;
  	}
  
- 	num_cs = 8;
-@@ -1010,8 +1007,6 @@ static int lantiq_ssc_probe(struct platform_device *pdev)
- 	destroy_workqueue(spi->wq);
- err_clk_put:
- 	clk_put(spi->fpi_clk);
+ 	/* disable flash mapping and expose spi controller registers */
+@@ -212,25 +206,15 @@ static int ar934x_spi_probe(struct platform_device *pdev)
+ 	sp->clk_freq = clk_get_rate(clk);
+ 	sp->ctlr = ctlr;
+ 
+-	ret = spi_register_controller(ctlr);
+-	if (!ret)
+-		return 0;
+-
 -err_clk_disable:
--	clk_disable_unprepare(spi->spi_clk);
- err_host_put:
- 	spi_controller_put(host);
- 
-@@ -1029,7 +1024,6 @@ static void lantiq_ssc_remove(struct platform_device *pdev)
- 	hw_enter_config_mode(spi);
- 
- 	destroy_workqueue(spi->wq);
--	clk_disable_unprepare(spi->spi_clk);
- 	clk_put(spi->fpi_clk);
+-	clk_disable_unprepare(clk);
+-	return ret;
++	return spi_register_controller(ctlr);
  }
  
+ static void ar934x_spi_remove(struct platform_device *pdev)
+ {
+ 	struct spi_controller *ctlr;
+-	struct ar934x_spi *sp;
+ 
+ 	ctlr = dev_get_drvdata(&pdev->dev);
+-	sp = spi_controller_get_devdata(ctlr);
+-
+ 	spi_unregister_controller(ctlr);
+-	clk_disable_unprepare(sp->clk);
+ }
+ 
+ static struct platform_driver ar934x_spi_driver = {
 -- 
 2.34.1
 
