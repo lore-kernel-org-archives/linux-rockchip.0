@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C44EE49A0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 11:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CAEEE49B2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 12:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E90wuo1yZiHZLnrLfCzn5xjIAIyjTHud1k1mI9sUcbI=; b=MyfI0DSDo0POiF
-	zqIcGxe+1ilUyDL1O6tgBkdNPiOcK/mcoN7f8SszfZzKdS/Ez5CCnFg6Owwu939dAS29zCZs5mDX/
-	z1berfTEFBP4NXLcTw3aPXNXExQMJrav9uFOZUOe3EnEGlMSpx8/JK5DATjy6OsxvZJJ9Dc0B8uIF
-	tAlzAH1efbeQrgzdxuligaNvkzbse+Ut8sOavp9XeY1PMeuBEgFMKYp5JFCbM77D33iZgMA0ImCpu
-	bTwWer0KLusV6gzp9kc/UdVO80nDcYnMrR9TyzNnFJF5PayuJ7m+qTz7mmFFPhmYMYbDQbNd8BIg5
-	W+mv2sjd0gdWHyY5aK3w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KYwLPCIHV6A1UxSllPGj1QDKeTpty7lmGgWUgTYUyaU=; b=d2c5PTurzIWISS
+	rfQ5N4biwgxvcP/ptK+DumJna3FQTapoNQcm/N3XJ+7sGjV3nrfLbL5qW4XhOGUjYkgicR62HHtbu
+	Gf82GDIHJ2WNIJZbTM7LouoS/BAAKYyfsdiBu8zMfcPb12aVARWSrR44ig4spLvKy7qc5XWJLkn4h
+	bqlc9g4DWDfyvtn+I0Oe+3jipKZm981Shk/O8S4bbKHkMU8SLIOnAbjCwuIMwcEkKPK6LAh3v2kgO
+	ICvGBSHLonatiocKOxuYfJ6Sgi9u45trcbdgLyxFd2cGZZDgbdPJl7Rr3RwZo/rt0fYgJWHSphflI
+	0/eeHUAC91fkTrVf4/5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYmQk-000U9P-17;
-	Wed, 23 Aug 2023 11:53:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qYmqZ-000XIx-10;
+	Wed, 23 Aug 2023 12:20:27 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYmQg-000U7W-0L;
-	Wed, 23 Aug 2023 11:53:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 91350660DC;
-	Wed, 23 Aug 2023 11:53:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A96BC43397;
-	Wed, 23 Aug 2023 11:53:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692791620;
-	bh=9ozTPMOCGjgHLaJa54zNz+3htX4e52MyhqXdip941jo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=l24jGUE83dTC5LIpesTj/6es0p1WS7ylU3MUON3FJiuoWQxxRCjlR5z3wIFk4K+oU
-	 K2AWIcTPkmDsluBNADDyBlpMDLA8Rp+uKKqJoCHs0avzOBmXGyOqYqn+BCh16bjUI2
-	 hvhq9h51Ry+gIiCJSOxxraYuuki2GsBa0J1eiiJ7gXumwLCguGvREwpTyW9YV+YEk7
-	 dNwAKeoP3UDdpi+bdNOnHPI9JPaBhU60YEN1dK+7znlOZ/CRo/Tve9mIsDAErxAZ59
-	 jKyyPyla2DIuaYkyUmtM5hqQ6DDKwQ7Gc/a1lvWnat8Yxav7r0p1B08W1yk1QFolNU
-	 SsschzuYYGj6A==
-Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-2b9b50be31aso85186531fa.3;
-        Wed, 23 Aug 2023 04:53:39 -0700 (PDT)
-X-Gm-Message-State: AOJu0YxJA7qKFeD7jcJdfpmsNL0rILInXtDgZ6W/lLws//CT9lja+Qe2
-	eJxF/PG0LmmWyhQSsdXPe2queHXV3SKOYH/dlw==
-X-Google-Smtp-Source: AGHT+IG6AYWn2ZBtqiggebw0M0LEoLpjEjEkmAuyxGb6SqXHXb0v7iaIhaSPWuqzMe7IxI9zjdhMNEvmSNHymSTc/JA=
-X-Received: by 2002:a2e:7008:0:b0:2bc:d8fd:13df with SMTP id
- l8-20020a2e7008000000b002bcd8fd13dfmr2086615ljc.41.1692791617967; Wed, 23 Aug
- 2023 04:53:37 -0700 (PDT)
+	id 1qYmqV-000XGy-0N;
+	Wed, 23 Aug 2023 12:20:25 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-319559fd67dso5045566f8f.3;
+        Wed, 23 Aug 2023 05:20:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692793220; x=1693398020;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=10onvWGxz9bz3+icHMFZatKgP0llKlSrmA+LhRG/3vc=;
+        b=QpqgWGJnq8YEdR7Qw8JhIphCBOW/YqbC2KRTgKsdh301J6i3tF00fuS5AESTEyN0HU
+         NYkboE/jxvxdTTq/dpXAua3jwyGmy/Ua8/17DqkA4/M+85O0VTHeHpHsldC5skUe3GUS
+         /T33vLL8/aLMWjuUcJ4T4hfWSAv3FKQf5vDiZJGfS0Mag1inz4E9g/X4raLQVA7GyvFm
+         VA7qghOTtGryHxrdp8QYFRRCegxpkkEUCvKFBfe/HaoN2qE/j1QF+qbqvzsqfXQ/g/3T
+         z4kxajgOtWlOioYIiVqq5nvM5N19f4ImrPjOPEXFGMh+YPHHg7FazK94gXQmBy9KGLFd
+         elSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692793220; x=1693398020;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=10onvWGxz9bz3+icHMFZatKgP0llKlSrmA+LhRG/3vc=;
+        b=IpUmfCgSJRDext088PnrUDrZGN1jyvGvMQtEaY1JlyFWjo/UL6jPujyURqAU5j/IJa
+         FrKxu+2cBzD64dxShXU54HRxLNNynpOAWMscgGy9RU4t9/N3nP+YpkZtFZ9eA+yitq/Z
+         MZyBRymZnP9K2si9qI/byg8YMeOzSDfHVcyGf8HUxQhtFcs7cTL7LSBnDO3+mn+zIlBg
+         IpqEuCaVwupzlSpRBjZ69Ko79evPfXIK8AGeSeXQwVOFTjrSwVso9k2cGFidgoL0eCmn
+         6Q5hyFTbZTqcZzOCh1PMl9lwmRB+URRGttStz0AviAxVgAxXHi9U5jruR8AtKZFCkqlj
+         /YwA==
+X-Gm-Message-State: AOJu0YxoqISjd2zsQOLPla43APgwop7e6aQLyelSZi4NzknMer+da9dK
+	1UVEKIb8mft5GtjFBoeQ4Us=
+X-Google-Smtp-Source: AGHT+IEEGL0YP7FFC1bI0GofVCUszxqRDbHrQu/PE1gdbXjKyUuDDc2CGIFkjNaWSGcH93fIYa3XHQ==
+X-Received: by 2002:a5d:53cc:0:b0:31a:e2af:bcb6 with SMTP id a12-20020a5d53cc000000b0031ae2afbcb6mr9739011wrw.57.1692793220146;
+        Wed, 23 Aug 2023 05:20:20 -0700 (PDT)
+Received: from opti3050-1.lan (ip092042140082.rev.nessus.at. [92.42.140.82])
+        by smtp.gmail.com with ESMTPSA id w16-20020a5d6810000000b003197b85bad2sm18909196wru.79.2023.08.23.05.20.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Aug 2023 05:20:19 -0700 (PDT)
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: jakob.unterwurzacher@theobroma-systems.com,
+	Ermin Sunj <ermin.sunj@theobroma-systems.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] TSD: arm64: dts: rockchip: use codec as clock master
+Date: Wed, 23 Aug 2023 14:19:59 +0200
+Message-Id: <20230823122000.585787-1-jakob.unterwurzacher@theobroma-systems.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20230714174702.4059100-1-robh@kernel.org> <CABb+yY0ZEkU2fEoFcihDM0GPuNBkCJHYXfkq-+bLJY1xtbf5Jw@mail.gmail.com>
-In-Reply-To: <CABb+yY0ZEkU2fEoFcihDM0GPuNBkCJHYXfkq-+bLJY1xtbf5Jw@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 23 Aug 2023 06:53:25 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+EbxHkdXEJsgAETrQj8Ps30umOMcArt1fCaNumxBem5A@mail.gmail.com>
-Message-ID: <CAL_Jsq+EbxHkdXEJsgAETrQj8Ps30umOMcArt1fCaNumxBem5A@mail.gmail.com>
-Subject: Re: [PATCH] mailbox: Explicitly include correct DT includes
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Conor Dooley <conor.dooley@microchip.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-tegra@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_045342_229377_EC358237 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20230823_052023_152760_64B082FF 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +90,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgMjIsIDIwMjMgYXQgNjowNeKAr1BNIEphc3NpIEJyYXIgPGphc3Npc2luZ2hi
-cmFyQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBPbiBGcmksIEp1bCAxNCwgMjAyMyBhdCAxMjo0N+KA
-r1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IHdyb3RlOgo+ID4KPiA+IFRoZSBEVCBv
-Zl9kZXZpY2UuaCBhbmQgb2ZfcGxhdGZvcm0uaCBkYXRlIGJhY2sgdG8gdGhlIHNlcGFyYXRlCj4g
-PiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQgYXMgbWVyZ2VkIGludG8gdGhlIHJlZ3Vs
-YXIgcGxhdGZvcm0gYnVzLgo+ID4gQXMgcGFydCBvZiB0aGF0IG1lcmdlIHByZXBwaW5nIEFybSBE
-VCBzdXBwb3J0IDEzIHllYXJzIGFnbywgdGhleQo+ID4gInRlbXBvcmFyaWx5IiBpbmNsdWRlIGVh
-Y2ggb3RoZXIuIFRoZXkgYWxzbyBpbmNsdWRlIHBsYXRmb3JtX2RldmljZS5oCj4gPiBhbmQgb2Yu
-aC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCByYW5kb20gbWl4IG9mIHRob3Nl
-IGluY2x1ZGUKPiA+IGZpbGVzIHVzZWQgdGhyb3VnaG91dCB0aGUgdHJlZS4gSW4gb3JkZXIgdG8g
-ZGV0YW5nbGUgdGhlc2UgaGVhZGVycyBhbmQKPiA+IHJlcGxhY2UgdGhlIGltcGxpY2l0IGluY2x1
-ZGVzIHdpdGggc3RydWN0IGRlY2xhcmF0aW9ucywgdXNlcnMgbmVlZCB0bwo+ID4gZXhwbGljaXRs
-eSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFJv
-YiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4gPgo+IEkgdGhvdWdodCBJIHdhcyB0byBwaWNr
-IHRoZSBwYXRjaC4gQnV0IEkgc2VlIHlvdSBpbnRlbmQgdG8gZG8gaXQuIE5wLgoKTm8sIHBsZWFz
-ZSBhcHBseSBpdC4KClRoYW5rcywKUm9iCgo+Cj4gQWNrZWQtYnk6IEphc3NpIEJyYXIgPGphc3Np
-c2luZ2hicmFyQGdtYWlsLmNvbT4KPgo+IHRoYW5rcwoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Ermin Sunj <ermin.sunj@theobroma-systems.com>
+
+If the codec is not the clock master, the MCLK needs to be
+synchronous to both I2S_SCL ans I2S_LRCLK. We do not have that
+on Haikou, causing distorted audio.
+
+Before:
+
+ Running audioloopback.py script on Ringneck, 1kHz
+ output sine wave is not stable and shows distortion.
+
+After:
+
+ 10h stress tests audioloopback.py failed only one time.
+ That is 0.00014% failure rate.
+
+Signed-off-by: Ermin Sunj <ermin.sunj@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+index 3a447d03e2a8..dafeef0c2dab 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+@@ -68,8 +68,10 @@ i2s0-sound {
+ 		simple-audio-card,format = "i2s";
+ 		simple-audio-card,name = "Haikou,I2S-codec";
+ 		simple-audio-card,mclk-fs = <512>;
++		simple-audio-card,frame-master = <&sgtl5000_codec>;
++		simple-audio-card,bitclock-master = <&sgtl5000_codec>;
+ 
+-		simple-audio-card,codec {
++		sgtl5000_codec: simple-audio-card,codec {
+ 			clocks = <&sgtl5000_clk>;
+ 			sound-dai = <&sgtl5000>;
+ 		};
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
