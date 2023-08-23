@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8637EE49A3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A609EE49B5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OuJ7JaE8uoaE4Nax3AvNHIUI5LuSsnz+iYSoPbF3IBQ=; b=NUDfMHfQpdSRIO
-	qq0nlyVCRaGb2E/cQemxq+4WDPH0Uni3UZORxf3vSSbVeenwvpDDmd09RD/UYKk29zXquY7xjB0jT
-	CfmoxS+UqvTj2V/fMrHaCHpuGHF9VckpUbWV447OUkPli2HaUlzYiDpjcTBpZn6yVGnXzSX0/bq7k
-	2InVVzV/5VAiKk61lEb0CgwmLoIUK+2zBh8QWYODb+/XOGPjdTzkoQnjgsqn9w+BosBrkPhSe8obn
-	E4RpcmHwlPBwf3Rswcz81a/5vaP9m1TPBFG6Pn1C7O8wvQ52OzL2WOKVyTNMA558NNCmOwQAHV/VK
-	4n6dJ0i2DDLFgoSU224Q==;
+	List-Owner; bh=YqurBdqScPm1Fl3MUF5h198BYLW9AiPRc5bT+m4Wqkw=; b=ZbFtknT/i9XpOh
+	DcV3nWYbhx9HQJZBqLUc8ScgAMm0sxDZyaj4jMgFXbG9iUvVy/ispXt4Csh/iszMycLyB77eYOBB8
+	JdqYD3VgdeGpjeDcZtZW+lWKfInt7YBvvUCfvW6g4sl3bNMKHVYEHtC+doK/Bp2cm38LMoeqROrra
+	CaLTlx+hhyD7KborEgFILW49RyfvafYO4nny4xf8NyZIadJxRHtyXRrRJFM0kE6zOUOEXTtX6qXnT
+	BNcIP+D56gFW/IqzLmjnW7yaNJNPVJCXDwk8vMPycouR9VGbOKFEbY1+8pPVZZXnvneYGo/MPAb9D
+	yMcNPx3aiNcWWm45Z1Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo9O-000lQ2-16;
-	Wed, 23 Aug 2023 13:43:58 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1qYo9K-000lKV-2m;
+	Wed, 23 Aug 2023 13:43:54 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5s-000hbN-37;
-	Wed, 23 Aug 2023 13:40:23 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RW6kH6Qblz16Nym;
-	Wed, 23 Aug 2023 21:38:47 +0800 (CST)
+	id 1qYo5p-000hXh-2s;
+	Wed, 23 Aug 2023 13:40:20 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RW6gd6GSvztSCY;
+	Wed, 23 Aug 2023 21:36:29 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:16 +0800
+ 2023 21:40:13 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -49,10 +49,11 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
 	<neil.armstrong@linaro.org>, <olteanv@gmail.com>, <openbmc@lists.ozlabs.org>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
-	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>
-Subject: [PATCH -next v2 24/25] spi: spl022: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:37 +0800
-Message-ID: <20230823133938.1359106-25-lizetao1@huawei.com>
+	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
+ Cameron <Jonathan.Cameron@huawei.com>
+Subject: [PATCH -next v2 21/25] spi: orion: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:34 +0800
+Message-ID: <20230823133938.1359106-22-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -63,9 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064021_610334_BB124949 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230823_064018_518180_AEBF9456 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,58 +87,60 @@ and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 replaced by devm_clk_get_enabled() when driver enables (and possibly
 prepares) the clocks for the whole lifetime of the device. Moreover, it is
 no longer necessary to unprepare and disable the clocks explicitly.
-Moreover, the label "err_no_clk_en" is no used, drop it for clean code.
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
-v1 -> v2: Delete the modification of odd formatting.
+v1 -> v2: None
 
- drivers/spi/spi-pl022.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/spi/spi-orion.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/spi/spi-pl022.c b/drivers/spi/spi-pl022.c
-index bb347b6bb6f3..d1b6110b38fc 100644
---- a/drivers/spi/spi-pl022.c
-+++ b/drivers/spi/spi-pl022.c
-@@ -2168,19 +2168,13 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
- 	dev_info(&adev->dev, "mapped registers from %pa to %p\n",
- 		&adev->res.start, pl022->virtbase);
+diff --git a/drivers/spi/spi-orion.c b/drivers/spi/spi-orion.c
+index 1f10f5c8e34d..eee9ff4bfa5b 100644
+--- a/drivers/spi/spi-orion.c
++++ b/drivers/spi/spi-orion.c
+@@ -688,21 +688,17 @@ static int orion_spi_probe(struct platform_device *pdev)
+ 	devdata = devdata ? devdata : &orion_spi_dev_data;
+ 	spi->devdata = devdata;
  
--	pl022->clk = devm_clk_get(&adev->dev, NULL);
-+	pl022->clk = devm_clk_get_enabled(&adev->dev, NULL);
- 	if (IS_ERR(pl022->clk)) {
- 		status = PTR_ERR(pl022->clk);
- 		dev_err(&adev->dev, "could not retrieve SSP/SPI bus clock\n");
- 		goto err_no_clk;
+-	spi->clk = devm_clk_get(&pdev->dev, NULL);
++	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(spi->clk)) {
+ 		status = PTR_ERR(spi->clk);
+ 		goto out;
  	}
  
--	status = clk_prepare_enable(pl022->clk);
--	if (status) {
--		dev_err(&adev->dev, "could not enable SSP/SPI bus clock\n");
--		goto err_no_clk_en;
--	}
+-	status = clk_prepare_enable(spi->clk);
+-	if (status)
+-		goto out;
 -
- 	/* Initialize transfer pump */
- 	tasklet_init(&pl022->pump_transfers, pump_transfers,
- 		     (unsigned long)pl022);
-@@ -2240,8 +2234,6 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
- 	if (platform_info->enable_dma)
- 		pl022_dma_remove(pl022);
-  err_no_irq:
--	clk_disable_unprepare(pl022->clk);
-- err_no_clk_en:
-  err_no_clk:
-  err_no_ioremap:
- 	amba_release_regions(adev);
-@@ -2268,7 +2260,6 @@ pl022_remove(struct amba_device *adev)
- 	if (pl022->host_info->enable_dma)
- 		pl022_dma_remove(pl022);
+ 	/* The following clock is only used by some SoCs */
+ 	spi->axi_clk = devm_clk_get(&pdev->dev, "axi");
+ 	if (PTR_ERR(spi->axi_clk) == -EPROBE_DEFER) {
+ 		status = -EPROBE_DEFER;
+-		goto out_rel_clk;
++		goto out;
+ 	}
+ 	if (!IS_ERR(spi->axi_clk))
+ 		clk_prepare_enable(spi->axi_clk);
+@@ -795,8 +791,6 @@ static int orion_spi_probe(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ out_rel_axi_clk:
+ 	clk_disable_unprepare(spi->axi_clk);
+-out_rel_clk:
+-	clk_disable_unprepare(spi->clk);
+ out:
+ 	spi_controller_put(host);
+ 	return status;
+@@ -810,7 +804,6 @@ static void orion_spi_remove(struct platform_device *pdev)
  
--	clk_disable_unprepare(pl022->clk);
- 	amba_release_regions(adev);
- 	tasklet_disable(&pl022->pump_transfers);
- }
+ 	pm_runtime_get_sync(&pdev->dev);
+ 	clk_disable_unprepare(spi->axi_clk);
+-	clk_disable_unprepare(spi->clk);
+ 
+ 	spi_unregister_controller(host);
+ 	pm_runtime_disable(&pdev->dev);
 -- 
 2.34.1
 
