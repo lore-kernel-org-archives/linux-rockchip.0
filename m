@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC25EE4993
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 08:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C44EE49A0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 11:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C3KaszXlZLORBT6w0rzIw/yxzxWOYoQame9tFxVzfUM=; b=YcqSLwPvJffj0A
-	GF3PaxC/3UrpCIQYDPoFkvFtTGV70bi4jlZ9UBJ8PoCqVn+kK5zzLbnjThO3xWaSxnwSbBzIsTTCi
-	Sf97Ikwnjv23+uICj8d6JAEcROZrXQmykjo46zpLpL9/3HeBa86aI2oh8yph5RoW+a67SVYDlLKy1
-	DSgFvZTxY14rJKBU5/E5UujAHZ34NQzn0VNfpxRl0RrxheWtX4/KlCK6ss9hr1tKEYgEYPYZ1pTkw
-	T+vZbw5dhokx9yX684m/lejocJpnZJbs/fAYO9obnm73jBV4Rh8ZXpPDxfz234lQ5fb7A8+sicxnj
-	PW5xWrciK7mkiKsWtMHQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=E90wuo1yZiHZLnrLfCzn5xjIAIyjTHud1k1mI9sUcbI=; b=MyfI0DSDo0POiF
+	zqIcGxe+1ilUyDL1O6tgBkdNPiOcK/mcoN7f8SszfZzKdS/Ez5CCnFg6Owwu939dAS29zCZs5mDX/
+	z1berfTEFBP4NXLcTw3aPXNXExQMJrav9uFOZUOe3EnEGlMSpx8/JK5DATjy6OsxvZJJ9Dc0B8uIF
+	tAlzAH1efbeQrgzdxuligaNvkzbse+Ut8sOavp9XeY1PMeuBEgFMKYp5JFCbM77D33iZgMA0ImCpu
+	bTwWer0KLusV6gzp9kc/UdVO80nDcYnMrR9TyzNnFJF5PayuJ7m+qTz7mmFFPhmYMYbDQbNd8BIg5
+	W+mv2sjd0gdWHyY5aK3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYjf1-0000zd-32;
-	Wed, 23 Aug 2023 08:56:19 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1qYmQk-000U9P-17;
+	Wed, 23 Aug 2023 11:53:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYjez-0000xW-0i
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Aug 2023 08:56:18 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-99c353a395cso713453466b.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Aug 2023 01:56:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692780973; x=1693385773;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vs7TYRhEZae23BHcIvi2Ln4wVlirirYZRQLMvBSgBWU=;
-        b=qan7IvYVFvpkudj1oCiCGUjwxzOASjonXBBDFM8N4bBUqjb2EjGk3gkublwDEuHFYM
-         93f1UR1UGYryn5tHmLwJuKpyHblWld0eglXTmc8jaaGS+59lpKV6X2mMRN0w+Hi7w7n3
-         B4AgxIpo2jacUJSDl9r9s0byvqoP8q8O4jXDq7NHFJR3fysMXBGuqxADvI2UmZgrYgWL
-         Cx+iIItLq6/+R7BcykLQEa3m8MjMSOUvi5/L/mMXH79apUk/QrmH877zMl3M/q5/5btd
-         OrIUNiEy0s9YJlciBJeBe8FRdbPDo6u/AFBln797VUpKRTGPWt+N7pM3gvqlnUaAxHwq
-         xu0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692780973; x=1693385773;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vs7TYRhEZae23BHcIvi2Ln4wVlirirYZRQLMvBSgBWU=;
-        b=GmO2kE2xlKQ5ngRCtcwTWbefawc+eEYMRQTwR1pwc7YVxTAisiBhjG8wl0RHCsOz62
-         hevC7II3v65Qvj/4WfidEFVrHWRwbNFiaBOMKkW4tsz3T8UHgErpIxTkKC7assgr/W9/
-         IHgBlKsNa3sfDZLB3+p7HfCsqmnsulWlPeSUlaTxRnzQU/FB27zJb8mnHqY89sM4Ak0O
-         83ZohipPTaIlokfNyFbmcpFMvMcde5FxpYK9qDw+M5It6s5JFHIo4ASlnO6wM1oEf8Qf
-         G3ZTMGIMXv3gBPhoXt0SguDvZdQiCu/YbEb8nVM7NL6cAXS8+qgBpTmeHWbSGKDTjfUZ
-         uwlQ==
-X-Gm-Message-State: AOJu0Yz7w1uxDfMu25X+ju0Xic6CtmB8Q6hEVP4Si92C/a2C/nFN18l+
-	UIGTsAKz0iD4+tiomh1mbu75WA==
-X-Google-Smtp-Source: AGHT+IFl4ErBydRgH3o+szBhieEObFyJk2W1qgdlEGWyQ2DuJPK2W+Wat1TPa0oQjMvvp+JQX7n08Q==
-X-Received: by 2002:a17:907:2bf7:b0:9a1:ad87:1354 with SMTP id gv55-20020a1709072bf700b009a1ad871354mr4511261ejc.34.1692780973398;
-        Wed, 23 Aug 2023 01:56:13 -0700 (PDT)
-Received: from krzk-bin.. ([77.252.47.198])
-        by smtp.gmail.com with ESMTPSA id lc21-20020a170906dff500b0099cc15f09a0sm9525260ejc.55.2023.08.23.01.56.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Aug 2023 01:56:12 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] media: platform: use capital "OR" for multiple licenses in SPDX
-Date: Wed, 23 Aug 2023 10:56:10 +0200
-Message-Id: <20230823085610.116607-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	id 1qYmQg-000U7W-0L;
+	Wed, 23 Aug 2023 11:53:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 91350660DC;
+	Wed, 23 Aug 2023 11:53:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A96BC43397;
+	Wed, 23 Aug 2023 11:53:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1692791620;
+	bh=9ozTPMOCGjgHLaJa54zNz+3htX4e52MyhqXdip941jo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=l24jGUE83dTC5LIpesTj/6es0p1WS7ylU3MUON3FJiuoWQxxRCjlR5z3wIFk4K+oU
+	 K2AWIcTPkmDsluBNADDyBlpMDLA8Rp+uKKqJoCHs0avzOBmXGyOqYqn+BCh16bjUI2
+	 hvhq9h51Ry+gIiCJSOxxraYuuki2GsBa0J1eiiJ7gXumwLCguGvREwpTyW9YV+YEk7
+	 dNwAKeoP3UDdpi+bdNOnHPI9JPaBhU60YEN1dK+7znlOZ/CRo/Tve9mIsDAErxAZ59
+	 jKyyPyla2DIuaYkyUmtM5hqQ6DDKwQ7Gc/a1lvWnat8Yxav7r0p1B08W1yk1QFolNU
+	 SsschzuYYGj6A==
+Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-2b9b50be31aso85186531fa.3;
+        Wed, 23 Aug 2023 04:53:39 -0700 (PDT)
+X-Gm-Message-State: AOJu0YxJA7qKFeD7jcJdfpmsNL0rILInXtDgZ6W/lLws//CT9lja+Qe2
+	eJxF/PG0LmmWyhQSsdXPe2queHXV3SKOYH/dlw==
+X-Google-Smtp-Source: AGHT+IG6AYWn2ZBtqiggebw0M0LEoLpjEjEkmAuyxGb6SqXHXb0v7iaIhaSPWuqzMe7IxI9zjdhMNEvmSNHymSTc/JA=
+X-Received: by 2002:a2e:7008:0:b0:2bc:d8fd:13df with SMTP id
+ l8-20020a2e7008000000b002bcd8fd13dfmr2086615ljc.41.1692791617967; Wed, 23 Aug
+ 2023 04:53:37 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230714174702.4059100-1-robh@kernel.org> <CABb+yY0ZEkU2fEoFcihDM0GPuNBkCJHYXfkq-+bLJY1xtbf5Jw@mail.gmail.com>
+In-Reply-To: <CABb+yY0ZEkU2fEoFcihDM0GPuNBkCJHYXfkq-+bLJY1xtbf5Jw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 23 Aug 2023 06:53:25 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+EbxHkdXEJsgAETrQj8Ps30umOMcArt1fCaNumxBem5A@mail.gmail.com>
+Message-ID: <CAL_Jsq+EbxHkdXEJsgAETrQj8Ps30umOMcArt1fCaNumxBem5A@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: Explicitly include correct DT includes
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Conor Dooley <conor.dooley@microchip.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-tegra@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_015617_257508_430ECC30 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20230823_045342_229377_EC358237 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,35 +88,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Documentation/process/license-rules.rst and checkpatch expect the SPDX
-identifier syntax for multiple licenses to use capital "OR".  Correct it
-to keep consistent format and avoid copy-paste issues.
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c b/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
-index f2ae84f0b436..f64dea797eff 100644
---- a/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
-+++ b/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0-only or Apache-2.0
-+// SPDX-License-Identifier: GPL-2.0-only OR Apache-2.0
- 
- #include "rockchip_av1_filmgrain.h"
- 
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBBdWcgMjIsIDIwMjMgYXQgNjowNeKAr1BNIEphc3NpIEJyYXIgPGphc3Npc2luZ2hi
+cmFyQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBPbiBGcmksIEp1bCAxNCwgMjAyMyBhdCAxMjo0N+KA
+r1BNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IHdyb3RlOgo+ID4KPiA+IFRoZSBEVCBv
+Zl9kZXZpY2UuaCBhbmQgb2ZfcGxhdGZvcm0uaCBkYXRlIGJhY2sgdG8gdGhlIHNlcGFyYXRlCj4g
+PiBvZl9wbGF0Zm9ybV9idXNfdHlwZSBiZWZvcmUgaXQgYXMgbWVyZ2VkIGludG8gdGhlIHJlZ3Vs
+YXIgcGxhdGZvcm0gYnVzLgo+ID4gQXMgcGFydCBvZiB0aGF0IG1lcmdlIHByZXBwaW5nIEFybSBE
+VCBzdXBwb3J0IDEzIHllYXJzIGFnbywgdGhleQo+ID4gInRlbXBvcmFyaWx5IiBpbmNsdWRlIGVh
+Y2ggb3RoZXIuIFRoZXkgYWxzbyBpbmNsdWRlIHBsYXRmb3JtX2RldmljZS5oCj4gPiBhbmQgb2Yu
+aC4gQXMgYSByZXN1bHQsIHRoZXJlJ3MgYSBwcmV0dHkgbXVjaCByYW5kb20gbWl4IG9mIHRob3Nl
+IGluY2x1ZGUKPiA+IGZpbGVzIHVzZWQgdGhyb3VnaG91dCB0aGUgdHJlZS4gSW4gb3JkZXIgdG8g
+ZGV0YW5nbGUgdGhlc2UgaGVhZGVycyBhbmQKPiA+IHJlcGxhY2UgdGhlIGltcGxpY2l0IGluY2x1
+ZGVzIHdpdGggc3RydWN0IGRlY2xhcmF0aW9ucywgdXNlcnMgbmVlZCB0bwo+ID4gZXhwbGljaXRs
+eSBpbmNsdWRlIHRoZSBjb3JyZWN0IGluY2x1ZGVzLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFJv
+YiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4gPgo+IEkgdGhvdWdodCBJIHdhcyB0byBwaWNr
+IHRoZSBwYXRjaC4gQnV0IEkgc2VlIHlvdSBpbnRlbmQgdG8gZG8gaXQuIE5wLgoKTm8sIHBsZWFz
+ZSBhcHBseSBpdC4KClRoYW5rcywKUm9iCgo+Cj4gQWNrZWQtYnk6IEphc3NpIEJyYXIgPGphc3Np
+c2luZ2hicmFyQGdtYWlsLmNvbT4KPgo+IHRoYW5rcwoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
