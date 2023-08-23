@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2A2EE49B0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BECEEE4993
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 13:44:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VIYKyc8lyyrMZj6ER6ov8GEcutcgvyO78QNSK3kY/ag=; b=meY+u0sWMxfMQt
-	05m5OemI7UBRy4Tp0mOs6hu1J6SczTstGnzWMcdAYbp98GVu2Db4gSN5SJ4BIYSUeZkXkyVi+fQUf
-	NZUFx7+6QXARiuqAXle9txZNfqHbnZpxUQOjqxGleyz1l/By7E4h5M5MUsxoRu4JDR9YmjvogLSR3
-	QH2Car9/2ZVQ1Ehq7tuLe2nJb3FeerWTBHpX6YM4IB6KzgDB+WO4qel1PXzzx1/sIioUguKdOQfFC
-	A8f8Byu6+gpwe/3BQB56/L4Om7KIbO7MS0yi7N4WdCE9am3pK4c7LwA0TFpT/fUfkr/wzm8li3b4J
-	g8UtOn6mfsnzwcMSKmlA==;
+	List-Owner; bh=9rABKWcMzN3UP7+Jh3IRIeP4COi25SpLew7Yq4nBxY0=; b=CxvaepppXEXyad
+	RRYThMTIjiywXSVv0/AJAFN07ZxK9UEmrgZ0N+H3kkTLdTAOG+xzSwjWHfDDGtJFL4lhmApH/3q+2
+	v/1eTOfeTAz27jpV9FFvt6A8EakB5TUkObKKG5z5qqYaYJT+eG/9uT4cCdvcIsJd8HHq25KtGaspm
+	XuDHG3APiLirlapOj9lAky9gmwCfSQ5F7jvJqsc4W4NICnFyIuKdIMnWH59x1sZx9/2kuNFYus9mC
+	4kd8NJcYpYN5XBgg/ut1h6hPepfnQ6O1/QGzc8Ujcoo5Crx4AGrMldtkfuiG9i9al6XXaXm5fLuHX
+	2UosKdt0G+D60DDCXN1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo9M-000lM6-05;
-	Wed, 23 Aug 2023 13:43:56 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qYo9Q-000lT9-20;
+	Wed, 23 Aug 2023 13:44:00 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5q-000hZ8-0l;
-	Wed, 23 Aug 2023 13:40:20 +0000
+	id 1qYo5u-000hd6-2v;
+	Wed, 23 Aug 2023 13:40:25 +0000
 Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RW6gf6j7LztSFf;
-	Wed, 23 Aug 2023 21:36:30 +0800 (CST)
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RW6jQ27ZrzTmcD;
+	Wed, 23 Aug 2023 21:38:02 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:14 +0800
+ 2023 21:40:17 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 22/25] spi: pic32-sqi: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:35 +0800
-Message-ID: <20230823133938.1359106-23-lizetao1@huawei.com>
+Subject: [PATCH -next v2 25/25] spi: rockchip: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:38 +0800
+Message-ID: <20230823133938.1359106-26-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064018_845196_447D8AB2 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20230823_064023_498180_FC172E83 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,80 +93,94 @@ Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-pic32-sqi.c | 27 +++------------------------
- 1 file changed, 3 insertions(+), 24 deletions(-)
+ drivers/spi/spi-rockchip.c | 30 +++++-------------------------
+ 1 file changed, 5 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/spi/spi-pic32-sqi.c b/drivers/spi/spi-pic32-sqi.c
-index 883354d0ff52..3f1e5b27776b 100644
---- a/drivers/spi/spi-pic32-sqi.c
-+++ b/drivers/spi/spi-pic32-sqi.c
-@@ -593,33 +593,20 @@ static int pic32_sqi_probe(struct platform_device *pdev)
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 5b010094dace..4b9669da2cf3 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -782,42 +782,30 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		goto err_put_ctlr;
  	}
  
- 	/* clocks */
--	sqi->sys_clk = devm_clk_get(&pdev->dev, "reg_ck");
-+	sqi->sys_clk = devm_clk_get_enabled(&pdev->dev, "reg_ck");
- 	if (IS_ERR(sqi->sys_clk)) {
- 		ret = PTR_ERR(sqi->sys_clk);
- 		dev_err(&pdev->dev, "no sys_clk ?\n");
- 		goto err_free_host;
+-	rs->apb_pclk = devm_clk_get(&pdev->dev, "apb_pclk");
++	rs->apb_pclk = devm_clk_get_enabled(&pdev->dev, "apb_pclk");
+ 	if (IS_ERR(rs->apb_pclk)) {
+ 		dev_err(&pdev->dev, "Failed to get apb_pclk\n");
+ 		ret = PTR_ERR(rs->apb_pclk);
+ 		goto err_put_ctlr;
  	}
  
--	sqi->base_clk = devm_clk_get(&pdev->dev, "spi_ck");
-+	sqi->base_clk = devm_clk_get_enabled(&pdev->dev, "spi_ck");
- 	if (IS_ERR(sqi->base_clk)) {
- 		ret = PTR_ERR(sqi->base_clk);
- 		dev_err(&pdev->dev, "no base clk ?\n");
- 		goto err_free_host;
+-	rs->spiclk = devm_clk_get(&pdev->dev, "spiclk");
++	rs->spiclk = devm_clk_get_enabled(&pdev->dev, "spiclk");
+ 	if (IS_ERR(rs->spiclk)) {
+ 		dev_err(&pdev->dev, "Failed to get spi_pclk\n");
+ 		ret = PTR_ERR(rs->spiclk);
+ 		goto err_put_ctlr;
  	}
  
--	ret = clk_prepare_enable(sqi->sys_clk);
--	if (ret) {
--		dev_err(&pdev->dev, "sys clk enable failed\n");
--		goto err_free_host;
+-	ret = clk_prepare_enable(rs->apb_pclk);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to enable apb_pclk\n");
+-		goto err_put_ctlr;
 -	}
 -
--	ret = clk_prepare_enable(sqi->base_clk);
--	if (ret) {
--		dev_err(&pdev->dev, "base clk enable failed\n");
--		clk_disable_unprepare(sqi->sys_clk);
--		goto err_free_host;
+-	ret = clk_prepare_enable(rs->spiclk);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to enable spi_clk\n");
+-		goto err_disable_apbclk;
 -	}
 -
- 	init_completion(&sqi->xfer_done);
+ 	spi_enable_chip(rs, false);
  
- 	/* initialize hardware */
-@@ -629,7 +616,7 @@ static int pic32_sqi_probe(struct platform_device *pdev)
- 	ret = ring_desc_ring_alloc(sqi);
- 	if (ret) {
- 		dev_err(&pdev->dev, "ring alloc failed\n");
--		goto err_disable_clk;
-+		goto err_free_host;
+ 	ret = platform_get_irq(pdev, 0);
+ 	if (ret < 0)
+-		goto err_disable_spiclk;
++		goto err_put_ctlr;
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, ret, rockchip_spi_isr, NULL,
+ 			IRQF_ONESHOT, dev_name(&pdev->dev), ctlr);
+ 	if (ret)
+-		goto err_disable_spiclk;
++		goto err_put_ctlr;
+ 
+ 	rs->dev = &pdev->dev;
+ 	rs->freq = clk_get_rate(rs->spiclk);
+@@ -843,7 +831,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	if (!rs->fifo_len) {
+ 		dev_err(&pdev->dev, "Failed to get fifo length\n");
+ 		ret = -EINVAL;
+-		goto err_disable_spiclk;
++		goto err_put_ctlr;
  	}
  
- 	/* install irq handlers */
-@@ -669,10 +656,6 @@ static int pic32_sqi_probe(struct platform_device *pdev)
- err_free_ring:
- 	ring_desc_ring_free(sqi);
+ 	pm_runtime_set_autosuspend_delay(&pdev->dev, ROCKCHIP_AUTOSUSPEND_TIMEOUT);
+@@ -937,10 +925,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		dma_release_channel(ctlr->dma_tx);
+ err_disable_pm_runtime:
+ 	pm_runtime_disable(&pdev->dev);
+-err_disable_spiclk:
+-	clk_disable_unprepare(rs->spiclk);
+-err_disable_apbclk:
+-	clk_disable_unprepare(rs->apb_pclk);
+ err_put_ctlr:
+ 	spi_controller_put(ctlr);
  
--err_disable_clk:
--	clk_disable_unprepare(sqi->base_clk);
--	clk_disable_unprepare(sqi->sys_clk);
--
- err_free_host:
- 	spi_controller_put(host);
- 	return ret;
-@@ -685,10 +668,6 @@ static void pic32_sqi_remove(struct platform_device *pdev)
- 	/* release resources */
- 	free_irq(sqi->irq, sqi);
- 	ring_desc_ring_free(sqi);
--
--	/* disable clk */
--	clk_disable_unprepare(sqi->base_clk);
--	clk_disable_unprepare(sqi->sys_clk);
- }
+@@ -950,13 +934,9 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ static void rockchip_spi_remove(struct platform_device *pdev)
+ {
+ 	struct spi_controller *ctlr = spi_controller_get(platform_get_drvdata(pdev));
+-	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
  
- static const struct of_device_id pic32_sqi_of_ids[] = {
+ 	pm_runtime_get_sync(&pdev->dev);
+ 
+-	clk_disable_unprepare(rs->spiclk);
+-	clk_disable_unprepare(rs->apb_pclk);
+-
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_set_suspended(&pdev->dev);
 -- 
 2.34.1
 
