@@ -4,154 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45337EE49A0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 07:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC25EE4993
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Aug 2023 08:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W30I0mfZGCeF93cDdOpgtVCUDQBLlZ5qjG4bYeiGZYo=; b=cym9U4cA+Phqz7
-	NoPNkoMyxt+o97D5l9FEmiWPsg3hH+ZcXl1+MsvyEP+uca4sjMiDPnZQMtHA/vtLr++OPr3X1HT4L
-	sI8r49GNF6JbYrE1V/HXz7IF3w7+8Qzjp9sorrIcHNOGaZf1kRHsZWn2Iql/euzGHRfo5o4wCcpIg
-	O56z+w7zxzZ5COjdPcUZNiQ4IUDQh/dM9vU7cHm62SqEDImYb2RVedZAK1M0zgIwkdUX7VXePFseO
-	i/3dlUfmop6hFv1zYXDlssIhXEYMbS9yo9E5pBEVHMmab/YGD874V0MFr8ggAzoUwDLE4Yt2GPEaM
-	KYFW5VlDL404brVdVlew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=C3KaszXlZLORBT6w0rzIw/yxzxWOYoQame9tFxVzfUM=; b=YcqSLwPvJffj0A
+	GF3PaxC/3UrpCIQYDPoFkvFtTGV70bi4jlZ9UBJ8PoCqVn+kK5zzLbnjThO3xWaSxnwSbBzIsTTCi
+	Sf97Ikwnjv23+uICj8d6JAEcROZrXQmykjo46zpLpL9/3HeBa86aI2oh8yph5RoW+a67SVYDlLKy1
+	DSgFvZTxY14rJKBU5/E5UujAHZ34NQzn0VNfpxRl0RrxheWtX4/KlCK6ss9hr1tKEYgEYPYZ1pTkw
+	T+vZbw5dhokx9yX684m/lejocJpnZJbs/fAYO9obnm73jBV4Rh8ZXpPDxfz234lQ5fb7A8+sicxnj
+	PW5xWrciK7mkiKsWtMHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYi1r-00HROm-05;
-	Wed, 23 Aug 2023 07:11:47 +0000
-Received: from mail-psaapc01on20723.outbound.protection.outlook.com ([2a01:111:f400:feae::723] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1qYjf1-0000zd-32;
+	Wed, 23 Aug 2023 08:56:19 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYi1i-00HRMI-2f;
-	Wed, 23 Aug 2023 07:11:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C59nFZubldU+gDnkYX7TAIqx2/yAipuT2I39aPvHyUDuNxHAFFZKkAXaFqk0S9pvaogUxsk+V9oPpJZCaN0zDavJrgMLqbZEMrCVLVBrtadCRexa/Y4P9DmXuGfN2ptCTecN0SXjtT1IYYfb+zf0v1NxRS8KZ2JXNuyjAIEHWSC8DWNwkwrmNjIhuc3SqrbwrdcBUP8tGqkOi2RlJ5mZllfDPSev9l7jwyTD2YxD57SystpktTdQ9Fl8VKbDy9chby1QqBjj5Xfe3ZKJ/nJlsVHJHwauQwouQEAp8betcv6gHGRbweSdleZpQlQBjbaHcFiDvljx5TWMOd41AhVqPg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+7xSverx84p1FkG7XUOE1Uhtjz9zbU2K14Uh7EYXy7M=;
- b=isdgJ9xih/6d2BtXRJYhZXfwoKYhh3ON7Sd2VtzZ2LP5bJ0YN+bLgFqryAQ5ldBtowD9A6nl+1AWHJCBZOxRYQg5YHcnJIh94QwL9ImVQzIRDPBi2SskiOnskIbcIDQpCi7Cu2+4N8f7xbLwb42KztSCBToE5Wsq9qRvYM1FVnzfVKMVivDsH4ZufIv98haZl4LTsjHbvDUwPiZrS9OdndWdDRdkYjw+SR9XG3Rm8I7CyToxrqYCt1bDycmhpihX0NWUlJCJDVOfRy/xhCV+UOLc3dt86AecfAmO+seM+TQ81mw5d+O5Xf8wVC4Z+OmkNcE5l0LCm2eoXI6rUUb2Ag==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+7xSverx84p1FkG7XUOE1Uhtjz9zbU2K14Uh7EYXy7M=;
- b=ZUWlN3WSxMqN4xnMG4fHiVTnJQhqF3ORdVfciTJIjW+RSGD9o2yxI5Ro0cOKfTy0WIC14vUsXMgO8pmEPzK4xBd4p/YVP2V03tuize0EOc/AdotFSHuxbu1uoAX/7vMwKzsRg7/GOuApLoivV3R+GpjzDRZkB9zP7o8eoRwRVLQOHG+lBNHmEBFYnnWzDg9MoeF0mpuLmzI34v9nlqpY8aIA+11wQ/54e1oneb+b0fqNGYb/xTKjr9sYCQlsCxSGC4K5oPlQMTV1yEVFmohwy0nG/aZVGdjrcV/OuAKMIt/UvFL4sNp24huue5QmjXt9/vBbAg/PndN01t+X0teVmg==
-Received: from TYZPR06MB5203.apcprd06.prod.outlook.com (2603:1096:400:1f9::9)
- by SG2PR06MB5360.apcprd06.prod.outlook.com (2603:1096:4:1db::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.31; Wed, 23 Aug
- 2023 07:11:19 +0000
-Received: from TYZPR06MB5203.apcprd06.prod.outlook.com
- ([fe80::c404:538d:e090:f7b]) by TYZPR06MB5203.apcprd06.prod.outlook.com
- ([fe80::c404:538d:e090:f7b%5]) with mapi id 15.20.6699.020; Wed, 23 Aug 2023
- 07:11:19 +0000
-From: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
-To: Li Zetao <lizetao1@huawei.com>, "broonie@kernel.org" <broonie@kernel.org>,
-	"clg@kaod.org" <clg@kaod.org>, "joel@jms.id.au" <joel@jms.id.au>,
-	"andrew@aj.id.au" <andrew@aj.id.au>, "florian.fainelli@broadcom.com"
-	<florian.fainelli@broadcom.com>, "rjui@broadcom.com" <rjui@broadcom.com>,
-	"sbranden@broadcom.com" <sbranden@broadcom.com>,
-	"bcm-kernel-feedback-list@broadcom.com"
-	<bcm-kernel-feedback-list@broadcom.com>, "fancer.lancer@gmail.com"
-	<fancer.lancer@gmail.com>, "olteanv@gmail.com" <olteanv@gmail.com>,
-	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
-	"khilman@baylibre.com" <khilman@baylibre.com>, "jbrunet@baylibre.com"
-	<jbrunet@baylibre.com>, "martin.blumenstingl@googlemail.com"
-	<martin.blumenstingl@googlemail.com>, "conor.dooley@microchip.com"
-	<conor.dooley@microchip.com>, "daire.mcnamara@microchip.com"
-	<daire.mcnamara@microchip.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "avifishman70@gmail.com"
-	<avifishman70@gmail.com>, "tmaimon77@gmail.com" <tmaimon77@gmail.com>,
-	"tali.perry1@gmail.com" <tali.perry1@gmail.com>, "venture@google.com"
-	<venture@google.com>, "yuenn@google.com" <yuenn@google.com>,
-	"benjaminfair@google.com" <benjaminfair@google.com>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>, "heiko@sntech.de"
-	<heiko@sntech.de>
-CC: "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
-	"openbmc@lists.ozlabs.org" <openbmc@lists.ozlabs.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"linux-rpi-kernel@lists.infradead.org"
-	<linux-rpi-kernel@lists.infradead.org>, "linux-amlogic@lists.infradead.org"
-	<linux-amlogic@lists.infradead.org>, "linux-riscv@lists.infradead.org"
-	<linux-riscv@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>
-Subject: RE: [PATCH -next 03/25] spi: aspeed: Use helper function
- devm_clk_get_enabled()
-Thread-Topic: [PATCH -next 03/25] spi: aspeed: Use helper function
- devm_clk_get_enabled()
-Thread-Index: AQHZ1Ppmytx9atFtzEKmu2Zv4vvkIa/3d2Ew
-Date: Wed, 23 Aug 2023 07:11:19 +0000
-Message-ID: <TYZPR06MB520349C9A467FD2D43E6F345B21CA@TYZPR06MB5203.apcprd06.prod.outlook.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230822131237.1022815-4-lizetao1@huawei.com>
-In-Reply-To: <20230822131237.1022815-4-lizetao1@huawei.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB5203:EE_|SG2PR06MB5360:EE_
-x-ms-office365-filtering-correlation-id: 2aec4954-4ee9-476e-46df-08dba3a82606
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UksuVfA07KeYylAFTzYVwnR03vKUXPV1+C+/WfIt3E/yJeHHyOQFE0AeGU+psE8dqDZlvI1tamMx3ttkFGvLDhHcgmL8VglaiB1ltIoFJVi4hxrkM8ru+Z5jV/ouaL0dxD66i2Y3NAsZTWWlWM+HRYxBxVrtXPf14tVb/8UnXuPOKsBV9gCLErY5yOZO7Y3El6dXHLR/XbTdxskoZ/sRV4bGxfvFYiUXk0VSyF03P4d9Cps/7bMTBTO82ZkujaQ7n09q5Njs5miA83r7z/4o2TPp+N3rzRJa4zG1OXszJ3CKDE3wrkFZ+irkuITgfnYi+WjWvJIBN3R5YNXC8x2d4XmH/pubVrbsxLrFkDPG+L00B8G7L3sUWhDeQnEkOLYLvtn175xyla0vdVOqq13GX8Fr3k0PPi6E++fQcetMeyxNf+vzDfWasHp9PUvBiF8ODRVQT7G99x3t2TdFQ0TbGeHsfvD5iEsFWm+bJKOTZzEZYQ49ZUXaR39RGkIKDCmkKyKBJqUxXXYzvFbrYubb7GD8ZYnQXCnnjOKEapD6HUiRBWRfnyerEZ9QHfAU+8V5MtptVrOKS/SrUVI3UO9dOvbN9tkRcp/kX4I9sU14qxwbZtSbsWH0C+l3QIXB9bGH4RE3ErDJp422tnyP3to/aA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR06MB5203.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(39850400004)(366004)(396003)(346002)(136003)(451199024)(186009)(1800799009)(26005)(9686003)(38070700005)(122000001)(55016003)(33656002)(38100700002)(86362001)(921005)(83380400001)(8676002)(8936002)(110136005)(66556008)(41300700001)(316002)(76116006)(66446008)(64756008)(54906003)(2906002)(66946007)(52536014)(5660300002)(4326008)(66476007)(7416002)(7406005)(71200400001)(7696005)(6506007)(53546011)(478600001);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?piirPloeETUiZDsm2mshr/STo7mKeHNoEE9xLsd6ZDB7EQqgDNl6jTOKUB8t?=
- =?us-ascii?Q?8pi8nE1YXuUlw/keJmT5XtJ0fb/8DoYSkzWYH04NUHpk5Ue1BkdGcB1vy0Mw?=
- =?us-ascii?Q?HedxUum+IlS8K0xCSjjKO/1WXarbwzwSB7Vvewxm9uv7vihVh9S2v+atSky2?=
- =?us-ascii?Q?l0ACvtpo19kPFM1otC1Jph+scqrUhkYdrjmehV1dbe/5mprIKPJD+ShVu1hM?=
- =?us-ascii?Q?tuUzs1FUe0WYsM3cwR5svoiVP1SoBYyIgHYzb1GDA4yzaINWBtzvgjXgn1fH?=
- =?us-ascii?Q?LUZj7MfRt2sbwe0kWIqptcv4WeQU/huC3ZRPoSoymrJ5e+V5+xxEpLTn94yf?=
- =?us-ascii?Q?NLjU9iuYUjA1JNkL3oc0bgL+SBd4txZwdAlsKe1ELdXeVCFPx4KDaKoZ4wu/?=
- =?us-ascii?Q?UGhyWHrUBfjiP86aErivfFdieJ57PEDkBOODwDXdipu8AD+8+r8E6DufsS1a?=
- =?us-ascii?Q?EfTv0N2jzeq99eXmcOjXiV0kq3wMXCkRur9MgNhOCFP4HQ5bLK8SG1nwbVGL?=
- =?us-ascii?Q?Dj1d1t5NuccVZluWMf+gevjbvLJhgioK9nsSQdkSXxGVpg/90wfFIam3mK66?=
- =?us-ascii?Q?D1Z3DmHijy87SKCFjpGGVOg+gWYZUV7YthrdqZHQYCozLyDS9CHW8EaH6qUx?=
- =?us-ascii?Q?1n3CA59XkoZPTDIM9ZF5o+e8qWXAiCVfE/9Mokb0Gzkj4udC+u/ro2jUVT3O?=
- =?us-ascii?Q?RzBioAS84FqwW73Ou1yaQI8MpV9lXLtYoIIZ2N1NXWcEnLGI1QFX5DbSzwBt?=
- =?us-ascii?Q?kJIhKZAWiqfs8tEF1io8zax5OXx2qcxwxesWzjil15MhIwJe/ugJk9gdKqcm?=
- =?us-ascii?Q?TqHPgbgefpjA21xfVDXz0+yZ9Z6yyS4peUyYvw49nb/2vVT6cgzouyhnZAjd?=
- =?us-ascii?Q?jE62xJyMWwqWoZeTInreNZvpjbc8TBSCa34POz1FYufU8C2vZoB56hIaWBC7?=
- =?us-ascii?Q?MnogW44ehRkhwnKAoL6YC0O+i6vcG/0Xt+/+FGa+YWNCjTATTzL0snIzW8DQ?=
- =?us-ascii?Q?zMnFUgZvqRNckWmtuu581+JOZnyoktvAcSMHsOpsRZKR5ok/azkQTOK6jaJg?=
- =?us-ascii?Q?V2N6W7EWkKrIDQU2a+Tmcr5/J2XxW9oIpBYvlkGTm2VqCBFL8lKMOxJ9ml3A?=
- =?us-ascii?Q?0U2X99qS0Zi6zleKkjkzyghJL8yPOqQNDGdk3Rrko4yvnOMAMPZD8cP+QrW3?=
- =?us-ascii?Q?DvG2Nzlm9w/Z2bnBCsp/keST7P+Ao3Yuy+/tnO6tzrWVhUuGBoWYxqv2bp32?=
- =?us-ascii?Q?XllweDmuSSg5S0J6muBUkC30bUG80AWOVGQSMrH+XfLCPx7PC31woAMQ4xYw?=
- =?us-ascii?Q?Kh/IgC4QCMi1NNQKrwQ1FQkhyijJY1FvK9Wl8Ki8neIhMgIAa2Hon0Hw6J2T?=
- =?us-ascii?Q?RXLuUPw+dRPY1bVmwVvRLRT/ruNkMzUatFAEj3gDDjHzFdQYZPV2ZKc6nu9X?=
- =?us-ascii?Q?7MDHEeLZmd7MWpzMEAcqQrSd83zZgkN9z4Bgx9trX8UVpE1YXfuwqzDg8na8?=
- =?us-ascii?Q?bTPay5h+xPebI/f2doPOZkpmZCKuqMEm9njUO7HxFhCMDv0hF4hk0I+oTEfF?=
- =?us-ascii?Q?wS7ktDs9JCaI2uRWtgnT92nLgtG6pqJGQUCz9Sy614YAw5ByWTlmOhuZq5Y8?=
- =?us-ascii?Q?Ug=3D=3D?=
+	id 1qYjez-0000xW-0i
+	for linux-rockchip@lists.infradead.org;
+	Wed, 23 Aug 2023 08:56:18 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-99c353a395cso713453466b.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Aug 2023 01:56:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692780973; x=1693385773;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vs7TYRhEZae23BHcIvi2Ln4wVlirirYZRQLMvBSgBWU=;
+        b=qan7IvYVFvpkudj1oCiCGUjwxzOASjonXBBDFM8N4bBUqjb2EjGk3gkublwDEuHFYM
+         93f1UR1UGYryn5tHmLwJuKpyHblWld0eglXTmc8jaaGS+59lpKV6X2mMRN0w+Hi7w7n3
+         B4AgxIpo2jacUJSDl9r9s0byvqoP8q8O4jXDq7NHFJR3fysMXBGuqxADvI2UmZgrYgWL
+         Cx+iIItLq6/+R7BcykLQEa3m8MjMSOUvi5/L/mMXH79apUk/QrmH877zMl3M/q5/5btd
+         OrIUNiEy0s9YJlciBJeBe8FRdbPDo6u/AFBln797VUpKRTGPWt+N7pM3gvqlnUaAxHwq
+         xu0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692780973; x=1693385773;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vs7TYRhEZae23BHcIvi2Ln4wVlirirYZRQLMvBSgBWU=;
+        b=GmO2kE2xlKQ5ngRCtcwTWbefawc+eEYMRQTwR1pwc7YVxTAisiBhjG8wl0RHCsOz62
+         hevC7II3v65Qvj/4WfidEFVrHWRwbNFiaBOMKkW4tsz3T8UHgErpIxTkKC7assgr/W9/
+         IHgBlKsNa3sfDZLB3+p7HfCsqmnsulWlPeSUlaTxRnzQU/FB27zJb8mnHqY89sM4Ak0O
+         83ZohipPTaIlokfNyFbmcpFMvMcde5FxpYK9qDw+M5It6s5JFHIo4ASlnO6wM1oEf8Qf
+         G3ZTMGIMXv3gBPhoXt0SguDvZdQiCu/YbEb8nVM7NL6cAXS8+qgBpTmeHWbSGKDTjfUZ
+         uwlQ==
+X-Gm-Message-State: AOJu0Yz7w1uxDfMu25X+ju0Xic6CtmB8Q6hEVP4Si92C/a2C/nFN18l+
+	UIGTsAKz0iD4+tiomh1mbu75WA==
+X-Google-Smtp-Source: AGHT+IFl4ErBydRgH3o+szBhieEObFyJk2W1qgdlEGWyQ2DuJPK2W+Wat1TPa0oQjMvvp+JQX7n08Q==
+X-Received: by 2002:a17:907:2bf7:b0:9a1:ad87:1354 with SMTP id gv55-20020a1709072bf700b009a1ad871354mr4511261ejc.34.1692780973398;
+        Wed, 23 Aug 2023 01:56:13 -0700 (PDT)
+Received: from krzk-bin.. ([77.252.47.198])
+        by smtp.gmail.com with ESMTPSA id lc21-20020a170906dff500b0099cc15f09a0sm9525260ejc.55.2023.08.23.01.56.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Aug 2023 01:56:12 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] media: platform: use capital "OR" for multiple licenses in SPDX
+Date: Wed, 23 Aug 2023 10:56:10 +0200
+Message-Id: <20230823085610.116607-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB5203.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2aec4954-4ee9-476e-46df-08dba3a82606
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2023 07:11:19.0828
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1Kt7NHf6kT+F7gf3XSI4DaWUAkIdrym/uf/uEEoRCaqwOpuJ4oY3DscO6Y5ZbR0DTYVendSZh83KK2xtwyM7njgJu8rnFYDA5xszVViGpXI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5360
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_001140_969944_9D2A5230 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20230823_015617_257508_430ECC30 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,81 +95,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Documentation/process/license-rules.rst and checkpatch expect the SPDX
+identifier syntax for multiple licenses to use capital "OR".  Correct it
+to keep consistent format and avoid copy-paste issues.
 
-> -----Original Message-----
-> From: Li Zetao <lizetao1@huawei.com>
-> Sent: Tuesday, August 22, 2023 9:12 PM
-> Subject: [PATCH -next 03/25] spi: aspeed: Use helper function
-> devm_clk_get_enabled()
-> 
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it is no
-> longer necessary to unprepare and disable the clocks explicitly.
-> 
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
-> ---
->  drivers/spi/spi-aspeed-smc.c | 16 ++--------------
->  1 file changed, 2 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-aspeed-smc.c b/drivers/spi/spi-aspeed-smc.c index
-> 21b0fa646c7d..bbd417c55e7f 100644
-> --- a/drivers/spi/spi-aspeed-smc.c
-> +++ b/drivers/spi/spi-aspeed-smc.c
-> @@ -748,7 +748,7 @@ static int aspeed_spi_probe(struct platform_device
-> *pdev)
->  	aspi->ahb_window_size = resource_size(res);
->  	aspi->ahb_base_phy = res->start;
-> 
-> -	aspi->clk = devm_clk_get(&pdev->dev, NULL);
-> +	aspi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
->  	if (IS_ERR(aspi->clk)) {
->  		dev_err(dev, "missing clock\n");
->  		return PTR_ERR(aspi->clk);
-> @@ -760,12 +760,6 @@ static int aspeed_spi_probe(struct platform_device
-> *pdev)
->  		return -EINVAL;
->  	}
-> 
-> -	ret = clk_prepare_enable(aspi->clk);
-> -	if (ret) {
-> -		dev_err(dev, "can not enable the clock\n");
-> -		return ret;
-> -	}
-> -
->  	/* IRQ is for DMA, which the driver doesn't support yet */
-> 
->  	ctlr->mode_bits = SPI_RX_DUAL | SPI_TX_DUAL | data->mode_bits; @@
-> -777,14 +771,9 @@ static int aspeed_spi_probe(struct platform_device *pdev)
->  	ctlr->dev.of_node = dev->of_node;
-> 
->  	ret = devm_spi_register_controller(dev, ctlr);
-> -	if (ret) {
-> +	if (ret)
->  		dev_err(&pdev->dev, "spi_register_controller failed\n");
-> -		goto disable_clk;
-> -	}
-> -	return 0;
-> 
-> -disable_clk:
-> -	clk_disable_unprepare(aspi->clk);
->  	return ret;
->  }
-> 
-> @@ -793,7 +782,6 @@ static void aspeed_spi_remove(struct platform_device
-> *pdev)
->  	struct aspeed_spi *aspi = platform_get_drvdata(pdev);
-> 
->  	aspeed_spi_enable(aspi, false);
-> -	clk_disable_unprepare(aspi->clk);
->  }
-> 
->  /*
-> --
-> 2.34.1
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+diff --git a/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c b/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
+index f2ae84f0b436..f64dea797eff 100644
+--- a/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
++++ b/drivers/media/platform/verisilicon/rockchip_av1_filmgrain.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0-only or Apache-2.0
++// SPDX-License-Identifier: GPL-2.0-only OR Apache-2.0
+ 
+ #include "rockchip_av1_filmgrain.h"
+ 
+-- 
+2.34.1
 
 
 _______________________________________________
