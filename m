@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF234C6FA8F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA614C27C40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TlgRLDdd8wQpAGmFvzXh4aaKn5TH22Zbtmf+RzJfCJk=; b=h8I9APDOjlvFKK
-	zYo7PpUddKbfuU2r7pGkVs34Jnj0+H2qYg4f4OG6t6Z2WqsxR7aP1JPLD403RymCnQidB8yHlL9+3
-	26B5cTY5S6dkEm3VBKNxB5O3+0jksvCiqt24ijn0+5jkg8lFKeM8AEkEaMYfexvizxzU9gW/VRWbO
-	MnVpf7h7Aw99avNlutdel2mELYuhx4RypOIzzlTDdyJ0Z8Tocf1A5qDZrLSB0y0mfV6Il/OAYXTOo
-	9092Y9vO7LP3fiRDzVkVnM8u23/cC07l6KdQuWpTPQhzaN4HUASas/UC4RLqB3SHw/mlWUJKrywnM
-	AS2mhxIbr/CztkGw4rFw==;
+	List-Owner; bh=e/8KySJGZO4RfPbpLOhcrTn7OZWjGSf0j9n1hDqH910=; b=YL7gYXL3pDES4V
+	xLvGqOvkIaxy5GUcmBOy2dJmpqZEWY17R9UxPyTNZ7hoBpWoNli5+4p0nJ40dVE3TCXAEeE440KVe
+	1VbFjAfSp+CdHeswdpl3skhWdsj1rraPe/f8Gn/bobLTEIy4ibLtzeh4yiDzKGtFvvqUJT2AiDm5X
+	rcDefkOfVNL/3F5sUso1Kfu0mnsHvMHTRIKr66fAT2vgQQRVjqi4cgjvedO2Ibs7Qq1hEMBmxHJLO
+	qWfE4iWF2I0OTtghLgXA8hjS2L2XIwW+Hq7ICegFWOrlcCKwnjwPIhGmGug46C2R6PwjM3IcYqLch
+	WMCFGEDVXrOD/fETx1rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6Xu-002gXs-1Y;
-	Thu, 24 Aug 2023 09:22:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qZ6Xs-002gVf-0t;
+	Thu, 24 Aug 2023 09:22:28 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6XG-002g6r-25;
-	Thu, 24 Aug 2023 09:21:55 +0000
+	id 1qZ6XG-002g6L-0f;
+	Thu, 24 Aug 2023 09:21:53 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:c310:4c8a:3a97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 42D116607324;
-	Thu, 24 Aug 2023 10:21:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3838366072EB;
+	Thu, 24 Aug 2023 10:21:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692868905;
-	bh=7SuYFFsy0UMAkQQkxSlRxpuDU3mFA9H4F51e8vN5B0Q=;
+	s=mail; t=1692868904;
+	bh=gAzQ/SGzIm4inZNC+PXcs+p3IPzDsrNiBUGyKW1mkfg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oW8M0zme51EF2mG+W34pgdyjpdQHpfMyMUr6LW6PIKBgj8IArSpUTgUzgiXQD1Stl
-	 QkLf3jZeNZM/ExuwvJpAE1hrtB1bMt7qi+tJYdr4lCGVKJxR1/lv20PLQB1fC3E2tV
-	 3gIUY1/HxFsfqx3bgnQqAvYQInBM+i9W0C86fk5eDifFIrmEnq6AObhn+i/LHGosMb
-	 mx1RK1HxYnXHIyGU00aYeRkoYv5fU25gESjqHrSGitBNSEW5FZk2KRGHqJ0ZFL8wRd
-	 Ah9uOscxkilvMJkG8dbuUGKdjILYM5mXxJKOHrUO4togCQoceF/lH3uLK1fkGFzh5Q
-	 zugcb//lCquSQ==
+	b=F6waHdxdia1zqInJtPnx5YVX8gzCDUgqXlgC2p9XYvyvZpgnlm5pfVqx3baByiGWp
+	 UBbz62SDaYTQqD7vYK86qBALS3Y6h693Zk7UJHG8XRJ4EjwoLyUWJ8uqrHk3QFTH/R
+	 IDw3xOCLINT5483bkrKhTAshOvuPXbpdoEPerio+X7+kCC7Ej8l5sc5fZCWVrjB6iS
+	 3ggH/AJhLP3QvGWPmuZwIVNacicf7+HKGjRZ0BbuC+fKkDQqJRvufwJ3ADPVFKS6LB
+	 JInOtJnsqfBdgS0pMaQmN75971EELaMHalJKFgxr2uYhgZybUZji/GHpE9zdIMJb+N
+	 3HVmtd4Gt2OxQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 07/10] media: verisilicon: postproc: Fix down scale test
-Date: Thu, 24 Aug 2023 11:21:30 +0200
-Message-Id: <20230824092133.39510-8-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 05/10] media: verisilicon: Store chroma and motion vectors offset
+Date: Thu, 24 Aug 2023 11:21:28 +0200
+Message-Id: <20230824092133.39510-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_022150_815250_E9B09941 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20230824_022150_383992_EC8FA270 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,31 +88,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Do not allow down scaling if the source buffer resolution is
-smaller  than destination one.
+Store computed values of chroma and motion vectors offset because
+they depends on width and height values which change if the resolution
+change.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Fixes: fbb6c848dd89 ("media: destage Hantro VPU driver")
 ---
-Note: Marek has propose exactly the same fix in this patch:
-[PATCH] media: verisilicon: Do not enable G2 postproc downscale if source is narrower than destination
+ drivers/media/platform/verisilicon/hantro.h            | 2 ++
+ drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
- drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index e624cd98f41b..77d8ecfbe12f 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -107,7 +107,7 @@ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0948b04a9f8d..6f5eb975d0e3 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -328,6 +328,8 @@ struct hantro_vp9_decoded_buffer_info {
+ 	/* Info needed when the decoded frame serves as a reference frame. */
+ 	unsigned short width;
+ 	unsigned short height;
++	size_t chroma_offset;
++	size_t mv_offset;
+ 	u32 bit_depth : 4;
+ };
  
- static int down_scale_factor(struct hantro_ctx *ctx)
- {
--	if (ctx->src_fmt.width == ctx->dst_fmt.width)
-+	if (ctx->src_fmt.width <= ctx->dst_fmt.width)
- 		return 0;
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 6fc4b555517f..6db1c32fce4d 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -158,9 +158,11 @@ static void config_output(struct hantro_ctx *ctx,
  
- 	return DIV_ROUND_CLOSEST(ctx->src_fmt.width, ctx->dst_fmt.width);
+ 	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
++	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
+ 
+ 	mv_addr = luma_addr + mv_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
++	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
+ }
+ 
+ struct hantro_vp9_ref_reg {
+@@ -195,7 +197,7 @@ static void config_ref(struct hantro_ctx *ctx,
+ 	luma_addr = hantro_get_dec_buf_addr(ctx, &buf->base.vb.vb2_buf);
+ 	hantro_write_addr(ctx->dev, ref_reg->y_base, luma_addr);
+ 
+-	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
++	chroma_addr = luma_addr + buf->vp9.chroma_offset;
+ 	hantro_write_addr(ctx->dev, ref_reg->c_base, chroma_addr);
+ }
+ 
+@@ -238,7 +240,7 @@ static void config_ref_registers(struct hantro_ctx *ctx,
+ 	config_ref(ctx, dst, &ref_regs[2], dec_params, dec_params->alt_frame_ts);
+ 
+ 	mv_addr = hantro_get_dec_buf_addr(ctx, &mv_ref->base.vb.vb2_buf) +
+-		  mv_offset(ctx, dec_params);
++		  mv_ref->vp9.mv_offset;
+ 	hantro_write_addr(ctx->dev, G2_REF_MV_ADDR(0), mv_addr);
+ 
+ 	hantro_reg_write(ctx->dev, &vp9_last_sign_bias,
 -- 
 2.39.2
 
