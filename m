@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98310C7113B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF234C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ziPYnq/Hfxlww/Carmiv1wcZYyaJxlDLXK7yMYRw9A=; b=EAIolK2Wmoi9kt
-	1ASGjgXhjRETt/8haqvGncHerRUHxGUaIo4mw13+KsUOR357QYw9Idgg7BZBjKp3aoXgJaqsiYObI
-	3Tu2anC2mDGjPD7UKUgoPX8VKm6paIvPN9TXBlz6XHuF8XiapYhrkvf8wo4NwCAUjrS8eaStStxym
-	GmHzaFJ8RjZBzu2lVU+p8ZxSTt+JqaE2EKoSdR84BgZELPaTtsnv/SK7gH7x9/27Imf629sjhNut+
-	xy2zvgQ8d+MSLw/XBMFQdtXOnWx1GCRiqXelwlMhcuUSYCV90nkQSm5/9p3O11WQ2U5BEwuh6Oha8
-	j2Gmh9zlSY8l0cw3xLfA==;
+	List-Owner; bh=TlgRLDdd8wQpAGmFvzXh4aaKn5TH22Zbtmf+RzJfCJk=; b=h8I9APDOjlvFKK
+	zYo7PpUddKbfuU2r7pGkVs34Jnj0+H2qYg4f4OG6t6Z2WqsxR7aP1JPLD403RymCnQidB8yHlL9+3
+	26B5cTY5S6dkEm3VBKNxB5O3+0jksvCiqt24ijn0+5jkg8lFKeM8AEkEaMYfexvizxzU9gW/VRWbO
+	MnVpf7h7Aw99avNlutdel2mELYuhx4RypOIzzlTDdyJ0Z8Tocf1A5qDZrLSB0y0mfV6Il/OAYXTOo
+	9092Y9vO7LP3fiRDzVkVnM8u23/cC07l6KdQuWpTPQhzaN4HUASas/UC4RLqB3SHw/mlWUJKrywnM
+	AS2mhxIbr/CztkGw4rFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6Xt-002gX7-2K;
-	Thu, 24 Aug 2023 09:22:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qZ6Xu-002gXs-1Y;
+	Thu, 24 Aug 2023 09:22:30 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6XG-002g6K-0e;
-	Thu, 24 Aug 2023 09:21:54 +0000
+	id 1qZ6XG-002g6r-25;
+	Thu, 24 Aug 2023 09:21:55 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:c310:4c8a:3a97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BCF0A6607308;
-	Thu, 24 Aug 2023 10:21:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 42D116607324;
+	Thu, 24 Aug 2023 10:21:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1692868905;
-	bh=PWkYPK7UJF1YmVd+lrdWvCWfZPTYmEC52Q6H6L/2CpY=;
+	bh=7SuYFFsy0UMAkQQkxSlRxpuDU3mFA9H4F51e8vN5B0Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=R/SPv0Dy0iBRcsZbWmQFlUA6N4JHkxVqimQXCK3Lrr/717kH60Foss4GfNKFEBoSD
-	 1eodB6aWnxkSYjmgQj1eb6RxTj5F2+wRcc/I9JdPUKSNqbnC0U0I2sUda+Orre4sdq
-	 BRXGCoqrWFY9E49TGHO0geQ8pmo9Mp2I+G9cghz6PzPFO7+OvbR4r8x9OJPYwGfVDk
-	 Mdlx2jizNtqDtc5/LEbHtQ2bcwG/zow8v5zRXt948YmcJ/wG9wfJfPDy5bpD+sHjET
-	 LY34+TAEByasLjenXpSJNT+0qjHJzwhFyT9W6vWYpSuTh1Uox7OFoMGrp6GFp5PzFe
-	 jixgUT6/iNg+A==
+	b=oW8M0zme51EF2mG+W34pgdyjpdQHpfMyMUr6LW6PIKBgj8IArSpUTgUzgiXQD1Stl
+	 QkLf3jZeNZM/ExuwvJpAE1hrtB1bMt7qi+tJYdr4lCGVKJxR1/lv20PLQB1fC3E2tV
+	 3gIUY1/HxFsfqx3bgnQqAvYQInBM+i9W0C86fk5eDifFIrmEnq6AObhn+i/LHGosMb
+	 mx1RK1HxYnXHIyGU00aYeRkoYv5fU25gESjqHrSGitBNSEW5FZk2KRGHqJ0ZFL8wRd
+	 Ah9uOscxkilvMJkG8dbuUGKdjILYM5mXxJKOHrUO4togCQoceF/lH3uLK1fkGFzh5Q
+	 zugcb//lCquSQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 06/10] media: verisilicon: vp9: Use destination buffer height to compute chroma offset
-Date: Thu, 24 Aug 2023 11:21:29 +0200
-Message-Id: <20230824092133.39510-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 07/10] media: verisilicon: postproc: Fix down scale test
+Date: Thu, 24 Aug 2023 11:21:30 +0200
+Message-Id: <20230824092133.39510-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_022150_394783_AD0CCF22 
-X-CRM114-Status: UNSURE (   8.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230824_022150_815250_E9B09941 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,32 +88,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Source and destination buffer height may not be the same because
-alignment constraint are different.
-Use destination height to compute chroma offset because we target
-this buffer as hardware output.
+Do not allow down scaling if the source buffer resolution is
+smaller  than destination one.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Fixes: e2da465455ce ("media: hantro: Support VP9 on the G2 core")
+Fixes: fbb6c848dd89 ("media: destage Hantro VPU driver")
 ---
- drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Note: Marek has propose exactly the same fix in this patch:
+[PATCH] media: verisilicon: Do not enable G2 postproc downscale if source is narrower than destination
 
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-index 6db1c32fce4d..1f3f5e7ce978 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-@@ -93,9 +93,7 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
- static size_t chroma_offset(const struct hantro_ctx *ctx,
- 			    const struct v4l2_ctrl_vp9_frame *dec_params)
- {
--	int bytes_per_pixel = dec_params->bit_depth == 8 ? 1 : 2;
--
--	return ctx->src_fmt.width * ctx->src_fmt.height * bytes_per_pixel;
-+	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
- }
+ drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index e624cd98f41b..77d8ecfbe12f 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -107,7 +107,7 @@ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
  
- static size_t mv_offset(const struct hantro_ctx *ctx,
+ static int down_scale_factor(struct hantro_ctx *ctx)
+ {
+-	if (ctx->src_fmt.width == ctx->dst_fmt.width)
++	if (ctx->src_fmt.width <= ctx->dst_fmt.width)
+ 		return 0;
+ 
+ 	return DIV_ROUND_CLOSEST(ctx->src_fmt.width, ctx->dst_fmt.width);
 -- 
 2.39.2
 
