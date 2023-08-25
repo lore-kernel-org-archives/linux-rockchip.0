@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F0BEE49A0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 21:16:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 271E4EE49AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 21:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ThulwpBBsaDJlSRm7BGXZa93G1KxtedlkQO5cRSYUl0=; b=0VqlBLhlUKfydB
-	RaLmQbARZ+bagenU7MVCpg97edd19jWZC7MqrJ5FbfG24aObyksF81jBUpEC3Z/dfwh+LxdtK0nWa
-	zvnwcD1NpqkyhCEoZdNf+RBtJuUOPlktGgTntJijHJ/xnRf6SKxrSkIwZIMUwoc+mtew7FLdqfl1k
-	V6BZi7HfFqbmknWIp42yauG1UeWaD4N+TWDB82BQ3lfENRFFOyGZ06SxsflU60gV8h32F5/kXMPoL
-	RS4ltqVhDh9OXSmxPpCtV+h4kq+TO2fSH6i0NEe1Day/TixdIqJXgzKuc1Hdoo6fwJ2+pU6O9ezcH
-	rzL4zaN/UX+0ACzsfRmQ==;
+	List-Owner; bh=Lg0fep/HTrl/WTbpE1e4WY5obwBJFJwucXeEZjY3XwU=; b=Oy3fmKYiZzuynX
+	6Km1tar2ZQq27hQa3UrM9Ufjs3LKuuVTGxeqCkAlWA3u+JKVLTHtpurWm8zM7FZRiFeiy1v1teTXJ
+	5j/1ao/8CjZPRuSn3J1hzEcPoX1RFTQAcrTrgTFPmOxrHsrLDEhdrLdY3blJTy9tMRHgqlDtliDqf
+	QR+Jgb+F3lW7zoJM7L10TSj9zOabJ4mHhbAuAHqtAFfFHduL0/TwtA6cvzEeAQl1rC/pZPsEdqyyO
+	60lOx9gvNdZa0LLUUxCL155C6/PZoN73YLrZ0oqhH9pdNbdeymkTjnIszHa20+73+KtfsV53oD7s7
+	16qkUUdZBi8g3NTMNCCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZe9y-0062Kc-08;
-	Fri, 25 Aug 2023 21:16:02 +0000
+	id 1qZegk-0064Hb-1r;
+	Fri, 25 Aug 2023 21:49:54 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZe9v-0062JV-11
+	id 1qZegh-0064Ga-2h
 	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Aug 2023 21:16:00 +0000
+	Fri, 25 Aug 2023 21:49:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1692998155;
+	s=mimecast20190719; t=1693000191;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=RNGvpBuIiKL3Cl4QX+janawTefek15UWSwqXPvpbHmo=;
-	b=RblqpsP5As6DNMM0DFb07ibechcPArr9ltecTkvAUIlZ2SoHL89vo1vrNVLOQTpCMey2+B
-	3x8OZLmHnEelev/irEXRtWpX8yMUns6R1e2FIu2i35egjzs8PE8jB72U9mCwSvYLg+DOHZ
-	W7St8O7vkY2lsfIoTg+aW2kYJ/5cNIQ=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=jDIH1s5AgxOERqalZWlNYkaKtZibmqZdBdpJvN3/v8U=;
+	b=PktTfmCAa9jpJJdknKjV3DmkCMZTFGtZITtUKAd0y0JPi87wGMhBZdFw+KtpL4STQd20XZ
+	OUNDO/ARMBYpUBbhL2vjMTaCPYozfQVFXE2H7UDibChL5ZwqLpYDBZCkvAKROIM26akmGS
+	U/T160GKWjp2hkqgdqQTDGJ1ecC8IRg=
+Received: from mail-yb1-f200.google.com (mail-yb1-f200.google.com
+ [209.85.219.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-630-1iCucaAyMe-AAEsOiMK8VA-1; Fri, 25 Aug 2023 17:15:54 -0400
-X-MC-Unique: 1iCucaAyMe-AAEsOiMK8VA-1
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-76de9c1d13cso141090185a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Aug 2023 14:15:54 -0700 (PDT)
+ us-mta-246-C7R2Uq2RMv2BMhiGkXzSjA-1; Fri, 25 Aug 2023 17:49:47 -0400
+X-MC-Unique: C7R2Uq2RMv2BMhiGkXzSjA-1
+Received: by mail-yb1-f200.google.com with SMTP id 3f1490d57ef6-d72e09f1263so1661667276.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Aug 2023 14:49:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692998154; x=1693602954;
+        d=1e100.net; s=20221208; t=1693000187; x=1693604987;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RNGvpBuIiKL3Cl4QX+janawTefek15UWSwqXPvpbHmo=;
-        b=OyTzZWXCT0LoCS+QvTzqnvS72nM1ABi4/UBA80yDMROumAZAqYUUnFGvEpXLvC+lAm
-         F4p11T6norE9o9xjl5tI8EQzOrRiN8lxlMdS0/OXxg6WCAgdMzCUFgBV9NS0hUkvUz7Y
-         DSDHp5jJy8Cs/Itas1+12XCHtX/X21G1cGADXGibh/dEZI/NExZFG4UdmZWGPzxt4H3W
-         D+UOiMUKkRrUDSqVyzOkSvHK7jDKCI/l5Q+uy6EbkE/iQzgSfn5cN1vNSr7bTH1EcfBu
-         OAHAHuUMCPbtO1YgluXuNne2HaApiEucwvMkSWuSBImKcuyeqZWKGzN8UGZS7nD/7e76
-         3boA==
-X-Gm-Message-State: AOJu0Yxq8VCb5+EZi6++dr+j+LFShhgaBWCcW4oGsIoG8s3FzcaozzrZ
-	WyZ9X0L3k20sSgM0RheiXXz+TcJvXgX9TdGtHMk5METEIBRxCUKKX+N61fK9QmRB7Ij0eCmRAvH
-	bO5rhu+rV30msnnjarooilUFcKyUSfH/s
-X-Received: by 2002:a05:622a:138c:b0:411:fc77:5863 with SMTP id o12-20020a05622a138c00b00411fc775863mr9742831qtk.34.1692998153918;
-        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGkTdJ1PESb45xmKP1IyMr0VhacrVsFun4AHO5ghG+vkiiDrIbNOg/oEp2bfPugUDBb4fzHQ==
-X-Received: by 2002:a05:622a:138c:b0:411:fc77:5863 with SMTP id o12-20020a05622a138c00b00411fc775863mr9742803qtk.34.1692998153629;
-        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
+        bh=jDIH1s5AgxOERqalZWlNYkaKtZibmqZdBdpJvN3/v8U=;
+        b=hHX3BaWp7Lp33E2O+IyT4awZHhtkntN6jOseixw415IOZAmFucMgTgpNhu9Gr5GrVk
+         TUOK6gkb+DIo+aTgJ6OuNCbneMG+tDz5IfBdQz5Wzv3Uv1Y+rVjSJ3/Dsb6BiXZT6qWE
+         Wox7DqUZHGhId0ltZ/YGXFDOxAum6hAdUUJRVxjwfFfP1tEVqnxDi5dgIQ2cQYemObU0
+         gAonWY+La7wYYd1qZ3UvOtm2+6rrNZk5qtNLKaeeytD0hgGecJh3l2JiLlsdIcaTWezS
+         jzQ49I/oufi4ZqRdRVRLBWINrF9QBNYOA93Hkl0g1JXkKTiz9HGJSYAq5JB6ff6b087p
+         e12Q==
+X-Gm-Message-State: AOJu0YyYJNwy5zVtYFvcW9wGI/wnK+zGlzxaKIboOnuOdSSWDIH1IDc+
+	w/h0s7POPbbEOPSQH7RxyxpMvBXoS+tQNMamTNqGLtkKjJrUd8ql1hB8PRjuqorNMv5beLjJqxb
+	ic2boNDw8niyISFaFs/vlpz87/vvVPjaq
+X-Received: by 2002:a25:d8d6:0:b0:d78:3047:62c6 with SMTP id p205-20020a25d8d6000000b00d78304762c6mr3495331ybg.21.1693000187283;
+        Fri, 25 Aug 2023 14:49:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHgZnJ6x3Khmaw73UVVO8ipGtpfGFEkJnwrK/gjpvrarbZH5j/AtFZ9PMl7lOmV6YAsTBEFgw==
+X-Received: by 2002:a25:d8d6:0:b0:d78:3047:62c6 with SMTP id p205-20020a25d8d6000000b00d78304762c6mr3495280ybg.21.1693000186913;
+        Fri, 25 Aug 2023 14:49:46 -0700 (PDT)
 Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id i3-20020ae9ee03000000b0076745f352adsm759948qkg.59.2023.08.25.14.15.52
+        by smtp.gmail.com with ESMTPSA id ki6-20020a05622a770600b0040ff0e520besm770523qtb.35.2023.08.25.14.49.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
-Date: Fri, 25 Aug 2023 14:15:51 -0700
+        Fri, 25 Aug 2023 14:49:46 -0700 (PDT)
+Date: Fri, 25 Aug 2023 14:49:07 -0700
 From: Jerry Snitselaar <jsnitsel@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -92,18 +92,18 @@ Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
 	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
 	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
 	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 04/24] iommu: Add IOMMU_DOMAIN_PLATFORM for S390
-Message-ID: <qlgsyftnpb55wn6jcsdx27u3vnc66h5dmtcuelw4y5wgk3vorf@ctgykaa5wp7d>
+Subject: Re: [PATCH v7 06/24] iommu/tegra-gart: Remove tegra-gart
+Message-ID: <stzz6hsyx25u5bbkgwftde2jdtjxgb5ghofwfymv2ny4vfbpch@nuli2d2mthaq>
 References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <4-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <6-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <4-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <6-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_141559_427393_7B996EDB 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20230825_144951_948923_0AAEAC17 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,19 +120,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:18PM -0300, Jason Gunthorpe wrote:
-> The PLATFORM domain will be set as the default domain and attached as
-> normal during probe. The driver will ignore the initial attach from a NULL
-> domain to the PLATFORM domain.
+On Wed, Aug 23, 2023 at 01:47:20PM -0300, Jason Gunthorpe wrote:
+> Thierry says this is not used anymore, and doesn't think it makes sense as
+> an iommu driver. The HW it supports is about 10 years old now and newer HW
+> uses different IOMMU drivers.
 > 
-> After this, the PLATFORM domain's attach_dev will be called whenever we
-> detach from an UNMANAGED domain (eg for VFIO). This is the same time the
-> original design would have called op->detach_dev().
+> As this is the only driver with a GART approach, and it doesn't really
+> meet the driver expectations from the IOMMU core, let's just remove it
+> so we don't have to think about how to make it fit in.
 > 
-> This is temporary until the S390 dma-iommu.c conversion is merged.
+> It has a number of identified problems:
+>  - The assignment of iommu_groups doesn't match the HW behavior
 > 
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Niklas Schnelle <schnelle@linux.ibm.com>
+>  - It claims to have an UNMANAGED domain but it is really an IDENTITY
+>    domain with a translation aperture. This is inconsistent with the core
+>    expectation for security sensitive operations
+> 
+>  - It doesn't implement a SW page table under struct iommu_domain so
+>    * It can't accept a map until the domain is attached
+>    * It forgets about all maps after the domain is detached
+>    * It doesn't clear the HW of maps once the domain is detached
+>      (made worse by having the wrong groups)
+> 
+> Cc: Thierry Reding <treding@nvidia.com>
+> Cc: Dmitry Osipenko <digetx@gmail.com>
+> Acked-by: Thierry Reding <treding@nvidia.com>
 > Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
