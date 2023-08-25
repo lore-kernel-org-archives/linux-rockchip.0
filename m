@@ -4,135 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A96C3DA66
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 13:17:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D08C3DA6F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 13:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=48zsKOFIVbi2nB5KfS6zyhY3DP7zQGLswUmvA48SgYo=; b=aLi/HyVaQCOb7FhE16wyjA6Vkf
-	hmcUx+UQnrOtz7YBs2gwRZqyYD8QKfZzQc0kYCj+I4zM9sitMiaIEwPnlOK3Tk8+EzggfP6q7hPJh
-	vQuNqmhb5m4CWNPfXquINQCDPqo9iKhsNU5EroP7HamK35gT8azjDzU7hWo5vlsrk7mIMxhXKWKOp
-	IfHIu7KwibO8DXSvPgRIlfKghV5gejZwdfXQS7dV6Keb59k/S09Qfz42EGFKYFYa5URXLLZZ1hEOT
-	J6Qz13LpB2lMUV4K/9b2xLFB1869gjCmFiD0XMCjwDWBAhcripuwrKLqkTPvsNwKRuB7majCM5UcU
-	IwaC7BUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hl7Tgy0XksGO1ynJE85jpiCFDJ48UOoUROalDmuv09Q=; b=s2avHjWq7GKtxe
+	pfYR7CGpmsoDTTN3MzUMZYoKq1cEyt0MvmSIouKstg3XAdn6EUi6IyWvAlhgnYk9bi2yMa9luK1pz
+	HwNFEni90iklHAcJuTankrVko4OGm1+EpAwkRnoq3/TMstv64kGTBXaDaRuFPJUq8D4kw6my0NhAi
+	P8IB1kWu4M+klN9io65tpVwnC8Z52BUpO+JC57HjcTaTMYe8oWWeEAOaOFnqQt7qG481gO3z4QaNs
+	bcdkWCRymTRNFMhXX6SCsRKS50RmIyMlQWOiB/gViBcy9uU9bpBY8jE8kXNLGGacd/oNmdxTdX7y8
+	gbBX/aRM1XkuPy1TuOqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZWgT-005S8F-2X;
-	Fri, 25 Aug 2023 13:17:05 +0000
-Received: from mail-vi1eur04on0610.outbound.protection.outlook.com ([2a01:111:f400:fe0e::610] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1qZXIc-005VLt-0F;
+	Fri, 25 Aug 2023 13:56:30 +0000
+Received: from mgamail.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZWgQ-005S7T-0d;
-	Fri, 25 Aug 2023 13:17:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fytUz5WUeUdHs2+Z3Le3BPHeNaLm/mEpvCq6hOw6atFJXq8B4R/HYE1TceEuSvxs1KtCcP8ZwqMjsEI73HOmJY9TXEQVXNOmbZG6+pODZ5o47Vm+G4wD+AJUYtvum29S7/UnTwqZUnF7cga92kmW3SPnqgErgszd6PYSLuSs/nww8teZZ0VpEGekxTugkQVyVcKbP5wvFGrcnj275nrK5QOVGTMkxNdXK0wF5+2dLVhP71bQcouC4UnJ9MdU9cAtCvI4qpPOWQnShuPhxFImv50XdwWbZkjsc40PpT35vJTn+KnWMRJ4itxFVOGTuamSZbWnETeiqZVFN/VenWf6Sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sjp+tAdQSYhzbrfDHYjQoc3R8JaovBUaF5DLN3iNiAw=;
- b=DuwNH91ssHodiwcreYLuY/pserepIxEXzAEeyJNLWhVu/gMtUehTbCUzvIaOtow8SKmnVSdjkVQMCgFEPXQ0n0jBOaRVWot4uoptOxJIXFhlHfTOxX1hjIbytVg72BUgw/WclaZYE4wVLb+LqsxjtLUINjr2rQ3nuLxXSo2j+4bPcyn/z6jIAuEfxHogMEnLJx0ZXgG8hPH7gcEcMMuFcZAaCoysy9kNJ1e28O3znIAWrGhmwIxo5uOyPvNOLo241i7GFpWA3OM1ja55Ua+PpUV15uUgWMxvkvu11DcmuWTGPpR5q3yzp2RhGi/XZTGqRbh2LLGfRnof6Vw6H8Zfrg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sjp+tAdQSYhzbrfDHYjQoc3R8JaovBUaF5DLN3iNiAw=;
- b=BJqAVtKcfWM8lFRwsTBEZHqHtAuzJmV7CCWgItYU10fK1em00ZTMVVJUfqW9tPvQzF471gwm2lewM8Pkn79rj1nzxsS085cxCxAu7GIXVb8GQss77QwdRA1MSD5x2lYBL3iBJdzMUIkgykql9EPPfvYWpHkMZVYVyO9kZkmxbUBTIx/B1c+uSjGWRHT+HCARjmJct6pfE+E4+Ftjvss0X8X7EtNGYSCTll/tVzAma9V6wl+C6hJWO+mVpniG4sgE5vGT75F5hHzHg86PiBToPjTvqj1hCgzstaLAldK0s/bFeORQqzyyFnZEMwRqSmyFMRNDTfj/9mFUvatjpz9Njw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from AM6PR04MB6311.eurprd04.prod.outlook.com (2603:10a6:20b:b7::20)
- by DU0PR04MB9226.eurprd04.prod.outlook.com (2603:10a6:10:351::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.27; Fri, 25 Aug
- 2023 13:16:45 +0000
-Received: from AM6PR04MB6311.eurprd04.prod.outlook.com
- ([fe80::e8bd:7711:50e:aaab]) by AM6PR04MB6311.eurprd04.prod.outlook.com
- ([fe80::e8bd:7711:50e:aaab%4]) with mapi id 15.20.6699.028; Fri, 25 Aug 2023
- 13:16:45 +0000
-Message-ID: <a59861f6-e138-1f37-3509-ecd39766fd1a@theobroma-systems.com>
-Date: Fri, 25 Aug 2023 15:16:43 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH 1/2] TSD: arm64: dts: rockchip: use codec as clock master
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Jakob Unterwurzacher <jakobunt@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Ermin Sunj <ermin.sunj@theobroma-systems.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230823122000.585787-1-jakob.unterwurzacher@theobroma-systems.com>
- <2eda319d-bdd9-bfeb-005a-5989cf674501@linaro.org>
-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-In-Reply-To: <2eda319d-bdd9-bfeb-005a-5989cf674501@linaro.org>
-X-ClientProxiedBy: FR2P281CA0092.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:9b::16) To AM6PR04MB6311.eurprd04.prod.outlook.com
- (2603:10a6:20b:b7::20)
+	id 1qZXIY-005VJB-0d;
+	Fri, 25 Aug 2023 13:56:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1692971786; x=1724507786;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=rL8lwlEpWwyz5gytyannueKCuDWZ7o3Z7O2OXGq9D24=;
+  b=Q2qfLDhFNOwCVqRTTDjZjmBDgdHT2gPHYHaPn//cqEAw7uE+FfDk+e4f
+   zFHbZ99dPN4rGMrb4/mNyY9/smLrto8aaxr7ZwRAhm0YOrnCByt6re5G/
+   9y7gtyfziHkCsahgSh+XGmoLOm68TqKgDnqt75rdWeVT6kOSI66EGeVmR
+   Ammoy7+dikd9vgHhVRIi62ovBXQBe8HwgyuGJzR6yaISmP0ACSJ2ZlbGt
+   w97XBLktIigLIsVUcow+NFc+eCYFVn7Yg88YrYRZANDtgybaSZCEWlAaw
+   drPVeKrpJszDGhJ4mX6sLLvP7MJcN6tLioCiZWlKDSdmMdNF7DcKqWVcX
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="373586062"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="373586062"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Aug 2023 06:56:24 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="731073145"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="731073145"
+Received: from ogbrugge-mobl1.ger.corp.intel.com (HELO localhost) ([10.252.56.56])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Aug 2023 06:56:16 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Vignesh Raman <vignesh.raman@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: emma@anholt.net, linux-doc@vger.kernel.org,
+ david.heidelberg@collabora.com, linux-amlogic@lists.infradead.org,
+ jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net,
+ khilman@baylibre.com, sergi.blanch.torne@collabora.com,
+ gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org,
+ daniels@collabora.com, martin.blumenstingl@googlemail.com,
+ robclark@freedesktop.org, helen.koike@collabora.com, anholt@google.com,
+ linux-mediatek@lists.infradead.org, mripard@kernel.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
+ guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org,
+ tzimmermann@suse.de
+Subject: Re: [PATCH 2/6] drm: ci: Force db410c to host mode
+In-Reply-To: <20230825122435.316272-3-vignesh.raman@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20230825122435.316272-1-vignesh.raman@collabora.com>
+ <20230825122435.316272-3-vignesh.raman@collabora.com>
+Date: Fri, 25 Aug 2023 16:56:12 +0300
+Message-ID: <87pm3b2pkz.fsf@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM6PR04MB6311:EE_|DU0PR04MB9226:EE_
-X-MS-Office365-Filtering-Correlation-Id: 57194e41-3c57-4f1d-86b0-08dba56d87c8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 6IRwthPMe8iLlCtUWRjiXtyJkj3frfuzWXYCxQew2BCJGvIyCQvjuIrqj16S6NarlB64p7cRGwaPzwoaQV3ECedVWKY3dYEUCtWMq1DQbYI4rzTWjNbSwC3kz2/WR6MJMZMV/jm3+rH/koB2e6dF3PL4bC5lfEWNciGB9kUdajCW3mXqHY/v12SCJ5frt/4ShFrjlNdTLXkJOi8HYo51M03SitzjVwO8hyK32NJWPMOdmjwVA5lm8LKWvn1W4iWr4+bqONgW7C/fmP7AaRflk16C4gEqOiX22DutQBycJKx2WsKq2wm+I3kVfQbAOoiE0LHNNbxSs5Zj5Yg+x0H2rPqBikHZL9Miw2nReauEGtm9VaGP9r3YnnWZ7Odlt4/7PKxu2QT9ChtX6HBBjemaod1EzRQcxoJTfQu3Z27rJJ7uN87uSSfYttkHC8wJTsBYc+8kPXBJ1tcF4d2IPa6rNn0Cijl9v5BM0A5Cm2DpjNR8zO2jJdXFMUkaZvE4HFug44qptCnHyf4We4uMFkY9KBXYXPeV788NaOccX8rB7NsFvU3IWOpc4AWeoqWBEx8eWyUYM1aI68OMBEE3HS4hvUfV3m6UJ5HunY1klMQlZLLoFb0KtGZe0p+VCM2Mg64l
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR04MB6311.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(136003)(376002)(396003)(39850400004)(366004)(451199024)(186009)(1800799009)(6506007)(66946007)(66476007)(316002)(66556008)(478600001)(110136005)(44832011)(26005)(38100700002)(41300700001)(53546011)(86362001)(31696002)(6486002)(2906002)(6512007)(966005)(31686004)(8676002)(4326008)(8936002)(2616005)(5660300002)(83380400001)(4744005)(36756003)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?a3hmbzUvV1dYbVVjaFZmSVc0U3I2WHJ1Tytjc0k3cTBlTkQyWjM0VXpYaVJD?=
- =?utf-8?B?b25UNVI2Vi9pU3NkS2paYXlvVVA1Skl4ZmF2ZEpaZHVTY0JBYnMvUlVsdXF0?=
- =?utf-8?B?djVvNDhqWjR3dTVOVjV2bERHdW9FVTZHM3I2UU02YzJVelJjNG9ya3M3Mjlv?=
- =?utf-8?B?NjZ0MVoxdWIrTG5MQU15dEw2Uzd6ODg5R1lPNlhCWStsdFBDai9xa0lQSi9O?=
- =?utf-8?B?WEdTc2U5SThKOW5GNGZCVCs3UEhKdHpCOGNQZ0FLQUdoTjJzemYya0NMd2tz?=
- =?utf-8?B?NnhZZk53aENoNVozalI5b3ZYc0ZDdTJYcnZ2Y1dHWDJkR0ltM2V1VDdIS1Z0?=
- =?utf-8?B?aUZwbGk3OU1XakNtV3BjbmtXM2ZFanhzQ2MvRHBFeGR6RFc5VWpUc0k3S0NI?=
- =?utf-8?B?MGxYOXlQWEJaNmRTSnpleStzL0FIcXJvNXNLTWI4QmQ3dEIzWHVzbzdBK1lj?=
- =?utf-8?B?Z1ZiMk5DZlRHalZhbW5BR2lxVzNidVJDTUU0R2RLYTZXb2ZFK2hqejJmZjE3?=
- =?utf-8?B?Yk4yNzlqcmtpZzAwTExBTnNSL1FmQlczdjc0UFpLT2VFcENCRkY2Z2JkeEdI?=
- =?utf-8?B?K0xRc0JqSXBkeVVyL0l5dXo5RWNoZHZBc3NPMjhMZWNua0NiU2tNOXE5NytG?=
- =?utf-8?B?Q0l6WndaTlN3Rlg2RjdZQjVEdHNDSGpVQ1hBM09ZcERmU0FYRkxMQ0JtR1JC?=
- =?utf-8?B?Q0dtUjRja3hoZGRoWkc2cmJ1aXlhOEZDNnZWLzE0Z25hSEh0L1JFUlVQeWRn?=
- =?utf-8?B?MDBaZTIrQlhoQnFXZWhVcnQvdEFuSUpsczZGeEZMYUQ3RGJmdGRGY1RreVFF?=
- =?utf-8?B?OUNqUTdubGxyZmFKOG9HUGNDSzhlVUVpNzY1dlUxdDB0RTNuUHVNYWVNakNk?=
- =?utf-8?B?OW1VZUlWQmUzMUlXVEo0d1BkZnVndTVxVzJSQ1dYNE4rS0FTODdYSTRpZnhr?=
- =?utf-8?B?enkyeWZmU3MzMERPakNGaVV0U2hNQUpxaCtLTDRuMTl5b1hZc3BkaWwvYzRH?=
- =?utf-8?B?b1llNE9KOGRxY2dwVWJJK0xUNnhtSStQMEpQTlZzZFA0YUlaSVNBU2I0Nml3?=
- =?utf-8?B?MEdIeWZacXU1enZRenVlWHd1VHovL3ZhOVVtcThNYTFEZ2JIa1V4WWJocHNj?=
- =?utf-8?B?WHpiVWN6ZjlBaGpUTnZQaURwZW1qVFJwYmovTDBaa1ZpTFJTaWZOSnFaSldH?=
- =?utf-8?B?M0k1cUQvS3RNY2huc3M5UkdjVmFYSFl3VHpnUWZjdU9YNlMxRmIxVy8yN2p4?=
- =?utf-8?B?NGVFemQ0RExrdFFuQUJzNjlxSlM3eEtDbHBDeXBoK3JhYlo4ODFyZi9oZmZI?=
- =?utf-8?B?Q0FPYTVXWFdKNjZ6emw0RTdGS2Z0U1ZJaUpHWEF2QzNtbjAvNXg2R3YzeWZt?=
- =?utf-8?B?MnBOWEQ1ZzVhNVBrSWtHN3lqTnVhbzlrRWUwMUZqWS9DRk5kRkE3ZDJOUUFs?=
- =?utf-8?B?Unh3bjhJenNOUHNoREswQXFuMjA1cCtYbkE0bXBHclNTWmh4YW1vdDExZW9x?=
- =?utf-8?B?c3NXWFJUNVVVL0l2cmV0YWhlZ25vZnhHcjFjaVhWVXNWV1R4bXhjOVNIYU5U?=
- =?utf-8?B?akVpYjh4dXBjbXE4aDJXcVp3S0pYeThyK2lSVW44VS90Yndha1RBL3F5cnRW?=
- =?utf-8?B?TkJSNU9LelBnYzR3NXFKV1MyN2V3ck0yVnltQ0xHVTYyS1BxVTl6MkNicEpk?=
- =?utf-8?B?Q2dTOUprZEVpaFloOE1PdGtJQ3c3UXRzMmsrVkxiUktiOW16UFRBR1FNbW5q?=
- =?utf-8?B?K1hrVVVqcG1uUXJmMjJTMmxwT3BpeEFybjZrQU5SU2ZXQ3pFNjdLY0FrTHhX?=
- =?utf-8?B?Nkl6eXRsejZBQ01MUFNnOTFMcElTL0JFdWdzM1F1NzMwL1ZEbFpMbzhmcWJx?=
- =?utf-8?B?WG0xb3ZpOElVdElaeW84cFdEdkZRaG1OL2xqT3NMS1JpZkJzK0I5cGRHbkFz?=
- =?utf-8?B?T3prWXNJeXJUZzRzSUwrS0dhY0lKdXZRdjZqRnF6clpVQU9ENWJmV2xCYmw5?=
- =?utf-8?B?VlczTC8raTdwWHlaUmlkazVPM3Q2MWVnRisvV2FHUGxPTmpZSm5TaXFTSzFM?=
- =?utf-8?B?c2VhYmRVM1BOOXA0MHlyU1l3UmRvMUMzWkk5MHI1S1ZHbytoK0VjcHJ4SG5Z?=
- =?utf-8?B?a3VUL2JsMzliMFhRcVN3cHBsR1hmUXJJOUFYV2pkbTlvNzlqMnphdjFPWXdv?=
- =?utf-8?Q?7heJlZHZVDc67EnfLgfGozp8SXGbgNuawn1mn4S63bNs?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 57194e41-3c57-4f1d-86b0-08dba56d87c8
-X-MS-Exchange-CrossTenant-AuthSource: AM6PR04MB6311.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2023 13:16:45.4011
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AX8eNyw9Sde3NpH16NkDfNkRCwm/mkLmB8+RFdxt8xt9wNsK78/pDIO4M6plaMkLF13fRjMD0rZum3CKLqMJK3PMMZ4cXDVdXSaQCA0YqA7PPf8CUHugdBf6nH9GTs1Wa4B/FqVt/fATpHxSbJCZiA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR04MB9226
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_061702_317014_64C0B96E 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20230825_065626_246596_D2498D7D 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,32 +87,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25.08.23 08:49, Krzysztof Kozlowski wrote:
-> 
-> What is TSD? Why it is in the subject prefix?
-> 
-> Please use subject prefixes matching the subsystem. You can get them for
-> example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-> your patch is touching.
-> 
-> Best regards,
-> Krzysztof
-> 
+On Fri, 25 Aug 2023, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> Force db410c to host mode to fix network issue which results in failure
+> to mount root fs via NFS.
+> See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
+>
+> Since this fix is not sent upstream, add it to build.sh script
+> before building the kernel and dts. Better approach would be
+> to use devicetree overlays.
+>
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+>  drivers/gpu/drm/ci/build.sh | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+> index 7b014287a041..c39834bd6bd7 100644
+> --- a/drivers/gpu/drm/ci/build.sh
+> +++ b/drivers/gpu/drm/ci/build.sh
+> @@ -70,6 +70,10 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
+>      fi
+>  fi
+>  
+> +# Force db410c to host mode to fix network issue which results in failure to mount root fs via NFS.
+> +# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
+> +sed -i '/&usb {/,/status = "okay";/s/status = "okay";/&\n\tdr_mode = "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
+> +
 
-Hi Krzysztof, sorry about that, Heiko commented similarily.
+It seems like a really bad idea to me to have the CI build modify the
+source tree before building.
 
-TSD means "Theobroma Systems Design" but it should not have been used in 
-the patch, v2 fixes that and also gets the SOB lines in order:
+The kernel being built will have a dirty git repo, and the localversion
+will have -dirty in it.
 
-https://lore.kernel.org/lkml/20230823131651.586934-1-jakob.unterwurzacher@theobroma-systems.com/T/
+I think it would be better to do out-of-tree builds and assume the
+source is read-only.
 
-Thanks,
-Jakob
+>  for opt in $ENABLE_KCONFIGS; do
+>    echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+>  done
+
+Ditto for the config changes in the context here. Those are files in
+git, don't change them.
+
+Shouldn't this use something like 'scripts/config --enable' or
+'scripts/config --disable' on the .config file to be used for building
+instead?
+
+
+BR,
+Jani.
+
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-rockchip mailing list
