@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0997C88CB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 12:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 077C0C3DA6F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Aug 2023 12:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFnQVogTstsIimguM4AR5PVeLim+9DSBma3y5eSN/og=; b=R7lKBCD3G/sXEJ
-	DzLgGu9bN+kLvZZsThHKNYMROjsqDB4TLYcYBX5Z5COsSpMc1IHo2QoYbnruzg/1xLQEYfWdoQ9QC
-	o5NGmebGX4AiKfOwhl5+1ai/sBUuQYIu6XFJxFge9LB+J008dcR/IvRI+9PvnS6t6CRqQ8ZItJBaK
-	K2C/VUQPFlY2rjSUzgHHPGdiWVwAa2TMHNXBJulmE6h1iITzjVX7Ly1KIOKd01ynEojvQP3PAp9c9
-	29rR4GyjE9BLzODqc3aKR9CaFgdXDQtE0eU5y1Ln5PP50HlWe8Ojpahi/g3EBI8RtGtJgGgwaq2Bc
-	2B0tntp22vYl2VEOybWQ==;
+	List-Owner; bh=JdICkEfcptrHHEdveAm8xD3S4UQ5jlnUAmyPMBEfm4o=; b=Tx1G5AmmDQVf8S
+	MPsPkeT3q6vCyulDnUdfWhnKhzPoYzKG4aXBlwO9pEnlLDyryG4mIDATSw9JjX3HPzXIl7A26vWRc
+	vxjdcscArVWmJpf8aXrqYRj+QSk2uzOF4yDOjuhY+F9rMVdYy9Uz3/dK4m3m1acZ63Y/8UrGQEq6r
+	kjiYI3+uJv4p1etGe0qhZwaYjZsJkO2B7IDR4QqTR1jc/L71bYNsyFvM7USzywcyojk80QKkgF4fj
+	z0/qH3aX2pbpRUn2JL7GFnI/O6DTtWIGBKdwz1MNOrxBKtv5H5d5VGFSSU4emRhmZxa5ov3eYpxLI
+	PH3ZAFSQ1/ynxpNshi3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVt3-005Ns4-2c;
-	Fri, 25 Aug 2023 12:26:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qZVu6-005OBU-1L;
+	Fri, 25 Aug 2023 12:27:06 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVsc-005NaZ-36;
-	Fri, 25 Aug 2023 12:25:37 +0000
-Received: from localhost.localdomain (unknown [171.76.83.99])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 360716607289;
-	Fri, 25 Aug 2023 13:25:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692966333;
-	bh=LOz7TrCPhydL2soCFtC1quGrk7D5lvCnOflJhvHbSi8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IC+j8aWSW5Q6iKetS/kVKuYIOvKiSN332Fd+fndBULeLEBLn+nZYaf8kes/bu9mK+
-	 OPwZUNYXIQmgYM5DAMSLAsoK6GLF0Uey4qg/27NDVaBZX2zX1fYQc87y/QFQ+OJYte
-	 hCuy5Gr5AJRHCxd+x53oL2cab9HMFeCGwgvvHKbi1aqJw/oBVLwWGC1oiLZQXxOFLU
-	 /uhFVr8NlLagySoIkmzXKrN8AAmijpWUTX+nhQ6XRbKB8fmUu75vJWUoyTJlQIL6Ey
-	 CdY8vy6H/d7B8cA3qEhMdQCYho15wxcnDs77OvglydRSsP9q4jz4cIcdOc7/EJusC9
-	 cxEeqNlvSS5uw==
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: helen.koike@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	david.heidelberg@collabora.com,
-	daniels@collabora.com,
-	emma@anholt.net,
-	robclark@freedesktop.org,
-	gustavo.padovan@collabora.com,
-	robdclark@google.com,
-	anholt@google.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	corbet@lwn.net,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	neil.armstrong@linaro.org,
-	khilman@baylibre.com,
-	jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com,
-	heiko@sntech.de,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1qZVu2-005O8a-0d;
+	Fri, 25 Aug 2023 12:27:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1692966422; x=1724502422;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=psOCa7KDDmybtBbFrOreIdagf4PFHIM8yxTia2JKqqs=;
+  b=GhMky/kXU44KpeZ4r7JJ2QnoLIMyMgTLrCkz1UiSUjhmqNZssuFv77qt
+   mEZmyzrOL6UAZOPYHnTElT0zYPkOdkfOLVCD9885hxdT2fNGBSaYj+B3s
+   X3g8EBPHtIC87XpStPnBHWDJRA/3fbpYFyw2/mEoDhpDQoeED5kKGMAGU
+   cgDXwx+a8DuZ2nh6Ufgxozv+oWpDFyJ5YUoTZ4MhTuy4NBKL2cefUL5ME
+   amcrEgwnSwN1fjvboz2x1prBv+Hc0yJ4wlSdlggDmY60Upn2UrgX/toCe
+   +e/tSSZQS3NojRDZ10Bf0btax8W9k+oJpjpfW4BgiZFjblDh8NLK0kDOO
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="355030437"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="355030437"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Aug 2023 05:26:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="1068223843"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="1068223843"
+Received: from lkp-server02.sh.intel.com (HELO daf8bb0a381d) ([10.239.97.151])
+  by fmsmga005.fm.intel.com with ESMTP; 25 Aug 2023 05:26:47 -0700
+Received: from kbuild by daf8bb0a381d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qZVtn-0003Z4-0l;
+	Fri, 25 Aug 2023 12:26:47 +0000
+Date: Fri, 25 Aug 2023 20:26:10 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 5/6] drm: ci: Update xfails
-Date: Fri, 25 Aug 2023 17:54:34 +0530
-Message-Id: <20230825122435.316272-6-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230825122435.316272-1-vignesh.raman@collabora.com>
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for
+ DELETE_BUFS ioctl
+Message-ID: <202308252057.jcyaKKOJ-lkp@intel.com>
+References: <20230824092133.39510-11-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230824092133.39510-11-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_052535_613961_B1AE9BE6 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20230825_052702_245477_6597CD4B 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,179 +94,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update amdgpu-stoney-fails, mediatek-mt8173-flakes,
-mediatek-mt8173-fails, rockchip-rk3399-fails, rockchip-rk3399-flakes,
-rockchip-rk3288-flakes, i915-cml-fails, i915-cml-flakes,
-msm-apq8016-flakes files.
+Hi Benjamin,
 
-Add tests that fail sometimes into the *-flakes file and tests
-that are failing into the *-fails file.
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt    |  1 -
- drivers/gpu/drm/ci/xfails/i915-cml-fails.txt     |  1 -
- drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt    |  2 ++
- drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt    |  1 +
- .../gpu/drm/ci/xfails/mediatek-mt8173-fails.txt  |  2 --
- .../gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt | 16 ++++++++++++++++
- drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt |  2 ++
- .../gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt |  1 +
- .../gpu/drm/ci/xfails/rockchip-rk3399-fails.txt  |  4 ++--
- .../gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt |  3 +++
- 10 files changed, 27 insertions(+), 6 deletions(-)
+[auto build test ERROR on next-20230824]
+[also build test ERROR on v6.5-rc7]
+[cannot apply to linus/master v6.5-rc7 v6.5-rc6 v6.5-rc5]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-index bd9392536e7c..58bfded8a3fc 100644
---- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-@@ -1,7 +1,6 @@
- kms_addfb_basic@bad-pitch-65536,Fail
- kms_addfb_basic@bo-too-small,Fail
- kms_async_flips@invalid-async-flip,Fail
--kms_atomic@plane-immutable-zpos,Fail
- kms_atomic_transition@plane-toggle-modeset-transition,Fail
- kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-index 6139b410e767..5f513c638beb 100644
---- a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-@@ -1,4 +1,3 @@
--kms_color@ctm-0-25,Fail
- kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
- kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
- kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-index 0514a7b3fdb0..f06f1a5b16f9 100644
---- a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-@@ -7,6 +7,8 @@ kms_bw@linear-tiling-3-displays-3840x2160p
- kms_bw@linear-tiling-4-displays-1920x1080p
- kms_bw@linear-tiling-4-displays-2560x1440p
- kms_bw@linear-tiling-4-displays-3840x2160p
-+kms_color@ctm-0-25
-+kms_cursor_legacy@torture-move
- kms_draw_crc@draw-method-xrgb8888-render-xtiled
- kms_flip@flip-vs-suspend
- kms_flip_scaled_crc@flip-32bpp-ytile-to-64bpp-ytile-downscaling
-diff --git a/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-index fc41d13a2d56..3aee1f11ee90 100644
---- a/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-@@ -8,6 +8,7 @@ kms_bw@linear-tiling-3-displays-3840x2160p
- kms_bw@linear-tiling-4-displays-1920x1080p
- kms_bw@linear-tiling-4-displays-2560x1440p
- kms_bw@linear-tiling-4-displays-3840x2160p
-+kms_cursor_legacy@torture-bo
- kms_flip@blocking-wf_vblank
- kms_flip@wf_vblank-ts-check
- kms_flip@wf_vblank-ts-check-interruptible
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-index 671916067dba..c8e64bbfd480 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-@@ -1,5 +1,4 @@
- kms_3d,Fail
--kms_addfb_basic@addfb25-bad-modifier,Fail
- kms_bw@linear-tiling-1-displays-1920x1080p,Fail
- kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-@@ -11,7 +10,6 @@ kms_bw@linear-tiling-3-displays-2560x1440p,Fail
- kms_bw@linear-tiling-3-displays-3840x2160p,Fail
- kms_color@pipe-A-invalid-gamma-lut-sizes,Fail
- kms_color@pipe-B-invalid-gamma-lut-sizes,Fail
--kms_force_connector_basic@force-connector-state,Fail
- kms_force_connector_basic@force-edid,Fail
- kms_force_connector_basic@force-load-detect,Fail
- kms_force_connector_basic@prune-stale-modes,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-index e69de29bb2d1..9ed6722df2c2 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-@@ -0,0 +1,16 @@
-+core_setmaster_vs_auth
-+kms_addfb_basic@addfb25-bad-modifier
-+kms_color@invalid-gamma-lut-sizes
-+kms_cursor_legacy@cursor-vs-flip-atomic
-+kms_cursor_legacy@cursor-vs-flip-legacy
-+kms_force_connector_basic@force-connector-state
-+kms_hdmi_inject@inject-4k
-+kms_plane_scaling@plane-scaler-with-pixel-format-unity-scaling
-+kms_plane_scaling@plane-upscale-with-modifiers-20x20
-+kms_plane_scaling@plane-upscale-with-pixel-format-20x20
-+kms_plane_scaling@plane-upscale-with-rotation-20x20
-+kms_plane_scaling@planes-downscale-factor-0-25-upscale-20x20
-+kms_plane_scaling@planes-downscale-factor-0-5-upscale-20x20
-+kms_plane_scaling@planes-downscale-factor-0-75-upscale-20x20
-+kms_prop_blob@invalid-set-prop
-+kms_prop_blob@invalid-set-prop-any
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-index 0e3b60d3fade..cd48a8c1d569 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-@@ -1,3 +1,5 @@
-+kms_cursor_legacy@forked-bo
-+kms_cursor_legacy@forked-move
- kms_force_connector_basic@force-connector-state
- kms_force_connector_basic@force-edid
- kms_force_connector_basic@force-load-detect
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-index 45c54c75c899..081fe6f8d488 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-@@ -1,6 +1,7 @@
- kms_addfb_basic@addfb25-bad-modifier
- kms_cursor_crc@.*
- kms_flip@basic-flip-vs-wf_vblank
-+kms_flip@blocking-wf_vblank
- kms_invalid_mode@int-max-clock,Crash
- kms_pipe_crc_basic@.*
- kms_properties@connector-properties-atomic,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-index 6db08ba6b008..029a3be3164d 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-@@ -2,14 +2,13 @@ kms_color@legacy-gamma,Fail
- kms_color@pipe-A-legacy-gamma,Fail
- kms_color@pipe-B-legacy-gamma,Fail
- kms_flip@basic-flip-vs-wf_vblank,Fail
--kms_flip@blocking-wf_vblank,Fail
- kms_flip@dpms-vs-vblank-race,Fail
- kms_flip@flip-vs-absolute-wf_vblank,Fail
- kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
- kms_flip@flip-vs-blocking-wf-vblank,Fail
- kms_flip@flip-vs-panning,Fail
- kms_flip@flip-vs-panning-interruptible,Fail
--kms_flip@flip-vs-wf_vblank-interruptible,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
- kms_flip@plain-flip-fb-recreate,Fail
- kms_flip@plain-flip-fb-recreate-interruptible,Fail
- kms_flip@plain-flip-ts-check,Fail
-@@ -35,3 +34,4 @@ kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
- kms_plane_multiple@tiling-none,Fail
- kms_prime@basic-crc,Fail
- kms_rmfb@close-fd,Fail
-+kms_universal_plane@universal-plane-pipe-B-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-index 4c0539b4beaf..869426a02cbd 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-@@ -1,7 +1,10 @@
- 
-+kms_color@gamma
- kms_cursor_crc@.*
-+kms_flip@blocking-wf_vblank
- kms_flip@dpms-vs-vblank-race-interruptible
- kms_flip@flip-vs-expired-vblank
-+kms_flip@flip-vs-wf_vblank-interruptible
- kms_flip@modeset-vs-vblank-race-interruptible
- kms_pipe_crc_basic@.*
- kms_pipe_crc_basic@compare-crc-sanitycheck-pipe-A
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230824-172416
+base:   next-20230824
+patch link:    https://lore.kernel.org/r/20230824092133.39510-11-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+config: i386-randconfig-r033-20230825 (https://download.01.org/0day-ci/archive/20230825/202308252057.jcyaKKOJ-lkp@intel.com/config)
+compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
+reproduce: (https://download.01.org/0day-ci/archive/20230825/202308252057.jcyaKKOJ-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202308252057.jcyaKKOJ-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/media/test-drivers/vim2m.c:963:23: error: use of undeclared identifier 'v4l2_m2m_ioctl_delete_buf'; did you mean 'v4l2_m2m_ioctl_delete_bufs'?
+           .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+                                     v4l2_m2m_ioctl_delete_bufs
+   include/media/v4l2-mem2mem.h:873:5: note: 'v4l2_m2m_ioctl_delete_bufs' declared here
+   int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
+       ^
+>> drivers/media/test-drivers/vim2m.c:963:3: error: field designator 'vidioc_delete_buf' does not refer to any field in type 'const struct v4l2_ioctl_ops'; did you mean 'vidioc_delete_bufs'?
+           .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+            ^~~~~~~~~~~~~~~~~
+            vidioc_delete_bufs
+   include/media/v4l2-ioctl.h:427:8: note: 'vidioc_delete_bufs' declared here
+           int (*vidioc_delete_bufs)(struct file *file, void *fh,
+                 ^
+   2 errors generated.
+
+
+vim +963 drivers/media/test-drivers/vim2m.c
+
+   942	
+   943	static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
+   944		.vidioc_querycap	= vidioc_querycap,
+   945	
+   946		.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt_vid_cap,
+   947		.vidioc_enum_framesizes = vidioc_enum_framesizes,
+   948		.vidioc_g_fmt_vid_cap	= vidioc_g_fmt_vid_cap,
+   949		.vidioc_try_fmt_vid_cap	= vidioc_try_fmt_vid_cap,
+   950		.vidioc_s_fmt_vid_cap	= vidioc_s_fmt_vid_cap,
+   951	
+   952		.vidioc_enum_fmt_vid_out = vidioc_enum_fmt_vid_out,
+   953		.vidioc_g_fmt_vid_out	= vidioc_g_fmt_vid_out,
+   954		.vidioc_try_fmt_vid_out	= vidioc_try_fmt_vid_out,
+   955		.vidioc_s_fmt_vid_out	= vidioc_s_fmt_vid_out,
+   956	
+   957		.vidioc_reqbufs		= v4l2_m2m_ioctl_reqbufs,
+   958		.vidioc_querybuf	= v4l2_m2m_ioctl_querybuf,
+   959		.vidioc_qbuf		= v4l2_m2m_ioctl_qbuf,
+   960		.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
+   961		.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+   962		.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+ > 963		.vidioc_delete_buf	= v4l2_m2m_ioctl_delete_buf,
+   964		.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+   965	
+   966		.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+   967		.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+   968	
+   969		.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+   970		.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
+   971	};
+   972	
+
 -- 
-2.40.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
