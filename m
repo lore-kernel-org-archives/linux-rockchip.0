@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58566C83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 19:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208C0C83F11
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 20:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g+D+8iCsb7D6Cz22i7UueVZCYc2cqDll0BxhFioGiuw=; b=kyHyZJyc2Jlzj9
-	7zCrkfRskoBp0YDZcMyQR22wqLux5xWW98xQONR8FT+1t4OBkIVeEI+nXKi/AippOedcOP9T5jFSd
-	D9t90B4bFHy/MBOxeZw30FMbzKNfqn/LAUFt/GKZyVyRlLCvec79CFxXCzkmxA297UaQw5+KApk35
-	bF6Gy6vIkvR8tkcPAFrbik0mhusjalEo89HRZI5SN7vVFc+TJ5kcmCDPWYKi4oRCkE5XTdUMKx1Ql
-	M/eNnf+YZTY1VktrFhzqNtkjQC6Zl5U8S0sEx56Ve9VBn68qDfs1PXlqrmXMHvACw+cubOCkogZis
-	tZzS3PE3gOjkOoqtFgnQ==;
+	List-Owner; bh=4cRL3FoCmYo06ouubnSUbb5ZFOGOLWq6Z7ooi/6TkFE=; b=mWagY4X1mvPium
+	K6ep9NlyoPiFq7LTpL1HFB2zNBk3BhBjHXbABo/9WpmQeo4MIwg5ZYzmbYT6WQ27p3tHJnHqsxrT/
+	4siYYYvwz7tEZIf6jHNMntzjWtX/yLnNe3Zbc0Cut8DN9ozx4s97MaGPhTyO7hXM5+0ggtTXabgqY
+	jQNp/fBJNHsY0estDYSJ33RLgVpee1cd1h22SoICJqrBBFKSamZPVzrS5hQZWCDKXVuy0P8SmYBhr
+	NBP6mlHsuZe5M21xTKNsWyLjR01RffnjcixuU9l0msJUp5P1WSNn8j8z79h0Jm9m6soLMiA6DE9Ae
+	fTF+wbiajGURo43zAbdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiLm-00ABeZ-1N;
-	Mon, 28 Aug 2023 19:56:38 +0000
+	id 1qaiWP-00AD1I-0Y;
+	Mon, 28 Aug 2023 20:07:37 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiLj-00ABdP-10
+	id 1qaiWL-00ACzv-1C
 	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Aug 2023 19:56:36 +0000
+	Mon, 28 Aug 2023 20:07:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1693252592;
+	s=mimecast20190719; t=1693253252;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
-	b=F6eWE2XfSec0Gf/5CMCgTQkpFPmrbGAwyzJg2PfLzbTfAJ9TOOutp1kw8w/aVdJLXPJv8p
-	Aow5GyiUoW96lSj2GUazw5bL4FBboc/qvsrESVcd4qL8HUVO/gK8e5v9Xvl1J8i8rbvArz
-	IxYUTKOTxcCfKYojjdotUqLfCtEYofM=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=+t/Lz/vXdxan4gWAx5JpBxkfpmp+HTpE+g34pRpgzeA=;
+	b=YGOnYDIW+yI7I2EMs9J510zzvl/tghf/dHYsnvpwX8lEdtyp9baXzbsb2Ccnoeg8pd0KxG
+	x4n0fKQGVAa9UWncbnBSc2cbn3A4m7fh/ZGXy/m3gPLEfr/pXBwnRm3fEVH6XhLZ5hVUQp
+	xinP2Tng5hEq+WgHpcyuTZ6CHxlYtSQ=
+Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
+ [209.85.222.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-207-6BB4ugJxNDyXCJsTgOmhZQ-1; Mon, 28 Aug 2023 15:56:30 -0400
-X-MC-Unique: 6BB4ugJxNDyXCJsTgOmhZQ-1
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-649832c0cf3so38502116d6.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
+ us-mta-325-fM039vw2P_y7BUNmvmWGzA-1; Mon, 28 Aug 2023 16:07:30 -0400
+X-MC-Unique: fM039vw2P_y7BUNmvmWGzA-1
+Received: by mail-ua1-f70.google.com with SMTP id a1e0cc1a2514c-7942c270df9so1381967241.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 13:07:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693252590; x=1693857390;
+        d=1e100.net; s=20221208; t=1693253250; x=1693858050;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
-        b=NZitnxKIC18bnJRVHAE7KZperubd/qG7wBQQDayp1kS+L22oxSDPhRXzntooge0Fzc
-         jlcDrWyUPCS7v3VqhUvFjj14Yw3F5fVxEiP2UuvKGSBI2V0qHJhK37PMeDWL9wSZ07tj
-         7I24sBlmVYNHhEThc6EXJ4zR9b1O+jQlVReU8MRLhoADRAzpf3KEcqm7ctmjzDGjG+N8
-         t9+Rpp18XAshdAHDXxwuQB/txD+g0IJPBPca9/jfVC0cLD+Wj34g+5QM8MSTkz0nXS3Z
-         zbMbSTSUYshKq1Ug6KUJGJM3Bn9CfS1v5oGQqyNyrORQgdwTdPNf9LfdeYpE0c3yVlS8
-         B+Eg==
-X-Gm-Message-State: AOJu0YxMumgl5eL1APYs0TK+5J5hklal00jI+sUgKdDh0kdxIPOjyj+t
-	tfdwdCLxzGIRgd79svvsqXVQzo/cgTe+DaGSYkuydWoaejOBWZRDUSz40MqywJaI05qPZ3sktPT
-	MkkNsABs9Xq3ougDVldUevRbmTvq1qedl
-X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28216023qtb.5.1693252590268;
-        Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGsYP9ZZ2CsJhUv0f/7ePOTXR8lCjq1Is30niybYFTHi0Enn8YltRs8yVE4tVH5Ow+UhbE98A==
-X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28215977qtb.5.1693252589954;
-        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
+        bh=+t/Lz/vXdxan4gWAx5JpBxkfpmp+HTpE+g34pRpgzeA=;
+        b=bg4ANlZmDh3fcpINu74tAmmtLtAdf8vke+p0auXL8cUsN/oA+pdtII7BE5X2qxwWmb
+         FoNoBO/mUia2W3n85HqOljX4h9o3GVBggipAeDmHXhi8zZXfaFpiaosELhnt6NjSD1EU
+         lKIZwVpNFyfh3Aw1NllXtIYUv+gFDk/+WOjZoVH6BYmJrh2pn50lEV569nzoGPUTRm38
+         tanMVq4Vbq9w+pzIZggyxgryKkFCaNCmG/fhlAbuBaBVBIpoBet7aVH8211I0dC5Auxs
+         k59kkl/7Yv6XjUpFXLDOXClN5H+eBq+nj5ylWjMgidWSavLdn0khfwTbySDVxxFCt2RX
+         En0g==
+X-Gm-Message-State: AOJu0YwNOm40H9hQmATe3mfFgMgnXXxoRlK3eBPseFF9NtnKywdE8MbD
+	VTQXKXJFYfYvam2gIkOdHs/fAJkG3mribNmRB/RVG3hzHeOCiwBlkl4j1OiTB0KuVcJLTE7Vvvl
+	nXgWqXoxmhl2U5AtV4a+PR9QwDXiZoGFc
+X-Received: by 2002:a05:6102:d89:b0:44e:b396:419d with SMTP id d9-20020a0561020d8900b0044eb396419dmr6899802vst.3.1693253250438;
+        Mon, 28 Aug 2023 13:07:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvQrHN5P8TUioFwnH2DuKJFINn3O8GiLCiK+L04RR+CJ1jziXQavUqdv+merrihDaRe7h1tw==
+X-Received: by 2002:a05:6102:d89:b0:44e:b396:419d with SMTP id d9-20020a0561020d8900b0044eb396419dmr6899781vst.3.1693253250162;
+        Mon, 28 Aug 2023 13:07:30 -0700 (PDT)
 Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id d4-20020ac86144000000b0040ff25d8712sm2559692qtm.18.2023.08.28.12.56.29
+        by smtp.gmail.com with ESMTPSA id y3-20020a37e303000000b0076c8fd39407sm2344737qki.113.2023.08.28.13.07.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
-Date: Mon, 28 Aug 2023 12:56:28 -0700
+        Mon, 28 Aug 2023 13:07:29 -0700 (PDT)
+Date: Mon, 28 Aug 2023 13:07:28 -0700
 From: Jerry Snitselaar <jsnitsel@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -92,19 +92,19 @@ Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
 	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
 	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
 	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 08/24] iommu: Reorganize
- iommu_get_default_domain_type() to respect def_domain_type()
-Message-ID: <3pxd6d44iejlvlijiyd65ze3wfsvvjtgrvstwhgp423uwutrz6@dak5ytcxcspv>
+Subject: Re: [PATCH v7 09/24] iommu: Allow an IDENTITY domain as the
+ default_domain in ARM32
+Message-ID: <qovs7txfhvtbfvc6un6albkxy6x6ytmnowqcgh6wt2fgbmvhto@2unjmfnnbqfh>
 References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <9-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <9-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_125635_441793_01F2382E 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20230828_130733_485318_44A173AB 
+X-CRM114-Status: GOOD (  26.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,33 +121,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:22PM -0300, Jason Gunthorpe wrote:
-> Except for dart (which forces IOMMU_DOMAIN_DMA) every driver returns 0 or
-> IDENTITY from ops->def_domain_type().
+On Wed, Aug 23, 2023 at 01:47:23PM -0300, Jason Gunthorpe wrote:
+> Even though dma-iommu.c and CONFIG_ARM_DMA_USE_IOMMU do approximately the
+> same stuff, the way they relate to the IOMMU core is quiet different.
 > 
-> The drivers that return IDENTITY have some kind of good reason, typically
-> that quirky hardware really can't support anything other than IDENTITY.
+> dma-iommu.c expects the core code to setup an UNMANAGED domain (of type
+> IOMMU_DOMAIN_DMA) and then configures itself to use that domain. This
+> becomes the default_domain for the group.
 > 
-> Arrange things so that if the driver says it needs IDENTITY then
-> iommu_get_default_domain_type() either fails or returns IDENTITY.  It will
-> not ignore the driver's override to IDENTITY.
+> ARM_DMA_USE_IOMMU does not use the default_domain, instead it directly
+> allocates an UNMANAGED domain and operates it just like an external
+> driver. In this case group->default_domain is NULL.
 > 
-> Split the function into two steps, reducing the group device list to the
-> driver's def_domain_type() and the untrusted flag.
+> If the driver provides a global static identity_domain then automatically
+> use it as the default_domain when in ARM_DMA_USE_IOMMU mode.
 > 
-> Then compute the result based on those two reduced variables. Fully reject
-> combining untrusted with IDENTITY.
+> This allows drivers that implemented default_domain == NULL as an IDENTITY
+> translation to trivially get a properly labeled non-NULL default_domain on
+> ARM32 configs.
 > 
-> Remove the debugging print on the iommu_group_store_type() failure path,
-> userspace should not be able to trigger kernel prints.
+> With this arrangment when ARM_DMA_USE_IOMMU wants to disconnect from the
+> device the normal detach_domain flow will restore the IDENTITY domain as
+> the default domain. Overall this makes attach_dev() of the IDENTITY domain
+> called in the same places as detach_dev().
 > 
-> This makes the next patch cleaner that wants to force IDENTITY always for
-> ARM_IOMMU because there is no support for DMA.
+> This effectively migrates these drivers to default_domain mode. For
+> drivers that support ARM64 they will gain support for the IDENTITY
+> translation mode for the dma_api and behave in a uniform way.
 > 
+> Drivers use this by setting ops->identity_domain to a static singleton
+> iommu_domain that implements the identity attach. If the core detects
+> ARM_DMA_USE_IOMMU mode then it automatically attaches the IDENTITY domain
+> during probe.
+> 
+> Drivers can continue to prevent the use of DMA translation by returning
+> IOMMU_DOMAIN_IDENTITY from def_domain_type, this will completely prevent
+> IOMMU_DMA from running but will not impact ARM_DMA_USE_IOMMU.
+> 
+> This allows removing the set_platform_dma_ops() from every remaining
+> driver.
+> 
+> Remove the set_platform_dma_ops from rockchip and mkt_v1 as all it does
+> is set an existing global static identity domain. mkt_v1 does not support
+> IOMMU_DOMAIN_DMA and it does not compile on ARM64 so this transformation
+> is safe.
+> 
+> Tested-by: Steven Price <steven.price@arm.com>
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/iommu/iommu.c | 117 ++++++++++++++++++++++++++++--------------
->  1 file changed, 79 insertions(+), 38 deletions(-)
+>  drivers/iommu/iommu.c          | 21 ++++++++++++++++++++-
+>  drivers/iommu/mtk_iommu_v1.c   | 12 ------------
+>  drivers/iommu/rockchip-iommu.c | 10 ----------
+>  3 files changed, 20 insertions(+), 23 deletions(-)
 > 
 
 Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
