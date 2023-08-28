@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE042C71153
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 23:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11090C83F11
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 23:21:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sSTLNcEKKF/kU0iYP9SgKFXB8sMt66c7mUTm3DM+Mv0=; b=AQUq6m864sB0IE
-	HevNE8CkqfkKNq0/g+yKYOtgx2M58qNau9WKqbnUQRa2+8bpDUL9M7UOsQGmH1JmXsts+NicejxV+
-	xvz9mUXL2y4R5uTpocT9vOrUqgvhck8NjA+Jrgpu3w/UWoAibqp7q/m3EVnR2GE2a+K0SW+DqCbaS
-	ZPOltyUaIgntYtv8xf3zsh4ukU8AFYYOXkaTl0WaB3jdzKplsF6uQxbRdXcUo+j7FhekTZTKK2nKl
-	Oj8XXZY2Ghdxxj1pk//AI7r1WYd0yAcUXPEien9zjD2F0dGgKFK+Pd849qKcLHIGd8xf+0RgzYa/q
-	XKaK5g3uaNobhBCo7hYA==;
+	List-Owner; bh=u6vj8/3gfcz5qpdEyaGYJAW5+rpzbnK6dWj5uysSxQE=; b=t+blB+guQI91FK
+	wynw1R96rp15CiDvXYKkEzeamKoeFaOn/nCSY9iEhPwzzyR1ZAAvJ1HMsU/OumDwPE9uzjCkJI52b
+	NM/gIK3t3uDBjMk2/twCXVSUg539oEpEwg9ybEYK6ouET9ZYgMOky1raA8u8Le65esyyTqY0j/9IZ
+	q7jp/sE/KoCAJRClwuJCvsh2shSf3exdzreYJvaXA1H6nCTzkLD9EdVFasLK0ZnBqLJC323soXOWb
+	3QNGfmDthPIzm7sxD6cXGL73rH5xwm+iq+dBf5cnEc/dKl+x8mA4j1yI6VLbw5mMXn6KIkkRGvWum
+	NEJUGOMdSh3VRvsTAZpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qalV4-00ARPm-1f;
-	Mon, 28 Aug 2023 23:18:26 +0000
+	id 1qalXo-00ARg0-2S;
+	Mon, 28 Aug 2023 23:21:16 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qalV1-00AROV-2n
+	id 1qalXl-00AReR-1p
 	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Aug 2023 23:18:25 +0000
+	Mon, 28 Aug 2023 23:21:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1693264702;
+	s=mimecast20190719; t=1693264872;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NqA+se+NtJmo6VZ6Aa5eIZ0Mw7Oak0MLDxzh66FDHNk=;
-	b=cyrqmtZTedyld4p2GNwOZmEXbyjocp7TNPAEAOQGT8E7JOWtguyB7J3cB/oZWaR10vM4Em
-	L7IL6LuSRhb9Trf6CUDjiWMmQENJiygETglxJau57TT/SprXv1BkBMmH7bP1iGhbGmGf0K
-	4cYaw15JXNGcwNLWq5nPe51qj6Lqkk0=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=2tY2O409yN5fYvGoN8/JrlRj7FUk0pOGMULUjvQaUpg=;
+	b=Gg4UGtu8YZcMeEQJKO8+0Ms4vYsbn75bO8Maf8SRoFNpK2ZZYPu3o1C4nODhYmjMGW/uAM
+	LLxLC674MyP2U+63g3Dc3hMjncJySolSwzyZKiV0sVPKnSTArIh15eiIbflbF/ZgG6so7E
+	ESZkv1481/1BZAjWjJOQRDOWWXX4yM0=
+Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
+ [209.85.210.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-74-ZjpO4oxSN2-WwHSH89jU8g-1; Mon, 28 Aug 2023 19:18:19 -0400
-X-MC-Unique: ZjpO4oxSN2-WwHSH89jU8g-1
-Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1c0cfc2b995so38609545ad.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 16:18:19 -0700 (PDT)
+ us-mta-584-ZxZ0Ku_iM--kpR_HQw8JkA-1; Mon, 28 Aug 2023 19:21:11 -0400
+X-MC-Unique: ZxZ0Ku_iM--kpR_HQw8JkA-1
+Received: by mail-ot1-f71.google.com with SMTP id 46e09a7af769-6bf0d513257so1931895a34.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 16:21:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693264698; x=1693869498;
+        d=1e100.net; s=20221208; t=1693264870; x=1693869670;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NqA+se+NtJmo6VZ6Aa5eIZ0Mw7Oak0MLDxzh66FDHNk=;
-        b=ex5GguQJ5BWs9f6d23ZdIYtIRGfk3OVY2M3z3IhsUiftZOiFzYQULsTPr/VNutcW1U
-         S/KpU7JlQ6n/2DvFNSDIUwHRfAZhY4l3Ppfwx/27uJveFqL/M90QQv+DJdpZ/WhVFsU/
-         6Flt7AiDoPM7vvwqbY5l87EbCsf5MMblB3vQ32XxU+c0a+vTqRbcg+Hpbe0rvUxskYmk
-         LrSnzwbNaltD4Pip6iV9RprTCMwy3pRBkVo1FDXJmYJv+cGBlddqvp7+V33pb7U9MDD+
-         ZGZz13NKjNizH9/kxr824F5S225YY2yGWvDJNXNEA5amTfd9fNywMtX80JAQIodLanMJ
-         4zWg==
-X-Gm-Message-State: AOJu0YzTH42F9PxmJBj1NTaX1HenUfQu4vm+tCs0GWNLSP+qfL5MtY6t
-	pbHBx7zgz43yIn9gB9jz9rLpKD9sl5jK4Zyvud4ZB8CUu5j2eQLaDrKt7w6ZRfZYFf3S5N5Z8Zf
-	YOnEmb0U0YE/AOJkjVRnPwGcFrpOJts/v
-X-Received: by 2002:a17:902:ea08:b0:1c0:a30e:2388 with SMTP id s8-20020a170902ea0800b001c0a30e2388mr17734028plg.31.1693264698549;
-        Mon, 28 Aug 2023 16:18:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH4PLIDBi9wZuEsVkyH1S0PFnZ5haeuWus0luN/Yrn+a4DV04N4xayoEkUTdP5JJP349iuJ+Q==
-X-Received: by 2002:a17:902:ea08:b0:1c0:a30e:2388 with SMTP id s8-20020a170902ea0800b001c0a30e2388mr17733983plg.31.1693264698231;
-        Mon, 28 Aug 2023 16:18:18 -0700 (PDT)
+        bh=2tY2O409yN5fYvGoN8/JrlRj7FUk0pOGMULUjvQaUpg=;
+        b=OxtwYltAtIgeccxnFFEnSuqE9pKloU4T+2ARIVjP9RLQcN/Uf13pBqhc+1x0sjkSaL
+         zMOwkt+5cIJp6uBHMx5XfOURAVKY+p9NQMwE3r+xKbcuV8yyICHI0sSoqPTy7vwy0CPq
+         CxY1IhN12L8t7NncEFkZRkoiiP9ec1fnJ8ZAA8urW6ene1nD0vNr3pKfPisjhVc/cp8w
+         oMY/iO0K4CN0b3gKWxdxoodqngrZpZ0gC32+oCYrER162Nq7bm7MlLIVONugUioBTHeK
+         DuYrkXPt9LBkS6AEJ8RF6OfAz8svyoV+aD0dpjhntUtgFpr+TaCAaWdAEORoaYOZdr8k
+         fJNg==
+X-Gm-Message-State: AOJu0YxDwZPSuc6inQGtkm54ikO6rY7Wzq+bxeQrgQ8nRYUfowhQvdGi
+	/o/ak5E+UkLuVs/x4JGwcA4i+/wFXyqwkA3hfSs5oZoDbKPmEB4+oiI7Nnm2QhrtrUxJ6V0jvDK
+	CkGnm07KLATMaJMoysMd7CqYInpcGgIyV
+X-Received: by 2002:a05:6830:1e69:b0:6b9:6663:4648 with SMTP id m9-20020a0568301e6900b006b966634648mr15282037otr.3.1693264870371;
+        Mon, 28 Aug 2023 16:21:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFP5/EEWHTR1bez5m3Juu4cnUjVIKCsfQBSYEYoBbAOKOAwmWfu7HwgfLHfFstKObHsFOXoGQ==
+X-Received: by 2002:a05:6830:1e69:b0:6b9:6663:4648 with SMTP id m9-20020a0568301e6900b006b966634648mr15282011otr.3.1693264870175;
+        Mon, 28 Aug 2023 16:21:10 -0700 (PDT)
 Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id f11-20020a170902ce8b00b001b53953f306sm7947728plg.178.2023.08.28.16.18.17
+        by smtp.gmail.com with ESMTPSA id e29-20020a63371d000000b00565eb4fa8d1sm7893911pga.16.2023.08.28.16.21.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Aug 2023 16:18:17 -0700 (PDT)
-Date: Mon, 28 Aug 2023 16:18:16 -0700
+        Mon, 28 Aug 2023 16:21:09 -0700 (PDT)
+Date: Mon, 28 Aug 2023 16:21:08 -0700
 From: Jerry Snitselaar <jsnitsel@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -92,18 +92,19 @@ Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
 	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
 	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
 	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 22/24] iommu: Add ops->domain_alloc_paging()
-Message-ID: <6wbamqxazr3yxu25haul2vcbyt5da5py4i2pemga77pg74knov@htfe53txxkzx>
+Subject: Re: [PATCH v7 23/24] iommu: Convert simple drivers with DOMAIN_DMA
+ to domain_alloc_paging()
+Message-ID: <hqpyajmraabu5hwhprghy43p53f4qjwdux2job7bv3ss4mijuq@2ov4rd6ppqol>
 References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <22-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <23-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <22-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <23-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_161823_975996_AAD832A4 
-X-CRM114-Status: GOOD (  19.45  )
+X-CRM114-CacheID: sfid-20230828_162113_677438_5F5E9913 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,33 +121,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:36PM -0300, Jason Gunthorpe wrote:
-> This callback requests the driver to create only a __IOMMU_DOMAIN_PAGING
-> domain, so it saves a few lines in a lot of drivers needlessly checking
-> the type.
+On Wed, Aug 23, 2023 at 01:47:37PM -0300, Jason Gunthorpe wrote:
+> These drivers are all trivially converted since the function is only
+> called if the domain type is going to be
+> IOMMU_DOMAIN_UNMANAGED/DMA.
 > 
-> More critically, this allows us to sweep out all the
-> IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA checks from a lot of the
-> drivers, simplifying what is going on in the code and ultimately removing
-> the now-unused special cases in drivers where they did not support
-> IOMMU_DOMAIN_DMA.
-> 
-> domain_alloc_paging() should return a struct iommu_domain that is
-> functionally compatible with ARM_DMA_USE_IOMMU, dma-iommu.c and iommufd.
-> 
-> Be forwards looking and pass in a 'struct device *' argument. We can
-> provide this when allocating the default_domain. No drivers will look at
-> this.
-> 
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
 > Tested-by: Steven Price <steven.price@arm.com>
 > Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
 > Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 > Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/iommu/iommu.c | 17 ++++++++++++++---
->  include/linux/iommu.h |  3 +++
->  2 files changed, 17 insertions(+), 3 deletions(-)
+>  drivers/iommu/arm/arm-smmu/qcom_iommu.c | 6 ++----
+>  drivers/iommu/exynos-iommu.c            | 7 ++-----
+>  drivers/iommu/ipmmu-vmsa.c              | 7 ++-----
+>  drivers/iommu/mtk_iommu.c               | 7 ++-----
+>  drivers/iommu/rockchip-iommu.c          | 7 ++-----
+>  drivers/iommu/sprd-iommu.c              | 7 ++-----
+>  drivers/iommu/sun50i-iommu.c            | 9 +++------
+>  drivers/iommu/tegra-smmu.c              | 7 ++-----
+>  8 files changed, 17 insertions(+), 40 deletions(-)
 > 
 
 Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
