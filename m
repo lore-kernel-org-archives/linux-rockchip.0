@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 755FCC71153
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 20:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2FAC71153
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Aug 2023 20:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mqr4EvgK6BwABkrHIWPLRQ0Sy1pTgc7LcLF9IMCMH/4=; b=bipLJaf6X1fiig
-	5zP6uzSVSWfZrHTalCpoYsSsu1vONyF7m7xWLvlpn7kXQ6L+cC7Zbt0MBlhJLAYGUZDT+93N6/8g/
-	qsFwnpG1IsOY6aGJEJNHTuyyrF6dHMWA1t/fODupF6iwJhJnoORgXz8gjY1iNofixffo6COFHBi/0
-	Ihuh29R7xs6xKOWT+iXd3qVzNtMNjNCVgo9RKPnV2lhzMN1ao98YfzKPOi3ItySc6nHH0+QKgwNSC
-	R0oPWdZia3x4c7c39o1d1l5nbqUyLeQdiJotm46pXPdHQ8na+neORlX4WjDCo2zw4NhS5ELln+baU
-	45oz8uK/DGA1HIA1/Msw==;
+	List-Owner; bh=EJd/WKmICyIeSi1/QkwWotu8YmY8tkj+9rnil0BL4j8=; b=OZRNnvNzSP8NPD
+	B7d2Uvf6D//uvnFr344/CFG39SdrpV31f//f7fIpYETeE+pr5x9OGyYcYLOXS31pOTnkBLUIVjw4C
+	E288pwCq/5PLFdZMbSbV7H0amefEpmFvcmxxdftZ+SqJGuIS6BXJ8B9aFM8VetKNlYbEkmCv6LJyv
+	2Tyfqc8eLAszYo8tWXjOjWHeZSTrlikZuSzb03tXOIS7IeZX5RGqrvFxnLstBasCFzWcdsL9EhFB/
+	ywZg1t+jq+KOO8dSVr/7Zmu2mO7XYnHfpRDQXuS/HDOYKXHCJUbz8y3PG2UIOcXIhiPThMSoeFLyO
+	IdEblccjfuN39pOkjQ4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaipg-00AEie-31;
-	Mon, 28 Aug 2023 20:27:32 +0000
+	id 1qaj8p-00AFvb-2A;
+	Mon, 28 Aug 2023 20:47:19 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaipe-00AEhQ-33
+	id 1qaj8m-00AFuR-1b
 	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Aug 2023 20:27:32 +0000
+	Mon, 28 Aug 2023 20:47:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1693254450;
+	s=mimecast20190719; t=1693255635;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UKJOgsnfF2FTgMzr7BpoixR3SpR6vuzOkPfvbf/VtFg=;
-	b=BSL7MeidQvLgjmnXbgs3GQgzV2ClCCa0RnY+VmcbciUFUxnaPFGPgEoU7VxhlnnjiSsba/
-	l+kE4QURtP9MTNNO7i6CpcRFgjedhJfms6Qvh67Vgxau06b0IM1+ye9Au0TZ0t3y/BMeym
-	zy2juSBOhW+JzdeVZMN72nuubui/B2U=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=ZPnnQCDZkoCLUNIk6pqqLPBY9OW9d6paRIVLOJnAj78=;
+	b=XC91y03PGZR0HvAzwBnNJNT4SwBDgT6GqHgpkCIB47BajQN+3tTw4IVMe77wJWjMgxgnCG
+	OtxLC/kqhBUVygdGOtgAOsXDV2Iy1YGsTNdFOSjKtaTrThueSDokaFEELpM/0XGGOAdtgm
+	n9f5EVj0O+URltOLMjABUijFQY3Al4Y=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-256-cgUea0DsORCx-Ttxh4Zprg-1; Mon, 28 Aug 2023 16:27:28 -0400
-X-MC-Unique: cgUea0DsORCx-Ttxh4Zprg-1
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-63cd1ea05d7so41226566d6.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 13:27:28 -0700 (PDT)
+ us-mta-468-WsVTxfTOMe-03dFYki4AIw-1; Mon, 28 Aug 2023 16:47:13 -0400
+X-MC-Unique: WsVTxfTOMe-03dFYki4AIw-1
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-76e26652e6fso459497385a.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Aug 2023 13:47:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693254448; x=1693859248;
+        d=1e100.net; s=20221208; t=1693255633; x=1693860433;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UKJOgsnfF2FTgMzr7BpoixR3SpR6vuzOkPfvbf/VtFg=;
-        b=J5r5gN+nvDxceWBBVnN8UEuV2P+nNCchSfAEfBUJ6FKJ9k6y1egtaCsS730UZ3pNDg
-         1ck6IhQNIy2c/otz73eAZnwVLAYxihQbQ3RpO5HWuXIsxQRnHYIeCqdYuUDZ81018x57
-         4Rt2UPbfUdtq+a4PH3PxmZc4Ih5CkBGSDYFQgvQ0z8KeCWmd/G8shF1CTVKTOMoElKS/
-         F7x5l6Ji7Hc1Cbiz9yEEpUjWC5Eq3q0MFtem32YoO/Dt4caf+hQamOZey0WxH2HgPqzp
-         z63lHnkhIUeDkdQkZJXyXw4ReZa4Ybb8UzUCU6o8SgJjoak2tuLbcXrf7eGE9ZacQfz1
-         pGqg==
-X-Gm-Message-State: AOJu0YyJjJpRk5lYvfYpmpixESBVcpNd0ojNT2mteVk6nqA9VeqTLS+j
-	SL5B2xjKsOhakiWECP+9MXlk2tx9xhiINvaz5/k+M2uPrdiTgu1VJTWrNv1sEt+Z3acQxA/AuFN
-	jnhfe08ZK85i4J5pf/tOTF59hz1ZmM9ze
-X-Received: by 2002:a05:6214:1946:b0:64b:926a:e7fc with SMTP id q6-20020a056214194600b0064b926ae7fcmr1021315qvk.21.1693254448512;
-        Mon, 28 Aug 2023 13:27:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEqFPUIE0VD3pPuJr6SEA/sCAWUcKffhBaA+0iqWdlm0BRzVqkbCdfoX5jw79sJViEhNnh3nw==
-X-Received: by 2002:a05:6214:1946:b0:64b:926a:e7fc with SMTP id q6-20020a056214194600b0064b926ae7fcmr1021306qvk.21.1693254448284;
-        Mon, 28 Aug 2023 13:27:28 -0700 (PDT)
+        bh=ZPnnQCDZkoCLUNIk6pqqLPBY9OW9d6paRIVLOJnAj78=;
+        b=BhTN1ZixvQGCr81RqPlab9kKRf/SCJ5sfvcMvqLvMSQFc4IQ3R/HKDgqk0KeA/kq/8
+         PfBoRdpb30O2ktqlaI9mQQzezl/lepRi1bOtvv6G/qcJ6ka1Gz2FNwrYX3zbvCDlvOxq
+         hYGXXQ+FDOoQ/R3WW11Ll2arBN67Vw9oPFZVxKVJ6c2PKd7bEWnXIUyYdruW9XvD6gSx
+         PUgGq4rfEH//MKU/wZrTU5Bos64AMriQL8MDpBqfUUFnm1XrJBMDJvvW2BEJnHRsABoW
+         yt3OivVoPT7LNmrTJOVlN66TwE84oLRNKg0inViGI/YIpfk0zEKlDkoPOaSRHzkFV5KZ
+         zdKA==
+X-Gm-Message-State: AOJu0YytBLKw/hX8t20I0xpwUivoiIgqt1f/1j8GoFDXPY6Q/N3vgGoh
+	Gtk+1DLNJrORmuhCY9bE2alxLTdnDetPn8x1QITbtRMPtzJqn1sRCFtAJOaH3gNXOlg109BjSqq
+	HM0ypFhhIaTK8Jyw55be1Oed3OgHuYlbT
+X-Received: by 2002:a05:620a:4614:b0:76d:aa3b:ac9c with SMTP id br20-20020a05620a461400b0076daa3bac9cmr24655276qkb.46.1693255633395;
+        Mon, 28 Aug 2023 13:47:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHwVuI8ZPuQEBsqBHLA4mM96XswCj3GuW2ha49h3MQX3EuB7tqhbB8UeA/K6lT7Jvy4c0Wwkw==
+X-Received: by 2002:a05:620a:4614:b0:76d:aa3b:ac9c with SMTP id br20-20020a05620a461400b0076daa3bac9cmr24655228qkb.46.1693255633141;
+        Mon, 28 Aug 2023 13:47:13 -0700 (PDT)
 Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id x10-20020a0ce24a000000b006263a9e7c63sm2767781qvl.104.2023.08.28.13.27.27
+        by smtp.gmail.com with ESMTPSA id g9-20020a05620a13c900b0076db1caab16sm2631338qkl.22.2023.08.28.13.47.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Aug 2023 13:27:27 -0700 (PDT)
-Date: Mon, 28 Aug 2023 13:27:26 -0700
+        Mon, 28 Aug 2023 13:47:12 -0700 (PDT)
+Date: Mon, 28 Aug 2023 13:47:11 -0700
 From: Jerry Snitselaar <jsnitsel@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -92,18 +92,18 @@ Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
 	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
 	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
 	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 12/24] iommu/tegra-smmu: Support DMA domains in tegra
-Message-ID: <pqocyap65uirlogtdy6fw6gb5qc24zrk6r235krllqj3qrcv3f@4xcew7khwydt>
+Subject: Re: [PATCH v7 13/24] iommu/omap: Implement an IDENTITY domain
+Message-ID: <242a7ntgcvqofkvw2aapftr3pgczpueam3beyr4qey5mgx2rh4@odjyxtbbscfz>
 References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <12-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <13-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <12-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <13-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_132731_082164_2519424D 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20230828_134716_610297_2A5DFD54 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,23 +120,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:26PM -0300, Jason Gunthorpe wrote:
-> All ARM64 iommu drivers should support IOMMU_DOMAIN_DMA to enable
-> dma-iommu.c.
+On Wed, Aug 23, 2023 at 01:47:27PM -0300, Jason Gunthorpe wrote:
+> What omap does during omap_iommu_set_platform_dma() is actually putting
+> the iommu into identity mode.
 > 
-> tegra is blocking dma-iommu usage, and also default_domain's, because it
-> wants an identity translation. This is needed for some device quirk. The
-> correct way to do this is to support IDENTITY domains and use
-> ops->def_domain_type() to return IOMMU_DOMAIN_IDENTITY for only the quirky
-> devices.
+> Move to the new core support for ARM_DMA_USE_IOMMU by defining
+> ops->identity_domain.
 > 
-> Add support for IOMMU_DOMAIN_DMA and force IOMMU_DOMAIN_IDENTITY mode for
-> everything so no behavior changes.
+> This driver does not support IOMMU_DOMAIN_DMA, however it cannot be
+> compiled on ARM64 either. Most likely it is fine to support dma-iommu.c
 > 
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/iommu/tegra-smmu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/iommu/omap-iommu.c | 21 ++++++++++++++++++---
+>  1 file changed, 18 insertions(+), 3 deletions(-)
 > 
 
 Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
