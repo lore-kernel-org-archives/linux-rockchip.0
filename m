@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B73BC6FA8F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA26C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u6QndsvBzQj8OiX1Psa3hb2+Qj0hO1BDLmkCuLmxgaM=; b=S2O/Zjezm/pbM4
-	bdor3zGBAXDFpfjbGmFTLBrgAmCVdT3Jf2Q6UoP+8bQLyAvTUkn6WNFnQz2lJ5ztX0FL+wdYjh8M/
-	E2Mn4RfoAYu2myund3hQMqMfi71GTBpCmDkoWpaqIFOa4cmsAorqL8jjDP1iWBUBKnOsl+26GZrnN
-	id373PVTEX7CUtCjrGhicHvAmdrlNFzhmwLOtrcaV5M5Lxk8PcOEXW6nBChjrEk9WDTAtKPKaLk5i
-	WsSlHtsIcc1HgM/fQDl5t3+JMfhIsuuTYgezXAhyugPAP3GqqgXnABKJi8YNWWiCFDEP7G6YaLJis
-	VNZVhl8mVdQHjn1YSmxA==;
+	List-Owner; bh=eM9AeaMEZNdgQBnaOFpx2JvZh+j9NsuIx5JvB2h08l8=; b=2vQ62032YTbv+8
+	jjPliMo0yeAv02bRgwFaEK72DkRojdFl3jvcgnnvGu4PXfcE8Q9+ZIv0UwfSUvX+kNJBHc5SMdEaB
+	GwPKTHfDXnxSSjCL9E35y8RX5IMj/SsR+K1AlyD6Lix7C2IIChxNJmE5DQym+f4vq9t79ErzNzkwC
+	8vdvLXf0hnnJLS7bX04/JM31GCt0fxZCfWGjwoqKEtJrhc7RZdQCiF0ZNngZ/dYbrx9XfPSQoB/zD
+	Nf8qQtkC76bO4iEXE7cC1Bh9dB8CaAhYZPH9oAQQ05fVsKNCKnglhcoXUBmvBcgqF9PBzEEASzF/A
+	HUX0PiCpNcOW1d6DXPbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2T5-00BzIv-1H;
-	Tue, 29 Aug 2023 17:25:31 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1qb2Tc-00BzOl-37;
+	Tue, 29 Aug 2023 17:26:04 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2T2-00BzGd-07
+	id 1qb2TZ-00BzNC-24
 	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Aug 2023 17:25:30 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-99c93638322so1550766b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 29 Aug 2023 10:25:27 -0700 (PDT)
+	Tue, 29 Aug 2023 17:26:02 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2b9d07a8d84so69517721fa.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 29 Aug 2023 10:26:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693329926; x=1693934726; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1693329960; x=1693934760;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AOsSOchRRigf+GMT70wdUDRGXijaBiL95u8f9cme2Mo=;
-        b=CUejCbYIeBC4sUKctyaGbT0YAsGIBO5ELCJv0ulyJ97v0J3A/58jrSAoJHZyYogVHY
-         T/CJMJcw489Vj1GQqjWHAT51Jxw+QlySys8n09aWsx6FwC9klxeI04HWx/xFaYPgS+F9
-         voPEjl0SfsRBDQqQTuJwImlJ5Sx3bKaRaMNLOmhgnwSFaJEdGPeyPQo0lHJsfTf7ISxp
-         UIQHuN6hxbeqoXixkiszdvmGR8nCh2YvmRAZOnitI2VpAE5P3TjBaAK+2GyJ3o5mqRXg
-         x87FvrfaJTkwXYZjjRWU8mUE0B90u9VMeuuvhv9+p1Exn9XLDdX7w3cL/K+qcT0nimxD
-         iY7A==
+        bh=XASF6L+CFT37xAgTRLzvSw5XT/pAT+qRxQqIx8eoTe4=;
+        b=kHbU+j63kRJgi19vriktot12nqwsQEFKOH92u6vdDrVpsZweOAUzFYD2jMRVZONtHB
+         8oqMSawB5f/rUfbFdyoZZSeSbQNp2Qy7tR6DgybERzmJT83rICzzkoGQk2XZqyk7ctcd
+         Qo0qLiW6c+Mhy6O1SSArqwSPnfoadLxFuMEsFg3G5OIFeYHbeEBWIrmo47N/zTLK6vK2
+         S/2YVtg1nm66M3w6dqaNW1lkwhijfgcUAld2IqWjubjKAGtF3wRtAGth+yw0t4R+knpp
+         9Yrrzco7+yLakp+f28SG+mWHIxXeTmtvIx6njQcK2459fq8ot/epCFFuSlkLUrDBPC65
+         rAzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693329926; x=1693934726;
+        d=1e100.net; s=20221208; t=1693329960; x=1693934760;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AOsSOchRRigf+GMT70wdUDRGXijaBiL95u8f9cme2Mo=;
-        b=RjBFf1HPHwceh9B2yVhepI2AwTGOwaM7NUJnwhBcUDm8rb01WcF0HBAa0TELqU2del
-         KafwDCwq63k3wt/5ghZEcvtK+00bURdb5a+6qXD0PVipwJNJLBeLVRWGpaGCpTtmLeZ/
-         1yISO5eUKLM8t02ooRxMB3bJDOn7YObRgnshkPtmPl8dQeYX4R8jIq4yQtOypo16Dgkb
-         gWG4m0fOtqSou8oBVLZgWr598CDUijvm0zq103TG+GhsxObUIrFDzifKmWyYihIF8gTe
-         Mi/2YzdmZKjeJG4CyQC9/YKouIGYvldCOEpEfucfF5I5qHUaL/UeY4JwuT5l5T7HxoCG
-         l13g==
-X-Gm-Message-State: AOJu0YzE6tJ7DlV+hx1S1qoRZby6GhFILKNZSSrK9UweKfDPtUpWtDBS
-	OPSrxHNGQhWwYu0Wr0AddPgQyg==
-X-Google-Smtp-Source: AGHT+IF3yG8pM/1QQYR3cM78PgXLt47SF3cJUeeTGTYGaG5gDIhDp0rbhT11KNATVil2Mt43nb0AVg==
-X-Received: by 2002:a17:907:6d0d:b0:9a5:7b9a:f32f with SMTP id sa13-20020a1709076d0d00b009a57b9af32fmr3582562ejc.1.1693329926489;
-        Tue, 29 Aug 2023 10:25:26 -0700 (PDT)
+        bh=XASF6L+CFT37xAgTRLzvSw5XT/pAT+qRxQqIx8eoTe4=;
+        b=R9JrCvazXJLsABxol5vVQXFSO2dRUPc88VC9DFeKa58A8E/HyP/nP/Pc3YhwwL6gbE
+         a3RcebP+3C7D+kzFRm6Q2yTVGGfcXbnQypLw4I15iP6/IGT9SqNMGTxaWYcnmfNOn7g3
+         uUOR9VG1CLV1iYJAarafqF/FsgK2qinC7mEHkl6M5ZtrW6ZOa9nrmuQktSsQ+Q64SRnI
+         SNh5kNaBGKfSNxvgCdyXVqTeIHZ0/A+oawnqd9AV9bcNXz8UcEyjqq/zC5hKUvCC28W4
+         O09DUf6U8gRKiezf1XdH9Lm5vj4AwfcstGBVXLi//QM6eHmRuHPH7XLm/A74723R21xU
+         esoA==
+X-Gm-Message-State: AOJu0Yxw7/rsMJj9vMfnBsvs8SQOA2sEHT3tF6oomFvJCkRAHzBqbfd5
+	XDd8rMHkN0Hgsz2ps66aE25AKA==
+X-Google-Smtp-Source: AGHT+IGHdaXGoRpgBFSCCGbMrc9WN2vaolT0HlJjcJrqIeZe/CQVLwYV84VHWJ3Nah14pPFkboyfcA==
+X-Received: by 2002:a2e:9649:0:b0:2bc:c28c:a2b8 with SMTP id z9-20020a2e9649000000b002bcc28ca2b8mr17205992ljh.27.1693329959883;
+        Tue, 29 Aug 2023 10:25:59 -0700 (PDT)
 Received: from [192.168.0.22] ([77.252.47.196])
-        by smtp.gmail.com with ESMTPSA id v17-20020a17090606d100b0098669cc16b2sm6103226ejb.83.2023.08.29.10.25.25
+        by smtp.gmail.com with ESMTPSA id vw13-20020a170907058d00b00993664a9987sm6181867ejb.103.2023.08.29.10.25.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Aug 2023 10:25:26 -0700 (PDT)
-Message-ID: <771e116c-7e0d-d238-d35a-c5e9a44ce571@linaro.org>
-Date: Tue, 29 Aug 2023 19:25:24 +0200
+        Tue, 29 Aug 2023 10:25:59 -0700 (PDT)
+Message-ID: <4343e032-aafe-ed57-9374-c21961926184@linaro.org>
+Date: Tue, 29 Aug 2023 19:25:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Subject: Re: [PATCH 16/31] ARM: dts: rockchip: Add SRAM node for RK312x
+Subject: Re: [PATCH 17/31] ARM: dts: rockchip: Add CPU resets for RK312x
 Content-Language: en-US
 To: Alex Bee <knaerzche@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Rob Herring <robh+dt@kernel.org>,
@@ -85,12 +85,13 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>, Johan Jonker
  alsa-devel@alsa-project.org, linux-clk@vger.kernel.org,
  linux-phy@lists.infradead.org
 References: <20230829171647.187787-1-knaerzche@gmail.com>
- <20230829171647.187787-17-knaerzche@gmail.com>
+ <20230829171647.187787-18-knaerzche@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230829171647.187787-17-knaerzche@gmail.com>
+In-Reply-To: <20230829171647.187787-18-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_102528_087498_A2F7C9A1 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20230829_102601_705009_8935A855 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,14 +109,10 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 29/08/2023 19:16, Alex Bee wrote:
-> RK312x SoCs have 8KB of SRAM.
-> Add the respective device tree node for it.
-> 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> ---
+> Add the reset controls for all 4 cpu cores.
 
-This really does not depend on your MFD, GPU nor ASoC changes. Keep
-independent work for different subsystems separate.
+This we see from the diff. Commit should say why.
+
 
 Best regards,
 Krzysztof
