@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 881D4C83F12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02544C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LtisKpHlTElIYRT1LNzICMkZpMOh0qzpFb+Arxo8Scs=; b=ztVNMkKwmGt0/H
-	C/x/FtaJtud7rLa40oB9pGzqFxSB+/ZRLqd/4NamBslfWFQcdEwUhA78+y2h2zycTEE0J4+/SRqjL
-	GMWdCPECLaYrwOpah7bq/Uchpnhe2DJ57LJwkuAmdYHUhiSGTQvqRjC7KNrtaxIaigxg0clYrFyol
-	e90BLW1XrghJQpKoTnoxP7Bv3vW4ASbl+u1qqhF+1waCpesP4Gmaa8ysSYjxQfDycdCml2TN01D7i
-	TdrJbk3wQGQHOyB5Zo6ukTRlzqd1mO0kdqVGSxIPsX0nYuaJdtRv5HYsQz4QnJK6tbUf27GnU1E/I
-	90erS2msGRMhkJVmb6dQ==;
+	List-Owner; bh=WuRpNzAIlMWpfdtpE+PkLpwo1fIaqw5YFYrhaZxdR3s=; b=h42f9Ia9/eKKkX
+	1aGAVt/ppDcE+B5yXfjprNZVHJT/5rgOK5/l58oXPjw3iwZwGQ60vSpobT/pwv0SglOdRY4GeHV9d
+	Wt7IezEkPtO1ldeVwknpQCcUkGLPSJ9+5AKAlLMQHZPm0TfUqFiatREadr2NBX0pWRLBfNzPOFMXa
+	f13lJVrgxO9m1qvV17fGp7kAQ7A+lfu+Q4G7tYDcmGnIi4Bs1O1mUKVMAPMklGR34N5jEn09+GIBH
+	ucbVl6ONdrla48/lb6wdDUWJC/GenJoFehNhvpGbmhOIv/rcnLHjhkWhynnhRk2FHNYvivzhGI8go
+	2JpFpP9dGemFZ4J+NSJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2Nq-00BxqD-1b;
-	Tue, 29 Aug 2023 17:20:06 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1qb2Nw-00Bxuq-1J;
+	Tue, 29 Aug 2023 17:20:12 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2Lh-00Bvej-1s;
-	Tue, 29 Aug 2023 17:17:55 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2bcb50e194dso71247191fa.3;
-        Tue, 29 Aug 2023 10:17:52 -0700 (PDT)
+	id 1qb2Lh-00Bvfs-2X;
+	Tue, 29 Aug 2023 17:17:56 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-977e0fbd742so599061666b.2;
+        Tue, 29 Aug 2023 10:17:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693329471; x=1693934271;
+        d=gmail.com; s=20221208; t=1693329472; x=1693934272;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=G4PHXGicMxBk+MJKalmg1iNAvJdEv1pEopykpBO9nUE=;
-        b=EShIb7E+Z3Us6tkTRIUmptYNcn1c25vEpCspbQxGLoL+VKjAo/XzXV/t/I+jrto2Lx
-         gVt5UeRIM1WKSIll76L1JN3B79kBVT0lfFGsZnECJ+uNIBuxz1f7TJblkBfZMrSiQIGT
-         /0z+a+iJBak/4doNX0w1w3AVduVoXz63YzJV0i4k16xgEWkLoxvOSrJX0wFxYJv9WUY1
-         Rjb/7WG9lvaXaAj6RvmuX6qBaDS2uP3leouUnNxofbkxuT0zXGRF2JJDC72nriYF029x
-         j27ZDobOtTmUm6vnZjKJWnpQrz5BBImekLEhx/6psHKvowGH9bJ2vhLR1YW4bkq4R6lN
-         XaHA==
+        bh=xkvURmq2cbKlpQEevUHV3n2DL6VzUfl6w6/QUHqY58A=;
+        b=mh8CjGx2AHkgqd0uSoIKqeT9Tx6k2Ul0GOWg1kjbkiddzhSqVBM1nD4aYXZydED6H+
+         kWK+uS1baw/rCdfglAdVxz+J7v7YlDKV0ueFoYNvYQZ/07I8e34HSGQRfE5Pn4X9nzZp
+         IG/sINaLFwKvTfuxWfyfmNaQNcQ/tiVUFJdycaBVaRRyoOlUB0nbZpFAkDUwkmUAprwH
+         kdBDs78wbMXS2p6rqK+rwKDETklEowDB0LPP6XtEtCx5sTvze9IlfS2B9HFExdu2ZDQz
+         aE2Wba9Fb0V5phmR9SwmII3cBtdclPmYCGSX+M0CWij4M4ICfmFqNvoGeH+pWTWKGM5P
+         kyUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693329471; x=1693934271;
+        d=1e100.net; s=20221208; t=1693329472; x=1693934272;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=G4PHXGicMxBk+MJKalmg1iNAvJdEv1pEopykpBO9nUE=;
-        b=gddD1MKdy7s+2Xldpkg7uj76tzp6w1S32g6/TEBQsyre2xd84hhOaioAkF2OyX5Tn/
-         L1awe2BBzAwpxFRxPc+OPn/317xYPxb+3dYLy6kPE95O/yErzz+wRhPL1/vKDI2MbiPU
-         M1o1432jD1+CWPs0cMgI93soLFDAFzSl2XVlMqtDf8z9AfFrqLikBteEkqNbMYD9bZ41
-         tFJWLIacdDioPOW2YyaY/RoHASSywJin2YX/x7Qdgaa8Eizg4eedTk7vLaNtjw4vXt6/
-         ZosiMoW1VDXG8g6WDWv+j+RGhqcm/iWs5Osqf27jrewKbO5XIIDUjVpcGEn7BqyTyxPF
-         cbXQ==
-X-Gm-Message-State: AOJu0Yzyg6ctEE+v4cHl3uoK0+bq+evWFsmzc7fQpTIuTXBGimscZn6h
-	7cSCAAHVxBpWr2Do6YpbPg==
-X-Google-Smtp-Source: AGHT+IEQB3R89Y565RxZaGfUe+xAj9rNo4DRqqtlbGvy1GBw6QhT8IIxT0/e3EW2cHJ2YckOECQ8ww==
-X-Received: by 2002:a2e:9084:0:b0:2b9:f007:9910 with SMTP id l4-20020a2e9084000000b002b9f0079910mr20989559ljg.53.1693329471278;
-        Tue, 29 Aug 2023 10:17:51 -0700 (PDT)
+        bh=xkvURmq2cbKlpQEevUHV3n2DL6VzUfl6w6/QUHqY58A=;
+        b=Wb/+gVaBaah5zVe1lfepwZ8x/3wtUNs/VfzzJgz5bx9s8pV0MrX5hJCmjXzNHyP2Rk
+         oxR5bPurtoOkE+WVfKCrdG/wqoR1b4CBpeqekd1RB6SkTKKqFbX/QNmdms4V3dmPGlJ9
+         uVlT1zCtZjTZ7HvvRUSzapwCvVWcb5gp3VOx4kN0oll+st6oJUoYklLP80/XG5ZOSNg1
+         DOhBn8PiNXXFOMoWgP2YhSb2mR/qqT6fAy1LDiB1mpMkF0sZ+XTABYqUDrIhsLr19jct
+         qhOLzF6GfgT3TT/Z7Jlz2MBVjMWW/S41rVhrdei4bOkeoSWd8/0QVP+eANeUawjDfRxS
+         BY4A==
+X-Gm-Message-State: AOJu0Yyoza35Xja02CJXmtoWqEXiCWyOVD7Ct1z4zqXJ8yefYKpKosuI
+	/juXTjSIRYZvEJrzPpG7EQ==
+X-Google-Smtp-Source: AGHT+IF8xlfihuxSv7bVK1cLtxo53LQXa5+OykLNbJpUofa4RUl/ax3u6GyAuJkTQpRKAMBEGM1X+Q==
+X-Received: by 2002:a17:906:220f:b0:9a5:aece:13b0 with SMTP id s15-20020a170906220f00b009a5aece13b0mr5390216ejs.36.1693329472292;
+        Tue, 29 Aug 2023 10:17:52 -0700 (PDT)
 Received: from U4.lan ([2001:9e8:b958:3410:8e0c:ed68:cd6c:7cb8])
-        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.50
+        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Aug 2023 10:17:50 -0700 (PDT)
+        Tue, 29 Aug 2023 10:17:51 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -86,16 +86,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-clk@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 27/31] ARM: dts: rockchip: Add dwc2 otg fifo siztes for RK312x
-Date: Tue, 29 Aug 2023 19:16:43 +0200
-Message-ID: <20230829171647.187787-28-knaerzche@gmail.com>
+Subject: [PATCH 28/31] ARM: dts: rockchip: Add USB host clocks for RK312x
+Date: Tue, 29 Aug 2023 19:16:44 +0200
+Message-ID: <20230829171647.187787-29-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230829171647.187787-1-knaerzche@gmail.com>
 References: <20230829171647.187787-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_101753_628123_C75CB602 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20230829_101753_875630_455C181C 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,28 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver currently won't probe correctly if those values are missing.
-They have been taken from dowstream kernel and match those of other
-Rockchip SoCs.
+Add the AHB clocks for both the ehci and ohci controller.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rockchip/rk312x.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm/boot/dts/rockchip/rk312x.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm/boot/dts/rockchip/rk312x.dtsi b/arch/arm/boot/dts/rockchip/rk312x.dtsi
-index ce3f03c3532e..019aa92c0cfa 100644
+index 019aa92c0cfa..b13957d55500 100644
 --- a/arch/arm/boot/dts/rockchip/rk312x.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rk312x.dtsi
-@@ -280,6 +280,9 @@ usb_otg: usb@10180000 {
- 		clocks = <&cru HCLK_OTG>;
- 		clock-names = "otg";
- 		dr_mode = "otg";
-+		g-np-tx-fifo-size = <16>;
-+		g-rx-fifo-size = <280>;
-+		g-tx-fifo-size = <256 128 128 64 32 16>;
- 		phys = <&usb2phy_otg>;
- 		phy-names = "usb2-phy";
+@@ -292,6 +292,7 @@ usb_host_ehci: usb@101c0000 {
+ 		compatible = "generic-ehci";
+ 		reg = <0x101c0000 0x20000>;
+ 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_HOST2>;
+ 		phys = <&usb2phy_host>;
+ 		phy-names = "usb";
+ 		status = "disabled";
+@@ -301,6 +302,7 @@ usb_host_ohci: usb@101e0000 {
+ 		compatible = "generic-ohci";
+ 		reg = <0x101e0000 0x20000>;
+ 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_HOST2>;
+ 		phys = <&usb2phy_host>;
+ 		phy-names = "usb";
  		status = "disabled";
 -- 
 2.42.0
