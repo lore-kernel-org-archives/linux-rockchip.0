@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B031C83F12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C2CC6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mXFM5UidyZgalpwHKsRiWgtoBb0tKK8vthT9ikGU7Vo=; b=F8KwS9vkZaBiAC
-	uC74RUM+Z1Ct4m1zX0Fpis+B0lCwqHJlLFZ2TOBo3iJ1Il7xsrIjRo6bs1i/uNi1H2gCdBdlQCgGj
-	/aUshGcZBwkScmeZbXipVHLyJL98zJjBovD3zu4NgXdwi5T7woFrkGbIOdXK+fOyEVtoAHcNHiw/J
-	XrkJptBP1nb7JC1FMK+aYL30VSycyrSPGYyFliDNuPwF0Zx7isuhk99e+oPxl6uILLSUJspni4aDk
-	lkvgetDKXwfRvrDpJ7spn0crhOW2V0N2CHm3lICW+6P1o7gFbMayd3ufSkKuxjujof6Ke7tXjJEBZ
-	4cK2F92WCwIVrjKkeK2g==;
+	List-Owner; bh=mDMWm+KjawkWDZ5kF2Lze3R/MeZscp3Cig2cOyPJSXY=; b=1JkH8mVgCGoJpT
+	SsINTyApeTXEO9SBPqLoYiElku6x9Qz/PcGr0wiwoNPpLEKLGkdE0/8SmHGJ+4yj7KbcoFIZs60nH
+	YDXWkI4Butm50pTT8uPvS/Q3hIGzZlNTnzY6yH7cyAqk7JmGDHnVXTKu6IvQNFsEc8RRWdMebuf6j
+	C5DYNIrT0HFFWew2pV6i0l/oNFm/DNUTWCE+txyWlwI2BD3AtktkDyrYXULirWTZkrJ0dbbPxWzMF
+	UY59UKl3Zs85TyzWLDFPpBYrgH3/67jcUufzAU1K+MAcgA1GOh85iVYlto6Bk295j8NKhwBxd6zrF
+	uxQNRBjBo9A9NVUBxQLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2M1-00Bw2t-2q;
-	Tue, 29 Aug 2023 17:18:13 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1qb2Lx-00BvxR-1v;
+	Tue, 29 Aug 2023 17:18:09 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2LR-00BvNT-1r;
-	Tue, 29 Aug 2023 17:17:38 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-99bfcf4c814so607587866b.0;
-        Tue, 29 Aug 2023 10:17:36 -0700 (PDT)
+	id 1qb2LP-00BvMM-2F;
+	Tue, 29 Aug 2023 17:17:36 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-99bfcf4c814so607585566b.0;
+        Tue, 29 Aug 2023 10:17:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693329455; x=1693934255;
+        d=gmail.com; s=20221208; t=1693329454; x=1693934254;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QBQAx86WvaOm9XdYlFOZiKDZLABoSR2aNslGbzHlpgw=;
-        b=YjhSA4kQm+ny80r016Dc472pNmS42pS1nmBOqM6oVPhNBKNJlGfLb1VzG6ozVtCF6x
-         Mlyk33197iTKYGWOJtecIgwjpqlPxkQGfI/pRAOpXj485zDfiV/PQZgJDdgUDsifpH6W
-         LVPXNmebt4tPML8gXvgpBgcI6wjLHgTdw+3WflobmCdqdL1TbtTLMeahRuWF8LxtlATr
-         IKqdPLOqNzQALqccixO4n4ZLiVXScDyHxok1Foj+nS8E2ValnPtuN4jUWiEOK7qKTwIW
-         2H4UL/qePX62A4CF+Z9Lw3aAxUzhqpesyFt7Q4G+715YvpCqNSDPku8LQs0jlfjZU5Cx
-         fEwQ==
+        bh=R9DunujICwW+FdyG9ifMFQMXRh/n/3eNMexEB6m+XBc=;
+        b=px2WocHwCMwjM675wD1bA1eXGHHv/R0rc7/GX6NGiX/OBlTqMyRnCDGc1uHsgku1sr
+         G9rYQKPxprXZVpBGprwZm/C1f5qoDFg7KX5I/JxK4fvDG/kHaDBkBRxeheaI3QKeuZWE
+         b50Gkg1HsF/3mn9w/IkH+vaEzdeSdwvdItZaDUy7tTxaZ866AleSX46/6MxQjT3LQ2cV
+         UjX9eF48i0xUFo7p0kA7WbqSxQWbgvpfuTM5l8VNPmlDvMkdduEnZHvz3nbv9HkQuSG+
+         oVeE+UuxPm3zGhNAUqbsJx77wJbbtm5NJgbuIgPWEmDiRNhO2V29qqX6GcIpTJKMkWbk
+         0XkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693329455; x=1693934255;
+        d=1e100.net; s=20221208; t=1693329454; x=1693934254;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QBQAx86WvaOm9XdYlFOZiKDZLABoSR2aNslGbzHlpgw=;
-        b=C/M5Yi/8+vZzDsT6utu3Lr4OE/8JDELXi16Rzsi0cfFrI/OSsV0HMmha2jeWZ1g9fg
-         YLmKQdxDPKVjWUBfmH9v7Kd+PkQPfHdJeK+br0n3qZzlh9CzewWhKxH8CITtzHjv4oDE
-         GjS5ZXieuP/IGsiBDpnmew8HPYrEviJ/pSJkRwx6a9pabE0kyLn3hyoRUKPmn4l6unj1
-         LItAy0RxBpooI/srLe/hZXYC07txNBbRmigUOXZSoHZYCX8He3vUsaJLz3yo4xmT5qeq
-         QVUl2YOlNAcZpBNnV7VXXe0f+uYUAiPrBYI6BtdsghVww1FMtz5SIrlbhaMod2AvTAys
-         0i4g==
-X-Gm-Message-State: AOJu0YzVVmWsNqMK7y+8P6EE/+x6UJnUfNqW4hDQ/65A03/Mq6zEcWoS
-	FfVK63sssJoO8auP9S56cQ==
-X-Google-Smtp-Source: AGHT+IGriq1g6SBECfoMzn6NHKe8g9e4THTgJ8Zp6YWeIKJEJrAB+LeVhbZzVDvMc9306PK2d3bxNw==
-X-Received: by 2002:a17:906:150:b0:9a1:d7cd:602d with SMTP id 16-20020a170906015000b009a1d7cd602dmr14195595ejh.45.1693329455250;
-        Tue, 29 Aug 2023 10:17:35 -0700 (PDT)
-Received: from U4.lan ([2001:9e8:b958:3410:8e0c:ed68:cd6c:7cb8])
-        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=R9DunujICwW+FdyG9ifMFQMXRh/n/3eNMexEB6m+XBc=;
+        b=EA1w/uHW92s/xI9SmsChMjH+VIeUmvF3vK3Mv+GQ8okdpH2JHXc1wLNWEOZEJqtKgG
+         4ngcc3bs1Krs8sE2vKTG6HzT4DLBLS4Dh3mdom2vfFI7RJAitTTVlJAXKHGZ3JJYAj+p
+         /KPPIDyyIGDxOSRSFrN5molP1ztsHK+l9Npasuh/DZHKFtRDo/Hb7ArJkmN6fpvy3kw6
+         7AJgIoJCvoLF354qZZqG3+eAUkEWAPpbqdzXYnrr5LhIkWQOLsDb5ydi7DkmwDYc6ZwQ
+         ymfaq88RURV/2eU3zux8qmtd1HLjvzv5ln+Gm59liuekHMFrpfQoaa741Qn4cPHeAeYh
+         z1yw==
+X-Gm-Message-State: AOJu0YwnCQVOEpVv4bbEnsHqO9p6b7AGUKBFT+wGzBMUB2TvA4JcaWIM
+	VcjyM0AoX6qjS+iryPMYmA==
+X-Google-Smtp-Source: AGHT+IHrpTiL0i8g4E5q2Q0OjRcmwKFC2fgt4+QDBkipBm6SYXUm13m4URpgLyUReqBKRY8pMjjrIg==
+X-Received: by 2002:a17:907:2bee:b0:9a1:b950:abab with SMTP id gv46-20020a1709072bee00b009a1b950ababmr16022437ejc.32.1693329454190;
         Tue, 29 Aug 2023 10:17:34 -0700 (PDT)
+Received: from U4.lan ([2001:9e8:b958:3410:8e0c:ed68:cd6c:7cb8])
+        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Aug 2023 10:17:33 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -86,16 +86,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-clk@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 11/31] ARM: dts: rockchip: Add missing arm timer interrupt for RK3128
-Date: Tue, 29 Aug 2023 19:16:27 +0200
-Message-ID: <20230829171647.187787-12-knaerzche@gmail.com>
+Subject: [PATCH 10/31] ARM: dts: rockchip: Fix i2c0 register address for RK3128
+Date: Tue, 29 Aug 2023 19:16:26 +0200
+Message-ID: <20230829171647.187787-11-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230829171647.187787-1-knaerzche@gmail.com>
 References: <20230829171647.187787-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_101737_625762_07772DD4 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20230829_101735_734196_AC5638E0 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,29 +112,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Cortex-A7 timer has 4 interrupts.
-Add the mssing one.
+The register address for i2c0 is missing a 0x to mark it as hex.
 
 Fixes: a0201bff6259 ("ARM: dts: rockchip: add rk3128 soc dtsi")
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 2e345097b9bd..bf55d4575311 100644
+index b63bd4ad3143..2e345097b9bd 100644
 --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -64,7 +64,8 @@ timer {
- 		compatible = "arm,armv7-timer";
- 		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
- 			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
--			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 		arm,cpu-registers-not-fw-configured;
- 		clock-frequency = <24000000>;
- 	};
+@@ -426,7 +426,7 @@ saradc: saradc@2006c000 {
+ 
+ 	i2c0: i2c@20072000 {
+ 		compatible = "rockchip,rk3128-i2c", "rockchip,rk3288-i2c";
+-		reg = <20072000 0x1000>;
++		reg = <0x20072000 0x1000>;
+ 		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 		clock-names = "i2c";
+ 		clocks = <&cru PCLK_I2C0>;
 -- 
 2.42.0
 
