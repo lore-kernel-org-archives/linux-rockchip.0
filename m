@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D0A5C83F12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 21:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE779C83F12
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 21:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SdmtQ2QdK4dnkJlpY9+1HfP0zbuVl7+SgSzS0LweDtI=; b=kpSzFvqjsqHC+T
-	m42vn5AJWokj6iXZWRsdz4bmi71HndsXiBwrFqmAtux6AAWjC1h4d70m6sp7xbv6y0Op65SuNTtL/
-	FRMfR1yYATFX5I1ao0/trQcWzawA1yeuxtlpJBu3LVat5kqygR7CnSoUZeVs4vJ75lJMU/ebHAhLC
-	+zobpegPRXIuI5mXt400qUXqTMJC104pYwuBTxn/W9vApvZ00psmZLUSER0oZ+z68YP3pdZxsrJv2
-	926G/JTv6k26lIGAxRN9U4ZUt8TvxfZ8QyS3YI4qA/WX4yX8ivfhnM+7uCSf/rAnFq9wJA5NOHmGJ
-	lvg+jbYfUBjYP353xx5Q==;
+	List-Owner; bh=Fii4a6unAtfgfIlkrIsNGSEMGkjliYGVgCoLPNScz58=; b=G2FEQobN62Pd3l
+	7tVLrUrMtBGb/CsrVbXSIdE+Vu7oTzOHWAUw4Zgwj2jjv8/ewRQIbO8n+HnTLd5Pxkrx6w4CPYIe1
+	312cJ/EyTc2TxzX/hMPu5tbT+lL5DrrvGXueyIFUauxjIx6eI2B1XJYz/XuTTTsFbF1X3vLJwco2B
+	H66pmNgLLKMeZF7gwUUg9XGEpH40fw4alDSDj/qU9lHaPgn6ZePZXy4b5g5T+dXhGQnC1YtKSKOiN
+	aEFXQxjJVqXb6VmORHomIS7rlkqaXyepbXeocTM3VH9pDXAvg6fXQcg+Y9s28+DqUBHf1YvYXCDEj
+	edZM3p6cxheNpXie7YZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb6Tf-00CJTk-2f;
-	Tue, 29 Aug 2023 21:42:23 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1qb6Ty-00CJaV-0q;
+	Tue, 29 Aug 2023 21:42:42 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb6Tc-00CJRX-2L;
-	Tue, 29 Aug 2023 21:42:21 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5007f3d3235so7784318e87.2;
-        Tue, 29 Aug 2023 14:42:18 -0700 (PDT)
+	id 1qb6Tv-00CJXr-0R;
+	Tue, 29 Aug 2023 21:42:40 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-52bcd4db4bdso1929078a12.3;
+        Tue, 29 Aug 2023 14:42:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693345336; x=1693950136; darn=lists.infradead.org;
+        d=gmail.com; s=20221208; t=1693345355; x=1693950155; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LaPRCFGOdGoFBcv5kpNjOOGyC2mwPb8qr7pQmrJEubs=;
-        b=ly/Lmr3irkyAxKVr49lGc8T5pItAMD58RVJZAEDpjazqqq5dnRKRDwaUW6XEEXWVkG
-         4tyLC1N9uyr4uIePrD0YP2VGzO3bkidzcMYjz33PMs/DqpkdgLfjt8jXQNPryuxIuhBj
-         l/Go0N857+mYZ8ZHQhhYEBYVJTZxeFAqJyTM+fCimyq65Fe2qiMCgQwN8cVs5jQq5ROS
-         tfRQbKyjD9sMUWKRmsXTy/L518ew6UTJt0wIFUe2eH0GCIBKUs39GEp+f55eYe2elFnd
-         qZPA14ns5YvsdaKmeb6qQrW8wuwaIzSQMALw6rKyAbJ0rpMoV2pPrFEsoKkA9kbKSpxx
-         QiVQ==
+        bh=AGClNaEY6gM70Hb3navvOJbzGEwQs35GRI7P9s7Oey0=;
+        b=N/NVmGR059OXUkCZ6k8I/oC/2QPiwX/Zv941mCo6uTQw/ySIEWeyuJKIR7QUWaiAtj
+         K+Pq8kQ45HqIUaBEnIIPhG34B2AEanaOHhJ6bPQ+WILZf/08iczGFCeYAgybakKKEKlZ
+         HnsL2/glU3Z8nbap5PFWXTYIwaeappPbzPaW9svn5a6p9og8mOqIRUzcjnwcDTKaso3l
+         i344GfWhBYSlWQjeOL1AUze2q6WT4UUuPqYy4tk4/LaPtSU7YtWsQqgRjq7RxBY5sfWN
+         KAmFkUyXYDZ9sN9pDY/rFModuBh47Hj6J2HJJ+XfDrtcdY9S1px8X2daoqF5j0QmDB34
+         8Ykw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693345336; x=1693950136;
+        d=1e100.net; s=20221208; t=1693345355; x=1693950155;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LaPRCFGOdGoFBcv5kpNjOOGyC2mwPb8qr7pQmrJEubs=;
-        b=fCu/ZyDJSlzkUU/zlJyGtsNovXytsgKixng/FhVP56awJcpv4SWoognFXB/R1MYjJk
-         /EeIWwxBQOeNt2Y2tCCIXE6RmwG2wCKxyU9nTCOSxcjAlZg0kgL5lv1Ddz56TWBQCgK2
-         49dL/vJwoWm6yIPh3kQY+JTYno0HZGIPOclhUQ2Zi0CRvjlvg63sg+fDh9sgzFBHvSbF
-         KdCI7CSi1xTG2OHfc2z+W+kk5RSeuvvtM7MxJ4Wmirh/9v9cS1/6HSIfrkq3G5rFF5JI
-         B1T6yFgnqXaXb3j/GNxUxSIt+CQCLCtoMsZlq4Nz8xUijFQGlsigkxJ+nKHQk/mVDg20
-         sj/A==
-X-Gm-Message-State: AOJu0YzV6V0OYtejaviIK7D38pzQk09zrvTbr7dIRNar5U4yINyHkk6L
-	5aIBHWkNJA1uFPzknRH1gA==
-X-Google-Smtp-Source: AGHT+IHvZchRUXOYbVMxqhQXem4nDQeO6sU4KBR+SsnU9mPMYX0bOxIaJ3lsV5VOGNvuJ0DWCsg9jw==
-X-Received: by 2002:ac2:5b1d:0:b0:500:bb99:69a9 with SMTP id v29-20020ac25b1d000000b00500bb9969a9mr96761lfn.64.1693345336520;
-        Tue, 29 Aug 2023 14:42:16 -0700 (PDT)
+        bh=AGClNaEY6gM70Hb3navvOJbzGEwQs35GRI7P9s7Oey0=;
+        b=RlT/TmFqaPIkEiJw9OXwMgzbrLyLBl++nktiq8MeszDRQwCKwBKWI/WxI1fcEY1X2H
+         bbDi9gqCB7fEadi0PS7rTSHHHAKTYTPONks5ukdQ5a1zS+pj5wYdjlP/f2oCJwF8by9y
+         J0GUuHtejSq/HYZmglzp79BHuA72kd9bFMSt518kQrZ4CMU1ZZ8WztDPLQw77dRX6RKs
+         0oB7pwLwm8djYVm+0I0oLCALEPP7NWdnx3qSnqYhtuiRGl48IHVKQd8gTIH2jA88G1TC
+         QLYBv8MdiYBpRmZtFEdWG7ek6Fk1dyu/aTX7wQWTX5CQ81RbVJGR0kN0F1iBV8bTiKoG
+         P1Cw==
+X-Gm-Message-State: AOJu0Yy5/vS2ozEBzW5kQ2uUIXM1qFo/mcpYkf2dtJMQymHiqje9+WV4
+	j1rFVf/svaZhT60Dk7+CfQ==
+X-Google-Smtp-Source: AGHT+IGYuYw4UxD9N/zmzw+MRRW1M3ZFSNH98nsfl52O8isc+O7p9i4jDC25sDDeyeXvvlawKRa1OA==
+X-Received: by 2002:aa7:c644:0:b0:52a:841:bc58 with SMTP id z4-20020aa7c644000000b0052a0841bc58mr377767edr.30.1693345355292;
+        Tue, 29 Aug 2023 14:42:35 -0700 (PDT)
 Received: from U4.lan ([2001:9e8:b963:7410:84d2:f616:9527:dd98])
-        by smtp.gmail.com with ESMTPSA id f15-20020aa7d84f000000b0052228721f84sm6113428eds.77.2023.08.29.14.42.15
+        by smtp.gmail.com with ESMTPSA id f15-20020aa7d84f000000b0052228721f84sm6113428eds.77.2023.08.29.14.42.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Aug 2023 14:42:16 -0700 (PDT)
+        Tue, 29 Aug 2023 14:42:35 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 3/4] ARM: dts: rockchip: Enable SMP bring-up for RK3128
-Date: Tue, 29 Aug 2023 23:40:07 +0200
-Message-ID: <20230829214004.314932-8-knaerzche@gmail.com>
+Subject: [PATCH v2 4/4] ARM: dts: rockchip: Switch to operating-points-v2 for RK3128's CPU
+Date: Tue, 29 Aug 2023 23:40:09 +0200
+Message-ID: <20230829214004.314932-10-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230829214004.314932-2-knaerzche@gmail.com>
 References: <20230829214004.314932-2-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_144220_760678_B90BADA7 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20230829_144239_176414_71899A2F 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,40 +97,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For bring-up of the non-boot cpu cores the enable-method for RK3036 can be
-re-used.
-This adds a (small) chunk of SRAM for execution of the SMP trampoline code
-and the respective enable-method property to the cpus.
+This will allow frequency-scaling for the cpu-cores.
+Operating frequencies and voltages have been taken from Rockchip's
+downstream kernel.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 43 +++++++++++++++++++++++---
+ 1 file changed, 39 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 2778049003a1..877854dd765d 100644
+index 877854dd765d..71964262cd5f 100644
 --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -27,6 +27,7 @@ arm-pmu {
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		enable-method = "rockchip,rk3036-smp";
+@@ -36,10 +36,7 @@ cpu0: cpu@f00 {
+ 			clock-latency = <40000>;
+ 			clocks = <&cru ARMCLK>;
+ 			resets = <&cru SRST_CORE0>;
+-			operating-points = <
+-				/* KHz    uV */
+-				 816000 1000000
+-			>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 			#cooling-cells = <2>; /* min followed by max */
+ 		};
  
- 		cpu0: cpu@f00 {
- 			device_type = "cpu";
-@@ -86,6 +87,11 @@ imem: sram@10080000 {
- 		#address-cells = <1>;
- 		#size-cells = <1>;
- 		ranges = <0 0x10080000 0x2000>;
-+
-+		smp-sram@0 {
-+			compatible = "rockchip,rk3066-smp-sram";
-+			reg = <0x00 0x10>;
+@@ -48,6 +45,7 @@ cpu1: cpu@f01 {
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0xf01>;
+ 			resets = <&cru SRST_CORE1>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 		};
+ 
+ 		cpu2: cpu@f02 {
+@@ -55,6 +53,7 @@ cpu2: cpu@f02 {
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0xf02>;
+ 			resets = <&cru SRST_CORE2>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 		};
+ 
+ 		cpu3: cpu@f03 {
+@@ -62,6 +61,42 @@ cpu3: cpu@f03 {
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0xf03>;
+ 			resets = <&cru SRST_CORE3>;
++			operating-points-v2 = <&cpu_opp_table>;
 +		};
++	};
++
++	cpu_opp_table: opp-table-0 {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp-216000000 {
++			opp-hz = /bits/ 64 <216000000>;
++			opp-microvolt = <950000 950000 1325000>;
++		};
++		opp-408000000 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <950000 950000 1325000>;
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <950000 950000 1325000>;
++		};
++		opp-696000000 {
++			opp-hz = /bits/ 64 <696000000>;
++			opp-microvolt = <975000 975000 1325000>;
++		};
++		opp-816000000 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <1075000 1075000 1325000>;
++			opp-suspend;
++		};
++		opp-1008000000 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1200000 1200000 1325000>;
++		};
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <1325000 1325000 1325000>;
+ 		};
  	};
  
- 	pmu: syscon@100a0000 {
 -- 
 2.42.0
 
