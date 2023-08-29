@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E52A9C83F12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD04C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Aug 2023 17:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=njeEljlhhzX7Xw/1+pd6+sSou5Gpd8Gl/U42Mp4a7QU=; b=HxnTX1HilvNtyx
-	mF1HdEHPBfNx1CY079JVvDlHAiCjFm6gpEf8Gptf4s603pSb3qu0QHLiAc0+KKk3+oqBsVUiPTRFR
-	+6c6mTcMp+MTRK0RXRqq2UWfQdtoVVUa5xx2ZYQbjG1asLBcYGEUS4RNKaROcwPpkXSyvMPbqPd5i
-	aebY79xtTGXpkrEQ5+veVJTOhfTd3WHi5Nx0SV/9gnKhWaLnr1ImaEE5+8XmCuSYSeEwgRIVXcI87
-	/RpVeEbGZu/TcC+QHqcRY+STNZnUWyXWgEbfp6IXbZY4BNfiExOeuJNPSnyfMRoR3fLoT47d1DPxp
-	15Aw+L3bWr3R7ogKK+Bg==;
+	List-Owner; bh=CzENDpxLOG/p4p1tQFEOh5QBwsLs3JebIIDcavcreJo=; b=WhkMIHbky4dF5/
+	qtIrx8mG0oLuOtOsipxDTRocS6tCHJcpFBdXYRnKaUjvRLNDmZYEAF6C5lBfyypCH6O6+MS2z0PKn
+	x35bMwrw1IDMjBxL5qa4voH0mC2Wd000xqAOTXTMQ2VPZGtGRZ0/qcB/KE6ePOTK99ugAMmbf5e7D
+	nTSyVfEulYERYnSAtwzSPgiOPWFbKzH3NJhPltwQxoUHGoVHQGZOir0LyBG3orGed2eSh7gPyma5h
+	TnCEfeOcuE2yG7RM+694v46cEd8oA9XCWXIYtxTQyRGOtoAeMXXqerIcq2Ai1fdEv+kSlaMIaw3h7
+	vNncOpHfv5WpmdGM8AZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2Lb-00BvZ1-2o;
-	Tue, 29 Aug 2023 17:17:47 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1qb2Lr-00Bvqj-0X;
+	Tue, 29 Aug 2023 17:18:03 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb2LK-00BvHq-0F;
-	Tue, 29 Aug 2023 17:17:31 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-986d8332f50so603792266b.0;
-        Tue, 29 Aug 2023 10:17:29 -0700 (PDT)
+	id 1qb2LM-00BvJr-1S;
+	Tue, 29 Aug 2023 17:17:33 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-9a1de3417acso8723866b.0;
+        Tue, 29 Aug 2023 10:17:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693329448; x=1693934248;
+        d=gmail.com; s=20221208; t=1693329451; x=1693934251;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Rlz17GtutNw1PX6avQfyxd2FJLVbt0FbIToHal1G+vU=;
-        b=UIFYLrNe0gh2pAwnM5MUnuNxEI2N+C+hDeO1RoxlyGw+Dv05W/dM9XAythdMCRIY6K
-         Z9nxj4tt6ACJ68ny5AJEt3T2+Td3iRnGFXuDpEEGOKu1ZCi0/xj3r9ftMwbIkD3G91Uu
-         U+ldak5sol1qkR+3XD7+yUG1TLmaye0xeGMRwwNqpywQVNXSCXTHRVBbLJQJvccZ/LA9
-         LfsLtbCwvE6VCGJqblgyPJH3fqOZ+8kAGnBFIBXvtLQwOoeNKDHvfHDNfwl+3UeJYtEU
-         h2pnzMnciPjnl0iSQaYBcpSKtOHjUkwuAJ9DiY+9OzRXC+sMbSIofwBZCO86tFcfg3tY
-         qkyA==
+        bh=qFpS6puAfr1Vvk5xVzMQk3TJscyGtiLTY36CCDlYgn4=;
+        b=rd4R0yJ5NUtAr7vhhugqHokzMG56l1owqCa+6Uo9jX4+N93yF6mL+9b3ty5yWW1gb8
+         45j8dPKZO5qBshEI153JhNmUeVkwS/HYRK/7Ig4EPjMahNhGO8glOHHCmG9M5QsEcjN+
+         PZaZpsQ8MjKL4ZNaaYSP5RYuSNPzEVXRRrEQmVppf2asd7xYBwREmY6QDap/IoLNQJhP
+         oMwmwhWExypc3amwKJTcTufbASYFqr+zAPb5KG5+Q2fU8+lktFnAMC903v4IiIq4gXK7
+         IQK0Qnwn/VY6Xgl3lnbGpqlQKDL6bXiN5avdEyQXwSnICg3ZCR2QLy2/RQ7qAWvLaOxc
+         WxUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693329448; x=1693934248;
+        d=1e100.net; s=20221208; t=1693329451; x=1693934251;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Rlz17GtutNw1PX6avQfyxd2FJLVbt0FbIToHal1G+vU=;
-        b=DwMTtpKtkKKzrYW9TZ6zancbVv62CAZcBapRV5fjbgZFHyu+Cf6N5AY4ysNZ116rHs
-         MGw0GsuyJS6/iEF0bia/GnH75FNRrEAtYyhoO11EwuE9357dvPzRfZYm1YuhSyF3kshz
-         59GECK5XQwIAE547Z0xPQUaXvL31LjPHoRIKlyGzPjPWQuQLZERsE9+PHnkKvS0tH/hQ
-         ecx5Sq6cwQG+fWfrDScbtV8q95qSo+D+0DDg3rXYLu7Uvm3XfyWT5YVYJvsguyhdbqy9
-         /lAueT6egrxqZR0GHakmS5qTh4lwg/+pymxe9C3U6hG2/S/tr7HHrei5nWNltNk3YB4c
-         OhJw==
-X-Gm-Message-State: AOJu0YwYYxHwBzISUmQ5c8XE9qLxjXB3f/3MPKkHC7oFbNhrQrq5nGYq
-	N60AMWFbuOtSrb5jnsSvAA==
-X-Google-Smtp-Source: AGHT+IFFkEkxU6fLi6B7Qfna18QFEfdVNppGwFK63NpwdhfSCbGPZ5uGzoW6mAq0vfuONXZvjcBGNA==
-X-Received: by 2002:a17:906:8462:b0:9a5:81cf:57b5 with SMTP id hx2-20020a170906846200b009a581cf57b5mr8395816ejc.2.1693329448163;
-        Tue, 29 Aug 2023 10:17:28 -0700 (PDT)
+        bh=qFpS6puAfr1Vvk5xVzMQk3TJscyGtiLTY36CCDlYgn4=;
+        b=MSHsvuAD0rpV0HQFSiQynUwTzzX003kfnr705CbQBr7tZHNt94PO7ZNvAYdvDwzFll
+         8lZyUMFy2oAQz/c5vjuSU6FOdAfm6Cf+b02MynOM169pnw0nL8bEI/j6Q9fbKP6UBIC5
+         W6Mf2tgw3frtfy0MecdOcQxBOgKimblPd05sYBG1N9LS1fK7DY57jz2mftQS8nWxIeL0
+         HqEX0QbFaGRUrHm50MdsHWrWrZE++qTW55SYfq9+MouChRhTbLw+pm2gZK6Kmsg275xU
+         Q3uJLF0uuRscLnxRtYQAp7aNXmjjKlfyW+4npvCh+LrYyp2MtQv+ZfxuzeJoVRc/Hnld
+         gMEQ==
+X-Gm-Message-State: AOJu0YySbMJ1peCFY8h471ej/3TAtR0Y1sF8Oi8Ju2DBK0waSneUba64
+	a8Ota6ddfm0lMtOc4RAM4Q==
+X-Google-Smtp-Source: AGHT+IEybP8U8H/6OMY/edFtzGMriI16g5JEKpV7+P1CM2OUvZ0MmOIK8JNoZk0RoYw/W+BVoa1UJQ==
+X-Received: by 2002:a17:906:cc47:b0:9a5:bceb:1cf8 with SMTP id mm7-20020a170906cc4700b009a5bceb1cf8mr3568824ejb.3.1693329451153;
+        Tue, 29 Aug 2023 10:17:31 -0700 (PDT)
 Received: from U4.lan ([2001:9e8:b958:3410:8e0c:ed68:cd6c:7cb8])
-        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.27
+        by smtp.gmail.com with ESMTPSA id a21-20020a1709062b1500b00993cc1242d4sm6115834ejg.151.2023.08.29.10.17.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Aug 2023 10:17:27 -0700 (PDT)
+        Tue, 29 Aug 2023 10:17:30 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -86,16 +86,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-clk@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 04/31] dt-bindings: arm: rockchip: Add Geniatech XPI-3128
-Date: Tue, 29 Aug 2023 19:16:20 +0200
-Message-ID: <20230829171647.187787-5-knaerzche@gmail.com>
+Subject: [PATCH 07/31] clk: rockchip: rk3128: Fix SCLK_SDMMC's clock name
+Date: Tue, 29 Aug 2023 19:16:23 +0200
+Message-ID: <20230829171647.187787-8-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230829171647.187787-1-knaerzche@gmail.com>
 References: <20230829171647.187787-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_101730_119118_D147F8F1 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20230829_101732_489714_690A18BD 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,29 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Geniatech XPI-3128, a RK3128 based single board computer.
+SCLK_SDMMC is the parent for SCLK_SDMMC_DRV and SCLK_SDMMC_SAMPLE, but
+used with the (more) correct name sclk_sdmmc. SD card tuning does currently
+fail as the parent can't be found under that name
+There is no need to suffix the name with '0' since RK312x SoCs do have a
+single sdmmc controller - so rename it to the name which is already used
+by it's children.
 
+Fixes: f6022e88faca ("clk: rockchip: add clock controller for rk3128")
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/clk/rockchip/clk-rk3128.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ecdb72a519cb..e4c1af691b7a 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -227,6 +227,11 @@ properties:
-           - const: geekbuying,geekbox
-           - const: rockchip,rk3368
+diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
+index 17bacf6dd6e7..75071e0cd321 100644
+--- a/drivers/clk/rockchip/clk-rk3128.c
++++ b/drivers/clk/rockchip/clk-rk3128.c
+@@ -310,7 +310,7 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+ 	GATE(SCLK_MIPI_24M, "clk_mipi_24m", "xin24m", CLK_IGNORE_UNUSED,
+ 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
  
-+      - description: Geniatech XPI-3128
-+        items:
-+          - const: geniatech,xpi-3128
-+          - const: rockchip,rk3128
-+
-       - description: Google Bob (Asus Chromebook Flip C101PA)
-         items:
-           - const: google,bob-rev13
+-	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc0", mux_mmc_src_p, 0,
++	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
+ 			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
+ 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
+ 
 -- 
 2.42.0
 
