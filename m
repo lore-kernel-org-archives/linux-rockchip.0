@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410DDC83F01
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 14:44:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DF3C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 14:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TVKwl7yW63WVcaNSotmbOYqM6hxDBNB8h9IbFWqR8q0=; b=tBa+ocYYvHmYGK
-	YQnVc0rjvNEQ9mOyyJDTCIVO0w/5QCqNq8AkZNzPdGnVM5/V/b0T6EwFFupBgSmrm9VD8maHQYj3q
-	oblkSUkKeFjEvdWf8g/LwXLpE/IxfFLdOeqPkTjkXxwogI/tKx1ZS+8q8w6AL4cV9rBwdYPxVTR4f
-	c2Zc4qbN6IbjrNQKKoRZaJKUvHIjRh2boVbZNHX5N8E4ZU5s6aYaJ97+DdKe90BB4IkFS+ajVXOzW
-	/oqFY4rKRz1kISxh1hTdt5oOVFRv6hBZkYf9mjIYRnx9WNcKHYYmEehBc7JcfKLxc7mhaDfZg06HD
-	7sgILDO3Q6GeolSKpySQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fetPc+gKSIxzaAdDC0DhVKnx8CDKriVDBQUE8jX41nU=; b=qirXiMtl+jzs/a52uy0PbUATlm
+	l5YtMtiCT7MX1jX2ujy/yLi6k9oow1xaHBkWh/pCA5Kq45mslltcOLzz/ZVus/oHr8EjIsUTUCUKt
+	LZUirK0ekjRSvYIc5bmCs860HpuIvrgv+Hd9wZvfbXcGwy6hFsstoZB9xJdLnAeKyP3gmCB6+MqZw
+	RZjRMMr0o0CVfJ7fhd6u2MALpBT9hmwDelWOQV+HuXLrWaBpGSNrqVr+6dL3K/8+9+1829vowNIY8
+	qfeZj+/z+DFHTHlV4Wbrv+yKEz7/QHkFGyyTX9jW4YYHD5ijh9B8dOLU5ZFXhKEkrW3VjH5oP13Ri
+	ehS1f/3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbMQw-00DgzY-1X;
-	Wed, 30 Aug 2023 14:44:38 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1qbMdA-00DiG1-1A;
+	Wed, 30 Aug 2023 14:57:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbMQs-00Dgyp-1q;
-	Wed, 30 Aug 2023 14:44:36 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-52bcd4db4e6so2825195a12.0;
-        Wed, 30 Aug 2023 07:44:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693406668; x=1694011468; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CsYMETSOU6129tG8HXblnzx60u2U2xz76fCR1ofRupQ=;
-        b=jwj2wPpJ3jpy5BTuyEbrwhMIRKudmu5D1YdU0SKqC9ySweGnUowxKJ129F9/R48wkf
-         N2YQLkGdbsk23E30gv8b/aWGP0MWblSypdJ1DSm58Bx1I+QTHDZ+fnTZUQ298RGCUSWL
-         M+LsmZzA1hGt2ipvamSD9hBPG3/3CEI0m/+3rgyLfNA6LVvLsALBEmdH4DYcmoPXS1iO
-         LcgS4taCvn7SwVYuiLdVr0I4C9h9b0bu2K1bEPWfIcww5j7Hrm4/yS/Pes4RaB97zrsD
-         g4UW3lR7Z6tBq4+CM6C4Oy2l67ZpjNr19embKnoI4FYmEK9M/uJBuKr2PD/5T2G48/TF
-         ihaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693406668; x=1694011468;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CsYMETSOU6129tG8HXblnzx60u2U2xz76fCR1ofRupQ=;
-        b=BK1ZOh65aCNukU9FP3GPwvdv2cZo4ulwEwcl34CFyHiwwI8s0dHVPCw6LpCNeDpdC2
-         t1OsGJj70gz2npRW95x+v5ux8CVwMbyaQ+V9qhMfpkjtD+2kjNsxp7dCgMb9J3Uce/0I
-         mvH4JnFTVPvSo4xAZkHr4qI3+tYn7xviOGu6dN1TTgji+ahLAFjbLSy4DrYXIb9/suVx
-         bCoep1hHPN7UwjLaecBJrXZ9v8niqRArKf61dRp1zWXDlRNwrikiVYc/NMxdS+z/fnsM
-         bS1QrY2BsGz/VsfblHnzau3ABEk8XzJ1gFWYB9maVrvk6u+7DRaJ6AVanfh7YgeW9zlN
-         OJGA==
-X-Gm-Message-State: AOJu0Yxy4f9K63B7QjljDUtzhQlX5YNfMBHVxXQyLzqW6Y692HMJXz5m
-	PKEs3i6reQ4H6ojFvgopK9TS2VCMjKUH/cHj0V2t4Yd17BU=
-X-Google-Smtp-Source: AGHT+IFheh4sFIyhEV0de06E87iCx48uH91HVe//0t7LOUW/ly/HbssF0qp1TF6EafRg/YEMLKRO6ws5/HRiaLqEBdY=
-X-Received: by 2002:aa7:d898:0:b0:523:d363:1627 with SMTP id
- u24-20020aa7d898000000b00523d3631627mr2075001edq.33.1693406667640; Wed, 30
- Aug 2023 07:44:27 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230811171953.176431-1-helen.koike@collabora.com>
- <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local> <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
- <87bkeo23vs.fsf@intel.com> <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
- <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
-In-Reply-To: <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
-From: Rob Clark <robdclark@gmail.com>
-Date: Wed, 30 Aug 2023 07:44:15 -0700
-Message-ID: <CAF6AEGt9M5py0M+7AfrW2YMi6XbHh6ceVszb1BobgqZFvp+w=A@mail.gmail.com>
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+	id 1qbMd5-00DiEX-1a;
+	Wed, 30 Aug 2023 14:57:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F28B96251D;
+	Wed, 30 Aug 2023 14:57:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA762C433C8;
+	Wed, 30 Aug 2023 14:57:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693407430;
+	bh=hvNd6USN55C63Ho+Y1o3PyEx2EFP7F9vcDQbxMzgnHo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rlBpeLsGS4yzjCj6X53MRyUJ3jJYJUhuKn1S44WNd388z1wPi6LPKIyP0yikkPtrN
+	 OGgS1sGF1MQuxUQqAlzl+LUJ6l7LaluuE6f/Dr4lAn37hxYYJ00Dbb+AxhjHbop9Yp
+	 dqM+0Vnu+W9TF8tRFe9ptUidIjREnW/rP8L0SNM3kBB4/DIU5nT3HwAuyoxC7nmmhy
+	 i+HAnAy2AymEv99T3Z0kRSPL3YxelypUnZsyaicZIGURWVirMUnsjJVt3e7jcoSkfH
+	 Xk3+MCSyShvhvxLU4qCXZ8kxUXghXvZPOdB/xoCvwzCP87FNJ0W+eO3fJ6xNJGEmpJ
+	 QK71cMn6T1GNw==
+Date: Wed, 30 Aug 2023 16:57:07 +0200
+From: Maxime Ripard <mripard@kernel.org>
 To: Helen Koike <helen.koike@collabora.com>
-Cc: Maxime Ripard <mripard@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>, emma@anholt.net, 
-	linux-doc@vger.kernel.org, david.heidelberg@collabora.com, 
-	dri-devel@lists.freedesktop.org, jbrunet@baylibre.com, robdclark@google.com, 
-	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
-	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
-	daniels@collabora.com, martin.blumenstingl@googlemail.com, 
-	robclark@freedesktop.org, anholt@google.com, 
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, 
-	guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, emma@anholt.net, 
+	linux-doc@vger.kernel.org, david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, 
+	jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, 
+	sergi.blanch.torne@collabora.com, gustavo.padovan@collabora.com, 
+	linux-rockchip@lists.infradead.org, daniels@collabora.com, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, anholt@google.com, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
 	tzimmermann@suse.de, alyssa@rosenzweig.io, vignesh.raman@collabora.com
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+Message-ID: <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
+References: <20230811171953.176431-1-helen.koike@collabora.com>
+ <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
+ <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+ <87bkeo23vs.fsf@intel.com>
+ <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+ <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_074434_610187_CB16C971 
-X-CRM114-Status: GOOD (  75.30  )
+X-CRM114-CacheID: sfid-20230830_075711_614053_47566E41 
+X-CRM114-Status: GOOD (  81.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,173 +81,280 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0888496733922904437=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-cmVwbHlpbmcgdG8gYSBjb3VwbGUgcG9pbnRzIG9uIHRoaXMgdGhyZWFkCgpPbiBXZWQsIEF1ZyAz
-MCwgMjAyMyBhdCA2OjI14oCvQU0gSGVsZW4gS29pa2UgPGhlbGVuLmtvaWtlQGNvbGxhYm9yYS5j
-b20+IHdyb3RlOgo+Cj4gSGkgYWxsLAo+Cj4gVGhhbmtzIGZvciB5b3UgY29tbWVudHMuCj4KPiBP
-biAzMC8wOC8yMDIzIDA4OjM3LCBNYXhpbWUgUmlwYXJkIHdyb3RlOgo+ID4gT24gV2VkLCBBdWcg
-MzAsIDIwMjMgYXQgMDE6NTg6MzFQTSArMDMwMCwgSmFuaSBOaWt1bGEgd3JvdGU6Cj4gPj4gT24g
-V2VkLCAzMCBBdWcgMjAyMywgTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPiB3cm90
-ZToKPiA+Pj4gT24gVHVlLCBBdWcgMjIsIDIwMjMgYXQgMDQ6MjY6MDZQTSArMDIwMCwgRGFuaWVs
-IFZldHRlciB3cm90ZToKPiA+Pj4+IE9uIEZyaSwgQXVnIDExLCAyMDIzIGF0IDAyOjE5OjUzUE0g
-LTAzMDAsIEhlbGVuIEtvaWtlIHdyb3RlOgo+ID4+Pj4+IEZyb206IFRvbWV1IFZpem9zbyA8dG9t
-ZXUudml6b3NvQGNvbGxhYm9yYS5jb20+Cj4gPj4+Pj4KPiA+Pj4+PiBEZXZlbG9wZXJzIGNhbiBl
-YXNpbHkgZXhlY3V0ZSBzZXZlcmFsIHRlc3RzIG9uIGRpZmZlcmVudCBkZXZpY2VzCj4gPj4+Pj4g
-YnkganVzdCBwdXNoaW5nIHRoZWlyIGJyYW5jaCB0byB0aGVpciBmb3JrIGluIGEgcmVwb3NpdG9y
-eSBob3N0ZWQKPiA+Pj4+PiBvbiBnaXRsYWIuZnJlZWRlc2t0b3Aub3JnIHdoaWNoIGhhcyBhbiBp
-bmZyYXN0cnVjdHVyZSB0byBydW4gam9icwo+ID4+Pj4+IGluIHNldmVyYWwgcnVubmVycyBhbmQg
-ZmFybXMgd2l0aCBkaWZmZXJlbnQgZGV2aWNlcy4KPiA+Pj4+Pgo+ID4+Pj4+IFRoZXJlIGFyZSBh
-bHNvIG90aGVyIGF1dG9tYXRlZCB0b29scyB0aGF0IHVwcmV2IGRlcGVuZGVuY2llcywKPiA+Pj4+
-PiBtb25pdG9yIHRoZSBpbmZyYSwgYW5kIHNvIG9uIHRoYXQgYXJlIGFscmVhZHkgdXNlZCBieSB0
-aGUgTWVzYQo+ID4+Pj4+IHByb2plY3QsIGFuZCB3ZSBjYW4gcmV1c2UgdGhlbSB0b28uCj4gPj4+
-Pj4KPiA+Pj4+PiBBbHNvLCBzdG9yZSBleHBlY3RhdGlvbnMgYWJvdXQgd2hhdCB0aGUgRFJNIGRy
-aXZlcnMgYXJlIHN1cHBvc2VkCj4gPj4+Pj4gdG8gcGFzcyBpbiB0aGUgSUdUIHRlc3Qgc3VpdGUu
-IEJ5IHN0b3JpbmcgdGhlIHRlc3QgZXhwZWN0YXRpb25zCj4gPj4+Pj4gYWxvbmcgd2l0aCB0aGUg
-Y29kZSwgd2UgY2FuIG1ha2Ugc3VyZSBib3RoIHN0YXkgaW4gc3luYyB3aXRoIGVhY2gKPiA+Pj4+
-PiBvdGhlciBzbyB3ZSBjYW4ga25vdyB3aGVuIGEgY29kZSBjaGFuZ2UgYnJlYWtzIHRob3NlIGV4
-cGVjdGF0aW9ucy4KPiA+Pj4+Pgo+ID4+Pj4+IEFsc28sIGluY2x1ZGUgYSBjb25maWd1cmF0aW9u
-IGZpbGUgdGhhdCBwb2ludHMgdG8gdGhlIG91dC1vZi10cmVlCj4gPj4+Pj4gQ0kgc2NyaXB0cy4K
-PiA+Pj4+Pgo+ID4+Pj4+IFRoaXMgd2lsbCBhbGxvdyBhbGwgY29udHJpYnV0b3JzIHRvIGRybSB0
-byByZXVzZSB0aGUgaW5mcmFzdHJ1Y3R1cmUKPiA+Pj4+PiBhbHJlYWR5IGluIGdpdGxhYi5mcmVl
-ZGVza3RvcC5vcmcgdG8gdGVzdCB0aGUgZHJpdmVyIG9uIHNldmVyYWwKPiA+Pj4+PiBnZW5lcmF0
-aW9ucyBvZiB0aGUgaGFyZHdhcmUuCj4gPj4+Pj4KPiA+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBUb21l
-dSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgo+ID4+Pj4+IFNpZ25lZC1vZmYt
-Ynk6IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lrZUBjb2xsYWJvcmEuY29tPgo+ID4+Pj4+IEFja2Vk
-LWJ5OiBEYW5pZWwgU3RvbmUgPGRhbmllbHNAY29sbGFib3JhLmNvbT4KPiA+Pj4+PiBBY2tlZC1i
-eTogUm9iIENsYXJrIDxyb2JkY2xhcmtAZ21haWwuY29tPgo+ID4+Pj4+IFRlc3RlZC1ieTogUm9i
-IENsYXJrIDxyb2JkY2xhcmtAZ21haWwuY29tPgo+ID4+Pj4KPiA+Pj4+IE9rIEkgcHVzaGVkIHRo
-aXMgaW50byBhIHRvcGljL2RybS1jaSBicmFuY2ggaW4gZHJtLmdpdCBhbmQgYXNrZWQgc2ZyIHRv
-Cj4gPj4+PiBpbmNsdWRlIHRoYXQgYnJhbmNoIGluIGxpbnV4LW5leHQuCj4gPj4+Pgo+ID4+Pj4g
-QnV0IGFsc28gSSdkIGxpa2UgdG8gc2VlIGEgbG90IG1vcmUgYWNrcyBoZXJlLCB3ZSBzaG91bGQg
-YmUgYWJsZSB0byBhdAo+ID4+Pj4gbGVhc3QgcGlsZSB1cCBhIGJ1bmNoIG9mIChkcml2ZXIpIG1h
-aW50YWluZXJzIGZyb20gZHJtLW1pc2MgaW4gc3VwcG9ydCBvZgo+ID4+Pj4gdGhpcy4gQWxzbyBt
-YXliZSBtZWRpYSwgYXQgbGVhc3QgSSd2ZSBoZWFyZCBub2lzZXMgdGhhdCB0aGV5J3JlIG1heWJl
-Cj4gPj4+PiBpbnRlcmVzdGVkIHRvbz8gUGx1cyBhbnlvbmUgZWxzZSwgdGhlIG1vcmUgdGhlIGJl
-dHRlci4KPiA+Pj4KPiA+Pj4gSSdtIG5vdCByZWFsbHkgY29udmluY2VkIGJ5IHRoYXQgYXBwcm9h
-Y2ggYXQgYWxsLCBhbmQgbW9zdCBvZiB0aGUgaXNzdWVzCj4gPj4+IEkgc2VlIGFyZSBzaG93biBi
-eSB0aGUgZm9sbG93LXVwIHNlcmllcyBoZXJlOgo+ID4+Cj4gPj4gSSdtIG5vdCBmdWxseSBjb252
-aW5jZWQgZWl0aGVyLCBtb3JlIGxpa2UgImxldCdzIHNlZSIuIEluIHRoYXQgbmFycm93Cj4gPj4g
-c2Vuc2UsIGFjay4gSSBkb24ndCBzZWUgaGFybSBpbiB0cnlpbmcsIGlmIHlvdSdyZSBhbHNvIG9w
-ZW4gdG8gYmFja2luZwo+ID4+IG9mZiBpbiBjYXNlIGl0IGRvZXMgbm90IHBhbiBvdXQuCj4gPj4K
-PiA+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsLzIwMjMwODI1MTIyNDM1LjMx
-NjI3Mi0xLXZpZ25lc2gucmFtYW5AY29sbGFib3JhLmNvbS8KPiA+Pj4KPiA+Pj4gICAgKiBXZSBo
-YXJkY29kZSBhIENJIGZhcm0gc2V0dXAgaW50byB0aGUga2VybmVsCgpXZSBkbyBoYXZlIGZhcm0g
-c3RhdHVzIG91dCBvZiB0cmVlIHNvIHdlIGRvbid0IG5lZWQgdG8gcHVzaCBhIGtlcm5lbApwYXRj
-aCBmb3Igb3V0YWdlcy4KCk90aGVyIHRoYW4gdGhhdCwgSSBjYW4gZ28gZWl0aGVyIHdheSwgd2l0
-aCB0aGUgc2NyaXB0cyBhbmQgcmVsYXRlZCB5bWwKaW4gdHJlZSBvciBvdXQgb2YgdHJlZS4gIEJ1
-dCB0aGUgZXhwZWN0YXRpb24gZmlsZXMgKGllLiB0aGUgcGF0Y2ggeW91CmFyZSBjb21wbGFpbmlu
-ZyBhYm91dCkgYWJzb2x1dGVseSBuZWVkIHRvIGJlIGluLXRyZWUuICBJdCBtdXN0IGJlCnBvc3Np
-YmxlIHRvIHVwZGF0ZSB0aGVtIGluIHN5bmMgd2l0aCBkcml2ZXIgY2hhbmdlcyB0aGF0IGZpeCB0
-ZXN0cy4KVGhlcmUgbWF5IGJlIGEgYml0IG9mIHJlbGF0ZWQgY2h1cm4gaW5pdGlhbGx5IGllLiBi
-YXNlZCBvbiBvdXIgbGVuZ3RoeQpleHBlcmllbmNlIGF0IHRoaXMgcG9pbnQgd2l0aCBtZXNhIENJ
-LCB3ZSBjYW4ndCBrbm93IGFib3V0IGFsbCB0aGUKZmxha3kgdGVzdHMgdW50aWwgcGVvcGxlIHN0
-YXJ0IHVzaW5nIENJIGluIGFuZ2VyIDstKQoKPgo+Cj4gVGhlc2UgY291bGQgYmUgb3V0IG9mIHRy
-ZWUuCj4KPiBUaGVyZSBpcyBhIHZlcnNpb24gb3V0c2lkZSB0aGUga2VybmVsIHRyZWUgd2hlcmUg
-eW91IGp1c3QgcG9pbnQgdGhlIENJCj4gY29uZmlndXJhdGlvbiB0byBhIHVybDoKPiBodHRwczov
-L2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvZ2Z4LWNpL2RybS1jaS8tL21lcmdlX3JlcXVlc3RzLzEK
-Pgo+IFdlIHdlcmUgZGlzY3Vzc2luZyBpdCBoZXJlCj4gaHR0cHM6Ly93d3cubGludXh0di5vcmcv
-Y2dpLWJpbi9tYWlsbWFuL3ByaXZhdGUvbGludXh0di1jaS8yMDIzLUF1Z3VzdC8wMDAwMjcuaHRt
-bAo+Cj4gKEkgZ3Vlc3MgU2ltYSdzIHJlcGx5IGRpZG4ndCBnb3QgaW50byB0aGUgbWFpbGluZyBs
-aXN0KSBidXQgdGhlIGFyZ3VtZW50Cj4gb2Ygbm90IGhhdmluZyBvdXQgb2YgdHJlZSByZXBvIGlz
-IGR1ZSB0byBoaXN0b3JpY2FsIGJhZCBleHBlcmllbmNlIG9mCj4gaGF2aW5nIHRvIHN5bmMgdGhl
-IGtlcm5lbCB3aXRoIHRoZSBjb2RlIGFuZCBpdCBjYW4gYmVjb21lIG1lc3N5Lgo+Cj4KPiA+Pj4K
-PiA+Pj4gICAgKiBXZSBjYW5ub3QgdHJ1c3QgdGhhdCB0aGUgY29kZSBiZWluZyBydW4gaXMgYWN0
-dWFsbHkgdGhlIG9uZSBiZWluZwo+ID4+PiAgICAgIHB1c2hlZCBpbnRvIGdpdGxhYgo+Cj4KPiBX
-ZSBjYW4gaW1wcm92ZSB0aGlzIGlmIHRoaXMgaXMgYSByZXF1aXJlbWVudC4KPiBGb3IgRFRTIGNv
-bmZpZ3VyYXRpb24gd2UgY2FuIHdvcmsgd2l0aCBvdmVybGF5cyAod2hpY2ggaXMgdGhlIGN1cnJl
-bnQKPiBtb2RpZmljYXRpb24gb24gdGhhdCBwYXRjaHNldCkuIEZvciBvdGhlciBjaGFuZ2VzIHRo
-YXQgYXJlIG5vdCBzdWl0YWJsZQo+IHRvIHVwc3RyZWFtIChhbmQgc2hvdWxkIGJlIHJhcmUpIHdl
-IGNhbiBzZWUgaWYgd2Ugd29yayB3aXRoIHRoZQo+IGAtZXh0ZXJuYWwtZml4ZXNgIGFwcHJvYWNo
-IG9yIGFub3RoZXIgYXBwcm9hY2gsIHdlIGNhbiBjaGVjayBpdCBjYXNlIGJ5Cj4gY2FzZSB0byB1
-bmRlcnN0YW5kIHdoeSBpdCBpcyBub3Qgc3VpdGFibGUgZm9yIHVwc3RyZWFtLgo+CgpJTUhPIHRo
-ZSBvY2Nhc2lvbmFsIG5lZWQgZm9yIGV4dHJhIHBhdGNoZXMgaXMgYSBmYWN0IG9mIGxpZmUgd2l0
-aCB0aGUKa2VybmVsIGRldmVsb3BtZW50IHByb2Nlc3MsIGFuZCB3ZSdsbCBoYXZlIHRvIGxpdmUg
-d2l0aCB0aGlzIHVudGlsCl9hbGxfIGtlcm5lbCBwYXRjaGVzIHJ1biB0aHJ1IHByZS1tZXJnZSBD
-SS4gIChJJ20gbm90IGhvbGRpbmcgbXkKYnJlYXRoLCBidXQgd2hvIGtub3dzLi4pCgpJZiBzb21l
-IHBhcnRpY3VsYXIgYm9hcmQgZG9lc24ndCBib290IGJlY2F1c2Ugb2Ygc29tZSBlYXJseS1yYwpi
-cmVha2FnZSBlbHNld2hlcmUgaW4gdGhlIGtlcm5lbCwgdGhlbiB3ZSBjYW4ndCBydW4gQ0kuCgo+
-Cj4gPj4+Cj4gPj4+ICAgICogSU1PLCBhbmQgSSBrbm93IHdlIGRpc2FncmVlIGhlcmUsIGFueSBJ
-R1QgdGVzdCB3ZSBlbmFibGUgZm9yIGEgZ2l2ZW4KPiA+Pj4gICAgICBwbGF0Zm9ybSBzaG91bGQg
-d29yaywgcGVyaW9kLiBBbGxvd2luZyBmYWlsdXJlcyBhbmQgZmxha3kgdGVzdHMganVzdAo+ID4+
-PiAgICAgIHN3ZWVwcyB3aGF0ZXZlciBpc3N1ZSBpcyB0aGVyZSB1bmRlciB0aGUgcnVnLiBJZiB0
-aGUgdGVzdCBpcyBhdAo+ID4+PiAgICAgIGZhdWx0LCB3ZSBzaG91bGQgZml4IHRoZSB0ZXN0LCBp
-ZiB0aGUgZHJpdmVyIC8ga2VybmVsIGlzIGF0IGZhdWx0LAo+ID4+PiAgICAgIHRoZW4gSSBjZXJ0
-YWlubHkgd2FudCB0byBrbm93IGFib3V0IGl0Lgo+Cj4KPiBJIGJlbGlldmUgd2UgbmVlZCBhIGJh
-c2VsaW5lIGFuZCB1bmRlcnN0YW5kIHRoZSBjdXJyZW50IHN0YXR1cyBvZiB0ZXN0cy4KPiBJZiB5
-b3UgY2hlY2sgdGhlIHhmYWlscyBmb2xkZXIgaW4gdGhlIHBhdGNoIHlvdSBjYW4gc2VlIHRoYXQg
-SSBoYWQgdG8KPiBhZGQgYSBmZXcgdGVzdHMgb24gKi1za2lwcy50eHQgc2luY2UgdGhvc2UgdGVz
-dHMgY3Jhc2hlcyB0aGUgc3lzdGVtIGFuZAo+IG90aGVyIG9uICotZmFpbHMudHh0IHRoYXQgYXJl
-IGNvbnNpc3RlbnRseSBub3QgcGFzc2luZy4KPgo+IFNpbmNlIHRoZSAiYW55IElHVCB0ZXN0IHdl
-IGVuYWJsZSBmb3IgYSBnaXZlbiBwbGF0Zm9ybSBzaG91bGQgd29yayIgaXMKPiBub3QgYSByZWFs
-aXR5IGF0bSwgd2UgbmVlZCB0byBoYXZlIGEgY2xlYXIgdmlldyBhYm91dCB3aGljaCB0ZXN0cyBh
-cmUKPiBub3QgY29ycmVzcG9uZGluZyB0byBpdCwgc28gd2UgY2FuIHN0YXJ0IGZpeGluZy4gRmly
-c3Qgd2UgbmVlZCB0byBiZQo+IGF3YXJlIG9mIHRoZSBpc3N1ZXMgc28gd2UgY2FuIHN0YXJ0IGZp
-eGluZyB0aGVtLCBvdGhlcndpc2Ugd2Ugd2lsbCBzdGF5Cj4gaW4gdGhlICJubyB0ZXN0cyBubyBm
-YWlsdXJlcyIgZ3JvdW5kIDopCj4KCkkgYWdyZWUgd2l0aCBIZWxlbiBoZXJlLiAgV2UgbmVlZCBh
-IGJhc2VsaW5lLiAgQW5kIHNvbWV0aW1lcyBzb21lb25lCm1pZ2h0IGZpeCBvbmUgdGVzdCB3aXRo
-b3V0IHJlYWxpemluZyB0aGUgc2FtZSBmaXggZml4ZWQgYW5vdGhlci4gIFRoYXQKaXMgdGhlIHdo
-b2xlIHB1cnBvc2Ugb2YgeGZhaWxzLiAgV2UgaGF2ZSBhIGxvbmcgaGlzdG9yeSB3aXRoIHRoaXMK
-cHJvY2VzcyBvbiB0aGUgbWVzYSBzaWRlLCBhbmQgaXQgd29ya3MuCgo+Cj4gPj4KPiA+PiBBdCBs
-ZWFzdCBmb3IgZGlzcGxheSwgd2hlcmUgdGhpcyBhbHNvIGRlcGVuZHMgb24gcGVyaXBoZXJhbCBo
-YXJkd2FyZSwKPiA+PiBpdCdzIG5vdCBhbiBlYXN5IHByb2JsZW0sIHJlYWxseS4KPiA+Cj4gPiBB
-c2lkZSBmcm9tIHRoZSBDaGFtZWxpdW0gdGVzdHMsIHdoaWNoIHRlc3RzIGFjdHVhbGx5IHJlbHkg
-b24gcGVyaXBoZXJhbAo+ID4gaGFyZHdhcmU/IE9uIEVESUQgYW5kIGhvdHBsdWcsIHN1cmUsIGJ1
-dCB0aGF0IGNhbiBlYXNpbHkgYmUgc2V0IHVwIGZyb20KPiA+IHRoZSB1c2Vyc3BhY2UsIG9yIHNv
-bWV0aGluZyBsaWtlCj4gPgo+ID4gaHR0cHM6Ly93d3cubGluZHktaW50ZXJuYXRpb25hbC5jb20v
-SERNSS0yLTAtRURJRC1FbXVsYXRvci5odG0/d2Vic2FsZTg9bGQwMTAxLmxkMDIxMTAyJnBpPTMy
-MTE1Cj4gPgo+ID4+IEhvdyByZWxpYWJsZSBkbyB5b3UgbmVlZCBpdCB0byBiZT8gSG93IG1hbnkg
-bmluZXM/IFdobyBpcyBnb2luZyB0bwo+ID4+IGRlYnVnIHRoZSBpc3N1ZXMgdGhhdCBuZWVkIGh1
-bmRyZWRzIG9yIHRob3VzYW5kcyBvZiBydW5zIHRvIHJlcHJvZHVjZT8KPiA+PiBJZiBhIGNvbW1p
-dCBtYWtlcyBzb21lIHRlc3QgbGVzcyByZWxpYWJsZSwgaG93IGxvbmcgaXMgaXQgZ29pbmcgdG8K
-PiA+PiB0YWtlIHRvIGV2ZW4gc2VlIHRoYXQgb3IgcGlucG9pbnQgdGhhdD8KCkFzIGZhciBhcyBm
-bGFrZXMsIGF0IHRoaXMgcG9pbnQgd2UgaGF2ZSBzb21lIGluZnJhc3RydWN0dXJlIGZvcgp0cmFj
-a2luZyB0aG9zZSBvbiB0aGUgbWVzYSBzaWRlLi4gd2UgY291bGQgcHJvYmFibHkgZXh0ZW5kIGRy
-bS9jaSBvdmVyCnRpbWUgdG8gZG8gc2ltaWxhcmx5LgoKPiA+IEkgbWVhbiwgdGhhdCdzIGFsc28g
-dHJ1ZSBmb3IgZmFpbHVyZXMgb3Igc3VjY2VzcyB0aGVuLiBIb3cgbWFueSB0aW1lcyBkbwo+ID4g
-eW91IG5lZWQgYSB0ZXN0IHRvIHJ1biBwcm9wZXJseSB0byBxdWFsaWZ5IGl0IGFzIGEgbWVhbmlu
-Z2Z1bCB0ZXN0PyBIb3cKPiA+IGRvIHlvdSBrbm93IHRoYXQgaXQncyBub3QgYSBmbGFreSB0ZXN0
-Pwo+ID4KPiA+IFVsdGltYXRlbHksIGl0J3MgYWJvdXQgdHJ1c3QuIElmLCBmb3IgYSBnaXZlbiB0
-ZXN0IHRoYXQganVzdCBmYWlsZWQsIEkKPiA+IGNhbid0IGJlIGNlcnRhaW4gdGhhdCBpdCdzIGJl
-Y2F1c2Ugb2YgdGhlIGJyYW5jaCBJIGp1c3Qgc3VibWl0dGVkLCBJCj4gPiB3aWxsIGp1c3QgaWdu
-b3JlIHRoZSB0ZXN0cyByZXN1bHRzIGFmdGVyIGEgd2hpbGUuCgpVbnRpbCB3ZSBoYXZlIGNvbnRy
-aWJ1dG9ycyBkaXJlY3RseSBzdWJtaXR0aW5nIE1ScyAod2hpY2ggaXMgYSBwbGFjZQpJJ2QgbGlr
-ZSB0byBnZXQgdG8gZXZlbnR1YWxseSkgaXQgd2lsbCBiZSB0aGUgdmFyaW91cyBtYWludGFpbmVy
-cwpkZWFsaW5nIHdpdGggZmxha2VzL2ZhaWxzIHJhdGhlciB0aGFuIGluZGl2aWR1YWwgY29udHJp
-YnV0b3JzLiAgSWUuCnRoZSBleHBlY3RlZCB1c2FnZSBwYXR0ZXJuIHdvdWxkIGJlIG1haW50YWlu
-ZXJzIHB1c2hpbmcgcGF0Y2hlcyB0byBhCnN0YWdpbmcgYnJhbmNoIHdoaWNoIGlzIHRoZW4gc3Vi
-bWl0dGVkIGFzIGEgZ2l0bGFiIE1SIHdoZXJlIENJIGlzIHJ1bi4KSSB3b3VsZCBob3BlIHRoYXQg
-bWFpbnRhaW5lcnMgaGF2ZSBzdWZmaWNpZW50IGV4cGVyaWVuY2Ugd2l0aCB0aGUgY29kZQp0aGV5
-IGFyZSBtYWludGFpbmluZyB0byBldmFsdWF0ZSB0aGUgZmFpbHVyZS4KCkJhc2ljYWxseSwgSSB0
-aGluayBub3cgaXMgdGhlIHRpbWUgdG8gZ2V0IENJIGluIHBsYWNlIGFuZCBzdGFydCBmaW5lCnR1
-bmluZywgYmVmb3JlIHdlIGhhdmUgaW5kaXZpZHVhbCBjb250cmlidXRvcnMgc3VibWl0dGluZyBN
-UnMKZGlyZWN0bHkuCgpCUiwKLVIKCj4gPiBUaGlzIGlzIGFscmVhZHkgd2hhdCBwbGFndWVzIGtl
-cm5lbGNpLCBhbmQgd2Ugc2hvdWxkIGRvIGJldHRlci4KPgo+Cj4gVGhpcyBpcyBzb21ldGhpbmcg
-dGhhdCBpcyByZWFsbHkgbmljZSBvbiBNZXNhM0QsIGEgcGF0Y2ggb25seSBnZXRzCj4gbWVyZ2Vk
-IGlmIHRlc3RzIHBhc3Nlcywgd2hpY2ggZm9yY2VzIHBlb3BsZSB0byBub3QgaWdub3JlIGl0LCB3
-aGljaAo+IGZvcmNlcyB0aGUgY29kZSB0byBiZSBmaXhlZCBhbmQgdGhlIENJIHRvIGJlIGNvbnN0
-YW50bHkgbWFpbnRhaW5lZC4KPgo+IE9mIGNvdXJzZSB0aGVyZSBhcmUgYmFkIGRheXMgdGhlcmUs
-IGJ1dCB0aGVyZSBpcyByZWFsIHZhbHVlLiBOaWNlIHRocmVhZAo+IHRvIGNoZWNrOiBodHRwczov
-L2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvbWVzYS9tZXNhLy0vaXNzdWVzLzg2MzUgKHRoYW5rcwo+
-IEFseXNzYSBmb3IgdGhlIGZlZWRiYWNrKS4KPgo+Cj4gPgo+ID4gQW5kIEknbSBzb3JyeSwgYnV0
-IGlmIHNvbWUgcGFydCBvZiB0aGUga2VybmVsIG9yIGRyaXZlciBqdXN0IGlzbid0Cj4gPiByZWxp
-YWJsZSwgdGhlbiB3ZSBzaG91bGRuJ3QgY2xhaW0gaXQgaXMgKGV4Y2VwdCBmb3IgYWxsIHRoZSB0
-aW1lcyBpdAo+ID4gaXNuJ3QpLiBJZiBuby1vbmUgaGFzIHRoZSB0aW1lIHRvIGxvb2sgaW50byBp
-dCwgZmluZSwgYnV0IGZsYWdnaW5nIGl0Cj4gPiB1bmRlciBhIGZsYWt5IHRlc3QgZG9lc24ndCBo
-ZWxwIGFueW9uZS4KPgo+Cj4gQXQgbGVhc3Qgd2Ugd291bGQga25vdyB3aGF0IGlzIHRoZXJlIHRo
-YXQgaXNuJ3QgcmVsaWFibGUuCj4gV2UgY291bGQgYWxzbyBkZWZpbmUgcG9saWNpZXMgbGlrZTog
-ZmFpbGluZyBvbmUgb3V0IG9mIDEwIGlzIGZpbmUuIEFuZAo+IHdlIGNhbiBoYXZlIHNjcmlwdHMg
-dGhhdCBkbyBhIHN0cmVzcyB0ZXN0IGFuZCByZXBvcnQgYmFjay4KPiBJdCBpcyByZWFsbHkgbmlj
-ZSBmb3IgdXNlcnMgdG8ga25vdyB0aGlzIGtpbmQgb2Ygc3RhdHVzIG9mIGRyaXZlcnMuCj4KPgo+
-IFRoYW5rcyBmb3IgeW91ciBmZWVkYmFjaywgcGxlYXNlIGtlZXAgdGhlbSBjb21pbmcgOikKPgo+
-IFJlZ2FyZHMsCj4gSGVsZW4KPgo+Cj4gPgo+ID4gTGlrZSwgZnJvbSB0aGF0IHBhdGNoLCBob3cg
-Y2FuIEkga25vdyB3aGF0IGlzIHRoZSBpc3N1ZSB3aXRoCj4gPiBrbXNfaGRtaV9pbmplY3RAaW5q
-ZWN0LTRrIG9yIGttc19hZGRmYl9iYXNpY0BhZGRmYjI1LWJhZC1tb2RpZmllciBvbgo+ID4gbXQ4
-MTczLiBJIGNlcnRhaW5seSBjYW4ndC4gQW5kIG5laXRoZXIgb2YgdGhvc2UgaGF2ZSBhbnl0aGlu
-ZyB0byBkbyB3aXRoCj4gPiBwZXJpcGhlcmFsIGhhcmR3YXJlLgo+ID4KPiA+IE1heGltZQoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============0888496733922904437==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7ec3syeqgcjlux4q"
+Content-Disposition: inline
+
+
+--7ec3syeqgcjlux4q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Aug 30, 2023 at 10:24:49AM -0300, Helen Koike wrote:
+> Hi all,
+>=20
+> Thanks for you comments.
+>=20
+> On 30/08/2023 08:37, Maxime Ripard wrote:
+> > On Wed, Aug 30, 2023 at 01:58:31PM +0300, Jani Nikula wrote:
+> > > On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> > > > On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
+> > > > > On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
+> > > > > > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> > > > > >=20
+> > > > > > Developers can easily execute several tests on different devices
+> > > > > > by just pushing their branch to their fork in a repository host=
+ed
+> > > > > > on gitlab.freedesktop.org which has an infrastructure to run jo=
+bs
+> > > > > > in several runners and farms with different devices.
+> > > > > >=20
+> > > > > > There are also other automated tools that uprev dependencies,
+> > > > > > monitor the infra, and so on that are already used by the Mesa
+> > > > > > project, and we can reuse them too.
+> > > > > >=20
+> > > > > > Also, store expectations about what the DRM drivers are supposed
+> > > > > > to pass in the IGT test suite. By storing the test expectations
+> > > > > > along with the code, we can make sure both stay in sync with ea=
+ch
+> > > > > > other so we can know when a code change breaks those expectatio=
+ns.
+> > > > > >=20
+> > > > > > Also, include a configuration file that points to the out-of-tr=
+ee
+> > > > > > CI scripts.
+> > > > > >=20
+> > > > > > This will allow all contributors to drm to reuse the infrastruc=
+ture
+> > > > > > already in gitlab.freedesktop.org to test the driver on several
+> > > > > > generations of the hardware.
+> > > > > >=20
+> > > > > > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> > > > > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> > > > > > Acked-by: Daniel Stone <daniels@collabora.com>
+> > > > > > Acked-by: Rob Clark <robdclark@gmail.com>
+> > > > > > Tested-by: Rob Clark <robdclark@gmail.com>
+> > > > >=20
+> > > > > Ok I pushed this into a topic/drm-ci branch in drm.git and asked =
+sfr to
+> > > > > include that branch in linux-next.
+> > > > >=20
+> > > > > But also I'd like to see a lot more acks here, we should be able =
+to at
+> > > > > least pile up a bunch of (driver) maintainers from drm-misc in su=
+pport of
+> > > > > this. Also maybe media, at least I've heard noises that they're m=
+aybe
+> > > > > interested too? Plus anyone else, the more the better.
+> > > >=20
+> > > > I'm not really convinced by that approach at all, and most of the i=
+ssues
+> > > > I see are shown by the follow-up series here:
+> > >=20
+> > > I'm not fully convinced either, more like "let's see". In that narrow
+> > > sense, ack. I don't see harm in trying, if you're also open to backing
+> > > off in case it does not pan out.
+> > >=20
+> > > > https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.r=
+aman@collabora.com/
+> > > >=20
+> > > >    * We hardcode a CI farm setup into the kernel
+>=20
+>=20
+> These could be out of tree.
+>=20
+> There is a version outside the kernel tree where you just point the CI
+> configuration to a url:
+> https://gitlab.freedesktop.org/gfx-ci/drm-ci/-/merge_requests/1
+>=20
+> We were discussing it here https://www.linuxtv.org/cgi-bin/mailman/privat=
+e/linuxtv-ci/2023-August/000027.html
+
+It looks like it's private
+
+> (I guess Sima's reply didn't got into the mailing list) but the argument =
+of
+> not having out of tree repo is due to historical bad experience of having=
+ to
+> sync the kernel with the code and it can become messy.
+
+My point is that even though the test strategy might be considered a
+"property" of the kernel, how you execute it is definitely not and you
+will have as many setups as you have CI farms. You can't put that into
+the kernel, just like we don't put the kernel command line in it for
+example.
+
+> > > >=20
+> > > >    * We cannot trust that the code being run is actually the one be=
+ing
+> > > >      pushed into gitlab
+>=20
+>=20
+> We can improve this if this is a requirement.
+> For DTS configuration we can work with overlays (which is the current
+> modification on that patchset). For other changes that are not suitable to
+> upstream (and should be rare) we can see if we work with the
+> `-external-fixes` approach or another approach, we can check it case by c=
+ase
+> to understand why it is not suitable for upstream.
+
+The existence of that branch in itself is an issue to me. Again, it's a
+matter of trust. How can I trust a branch I barely know about, of which
+the development is not clear and isn't reviewed by any of the
+maintainers of the code that might affect the test outcomes.
+
+Or put another way, if I run the tests on my machine, it won't work. Why
+should it work on the CI farm? The branch itself is broken. It might not
+be due to any of the work I did, but it's broken still.
+
+> > > >
+> > > >    * IMO, and I know we disagree here, any IGT test we enable for a=
+ given
+> > > >      platform should work, period. Allowing failures and flaky test=
+s just
+> > > >      sweeps whatever issue is there under the rug. If the test is at
+> > > >      fault, we should fix the test, if the driver / kernel is at fa=
+ult,
+> > > >      then I certainly want to know about it.
+>
+> I believe we need a baseline and understand the current status of tests. =
+If
+> you check the xfails folder in the patch you can see that I had to add a =
+few
+> tests on *-skips.txt since those tests crashes the system and other on
+> *-fails.txt that are consistently not passing.
+
+I agree that we need a baseline, but that baseline should be defined by
+the tests own merits, not their outcome on a particular platform.
+
+In other words, I want all drivers to follow that baseline, and if they
+don't it's a bug we should fix, and we should be vocal about it. We
+shouldn't ignore the test because it's broken.
+
+Going back to the example I used previously, kms_hdmi_inject@inject-4k
+shouldn't fail on mt8173, ever. That's a bug. Ignoring it and reporting
+that "all tests are good" isn't ok. There's something wrong with that
+driver and we should fix it.
+
+Or at the very least, explain in much details what is the breakage, how
+we noticed it, why we can't fix it, and how to reproduce it.
+
+Because in its current state, there's no chance we'll ever go over that
+test list and remove some of them. Or even know if, if we ever fix a bug
+somewhere, we should remove a flaky or failing test.
+
+> Since the "any IGT test we enable for a given platform should work" is no=
+t a
+> reality atm,
+
+Thanks for the reality check, but it's very much doable: we're in
+control of the test suite.
+
+> we need to have a clear view about which tests are not corresponding
+> to it, so we can start fixing. First we need to be aware of the issues
+> so we can start fixing them, otherwise we will stay in the "no tests
+> no failures" ground :)
+
+I think we have somewhat contradicting goals. You want to make
+regression testing, so whatever test used to work in the past should
+keep working. That's fine, but it's different from "expectations about
+what the DRM drivers are supposed to pass in the IGT test suite" which
+is about validation, ie "all KMS drivers must behave this way".
+
+I guess for regression you very much would like that all-green
+dashboard, and it's understandable. For validation, we don't care and we
+should be as vocal as possible to report broken drivers.
+
+Eventually, we should have regression testing over the validation test
+suite.
+
+It's not about reality. We should be clear what we expect from those
+test suites, and not claim that it's something it's not.
+
+> > > At least for display, where this also depends on peripheral hardware,
+> > > it's not an easy problem, really.
+> >=20
+> > Aside from the Chamelium tests, which tests actually rely on peripheral
+> > hardware? On EDID and hotplug, sure, but that can easily be set up from
+> > the userspace, or something like
+> >=20
+> > https://www.lindy-international.com/HDMI-2-0-EDID-Emulator.htm?websale8=
+=3Dld0101.ld021102&pi=3D32115
+> >=20
+> > > How reliable do you need it to be? How many nines? Who is going to
+> > > debug the issues that need hundreds or thousands of runs to reproduce?
+> > > If a commit makes some test less reliable, how long is it going to
+> > > take to even see that or pinpoint that?
+> >=20
+> > I mean, that's also true for failures or success then. How many times do
+> > you need a test to run properly to qualify it as a meaningful test? How
+> > do you know that it's not a flaky test?
+> >=20
+> > Ultimately, it's about trust. If, for a given test that just failed, I
+> > can't be certain that it's because of the branch I just submitted, I
+> > will just ignore the tests results after a while.
+> >=20
+> > This is already what plagues kernelci, and we should do better.
+>
+> This is something that is really nice on Mesa3D, a patch only gets merged=
+ if
+> tests passes, which forces people to not ignore it, which forces the code=
+ to
+> be fixed and the CI to be constantly maintained.
+>=20
+> Of course there are bad days there, but there is real value. Nice thread =
+to
+> check: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8635 (thanks Aly=
+ssa
+> for the feedback).
+
+I'm sure it works great for Mesa, but I'm also sure it doesn't ignore
+CTS reports that a particular device isn't a valid OpenGL or Vulkan
+implementation anymore.
+
+> > And I'm sorry, but if some part of the kernel or driver just isn't
+> > reliable, then we shouldn't claim it is (except for all the times it
+> > isn't). If no-one has the time to look into it, fine, but flagging it
+> > under a flaky test doesn't help anyone.
+>
+> At least we would know what is there that isn't reliable.
+
+We would too if the test was reported as failed. But our preferred
+approach to do so diverge.
+
+Maxime
+
+--7ec3syeqgcjlux4q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZO9YuwAKCRDj7w1vZxhR
+xTjpAQCXnznNR0kerRl5Ng+uhQHuTUw4kVf1BDYBmz0qDPDkAwD/SjLSiPg4qZYr
+X/ObWceHFsnKS9Q1QzhUri/hcHTamA0=
+=Icx+
+-----END PGP SIGNATURE-----
+
+--7ec3syeqgcjlux4q--
+
+
+--===============0888496733922904437==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0888496733922904437==--
+
