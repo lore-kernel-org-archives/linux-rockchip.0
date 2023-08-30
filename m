@@ -4,59 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE60C6FA8F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 13:27:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0C72C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 13:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ktKFCmjZP6w6dh5RhnJvRyZgwrE0ZSXYq+1yUwe8lNE=; b=jfSLoh2dC1aZ2K
-	oTnpJBF8/TPYfvVQK5L0nDiWazQGanyIwu0msToEa9/IEpzfpgrojQVpkm5HRTt6HjJwfWCAmlwUx
-	+CFcqKspq8oN1Z+OULHUjFylvwZOOTwsRXUte6fKmUC4SGrVyNR2hK9HRcvKQFqlHsZnPySnJqeUh
-	VL/XB6bB2xbG8+YIzrd5IRcN8q/Jsq8yo2HTbQwt2P4gRGpCrR7fDBij+yNdP8/LXww2CnNQcgwfK
-	lf1A9fUpYorC89yrjt+V2K5u9pxU2FmYjlgO0CRlGZW0fnVvNrsNI2szHz7MM9+E8FF3k1qBydq5r
-	Q+c7Hc/J2JaEQoYOJTZg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nH3XablartJ0wla7aEGllvn0pIEBno5LWQLo9NPG7vo=; b=uqoAfMj5QpezBz
+	SDrUEtiWIukErbnH5bk37gLvReYc/BmectRUer5bkoLtgTBiSkJvLiz7g+sJqBjREdKDKQOzWy9Na
+	gE3AiHT0azNsy0fPIZK7qMRa3gbiAMo6K+/znt54OpylcmPsELckpcZaZJuITK4Xyo9skY7xF+kZI
+	5d07s7oEDe74VrjY7q6zg3BA6UdR3dpQfbD5fLUFuXuBidhmjSjvpmH85HfclpnyguTNwxBtHhN1z
+	gCbCD2VBfOqV+ldvXDnFjNyyTEOnyGBcul2TbaWVnmKB6K1uAXK2Gdnvk/ehGYHJgTtckMxyQ6Ly1
+	D+N42mB4/60aElTemY5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbLEI-00DZrY-1b;
-	Wed, 30 Aug 2023 13:27:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qbLNT-00DaLS-1M;
+	Wed, 30 Aug 2023 13:36:59 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbLEC-00DZq9-0w;
-	Wed, 30 Aug 2023 13:27:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 96822621E9;
-	Wed, 30 Aug 2023 13:27:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8EC7C433C7;
-	Wed, 30 Aug 2023 13:27:19 +0000 (UTC)
-Message-ID: <fbeb4316-462a-1e20-581d-a6c2d2c9a1c9@xs4all.nl>
-Date: Wed, 30 Aug 2023 15:27:18 +0200
+	id 1qbLNO-00DaKg-2z;
+	Wed, 30 Aug 2023 13:36:56 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fbd33a57b6so50629385e9.2;
+        Wed, 30 Aug 2023 06:36:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1693402612; x=1694007412; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/+yYt261pz+/xgkSEVEKFRDXXydq1rLbWs9CkNiRFcE=;
+        b=HuMWV0+Cl7guXzd5pI/Fcvz32PI+2dwylIekWXAvNOkA15TLL9jogM7XClF3xYpF2w
+         2CxOrHp7eWwhEkBEV+lcwuWBF372cofaZgxzAUVzgtV7YnzocL7QNHjTS0Uzcz3ouS6A
+         +2+GNUV8Uf9Pofm+YoAiWl4XWzWzaH/l/636otPmac+DeoRAV5ZwQqx3QuxRMNM4LBG6
+         1ZpkmupSUMOIEd0mXfoVGgqK05IqqOQcdUkwq9wSmpkUn6yYGpDJYQoyo2Sgn4kjwlDQ
+         l6CuKedRM95uvxQIGXeZKtky7ppbt0nbf1kXFPi3Mw/flCxmXWtmeO6uSAtRg/Z+NUe+
+         zS2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693402612; x=1694007412;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/+yYt261pz+/xgkSEVEKFRDXXydq1rLbWs9CkNiRFcE=;
+        b=XNhCosndD0UcbPUiUGrJdUd1MWIwFOQ04LfhQ8+/lEMjIK+RW30QgITxMLu1enx+C8
+         bEwTxeZVq3jQc2V+vVTrzSxUqp7yaWPwiN5+9v+GMhAEWDkLzmNWOzATNjfGpTQOzbSb
+         nmr5aDmag0z9UxQoBXq9lRggPks9vHdMG5M4KmJjf4QOQlbpvU+K1xoeoHgsLYStqMlM
+         W4rhtd4xRfQyJVH7xGeLb3poaUfrFK1imY24IjOJ+LX+PBkFpP8Y9moUz07gH70HsjOO
+         dDyDqAiBdNI6jOYqq/JpwwfRelvRQpAOE1Xm0GrQ/W1waY7CCsdbu+Zvq0lDSaGs0g11
+         AF7A==
+X-Gm-Message-State: AOJu0YzLLJgtvpDVm1B9/qKIZ0XVFwNrRv5C6QdStYs1XkyLSBrDhY2N
+	5eHdFFsJ7cCjmZZ6o9r/eQ==
+X-Google-Smtp-Source: AGHT+IFHs2vmbKqXRIV/i344l7tlR+MJQTafcUypRW0zFptWbaKo0LC9bhGXq9FZrklPdlc/NpOn9Q==
+X-Received: by 2002:a1c:7710:0:b0:401:bf87:989c with SMTP id t16-20020a1c7710000000b00401bf87989cmr1985691wmi.34.1693402611534;
+        Wed, 30 Aug 2023 06:36:51 -0700 (PDT)
+Received: from U4.lan ([2001:9e8:b963:7410:17bb:6f65:50d0:b82b])
+        by smtp.gmail.com with ESMTPSA id x14-20020a05600c2a4e00b003fed70fb09dsm2326343wme.26.2023.08.30.06.36.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Aug 2023 06:36:51 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH v2 0/5] Add USB support for RK3128
+Date: Wed, 30 Aug 2023 15:36:19 +0200
+Message-ID: <20230830133623.83075-2-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v5 03/10] media: videobuf2: Be more flexible on the number
- of queue stored buffers
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
- <20230824092133.39510-4-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230824092133.39510-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_062724_410495_D88CBFAC 
-X-CRM114-Status: GOOD (  25.83  )
+X-CRM114-CacheID: sfid-20230830_063654_988970_CF982507 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,139 +97,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/08/2023 11:21, Benjamin Gaignard wrote:
-> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
-> how many buffers could be stored in a queue.
-> This request 'bufs' array to be allocated at queue init time and freed
-> when releasing the queue.
-> By default VB2_MAX_FRAME remains the limit.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 25 +++++++++++++------
->  include/media/videobuf2-core.h                |  4 ++-
->  2 files changed, 20 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 8aa13591b782..70e36389b704 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int index)
+While interestingly the dt-binding for the Innosilicon usb phy found in
+RK3128 SoC exists already and it is exposed in the SoC DT, it has never
+been added to the driver.
+This patch-set adds support for this early version of the phy and does
+some DT-fixups in order to make the 2-port host/otg phy and the respective
+controllers work.
 
-Let's use 'unsigned int index' to avoid signedness issues.
+Please see commit messages of the individual patches for details.
 
->  {
-> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
-> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
->  		q->bufs[index] = vb;
->  		vb->index = index;
->  		vb->vb2_queue = q;
-> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int
->   */
->  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->  {
-> -	if (vb->index < VB2_MAX_FRAME) {
-> +	if (vb->index < q->max_allowed_buffers) {
->  		q->bufs[vb->index] = NULL;
->  		vb->vb2_queue = NULL;
->  	}
-> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	struct vb2_buffer *vb;
->  	int ret;
->  
-> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
->  	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q->num_buffers);
-> +			    q->max_allowed_buffers - q->num_buffers);
->  
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
-> @@ -852,9 +852,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
->  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
->  	 * Set this now to ensure that drivers see the correct q->memory value
-> @@ -970,7 +970,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	bool no_previous_buffers = !q->num_buffers;
->  	int ret;
->  
-> -	if (q->num_buffers == VB2_MAX_FRAME) {
-> +	if (q->num_buffers == q->max_allowed_buffers) {
->  		dprintk(q, 1, "maximum number of buffers already allocated\n");
->  		return -ENOBUFS;
->  	}
-> @@ -999,7 +999,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			return -EINVAL;
->  	}
->  
-> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
-> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
->  
->  	if (requested_planes && requested_sizes) {
->  		num_planes = requested_planes;
-> @@ -2541,6 +2541,14 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  
-> +	if (!q->max_allowed_buffers)
-> +		q->max_allowed_buffers = VB2_MAX_FRAME;
-> +
-> +	/* The maximum is limited by offset cookie encoding pattern */
-> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, MAX_BUFFERS);
+These patches have been part of the pretty huge RK3128 bring-up/fix-up
+series [0] which I've splitted-up now, as suggested.
 
-With the new MAX_BUFFERS define this probably will need to be adjusted.
+[0] https://lore.kernel.org/linux-rockchip/20230829171647.187787-1-knaerzche@gmail.com
 
-> +
-> +	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> +
->  	if (q->buf_struct_size == 0)
->  		q->buf_struct_size = sizeof(struct vb2_buffer);
->  
-> @@ -2565,6 +2573,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_cancel(q);
->  	mutex_lock(&q->mmap_lock);
->  	__vb2_queue_free(q, q->num_buffers);
-> +	kfree(q->bufs);
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 4b6a9d2ea372..ee9161b9fd64 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
->   * @num_buffers: number of allocated/used buffers
-> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -619,8 +620,9 @@ struct vb2_queue {
->  	struct mutex			mmap_lock;
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
-> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-> +	struct vb2_buffer		**bufs;
->  	unsigned int			num_buffers;
-> +	unsigned int			max_allowed_buffers;
->  
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
+Alex Bee (5):
+  phy: rockchip-inno-usb2: Split ID interrupt phy registers
+  phy: phy-rockchip-inno-usb2: Add RK3128 support
+  ARM: dts: rockchip: Add USB host clocks for RK3128
+  ARM: dts: rockchip: Add dwc2 otg fifo siztes for RK3128
+  ARM: dts: rockchip: Make usbphy the parent of SCLK_USB480M for RK3128
 
-Regards,
+ arch/arm/boot/dts/rockchip/rk3128.dtsi        |   9 ++
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 147 ++++++++++++++----
+ 2 files changed, 127 insertions(+), 29 deletions(-)
 
-	Hans
+-- 
+2.42.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
