@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 605D8C83F01
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 10:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B75FC83F14
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 11:38:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ofou7c7jXXtdrCP1fJHQ9+qXyTXaqMOB3dQZ+r4Dywo=; b=LkszUZanOBgCSO
-	9ECIawLkRcFiF/pGjMzd62tg7BYhCbtNB+gzTgcWIpkATCbjM73LTxvKrrsnmOri8j8rfZDoka7bS
-	DNZZ3IaT81c+B48xTjN7tVhfjmR+OBlf2GbGUoO2Ln13REUk42OKvM42k/RWaPVq7KXoAIo4C696n
-	enyZ19fGfiREroypnr438WPvNYuqOhD9kTRrm0dtPwKu/QnHVW6nP8t7OBDuXOyvkV6ZzM8HPPuvY
-	I0IVO2WB5zU8dBHXC+CiQX8QXfyoy7nsVvUxxPeiYv5TYeA1C689Q/4cWCyMhEd9uqq744k5kY6fE
-	XbWDglSJFdK5lI1glGXw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cP7bmfI+wA5+8tRPNfsrMI8446x1LL8ejxCyHnqP4Fo=; b=1uETjkb2DMTD3oocTq4RkOA30x
+	o++IrRGiPvud+xGCJEXNVtt0Sbieg4mGyaZDpgzHDuZgTWWXQl+NlbwojyFd5v4qGlT1u0z3MDdkb
+	oSV/pl3yW4uh2CDHHxRWY9P7jOzjvw7AjB5S/FsvI/fgO4Cu5Z1GutVg/6/g2SRg3XzD0CjHQWIhK
+	G7M+KqlSb/mQCvjftctoONrmdxuwlw6XH8r3/lIY2GJpl3olNYr8GcSS5oUybwOAbfHprAqL5jNTt
+	Kl+YXVWvU500sLjATQTvMi71Lz+oE5DdXCqYgEIyBWSGKqQkNJ4FYN7KSoUwkEXKoH7biUIZQZKm/
+	+XVThb1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbIuO-00DLra-1u;
-	Wed, 30 Aug 2023 10:58:48 +0000
-Received: from mgamail.intel.com ([134.134.136.100])
+	id 1qbJWR-00DPNk-0n;
+	Wed, 30 Aug 2023 11:38:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbIuK-00DLqI-1H;
-	Wed, 30 Aug 2023 10:58:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1693393124; x=1724929124;
-  h=from:to:subject:in-reply-to:references:date:message-id:
-   mime-version;
-  bh=Ba+ap190nbT9y0MOHYUH6N6N/yy00EJmGs6/T//2stI=;
-  b=m5G7riCNW+dWhjsh30r/nNXoW4IvHPXskLdiw2ZAqGwgU3uPuMKKinrM
-   +opwz7YK2w3P1CSTB4YqaQA8q7/6HLmJ9O7bgt/GMCffTESA2DtTBprJc
-   /sapfr5Krz8ziAdRml+GIDJTNb+yEnpLWuvM4vKT4cfOYps8JAhLWF4nB
-   J5lOSg8vLP2wTV09ZxoPS1uYyG9RxDqHYyapO5+twnQIp16Vfyytu8hn6
-   6ZVYD10XYCsStMxLbD0Dsmu1Ggvml02KbdqZkf1RWeHjDHXh+k5TG6BsH
-   jE8yw4GcezfvtyljqB2VfBrFksOj2I13tRW2b/GeGBzXsWP3tpfrUQh3A
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10817"; a="441974432"
-X-IronPort-AV: E=Sophos;i="6.02,213,1688454000"; 
-   d="scan'208";a="441974432"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 03:58:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.01,202,1684825200"; 
-   d="scan'208";a="882711770"
-Received: from ziemtocx-mobl1.ger.corp.intel.com (HELO localhost) ([10.252.57.251])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 03:58:39 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>, Helen Koike
- <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- david.heidelberg@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com,
- maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com,
- corbet@lwn.net, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
- khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+	id 1qbJWN-00DPME-0U;
+	Wed, 30 Aug 2023 11:38:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9A28C61972;
+	Wed, 30 Aug 2023 11:38:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83623C433C7;
+	Wed, 30 Aug 2023 11:38:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693395482;
+	bh=3XQ7R+mQiCgel+4CVupUmCG8UGUYbU452w6fK1wZRrY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qPLsF6iRnbcm71F3V2P3osHte2tkWFXqi2ByncFvfN6aLsAiCdM44EfXavfq/Zsam
+	 lxli8eovc4mR/cCiKVUtp119vm2tCjMK133NdcS4aR07AjFo53P1+r8jBOPpBVqDii
+	 5eJMZh8XKaVfTkLTMXqKK7qjSGsEsFQEvoOTVgQ4cHaq8cbQTdeKZJTWtyPcEXYHxE
+	 93wqy9U4//qlvR0MgiiaVzeNRmNqPi1WZaqxVdMNr2o2axaJmBufnUEjTwsXuw6EP1
+	 WWKpdVG2FNPrKEZQHXOfkDbAQpvHfK1q1Fw+IY3O0Q7uzivGDwi1EPth38XaMaG14f
+	 v+VbU34HpjxWQ==
+Date: Wed, 30 Aug 2023 13:37:59 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Helen Koike <helen.koike@collabora.com>, 
+	dri-devel@lists.freedesktop.org, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	david.heidelberg@collabora.com, daniels@collabora.com, emma@anholt.net, robclark@freedesktop.org, 
+	gustavo.padovan@collabora.com, robdclark@google.com, anholt@google.com, 
+	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, corbet@lwn.net, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com, 
+	martin.blumenstingl@googlemail.com, heiko@sntech.de, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-In-Reply-To: <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
 References: <20230811171953.176431-1-helen.koike@collabora.com>
  <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
  <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
-Date: Wed, 30 Aug 2023 13:58:31 +0300
-Message-ID: <87bkeo23vs.fsf@intel.com>
+ <87bkeo23vs.fsf@intel.com>
 MIME-Version: 1.0
+In-Reply-To: <87bkeo23vs.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_035844_497619_11C77EF8 
-X-CRM114-Status: GOOD (  39.46  )
+X-CRM114-CacheID: sfid-20230830_043803_273156_0FC98CAE 
+X-CRM114-Status: GOOD (  51.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,110 +80,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1843463286140779888=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
-> On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
->> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
->> > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
->> > 
->> > Developers can easily execute several tests on different devices
->> > by just pushing their branch to their fork in a repository hosted
->> > on gitlab.freedesktop.org which has an infrastructure to run jobs
->> > in several runners and farms with different devices.
->> > 
->> > There are also other automated tools that uprev dependencies,
->> > monitor the infra, and so on that are already used by the Mesa
->> > project, and we can reuse them too.
->> > 
->> > Also, store expectations about what the DRM drivers are supposed
->> > to pass in the IGT test suite. By storing the test expectations
->> > along with the code, we can make sure both stay in sync with each
->> > other so we can know when a code change breaks those expectations.
->> > 
->> > Also, include a configuration file that points to the out-of-tree
->> > CI scripts.
->> > 
->> > This will allow all contributors to drm to reuse the infrastructure
->> > already in gitlab.freedesktop.org to test the driver on several
->> > generations of the hardware.
->> > 
->> > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
->> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> > Acked-by: Daniel Stone <daniels@collabora.com>
->> > Acked-by: Rob Clark <robdclark@gmail.com>
->> > Tested-by: Rob Clark <robdclark@gmail.com>
->> 
->> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
->> include that branch in linux-next.
->> 
->> But also I'd like to see a lot more acks here, we should be able to at
->> least pile up a bunch of (driver) maintainers from drm-misc in support of
->> this. Also maybe media, at least I've heard noises that they're maybe
->> interested too? Plus anyone else, the more the better.
->
-> I'm not really convinced by that approach at all, and most of the issues
-> I see are shown by the follow-up series here:
 
-I'm not fully convinced either, more like "let's see". In that narrow
-sense, ack. I don't see harm in trying, if you're also open to backing
-off in case it does not pan out.
+--===============1843463286140779888==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zherdrxsl3xlh5y6"
+Content-Disposition: inline
 
-> https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman@collabora.com/
->
->   * We hardcode a CI farm setup into the kernel
->
->   * We cannot trust that the code being run is actually the one being
->     pushed into gitlab
->
->   * IMO, and I know we disagree here, any IGT test we enable for a given
->     platform should work, period. Allowing failures and flaky tests just
->     sweeps whatever issue is there under the rug. If the test is at
->     fault, we should fix the test, if the driver / kernel is at fault,
->     then I certainly want to know about it.
 
-At least for display, where this also depends on peripheral hardware,
-it's not an easy problem, really. How reliable do you need it to be?
-How many nines? Who is going to debug the issues that need hundreds or
-thousands of runs to reproduce? If a commit makes some test less
-reliable, how long is it going to take to even see that or pinpoint
-that?
+--zherdrxsl3xlh5y6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-It's a kind of cop out, but this is not filesystems. In many cases I
-think we might be able to make things more robust by failing faster and
-failing more, but the users probably want us to plunge forward despite
-some errors to try to get something on screen.
+On Wed, Aug 30, 2023 at 01:58:31PM +0300, Jani Nikula wrote:
+> On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> > On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
+> >> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
+> >> > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >> >=20
+> >> > Developers can easily execute several tests on different devices
+> >> > by just pushing their branch to their fork in a repository hosted
+> >> > on gitlab.freedesktop.org which has an infrastructure to run jobs
+> >> > in several runners and farms with different devices.
+> >> >=20
+> >> > There are also other automated tools that uprev dependencies,
+> >> > monitor the infra, and so on that are already used by the Mesa
+> >> > project, and we can reuse them too.
+> >> >=20
+> >> > Also, store expectations about what the DRM drivers are supposed
+> >> > to pass in the IGT test suite. By storing the test expectations
+> >> > along with the code, we can make sure both stay in sync with each
+> >> > other so we can know when a code change breaks those expectations.
+> >> >=20
+> >> > Also, include a configuration file that points to the out-of-tree
+> >> > CI scripts.
+> >> >=20
+> >> > This will allow all contributors to drm to reuse the infrastructure
+> >> > already in gitlab.freedesktop.org to test the driver on several
+> >> > generations of the hardware.
+> >> >=20
+> >> > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> >> > Acked-by: Daniel Stone <daniels@collabora.com>
+> >> > Acked-by: Rob Clark <robdclark@gmail.com>
+> >> > Tested-by: Rob Clark <robdclark@gmail.com>
+> >>=20
+> >> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
+> >> include that branch in linux-next.
+> >>=20
+> >> But also I'd like to see a lot more acks here, we should be able to at
+> >> least pile up a bunch of (driver) maintainers from drm-misc in support=
+ of
+> >> this. Also maybe media, at least I've heard noises that they're maybe
+> >> interested too? Plus anyone else, the more the better.
+> >
+> > I'm not really convinced by that approach at all, and most of the issues
+> > I see are shown by the follow-up series here:
+>=20
+> I'm not fully convinced either, more like "let's see". In that narrow
+> sense, ack. I don't see harm in trying, if you're also open to backing
+> off in case it does not pan out.
+>=20
+> > https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman=
+@collabora.com/
+> >
+> >   * We hardcode a CI farm setup into the kernel
+> >
+> >   * We cannot trust that the code being run is actually the one being
+> >     pushed into gitlab
+> >
+> >   * IMO, and I know we disagree here, any IGT test we enable for a given
+> >     platform should work, period. Allowing failures and flaky tests just
+> >     sweeps whatever issue is there under the rug. If the test is at
+> >     fault, we should fix the test, if the driver / kernel is at fault,
+> >     then I certainly want to know about it.
+>=20
+> At least for display, where this also depends on peripheral hardware,
+> it's not an easy problem, really.
 
-(Come to think of it, perhaps we should classify tests based on whether
-external hardware plays a role.)
+Aside from the Chamelium tests, which tests actually rely on peripheral
+hardware? On EDID and hotplug, sure, but that can easily be set up from
+the userspace, or something like
 
-So I'm not so concerned about the filter lists per se, but rather about
-having them in kernel.
+https://www.lindy-international.com/HDMI-2-0-EDID-Emulator.htm?websale8=3Dl=
+d0101.ld021102&pi=3D32115
 
-BR,
-Jani.
+> How reliable do you need it to be? How many nines? Who is going to
+> debug the issues that need hundreds or thousands of runs to reproduce?
+> If a commit makes some test less reliable, how long is it going to
+> take to even see that or pinpoint that?
 
->
->   * This then leads to patches like this one:
->     https://lore.kernel.org/dri-devel/20230825122435.316272-6-vignesh.raman@collabora.com/
->
->     Which (and it's definitely not the author's fault) are just plain
->     unreadable, reproducable or auditable by anyone not heavily involved
->     in the CI farm operations and the platforms being tested.
->
-> That being said, I don't have anything better to suggest than what I
-> already did, and it looks like I'm alone in thinking that those are
-> problems, so feel free to add my ack if you want to.
->
-> Maxime
+I mean, that's also true for failures or success then. How many times do
+you need a test to run properly to qualify it as a meaningful test? How
+do you know that it's not a flaky test?
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Ultimately, it's about trust. If, for a given test that just failed, I
+can't be certain that it's because of the branch I just submitted, I
+will just ignore the tests results after a while.
+
+This is already what plagues kernelci, and we should do better.
+
+And I'm sorry, but if some part of the kernel or driver just isn't
+reliable, then we shouldn't claim it is (except for all the times it
+isn't). If no-one has the time to look into it, fine, but flagging it
+under a flaky test doesn't help anyone.
+
+Like, from that patch, how can I know what is the issue with
+kms_hdmi_inject@inject-4k or kms_addfb_basic@addfb25-bad-modifier on
+mt8173. I certainly can't. And neither of those have anything to do with
+peripheral hardware.
+
+Maxime
+
+--zherdrxsl3xlh5y6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZO8qFwAKCRDj7w1vZxhR
+xaeoAQCplynR4IBaAjXxwYEJBraRaDZg7/oKmyvbKaWv3yNoUwD/Zfv+1zH3hT2I
+spFN+hiweGxT/xn46f6giSypaSMdWQc=
+=6JkP
+-----END PGP SIGNATURE-----
+
+--zherdrxsl3xlh5y6--
+
+
+--===============1843463286140779888==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1843463286140779888==--
+
