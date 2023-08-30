@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6296EC6FA8F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 13:39:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B55C6FA8F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Aug 2023 13:39:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+4WZCesAAwxxBN5FUaBSxA0Ez8IvoqKD5S+EONSClWY=; b=mmn1eNcX2v2X12
-	NEzDFe57UZ3OtQlMA1ueu1vEn4jLyFuqMY9QKaXsON6jiYkAiD4obULJ2nNBi0vpYXWNekzBcI3nv
-	oBig08KsSOe1X3dfdjY3oidijZWBICrSMgCSKu3UYn2bnf9+KtaeMW2BsgORxoodIfAp0ndBtclcR
-	AP07RXvzPG4TqpKOwG0XEKUvdkEzI5CLY/EUfHG2Itk7FjeWWZmGWRIP+TkCwuM6BCsfWyQlZoC/U
-	akC18X8vzJ0UAjgESkGzHFWa44cdupfvAU3EqOFmEMS6/dPWdP12PUEJdmUez3StIDh6WJn5Sg05q
-	yPHSm7QThYBdTlnjZFDA==;
+	List-Owner; bh=r0g9XNCcFkCkxFKZuDz6Rge3/iBlAQF8/BxsKBde4BM=; b=3fNXdK9lJQUyby
+	xv25+OP9+T8HqudAQHZmRdV50OO/rOwBhGk01ykiazMVvR8mS3nUr4gvYrBRxTWysSbhIoHw6Z1t/
+	DXydrO4vhaqjfTkNiFR2saePja+dgHFcqA4iqkHCGxJTwg7q/b1fr14KWgdtcpBKeGW06+KzmlC6v
+	ZH1mhNUFz4LVXR2+1o4VV1r+uAtLigCUJZhtDY8jZ3LmnMPRPxI1aiU/0ws0tZeNfAgtgeVdfPH8D
+	6ryIfn0pVYDstvGj9ID1aRsG5BaTui44BiHV3fcVVW3jxcwZBgdR575X/s+djtoiHHsfMmudcHA1G
+	OvkyAIE4tl27TB14/Mgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbLPb-00DamN-1q;
-	Wed, 30 Aug 2023 13:39:11 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1qbLQ8-00Davk-2b;
+	Wed, 30 Aug 2023 13:39:44 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbLPZ-00DakS-19;
-	Wed, 30 Aug 2023 13:39:10 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3ff1c397405so54969145e9.3;
-        Wed, 30 Aug 2023 06:39:07 -0700 (PDT)
+	id 1qbLQ6-00DauT-00;
+	Wed, 30 Aug 2023 13:39:43 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40078c4855fso52421815e9.3;
+        Wed, 30 Aug 2023 06:39:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693402746; x=1694007546; darn=lists.infradead.org;
+        d=gmail.com; s=20221208; t=1693402779; x=1694007579; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jpHx+qT44al35s/p87ISMBhXkrOuDfFp8hT6ok2goWA=;
-        b=o7Nsp99clx01gzONdxtZZyAiH+q2G5ABBBsvJBaZkb3uodrNTqvZlnJfXjCT3V9OxC
-         u+FqIG1zcThHqFyphKu3T3OtFvVroaRVw2MXgjgzpG5zimUfJ0bqR55LnsYny6mj7ESA
-         d4ydnwVMjVdjzrjsiqsYL/45QrmhNObpNR0ihWpqtIP6QJSHcmZFwIxemjNiFlrzcdWA
-         LtT3N/v1GA3+CzLGdbSnXPPNY0scXrgRdm7xr94yHddgvTV7xHexYZ5pFoo4Q/YV+8K7
-         XQxigGGmtYO/SUOLVTdKvmxZWcRrzdoCs13Jb2mZfvN6z8lfNZgJUTWBfvq1ewru0ijK
-         1x+w==
+        bh=pL4AHGqRwUAH2UbRxdk/07qkcSparuw8rJPg7HDVZLk=;
+        b=K06o9T5UXLsJaL7dPOh+4XLbpqPMa/beBxjZY6GWklkw3mGDaC8bjhT2E+GHDSbWkS
+         +uI95cVQ1YBJl5/npSXGJPjS98rhqHHkWvnpB1DJCosOPaL3m5N9OD4Yw6PGjwGobzAy
+         qvrAFs619Bt2IPghYRZzJAfJUiZoHZaq6HtTmhdl1aQhLSZVQpWB5TVPqIpZb33RKPg8
+         2jY4PhcMw6ti/pnztpTVSsY3fGmxgKIcOQjghxrPeBS/nywaivmJtex66/wfpg62slo1
+         hBaK51PvaVpkujU/wpwPPIz4OEZEcqj3yoH1wI9iC8+9OC0UDGVh18+ZRD3Sw80+vd6B
+         CLEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693402746; x=1694007546;
+        d=1e100.net; s=20221208; t=1693402779; x=1694007579;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jpHx+qT44al35s/p87ISMBhXkrOuDfFp8hT6ok2goWA=;
-        b=YQunG9wEO1aBNuaWp1j1La2JulVJfUq0IMpoEjHxE4Rzpni85HaDsmEr4oAb9+YXtx
-         Xw6CxGXLvERQTcnZaQhdn9m1f5kQNxEZ+NJB2ajqbimcwVmiHO4LbUk5J18KcKXrP3Lx
-         GZV45mtRX/wTSHLGlyI3Q3rM44hexxDXs3IeEFeQLsXAN+G1xuusacfu+FtdDqiGDYWx
-         vXdL2i+eeRon8FyF2LaoMQ3IzDSV21dzfK4RMYnUr66oH8kp9pyK59raTabSoa7GF3t3
-         QHlGmfqEQhPTZx/zU+TGx+sUS25s+gMBZy1NLw5ccg3vxz3eD/JbhtT9nRlIICgH1ckU
-         7lmA==
-X-Gm-Message-State: AOJu0Yxl6KnzF+IH06A3Oi5xEXredMWxz0cqjVqPj5sA76Lw/JHQlDbO
-	KJSUECb7FwxdPMI2E/5S3g==
-X-Google-Smtp-Source: AGHT+IHlbgEqDyyYbfZ8/HjulLf6EuL2Xg3HoOLu/KNL1vlY6Ux5XdymCeYFIwfur9uJlNX+2El4AA==
-X-Received: by 2002:a05:600c:3651:b0:401:b1c6:97d8 with SMTP id y17-20020a05600c365100b00401b1c697d8mr1981597wmq.35.1693402746347;
-        Wed, 30 Aug 2023 06:39:06 -0700 (PDT)
+        bh=pL4AHGqRwUAH2UbRxdk/07qkcSparuw8rJPg7HDVZLk=;
+        b=JazShL+YKUGWKduucs9lSMw6JiYesp7NCfeDDBQUshQvTXGcczRTrX99lMBOydll+l
+         2PP5kCN60Di7WTVpWa0BAKkoYUr5JuZ9U7V/7jloCpOL75G27MBjoC5NZE0cXLoWCkl8
+         CkoMrMIyb0UvjeWwQKQpP2GQgZZfq5/+mLlSfof/lO0L6yiy2kpP88796IBDCyFAd68g
+         AreDtppqrK7PctQ4CFI/2LglEvtPfug5K9LJvS+EMtGj+PnZtwoKSYHpzRsHj2mvcy/h
+         6wV7CrdxJXxUena2jpMXRAi6ahjWxDPacHoBhbHLVVCdD8EuLymQVhVxHtH8EtJq5blc
+         7/2w==
+X-Gm-Message-State: AOJu0YyTtuH2VOkmiveMaxrX885NdxCKxyo9YNskV3VlD9nFqs3198Tt
+	iPcX2YydTarfwTkytAKR6Q==
+X-Google-Smtp-Source: AGHT+IFmTJWYc2nF+k9N43mdYv3DixoSSezT3uaOMI8tivzPwvZJqspYDXCwnJy0/2KKR2+BqsD65w==
+X-Received: by 2002:a1c:7307:0:b0:3fc:9e:eead with SMTP id d7-20020a1c7307000000b003fc009eeeadmr1931954wmb.20.1693402779110;
+        Wed, 30 Aug 2023 06:39:39 -0700 (PDT)
 Received: from U4.lan ([2001:9e8:b963:7410:17bb:6f65:50d0:b82b])
-        by smtp.gmail.com with ESMTPSA id x14-20020a05600c2a4e00b003fed70fb09dsm2326343wme.26.2023.08.30.06.39.05
+        by smtp.gmail.com with ESMTPSA id x14-20020a05600c2a4e00b003fed70fb09dsm2326343wme.26.2023.08.30.06.39.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Aug 2023 06:39:05 -0700 (PDT)
+        Wed, 30 Aug 2023 06:39:38 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Kishon Vijay Abraham I <kishon@kernel.org>,
 	Vinod Koul <vkoul@kernel.org>,
@@ -74,16 +74,16 @@ Cc: linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 4/5] ARM: dts: rockchip: Add dwc2 otg fifo siztes for RK3128
-Date: Wed, 30 Aug 2023 15:36:27 +0200
-Message-ID: <20230830133623.83075-10-knaerzche@gmail.com>
+Subject: [PATCH v2 5/5] ARM: dts: rockchip: Make usbphy the parent of SCLK_USB480M for RK3128
+Date: Wed, 30 Aug 2023 15:36:29 +0200
+Message-ID: <20230830133623.83075-12-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20230830133623.83075-2-knaerzche@gmail.com>
 References: <20230830133623.83075-2-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_063909_398563_CC984DF1 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20230830_063942_038059_DB9DB094 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,28 +100,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver currently won't probe correctly if those values are missing.
-They have been taken from dowstream kernel and match those of other
-Rockchip SoCs.
+Without setting the parent for SCLK_USB480M the clock will use xin24m as
+it's default parent.
+While this is generally not an issue for the usb blocks to work, it becomes
+an issue for RK3128 since SCLK_USB480M can be a parent for other HW blocks
+(GPU, VPU, VIO). They never will choose this clock as their parent, because
+it currently always runs at OSC frequency.
+
+This sets usb480m_phy as SCLK_USB480M's parent, which now runs and outputs
+the expected frequency of 480 MHz and the other blocks can choose
+SCLK_USB480M as their parent if needed.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index ffe99db0eeb7..119e89fef2a2 100644
+index 119e89fef2a2..5590af6f42ad 100644
 --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -100,6 +100,9 @@ usb_otg: usb@10180000 {
- 		clocks = <&cru HCLK_OTG>;
- 		clock-names = "otg";
- 		dr_mode = "otg";
-+		g-np-tx-fifo-size = <16>;
-+		g-rx-fifo-size = <280>;
-+		g-tx-fifo-size = <256 128 128 64 32 16>;
- 		phys = <&usb2phy_otg>;
- 		phy-names = "usb2-phy";
+@@ -113,6 +113,8 @@ usb_host_ehci: usb@101c0000 {
+ 		reg = <0x101c0000 0x20000>;
+ 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_HOST2>;
++		assigned-clocks = <&cru SCLK_USB480M>;
++		assigned-clock-parents = <&usb2phy>;
+ 		phys = <&usb2phy_host>;
+ 		phy-names = "usb";
+ 		status = "disabled";
+@@ -123,6 +125,8 @@ usb_host_ohci: usb@101e0000 {
+ 		reg = <0x101e0000 0x20000>;
+ 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_HOST2>;
++		assigned-clocks = <&cru SCLK_USB480M>;
++		assigned-clock-parents = <&usb2phy>;
+ 		phys = <&usb2phy_host>;
+ 		phy-names = "usb";
  		status = "disabled";
 -- 
 2.42.0
