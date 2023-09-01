@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F64CA0FE6
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Sep 2023 12:44:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E055CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Sep 2023 12:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=G9lmBM3K6EAGQNxIN/1EzJKBj9KJuRCxClPmJOCVXkk=; b=SrBeOrX5zh4Xha
-	4ZPndhXsS19Fu3T7Ej2WqO/Thm7tDW5tUIsdowHG+Qum5I2J4Ir7/hdmouW2IAnMOIl7OyO/G4lXU
-	9g4tSoVO+J+fY8bq31YUDhSrNQsUSnIiHvUmkaQ7VBpnmP/Og6Ky+10n3t50UWuIfNqvXZ+tFgKyg
-	eqMNcwndCubc2AR4vgnKatCidAyLY1nw7cDz7klEfxTIERhCg1Exo+VM8OZH0Nr9FwPjg1Md8b1Zr
-	FOZMPeBUn/XpPin+JTRFh36fxVqnCn24zFCP04NbRUt+0hX+eqTS0VsR3hW8zpfOM+ZJV/y4GPz5z
-	HALKj3ZksGs3aRk4uC0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MYRFFdTHLfr3q6h9LjjKgR981zGnc+0utgdTpZ82Wg0=; b=D5BYyNedpFVdB7
+	tc6w8hVY59KeInTxhyF5C/D7RNJCswbi/mNuUdxdqgVsOMD5PlqLw0UqZPU40435Enxuslz0iRc1n
+	wNbCO173zgMl+UvQepiT/EzpBk45JAMpDGTuc/ByG3LASr5g7fjak2Iu+jC+vwo19gLSzNWqG+p/0
+	0LzCPgskRQRGANmcU5oACCKXHdYpYAflwwCJkaC9dCtoBNvWYUCdt3Di6L2iR/ETxJousz3rdrR2J
+	s3W0a/SKIa+kVpKwOpyuFUVrt6ffG9ev0Qm0pmopUxLHs28tUI0pxpvpzzjVIKRu7Bej+HwW2PPru
+	x1MSF9MVUc7aZPXwznAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc3Vt-00HUS7-31;
-	Fri, 01 Sep 2023 12:44:37 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qc3W4-00HUeT-3C;
+	Fri, 01 Sep 2023 12:44:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc3Vi-00HUFc-2p;
-	Fri, 01 Sep 2023 12:44:28 +0000
+	id 1qc3Vk-00HUGA-2u;
+	Fri, 01 Sep 2023 12:44:30 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4d01:31d2:de6b:d217])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0DFD866072B1;
-	Fri,  1 Sep 2023 13:44:25 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1F85866072B7;
+	Fri,  1 Sep 2023 13:44:27 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693572265;
-	bh=6bKJsNQuCp9wrCZ4U5UGjs1WsKO8DWGQ1kTptdno01s=;
-	h=From:To:Cc:Subject:Date:From;
-	b=DU2PUm+bUaPZGUyfKuN/jnhmT0k+he2YbtxgGxSXT+C1SpjyFACkj8iNc9CmmFUn2
-	 FcwZv6YRo/o3p+CZfd06gUP421quk0dljMZospn8eZACuk4pHAeC34tdI9uqOttc3p
-	 psuN+SA2D32QnCIlO9zNFBb9shj5kFBCrZlw9zen0zultKSL0zH7I0ayOeTQqEvY28
-	 p9zh/qXsghO3D+eLq4oyfcDkRTXoPUT042FNE3102CaT+3H6RKIIa3f4iLiLL4O/OB
-	 cV/lucEZc1NqJkf7JVPibPZI1cdjt+dwwrREAie5y/X10bA5DrnOTcSsovSMxE8yYE
-	 jSfDcb8CC9S7A==
+	s=mail; t=1693572267;
+	bh=swS7yYiqBxggjIra2XX2pXDY4PPq3f683TK0rKa6DhQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XCA1Oaz5DjS6kBeRp5mhjD9JZ5zaUevWlkLivlCVo4hTv4mvRw4HQM46Ph0vN14jo
+	 5LFBuHbl0vvg+WoFcs1iKwpdywnKoBTWrVsM5uFZtMfuypN9FduTJBKSnfQM5cxkTe
+	 4mwQcJW95/ZIM/qP5NLqCQsej+xEfc/9P8v8cJ41Hlm0HH9HIWXDm67rfknoIC3cq/
+	 8NzkJDiEj/jbTm5xxsOTyC9+UL1VejMyMLW67z76QUjT09zFdUGJmL2Q22xp0Z+trj
+	 6PFgD1gcCyUvFyo3tg+Niy27rcZBvQdRdoDSUhZuTBEI9cD5yMsSEHJKyg1S2nmVpg
+	 VDGga3RSJ+qIQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,14 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 00/18] Add DELETE_BUF ioctl
-Date: Fri,  1 Sep 2023 14:43:56 +0200
-Message-Id: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 04/18] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Fri,  1 Sep 2023 14:44:00 +0200
+Message-Id: <20230901124414.48497-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
+References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_054427_164627_0441A5DF 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20230901_054429_102919_D0DF7F10 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,125 +88,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
+This could allow to change the type bufs[] field of vb2_buffer structure if
+needed.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v6
-
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 6:
-- Get a patch per driver to use vb2_get_buffer() instead of directly access
-  to queue buffers array.
-- Add lock in vb2_core_delete_buf()
-- Use vb2_buffer instead of index
-- Fix various comments
-- Change buffer index name to BUFFER_INDEX_MASK
-- Stop spamming kernel log with unbalanced counters
-
-changes in version 5:
-- Rework offset cookie encoding pattern is n ow the first patch of the
-  serie.
-- Use static array instead of allocated one for postprocessor buffers.
-
-changes in version 4:
-- Stop using Xarray, instead let queues decide about their own maximum
-  number of buffer and allocate bufs array given that value.
-- Rework offset cookie encoding pattern.
-- Change DELETE_BUF to DELETE_BUFS because it now usable for
-  range of buffer to be symetrical of CREATE_BUFS.
-- Add fixes tags on couple of Verisilicon related patches.
-- Be smarter in Verisilicon postprocessor buffers management.
-- Rebase on top of v6.4
-
-changes in version 3:
-- Use Xarray API to store allocated video buffers.
-- No module parameter to limit the number of buffer per queue.
-- Use Xarray inside Verisilicon driver to store postprocessor buffers
-  and remove VB2_MAX_FRAME limit.
-- Allow Versilicon driver to change of resolution while streaming
-- Various fixes the Verisilicon VP9 code to improve fluster score.
+diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
+index 982c2c777484..a462d6fe4ea9 100644
+--- a/drivers/media/platform/amphion/vpu_dbg.c
++++ b/drivers/media/platform/amphion/vpu_dbg.c
+@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
  
-changes in version 2:
-- Use a dynamic array and not a list to keep trace of allocated buffers.
-  Not use IDR interface because it is marked as deprecated in kernel
-  documentation.
-- Add a module parameter to limit the number of buffer per queue.
-- Add DELETE_BUF ioctl and m2m helpers.
-
-Regards,
-Benjamin
+ 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
  
-Benjamin Gaignard (18):
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Stop spamming kernel log with all queue counter
-  media: videobuf2: Use vb2_buffer instead of index
-  media: amphion: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: mediatek: vdec: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: sti: hva: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: visl: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: vp9: Use destination buffer height to compute
-    chroma offset
-  media: verisilicon: postproc: Fix down scale test
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-delete-bufs.rst          |  73 ++++
- .../media/common/videobuf2/videobuf2-core.c   | 379 ++++++++++++------
- .../media/common/videobuf2/videobuf2-v4l2.c   |  99 ++++-
- drivers/media/dvb-core/dvb_vb2.c              |   6 +-
- drivers/media/platform/amphion/vpu_dbg.c      |  22 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   6 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   2 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   4 +
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   4 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  10 +-
- .../media/platform/verisilicon/hantro_hw.h    |   4 +-
- .../platform/verisilicon/hantro_postproc.c    |  95 ++++-
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- drivers/media/test-drivers/vim2m.c            |   1 +
- drivers/media/test-drivers/visl/visl-dec.c    |  28 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  17 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  29 +-
- include/media/videobuf2-v4l2.h                |  11 +
- include/uapi/linux/videodev2.h                |  16 +
- 26 files changed, 664 insertions(+), 218 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
++
++		vbuf = to_vb2_v4l2_buffer(vb);
++
+ 		num = scnprintf(str, sizeof(str),
+ 				"output [%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
+@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+ 
+ 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
+ 
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
++
++		vbuf = to_vb2_v4l2_buffer(vb);
++
+ 		num = scnprintf(str, sizeof(str),
+ 				"capture[%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
 -- 
 2.39.2
 
