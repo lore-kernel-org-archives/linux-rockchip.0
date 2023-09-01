@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C615DCA0FEE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Sep 2023 12:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F64CA0FE6
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Sep 2023 12:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aUmHNVOSvcIeaUUEo6EwA46Qf9PMvWB+zCrGx61IJO0=; b=PAVNqKi4WuamLd
-	7VdgRKUkId1JhmDPjfVIx8QvXNCjM6cvHz4bcXD2BUkfZWt9BQ2iWDdHIkOijtg0lZf2s7dhacPMO
-	oi8XllMXeWRmQcA6jPyK/TjlbNpJ1Vo7Zk4eqUBx2oYlQmEIKgkJjOHtnK49t18jOuvfip3eeK0p/
-	mj6RxmBn3QN+qHohLSRFD9Bbf8ShxQv0wxwCm/OxaGNz6E2EmxMMifPQLMyAJMY3nAy9k1428Laa2
-	5qV6n9+p3xuG7Nc/h7z5uJsQ3cLHZGUHDNRxrMWWbpUHs/X27ooSPP7zlzrUrVbM32aImzjlNUmFW
-	iQOYMnLp1EdFOifv4z6A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=G9lmBM3K6EAGQNxIN/1EzJKBj9KJuRCxClPmJOCVXkk=; b=SrBeOrX5zh4Xha
+	4ZPndhXsS19Fu3T7Ej2WqO/Thm7tDW5tUIsdowHG+Qum5I2J4Ir7/hdmouW2IAnMOIl7OyO/G4lXU
+	9g4tSoVO+J+fY8bq31YUDhSrNQsUSnIiHvUmkaQ7VBpnmP/Og6Ky+10n3t50UWuIfNqvXZ+tFgKyg
+	eqMNcwndCubc2AR4vgnKatCidAyLY1nw7cDz7klEfxTIERhCg1Exo+VM8OZH0Nr9FwPjg1Md8b1Zr
+	FOZMPeBUn/XpPin+JTRFh36fxVqnCn24zFCP04NbRUt+0hX+eqTS0VsR3hW8zpfOM+ZJV/y4GPz5z
+	HALKj3ZksGs3aRk4uC0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc3Vn-00HUJu-38;
-	Fri, 01 Sep 2023 12:44:32 +0000
+	id 1qc3Vt-00HUS7-31;
+	Fri, 01 Sep 2023 12:44:37 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc3Vj-00HUFe-0V;
+	id 1qc3Vi-00HUFc-2p;
 	Fri, 01 Sep 2023 12:44:28 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4d01:31d2:de6b:d217])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F78166072B2;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0DFD866072B1;
 	Fri,  1 Sep 2023 13:44:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693572266;
-	bh=4m9VyfzaPl3rccmt2IyLXBOR1znBsWjZkGkSXM8JtCE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kMr1r+CaUz75FJUtRbytquRLhTl41IO9CYqHlmZnITOlaj0xK5xXEgzz40aGvhKx1
-	 KMiZiGHuAmIU3hwooY8CVOFfy+/AKKHB/bMjrSq0Pk8wTXuomqI7p3bp5yu45KrOVp
-	 QkjZUXPxAVrhnnYKj80/3M8keNbVsW4smpIiGks8m8oAvslcU20cNoCStoUbjPURcu
-	 iXwKBxA2t1OxzsTHtsgMdZC4+Ul3jIKJROwq/MkFfpKE47x9SAjGmmmgZRV92k9RBP
-	 6Mjk2CsfG2vigNu0l4cewtXFq8JUhVRtkgQDH08Ti4NBjVa2pivNvDGznOnUo9j9yJ
-	 or6k1VDPZwI0A==
+	s=mail; t=1693572265;
+	bh=6bKJsNQuCp9wrCZ4U5UGjs1WsKO8DWGQ1kTptdno01s=;
+	h=From:To:Cc:Subject:Date:From;
+	b=DU2PUm+bUaPZGUyfKuN/jnhmT0k+he2YbtxgGxSXT+C1SpjyFACkj8iNc9CmmFUn2
+	 FcwZv6YRo/o3p+CZfd06gUP421quk0dljMZospn8eZACuk4pHAeC34tdI9uqOttc3p
+	 psuN+SA2D32QnCIlO9zNFBb9shj5kFBCrZlw9zen0zultKSL0zH7I0ayOeTQqEvY28
+	 p9zh/qXsghO3D+eLq4oyfcDkRTXoPUT042FNE3102CaT+3H6RKIIa3f4iLiLL4O/OB
+	 cV/lucEZc1NqJkf7JVPibPZI1cdjt+dwwrREAie5y/X10bA5DrnOTcSsovSMxE8yYE
+	 jSfDcb8CC9S7A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,14 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 01/18] media: videobuf2: Rework offset 'cookie' encoding pattern
-Date: Fri,  1 Sep 2023 14:43:57 +0200
-Message-Id: <20230901124414.48497-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 00/18] Add DELETE_BUF ioctl
+Date: Fri,  1 Sep 2023 14:43:56 +0200
+Message-Id: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
-References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_054427_323102_948D1372 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20230901_054427_164627_0441A5DF 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,101 +86,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change how offset 'cookie' field value is computed to make possible
-to use more buffers (up to 0x7fff)
-With this encoding pattern we know the maximum number that a queue
-could store so we can check ing at queue init time.
-It also make easier and faster to find buffer and plane from using
-the offset field.
+Unlike when resolution change on keyframes, dynamic resolution change
+on inter frames doesn't allow to do a stream off/on sequence because
+it is need to keep all previous references alive to decode inter frames.
+This constraint have two main problems:
+- more memory consumption.
+- more buffers in use.
+To solve these issue this series introduce DELETE_BUFS ioctl and remove
+the 32 buffers limit per queue.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-v6:
+VP9 conformance tests using fluster give a score of 210/305.
+The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
+but require to use postprocessor.
+
+Kernel branch is available here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v6
+
+GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
+change is here:
+https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
+
+changes in version 6:
+- Get a patch per driver to use vb2_get_buffer() instead of directly access
+  to queue buffers array.
+- Add lock in vb2_core_delete_buf()
+- Use vb2_buffer instead of index
+- Fix various comments
 - Change buffer index name to BUFFER_INDEX_MASK
-- Max size if 0x7fff not 0xffff
+- Stop spamming kernel log with unbalanced counters
 
- .../media/common/videobuf2/videobuf2-core.c   | 48 +++++++++----------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+changes in version 5:
+- Rework offset cookie encoding pattern is n ow the first patch of the
+  serie.
+- Use static array instead of allocated one for postprocessor buffers.
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index cf6727d9c81f..cf3b9f5b69b7 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -31,6 +31,10 @@
+changes in version 4:
+- Stop using Xarray, instead let queues decide about their own maximum
+  number of buffer and allocate bufs array given that value.
+- Rework offset cookie encoding pattern.
+- Change DELETE_BUF to DELETE_BUFS because it now usable for
+  range of buffer to be symetrical of CREATE_BUFS.
+- Add fixes tags on couple of Verisilicon related patches.
+- Be smarter in Verisilicon postprocessor buffers management.
+- Rebase on top of v6.4
+
+changes in version 3:
+- Use Xarray API to store allocated video buffers.
+- No module parameter to limit the number of buffer per queue.
+- Use Xarray inside Verisilicon driver to store postprocessor buffers
+  and remove VB2_MAX_FRAME limit.
+- Allow Versilicon driver to change of resolution while streaming
+- Various fixes the Verisilicon VP9 code to improve fluster score.
  
- #include <trace/events/vb2.h>
+changes in version 2:
+- Use a dynamic array and not a list to keep trace of allocated buffers.
+  Not use IDR interface because it is marked as deprecated in kernel
+  documentation.
+- Add a module parameter to limit the number of buffer per queue.
+- Add DELETE_BUF ioctl and m2m helpers.
+
+Regards,
+Benjamin
  
-+#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
-+#define PLANE_INDEX_MASK	0x7
-+#define BUFFER_INDEX_MASK	0x7fff
-+
- static int debug;
- module_param(debug, int, 0644);
- 
-@@ -358,21 +362,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
- 	unsigned int plane;
- 	unsigned long off = 0;
- 
--	if (vb->index) {
--		struct vb2_buffer *prev = q->bufs[vb->index - 1];
--		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
--
--		off = PAGE_ALIGN(p->m.offset + p->length);
--	}
-+	/*
-+	 * Offsets cookies value have the following constraints:
-+	 * - a buffer could have up to 8 planes.
-+	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
-+	 * - must be page aligned
-+	 * That led to this bit mapping:
-+	 * |30                |29        15|14       12|11 0|
-+	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
-+	 * where there is 15 bits to store buffer index.
-+	 */
-+	off = vb->index << (PLANE_INDEX_SHIFT);
- 
- 	for (plane = 0; plane < vb->num_planes; ++plane) {
--		vb->planes[plane].m.offset = off;
-+		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
- 
- 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
- 				vb->index, plane, off);
--
--		off += vb->planes[plane].length;
--		off = PAGE_ALIGN(off);
- 	}
- }
- 
-@@ -2209,21 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
- 		return -EBUSY;
- 	}
- 
--	/*
--	 * Go over all buffers and their planes, comparing the given offset
--	 * with an offset assigned to each plane. If a match is found,
--	 * return its buffer and plane numbers.
--	 */
--	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
--		vb = q->bufs[buffer];
-+	/* Get buffer and plane from the offset */
-+	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
-+	plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
- 
--		for (plane = 0; plane < vb->num_planes; ++plane) {
--			if (vb->planes[plane].m.offset == off) {
--				*_buffer = buffer;
--				*_plane = plane;
--				return 0;
--			}
--		}
-+	vb = q->bufs[buffer];
-+	if (vb->planes[plane].m.offset == off) {
-+		*_buffer = buffer;
-+		*_plane = plane;
-+		return 0;
- 	}
- 
- 	return -EINVAL;
+Benjamin Gaignard (18):
+  media: videobuf2: Rework offset 'cookie' encoding pattern
+  media: videobuf2: Stop spamming kernel log with all queue counter
+  media: videobuf2: Use vb2_buffer instead of index
+  media: amphion: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
+    to buffers array
+  media: mediatek: vdec: Use vb2_get_buffer() instead of directly access
+    to buffers array
+  media: sti: hva: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: visl: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: atomisp: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: videobuf2: Access vb2_queue bufs array through helper functions
+  media: videobuf2: Be more flexible on the number of queue stored
+    buffers
+  media: verisilicon: Refactor postprocessor to store more buffers
+  media: verisilicon: Store chroma and motion vectors offset
+  media: verisilicon: vp9: Use destination buffer height to compute
+    chroma offset
+  media: verisilicon: postproc: Fix down scale test
+  media: verisilicon: vp9: Allow to change resolution while streaming
+  media: v4l2: Add DELETE_BUFS ioctl
+  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+
+ .../userspace-api/media/v4l/user-func.rst     |   1 +
+ .../media/v4l/vidioc-delete-bufs.rst          |  73 ++++
+ .../media/common/videobuf2/videobuf2-core.c   | 379 ++++++++++++------
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  99 ++++-
+ drivers/media/dvb-core/dvb_vb2.c              |   6 +-
+ drivers/media/platform/amphion/vpu_dbg.c      |  22 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   6 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   2 +-
+ drivers/media/platform/st/sti/hva/hva-v4l2.c  |   4 +
+ drivers/media/platform/verisilicon/hantro.h   |   9 +-
+ .../media/platform/verisilicon/hantro_drv.c   |   4 +-
+ .../platform/verisilicon/hantro_g2_vp9_dec.c  |  10 +-
+ .../media/platform/verisilicon/hantro_hw.h    |   4 +-
+ .../platform/verisilicon/hantro_postproc.c    |  95 ++++-
+ .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
+ drivers/media/test-drivers/vim2m.c            |   1 +
+ drivers/media/test-drivers/visl/visl-dec.c    |  28 +-
+ drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  17 +
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
+ .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
+ include/media/v4l2-ioctl.h                    |   4 +
+ include/media/v4l2-mem2mem.h                  |  12 +
+ include/media/videobuf2-core.h                |  29 +-
+ include/media/videobuf2-v4l2.h                |  11 +
+ include/uapi/linux/videodev2.h                |  16 +
+ 26 files changed, 664 insertions(+), 218 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+
 -- 
 2.39.2
 
