@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66304CA0FE9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66353CA0FF6
 	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Sep 2023 11:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g9758qN/gHHI7tlzH4zakhhEX0JljWNAFi8hc/s62cM=; b=0aucsqcnWuNMEa
-	hR2X7+SeadcM21KwBkv1IjVpKomW7RIbbfIySN7No8PjnF7fzQB5NTLoZnbbua9eP4hwLIiApXVEc
-	P7/VBkC0RvvRWwgNIRPJdAnwJuJHwpAIIvuQQT5pNO7QZFOdOf6/6uvLwhdSg78BbahiJawO7+OM/
-	pk/lhmEky2k0jIFgGJprLSL8WEzQkTSxIeP0dEGs64Sk+wkUjHE2kjJcxJjhFhEOypyH4TTTdLuHJ
-	W3trtKAEvc5jjojcsxPaWs9K5t/c3JtKsUqR4FKvww0EWtd3+RdRHotLQZZoFNX4QnEbVPd6W0ZJg
-	k1bAlsJ8mF03w/d4FZgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wNyx6LIBDgPugpT9wmVsTCmykKcV3shias/VQk5sa5s=; b=bUGoKExHAscEvy
+	pHzHF6Bej35B3Ky2jKfY+V4AU7Cv0Y6V9mPUBtlE6yrSN4S6eixfOSsDrzev7lXsvFLblk0Z/LcV2
+	c5lV5co46VPAhkXLkyWEPmgLhFJwqfTzheQSdRHztc1HtAC+330jeTH+b0LHaRTZXlMoZGc1LX9fZ
+	cFGNf3Tb0f7BFWtF3833CGjpef4sQ8mvPBSXuiTP5s3+7/DlvZOA8qR8jaQtnxYllSm4gRKxu6tzg
+	KlAv6rGKFQjf6kJWRIVK+h3w+RRvr6rNJRABqEeeMkX/dfN6GDBPX/TPo20tn6JMzzl4mbjka2BrX
+	xEzCcujUAl72HCfLYCJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd8Dv-0041sK-2S;
-	Mon, 04 Sep 2023 11:58:31 +0000
+	id 1qd8Dx-0041t7-2k;
+	Mon, 04 Sep 2023 11:58:33 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd8Do-0041pv-2u
+	id 1qd8Do-0041pu-2u
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Sep 2023 11:58:29 +0000
+	Mon, 04 Sep 2023 11:58:30 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dk-0003r1-RS; Mon, 04 Sep 2023 13:58:20 +0200
+	id 1qd8Dk-0003r2-RT; Mon, 04 Sep 2023 13:58:20 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dk-003s40-0N; Mon, 04 Sep 2023 13:58:20 +0200
+	id 1qd8Dk-003s43-5M; Mon, 04 Sep 2023 13:58:20 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dj-005pOk-Ey; Mon, 04 Sep 2023 13:58:19 +0200
+	id 1qd8Dj-005pOo-GB; Mon, 04 Sep 2023 13:58:19 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -54,18 +54,20 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 0/3] Make Rockchip IO domains dependency from other devices explicit
-Date: Mon,  4 Sep 2023 13:58:13 +0200
-Message-Id: <20230904115816.1237684-1-s.hauer@pengutronix.de>
+Subject: [PATCH 1/3] pinctrl: rockchip: add support for io-domain dependency
+Date: Mon,  4 Sep 2023 13:58:14 +0200
+Message-Id: <20230904115816.1237684-2-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230904115816.1237684-1-s.hauer@pengutronix.de>
+References: <20230904115816.1237684-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_045824_975192_1D4816B1 
-X-CRM114-Status: GOOD (  22.01  )
+X-CRM114-CacheID: sfid-20230904_045824_969823_457D5DD4 
+X-CRM114-Status: GOOD (  24.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,68 +84,178 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a continuation of the patch posted by Quentin Schulz here [1]
+On some Rockchip SoCs, some SoC pins are split in what are called IO
+domains.
 
-This series aims to solve a problem with Rockchip IO domains. On many
-Rockchip SoCs the pins are driven by external supplies normally
-controlled by regulators of a PMIC. There are multiple voltages allowed
-for the regulators; additionally the chosen voltage has to be programmed
-into SoC registers. There already is a driver [2] handling setting these
-registers. The driver works by registering a notifier on the regulators.
-Whenever a regulator is about to change its voltage then the notifier will
-program the IO domain registers suitably for the new voltage.
+An IO domain is supplied power externally, by regulators from a PMIC for
+example. This external power supply is then used by the IO domain as
+"supply" for the IO pins if they are outputs.
 
-The problem is that there is no dependency between pins and the IO
-domain driver which means that it can happen that a pin is used before
-the IO domain driver has been probed. In that case the pin can end up
-being non functional as neither the regulator has been configured
-correctly nor the SoC registers have been adjusted to the regulators
-voltage.
+Each IO domain can configure which voltage the IO pins will be operating
+on (1.8V or 3.3V).
 
-One way to ensure correct probing order is to defer probing of devices
-in the pinctrl driver until the IO domain driver has been probed. We
-can't do this for all devices though, as that would introduce a cyclic
-dependency when for example the I2C port needed to access the PMIC for
-the regulators is part of a IO domain itself.
+There already exists an IO domain driver for Rockchip SoCs[1]. This
+driver allows to explicit the relationship between the external power
+supplies and IO domains[2]. This makes sure the regulators are enabled
+by the Linux kernel so the IO domains are supplied with power and
+correctly configured as per the supplied voltage.
+This driver is a regulator consumer and does not offer any other
+interface for device dependency.
 
-This series solves these problems similarly to Quentins patch. With
-Quentins patch we would have to add rockchip,io-domain properties for
-all pin group nodes we wish to honor the IO domain dependency for. We
-could put these properties into the board dts files which would mean
-that we either only add the properties to nodes which actually byte us,
-or that we would have to add the properties to all possible pin groups
-except the ones needed to access the PMIC. We could also put these
-properties into the dtsi files, but that would mean a board has to add a
-/delete-property/ rockchip,io-domain to the pin groups needed to access
-the PMIC to avoid circular dependencies.
+However, IO pins belonging to an IO domain need to have this IO domain
+configured correctly before they are being used otherwise they do not
+operate correctly.
 
-The approach chosen here is slightly different. First of all this series
-doesn't change the current behaviour without board specific dts changes.
-To activate the IO domain dependency handling, a board has to add a
-rockchip,io-domains property to the pinctrl node. When this property is
-present all pins are assumed to need the IO domain driver. Pin groups
-needed to access the PMIC can then be given a rockchip,io-domain-boot-on
-property. When this property is given then the IO domain is assumed to
-be correctly configured by the boot loader. It should be added to all
-pin groups needed to access the PMIC to avoid cyclic dependencies. Patch
-3/3 contains a usage example for the Radxa Rock-3a.
+We currently do not have any knowledge about which pin is on which IO
+domain, so we assume that all pins are on some IO domain and defer
+probing of the pin consumers until the IO domain driver has been probed.
+Some pins however are needed to access the regulators driving an IO
+domain. Deferring probe for them as well would introduce a cyclic
+dependency. To break out of this dependency a pin group can be supplied
+a rockchip,io-domain-boot-on property. Probe won't be deferred for pin
+groups with this property. rockchip,io-domain-boot-on should be added
+to all pin groups needed to access the PMIC driving the IO domains.
 
-Sascha
+[1] drivers/soc/rockchip/io-domain.c
+[2] Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
 
-[1] https://lore.kernel.org/lkml/20220802095252.2486591-1-foss+kernel@0leil.net/
-[2] drivers/soc/rockchip/io-domain.c
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 64 ++++++++++++++++++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.h |  3 ++
+ 2 files changed, 67 insertions(+)
 
-Sascha Hauer (3):
-  pinctrl: rockchip: add support for io-domain dependency
-  dt-bindings: pinctrl: rockchip: Add io domain properties
-  arm64: dts: rockchip: rock-3a: add io domain properties
-
- .../bindings/pinctrl/rockchip,pinctrl.yaml    | 13 +++-
- .../boot/dts/rockchip/rk3568-rock-3a.dts      | 11 ++++
- drivers/pinctrl/pinctrl-rockchip.c            | 64 +++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h            |  3 +
- 4 files changed, 90 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 0276b52f37168..663bd9d6840a5 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -24,6 +24,8 @@
+ #include <linux/of_address.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/pinctrl/machine.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinctrl.h>
+@@ -2678,6 +2680,43 @@ static int rockchip_pmx_get_groups(struct pinctrl_dev *pctldev,
+ 	return 0;
+ }
+ 
++static int rockchip_pmx_check_io_domain(struct rockchip_pinctrl *info, unsigned group)
++{
++	struct platform_device *pdev;
++	int i;
++
++	if (!info->io_domains)
++		return 0;
++
++	if (info->groups[group].io_domain_skip)
++		return 0;
++
++	for (i = 0; i < info->num_io_domains; i++) {
++		if (!info->io_domains[i])
++			continue;
++
++		pdev = of_find_device_by_node(info->io_domains[i]);
++		if (!pdev) {
++			dev_err(info->dev, "couldn't find IO domain device\n");
++			return -ENODEV;
++		}
++
++		if (!platform_get_drvdata(pdev)) {
++			dev_err(info->dev, "IO domain device is not probed yet, deferring...(%s)",
++				info->groups[group].name);
++			return -EPROBE_DEFER;
++		}
++
++		of_node_put(info->io_domains[i]);
++		info->io_domains[i] = NULL;
++	}
++
++	devm_kfree(info->dev, info->io_domains);
++	info->io_domains = NULL;
++
++	return 0;
++}
++
+ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 			    unsigned group)
+ {
+@@ -2691,6 +2730,10 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 	dev_dbg(dev, "enable function %s group %s\n",
+ 		info->functions[selector].name, info->groups[group].name);
+ 
++	ret = rockchip_pmx_check_io_domain(info, group);
++	if (ret)
++		return ret;
++
+ 	/*
+ 	 * for each pin in the pin group selected, program the corresponding
+ 	 * pin function number in the config register.
+@@ -3019,6 +3062,8 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 	if (!size || size % 4)
+ 		return dev_err_probe(dev, -EINVAL, "wrong pins number or pins and configs should be by 4\n");
+ 
++	grp->io_domain_skip = of_property_read_bool(np, "rockchip,io-domain-boot-on");
++
+ 	grp->npins = size / 4;
+ 
+ 	grp->pins = devm_kcalloc(dev, grp->npins, sizeof(*grp->pins), GFP_KERNEL);
+@@ -3417,6 +3462,22 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 			return PTR_ERR(info->regmap_pmu);
+ 	}
+ 
++	info->num_io_domains = of_property_count_u32_elems(np, "rockchip,io-domains");
++	if (info->num_io_domains) {
++		int i;
++
++		info->io_domains = devm_kmalloc_array(dev, info->num_io_domains,
++						      sizeof(*info->io_domains), GFP_KERNEL);
++		if (!info->io_domains)
++			return -ENOMEM;
++
++		for (i = 0; i < info->num_io_domains; i++) {
++			info->io_domains[i] = of_parse_phandle(np, "rockchip,io-domains", 0);
++			if (!info->io_domains[i])
++				return -EINVAL;
++		}
++	}
++
+ 	ret = rockchip_pinctrl_register(pdev, info);
+ 	if (ret)
+ 		return ret;
+@@ -3439,6 +3500,9 @@ static int rockchip_pinctrl_remove(struct platform_device *pdev)
+ 
+ 	of_platform_depopulate(&pdev->dev);
+ 
++	for (i = 0; i < info->num_io_domains; i++)
++		of_node_put(info->io_domains[i]);
++
+ 	for (i = 0; i < info->ctrl->nr_banks; i++) {
+ 		bank = &info->ctrl->pin_banks[i];
+ 
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+index 4759f336941ef..d2ac79b0a7bc4 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -435,6 +435,7 @@ struct rockchip_pin_group {
+ 	unsigned int			npins;
+ 	unsigned int			*pins;
+ 	struct rockchip_pin_config	*data;
++	bool				io_domain_skip;
+ };
+ 
+ /**
+@@ -462,6 +463,8 @@ struct rockchip_pinctrl {
+ 	unsigned int			ngroups;
+ 	struct rockchip_pmx_func	*functions;
+ 	unsigned int			nfunctions;
++	struct device_node		**io_domains;
++	int				num_io_domains;
+ };
+ 
+ #endif
 -- 
 2.39.2
 
