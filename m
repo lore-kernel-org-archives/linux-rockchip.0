@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F48C71153
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Sep 2023 11:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B586EC83F33
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Sep 2023 14:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jlZDjzJunv/XREIoJLf/W95NgVEF3qOe/hxHL1MFOzw=; b=vyMFnZ2/ZqAmXC
-	cUB5APi1eurIt1v1EDsca7WjvPw8HlJy7UAViEcLJ6InRsBoJhFhGuX3p0elOvuBktlvbu32yH8au
-	iGgj4RFso4eoX0pqKi6DGOqwPV2Z5P9xdGSpOI+hacthRLZkUQoOfWt4imtW4G/dPVOd4pXC06wup
-	0R65rIM5Tl3Ey42etFhuccbWL77/h1RyNd54s2tZebU+OZJ2TRGz7G13UnT+G8gN26soAc5txubjE
-	4Crgx8s4Z3VvQdZbSXB9RGLO/vux1NN2x92g/K6t2dyxGPg4IxIR+uJtuF4qWanXPLBFAJNGky/1Q
-	Oqkq2Z1WxwiLCrPPkbsg==;
+	List-Owner; bh=24jAizYAJt8kn4pLpaCjiSmFOJzadfnpxYEGzvaiXws=; b=MZ57RdlVnNPi0s
+	67zLExdRehQD4aLuY4QMlDy4A0Ih92mtPjWt5+xhdGxuS38vVE/W5SQBfXKZ9f381gvUt6n5Y+6B0
+	lNh2yBgizGhttSazZJmUvyKj5yo0jVSqrHWZ/s/1K3V8emQnEGDjssWYv/S+mfoQpaTR5FKU47g/Q
+	Rl3RNSu6REoxQ0jwMlrxv03LHLvvjMC1ot/HZ1La57Q6IZm1X+N8Kj3KNEN3KDvB5GFQ21KjZOGoX
+	0Aeap1xk/DWMgOedPXT99xtXs2kT7F49+T1CVBYGPHmn1SO3WS+MAApH0kXJQYk6QH6q6OAEpqVkd
+	gu+gnJX3ml3gMfU8jRGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd8Dy-0041tl-0s;
-	Mon, 04 Sep 2023 11:58:34 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qdAGW-004Een-13;
+	Mon, 04 Sep 2023 14:09:20 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd8Do-0041px-2u
-	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Sep 2023 11:58:32 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dl-0003r4-2P; Mon, 04 Sep 2023 13:58:21 +0200
-Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dk-003s49-Jh; Mon, 04 Sep 2023 13:58:20 +0200
-Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qd8Dj-005pOr-HB; Mon, 04 Sep 2023 13:58:19 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	kernel@pengutronix.de,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 2/3] dt-bindings: pinctrl: rockchip: Add io domain properties
-Date: Mon,  4 Sep 2023 13:58:15 +0200
-Message-Id: <20230904115816.1237684-3-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230904115816.1237684-1-s.hauer@pengutronix.de>
-References: <20230904115816.1237684-1-s.hauer@pengutronix.de>
+	id 1qdAGR-004Ed5-1y;
+	Mon, 04 Sep 2023 14:09:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id D6F27CE0E0D;
+	Mon,  4 Sep 2023 14:09:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A9A6C433C8;
+	Mon,  4 Sep 2023 14:09:05 +0000 (UTC)
+Message-ID: <b3561832-b7e4-f612-4729-fd4ca8234602@xs4all.nl>
+Date: Mon, 4 Sep 2023 16:09:03 +0200
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v6 11/18] media: videobuf2: Be more flexible on the number
+ of queue stored buffers
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
+ <20230901124414.48497-12-benjamin.gaignard@collabora.com>
+ <37e5e418-c38a-b863-ffdf-72ce300cf227@xs4all.nl>
+ <319d6103-26c3-bc02-3f80-90e653c8ee37@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <319d6103-26c3-bc02-3f80-90e653c8ee37@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_045824_998808_97179151 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20230904_070916_012156_78090DF1 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,52 +75,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,io-domains property to the Rockchip pinctrl driver. This
-list of phandles points to the IO domain device(s) the pins of the
-pinctrl driver are supplied from.
+Hi Benjamin,
 
-Also a rockchip,io-domain-boot-on property is added to pin groups
-which can be used for pin groups which themselves are needed to access
-the regulators an IO domain is driven from.
+This patch can be folded into 11/18 to make it work properly.
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+vb2_core_queue_release() is also called when the file handle of the video device is
+closed and it is also the owner of the currently allocated buffers. This will free
+q->bufs, but queue_init isn't called a second time for non-m2m devices. So move
+the allocation of q->bufs from queue_init to reqbufs/create_buffers.
+
+And when releasing the file handle we also check if there is no owner at all:
+in that case vb2_queue_release() must still be called to free q->bufs.
+
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 ---
- .../bindings/pinctrl/rockchip,pinctrl.yaml          | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ drivers/media/common/videobuf2/videobuf2-core.c | 15 +++++++++++++--
+ drivers/media/common/videobuf2/videobuf2-v4l2.c |  4 ++--
+ 2 files changed, 15 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-index 10c335efe619e..92075419d29cf 100644
---- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-@@ -62,6 +62,11 @@ properties:
-       Required for at least rk3188 and rk3288. On the rk3368 this should
-       point to the PMUGRF syscon.
- 
-+  rockchip,io-domains:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description:
-+      Phandles to io domains
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index dc7f6b59d237..202d7c80ffd2 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -859,6 +859,12 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return 0;
+ 	}
+
++	if (!q->bufs) {
++		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
++		if (!q->bufs)
++			return -ENOMEM;
++	}
 +
-   "#address-cells":
-     enum: [1, 2]
- 
-@@ -137,7 +142,13 @@ additionalProperties:
-             - description:
-                 The phandle of a node contains the generic pinconfig options
-                 to use as described in pinctrl-bindings.txt.
+ 	/*
+ 	 * Make sure the requested values and current defaults are sane.
+ 	 */
+@@ -985,6 +991,12 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		return -ENOBUFS;
+ 	}
+
++	if (!q->bufs) {
++		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
++		if (!q->bufs)
++			return -ENOMEM;
++	}
++
+ 	if (no_previous_buffers) {
+ 		if (q->waiting_in_dqbuf && *count) {
+ 			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
+@@ -2525,8 +2537,6 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 	/* The maximum is limited by offset cookie encoding pattern */
+ 	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK);
+
+-	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
 -
-+      rockchip,io-domain-boot-on:
-+        type: boolean
-+        description:
-+          If true assume that the io domain needed for this pin group has been
-+          configured correctly by the bootloader. This is needed to break cyclic
-+          dependencies introduced when a io domain needs a regulator that can be
-+          accessed through pins configured here.
- examples:
-   - |
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
+ 	if (q->buf_struct_size == 0)
+ 		q->buf_struct_size = sizeof(struct vb2_buffer);
+
+@@ -2552,6 +2562,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	mutex_lock(&q->mmap_lock);
+ 	__vb2_queue_free(q, q->num_buffers);
+ 	kfree(q->bufs);
++	q->bufs = NULL;
+ 	mutex_unlock(&q->mmap_lock);
+ }
+ EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+index 8ba658ad9891..104fc5c4f574 100644
+--- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
++++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+@@ -1148,7 +1148,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
+
+ 	if (lock)
+ 		mutex_lock(lock);
+-	if (file->private_data == vdev->queue->owner) {
++	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
+ 		vb2_queue_release(vdev->queue);
+ 		vdev->queue->owner = NULL;
+ 	}
+@@ -1276,7 +1276,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
+ 	 */
+ 	get_device(&vdev->dev);
+ 	video_unregister_device(vdev);
+-	if (vdev->queue && vdev->queue->owner) {
++	if (vdev->queue) {
+ 		struct mutex *lock = vdev->queue->lock ?
+ 			vdev->queue->lock : vdev->lock;
+
 -- 
-2.39.2
+2.40.1
+
 
 
 _______________________________________________
