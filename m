@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D38C83F2C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Sep 2023 17:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0271BC83F33
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Sep 2023 07:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KVWjFeK6Rj/Azgr/p7dsonIOQmyjxq8vdIqZLGk1UGc=; b=Pu4Xo+1lVmfpRu
-	1LLc4/Src03STQUF5QOYHbRsw0HDKt3D+Y1/rn2qwKr5d5jFA+ox2yDpQEz5/aMNQx8WOXwwA34p8
-	X1kajM/idQ1dUVXr7h7sUoOF+P2Qk/oTSLfzNYTmyKs95M2m+JR12mVXR3e+0S2bkMIAgCtJ/AJMY
-	lrReLdBHGxsIzpYeqZUCF/I+15qPxmJjaP29gAcwKXx1VmewIIsijeFtQDACA0kjtt9EG/hkDLTPs
-	z+Tq3mpjpM8JrmSVDFC3Jl+pqMGxxp9fFZO4B9s9XdWMmpVz/QljoX2RTN//1P1PYhAQaKleW5W10
-	XuR7N+pmkGKr9C6jhHLg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SqETIPJovq1HMB9c770K4teVe7Uedd4w/kCM5F//Mkc=; b=2RhGGZjga54of1
+	VGj2ttbnNg/qVZh/DjWfvJbm9vmgnQCCJyppRP3l6Dkkh9ehmFFQ/6KW45SCWJlpvv7OKNz+X1iEJ
+	OAezbDm9ALZJ5WZ7oKeSJzpCaTCVg5lb3/N0Q9Ov6dbzhe37XjIRwZ/PMIUYST5V1/GByCVZb/rMD
+	10ihORwt2fIvbzM7ticSn5vTK3HJcgab6NGWO5yryuJqD2+QvYBQ6s7zl5z826kGHdcyQNtOV3Y72
+	dRtztQPaJUYUtS9Vhg183KlrLDAW4DSWh103S44h9iDqZCHpQc+Zqfn9mWtg1w8KGWai0bBMXaf90
+	ofFqSUK5FhqQwum2cRiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcUWI-001dPS-2Q;
-	Sat, 02 Sep 2023 17:34:50 +0000
-Received: from smtp-13.smtpout.orange.fr ([80.12.242.13] helo=smtp.smtpout.orange.fr)
+	id 1qd4Pn-003W0J-1n;
+	Mon, 04 Sep 2023 07:54:31 +0000
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcUWD-001dOF-1F
+	id 1qd4Pi-003VxV-1O
 	for linux-rockchip@lists.infradead.org;
-	Sat, 02 Sep 2023 17:34:48 +0000
-Received: from pop-os.home ([86.243.2.178])
-	by smtp.orange.fr with ESMTPA
-	id cUW0qSQdLrpphcUW0qfbpv; Sat, 02 Sep 2023 19:34:37 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1693676077;
-	bh=PV3aglENvRj4bS2y961dRJdE/WDfkUhp4usjVXMs0ww=;
-	h=From:To:Cc:Subject:Date;
-	b=hRSEsyIWKalQpMErnUONxjzgb4O9iWvHtSxaJB3YQiGGWkPJY4N4qAK0dNPSoXRUl
-	 1hqaq+WzZgHFHrrz9dkCCJmusa3n50lLsmlJ5yElhp63Px2TDucSgRN5nC5lBm0tha
-	 d5PQ8y+JEeA2xJTDUFAurZWpXtGoIZmcHS4Q1fK0dbqgB0F7Ita89NLsSYCWd7f1P9
-	 bcMCrdtU3sdzIFzwDaHuvAeZFA466KMdcmoa55AnTqE6ubmh/rBjAxIzbjnOXmDeHz
-	 DkL7iOo6LGuryLTAcAS15YXT+4sz0cbFJWMSADv8hXcL9lZ0fTNvyZm45WOHOUsT/B
-	 kT0lf0kVOCX9g==
-X-ME-Helo: pop-os.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 02 Sep 2023 19:34:37 +0200
-X-ME-IP: 86.243.2.178
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Sean Paul <seanpaul@chromium.org>,
-	Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] drm/rockchip: cdn-dp: Fix some error handling paths in cdn_dp_probe()
-Date: Sat,  2 Sep 2023 19:34:31 +0200
-Message-Id: <8494a41602fadb7439630921a9779640698f2f9f.1693676045.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.34.1
+	Mon, 04 Sep 2023 07:54:29 +0000
+Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-1c134602a55so277995fac.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Sep 2023 00:54:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ffwll.ch; s=google; t=1693814064; x=1694418864; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=KyKnaN7NpH4i3mR4K3pdjOI+p6X18zjem8CJPwQILZE=;
+        b=SvxZrnSMBXKcKn5urH9VYzbVZO90iv8OGweg3RaZN1RPSaLaE4ts8+VTd+G0vXMTJt
+         5mrfEo4qTs48PC416kMUCzcD3Riqyr9XnOe7Ns2MXkSrcmG2BLd87jsEBrQcHutQ4VRo
+         WSQ7hv6T9NZT3m0OOxRTz0KvFQhqdfCfxxCxM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693814064; x=1694418864;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KyKnaN7NpH4i3mR4K3pdjOI+p6X18zjem8CJPwQILZE=;
+        b=CzcagocFwRwVHFZfLKYbUl28GwaDocqC8Pjc6RqdCEmEOLsNGATUv70WimU4NMtoE7
+         Y2c/aiG2kjn9wyIvngC9mOj621yvdU+suZFL3pfxDviLzUZqSyfAqIafk3ppBwnEF+oD
+         M6pYFA2mTD1sDa4d13ZgNP4CTGsZ1BDQD1b/g9is7kWFcsPGdR0p/L3ZY9fNtzo9zFsN
+         SuKfhOTylsyVF+P0z39qZCL2SVINJNldCTECjRUb1vON3/0kZ9Mrai/Eg+ZdYspmPW2Y
+         vLPvpA+JcALABUDsLYhglCrKvJ8qZuJW/H0jN9RXNp0xUeZ3NdFYTPanDIoQpT2Y/01e
+         +x/Q==
+X-Gm-Message-State: AOJu0YxXCcpEISXkIrgF9lwjvpAJAGBmddG3185VLfOcE/+tUpbRD+b+
+	bhnmmgeox4on5kU2bcjED3RlWaPJR179ZxufhCBvcg==
+X-Google-Smtp-Source: AGHT+IFOL4XWPpjdGAlQRxOMzzs4xfcl+Q7IrMAB38jiRI5gWOoAip6k0ty+kO45J/LnC6Jvtv1BrkYFac+rKV1dbm8=
+X-Received: by 2002:a4a:db8a:0:b0:573:4a72:6ec with SMTP id
+ s10-20020a4adb8a000000b005734a7206ecmr7643777oou.1.1693814064509; Mon, 04 Sep
+ 2023 00:54:24 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230811171953.176431-1-helen.koike@collabora.com>
+ <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local> <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+ <87bkeo23vs.fsf@intel.com> <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+ <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com> <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
+ <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
+In-Reply-To: <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Date: Mon, 4 Sep 2023 09:54:12 +0200
+Message-ID: <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+To: Helen Koike <helen.koike@collabora.com>
+Cc: Maxime Ripard <mripard@kernel.org>, emma@anholt.net, linux-doc@vger.kernel.org, 
+	vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, 
+	alyssa@rosenzweig.io, jbrunet@baylibre.com, robdclark@google.com, 
+	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
+	david.heidelberg@collabora.com, linux-rockchip@lists.infradead.org, 
+	daniels@collabora.com, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
+	linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com, 
+	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org, tzimmermann@suse.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230902_103445_839645_F9CFF955 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20230904_005426_482352_0855C7E0 
+X-CRM114-Status: GOOD (  96.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,54 +98,261 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-cdn_dp_audio_codec_init() can fail. So add some error handling.
+On Wed, 30 Aug 2023 at 17:14, Helen Koike <helen.koike@collabora.com> wrote:
+>
+>
+>
+> On 30/08/2023 11:57, Maxime Ripard wrote:
+> > On Wed, Aug 30, 2023 at 10:24:49AM -0300, Helen Koike wrote:
+> >> Hi all,
+> >>
+> >> Thanks for you comments.
+> >>
+> >> On 30/08/2023 08:37, Maxime Ripard wrote:
+> >>> On Wed, Aug 30, 2023 at 01:58:31PM +0300, Jani Nikula wrote:
+> >>>> On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> >>>>> On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
+> >>>>>> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
+> >>>>>>> From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >>>>>>>
+> >>>>>>> Developers can easily execute several tests on different devices
+> >>>>>>> by just pushing their branch to their fork in a repository hosted
+> >>>>>>> on gitlab.freedesktop.org which has an infrastructure to run jobs
+> >>>>>>> in several runners and farms with different devices.
+> >>>>>>>
+> >>>>>>> There are also other automated tools that uprev dependencies,
+> >>>>>>> monitor the infra, and so on that are already used by the Mesa
+> >>>>>>> project, and we can reuse them too.
+> >>>>>>>
+> >>>>>>> Also, store expectations about what the DRM drivers are supposed
+> >>>>>>> to pass in the IGT test suite. By storing the test expectations
+> >>>>>>> along with the code, we can make sure both stay in sync with each
+> >>>>>>> other so we can know when a code change breaks those expectations.
+> >>>>>>>
+> >>>>>>> Also, include a configuration file that points to the out-of-tree
+> >>>>>>> CI scripts.
+> >>>>>>>
+> >>>>>>> This will allow all contributors to drm to reuse the infrastructure
+> >>>>>>> already in gitlab.freedesktop.org to test the driver on several
+> >>>>>>> generations of the hardware.
+> >>>>>>>
+> >>>>>>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >>>>>>> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> >>>>>>> Acked-by: Daniel Stone <daniels@collabora.com>
+> >>>>>>> Acked-by: Rob Clark <robdclark@gmail.com>
+> >>>>>>> Tested-by: Rob Clark <robdclark@gmail.com>
+> >>>>>>
+> >>>>>> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
+> >>>>>> include that branch in linux-next.
+> >>>>>>
+> >>>>>> But also I'd like to see a lot more acks here, we should be able to at
+> >>>>>> least pile up a bunch of (driver) maintainers from drm-misc in support of
+> >>>>>> this. Also maybe media, at least I've heard noises that they're maybe
+> >>>>>> interested too? Plus anyone else, the more the better.
+> >>>>>
+> >>>>> I'm not really convinced by that approach at all, and most of the issues
+> >>>>> I see are shown by the follow-up series here:
+> >>>>
+> >>>> I'm not fully convinced either, more like "let's see". In that narrow
+> >>>> sense, ack. I don't see harm in trying, if you're also open to backing
+> >>>> off in case it does not pan out.
+> >>>>
+> >>>>> https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman@collabora.com/
+> >>>>>
+> >>>>>     * We hardcode a CI farm setup into the kernel
+> >>
+> >>
+> >> These could be out of tree.
+> >>
+> >> There is a version outside the kernel tree where you just point the CI
+> >> configuration to a url:
+> >> https://gitlab.freedesktop.org/gfx-ci/drm-ci/-/merge_requests/1
+> >>
+> >> We were discussing it here https://www.linuxtv.org/cgi-bin/mailman/private/linuxtv-ci/2023-August/000027.html
+> >
+> > It looks like it's private
+> >
+> >> (I guess Sima's reply didn't got into the mailing list) but the argument of
+> >> not having out of tree repo is due to historical bad experience of having to
+> >> sync the kernel with the code and it can become messy.
+> >
+> > My point is that even though the test strategy might be considered a
+> > "property" of the kernel, how you execute it is definitely not and you
+> > will have as many setups as you have CI farms. You can't put that into
+> > the kernel, just like we don't put the kernel command line in it for
+> > example. >
+> >>>>>
+> >>>>>     * We cannot trust that the code being run is actually the one being
+> >>>>>       pushed into gitlab
+> >>
+> >>
+> >> We can improve this if this is a requirement.
+> >> For DTS configuration we can work with overlays (which is the current
+> >> modification on that patchset). For other changes that are not suitable to
+> >> upstream (and should be rare) we can see if we work with the
+> >> `-external-fixes` approach or another approach, we can check it case by case
+> >> to understand why it is not suitable for upstream.
+> >
+> > The existence of that branch in itself is an issue to me. Again, it's a
+> > matter of trust. How can I trust a branch I barely know about, of which
+> > the development is not clear and isn't reviewed by any of the
+> > maintainers of the code that might affect the test outcomes.
+> >
+> > Or put another way, if I run the tests on my machine, it won't work. Why
+> > should it work on the CI farm? The branch itself is broken. It might not
+> > be due to any of the work I did, but it's broken still.
+> >
+> >>>>>
+> >>>>>     * IMO, and I know we disagree here, any IGT test we enable for a given
+> >>>>>       platform should work, period. Allowing failures and flaky tests just
+> >>>>>       sweeps whatever issue is there under the rug. If the test is at
+> >>>>>       fault, we should fix the test, if the driver / kernel is at fault,
+> >>>>>       then I certainly want to know about it.
+> >>
+> >> I believe we need a baseline and understand the current status of tests. If
+> >> you check the xfails folder in the patch you can see that I had to add a few
+> >> tests on *-skips.txt since those tests crashes the system and other on
+> >> *-fails.txt that are consistently not passing.
+> >
+> > I agree that we need a baseline, but that baseline should be defined by
+> > the tests own merits, not their outcome on a particular platform.
+> >
+> > In other words, I want all drivers to follow that baseline, and if they
+> > don't it's a bug we should fix, and we should be vocal about it. We
+> > shouldn't ignore the test because it's broken.
+> >
+> > Going back to the example I used previously, kms_hdmi_inject@inject-4k
+> > shouldn't fail on mt8173, ever. That's a bug. Ignoring it and reporting
+> > that "all tests are good" isn't ok. There's something wrong with that
+> > driver and we should fix it.
+> >
+> > Or at the very least, explain in much details what is the breakage, how
+> > we noticed it, why we can't fix it, and how to reproduce it.
+> >
+> > Because in its current state, there's no chance we'll ever go over that
+> > test list and remove some of them. Or even know if, if we ever fix a bug
+> > somewhere, we should remove a flaky or failing test.
+> >
+> >> Since the "any IGT test we enable for a given platform should work" is not a
+> >> reality atm,
+> >
+> > Thanks for the reality check, but it's very much doable: we're in
+> > control of the test suite.
+> >
+> >> we need to have a clear view about which tests are not corresponding
+> >> to it, so we can start fixing. First we need to be aware of the issues
+> >> so we can start fixing them, otherwise we will stay in the "no tests
+> >> no failures" ground :)
+> >
+> > I think we have somewhat contradicting goals. You want to make
+> > regression testing, so whatever test used to work in the past should
+> > keep working. That's fine, but it's different from "expectations about
+> > what the DRM drivers are supposed to pass in the IGT test suite" which
+> > is about validation, ie "all KMS drivers must behave this way".
+>
+> I see. Indeed, for me it is more about regression testing.
+>
+> We could have a configuration where developers could choose to run
+> regression tests or overall validation (but I understand this is not the
+> point, but just saying we could have both somehow).
+>
+> We could have some policy: if you want to enable a certain device in the
+> CI, you need to make sure it passes all tests first to force people to
+> go fix the issues, but maybe it would be a big barrier.
+>
+> I'm afraid that, if a test fail (and it is a clear bug), people would
+> just say "work for most of the cases, this is not a priority to fix" and
+> just start ignoring the CI, this is why I think regression tests is a
+> good way to start with.
+>
+> Anyway, just brain storming :)
+> I really hope we can find a nice useful solution for the community.
 
-If component_add() fails, the previous cdn_dp_audio_codec_init() call
-should be undone, as already done in the remove function.
+I think eventually we need to get to both goals, but currently driver
+and test quality just isn't remotely there.
 
-Fixes: 88582f564692 ("drm/rockchip: cdn-dp: Don't unregister audio dev when unbinding")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
+I think a good approach would be if CI work focuses on the pure sw
+tests first, so kunit and running igt against vgem/vkms. And then we
+could use that to polish a set of must-pass igt testcases, which also
+drivers in general are supposed to pass. Plus ideally weed out the bad
+igts that aren't reliable enough or have bad assumptions.
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index a29fbafce393..3793863c210e 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1177,6 +1177,7 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	struct cdn_dp_device *dp;
- 	struct extcon_dev *extcon;
- 	struct phy *phy;
-+	int ret;
- 	int i;
- 
- 	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
-@@ -1217,9 +1218,19 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	mutex_init(&dp->lock);
- 	dev_set_drvdata(dev, dp);
- 
--	cdn_dp_audio_codec_init(dp, dev);
-+	ret = cdn_dp_audio_codec_init(dp, dev);
-+	if (ret)
-+		return ret;
-+
-+	ret = component_add(dev, &cdn_dp_component_ops);
-+	if (ret)
-+		goto err_audio_deinit;
- 
--	return component_add(dev, &cdn_dp_component_ops);
-+	return 0;
-+
-+err_audio_deinit:
-+	platform_device_unregister(dp->audio_pdev);
-+	return ret;
- }
- 
- static void cdn_dp_remove(struct platform_device *pdev)
+For hardware I think it will take a very long time until we get to a
+point where CI can work without a test result list, we're nowhere
+close to that. But for virtual driver this really should be
+achievable, albeit with a huge amount of effort required to get there
+I think.
+
+Cheers, Sima
+
+> Regards,
+> Helen
+>
+> >
+> > I guess for regression you very much would like that all-green
+> > dashboard, and it's understandable. For validation, we don't care and we
+> > should be as vocal as possible to report broken drivers.
+> >
+> > Eventually, we should have regression testing over the validation test
+> > suite.
+> >
+> > It's not about reality. We should be clear what we expect from those
+> > test suites, and not claim that it's something it's not.
+> >
+> >>>> At least for display, where this also depends on peripheral hardware,
+> >>>> it's not an easy problem, really.
+> >>>
+> >>> Aside from the Chamelium tests, which tests actually rely on peripheral
+> >>> hardware? On EDID and hotplug, sure, but that can easily be set up from
+> >>> the userspace, or something like
+> >>>
+> >>> https://www.lindy-international.com/HDMI-2-0-EDID-Emulator.htm?websale8=ld0101.ld021102&pi=32115
+> >>>
+> >>>> How reliable do you need it to be? How many nines? Who is going to
+> >>>> debug the issues that need hundreds or thousands of runs to reproduce?
+> >>>> If a commit makes some test less reliable, how long is it going to
+> >>>> take to even see that or pinpoint that?
+> >>>
+> >>> I mean, that's also true for failures or success then. How many times do
+> >>> you need a test to run properly to qualify it as a meaningful test? How
+> >>> do you know that it's not a flaky test?
+> >>>
+> >>> Ultimately, it's about trust. If, for a given test that just failed, I
+> >>> can't be certain that it's because of the branch I just submitted, I
+> >>> will just ignore the tests results after a while.
+> >>>
+> >>> This is already what plagues kernelci, and we should do better.
+> >>
+> >> This is something that is really nice on Mesa3D, a patch only gets merged if
+> >> tests passes, which forces people to not ignore it, which forces the code to
+> >> be fixed and the CI to be constantly maintained.
+> >>
+> >> Of course there are bad days there, but there is real value. Nice thread to
+> >> check: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8635 (thanks Alyssa
+> >> for the feedback).
+> >
+> > I'm sure it works great for Mesa, but I'm also sure it doesn't ignore
+> > CTS reports that a particular device isn't a valid OpenGL or Vulkan
+> > implementation anymore.
+> >
+> >>> And I'm sorry, but if some part of the kernel or driver just isn't
+> >>> reliable, then we shouldn't claim it is (except for all the times it
+> >>> isn't). If no-one has the time to look into it, fine, but flagging it
+> >>> under a flaky test doesn't help anyone.
+> >>
+> >> At least we would know what is there that isn't reliable.
+> >
+> > We would too if the test was reported as failed. But our preferred
+> > approach to do so diverge.
+> >
+> > Maxime
+
+
+
 -- 
-2.34.1
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-rockchip mailing list
