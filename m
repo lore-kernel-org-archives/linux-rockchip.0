@@ -4,65 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FD9EB8FAF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 08:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A46F0EB8FAD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 09:30:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:From:MIME-Version:Date:Message-ID:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Kwao7YoHSlbH/rb8yXw8xk4BuoA6odDzwCoRinWpbTk=; b=ixiRZswCf27H72
-	MROizHy2kyajLyNq1nu2rOYEJUGk2IHr1p0ZHG0XrWmXAeKp3O4F+TjfM3/0yUEAAMXpbQsrNce/B
-	lANRlLV3ulLaS3AQjLZhHbEZziuD3lB98y8dmIcS20a2+MZAU7hx7pte4ANd2nDCKMYhEKclLaZXC
-	cct8dYhloAfxcm58vqRK+3zrndvSgUMj51zEkvCyAunUFuT5QqT+w/i3G7aUkm/XYBuH6aIl8UY/1
-	shXqNWV0q0uzYaiL70/tydiQdqwsogd1hNwaS1c0/u+4Yz192s2fD/3wU8cfvKLR+geXhUre/UWZY
-	i6OAp9GhM84AcRjsmRfg==;
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LbS6tHue+q8O3aNoOSQorFk0lqJS10d5rEFbAElZBf8=; b=T/vrS1v6O9WAKKTXSSvg4eEMga
+	v4EhXlY6e0rxgNlPcF5PD0kbpex2F/QenzNeHlITgyC2GMQVmr3bwcFBVF1lxXPJ9FIATfeeK3OXe
+	gtQMtL1frGZ/ePZiBI6GNWTgBs1mkZCX0eCpcUpZj4UUOX+m6XUbJcP7mmxRBR3VyT4j+unt8ueK+
+	/d8MRCziL46gLxzp269hta/XQZBT3HJrom2/a4z1g88m4D4vdGFgu6/qcA7qvzOp4+AY0Q6XmS2rh
+	AowRbe+56IanMwZl9JM9soGmILKx1Zd8aWsmw7OBI5tmwwwKRMssHNdBDI7g/sa+G8aOO4rRlTIEZ
+	SnM+04RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdo7N-007lzO-2X;
-	Wed, 06 Sep 2023 08:42:33 +0000
-Received: from smtp.ivitera.com ([88.101.85.59] helo=mail.insite.cz)
+	id 1qdorx-007vV5-1j;
+	Wed, 06 Sep 2023 09:30:41 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdo7L-007lxl-07
-	for linux-rockchip@lists.infradead.org;
-	Wed, 06 Sep 2023 08:42:32 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by mail.insite.cz (Postfix) with ESMTP id 39CB1A1A32301
-	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 10:46:02 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
-	t=1693989962; bh=gky9hpkfNPSwFa5uWLSfVnT33kbzzTokbSLvTHuFHvI=;
-	h=Date:From:Subject:To:From;
-	b=ZFdx1Jx6pST0gEs4RQtxFsNaz6Z11OSMERO0+bN0QfzyDDVqpSiL7eNblfElZSlyP
-	 GO/1vWS4vPBFyKGzeG1Np78R8IiauUerJFNw5a+kaMSx4gSrfTbMVq7MnBofBgq5C5
-	 uQ8/yP20EXEJCtvD2ipePDeJJidsifOVOHp69EEs=
-Received: from mail.insite.cz ([10.0.1.254])
-	by localhost (server.insite.cz [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xHdma5tdhh3A for <linux-rockchip@lists.infradead.org>;
-	Wed,  6 Sep 2023 10:45:56 +0200 (CEST)
-Received: from [192.168.105.22] (dustin.pilsfree.net [81.201.58.138])
-	(Authenticated sender: pavel)
-	by mail.insite.cz (Postfix) with ESMTPSA id F0C42A1A32300
-	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 10:45:54 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
-	t=1693989955; bh=gky9hpkfNPSwFa5uWLSfVnT33kbzzTokbSLvTHuFHvI=;
-	h=Date:From:Subject:To:From;
-	b=fy6Gjry1jus4ORKSA4mZtJj+Kv9W2A7VEOTe+MB8XqcQWSKp8ac3NHAXQLprNv579
-	 LYBhgudtJcPnss5AXt51qJe8wg3hH7Voiay58A+MYkyApM+w+LLUln71gCZFq5X+Q1
-	 ulpDU7U3zQlBJf/fyYzfIjPEDeqV1T1QsS72MnBE=
-Message-ID: <5806abb1-d7d3-294d-de18-6f05fe36e8e9@ivitera.com>
-Date: Wed, 6 Sep 2023 10:42:16 +0200
-MIME-Version: 1.0
+	id 1qdnsj-007iRj-1S;
+	Wed, 06 Sep 2023 08:27:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:In-Reply-To:From:References:Cc:To:Subject:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=0w9Y/2KMX7oeALiiigJl7dEt9GKHFB+sp+MAYzPSQNs=; b=Xf5kJzDN45i9RyHCDWsGMnc/cx
+	nR4Z42pr2R3SeycXQYoECHJzmgwrvdb2CBLDLYlLM4NyGrZF0UO6b16EEsPGeoL7NSZQfeNrJc1sY
+	QVlpOLTOkrCXGR9w/qgFPYoXelKfjlx83cv6cYpq+fjeEixmgq2Gd8l1g7SKhLPwvpgNRSzXtQZdb
+	vZShEu4Ls8S1E85I/09Hed7MZwCr5rh97USxb6GdPlCOZx1k+jBFUigyv7qQZqiFI8hwg2fHZP5Ti
+	LF8AYl5yAvOaPufPCALvD/bzp1vgRQTDePyeClUJ/OCpkFGwOC4Vx+91zcI+HM4hgqQGzVxMjIwRx
+	uBRdmS2A==;
+Received: from mail-db8eur05on20603.outbound.protection.outlook.com ([2a01:111:f400:7e1a::603] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qdnsc-000yaE-22;
+	Wed, 06 Sep 2023 08:27:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QDfs3tu6aHrSih8A61LbpArqJOrqXLqVxnc1Xj+Socn7zPsS1gw8w0LeEnWfltI15Q7gBalKB1bu+BaP41MZ1FBEhCvUxrmP5AEmRXQFyYru+QV4zNXKTtPN2IpV2sXTuO3aa/9khbAiC8yFzU+VigpX8sCyuRuSyM12yYA/qlVaG7GPymImw2ynPcI3sfFLTKu142A1KIM20FI3qBSZE6J+U05wIMhQxp6kFBbYMSxgLt4ZXiY7A4wThe4gJo4okEa/j2yJ9VHUjxn+Ch/iOIrtvAvPpAJC9oPNbtCLxwEYpY2YQ8ye46oVB4PZi84JiPsZXYATJuFZspMdz3Mlqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0w9Y/2KMX7oeALiiigJl7dEt9GKHFB+sp+MAYzPSQNs=;
+ b=U40txCE8isLSOwQ7L4Fgi4I0YHB/iQR5lgr5PP7wIZCLW/iKeujDb8V2RKRn2s8DVg8aWksAm1n9Qb7SJ9vaW9qGmiU9s5PZoJDDdOJIy4+udvWu0tIQvNNhU4qvaNAduhdUNsoSF0lbnh6663p/IZ/sq7Fe23lPjBr3GTWnM1APV07BkscKYPzlEhakM8bR78diM06XXvDi+EgXnHLOtDxYVgEKRH7g3EWlkaWmBadA5Y6G4LIxsoM/Ah26FXyTyuX2fw5VN3sjKt2aHkp0/xY44r7ZUmrv3uaZiZpcPqKIJx+uPenfoCMTwSDQ26LyZPjB49ymi+4vrJm4uwmKGA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0w9Y/2KMX7oeALiiigJl7dEt9GKHFB+sp+MAYzPSQNs=;
+ b=gBD4EctrGAHbA4PyNzyRNGyjnNm5zDMni5Ev85fCe5Q3jYyhogHDkvTdpCddzvUeGZGCwC/ZwW1/zqHpL/TxyoGVjeKAWpb6vQfDtW8yL2r/jZ2A3ZrAxGmu4U9nIwHC/Al5Z2fpKVuVaKtJBnibhP8ipnjKsSgpPZNN9ZB4+eqalGgiuYBnzFYnh3uNAiyfUlrIC+4jv6qFi8X3OU2v38s4hS3y3rdDkm+t0MG76MiXyqA5xjFciHALM7yhQvAJEgFLf777lt0+bnO1HFB0O5PKfBTcdYiz9A1PsG3hCpweTFolSUdJqjuvU23pKDmgZk6Plz5/LZEG3QzQvkiyqg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
+ by DBBPR04MB7593.eurprd04.prod.outlook.com (2603:10a6:10:20c::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.34; Wed, 6 Sep
+ 2023 08:27:14 +0000
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5c00:6152:6ce:72b6]) by DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5c00:6152:6ce:72b6%6]) with mapi id 15.20.6745.034; Wed, 6 Sep 2023
+ 08:27:14 +0000
+Message-ID: <fc297c1b-1d7b-9f22-ca9f-16d288eee5ac@theobroma-systems.com>
+Date: Wed, 6 Sep 2023 10:27:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
+Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: rockchip: Add io domain
+ properties
 Content-Language: en-US
-From: Pavel Hofman <pavel.hofman@ivitera.com>
-Subject: Increasing priority of a DMAC1 hardware request ID on RK3568?
-To: linux-rockchip@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
+ kernel@pengutronix.de, Michael Riesch <michael.riesch@wolfvision.net>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+References: <20230904115816.1237684-1-s.hauer@pengutronix.de>
+ <20230904115816.1237684-3-s.hauer@pengutronix.de>
+ <20230905181402.GA3673113-robh@kernel.org>
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+In-Reply-To: <20230905181402.GA3673113-robh@kernel.org>
+X-ClientProxiedBy: FR0P281CA0050.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:48::13) To DU2PR04MB8536.eurprd04.prod.outlook.com
+ (2603:10a6:10:2d7::10)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|DBBPR04MB7593:EE_
+X-MS-Office365-Filtering-Correlation-Id: b2e30b92-431a-49a8-8fa9-08dbaeb312fd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: lraCYAckDMKVWcFxRXA6BDK+jXvtGyGdJ8I/jMpBCd1pCEAkUCC1iAQKwGHcqTvqNA7jShyUmNxxDGExz92Ow2jzpo6a0mmePMR5bYAesyG7pcWEE8rffD4qODgRKDbflwC7t59YGfXA+tIPY6KGAgfkLVwjSJG4iysrTcTjrQs8fcBma4OFl9QzgNEwDFiBDxZ9xIF+M67BpbwZjBeeA5ABDzKs+kRsLKWILyZrMHe0mq3squjHXvcFvcvsoIfD5IckcdRKrzqL3toi1aG62Cl3xZCrerelIg1ksL30GBpWK/1lbVnEVW5hzHWHrOq0PavNKIV7H77s7YpI/g5fnvEYt+QSeTAJidvtJ5Z8ZQ6KGmxTTXnVwQNSplg7eDpZtYwa89SFccibhdab4fOZBXCn/1jLClrF7yiN+URnKbqJcGzRi02EeU1ArayINxOJE+v51fiMv7h35kluKiMPqLvGgEY6cuHUy94YVPbIQZ9/edjtbcg1nuxCw/AQn+FCEwlLbc7lTAwF+GQJe1KYL0Ilt6LkZW3uG8ngpj0bdY5buQubGDrFu+iEVuIVxUxsH0bUDAo+SyCP+3/QwdB+77zJMMlxlQlrxwNbnFjNI5W/T67rj8EHsvBm2Zvo7V6XxqoIMDMQebEfyKkxYoTfyQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(366004)(376002)(396003)(39850400004)(136003)(1800799009)(186009)(451199024)(31686004)(53546011)(6486002)(6506007)(36756003)(31696002)(86362001)(38100700002)(2616005)(2906002)(26005)(966005)(6512007)(83380400001)(478600001)(110136005)(316002)(66946007)(8936002)(5660300002)(8676002)(4326008)(66556008)(7416002)(41300700001)(44832011)(54906003)(66476007)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z2xBK0swQVUvN3paZU5BTFpId2ZVUFJxODl2SEhUN2dERWZHTVpGVVpOSHIy?=
+ =?utf-8?B?Sk1VTVplNkY0RFUxd0Q3MmxZeC83Nnl0UTVwRU5xK2Zocm4xdEVDdUZ3cXBP?=
+ =?utf-8?B?RlAyTXloZTd3VE0vZU4zV1Y5TUh3eWtxSFlSZWVxdWhFK2VkbGp3bHlXMkJB?=
+ =?utf-8?B?R0tOSnovRlFvWDE4OTd5cW9IQWo2OGtpQy96eFJnWUhobVJTbjdDSXJFMGRT?=
+ =?utf-8?B?S1FxanhWMG1BTVBlR1k0ZUtqNnRZdk5MV0pQVGpleXRwcnN3c0VUdk1YaXp2?=
+ =?utf-8?B?RTUyeXpSajd4STJjTDF3Si9uV08vUG5ldy9EMkhPWTN0SDhlOFVVdXVIUXZN?=
+ =?utf-8?B?TmI5dzlIOFh5dUJ1dVhFQ2dUTElNLzNiMmlsS1B3Mk53ZUEyS0U2VnRMZldT?=
+ =?utf-8?B?emY1UEU5emZCQnBwa0loTU9UeDFGcjlPZWF2WUJVZG93Wk52Qm5NNG5uYm50?=
+ =?utf-8?B?U1kvME4zZmdETlUvZVRHOCtYZFl0ZWEwck1rUnkvdEl1RC9SK2RCQnhIOFIr?=
+ =?utf-8?B?VUh1dFdRRWJmWVRjQ2xwOXc1THoxY2tOb1VEWW95dVFORk82TWFEOTlXa21B?=
+ =?utf-8?B?NWJoNFNQOTM4MmZ1UkxidEJqUmtjV3FzelZmRjlvaWJYNG1qalFhc0F1Um9U?=
+ =?utf-8?B?eUtJakRSU0luZGRjNnlyWGEwUjdFYmoyelJReGFUc2NlQVpuN1hzVjNQYUI5?=
+ =?utf-8?B?VjlvK2YvSERhQllCUngzQmZTUTRaa29WRldOcU53YnBocEszZUx5YWxKTFpT?=
+ =?utf-8?B?d1c3NWFremt0TFRaNUVaVFI0RzFzZEN3TlhXeExPTmo0Q2ptUm92dmdzRm5u?=
+ =?utf-8?B?RWlGSU9vWWR3bkhxeDJKSkwvOGlZVDh5WlA1aXMrMDdQeXN6c0FVc01zVTI5?=
+ =?utf-8?B?dXdQanladGMyN0dEZlowY0dXTTY0ZDBWa3FVaGdHOUxxeWhHV2R5VCtsK21z?=
+ =?utf-8?B?c1dSU1ozdkY5NlAwN3ljQ24xVHZTWjU2d0llZXc3bXNNdjVGQTJkTkxBVlFP?=
+ =?utf-8?B?TXIvQ3pLZUFtMkY3S04yY3Y1N1JFRXVIT2w0eFFRZXNSVFBjYWNEakh4SUNl?=
+ =?utf-8?B?dElocit6dEl2NXFBNzYzT0FQMGZmSnlmM3ZpQyt2clJsNFhya05jUUhqRzEr?=
+ =?utf-8?B?NlpsNkpvSHNqNUJjVFF0RTg2akZYNGhJb01lNENLbU1xdWoyUkRsYzZSaTQ3?=
+ =?utf-8?B?OHhJWGJaa2ZwYS9XK3F0aE1ETFpzQUJmTVdCUWNva1ErdnVQeEI3bUxZVTFx?=
+ =?utf-8?B?cytrTVlxUmg0a0R6b0tkSkJnbjRtQWRlay9OTUNnYW1ibDUvRmRDZDZBUkF1?=
+ =?utf-8?B?ak9INmRBTVVhem1Oc1FON2R3cWVlaGszNU9JTG5JekdZejR2ZGJ1QytFeGRS?=
+ =?utf-8?B?OTVCVnR2bExtUW9jU2tETENkVzZDaFAyT0JJK0NDbjF3T1BlelZGdEc5MTZ3?=
+ =?utf-8?B?RXF2eTFsTzNKZ1RteWNwRU5kTkJLbk9KL3MwLzhoazFlckMvdHNlZE1iQlBI?=
+ =?utf-8?B?RDR6VGJQeG1BamVMN0NQK1RXaW92SmlmS3RLeVY2TUdJR01YNkYrbThPNWVL?=
+ =?utf-8?B?UFQwVHkyaERCRUR2ZXNEMlk0MHhjWlcyQXdTL1lmaXlQODJ3WUhxWmxWY2oz?=
+ =?utf-8?B?NmptWVRPZVptMGc2RzFHUUROaElaZU9SNkZ0SFNaOHlUUzUveU5TL0xiajQ3?=
+ =?utf-8?B?MldVNWlPZ3pMZnZXYVlnTjdXMGdMM3BGQjd4empMS1N5RmMyUTMxUkJUVkxQ?=
+ =?utf-8?B?UFM4dmZlZ0hMVzIwYk1Vd2w4bFRod0haUWFxNWR1SjdVdkUzc2pJZWZETHR6?=
+ =?utf-8?B?SXFzRW1abmFQWENteUR1RzNuTUNRVFBLUmUrQlhHQmhBcHI0d1N4RjJvcGEr?=
+ =?utf-8?B?VUpucWN4WEkxVnhKUTVKWlNZVlg3OWhNWExKcEpIVTdzM2xKRkwzZEx4Y1Fv?=
+ =?utf-8?B?QUd1L0FXZXVmSTJNU2w1M0JRZGZkMHZTYkxucDJTR09lVnRvUnFrZGlnaml6?=
+ =?utf-8?B?RzNEWndOVmF1RFJTczVZOUY2OHM3YnBtcTR0azNCMjhEcThrakI0V3g1SmQ5?=
+ =?utf-8?B?OWVlUDM2YnZiblZEZEhxSndQMVJvZHZxMTYreWdaaklFTXhOUWtxYzlGWGJZ?=
+ =?utf-8?B?SWN2K0QzcmF2c3hNYzBXMlAyYW1CdjVpeXZMVk9yY1ZZdDhqL0R4Y3I4Q21j?=
+ =?utf-8?Q?uRIAe2Q92WZxTMWU9fsTauI=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b2e30b92-431a-49a8-8fa9-08dbaeb312fd
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Sep 2023 08:27:14.5974
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: H/GI06arJJgatFdofMMnA4ua383cjlt7iP+uqj1OKlC6LjtoZfXZPBMmf+Lp9xL3DkVgSNr7I9izfiI0z6LY6uOPt4nxI3XTWBcTZpirb2WIZH5FyB3rvBnIoZrcY60+
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7593
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_014231_263969_D816BDDE 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230906_092720_427503_030E2A66 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,38 +167,33 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Rob,
 
-Please is it possible to increase a priority of a DMAC1 hardware request 
-(I2S1_8ch_tx specifically) on RK3568? I could not find any DMAC priority 
-mentioned in the RK3568 TRMs.
+On 9/5/23 20:14, Rob Herring wrote:
+> On Mon, Sep 04, 2023 at 01:58:15PM +0200, Sascha Hauer wrote:
+>> Add rockchip,io-domains property to the Rockchip pinctrl driver. This
+>> list of phandles points to the IO domain device(s) the pins of the
+>> pinctrl driver are supplied from.
+> 
+> Is there an actual need for multiple IO devices with multiple pinctrl
+> blocks? If not, you don't need a property, just lookup the IO domain
+> node by compatible.
+> 
 
-Google finds some information about AHB Arbiter Matrix which the RK3568 
-TRMs do not mention.
+Yes. There can be multiple IO domain devices on Rockchip SoCs and we 
+typically have only one pinctrl controller. Each pinctrl "pin" (for a 
+lack of the appropriate term to use here) belongs to one domain of one 
+of the IO domain controller/device.
 
-I am getting FIFO issues for I2S1 running at 768kHz samplerate. 
-Increasing dma.maxburst from 8 to the max 16 in the I2S driver 
-(rockchip_i2s_tdm_c) helped notably, but still FIFO failures occur, 
-about 10 per second. In some test runs the DMA transfers managed OK for 
-like half a second every 3 seconds, but I do not know how to monitor 
-other transfers to find the possible colliding traffic.
+However what I don't like here is that we do not explicit this link 
+between the pinctrl "pin" and the IO domain controller it belongs to 
+(even less so on which domain of the IO domain controller, which to be 
+fair we do not represent in the DT at the moment except through a 
+phandle property in the IO domain controller, c.f. 
+https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/power/rockchip-io-domain.yaml#L84).
 
-Cpufreq scaling governors for all cores are on "performance".
-
-Increasing priority of these specific DMA transfers would seem like a 
-possible way to improvement, if that is technically possible.
-
-Knowing for sure that changing the priority of those transfers is not 
-possible would be also very useful as I would know some different SoC 
-has to be used instead.
-
-Thank you very much for an advice and hints.
-
-With regards,
-
-Pavel.
-
-
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
