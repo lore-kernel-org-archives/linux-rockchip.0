@@ -4,137 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F158EEB8FCD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 13:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7824CEE14A1
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 15:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jTsvIupDH//sYhT3Fb5Ewan8MNUN93X0v0pFCDzpguM=; b=Zhn9gfjMTNm+2KCZumJN2awtG5
-	gVN5QfSbagBQmOVCIiRuBTU9ZzxaGq5TId7bWNLhF+XLg1HnFS5LVsKKD/FCZZarHVLrMmwBjPsij
-	7sfM0YIakB4+yBMJUU7Pqxdr/2oJpayI3XIpJKUCW88GESWLDoIlhD/KXuyatBXrvbTHUc9VKEidH
-	OcEuZB4LW4sJG8+SrXtH5OorVI7V82T/QeP/Ar81RC5/nvRa2/ibHEaN7Vap25EFNP49+GcLzbgd4
-	PurqL+MJeEpdoFP5s3IfT2JxW4JRkn3molQAUHb3EAmNAYHwcVbLhM47OFqluMDx6B6V3pIBpSvEQ
-	KzIe+pgQ==;
+	bh=QQJfb7WeX0zpdaTWfq7GQADMtZ4PQeVBfPyMJBtQRqs=; b=StUG0CmtoISlsIcHKTP5mpCHQ5
+	MzK8ip7KZzoSpFijXb/xvoYq7yZmfjuIveV2mv19lgii6AhGQjOEj53DgglW8+feCDcafBq5/e1V3
+	GeLrIJBsDd4OZ7x3HzUh8n7TX/sKBE+Z+Df5TZBYonSHw9wsLNwhaavxzS9pc+Ga4X6xkk6g0nJrv
+	o0kkoU0KRA5cS8xAavF9CZ1muUaEQhuOFW4EArGYqVJceuZUbAGFYGmgquSP93TJ82tpgAlymP9YB
+	6ykturB91bM3K6QYoFXKZj7PhkzZ9RjqD9OregCIfCN8AsQ/PoRv5c2ebW0DXU5SpEfB0csu0qrHe
+	EyKyVf0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdsED-009q18-38;
-	Wed, 06 Sep 2023 13:05:54 +0000
-Received: from mail-vi1eur04on0611.outbound.protection.outlook.com ([2a01:111:f400:fe0e::611] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1qdu1Y-00ALdl-0k;
+	Wed, 06 Sep 2023 15:00:56 +0000
+Received: from smtp.ivitera.com ([88.101.85.59] helo=mail.insite.cz)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdsEA-009pve-0s;
-	Wed, 06 Sep 2023 13:05:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UT2yCEvZLOmZsc/w/yaQ+zxRwbthw9U/6bng0XjNVNSXRotsUovvTDCSCJtLgjNjEpXulKVmJV+URfj9Xb3KwAxOZpOUcxbgBASg4/WnYAgEkc3xSMHtCUvLwxuiBoPxrnSbLxdXOhXzupKvsEQTWO4duVtlj4rtBjPFuQyJ8FGQT2Xgc7sdko4FsHCVvJbqmQIUjfA42rgQU/KNPX2X2TBENIQSwTFqP1FIhi48cBB+ULJOxkzKnbVksmSoK75Dk25dWYS4FFytt/v3n7l8HU5PyHMI9vt+er9vYr3TJLzu6EIxVhAxlJyINUW4oKTcR16O0xJOg9Oxpfgmq0Z61A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fx/Xpi9daE3ohL9QrV0fVxFYwc36T0qxuYwaRn/9Dh4=;
- b=byqiblV4t/UvyYF+Et/J3/bbVR4MONHgL2dektsca/e52l4eawa6P9RHMXHjj+o4ITAjW/aY5CZECF9rFsiwtdnW90X9PxgqkpXLu53qOv9lDL74da0+hepiDAjw2eFoO5e7xGoYKtND7Ye95oUEjEC65ew92aeJc9ghRdUDIMaZGYdykZk/ZnkWJtkjz2aNI4+k7G0QH3NyO+j2tTl7vQpsAVvvqpq9GIG52MzjNkjdekkrGup1uY2hHMEIZs8+8IaIlrha8dygCCy6kqF6TsbTl+hL1HDkCyo3Wnk/95bhpIP9y8tzLQrtv1/gyUDmLsHqHkTMlWb5eMAWJiKdyA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fx/Xpi9daE3ohL9QrV0fVxFYwc36T0qxuYwaRn/9Dh4=;
- b=EUub35X4Yf5M9k6Ce95TwAwCA7G6aCmODWcsCo/0yPf6QNTjvVDN0iXb7qpwV9febud3WNYnQrJH0msl3eSUS698tPwKnlVnmATwlxlTQA9lTQOjZ5inRdosOxklLQCtWBaoy4MSBOb3zVo+DzV7KCOyLWeP1FGks9gUr5ijkwsaGeWLcT/PwH8EhTOrHHvI+5c6GP1+8ki98ytzuuTfERewHm/q53GrJ7CIdRbW8IH3kBQJNh5bBUhUpqdYNiqG2vM64IvMyMyaIq3SnPxpkqX9I/rjnjltffEIBRyw/twO0qbCYz4SGyTITpbXrp0vdLOZgEa51TtABGY4Pg7LyA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from AM6PR04MB6311.eurprd04.prod.outlook.com (2603:10a6:20b:b7::20)
- by AM9PR04MB8779.eurprd04.prod.outlook.com (2603:10a6:20b:40a::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.34; Wed, 6 Sep
- 2023 13:05:39 +0000
-Received: from AM6PR04MB6311.eurprd04.prod.outlook.com
- ([fe80::e8bd:7711:50e:aaab]) by AM6PR04MB6311.eurprd04.prod.outlook.com
- ([fe80::e8bd:7711:50e:aaab%4]) with mapi id 15.20.6745.034; Wed, 6 Sep 2023
- 13:05:39 +0000
-Message-ID: <4a372872-bc3d-8975-4d7b-6d8650836e3c@theobroma-systems.com>
-Date: Wed, 6 Sep 2023 15:05:37 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: use codec as clock master on
- px30-ringneck-haikou
-To: quentin.schulz@theobroma-systems.com,
- Jakob Unterwurzacher <jakobunt@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Ermin Sunj <ermin.sunj@theobroma-systems.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230823131651.586934-1-jakob.unterwurzacher@theobroma-systems.com>
- <051ceb69-2f6b-4944-4fbe-0ced66f0b669@theobroma-systems.com>
-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-In-Reply-To: <051ceb69-2f6b-4944-4fbe-0ced66f0b669@theobroma-systems.com>
-X-ClientProxiedBy: VI1PR07CA0146.eurprd07.prod.outlook.com
- (2603:10a6:802:16::33) To AM6PR04MB6311.eurprd04.prod.outlook.com
- (2603:10a6:20b:b7::20)
+	id 1qdu1T-00ALcO-1E
+	for linux-rockchip@lists.infradead.org;
+	Wed, 06 Sep 2023 15:00:54 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.insite.cz (Postfix) with ESMTP id 1FC3CA1A32301
+	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 17:04:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
+	t=1694012663; bh=xFq1kKi/ZzMaFpfYJ0p0ULyZcVLsRDVtqfCA2ZZd4gY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=Hqns9oJJrQ3IWpM+zJOSBfWY40/v2JUC4WUZaKlJ5Sul7jsDtszB1HFEmeyi66zzY
+	 4PxBHFwhuHBzBJdVK88GB0R4bJG77oFQ6fKPYRY2x9m5DB6epyfPKMjkE6AU2u40rM
+	 Txhld34Dng0CYkP2YR/f7xjv76XuSoG7Eko5Tweg=
+Received: from mail.insite.cz ([10.0.1.254])
+	by localhost (server.insite.cz [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9pSWozSeFx3B for <linux-rockchip@lists.infradead.org>;
+	Wed,  6 Sep 2023 17:04:17 +0200 (CEST)
+Received: from [192.168.105.22] (dustin.pilsfree.net [81.201.58.138])
+	(Authenticated sender: pavel)
+	by mail.insite.cz (Postfix) with ESMTPSA id E625CA1A32300
+	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 17:04:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
+	t=1694012656; bh=xFq1kKi/ZzMaFpfYJ0p0ULyZcVLsRDVtqfCA2ZZd4gY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=QESbzCZqgiV9T/UtoP9YtR9z/fpdEbIXwaOyXtgQmNOEqRQyd82Oi0TjAoPGdXkm8
+	 LGE0lLbZ3sgafTB0z5vLnueJdo4cShfhIzg4uCRQqfCMTVtxYOnPGvqlu3wF9k54+w
+	 lwe/31AGNpx5cg9i90mel42aQYbwS1pW5AgkxY4Y=
+Message-ID: <2a67c4ac-a45e-01b5-58cf-78d0d6835455@ivitera.com>
+Date: Wed, 6 Sep 2023 17:00:38 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM6PR04MB6311:EE_|AM9PR04MB8779:EE_
-X-MS-Office365-Filtering-Correlation-Id: c21b964f-2b51-4331-251a-08dbaed9f7e1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: njDstdfZInb5n7apX2WHPDef0sRHyg5LV35fP3ONqKYMXyrjdNDLNPK5YsUqWO2jmxuXan8p9YTqLjaP7ppyjLzU9UR/JsyaXYQv9VbN+b4m9+B1m+5OnIEFiEPs8ASWrLCcYxwreIa8N8EjGK+6PjwEt+Ey+kdiZ4Fi8ovMuwix8592oI7JbMOA6FH9Ikz06/z5OU/BVEv4wHvcnHAej1nm4ZMCCdB3UFaUk+hdqU7nFaGfygOnUNs5QkJwBxYF5/cjleAuuyD/xhAtX3Ql8lQPyYTTQbAp6wqOqPckEeDC2S9xqeOo/BcKaw18WvQx1ehQIeIy6hZSBqpkNq34vyIvvqTJouvuygWw3fdYNwM0O3DB18LHJfhQ1g1s/JjX76xgegmNZkJwT/K4YYuxRLuWc1zvBUGIU/8d0A65TRmjjceL/WMCNz8+DrX3JMQrv+deKuRY4N2S6y/7rhGucHZjzTjyMLpLdPD+2JUj8/vKt8jWmT5AuFkWDl8KsN+5beSMSUpk0ccXGpI0fN61q3AzJLT/5vfgC8SOP+Cos7MFeMKWywfFNTKaeWGRbxbP4ukS9BHEHJNaa0KqpipuZ7X8Z3q1kjGVcfq1WVg0XVnkh/ubYWRwFQon11wpn2pcfzPIaJ4OywprWBJiokQ2c/3y5FtjfjR5l6tjTUaRptU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR04MB6311.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(136003)(366004)(346002)(39850400004)(396003)(451199024)(186009)(1800799009)(41300700001)(558084003)(44832011)(5660300002)(31696002)(86362001)(478600001)(2906002)(8936002)(8676002)(316002)(66556008)(110136005)(66476007)(66946007)(31686004)(26005)(53546011)(6486002)(6506007)(2616005)(38100700002)(921005)(6512007)(36756003)(83380400001)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SkEwRXpmRGhCRXFsQ0pSVjZWTm5FYzJZZ1l6bVowZnBmRFg5RWs3QWxpemxo?=
- =?utf-8?B?TDdZNmpHYWxQanE4aURselVXblNETlJjMmZJRWZvUTZTaGpzVmdSaEtodjJD?=
- =?utf-8?B?aUJoL2xOSUF0QzFpVWVjRVc3WXZXYTFGTkh0ZEVETnovY1MrclZOT0hCb1d6?=
- =?utf-8?B?RGhNZTNNZVFqVlBlV0xBa2hZZnVpandJOCt3cVpidXhKaWtzZXVXVW9idHBu?=
- =?utf-8?B?NTE0YVNqWnhNNUs2NlFsSnlETUxDeXZjUUdYcGtsZFcweUdiYTU2TjIycWEw?=
- =?utf-8?B?aXlVT09MLzlsZ1pNemRGSHNMYlVlbDdnRXdmMlpPNDBLTHZGWTdremo2RmFq?=
- =?utf-8?B?dW5LSVlTNEFBY1VxSEhZUGRNb0xmQ0cxRTY1dkhpVFllT0llbG9TeDRMajFw?=
- =?utf-8?B?NG56VWdMNklJTGg2VWRLdDd1R05qYytseDYzeWV1NzBNazBGb09FZFFwcS8y?=
- =?utf-8?B?bTVrM2hwUnBIMGI1RjNvdkprSTlpc2RoUWpvaGJHMU5kZlNyazByNlM1N2E0?=
- =?utf-8?B?UjQ0bWNHMEpjc3JjMWZETlNydk9Ia3p4RUJOUnVhK0tQeU03bEFjS2x2Uldx?=
- =?utf-8?B?ZHBPYXZOdmVvREx4UlFrVURmbG54VEE5WTE4N0w4aXM0blMzRnVaZHE2Q3o5?=
- =?utf-8?B?TlA2NHBXa3ZNcHNHYzM4T2hXMkx0a1YwLzZSbjNDK0FadXpVWHpPTnRwOXdH?=
- =?utf-8?B?eHFxK29oVUt0S1VSN1BuS3JTaDl3bWRnenpBYmtTNE5aWWRuLzdBSUVFdjFt?=
- =?utf-8?B?dmZHaTl5aElZUWkzRHhuNExjaURrREJjaWZ2K3BOQjA5VXMrQkN6NDZlWTkr?=
- =?utf-8?B?NGVrdllrbzZ2clIrcUsyR05YOVBhVlRvSlp5TGloSjd0RGg4MXBhR1VTTTRI?=
- =?utf-8?B?bkpRak85c2lsZEVocVFSb0JzZlgwV1BhTTdyLzUvTXBadkZQd25aVGJTb3FG?=
- =?utf-8?B?a2M4NUpuVW9NcW9TajZqT2hGcUUvMXBMK2hEWFRKeHNQTUNyTUdtQ1JGYi9q?=
- =?utf-8?B?a3pUbUFLZE01aHc4WVBUWjVXWm1ZemsraWZQRCtCSEJWS09ubldMZTNpOHZI?=
- =?utf-8?B?a2dNRjR3WUpXQ0RjaFp2OS95c0VXVkdNcHVybTRhSGVxSHorUFkxQ1IreEVB?=
- =?utf-8?B?bVA2Qkdwek53aXpKSlhJd0pUWUJVVHVYek4xMTVEUG1kYWZqbndMMThqUG9u?=
- =?utf-8?B?SVVQZTgwWGROZFNYb2F0LzJIMmFkTU40QkNOOWs0T1NUT0ZaUGFjV1h2UXFI?=
- =?utf-8?B?cXRlUURlNk5YTWFxbC9JeHJiN0YxY0tJTFU4SEpVNmRtY3FsS1BxeEh0NjVK?=
- =?utf-8?B?Q0w5aEpzbzk1bVg1RkFHczJPcmVHNEVoVDU0UnJwaG43TVk3MkMzdkZCZlNh?=
- =?utf-8?B?Q0RxQTU5RXA3Y1NOTU5Tc0ZqMEY1MnY4YU1xQWsxQlVsUDZLWVRNMEZNbGJN?=
- =?utf-8?B?Ui9zVWVaUmFGRWIybHIvUjY4eTN2K1A2MnNUYXpmd0dOU1FvNWNBM1pDNTk5?=
- =?utf-8?B?RTZ6U09OOE81c1J2N0Y3WHNjVTU5MnJJaFlDaENRS2xVMHk4bExpU1ROS0Ft?=
- =?utf-8?B?aXJSaEdHVjcyWTZRV2VTNVp4ZDViMUYzc2VoUTU1VUFscFh3eVJsOFhINEtB?=
- =?utf-8?B?UFRFdTVwNG1haWpOcEtKa3NOdmx6R21hUjY0K3k3M1hYNmNSeG1Sc0NoSGtH?=
- =?utf-8?B?UFAyRFZ4blExOEV0MFFMb2ZQTWw2eW90Y2FPa081OHVHQ1k4R3hQeGUvc29s?=
- =?utf-8?B?T1JzZ0drZW40MXg5Z1RaVUVOSHNoV3pmRjUzQVk1dFNPczZxb2FWKzhUZDZ0?=
- =?utf-8?B?SlFjNm5rU0FvdVRpaHl0bXppZmhZaGtFZU9QSG1ZSlhtWkltd0tKVWdpcGVM?=
- =?utf-8?B?cms4UEd0Q29xZDNmSjZPYkUyaS9OQUhlb1FMSi9PTGFDMUY5dUhnakd6Ky9L?=
- =?utf-8?B?dWNWaGUrUTArZFRlNGxUNnFDY1A1cjRlSEwxRTE3TXdzd0lFdmNmUzJNNGM1?=
- =?utf-8?B?amhONkREaGFGVmxvYnFOQWUrTExoMVNHTEIxYlZLa09xbytuT053ekJKcnFm?=
- =?utf-8?B?U2o3cnFDd2Vyd2N4Y2ptQnVPWEtEQkQ2TFhUR0w3dUdKa1o5YXVVdndWMnhp?=
- =?utf-8?B?d1pPWjhsSU13OEluVzJEdHVrRTBFbVdnS0htWkt6R0I3dnV1bkxQWXBucnBs?=
- =?utf-8?Q?yS42s8Dq1CJ7HxEiiXOdnd9exZ+/jhg4iiIgzC8uFTho?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c21b964f-2b51-4331-251a-08dbaed9f7e1
-X-MS-Exchange-CrossTenant-AuthSource: AM6PR04MB6311.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Sep 2023 13:05:39.5192
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gmLMuYkeiwevDVDphJziM6KcOcqB8ABbLgql40I9oOozrCE7WK6kdzTJwbi7tlddVpnMpb7YdThU26QXUX8iKAcoTJ8qMTdFpMgLd398j3ZH9AZ/7XG7KLYNPhdZZFC7O/EcQlrm8sIfStiYHoe3Nw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8779
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: Increasing priority of a DMAC1 hardware request ID on RK3568?
+Content-Language: en-US
+To: linux-rockchip@lists.infradead.org
+References: <5806abb1-d7d3-294d-de18-6f05fe36e8e9@ivitera.com>
+From: Pavel Hofman <pavel.hofman@ivitera.com>
+In-Reply-To: <5806abb1-d7d3-294d-de18-6f05fe36e8e9@ivitera.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_060550_345166_AB93D1D2 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230906_080051_906085_F1B8AC5C 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,16 +81,43 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-
-On 01.09.23 10:06, quentin.schulz@theobroma-systems.com wrote:
+Dne 06. 09. 23 v 10:42 Pavel Hofman napsal(a):
+> Please is it possible to increase a priority of a DMAC1 hardware request 
+> (I2S1_8ch_tx specifically) on RK3568? I could not find any DMAC priority 
+> mentioned in the RK3568 TRMs.
 > 
-> So I very much assume we should also delete those two lines in the 
-> simple-audio-card,cpu node?
 
-Ack, I will send v3.
+The PL330 DMAC documentation specifically mentions that no priority of 
+channels can be set.
 
+But the DMAC0/1 clock on RK3568 "acl_bus" has multiple parents 
+("gpll_200m", "gpll_150m", "gpll_100m", "xin24m") which corresponds to 
+the documentation - CRU selector CRU_CLKSEL_CON49 aclk_bus_sel/aclk_bus 
+clock mux.
 
-Thanks, Jakob
+The default value of that selector is 200MHz, yet my RK3568 has acl_bus 
+clock switched to parent gpll_150m, i.e. only 150MHz. Perhaps keeping 
+the default 200MHz would increase the DMAC performance?
+
+Unfortunately I could not find where this particular clock gets switched 
+to the non-default parent in the kernel code. Other clocks using the 
+same parents gpll200_gpll150_gpll100_xin24m_p (e.g. aclk_gic_audio) do 
+run at the default gpll_200m.
+
+Additionally, the datasheet mentions bits aclk_en ("enable aclk_bus 
+switch to lower frequency") and switch_en ("enable aclk_bus/pclk_bus 
+automatically switched to lower frequency when pdbus is inactive") in 
+register CRU_AUTOCS_BUS_CON1. By default they both should be disabled. I 
+could not find any explanation of their effect in the datasheet, kernel 
+does not seem to touch that register at all, as far as I could search.
+
+Please can someone knowledgable of the Rockchip clocking help with 
+locating the reason the acl_bus runs only at the non-default 150MHz?
+
+Thanks a lot in advance.
+
+Pavel.
+
 
 _______________________________________________
 Linux-rockchip mailing list
