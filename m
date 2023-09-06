@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A04EB8FA5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 07:21:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FD9EB8FAF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Sep 2023 08:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mymypcVnnixQGZPyKBo009fVjqTFTL1ZCgRFBWqda04=; b=G8c7Q8XtvX8tcq
-	Z2bvfeGwODcSCDOjmOuBQW90qPylAt2qOjjXq1SPmwFpdmlFGoyo3zTLgiJ+OZLF2MZB6CrzChGv8
-	KpG15PzGMCO2gJAACsnZGYkUpVusp5rz6qUJkwU/13wifIeb/dtgxYYvNYxwDU2/+4oCnWz1tIVQE
-	PhNUCGdS08Q6RKShIxMhQO2mJyDeB3jwfP6TlKD6LN8+nfL4AGAg5MI0qugOC5ZAMMUkOia1YphIP
-	zNsUxVPGmEeUJ9/CxYQu/JDHKv9KEogXEsmnw9JYq1CrT7zVNSse1UCe65RbVQA6rQ9w30Z5j6QZD
-	dP9CuXLxJAk/hmxPslVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:From:MIME-Version:Date:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Kwao7YoHSlbH/rb8yXw8xk4BuoA6odDzwCoRinWpbTk=; b=ixiRZswCf27H72
+	MROizHy2kyajLyNq1nu2rOYEJUGk2IHr1p0ZHG0XrWmXAeKp3O4F+TjfM3/0yUEAAMXpbQsrNce/B
+	lANRlLV3ulLaS3AQjLZhHbEZziuD3lB98y8dmIcS20a2+MZAU7hx7pte4ANd2nDCKMYhEKclLaZXC
+	cct8dYhloAfxcm58vqRK+3zrndvSgUMj51zEkvCyAunUFuT5QqT+w/i3G7aUkm/XYBuH6aIl8UY/1
+	shXqNWV0q0uzYaiL70/tydiQdqwsogd1hNwaS1c0/u+4Yz192s2fD/3wU8cfvKLR+geXhUre/UWZY
+	i6OAp9GhM84AcRjsmRfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdmqw-007TjL-35;
-	Wed, 06 Sep 2023 07:21:30 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qdo7N-007lzO-2X;
+	Wed, 06 Sep 2023 08:42:33 +0000
+Received: from smtp.ivitera.com ([88.101.85.59] helo=mail.insite.cz)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdmqt-007Thi-0n
+	id 1qdo7L-007lxl-07
 	for linux-rockchip@lists.infradead.org;
-	Wed, 06 Sep 2023 07:21:28 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qdmqp-0005ue-Kw; Wed, 06 Sep 2023 09:21:23 +0200
-Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qdmqo-004NIR-6Z; Wed, 06 Sep 2023 09:21:22 +0200
-Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qdmqn-0025Qy-Tt; Wed, 06 Sep 2023 09:21:21 +0200
-Date: Wed, 6 Sep 2023 09:21:21 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
-	kernel@pengutronix.de,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: rockchip: Add io domain
- properties
-Message-ID: <20230906072121.GA492117@pengutronix.de>
-References: <20230904115816.1237684-1-s.hauer@pengutronix.de>
- <20230904115816.1237684-3-s.hauer@pengutronix.de>
- <b4017947-9e16-7d97-a7b1-3e6964a1f7a9@arm.com>
+	Wed, 06 Sep 2023 08:42:32 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.insite.cz (Postfix) with ESMTP id 39CB1A1A32301
+	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 10:46:02 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
+	t=1693989962; bh=gky9hpkfNPSwFa5uWLSfVnT33kbzzTokbSLvTHuFHvI=;
+	h=Date:From:Subject:To:From;
+	b=ZFdx1Jx6pST0gEs4RQtxFsNaz6Z11OSMERO0+bN0QfzyDDVqpSiL7eNblfElZSlyP
+	 GO/1vWS4vPBFyKGzeG1Np78R8IiauUerJFNw5a+kaMSx4gSrfTbMVq7MnBofBgq5C5
+	 uQ8/yP20EXEJCtvD2ipePDeJJidsifOVOHp69EEs=
+Received: from mail.insite.cz ([10.0.1.254])
+	by localhost (server.insite.cz [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xHdma5tdhh3A for <linux-rockchip@lists.infradead.org>;
+	Wed,  6 Sep 2023 10:45:56 +0200 (CEST)
+Received: from [192.168.105.22] (dustin.pilsfree.net [81.201.58.138])
+	(Authenticated sender: pavel)
+	by mail.insite.cz (Postfix) with ESMTPSA id F0C42A1A32300
+	for <linux-rockchip@lists.infradead.org>; Wed,  6 Sep 2023 10:45:54 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ivitera.com; s=mail;
+	t=1693989955; bh=gky9hpkfNPSwFa5uWLSfVnT33kbzzTokbSLvTHuFHvI=;
+	h=Date:From:Subject:To:From;
+	b=fy6Gjry1jus4ORKSA4mZtJj+Kv9W2A7VEOTe+MB8XqcQWSKp8ac3NHAXQLprNv579
+	 LYBhgudtJcPnss5AXt51qJe8wg3hH7Voiay58A+MYkyApM+w+LLUln71gCZFq5X+Q1
+	 ulpDU7U3zQlBJf/fyYzfIjPEDeqV1T1QsS72MnBE=
+Message-ID: <5806abb1-d7d3-294d-de18-6f05fe36e8e9@ivitera.com>
+Date: Wed, 6 Sep 2023 10:42:16 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b4017947-9e16-7d97-a7b1-3e6964a1f7a9@arm.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Content-Language: en-US
+From: Pavel Hofman <pavel.hofman@ivitera.com>
+Subject: Increasing priority of a DMAC1 hardware request ID on RK3568?
+To: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_002127_292035_57745D5D 
-X-CRM114-Status: GOOD (  34.74  )
+X-CRM114-CacheID: sfid-20230906_014231_263969_D816BDDE 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +74,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 05, 2023 at 10:03:20AM +0100, Robin Murphy wrote:
-> On 2023-09-04 12:58, Sascha Hauer wrote:
-> > Add rockchip,io-domains property to the Rockchip pinctrl driver. This
-> > list of phandles points to the IO domain device(s) the pins of the
-> > pinctrl driver are supplied from.
-> > 
-> > Also a rockchip,io-domain-boot-on property is added to pin groups
-> > which can be used for pin groups which themselves are needed to access
-> > the regulators an IO domain is driven from.
-> > 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >   .../bindings/pinctrl/rockchip,pinctrl.yaml          | 13 ++++++++++++-
-> >   1 file changed, 12 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> > index 10c335efe619e..92075419d29cf 100644
-> > --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> > +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> > @@ -62,6 +62,11 @@ properties:
-> >         Required for at least rk3188 and rk3288. On the rk3368 this should
-> >         point to the PMUGRF syscon.
-> > +  rockchip,io-domains:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    description:
-> > +      Phandles to io domains
-> > +
-> >     "#address-cells":
-> >       enum: [1, 2]
-> > @@ -137,7 +142,13 @@ additionalProperties:
-> >               - description:
-> >                   The phandle of a node contains the generic pinconfig options
-> >                   to use as described in pinctrl-bindings.txt.
-> > -
-> > +      rockchip,io-domain-boot-on:
-> 
-> I don't think "on" is a particularly descriptive or useful property name for
-> something that has no "off" state.
+Hi,
 
-In fact it has an "off" state. A IO Domain can be disabled in the SoC
-registers and also the corresponding regulator can be disabled.
+Please is it possible to increase a priority of a DMAC1 hardware request 
+(I2S1_8ch_tx specifically) on RK3568? I could not find any DMAC priority 
+mentioned in the RK3568 TRMs.
 
-> Furthermore it's no help at all if the DT
-> consumer *is* the bootloader that's expected to configure this in the first
-> place. IMO it would seem a lot more sensible to have an integer (or enum)
-> property which describes the actual value for the initial I/O domain
-> setting.
+Google finds some information about AHB Arbiter Matrix which the RK3568 
+TRMs do not mention.
 
-I agree though that a particular setting instead of a boolean is better
-and could help the bootloader.
+I am getting FIFO issues for I2S1 running at 768kHz samplerate. 
+Increasing dma.maxburst from 8 to the max 16 in the I2S driver 
+(rockchip_i2s_tdm_c) helped notably, but still FIFO failures occur, 
+about 10 per second. In some test runs the DMA transfers managed OK for 
+like half a second every 3 seconds, but I do not know how to monitor 
+other transfers to find the possible colliding traffic.
 
-> Then Linux can choose to assume the presence of the property at all
-> implies that the bootloader should have set it up already, but also has the
-> option of actively enforcing it as well if we want to.
+Cpufreq scaling governors for all cores are on "performance".
 
-Ok.
+Increasing priority of these specific DMA transfers would seem like a 
+possible way to improvement, if that is technically possible.
 
-Thanks,
- Sascha
+Knowing for sure that changing the priority of those transfers is not 
+possible would be also very useful as I would know some different SoC 
+has to be used instead.
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Thank you very much for an advice and hints.
+
+With regards,
+
+Pavel.
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
