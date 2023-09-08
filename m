@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDB5EE801D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Sep 2023 16:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6075FEE801F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Sep 2023 16:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qds5HxpzUivJyb2eIe4yYSRJ282zE1qQmEz5g8YUUU4=; b=aI4Xm8Dn3Pw56T
-	hUc9ctaItSGP/LeDkTPYxdQOlaVpB8T0Jg0k9TnjnViyLwV7q5jEgV/92GGq8HIqmqCoxTxxauBuq
-	D9P9T4saukTmHy/i5mfqMnBsGtZFTLIMCZMKdzwvehABGwdKKlvurzyTtcPFTYD0Y8K0HBZtvGdWG
-	KzlLrqa/oY+g/KuzNbpoCUbHJB8CnrfQC5Jc1MqY9qZwJ3rkCE6DJMy2/GaWXaII3vkTkUBvEGDGW
-	WMsbPA1ThJdJxgq9vbiQVAwnpEIGKwLPPnecrCR+9UZjCEj9HtPgLKOClM+LHIagflfXEAv3043Ok
-	0UcaCowB6DgMPUby4vNA==;
+	List-Owner; bh=lvjoLLuKF4jYTAQdDSo9mlQCutYFr4R8sYTHh4dCHzM=; b=0qfn4/OnRcVGSk
+	FkBaKW9KSWACfg5G5ziER6wfNrfvX/TFV+0pbqucvZQKKzpMhgvbPGVg/mWTQQt7mONKIzOqL/fOT
+	1rko1MYnLErjY4qHSAm/1aOujb7CGtlxTxWmOFvekiLHyZ0XeusGRxg/t7rr7Qk+XPuj21fBc8JnP
+	GGvMYkH//rcYthYrjky5Ev97J8M6RwHpxXo430SPGFtMWXiqJFKQ3rWhdHEuoGL+F6nCd3pXtmKpy
+	UdILJSDBb/1ohbwfqVSyrT04DUjzfvHcIOv38Nx3JPb0Fb9hGqf7tFOO92t84gyE0MF3bsOxPhwzc
+	hRL6pdEifJSqBN64y2TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeeYf-00E6F8-0a;
-	Fri, 08 Sep 2023 16:42:13 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1qeeYe-00E6Es-1I;
+	Fri, 08 Sep 2023 16:42:12 +0000
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeeYb-00E6D8-38
+	id 1qeeYa-00E6D1-2e
 	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Sep 2023 16:42:11 +0000
-Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-3a5a7e7cd61so1168306b6e.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 08 Sep 2023 09:42:06 -0700 (PDT)
+	Fri, 08 Sep 2023 16:42:10 +0000
+Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-6bee392fe9dso1520145a34.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 08 Sep 2023 09:42:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20221208; t=1694191325; x=1694796125; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=23RWTA42oeiWyX/+9q0UPnX5CmGzLdzzX40DGM4ZYYo=;
-        b=AaFbexzgDk+nJdkUc0x2qqz8Kz92NLhoSwBonZzlCD92hLeaanmlY2J8F/Yz/f9+u/
-         NtFgEvtgVv/b2FMkvVgvWxxf4n1Edc27C1L0ir7efKegNAaNG+Ht+6AIngjBBhbAw0FA
-         uLTfiGGVCaU4qR/C+oja31oyH5BXZmItg19zcsEm572XSJwMeQ5i/O6k0op47EUjvU0V
-         U16ws5wnl39kRr+HGLfsDiy+0B5eUo28qzMbUbRdZuxRf3esgZsEo0crSEZs+dnmeZCi
-         NXKE7BoJThL72T3sSz4W6oOELXh0FKQ+Rjf7dyBy4bspvB+2ctdneuBP6SgAzPgdA4b/
-         30TA==
+        bh=fOcE1gEVv8k+1mKB0BOnHrQMjIkGHZfrQmU9eoEzouw=;
+        b=IyndD18yQDbf+a8JquQ8Gi9kkoB+Vbwy9VY0BmoNZBVdDC213PfpNSzhnYMcThI+G5
+         Bgx/EpS3Pbx8Kcz8sDBjVHV8DTpO+eIwVjJYvWVe4Tx+AplldWXyF0aJycL0cZXA/PaJ
+         eVG58Xvvmdll+YfNTjzvW4qSe9Fz5JgTC+g2001/gaFxpjFlwgb1utQ8Uv0qBTj8eRvN
+         csAh2+ussez/c/Qvf/709/KJIE7pRtU+J+ttwnO8Vot/WWEgS+BQLw7xTgZMf/bBBWXo
+         zigll7Mwtev7wX+peCEwd0mMnsYMrgCwMq03PsgjNnFJmYx+1UIE/cN4qkNXHauPi540
+         S1rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1694191325; x=1694796125;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=23RWTA42oeiWyX/+9q0UPnX5CmGzLdzzX40DGM4ZYYo=;
-        b=e5N/sXii0+XOBacdhD2pKgqy15SzV/D7f6HUnatkQo5GVOzwUJOL84aECNR1QCVaZ1
-         jaJgVsMVqpJmFRG1pOxECtnwpzpjT/dXhgXbX7sTwoeA6zo/j3OoN83msx5JpQNt/VOm
-         ncsZdukYyVwd9muTNMzKiA4NS8QEeEj+W7GbnehzGAJNXCC2J+pvvwcJCiPYitq3/uPW
-         EbONc5U6NbBJGIKxntKgIK5WTAUgk+NbPzSH5RGOB77Ptd23g9DjSb5chYNZ58xjOwx7
-         MIQYOtVJWcOYpojv/n1ydQXH11e7kC+mUgYoPM3CPSIVmJ/5KPr5T68lLVKTvixDvf0D
-         v7Qw==
-X-Gm-Message-State: AOJu0Yz3SAQNlqMKf7wIxjQggmEVEsZUE33endLizs5dVbUmx4o/p/Rj
-	oBF4zEGnIuAhkNOzGc+R0QU=
-X-Google-Smtp-Source: AGHT+IF6Lpd+NS4yfIzJuWjERArKjnYsYK+0QZitLPztEyoOHyum17h8Irht+MCMyWQc4JRyZ3htig==
-X-Received: by 2002:a05:6808:152b:b0:3ab:7142:a5f2 with SMTP id u43-20020a056808152b00b003ab7142a5f2mr949103oiw.25.1694191325406;
-        Fri, 08 Sep 2023 09:42:05 -0700 (PDT)
+        bh=fOcE1gEVv8k+1mKB0BOnHrQMjIkGHZfrQmU9eoEzouw=;
+        b=JdGhf0GuCwJLpjZYa5y/hoUdmYsBjj7NH5WeHQBNTJN/HWZDuf/9uuq9LQqM+oa6RY
+         IsF/shaZXs9b2ysoEK5Scqehx1P1AzobQEfPrEyUOd4qVqu4sVvc3eMoSQL8UsciuSIH
+         bc9iq36T1cwB4f08F88wvhUyqMMebDbBrd4+OMvBTdORPEbKiUtHFtRYjjM+JGyXtZ58
+         yWXRpQ90gY/oD8UMGdP/IKmV+cH6MqQ/4hS5wP7voT+OFEqRFnpFycWXaWck+XhkZ7Il
+         LNMKNLLLhQ2vGoW5u0XhGBuGpNOgwhqK9vuNXQaWXEPNt/Ws5nrfQrbTQ57wEXlmD3Yo
+         ZH6w==
+X-Gm-Message-State: AOJu0Yx+xvjrGMRqXH3HHul+OCRO1Qq4G6YuBq7/sFqQ4cBguHbWmMr6
+	e7VGyAFH/E9Y6kyIamTQvaY=
+X-Google-Smtp-Source: AGHT+IET4mmN2Idlz+iOML30+xfvBysG5kiH18eLSaLbf6y/AmlHftf1oyazh8wyiG0o2Ucjv/Q8PQ==
+X-Received: by 2002:a9d:4d84:0:b0:6b7:5086:2f59 with SMTP id u4-20020a9d4d84000000b006b750862f59mr2975951otk.23.1694191324773;
+        Fri, 08 Sep 2023 09:42:04 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
         by smtp.gmail.com with ESMTPSA id d14-20020a05683018ee00b006b8c277be12sm839485otf.8.2023.09.08.09.42.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Sep 2023 09:42:05 -0700 (PDT)
+        Fri, 08 Sep 2023 09:42:04 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: devicetree@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -71,16 +71,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 2/3] arm64: dts: rockchip: add USB2 to rk3588s-indiedroid
-Date: Fri,  8 Sep 2023 11:41:55 -0500
-Message-Id: <20230908164156.2846-3-macroalpha82@gmail.com>
+Subject: [PATCH 1/3] arm64: dts: rockchip: add PCIe to rk3588s-indiedroid-nova
+Date: Fri,  8 Sep 2023 11:41:54 -0500
+Message-Id: <20230908164156.2846-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230908164156.2846-1-macroalpha82@gmail.com>
 References: <20230908164156.2846-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_094210_008839_6B7A70F4 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20230908_094208_859606_F90AE54D 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,66 +99,55 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Enable USB2 (EHCI and OCHI mode) support for the Indiedroid Nova. This
-adds support for USB for the 4 full size USB-A ports. Note that USB 3
-(the two blue full-size USB-A ports) is still outstanding, as is
-support for USB on the USB-C ports. The controller is not yet supported
-for these ports.
+Add the necessary nodes to the Indiedroid Nova to activate the PCI
+express port that is used by the RTL8111 ethernet controller.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts     | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 646f49cc9e53..1e2336d3065b 100644
+index d1503a4b233a..646f49cc9e53 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -751,6 +751,24 @@ &tsadc {
- 	status = "okay";
- };
- 
-+&u2phy2 {
-+	status = "okay";
-+};
-+
-+&u2phy2_host {
-+	phy-supply = <&vcc5v0_usb>;
-+	status = "okay";
-+};
-+
-+&u2phy3 {
-+	status = "okay";
-+};
-+
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_usb>;
-+	status = "okay";
-+};
-+
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
- 	status = "okay";
-@@ -775,3 +793,19 @@ bluetooth {
- 		pinctrl-names = "default";
+@@ -109,6 +109,10 @@ vcc5v0_usbdcin: vcc5v0-usbdcin-regulator {
  	};
  };
-+
-+&usb_host0_ehci {
+ 
++&combphy0_ps {
 +	status = "okay";
 +};
 +
-+&usb_host0_ohci {
+ &cpu_l0 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+@@ -348,6 +352,12 @@ i2s0_8ch_p0_0: endpoint {
+ 	};
+ };
+ 
++&pcie2x1l2 {
++	pinctrl-0 = <&rtl8111_perstb>;
++	pinctrl-names = "default";
 +	status = "okay";
 +};
 +
-+&usb_host1_ehci {
-+	status = "okay";
-+};
+ &pinctrl {
+ 	bluetooth-pins {
+ 		bt_reset: bt-reset {
+@@ -366,6 +376,12 @@ bt_wake_host: bt-wake-host {
+ 		};
+ 	};
+ 
++	ethernet-pins {
++		rtl8111_perstb: rtl8111-perstb {
++			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
 +
-+&usb_host1_ohci {
-+	status = "okay";
-+};
+ 	hym8563 {
+ 
+ 		hym8563_int: hym8563-int {
 -- 
 2.34.1
 
