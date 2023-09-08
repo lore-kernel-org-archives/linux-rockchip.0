@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BAD2EE7FE4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Sep 2023 12:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BACA6EE801F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Sep 2023 16:42:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HoMTNI8qgKhmfcCxr61kvAKOsEr6zvOuCglzpobQNow=; b=0u5WmA0ReHPHDBpt3z/TL55kqf
-	kmjAnBoN4js+MlYLM+6sJsH5hkiT5UxK9zCXGgz+67HPu+imsFiLPxkWIHs0IOLj7q1kSekRMtHQg
-	ty1u8tXvyI5suV/nIseVT5szJ9OXM18P36o7Uy9vUG30t7C1RqsSq9/M3SYh2OdkQGQzVf2s+RPJg
-	5vatONbtjV9OxR1IY4O6ZVfsmw0n8AsCyVycTImLOHcuz+y3t+rco24BFp6DxioAe3Mz4GkSHbSee
-	ES/MHXierTTUFcRUyCvcOWiZbixQ86L0DxoMgVPKbdBvjJbeGKGJCTwK4pxa40z6sVkG+MRqHJpSH
-	rKLnrWlg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=890I6m/UMzO+3cB3ik9c4ZKLHQ8Pz8KhfNN557RIZqc=; b=ytdGfKfxg07h9k
+	1+79vXhR2J0lU5J4h3veK+sKqP/z+d7HXhG/fyDz4/KLFQ/YUzQ9kiFN5wLy4Jei3Ao58++oJZr0D
+	Hj/ge5AhBOmh/rcmO86HbhgXi4xD/uYG682WVNMJi9MuVgoiKX5HencKijiHUimxZhFcBODW2HgPy
+	JvXYgYpac/9KE7rfilYIrW2mGK7OBCtOkSIRdAXvbpJ1JFrUz8X4IC5ciIuAH6Q4pEdV2zWgh/bpT
+	LE+x4I5SO2MR56NHoQaHqd/OmJekLhV3SiQDN/5yEWW0+ZK3tINCSkP8XhPnquivw6BdZl3ANI1Av
+	YtmqEsg1w1uT8kmYyxvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeaZt-00DlG4-2z;
-	Fri, 08 Sep 2023 12:27:13 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qeeYe-00E6Em-08;
+	Fri, 08 Sep 2023 16:42:12 +0000
+Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeaZp-00DlCc-0e;
-	Fri, 08 Sep 2023 12:27:11 +0000
-Received: from [172.22.36.47] (unknown [115.110.84.132])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: david.heidelberg)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3326E6607249;
-	Fri,  8 Sep 2023 13:26:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694176022;
-	bh=kxmYxmERfaHjIcR3GX44H1XW83N5R1EvDpk8rarq7DM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RLbKzevVNzRpoYpSOUweFFqV1PRi95V1QP0aZkLHgy9FMlPUBdaTU1jiX2HrmCWKV
-	 HIPqb9JG1zqG/qvy5nmv36psPYBdSJrfXMr869574pyE9z/e0vG5wo/dbANcMFNOaQ
-	 h47VoJSADABNfqonov5ftn/5ZzHoyKsMnMsty/sSwZz5Rlfsv9y3+6MN5Dru9XtWzG
-	 JiQUFm3HXBGAlpgYF5EIgH1ktK2F+/vc96f+OxXYEirTsKYMuVA75QJrhe93UGzDfh
-	 ebjPpaCyo5tUE/0KcdRVpA5t0+fG0WvXj1p2ux3FHP5ZfjvGAMQ9B4VgFjs77B/EpE
-	 12/KaIjUQUF+Q==
-Message-ID: <2dc6f9fa-06fb-44d8-97cb-6b5a983b7539@collabora.com>
-Date: Fri, 8 Sep 2023 17:56:36 +0530
+	id 1qeeYa-00E6D0-2d
+	for linux-rockchip@lists.infradead.org;
+	Fri, 08 Sep 2023 16:42:10 +0000
+Received: by mail-oo1-xc31.google.com with SMTP id 006d021491bc7-5732481b22eso1387872eaf.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 08 Sep 2023 09:42:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694191324; x=1694796124; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=VQmEH2RUeAXXFD59FSUnwttQ34B6ik0lf7mApX067Aw=;
+        b=FngmbxbIRJvxdPMt/4Bp1WgQdXELysT6aIzWlvmH/0TWbJTGv+6nGwk6f/IqMPedOY
+         /dR7Sd1QQhKHm/fKa7q673QPulTIAVO94C0xxpbvPAfhvvY2I6GJW+7hiUCRMqiFQuGN
+         nd9mg85JoDA4szsW67pCY/n9PSs5jIO56YisALt8wK52B3W1U7//yYtlCR1h8ViJgXmP
+         lRmWMj+Oj09NrqnJTiXDNtvqjWwfEuZuFDgA850NQTPIVxHcSatqSloL7WccgWBJZPHm
+         q7zs+r74+8unhSjmQftoKC4Nu/3M+Vi5EyHr4jO3bPzaNNrPb8DM0X1uFqxiJozGubx3
+         4CSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694191324; x=1694796124;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=VQmEH2RUeAXXFD59FSUnwttQ34B6ik0lf7mApX067Aw=;
+        b=Tzw7cFW5SmsnfTNtnCMwPHMsEZITDrKa3VOAyT7UJe0JIaL0OXe4M8+DNsH+E3aclj
+         t6necK0EI+lAQ/k7Crv9rMUgvQD2JQ7ZO1/ZdZeopOzDhrOiASOyce0RFBBW7EaJs6Mu
+         V0keXEnOPhyFeCeFG/caCBV57xmXvWwdcX3SCABs0cSOhwyF1RCzoQZUfnoc6b/UVtch
+         qhNzkUzvrjgKQLlx5VQBS1W0sxLieac2yQJ6qjBAMPENXaIPaR6OZAgNbJYPPlwqT+U2
+         C4KYDybtsPKgdKrB0WItDscnOFUjSSGo+NB/+t3KMOSmQLywzc/oc9Dgm/FH2njae83G
+         jHVw==
+X-Gm-Message-State: AOJu0Yyed4ZbSlG2opfTf0C8J+QVTUcYg2XCKt9LW0R7cKMVEmybVjqY
+	vKdL2YUPcEjuqh2G25sKD2A=
+X-Google-Smtp-Source: AGHT+IGSumNmB0sVbdzjIQNxRbxeSCzW7y1kgY6/94aUZ7liFg79JTMRE0Qa+yvXOOwKE8x+lN/F2w==
+X-Received: by 2002:a4a:d291:0:b0:571:28d5:2c71 with SMTP id h17-20020a4ad291000000b0057128d52c71mr3159422oos.2.1694191324308;
+        Fri, 08 Sep 2023 09:42:04 -0700 (PDT)
+Received: from localhost.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id d14-20020a05683018ee00b006b8c277be12sm839485otf.8.2023.09.08.09.42.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Sep 2023 09:42:04 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	jagan@edgeble.ai,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/3] Add Additional Functionality to Indiedroid Nova
+Date: Fri,  8 Sep 2023 11:41:53 -0500
+Message-Id: <20230908164156.2846-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- corbet@lwn.net, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
- <20230825122435.316272-5-vignesh.raman@collabora.com>
- <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
- <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
-Content-Language: en-US
-From: David Heidelberg <david.heidelberg@collabora.com>
-Autocrypt: addr=david.heidelberg@collabora.com; keydata=
- xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGNPwqEeILN
- MURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFib3JhLmNvbT7ClgQT
- FggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsDBQkFo5qABQsJCAcCBhUKCQgL
- AgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5YqSWAOuIumAqgWvke6BEsaIGWGQzXSuKj
- er/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQB
- l1UBBQEBB0AEk7jXEwDApGOwMH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYh
- BEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0Y
- uAOKJCnnwrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
- wueLHBdwHg6zAQ==
-In-Reply-To: <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_052709_519892_F6B8D397 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20230908_094208_859179_87548F05 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,132 +90,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7967985648506285710=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============7967985648506285710==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------QVbyyDjtHt2Y2bqlRUbNjGy2"
+From: Chris Morgan <macromorgan@hotmail.com>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------QVbyyDjtHt2Y2bqlRUbNjGy2
-Content-Type: multipart/mixed; boundary="------------0SjgPXBdE0pfxmCy61iR0gjG";
- protected-headers="v1"
-From: David Heidelberg <david.heidelberg@collabora.com>
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- corbet@lwn.net, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-Message-ID: <2dc6f9fa-06fb-44d8-97cb-6b5a983b7539@collabora.com>
-Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
- <20230825122435.316272-5-vignesh.raman@collabora.com>
- <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
- <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
-In-Reply-To: <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
+Update the Indiedroid Nova device tree to benefit from hardware that
+has recently been enabled in the mainline kernel. This includes
+enabling the PCI Express bus to activate the RTL8111 ethernet
+controller, the USB-A 2.0 ports (USB 3.0 still pending), and the ADC
+controller with the boot and recovery buttons.
 
---------------0SjgPXBdE0pfxmCy61iR0gjG
-Content-Type: multipart/mixed; boundary="------------yPjLj8M50Ol2VqN53k1e0e4X"
+Chris Morgan (3):
+  arm64: dts: rockchip: add PCIe to rk3588s-indiedroid-nova
+  arm64: dts: rockchip: add USB2 to rk3588s-indiedroid
+  arm64: dts: rockchip: Add saradc node to rk3588s-indiedroid-nova
 
---------------yPjLj8M50Ol2VqN53k1e0e4X
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 84 +++++++++++++++++++
+ 1 file changed, 84 insertions(+)
 
-T24gMDgvMDkvMjAyMyAxMzoyMywgVmlnbmVzaCBSYW1hbiB3cm90ZToNCg0KPiBIaSBBbmdl
-bG8sDQo+DQo+IE9uIDA3LzA5LzIzIDE2OjE2LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdu
-byB3cm90ZToNCj4+IElsIDI1LzA4LzIzIDE0OjI0LCBWaWduZXNoIFJhbWFuIGhhIHNjcml0
-dG86DQo+Pj4gRW5hYmxlIHJlZ3VsYXRvcg0KPj4+IEVuYWJsZSBNVDYzOTcgUlRDIGRyaXZl
-cg0KPj4+DQo+Pj4gU2lnbmVkLW9mZi1ieTogVmlnbmVzaCBSYW1hbiA8dmlnbmVzaC5yYW1h
-bkBjb2xsYWJvcmEuY29tPg0KPj4+IC0tLQ0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS9h
-cm02NC5jb25maWcgfCAyICsrDQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9u
-cygrKQ0KPj4+DQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS9hcm02NC5j
-b25maWcgDQo+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kvYXJtNjQuY29uZmlnDQo+Pj4gaW5k
-ZXggODE3ZTE4ZGRmZDRmLi5lYTdhNmNjZWZmNDAgMTAwNjQ0DQo+Pj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL2NpL2FybTY0LmNvbmZpZw0KPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9j
-aS9hcm02NC5jb25maWcNCj4+PiBAQCAtMTg0LDYgKzE4NCw4IEBAIENPTkZJR19IV19SQU5E
-T01fTVRLPXkNCj4+PiDCoCBDT05GSUdfTVRLX0RFVkFQQz15DQo+Pj4gwqAgQ09ORklHX1BX
-TV9NVEtfRElTUD15DQo+Pj4gwqAgQ09ORklHX01US19DTURRPXkNCj4+PiArQ09ORklHX1JF
-R1VMQVRPUl9EQTkyMTE9eQ0KPj4+ICtDT05GSUdfUlRDX0RSVl9NVDYzOTc9eQ0KPj4NCj4+
-IEkgd29uZGVyIGlmIGl0J2QgYmUgYSBiZXR0ZXIgaWRlYSB0byBzaW1wbHkgYWRkIHRob3Nl
-IHRvIHRoZSANCj4+IGRlZmNvbmZpZyBpbnN0ZWFkIGFzDQo+Pg0KPj4gQ09ORklHX1JFR1VM
-QVRPUl9EQTkyMTE9bQ0KPj4gQ09ORklHX1JUQ19EUlZfTVQ2Mzk3PW0NCj4+DQo+PiBBbnkg
-b3BpbmlvbiBvbiB0aGlzPyBNYXR0aGlhcz8gQW55b25lIGVsc2U/DQo+DQo+IENPTkZJR19S
-VENfRFJWX01UNjM5Nz1tIGlzIGFscmVhZHkgcHJlc2VudCBpbiBkZWZjb25maWcuDQo+IFdl
-IGNhbiBhbHNvIGFkZCBDT05GSUdfUkVHVUxBVE9SX0RBOTIxMT1tIHRvIGRlZmNvbmZpZy4N
-Cg0KV2UgbmVlZCBhZGQgY29uZmlnIHNuaXBwZXQgb3ZlcnJpZGUgZm9yIENPTkZJR19SRUdV
-TEFUT1JfREE5MjExPXkgDQpiZWNhdXNlIG91ciBDSSBkb24ndCBoYXZlIGFueSBpbml0cmQg
-d2l0aCBtb2R1bGVzLCB3ZSBqdXN0IGltbWVkaWF0ZWx5IA0KY29udGludWUgYm9vdCBmcm9t
-IE5GUywgd2hlcmUgd2UgbG9hZCByZXN0IG9mIHRoZSBib290IG5vbi1lc3NlbnRpYWwgDQpt
-b2R1bGVzLg0KDQpGb3IgZ2VuZXJpYyBrZXJuZWwsIEkgYXNzdW1lIENPTkZJR19SRUdVTEFU
-T1JfREE5MjExPW0gc2hvdWxkIGJlIGFkZGVkLg0KDQpEYXZpZA0KDQo+DQo+IFJlZ2FyZHMs
-DQo+IFZpZ25lc2gNCg0KLS0gDQpEYXZpZCBIZWlkZWxiZXJnDQpDb25zdWx0YW50IFNvZnR3
-YXJlIEVuZ2luZWVyDQoNCkNvbGxhYm9yYSBMdGQuDQpQbGF0aW51bSBCdWlsZGluZywgU3Qg
-Sm9obidzIElubm92YXRpb24gUGFyaywgQ2FtYnJpZGdlIENCNCAwRFMsIFVLDQpSZWdpc3Rl
-cmVkIGluIEVuZ2xhbmQgJiBXYWxlcywgbm8uIDU1MTM3MTgNCg0K
---------------yPjLj8M50Ol2VqN53k1e0e4X
-Content-Type: application/pgp-keys; name="OpenPGP_0x69F567861C1EC014.asc"
-Content-Disposition: attachment; filename="OpenPGP_0x69F567861C1EC014.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
+-- 
+2.34.1
 
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGN
-PwqEeILNMURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFi
-b3JhLmNvbT7ClgQTFggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsD
-BQkFo5qABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5Y
-qSWAOuIumAqgWvke6BEsaIGWGQzXSuKjer/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7
-Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQBl1UBBQEBB0AEk7jXEwDApGOw
-MH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYhBEo7kSl22BK0F1Np
-/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0YuAOKJCnn
-wrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
-wueLHBdwHg6zAQ=3D=3D
-=3DOQS+
------END PGP PUBLIC KEY BLOCK-----
-
---------------yPjLj8M50Ol2VqN53k1e0e4X--
-
---------------0SjgPXBdE0pfxmCy61iR0gjG--
-
---------------QVbyyDjtHt2Y2bqlRUbNjGy2
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEARYIAB0WIQRKO5EpdtgStBdTaf5p9WeGHB7AFAUCZPsS/AAKCRBp9WeGHB7A
-FJMXAQDOC4fWl0gYmEvUPLQhSmJbWUme0uzP1yaP5MxtaDwvCwD7BgNQv9t8Yrp6
-kbFOXh1myrvVXSi5VYV9ry9kKAgaVQs=
-=LHU6
------END PGP SIGNATURE-----
-
---------------QVbyyDjtHt2Y2bqlRUbNjGy2--
-
-
---===============7967985648506285710==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7967985648506285710==--
-
