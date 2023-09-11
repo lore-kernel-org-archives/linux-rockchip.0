@@ -4,85 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73906EE7FF4
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Sep 2023 13:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F811EE801F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Sep 2023 04:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UdM/PVLWz5n/xukVAlL65G2ZPLtiTFJ9+HsSkead7io=; b=tcv4GWR0PJMhvJ
-	NHaNW9osWGb9LioFjnEJzBlGD5ovGXzHWU0m7ELxWEJrkn0dg694DS+Pdt79UF66WYRoQ6kEXBzpX
-	AS4O9Q4UxleQmCnfXWejjDOBs4fTqnoNuQpxvfUW7IziLBuiVlMbVSH1S99QpHi/LiMs6YZh/mxdZ
-	BJ2EHFkzo1SIJznh23N3rPyO67AfCUoSvPnLu6v5kyCdDj+CT9dD3f32GBT+3KITttNdiqlrVbEPs
-	8/B+bHW08j411elGp/bK70j3wfP18i7pUPOsowNwu2R1gauXgzxqcCSWGwT5ZMh4KuUWoIs5HqmKY
-	JeXZzSPSa1WHsahCul0Q==;
+	List-Owner; bh=FFoZXQkiTZ4EqIy85X48Pcy+gMpWUdVodOYtBpu9WcA=; b=LRy2iEV8+oEQXW
+	bKkGtThBJkyAQNcacfTKOMgOvhH55Z6C3JFog96N2YuHsUNUN8w/iBUXH8yU4bfQvLk7TojABXz4k
+	6dqp8mGOH4WapJfNJ1lcaRxlTTsR6nAVmA5KeTsowvWoSYAelAgdElekwXetzYgW26H/jTNPnxhz3
+	uMlEV8vls6b1lN8IDme7psNa0QdDz3GLnW7r2LNJ+ADFV6ZY7HN7jGnOysKphBydjIJ2btGyGxVb3
+	Ri/14q1yT/4Lvu+hchQ3wfQpmQTDUd5K/nte1o/oxYEbkyN1ngDW4Ap2eq5ANOXVIZMGfmO3sGqR0
+	S12l44rdvxgu/orFWBEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfKO2-00GdJn-0X;
-	Sun, 10 Sep 2023 13:22:02 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1qfYaX-00HDYU-0r;
+	Mon, 11 Sep 2023 04:31:53 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfKNu-00GdGb-0W;
-	Sun, 10 Sep 2023 13:21:59 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-31f6ddb3047so3357522f8f.1;
-        Sun, 10 Sep 2023 06:21:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1694352105; x=1694956905; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=x3yiYILhEuCNUQeqPmsTOJF5pdnP1MyjjDZaseeFDik=;
-        b=mnyGLyViapmBQaLOXbO09X0p438/h8dlQXPdQEHM/vMZ9sTImCyqcyhnqDG9+YacMB
-         F4KhEkopOrWrTrIXmGrTTcXK6Od3VJ0A1Za48b4TsAkizrpkTV/Zn9dYT4JAvGlWnGFk
-         YGpYla1MmLSTqP6fiXVQmqrMAXV8hmp+8ZhihXQFbOQ2Flt0m96G4ph9dhFv/sdGzYdA
-         aUfNiwwbWtp948Vh3/JghhDSgOND/W5ZV1YFbbBHWAUDG+NSy1VkSAYz09hNrrRIGvFa
-         gOmMtsJGKlOuj4UGcNLDDkpJt6qmQwZGwJONyfheytfP4ibBtFxIZpAwfTVQ+a8zZXRo
-         4UsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694352105; x=1694956905;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x3yiYILhEuCNUQeqPmsTOJF5pdnP1MyjjDZaseeFDik=;
-        b=SE9LSfd41JQkjEMc4Q+6FijmOSHv/J4tXoDLoywWQlrAGGBkW/b6D3TX61c0WFO0dK
-         cg9vgvkhxPmCBPd7x83D07ykoMuVyEzl7rkw3B4V59hGDrBv+wimaw4EbyU9jzeAVcHr
-         642gHgk6bemDDmFs6uSMvQ3jgeOeVa24yfjEGNfQDuKimHx/X5aeRHfTnaK3aPZLqTdK
-         iUFyjHw10a4Mxms9b+TEWxZsoM41xqo8pe3r/u0EAXY2LjBrd4euX7hglVzXZOjGUVAB
-         G/6kRnkenITWg7dOqZifONLWhfrkkKIf9aP4CNFzn7lfCxSZawP8IfLVuoKczAgfvnKE
-         Wpiw==
-X-Gm-Message-State: AOJu0YyBpxsFKAmPkA7PtP7qLgesF8Oq+3RvzOuLjwfY4aCnK0TOn7Mg
-	ntORrpjB7HB5dXZhGZR/WTs=
-X-Google-Smtp-Source: AGHT+IHBW5u0oYJcRGEvrYuxS4KJf+ofoX9BINJgRqjlcAtgbTBDPybxSD7j2EjBbYgPCuTfVGTdFA==
-X-Received: by 2002:a5d:4809:0:b0:317:73d3:441a with SMTP id l9-20020a5d4809000000b0031773d3441amr5628694wrq.46.1694352104814;
-        Sun, 10 Sep 2023 06:21:44 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
-        by smtp.gmail.com with ESMTPSA id d22-20020aa7ce16000000b005233609e39dsm3358895edv.30.2023.09.10.06.21.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 10 Sep 2023 06:21:44 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
- ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v6 14/18] media: verisilicon: vp9: Use destination buffer height
- to compute chroma offset
-Date: Sun, 10 Sep 2023 15:21:41 +0200
-Message-ID: <4856958.31r3eYUQgx@jernej-laptop>
-In-Reply-To: <20230901124414.48497-15-benjamin.gaignard@collabora.com>
-References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
- <20230901124414.48497-15-benjamin.gaignard@collabora.com>
+	id 1qfYaP-00HDUj-1P;
+	Mon, 11 Sep 2023 04:31:47 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6475CB80DDA;
+	Mon, 11 Sep 2023 04:31:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3979EC433CD;
+	Mon, 11 Sep 2023 04:31:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694406700;
+	bh=UepKFV/RYGBvPBdow3H0Kx6KiHwRlGChrZoa/xUHr6g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Lx9qX2N10++hfk0wbyInOwoEda8jSGtqfzDaHtPIys4N4GqOlzXvSj7ZhwEsFwyjP
+	 AimXb0YGhDW4drnaLrnbf8UMfhOekC4fGjyHacUpPHDyv0ZMzDpwmJ5A7RUESvaADn
+	 Mj2iLEs4vjYOUqwD3I8CcZnH/7J9O4E7P2du8TO3vLhgQbUtZwYzQd06/+2LSLbBQT
+	 KYImvYc3MFKWvSynXJO5OdsTPq+bUXjgH3yO5+o2Lf1M3fqRA4r/LBDqYuWkDrRQgY
+	 O7xANpP+sYrQvi3iinG7eOcBBQ0subiQgFVVUOpe9J+2pnElyGSQoWdZ10uk/3z9uU
+	 EPN5NdbrqvX1A==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 23B43E1F67F;
+	Mon, 11 Sep 2023 04:31:40 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH 00/10] pwm: Constistenly name pwm_chip variables "chip"
+From: patchwork-bot+chrome-platform@kernel.org
+Message-Id: <169440670014.22573.14581572371535756981.git-patchwork-notify@kernel.org>
+Date: Mon, 11 Sep 2023 04:31:40 +0000
+References: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <20230714205623.2496590-1-u.kleine-koenig@pengutronix.de>
+To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=3Cu=2Ekleine-koenig=40pengutronix=2Ede=3E?=@ci.codeaurora.org
+Cc: thierry.reding@gmail.com, nicolas.ferre@microchip.com,
+ alexandre.belloni@bootlin.com, claudiu.beznea@microchip.com,
+ florian.fainelli@broadcom.com, rjui@broadcom.com, sbranden@broadcom.com,
+ bleung@chromium.org, heiko@sntech.de, palmer@dabbelt.com,
+ paul.walmsley@sifive.com, michael@walle.cc, johan@kernel.org,
+ elder@kernel.org, gregkh@linuxfoundation.org, linux-pwm@vger.kernel.org,
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
+ bcm-kernel-feedback-list@broadcom.com, groeck@chromium.org,
+ chrome-platform@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, greybus-dev@lists.linaro.org,
+ linux-staging@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_062154_199464_07C5E111 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20230910_213145_638405_74005A46 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +86,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin!
+Hello:
 
-Dne petek, 01. september 2023 ob 14:44:10 CEST je Benjamin Gaignard 
-napisal(a):
-> Source and destination buffer height may not be the same because
-> alignment constraint are different.
-> Use destination height to compute chroma offset because we target
-> this buffer as hardware output.
+This patch was applied to chrome-platform/linux.git (for-kernelci)
+by Thierry Reding <thierry.reding@gmail.com>:
+
+On Fri, 14 Jul 2023 22:56:13 +0200 you wrote:
+> while working on an extension for the pwm framework, I noticed that some
+> drivers and even the core only nearly consistently named all variables
+> and struct members holding a pointer to a struct pwm_chip "chip":
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Fixes: e2da465455ce ("media: hantro: Support VP9 on the G2 core")
-> ---
->  drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+> $ git grep -Pho 'struct pwm_chip \**[a-z0-9_]+(*nla:[\(a-z0-9_])' v6.5-rc1 | sort | uniq -c | sort -n
+>       1 struct pwm_chip *pwm
+>       1 struct pwm_chip pwm
+>       1 struct pwm_chip pwm_chip
+>       2 struct pwm_chip *_chip
+>       4 struct pwm_chip *c
+>       8 struct pwm_chip *pc
+>      57 struct pwm_chip chip
+>     358 struct pwm_chip *chip
 > 
-> diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c index
-> 6db1c32fce4d..1f3f5e7ce978 100644
-> --- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> +++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> @@ -93,9 +93,7 @@ static int start_prepare_run(struct hantro_ctx *ctx, const
-> struct v4l2_ctrl_vp9_ static size_t chroma_offset(const struct hantro_ctx
-> *ctx,
->  			    const struct v4l2_ctrl_vp9_frame 
-*dec_params)
->  {
-> -	int bytes_per_pixel = dec_params->bit_depth == 8 ? 1 : 2;
-> -
-> -	return ctx->src_fmt.width * ctx->src_fmt.height * bytes_per_pixel;
-> +	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 
-8;
+> [...]
 
-Commit message doesn't mention bit_depth change at all. While I think there is 
-no difference between dec_params->bit_depth and ctx->bit_depth, you shouldn't 
-just use ordinary division. If bit_depth is 10, it will be rounded down. And 
-if you decide to use bit_depth from context, please remove dec_params 
-argument.
+Here is the summary with links:
+  - [05/10] pwm: cros-ec: Consistenly name pwm_chip variables "chip"
+    https://git.kernel.org/chrome-platform/c/5996cdf132da
 
-Best regards,
-Jernej
-
->  }
-> 
->  static size_t mv_offset(const struct hantro_ctx *ctx,
-
-
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
