@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20C4FEE7FF4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Sep 2023 14:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC7DEE7FF4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Sep 2023 16:36:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+5fIgEUgPJ4fmyo7zDsH+oi5btseFvHNX5hGU9C2DBg=; b=Qwe9lrIzpalGN2DZW+tnRh31lu
-	QCzeKYRf+SKP5dULvbJ9SuWPOpc4rPnSizKGCkSG+nl8n+d9QJtyOdqD0ljrdFAwO28cChiv2VMTl
-	A68eFChQRsWTwY6fDdv9A2c0e0/HbmEKgVXb55Yzf8jMTBx7Fo1Aq2m3Lwqpx8PwY4ZowG0c0s3rU
-	V4OW1f5ebwP3nVs81DdUEYjiKeRtZiPSwzBdqwmHaXANSeD6oGHiKNWNqVYM9QXDssU17U2ak/rkr
-	stXNIH53XM16SLSZVcTM3coM9K7OqGUH0EB6TCOnnZQzjEKb7SLwELXlFDutfzTMQR579DxgUm63f
-	fyFynlHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OryP8iyWCtIQFYbjzkDXOJnwQ7NxImCN8p5E8fLJLqQ=; b=j63lIaP6BVG6n1
+	SmiBljX2FgOYtLLcuuwGsbiweKs+g15heF/BzW9MNPyF7qeIp6ENpGpLY3iN2ti1OXsnx8lKcJvJq
+	CswMgWBTI6bkMPOn8KGFrz+FgkunXfehVOqB9ryGetpjvyXvP7eFoMmQPXyLo3qAI5CGTm4FixlAB
+	Scj7dZV7u8Wic8CDyMdyNbDiZMhXk42yCQtbe9w9E7XsFAk1lhPlvWDB7s7iCpE5blTWmhC1KshDz
+	WEZoxlllWRZdQxk72Hl6qGirbQ5HP/3uvCzTGR+tuptWXKj48XgURQ2w22drkziEO+FuPFjXza43/
+	DftYKsRYuKbOW7sq1/VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfiBo-000klg-0I;
-	Mon, 11 Sep 2023 14:47:00 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qfjtj-0010XP-2B;
+	Mon, 11 Sep 2023 16:36:27 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfiBj-000kjE-2B;
-	Mon, 11 Sep 2023 14:46:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4A552B80E5E;
-	Mon, 11 Sep 2023 14:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73E72C433C8;
-	Mon, 11 Sep 2023 14:46:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694443613;
-	bh=GajsJSo2epB55/QXlHa/vb50gsyMmkBm0dq/dBU22L0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p5mC1L6tFXnJ3XqZxh9lRAwUouQwGfHGue4LGkWDhnduL1VU6VZD3Tq60Xhm5Af+M
-	 w1sPRi8BL2meLINNTko9B91ikEGFc6P3AETxVrohj5BlgO2Yi3EuSjqTnynyKjxxCV
-	 6fL18lMOmQFgpsZqnVnOMfyDDgwXZ9iACQ8hKYR27JvtjdXQYYMmLZRUg1EsRhwHIo
-	 yKjnxS3BNYy0JX9PurDrL38poPpk7Ia7oP/Q1S6uoI1mFNZ+daJ6HVlg4ua/saJZ1V
-	 xSPw7Wjab/NW+2VYUGEA9g4ABOGf7eE/2OtvOPN3zDUzbnLoC/K+8FHbBSr8YzJqox
-	 hyWwCrhU//CNQ==
-Date: Mon, 11 Sep 2023 16:46:50 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Michel =?utf-8?Q?D=C3=A4nzer?= <michel.daenzer@mailbox.org>
-Cc: emma@anholt.net, linux-doc@vger.kernel.org, 
-	vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, 
-	jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, 
-	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
-	linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>, 
-	martin.blumenstingl@googlemail.com, robclark@freedesktop.org, 
-	Helen Koike <helen.koike@collabora.com>, anholt@google.com, linux-mediatek@lists.infradead.org, 
-	matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com, 
-	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
-	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
-	tzimmermann@suse.de
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Message-ID: <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
-References: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
- <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
- <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
- <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
- <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
- <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
- <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
- <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
+	id 1qfjtf-0010WV-2X;
+	Mon, 11 Sep 2023 16:36:25 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-9a9f139cd94so500853066b.2;
+        Mon, 11 Sep 2023 09:36:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694450181; x=1695054981; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tn6ORcYdF7wmn9zYudPCVDeUReDbRM6yHR4pM4CXkGQ=;
+        b=mW15KGQKDXpCT+E+oTy0XiXoRJzZ1ik5iPY6Qac0MCV/tKAPLlVWnWyqPVR5gvHKuS
+         j+0ns8h5gDZ83W53Puu8rcOrhqWLgOGQ8w/rKY7MuC0sixGobzCV34WZdprrMw9GcUpq
+         oz/c01NN8Ark5Moct8GNFQcbioSYbfnq5k9UggkoaXUYVVj6FN4daZ8wOlCyjzDw3Jue
+         inanlRT8vRvnn+s5kQSmvA47CTkKGWq37OPwg0Ldy1J+SpDI21929tbr7B2cWeT4MxlG
+         pkmSCVZTVdU4lX3ZOstNojaUdAgYUuGVTcOX+8w5hU1KGBevguOqtoUPf2mpRW4VBuUE
+         nE6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694450181; x=1695054981;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tn6ORcYdF7wmn9zYudPCVDeUReDbRM6yHR4pM4CXkGQ=;
+        b=fLsRFFfc109B4yLE5Dusw3UzaTquV3Ob0pQWqftrAN1nZghstjJHFrvskbvoP8GW2C
+         QaC9HLGWXiLyoRRIcjJupPEpqdepY8qOByaGJLDPsMLdD6xsuz8bBANTLIUR0wFSsMGo
+         ZZmg9DcqsymkVe01vCcxDqLvZhXVwl33yDklRnqJ6iVKxKtyOYbt6Py+IoHu7OHMhke5
+         RyzjEp6NdBPVdCjJ/WITDnNQNp/8b+QopglkUFY/goeuJnJwlNzLM39qJaMnxuJzk/VA
+         0oMTarzF2oeMaeMPTpxkDlCW4w9izp63yEkpJ97vEyDDuqIjxyNtl6lccG5DOLLaUiDd
+         b/8Q==
+X-Gm-Message-State: AOJu0Yx4wOImV6NKD8tyPir1l0tbyr9QRete3BFiYyYaLhDi2pPr5qLj
+	ARLx7U5kb83MI6nvehyl/Ow=
+X-Google-Smtp-Source: AGHT+IEZkDEwJehDR4fKggLpjoJhnXiAupV9qorq7MLXFhFfk7fRQqvtYUP3Mho6rsQ4juPA6IGloQ==
+X-Received: by 2002:a17:906:224a:b0:9a9:e6c3:ad28 with SMTP id 10-20020a170906224a00b009a9e6c3ad28mr9042772ejr.69.1694450181242;
+        Mon, 11 Sep 2023 09:36:21 -0700 (PDT)
+Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
+        by smtp.gmail.com with ESMTPSA id h17-20020a170906261100b00999bb1e01dfsm5534149ejc.52.2023.09.11.09.36.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Sep 2023 09:36:20 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
+ ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+Subject: Re: [PATCH v6 14/18] media: verisilicon: vp9: Use destination buffer height
+ to compute chroma offset
+Date: Mon, 11 Sep 2023 18:36:19 +0200
+Message-ID: <3248154.aeNJFYEL58@jernej-laptop>
+In-Reply-To: <7da0a2ab-032a-9de9-e136-58f973238c5b@collabora.com>
+References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
+ <4856958.31r3eYUQgx@jernej-laptop>
+ <7da0a2ab-032a-9de9-e136-58f973238c5b@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_074656_005412_E72CD99E 
-X-CRM114-Status: GOOD (  27.73  )
+X-CRM114-CacheID: sfid-20230911_093623_850375_613FAEC8 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,108 +94,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9122670349671366366=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============9122670349671366366==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uuq5zmkty6dwz5s2"
-Content-Disposition: inline
-
-
---uuq5zmkty6dwz5s2
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Replying one more time, because I certainly don't want to create any
-hard feeling here.
-
-On Mon, Sep 11, 2023 at 03:30:55PM +0200, Michel D=E4nzer wrote:
-> >>>> By keeping those sets of expectations, we've been able to keep Mesa =
-pretty
-> >>>> clear of regressions, whilst having a very clear set of things that =
-should
-> >>>> be fixed to point to. It would be great if those set of things were =
-zero,
-> >>>> but it just isn't. Having that is far better than the two alternativ=
-es:
-> >>>> either not testing at all (obviously bad), or having the test always=
- be red
-> >>>> so it's always ignored (might as well just not test).
-> >>>
-> >>> Isn't that what happens with flaky tests anyway?
-> >>
-> >> For a small minority of tests. Daniel was referring to whole test suit=
-es.
-> >>
-> >>> Even more so since we have 0 context when updating that list.
-> >>
-> >> The commit log can provide whatever context is needed.
-> >=20
-> > Sure, I've yet to see that though.
-> >=20
-> > There's in 6.6-rc1 around 240 reported flaky tests. None of them have
-> > any context. That new series hads a few dozens too, without any context
-> > either. And there's no mention about that being a plan, or a patch
-> > adding a new policy for all tests going forward.
->=20
-> That does sound bad, would need to be raised in review.
->
-> > Any concern I raised were met with a giant "it worked on Mesa" handwave
->=20
-> Lessons learned from years of experience with big real-world CI
-> systems like this are hardly "handwaving".
-
-Your (and others) experience certainly isn't. It is valuable, welcome,
-and very much appreciated.
-
-However, my questions and concerns being ignored time and time again
-about things like what is the process is going to be like, what is going
-to be tested, who is going to be maintaining that test list, how that
-interacts with stable, how we can possibly audit the flaky tests list,
-etc. have felt like they were being handwaived away.
-
-I'm not saying that because I disagree, I still do on some, but that's
-fine to some extent. However, most of these issues are not so much an
-infrastructure issue, but a community issue. And I don't even expect a
-perfect solution right now, unlike what you seem to think. But I do
-expect some kind of plan instead of just ignoring that problem.
-
-Like, I had to ask the MT8173 question 3 times in order to get an
-answer, and I'm still not sure what is going to be done to address that
-particular issue.
-
-So, I'm sorry, but I certainly feel like it here.
-
-Maxime
-
---uuq5zmkty6dwz5s2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZP8oWgAKCRDj7w1vZxhR
-xeoaAQCel+s1l4ON0RwLsGGIhWRQkRm3rOPEl1s1oAgC7ibXSwEAp4V+2IAQRlWC
-JJT0CY046wasZ7fQ6QP2X7LhxQsGdgA=
-=uxXU
------END PGP SIGNATURE-----
-
---uuq5zmkty6dwz5s2--
-
-
---===============9122670349671366366==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9122670349671366366==--
-
+RG5lIHBvbmVkZWxqZWssIDExLiBzZXB0ZW1iZXIgMjAyMyBvYiAxMDo1NTowMiBDRVNUIGplIEJl
+bmphbWluIEdhaWduYXJkIApuYXBpc2FsKGEpOgo+IExlIDEwLzA5LzIwMjMgw6AgMTU6MjEsIEpl
+cm5laiDFoGtyYWJlYyBhIMOpY3JpdCA6Cj4gPiBIaSBCZW5qYW1pbiEKPiA+IAo+ID4gRG5lIHBl
+dGVrLCAwMS4gc2VwdGVtYmVyIDIwMjMgb2IgMTQ6NDQ6MTAgQ0VTVCBqZSBCZW5qYW1pbiBHYWln
+bmFyZAo+ID4gCj4gPiBuYXBpc2FsKGEpOgo+ID4+IFNvdXJjZSBhbmQgZGVzdGluYXRpb24gYnVm
+ZmVyIGhlaWdodCBtYXkgbm90IGJlIHRoZSBzYW1lIGJlY2F1c2UKPiA+PiBhbGlnbm1lbnQgY29u
+c3RyYWludCBhcmUgZGlmZmVyZW50Lgo+ID4+IFVzZSBkZXN0aW5hdGlvbiBoZWlnaHQgdG8gY29t
+cHV0ZSBjaHJvbWEgb2Zmc2V0IGJlY2F1c2Ugd2UgdGFyZ2V0Cj4gPj4gdGhpcyBidWZmZXIgYXMg
+aGFyZHdhcmUgb3V0cHV0Lgo+ID4+IAo+ID4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWdu
+YXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+ID4+IEZpeGVzOiBlMmRhNDY1
+NDU1Y2UgKCJtZWRpYTogaGFudHJvOiBTdXBwb3J0IFZQOSBvbiB0aGUgRzIgY29yZSIpCj4gPj4g
+LS0tCj4gPj4gCj4gPj4gICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRy
+b19nMl92cDlfZGVjLmMgfCA0ICstLS0KPiA+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKSwgMyBkZWxldGlvbnMoLSkKPiA+PiAKPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzJfdnA5X2RlYy5jCj4gPj4gYi9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMgaW5kZXgKPiA+
+PiA2ZGIxYzMyZmNlNGQuLjFmM2Y1ZTdjZTk3OCAxMDA2NDQKPiA+PiAtLS0gYS9kcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPiA+PiArKysgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPiA+
+PiBAQCAtOTMsOSArOTMsNyBAQCBzdGF0aWMgaW50IHN0YXJ0X3ByZXBhcmVfcnVuKHN0cnVjdCBo
+YW50cm9fY3R4ICpjdHgsCj4gPj4gY29uc3Qgc3RydWN0IHY0bDJfY3RybF92cDlfIHN0YXRpYyBz
+aXplX3QgY2hyb21hX29mZnNldChjb25zdCBzdHJ1Y3QKPiA+PiBoYW50cm9fY3R4ICpjdHgsCj4g
+Pj4gCj4gPj4gICAJCQkgICAgY29uc3Qgc3RydWN0IHY0bDJfY3RybF92cDlfZnJhbWUKPiA+IAo+
+ID4gKmRlY19wYXJhbXMpCj4gPiAKPiA+PiAgIHsKPiA+PiAKPiA+PiAtCWludCBieXRlc19wZXJf
+cGl4ZWwgPSBkZWNfcGFyYW1zLT5iaXRfZGVwdGggPT0gOCA/IDEgOiAyOwo+ID4+IC0KPiA+PiAt
+CXJldHVybiBjdHgtPnNyY19mbXQud2lkdGggKiBjdHgtPnNyY19mbXQuaGVpZ2h0ICogYnl0ZXNf
+cGVyX3BpeGVsOwo+ID4+ICsJcmV0dXJuIGN0eC0+ZHN0X2ZtdC53aWR0aCAqIGN0eC0+ZHN0X2Zt
+dC5oZWlnaHQgKiBjdHgtPmJpdF9kZXB0aCAvCj4gPiAKPiA+IDg7Cj4gPiAKPiA+IENvbW1pdCBt
+ZXNzYWdlIGRvZXNuJ3QgbWVudGlvbiBiaXRfZGVwdGggY2hhbmdlIGF0IGFsbC4gV2hpbGUgSSB0
+aGluawo+ID4gdGhlcmUgaXMgbm8gZGlmZmVyZW5jZSBiZXR3ZWVuIGRlY19wYXJhbXMtPmJpdF9k
+ZXB0aCBhbmQgY3R4LT5iaXRfZGVwdGgsCj4gPiB5b3Ugc2hvdWxkbid0IGp1c3QgdXNlIG9yZGlu
+YXJ5IGRpdmlzaW9uLiBJZiBiaXRfZGVwdGggaXMgMTAsIGl0IHdpbGwgYmUKPiA+IHJvdW5kZWQg
+ZG93bi4gQW5kIGlmIHlvdSBkZWNpZGUgdG8gdXNlIGJpdF9kZXB0aCBmcm9tIGNvbnRleHQsIHBs
+ZWFzZQo+ID4gcmVtb3ZlIGRlY19wYXJhbXMgYXJndW1lbnQuCj4gCj4gSSB3aWxsIGNoYW5nZSB0
+aGlzIHBhdGNoIGFuZCBjcmVhdGUgYSBoZWxwZXJzIGZ1bmN0aW9uIGZvciBjaHJvbWEgYW5kIG1v
+dGlvbgo+IHZlY3RvcnMgb2Zmc2V0cyB0aGF0IFZQOSBhbmQgSEVWQyBjb2RlIHdpbGwgdXNlIHNp
+bmNlIHRoZXkgYXJlIGlkZW50aWNhbC4KPiBJIGRvbid0IHNlZSBpc3N1ZSB3aXRoIHRoZSBkaXZp
+c2lvbi4gSWYgeW91IGhhdmUgaW4gbWluZCBhIHNvbHV0aW9uIHBsZWFzZQo+IHdyaXRlIGl0IHNv
+IEkgY291bGQgdGVzdCBpdC4KClNvbHV0aW9uIGlzIHNhbWUgYXMgdGhlIGNvZGUgdGhhdCB5b3Ug
+cmVtb3ZlZDoKaW50IGJ5dGVzX3Blcl9waXhlbCA9IGRlY19wYXJhbXMtPmJpdF9kZXB0aCA9PSA4
+ID8gMSA6IDI7CgpPciBhbHRlcm5hdGl2ZWx5OgppbnQgYnl0ZXNfcGVyX3BpeGVsID0gRElWX1JP
+VU5EX1VQKGRlY19wYXJhbXMtPmJpdF9kZXB0aCwgOCk7CgpDb25zaWRlciBiaXRfZGVwdGggYmVp
+bmcgMTAuIFdpdGggb2xkIGNvZGUgeW91IGdldCAyLCB3aXRoIHlvdXJzIHlvdSBnZXQgMS4KCkJl
+c3QgcmVnYXJkcywKSmVybmVqCgo+IAo+IFJlZ2FyZHMsCj4gQmVuamFtaW4KPiAKPiA+IEJlc3Qg
+cmVnYXJkcywKPiA+IEplcm5lago+ID4gCj4gPj4gICB9Cj4gPj4gICAKPiA+PiAgIHN0YXRpYyBz
+aXplX3QgbXZfb2Zmc2V0KGNvbnN0IHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsCgoKCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
