@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BC6EE57DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Sep 2023 12:14:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D1C2EE7FF4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Sep 2023 12:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mlb0jFTGx4TDOBPixqqrahi+FFg88L0H1Y5vMsJSZsc=; b=oMk322smsKRW+E
-	mXq0MYILTkZSvnlmnWj4fVR44Ipj+iXjgCb7V14SpOnSFpOBCbfYsK+lIrF160xNx1QGR2hz+w/Ue
-	BN+8rxKsgeNm+LLOcbvlJcXlrUrdiNHzlJr03sbPQSsOXHUd/peu1GXNZhpyNYO1Cm+eLs8MWpVO9
-	EsrDpHp3dcwLZ97AfbE5+Bw239IGGs1iWbGbYZMpU//3vbxgnT8z0XL6gQGYD3i6vG+0Y+DAssCnY
-	4Asd9ILyGCntsHVsvdHibaU/IjHcrRLN7TMBFZldUAMZ/NhhdM/FxIpnI0pjTr9LTeTL073GWLDFS
-	Hx3Q/1XMOlNFjqyNSOAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4n/4BnhTQH0jqOeVna68pIETBn9oJuQTM9Pc9jZHkXY=; b=F7QdaDYOcbuo1Hew0FmUC+TUHa
+	7eKJU487txplKzWT/DIIA9VEB7ckvjqexS5XjbbLNNA2VsgUQcnhsil5RdEUM/HWioGGiOW7g6tGj
+	Iih5k6wGNTOM5sCFe7doOMmnRW6YTXQtEUxoruu7qK8qyR4gGEwZFY0kH8QHzoPikVxyTwOyZma5I
+	Y5WIalpnMeVDeYeljMVJe04CGh02ffA+feNJtbktXbL4UaNN5Q3WeF7Bea/3eKsOQq52ILUjcbW+a
+	3Gf3eubAlLqOObJeL/s2MANqM7wGJ91aBCQ+qw/ztT+zyLsNglsFOTmn5IukOBpbqDLMDIdRa9/fT
+	UwC6pIOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffno-000Sjk-15;
-	Mon, 11 Sep 2023 12:14:04 +0000
-Received: from mout-p-201.mailbox.org ([2001:67c:2050:0:465::201])
+	id 1qfgO6-000WCp-2W;
+	Mon, 11 Sep 2023 12:51:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffnj-000SiA-0u;
-	Mon, 11 Sep 2023 12:14:01 +0000
-Received: from smtp202.mailbox.org (smtp202.mailbox.org [IPv6:2001:67c:2050:b231:465::202])
+	id 1qfgO2-000WBg-2U;
+	Mon, 11 Sep 2023 12:51:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by mout-p-201.mailbox.org (Postfix) with ESMTPS id 4RklxS0gY7z9sqm;
-	Mon, 11 Sep 2023 14:13:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1694434428;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EG47cdFKJCzGjz8BT6HLdIq6G6HHROaavD+7fvm6pRA=;
-	b=gk/WPBL/AeACiFu13DVcyVgLkskOoCAH52EePYIAkLR/yZHSovN0zCc4IQtSSJgEOfm1N7
-	AMu2PcpH6mVf7lRUXFyL8dKl2WG0P5jVzg7xgLVXGOgeqr4G30a6sNRf/teOmSBgl1Qt2/
-	P33mCkIAWDp2yL4mBFIRC+rpcHyn8MKPifBqDhsYy+R5BkHFSfwgX8/7gtZjw43jHbD4bE
-	4S84wiL3owYxagam6VNGz17C1kVw/u+zVnqElckoGWIIXCc0vnB1FPAAfCooK8Y3aE6lNA
-	kWNU+EkQZ6R40yusQNWo10kXZteR/QKRGP2qmFQKKI0GZZl0luz9MUtoZFaOcw==
-Message-ID: <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
-Date: Mon, 11 Sep 2023 14:13:43 +0200
-MIME-Version: 1.0
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E577A6111F;
+	Mon, 11 Sep 2023 12:51:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D13C433C7;
+	Mon, 11 Sep 2023 12:51:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694436689;
+	bh=9DJeaj3B139313EIsW2RLAfPQHEz2WLHa8uXitypr/w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pAr1OVlxK3PK3lgFjYkEFyAMnXJtexo8o2qubI2+kyk/WaVpal4z6T51Lq/q07Vm9
+	 CRciu4DEBqykxIj29fOzrGP2ezcZCuL0qKaiUZM7XUWqWk4qZzwJVPzN99+zrpRhKZ
+	 GjIXkoec18XEpFUKlkkTgbPsyICHBj3I8ndB65TzJ5hz74Kk87RG8+CaBu49nnxomD
+	 g+UsNIahsB2TsRons4G5PefjXM5rWE2ERYPYOIiIQ72vf+YkKfKgv83y/h5VTpv/U5
+	 z7904mm8BI1xnahWWiMHvrYWRxBhpBTuPvgciMTeL7AW5r8utuyzilNz8rmbMgldQM
+	 LenC8lkXUuHaQ==
+Date: Mon, 11 Sep 2023 14:51:26 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Michel =?utf-8?Q?D=C3=A4nzer?= <michel.daenzer@mailbox.org>
+Cc: Daniel Stone <daniels@collabora.com>, emma@anholt.net, 
+	linux-doc@vger.kernel.org, vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, 
+	alyssa@rosenzweig.io, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, 
+	khilman@baylibre.com, sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
+	linux-rockchip@lists.infradead.org, tzimmermann@suse.de, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, Helen Koike <helen.koike@collabora.com>, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, 
+	gustavo.padovan@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-To: Maxime Ripard <mripard@kernel.org>, Daniel Stone <daniels@collabora.com>
-Cc: emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com,
- dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com,
- robdclark@google.com, corbet@lwn.net, khilman@baylibre.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- linux-rockchip@lists.infradead.org, tzimmermann@suse.de,
- martin.blumenstingl@googlemail.com, robclark@freedesktop.org,
- Helen Koike <helen.koike@collabora.com>, anholt@google.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com,
- linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
- guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org
-References: <20230811171953.176431-1-helen.koike@collabora.com>
- <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
- <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+Message-ID: <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
+References: <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
  <87bkeo23vs.fsf@intel.com>
  <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
  <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
@@ -72,14 +68,12 @@ References: <20230811171953.176431-1-helen.koike@collabora.com>
  <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
  <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
  <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
-Content-Language: en-CA
-From: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel.daenzer@mailbox.org>
-In-Reply-To: <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
-X-MBO-RS-META: ehasp3x5p4ksus1eoywnq1ujg96e9qzj
-X-MBO-RS-ID: 28267585246936505e8
+ <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
+MIME-Version: 1.0
+In-Reply-To: <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_051359_629209_AF3CF486 
-X-CRM114-Status: GOOD (  47.22  )
+X-CRM114-CacheID: sfid-20230911_055130_896943_300FA38C 
+X-CRM114-Status: GOOD (  68.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,111 +85,219 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8178809933266324228=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOS8xMS8yMyAxMTozNCwgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiBPbiBUaHUsIFNlcCAwNywg
-MjAyMyBhdCAwMTo0MDowMlBNICswMjAwLCBEYW5pZWwgU3RvbmUgd3JvdGU6Cj4+IFllYWgsIHRo
-aXMgaXMgd2hhdCBvdXIgZXhwZXJpZW5jZSB3aXRoIE1lc2EgKGluIHBhcnRpY3VsYXIpIGhhcyB0
-YXVnaHQgdXMuCj4+Cj4+IEhhdmluZyAxMDAlIG9mIHRoZSB0ZXN0cyBwYXNzIDEwMCUgb2YgdGhl
-IHRpbWUgb24gMTAwJSBvZiB0aGUgcGxhdGZvcm1zIGlzIGEKPj4gZ3JlYXQgZ29hbCB0aGF0IGV2
-ZXJ5b25lIHNob3VsZCBhaW0gZm9yLiBCdXQgaXQgd2lsbCBhbHNvIG5ldmVyIGhhcHBlbi4KPj4K
-Pj4gRmlyc3RseSwgd2UncmUganVzdCBub3QgdGhlcmUgeWV0IHRvZGF5LiBFdmVyeSBzaW5nbGUg
-R1BVLXNpZGUgRFJNIGRyaXZlcgo+PiBoYXMgdXNlcnNwYWNlLXRyaWdnZXJhYmxlIGZhdWx0cyB3
-aGljaCBjYXVzZSBvY2Nhc2lvbmFsIGVycm9ycyBpbiBHTC9WdWxrYW4KPj4gdGVzdHMuIEV2ZXJ5
-IHNpbmdsZSBvbmUuIFdlIGRlYWwgd2l0aCB0aGVzZSBpbiBNZXNhIGJ5IHJldHJ5aW5nOyBpZiB3
-ZQo+PiBkaWRuJ3QgcmV0cnksIGFjcm9zcyB0aGUgYnJlYWR0aCBvZiBoYXJkd2FyZSB3ZSB0ZXN0
-LCBJJ2QgZXhwZWN0IDk5JSBvZgo+PiBzaG91bGQtc3VjY2VlZCBtZXJnZXMgdG8gZmFpbCBiZWNh
-dXNlIG9mIHRoZXNlIGludGVybWl0dGVudCBidWdzIGluIHRoZSBEUk0KPj4gZHJpdmVycy4KPiAK
-PiBTbyB0aGUgcGxhbiBpcyBvbmx5IHRvIGV2ZXIgdGVzdCByZW5kZXJpbmcgZGV2aWNlcz8gSXQg
-c2hvdWxkIGhhdmUgYmVlbgo+IG1hZGUgY2xlYXJlciB0aGVuLgo+IAo+PiBXZSBkb24ndCBoYXZl
-IHRoZSBzYW1lIGZpZ3VyZSBmb3IgS01TIC0gYmVjYXVzZSB3ZSBkb24ndCB0ZXN0IGl0IC0gYnV0
-Cj4+IEknZCBiZSB3aWxsaW5nIHRvIGJldCBubyBkcml2ZXIgaXMgMTAwJSBpZiB5b3UgcnVuIHRl
-c3RzIG9mdGVuIGVub3VnaC4KPiAKPiBBbmQgSSB3b3VsZCBzdGlsbCBjb25zaWRlciB0aGF0IGEg
-YnVnIHRoYXQgd2Ugb3VnaHQgdG8gZml4LCBhbmQKPiBjZXJ0YWlubHkgbm90IHNvbWV0aGluZyB3
-ZSBzaG91bGQgc3dlZXAgdW5kZXIgdGhlIHJ1Zy4gSWYgaGFsZiB0aGUgdGVzdHMKPiBhcmUgbm90
-IHJ1bm5pbmcgb24gYSBkcml2ZXIsIHRoZW4gZmluZSwgdGhleSBhcmVuJ3QuIEknbSBub3QgcmVh
-bGx5Cj4gYWdhaW5zdCBoYXZpbmcgZmFpbGluZyB0ZXN0cywgSSdtIGFnYWluc3Qgbm90IGZsYWdn
-aW5nIHVucmVsaWFibGUgdGVzdHMKPiBvbiBhIGdpdmVuIGhhcmR3YXJlIGFzIGZhaWxpbmcgdGVz
-dHMuCgpBIGZsYWt5IHRlc3Qgd2lsbCBieSBkZWZpbml0aW9uIGdpdmUgYSAicGFzcyIgcmVzdWx0
-IGF0IGxlYXN0IHNvbWUgb2YgdGhlIHRpbWUsIHdoaWNoIHdvdWxkIGJlIGNvbnNpZGVyZWQgYSBm
-YWlsdXJlIGJ5IHRoZSBDSSBpZiB0aGUgdGVzdCBpcyBtYXJrZWQgYXMgZmFpbGluZy4KCgo+PiBT
-ZWNvbmRseSwgd2Ugd2lsbCBuZXZlciBiZSB0aGVyZS4gSWYgd2UgY291bGQgcGF1c2UgZm9yIGZp
-dmUgeWVhcnMgYW5kIHNpdAo+PiBkb3duIG1ha2luZyBhbGwgdGhlIGN1cnJlbnQgdXNlY2FzZXMg
-Zm9yIGFsbCB0aGUgY3VycmVudCBoYXJkd2FyZSBvbiB0aGUKPj4gY3VycmVudCBrZXJuZWwgcnVu
-IHBlcmZlY3RseSwgd2UnZCBwcm9iYWJseSBnZXQgdGhlcmUuIEJ1dCB3ZSBjYW4ndDogdGhlcmUn
-cwo+PiBuZXcgaGFyZHdhcmUsIG5ldyB1c2Vyc3BhY2UsIGFuZCBodW5kcmVkcyBvZiBuZXcga2Vy
-bmVsIHRyZWVzLgo+IAo+IE5vdCB3aXRoIHRoYXQgYXR0aXR1ZGUgOikKCkF0dGl0dWRlIGlzIG5v
-dCB0aGUgaXNzdWUsIHRoZSBjb21wbGV4aXR5IG9mIHRoZSBtdWx0aXBsZSBzeXN0ZW1zIGludm9s
-dmVkIGlzLgoKCj4gSSdtIG5vdCBzdXJlIGl0J3MgYWN0dWFsbHkgYW4gYXJndW1lbnQsIHJlYWxs
-eS4gMTAgeWVhcnMgYWdvLCB3ZSB3b3VsZAo+IG5ldmVyIGhhdmUgYmVlbiBhdCAiZXZlcnkgR1BV
-IG9uIHRoZSBtYXJrZXQgaGFzIGFuIG9wZW4tc291cmNlIGRyaXZlciIKPiBoZXJlLiA1IHllYXJz
-IGFnbywgd2Ugd291bGQgbmV2ZXIgaGF2ZSBiZWVuIGF0IHRoaXMtc2VyaWVzLWhlcmUuIFRoYXQK
-PiBkaWRuJ3Qgc3RvcCBhbnlvbmUgbWFraW5nIHByb2dyZXNzLCBldmVyeW9uZSBpbnZvbHZlZCBp
-biB0aGF0IHRocmVhZAo+IGluY2x1ZGVkLgoKRXZlbiBhc3N1bWluZyBwZXJmZWN0aW9uIGlzIGFj
-aGlldmFibGUgYXQgYWxsICh3aGljaCBpcyB2ZXJ5IGRvdWJ0ZnVsLCBnaXZlbiB0aGUgZXhwZXJp
-ZW5jZSBmcm9tIHRoZSBsYXN0IGZldyB5ZWFycyBvZiBDSSBpbiBNZXNhIGFuZCBvdGhlciBwcm9q
-ZWN0cyksIGlmIHlvdSBkZW1hbmQgcGVyZmVjdGlvbiBiZWZvcmUgZXZlbiB0YWtpbmcgdGhlIGZp
-cnN0IHN0ZXAsIGl0IHdpbGwgbmV2ZXIgZ2V0IG9mZiB0aGUgZ3JvdW5kLgoKCj4gSG93IGFyZSB3
-ZSBldmVuIHN1cHBvc2VkIHRvIGRldGVjdCB0aG9zZSBmYWlsdXJlcyBpbiB0aGUgZmlyc3QKPiBw
-bGFjZSBpZiB0ZXN0cyBhcmUgZmxhZ2dlZCBhcyB1bnJlbGlhYmxlPwoKQmFzZWQgb24gZXhwZXJp
-ZW5jZSB3aXRoIE1lc2EsIG9ubHkgYSByZWxhdGl2ZWx5IHNtYWxsIG1pbm9yaXR5IG9mIHRlc3Rz
-IHNob3VsZCBuZWVkIHRvIGJlIG1hcmtlZCBhcyBmbGFreSAvIG5vdCBydW4gYXQgYWxsLiBUaGUg
-bWFqb3JpdHkgb2YgdGVzdHMgYXJlIHJlbGlhYmxlIGFuZCBjYW4gY2F0Y2ggcmVncmVzc2lvbnMg
-ZXZlbiB3aGlsZSBzb21lIHRlc3RzIGFyZSBub3QgeWV0LgoKCj4gTm8gbWF0dGVyIHdoYXQgd2Ug
-ZG8gaGVyZSwgd2hhdCB5b3UgZGVzY3JpYmUgd2lsbCBhbHdheXMgaGFwcGVuLiBMaWtlLAo+IGlm
-IHdlIGRvIGZsYWcgdGhvc2UgdGVzdHMgYXMgdW5yZWxpYWJsZSwgd2hhdCBleGFjdGx5IHByZXZl
-bnRzIGFub3RoZXIKPiBpc3N1ZSB0byBjb21lIG9uIHRvcCB1bmRldGVjdGVkLCBhbmQgd2hhdCB3
-aWxsIGhhcHBlbiB3aGVuIHdlIHJlLWVuYWJsZQo+IHRlc3Rpbmc/CgpBbnkgaXNzdWVzIGFmZmVj
-dGluZyBhIHRlc3Qgd2lsbCBuZWVkIHRvIGJlIGZpeGVkIGJlZm9yZSAocmUtKWVuYWJsaW5nIHRo
-ZSB0ZXN0IGZvciBDSS4KCgo+IE9uIHRvcCBvZiB0aGF0LCB5b3Uga2luZCBvZiBoaW50ZWQgYXQg
-dGhhdCB5b3Vyc2VsZiwgYnV0IHdoYXQgc2V0IG9mCj4gdGVzdHMgd2lsbCBwYXNzIGlzIGEgcHJv
-cGVydHkgbGlua2VkIHRvIGEgc2luZ2xlIGNvbW1pdC4gSGF2aW5nIHRoYXQKPiBsaXN0IHdpdGhp
-biB0aGUga2VybmVsIGFscmVhZHkgYWx0ZXJzIHRoYXQ6IHlvdSdsbCBuZWVkIHRvIG1lcmdlIGEg
-bmV3Cj4gYnJhbmNoLCBhZGQgYSBidW5jaCBvZiBmaXhlcyBhbmQgdGhlbiBjaGFuZ2UgdGhlIHRl
-c3QgbGlzdCBzdGF0ZS4gWW91Cj4gd29uJ3QgaGF2ZSB0aGUgc2FtZSB0cmVlIHlvdSBvcmlnaW5h
-bGx5IHRlc3RlZCAoYW5kIGRlZmluZWQgdGhlIHRlc3QKPiBzdGF0ZSBsaXN0IGZvcikuCgpJZGVh
-bGx5LCB0aGUgdGVzdCBzdGF0ZSBsaXN0cyBzaG91bGQgYmUgY2hhbmdlZCBpbiB0aGUgc2FtZSBj
-b21taXRzIHdoaWNoIGFmZmVjdCB0aGUgdGVzdCByZXN1bHRzLiBJdCdsbCBwcm9iYWJseSB0YWtl
-IGEgd2hpbGUgeWV0IHRvIGdldCB0aGVyZSBmb3IgdGhlIGtlcm5lbC4KCj4gSXQgbWlnaHQgb3Ig
-bWlnaHQgbm90IGJlIGFuIGlzc3VlIGZvciBMaW51cycgcmVsZWFzZSwgYnV0IEkgY2FuCj4gZGVm
-aW5pdGVseSBzZWUgdGhlIHRyb3VibGUgYWxyZWFkeSBmb3Igc3RhYmxlIHJlbGVhc2VzIHdoZXJl
-IGZpeGVzIHdpbGwKPiBiZSBiYWNrcG9ydGVkLCBidXQgdGhlIHRlc3Qgc3RhdGUgbGlzdCBjZXJ0
-YWlubHkgd29uJ3QgYmUgdXBkYXRlZC4KCklmIHRoZSBzdGFibGUgYnJhbmNoIG1haW50YWluZXJz
-IHdhbnQgdG8gdGFrZSBhZHZhbnRhZ2Ugb2YgQ0kgZm9yIHRoZSBzdGFibGUgYnJhbmNoZXMsIHRo
-ZXkgbWF5IG5lZWQgdG8gaHVudCBmb3IgY29ycmVzcG9uZGluZyBzdGF0ZSBsaXN0IGNvbW1pdHMg
-c29tZXRpbWVzLiBUaGV5J2xsIG5lZWQgdG8gdGFrZSB0aGF0IGludG8gYWNjb3VudCBmb3IgdGhl
-aXIgZGVjaXNpb24uCgoKPj4gQnkga2VlcGluZyB0aG9zZSBzZXRzIG9mIGV4cGVjdGF0aW9ucywg
-d2UndmUgYmVlbiBhYmxlIHRvIGtlZXAgTWVzYSBwcmV0dHkKPj4gY2xlYXIgb2YgcmVncmVzc2lv
-bnMsIHdoaWxzdCBoYXZpbmcgYSB2ZXJ5IGNsZWFyIHNldCBvZiB0aGluZ3MgdGhhdCBzaG91bGQK
-Pj4gYmUgZml4ZWQgdG8gcG9pbnQgdG8uIEl0IHdvdWxkIGJlIGdyZWF0IGlmIHRob3NlIHNldCBv
-ZiB0aGluZ3Mgd2VyZSB6ZXJvLAo+PiBidXQgaXQganVzdCBpc24ndC4gSGF2aW5nIHRoYXQgaXMg
-ZmFyIGJldHRlciB0aGFuIHRoZSB0d28gYWx0ZXJuYXRpdmVzOgo+PiBlaXRoZXIgbm90IHRlc3Rp
-bmcgYXQgYWxsIChvYnZpb3VzbHkgYmFkKSwgb3IgaGF2aW5nIHRoZSB0ZXN0IGFsd2F5cyBiZSBy
-ZWQKPj4gc28gaXQncyBhbHdheXMgaWdub3JlZCAobWlnaHQgYXMgd2VsbCBqdXN0IG5vdCB0ZXN0
-KS4KPiAKPiBJc24ndCB0aGF0IHdoYXQgaGFwcGVucyB3aXRoIGZsYWt5IHRlc3RzIGFueXdheT8K
-CkZvciBhIHNtYWxsIG1pbm9yaXR5IG9mIHRlc3RzLiBEYW5pZWwgd2FzIHJlZmVycmluZyB0byB3
-aG9sZSB0ZXN0IHN1aXRlcy4KCj4gRXZlbiBtb3JlIHNvIHNpbmNlIHdlIGhhdmUgMCBjb250ZXh0
-IHdoZW4gdXBkYXRpbmcgdGhhdCBsaXN0LgoKVGhlIGNvbW1pdCBsb2cgY2FuIHByb3ZpZGUgd2hh
-dGV2ZXIgY29udGV4dCBpcyBuZWVkZWQuCgoKPiBJJ3ZlIGFza2VkIGEgY291cGxlIG9mIHRpbWVz
-LCBJJ2xsIGFzayBhZ2Fpbi4gSW4gdGhhdCBvdGhlciBzZXJpZXMsIG9uCj4gdGhlIE1UODE3Mywg
-a21zX2hkbWlfaW5qZWN0QGluamVjdC00ayBpcyBzZXR1cCBhcyBmbGFreSAod2hpY2ggaXMgYSBL
-TVMKPiB0ZXN0IGJ0dykuCj4gCj4gSSdtIGEgbWFpbnRhaW5lciBmb3IgdGhhdCBwYXJ0IG9mIHRo
-ZSBrZXJuZWwsIEknZCBsaWtlIHRvIGxvb2sgaW50byBpdCwKPiBiZWNhdXNlIGl0J3Mgc2VyaW91
-c2x5IHNvbWV0aGluZyB0aGF0IHNob3VsZG4ndCBmYWlsLCBldmVyLCB0aGUgaGFyZHdhcmUKPiBp
-c24ndCBpbnZvbHZlZC4KPiAKPiBIb3cgY2FuIEkgZmlndXJlIG91dCBub3cgKG9yIHdvcnNlLCBs
-ZXQncyBzYXkgaW4gYSB5ZWFyKSBob3cgdG8KPiByZXByb2R1Y2UgaXQ/IFdoYXQga2VybmVsIHZl
-cnNpb24gd2FzIGFmZmVjdGVkPyBXaXRoIHdoYXQgYm9hcmQ/IEFmdGVyCj4gaG93IG1hbnkgb2Nj
-dXJlbmNlcz8KPiAKPiBCYXNpY2FsbHksIGhvdyBjYW4gSSBzZWUgdGhhdCB0aGUgYnVnIGlzIGlu
-ZGVlZCB0aGVyZSAob3IgZ290IGZpeGVkCj4gc2luY2UpLCBhbmQgaG93IHRvIHN0YXJ0IGZpeGlu
-ZyBpdD8KCk1hbnkgb2YgdGhvc2UgdGhpbmdzIHNob3VsZCBiZSBkb2N1bWVudGVkIGluIHRoZSBj
-b21taXQgbG9nIG9mIHRoZSBzdGF0ZSBsaXN0IGNoYW5nZS4KCkhvdyB0aGUgQ0kgd29ya3MgaW4g
-Z2VuZXJhbCBzaG91bGQgYmUgZG9jdW1lbnRlZCBpbiBzb21lIGFwcHJvcHJpYXRlIHBsYWNlIGlu
-IHRyZWUuCgoKLS0gCkVhcnRobGluZyBNaWNoZWwgRMOkbnplciAgICAgICAgICAgIHwgICAgICAg
-ICAgICAgICAgICBodHRwczovL3JlZGhhdC5jb20KTGlicmUgc29mdHdhcmUgZW50aHVzaWFzdCAg
-ICAgICAgICB8ICAgICAgICAgTWVzYSBhbmQgWHdheWxhbmQgZGV2ZWxvcGVyCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============8178809933266324228==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5ilbap4gkrsqltiz"
+Content-Disposition: inline
+
+
+--5ilbap4gkrsqltiz
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Sep 11, 2023 at 02:13:43PM +0200, Michel D=E4nzer wrote:
+> On 9/11/23 11:34, Maxime Ripard wrote:
+> > On Thu, Sep 07, 2023 at 01:40:02PM +0200, Daniel Stone wrote:
+> >> Yeah, this is what our experience with Mesa (in particular) has taught=
+ us.
+> >>
+> >> Having 100% of the tests pass 100% of the time on 100% of the platform=
+s is a
+> >> great goal that everyone should aim for. But it will also never happen.
+> >>
+> >> Firstly, we're just not there yet today. Every single GPU-side DRM dri=
+ver
+> >> has userspace-triggerable faults which cause occasional errors in GL/V=
+ulkan
+> >> tests. Every single one. We deal with these in Mesa by retrying; if we
+> >> didn't retry, across the breadth of hardware we test, I'd expect 99% of
+> >> should-succeed merges to fail because of these intermittent bugs in th=
+e DRM
+> >> drivers.
+> >=20
+> > So the plan is only to ever test rendering devices? It should have been
+> > made clearer then.
+> >=20
+> >> We don't have the same figure for KMS - because we don't test it - but
+> >> I'd be willing to bet no driver is 100% if you run tests often enough.
+> >=20
+> > And I would still consider that a bug that we ought to fix, and
+> > certainly not something we should sweep under the rug. If half the tests
+> > are not running on a driver, then fine, they aren't. I'm not really
+> > against having failing tests, I'm against not flagging unreliable tests
+> > on a given hardware as failing tests.
+>=20
+> A flaky test will by definition give a "pass" result at least some of the=
+ time, which would be considered a failure by the CI if the test is marked =
+as failing.
+>=20
+>=20
+> >> Secondly, we will never be there. If we could pause for five years and=
+ sit
+> >> down making all the current usecases for all the current hardware on t=
+he
+> >> current kernel run perfectly, we'd probably get there. But we can't: t=
+here's
+> >> new hardware, new userspace, and hundreds of new kernel trees.
+> >=20
+> > Not with that attitude :)
+>=20
+> Attitude is not the issue, the complexity of the multiple systems
+> involved is.
+
+FTR, that was a meme/joke.
+
+> > I'm not sure it's actually an argument, really. 10 years ago, we would
+> > never have been at "every GPU on the market has an open-source driver"
+> > here. 5 years ago, we would never have been at this-series-here. That
+> > didn't stop anyone making progress, everyone involved in that thread
+> > included.
+>=20
+> Even assuming perfection is achievable at all (which is very doubtful,
+> given the experience from the last few years of CI in Mesa and other
+> projects), if you demand perfection before even taking the first step,
+> it will never get off the ground.
+
+Perfection and scale from the get-go isn't reasonable, yes. Building a
+small, "perfect" (your words, not mine) system that you can later expand
+is doable. And that's very much a design choice.
+
+> > How are we even supposed to detect those failures in the first
+> > place if tests are flagged as unreliable?
+>=20
+> Based on experience with Mesa, only a relatively small minority of
+> tests should need to be marked as flaky / not run at all. The majority
+> of tests are reliable and can catch regressions even while some tests
+> are not yet.
+
+I understand and acknowledge that it worked with Mesa. That's great for
+Mesa. That still doesn't mean that it's the panacea and is for every
+project.
+
+> > No matter what we do here, what you describe will always happen. Like,
+> > if we do flag those tests as unreliable, what exactly prevents another
+> > issue to come on top undetected, and what will happen when we re-enable
+> > testing?
+>=20
+> Any issues affecting a test will need to be fixed before (re-)enabling
+> the test for CI.
+
+If that underlying issue is never fixed, at which point do we consider
+that it's a failure and should never be re-enabled? Who has that role?
+
+> > On top of that, you kind of hinted at that yourself, but what set of
+> > tests will pass is a property linked to a single commit. Having that
+> > list within the kernel already alters that: you'll need to merge a new
+> > branch, add a bunch of fixes and then change the test list state. You
+> > won't have the same tree you originally tested (and defined the test
+> > state list for).
+>=20
+> Ideally, the test state lists should be changed in the same commits
+> which affect the test results. It'll probably take a while yet to get
+> there for the kernel.
+>=20
+> > It might or might not be an issue for Linus' release, but I can
+> > definitely see the trouble already for stable releases where fixes will
+> > be backported, but the test state list certainly won't be updated.
+>=20
+> If the stable branch maintainers want to take advantage of CI for the
+> stable branches, they may need to hunt for corresponding state list
+> commits sometimes. They'll need to take that into account for their
+> decision.
+
+So we just expect the stable maintainers to track each and every patches
+involved in a test run, make sure that they are in a stable tree, and
+then update the test list? Without having consulted them at all?
+
+> >> By keeping those sets of expectations, we've been able to keep Mesa pr=
+etty
+> >> clear of regressions, whilst having a very clear set of things that sh=
+ould
+> >> be fixed to point to. It would be great if those set of things were ze=
+ro,
+> >> but it just isn't. Having that is far better than the two alternatives:
+> >> either not testing at all (obviously bad), or having the test always b=
+e red
+> >> so it's always ignored (might as well just not test).
+> >=20
+> > Isn't that what happens with flaky tests anyway?
+>=20
+> For a small minority of tests. Daniel was referring to whole test suites.
+>=20
+> > Even more so since we have 0 context when updating that list.
+>=20
+> The commit log can provide whatever context is needed.
+
+Sure, I've yet to see that though.
+
+There's in 6.6-rc1 around 240 reported flaky tests. None of them have
+any context. That new series hads a few dozens too, without any context
+either. And there's no mention about that being a plan, or a patch
+adding a new policy for all tests going forward.
+
+So I'm still fairly doubtful it will ever happen.
+
+> > I've asked a couple of times, I'll ask again. In that other series, on
+> > the MT8173, kms_hdmi_inject@inject-4k is setup as flaky (which is a KMS
+> > test btw).
+> >=20
+> > I'm a maintainer for that part of the kernel, I'd like to look into it,
+> > because it's seriously something that shouldn't fail, ever, the hardware
+> > isn't involved.
+> >=20
+> > How can I figure out now (or worse, let's say in a year) how to
+> > reproduce it? What kernel version was affected? With what board? After
+> > how many occurences?
+> >=20
+> > Basically, how can I see that the bug is indeed there (or got fixed
+> > since), and how to start fixing it?
+>=20
+> Many of those things should be documented in the commit log of the
+> state list change.
+>=20
+> How the CI works in general should be documented in some appropriate
+> place in tree.
+
+I think I'll stop the discussion there. It was merged anyway so I'm not
+quite sure why I was asked to give my feedback on this. Any concern I
+raised were met with a giant "it worked on Mesa" handwave or "someone
+will probably work on it at some point".
+
+And fine, guess I'm wrong.
+
+Thanks
+Maxime
+
+--5ilbap4gkrsqltiz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZP8NTgAKCRDj7w1vZxhR
+xUbwAP9xYajr1SxGqefYgkw1nJmhEpNrjvSqTUadaIowcFfU3QEAgaTNSIYR6g6D
+U5DBLLVerPzwDKnQS9sCtYt9xh2WWQ8=
+=4ACD
+-----END PGP SIGNATURE-----
+
+--5ilbap4gkrsqltiz--
+
+
+--===============8178809933266324228==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8178809933266324228==--
+
