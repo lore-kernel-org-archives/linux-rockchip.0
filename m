@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674ECCA0ECA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Sep 2023 08:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0086CA0ECF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Sep 2023 11:38:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SRkg9Xb8AgoX1R9/e7CyfbNyCuVZOZ5EivHavmjBQ5M=; b=qTKTekke7OzIMC
-	Ahwnfxat7y7SmbUzt7cmKPrgSoI1O7K5YUaa2lxPOtL/zPBQz6nT8ONmaMz+obTbjYQvUudfJMSfb
-	aEMmit2g2zzC9WG7wUmMLtpFGkhMin53yD532r89MP7i7UX1LE6biXGtzDDqLGRU2P96TSCijwskh
-	C+5C8KrFpz6MARLyruL59wsXZ2qIPSCKvix2KVi+lCOWOwk8ndZ4ZSovEcPWlsF2d3FTwaZ/mF0Su
-	VJrUHmt81cm+K9nes1rZbOCUT3NQ4zNCOpYHCRflXkjx2izSs/wxak6j9h/zdDqT/Mx8RT8pm/NJ4
-	8NH27WIYHOofHY1wHe4g==;
+	List-Owner; bh=6UrDb5noRvlCgtVNLQ8y928LTgFGLHnlPO/RMwrZmrI=; b=MVhf7/fWOm2X3N
+	gtZ7G4JWso1+2B9uIHY7/oFkBFo2vx7OopvnpNWGYi65GWWIH1qSijvlPPMMzAS2sc+h5RK/gJb/c
+	gWSr0H0B6e2IvWp7KC3LHo9ZV/ioPlOZmNGgh9pUlaXBQWXleoBTAZqeuRdZ/+swIVg5x4ZBqqtlu
+	KJ6VFcqK4uoXwmZMXbbn0aaysTbUF9OHIL+VUP3UoyUndgFhAWMbuR5bMxrVziGh4fzRVp0rX38N8
+	kZvVh2cyZT10bl8xJjwvLBjSf/EBDnwWr9xW4Jyn01Lg/IjqcaCycNp6TN4QLkswXeh3NN+uVSSLn
+	Bt7FdsSq4Tjri1sqx2LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyxU-002btL-2E;
-	Tue, 12 Sep 2023 08:41:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qg1ie-003ECB-1U;
+	Tue, 12 Sep 2023 11:38:12 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyxQ-002bqH-2d;
-	Tue, 12 Sep 2023 08:41:18 +0000
-Received: from [IPV6:2a01:e0a:120:3210:97bb:c25c:2a33:8c3f] (unknown [IPv6:2a01:e0a:120:3210:97bb:c25c:2a33:8c3f])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qg1iY-003EAp-33;
+	Tue, 12 Sep 2023 11:38:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F33E7660731E;
-	Tue, 12 Sep 2023 09:41:12 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694508073;
-	bh=w/TdXTx3LDuhrwUkGlnc8ARDv3ZcTpp3jTCQlJdW2v8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AC9A0+iipuJDLFRye3agEFkEcsg6C2UVU2DfCR2L1ra1iXcm32H/m39HLqPjy/xft
-	 fll+pDqmkVfqffuDwA5YdxATA9PHvnw1fI884Lifj+XZk1AYGDXHp/xa8bIgrNSpxZ
-	 g1c+YrqE0GHxg4s7hpAADPl5/p/DgTxQ6SlY+axS9becasvU8ZiozOUgn2eH4JLSQg
-	 +Z19rAlw2Dk/4fPSSv+TLEacVygXl1Z11ADpxYIlANtZV2JZcOgy10SMWPsplVyt8S
-	 1GUm6ob77QADfyTrLgXphDbYV9UyGCkH+oIV6KZQcFAzgQwBgIXoXgpkm+l5hGll8q
-	 EIndAywMtvAhA==
-Message-ID: <40329795-a57d-d0f3-adb4-0720dd20f6e2@collabora.com>
-Date: Tue, 12 Sep 2023 10:41:10 +0200
+	by ams.source.kernel.org (Postfix) with ESMTPS id 85CC7B81CE1;
+	Tue, 12 Sep 2023 11:38:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 574B7C433C7;
+	Tue, 12 Sep 2023 11:37:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694518684;
+	bh=eC1SKY1lRRQfbXqU3JXJ7zM40IsYGNqnW2q2A+2NZbo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Qp5d0DmQi1Kak77khGdhzJq0maxBWwA/APer/0UA/i+af64CXkQNjok7OvrRZ9pcS
+	 kLDVlQ9CQ9CEOAL0v0gqLz4173DCXaRgmA9icAo9JLUZO/I/OM2PgeyMCFJvDf1eZD
+	 k5S25O93pmDhRwjJ24pvhiTzRpYNqDdNPu73DeQUDJ14o//hEscNy2REYwIqxzndtH
+	 BJZMmaqspVvTJgo/RRlX2FfGUht2Q2L6/n7MsHLh+eZXKRqLQRKyKyW5a357qExokc
+	 eSy1WIRjW0fKa1p0D4h0fnCKDLEZ954EF+7CRGG32wEiHOepDGjSSO7v+8PyiCE0fX
+	 Z5pM2Z4weq6Fg==
+From: Mark Brown <broonie@kernel.org>
+To: Li Zetao <lizetao1@huawei.com>
+Cc: andrew@aj.id.au, angelogioacchino.delregno@collabora.com, 
+ avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, 
+ benjaminfair@google.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
+ conor.dooley@microchip.com, daire.mcnamara@microchip.com, 
+ fancer.lancer@gmail.com, florian.fainelli@broadcom.com, heiko@sntech.de, 
+ jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
+ linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+ linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
+ linux-spi@vger.kernel.org, martin.blumenstingl@googlemail.com, 
+ matthias.bgg@gmail.com, neil.armstrong@linaro.org, olteanv@gmail.com, 
+ openbmc@lists.ozlabs.org, rjui@broadcom.com, sbranden@broadcom.com, 
+ tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
+ yuenn@google.com
+In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230823133938.1359106-1-lizetao1@huawei.com>
+Subject: Re: [PATCH -next v2 00/25] spi: Use devm_clk_get_*() helper
+ function to simplify the drivers.
+Message-Id: <169451867563.2398433.2879364442627175413.b4-ty@kernel.org>
+Date: Tue, 12 Sep 2023 12:37:55 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v6 14/18] media: verisilicon: vp9: Use destination buffer
- height to compute chroma offset
-To: =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@gmail.com>,
- mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
- ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
- <4856958.31r3eYUQgx@jernej-laptop>
- <7da0a2ab-032a-9de9-e136-58f973238c5b@collabora.com>
- <3248154.aeNJFYEL58@jernej-laptop>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <3248154.aeNJFYEL58@jernej-laptop>
+X-Mailer: b4 0.13-dev-099c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_014116_982249_96254460 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20230912_043807_269508_5953A236 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,63 +84,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDExLzA5LzIwMjMgw6AgMTg6MzYsIEplcm5laiDFoGtyYWJlYyBhIMOpY3JpdMKgOgo+IERu
-ZSBwb25lZGVsamVrLCAxMS4gc2VwdGVtYmVyIDIwMjMgb2IgMTA6NTU6MDIgQ0VTVCBqZSBCZW5q
-YW1pbiBHYWlnbmFyZAo+IG5hcGlzYWwoYSk6Cj4+IExlIDEwLzA5LzIwMjMgw6AgMTU6MjEsIEpl
-cm5laiDFoGtyYWJlYyBhIMOpY3JpdCA6Cj4+PiBIaSBCZW5qYW1pbiEKPj4+Cj4+PiBEbmUgcGV0
-ZWssIDAxLiBzZXB0ZW1iZXIgMjAyMyBvYiAxNDo0NDoxMCBDRVNUIGplIEJlbmphbWluIEdhaWdu
-YXJkCj4+Pgo+Pj4gbmFwaXNhbChhKToKPj4+PiBTb3VyY2UgYW5kIGRlc3RpbmF0aW9uIGJ1ZmZl
-ciBoZWlnaHQgbWF5IG5vdCBiZSB0aGUgc2FtZSBiZWNhdXNlCj4+Pj4gYWxpZ25tZW50IGNvbnN0
-cmFpbnQgYXJlIGRpZmZlcmVudC4KPj4+PiBVc2UgZGVzdGluYXRpb24gaGVpZ2h0IHRvIGNvbXB1
-dGUgY2hyb21hIG9mZnNldCBiZWNhdXNlIHdlIHRhcmdldAo+Pj4+IHRoaXMgYnVmZmVyIGFzIGhh
-cmR3YXJlIG91dHB1dC4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJk
-IDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+Pj4+IEZpeGVzOiBlMmRhNDY1NDU1
-Y2UgKCJtZWRpYTogaGFudHJvOiBTdXBwb3J0IFZQOSBvbiB0aGUgRzIgY29yZSIpCj4+Pj4gLS0t
-Cj4+Pj4KPj4+PiAgICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19n
-Ml92cDlfZGVjLmMgfCA0ICstLS0KPj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
-KyksIDMgZGVsZXRpb25zKC0pCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZzJfdnA5X2RlYy5jCj4+Pj4gYi9kcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMgaW5kZXgKPj4+PiA2
-ZGIxYzMyZmNlNGQuLjFmM2Y1ZTdjZTk3OCAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPj4+PiArKysgYi9kcml2
-ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPj4+PiBA
-QCAtOTMsOSArOTMsNyBAQCBzdGF0aWMgaW50IHN0YXJ0X3ByZXBhcmVfcnVuKHN0cnVjdCBoYW50
-cm9fY3R4ICpjdHgsCj4+Pj4gY29uc3Qgc3RydWN0IHY0bDJfY3RybF92cDlfIHN0YXRpYyBzaXpl
-X3QgY2hyb21hX29mZnNldChjb25zdCBzdHJ1Y3QKPj4+PiBoYW50cm9fY3R4ICpjdHgsCj4+Pj4K
-Pj4+PiAgICAJCQkgICAgY29uc3Qgc3RydWN0IHY0bDJfY3RybF92cDlfZnJhbWUKPj4+ICpkZWNf
-cGFyYW1zKQo+Pj4KPj4+PiAgICB7Cj4+Pj4KPj4+PiAtCWludCBieXRlc19wZXJfcGl4ZWwgPSBk
-ZWNfcGFyYW1zLT5iaXRfZGVwdGggPT0gOCA/IDEgOiAyOwo+Pj4+IC0KPj4+PiAtCXJldHVybiBj
-dHgtPnNyY19mbXQud2lkdGggKiBjdHgtPnNyY19mbXQuaGVpZ2h0ICogYnl0ZXNfcGVyX3BpeGVs
-Owo+Pj4+ICsJcmV0dXJuIGN0eC0+ZHN0X2ZtdC53aWR0aCAqIGN0eC0+ZHN0X2ZtdC5oZWlnaHQg
-KiBjdHgtPmJpdF9kZXB0aCAvCj4+PiA4Owo+Pj4KPj4+IENvbW1pdCBtZXNzYWdlIGRvZXNuJ3Qg
-bWVudGlvbiBiaXRfZGVwdGggY2hhbmdlIGF0IGFsbC4gV2hpbGUgSSB0aGluawo+Pj4gdGhlcmUg
-aXMgbm8gZGlmZmVyZW5jZSBiZXR3ZWVuIGRlY19wYXJhbXMtPmJpdF9kZXB0aCBhbmQgY3R4LT5i
-aXRfZGVwdGgsCj4+PiB5b3Ugc2hvdWxkbid0IGp1c3QgdXNlIG9yZGluYXJ5IGRpdmlzaW9uLiBJ
-ZiBiaXRfZGVwdGggaXMgMTAsIGl0IHdpbGwgYmUKPj4+IHJvdW5kZWQgZG93bi4gQW5kIGlmIHlv
-dSBkZWNpZGUgdG8gdXNlIGJpdF9kZXB0aCBmcm9tIGNvbnRleHQsIHBsZWFzZQo+Pj4gcmVtb3Zl
-IGRlY19wYXJhbXMgYXJndW1lbnQuCj4+IEkgd2lsbCBjaGFuZ2UgdGhpcyBwYXRjaCBhbmQgY3Jl
-YXRlIGEgaGVscGVycyBmdW5jdGlvbiBmb3IgY2hyb21hIGFuZCBtb3Rpb24KPj4gdmVjdG9ycyBv
-ZmZzZXRzIHRoYXQgVlA5IGFuZCBIRVZDIGNvZGUgd2lsbCB1c2Ugc2luY2UgdGhleSBhcmUgaWRl
-bnRpY2FsLgo+PiBJIGRvbid0IHNlZSBpc3N1ZSB3aXRoIHRoZSBkaXZpc2lvbi4gSWYgeW91IGhh
-dmUgaW4gbWluZCBhIHNvbHV0aW9uIHBsZWFzZQo+PiB3cml0ZSBpdCBzbyBJIGNvdWxkIHRlc3Qg
-aXQuCj4gU29sdXRpb24gaXMgc2FtZSBhcyB0aGUgY29kZSB0aGF0IHlvdSByZW1vdmVkOgo+IGlu
-dCBieXRlc19wZXJfcGl4ZWwgPSBkZWNfcGFyYW1zLT5iaXRfZGVwdGggPT0gOCA/IDEgOiAyOwo+
-Cj4gT3IgYWx0ZXJuYXRpdmVseToKPiBpbnQgYnl0ZXNfcGVyX3BpeGVsID0gRElWX1JPVU5EX1VQ
-KGRlY19wYXJhbXMtPmJpdF9kZXB0aCwgOCk7Cj4KPiBDb25zaWRlciBiaXRfZGVwdGggYmVpbmcg
-MTAuIFdpdGggb2xkIGNvZGUgeW91IGdldCAyLCB3aXRoIHlvdXJzIHlvdSBnZXQgMS4KClRoZSBv
-bGQgY29kZSBpcyB3cm9uZyA7LSkKSWYgdGhlIGZvcm1hdCBkZXB0aCBpcyAxMCBiaXRzIHBlciBw
-aXhlbCB0aGVuIGNocm9tYSBvZmZzZXQgKGluIGJ5dGVzKSBmb3JtdWxhIGlzCndpZHRoICogaGVp
-Z2h0ICogMTAgLyA4IG5vdCB3aWR0aCAqIGhlaWdodCAqIDE2IC8gOC4KCkkgaGF2ZSBhbHJlYWR5
-IGNvbmZpcm0gdGhhdCB3aXRoIEhFVkMgb24gdGhlIHNhbWUgaGFyZHdhcmUuCgpSZWdhcmRzLApC
-ZW5qYW1pbgoKPgo+IEJlc3QgcmVnYXJkcywKPiBKZXJuZWoKPgo+PiBSZWdhcmRzLAo+PiBCZW5q
-YW1pbgo+Pgo+Pj4gQmVzdCByZWdhcmRzLAo+Pj4gSmVybmVqCj4+Pgo+Pj4+ICAgIH0KPj4+PiAg
-ICAKPj4+PiAgICBzdGF0aWMgc2l6ZV90IG12X29mZnNldChjb25zdCBzdHJ1Y3QgaGFudHJvX2N0
-eCAqY3R4LAo+Cj4KPgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On Wed, 23 Aug 2023 21:39:13 +0800, Li Zetao wrote:
+> Commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> and enabled clocks") provides a new helper function for prepared and
+> enabled clocks when a driver keeps a clock prepared (or enabled) during
+> the whole lifetime of the driver. So where drivers get clocks and enable
+> them immediately, it can be combined into a single function
+> devm_clk_get_*(). Moreover, the unprepare and disable function
+> has been registered to devm_clk_state, and before devm_clk_state is
+> released, the clocks will be unprepareed and disable, so it is unnecessary
+> to unprepare and disable clocks explicitly when remove drivers or in the
+> error handling path.
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[01/25] spi: ar934x: Use helper function devm_clk_get_enabled()
+        commit: 1d3ea34b7b69b2cbdcc82f1d399705c06ea5f748
+[02/25] spi: armada-3700: Use helper function devm_clk_get_prepared()
+        commit: f918b3a67ccbcf326a80100c17e107eece5df868
+[03/25] spi: aspeed: Use helper function devm_clk_get_enabled()
+        commit: 9ee8fbc05ef0b69e8cb4295b2663e044dd3868a3
+[04/25] spi: ath79: Use helper function devm_clk_get_enabled()
+        commit: b3422ea3913e27fd43a7a1883f358cb20599289e
+[05/25] spi: spi-axi-spi-engine: Use helper function devm_clk_get_enabled()
+        commit: a08199b309f833fd4221ab5ee2391c791fe26385
+[06/25] spi: bcm2835: Use helper function devm_clk_get_enabled()
+        commit: ba85f5fad849821bfce0ee154a72df7e2376c5eb
+[07/25] spi: bcm2835aux: Use helper function devm_clk_get_enabled()
+        commit: 0135a38436111366bc2fe6d3cd82a9c2cc92ce7f
+[08/25] spi: spi-cadence: Use helper function devm_clk_get_enabled()
+        commit: f64b1600f92e786e502cc30d31d9e3c5f2f6d682
+[09/25] spi: spi-cavium-thunderx: Use helper function devm_clk_get_enabled()
+        commit: c32cb76e8d5e487698f8eceb5b53df95a33fe388
+[10/25] spi: davinci: Use helper function devm_clk_get_enabled()
+        commit: 9dc2aa96a3533215fbed9cf1297f7aa70dae840b
+[11/25] spi: dw-bt1: Use helper function devm_clk_get_enabled()
+        commit: 10c3937890be2c53bfa4aaf3b22a46749857f86a
+[12/25] spi: dw-mmio: Use helper function devm_clk_get_*()
+        commit: 349112b6769ec0018404f87dd4632f8ea393fcaf
+[13/25] spi: spi-fsl-dspi: Use helper function devm_clk_get_enabled()
+        commit: 4812bc31af2b523d4da8386a524a2cd2f6f5919b
+[14/25] spi: lantiq-ssc: Use helper function devm_clk_get_enabled()
+        commit: e2b9622b2a3d058e7d06827b99487b27f777b9c2
+[15/25] spi: meson-spicc: Use helper function devm_clk_get_enabled()
+        commit: 7ef51102d32ddc4776b2cdd583fe84afb84c823f
+[16/25] spi: spi-meson-spifc: Use helper function devm_clk_get_enabled()
+        commit: c45fd1217b38048332c4f5bff8bfb7c1fe6ab6dd
+[17/25] spi: microchip-core-qspi: Use helper function devm_clk_get_enabled()
+        commit: e922f3fff21445117e9196bd8e940ad8e15ca8c7
+[18/25] spi: microchip-core: Use helper function devm_clk_get_enabled()
+        commit: 605204fcb9c49818a8a7e533147061a305ac39e3
+[19/25] spi: mtk-snfi: Use helper function devm_clk_get_enabled()
+        commit: a06b6935f10267a300be724dca11226d6d519156
+[20/25] spi: npcm-fiu: Use helper function devm_clk_get_enabled()
+        commit: 82c4fadb0b957c817b5a3fcc05dc774bf32a4d07
+[21/25] spi: orion: Use helper function devm_clk_get_enabled()
+        commit: bbd0a66b85fe860e8b6acfb1739d15b517a4f6fb
+[22/25] spi: pic32-sqi: Use helper function devm_clk_get_enabled()
+        commit: 909d4cd6bc316e6cd7958832f3efe9e2fd51dcbf
+[23/25] spi: pic32: Use helper function devm_clk_get_enabled()
+        commit: 6b6cc88c4e5b42d2ba6af43152af6d9d96872ee8
+[24/25] spi: spl022: Use helper function devm_clk_get_enabled()
+        commit: 9351339c1a99cca47e6fbeef88b1ef6438d36127
+[25/25] spi: rockchip: Use helper function devm_clk_get_enabled()
+        commit: d6c612a34740118855cd1c8acc4339adea686266
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
