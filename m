@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0086CA0ECF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Sep 2023 11:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BD2CA0EC3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Sep 2023 13:17:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6UrDb5noRvlCgtVNLQ8y928LTgFGLHnlPO/RMwrZmrI=; b=MVhf7/fWOm2X3N
-	gtZ7G4JWso1+2B9uIHY7/oFkBFo2vx7OopvnpNWGYi65GWWIH1qSijvlPPMMzAS2sc+h5RK/gJb/c
-	gWSr0H0B6e2IvWp7KC3LHo9ZV/ioPlOZmNGgh9pUlaXBQWXleoBTAZqeuRdZ/+swIVg5x4ZBqqtlu
-	KJ6VFcqK4uoXwmZMXbbn0aaysTbUF9OHIL+VUP3UoyUndgFhAWMbuR5bMxrVziGh4fzRVp0rX38N8
-	kZvVh2cyZT10bl8xJjwvLBjSf/EBDnwWr9xW4Jyn01Lg/IjqcaCycNp6TN4QLkswXeh3NN+uVSSLn
-	Bt7FdsSq4Tjri1sqx2LQ==;
+	List-Owner; bh=GkQA3ANC7EK+GeXktLe8sX1GT8LSHKhw+XN6zsOD1jI=; b=OlffjSE4oeyuPi
+	/qnAsZXnB4r0LEbthr10GwQxtUV4HS7+Lz7dnH6jAoQQTpKbZhczb1XtoWS9pAb5mhd5LKOKUVVYy
+	CsZILYlR5eDJvp3N4ssKogOdHHqdhpHvidJT5RFykaI92qIqeW4LX79Ffg3+ZQFPM2Zm87kBQNbx2
+	z+enZsxUWdQNOFROI+k+W4MnYma9oQyg9QfTIZK3VbSTBu11wCdVzfH4s7D5A1/LJ9dbjpLJBklwd
+	HIaym0EgPCH2LTiIkLvIdszH7tNyqKAGA697q/+qOCCyFEhlDCcO5z3SLTN12NzgD77+OZjc+Hxmv
+	J1tt3nUa4Roh0X0xhlzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg1ie-003ECB-1U;
-	Tue, 12 Sep 2023 11:38:12 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qg3GO-003PFN-1X;
+	Tue, 12 Sep 2023 13:17:08 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg1iY-003EAp-33;
-	Tue, 12 Sep 2023 11:38:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 85CC7B81CE1;
-	Tue, 12 Sep 2023 11:38:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 574B7C433C7;
-	Tue, 12 Sep 2023 11:37:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694518684;
-	bh=eC1SKY1lRRQfbXqU3JXJ7zM40IsYGNqnW2q2A+2NZbo=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Qp5d0DmQi1Kak77khGdhzJq0maxBWwA/APer/0UA/i+af64CXkQNjok7OvrRZ9pcS
-	 kLDVlQ9CQ9CEOAL0v0gqLz4173DCXaRgmA9icAo9JLUZO/I/OM2PgeyMCFJvDf1eZD
-	 k5S25O93pmDhRwjJ24pvhiTzRpYNqDdNPu73DeQUDJ14o//hEscNy2REYwIqxzndtH
-	 BJZMmaqspVvTJgo/RRlX2FfGUht2Q2L6/n7MsHLh+eZXKRqLQRKyKyW5a357qExokc
-	 eSy1WIRjW0fKa1p0D4h0fnCKDLEZ954EF+7CRGG32wEiHOepDGjSSO7v+8PyiCE0fX
-	 Z5pM2Z4weq6Fg==
-From: Mark Brown <broonie@kernel.org>
-To: Li Zetao <lizetao1@huawei.com>
-Cc: andrew@aj.id.au, angelogioacchino.delregno@collabora.com, 
- avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, 
- benjaminfair@google.com, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
- conor.dooley@microchip.com, daire.mcnamara@microchip.com, 
- fancer.lancer@gmail.com, florian.fainelli@broadcom.com, heiko@sntech.de, 
- jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
- linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
- linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org, martin.blumenstingl@googlemail.com, 
- matthias.bgg@gmail.com, neil.armstrong@linaro.org, olteanv@gmail.com, 
- openbmc@lists.ozlabs.org, rjui@broadcom.com, sbranden@broadcom.com, 
- tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
- yuenn@google.com
-In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230823133938.1359106-1-lizetao1@huawei.com>
-Subject: Re: [PATCH -next v2 00/25] spi: Use devm_clk_get_*() helper
- function to simplify the drivers.
-Message-Id: <169451867563.2398433.2879364442627175413.b4-ty@kernel.org>
-Date: Tue, 12 Sep 2023 12:37:55 +0100
+	id 1qg3GL-003PDe-1M
+	for linux-rockchip@lists.infradead.org;
+	Tue, 12 Sep 2023 13:17:07 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-273ca7ab3f5so3840370a91.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 12 Sep 2023 06:17:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1694524622; x=1695129422; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=74/lXDjAicbAQVpv6HCI5jeqajIVNGavg/gPM8Y5/Jo=;
+        b=XqIXJ1chqoAfZvOaIJmA5+iwATL8bhkC/Ls7KR9W+c8Z3po58O1/6vldbZOw4cHuXf
+         JhrsY/XgrnWbnGb1SIBpgTFU66IQ8iVe5mvAYALcgS5ef9Ee+w1U6mcHS/4eOaJkpErW
+         D0l1rc1Y+629ePc8tbkllKYSHzFS3p5KRCZQx/qaLWrLni7YDZVHlV9oS5wJz1T74n8q
+         QTW4GyE+8pfEPvWUW7kIX1h6AOeAqHEmLsMd9JR8qmIxd9htPkI1wXpQE9fHZewxZt9P
+         ne23Pi7n57OF+pAIdK1V/KZd9RQTghjABehcd+3vXJi/yS1udtEINxswDu6x5pc/JsT8
+         Casw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694524622; x=1695129422;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=74/lXDjAicbAQVpv6HCI5jeqajIVNGavg/gPM8Y5/Jo=;
+        b=KmKJt2dNoNlzqRsWOOK8QzcEY4cEu9gMYQPPnbj4ifNGMfo4tLPhXV9iGsBrTdUpUf
+         4OtWB8Zrl4bnANJZrjjrkY8RjPCE75n/OTaPwuLaW7rrdQ70TA3sS7bTLFFaccv8j+DX
+         vQy2Lk2HW9TYima4L/1h8SjTg3CToXRrpG6yWIMn/ow5IPoW0XI8XFq3f4uCfbaTz2L1
+         RQml0j65wlcihtal0eeC4P10NX06oPp6XkowULiOe5PR8jRp/01TRracxindOVoOaIfV
+         xxr2c46wPFM3esSjP80V5vTOv/v/wadjmGQVnm+SG98pl3xwPB2YVelWSoXTZRQ4CBsx
+         qYyw==
+X-Gm-Message-State: AOJu0YytEQbeQRJ7XFvTfbOXaucYE/Px9GIb0uEKv8mlih0sagt7mO+0
+	LDw1o7HZrzp1V/+mkA5tk456loVP0X3mrBEf1n+Q1A==
+X-Google-Smtp-Source: AGHT+IERwDFvK750zia0Sae/chWY8QEXD4kOdOHvlRSTQo34xsLlidVO5fUIkgz4yvPkVtnGdXKIiS6fw+3sN/KQfUM=
+X-Received: by 2002:a17:90a:aa85:b0:268:1e95:4e25 with SMTP id
+ l5-20020a17090aaa8500b002681e954e25mr10043598pjq.17.1694524622460; Tue, 12
+ Sep 2023 06:17:02 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailer: b4 0.13-dev-099c9
+References: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+ <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com> <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
+ <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com> <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
+ <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com> <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
+ <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org> <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
+ <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org> <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
+In-Reply-To: <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Tue, 12 Sep 2023 14:16:41 +0100
+Message-ID: <CAPj87rP1sw49Z0HdPhUa-=kDp166RqiuhC9rL+Ef9hpwPD5+JA@mail.gmail.com>
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+To: Maxime Ripard <mripard@kernel.org>
+Cc: =?UTF-8?Q?Michel_D=C3=A4nzer?= <michel.daenzer@mailbox.org>, 
+	emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com, 
+	dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com, 
+	robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, 
+	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
+	linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>, 
+	martin.blumenstingl@googlemail.com, robclark@freedesktop.org, 
+	Helen Koike <helen.koike@collabora.com>, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
+	linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com, 
+	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org, tzimmermann@suse.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_043807_269508_5953A236 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20230912_061705_559030_C72FBF71 
+X-CRM114-Status: GOOD (  37.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,103 +99,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 23 Aug 2023 21:39:13 +0800, Li Zetao wrote:
-> Commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks") provides a new helper function for prepared and
-> enabled clocks when a driver keeps a clock prepared (or enabled) during
-> the whole lifetime of the driver. So where drivers get clocks and enable
-> them immediately, it can be combined into a single function
-> devm_clk_get_*(). Moreover, the unprepare and disable function
-> has been registered to devm_clk_state, and before devm_clk_state is
-> released, the clocks will be unprepareed and disable, so it is unnecessary
-> to unprepare and disable clocks explicitly when remove drivers or in the
-> error handling path.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
-
-Thanks!
-
-[01/25] spi: ar934x: Use helper function devm_clk_get_enabled()
-        commit: 1d3ea34b7b69b2cbdcc82f1d399705c06ea5f748
-[02/25] spi: armada-3700: Use helper function devm_clk_get_prepared()
-        commit: f918b3a67ccbcf326a80100c17e107eece5df868
-[03/25] spi: aspeed: Use helper function devm_clk_get_enabled()
-        commit: 9ee8fbc05ef0b69e8cb4295b2663e044dd3868a3
-[04/25] spi: ath79: Use helper function devm_clk_get_enabled()
-        commit: b3422ea3913e27fd43a7a1883f358cb20599289e
-[05/25] spi: spi-axi-spi-engine: Use helper function devm_clk_get_enabled()
-        commit: a08199b309f833fd4221ab5ee2391c791fe26385
-[06/25] spi: bcm2835: Use helper function devm_clk_get_enabled()
-        commit: ba85f5fad849821bfce0ee154a72df7e2376c5eb
-[07/25] spi: bcm2835aux: Use helper function devm_clk_get_enabled()
-        commit: 0135a38436111366bc2fe6d3cd82a9c2cc92ce7f
-[08/25] spi: spi-cadence: Use helper function devm_clk_get_enabled()
-        commit: f64b1600f92e786e502cc30d31d9e3c5f2f6d682
-[09/25] spi: spi-cavium-thunderx: Use helper function devm_clk_get_enabled()
-        commit: c32cb76e8d5e487698f8eceb5b53df95a33fe388
-[10/25] spi: davinci: Use helper function devm_clk_get_enabled()
-        commit: 9dc2aa96a3533215fbed9cf1297f7aa70dae840b
-[11/25] spi: dw-bt1: Use helper function devm_clk_get_enabled()
-        commit: 10c3937890be2c53bfa4aaf3b22a46749857f86a
-[12/25] spi: dw-mmio: Use helper function devm_clk_get_*()
-        commit: 349112b6769ec0018404f87dd4632f8ea393fcaf
-[13/25] spi: spi-fsl-dspi: Use helper function devm_clk_get_enabled()
-        commit: 4812bc31af2b523d4da8386a524a2cd2f6f5919b
-[14/25] spi: lantiq-ssc: Use helper function devm_clk_get_enabled()
-        commit: e2b9622b2a3d058e7d06827b99487b27f777b9c2
-[15/25] spi: meson-spicc: Use helper function devm_clk_get_enabled()
-        commit: 7ef51102d32ddc4776b2cdd583fe84afb84c823f
-[16/25] spi: spi-meson-spifc: Use helper function devm_clk_get_enabled()
-        commit: c45fd1217b38048332c4f5bff8bfb7c1fe6ab6dd
-[17/25] spi: microchip-core-qspi: Use helper function devm_clk_get_enabled()
-        commit: e922f3fff21445117e9196bd8e940ad8e15ca8c7
-[18/25] spi: microchip-core: Use helper function devm_clk_get_enabled()
-        commit: 605204fcb9c49818a8a7e533147061a305ac39e3
-[19/25] spi: mtk-snfi: Use helper function devm_clk_get_enabled()
-        commit: a06b6935f10267a300be724dca11226d6d519156
-[20/25] spi: npcm-fiu: Use helper function devm_clk_get_enabled()
-        commit: 82c4fadb0b957c817b5a3fcc05dc774bf32a4d07
-[21/25] spi: orion: Use helper function devm_clk_get_enabled()
-        commit: bbd0a66b85fe860e8b6acfb1739d15b517a4f6fb
-[22/25] spi: pic32-sqi: Use helper function devm_clk_get_enabled()
-        commit: 909d4cd6bc316e6cd7958832f3efe9e2fd51dcbf
-[23/25] spi: pic32: Use helper function devm_clk_get_enabled()
-        commit: 6b6cc88c4e5b42d2ba6af43152af6d9d96872ee8
-[24/25] spi: spl022: Use helper function devm_clk_get_enabled()
-        commit: 9351339c1a99cca47e6fbeef88b1ef6438d36127
-[25/25] spi: rockchip: Use helper function devm_clk_get_enabled()
-        commit: d6c612a34740118855cd1c8acc4339adea686266
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWF4aW1lLApIb3BlZnVsbHkgbGVzcyBtYW5nbGVkIGZvcm1hdHRpbmcgdGhpcyB0aW1lOiB0
+dXJucyBvdXQgVGh1bmRlcmJpcmQgKwpwbGFpbiB0ZXh0IGlzIHV0dGVybHkgdW5yZWFkYWJsZSwg
+c28gdGhhdCdzIG9uZSBsZXNzIE1VQSB0aGF0IGlzCmFjdHVhbGx5IHVzYWJsZSB0byBzZW5kIGVt
+YWlsIHRvIGtlcm5lbCBsaXN0cyB3aXRob3V0IGdldHRpbmcgc2hvdXRlZAphdC4KCk9uIE1vbiwg
+MTEgU2VwdCAyMDIzIGF0IDE1OjQ2LCBNYXhpbWUgUmlwYXJkIDxtcmlwYXJkQGtlcm5lbC5vcmc+
+IHdyb3RlOgo+IE9uIE1vbiwgU2VwIDExLCAyMDIzIGF0IDAzOjMwOjU1UE0gKzAyMDAsIE1pY2hl
+bCBEw6RuemVyIHdyb3RlOgo+ID4gPiBUaGVyZSdzIGluIDYuNi1yYzEgYXJvdW5kIDI0MCByZXBv
+cnRlZCBmbGFreSB0ZXN0cy4gTm9uZSBvZiB0aGVtIGhhdmUKPiA+ID4gYW55IGNvbnRleHQuIFRo
+YXQgbmV3IHNlcmllcyBoYWRzIGEgZmV3IGRvemVucyB0b28sIHdpdGhvdXQgYW55IGNvbnRleHQK
+PiA+ID4gZWl0aGVyLiBBbmQgdGhlcmUncyBubyBtZW50aW9uIGFib3V0IHRoYXQgYmVpbmcgYSBw
+bGFuLCBvciBhIHBhdGNoCj4gPiA+IGFkZGluZyBhIG5ldyBwb2xpY3kgZm9yIGFsbCB0ZXN0cyBn
+b2luZyBmb3J3YXJkLgo+ID4KPiA+IFRoYXQgZG9lcyBzb3VuZCBiYWQsIHdvdWxkIG5lZWQgdG8g
+YmUgcmFpc2VkIGluIHJldmlldy4KPiA+Cj4gPiA+IEFueSBjb25jZXJuIEkgcmFpc2VkIHdlcmUg
+bWV0IHdpdGggYSBnaWFudCAiaXQgd29ya2VkIG9uIE1lc2EiIGhhbmR3YXZlCj4gPgo+ID4gTGVz
+c29ucyBsZWFybmVkIGZyb20geWVhcnMgb2YgZXhwZXJpZW5jZSB3aXRoIGJpZyByZWFsLXdvcmxk
+IENJCj4gPiBzeXN0ZW1zIGxpa2UgdGhpcyBhcmUgaGFyZGx5ICJoYW5kd2F2aW5nIi4KPgo+IFlv
+dXIgKGFuZCBvdGhlcnMpIGV4cGVyaWVuY2UgY2VydGFpbmx5IGlzbid0LiBJdCBpcyB2YWx1YWJs
+ZSwgd2VsY29tZSwKPiBhbmQgdmVyeSBtdWNoIGFwcHJlY2lhdGVkLgo+Cj4gSG93ZXZlciwgbXkg
+cXVlc3Rpb25zIGFuZCBjb25jZXJucyBiZWluZyBpZ25vcmVkIHRpbWUgYW5kIHRpbWUgYWdhaW4K
+PiBhYm91dCB0aGluZ3MgbGlrZSB3aGF0IGlzIHRoZSBwcm9jZXNzIGlzIGdvaW5nIHRvIGJlIGxp
+a2UsIHdoYXQgaXMgZ29pbmcKPiB0byBiZSB0ZXN0ZWQsIHdobyBpcyBnb2luZyB0byBiZSBtYWlu
+dGFpbmluZyB0aGF0IHRlc3QgbGlzdCwgaG93IHRoYXQKPiBpbnRlcmFjdHMgd2l0aCBzdGFibGUs
+IGhvdyB3ZSBjYW4gcG9zc2libHkgYXVkaXQgdGhlIGZsYWt5IHRlc3RzIGxpc3QsCj4gZXRjLiBo
+YXZlIGZlbHQgbGlrZSB0aGV5IHdlcmUgYmVpbmcgaGFuZHdhaXZlZCBhd2F5LgoKU29ycnkgaXQg
+ZW5kZWQgdXAgY29taW5nIGFjcm9zcyBsaWtlIHRoYXQuIEl0IHdhc24ndCB0aGUgaW50ZW50LgoK
+PiBJJ20gbm90IHNheWluZyB0aGF0IGJlY2F1c2UgSSBkaXNhZ3JlZSwgSSBzdGlsbCBkbyBvbiBz
+b21lLCBidXQgdGhhdCdzCj4gZmluZSB0byBzb21lIGV4dGVudC4gSG93ZXZlciwgbW9zdCBvZiB0
+aGVzZSBpc3N1ZXMgYXJlIG5vdCBzbyBtdWNoIGFuCj4gaW5mcmFzdHJ1Y3R1cmUgaXNzdWUsIGJ1
+dCBhIGNvbW11bml0eSBpc3N1ZS4gQW5kIEkgZG9uJ3QgZXZlbiBleHBlY3QgYQo+IHBlcmZlY3Qg
+c29sdXRpb24gcmlnaHQgbm93LCB1bmxpa2Ugd2hhdCB5b3Ugc2VlbSB0byB0aGluay4gQnV0IEkg
+ZG8KPiBleHBlY3Qgc29tZSBraW5kIG9mIHBsYW4gaW5zdGVhZCBvZiBqdXN0IGlnbm9yaW5nIHRo
+YXQgcHJvYmxlbS4KPgo+IExpa2UsIEkgaGFkIHRvIGFzayB0aGUgTVQ4MTczIHF1ZXN0aW9uIDMg
+dGltZXMgaW4gb3JkZXIgdG8gZ2V0IGFuCj4gYW5zd2VyLCBhbmQgSSdtIHN0aWxsIG5vdCBzdXJl
+IHdoYXQgaXMgZ29pbmcgdG8gYmUgZG9uZSB0byBhZGRyZXNzIHRoYXQKPiBwYXJ0aWN1bGFyIGlz
+c3VlLgo+Cj4gU28sIEknbSBzb3JyeSwgYnV0IEkgY2VydGFpbmx5IGZlZWwgbGlrZSBpdCBoZXJl
+LgoKSSBkb24ndCBxdWl0ZSBzZWUgdGhlIHNhbWUgcGljdHVyZSBmcm9tIHlvdXIgc2lkZSB0aG91
+Z2guIEZvciBleGFtcGxlLApteSByZWFkaW5nIG9mIHdoYXQgeW91J3ZlIHNhaWQgaXMgdGhhdCBm
+bGFreSB0ZXN0cyBhcmUgdXR0ZXJseQp1bmFjY2VwdGFibGUsIGFzIGFyZSBwYXJ0aWFsIHJ1bnMs
+IGFuZCB3ZSBzaG91bGRuJ3QgcHJldGVuZCBvdGhlcndpc2UuCldpdGggeW91ciBjb25jcmV0ZSBl
+eGFtcGxlICh3aGljaCBpcyByZWFsbHkgaGVscGZ1bCwgc28gdGhhbmtzKSwgd2hhdApoYXBwZW5z
+IHRvIHRoZSBNVDgxNzMgaGRtaS1pbmplY3QgdGVzdD8gRG8gd2Ugc2tpcCBhbGwgTVQ4MTczIHRl
+c3RpbmcKdW50aWwgaXQncyBwZXJmZWN0LCBvciBkb2VzIE1UODE3MyB0ZXN0aW5nIGFsd2F5cyBm
+YWlsIGJlY2F1c2UgdGhhdAp0ZXN0IGRvZXM/CgpCb3RoIGhhdmUgdGhlaXIgZG93bnNpZGVzLiBO
+b3QgZG9pbmcgYW55IHRlc3RpbmcgaGFzIHRoZSBvYnZpb3VzCmRvd25zaWRlLCBhbmQgbWVhbnMg
+dGhhdCB0aGUgZHJpdmVyIGNhbiBnZXQgd29yc2UgdW50aWwgaXQgZ2V0cwpwZXJmZWN0LiBBbHdh
+eXMgbWFya2luZyB0aGUgdGVzdCBhcyBmYWlsZWQgbWVhbnMgdGhhdCB0aGUgdGVzdCByZXN1bHRz
+CmFyZSB1c2VsZXNzOiBpZiBmYWlsdXJlIGlzIGV4cGVjdGVkLCB0aGVuIHJlZCBpcyBnb29kLiBJ
+IG1lYW4sIHNheQp5b3UncmUgY29udHJpYnV0aW5nIGEgcGF0Y2ggdG8gZml4IHNvbWUgZG9jdW1l
+bnRhdGlvbiBvciBhZGQgYSBoZWxwZXIKdG8gY29tbW9uIGNvZGUgd2hpY2ggb25seSB2M2QgdXNl
+cy4gVGhlIHRlc3QgcmVzdWx0cyBjb21lIGJhY2ssIGFuZAp5b3VyIGJyYW5jaCBpcyBmYWlsaW5n
+IHRlc3RzIG9uIE1UODE3Mywgc3BlY2lmaWNhbGx5IHRoZQpoZG1pLWluamVjdEA0ayB0ZXN0LiBX
+aGF0IHRoZW4/IEVpdGhlciBhcyBhIHNlbmlvciBjb250cmlidXRvciB5b3UKJ2tub3cnIHRoYXQn
+cyB0aGUgY2FzZSwgb3IgYXMgYSBjYXN1YWwgY29udHJpYnV0b3IgeW91IGdldCB0b2xkICdvaAp5
+ZWFoLCBkb24ndCB3b3JyeSBhYm91dCB0aGUgdGVzdCByZXN1bHRzLCB0aGV5IGFsd2F5cyBmYWls
+Jy4gQm90aCBsZWFkCnRvIHRoZSBzYW1lIG91dGNvbWUsIHdoaWNoIGlzIHRoYXQgbm8tb25lIHBh
+eXMgYW55IGF0dGVudGlvbiB0byB0aGUKcmVzdWx0cywgYW5kIHRoZXkgZ2V0IHdvcnNlLgoKV2hh
+dCB3ZSBkbyBhZ3JlZSBvbiBpcyB0aGF0IHllcywgdGhvc2UgdGVzdHMgc2hvdWxkIGFic29sdXRl
+bHkgYmUKZml4ZWQsIGFuZCBub3QganVzdCBzd2VwdCB1bmRlciB0aGUgcnVnLiBQYXJ0IG9mIHRo
+aXMgaXMgaGF2aW5nCm1haW50YWluZXJzIGFjdHVhbGx5IG1lYW5pbmdmdWxseSBvd24gdGhlaXIg
+dGVzdCByZXN1bHRzLiBGb3IgZXhhbXBsZSwKSSdtIGxvb2tpbmcgYXQgdGhlIGV4cGVjdGF0aW9u
+IGxpc3RzIGZvciB0aGUgSW50ZWwgZ2VuIGluIG15IGxhcHRvcCwKYW5kIEknbSBzZWVpbmcgYSBs
+b3Qgb2YgYnJlYWthZ2UgaW4gYmxlbmRpbmcgdGVzdHMsIGFzIHdlbGwgYXMKZHVhbC1kaXNwbGF5
+IGZhaWxzIHdoaWNoIGluY2x1ZGUgdGhlIHJlc29sdXRpb24gb2YgbXkgZXh0ZXJuYWwKZGlzcGxh
+eS4gSSdkIGV4cGVjdCB0aGUgSW50ZWwgZHJpdmVyIG1haW50YWluZXJzIHRvIGxvb2sgYXQgdGhl
+bSwgZ2V0CnRoZW0gZml4ZWQsIGFuZCBncmFkdWFsbHkgcHJ1bmUgdGhvc2UgeGZhaWxzL2ZsYWtl
+cyBkb3duIHRvd2FyZHMgemVyby4KCklmIHRoZSBtYWludGFpbmVycyBkb24ndCBvd24gaXQgdGhv
+dWdoLCB0aGVuIGl0J3Mgbm90IGdvaW5nIHRvIGdldApmaXhlZC4gQW5kIHdlIGFyZSBleGFjdGx5
+IHdoZXJlIHdlIGFyZSB0b2RheTogYnJva2VuIHBsYW5lIGJsZW5kaW5nCmFuZCAxNDQwcCBvbiBL
+QkwsIGJyb2tlbiBFRElEIGluamVjdGlvbiBvbiBNVDgxNzMsIGFuZCBicm9rZW4gYXRvbWljCmNv
+bW1pdHMgb24gc3RvbmV5LiBXaXRob3V0IHN0cm9uZ2VyIGFjdGlvbiBmcm9tIHRoZSBtYWludGFp
+bmVycyAoZS5nLgp0aHJvd2luZyBpOTE1IG91dCBvZiB0aGUgdHJlZSB1bnRpbCBpdCBoYXMgMTAw
+JSBwYXNzIDEwMCUgb2YgdGhlCnRpbWUpLCBhZGRpbmcgdGVzdGluZyBpc24ndCBtYWtpbmcgdGhl
+IHNpdHVhdGlvbiBiZXR0ZXIgb3Igd29yc2UgaW4KYW5kIG9mIGl0c2VsZi4gV2hhdCBpdCBfaXNf
+IGRvaW5nIHRob3VnaCwgaXMgZ2l2aW5nIHJlYWxseSBjbGVhcgpkb2N1bWVudGF0aW9uIG9mIHRo
+ZSBzdGF0dXMgb2YgZWFjaCBkcml2ZXIsIGFuZCBiYWNraW5nIHRoYXQgdXAgYnkKdmVyaWZ5aW5n
+IGl0LgoKT25seSBtYWludGFpbmVycyBjYW4gYWN0dWFsbHkgZml4IHRoZSBkcml2ZXJzIChvciB0
+aGUgdGVzdHMgdGJmKS4gQnV0CmRvaW5nIHRoZSB0ZXN0aW5nIGRvZXMgbGV0IHVzIGJlIHJlYWxs
+eSBjbGVhciB0byBldmVyeW9uZSB3aGF0IHRoZQphY3R1YWwgc3RhdGUgaXMsIGFuZCB0aGF0IHdh
+eSBwZW9wbGUgY2FuIG1ha2UgaW5mb3JtZWQgZGVjaXNpb25zIHRvby4KQW5kIHRoZSBvbmx5IHdh
+eSB3ZSdyZSBnb2luZyB0byBkcml2ZSB0aGUgdGVzdCByYXRlIGRvd24gaXMgYnkgdGhlCnN1YnN5
+c3RlbSBtYWludGFpbmVycyBlbmZvcmNpbmcgaXQuCgpEb2VzIHRoYXQgbWFrZSBzZW5zZSBvbiB3
+aGVyZSBJJ20gKGFuZCBJIHRoaW5rIGEgbG90IG9mIG90aGVycyBhcmUpIGNvbWluZyBmcm9tPwoK
+VG8gYW5zd2VyIHRoZSBvdGhlciBxdWVzdGlvbiBhYm91dCAnd2hlcmUgYXJlIHRoZSBsb2dzPyc6
+IHNvbWUgb2YgdGhlbQpoYXZlIHRoZSBmYWlsdXJlIGRhdGEgaW4gdGhlbSwgb3RoZXJzIGRvbid0
+LiBUaGV5IGFsbCBzaG91bGQgZ29pbmcKZm9yd2FyZCBhdCBsZWFzdCB0aG91Z2guCgpDaGVlcnMs
+CkRhbmllbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
