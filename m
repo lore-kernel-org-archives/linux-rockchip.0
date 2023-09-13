@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D6FEEB59B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Sep 2023 06:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7AFFCA5512
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Sep 2023 09:15:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uLpGvzB1dBLlisiZ3xY+1uQjm/nmDEHSmSlbrjdx34c=; b=CdPa/BDPMGj7hc
-	jBGm6UoF619ZPEx8mlkVlthv2WGRfsGbh0CiOo1pBLUUugFMMGA8SCiSZo50ZEcZU4Hb+e9bdi5fT
-	dJN3HcKaiYtZzLU1YbGc/mDnW21k2228hrv3uwEqUA2+s0ZEEUNvr9TSa3e+HuLI5bEJa6+czrpN9
-	2+lTloaCzKWFGGOLL7HaDPEN6Wp1PdF7T5vlZPpa22o6igCfJkhLlusXD7MC7a98FLNF3UDoxD/oB
-	GjswAdQwXhSxbxI8ew2VmjVkptqlVDV2Mhmu8fy6PkScd2Ov7udST0ChrnxxysRkMmF6j6Mpm5iRs
-	6wvUkqhHW7d3qNZpc+jA==;
+	List-Owner; bh=vPEErUUTpYrtZykY3hm904WNL0gCW/aonU1ZzFwUtuI=; b=yfR1tql4OI89P/
+	rOfezj8cXhXLQB6JiyaAWp0ecU3DGYePVGuCGAHvt9em3b7nUkhcHcokTLP/bV4H/jTF0+dbUyo9k
+	st3S1iGxGQOQC0PhicxNPWhVf1SPAzHbP93/uGCUgfe/71KK/7KfIwzBybtZvthMdrUrnecrSvA7F
+	eavlhXHobS2sRmMzB299b59i1Oa0esqf54cjrIVQyuCJ2Vh32pr7tfVeBLm/8R8nEpc+zqDIp4kWg
+	A4gj+9hGUyGYKir7XbjIQBuYD/Zd6FnGIYSnn7nI4DLgYhyFukIJ0hD6EoSWxLDvcAl2BwpU0OQX6
+	bNOJbW/DUj4ncTK1finQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgJpt-004s5g-37;
-	Wed, 13 Sep 2023 06:58:53 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qgLyJ-005HVB-2n;
+	Wed, 13 Sep 2023 09:15:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgJpp-004s2q-1h
-	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Sep 2023 06:58:51 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qgJpl-00010A-4Y; Wed, 13 Sep 2023 08:58:45 +0200
-Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qgJpk-005wdx-9L; Wed, 13 Sep 2023 08:58:44 +0200
-Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qgJpj-0064HV-L3; Wed, 13 Sep 2023 08:58:43 +0200
-Date: Wed, 13 Sep 2023 08:58:43 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Chen-Yu Tsai <wens@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Saravana Kannan <saravanak@google.com>,
-	linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org,
-	kernel@pengutronix.de,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 1/3] pinctrl: rockchip: add support for io-domain
- dependency
-Message-ID: <20230913065843.GF637806@pengutronix.de>
-References: <20230904115816.1237684-1-s.hauer@pengutronix.de>
- <20230904115816.1237684-2-s.hauer@pengutronix.de>
- <CACRpkdYxRdToUM3JcEeNK_K87D5WDzzSLvVEbtqqdQEhz3k_Ow@mail.gmail.com>
- <CAGb2v65G-8EECNjqnpKCxqAD5nATAb0S7AA_WMiGXYOR1avrvg@mail.gmail.com>
+	id 1qgLyF-005HTE-0e;
+	Wed, 13 Sep 2023 09:15:40 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 02D43660732C;
+	Wed, 13 Sep 2023 10:15:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694596537;
+	bh=+x1Lus2omcxwTQh/70pIi5tcxa6KKlOel+MXnr2anU0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hcXsAp5siwSYtRCayPcgeqa3e7E80a/nScSBAx0id8t3e3QvJE0LhZTRx3dwT2NCO
+	 q2cR4FFecXHuX+sQV4K9YolHUnqVmLq9/hfEqQAwQWIf8+rg4cLoasbOJUYd8eGb1N
+	 lyfZbNP3MhqJkgpaxazLxCeqyL4LTyMMK/yyc5QBFGGKBYmWld41mA+BTQytRFw6L8
+	 Tj5qVxT1eF1r6EFTaFKqEHJGoPwMgj9UGWATja2Su7FtARhiPcJpHyZK9L9VX9l61N
+	 mUdYl5lPw7q3KPnicFNnUKvAhjUZcwurIBTbBkYLQAYKKvMakR9HqEPoVziC5g5Pe/
+	 h1BTNoISIvWJw==
+Message-ID: <93074a59-8747-910e-0b76-4682e827ff73@collabora.com>
+Date: Wed, 13 Sep 2023 11:15:34 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAGb2v65G-8EECNjqnpKCxqAD5nATAb0S7AA_WMiGXYOR1avrvg@mail.gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH -next v2 19/25] spi: mtk-snfi: Use helper function
+ devm_clk_get_enabled()
+Content-Language: en-US
+To: Li Zetao <lizetao1@huawei.com>
+Cc: andrew@aj.id.au, avifishman70@gmail.com,
+ bcm-kernel-feedback-list@broadcom.com, benjaminfair@google.com,
+ broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ conor.dooley@microchip.com, daire.mcnamara@microchip.com,
+ fancer.lancer@gmail.com, florian.fainelli@broadcom.com, heiko@sntech.de,
+ jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com,
+ linus.walleij@linaro.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-spi@vger.kernel.org, martin.blumenstingl@googlemail.com,
+ matthias.bgg@gmail.com, neil.armstrong@linaro.org, olteanv@gmail.com,
+ openbmc@lists.ozlabs.org, rjui@broadcom.com, sbranden@broadcom.com,
+ tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com,
+ yuenn@google.com, Jonathan Cameron <Jonathan.Cameron@huawei.com>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230823133938.1359106-1-lizetao1@huawei.com>
+ <20230823133938.1359106-20-lizetao1@huawei.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230823133938.1359106-20-lizetao1@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_235849_565760_BCA13D00 
-X-CRM114-Status: GOOD (  30.78  )
+X-CRM114-CacheID: sfid-20230913_021539_376683_62CED104 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,49 +87,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBTZXAgMTMsIDIwMjMgYXQgMTI6Mzc6NTRQTSArMDgwMCwgQ2hlbi1ZdSBUc2FpIHdy
-b3RlOgo+IE9uIFR1ZSwgU2VwIDEyLCAyMDIzIGF0IDQ6MDfigK9QTSBMaW51cyBXYWxsZWlqIDxs
-aW51cy53YWxsZWlqQGxpbmFyby5vcmc+IHdyb3RlOgo+ID4KPiA+IFRvcCBwb3N0aW5nIHRvIGJy
-aW5nIFNhcmF2YW5hIEthbm5hbiBpbnRvIHRoaXMgZGlzY3Vzc2lvbi4KPiA+Cj4gPiBUaGlzIGxv
-b2tzIGxpa2UgYSBiaWcgaGFjayB0byBtZSwgU2FyYXZhbmEgaGFzIGJlZW4gd29ya2luZwo+ID4g
-dGlyZWxlc3NseSB0byBtYWtlIHRoZSBkZXZpY2UgdHJlZSBwcm9iZSBvcmRlciAic29ydCBpdHNl
-bGYgb3V0Igo+ID4gYW5kIEkgYW0gcHJldHR5IHN1cmUgdGhpcyBpc3N1ZSBuZWVkcyB0byBiZSBm
-aXhlZCBhdCB0aGUgRFQKPiA+IGNvcmUgbGV2ZWwgYW5kIG5vdCBpbiBhIGRyaXZlci4KPiAKPiBX
-ZSBjb3VsZCBtZXJnZSBhbGwgdGhlIElPIGRvbWFpbiBzdHVmZiBpbnRvIHRoZSBwaW5jdHJsIG5v
-ZGUvZHJpdmVyLAo+IGxpa2UgaXMgZG9uZSBmb3IgQWxsd2lubmVyPyBNYXliZSB0aGF0IHdvdWxk
-IHNpbXBsaWZ5IHRoaW5ncyBhIGJpdD8KCkkgdGhvdWdodCBhYm91dCB0aGlzIGFzIHdlbGwuIE9u
-IFJvY2tjaGlwIHRoZSBwaW5jdHJsIGRyaXZlciBhbmQgdGhlIElPCmRvbWFpbiBkcml2ZXIgZXZl
-biB3b3JrIG9uIHRoZSBzYW1lIHJlZ2lzdGVyIHNwYWNlLCBzbyBwdXR0aW5nIHRoZXNlCmludG8g
-YSBzaW5nbGUgbm9kZS9kcml2ZXIgd291bGQgZXZlbiBmZWVsIG1vcmUgbmF0dXJhbCB0aGFuIHdo
-YXQgd2UgaGF2ZQpub3cuCkhvd2V2ZXIsIHdpdGggdGhhdCB0aGUgcGluY3RybCBub2RlIHdvdWxk
-IGdldCB0aGUgc3VwcGxpZXMgdGhhdCB0aGUgSU8KZG9tYWluIG5vZGUgbm93IGhhcyBhbmQgd2Ug
-d291bGQgbmV2ZXIgZ2V0IGludG8gdGhlIHByb2JlIG9mIHRoZSBwaW5jdHJsCmRyaXZlciBkdWUg
-dG8gdGhlIGNpcmN1bGFyIGRlcGVuZGVuY2llcy4KCj4gCj4gSUlSQyBvbiBBbGx3aW5uZXIgU29D
-cyB0aGUgUE1JQyBwaW5zIGRvbid0IGhhdmUgYSBzZXBhcmF0ZSBwb3dlciByYWlsLAo+IG9yIGlm
-IHRoZXkgZG8gdGhleSBhbG1vc3QgY2VydGFpbmx5IHVzZSB0aGUgZGVmYXVsdCBJL08gcmFpbCB0
-aGF0IGlzCj4gYWx3YXlzIG9uLCBhbmQgc28gd2Ugb21pdCBpdCB0byB3b3JrIGFyb3VuZCB0aGUg
-ZGVwZW5kZW5jeSBjeWNsZS4KCkkgbG9va2VkIGludG8gc3VuNTBpIGFzIGFuIGV4YW1wbGUuIFRo
-aXMgb25lIGhhcyB0d28gcGluY3RybCBub2RlcywgcGlvCmFuZCByX3Bpby4gT25seSB0aGUgZm9y
-bWVyIGhhcyBzdXBwbGllcyB3aGVyZWFzIHRoZSBsYXR0ZXIsIHdoZXJlIHRoZQpQTUlDIGlzIGNv
-bm5lY3RlZCB0bywgaGFzIChmb3VuZCBpbiBzdW41MGktYTY0LXBpbmVwaG9uZS5kdHNpKToKCiZy
-X3BpbyB7CgkvKgoJICogRklYTUU6IFdlIGNhbid0IGFkZCB0aGF0IHN1cHBseSBmb3Igbm93IHNp
-bmNlIGl0IHdvdWxkCgkgKiBjcmVhdGUgYSBjaXJjdWxhciBkZXBlbmRlbmN5IGJldHdlZW4gcGlu
-Y3RybCwgdGhlIHJlZ3VsYXRvcgoJICogYW5kIHRoZSBSU0IgQnVzLgoJICoKCSAqIHZjYy1wbC1z
-dXBwbHkgPSA8JnJlZ19hbGRvMj47CgkgKi8KfTsKCkF0IGxlYXN0IGl0IHNob3cgbWUgdGhhdCBJ
-IGFtIG5vdCB0aGUgZmlyc3Qgb25lIHdobyBoYXMgdGhpcyBwcm9ibGVtIDspCgpXZSBjb3VsZCBh
-ZGQgdGhlIHN1cHBsaWVzIHRvIHRoZSBwaW5ncm91cCBzdWJub2RlcyBvZiB0aGUgcGluY3RybCBk
-cml2ZXIKdG8gYXZvaWQgdGhhdCwgYnV0IGFzIFNhcmF2YW5hIGFscmVhZHkgbWVuaW9uZWQsIHRo
-YXQgd291bGQgZmVlbCBsaWtlCm92ZXJraWxsLgoKU2FzY2hhCgotLSAKUGVuZ3V0cm9uaXggZS5L
-LiAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwKU3RldWVyd2FsZGVyIFN0ci4gMjEgICAgICAgICAgICAgICAgICAgICAgIHwgaHR0cDovL3d3
-dy5wZW5ndXRyb25peC5kZS8gIHwKMzExMzcgSGlsZGVzaGVpbSwgR2VybWFueSAgICAgICAgICAg
-ICAgICAgIHwgUGhvbmU6ICs0OS01MTIxLTIwNjkxNy0wICAgIHwKQW10c2dlcmljaHQgSGlsZGVz
-aGVpbSwgSFJBIDI2ODYgICAgICAgICAgIHwgRmF4OiAgICs0OS01MTIxLTIwNjkxNy01NTU1IHwK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Il 23/08/23 15:39, Li Zetao ha scritto:
+> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_enabled() when driver enables (and possibly
+> prepares) the clocks for the whole lifetime of the device. Moreover, it is
+> no longer necessary to unprepare and disable the clocks explicitly.
+> Also, devm_clk_get_optional() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_optional_enabled().Moreover, the two functions
+> mtk_snand_enable_clk() and mtk_snand_disable_clk() no longer are used,
+> drop them for clean code.
+> 
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
