@@ -4,89 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E81EEAA45
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 13:37:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCF5EEAA40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 13:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yejAVjp0LOVLoANsWP1tf5wxWafzsp4D/DN56MKrVP4=; b=DT3m48aEOYVlFH
-	PJIUmn4B/OoG25BPzKWMMYRXdd3LZGNH1n0HSxlOLifjVCTG5YcJtn8KEq42MtYDp+AJeR9eOawIL
-	KgET6YmooiqD2TU4AM9+cV9rCrd1fo4rs7tcw9LFTMFoWILVUF7DTETdk0t5sOQ+PEZRSFLf2jhF+
-	IYgwXMDYBi53C0f/tACh2FCHGguO5BrsOuFlf+6BX5XAj9qtOlVaDUDEeSoY09NBEfV/Wd3uUJxlV
-	yrZ1+CFDX2Af6IiRCUaypYkaV9eovtBdz46BmJoc3R0bvTdwFqxd/oZMJdpcb2ymiqF9+xeyRr+yT
-	FSRVyX0eKSKTtv0KBcuA==;
+	List-Owner; bh=sQ/FgkVXvLcLBrhicq9ukFI9rDI53zxTi3m1pAwlOf0=; b=PbYCs51rnjeHva
+	/RpGrjr3xXOO3TWmRIkuP8wqk5A82sluNm27GEH98RvnctNaJXYahyHXDiPeHQeoQUTjzFSHMbBIK
+	LXBXs+mdKPm1awfN8DRBtj7KX/0rWgcfa5GjO0mc/jY3H0j6agc1ZGi/egncPuUsoYW9nmxWSA+qG
+	cfIJpdGNpIoAYDgoxaRU1qiYSgOyzGqW7GaTgpqPWJ2XnClknlylBUT3XDt08SvjY+7AhLBWvUkA8
+	p0lTUNdDtfYYjObGb5gOK6cfwCyXitLGpjUclWc1TAtgJINXl/aE7+iaBREDpyTRr1ebWLr97y+x0
+	0mXG8lzDvSu/fQGKBSPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmXD-008WHE-2T;
-	Thu, 14 Sep 2023 13:37:31 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qgmq4-008ZEE-0c;
+	Thu, 14 Sep 2023 13:57:00 +0000
+Received: from mgamail.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTm-008SZV-0x;
-	Thu, 14 Sep 2023 13:33:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=R5I14gZ8ZV2beKG5h7D5LMBNMyFJY4vcK66dciAEppY=; b=kBJtlmmFXpddkwiQEBSh8eVuN5
-	LVzurN49MgXyJ9W1HHFOj6n1Nh8Y0bJ9m2cjZ0Rz3rpr4h/F3LrLlyuZWn3g6lJMf2ErkLeGypYYR
-	YGWWvBZfDXU+UfFKcGkhib+f0MzZhOW1auqieIPTbAAx0MU4yHxWFn9TqevNonB0MDLXgRZiHf2AX
-	/B/lPDnangoGFrQNsIycv2RJwIWhlWQ3ozNwadwofgip0owRBJHg20BVi7rtvU6UZNnVoVlGUhfal
-	r95ZH8dOFzYojX/aTd1zwx45IJJXkaBT/M9PRuX9coT3991EP8vt+K2gjIOtSKR6v7SdGUzxivegz
-	1WJBH1iw==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTh-007ukL-1g;
-	Thu, 14 Sep 2023 13:33:57 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1ACA66607393;
-	Thu, 14 Sep 2023 14:33:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698433;
-	bh=1yOSfZ9zOJdZRwLwPAMdW6zHS4PIxiSGQkrNrnzD9t8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eWvZTK2amSzpVpq8ZFpot/0uWStFAjTJ7f+V847lmGPS215Rf+yO9QYPKO9vKFQuc
-	 S9ipLbYMNFYdeKqNpB2X4x2LrASQMR9lZW3n01IbkkOYQRxUYLhFX1gS/ReLT+tXMo
-	 78lscaZDs1HkBh8wflnmMc0qEjDWP730gmvCiBed16h1PHb6qgdeAXT5I86QF58V0U
-	 Xg+VOaPOnHZ98itUCPGQtBw7qTYvrOXLwezu37SdqEP6F6nlCr8XZEO8af50mE19Nx
-	 S3haDqIwuCyxT5B7LRJR7Ln3iYHhhxWAsg3C7hiOTT6nRGfvkDjJ6jKjanbg5FByUn
-	 AHraGykhh/h6Q==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
+	id 1qgmq1-008ZDK-0z;
+	Thu, 14 Sep 2023 13:56:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1694699817; x=1726235817;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=b3tYeezIb9VcuITzl9VzLSF72s5Sqe8g4+fg04ckpuk=;
+  b=nmD1U0JWoeFtjwnZJ3bn8YXZQ675BoWP4CRMHavDcDxEraBvOXmdqpFz
+   BPnbQYY6rVDrgChuf8ULMB2C/eJWhKgvJwooXZ5QiLIJWms0FuyyC+h+c
+   F+xrrqXoxxY2F5xUuV/cY5LLBwD+rOdqoOmTeWfna8EGYc7b2F4Hyg1Wr
+   38aryAeKcvxsgsEl0MgMQH0J1ym6CgAKOJBrXyqSWe2N9KCEweS5r0vOK
+   XEHTAp35xYgUjE8BxvJla/J5AUNEt+R066srdVXduei8JyKSQVQKBglFW
+   fQZBMQeiG2FDZHKYULRb7P+aCLFSFNe982JrE9PyQ41mXa8nxwzGDz5au
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="376292980"
+X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
+   d="scan'208";a="376292980"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 06:56:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="721287442"
+X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
+   d="scan'208";a="721287442"
+Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
+  by orsmga006.jf.intel.com with ESMTP; 14 Sep 2023 06:56:47 -0700
+Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qgmpp-0001eZ-0b;
+	Thu, 14 Sep 2023 13:56:45 +0000
+Date: Thu, 14 Sep 2023 21:56:41 +0800
+From: kernel test robot <lkp@intel.com>
+To: Michael Tretter <m.tretter@pengutronix.de>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Diederik de Haas <didi.debian@cknow.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 42/49] media: imx: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:33:16 +0200
-Message-Id: <20230914133323.198857-43-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de,
+	Michael Tretter <m.tretter@pengutronix.de>
+Subject: Re: [PATCH 05/13] media: rockchip: rga: pre-calculate plane offsets
+Message-ID: <202309142156.JJwE4Eke-lkp@intel.com>
+References: <20230914-rockchip-rga-multiplanar-v1-5-abfd77260ae3@pengutronix.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230914-rockchip-rga-multiplanar-v1-5-abfd77260ae3@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_143355_500927_2C132DBC 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230914_065657_358106_77DF8897 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,46 +93,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+Hi Michael,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/staging/media/imx/imx-media-capture.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/staging/media/imx/imx-media-capture.c b/drivers/staging/media/imx/imx-media-capture.c
-index 4846078315ff..ce02199e7b1b 100644
---- a/drivers/staging/media/imx/imx-media-capture.c
-+++ b/drivers/staging/media/imx/imx-media-capture.c
-@@ -605,6 +605,7 @@ static int capture_queue_setup(struct vb2_queue *vq,
- {
- 	struct capture_priv *priv = vb2_get_drv_priv(vq);
- 	struct v4l2_pix_format *pix = &priv->vdev.fmt;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned int count = *nbuffers;
- 
- 	if (vq->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
-@@ -613,14 +614,14 @@ static int capture_queue_setup(struct vb2_queue *vq,
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
- 			return -EINVAL;
--		count += vq->num_buffers;
-+		count += q_num_bufs;
- 	}
- 
- 	count = min_t(__u32, VID_MEM_LIMIT / pix->sizeimage, count);
- 
- 	if (*nplanes)
--		*nbuffers = (count < vq->num_buffers) ? 0 :
--			count - vq->num_buffers;
-+		*nbuffers = (count < q_num_bufs) ? 0 :
-+			count - q_num_bufs;
- 	else
- 		*nbuffers = count;
- 
+[auto build test WARNING on 0bb80ecc33a8fb5a682236443c1e740d5c917d1d]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Michael-Tretter/media-rockchip-rga-fix-swizzling-for-RGB-formats/20230914-204330
+base:   0bb80ecc33a8fb5a682236443c1e740d5c917d1d
+patch link:    https://lore.kernel.org/r/20230914-rockchip-rga-multiplanar-v1-5-abfd77260ae3%40pengutronix.de
+patch subject: [PATCH 05/13] media: rockchip: rga: pre-calculate plane offsets
+config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20230914/202309142156.JJwE4Eke-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230914/202309142156.JJwE4Eke-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309142156.JJwE4Eke-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/media/platform/rockchip/rga/rga-hw.c: In function 'rga_get_addr_offset':
+>> drivers/media/platform/rockchip/rga/rga-hw.c:46:65: warning: variable 'uv_factor' set but not used [-Wunused-but-set-variable]
+      46 |                      y_div = 0, uv_stride = 0, pixel_width = 0, uv_factor = 0;
+         |                                                                 ^~~~~~~~~
+
+
+vim +/uv_factor +46 drivers/media/platform/rockchip/rga/rga-hw.c
+
+f7e7b48e6d796d Jacob Chen      2017-10-11  38  
+f7e7b48e6d796d Jacob Chen      2017-10-11  39  static struct rga_corners_addr_offset
+7c2b289b29ea42 Michael Tretter 2023-09-14  40  rga_get_addr_offset(struct rga_frame *frm, struct rga_addr_offset *offset,
+7c2b289b29ea42 Michael Tretter 2023-09-14  41  		    unsigned int x, unsigned int y, unsigned int w, unsigned int h)
+f7e7b48e6d796d Jacob Chen      2017-10-11  42  {
+f7e7b48e6d796d Jacob Chen      2017-10-11  43  	struct rga_corners_addr_offset offsets;
+f7e7b48e6d796d Jacob Chen      2017-10-11  44  	struct rga_addr_offset *lt, *lb, *rt, *rb;
+f7e7b48e6d796d Jacob Chen      2017-10-11  45  	unsigned int x_div = 0,
+f7e7b48e6d796d Jacob Chen      2017-10-11 @46  		     y_div = 0, uv_stride = 0, pixel_width = 0, uv_factor = 0;
+f7e7b48e6d796d Jacob Chen      2017-10-11  47  
+f7e7b48e6d796d Jacob Chen      2017-10-11  48  	lt = &offsets.left_top;
+f7e7b48e6d796d Jacob Chen      2017-10-11  49  	lb = &offsets.left_bottom;
+f7e7b48e6d796d Jacob Chen      2017-10-11  50  	rt = &offsets.right_top;
+f7e7b48e6d796d Jacob Chen      2017-10-11  51  	rb = &offsets.right_bottom;
+f7e7b48e6d796d Jacob Chen      2017-10-11  52  
+f7e7b48e6d796d Jacob Chen      2017-10-11  53  	x_div = frm->fmt->x_div;
+f7e7b48e6d796d Jacob Chen      2017-10-11  54  	y_div = frm->fmt->y_div;
+f7e7b48e6d796d Jacob Chen      2017-10-11  55  	uv_factor = frm->fmt->uv_factor;
+f7e7b48e6d796d Jacob Chen      2017-10-11  56  	uv_stride = frm->stride / x_div;
+f7e7b48e6d796d Jacob Chen      2017-10-11  57  	pixel_width = frm->stride / frm->width;
+f7e7b48e6d796d Jacob Chen      2017-10-11  58  
+7c2b289b29ea42 Michael Tretter 2023-09-14  59  	lt->y_off = offset->y_off + y * frm->stride + x * pixel_width;
+7c2b289b29ea42 Michael Tretter 2023-09-14  60  	lt->u_off = offset->u_off + (y / y_div) * uv_stride + x / x_div;
+7c2b289b29ea42 Michael Tretter 2023-09-14  61  	lt->v_off = offset->v_off + (y / y_div) * uv_stride + x / x_div;
+f7e7b48e6d796d Jacob Chen      2017-10-11  62  
+f7e7b48e6d796d Jacob Chen      2017-10-11  63  	lb->y_off = lt->y_off + (h - 1) * frm->stride;
+f7e7b48e6d796d Jacob Chen      2017-10-11  64  	lb->u_off = lt->u_off + (h / y_div - 1) * uv_stride;
+f7e7b48e6d796d Jacob Chen      2017-10-11  65  	lb->v_off = lt->v_off + (h / y_div - 1) * uv_stride;
+f7e7b48e6d796d Jacob Chen      2017-10-11  66  
+f7e7b48e6d796d Jacob Chen      2017-10-11  67  	rt->y_off = lt->y_off + (w - 1) * pixel_width;
+f7e7b48e6d796d Jacob Chen      2017-10-11  68  	rt->u_off = lt->u_off + w / x_div - 1;
+f7e7b48e6d796d Jacob Chen      2017-10-11  69  	rt->v_off = lt->v_off + w / x_div - 1;
+f7e7b48e6d796d Jacob Chen      2017-10-11  70  
+f7e7b48e6d796d Jacob Chen      2017-10-11  71  	rb->y_off = lb->y_off + (w - 1) * pixel_width;
+f7e7b48e6d796d Jacob Chen      2017-10-11  72  	rb->u_off = lb->u_off + w / x_div - 1;
+f7e7b48e6d796d Jacob Chen      2017-10-11  73  	rb->v_off = lb->v_off + w / x_div - 1;
+f7e7b48e6d796d Jacob Chen      2017-10-11  74  
+f7e7b48e6d796d Jacob Chen      2017-10-11  75  	return offsets;
+f7e7b48e6d796d Jacob Chen      2017-10-11  76  }
+f7e7b48e6d796d Jacob Chen      2017-10-11  77  
+
 -- 
-2.39.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
