@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C33EEDE990
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 08:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39177EDE99A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 08:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hxdTZBh6/4Vz381vEAmcsUmQG1pLimA0YQHqn9bYnak=; b=1qFMFIRphyE6Xa
-	IFtIl0xMY2ISiOpMAZvu2Io6nzazpl0ciJBmUE15yLTByYW3rPW7iSbcERXsMj8PMv0U/vqfTM+FE
-	epM8qatONF9bHhG/VwKg6xL9DDn8reSF6l2hLjkLBbn73sPGniuSU78d6mTvIlV0d3rUs0g5lN81n
-	ZAtQYXwIpLTxG/HwENebTgJ7xExveQLSXSV0kLW56NNR3sDvY21+kf7vMUHW8q72BxF7WD6ggxr0/
-	+imNov9yoqlJdx7j+384VLdV6v0/cF8IvofCw5wMrf22l58DHy1hseqD3gXpx7b+3SY3kcPi3Rjxp
-	jh9KKeCd2T+Az5Ly0frw==;
+	List-Owner; bh=sQhVIQD2T4HRlJDR7Ul/HKfsjGCLphPyRH83c+Sabdo=; b=EO5QhUkR4y9cF2
+	x9M1YqKrl2TdxavsMt3lWvQPWDCUbdfPLfm1QhqRxEtjr/5pxsaKZm8DtDb9nW1B5pBWhFgSsfnSQ
+	MMuIOTJNjNWwvnxyh/RmVWypcZgNIlwj0nU2y62J6rQIM7n3/yZNMKrLrocX3F7PY3af5y9ILe+OF
+	A7o3wb7hv4NJI3NCCQPpzinrgHzcz9zcT+aLNZVN4AlBrVMJAeYHEhlt3KkonOyZxqHeqNwr5K5er
+	qRbwSRvajm6MRrOsPV9vrUnZjTwQJfkbqOOlx6NtBCGCG7FbTSiJiPIsqC+ZC/avyXOhAYUckttXQ
+	eAyjC60H3/rjyHfDjMxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgi7t-007lMh-1V;
-	Thu, 14 Sep 2023 08:55:05 +0000
+	id 1qgi7z-007lTG-2v;
+	Thu, 14 Sep 2023 08:55:11 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgi7o-007lHX-2Q;
-	Thu, 14 Sep 2023 08:55:03 +0000
+	id 1qgi7w-007lP0-0s;
+	Thu, 14 Sep 2023 08:55:09 +0000
 Received: from localhost.localdomain (unknown [171.76.82.102])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CC106607344;
-	Thu, 14 Sep 2023 09:54:56 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0576B6607341;
+	Thu, 14 Sep 2023 09:55:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694681699;
-	bh=u1+8c/NeHF9gXY02ugHiPae0nxuB94ZCdpN+BEaX74Y=;
+	s=mail; t=1694681707;
+	bh=zENsozfUsG28BDpE/lFC/hQUZaZONyzVCg0HBSjy2Ek=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NbuwE724IkE/0g99J5a35Cmia6jtAy5XldYo2SaWg6Yqw3G5ccW7uKtrOvVOH2Rhs
-	 Ew3vBXuDTz9moqM1QeJFH0DI4XlZB3uJG/vrB1riXkSciLYPmysNEqvMW2owy6SCIY
-	 BmWpwH+ioHpQui43XkKnilVKJWMiXQ7ZVafV3Qj1pus6uS+fJdRsEXW8OP1/37Yd4d
-	 3OLcECDayzE3sAZWdkQLfsbc+YpSAoVcJcgCzsQabelvjG3EcDGLOUkZ8oZIrOMMV2
-	 H5EK0Pn2KTLNuLfn3sFssxp/B11ekjJvrIvPNbd7VJKzE4drOeH/S0Ll2mfhdWLRat
-	 wyRj7GaadlE8g==
+	b=L2U/iAERmuKstZOpmzII6rshziJBI0086ArkXzKd42+PuLdps71ACh5Drio12ZmDD
+	 eCo4zNmBGn59IvVUZnMiyta46KTJ0CeKTI3Ezntcx4zxC1GgGwT/+qOWZcE1Dz+5MN
+	 EqjjPVGAaIqnS1chnAjmvjCOZTfmEHzROmb2V7bmXm+0RDadzQqfL/qD6HHfG0/wss
+	 PF6ZM205gB8+KcVEy05EtON7TL6TsAUQ56kVSzZCQN5lSPMmAv+nk72S57lDoEgHei
+	 e1/F1rF7Gp4UoRD/Fn8FnkC490T6av3zPrfdlzJsSo9IA47S7Mug5cSyJR5QMbqRJk
+	 Th0tXImRyKjDw==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,16 +60,16 @@ Cc: david.heidelberg@collabora.com,
 	virtualization@lists.linux-foundation.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v4 5/7] drm: ci: Update xfails
-Date: Thu, 14 Sep 2023 14:24:24 +0530
-Message-Id: <20230914085426.883255-6-vignesh.raman@collabora.com>
+Subject: [PATCH v4 7/7] drm: ci: Use scripts/config to enable/disable configs
+Date: Thu, 14 Sep 2023 14:24:26 +0530
+Message-Id: <20230914085426.883255-8-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230914085426.883255-1-vignesh.raman@collabora.com>
 References: <20230914085426.883255-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_015501_052914_9C60729F 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20230914_015508_443053_0BEBE063 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +86,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update amdgpu-stoney-fails, mediatek-mt8173-flakes,
-mediatek-mt8173-fails, rockchip-rk3399-fails, rockchip-rk3399-flakes,
-rockchip-rk3288-flakes, i915-cml-fails, i915-cml-flakes,
-msm-apq8016-flakes files.
+Instead of modifying files in git to enable/disable
+configs, use scripts/config on the .config file which
+will be used for building the kernel.
 
-Add tests that fail sometimes into the *-flakes file and tests
-that are failing into the *-fails file.
-
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
+Suggested-by: Jani Nikula <jani.nikula@intel.com>
+Acked-by: Helen Koike <helen.koike@collabora.com>
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
 v2:
-  - No changes
+  - Added a new patch in the series to use scripts/config to enable/disable configs
 
 v3:
   - No changes
@@ -108,165 +105,40 @@ v4:
   - No changes
 
 ---
- .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt    |  1 -
- drivers/gpu/drm/ci/xfails/i915-cml-fails.txt     |  1 -
- drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt    |  2 ++
- drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt    |  1 +
- .../gpu/drm/ci/xfails/mediatek-mt8173-fails.txt  |  2 --
- .../gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt | 16 ++++++++++++++++
- drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt |  2 ++
- .../gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt |  1 +
- .../gpu/drm/ci/xfails/rockchip-rk3399-fails.txt  |  4 ++--
- .../gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt |  3 +++
- 10 files changed, 27 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/ci/build.sh | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-index bd9392536e7c..58bfded8a3fc 100644
---- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
-@@ -1,7 +1,6 @@
- kms_addfb_basic@bad-pitch-65536,Fail
- kms_addfb_basic@bo-too-small,Fail
- kms_async_flips@invalid-async-flip,Fail
--kms_atomic@plane-immutable-zpos,Fail
- kms_atomic_transition@plane-toggle-modeset-transition,Fail
- kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-index 6139b410e767..5f513c638beb 100644
---- a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
-@@ -1,4 +1,3 @@
--kms_color@ctm-0-25,Fail
- kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
- kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
- kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-index 0514a7b3fdb0..f06f1a5b16f9 100644
---- a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
-@@ -7,6 +7,8 @@ kms_bw@linear-tiling-3-displays-3840x2160p
- kms_bw@linear-tiling-4-displays-1920x1080p
- kms_bw@linear-tiling-4-displays-2560x1440p
- kms_bw@linear-tiling-4-displays-3840x2160p
-+kms_color@ctm-0-25
-+kms_cursor_legacy@torture-move
- kms_draw_crc@draw-method-xrgb8888-render-xtiled
- kms_flip@flip-vs-suspend
- kms_flip_scaled_crc@flip-32bpp-ytile-to-64bpp-ytile-downscaling
-diff --git a/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-index fc41d13a2d56..3aee1f11ee90 100644
---- a/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
-@@ -8,6 +8,7 @@ kms_bw@linear-tiling-3-displays-3840x2160p
- kms_bw@linear-tiling-4-displays-1920x1080p
- kms_bw@linear-tiling-4-displays-2560x1440p
- kms_bw@linear-tiling-4-displays-3840x2160p
-+kms_cursor_legacy@torture-bo
- kms_flip@blocking-wf_vblank
- kms_flip@wf_vblank-ts-check
- kms_flip@wf_vblank-ts-check-interruptible
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-index 671916067dba..c8e64bbfd480 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-@@ -1,5 +1,4 @@
- kms_3d,Fail
--kms_addfb_basic@addfb25-bad-modifier,Fail
- kms_bw@linear-tiling-1-displays-1920x1080p,Fail
- kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-@@ -11,7 +10,6 @@ kms_bw@linear-tiling-3-displays-2560x1440p,Fail
- kms_bw@linear-tiling-3-displays-3840x2160p,Fail
- kms_color@pipe-A-invalid-gamma-lut-sizes,Fail
- kms_color@pipe-B-invalid-gamma-lut-sizes,Fail
--kms_force_connector_basic@force-connector-state,Fail
- kms_force_connector_basic@force-edid,Fail
- kms_force_connector_basic@force-load-detect,Fail
- kms_force_connector_basic@prune-stale-modes,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-index e69de29bb2d1..9ed6722df2c2 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
-@@ -0,0 +1,16 @@
-+core_setmaster_vs_auth
-+kms_addfb_basic@addfb25-bad-modifier
-+kms_color@invalid-gamma-lut-sizes
-+kms_cursor_legacy@cursor-vs-flip-atomic
-+kms_cursor_legacy@cursor-vs-flip-legacy
-+kms_force_connector_basic@force-connector-state
-+kms_hdmi_inject@inject-4k
-+kms_plane_scaling@plane-scaler-with-pixel-format-unity-scaling
-+kms_plane_scaling@plane-upscale-with-modifiers-20x20
-+kms_plane_scaling@plane-upscale-with-pixel-format-20x20
-+kms_plane_scaling@plane-upscale-with-rotation-20x20
-+kms_plane_scaling@planes-downscale-factor-0-25-upscale-20x20
-+kms_plane_scaling@planes-downscale-factor-0-5-upscale-20x20
-+kms_plane_scaling@planes-downscale-factor-0-75-upscale-20x20
-+kms_prop_blob@invalid-set-prop
-+kms_prop_blob@invalid-set-prop-any
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-index 0e3b60d3fade..cd48a8c1d569 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-@@ -1,3 +1,5 @@
-+kms_cursor_legacy@forked-bo
-+kms_cursor_legacy@forked-move
- kms_force_connector_basic@force-connector-state
- kms_force_connector_basic@force-edid
- kms_force_connector_basic@force-load-detect
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-index 45c54c75c899..081fe6f8d488 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-@@ -1,6 +1,7 @@
- kms_addfb_basic@addfb25-bad-modifier
- kms_cursor_crc@.*
- kms_flip@basic-flip-vs-wf_vblank
-+kms_flip@blocking-wf_vblank
- kms_invalid_mode@int-max-clock,Crash
- kms_pipe_crc_basic@.*
- kms_properties@connector-properties-atomic,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-index 6db08ba6b008..029a3be3164d 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-@@ -2,14 +2,13 @@ kms_color@legacy-gamma,Fail
- kms_color@pipe-A-legacy-gamma,Fail
- kms_color@pipe-B-legacy-gamma,Fail
- kms_flip@basic-flip-vs-wf_vblank,Fail
--kms_flip@blocking-wf_vblank,Fail
- kms_flip@dpms-vs-vblank-race,Fail
- kms_flip@flip-vs-absolute-wf_vblank,Fail
- kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
- kms_flip@flip-vs-blocking-wf-vblank,Fail
- kms_flip@flip-vs-panning,Fail
- kms_flip@flip-vs-panning-interruptible,Fail
--kms_flip@flip-vs-wf_vblank-interruptible,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
- kms_flip@plain-flip-fb-recreate,Fail
- kms_flip@plain-flip-fb-recreate-interruptible,Fail
- kms_flip@plain-flip-ts-check,Fail
-@@ -35,3 +34,4 @@ kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
- kms_plane_multiple@tiling-none,Fail
- kms_prime@basic-crc,Fail
- kms_rmfb@close-fd,Fail
-+kms_universal_plane@universal-plane-pipe-B-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-index 4c0539b4beaf..869426a02cbd 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-@@ -1,7 +1,10 @@
+diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+index 58b71538f489..bfe161b47951 100644
+--- a/drivers/gpu/drm/ci/build.sh
++++ b/drivers/gpu/drm/ci/build.sh
+@@ -70,19 +70,19 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
+     fi
+ fi
  
-+kms_color@gamma
- kms_cursor_crc@.*
-+kms_flip@blocking-wf_vblank
- kms_flip@dpms-vs-vblank-race-interruptible
- kms_flip@flip-vs-expired-vblank
-+kms_flip@flip-vs-wf_vblank-interruptible
- kms_flip@modeset-vs-vblank-race-interruptible
- kms_pipe_crc_basic@.*
- kms_pipe_crc_basic@compare-crc-sanitycheck-pipe-A
+-for opt in $ENABLE_KCONFIGS; do
+-  echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+-done
+-for opt in $DISABLE_KCONFIGS; do
+-  echo CONFIG_$opt=n >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+-done
+-
+ if [[ -n "${MERGE_FRAGMENT}" ]]; then
+     ./scripts/kconfig/merge_config.sh ${DEFCONFIG} drivers/gpu/drm/ci/${MERGE_FRAGMENT}
+ else
+     make `basename ${DEFCONFIG}`
+ fi
+ 
++for opt in $ENABLE_KCONFIGS; do
++    ./scripts/config --enable CONFIG_$opt
++done
++for opt in $DISABLE_KCONFIGS; do
++    ./scripts/config --disable CONFIG_$opt
++done
++
+ make ${KERNEL_IMAGE_NAME}
+ 
+ mkdir -p /lava-files/
 -- 
 2.40.1
 
