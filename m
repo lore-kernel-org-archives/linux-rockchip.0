@@ -4,42 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CD25EDE9BC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 12:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94A13CA0EF6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 12:41:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JJFEHJzLSJPAFl7dckO5cHVOqNVjSXOOoemvsr7qtBQ=; b=j3diqtAdpHyRsu
-	jDOmPiElIP7TUI92DjHXm1M3a/PgyhZ5B8gcd9zrG162UXP8q+D9t7HcVvRXgiZ/r5TvGASqhiNSP
-	s2QeYSTW5qQv9gvg6RtMYeP/NOw5I4FmKAnUs9b1e0fzQC/IOurhG8ELXekDIg1+vlxO5TncVlSUc
-	LqyNyUo7hcgzGKY+OzTzEi4hO7OBpKHJ7KrdQmG5lKhlCDoD+ckN6YvEcil3JZm1rF04ww3GtctCB
-	WvQTmmbQvKgzdFp4MpGnrHe+SN1WcImE7SsrFJmqL343eXwSsH4Vk3STmi6vQXPDvOjLBHv2OiiHv
-	i+Y0WzxhCk7aE1Web/tQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=l1uf3lM2kCke9HoicsTrMuVrdKmoj+woQen2bBuIw9Y=; b=0ox/W27TLpwrAJ
+	Mcup72wQ2qJOMEQbEiMgNliGIHHA7ECu0KSeZpRTep3FCZLaLA/nHHL3TP9cb9PKamVmgDcbYXukv
+	26I649ALBv/+PL/mTpSou1FWDYMeQwhdbJv7d+12NVa3/6Hh/0HLd0YiJLBLB/W7d1h1ReqORgW33
+	HWs6p34SKbgCm6MMQFBFKd3OEdKU0XJf3TXnASUe/cdNuBojI1blqIogVyGVV9TJpAvNqJRzpf01O
+	mA/1EZ5uI9ESiKNvnvY9EuF9IbjT5k9FeD8zYzRDUOh2pOO/9KFsbYg1gnobpkTnE5jeLj5ImkP7x
+	PgR4iiXlnALnLCsavHpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qglfF-008LpH-2w;
-	Thu, 14 Sep 2023 12:41:45 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qglfJ-008Lst-0h;
+	Thu, 14 Sep 2023 12:41:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qglf5-008LeM-0t
+	id 1qglfA-008Lk2-0Z
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 14 Sep 2023 12:41:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=Pi7Q3A2duNrC8i4QkYJ1mq/ohudCSbgt3G0y8x5xc3E=; b=ZzDUW9+kqkQGfxxxJ4iAhM1zcE
+	/qQv6LB3HsIfAFn3gpQ093vFF3m+7aNKVEBN7VLHLo0dXUZI3z7gQqzGw8uCf9LbfRNehbDVIdCU5
+	cNU/7pGMguGVbDPzGTF2YhZTDiCuGwkJkk4TDQNFkRORG7Fk+RWc7XH3DnJ6noPSBmfkuXLEizw+v
+	dp/bWh1jRLpvCF5+jQ6wul2EYT1rXzvYqAX99ZSM7c8yhXXCEQsJVr97OMrmWBu7cM5hSHQbvHt7Z
+	AAiZgeBLKHGAjjmEUnAO6XpYZUjVt0R808VbNdmTZri0mm4JKYRqh0aGV2hACXz9CNzFJ/UaoMWfy
+	5UX3jLgA==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qglf5-007se4-11
 	for linux-rockchip@lists.infradead.org;
-	Thu, 14 Sep 2023 12:41:37 +0000
+	Thu, 14 Sep 2023 12:41:38 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qgles-0008Mc-Nz; Thu, 14 Sep 2023 14:41:22 +0200
+	id 1qglet-0008Mc-Bk; Thu, 14 Sep 2023 14:41:23 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Subject: [PATCH 00/13] media: rockchip: rga: add support for multi-planar
- formats
-Date: Thu, 14 Sep 2023 14:40:32 +0200
-Message-Id: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
+Date: Thu, 14 Sep 2023 14:40:41 +0200
+Subject: [PATCH 09/13] media: rockchip: rga: add local variable for
+ pix_format
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAED/AmUC/x2NQQqDMBBFryKz7kCigqRXKV1M4tQMTWOYaCmId
- zd0+T68/w6orMIV7t0Byl+psuYG9tZBiJQXRpkbQ2/6wTg7oq7hHaIU1IXws6dNSqJMimaewuS
- 89eQGaLqnyuiVcojtIO8ptbEov+T37z2e53kBfUnSB38AAAA=
+Message-Id: <20230914-rockchip-rga-multiplanar-v1-9-abfd77260ae3@pengutronix.de>
+References: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
+In-Reply-To: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -56,8 +70,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_054135_330283_ECA2437C 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20230914_134136_921861_CBFD65FC 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,78 +88,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the V4L2 multi-planar API to the Rockchip
-RGA driver. Once the RGA driver supports the multi-planar API, it is
-easier to share buffers with other V4L2 drivers that also support the
-multi-planar API and may not expose planar formats with contiguous
-planes.
-
-With non-contiguous planes, the U and V planes may not start at the same
-offset as with the continuous planes. Therefore, the RGA driver cannot
-rely on its calculation of the plane offsets based on the format and
-frame size anymore, but must remember the offsets when it created the
-mapping. Therefore, I also reworked how the DMA mapping is handled.
-
-As a bonus, the RGA driver should now work correctly on devices with
-more than 4 GB of memory. Video buffers should now be allocated within
-the 4 GB boundary and an import of buffers that have higher addresses
-into the driver should fail.
-
-Patch 1 fixes the swizzling of RGA formats. While testing all formats of
-the driver on rk3568, I discovered that the color channels of the RGB
-formats are wrong when converting to NV12. I didn't test this on other
-SoCs with an RGA and I am not sure, if they behave differently regarding
-the color channels. Please report, if this breaks the color conversion
-on other SoCs, and I will make this SoC-specific.
-
-Patches 2 to 6 are the rework the DMA descriptor handling for the RGA
-MMU. The patches clean up, how the driver uses the DMA API, and make the
-creation of the descriptor list more explicit. Furthermore, the driver
-is changed to keep the mapping per video buffer instead of using a
-single mapping that is updated with every buffer.
-
-Patches 7 to 11 prepare the driver for the multi-planar API including a
-cleanup of the format handling in the buffer, and finally switch to the
-multi-planar API.
-
-Patch 12 updates the code that creates the DMA-descriptor mapping to
-correctly handle buffers with multiple planes. The driver has to iterate
-all planes and make them the continuous for the RGA.
-
-Patch 13 enables the NV12M format, which is the multi-planar variant of
-the NV12 format.
-
-Michael
+The local variable allows to simplify the accessed to the format and
+makes it easier to change the type of the format.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
-Michael Tretter (13):
-      media: rockchip: rga: fix swizzling for RGB formats
-      media: rockchip: rga: extract helper to fill descriptors
-      media: rockchip: rga: allocate DMA descriptors per buffer
-      media: rockchip: rga: split src and dst buffer setup
-      media: rockchip: rga: pre-calculate plane offsets
-      media: rockchip: rga: set dma mask to 32 bits
-      media: rockchip: rga: use clamp() to clamp size to limits
-      media: rockchip: rga: use pixelformat to find format
-      media: rockchip: rga: add local variable for pix_format
-      media: rockchip: rga: use macros for testing buffer type
-      media: rockchip: rga: switch to multi-planar API
-      media: rockchip: rga: rework buffer handling for multi-planar formats
-      media: rockchip: rga: add NV12M support
+ drivers/media/platform/rockchip/rga/rga.c | 55 ++++++++++++++++++-------------
+ 1 file changed, 32 insertions(+), 23 deletions(-)
 
- drivers/media/platform/rockchip/rga/rga-buf.c | 166 ++++++++++++++++-------
- drivers/media/platform/rockchip/rga/rga-hw.c  | 143 +++++++++++++-------
- drivers/media/platform/rockchip/rga/rga.c     | 187 ++++++++++++--------------
- drivers/media/platform/rockchip/rga/rga.h     |  35 ++++-
- 4 files changed, 329 insertions(+), 202 deletions(-)
----
-base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
-change-id: 20230914-rockchip-rga-multiplanar-0d7c79b1ba93
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 4579023af2ff..303ee762bec4 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -446,6 +446,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+ 
+ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
++	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
+ 	struct rga_ctx *ctx = prv;
+ 	struct vb2_queue *vq;
+ 	struct rga_frame *frm;
+@@ -457,47 +458,49 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
+ 
+-	f->fmt.pix.width = frm->width;
+-	f->fmt.pix.height = frm->height;
+-	f->fmt.pix.field = V4L2_FIELD_NONE;
+-	f->fmt.pix.pixelformat = frm->fmt->fourcc;
+-	f->fmt.pix.bytesperline = frm->stride;
+-	f->fmt.pix.sizeimage = frm->size;
+-	f->fmt.pix.colorspace = frm->colorspace;
++	pix_fmt->width = frm->width;
++	pix_fmt->height = frm->height;
++	pix_fmt->field = V4L2_FIELD_NONE;
++	pix_fmt->pixelformat = frm->fmt->fourcc;
++	pix_fmt->bytesperline = frm->stride;
++	pix_fmt->sizeimage = frm->size;
++	pix_fmt->colorspace = frm->colorspace;
+ 
+ 	return 0;
+ }
+ 
+ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
++	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
+ 	struct rga_fmt *fmt;
+ 
+ 	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
+ 	if (!fmt)
+ 		fmt = &formats[0];
+ 
+-	f->fmt.pix.pixelformat = fmt->fourcc;
++	pix_fmt->pixelformat = fmt->fourcc;
+ 
+-	f->fmt.pix.field = V4L2_FIELD_NONE;
++	pix_fmt->field = V4L2_FIELD_NONE;
+ 
+-	f->fmt.pix.width = clamp(f->fmt.pix.width,
+-				 (u32)MIN_WIDTH, (u32)MAX_WIDTH);
+-	f->fmt.pix.height = clamp(f->fmt.pix.height,
+-				  (u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
++	pix_fmt->width = clamp(pix_fmt->width,
++			       (u32)MIN_WIDTH, (u32)MAX_WIDTH);
++	pix_fmt->height = clamp(pix_fmt->height,
++				(u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
+ 
+ 	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
+-		f->fmt.pix.bytesperline = f->fmt.pix.width;
++		pix_fmt->bytesperline = pix_fmt->width;
+ 	else
+-		f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
++		pix_fmt->bytesperline = (pix_fmt->width * fmt->depth) >> 3;
+ 
+-	f->fmt.pix.sizeimage =
+-		f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
++	pix_fmt->sizeimage =
++		pix_fmt->height * (pix_fmt->width * fmt->depth) >> 3;
+ 
+ 	return 0;
+ }
+ 
+ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
++	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
+ 	struct rga_ctx *ctx = prv;
+ 	struct rockchip_rga *rga = ctx->rga;
+ 	struct vb2_queue *vq;
+@@ -518,12 +521,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	frm = rga_get_frame(ctx, f->type);
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
+-	frm->width = f->fmt.pix.width;
+-	frm->height = f->fmt.pix.height;
+-	frm->size = f->fmt.pix.sizeimage;
+-	frm->fmt = rga_fmt_find(f->fmt.pix.pixelformat);
+-	frm->stride = f->fmt.pix.bytesperline;
+-	frm->colorspace = f->fmt.pix.colorspace;
++	frm->width = pix_fmt->width;
++	frm->height = pix_fmt->height;
++	frm->size = pix_fmt->sizeimage;
++	frm->fmt = rga_fmt_find(pix_fmt->pixelformat);
++	frm->stride = pix_fmt->bytesperline;
++	frm->colorspace = pix_fmt->colorspace;
+ 
+ 	/* Reset crop settings */
+ 	frm->crop.left = 0;
+@@ -531,6 +534,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	frm->crop.width = frm->width;
+ 	frm->crop.height = frm->height;
+ 
++	v4l2_dbg(debug, 1, &rga->v4l2_dev,
++		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
++		  V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
++		  &frm->fmt->fourcc, frm->width, frm->height,
++		  frm->stride, frm->size);
++
+ 	return 0;
+ }
+ 
 
-Best regards,
 -- 
-Michael Tretter <m.tretter@pengutronix.de>
+2.39.2
 
 
 _______________________________________________
