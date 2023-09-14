@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69946EEAA50
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 15:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2EC7EEAA52
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 15:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NHB1cPriaCnxPlwz2Uzr80OCXKO9f6krDpOUtBErf0Y=; b=y177wH787BplQQ
-	fLkTAtxEs6j21QMoZrfu4l9rvDMXsu/B13ccAsV2RHVZncaKJ0Tr2jv8Bol3AFKl9CtNqQX4oF3RA
-	58BukL9pm53Gp5WP90Lk49Qx7TxxJinltQolRGdy2xRORuWcSEONmjBfuOBIk3J0DoTrynru5iICu
-	QUprf3JuavFf4Zl+XcTSI+oq2m7FQD+M2INzxXkDEHiBN9z6+dNlz4yji/eyZ76bIbZI/Kz2EeWuQ
-	a5yiBmt3ZO/s/NjT4baholzkBScFM4vnWzVQx1T5gOSTl01hJeiyy+iv8lPg4/O6K4WE7zvUQdQAr
-	oF7/4CoUX7AUuPELecyg==;
+	List-Owner; bh=vrgiMeoACL7R06LvCjgp1e2vYeZJfx51NBFdYgk9SpI=; b=zZfa8nYlqFxvrI
+	3xdpBxHEtmAaRwy/7JQWgyCkUv5OkPFqrfAYKumtnZ9PW0JxnAmXg9HTNVzkfnKD0y3/jTI1n1vdi
+	ctF3++PTJ7PhegWm9aAtwiwskglGd3ukiIhoE08nodkXd7hCgQWDQxYpHPhMMuHzYwoODqINPO+ie
+	UMkARBVA26I626PouVMFDzzlI8kgaNntg1dl3EOGfb8wTTv4w89An7++HjodJdWm8F1uH4cssuh7e
+	rZMrt3EbUtIoUXSiDkwvZ0LKDSbBlmwaG5vFUYxphKGl6lMXoOtu1DBi9kAwy4RfLGEcB4VdIqMXx
+	OTWDr5nA4o9Y2XGl0Dpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgo19-008l5l-1Y;
-	Thu, 14 Sep 2023 15:12:31 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgo14-008l4f-2S;
-	Thu, 14 Sep 2023 15:12:29 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0D2E11FB;
-	Thu, 14 Sep 2023 08:13:02 -0700 (PDT)
-Received: from [10.57.93.68] (unknown [10.57.93.68])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8B5CC3F738;
-	Thu, 14 Sep 2023 08:12:22 -0700 (PDT)
-Message-ID: <8626fea8-4cc9-224e-5cfa-8115ff7816f1@arm.com>
-Date: Thu, 14 Sep 2023 16:12:16 +0100
+	id 1qgoYt-008pE9-2P;
+	Thu, 14 Sep 2023 15:47:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgoYq-008pDa-1n
+	for linux-rockchip@lists.infradead.org;
+	Thu, 14 Sep 2023 15:47:21 +0000
+Received: from mercury (dyndsl-091-248-132-131.ewe-ip-backbone.de [91.248.132.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0751A660727E;
+	Thu, 14 Sep 2023 16:47:19 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694706439;
+	bh=BFXg+eiGm56PIuoHY4sJWN6imZT6VBrEHcdIVjqZMV8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=fMjGX392d+eycmU1JptKG5B6QxJoOfylTA4Minb45ZgdSn5XxyC86vUQatfMAvhx8
+	 QTmxuiF70gxHDetoTOWv0C3CQGizkLJ/xFNv9nD5aY8Vc5zUBK4QqbxDL7LlhcT5yR
+	 eHScGpGQo9F/g5mKA2nXseVddd8szH0AQXIQH8hJBNoyJiShmC/Qp1LH+59lrTtZo5
+	 k+NJJSctEfis1fvXwyEnlgwzZt6NVWGI71ld6SpJK0rGGf4ppPVrXfAcaBWnbVL2od
+	 7X/ZTCseZs08RlAxcSb8BQWt8A+jJwr7hroCqzG6SWJL4kryQfYwaZW/iCZSIwJ+8m
+	 1TQlc6FA6njMw==
+Received: by mercury (Postfix, from userid 1000)
+	id AB7E8106098B; Thu, 14 Sep 2023 17:47:16 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Sebastian Reichel <sre@kernel.org>, 
+ Maximilian Weigand <mweigand2017@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ Maximilian Weigand <mweigand@mweigand.net>
+In-Reply-To: <20230601-rk817_query_at_resume-v1-1-630b0adefbd9@mweigand.net>
+References: <20230601-rk817_query_at_resume-v1-1-630b0adefbd9@mweigand.net>
+Subject: Re: [PATCH] power: supply: rk817: query battery properties right
+ after resume
+Message-Id: <169470643667.728745.9541919851740286656.b4-ty@collabora.com>
+Date: Thu, 14 Sep 2023 17:47:16 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH 03/13] media: rockchip: rga: allocate DMA descriptors per
- buffer
-Content-Language: en-GB
-To: Michael Tretter <m.tretter@pengutronix.de>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Diederik de Haas <didi.debian@cknow.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
-References: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
- <20230914-rockchip-rga-multiplanar-v1-3-abfd77260ae3@pengutronix.de>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230914-rockchip-rga-multiplanar-v1-3-abfd77260ae3@pengutronix.de>
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_081226_912971_CA1F5B8E 
-X-CRM114-Status: GOOD (  37.88  )
+X-CRM114-CacheID: sfid-20230914_084720_734589_73D75F12 
+X-CRM114-Status: UNSURE (   6.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,383 +75,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-09-14 13:40, Michael Tretter wrote:
-> The RGA driver allocates two buffers for the DMA descriptors of the
-> input and output buffers. Whenever a new job is processed, the
-> descriptor list is updated for the current buffers.
-> 
-> By updating the descriptor list during buf_prepare, it is possible to
-> correctly fail DMABUF imports if the buffers that shall be imported are
-> not within the 32 bit address range that can be addressed by the RGA.
-> 
-> Managing the DMA descriptor list with the buffer also makes it easier to
-> track the buffer mapping and the plane offsets into this mapping.
-> 
-> The cost is that the driver now requires DMA coherent memory per buffer
-> for the descriptor list. However, the size scales with the size of the
-> video buffers and is not allocated if the RGA is not used.
-> 
-> While at it, use dma_alloc_coherent to allocate the descriptors and get
-> rid of the virt_to_phys calls to get the physical addresses.
-> 
-> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
-> ---
->   drivers/media/platform/rockchip/rga/rga-buf.c | 78 +++++++++++++++++----------
->   drivers/media/platform/rockchip/rga/rga-hw.c  | 26 ++++-----
->   drivers/media/platform/rockchip/rga/rga.c     | 31 ++---------
->   drivers/media/platform/rockchip/rga/rga.h     | 21 ++++++--
->   4 files changed, 86 insertions(+), 70 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-> index df5ebc90e32d..e8dcc0d5cb90 100644
-> --- a/drivers/media/platform/rockchip/rga/rga-buf.c
-> +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-> @@ -55,16 +55,54 @@ rga_queue_setup(struct vb2_queue *vq,
->   	return 0;
->   }
->   
-> +static int rga_buf_init(struct vb2_buffer *vb)
-> +{
-> +	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> +	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
-> +	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> +	struct rockchip_rga *rga = ctx->rga;
-> +	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
-> +	int n_desc = 0;
-> +
-> +	n_desc = DIV_ROUND_UP(f->size, PAGE_SIZE);
-> +
-> +	rbuf->n_desc = n_desc;
-> +	rbuf->dma_desc = dma_alloc_coherent(rga->dev,
-> +					    rbuf->n_desc * sizeof(*rbuf->dma_desc),
-> +					    &rbuf->dma_desc_pa, GFP_KERNEL);
-> +	if (!rbuf->dma_desc)
-> +		return -ENOMEM;
-> +
-> +	return 0;
-> +}
-> +
->   static int rga_buf_prepare(struct vb2_buffer *vb)
->   {
-> +	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> +	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
->   	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->   	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
-> +	struct rockchip_rga *rga = ctx->rga;
-> +	int n_desc;
->   
->   	if (IS_ERR(f))
->   		return PTR_ERR(f);
->   
->   	vb2_set_plane_payload(vb, 0, f->size);
->   
-> +	/* Create local MMU table for RGA */
-> +	n_desc = fill_descriptors(rbuf->dma_desc,
-> +				  vb2_dma_sg_plane_desc(vb, 0));
-> +	if (n_desc < 0) {
-> +		dev_err(rga->dev, "Failed to map buffer");
-> +		return n_desc;
-> +	}
-> +
-> +	/* sync local MMU table for RGA */
-> +	dma_sync_single_for_device(rga->dev, rbuf->dma_desc_pa,
-> +				   n_desc * sizeof(*rbuf->dma_desc),
-> +				   DMA_BIDIRECTIONAL);
 
-This sync is still wrong (and DMA_API_DEBUG should complain), but also 
-now pointless if you're using a coherent buffer (as is the one in 
-rga_cmd_set(), seemingly)
-
-Thanks,
-Robin.
-
-> +
->   	return 0;
->   }
->   
-> @@ -76,6 +114,17 @@ static void rga_buf_queue(struct vb2_buffer *vb)
->   	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
->   }
->   
-> +static void rga_buf_cleanup(struct vb2_buffer *vb)
-> +{
-> +	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> +	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
-> +	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> +	struct rockchip_rga *rga = ctx->rga;
-> +
-> +	dma_free_coherent(rga->dev, rbuf->n_desc * sizeof(*rbuf->dma_desc),
-> +			  rbuf->dma_desc, rbuf->dma_desc_pa);
-> +}
-> +
->   static void rga_buf_return_buffers(struct vb2_queue *q,
->   				   enum vb2_buffer_state state)
->   {
-> @@ -119,37 +168,12 @@ static void rga_buf_stop_streaming(struct vb2_queue *q)
->   
->   const struct vb2_ops rga_qops = {
->   	.queue_setup = rga_queue_setup,
-> +	.buf_init = rga_buf_init,
->   	.buf_prepare = rga_buf_prepare,
->   	.buf_queue = rga_buf_queue,
-> +	.buf_cleanup = rga_buf_cleanup,
->   	.wait_prepare = vb2_ops_wait_prepare,
->   	.wait_finish = vb2_ops_wait_finish,
->   	.start_streaming = rga_buf_start_streaming,
->   	.stop_streaming = rga_buf_stop_streaming,
->   };
-> -
-> -/* RGA MMU is a 1-Level MMU, so it can't be used through the IOMMU API.
-> - * We use it more like a scatter-gather list.
-> - */
-> -void rga_buf_map(struct vb2_buffer *vb)
-> -{
-> -	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> -	struct rockchip_rga *rga = ctx->rga;
-> -	struct rga_dma_desc *pages;
-> -	unsigned int num_desc = 0;
-> -
-> -	if (vb->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
-> -		pages = rga->src_mmu_pages;
-> -	else
-> -		pages = rga->dst_mmu_pages;
-> -
-> -	/* Create local MMU table for RGA */
-> -	num_desc = fill_descriptors(pages, vb2_dma_sg_plane_desc(vb, 0));
-> -	if (num_desc < 0) {
-> -		dev_err(rga->dev, "Failed to map buffer");
-> -		return;
-> -	}
-> -
-> -	/* sync local MMU table for RGA */
-> -	dma_sync_single_for_device(rga->dev, virt_to_phys(pages),
-> -				   num_desc * sizeof(*pages), DMA_BIDIRECTIONAL);
-> -}
-> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-> index aaa96f256356..b391d97d4632 100644
-> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
-> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-> @@ -119,40 +119,40 @@ static struct rga_addr_offset *rga_lookup_draw_pos(struct
->   	return NULL;
->   }
->   
-> -static void rga_cmd_set_src_addr(struct rga_ctx *ctx, void *mmu_pages)
-> +static void rga_cmd_set_src_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
->   {
->   	struct rockchip_rga *rga = ctx->rga;
->   	u32 *dest = rga->cmdbuf_virt;
->   	unsigned int reg;
->   
->   	reg = RGA_MMU_SRC_BASE - RGA_MODE_BASE_REG;
-> -	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-> +	dest[reg >> 2] = dma_addr >> 4;
->   
->   	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
->   	dest[reg >> 2] |= 0x7;
->   }
->   
-> -static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, void *mmu_pages)
-> +static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
->   {
->   	struct rockchip_rga *rga = ctx->rga;
->   	u32 *dest = rga->cmdbuf_virt;
->   	unsigned int reg;
->   
->   	reg = RGA_MMU_SRC1_BASE - RGA_MODE_BASE_REG;
-> -	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-> +	dest[reg >> 2] = dma_addr >> 4;
->   
->   	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
->   	dest[reg >> 2] |= 0x7 << 4;
->   }
->   
-> -static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, void *mmu_pages)
-> +static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
->   {
->   	struct rockchip_rga *rga = ctx->rga;
->   	u32 *dest = rga->cmdbuf_virt;
->   	unsigned int reg;
->   
->   	reg = RGA_MMU_DST_BASE - RGA_MODE_BASE_REG;
-> -	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-> +	dest[reg >> 2] = dma_addr >> 4;
->   
->   	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
->   	dest[reg >> 2] |= 0x7 << 8;
-> @@ -375,20 +375,21 @@ static void rga_cmd_set_mode(struct rga_ctx *ctx)
->   	dest[(RGA_MODE_CTRL - RGA_MODE_BASE_REG) >> 2] = mode.val;
->   }
->   
-> -static void rga_cmd_set(struct rga_ctx *ctx)
-> +static void rga_cmd_set(struct rga_ctx *ctx,
-> +			struct rga_vb_buffer *src, struct rga_vb_buffer *dst)
->   {
->   	struct rockchip_rga *rga = ctx->rga;
->   
->   	memset(rga->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
->   
-> -	rga_cmd_set_src_addr(ctx, rga->src_mmu_pages);
-> +	rga_cmd_set_src_addr(ctx, src->dma_desc_pa);
->   	/*
->   	 * Due to hardware bug,
->   	 * src1 mmu also should be configured when using alpha blending.
->   	 */
-> -	rga_cmd_set_src1_addr(ctx, rga->dst_mmu_pages);
-> +	rga_cmd_set_src1_addr(ctx, dst->dma_desc_pa);
->   
-> -	rga_cmd_set_dst_addr(ctx, rga->dst_mmu_pages);
-> +	rga_cmd_set_dst_addr(ctx, dst->dma_desc_pa);
->   	rga_cmd_set_mode(ctx);
->   
->   	rga_cmd_set_trans_info(ctx);
-> @@ -400,11 +401,12 @@ static void rga_cmd_set(struct rga_ctx *ctx)
->   		PAGE_SIZE, DMA_BIDIRECTIONAL);
->   }
->   
-> -void rga_hw_start(struct rockchip_rga *rga)
-> +void rga_hw_start(struct rockchip_rga *rga,
-> +		  struct rga_vb_buffer *src, struct rga_vb_buffer *dst)
->   {
->   	struct rga_ctx *ctx = rga->curr;
->   
-> -	rga_cmd_set(ctx);
-> +	rga_cmd_set(ctx, src, dst);
->   
->   	rga_write(rga, RGA_SYS_CTRL, 0x00);
->   
-> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-> index 25f5b5eebf13..f18fccc7b204 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.c
-> +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -45,10 +45,7 @@ static void device_run(void *prv)
->   	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
->   	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
->   
-> -	rga_buf_map(&src->vb2_buf);
-> -	rga_buf_map(&dst->vb2_buf);
-> -
-> -	rga_hw_start(rga);
-> +	rga_hw_start(rga, vb_to_rga(src), vb_to_rga(dst));
->   
->   	spin_unlock_irqrestore(&rga->ctrl_lock, flags);
->   }
-> @@ -101,7 +98,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
->   	src_vq->drv_priv = ctx;
->   	src_vq->ops = &rga_qops;
->   	src_vq->mem_ops = &vb2_dma_sg_memops;
-> -	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-> +	src_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
->   	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
->   	src_vq->lock = &ctx->rga->mutex;
->   	src_vq->dev = ctx->rga->v4l2_dev.dev;
-> @@ -115,7 +112,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
->   	dst_vq->drv_priv = ctx;
->   	dst_vq->ops = &rga_qops;
->   	dst_vq->mem_ops = &vb2_dma_sg_memops;
-> -	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-> +	dst_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
->   	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
->   	dst_vq->lock = &ctx->rga->mutex;
->   	dst_vq->dev = ctx->rga->v4l2_dev.dev;
-> @@ -872,26 +869,13 @@ static int rga_probe(struct platform_device *pdev)
->   		goto rel_m2m;
->   	}
->   
-> -	rga->src_mmu_pages =
-> -		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-> -	if (!rga->src_mmu_pages) {
-> -		ret = -ENOMEM;
-> -		goto free_dma;
-> -	}
-> -	rga->dst_mmu_pages =
-> -		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-> -	if (!rga->dst_mmu_pages) {
-> -		ret = -ENOMEM;
-> -		goto free_src_pages;
-> -	}
-> -
->   	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
->   	def_frame.size = def_frame.stride * def_frame.height;
->   
->   	ret = video_register_device(vfd, VFL_TYPE_VIDEO, -1);
->   	if (ret) {
->   		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
-> -		goto free_dst_pages;
-> +		goto free_dma;
->   	}
->   
->   	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-> @@ -899,10 +883,6 @@ static int rga_probe(struct platform_device *pdev)
->   
->   	return 0;
->   
-> -free_dst_pages:
-> -	free_pages((unsigned long)rga->dst_mmu_pages, 3);
-> -free_src_pages:
-> -	free_pages((unsigned long)rga->src_mmu_pages, 3);
->   free_dma:
->   	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
->   		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-> @@ -925,9 +905,6 @@ static void rga_remove(struct platform_device *pdev)
->   	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
->   		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
->   
-> -	free_pages((unsigned long)rga->src_mmu_pages, 3);
-> -	free_pages((unsigned long)rga->dst_mmu_pages, 3);
-> -
->   	v4l2_info(&rga->v4l2_dev, "Removing\n");
->   
->   	v4l2_m2m_release(rga->m2m_dev);
-> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
-> index 22f7da28ac51..ae984d5a236d 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.h
-> +++ b/drivers/media/platform/rockchip/rga/rga.h
-> @@ -85,15 +85,27 @@ struct rockchip_rga {
->   	struct rga_ctx *curr;
->   	dma_addr_t cmdbuf_phy;
->   	void *cmdbuf_virt;
-> -	struct rga_dma_desc *src_mmu_pages;
-> -	struct rga_dma_desc *dst_mmu_pages;
->   };
->   
-> +struct rga_vb_buffer {
-> +	struct vb2_v4l2_buffer vb_buf;
-> +	struct list_head queue;
-> +
-> +	/* RGA MMU mapping for this buffer */
-> +	struct rga_dma_desc *dma_desc;
-> +	dma_addr_t dma_desc_pa;
-> +	int n_desc;
-> +};
-> +
-> +static inline struct rga_vb_buffer *vb_to_rga(struct vb2_v4l2_buffer *vb)
-> +{
-> +	return container_of(vb, struct rga_vb_buffer, vb_buf);
-> +}
-> +
->   struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
->   
->   /* RGA Buffers Manage */
->   extern const struct vb2_ops rga_qops;
-> -void rga_buf_map(struct vb2_buffer *vb);
->   
->   /* RGA Hardware */
->   static inline void rga_write(struct rockchip_rga *rga, u32 reg, u32 value)
-> @@ -114,6 +126,7 @@ static inline void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask)
->   	rga_write(rga, reg, temp);
->   };
->   
-> -void rga_hw_start(struct rockchip_rga *rga);
-> +void rga_hw_start(struct rockchip_rga *rga,
-> +		  struct rga_vb_buffer *src, struct rga_vb_buffer *dst);
->   
->   #endif
+On Wed, 14 Jun 2023 20:10:43 +0200, Maximilian Weigand wrote:
+> The driver reads battery properties every 8 seconds. In order to prevent
+> problems with wrong property values right after resume, trigger an
+> update of those properties on resuming the system and restart the
+> 8-second interval from there.
 > 
+> 
+
+Applied, thanks!
+
+[1/1] power: supply: rk817: query battery properties right after resume
+      commit: 1769142a14c34a8acd67657bc3e637f22f75e026
+
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
