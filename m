@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94A13CA0EF6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B309CA0EF3
 	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 12:41:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l1uf3lM2kCke9HoicsTrMuVrdKmoj+woQen2bBuIw9Y=; b=0ox/W27TLpwrAJ
-	Mcup72wQ2qJOMEQbEiMgNliGIHHA7ECu0KSeZpRTep3FCZLaLA/nHHL3TP9cb9PKamVmgDcbYXukv
-	26I649ALBv/+PL/mTpSou1FWDYMeQwhdbJv7d+12NVa3/6Hh/0HLd0YiJLBLB/W7d1h1ReqORgW33
-	HWs6p34SKbgCm6MMQFBFKd3OEdKU0XJf3TXnASUe/cdNuBojI1blqIogVyGVV9TJpAvNqJRzpf01O
-	mA/1EZ5uI9ESiKNvnvY9EuF9IbjT5k9FeD8zYzRDUOh2pOO/9KFsbYg1gnobpkTnE5jeLj5ImkP7x
-	PgR4iiXlnALnLCsavHpA==;
+	List-Owner; bh=6TKZIWb2fI2UP1ygdekMqcIu2jTJWHpHQvwAE4ypgVQ=; b=Tw6Tm5BraGbz04
+	BbrJzmkhKYfkAIsyw/cNihc5oung7OsNyIh5fYB28C9ZBH+YtsYaR3ym+G3TGOTQ9rXYqOYqfL+YD
+	/m6eDarXSfNjj+QVDJMfztNKQRElw80QhJsKOqmq1wEdga7Kou7sBi/n1k1Lj13jFNsM9Zp/WmwiZ
+	GFnQ3L5V4soAYkfZJqViGUybflpb/lm9cz8p58Yj1ArUplwuQQ9xQauwoPPQOEawuZEPBYnKg8Ufp
+	eCnNT5dWFzlf2l0KSgr2AAe+Sa4C3elFzHiMXr3jbSM5vJk6N176g1vWe5kRgoQN0tAdFPX+Gxyt/
+	2r6Ww+vlU8KkhWjImmKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qglfJ-008Lst-0h;
-	Thu, 14 Sep 2023 12:41:49 +0000
+	id 1qglfK-008LvI-2o;
+	Thu, 14 Sep 2023 12:41:50 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qglfA-008Lk2-0Z
+	id 1qglfD-008LmW-1Q
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 14 Sep 2023 12:41:40 +0000
+	Thu, 14 Sep 2023 12:41:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Pi7Q3A2duNrC8i4QkYJ1mq/ohudCSbgt3G0y8x5xc3E=; b=ZzDUW9+kqkQGfxxxJ4iAhM1zcE
-	/qQv6LB3HsIfAFn3gpQ093vFF3m+7aNKVEBN7VLHLo0dXUZI3z7gQqzGw8uCf9LbfRNehbDVIdCU5
-	cNU/7pGMguGVbDPzGTF2YhZTDiCuGwkJkk4TDQNFkRORG7Fk+RWc7XH3DnJ6noPSBmfkuXLEizw+v
-	dp/bWh1jRLpvCF5+jQ6wul2EYT1rXzvYqAX99ZSM7c8yhXXCEQsJVr97OMrmWBu7cM5hSHQbvHt7Z
-	AAiZgeBLKHGAjjmEUnAO6XpYZUjVt0R808VbNdmTZri0mm4JKYRqh0aGV2hACXz9CNzFJ/UaoMWfy
-	5UX3jLgA==;
+	bh=IvaNns+jNBFjVmZEAP1LItgS+lmharW1+qmtS1FQ9eE=; b=C81rmAVmN+WUiejzzkjEd6un6I
+	iMhRf+oGJghvFvQy93cyoJ/OMkprCB51LoQApXCn0MYMNZi7RpMLgkke5loCPcUwwvgCskJFp30n1
+	lmBVUE5RO4QaTFQ8wXtep1ahU2xLdej7c9tMkw9+iUZW+NRgXEtQrVF4IPWoyTQ4BamK0j9G9IJlM
+	ReG+e+C5PuzFuc+X8ztWleVzmlpCfqJo9Msryo0KFQO6i5ETyT0aFB5wGkA8gr4M/cWgljrXQ55/E
+	VJBkg8eZHorM2CtRskRVAsQ+/Y6ow+rYgHNQ0wjHWLp7MUO4YJMh6Qr4vyN6qfTOWC8rtCFuey2Er
+	9JDCYncw==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qglf5-007se4-11
+	id 1qglf6-007seX-0o
 	for linux-rockchip@lists.infradead.org;
-	Thu, 14 Sep 2023 12:41:38 +0000
+	Thu, 14 Sep 2023 12:41:40 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qglet-0008Mc-Bk; Thu, 14 Sep 2023 14:41:23 +0200
+	id 1qglet-0008Mc-Ds; Thu, 14 Sep 2023 14:41:23 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Thu, 14 Sep 2023 14:40:41 +0200
-Subject: [PATCH 09/13] media: rockchip: rga: add local variable for
- pix_format
+Date: Thu, 14 Sep 2023 14:40:42 +0200
+Subject: [PATCH 10/13] media: rockchip: rga: use macros for testing buffer
+ type
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v1-9-abfd77260ae3@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v1-10-abfd77260ae3@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -70,8 +70,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_134136_921861_CBFD65FC 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20230914_134138_089401_FFF2834B 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,125 +88,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The local variable allows to simplify the accessed to the format and
-makes it easier to change the type of the format.
+Use the provided V4L2_TYPE_IS_{OUTPUT,CAPTURE} macros to check if the
+buffer or queue is OUTPUT or CAPTURE. The macros work also work for the
+_MPLANE buffer and queue types and make it easier to switch to the
+multi-planar API.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 55 ++++++++++++++++++-------------
- 1 file changed, 32 insertions(+), 23 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 4579023af2ff..303ee762bec4 100644
+index 303ee762bec4..516069d720fa 100644
 --- a/drivers/media/platform/rockchip/rga/rga.c
 +++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -446,6 +446,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+@@ -342,14 +342,11 @@ static struct rga_frame def_frame = {
  
- static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type)
  {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
- 	struct rga_ctx *ctx = prv;
- 	struct vb2_queue *vq;
- 	struct rga_frame *frm;
-@@ -457,47 +458,49 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	if (IS_ERR(frm))
- 		return PTR_ERR(frm);
- 
--	f->fmt.pix.width = frm->width;
--	f->fmt.pix.height = frm->height;
--	f->fmt.pix.field = V4L2_FIELD_NONE;
--	f->fmt.pix.pixelformat = frm->fmt->fourcc;
--	f->fmt.pix.bytesperline = frm->stride;
--	f->fmt.pix.sizeimage = frm->size;
--	f->fmt.pix.colorspace = frm->colorspace;
-+	pix_fmt->width = frm->width;
-+	pix_fmt->height = frm->height;
-+	pix_fmt->field = V4L2_FIELD_NONE;
-+	pix_fmt->pixelformat = frm->fmt->fourcc;
-+	pix_fmt->bytesperline = frm->stride;
-+	pix_fmt->sizeimage = frm->size;
-+	pix_fmt->colorspace = frm->colorspace;
- 
- 	return 0;
+-	switch (type) {
+-	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
++	if (V4L2_TYPE_IS_OUTPUT(type))
+ 		return &ctx->in;
+-	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
++	if (V4L2_TYPE_IS_CAPTURE(type))
+ 		return &ctx->out;
+-	default:
+-		return ERR_PTR(-EINVAL);
+-	}
++	return ERR_PTR(-EINVAL);
  }
  
- static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
- 	struct rga_fmt *fmt;
- 
- 	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
- 	if (!fmt)
- 		fmt = &formats[0];
- 
--	f->fmt.pix.pixelformat = fmt->fourcc;
-+	pix_fmt->pixelformat = fmt->fourcc;
- 
--	f->fmt.pix.field = V4L2_FIELD_NONE;
-+	pix_fmt->field = V4L2_FIELD_NONE;
- 
--	f->fmt.pix.width = clamp(f->fmt.pix.width,
--				 (u32)MIN_WIDTH, (u32)MAX_WIDTH);
--	f->fmt.pix.height = clamp(f->fmt.pix.height,
--				  (u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
-+	pix_fmt->width = clamp(pix_fmt->width,
-+			       (u32)MIN_WIDTH, (u32)MAX_WIDTH);
-+	pix_fmt->height = clamp(pix_fmt->height,
-+				(u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
- 
- 	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
--		f->fmt.pix.bytesperline = f->fmt.pix.width;
-+		pix_fmt->bytesperline = pix_fmt->width;
- 	else
--		f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
-+		pix_fmt->bytesperline = (pix_fmt->width * fmt->depth) >> 3;
- 
--	f->fmt.pix.sizeimage =
--		f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
-+	pix_fmt->sizeimage =
-+		pix_fmt->height * (pix_fmt->width * fmt->depth) >> 3;
- 
- 	return 0;
- }
- 
- static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
- 	struct rga_ctx *ctx = prv;
- 	struct rockchip_rga *rga = ctx->rga;
- 	struct vb2_queue *vq;
-@@ -518,12 +521,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	frm = rga_get_frame(ctx, f->type);
- 	if (IS_ERR(frm))
- 		return PTR_ERR(frm);
--	frm->width = f->fmt.pix.width;
--	frm->height = f->fmt.pix.height;
--	frm->size = f->fmt.pix.sizeimage;
--	frm->fmt = rga_fmt_find(f->fmt.pix.pixelformat);
--	frm->stride = f->fmt.pix.bytesperline;
--	frm->colorspace = f->fmt.pix.colorspace;
-+	frm->width = pix_fmt->width;
-+	frm->height = pix_fmt->height;
-+	frm->size = pix_fmt->sizeimage;
-+	frm->fmt = rga_fmt_find(pix_fmt->pixelformat);
-+	frm->stride = pix_fmt->bytesperline;
-+	frm->colorspace = pix_fmt->colorspace;
- 
- 	/* Reset crop settings */
- 	frm->crop.left = 0;
-@@ -531,6 +534,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	frm->crop.width = frm->width;
- 	frm->crop.height = frm->height;
- 
-+	v4l2_dbg(debug, 1, &rga->v4l2_dev,
-+		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
-+		  V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
-+		  &frm->fmt->fourcc, frm->width, frm->height,
-+		  frm->stride, frm->size);
-+
- 	return 0;
- }
- 
+ static int rga_open(struct file *file)
+@@ -557,21 +554,21 @@ static int vidioc_g_selection(struct file *file, void *prv,
+ 	switch (s->target) {
+ 	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+ 	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++		if (!V4L2_TYPE_IS_CAPTURE(s->type))
+ 			return -EINVAL;
+ 		break;
+ 	case V4L2_SEL_TGT_CROP_DEFAULT:
+ 	case V4L2_SEL_TGT_CROP_BOUNDS:
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++		if (!V4L2_TYPE_IS_OUTPUT(s->type))
+ 			return -EINVAL;
+ 		break;
+ 	case V4L2_SEL_TGT_COMPOSE:
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++		if (!V4L2_TYPE_IS_CAPTURE(s->type))
+ 			return -EINVAL;
+ 		use_frame = true;
+ 		break;
+ 	case V4L2_SEL_TGT_CROP:
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++		if (!V4L2_TYPE_IS_OUTPUT(s->type))
+ 			return -EINVAL;
+ 		use_frame = true;
+ 		break;
+@@ -609,7 +606,7 @@ static int vidioc_s_selection(struct file *file, void *prv,
+ 		 * COMPOSE target is only valid for capture buffer type, return
+ 		 * error for output buffer type
+ 		 */
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++		if (!V4L2_TYPE_IS_CAPTURE(s->type))
+ 			return -EINVAL;
+ 		break;
+ 	case V4L2_SEL_TGT_CROP:
+@@ -617,7 +614,7 @@ static int vidioc_s_selection(struct file *file, void *prv,
+ 		 * CROP target is only valid for output buffer type, return
+ 		 * error for capture buffer type
+ 		 */
+-		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++		if (!V4L2_TYPE_IS_OUTPUT(s->type))
+ 			return -EINVAL;
+ 		break;
+ 	/*
 
 -- 
 2.39.2
