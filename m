@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE6FEEAA41
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEEC4EEAA42
 	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 13:37:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,37 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=naEuajiXHLvnJEZifA3AmSkAApmiVFujOIoVQ24pnIY=; b=dJmcfqVLUHue7j
-	pcX9N7sg3NKnfI3UIV2Bmpw1aXHnOGPaiO7Ph1wFlMA5EJkgkt5/fMqjcdthtXs02tK/K7Qp5OTiQ
-	eyxaQyoZsptnbxIXhCYk9vtshl3lnDqMeY7K7eZG7wR8sPTvW1UM/irzCFHhPi/ubewrmAm0g4ytA
-	p4Qe2aolqxjE4TVvILeGRIE92HTbJyfb2evQOPKvI3JiPJ447aGQv/nGWV7bTSFhdlch3ECRaqQtS
-	ijDUjo50QMsYGywWLFb0DXPODpbSTqQ2UkG07CCiiTa0CUKXmhdfckyGI+VHJKtNlLqpUsjkbYk24
-	20zbngLk0BkNzwRgE1lA==;
+	List-Owner; bh=1mof2ST7V+2L22k3ZUxu/IyVSJqMYjgtDQyFvCiEN+Y=; b=tFLpm21PB2ZILa
+	Kpxhfqi2pkZ7NyMOboz3v7WB19jYhrEEepWMud4Rk5+jWyaVRDkhOXIjSl352JiKE8kEhwP3YxxCa
+	UEB0d4LVXztklUUiSwbuVgS78yAnb8695FVtWghtUkBMclF2fj0LctFCBxQnkRCqofMHnx2Qz73/8
+	YFT20GEF8IyG5tJl92CYNaugsbfgVaItSjvS5FBTzy7DAHSDQPpDagGMK/uXo5dXyNsulYdxscFfU
+	+nqUmErkKkxWQ28aHZBneNHEZOJAmdrfBIsxca4UBE8rz2KXGvKfTmZKVDhEOZCNFoge1QlM5SELU
+	xe5PdpWA9LA/OAIrKt0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmWk-008Vhw-25;
-	Thu, 14 Sep 2023 13:37:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgmWo-008VlY-09;
+	Thu, 14 Sep 2023 13:37:06 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTZ-008SJY-2M;
+	id 1qgmTg-008SR0-10;
+	Thu, 14 Sep 2023 13:33:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=oTtmKjE7vQhNKhTumrx56oub9WvRubSN6lcnNjeiil4=; b=QwnVfPmYSOl9X54+bFKvCUeVWt
+	U++jIxRV3gmgFNDEYox93GFYB8FRb7q1oMMzIyRxwuLW5LhjWeOU2ZGDK0l3aRuGl1R2QEVCirn5J
+	1KrhJW2uuc+2iNX7t66jdw9SjwS/TWhqTsrGuKHtvtfavw/W1S9L7M9w3ukfylGtKsHKcQJt+PsBc
+	6ECS8CSTHsu+5FY/FPsIsYvNLGBgTWe5nBMVG6fLkQueNpGalIWSXjT47uDt8e04y/RciuUrmOAyi
+	MjPfZKZH0swGKZJB9Spl30PhzXs8Wph2oCRwTnYulzaYsSNMOjnFSj+hB3D2cdHrE1ciQwata/ezj
+	hwJBVSdQ==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgmTb-007uhO-0w;
 	Thu, 14 Sep 2023 13:33:50 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A9FD66607378;
-	Thu, 14 Sep 2023 14:33:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 553316607382;
+	Thu, 14 Sep 2023 14:33:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698424;
-	bh=BcQqOPN9BFM33EPpszUjysR3LWc4nekHpVvypyNeDb4=;
+	s=mail; t=1694698427;
+	bh=cXivZNqToe41YcZuXIOZnOz7dFiXtOZiRZUwxPYGOCA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HGrzjpCpmFxjKl+xk12MOrY+MAGIB4u3LD8uzE5j+yG7VVUQIygb4veFQ1xCJm2qN
-	 7N6Tamio7lxOVD8pfP3gE5v7dD/QnlDk4KY8kejzl3Uo1uBCYl5lQO1D2EKwZ2ub9Y
-	 LsMZl7uTJvHisiPba1wwyGF1/Bm040tvPT+fpBf9l94FVfVavC3Prnf5TqF+dz3FVR
-	 VhZTziEGD29c1Z47nVHkMzJHfNDvohrqsrqkAelEfBTjRWeqbZFDfPxR6z5eo4TYlL
-	 n8okpZR62/R9k08yiq/rRBS/x7JdONAbNeIjEb2VEESBf0BXjS9Ww6GjCSrbAIh8DC
-	 ROYWEhkR+lq+w==
+	b=BW/4Li6K5XG6+3vbXDnIR7ChVsl6ZXW8TLElpv89AbHI8KTYjXFsrimfikBDy3zpD
+	 5yeVs584mxICnpxmqLwLwpDIlut30f3mPncqh1kmfrMch623WJsC0kxkJkCkhQUsI1
+	 l2xPjcNq/AQsUJKsz62nZwvcK9WUJfRVElhEI4BS3dCRzTxJtt9dzb3wCP1UDPInax
+	 I8NPTG3IZ9ZAXYa7ukFtL19FCGjYbh6Z8Acdkxvi5wmEkzQbtcucrmE3J2E+NALG1H
+	 vzxl3c6XqyR4qOAjjgUgoqNg5hReh+N4/lV4sqBQICAWvk/ZxFzub6griqozOykHD/
+	 V76u5/javVwJQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 24/49] media: pci: dt3155: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:32:58 +0200
-Message-Id: <20230914133323.198857-25-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 31/49] media: nxp: Stop direct calls to queue num_buffers field
+Date: Thu, 14 Sep 2023 15:33:05 +0200
+Message-Id: <20230914133323.198857-32-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063345_929029_0CCA37A4 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20230914_143348_993277_0B4DBD1C 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +107,39 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/pci/dt3155/dt3155.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/pci/dt3155/dt3155.c b/drivers/media/pci/dt3155/dt3155.c
-index 548156b199cc..d3abb0e093c1 100644
---- a/drivers/media/pci/dt3155/dt3155.c
-+++ b/drivers/media/pci/dt3155/dt3155.c
-@@ -126,10 +126,11 @@ dt3155_queue_setup(struct vb2_queue *vq,
- 
+diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
+index 15049c6aab37..4c467fb82789 100644
+--- a/drivers/media/platform/nxp/imx7-media-csi.c
++++ b/drivers/media/platform/nxp/imx7-media-csi.c
+@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
+ 				      struct device *alloc_devs[])
  {
- 	struct dt3155_priv *pd = vb2_get_drv_priv(vq);
+ 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned size = pd->width * pd->height;
+ 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
+ 	unsigned int count = *nbuffers;
  
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 	if (*num_planes)
- 		return sizes[0] < size ? -EINVAL : 0;
- 	*num_planes = 1;
+@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
+ 			return -EINVAL;
+-		count += vq->num_buffers;
++		count += q_num_bufs;
+ 	}
+ 
+ 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
+ 
+ 	if (*nplanes)
+-		*nbuffers = (count < vq->num_buffers) ? 0 :
+-			count - vq->num_buffers;
++		*nbuffers = (count < q_num_bufs) ? 0 :
++			count - q_num_bufs;
+ 	else
+ 		*nbuffers = count;
+ 
 -- 
 2.39.2
 
