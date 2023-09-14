@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C7F3EEAA53
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 16:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF2BEEAA5F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 17:58:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FPLRwDjK4jotdTKbwBJQU7wT/vHztOramR2AY64hpj8=; b=ZEHeWl2SV2eyDc
-	jDVWjv+yyCAcvqj1qR48J7tIhYNJEddC9jkMYPeekqIIUgcP75TIKdangXZCKIe8HjfqABlFBk8YS
-	oIjaBSj33Bq28KmV2ELgwkBb6GH3BPGxeff2kdLJE9f7YWQybJxoYGSTgx2h2/BYoe+UazXgiPh8G
-	7JAhmfi0WjBUTomjimXczptJwCiyaE0IcOX0CR7vyf6hpXVmhQgJRBro60kNoptXHxmVKCEnxVLoR
-	kb/lDkYq+PZGqoZ2hdWXZ6m0YsQEDZQ6kZT+6llqFMJsx4D0LE0gbR4h3SfGspNaTGMa8hjDehh1p
-	9SorVB5pxT+V7BVT5f8A==;
+	List-Owner; bh=BazElBSStkQ+o76/SkZUb9Gw7YCdgyhuLtwaIDq4ejs=; b=bdu5v/0cYtMwzP
+	Dh5JXzVckpdiGrOawbJfXiZ7MXVo843eHSU+jA7+WUvjrYQ5I0TUKDkVtnPj1IdauMCDyB9+HoN7A
+	4sSMYE7poOfZe1pibHyDoAIr6Acr+QaGnZ6YdLk94mV8rO+3BC6ZhlggXi9/RYeGLQrCSpCRRrnn8
+	pY3smmmWfcEu00h/MzZFScILTFQXcZcg5dB7r//LDYAup5luWGCDFMpyqCwA0XtOpkXKnV8w2JfDT
+	lGm2S2y7XyHTE9Xq2NYPBxepf0ML8XaawEikOPwXIAs6TZW0OBOyHY3LBz9o6eFrBWJCvmju57/zY
+	exgNFPedO9eUoll3iLrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgooF-008rQA-0d;
-	Thu, 14 Sep 2023 16:03:15 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgqb6-0091X2-2s;
+	Thu, 14 Sep 2023 17:57:48 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgooC-008rOo-2I
+	id 1qgqb2-0091VH-2C
 	for linux-rockchip@lists.infradead.org;
-	Thu, 14 Sep 2023 16:03:14 +0000
-Received: from mercury (dyndsl-091-248-132-131.ewe-ip-backbone.de [91.248.132.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 246C0660734C;
-	Thu, 14 Sep 2023 17:03:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694707391;
-	bh=Lpo0D5uC86cqxCrdA6YYcvZKX2y1l4IotVy9sVD5T/I=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=fD6F73IQ9Q7/RyvDWXsECQ4MTFg4+R1Gp7rA5B8bfbOfTsrATd53jT7h99w4VXRGA
-	 wXthMaAOQ8M6NwD64yiK5g/o4nJeZZwnv8AuUqPaHBhLJ0UBfujxOX1kiJHnBjs1sK
-	 loLXb24hpyHy1Cn9T/Q7UYB69K6RmSH0ZrG+iaxSE8UeWhF58o4y3+HFvSiKb9FcPM
-	 gvKaWojS6OXvR+s9UMOexS4E4RkGzDYl6Ur1VOjthX9ATXTkDOE/Lg9DXI1ZPwm7QX
-	 Yqf3VVNZZXlDL1E/H2QiVH9Tj8bafsMly0M+EZEbg5wiwMy1TMzYK3uhQ5Pr+EGRbq
-	 9SxbUvjF+w9Ug==
-Received: by mercury (Postfix, from userid 1000)
-	id 920D6106098B; Thu, 14 Sep 2023 18:03:08 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Sebastian Reichel <sre@kernel.org>, 
- Maya Matuszczyk <maccraft123mc@gmail.com>, Lee Jones <lee@kernel.org>, 
- Chris Morgan <macromorgan@hotmail.com>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, stable@vger.kernel.org, 
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20230612143651.959646-2-frattaroli.nicolas@gmail.com>
-References: <20230612143651.959646-2-frattaroli.nicolas@gmail.com>
-Subject: Re: [PATCH] power: supply: rk817: Add missing module alias
-Message-Id: <169470738858.752995.6010965090137450989.b4-ty@collabora.com>
-Date: Thu, 14 Sep 2023 18:03:08 +0200
+	Thu, 14 Sep 2023 17:57:46 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1qgqao-0008Lj-O4; Thu, 14 Sep 2023 19:57:30 +0200
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1qgqai-006M98-RO; Thu, 14 Sep 2023 19:57:24 +0200
+Received: from mtr by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1qgqai-006ujW-OV; Thu, 14 Sep 2023 19:57:24 +0200
+Date: Thu, 14 Sep 2023 19:57:24 +0200
+From: Michael Tretter <m.tretter@pengutronix.de>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+Subject: Re: [PATCH 02/13] media: rockchip: rga: extract helper to fill
+ descriptors
+Message-ID: <20230914175724.GB1580188@pengutronix.de>
+Mail-Followup-To: Michael Tretter <m.tretter@pengutronix.de>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+References: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
+ <20230914-rockchip-rga-multiplanar-v1-2-abfd77260ae3@pengutronix.de>
+ <239e2853-f89f-20da-2492-7f6d33aede63@arm.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.12.3
+Content-Disposition: inline
+In-Reply-To: <239e2853-f89f-20da-2492-7f6d33aede63@arm.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mtr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_090312_940926_79DCAACB 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230914_105744_738047_9ABEDA76 
+X-CRM114-Status: GOOD (  36.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +98,156 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Robin,
 
-On Mon, 12 Jun 2023 16:36:52 +0200, Nicolas Frattaroli wrote:
-> Similar to the rk817 codec alias that was missing, the rk817 charger
-> driver is missing a module alias as well. This absence prevents the
-> driver from autoprobing on OF systems when it is built as a module.
+On Thu, 14 Sep 2023 16:06:27 +0100, Robin Murphy wrote:
+> On 2023-09-14 13:40, Michael Tretter wrote:
+> > The IOMMU of the RGA is programmed with a list of DMA descriptors that
+> > contain an 32 bit address per 4k page in the video buffers. The address
+> > in the descriptor points to the start address of the page.
+> > 
+> > Introduce 'struct rga_dma_desc' to make the handling of the DMA
+> > descriptors explicit instead of hiding them behind standard types.
+> > 
+> > As the descriptors only handle 32 bit addresses, addresses above 4 GB
+> > cannot be addressed. If this is detected, stop filling the descriptor
+> > list and report an error.
 > 
-> Add the right MODULE_ALIAS to fix this.
+> That sounds unnecessary, since the only DMA addresses the RGA should be
+> seeing are those from a dma_map_sg() call using the RGA device itself, and
+> that would have failed if it was unable to provide a valid DMA address for
+> the device.
 > 
+> The existing rga_buf_map() code is so clearly wrong I can't tell whether
+> that mapping is done somewhere out in the core framework or whether the
+> driver's supposed to be doing it for itself.
+
+The sg_table is filled by dma_map_sgtable in
+drivers/media/common/videobuf2/videobuf2-dma-sg.c.
+
+Do you suggest to just drop the check for the addresses or is there something
+fundamentally wrong with filling the descriptor list in the driver? Can you
+explain what exactly is wrong with this code and do you have a pointer how to
+implement this correctly?
+
+Thanks,
+
+Michael
+
 > 
-> [...]
-
-Applied, thanks!
-
-[1/1] power: supply: rk817: Add missing module alias
-      commit: cbcdfbf5a6cd66e47e5ee5d49c4c5a27a07ba082
-
-Best regards,
--- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
-
+> Thanks,
+> Robin.
+> 
+> > While at it, use provided helpers for iterating the sg_table instead of
+> > manually calculating the DMA addresses.
+> > 
+> > Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+> > ---
+> >   drivers/media/platform/rockchip/rga/rga-buf.c | 47 +++++++++++++++------------
+> >   drivers/media/platform/rockchip/rga/rga.h     |  8 +++--
+> >   2 files changed, 33 insertions(+), 22 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+> > index 81508ed5abf3..df5ebc90e32d 100644
+> > --- a/drivers/media/platform/rockchip/rga/rga-buf.c
+> > +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+> > @@ -5,6 +5,7 @@
+> >    */
+> >   #include <linux/pm_runtime.h>
+> > +#include <linux/scatterlist.h>
+> >   #include <media/v4l2-device.h>
+> >   #include <media/v4l2-ioctl.h>
+> > @@ -15,6 +16,25 @@
+> >   #include "rga-hw.h"
+> >   #include "rga.h"
+> > +static int fill_descriptors(struct rga_dma_desc *desc, struct sg_table *sgt)
+> > +{
+> > +	struct sg_dma_page_iter iter;
+> > +	struct rga_dma_desc *tmp = desc;
+> > +	unsigned int num_desc = 0;
+> > +	dma_addr_t addr;
+> > +
+> > +	for_each_sgtable_dma_page(sgt, &iter, 0) {
+> > +		addr = sg_page_iter_dma_address(&iter);
+> > +		if (upper_32_bits(addr) != 0L)
+> > +			return -1;
+> > +		tmp->addr = lower_32_bits(addr);
+> > +		tmp++;
+> > +		num_desc++;
+> > +	}
+> > +
+> > +	return num_desc;
+> > +}
+> > +
+> >   static int
+> >   rga_queue_setup(struct vb2_queue *vq,
+> >   		unsigned int *nbuffers, unsigned int *nplanes,
+> > @@ -114,11 +134,8 @@ void rga_buf_map(struct vb2_buffer *vb)
+> >   {
+> >   	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> >   	struct rockchip_rga *rga = ctx->rga;
+> > -	struct sg_table *sgt;
+> > -	struct scatterlist *sgl;
+> > -	unsigned int *pages;
+> > -	unsigned int address, len, i, p;
+> > -	unsigned int mapped_size = 0;
+> > +	struct rga_dma_desc *pages;
+> > +	unsigned int num_desc = 0;
+> >   	if (vb->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> >   		pages = rga->src_mmu_pages;
+> > @@ -126,23 +143,13 @@ void rga_buf_map(struct vb2_buffer *vb)
+> >   		pages = rga->dst_mmu_pages;
+> >   	/* Create local MMU table for RGA */
+> > -	sgt = vb2_plane_cookie(vb, 0);
+> > -
+> > -	for_each_sg(sgt->sgl, sgl, sgt->nents, i) {
+> > -		len = sg_dma_len(sgl) >> PAGE_SHIFT;
+> > -		address = sg_phys(sgl);
+> > -
+> > -		for (p = 0; p < len; p++) {
+> > -			dma_addr_t phys = address +
+> > -					  ((dma_addr_t)p << PAGE_SHIFT);
+> > -
+> > -			pages[mapped_size + p] = phys;
+> > -		}
+> > -
+> > -		mapped_size += len;
+> > +	num_desc = fill_descriptors(pages, vb2_dma_sg_plane_desc(vb, 0));
+> > +	if (num_desc < 0) {
+> > +		dev_err(rga->dev, "Failed to map buffer");
+> > +		return;
+> >   	}
+> >   	/* sync local MMU table for RGA */
+> >   	dma_sync_single_for_device(rga->dev, virt_to_phys(pages),
+> > -				   8 * PAGE_SIZE, DMA_BIDIRECTIONAL);
+> > +				   num_desc * sizeof(*pages), DMA_BIDIRECTIONAL);
+> >   }
+> > diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
+> > index 5fa9d2f366dc..22f7da28ac51 100644
+> > --- a/drivers/media/platform/rockchip/rga/rga.h
+> > +++ b/drivers/media/platform/rockchip/rga/rga.h
+> > @@ -40,6 +40,10 @@ struct rga_frame {
+> >   	u32 size;
+> >   };
+> > +struct rga_dma_desc {
+> > +	u32 addr;
+> > +};
+> > +
+> >   struct rockchip_rga_version {
+> >   	u32 major;
+> >   	u32 minor;
+> > @@ -81,8 +85,8 @@ struct rockchip_rga {
+> >   	struct rga_ctx *curr;
+> >   	dma_addr_t cmdbuf_phy;
+> >   	void *cmdbuf_virt;
+> > -	unsigned int *src_mmu_pages;
+> > -	unsigned int *dst_mmu_pages;
+> > +	struct rga_dma_desc *src_mmu_pages;
+> > +	struct rga_dma_desc *dst_mmu_pages;
+> >   };
+> >   struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
+> > 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
