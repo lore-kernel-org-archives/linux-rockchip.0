@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D00EEAA40
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 13:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E593BEEAA41
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Sep 2023 13:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4b1lPQeeH2gYr4sPYWL289Xxticu/4vR+EOVFWbkEIM=; b=EjXLYXTbG+XYQV
-	hg2ry7nA4wJqORUiRmk1Do0yCEgTMgp+kXOSjUriXnvPCX2HjHaQvzufl6n7SI+0mjd+5Kn36m3E0
-	b48H5bRJl1sMtcsbknDe3PGTrAOVUP3ozrkhAE2KCHULp9vkR+14MRg91Zwz8+rTMgATZCqqOcfr4
-	VW8eYqbY17Yz6SGhGn7blG6v4rjYaklagtCTjxMhurJZ6eNqDyAXB1HDEaT0p4AcRiKiBqbFzUh8y
-	Lwu+d2ssefPXDWlOXeo+Y75kN20yMWvfQLoZcYS9Wajdd1xe8hLimT3IcfLO+k4ANDiwYpBFv42DC
-	L+O4IQDlH+Goyvk/Lepw==;
+	List-Owner; bh=ROlAub1mjcBhS/2zjtpI537NHu7p5o9xqqHqHFWB06g=; b=JKuje22/g92YdL
+	R1aJHu2ahAuY0Jo713tOy8TWZS8bOXaET/guBbttUYuap5cBV/bRghRWT3BxU+Op/vyCIYt8v2azO
+	2diBeucVYVmia48cs2Pl/OFvD3i7Wm31rVn3dtjSz67U/BUiJQe9eRpV1CronHIwL544nfPcp3fL0
+	wZYDT6Rm7PKqyAwAeQLvuSZymYtM0JHAah89Z5NGIbxZt5sriE0bYOUh6O39Hbq8vlt4sEPxHi1bI
+	nxTw7MotUX9hHVdtU48jMH/SZeT/2rCFPx4oo2FWbBtJHd5DSnzSovWWTZku3GDSkNJECfNisGtgF
+	87Hrw45Vr4CBMit1xSrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmWY-008VTw-3C;
-	Thu, 14 Sep 2023 13:36:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTg-008SRO-1T;
-	Thu, 14 Sep 2023 13:33:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=EOLwZeOQyt9Z2OpMXoM+CKH/9zJiFeP4flDrP3qjOLw=; b=l+kay5UcIKpz8EK44lcNOB0DOs
-	eZ3uGxUgCuTFlAJES3FrJlZ0RNVKxjjVvk5JOzYpo54se1cX4Mquhle8nJix/CLugT2c5pLrrJdPr
-	Djzs811CEKLDQIs/rBwiRtW0O6DCMTTJP9Yegbq4ynbuBksBXJYHbSrLMvTep+QpOJwkdcJjYxnlf
-	aZ8UrRAZ/FfHk4shHzDCi8J2ZnUXTFD6WCeROdSqOA880vd7g8fPlllHjjVRw55LnKgzyxnFNIfH/
-	Edv6K75LQ0cUPy2drCJ+MJpAd3gfIcuFGNzPQ8eY+kbYpNnEzS3uVbiCyT+Z5lAzT5c8KrMrAxrjb
-	wS3lg9fw==;
+	id 1qgmWa-008VWa-2e;
+	Thu, 14 Sep 2023 13:36:52 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTb-007uhf-2m;
-	Thu, 14 Sep 2023 13:33:51 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgmTb-008SLG-0d;
+	Thu, 14 Sep 2023 13:33:50 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D66786607383;
-	Thu, 14 Sep 2023 14:33:47 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3C6BB6607352;
+	Thu, 14 Sep 2023 14:33:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698428;
-	bh=NPGIQWBbvKHkPrDtzyz0rTHCYJ8HXTuAbKhvtuCEFls=;
+	s=mail; t=1694698425;
+	bh=tAy3PWxSfQVkJIZXcTG5de+gZEZpPM2JZfwPqhWBibI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nsLr5+8mLvfOrgpNrxeRPFIZBpS7RDRjBEkq2keyOtri/Y8m9Doex7VZ08sCyT4AS
-	 uvsYBd/LNNaNa9EPqNFUhrdzadnCHcDCg3IbX2B1H3WguvsspTanWkkz4ISydPd6CK
-	 d6EdGU0B6m+RJd1TeOpfeIP1Hmm2K55LkjG1rYXZIpIG4SP765J3hsLDdCll8bzCJK
-	 BGhgRsPlI0FHlHuTn9EWaOD4Z9WZAwhXeHS5cLhEtQbwIVuLxKvubCRxJqOnHsJmS6
-	 Li5AvmHOLLYsA/qf9VW7iszfL3vITXQdk+V/QKvqbo6oyyPqGrY4WVZv5AsmJbzFHZ
-	 Vdbln3Or/evjA==
+	b=nEP/V+iuUOYi2MTo66Frdk0Pt2cXkpb1dzgT0U/dICA49ehjlCHAL7XpJzJMUcER/
+	 rRD9qTOr7d8zx9+87VOeV47F+p2+Mh2xAp0QYnU2P6Tzjxz3HzCKIn8IXhs3MD6u8A
+	 Zk8FuXkREfZYyZBGgnIIjQg9hggy1s4IobL5sPVr8VY05PSd4HLGewUJ+T7iMvh56+
+	 AUyiqobkuW3713EX0SXbTziy7FZpI4k5OEEweycYS4kJIlLscF6xv+oab1j0J7Mxt6
+	 9/7+O8+4LiS34ChguqJkCN8U4ZIvLGTr39lzr/c7vFNv9JAXTi4XVxUaSH4ezG3uaP
+	 7pXpfUBhFGyhg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 32/49] media: renesas: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:33:06 +0200
-Message-Id: <20230914133323.198857-33-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 27/49] media: pci: tw686x: Stop direct calls to queue num_buffers field
+Date: Thu, 14 Sep 2023 15:33:01 +0200
+Message-Id: <20230914133323.198857-28-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_143349_463777_9FE2B243 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20230914_063347_468070_52B7A5E5 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,27 +92,32 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/renesas/rcar_drif.c | 5 +++--
+ drivers/media/pci/tw686x/tw686x-video.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
-index 163a4ba61c17..020845689ed3 100644
---- a/drivers/media/platform/renesas/rcar_drif.c
-+++ b/drivers/media/platform/renesas/rcar_drif.c
-@@ -424,10 +424,11 @@ static int rcar_drif_queue_setup(struct vb2_queue *vq,
- 			unsigned int sizes[], struct device *alloc_devs[])
+diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
+index 3ebf7a2c95f0..6bc6d143d18c 100644
+--- a/drivers/media/pci/tw686x/tw686x-video.c
++++ b/drivers/media/pci/tw686x/tw686x-video.c
+@@ -423,6 +423,7 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 			      unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct rcar_drif_sdr *sdr = vb2_get_drv_priv(vq);
-+	unsigned int q_num_buffers = vb2_get_num_buffers(vq);
+ 	struct tw686x_video_channel *vc = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned int szimage =
+ 		(vc->width * vc->height * vc->format->depth) >> 3;
  
- 	/* Need at least 16 buffers */
--	if (vq->num_buffers + *num_buffers < 16)
--		*num_buffers = 16 - vq->num_buffers;
-+	if (q_num_buffers + *num_buffers < 16)
-+		*num_buffers = 16 - q_num_buffers;
+@@ -430,8 +431,8 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 	 * Let's request at least three buffers: two for the
+ 	 * DMA engine and one for userspace.
+ 	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
  
- 	*num_planes = 1;
- 	sizes[0] = PAGE_ALIGN(sdr->fmt->buffersize);
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
 -- 
 2.39.2
 
