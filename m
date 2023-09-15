@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12609EED619
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Sep 2023 17:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64EFAEED61A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Sep 2023 17:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W9n/JnYnTaFMILLjQ0i0lcVAND7TVZi4ewad7DvON/s=; b=rnmsWAJ/p0ROLP
-	Aw7MIXrOCRVKfME81YzhOmwxa61XUO5jU6D8yUHjaVW8ze3mu0xTLOXAYGri83DE62nY32iIiSP8F
-	u6IRYOq9KOtJ8C9fEhG7cDH6wMWe+kQrAOi2WDeecfzcRfuqpfBIv1qZfFNpolnWgCvycsss2sj1N
-	YPjjmAz2DtgJCHNamayBlAbHwWAccUT8I4JO7T7QdYm3jRTCQ+eSZzTgJsWl9dg9ZUOdHiHC5e0Rz
-	w92kil+2eD8xgy89epKUoskVhbbD3lBb0z6EugZ/etJNEwI0m5NYp7Kj7hw4lkm7KGRR/9SPlzHrj
-	EXzFVBiKNTkAq33kn7wg==;
+	List-Owner; bh=qaPwwKeEIid+zCOXBKPfzzaIckGxcjZxusxLccX01SM=; b=VnfeXWH8t5Syef
+	nuiOA/CXAJJMQbvOklkODVz/Sz0EbiT3aB9iHHP7FiCBseWqtNwCf6H91NAfmko2M1wa/AMzTDr4i
+	HYQ0J/kzM9YxCevE0vEAHmcnt12Xs6pojWIPW654UDPHk5jnUFeYhO4fY74mi9/TVYbt4hZHHZI/t
+	kDHyiBcSVetk8Kdf4AQ/Yn1BeAnoPq1E6TKvJZeM3o6kqy9IIeuEjQbd2Pk/EqkqB6V6IE5rRISYY
+	4USxYkHwmustip1a7PpWs6bMUz5v9ib1xPJDr2O8zMPrXi7zdGed+27HFBxk5DzkL4/pVx1/kCyVI
+	1wIqdzsExOXNw8y1Fsow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhCEF-00B6PP-26;
-	Fri, 15 Sep 2023 17:03:39 +0000
-Received: from mail-dm6nam10olkn2080d.outbound.protection.outlook.com ([2a01:111:f400:7e88::80d] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1qhCV2-00B82u-1h;
+	Fri, 15 Sep 2023 17:21:00 +0000
+Received: from mail-dm6nam10olkn2081f.outbound.protection.outlook.com ([2a01:111:f400:7e88::81f] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhCED-00B6OO-0x
+	id 1qhCUz-00B82X-0a
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Sep 2023 17:03:38 +0000
+	Fri, 15 Sep 2023 17:20:58 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=J+/7rg5ztWVRDz5ZSc1ld7TVEerdsHNpehVLDV0CjDCnZ8qUEUrPlluskq29JEjTBR+ZLyZjiUjVl9YyH4f1Oqbzaps0QVcmUQajO3iHddjKpaq0Pbbt0Ny6Yi6wA2UTmRBTV5mr5/7Ireo94xRwAOAICETXqKAg5WQxudWgHEWuHB/rKCFlU6YUT4rzBWvVXd1d8w13VCwjlawlLWEHLtlPD1hMMIrb3jsWSteCXMiL8v1aRDUIAZR6NHgSVuZtQxYkeA2EQs+bDNaHefPJFEzHMAL4gjbypkdlkEdqfnlhhT9vJDOrdczhXjpbmplOiLtBFiC/98o512WZ02AuMQ==
+ b=cgkUD2ukmHluT/w6x2/IUkoGljZiylsFEpV1AJXcG5BVjQnW+339Mx7XI/AmGnwYwm89J084oYzzV6302kgQZKdR6TAlyPMX9kCZXwWXx2ydkGclPveeeSZWXj2VhIKiqpb7VN+a4dCnAfbgY21wGw6rfv/Qjc/nNyflU2mYRZl/1wLc1lz1J/TI+JrrRXsWuJwCMF1Go6r4qoS/rHL+aminWf/HZ1lhBoUk/Ud9dkQWbGehXecVr0wZ0z9OS3hiTxds30O1E9iFOpYFUI+eumdWXOeOlFDn9JIYsHErCCezoQfCSGR0j5gO+6pCXxfqGNO94MiEiGQeni0+rKm4kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qswcvbZNCaZAyk91zo/2DO5lt12ErmcTcYW+DJ5nI4s=;
- b=iUY12cpkG5y1fCLGkZiWjL0Ea06YSGQyd9rXmnRV2JHhZJbkKqoKP2iS2DzibGvuYEI8T3wtTZ8WLQhThxI9AMUxhC59vqVB9ExNYWdttLS0977OvHczgTD8FDUenlBNg6sWdVmkWIdiiKimc5MPbtVi3fLbRqy+Vt/1rwWdKhA5x1MIJvirMLFiRwuXmKKO0mfwWzOnpEgC1jV4KoTvIoVrmnPA3m7Tq/MX/GKgfolp7P4ScP7Cf7TtVuB66oX4IjeNP1YKOE3+7PWDnnY+HQl21JdcvLsXz640JF2waPUFU3t85/v8DjIxLNLLsVEZ8FeBhtVbhjY1Gy5dkWyIMw==
+ bh=zxa+qq4AjaCxvCTxSQH/ZFvwMEClzmxwD6D3k3yvy/s=;
+ b=NHkLdGsmXVR7CyHzvt1XZ9PCxVWdQjP3Wdw2eGsqq7Lnj1pvdvh1yyYPiOf3sozCBinKr2CUvY7z77QDEl0yUqc4p+dRQTGddygz7gzbzaOKoi8OrPL/JzMgPavWa81Llb5WGf9cHIlVKSZnsb4Nl53a1U7r5+ddWw1fhuEDXqLYkN8C+42rdL8f+aieXFlAxpOkHdYpSv2tpFnZFGwIFz6CK1TvwBqD4ZDEYrZu49AL4QaJSXEY0GvjrI1Wl/XJUVuArcFFSwc5o/tu2slP0dMbH5qhFcblAAZSc8dtXDETCCzH4c7YjqXZ+/LC7gZaUGRnh7cQb5TMs0OGO+FPOQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qswcvbZNCaZAyk91zo/2DO5lt12ErmcTcYW+DJ5nI4s=;
- b=YXZUoKYe+Ai/PFh4cHiP9GSdT7FXieTLIVB1rr33MP37tVX3FiueXNaMMa7Vj/hGa4OiofutRX3kRH0ALqLkxqL/4gIKxOLXsyRrvUW2QA2sCEVI+aEGDZspYEXc/IRo+dkxTVvHxancKHbnlGgMrxmPrmbfWpyPAiL3xTZC1YXS/81+RzRjOS3bq5+Rzg+j+cFUdw19eVHF0mIrg752I34BK849Q8V6QMgSP90l1iM1Dp3Furqq6vZxrMN46iQsGTzZ+MceS+zda1qujZxsYZRqRaJ9gTBt98edZ1x1WQRD5EF3Cd3y3PxHAtPnjPgxBIQdq1Hd5GTcY5ORuJQIWw==
+ bh=zxa+qq4AjaCxvCTxSQH/ZFvwMEClzmxwD6D3k3yvy/s=;
+ b=dJKzaedM95H0UoBJMHL3JFhI8SPmQ9rDbMFu94U8r5nI0kKX8NqBAn/PdpBV1qNuKwUwUDjEO7ZCjaK7c73Y3SRL5eENHkFrc0/yGhWu2vPJNEGxYI9gHHi9Ke0ChVjINxXhoNwzzr5XzJ0YroGL1FeBPL5OpTAkk7DC4xgP1r6bkuaJsxV/u0ajuKUS9Q1nzFpnHL1oEkQLo+XlclD8HudvcHmJmDglZqjNhXDyIIqGndYGsvG099GvfW0hOy0eMC4xyPuFA4aUyUFePA64Po5ZpGF/p0lm0Q/YCUe8Tm6f/VyckrR9yHLp1ywjMAB9UK4JqAFevsRJgpUPWR0dwA==
 Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
- by MW5PR06MB9029.namprd06.prod.outlook.com (2603:10b6:303:1ca::6) with
+ by SA2PR06MB7337.namprd06.prod.outlook.com (2603:10b6:806:140::21) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.40; Fri, 15 Sep
- 2023 16:49:08 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.21; Fri, 15 Sep
+ 2023 17:06:01 +0000
 Received: from SN6PR06MB5342.namprd06.prod.outlook.com
  ([fe80::c40c:bbc8:b103:459c]) by SN6PR06MB5342.namprd06.prod.outlook.com
  ([fe80::c40c:bbc8:b103:459c%2]) with mapi id 15.20.6792.021; Fri, 15 Sep 2023
- 16:49:06 +0000
-Date: Fri, 15 Sep 2023 11:49:03 -0500
+ 17:06:01 +0000
+Date: Fri, 15 Sep 2023 12:05:57 -0500
 From: Chris Morgan <macromorgan@hotmail.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org,
@@ -59,60 +59,61 @@ Cc: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
 Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add saradc node to
  rk3588s-indiedroid-nova
-Message-ID: <SN6PR06MB5342AFD2AE1ECB1462AAD894A5F6A@SN6PR06MB5342.namprd06.prod.outlook.com>
+Message-ID: <SN6PR06MB5342FE6A2C144600656701E4A5F6A@SN6PR06MB5342.namprd06.prod.outlook.com>
 References: <20230908164156.2846-1-macroalpha82@gmail.com>
  <20230908164156.2846-4-macroalpha82@gmail.com>
  <488e1f3b-e12b-c278-ed04-a2a5c807bc72@linaro.org>
+ <ZQSK/+cOMhtu5Al0@wintermute.localhost.fail>
 Content-Disposition: inline
-In-Reply-To: <488e1f3b-e12b-c278-ed04-a2a5c807bc72@linaro.org>
-X-TMN: [q/y4iLP7qm01YXAOomiYiL0Tb3UIbIhU]
-X-ClientProxiedBy: SA9PR10CA0018.namprd10.prod.outlook.com
- (2603:10b6:806:a7::23) To SN6PR06MB5342.namprd06.prod.outlook.com
+In-Reply-To: <ZQSK/+cOMhtu5Al0@wintermute.localhost.fail>
+X-TMN: [ME7U6sXO7P2xbb98anbr9cCjVeuWa5ep]
+X-ClientProxiedBy: DS7PR03CA0193.namprd03.prod.outlook.com
+ (2603:10b6:5:3b6::18) To SN6PR06MB5342.namprd06.prod.outlook.com
  (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <ZQSK/+cOMhtu5Al0@wintermute.localhost.fail>
+X-Microsoft-Original-Message-ID: <ZQSO9eLgYHkQYXT0@wintermute.localhost.fail>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|MW5PR06MB9029:EE_
-X-MS-Office365-Filtering-Correlation-Id: cb1482e1-107c-4e8b-75dd-08dbb60bac89
+X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|SA2PR06MB7337:EE_
+X-MS-Office365-Filtering-Correlation-Id: 49f93ecc-9cb4-44ee-a816-08dbb60e0956
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 0OB2YIzvhmi7bQ2YNhxaPL8C9zJkB9FlDqq8T3Vd5lQWZO/G5tYtaspSGk7I6xVChbRefbp/ICfGHaByhYnjRzZ5//VX0l4rJiRipArD4l90XAqk2iogfyNQ7GZ5l4tVJEQZnVxu/cRuBYF9x++Ipbx+XlTg4E4aFmwvQO75SRnriWr0rfHmSZG4hN9o3MRofgbbsEuRsl0RvrB0EVdqubN1a+uLSft/AEj9VKWLw+ziPpKq6kMWNfUy91ML9CVJn+ytzLvtri9ndb69Zi+380OFE9y56QNB0kBNEp3yHJJUUCj3oBa0UnH/6mRQ9ZbUKlSxyVx7Y9MQyiyLc3ePoKw8n77nPvG6OHmMfX4HOThujVz76wFt/zKhtBZpuCtgygbQkrYgJLI6/kMPKRtDZfYl3ltRepwN/Ma2D5EBeKMXfRECBQ2JVCzb/+CGaRtbcIYzrIrxURFTeDv8H4StrvQfWAtFkXpZH+STpp6KPP8oJR419qCaarFUULao/fMlo83VpgUtJXYAQO/HUrjkjBFLv6jmBb0iy+oA/ThCiHTPSJcaPcxyCzNEfxoSSa39
+X-Microsoft-Antispam-Message-Info: IiLJaJUKk1/jktEhSh7LXWP/uqT/asnxob4Fex7Jt/KSS1sYknkhUsh5DSUvecOrl89a9dsnjXTLoVMQzEWFuI+rZAtbRUXTX4TW/zunAilRsEzl1fDzgVLgrl9VDdyEUKQ+lm0U+H22YtQoLji8Kk1M6ow1u4Ka/sJjPce5giHI7JaoLk6ILP3zfat1bnqhtOTwfxc5fQFDUvyfNzh4RV26tAW4K0Tu2hFnYkJLjnrdfumYDODc5gMDFan8lRSiaj5b8jxnTNLt1dHma/aIXo96m62mQsHbfI5+sPHch1lGrBqjNK+CGIcezBc0D6aoqPtpO9mDJR8Egt9sY2YzWHQJB2VLgZddNZsycLB4HfYej9EhTZjr9SYfr2jcEB2TYyhri1nUbIWTr95wt3jQa2fBl2AbIFmqFLvl5HSQBSFAOqbsfN2wOPuk3QdF9mXosZcVt8p0frdOGWhMeIgzB3ff5NFTrbK16LAYYrj3unJnHzv4AsSz1SaHY0ol7NyNoqaqZShAjRoCe3b1kyVEvdPQebaZ0lni1ysYMRIy2zO02ggjYh0Y2ZodtztojWnZ
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Z0f5aN+oyAgRKND+DxjV/R2HPZbcKbOiYzZDYrcdknTiapiiLIOoMGpWcNOP?=
- =?us-ascii?Q?rOgQdnEZ//3PZ3A0lDzMVYt28HPrNHk1jvcjz+i0+ELftu9kBapKW/010ek2?=
- =?us-ascii?Q?ewdUfxMIZyLbnhKylFySp5iJfjnn6VX7VaJKHDsoZtigG+fi6pXpdv8vIK6L?=
- =?us-ascii?Q?xv2JVWgWNcsPBt/PVIRTVmH1ksxhx6nYnh45c8mX68L1eYMrdC/6EsfHgY+p?=
- =?us-ascii?Q?YAm2oUA5UpzU0KepBd+g+UdZj3UDQlSVGNRdAM1htiGvCnC0yKr7BwipCraS?=
- =?us-ascii?Q?TvvQdKylrMKReeYBJzbDxheTbcMjpoecz0+pcMNYlM/NdUh4zoRRvO0B6rhC?=
- =?us-ascii?Q?nmuzA1xeHHdg/ZsXR7oa9mNMgtRtdpNG9uFgkBitG+FykzPW3Uogmbwxy0mc?=
- =?us-ascii?Q?IbPpHo4122aPTp4A8UDnyxrhy1Az1A1VX55w/n/nvbqLxpoB+Nw0tCELuFDC?=
- =?us-ascii?Q?PNf19wh9StGq1fERZIHYBEAy7I14cWOYaiNQ2ILHBiG6IOGCeeB50qcZvZzi?=
- =?us-ascii?Q?rNc/HRaGNnpSbG6cJrkT5G3AkGQPJ9ESTRHfSeIuib8tHzgJsQNtMcvHSIor?=
- =?us-ascii?Q?K/nN6AVZaVgSYm+kvNL76D4SoJ32aRDyI+PcYFDfbM7/A5rfKNA63zK//5lU?=
- =?us-ascii?Q?X8P7gqdSSoCBz73FNG4ORjrsHgEkRzCDGkgqXQWOCtPlpezbnsQDOCv1v4A8?=
- =?us-ascii?Q?9s3RRUp7DU9dySD+w+HqnuTAej3pYhwubfdl1LWftUFm5YNLDrUanUBmJuuz?=
- =?us-ascii?Q?mDouC8RCpDUwjoi+Tq55wcb6DnkV2vjcvCOVSEQjUi+4tFI4nk67uwxRiyp7?=
- =?us-ascii?Q?0y/h3MjgpcIt3jeCIdjykaSivfTOmLEFYGiP5y8vMFPaRBtgIyMKEECqd/Ax?=
- =?us-ascii?Q?3KCicGxla2PF0I705QI7KMeyc5TniHAy8r93jx703LZZ5Td/4PZ9vlAk8b7V?=
- =?us-ascii?Q?1tTa1tYuPbMgqUtdjC26FgH+vPSncnXS26H4WFj8K3Idun+bWqxl5llymeZ8?=
- =?us-ascii?Q?JSNolrW1esE6ePOUgrYHW+TXg+aWWRH0Tgd6n/IbIH4SV9id9za3plJf8pt1?=
- =?us-ascii?Q?YLdI9qcSx/HGqGA8dzsGsMKNv10gkWM2G8mB0jPCrJAEU8DcEAtLmIAs5kOv?=
- =?us-ascii?Q?ToHIuXufg5KOqGfp0eJhqIVGC7sCD6+uHpuQJi4x04/1SZigNfGxrsKRd8rF?=
- =?us-ascii?Q?23AoecmwwT2/z+sNFJR5K9ei1rNd7w5lzMQDCTCAxZa2QinJupI1yX+HS8g?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qbj7McGuIpYvZzjFWGHY4PusfhPCzzozMenafqmlgePPKBitSCr2xnE+9RtF?=
+ =?us-ascii?Q?3Nlu6qXrNO3e6MjyjQMOd9evecw9NCfuJ+k7brU/7WWXaIlXWoDdzbSrRfRG?=
+ =?us-ascii?Q?ZcQakgvVefCvV8nO6RMz8iiV6Nrgqz38AIT5hmzoeyJOWdwDKxXiNyTdY3YP?=
+ =?us-ascii?Q?+szWwXQTueRzY6LKiVrzT1tIPFCs6yNN3kreIX05lEIMQjejlAGlT4iIc/tk?=
+ =?us-ascii?Q?jtP6n1zFgisctKbozvSlzjYHho1EYouu1adMG3sRudD7O3FBGD3JaEt+G3y5?=
+ =?us-ascii?Q?3qZ+yoGB3XvnL/B3iNBo45IPzOodTLQ38I8p1BC8y9gq7qTQCA7ehaGZPR7G?=
+ =?us-ascii?Q?41qQSAIPJ6A3Xowf1PFstHJfranIIPRLiaIY9gFtGogYsNGP3fv+nqnbvCaz?=
+ =?us-ascii?Q?YKMda0OpMg78iIT+BJNr884ZcGt8kr1IT11nfuuYdZ2SaWFZKJoVv1KypXoV?=
+ =?us-ascii?Q?FusaYBjF5hW6BiE8rgikni5kTw8E1778frpyOWjSN/pdHRSe2pPhyu5gJFeu?=
+ =?us-ascii?Q?r3iIAGW31YFGCwquN3SrPps+9nNon7iUIeem7XVDwyI14unNCHkf7vhd4hHU?=
+ =?us-ascii?Q?UjjiQqKTHijnmKlyBdGefG0EPJJCSH2khX9/Tfww6nZ+Ws87XMBAFJH7ZpaP?=
+ =?us-ascii?Q?KfO9+aa8pjeSGT4rODA5pZAMaW0vijOrDrOyr/emasdmNGLfXrlEgzT22vHV?=
+ =?us-ascii?Q?C4ca5TMKFgMxyPyfB5gkLwKdpq+LCtjxAwl1fN/q2hF5G8GKIYYIlhw1RN2g?=
+ =?us-ascii?Q?YZcihGSfDbDR7r0XdItfr+M7cWJ0XI41B/rqbLnZiX4aQkZ5EkRR6htouQIt?=
+ =?us-ascii?Q?mwJFivnDVzeYpjvTH2mm/nbwwaJaYoDO1X8zd/5baz4E2lf9FeHnsza2mQw+?=
+ =?us-ascii?Q?/3PIsdGP227kVgND2Bdpyc2XSGMaYlT6qbpEgW3gJYewByq0nSLVYeXJ+y8f?=
+ =?us-ascii?Q?O88GCutYXJPVoOwl2/EYtHZDWB9WBH+Pa55pjel3mICNWKsVEGtFKn/9/wUw?=
+ =?us-ascii?Q?X0gBVTTRAjBdiegzp4SiXLf1f11gy2JieJjEA6UNQ9vMlAwsnCYJjvN7BQSo?=
+ =?us-ascii?Q?FmisbftN9csjsJBMgGtSIwd67Iv9auJTT4sem26glkYnKU91E3mOtr0k+ILa?=
+ =?us-ascii?Q?AW2Wp93oDziriikKSxF6e6UnCiWyAYu9wi28XF24jSZ5lMm6Ub93AIiuRFvJ?=
+ =?us-ascii?Q?G6B/19X0jsH6YjFUg/DhZPM2d+fOspvs+O5CujI1lk6/nBB4UN7DorC86yY?=
  =?us-ascii?Q?=3D?=
 X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: cb1482e1-107c-4e8b-75dd-08dbb60bac89
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49f93ecc-9cb4-44ee-a816-08dbb60e0956
 X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2023 16:49:06.3702
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2023 17:06:01.7427
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR06MB9029
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR06MB7337
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_100337_344326_4C468D70 
-X-CRM114-Status: GOOD (  20.13  )
+X-CRM114-CacheID: sfid-20230915_102057_247845_C7B14010 
+X-CRM114-Status: GOOD (  24.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,55 +130,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 12, 2023 at 10:31:19AM +0200, Krzysztof Kozlowski wrote:
-> On 08/09/2023 18:41, Chris Morgan wrote:
-> > From: Chris Morgan <macromorgan@hotmail.com>
+On Fri, Sep 15, 2023 at 11:49:05AM -0500, Chris Morgan wrote:
+> On Tue, Sep 12, 2023 at 10:31:19AM +0200, Krzysztof Kozlowski wrote:
+> > On 08/09/2023 18:41, Chris Morgan wrote:
+> > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > 
+> > > Add ADC support for the Indiedroid Nova, as well as the two ADC buttons
+> > > found on the device. The buttons are documented as "boot" and
+> > > "recovery". The boot button is used by the bootloader to boot into USB
+> > > recovery mode. The recovery button use is currently unknown.
+> > > 
+> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > ---
+> > >  .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 34 +++++++++++++++++++
+> > >  1 file changed, 34 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> > > index 1e2336d3065b..4c2d662d9c97 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+> > > @@ -3,6 +3,7 @@
+> > >  /dts-v1/;
+> > >  
+> > >  #include <dt-bindings/gpio/gpio.h>
+> > > +#include <dt-bindings/input/linux-event-codes.h>
+> > >  #include <dt-bindings/pinctrl/rockchip.h>
+> > >  #include <dt-bindings/usb/pd.h>
+> > >  #include "rk3588s.dtsi"
+> > > @@ -11,6 +12,34 @@ / {
+> > >  	model = "Indiedroid Nova";
+> > >  	compatible = "indiedroid,nova", "rockchip,rk3588s";
+> > >  
+> > > +	adc_keys0 {
 > > 
-> > Add ADC support for the Indiedroid Nova, as well as the two ADC buttons
-> > found on the device. The buttons are documented as "boot" and
-> > "recovery". The boot button is used by the bootloader to boot into USB
-> > recovery mode. The recovery button use is currently unknown.
+> > No underscores in node names.
+> 
+> My apologies, I should have known better...
+> 
 > > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> >  .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 34 +++++++++++++++++++
-> >  1 file changed, 34 insertions(+)
+> > Suffixes usually are after -
 > > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-> > index 1e2336d3065b..4c2d662d9c97 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-> > @@ -3,6 +3,7 @@
-> >  /dts-v1/;
-> >  
-> >  #include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/input/linux-event-codes.h>
-> >  #include <dt-bindings/pinctrl/rockchip.h>
-> >  #include <dt-bindings/usb/pd.h>
-> >  #include "rk3588s.dtsi"
-> > @@ -11,6 +12,34 @@ / {
-> >  	model = "Indiedroid Nova";
-> >  	compatible = "indiedroid,nova", "rockchip,rk3588s";
-> >  
-> > +	adc_keys0 {
 > 
-> No underscores in node names.
-
-My apologies, I should have known better...
-
+> Thank you.
 > 
-> Suffixes usually are after -
+> > Best regards,
+> > Krzysztof
+> > 
 > 
-
-Thank you.
-
-> Best regards,
-> Krzysztof
+> I'll correct this and resend.
 > 
+> Chris
 
-I'll correct this and resend.
+Sorry, one more thing. I've checked for examples of adc-keys naming and
+in every instance I see it as adc-keys (or adc-keys0 and adc-keys1 in a
+few examples). Is the proper way going forward something like key0-adc
+and key1-adc?
 
-Chris
+Thank you,
+Chris.
 
 _______________________________________________
 Linux-rockchip mailing list
