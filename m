@@ -4,75 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 649AEEE644B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Sep 2023 09:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A07EE644B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Sep 2023 09:21:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t23hUdVpOa5ixiBGl+B0GkNu7f1Eaq0bfDRyHosyeho=; b=O8UW8Qi5WNHyNm
-	yBfR5R7jZoN3EG06GispijOaB6xRn6IGoSYsDyx0bEQMX9obFTI0uxz216yk29EkQR2CZTrbr6as5
-	jZyyyzQaeVy3ewvBJiP9IYWpiyg2cnO+g2hdgh7f40ukgZmqKkh3jGFkmC878SvVHm9iPJdMT2tL5
-	d9KJ5vP3rX8tKAynQ609O1lau2Uut8XlxwtJ1eVCmZwY9XlzHEtgbgMgBJs7qJfvD0j+xFmAR21w8
-	asA7FxpOutr8ioJ3RCXdtJp2Yvdn0esAQ7uhPsiEkC7ib2OiSLDoGsi2Ty+tlYL+hZOwCkycM1zOS
-	sedlD83+hJvDh1PFP8DA==;
+	List-Owner; bh=A+fjaJ4Rc1BGhBXctPpijiiuFMDAouAKu2x6XRt5xHI=; b=YIqULW20nMfFic
+	41SCFTFGwpwbGrJP6+yqFzml6mmWAZwxbiP4yk5IzkuaeNSghf/EPJbX5W+VdoH3OuBRqhk1u9k8q
+	TySeSxbm+O77EjivNqkOI9TQXxNF0MD+5yTgVLvVgNcYjJqFY/EVAif/wb0PLW2KtCrHsx59PclOp
+	kt1J9bjOyszL8oifMgYi+ylupFqP+1Sv9F+1GYSN0q7fnWf534/5FH14poqkN6HYrTzHnWxjZaD9a
+	ZzlnWASueiDkf97m0YdNgWA1kO/XH1z6VGFml2euKg49/5CEWnJc4Dygn2/8wgkTBCa37F4TLgvc9
+	JncivKwZOUCjLzOT6u2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4lL-00ADfJ-0e;
-	Fri, 15 Sep 2023 09:05:19 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1qh513-00AFuX-0e;
+	Fri, 15 Sep 2023 09:21:33 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4lH-00ADeb-2d
+	id 1qh50w-00AFmL-1G
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Sep 2023 09:05:17 +0000
-Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-6c09f50ae00so154438a34.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 Sep 2023 02:05:12 -0700 (PDT)
+	Fri, 15 Sep 2023 09:21:28 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2bceca8a41aso30792501fa.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 Sep 2023 02:21:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20230601.gappssmtp.com; s=20230601; t=1694768712; x=1695373512; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1694769685; x=1695374485; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Hh5TOPI/HhnIdtullXY4j7ld3pDUYM1OrpNZGBcpK+c=;
-        b=BxzCHucSSqVdKMI0J3DbnoDI90ofwpGSA/70/AZ2+pPIGXMDcMLkK+YTv3+BiDQco0
-         GIiRY7q+GzLcIGO9H2tFuzyC4SA6HRRdoZAC+HNmMCv5Ct7G0G7Qhq5V6cVEIySsw9wS
-         LgJIqAmDtXDaawP8oEbMLFJtyibu0b4+/UShCavwv+oR485tt4v6TLqF5BQ5Ax6kulMl
-         CLtA8gmsaMauNvtPq7Kl81gebWjj15JoUCNKfq5f7jybw0rqZaaaNUaAMIxhJi1kAJ8/
-         ndQCV46vm9CW1h0/f5FXZJ4TqAKcs0QGOOzq9LTPsKJv4PLijDBgUcQUUTLvlahst+1z
-         vOjA==
+        bh=VKisBqk8Z2ap1nSKbct53Lj3iZDRshdX+0gS7XeCa7I=;
+        b=yFyosw9ktslrlcieCCiLnuDKKueUc6czEG1+LXCBUH8TfnUfVp98x4Oi7HOqUrw2Af
+         wRdHZFD48+v2Z9O+lNVBEi2aeiROGBat8K+cpOD17KBFelI9Vh4wxWrBIP/Q+2UzS6Sz
+         frd/EdbxOrL+kY1b3GxbCuzR0Xj3WcJSasYJlYKn4Rwp3RQb8BAzHAuLUjYC8uD+jsrC
+         L88DXEysIWwWHGMGZNPUhbvGa4RDl0cxTgX7OPs+JEzAuxr7acqWpyLUK1rhmpOFT5Zj
+         c+2hOEn72fzmyKmi63ycPIDRMaXYdWz42D0F7tPcDbqzWGIYZ5CJ7iZZqnuB/vtRaYBx
+         X0zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694768712; x=1695373512;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1694769685; x=1695374485;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Hh5TOPI/HhnIdtullXY4j7ld3pDUYM1OrpNZGBcpK+c=;
-        b=l7zStlog780MG7nJou6okkVPy2pAnRsADtOfPJuBoqAanXsB96GRRlBQtLwuZw0oWr
-         0GPaihTEcq+O88YO6g+uWghld+k8NWnQUGmSoBh7sljVvqLwRHl31s/vJdjFaiLzcXxD
-         G5PZAR6h8yN1fDzaMwb08JkFPW+EBOII9LqoJg/14FPCXHHI5Ed6wFVledzLPb7mGpzM
-         6tA3tF+9KPws9BLvLq+kCK4YDftRZ23/AU8XA8eT6MO1x0fNfFPW7c4vlOQ+GF/+3+G0
-         gKMMZfI3zWjFgNahWCizqAjG/2OjfKdsVyNeOtT04gO8J/7Tk0gZvZfqlUmjv2CC8GhD
-         fP4w==
-X-Gm-Message-State: AOJu0YxRPvqriOwUX4dLeBTChuQUsO/z4vbOnBVJriPrHi8Y9FEruWAo
-	hU3KfgXA4WhHJD80wT7lstq4zEda82ommcczG1MIHDO+Kfg2EavgBOI=
-X-Google-Smtp-Source: AGHT+IE8u8fe94YCsJqYiGK6ZwicLPocu6NLl7huZjprcs8JWoLZrKk+EcweaUeqR5UJgGCMm6KIc2d1lfmqacBh0SA=
-X-Received: by 2002:a05:6820:2081:b0:573:3a3b:594b with SMTP id
- bz1-20020a056820208100b005733a3b594bmr1377984oob.1.1694768711683; Fri, 15 Sep
- 2023 02:05:11 -0700 (PDT)
+        bh=VKisBqk8Z2ap1nSKbct53Lj3iZDRshdX+0gS7XeCa7I=;
+        b=kERYxJ45Um2RtiD0yw7k8+dT20+ckV2PiLcCBNReOeWuyS0ZZERfxXcpZYFVxzuFCa
+         VZB19AhhI1j77SrCobubD8BQfkQVpelfr0sfKLpgZ5f2RU4jiHNLMjgK9aiyGbEqXco0
+         yC8NKV+5O7tq0PbOCwXJXrXL3Eez2fUd2PTzkPYMKYuBdZPLIyoFPpfTaxMwy001THIO
+         RNBDdHxGkRq4rAU/4BVZP9/eejP8khfYrflhMRBcTjpuv12HviEMB+GHXDB6siuyEO9H
+         rAcHVCLaD0GIcJf4J8LCNdePZblUAK1oEL4DS2/+hfjTqU1TtPYBJvIpjjcEh/E+uQPp
+         90OQ==
+X-Gm-Message-State: AOJu0YzJd+cN4qKM1cvmMdPfggFfvKbIZxJpdd7wNlwBfJ8J0GZr9A+B
+	WOk+hsiixej2uihs/lvq/JNh5w==
+X-Google-Smtp-Source: AGHT+IGwwqHwyBASzYObjimxH00Ydcl+lAjOoi91ePvVUL0yYYiPtovN11NZd4EAB/QxxEpm7+DHfg==
+X-Received: by 2002:a2e:8055:0:b0:2bc:39f5:ecb4 with SMTP id p21-20020a2e8055000000b002bc39f5ecb4mr1074596ljg.25.1694769685101;
+        Fri, 15 Sep 2023 02:21:25 -0700 (PDT)
+Received: from uffe-tuxpro14.. (h-94-254-63-18.NA.cust.bahnhof.se. [94.254.63.18])
+        by smtp.gmail.com with ESMTPSA id p8-20020a2e7408000000b002b9ec22d9fasm639376ljc.29.2023.09.15.02.21.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Sep 2023 02:21:24 -0700 (PDT)
+From: Ulf Hansson <ulf.hansson@linaro.org>
+To: Arnd Bergmann <arnd@arndb.de>,
+	Olof Johansson <olof@lixom.net>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 10/17] pmdomain: rockchip: Move Kconfig option to the pmdomain subsystem
+Date: Fri, 15 Sep 2023 11:19:56 +0200
+Message-Id: <20230915092003.658361-11-ulf.hansson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230915092003.658361-1-ulf.hansson@linaro.org>
+References: <20230915092003.658361-1-ulf.hansson@linaro.org>
 MIME-Version: 1.0
-References: <20230915065043.3401840-1-make_ruc2021@163.com>
-In-Reply-To: <20230915065043.3401840-1-make_ruc2021@163.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Fri, 15 Sep 2023 11:05:00 +0200
-Message-ID: <CAAEAJfANY07RE4Dw1LwDuCpv_qj_RQoLyXpLsC6r=rnfiN3QHw@mail.gmail.com>
-Subject: Re: [PATCH] media: verisilicon: fix use after free bug in
- hantro_remove due to race condition
-To: Ma Ke <make_ruc2021@163.com>
-Cc: p.zabel@pengutronix.de, mchehab@kernel.org, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_020516_067888_4B64D1B1 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20230915_022126_599658_044F7220 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +92,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWEsCgpUaGlzIHdhcyBhbHJlYWR5IGRpc2N1c3NlZDoKCmh0dHBzOi8vcGF0Y2h3b3JrLmtl
-cm5lbC5vcmcvcHJvamVjdC9saW51eC1tZWRpYS9wYXRjaC8yMDIzMDMxMzE1NDEzMi4zNjg0MTgx
-LTEtenl5dGx6Lnd6QDE2My5jb20vCgpUaGFua3MsCkV6ZXF1aWVsCgpPbiBGcmksIFNlcCAxNSwg
-MjAyMyBhdCA4OjUx4oCvQU0gTWEgS2UgPG1ha2VfcnVjMjAyMUAxNjMuY29tPiB3cm90ZToKPgo+
-IEluIGhhbnRyb19wcm9iZSwgdnB1LT53YXRjaGRvZ193b3JrIGlzIGJvdW5kIHdpdGggaGFudHJv
-X3dhdGNoZG9nIGZ1bmN0aW9uLiBJbgo+IGhhbnRyb19lbmRfcHJlcGFyZV9ydW4sIGl0IHdpbGwg
-c3RhcnRlZCBieSBzY2hlZHVsZV9kZWxheWVkX3dvcmsuIElmIHRoZXJlIGlzIGFuCj4gdW5maW5p
-c2hlZCB3b3JrIGluIGhhbnRyb19yZW1vdmUsIHRoZXJlIG1heSBiZSBhIHJhY2UgY29uZGl0aW9u
-IGFuZCB0cmlnZ2VyIFVBRgo+IGJ1Zy4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hIEtlIDxtYWtlX3J1
-YzIwMjFAMTYzLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm9fZHJ2LmMgfCAxICsKPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9f
-ZHJ2LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19kcnYuYwo+
-IGluZGV4IDQyM2ZjODVkNzllZS4uMWE1YjNhODVjNTIwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2Rydi5jCj4gKysrIGIvZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMKPiBAQCAtMTE4Nyw2ICsxMTg3
-LDcgQEAgc3RhdGljIHZvaWQgaGFudHJvX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
-ZGV2KQo+Cj4gICAgICAgICB2NGwyX2luZm8oJnZwdS0+djRsMl9kZXYsICJSZW1vdmluZyAlc1xu
-IiwgcGRldi0+bmFtZSk7Cj4KPiArICAgICAgIGNhbmNlbF9kZWxheWVkX3dvcmtfc3luYygmdnB1
-LT53YXRjaGRvZ193b3JrKTsKPiAgICAgICAgIG1lZGlhX2RldmljZV91bnJlZ2lzdGVyKCZ2cHUt
-Pm1kZXYpOwo+ICAgICAgICAgaGFudHJvX3JlbW92ZV9kZWNfZnVuYyh2cHUpOwo+ICAgICAgICAg
-aGFudHJvX3JlbW92ZV9lbmNfZnVuYyh2cHUpOwo+IC0tCj4gMi4zNy4yCj4KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The Kconfig option belongs closer to the corresponding implementation,
+hence let's move it from the soc subsystem to the pmdomain subsystem.
+
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: <linux-rockchip@lists.infradead.org>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/pmdomain/Kconfig          |  1 +
+ drivers/pmdomain/rockchip/Kconfig | 16 ++++++++++++++++
+ drivers/soc/rockchip/Kconfig      | 12 ------------
+ 3 files changed, 17 insertions(+), 12 deletions(-)
+ create mode 100644 drivers/pmdomain/rockchip/Kconfig
+
+diff --git a/drivers/pmdomain/Kconfig b/drivers/pmdomain/Kconfig
+index 0a75a17f2f3a..8afe69251dd2 100644
+--- a/drivers/pmdomain/Kconfig
++++ b/drivers/pmdomain/Kconfig
+@@ -9,5 +9,6 @@ source "drivers/pmdomain/imx/Kconfig"
+ source "drivers/pmdomain/mediatek/Kconfig"
+ source "drivers/pmdomain/qcom/Kconfig"
+ source "drivers/pmdomain/renesas/Kconfig"
++source "drivers/pmdomain/rockchip/Kconfig"
+ 
+ endmenu
+diff --git a/drivers/pmdomain/rockchip/Kconfig b/drivers/pmdomain/rockchip/Kconfig
+new file mode 100644
+index 000000000000..b0d70f1a8439
+--- /dev/null
++++ b/drivers/pmdomain/rockchip/Kconfig
+@@ -0,0 +1,16 @@
++# SPDX-License-Identifier: GPL-2.0-only
++if ARCH_ROCKCHIP || COMPILE_TEST
++
++config ROCKCHIP_PM_DOMAINS
++	bool "Rockchip generic power domain"
++	depends on PM
++	select PM_GENERIC_DOMAINS
++	help
++	  Say y here to enable power domain support.
++	  In order to meet high performance and low power requirements, a power
++	  management unit is designed or saving power when RK3288 in low power
++	  mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
++
++	  If unsure, say N.
++
++endif
+diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+index aff2f7e95237..785f60c6f3ad 100644
+--- a/drivers/soc/rockchip/Kconfig
++++ b/drivers/soc/rockchip/Kconfig
+@@ -22,18 +22,6 @@ config ROCKCHIP_IODOMAIN
+ 	  necessary for the io domain setting of the SoC to match the
+ 	  voltage supplied by the regulators.
+ 
+-config ROCKCHIP_PM_DOMAINS
+-	bool "Rockchip generic power domain"
+-	depends on PM
+-	select PM_GENERIC_DOMAINS
+-	help
+-	  Say y here to enable power domain support.
+-	  In order to meet high performance and low power requirements, a power
+-	  management unit is designed or saving power when RK3288 in low power
+-	  mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
+-
+-	  If unsure, say N.
+-
+ config ROCKCHIP_DTPM
+ 	tristate "Rockchip DTPM hierarchy"
+ 	depends on DTPM && m
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
