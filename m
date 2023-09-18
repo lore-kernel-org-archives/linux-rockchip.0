@@ -4,75 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3927C46CA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 17:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C59F7C46CA1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 17:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1sDms87zNydKTiI6CQQgMysBtXBHDD8FgqZswPKWxN4=; b=Ag8SQhYt527Wql
-	2D6EXbRpipvCcRI3ISWYbKXsb3iUtsvtdM8S7qfiYKp25lZbZb2j24rRGGnR3H5Vr5ier3DciVjJQ
-	0ecTqFeo73NWftV9vSWtWLq0Au/4S5w0TT9HcfSyfF1YkIMVon2Fr8pbbOlQ6uuv3ZTFtBOniAa/n
-	1SrEFuJyenPb/Olsc0+gkaNLz9rtKy+3+abZvXLNt58WieLC/xQxOd4X2fGEge6QFwQC+XxHnH9r6
-	uWqvNJfwS6jBIqjHVS02q0kUigQuNJnhF00mA5p+UtuY0hpBH9NYgC1ZsyIR9PtIWIvoXeFG7MSNl
-	ODjmF03efhvuBOXO9oDw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uLLvDNGOD3eatYMYL4hDWdKDASBwyWbHcXcA55c7KQQ=; b=wLtoT0KE+gIfUn
+	gQcOS8JznaQIeyTObEbOD9kih9Yu6iX/34Ah9IE2pa7be+F0jt6buv3nHO/tk2djdsU9+X4deayYI
+	F4zie3K3NoZj1GtXNKOAwRWKDhP+OJTwaij/JfXleSbq8QGQ/yDDVw4P5B4XFj6Np5ghhPClDef9e
+	x8p20UkTWKrrDXtdUlEoWLwh/V8gBh7G+fSiFeWX6rxiXVrk3s7tPFZlQsYqCpZJKmAo6XtghE99K
+	KDckEhdmoTOd4P2nxRjgyBStpRn8OMalSbbN0vB8wd2jWfG35b7mX+oZstgSVVWqSaswGI9y9KQw7
+	etgBsSRIt+3YyyMFyECw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiHjG-00Fwjt-1J;
-	Mon, 18 Sep 2023 17:08:10 +0000
-Received: from mgamail.intel.com ([192.55.52.93])
+	id 1qiI7P-00FzjL-1W;
+	Mon, 18 Sep 2023 17:33:07 +0000
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiHjB-00Fwiu-2k;
-	Mon, 18 Sep 2023 17:08:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1695056885; x=1726592885;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=R0IYlcHB+mDxKxCzHImBnbsDf3CITkOOK5I/jc4Vt4g=;
-  b=CoWiXAoprMG3uvandBSG1RiVCFVq/ox8hK9d210ePWXYdjSGIoTN8BsF
-   kvkREJ+xZxyUuTs8XlVlq0/bxJZTvWu/gTJOrS80xNvr8trdTm5Amky8g
-   jVPYBwz1TMwuUraftKtzwcSK/0FeejuBw0C/IIprDAsu2y82R4f+O3MHj
-   NnwX6ZH1zoNnKwRHtZwoQiEJtzF5UsmbzOQNqDJ6y5yW6OnwEkwr1f8BD
-   fzyDFm9qEB8Ja7Vt8kzBqJ4JraKxFHUwRsriI4buYr6njOLDzrmGp8RyG
-   ZctpZrCQ8be1YIACJ81ow9gVuFcEf97j//d59J0zfshvAebXd7P1tHrAU
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10837"; a="377037218"
-X-IronPort-AV: E=Sophos;i="6.02,157,1688454000"; 
-   d="scan'208";a="377037218"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2023 10:08:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10837"; a="775202677"
-X-IronPort-AV: E=Sophos;i="6.02,157,1688454000"; 
-   d="scan'208";a="775202677"
-Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
-  by orsmga008.jf.intel.com with ESMTP; 18 Sep 2023 10:07:58 -0700
-Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qiHj2-0006J6-1j;
-	Mon, 18 Sep 2023 17:07:56 +0000
-Date: Tue, 19 Sep 2023 01:07:42 +0800
-From: kernel test robot <lkp@intel.com>
-To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
-	sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	huangtao@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com
-Subject: Re: [PATCH v1 4/8] clk: rockchip: Avoid __clk_lookup() calls
-Message-ID: <202309190032.1NPAySNx-lkp@intel.com>
-References: <20230918073151.7660-5-zhangqing@rock-chips.com>
+	id 1qiI7M-00FziC-2V
+	for linux-rockchip@lists.infradead.org;
+	Mon, 18 Sep 2023 17:33:06 +0000
+Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-6bdacc5ed66so2606439a34.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Sep 2023 10:33:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1695058382; x=1695663182; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=EZNkvnrgYUErV8fZNN98x6gpuYSKrtt1lgRS6aYyhUM=;
+        b=QemuJJZoh0kC1GglNm+V4Y1RH4HZcUAY7LX+jGOZm4jL9Z6Djxi5eK94b+774JNlhU
+         nPH7s51nqJW1VyNU+brxdG+D+a+lNBVl+vrt4GWL1wgThqbJCiwvj66/SHEYALU2f98a
+         x7fBUrffoPxFdNcnH/EhjNIomL1z4Qjv0YeAq1fEGIuOkPotmzPXSYcVRzDcz5LCZ6qN
+         dAPbIWdn5Y7H7Q4uvl3BA0PFobWOCYrGu2XttdkaQT2NzgA5L0J4Fco9eZQAQFaY6MRT
+         iigC+pG/uTaMSTHaL6iYC1qH1tBc221KPoAp5HSwihzbC2hDF246fKCVb6NoB1SWewZp
+         5TxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695058382; x=1695663182;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EZNkvnrgYUErV8fZNN98x6gpuYSKrtt1lgRS6aYyhUM=;
+        b=AE7Wp7z0k8aQoL9HMVXWMof999097dzfn4oFaFMwnm+TO9vzUbx6pzgRNhOWlorpcO
+         OHzYeMYVX4qxqV6kxuifHew1WTLYuFwDTsu0dBEz6v8ujHodYovZocj1FGvfD/4t9p3Q
+         +ixMwQt2J5EV9bJII/JGTg7gC6lJjheIRfenMj8onfCB31BH24L3F6rqkujbhTpTlGde
+         OuswDTjTKAOxls6G01lhI1HW+Zu13CWWnUka9Ev764XntfIbR3J5EaofKZjRy7+AJwbE
+         Ba67eyCTmUcfWWQ/6tuePB1NJEPjKqxQ3K6hSB8ijAQ2uRUuGVIXHGyK8YpBpiUDYFRj
+         muEg==
+X-Gm-Message-State: AOJu0YwxRy02EwZqAWnh3ZXmnDlZpOmO/gph5Sw7HqrXJlvN9MfYPt5J
+	eQ9+rhhr+stGqlwEGuDXwoo=
+X-Google-Smtp-Source: AGHT+IG31rWsXFqqzyCE9f0hcS/rrnLRjkI9ljM28b5DA3Y1z5cBJrLQnme12QfS2Oo+qUXzI4YDhw==
+X-Received: by 2002:a05:6830:1544:b0:6b8:7a07:b312 with SMTP id l4-20020a056830154400b006b87a07b312mr203669otp.10.1695058382617;
+        Mon, 18 Sep 2023 10:33:02 -0700 (PDT)
+Received: from localhost.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id z5-20020a056830128500b006bf0f95f702sm4315755otp.64.2023.09.18.10.33.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Sep 2023 10:33:02 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	jagan@edgeble.ai,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V2 0/3] Add Additional Functionality to Indiedroid Nova
+Date: Mon, 18 Sep 2023 12:32:52 -0500
+Message-Id: <20230918173255.1325-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230918073151.7660-5-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_100805_910743_825064FD 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20230918_103304_840246_91590D48 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,90 +95,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Elaine,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-kernel test robot noticed the following build warnings:
+Update the Indiedroid Nova device tree to benefit from hardware that
+has recently been enabled in the mainline kernel. This includes
+enabling the PCI Express bus to activate the RTL8111 ethernet
+controller, the USB-A 2.0 ports (USB 3.0 still pending), and the ADC
+controller with the boot and recovery buttons.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on clk/clk-next linus/master v6.6-rc2 next-20230918]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Changes from V1:
+ - Correct node names for adc buttons.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Elaine-Zhang/clk-clk-fractional-divider-Export-clk_fractional_divider_general_approximation-API/20230918-154652
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20230918073151.7660-5-zhangqing%40rock-chips.com
-patch subject: [PATCH v1 4/8] clk: rockchip: Avoid __clk_lookup() calls
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20230919/202309190032.1NPAySNx-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230919/202309190032.1NPAySNx-lkp@intel.com/reproduce)
+Chris Morgan (3):
+  arm64: dts: rockchip: add PCIe to rk3588s-indiedroid-nova
+  arm64: dts: rockchip: add USB2 to rk3588s-indiedroid
+  arm64: dts: rockchip: Add saradc node to Indiedroid Nova
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309190032.1NPAySNx-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/clk/rockchip/clk-rk3328.c:13:
->> drivers/clk/rockchip/clk-rk3328.c:160:7: warning: 'mux_armclk_p' defined but not used [-Wunused-const-variable=]
-     160 | PNAME(mux_armclk_p)             = { "apll_core",
-         |       ^~~~~~~~~~~~
-   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
-     512 | #define PNAME(x) static const char *const x[] __initconst
-         |                                           ^
---
-   In file included from drivers/clk/rockchip/clk-rk3588.c:13:
->> drivers/clk/rockchip/clk-rk3588.c:447:7: warning: 'mux_armclkb23_p' defined but not used [-Wunused-const-variable=]
-     447 | PNAME(mux_armclkb23_p)                  = { "xin24m", "gpll", "b1pll",};
-         |       ^~~~~~~~~~~~~~~
-   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
-     512 | #define PNAME(x) static const char *const x[] __initconst
-         |                                           ^
->> drivers/clk/rockchip/clk-rk3588.c:446:7: warning: 'mux_armclkb01_p' defined but not used [-Wunused-const-variable=]
-     446 | PNAME(mux_armclkb01_p)                  = { "xin24m", "gpll", "b0pll",};
-         |       ^~~~~~~~~~~~~~~
-   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
-     512 | #define PNAME(x) static const char *const x[] __initconst
-         |                                           ^
->> drivers/clk/rockchip/clk-rk3588.c:445:7: warning: 'mux_armclkl_p' defined but not used [-Wunused-const-variable=]
-     445 | PNAME(mux_armclkl_p)                    = { "xin24m", "gpll", "lpll" };
-         |       ^~~~~~~~~~~~~
-   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
-     512 | #define PNAME(x) static const char *const x[] __initconst
-         |                                           ^
-
-
-vim +/mux_armclk_p +160 drivers/clk/rockchip/clk-rk3328.c
-
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  144  
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  145  PNAME(mux_2plls_p)		= { "cpll", "gpll" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  146  PNAME(mux_gpll_cpll_p)		= { "gpll", "cpll" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  147  PNAME(mux_cpll_gpll_apll_p)	= { "cpll", "gpll", "apll" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  148  PNAME(mux_2plls_xin24m_p)	= { "cpll", "gpll", "xin24m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  149  PNAME(mux_2plls_hdmiphy_p)	= { "cpll", "gpll",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  150  				    "dummy_hdmiphy" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  151  PNAME(mux_4plls_p)		= { "cpll", "gpll",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  152  				    "dummy_hdmiphy",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  153  				    "usb480m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  154  PNAME(mux_2plls_u480m_p)	= { "cpll", "gpll",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  155  				    "usb480m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  156  PNAME(mux_2plls_24m_u480m_p)	= { "cpll", "gpll",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  157  				     "xin24m", "usb480m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  158  
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  159  PNAME(mux_ddrphy_p)		= { "dpll", "apll", "cpll" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29 @160  PNAME(mux_armclk_p)		= { "apll_core",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  161  				    "gpll_core",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  162  				    "dpll_core",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  163  				    "npll_core"};
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  164  PNAME(mux_hdmiphy_p)		= { "hdmi_phy", "xin24m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  165  PNAME(mux_usb480m_p)		= { "usb480m_phy",
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  166  				    "xin24m" };
-fe3511ad8a1cf6 Elaine Zhang 2016-12-29  167  
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 84 +++++++++++++++++++
+ 1 file changed, 84 insertions(+)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
