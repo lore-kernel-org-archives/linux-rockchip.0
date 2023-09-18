@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C59F7C46CA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 17:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B076CD37B0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 17:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uLLvDNGOD3eatYMYL4hDWdKDASBwyWbHcXcA55c7KQQ=; b=wLtoT0KE+gIfUn
-	gQcOS8JznaQIeyTObEbOD9kih9Yu6iX/34Ah9IE2pa7be+F0jt6buv3nHO/tk2djdsU9+X4deayYI
-	F4zie3K3NoZj1GtXNKOAwRWKDhP+OJTwaij/JfXleSbq8QGQ/yDDVw4P5B4XFj6Np5ghhPClDef9e
-	x8p20UkTWKrrDXtdUlEoWLwh/V8gBh7G+fSiFeWX6rxiXVrk3s7tPFZlQsYqCpZJKmAo6XtghE99K
-	KDckEhdmoTOd4P2nxRjgyBStpRn8OMalSbbN0vB8wd2jWfG35b7mX+oZstgSVVWqSaswGI9y9KQw7
-	etgBsSRIt+3YyyMFyECw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fuksy62d8UFMI250MMhbkC1snvF5APQiwscFqJekv2I=; b=wDPtSyzESW2A8g
+	ppRply3D+foSDkzTiFE7PI7m1Dxn1rD80Zs8ccnciHtasVH5Ls7teLxhu/6BGTggcWGk6zeKhXvID
+	RnK3ppC/y82kv/BlOUZ90fU5smCUO8+iWjdGeI/aSnMcBmfLRtOxZAoIMCmSXKJGxgp0R3oSHneqf
+	nllEgZxX8UNE9dq66+ynzKyR9RIsGayRvMivXfBgaffXkfjm/xLA4vzs6SchmHe8yB3+KpSpFrV+E
+	/S+AFrb0W9IEGK5x5cwC/GtzzyqYGLWadWAvBknj0TG0IazZxmUA9hmn6CZHpZrk/1kxSpgr/9Co2
+	aNO9UxJhbjPb/lRF8amg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiI7P-00FzjL-1W;
-	Mon, 18 Sep 2023 17:33:07 +0000
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+	id 1qiI7S-00FzkA-26;
+	Mon, 18 Sep 2023 17:33:10 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiI7M-00FziC-2V
+	id 1qiI7N-00FziR-2y
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 Sep 2023 17:33:06 +0000
-Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-6bdacc5ed66so2606439a34.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 18 Sep 2023 10:33:03 -0700 (PDT)
+	Mon, 18 Sep 2023 17:33:08 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6bf01bcb1aeso2873616a34.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Sep 2023 10:33:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695058382; x=1695663182; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=EZNkvnrgYUErV8fZNN98x6gpuYSKrtt1lgRS6aYyhUM=;
-        b=QemuJJZoh0kC1GglNm+V4Y1RH4HZcUAY7LX+jGOZm4jL9Z6Djxi5eK94b+774JNlhU
-         nPH7s51nqJW1VyNU+brxdG+D+a+lNBVl+vrt4GWL1wgThqbJCiwvj66/SHEYALU2f98a
-         x7fBUrffoPxFdNcnH/EhjNIomL1z4Qjv0YeAq1fEGIuOkPotmzPXSYcVRzDcz5LCZ6qN
-         dAPbIWdn5Y7H7Q4uvl3BA0PFobWOCYrGu2XttdkaQT2NzgA5L0J4Fco9eZQAQFaY6MRT
-         iigC+pG/uTaMSTHaL6iYC1qH1tBc221KPoAp5HSwihzbC2hDF246fKCVb6NoB1SWewZp
-         5TxQ==
+        d=gmail.com; s=20230601; t=1695058384; x=1695663184; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XK3Zx4cA9xhlrAxpKhxgK0rFJrxd0HOs9F/T85uolkQ=;
+        b=MG4vvIO5JX+pSee9ibi3NWnkkuaP0fsjmJORjEcCiB9EoBEIwTdvlsSUHmaidBXLmG
+         z8VnUt3UjxSVMRKhXQJ4Tcuq/PBRlradiTu/Rz6fznlip6v2kCFx+UaYiQnl/lENYL6f
+         0w86/3yJ2z4wSzpgfdWFvFAl19HjwyyS3l7kRAczfuSn55rjMaliuKpk7aLktWXwGxJv
+         PLLSY0e2bj6dJPmx3gfw6I/laHeuX4NAG+RX029d9jiJwb7v8uRX9Wv8gL1R5T0eKQfZ
+         dnAzzK2HobFcko+rDUgokvDvvP5c9u9j12bzjEVZ5Tqf2dRv+/v2QeMx6knPfJeRAonX
+         i4Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695058382; x=1695663182;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EZNkvnrgYUErV8fZNN98x6gpuYSKrtt1lgRS6aYyhUM=;
-        b=AE7Wp7z0k8aQoL9HMVXWMof999097dzfn4oFaFMwnm+TO9vzUbx6pzgRNhOWlorpcO
-         OHzYeMYVX4qxqV6kxuifHew1WTLYuFwDTsu0dBEz6v8ujHodYovZocj1FGvfD/4t9p3Q
-         +ixMwQt2J5EV9bJII/JGTg7gC6lJjheIRfenMj8onfCB31BH24L3F6rqkujbhTpTlGde
-         OuswDTjTKAOxls6G01lhI1HW+Zu13CWWnUka9Ev764XntfIbR3J5EaofKZjRy7+AJwbE
-         Ba67eyCTmUcfWWQ/6tuePB1NJEPjKqxQ3K6hSB8ijAQ2uRUuGVIXHGyK8YpBpiUDYFRj
-         muEg==
-X-Gm-Message-State: AOJu0YwxRy02EwZqAWnh3ZXmnDlZpOmO/gph5Sw7HqrXJlvN9MfYPt5J
-	eQ9+rhhr+stGqlwEGuDXwoo=
-X-Google-Smtp-Source: AGHT+IG31rWsXFqqzyCE9f0hcS/rrnLRjkI9ljM28b5DA3Y1z5cBJrLQnme12QfS2Oo+qUXzI4YDhw==
-X-Received: by 2002:a05:6830:1544:b0:6b8:7a07:b312 with SMTP id l4-20020a056830154400b006b87a07b312mr203669otp.10.1695058382617;
-        Mon, 18 Sep 2023 10:33:02 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1695058384; x=1695663184;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XK3Zx4cA9xhlrAxpKhxgK0rFJrxd0HOs9F/T85uolkQ=;
+        b=n/20JDMGMt/3tDqFyvCWZzJ6tC6i1Jr4Rbpa6uWvMwPZJPeY/XYZDgEzwGRTqMmgyG
+         vdVk3m8OemW1LDVW36p7dqrePk16o0hNKdR05lbTD+51QmpXXYvvPz0HqomYIixtsxyr
+         n0FbVaz+5Zs/Z7vaaOZpEn+wc6NNbuox6NtcPpSp+9hDSd5xEsTkRNYbfROwbXv1OPVh
+         nVmz+aylsczbBKzM9pbg8TGWEUBZ+G++Z6PhP4OtE7SY/SZ9NVngETwuF49jc1UbDGNC
+         KCsBLjS4QfvJCNwB0eJwWn7qNqv0lXrrRlROEXKJJZE6DsOHDboZUF+9F3UOnoKUi2mU
+         A71g==
+X-Gm-Message-State: AOJu0YwT5UNnsXGppg9cJFh5lM7l1+PYi/rK8rTDiZmBeaBjJ6eVhgvB
+	MNh0Fm6yvjlD5PByEy7vSas=
+X-Google-Smtp-Source: AGHT+IG099pZXcuRlYWQ4u4WN0bBrYtPwrlrp3XmF1JITM2fdMwNCInhOudAchYGgcQDm9Og8WM1Qg==
+X-Received: by 2002:a9d:4f0b:0:b0:6be:c1b:ded4 with SMTP id d11-20020a9d4f0b000000b006be0c1bded4mr10608390otl.3.1695058384590;
+        Mon, 18 Sep 2023 10:33:04 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id z5-20020a056830128500b006bf0f95f702sm4315755otp.64.2023.09.18.10.33.02
+        by smtp.gmail.com with ESMTPSA id z5-20020a056830128500b006bf0f95f702sm4315755otp.64.2023.09.18.10.33.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Sep 2023 10:33:02 -0700 (PDT)
+        Mon, 18 Sep 2023 10:33:04 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: devicetree@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -70,15 +71,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 0/3] Add Additional Functionality to Indiedroid Nova
-Date: Mon, 18 Sep 2023 12:32:52 -0500
-Message-Id: <20230918173255.1325-1-macroalpha82@gmail.com>
+Subject: [PATCH V2 3/3] arm64: dts: rockchip: Add saradc node to Indiedroid Nova
+Date: Mon, 18 Sep 2023 12:32:55 -0500
+Message-Id: <20230918173255.1325-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230918173255.1325-1-macroalpha82@gmail.com>
+References: <20230918173255.1325-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_103304_840246_91590D48 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230918_103305_958821_2315AE88 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,23 +99,75 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Update the Indiedroid Nova device tree to benefit from hardware that
-has recently been enabled in the mainline kernel. This includes
-enabling the PCI Express bus to activate the RTL8111 ethernet
-controller, the USB-A 2.0 ports (USB 3.0 still pending), and the ADC
-controller with the boot and recovery buttons.
+Add ADC support for the Indiedroid Nova, as well as the two ADC buttons
+found on the device. The buttons are documented as "boot" and
+"recovery". The boot button is used by the bootloader to boot into USB
+recovery mode. The recovery button use is currently unknown.
 
-Changes from V1:
- - Correct node names for adc buttons.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-Chris Morgan (3):
-  arm64: dts: rockchip: add PCIe to rk3588s-indiedroid-nova
-  arm64: dts: rockchip: add USB2 to rk3588s-indiedroid
-  arm64: dts: rockchip: Add saradc node to Indiedroid Nova
-
- .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 84 +++++++++++++++++++
- 1 file changed, 84 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index 1e2336d3065b..60f00ceb630e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -3,6 +3,7 @@
+ /dts-v1/;
+ 
+ #include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/linux-event-codes.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+@@ -11,6 +12,34 @@ / {
+ 	model = "Indiedroid Nova";
+ 	compatible = "indiedroid,nova", "rockchip,rk3588s";
+ 
++	adc-keys-0 {
++		compatible = "adc-keys";
++		io-channel-names = "buttons";
++		io-channels = <&saradc 0>;
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-boot {
++			label = "boot";
++			linux,code = <KEY_PROG1>;
++			press-threshold-microvolt = <18000>;
++		};
++	};
++
++	adc-keys-1 {
++		compatible = "adc-keys";
++		io-channel-names = "buttons";
++		io-channels = <&saradc 1>;
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-recovery {
++			label = "recovery";
++			linux,code = <KEY_PROG2>;
++			press-threshold-microvolt = <18000>;
++		};
++	};
++
+ 	aliases {
+ 		mmc0 = &sdhci;
+ 		mmc1 = &sdmmc;
+@@ -410,6 +439,11 @@ typec5v_pwren: typec5v-pwren {
+ 	};
+ };
+ 
++&saradc {
++	vref-supply = <&vcca_1v8_s0>;
++	status = "okay";
++};
++
+ /* HS400 modes seemed to cause io errors. */
+ &sdhci {
+ 	bus-width = <8>;
 -- 
 2.34.1
 
