@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA2AC46CA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 07:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B106CD37B0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 12:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=K29HsIRaQc19sbmjmguC8KZvahTFM8pCRkfQJbBX9vo=; b=Dx6wCzCHShLeq/
-	8GE263LqxVje7wNPQBk8eHrLJ/zbUOTrGA7xZOmXeEiIqeTbzbcylEKnYAvtBuM8z/MDdOlZ0YqnF
-	Kf+fjfZDanRrIwvk/vC9HBy15VuiTN2YSZ5MBjCdpa1zeB2qWv7gPrql8Xv7AjDee5yCskxmeNTqJ
-	eSBpYxmAEde6mRIxp5LBaTIhPjLSvt3lg4rxqUnKCTVq8LColAzzpZjjHUpJcO8mKbI6Ey3Wjg5Mg
-	+X2nCJqhxZpNYFcVxQhax8xNVDsk31TGdcnopBASSC9U7T6tVeHGwAWcMZjN9uZ5QTe56TkoyUhv+
-	QuTHaRtoI/QAQhXU/2kQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cV2o5erkdxQkHX5IZPSXRdeBsYdr53qcKGER9zMRKyE=; b=sQ2diyHzqbD6aA
+	eeoDjlQHd3LutqVdbJgUWb1MYdOexTO0wW4DxRM42RCLdFJA3RgEROvLYwu7oV7m7uK3ZBDP82g8a
+	5nxzsXQk46ry6Ncamo7HxTHEvy+gpz5T5Rmta/nnxcbPmTb/wyRALVboXCOsukhoSmY6wGksPgLtv
+	jgNIr3gfllETGX2dFvAvXGXmzUG89xJqJKe23tUyL+jjqwWBdxX4d2i3Lf9Q7XkkpH/KNVBRMWO4j
+	VijUfJBc8QyIoIWzqj9lDCJs68NzOo41SCfv2H6Xo7tHRvG0mlW0b8TmBNGuQ/Q+lLCyJY5zHrlDD
+	wvGdzgSHt7P5pgVl89Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi8ul-00ElWX-0E;
-	Mon, 18 Sep 2023 07:43:27 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1qiDBP-00FP6G-2h;
+	Mon, 18 Sep 2023 12:16:55 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi8ue-00ElU4-1B;
-	Mon, 18 Sep 2023 07:43:22 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 90B2624000D;
-	Mon, 18 Sep 2023 07:43:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695022997;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=4o9b0EdEagI/FVxfPGBCEgC2OjH+6DvLWQZYPHDD6DU=;
-	b=UXqvSR9xSpiieP1etH1Vyl2cSN/ENa0irafGLBjjr8QSsr1PCkGhBMiU19eEQsmi7wjGlS
-	JSrBrFRbzCmWrMaDy4xQTUlu3HRYtpwxStzFt5QMYzy3Cgk0jsthfGcxsfEH6kbXCzkKED
-	DLtadljofsB8byIw7Ckm3wr8e5HSVSGZ/g0mvnqawmsXO/qGOFhQldKwQ++yAVsA/1PNBU
-	Na8JGAVAQ15ySbgTuWyDPqv0M2tNjtlXkCPaWgo5VM73rw/MFxpy0ga/jXzOUo0LNoBXDR
-	6SkQ5Esi68A82g2pQCH0pgdUVgS/Mjq5M8oBEZqc0iK2R9w5e1foPk6merh1GQ==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	David Heidelberg <david@ixit.cz>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Alex Riabchenko <d3adme4t@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] arm64: dts: replace Bananapi with Banana Pi
-Date: Mon, 18 Sep 2023 10:43:01 +0300
-Message-Id: <20230918074301.74528-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.39.2
+	id 1qiDBM-00FP5Q-1O
+	for linux-rockchip@lists.infradead.org;
+	Mon, 18 Sep 2023 12:16:53 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-52bcd4db4e6so5467714a12.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Sep 2023 05:16:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1695039410; x=1695644210; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=pNv1FDwVT3hMnnPhWO3xcQr1aUeDgxmwwA9dkUiq1gI=;
+        b=hKARBq7KM+hvlZSaJs2HGuHX1C+gotriOp0jpWmd+I4ZBck5SMIWkLpSJVrR64i1BE
+         rgv5vqpHZlfN83dC8SLTtnn7dPZrNdevbWJyXnFiT83zTJz7RB11FdDII6phpJUKUVLx
+         CWJGWxvGW5QeXN31318dGQRJncyRFDW4NCj227x0jnHmY8Ohgx0IXZAfaAQJbTeoPfaa
+         27j/OO3NGTN+aJfoLZwqIzIIqSqyEdPm1XiA39YXZU/qpHzlgaWLyni1SFAF/tKNbQFE
+         Slhr6cOK+OlJsjkTXj7CfBvqB9aiz83oPyoSt33PxVOL6x4KOARgQYDZW7p4L4k6jELa
+         I4XA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695039410; x=1695644210;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pNv1FDwVT3hMnnPhWO3xcQr1aUeDgxmwwA9dkUiq1gI=;
+        b=HDjAp457/mh5NvNEehLuYXvGY54ciFgtrZBaodHAG6QPJM3wqRrhLFOgABlP1hXjgw
+         o5LUM3m8OKbWpV9aP4BTAKzPrxYaAz0ZnRbCWrn6Mh45x+irMYbfvYnmgFhSq7XR8ILc
+         piTF0O3chJuL0q0SKBFPXV8K7V4a5/SuY3an/JVMNnIld9ZGpEZgVZZNc9tG1tR/4LOs
+         Sc07zTgBUqEHbdDiGlziRKbtkQi429ZZ/4eSYabGP/3+UPsT2htt/up7Q3LVWLlWP4xv
+         vt1MwMRPdN9RnXKcTrD5gIBzJQFTvapd5w2FHVVAcBMIFhEVMVP0oCWhbzENYkJVN5Gy
+         vPUQ==
+X-Gm-Message-State: AOJu0YwulRu64DoJwtZK0EE5ZOEUd2npbtV6Yw3czoZbZAPi5G8suVIv
+	zCXnCUBbtODThZwhq8r/V9PhMA==
+X-Google-Smtp-Source: AGHT+IHjEzmDf8sH8wfhuBGiqE680D7tr59P6K14bIMYabWiXD52tF+e9xu/8MVoljBZIxA6w9Tptw==
+X-Received: by 2002:aa7:d394:0:b0:525:691c:cd50 with SMTP id x20-20020aa7d394000000b00525691ccd50mr8530961edq.24.1695039409909;
+        Mon, 18 Sep 2023 05:16:49 -0700 (PDT)
+Received: from [172.25.80.114] ([217.67.225.27])
+        by smtp.gmail.com with ESMTPSA id a3-20020aa7cf03000000b0052e1959db1csm5962284edy.20.2023.09.18.05.16.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Sep 2023 05:16:49 -0700 (PDT)
+Message-ID: <1f9cfc55-bb63-92f2-7e22-26d31ad16e96@linaro.org>
+Date: Mon, 18 Sep 2023 14:16:47 +0200
 MIME-Version: 1.0
-X-GND-Sasl: arinc.unal@arinc9.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v1 3/8] dt-bindings: clock: rk3188: Add binding id for
+ ACLK_CPU_PRE
+Content-Language: en-US
+To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com,
+ xf@rock-chips.com
+References: <20230918073151.7660-1-zhangqing@rock-chips.com>
+ <20230918073151.7660-4-zhangqing@rock-chips.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230918073151.7660-4-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_004320_538131_1C341E7E 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20230918_051652_475771_04264F3F 
+X-CRM114-Status: UNSURE (   6.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,44 +96,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIGJyYW5kIG5hbWUgaXMgQmFuYW5hIFBpLiBSZXBsYWNlIGFueSBtZW50aW9uIG9mIEJhbmFu
-YXBpIHdpdGggQmFuYW5hClBpLgoKU2lnbmVkLW9mZi1ieTogQXLEsW7DpyDDnE5BTCA8YXJpbmMu
-dW5hbEBhcmluYzkuY29tPgotLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3NjIy
-LWJhbmFuYXBpLWJwaS1yNjQuZHRzIHwgMiArLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDc5ODZhLWJhbmFuYXBpLWJwaS1yMy5kdHMgfCAyICstCiBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU2OC1icGktcjItcHJvLmR0cyAgICAgICB8IDIgKy0KIDMgZmlsZXMgY2hh
-bmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjItYmFuYW5hcGktYnBpLXI2NC5kdHMKaW5k
-ZXggZjJjYzk1ZDRhMzQzLi42YjRlMzljNjAwYWYgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvbWVkaWF0ZWsvbXQ3NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzCisrKyBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzCkBAIC0xNCw3
-ICsxNCw3IEBACiAjaW5jbHVkZSAibXQ2MzgwLmR0c2kiCiAKIC8gewotCW1vZGVsID0gIkJhbmFu
-YXBpIEJQSS1SNjQiOworCW1vZGVsID0gIkJhbmFuYSBQaSBCUEktUjY0IjsKIAljaGFzc2lzLXR5
-cGUgPSAiZW1iZWRkZWQiOwogCWNvbXBhdGlibGUgPSAiYmFuYW5hcGksYnBpLXI2NCIsICJtZWRp
-YXRlayxtdDc2MjIiOwogCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
-L210Nzk4NmEtYmFuYW5hcGktYnBpLXIzLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0
-ZWsvbXQ3OTg2YS1iYW5hbmFwaS1icGktcjMuZHRzCmluZGV4IGFmNGE0MzA5YmRhNC4uZDczOWVi
-MGM3ZTU2IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210Nzk4NmEt
-YmFuYW5hcGktYnBpLXIzLmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
-Nzk4NmEtYmFuYW5hcGktYnBpLXIzLmR0cwpAQCAtMTUsNyArMTUsNyBAQAogI2luY2x1ZGUgIm10
-Nzk4NmEuZHRzaSIKIAogLyB7Ci0JbW9kZWwgPSAiQmFuYW5hcGkgQlBJLVIzIjsKKwltb2RlbCA9
-ICJCYW5hbmEgUGkgQlBJLVIzIjsKIAljaGFzc2lzLXR5cGUgPSAiZW1iZWRkZWQiOwogCWNvbXBh
-dGlibGUgPSAiYmFuYW5hcGksYnBpLXIzIiwgIm1lZGlhdGVrLG10Nzk4NmEiOwogCmRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1icGktcjItcHJvLmR0cyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWJwaS1yMi1wcm8uZHRzCmluZGV4
-IGY5MTI3ZGRmYmI3ZC4uYTc0ZGIwM2E4Njk4IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzU2OC1icGktcjItcHJvLmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzU2OC1icGktcjItcHJvLmR0cwpAQCAtMTIsNyArMTIsNyBAQAogI2lu
-Y2x1ZGUgInJrMzU2OC5kdHNpIgogCiAvIHsKLQltb2RlbCA9ICJCYW5hbmFwaS1SMiBQcm8gKFJL
-MzU2OCkgRERSNCBCb2FyZCI7CisJbW9kZWwgPSAiQmFuYW5hIFBpIEJQSS1SMiBQcm8gKFJLMzU2
-OCkgRERSNCBCb2FyZCI7CiAJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazM1NjgtYnBpLXIycHJv
-IiwgInJvY2tjaGlwLHJrMzU2OCI7CiAKIAlhbGlhc2VzIHsKLS0gCjIuMzkuMgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 18/09/2023 09:31, Elaine Zhang wrote:
+> export clk id ACLK_CPU_PRE.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
