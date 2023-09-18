@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5F46C46CA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 14:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3927C46CA1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 17:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oTTS8b82MdltkRY4G6C+UeY9zqvoBRnz09sResAsgxE=; b=SdDyGgRFbRTdaz
-	2+hD4UTFynlcCHvkd732DzVmwxLWJZ79puTcueJbUNzMO7fDELCrBK95hFrOAdvUgdmhrP0mL2fpO
-	Ac3RiP6UfKItyp093/rQRce/eL3ZeSQQHLEaIwtEKhOgq7doAotoDwRO2m4owP+yCA6yRgxURzFBi
-	K3d9BcLGBSG9Vfwkh781g6NwhtcH1vcRn1/7L9DRWr8dtBaRmai3sNxmnSs1XpUV9rUW6xgPnjjRm
-	u6KiUQ5oq0fKRT9LK/wdluieI6fHzTd0Wsyc6EPTfOKr5e4VYRr9UU3Qo8WDDxLAtB7isUZoWRPMV
-	hNAjgcu1CBEEYL2QMHSQ==;
+	List-Owner; bh=1sDms87zNydKTiI6CQQgMysBtXBHDD8FgqZswPKWxN4=; b=Ag8SQhYt527Wql
+	2D6EXbRpipvCcRI3ISWYbKXsb3iUtsvtdM8S7qfiYKp25lZbZb2j24rRGGnR3H5Vr5ier3DciVjJQ
+	0ecTqFeo73NWftV9vSWtWLq0Au/4S5w0TT9HcfSyfF1YkIMVon2Fr8pbbOlQ6uuv3ZTFtBOniAa/n
+	1SrEFuJyenPb/Olsc0+gkaNLz9rtKy+3+abZvXLNt58WieLC/xQxOd4X2fGEge6QFwQC+XxHnH9r6
+	uWqvNJfwS6jBIqjHVS02q0kUigQuNJnhF00mA5p+UtuY0hpBH9NYgC1ZsyIR9PtIWIvoXeFG7MSNl
+	ODjmF03efhvuBOXO9oDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiF1s-00FdQI-1N;
-	Mon, 18 Sep 2023 14:15:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qiHjG-00Fwjt-1J;
+	Mon, 18 Sep 2023 17:08:10 +0000
+Received: from mgamail.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiF1f-00FdJs-24;
-	Mon, 18 Sep 2023 14:15:02 +0000
-Received: from jupiter.universe (dyndsl-091-248-188-252.ewe-ip-backbone.de [91.248.188.252])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CF326607286;
-	Mon, 18 Sep 2023 15:14:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695046498;
-	bh=bXZx9XdtvZgH7jGGWc4OyQZ2ltC3stVZRxLpBsUab7E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Y/swLfEc0qDBI/zKIJwds4NVS8gJaAMfDtlvkJUHv+peWLSz0ejA1XMR2v9iGGDlS
-	 JgAYhGzb0eRYT31aKFpHZ3GoYOqd230KjBKvrMT2AdkzBJZ5wQJMILb4XjIQR9I3CB
-	 2rEdqulrv7/Y4u8LzOtKJNRV3KVn0cTxZwZHoN9K20yiRTQ7m9B8hu13w4lrH6/B71
-	 GXnr1RR/7yXQt0T/gPNkUcC7pF3xdiFBSHWswLW8joEAs28QV9poQx3LoLqCdVX2zX
-	 /TuGbw5aIOgSODQbHqIUwDlvE9g3EDmuWmqw7UN9ppcxvWwwEpXR58QqcjzM7+Ik/f
-	 QXvMsx1ZeC+mg==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 856F04800D1; Mon, 18 Sep 2023 16:14:56 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH 3/3] arm64: dts: rockchip: rock-5b: add PCIe for M.2 E-Key
-Date: Mon, 18 Sep 2023 16:14:51 +0200
-Message-Id: <20230918141451.131247-4-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230918141451.131247-1-sebastian.reichel@collabora.com>
-References: <20230918141451.131247-1-sebastian.reichel@collabora.com>
+	id 1qiHjB-00Fwiu-2k;
+	Mon, 18 Sep 2023 17:08:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1695056885; x=1726592885;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=R0IYlcHB+mDxKxCzHImBnbsDf3CITkOOK5I/jc4Vt4g=;
+  b=CoWiXAoprMG3uvandBSG1RiVCFVq/ox8hK9d210ePWXYdjSGIoTN8BsF
+   kvkREJ+xZxyUuTs8XlVlq0/bxJZTvWu/gTJOrS80xNvr8trdTm5Amky8g
+   jVPYBwz1TMwuUraftKtzwcSK/0FeejuBw0C/IIprDAsu2y82R4f+O3MHj
+   NnwX6ZH1zoNnKwRHtZwoQiEJtzF5UsmbzOQNqDJ6y5yW6OnwEkwr1f8BD
+   fzyDFm9qEB8Ja7Vt8kzBqJ4JraKxFHUwRsriI4buYr6njOLDzrmGp8RyG
+   ZctpZrCQ8be1YIACJ81ow9gVuFcEf97j//d59J0zfshvAebXd7P1tHrAU
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10837"; a="377037218"
+X-IronPort-AV: E=Sophos;i="6.02,157,1688454000"; 
+   d="scan'208";a="377037218"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2023 10:08:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10837"; a="775202677"
+X-IronPort-AV: E=Sophos;i="6.02,157,1688454000"; 
+   d="scan'208";a="775202677"
+Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
+  by orsmga008.jf.intel.com with ESMTP; 18 Sep 2023 10:07:58 -0700
+Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qiHj2-0006J6-1j;
+	Mon, 18 Sep 2023 17:07:56 +0000
+Date: Tue, 19 Sep 2023 01:07:42 +0800
+From: kernel test robot <lkp@intel.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+	sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com
+Subject: Re: [PATCH v1 4/8] clk: rockchip: Avoid __clk_lookup() calls
+Message-ID: <202309190032.1NPAySNx-lkp@intel.com>
+References: <20230918073151.7660-5-zhangqing@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230918073151.7660-5-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_071459_819923_DCB1CD90 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20230918_100805_910743_825064FD 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +89,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable PCIe2_0 controller and its voltage supply, which is routed
-to the M.2 E-Key on the upper side of the Radxa Rock 5B.
+Hi Elaine,
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
+kernel test robot noticed the following build warnings:
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 6e52b5cf49a9..947a5ebe5bb3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -44,6 +44,21 @@ fan: pwm-fan {
- 		#cooling-cells = <2>;
- 	};
- 
-+	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie2_0_vcc3v3_en>;
-+		regulator-name = "vcc3v3_pcie2x1l0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc3v3_pcie2x1l2: vcc3v3-pcie2x1l2-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_pcie2x1l2";
-@@ -104,6 +119,10 @@ &combphy0_ps {
- 	status = "okay";
- };
- 
-+&combphy1_ps {
-+	status = "okay";
-+};
-+
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_big0_s0>;
- };
-@@ -230,6 +249,14 @@ i2s0_8ch_p0_0: endpoint {
- 	};
- };
- 
-+&pcie2x1l0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie2_0_rst>;
-+	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie2x1l0>;
-+	status = "okay";
-+};
-+
- &pcie2x1l2 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie2_2_rst>;
-@@ -264,6 +291,14 @@ hp_detect: hp-detect {
- 	};
- 
- 	pcie2 {
-+		pcie2_0_rst: pcie2-0-rst {
-+			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie2_0_vcc3v3_en: pcie2-0-vcc-en {
-+			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
- 		pcie2_2_rst: pcie2-2-rst {
- 			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on clk/clk-next linus/master v6.6-rc2 next-20230918]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Elaine-Zhang/clk-clk-fractional-divider-Export-clk_fractional_divider_general_approximation-API/20230918-154652
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20230918073151.7660-5-zhangqing%40rock-chips.com
+patch subject: [PATCH v1 4/8] clk: rockchip: Avoid __clk_lookup() calls
+config: arm64-defconfig (https://download.01.org/0day-ci/archive/20230919/202309190032.1NPAySNx-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230919/202309190032.1NPAySNx-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309190032.1NPAySNx-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   In file included from drivers/clk/rockchip/clk-rk3328.c:13:
+>> drivers/clk/rockchip/clk-rk3328.c:160:7: warning: 'mux_armclk_p' defined but not used [-Wunused-const-variable=]
+     160 | PNAME(mux_armclk_p)             = { "apll_core",
+         |       ^~~~~~~~~~~~
+   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
+     512 | #define PNAME(x) static const char *const x[] __initconst
+         |                                           ^
+--
+   In file included from drivers/clk/rockchip/clk-rk3588.c:13:
+>> drivers/clk/rockchip/clk-rk3588.c:447:7: warning: 'mux_armclkb23_p' defined but not used [-Wunused-const-variable=]
+     447 | PNAME(mux_armclkb23_p)                  = { "xin24m", "gpll", "b1pll",};
+         |       ^~~~~~~~~~~~~~~
+   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
+     512 | #define PNAME(x) static const char *const x[] __initconst
+         |                                           ^
+>> drivers/clk/rockchip/clk-rk3588.c:446:7: warning: 'mux_armclkb01_p' defined but not used [-Wunused-const-variable=]
+     446 | PNAME(mux_armclkb01_p)                  = { "xin24m", "gpll", "b0pll",};
+         |       ^~~~~~~~~~~~~~~
+   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
+     512 | #define PNAME(x) static const char *const x[] __initconst
+         |                                           ^
+>> drivers/clk/rockchip/clk-rk3588.c:445:7: warning: 'mux_armclkl_p' defined but not used [-Wunused-const-variable=]
+     445 | PNAME(mux_armclkl_p)                    = { "xin24m", "gpll", "lpll" };
+         |       ^~~~~~~~~~~~~
+   drivers/clk/rockchip/clk.h:512:43: note: in definition of macro 'PNAME'
+     512 | #define PNAME(x) static const char *const x[] __initconst
+         |                                           ^
+
+
+vim +/mux_armclk_p +160 drivers/clk/rockchip/clk-rk3328.c
+
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  144  
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  145  PNAME(mux_2plls_p)		= { "cpll", "gpll" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  146  PNAME(mux_gpll_cpll_p)		= { "gpll", "cpll" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  147  PNAME(mux_cpll_gpll_apll_p)	= { "cpll", "gpll", "apll" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  148  PNAME(mux_2plls_xin24m_p)	= { "cpll", "gpll", "xin24m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  149  PNAME(mux_2plls_hdmiphy_p)	= { "cpll", "gpll",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  150  				    "dummy_hdmiphy" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  151  PNAME(mux_4plls_p)		= { "cpll", "gpll",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  152  				    "dummy_hdmiphy",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  153  				    "usb480m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  154  PNAME(mux_2plls_u480m_p)	= { "cpll", "gpll",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  155  				    "usb480m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  156  PNAME(mux_2plls_24m_u480m_p)	= { "cpll", "gpll",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  157  				     "xin24m", "usb480m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  158  
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  159  PNAME(mux_ddrphy_p)		= { "dpll", "apll", "cpll" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29 @160  PNAME(mux_armclk_p)		= { "apll_core",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  161  				    "gpll_core",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  162  				    "dpll_core",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  163  				    "npll_core"};
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  164  PNAME(mux_hdmiphy_p)		= { "hdmi_phy", "xin24m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  165  PNAME(mux_usb480m_p)		= { "usb480m_phy",
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  166  				    "xin24m" };
+fe3511ad8a1cf6 Elaine Zhang 2016-12-29  167  
+
 -- 
-2.40.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
