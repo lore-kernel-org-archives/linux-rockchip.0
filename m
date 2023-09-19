@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 238BACD5BC2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 13:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D9FCD5BC2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 13:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6WtoR+96kX2QssATpAxi95haFBva3HY/85kAprPbj2w=; b=xTxKIj+EOzodBg
-	JPyDP317rbKV/dLm+2yMBc6C+cldeALCGWMVSltpsRWGLD1LjH15/BQsyIgAFhe6tr9cPddLvCY5F
-	VaNfP5vu/7C5VeqoPvNJj2zoyp896uz0GpsZ7rB06yrhfhbgHQmsIn4/XF+1OtIHRNVCw0zBTEQf9
-	R7WswW7cVqvODwXLPqxIsWaABX949wD2K3GBenEIVKTsy0P1OBbWlLgCgTJt6vU0O+4D6WRu57WZh
-	UrHhCIAT2T8swEM7Cdl/ou4JBlYnbGHhRfLDNoi/8lsQAtUxLQno8/TSDxquVj3WzrsAFwOisNS6a
-	O9e7pR/SkG43BDVLJ9kQ==;
+	List-Owner; bh=lK2J+9a0eSIa2PpG3pSUzAdE0q0QZIz23bDyB/eiwME=; b=V46g3cqadTj2Ul
+	qGKRYQbMCpRor8DpCQlIEddQcDhEhBDVYp3jfhCv2h8PApmslX1gYryD7Mh252l2Ct0yD2UDNcvPG
+	Ym9aKXu03zb6z/ygCxcslpms7Z/wtXOjNMmy3yGaurE2uEXk1YcaYj5fU5/9+h+B7hGdGl6xj1v/5
+	Gswl9e+Gy6Y+zq8zO1adlHOYAj+4nhvovB0GpqrbDyyUMAiL+XL9aFNDnC3ajSeYq8jiZLssx9V9L
+	aPVOCof7VSELrIkkIQm0jsT73lLv6IdEBLfHusQMAeSGV2UnpFhIka/jbS8WJQ0ZWEmzU48BMBOK3
+	2dnFBOGsMpvY0wpGvm1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qib0O-000Z2F-31;
-	Tue, 19 Sep 2023 13:43:08 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qib18-000ZCG-1Y;
+	Tue, 19 Sep 2023 13:43:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qib0L-000Yzv-1D;
-	Tue, 19 Sep 2023 13:43:06 +0000
+	id 1qib14-000ZAo-2a;
+	Tue, 19 Sep 2023 13:43:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3FD49B8160F;
-	Tue, 19 Sep 2023 13:43:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F513C433C7;
-	Tue, 19 Sep 2023 13:42:57 +0000 (UTC)
-Message-ID: <08551a93-a4b6-40c1-88c0-2c419987cc3e@xs4all.nl>
-Date: Tue, 19 Sep 2023 15:42:57 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3C9BC616B0;
+	Tue, 19 Sep 2023 13:43:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CDD0C433C8;
+	Tue, 19 Sep 2023 13:43:45 +0000 (UTC)
+Message-ID: <fe0405a0-e150-477c-9fdb-e5b65c8f05ce@xs4all.nl>
+Date: Tue, 19 Sep 2023 15:43:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 23/49] media: pci: cx18: Stop direct calls to queue
+Subject: Re: [PATCH v7 24/49] media: pci: dt3155: Stop direct calls to queue
  num_buffers field
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
@@ -50,12 +50,12 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-24-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-25-benjamin.gaignard@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-24-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230914133323.198857-25-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_064305_560942_9BE8F981 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20230919_064350_877255_34798A66 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +77,34 @@ On 14/09/2023 15:32, Benjamin Gaignard wrote:
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/media/pci/cx18/cx18-streams.c | 5 +++--
+>  drivers/media/pci/dt3155/dt3155.c | 5 +++--
 >  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
-> index 597472754c4c..a7a7e006b3be 100644
-> --- a/drivers/media/pci/cx18/cx18-streams.c
-> +++ b/drivers/media/pci/cx18/cx18-streams.c
-> @@ -105,6 +105,7 @@ static int cx18_queue_setup(struct vb2_queue *vq,
->  			    unsigned int sizes[], struct device *alloc_devs[])
->  {
->  	struct cx18_stream *s = vb2_get_drv_priv(vq);
-> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
->  	struct cx18 *cx = s->cx;
->  	unsigned int szimage;
+> diff --git a/drivers/media/pci/dt3155/dt3155.c b/drivers/media/pci/dt3155/dt3155.c
+> index 548156b199cc..d3abb0e093c1 100644
+> --- a/drivers/media/pci/dt3155/dt3155.c
+> +++ b/drivers/media/pci/dt3155/dt3155.c
+> @@ -126,10 +126,11 @@ dt3155_queue_setup(struct vb2_queue *vq,
 >  
-> @@ -121,8 +122,8 @@ static int cx18_queue_setup(struct vb2_queue *vq,
->  	 * Let's request at least three buffers: two for the
->  	 * DMA engine and one for userspace.
->  	 */
-> -	if (vq->num_buffers + *nbuffers < 3)
-> -		*nbuffers = 3 - vq->num_buffers;
-> +	if (q_num_bufs + *nbuffers < 3)
-> +		*nbuffers = 3 - q_num_bufs;
+>  {
+>  	struct dt3155_priv *pd = vb2_get_drv_priv(vq);
+> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  	unsigned size = pd->width * pd->height;
+>  
+> -	if (vq->num_buffers + *nbuffers < 2)
+> -		*nbuffers = 2 - vq->num_buffers;
+> +	if (q_num_bufs + *nbuffers < 2)
+> +		*nbuffers = 2 - q_num_bufs;
 
-From what I can see, this driver already sets min_buffers_needed to 3,
-so this check can just be dropped.
+Just drop this, min_buffers_needed is already set to 0.
+
+Regards,
 
 	Hans
 
->  
->  	if (*nplanes) {
->  		if (*nplanes != 1 || sizes[0] < szimage)
+>  	if (*num_planes)
+>  		return sizes[0] < size ? -EINVAL : 0;
+>  	*num_planes = 1;
 
 
 _______________________________________________
