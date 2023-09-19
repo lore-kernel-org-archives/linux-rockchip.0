@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37822CD54A9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 09:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 594C5CD54AF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 10:27:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qQHNrsba5toB2zwQQqYS7BqYrMCXZDPjzgM55mUzgPU=; b=vk6wFbAocCsXbsIozYWGnw1A5+
-	vDib4fBwfdzczA5BCvH70Aupn58NYcuWMCppYSsXQtd8W06Qi+Ul7EaWpwdHcpnCSFQxJGo7/flrg
-	5oigLJPOUdaY5IBr7h+mh/MvhsqxMMZHRh9nleXq9Q2VEi8aWWhb7Ikl51pIufJ/hcVG5SRCX8JtY
-	Pwc80qK1C9UXaGYgEkI82c2qnr1WA5P5hatKHRGfRebGLYxpICetiDLh0O29MkL2bjrastmuDpvch
-	dBBBFbjrJu62UkQlTWQHcQ0cK3NSNaIv+1vc2p1930P9+xArFArNKqpAyqrDH6JO9OKjCdqh4qSb2
-	ntFY3wOg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9VbtpFpiQTpMXLRaWCEM6kbC3SYTTG8QSWb4TboiYdg=; b=fw/PBTb8fr1yQb
+	DKkUUKss6mFcUmjomTcjVlx2/0zZloYDkn/hQHLyZU9fD0iCCiYkY5V/rI4TOoQXC3b1OiHQpg/BR
+	Juo8Wss5JNSLwq50UUy+krn40FR7EYm0L4Ks+RrLnexFjSKHATy+FfI8u9viFsqfSjqiUANd2eFvJ
+	6rVlxFVL07y1TTNWIwPlIIMxOrtpfhhgWltJEvoN6DQWcMprC/e7sWkmlyIa6E0ReItGgz4ZWBb7B
+	EnjpHWJEIbBVc6BWMGNNgpcif83TkLRDORuxulB6o8eCc0Ijz0iTQPGZiVzetMODTm0hDJ3K/ODbC
+	8obS76dgW4tNYakiTYAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiXQe-00HYko-11;
-	Tue, 19 Sep 2023 09:54:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qiXwW-00019S-2K;
+	Tue, 19 Sep 2023 10:26:56 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiXQZ-00HYiz-2K;
-	Tue, 19 Sep 2023 09:53:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qiXwT-00017Z-05;
+	Tue, 19 Sep 2023 10:26:54 +0000
+Received: from [IPV6:2a01:e0a:120:3210:f3aa:7b57:c12d:de68] (unknown [IPv6:2a01:e0a:120:3210:f3aa:7b57:c12d:de68])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 22DD16155F;
-	Tue, 19 Sep 2023 09:53:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6CF0BC433C9;
-	Tue, 19 Sep 2023 09:53:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695117234;
-	bh=jM06oldMyl65bSUdYLjPqkp6JGq8OZNw9wg+7ieMKJI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XS25igy10ljp+IXCrZXM88eUqd9TyrMew/EetWxspCNiiRJXbYIdyTx85HNdmln6z
-	 R9HAZhkem4c6jyzM8A+TwQxwxTAMNINsFvXraC3713+VCc8XIOHDZej2apV5+gF5GS
-	 umvYzdgW+dhh3P2SIlbjwKN1Tuie+01VMUXONooaxSQwlV2cDaF3m2eJCrqn0CvBjM
-	 q1ENRQu5uVqtlcaFx1SwdCyyKfwpg4uRaildRS29aXEhUbCXuM5hZqBB5wPU9tgmAQ
-	 lGTBliMgGF3SelnOUxxAWUNX8QfdYUdyMouoL46FFfh2FvSdJrwIEkYMMTtoesXhvm
-	 emaXkXf+nMeAg==
-Date: Tue, 19 Sep 2023 11:53:52 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Helen Koike <helen.koike@collabora.com>
-Cc: Daniel Stone <daniel@fooishbar.org>, emma@anholt.net, 
-	linux-doc@vger.kernel.org, vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, 
-	alyssa@rosenzweig.io, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, 
-	khilman@baylibre.com, sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
-	linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>, 
-	martin.blumenstingl@googlemail.com, robclark@freedesktop.org, anholt@google.com, 
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, 
-	gustavo.padovan@collabora.com, linux-arm-kernel@lists.infradead.org, 
-	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
-	Michel =?utf-8?Q?D=C3=A4nzer?= <michel.daenzer@mailbox.org>, linux-kernel@vger.kernel.org, tzimmermann@suse.de
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Message-ID: <wnqnhvv2poy3alr5uiegunc7wk6fpt6opmeckdzxhc7tr4fbdm@sena7vlfh4t6>
-References: <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
- <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
- <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
- <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
- <CAPj87rP1sw49Z0HdPhUa-=kDp166RqiuhC9rL+Ef9hpwPD5+JA@mail.gmail.com>
- <krhnfc4os5nqwi3iixgxwads3jbcgtdcvn7ygxpvd62uaejvsk@mx6tmser7jti>
- <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
- <8c5d6bf2-f034-c702-5e99-6daea6d56443@collabora.com>
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0458166071A9;
+	Tue, 19 Sep 2023 11:26:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695119208;
+	bh=9GznNVqH1Ybwr4tIQTMWuRZGIorRMwUugPSjPmcCLZw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XO9H4/8C7f+OUKeg1Mkv+AUV19wPV/ZlVGl2jFaXnKFn49tesOobnKUVYgrqzkFdD
+	 AmgO61O+MqKYj0RPLSjtO1CXKKVhRKhknNmQHBs5FoTRTI1CsOw62ZWYaL9OJvfTuI
+	 0R4jtMtjVguGXM0jZb/hSOrkXrrtDJ4dV1xldBkR0FE8QSvcIMkM2x/2x47d9aFBSY
+	 gMKGn3ySqqk6PYDuoiP2T7VnYDpXDfUS6NFnsT7Uvq3YBTQK8PvwkYmNZlu9NcLjH7
+	 5Vaa+35SR1wCEASc1HRyeax3SKlWLMnnsZ0qABRUIW1jwYCO/9rUz4EwORBOviWy5g
+	 wjwScOpQKTSQw==
+Message-ID: <ecfd1641-3cce-dfa4-b88c-3619fb12d710@collabora.com>
+Date: Tue, 19 Sep 2023 12:26:45 +0200
 MIME-Version: 1.0
-In-Reply-To: <8c5d6bf2-f034-c702-5e99-6daea6d56443@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v7 07/49] media: sti: hva: Use vb2_get_buffer() instead of
+ directly access to buffers array
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-8-benjamin.gaignard@collabora.com>
+ <93e9b143-664c-4fbb-8722-0beabd5b2c0c@xs4all.nl>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <93e9b143-664c-4fbb-8722-0beabd5b2c0c@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_025355_841755_2588AF85 
-X-CRM114-Status: GOOD (  84.58  )
+X-CRM114-CacheID: sfid-20230919_032653_215335_F578D0D4 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,240 +78,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8037445406930716326=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============8037445406930716326==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qzi5si6i7asvr3sl"
-Content-Disposition: inline
-
-
---qzi5si6i7asvr3sl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Sep 18, 2023 at 06:35:13PM -0300, Helen Koike wrote:
-> > > > I don't quite see the same picture from your side though. For examp=
-le,
-> > > > my reading of what you've said is that flaky tests are utterly
-> > > > unacceptable, as are partial runs, and we shouldn't pretend otherwi=
-se.
-> > > > With your concrete example (which is really helpful, so thanks), wh=
-at
-> > > > happens to the MT8173 hdmi-inject test? Do we skip all MT8173 testi=
-ng
-> > > > until it's perfect, or does MT8173 testing always fail because that
-> > > > test does?
-> > >=20
-> > > It's not clear to me why that test is even running in the first place?
-> > > There's been some confusion on my side here about what we're going to
-> > > test with this. You've mentioned Mesa and GPUs before, but that's a K=
-MS
-> > > test so there must be more to it.
-> > >=20
-> > > Either way, it's a relevant test so I guess why not. It turns out that
-> > > the test is indeed flaky, I guess we could add it to the flaky tests
-> > > list.
-> > >=20
-> > > BUT
-> > >=20
-> > > I want to have every opportunity to fix whatever that failure is.
-> >=20
-> > Agreed so far!
-> >=20
-> > > So:
-> > >=20
-> > >    - Is the test broken? If so, we should report it to IGT dev and re=
-move
-> > >      it from the test suite.
-> > >    - If not, is that test failure have been reported to the driver au=
-thor?
-> > >    - If no answer/fix, we can add it to the flaky tests list, but do =
-we
-> > >      have some way to reproduce the test failure?
-> > >=20
-> > > The last part is especially critical. Looking at the list itself, I h=
-ave
-> > > no idea what board, kernel version, configuration, or what the failure
-> > > rate was. Assuming I spend some time looking at the infra to find the
-> > > board and configuration, how many times do I have to run the tests to
-> > > expect to reproduce the failure (and thus consider it fixed if it
-> > > doesn't occur anymore).
-> > >=20
-> > > Like, with that board and test, if my first 100 runs of the test work
-> > > fine, is it reasonable for me to consider it fixed, or is it only
-> > > supposed to happen once every 1000 runs?
->=20
-> I wonder if this should be an overall policy or just let the maintainer to
-> decide.
->=20
-> In any case these stress tests must be run from time to time to verify if
-> flakes are still flakes. We could do it automatically but we need to
-> evaluate how to do it properly so it doesn't overload the infra.
-
-That would be a great thing to do, but we can also reasonably expect
-that we will have other farms that may not run those tests on a regular
-basis, and we will have some manual testing too so I think it's still
-valuable.
-
-> > > So, ideally, having some (mandatory) metadata in the test lists with a
-> > > link to the bug report, the board (DT name?) it happened with, the
-> > > version and configuration it was first seen with, and an approximation
-> > > of the failure rate for every flaky test list.
-> > >=20
-> > > I understand that it's probably difficult to get that after the fact =
-on
-> > > the tests that were already merged, but I'd really like to get that
-> > > enforced for every new test going forward.
-> > >=20
-> > > That should hopefully get us in a much better position to fix some of
-> > > those tests issues. And failing that, I can't see how that's
-> > > sustainable.
-> >=20
-> > OK yeah, and we're still agreed here. That is definitely the standard
-> > we should be aiming for.  It is there for some - see
-> > drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt, but should be
-> > there for the rest, it's true. (The specific board/DT it was observed
-> > on can be easily retconned because we only run on one specific board
-> > type per driver, again to make things more predictable; we could go
-> > back and retrospectively add those in a header comment?)
-> >=20
-> > For flakes, it can be hard to pin them down, because, well, they're
-> > flaky. Usually when we add things in Mesa (sorry to keep coming back
-> > to Mesa - it's not to say that it's the objective best thing that
-> > everything should follow, only that it's the thing we have the most
-> > experience with that we know works well), we do a manual bisect and
-> > try to pin the blame on a specific merge request which looks like the
-> > most likely culprit. If nothing obvious jumps out, we just note when
-> > it was first observed and provide some sample job logs. But yeah, it
-> > should be more verbose.
-> >=20
-> > FWIW, the reason it wasn't done here - not to say that it shouldn't
-> > have been done better, but here we are - is that we just hammered a
-> > load of test runs, vacuumed up the results with a script, and that's
-> > what generated those files. Given the number of tests and devices, it
-> > was hard to narrow each down individually, but yeah, it is something
-> > which really wants further analysis and drilling into. It's a good
-> > to-do, and I agree it should be the standard going forward.
->=20
-> Yes, during development I was just worried about to get a pipeline that
-> would succeed most of the time (otherwise people would start ignoring when
-> it fails), so they just got run a couple of times and a script filled the
-> flakes list.
-> For me the idea was "let's get a starting point" first, but yeah, we need=
- to
-> improve how we deal with it from now on.
-
-Yeah, like I said, there's not much we can do for those 250-ish flakes
-we currently have in tree at the moment. I'd prefer to stay at 250 tests
-with not enough context than keep expanding that list :)
-
-> > > And Mesa does show what I'm talking about:
-> > >=20
-> > > $ find -name *-flakes.txt | xargs git diff --stat  e58a10af640ba58b60=
-01f5c5ad750b782547da76
-> > > [...]
-> > >=20
-> > > In the history of Mesa, there's never been a single test removed from=
- a
-> > > flaky test list.
-> >=20
-> > As Rob says, that's definitely wrong. But there is a good point in
-> > there: how do you know a test isn't flaky anymore? 100 runs is a
-> > reasonable benchmark, but 1000 is ideal. At a 1% failure rate, with 20
-> > devices, that's just too many spurious false-fails to have a usable
-> > workflow.
-> >=20
-> > We do have some tools to make stress testing easier, but those need to
-> > be better documented. We'll fix that. The tools we have which also
-> > pull out the metadata etc also need documenting - right now they
-> > aren't because they're under _extremely_ heavy development, but they
-> > can be further enhanced to e.g. pull out the igt results automatically
-> > and point very clearly to the cause. Also on the to-do.
-> >=20
-> > > > Only maintainers can actually fix the drivers (or the tests tbf). B=
-ut
-> > > > doing the testing does let us be really clear to everyone what the
-> > > > actual state is, and that way people can make informed decisions to=
-o.
-> > > > And the only way we're going to drive the test rate down is by the
-> > > > subsystem maintainers enforcing it.
-> > >=20
-> > > Just FYI, I'm not on the other side of the fence there, I'd really li=
-ke
-> > > to have some kind of validation. I talked about it at XDC some years
-> > > ago, and discussed it several people at length over the years. So I'm
-> > > definitely not in the CI-is-bad camp.
-> > >=20
-> > > > Does that make sense on where I'm (and I think a lot of others are)
-> > > > coming from?
-> > >=20
-> > > That makes sense from your perspective, but it's not clear to me how =
-you
-> > > can expect maintainers to own the tests if they were never involved in
-> > > the process.
-> > >=20
-> > > They are not in Cc of the flaky tests patches, they are not reported
-> > > that the bug is failing, how can they own that process if we never
-> > > reached out and involved them?
-> > >=20
-> > > We're all overworked, you can't expect them to just look at the flaky
-> > > test list every now and then and figure it out.
-> >=20
-> > Absolutely. We got acks (or at least not-nacks) from the driver
-> > developers, but yeah, they should absolutely be part of the loop for
-> > those updates. I don't think we can necessarily block on them though.
-> > Say we add vc4 KMS tests, then after a backmerge we start to see a
-> > bunch of flakes on it, but you're sitting on a beach for a couple of
-> > weeks. If we wait for you to get back, see it, and merge it, then
-> > that's two weeks of people submitting Rockchip driver changes and
-> > getting told that their changes failed CI. That's exactly what we want
-> > to avoid, because it erodes confidence and usefulness of CI when
-> > people expect failures and ignore them by default.
-> >=20
-> > So I would say that it's reasonable for expectations to be updated
-> > according to what actually happens in practice, but also to make sure
-> > that the maintainers are explicitly informed and kept in the loop, and
-> > not just surprised when they look at the lists and see a bunch of
-> > stuff happened without their knowledge.
->=20
-> I was thinking in adding entries in MAINTAINERS file pointing to each
-> flake/skip/fails list file to their maintainers, so get_maintainers.pl can
-> return the right thing.
-
-Yeah, I think it's the best thing to do at the moment. It's cheap and
-will work ok.
-
-Maxime
-
---qzi5si6i7asvr3sl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZQlvsAAKCRDj7w1vZxhR
-xdV4AQDKBqyhTbR670C0VpI7Y9MnnTOyZTdfSpRh6rNX6gW9tgD9EbT5t2EvmzeQ
-AfeMKWBNB/fZ7Zb5x0L/T2N5s/acZAQ=
-=cQU6
------END PGP SIGNATURE-----
-
---qzi5si6i7asvr3sl--
-
-
---===============8037445406930716326==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8037445406930716326==--
-
+CkxlIDE5LzA5LzIwMjMgw6AgMTE6MzEsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDE0
+LzA5LzIwMjMgMTU6MzIsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+PiBVc2UgdmIyX2dldF9i
+dWZmZXIoKSBpbnN0ZWFkIG9mIGRpcmVjdGx5IGFjY2VzcyB0byB2YjJfYnVmZmVyIGJ1ZmZlciBh
+cnJheS4KPj4gVGhpcyBjb3VsZCBhbGxvdyB0byBjaGFuZ2UgdGhlIHR5cGUgYnVmc1tdIGZpZWxk
+IG9mIHZiMl9idWZmZXIgc3RydWN0dXJlIGlmCj4+IG5lZWRlZC4KPj4gQWZ0ZXIgZWFjaCBjYWxs
+IHRvIHZiMl9nZXRfYnVmZmVyKCkgd2UgbmVlZCB0byBiZSBzdXJlIHRoYXQgd2UgZ2V0Cj4+IGEg
+dmFsaWQgcG9pbnRlciBzbyBjaGVjayB0aGUgcmV0dXJuIHZhbHVlIG9mIGFsbCBvZiB0aGVtLgo+
+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRA
+Y29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zdC9zdGkv
+aHZhL2h2YS12NGwyLmMgfCA0ICsrKysKPj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25z
+KCspCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3N0L3N0aS9odmEv
+aHZhLXY0bDIuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3Qvc3RpL2h2YS9odmEtdjRsMi5j
+Cj4+IGluZGV4IDNhODQ4Y2EzMmEwZS4uMzI2YmUwOWJkYjU1IDEwMDY0NAo+PiAtLS0gYS9kcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL3N0L3N0aS9odmEvaHZhLXY0bDIuYwo+PiArKysgYi9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3N0L3N0aS9odmEvaHZhLXY0bDIuYwo+PiBAQCAtNTc3LDYgKzU3Nywx
+MCBAQCBzdGF0aWMgaW50IGh2YV9xYnVmKHN0cnVjdCBmaWxlICpmaWxlLCB2b2lkICpwcml2LCBz
+dHJ1Y3QgdjRsMl9idWZmZXIgKmJ1ZikKPj4gICAJCX0KPiBBYm92ZSB0aGlzIGxpbmUgdGhlcmUg
+aXMgYSBidWYtPmluZGV4IGNoZWNrLi4uCj4KPj4gICAKPj4gICAJCXZiMl9idWYgPSB2YjJfZ2V0
+X2J1ZmZlcih2cSwgYnVmLT5pbmRleCk7Cj4+ICsJCWlmICghdmIyX2J1Zikgewo+PiArCQkJZGV2
+X2RiZyhkZXYsICIlcyBidWZmZXIgaW5kZXggJWQgbm90IGZvdW5kXG4iLCBjdHgtPm5hbWUsIGJ1
+Zi0+aW5kZXgpOwo+PiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4+ICsJCX0KPiAuLi5JIHRoaW5rIHRo
+YXQgY2hlY2sgY2FuIGJlIGRyb3BwZWQgc2luY2UgdmIyX2dldF9idWZmZXIgY2hlY2tzIHRoYXQg
+YWxyZWFkeS4KCk5vIGJlY2F1c2UgaW4gIm1lZGlhOiBzdGk6IGh2YTogU3RvcCBkaXJlY3QgY2Fs
+bHMgdG8gcXVldWUgbnVtX2J1ZmZlcnMgZmllbGQiIHBhdGNoCkkgcmVtb3ZlIHRoZSBhYm92ZSBj
+aGVjayBzaW5jZSBpdCB1c2UgcXVldWUgbnVtX2J1ZmZlcnMgZmllbGQuCgpSZWdhcmRzLApCZW5q
+YW1pbgoKPgo+IFJlZ2FyZHMsCj4KPiAJSGFucwo+Cj4+ICAgCQlzdHJlYW0gPSB0b19odmFfc3Ry
+ZWFtKHRvX3ZiMl92NGwyX2J1ZmZlcih2YjJfYnVmKSk7Cj4+ICAgCQlzdHJlYW0tPmJ5dGVzdXNl
+ZCA9IGJ1Zi0+Ynl0ZXN1c2VkOwo+PiAgIAl9Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
