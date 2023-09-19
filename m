@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93221C46CA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Sep 2023 21:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92AE2CD342E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 02:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4BzqHJ7rqTUqgryBGedlvhwzldVoc9GldHxx8jp5IJw=; b=wL4E9K2LmiYWK3
-	/dUNIccim1BT62GJHrN61ddSw1hmGi5ZccUI9y/jr6HaSQ/+1QCTUh5qfU2oAahzP4SciNeR/29ZY
-	tlGEC4jWYY+p7UajiK1O0CByjjoTBIruRQLOI7ohpgIVGyXLBx+0lNevbSv3guciD0gFYLBGzUpCR
-	I1zpnVRSqOlki5dV9aQ/KwWgg6yLJn7FprIp7TpMmhtL8RqqMAPHbFht4NB35MnrFOs05ZWVagzwE
-	8w916Ddm9pEQjmTzTws9pU1qu1MEDCqKd0C2v2ZjjpfnO/wmLnfHQ9yWvXMyUsN1+vGi6Kvohp71+
-	/YOxUgrfROfCQtKrSGTA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IDazMfzm6jMpIbZbIw8qwhnfYkpjpg2oif9W/re5OTc=; b=xtUpZx+kY9ebeT
+	XrlhfMsjN2H3xseuyNr9/KiLTt9JGwe0ZbHdDv7Rg1dhHt3K3OS2zJcJ/7XY85/ynUMzOr57fmS5t
+	cryiedlA5ArCh9dgyTdjggfA6zMsESj3uENYj3MxppHk93mNcLvMvJuk9LTyMFxVB0giVwERV5MrF
+	DdTn/waW3JKwtMHK3BnwyoIetHYSGilccHRWb+/FHEUWvfD+Ji+n/8MbZbJ3SpPo4T+ijdEjVB6fO
+	7q5JMglpLAdssXVpUpQwFjY7SnbNhURTRtlfUW/xbErsAFy0nUzANFVKDbQo0pf0hUAK2dIIk5n7k
+	6dwQK9Y1KUv2UVxsubsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLu4-00GOjy-3A;
-	Mon, 18 Sep 2023 21:35:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qiQ9k-00GhlA-2j;
+	Tue, 19 Sep 2023 02:08:04 +0000
+Received: from mail-m25475.xmail.ntesmail.com ([103.129.254.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLu0-00GOiC-2K;
-	Mon, 18 Sep 2023 21:35:34 +0000
-Received: from [192.168.68.123] (unknown [177.98.21.184])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 580396607090;
-	Mon, 18 Sep 2023 22:35:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695072927;
-	bh=uL/s4lrQG1BldZTY5WhYBFCF/fK1Gq+sWguhl3ilTEU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m9Q4n/uk0t3flfSgStzt1GoFobmWwy+YbLNElc7e2AUBosVGpuTP/ZfYWRfyYjTD6
-	 aMQx7KTSkDZuzAOy2ECS+1HULO518OTeyxDy8D/DQO5SiftVVYgMQ9pdTkH/rqAnsO
-	 SIUzW82OoNGBNYCBmA8FG2ab/P5SVTiz4CdKWkwHklbaQzQBSXoT2de5ljTovc7396
-	 UHHXCGSApMn86QYW/miJuuuTmGEbEKqfDVFyyjP8CMkZEd21FLYNrypqIFdv6RA6Rk
-	 r5eESOEOfxfKShx2rNKWrQGH8JqTO81/lczFeG9Ae1ocygaQ4TipHDPkv0xR8p1Gh1
-	 2MtpFBfHCx5uw==
-Message-ID: <8c5d6bf2-f034-c702-5e99-6daea6d56443@collabora.com>
-Date: Mon, 18 Sep 2023 18:35:13 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>, Maxime Ripard <mripard@kernel.org>
-Cc: emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com,
- dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com,
- robdclark@google.com, corbet@lwn.net, khilman@baylibre.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>,
- martin.blumenstingl@googlemail.com, robclark@freedesktop.org,
- anholt@google.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- gustavo.padovan@collabora.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
- guilherme.gallo@collabora.com, =?UTF-8?Q?Michel_D=c3=a4nzer?=
- <michel.daenzer@mailbox.org>, linux-kernel@vger.kernel.org,
- tzimmermann@suse.de
-References: <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
- <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
- <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
- <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
- <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
- <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
- <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
- <CAPj87rP1sw49Z0HdPhUa-=kDp166RqiuhC9rL+Ef9hpwPD5+JA@mail.gmail.com>
- <krhnfc4os5nqwi3iixgxwads3jbcgtdcvn7ygxpvd62uaejvsk@mx6tmser7jti>
- <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
+	id 1qiQ9e-00Ghjw-34;
+	Tue, 19 Sep 2023 02:08:02 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=Q/KKJ1MZ8n+mkbzTNHrb59mhwrOpvs5C23aw/4IAGeN/hRMSCeyAXR9UTlyXukheryFUnXBJq0f7m+OYNbnUNJSxFPcP2emRN9BVVv/bgr18P3SvSrMXnIJ1gm1Ct07vp7qhd7GIB3xpdBtVFoU0pHtwi8wKhne7PSB4j3oweUM=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=QkDfZL01O7H0QQfrhzzW/ax3H2aJpjVAmeoQaPkQMFw=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id AA3F96802FA;
+	Tue, 19 Sep 2023 09:59:15 +0800 (CST)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	kever.yang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com,
+	xxx@rock-chips.com,
+	xf@rock-chips.com
+Subject: [RESEND PATCH v1 4/8] clk: rockchip: Avoid __clk_lookup() calls
+Date: Tue, 19 Sep 2023 09:59:12 +0800
+Message-Id: <20230919015912.15262-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhKGFYfGkpDSkhOGU1DGUhVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8aab29c5732eb5kusnaa3f96802fa
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NC46Chw6IT1OQkgRPSk5TQlP
+	PTMKChlVSlVKTUJOS0NDTE5NQkxKVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhIS0hPNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_143533_065247_CEFA8A67 
-X-CRM114-Status: GOOD (  76.20  )
+X-CRM114-CacheID: sfid-20230918_190759_422580_D6E223D2 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,223 +78,815 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Change:
+Fix up the build warnings.
 
+can be used later instead of a __clk_lookup() call.
 
-On 15/09/2023 12:08, Daniel Stone wrote:
-> Hey,
-> 
-> On Thu, 14 Sept 2023 at 10:54, Maxime Ripard <mripard@kernel.org> wrote:
->> On Tue, Sep 12, 2023 at 02:16:41PM +0100, Daniel Stone wrote:
->>> Hopefully less mangled formatting this time: turns out Thunderbird +
->>> plain text is utterly unreadable, so that's one less MUA that is
->>> actually usable to send email to kernel lists without getting shouted
->>> at.
->>
->> Sorry if it felt that way, it definitely wasn't my intention to shout at
->> you. Email is indeed kind of a pain to deal with, and I wanted to keep
->> the discussion going.
-> 
-> My bad - I didn't mean you _at all_. I was thinking of other, much
-> less pleasant, kernel maintainers, and the ongoing struggle of
-> attempting to actually send well-formatted email to kernel lists in
-> 2023.
-> 
->>> I don't quite see the same picture from your side though. For example,
->>> my reading of what you've said is that flaky tests are utterly
->>> unacceptable, as are partial runs, and we shouldn't pretend otherwise.
->>> With your concrete example (which is really helpful, so thanks), what
->>> happens to the MT8173 hdmi-inject test? Do we skip all MT8173 testing
->>> until it's perfect, or does MT8173 testing always fail because that
->>> test does?
->>
->> It's not clear to me why that test is even running in the first place?
->> There's been some confusion on my side here about what we're going to
->> test with this. You've mentioned Mesa and GPUs before, but that's a KMS
->> test so there must be more to it.
->>
->> Either way, it's a relevant test so I guess why not. It turns out that
->> the test is indeed flaky, I guess we could add it to the flaky tests
->> list.
->>
->> BUT
->>
->> I want to have every opportunity to fix whatever that failure is.
-> 
-> Agreed so far!
-> 
->> So:
->>
->>    - Is the test broken? If so, we should report it to IGT dev and remove
->>      it from the test suite.
->>    - If not, is that test failure have been reported to the driver author?
->>    - If no answer/fix, we can add it to the flaky tests list, but do we
->>      have some way to reproduce the test failure?
->>
->> The last part is especially critical. Looking at the list itself, I have
->> no idea what board, kernel version, configuration, or what the failure
->> rate was. Assuming I spend some time looking at the infra to find the
->> board and configuration, how many times do I have to run the tests to
->> expect to reproduce the failure (and thus consider it fixed if it
->> doesn't occur anymore).
->>
->> Like, with that board and test, if my first 100 runs of the test work
->> fine, is it reasonable for me to consider it fixed, or is it only
->> supposed to happen once every 1000 runs?
+clk provider clk_data.clks[] and we can reference
+the clk pointers directly rather than using __clk_lookup()
+with global names.
 
-I wonder if this should be an overall policy or just let the maintainer 
-to decide.
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-cpu.c    | 18 +++++++++++++-----
+ drivers/clk/rockchip/clk-px30.c   | 17 +++++++++++------
+ drivers/clk/rockchip/clk-rk3036.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3128.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3188.c | 22 +++++++++++-----------
+ drivers/clk/rockchip/clk-rk3228.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3288.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3308.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3328.c |  8 +++-----
+ drivers/clk/rockchip/clk-rk3368.c |  8 ++++----
+ drivers/clk/rockchip/clk-rk3399.c | 14 ++++----------
+ drivers/clk/rockchip/clk-rk3568.c |  5 +++--
+ drivers/clk/rockchip/clk-rk3588.c | 11 +++++------
+ drivers/clk/rockchip/clk-rv1108.c |  5 +++--
+ drivers/clk/rockchip/clk-rv1126.c |  9 +++++++--
+ drivers/clk/rockchip/clk.c        |  6 ++++--
+ drivers/clk/rockchip/clk.h        | 17 ++++++++++-------
+ 17 files changed, 93 insertions(+), 72 deletions(-)
 
-In any case these stress tests must be run from time to time to verify 
-if flakes are still flakes. We could do it automatically but we need to 
-evaluate how to do it properly so it doesn't overload the infra.
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index 6ea7fba9f9e5..9429d4f1fe41 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -298,7 +298,8 @@ static int rockchip_cpuclk_notifier_cb(struct notifier_block *nb,
+ }
+ 
+ struct clk *rockchip_clk_register_cpuclk(const char *name,
+-			const char *const *parent_names, u8 num_parents,
++			u8 num_parents,
++			struct clk *parent, struct clk *alt_parent,
+ 			const struct rockchip_cpuclk_reg_data *reg_data,
+ 			const struct rockchip_cpuclk_rate_table *rates,
+ 			int nrates, void __iomem *reg_base, spinlock_t *lock)
+@@ -306,6 +307,7 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 	struct rockchip_cpuclk *cpuclk;
+ 	struct clk_init_data init;
+ 	struct clk *clk, *cclk;
++	const char *parent_name;
+ 	int ret;
+ 
+ 	if (num_parents < 2) {
+@@ -313,12 +315,18 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
++	if (IS_ERR(parent) || IS_ERR(alt_parent)) {
++		pr_err("%s: invalid parent clock(s)\n", __func__);
++		return ERR_PTR(-EINVAL);
++	}
++
+ 	cpuclk = kzalloc(sizeof(*cpuclk), GFP_KERNEL);
+ 	if (!cpuclk)
+ 		return ERR_PTR(-ENOMEM);
+ 
++	parent_name = clk_hw_get_name(__clk_get_hw(parent));
+ 	init.name = name;
+-	init.parent_names = &parent_names[reg_data->mux_core_main];
++	init.parent_names = &parent_name;
+ 	init.num_parents = 1;
+ 	init.ops = &rockchip_cpuclk_ops;
+ 
+@@ -336,7 +344,7 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 	cpuclk->clk_nb.notifier_call = rockchip_cpuclk_notifier_cb;
+ 	cpuclk->hw.init = &init;
+ 
+-	cpuclk->alt_parent = __clk_lookup(parent_names[reg_data->mux_core_alt]);
++	cpuclk->alt_parent = alt_parent;
+ 	if (!cpuclk->alt_parent) {
+ 		pr_err("%s: could not lookup alternate parent: (%d)\n",
+ 		       __func__, reg_data->mux_core_alt);
+@@ -351,11 +359,11 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 		goto free_cpuclk;
+ 	}
+ 
+-	clk = __clk_lookup(parent_names[reg_data->mux_core_main]);
++	clk = parent;
+ 	if (!clk) {
+ 		pr_err("%s: could not lookup parent clock: (%d) %s\n",
+ 		       __func__, reg_data->mux_core_main,
+-		       parent_names[reg_data->mux_core_main]);
++		       parent_name);
+ 		ret = -EINVAL;
+ 		goto free_alt_parent;
+ 	}
+diff --git a/drivers/clk/rockchip/clk-px30.c b/drivers/clk/rockchip/clk-px30.c
+index 02fdb6273f4a..011b8bd89253 100644
+--- a/drivers/clk/rockchip/clk-px30.c
++++ b/drivers/clk/rockchip/clk-px30.c
+@@ -136,7 +136,6 @@ static const struct rockchip_cpuclk_reg_data px30_cpuclk_data = {
+ 
+ PNAME(mux_pll_p)		= { "xin24m"};
+ PNAME(mux_usb480m_p)		= { "xin24m", "usb480m_phy", "clk_rtc32k_pmu" };
+-PNAME(mux_armclk_p)		= { "apll_core", "gpll_core" };
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_ddrstdby_p)		= { "clk_ddrphy1x", "clk_stdby_2wrap" };
+ PNAME(mux_4plls_p)		= { "gpll", "dummy_cpll", "usb480m", "npll" };
+@@ -979,6 +978,7 @@ static struct rockchip_clk_branch px30_clk_pmu_branches[] __initdata = {
+ 	GATE(0, "pclk_cru_pmu", "pclk_pmu_pre", CLK_IGNORE_UNUSED, PX30_PMU_CLKGATE_CON(0), 8, GFLAGS),
+ };
+ 
++static struct rockchip_clk_provider *cru_ctx;
+ static void __init px30_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+@@ -1003,17 +1003,14 @@ static void __init px30_clk_init(struct device_node *np)
+ 	rockchip_clk_register_branches(ctx, px30_clk_branches,
+ 				       ARRAY_SIZE(px30_clk_branches));
+ 
+-	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
+-				     &px30_cpuclk_data, px30_cpuclk_rates,
+-				     ARRAY_SIZE(px30_cpuclk_rates));
+-
+ 	rockchip_register_softrst(np, 12, reg_base + PX30_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+ 	rockchip_register_restart_notifier(ctx, PX30_GLB_SRST_FST, NULL);
+ 
+ 	rockchip_clk_of_add_provider(np, ctx);
++
++	cru_ctx = ctx;
+ }
+ CLK_OF_DECLARE(px30_cru, "rockchip,px30-cru", px30_clk_init);
+ 
+@@ -1021,6 +1018,7 @@ static void __init px30_pmu_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **pmucru_clks, **cru_clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -1033,10 +1031,17 @@ static void __init px30_pmu_clk_init(struct device_node *np)
+ 		pr_err("%s: rockchip pmu clk init failed\n", __func__);
+ 		return;
+ 	}
++	pmucru_clks = ctx->clk_data.clks;
++	cru_clks = cru_ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, px30_pmu_pll_clks,
+ 				   ARRAY_SIZE(px30_pmu_pll_clks), PX30_GRF_SOC_STATUS0);
+ 
++	rockchip_clk_register_armclk(cru_ctx, ARMCLK, "armclk",
++				     2, cru_clks[PLL_APLL], pmucru_clks[PLL_GPLL],
++				     &px30_cpuclk_data, px30_cpuclk_rates,
++				     ARRAY_SIZE(px30_cpuclk_rates));
++
+ 	rockchip_clk_register_branches(ctx, px30_clk_pmu_branches,
+ 				       ARRAY_SIZE(px30_clk_pmu_branches));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index 7cba188d9b01..a0089c89f143 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -114,7 +114,6 @@ static const struct rockchip_cpuclk_reg_data rk3036_cpuclk_data = {
+ 
+ PNAME(mux_pll_p)		= { "xin24m", "xin24m" };
+ 
+-PNAME(mux_armclk_p)		= { "apll", "gpll_armclk" };
+ PNAME(mux_busclk_p)		= { "apll", "dpll_cpu", "gpll_cpu" };
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
+@@ -431,6 +430,7 @@ static void __init rk3036_clk_init(struct device_node *np)
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
+ 	struct clk *clk;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -451,6 +451,7 @@ static void __init rk3036_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	clk = clk_register_fixed_factor(NULL, "usb480m", "xin24m", 0, 20, 1);
+ 	if (IS_ERR(clk))
+@@ -464,7 +465,7 @@ static void __init rk3036_clk_init(struct device_node *np)
+ 				  ARRAY_SIZE(rk3036_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			2, clks[PLL_APLL], clks[PLL_GPLL],
+ 			&rk3036_cpuclk_data, rk3036_cpuclk_rates,
+ 			ARRAY_SIZE(rk3036_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
+index 09931fc7dadc..f9c78b26f973 100644
+--- a/drivers/clk/rockchip/clk-rk3128.c
++++ b/drivers/clk/rockchip/clk-rk3128.c
+@@ -130,7 +130,6 @@ static const struct rockchip_cpuclk_reg_data rk3128_cpuclk_data = {
+ PNAME(mux_pll_p)		= { "clk_24m", "xin24m" };
+ 
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_div2_ddr" };
+-PNAME(mux_armclk_p)		= { "apll_core", "gpll_div2_core" };
+ PNAME(mux_usb480m_p)		= { "usb480m_phy", "xin24m" };
+ PNAME(mux_aclk_cpu_src_p)	= { "cpll", "gpll", "gpll_div2", "gpll_div3" };
+ 
+@@ -566,6 +565,7 @@ static struct rockchip_clk_provider *__init rk3128_common_clk_init(struct device
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -579,6 +579,7 @@ static struct rockchip_clk_provider *__init rk3128_common_clk_init(struct device
+ 		iounmap(reg_base);
+ 		return ERR_PTR(-ENOMEM);
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3128_pll_clks,
+ 				   ARRAY_SIZE(rk3128_pll_clks),
+@@ -587,7 +588,7 @@ static struct rockchip_clk_provider *__init rk3128_common_clk_init(struct device
+ 				  ARRAY_SIZE(common_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			2, clks[PLL_APLL], clks[PLL_GPLL_DIV2],
+ 			&rk3128_cpuclk_data, rk3128_cpuclk_rates,
+ 			ARRAY_SIZE(rk3128_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index 455245815a11..d905299e5f4b 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -196,7 +196,6 @@ static const struct rockchip_cpuclk_reg_data rk3188_cpuclk_data = {
+ };
+ 
+ PNAME(mux_pll_p)		= { "xin24m", "xin32k" };
+-PNAME(mux_armclk_p)		= { "apll", "gpll_armclk" };
+ PNAME(mux_ddrphy_p)		= { "dpll", "gpll_ddr" };
+ PNAME(mux_pll_src_gpll_cpll_p)	= { "gpll", "cpll" };
+ PNAME(mux_pll_src_cpll_gpll_p)	= { "cpll", "gpll" };
+@@ -678,7 +677,7 @@ static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
+ 			div_rk3188_aclk_core_t, RK2928_CLKGATE_CON(0), 7, GFLAGS),
+ 
+ 	/* do not source aclk_cpu_pre from the apll, to keep complexity down */
+-	COMPOSITE_NOGATE(0, "aclk_cpu_pre", mux_aclk_cpu_p, CLK_SET_RATE_NO_REPARENT,
++	COMPOSITE_NOGATE(ACLK_CPU_PRE, "aclk_cpu_pre", mux_aclk_cpu_p, CLK_SET_RATE_NO_REPARENT,
+ 			RK2928_CLKSEL_CON(0), 5, 1, MFLAGS, 0, 5, DFLAGS),
+ 	DIV(0, "pclk_cpu_pre", "aclk_cpu_pre", 0,
+ 			RK2928_CLKSEL_CON(1), 12, 2, DFLAGS | CLK_DIVIDER_POWER_OF_TWO),
+@@ -778,10 +777,12 @@ static struct rockchip_clk_provider *__init rk3188_common_clk_init(struct device
+ static void __init rk3066a_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
++	struct clk **clks;
+ 
+ 	ctx = rk3188_common_clk_init(np);
+ 	if (IS_ERR(ctx))
+ 		return;
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3066_pll_clks,
+ 				   ARRAY_SIZE(rk3066_pll_clks),
+@@ -789,7 +790,7 @@ static void __init rk3066a_clk_init(struct device_node *np)
+ 	rockchip_clk_register_branches(ctx, rk3066a_clk_branches,
+ 				  ARRAY_SIZE(rk3066a_clk_branches));
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			2, clks[PLL_APLL], clks[PLL_GPLL],
+ 			&rk3066_cpuclk_data, rk3066_cpuclk_rates,
+ 			ARRAY_SIZE(rk3066_cpuclk_rates));
+ 	rockchip_clk_of_add_provider(np, ctx);
+@@ -799,13 +800,14 @@ CLK_OF_DECLARE(rk3066a_cru, "rockchip,rk3066a-cru", rk3066a_clk_init);
+ static void __init rk3188a_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+-	struct clk *clk1, *clk2;
++	struct clk **clks;
+ 	unsigned long rate;
+ 	int ret;
+ 
+ 	ctx = rk3188_common_clk_init(np);
+ 	if (IS_ERR(ctx))
+ 		return;
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3188_pll_clks,
+ 				   ARRAY_SIZE(rk3188_pll_clks),
+@@ -813,22 +815,20 @@ static void __init rk3188a_clk_init(struct device_node *np)
+ 	rockchip_clk_register_branches(ctx, rk3188_clk_branches,
+ 				  ARRAY_SIZE(rk3188_clk_branches));
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				  mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				  2, clks[PLL_APLL], clks[PLL_GPLL],
+ 				  &rk3188_cpuclk_data, rk3188_cpuclk_rates,
+ 				  ARRAY_SIZE(rk3188_cpuclk_rates));
+ 
+ 	/* reparent aclk_cpu_pre from apll */
+-	clk1 = __clk_lookup("aclk_cpu_pre");
+-	clk2 = __clk_lookup("gpll");
+-	if (clk1 && clk2) {
+-		rate = clk_get_rate(clk1);
++	if (clks[ACLK_CPU_PRE] && clks[PLL_GPLL]) {
++		rate = clk_get_rate(clks[ACLK_CPU_PRE]);
+ 
+-		ret = clk_set_parent(clk1, clk2);
++		ret = clk_set_parent(clks[ACLK_CPU_PRE], clks[PLL_GPLL]);
+ 		if (ret < 0)
+ 			pr_warn("%s: could not reparent aclk_cpu_pre to gpll\n",
+ 				__func__);
+ 
+-		clk_set_rate(clk1, rate);
++		clk_set_rate(clks[ACLK_CPU_PRE], rate);
+ 	} else {
+ 		pr_warn("%s: missing clocks to reparent aclk_cpu_pre to gpll\n",
+ 			__func__);
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index bcbf8f901965..6f185d65123a 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -132,7 +132,6 @@ static const struct rockchip_cpuclk_reg_data rk3228_cpuclk_data = {
+ PNAME(mux_pll_p)		= { "clk_24m", "xin24m" };
+ 
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr", "apll_ddr" };
+-PNAME(mux_armclk_p)		= { "apll_core", "gpll_core", "dpll_core" };
+ PNAME(mux_usb480m_phy_p)	= { "usb480m_phy0", "usb480m_phy1" };
+ PNAME(mux_usb480m_p)		= { "usb480m_phy", "xin24m" };
+ PNAME(mux_hdmiphy_p)		= { "hdmiphy_phy", "xin24m" };
+@@ -660,6 +659,7 @@ static void __init rk3228_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -673,6 +673,7 @@ static void __init rk3228_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3228_pll_clks,
+ 				   ARRAY_SIZE(rk3228_pll_clks),
+@@ -681,7 +682,7 @@ static void __init rk3228_clk_init(struct device_node *np)
+ 				  ARRAY_SIZE(rk3228_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			3, clks[PLL_APLL], clks[PLL_GPLL],
+ 			&rk3228_cpuclk_data, rk3228_cpuclk_rates,
+ 			ARRAY_SIZE(rk3228_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 89db93c46403..81ab67716906 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -190,7 +190,6 @@ static const struct rockchip_cpuclk_reg_data rk3288_cpuclk_data = {
+ };
+ 
+ PNAME(mux_pll_p)		= { "xin24m", "xin32k" };
+-PNAME(mux_armclk_p)		= { "apll_core", "gpll_core" };
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
+ 
+@@ -922,6 +921,7 @@ static void __init rk3288_common_init(struct device_node *np,
+ 				      enum rk3288_variant soc)
+ {
+ 	struct rockchip_clk_provider *ctx;
++	struct clk **clks;
+ 
+ 	rk3288_cru_base = of_iomap(np, 0);
+ 	if (!rk3288_cru_base) {
+@@ -935,6 +935,7 @@ static void __init rk3288_common_init(struct device_node *np,
+ 		iounmap(rk3288_cru_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3288_pll_clks,
+ 				   ARRAY_SIZE(rk3288_pll_clks),
+@@ -950,7 +951,7 @@ static void __init rk3288_common_init(struct device_node *np,
+ 					       ARRAY_SIZE(rk3288_hclkvio_branch));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			2, clks[PLL_APLL], clks[PLL_GPLL],
+ 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
+ 			ARRAY_SIZE(rk3288_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3308.c b/drivers/clk/rockchip/clk-rk3308.c
+index 16a4dbd74146..b02154767a4e 100644
+--- a/drivers/clk/rockchip/clk-rk3308.c
++++ b/drivers/clk/rockchip/clk-rk3308.c
+@@ -121,7 +121,6 @@ static const struct rockchip_cpuclk_reg_data rk3308_cpuclk_data = {
+ 
+ PNAME(mux_pll_p)		= { "xin24m" };
+ PNAME(mux_usb480m_p)		= { "xin24m", "usb480m_phy", "clk_rtc32k" };
+-PNAME(mux_armclk_p)		= { "apll_core", "vpll0_core", "vpll1_core" };
+ PNAME(mux_dpll_vpll0_p)		= { "dpll", "vpll0" };
+ PNAME(mux_dpll_vpll0_xin24m_p)	= { "dpll", "vpll0", "xin24m" };
+ PNAME(mux_dpll_vpll0_vpll1_p)	= { "dpll", "vpll0", "vpll1" };
+@@ -905,6 +904,7 @@ static void __init rk3308_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -918,6 +918,7 @@ static void __init rk3308_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3308_pll_clks,
+ 				   ARRAY_SIZE(rk3308_pll_clks),
+@@ -926,7 +927,7 @@ static void __init rk3308_clk_init(struct device_node *np)
+ 				       ARRAY_SIZE(rk3308_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				     3, clks[PLL_APLL], clks[PLL_VPLL0],
+ 				     &rk3308_cpuclk_data, rk3308_cpuclk_rates,
+ 				     ARRAY_SIZE(rk3308_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+index a8686db20f0a..a1b31666044d 100644
+--- a/drivers/clk/rockchip/clk-rk3328.c
++++ b/drivers/clk/rockchip/clk-rk3328.c
+@@ -157,10 +157,6 @@ PNAME(mux_2plls_24m_u480m_p)	= { "cpll", "gpll",
+ 				     "xin24m", "usb480m" };
+ 
+ PNAME(mux_ddrphy_p)		= { "dpll", "apll", "cpll" };
+-PNAME(mux_armclk_p)		= { "apll_core",
+-				    "gpll_core",
+-				    "dpll_core",
+-				    "npll_core"};
+ PNAME(mux_hdmiphy_p)		= { "hdmi_phy", "xin24m" };
+ PNAME(mux_usb480m_p)		= { "usb480m_phy",
+ 				    "xin24m" };
+@@ -840,6 +836,7 @@ static void __init rk3328_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -853,6 +850,7 @@ static void __init rk3328_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3328_pll_clks,
+ 				   ARRAY_SIZE(rk3328_pll_clks),
+@@ -861,7 +859,7 @@ static void __init rk3328_clk_init(struct device_node *np)
+ 				       ARRAY_SIZE(rk3328_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				     4, clks[PLL_APLL], clks[PLL_GPLL],
+ 				     &rk3328_cpuclk_data, rk3328_cpuclk_rates,
+ 				     ARRAY_SIZE(rk3328_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 3594454e3f45..17df0933c8cb 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -88,8 +88,6 @@ static struct rockchip_pll_rate_table rk3368_pll_rates[] = {
+ };
+ 
+ PNAME(mux_pll_p)		= { "xin24m", "xin32k" };
+-PNAME(mux_armclkb_p)		= { "apllb_core", "gpllb_core" };
+-PNAME(mux_armclkl_p)		= { "aplll_core", "gplll_core" };
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr" };
+ PNAME(mux_cs_src_p)		= { "apllb_cs", "aplll_cs", "gpll_cs"};
+ PNAME(mux_aclk_bus_src_p)	= { "cpll_aclk_bus", "gpll_aclk_bus" };
+@@ -856,6 +854,7 @@ static void __init rk3368_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -869,6 +868,7 @@ static void __init rk3368_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3368_pll_clks,
+ 				   ARRAY_SIZE(rk3368_pll_clks),
+@@ -877,12 +877,12 @@ static void __init rk3368_clk_init(struct device_node *np)
+ 				  ARRAY_SIZE(rk3368_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLKB, "armclkb",
+-			mux_armclkb_p, ARRAY_SIZE(mux_armclkb_p),
++			2, clks[PLL_APLLB], clks[PLL_GPLL],
+ 			&rk3368_cpuclkb_data, rk3368_cpuclkb_rates,
+ 			ARRAY_SIZE(rk3368_cpuclkb_rates));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLKL, "armclkl",
+-			mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
++			2, clks[PLL_APLLL], clks[PLL_GPLL],
+ 			&rk3368_cpuclkl_data, rk3368_cpuclkl_rates,
+ 			ARRAY_SIZE(rk3368_cpuclkl_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 619950265e8d..ee3bda968574 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -108,14 +108,6 @@ static struct rockchip_pll_rate_table rk3399_pll_rates[] = {
+ /* CRU parents */
+ PNAME(mux_pll_p)				= { "xin24m", "xin32k" };
+ 
+-PNAME(mux_armclkl_p)				= { "clk_core_l_lpll_src",
+-						    "clk_core_l_bpll_src",
+-						    "clk_core_l_dpll_src",
+-						    "clk_core_l_gpll_src" };
+-PNAME(mux_armclkb_p)				= { "clk_core_b_lpll_src",
+-						    "clk_core_b_bpll_src",
+-						    "clk_core_b_dpll_src",
+-						    "clk_core_b_gpll_src" };
+ PNAME(mux_ddrclk_p)				= { "clk_ddrc_lpll_src",
+ 						    "clk_ddrc_bpll_src",
+ 						    "clk_ddrc_dpll_src",
+@@ -1507,6 +1499,7 @@ static void __init rk3399_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -1520,6 +1513,7 @@ static void __init rk3399_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3399_pll_clks,
+ 				   ARRAY_SIZE(rk3399_pll_clks), -1);
+@@ -1528,12 +1522,12 @@ static void __init rk3399_clk_init(struct device_node *np)
+ 				  ARRAY_SIZE(rk3399_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLKL, "armclkl",
+-			mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
++			4, clks[PLL_APLLL], clks[PLL_GPLL],
+ 			&rk3399_cpuclkl_data, rk3399_cpuclkl_rates,
+ 			ARRAY_SIZE(rk3399_cpuclkl_rates));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLKB, "armclkb",
+-			mux_armclkb_p, ARRAY_SIZE(mux_armclkb_p),
++			4, clks[PLL_APLLB], clks[PLL_GPLL],
+ 			&rk3399_cpuclkb_data, rk3399_cpuclkb_rates,
+ 			ARRAY_SIZE(rk3399_cpuclkb_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+index b1d173ef7da3..64d2278825ab 100644
+--- a/drivers/clk/rockchip/clk-rk3568.c
++++ b/drivers/clk/rockchip/clk-rk3568.c
+@@ -211,7 +211,6 @@ static const struct rockchip_cpuclk_reg_data rk3568_cpuclk_data = {
+ 
+ PNAME(mux_pll_p)			= { "xin24m" };
+ PNAME(mux_usb480m_p)			= { "xin24m", "usb480m_phy", "clk_rtc_32k" };
+-PNAME(mux_armclk_p)			= { "apll", "gpll" };
+ PNAME(clk_i2s0_8ch_tx_p)		= { "clk_i2s0_8ch_tx_src", "clk_i2s0_8ch_tx_frac", "i2s0_mclkin", "xin_osc0_half" };
+ PNAME(clk_i2s0_8ch_rx_p)		= { "clk_i2s0_8ch_rx_src", "clk_i2s0_8ch_rx_frac", "i2s0_mclkin", "xin_osc0_half" };
+ PNAME(clk_i2s1_8ch_tx_p)		= { "clk_i2s1_8ch_tx_src", "clk_i2s1_8ch_tx_frac", "i2s1_mclkin", "xin_osc0_half" };
+@@ -1616,6 +1615,7 @@ static void __init rk3568_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -1629,13 +1629,14 @@ static void __init rk3568_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3568_pll_clks,
+ 				   ARRAY_SIZE(rk3568_pll_clks),
+ 				   RK3568_GRF_SOC_STATUS0);
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				     2, clks[PLL_APLL], clks[PLL_GPLL],
+ 				     &rk3568_cpuclk_data, rk3568_cpuclk_rates,
+ 				     ARRAY_SIZE(rk3568_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 6994165e0395..477aa69d75e2 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -442,9 +442,6 @@ static const struct rockchip_cpuclk_reg_data rk3588_cpulclk_data = {
+ };
+ 
+ PNAME(mux_pll_p)			= { "xin24m", "xin32k" };
+-PNAME(mux_armclkl_p)			= { "xin24m", "gpll", "lpll" };
+-PNAME(mux_armclkb01_p)			= { "xin24m", "gpll", "b0pll",};
+-PNAME(mux_armclkb23_p)			= { "xin24m", "gpll", "b1pll",};
+ PNAME(b0pll_b1pll_lpll_gpll_p)		= { "b0pll", "b1pll", "lpll", "gpll" };
+ PNAME(gpll_24m_p)			= { "gpll", "xin24m" };
+ PNAME(gpll_aupll_p)			= { "gpll", "aupll" };
+@@ -2459,6 +2456,7 @@ static void __init rk3588_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -2472,21 +2470,22 @@ static void __init rk3588_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3588_pll_clks,
+ 				   ARRAY_SIZE(rk3588_pll_clks),
+ 				   RK3588_GRF_SOC_STATUS0);
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK_L, "armclk_l",
+-			mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
++			3, clks[PLL_LPLL], clks[PLL_GPLL],
+ 			&rk3588_cpulclk_data, rk3588_cpulclk_rates,
+ 			ARRAY_SIZE(rk3588_cpulclk_rates));
+ 	rockchip_clk_register_armclk(ctx, ARMCLK_B01, "armclk_b01",
+-			mux_armclkb01_p, ARRAY_SIZE(mux_armclkb01_p),
++			3, clks[PLL_B0PLL], clks[PLL_GPLL],
+ 			&rk3588_cpub0clk_data, rk3588_cpub0clk_rates,
+ 			ARRAY_SIZE(rk3588_cpub0clk_rates));
+ 	rockchip_clk_register_armclk(ctx, ARMCLK_B23, "armclk_b23",
+-			mux_armclkb23_p, ARRAY_SIZE(mux_armclkb23_p),
++			3, clks[PLL_B1PLL], clks[PLL_GPLL],
+ 			&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
+ 			ARRAY_SIZE(rk3588_cpub1clk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rv1108.c b/drivers/clk/rockchip/clk-rv1108.c
+index d290a4cf68b5..394eaf0198bb 100644
+--- a/drivers/clk/rockchip/clk-rv1108.c
++++ b/drivers/clk/rockchip/clk-rv1108.c
+@@ -118,7 +118,6 @@ static const struct rockchip_cpuclk_reg_data rv1108_cpuclk_data = {
+ 
+ PNAME(mux_pll_p)		= { "xin24m", "xin24m"};
+ PNAME(mux_ddrphy_p)		= { "dpll_ddr", "gpll_ddr", "apll_ddr" };
+-PNAME(mux_armclk_p)		= { "apll_core", "gpll_core", "dpll_core" };
+ PNAME(mux_usb480m_pre_p)	= { "usbphy", "xin24m" };
+ PNAME(mux_hdmiphy_phy_p)	= { "hdmiphy", "xin24m" };
+ PNAME(mux_dclk_hdmiphy_pre_p)	= { "dclk_hdmiphy_src_gpll", "dclk_hdmiphy_src_dpll" };
+@@ -772,6 +771,7 @@ static void __init rv1108_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -785,6 +785,7 @@ static void __init rv1108_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	clks = ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rv1108_pll_clks,
+ 				   ARRAY_SIZE(rv1108_pll_clks),
+@@ -793,7 +794,7 @@ static void __init rv1108_clk_init(struct device_node *np)
+ 				  ARRAY_SIZE(rv1108_clk_branches));
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++			3, clks[PLL_APLL], clks[PLL_GPLL],
+ 			&rv1108_cpuclk_data, rv1108_cpuclk_rates,
+ 			ARRAY_SIZE(rv1108_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk-rv1126.c b/drivers/clk/rockchip/clk-rv1126.c
+index 8eb0e2dfcb28..ae91496c5004 100644
+--- a/drivers/clk/rockchip/clk-rv1126.c
++++ b/drivers/clk/rockchip/clk-rv1126.c
+@@ -154,7 +154,6 @@ PNAME(mux_usbphy_otg_ref_p)		= { "clk_ref12m", "xin_osc0_div2_usbphyref_otg" };
+ PNAME(mux_usbphy_host_ref_p)		= { "clk_ref12m", "xin_osc0_div2_usbphyref_host" };
+ PNAME(mux_mipidsiphy_ref_p)		= { "clk_ref24m", "xin_osc0_mipiphyref" };
+ PNAME(mux_usb480m_p)			= { "xin24m", "usb480m_phy", "clk_rtc32k" };
+-PNAME(mux_armclk_p)			= { "gpll", "cpll", "apll" };
+ PNAME(mux_gpll_cpll_dpll_p)		= { "gpll", "cpll", "dummy_dpll" };
+ PNAME(mux_gpll_cpll_p)			= { "gpll", "cpll" };
+ PNAME(mux_hclk_pclk_pdbus_p)		= { "gpll", "dummy_cpll" };
+@@ -1056,6 +1055,7 @@ static struct rockchip_clk_branch rv1126_clk_branches[] __initdata = {
+ 			RV1126_CLKGATE_CON(23), 0, GFLAGS),
+ };
+ 
++static struct rockchip_clk_provider *pmucru_ctx;
+ static void __init rv1126_pmu_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+@@ -1084,12 +1084,15 @@ static void __init rv1126_pmu_clk_init(struct device_node *np)
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+ 	rockchip_clk_of_add_provider(np, ctx);
++
++	pmucru_ctx = ctx;
+ }
+ 
+ static void __init rv1126_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk **cru_clks, **pmucru_clks;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -1103,13 +1106,15 @@ static void __init rv1126_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	cru_clks = ctx->clk_data.clks;
++	pmucru_clks = pmucru_ctx->clk_data.clks;
+ 
+ 	rockchip_clk_register_plls(ctx, rv1126_pll_clks,
+ 				   ARRAY_SIZE(rv1126_pll_clks),
+ 				   RV1126_GRF_SOC_STATUS0);
+ 
+ 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+-				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				     3, cru_clks[PLL_APLL], pmucru_clks[PLL_GPLL],
+ 				     &rv1126_cpuclk_data, rv1126_cpuclk_rates,
+ 				     ARRAY_SIZE(rv1126_cpuclk_rates));
+ 
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 9f23bd5ee22d..73b89dd3ca7d 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -575,15 +575,17 @@ EXPORT_SYMBOL_GPL(rockchip_clk_register_branches);
+ 
+ void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+ 				  unsigned int lookup_id,
+-				  const char *name, const char *const *parent_names,
++				  const char *name,
+ 				  u8 num_parents,
++				  struct clk *parent, struct clk *alt_parent,
+ 				  const struct rockchip_cpuclk_reg_data *reg_data,
+ 				  const struct rockchip_cpuclk_rate_table *rates,
+ 				  int nrates)
+ {
+ 	struct clk *clk;
+ 
+-	clk = rockchip_clk_register_cpuclk(name, parent_names, num_parents,
++	clk = rockchip_clk_register_cpuclk(name, num_parents,
++		parent, alt_parent,
+ 					   reg_data, rates, nrates,
+ 					   ctx->reg_base, &ctx->lock);
+ 	if (IS_ERR(clk)) {
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 4fd3036817f4..a9937fc5804a 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -473,7 +473,8 @@ struct rockchip_cpuclk_reg_data {
+ };
+ 
+ struct clk *rockchip_clk_register_cpuclk(const char *name,
+-			const char *const *parent_names, u8 num_parents,
++			u8 num_parents,
++			struct clk *parent, struct clk *alt_parent,
+ 			const struct rockchip_cpuclk_reg_data *reg_data,
+ 			const struct rockchip_cpuclk_rate_table *rates,
+ 			int nrates, void __iomem *reg_base, spinlock_t *lock);
+@@ -979,12 +980,14 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
+ 				struct rockchip_pll_clock *pll_list,
+ 				unsigned int nr_pll, int grf_lock_offset);
+-void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+-			unsigned int lookup_id, const char *name,
+-			const char *const *parent_names, u8 num_parents,
+-			const struct rockchip_cpuclk_reg_data *reg_data,
+-			const struct rockchip_cpuclk_rate_table *rates,
+-			int nrates);
++void __init rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
++					 unsigned int lookup_id,
++					 const char *name,
++					 u8 num_parents,
++					 struct clk *parent, struct clk *alt_parent,
++					 const struct rockchip_cpuclk_reg_data *reg_data,
++					 const struct rockchip_cpuclk_rate_table *rates,
++					 int nrates);
+ void rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
+ 					unsigned int reg, void (*cb)(void));
+ 
+-- 
+2.17.1
 
->>
->> So, ideally, having some (mandatory) metadata in the test lists with a
->> link to the bug report, the board (DT name?) it happened with, the
->> version and configuration it was first seen with, and an approximation
->> of the failure rate for every flaky test list.
->>
->> I understand that it's probably difficult to get that after the fact on
->> the tests that were already merged, but I'd really like to get that
->> enforced for every new test going forward.
->>
->> That should hopefully get us in a much better position to fix some of
->> those tests issues. And failing that, I can't see how that's
->> sustainable.
-> 
-> OK yeah, and we're still agreed here. That is definitely the standard
-> we should be aiming for.  It is there for some - see
-> drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt, but should be
-> there for the rest, it's true. (The specific board/DT it was observed
-> on can be easily retconned because we only run on one specific board
-> type per driver, again to make things more predictable; we could go
-> back and retrospectively add those in a header comment?)
-> 
-> For flakes, it can be hard to pin them down, because, well, they're
-> flaky. Usually when we add things in Mesa (sorry to keep coming back
-> to Mesa - it's not to say that it's the objective best thing that
-> everything should follow, only that it's the thing we have the most
-> experience with that we know works well), we do a manual bisect and
-> try to pin the blame on a specific merge request which looks like the
-> most likely culprit. If nothing obvious jumps out, we just note when
-> it was first observed and provide some sample job logs. But yeah, it
-> should be more verbose.
-> 
-> FWIW, the reason it wasn't done here - not to say that it shouldn't
-> have been done better, but here we are - is that we just hammered a
-> load of test runs, vacuumed up the results with a script, and that's
-> what generated those files. Given the number of tests and devices, it
-> was hard to narrow each down individually, but yeah, it is something
-> which really wants further analysis and drilling into. It's a good
-> to-do, and I agree it should be the standard going forward.
-
-Yes, during development I was just worried about to get a pipeline that 
-would succeed most of the time (otherwise people would start ignoring 
-when it fails), so they just got run a couple of times and a script 
-filled the flakes list.
-For me the idea was "let's get a starting point" first, but yeah, we 
-need to improve how we deal with it from now on.
-
-> 
->> And Mesa does show what I'm talking about:
->>
->> $ find -name *-flakes.txt | xargs git diff --stat  e58a10af640ba58b6001f5c5ad750b782547da76
->> [...]
->>
->> In the history of Mesa, there's never been a single test removed from a
->> flaky test list.
-> 
-> As Rob says, that's definitely wrong. But there is a good point in
-> there: how do you know a test isn't flaky anymore? 100 runs is a
-> reasonable benchmark, but 1000 is ideal. At a 1% failure rate, with 20
-> devices, that's just too many spurious false-fails to have a usable
-> workflow.
-> 
-> We do have some tools to make stress testing easier, but those need to
-> be better documented. We'll fix that. The tools we have which also
-> pull out the metadata etc also need documenting - right now they
-> aren't because they're under _extremely_ heavy development, but they
-> can be further enhanced to e.g. pull out the igt results automatically
-> and point very clearly to the cause. Also on the to-do.
-> 
->>> Only maintainers can actually fix the drivers (or the tests tbf). But
->>> doing the testing does let us be really clear to everyone what the
->>> actual state is, and that way people can make informed decisions too.
->>> And the only way we're going to drive the test rate down is by the
->>> subsystem maintainers enforcing it.
->>
->> Just FYI, I'm not on the other side of the fence there, I'd really like
->> to have some kind of validation. I talked about it at XDC some years
->> ago, and discussed it several people at length over the years. So I'm
->> definitely not in the CI-is-bad camp.
->>
->>> Does that make sense on where I'm (and I think a lot of others are)
->>> coming from?
->>
->> That makes sense from your perspective, but it's not clear to me how you
->> can expect maintainers to own the tests if they were never involved in
->> the process.
->>
->> They are not in Cc of the flaky tests patches, they are not reported
->> that the bug is failing, how can they own that process if we never
->> reached out and involved them?
->>
->> We're all overworked, you can't expect them to just look at the flaky
->> test list every now and then and figure it out.
-> 
-> Absolutely. We got acks (or at least not-nacks) from the driver
-> developers, but yeah, they should absolutely be part of the loop for
-> those updates. I don't think we can necessarily block on them though.
-> Say we add vc4 KMS tests, then after a backmerge we start to see a
-> bunch of flakes on it, but you're sitting on a beach for a couple of
-> weeks. If we wait for you to get back, see it, and merge it, then
-> that's two weeks of people submitting Rockchip driver changes and
-> getting told that their changes failed CI. That's exactly what we want
-> to avoid, because it erodes confidence and usefulness of CI when
-> people expect failures and ignore them by default.
-> 
-> So I would say that it's reasonable for expectations to be updated
-> according to what actually happens in practice, but also to make sure
-> that the maintainers are explicitly informed and kept in the loop, and
-> not just surprised when they look at the lists and see a bunch of
-> stuff happened without their knowledge.
-
-I was thinking in adding entries in MAINTAINERS file pointing to each 
-flake/skip/fails list file to their maintainers, so get_maintainers.pl 
-can return the right thing.
-
-> 
-> Again there's much more to be done on the tooling here. Part of it is
-> CLI tools and automation, part of it is dashboards and
-> easily-digestible reporting, and then there's integration with things
-> like KernelCI. KCI(DB) is actually quite high up on the list, but
-> we're mostly waiting until a lot of the KCI rework happens so we can
-> actually properly integrate with the new system.
-> 
-> Right now a lot of the tooling we have is pretty involved - for
-> example, we do have ci-collate as a Python library which can inspect a
-> number of pipelines, pull out detailed status and logs, etc, but it
-> mostly needs to be used as a library with bespoke scripts, rather than
-> a ready-made tool. Work on that is ongoing to make it way more clear
-> and accessible though.
-> 
-> So I think it sounds like we're on the same page and going exactly in
-> the same direction, just that this is a starting point rather than the
-> desired end state. And the main point is that having a set of
-> xfails/flakes parachuted in with little to no context is trying to get
-> an MVP bootstrapped, rather than how we expect things to go in future.
-> Does that sound about right?
-> 
-> Cheers,
-> Daniel
-
-Regards,
-Helen
 
 _______________________________________________
 Linux-rockchip mailing list
