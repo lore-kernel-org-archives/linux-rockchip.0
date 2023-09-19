@@ -4,196 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB87CD54AF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 10:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C33CD54B2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 10:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cnAmSQyhpkiX+TO2sW7rOc30cJMUzqwvaRHxC5H5CDM=; b=Fho9N16xdcmInV
-	ehCHrSggcgG4qbSLpBK3/3jqsqtS/reW65T74F29CRCszgUCMZ4f+eMGzJwXUFrggY2AeGCfanTVY
-	ZWL0hK6Du4jnes0CKcCDPXuE9ZK3Jww5EEf0eTKykSrjz34OTHdAA06A/Xmo6TFZdBCmMoS7uG3LV
-	ohb0yBQ42UGPZKPv/3741rAtCXAzsNrIiwjCrPsxsRcdoSAY31Hu68RRydjhB5NCzYmZzyFXw6ema
-	OMMbS4HZkVEDbyGjQrO1ht4P9DvrOAKG3HL83OAXZx+j3Cy6QsTTZNe+npTAbFyzslwNSo3XG2HnZ
-	BLsvXwaT+88QF5wKp2aQ==;
+	List-Owner; bh=sHiRgJQX/yzfpIWHrFe/2mZYJjPHwY2GQ4jm+qXI304=; b=cXzUqcAPogFZk1
+	FvDduEl2jh4U8OGwB9NmTAbF2WEcxKrrdcEDHM9k1PJxfGFNVyhZtKdG5RPmVPRE7APDUpY2+pHIE
+	eo9iqXou6ldjrb9ptE89z7BnfIIptI1zmWMkuhFiA300df4WaIwuqizYl0aA8sgOAs2fVWHCpte9U
+	E+5ak7oDXVbQqb8QGYRDBiEyKLZgKyBUdS4n/oQln64xZd01rwvANkBobGfy0cmrGgSLFRKdyOcd3
+	UgRyDrSKEfOvdILDjLZs5UmEMOGZfJsxsVWaDBI3D2LWWreWehBO2HwD1w6VR4EYJC6tCmeTlKXm1
+	5aIBHnha5SLHt73aKq4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYET-0003S3-1T;
-	Tue, 19 Sep 2023 10:45:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qiYOF-000ASx-0P;
+	Tue, 19 Sep 2023 10:55:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiYEP-0003Of-1M;
-	Tue, 19 Sep 2023 10:45:26 +0000
-X-UUID: 9f7a7a6456d911ee86758d4a7c00f3a0-20230919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=u2vgeCrXDruvDvbz9JWATPKy4P7S8w3erm2asnW/8Oo=;
-	b=K5ay55GjjtnEEfCaJvXTx6KheKjGWw3jY8bGBhgNtsCXxiQFGduJsbAasuWRHap+yHYcRIn3WlBX4qXLNUJYVl0im3kUj/RYz/a7fbcSnjhhrKgwuCWedQDB3uqtWIJJEUgv1QHYgj3yJisSc6Eozap22FmnY6TpSvxZw3ASZ4M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32,REQID:3cf5b832-760b-488f-a327-64f6c17c5d40,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:5f78ec9,CLOUDID:49131e14-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9f7a7a6456d911ee86758d4a7c00f3a0-20230919
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1329081062; Tue, 19 Sep 2023 03:45:17 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Sep 2023 18:44:43 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 18:44:42 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MOqQWzR6kqjUB0Wfz5CwoSjgEEBY3qGSsddAzEgjvZqqumK4mrVmJEbHG4cCRxZp4GnBs7o3LW2l60JOA84uqwBiVUXYEpncYb8SRSRjvFkYAunkhql5qrb3kw5Jsc7vFuy6HnSPULKwMYYdl8pUcR+/ivZT/epc1Ge59EYnwdlxmhykJGoWt/wZ4fi6o37Z3SV02GI6pb1cDgjS+UJkMddjOYo2HFN1vhGO6/X2KTnJ5NheKyd+64spR4whM7+ynDoA3a8wE0mcp5myjbFEUBk3wOo99XuIsKal53RCuJ7o+UN1zvGIqiOl0XTsRySy7CxZ5Gt82E39ehUHQ4zgSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=u2vgeCrXDruvDvbz9JWATPKy4P7S8w3erm2asnW/8Oo=;
- b=jEC3FgEdxf0mVppFaDcRlJLHzCS+OXI6op+ldKAB/rpRlnsnN9uP+d9DgRwCTWj/KPx0vwqEgfiO5SYVf/LN69/Zm7G+5c14mbOyuxMHWwIDf33lJHtBBkEtTQUQt3qXpmQHkNSkfnSFO52+cE+ryI5fnabLTtez1NkY6U36gNAXsRXRIwGp1mHc/+6Pvn1SjuouYJ+XTlacjNhtFfCAhPALY8ddQ9sGnqAxpSxdx89k++pMWQv9MDaYJCGgwzpXZPnputJC0xxVYFiK5hRrzyUHutjoeHPa3+KuUKuOrk6EkuyOEH0SAsbVIa2ir4CcKZOZlnROVECi1dTsMyQJZg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=u2vgeCrXDruvDvbz9JWATPKy4P7S8w3erm2asnW/8Oo=;
- b=PhuLhUFBIUoamP2aFt9oVWI7OR5YU7dmWoDT9gFh9DP79WoLwROEtClwdVXvQBeKXkrXbl0ucA9XlFOMUpWlT5cmF2Pe1cK9qU03icd1PvBKXAwI+ILVNJE+jsWtG4/FdFioJDmGCVp7lifz9vFHUUr/Rj6dloM/qrmmeBCqzf0=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- SI2PR03MB6223.apcprd03.prod.outlook.com (2603:1096:4:16d::11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6792.24; Tue, 19 Sep 2023 10:44:41 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::e148:3390:1eb2:28e3]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::e148:3390:1eb2:28e3%7]) with mapi id 15.20.6792.026; Tue, 19 Sep 2023
- 10:44:41 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"konrad.dybcio@linaro.org" <konrad.dybcio@linaro.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "thierry.reding@gmail.com"
-	<thierry.reding@gmail.com>, "wens@csie.org" <wens@csie.org>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "alim.akhtar@samsung.com"
-	<alim.akhtar@samsung.com>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"agross@kernel.org" <agross@kernel.org>, "robdclark@gmail.com"
-	<robdclark@gmail.com>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>, "will@kernel.org"
-	<will@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>, "jgg@nvidia.com"
-	<jgg@nvidia.com>, "heiko@sntech.de" <heiko@sntech.de>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"baolin.wang@linux.alibaba.com" <baolin.wang@linux.alibaba.com>,
-	"npiggin@gmail.com" <npiggin@gmail.com>, "mpe@ellerman.id.au"
-	<mpe@ellerman.id.au>, "linux-samsung-soc@vger.kernel.org"
-	<linux-samsung-soc@vger.kernel.org>, "andersson@kernel.org"
-	<andersson@kernel.org>, "joro@8bytes.org" <joro@8bytes.org>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>,
-	"kevin.tian@intel.com" <kevin.tian@intel.com>, "mjrosato@linux.ibm.com"
-	<mjrosato@linux.ibm.com>, "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "christophe.leroy@csgroup.eu"
-	<christophe.leroy@csgroup.eu>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "orsonzhai@gmail.com"
-	<orsonzhai@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>
-CC: "jsnitsel@redhat.com" <jsnitsel@redhat.com>, "treding@nvidia.com"
-	<treding@nvidia.com>, "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "digetx@gmail.com"
-	<digetx@gmail.com>, "steven.price@arm.com" <steven.price@arm.com>,
-	"nicolinc@nvidia.com" <nicolinc@nvidia.com>, "schnelle@linux.ibm.com"
-	<schnelle@linux.ibm.com>
-Subject: Re: [PATCH v8 23/24] iommu: Convert simple drivers with DOMAIN_DMA to
- domain_alloc_paging()
-Thread-Topic: [PATCH v8 23/24] iommu: Convert simple drivers with DOMAIN_DMA
- to domain_alloc_paging()
-Thread-Index: AQHZ5kiMm4G2PL5NQ0Sm/zgQgpoMurAiAAQA
-Date: Tue, 19 Sep 2023 10:44:40 +0000
-Message-ID: <f9b5e9e83db9d6c36d3413c3087204f07f174bbd.camel@mediatek.com>
-References: <23-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
-In-Reply-To: <23-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|SI2PR03MB6223:EE_
-x-ms-office365-filtering-correlation-id: b58b5cf4-53ec-4cb7-a577-08dbb8fd6db0
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 6/POYLn+Kf28FGO/Jo+2U+6j5v6XG/NHtMDNQX2ZCr87G94h8ZXi1PT8FYw+gPno9lJt5cVELcSuPsvXvsZ2ejcV48P4feDrOMcwg5bBXY+h5JIjS9MkMk4gTii+tyjlTbl6N7niYWbAp3DHaFdX+etfLt6psNK+k2I09TC2LzKl9uzh0MMk9i8IUPJMIMNv4H4VnDGs/ZNpDTINbWavJIQ/bFGZCepS/foIvDmUHKYinHLTwCvQMuszh5b/dDRb6FyjXb06LIgo/8SSYwKeGOpC2hr56LmbLe8Q7DXmEmSEHUKZsipIr1NQWUongfnronRRVdGoGPrLIXJ2oTmLG2zTn6UP0vkvK7ogpISedWThVTWACNAspeMUOOaLnSVnIa4OSohPUY6x3Fm6O0VeaExwXtE/Z1S/dzEP1dnxENM7AClri2NgtpL3Pvhe+GbYTNPvX6IbfxdmOxbzW3x6QxqriAYtF5QbjV9UyBogcoLAhqWkFIvOeaAhOeTsNfFraVx3W3l22EZdqwdzc66HFRGeIzABn217mU5pr3luiEu+YCrUBBlmWZqRBIYK94IQhJ/cEuzC+jRhpqQa5nKF0JTPMcHwzqlQ2WzNH8+9NOXXXytN8w5mH171iNJtIStg6xUvyg50f5OvjwxBZaCHifEYN1dUAKSOflxSRr0vmzpu+v0FPVur3uwnZ1sJkWxSk+AFtdD1l6ZLmBthxjLahw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(396003)(39860400002)(136003)(366004)(346002)(451199024)(1800799009)(186009)(6486002)(5660300002)(6506007)(86362001)(54906003)(66446008)(316002)(6512007)(64756008)(38100700002)(66946007)(66556008)(38070700005)(41300700001)(66476007)(76116006)(91956017)(110136005)(71200400001)(478600001)(8936002)(8676002)(2616005)(921005)(26005)(2906002)(36756003)(4744005)(85182001)(4326008)(122000001)(83380400001)(7416002)(7406005)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?N2ZWRGRBaDR0ZDJkdWdZek10RExIZFlucUE4Q0Qxa2JoWXVHM25sc29zM2xh?=
- =?utf-8?B?YnpLZFpjaXZJOEtXeDBBV3YxMHJTMG9OeFFyVVljSFFnRS8xcGlZN1VZSU9q?=
- =?utf-8?B?YlUwTnFjR1duOGpPaE1TWXdiZHFTTUJ2VUlMakVHKzRWSUtiMUUzZ2Q4RkNH?=
- =?utf-8?B?Z0JGUTFEb3pLaHZLZnN2ZU05YlhicCs5cXl0NHhPM285eENVNVE1WkZ6eXFB?=
- =?utf-8?B?czVMUVV2UjVzSWFObmJsQjF5YTMxRmFRRTVGNmZQNGFLdWs1N0VDRDczajFx?=
- =?utf-8?B?Qy9Dc3JQTkI2bjdtbHVITFFic2M0RUxHUEV0YTdrNGxnOXlyWWZJMHZQWUlI?=
- =?utf-8?B?aG1lUWVuQmdIZVFzYmoyQnNhcktJVDAyQ1UvOEg4ZFc1MStKY0hSSVc3VXR4?=
- =?utf-8?B?TXRpdTd6UVdjd00zQjhWR0h6VTRheDJOUDNpc3ZML1VsT0l5MlkrV2kxalAw?=
- =?utf-8?B?cGhLMnU0bEMxQitTLzMwUkJ1TlZqZHc1ZFEwR2Z2OWdybjFnbkI5aUFiSEln?=
- =?utf-8?B?MzFLa0s1bnJveFhSeWhlK1grdWFiWDk2RktrTmhtazMwclYxQi9vbXhteW4y?=
- =?utf-8?B?VUE4aEtsbEFpbGMvdGZFN2VGN0psNG5VREJHZ2I0RW9qR3NOL2Uwb0pmNkdx?=
- =?utf-8?B?cG02UXUvYno3bmFDbmduRmlhUVZtVnNQQXE4WGJudVBhN3dKMGUwN3dyVW9w?=
- =?utf-8?B?eElGNmFsR3lLN01oMGRvS2hrUWViNjU0eGdFeHV6S0I1bTR5UkgyRVVWdWRU?=
- =?utf-8?B?eERRN2RMTEdnc0tVY2tFOW5sVHVkUzdDTUtoNTYwcldYOGJsRkxGUFpMWE5o?=
- =?utf-8?B?b29UOFhpNXVKRE1Na043SHNjcGxoUnpFWVMrek1OYTd6dGJZVkdTaHpzSEI4?=
- =?utf-8?B?UjYxQUx4dmJzSkh0VFZkcTNkZDIwWmR3MUZLMkg3KzV1VTFjWDI5b3RaamNR?=
- =?utf-8?B?NkU4MDUwVG9FNkFmMHQ0WGltM1FWa05TUFVGeHJkc295NlpyWXVOOGswdjRs?=
- =?utf-8?B?RnZ5bURtQnRmcmpuZkFycFlqbGZTSGd0UnY5RDE5ZDIxTHNQQUd0ZVQrQnpJ?=
- =?utf-8?B?NjhnMHdHaEVHa0c5L2ZwUHJBTzBVaE5KcnNqanEyZCtrT3VHcWhKbWRQZVRq?=
- =?utf-8?B?bTZqdUJZTTJURHM5RzlpeDh6ZGV4QnBwYUY2R2RyZE9sQnlmZkJITFJRODN0?=
- =?utf-8?B?MXBZRmI1TEZyR0ZraEs1ZHpnb2VOZ3hjb0srTkphdy83Z004RFlZbmZaYWZu?=
- =?utf-8?B?bk5pMkFONVNGWWJxUzUrTUI4NTJWamVTMTc2RHM5M1B0cjM1cE4renNlcFFy?=
- =?utf-8?B?TWNjbTE5Y0w0cHN5VlJNSyswRjYrTml6cWJwMjRWaDhlT3N4YmxwRDBpY0tn?=
- =?utf-8?B?UVROQVlpcGU4N0NoS1oyQm9VbmpMWERRMTRrdXhhV2ZiLytlK0pndU54Si9K?=
- =?utf-8?B?N1laelRrQ1dJUnhUWjhTQzNVS3NHeXpoVXo3VVFXalNCRGN6UENNenp2ZUk0?=
- =?utf-8?B?NHRmU2kwSTZ5WGFPZGY2alljb09ZVmhhT2RjeVFTSVZUdmpOdVNkcHBuVmhZ?=
- =?utf-8?B?UEpVLzMveTYrUG5IUVprTy9kOW8veGREWFQ1eUk5NlNaVjdRL1hUQ2hueGUr?=
- =?utf-8?B?RXl0Z0hubVlWUmZnQTlNSzVGMDlReUp2dy9kM0I1MStHYWd4WGFmRzhRb2Zr?=
- =?utf-8?B?SDFEdzhmaW96alFBOUI1T2dIekhGbVhyQlQvNjBBVDZHTTFJaGtWUTJFMVU1?=
- =?utf-8?B?dkR5eTF5TEVYWG9FZm8zdmpadmI1QlpJeXJrL2FPTnhvZUN1Mjd5Z21kNlVS?=
- =?utf-8?B?VU9WZjBUMG4vajBNcWlQVzZKYjBrN2NvYkF3NjQ2enRiMjQ2NFBydkwzRko0?=
- =?utf-8?B?VUV0N2NQMVV1TjNLSkZnczFLb1Q3SGdBVVBmQWU5V2JpNFc1b09laU43ODBN?=
- =?utf-8?B?YXpkY3p1NmlLQzlzN2gyN1F6dUZIdW9VMmFVNm9veCtoRnJvYzgzK0tFNmhI?=
- =?utf-8?B?dGdUVTljQ3gyVW1Obm9YZ3d6dzROdGdsTUpFME5mU2NJbDZoVXNWSmZhUGIw?=
- =?utf-8?B?aERoZFgzVlRjQ0llY240b29IZE5VQTVXakNiQVVaQUhBR2RDcnhlOWxVeGJO?=
- =?utf-8?B?V24ybjd1RkJTcTV3MVh3YzBnUXFWMDd1RGNmUDA0clZRSVZmcHZwMUR3dUUw?=
- =?utf-8?B?VXc9PQ==?=
-Content-ID: <F0013D130C2A8249A1883529ED888707@apcprd03.prod.outlook.com>
+	id 1qiYOA-000AMd-1a;
+	Tue, 19 Sep 2023 10:55:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DB26615AD;
+	Tue, 19 Sep 2023 10:55:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87EE8C433C9;
+	Tue, 19 Sep 2023 10:55:22 +0000 (UTC)
+Message-ID: <91fbf033-f02b-4a06-8bf0-0bf5bfca26a0@xs4all.nl>
+Date: Tue, 19 Sep 2023 12:55:21 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b58b5cf4-53ec-4cb7-a577-08dbb8fd6db0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2023 10:44:40.9441
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: vNPBAyOr00S+ssTp9WPZN1Q7BL+zzErmi4ZTpZ82cYuMKUEnsg5kmot0rYMjzvVi8f0xBH4LtQVS9WAiEaIGqA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6223
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 12/49] media: videobuf2: Be more flexible on the number
+ of queue stored buffers
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-13-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230914133323.198857-13-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_034525_493966_5101A7C0 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20230919_035530_612152_86C37AB4 
+X-CRM114-Status: GOOD (  34.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -210,36 +72,232 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2023-09-13 at 10:43 -0300, Jason Gunthorpe wrote:
->  	 
-> External email : Please do not click links or open attachments until
-> you have verified the sender or the content.
->  These drivers are all trivially converted since the function is only
-> called if the domain type is going to be
-> IOMMU_DOMAIN_UNMANAGED/DMA.
+On 14/09/2023 15:32, Benjamin Gaignard wrote:
+> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
+> how many buffers could be stored in a queue.
+> This request 'bufs' array to be allocated at queue init time and freed
+
+I think this is a typo:
+
+request -> requires
+
+> when releasing the queue.
+> By default VB2_MAX_FRAME remains the limit.
 > 
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Steven Price <steven.price@arm.com>
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 > ---
->  drivers/iommu/arm/arm-smmu/qcom_iommu.c | 6 ++----
->  drivers/iommu/exynos-iommu.c            | 7 ++-----
->  drivers/iommu/ipmmu-vmsa.c              | 7 ++-----
->  drivers/iommu/mtk_iommu.c               | 7 ++-----
->  drivers/iommu/rockchip-iommu.c          | 7 ++-----
->  drivers/iommu/sprd-iommu.c              | 7 ++-----
->  drivers/iommu/sun50i-iommu.c            | 9 +++------
->  drivers/iommu/tegra-smmu.c              | 7 ++-----
->  8 files changed, 17 insertions(+), 40 deletions(-)
+>  .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++++++++++-----
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
+>  include/media/videobuf2-core.h                |  4 +-
+>  3 files changed, 35 insertions(+), 13 deletions(-)
 > 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index afe76577acc1..ee4df7c68397 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+>   */
+>  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+>  {
+> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
+> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
 
-Tested-by: Yong Wu <yong.wu@mediatek.com>  #For mtk_iommu.c
+I'm not sure I like the name 'max_allowed_buffers'. How about 'max_num_buffers'?
 
-Thanks.
+Also, as mentioned in a previous patch review, I don't think you should
+need this check at all in this function. It should assume that the index is
+valid, and any checks should happen (and probably already do) in the caller.
+
+>  		q->bufs[index] = vb;
+>  		vb->index = index;
+>  		vb->vb2_queue = q;
+> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+>  {
+> -	if (vb->index < VB2_MAX_FRAME) {
+> +	if (vb->index < q->max_allowed_buffers) {
+>  		q->bufs[vb->index] = NULL;
+>  		vb->vb2_queue = NULL;
+>  	}
+> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  	struct vb2_buffer *vb;
+>  	int ret;
+>  
+> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
+> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+>  	num_buffers = min_t(unsigned int, num_buffers,
+> -			    VB2_MAX_FRAME - q->num_buffers);
+> +			    q->max_allowed_buffers - q->num_buffers);
+
+In this context the name 'max_num_buffers' makes more sense than
+'max_allowed_buffers', IMHO.
+
+>  
+>  	for (buffer = 0; buffer < num_buffers; ++buffer) {
+>  		/* Allocate vb2 buffer structures */
+> @@ -814,7 +814,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	unsigned int i;
+> -	int ret;
+> +	int ret = 0;
+>  
+>  	if (q->streaming) {
+>  		dprintk(q, 1, "streaming active\n");
+> @@ -858,17 +858,23 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	/*
+>  	 * Make sure the requested values and current defaults are sane.
+>  	 */
+> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
+>  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+
+Given the name 'max_num_buffers' it would make sense to rename 'min_buffers_needed'
+to 'min_num_buffers'. It's a bit of a painful change though, so let's leave this
+as-is.
+
+> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
+> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
+>  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+>  	/*
+>  	 * Set this now to ensure that drivers see the correct q->memory value
+>  	 * in the queue_setup op.
+>  	 */
+>  	mutex_lock(&q->mmap_lock);
+> +	if (!q->bufs)
+> +		q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +	if (!q->bufs)
+> +		ret = -ENOMEM;
+>  	q->memory = memory;
+>  	mutex_unlock(&q->mmap_lock);
+> +	if (ret)
+> +		return ret;
+>  	set_queue_coherency(q, non_coherent_mem);
+>  
+>  	/*
+> @@ -974,9 +980,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	bool no_previous_buffers = !q->num_buffers;
+> -	int ret;
+> +	int ret = 0;
+>  
+> -	if (q->num_buffers == VB2_MAX_FRAME) {
+> +	if (q->num_buffers == q->max_allowed_buffers) {
+>  		dprintk(q, 1, "maximum number of buffers already allocated\n");
+>  		return -ENOBUFS;
+>  	}
+> @@ -993,7 +999,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		 */
+>  		mutex_lock(&q->mmap_lock);
+>  		q->memory = memory;
+> +		if (!q->bufs)
+> +			q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> +		if (!q->bufs)
+> +			ret = -ENOMEM;
+>  		mutex_unlock(&q->mmap_lock);
+> +		if (ret)
+> +			return ret;
+>  		q->waiting_for_buffers = !q->is_output;
+>  		set_queue_coherency(q, non_coherent_mem);
+>  	} else {
+> @@ -1005,7 +1017,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return -EINVAL;
+>  	}
+>  
+> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
+> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
+>  
+>  	if (requested_planes && requested_sizes) {
+>  		num_planes = requested_planes;
+> @@ -2515,6 +2527,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
+>  
+>  	q->memory = VB2_MEMORY_UNKNOWN;
+>  
+> +	if (!q->max_allowed_buffers)
+> +		q->max_allowed_buffers = VB2_MAX_FRAME;
+> +
+> +	/* The maximum is limited by offset cookie encoding pattern */
+> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK + 1);
+
+I think I would prefer this to be added to the sanity checks at the start:
+
+	WARN_ON(q->max_allowed_buffers > BUFFER_INDEX_MASK + 1)) ||
+
+I think we should also this check:
+
+	if (WARN_ON(q->max_allowed_buffers < VB2_MAX_FRAME) ||
+	    WARN_ON(q->min_buffers_needed > q->max_allowed_buffers))
+		return -EINVAL;
+
+Note that there is a "WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);" in
+vb2_core_reqbufs. That's really the wrong place, that should be checked here.
+So drop that WARN_ON in vb2_core_reqbufs.
+
+> +
+>  	if (q->buf_struct_size == 0)
+>  		q->buf_struct_size = sizeof(struct vb2_buffer);
+>  
+> @@ -2539,6 +2557,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	__vb2_queue_cancel(q);
+>  	mutex_lock(&q->mmap_lock);
+>  	__vb2_queue_free(q, q->num_buffers);
+> +	kfree(q->bufs);
+> +	q->bufs = NULL;
+>  	mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index f460cac560f6..87c2d5916960 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
+>  
+>  	if (lock)
+>  		mutex_lock(lock);
+> -	if (file->private_data == vdev->queue->owner) {
+> +	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
+>  		vb2_queue_release(vdev->queue);
+>  		vdev->queue->owner = NULL;
+>  	}
+> @@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
+>  	 */
+>  	get_device(&vdev->dev);
+>  	video_unregister_device(vdev);
+> -	if (vdev->queue && vdev->queue->owner) {
+> +	if (vdev->queue) {
+>  		struct mutex *lock = vdev->queue->lock ?
+>  			vdev->queue->lock : vdev->lock;
+>  
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index cd3ff1cd759d..97153c69583f 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
+>   * @dma_dir:	DMA mapping direction.
+>   * @bufs:	videobuf2 buffer structures
+>   * @num_buffers: number of allocated/used buffers
+> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
+>   * @queued_list: list of buffers currently queued from userspace
+>   * @queued_count: number of buffers queued and ready for streaming.
+>   * @owned_by_drv_count: number of buffers owned by the driver
+> @@ -619,8 +620,9 @@ struct vb2_queue {
+>  	struct mutex			mmap_lock;
+>  	unsigned int			memory;
+>  	enum dma_data_direction		dma_dir;
+> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
+> +	struct vb2_buffer		**bufs;
+>  	unsigned int			num_buffers;
+> +	unsigned int			max_allowed_buffers;
+>  
+>  	struct list_head		queued_list;
+>  	unsigned int			queued_count;
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
