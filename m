@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DE3CD5BC0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 13:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A8F1CD5BBD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Sep 2023 13:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CXRxYC0IGyWyKHTE5YBA5KDM58eUQ09kWI3jOgGiO6o=; b=IveC54yTE6ta0Q
-	k1rWN+vPDPAIaRELYxeAdxLJ7SensgUYG96DKmpVhroayiKzWS6k+b9x7J87wZbEG1c89Uq1oAI3E
-	Y+vDzjUp9SJGeY7/iVQyEuoJsV7oJTk8QN70275uCP7q42OaDJ+sbjdmQXO+VerdSTYgzRNI30Jto
-	AHAbrdwz0vQ/BE0RG2mgHjB3M2vmnEjFqDD7sEeKObByFG00F9ox1l+gXXVcG4quR54fF5+deAYYp
-	9gXlWJ2sv+w5F0USTMV+dymLTZ5itp/hwnqtihzw+Wf/zJTlYjP9/dTPTmvkIFhSt7NmAQgbdxa3b
-	RLBkoObnwja2H0Sdvulw==;
+	List-Owner; bh=YGI92IVI/MOoZWqdd4YCnYs7LK0avStwnDi/62gJUIo=; b=riD+usfI6EmLgZ
+	4visnzzb6PrLnq3awIJ6/Q2HqjiHSnqY3lII8aXXq+Mrn7bfHo2KJWWyx+woBYMXbI+lmzYS0Tez/
+	8xfZ80YdgQhMAZv0F1RPgODaIbazfuXDhO0suxgMKPweGMzspkFxqeBYPjKPbLWv+7vDziySy8ojQ
+	Ju1BwKoOdB/znQc7cWnROmo8a8lkwReRCV9USjzpPEl8WF/VzxnVvgiOkvJgdmWvsVe0Gkcmh7vmI
+	BOemiFMzmaAlvp3q5KUvzF0CEyfC5lVHg5xGCkUz7v2b/PUxuQJZi7lJzQqsqKKFGP/8YdU8hSGOw
+	/3OGMcnm8scYMQk3ByDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qib9O-000Zvz-2q;
-	Tue, 19 Sep 2023 13:52:26 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qibDd-000aco-01;
+	Tue, 19 Sep 2023 13:56:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qib9K-000ZuQ-0D;
-	Tue, 19 Sep 2023 13:52:23 +0000
+	id 1qibDZ-000abY-1B;
+	Tue, 19 Sep 2023 13:56:46 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B069DB81178;
-	Tue, 19 Sep 2023 13:52:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA6A9C433C7;
-	Tue, 19 Sep 2023 13:52:15 +0000 (UTC)
-Message-ID: <23f6b3fb-4c9d-485f-bb84-3f97a70c8a71@xs4all.nl>
-Date: Tue, 19 Sep 2023 15:52:14 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A26BA616CD;
+	Tue, 19 Sep 2023 13:56:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00FC1C433C7;
+	Tue, 19 Sep 2023 13:56:39 +0000 (UTC)
+Message-ID: <14def513-1900-44e8-9b1d-154feccedf62@xs4all.nl>
+Date: Tue, 19 Sep 2023 15:56:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 25/49] media: pci: netup_unidvb: Stop direct calls to
- queue num_buffers field
+Subject: Re: [PATCH v7 26/49] media: pci: tw68: Stop direct calls to queue
+ num_buffers field
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
@@ -50,12 +50,12 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
- <20230914133323.198857-26-benjamin.gaignard@collabora.com>
+ <20230914133323.198857-27-benjamin.gaignard@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230914133323.198857-26-benjamin.gaignard@collabora.com>
+In-Reply-To: <20230914133323.198857-27-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230919_065222_251284_EE57DBBB 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20230919_065645_445920_8CE22739 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,42 +72,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2023 15:32, Benjamin Gaignard wrote:
+On 14/09/2023 15:33, Benjamin Gaignard wrote:
 > Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/media/pci/netup_unidvb/netup_unidvb_core.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  drivers/media/pci/tw68/tw68-video.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-> index d85bfbb77a25..557985ba25db 100644
-> --- a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-> +++ b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
-> @@ -293,12 +293,13 @@ static int netup_unidvb_queue_setup(struct vb2_queue *vq,
->  				    struct device *alloc_devs[])
+> diff --git a/drivers/media/pci/tw68/tw68-video.c b/drivers/media/pci/tw68/tw68-video.c
+> index 773a18702d36..35296c226019 100644
+> --- a/drivers/media/pci/tw68/tw68-video.c
+> +++ b/drivers/media/pci/tw68/tw68-video.c
+> @@ -360,13 +360,13 @@ static int tw68_queue_setup(struct vb2_queue *q,
+>  			   unsigned int sizes[], struct device *alloc_devs[])
 >  {
->  	struct netup_dma *dma = vb2_get_drv_priv(vq);
-> +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+>  	struct tw68_dev *dev = vb2_get_drv_priv(q);
+> -	unsigned tot_bufs = q->num_buffers + *num_buffers;
+> +	unsigned tot_bufs = vb2_get_num_buffers(q) + *num_buffers;
+>  	unsigned size = (dev->fmt->depth * dev->width * dev->height) >> 3;
 >  
->  	dev_dbg(&dma->ndev->pci_dev->dev, "%s()\n", __func__);
->  
->  	*nplanes = 1;
-> -	if (vq->num_buffers + *nbuffers < VIDEO_MAX_FRAME)
-> -		*nbuffers = VIDEO_MAX_FRAME - vq->num_buffers;
-> +	if (q_num_bufs + *nbuffers < VIDEO_MAX_FRAME)
-> +		*nbuffers = VIDEO_MAX_FRAME - q_num_bufs;
+>  	if (tot_bufs < 2)
+>  		tot_bufs = 2;
 
-Just drop this, the vb2 core tests this already.
+This check can be dropped since vidq.min_buffers_needed is already set to 2.
+
+>  	tot_bufs = tw68_buffer_count(size, tot_bufs);
+> -	*num_buffers = tot_bufs - q->num_buffers;
+> +	*num_buffers = tot_bufs - vb2_get_num_buffers(q);
+>  	/*
+>  	 * We allow create_bufs, but only if the sizeimage is >= as the
+>  	 * current sizeimage. The tw68_buffer_count calculation becomes quite
+
+Otherwise this is fine.
 
 Regards,
 
 	Hans
-
->  	sizes[0] = PAGE_ALIGN(NETUP_DMA_PACKETS_COUNT * 188);
->  	dev_dbg(&dma->ndev->pci_dev->dev, "%s() nbuffers=%d sizes[0]=%d\n",
->  		__func__, *nbuffers, sizes[0]);
-
 
 _______________________________________________
 Linux-rockchip mailing list
